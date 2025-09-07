@@ -48,7 +48,8 @@ const useIsClient = () => {
     
     return isClient;
 };
-// ✅ SIMPLE BACK TO HOMEPAGE BUTTON - ADD THIS AFTER useIsClient HOOK
+
+// ✅ MOBILE-OPTIMIZED BACK TO HOMEPAGE BUTTON
 const BackToHomepageButton = React.memo(() => {
     const router = useRouter();
     const isClient = useIsClient();
@@ -62,15 +63,16 @@ const BackToHomepageButton = React.memo(() => {
     return (
         <motion.button
             onClick={handleGoHome}
-            className="fixed top-4 left-4 z-[60] bg-gradient-to-r from-yellow-500 to-amber-500 text-black px-4 py-2 rounded-lg font-semibold shadow-lg hover:shadow-yellow-500/25 transition-all duration-300 flex items-center gap-2"
+            className="fixed top-3 left-3 sm:top-4 sm:left-4 z-[60] bg-gradient-to-r from-yellow-500 to-amber-500 text-black px-3 py-2 sm:px-4 sm:py-2 rounded-lg font-semibold shadow-lg hover:shadow-yellow-500/25 transition-all duration-300 flex items-center gap-1 sm:gap-2 text-sm sm:text-base"
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.98 }}
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
         >
-            <Home size={16} />
-            Homepage
+            <Home size={14} className="sm:w-4 sm:h-4" />
+            <span className="hidden sm:inline">Homepage</span>
+            <span className="sm:hidden">Home</span>
         </motion.button>
     );
 });
@@ -89,7 +91,7 @@ const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 11324, "imdbID": "tt0825232", "Title": "Shutter Island", "year": 2010, "genre": "Thriller", "runtime": 138 }
 ];
 
-// --- COMPLETE SENSITIVE SCENE TIMELINES (ALL FILMS WITH FULL DATA) ---
+// --- COMPLETE SENSITIVE SCENE TIMELINES ---
 const timeToSeconds = (timeStr) => {
     const parts = timeStr.split(':').map(Number);
     if (parts.length === 3) {
@@ -487,14 +489,14 @@ const CustomRatingSelector = React.memo(({ rating, onRate, size = "medium", read
     const currentRatingData = getCurrentRatingData();
 
     const sizeClasses = {
-        small: "text-sm py-2 px-3",
-        medium: "text-base py-3 px-4",
-        large: "text-lg py-4 px-6"
+        small: "text-xs sm:text-sm py-2 px-2 sm:px-3",
+        medium: "text-sm sm:text-base py-2 px-3 sm:py-3 sm:px-4",
+        large: "text-base sm:text-lg py-3 px-4 sm:py-4 sm:px-6"
     };
 
     return (
         <div className="space-y-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
                 {RATING_OPTIONS.map((option) => {
                     const isSelected = option.value === currentRating;
                     const isHovered = option.value === hoveredRating;
@@ -523,8 +525,8 @@ const CustomRatingSelector = React.memo(({ rating, onRate, size = "medium", read
                             whileHover={!readonly ? { scale: 1.02 } : {}}
                             whileTap={!readonly ? { scale: 0.98 } : {}}
                         >
-                            <div className="flex items-center justify-center space-x-3">
-                                <span className="text-2xl font-bold">{option.symbol}</span>
+                            <div className="flex items-center justify-center space-x-2 sm:space-x-3">
+                                <span className="text-lg sm:text-2xl font-bold">{option.symbol}</span>
                                 <div className="text-left">
                                     <div className="font-semibold">{option.label}</div>
                                     <div className="text-xs opacity-80">{option.description}</div>
@@ -537,24 +539,24 @@ const CustomRatingSelector = React.memo(({ rating, onRate, size = "medium", read
             
             {showLabel && currentRatingData && (
                 <motion.div 
-                    className={`flex items-center justify-center gap-3 p-4 rounded-xl border ${currentRatingData.bgColor}`}
+                    className={`flex items-center justify-center gap-3 p-3 sm:p-4 rounded-xl border ${currentRatingData.bgColor}`}
                     style={{ 
                         borderColor: currentRatingData.color + '60'
                     }}
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                 >
-                    <span className="text-3xl font-bold" style={{ color: currentRatingData.color }}>
+                    <span className="text-2xl sm:text-3xl font-bold" style={{ color: currentRatingData.color }}>
                         {currentRatingData.symbol}
                     </span>
                     <div>
                         <p 
-                            className="font-bold text-lg"
+                            className="font-bold text-base sm:text-lg"
                             style={{ color: currentRatingData.color }}
                         >
                             {currentRatingData.label}
                         </p>
-                        <p className="text-gray-400 text-sm">{currentRatingData.description}</p>
+                        <p className="text-gray-400 text-xs sm:text-sm">{currentRatingData.description}</p>
                     </div>
                 </motion.div>
             )}
@@ -750,7 +752,7 @@ const SEOHead = React.memo(({ movie, isMainPage = false }) => {
     );
 });
 
-// Where to Watch Section - FIXED: No YouTube, Seamless Direct Links
+// Where to Watch Section - MOBILE OPTIMIZED
 const WhereToWatchSection = React.memo(({ movie }) => {
     const [watchProviders, setWatchProviders] = useState(null);
     const [userRegion, setUserRegion] = useState('US');
@@ -783,8 +785,6 @@ const WhereToWatchSection = React.memo(({ movie }) => {
         const lowerPlatformName = platformName.toLowerCase();
         let directUrl = null;
 
-        console.log('Platform Name:', platformName);
-
         // Major Streaming Services
         if (lowerPlatformName.includes('netflix')) {
             directUrl = `https://www.netflix.com/search?q=${encodeURIComponent(movieTitle)}`;
@@ -816,37 +816,12 @@ const WhereToWatchSection = React.memo(({ movie }) => {
         else if (lowerPlatformName.includes('showtime')) {
             directUrl = `https://www.showtime.com/search?q=${encodeURIComponent(movieTitle)}`;
         }
-        
-        // ADD MORE PLATFORMS
-        else if (lowerPlatformName.includes('fubo')) {
-            directUrl = `https://www.fubo.tv/welcome`;
-        }
-        else if (lowerPlatformName.includes('youtube')) {
-            directUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(movieTitle + ' ' + movieYear + ' full movie')}`;
-        }
-        else if (lowerPlatformName.includes('tubi')) {
-            directUrl = `https://tubitv.com/search/${encodeURIComponent(movieTitle)}`;
-        }
-        else if (lowerPlatformName.includes('crackle')) {
-            directUrl = `https://www.crackle.com/search?query=${encodeURIComponent(movieTitle)}`;
-        }
-        else if (lowerPlatformName.includes('vudu')) {
-            directUrl = `https://www.vudu.com/content/movies/search/?query=${encodeURIComponent(movieTitle)}`;
-        }
-        else if (lowerPlatformName.includes('pluto')) {
-            directUrl = `https://pluto.tv/search?query=${encodeURIComponent(movieTitle)}`;
-        }
-        else if (lowerPlatformName.includes('roku')) {
-            directUrl = `https://therokuchannel.roku.com/search/${encodeURIComponent(movieTitle)}`;
-        }
         else {
-            console.log('Unsupported platform:', platformName);
             alert(`${platformName} redirect not currently supported. We're working on adding more platforms!`);
             return;
         }
 
         if (directUrl) {
-            console.log(`🎬 Opening ${platformName} for ${movieTitle}:`, directUrl);
             window.open(directUrl, '_blank', 'noopener,noreferrer');
         }
     };
@@ -854,19 +829,19 @@ const WhereToWatchSection = React.memo(({ movie }) => {
     if (!mounted) {
         return (
             <motion.section 
-                className="mb-8"
+                className="mb-6 sm:mb-8"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
             >
-                <h3 className="text-lg font-light text-yellow-300 mb-4 flex items-center gap-2">
-                    <Play size={16} />
+                <h3 className="text-base sm:text-lg font-light text-yellow-300 mb-3 sm:mb-4 flex items-center gap-2">
+                    <Play size={14} className="sm:w-4 sm:h-4" />
                     Where to Watch {movie.Title}
                 </h3>
-                <div className="p-4 bg-gray-800/30 rounded-lg border border-gray-700/50">
+                <div className="p-3 sm:p-4 bg-gray-800/30 rounded-lg border border-gray-700/50">
                     <div className="flex items-center justify-center space-x-2">
-                        <div className="w-4 h-4 border-2 border-yellow-400/30 border-t-yellow-400 rounded-full animate-spin" />
-                        <span className="text-gray-300 text-sm">Initializing...</span>
+                        <div className="w-3 h-3 sm:w-4 sm:h-4 border-2 border-yellow-400/30 border-t-yellow-400 rounded-full animate-spin" />
+                        <span className="text-gray-300 text-xs sm:text-sm">Initializing...</span>
                     </div>
                 </div>
             </motion.section>
@@ -876,23 +851,23 @@ const WhereToWatchSection = React.memo(({ movie }) => {
     if (loading) {
         return (
             <motion.section 
-                className="mb-8"
+                className="mb-6 sm:mb-8"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
             >
-                <h3 className="text-lg font-light text-yellow-300 mb-4 flex items-center gap-2">
-                    <Play size={16} />
+                <h3 className="text-base sm:text-lg font-light text-yellow-300 mb-3 sm:mb-4 flex items-center gap-2">
+                    <Play size={14} className="sm:w-4 sm:h-4" />
                     Where to Watch {movie.Title}
                 </h3>
-                <div className="p-4 bg-gray-800/30 rounded-lg border border-gray-700/50">
+                <div className="p-3 sm:p-4 bg-gray-800/30 rounded-lg border border-gray-700/50">
                     <div className="flex items-center justify-center space-x-2">
                         <motion.div 
                             animate={{ rotate: 360 }} 
                             transition={{ duration: 2, repeat: Infinity, ease: "linear" }} 
-                            className="w-4 h-4 border-2 border-yellow-400/30 border-t-yellow-400 rounded-full" 
+                            className="w-3 h-3 sm:w-4 sm:h-4 border-2 border-yellow-400/30 border-t-yellow-400 rounded-full" 
                         />
-                        <span className="text-gray-300 text-sm">Loading streaming options...</span>
+                        <span className="text-gray-300 text-xs sm:text-sm">Loading streaming options...</span>
                     </div>
                 </div>
             </motion.section>
@@ -912,17 +887,17 @@ const WhereToWatchSection = React.memo(({ movie }) => {
     if (!uniqueProviders.length) {
         return (
             <motion.section 
-                className="mb-8"
+                className="mb-6 sm:mb-8"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
             >
-                <h3 className="text-lg font-light text-yellow-300 mb-4 flex items-center gap-2">
-                    <Play size={16} />
+                <h3 className="text-base sm:text-lg font-light text-yellow-300 mb-3 sm:mb-4 flex items-center gap-2">
+                    <Play size={14} className="sm:w-4 sm:h-4" />
                     Where to Watch {movie.Title}
                 </h3>
-                <div className="p-4 bg-red-800/20 rounded-lg border border-red-500/50">
-                    <p className="text-red-300 text-center text-sm">
+                <div className="p-3 sm:p-4 bg-red-800/20 rounded-lg border border-red-500/50">
+                    <p className="text-red-300 text-center text-xs sm:text-sm">
                         {movie.Title} is not currently streaming in your region. Check local rental services or digital platforms.
                     </p>
                 </div>
@@ -932,56 +907,57 @@ const WhereToWatchSection = React.memo(({ movie }) => {
 
     return (
         <motion.section 
-            className="mb-8"
+            className="mb-6 sm:mb-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
         >
-            <h3 className="text-lg font-light text-yellow-300 mb-4 flex items-center gap-2">
-                <Play size={16} />
+            <h3 className="text-base sm:text-lg font-light text-yellow-300 mb-3 sm:mb-4 flex items-center gap-2">
+                <Play size={14} className="sm:w-4 sm:h-4" />
                 Where to Watch {movie.Title} ({userRegion})
             </h3>
-            <p className="text-gray-400 text-sm mb-4">
+            <p className="text-gray-400 text-xs sm:text-sm mb-3 sm:mb-4">
                 🎬 Click to open {movie.Title} on legitimate streaming platforms. Direct access - no redirects.
             </p>
-            <div className="grid grid-cols-4 md:grid-cols-6 gap-3">
+            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2 sm:gap-3">
                 {uniqueProviders.slice(0, 6).map((provider, index) => (
                     <motion.button
                         key={provider.provider_id}
                         onClick={() => handlePlatformClick(provider, movie.Title, movie.year)}
-                        className="p-2 rounded-lg border bg-green-800/20 border-green-500/50 text-center hover:bg-green-700/30 transition-colors group relative"
+                        className="p-2 sm:p-3 rounded-lg border bg-green-800/20 border-green-500/50 text-center hover:bg-green-700/30 transition-colors group relative"
                         whileHover={{ y: -2, scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
                     >
                         <div className="flex flex-col items-center space-y-1">
-                            <div className="w-5 h-5 bg-gray-700 rounded flex items-center justify-center">
+                            <div className="w-4 h-4 sm:w-5 sm:h-5 bg-gray-700 rounded flex items-center justify-center">
                                 {provider.logo_path ? (
                                     <img 
                                         src={`${TMDB_CONFIG.IMAGE_BASE_URL}/w92${provider.logo_path}`}
                                         alt={`${provider.provider_name} logo`}
-                                        className="w-4 h-4 rounded object-cover"
+                                        className="w-3 h-3 sm:w-4 sm:h-4 rounded object-cover"
                                     />
                                 ) : (
                                     <span className="text-xs">📺</span>
                                 )}
                             </div>
-                            <div className="text-xs text-gray-300 font-medium text-center">
+                            <div className="text-xs text-gray-300 font-medium text-center leading-tight">
                                 {provider.provider_name.split(' ')[0]}
                             </div>
                         </div>
-                        <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                            <Play size={8} className="text-white" />
+                        <div className="absolute -top-1 -right-1 w-2 h-2 sm:w-3 sm:h-3 bg-green-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <Play size={6} className="sm:w-2 sm:h-2 text-white" />
                         </div>
                     </motion.button>
                 ))}
             </div>
-            <p className="text-xs text-gray-500 mt-3">
+            <p className="text-xs text-gray-500 mt-2 sm:mt-3">
                 ✅ Direct links to legitimate platforms • No Google redirects • Legal streaming only
             </p>
         </motion.section>
     );
 });
 
-// ✅ ENHANCED SENSITIVE CONTENT TIMELINE SECTION WITH PROPER HEADING
+// ✅ MOBILE-OPTIMIZED SENSITIVE CONTENT TIMELINE SECTION
 const SensitiveContentTimelineSection = React.memo(({ movie }) => {
     const [showSensitiveOverlay, setShowSensitiveOverlay] = useState(false);
     const sensitiveData = SENSITIVE_TIMELINES[movie.tmdbId];
@@ -990,22 +966,22 @@ const SensitiveContentTimelineSection = React.memo(({ movie }) => {
     if (!sensitiveData?.scenes?.length) {
         return (
             <motion.section 
-                className="mb-8"
+                className="mb-6 sm:mb-8"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
             >
-                <h3 className="text-lg font-light text-yellow-300 mb-4 flex items-center gap-2">
-                    <Shield size={16} />
+                <h3 className="text-base sm:text-lg font-light text-yellow-300 mb-3 sm:mb-4 flex items-center gap-2">
+                    <Shield size={14} className="sm:w-4 sm:h-4" />
                     Sensitive Content Timeline
                 </h3>
                 <motion.div
-                    className="w-full bg-green-500/20 text-green-300 border border-green-500/50 px-4 py-3 rounded-lg text-sm font-light tracking-wide flex items-center justify-center gap-2"
+                    className="w-full bg-green-500/20 text-green-300 border border-green-500/50 px-3 py-2 sm:px-4 sm:py-3 rounded-lg text-xs sm:text-sm font-light tracking-wide flex items-center justify-center gap-2"
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.6 }}
                 >
-                    <CheckCircle size={16} />
+                    <CheckCircle size={14} className="sm:w-4 sm:h-4" />
                     <span><strong>{movie.Title}</strong> does not contain any sensitive scenes - Family Friendly Content</span>
                 </motion.div>
             </motion.section>
@@ -1014,29 +990,29 @@ const SensitiveContentTimelineSection = React.memo(({ movie }) => {
 
     return (
         <motion.section 
-            className="mb-8"
+            className="mb-6 sm:mb-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
         >
-            <h3 className="text-lg font-light text-yellow-300 mb-4 flex items-center gap-2">
-                <Shield size={16} />
+            <h3 className="text-base sm:text-lg font-light text-yellow-300 mb-3 sm:mb-4 flex items-center gap-2">
+                <Shield size={14} className="sm:w-4 sm:h-4" />
                 Sensitive Content Timeline
             </h3>
-            <p className="text-gray-400 text-sm mb-4">
+            <p className="text-gray-400 text-xs sm:text-sm mb-3 sm:mb-4">
                 ⚠️ Content guide for parents and sensitive viewers. Click below to view detailed timestamps and scene descriptions.
             </p>
             
             <motion.button
                 onClick={() => setShowSensitiveOverlay(true)}
-                className="w-full bg-amber-500/20 text-amber-300 border border-amber-500/50 px-6 py-4 rounded-xl text-sm font-medium tracking-wide hover:bg-amber-500/30 transition-all duration-300 flex items-center justify-between group"
+                className="w-full bg-amber-500/20 text-amber-300 border border-amber-500/50 px-4 py-3 sm:px-6 sm:py-4 rounded-xl text-xs sm:text-sm font-medium tracking-wide hover:bg-amber-500/30 transition-all duration-300 flex items-center justify-between group"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
             >
-                <div className="flex items-center gap-3">
-                    <AlertTriangle size={20} className="group-hover:animate-pulse" />
+                <div className="flex items-center gap-2 sm:gap-3">
+                    <AlertTriangle size={16} className="sm:w-5 sm:h-5 group-hover:animate-pulse" />
                     <div className="text-left">
-                        <div className="font-semibold text-base">
+                        <div className="font-semibold text-sm sm:text-base">
                             Mature Content Found ({sensitiveData.scenes.length} scenes)
                         </div>
                         <div className="text-xs opacity-80">
@@ -1045,19 +1021,19 @@ const SensitiveContentTimelineSection = React.memo(({ movie }) => {
                     </div>
                 </div>
                 <div className="flex items-center gap-2">
-                    <Eye size={16} />
+                    <Eye size={14} className="sm:w-4 sm:h-4" />
                     <span className="text-xs">View Timeline</span>
                 </div>
             </motion.button>
 
-            {/* Sensitive Scenes Overlay */}
+            {/* MOBILE-OPTIMIZED Sensitive Scenes Overlay */}
             <AnimatePresence>
                 {showSensitiveOverlay && (
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="fixed inset-0 bg-black/80 backdrop-blur-lg flex items-center justify-center z-[100]"
+                        className="fixed inset-0 bg-black/80 backdrop-blur-lg flex items-center justify-center z-[100] p-4"
                         onClick={() => setShowSensitiveOverlay(false)}
                     >
                         <motion.div
@@ -1065,22 +1041,22 @@ const SensitiveContentTimelineSection = React.memo(({ movie }) => {
                             animate={{ scale: 1, y: 0, opacity: 1 }}
                             exit={{ scale: 0.9, y: -50, opacity: 0 }}
                             transition={{ duration: 0.3, ease: "easeOut" }}
-                            className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 border border-yellow-500/20 rounded-2xl shadow-2xl w-full max-w-lg p-8 m-4 relative flex flex-col"
+                            className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 border border-yellow-500/20 rounded-2xl shadow-2xl w-full max-w-md sm:max-w-lg p-4 sm:p-8 relative flex flex-col max-h-[90vh]"
                             onClick={(e) => e.stopPropagation()}
                         >
                             <motion.button
                                 onClick={() => setShowSensitiveOverlay(false)}
-                                className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors z-10"
+                                className="absolute top-3 right-3 sm:top-4 sm:right-4 text-gray-400 hover:text-white transition-colors z-10"
                                 whileHover={{ scale: 1.1, rotate: 90 }}
                                 whileTap={{ scale: 0.9 }}
                             >
-                                <X size={24} />
+                                <X size={20} className="sm:w-6 sm:h-6" />
                             </motion.button>
-                            <div className="text-center mb-6">
-                                <h3 className="text-2xl font-light text-yellow-300 tracking-wide mb-1">🎬 Sensitive Content Timeline</h3>
-                                <p className="text-sm text-gray-400">({sensitiveData.scenes.length} scenes found in "{movie.Title}")</p>
+                            <div className="text-center mb-4 sm:mb-6">
+                                <h3 className="text-xl sm:text-2xl font-light text-yellow-300 tracking-wide mb-1">🎬 Sensitive Content Timeline</h3>
+                                <p className="text-xs sm:text-sm text-gray-400">({sensitiveData.scenes.length} scenes found in "{movie.Title}")</p>
                             </div>
-                            <div className="border-t border-b border-gray-700/50 my-4 py-4 space-y-3 max-h-[60vh] overflow-y-auto pr-2">
+                            <div className="border-t border-b border-gray-700/50 my-3 sm:my-4 py-3 sm:py-4 space-y-2 sm:space-y-3 max-h-[50vh] sm:max-h-[60vh] overflow-y-auto pr-2">
                                 {sensitiveData.scenes.map((scene, index) => {
                                     const formatTime = (seconds) => {
                                         const h = Math.floor(seconds / 3600).toString().padStart(2, '0');
@@ -1101,22 +1077,22 @@ const SensitiveContentTimelineSection = React.memo(({ movie }) => {
                                     return (
                                         <motion.div
                                             key={index}
-                                            className="flex items-center text-gray-200 p-3 rounded-lg hover:bg-white/5 transition-colors"
+                                            className="flex items-center text-gray-200 p-2 sm:p-3 rounded-lg hover:bg-white/5 transition-colors"
                                             initial={{ opacity: 0, x: -20 }}
                                             animate={{ opacity: 1, x: 0 }}
                                             transition={{ delay: index * 0.05 }}
                                         >
-                                            <span className="text-xl mr-4">{getSceneIcon(scene.type)}</span>
-                                            <span className="font-mono text-yellow-400/90 text-sm mr-4 w-32">{formatTime(scene.start)} - {formatTime(scene.end)}</span>
-                                            <span className="text-sm font-light flex-1 capitalize">{scene.type}</span>
+                                            <span className="text-base sm:text-xl mr-3 sm:mr-4">{getSceneIcon(scene.type)}</span>
+                                            <span className="font-mono text-yellow-400/90 text-xs sm:text-sm mr-2 sm:mr-4 w-24 sm:w-32">{formatTime(scene.start)} - {formatTime(scene.end)}</span>
+                                            <span className="text-xs sm:text-sm font-light flex-1 capitalize">{scene.type}</span>
                                         </motion.div>
                                     );
                                 })}
                             </div>
-                            <div className="mt-6 flex justify-center">
+                            <div className="mt-4 sm:mt-6 flex justify-center">
                                 <motion.button
                                     onClick={() => setShowSensitiveOverlay(false)}
-                                    className="bg-yellow-500/20 text-yellow-200 border border-yellow-400/50 px-10 py-3 rounded-lg text-sm font-light tracking-wide hover:bg-yellow-500/30 transition-colors"
+                                    className="bg-yellow-500/20 text-yellow-200 border border-yellow-400/50 px-6 py-2 sm:px-10 sm:py-3 rounded-lg text-xs sm:text-sm font-light tracking-wide hover:bg-yellow-500/30 transition-colors"
                                     whileHover={{ scale: 1.05 }}
                                     whileTap={{ scale: 0.95 }}
                                 >
@@ -1202,24 +1178,24 @@ const EnhancedStarRating = React.memo(({ rating, onRate, size = 20, readonly = f
     );
 });
 
-// FIXED Intensity Graph with PERFECT Dot Positioning
+// MOBILE-OPTIMIZED Intensity Graph with PERFECT Dot Positioning
 const EnhancedIntensityGraph = React.memo(({ scenes, dominantColor }) => {
     if (!scenes || scenes.length === 0) return null;
 
     const CustomTooltip = ({ active, payload, label }) => {
         if (active && payload && payload.length) {
             return (
-                <div className="bg-gray-900/95 border border-gray-700/50 rounded-lg p-4 backdrop-blur-sm shadow-xl">
-                    <p className="text-yellow-400 font-medium text-sm">{payload[0].payload.label}</p>
-                    <p className="text-gray-300 text-sm">Time: {label}%</p>
-                    <p className="text-gray-300 text-sm">Intensity: {payload[0].value}%</p>
+                <div className="bg-gray-900/95 border border-gray-700/50 rounded-lg p-2 sm:p-4 backdrop-blur-sm shadow-xl">
+                    <p className="text-yellow-400 font-medium text-xs sm:text-sm">{payload[0].payload.label}</p>
+                    <p className="text-gray-300 text-xs sm:text-sm">Time: {label}%</p>
+                    <p className="text-gray-300 text-xs sm:text-sm">Intensity: {payload[0].value}%</p>
                 </div>
             );
         }
         return null;
     };
 
-    // Custom Dot Component - FIXED FOR ACCURATE POSITIONING
+    // Custom Dot Component - MOBILE OPTIMIZED
     const CustomActiveDot = (props) => {
         const { cx, cy, payload, index } = props;
         if (!payload) return null;
@@ -1230,7 +1206,7 @@ const EnhancedIntensityGraph = React.memo(({ scenes, dominantColor }) => {
                 <motion.circle
                     cx={cx}
                     cy={cy}
-                    r="10"
+                    r="8"
                     fill="none"
                     stroke={payload.color}
                     strokeWidth="2"
@@ -1246,11 +1222,11 @@ const EnhancedIntensityGraph = React.memo(({ scenes, dominantColor }) => {
                         delay: index * 0.3 
                     }}
                 />
-                {/* Main dot */}
+                {/* Main dot - smaller for mobile */}
                 <motion.circle
                     cx={cx}
                     cy={cy}
-                    r="6"
+                    r="5"
                     fill={payload.color}
                     stroke="white"
                     strokeWidth="2"
@@ -1269,7 +1245,7 @@ const EnhancedIntensityGraph = React.memo(({ scenes, dominantColor }) => {
                 <motion.circle
                     cx={cx}
                     cy={cy}
-                    r="2.5"
+                    r="2"
                     fill="white"
                     opacity="0.9"
                     initial={{ scale: 0 }}
@@ -1285,39 +1261,39 @@ const EnhancedIntensityGraph = React.memo(({ scenes, dominantColor }) => {
 
     return (
         <motion.div 
-            className="mb-12 bg-gradient-to-br from-gray-800/40 to-gray-900/60 rounded-xl border border-gray-700/50 p-8 shadow-2xl backdrop-blur-sm relative overflow-hidden"
+            className="mb-8 sm:mb-12 bg-gradient-to-br from-gray-800/40 to-gray-900/60 rounded-xl border border-gray-700/50 p-4 sm:p-8 shadow-2xl backdrop-blur-sm relative overflow-hidden"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
         >
-            <div className="absolute top-4 left-4 w-5 h-5 border-t-2 border-l-2 border-yellow-400/40"></div>
-            <div className="absolute top-4 right-4 w-5 h-5 border-t-2 border-r-2 border-yellow-400/40"></div>
-            <div className="absolute bottom-4 left-4 w-5 h-5 border-b-2 border-l-2 border-yellow-400/40"></div>
-            <div className="absolute bottom-4 right-4 w-5 h-5 border-b-2 border-r-2 border-yellow-400/40"></div>
+            <div className="absolute top-2 left-2 sm:top-4 sm:left-4 w-3 h-3 sm:w-5 sm:h-5 border-t-2 border-l-2 border-yellow-400/40"></div>
+            <div className="absolute top-2 right-2 sm:top-4 sm:right-4 w-3 h-3 sm:w-5 sm:h-5 border-t-2 border-r-2 border-yellow-400/40"></div>
+            <div className="absolute bottom-2 left-2 sm:bottom-4 sm:left-4 w-3 h-3 sm:w-5 sm:h-5 border-b-2 border-l-2 border-yellow-400/40"></div>
+            <div className="absolute bottom-2 right-2 sm:bottom-4 sm:right-4 w-3 h-3 sm:w-5 sm:h-5 border-b-2 border-r-2 border-yellow-400/40"></div>
             
             <motion.div 
-                className="flex items-center justify-between mb-8"
+                className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 sm:mb-8 gap-2 sm:gap-0"
                 initial={{ opacity: 0, x: -40 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.4 }}
             >
-                <h4 className="text-2xl font-light text-gray-100 flex items-center gap-4 tracking-wide">
+                <h4 className="text-lg sm:text-2xl font-light text-gray-100 flex items-center gap-2 sm:gap-4 tracking-wide">
                     <motion.div 
                         animate={{ rotate: 360 }} 
                         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                        className="text-3xl"
+                        className="text-xl sm:text-3xl"
                     >
                         📊
                     </motion.div>
                     INTENSITY TIMELINE
                 </h4>
-                <div className="text-xs text-gray-400 flex items-center gap-3 tracking-wider uppercase">
-                    <TrendingUp size={16} />
+                <div className="text-xs text-gray-400 flex items-center gap-2 sm:gap-3 tracking-wider uppercase">
+                    <TrendingUp size={12} className="sm:w-4 sm:h-4" />
                     Narrative Analysis
                 </div>
             </motion.div>
 
-            <div className="h-64 w-full">
+            <div className="h-48 sm:h-64 w-full">
                 <ResponsiveContainer width="100%" height="100%">
                     <AreaChart data={scenes} margin={{ top: 10, right: 10, left: 10, bottom: 10 }}>
                         <defs>
@@ -1331,21 +1307,21 @@ const EnhancedIntensityGraph = React.memo(({ scenes, dominantColor }) => {
                             dataKey="time" 
                             axisLine={false}
                             tickLine={false}
-                            tick={{ fill: '#9CA3AF', fontSize: 12 }}
+                            tick={{ fill: '#9CA3AF', fontSize: 10 }}
                             domain={['dataMin', 'dataMax']}
                         />
                         <YAxis 
                             axisLine={false}
                             tickLine={false}
-                            tick={{ fill: '#9CA3AF', fontSize: 12 }}
+                            tick={{ fill: '#9CA3AF', fontSize: 10 }}
                             domain={[0, 100]}
                         />
-                        <Tooltip content={<CustomTooltip />} />
+                                                <Tooltip content={<CustomTooltip />} />
                         <Area
                             type="monotone"
                             dataKey="intensity"
                             stroke={dominantColor}
-                            strokeWidth={3}
+                            strokeWidth={2}
                             fill={`url(#intensityGradient-${dominantColor})`}
                             activeDot={<CustomActiveDot />}
                             dot={false}
@@ -1354,18 +1330,18 @@ const EnhancedIntensityGraph = React.memo(({ scenes, dominantColor }) => {
                 </ResponsiveContainer>
             </div>
             
-            {/* Peak Labels */}
-            <div className="mt-6 flex flex-wrap gap-3">
+            {/* Mobile-Optimized Peak Labels */}
+            <div className="mt-4 sm:mt-6 flex flex-wrap gap-2 sm:gap-3 justify-center">
                 {scenes.map((scene, index) => (
                     <motion.div
                         key={index}
-                        className="flex items-center gap-2 px-3 py-1 bg-gray-700/50 rounded-full text-xs border border-gray-600/50"
+                        className="flex items-center gap-2 px-2 py-1 sm:px-3 sm:py-1 bg-gray-700/50 rounded-full text-xs border border-gray-600/50"
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: index * 0.1 + 1.5 }}
                     >
                         <div 
-                            className="w-3 h-3 rounded-full border border-white/50" 
+                            className="w-2 h-2 sm:w-3 sm:h-3 rounded-full border border-white/50" 
                             style={{ backgroundColor: scene.color }}
                         />
                         <span className="text-gray-300 font-medium">{scene.label}</span>
@@ -1377,7 +1353,7 @@ const EnhancedIntensityGraph = React.memo(({ scenes, dominantColor }) => {
     );
 });
 
-// Enhanced Comments & Rating Section with AUTH REQUIRED and PROFESSIONAL RATING
+// MOBILE-OPTIMIZED Enhanced Comments & Rating Section with AUTH REQUIRED and PROFESSIONAL RATING
 const EnhancedCommentsRatingSection = React.memo(({ movie }) => {
     const [comments, setComments] = useState([]);
     const [newComment, setNewComment] = useState('');
@@ -1523,49 +1499,50 @@ const EnhancedCommentsRatingSection = React.memo(({ movie }) => {
 
     return (
         <motion.section 
-            className="mt-12 pt-8 border-t border-gray-700/50"
+            className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-gray-700/50"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
         >
-            {/* Header with Average Rating */}
-            <div className="flex items-center justify-between mb-8">
-                <h2 className="text-2xl font-light text-yellow-300 flex items-center gap-3">
-                    <MessageSquare size={24} />
-                    Community Reviews & Ratings for {movie.Title}
+            {/* Mobile-Optimized Header with Average Rating */}
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 sm:mb-8 gap-3 sm:gap-0">
+                <h2 className="text-xl sm:text-2xl font-light text-yellow-300 flex items-center gap-2 sm:gap-3">
+                    <MessageSquare size={20} className="sm:w-6 sm:h-6" />
+                    <span className="hidden sm:inline">Community Reviews & Ratings for {movie.Title}</span>
+                    <span className="sm:hidden">Reviews for {movie.Title}</span>
                 </h2>
                 {averageRating > 0 && (
-                    <div className="flex items-center gap-4">
-                        <div className="text-3xl font-bold text-yellow-400">
+                    <div className="flex items-center gap-3 sm:gap-4">
+                        <div className="text-2xl sm:text-3xl font-bold text-yellow-400">
                             {averageRating}/4
                         </div>
-                        <div className="text-gray-400 text-sm">
+                        <div className="text-gray-400 text-xs sm:text-sm">
                             ({comments.filter(c => c.rating > 0).length} review{comments.filter(c => c.rating > 0).length !== 1 ? 's' : ''})
                         </div>
                     </div>
                 )}
             </div>
 
-            {/* Rating Distribution */}
+            {/* Mobile-Optimized Rating Distribution */}
             {comments.length > 0 && (
                 <motion.div 
-                    className="bg-gray-800/30 rounded-xl p-6 border border-gray-700/50 mb-8"
+                    className="bg-gray-800/30 rounded-xl p-4 sm:p-6 border border-gray-700/50 mb-6 sm:mb-8"
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.6 }}
                 >
-                    <h3 className="text-lg font-medium text-gray-200 mb-4">Rating Distribution</h3>
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                    <h3 className="text-base sm:text-lg font-medium text-gray-200 mb-3 sm:mb-4">Rating Distribution</h3>
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
                         {getRatingDistribution().map((rating, index) => (
                             <motion.div
                                 key={rating.value}
-                                className={`p-4 rounded-lg border text-center ${rating.bgColor}`}
+                                className={`p-3 sm:p-4 rounded-lg border text-center ${rating.bgColor}`}
                                 style={{ borderColor: rating.color + '60' }}
                                 initial={{ opacity: 0, y: 10 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: index * 0.1 }}
                             >
-                                <div className="text-2xl mb-2 font-bold" style={{ color: rating.color }}>
+                                <div className="text-xl sm:text-2xl mb-1 sm:mb-2 font-bold" style={{ color: rating.color }}>
                                     {rating.symbol}
                                 </div>
                                 <div className="text-xs font-medium mb-1" style={{ color: rating.color }}>
@@ -1580,47 +1557,47 @@ const EnhancedCommentsRatingSection = React.memo(({ movie }) => {
                 </motion.div>
             )}
 
-            {/* Authentication Required Notice */}
+            {/* Mobile-Optimized Authentication Required Notice */}
             {!currentUser && (
                 <motion.div 
-                    className="bg-yellow-500/10 border border-yellow-400/30 rounded-xl p-8 mb-8 text-center"
+                    className="bg-yellow-500/10 border border-yellow-400/30 rounded-xl p-6 sm:p-8 mb-6 sm:mb-8 text-center"
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                 >
-                    <LogIn size={48} className="mx-auto mb-4 text-yellow-400" />
-                    <h3 className="text-xl font-medium text-yellow-300 mb-2">Sign In Required</h3>
-                    <p className="text-gray-300 mb-6">
+                    <LogIn size={40} className="sm:w-12 sm:h-12 mx-auto mb-3 sm:mb-4 text-yellow-400" />
+                    <h3 className="text-lg sm:text-xl font-medium text-yellow-300 mb-2">Sign In Required</h3>
+                    <p className="text-gray-300 mb-4 sm:mb-6 text-sm sm:text-base">
                         Create a free account to rate {movie.Title} and share your thoughts with the community.
                         Professional rating system: Disappointing, Adequate, Recommended, or Exceptional.
                     </p>
                     <div className="flex gap-4 justify-center">
                         <motion.button
                             onClick={handleSignInRedirect}
-                            className="bg-yellow-500 hover:bg-yellow-600 text-black px-8 py-3 rounded-lg font-medium transition-colors flex items-center gap-2"
+                            className="bg-yellow-500 hover:bg-yellow-600 text-black px-6 py-2 sm:px-8 sm:py-3 rounded-lg font-medium transition-colors flex items-center gap-2 text-sm sm:text-base"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                         >
-                            <LogIn size={20} />
+                            <LogIn size={16} className="sm:w-5 sm:h-5" />
                             Sign In to Rate & Review
                         </motion.button>
                     </div>
                 </motion.div>
             )}
 
-            {/* Review Form (Only for authenticated users) */}
+            {/* Mobile-Optimized Review Form (Only for authenticated users) */}
             {currentUser && (
                 <motion.div 
-                    className="bg-gray-800/30 rounded-xl p-6 border border-gray-700/50 mb-8"
+                    className="bg-gray-800/30 rounded-xl p-4 sm:p-6 border border-gray-700/50 mb-6 sm:mb-8"
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.6 }}
                 >
-                    <div className="flex items-center justify-between mb-6">
-                        <h3 className="text-lg font-medium text-gray-200">
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 sm:mb-6 gap-3 sm:gap-0">
+                        <h3 className="text-base sm:text-lg font-medium text-gray-200">
                             {hasUserRated ? `Update Your Review of ${movie.Title}` : `Rate & Review ${movie.Title}`}
                         </h3>
-                        <div className="flex items-center gap-3">
-                            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-yellow-400 to-amber-500 flex items-center justify-center">
+                        <div className="flex items-center gap-2 sm:gap-3">
+                            <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-gradient-to-br from-yellow-400 to-amber-500 flex items-center justify-center">
                                 {currentUser.photoURL ? (
                                     <img 
                                         src={currentUser.photoURL} 
@@ -1628,41 +1605,41 @@ const EnhancedCommentsRatingSection = React.memo(({ movie }) => {
                                         className="w-full h-full rounded-full object-cover"
                                     />
                                 ) : (
-                                    <span className="text-black text-sm font-bold">
+                                    <span className="text-black text-xs sm:text-sm font-bold">
                                         {currentUser.displayName?.charAt(0)?.toUpperCase() || 
                                          currentUser.email?.charAt(0)?.toUpperCase() || '?'}
                                     </span>
                                 )}
                             </div>
-                            <span className="text-sm text-gray-300">
+                            <span className="text-xs sm:text-sm text-gray-300">
                                 {currentUser.displayName || currentUser.email?.split('@')[0]}
                             </span>
                         </div>
                     </div>
                     
-                    <div className="space-y-6">
-                        {/* Rating Selection - PROFESSIONAL 4 OPTIONS */}
+                    <div className="space-y-4 sm:space-y-6">
+                        {/* Mobile-Optimized Rating Selection */}
                         <div>
-                            <label className="block text-gray-300 text-sm mb-3">
+                            <label className="block text-gray-300 text-sm mb-2 sm:mb-3">
                                 Your Rating * <span className="text-gray-500">Choose one option:</span>
                             </label>
                             <CustomRatingSelector
                                 rating={userRating}
                                 onRate={setUserRating}
-                                size="medium"
+                                size="small"
                                 showLabel={true}
                             />
                         </div>
 
-                        {/* Comment Input */}
+                        {/* Mobile-Optimized Comment Input */}
                         <div>
                             <label className="block text-gray-300 text-sm mb-2">Your Review *</label>
                             <textarea
                                 placeholder={`Share your thoughts about ${movie.Title}... How does it compare to Inception? What did you think of the story, performances, or mind-bending elements?`}
                                 value={newComment}
                                 onChange={(e) => setNewComment(e.target.value)}
-                                rows={4}
-                                className="w-full p-4 bg-gray-700/50 border border-gray-600 rounded-lg text-gray-200 placeholder-gray-400 focus:border-yellow-400 focus:outline-none transition-colors resize-none"
+                                rows={3}
+                                className="w-full p-3 sm:p-4 bg-gray-700/50 border border-gray-600 rounded-lg text-gray-200 placeholder-gray-400 focus:border-yellow-400 focus:outline-none transition-colors resize-none text-sm sm:text-base"
                                 maxLength={1000}
                             />
                             <div className="text-right text-xs text-gray-500 mt-1">
@@ -1670,36 +1647,36 @@ const EnhancedCommentsRatingSection = React.memo(({ movie }) => {
                             </div>
                         </div>
 
-                        {/* Submit Button */}
+                        {/* Mobile-Optimized Submit Button */}
                         <motion.button
                             onClick={handleSubmitComment}
                             disabled={loading || !userRating || !newComment.trim()}
-                            className="bg-yellow-500 hover:bg-yellow-600 disabled:bg-gray-600 disabled:cursor-not-allowed text-black font-semibold px-8 py-3 rounded-lg transition-colors flex items-center gap-2"
+                            className="w-full sm:w-auto bg-yellow-500 hover:bg-yellow-600 disabled:bg-gray-600 disabled:cursor-not-allowed text-black font-semibold px-6 py-2 sm:px-8 sm:py-3 rounded-lg transition-colors flex items-center justify-center gap-2 text-sm sm:text-base"
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
                         >
-                            <MessageSquare size={16} />
+                            <MessageSquare size={14} className="sm:w-4 sm:h-4" />
                             {loading ? 'Saving Review...' : hasUserRated ? 'Update Review' : 'Submit Review'}
                         </motion.button>
                     </div>
                 </motion.div>
             )}
 
-            {/* Comments Display with PROFESSIONAL SYMBOLS */}
-            <div className="space-y-4">
-                <h3 className="text-lg font-medium text-gray-200 mb-4">
+            {/* Mobile-Optimized Comments Display */}
+            <div className="space-y-3 sm:space-y-4">
+                <h3 className="text-base sm:text-lg font-medium text-gray-200 mb-3 sm:mb-4">
                     Recent Reviews ({comments.length})
                 </h3>
                 
                 {comments.length === 0 ? (
-                    <div className="text-center py-12 text-gray-400">
-                        <MessageSquare size={48} className="mx-auto mb-4 opacity-50" />
-                        <p className="text-lg mb-2">No reviews for {movie.Title} yet.</p>
-                        <p>Be the first to share your thoughts on this mind-bending film!</p>
+                    <div className="text-center py-8 sm:py-12 text-gray-400">
+                        <MessageSquare size={40} className="sm:w-12 sm:h-12 mx-auto mb-3 sm:mb-4 opacity-50" />
+                        <p className="text-base sm:text-lg mb-2">No reviews for {movie.Title} yet.</p>
+                        <p className="text-sm sm:text-base">Be the first to share your thoughts on this mind-bending film!</p>
                         {!currentUser && (
                             <motion.button
                                 onClick={handleSignInRedirect}
-                                className="mt-4 text-yellow-400 hover:text-yellow-300 underline transition-colors"
+                                className="mt-3 sm:mt-4 text-yellow-400 hover:text-yellow-300 underline transition-colors text-sm sm:text-base"
                                 whileHover={{ scale: 1.05 }}
                             >
                                 Sign in to write the first review
@@ -1710,15 +1687,15 @@ const EnhancedCommentsRatingSection = React.memo(({ movie }) => {
                     comments.map((comment, index) => (
                         <motion.div
                             key={comment.id}
-                            className="bg-gray-800/20 rounded-xl p-6 border border-gray-700/30 hover:bg-gray-800/30 transition-colors"
+                            className="bg-gray-800/20 rounded-xl p-4 sm:p-6 border border-gray-700/30 hover:bg-gray-800/30 transition-colors"
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: index * 0.1 }}
                         >
-                            <div className="flex items-start justify-between mb-4">
-                                <div className="flex items-center gap-3">
+                            <div className="flex items-start justify-between mb-3 sm:mb-4">
+                                <div className="flex items-center gap-2 sm:gap-3">
                                     <div 
-                                        className="w-12 h-12 rounded-full flex items-center justify-center border-2 shadow-lg"
+                                        className="w-8 h-8 sm:w-12 sm:h-12 rounded-full flex items-center justify-center border-2 shadow-lg"
                                         style={{ 
                                             backgroundColor: comment.ratingColor + '20',
                                             borderColor: comment.ratingColor 
@@ -1731,15 +1708,14 @@ const EnhancedCommentsRatingSection = React.memo(({ movie }) => {
                                                 className="w-full h-full rounded-full object-cover"
                                             />
                                         ) : (
-                                            <span className="text-white font-bold text-lg">
+                                            <span className="text-white font-bold text-sm sm:text-lg">
                                                 {comment.userName?.charAt(0)?.toUpperCase() || '?'}
                                             </span>
                                         )}
                                     </div>
                                     <div>
-                                        {/* USERNAME IN RATING COLOR */}
                                         <p 
-                                            className="font-bold text-lg"
+                                            className="font-bold text-sm sm:text-lg"
                                             style={{ color: comment.ratingColor }}
                                         >
                                             {comment.userName}
@@ -1749,7 +1725,7 @@ const EnhancedCommentsRatingSection = React.memo(({ movie }) => {
                                                 </span>
                                             )}
                                         </p>
-                                        <p className="text-gray-400 text-sm">
+                                        <p className="text-gray-400 text-xs sm:text-sm">
                                             {formatTimestamp(comment.createdAt)}
                                             {comment.updatedAt && comment.updatedAt !== comment.createdAt && (
                                                 <span className="ml-2 text-xs">(edited)</span>
@@ -1757,22 +1733,22 @@ const EnhancedCommentsRatingSection = React.memo(({ movie }) => {
                                         </p>
                                     </div>
                                 </div>
-                                {/* RATING BADGE WITH PROFESSIONAL SYMBOL */}
+                                {/* Mobile-Optimized Rating Badge */}
                                 <div 
-                                    className={`flex items-center gap-2 px-3 py-2 rounded-lg border ${
+                                    className={`flex items-center gap-1 sm:gap-2 px-2 py-1 sm:px-3 sm:py-2 rounded-lg border ${
                                         RATING_OPTIONS.find(r => r.value === comment.rating)?.bgColor
                                     }`}
                                     style={{ borderColor: comment.ratingColor + '60' }}
                                 >
-                                    <span className="text-xl font-bold" style={{ color: comment.ratingColor }}>
+                                    <span className="text-base sm:text-xl font-bold" style={{ color: comment.ratingColor }}>
                                         {comment.ratingSymbol || '★'}
                                     </span>
-                                    <span className="text-sm font-medium" style={{ color: comment.ratingColor }}>
+                                    <span className="text-xs sm:text-sm font-medium" style={{ color: comment.ratingColor }}>
                                         {comment.ratingLabel}
                                     </span>
                                 </div>
                             </div>
-                            <p className="text-gray-300 leading-relaxed whitespace-pre-line">
+                            <p className="text-gray-300 leading-relaxed whitespace-pre-line text-sm sm:text-base">
                                 {comment.text}
                             </p>
                         </motion.div>
@@ -1783,35 +1759,36 @@ const EnhancedCommentsRatingSection = React.memo(({ movie }) => {
     );
 });
 
-// SEO FAQ Section with enhanced sensitive content info
+// Mobile-Optimized SEO FAQ Section
 const SEOFAQSection = React.memo(({ movie }) => {
     const faqs = generateFAQData(movie);
     
     return (
         <motion.section 
-            className="mt-16 pt-8 border-t border-gray-700/50"
+            className="mt-12 sm:mt-16 pt-6 sm:pt-8 border-t border-gray-700/50"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
         >
-            <h2 className="text-2xl font-light text-yellow-300 mb-8 flex items-center gap-3">
-                <Info size={24} />
-                Frequently Asked Questions About {movie.Title}
+            <h2 className="text-xl sm:text-2xl font-light text-yellow-300 mb-6 sm:mb-8 flex items-center gap-2 sm:gap-3">
+                <Info size={20} className="sm:w-6 sm:h-6" />
+                <span className="hidden sm:inline">Frequently Asked Questions About {movie.Title}</span>
+                <span className="sm:hidden">FAQ About {movie.Title}</span>
             </h2>
-            <p className="text-gray-300 mb-6">
+            <p className="text-gray-300 mb-4 sm:mb-6 text-sm sm:text-base">
                 Common questions about {movie.Title} and how it compares to other mind-bending films like Inception.
             </p>
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
                 {faqs.map((faq, index) => (
                     <motion.div 
                         key={index}
-                        className="bg-gray-800/30 rounded-xl p-6 border border-gray-700/50"
+                        className="bg-gray-800/30 rounded-xl p-4 sm:p-6 border border-gray-700/50"
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.6, delay: index * 0.1 }}
                     >
-                        <h3 className="text-lg font-medium text-yellow-200 mb-3">{faq.question}</h3>
-                        <p className="text-gray-300 leading-relaxed">{faq.answer}</p>
+                        <h3 className="text-base sm:text-lg font-medium text-yellow-200 mb-2 sm:mb-3">{faq.question}</h3>
+                        <p className="text-gray-300 leading-relaxed text-sm sm:text-base">{faq.answer}</p>
                     </motion.div>
                 ))}
             </div>
@@ -1863,7 +1840,7 @@ const CinematicProvider = ({ children }) => {
     );
 };
 
-// Background Component
+// Mobile-Optimized Background Component
 const CinematicBackground = React.memo(() => (
     <div 
         className="fixed inset-0 pointer-events-none z-0" 
@@ -1889,28 +1866,28 @@ const CinematicBackground = React.memo(() => (
     </div>
 ));
 
-// Loader Component
+// Mobile-Optimized Loader Component
 const CinematicLoader = React.memo(() => (
-    <div className="flex flex-col items-center justify-center h-full space-y-16 px-8">
+    <div className="flex flex-col items-center justify-center h-full space-y-8 sm:space-y-16 px-4 sm:px-8">
         <div className="relative">
             <motion.div 
                 animate={{ rotate: 360 }} 
                 transition={{ duration: 4, repeat: Infinity, ease: "linear" }} 
-                className="w-24 h-24 border-4 border-gray-800/60 rounded-full relative"
+                className="w-16 h-16 sm:w-24 sm:h-24 border-4 border-gray-800/60 rounded-full relative"
             >
-                <div className="absolute inset-3 border-2 border-yellow-500/40 rounded-full">
-                    <div className="absolute inset-2 border border-yellow-400/30 rounded-full">
+                <div className="absolute inset-2 sm:inset-3 border-2 border-yellow-500/40 rounded-full">
+                    <div className="absolute inset-1 sm:inset-2 border border-yellow-400/30 rounded-full">
                         <div className="absolute inset-1 bg-yellow-500/10 rounded-full" />
                     </div>
                 </div>
                 {[0, 45, 90, 135, 180, 225, 270, 315].map((rotation, index) => (
                     <div 
                         key={index} 
-                        className="absolute w-2 h-2 bg-yellow-400/40 rounded-full" 
+                        className="absolute w-1.5 h-1.5 sm:w-2 sm:h-2 bg-yellow-400/40 rounded-full" 
                         style={{ 
-                            top: '8px', 
+                            top: '6px', 
                             left: '50%', 
-                            transformOrigin: '0 40px', 
+                            transformOrigin: '0 26px', 
                             transform: `translateX(-50%) rotate(${rotation}deg)` 
                         }} 
                     />
@@ -1921,13 +1898,13 @@ const CinematicLoader = React.memo(() => (
             initial={{ opacity: 0, y: 30 }} 
             animate={{ opacity: 1, y: 0 }} 
             transition={{ delay: 0.8 }} 
-            className="text-center space-y-6 max-w-md"
+            className="text-center space-y-4 sm:space-y-6 max-w-xs sm:max-w-md"
         >
-            <h2 className="text-2xl font-light text-gray-200 tracking-[0.2em] uppercase">Loading Movies Like Inception</h2>
-            <p className="text-gray-400 text-sm font-light leading-relaxed tracking-wide">
+            <h2 className="text-xl sm:text-2xl font-light text-gray-200 tracking-[0.2em] uppercase">Loading Movies Like Inception</h2>
+            <p className="text-gray-400 text-xs sm:text-sm font-light leading-relaxed tracking-wide">
                 Curating the finest mind-bending cinema similar to Inception with user reviews and ratings
             </p>
-            <div className="w-64 h-1 bg-gray-800 rounded-full overflow-hidden mx-auto">
+            <div className="w-48 h-1 sm:w-64 bg-gray-800 rounded-full overflow-hidden mx-auto">
                 <motion.div 
                     className="h-full bg-gradient-to-r from-yellow-500 to-amber-500 rounded-full" 
                     animate={{ x: ['-100%', '100%'] }} 
@@ -1938,18 +1915,18 @@ const CinematicLoader = React.memo(() => (
     </div>
 ));
 
-// Header Component
+// MOBILE-OPTIMIZED HEADER
 const CinematicHeader = React.memo(() => (
-    <header className="text-center mb-24 px-6 w-full relative">
+    <header className="text-center mb-8 sm:mb-16 lg:mb-24 px-4 sm:px-6 w-full relative">
         <motion.div 
             initial={{ opacity: 0, y: -40 }} 
             animate={{ opacity: 1, y: 0 }} 
             transition={{ duration: 1.2, ease: "easeOut" }} 
-            className="space-y-12 relative z-10"
+            className="space-y-6 sm:space-y-8 lg:space-y-12 relative z-10"
         >
             <motion.div className="relative">
                 <motion.h1 
-                    className="text-4xl md:text-6xl lg:text-7xl font-extralight tracking-[0.15em] text-transparent bg-clip-text bg-gradient-to-r from-yellow-100 via-yellow-300 to-amber-300" 
+                    className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extralight tracking-[0.1em] sm:tracking-[0.15em] text-transparent bg-clip-text bg-gradient-to-r from-yellow-100 via-yellow-300 to-amber-300" 
                     style={{ 
                         fontFamily: "'Playfair Display', serif", 
                         textShadow: '0 0 60px rgba(234, 179, 8, 0.1)' 
@@ -1960,63 +1937,65 @@ const CinematicHeader = React.memo(() => (
                     }} 
                     transition={{ duration: 0.4 }}
                 >
-                    <motion.span className="block" style={{ letterSpacing: '0.25em' }}>TOP 10 MOVIES</motion.span>
-                    <motion.span className="block text-amber-300/90 mt-3" style={{ letterSpacing: '0.3em' }}>LIKE INCEPTION</motion.span>
+                    <motion.span className="block leading-tight" style={{ letterSpacing: '0.15em' }}>TOP 10 MOVIES</motion.span>
+                    <motion.span className="block text-amber-300/90 mt-1 sm:mt-2 lg:mt-3 leading-tight" style={{ letterSpacing: '0.2em' }}>LIKE INCEPTION</motion.span>
                 </motion.h1>
                 <motion.div 
                     initial={{ scaleX: 0 }} 
                     animate={{ scaleX: 1 }} 
                     transition={{ delay: 1.2, duration: 2, ease: "easeInOut" }} 
-                    className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-64 h-px bg-gradient-to-r from-transparent via-yellow-400/50 to-transparent" 
+                    className="absolute -bottom-3 sm:-bottom-4 lg:-bottom-6 left-1/2 transform -translate-x-1/2 w-24 sm:w-48 lg:w-64 h-px bg-gradient-to-r from-transparent via-yellow-400/50 to-transparent" 
                 />
             </motion.div>
             <motion.div 
                 initial={{ opacity: 0 }} 
                 animate={{ opacity: 1 }} 
                 transition={{ delay: 1.8 }} 
-                className="space-y-8"
+                className="space-y-4 sm:space-y-6 lg:space-y-8"
             >
-                <p className="text-gray-300/90 text-xl md:text-2xl font-light tracking-[0.15em] max-w-4xl mx-auto leading-relaxed">
-                    MIND-BENDING FILMS WITH COMMUNITY REVIEWS, RATINGS & STREAMING GUIDES
+                <p className="text-gray-300/90 text-sm sm:text-lg md:text-xl lg:text-2xl font-light tracking-[0.1em] sm:tracking-[0.15em] max-w-4xl mx-auto leading-relaxed px-2 sm:px-4">
+                    MIND-BENDING FILMS WITH COMMUNITY REVIEWS
                 </p>
                 <motion.div 
                     initial={{ opacity: 0, y: 20 }} 
                     animate={{ opacity: 1, y: 0 }} 
                     transition={{ delay: 2.2 }} 
-                    className="flex justify-center items-center space-x-12"
+                    className="flex justify-center items-center space-x-6 sm:space-x-8 lg:space-x-12"
                 >
-                    <div className="w-16 h-px bg-gradient-to-r from-transparent to-yellow-400/30"></div>
+                    <div className="w-6 sm:w-12 lg:w-16 h-px bg-gradient-to-r from-transparent to-yellow-400/30"></div>
                     <motion.div 
                         animate={{ rotate: 360 }} 
                         transition={{ duration: 30, repeat: Infinity, ease: "linear" }} 
-                        className="w-3 h-3 border border-yellow-400/40 rotate-45" 
+                        className="w-2 h-2 sm:w-3 sm:h-3 border border-yellow-400/40 rotate-45" 
                     />
-                    <div className="w-16 h-px bg-gradient-to-l from-transparent to-yellow-400/30"></div>
+                    <div className="w-6 sm:w-12 lg:w-16 h-px bg-gradient-to-l from-transparent to-yellow-400/30"></div>
                 </motion.div>
             </motion.div>
+            
+            {/* Mobile-Optimized Badge Grid */}
             <motion.div 
-                className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-20 max-w-3xl mx-auto" 
+                className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 lg:gap-6 mt-8 sm:mt-12 lg:mt-20 max-w-2xl sm:max-w-3xl mx-auto" 
                 initial={{ opacity: 0, y: 40 }} 
                 animate={{ opacity: 1, y: 0 }} 
                 transition={{ delay: 2.8, duration: 0.8 }}
             >
                 {[
-                    { label: 'INCEPTION-LEVEL', icon: Crown, desc: 'Reality-Bending Films Like Inception' }, 
-                    { label: 'COMMUNITY RATED', icon: Star, desc: 'Professional Rating & Review System' }, 
-                    { label: 'INTERACTIVE', icon: MessageSquare, desc: 'Comment & Discuss Each Film' }
+                    { label: 'INCEPTION-LEVEL', icon: Crown, desc: 'Reality-Bending Films' }, 
+                    { label: 'COMMUNITY RATED', icon: Star, desc: 'Professional Reviews' }, 
+                    { label: 'INTERACTIVE', icon: MessageSquare, desc: 'Comment & Discuss' }
                 ].map((badge) => {
                     const Icon = badge.icon;
                     return (
                         <motion.div 
                             key={badge.label} 
                             className="relative group" 
-                            whileHover={{ y: -8, scale: 1.02 }} 
+                            whileHover={{ y: -4, scale: 1.02 }} 
                             transition={{ duration: 0.3 }}
                         >
-                            <div className="p-6 bg-gradient-to-br from-gray-800/40 to-gray-900/60 border border-yellow-500/10 rounded-lg backdrop-blur-sm">
-                                <div className="flex flex-col items-center space-y-3">
-                                    <Icon size={24} className="text-yellow-400/70" />
-                                    <h3 className="text-yellow-200/90 text-sm font-light tracking-[0.2em] uppercase text-center">
+                            <div className="p-3 sm:p-4 lg:p-6 bg-gradient-to-br from-gray-800/40 to-gray-900/60 border border-yellow-500/10 rounded-lg backdrop-blur-sm">
+                                <div className="flex flex-col items-center space-y-2 sm:space-y-3">
+                                    <Icon size={18} className="sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-yellow-400/70" />
+                                    <h3 className="text-yellow-200/90 text-xs sm:text-sm font-light tracking-[0.15em] sm:tracking-[0.2em] uppercase text-center leading-tight">
                                         {badge.label}
                                     </h3>
                                     <p className="text-gray-400 text-xs font-light text-center leading-relaxed">
@@ -2024,11 +2003,6 @@ const CinematicHeader = React.memo(() => (
                                     </p>
                                 </div>
                             </div>
-                            <motion.div 
-                                className="absolute inset-0 border border-yellow-400/0 rounded-lg" 
-                                whileHover={{ borderColor: 'rgba(234, 179, 8, 0.3)' }} 
-                                transition={{ duration: 0.3 }} 
-                            />
                         </motion.div>
                     );
                 })}
@@ -2037,7 +2011,7 @@ const CinematicHeader = React.memo(() => (
     </header>
 ));
 
-// Movie Poster Component
+// MOBILE-OPTIMIZED Movie Poster Component
 const TMDBMoviePoster = React.memo(({ movie, className = "", alt }) => {
     const [currentSrc, setCurrentSrc] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
@@ -2075,11 +2049,11 @@ const TMDBMoviePoster = React.memo(({ movie, className = "", alt }) => {
         <div className={`relative ${className}`}>
             {isLoading && (
                 <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl flex items-center justify-center border border-gray-700/50">
-                    <div className="text-center space-y-4">
+                    <div className="text-center space-y-3 sm:space-y-4">
                         <motion.div 
                             animate={{ rotate: 360 }} 
                             transition={{ duration: 2, repeat: Infinity, ease: "linear" }} 
-                            className="w-8 h-8 border-2 border-yellow-400/30 border-t-yellow-400 rounded-full mx-auto" 
+                            className="w-6 h-6 sm:w-8 sm:h-8 border-2 border-yellow-400/30 border-t-yellow-400 rounded-full mx-auto" 
                         />
                         <div className="text-xs text-gray-400 font-light tracking-wider">Loading poster...</div>
                     </div>
@@ -2097,32 +2071,33 @@ const TMDBMoviePoster = React.memo(({ movie, className = "", alt }) => {
         </div>
     );
 });
-// Strategic Controls Component
+
+// MOBILE-OPTIMIZED Strategic Controls Component
 const StrategicControls = () => {
     const { isMuted, setIsMuted, isAutoPlay, setIsAutoPlay, playSound } = React.useContext(CinematicContext);
     return (
-        <motion.div className="fixed top-8 right-8 z-50 flex items-center gap-4" initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.5 }}>
+        <motion.div className="fixed top-6 right-4 sm:top-8 sm:right-8 z-50 flex items-center gap-2 sm:gap-4" initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.5 }}>
             <motion.button 
                 whileHover={{ scale: 1.05, y: -3 }} 
                 whileTap={{ scale: 0.95 }} 
                 onClick={() => { playSound('click'); setIsAutoPlay(!isAutoPlay); }} 
-                className={`w-14 h-14 rounded-xl border transition-all duration-300 flex items-center justify-center backdrop-blur-sm shadow-lg ${isAutoPlay ? 'bg-yellow-500/20 text-yellow-400 border-yellow-500/50 shadow-yellow-500/20' : 'bg-gray-800/80 text-gray-300 border-gray-700/50 hover:bg-gray-700/80 hover:border-gray-600/60'}`}
+                className={`w-10 h-10 sm:w-14 sm:h-14 rounded-xl border transition-all duration-300 flex items-center justify-center backdrop-blur-sm shadow-lg ${isAutoPlay ? 'bg-yellow-500/20 text-yellow-400 border-yellow-500/50 shadow-yellow-500/20' : 'bg-gray-800/80 text-gray-300 border-gray-700/50 hover:bg-gray-700/80 hover:border-gray-600/60'}`}
             >
-                {isAutoPlay ? <Pause size={18} /> : <Play size={18} />}
+                {isAutoPlay ? <Pause size={14} className="sm:w-[18px] sm:h-[18px]" /> : <Play size={14} className="sm:w-[18px] sm:h-[18px]" />}
             </motion.button>
             <motion.button 
                 whileHover={{ scale: 1.05, y: -3 }} 
                 whileTap={{ scale: 0.95 }} 
                 onClick={() => { setIsMuted(!isMuted); if (isMuted) playSound('success'); }} 
-                className="w-14 h-14 bg-gray-800/80 backdrop-blur-sm rounded-xl border border-gray-700/50 hover:bg-gray-700/80 hover:border-gray-600/60 transition-all duration-300 flex items-center justify-center shadow-lg"
+                className="w-10 h-10 sm:w-14 sm:h-14 bg-gray-800/80 backdrop-blur-sm rounded-xl border border-gray-700/50 hover:bg-gray-700/80 hover:border-gray-600/60 transition-all duration-300 flex items-center justify-center shadow-lg"
             >
-                {isMuted ? <VolumeX size={18} className="text-gray-400" /> : <Volume2 size={18} className="text-gray-300" />}
+                {isMuted ? <VolumeX size={14} className="sm:w-[18px] sm:h-[18px] text-gray-400" /> : <Volume2 size={14} className="sm:w-[18px] sm:h-[18px] text-gray-300" />}
             </motion.button>
         </motion.div>
     );
 };
 
-// Movie Card Component
+// MOBILE-OPTIMIZED Movie Card Component
 const CinematicMovieCard = React.memo(({ movie, rank, isActive }) => {
     const { playSound } = React.useContext(CinematicContext);
     const [isHovered, setIsHovered] = useState(false);
@@ -2134,36 +2109,39 @@ const CinematicMovieCard = React.memo(({ movie, rank, isActive }) => {
             animate={{ opacity: 1, y: 0 }} 
             exit={{ opacity: 0, y: -40 }} 
             transition={{ duration: 0.6, ease: "easeOut" }} 
-            className="relative w-full h-full group flex flex-col items-center" 
+            className="relative w-full h-full group flex flex-col items-center px-2 sm:px-4" 
             onMouseEnter={() => { setIsHovered(true); playSound('hover'); }} 
             onMouseLeave={() => setIsHovered(false)}
         >
-            <div className="rounded-xl mb-8" style={{ perspective: '1200px' }}>
+            <div className="rounded-xl mb-3 sm:mb-6 lg:mb-8" style={{ perspective: '1200px' }}>
                 <motion.div 
-                    className="relative w-80 h-[480px] md:w-96 md:h-[576px] overflow-hidden rounded-xl shadow-2xl transition-all duration-500 bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700/50" 
+                    className="relative w-48 h-72 sm:w-64 sm:h-96 md:w-80 md:h-[480px] lg:w-96 lg:h-[576px] overflow-hidden rounded-xl shadow-2xl transition-all duration-500 bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700/50" 
                     whileHover={{ 
-                        scale: 1.03, 
-                        rotateY: 8, 
-                        boxShadow: `0 40px 80px rgba(0,0,0,0.6), 0 0 50px ${movieInfo.dominantColor || '#ca8a04'}20` 
+                        scale: 1.02, 
+                        rotateY: 4, 
+                        boxShadow: `0 20px 40px rgba(0,0,0,0.6), 0 0 30px ${movieInfo.dominantColor || '#ca8a04'}20` 
                     }} 
+                    whileTap={{ scale: 0.98 }}
                     style={{ transformStyle: 'preserve-3d' }}
                 >
                     <TMDBMoviePoster movie={movie} className="w-full h-full" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent rounded-xl" />
-                    <div className="absolute inset-0 bg-gradient-to-br from-black/10 via-transparent to-transparent rounded-xl" />
-                    <div className="absolute top-4 left-4">
+                    
+                    {/* Mobile-Optimized Rank Badge */}
+                    <div className="absolute top-2 left-2 sm:top-3 sm:left-3">
                         <motion.div 
-                            className={`w-14 h-14 rounded-xl backdrop-blur-xl border flex items-center justify-center text-sm font-light ${rank === 10 ? 'bg-gradient-to-br from-yellow-500/30 to-yellow-600/20 text-yellow-200 border-yellow-400/50 shadow-lg shadow-yellow-500/30' : 'bg-gray-800/90 text-gray-200 border-gray-700/50'}`} 
-                            whileHover={{ scale: 1.1, rotate: 5 }} 
-                            animate={rank === 10 ? { boxShadow: ['0 0 0px rgba(234, 179, 8, 0)', '0 0 25px rgba(234, 179, 8, 0.4)', '0 0 0px rgba(234, 179, 8, 0)'] } : {}} 
-                            transition={rank === 10 ? { duration: 2.5, repeat: Infinity } : {}}
+                            className={`w-8 h-8 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-xl backdrop-blur-xl border flex items-center justify-center text-xs sm:text-sm font-light ${rank === 10 ? 'bg-gradient-to-br from-yellow-500/30 to-yellow-600/20 text-yellow-200 border-yellow-400/50 shadow-lg shadow-yellow-500/30' : 'bg-gray-800/90 text-gray-200 border-gray-700/50'}`} 
+                            whileHover={{ scale: 1.1 }} 
+                            whileTap={{ scale: 0.9 }}
                         >
-                            {rank === 10 ? <Crown size={20} /> : rank}
+                            {rank === 10 ? <Crown size={12} className="sm:w-4 sm:h-4 lg:w-5 lg:h-5" /> : rank}
                         </motion.div>
                     </div>
-                    <div className="absolute top-4 right-4">
+                    
+                    {/* Mobile-Optimized Complexity Badge */}
+                    <div className="absolute top-2 right-2 sm:top-3 sm:right-3">
                         <motion.div 
-                            className="px-3 py-1 bg-gray-800/90 backdrop-blur-xl border border-gray-700/50 rounded-lg text-xs font-light tracking-wider uppercase" 
+                            className="px-2 py-1 sm:px-3 sm:py-1 bg-gray-800/90 backdrop-blur-xl border border-gray-700/50 rounded-lg text-xs font-light tracking-wider uppercase" 
                             style={{ color: movieInfo.dominantColor || '#ca8a04', borderColor: `${movieInfo.dominantColor || '#ca8a04'}40` }} 
                             initial={{ opacity: 0, scale: 0.8 }} 
                             animate={{ opacity: isHovered ? 1 : 0, scale: isHovered ? 1 : 0.8 }}
@@ -2171,59 +2149,33 @@ const CinematicMovieCard = React.memo(({ movie, rank, isActive }) => {
                             {movieInfo.complexityLevel}
                         </motion.div>
                     </div>
-                    <AnimatePresence>
-                        {isHovered && (
-                            <motion.div 
-                                initial={{ opacity: 0, scale: 0, rotate: -180 }} 
-                                animate={{ opacity: 1, scale: 1, rotate: 0 }} 
-                                exit={{ opacity: 0, scale: 0, rotate: 180 }} 
-                                transition={{ duration: 0.4 }} 
-                                className="absolute -top-4 -right-4 z-20"
-                            >
-                                <motion.div 
-                                    animate={{ rotate: 360 }} 
-                                    transition={{ duration: 6, repeat: Infinity, ease: "linear" }} 
-                                    className="w-12 h-12 bg-gradient-to-br from-yellow-500 to-amber-500 rounded-full flex items-center justify-center shadow-lg shadow-yellow-500/50"
-                                >
-                                    <Sparkles size={18} className="text-white" />
-                                </motion.div>
-                            </motion.div>
-                        )}
-                    </AnimatePresence>
+                    
+                    {/* Mobile-Optimized Rating Badge */}
                     <motion.div 
                         initial={{ opacity: 0, x: -30 }} 
                         animate={{ opacity: isHovered ? 1 : 0, x: isHovered ? 0 : -30 }} 
-                        className="absolute bottom-4 left-4 flex items-center gap-2 px-3 py-2 bg-gray-800/90 backdrop-blur-xl border border-gray-700/50 rounded-lg"
+                        className="absolute bottom-2 left-2 sm:bottom-3 sm:left-3 flex items-center gap-1 sm:gap-2 px-2 py-1 sm:px-3 sm:py-2 bg-gray-800/90 backdrop-blur-xl border border-gray-700/50 rounded-lg"
                     >
-                        <Star size={14} className="text-yellow-400 fill-current" />
-                        <span className="text-gray-200 text-sm font-light">{movieInfo.rating}</span>
+                        <Star size={10} className="sm:w-3 sm:h-3 lg:w-4 lg:h-4 text-yellow-400 fill-current" />
+                        <span className="text-gray-200 text-xs sm:text-sm font-light">{movieInfo.rating}</span>
                     </motion.div>
                 </motion.div>
             </div>
-            <motion.div 
-                className="absolute inset-0 rounded-xl pointer-events-none z-0" 
-                animate={isActive ? { 
-                    boxShadow: [
-                        `0 0 60px ${movieInfo.dominantColor || '#ca8a04'}15`, 
-                        `0 0 120px ${movieInfo.dominantColor || '#ca8a04'}25`, 
-                        `0 0 60px ${movieInfo.dominantColor || '#ca8a04'}15`
-                    ] 
-                } : {}} 
-                transition={{ duration: 4, repeat: Infinity }} 
-            />
-            <div className="text-center space-y-4 z-10 max-w-md">
+            
+            {/* Mobile-Optimized Movie Info */}
+            <div className="text-center space-y-2 sm:space-y-3 lg:space-y-4 z-10 max-w-sm px-2 sm:px-4">
                 <motion.h2 
-                    className="text-2xl md:text-3xl font-light tracking-wide text-gray-100" 
+                    className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-light tracking-wide text-gray-100 leading-tight" 
                     style={{ fontFamily: "'Playfair Display', serif" }}
                     whileHover={{ scale: 1.02 }}
                 >
                     {movie.Title}
                 </motion.h2>
-                <div className="text-gray-400 text-sm font-light">
+                <div className="text-gray-400 text-xs sm:text-sm font-light">
                     {movie.year} • {movie.genre} • {movie.runtime}min
                 </div>
                 <motion.p 
-                    className="text-gray-300/80 text-sm leading-relaxed font-light tracking-wide opacity-0 group-hover:opacity-100 transition-all duration-500"
+                    className="text-gray-300/80 text-xs sm:text-sm leading-relaxed font-light tracking-wide opacity-0 group-hover:opacity-100 transition-all duration-500"
                     initial={{ height: 0 }}
                     animate={{ height: isHovered ? 'auto' : 0 }}
                 >
@@ -2234,7 +2186,7 @@ const CinematicMovieCard = React.memo(({ movie, rank, isActive }) => {
     );
 });
 
-// DNA Helix Component
+// MOBILE-OPTIMIZED DNA Helix Component
 const StrategicDNAHelix = React.memo(({ dna, dominantColor, className = "" }) => {
     if (!dna) return null;
     const total = Object.values(dna).reduce((sum, val) => sum + val, 0);
@@ -2247,18 +2199,18 @@ const StrategicDNAHelix = React.memo(({ dna, dominantColor, className = "" }) =>
 
     return (
         <motion.div 
-            className={`mb-12 ${className}`}
+            className={`mb-8 sm:mb-12 ${className}`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
         >
-            <div className="flex items-center gap-12">
-                <div className="relative w-36 h-96 flex-shrink-0 bg-gradient-to-b from-gray-800/40 to-gray-900/60 rounded-xl p-6 border border-gray-700/50 shadow-2xl backdrop-blur-sm">
-                    <div className="absolute top-3 left-3 w-4 h-4 border-t-2 border-l-2 border-yellow-400/30"></div>
-                    <div className="absolute top-3 right-3 w-4 h-4 border-t-2 border-r-2 border-yellow-400/30"></div>
-                    <div className="absolute bottom-3 left-3 w-4 h-4 border-b-2 border-l-2 border-yellow-400/30"></div>
-                    <div className="absolute bottom-3 right-3 w-4 h-4 border-b-2 border-r-2 border-yellow-400/30"></div>
-                    <svg viewBox="0 0 120 360" className="w-full h-full relative z-10">
+            <div className="flex flex-col lg:flex-row items-center gap-8 sm:gap-12">
+                <div className="relative w-24 h-64 sm:w-32 sm:h-80 lg:w-36 lg:h-96 flex-shrink-0 bg-gradient-to-b from-gray-800/40 to-gray-900/60 rounded-xl p-3 sm:p-4 lg:p-6 border border-gray-700/50 shadow-2xl backdrop-blur-sm">
+                    <div className="absolute top-2 left-2 sm:top-3 sm:left-3 w-3 h-3 sm:w-4 sm:h-4 border-t-2 border-l-2 border-yellow-400/30"></div>
+                    <div className="absolute top-2 right-2 sm:top-3 sm:right-3 w-3 h-3 sm:w-4 sm:h-4 border-t-2 border-r-2 border-yellow-400/30"></div>
+                    <div className="absolute bottom-2 left-2 sm:bottom-3 sm:left-3 w-3 h-3 sm:w-4 sm:h-4 border-b-2 border-l-2 border-yellow-400/30"></div>
+                    <div className="absolute bottom-2 right-2 sm:bottom-3 sm:right-3 w-3 h-3 sm:w-4 sm:h-4 border-b-2 border-r-2 border-yellow-400/30"></div>
+                    <svg viewBox="0 0 120 320" className="w-full h-full relative z-10">
                         <defs>
                             <linearGradient id="strategicHelix" x1="0%" y1="0%" x2="0%" y2="100%">
                                 <stop offset="0%" stopColor="#ca8a04" stopOpacity="0.9" />
@@ -2276,9 +2228,9 @@ const StrategicDNAHelix = React.memo(({ dna, dominantColor, className = "" }) =>
                             </filter>
                         </defs>
                         <motion.path 
-                            d="M 60 30 Q 30 80, 60 130 Q 90 180, 60 230 Q 30 280, 60 330" 
+                            d="M 60 30 Q 30 80, 60 130 Q 90 180, 60 230 Q 30 280, 60 320" 
                             stroke="url(#strategicHelix)" 
-                            strokeWidth="3" 
+                            strokeWidth="2" 
                             fill="none" 
                             filter="url(#strategicGlow)" 
                             initial={{ pathLength: 0 }} 
@@ -2286,9 +2238,9 @@ const StrategicDNAHelix = React.memo(({ dna, dominantColor, className = "" }) =>
                             transition={{ duration: 2.5, ease: "easeInOut" }} 
                         />
                         <motion.path 
-                            d="M 60 30 Q 90 80, 60 130 Q 30 180, 60 230 Q 90 280, 60 330" 
+                            d="M 60 30 Q 90 80, 60 130 Q 30 180, 60 230 Q 90 280, 60 320" 
                             stroke="url(#strategicHelix)" 
-                            strokeWidth="3" 
+                            strokeWidth="2" 
                             fill="none" 
                             filter="url(#strategicGlow)" 
                             initial={{ pathLength: 0 }} 
@@ -2296,19 +2248,19 @@ const StrategicDNAHelix = React.memo(({ dna, dominantColor, className = "" }) =>
                             transition={{ duration: 2.5, delay: 0.4, ease: "easeInOut" }} 
                         />
                         {genreData.map((genreInfo, index) => {
-                            const count = Math.round((genreInfo.percentage / total) * 18);
+                            const count = Math.round((genreInfo.percentage / total) * 15);
                             return Array(count).fill().map((_, i) => {
-                                const y = 40 + (index * count + i) * 15;
-                                if (y > 320) return null;
+                                const y = 40 + (index * count + i) * 12;
+                                if (y > 300) return null;
                                 const angle = (index * count + i) * 20;
-                                const x1 = 60 + Math.cos(angle * Math.PI / 180) * 25;
-                                const x2 = 60 - Math.cos(angle * Math.PI / 180) * 25;
+                                const x1 = 60 + Math.cos(angle * Math.PI / 180) * 20;
+                                const x2 = 60 - Math.cos(angle * Math.PI / 180) * 20;
                                 return (
                                     <g key={`${genreInfo.genre}-${i}`}>
                                         <motion.line 
                                             x1={x1} y1={y} x2={x2} y2={y} 
                                             stroke={genreInfo.color} 
-                                            strokeWidth="3" 
+                                            strokeWidth="2" 
                                             filter="url(#strategicGlow)" 
                                             initial={{ opacity: 0, scaleX: 0 }} 
                                             animate={{ opacity: 0.9, scaleX: 1 }} 
@@ -2325,7 +2277,7 @@ const StrategicDNAHelix = React.memo(({ dna, dominantColor, className = "" }) =>
                                             }}
                                         >
                                             <circle 
-                                                cx={x1} cy={y} r="3.5" 
+                                                cx={x1} cy={y} r="2.5" 
                                                 fill={genreInfo.color} 
                                                 filter="url(#strategicGlow)" 
                                                 className="cursor-help" 
@@ -2334,7 +2286,7 @@ const StrategicDNAHelix = React.memo(({ dna, dominantColor, className = "" }) =>
                                                 <title>{genreInfo.genre}: {genreInfo.percentage}%</title>
                                             </circle>
                                             <circle 
-                                                cx={x2} cy={y} r="3.5" 
+                                                cx={x2} cy={y} r="2.5" 
                                                 fill={genreInfo.color} 
                                                 filter="url(#strategicGlow)" 
                                                 className="cursor-help" 
@@ -2349,40 +2301,40 @@ const StrategicDNAHelix = React.memo(({ dna, dominantColor, className = "" }) =>
                         })}
                     </svg>
                 </div>
-                <div className="flex-1 space-y-8">
+                <div className="flex-1 space-y-6 sm:space-y-8 w-full">
                     <motion.div 
-                        className="flex items-center justify-between" 
+                        className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-0" 
                         initial={{ opacity: 0, x: -40 }} 
                         animate={{ opacity: 1, x: 0 }} 
                         transition={{ delay: 0.8 }}
                     >
-                        <h4 className="text-2xl font-light text-gray-100 flex items-center gap-4 tracking-wide">
+                        <h4 className="text-xl sm:text-2xl font-light text-gray-100 flex items-center gap-3 sm:gap-4 tracking-wide">
                             <motion.div 
                                 animate={{ rotate: 360 }} 
                                 transition={{ duration: 25, repeat: Infinity, ease: "linear" }} 
-                                className="text-3xl"
+                                className="text-2xl sm:text-3xl"
                             >
                                 🧬
                             </motion.div>
                             CINEMATIC DNA
                         </h4>
-                        <div className="text-xs text-gray-400 flex items-center gap-3 tracking-wider uppercase">
-                            <BarChart3 size={16} />
+                        <div className="text-xs text-gray-400 flex items-center gap-2 sm:gap-3 tracking-wider uppercase">
+                            <BarChart3 size={14} className="sm:w-4 sm:h-4" />
                             Genre Analysis
                         </div>
                     </motion.div>
-                    <div className="space-y-6">
+                    <div className="space-y-4 sm:space-y-6">
                         {genreData.map(({ genre, percentage, color }, index) => (
                             <motion.div 
                                 key={genre} 
                                 initial={{ opacity: 0, x: -50 }} 
                                 animate={{ opacity: 1, x: 0 }} 
                                 transition={{ delay: 1.4 + index * 0.15, duration: 0.6 }} 
-                                className="group flex items-center justify-between p-5 hover:bg-gray-800/30 rounded-xl transition-all duration-400 border border-transparent hover:border-gray-700/40"
+                                className="group flex items-center justify-between p-3 sm:p-5 hover:bg-gray-800/30 rounded-xl transition-all duration-400 border border-transparent hover:border-gray-700/40"
                             >
-                                <div className="flex items-center gap-6">
+                                <div className="flex items-center gap-4 sm:gap-6">
                                     <motion.div 
-                                        className="relative w-5 h-5 rounded-full shadow-lg border border-gray-600/30" 
+                                        className="relative w-4 h-4 sm:w-5 sm:h-5 rounded-full shadow-lg border border-gray-600/30" 
                                         style={{ backgroundColor: color }} 
                                         whileHover={{ scale: 1.4 }} 
                                         animate={{ 
@@ -2404,12 +2356,12 @@ const StrategicDNAHelix = React.memo(({ dna, dominantColor, className = "" }) =>
                                             transition={{ duration: 3, repeat: Infinity, delay: index * 0.6 }} 
                                         />
                                     </motion.div>
-                                    <span className="text-gray-200 font-light group-hover:text-gray-100 transition-colors text-lg tracking-wide">
+                                    <span className="text-gray-200 font-light group-hover:text-gray-100 transition-colors text-base sm:text-lg tracking-wide">
                                         {genre}
                                     </span>
                                 </div>
                                 <motion.span 
-                                    className="text-gray-300/90 font-light text-xl tracking-wider" 
+                                    className="text-gray-300/90 font-light text-lg sm:text-xl tracking-wider" 
                                     animate={{ 
                                         color: ['rgba(203, 213, 225, 0.9)', color, 'rgba(203, 213, 225, 0.9)'], 
                                         scale: [1, 1.05, 1] 
@@ -2427,14 +2379,14 @@ const StrategicDNAHelix = React.memo(({ dna, dominantColor, className = "" }) =>
     );
 });
 
-// Movie Details Section with ALL components
+// MOBILE-OPTIMIZED Movie Details Section with ALL components
 const MovieDetailsSection = React.memo(({ movie }) => {
     const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
     const sensitiveData = SENSITIVE_TIMELINES[movie.tmdbId];
 
     if (!movie || !movieInfo) return null;
 
-    // Mind Bending Index Component
+    // MOBILE-OPTIMIZED Mind Bending Index Component
     const StrategicMindBendingIndex = () => {
         const getComplexityColor = (level) => {
             switch(level) {
@@ -2447,28 +2399,28 @@ const MovieDetailsSection = React.memo(({ movie }) => {
         
         const getComplexityIcon = (level) => {
             switch(level) {
-                case "EXTREME": return <Crown className="w-8 h-8" />;
-                case "HIGH": return <Award className="w-8 h-8" />;
-                case "MEDIUM": return <Star className="w-8 h-8" />;
-                default: return <Brain className="w-8 h-8" />;
+                case "EXTREME": return <Crown className="w-6 h-6 sm:w-8 sm:h-8" />;
+                case "HIGH": return <Award className="w-6 h-6 sm:w-8 sm:h-8" />;
+                case "MEDIUM": return <Star className="w-6 h-6 sm:w-8 sm:h-8" />;
+                default: return <Brain className="w-6 h-6 sm:w-8 sm:h-8" />;
             }
         };
 
         return (
             <motion.div 
-                className="mb-12 bg-gradient-to-br from-gray-800/40 to-gray-900/60 rounded-xl border border-gray-700/50 p-8 shadow-2xl backdrop-blur-sm relative overflow-hidden" 
+                className="mb-8 sm:mb-12 bg-gradient-to-br from-gray-800/40 to-gray-900/60 rounded-xl border border-gray-700/50 p-4 sm:p-8 shadow-2xl backdrop-blur-sm relative overflow-hidden" 
                 initial={{ opacity: 0, scale: 0.95 }} 
                 animate={{ opacity: 1, scale: 1 }} 
                 transition={{ duration: 0.8 }} 
                 whileHover={{ scale: 1.01 }}
             >
-                <div className="absolute top-4 left-4 w-5 h-5 border-t-2 border-l-2 border-yellow-400/40"></div>
-                <div className="absolute top-4 right-4 w-5 h-5 border-t-2 border-r-2 border-yellow-400/40"></div>
-                <div className="absolute bottom-4 left-4 w-5 h-5 border-b-2 border-l-2 border-yellow-400/40"></div>
-                <div className="absolute bottom-4 right-4 w-5 h-5 border-b-2 border-r-2 border-yellow-400/40"></div>
-                <div className="flex items-start justify-between mb-8">
-                    <div className="flex items-center gap-6">
-                        <h4 className="text-2xl font-light text-gray-100 flex items-center gap-4 tracking-wide">
+                <div className="absolute top-2 left-2 sm:top-4 sm:left-4 w-3 h-3 sm:w-5 sm:h-5 border-t-2 border-l-2 border-yellow-400/40"></div>
+                <div className="absolute top-2 right-2 sm:top-4 sm:right-4 w-3 h-3 sm:w-5 sm:h-5 border-t-2 border-r-2 border-yellow-400/40"></div>
+                <div className="absolute bottom-2 left-2 sm:bottom-4 sm:left-4 w-3 h-3 sm:w-5 sm:h-5 border-b-2 border-l-2 border-yellow-400/40"></div>
+                <div className="absolute bottom-2 right-2 sm:bottom-4 sm:right-4 w-3 h-3 sm:w-5 sm:h-5 border-b-2 border-r-2 border-yellow-400/40"></div>
+                <div className="flex flex-col sm:flex-row items-start sm:items-start justify-between mb-6 sm:mb-8 gap-4 sm:gap-6">
+                    <div className="flex items-center gap-4 sm:gap-6">
+                        <h4 className="text-xl sm:text-2xl font-light text-gray-100 flex items-center gap-3 sm:gap-4 tracking-wide">
                             <motion.div 
                                 style={{ color: getComplexityColor(movieInfo.complexityLevel) }} 
                                 animate={{ rotate: 360 }} 
@@ -2479,10 +2431,10 @@ const MovieDetailsSection = React.memo(({ movie }) => {
                             COMPLEXITY SCORE
                         </h4>
                     </div>
-                    <div className="grid grid-cols-3 gap-6 text-center">
+                    <div className="grid grid-cols-3 gap-3 sm:gap-6 text-center w-full sm:w-auto">
                         <div>
                             <motion.div 
-                                className="text-3xl font-extralight mb-1 tracking-wider text-gray-200" 
+                                className="text-2xl sm:text-3xl font-extralight mb-1 tracking-wider text-gray-200" 
                                 animate={{ 
                                     textShadow: [
                                         `0 0 0px ${getComplexityColor(movieInfo.complexityLevel)}00`, 
@@ -2499,7 +2451,7 @@ const MovieDetailsSection = React.memo(({ movie }) => {
                             </div>
                         </div>
                         <div>
-                            <div className="text-3xl font-extralight mb-1 tracking-wider text-gray-200">
+                            <div className="text-2xl sm:text-3xl font-extralight mb-1 tracking-wider text-gray-200">
                                 {movieInfo.rating}
                             </div>
                             <div className="text-xs text-gray-400 font-light tracking-wide uppercase">
@@ -2507,7 +2459,7 @@ const MovieDetailsSection = React.memo(({ movie }) => {
                             </div>
                         </div>
                         <div>
-                            <div className="text-3xl font-extralight mb-1 tracking-wider text-gray-200">
+                            <div className="text-2xl sm:text-3xl font-extralight mb-1 tracking-wider text-gray-200">
                                 {movieInfo.criticsScore}%
                             </div>
                             <div className="text-xs text-gray-400 font-light tracking-wide uppercase">
@@ -2516,14 +2468,14 @@ const MovieDetailsSection = React.memo(({ movie }) => {
                         </div>
                     </div>
                 </div>
-                <div className="space-y-6">
+                <div className="space-y-4 sm:space-y-6">
                     <div>
-                        <div className="flex items-center justify-between mb-3">
+                        <div className="flex items-center justify-between mb-2 sm:mb-3">
                             <span className="text-sm text-gray-300 font-light tracking-wider uppercase">
                                 Cognitive Distortion Level
                             </span>
                             <span 
-                                className="text-sm font-light px-4 py-2 rounded-lg border backdrop-blur-sm tracking-wider uppercase" 
+                                className="text-sm font-light px-3 py-1 sm:px-4 sm:py-2 rounded-lg border backdrop-blur-sm tracking-wider uppercase" 
                                 style={{ 
                                     color: getComplexityColor(movieInfo.complexityLevel), 
                                     borderColor: getComplexityColor(movieInfo.complexityLevel), 
@@ -2534,7 +2486,7 @@ const MovieDetailsSection = React.memo(({ movie }) => {
                             </span>
                         </div>
                         <div className="relative">
-                            <div className="w-full h-3 bg-gray-800/60 rounded-full overflow-hidden border border-gray-700/50">
+                            <div className="w-full h-2 sm:h-3 bg-gray-800/60 rounded-full overflow-hidden border border-gray-700/50">
                                 <motion.div 
                                     className="h-full rounded-full relative" 
                                     style={{ backgroundColor: getComplexityColor(movieInfo.complexityLevel) }} 
@@ -2549,11 +2501,11 @@ const MovieDetailsSection = React.memo(({ movie }) => {
                                     />
                                 </motion.div>
                             </div>
-                            <div className="absolute -top-2 left-0 w-full flex justify-between">
+                            <div className="absolute -top-1 sm:-top-2 left-0 w-full flex justify-between">
                                 {[25, 50, 75].map(mark => (
                                     <div 
                                         key={mark} 
-                                        className="w-1 h-7 bg-yellow-400/30 rounded-full" 
+                                        className="w-0.5 sm:w-1 h-4 sm:h-7 bg-yellow-400/30 rounded-full" 
                                         style={{ left: `${mark}%` }} 
                                     />
                                 ))}
@@ -2573,41 +2525,41 @@ const MovieDetailsSection = React.memo(({ movie }) => {
 
     return (
         <motion.div
-            className="space-y-12 mt-16"
+            className="space-y-8 sm:space-y-12 mt-12 sm:mt-16"
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
         >
-            {/* SEO Movie Title & Basic Info */}
-            <div className="text-center space-y-6">
-                <h2 className="text-4xl md:text-5xl font-light tracking-wide text-gray-100" style={{ fontFamily: "'Playfair Display', serif" }}>
+            {/* Mobile-Optimized SEO Movie Title & Basic Info */}
+            <div className="text-center space-y-4 sm:space-y-6">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light tracking-wide text-gray-100" style={{ fontFamily: "'Playfair Display', serif" }}>
                     {movie.Title} ({movie.year}) - Like Inception
                 </h2>
-                <div className="flex items-center justify-center gap-4 text-gray-400">
+                <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 text-gray-400 text-sm sm:text-base">
                     <span>Directed by {movieInfo.director}</span>
-                    <span>•</span>
+                    <span className="hidden sm:inline">•</span>
                     <span>{movie.genre}</span>
-                    <span>•</span>
+                    <span className="hidden sm:inline">•</span>
                     <span>{movie.runtime} min</span>
                 </div>
-                <p className="text-xl text-yellow-400/90 font-light tracking-wide italic max-w-2xl mx-auto">
+                <p className="text-lg sm:text-xl text-yellow-400/90 font-light tracking-wide italic max-w-2xl mx-auto">
                     "{STRATEGIC_QUOTES[movie.tmdbId]}"
                 </p>
-                <p className="text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                <p className="text-gray-300 max-w-3xl mx-auto leading-relaxed text-sm sm:text-base">
                     {movieInfo.seoDescription}
                 </p>
             </div>
 
-            {/* Cast & Director Info */}
+            {/* Mobile-Optimized Cast & Director Info */}
             <motion.div 
-                className="grid grid-cols-1 md:grid-cols-2 gap-8"
+                className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
             >
-                <div className="p-6 bg-gray-800/30 rounded-xl border border-gray-700/50">
-                    <h3 className="text-lg font-light text-yellow-300 mb-4 flex items-center gap-2">
-                        <Users size={18} />
+                <div className="p-4 sm:p-6 bg-gray-800/30 rounded-xl border border-gray-700/50">
+                    <h3 className="text-base sm:text-lg font-light text-yellow-300 mb-3 sm:mb-4 flex items-center gap-2">
+                        <Users size={16} className="sm:w-[18px] sm:h-[18px]" />
                         Director & Cast
                     </h3>
                     <div className="space-y-3">
@@ -2617,14 +2569,14 @@ const MovieDetailsSection = React.memo(({ movie }) => {
                         </div>
                         <div>
                             <span className="text-gray-400 text-sm">Starring:</span>
-                            <p className="text-gray-200">{movieInfo.cast?.join(', ')}</p>
+                            <p className="text-gray-200 text-sm sm:text-base">{movieInfo.cast?.join(', ')}</p>
                         </div>
                     </div>
                 </div>
 
-                <div className="p-6 bg-gray-800/30 rounded-xl border border-gray-700/50">
-                    <h3 className="text-lg font-light text-yellow-300 mb-4 flex items-center gap-2">
-                        <Film size={18} />
+                <div className="p-4 sm:p-6 bg-gray-800/30 rounded-xl border border-gray-700/50">
+                    <h3 className="text-base sm:text-lg font-light text-yellow-300 mb-3 sm:mb-4 flex items-center gap-2">
+                        <Film size={16} className="sm:w-[18px] sm:h-[18px]" />
                         Production Details
                     </h3>
                     <div className="space-y-3">
@@ -2640,14 +2592,14 @@ const MovieDetailsSection = React.memo(({ movie }) => {
                 </div>
             </motion.div>
 
-            {/* Synopsis with SEO text */}
+            {/* Mobile-Optimized Synopsis with SEO text */}
             <motion.div 
-                className="p-6 bg-gray-800/30 rounded-xl border-l-4 border-yellow-400"
+                className="p-4 sm:p-6 bg-gray-800/30 rounded-xl border-l-4 border-yellow-400"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6 }}
             >
-                <p className="text-lg text-gray-200 leading-relaxed">
+                <p className="text-base sm:text-lg text-gray-200 leading-relaxed">
                     <strong className="text-yellow-400">{movie.Title}</strong> is a {movie.genre.toLowerCase()} film from {movie.year} 
                     directed by {movieInfo.director}. With a mind-bending complexity score of{' '}
                     <strong className="text-yellow-400">{movieInfo.mindBendingIndex}/100</strong>, this{' '}
@@ -2656,12 +2608,12 @@ const MovieDetailsSection = React.memo(({ movie }) => {
                 </p>
                 
                 {/* SEO Genre Composition Text */}
-                <p className="text-gray-300 mt-4 leading-relaxed">
+                <p className="text-gray-300 mt-3 sm:mt-4 leading-relaxed text-sm sm:text-base">
                     <strong>Genre Composition:</strong> {movieInfo.genreComposition}
                 </p>
                 
                 {/* SEO Intensity Peak Text */}
-                <p className="text-gray-300 mt-2 leading-relaxed">
+                <p className="text-gray-300 mt-2 leading-relaxed text-sm sm:text-base">
                     <strong>Intensity Peak:</strong> {movieInfo.intensityPeak}
                 </p>
             </motion.div>
@@ -2696,7 +2648,7 @@ const MovieDetailsSection = React.memo(({ movie }) => {
     );
 });
 
-// Main Collection Page Component
+// MOBILE-OPTIMIZED Main Collection Page Component
 const UltraCinematicCollectionPage = () => {
     const [currentMovieIndex, setCurrentMovieIndex] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
@@ -2739,7 +2691,7 @@ const UltraCinematicCollectionPage = () => {
         <div className="min-h-screen bg-black text-white relative overflow-hidden">
             <CinematicBackground />
             <StrategicControls />
-         <BackToHomepageButton />
+            <BackToHomepageButton />
             <AnimatePresence mode="wait">
                 {isLoading ? (
                     <motion.div
@@ -2761,27 +2713,27 @@ const UltraCinematicCollectionPage = () => {
                     >
                         <SEOHead movie={currentMovie} />
                         
-                        <div className="container mx-auto px-6 py-12">
+                        <div className="container mx-auto px-3 sm:px-6 py-8 sm:py-12">
                             <CinematicHeader />
 
-                            <div className="relative flex items-center justify-center min-h-[80vh]">
-                                {/* Navigation Buttons */}
+                            <div className="relative flex items-center justify-center min-h-[70vh] sm:min-h-[80vh]">
+                                {/* Mobile-Optimized Navigation Buttons */}
                                 <motion.button
                                     onClick={prevMovie}
-                                    className="absolute left-8 z-20 w-16 h-16 bg-gray-800/80 backdrop-blur-sm rounded-full border border-gray-700/50 hover:bg-gray-700/80 hover:border-gray-600/60 transition-all duration-300 flex items-center justify-center"
+                                    className="absolute left-2 sm:left-8 z-20 w-12 h-12 sm:w-16 sm:h-16 bg-gray-800/80 backdrop-blur-sm rounded-full border border-gray-700/50 hover:bg-gray-700/80 hover:border-gray-600/60 transition-all duration-300 flex items-center justify-center"
                                     whileHover={{ scale: 1.1, x: -5 }}
                                     whileTap={{ scale: 0.95 }}
                                 >
-                                    <ChevronLeft size={24} className="text-gray-300" />
+                                    <ChevronLeft size={20} className="sm:w-6 sm:h-6 text-gray-300" />
                                 </motion.button>
 
                                 <motion.button
                                     onClick={nextMovie}
-                                    className="absolute right-8 z-20 w-16 h-16 bg-gray-800/80 backdrop-blur-sm rounded-full border border-gray-700/50 hover:bg-gray-700/80 hover:border-gray-600/60 transition-all duration-300 flex items-center justify-center"
+                                    className="absolute right-2 sm:right-8 z-20 w-12 h-12 sm:w-16 sm:h-16 bg-gray-800/80 backdrop-blur-sm rounded-full border border-gray-700/50 hover:bg-gray-700/80 hover:border-gray-600/60 transition-all duration-300 flex items-center justify-center"
                                     whileHover={{ scale: 1.1, x: 5 }}
                                     whileTap={{ scale: 0.95 }}
                                 >
-                                    <ChevronRight size={24} className="text-gray-300" />
+                                    <ChevronRight size={20} className="sm:w-6 sm:h-6 text-gray-300" />
                                 </motion.button>
 
                                 {/* Movie Display - ONLY ONE POSTER AT A TIME */}
@@ -2798,46 +2750,47 @@ const UltraCinematicCollectionPage = () => {
                             {/* Movie Details Section - Below Poster */}
                             <MovieDetailsSection movie={currentMovie} />
 
-                            {/* Movie Counter */}
+                            {/* Mobile-Optimized Movie Counter */}
                             <motion.div
-                                className="flex justify-center mt-12"
+                                className="flex justify-center mt-8 sm:mt-12"
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 3.5 }}
                             >
-                                <div className="flex items-center gap-4 px-6 py-3 bg-gray-800/40 backdrop-blur-sm rounded-full border border-gray-700/50">
-                                    <span className="text-yellow-400 font-light">
+                                <div className="flex items-center gap-3 sm:gap-4 px-4 py-2 sm:px-6 sm:py-3 bg-gray-800/40 backdrop-blur-sm rounded-full border border-gray-700/50">
+                                    <span className="text-yellow-400 font-light text-sm sm:text-base">
                                         #{currentMovieIndex + 1}
                                     </span>
-                                    <div className="w-16 h-1 bg-gray-700 rounded-full overflow-hidden">
+                                    <div className="w-12 sm:w-16 h-1 bg-gray-700 rounded-full overflow-hidden">
                                         <motion.div
                                             className="h-full bg-yellow-400 rounded-full"
                                             style={{ width: `${((currentMovieIndex + 1) / COMPLETE_MOVIE_DATABASE.length) * 100}%` }}
                                             transition={{ duration: 0.3 }}
                                         />
                                     </div>
-                                    <span className="text-gray-400 font-light">
-                                        of Top 10 Movies Like Inception
+                                    <span className="text-gray-400 font-light text-xs sm:text-sm">
+                                        <span className="hidden sm:inline">of Top 10 Movies Like Inception</span>
+                                        <span className="sm:hidden">of 10</span>
                                     </span>
                                 </div>
                             </motion.div>
 
-                            {/* Footer */}
+                            {/* Mobile-Optimized Footer */}
                             <motion.footer
-                                className="mt-32 pt-12 border-t border-gray-800/50 text-center"
+                                className="mt-20 sm:mt-32 pt-8 sm:pt-12 border-t border-gray-800/50 text-center"
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ delay: 4.5 }}
                             >
-                                <p className="text-gray-500 text-sm font-light tracking-wide">
+                                <p className="text-gray-500 text-xs sm:text-sm font-light tracking-wide">
                                     Curated movies like Inception for film enthusiasts, by film enthusiasts. Community reviews and ratings included.
                                 </p>
-                                <div className="mt-4 flex justify-center items-center gap-8">
-                                    <div className="w-12 h-px bg-gray-700"></div>
+                                <div className="mt-3 sm:mt-4 flex justify-center items-center gap-6 sm:gap-8">
+                                    <div className="w-8 sm:w-12 h-px bg-gray-700"></div>
                                     <div className="text-yellow-400/60 text-xs tracking-[0.3em] uppercase">
                                         Mind-Bending Cinema Collection
                                     </div>
-                                    <div className="w-12 h-px bg-gray-700"></div>
+                                    <div className="w-8 sm:w-12 h-px bg-gray-700"></div>
                                 </div>
                             </motion.footer>
                         </div>
