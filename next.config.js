@@ -1,12 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
   
-  // REMOVE NEXT.JS BRANDING FROM GOOGLE
+  // REMOVE NEXT.JS BRANDING
   poweredByHeader: false,
   
-  // CUSTOM HEADERS TO OVERRIDE NEXT.JS DETECTION
+  // CUSTOM HEADERS
   async headers() {
     return [
       {
@@ -25,7 +24,7 @@ const nextConfig = {
     ];
   },
 
-  // OPTIMIZE FOR SEO AND TMDB IMAGES
+  // OPTIMIZE FOR TMDB IMAGES
   images: {
     domains: ['image.tmdb.org', 'www.themoviedb.org'],
     unoptimized: false,
@@ -38,14 +37,14 @@ const nextConfig = {
     ],
   },
 
-  // ENVIRONMENT VARIABLES
+  // ENVIRONMENT VARIABLES - UPDATED FOR YOUR ENV VAR
   env: {
+    NEXT_PUBLIC_TMDB_API_KEY: process.env.NEXT_PUBLIC_TMDB_API_KEY,
     SITE_NAME: 'Filmiway',
     SITE_DESCRIPTION: 'Where Every Film Finds Its Way',
-    TMDB_API_KEY: process.env.TMDB_API_KEY,
   },
 
-  // BETTER BUILD OUTPUT
+  // REMOVE CONSOLE LOGS IN PRODUCTION
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },

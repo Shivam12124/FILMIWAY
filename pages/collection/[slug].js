@@ -1,15 +1,16 @@
+// In pages/collection/[slug].js - FIX HEAD SECTION
 <Head>
-    <title>{collection.title} - Mind-Bending Films with User Reviews & Ratings - Filmiway</title>
+    <title>{collection?.title ? `${collection.title} - Mind-Bending Films with User Reviews & Ratings - Filmiway` : 'Loading Collection - Filmiway'}</title>
     <meta name="application-name" content="Filmiway" />
     <meta name="apple-mobile-web-app-title" content="Filmiway" />
-    <meta name="description" content={collection.longDescription} />
+    <meta name="description" content={collection?.longDescription || 'Discover amazing movie collections on Filmiway - Where Every Film Finds Its Way'} />
     <meta name="generator" content="Filmiway" />
     <meta name="author" content="Filmiway Team" />
     <meta name="publisher" content="Filmiway" />
     <meta name="copyright" content="Filmiway 2025" />
-    <meta name="keywords" content={collection.keywords} />
+    <meta name="keywords" content={collection?.keywords || 'movies, cinema, film discovery, collections'} />
     <meta name="robots" content="index, follow" />
-    <link rel="canonical" href={`https://filmiway.com/collection/${collection.slug}`} />
+    <link rel="canonical" href={`https://filmiway.com/collection/${collection?.slug || 'movies'}`} />
     
     {/* OVERRIDE NEXT.JS BRANDING */}
     <meta name="framework" content="Filmiway Platform" />
@@ -25,30 +26,32 @@
     <meta name="theme-color" content="#facc15" />
     <meta name="msapplication-TileColor" content="#000000" />
     
-    {/* COLLECTION STRUCTURED DATA */}
-    <script type="application/ld+json" dangerouslySetInnerHTML={{
-        __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "CollectionPage",
-            "name": collection.title,
-            "description": collection.longDescription,
-            "url": `https://filmiway.com/collection/${collection.slug}`,
-            "isPartOf": {
-                "@type": "WebSite",
-                "name": "Filmiway"
-            }
-        })
-    }} />
+    {/* COLLECTION STRUCTURED DATA - ONLY WHEN COLLECTION IS LOADED */}
+    {collection && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "CollectionPage",
+                "name": collection.title,
+                "description": collection.longDescription,
+                "url": `https://filmiway.com/collection/${collection.slug}`,
+                "isPartOf": {
+                    "@type": "WebSite",
+                    "name": "Filmiway"
+                }
+            })
+        }} />
+    )}
     
-    <meta property="og:title" content={`${collection.title} - Community Reviews & Ratings`} />
-    <meta property="og:description" content={collection.longDescription} />
+    <meta property="og:title" content={`${collection?.title || 'Movie Collection'} - Community Reviews & Ratings`} />
+    <meta property="og:description" content={collection?.longDescription || 'Discover amazing movies on Filmiway'} />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={`https://filmiway.com/collection/${collection.slug}`} />
+    <meta property="og:url" content={`https://filmiway.com/collection/${collection?.slug || 'movies'}`} />
     <meta property="og:site_name" content="Filmiway" />
     
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={`${collection.title} - Community Reviews & Ratings`} />
-    <meta name="twitter:description" content={collection.description} />
+    <meta name="twitter:title" content={`${collection?.title || 'Movie Collection'} - Community Reviews & Ratings`} />
+    <meta name="twitter:description" content={collection?.description || collection?.longDescription || 'Discover amazing movies on Filmiway'} />
 </Head>
 
 
