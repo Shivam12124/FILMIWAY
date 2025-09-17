@@ -1,4 +1,3 @@
-// In pages/collection/[slug].js - FIX HEAD SECTION
 <Head>
     <title>{collection?.title ? `${collection.title} - Mind-Bending Films with User Reviews & Ratings - Filmiway` : 'Loading Collection - Filmiway'}</title>
     <meta name="application-name" content="Filmiway" />
@@ -53,7 +52,6 @@
     <meta name="twitter:title" content={`${collection?.title || 'Movie Collection'} - Community Reviews & Ratings`} />
     <meta name="twitter:description" content={collection?.description || collection?.longDescription || 'Discover amazing movies on Filmiway'} />
 </Head>
-
 
 // pages/collection/[slug].js - WITH PROPER SPACING BETWEEN LOGO AND HOME BUTTON
 import React, { useState, useEffect, useCallback } from 'react';
