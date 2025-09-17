@@ -1,55 +1,4 @@
-<Head>
-    <title>{movie.title} ({new Date(movie.release_date).getFullYear()}) - Filmiway</title>
-    <meta name="application-name" content="Filmiway" />
-    <meta name="apple-mobile-web-app-title" content="Filmiway" />
-    <meta name="description" content={movie.overview} />
-    <meta name="generator" content="Filmiway" />
-    <meta name="author" content="Filmiway Team" />
-    <meta name="publisher" content="Filmiway" />
-    <meta name="copyright" content="Filmiway 2025" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    
-    {/* OVERRIDE NEXT.JS BRANDING */}
-    <meta name="framework" content="Filmiway Platform" />
-    <meta name="powered-by" content="Filmiway" />
-    
-    {/* FAVICON SETUP */}
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="manifest" href="/site.webmanifest" />
-    <link rel="shortcut icon" href="/favicon.ico" />
-    
-    <meta name="theme-color" content="#facc15" />
-    <meta name="msapplication-TileColor" content="#000000" />
-    
-    {/* MOVIE STRUCTURED DATA */}
-    <script type="application/ld+json" dangerouslySetInnerHTML={{
-        __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Movie",
-            "name": movie.title,
-            "description": movie.overview,
-            "datePublished": movie.release_date,
-            "genre": movie.genres?.map(g => g.name),
-            "duration": `PT${movie.runtime}M`,
-            "aggregateRating": {
-                "@type": "AggregateRating",
-                "ratingValue": movie.vote_average,
-                "bestRating": 10,
-                "worstRating": 1,
-                "ratingCount": movie.vote_count
-            }
-        })
-    }} />
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet" />
-</Head>
-
-
-// pages/movie/[id].js - COMPLETE CLEAN CODE WITH NO ERRORS
+// pages/movie/[id].js - EXACTLY YOUR CODE WITH HEAD SECTION FIX ONLY
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Head from 'next/head';
@@ -62,7 +11,7 @@ import {
     Menu, X, User
 } from 'lucide-react';
 
-const TMDB_API_KEY =  process.env.NEXT_PUBLIC_TMDB_API_KEY
+const TMDB_API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
 const TMDB_BASE_URL = 'https://api.themoviedb.org/3';
 const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p';
 
@@ -437,107 +386,106 @@ const MovieDetailPage = () => {
         );
     };
 
-    // Cast Section - Director First with Real Images
-   // Cast Section - Director with EXACT SAME SIZE & SHAPE as Cast
-const CastSection = ({ credits }) => {
-    const director = credits?.crew?.find(person => person.job === 'Director');
-    
-    return (
-        <section className="py-12 sm:py-16 bg-gray-900">
-            <div className="container mx-auto px-4 sm:px-6">
-                <motion.div
-                    className="text-center mb-8 sm:mb-12"
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                >
-                    <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light text-white mb-4">Cast & Crew</h2>
-                    <p className="text-gray-400 text-base sm:text-lg">The talented people behind this movie</p>
-                </motion.div>
+    // Cast Section - Director with EXACT SAME SIZE & SHAPE as Cast
+    const CastSection = ({ credits }) => {
+        const director = credits?.crew?.find(person => person.job === 'Director');
+        
+        return (
+            <section className="py-12 sm:py-16 bg-gray-900">
+                <div className="container mx-auto px-4 sm:px-6">
+                    <motion.div
+                        className="text-center mb-8 sm:mb-12"
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                    >
+                        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light text-white mb-4">Cast & Crew</h2>
+                        <p className="text-gray-400 text-base sm:text-lg">The talented people behind this movie</p>
+                    </motion.div>
 
-                <div className="space-y-8 sm:space-y-12">
-                    {/* DIRECTOR FIRST - CENTER & ABOVE WITH SAME SIZE AS CAST */}
-                    {director && (
-                        <motion.div
-                            className="text-center"
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.2 }}
-                        >
-                            <h3 className="text-lg font-medium text-yellow-400 mb-6 flex items-center justify-center gap-2">
-                                <User className="w-5 h-5" />
-                                Director
-                            </h3>
-                            
-                            {/* DIRECTOR WITH EXACT SAME SIZE & SHAPE AS CAST */}
-                            <div className="flex justify-center mb-8">
-                                <motion.div
-                                    className="text-center group"
-                                    whileHover={{ y: -8, scale: 1.05 }}
-                                >
-                                    {/* SAME ASPECT RATIO & SIZE AS CAST MEMBERS */}
-                                    <div className="w-full aspect-[3/4] rounded-xl overflow-hidden mb-4 bg-gray-800 shadow-xl border-2 border-yellow-400/30 max-w-[120px] sm:max-w-[140px] md:max-w-[160px]">
-                                        {director.profile_path ? (
-                                            <img
-                                                src={`${IMAGE_BASE_URL}/w500${director.profile_path}`}
-                                                alt={director.name}
-                                                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                                            />
-                                        ) : (
-                                            <div className="w-full h-full bg-gradient-to-br from-yellow-400/20 to-yellow-600/20 flex items-center justify-center">
-                                                <span className="text-yellow-400 font-semibold text-lg">
-                                                    {director.name.split(' ').map(n => n[0]).join('')}
-                                                </span>
-                                            </div>
-                                        )}
-                                    </div>
-                                    <h3 className="text-white font-medium text-sm sm:text-base mb-2 line-clamp-2">{director.name}</h3>
-                                    <p className="text-yellow-400 text-xs sm:text-sm">Director</p>
-                                </motion.div>
+                    <div className="space-y-8 sm:space-y-12">
+                        {/* DIRECTOR FIRST - CENTER & ABOVE WITH SAME SIZE AS CAST */}
+                        {director && (
+                            <motion.div
+                                className="text-center"
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.2 }}
+                            >
+                                <h3 className="text-lg font-medium text-yellow-400 mb-6 flex items-center justify-center gap-2">
+                                    <User className="w-5 h-5" />
+                                    Director
+                                </h3>
+                                
+                                {/* DIRECTOR WITH EXACT SAME SIZE & SHAPE AS CAST */}
+                                <div className="flex justify-center mb-8">
+                                    <motion.div
+                                        className="text-center group"
+                                        whileHover={{ y: -8, scale: 1.05 }}
+                                    >
+                                        {/* SAME ASPECT RATIO & SIZE AS CAST MEMBERS */}
+                                        <div className="w-full aspect-[3/4] rounded-xl overflow-hidden mb-4 bg-gray-800 shadow-xl border-2 border-yellow-400/30 max-w-[120px] sm:max-w-[140px] md:max-w-[160px]">
+                                            {director.profile_path ? (
+                                                <img
+                                                    src={`${IMAGE_BASE_URL}/w500${director.profile_path}`}
+                                                    alt={director.name}
+                                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                                />
+                                            ) : (
+                                                <div className="w-full h-full bg-gradient-to-br from-yellow-400/20 to-yellow-600/20 flex items-center justify-center">
+                                                    <span className="text-yellow-400 font-semibold text-lg">
+                                                        {director.name.split(' ').map(n => n[0]).join('')}
+                                                    </span>
+                                                </div>
+                                            )}
+                                        </div>
+                                        <h3 className="text-white font-medium text-sm sm:text-base mb-2 line-clamp-2">{director.name}</h3>
+                                        <p className="text-yellow-400 text-xs sm:text-sm">Director</p>
+                                    </motion.div>
+                                </div>
+                            </motion.div>
+                        )}
+
+                        {/* MAIN CAST - SAME SIZE AS BEFORE */}
+                        <div>
+                            <h3 className="text-lg font-medium text-white mb-6 text-center sm:text-left">Main Cast</h3>
+                            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 sm:gap-8">
+                                {credits?.cast?.slice(0, 12).map((person, index) => (
+                                    <motion.div
+                                        key={person.id}
+                                        className="text-center group"
+                                        initial={{ opacity: 0, y: 30 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ delay: index * 0.1 }}
+                                        whileHover={{ y: -8, scale: 1.05 }}
+                                    >
+                                        {/* SAME SIZE & SHAPE FOR ALL CAST */}
+                                        <div className="w-full aspect-[3/4] rounded-xl overflow-hidden mb-4 bg-gray-800 shadow-xl">
+                                            {person.profile_path ? (
+                                                <img
+                                                    src={`${IMAGE_BASE_URL}/w500${person.profile_path}`}
+                                                    alt={person.name}
+                                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                                />
+                                            ) : (
+                                                <div className="w-full h-full bg-gray-700 flex items-center justify-center">
+                                                    <Users className="w-12 h-12 sm:w-16 sm:h-16 text-gray-500" />
+                                                </div>
+                                            )}
+                                        </div>
+                                        <h3 className="text-white font-medium text-sm sm:text-base mb-2 line-clamp-2">{person.name}</h3>
+                                        <p className="text-gray-400 text-xs sm:text-sm line-clamp-2">{person.character}</p>
+                                    </motion.div>
+                                ))}
                             </div>
-                        </motion.div>
-                    )}
-
-                    {/* MAIN CAST - SAME SIZE AS BEFORE */}
-                    <div>
-                        <h3 className="text-lg font-medium text-white mb-6 text-center sm:text-left">Main Cast</h3>
-                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 sm:gap-8">
-                            {credits?.cast?.slice(0, 12).map((person, index) => (
-                                <motion.div
-                                    key={person.id}
-                                    className="text-center group"
-                                    initial={{ opacity: 0, y: 30 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: index * 0.1 }}
-                                    whileHover={{ y: -8, scale: 1.05 }}
-                                >
-                                    {/* SAME SIZE & SHAPE FOR ALL CAST */}
-                                    <div className="w-full aspect-[3/4] rounded-xl overflow-hidden mb-4 bg-gray-800 shadow-xl">
-                                        {person.profile_path ? (
-                                            <img
-                                                src={`${IMAGE_BASE_URL}/w500${person.profile_path}`}
-                                                alt={person.name}
-                                                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                                            />
-                                        ) : (
-                                            <div className="w-full h-full bg-gray-700 flex items-center justify-center">
-                                                <Users className="w-12 h-12 sm:w-16 sm:h-16 text-gray-500" />
-                                            </div>
-                                        )}
-                                    </div>
-                                    <h3 className="text-white font-medium text-sm sm:text-base mb-2 line-clamp-2">{person.name}</h3>
-                                    <p className="text-gray-400 text-xs sm:text-sm line-clamp-2">{person.character}</p>
-                                </motion.div>
-                            ))}
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-    );
-};
+            </section>
+        );
+    };
 
     // Similar Movies Section with Navigation Arrows
     const SimilarMoviesSection = ({ movies }) => {
@@ -748,13 +696,27 @@ const CastSection = ({ credits }) => {
         );
     }
 
+    // MAIN RETURN - HEAD SECTION NOW CORRECTLY POSITIONED AFTER MOVIE IS LOADED
     return (
         <>
             <Head>
-                <title>{movie.title} ({new Date(movie.release_date).getFullYear()}) - Filmiway</title>
-                <meta name="description" content={movie.overview} />
+                <title>
+                    {movie ? `${movie.title} (${new Date(movie.release_date).getFullYear()}) - Filmiway` : 'Loading Movie - Filmiway'}
+                </title>
+                <meta name="application-name" content="Filmiway" />
+                <meta name="apple-mobile-web-app-title" content="Filmiway" />
+                <meta name="description" content={movie?.overview || 'Discover amazing movies on Filmiway - Where Every Film Finds Its Way'} />
+                <meta name="generator" content="Filmiway" />
+                <meta name="author" content="Filmiway Team" />
+                <meta name="publisher" content="Filmiway" />
+                <meta name="copyright" content="Filmiway 2025" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 
+                {/* OVERRIDE NEXT.JS BRANDING */}
+                <meta name="framework" content="Filmiway Platform" />
+                <meta name="powered-by" content="Filmiway" />
+                
+                {/* FAVICON SETUP */}
                 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
                 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
                 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
@@ -763,6 +725,28 @@ const CastSection = ({ credits }) => {
                 
                 <meta name="theme-color" content="#facc15" />
                 <meta name="msapplication-TileColor" content="#000000" />
+                
+                {/* MOVIE STRUCTURED DATA - ONLY WHEN MOVIE IS LOADED */}
+                {movie && (
+                    <script type="application/ld+json" dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
+                            "@context": "https://schema.org",
+                            "@type": "Movie",
+                            "name": movie.title,
+                            "description": movie.overview,
+                            "datePublished": movie.release_date,
+                            "genre": movie.genres?.map(g => g.name) || [],
+                            "duration": movie.runtime ? `PT${movie.runtime}M` : null,
+                            "aggregateRating": movie.vote_average ? {
+                                "@type": "AggregateRating",
+                                "ratingValue": movie.vote_average,
+                                "bestRating": 10,
+                                "worstRating": 1,
+                                "ratingCount": movie.vote_count || 0
+                            } : null
+                        })
+                    }} />
+                )}
                 
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
