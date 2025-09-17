@@ -1,0 +1,16 @@
+{
+  "name": "Movies Like Inception",
+  "short_name": "MindBenders",
+  "description": "Discover mind-bending movies similar to Inception with community reviews",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#ca8a04",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "16x16",
+      "type": "image/x-icon"
+    }
+  ]
+}
