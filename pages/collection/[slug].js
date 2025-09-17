@@ -1,4 +1,58 @@
-// pages/collection/[slug].js - WITH HOMEPAGE BUTTON BELOW LOGO
+<Head>
+    <title>{collection.title} - Mind-Bending Films with User Reviews & Ratings - Filmiway</title>
+    <meta name="application-name" content="Filmiway" />
+    <meta name="apple-mobile-web-app-title" content="Filmiway" />
+    <meta name="description" content={collection.longDescription} />
+    <meta name="generator" content="Filmiway" />
+    <meta name="author" content="Filmiway Team" />
+    <meta name="publisher" content="Filmiway" />
+    <meta name="copyright" content="Filmiway 2025" />
+    <meta name="keywords" content={collection.keywords} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={`https://filmiway.com/collection/${collection.slug}`} />
+    
+    {/* OVERRIDE NEXT.JS BRANDING */}
+    <meta name="framework" content="Filmiway Platform" />
+    <meta name="powered-by" content="Filmiway" />
+    
+    {/* FAVICON SETUP */}
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    
+    <meta name="theme-color" content="#facc15" />
+    <meta name="msapplication-TileColor" content="#000000" />
+    
+    {/* COLLECTION STRUCTURED DATA */}
+    <script type="application/ld+json" dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            "name": collection.title,
+            "description": collection.longDescription,
+            "url": `https://filmiway.com/collection/${collection.slug}`,
+            "isPartOf": {
+                "@type": "WebSite",
+                "name": "Filmiway"
+            }
+        })
+    }} />
+    
+    <meta property="og:title" content={`${collection.title} - Community Reviews & Ratings`} />
+    <meta property="og:description" content={collection.longDescription} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={`https://filmiway.com/collection/${collection.slug}`} />
+    <meta property="og:site_name" content="Filmiway" />
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={`${collection.title} - Community Reviews & Ratings`} />
+    <meta name="twitter:description" content={collection.description} />
+</Head>
+
+
+// pages/collection/[slug].js - WITH PROPER SPACING BETWEEN LOGO AND HOME BUTTON
 import React, { useState, useEffect, useCallback } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -34,10 +88,10 @@ const TopLeftLogo = () => (
     </motion.div>
 );
 
-// HOMEPAGE BUTTON BELOW LOGO
+// HOMEPAGE BUTTON WITH MORE SPACE BELOW LOGO
 const HomepageButton = () => (
     <motion.div 
-        className="fixed top-20 left-4 sm:top-28 sm:left-6 z-50"
+        className="fixed top-24 left-4 sm:top-32 sm:left-6 md:top-36 md:left-6 z-50"
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8, delay: 0.3 }}
@@ -331,7 +385,7 @@ const CollectionPage = ({ collection, movies }) => {
             />
             
             <TopLeftLogo />
-            {/* ADDED: HOMEPAGE BUTTON BELOW LOGO */}
+            {/* HOMEPAGE BUTTON WITH MORE SPACE BELOW LOGO */}
             <HomepageButton />
             
             <AnimatePresence mode="wait">

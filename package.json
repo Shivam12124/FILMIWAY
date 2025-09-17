@@ -1,6 +1,14 @@
 {
-  "name": "movies-like-inception-ssg",
+  "name": "filmiway",
   "version": "1.0.0",
+  "description": "Filmiway - Where Every Film Finds Its Way. Complete movie discovery platform.",
+  "keywords": ["filmiway", "movies", "cinema", "film discovery", "movie reviews", "tmdb", "film platform"],
+  "author": "Filmiway Team",
+  "homepage": "https://filmiway.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourname/filmiway"
+  },
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -31,5 +39,10 @@
     "eslint-config-next": "^14.0.0",
     "postcss": "^8.4.31",
     "tailwindcss": "^3.3.5"
-  }
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "license": "MIT"
 }

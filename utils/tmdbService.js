@@ -1,5 +1,5 @@
 // utils/tmdbService.js - CORRECTED TMDB POSTER PATHS
-const TMDB_API_KEY = '6054e5498fb2619274454959c38bbdfa';
+const TMDB_API_KEY =  process.env.NEXT_PUBLIC_TMDB_API_KEY
 const TMDB_BASE_URL = 'https://api.themoviedb.org/3';
 const TMDB_IMAGE_BASE_URL = 'https://image.tmdb.org/t/p';
 

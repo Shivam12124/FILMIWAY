@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Filmiway Sitemap
+Sitemap: https://filmiway.com/sitemap.xml
+
+# Filmiway Brand
+# Where Every Film Finds Its Way
