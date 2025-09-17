@@ -1,54 +1,3 @@
-<Head>
-    <title>Filmiway - Where Every Film Finds Its Way</title>
-    <meta name="application-name" content="Filmiway" />
-    <meta name="apple-mobile-web-app-title" content="Filmiway" />
-    <meta name="description" content="Filmiway - Where Every Film Finds Its Way. Discover amazing movies across every genre and era with curated collections and community reviews." />
-    <meta name="generator" content="Filmiway" />
-    <meta name="author" content="Filmiway Team" />
-    <meta name="publisher" content="Filmiway" />
-    <meta name="copyright" content="Filmiway 2025" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    
-    {/* OVERRIDE NEXT.JS BRANDING */}
-    <meta name="framework" content="Filmiway Platform" />
-    <meta name="powered-by" content="Filmiway" />
-    
-    {/* FAVICON SETUP */}
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="manifest" href="/site.webmanifest" />
-    <link rel="shortcut icon" href="/favicon.ico" />
-    
-    <meta name="theme-color" content="#facc15" />
-    <meta name="msapplication-TileColor" content="#000000" />
-    
-    {/* STRUCTURED DATA FOR HOMEPAGE */}
-    <script type="application/ld+json" dangerouslySetInnerHTML={{
-        __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "WebSite",
-            "name": "Filmiway",
-            "alternateName": "Filmiway - Where Every Film Finds Its Way",
-            "url": "https://filmiway.com",
-            "description": "Complete movie discovery platform with curated collections and community reviews",
-            "publisher": {
-                "@type": "Organization",
-                "name": "Filmiway"
-            },
-            "potentialAction": {
-                "@type": "SearchAction",
-                "target": "https://filmiway.com/search?q={search_term_string}",
-                "query-input": "required name=search_term_string"
-            }
-        })
-    }} />
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet" />
-</Head>
-
 // pages/index.js - COMPLETE HOMEPAGE WITH FAVICON & TMDB ATTRIBUTION
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -61,7 +10,7 @@ import {
     ChevronLeft, ChevronRight
 } from 'lucide-react';
 
-const TMDB_API_KEY =  process.env.NEXT_PUBLIC_TMDB_API_KEY
+const TMDB_API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
 const TMDB_BASE_URL = 'https://api.themoviedb.org/3';
 const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p';
 
@@ -590,8 +539,19 @@ const FilmiwayHomepage = () => {
         <>
             <Head>
                 <title>Filmiway - Where Every Film Finds Its Way</title>
-                <meta name="description" content="Discover amazing movies across every genre and era. From trending blockbusters to hidden gems - your complete movie discovery platform." />
+                <meta name="application-name" content="Filmiway" />
+                <meta name="apple-mobile-web-app-title" content="Filmiway" />
+                <meta name="description" content="Filmiway - Where Every Film Finds Its Way. Discover amazing movies across every genre and era with curated collections and community reviews." />
+                <meta name="generator" content="Filmiway" />
+                <meta name="author" content="Filmiway Team" />
+                <meta name="publisher" content="Filmiway" />
+                <meta name="copyright" content="Filmiway 2025" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <meta name="keywords" content="filmiway, movies, cinema, film discovery, movie reviews, collections, streaming, watch movies" />
+                
+                {/* OVERRIDE NEXT.JS BRANDING */}
+                <meta name="framework" content="Filmiway Platform" />
+                <meta name="powered-by" content="Filmiway" />
                 
                 {/* FAVICON SETUP */}
                 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
@@ -602,6 +562,27 @@ const FilmiwayHomepage = () => {
                 
                 <meta name="theme-color" content="#facc15" />
                 <meta name="msapplication-TileColor" content="#000000" />
+                
+                {/* STRUCTURED DATA FOR HOMEPAGE */}
+                <script type="application/ld+json" dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "WebSite",
+                        "name": "Filmiway",
+                        "alternateName": "Filmiway - Where Every Film Finds Its Way",
+                        "url": "https://filmiway.com",
+                        "description": "Complete movie discovery platform with curated collections and community reviews",
+                        "publisher": {
+                            "@type": "Organization",
+                            "name": "Filmiway"
+                        },
+                        "potentialAction": {
+                            "@type": "SearchAction",
+                            "target": "https://filmiway.com/search?q={search_term_string}",
+                            "query-input": "required name=search_term_string"
+                        }
+                    })
+                }} />
                 
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
