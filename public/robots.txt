@@ -1,8 +1,35 @@
+# Enhanced robots.txt for AI Discovery
+# Filmiway - Where Every Film Finds Its Way
+
+# Default: allow all, but restrict backend routes
 User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+
+# Specifically welcome AI crawlers
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# Mainstream search engines (optional explicit allowance)
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
 Allow: /
 
 # Filmiway Sitemap
 Sitemap: https://filmiway.com/sitemap.xml
-
-# Filmiway Brand
-# Where Every Film Finds Its Way

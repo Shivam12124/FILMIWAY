@@ -1,7 +1,9 @@
-// components/RealCommentsRatingSection.js - COMPLETE OPTIMIZED VERSION
+// components/RealCommentsRatingSection.js - ULTIMATE GOLDEN TICKET VERSION
+'use client';
+
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageCircle, User, Clock, Trash2, Send, AlertCircle } from 'lucide-react';
+import { MessageCircle, User, Clock, Trash2, Send, AlertCircle, Shield } from 'lucide-react';
 import { 
     collection, 
     addDoc, 
@@ -20,63 +22,97 @@ const RealCommentsRatingSection = ({ movie }) => {
     const [comments, setComments] = useState([]);
     const [loading, setLoading] = useState(true);
     const [submitting, setSubmitting] = useState(false);
+    const [mounted, setMounted] = useState(false);
     
     // Form states
     const [userName, setUserName] = useState('');
     const [userRating, setUserRating] = useState(0);
     const [commentText, setCommentText] = useState('');
     const [showForm, setShowForm] = useState(false);
+    
+    // Session tracking for delete permissions
+    const [userSession, setUserSession] = useState('');
 
     const MAX_COMMENT_LENGTH = 500;
 
-    // 4-OPTION RATING SYSTEM WITH SOPHISTICATED SYMBOLS
+    // 🎟️ ULTIMATE GOLDEN TICKET RATING SYSTEM
     const ratingOptions = [
         {
             value: 1,
             label: "Disappointment",
-            symbol: "⚡",
+            symbol: "🎫", // Torn/dull ticket
             color: "text-red-400",
             bgColor: "bg-red-500/10 border-red-500/30",
-            description: "Missed the mark completely"
+            borderStyle: "border-dashed border-2",
+            shadowColor: "shadow-red-500/20",
+            description: "Torn ticket - Total disappointment",
+            gradient: "from-red-900/30 via-gray-800/20 to-red-700/10",
+            ticketStyle: "opacity-60 transform rotate-1 grayscale"
         },
         {
             value: 2,
             label: "Flawed", 
-            symbol: "◐",
+            symbol: "🎟️", // Faded ticket
             color: "text-orange-400",
             bgColor: "bg-orange-500/10 border-orange-500/30",
-            description: "Has issues but watchable"
+            borderStyle: "border-solid border-opacity-50",
+            shadowColor: "shadow-orange-500/15",
+            description: "Faded ticket - Has major flaws",
+            gradient: "from-orange-900/20 via-gray-700/20 to-orange-600/10",
+            ticketStyle: "opacity-75 saturate-50"
         },
         {
             value: 3,
             label: "Worth the Ride",
-            symbol: "◆",
-            color: "text-yellow-400", 
-            bgColor: "bg-yellow-500/10 border-yellow-500/30",
-            description: "Solid entertainment value"
+            symbol: "🎟️", // Clean ticket
+            color: "text-green-400",
+            bgColor: "bg-green-500/10 border-green-500/30",
+            borderStyle: "border-solid border-2",
+            shadowColor: "shadow-green-500/20",
+            description: "Clean ticket - Solid entertainment",
+            gradient: "from-green-900/20 via-green-800/15 to-green-600/10",
+            ticketStyle: "opacity-90"
         },
         {
             value: 4,
             label: "Exceptional",
-            symbol: "◉",
-            color: "text-yellow-400",
-            bgColor: "bg-yellow-500/20 border-yellow-500/40", 
-            description: "Cinematic excellence"
+            symbol: "🎫", // ✅ ULTIMATE GOLDEN TICKET
+            color: "text-amber-300", // ✅ PREMIUM AMBER-GOLD
+            bgColor: "bg-gradient-to-br from-amber-400/40 via-yellow-400/30 to-yellow-300/20 border-amber-400/70", 
+            borderStyle: "border-solid border-3 animate-pulse shadow-amber-400/60", // ✅ THICKER GOLDEN BORDER
+            shadowColor: "shadow-amber-400/80 shadow-2xl drop-shadow-2xl",
+            description: " Ultimate ticket - Cinematic masterpiece",
+            gradient: "from-amber-500/50 via-yellow-400/40 to-amber-300/30",
+            ticketStyle: "opacity-100 brightness-200 saturate-200 contrast-125 drop-shadow-2xl transform hover:scale-110 transition-transform duration-300 golden-glow" // ✅ ULTIMATE GOLDEN EFFECTS
         }
     ];
 
-    // OPTIMIZED QUERY WITH INDEX - Load comments from Firebase
+    // Handle client-side mounting and session initialization
     useEffect(() => {
-        if (!movie?.imdbID) return;
+        setMounted(true);
+        
+        // Initialize user session for comment ownership
+        if (typeof window !== 'undefined') {
+            let sessionId = sessionStorage.getItem('filmiway_session');
+            if (!sessionId) {
+                sessionId = 'user_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+                sessionStorage.setItem('filmiway_session', sessionId);
+            }
+            setUserSession(sessionId);
+        }
+    }, []);
+
+    // Load comments from Firebase (only after mounted)
+    useEffect(() => {
+        if (!mounted || !movie?.imdbID) return;
 
         const commentsRef = collection(db, 'comments');
-        // FULL OPTIMIZED QUERY - USES YOUR FIREBASE INDEX
         const q = query(
             commentsRef,
             where('movieId', '==', movie.imdbID),
             where('approved', '==', true),
             orderBy('createdAt', 'desc'),
-            limit(10)
+            limit(20)
         );
 
         const unsubscribe = onSnapshot(q, (snapshot) => {
@@ -94,9 +130,9 @@ const RealCommentsRatingSection = ({ movie }) => {
         });
 
         return () => unsubscribe();
-    }, [movie?.imdbID]);
+    }, [mounted, movie?.imdbID]);
 
-    // Submit new comment
+    // Submit new comment with session tracking
     const handleSubmitComment = async (e) => {
         e.preventDefault();
         
@@ -120,17 +156,16 @@ const RealCommentsRatingSection = ({ movie }) => {
                 rating: userRating,
                 comment: commentText.trim(),
                 createdAt: serverTimestamp(),
-                approved: true, // Auto-approve for now
+                approved: true,
+                userSession: userSession,
                 ip: 'hidden',
-                userAgent: navigator.userAgent.substring(0, 100)
+                userAgent: typeof navigator !== 'undefined' ? navigator.userAgent.substring(0, 100) : 'unknown'
             });
 
-            // Reset form
             setUserName('');
             setUserRating(0);
             setCommentText('');
             setShowForm(false);
-            
             alert('Comment submitted successfully!');
         } catch (error) {
             console.error('Error submitting comment:', error);
@@ -140,16 +175,26 @@ const RealCommentsRatingSection = ({ movie }) => {
         }
     };
 
-    // Delete comment
-    const handleDeleteComment = async (commentId) => {
-        if (!confirm('Are you sure you want to delete this comment?')) return;
+    // SECURE: Only allow deletion if user owns the comment
+    const handleDeleteComment = async (comment) => {
+        if (comment.userSession !== userSession) {
+            alert('You can only delete your own comments.');
+            return;
+        }
+
+        if (!confirm('Are you sure you want to delete your comment?')) return;
 
         try {
-            await deleteDoc(doc(db, 'comments', commentId));
+            await deleteDoc(doc(db, 'comments', comment.id));
         } catch (error) {
             console.error('Error deleting comment:', error);
             alert('Error deleting comment.');
         }
+    };
+
+    // Check if current user can delete a comment
+    const canDeleteComment = (comment) => {
+        return comment.userSession === userSession;
     };
 
     // Format date
@@ -158,27 +203,31 @@ const RealCommentsRatingSection = ({ movie }) => {
         
         const now = new Date();
         const diff = now - date;
-        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const hours = Math.floor(diff / (1000 * 60 * 60));
         const minutes = Math.floor(diff / (1000 * 60));
+        const hours = Math.floor(diff / (1000 * 60 * 60));
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
         
         if (minutes < 60) return `${minutes}m ago`;
         if (hours < 24) return `${hours}h ago`;
-        if (days === 0) return 'Today';
-        if (days === 1) return 'Yesterday';
         if (days < 7) return `${days} days ago`;
         return date.toLocaleDateString();
     };
 
-    // Display rating with symbol
+    // Display rating with ultimate golden ticket styling
     const displayRating = (rating) => {
         const option = ratingOptions.find(r => r.value === rating);
         if (!option) return null;
         
         return (
             <div className="flex items-center gap-2">
-                <span className={`text-lg ${option.color}`}>{option.symbol}</span>
-                <span className="text-white text-sm font-medium">{option.label}</span>
+                <span className={`text-xl ${option.ticketStyle} ${
+                    option.value === 4 ? 'golden-ticket' : ''
+                }`}>
+                    {option.symbol}
+                </span>
+                <span className={`text-sm font-medium ${option.color}`}>
+                    {option.label}
+                </span>
             </div>
         );
     };
@@ -194,10 +243,12 @@ const RealCommentsRatingSection = ({ movie }) => {
         return (
             <div className="text-center">
                 <div className="flex items-center justify-center gap-2 mb-1">
-                    <span className={`text-2xl ${option?.color || 'text-gray-400'}`}>
-                        {option?.symbol || '◯'}
+                    <span className={`text-3xl ${option?.ticketStyle || ''} ${
+                        option?.value === 4 ? 'golden-ticket' : ''
+                    }`}>
+                        {option?.symbol || '🎟️'}
                     </span>
-                    <span className="text-xl font-bold text-yellow-400">
+                    <span className={`text-xl font-bold ${option?.color || 'text-gray-400'}`}>
                         {option?.label || 'No ratings'}
                     </span>
                 </div>
@@ -207,6 +258,22 @@ const RealCommentsRatingSection = ({ movie }) => {
             </div>
         );
     };
+
+    // Don't render until mounted (prevents hydration mismatch)
+    if (!mounted) {
+        return (
+            <section className="bg-gradient-to-br from-gray-900/30 to-black/50 border border-gray-800/50 rounded-2xl p-6 sm:p-8 lg:p-12 backdrop-blur-sm">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light text-white mb-8 flex items-center gap-4">
+                    <MessageCircle className="w-6 h-6 sm:w-8 sm:h-8 text-yellow-400" />
+                    Community Reviews
+                </h2>
+                <div className="flex items-center justify-center py-12">
+                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-yellow-400"></div>
+                    <span className="ml-3 text-gray-300">Initializing reviews...</span>
+                </div>
+            </section>
+        );
+    }
 
     if (loading) {
         return (
@@ -231,7 +298,6 @@ const RealCommentsRatingSection = ({ movie }) => {
                     Community Reviews
                 </h2>
                 
-                {/* Average Rating Display */}
                 {getAverageRatingDisplay()}
             </div>
 
@@ -239,10 +305,11 @@ const RealCommentsRatingSection = ({ movie }) => {
             {!showForm && (
                 <motion.button
                     onClick={() => setShowForm(true)}
-                    className="mb-8 bg-yellow-400 text-black py-3 px-6 rounded-xl font-medium hover:bg-yellow-300 transition-colors"
+                    className="mb-8 bg-yellow-400 text-black py-3 px-6 rounded-xl font-medium hover:bg-yellow-300 transition-colors flex items-center gap-2"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                 >
+                    <span className="text-lg">🎟️</span>
                     Write a Review
                 </motion.button>
             )}
@@ -258,7 +325,10 @@ const RealCommentsRatingSection = ({ movie }) => {
                         exit={{ opacity: 0, height: 0 }}
                         transition={{ duration: 0.3 }}
                     >
-                        <h3 className="text-xl font-medium text-white mb-4">Share Your Review</h3>
+                        <h3 className="text-xl font-medium text-white mb-4 flex items-center gap-2">
+                            <span className="text-2xl golden-ticket">🎫</span>
+                            Share Your Review
+                        </h3>
                         
                         {/* Name Input */}
                         <div className="mb-4">
@@ -276,7 +346,7 @@ const RealCommentsRatingSection = ({ movie }) => {
                             />
                         </div>
 
-                        {/* 4-OPTION RATING INPUT */}
+                        {/* Ultimate Golden Ticket Rating Input */}
                         <div className="mb-4">
                             <label className="block text-gray-300 text-sm font-medium mb-2">
                                 Your Rating
@@ -287,26 +357,32 @@ const RealCommentsRatingSection = ({ movie }) => {
                                         key={option.value}
                                         type="button"
                                         onClick={() => setUserRating(option.value)}
-                                        className={`p-4 rounded-xl border-2 transition-all text-center ${
+                                        className={`p-4 rounded-xl transition-all text-center ${option.borderStyle} ${
                                             userRating === option.value
-                                                ? `${option.bgColor} border-current scale-105`
+                                                ? `${option.bgColor} ${option.shadowColor} shadow-lg scale-105`
                                                 : 'border-gray-600/50 hover:border-gray-500/50 hover:scale-105'
                                         }`}
                                         whileHover={{ y: -2 }}
                                         whileTap={{ scale: 0.95 }}
                                     >
-                                        {/* Symbol */}
-                                        <div className={`text-3xl mb-2 ${userRating === option.value ? option.color : 'text-gray-500'}`}>
+                                        {/* Ultimate Golden Ticket Symbol with Sparkle Effects */}
+                                        <div className={`text-3xl mb-2 ${option.ticketStyle} ${
+                                            option.value === 4 ? 'golden-ticket' : ''
+                                        } ${userRating === option.value ? option.color : 'text-gray-500'}`}>
                                             {option.symbol}
                                         </div>
                                         
                                         {/* Label */}
-                                        <div className={`font-medium text-sm ${userRating === option.value ? 'text-white' : 'text-gray-400'}`}>
+                                        <div className={`font-medium text-sm ${
+                                            userRating === option.value ? 'text-white' : 'text-gray-400'
+                                        }`}>
                                             {option.label}
                                         </div>
                                         
                                         {/* Description */}
-                                        <div className={`text-xs mt-1 ${userRating === option.value ? 'text-gray-300' : 'text-gray-500'}`}>
+                                        <div className={`text-xs mt-1 ${
+                                            userRating === option.value ? 'text-gray-300' : 'text-gray-500'
+                                        }`}>
                                             {option.description}
                                         </div>
                                     </motion.button>
@@ -370,7 +446,7 @@ const RealCommentsRatingSection = ({ movie }) => {
                 )}
             </AnimatePresence>
 
-            {/* Comments List */}
+            {/* Comments List with Ultimate Golden Ratings */}
             {comments.length > 0 ? (
                 <div className="space-y-6">
                     {comments.map((comment, index) => (
@@ -397,17 +473,18 @@ const RealCommentsRatingSection = ({ movie }) => {
                                 </div>
                                 
                                 <div className="flex items-center gap-3">
-                                    {/* Rating Display */}
                                     {displayRating(comment.rating)}
                                     
-                                    {/* Delete Button */}
-                                    <button
-                                        onClick={() => handleDeleteComment(comment.id)}
-                                        className="text-gray-400 hover:text-red-400 transition-colors"
-                                        title="Delete comment"
-                                    >
-                                        <Trash2 className="w-4 h-4" />
-                                    </button>
+                                    {/* Secure Delete Button - Only for comment owner */}
+                                    {canDeleteComment(comment) && (
+                                        <button
+                                            onClick={() => handleDeleteComment(comment)}
+                                            className="text-gray-400 hover:text-red-400 transition-colors"
+                                            title="Delete your comment"
+                                        >
+                                            <Trash2 className="w-4 h-4" />
+                                        </button>
+                                    )}
                                 </div>
                             </div>
 
@@ -428,8 +505,9 @@ const RealCommentsRatingSection = ({ movie }) => {
 
             {/* Comment Guidelines */}
             <div className="mt-8 pt-6 border-t border-gray-800/50">
-                <p className="text-center text-gray-500 text-sm">
-                    Please keep reviews respectful and relevant to the movie. Comments are subject to moderation.
+                <p className="text-center text-gray-500 text-sm flex items-center justify-center gap-2">
+                    <Shield className="w-4 h-4" />
+                    Reviews are secure - only you can delete your own comments
                 </p>
             </div>
         </section>

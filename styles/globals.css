@@ -211,3 +211,52 @@ a:hover {
     color-scheme: dark;
   }
 }
+/* Golden Ticket Animation Effects */
+.golden-ticket {
+    position: relative;
+    overflow: visible;
+}
+
+.golden-ticket::before {
+    content: "✨";
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    font-size: 0.8em;
+    animation: sparkle 2s infinite;
+}
+
+.golden-ticket::after {
+    content: "⭐";
+    position: absolute;
+    bottom: -5px;
+    left: -5px;
+    font-size: 0.6em;
+    animation: sparkle 2s infinite 1s;
+}
+
+@keyframes sparkle {
+    0%, 100% { 
+        opacity: 0.3; 
+        transform: scale(0.8); 
+    }
+    50% { 
+        opacity: 1; 
+        transform: scale(1.2); 
+    }
+}
+
+/* Golden glow effect */
+.golden-glow {
+    filter: drop-shadow(0 0 8px rgba(251, 191, 36, 0.6));
+    animation: golden-pulse 3s ease-in-out infinite;
+}
+
+@keyframes golden-pulse {
+    0%, 100% { 
+        filter: drop-shadow(0 0 8px rgba(251, 191, 36, 0.6)); 
+    }
+    50% { 
+        filter: drop-shadow(0 0 16px rgba(251, 191, 36, 0.8)); 
+    }
+}

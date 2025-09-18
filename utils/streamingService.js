@@ -1,5 +1,5 @@
-// utils/streamingService.js - FIXED AMAZON PRIME & VI MOVIES
-const TMDB_API_KEY =  process.env.NEXT_PUBLIC_TMDB_API_KEY
+// utils/streamingService.js - IMPROVED VPN-AWARE REGION DETECTION
+const TMDB_API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
 const TMDB_BASE_URL = 'https://api.themoviedb.org/3';
 
 export const SUPPORTED_REGIONS = {
@@ -25,7 +25,7 @@ export const SUPPORTED_REGIONS = {
     'CO': { name: 'Colombia', flag: '🇨🇴' }
 };
 
-// FIXED STREAMING PLATFORMS - SIMPLE WORKING URLS
+// STREAMING PLATFORMS - ENHANCED WITH BETTER URLS
 export const STREAMING_PLATFORMS = {
     // Netflix - Working
     8: {
@@ -59,7 +59,7 @@ export const STREAMING_PLATFORMS = {
         }
     },
     
-    // Amazon Prime Video - SIMPLE WORKING URLS
+    // Amazon Prime Video - IMPROVED URLS
     119: {
         name: 'Amazon Prime Video',
         logo: 'https://m.media-amazon.com/images/G/01/digital/video/web/Logo-min.png',
@@ -76,16 +76,16 @@ export const STREAMING_PLATFORMS = {
                 'ES': 'https://www.amazon.es/gp/video/storefront',
                 'NL': 'https://www.amazon.nl/gp/video/storefront',
                 'SE': 'https://www.amazon.se/gp/video/storefront',
-                'IN': 'https://www.amazon.in/gp/video/storefront',
+                'IN': 'https://www.primevideo.com/region/eu/offers/nonprimehomepage/ref=dv_web_force_root',
                 'JP': 'https://www.amazon.co.jp/gp/video/storefront',
                 'BR': 'https://www.amazon.com.br/gp/video/storefront',
                 'MX': 'https://www.amazon.com.mx/gp/video/storefront'
             };
-            return amazonUrls[region] || 'https://www.amazon.com/gp/video/storefront';
+            return amazonUrls[region] || 'https://www.primevideo.com';
         }
     },
     
-    // Disney+ / Hotstar - Working
+    // Disney+ / Hotstar - ENHANCED
     337: {
         name: 'Disney+',
         logo: 'https://cnbl-cdn.bamgrid.com/assets/7ecc8bcb60ad77193058d63e321bd21cbac2fc67281dbd9927676ea4a4c83594/original',
@@ -233,28 +233,24 @@ export const STREAMING_PLATFORMS = {
         }
     },
     
-    // Vi Movies & TV (India) - FIXED
+    // Vi Movies & TV (India) - CORRECTED
     223: {
         name: 'Vi Movies and TV',
         logo: 'https://www.vi.in/favicon.ico',
         color: '#662D91',
         getHomepageURL: (region) => {
-            if (region === 'IN') {
-                return 'https://www.vi.in/movies-tv';
-            }
-            return 'https://www.vi.in';
+            return 'https://www.vi.in/movies-tv';
+        }
+    },
+      220: {
+        name: 'JioHotstar',
+        logo: 'https://www.jiohotstar.com/favicon.ico',
+        color: '#8A2BE2',
+        getHomepageURL: (region) => {
+            return 'https://www.jiohotstar.com';
         }
     },
     
-    // JioCinema (India) - Common in India
-    220: {
-        name: 'JioCinema',
-        logo: 'https://www.jiocinema.com/favicon.ico',
-        color: '#8A2BE2',
-        getHomepageURL: (region) => {
-            return 'https://www.jiocinema.com';
-        }
-    },
     
     // SonyLIV (India) - Common in India  
     237: {
@@ -272,10 +268,7 @@ export const STREAMING_PLATFORMS = {
         logo: 'https://www.zee5.com/favicon.ico',
         color: '#673AB7',
         getHomepageURL: (region) => {
-            if (region === 'IN') {
-                return 'https://www.zee5.com/global';
-            }
-            return 'https://www.zee5.com';
+            return 'https://www.zee5.com/global';
         }
     },
 
@@ -290,82 +283,226 @@ export const STREAMING_PLATFORMS = {
     }
 };
 
-// Auto-detect user region
+// IMPROVED: VPN-AWARE REGION DETECTION
 export const detectUserRegion = async () => {
+    console.log('🌍 Starting multi-method region detection...');
+    
+    // Method 1: Timezone Detection (Most reliable with VPN)
+    const getTimezoneRegion = () => {
+        const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        console.log(`⏰ Detected timezone: ${timeZone}`);
+        
+        const timezoneToRegion = {
+            // India timezones
+            'Asia/Kolkata': 'IN',
+            'Asia/Mumbai': 'IN',
+            'Asia/Delhi': 'IN',
+            'Asia/Calcutta': 'IN',
+            
+            // UK timezones  
+            'Europe/London': 'GB',
+            'GMT': 'GB',
+            
+            // US timezones
+            'America/New_York': 'US',
+            'America/Los_Angeles': 'US',
+            'America/Chicago': 'US',
+            'America/Denver': 'US',
+            'America/Phoenix': 'US',
+            'America/Anchorage': 'US',
+            'Pacific/Honolulu': 'US',
+            
+            // Other regions
+            'Europe/Paris': 'FR',
+            'Europe/Berlin': 'DE',
+            'Asia/Tokyo': 'JP',
+            'Australia/Sydney': 'AU',
+            'America/Toronto': 'CA',
+            'America/Vancouver': 'CA',
+        };
+        
+        return timezoneToRegion[timeZone];
+    };
+    
+    // Method 2: Multiple IP Detection Services
+    const getIPRegion = async () => {
+        const ipServices = [
+            { url: 'https://ipapi.co/json/', key: 'country_code' },
+            { url: 'http://ip-api.com/json/', key: 'countryCode' },
+            { url: 'https://ipinfo.io/json', key: 'country' }
+        ];
+        
+        for (const service of ipServices) {
+            try {
+                console.log(`🔍 Trying IP service: ${service.url}`);
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 3000);
+                
+                const response = await fetch(service.url, { 
+                    signal: controller.signal,
+                    headers: { 'Accept': 'application/json' }
+                });
+                clearTimeout(timeoutId);
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    const countryCode = data[service.key];
+                    
+                    if (countryCode) {
+                        console.log(`✅ IP detection: ${countryCode} from ${service.url}`);
+                        return countryCode.toUpperCase();
+                    }
+                }
+            } catch (error) {
+                console.log(`❌ IP service ${service.url} failed:`, error.message);
+                continue;
+            }
+        }
+        
+        return null;
+    };
+    
+    // Method 3: Browser Language Hint
+    const getLanguageRegion = () => {
+        const language = navigator.language || navigator.languages[0];
+        console.log(`🗣️ Browser language: ${language}`);
+        
+        const languageMap = {
+            'en-IN': 'IN',
+            'hi-IN': 'IN',
+            'en-GB': 'GB',
+            'en-US': 'US',
+            'fr-FR': 'FR',
+            'de-DE': 'DE',
+            'ja-JP': 'JP',
+            'ko-KR': 'KR'
+        };
+        
+        return languageMap[language];
+    };
+    
     try {
-        console.log('🌍 Detecting user region...');
+        // Try all methods
+        const timezoneRegion = getTimezoneRegion();
+        const ipRegion = await getIPRegion();
+        const languageRegion = getLanguageRegion();
         
-        const response = await fetch('https://ipapi.co/json/');
-        const data = await response.json();
+        console.log('🔍 Detection results:', {
+            timezone: timezoneRegion,
+            ip: ipRegion,
+            language: languageRegion
+        });
         
-        if (data.country_code && SUPPORTED_REGIONS[data.country_code]) {
-            console.log(`✅ Detected region: ${data.country_code} (${data.country_name})`);
+        // Priority: Timezone > IP > Language > Default
+        let detectedCode = timezoneRegion || ipRegion || languageRegion || 'IN';
+        
+        // Handle UK/GB inconsistency
+        if (detectedCode === 'UK') detectedCode = 'GB';
+        
+        // Ensure we have a supported region
+        const regionInfo = SUPPORTED_REGIONS[detectedCode];
+        
+        if (regionInfo) {
+            console.log(`🎯 Final detection: ${detectedCode} (${regionInfo.name})`);
             return {
-                code: data.country_code,
-                name: data.country_name
+                code: detectedCode,
+                name: regionInfo.name,
+                flag: regionInfo.flag
+            };
+        } else {
+            console.log(`⚠️ Unsupported region ${detectedCode}, defaulting to India`);
+            return {
+                code: 'IN',
+                name: 'India',
+                flag: '🇮🇳'
             };
         }
         
-        console.log(`⚠️ Country ${data.country_code} not in supported list, using IN as default`);
-        return { code: 'IN', name: 'India' };
-        
     } catch (error) {
-        console.log('❌ Region detection failed, using IN for India');
-        return { code: 'IN', name: 'India' };
+        console.error('❌ Region detection failed completely:', error);
+        return {
+            code: 'IN',
+            name: 'India',
+            flag: '🇮🇳'
+        };
     }
 };
 
-// Get streaming providers  
+// Get streaming providers with better error handling
 export const getRegionStreamingProviders = async (tmdbId, regionCode) => {
+    if (!tmdbId || !regionCode) {
+        throw new Error('TMDB ID and region code are required');
+    }
+    
     try {
-        console.log(`📺 Fetching streaming providers for ${tmdbId} in ${regionCode}`);
+        console.log(`📺 Fetching streaming providers for movie ${tmdbId} in region ${regionCode}`);
         
-        const response = await fetch(
-            `${TMDB_BASE_URL}/movie/${tmdbId}/watch/providers?api_key=${TMDB_API_KEY}`
-        );
+        const url = `${TMDB_BASE_URL}/movie/${tmdbId}/watch/providers?api_key=${TMDB_API_KEY}`;
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 8000);
+        
+        const response = await fetch(url, { signal: controller.signal });
+        clearTimeout(timeoutId);
         
         if (!response.ok) {
-            throw new Error(`TMDB API error: ${response.status}`);
+            throw new Error(`TMDB API error: ${response.status} ${response.statusText}`);
         }
         
         const data = await response.json();
-        const regionData = data.results[regionCode];
+        const regionData = data.results?.[regionCode];
         
         if (regionData) {
-            console.log(`✅ Found ${regionData.flatrate?.length || 0} streaming, ${regionData.rent?.length || 0} rental, ${regionData.buy?.length || 0} purchase options`);
+            const streamCount = regionData.flatrate?.length || 0;
+            const rentCount = regionData.rent?.length || 0;
+            const buyCount = regionData.buy?.length || 0;
+            
+            console.log(`✅ Found providers: ${streamCount} streaming, ${rentCount} rental, ${buyCount} purchase`);
             
             return {
-                region: SUPPORTED_REGIONS[regionCode],
+                region: regionCode,
                 providers: {
                     flatrate: regionData.flatrate || [],
                     rent: regionData.rent || [],
                     buy: regionData.buy || []
-                }
+                },
+                link: regionData.link || null
+            };
+        } else {
+            console.log(`❌ No streaming data available for region ${regionCode}`);
+            return {
+                region: regionCode,
+                providers: {
+                    flatrate: [],
+                    rent: [],
+                    buy: []
+                },
+                link: null
             };
         }
         
-        console.log(`❌ No streaming data found for ${regionCode}`);
-        return null;
-        
     } catch (error) {
-        console.error(`❌ Error fetching providers for ${regionCode}:`, error);
-        return null;
+        console.error(`❌ Error fetching providers for region ${regionCode}:`, error);
+        throw error;
     }
 };
 
-// Generate platform homepage link
+// Generate platform homepage link with fallbacks
 export const generatePlatformLink = (providerId, regionCode) => {
     console.log(`🏠 Getting platform homepage for provider ID ${providerId} in region ${regionCode}`);
     
     const platform = STREAMING_PLATFORMS[providerId];
     
     if (platform?.getHomepageURL) {
-        const homepageUrl = platform.getHomepageURL(regionCode);
-        console.log(`✅ Platform homepage: ${homepageUrl}`);
-        return homepageUrl;
+        try {
+            const homepageUrl = platform.getHomepageURL(regionCode);
+            console.log(`✅ Platform homepage: ${homepageUrl}`);
+            return homepageUrl;
+        } catch (error) {
+            console.error(`❌ Error getting homepage for provider ${providerId}:`, error);
+        }
     }
     
-    console.log(`⚠️ Platform ${providerId} not found, using Netflix as fallback`);
+    console.log(`⚠️ Provider ${providerId} not found or error occurred, using Netflix fallback`);
     return STREAMING_PLATFORMS[8].getHomepageURL(regionCode);
 };
 
