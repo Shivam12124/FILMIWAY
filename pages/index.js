@@ -685,5 +685,4 @@ const FilmiwayHomepage = () => {
 };
 
 export default FilmiwayHomepage;
-/ /   F i l m i w a y   C i n e m a   R e a d y   f o r   L a u n c h  
- 
+
