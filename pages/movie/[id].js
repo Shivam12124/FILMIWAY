@@ -14,7 +14,7 @@ import EnhancedIntensityGraph from '../../components/EnhancedIntensityGraph';
 import StrategicDNAHelix from '../../components/StrategicDNAHelix';
 import EnhancedWhereToWatchSection from '../../components/EnhancedWhereToWatchSection';
 import SensitiveContentTimelineSection from '../../components/SensitiveContentTimelineSection';
-import EnhancedCommentsRatingSection from '../../components/EnhancedCommentsRatingSection';
+import RealCommentsRatingSection from '../../components/RealCommentsRatingSection';
 import SEOFAQSection from '../../components/SEOFAQSection';
 
 // Data
