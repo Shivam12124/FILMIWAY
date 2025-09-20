@@ -152,7 +152,7 @@ export const STRATEGIC_QUOTES = {
     181886: "I don't think I'm me", 
     1381: "Death is the road to awe", 
     31011: "Every path is the right path", 
-    11324: "Which would be worse: To live as a monster, or to die as a good man?"
+    11324: "You're as violent as they come. I know this, because I'm as violent as they come"
 };
 
 export const FALLBACK_POSTERS = {

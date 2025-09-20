@@ -81,7 +81,7 @@ const RealCommentsRatingSection = ({ movie }) => {
             bgColor: "bg-gradient-to-br from-amber-400/40 via-yellow-400/30 to-yellow-300/20 border-amber-400/70", 
             borderStyle: "border-solid border-3 animate-pulse shadow-amber-400/60", // ✅ THICKER GOLDEN BORDER
             shadowColor: "shadow-amber-400/80 shadow-2xl drop-shadow-2xl",
-            description: " Ultimate ticket - Cinematic masterpiece",
+            description: " Uticket - Cinematic masterpiece",
             gradient: "from-amber-500/50 via-yellow-400/40 to-amber-300/30",
             ticketStyle: "opacity-100 brightness-200 saturate-200 contrast-125 drop-shadow-2xl transform hover:scale-110 transition-transform duration-300 golden-glow" // ✅ ULTIMATE GOLDEN EFFECTS
         }
