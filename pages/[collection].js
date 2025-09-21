@@ -107,15 +107,7 @@ export async function getStaticProps({ params }) {
             return { notFound: true };
         }
 
-        // Import appropriate data
-        let dataModule = null;
-        if (params?.collection === 'movies-like-inception') {
-            try {
-                dataModule = await import('../data/moviesLikeInception');
-            } catch (error) {
-                console.error('Failed to import data:', error);
-            }
-        }
+   
 
         const movies = dataModule?.COMPLETE_MOVIE_DATABASE || [];
         const movieData = dataModule?.COMPLETE_MOVIE_DATA || {};
