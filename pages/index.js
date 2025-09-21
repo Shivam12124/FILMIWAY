@@ -1,4 +1,4 @@
-// pages/index.js - COMPLETE HOMEPAGE WITH FAVICON & TMDB ATTRIBUTION
+// pages/index.js - MOBILE-OPTIMIZED WITH TOUCH SWIPE & SMALLER TEXT
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Head from 'next/head';
@@ -7,8 +7,9 @@ import { useRouter } from 'next/router';
 import { 
     Play, Star, TrendingUp, Award, Clock, Calendar, 
     Search, Menu, X, ArrowRight, Film, Zap, Target, Eye,
-    ChevronLeft, ChevronRight
+    ChevronLeft, ChevronRight  // ← Add these imports
 } from 'lucide-react';
+
 
 const TMDB_API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
 const TMDB_BASE_URL = 'https://api.themoviedb.org/3';
@@ -345,114 +346,170 @@ const FilmiwayHomepage = () => {
         </section>
     );
 
-    // MOBILE-FRIENDLY MOVIE CAROUSEL WITH SWIPE ARROWS
-    const MovieCarousel = ({ movies, sectionRef }) => {
-        const [currentIndex, setCurrentIndex] = useState(0);
-        const itemsPerView = {
-            mobile: 2,
-            tablet: 3,
-            desktop: 6
-        };
-
-        const getItemsPerView = () => {
-            if (typeof window !== 'undefined') {
-                if (window.innerWidth < 640) return itemsPerView.mobile;
-                if (window.innerWidth < 1024) return itemsPerView.tablet;
-                return itemsPerView.desktop;
-            }
-            return itemsPerView.desktop;
-        };
-
-        const [itemsToShow, setItemsToShow] = useState(getItemsPerView());
-
-        useEffect(() => {
-            const handleResize = () => {
-                setItemsToShow(getItemsPerView());
-            };
-
-            window.addEventListener('resize', handleResize);
-            return () => window.removeEventListener('resize', handleResize);
-        }, []);
-
-        const maxIndex = Math.max(0, movies.length - itemsToShow);
-
-        const nextSlide = () => {
-            setCurrentIndex(prev => Math.min(prev + 1, maxIndex));
-        };
-
-        const prevSlide = () => {
-            setCurrentIndex(prev => Math.max(prev - 1, 0));
-        };
-
-        return (
-            <div ref={sectionRef} className="relative">
-                {/* Navigation Arrows */}
-                {currentIndex > 0 && (
-                    <motion.button
-                        onClick={prevSlide}
-                        className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 bg-gray-900/80 backdrop-blur-sm rounded-full border border-gray-700/50 hover:bg-gray-800/90 hover:border-yellow-400/50 transition-all duration-300 flex items-center justify-center"
-                        whileHover={{ scale: 1.1, x: -2 }}
-                        whileTap={{ scale: 0.95 }}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                    >
-                        <ChevronLeft className="w-6 h-6 text-yellow-400" />
-                    </motion.button>
-                )}
-
-                {currentIndex < maxIndex && (
-                    <motion.button
-                        onClick={nextSlide}
-                        className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 bg-gray-900/80 backdrop-blur-sm rounded-full border border-gray-700/50 hover:bg-gray-800/90 hover:border-yellow-400/50 transition-all duration-300 flex items-center justify-center"
-                        whileHover={{ scale: 1.1, x: 2 }}
-                        whileTap={{ scale: 0.95 }}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                    >
-                        <ChevronRight className="w-6 h-6 text-yellow-400" />
-                    </motion.button>
-                )}
-
-                {/* Movies Grid */}
-                <div className="overflow-hidden px-8">
-                    <motion.div 
-                        className="flex transition-transform duration-300 ease-out"
-                        style={{ 
-                            transform: `translateX(-${currentIndex * (100 / itemsToShow)}%)`,
-                            width: `${(movies.length / itemsToShow) * 100}%`
-                        }}
-                    >
-                        {movies.map((movie, index) => (
-                            <div 
-                                key={movie.id} 
-                                className="flex-shrink-0 px-3"
-                                style={{ width: `${100 / movies.length}%` }}
-                            >
-                                <MovieCard movie={movie} index={index} />
-                            </div>
-                        ))}
-                    </motion.div>
-                </div>
-
-                {/* Indicators */}
-                <div className="flex justify-center mt-6 space-x-2">
-                    {Array.from({ length: maxIndex + 1 }).map((_, index) => (
-                        <button
-                            key={index}
-                            onClick={() => setCurrentIndex(index)}
-                            className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                                index === currentIndex 
-                                    ? 'bg-yellow-400 scale-125' 
-                                    : 'bg-gray-600 hover:bg-gray-400'
-                            }`}
-                        />
-                    ))}
-                </div>
-            </div>
-        );
+ // HYBRID CAROUSEL - ARROWS FOR PC + TOUCH FOR MOBILE
+const TouchSwipeCarousel = ({ movies, sectionRef }) => {
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [isDragging, setIsDragging] = useState(false);
+    const [startX, setStartX] = useState(0);
+    const [currentX, setCurrentX] = useState(0);
+    
+    const itemsPerView = {
+        mobile: 2,
+        tablet: 3,
+        desktop: 6
     };
 
-    // ENHANCED MOVIE CARD
+    const getItemsPerView = () => {
+        if (typeof window !== 'undefined') {
+            if (window.innerWidth < 640) return itemsPerView.mobile;
+            if (window.innerWidth < 1024) return itemsPerView.tablet;
+            return itemsPerView.desktop;
+        }
+        return itemsPerView.desktop;
+    };
+
+    const [itemsToShow, setItemsToShow] = useState(getItemsPerView());
+
+    useEffect(() => {
+        const handleResize = () => {
+            setItemsToShow(getItemsPerView());
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    const maxIndex = Math.max(0, movies.length - itemsToShow);
+
+    // Navigation functions
+    const nextSlide = () => {
+        setCurrentIndex(prev => Math.min(prev + 1, maxIndex));
+    };
+
+    const prevSlide = () => {
+        setCurrentIndex(prev => Math.max(prev - 1, 0));
+    };
+
+    // Touch/Mouse event handlers for smooth swiping
+    const handleStart = (e) => {
+        setIsDragging(true);
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        setStartX(clientX);
+        setCurrentX(clientX);
+    };
+
+    const handleMove = (e) => {
+        if (!isDragging) return;
+        
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        setCurrentX(clientX);
+    };
+
+    const handleEnd = () => {
+        if (!isDragging) return;
+        
+        const diff = startX - currentX;
+        const threshold = 50; // Minimum swipe distance
+        
+        if (Math.abs(diff) > threshold) {
+            if (diff > 0 && currentIndex < maxIndex) {
+                nextSlide();
+            } else if (diff < 0 && currentIndex > 0) {
+                prevSlide();
+            }
+        }
+        
+        setIsDragging(false);
+        setStartX(0);
+        setCurrentX(0);
+    };
+
+    return (
+        <div ref={sectionRef} className="relative">
+            {/* DESKTOP ARROWS - Only show on non-touch devices */}
+            {!isMobile && (
+                <>
+                    {/* Left Arrow */}
+                    {currentIndex > 0 && (
+                        <motion.button
+                            onClick={prevSlide}
+                            className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 bg-gray-900/80 backdrop-blur-sm rounded-full border border-gray-700/50 hover:bg-gray-800/90 hover:border-yellow-400/50 transition-all duration-300 flex items-center justify-center group"
+                            whileHover={{ scale: 1.1, x: -2 }}
+                            whileTap={{ scale: 0.95 }}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                        >
+                            <ChevronLeft className="w-6 h-6 text-yellow-400 group-hover:text-yellow-300" />
+                        </motion.button>
+                    )}
+
+                    {/* Right Arrow */}
+                    {currentIndex < maxIndex && (
+                        <motion.button
+                            onClick={nextSlide}
+                            className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 bg-gray-900/80 backdrop-blur-sm rounded-full border border-gray-700/50 hover:bg-gray-800/90 hover:border-yellow-400/50 transition-all duration-300 flex items-center justify-center group"
+                            whileHover={{ scale: 1.1, x: 2 }}
+                            whileTap={{ scale: 0.95 }}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                        >
+                            <ChevronRight className="w-6 h-6 text-yellow-400 group-hover:text-yellow-300" />
+                        </motion.button>
+                    )}
+                </>
+            )}
+
+            {/* Touch/Swipe Area with proper padding for arrows on desktop */}
+            <div 
+                className={`overflow-hidden ${!isMobile ? 'px-8' : 'px-0'} ${isMobile ? 'cursor-grab active:cursor-grabbing' : ''} select-none`}
+                onMouseDown={isMobile ? handleStart : undefined}
+                onMouseMove={isMobile ? handleMove : undefined}
+                onMouseUp={isMobile ? handleEnd : undefined}
+                onMouseLeave={isMobile ? handleEnd : undefined}
+                onTouchStart={handleStart}
+                onTouchMove={handleMove}
+                onTouchEnd={handleEnd}
+                style={{ touchAction: 'pan-y' }}
+            >
+                <motion.div 
+                    className="flex transition-transform duration-300 ease-out"
+                    style={{ 
+                        transform: `translateX(-${currentIndex * (100 / itemsToShow)}%) ${isDragging ? `translateX(${(currentX - startX) * 0.5}px)` : ''}`,
+                        width: `${(movies.length / itemsToShow) * 100}%`
+                    }}
+                >
+                    {movies.map((movie, index) => (
+                        <div 
+                            key={movie.id} 
+                            className="flex-shrink-0 px-3"
+                            style={{ width: `${100 / movies.length}%` }}
+                        >
+                            <MovieCard movie={movie} index={index} />
+                        </div>
+                    ))}
+                </motion.div>
+            </div>
+
+            {/* Indicators */}
+            <div className="flex justify-center mt-6 space-x-2">
+                {Array.from({ length: maxIndex + 1 }).map((_, index) => (
+                    <button
+                        key={index}
+                        onClick={() => setCurrentIndex(index)}
+                        className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                            index === currentIndex 
+                                ? 'bg-yellow-400 scale-125' 
+                                : 'bg-gray-600 hover:bg-gray-400'
+                        }`}
+                    />
+                ))}
+            </div>
+        </div>
+    );
+};
+
+
+    // ENHANCED MOVIE CARD WITH SMALLER MOBILE TEXT
     const MovieCard = ({ movie, index }) => (
         <motion.div
             className="group cursor-pointer"
@@ -473,36 +530,37 @@ const FilmiwayHomepage = () => {
                 {/* Gradient Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <div className="absolute bottom-6 left-6 right-6">
-                        <h3 className="text-white font-semibold text-lg mb-2 line-clamp-2">
+                        <h3 className="text-white font-semibold text-base sm:text-lg mb-2 line-clamp-2">
                             {movie.title}
                         </h3>
                         <div className="flex items-center justify-between mb-3">
                             <div className="flex items-center gap-2">
-                                <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                                <span className="text-yellow-400 font-medium">{movie.vote_average?.toFixed(1)}</span>
+                                <Star className="w-3 h-3 sm:w-4 sm:h-4 text-yellow-400 fill-current" />
+                                <span className="text-yellow-400 font-medium text-sm">{movie.vote_average?.toFixed(1)}</span>
                             </div>
-                            <span className="text-gray-300 text-sm">
+                            <span className="text-gray-300 text-xs sm:text-sm">
                                 {new Date(movie.release_date).getFullYear()}
                             </span>
                         </div>
-                        <button className="w-full bg-yellow-400 text-black py-2 rounded-lg font-medium hover:bg-yellow-300 transition-colors">
-                            View Details
+                        {/* SMALLER MOBILE TEXT */}
+                        <button className="w-full bg-yellow-400 text-black py-2 rounded-lg font-medium hover:bg-yellow-300 transition-colors text-xs sm:text-sm">
+                            {isMobile ? "Details" : "View Details"}
                         </button>
                     </div>
                 </div>
 
                 {/* Rating Badge */}
-                <div className="absolute top-4 right-4 bg-black/80 backdrop-blur-sm px-3 py-1 rounded-full">
+                <div className="absolute top-4 right-4 bg-black/80 backdrop-blur-sm px-2 py-1 sm:px-3 sm:py-1 rounded-full">
                     <div className="flex items-center gap-1">
                         <Star className="w-3 h-3 text-yellow-400 fill-current" />
-                        <span className="text-white text-sm font-medium">{movie.vote_average?.toFixed(1)}</span>
+                        <span className="text-white text-xs sm:text-sm font-medium">{movie.vote_average?.toFixed(1)}</span>
                     </div>
                 </div>
             </div>
         </motion.div>
     );
 
-    // Movie Section with Enhanced Layout
+    // Movie Section with Touch Swipe Support
     const MovieSection = ({ title, movies, icon: Icon, description, sectionRef }) => (
         <section className="mb-20">
             <motion.div
@@ -519,7 +577,7 @@ const FilmiwayHomepage = () => {
                 <p className="text-gray-400 text-lg max-w-2xl mx-auto">{description}</p>
             </motion.div>
             
-            <MovieCarousel movies={movies} sectionRef={sectionRef} />
+            <TouchSwipeCarousel movies={movies} sectionRef={sectionRef} />
         </section>
     );
 
@@ -593,7 +651,7 @@ const FilmiwayHomepage = () => {
                 <Navigation />
                 <HeroSection />
 
-                {/* Movie Sections with Carousels */}
+                {/* Movie Sections with Touch Swipe Carousels */}
                 <div className="container mx-auto px-4 sm:px-6 py-20 space-y-20">
                     <MovieSection 
                         title="Trending This Week" 
@@ -685,4 +743,3 @@ const FilmiwayHomepage = () => {
 };
 
 export default FilmiwayHomepage;
-
