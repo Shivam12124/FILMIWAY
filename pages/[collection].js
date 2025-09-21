@@ -1,4 +1,4 @@
-// pages/[collection].js - Dynamic Collection Pages (SSG) - CREATE THIS FILE
+// pages/collection/[collection].js - Dynamic Collection Pages (SSG) - FIXED
 import React from 'react';
 import Head from 'next/head';
 
@@ -45,7 +45,7 @@ const CollectionPage = ({ collection, movies, movieData }) => {
                     
                     {/* Collection Badges */}
                     <div className="flex flex-wrap justify-center gap-4 mb-12">
-                        {collection.badges.map((badge, index) => (
+                        {collection.badges?.map((badge, index) => (
                             <div key={index} className="bg-yellow-400/20 border border-yellow-400/50 rounded-lg px-4 py-2">
                                 <div className="text-yellow-400 font-bold text-sm">{badge.label}</div>
                                 <div className="text-gray-300 text-xs">{badge.desc}</div>
@@ -57,7 +57,7 @@ const CollectionPage = ({ collection, movies, movieData }) => {
                     <div className="grid grid-cols-2 md:grid-cols-5 gap-6 mb-16">
                         {movies.map((movie, index) => (
                             <CinematicMovieCard 
-                                key={movie.imdbID}
+                                key={movie.imdbID || movie.id || index}
                                 movie={movie}
                                 rank={10 - index}
                             />
@@ -67,7 +67,7 @@ const CollectionPage = ({ collection, movies, movieData }) => {
 
                 {/* Movie Details - Uses ALL your existing components */}
                 {movies.map((movie) => (
-                    <div key={movie.imdbID} className="mb-16">
+                    <div key={movie.imdbID || movie.id} className="mb-16">
                         <EnhancedMovieHero movie={movie} />
                         <MovieDetailsSection movie={movie} />
                         <EnhancedIntensityGraph movie={movie} />
@@ -87,35 +87,45 @@ const CollectionPage = ({ collection, movies, movieData }) => {
 
 // ✅ SSG Functions
 export async function getStaticPaths() {
-    const slugs = getAllCollectionSlugs();
-    const paths = slugs.map(slug => ({
-        params: { collection: slug }
-    }));
+    try {
+        const slugs = getAllCollectionSlugs();
+        const paths = slugs.map(slug => ({
+            params: { collection: slug }
+        }));
 
-    return { paths, fallback: false };
+        return { paths, fallback: false };
+    } catch (error) {
+        return { paths: [], fallback: false };
+    }
 }
 
 export async function getStaticProps({ params }) {
-    const collection = getCollectionBySlug(params.collection);
-    
-    if (!collection) {
+    try {
+        const collection = getCollectionBySlug(params?.collection);
+        
+        if (!collection) {
+            return { notFound: true };
+        }
+
+        // Import appropriate data
+        let dataModule = null;
+        if (params?.collection === 'movies-like-inception') {
+            try {
+                dataModule = await import('../data/moviesLikeInception');
+            } catch (error) {
+                console.error('Failed to import data:', error);
+            }
+        }
+
+        const movies = dataModule?.COMPLETE_MOVIE_DATABASE || [];
+        const movieData = dataModule?.COMPLETE_MOVIE_DATA || {};
+
+        return {
+            props: { collection, movies, movieData }
+        };
+    } catch (error) {
         return { notFound: true };
     }
-
-    // Import appropriate data
-    let dataModule;
-    if (params.collection === 'movies-like-inception') {
-       
-   
-
-    }
-
-    const movies = dataModule?.COMPLETE_MOVIE_DATABASE || [];
-    const movieData = dataModule?.COMPLETE_MOVIE_DATA || {};
-
-    return {
-        props: { collection, movies, movieData }
-    };
 }
 
 export default CollectionPage;
