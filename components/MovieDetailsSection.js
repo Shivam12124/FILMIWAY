@@ -1,4 +1,4 @@
-// components/MovieDetailsSection.js - WITH AGE RATING ADDED
+// components/MovieDetailsSection.js - COMPLETE WITH MEMENTO FAQ INTEGRATION
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Users, Film, BookOpen, Star, Brain, BarChart3, Shield } from 'lucide-react';
@@ -9,8 +9,9 @@ import SensitiveContentTimelineSection from './SensitiveContentTimelineSection';
 import EnhancedWhereToWatchSection from './EnhancedWhereToWatchSection';
 import RealCommentsRatingSection from './RealCommentsRatingSection';
 import SEOFAQSection from './SEOFAQSection';
+import MementoSEOFAQSection from './MementoSEOFAQSection';
 
-const MovieDetailsSection = React.memo(({ movie }) => {
+const MovieDetailsSection = React.memo(({ movie, fromMementoCollection }) => {
   const movieInfo = COMPLETE_MOVIE_DATA[movie?.tmdbId];
   if (!movie || !movieInfo) return null;
 
@@ -57,7 +58,7 @@ const MovieDetailsSection = React.memo(({ movie }) => {
   const genre = movieInfo.genre || movie.Genre || 'Drama';
   const year = movie.Year || movie.year || '20XX';
   const runtime = getAccurateRuntime(title);
-  const ageRating = getAgeRating(title); // GET AGE RATING
+  const ageRating = getAgeRating(title);
   const quote = STRATEGIC_QUOTES[movie.tmdbId] || '';
   const mindBendingIndex = movieInfo.mindBendingIndex ?? 85;
   const complexityLevel = movieInfo.complexityLevel || 'HIGH';
@@ -235,7 +236,7 @@ const MovieDetailsSection = React.memo(({ movie }) => {
       {/* WHERE TO WATCH FIRST */}
       <EnhancedWhereToWatchSection movie={movie} />
 
-      {/* 🎯 COMPLEXITY SCORE SECTION - STATS MOVED TO RIGHT */}
+      {/* 🎯 SMART COMPLEXITY SCORE SECTION - COLLECTION-AWARE */}
       <motion.div
         className="mb-8 sm:mb-12 bg-gradient-to-br from-gray-800/40 to-gray-900/60 rounded-xl border border-gray-700/50 p-4 sm:p-8 shadow-2xl backdrop-blur-sm relative overflow-hidden"
         initial={{ opacity: 0, scale: 0.95 }}
@@ -251,17 +252,21 @@ const MovieDetailsSection = React.memo(({ movie }) => {
 
         {/* Header with title on left, stats on right */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 sm:mb-8 gap-4 sm:gap-6">
-          {/* Title on left */}
+          {/* Smart Title on left */}
           <div className="flex items-center gap-4">
             <Star className="w-6 h-6 text-green-400" />
-            <h3 className="text-2xl font-light text-gray-200 tracking-wide uppercase">COMPLEXITY SCORE</h3>
+            <h3 className="text-2xl font-light text-gray-200 tracking-wide uppercase">
+              {fromMementoCollection ? 'MEMORY COMPLEXITY SCORE' : 'COMPLEXITY SCORE'}
+            </h3>
           </div>
           
           {/* Stats moved to right */}
           <div className="flex items-center gap-6 sm:gap-8">
             <div className="text-right">
               <div className="text-3xl sm:text-4xl font-extralight mb-1 tracking-wider text-gray-200">{mindBendingIndex}</div>
-              <div className="text-xs text-gray-400 font-light tracking-wide uppercase">MIND-BENDING INDEX</div>
+              <div className="text-xs text-gray-400 font-light tracking-wide uppercase">
+                {fromMementoCollection ? 'MEMORY INDEX' : 'MIND-BENDING INDEX'}
+              </div>
             </div>
             <div className="text-right">
               <div className="text-3xl sm:text-4xl font-extralight mb-1 tracking-wider text-gray-200">{rating}</div>
@@ -273,7 +278,9 @@ const MovieDetailsSection = React.memo(({ movie }) => {
         <div className="space-y-4 sm:space-y-6">
           <div>
             <div className="flex items-center justify-between mb-2 sm:mb-3">
-              <span className="text-sm text-gray-300 font-light tracking-wider uppercase">COGNITIVE DISTORTION LEVEL</span>
+              <span className="text-sm text-gray-300 font-light tracking-wider uppercase">
+                {fromMementoCollection ? 'MEMORY DISTORTION LEVEL' : 'COGNITIVE DISTORTION LEVEL'}
+              </span>
               <span 
                 className="text-sm font-light px-3 py-1 sm:px-4 sm:py-2 rounded-lg border backdrop-blur-sm tracking-wider uppercase"
                 style={{
@@ -310,14 +317,23 @@ const MovieDetailsSection = React.memo(({ movie }) => {
               </div>
             </div>
 
+            {/* Smart Description */}
             <p className="text-gray-300/90 text-sm font-light leading-relaxed tracking-wide mt-3">
-              {mindBendingIndex >= 90 
-                ? "A transcendent masterpiece that redefines narrative complexity, requiring multiple viewings for complete comprehension."
-                : mindBendingIndex >= 80 && mindBendingIndex < 90
-                ? "Sophisticated cinematic storytelling with advanced non-linear elements and reality-bending concepts."
-                : mindBendingIndex >= 70 && mindBendingIndex < 80
-                ? "Thoughtfully complex narrative structure with engaging mind-bending elements throughout."
-                : "Accessible complexity with subtle mind-bending elements that reward careful viewing."
+              {fromMementoCollection 
+                ? (mindBendingIndex >= 90 
+                  ? "A transcendent masterpiece that redefines memory-based storytelling, requiring multiple viewings for complete comprehension."
+                  : mindBendingIndex >= 80 && mindBendingIndex < 90
+                  ? "Sophisticated memory manipulation with advanced identity-questioning elements and temporal complexity."
+                  : mindBendingIndex >= 70 && mindBendingIndex < 80
+                  ? "Thoughtfully complex memory narrative with engaging identity-bending elements throughout."
+                  : "Accessible memory complexity with subtle identity-questioning elements that reward careful viewing.")
+                : (mindBendingIndex >= 90 
+                  ? "A transcendent masterpiece that redefines narrative complexity, requiring multiple viewings for complete comprehension."
+                  : mindBendingIndex >= 80 && mindBendingIndex < 90
+                  ? "Sophisticated cinematic storytelling with advanced non-linear elements and reality-bending concepts."
+                  : mindBendingIndex >= 70 && mindBendingIndex < 80
+                  ? "Thoughtfully complex narrative structure with engaging mind-bending elements throughout."
+                  : "Accessible complexity with subtle mind-bending elements that reward careful viewing.")
               }
             </p>
           </div>
@@ -329,7 +345,13 @@ const MovieDetailsSection = React.memo(({ movie }) => {
       <EnhancedIntensityGraph scenes={movieInfo.scenes} dominantColor={movieInfo.dominantColor} />
       <StrategicDNAHelix dna={movieInfo.dna} dominantColor={movieInfo.dominantColor} />
       <RealCommentsRatingSection movie={movie} />
-      <SEOFAQSection movie={movie} />
+      
+      {/* 🔥 SMART FAQ SECTION - SHOWS CORRECT FAQ BASED ON COLLECTION */}
+      {fromMementoCollection ? (
+        <MementoSEOFAQSection movie={movie} />
+      ) : (
+        <SEOFAQSection movie={movie} />
+      )}
     </motion.div>
   );
 });

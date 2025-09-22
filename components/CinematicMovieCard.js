@@ -1,4 +1,4 @@
-// components/CinematicMovieCard.js
+// components/CinematicMovieCard.js - FIXED PROPERTY NAMES
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Crown, Star } from 'lucide-react';
@@ -73,7 +73,7 @@ const CinematicMovieCard = React.memo(({ movie, rank, isActive }) => {
                 </motion.div>
             </div>
             
-            {/* Mobile-Optimized Movie Info */}
+            {/* 🔥 FIXED MOVIE INFO - CORRECT PROPERTY NAMES */}
             <div className="text-center space-y-2 sm:space-y-3 lg:space-y-4 z-10 max-w-sm px-2 sm:px-4">
                 <motion.h2 
                     className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-light tracking-wide text-gray-100 leading-tight" 
@@ -82,8 +82,9 @@ const CinematicMovieCard = React.memo(({ movie, rank, isActive }) => {
                 >
                     {movie.Title}
                 </motion.h2>
+                {/* 🔥 THIS IS THE FIXED RUNTIME DISPLAY - USING CORRECT PROPERTY NAMES */}
                 <div className="text-gray-400 text-xs sm:text-sm font-light">
-                    {movie.year} • {movie.genre} • {movie.runtime}min
+                    {movie.Year} • {movie.Genre?.split(',')[0].trim() || 'Drama'} • {movie.Runtime || '120 min'}
                 </div>
                 <motion.p 
                     className="text-gray-300/80 text-xs sm:text-sm leading-relaxed font-light tracking-wide opacity-0 group-hover:opacity-100 transition-all duration-500"

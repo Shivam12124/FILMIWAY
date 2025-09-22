@@ -1,16 +1,28 @@
 // utils/movieData.js - Complete Movie Database and Metadata
+// utils/movieData.js - COMPLETE FIXED DATABASE
+// utils/movieData.js - COMPLETE MOVIE DATABASE WITH CORRECT IMDB IDS
 export const COMPLETE_MOVIE_DATABASE = [
-    { "tmdbId": 14337, "imdbID": "tt0390384", "Title": "Primer", "year": 2004, "genre": "Sci-Fi", "runtime": 77 },
-    { "tmdbId": 4960, "imdbID": "tt0383028", "Title": "Synecdoche, New York", "year": 2008, "genre": "Drama", "runtime": 124 },
-    { "tmdbId": 1018, "imdbID": "tt0166924", "Title": "Mulholland Drive", "year": 2001, "genre": "Mystery", "runtime": 147 },
-    { "tmdbId": 206487, "imdbID": "tt2397535", "Title": "Predestination", "year": 2014, "genre": "Sci-Fi", "runtime": 97 },
-    { "tmdbId": 220289, "imdbID": "tt2866360", "Title": "Coherence", "year": 2013, "genre": "Sci-Fi", "runtime": 89 },
-    { "tmdbId": 141, "imdbID": "tt0246578", "Title": "Donnie Darko", "year": 2001, "genre": "Sci-Fi", "runtime": 113 },
-    { "tmdbId": 181886, "imdbID": "tt2316411", "Title": "Enemy", "year": 2013, "genre": "Thriller", "runtime": 91 },
-    { "tmdbId": 1381, "imdbID": "tt0414993", "Title": "The Fountain", "year": 2006, "genre": "Drama", "runtime": 96 },
-    { "tmdbId": 31011, "imdbID": "tt1130884", "Title": "Mr. Nobody", "year": 2009, "genre": "Sci-Fi", "runtime": 141 },
-    { "tmdbId": 11324, "imdbID": "tt0825232", "Title": "Shutter Island", "year": 2010, "genre": "Thriller", "runtime": 138 }
+    { "tmdbId": 14337, "imdbID": "tt0390384", "Title": "Primer", "Year": "2004", "Genre": "Sci-Fi", "Runtime": "77 min", "Plot": "Four friends accidentally discover a way to travel back in time.", "Poster": "https://image.tmdb.org/t/p/w500/qyIiKVhPXWoApBNcpCLhYe8K9p7.jpg", "imdbRating": "6.9", "Director": "Shane Carruth" },
+    
+    { "tmdbId": 4960, "imdbID": "tt0383028", "Title": "Synecdoche, New York", "Year": "2008", "Genre": "Drama", "Runtime": "124 min", "Plot": "A theatre director struggles with his work and the women in his life.", "Poster": "https://image.tmdb.org/t/p/w500/2nOjh4MEjjTzLo69gTgwjdZW7cz.jpg", "imdbRating": "7.5", "Director": "Charlie Kaufman" },
+    
+    { "tmdbId": 1018, "imdbID": "tt0166924", "Title": "Mulholland Drive", "Year": "2001", "Genre": "Mystery, Drama", "Runtime": "147 min", "Plot": "After a car wreck renders a woman amnesiac, she and a Hollywood-hopeful search for clues.", "Poster": "https://image.tmdb.org/t/p/w500/tVxGt7uffLVhIIcwuldXOMpFBPX.jpg", "imdbRating": "7.9", "Director": "David Lynch" },
+    
+    { "tmdbId": 206487, "imdbID": "tt2397535", "Title": "Predestination", "Year": "2014", "Genre": "Sci-Fi, Thriller", "Runtime": "97 min", "Plot": "A temporal agent's final assignment becomes a mind-bending journey through identity.", "Poster": "https://image.tmdb.org/t/p/w500/r6SKC9UJOgqSGfEV6bS8Eb0xILd.jpg", "imdbRating": "7.4", "Director": "Michael Spierig, Peter Spierig" },
+    
+    { "tmdbId": 220289, "imdbID": "tt2866360", "Title": "Coherence", "Year": "2013", "Genre": "Sci-Fi, Drama", "Runtime": "89 min", "Plot": "A dinner party becomes a labyrinth of parallel realities when a comet passes overhead.", "Poster": "https://image.tmdb.org/t/p/w500/54abeBC8arCzn1R4wY3JrNqRBwQ.jpg", "imdbRating": "7.2", "Director": "James Ward Byrkit" },
+    
+    { "tmdbId": 141, "imdbID": "tt0246578", "Title": "Donnie Darko", "Year": "2001", "Genre": "Sci-Fi, Drama", "Runtime": "113 min", "Plot": "A troubled teenager is guided by a mysterious figure through time travel and destiny.", "Poster": "https://image.tmdb.org/t/p/w500/fhQoQfejY1hUcwyuLgpBrYs6uFt.jpg", "imdbRating": "8.0", "Director": "Richard Kelly" },
+    
+    { "tmdbId": 181886, "imdbID": "tt2316411", "Title": "Enemy", "Year": "2013", "Genre": "Thriller, Mystery", "Runtime": "91 min", "Plot": "A man seeks out his exact look-alike after spotting him in a movie.", "Poster": "https://image.tmdb.org/t/p/w500/jkJMpGZW72qN0vxOJCVa8dSFHbx.jpg", "imdbRating": "6.9", "Director": "Denis Villeneuve" },
+    
+    { "tmdbId": 1381, "imdbID": "tt0414993", "Title": "The Fountain", "Year": "2006", "Genre": "Drama, Romance, Sci-Fi", "Runtime": "96 min", "Plot": "Aronofsky's meditation on love, death, and immortality spans three timelines.", "Poster": "https://image.tmdb.org/t/p/w500/oJcM8gFdLVy7zyPKYLJNjEGNfJO.jpg", "imdbRating": "7.2", "Director": "Darren Aronofsky" },
+    
+    { "tmdbId": 31011, "imdbID": "tt0485947", "Title": "Mr. Nobody", "Year": "2009", "Genre": "Sci-Fi, Drama", "Runtime": "141 min", "Plot": "The last mortal human follows infinite potential lives in this visually stunning epic.", "Poster": "https://image.tmdb.org/t/p/w500/4NWa2P7fz2V0Zf39L2qhyMcjKHN.jpg", "imdbRating": "7.8", "Director": "Jaco Van Dormael" },
+    
+    { "tmdbId": 11324, "imdbID": "tt1130884", "Title": "Shutter Island", "Year": "2010", "Genre": "Thriller, Mystery", "Runtime": "138 min", "Plot": "Two marshals investigate a mysterious island where nothing is as it seems.", "Poster": "https://image.tmdb.org/t/p/w500/52d7CABzWHlse8kTIsEjFKwxjzd.jpg", "imdbRating": "8.2", "Director": "Martin Scorsese" }
 ];
+
 
 export const COMPLETE_MOVIE_DATA = {
     14337: {

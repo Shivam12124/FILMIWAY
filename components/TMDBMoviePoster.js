@@ -1,9 +1,9 @@
-// components/TMDBMoviePoster.js - REAL-TIME TMDB POSTER FETCHING
+// components/TMDBMoviePoster.js - FIXED WITH CORRECT SEARCH FALLBACK
 import React, { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { COMPLETE_MOVIE_DATA } from '../utils/movieData';
 
-const TMDB_API_KEY =  process.env.NEXT_PUBLIC_TMDB_API_KEY
+const TMDB_API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
 const TMDB_BASE_URL = 'https://api.themoviedb.org/3';
 const TMDB_IMAGE_BASE_URL = 'https://image.tmdb.org/t/p';
 
@@ -12,36 +12,77 @@ const TMDBMoviePoster = React.memo(({ movie, className = "", alt }) => {
     const [isLoading, setIsLoading] = useState(true);
     const [hasError, setHasError] = useState(false);
 
-    // Fetch real poster path from TMDB API
+    // 🔥 SEARCH BY MOVIE TITLE + YEAR IF DIRECT ID FAILS
+    const searchMovieByTitle = useCallback(async (title, year) => {
+        try {
+            console.log(`🔍 Searching for ${title} (${year})`);
+            
+            const searchResponse = await fetch(
+                `${TMDB_BASE_URL}/search/movie?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(title)}&year=${year}`
+            );
+            
+            if (searchResponse.ok) {
+                const searchData = await searchResponse.json();
+                console.log(`🔍 Search results for ${title}:`, searchData.results);
+                
+                // Find exact match by year
+                const exactMatch = searchData.results.find(result => 
+                    result.release_date && result.release_date.startsWith(year)
+                );
+                
+                if (exactMatch) {
+                    console.log(`✅ Found exact match for ${title}:`, exactMatch);
+                    return exactMatch;
+                }
+                
+                // Fallback to first result
+                if (searchData.results.length > 0) {
+                    console.log(`⚠️ Using first result for ${title}:`, searchData.results[0]);
+                    return searchData.results[0];
+                }
+            }
+        } catch (error) {
+            console.error(`❌ Search failed for ${title}:`, error);
+        }
+        return null;
+    }, []);
+
+    // Fetch poster with search fallback
     const fetchMoviePoster = useCallback(async (tmdbId) => {
         try {
-            console.log(`🎬 Fetching poster for ${movie.Title} (TMDB ID: ${tmdbId})`);
+            // Step 1: Try direct TMDB ID
+            console.log(`🎬 Trying direct fetch for ${movie.Title} with TMDB ID: ${tmdbId}`);
             
-            const response = await fetch(
+            let response = await fetch(
                 `${TMDB_BASE_URL}/movie/${tmdbId}?api_key=${TMDB_API_KEY}&language=en-US`
             );
             
-            if (!response.ok) {
-                throw new Error(`TMDB API error: ${response.status}`);
+            let data = null;
+            
+            if (response.ok) {
+                data = await response.json();
+                console.log(`✅ Direct API success for ${movie.Title}:`, data);
+            } else {
+                console.log(`⚠️ Direct ID failed for ${movie.Title} (${response.status}), trying search...`);
+                
+                // Step 2: Search by title + year
+                data = await searchMovieByTitle(movie.Title, movie.Year);
             }
             
-            const data = await response.json();
-            console.log(`✅ TMDB API Response for ${movie.Title}:`, data.poster_path);
-            
-            if (data.poster_path) {
+            if (data && data.poster_path) {
                 const fullPosterUrl = `${TMDB_IMAGE_BASE_URL}/w500${data.poster_path}`;
                 setPosterUrl(fullPosterUrl);
-                console.log(`✅ Full poster URL for ${movie.Title}:`, fullPosterUrl);
+                console.log(`✅ Poster found for ${movie.Title}: ${fullPosterUrl}`);
                 return fullPosterUrl;
             } else {
-                throw new Error('No poster path found');
+                throw new Error(`No poster found for ${movie.Title}`);
             }
         } catch (error) {
-            console.error(`❌ Error fetching poster for ${movie.Title}:`, error);
+            console.error(`❌ All methods failed for ${movie.Title}:`, error);
             setHasError(true);
             return null;
         }
-    }, [movie.Title]);
+    }, [movie.Title, movie.Year, searchMovieByTitle]);
 
     useEffect(() => {
         setIsLoading(true);
@@ -49,39 +90,35 @@ const TMDBMoviePoster = React.memo(({ movie, className = "", alt }) => {
         setPosterUrl(null);
         
         if (movie.tmdbId) {
-            fetchMoviePoster(movie.tmdbId);
+            fetchMoviePoster(movie.tmdbId).finally(() => setIsLoading(false));
+        } else {
+            console.error(`❌ No TMDB ID provided for ${movie.Title}`);
+            setIsLoading(false);
+            setHasError(true);
         }
     }, [movie.tmdbId, fetchMoviePoster]);
 
-    const handleImageLoad = useCallback(() => {
-        setIsLoading(false);
-        console.log(`✅ Poster image loaded successfully for ${movie.Title}`);
-    }, [movie.Title]);
-
-    const handleImageError = useCallback(() => {
-        setIsLoading(false);
-        setHasError(true);
-        console.log(`❌ Poster image failed to load for ${movie.Title}`);
-    }, [movie.Title]);
-
     const createPlaceholderSVG = () => {
         const dominantColor = COMPLETE_MOVIE_DATA[movie.tmdbId]?.dominantColor || '#ca8a04';
+        const movieTitle = movie.Title || 'Unknown Movie';
+        const movieInfo = `${movie.Year || '2024'} • ${movie.Genre?.split(',')[0] || 'Drama'}`;
+        
         return `data:image/svg+xml,${encodeURIComponent(`
             <svg xmlns="http://www.w3.org/2000/svg" width="400" height="600" viewBox="0 0 400 600">
                 <defs>
-                    <linearGradient id="bg-${movie.tmdbId}" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <linearGradient id="bg-${movie.tmdbId || 'unknown'}" x1="0%" y1="0%" x2="100%" y2="100%">
                         <stop offset="0%" style="stop-color:#111827;stop-opacity:1" />
                         <stop offset="50%" style="stop-color:#1f2937;stop-opacity:1" />
                         <stop offset="100%" style="stop-color:#111827;stop-opacity:1" />
                     </linearGradient>
                 </defs>
-                <rect width="400" height="600" fill="url(#bg-${movie.tmdbId})"/>
+                <rect width="400" height="600" fill="url(#bg-${movie.tmdbId || 'unknown'})"/>
                 <rect x="20" y="20" width="360" height="560" fill="none" stroke="${dominantColor}" stroke-width="2" opacity="0.4"/>
                 <circle cx="200" cy="200" r="80" fill="none" stroke="${dominantColor}" stroke-width="3" opacity="0.3"/>
                 <rect x="100" y="350" width="200" height="4" fill="${dominantColor}" opacity="0.6"/>
-                <text x="200" y="420" text-anchor="middle" font-family="Playfair Display, serif" font-size="26" font-weight="bold" fill="${dominantColor}" opacity="0.9">${movie.Title}</text>
-                <text x="200" y="460" text-anchor="middle" font-family="Inter, sans-serif" font-size="18" fill="#9ca3af" opacity="0.7">${movie.year} • ${movie.genre}</text>
-                <text x="200" y="500" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#dc2626" opacity="0.8">Loading from TMDB...</text>
+                <text x="200" y="420" text-anchor="middle" font-family="Playfair Display, serif" font-size="22" font-weight="bold" fill="${dominantColor}" opacity="0.9">${movieTitle}</text>
+                <text x="200" y="460" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" fill="#9ca3af" opacity="0.7">${movieInfo}</text>
+                <text x="200" y="500" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="${hasError ? '#dc2626' : '#fbbf24'}" opacity="0.8">${hasError ? 'Failed to load' : 'Searching TMDB...'}</text>
             </svg>
         `)}`;
     };
@@ -97,10 +134,10 @@ const TMDBMoviePoster = React.memo(({ movie, className = "", alt }) => {
                             className="w-6 h-6 sm:w-8 sm:h-8 border-2 border-yellow-400/30 border-t-yellow-400 rounded-full mx-auto" 
                         />
                         <div className="text-xs text-gray-400 font-light">
-                            Fetching from TMDB API...
+                            Loading {movie.Title}...
                         </div>
                         <div className="text-xs text-gray-500">
-                            {movie.Title}
+                            Searching TMDB...
                         </div>
                     </div>
                 </div>
@@ -108,24 +145,22 @@ const TMDBMoviePoster = React.memo(({ movie, className = "", alt }) => {
             
             <img 
                 src={posterUrl || createPlaceholderSVG()} 
-                alt={alt || `${movie.Title} (${movie.year}) - TMDB Poster`} 
+                alt={alt || `${movie.Title} (${movie.Year}) - Movie Poster`} 
                 className={`w-full h-full object-cover rounded-xl transition-all duration-500 ${isLoading ? 'opacity-0' : 'opacity-100'}`} 
-                onLoad={handleImageLoad} 
-                onError={handleImageError} 
                 loading="lazy"
             />
             
             <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent rounded-xl pointer-events-none" />
             
-            {/* TMDB Status Badge */}
+            {/* Enhanced Status Badge */}
             <div className="absolute top-2 right-2 bg-blue-600/80 text-white text-xs px-2 py-1 rounded">
-                {posterUrl ? '✅ TMDB' : '⏳ Loading'}
+                {posterUrl ? '✅ FOUND' : hasError ? '❌ Error' : '🔍 Searching'}
             </div>
             
             {/* Debug info */}
             {process.env.NODE_ENV === 'development' && (
-                <div className="absolute bottom-1 left-1 bg-black/70 text-white text-xs px-1 rounded">
-                    ID:{movie.tmdbId} | {posterUrl ? 'Loaded' : hasError ? 'Error' : 'Loading'}
+                <div className="absolute bottom-1 left-1 bg-black/80 text-white text-xs px-2 py-1 rounded max-w-[90%] truncate">
+                    {movie.Title} ({movie.Year}) | ID:{movie.tmdbId} | {posterUrl ? 'FOUND' : hasError ? 'ERROR' : 'SEARCHING'}
                 </div>
             )}
         </div>
