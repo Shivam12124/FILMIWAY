@@ -31,5 +31,12 @@ Allow: /
 User-agent: Bingbot
 Allow: /
 
+# 🔥 EXPLICITLY ALLOW ALL MOVIE COLLECTIONS AND PAGES
+Allow: /collection/movies-like-inception/
+Allow: /collection/movies-like-memento/
+Allow: /movies/
+Allow: /movies/like-memento/
+Allow: /search
+
 # Filmiway Sitemap
 Sitemap: https://filmiway.com/sitemap.xml

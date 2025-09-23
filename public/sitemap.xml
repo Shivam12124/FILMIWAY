@@ -3,13 +3,13 @@
     <!-- MAIN PAGES -->
     <url>
         <loc>https://filmiway.com/</loc>
-        <lastmod>2025-09-21</lastmod>
+        <lastmod>2025-09-23</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
         <loc>https://filmiway.com/search</loc>
-        <lastmod>2025-09-21</lastmod>
+        <lastmod>2025-09-23</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -17,7 +17,15 @@
     <!-- COLLECTIONS -->
     <url>
         <loc>https://filmiway.com/collection/movies-like-inception</loc>
-        <lastmod>2025-09-21</lastmod>
+        <lastmod>2025-09-23</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+    <!-- 🔥 NEW MEMENTO COLLECTION -->
+    <url>
+        <loc>https://filmiway.com/collection/movies-like-memento</loc>
+        <lastmod>2025-09-23</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
@@ -27,7 +35,7 @@
     <!-- 1. PRIMER (2004) -->
     <url>
         <loc>https://filmiway.com/movies/tt0390384</loc>
-        <lastmod>2025-09-21</lastmod>
+        <lastmod>2025-09-23</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
@@ -35,7 +43,7 @@
     <!-- 2. SYNECDOCHE, NEW YORK (2008) -->
     <url>
         <loc>https://filmiway.com/movies/tt0383028</loc>
-        <lastmod>2025-09-21</lastmod>
+        <lastmod>2025-09-23</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
@@ -43,7 +51,7 @@
     <!-- 3. MULHOLLAND DRIVE (2001) -->
     <url>
         <loc>https://filmiway.com/movies/tt0166924</loc>
-        <lastmod>2025-09-21</lastmod>
+        <lastmod>2025-09-23</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
@@ -51,7 +59,7 @@
     <!-- 4. PREDESTINATION (2014) -->
     <url>
         <loc>https://filmiway.com/movies/tt2397535</loc>
-        <lastmod>2025-09-21</lastmod>
+        <lastmod>2025-09-23</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
@@ -59,7 +67,7 @@
     <!-- 5. COHERENCE (2013) -->
     <url>
         <loc>https://filmiway.com/movies/tt2866360</loc>
-        <lastmod>2025-09-21</lastmod>
+        <lastmod>2025-09-23</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
@@ -67,7 +75,7 @@
     <!-- 6. DONNIE DARKO (2001) -->
     <url>
         <loc>https://filmiway.com/movies/tt0246578</loc>
-        <lastmod>2025-09-21</lastmod>
+        <lastmod>2025-09-23</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
@@ -75,7 +83,7 @@
     <!-- 7. ENEMY (2013) -->
     <url>
         <loc>https://filmiway.com/movies/tt2316411</loc>
-        <lastmod>2025-09-21</lastmod>
+        <lastmod>2025-09-23</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
@@ -83,7 +91,7 @@
     <!-- 8. THE FOUNTAIN (2006) -->
     <url>
         <loc>https://filmiway.com/movies/tt0414993</loc>
-        <lastmod>2025-09-21</lastmod>
+        <lastmod>2025-09-23</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
@@ -91,7 +99,7 @@
     <!-- 9. MR. NOBODY (2009) -->
     <url>
         <loc>https://filmiway.com/movies/tt0485947</loc>
-        <lastmod>2025-09-21</lastmod>
+        <lastmod>2025-09-23</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
@@ -99,10 +107,91 @@
     <!-- 10. SHUTTER ISLAND (2010) -->
     <url>
         <loc>https://filmiway.com/movies/tt1130884</loc>
-        <lastmod>2025-09-21</lastmod>
+        <lastmod>2025-09-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- 🔥 NEW MEMENTO MOVIE PAGES - SAME MOVIES BUT DIFFERENT CONTEXT -->
+    
+    <!-- 1. PRIMER (2004) - MEMENTO PERSPECTIVE -->
+    <url>
+        <loc>https://filmiway.com/movies/like-memento/tt0390384</loc>
+        <lastmod>2025-09-23</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     
-    </urlset>
-  
+    <!-- 2. SYNECDOCHE, NEW YORK (2008) - MEMENTO PERSPECTIVE -->
+    <url>
+        <loc>https://filmiway.com/movies/like-memento/tt0383028</loc>
+        <lastmod>2025-09-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- 3. MULHOLLAND DRIVE (2001) - MEMENTO PERSPECTIVE -->
+    <url>
+        <loc>https://filmiway.com/movies/like-memento/tt0166924</loc>
+        <lastmod>2025-09-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- 4. PREDESTINATION (2014) - MEMENTO PERSPECTIVE -->
+    <url>
+        <loc>https://filmiway.com/movies/like-memento/tt2397535</loc>
+        <lastmod>2025-09-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- 5. COHERENCE (2013) - MEMENTO PERSPECTIVE -->
+    <url>
+        <loc>https://filmiway.com/movies/like-memento/tt2866360</loc>
+        <lastmod>2025-09-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- 6. DONNIE DARKO (2001) - MEMENTO PERSPECTIVE -->
+    <url>
+        <loc>https://filmiway.com/movies/like-memento/tt0246578</loc>
+        <lastmod>2025-09-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- 7. ENEMY (2013) - MEMENTO PERSPECTIVE -->
+    <url>
+        <loc>https://filmiway.com/movies/like-memento/tt2316411</loc>
+        <lastmod>2025-09-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- 8. THE FOUNTAIN (2006) - MEMENTO PERSPECTIVE -->
+    <url>
+        <loc>https://filmiway.com/movies/like-memento/tt0414993</loc>
+        <lastmod>2025-09-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- 9. MR. NOBODY (2009) - MEMENTO PERSPECTIVE -->
+    <url>
+        <loc>https://filmiway.com/movies/like-memento/tt0485947</loc>
+        <lastmod>2025-09-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- 10. SHUTTER ISLAND (2010) - MEMENTO PERSPECTIVE -->
+    <url>
+        <loc>https://filmiway.com/movies/like-memento/tt1130884</loc>
+        <lastmod>2025-09-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+</urlset>
