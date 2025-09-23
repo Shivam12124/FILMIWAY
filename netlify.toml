@@ -1,6 +1,24 @@
 [build]
+  publish = "out"
   command = "npm run build"
-  publish = ".next"
 
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
+[build.environment]
+  NODE_VERSION = "18"
+
+[[redirects]]
+  from = "/movies/*"
+  to = "/movies/[id].html"
+  status = 200
+
+[[redirects]]
+  from = "/collection/*"
+  to = "/collection/[...slug].html" 
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[template.environment]
+  NEXT_PUBLIC_TMDB_API_KEY = "6054e5498fb2619274454959c38bbdfa"

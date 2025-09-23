@@ -1,4 +1,4 @@
-// pages/movies/[id].js - COMPLETE SMART COLLECTION DETECTION WITH MEMENTO FAQ
+// pages/movies/[id].js - COMPLETE SMART COLLECTION DETECTION WITH ALL FEATURES
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -125,51 +125,6 @@ const InceptionConnectionBadge = ({ movie, correctData }) => (
     </motion.div>
 );
 
-// 🔥 SMART FAQ GENERATION - COLLECTION-SPECIFIC WITH UNIQUE ANSWERS
-const generateFAQSchema = (movie, fromMementoCollection) => {
-    const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
-    const sensitiveData = SENSITIVE_TIMELINES[movie.tmdbId];
-    const contentTypes = getSensitiveContentTypes(movie.tmdbId);
-    const correctData = MOVIE_DATA_BY_TITLE[movie.Title];
-    
-    const faqs = [
-        // 🔥 COLLECTION-SPECIFIC QUESTION WITH UNIQUE ANSWERS
-        {
-            question: `Is ${movie.Title} similar to ${fromMementoCollection ? 'Memento' : 'Inception'}?`,
-            answer: fromMementoCollection 
-                ? (correctData?.mementoConnection || `Yes, ${movie.Title} shares memory-twisting and psychological complexity with Memento through innovative narrative techniques.`)
-                : (correctData?.inceptionConnection || `Yes, ${movie.Title} shares mind-bending reality manipulation and layered storytelling with Inception.`)
-        },
-        {
-            question: `Who directed ${movie.Title} and what is it about?`,
-            answer: `${movie.Title} was directed by ${correctData?.director || movieInfo?.director || 'acclaimed filmmaker'} in ${movie.Year}. ${movieInfo?.synopsis || `A compelling ${correctData?.genre?.toLowerCase() || 'thriller'} film.`}`
-        },
-        {
-            question: `What genre is ${movie.Title} and when was it released?`,
-            answer: `${movie.Title} is a ${correctData?.genre || movie.Genre || 'thriller'} film released in ${movie.Year}. It runs for ${correctData?.runtime || movie.Runtime || '120 min'} and has an IMDb rating of ${correctData?.imdbRating || '7.5'}/10.`
-        },
-        {
-            question: `Does ${movie.Title} contain mature content?`,
-            answer: sensitiveData?.scenes?.length > 0 
-                ? `Yes, ${movie.Title} contains mature content including ${contentTypes ? contentTypes.join(', ') : 'adult themes'}. The film has ${sensitiveData.scenes.length} scenes with mature content.`
-                : `No, ${movie.Title} does not contain notable mature content and is suitable for most audiences.`
-        }
-    ];
-
-    return {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": faqs.map(faq => ({
-            "@type": "Question",
-            "name": faq.question,
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": faq.answer
-            }
-        }))
-    };
-};
-
 // Subtle Film Grain Overlay
 const SubtleFilmGrain = () => (
     <div className="fixed inset-0 pointer-events-none z-0 opacity-[0.02]">
@@ -219,8 +174,6 @@ const SmartMoviePage = ({ movie }) => {
             "ratingCount": movieInfo?.audienceScore || 10000
         }
     };
-
-    const faqSchema = generateFAQSchema(movie, fromMementoCollection);
 
     useEffect(() => {
         const handleScroll = () => setScrollY(window.scrollY);
@@ -275,7 +228,6 @@ const SmartMoviePage = ({ movie }) => {
                 <meta name="twitter:description" content={`Analysis of ${movie.Title}, a film similar to ${fromMementoCollection ? 'Memento' : 'Inception'}.`} />
                 
                 <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }} />
-                <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
             </Head>
 
             <SubtleFilmGrain />
@@ -508,6 +460,7 @@ const SmartMoviePage = ({ movie }) => {
                         transition={{ delay: 1.4, duration: 0.8 }}
                         className="space-y-16 sm:space-y-24"
                     >
+                        {/* 🔥 PASS THE fromMementoCollection PROP TO MOVIEDETAILSSECTION */}
                         <MovieDetailsSection movie={movie} fromMementoCollection={fromMementoCollection} />
                     </motion.div>
 

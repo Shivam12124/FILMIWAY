@@ -1,42 +1,44 @@
-// components/SEOFAQSection.js
+// components/SEOFAQSection.js - DEFAULT INCEPTION FAQ (KEEP ORIGINAL WORKING)
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Info } from 'lucide-react';
 import { COMPLETE_MOVIE_DATA } from '../utils/movieData';
 import { SENSITIVE_TIMELINES, getSensitiveContentTypes } from '../utils/sensitiveContent';
 
-// FAQ Generation Helper
-const generateFAQData = (movie) => {
+const SEOFAQSection = ({ movie }) => {
     const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
     const sensitiveData = SENSITIVE_TIMELINES[movie.tmdbId];
     const contentTypes = getSensitiveContentTypes(movie.tmdbId);
     
+    // 🔥 DEFAULT INCEPTION FAQ - KEEP ORIGINAL WORKING
     const faqs = [
         {
             question: `Is ${movie.Title} similar to Inception?`,
-            answer: `${movieInfo?.seoDescription || `Yes, ${movie.Title} shares mind-bending qualities with Inception including complex narrative structures and reality-bending themes.`}`
+            answer: `${movieInfo?.seoDescription || `Yes, ${movie.Title} shares mind-bending qualities with Christopher Nolan's Inception including complex narrative structures, reality-bending themes, and psychological depth that challenges viewers' perception of what's real.`}`
         },
         {
             question: `Who directed ${movie.Title} and what is it about?`,
-            answer: `${movie.Title} was directed by ${movieInfo?.director || 'acclaimed filmmaker'} in ${movie.year}. ${movieInfo?.synopsis || `A compelling ${movie.genre.toLowerCase()} film that explores complex themes and narrative structures.`}`
+            answer: `${movie.Title} was directed by ${movieInfo?.director || 'acclaimed filmmaker'} in ${movie.Year}. ${movieInfo?.synopsis || `A compelling ${movie.Genre?.toLowerCase() || 'mind-bending thriller'} film that explores complex themes similar to Inception's reality-twisting narrative.`}`
         },
         {
             question: `Where can I watch ${movie.Title} online?`,
-            answer: `${movie.Title} streaming availability varies by region. Check Netflix, Amazon Prime Video, Apple TV+, Hulu, and other major streaming platforms for current availability in your area.`
+            answer: `${movie.Title} streaming availability varies by region. Check Netflix, Amazon Prime Video, Apple TV+, Hulu, and other major streaming platforms for current availability in your area. The film is often available for rent or purchase on digital platforms.`
         },
         {
-            question: `Does ${movie.Title} contain mature or sensitive content?`,
+            question: `Does ${movie.Title} contain mature or sensitive content like Inception?`,
             answer: sensitiveData?.scenes?.length > 0 
-                ? `Yes, ${movie.Title} contains mature content including ${contentTypes ? contentTypes.join(', ') : 'adult themes'}. The film has ${sensitiveData.scenes.length} scenes with mature content. For specific timestamps and detailed content warnings, click on the "Sensitive Content Timeline" section above to view the complete guide.`
-                : `No, ${movie.Title} does not contain notable mature or sensitive content and is suitable for most audiences interested in complex storytelling.`
+                ? `Yes, ${movie.Title} contains mature content including ${contentTypes ? contentTypes.join(', ') : 'adult themes, psychological intensity, and complex subject matter'}. The film has ${sensitiveData.scenes.length} scenes with mature content. For specific timestamps and detailed content warnings, click on the "Sensitive Content Timeline" section above to view the complete guide.`
+                : `${movie.Title} does not contain notable mature or sensitive content and is suitable for most audiences interested in mind-bending storytelling similar to Inception.`
+        },
+        {
+            question: `What makes ${movie.Title} like Inception in terms of complexity?`,
+            answer: `${movie.Title} shares Inception's psychological complexity through its ${movie.Genre?.toLowerCase() || 'mind-bending'} approach to reality and perception. Both films require multiple viewings to fully appreciate their intricate narrative structures and thematic depth.`
+        },
+        {
+            question: `How does ${movie.Title} compare to Inception's IMDb rating?`,
+            answer: `${movie.Title} has an IMDb rating of ${movieInfo?.rating || '7.5+'}/10. Like Inception (8.8/10), it's highly rated for its innovative storytelling, visual effects, and mind-bending narrative that challenges conventional film structure.`
         }
     ];
-    
-    return faqs;
-};
-
-const SEOFAQSection = React.memo(({ movie }) => {
-    const faqs = generateFAQData(movie);
     
     return (
         <motion.section 
@@ -69,8 +71,6 @@ const SEOFAQSection = React.memo(({ movie }) => {
             </div>
         </motion.section>
     );
-});
-
-SEOFAQSection.displayName = 'SEOFAQSection';
+};
 
 export default SEOFAQSection;

@@ -1,4 +1,4 @@
-// components/MovieDetailsSection.js - COMPLETE WITH MEMENTO FAQ INTEGRATION
+// components/MovieDetailsSection.js - RED SENSITIVE CONTENT BUTTON FOR USER ATTENTION
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Users, Film, BookOpen, Star, Brain, BarChart3, Shield } from 'lucide-react';
@@ -340,7 +340,7 @@ const MovieDetailsSection = React.memo(({ movie, fromMementoCollection }) => {
         </div>
       </motion.div>
 
-      {/* OTHER SECTIONS */}
+      {/* 🔥 RED SENSITIVE CONTENT SECTION FOR USER ATTENTION */}
       <SensitiveContentTimelineSection movie={movie} />
       <EnhancedIntensityGraph scenes={movieInfo.scenes} dominantColor={movieInfo.dominantColor} />
       <StrategicDNAHelix dna={movieInfo.dna} dominantColor={movieInfo.dominantColor} />

@@ -1,4 +1,4 @@
-// components/SensitiveContentTimelineSection.js
+// components/SensitiveContentTimelineSection.js - RED BUTTON FOR USER ATTENTION
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Shield, CheckCircle, AlertTriangle, Eye, X } from 'lucide-react';
@@ -49,19 +49,20 @@ const SensitiveContentTimelineSection = React.memo(({ movie }) => {
                 ⚠️ Content guide for parents and sensitive viewers. Click below to view detailed timestamps and scene descriptions.
             </p>
             
+            {/* 🔥 RED BUTTON INSTEAD OF AMBER FOR USER ATTENTION */}
             <motion.button
                 onClick={() => setShowSensitiveOverlay(true)}
-                className="w-full bg-amber-500/20 text-amber-300 border border-amber-500/50 px-4 py-3 sm:px-6 sm:py-4 rounded-xl text-xs sm:text-sm font-medium tracking-wide hover:bg-amber-500/30 transition-all duration-300 flex items-center justify-between group"
+                className="w-full bg-red-600/30 text-red-200 border border-red-500/60 px-4 py-3 sm:px-6 sm:py-4 rounded-xl text-xs sm:text-sm font-medium tracking-wide hover:bg-red-600/40 transition-all duration-300 flex items-center justify-between group"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
             >
                 <div className="flex items-center gap-2 sm:gap-3">
-                    <AlertTriangle size={16} className="sm:w-5 sm:h-5 group-hover:animate-pulse" />
+                    <AlertTriangle size={16} className="sm:w-5 sm:h-5 group-hover:animate-pulse text-red-300" />
                     <div className="text-left">
-                        <div className="font-semibold text-sm sm:text-base">
-                            Mature Content Found ({sensitiveData.scenes.length} scenes)
+                        <div className="font-semibold text-sm sm:text-base text-red-100">
+                            🔴 Mature Content Found ({sensitiveData.scenes.length} scenes)
                         </div>
-                        <div className="text-xs opacity-80">
+                        <div className="text-xs opacity-80 text-red-200">
                             Contains: {contentTypes ? contentTypes.join(', ') : 'adult themes'}
                         </div>
                     </div>
@@ -105,7 +106,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie }) => {
                                 {/* Disclaimer for Donnie Darko */}
                                 {movie.tmdbId === 141 && (
                                     <p className="text-xs text-white mt-2 px-3 py-1 bg-gray-700/50 rounded-lg border border-gray-600/30">
-                                        *TIMESTAMP CAN VARIES AS IT IS FROM DVD EDITION NOT FROM DIRECTOR'S CUT
+                                        ⚠️ TIMESTAMP CAN VARIES AS IT IS FROM DVD EDITION NOT FROM DIRECTOR'S CUT
                                     </p>
                                 )}
                             </div>
@@ -121,10 +122,10 @@ const SensitiveContentTimelineSection = React.memo(({ movie }) => {
                                     
                                     const getSceneIcon = (type) => {
                                         const lowerType = type.toLowerCase();
-                                        if (lowerType.includes('nudity') || lowerType.includes('sex')) return '🔴';
+                                        if (lowerType.includes('nudity') || lowerType.includes('sex')) return '🔞';
                                         if (lowerType.includes('kissing')) return '💋';
-                                        if (lowerType.includes('violence')) return '🗡️';
-                                        if (lowerType.includes('language')) return '💬';
+                                        if (lowerType.includes('violence')) return '⚔️';
+                                        if (lowerType.includes('language')) return '🤬';
                                         return '⚠️';
                                     };
 

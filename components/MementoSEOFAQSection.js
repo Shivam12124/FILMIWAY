@@ -1,117 +1,47 @@
-// components/MementoSEOFAQSection.js - SAME STYLE AS INCEPTION FAQ
+// components/MementoSEOFAQSection.js - UPDATED WITHOUT "SIMILAR TO MEMENTO" FAQ
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Brain } from 'lucide-react';
+import { Info } from 'lucide-react';
 import { COMPLETE_MOVIE_DATA } from '../utils/movieData';
 import { SENSITIVE_TIMELINES, getSensitiveContentTypes } from '../utils/sensitiveContent';
 
-// 🧠 MEMENTO-SPECIFIC MOVIE DATA FOR FAQ
-const MEMENTO_FAQ_DATA_BY_TITLE = {
-    'Shutter Island': {
-        mementoConnection: 'Like Memento, Shutter Island explores unreliable memory and fragmented identity through psychological manipulation. Both films question the nature of reality and memory.',
-        director: 'Martin Scorsese',
-        imdbRating: 8.2,
-        runtime: '138 min',
-        genre: 'Psychological Thriller'
-    },
-    'Mr. Nobody': {
-        mementoConnection: 'Like Memento, Mr. Nobody questions the nature of memory and identity through complex non-linear storytelling. Both films explore how different memories and choices shape our understanding of who we are.',
-        director: 'Jaco Van Dormael',
-        imdbRating: 7.7,
-        runtime: '141 min',
-        genre: 'Sci-Fi Drama'
-    },
-    'Primer': {
-        mementoConnection: 'Like Memento, Primer uses complex timeline structure to create confusion about sequence of events. Both films require multiple viewings to fully understand.',
-        director: 'Shane Carruth',
-        imdbRating: 6.9,
-        runtime: '77 min',
-        genre: 'Sci-Fi Thriller'
-    },
-    'Synecdoche, New York': {
-        mementoConnection: 'Like Memento, Synecdoche explores fragmented identity and the unreliability of memory and perception. Both films deal with characters losing their sense of self.',
-        director: 'Charlie Kaufman',
-        imdbRating: 7.5,
-        runtime: '124 min',
-        genre: 'Psychological Drama'
-    },
-    'Mulholland Drive': {
-        mementoConnection: 'Like Memento, Mulholland Drive uses non-linear narrative to blur the line between reality and delusion. Both films feature protagonists struggling with memory loss.',
-        director: 'David Lynch',
-        imdbRating: 7.9,
-        runtime: '147 min',
-        genre: 'Psychological Mystery'
-    },
-    'Predestination': {
-        mementoConnection: 'Like Memento, Predestination explores identity confusion through a temporal loop structure. Both films reveal information gradually to create confusion.',
-        director: 'Michael Spierig, Peter Spierig',
-        imdbRating: 7.4,
-        runtime: '97 min',
-        genre: 'Sci-Fi Thriller'
-    },
-    'Coherence': {
-        mementoConnection: 'Like Memento, Coherence creates confusion about reality through memory inconsistencies. Both films leave viewers questioning what actually happened.',
-        director: 'James Ward Byrkit',
-        imdbRating: 7.2,
-        runtime: '89 min',
-        genre: 'Sci-Fi Thriller'
-    },
-    'Donnie Darko': {
-        mementoConnection: 'Like Memento, Donnie Darko explores mental confusion and the unreliability of perception. Both films feature protagonists struggling with their understanding of reality.',
-        director: 'Richard Kelly',
-        imdbRating: 8.0,
-        runtime: '113 min',
-        genre: 'Sci-Fi Mystery'
-    },
-    'Enemy': {
-        mementoConnection: 'Like Memento, Enemy explores identity crisis and the fragmentation of self. Both films feature protagonists who cannot trust their own memories or perceptions.',
-        director: 'Denis Villeneuve',
-        imdbRating: 6.9,
-        runtime: '91 min',
-        genre: 'Psychological Thriller'
-    },
-    'The Fountain': {
-        mementoConnection: 'Like Memento, The Fountain deals with memory, loss, and the nature of time and identity. Both films explore how memory and loss shape our understanding of self.',
-        director: 'Darren Aronofsky',
-        imdbRating: 7.2,
-        runtime: '96 min',
-        genre: 'Sci-Fi Drama'
-    }
-};
-
-// 🧠 MEMENTO FAQ GENERATION HELPER - SAME AS INCEPTION STYLE
-const generateMementoFAQData = (movie) => {
+// 🧠 MEMENTO FAQ SECTION - NO "SIMILAR TO" QUESTION
+const MementoSEOFAQSection = ({ movie }) => {
     const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
     const sensitiveData = SENSITIVE_TIMELINES[movie.tmdbId];
     const contentTypes = getSensitiveContentTypes(movie.tmdbId);
-    const mementoData = MEMENTO_FAQ_DATA_BY_TITLE[movie.Title];
     
+    // 🔥 GENERATE FAQ WITHOUT FIRST "SIMILAR TO" QUESTION
     const faqs = [
+        // 🔥 REMOVED: "Is ${movie.Title} similar to Memento?" - SO YOU CAN USE SAME DATA IN INCEPTION
+        
         {
-            question: `Is ${movie.Title} similar to Memento?`,
-            answer: mementoData?.mementoConnection || `Yes, ${movie.Title} shares memory-twisting qualities with Memento including complex narrative structures and themes of identity confusion.`
+            question: `What makes ${movie.Title} like Memento in terms of memory loss themes?`,
+            answer: `${movie.Title} explores memory loss and identity confusion similar to Memento through ${movie.Genre?.toLowerCase() || 'psychological thriller'} elements. Both films feature protagonists who struggle with fragmented memories and unreliable perceptions of reality.`
         },
         {
-            question: `Who directed ${movie.Title} and what is it about?`,
-            answer: `${movie.Title} was directed by ${mementoData?.director || movieInfo?.director || 'acclaimed filmmaker'} in ${movie.Year}. ${movieInfo?.synopsis || `A compelling ${mementoData?.genre?.toLowerCase() || 'thriller'} film that explores memory, identity, and perception.`}`
+            question: `Who directed ${movie.Title} and what is its connection to Memento-style films?`,
+            answer: `${movie.Title} was directed by ${movieInfo?.director || 'acclaimed filmmaker'} in ${movie.Year}. Like Memento, it uses innovative storytelling techniques to explore themes of memory, identity, and psychological complexity through non-linear narrative structure.`
         },
         {
             question: `Where can I watch ${movie.Title} online?`,
-            answer: `${movie.Title} streaming availability varies by region. Check Netflix, Amazon Prime Video, Apple TV+, Hulu, and other major streaming platforms for current availability in your area.`
+            answer: `${movie.Title} streaming availability varies by region. Check Netflix, Amazon Prime Video, Apple TV+, Hulu, and other major streaming platforms for current availability in your area. The film is often available for rent or purchase on digital platforms.`
         },
         {
-            question: `Does ${movie.Title} contain mature or sensitive content?`,
+            question: `Does ${movie.Title} have mature content like other Memento-style psychological thrillers?`,
             answer: sensitiveData?.scenes?.length > 0 
-                ? `Yes, ${movie.Title} contains mature content including ${contentTypes ? contentTypes.join(', ') : 'adult themes'}. The film has ${sensitiveData.scenes.length} scenes with mature content. For specific timestamps and detailed content warnings, click on the "Sensitive Content Timeline" section above to view the complete guide.`
-                : `No, ${movie.Title} does not contain notable mature or sensitive content and is suitable for most audiences interested in complex psychological storytelling.`
+                ? `Yes, ${movie.Title} contains mature content including ${contentTypes ? contentTypes.join(', ') : 'adult themes, psychological intensity, and complex subject matter'}. The film has ${sensitiveData.scenes.length} scenes with mature content, similar to other memory-loss psychological thrillers.`
+                : `${movie.Title} is suitable for most audiences interested in memory-loss and psychological thriller films like Memento, with minimal mature content that focuses on intellectual and emotional complexity rather than explicit material.`
+        },
+        {
+            question: `How does ${movie.Title} compare to Memento in terms of psychological complexity?`,
+            answer: `${movie.Title} shares Memento's psychological complexity through its ${movie.Genre?.toLowerCase() || 'thriller'} approach to memory and identity themes. Both films require multiple viewings to fully appreciate their intricate narrative structures and psychological depth.`
+        },
+        {
+            question: `What is the IMDb rating of ${movie.Title} and how does it compare to Memento?`,
+            answer: `${movie.Title} has an IMDb rating of ${movieInfo?.rating || '7.5+'}/10. Like Memento (8.4/10), it's highly rated for its innovative storytelling, psychological depth, and memory-twisting narrative that challenges conventional film structure.`
         }
     ];
-    
-    return faqs;
-};
-
-const MementoSEOFAQSection = React.memo(({ movie }) => {
-    const faqs = generateMementoFAQData(movie);
     
     return (
         <motion.section 
@@ -121,12 +51,12 @@ const MementoSEOFAQSection = React.memo(({ movie }) => {
             transition={{ duration: 0.8, delay: 0.4 }}
         >
             <h2 className="text-xl sm:text-2xl font-light text-yellow-300 mb-6 sm:mb-8 flex items-center gap-2 sm:gap-3">
-                <Brain size={20} className="sm:w-6 sm:h-6" />
+                <Info size={20} className="sm:w-6 sm:h-6" />
                 <span className="hidden sm:inline">Frequently Asked Questions About {movie.Title}</span>
                 <span className="sm:hidden">FAQ About {movie.Title}</span>
             </h2>
             <p className="text-gray-300 mb-4 sm:mb-6 text-sm sm:text-base">
-                Common questions about {movie.Title} and how it compares to other memory-twisting films like Memento.
+                Common questions about {movie.Title} and how it compares to other memory-loss films like Memento.
             </p>
             <div className="space-y-4 sm:space-y-6">
                 {faqs.map((faq, index) => (
@@ -144,8 +74,6 @@ const MementoSEOFAQSection = React.memo(({ movie }) => {
             </div>
         </motion.section>
     );
-});
-
-MementoSEOFAQSection.displayName = 'MementoSEOFAQSection';
+};
 
 export default MementoSEOFAQSection;

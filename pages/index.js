@@ -1,4 +1,4 @@
-// pages/index.js - PROFESSIONAL SWIPE NAVIGATION WITH ARIA LABELS
+// pages/index.js - NO AUTO-SCROLL + SMALLER NEW TAG + CLASSY UNDER CONSTRUCTION
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Head from 'next/head';
@@ -7,7 +7,7 @@ import { useRouter } from 'next/router';
 import { 
     Play, Star, TrendingUp, Award, Clock, Calendar, 
     Search, Menu, X, ArrowRight, Film, Zap, Target, Eye,
-    ChevronLeft, ChevronRight
+    ChevronLeft, ChevronRight, Construction, Sparkles
 } from 'lucide-react';
 
 const TMDB_API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
@@ -80,7 +80,7 @@ const FilmiwayHomepage = () => {
         });
     };
 
-    // Navigation Component - MASSIVE LEFT-POSITIONED LOGO
+    // Navigation Component - WITH SMALLER NEW TAG
     const Navigation = () => (
         <motion.nav 
             className="fixed top-0 w-full z-50 bg-black/95 backdrop-blur-md"
@@ -92,14 +92,18 @@ const FilmiwayHomepage = () => {
         >
             <div className="container mx-auto px-4 sm:px-6">
                 <div className="flex items-center justify-between h-28">
-                    {/* MASSIVE LEFT-POSITIONED LOGO */}
-                    <Link href="/" className="flex items-center justify-start" aria-label="Filmiway homepage">
+                    {/* LOGO WITH SMALLER NEW TAG */}
+                    <Link href="/" className="flex items-center justify-start relative" aria-label="Filmiway homepage">
                         <div className="w-44 h-24 sm:w-52 sm:h-28 md:w-60 md:h-32 lg:w-64 lg:h-36 flex items-center justify-start">
                             <img 
                                 src="/filmiway-logo.svg" 
                                 alt="Filmiway - Where Every Film Finds Its Way" 
                                 className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
                             />
+                        </div>
+                        {/* 🔥 SMALLER NEW TAG */}
+                        <div className="absolute top-2 right-0 bg-gradient-to-r from-red-500 to-pink-500 text-white text-[10px] sm:text-xs font-bold px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-full shadow-lg animate-pulse">
+                            NEW
                         </div>
                     </Link>
 
@@ -165,7 +169,7 @@ const FilmiwayHomepage = () => {
         </motion.nav>
     );
 
-    // HERO SECTION - WITH DEVICE-SPECIFIC SCROLL INDICATORS
+    // HERO SECTION (keeping same as before)
     const HeroSection = () => (
         <section className="relative min-h-screen flex items-center justify-center bg-black overflow-hidden" role="banner">
             {/* Subtle Background Pattern */}
@@ -291,7 +295,6 @@ const FilmiwayHomepage = () => {
                     transition={{ delay: 1.5, duration: 1 }}
                     aria-label={isMobile ? "Swipe to explore content" : "Scroll to explore content"}
                 >
-                    {/* Desktop - Mouse Scroll */}
                     {!isMobile ? (
                         <>
                             <motion.div 
@@ -311,7 +314,6 @@ const FilmiwayHomepage = () => {
                             </motion.p>
                         </>
                     ) : (
-                        /* Mobile - Swipe Gesture */
                         <>
                             <motion.div 
                                 className="flex items-center space-x-2 mb-3"
@@ -319,7 +321,6 @@ const FilmiwayHomepage = () => {
                                 transition={{ duration: 2, repeat: Infinity }}
                                 aria-hidden="true"
                             >
-                                {/* Swipe Animation */}
                                 <motion.div 
                                     className="w-8 h-8 border-2 border-gray-600 rounded-lg flex items-center justify-center"
                                     animate={{ 
@@ -338,7 +339,6 @@ const FilmiwayHomepage = () => {
                                     />
                                 </motion.div>
                                 
-                                {/* Swipe Direction Indicator */}
                                 <motion.div 
                                     className="flex space-x-1"
                                     animate={{ x: [0, -8, 0] }}
@@ -364,14 +364,12 @@ const FilmiwayHomepage = () => {
         </section>
     );
 
-    // 🔥 PROFESSIONAL CAROUSEL WITH BIG TECH NAVIGATION
+    // 🔥 CAROUSEL WITHOUT AUTO-SCROLL (MANUAL CONTROL ONLY)
     const ProfessionalCarousel = ({ movies, sectionRef, sectionTitle }) => {
         const [currentIndex, setCurrentIndex] = useState(0);
         const [isDragging, setIsDragging] = useState(false);
-        const [isHovered, setIsHovered] = useState(false);
         const [startX, setStartX] = useState(0);
         const [currentX, setCurrentX] = useState(0);
-        const [autoScrollInterval, setAutoScrollInterval] = useState(null);
         
         const itemsPerView = {
             mobile: 2,
@@ -401,38 +399,26 @@ const FilmiwayHomepage = () => {
 
         const maxIndex = Math.max(0, movies.length - itemsToShow);
 
-        // 🔥 SINGLE MOVIE NAVIGATION (NO MORE MULTI-MOVIE JUMPS)
+        // 🔥 MANUAL NAVIGATION ONLY - NO AUTO SCROLL
         const nextSlide = useCallback(() => {
             setCurrentIndex(prev => {
-                const newIndex = prev + 1;
-                return newIndex > maxIndex ? 0 : newIndex; // Loop back to start
+                if (prev < maxIndex) {
+                    return prev + 1;
+                }
+                return prev;
             });
         }, [maxIndex]);
 
         const prevSlide = useCallback(() => {
             setCurrentIndex(prev => {
-                const newIndex = prev - 1;
-                return newIndex < 0 ? maxIndex : newIndex; // Loop to end
-            });
-        }, [maxIndex]);
-
-        // 🔥 AUTO-SCROLL WITH HOVER PAUSE (BIG TECH STYLE)
-        useEffect(() => {
-            if (!isHovered && !isDragging) {
-                const interval = setInterval(() => {
-                    nextSlide();
-                }, 4000); // 4 seconds like Netflix
-                setAutoScrollInterval(interval);
-                return () => clearInterval(interval);
-            } else {
-                if (autoScrollInterval) {
-                    clearInterval(autoScrollInterval);
-                    setAutoScrollInterval(null);
+                if (prev > 0) {
+                    return prev - 1;
                 }
-            }
-        }, [isHovered, isDragging, nextSlide]);
+                return prev;
+            });
+        }, []);
 
-        // 🔥 SMOOTH TOUCH/SWIPE HANDLERS
+        // 🔥 TOUCH/SWIPE HANDLERS
         const handleStart = (e) => {
             setIsDragging(true);
             const clientX = e.touches ? e.touches[0].clientX : e.clientX;
@@ -451,7 +437,7 @@ const FilmiwayHomepage = () => {
             if (!isDragging) return;
             
             const diff = startX - currentX;
-            const threshold = 50; // Minimum swipe distance
+            const threshold = 50;
             
             if (Math.abs(diff) > threshold) {
                 if (diff > 0 && currentIndex < maxIndex) {
@@ -470,45 +456,41 @@ const FilmiwayHomepage = () => {
             <div 
                 ref={sectionRef} 
                 className="relative"
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
                 role="region"
                 aria-label={`${sectionTitle} movie carousel`}
             >
-                {/* 🔥 DESKTOP ARROWS - SINGLE MOVIE NAVIGATION */}
+                {/* DESKTOP ARROWS */}
                 {!isMobile && (
                     <>
-                        {/* Left Arrow - Always visible for looping */}
                         <motion.button
                             onClick={prevSlide}
-                            className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 bg-gray-900/80 backdrop-blur-sm rounded-full border border-gray-700/50 hover:bg-gray-800/90 hover:border-yellow-400/50 transition-all duration-300 flex items-center justify-center group"
-                            whileHover={{ scale: 1.1, x: -2 }}
-                            whileTap={{ scale: 0.95 }}
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: isHovered ? 1 : 0.7 }}
-                            transition={{ duration: 0.3 }}
+                            className={`absolute left-0 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 bg-gray-900/80 backdrop-blur-sm rounded-full border border-gray-700/50 transition-all duration-300 flex items-center justify-center group ${
+                                currentIndex === 0 ? 'opacity-30 cursor-not-allowed' : 'hover:bg-gray-800/90 hover:border-yellow-400/50'
+                            }`}
+                            whileHover={currentIndex > 0 ? { scale: 1.1, x: -2 } : {}}
+                            whileTap={currentIndex > 0 ? { scale: 0.95 } : {}}
                             aria-label="Previous movie"
+                            disabled={currentIndex === 0}
                         >
-                            <ChevronLeft className="w-6 h-6 text-yellow-400 group-hover:text-yellow-300" />
+                            <ChevronLeft className={`w-6 h-6 ${currentIndex === 0 ? 'text-gray-600' : 'text-yellow-400 group-hover:text-yellow-300'}`} />
                         </motion.button>
 
-                        {/* Right Arrow - Always visible for looping */}
                         <motion.button
                             onClick={nextSlide}
-                            className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 bg-gray-900/80 backdrop-blur-sm rounded-full border border-gray-700/50 hover:bg-gray-800/90 hover:border-yellow-400/50 transition-all duration-300 flex items-center justify-center group"
-                            whileHover={{ scale: 1.1, x: 2 }}
-                            whileTap={{ scale: 0.95 }}
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: isHovered ? 1 : 0.7 }}
-                            transition={{ duration: 0.3 }}
+                            className={`absolute right-0 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 bg-gray-900/80 backdrop-blur-sm rounded-full border border-gray-700/50 transition-all duration-300 flex items-center justify-center group ${
+                                currentIndex >= maxIndex ? 'opacity-30 cursor-not-allowed' : 'hover:bg-gray-800/90 hover:border-yellow-400/50'
+                            }`}
+                            whileHover={currentIndex < maxIndex ? { scale: 1.1, x: 2 } : {}}
+                            whileTap={currentIndex < maxIndex ? { scale: 0.95 } : {}}
                             aria-label="Next movie"
+                            disabled={currentIndex >= maxIndex}
                         >
-                            <ChevronRight className="w-6 h-6 text-yellow-400 group-hover:text-yellow-300" />
+                            <ChevronRight className={`w-6 h-6 ${currentIndex >= maxIndex ? 'text-gray-600' : 'text-yellow-400 group-hover:text-yellow-300'}`} />
                         </motion.button>
                     </>
                 )}
 
-                {/* Touch/Swipe Area with proper padding for arrows on desktop */}
+                {/* Touch/Swipe Area */}
                 <div 
                     className={`overflow-hidden ${!isMobile ? 'px-8' : 'px-0'} ${isMobile ? 'cursor-grab active:cursor-grabbing' : ''} select-none`}
                     onMouseDown={isMobile ? handleStart : undefined}
@@ -542,27 +524,29 @@ const FilmiwayHomepage = () => {
                 </div>
 
                 {/* Progress Indicators */}
-                <div className="flex justify-center mt-6 space-x-2" role="tablist" aria-label={`${sectionTitle} carousel navigation`}>
-                    {Array.from({ length: maxIndex + 1 }).map((_, index) => (
-                        <button
-                            key={index}
-                            onClick={() => setCurrentIndex(index)}
-                            className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                                index === currentIndex 
-                                    ? 'bg-yellow-400 scale-125' 
-                                    : 'bg-gray-600 hover:bg-gray-400'
-                            }`}
-                            role="tab"
-                            aria-selected={index === currentIndex}
-                            aria-label={`Go to slide ${index + 1}`}
-                        />
-                    ))}
-                </div>
+                {maxIndex > 0 && (
+                    <div className="flex justify-center mt-6 space-x-2" role="tablist" aria-label={`${sectionTitle} carousel navigation`}>
+                        {Array.from({ length: maxIndex + 1 }).map((_, index) => (
+                            <button
+                                key={index}
+                                onClick={() => setCurrentIndex(index)}
+                                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                                    index === currentIndex 
+                                        ? 'bg-yellow-400 scale-125' 
+                                        : 'bg-gray-600 hover:bg-gray-400'
+                                }`}
+                                role="tab"
+                                aria-selected={index === currentIndex}
+                                aria-label={`Go to slide ${index + 1}`}
+                            />
+                        ))}
+                    </div>
+                )}
             </div>
         );
     };
 
-    // ENHANCED MOVIE CARD WITH SMALLER MOBILE TEXT & ARIA LABELS
+    // ENHANCED MOVIE CARD (same as before)
     const MovieCard = ({ movie, index }) => (
         <motion.div
             className="group cursor-pointer"
@@ -605,7 +589,6 @@ const FilmiwayHomepage = () => {
                                 {new Date(movie.release_date).getFullYear()}
                             </span>
                         </div>
-                        {/* SMALLER MOBILE TEXT */}
                         <button 
                             className="w-full bg-yellow-400 text-black py-2 rounded-lg font-medium hover:bg-yellow-300 transition-colors text-xs sm:text-sm"
                             aria-label={`View full details for ${movie.title}`}
@@ -647,6 +630,40 @@ const FilmiwayHomepage = () => {
         </section>
     );
 
+    // 🔥 CLASSY UNDER CONSTRUCTION SECTION WITHOUT EXCESSIVE ANIMATIONS
+    const UnderConstructionSection = () => (
+        <motion.section 
+            className="py-16 bg-gradient-to-r from-gray-900/50 to-gray-800/50 rounded-3xl border border-gray-700/30 mb-20"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1 }}
+        >
+            <div className="text-center px-4">
+                <div className="flex items-center justify-center gap-4 mb-6">
+                    <Construction className="w-10 h-10 text-orange-400" />
+                    <h2 className="text-3xl sm:text-4xl font-light text-white">Under Construction</h2>
+                    <Sparkles className="w-6 h-6 text-yellow-400" />
+                </div>
+                
+                <p className="text-xl sm:text-2xl text-orange-300 mb-6 font-light">
+                    🚧 Something Amazing is Cooking! 🚧
+                </p>
+                
+                <p className="text-gray-300 text-lg max-w-2xl mx-auto mb-8">
+                    We're working hard behind the scenes to bring you incredible new features. 
+                    Stay tuned for exciting updates coming your way!
+                </p>
+                
+                <div className="flex items-center justify-center gap-2 text-yellow-400">
+                    <span className="text-lg">👨‍💻</span>
+                    <span className="font-medium">Development in Progress</span>
+                    <span className="text-lg">🔥</span>
+                </div>
+            </div>
+        </motion.section>
+    );
+
     if (loading) {
         return (
             <div className="min-h-screen bg-black flex items-center justify-center" role="status" aria-label="Loading Filmiway">
@@ -673,11 +690,9 @@ const FilmiwayHomepage = () => {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <meta name="keywords" content="filmiway, movies, cinema, film discovery, movie reviews, collections, streaming, watch movies" />
                 
-                {/* OVERRIDE NEXT.JS BRANDING */}
                 <meta name="framework" content="Filmiway Platform" />
                 <meta name="powered-by" content="Filmiway" />
                 
-                {/* FAVICON SETUP */}
                 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
                 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
                 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
@@ -687,7 +702,6 @@ const FilmiwayHomepage = () => {
                 <meta name="theme-color" content="#facc15" />
                 <meta name="msapplication-TileColor" content="#000000" />
                 
-                {/* STRUCTURED DATA FOR HOMEPAGE */}
                 <script type="application/ld+json" dangerouslySetInnerHTML={{
                     __html: JSON.stringify({
                         "@context": "https://schema.org",
@@ -717,7 +731,7 @@ const FilmiwayHomepage = () => {
                 <Navigation />
                 <HeroSection />
 
-                {/* Movie Sections with Professional Carousels */}
+                {/* Movie Sections with Manual Navigation Only */}
                 <main className="container mx-auto px-4 sm:px-6 py-20 space-y-20" role="main">
                     <MovieSection 
                         title="Trending This Week" 
@@ -742,9 +756,12 @@ const FilmiwayHomepage = () => {
                         icon={Award}
                         sectionRef={topRatedRef}
                     />
+                    
+                    {/* CLASSY UNDER CONSTRUCTION SECTION */}
+                    <UnderConstructionSection />
                 </main>
 
-                {/* Footer - WITH TMDB ATTRIBUTION */}
+                {/* Footer */}
                 <footer className="bg-gradient-to-t from-gray-900 to-black py-16 border-t border-gray-800" role="contentinfo">
                     <div className="container mx-auto px-4 sm:px-6">
                         <div className="text-center">

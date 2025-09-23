@@ -1,4 +1,4 @@
-// pages/collection/[slug].js - COMPLETE WITH UNIQUE CONTENT FOR BOTH COLLECTIONS - EXPLORER SECTION ONLY ON #10
+// pages/collection/[slug].js - UPDATED WITH MEMENTO ROUTING FIX
 import React, { useState, useEffect, useCallback } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -587,11 +587,14 @@ const CollectionPage = ({ collection, movies }) => {
         }
     };
 
-    // Handle movie click with position tracking
+    // 🔥 UPDATED: Collection-aware movie click handler
     const handleMovieClick = () => {
         if (typeof window !== 'undefined') {
             sessionStorage.setItem('currentMoviePosition', currentMovieIndex.toString());
             sessionStorage.setItem('currentMovieRank', currentRank.toString());
+            sessionStorage.setItem('currentCollection', collection.slug);
+            sessionStorage.setItem('collectionTitle', collection.title);
+            sessionStorage.setItem('fromCollection', 'true');
         }
     };
 
@@ -772,10 +775,13 @@ const CollectionPage = ({ collection, movies }) => {
                                     <div className="absolute inset-0 bg-gradient-to-l from-yellow-400/10 to-amber-400/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
                                 </motion.button>
 
-                                {/* Movie Display */}
+                                {/* 🔥 UPDATED: Collection-aware movie display - MEMENTO ROUTING FIX */}
                                 <AnimatePresence mode="wait">
                                     <Link 
-                                        href={`/movies/${currentMovie.imdbID}`} 
+                                        href={collection.slug === 'movies-like-memento' 
+                                            ? `/movies/like-memento/${currentMovie.imdbID}` 
+                                            : `/movies/${currentMovie.imdbID}`
+                                        }
                                         key={currentMovieIndex}
                                         onClick={handleMovieClick}
                                     >
@@ -810,14 +816,17 @@ const CollectionPage = ({ collection, movies }) => {
                                         <span>Click poster above for full analysis</span>
                                     </div>
                                     
-                                    {/* OBVIOUS CLICK BUTTON */}
+                                    {/* 🔥 UPDATED: Collection-aware click button - MEMENTO ROUTING FIX */}
                                     <motion.div 
                                         className="flex items-center space-x-4 bg-gradient-to-r from-yellow-400/10 via-amber-400/10 to-yellow-400/10 border border-yellow-400/30 rounded-2xl px-8 py-4 hover:from-yellow-400/20 hover:via-amber-400/20 hover:to-yellow-400/20 hover:border-yellow-400/50 transition-all duration-300 cursor-pointer group"
                                         whileHover={{ scale: 1.05, y: -2 }}
                                         whileTap={{ scale: 0.98 }}
                                         onClick={() => {
                                             handleMovieClick();
-                                            window.location.href = `/movies/${currentMovie.imdbID}`;
+                                            const movieUrl = collection.slug === 'movies-like-memento' 
+                                                ? `/movies/like-memento/${currentMovie.imdbID}` 
+                                                : `/movies/${currentMovie.imdbID}`;
+                                            window.location.href = movieUrl;
                                         }}
                                     >
                                         <Eye className="w-6 h-6 text-yellow-400" />
