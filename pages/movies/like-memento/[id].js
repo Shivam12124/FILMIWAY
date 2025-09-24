@@ -1,4 +1,4 @@
-// pages/movies/like-memento/[id].js - FIXED IMPORT PATHS AND YEAR ISSUE
+// pages/movies/like-memento/[id].js - FIXED IMPORT PATHS AND YEAR ISSUE WITH NEW DESCRIPTION
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -304,21 +304,24 @@ const MementoMoviePage = ({ movie }) => {
         <div className="min-h-screen bg-black text-white relative overflow-hidden">
             <Head>
                 <title>{movie.Title} ({getYear()}) Like Memento - Memory-Loss Films & Psychological Thrillers | Filmiway</title>
-                <meta name="description" content={`${movie.Title} like Memento: Memory-loss psychological thriller analysis. IMDb: ${getIMDbRating()}/10. ${getGenre()} by ${getDirector()}. ${correctData?.mementoConnection || 'Explores themes of memory, identity, and psychological complexity similar to Christopher Nolan\'s Memento.'}`} />
-                <meta name="keywords" content={`${movie.Title}, ${getYear()}, like memento, memory loss films, psychological thrillers, ${getDirector()}, christopher nolan memento, identity crisis films, memory twisting movies, non linear storytelling, fragmented memory films, amnesia movies, memento similar films`} />
+                {/* 🔥 NEW WINNING DESCRIPTION */}
+                <meta name="description" content="From Primer to Mulholland Drive — explore mind-bending movies like Inception. Filmiway adds detailed sensitive scene timestamps for safe viewing." />
+                <meta name="keywords" content={`${movie.Title}, ${getYear()}, like memento, memory loss films, psychological thrillers, ${getDirector()}, christopher nolan memento, identity crisis films, memory twisting movies, non linear storytelling, fragmented memory films, amnesia movies, memento similar films, sensitive content timestamps, safe movie viewing`} />
                 <meta name="robots" content="index, follow" />
                 <link rel="canonical" href={`https://filmiway.com/movies/like-memento/${movie.imdbID}`} />
                 <link rel="icon" href="/favicon.ico" />
                 
                 <meta property="og:title" content={`${movie.Title} (${getYear()}) Like Memento - Memory-Loss Analysis & Reviews`} />
-                <meta property="og:description" content={`${movie.Title} - Analysis for fans of Memento-style memory-loss films. ${correctData?.mementoConnection || 'Psychological thriller with memory themes.'}`} />
+                {/* 🔥 NEW WINNING OG DESCRIPTION */}
+                <meta property="og:description" content="From Primer to Mulholland Drive — explore mind-bending movies like Inception. Filmiway adds detailed sensitive scene timestamps for safe viewing." />
                 <meta property="og:type" content="video.movie" />
                 <meta property="og:url" content={`https://filmiway.com/movies/like-memento/${movie.imdbID}`} />
                 <meta property="og:site_name" content="Filmiway" />
                 
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content={`${movie.Title} (${getYear()}) Like Memento - Memory-Loss Films`} />
-                <meta name="twitter:description" content={`Analysis of ${movie.Title}, a memory-loss film similar to Memento.`} />
+                {/* 🔥 NEW WINNING TWITTER DESCRIPTION */}
+                <meta name="twitter:description" content="From Primer to Mulholland Drive — explore mind-bending movies like Inception. Filmiway adds detailed sensitive scene timestamps for safe viewing." />
                 
                 {/* Memento-focused JSON-LD Schema */}
                 <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }} />

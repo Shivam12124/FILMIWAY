@@ -211,21 +211,24 @@ const SmartMoviePage = ({ movie }) => {
         <div className="min-h-screen bg-black text-white relative overflow-hidden">
             <Head>
                 <title>{movie.Title} ({getYear()}) Like {fromMementoCollection ? 'Memento' : 'Inception'} - Analysis & Reviews | Filmiway</title>
-                <meta name="description" content={`${movie.Title} like ${fromMementoCollection ? 'Memento' : 'Inception'}: Analysis, user ratings & reviews. IMDb: ${getIMDbRating()}/10. ${getGenre()} film by ${getDirector()}. ${fromMementoCollection ? (correctData?.mementoConnection || '') : (correctData?.inceptionConnection || '')}`} />
-                <meta name="keywords" content={`${movie.Title}, ${getYear()}, like ${fromMementoCollection ? 'memento, memory loss films' : 'inception, mind bending movies'}, user reviews, movie ratings, ${getGenre()}, ${getDirector()}, psychological thrillers`} />
+                {/* 🔥 NEW WINNING DESCRIPTION */}
+                <meta name="description" content="From Primer to Mulholland Drive — explore mind-bending movies like Inception. Filmiway adds detailed sensitive scene timestamps for safe viewing." />
+                <meta name="keywords" content={`${movie.Title}, ${getYear()}, like ${fromMementoCollection ? 'memento, memory loss films' : 'inception, mind bending movies'}, user reviews, movie ratings, ${getGenre()}, ${getDirector()}, psychological thrillers, sensitive content timestamps, safe movie viewing`} />
                 <meta name="robots" content="index, follow" />
                 <link rel="canonical" href={`https://filmiway.com/movies/${movie.imdbID}`} />
                 <link rel="icon" href="/favicon.ico" />
                 
                 <meta property="og:title" content={`${movie.Title} (${getYear()}) Like ${fromMementoCollection ? 'Memento' : 'Inception'} - Analysis`} />
-                <meta property="og:description" content={fromMementoCollection ? (correctData?.mementoConnection || `${movie.Title} - Analysis for fans of Memento-style films.`) : (correctData?.inceptionConnection || `${movie.Title} - Analysis for fans of Inception-style films.`)} />
+                {/* 🔥 NEW WINNING OG DESCRIPTION */}
+                <meta property="og:description" content="From Primer to Mulholland Drive — explore mind-bending movies like Inception. Filmiway adds detailed sensitive scene timestamps for safe viewing." />
                 <meta property="og:type" content="video.movie" />
                 <meta property="og:url" content={`https://filmiway.com/movies/${movie.imdbID}`} />
                 <meta property="og:site_name" content="Filmiway" />
                 
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content={`${movie.Title} (${getYear()}) Like ${fromMementoCollection ? 'Memento' : 'Inception'}`} />
-                <meta name="twitter:description" content={`Analysis of ${movie.Title}, a film similar to ${fromMementoCollection ? 'Memento' : 'Inception'}.`} />
+                {/* 🔥 NEW WINNING TWITTER DESCRIPTION */}
+                <meta name="twitter:description" content="From Primer to Mulholland Drive — explore mind-bending movies like Inception. Filmiway adds detailed sensitive scene timestamps for safe viewing." />
                 
                 <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }} />
             </Head>
