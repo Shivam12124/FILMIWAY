@@ -1,4 +1,4 @@
-// pages/movies/like-memento/[id].js - FIXED IMPORT PATHS
+// pages/movies/like-memento/[id].js - FIXED IMPORT PATHS AND YEAR ISSUE
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -100,8 +100,6 @@ const MOVIE_DATA_BY_TITLE = {
         mementoConnection: 'Like Memento, The Fountain deals with memory, loss, and the nature of time and identity. Both films explore how memory and loss shape our understanding of self.'
     }
 };
-
-// [Rest of your components remain the same...]
 
 // 🧠 MEMENTO CONNECTION COMPONENT - PURPLE FILLED BACKGROUND
 const MementoConnectionBadge = ({ movie, correctData }) => (
@@ -293,11 +291,11 @@ const MementoMoviePage = ({ movie }) => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // DATA GETTERS
+    // ✅ FIXED DATA GETTERS - NO MORE '2010' FALLBACK!
     const getGenre = () => correctData?.genre || movie.Genre || movieInfo?.genre || 'Thriller';
     const getRuntime = () => correctData?.runtime || movie.Runtime || (movieInfo?.runtime ? `${movieInfo.runtime} min` : '120 min');
     const getDirector = () => correctData?.director || movieInfo?.director || movie.Director || 'Acclaimed Director';
-    const getYear = () => movie.Year || '2010';
+    const getYear = () => movie.Year || 'Unknown'; // ✅ FIXED - No more 2010 fallback!
     const getIMDbRating = () => correctData?.imdbRating || movieInfo?.rating || 7.5;
     const getComplexityScore = () => movieInfo?.mindBendingIndex || 85;
     const getMovieQuote = () => correctData?.quote || STRATEGIC_QUOTES[movie.tmdbId] || 'A mind-bending cinematic experience';

@@ -1,4 +1,4 @@
-// pages/movies/[id].js - COMPLETE SMART COLLECTION DETECTION WITH ALL FEATURES
+// pages/movies/[id].js - COMPLETE SMART COLLECTION DETECTION WITH ALL FEATURES - FIXED YEAR ISSUE
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -181,11 +181,11 @@ const SmartMoviePage = ({ movie }) => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // DATA GETTERS
+    // ✅ FIXED DATA GETTERS - NO MORE '2010' FALLBACK!
     const getGenre = () => correctData?.genre || movie.Genre || movieInfo?.genre || 'Thriller';
     const getRuntime = () => correctData?.runtime || movie.Runtime || (movieInfo?.runtime ? `${movieInfo.runtime} min` : '120 min');
     const getDirector = () => correctData?.director || movieInfo?.director || movie.Director || 'Acclaimed Director';
-    const getYear = () => movie.Year || '2010';
+    const getYear = () => movie.Year || 'Unknown'; // ✅ FIXED - No more 2010 fallback!
     const getIMDbRating = () => correctData?.imdbRating || movieInfo?.rating || 7.5;
     const getComplexityScore = () => movieInfo?.mindBendingIndex || 85;
     const getMovieQuote = () => correctData?.quote || STRATEGIC_QUOTES[movie.tmdbId] || 'A mind-bending cinematic experience';
