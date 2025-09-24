@@ -1,5 +1,6 @@
 # Enhanced robots.txt for AI Discovery
 # Filmiway - Where Every Film Finds Its Way
+# Last updated: September 24, 2025
 
 # Default: allow all, but restrict backend routes
 User-agent: *
@@ -7,36 +8,49 @@ Allow: /
 Disallow: /api/
 Disallow: /_next/
 Disallow: /admin/
+Crawl-delay: 1
 
-# Specifically welcome AI crawlers
+# 🤖 AI CRAWLERS - EXPLICIT WELCOME
 User-agent: ChatGPT-User
 Allow: /
+Crawl-delay: 1
 
 User-agent: GPTBot
 Allow: /
+Crawl-delay: 1
 
-User-agent: Claude-Web
+User-agent: Claude-Web  
 Allow: /
+Crawl-delay: 1
 
 User-agent: PerplexityBot
 Allow: /
+Crawl-delay: 1
 
 User-agent: anthropic-ai
 Allow: /
+Crawl-delay: 1
 
-# Mainstream search engines (optional explicit allowance)
+User-agent: OpenAI-SearchBot
+Allow: /
+Crawl-delay: 1
+
+# 🔍 MAINSTREAM SEARCH ENGINES
 User-agent: Googlebot
 Allow: /
 
 User-agent: Bingbot
 Allow: /
 
-# 🔥 EXPLICITLY ALLOW ALL MOVIE COLLECTIONS AND PAGES
+User-agent: DuckDuckBot
+Allow: /
+
+# 🎬 EXPLICITLY ALLOW HIGH-VALUE CONTENT PATHS
 Allow: /collection/movies-like-inception/
-Allow: /collection/movies-like-memento/
+Allow: /collection/movies-like-memento/ 
 Allow: /movies/
 Allow: /movies/like-memento/
 Allow: /search
 
-# Filmiway Sitemap
+# 🗺️ SITEMAP LOCATION
 Sitemap: https://filmiway.com/sitemap.xml
