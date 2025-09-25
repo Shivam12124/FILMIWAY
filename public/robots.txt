@@ -50,9 +50,7 @@ Allow: /collection/movies-like-inception/
 Allow: /collection/movies-like-memento/ 
 Allow: /collection/movies-like-shutter-island/
 Allow: /movies/
-Allow: /movies/like-memento/
-Allow: /movies/like-shutter-island/
-Allow: /search
+Allow: /search/
 
 # 🗺️ SITEMAP LOCATION
 Sitemap: https://filmiway.com/sitemap.xml
