@@ -1,4 +1,4 @@
-// data/collections.js - COMPLETE COLLECTION DATA WITH YOUR EXACT MOVIE ORDER
+// data/collections.js - COMPLETE FIXED COLLECTION DATA WITH PROPER SHUTTER ISLAND SETUP
 export const COLLECTIONS = [
     // 🔥 INCEPTION COLLECTION - YOUR EXACT ORDER
     {
@@ -16,8 +16,8 @@ export const COLLECTIONS = [
             'tt0246578', // 6. Donnie Darko - Rank #6
             'tt2316411', // 7. Enemy - Rank #7
             'tt0414993', // 8. The Fountain - Rank #8
-            'tt0485947', // 9. Mr. Nobody - Rank #9
-            'tt1130884'  // 10. Shutter Island - Rank #10 (FIRST TO SHOW WITH EXPLORER SECTION)
+            'tt1130884', // 9. Mr. Nobody - Rank #9
+            'tt1375666'  // 10. Inception - Rank #10 (FIRST TO SHOW WITH EXPLORER SECTION)
         ],
         badges: [
             {
@@ -35,7 +35,7 @@ export const COLLECTIONS = [
         ]
     },
 
-    // MEMENTO COLLECTION (IF YOU HAVE ONE)
+    // 🧠 MEMENTO COLLECTION - YOUR EXACT ORDER
     {
         id: 'movies-like-memento',
         slug: 'movies-like-memento',
@@ -51,8 +51,8 @@ export const COLLECTIONS = [
             'tt0246578', // 6. Donnie Darko - Rank #6
             'tt2316411', // 7. Enemy - Rank #7
             'tt0414993', // 8. The Fountain - Rank #8
-            'tt0485947', // 9. Mr. Nobody - Rank #9
-            'tt1130884'  // 10. Shutter Island - Rank #10 (FIRST TO SHOW)
+            'tt1130884', // 9. Mr. Nobody - Rank #9
+            'tt0209144'  // 10. Memento - Rank #10 (FIRST TO SHOW)
         ],
         badges: [
             {
@@ -66,6 +66,41 @@ export const COLLECTIONS = [
             {
                 label: "Community Curated", 
                 desc: "Selected by film enthusiasts who love non-linear storytelling and psychological twists"
+            }
+        ]
+    },
+
+    // 🩸 SHUTTER ISLAND COLLECTION - FIXED ORDER WITH THE USUAL SUSPECTS AT #10
+    {
+        id: 'movies-like-shutter-island',
+        slug: 'movies-like-shutter-island',
+        title: 'Top 10 Movies Like Shutter Island', 
+        description: 'Psychological Thrillers with Unreliable Narrators & Shocking Plot Twists',
+        poster: '/collections/shutter-island-collection.jpg',
+        movies: [
+            'tt0390384', // 1. Primer - Rank #1 (BEST)
+            'tt0383028', // 2. Synecdoche, New York - Rank #2
+            'tt0166924', // 3. Mulholland Drive - Rank #3
+            'tt2397535', // 4. Predestination - Rank #4
+            'tt2866360', // 5. Coherence - Rank #5
+            'tt0246578', // 6. Donnie Darko - Rank #6
+            'tt2316411', // 7. Enemy - Rank #7
+            'tt0414993', // 8. The Fountain - Rank #8
+            'tt1130884', // 9. Mr. Nobody - Rank #9 ✅ ADDED!
+            'tt0114814'  // 10. The Usual Suspects - Rank #10 ✅ FIXED! (FIRST TO SHOW WITH EXPLORER SECTION)
+        ],
+        badges: [
+            {
+                label: "Psychological Horror",
+                desc: "Films ranked by psychological intensity and reality distortion complexity"
+            },
+            {
+                label: "Unreliable Narrators", 
+                desc: "Movies exploring identity crisis and shocking revelations like Shutter Island"
+            },
+            {
+                label: "Community Curated",
+                desc: "Selected by film enthusiasts who love plot twists and psychological manipulation"
             }
         ]
     }

@@ -1,4 +1,4 @@
-// components/MovieDetailsSection.js - RED SENSITIVE CONTENT BUTTON FOR USER ATTENTION
+// components/MovieDetailsSection.js - FIXED SYNTAX ERROR
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Users, Film, BookOpen, Star, Brain, BarChart3, Shield } from 'lucide-react';
@@ -10,8 +10,9 @@ import EnhancedWhereToWatchSection from './EnhancedWhereToWatchSection';
 import RealCommentsRatingSection from './RealCommentsRatingSection';
 import SEOFAQSection from './SEOFAQSection';
 import MementoSEOFAQSection from './MementoSEOFAQSection';
+import ShutterIslandSEOFAQSection from './ShutterIslandSEOFAQSection';
 
-const MovieDetailsSection = React.memo(({ movie, fromMementoCollection }) => {
+const MovieDetailsSection = React.memo(({ movie, fromMementoCollection, fromShutterIslandCollection }) => {
   const movieInfo = COMPLETE_MOVIE_DATA[movie?.tmdbId];
   if (!movie || !movieInfo) return null;
 
@@ -27,7 +28,10 @@ const MovieDetailsSection = React.memo(({ movie, fromMementoCollection }) => {
       'donnie darko': '113 min',
       'enemy': '90 min',
       'the fountain': '96 min',
-      'shutter island': '138 min'
+      'shutter island': '138 min',
+      'the usual suspects': '106 min',
+      'memento': '113 min',
+      'inception': '148 min'
     };
     
     const titleKey = title.toLowerCase().replace(/[^\w\s]/g, '').trim();
@@ -46,7 +50,10 @@ const MovieDetailsSection = React.memo(({ movie, fromMementoCollection }) => {
       'donnie darko': 'R',
       'enemy': 'R',
       'the fountain': 'PG-13',
-      'shutter island': 'R'
+      'shutter island': 'R',
+      'the usual suspects': 'R',
+      'memento': 'R',
+      'inception': 'PG-13'
     };
     
     const titleKey = title.toLowerCase().replace(/[^\w\s]/g, '').trim();
@@ -89,7 +96,7 @@ const MovieDetailsSection = React.memo(({ movie, fromMementoCollection }) => {
     }
   };
 
-  // MOVIE-SPECIFIC SYNOPSIS BASED ON TITLE
+  // 🔥 ENHANCED MOVIE-SPECIFIC SYNOPSIS WITH NEW MOVIES
   const getUniqueDescription = () => {
     const t = title.toLowerCase();
     
@@ -111,9 +118,59 @@ const MovieDetailsSection = React.memo(({ movie, fromMementoCollection }) => {
     
     if (t.includes('mr. nobody') || t.includes('nobody')) return "The last mortal human recounts the infinite lives he could have lived based on different choices. Every decision creates new realities in this quantum meditation on possibility. Each timeline is equally real and unreal.";
     
+    // 🔥 NEW: The Usual Suspects description
+    if (t.includes('usual suspects')) return "Five criminals meet in a police lineup and plan the perfect heist. But their target leads them into the web of Keyser Söze, a legendary crime lord who may not exist. Nothing is as it seems in this masterpiece of deception where the greatest trick is convincing you it's real.";
+    
+    // 🔥 NEW: Memento description  
+    if (t.includes('memento')) return "A man with short-term memory loss hunts his wife's killer using notes, tattoos, and Polaroid photos as his memory. But in a world where he can't form new memories, how can he trust what he's already forgotten? Nolan's breakthrough thriller told in reverse chronological order.";
+    
+    // 🔥 NEW: Inception description
+    if (t.includes('inception')) return "Dom Cobb infiltrates dreams to steal secrets from the subconscious. His final job requires the impossible: instead of stealing an idea, he must plant one deep within a target's mind. Dreams within dreams create a labyrinth where reality becomes negotiable and time moves differently on each level.";
+    
     if (t.includes('shutter island')) return "A U.S. Marshal investigates a disappearance at a remote psychiatric facility where nothing is as it appears. His grip on reality slips as dark experiments surface. The investigation becomes a psychological maze with no exit.";
     
     return "A mind-bending exploration of reality where every scene challenges your perception of truth and identity.";
+  };
+
+  // 🔥 SMART COMPLEXITY SCORE TITLE LOGIC
+  const getComplexityScoreTitle = () => {
+    if (fromShutterIslandCollection) return 'PSYCHOLOGICAL COMPLEXITY SCORE';
+    if (fromMementoCollection) return 'MEMORY COMPLEXITY SCORE';
+    return 'COMPLEXITY SCORE';
+  };
+
+  const getComplexityIndexLabel = () => {
+    if (fromShutterIslandCollection) return 'PSYCHOLOGICAL INDEX';
+    if (fromMementoCollection) return 'MEMORY INDEX';
+    return 'MIND-BENDING INDEX';
+  };
+
+  const getComplexityLevelLabel = () => {
+    if (fromShutterIslandCollection) return 'PSYCHOLOGICAL DISTORTION LEVEL';
+    if (fromMementoCollection) return 'MEMORY DISTORTION LEVEL';
+    return 'COGNITIVE DISTORTION LEVEL';
+  };
+
+  const getComplexityDescription = () => {
+    if (fromShutterIslandCollection) {
+      if (mindBendingIndex >= 90) return "A transcendent masterpiece that redefines psychological storytelling, requiring multiple viewings for complete comprehension.";
+      if (mindBendingIndex >= 80) return "Sophisticated psychological manipulation with advanced reality-questioning elements and identity complexity.";
+      if (mindBendingIndex >= 70) return "Thoughtfully complex psychological narrative with engaging mind-bending elements throughout.";
+      return "Accessible psychological complexity with subtle reality-questioning elements that reward careful viewing.";
+    }
+    
+    if (fromMementoCollection) {
+      if (mindBendingIndex >= 90) return "A transcendent masterpiece that redefines memory-based storytelling, requiring multiple viewings for complete comprehension.";
+      if (mindBendingIndex >= 80) return "Sophisticated memory manipulation with advanced identity-questioning elements and temporal complexity.";
+      if (mindBendingIndex >= 70) return "Thoughtfully complex memory narrative with engaging identity-bending elements throughout.";
+      return "Accessible memory complexity with subtle identity-questioning elements that reward careful viewing.";
+    }
+    
+    // Default descriptions
+    if (mindBendingIndex >= 90) return "A transcendent masterpiece that redefines narrative complexity, requiring multiple viewings for complete comprehension.";
+    if (mindBendingIndex >= 80) return "Sophisticated cinematic storytelling with advanced non-linear elements and reality-bending concepts.";
+    if (mindBendingIndex >= 70) return "Thoughtfully complex narrative structure with engaging mind-bending elements throughout.";
+    return "Accessible complexity with subtle mind-bending elements that reward careful viewing.";
   };
 
   return (
@@ -236,7 +293,7 @@ const MovieDetailsSection = React.memo(({ movie, fromMementoCollection }) => {
       {/* WHERE TO WATCH FIRST */}
       <EnhancedWhereToWatchSection movie={movie} />
 
-      {/* 🎯 SMART COMPLEXITY SCORE SECTION - COLLECTION-AWARE */}
+      {/* 🔥 SMART COMPLEXITY SCORE SECTION - COLLECTION-AWARE */}
       <motion.div
         className="mb-8 sm:mb-12 bg-gradient-to-br from-gray-800/40 to-gray-900/60 rounded-xl border border-gray-700/50 p-4 sm:p-8 shadow-2xl backdrop-blur-sm relative overflow-hidden"
         initial={{ opacity: 0, scale: 0.95 }}
@@ -256,7 +313,7 @@ const MovieDetailsSection = React.memo(({ movie, fromMementoCollection }) => {
           <div className="flex items-center gap-4">
             <Star className="w-6 h-6 text-green-400" />
             <h3 className="text-2xl font-light text-gray-200 tracking-wide uppercase">
-              {fromMementoCollection ? 'MEMORY COMPLEXITY SCORE' : 'COMPLEXITY SCORE'}
+              {getComplexityScoreTitle()}
             </h3>
           </div>
           
@@ -265,7 +322,7 @@ const MovieDetailsSection = React.memo(({ movie, fromMementoCollection }) => {
             <div className="text-right">
               <div className="text-3xl sm:text-4xl font-extralight mb-1 tracking-wider text-gray-200">{mindBendingIndex}</div>
               <div className="text-xs text-gray-400 font-light tracking-wide uppercase">
-                {fromMementoCollection ? 'MEMORY INDEX' : 'MIND-BENDING INDEX'}
+                {getComplexityIndexLabel()}
               </div>
             </div>
             <div className="text-right">
@@ -279,7 +336,7 @@ const MovieDetailsSection = React.memo(({ movie, fromMementoCollection }) => {
           <div>
             <div className="flex items-center justify-between mb-2 sm:mb-3">
               <span className="text-sm text-gray-300 font-light tracking-wider uppercase">
-                {fromMementoCollection ? 'MEMORY DISTORTION LEVEL' : 'COGNITIVE DISTORTION LEVEL'}
+                {getComplexityLevelLabel()}
               </span>
               <span 
                 className="text-sm font-light px-3 py-1 sm:px-4 sm:py-2 rounded-lg border backdrop-blur-sm tracking-wider uppercase"
@@ -319,22 +376,7 @@ const MovieDetailsSection = React.memo(({ movie, fromMementoCollection }) => {
 
             {/* Smart Description */}
             <p className="text-gray-300/90 text-sm font-light leading-relaxed tracking-wide mt-3">
-              {fromMementoCollection 
-                ? (mindBendingIndex >= 90 
-                  ? "A transcendent masterpiece that redefines memory-based storytelling, requiring multiple viewings for complete comprehension."
-                  : mindBendingIndex >= 80 && mindBendingIndex < 90
-                  ? "Sophisticated memory manipulation with advanced identity-questioning elements and temporal complexity."
-                  : mindBendingIndex >= 70 && mindBendingIndex < 80
-                  ? "Thoughtfully complex memory narrative with engaging identity-bending elements throughout."
-                  : "Accessible memory complexity with subtle identity-questioning elements that reward careful viewing.")
-                : (mindBendingIndex >= 90 
-                  ? "A transcendent masterpiece that redefines narrative complexity, requiring multiple viewings for complete comprehension."
-                  : mindBendingIndex >= 80 && mindBendingIndex < 90
-                  ? "Sophisticated cinematic storytelling with advanced non-linear elements and reality-bending concepts."
-                  : mindBendingIndex >= 70 && mindBendingIndex < 80
-                  ? "Thoughtfully complex narrative structure with engaging mind-bending elements throughout."
-                  : "Accessible complexity with subtle mind-bending elements that reward careful viewing.")
-              }
+              {getComplexityDescription()}
             </p>
           </div>
         </div>
@@ -347,7 +389,9 @@ const MovieDetailsSection = React.memo(({ movie, fromMementoCollection }) => {
       <RealCommentsRatingSection movie={movie} />
       
       {/* 🔥 SMART FAQ SECTION - SHOWS CORRECT FAQ BASED ON COLLECTION */}
-      {fromMementoCollection ? (
+      {fromShutterIslandCollection ? (
+        <ShutterIslandSEOFAQSection movie={movie} />
+      ) : fromMementoCollection ? (
         <MementoSEOFAQSection movie={movie} />
       ) : (
         <SEOFAQSection movie={movie} />

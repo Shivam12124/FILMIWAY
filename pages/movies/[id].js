@@ -1,9 +1,9 @@
-// pages/movies/[id].js - COMPLETE SMART COLLECTION DETECTION WITH ALL FEATURES - FIXED YEAR ISSUE
+// pages/movies/[id].js - COMPLETE SMART COLLECTION DETECTION WITH ALL THREE COLLECTIONS - FIXED YEAR ISSUE
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ChevronRight, Star, Clock, Award, ArrowLeft, Brain, Zap } from 'lucide-react';
+import { ChevronRight, Star, Clock, Award, ArrowLeft, Brain, Zap, AlertTriangle } from 'lucide-react';
 
 // Components
 import CinematicBackground from '../../components/CinematicBackground';
@@ -17,67 +17,84 @@ import { SENSITIVE_TIMELINES, getSensitiveContentTypes } from '../../utils/sensi
 
 const TMDB_API_KEY = '6054e5498fb2619274454959c38bbdfa';
 
-// 🎬 COMPLETE MOVIE DATA WITH UNIQUE INCEPTION & MEMENTO CONNECTIONS
+// 🎬 COMPLETE MOVIE DATA WITH UNIQUE INCEPTION, MEMENTO & SHUTTER ISLAND CONNECTIONS
 const MOVIE_DATA_BY_TITLE = {
     'Shutter Island': {
         imdbRating: 8.2, genre: 'Psychological Thriller', runtime: '138 min', director: 'Martin Scorsese',
         quote: 'Which would be worse: To live as a monster, or to die as a good man?',
         inceptionConnection: 'Like Inception, Shutter Island masterfully blurs the line between reality and delusion. Both films question what\'s real through unreliable protagonists navigating layered psychological mysteries with stunning plot twists.',
-        mementoConnection: 'Like Memento, Shutter Island explores unreliable memory and fragmented identity through psychological manipulation. Both films feature protagonists who cannot trust their own memories due to traumatic experiences.'
+        mementoConnection: 'Like Memento, Shutter Island explores unreliable memory and fragmented identity through psychological manipulation. Both films feature protagonists who cannot trust their own memories due to traumatic experiences.',
+        shutterConnection: 'The definitive psychological thriller that inspired this entire collection of mind-bending films exploring identity crisis, unreliable narration, and shocking revelations about reality.'
     },
     'Mr. Nobody': {
         imdbRating: 7.7, genre: 'Sci-Fi Drama', runtime: '141 min', director: 'Jaco Van Dormael',
         quote: 'Each of these lives is the right one! Every path is the right path.',
         inceptionConnection: 'Like Inception\'s nested dreams creating infinite possibilities, Mr. Nobody explores multiple reality layers and parallel timelines. Both films challenge viewers to question which version of events is truly real.',
-        mementoConnection: 'Like Memento, Mr. Nobody questions the nature of memory and identity through complex non-linear storytelling. Both films explore how different memories and choices shape our understanding of who we are.'
+        mementoConnection: 'Like Memento, Mr. Nobody questions the nature of memory and identity through complex non-linear storytelling. Both films explore how different memories and choices shape our understanding of who we are.',
+        shutterConnection: 'Like Shutter Island, Mr. Nobody explores fragmented memory and multiple realities through psychological complexity and identity questioning.'
     },
     'Primer': {
         imdbRating: 6.9, genre: 'Sci-Fi Thriller', runtime: '77 min', director: 'Shane Carruth',
         quote: 'What happens if it actually works?',
         inceptionConnection: 'Like Inception\'s complex dream architecture requiring multiple viewings, Primer builds intricate temporal layers and rules. Both films reward intellectual engagement with mind-bending scientific concepts.',
-        mementoConnection: 'Like Memento, Primer uses deliberately confusing timeline structure to mirror the protagonists\' disorientation. Both films require multiple viewings to fully understand the chronological sequence of events.'
+        mementoConnection: 'Like Memento, Primer uses deliberately confusing timeline structure to mirror the protagonists\' disorientation. Both films require multiple viewings to fully understand the chronological sequence of events.',
+        shutterConnection: 'Like Shutter Island, Primer creates paranoia through unreliable perception and reality distortion. Both films feature protagonists who cannot trust their understanding of events unfolding around them.'
     },
     'Synecdoche, New York': {
         imdbRating: 7.5, genre: 'Psychological Drama', runtime: '124 min', director: 'Charlie Kaufman',
         quote: 'Most of your time is spent being dead or not yet born.',
         inceptionConnection: 'Like Inception\'s reality-within-reality structure, Synecdoche creates nested worlds where characters lose themselves in elaborate artistic constructions. Both films explore identity fragmentation through layered storytelling.',
-        mementoConnection: 'Like Memento, Synecdoche explores the deterioration of memory and sense of self. Both films deal with protagonists losing their grip on identity through repetition, confusion, and the passage of time.'
+        mementoConnection: 'Like Memento, Synecdoche explores the deterioration of memory and sense of self. Both films deal with protagonists losing their grip on identity through repetition, confusion, and the passage of time.',
+        shutterConnection: 'Like Shutter Island, Synecdoche explores mental deterioration and the fragmentation of identity through psychological complexity and unreliable narrative structure.'
     },
     'Mulholland Drive': {
         imdbRating: 7.9, genre: 'Psychological Mystery', runtime: '147 min', director: 'David Lynch',
         quote: 'I mean I just came here from Deep River, Ontario, and now I\'m in this dream place.',
         inceptionConnection: 'Like Inception\'s dream logic and surreal sequences, Mulholland Drive operates on mysterious narrative rules where reality shifts unexpectedly. Both films use dreamlike imagery to create haunting experiences.',
-        mementoConnection: 'Like Memento, Mulholland Drive uses fragmented narrative structure to mirror memory loss and identity confusion. Both films feature protagonists struggling with amnesia and reconstructed personalities.'
+        mementoConnection: 'Like Memento, Mulholland Drive uses fragmented narrative structure to mirror memory loss and identity confusion. Both films feature protagonists struggling with amnesia and reconstructed personalities.',
+        shutterConnection: 'Like Shutter Island, Mulholland Drive uses fragmented identity and memory loss to create a haunting psychological mystery with shocking revelations about reality.'
     },
     'Predestination': {
         imdbRating: 7.4, genre: 'Sci-Fi Thriller', runtime: '97 min', director: 'Michael Spierig, Peter Spierig',
         quote: 'The snake that eats its own tail, forever and ever.',
         inceptionConnection: 'Like Inception\'s carefully orchestrated heist with multiple moving parts, Predestination reveals information strategically through complex planning. Both films feature protagonists executing elaborate time-sensitive missions.',
-        mementoConnection: 'Like Memento, Predestination explores identity confusion through temporal manipulation and memory gaps. Both films gradually reveal the protagonist\'s true identity through careful information control.'
+        mementoConnection: 'Like Memento, Predestination explores identity confusion through temporal manipulation and memory gaps. Both films gradually reveal the protagonist\'s true identity through careful information control.',
+        shutterConnection: 'Like Shutter Island, Predestination gradually reveals the truth about identity confusion through careful psychological manipulation and twisted revelations.'
     },
     'Coherence': {
         imdbRating: 7.2, genre: 'Sci-Fi Thriller', runtime: '89 min', director: 'James Ward Byrkit',
         quote: 'This was taken tonight. What? How do you know that? I bought this sweater today.',
         inceptionConnection: 'Like Inception\'s layered reality confusion, Coherence traps characters in parallel possibilities where they question what\'s real. Both films create paranoia through shifting realities and unreliable perceptions.',
-        mementoConnection: 'Like Memento, Coherence creates confusion about reality through memory inconsistencies and repeated encounters. Both films leave viewers and characters questioning what actually happened during the evening.'
+        mementoConnection: 'Like Memento, Coherence creates confusion about reality through memory inconsistencies and repeated encounters. Both films leave viewers and characters questioning what actually happened during the evening.',
+        shutterConnection: 'Like Shutter Island, Coherence creates psychological tension through reality confusion and paranoia, leaving viewers questioning what is real versus illusion.'
     },
     'Donnie Darko': {
         imdbRating: 8.0, genre: 'Sci-Fi Mystery', runtime: '113 min', director: 'Richard Kelly',
         quote: 'Destruction is a form of creation.',
         inceptionConnection: 'Like Inception\'s exploration of subconscious influence and manipulation, Donnie Darko blends psychological depth with sci-fi concepts. Both films feature protagonists struggling to understand their role in complex scenarios.',
-        mementoConnection: 'Like Memento, Donnie Darko explores mental confusion and the unreliability of perception through psychiatric conditions. Both films feature protagonists who cannot trust their understanding of reality or time.'
+        mementoConnection: 'Like Memento, Donnie Darko explores mental confusion and the unreliability of perception through psychiatric conditions. Both films feature protagonists who cannot trust their understanding of reality or time.',
+        shutterConnection: 'Like Shutter Island, Donnie Darko explores psychological instability and mental illness through atmospheric storytelling and reality distortion.'
     },
     'Enemy': {
         imdbRating: 6.9, genre: 'Psychological Thriller', runtime: '91 min', director: 'Denis Villeneuve',
         quote: 'You never know how your day is gonna turn out.',
         inceptionConnection: 'Like Inception\'s identity confusion within dream layers, Enemy explores psychological doubling and doppelgangers. Both films create unsettling atmospheres through ambiguous reality and identity questions.',
-        mementoConnection: 'Like Memento, Enemy explores identity crisis and the complete fragmentation of self-recognition. Both films feature protagonists who cannot trust their own memories or distinguish between different versions of themselves.'
+        mementoConnection: 'Like Memento, Enemy explores identity crisis and the complete fragmentation of self-recognition. Both films feature protagonists who cannot trust their own memories or distinguish between different versions of themselves.',
+        shutterConnection: 'Like Shutter Island, Enemy creates psychological horror through identity crisis and the complete breakdown of self-recognition and reality.'
     },
     'The Fountain': {
         imdbRating: 7.2, genre: 'Sci-Fi Drama', runtime: '96 min', director: 'Darren Aronofsky',
         quote: 'Death is a disease...And there\'s a cure.',
         inceptionConnection: 'Like Inception\'s emotional journey about letting go of the past, The Fountain explores love transcending time and death through three interconnected timelines. Both films combine spectacular visuals with deeply personal themes.',
-        mementoConnection: 'Like Memento, The Fountain deals with memory, loss, and the cyclical nature of time and identity. Both films explore how traumatic memories and the search for meaning shape our understanding of existence and purpose.'
+        mementoConnection: 'Like Memento, The Fountain deals with memory, loss, and the cyclical nature of time and identity. Both films explore how traumatic memories and the search for meaning shape our understanding of existence and purpose.',
+        shutterConnection: 'Like Shutter Island, The Fountain deals with psychological trauma, loss, and the cyclical nature of memory and identity through multiple timelines.'
+    },
+    'The Usual Suspects': {
+        imdbRating: 8.5, genre: 'Crime Thriller', runtime: '106 min', director: 'Bryan Singer',
+        quote: 'The greatest trick the devil ever pulled was convincing the world he didn\'t exist.',
+        inceptionConnection: 'Like Inception\'s layered deception and misdirection, The Usual Suspects builds an elaborate con through unreliable narration. Both films feature masterful plot twists that recontextualize everything.',
+        mementoConnection: 'Like Memento, The Usual Suspects uses fragmented storytelling and unreliable narration to gradually reveal shocking truths about identity and memory.',
+        shutterConnection: 'Like Shutter Island, The Usual Suspects builds to a shocking identity revelation through unreliable narration and masterful psychological manipulation.'
     }
 };
 
@@ -125,6 +142,28 @@ const InceptionConnectionBadge = ({ movie, correctData }) => (
     </motion.div>
 );
 
+// 🧠 SHUTTER ISLAND CONNECTION COMPONENT
+const ShutterIslandConnectionBadge = ({ movie, correctData }) => (
+    <motion.div 
+        className="mb-10 p-6 bg-gradient-to-r from-red-500/10 via-orange-400/10 to-red-500/10 rounded-2xl border border-red-400/20 relative overflow-hidden"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.8, duration: 0.8 }}
+    >
+        <div className="absolute inset-0 bg-gradient-to-r from-red-400/5 to-transparent opacity-50"></div>
+        
+        <div className="relative z-10">
+            <h3 className="text-red-300 font-semibold mb-3 text-lg flex items-center gap-2">
+                <AlertTriangle className="w-5 h-5 text-red-400" />
+                Why Similar to Shutter Island
+            </h3>
+            <p className="text-gray-300 leading-relaxed text-base">
+                {correctData?.shutterConnection || `Like Shutter Island, ${movie.Title} explores themes of psychological horror and identity through innovative storytelling.`}
+            </p>
+        </div>
+    </motion.div>
+);
+
 // Subtle Film Grain Overlay
 const SubtleFilmGrain = () => (
     <div className="fixed inset-0 pointer-events-none z-0 opacity-[0.02]">
@@ -144,21 +183,34 @@ const SmartMoviePage = ({ movie }) => {
     const correctData = MOVIE_DATA_BY_TITLE[movie.Title];
     const [scrollY, setScrollY] = useState(0);
     
-    // 🔥 SMART COLLECTION DETECTION
+    // 🔥 SMART COLLECTION DETECTION FOR ALL THREE COLLECTIONS
     const [fromMementoCollection, setFromMementoCollection] = useState(false);
+    const [fromShutterIslandCollection, setFromShutterIslandCollection] = useState(false);
     
     useEffect(() => {
         if (typeof window !== 'undefined') {
             const fromMemento = sessionStorage.getItem('fromMementoCollection');
+            const fromShutter = sessionStorage.getItem('fromShutterIslandCollection');
+            
             setFromMementoCollection(fromMemento === 'true');
+            setFromShutterIslandCollection(fromShutter === 'true');
         }
     }, []);
+
+    // 🔥 DETERMINE WHICH COLLECTION (PRIORITY: SHUTTER ISLAND > MEMENTO > INCEPTION)
+    const getCollectionType = () => {
+        if (fromShutterIslandCollection) return 'shutter-island';
+        if (fromMementoCollection) return 'memento';
+        return 'inception';
+    };
+
+    const collectionType = getCollectionType();
 
     const movieSchema = {
         "@context": "https://schema.org",
         "@type": "Movie",
         "name": movie.Title,
-        "description": movieInfo?.synopsis || `${movie.Title} - A compelling ${correctData?.genre?.toLowerCase() || 'thriller'} film similar to ${fromMementoCollection ? 'Memento' : 'Inception'}`,
+        "description": movieInfo?.synopsis || `${movie.Title} - A compelling ${correctData?.genre?.toLowerCase() || 'thriller'} film similar to ${collectionType === 'shutter-island' ? 'Shutter Island' : collectionType === 'memento' ? 'Memento' : 'Inception'}`,
         "genre": movie.Genre,
         "datePublished": movie.Year?.toString(),
         "director": {
@@ -181,16 +233,37 @@ const SmartMoviePage = ({ movie }) => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // ✅ FIXED DATA GETTERS - NO MORE '2010' FALLBACK!
+    // 🔥 FIXED DATA GETTERS WITH CORRECT YEARS
     const getGenre = () => correctData?.genre || movie.Genre || movieInfo?.genre || 'Thriller';
     const getRuntime = () => correctData?.runtime || movie.Runtime || (movieInfo?.runtime ? `${movieInfo.runtime} min` : '120 min');
     const getDirector = () => correctData?.director || movieInfo?.director || movie.Director || 'Acclaimed Director';
-    const getYear = () => movie.Year || 'Unknown'; // ✅ FIXED - No more 2010 fallback!
+    
+    // 🔥 KEY FIX: Get correct year with fallback for existing movies
+    const getYear = () => {
+        // 🔥 SIMPLE FIX - Just add correct years for existing movies
+        const correctYears = {
+            'Enemy': '2013',
+            'Primer': '2004',
+            'The Fountain': '2006',
+            'Synecdoche, New York': '2008',
+            'Mulholland Drive': '2001',
+            'Predestination': '2014',
+            'Coherence': '2013',
+            'Donnie Darko': '2001',
+            'Mr. Nobody': '2009',
+            'Shutter Island': '2010',
+            'Memento': '2000',
+            'Inception': '2010'
+        };
+        
+        return correctYears[movie.Title] || movie.Year || 'Unknown';
+    };
+    
     const getIMDbRating = () => correctData?.imdbRating || movieInfo?.rating || 7.5;
     const getComplexityScore = () => movieInfo?.mindBendingIndex || 85;
     const getMovieQuote = () => correctData?.quote || STRATEGIC_QUOTES[movie.tmdbId] || 'A mind-bending cinematic experience';
 
-    // 🧠 SMART BACK BUTTON
+    // 🧠 SMART BACK BUTTON FOR ALL THREE COLLECTIONS
     const handleBackClick = () => {
         if (typeof window !== 'undefined') {
             sessionStorage.setItem('returningFromMovie', 'true');
@@ -199,36 +272,81 @@ const SmartMoviePage = ({ movie }) => {
             if (currentPosition) sessionStorage.setItem('returnToPosition', currentPosition);
             if (currentRank) sessionStorage.setItem('returnToRank', currentRank);
             
-            if (fromMementoCollection) {
-                window.location.href = '/collection/movies-like-memento';
-            } else {
-                window.location.href = '/collection/movies-like-inception';
+            switch (collectionType) {
+                case 'shutter-island':
+                    window.location.href = '/collection/movies-like-shutter-island';
+                    break;
+                case 'memento':
+                    window.location.href = '/collection/movies-like-memento';
+                    break;
+                default:
+                    window.location.href = '/collection/movies-like-inception';
             }
         }
     };
 
+    // 🎨 GET COLLECTION DISPLAY NAME AND COLORS
+    const getCollectionDisplayName = () => {
+        switch (collectionType) {
+            case 'shutter-island': return 'Shutter Island';
+            case 'memento': return 'Memento';
+            default: return 'Inception';
+        }
+    };
+
+    const getCollectionIcon = () => {
+        switch (collectionType) {
+            case 'shutter-island': return <AlertTriangle className="w-5 h-5 text-red-400" />;
+            case 'memento': return <Brain className="w-5 h-5 text-purple-400" />;
+            default: return <Zap className="w-5 h-5 text-yellow-400" />;
+        }
+    };
+
+    const getCollectionColors = () => {
+        switch (collectionType) {
+            case 'shutter-island': 
+                return {
+                    badge: 'bg-gradient-to-r from-red-900/40 to-orange-900/40 border-red-400/30',
+                    text: 'text-red-300',
+                    scoreLabel: 'Psych Score'
+                };
+            case 'memento':
+                return {
+                    badge: 'bg-gradient-to-r from-purple-900/40 to-blue-900/40 border-purple-400/30',
+                    text: 'text-purple-300',
+                    scoreLabel: 'Memory Score'
+                };
+            default:
+                return {
+                    badge: 'bg-gradient-to-r from-yellow-900/40 to-amber-900/40 border-yellow-400/30',
+                    text: 'text-yellow-300',
+                    scoreLabel: 'Complexity Score'
+                };
+        }
+    };
+
+    const colors = getCollectionColors();
+
     return (
         <div className="min-h-screen bg-black text-white relative overflow-hidden">
             <Head>
-                <title>{movie.Title} ({getYear()}) Like {fromMementoCollection ? 'Memento' : 'Inception'} - Analysis & Reviews | Filmiway</title>
-                {/* 🔥 NEW WINNING DESCRIPTION */}
-                <meta name="description" content="From Primer to Mulholland Drive — explore mind-bending movies like Inception. Filmiway adds detailed sensitive scene timestamps for safe viewing." />
-                <meta name="keywords" content={`${movie.Title}, ${getYear()}, like ${fromMementoCollection ? 'memento, memory loss films' : 'inception, mind bending movies'}, user reviews, movie ratings, ${getGenre()}, ${getDirector()}, psychological thrillers, sensitive content timestamps, safe movie viewing`} />
+                <title>{movie.Title} ({getYear()}) Like {getCollectionDisplayName()} - Analysis & Reviews | Filmiway</title>
+                {/* 🔥 FIXED META DESCRIPTION WITH CORRECT YEAR */}
+                <meta name="description" content={`${movie.Title} (${getYear()}) - A mind-bending ${getGenre().toLowerCase()} like ${getCollectionDisplayName()}. Detailed analysis, reviews, and sensitive scene timestamps for safe viewing.`} />
+                <meta name="keywords" content={`${movie.Title}, ${getYear()}, like ${collectionType === 'shutter-island' ? 'shutter island, psychological thrillers' : collectionType === 'memento' ? 'memento, memory loss films' : 'inception, mind bending movies'}, user reviews, movie ratings, ${getGenre()}, ${getDirector()}, psychological thrillers, sensitive content timestamps, safe movie viewing`} />
                 <meta name="robots" content="index, follow" />
                 <link rel="canonical" href={`https://filmiway.com/movies/${movie.imdbID}`} />
                 <link rel="icon" href="/favicon.ico" />
                 
-                <meta property="og:title" content={`${movie.Title} (${getYear()}) Like ${fromMementoCollection ? 'Memento' : 'Inception'} - Analysis`} />
-                {/* 🔥 NEW WINNING OG DESCRIPTION */}
-                <meta property="og:description" content="From Primer to Mulholland Drive — explore mind-bending movies like Inception. Filmiway adds detailed sensitive scene timestamps for safe viewing." />
+                <meta property="og:title" content={`${movie.Title} (${getYear()}) Like ${getCollectionDisplayName()} - Analysis`} />
+                <meta property="og:description" content={`${movie.Title} (${getYear()}) - A mind-bending ${getGenre().toLowerCase()} like ${getCollectionDisplayName()}. Detailed analysis, reviews, and sensitive scene timestamps for safe viewing.`} />
                 <meta property="og:type" content="video.movie" />
                 <meta property="og:url" content={`https://filmiway.com/movies/${movie.imdbID}`} />
                 <meta property="og:site_name" content="Filmiway" />
                 
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content={`${movie.Title} (${getYear()}) Like ${fromMementoCollection ? 'Memento' : 'Inception'}`} />
-                {/* 🔥 NEW WINNING TWITTER DESCRIPTION */}
-                <meta name="twitter:description" content="From Primer to Mulholland Drive — explore mind-bending movies like Inception. Filmiway adds detailed sensitive scene timestamps for safe viewing." />
+                <meta name="twitter:title" content={`${movie.Title} (${getYear()}) Like ${getCollectionDisplayName()}`} />
+                <meta name="twitter:description" content={`${movie.Title} (${getYear()}) - A mind-bending ${getGenre().toLowerCase()} like ${getCollectionDisplayName()}. Detailed analysis, reviews, and sensitive scene timestamps for safe viewing.`} />
                 
                 <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }} />
             </Head>
@@ -256,7 +374,7 @@ const SmartMoviePage = ({ movie }) => {
             >
                 <ArrowLeft className="w-4 h-4 text-yellow-400" />
                 <span className="text-yellow-400 text-sm font-medium">
-                    Back to {fromMementoCollection ? 'Memento' : 'Inception'}
+                    Back to {getCollectionDisplayName()}
                 </span>
             </motion.button>
 
@@ -279,10 +397,10 @@ const SmartMoviePage = ({ movie }) => {
                     <ChevronRight size={16} className="text-gray-600" />
                     <motion.div whileHover={{ x: 2, color: '#facc15' }}>
                         <Link 
-                            href={fromMementoCollection ? "/collection/movies-like-memento" : "/collection/movies-like-inception"}
+                            href={`/collection/movies-like-${collectionType}`}
                             className="hover:text-yellow-400 transition-all duration-300"
                         >
-                            Movies Like {fromMementoCollection ? 'Memento' : 'Inception'}
+                            Movies Like {getCollectionDisplayName()}
                         </Link>
                     </motion.div>
                     <ChevronRight size={16} className="text-gray-600" />
@@ -319,7 +437,7 @@ const SmartMoviePage = ({ movie }) => {
                                             </div>
                                             <div className="bg-yellow-500/20 backdrop-blur-sm px-3 py-2 rounded-full">
                                                 <div className="text-yellow-400 font-bold text-sm">{getComplexityScore()}/100</div>
-                                                <div className="text-white/70 text-xs">{fromMementoCollection ? 'Memory' : 'Complexity'}</div>
+                                                <div className="text-white/70 text-xs">{colors.scoreLabel}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -350,23 +468,23 @@ const SmartMoviePage = ({ movie }) => {
                                         animate={{ opacity: 1 }}
                                         transition={{ delay: 0.6 }}
                                     >
-                                        ({getYear()})
+                                        ({getYear()}) {/* 🔥 SHOWS CORRECT YEAR! */}
                                     </motion.span>
                                 </motion.h1>
 
-                                {/* COLLECTION BADGE */}
+                                {/* SMART COLLECTION BADGE */}
                                 <motion.div 
                                     className="mb-8 flex justify-center lg:justify-start"
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: 0.4, duration: 0.8 }}
                                 >
-                                    <div className={`inline-flex items-center gap-3 px-6 py-3 rounded-full backdrop-blur-sm border ${fromMementoCollection ? 'bg-gradient-to-r from-purple-900/40 to-blue-900/40 border-purple-400/30' : 'bg-gradient-to-r from-yellow-900/40 to-amber-900/40 border-yellow-400/30'}`}>
-                                        {fromMementoCollection ? <Brain className="w-5 h-5 text-purple-400" /> : <Zap className="w-5 h-5 text-yellow-400" />}
-                                        <span className={`font-medium text-sm ${fromMementoCollection ? 'text-purple-300' : 'text-yellow-300'}`}>
-                                            Like {fromMementoCollection ? 'Memento' : 'Inception'}
+                                    <div className={`inline-flex items-center gap-3 px-6 py-3 rounded-full backdrop-blur-sm border ${colors.badge}`}>
+                                        {getCollectionIcon()}
+                                        <span className={`font-medium text-sm ${colors.text}`}>
+                                            Like {getCollectionDisplayName()}
                                         </span>
-                                        {fromMementoCollection ? <Zap className="w-5 h-5 text-purple-400" /> : <Brain className="w-5 h-5 text-yellow-400" />}
+                                        {getCollectionIcon()}
                                     </div>
                                 </motion.div>
 
@@ -410,8 +528,10 @@ const SmartMoviePage = ({ movie }) => {
                                     "{getMovieQuote()}"
                                 </motion.blockquote>
 
-                                {/* 🔥 SMART CONNECTION - ONLY SHOW RELEVANT ONE */}
-                                {fromMementoCollection ? (
+                                {/* 🔥 SMART CONNECTION - SHOW APPROPRIATE ONE BASED ON COLLECTION */}
+                                {collectionType === 'shutter-island' ? (
+                                    <ShutterIslandConnectionBadge movie={movie} correctData={correctData} />
+                                ) : collectionType === 'memento' ? (
                                     <MementoConnectionBadge movie={movie} correctData={correctData} />
                                 ) : (
                                     <InceptionConnectionBadge movie={movie} correctData={correctData} />
@@ -434,7 +554,7 @@ const SmartMoviePage = ({ movie }) => {
                                             {getComplexityScore()}
                                         </div>
                                         <div className="text-sm text-gray-400 uppercase tracking-wider font-medium relative z-10">
-                                            {fromMementoCollection ? 'Memory Score' : 'Complexity Score'}
+                                            {colors.scoreLabel}
                                         </div>
                                     </motion.div>
 
@@ -463,8 +583,12 @@ const SmartMoviePage = ({ movie }) => {
                         transition={{ delay: 1.4, duration: 0.8 }}
                         className="space-y-16 sm:space-y-24"
                     >
-                        {/* 🔥 PASS THE fromMementoCollection PROP TO MOVIEDETAILSSECTION */}
-                        <MovieDetailsSection movie={movie} fromMementoCollection={fromMementoCollection} />
+                        {/* 🔥 PASS THE COLLECTION FLAGS TO MOVIEDETAILSSECTION */}
+                        <MovieDetailsSection 
+                            movie={movie} 
+                            fromMementoCollection={fromMementoCollection}
+                            fromShutterIslandCollection={fromShutterIslandCollection}
+                        />
                     </motion.div>
 
                     <TMDBAttribution />

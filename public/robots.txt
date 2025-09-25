@@ -1,6 +1,6 @@
 # Enhanced robots.txt for AI Discovery
 # Filmiway - Where Every Film Finds Its Way
-# Last updated: September 24, 2025
+# Last updated: September 25, 2025
 
 # Default: allow all, but restrict backend routes
 User-agent: *
@@ -48,8 +48,10 @@ Allow: /
 # 🎬 EXPLICITLY ALLOW HIGH-VALUE CONTENT PATHS
 Allow: /collection/movies-like-inception/
 Allow: /collection/movies-like-memento/ 
+Allow: /collection/movies-like-shutter-island/
 Allow: /movies/
 Allow: /movies/like-memento/
+Allow: /movies/like-shutter-island/
 Allow: /search
 
 # 🗺️ SITEMAP LOCATION
