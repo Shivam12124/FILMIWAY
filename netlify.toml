@@ -1,13 +1,14 @@
 [build]
-  publish = ".next"
+  publish = "out"
   command = "npm run build"
 
 [build.environment]
   NODE_VERSION = "18"
   NEXT_PUBLIC_TMDB_API_KEY = "6054e5498fb2619274454959c38bbdfa"
 
-# Let Netlify handle Next.js routing automatically
+# 🔥 FIXED REDIRECT - SPA FALLBACK WITHOUT 301s
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+  force = false
