@@ -3,44 +3,46 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 
                             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-    <!-- MAIN PAGES -->
+
+    <!-- 🔥 HOMEPAGE - HIGHEST PRIORITY -->
     <url>
         <loc>https://filmiway.com/</loc>
         <lastmod>2025-09-25T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
+
+    <!-- 🔥 MAIN UTILITY PAGES -->
     <url>
         <loc>https://filmiway.com/search</loc>
         <lastmod>2025-09-25T00:00:00+00:00</lastmod>
         <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
+        <priority>0.7</priority>
     </url>
     
-    <!-- 🔥 ALL THREE COLLECTIONS -->
+    <!-- 🔥 MAIN COLLECTION PAGES - HIGH PRIORITY -->
     <url>
         <loc>https://filmiway.com/collection/movies-like-inception</loc>
         <lastmod>2025-09-25T00:00:00+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
-    
+
     <url>
         <loc>https://filmiway.com/collection/movies-like-memento</loc>
         <lastmod>2025-09-25T00:00:00+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
-    
-    <!-- 🔥 NEW SHUTTER ISLAND COLLECTION -->
+
     <url>
         <loc>https://filmiway.com/collection/movies-like-shutter-island</loc>
         <lastmod>2025-09-25T00:00:00+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
-    
-    <!-- ✅ INCEPTION COLLECTION MOVIES - MAIN PAGES -->
+
+    <!-- 🔥 MOVIE DETAIL PAGES - STANDARD MOVIE URL FORMAT -->
     
     <!-- 1. PRIMER (2004) -->
     <url>
@@ -103,7 +105,7 @@
         <loc>https://filmiway.com/movies/tt0414993</loc>
         <lastmod>2025-09-25T00:00:00+00:00</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.9</priority>
+        <priority>0.8</priority>
     </url>
     
     <!-- 9. MR. NOBODY (2009) -->
@@ -122,165 +124,9 @@
         <priority>0.8</priority>
     </url>
 
-    <!-- 🔥 MEMENTO COLLECTION MOVIES - MEMENTO PERSPECTIVE -->
-    
-    <!-- 1. PRIMER (2004) - MEMENTO PERSPECTIVE -->
+    <!-- 11. THE USUAL SUSPECTS (1995) -->
     <url>
-        <loc>https://filmiway.com/movies/like-memento/tt0390384</loc>
-        <lastmod>2025-09-25T00:00:00+00:00</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <!-- 2. SYNECDOCHE, NEW YORK (2008) - MEMENTO PERSPECTIVE -->
-    <url>
-        <loc>https://filmiway.com/movies/like-memento/tt0383028</loc>
-        <lastmod>2025-09-25T00:00:00+00:00</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <!-- 3. MULHOLLAND DRIVE (2001) - MEMENTO PERSPECTIVE -->
-    <url>
-        <loc>https://filmiway.com/movies/like-memento/tt0166924</loc>
-        <lastmod>2025-09-25T00:00:00+00:00</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <!-- 4. PREDESTINATION (2014) - MEMENTO PERSPECTIVE -->
-    <url>
-        <loc>https://filmiway.com/movies/like-memento/tt2397535</loc>
-        <lastmod>2025-09-25T00:00:00+00:00</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <!-- 5. COHERENCE (2013) - MEMENTO PERSPECTIVE -->
-    <url>
-        <loc>https://filmiway.com/movies/like-memento/tt2866360</loc>
-        <lastmod>2025-09-25T00:00:00+00:00</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <!-- 6. DONNIE DARKO (2001) - MEMENTO PERSPECTIVE -->
-    <url>
-        <loc>https://filmiway.com/movies/like-memento/tt0246578</loc>
-        <lastmod>2025-09-25T00:00:00+00:00</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <!-- 7. ENEMY (2013) - MEMENTO PERSPECTIVE -->
-    <url>
-        <loc>https://filmiway.com/movies/like-memento/tt2316411</loc>
-        <lastmod>2025-09-25T00:00:00+00:00</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <!-- 8. THE FOUNTAIN (2006) - MEMENTO PERSPECTIVE -->
-    <url>
-        <loc>https://filmiway.com/movies/like-memento/tt0414993</loc>
-        <lastmod>2025-09-25T00:00:00+00:00</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <!-- 9. MR. NOBODY (2009) - MEMENTO PERSPECTIVE -->
-    <url>
-        <loc>https://filmiway.com/movies/like-memento/tt0485947</loc>
-        <lastmod>2025-09-25T00:00:00+00:00</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-     <!-- 10. SHUTTER ISLAND (2010) -->
-    <url>
-        <loc>https://filmiway.com/movies/tt1130884</loc>
-        <lastmod>2025-09-25T00:00:00+00:00</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-
-    <!-- 🔥 SHUTTER ISLAND COLLECTION MOVIES - SHUTTER ISLAND PERSPECTIVE -->
-    
-    <!-- 1. PRIMER (2004) - SHUTTER ISLAND PERSPECTIVE -->
-    <url>
-        <loc>https://filmiway.com/movies/like-shutter-island/tt0390384</loc>
-        <lastmod>2025-09-25T00:00:00+00:00</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <!-- 2. SYNECDOCHE, NEW YORK (2008) - SHUTTER ISLAND PERSPECTIVE -->
-    <url>
-        <loc>https://filmiway.com/movies/like-shutter-island/tt0383028</loc>
-        <lastmod>2025-09-25T00:00:00+00:00</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <!-- 3. MULHOLLAND DRIVE (2001) - SHUTTER ISLAND PERSPECTIVE -->
-    <url>
-        <loc>https://filmiway.com/movies/like-shutter-island/tt0166924</loc>
-        <lastmod>2025-09-25T00:00:00+00:00</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <!-- 4. PREDESTINATION (2014) - SHUTTER ISLAND PERSPECTIVE -->
-    <url>
-        <loc>https://filmiway.com/movies/like-shutter-island/tt2397535</loc>
-        <lastmod>2025-09-25T00:00:00+00:00</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <!-- 5. COHERENCE (2013) - SHUTTER ISLAND PERSPECTIVE -->
-    <url>
-        <loc>https://filmiway.com/movies/like-shutter-island/tt2866360</loc>
-        <lastmod>2025-09-25T00:00:00+00:00</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <!-- 6. DONNIE DARKO (2001) - SHUTTER ISLAND PERSPECTIVE -->
-    <url>
-        <loc>https://filmiway.com/movies/like-shutter-island/tt0246578</loc>
-        <lastmod>2025-09-25T00:00:00+00:00</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <!-- 7. ENEMY (2013) - SHUTTER ISLAND PERSPECTIVE -->
-    <url>
-        <loc>https://filmiway.com/movies/like-shutter-island/tt2316411</loc>
-        <lastmod>2025-09-25T00:00:00+00:00</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <!-- 8. THE FOUNTAIN (2006) - SHUTTER ISLAND PERSPECTIVE -->
-    <url>
-        <loc>https://filmiway.com/movies/like-shutter-island/tt0414993</loc>
-        <lastmod>2025-09-25T00:00:00+00:00</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <!-- 9. MR. NOBODY (2009) - SHUTTER ISLAND PERSPECTIVE -->
-    <url>
-        <loc>https://filmiway.com/movies/like-shutter-island/tt0485947</loc>
-        <lastmod>2025-09-25T00:00:00+00:00</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <!-- 10. THE USUAL SUSPECTS (1995) - SHUTTER ISLAND PERSPECTIVE -->
-    <url>
-        <loc>https://filmiway.com/movies/like-shutter-island/tt0114814</loc>
+        <loc>https://filmiway.com/movies/tt0114814</loc>
         <lastmod>2025-09-25T00:00:00+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>

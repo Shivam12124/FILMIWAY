@@ -1,4 +1,4 @@
-// pages/index.js - NO AUTO-SCROLL + SMALLER NEW TAG + CLASSY UNDER CONSTRUCTION
+// pages/index.js - 🔥 SEO-OPTIMIZED WITH TITLE & H1 TAGS
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Head from 'next/head';
@@ -169,7 +169,7 @@ const FilmiwayHomepage = () => {
         </motion.nav>
     );
 
-    // HERO SECTION (keeping same as before)
+    // HERO SECTION WITH PROPER H1 TAG
     const HeroSection = () => (
         <section className="relative min-h-screen flex items-center justify-center bg-black overflow-hidden" role="banner">
             {/* Subtle Background Pattern */}
@@ -204,7 +204,7 @@ const FilmiwayHomepage = () => {
                         </div>
                     </motion.div>
 
-                    {/* Main Headline */}
+                    {/* 🔥 MAIN H1 TAG WITH SEO KEYWORDS */}
                     <motion.h1 
                         className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extralight text-white mb-8 leading-tight"
                         style={{ fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif" }}
@@ -212,12 +212,12 @@ const FilmiwayHomepage = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.3, duration: 1 }}
                     >
-                        Discover
+                        Discover Mind-Bending
                         <span className="block text-yellow-400 font-light">
-                            Amazing
+                            Movies Like
                         </span>
                         <span className="block text-white/90">
-                            Movies
+                            Inception
                         </span>
                     </motion.h1>
 
@@ -228,7 +228,7 @@ const FilmiwayHomepage = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.6, duration: 1 }}
                     >
-                        From trending blockbusters to hidden gems, explore movies across every genre and era.
+                        From psychological thrillers to sci-fi masterpieces, explore curated collections of mind-bending cinema.
                         <span className="text-yellow-400/90"> Your complete movie discovery platform.</span>
                     </motion.p>
 
@@ -679,16 +679,32 @@ const FilmiwayHomepage = () => {
     return (
         <>
             <Head>
-                <title>Filmiway - Where Every Film Finds Its Way</title>
+                {/* 🔥 SEO-OPTIMIZED TITLE TAG WITH KEYWORDS */}
+                <title>Filmiway | Mind-Bending Movies Like Inception, Memento & Shutter Island</title>
+                
+                {/* 🔥 SEO META DESCRIPTION */}
+                <meta name="description" content="Discover curated collections of mind-bending psychological thrillers, sci-fi masterpieces, and reality-questioning cinema. Find movies like Inception, Memento, and Shutter Island." />
+                
+                {/* 🔥 SEO KEYWORDS */}
+                <meta name="keywords" content="movies like inception, psychological thrillers, mind bending movies, memento similar films, shutter island recommendations, sci-fi masterpieces, movie collections, film discovery" />
+                
                 <meta name="application-name" content="Filmiway" />
                 <meta name="apple-mobile-web-app-title" content="Filmiway" />
-                <meta name="description" content="Filmiway - Where Every Film Finds Its Way. Discover amazing movies across every genre and era with curated collections and community reviews." />
                 <meta name="generator" content="Filmiway" />
                 <meta name="author" content="Filmiway Team" />
                 <meta name="publisher" content="Filmiway" />
                 <meta name="copyright" content="Filmiway 2025" />
-                <meta name="viewport" content="width=device-width, initial-scale=1" />
-                <meta name="keywords" content="filmiway, movies, cinema, film discovery, movie reviews, collections, streaming, watch movies" />
+                
+                {/* 🔥 OPEN GRAPH TAGS FOR SOCIAL SHARING */}
+                <meta property="og:title" content="Filmiway | Mind-Bending Movies Like Inception, Memento & Shutter Island" />
+                <meta property="og:description" content="Discover curated collections of mind-bending psychological thrillers, sci-fi masterpieces, and reality-questioning cinema." />
+                <meta property="og:image" content="https://filmiway.com/og-image.jpg" />
+                <meta property="og:type" content="website" />
+                
+                {/* 🔥 TWITTER CARDS */}
+                <meta name="twitter:title" content="Filmiway | Mind-Bending Movies Like Inception, Memento & Shutter Island" />
+                <meta name="twitter:description" content="Discover curated collections of mind-bending psychological thrillers, sci-fi masterpieces, and reality-questioning cinema." />
+                <meta name="twitter:image" content="https://filmiway.com/twitter-image.jpg" />
                 
                 <meta name="framework" content="Filmiway Platform" />
                 <meta name="powered-by" content="Filmiway" />
@@ -702,22 +718,61 @@ const FilmiwayHomepage = () => {
                 <meta name="theme-color" content="#facc15" />
                 <meta name="msapplication-TileColor" content="#000000" />
                 
+                {/* 🔥 ENHANCED STRUCTURED DATA */}
                 <script type="application/ld+json" dangerouslySetInnerHTML={{
                     __html: JSON.stringify({
                         "@context": "https://schema.org",
                         "@type": "WebSite",
                         "name": "Filmiway",
-                        "alternateName": "Filmiway - Where Every Film Finds Its Way",
+                        "alternateName": "Filmiway - Mind-Bending Movie Discovery Platform",
                         "url": "https://filmiway.com",
-                        "description": "Complete movie discovery platform with curated collections and community reviews",
+                        "description": "Complete movie discovery platform specializing in mind-bending psychological thrillers, sci-fi masterpieces, and curated movie collections like Inception, Memento, and Shutter Island.",
+                        "keywords": ["movies like inception", "psychological thrillers", "mind bending movies", "movie collections", "film discovery"],
                         "publisher": {
                             "@type": "Organization",
-                            "name": "Filmiway"
+                            "name": "Filmiway",
+                            "logo": {
+                                "@type": "ImageObject",
+                                "url": "https://filmiway.com/filmiway-logo.svg"
+                            }
                         },
                         "potentialAction": {
                             "@type": "SearchAction",
                             "target": "https://filmiway.com/search?q={search_term_string}",
                             "query-input": "required name=search_term_string"
+                        },
+                        "mainEntity": {
+                            "@type": "ItemList",
+                            "name": "Featured Movie Collections",
+                            "itemListElement": [
+                                {
+                                    "@type": "ListItem",
+                                    "position": 1,
+                                    "item": {
+                                        "@type": "CollectionPage",
+                                        "name": "Movies Like Inception",
+                                        "url": "https://filmiway.com/collection/movies-like-inception"
+                                    }
+                                },
+                                {
+                                    "@type": "ListItem",
+                                    "position": 2,
+                                    "item": {
+                                        "@type": "CollectionPage",
+                                        "name": "Movies Like Memento",
+                                        "url": "https://filmiway.com/collection/movies-like-memento"
+                                    }
+                                },
+                                {
+                                    "@type": "ListItem",
+                                    "position": 3,
+                                    "item": {
+                                        "@type": "CollectionPage",
+                                        "name": "Movies Like Shutter Island",
+                                        "url": "https://filmiway.com/collection/movies-like-shutter-island"
+                                    }
+                                }
+                            ]
                         }
                     })
                 }} />
