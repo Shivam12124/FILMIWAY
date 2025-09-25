@@ -1,4 +1,4 @@
-// pages/index.js - 🔥 SEO-OPTIMIZED WITH TITLE & H1 TAGS
+// pages/index.js - 🔥 SEO-OPTIMIZED WITH INTERNAL LINKS
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Head from 'next/head';
@@ -80,7 +80,7 @@ const FilmiwayHomepage = () => {
         });
     };
 
-    // Navigation Component - WITH SMALLER NEW TAG
+    // Navigation Component - 🔥 WITH INTERNAL LINKS ADDED
     const Navigation = () => (
         <motion.nav 
             className="fixed top-0 w-full z-50 bg-black/95 backdrop-blur-md"
@@ -92,7 +92,7 @@ const FilmiwayHomepage = () => {
         >
             <div className="container mx-auto px-4 sm:px-6">
                 <div className="flex items-center justify-between h-28">
-                    {/* LOGO WITH SMALLER NEW TAG */}
+                    {/* LOGO */}
                     <Link href="/" className="flex items-center justify-start relative" aria-label="Filmiway homepage">
                         <div className="w-44 h-24 sm:w-52 sm:h-28 md:w-60 md:h-32 lg:w-64 lg:h-36 flex items-center justify-start">
                             <img 
@@ -101,13 +101,12 @@ const FilmiwayHomepage = () => {
                                 className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
                             />
                         </div>
-                        {/* 🔥 SMALLER NEW TAG */}
                         <div className="absolute top-2 right-0 bg-gradient-to-r from-red-500 to-pink-500 text-white text-[10px] sm:text-xs font-bold px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-full shadow-lg animate-pulse">
                             NEW
                         </div>
                     </Link>
 
-                    {/* Desktop Menu */}
+                    {/* Desktop Menu - 🔥 ADDED COLLECTION LINKS */}
                     <div className="hidden md:flex items-center space-x-8" role="menubar">
                         <Link href="/" className="text-yellow-400 font-medium border-b-2 border-yellow-400 pb-1 text-lg" role="menuitem" aria-current="page">Home</Link>
                         <Link href="/collection/movies-like-inception" className="text-gray-300 hover:text-white transition-colors text-lg" role="menuitem">Collections</Link>
@@ -134,7 +133,7 @@ const FilmiwayHomepage = () => {
                     </button>
                 </div>
 
-                {/* Mobile Menu */}
+                {/* Mobile Menu - 🔥 ADDED MORE COLLECTION LINKS */}
                 <AnimatePresence>
                     {mobileMenuOpen && (
                         <motion.div
@@ -148,7 +147,9 @@ const FilmiwayHomepage = () => {
                         >
                             <div className="px-4 py-6 space-y-4">
                                 <Link href="/" className="block text-yellow-400 font-medium py-3 text-lg" role="menuitem" aria-current="page">Home</Link>
-                                <Link href="/collection/movies-like-inception" className="block text-gray-300 hover:text-white transition-colors py-3 text-lg" role="menuitem">Collections</Link>
+                                <Link href="/collection/movies-like-inception" className="block text-gray-300 hover:text-white transition-colors py-3 text-lg" role="menuitem">Movies Like Inception</Link>
+                                <Link href="/collection/movies-like-memento" className="block text-gray-300 hover:text-white transition-colors py-3 text-lg" role="menuitem">Movies Like Memento</Link>
+                                <Link href="/collection/movies-like-shutter-island" className="block text-gray-300 hover:text-white transition-colors py-3 text-lg" role="menuitem">Movies Like Shutter Island</Link>
                                 <button 
                                     onClick={() => {
                                         scrollToSection(trendingRef);
@@ -169,7 +170,7 @@ const FilmiwayHomepage = () => {
         </motion.nav>
     );
 
-    // HERO SECTION WITH PROPER H1 TAG
+    // HERO SECTION - 🔥 ADDED SMALL INTERNAL LINKS SECTION
     const HeroSection = () => (
         <section className="relative min-h-screen flex items-center justify-center bg-black overflow-hidden" role="banner">
             {/* Subtle Background Pattern */}
@@ -265,7 +266,7 @@ const FilmiwayHomepage = () => {
 
                     {/* Stats */}
                     <motion.div 
-                        className="grid grid-cols-3 gap-8 max-w-2xl mx-auto"
+                        className="grid grid-cols-3 gap-8 max-w-2xl mx-auto mb-8"
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 1.2, duration: 1 }}
@@ -283,6 +284,22 @@ const FilmiwayHomepage = () => {
                         <div className="text-center">
                             <div className="text-3xl sm:text-4xl font-bold text-yellow-400 mb-2" aria-label="24/7 movie discovery">24/7</div>
                             <div className="text-gray-400 text-sm uppercase tracking-wide">Discovery</div>
+                        </div>
+                    </motion.div>
+
+                    {/* 🔥 SMALL INTERNAL LINKS SECTION TO FIX SEO */}
+                    <motion.div 
+                        className="text-center max-w-4xl mx-auto mb-16"
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 1.4, duration: 1 }}
+                    >
+                        <div className="flex flex-wrap justify-center gap-3 text-sm">
+                            <Link href="/collection/movies-like-inception" className="text-blue-400 hover:text-blue-300 transition-colors">Movies Like Inception</Link>
+                            <span className="text-gray-600">•</span>
+                            <Link href="/collection/movies-like-memento" className="text-yellow-400 hover:text-yellow-300 transition-colors">Movies Like Memento</Link>
+                            <span className="text-gray-600">•</span>
+                            <Link href="/collection/movies-like-shutter-island" className="text-green-400 hover:text-green-300 transition-colors">Movies Like Shutter Island</Link>
                         </div>
                     </motion.div>
                 </motion.div>
@@ -364,7 +381,7 @@ const FilmiwayHomepage = () => {
         </section>
     );
 
-    // 🔥 CAROUSEL WITHOUT AUTO-SCROLL (MANUAL CONTROL ONLY)
+    // CAROUSEL WITHOUT AUTO-SCROLL (MANUAL CONTROL ONLY)
     const ProfessionalCarousel = ({ movies, sectionRef, sectionTitle }) => {
         const [currentIndex, setCurrentIndex] = useState(0);
         const [isDragging, setIsDragging] = useState(false);
@@ -399,7 +416,7 @@ const FilmiwayHomepage = () => {
 
         const maxIndex = Math.max(0, movies.length - itemsToShow);
 
-        // 🔥 MANUAL NAVIGATION ONLY - NO AUTO SCROLL
+        // MANUAL NAVIGATION ONLY - NO AUTO SCROLL
         const nextSlide = useCallback(() => {
             setCurrentIndex(prev => {
                 if (prev < maxIndex) {
@@ -418,7 +435,7 @@ const FilmiwayHomepage = () => {
             });
         }, []);
 
-        // 🔥 TOUCH/SWIPE HANDLERS
+        // TOUCH/SWIPE HANDLERS
         const handleStart = (e) => {
             setIsDragging(true);
             const clientX = e.touches ? e.touches[0].clientX : e.clientX;
@@ -546,7 +563,7 @@ const FilmiwayHomepage = () => {
         );
     };
 
-    // ENHANCED MOVIE CARD (same as before)
+    // ENHANCED MOVIE CARD
     const MovieCard = ({ movie, index }) => (
         <motion.div
             className="group cursor-pointer"
@@ -630,7 +647,7 @@ const FilmiwayHomepage = () => {
         </section>
     );
 
-    // 🔥 CLASSY UNDER CONSTRUCTION SECTION WITHOUT EXCESSIVE ANIMATIONS
+    // CLASSY UNDER CONSTRUCTION SECTION
     const UnderConstructionSection = () => (
         <motion.section 
             className="py-16 bg-gradient-to-r from-gray-900/50 to-gray-800/50 rounded-3xl border border-gray-700/30 mb-20"

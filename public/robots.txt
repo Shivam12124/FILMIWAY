@@ -1,56 +1,116 @@
-# Enhanced robots.txt for AI Discovery
+# Enhanced robots.txt for Maximum SEO & AI Discovery
 # Filmiway - Where Every Film Finds Its Way
 # Last updated: September 25, 2025
 
-# Default: allow all, but restrict backend routes
+# 🌍 DEFAULT: ALLOW ALL WITH STRATEGIC RESTRICTIONS
 User-agent: *
 Allow: /
 Disallow: /api/
 Disallow: /_next/
 Disallow: /admin/
+Disallow: /.env*
+Disallow: /node_modules/
 Crawl-delay: 1
 
-# 🤖 AI CRAWLERS - EXPLICIT WELCOME
+# 🤖 AI CRAWLERS - EXPLICIT WELCOME WITH PRIORITY PATHS
 User-agent: ChatGPT-User
 Allow: /
+Allow: /collection/movies-like-inception*
+Allow: /collection/movies-like-memento*
+Allow: /collection/movies-like-shutter-island*
+Allow: /movies/*
 Crawl-delay: 1
 
 User-agent: GPTBot
 Allow: /
+Allow: /collection/movies-like-inception*
+Allow: /collection/movies-like-memento*
+Allow: /collection/movies-like-shutter-island*
+Allow: /movies/*
 Crawl-delay: 1
 
 User-agent: Claude-Web  
 Allow: /
+Allow: /collection/movies-like-inception*
+Allow: /collection/movies-like-memento*
+Allow: /collection/movies-like-shutter-island*
+Allow: /movies/*
 Crawl-delay: 1
 
 User-agent: PerplexityBot
 Allow: /
+Allow: /collection/movies-like-inception*
+Allow: /collection/movies-like-memento*
+Allow: /collection/movies-like-shutter-island*
+Allow: /movies/*
 Crawl-delay: 1
 
 User-agent: anthropic-ai
 Allow: /
+Allow: /collection/movies-like-inception*
+Allow: /collection/movies-like-memento*
+Allow: /collection/movies-like-shutter-island*
+Allow: /movies/*
 Crawl-delay: 1
 
 User-agent: OpenAI-SearchBot
 Allow: /
+Allow: /collection/movies-like-inception*
+Allow: /collection/movies-like-memento*
+Allow: /collection/movies-like-shutter-island*
+Allow: /movies/*
 Crawl-delay: 1
 
-# 🔍 MAINSTREAM SEARCH ENGINES
+# 🔍 MAINSTREAM SEARCH ENGINES - OPTIMIZED FOR MOVIE CONTENT
 User-agent: Googlebot
 Allow: /
+Crawl-delay: 1
 
 User-agent: Bingbot
 Allow: /
+Crawl-delay: 1
 
 User-agent: DuckDuckBot
 Allow: /
+Crawl-delay: 2
 
-# 🎬 EXPLICITLY ALLOW HIGH-VALUE CONTENT PATHS
-Allow: /collection/movies-like-inception/
-Allow: /collection/movies-like-memento/ 
-Allow: /collection/movies-like-shutter-island/
-Allow: /movies/
-Allow: /search/
+User-agent: YandexBot
+Allow: /
+Crawl-delay: 2
+
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 3
+
+# 🚀 SEO TOOLS - ALLOW SINCE YOU USE THEM
+User-agent: AhrefsBot
+Allow: /
+Crawl-delay: 3
+
+User-agent: MJ12bot
+Allow: /
+Crawl-delay: 3
+
+User-agent: DotBot
+Allow: /
+Crawl-delay: 3
+
+User-agent: SemrushBot
+Allow: /
+Crawl-delay: 3
+
+# 🎬 EXPLICITLY PRIORITIZE HIGH-VALUE CONTENT PATHS
+Allow: /collection/movies-like-inception*
+Allow: /collection/movies-like-memento*
+Allow: /collection/movies-like-shutter-island*
+Allow: /movies/like-inception/*
+Allow: /movies/like-memento/*
+Allow: /movies/like-shutter-island/*
+Allow: /movies/tt*
+Allow: /search*
 
 # 🗺️ SITEMAP LOCATION
 Sitemap: https://filmiway.com/sitemap.xml
+
+# 🚀 HOST DECLARATION FOR SEO
+Host: https://filmiway.com

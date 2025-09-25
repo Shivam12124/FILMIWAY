@@ -1,4 +1,4 @@
-// pages/collection/[slug].js - UPDATED WITH UNIFIED YELLOW/BLACK THEME FOR ALL COLLECTIONS
+// pages/collection/[slug].js - SEO OPTIMIZED WITH PROPER H1 TAGS AND META
 import React, { useState, useEffect, useCallback } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -318,7 +318,7 @@ const CinematicExplorerSection = ({ collection, currentRank }) => {
     );
 };
 
-// 🔥 DYNAMIC CINEMATIC HEADER - UNIFIED YELLOW THEME
+// 🔥 DYNAMIC CINEMATIC HEADER - UNIFIED YELLOW THEME WITH PROPER H1 TAGS
 const CinematicHeader = React.memo(({ collection }) => {
     const getHeaderContent = () => {
         if (collection.slug === 'movies-like-memento') {
@@ -359,6 +359,7 @@ const CinematicHeader = React.memo(({ collection }) => {
                 className="space-y-6 sm:space-y-8 lg:space-y-12 relative z-10"
             >
                 <motion.div className="relative">
+                    {/* 🔥 PROPER H1 TAG FOR SEO */}
                     <motion.h1 
                         className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extralight tracking-[0.05em] sm:tracking-[0.1em] text-transparent bg-clip-text bg-gradient-to-r from-yellow-100 via-yellow-300 to-amber-300" 
                         style={{ 
@@ -644,7 +645,7 @@ const CollectionPage = ({ collection, movies }) => {
         }
     };
 
-    // 🔥 DYNAMIC SEO SCHEMA DATA WITH SHUTTER ISLAND SUPPORT
+    // 🔥 ENHANCED SEO SCHEMA DATA WITH PROPER STRUCTURED DATA
     const getSchemaData = () => {
         const baseTitle = collection?.slug === 'movies-like-memento' 
             ? "Top 10 Movies Like Memento - Memory-Twisting Psychological Thrillers"
@@ -664,26 +665,59 @@ const CollectionPage = ({ collection, movies }) => {
 
         return {
             "@context": "https://schema.org",
-            "@type": "Article",
-            "headline": baseTitle,
+            "@type": "CollectionPage",
+            "name": baseTitle,
             "description": baseDescription,
+            "url": `https://filmiway.com/collection/${collection.slug}`,
             "author": {
                 "@type": "Organization",
                 "name": "Filmiway"
             },
             "publisher": {
                 "@type": "Organization", 
-                "name": "Filmiway"
+                "name": "Filmiway",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://filmiway.com/filmiway-logo.svg"
+                }
             },
             "mainEntity": {
                 "@type": "ItemList",
+                "name": baseTitle,
+                "description": baseDescription,
                 "numberOfItems": movies.length,
                 "itemListElement": movies.map((movie, index) => ({
-                    "@type": "Movie",
-                    "name": getMovieTitle(movie),
+                    "@type": "ListItem",
                     "position": movies.length - index,
-                    "dateCreated": getMovieYear(movie)
+                    "item": {
+                        "@type": "Movie",
+                        "name": getMovieTitle(movie),
+                        "dateCreated": getMovieYear(movie),
+                        "genre": getMovieGenre(movie),
+                        "url": `https://filmiway.com/movies/${movie.imdbID}`
+                    }
                 }))
+            },
+            "breadcrumb": {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "item": {
+                            "@id": "https://filmiway.com/",
+                            "name": "Filmiway"
+                        }
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "item": {
+                            "@id": `https://filmiway.com/collection/${collection.slug}`,
+                            "name": baseTitle
+                        }
+                    }
+                ]
             }
         };
     };
@@ -703,22 +737,22 @@ const CollectionPage = ({ collection, movies }) => {
         );
     }
 
-    // 🔥 DYNAMIC PAGE TITLES AND META WITH SHUTTER ISLAND SUPPORT
+    // 🔥 ENHANCED PAGE TITLES AND META WITH PROPER SEO OPTIMIZATION
     const getPageContent = () => {
         if (collection.slug === 'movies-like-memento') {
             return {
-                title: "Top 10 Movies Like Memento - Memory-Twisting Psychological Thrillers Ranked by Complexity | Filmiway",
+                title: "Top 10 Movies Like Memento - Memory-Twisting Psychological Thrillers Ranked | Filmiway",
                 description: "Discover 10 memory-twisting movies like Memento, ranked by psychological complexity and engaging storytelling. From psychological thrillers to memory-bending masterpieces similar to Memento.",
-                keywords: "movies like memento, films similar to memento, memory loss movies, psychological thrillers, non linear storytelling, christopher nolan memento, identity crisis films, memento similar movies, memory twisting films",
+                keywords: "movies like memento, films similar to memento, memory loss movies, psychological thrillers, non linear storytelling, christopher nolan memento, identity crisis films, memento similar movies, memory twisting films, amnesia movies, reverse chronology films, unreliable narrator movies",
                 ogTitle: "Top 10 Movies Like Memento - Memory-Twisting Psychological Thrillers",
                 twitterTitle: "Top 10 Movies Like Memento - Memory-Twisting Psychological Thrillers",
                 progressText: `of Top ${movies.length} Movies Like Memento`
             };
         } else if (collection.slug === 'movies-like-inception') {
             return {
-                title: "Top 10 Movies Like Inception - Mind-Bending Sci-Fi & Thrillers Ranked by Complexity | Filmiway",
+                title: "Top 10 Movies Like Inception - Mind-Bending Sci-Fi & Thrillers Ranked | Filmiway",
                 description: "Discover 10 mind-bending movies like Inception, ranked by psychological complexity and engaging storytelling. From sci-fi thrillers to reality-bending masterpieces similar to Inception.",
-                keywords: "movies like inception, films similar to inception, mind bending movies, psychological thrillers, sci fi movies with twists, christopher nolan movies, reality bending films, complex movies, inception similar movies, mind bending sci fi",
+                keywords: "movies like inception, films similar to inception, mind bending movies, psychological thrillers, sci fi movies with twists, christopher nolan movies, reality bending films, complex movies, inception similar movies, mind bending sci fi, dream logic movies, layered narrative films",
                 ogTitle: "Top 10 Movies Like Inception - Mind-Bending Sci-Fi & Thrillers",
                 twitterTitle: "Top 10 Movies Like Inception - Mind-Bending Sci-Fi & Thrillers",
                 progressText: `of Top ${movies.length} Movies Like Inception`
@@ -727,7 +761,7 @@ const CollectionPage = ({ collection, movies }) => {
             return {
                 title: "Top 10 Movies Like Shutter Island - Psychological Thrillers with Unreliable Narrators | Filmiway",
                 description: "From Primer to Mulholland Drive — explore mind-bending movies like Inception. Filmiway adds detailed sensitive scene timestamps for safe viewing.",
-                keywords: "movies like shutter island, films similar to shutter island, psychological thrillers, unreliable narrator films, identity crisis movies, plot twist movies, martin scorsese shutter island, psychological horror films, reality distortion movies",
+                keywords: "movies like shutter island, films similar to shutter island, psychological thrillers, unreliable narrator films, identity crisis movies, plot twist movies, martin scorsese shutter island, psychological horror films, reality distortion movies, memory manipulation films, shocking revelations movies",
                 ogTitle: "Top 10 Movies Like Shutter Island - Psychological Thrillers",
                 twitterTitle: "Top 10 Movies Like Shutter Island - Psychological Thrillers",
                 progressText: `of Top ${movies.length} Movies Like Shutter Island`
@@ -766,7 +800,7 @@ const CollectionPage = ({ collection, movies }) => {
                 <meta name="twitter:title" content={pageContent.twitterTitle} />
                 <meta name="twitter:description" content="From Primer to Mulholland Drive — explore mind-bending movies like Inception. Filmiway adds detailed sensitive scene timestamps for safe viewing." />
                 
-                {/* JSON-LD Schema */}
+                {/* Enhanced JSON-LD Schema */}
                 <script 
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
