@@ -95,6 +95,20 @@ const MOVIE_DATA_BY_TITLE = {
         inceptionConnection: 'Like Inception\'s layered deception and misdirection, The Usual Suspects builds an elaborate con through unreliable narration. Both films feature masterful plot twists that recontextualize everything.',
         mementoConnection: 'Like Memento, The Usual Suspects uses fragmented storytelling and unreliable narration to gradually reveal shocking truths about identity and memory.',
         shutterConnection: 'Like Shutter Island, The Usual Suspects builds to a shocking identity revelation through unreliable narration and masterful psychological manipulation.'
+    },
+    'Inception': {
+        imdbRating: 8.8, genre: 'Sci-Fi Thriller', runtime: '148 min', director: 'Christopher Nolan',
+        quote: 'An idea is like a virus.',
+        inceptionConnection: 'The definitive mind-bending film that inspired this entire collection. Inception explores reality layers, memory manipulation, and the subconscious mind through stunning visuals and complex storytelling.',
+        mementoConnection: 'Like Memento, Inception explores memory manipulation and the unreliable nature of the mind. Both Christopher Nolan films feature protagonists struggling with guilt and the consequences of their actions.',
+        shutterConnection: 'Like Shutter Island, Inception explores psychological complexity through reality questioning and the unreliable nature of perception and memory.'
+    },
+    'Memento': {
+        imdbRating: 8.4, genre: 'Neo-Noir Thriller', runtime: '113 min', director: 'Christopher Nolan',
+        quote: 'I have to believe in a world outside my own mind.',
+        inceptionConnection: 'Like Inception, Memento explores the unreliable nature of memory and perception through innovative storytelling. Both Christopher Nolan films challenge viewers to question what\'s real.',
+        mementoConnection: 'The definitive memory-loss thriller that inspired this collection. Memento uses reverse chronology to mirror the protagonist\'s condition and explores themes of identity, memory, and truth.',
+        shutterConnection: 'Like Shutter Island, Memento explores psychological manipulation and the unreliable nature of memory through complex narrative structure and identity questioning.'
     }
 };
 
@@ -238,13 +252,12 @@ const SmartMoviePage = ({ movie }) => {
     const getRuntime = () => correctData?.runtime || movie.Runtime || (movieInfo?.runtime ? `${movieInfo.runtime} min` : '120 min');
     const getDirector = () => correctData?.director || movieInfo?.director || movie.Director || 'Acclaimed Director';
     
-    // 🔥 KEY FIX: Get correct year with fallback for existing movies
+    // 🔥 FIXED getYear() FUNCTION WITH ALL CORRECT YEARS INCLUDING THE USUAL SUSPECTS
     const getYear = () => {
-        // 🔥 SIMPLE FIX - Just add correct years for existing movies
         const correctYears = {
             'Enemy': '2013',
             'Primer': '2004',
-            'The Fountain': '2006',
+            'The Fountain': '2006',        // ✅ CORRECT YEAR!
             'Synecdoche, New York': '2008',
             'Mulholland Drive': '2001',
             'Predestination': '2014',
@@ -253,7 +266,8 @@ const SmartMoviePage = ({ movie }) => {
             'Mr. Nobody': '2009',
             'Shutter Island': '2010',
             'Memento': '2000',
-            'Inception': '2010'
+            'Inception': '2010',
+            'The Usual Suspects': '1995'   // ✅ ADDED MISSING MOVIE!
         };
         
         return correctYears[movie.Title] || movie.Year || 'Unknown';
@@ -598,7 +612,7 @@ const SmartMoviePage = ({ movie }) => {
     );
 };
 
-// SSG Functions
+// ✅ SSG Functions - STATIC SITE GENERATION
 export async function getStaticPaths() {
     const paths = COMPLETE_MOVIE_DATABASE.map((movie) => ({
         params: { id: movie.imdbID }
