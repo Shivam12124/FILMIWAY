@@ -1,4 +1,4 @@
-// pages/movies/[id].js - COMPLETE SMART COLLECTION DETECTION WITH ALL THREE COLLECTIONS - FIXED YEAR ISSUE
+// pages/movies/[id].js - COMPLETE MOVIE PAGE WITH WORKING MOVIEDETAILSSECTION
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -17,7 +17,7 @@ import { SENSITIVE_TIMELINES, getSensitiveContentTypes } from '../../utils/sensi
 
 const TMDB_API_KEY = '6054e5498fb2619274454959c38bbdfa';
 
-// 🎬 COMPLETE MOVIE DATA WITH UNIQUE INCEPTION, MEMENTO & SHUTTER ISLAND CONNECTIONS
+// 🎬 COMPLETE MOVIE DATA WITH UNIQUE INCEPTION, MEMENTO & SHUTTER ISLAND CONNECTIONS  
 const MOVIE_DATA_BY_TITLE = {
     'Shutter Island': {
         imdbRating: 8.2, genre: 'Psychological Thriller', runtime: '138 min', director: 'Martin Scorsese',
@@ -343,27 +343,39 @@ const SmartMoviePage = ({ movie }) => {
 
     return (
         <div className="min-h-screen bg-black text-white relative overflow-hidden">
-            <Head>
-                <title>{movie.Title} ({getYear()}) Like {getCollectionDisplayName()} - Analysis & Reviews | Filmiway</title>
-                {/* 🔥 FIXED META DESCRIPTION WITH CORRECT YEAR */}
-                <meta name="description" content={`${movie.Title} (${getYear()}) - A mind-bending ${getGenre().toLowerCase()} like ${getCollectionDisplayName()}. Detailed analysis, reviews, and sensitive scene timestamps for safe viewing.`} />
-                <meta name="keywords" content={`${movie.Title}, ${getYear()}, like ${collectionType === 'shutter-island' ? 'shutter island, psychological thrillers' : collectionType === 'memento' ? 'memento, memory loss films' : 'inception, mind bending movies'}, user reviews, movie ratings, ${getGenre()}, ${getDirector()}, psychological thrillers, sensitive content timestamps, safe movie viewing`} />
-                <meta name="robots" content="index, follow" />
-                <link rel="canonical" href={`https://filmiway.com/movies/${movie.imdbID}`} />
-                <link rel="icon" href="/favicon.ico" />
-                
-                <meta property="og:title" content={`${movie.Title} (${getYear()}) Like ${getCollectionDisplayName()} - Analysis`} />
-                <meta property="og:description" content={`${movie.Title} (${getYear()}) - A mind-bending ${getGenre().toLowerCase()} like ${getCollectionDisplayName()}. Detailed analysis, reviews, and sensitive scene timestamps for safe viewing.`} />
-                <meta property="og:type" content="video.movie" />
-                <meta property="og:url" content={`https://filmiway.com/movies/${movie.imdbID}`} />
-                <meta property="og:site_name" content="Filmiway" />
-                
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content={`${movie.Title} (${getYear()}) Like ${getCollectionDisplayName()}`} />
-                <meta name="twitter:description" content={`${movie.Title} (${getYear()}) - A mind-bending ${getGenre().toLowerCase()} like ${getCollectionDisplayName()}. Detailed analysis, reviews, and sensitive scene timestamps for safe viewing.`} />
-                
-                <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }} />
-            </Head>
+           <Head>
+    {/* 🔥 Enhanced Punchy Title */}
+    <title>Best Movies Like Inception – 10 Mind-Bending Thrillers You Must Watch</title>
+
+    {/* 🔥 Enhanced Punchy Description */}
+    <meta
+        name="description"
+        content="Stop scrolling! This is the most advanced handpicked list on the internet of 10 mind-bending thrillers like Inception. Carefully analyzed for shocking twists, expert storytelling, and unforgettable endings—perfect for true sci-fi thriller fans!"
+    />
+
+    {/* 🔥 Enhanced Keywords */}
+    <meta
+        name="keywords"
+        content={`${movie.Title}, ${getYear()}, like inception, mind bending movies, sci-fi thrillers, dream layers, non linear storytelling, expert curated, handpicked list, most advanced list on internet, ${getDirector()}, reality bending films, psychological thrillers`}
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={`https://filmiway.com/movies/${movie.imdbID}`} />
+    <link rel="icon" href="/favicon.ico" />
+    
+    {/* 🔥 Enhanced Open Graph */}
+    <meta property="og:title" content="The Most Advanced List on the Internet – 10 Mind-Bending Movies Like Inception 🧠" />
+    <meta property="og:description" content="Warning: This handpicked list of 10 sci-fi thrillers has been carefully analyzed for shocking twists and expert storytelling. Dare to watch them all!" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://filmiway.com/collection/movies-like-inception" />
+    <meta property="og:site_name" content="Filmiway" />
+
+    {/* 🔥 Enhanced Twitter Cards */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="🧠 The Most Advanced Handpicked List – 10 Movies Like Inception" />
+    <meta name="twitter:description" content="Stop scrolling! 10 mind-bending sci-fi thrillers like Inception, handpicked and deeply analyzed for shocking twists and expert storytelling." />
+    
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }} />
+</Head>
 
             <SubtleFilmGrain />
 

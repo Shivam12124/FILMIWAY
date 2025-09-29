@@ -7,7 +7,7 @@
     <!-- 🔥 HOMEPAGE - HIGHEST PRIORITY -->
     <url>
         <loc>https://filmiway.com/</loc>
-        <lastmod>2025-09-25T00:00:00+00:00</lastmod>
+        <lastmod>2025-09-29T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
@@ -15,29 +15,29 @@
     <!-- 🔥 MAIN UTILITY PAGES -->
     <url>
         <loc>https://filmiway.com/search</loc>
-        <lastmod>2025-09-25T00:00:00+00:00</lastmod>
+        <lastmod>2025-09-29T00:00:00+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
     
-    <!-- 🔥 MAIN COLLECTION PAGES - HIGH PRIORITY -->
+    <!-- 🔥 MAIN COLLECTION PAGES - HIGH PRIORITY WITH NEW HEADERS -->
     <url>
         <loc>https://filmiway.com/collection/movies-like-inception</loc>
-        <lastmod>2025-09-25T00:00:00+00:00</lastmod>
+        <lastmod>2025-09-29T00:00:00+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
 
     <url>
         <loc>https://filmiway.com/collection/movies-like-memento</loc>
-        <lastmod>2025-09-25T00:00:00+00:00</lastmod>
+        <lastmod>2025-09-29T00:00:00+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
 
     <url>
         <loc>https://filmiway.com/collection/movies-like-shutter-island</loc>
-        <lastmod>2025-09-25T00:00:00+00:00</lastmod>
+        <lastmod>2025-09-29T00:00:00+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
@@ -46,7 +46,7 @@
     <!-- 1. PRIMER (2004) -->
     <url>
         <loc>https://filmiway.com/movies/tt0390384</loc>
-        <lastmod>2025-09-25T00:00:00+00:00</lastmod>
+        <lastmod>2025-09-29T00:00:00+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -54,7 +54,7 @@
     <!-- 2. SYNECDOCHE, NEW YORK (2008) -->
     <url>
         <loc>https://filmiway.com/movies/tt0383028</loc>
-        <lastmod>2025-09-25T00:00:00+00:00</lastmod>
+        <lastmod>2025-09-29T00:00:00+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -62,7 +62,7 @@
     <!-- 3. MULHOLLAND DRIVE (2001) -->
     <url>
         <loc>https://filmiway.com/movies/tt0166924</loc>
-        <lastmod>2025-09-25T00:00:00+00:00</lastmod>
+        <lastmod>2025-09-29T00:00:00+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -70,7 +70,7 @@
     <!-- 4. PREDESTINATION (2014) -->
     <url>
         <loc>https://filmiway.com/movies/tt2397535</loc>
-        <lastmod>2025-09-25T00:00:00+00:00</lastmod>
+        <lastmod>2025-09-29T00:00:00+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -78,7 +78,7 @@
     <!-- 5. COHERENCE (2013) -->
     <url>
         <loc>https://filmiway.com/movies/tt2866360</loc>
-        <lastmod>2025-09-25T00:00:00+00:00</lastmod>
+        <lastmod>2025-09-29T00:00:00+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -86,7 +86,7 @@
     <!-- 6. DONNIE DARKO (2001) -->
     <url>
         <loc>https://filmiway.com/movies/tt0246578</loc>
-        <lastmod>2025-09-25T00:00:00+00:00</lastmod>
+        <lastmod>2025-09-29T00:00:00+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -94,7 +94,7 @@
     <!-- 7. ENEMY (2013) -->
     <url>
         <loc>https://filmiway.com/movies/tt2316411</loc>
-        <lastmod>2025-09-25T00:00:00+00:00</lastmod>
+        <lastmod>2025-09-29T00:00:00+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -102,7 +102,7 @@
     <!-- 8. THE FOUNTAIN (2006) -->
     <url>
         <loc>https://filmiway.com/movies/tt0414993</loc>
-        <lastmod>2025-09-25T00:00:00+00:00</lastmod>
+        <lastmod>2025-09-29T00:00:00+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -110,7 +110,7 @@
     <!-- 9. MR. NOBODY (2009) -->
     <url>
         <loc>https://filmiway.com/movies/tt0485947</loc>
-        <lastmod>2025-09-25T00:00:00+00:00</lastmod>
+        <lastmod>2025-09-29T00:00:00+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -118,7 +118,7 @@
     <!-- 10. SHUTTER ISLAND (2010) -->
     <url>
         <loc>https://filmiway.com/movies/tt1130884</loc>
-        <lastmod>2025-09-25T00:00:00+00:00</lastmod>
+        <lastmod>2025-09-29T00:00:00+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -127,7 +127,7 @@
     <!-- 1. SHUTTER ISLAND (2010) - Memento Collection -->
     <url>
         <loc>https://filmiway.com/movies/like-memento/tt1130884</loc>
-        <lastmod>2025-09-25T00:00:00+00:00</lastmod>
+        <lastmod>2025-09-29T00:00:00+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -135,7 +135,7 @@
     <!-- 2. MR. NOBODY (2009) - Memento Collection -->
     <url>
         <loc>https://filmiway.com/movies/like-memento/tt0485947</loc>
-        <lastmod>2025-09-25T00:00:00+00:00</lastmod>
+        <lastmod>2025-09-29T00:00:00+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -143,7 +143,7 @@
     <!-- 3. PRIMER (2004) - Memento Collection -->
     <url>
         <loc>https://filmiway.com/movies/like-memento/tt0390384</loc>
-        <lastmod>2025-09-25T00:00:00+00:00</lastmod>
+        <lastmod>2025-09-29T00:00:00+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -151,7 +151,7 @@
     <!-- 4. SYNECDOCHE, NEW YORK (2008) - Memento Collection -->
     <url>
         <loc>https://filmiway.com/movies/like-memento/tt0383028</loc>
-        <lastmod>2025-09-25T00:00:00+00:00</lastmod>
+        <lastmod>2025-09-29T00:00:00+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -159,7 +159,7 @@
     <!-- 5. MULHOLLAND DRIVE (2001) - Memento Collection -->
     <url>
         <loc>https://filmiway.com/movies/like-memento/tt0166924</loc>
-        <lastmod>2025-09-25T00:00:00+00:00</lastmod>
+        <lastmod>2025-09-29T00:00:00+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -167,7 +167,7 @@
     <!-- 6. PREDESTINATION (2014) - Memento Collection -->
     <url>
         <loc>https://filmiway.com/movies/like-memento/tt2397535</loc>
-        <lastmod>2025-09-25T00:00:00+00:00</lastmod>
+        <lastmod>2025-09-29T00:00:00+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -175,7 +175,7 @@
     <!-- 7. COHERENCE (2013) - Memento Collection -->
     <url>
         <loc>https://filmiway.com/movies/like-memento/tt2866360</loc>
-        <lastmod>2025-09-25T00:00:00+00:00</lastmod>
+        <lastmod>2025-09-29T00:00:00+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -183,7 +183,7 @@
     <!-- 8. DONNIE DARKO (2001) - Memento Collection -->
     <url>
         <loc>https://filmiway.com/movies/like-memento/tt0246578</loc>
-        <lastmod>2025-09-25T00:00:00+00:00</lastmod>
+        <lastmod>2025-09-29T00:00:00+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -191,7 +191,7 @@
     <!-- 9. ENEMY (2013) - Memento Collection -->
     <url>
         <loc>https://filmiway.com/movies/like-memento/tt2316411</loc>
-        <lastmod>2025-09-25T00:00:00+00:00</lastmod>
+        <lastmod>2025-09-29T00:00:00+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -199,7 +199,7 @@
     <!-- 10. THE FOUNTAIN (2006) - Memento Collection -->
     <url>
         <loc>https://filmiway.com/movies/like-memento/tt0414993</loc>
-        <lastmod>2025-09-25T00:00:00+00:00</lastmod>
+        <lastmod>2025-09-29T00:00:00+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -208,7 +208,7 @@
     <!-- 1. PRIMER (2004) - Shutter Island Collection -->
     <url>
         <loc>https://filmiway.com/movies/like-shutter-island/tt0390384</loc>
-        <lastmod>2025-09-25T00:00:00+00:00</lastmod>
+        <lastmod>2025-09-29T00:00:00+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -216,7 +216,7 @@
     <!-- 2. SYNECDOCHE, NEW YORK (2008) - Shutter Island Collection -->
     <url>
         <loc>https://filmiway.com/movies/like-shutter-island/tt0383028</loc>
-        <lastmod>2025-09-25T00:00:00+00:00</lastmod>
+        <lastmod>2025-09-29T00:00:00+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -224,7 +224,7 @@
     <!-- 3. MULHOLLAND DRIVE (2001) - Shutter Island Collection -->
     <url>
         <loc>https://filmiway.com/movies/like-shutter-island/tt0166924</loc>
-        <lastmod>2025-09-25T00:00:00+00:00</lastmod>
+        <lastmod>2025-09-29T00:00:00+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -232,7 +232,7 @@
     <!-- 4. PREDESTINATION (2014) - Shutter Island Collection -->
     <url>
         <loc>https://filmiway.com/movies/like-shutter-island/tt2397535</loc>
-        <lastmod>2025-09-25T00:00:00+00:00</lastmod>
+        <lastmod>2025-09-29T00:00:00+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -240,7 +240,7 @@
     <!-- 5. COHERENCE (2013) - Shutter Island Collection -->
     <url>
         <loc>https://filmiway.com/movies/like-shutter-island/tt2866360</loc>
-        <lastmod>2025-09-25T00:00:00+00:00</lastmod>
+        <lastmod>2025-09-29T00:00:00+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -248,7 +248,7 @@
     <!-- 6. DONNIE DARKO (2001) - Shutter Island Collection -->
     <url>
         <loc>https://filmiway.com/movies/like-shutter-island/tt0246578</loc>
-        <lastmod>2025-09-25T00:00:00+00:00</lastmod>
+        <lastmod>2025-09-29T00:00:00+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -256,7 +256,7 @@
     <!-- 7. ENEMY (2013) - Shutter Island Collection -->
     <url>
         <loc>https://filmiway.com/movies/like-shutter-island/tt2316411</loc>
-        <lastmod>2025-09-25T00:00:00+00:00</lastmod>
+        <lastmod>2025-09-29T00:00:00+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -264,7 +264,7 @@
     <!-- 8. THE FOUNTAIN (2006) - Shutter Island Collection -->
     <url>
         <loc>https://filmiway.com/movies/like-shutter-island/tt0414993</loc>
-        <lastmod>2025-09-25T00:00:00+00:00</lastmod>
+        <lastmod>2025-09-29T00:00:00+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -272,7 +272,7 @@
     <!-- 9. MR. NOBODY (2009) - Shutter Island Collection -->
     <url>
         <loc>https://filmiway.com/movies/like-shutter-island/tt0485947</loc>
-        <lastmod>2025-09-25T00:00:00+00:00</lastmod>
+        <lastmod>2025-09-29T00:00:00+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -280,7 +280,7 @@
     <!-- 🔥 10. THE USUAL SUSPECTS (1995) - Shutter Island Collection #10 FIXED -->
     <url>
         <loc>https://filmiway.com/movies/like-shutter-island/tt0114814</loc>
-        <lastmod>2025-09-25T00:00:00+00:00</lastmod>
+        <lastmod>2025-09-29T00:00:00+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -288,7 +288,7 @@
     <!-- 🔥 ADDITIONAL STANDARD MOVIE URL FOR THE USUAL SUSPECTS -->
     <url>
         <loc>https://filmiway.com/movies/tt0114814</loc>
-        <lastmod>2025-09-25T00:00:00+00:00</lastmod>
+        <lastmod>2025-09-29T00:00:00+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>

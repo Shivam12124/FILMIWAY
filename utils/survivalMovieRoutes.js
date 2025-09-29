@@ -1,4 +1,4 @@
-// utils/survivalMovieRoutes.js - SSG ROUTE MAPPING FOR SURVIVAL MOVIES
+// utils/survivalMovieRoutes.js - COMPLETELY FIXED SSG ROUTE MAPPING
 
 import { COMPLETE_MOVIE_DATABASE } from './survivalMovieData';
 
@@ -50,7 +50,7 @@ export const SLUG_TO_IMDB = Object.fromEntries(
     Object.entries(SURVIVAL_MOVIE_SLUGS).map(([imdbId, slug]) => [slug, imdbId])
 );
 
-// ✅ GET MOVIE BY SLUG
+// ✅ GET MOVIE BY SLUG - FIXED
 export const getMovieBySlug = (slug) => {
     const imdbId = SLUG_TO_IMDB[slug];
     if (!imdbId) return null;
@@ -63,7 +63,7 @@ export const getMovieSlug = (imdbId) => {
     return SURVIVAL_MOVIE_SLUGS[imdbId] || null;
 };
 
-// ✅ GENERATE ALL STATIC PATHS FOR SURVIVAL MOVIES
+// ✅ GENERATE ALL STATIC PATHS FOR SURVIVAL MOVIES - FIXED
 export const generateSurvivalMoviePaths = () => {
     return COMPLETE_MOVIE_DATABASE.map(movie => ({
         params: {
@@ -82,7 +82,7 @@ export const getSurvivalMovieBreadcrumbs = (movie) => {
     ];
 };
 
-// ✅ GET NEXT/PREVIOUS SURVIVAL MOVIE
+// ✅ GET NEXT/PREVIOUS SURVIVAL MOVIE - FIXED
 export const getSurvivalMovieNavigation = (currentMovie) => {
     const currentIndex = COMPLETE_MOVIE_DATABASE.findIndex(m => m.imdbID === currentMovie.imdbID);
     
@@ -125,7 +125,7 @@ export const getRelatedSurvivalMovies = (currentMovie, limit = 3) => {
         }));
 };
 
-// ✅ SURVIVAL COLLECTION METADATA
+// ✅ SURVIVAL COLLECTION METADATA - FIXED WITH REAL DATA
 export const SURVIVAL_COLLECTION_META = {
     title: 'Top 10 Best Survival Movies',
     description: 'Discover the most brutal and intense survival movies ranked by survivability index. From 127 Hours to Society of the Snow.',
@@ -133,10 +133,10 @@ export const SURVIVAL_COLLECTION_META = {
     canonicalUrl: 'https://filmiway.com/collection/best-survival-movies',
     ogImage: 'https://filmiway.com/images/survival-movies-collection.jpg',
     totalMovies: COMPLETE_MOVIE_DATABASE.length,
+    // ✅ FIXED - NOW USES REAL SURVIVABILITY INDEX DATA
     averageSurvivabilityIndex: Math.round(
         COMPLETE_MOVIE_DATABASE.reduce((sum, movie) => {
-            // We'll need to import COMPLETE_MOVIE_DATA to get survivabilityIndex
-            return sum + 85; // Placeholder average
+            return sum + movie.survivabilityIndex; // NOW USES REAL DATA
         }, 0) / COMPLETE_MOVIE_DATABASE.length
     )
 };
@@ -169,7 +169,7 @@ export const isValidSurvivalMovieSlug = (slug) => {
     return Object.values(SURVIVAL_MOVIE_SLUGS).includes(slug);
 };
 
-// ✅ SURVIVAL MOVIE SEARCH/FILTER UTILITIES
+// ✅ SURVIVAL MOVIE SEARCH/FILTER UTILITIES - FIXED
 export const searchSurvivalMovies = (query) => {
     const lowercaseQuery = query.toLowerCase();
     
@@ -177,6 +177,8 @@ export const searchSurvivalMovies = (query) => {
         .filter(movie => 
             movie.Title.toLowerCase().includes(lowercaseQuery) ||
             movie.genre.toLowerCase().includes(lowercaseQuery) ||
+            movie.director.toLowerCase().includes(lowercaseQuery) || // ADDED
+            movie.environment.toLowerCase().includes(lowercaseQuery) || // ADDED
             movie.year.toString().includes(query)
         )
         .map(movie => ({
@@ -196,18 +198,19 @@ export const filterSurvivalMoviesByGenre = (genre) => {
         }));
 };
 
+// ✅ FIXED SORTING - NOW USES REAL DATA
 export const sortSurvivalMovies = (movies, sortBy) => {
     const sortedMovies = [...movies];
     
     switch (sortBy) {
         case 'rating':
-            // Will need to import COMPLETE_MOVIE_DATA for actual ratings
-            return sortedMovies.sort((a, b) => b.rank - a.rank); // Placeholder
+            return sortedMovies.sort((a, b) => b.rating - a.rating); // ✅ FIXED - REAL RATINGS
         case 'year':
             return sortedMovies.sort((a, b) => b.year - a.year);
         case 'survivability':
-            // Will need to import COMPLETE_MOVIE_DATA for actual survivabilityIndex
-            return sortedMovies.sort((a, b) => a.rank - b.rank); // Higher survivability = lower rank
+            return sortedMovies.sort((a, b) => b.survivabilityIndex - a.survivabilityIndex); // ✅ FIXED - REAL DATA
+        case 'runtime':
+            return sortedMovies.sort((a, b) => b.runtime - a.runtime); // ✅ ADDED
         default:
             return sortedMovies.sort((a, b) => a.rank - b.rank);
     }
@@ -233,7 +236,15 @@ export const getSurvivalCollectionStats = () => {
         ),
         averageRuntime: Math.round(
             COMPLETE_MOVIE_DATABASE.reduce((sum, m) => sum + m.runtime, 0) / COMPLETE_MOVIE_DATABASE.length
-        )
+        ),
+        // ✅ ADDED - AVERAGE SURVIVABILITY INDEX
+        averageSurvivabilityIndex: Math.round(
+            COMPLETE_MOVIE_DATABASE.reduce((sum, m) => sum + m.survivabilityIndex, 0) / COMPLETE_MOVIE_DATABASE.length
+        ),
+        // ✅ ADDED - AVERAGE RATING
+        averageRating: (
+            COMPLETE_MOVIE_DATABASE.reduce((sum, m) => sum + m.rating, 0) / COMPLETE_MOVIE_DATABASE.length
+        ).toFixed(1)
     };
 };
 

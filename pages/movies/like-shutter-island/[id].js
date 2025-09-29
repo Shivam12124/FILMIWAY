@@ -1,4 +1,4 @@
-// pages/movies/like-shutter-island/[id].js - FIXED IMPORT PATHS AND YEAR ISSUE WITH NEW DESCRIPTION
+// pages/movies/like-shutter-island/[id].js - 💚 FUCKING GREEN EVERYWHERE! NO MORE RED SHIT!
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -101,10 +101,15 @@ const MOVIE_DATA_BY_TITLE = {
     }
 };
 
-// 🧠 SHUTTER ISLAND CONNECTION COMPONENT - 🔥 CHANGED TO MUTED GREEN!
+// 🧠 SHUTTER ISLAND CONNECTION COMPONENT - 💚 FORCE GREEN WITH INLINE STYLES TO KILL THE FUCKING RED!
 const ShutterIslandConnectionBadge = ({ movie, correctData }) => (
     <motion.div 
-        className="mb-10 p-6 bg-gradient-to-r from-green-600/20 via-emerald-500/15 to-green-600/20 rounded-2xl border border-green-500/50 relative overflow-hidden"
+        className="mb-10 p-6 bg-gradient-to-r from-green-600/20 via-emerald-500/15 to-green-600/20 rounded-2xl relative overflow-hidden"
+        style={{
+            border: '2px solid rgba(34, 197, 94, 0.5) !important',
+            boxShadow: '0 0 0 1px rgba(34, 197, 94, 0.2), 0 0 20px rgba(34, 197, 94, 0.1) !important',
+            outline: 'none !important'
+        }}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.8, duration: 0.8 }}
@@ -303,31 +308,43 @@ const ShutterIslandMoviePage = ({ movie }) => {
 
     return (
         <div className="min-h-screen bg-black text-white relative overflow-hidden">
-            <Head>
-                <title>{movie.Title} ({getYear()}) Like Shutter Island - Psychological Thrillers & Mind-Bending Films | Filmiway</title>
-                {/* 🔥 NEW WINNING DESCRIPTION */}
-                <meta name="description" content="From Primer to Mulholland Drive — explore mind-bending movies like Inception. Filmiway adds detailed sensitive scene timestamps for safe viewing." />
-                <meta name="keywords" content={`${movie.Title}, ${getYear()}, like shutter island, psychological thrillers, mind bending movies, ${getDirector()}, martin scorsese shutter island, identity crisis films, psychological horror movies, unreliable narrator films, reality distortion films, shutter island similar films, sensitive content timestamps, safe movie viewing`} />
-                <meta name="robots" content="index, follow" />
-                <link rel="canonical" href={`https://filmiway.com/movies/like-shutter-island/${movie.imdbID}`} />
-                <link rel="icon" href="/favicon.ico" />
-                
-                <meta property="og:title" content={`${movie.Title} (${getYear()}) Like Shutter Island - Psychological Thriller Analysis & Reviews`} />
-                {/* 🔥 NEW WINNING OG DESCRIPTION */}
-                <meta property="og:description" content="From Primer to Mulholland Drive — explore mind-bending movies like Inception. Filmiway adds detailed sensitive scene timestamps for safe viewing." />
-                <meta property="og:type" content="video.movie" />
-                <meta property="og:url" content={`https://filmiway.com/movies/like-shutter-island/${movie.imdbID}`} />
-                <meta property="og:site_name" content="Filmiway" />
-                
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content={`${movie.Title} (${getYear()}) Like Shutter Island - Psychological Thrillers`} />
-                {/* 🔥 NEW WINNING TWITTER DESCRIPTION */}
-                <meta name="twitter:description" content="From Primer to Mulholland Drive — explore mind-bending movies like Inception. Filmiway adds detailed sensitive scene timestamps for safe viewing." />
-                
-                {/* Shutter Island-focused JSON-LD Schema */}
-                <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }} />
-                <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-            </Head>
+          <Head>
+    {/* 🔥 Meta Title */}
+    <title>Best Movies Like Shutter Island – 10 Mind-Bending Thrillers You Must Watch</title>
+
+    {/* 🔥 Meta Description */}
+    <meta
+        name="description"
+        content="Stop scrolling! This is the most advanced handpicked list on the internet of 10 mind-bending thrillers like Shutter Island. Carefully analyzed for shocking twists, expert storytelling, and unforgettable endings—perfect for true psychological thriller fans!"
+    />
+
+    {/* 🔥 Keywords */}
+    <meta
+        name="keywords"
+        content={`${movie.Title}, ${getYear()}, like shutter island, psychological thrillers, mind-bending films, non linear storytelling, expert curated, handpicked list, most advanced list on internet, ${getDirector()}, amnesia movies, identity crisis films`}
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={`https://filmiway.com/movies/like-shutter-island/${movie.imdbID}`} />
+    <link rel="icon" href="/favicon.ico" />
+
+    {/* 🔥 Open Graph */}
+    <meta property="og:title" content="The Most Advanced List on the Internet – 10 Mind-Bending Movies Like Shutter Island 🧠" />
+    <meta property="og:description" content="Warning: This handpicked list of 10 psychological thrillers has been carefully analyzed for shocking twists and expert storytelling. Dare to watch them all!" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://filmiway.com/collection/movies-like-shutter-island" />
+    <meta property="og:site_name" content="Filmiway" />
+    <meta property="og:image" content="https://filmiway.com/path-to-shutter-poster-collage.jpg" />
+
+    {/* 🔥 Twitter Cards */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="🧠 The Most Advanced Handpicked List – 10 Movies Like Shutter Island" />
+    <meta name="twitter:description" content="Stop scrolling! 10 mind-bending psychological thrillers like Shutter Island, handpicked and deeply analyzed for shocking twists and expert storytelling." />
+    <meta name="twitter:image" content="https://filmiway.com/path-to-shutter-poster-collage.jpg" />
+
+    {/* JSON-LD Schema */}
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }} />
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+</Head>
 
             <SubtleFilmGrain />
             
@@ -415,7 +432,7 @@ const ShutterIslandMoviePage = ({ movie }) => {
                                     </motion.span>
                                 </motion.h1>
 
-                                {/* 🔥 SHUTTER ISLAND COLLECTION BADGE - CHANGED TO MUTED GREEN! */}
+                                {/* 🔥 SHUTTER ISLAND COLLECTION BADGE - 💚 MUTED GREEN! */}
                                 <motion.div 
                                     className="mb-8 flex justify-center lg:justify-start"
                                     initial={{ opacity: 0, y: 20 }}
@@ -469,7 +486,7 @@ const ShutterIslandMoviePage = ({ movie }) => {
                                     "{getMovieQuote()}"
                                 </motion.blockquote>
 
-                                {/* 🔥 SHUTTER ISLAND CONNECTION - NOW MUTED GREEN! */}
+                                {/* 🔥 SHUTTER ISLAND CONNECTION - 💚 MUTED GREEN WITH FORCED STYLES! */}
                                 <ShutterIslandConnectionBadge movie={movie} correctData={correctData} />
 
                                 {/* STATS GRID - GOLDEN THEME */}

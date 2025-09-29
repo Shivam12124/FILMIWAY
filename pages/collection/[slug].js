@@ -1,9 +1,9 @@
-// pages/collection/[slug].js - SEO OPTIMIZED WITH PROPER H1 TAGS AND META
+// pages/collection/[slug].js - SEO OPTIMIZED WITH CONSISTENT HEADERS FOR ALL COLLECTIONS
 import React, { useState, useEffect, useCallback } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Crown, Star, MessageSquare, Volume2, VolumeX, Play, Pause, Menu, X, Home, Eye, MousePointer, TrendingUp, Users, Search, Brain, Zap, Film, Award } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Crown, Star, MessageSquare, Volume2, VolumeX, Play, Pause, Menu, X, Home, Eye, MousePointer, TrendingUp, Users, Search, Brain, Zap, Film, Award, Mountain, Shield } from 'lucide-react';
 
 // Components
 import CinematicBackground from '../../components/CinematicBackground';
@@ -61,495 +61,7 @@ const HomepageButton = () => (
     </motion.div>
 );
 
-// 🔥 EXPLORER SECTION - UNIFIED YELLOW THEME FOR ALL COLLECTIONS
-const CinematicExplorerSection = ({ collection, currentRank }) => {
-    // 🎯 DIFFERENT CONTENT BUT SAME YELLOW STYLING
-    const getCollectionContent = () => {
-        if (collection.slug === 'movies-like-memento') {
-            return {
-                badge: "Memory-Twisting Cinema",
-                title: "Memento",
-                description: "Dive into a curated collection of memory-twisting psychological thrillers that challenge identity and perception",
-                selection: {
-                    text1: "If you loved Memento's fragmented storytelling and reverse chronology, these psychological mysteries will captivate you. Each film shares Memento's genius for unreliable memory narratives and identity confusion.",
-                    text2: "From memory-loss thrillers to amnesia mysteries, these films explore the fragility of memory and identity with the same disorienting brilliance that makes Memento a masterpiece."
-                },
-                ranking: {
-                    text: "Our memory-complexity index evaluates each film's narrative fragmentation, identity confusion, and thematic similarity to Memento's exploration of memory and revenge.",
-                    points: [
-                        "Memory Loss Narrative Complexity",
-                        "Identity Fragmentation Analysis", 
-                        "Reverse Chronology Similarity",
-                        "Psychological Thriller Elements"
-                    ]
-                },
-                experience: {
-                    text1: "Whether you're seeking films about amnesia like Memento or memory-loss movies that challenge linear storytelling, this collection delivers the same disorienting satisfaction.",
-                    text2: "Each memory-fragmented masterpiece has been selected for its ability to make you question reality and memory, just like Memento's unforgettable structure."
-                }
-            };
-        } else if (collection.slug === 'movies-like-inception') {
-            return {
-                badge: "Mind-Bending Cinema",
-                title: "Inception", 
-                description: "Dive into a curated collection of reality-bending masterpieces that challenge perception and ignite the mind",
-                selection: {
-                    text1: "If you loved Inception's layered dream sequences and reality-questioning elements, these sci-fi thrillers will captivate you. Each film shares Inception's genius for nested realities and complex heist narratives.",
-                    text2: "From dream-within-dream concepts to reality-bending sci-fi, these films explore consciousness and parallel worlds with the same intellectual depth that makes Inception extraordinary."
-                },
-                ranking: {
-                    text: "Our reality-bending complexity index evaluates each film's narrative layers, dream logic, and thematic similarity to Inception's exploration of consciousness and reality.",
-                    points: [
-                        "Dream Logic Complexity Score",
-                        "Reality Layer Analysis",
-                        "Heist Structure Similarity", 
-                        "Sci-Fi Thriller Innovation"
-                    ]
-                },
-                experience: {
-                    text1: "Whether you're seeking complex movies like Inception or reality-bending films that challenge perception, this collection delivers the same intellectual satisfaction and visual brilliance.",
-                    text2: "Each reality-layered masterpiece has been selected for its ability to create mind-bending experiences that reward multiple viewings, just like Inception."
-                }
-            };
-        } else if (collection.slug === 'movies-like-shutter-island') {
-            return {
-                badge: "Psychological Thriller Cinema",
-                title: "Shutter Island",
-                description: "Dive into a curated collection of psychological thrillers with unreliable narrators, identity crises, and shocking revelations",
-                selection: {
-                    text1: "If you loved Shutter Island's psychological manipulation and shocking identity revelations, these mind-bending thrillers will captivate you. Each film shares Shutter Island's genius for unreliable narration and reality distortion.",
-                    text2: "From psychological horror to identity crisis films, these movies explore the fragility of memory and sanity with the same disturbing brilliance that makes Shutter Island unforgettable."
-                },
-                ranking: {
-                    text: "Our psychological-complexity index evaluates each film's identity confusion, unreliable narration, and thematic similarity to Shutter Island's exploration of memory and madness.",
-                    points: [
-                        "Psychological Horror Intensity",
-                        "Identity Crisis Complexity", 
-                        "Unreliable Narrator Mastery",
-                        "Plot Twist Effectiveness"
-                    ]
-                },
-                experience: {
-                    text1: "Whether you're seeking psychological thrillers like Shutter Island or identity-crisis films that challenge sanity, this collection delivers the same unsettling satisfaction.",
-                    text2: "Each psychologically-twisted masterpiece has been selected for its ability to make you question reality and identity, just like Shutter Island's haunting revelations."
-                }
-            };
-        } else {
-            return {
-                badge: "Cinematic Excellence",
-                title: collection.title || "Cinema", 
-                description: `Dive into a curated collection of ${collection.title || 'amazing films'} that deliver exceptional storytelling and cinematic brilliance`,
-                selection: {
-                    text1: `This carefully curated selection brings together films that share similar themes, storytelling techniques, and cinematic excellence.`,
-                    text2: `From acclaimed masterpieces to hidden gems, these films explore complex narratives with the same depth and artistry.`
-                },
-                ranking: {
-                    text: "Our curation index evaluates each film's narrative innovation, thematic depth, and overall cinematic quality.",
-                    points: [
-                        "Narrative Innovation Score",
-                        "Thematic Depth Analysis",
-                        "Cinematic Quality Rating", 
-                        "Community Reviews & Ratings"
-                    ]
-                },
-                experience: {
-                    text1: "This collection delivers exceptional storytelling and cinematic artistry that will captivate film enthusiasts.",
-                    text2: "Each masterpiece has been selected for its ability to create memorable and thought-provoking experiences."
-                }
-            };
-        }
-    };
-
-    // 🔥 KEY FIX: ONLY RENDER WHEN currentRank === 10
-    if (currentRank !== 10) {
-        return null;
-    }
-
-    const content = getCollectionContent();
-
-    return (
-        <motion.section 
-            className="relative mt-8 sm:mt-16 mb-12 sm:mb-20"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.5, duration: 1.2 }}
-        >
-            {/* Background Effects - ALWAYS YELLOW */}
-            <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/5 via-transparent to-yellow-500/5 blur-3xl"></div>
-            <div className="absolute top-1/2 left-1/4 w-32 h-32 bg-yellow-400/10 rounded-full blur-2xl animate-pulse"></div>
-            <div className="absolute bottom-1/4 right-1/4 w-24 h-24 bg-amber-400/10 rounded-full blur-2xl animate-pulse delay-1000"></div>
-            
-            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
-                {/* DYNAMIC TITLE SECTION - ALWAYS YELLOW */}
-                <motion.div 
-                    className="text-center mb-16 sm:mb-20"
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1.8, duration: 1 }}
-                >
-                    <div className="inline-flex items-center gap-3 px-6 py-2 bg-yellow-400/10 border border-yellow-400/20 rounded-full mb-8">
-                        <Brain className="w-5 h-5 text-yellow-400" />
-                        <span className="text-yellow-400 font-medium tracking-wider uppercase text-sm">{content.badge}</span>
-                        <Zap className="w-5 h-5 text-yellow-400" />
-                    </div>
-                    
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extralight text-white mb-6 leading-tight">
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-yellow-200 to-white">
-                            Explore Movies Like
-                        </span>
-                        <br />
-                        <span className="text-transparent bg-clip-text font-normal bg-gradient-to-r from-yellow-300 via-amber-200 to-yellow-300">
-                            {content.title}
-                        </span>
-                    </h2>
-                    
-                    <p className="text-lg sm:text-xl text-gray-300/90 max-w-4xl mx-auto leading-relaxed font-light">
-                        {content.description}
-                    </p>
-                </motion.div>
-
-                {/* THREE-COLUMN GRID - ALWAYS YELLOW THEME */}
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 mb-16 sm:mb-20">
-                    
-                    {/* Column 1 - The Selection */}
-                    <motion.div 
-                        className="space-y-6"
-                        initial={{ opacity: 0, x: -30 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 2.2, duration: 0.8 }}
-                    >
-                        <div className="flex items-center gap-3 mb-6">
-                            <div className="w-12 h-12 rounded-lg flex items-center justify-center border bg-gradient-to-br from-yellow-400/20 to-amber-400/20 border-yellow-400/20">
-                                <Film className="w-6 h-6 text-yellow-400" />
-                            </div>
-                            <h3 className="text-2xl font-light text-white">The Selection</h3>
-                        </div>
-                        
-                        <p className="text-gray-300 leading-relaxed">
-                            {content.selection.text1}
-                        </p>
-                        
-                        <p className="text-gray-300 leading-relaxed">
-                            {content.selection.text2}
-                        </p>
-                    </motion.div>
-
-                    {/* Column 2 - The Ranking */}
-                    <motion.div 
-                        className="space-y-6"
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 2.4, duration: 0.8 }}
-                    >
-                        <div className="flex items-center gap-3 mb-6">
-                            <div className="w-12 h-12 rounded-lg flex items-center justify-center border bg-gradient-to-br from-yellow-400/20 to-amber-400/20 border-yellow-400/20">
-                                <TrendingUp className="w-6 h-6 text-yellow-400" />
-                            </div>
-                            <h3 className="text-2xl font-light text-white">The Ranking</h3>
-                        </div>
-                        
-                        <p className="text-gray-300 leading-relaxed">
-                            {content.ranking.text}
-                        </p>
-                        
-                        <div className="space-y-3">
-                            {content.ranking.points.map((point, index) => (
-                                <div key={index} className="flex items-center gap-3 text-sm">
-                                    <div className="w-2 h-2 rounded-full bg-yellow-400"></div>
-                                    <span className="text-gray-400">{point}</span>
-                                </div>
-                            ))}
-                        </div>
-                    </motion.div>
-
-                    {/* Column 3 - The Experience */}
-                    <motion.div 
-                        className="space-y-6"
-                        initial={{ opacity: 0, x: 30 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 2.6, duration: 0.8 }}
-                    >
-                        <div className="flex items-center gap-3 mb-6">
-                            <div className="w-12 h-12 rounded-lg flex items-center justify-center border bg-gradient-to-br from-yellow-400/20 to-amber-400/20 border-yellow-400/20">
-                                <Award className="w-6 h-6 text-yellow-400" />
-                            </div>
-                            <h3 className="text-2xl font-light text-white">The Experience</h3>
-                        </div>
-                        
-                        <p className="text-gray-300 leading-relaxed">
-                            {content.experience.text1}
-                        </p>
-                        
-                        <p className="text-gray-300 leading-relaxed">
-                            {content.experience.text2}
-                        </p>
-                        
-                        <div className="pt-4">
-                            <div className="flex items-center gap-2 px-4 py-2 border rounded-lg w-fit bg-yellow-400/10 border-yellow-400/20">
-                                <Users className="w-4 h-4 text-yellow-400" />
-                                <span className="text-sm font-medium text-yellow-400">Community Curated</span>
-                            </div>
-                        </div>
-                    </motion.div>
-                </div>
-
-                {/* Cinematic Divider - ALWAYS YELLOW */}
-                <motion.div 
-                    className="flex items-center justify-center mb-16 sm:mb-20"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 3, duration: 1 }}
-                >
-                    <div className="flex items-center gap-8">
-                        <div className="w-24 sm:w-32 h-px bg-gradient-to-r from-transparent to-yellow-400/50"></div>
-                        <div className="relative">
-                            <motion.div 
-                                className="w-3 h-3 border-2 rotate-45 border-yellow-400/50"
-                                animate={{ rotate: 405 }}
-                                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                            ></motion.div>
-                            <div className="absolute inset-0 w-3 h-3 rounded-full blur-sm bg-yellow-400/20"></div>
-                        </div>
-                        <div className="w-24 sm:w-32 h-px bg-gradient-to-l from-transparent to-yellow-400/50"></div>
-                    </div>
-                </motion.div>
-            </div>
-        </motion.section>
-    );
-};
-
-// 🔥 DYNAMIC CINEMATIC HEADER - UNIFIED YELLOW THEME WITH PROPER H1 TAGS
-const CinematicHeader = React.memo(({ collection }) => {
-    const getHeaderContent = () => {
-        if (collection.slug === 'movies-like-memento') {
-            return {
-                title1: "Top 10 Movies",
-                title2: "Like Memento", 
-                subtitle: "Memory-Twisting Psychological Thrillers"
-            };
-        } else if (collection.slug === 'movies-like-inception') {
-            return {
-                title1: "Top 10 Movies",
-                title2: "Like Inception",
-                subtitle: "Mind-Bending Sci-Fi & Psychological Thrillers"
-            };
-        } else if (collection.slug === 'movies-like-shutter-island') {
-            return {
-                title1: "Top 10 Movies",
-                title2: "Like Shutter Island",
-                subtitle: "Psychological Thrillers with Unreliable Narrators & Shocking Plot Twists"
-            };
-        } else {
-            return {
-                title1: collection.title || "Movie Collection",
-                title2: "",
-                subtitle: collection.description || "Curated Cinema"
-            };
-        }
-    };
-
-    const content = getHeaderContent();
-
-    return (
-        <header className="text-center mb-8 sm:mb-16 lg:mb-20 px-4 sm:px-6 w-full relative">
-            <motion.div 
-                initial={{ opacity: 0, y: -40 }} 
-                animate={{ opacity: 1, y: 0 }} 
-                transition={{ duration: 1.2, ease: "easeOut" }} 
-                className="space-y-6 sm:space-y-8 lg:space-y-12 relative z-10"
-            >
-                <motion.div className="relative">
-                    {/* 🔥 PROPER H1 TAG FOR SEO */}
-                    <motion.h1 
-                        className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extralight tracking-[0.05em] sm:tracking-[0.1em] text-transparent bg-clip-text bg-gradient-to-r from-yellow-100 via-yellow-300 to-amber-300" 
-                        style={{ 
-                            fontFamily: "'Playfair Display', serif", 
-                            textShadow: '0 0 80px rgba(234, 179, 8, 0.15)'
-                        }} 
-                        whileHover={{ 
-                            scale: 1.02, 
-                            textShadow: '0 0 100px rgba(234, 179, 8, 0.25)'
-                        }} 
-                        transition={{ duration: 0.4 }}
-                    >
-                        <motion.span className="block leading-none" style={{ letterSpacing: '0.1em' }}>
-                            {content.title1}
-                        </motion.span>
-                        {content.title2 && (
-                            <motion.span className="block leading-none mt-2" style={{ letterSpacing: '0.15em' }}>
-                                {content.title2}
-                            </motion.span>
-                        )}
-                    </motion.h1>
-                    
-                    <motion.p 
-                        className="text-lg sm:text-xl md:text-2xl font-light mt-6 text-yellow-200/60"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.5, duration: 0.8 }}
-                    >
-                        {content.subtitle}
-                    </motion.p>
-                    
-                    <motion.div 
-                        initial={{ scaleX: 0 }} 
-                        animate={{ scaleX: 1 }} 
-                        transition={{ delay: 1.2, duration: 2, ease: "easeInOut" }} 
-                        className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-32 sm:w-64 lg:w-96 h-px bg-gradient-to-r from-transparent via-yellow-400/50 to-transparent" 
-                    />
-                </motion.div>
-                
-                {/* Enhanced Badge Grid - ALWAYS YELLOW */}
-                <motion.div 
-                    className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mt-16 sm:mt-20 max-w-4xl mx-auto" 
-                    initial={{ opacity: 0, y: 40 }} 
-                    animate={{ opacity: 1, y: 0 }} 
-                    transition={{ delay: 2, duration: 0.8 }}
-                >
-                    {collection.badges && collection.badges.map((badge, index) => (
-                        <motion.div 
-                            key={badge.label || index} 
-                            className="relative group" 
-                            whileHover={{ y: -8, scale: 1.03 }} 
-                            transition={{ duration: 0.4 }}
-                        >
-                            <div className="p-6 sm:p-8 bg-gradient-to-br from-gray-800/40 via-gray-900/30 to-black/40 border border-yellow-500/20 rounded-2xl backdrop-blur-xl relative overflow-hidden">
-                                <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/5 via-transparent to-amber-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                                
-                                <div className="flex flex-col items-center space-y-4 relative z-10">
-                                    <div className="w-14 h-14 bg-gradient-to-br from-yellow-400/20 to-amber-400/20 rounded-xl flex items-center justify-center border border-yellow-400/30">
-                                        {index === 0 && <Crown className="w-7 h-7 text-yellow-400" />}
-                                        {index === 1 && <Star className="w-7 h-7 text-yellow-400" />}
-                                        {index === 2 && <MessageSquare className="w-7 h-7 text-yellow-400" />}
-                                    </div>
-                                    
-                                    <h3 className="text-yellow-200 text-base sm:text-lg font-medium tracking-wider uppercase text-center leading-tight">
-                                        {badge.label}
-                                    </h3>
-                                    <p className="text-gray-400 text-sm text-center leading-relaxed">
-                                        {badge.desc}
-                                    </p>
-                                </div>
-                            </div>
-                        </motion.div>
-                    ))}
-                </motion.div>
-            </motion.div>
-        </header>
-    );
-});
-
-// 🔥 DYNAMIC LOADER - UNIFIED YELLOW THEME
-const CinematicLoader = React.memo(({ collection }) => {
-    const getLoaderContent = () => {
-        if (collection?.slug === 'movies-like-memento') {
-            return {
-                title: "Loading Movies Like Memento",
-                description: "Curating memory-twisting psychological thrillers with community reviews and ratings"
-            };
-        } else if (collection?.slug === 'movies-like-inception') {
-            return {
-                title: "Loading Movies Like Inception", 
-                description: "Curating mind-bending sci-fi thrillers with community reviews and ratings"
-            };
-        } else if (collection?.slug === 'movies-like-shutter-island') {
-            return {
-                title: "Loading Movies Like Shutter Island",
-                description: "Curating psychological thrillers with unreliable narrators and shocking plot twists"
-            };
-        } else {
-            return {
-                title: "Loading Movie Collection",
-                description: "Curating exceptional cinema with community reviews and ratings"
-            };
-        }
-    };
-
-    const content = getLoaderContent();
-
-    return (
-        <div className="flex flex-col items-center justify-center h-full space-y-8 sm:space-y-16 px-4 sm:px-8">
-            <div className="relative">
-                <motion.div 
-                    animate={{ rotate: 360 }} 
-                    transition={{ duration: 4, repeat: Infinity, ease: "linear" }} 
-                    className="w-16 h-16 sm:w-24 sm:h-24 border-4 border-gray-800/60 rounded-full relative"
-                >
-                    <div className="absolute inset-2 sm:inset-3 border-2 border-yellow-500/40 rounded-full">
-                        <div className="absolute inset-1 sm:inset-2 border border-yellow-400/30 rounded-full">
-                            <div className="absolute inset-1 bg-yellow-500/10 rounded-full" />
-                        </div>
-                    </div>
-                    {[0, 45, 90, 135, 180, 225, 270, 315].map((rotation, index) => (
-                        <div 
-                            key={index} 
-                            className="absolute w-1.5 h-1.5 sm:w-2 sm:h-2 bg-yellow-400/40 rounded-full" 
-                            style={{ 
-                                top: '6px', 
-                                left: '50%', 
-                                transformOrigin: '0 26px', 
-                                transform: `translateX(-50%) rotate(${rotation}deg)` 
-                            }} 
-                        />
-                    ))}
-                </motion.div>
-            </div>
-            <motion.div 
-                initial={{ opacity: 0, y: 30 }} 
-                animate={{ opacity: 1, y: 0 }} 
-                transition={{ delay: 0.8 }} 
-                className="text-center space-y-4 sm:space-y-6 max-w-xs sm:max-w-md"
-            >
-                <h2 className="text-xl sm:text-2xl font-light text-gray-200 tracking-[0.2em] uppercase">{content.title}</h2>
-                <p className="text-gray-400 text-xs sm:text-sm font-light leading-relaxed tracking-wide">
-                    {content.description}
-                </p>
-                <div className="w-48 h-1 sm:w-64 bg-gray-800 rounded-full overflow-hidden mx-auto">
-                    <motion.div 
-                        className="h-full bg-gradient-to-r from-yellow-500 to-amber-500 rounded-full" 
-                        animate={{ x: ['-100%', '100%'] }} 
-                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }} 
-                    />
-                </div>
-            </motion.div>
-        </div>
-    );
-});
-
-// NAVIGATION DOTS COMPONENT
-const NavigationDots = ({ movies, currentMovieIndex, goToMovie }) => (
-    <motion.div 
-        className="flex justify-center items-center space-x-3 mt-8"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1, duration: 0.8 }}
-    >
-        {movies.map((_, index) => (
-            <motion.button
-                key={index}
-                onClick={() => goToMovie(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 relative ${
-                    index === currentMovieIndex 
-                        ? 'bg-yellow-400 scale-125' 
-                        : 'bg-gray-600 hover:bg-gray-400'
-                }`}
-                whileHover={{ scale: index === currentMovieIndex ? 1.3 : 1.1 }}
-                whileTap={{ scale: 0.9 }}
-            >
-                {index === currentMovieIndex && (
-                    <motion.div
-                        className="absolute inset-0 bg-yellow-400/30 rounded-full"
-                        initial={{ scale: 1 }}
-                        animate={{ scale: [1, 1.5, 1] }}
-                        transition={{ duration: 2, repeat: Infinity }}
-                    />
-                )}
-            </motion.button>
-        ))}
-    </motion.div>
-);
-
-// MAIN COLLECTION PAGE COMPONENT
+// 🔥 COLLECTION PAGE COMPONENT WITH SURVIVAL SUPPORT
 const CollectionPage = ({ collection, movies }) => {
     const [currentMovieIndex, setCurrentMovieIndex] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
@@ -573,6 +85,248 @@ const CollectionPage = ({ collection, movies }) => {
         return () => clearTimeout(timer);
     }, []);
 
+    // 🔥 COLLECTION-SPECIFIC CONTENT FUNCTION WITH SURVIVAL SUPPORT
+    const getCollectionContent = () => {
+        if (collection.slug === 'movies-like-memento') {
+            return {
+                badge: "Memory-Twisting Cinema",
+                title: "Memento",
+                description: "Dive into a curated collection of memory-twisting psychological thrillers that challenge identity and perception, ranked by memory complexity and engaging storytelling",
+                selection: {
+                    text1: "From reverse chronology to fragmented memories, these films challenge viewers to piece together narratives just as protagonists struggle to understand their own identities and past.",
+                    text2: "Each memory-twisting masterpiece features protagonists battling amnesia, false memories, or temporal confusion, creating experiences that mirror the disorientation of memory loss itself."
+                },
+                ranking: {
+                    text: "Our memory complexity index evaluates narrative structure, identity confusion, and the sophistication of memory-related storytelling techniques used throughout each film.",
+                    points: [
+                        "Non-linear narrative complexity",
+                        "Identity confusion depth", 
+                        "Memory manipulation techniques",
+                        "Psychological impact intensity"
+                    ]
+                },
+                experience: {
+                    text1: "Whether you're seeking intricate plot structures or psychological depth, this collection delivers cinema's most sophisticated explorations of memory and identity.",
+                    text2: "Each film has been selected for its ability to create genuine confusion and revelation, mirroring the experience of characters struggling with fractured memories and uncertain identities."
+                }
+            };
+        } else if (collection.slug === 'movies-like-inception') {
+            return {
+                badge: "Mind-Bending Cinema",
+                title: "Inception", 
+                description: "Dive into a curated collection of reality-bending masterpieces that challenge perception and ignite the mind, ranked by complexity and engaging storytelling",
+                selection: {
+                    text1: "From multi-layered dreamscapes to parallel realities, these films push the boundaries of narrative structure while maintaining emotional depth and philosophical weight.",
+                    text2: "Each mind-bending masterpiece features complex protagonists navigating impossible scenarios, time paradoxes, and reality distortions that challenge everything you think you know."
+                },
+                ranking: {
+                    text: "Our mind-bending index evaluates narrative complexity, reality distortion, and the sophistication of conceptual storytelling techniques used throughout each film.",
+                    points: [
+                        "Conceptual complexity depth",
+                        "Reality distortion intensity",
+                        "Narrative structure innovation", 
+                        "Philosophical impact weight"
+                    ]
+                },
+                experience: {
+                    text1: "Whether you're seeking intricate plot mechanics or philosophical depth, this collection delivers cinema's most ambitious reality-bending experiences.",
+                    text2: "Each film has been selected for its ability to create lasting impact, with concepts that continue revealing new layers upon repeated viewings and deeper analysis."
+                }
+            };
+        } else if (collection.slug === 'movies-like-shutter-island') {
+            return {
+                badge: "Psychological Thriller Cinema",
+                title: "Shutter Island",
+                description: "Dive into a curated collection of psychological thrillers with unreliable narrators, identity crises, and shocking revelations that redefine everything you thought you knew",
+                selection: {
+                    text1: "From unreliable narrators to shocking plot twists, these films master the art of psychological manipulation while maintaining gripping thriller elements and emotional authenticity.",
+                    text2: "Each psychological masterpiece features protagonists whose perception of reality becomes increasingly questionable, leading viewers down paths of doubt, paranoia, and ultimate revelation."
+                },
+                ranking: {
+                    text: "Our psychological complexity index evaluates narrative deception, identity questioning, and the sophistication of psychological thriller techniques throughout each film.",
+                    points: [
+                        "Unreliable narrator mastery",
+                        "Identity crisis complexity",
+                        "Plot twist sophistication",
+                        "Psychological manipulation depth"
+                    ]
+                },
+                experience: {
+                    text1: "Whether you're seeking shocking revelations or psychological depth, this collection delivers cinema's most masterful explorations of identity and reality distortion.",
+                    text2: "Each film has been selected for its ability to completely reframe the viewing experience, with revelations that transform every previous scene into something entirely different."
+                }
+            };
+        } 
+        // 🔥 NEW SURVIVAL COLLECTION CONTENT
+        else if (collection.slug === 'best-survival-movies') {
+            return {
+                badge: "Extreme Survival Cinema",
+                title: "Best Survival Movies",
+                description: "Dive into a curated collection of the most extreme survival stories ever captured on film, ranked by survivability index and human endurance requirements",
+                selection: {
+                    text1: "From being trapped under boulders to surviving plane crashes in the Andes, these films showcase the ultimate tests of human willpower and survival instinct against impossible odds.",
+                    text2: "Each survival story demonstrates how ordinary people can endure extraordinary circumstances, from desert islands to frozen wilderness, showcasing the depths of human resilience and determination."
+                },
+                ranking: {
+                    text: "Our survivability index evaluates each film's extreme conditions, human endurance requirements, and the impossible odds overcome by the protagonists in their fight for survival.",
+                    points: [
+                        "Survival Environment Difficulty",
+                        "Human Endurance Requirements", 
+                        "Impossible Odds Overcome",
+                        "Real Story Impact"
+                    ]
+                },
+                experience: {
+                    text1: "Whether you're seeking extreme survival films or human endurance stories, this collection delivers the most intense and inspiring survival cinema ever made.",
+                    text2: "Each survival masterpiece has been selected for its ability to showcase the incredible strength of human spirit when facing the most impossible circumstances and life-threatening situations."
+                }
+            };
+        }
+        else {
+            return {
+                badge: "Cinematic Excellence",
+                title: collection.title || "Cinema", 
+                description: `Dive into a curated collection of ${collection.title || 'amazing films'} that deliver exceptional storytelling and cinematic brilliance`,
+                selection: {
+                    text1: `This carefully curated selection represents the finest examples of ${collection.title || 'cinema'}, chosen for their exceptional storytelling, technical mastery, and lasting cultural impact.`,
+                    text2: "Each film demonstrates mastery of the cinematic arts, combining innovative techniques with compelling narratives that have influenced generations of filmmakers and audiences."
+                },
+                ranking: {
+                    text: "Our ranking system evaluates artistic achievement, cultural impact, and technical excellence to identify the most essential films in this category.",
+                    points: [
+                        "Artistic achievement level",
+                        "Cultural impact depth",
+                        "Technical excellence mastery",
+                        "Narrative innovation strength"
+                    ]
+                },
+                experience: {
+                    text1: "Whether you're a casual viewer or serious cinephile, this collection offers films that showcase the very best of cinematic storytelling and artistic expression.",
+                    text2: "Each selection represents a significant contribution to film history, offering both entertainment value and deeper artistic appreciation for the medium's possibilities."
+                }
+            };
+        }
+    };
+
+    // 🔥 UPDATED CONSISTENT HEADER FORMAT FOR ALL COLLECTIONS
+    const getHeaderContent = () => {
+        if (collection.slug === 'movies-like-memento') {
+            return {
+                title: "Best Movies Like Memento – 10 Mind-Bending Thrillers You Must Watch",
+                subtitle: "Memory-Twisting Psychological Thrillers with Non-Linear Storytelling Ranked by Complexity"
+            };
+        } else if (collection.slug === 'movies-like-inception') {
+            return {
+                title: "Best Movies Like Inception – 10 Mind-Bending Thrillers You Must Watch",
+                subtitle: "Reality-Bending Sci-Fi Thrillers with Complex Narratives Ranked by Complexity"
+            };
+        } else if (collection.slug === 'movies-like-shutter-island') {
+            return {
+                title: "Best Movies Like Shutter Island – 10 Mind-Bending Thrillers You Must Watch",
+                subtitle: "Psychological Thrillers with Unreliable Narrators & Shocking Plot Twists Ranked by Complexity"
+            };
+        } 
+        // 🔥 NEW SURVIVAL HEADER WITH CONSISTENT FORMAT
+        else if (collection.slug === 'best-survival-movies') {
+            return {
+                title: "Best Survival Movies – 10 Extreme Survival Thrillers You Must Watch",
+                subtitle: "Ultimate Tests of Human Endurance & Willpower Ranked by Survivability Index"
+            };
+        }
+        else {
+            return {
+                title: `Best ${collection.title} – Curated Collection You Must Watch`,
+                subtitle: collection.description || "Exceptional Cinema Ranked by Quality"
+            };
+        }
+    };
+
+    // 🔥 LOADER CONTENT WITH SURVIVAL SUPPORT
+    const getLoaderContent = () => {
+        if (collection?.slug === 'movies-like-memento') {
+            return {
+                title: "Loading Movies Like Memento",
+                description: "Curating memory-twisting psychological thrillers with community reviews and ratings"
+            };
+        } else if (collection?.slug === 'movies-like-inception') {
+            return {
+                title: "Loading Movies Like Inception", 
+                description: "Curating mind-bending sci-fi thrillers with community reviews and ratings"
+            };
+        } else if (collection?.slug === 'movies-like-shutter-island') {
+            return {
+                title: "Loading Movies Like Shutter Island",
+                description: "Curating psychological thrillers with unreliable narrators and shocking plot twists"
+            };
+        } 
+        // 🔥 NEW SURVIVAL LOADER
+        else if (collection?.slug === 'best-survival-movies') {
+            return {
+                title: "Loading Best Survival Movies",
+                description: "Curating extreme survival stories with survivability index and community reviews"
+            };
+        }
+        else {
+            return {
+                title: "Loading Movie Collection",
+                description: "Curating exceptional cinema with community reviews and ratings"
+            };
+        }
+    };
+
+    // 🔥 PAGE CONTENT WITH SURVIVAL SUPPORT
+   const getPageContent = () => {
+    if (collection.slug === 'movies-like-memento') {
+        return {
+            title: "Best Movies Like Memento – 10 Mind-Bending Psychological Thrillers You Must Watch",
+            description: "Stop scrolling! This is the most advanced handpicked list on the internet of 10 memory-twisting thrillers like Memento. Carefully analyzed for shocking twists, expert storytelling, and unforgettable endings—perfect for true psychological thriller fans!",
+            keywords: "movies like memento, films similar to memento, memory loss movies, psychological thrillers, non linear storytelling, christopher nolan memento, identity crisis films, memento similar movies, memory twisting films, amnesia movies, reverse chronology films, unreliable narrator movies",
+            ogTitle: "The Most Advanced List on the Internet – 10 Mind-Bending Movies Like Memento 🧠",
+            twitterTitle: "🧠 The Most Advanced Handpicked List – 10 Movies Like Memento",
+            progressText: `of Top ${movies.length} Movies Like Memento`
+        };
+    } else if (collection.slug === 'movies-like-inception') {
+        return {
+            title: "Best Movies Like Inception – 10 Mind-Bending Thrillers You Must Watch",
+            description: "Stop scrolling! This is the most advanced handpicked list on the internet of 10 mind-bending thrillers like Inception. Carefully analyzed for shocking twists, layered narratives, and expert storytelling—perfect for true psychological thriller fans!",
+            keywords: "movies like inception, films similar to inception, mind bending movies, psychological thrillers, complex movies with twists, christopher nolan movies, reality bending films, layered narrative films, inception similar movies, mind bending thrillers, dream logic movies",
+            ogTitle: "The Most Advanced List on the Internet – 10 Mind-Bending Movies Like Inception 🧠",
+            twitterTitle: "🧠 The Most Advanced Handpicked List – 10 Movies Like Inception",
+            progressText: `of Top ${movies.length} Movies Like Inception`
+        };
+    } else if (collection.slug === 'movies-like-shutter-island') {
+        return {
+            title: "Best Movies Like Shutter Island – 10 Mind-Bending Psychological Thrillers You Must Watch",
+            description: "Stop scrolling! This is the most advanced handpicked list on the internet of 10 mind-bending thrillers like Shutter Island. Carefully analyzed for shocking twists, unreliable narrators, and expert storytelling—perfect for true psychological thriller fans!",
+            keywords: "movies like shutter island, films similar to shutter island, psychological thrillers, unreliable narrator films, identity crisis movies, plot twist movies, martin scorsese shutter island, psychological horror films, reality distortion movies, memory manipulation films, shocking revelations movies",
+            ogTitle: "The Most Advanced List on the Internet – 10 Mind-Bending Movies Like Shutter Island 🧠",
+            twitterTitle: "🧠 The Most Advanced Handpicked List – 10 Movies Like Shutter Island",
+            progressText: `of Top ${movies.length} Movies Like Shutter Island`
+            };
+        } 
+        // 🔥 NEW SURVIVAL PAGE CONTENT WITH CONSISTENT FORMAT
+        else if (collection.slug === 'best-survival-movies') {
+            return {
+                title: "Best Survival Movies – 10 Extreme Survival Thrillers You Must Watch",
+                description: "Stop scrolling! Discover the 10 most extreme survival movies ever made. From 127 Hours to Unbroken, explore cinema's ultimate tests of human endurance ranked by survivability index.",
+                keywords: "best survival movies, survival films, extreme survival, survivability index, brutal survival stories, human endurance movies, true survival stories, survival cinema, 127 hours movies, cast away similar movies, the revenant survival films",
+                ogTitle: "Best Survival Movies – 10 Extreme Survival Thrillers You Must Watch",
+                twitterTitle: "Best Survival Movies – 10 Extreme Survival Thrillers You Must Watch", 
+                progressText: `of Top ${movies.length} Survival Movies`
+            };
+        }
+        else {
+            return {
+                title: `Best ${collection.title} – Curated Movie Collection You Must Watch`,
+                description: `Discover ${collection.title} - ${collection.description || 'A curated collection of exceptional films'}.`,
+                keywords: `${collection.title}, curated movies, film collection, cinema, movie recommendations`,
+                ogTitle: `Best ${collection.title} – Curated Collection You Must Watch`,
+                twitterTitle: `Best ${collection.title} – Curated Collection You Must Watch`,
+                progressText: `of ${collection.title}`
+            };
+        }
+    };
+
     const nextMovie = useCallback(() => {
         setCurrentMovieIndex((prev) => (prev + 1) % movies.length);
     }, [movies.length]);
@@ -595,7 +349,7 @@ const CollectionPage = ({ collection, movies }) => {
         return () => window.removeEventListener('keydown', handleKeyPress);
     }, [nextMovie, prevMovie]);
 
-    // Get current movie and calculate rank (10, 9, 8, ..., 1)
+    // Get current movie and calculate rank
     const currentMovie = movies[currentMovieIndex];
     const currentRank = movies.length - currentMovieIndex;
 
@@ -621,7 +375,7 @@ const CollectionPage = ({ collection, movies }) => {
         }
     };
 
-    // 🔥 UPDATED: Collection-aware movie click handler WITH SHUTTER ISLAND SUPPORT
+    // 🔥 MOVIE CLICK HANDLER WITH SURVIVAL SUPPORT
     const handleMovieClick = () => {
         if (typeof window !== 'undefined') {
             sessionStorage.setItem('currentMoviePosition', currentMovieIndex.toString());
@@ -630,155 +384,383 @@ const CollectionPage = ({ collection, movies }) => {
             sessionStorage.setItem('collectionTitle', collection.title);
             sessionStorage.setItem('fromCollection', 'true');
             
-            // 🔥 SET APPROPRIATE COLLECTION FLAGS
+            // Clear all collection flags first
             sessionStorage.removeItem('fromInceptionCollection');
             sessionStorage.removeItem('fromMementoCollection');
             sessionStorage.removeItem('fromShutterIslandCollection');
+            sessionStorage.removeItem('fromSurvivalCollection');
             
-            if (collection.slug === 'movies-like-memento') {
+            // Set appropriate collection flag including survival
+            if (collection.slug === 'movies-like-inception') {
+                sessionStorage.setItem('fromInceptionCollection', 'true');
+            } else if (collection.slug === 'movies-like-memento') {
                 sessionStorage.setItem('fromMementoCollection', 'true');
             } else if (collection.slug === 'movies-like-shutter-island') {
                 sessionStorage.setItem('fromShutterIslandCollection', 'true');
-            } else {
-                sessionStorage.setItem('fromInceptionCollection', 'true');
+            } else if (collection.slug === 'best-survival-movies') {
+                sessionStorage.setItem('fromSurvivalCollection', 'true');
             }
         }
     };
 
-    // 🔥 ENHANCED SEO SCHEMA DATA WITH PROPER STRUCTURED DATA
-    const getSchemaData = () => {
-        const baseTitle = collection?.slug === 'movies-like-memento' 
-            ? "Top 10 Movies Like Memento - Memory-Twisting Psychological Thrillers"
-            : collection?.slug === 'movies-like-inception'
-            ? "Top 10 Movies Like Inception - Mind-Bending Sci-Fi & Thrillers"
-            : collection?.slug === 'movies-like-shutter-island'
-            ? "Top 10 Movies Like Shutter Island - Psychological Thrillers with Unreliable Narrators"
-            : `${collection?.title || 'Movie Collection'} - Curated Cinema`;
-        
-        const baseDescription = collection?.slug === 'movies-like-memento'
-            ? "Discover 10 memory-twisting movies like Memento, ranked by psychological complexity and engaging storytelling. From psychological thrillers to memory-bending masterpieces similar to Memento."
-            : collection?.slug === 'movies-like-inception'
-            ? "Discover 10 mind-bending movies like Inception, ranked by psychological complexity and engaging storytelling. From sci-fi thrillers to reality-bending masterpieces similar to Inception."
-            : collection?.slug === 'movies-like-shutter-island'
-            ? "Discover 10 psychological thrillers like Shutter Island, ranked by narrative complexity and plot twist effectiveness. From unreliable narrator films to identity crisis masterpieces."
-            : `Discover curated ${collection?.title || 'movies'} ranked by quality and storytelling excellence.`;
+    // Get dynamic content
+    const collectionContent = getCollectionContent();
+    const headerContent = getHeaderContent();
+    const loaderContent = getLoaderContent();
+    const pageContent = getPageContent();
 
-        return {
-            "@context": "https://schema.org",
-            "@type": "CollectionPage",
-            "name": baseTitle,
-            "description": baseDescription,
-            "url": `https://filmiway.com/collection/${collection.slug}`,
-            "author": {
-                "@type": "Organization",
-                "name": "Filmiway"
-            },
-            "publisher": {
-                "@type": "Organization", 
-                "name": "Filmiway",
-                "logo": {
-                    "@type": "ImageObject",
-                    "url": "https://filmiway.com/filmiway-logo.svg"
-                }
-            },
-            "mainEntity": {
-                "@type": "ItemList",
-                "name": baseTitle,
-                "description": baseDescription,
-                "numberOfItems": movies.length,
-                "itemListElement": movies.map((movie, index) => ({
-                    "@type": "ListItem",
-                    "position": movies.length - index,
-                    "item": {
-                        "@type": "Movie",
-                        "name": getMovieTitle(movie),
-                        "dateCreated": getMovieYear(movie),
-                        "genre": getMovieGenre(movie),
-                        "url": `https://filmiway.com/movies/${movie.imdbID}`
-                    }
-                }))
-            },
-            "breadcrumb": {
-                "@type": "BreadcrumbList",
-                "itemListElement": [
-                    {
-                        "@type": "ListItem",
-                        "position": 1,
-                        "item": {
-                            "@id": "https://filmiway.com/",
-                            "name": "Filmiway"
-                        }
-                    },
-                    {
-                        "@type": "ListItem",
-                        "position": 2,
-                        "item": {
-                            "@id": `https://filmiway.com/collection/${collection.slug}`,
-                            "name": baseTitle
-                        }
-                    }
-                ]
+    // 🔥 ENHANCED CINEMATIC EXPLORER SECTION WITH SURVIVAL SUPPORT
+    const CinematicExplorerSection = ({ currentRank }) => {
+        // Only render when currentRank === 10
+        if (currentRank !== 10) {
+            return null;
+        }
+
+        // 🔥 SURVIVAL-SPECIFIC ICONS
+        const getCollectionIcons = () => {
+            if (collection.slug === 'best-survival-movies') {
+                return {
+                    icon1: Mountain,
+                    icon2: Film, 
+                    icon3: Shield
+                };
             }
+            return {
+                icon1: Brain,
+                icon2: Film,
+                icon3: Award
+            };
         };
+
+        const icons = getCollectionIcons();
+
+        return (
+            <motion.section 
+                className="relative mt-8 sm:mt-16 mb-12 sm:mb-20"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.5, duration: 1.2 }}
+            >
+                {/* Background Effects */}
+                <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/5 via-transparent to-yellow-500/5 blur-3xl"></div>
+                <div className="absolute top-1/2 left-1/4 w-32 h-32 bg-yellow-400/10 rounded-full blur-2xl animate-pulse"></div>
+                <div className="absolute bottom-1/4 right-1/4 w-24 h-24 bg-amber-400/10 rounded-full blur-2xl animate-pulse delay-1000"></div>
+                
+                <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
+                    {/* Title Section */}
+                    <motion.div 
+                        className="text-center mb-16 sm:mb-20"
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 1.8, duration: 1 }}
+                    >
+                        <div className="inline-flex items-center gap-3 px-6 py-2 bg-yellow-400/10 border border-yellow-400/20 rounded-full mb-8">
+                            <icons.icon1 className="w-5 h-5 text-yellow-400" />
+                            <span className="text-yellow-400 font-medium tracking-wider uppercase text-sm">{collectionContent.badge}</span>
+                            <icons.icon3 className="w-5 h-5 text-yellow-400" />
+                        </div>
+                        
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extralight text-white mb-6 leading-tight">
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-yellow-200 to-white">
+                                Explore {collectionContent.title}
+                            </span>
+                            <br />
+                            <span className="text-transparent bg-clip-text font-normal bg-gradient-to-r from-yellow-300 via-amber-200 to-yellow-300">
+                                Cinema Collection
+                            </span>
+                        </h2>
+                        
+                        <p className="text-lg sm:text-xl text-gray-300/90 max-w-4xl mx-auto leading-relaxed font-light">
+                            {collectionContent.description}
+                        </p>
+                    </motion.div>
+
+                    {/* Three-Column Grid */}
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 mb-16 sm:mb-20">
+                        
+                        {/* Column 1 - The Selection */}
+                        <motion.div 
+                            className="space-y-6"
+                            initial={{ opacity: 0, x: -30 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: 2.2, duration: 0.8 }}
+                        >
+                            <div className="flex items-center gap-3 mb-6">
+                                <div className="w-12 h-12 rounded-lg flex items-center justify-center border bg-gradient-to-br from-yellow-400/20 to-amber-400/20 border-yellow-400/20">
+                                    <icons.icon2 className="w-6 h-6 text-yellow-400" />
+                                </div>
+                                <h3 className="text-2xl font-light text-white">The Selection</h3>
+                            </div>
+                            
+                            <p className="text-gray-300 leading-relaxed">
+                                {collectionContent.selection.text1}
+                            </p>
+                            
+                            <p className="text-gray-300 leading-relaxed">
+                                {collectionContent.selection.text2}
+                            </p>
+                        </motion.div>
+
+                        {/* Column 2 - The Ranking */}
+                        <motion.div 
+                            className="space-y-6"
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 2.4, duration: 0.8 }}
+                        >
+                            <div className="flex items-center gap-3 mb-6">
+                                <div className="w-12 h-12 rounded-lg flex items-center justify-center border bg-gradient-to-br from-yellow-400/20 to-amber-400/20 border-yellow-400/20">
+                                    <TrendingUp className="w-6 h-6 text-yellow-400" />
+                                </div>
+                                <h3 className="text-2xl font-light text-white">The Ranking</h3>
+                            </div>
+                            
+                            <p className="text-gray-300 leading-relaxed">
+                                {collectionContent.ranking.text}
+                            </p>
+                            
+                            <div className="space-y-3">
+                                {collectionContent.ranking.points.map((point, index) => (
+                                    <div key={index} className="flex items-center gap-3 text-sm">
+                                        <div className="w-2 h-2 rounded-full bg-yellow-400"></div>
+                                        <span className="text-gray-400">{point}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </motion.div>
+
+                        {/* Column 3 - The Experience */}
+                        <motion.div 
+                            className="space-y-6"
+                            initial={{ opacity: 0, x: 30 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: 2.6, duration: 0.8 }}
+                        >
+                            <div className="flex items-center gap-3 mb-6">
+                                <div className="w-12 h-12 rounded-lg flex items-center justify-center border bg-gradient-to-br from-yellow-400/20 to-amber-400/20 border-yellow-400/20">
+                                    <icons.icon3 className="w-6 h-6 text-yellow-400" />
+                                </div>
+                                <h3 className="text-2xl font-light text-white">The Experience</h3>
+                            </div>
+                            
+                            <p className="text-gray-300 leading-relaxed">
+                                {collectionContent.experience.text1}
+                            </p>
+                            
+                            <p className="text-gray-300 leading-relaxed">
+                                {collectionContent.experience.text2}
+                            </p>
+                            
+                            <div className="pt-4">
+                                <div className="flex items-center gap-2 px-4 py-2 border rounded-lg w-fit bg-yellow-400/10 border-yellow-400/20">
+                                    <Users className="w-4 h-4 text-yellow-400" />
+                                    <span className="text-sm font-medium text-yellow-400">
+                                        {collection.slug === 'best-survival-movies' ? 'Survivability Indexed' : 'Community Curated'}
+                                    </span>
+                                </div>
+                            </div>
+                        </motion.div>
+                    </div>
+
+                    {/* Cinematic Divider */}
+                    <motion.div 
+                        className="flex items-center justify-center mb-16 sm:mb-20"
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: 3, duration: 1 }}
+                    >
+                        <div className="flex items-center gap-8">
+                            <div className="w-24 sm:w-32 h-px bg-gradient-to-r from-transparent to-yellow-400/50"></div>
+                            <div className="relative">
+                                <motion.div 
+                                    className="w-3 h-3 border-2 rotate-45 border-yellow-400/50"
+                                    animate={{ rotate: 405 }}
+                                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                                ></motion.div>
+                                <div className="absolute inset-0 w-3 h-3 rounded-full blur-sm bg-yellow-400/20"></div>
+                            </div>
+                            <div className="w-24 sm:w-32 h-px bg-gradient-to-l from-transparent to-yellow-400/50"></div>
+                        </div>
+                    </motion.div>
+                </div>
+            </motion.section>
+        );
     };
 
-    const schemaData = getSchemaData();
-
-    if (!collection || !movies || movies.length === 0) {
+    // 🔥 CINEMATIC HEADER WITH CONSISTENT FORMAT
+    const CinematicHeader = React.memo(() => {
         return (
-            <div className="min-h-screen bg-black text-white flex items-center justify-center">
-                <div className="text-center">
-                    <h1 className="text-3xl text-yellow-300 mb-4">Collection not found</h1>
-                    <Link href="/" className="text-yellow-400 hover:text-yellow-300">
-                        Return to homepage
-                    </Link>
+            <header className="text-center mb-8 sm:mb-16 lg:mb-20 px-4 sm:px-6 w-full relative">
+                <motion.div 
+                    initial={{ opacity: 0, y: -40 }} 
+                    animate={{ opacity: 1, y: 0 }} 
+                    transition={{ duration: 1.2, ease: "easeOut" }} 
+                    className="space-y-6 sm:space-y-8 lg:space-y-12 relative z-10"
+                >
+                    <motion.div className="relative">
+                        {/* H1 Tag - CONSISTENT FORMAT FOR ALL COLLECTIONS */}
+                        <motion.h1 
+                            className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extralight tracking-[0.05em] sm:tracking-[0.1em] text-transparent bg-clip-text bg-gradient-to-r from-yellow-100 via-yellow-300 to-amber-300" 
+                            style={{ 
+                                fontFamily: "'Playfair Display', serif", 
+                                textShadow: '0 0 80px rgba(234, 179, 8, 0.15)'
+                            }} 
+                            whileHover={{ 
+                                scale: 1.02, 
+                                textShadow: '0 0 100px rgba(234, 179, 8, 0.25)'
+                            }} 
+                            transition={{ duration: 0.4 }}
+                        >
+                            <span className="block leading-tight" style={{ letterSpacing: '0.05em' }}>
+                                {headerContent.title}
+                            </span>
+                        </motion.h1>
+                        
+                        <motion.p 
+                            className="text-lg sm:text-xl md:text-2xl font-light mt-6 text-yellow-200/60"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.5, duration: 0.8 }}
+                        >
+                            {headerContent.subtitle}
+                        </motion.p>
+                        
+                        <motion.div 
+                            initial={{ scaleX: 0 }} 
+                            animate={{ scaleX: 1 }} 
+                            transition={{ delay: 1.2, duration: 2, ease: "easeInOut" }} 
+                            className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-32 sm:w-64 lg:w-96 h-px bg-gradient-to-r from-transparent via-yellow-400/50 to-transparent" 
+                        />
+                    </motion.div>
+                    
+                    {/* Enhanced Badge Grid */}
+                    <motion.div 
+                        className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mt-16 sm:mt-20 max-w-4xl mx-auto" 
+                        initial={{ opacity: 0, y: 40 }} 
+                        animate={{ opacity: 1, y: 0 }} 
+                        transition={{ delay: 2, duration: 0.8 }}
+                    >
+                        {collection.badges?.map((badge, index) => (
+                            <motion.div 
+                                key={index}
+                                className="relative group" 
+                                whileHover={{ y: -8, scale: 1.03 }} 
+                                transition={{ duration: 0.4 }}
+                            >
+                                <div className="p-6 sm:p-8 bg-gradient-to-br from-gray-800/40 via-gray-900/30 to-black/40 border border-yellow-500/20 rounded-2xl backdrop-blur-xl relative overflow-hidden">
+                                    <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/5 via-transparent to-amber-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                    
+                                    <div className="flex flex-col items-center space-y-4 relative z-10">
+                                        <div className="w-14 h-14 bg-gradient-to-br from-yellow-400/20 to-amber-400/20 rounded-xl flex items-center justify-center border border-yellow-400/30">
+                                            {collection.slug === 'best-survival-movies' && index === 0 && <Mountain className="w-7 h-7 text-yellow-400" />}
+                                            {collection.slug === 'best-survival-movies' && index === 1 && <Star className="w-7 h-7 text-yellow-400" />}
+                                            {collection.slug === 'best-survival-movies' && index === 2 && <Shield className="w-7 h-7 text-yellow-400" />}
+                                            {collection.slug !== 'best-survival-movies' && index === 0 && <Brain className="w-7 h-7 text-yellow-400" />}
+                                            {collection.slug !== 'best-survival-movies' && index === 1 && <Star className="w-7 h-7 text-yellow-400" />}
+                                            {collection.slug !== 'best-survival-movies' && index === 2 && <Award className="w-7 h-7 text-yellow-400" />}
+                                        </div>
+                                        
+                                        <h3 className="text-yellow-200 text-base sm:text-lg font-medium tracking-wider uppercase text-center leading-tight">
+                                            {badge.label}
+                                        </h3>
+                                        <p className="text-gray-400 text-sm text-center leading-relaxed">
+                                            {badge.desc}
+                                        </p>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </motion.div>
+                </motion.div>
+            </header>
+        );
+    });
+
+    // 🔥 CINEMATIC LOADER WITH SURVIVAL SUPPORT
+    const CinematicLoader = React.memo(() => {
+        return (
+            <div className="flex flex-col items-center justify-center h-full space-y-8 sm:space-y-16 px-4 sm:px-8">
+                <div className="relative">
+                    <motion.div 
+                        animate={{ rotate: 360 }} 
+                        transition={{ duration: 4, repeat: Infinity, ease: "linear" }} 
+                        className="w-16 h-16 sm:w-24 sm:h-24 border-4 border-gray-800/60 rounded-full relative"
+                    >
+                        <div className="absolute inset-2 sm:inset-3 border-2 border-yellow-500/40 rounded-full">
+                            <div className="absolute inset-1 sm:inset-2 border border-yellow-400/30 rounded-full">
+                                <div className="absolute inset-1 bg-yellow-500/10 rounded-full" />
+                            </div>
+                        </div>
+                        {[0, 45, 90, 135, 180, 225, 270, 315].map((rotation, index) => (
+                            <div 
+                                key={index} 
+                                className="absolute w-1.5 h-1.5 sm:w-2 sm:h-2 bg-yellow-400/40 rounded-full" 
+                                style={{ 
+                                    top: '6px', 
+                                    left: '50%', 
+                                    transformOrigin: '0 26px', 
+                                    transform: `translateX(-50%) rotate(${rotation}deg)` 
+                                }} 
+                            />
+                        ))}
+                    </motion.div>
                 </div>
+                <motion.div 
+                    initial={{ opacity: 0, y: 30 }} 
+                    animate={{ opacity: 1, y: 0 }} 
+                    transition={{ delay: 0.8 }} 
+                    className="text-center space-y-4 sm:space-y-6 max-w-xs sm:max-w-md"
+                >
+                    <h2 className="text-xl sm:text-2xl font-light text-gray-200 tracking-[0.2em] uppercase">
+                        {loaderContent.title}
+                    </h2>
+                    <p className="text-gray-400 text-xs sm:text-sm font-light leading-relaxed tracking-wide">
+                        {loaderContent.description}
+                    </p>
+                    <div className="w-48 h-1 sm:w-64 bg-gray-800 rounded-full overflow-hidden mx-auto">
+                        <motion.div 
+                            className="h-full bg-gradient-to-r from-yellow-500 to-amber-500 rounded-full" 
+                            animate={{ x: ['-100%', '100%'] }} 
+                            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }} 
+                        />
+                    </div>
+                </motion.div>
             </div>
         );
-    }
+    });
 
-    // 🔥 ENHANCED PAGE TITLES AND META WITH PROPER SEO OPTIMIZATION
-    const getPageContent = () => {
-        if (collection.slug === 'movies-like-memento') {
-            return {
-                title: "Top 10 Movies Like Memento - Memory-Twisting Psychological Thrillers Ranked | Filmiway",
-                description: "Discover 10 memory-twisting movies like Memento, ranked by psychological complexity and engaging storytelling. From psychological thrillers to memory-bending masterpieces similar to Memento.",
-                keywords: "movies like memento, films similar to memento, memory loss movies, psychological thrillers, non linear storytelling, christopher nolan memento, identity crisis films, memento similar movies, memory twisting films, amnesia movies, reverse chronology films, unreliable narrator movies",
-                ogTitle: "Top 10 Movies Like Memento - Memory-Twisting Psychological Thrillers",
-                twitterTitle: "Top 10 Movies Like Memento - Memory-Twisting Psychological Thrillers",
-                progressText: `of Top ${movies.length} Movies Like Memento`
-            };
-        } else if (collection.slug === 'movies-like-inception') {
-            return {
-                title: "Top 10 Movies Like Inception - Mind-Bending Sci-Fi & Thrillers Ranked | Filmiway",
-                description: "Discover 10 mind-bending movies like Inception, ranked by psychological complexity and engaging storytelling. From sci-fi thrillers to reality-bending masterpieces similar to Inception.",
-                keywords: "movies like inception, films similar to inception, mind bending movies, psychological thrillers, sci fi movies with twists, christopher nolan movies, reality bending films, complex movies, inception similar movies, mind bending sci fi, dream logic movies, layered narrative films",
-                ogTitle: "Top 10 Movies Like Inception - Mind-Bending Sci-Fi & Thrillers",
-                twitterTitle: "Top 10 Movies Like Inception - Mind-Bending Sci-Fi & Thrillers",
-                progressText: `of Top ${movies.length} Movies Like Inception`
-            };
-        } else if (collection.slug === 'movies-like-shutter-island') {
-            return {
-                title: "Top 10 Movies Like Shutter Island - Psychological Thrillers with Unreliable Narrators | Filmiway",
-                description: "From Primer to Mulholland Drive — explore mind-bending movies like Inception. Filmiway adds detailed sensitive scene timestamps for safe viewing.",
-                keywords: "movies like shutter island, films similar to shutter island, psychological thrillers, unreliable narrator films, identity crisis movies, plot twist movies, martin scorsese shutter island, psychological horror films, reality distortion movies, memory manipulation films, shocking revelations movies",
-                ogTitle: "Top 10 Movies Like Shutter Island - Psychological Thrillers",
-                twitterTitle: "Top 10 Movies Like Shutter Island - Psychological Thrillers",
-                progressText: `of Top ${movies.length} Movies Like Shutter Island`
-            };
-        } else {
-            return {
-                title: `${collection.title} - Curated Movie Collection | Filmiway`,
-                description: `Discover ${collection.title} - ${collection.description || 'A curated collection of exceptional films'}.`,
-                keywords: `${collection.title}, curated movies, film collection, cinema, movie recommendations`,
-                ogTitle: `${collection.title} - Curated Collection`,
-                twitterTitle: `${collection.title} - Curated Collection`,
-                progressText: `of ${collection.title}`
-            };
-        }
-    };
-
-    const pageContent = getPageContent();
+    // NAVIGATION DOTS COMPONENT
+    const NavigationDots = ({ movies, currentMovieIndex, goToMovie }) => (
+        <motion.div 
+            className="flex justify-center items-center space-x-3 mt-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1, duration: 0.8 }}
+        >
+            {movies.map((_, index) => (
+                <motion.button
+                    key={index}
+                    onClick={() => goToMovie(index)}
+                    className={`w-3 h-3 rounded-full transition-all duration-300 relative ${
+                        index === currentMovieIndex 
+                            ? 'bg-yellow-400 scale-125' 
+                            : 'bg-gray-600 hover:bg-gray-400'
+                    }`}
+                    whileHover={{ scale: index === currentMovieIndex ? 1.3 : 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                >
+                    {index === currentMovieIndex && (
+                        <motion.div
+                            className="absolute inset-0 bg-yellow-400/30 rounded-full"
+                            initial={{ scale: 1 }}
+                            animate={{ scale: [1, 1.5, 1] }}
+                            transition={{ duration: 2, repeat: Infinity }}
+                        />
+                    )}
+                </motion.button>
+            ))}
+        </motion.div>
+    );
 
     return (
         <div className="min-h-screen bg-black text-white relative overflow-hidden">
@@ -791,20 +773,14 @@ const CollectionPage = ({ collection, movies }) => {
                 <link rel="icon" href="/favicon.ico" />
                 
                 <meta property="og:title" content={pageContent.ogTitle} />
-                <meta property="og:description" content="From Primer to Mulholland Drive — explore mind-bending movies like Inception. Filmiway adds detailed sensitive scene timestamps for safe viewing." />
+                <meta property="og:description" content={pageContent.description} />
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content={`https://filmiway.com/collection/${collection.slug}`} />
                 <meta property="og:site_name" content="Filmiway" />
                 
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content={pageContent.twitterTitle} />
-                <meta name="twitter:description" content="From Primer to Mulholland Drive — explore mind-bending movies like Inception. Filmiway adds detailed sensitive scene timestamps for safe viewing." />
-                
-                {/* Enhanced JSON-LD Schema */}
-                <script 
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
-                />
+                <meta name="twitter:description" content={pageContent.description} />
             </Head>
 
             <CinematicBackground />
@@ -828,7 +804,7 @@ const CollectionPage = ({ collection, movies }) => {
                         exit={{ opacity: 0 }}
                         className="min-h-screen flex items-center justify-center"
                     >
-                        <CinematicLoader collection={collection} />
+                        <CinematicLoader />
                     </motion.div>
                 ) : (
                     <motion.div
@@ -839,10 +815,10 @@ const CollectionPage = ({ collection, movies }) => {
                         className="relative z-10"
                     >
                         <div className="container mx-auto px-3 sm:px-6 py-8 sm:py-12">
-                            <CinematicHeader collection={collection} />
+                            <CinematicHeader />
                             
-                            {/* 🔥 CINEMATIC EXPLORER SECTION - ONLY SHOWS ON #10 */}
-                            <CinematicExplorerSection collection={collection} currentRank={currentRank} />
+                            {/* Cinematic Explorer Section - Only shows on #10 */}
+                            <CinematicExplorerSection currentRank={currentRank} />
                             
                             <div className="relative flex items-center justify-center min-h-[70vh] sm:min-h-[80vh]">
                                 {/* Enhanced Navigation Buttons */}
@@ -868,15 +844,10 @@ const CollectionPage = ({ collection, movies }) => {
                                     <div className="absolute inset-0 bg-gradient-to-l from-yellow-400/10 to-amber-400/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
                                 </motion.button>
 
-                                {/* 🔥 UPDATED: Collection-aware movie display - ALL THREE COLLECTIONS ROUTING FIX */}
+                                {/* Movie Display */}
                                 <AnimatePresence mode="wait">
                                     <Link 
-                                        href={collection.slug === 'movies-like-memento' 
-                                            ? `/movies/like-memento/${currentMovie.imdbID}` 
-                                            : collection.slug === 'movies-like-shutter-island'
-                                            ? `/movies/like-shutter-island/${currentMovie.imdbID}`
-                                            : `/movies/${currentMovie.imdbID}`
-                                        }
+                                        href={`/movies/${currentMovie.imdbID}`}
                                         key={currentMovieIndex}
                                         onClick={handleMovieClick}
                                     >
@@ -889,7 +860,7 @@ const CollectionPage = ({ collection, movies }) => {
                                 </AnimatePresence>
                             </div>
 
-                            {/* ENHANCED MOVIE INFO WITH RUNTIME */}
+                            {/* Enhanced Movie Info */}
                             <motion.div 
                                 className="text-center mt-12 sm:mt-16"
                                 initial={{ opacity: 0 }}
@@ -899,11 +870,18 @@ const CollectionPage = ({ collection, movies }) => {
                                 <h2 className="text-3xl sm:text-4xl font-light text-white mb-3">
                                     {getMovieTitle(currentMovie)}
                                 </h2>
-                                <p className="text-gray-400 mb-8 text-lg">
+                                <p className="text-gray-400 mb-4 text-lg">
                                     {getMovieYear(currentMovie)} • {getMovieGenre(currentMovie)} • {getMovieRuntime(currentMovie)}
                                 </p>
                                 
-                                {/* ENHANCED CLICK INDICATORS */}
+                                {/* Collection-specific info */}
+                                {collection.slug === 'best-survival-movies' && currentMovie.survivabilityIndex && (
+                                    <p className="text-yellow-400 mb-8 text-lg font-medium">
+                                        Survivability Index: {currentMovie.survivabilityIndex}/100 • {currentMovie.environment}
+                                    </p>
+                                )}
+                                
+                                {/* Enhanced Click Indicators */}
                                 <div className="flex flex-col items-center space-y-6">
                                     <div className="flex items-center justify-center space-x-4 text-sm text-gray-500">
                                         <span className="px-3 py-1 bg-gray-800/50 rounded-full">#{currentRank} of {movies.length}</span>
@@ -911,23 +889,17 @@ const CollectionPage = ({ collection, movies }) => {
                                         <span>Click poster above for full analysis</span>
                                     </div>
                                     
-                                    {/* 🔥 UPDATED: Collection-aware click button - ALL THREE COLLECTIONS ROUTING FIX */}
                                     <motion.div 
                                         className="flex items-center space-x-4 bg-gradient-to-r from-yellow-400/10 via-amber-400/10 to-yellow-400/10 border border-yellow-400/30 rounded-2xl px-8 py-4 hover:from-yellow-400/20 hover:via-amber-400/20 hover:to-yellow-400/20 hover:border-yellow-400/50 transition-all duration-300 cursor-pointer group"
                                         whileHover={{ scale: 1.05, y: -2 }}
                                         whileTap={{ scale: 0.98 }}
                                         onClick={() => {
                                             handleMovieClick();
-                                            const movieUrl = collection.slug === 'movies-like-memento' 
-                                                ? `/movies/like-memento/${currentMovie.imdbID}` 
-                                                : collection.slug === 'movies-like-shutter-island'
-                                                ? `/movies/like-shutter-island/${currentMovie.imdbID}`
-                                                : `/movies/${currentMovie.imdbID}`;
-                                            window.location.href = movieUrl;
+                                            window.location.href = `/movies/${currentMovie.imdbID}`;
                                         }}
                                     >
                                         <Eye className="w-6 h-6 text-yellow-400" />
-                                        <span className="text-yellow-400 font-medium text-lg">Explore Full Movie Analysis</span>
+                                        <span className="text-yellow-400 font-medium text-lg">Explore Full Analysis</span>
                                         <motion.div
                                             animate={{ x: [0, 8, 0] }}
                                             transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
@@ -945,7 +917,7 @@ const CollectionPage = ({ collection, movies }) => {
                                 goToMovie={goToMovie}
                             />
 
-                            {/* MOVIE COUNTER */}
+                            {/* Movie Counter */}
                             <motion.div
                                 className="flex justify-center mt-8"
                                 initial={{ opacity: 0, y: 20 }}
@@ -970,7 +942,7 @@ const CollectionPage = ({ collection, movies }) => {
                                 </div>
                             </motion.div>
 
-                            {/* FOOTER */}
+                            {/* Footer */}
                             <motion.footer
                                 className="bg-gradient-to-t from-gray-900 to-black mt-16 pt-12 border-t border-gray-800/30 text-center"
                                 initial={{ opacity: 0 }}
@@ -978,18 +950,21 @@ const CollectionPage = ({ collection, movies }) => {
                                 transition={{ delay: 4.5 }}
                             >
                                 <p className="text-gray-500 text-sm sm:text-base font-light tracking-wide mb-8">
-                                    Curated cinema for film enthusiasts • Community reviews and expert analysis
+                                    {collection.slug === 'best-survival-movies' 
+                                        ? "Extreme survival cinema for adventure enthusiasts • Survivability index and expert analysis"
+                                        : "Curated cinema for discerning viewers • Expert analysis and community insights"
+                                    }
                                 </p>
                                 
                                 <div className="flex justify-center items-center gap-8 sm:gap-12 mb-8">
                                     <div className="w-16 sm:w-24 h-px bg-gradient-to-r from-transparent to-gray-700"></div>
                                     <div className="text-yellow-400/60 text-xs tracking-[0.3em] uppercase font-medium">
-                                        Filmiway Cinema Collection
+                                        Filmiway {collection.title} Collection
                                     </div>
                                     <div className="w-16 sm:w-24 h-px bg-gradient-to-l from-transparent to-gray-700"></div>
                                 </div>
                                 
-                                {/* TMDB ATTRIBUTION */}
+                                {/* TMDB Attribution */}
                                 <motion.div 
                                     className="mb-8 pt-6 border-t border-gray-900/50"
                                     initial={{ opacity: 0 }}
@@ -1037,7 +1012,7 @@ const CollectionPage = ({ collection, movies }) => {
     );
 };
 
-// SSG Functions
+// 🔥 SSG FUNCTIONS
 export async function getStaticPaths() {
     const paths = getAllCollectionSlugs().map((slug) => ({
         params: { slug }
@@ -1058,11 +1033,10 @@ export async function getStaticProps({ params }) {
         };
     }
 
-    // Get movies for this collection in reverse order (10 to 1)
-    const movies = collection.movies
-        ?.map(imdbId => COMPLETE_MOVIE_DATABASE.find(movie => movie.imdbID === imdbId))
-        .filter(Boolean)
-        .reverse() || []; // Reverse to show highest ranked first
+    // Get movies for the collection (reversed for ranking display)
+    const movies = collection.movies.map(imdbId => 
+        COMPLETE_MOVIE_DATABASE.find(movie => movie.imdbID === imdbId)
+    ).filter(Boolean).reverse();
 
     return {
         props: {

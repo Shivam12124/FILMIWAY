@@ -1,4 +1,4 @@
-// pages/movies/like-memento/[id].js - FIXED IMPORT PATHS AND YEAR ISSUE WITH NEW DESCRIPTION
+// pages/movies/like-memento/[id].js - ENHANCED WITH PUNCHY META TITLES & DESCRIPTIONS
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -302,31 +302,43 @@ const MementoMoviePage = ({ movie }) => {
 
     return (
         <div className="min-h-screen bg-black text-white relative overflow-hidden">
-            <Head>
-                <title>{movie.Title} ({getYear()}) Like Memento - Memory-Loss Films & Psychological Thrillers | Filmiway</title>
-                {/* 🔥 NEW WINNING DESCRIPTION */}
-                <meta name="description" content="From Primer to Mulholland Drive — explore mind-bending movies like Inception. Filmiway adds detailed sensitive scene timestamps for safe viewing." />
-                <meta name="keywords" content={`${movie.Title}, ${getYear()}, like memento, memory loss films, psychological thrillers, ${getDirector()}, christopher nolan memento, identity crisis films, memory twisting movies, non linear storytelling, fragmented memory films, amnesia movies, memento similar films, sensitive content timestamps, safe movie viewing`} />
-                <meta name="robots" content="index, follow" />
-                <link rel="canonical" href={`https://filmiway.com/movies/like-memento/${movie.imdbID}`} />
-                <link rel="icon" href="/favicon.ico" />
-                
-                <meta property="og:title" content={`${movie.Title} (${getYear()}) Like Memento - Memory-Loss Analysis & Reviews`} />
-                {/* 🔥 NEW WINNING OG DESCRIPTION */}
-                <meta property="og:description" content="From Primer to Mulholland Drive — explore mind-bending movies like Inception. Filmiway adds detailed sensitive scene timestamps for safe viewing." />
-                <meta property="og:type" content="video.movie" />
-                <meta property="og:url" content={`https://filmiway.com/movies/like-memento/${movie.imdbID}`} />
-                <meta property="og:site_name" content="Filmiway" />
-                
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content={`${movie.Title} (${getYear()}) Like Memento - Memory-Loss Films`} />
-                {/* 🔥 NEW WINNING TWITTER DESCRIPTION */}
-                <meta name="twitter:description" content="From Primer to Mulholland Drive — explore mind-bending movies like Inception. Filmiway adds detailed sensitive scene timestamps for safe viewing." />
-                
-                {/* Memento-focused JSON-LD Schema */}
-                <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }} />
-                <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-            </Head>
+           <Head>
+    {/* 🔥 Meta Title */}
+    <title>Best Movies Like Memento – 10 Mind-Bending Thrillers You Must Watch</title>
+
+    {/* 🔥 Meta Description */}
+    <meta
+        name="description"
+        content="Stop scrolling! This is the most advanced handpicked list on the internet of 10 mind-bending thrillers like Memento. Carefully analyzed for shocking twists, expert storytelling, and unforgettable endings—perfect for true psychological thriller fans!"
+    />
+
+    {/* 🔥 Keywords */}
+    <meta
+        name="keywords"
+        content={`${movie.Title}, ${getYear()}, like memento, psychological thrillers, memory twisting films, non linear storytelling, expert curated, handpicked list, most advanced list on internet, ${getDirector()}, amnesia movies, identity crisis films`}
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={`https://filmiway.com/movies/like-memento/${movie.imdbID}`} />
+    <link rel="icon" href="/favicon.ico" />
+
+    {/* 🔥 Open Graph */}
+    <meta property="og:title" content="The Most Advanced List on the Internet – 10 Mind-Bending Movies Like Memento 🧠" />
+    <meta property="og:description" content="Warning: This handpicked list of 10 psychological thrillers has been carefully analyzed for shocking twists and expert storytelling. Dare to watch them all!" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://filmiway.com/collection/movies-like-memento" />
+    <meta property="og:site_name" content="Filmiway" />
+    <meta property="og:image" content="https://filmiway.com/path-to-poster-collage.jpg" />
+
+    {/* 🔥 Twitter Cards */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="🧠 The Most Advanced Handpicked List – 10 Movies Like Memento" />
+    <meta name="twitter:description" content="Stop scrolling! 10 mind-bending psychological thrillers like Memento, handpicked and deeply analyzed for shocking twists and expert storytelling." />
+    <meta name="twitter:image" content="https://filmiway.com/path-to-poster-collage.jpg" />
+
+    {/* JSON-LD Schema */}
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }} />
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+</Head>
 
             <SubtleFilmGrain />
             

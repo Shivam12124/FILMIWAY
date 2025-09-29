@@ -1,4 +1,4 @@
-// components/MovieDetailsSection.js - FIXED SYNTAX ERROR
+// components/MovieDetailsSection.js - UPDATED WITH MUTED GREEN + UNIQUE FILM DATA
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Users, Film, BookOpen, Star, Brain, BarChart3, Shield } from 'lucide-react';
@@ -13,8 +13,129 @@ import MementoSEOFAQSection from './MementoSEOFAQSection';
 import ShutterIslandSEOFAQSection from './ShutterIslandSEOFAQSection';
 
 const MovieDetailsSection = React.memo(({ movie, fromMementoCollection, fromShutterIslandCollection }) => {
+  // 🔥 FIXED: Add safety check first
+  if (!movie) {
+    console.log('❌ No movie data provided');
+    return null;
+  }
+
   const movieInfo = COMPLETE_MOVIE_DATA[movie?.tmdbId];
-  if (!movie || !movieInfo) return null;
+  
+  // 🔥 MOVIE-SPECIFIC UNIQUE DATA - DIFFERENT FOR EACH FILM
+  const getMovieSpecificData = (title) => {
+    const t = title.toLowerCase();
+    
+    // 🔥 SHUTTER ISLAND - Psychological Horror Focus
+    if (t.includes('shutter island')) {
+      return {
+        mindBendingIndex: 79,
+        complexityLevel: 'MEDIUM',
+        dominantColor: '#dc2626',
+        rating: 8.2,
+        director: 'Martin Scorsese',
+        scenes: [
+          { time: 15, intensity: 40, label: 'Arrival at Ashecliffe', color: '#7c2d12' },
+          { time: 35, intensity: 65, label: 'Patient Interview', color: '#dc2626' },
+          { time: 55, intensity: 80, label: 'Ward C Discovery', color: '#ef4444' },
+          { time: 85, intensity: 95, label: 'Lighthouse Revelation', color: '#f87171' },
+          { time: 120, intensity: 100, label: 'Reality Breakdown', color: '#fca5a5' }
+        ],
+        dna: { "Psychological": 70, "Mystery": 25, "Drama": 5 },
+        cast: ['Leonardo DiCaprio', 'Mark Ruffalo', 'Ben Kingsley'],
+        boxOffice: '$294.8M',
+        budget: '$80M'
+      };
+    }
+    
+    // 🔥 THE USUAL SUSPECTS - Crime Thriller Focus  
+    if (t.includes('usual suspects')) {
+      return {
+        mindBendingIndex: 88,
+        complexityLevel: 'EXTREME',
+        dominantColor: '#ea580c',
+        rating: 8.5,
+        director: 'Bryan Singer',
+        scenes: [
+          { time: 10, intensity: 35, label: 'Police Lineup', color: '#7c2d12' },
+          { time: 30, intensity: 50, label: 'Heist Planning', color: '#ea580c' },
+          { time: 60, intensity: 75, label: 'Keyser Söze Legend', color: '#f97316' },
+          { time: 85, intensity: 90, label: 'Ship Explosion', color: '#fb923c' },
+          { time: 100, intensity: 100, label: 'Verbal\'s Revelation', color: '#fed7aa' }
+        ],
+        dna: { "Crime": 60, "Mystery": 30, "Thriller": 10 },
+        cast: ['Kevin Spacey', 'Gabriel Byrne', 'Benicio del Toro'],
+        boxOffice: '$23.3M',
+        budget: '$6M'
+      };
+    }
+    
+    // 🔥 MEMENTO - Memory Focus
+    if (t.includes('memento')) {
+      return {
+        mindBendingIndex: 95,
+        complexityLevel: 'EXTREME',
+        dominantColor: '#7c3aed',
+        rating: 8.4,
+        director: 'Christopher Nolan',
+        scenes: [
+          { time: 5, intensity: 45, label: 'Polaroid Fade', color: '#581c87' },
+          { time: 25, intensity: 60, label: 'Natalie Encounter', color: '#7c3aed' },
+          { time: 50, intensity: 80, label: 'Teddy\'s Truth', color: '#8b5cf6' },
+          { time: 75, intensity: 90, label: 'John G. Hunt', color: '#a78bfa' },
+          { time: 110, intensity: 100, label: 'Memory Manipulation', color: '#c4b5fd' }
+        ],
+        dna: { "Memory": 80, "Thriller": 15, "Drama": 5 },
+        cast: ['Guy Pearce', 'Carrie-Anne Moss', 'Joe Pantoliano'],
+        boxOffice: '$40.0M',
+        budget: '$9M'
+      };
+    }
+    
+    // 🔥 INCEPTION - Dream Focus
+    if (t.includes('inception')) {
+      return {
+        mindBendingIndex: 93,
+        complexityLevel: 'EXTREME',
+        dominantColor: '#0ea5e9',
+        rating: 8.8,
+        director: 'Christopher Nolan',
+        scenes: [
+          { time: 20, intensity: 50, label: 'Dream Sharing', color: '#0c4a6e' },
+          { time: 45, intensity: 70, label: 'Hotel Fight', color: '#0ea5e9' },
+          { time: 80, intensity: 85, label: 'Snow Fortress', color: '#38bdf8' },
+          { time: 120, intensity: 95, label: 'Limbo Depths', color: '#7dd3fc' },
+          { time: 145, intensity: 100, label: 'Spinning Top', color: '#bae6fd' }
+        ],
+        dna: { "Dreams": 65, "Action": 25, "Sci-Fi": 10 },
+        cast: ['Leonardo DiCaprio', 'Marion Cotillard', 'Tom Hardy'],
+        boxOffice: '$836.8M',
+        budget: '$160M'
+      };
+    }
+    
+    // 🔥 DEFAULT FALLBACK (for other films)
+    return {
+      mindBendingIndex: 85,
+      complexityLevel: 'HIGH',
+      dominantColor: '#ca8a04',
+      rating: movie.imdbRating || 7.5,
+      director: movie.Director || 'Acclaimed Director',
+      scenes: [
+        { time: 20, intensity: 60, label: 'Opening', color: '#92400e' },
+        { time: 50, intensity: 75, label: 'Conflict', color: '#ca8a04' },
+        { time: 80, intensity: 85, label: 'Climax', color: '#eab308' },
+        { time: 100, intensity: 90, label: 'Resolution', color: '#facc15' },
+        { time: 120, intensity: 95, label: 'Revelation', color: '#fde047' }
+      ],
+      dna: { "Mystery": 60, "Thriller": 30, "Drama": 10 },
+      cast: ['Lead Actor', 'Supporting Cast'],
+      boxOffice: 'N/A',
+      budget: 'N/A'
+    };
+  };
+
+  // 🔥 GET MOVIE-SPECIFIC DATA
+  const safeMovieInfo = movieInfo || getMovieSpecificData(movie.Title);
 
   // ACCURATE RUNTIME DATA FOR EACH MOVIE
   const getAccurateRuntime = (title) => {
@@ -35,7 +156,7 @@ const MovieDetailsSection = React.memo(({ movie, fromMementoCollection, fromShut
     };
     
     const titleKey = title.toLowerCase().replace(/[^\w\s]/g, '').trim();
-    return runtimeData[titleKey] || movieInfo.runtime || movie.Runtime || '120 min';
+    return runtimeData[titleKey] || safeMovieInfo.runtime || movie.Runtime || '120 min';
   };
 
   // ACCURATE AGE RATINGS (MPAA SYSTEM)
@@ -57,25 +178,36 @@ const MovieDetailsSection = React.memo(({ movie, fromMementoCollection, fromShut
     };
     
     const titleKey = title.toLowerCase().replace(/[^\w\s]/g, '').trim();
-    return ageRatings[titleKey] || movieInfo.ageRating || movie.Rated || 'R';
+    return ageRatings[titleKey] || safeMovieInfo.ageRating || movie.Rated || 'R';
   };
 
   const title = movie.Title || 'Unknown Title';
-  const director = movieInfo.director || movie.director || 'Unknown Director';
-  const genre = movieInfo.genre || movie.Genre || 'Drama';
+  const director = safeMovieInfo.director || movie.director || 'Unknown Director';
+  const genre = safeMovieInfo.genre || movie.Genre || 'Drama';
   const year = movie.Year || movie.year || '20XX';
   const runtime = getAccurateRuntime(title);
   const ageRating = getAgeRating(title);
   const quote = STRATEGIC_QUOTES[movie.tmdbId] || '';
-  const mindBendingIndex = movieInfo.mindBendingIndex ?? 85;
-  const complexityLevel = movieInfo.complexityLevel || 'HIGH';
-  const cast = movieInfo.cast?.join(', ') || '';
-  const boxOffice = movieInfo.boxOffice || 'N/A';
-  const budget = movieInfo.budget || 'N/A';
-  const rating = movieInfo.rating || '7.5';
+  const mindBendingIndex = safeMovieInfo.mindBendingIndex ?? 85;
+  const complexityLevel = safeMovieInfo.complexityLevel || 'HIGH';
+  const cast = safeMovieInfo.cast?.join(', ') || '';
+  const boxOffice = safeMovieInfo.boxOffice || 'N/A';
+  const budget = safeMovieInfo.budget || 'N/A';
+  const rating = safeMovieInfo.rating || '7.5';
 
-  // YOUR EXACT COMPLEXITY COLOR FUNCTION FROM THE FILE
+  // 🔥 COMPLEXITY COLOR FUNCTION - 💚 GREEN FOR SHUTTER ISLAND ONLY!
   const getComplexityColor = (level) => {
+    // 💚 Use green colors ONLY for Shutter Island collection
+    if (fromShutterIslandCollection) {
+      switch(level) {
+        case 'EXTREME': return '#16a34a'; // Green instead of red
+        case 'HIGH': return '#22c55e';    // Green instead of orange
+        case 'MEDIUM': return '#4ade80';  // Light green
+        default: return '#6b7280';
+      }
+    }
+    
+    // ✅ Original colors for other collections
     switch(level) {
       case 'EXTREME': return '#dc2626';
       case 'HIGH': return '#ea580c';
@@ -293,7 +425,7 @@ const MovieDetailsSection = React.memo(({ movie, fromMementoCollection, fromShut
       {/* WHERE TO WATCH FIRST */}
       <EnhancedWhereToWatchSection movie={movie} />
 
-      {/* 🔥 SMART COMPLEXITY SCORE SECTION - COLLECTION-AWARE */}
+      {/* 🔥 SMART COMPLEXITY SCORE SECTION - 💚 GREEN BORDERS FOR SHUTTER ISLAND! */}
       <motion.div
         className="mb-8 sm:mb-12 bg-gradient-to-br from-gray-800/40 to-gray-900/60 rounded-xl border border-gray-700/50 p-4 sm:p-8 shadow-2xl backdrop-blur-sm relative overflow-hidden"
         initial={{ opacity: 0, scale: 0.95 }}
@@ -301,17 +433,17 @@ const MovieDetailsSection = React.memo(({ movie, fromMementoCollection, fromShut
         transition={{ duration: 0.8 }}
         whileHover={{ scale: 1.01 }}
       >
-        {/* Corner decorations */}
-        <div className="absolute top-2 left-2 sm:top-4 sm:left-4 w-3 h-3 sm:w-5 sm:h-5 border-t-2 border-l-2 border-yellow-400/40"></div>
-        <div className="absolute top-2 right-2 sm:top-4 sm:right-4 w-3 h-3 sm:w-5 sm:h-5 border-t-2 border-r-2 border-yellow-400/40"></div>
-        <div className="absolute bottom-2 left-2 sm:bottom-4 sm:left-4 w-3 h-3 sm:w-5 sm:h-5 border-b-2 border-l-2 border-yellow-400/40"></div>
-        <div className="absolute bottom-2 right-2 sm:bottom-4 sm:right-4 w-3 h-3 sm:w-5 sm:h-5 border-b-2 border-r-2 border-yellow-400/40"></div>
+        {/* Corner decorations - 💚 GREEN FOR SHUTTER ISLAND */}
+        <div className={`absolute top-2 left-2 sm:top-4 sm:left-4 w-3 h-3 sm:w-5 sm:h-5 border-t-2 border-l-2 ${fromShutterIslandCollection ? 'border-green-400/40' : 'border-yellow-400/40'}`}></div>
+        <div className={`absolute top-2 right-2 sm:top-4 sm:right-4 w-3 h-3 sm:w-5 sm:h-5 border-t-2 border-r-2 ${fromShutterIslandCollection ? 'border-green-400/40' : 'border-yellow-400/40'}`}></div>
+        <div className={`absolute bottom-2 left-2 sm:bottom-4 sm:left-4 w-3 h-3 sm:w-5 sm:h-5 border-b-2 border-l-2 ${fromShutterIslandCollection ? 'border-green-400/40' : 'border-yellow-400/40'}`}></div>
+        <div className={`absolute bottom-2 right-2 sm:bottom-4 sm:right-4 w-3 h-3 sm:w-5 sm:h-5 border-b-2 border-r-2 ${fromShutterIslandCollection ? 'border-green-400/40' : 'border-yellow-400/40'}`}></div>
 
         {/* Header with title on left, stats on right */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 sm:mb-8 gap-4 sm:gap-6">
-          {/* Smart Title on left */}
+          {/* Smart Title on left - 💚 GREEN ICON FOR SHUTTER ISLAND */}
           <div className="flex items-center gap-4">
-            <Star className="w-6 h-6 text-green-400" />
+            <Star className={`w-6 h-6 ${fromShutterIslandCollection ? 'text-green-400' : 'text-green-400'}`} />
             <h3 className="text-2xl font-light text-gray-200 tracking-wide uppercase">
               {getComplexityScoreTitle()}
             </h3>
@@ -350,7 +482,7 @@ const MovieDetailsSection = React.memo(({ movie, fromMementoCollection, fromShut
               </span>
             </div>
 
-            {/* Progress bar */}
+            {/* Progress bar - 💚 GREEN FOR SHUTTER ISLAND */}
             <div className="relative w-full bg-gray-700/50 rounded-full h-4 overflow-hidden">
               <motion.div 
                 className="h-full rounded-full relative"
@@ -362,12 +494,12 @@ const MovieDetailsSection = React.memo(({ movie, fromMementoCollection, fromShut
                 <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent animate-pulse"></div>
               </motion.div>
               
-              {/* Markers */}
+              {/* Markers - 💚 GREEN FOR SHUTTER ISLAND */}
               <div className="absolute -top-1 sm:-top-2 left-0 w-full flex justify-between">
                 {[25, 50, 75].map(mark => (
                   <div 
                     key={mark}
-                    className="w-0.5 sm:w-1 h-4 sm:h-7 bg-yellow-400/30 rounded-full"
+                    className={`w-0.5 sm:w-1 h-4 sm:h-7 rounded-full ${fromShutterIslandCollection ? 'bg-green-400/30' : 'bg-yellow-400/30'}`}
                     style={{ left: `${mark}%` }}
                   ></div>
                 ))}
@@ -382,13 +514,13 @@ const MovieDetailsSection = React.memo(({ movie, fromMementoCollection, fromShut
         </div>
       </motion.div>
 
-      {/* 🔥 RED SENSITIVE CONTENT SECTION FOR USER ATTENTION */}
+      {/* 🔥 YOUR ORIGINAL COMPONENTS WITH UNIQUE MOVIE DATA */}
       <SensitiveContentTimelineSection movie={movie} />
-      <EnhancedIntensityGraph scenes={movieInfo.scenes} dominantColor={movieInfo.dominantColor} />
-      <StrategicDNAHelix dna={movieInfo.dna} dominantColor={movieInfo.dominantColor} />
+      <EnhancedIntensityGraph scenes={safeMovieInfo.scenes} dominantColor={safeMovieInfo.dominantColor} />
+      <StrategicDNAHelix dna={safeMovieInfo.dna} dominantColor={safeMovieInfo.dominantColor} />
       <RealCommentsRatingSection movie={movie} />
       
-      {/* 🔥 SMART FAQ SECTION - SHOWS CORRECT FAQ BASED ON COLLECTION */}
+      {/* 🔥 FIXED FAQ SECTION - NOW PASSES MOVIE PROP CORRECTLY */}
       {fromShutterIslandCollection ? (
         <ShutterIslandSEOFAQSection movie={movie} />
       ) : fromMementoCollection ? (
