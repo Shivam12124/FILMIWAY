@@ -1,9 +1,9 @@
-// components/CinematicMovieCard.js - FIXED PROPERTY NAMES
+// components/CinematicMovieCard.js - FIXED PROPERTY NAMES AND STRATEGIC_TAGLINES ERROR
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Crown, Star } from 'lucide-react';
 import TMDBMoviePoster from './TMDBMoviePoster';
-import { COMPLETE_MOVIE_DATA, STRATEGIC_TAGLINES } from '../utils/movieData';
+import { COMPLETE_MOVIE_DATA, STRATEGIC_QUOTES } from '../utils/movieData';
 
 const CinematicMovieCard = React.memo(({ movie, rank, isActive }) => {
     const [isHovered, setIsHovered] = useState(false);
@@ -73,25 +73,28 @@ const CinematicMovieCard = React.memo(({ movie, rank, isActive }) => {
                 </motion.div>
             </div>
             
-            {/* 🔥 FIXED MOVIE INFO - CORRECT PROPERTY NAMES */}
+            {/* 🔥 FIXED MOVIE INFO - CORRECT PROPERTY NAMES AND FIXED TAGLINE */}
             <div className="text-center space-y-2 sm:space-y-3 lg:space-y-4 z-10 max-w-sm px-2 sm:px-4">
                 <motion.h2 
                     className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-light tracking-wide text-gray-100 leading-tight" 
                     style={{ fontFamily: "'Playfair Display', serif" }}
                     whileHover={{ scale: 1.02 }}
                 >
-                    {movie.Title}
+                    {movie.Title?.replace(/\*/g, '') || movie.title || 'Unknown Movie'}
                 </motion.h2>
-                {/* 🔥 THIS IS THE FIXED RUNTIME DISPLAY - USING CORRECT PROPERTY NAMES */}
+                
+                {/* 🔥 FIXED RUNTIME DISPLAY - USING CORRECT PROPERTY NAMES */}
                 <div className="text-gray-400 text-xs sm:text-sm font-light">
-                    {movie.Year} • {movie.Genre?.split(',')[0].trim() || 'Drama'} • {movie.Runtime || '120 min'}
+                    {movie.year || movie.Year || '2024'} • {movie.genre?.split(',')[0].trim() || movie.Genre?.split(',')[0].trim() || 'Drama'} • {movie.runtime || movie.Runtime || '120 min'}
                 </div>
+                
+                {/* 🔥 FIXED TAGLINE - NOW USES STRATEGIC_QUOTES INSTEAD OF STRATEGIC_TAGLINES */}
                 <motion.p 
                     className="text-gray-300/80 text-xs sm:text-sm leading-relaxed font-light tracking-wide opacity-0 group-hover:opacity-100 transition-all duration-500"
                     initial={{ height: 0 }}
                     animate={{ height: isHovered ? 'auto' : 0 }}
                 >
-                    {STRATEGIC_TAGLINES[movie.tmdbId] || 'A mind-bending cinematic experience'}
+                    {STRATEGIC_QUOTES[movie.tmdbId] || movieInfo.synopsis?.substring(0, 80) + '...' || 'A mind-bending cinematic experience'}
                 </motion.p>
             </div>
         </motion.div>

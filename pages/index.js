@@ -1,4 +1,4 @@
-// pages/index.js - 🔥 SEO-OPTIMIZED WITH INTERNAL LINKS
+// pages/index.js - 🔥 SEO-OPTIMIZED WITH PROFESSIONAL HERO BANNER
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Head from 'next/head';
@@ -7,7 +7,8 @@ import { useRouter } from 'next/router';
 import { 
     Play, Star, TrendingUp, Award, Clock, Calendar, 
     Search, Menu, X, ArrowRight, Film, Zap, Target, Eye,
-    ChevronLeft, ChevronRight, Construction, Sparkles
+    ChevronLeft, ChevronRight, Construction, Sparkles, 
+    Compass, Globe, Layers
 } from 'lucide-react';
 
 const TMDB_API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
@@ -170,10 +171,10 @@ const FilmiwayHomepage = () => {
         </motion.nav>
     );
 
-    // HERO SECTION - 🔥 ADDED SMALL INTERNAL LINKS SECTION
+    // 🔥 PROFESSIONAL HERO SECTION - FIXED AND MUCH BETTER
     const HeroSection = () => (
         <section className="relative min-h-screen flex items-center justify-center bg-black overflow-hidden" role="banner">
-            {/* Subtle Background Pattern */}
+            {/* Cinematic Background Pattern */}
             <div className="absolute inset-0 opacity-5" aria-hidden="true">
                 <div className="absolute inset-0" style={{
                     backgroundImage: `radial-gradient(circle at 2px 2px, white 1px, transparent 0)`,
@@ -181,31 +182,33 @@ const FilmiwayHomepage = () => {
                 }} />
             </div>
 
-            {/* Gradient Orbs */}
-            <div className="absolute top-20 left-10 w-96 h-96 bg-yellow-400/10 rounded-full blur-3xl" aria-hidden="true"></div>
-            <div className="absolute bottom-20 right-10 w-80 h-80 bg-yellow-400/5 rounded-full blur-3xl" aria-hidden="true"></div>
+            {/* Dynamic Gradient Orbs */}
+            <div className="absolute top-20 left-10 w-96 h-96 bg-yellow-400/10 rounded-full blur-3xl animate-pulse" aria-hidden="true"></div>
+            <div className="absolute bottom-20 right-10 w-80 h-80 bg-yellow-400/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} aria-hidden="true"></div>
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-gradient-to-r from-yellow-400/3 to-amber-400/3 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} aria-hidden="true"></div>
 
             <div className="relative z-10 container mx-auto px-4 sm:px-6 text-center pt-32">
                 <motion.div
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1.2 }}
-                    className="max-w-5xl mx-auto"
+                    className="max-w-6xl mx-auto"
                 >
-                    {/* Featured Tagline */}
+                    {/* Premium Badge */}
                     <motion.div
                         className="mb-8"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2, duration: 1 }}
                     >
-                        <div className="inline-flex items-center gap-2 bg-yellow-400/10 border border-yellow-400/20 rounded-full px-6 py-2 text-yellow-400 text-sm font-medium">
-                            <Film className="w-4 h-4" aria-hidden="true" />
-                            <span>"Where every film finds its way — it's Filmiway."</span>
+                        <div className="inline-flex items-center gap-3 bg-gradient-to-r from-yellow-400/10 via-amber-400/10 to-yellow-400/10 border border-yellow-400/20 rounded-full px-8 py-3 text-yellow-400 text-sm font-medium">
+                            <Globe className="w-5 h-5" aria-hidden="true" />
+                            <span>Your Complete Movie Discovery Platform</span>
+                            <Sparkles className="w-5 h-5" aria-hidden="true" />
                         </div>
                     </motion.div>
 
-                    {/* 🔥 MAIN H1 TAG WITH SEO KEYWORDS */}
+                    {/* 🔥 PROFESSIONAL MAIN H1 TAG - NO MORE MISLEADING "MOVIES LIKE INCEPTION" */}
                     <motion.h1 
                         className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extralight text-white mb-8 leading-tight"
                         style={{ fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif" }}
@@ -213,27 +216,27 @@ const FilmiwayHomepage = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.3, duration: 1 }}
                     >
-                        Discover Mind-Bending
-                        <span className="block text-yellow-400 font-light">
-                            Movies Like
+                        Discover Your Next
+                        <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-amber-300 to-yellow-400 font-light">
+                            Favorite Movie
                         </span>
-                        <span className="block text-white/90">
-                            Inception
+                        <span className="block text-white/90 text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
+                            Collection
                         </span>
                     </motion.h1>
 
-                    {/* Subtitle */}
+                    {/* Professional Subtitle */}
                     <motion.p 
-                        className="text-xl sm:text-2xl md:text-3xl text-gray-300 mb-12 font-light leading-relaxed max-w-4xl mx-auto"
+                        className="text-xl sm:text-2xl md:text-3xl text-gray-300 mb-12 font-light leading-relaxed max-w-5xl mx-auto"
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.6, duration: 1 }}
                     >
-                        From psychological thrillers to sci-fi masterpieces, explore curated collections of mind-bending cinema.
-                        <span className="text-yellow-400/90"> Your complete movie discovery platform.</span>
+                        From mind-bending psychological thrillers to sci-fi masterpieces, explore expertly curated collections of cinema.
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-amber-300 font-normal"> Where every film finds its way.</span>
                     </motion.p>
 
-                    {/* CTA Buttons */}
+                    {/* Enhanced CTA Buttons */}
                     <motion.div 
                         className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16"
                         initial={{ opacity: 0, y: 30 }}
@@ -242,64 +245,86 @@ const FilmiwayHomepage = () => {
                     >
                         <Link href="/collection/movies-like-inception">
                             <motion.button
-                                className="bg-yellow-400 text-black px-8 py-4 rounded-xl font-semibold text-lg flex items-center gap-3 hover:bg-yellow-300 transition-all shadow-lg shadow-yellow-400/25"
-                                whileHover={{ scale: 1.05, y: -2 }}
+                                className="bg-gradient-to-r from-yellow-400 to-amber-400 text-black px-10 py-5 rounded-2xl font-semibold text-lg flex items-center gap-4 hover:from-yellow-300 hover:to-amber-300 transition-all shadow-2xl shadow-yellow-400/25"
+                                whileHover={{ scale: 1.05, y: -3 }}
                                 whileTap={{ scale: 0.95 }}
-                                aria-label="Explore movie collections"
+                                aria-label="Explore curated movie collections"
                             >
+                                <Compass className="w-6 h-6" aria-hidden="true" />
                                 Explore Collections
-                                <ArrowRight className="w-5 h-5" aria-hidden="true" />
+                                <ArrowRight className="w-6 h-6" aria-hidden="true" />
                             </motion.button>
                         </Link>
                         
                         <motion.button
                             onClick={() => scrollToSection(trendingRef)}
-                            className="border-2 border-gray-600 text-white px-8 py-4 rounded-xl font-semibold text-lg flex items-center gap-3 hover:border-yellow-400 hover:text-yellow-400 transition-all cursor-pointer"
-                            whileHover={{ scale: 1.05, y: -2 }}
+                            className="border-2 border-gray-600 text-white px-10 py-5 rounded-2xl font-semibold text-lg flex items-center gap-4 hover:border-yellow-400 hover:text-yellow-400 hover:bg-yellow-400/5 transition-all cursor-pointer"
+                            whileHover={{ scale: 1.05, y: -3 }}
                             whileTap={{ scale: 0.95 }}
                             aria-label="Navigate to trending movies section"
                         >
-                            <TrendingUp className="w-5 h-5" aria-hidden="true" />
+                            <TrendingUp className="w-6 h-6" aria-hidden="true" />
                             What's Trending
                         </motion.button>
                     </motion.div>
 
-                    {/* Stats */}
+                    {/* Enhanced Stats */}
                     <motion.div 
-                        className="grid grid-cols-3 gap-8 max-w-2xl mx-auto mb-8"
+                        className="grid grid-cols-3 gap-8 max-w-3xl mx-auto mb-12"
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 1.2, duration: 1 }}
                         role="group"
                         aria-label="Platform statistics"
                     >
-                        <div className="text-center">
-                            <div className="text-3xl sm:text-4xl font-bold text-yellow-400 mb-2" aria-label="Over 1000 movies available">1000+</div>
-                            <div className="text-gray-400 text-sm uppercase tracking-wide">Movies</div>
+                        <div className="text-center group">
+                            <div className="text-4xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-amber-400 mb-3 group-hover:scale-110 transition-transform duration-300" aria-label="Over 10,000 movies available">10K+</div>
+                            <div className="text-gray-400 text-sm uppercase tracking-wide font-medium">Curated Movies</div>
                         </div>
-                        <div className="text-center">
-                            <div className="text-3xl sm:text-4xl font-bold text-yellow-400 mb-2" aria-label="Over 50 genres available">50+</div>
-                            <div className="text-gray-400 text-sm uppercase tracking-wide">Genres</div>
+                        <div className="text-center group">
+                            <div className="text-4xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-amber-400 mb-3 group-hover:scale-110 transition-transform duration-300" aria-label="Over 100 genres available">100+</div>
+                            <div className="text-gray-400 text-sm uppercase tracking-wide font-medium">Premium Collections</div>
                         </div>
-                        <div className="text-center">
-                            <div className="text-3xl sm:text-4xl font-bold text-yellow-400 mb-2" aria-label="24/7 movie discovery">24/7</div>
-                            <div className="text-gray-400 text-sm uppercase tracking-wide">Discovery</div>
+                        <div className="text-center group">
+                            <div className="text-4xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-amber-400 mb-3 group-hover:scale-110 transition-transform duration-300" aria-label="24/7 movie discovery">24/7</div>
+                            <div className="text-gray-400 text-sm uppercase tracking-wide font-medium">Film Discovery</div>
                         </div>
                     </motion.div>
 
-                    {/* 🔥 SMALL INTERNAL LINKS SECTION TO FIX SEO */}
+                    {/* 🔥 PROFESSIONAL COLLECTION LINKS - BETTER PRESENTATION */}
                     <motion.div 
-                        className="text-center max-w-4xl mx-auto mb-16"
+                        className="bg-gradient-to-r from-gray-900/40 via-gray-800/40 to-gray-900/40 backdrop-blur-sm border border-gray-700/30 rounded-3xl p-8 mb-16 max-w-5xl mx-auto"
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 1.4, duration: 1 }}
                     >
-                        <div className="flex flex-wrap justify-center gap-3 text-sm">
-                            <Link href="/collection/movies-like-inception" className="text-blue-400 hover:text-blue-300 transition-colors">Movies Like Inception</Link>
-                            <span className="text-gray-600">•</span>
-                            <Link href="/collection/movies-like-memento" className="text-yellow-400 hover:text-yellow-300 transition-colors">Movies Like Memento</Link>
-                            <span className="text-gray-600">•</span>
-                            <Link href="/collection/movies-like-shutter-island" className="text-green-400 hover:text-green-300 transition-colors">Movies Like Shutter Island</Link>
+                        <div className="flex items-center justify-center mb-6 gap-3">
+                            <Layers className="w-6 h-6 text-yellow-400" />
+                            <h2 className="text-2xl font-light text-white">Featured Collections</h2>
+                            <Layers className="w-6 h-6 text-yellow-400" />
+                        </div>
+                        
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <Link href="/collection/movies-like-inception" className="group">
+                                <div className="bg-gradient-to-br from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-2xl p-6 hover:from-blue-500/20 hover:to-purple-500/20 hover:border-blue-400/40 transition-all duration-300">
+                                    <div className="text-blue-400 font-semibold text-lg mb-2 group-hover:text-blue-300">Mind-Bending Sci-Fi</div>
+                                    <div className="text-gray-300 text-sm group-hover:text-white">Movies Like Inception</div>
+                                </div>
+                            </Link>
+                            
+                            <Link href="/collection/movies-like-memento" className="group">
+                                <div className="bg-gradient-to-br from-yellow-500/10 to-orange-500/10 border border-yellow-500/20 rounded-2xl p-6 hover:from-yellow-500/20 hover:to-orange-500/20 hover:border-yellow-400/40 transition-all duration-300">
+                                    <div className="text-yellow-400 font-semibold text-lg mb-2 group-hover:text-yellow-300">Memory Thrillers</div>
+                                    <div className="text-gray-300 text-sm group-hover:text-white">Movies Like Memento</div>
+                                </div>
+                            </Link>
+                            
+                            <Link href="/collection/movies-like-shutter-island" className="group">
+                                <div className="bg-gradient-to-br from-green-500/10 to-teal-500/10 border border-green-500/20 rounded-2xl p-6 hover:from-green-500/20 hover:to-teal-500/20 hover:border-green-400/40 transition-all duration-300">
+                                    <div className="text-green-400 font-semibold text-lg mb-2 group-hover:text-green-300">Psychological Horror</div>
+                                    <div className="text-gray-300 text-sm group-hover:text-white">Movies Like Shutter Island</div>
+                                </div>
+                            </Link>
                         </div>
                     </motion.div>
                 </motion.div>
@@ -309,7 +334,7 @@ const FilmiwayHomepage = () => {
                     className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ delay: 1.5, duration: 1 }}
+                    transition={{ delay: 1.8, duration: 1 }}
                     aria-label={isMobile ? "Swipe to explore content" : "Scroll to explore content"}
                 >
                     {!isMobile ? (
@@ -697,13 +722,13 @@ const FilmiwayHomepage = () => {
         <>
             <Head>
                 {/* 🔥 SEO-OPTIMIZED TITLE TAG WITH KEYWORDS */}
-                <title>Filmiway | Mind-Bending Movies Like Inception, Memento & Shutter Island</title>
+                <title>Filmiway | Curated Movie Collections & Discovery Platform</title>
                 
                 {/* 🔥 SEO META DESCRIPTION */}
-                <meta name="description" content="Discover curated collections of mind-bending psychological thrillers, sci-fi masterpieces, and reality-questioning cinema. Find movies like Inception, Memento, and Shutter Island." />
+                <meta name="description" content="Discover expertly curated movie collections featuring mind-bending thrillers, psychological masterpieces, and sci-fi classics. Your complete film discovery platform." />
                 
                 {/* 🔥 SEO KEYWORDS */}
-                <meta name="keywords" content="movies like inception, psychological thrillers, mind bending movies, memento similar films, shutter island recommendations, sci-fi masterpieces, movie collections, film discovery" />
+                <meta name="keywords" content="movie collections, film discovery platform, curated movies, psychological thrillers, mind bending movies, sci-fi masterpieces, movie recommendations, film database" />
                 
                 <meta name="application-name" content="Filmiway" />
                 <meta name="apple-mobile-web-app-title" content="Filmiway" />
@@ -713,14 +738,14 @@ const FilmiwayHomepage = () => {
                 <meta name="copyright" content="Filmiway 2025" />
                 
                 {/* 🔥 OPEN GRAPH TAGS FOR SOCIAL SHARING */}
-                <meta property="og:title" content="Filmiway | Mind-Bending Movies Like Inception, Memento & Shutter Island" />
-                <meta property="og:description" content="Discover curated collections of mind-bending psychological thrillers, sci-fi masterpieces, and reality-questioning cinema." />
+                <meta property="og:title" content="Filmiway | Curated Movie Collections & Discovery Platform" />
+                <meta property="og:description" content="Discover expertly curated movie collections featuring mind-bending thrillers, psychological masterpieces, and sci-fi classics." />
                 <meta property="og:image" content="https://filmiway.com/og-image.jpg" />
                 <meta property="og:type" content="website" />
                 
                 {/* 🔥 TWITTER CARDS */}
-                <meta name="twitter:title" content="Filmiway | Mind-Bending Movies Like Inception, Memento & Shutter Island" />
-                <meta name="twitter:description" content="Discover curated collections of mind-bending psychological thrillers, sci-fi masterpieces, and reality-questioning cinema." />
+                <meta name="twitter:title" content="Filmiway | Curated Movie Collections & Discovery Platform" />
+                <meta name="twitter:description" content="Discover expertly curated movie collections featuring mind-bending thrillers, psychological masterpieces, and sci-fi classics." />
                 <meta name="twitter:image" content="https://filmiway.com/twitter-image.jpg" />
                 
                 <meta name="framework" content="Filmiway Platform" />
@@ -741,10 +766,10 @@ const FilmiwayHomepage = () => {
                         "@context": "https://schema.org",
                         "@type": "WebSite",
                         "name": "Filmiway",
-                        "alternateName": "Filmiway - Mind-Bending Movie Discovery Platform",
+                        "alternateName": "Filmiway - Curated Movie Collections & Discovery Platform",
                         "url": "https://filmiway.com",
-                        "description": "Complete movie discovery platform specializing in mind-bending psychological thrillers, sci-fi masterpieces, and curated movie collections like Inception, Memento, and Shutter Island.",
-                        "keywords": ["movies like inception", "psychological thrillers", "mind bending movies", "movie collections", "film discovery"],
+                        "description": "Complete movie discovery platform specializing in expertly curated collections, psychological thrillers, sci-fi masterpieces, and premium film recommendations.",
+                        "keywords": ["movie collections", "film discovery", "curated movies", "psychological thrillers", "movie recommendations"],
                         "publisher": {
                             "@type": "Organization",
                             "name": "Filmiway",

@@ -1,184 +1,141 @@
-// utils/movieData.js - 🔥 COMPLETE FIXED DATABASE WITH SURVIVAL MOVIES - LEGAL POSTERS
-
-export const COMPLETE_MOVIE_DATABASE = [
-    { "tmdbId": 14337, "imdbID": "tt0390384", "Title": "Primer", "Year": "2004", "Genre": "Sci-Fi", "Runtime": "77 min", "Plot": "Four friends accidentally discover a way to travel back in time.", "Poster": "https://image.tmdb.org/t/p/w500/qyIiKVhPXWoApBNcpCLhYe8K9p7.jpg", "imdbRating": "6.9", "Director": "Shane Carruth" },
-    
-    { "tmdbId": 4960, "imdbID": "tt0383028", "Title": "Synecdoche, New York", "Year": "2008", "Genre": "Drama", "Runtime": "124 min", "Plot": "A theatre director struggles with his work and the women in his life.", "Poster": "https://image.tmdb.org/t/p/w500/2nOjh4MEjjTzLo69gTgwjdZW7cz.jpg", "imdbRating": "7.5", "Director": "Charlie Kaufman" },
-    
-    { "tmdbId": 1018, "imdbID": "tt0166924", "Title": "Mulholland Drive", "Year": "2001", "Genre": "Mystery, Drama", "Runtime": "147 min", "Plot": "After a car wreck renders a woman amnesiac, she and a Hollywood-hopeful search for clues.", "Poster": "https://image.tmdb.org/t/p/w500/tVxGt7uffLVhIIcwuldXOMpFBPX.jpg", "imdbRating": "7.9", "Director": "David Lynch" },
-    
-    { "tmdbId": 206487, "imdbID": "tt2397535", "Title": "Predestination", "Year": "2014", "Genre": "Sci-Fi, Thriller", "Runtime": "97 min", "Plot": "A temporal agent's final assignment becomes a mind-bending journey through identity.", "Poster": "https://image.tmdb.org/t/p/w500/r6SKC9UJOgqSGfEV6bS8Eb0xILd.jpg", "imdbRating": "7.4", "Director": "Michael Spierig, Peter Spierig" },
-    
-    { "tmdbId": 220289, "imdbID": "tt2866360", "Title": "Coherence", "Year": "2013", "Genre": "Sci-Fi, Drama", "Runtime": "89 min", "Plot": "A dinner party becomes a labyrinth of parallel realities when a comet passes overhead.", "Poster": "https://image.tmdb.org/t/p/w500/54abeBC8arCzn1R4wY3JrNqRBwQ.jpg", "imdbRating": "7.2", "Director": "James Ward Byrkit" },
-    
-    { "tmdbId": 141, "imdbID": "tt0246578", "Title": "Donnie Darko", "Year": "2001", "Genre": "Sci-Fi, Drama", "Runtime": "113 min", "Plot": "A troubled teenager is guided by a mysterious figure through time travel and destiny.", "Poster": "https://image.tmdb.org/t/p/w500/fhQoQfejY1hUcwyuLgpBrYs6uFt.jpg", "imdbRating": "8.0", "Director": "Richard Kelly" },
-    
-    { "tmdbId": 181886, "imdbID": "tt2316411", "Title": "Enemy", "Year": "2013", "Genre": "Thriller, Mystery", "Runtime": "91 min", "Plot": "A man seeks out his exact look-alike after spotting him in a movie.", "Poster": "https://image.tmdb.org/t/p/w500/jkJMpGZW72qN0vxOJCVa8dSFHbx.jpg", "imdbRating": "6.9", "Director": "Denis Villeneuve" },
-    
-    { "tmdbId": 1381, "imdbID": "tt0414993", "Title": "The Fountain", "Year": "2006", "Genre": "Drama, Romance, Sci-Fi", "Runtime": "96 min", "Plot": "Aronofsky's meditation on love, death, and immortality spans three timelines.", "Poster": "https://image.tmdb.org/t/p/w500/oJcM8gFdLVy7zyPKYLJNjEGNfJO.jpg", "imdbRating": "7.2", "Director": "Darren Aronofsky" },
-    
-    { "tmdbId": 31011, "imdbID": "tt0485947", "Title": "Mr. Nobody", "Year": "2009", "Genre": "Sci-Fi, Drama", "Runtime": "141 min", "Plot": "The last mortal human follows infinite potential lives in this visually stunning epic.", "Poster": "https://image.tmdb.org/t/p/w500/4NWa2P7fz2V0Zf39L2qhyMcjKHN.jpg", "imdbRating": "7.8", "Director": "Jaco Van Dormael" },
-    
-    // 🔥 FIXED: SHUTTER ISLAND WITH CORRECT IMDb ID (tt1130884)
-    { "tmdbId": 11324, "imdbID": "tt1130884", "Title": "Shutter Island", "Year": "2010", "Genre": "Mystery, Thriller", "Runtime": "138 min", "Plot": "A U.S. Marshal investigates the disappearance of a murderer from a hospital for the criminally insane.", "Poster": "https://image.tmdb.org/t/p/w500/4GDy0PHYX3VRXUtwK5ysFbg3kEx.jpg", "imdbRating": "8.2", "Director": "Martin Scorsese" },
-    
-    // 🔥 ADDED: The Usual Suspects for Shutter Island collection position #10
-    { "tmdbId": 629, "imdbID": "tt0114814", "Title": "The Usual Suspects", "Year": "1995", "Genre": "Crime, Thriller", "Runtime": "106 min", "Plot": "A sole survivor tells of the twisty events leading up to a horrific gun battle on a boat.", "Poster": "https://image.tmdb.org/t/p/w500/99PhdkYvHInKN3bXh7xXf7lIkjw.jpg", "imdbRating": "8.5", "Director": "Bryan Singer" },
-
-    // 🏔️ SURVIVAL MOVIES - BULLETPROOF POSTER URLS (100% LEGAL FROM TMDB)
-    {
-        "tmdbId": 127380,
-        "imdbID": "tt1542344",
-        "Title": "127 Hours",
-        "Year": "2010", 
-        "Genre": "Drama, Thriller",
-        "Runtime": "94 min",
-        "Plot": "A mountain climber becomes trapped under a boulder while canyoneering alone near Moab, Utah and resorts to desperate measures in order to survive.",
-        "Poster": "https://m.media-amazon.com/images/M/MV5BNmFjODQ3ODItNWQwNy00MDI4LWEzMGEtYzA4YTRhNzk2ODE0XkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_UX182_CR0,0,182,268_AL_.jpg",
-        "imdbRating": "7.6",
-        "Director": "Danny Boyle",
-        "survivabilityIndex": 98,
-        "environment": "Utah Canyon",
-        "challenge": "Trapped Under Rock"
-    },
-    {
-        "tmdbId": 1003579,
-        "imdbID": "tt16277242",
-        "Title": "Society of the Snow", 
-        "Year": "2023",
-        "Genre": "Drama, History, Thriller",
-        "Runtime": "144 min",
-        "Plot": "The survival story of a Uruguayan rugby team's plane crash in the Andes mountains.",
-        "Poster": "https://m.media-amazon.com/images/M/MV5BOWY1M2YzNzYtOGM4NC00MTQyLWFjNjAtZDZlYjZiZWI3MTFkXkEyXkFqcGdeQXVyMTUzMTg2ODkz._V1_UX182_CR0,0,182,268_AL_.jpg",
-        "imdbRating": "7.8",
-        "Director": "J.A. Bayona",
-        "survivabilityIndex": 96,
-        "environment": "Andes Mountains",
-        "challenge": "Plane Crash Survival"
-    },
-    {
-        "tmdbId": 8358,
-        "imdbID": "tt0162222",
-        "Title": "Cast Away",
-        "Year": "2000", 
-        "Genre": "Adventure, Drama, Romance",
-        "Runtime": "143 min",
-        "Plot": "A FedEx executive undergoes a physical and emotional transformation after crash landing on a deserted island.",
-        "Poster": "https://m.media-amazon.com/images/M/MV5BN2Y5ZTU4YjctMDRmMC00MTg4LWE1M2MtMjk4MzVmOTE4YjkzXkEyXkFqcGdeQXVyNTc1NTQxODI@._V1_UX182_CR0,0,182,268_AL_.jpg",
-        "imdbRating": "7.8",
-        "Director": "Robert Zemeckis",
-        "survivabilityIndex": 94,
-        "environment": "Deserted Island",
-        "challenge": "Plane Crash Isolation"
-    },
-    {
-        "tmdbId": 281957,
-        "imdbID": "tt1663202",
-        "Title": "The Revenant",
-        "Year": "2015",
-        "Genre": "Action, Adventure, Drama",
-        "Runtime": "156 min", 
-        "Plot": "A frontiersman on a fur trading expedition in the 1820s fights for survival after being mauled by a bear.",
-        "Poster": "https://m.media-amazon.com/images/M/MV5BMDE5OWMzM2QtOTU2ZS00NzAyLWI2MDEtOTRlYjIxZGM0OWRjXkEyXkFqcGdeQXVyODE5NzE3OTE@._V1_UX182_CR0,0,182,268_AL_.jpg",
-        "imdbRating": "8.0",
-        "Director": "Alejandro Iñárritu",
-        "survivabilityIndex": 92,
-        "environment": "American Wilderness",
-        "challenge": "Bear Attack Recovery"
-    },
-    {
-        "tmdbId": 286217,
-        "imdbID": "tt3659388", 
-        "Title": "The Martian",
-        "Year": "2015",
-        "Genre": "Adventure, Drama, Sci-Fi",
-        "Runtime": "144 min",
-        "Plot": "An astronaut becomes stranded on Mars after his team assume him dead, and must rely on his ingenuity to find a way to signal to Earth that he is alive.",
-        "Poster": "https://m.media-amazon.com/images/M/MV5BMTc2MTQ3MDA1Nl5BMl5BanBnXkFtZTgwODA3OTI4NjE@._V1_UX182_CR0,0,182,268_AL_.jpg",
-        "imdbRating": "8.0",
-        "Director": "Ridley Scott",
-        "survivabilityIndex": 90,
-        "environment": "Mars",
-        "challenge": "Space Isolation"
-    },
-    {
-        "tmdbId": 80278,
-        "imdbID": "tt1649419",
-        "Title": "The Impossible", 
-        "Year": "2012",
-        "Genre": "Drama, History, Thriller",
-        "Runtime": "114 min",
-        "Plot": "The story of a tourist family in Thailand caught in the destruction and chaotic aftermath of the 2004 Indian Ocean tsunami.",
-        "Poster": "https://m.media-amazon.com/images/M/MV5BMjAzOTMyMzUxNl5BMl5BanBnXkFtZTcwODI5Mjg3OA@@._V1_UX182_CR0,0,182,268_AL_.jpg",
-        "imdbRating": "7.5",
-        "Director": "Juan Antonio Bayona",
-        "survivabilityIndex": 88,
-        "environment": "Tsunami-Hit Thailand",
-        "challenge": "Natural Disaster"
-    },
-    {
-        "tmdbId": 394117,
-        "imdbID": "tt3758172",
-        "Title": "Jungle",
-        "Year": "2017",
-        "Genre": "Action, Adventure, Drama", 
-        "Runtime": "115 min",
-        "Plot": "A group of friends join a guide for a trek into the Bolivian jungle, searching for an Indian village. The men soon realize that the jungle is a difficult place to be.",
-        "Poster": "https://m.media-amazon.com/images/M/MV5BMTc2Nzg4MzE2MV5BMl5BanBnXkFtZTgwMzE1Mzg2MTI@._V1_UX182_CR0,0,182,268_AL_.jpg",
-        "imdbRating": "6.7",
-        "Director": "Greg McLean",
-        "survivabilityIndex": 86,
-        "environment": "Bolivian Jungle",
-        "challenge": "Lost in Rainforest"
-    },
-    {
-        "tmdbId": 1585,
-        "imdbID": "tt0472043",
-        "Title": "Apocalypto",
-        "Year": "2006",
-        "Genre": "Action, Adventure, Drama",
-        "Runtime": "139 min",
-        "Plot": "As the Mayan kingdom faces its decline, a young man is taken on a perilous journey to a world ruled by fear and oppression.",
-        "Poster": "https://m.media-amazon.com/images/M/MV5BNTM1NjYyNTY5OV5BMl5BanBnXkFtZTcwMjgwNTMzMQ@@._V1_UX182_CR0,0,182,268_AL_.jpg",
-        "imdbRating": "7.8",
-        "Director": "Mel Gibson",
-        "survivabilityIndex": 84,
-        "environment": "Ancient Maya Territory",
-        "challenge": "Tribal Pursuit"
-    },
-    {
-        "tmdbId": 776503,
-        "imdbID": "tt12262116",
-        "Title": "13 Lives",
-        "Year": "2022", 
-        "Genre": "Drama, Thriller",
-        "Runtime": "147 min",
-        "Plot": "A rescue mission to save a boys' soccer team trapped in flooded caves in Thailand.",
-        "Poster": "https://m.media-amazon.com/images/M/MV5BYjY0MGFkZGQtYmM4Zi00ZDYzLWJjYTMtN2Q5Y2I4NmY2ZDcxXkEyXkFqcGdeQXVyMTM1MTE1NDMx._V1_UX182_CR0,0,182,268_AL_.jpg",
-        "imdbRating": "7.8",
-        "Director": "Ron Howard",
-        "survivabilityIndex": 82,
-        "environment": "Flooded Thai Caves",
-        "challenge": "Underwater Cave System"
-    },
-    {
-        "tmdbId": 238713,
-        "imdbID": "tt1809398",
-        "Title": "Unbroken",
-        "Year": "2014",
-        "Genre": "Drama, Sport, War",
-        "Runtime": "137 min", 
-        "Plot": "After a near-fatal plane crash in WWII, Olympian Louis Zamperini spends a harrowing 47 days in a raft with two fellow crewmen before he's caught by the Japanese navy.",
-        "Poster": "https://m.media-amazon.com/images/M/MV5BMTkzMjc4NDI4Ml5BMl5BanBnXkFtZTgwNTEwNTI5MjE@._V1_UX182_CR0,0,182,268_AL_.jpg",
-        "imdbRating": "7.2",
-        "Director": "Angelina Jolie",
-        "survivabilityIndex": 80,
-        "environment": "Pacific Ocean",
-        "challenge": "Ocean Survival"
+// ✅ TMDB API CONFIGURATION
+export const TMDB_CONFIG = {
+    API_KEY: 'a07e22bc18f5cb106bfe4cc1f83ad8ed',
+    BASE_URL: 'https://api.themoviedb.org/3',
+    IMAGE_BASE_URL: 'https://image.tmdb.org/t/p',
+    POSTER_SIZES: {
+        small: 'w300',
+        medium: 'w500',
+        large: 'w780',
+        original: 'original'
     }
+};
+
+// ✅ COMPLETE MOVIE DATABASE (REVERSED ORDER: 11 to 1 for collection page) - ADDED THE USUAL SUSPECTS
+export const COMPLETE_MOVIE_DATABASE = [
+    { "tmdbId": 629, "imdbID": "tt0114814", "Title": "*The Usual Suspects*", "year": 1995, "genre": "Crime", "runtime": 106, "rank": 11 },
+    { "tmdbId": 11324, "imdbID": "tt0825232", "Title": "Shutter Island", "year": 2010, "genre": "Thriller", "runtime": 138, "rank": 10 },
+    { "tmdbId": 31011, "imdbID": "tt1130884", "Title": "Mr. Nobody", "year": 2009, "genre": "Sci-Fi", "runtime": 141, "rank": 9 },
+    { "tmdbId": 1381, "imdbID": "tt0414993", "Title": "The Fountain", "year": 2006, "genre": "Drama", "runtime": 96, "rank": 8 },
+    { "tmdbId": 181886, "imdbID": "tt2316411", "Title": "Enemy", "year": 2013, "genre": "Thriller", "runtime": 91, "rank": 7 },
+    { "tmdbId": 141, "imdbID": "tt0246578", "Title": "Donnie Darko", "year": 2001, "genre": "Sci-Fi", "runtime": 113, "rank": 6 },
+    { "tmdbId": 220289, "imdbID": "tt2866360", "Title": "Coherence", "year": 2013, "genre": "Sci-Fi", "runtime": 89, "rank": 5 },
+    { "tmdbId": 206487, "imdbID": "tt2397535", "Title": "Predestination", "year": 2014, "genre": "Sci-Fi", "runtime": 97, "rank": 4 },
+    { "tmdbId": 1018, "imdbID": "tt0166924", "Title": "Mulholland Drive", "year": 2001, "genre": "Mystery", "runtime": 147, "rank": 3 },
+    { "tmdbId": 4960, "imdbID": "tt0383028", "Title": "Synecdoche, New York", "year": 2008, "genre": "Drama", "runtime": 124, "rank": 2 },
+    { "tmdbId": 14337, "imdbID": "tt0390384", "Title": "Primer", "year": 2004, "genre": "Sci-Fi", "runtime": 77, "rank": 1 }
 ];
 
-// 🔥 COMPLETE MOVIE DATA FOR ALL SURVIVAL MOVIES
+// ✅ TIME CONVERSION FUNCTION
+const timeToSeconds = (timeStr) => {
+    const parts = timeStr.split(':').map(Number);
+    if (parts.length === 3) {
+        return parts[0] * 3600 + parts[1] * 60 + parts[2];
+    }
+    if (parts.length === 2) {
+        return parts[0] * 60 + parts[1];
+    }
+    return 0;
+};
+
+// ✅ COMPLETE SENSITIVE TIMELINES - ADDED THE USUAL SUSPECTS
+export const SENSITIVE_TIMELINES = {
+    14337: { scenes: [] }, // Primer - Clean film
+    4960: { // Synecdoche, New York - 6 scenes
+        scenes: [
+            { start: timeToSeconds("34:24"), end: timeToSeconds("35:05"), type: "Sex" },
+            { start: timeToSeconds("46:40"), end: timeToSeconds("46:47"), type: "Kissing" },
+            { start: timeToSeconds("56:35"), end: timeToSeconds("57:04"), type: "Sex (not graphic)" },
+            { start: timeToSeconds("1:01:35"), end: timeToSeconds("1:02:12"), type: "Nudity" },
+            { start: timeToSeconds("1:33:04"), end: timeToSeconds("1:35:15"), type: "Nudity" },
+            { start: timeToSeconds("1:38:35"), end: timeToSeconds("1:38:40"), type: "Kissing (casual)" }
+        ]
+    },
+    1018: { // Mulholland Drive - 5 scenes
+        scenes: [
+            { start: timeToSeconds("1:19:38"), end: timeToSeconds("1:20:02"), type: "Kissing" },
+            { start: timeToSeconds("1:38:45"), end: timeToSeconds("1:42:18"), type: "Nudity + Intimate Kissing" },
+            { start: timeToSeconds("2:01:27"), end: timeToSeconds("2:02:59"), type: "Partial Nudity + Intimate Situation" },
+            { start: timeToSeconds("2:04:36"), end: timeToSeconds("2:05:03"), type: "Kissing" },
+            { start: timeToSeconds("2:15:50"), end: timeToSeconds("2:15:58"), type: "Kissing" }
+        ]
+    },
+    206487: { // Predestination - 3 scenes
+        scenes: [
+            { start: timeToSeconds("19:07"), end: timeToSeconds("19:20"), type: "Sex + Partial Nudity" },
+            { start: timeToSeconds("42:20"), end: timeToSeconds("42:50"), type: "Nudity" },
+            { start: timeToSeconds("1:12:50"), end: timeToSeconds("1:12:58"), type: "Kissing (casual)" }
+        ]
+    },
+    220289: { // Coherence - 1 scene
+        scenes: [
+            { start: timeToSeconds("53:27"), end: timeToSeconds("53:34"), type: "Casual Kissing" }
+        ]
+    },
+    141: { // Donnie Darko - 3 scenes
+        scenes: [
+            { start: timeToSeconds("1:08:02"), end: timeToSeconds("1:08:16"), type: "Kissing" },
+            { start: timeToSeconds("1:17:00"), end: timeToSeconds("1:17:08"), type: "Kissing" },
+            { start: timeToSeconds("1:31:10"), end: timeToSeconds("1:31:30"), type: "Intimate Kissing" }
+        ]
+    },
+    181886: { // Enemy - 12 scenes (MOST SENSITIVE)
+        scenes: [
+            { start: timeToSeconds("1:46"), end: timeToSeconds("1:50"), type: "Partial Nudity (glimpse)" },
+            { start: timeToSeconds("2:50"), end: timeToSeconds("4:58"), type: "Nudity" },
+            { start: timeToSeconds("7:23"), end: timeToSeconds("7:29"), type: "Kissing" },
+            { start: timeToSeconds("7:50"), end: timeToSeconds("8:05"), type: "Sex" },
+            { start: timeToSeconds("8:37"), end: timeToSeconds("8:42"), type: "Sex" },
+            { start: timeToSeconds("9:10"), end: timeToSeconds("9:15"), type: "Sex" },
+            { start: timeToSeconds("14:38"), end: timeToSeconds("15:10"), type: "Sex" },
+            { start: timeToSeconds("45:20"), end: timeToSeconds("45:52"), type: "Nudity" },
+            { start: timeToSeconds("1:14:25"), end: timeToSeconds("1:14:41"), type: "Partial Nudity" },
+            { start: timeToSeconds("1:19:30"), end: timeToSeconds("1:20:35"), type: "Sex" },
+            { start: timeToSeconds("1:22:20"), end: timeToSeconds("1:22:42"), type: "Intimate Kissing + Partial Nudity" },
+            { start: timeToSeconds("1:23:55"), end: timeToSeconds("1:24:08"), type: "Nudity" }
+        ]
+    },
+    1381: { // The Fountain - 2 scenes
+        scenes: [
+            { start: timeToSeconds("26:34"), end: timeToSeconds("27:46"), type: "Intimate Kissing + Partial Nudity" },
+            { start: timeToSeconds("36:57"), end: timeToSeconds("37:01"), type: "Partial Nudity (glimpse)" }
+        ]
+    },
+    31011: { // Mr. Nobody - 6 scenes
+        scenes: [
+            { start: timeToSeconds("31:48"), end: timeToSeconds("32:00"), type: "Kissing" },
+            { start: timeToSeconds("48:56"), end: timeToSeconds("49:10"), type: "Intimate Kissing" },
+            { start: timeToSeconds("1:03:58"), end: timeToSeconds("1:05:08"), type: "Intimate Kissing + Partial Nudity" },
+            { start: timeToSeconds("1:08:27"), end: timeToSeconds("1:08:31"), type: "Kissing" },
+            { start: timeToSeconds("1:17:08"), end: timeToSeconds("1:17:42"), type: "Sex" },
+            { start: timeToSeconds("1:35:10"), end: timeToSeconds("1:36:58"), type: "Intimate Kissing + Partial Nudity" }
+        ]
+    },
+    11324: { // Shutter Island - 2 scenes
+        scenes: [
+            { start: timeToSeconds("1:10:43"), end: timeToSeconds("1:10:47"), type: "Nudity" },
+            { start: timeToSeconds("1:59:03"), end: timeToSeconds("1:59:06"), type: "Casual Kissing" }
+        ]
+    },
+    629: { scenes: [] } // The Usual Suspects - Clean film
+};
+
+// ✅ FALLBACK POSTERS - ADDED THE USUAL SUSPECTS
+export const FALLBACK_POSTERS = {
+    14337: "https://m.media-amazon.com/images/M/MV5BYTIxNzU1ZmUtYzllMS00NDA4LTgyMjktZWZmNjI5YTdkZjE3XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX500.jpg",
+    4960: "https://m.media-amazon.com/images/M/MV5BMjIwNzA5Nzg4M15BMl5BanBnXkFtZTcwNzk1MzcxMQ@@._V1_SX500.jpg",
+    1018: "https://m.media-amazon.com/images/M/MV5BNGVjYzBmOGMtNDJiMC00NDJjLTljMDgtMzE0NTc4YjVmOTE5XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX500.jpg",
+    206487: "https://m.media-amazon.com/images/M/MV5BMjUzNjk5NDMzNl5BMl5BanBnXkFtZTgwNzE0ODI2NjE@._V1_SX500.jpg",
+    220289: "https://m.media-amazon.com/images/M/MV5BMjAwMDk5NDM5Nl5BMl5BanBnXkFtZTgwNzE2OTQ0MjE@._V1_SX500.jpg",
+    141: "https://m.media-amazon.com/images/M/MV5BNzVkYzIwNDEtNTMwMi00NzU3LWI1ZjYtZTJlMTY0NDk0MzEzXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX500.jpg",
+    181886: "https://m.media-amazon.com/images/M/MV5BMDExOTM4ODI5N15BMl5BanBnXkFtZTcwMjEzNTE3OA@@._V1_SX500.jpg",
+    1381: "https://m.media-amazon.com/images/M/MV5BMjExMTI4MzU4MF5BMl5BanBnXkFtZTcwNjEzNDE1MQ@@._V1_SX500.jpg",
+    31011: "https://m.media-amazon.com/images/M/MV5BMTg4ODkzMDQ3Nl5BMl5BanBnXkFtZTcwNTEwOTMyMw@@._V1_SX500.jpg",
+    11324: "https://m.media-amazon.com/images/M/MV5BYzhiNDkyNzktNTZmYS00ZTBkLTk2MDAtM2U0YjU1MzgxZjgzXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX500.jpg",
+    629: "https://m.media-amazon.com/images/M/MV5BYTViNzMxZjEtZGEzNy00NTgyLWIwM2EtYjI2YjU1ZjUxODgxXkEyXkFqcGdeQXVyNzQ1ODk3MTQ@._V1_SX500.jpg"
+};
+
+// ✅ COMPLETE MOVIE DATA (ALL YOUR FEATURES) - ADDED THE USUAL SUSPECTS WITH PROPER DNA
 export const COMPLETE_MOVIE_DATA = {
     14337: {
         mindBendingIndex: 95, complexityLevel: "EXTREME", dominantColor: "#1e3a8a", rating: 6.9, criticsScore: 77, audienceScore: 73, director: "Shane Carruth", cast: ["Shane Carruth", "David Sullivan", "Casey Gooden"], boxOffice: "$424,760", budget: "$7,000", 
@@ -191,157 +148,119 @@ export const COMPLETE_MOVIE_DATA = {
         intensityPeak: "The narrative intensity peaks at 70 minutes when temporal chaos erupts and multiple timelines collide.",
         genreComposition: "This film is predominantly Sci-Fi at 75%, with thriller elements at 15% and drama at 10%, creating a unique blend of scientific complexity and emotional tension."
     },
-    
-    // 🏔️ SURVIVAL MOVIE DATA - ALL 10 MOVIES
-    127380: {
-        survivabilityIndex: 98, complexityLevel: "EXTREME", dominantColor: "#dc2626", rating: 7.6, criticsScore: 93, audienceScore: 85, director: "Danny Boyle", cast: ["James Franco", "Kate Mara", "Amber Tamblyn"], boxOffice: "$60.7 million", budget: "$18 million",
-        dna: { "Drama": 60, "Thriller": 30, "Survival": 10 },
-        scenes: [{ time: 15, intensity: 30, label: "Canyon Entry", color: "#dc2626" }, { time: 35, intensity: 70, label: "The Fall", color: "#ef4444" }, { time: 65, intensity: 90, label: "Desperation", color: "#f87171" }, { time: 85, intensity: 100, label: "Self-Amputation", color: "#fca5a5" }],
-        synopsis: "Based on Aron Ralston's incredible true story of survival when trapped by a boulder in a remote Utah canyon for 127 hours.",
-        themes: ["Human Endurance", "Will to Live", "Self-Reliance", "Life Appreciation"],
-        awards: ["Academy Award Nominations", "BAFTA Winner"],
-        seoDescription: "The ultimate survival story of human determination when faced with impossible odds and life-or-death decisions.",
-        intensityPeak: "Maximum intensity at 85 minutes during the harrowing self-amputation sequence that saves Aron's life.",
-        genreComposition: "Primarily drama at 60% showcasing human resilience, with thriller tension at 30% and pure survival elements at 10%."
+    4960: {
+        mindBendingIndex: 92, complexityLevel: "EXTREME", dominantColor: "#7c2d12", rating: 7.5, criticsScore: 85, audienceScore: 69, director: "Charlie Kaufman", cast: ["Philip Seymour Hoffman", "Samantha Morton", "Michelle Williams"], boxOffice: "$4.4 million", budget: "$20 million", 
+        dna: { "Drama": 60, "Comedy": 25, "Fantasy": 15 }, 
+        scenes: [{ time: 15, intensity: 25, label: "The Grant", color: "#7c2d12" }, { time: 40, intensity: 50, label: "Construction", color: "#a16207" }, { time: 70, intensity: 75, label: "Reality Blurs", color: "#ca8a04" }, { time: 100, intensity: 90, label: "Infinite Recursion", color: "#eab308" }, { time: 120, intensity: 95, label: "Final Truth", color: "#facc15" }], 
+        synopsis: "A theater director creates a life-size replica of New York inside a warehouse, blurring the lines between art and reality in Kaufman's surreal masterpiece.", 
+        themes: ["Art vs Reality", "Death", "Identity", "Creative Process"], 
+        awards: ["Palme d'Or Nomination", "Best Original Screenplay Nomination"],
+        seoDescription: "Like Inception's layered dreams, Synecdoche New York creates nested realities within theatrical productions.",
+        intensityPeak: "The film reaches maximum intensity at 120 minutes when the final truth about reality and identity is revealed.",
+        genreComposition: "Primarily a drama at 60%, enhanced by dark comedy at 25% and fantasy elements at 15% that blur the boundaries between performance and life."
     },
-    
-    1003579: {
-        survivabilityIndex: 96, complexityLevel: "HIGH", dominantColor: "#1c4ed8", rating: 7.8, criticsScore: 90, audienceScore: 88, director: "J.A. Bayona", cast: ["Enzo Vogrincic", "Agustín Pardella", "Matías Recalt"], boxOffice: "$2.1 million", budget: "$60 million",
-        dna: { "Drama": 50, "Thriller": 30, "History": 20 },
-        scenes: [{ time: 20, intensity: 40, label: "The Crash", color: "#1c4ed8" }, { time: 50, intensity: 70, label: "Avalanche", color: "#3b82f6" }, { time: 90, intensity: 85, label: "Expedition", color: "#60a5fa" }, { time: 120, intensity: 95, label: "Rescue", color: "#93c5fd" }],
-        synopsis: "The harrowing true story of the Uruguayan rugby team's survival in the Andes mountains after their plane crashed in 1972.",
-        themes: ["Brotherhood", "Faith", "Extreme Survival", "Human Spirit"],
-        awards: ["Venice Film Festival Selection", "Academy Award Nominee"],
-        seoDescription: "An unflinching look at one of history's most incredible survival stories in the unforgiving Andes mountains.",
-        intensityPeak: "Peak intensity during the final rescue mission when hope and desperation collide at 120 minutes.",
-        genreComposition: "Balanced drama at 50% with intense thriller moments at 30% and historical accuracy at 20%."
+    1018: {
+        mindBendingIndex: 94, complexityLevel: "EXTREME", dominantColor: "#701a75", rating: 7.9, criticsScore: 85, audienceScore: 82, director: "David Lynch", cast: ["Naomi Watts", "Laura Harring", "Justin Theroux"], boxOffice: "$20.1 million", budget: "$15 million", 
+        dna: { "Mystery": 50, "Drama": 30, "Thriller": 20 }, 
+        scenes: [{ time: 20, intensity: 40, label: "The Accident", color: "#701a75" }, { time: 60, intensity: 65, label: "Hollywood Dreams", color: "#86198f" }, { time: 90, intensity: 75, label: "Club Silencio", color: "#a21caf" }, { time: 120, intensity: 90, label: "Blue Box", color: "#c026d3" }, { time: 140, intensity: 95, label: "Reality Shift", color: "#d946ef" }], 
+        synopsis: "Lynch's surreal exploration of Hollywood dreams and nightmares follows two women searching for truth in a world where reality constantly shifts.", 
+        themes: ["Dreams vs Reality", "Hollywood", "Identity", "Lesbian Romance"], 
+        awards: ["Palme d'Or Winner", "Best Director Cannes"],
+        seoDescription: "Like Inception's dream layers, Mulholland Drive weaves between dreams and reality in Lynch's signature surreal style.",
+        intensityPeak: "The narrative reaches its climax at 140 minutes when reality dramatically shifts and the true story is revealed.",
+        genreComposition: "A mystery at its core with 50%, enriched by dramatic elements at 30% and thriller tension at 20%, creating Lynch's trademark atmospheric confusion."
     },
-    
-    8358: {
-        survivabilityIndex: 94, complexityLevel: "HIGH", dominantColor: "#0891b2", rating: 7.8, criticsScore: 94, audienceScore: 90, director: "Robert Zemeckis", cast: ["Tom Hanks", "Helen Hunt", "Chris Noth"], boxOffice: "$429.6 million", budget: "$90 million",
-        dna: { "Drama": 60, "Adventure": 25, "Romance": 15 },
-        scenes: [{ time: 30, intensity: 50, label: "Crash Landing", color: "#0891b2" }, { time: 60, intensity: 70, label: "First Fire", color: "#0ea5e9" }, { time: 90, intensity: 80, label: "Wilson", color: "#38bdf8" }, { time: 120, intensity: 95, label: "Escape Attempt", color: "#7dd3fc" }],
-        synopsis: "A FedEx executive's four-year survival ordeal on a deserted Pacific island becomes a profound journey of self-discovery.",
-        themes: ["Isolation", "Resilience", "Time", "Human Connection"],
-        awards: ["Academy Award Nominee", "Golden Globe Winner"],
-        seoDescription: "Tom Hanks delivers a tour-de-force performance in this ultimate deserted island survival epic.",
-        intensityPeak: "Emotional and physical peak at 120 minutes during the desperate ocean escape sequence.",
-        genreComposition: "Character-driven drama at 60% with adventure elements at 25% and underlying romance at 15%."
+    206487: {
+        mindBendingIndex: 89, complexityLevel: "EXTREME", dominantColor: "#0f172a", rating: 7.4, criticsScore: 84, audienceScore: 85, director: "Michael & Peter Spierig", cast: ["Ethan Hawke", "Sarah Snook", "Noah Taylor"], boxOffice: "$5.1 million", budget: "$5 million", 
+        dna: { "Sci-Fi": 60, "Thriller": 35, "Action": 5 }, 
+        scenes: [{ time: 10, intensity: 65, label: "The Hunt", color: "#0f172a" }, { time: 30, intensity: 35, label: "The Story", color: "#1e293b" }, { time: 60, intensity: 80, label: "Time Jump", color: "#334155" }, { time: 75, intensity: 95, label: "The Loop", color: "#475569" }, { time: 90, intensity: 100, label: "Identity", color: "#64748b" }], 
+        synopsis: "A temporal agent's final assignment becomes a mind-bending journey through identity, love, and predestination in this perfectly crafted time-travel thriller.", 
+        themes: ["Predestination", "Gender Identity", "Time Travel", "Self-Sacrifice"], 
+        awards: ["AACTA Best Screenplay", "Saturn Award Nomination"],
+        seoDescription: "Like Inception's complex plot structure, Predestination creates an intricate temporal puzzle with shocking revelations.",
+        intensityPeak: "The film peaks at 90 minutes when the protagonist's true identity is revealed in a mind-bending twist.",
+        genreComposition: "Primarily Sci-Fi at 60% with strong thriller elements at 35% and minimal action at 5%, focusing on intellectual complexity over spectacle."
     },
-    
-    281957: {
-        survivabilityIndex: 92, complexityLevel: "EXTREME", dominantColor: "#166534", rating: 8.0, criticsScore: 78, audienceScore: 83, director: "Alejandro Iñárritu", cast: ["Leonardo DiCaprio", "Tom Hardy", "Domhnall Gleeson"], boxOffice: "$533 million", budget: "$135 million",
-        dna: { "Drama": 45, "Action": 35, "Adventure": 20 },
-        scenes: [{ time: 20, intensity: 60, label: "Bear Attack", color: "#166534" }, { time: 60, intensity: 75, label: "Burial", color: "#16a34a" }, { time: 100, intensity: 85, label: "Horse Shelter", color: "#22c55e" }, { time: 140, intensity: 100, label: "Final Confrontation", color: "#4ade80" }],
-        synopsis: "Hugh Glass's legendary tale of survival and revenge in the brutal American wilderness of the 1820s.",
-        themes: ["Revenge", "Nature's Power", "Human Will", "Redemption"],
-        awards: ["Academy Award Winner", "BAFTA Winner", "Golden Globe Winner"],
-        seoDescription: "Leonardo DiCaprio's Oscar-winning performance in the most brutal survival story ever captured on film.",
-        intensityPeak: "Maximum intensity at 140 minutes during the climactic confrontation with those who left him for dead.",
-        genreComposition: "Intense drama at 45% with visceral action at 35% and adventure elements at 20%."
+    220289: {
+        mindBendingIndex: 78, complexityLevel: "HIGH", dominantColor: "#166534", rating: 7.2, criticsScore: 88, audienceScore: 85, director: "James Ward Byrkit", cast: ["Emily Baldoni", "Maury Sterling", "Nicholas Brendon"], boxOffice: "$102,617", budget: "$50,000", 
+        dna: { "Sci-Fi": 45, "Thriller": 35, "Drama": 20 }, 
+        scenes: [{ time: 8, intensity: 20, label: "Dinner Begins", color: "#166534" }, { time: 18, intensity: 45, label: "Comet Effect", color: "#16a34a" }, { time: 35, intensity: 65, label: "Other House", color: "#22c55e" }, { time: 55, intensity: 80, label: "Paranoia", color: "#4ade80" }, { time: 75, intensity: 95, label: "Reality Choice", color: "#86efac" }], 
+        synopsis: "A dinner party becomes a labyrinth of parallel realities when a comet passes overhead in this ingenious low-budget sci-fi thriller.", 
+        themes: ["Parallel Realities", "Choice", "Relationship Dynamics", "Quantum Physics"], 
+        awards: ["Fantastic Fest Winner", "Critics Choice Nomination"],
+        seoDescription: "Like Inception's multiple reality layers, Coherence explores parallel dimensions during a single dinner party.",
+        intensityPeak: "Maximum tension occurs at 75 minutes when characters must choose between different versions of reality.",
+        genreComposition: "Balanced between Sci-Fi at 45%, thriller tension at 35%, and interpersonal drama at 20%, creating intimate yet cosmic storytelling."
     },
-    
-    286217: {
-        survivabilityIndex: 90, complexityLevel: "HIGH", dominantColor: "#dc2626", rating: 8.0, criticsScore: 91, audienceScore: 92, director: "Ridley Scott", cast: ["Matt Damon", "Jessica Chastain", "Kristen Wiig"], boxOffice: "$630.2 million", budget: "$108 million",
-        dna: { "Sci-Fi": 50, "Drama": 30, "Adventure": 20 },
-        scenes: [{ time: 25, intensity: 65, label: "Stranded", color: "#dc2626" }, { time: 60, intensity: 70, label: "Potato Farm", color: "#ef4444" }, { time: 100, intensity: 85, label: "Communication", color: "#f87171" }, { time: 130, intensity: 100, label: "Rescue Mission", color: "#fca5a5" }],
-        synopsis: "An astronaut uses science, ingenuity, and wit to survive alone on Mars while NASA works to bring him home.",
-        themes: ["Science", "Optimism", "Problem-Solving", "Human Ingenuity"],
-        awards: ["Academy Award Nominee", "Golden Globe Winner"],
-        seoDescription: "Matt Damon grows potatoes on Mars in this scientifically accurate and thrilling space survival epic.",
-        intensityPeak: "Peak tension at 130 minutes during the high-stakes orbital rescue sequence.",
-        genreComposition: "Hard sci-fi at 50% grounded in realistic drama at 30% with adventure thrills at 20%."
+    141: {
+        mindBendingIndex: 85, complexityLevel: "HIGH", dominantColor: "#9a3412", rating: 8.0, criticsScore: 85, audienceScore: 87, director: "Richard Kelly", cast: ["Jake Gyllenhaal", "Jena Malone", "Drew Barrymore"], boxOffice: "$7.5 million", budget: "$4.5 million", 
+        dna: { "Sci-Fi": 40, "Drama": 35, "Thriller": 25 }, 
+        scenes: [{ time: 8, intensity: 50, label: "The Engine", color: "#9a3412" }, { time: 25, intensity: 60, label: "Frank", color: "#c2410c" }, { time: 80, intensity: 70, label: "School Flood", color: "#ea580c" }, { time: 105, intensity: 85, label: "Death", color: "#f97316" }, { time: 118, intensity: 90, label: "The Loop", color: "#fb923c" }], 
+        synopsis: "A troubled teenager is guided by a mysterious figure through a complex tale of time travel, destiny, and sacrifice in Kelly's cult classic.", 
+        themes: ["Time Travel", "Destiny", "Adolescence", "Mental Health"], 
+        awards: ["Teen Choice Award", "Cult Classic Status"],
+        seoDescription: "Like Inception's reality manipulation, Donnie Darko blends time travel with psychological complexity in a cult masterpiece.",
+        intensityPeak: "The story culminates at 118 minutes when the time loop closes and Donnie makes his ultimate sacrifice.",
+        genreComposition: "Evenly balanced with Sci-Fi elements at 40%, emotional drama at 35%, and psychological thriller aspects at 25%."
     },
-    
-    80278: {
-        survivabilityIndex: 88, complexityLevel: "HIGH", dominantColor: "#0ea5e9", rating: 7.5, criticsScore: 81, audienceScore: 86, director: "Juan Antonio Bayona", cast: ["Naomi Watts", "Tom Holland", "Ewan McGregor"], boxOffice: "$180.3 million", budget: "$45 million",
-        dna: { "Drama": 60, "Thriller": 25, "History": 15 },
-        scenes: [{ time: 15, intensity: 45, label: "Perfect Morning", color: "#0ea5e9" }, { time: 35, intensity: 100, label: "Tsunami Impact", color: "#38bdf8" }, { time: 70, intensity: 80, label: "Hospital Search", color: "#7dd3fc" }, { time: 100, intensity: 90, label: "Reunion", color: "#bae6fd" }],
-        synopsis: "A family's harrowing survival story during the devastating 2004 Indian Ocean tsunami in Thailand.",
-        themes: ["Family Bonds", "Natural Disaster", "Hope", "Human Kindness"],
-        awards: ["Academy Award Nominee", "BAFTA Nominee"],
-        seoDescription: "An emotionally devastating true story of a family's fight for survival against nature's most powerful force.",
-        intensityPeak: "Overwhelming intensity at 35 minutes during the tsunami's catastrophic impact sequence.",
-        genreComposition: "Emotional drama at 60% with natural disaster thriller elements at 25% and historical context at 15%."
+    181886: {
+        mindBendingIndex: 82, complexityLevel: "HIGH", dominantColor: "#7c2d12", rating: 6.9, criticsScore: 75, audienceScore: 70, director: "Denis Villeneuve", cast: ["Jake Gyllenhaal", "Mélanie Laurent", "Sarah Gadon"], boxOffice: "$3.4 million", budget: "$9 million", 
+        dna: { "Thriller": 70, "Mystery": 20, "Drama": 10 }, 
+        scenes: [{ time: 18, intensity: 35, label: "Discovery", color: "#7c2d12" }, { time: 45, intensity: 65, label: "First Contact", color: "#a16207" }, { time: 70, intensity: 80, label: "Obsession", color: "#ca8a04" }, { time: 88, intensity: 95, label: "Truth", color: "#eab308" }], 
+        synopsis: "Villeneuve's psychological thriller explores identity and obsession as a man discovers his exact double in this Kafkaesque nightmare.", 
+        themes: ["Duality", "Identity Crisis", "Obsession", "Subconscious"], 
+        awards: ["Toronto International Film Festival", "Genie Award Winner"],
+        seoDescription: "Like Inception's exploration of the subconscious, Enemy delves into psychological duality and identity confusion.",
+        intensityPeak: "The film reaches its disturbing climax at 88 minutes when the horrifying truth about identity is unveiled.",
+        genreComposition: "Dominated by psychological thriller elements at 70%, with mystery components at 20% and dramatic undertones at 10%."
     },
-    
-    394117: {
-        survivabilityIndex: 86, complexityLevel: "MEDIUM", dominantColor: "#166534", rating: 6.7, criticsScore: 62, audienceScore: 75, director: "Greg McLean", cast: ["Daniel Radcliffe", "Thomas Kretschmann", "Alex Russell"], boxOffice: "$1.2 million", budget: "$9 million",
-        dna: { "Adventure": 50, "Drama": 30, "Thriller": 20 },
-        scenes: [{ time: 20, intensity: 40, label: "Into the Jungle", color: "#166534" }, { time: 50, intensity: 65, label: "Separation", color: "#16a34a" }, { time: 80, intensity: 85, label: "Alone", color: "#22c55e" }, { time: 105, intensity: 95, label: "Rescue", color: "#4ade80" }],
-        synopsis: "Yossi Ghinsberg's incredible true story of survival alone in the Amazon rainforest for three weeks.",
-        themes: ["Isolation", "Mental Strength", "Nature's Dangers", "Will to Live"],
-        awards: ["Film Festival Selections"],
-        seoDescription: "Daniel Radcliffe faces the Amazon's deadliest challenges in this gripping true survival story.",
-        intensityPeak: "Maximum desperation at 105 minutes when rescue seems impossible and hallucinations begin.",
-        genreComposition: "Jungle adventure at 50% with character drama at 30% and survival thriller at 20%."
+    1381: {
+        mindBendingIndex: 87, complexityLevel: "HIGH", dominantColor: "#581c87", rating: 7.2, criticsScore: 69, audienceScore: 75, director: "Darren Aronofsky", cast: ["Hugh Jackman", "Rachel Weisz", "Ellen Burstyn"], boxOffice: "$16 million", budget: "$35 million", 
+        dna: { "Drama": 50, "Sci-Fi": 30, "Romance": 20 }, 
+        scenes: [{ time: 15, intensity: 45, label: "The Quest", color: "#581c87" }, { time: 35, intensity: 40, label: "Modern Love", color: "#7c3aed" }, { time: 55, intensity: 65, label: "Future Journey", color: "#8b5cf6" }, { time: 75, intensity: 85, label: "Convergence", color: "#a78bfa" }, { time: 90, intensity: 80, label: "Acceptance", color: "#c4b5fd" }], 
+        synopsis: "Aronofsky's ambitious meditation on love, death, and immortality spans three timelines in this visually stunning philosophical epic.", 
+        themes: ["Immortality", "Love", "Death", "Spiritual Journey"], 
+        awards: ["Venice Film Festival", "Visual Effects Society Award"],
+        seoDescription: "Like Inception's multiple timeline structure, The Fountain weaves three interconnected stories across different eras.",
+        intensityPeak: "Emotional intensity peaks at 75 minutes when all three timelines converge in a spectacular climax.",
+        genreComposition: "Primarily a drama at 50%, elevated by Sci-Fi concepts at 30% and romantic elements at 20%, creating Aronofsky's signature philosophical blend."
     },
-    
-    1585: {
-        survivabilityIndex: 84, complexityLevel: "HIGH", dominantColor: "#92400e", rating: 7.8, criticsScore: 65, audienceScore: 68, director: "Mel Gibson", cast: ["Rudy Youngblood", "Dalia Hernández", "Jonathan Brewer"], boxOffice: "$120.7 million", budget: "$40 million",
-        dna: { "Action": 50, "Adventure": 30, "Drama": 20 },
-        scenes: [{ time: 30, intensity: 50, label: "Village Raid", color: "#92400e" }, { time: 70, intensity: 70, label: "Capture", color: "#c2410c" }, { time: 110, intensity: 90, label: "The Chase", color: "#ea580c" }, { time: 130, intensity: 100, label: "Final Escape", color: "#fb923c" }],
-        synopsis: "A young Maya warrior's desperate flight through the jungle to save his family from captors.",
-        themes: ["Cultural Clash", "Survival Instinct", "Protection", "Ancient Civilization"],
-        awards: ["Academy Award Nominations"],
-        seoDescription: "Mel Gibson's visceral tale of survival set against the backdrop of the declining Mayan civilization.",
-        intensityPeak: "Relentless intensity at 130 minutes during the climactic jungle chase to freedom.",
-        genreComposition: "High-octane action at 50% with adventure thrills at 30% and cultural drama at 20%."
+    31011: {
+        mindBendingIndex: 93, complexityLevel: "EXTREME", dominantColor: "#be185d", rating: 7.8, criticsScore: 86, audienceScore: 81, director: "Jaco Van Dormael", cast: ["Jared Leto", "Sarah Polley", "Diane Kruger"], boxOffice: "$3.6 million", budget: "$47 million", 
+        dna: { "Sci-Fi": 50, "Drama": 30, "Fantasy": 20 }, 
+        scenes: [{ time: 15, intensity: 30, label: "The Choice", color: "#be185d" }, { time: 45, intensity: 60, label: "Multiple Lives", color: "#db2777" }, { time: 85, intensity: 70, label: "Love Stories", color: "#ec4899" }, { time: 115, intensity: 85, label: "Old Age", color: "#f472b6" }, { time: 135, intensity: 95, label: "Big Bang", color: "#f9a8d4" }], 
+        synopsis: "Van Dormael's ambitious exploration of choice and possibility follows the last mortal human through infinite potential lives in this visually stunning epic.", 
+        themes: ["Choice", "Possibility", "Love", "Mortality"], 
+        awards: ["European Film Award", "Magritte Award Winner"],
+        seoDescription: "Like Inception's branching possibilities, Mr. Nobody explores infinite life paths and the consequences of choice.",
+        intensityPeak: "The narrative reaches cosmic proportions at 135 minutes with the Big Bang sequence revealing universal connections.",
+        genreComposition: "Half Sci-Fi at 50% exploring quantum possibilities, complemented by human drama at 30% and fantasy elements at 20%."
     },
-    
-    776503: {
-        survivabilityIndex: 82, complexityLevel: "HIGH", dominantColor: "#0c4a6e", rating: 7.8, criticsScore: 84, audienceScore: 81, director: "Ron Howard", cast: ["Viggo Mortensen", "Colin Farrell", "Joel Edgerton"], boxOffice: "$5.7 million", budget: "$55 million",
-        dna: { "Drama": 55, "Thriller": 35, "History": 10 },
-        scenes: [{ time: 25, intensity: 40, label: "Cave Entry", color: "#0c4a6e" }, { time: 60, intensity: 70, label: "Rising Waters", color: "#1e40af" }, { time: 100, intensity: 85, label: "Diving Plan", color: "#3b82f6" }, { time: 130, intensity: 100, label: "Final Rescue", color: "#60a5fa" }],
-        synopsis: "The incredible international rescue mission to save 12 boys and their coach trapped in flooded Thai caves.",
-        themes: ["International Cooperation", "Heroism", "Hope", "Technical Innovation"],
-        awards: ["Film Festival Selections"],
-        seoDescription: "Ron Howard chronicles the miraculous cave rescue that captivated the world in 2018.",
-        intensityPeak: "Peak tension at 130 minutes during the final underwater rescue attempts in zero visibility.",
-        genreComposition: "Character-focused drama at 55% with rescue thriller tension at 35% and historical accuracy at 10%."
+    11324: {
+        mindBendingIndex: 75, complexityLevel: "MEDIUM", dominantColor: "#0c4a6e", rating: 8.2, criticsScore: 68, audienceScore: 89, director: "Martin Scorsese", cast: ["Leonardo DiCaprio", "Mark Ruffalo", "Ben Kingsley"], boxOffice: "$294.8 million", budget: "$80 million", 
+        dna: { "Thriller": 60, "Mystery": 25, "Drama": 15 }, 
+        scenes: [{ time: 15, intensity: 35, label: "Arrival", color: "#0c4a6e" }, { time: 45, intensity: 55, label: "Investigation", color: "#0284c7" }, { time: 85, intensity: 70, label: "Ward C", color: "#0ea5e9" }, { time: 115, intensity: 85, label: "Flashbacks", color: "#38bdf8" }, { time: 135, intensity: 100, label: "The Truth", color: "#7dd3fc" }], 
+        synopsis: "Scorsese's psychological thriller traps two marshals on a mysterious island where nothing is as it seems in this masterful mind-bender.", 
+        themes: ["Reality vs Delusion", "Guilt", "Mental Health", "Truth"], 
+        awards: ["Teen Choice Award", "People's Choice Award"],
+        seoDescription: "Like Inception's questioning of reality, Shutter Island masterfully blurs the line between truth and delusion.",
+        intensityPeak: "The shocking truth is revealed at 135 minutes when reality and delusion collide in Scorsese's masterful climax.",
+        genreComposition: "Primarily a psychological thriller at 60%, enhanced by mystery elements at 25% and dramatic depth at 15%."
     },
-    
-    238713: {
-        survivabilityIndex: 80, complexityLevel: "MEDIUM", dominantColor: "#0891b2", rating: 7.2, criticsScore: 51, audienceScore: 69, director: "Angelina Jolie", cast: ["Jack O'Connell", "Domhnall Gleeson", "Miyavi"], boxOffice: "$163.4 million", budget: "$65 million",
-        dna: { "Drama": 60, "War": 25, "Sport": 15 },
-        scenes: [{ time: 30, intensity: 50, label: "Plane Crash", color: "#0891b2" }, { time: 60, intensity: 70, label: "Raft Survival", color: "#0ea5e9" }, { time: 100, intensity: 85, label: "POW Camp", color: "#38bdf8" }, { time: 120, intensity: 90, label: "Liberation", color: "#7dd3fc" }],
-        synopsis: "Olympian Louis Zamperini's incredible story of survival at sea and in Japanese POW camps during WWII.",
-        themes: ["Resilience", "Faith", "Forgiveness", "Olympic Spirit"],
-        awards: ["Academy Award Nominations"],
-        seoDescription: "The unbreakable story of an Olympic runner's survival against impossible odds in World War II.",
-        intensityPeak: "Emotional climax at 120 minutes during the liberation and return to normal life.",
-        genreComposition: "Human drama at 60% with wartime elements at 25% and sports background at 15%."
+    629: {
+        mindBendingIndex: 88, complexityLevel: "HIGH", dominantColor: "#dc2626", rating: 8.5, criticsScore: 88, audienceScore: 94, director: "Bryan Singer", cast: ["Kevin Spacey", "Gabriel Byrne", "Chazz Palminteri", "Stephen Baldwin", "Benicio Del Toro"], boxOffice: "$23.3 million", budget: "$6 million", 
+        dna: { "Crime": 50, "Mystery": 35, "Thriller": 15 }, 
+        scenes: [{ time: 10, intensity: 30, label: "The Lineup", color: "#dc2626" }, { time: 25, intensity: 50, label: "The Job", color: "#ef4444" }, { time: 60, intensity: 70, label: "Keaton's Plan", color: "#f87171" }, { time: 85, intensity: 85, label: "The Reveal", color: "#fca5a5" }, { time: 103, intensity: 95, label: "Keyser Söze", color: "#fecaca" }], 
+        synopsis: "A sole survivor tells feds about the supposed mastermind behind a pier massacre. But who is Keyser Söze? Singer's neo-noir thriller delivers one of cinema's greatest plot twists.", 
+        themes: ["Deception", "Identity", "Criminal Psychology", "Unreliable Narrator"], 
+        awards: ["Academy Award Best Supporting Actor", "Academy Award Best Original Screenplay", "BAFTA Best Editing"],
+        seoDescription: "Like Inception's layered reality, *The Usual Suspects* masterfully constructs an intricate web of deception and misdirection.",
+        intensityPeak: "The film's legendary twist is revealed at 103 minutes when the true identity of Keyser Söze becomes devastatingly clear.",
+        genreComposition: "A crime thriller at its core with 50%, enhanced by mystery elements at 35% and psychological thriller tension at 15%, creating a perfect storm of deception."
     }
 };
 
-export const CINEMATIC_COLORS = {
-    "Sci-Fi": "#1e3a8a", "Drama": "#7c2d12", "Thriller": "#0f172a", "Mystery": "#701a75", "Action": "#9a3412", "Fantasy": "#581c87", "Romance": "#be185d", "Crime": "#0c4a6e", "Survival": "#dc2626", "Adventure": "#166534", "History": "#92400e", "War": "#0f172a"
-};
-
-export const STRATEGIC_TAGLINES = {
-    14337: "Time is the fire in which we burn", 
-    4960: "We are what happens to our dreams",
-    1018: "A love story in the city of dreams", 
-    206487: "The future is not set in stone", 
-    220289: "Reality is just a matter of perspective", 
-    141: "Some people are born to change the world", 
-    181886: "We all have a double somewhere", 
-    1381: "Death is the road to awe", 
-    31011: "Every choice creates a universe", 
-    11324: "Some places never let you go",
-    629: "The greatest trick the Devil ever pulled was convincing the world he didn't exist",
-    127380: "Between a rock and a hard place",
-    1003579: "Survival against impossible odds",
-    8358: "Cast away, but never broken",
-    281957: "Revenge is a dish best served cold",
-    286217: "Science the hell out of this",
-    80278: "When nature strikes back",
-    394117: "Lost but not forgotten",
-    1585: "Run. Hide. Survive.",
-    776503: "Against all odds",
-    238713: "If you can take it, you can make it"
-};
-
+// ✅ STRATEGIC QUOTES & COLORS - ADDED THE USUAL SUSPECTS
 export const STRATEGIC_QUOTES = {
     14337: "They say time is the fire in which we burn", 
     4960: "Everything is more complicated than you think",
@@ -352,46 +271,15 @@ export const STRATEGIC_QUOTES = {
     181886: "I don't think I'm me", 
     1381: "Death is the road to awe", 
     31011: "Every path is the right path", 
-    11324: "Which would be worse: to live as a monster, or to die as a good man?",
-    629: "The greatest trick the Devil ever pulled was convincing the world he didn't exist",
-    127380: "This rock has been waiting for me my whole life",
-    1003579: "We promised we'd all return home together",
-    8358: "I'm sorry, Wilson!",
-    281957: "I ain't afraid to die anymore. I'd done it already",
-    286217: "I'm going to have to science the hell out of this",
-    80278: "What is the first thing you remember?",
-    394117: "The jungle wanted me. It got me",
-    1585: "I am Jaguar Paw. This is my forest",
-    776503: "How many of you have been in a cave?",
-    238713: "If you can take it, you can make it"
+    11324: "Which would be worse?",
+    629: "The greatest trick the devil ever pulled was convincing the world he didn't exist"
 };
 
-// 🛡️ BULLETPROOF FALLBACK POSTERS
-export const FALLBACK_POSTERS = {
-    14337: "https://image.tmdb.org/t/p/w500/qyIiKVhPXWoApBNcpCLhYe8K9p7.jpg",
-    4960: "https://image.tmdb.org/t/p/w500/2nOjh4MEjjTzLo69gTgwjdZW7cz.jpg",
-    1018: "https://image.tmdb.org/t/p/w500/tVxGt7uffLVhIIcwuldXOMpFBPX.jpg",
-    206487: "https://image.tmdb.org/t/p/w500/r6SKC9UJOgqSGfEV6bS8Eb0xILd.jpg",
-    220289: "https://image.tmdb.org/t/p/w500/54abeBC8arCzn1R4wY3JrNqRBwQ.jpg",
-    141: "https://image.tmdb.org/t/p/w500/fhQoQfejY1hUcwyuLgpBrYs6uFt.jpg",
-    181886: "https://image.tmdb.org/t/p/w500/jkJMpGZW72qN0vxOJCVa8dSFHbx.jpg",
-    1381: "https://image.tmdb.org/t/p/w500/oJcM8gFdLVy7zyPKYLJNjEGNfJO.jpg",
-    31011: "https://image.tmdb.org/t/p/w500/4NWa2P7fz2V0Zf39L2qhyMcjKHN.jpg",
-    11324: "https://image.tmdb.org/t/p/w500/4GDy0PHYX3VRXUtwK5ysFbg3kEx.jpg",
-    629: "https://image.tmdb.org/t/p/w500/99PhdkYvHInKN3bXh7xXf7lIkjw.jpg",
-    127380: "https://m.media-amazon.com/images/M/MV5BNmFjODQ3ODItNWQwNy00MDI4LWEzMGEtYzA4YTRhNzk2ODE0XkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_UX182_CR0,0,182,268_AL_.jpg",
-    1003579: "https://m.media-amazon.com/images/M/MV5BOWY1M2YzNzYtOGM4NC00MTQyLWFjNjAtZDZlYjZiZWI3MTFkXkEyXkFqcGdeQXVyMTUzMTg2ODkz._V1_UX182_CR0,0,182,268_AL_.jpg",
-    8358: "https://m.media-amazon.com/images/M/MV5BN2Y5ZTU4YjctMDRmMC00MTg4LWE1M2MtMjk4MzVmOTE4YjkzXkEyXkFqcGdeQXVyNTc1NTQxODI@._V1_UX182_CR0,0,182,268_AL_.jpg",
-    281957: "https://m.media-amazon.com/images/M/MV5BMDE5OWMzM2QtOTU2ZS00NzAyLWI2MDEtOTRlYjIxZGM0OWRjXkEyXkFqcGdeQXVyODE5NzE3OTE@._V1_UX182_CR0,0,182,268_AL_.jpg",
-    286217: "https://m.media-amazon.com/images/M/MV5BMTc2MTQ3MDA1Nl5BMl5BanBnXkFtZTgwODA3OTI4NjE@._V1_UX182_CR0,0,182,268_AL_.jpg",
-    80278: "https://m.media-amazon.com/images/M/MV5BMjAzOTMyMzUxNl5BMl5BanBnXkFtZTcwODI5Mjg3OA@@._V1_UX182_CR0,0,182,268_AL_.jpg",
-    394117: "https://m.media-amazon.com/images/M/MV5BMTc2Nzg4MzE2MV5BMl5BanBnXkFtZTgwMzE1Mzg2MTI@._V1_UX182_CR0,0,182,268_AL_.jpg",
-    1585: "https://m.media-amazon.com/images/M/MV5BNTM1NjYyNTY5OV5BMl5BanBnXkFtZTcwMjgwNTMzMQ@@._V1_UX182_CR0,0,182,268_AL_.jpg",
-    776503: "https://m.media-amazon.com/images/M/MV5BYjY0MGFkZGQtYmM4Zi00ZDYzLWJjYTMtN2Q5Y2I4NmY2ZDcxXkEyXkFqcGdeQXVyMTM1MTE1NDMx._V1_UX182_CR0,0,182,268_AL_.jpg",
-    238713: "https://m.media-amazon.com/images/M/MV5BMTkzMjc4NDI4Ml5BMl5BanBnXkFtZTgwNTEwNTI5MjE@._V1_UX182_CR0,0,182,268_AL_.jpg"
+export const CINEMATIC_COLORS = {
+    "Sci-Fi": "#1e3a8a", "Drama": "#7c2d12", "Thriller": "#0f172a", "Mystery": "#701a75", "Action": "#9a3412", "Fantasy": "#581c87", "Romance": "#be185d", "Crime": "#dc2626"
 };
 
-// 🔥 KEEPING YOUR RATING SYSTEM 
+// ✅ PROFESSIONAL RATING SYSTEM
 export const RATING_OPTIONS = [
     { 
         value: 1, 
@@ -426,3 +314,156 @@ export const RATING_OPTIONS = [
         description: "Outstanding cinematic achievement"
     }
 ];
+
+// ✅ ENHANCED COUNTRY DETECTION
+export const detectUserCountryEnhanced = async () => {
+    try {
+        const geoServices = [
+            'https://ipapi.co/json/',
+            'https://api.country.is/',
+            'https://ipinfo.io/json'
+        ];
+        
+        for (const service of geoServices) {
+            try {
+                const response = await fetch(service, { 
+                    timeout: 3000,
+                    headers: { 'Accept': 'application/json' }
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    let country = null;
+                    
+                    if (data.country_code) country = data.country_code;
+                    else if (data.country) country = data.country;
+                    else if (data.countryCode) country = data.countryCode;
+                    
+                    if (country) {
+                        const upperCountry = country.trim().toUpperCase();
+                        const validCountries = ['US', 'IN', 'GB', 'CA', 'AU', 'DE', 'BR'];
+                        if (validCountries.includes(upperCountry)) {
+                            return upperCountry;
+                        }
+                    }
+                }
+            } catch (error) {
+                console.warn(`Geo service ${service} failed:`, error);
+                continue;
+            }
+        }
+    } catch (error) {
+        console.warn('Enhanced country detection failed:', error);
+    }
+    
+    return 'US'; // Default fallback
+};
+
+// ✅ UTILITY FUNCTIONS (NO API CALLS - SSG SAFE)
+export const getTMDBPosterUrl = (posterPath, size = 'medium') => {
+    if (!posterPath) return null;
+    const posterSize = TMDB_CONFIG.POSTER_SIZES[size] || TMDB_CONFIG.POSTER_SIZES.medium;
+    return `${TMDB_CONFIG.IMAGE_BASE_URL}/${posterSize}${posterPath}`;
+};
+
+export const getSensitiveContentTypes = (tmdbId) => {
+    const sensitiveData = SENSITIVE_TIMELINES[tmdbId];
+    if (!sensitiveData?.scenes?.length) return null;
+    
+    const types = new Set();
+    sensitiveData.scenes.forEach(scene => {
+        const lowerType = scene.type.toLowerCase();
+        if (lowerType.includes('sex')) types.add('intimate scenes');
+        if (lowerType.includes('nudity')) types.add('nudity');
+        if (lowerType.includes('kissing')) types.add('kissing scenes');
+    });
+    
+    return Array.from(types);
+};
+
+// ✅ FAQ GENERATION - UPDATED FOR THE USUAL SUSPECTS
+export const generateFAQData = (movie) => {
+    const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
+    const sensitiveData = SENSITIVE_TIMELINES[movie.tmdbId];
+    const contentTypes = getSensitiveContentTypes(movie.tmdbId);
+    
+    return [
+        {
+            question: `Is ${movie.Title.replace(/\*/g, '')} similar to Inception?`,
+            answer: `${movieInfo?.seoDescription || `Yes, ${movie.Title.replace(/\*/g, '')} shares mind-bending qualities with Inception including complex narrative structures and reality-bending themes.`}`
+        },
+        {
+            question: `Who directed ${movie.Title.replace(/\*/g, '')} and what is it about?`,
+            answer: `${movie.Title.replace(/\*/g, '')} was directed by ${movieInfo?.director || 'acclaimed filmmaker'} in ${movie.year}. ${movieInfo?.synopsis || `A compelling ${movie.genre.toLowerCase()} film that explores complex themes and narrative structures.`}`
+        },
+        {
+            question: `Where can I watch ${movie.Title.replace(/\*/g, '')} online?`,
+            answer: `${movie.Title.replace(/\*/g, '')} streaming availability varies by region. Check Netflix, Amazon Prime Video, Apple TV+, Hulu, and other major streaming platforms for current availability in your area.`
+        },
+        {
+            question: `Does ${movie.Title.replace(/\*/g, '')} contain mature or sensitive content?`,
+            answer: sensitiveData?.scenes?.length > 0 
+                ? `Yes, ${movie.Title.replace(/\*/g, '')} contains mature content including ${contentTypes ? contentTypes.join(', ') : 'adult themes'}. The film has ${sensitiveData.scenes.length} scenes with mature content.`
+                : `No, ${movie.Title.replace(/\*/g, '')} does not contain notable mature or sensitive content and is suitable for most audiences interested in complex storytelling.`
+        }
+    ];
+};
+
+// ✅ SCHEMA GENERATION - UPDATED FOR THE USUAL SUSPECTS
+export const generateMovieSchema = (movie) => {
+    const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
+    const posterUrl = FALLBACK_POSTERS[movie.tmdbId] || '';
+    
+    return {
+        "@context": "https://schema.org",
+        "@type": "Movie",
+        "name": movie.Title.replace(/\*/g, ''),
+        "description": movieInfo?.synopsis || `${movie.Title.replace(/\*/g, '')} - A compelling ${movie.genre.toLowerCase()} film like Inception`,
+        "genre": movie.genre,
+        "datePublished": movie.year.toString(),
+        "director": {
+            "@type": "Person",
+            "name": movieInfo?.director || "Acclaimed Director"
+        },
+        "actor": movieInfo?.cast?.map(actor => ({
+            "@type": "Person",
+            "name": actor
+        })) || [],
+        "duration": `PT${movie.runtime}M`,
+        "image": posterUrl,
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": movieInfo?.rating || 7.0,
+            "bestRating": 10,
+            "worstRating": 1,
+            "ratingCount": movieInfo?.audienceScore || 100
+        }
+    };
+};
+
+export const generateFAQSchema = (faqs) => ({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.question,
+        "acceptedAnswer": {
+            "@type": "Answer",
+            "text": faq.answer
+        }
+    }))
+});
+
+// ✅ SSG-SAFE DUMMY FUNCTIONS (NO API CALLS)
+export const fetchMovieFromTMDB = async (tmdbId) => {
+    // Return static data to avoid API errors during SSG build
+    return {
+        poster_path: null,
+        title: COMPLETE_MOVIE_DATABASE.find(m => m.tmdbId === tmdbId)?.Title || 'Unknown Movie'
+    };
+};
+
+export const fetchWatchProviders = async (tmdbId, region = 'US') => {
+    // Return null to avoid API errors during SSG build  
+    return null;
+};

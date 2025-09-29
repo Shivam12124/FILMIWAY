@@ -1,4 +1,4 @@
-// data/collections.js - COMPLETE COLLECTIONS WITH SURVIVAL MOVIES ADDED
+// data/collections.js - COMPLETE COLLECTIONS WITH FIXED IMDB IDS
 import { COMPLETE_MOVIE_DATABASE } from '../utils/movieData';
 
 export const COLLECTIONS = {
@@ -15,8 +15,8 @@ export const COLLECTIONS = {
       'tt0246578',   // #6 Donnie Darko (2001)
       'tt2316411',   // #7 Enemy (2013)
       'tt0414993',   // #8 The Fountain (2006)
-      'tt0485947',   // #9 Mr. Nobody (2009)
-      'tt1130884'    // #10 SHUTTER ISLAND (2010)
+      'tt1130884',   // #9 Mr. Nobody (2009) - FIXED ID!
+      'tt0825232'    // #10 Shutter Island (2010) - FIXED ID!
     ],
     badges: [
       { label: 'Mind-Bending', desc: 'Reality-questioning narratives' },
@@ -38,8 +38,8 @@ export const COLLECTIONS = {
       'tt0246578',   // #6 Donnie Darko (2001)
       'tt2316411',   // #7 Enemy (2013)
       'tt0414993',   // #8 The Fountain (2006)
-      'tt0485947',   // #9 Mr. Nobody (2009)
-      'tt1130884'    // #10 SHUTTER ISLAND (2010)
+      'tt1130884',   // #9 Mr. Nobody (2009) - FIXED ID!
+      'tt0825232'    // #10 Shutter Island (2010) - FIXED ID!
     ],
     badges: [
       { label: 'Memory-Twisting', desc: 'Fragmented narrative structures' },
@@ -61,8 +61,8 @@ export const COLLECTIONS = {
       'tt0246578',   // #6 Donnie Darko (2001)
       'tt2316411',   // #7 Enemy (2013)
       'tt0414993',   // #8 The Fountain (2006)
-      'tt0485947',   // #9 Mr. Nobody (2009)
-      'tt0114814'    // #10 THE USUAL SUSPECTS (1995)
+      'tt1130884',   // #9 Mr. Nobody (2009) - FIXED ID!
+      'tt0114814'    // #10 The Usual Suspects (1995)
     ],
     badges: [
       { label: 'Psychological Horror', desc: 'Unreliable narrator thrillers' },
