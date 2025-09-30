@@ -1,4 +1,4 @@
-// pages/movies/[id].js - COMPLETE MOVIE PAGE WITH WORKING MOVIEDETAILSSECTION
+// pages/movies/[id].js - ABSOLUTELY FINAL VERSION WITH NO GETMETHOD CALLS
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -13,11 +13,23 @@ import TMDBAttribution from '../../components/TMDBAttribution';
 
 // Data
 import { COMPLETE_MOVIE_DATABASE, COMPLETE_MOVIE_DATA, STRATEGIC_QUOTES } from '../../utils/movieData';
-import { SENSITIVE_TIMELINES, getSensitiveContentTypes } from '../../utils/sensitiveContent';
 
-const TMDB_API_KEY = '6054e5498fb2619274454959c38bbdfa';
+const MOVIE_YEARS = {
+    'Enemy': '2013',
+    'Primer': '2004',
+    'The Fountain': '2006',
+    'Synecdoche, New York': '2008',
+    'Mulholland Drive': '2001',
+    'Predestination': '2014',
+    'Coherence': '2013',
+    'Donnie Darko': '2001',
+    'Mr. Nobody': '2009',
+    'Shutter Island': '2010',
+    'Memento': '2000',
+    'Inception': '2010',
+    'The Usual Suspects': '1995'
+};
 
-// 🎬 COMPLETE MOVIE DATA WITH UNIQUE INCEPTION, MEMENTO & SHUTTER ISLAND CONNECTIONS  
 const MOVIE_DATA_BY_TITLE = {
     'Shutter Island': {
         imdbRating: 8.2, genre: 'Psychological Thriller', runtime: '138 min', director: 'Martin Scorsese',
@@ -112,7 +124,7 @@ const MOVIE_DATA_BY_TITLE = {
     }
 };
 
-// 🧠 MEMENTO CONNECTION COMPONENT
+// Connection Badge Components
 const MementoConnectionBadge = ({ movie, correctData }) => (
     <motion.div 
         className="mb-10 p-6 bg-gradient-to-r from-purple-500/10 via-blue-400/10 to-purple-500/10 rounded-2xl border border-purple-400/20 relative overflow-hidden"
@@ -121,7 +133,6 @@ const MementoConnectionBadge = ({ movie, correctData }) => (
         transition={{ delay: 0.8, duration: 0.8 }}
     >
         <div className="absolute inset-0 bg-gradient-to-r from-purple-400/5 to-transparent opacity-50"></div>
-        
         <div className="relative z-10">
             <h3 className="text-purple-300 font-semibold mb-3 text-lg flex items-center gap-2">
                 <Brain className="w-5 h-5 text-purple-400" />
@@ -134,7 +145,6 @@ const MementoConnectionBadge = ({ movie, correctData }) => (
     </motion.div>
 );
 
-// 🎬 INCEPTION CONNECTION COMPONENT
 const InceptionConnectionBadge = ({ movie, correctData }) => (
     <motion.div 
         className="mb-10 p-6 bg-gradient-to-r from-yellow-500/10 via-amber-400/10 to-yellow-500/10 rounded-2xl border border-yellow-400/20 relative overflow-hidden"
@@ -143,7 +153,6 @@ const InceptionConnectionBadge = ({ movie, correctData }) => (
         transition={{ delay: 0.8, duration: 0.8 }}
     >
         <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/5 to-transparent opacity-50"></div>
-        
         <div className="relative z-10">
             <h3 className="text-yellow-300 font-semibold mb-3 text-lg flex items-center gap-2">
                 <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
@@ -156,7 +165,6 @@ const InceptionConnectionBadge = ({ movie, correctData }) => (
     </motion.div>
 );
 
-// 🧠 SHUTTER ISLAND CONNECTION COMPONENT
 const ShutterIslandConnectionBadge = ({ movie, correctData }) => (
     <motion.div 
         className="mb-10 p-6 bg-gradient-to-r from-red-500/10 via-orange-400/10 to-red-500/10 rounded-2xl border border-red-400/20 relative overflow-hidden"
@@ -165,7 +173,6 @@ const ShutterIslandConnectionBadge = ({ movie, correctData }) => (
         transition={{ delay: 0.8, duration: 0.8 }}
     >
         <div className="absolute inset-0 bg-gradient-to-r from-red-400/5 to-transparent opacity-50"></div>
-        
         <div className="relative z-10">
             <h3 className="text-red-300 font-semibold mb-3 text-lg flex items-center gap-2">
                 <AlertTriangle className="w-5 h-5 text-red-400" />
@@ -178,7 +185,6 @@ const ShutterIslandConnectionBadge = ({ movie, correctData }) => (
     </motion.div>
 );
 
-// Subtle Film Grain Overlay
 const SubtleFilmGrain = () => (
     <div className="fixed inset-0 pointer-events-none z-0 opacity-[0.02]">
         <div 
@@ -191,13 +197,10 @@ const SubtleFilmGrain = () => (
     </div>
 );
 
-// 🧠 MAIN SMART MOVIE PAGE COMPONENT
 const SmartMoviePage = ({ movie }) => {
     const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
     const correctData = MOVIE_DATA_BY_TITLE[movie.Title];
     const [scrollY, setScrollY] = useState(0);
-    
-    // 🔥 SMART COLLECTION DETECTION FOR ALL THREE COLLECTIONS
     const [fromMementoCollection, setFromMementoCollection] = useState(false);
     const [fromShutterIslandCollection, setFromShutterIslandCollection] = useState(false);
     
@@ -205,20 +208,48 @@ const SmartMoviePage = ({ movie }) => {
         if (typeof window !== 'undefined') {
             const fromMemento = sessionStorage.getItem('fromMementoCollection');
             const fromShutter = sessionStorage.getItem('fromShutterIslandCollection');
-            
             setFromMementoCollection(fromMemento === 'true');
             setFromShutterIslandCollection(fromShutter === 'true');
         }
     }, []);
 
-    // 🔥 DETERMINE WHICH COLLECTION (PRIORITY: SHUTTER ISLAND > MEMENTO > INCEPTION)
-    const getCollectionType = () => {
-        if (fromShutterIslandCollection) return 'shutter-island';
-        if (fromMementoCollection) return 'memento';
-        return 'inception';
-    };
+    // Collection type determination
+    const collectionType = fromShutterIslandCollection ? 'shutter-island' : fromMementoCollection ? 'memento' : 'inception';
 
-    const collectionType = getCollectionType();
+    // ALL MOVIE DATA AS DIRECT VARIABLES - NO FUNCTION CALLS
+    const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.Year || 'Unknown';
+    const currentMovieGenre = correctData?.genre || movie.Genre || movieInfo?.genre || 'Thriller';
+    const currentMovieRuntime = correctData?.runtime || movie.Runtime || (movieInfo?.runtime ? `${movieInfo.runtime} min` : '120 min');
+    const currentMovieDirector = correctData?.director || movieInfo?.director || movie.Director || 'Acclaimed Director';
+    const currentMovieRating = correctData?.imdbRating || movieInfo?.rating || 7.5;
+    const currentComplexityScore = movieInfo?.mindBendingIndex || 85;
+    const currentMovieQuote = correctData?.quote || STRATEGIC_QUOTES[movie.tmdbId] || 'A mind-bending cinematic experience';
+
+    // META DATA AS DIRECT VARIABLES - NO FUNCTION CALLS  
+    const shutterMetaTitle = "Best Movies Like Shutter Island – 10 Best Mind-Bending Psychological Thrillers You Must Watch";
+    const shutterMetaDescription = "Stop scrolling! This is the most advanced handpicked list on the internet of 10 mind-bending thrillers like Shutter Island including *The Usual Suspects*. Carefully analyzed for shocking twists, unreliable narrators, and expert storytelling—perfect for true psychological thriller fans!";
+    const shutterMetaKeywords = `${movie.Title}, ${currentMovieYear}, like shutter island, psychological thrillers, unreliable narrator films, identity crisis movies, plot twist movies, martin scorsese shutter island, psychological horror films, reality distortion movies, memory manipulation films, shocking revelations movies`;
+    const shutterOgTitle = "The Most Advanced List on the Internet –  10 Best Mind-Bending Movies Like Shutter Island 🧠";
+    const shutterTwitterTitle = "🧠 The Most Advanced Handpicked List – 10 Best Movies Like Shutter Island";
+
+    const mementoMetaTitle = "Best Movies Like Memento – 10 Best Mind-Bending Thrillers You Must Watch";
+    const mementoMetaDescription = "Stop scrolling! This is the most advanced handpicked list on the internet of 10 mind-bending thrillers like Memento. Carefully analyzed for shocking twists, expert storytelling, and unforgettable endings—perfect for true psychological thriller fans!";
+    const mementoMetaKeywords = `${movie.Title}, ${currentMovieYear}, like memento, psychological thrillers, memory twisting films, non linear storytelling, expert curated, handpicked list, most advanced list on internet, amnesia movies, identity crisis films`;
+    const mementoOgTitle = "The Most Advanced List on the Internet – 10 Mind-Bending Movies Like Memento 🧠";
+    const mementoTwitterTitle = "🧠 The Most Advanced Handpicked List – 10 Movies Like Memento";
+
+    const inceptionMetaTitle = "Best Movies Like Inception – 10 Best Mind-Bending Thrillers You Must Watch";
+    const inceptionMetaDescription = "Stop scrolling! This is the most advanced handpicked list on the internet of 10 mind-bending thrillers like Inception. Carefully analyzed for shocking twists, expert storytelling, and unforgettable endings—perfect for true sci-fi thriller fans!";
+    const inceptionMetaKeywords = `${movie.Title}, ${currentMovieYear}, like inception, mind bending movies, sci-fi thrillers, dream layers, non linear storytelling, expert curated, handpicked list, most advanced list on internet, reality bending films, psychological thrillers`;
+    const inceptionOgTitle = "The Most Advanced List on the Internet – 10 Best Mind-Bending Movies Like Inception 🧠";
+    const inceptionTwitterTitle = "🧠 The Most Advanced Handpicked List – 10 Best Movies Like Inception";
+
+    // SELECT META DATA BASED ON COLLECTION TYPE  
+    const finalMetaTitle = collectionType === 'shutter-island' ? shutterMetaTitle : collectionType === 'memento' ? mementoMetaTitle : inceptionMetaTitle;
+    const finalMetaDescription = collectionType === 'shutter-island' ? shutterMetaDescription : collectionType === 'memento' ? mementoMetaDescription : inceptionMetaDescription;
+    const finalMetaKeywords = collectionType === 'shutter-island' ? shutterMetaKeywords : collectionType === 'memento' ? mementoMetaKeywords : inceptionMetaKeywords;
+    const finalOgTitle = collectionType === 'shutter-island' ? shutterOgTitle : collectionType === 'memento' ? mementoOgTitle : inceptionOgTitle;
+    const finalTwitterTitle = collectionType === 'shutter-island' ? shutterTwitterTitle : collectionType === 'memento' ? mementoTwitterTitle : inceptionTwitterTitle;
 
     const movieSchema = {
         "@context": "https://schema.org",
@@ -229,12 +260,12 @@ const SmartMoviePage = ({ movie }) => {
         "datePublished": movie.Year?.toString(),
         "director": {
             "@type": "Person",
-            "name": correctData?.director || movieInfo?.director || "Acclaimed Director"
+            "name": currentMovieDirector
         },
         "duration": `PT${correctData?.runtime?.replace(' min', '') || '120'}M`,
         "aggregateRating": {
             "@type": "AggregateRating",
-            "ratingValue": correctData?.imdbRating || movieInfo?.rating || 7.5,
+            "ratingValue": currentMovieRating,
             "bestRating": 10,
             "worstRating": 1,
             "ratingCount": movieInfo?.audienceScore || 10000
@@ -247,37 +278,6 @@ const SmartMoviePage = ({ movie }) => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // 🔥 FIXED DATA GETTERS WITH CORRECT YEARS
-    const getGenre = () => correctData?.genre || movie.Genre || movieInfo?.genre || 'Thriller';
-    const getRuntime = () => correctData?.runtime || movie.Runtime || (movieInfo?.runtime ? `${movieInfo.runtime} min` : '120 min');
-    const getDirector = () => correctData?.director || movieInfo?.director || movie.Director || 'Acclaimed Director';
-    
-    // 🔥 FIXED getYear() FUNCTION WITH ALL CORRECT YEARS INCLUDING THE USUAL SUSPECTS
-    const getYear = () => {
-        const correctYears = {
-            'Enemy': '2013',
-            'Primer': '2004',
-            'The Fountain': '2006',        // ✅ CORRECT YEAR!
-            'Synecdoche, New York': '2008',
-            'Mulholland Drive': '2001',
-            'Predestination': '2014',
-            'Coherence': '2013',
-            'Donnie Darko': '2001',
-            'Mr. Nobody': '2009',
-            'Shutter Island': '2010',
-            'Memento': '2000',
-            'Inception': '2010',
-            'The Usual Suspects': '1995'   // ✅ ADDED MISSING MOVIE!
-        };
-        
-        return correctYears[movie.Title] || movie.Year || 'Unknown';
-    };
-    
-    const getIMDbRating = () => correctData?.imdbRating || movieInfo?.rating || 7.5;
-    const getComplexityScore = () => movieInfo?.mindBendingIndex || 85;
-    const getMovieQuote = () => correctData?.quote || STRATEGIC_QUOTES[movie.tmdbId] || 'A mind-bending cinematic experience';
-
-    // 🧠 SMART BACK BUTTON FOR ALL THREE COLLECTIONS
     const handleBackClick = () => {
         if (typeof window !== 'undefined') {
             sessionStorage.setItem('returningFromMovie', 'true');
@@ -299,7 +299,7 @@ const SmartMoviePage = ({ movie }) => {
         }
     };
 
-    // 🎨 GET COLLECTION DISPLAY NAME AND COLORS
+    // Collection display helpers
     const getCollectionDisplayName = () => {
         switch (collectionType) {
             case 'shutter-island': return 'Shutter Island';
@@ -340,42 +340,30 @@ const SmartMoviePage = ({ movie }) => {
     };
 
     const colors = getCollectionColors();
+    const optimizedH1 = `${movie.Title} (${currentMovieYear}) - ${currentMovieGenre} Like ${getCollectionDisplayName()}`;
 
     return (
         <div className="min-h-screen bg-black text-white relative overflow-hidden">
-           <Head>
-    {/* 🔥 Enhanced Punchy Title */}
-    <title>Best Movies Like Inception – 10 Best Mind-Bending Thrillers You Must Watch</title>
+            <Head>
+                <title key={`movie-${collectionType}-${movie.imdbID}`}>{finalMetaTitle}</title>
+                <meta key={`movie-description-${collectionType}-${movie.imdbID}`} name="description" content={finalMetaDescription} />
+                <meta key={`movie-keywords-${collectionType}-${movie.imdbID}`} name="keywords" content={finalMetaKeywords} />
+                <meta name="robots" content="index, follow" />
+                <link rel="canonical" href={`https://filmiway.com/movies/${movie.imdbID}`} />
+                <link rel="icon" href="/favicon.ico" />
+                
+                <meta property="og:title" key={`og-title-movie-${collectionType}-${movie.imdbID}`} content={finalOgTitle} />
+                <meta property="og:description" key={`og-desc-movie-${collectionType}-${movie.imdbID}`} content={finalMetaDescription} />
+                <meta property="og:type" content="article" />
+                <meta property="og:url" content={`https://filmiway.com/collection/movies-like-${collectionType}`} />
+                <meta property="og:site_name" content="Filmiway" />
 
-    {/* 🔥 Enhanced Punchy Description */}
-    <meta
-        name="description"
-        content="Stop scrolling! This is the most advanced handpicked list on the internet of 10 mind-bending thrillers like Inception. Carefully analyzed for shocking twists, expert storytelling, and unforgettable endings—perfect for true sci-fi thriller fans!"
-    />
-
-    {/* 🔥 Enhanced Keywords */}
-    <meta
-        name="keywords"
-        content={`${movie.Title}, ${getYear()}, like inception, mind bending movies, sci-fi thrillers, dream layers, non linear storytelling, expert curated, handpicked list, most advanced list on internet, ${getDirector()}, reality bending films, psychological thrillers`}
-    />
-    <meta name="robots" content="index, follow" />
-    <link rel="canonical" href={`https://filmiway.com/movies/${movie.imdbID}`} />
-    <link rel="icon" href="/favicon.ico" />
-    
-    {/* 🔥 Enhanced Open Graph */}
-    <meta property="og:title" content="The Most Advanced List on the Internet – 10 Best Mind-Bending Movies Like Inception 🧠" />
-    <meta property="og:description" content="Warning: This handpicked list of 10 sci-fi thrillers has been carefully analyzed for shocking twists and expert storytelling. Dare to watch them all!" />
-    <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://filmiway.com/collection/movies-like-inception" />
-    <meta property="og:site_name" content="Filmiway" />
-
-    {/* 🔥 Enhanced Twitter Cards */}
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="🧠 The Most Advanced Handpicked List – 10 Best Movies Like Inception" />
-    <meta name="twitter:description" content="Stop scrolling! 10 best mind-bending sci-fi thrillers like Inception, handpicked and deeply analyzed for shocking twists and expert storytelling." />
-    
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }} />
-</Head>
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" key={`twitter-title-movie-${collectionType}-${movie.imdbID}`} content={finalTwitterTitle} />
+                <meta name="twitter:description" key={`twitter-desc-movie-${collectionType}-${movie.imdbID}`} content={finalMetaDescription} />
+                
+                <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }} />
+            </Head>
 
             <SubtleFilmGrain />
 
@@ -459,10 +447,10 @@ const SmartMoviePage = ({ movie }) => {
                                         <div className="flex items-center justify-between">
                                             <div className="flex items-center gap-2 bg-black/40 backdrop-blur-sm px-3 py-2 rounded-full">
                                                 <Star className="w-5 h-5 text-yellow-400 fill-current" />
-                                                <span className="text-white font-bold">{getIMDbRating()}</span>
+                                                <span className="text-white font-bold">{currentMovieRating}</span>
                                             </div>
                                             <div className="bg-yellow-500/20 backdrop-blur-sm px-3 py-2 rounded-full">
-                                                <div className="text-yellow-400 font-bold text-sm">{getComplexityScore()}/100</div>
+                                                <div className="text-yellow-400 font-bold text-sm">{currentComplexityScore}/100</div>
                                                 <div className="text-white/70 text-xs">{colors.scoreLabel}</div>
                                             </div>
                                         </div>
@@ -474,6 +462,7 @@ const SmartMoviePage = ({ movie }) => {
                         {/* MOVIE INFO */}
                         <div className="flex-1 space-y-8 sm:space-y-10 mt-8 lg:mt-0">
                             <div className="text-center lg:text-left">
+                                {/* 🔥 PERFECT SEO-OPTIMIZED H1 TAG */}
                                 <motion.h1 
                                     className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extralight text-white mb-6 leading-tight relative"
                                     style={{ 
@@ -486,16 +475,8 @@ const SmartMoviePage = ({ movie }) => {
                                     transition={{ delay: 0.3, duration: 1 }}
                                 >
                                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-yellow-200 to-white">
-                                        {movie.Title}
+                                        {optimizedH1}
                                     </span>
-                                    <motion.span 
-                                        className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-amber-300 to-yellow-400 block text-2xl sm:text-3xl lg:text-4xl mt-4 font-normal"
-                                        initial={{ opacity: 0 }}
-                                        animate={{ opacity: 1 }}
-                                        transition={{ delay: 0.6 }}
-                                    >
-                                        ({getYear()}) {/* 🔥 SHOWS CORRECT YEAR! */}
-                                    </motion.span>
                                 </motion.h1>
 
                                 {/* SMART COLLECTION BADGE */}
@@ -525,7 +506,7 @@ const SmartMoviePage = ({ movie }) => {
                                         whileHover={{ scale: 1.05, y: -2 }}
                                     >
                                         <Award className="w-5 h-5 text-blue-400" />
-                                        <span className="text-white font-semibold">{getGenre()}</span>
+                                        <span className="text-white font-semibold">{currentMovieGenre}</span>
                                     </motion.span>
                                     
                                     <motion.span 
@@ -533,7 +514,7 @@ const SmartMoviePage = ({ movie }) => {
                                         whileHover={{ scale: 1.05, y: -2 }}
                                     >
                                         <Clock className="w-5 h-5 text-yellow-400" />
-                                        <span className="text-white font-semibold">{getRuntime()}</span>
+                                        <span className="text-white font-semibold">{currentMovieRuntime}</span>
                                     </motion.span>
                                     
                                     <motion.span 
@@ -541,7 +522,7 @@ const SmartMoviePage = ({ movie }) => {
                                         whileHover={{ scale: 1.05, y: -2 }}
                                     >
                                         <span className="text-gray-300">Directed by </span>
-                                        <span className="text-white font-semibold">{getDirector()}</span>
+                                        <span className="text-white font-semibold">{currentMovieDirector}</span>
                                     </motion.span>
                                 </motion.div>
 
@@ -551,7 +532,7 @@ const SmartMoviePage = ({ movie }) => {
                                     animate={{ opacity: 1 }}
                                     transition={{ delay: 0.7, duration: 0.8 }}
                                 >
-                                    "{getMovieQuote()}"
+                                    "{currentMovieQuote}"
                                 </motion.blockquote>
 
                                 {/* 🔥 SMART CONNECTION - SHOW APPROPRIATE ONE BASED ON COLLECTION */}
@@ -577,7 +558,7 @@ const SmartMoviePage = ({ movie }) => {
                                     >
                                         <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                                         <div className="text-4xl sm:text-5xl font-extralight text-transparent bg-clip-text bg-gradient-to-b from-yellow-300 to-yellow-500 mb-2 relative z-10">
-                                            {getComplexityScore()}
+                                            {currentComplexityScore}
                                         </div>
                                         <div className="text-sm text-gray-400 uppercase tracking-wider font-medium relative z-10">
                                             {colors.scoreLabel}
@@ -592,7 +573,7 @@ const SmartMoviePage = ({ movie }) => {
                                         <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                                         <div className="text-4xl sm:text-5xl font-extralight text-white mb-2 flex items-center justify-center lg:justify-start gap-2 relative z-10">
                                             <Star className="w-8 h-8 text-yellow-400 fill-current" />
-                                            {getIMDbRating()}
+                                            {currentMovieRating}
                                         </div>
                                         <div className="text-sm text-gray-400 uppercase tracking-wider font-medium relative z-10">
                                             IMDb Rating
@@ -609,7 +590,6 @@ const SmartMoviePage = ({ movie }) => {
                         transition={{ delay: 1.4, duration: 0.8 }}
                         className="space-y-16 sm:space-y-24"
                     >
-                        {/* 🔥 PASS THE COLLECTION FLAGS TO MOVIEDETAILSSECTION */}
                         <MovieDetailsSection 
                             movie={movie} 
                             fromMementoCollection={fromMementoCollection}
@@ -624,7 +604,6 @@ const SmartMoviePage = ({ movie }) => {
     );
 };
 
-// ✅ SSG Functions - STATIC SITE GENERATION
 export async function getStaticPaths() {
     const paths = COMPLETE_MOVIE_DATABASE.map((movie) => ({
         params: { id: movie.imdbID }

@@ -1,4 +1,4 @@
-// pages/movies/like-shutter-island/[id].js - 💚 FUCKING GREEN EVERYWHERE! NO MORE RED SHIT!
+// pages/movies/like-shutter-island/[id].js - ABSOLUTELY FINAL WORKING VERSION - NO FUNCTION CALLS
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -13,91 +13,89 @@ import TMDBAttribution from '../../../components/TMDBAttribution';
 
 // 🔥 CORRECTED PATHS FOR DATA - GO UP 3 LEVELS TO GET TO utils/
 import { COMPLETE_MOVIE_DATABASE, COMPLETE_MOVIE_DATA, STRATEGIC_QUOTES } from '../../../utils/movieData';
-import { SENSITIVE_TIMELINES, getSensitiveContentTypes } from '../../../utils/sensitiveContent';
 
-const TMDB_API_KEY = '6054e5498fb2619274454959c38bbdfa';
+const MOVIE_YEARS = {
+    'Enemy': '2013',
+    'Primer': '2004',
+    'The Fountain': '2006',
+    'Synecdoche, New York': '2008',
+    'Mulholland Drive': '2001',
+    'Predestination': '2014',
+    'Coherence': '2013',
+    'Donnie Darko': '2001',
+    'Mr. Nobody': '2009',
+    'Shutter Island': '2010',
+    'Memento': '2000',
+    'Inception': '2010',
+    'The Usual Suspects': '1995'
+};
 
 // 🎬 COMPLETE MOVIE DATA WITH SHUTTER ISLAND CONNECTIONS
 const MOVIE_DATA_BY_TITLE = {
     'Primer': {
-        imdbRating: 6.9,
-        genre: 'Sci-Fi Thriller',
-        runtime: '77 min',
-        director: 'Shane Carruth',
+        imdbRating: 6.9, genre: 'Sci-Fi Thriller', runtime: '77 min', director: 'Shane Carruth',
         quote: 'What happens if it actually works?',
         shutterConnection: 'Like Shutter Island, Primer creates paranoia through unreliable perception and reality distortion. Both films feature protagonists who cannot trust their understanding of events unfolding around them.'
     },
     'Synecdoche, New York': {
-        imdbRating: 7.5,
-        genre: 'Psychological Drama',
-        runtime: '124 min',
-        director: 'Charlie Kaufman',
+        imdbRating: 7.5, genre: 'Psychological Drama', runtime: '124 min', director: 'Charlie Kaufman',
         quote: 'Most of your time is spent being dead or not yet born.',
         shutterConnection: 'Like Shutter Island, Synecdoche explores mental deterioration and the fragmentation of identity through psychological complexity and unreliable narrative structure.'
     },
     'Mulholland Drive': {
-        imdbRating: 7.9,
-        genre: 'Psychological Mystery',
-        runtime: '147 min',
-        director: 'David Lynch',
+        imdbRating: 7.9, genre: 'Psychological Mystery', runtime: '147 min', director: 'David Lynch',
         quote: 'I mean I just came here from Deep River, Ontario, and now I\'m in this dream place.',
         shutterConnection: 'Like Shutter Island, Mulholland Drive uses fragmented identity and memory loss to create a haunting psychological mystery with shocking revelations about reality.'
     },
     'Predestination': {
-        imdbRating: 7.4,
-        genre: 'Sci-Fi Thriller',
-        runtime: '97 min',
-        director: 'Michael & Peter Spierig',
+        imdbRating: 7.4, genre: 'Sci-Fi Thriller', runtime: '97 min', director: 'Michael & Peter Spierig',
         quote: 'The snake that eats its own tail, forever and ever.',
         shutterConnection: 'Like Shutter Island, Predestination gradually reveals the truth about identity confusion through careful psychological manipulation and twisted revelations.'
     },
     'Coherence': {
-        imdbRating: 7.2,
-        genre: 'Sci-Fi Thriller',
-        runtime: '89 min',
-        director: 'James Ward Byrkit',
+        imdbRating: 7.2, genre: 'Sci-Fi Thriller', runtime: '89 min', director: 'James Ward Byrkit',
         quote: 'This was taken tonight. What? How do you know that? I bought this sweater today.',
         shutterConnection: 'Like Shutter Island, Coherence creates psychological tension through reality confusion and paranoia, leaving viewers questioning what is real versus illusion.'
     },
     'Donnie Darko': {
-        imdbRating: 8.0,
-        genre: 'Sci-Fi Mystery',
-        runtime: '113 min',
-        director: 'Richard Kelly',
+        imdbRating: 8.0, genre: 'Sci-Fi Mystery', runtime: '113 min', director: 'Richard Kelly',
         quote: 'Destruction is a form of creation.',
         shutterConnection: 'Like Shutter Island, Donnie Darko explores psychological instability and mental illness through atmospheric storytelling and reality distortion.'
     },
     'Enemy': {
-        imdbRating: 6.9,
-        genre: 'Psychological Thriller',
-        runtime: '91 min',
-        director: 'Denis Villeneuve',
+        imdbRating: 6.9, genre: 'Psychological Thriller', runtime: '91 min', director: 'Denis Villeneuve',
         quote: 'You never know how your day is gonna turn out.',
         shutterConnection: 'Like Shutter Island, Enemy creates psychological horror through identity crisis and the complete breakdown of self-recognition and reality.'
     },
     'The Fountain': {
-        imdbRating: 7.2,
-        genre: 'Sci-Fi Drama',
-        runtime: '96 min',
-        director: 'Darren Aronofsky',
+        imdbRating: 7.2, genre: 'Sci-Fi Drama', runtime: '96 min', director: 'Darren Aronofsky',
         quote: 'Death is a disease...And there\'s a cure.',
         shutterConnection: 'Like Shutter Island, The Fountain deals with psychological trauma, loss, and the cyclical nature of memory and identity through multiple timelines.'
     },
     'Mr. Nobody': {
-        imdbRating: 7.8,
-        genre: 'Sci-Fi Drama',
-        runtime: '141 min',
-        director: 'Jaco Van Dormael',
+        imdbRating: 7.8, genre: 'Sci-Fi Drama', runtime: '141 min', director: 'Jaco Van Dormael',
         quote: 'Each of these lives is the right one! Every path is the right path.',
         shutterConnection: 'Like Shutter Island, Mr. Nobody explores fragmented memory and multiple realities through psychological complexity and identity questioning.'
     },
     'The Usual Suspects': {
-        imdbRating: 8.5,
-        genre: 'Crime Thriller',
-        runtime: '106 min',
-        director: 'Bryan Singer',
+        imdbRating: 8.5, genre: 'Crime Thriller', runtime: '106 min', director: 'Bryan Singer',
         quote: 'The greatest trick the devil ever pulled was convincing the world he didn\'t exist.',
         shutterConnection: 'Like Shutter Island, The Usual Suspects builds to a shocking identity revelation through unreliable narration and masterful psychological manipulation.'
+    },
+    'Shutter Island': {
+        imdbRating: 8.2, genre: 'Psychological Thriller', runtime: '138 min', director: 'Martin Scorsese',
+        quote: 'Which would be worse: To live as a monster, or to die as a good man?',
+        shutterConnection: 'The definitive psychological thriller that inspired this entire collection of mind-bending films exploring identity crisis, unreliable narration, and shocking revelations about reality.'
+    },
+    'Memento': {
+        imdbRating: 8.4, genre: 'Neo-Noir Thriller', runtime: '113 min', director: 'Christopher Nolan',
+        quote: 'I have to believe in a world outside my own mind.',
+        shutterConnection: 'Like Shutter Island, Memento explores psychological manipulation and the unreliable nature of memory through complex narrative structure and identity questioning.'
+    },
+    'Inception': {
+        imdbRating: 8.8, genre: 'Sci-Fi Thriller', runtime: '148 min', director: 'Christopher Nolan',
+        quote: 'An idea is like a virus.',
+        shutterConnection: 'Like Shutter Island, Inception explores psychological complexity through reality questioning and the unreliable nature of perception and memory.'
     }
 };
 
@@ -197,89 +195,10 @@ const ShutterIslandBreadcrumb = ({ movie }) => {
     );
 };
 
-// SCHEMA GENERATION FOR SHUTTER ISLAND SEO
-const generateMovieSchema = (movie) => {
-    const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
-    const correctData = MOVIE_DATA_BY_TITLE[movie.Title];
-    
-    return {
-        "@context": "https://schema.org",
-        "@type": "Movie",
-        "name": movie.Title,
-        "description": movieInfo?.synopsis || `${movie.Title} - A compelling ${correctData?.genre?.toLowerCase() || 'thriller'} film like Shutter Island that explores psychological horror and identity themes`,
-        "genre": movie.Genre,
-        "datePublished": movie.Year?.toString(),
-        "director": {
-            "@type": "Person",
-            "name": correctData?.director || movieInfo?.director || "Acclaimed Director"
-        },
-        "duration": `PT${correctData?.runtime?.replace(' min', '') || '120'}M`,
-        "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": correctData?.imdbRating || movieInfo?.rating || 7.5,
-            "bestRating": 10,
-            "worstRating": 1,
-            "ratingCount": movieInfo?.audienceScore || 10000
-        }
-    };
-};
-
-// 🔥 SHUTTER ISLAND-FOCUSED FAQ SCHEMA
-const generateFAQSchema = (movie) => {
-    const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
-    const sensitiveData = SENSITIVE_TIMELINES[movie.tmdbId];
-    const contentTypes = getSensitiveContentTypes(movie.tmdbId);
-    const correctData = MOVIE_DATA_BY_TITLE[movie.Title];
-    
-    const faqs = [
-        {
-            question: `What makes ${movie.Title} like Shutter Island in terms of psychological thriller themes?`,
-            answer: `${movie.Title} explores psychological horror and identity confusion similar to Shutter Island through ${correctData?.genre || 'psychological thriller'} elements. Both films feature protagonists who struggle with unreliable perceptions and shocking revelations about reality.`
-        },
-        {
-            question: `Who directed ${movie.Title} and what is its connection to Shutter Island-style films?`,
-            answer: `${movie.Title} was directed by ${correctData?.director || movieInfo?.director || 'acclaimed filmmaker'} in ${movie.Year}. Like Shutter Island, it uses innovative storytelling techniques to explore themes of memory, identity, and psychological complexity through atmospheric horror.`
-        },
-        {
-            question: `Where can I watch ${movie.Title} online?`,
-            answer: `${movie.Title} streaming availability varies by region. Check Netflix, Amazon Prime Video, Apple TV+, Hulu, and other major streaming platforms for current availability in your area. The film is often available for rent or purchase on digital platforms.`
-        },
-        {
-            question: `Does ${movie.Title} have mature content like other Shutter Island-style psychological thrillers?`,
-            answer: sensitiveData?.scenes?.length > 0 
-                ? `Yes, ${movie.Title} contains mature content including ${contentTypes ? contentTypes.join(', ') : 'adult themes, psychological intensity, and complex subject matter'}. The film has ${sensitiveData.scenes.length} scenes with mature content, similar to other psychological horror thrillers.`
-                : `${movie.Title} is suitable for most audiences interested in psychological thriller films like Shutter Island, with minimal mature content that focuses on intellectual and emotional complexity rather than explicit material.`
-        },
-        {
-            question: `How does ${movie.Title} compare to Shutter Island in terms of psychological complexity?`,
-            answer: `${movie.Title} shares Shutter Island's psychological complexity through its ${correctData?.genre || 'thriller'} approach to identity and reality themes. Both films require multiple viewings to fully appreciate their intricate narrative structures and psychological depth.`
-        },
-        {
-            question: `What is the IMDb rating of ${movie.Title} and how does it compare to Shutter Island?`,
-            answer: `${movie.Title} has an IMDb rating of ${correctData?.imdbRating || movieInfo?.rating || '7.5+'}/10. Like Shutter Island (8.2/10), it's highly rated for its innovative storytelling, psychological depth, and reality-twisting narrative that challenges conventional film structure.`
-        }
-    ];
-
-    return {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": faqs.map(faq => ({
-            "@type": "Question",
-            "name": faq.question,
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": faq.answer
-            }
-        }))
-    };
-};
-
 // 🧠 MAIN SHUTTER ISLAND MOVIE PAGE COMPONENT
 const ShutterIslandMoviePage = ({ movie }) => {
     const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
     const correctData = MOVIE_DATA_BY_TITLE[movie.Title];
-    const movieSchema = generateMovieSchema(movie);
-    const faqSchema = generateFAQSchema(movie);
     const [scrollY, setScrollY] = useState(0);
 
     // 🔥 FORCE SHUTTER ISLAND COLLECTION TRACKING
@@ -297,54 +216,83 @@ const ShutterIslandMoviePage = ({ movie }) => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // ✅ FIXED DATA GETTERS - NO MORE '2010' FALLBACK!
-    const getGenre = () => correctData?.genre || movie.Genre || movieInfo?.genre || 'Thriller';
-    const getRuntime = () => correctData?.runtime || movie.Runtime || (movieInfo?.runtime ? `${movieInfo.runtime} min` : '120 min');
-    const getDirector = () => correctData?.director || movieInfo?.director || movie.Director || 'Acclaimed Director';
-    const getYear = () => movie.Year || 'Unknown'; // ✅ FIXED - No more 2010 fallback!
-    const getIMDbRating = () => correctData?.imdbRating || movieInfo?.rating || 7.5;
-    const getComplexityScore = () => movieInfo?.mindBendingIndex || 85;
-    const getMovieQuote = () => correctData?.quote || STRATEGIC_QUOTES[movie.tmdbId] || 'A mind-bending cinematic experience';
+    // ALL MOVIE DATA AS DIRECT VARIABLES - NO FUNCTION CALLS
+    const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.Year || 'Unknown';
+    const currentMovieGenre = correctData?.genre || movie.Genre || movieInfo?.genre || 'Thriller';
+    const currentMovieRuntime = correctData?.runtime || movie.Runtime || (movieInfo?.runtime ? `${movieInfo.runtime} min` : '120 min');
+    const currentMovieDirector = correctData?.director || movieInfo?.director || movie.Director || 'Acclaimed Director';
+    const currentMovieRating = correctData?.imdbRating || movieInfo?.rating || 7.5;
+    const currentComplexityScore = movieInfo?.mindBendingIndex || 85;
+    const currentMovieQuote = correctData?.quote || STRATEGIC_QUOTES[movie.tmdbId] || 'A mind-bending cinematic experience';
+
+    // META DATA AS DIRECT VARIABLES - NO FUNCTION CALLS
+    const metaTitle = "Best Movies Like Shutter Island – 10 Best Mind-Bending Psychological Thrillers You Must Watch";
+    const metaDescription = "Stop scrolling! This is the most advanced handpicked list on the internet of 10 mind-bending thrillers like Shutter Island including *The Usual Suspects*. Carefully analyzed for shocking twists, unreliable narrators, and expert storytelling—perfect for true psychological thriller fans!";
+    const metaKeywords = `${movie.Title}, ${currentMovieYear}, like shutter island, psychological thrillers, unreliable narrator films, identity crisis movies, plot twist movies, martin scorsese shutter island, psychological horror films, reality distortion movies, memory manipulation films, shocking revelations movies`;
+    const ogTitle = "The Most Advanced List on the Internet –  10 Best Mind-Bending Movies Like Shutter Island 🧠";
+    const twitterTitle = "🧠 The Most Advanced Handpicked List – 10 Best Movies Like Shutter Island";
+
+    const movieSchema = {
+        "@context": "https://schema.org",
+        "@type": "Movie",
+        "name": movie.Title,
+        "description": movieInfo?.synopsis || `${movie.Title} - A compelling ${correctData?.genre?.toLowerCase() || 'thriller'} film like Shutter Island that explores psychological horror and identity themes`,
+        "genre": movie.Genre,
+        "datePublished": movie.Year?.toString(),
+        "director": {
+            "@type": "Person",
+            "name": currentMovieDirector
+        },
+        "duration": `PT${correctData?.runtime?.replace(' min', '') || '120'}M`,
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": currentMovieRating,
+            "bestRating": 10,
+            "worstRating": 1,
+            "ratingCount": movieInfo?.audienceScore || 10000
+        }
+    };
+
+    const optimizedH1 = `${movie.Title} (${currentMovieYear}) - ${currentMovieGenre} Like Shutter Island`;
 
     return (
         <div className="min-h-screen bg-black text-white relative overflow-hidden">
-          <Head>
-    {/* 🔥 Meta Title */}
-    <title>Best Movies Like Shutter Island – 10 Best Mind-Bending Thrillers You Must Watch</title>
+            <Head>
+                {/* 🔥 Meta Title - UNIQUE KEY PER MOVIE */}
+                <title key={`movie-shutter-${movie.imdbID}`}>{metaTitle}</title>
 
-    {/* 🔥 Meta Description */}
-    <meta
-        name="description"
-        content="Stop scrolling! This is the most advanced handpicked list on the internet of 10 mind-bending thrillers like Shutter Island. Carefully analyzed for shocking twists, expert storytelling, and unforgettable endings—perfect for true psychological thriller fans!"
-    />
+                {/* 🔥 Meta Description - UNIQUE KEY PER MOVIE */}
+                <meta
+                    key={`movie-description-shutter-${movie.imdbID}`}
+                    name="description"
+                    content={metaDescription}
+                />
 
-    {/* 🔥 Keywords */}
-    <meta
-        name="keywords"
-        content={`${movie.Title}, ${getYear()}, like shutter island, psychological thrillers, mind-bending films, non linear storytelling, expert curated, handpicked list, most advanced list on internet, ${getDirector()}, amnesia movies, identity crisis films`}
-    />
-    <meta name="robots" content="index, follow" />
-    <link rel="canonical" href={`https://filmiway.com/movies/like-shutter-island/${movie.imdbID}`} />
-    <link rel="icon" href="/favicon.ico" />
+                {/* 🔥 Keywords - UNIQUE KEY PER MOVIE */}
+                <meta
+                    key={`movie-keywords-shutter-${movie.imdbID}`}
+                    name="keywords"
+                    content={metaKeywords}
+                />
+                <meta name="robots" content="index, follow" />
+                <link rel="canonical" href={`https://filmiway.com/movies/like-shutter-island/${movie.imdbID}`} />
+                <link rel="icon" href="/favicon.ico" />
 
-    {/* 🔥 Open Graph */}
-    <meta property="og:title" content="The Most Advanced List on the Internet – 10 Mind-Bending Movies Like Shutter Island 🧠" />
-    <meta property="og:description" content="Warning: This handpicked list of 10 psychological thrillers has been carefully analyzed for shocking twists and expert storytelling. Dare to watch them all!" />
-    <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://filmiway.com/collection/movies-like-shutter-island" />
-    <meta property="og:site_name" content="Filmiway" />
-    <meta property="og:image" content="https://filmiway.com/path-to-shutter-poster-collage.jpg" />
+                {/* 🔥 Open Graph - UNIQUE KEYS PER MOVIE */}
+                <meta property="og:title" key={`og-title-movie-shutter-${movie.imdbID}`} content={ogTitle} />
+                <meta property="og:description" key={`og-desc-movie-shutter-${movie.imdbID}`} content={metaDescription} />
+                <meta property="og:type" content="article" />
+                <meta property="og:url" content="https://filmiway.com/collection/movies-like-shutter-island" />
+                <meta property="og:site_name" content="Filmiway" />
 
-    {/* 🔥 Twitter Cards */}
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="🧠 The Most Advanced Handpicked List – 10 Movies Like Shutter Island" />
-    <meta name="twitter:description" content="Stop scrolling! 10 mind-bending psychological thrillers like Shutter Island, handpicked and deeply analyzed for shocking twists and expert storytelling." />
-    <meta name="twitter:image" content="https://filmiway.com/path-to-shutter-poster-collage.jpg" />
+                {/* 🔥 Twitter Cards - UNIQUE KEYS PER MOVIE */}
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" key={`twitter-title-movie-shutter-${movie.imdbID}`} content={twitterTitle} />
+                <meta name="twitter:description" key={`twitter-desc-movie-shutter-${movie.imdbID}`} content={metaDescription} />
 
-    {/* JSON-LD Schema */}
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }} />
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-</Head>
+                {/* JSON-LD Schema */}
+                <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }} />
+            </Head>
 
             <SubtleFilmGrain />
             
@@ -388,13 +336,13 @@ const ShutterIslandMoviePage = ({ movie }) => {
                                             <div className="flex items-center gap-3">
                                                 <div className="flex items-center gap-2 bg-black/40 backdrop-blur-sm px-3 py-2 rounded-full">
                                                     <Star className="w-5 h-5 text-yellow-400 fill-current" />
-                                                    <span className="text-white font-bold">{getIMDbRating()}</span>
+                                                    <span className="text-white font-bold">{currentMovieRating}</span>
                                                 </div>
                                             </div>
                                             <div className="text-right">
                                                 <div className="bg-yellow-500/20 backdrop-blur-sm px-3 py-2 rounded-full">
                                                     <div className="text-yellow-400 font-bold text-sm">
-                                                        {getComplexityScore()}/100
+                                                        {currentComplexityScore}/100
                                                     </div>
                                                     <div className="text-white/70 text-xs">Psych Score</div>
                                                 </div>
@@ -420,16 +368,8 @@ const ShutterIslandMoviePage = ({ movie }) => {
                                     transition={{ delay: 0.3, duration: 1 }}
                                 >
                                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-yellow-200 to-white">
-                                        {movie.Title}
+                                        {optimizedH1}
                                     </span>
-                                    <motion.span 
-                                        className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-amber-300 to-yellow-400 block text-2xl sm:text-3xl lg:text-4xl mt-4 font-normal"
-                                        initial={{ opacity: 0 }}
-                                        animate={{ opacity: 1 }}
-                                        transition={{ delay: 0.6 }}
-                                    >
-                                        ({getYear()})
-                                    </motion.span>
                                 </motion.h1>
 
                                 {/* 🔥 SHUTTER ISLAND COLLECTION BADGE - 💚 MUTED GREEN! */}
@@ -457,7 +397,7 @@ const ShutterIslandMoviePage = ({ movie }) => {
                                         whileHover={{ scale: 1.05, y: -2 }}
                                     >
                                         <Award className="w-5 h-5 text-blue-400" />
-                                        <span className="text-white font-semibold">{getGenre()}</span>
+                                        <span className="text-white font-semibold">{currentMovieGenre}</span>
                                     </motion.span>
                                     
                                     <motion.span 
@@ -465,7 +405,7 @@ const ShutterIslandMoviePage = ({ movie }) => {
                                         whileHover={{ scale: 1.05, y: -2 }}
                                     >
                                         <Clock className="w-5 h-5 text-yellow-400" />
-                                        <span className="text-white font-semibold">{getRuntime()}</span>
+                                        <span className="text-white font-semibold">{currentMovieRuntime}</span>
                                     </motion.span>
                                     
                                     <motion.span 
@@ -473,7 +413,7 @@ const ShutterIslandMoviePage = ({ movie }) => {
                                         whileHover={{ scale: 1.05, y: -2 }}
                                     >
                                         <span className="text-gray-300">Directed by </span>
-                                        <span className="text-white font-semibold">{getDirector()}</span>
+                                        <span className="text-white font-semibold">{currentMovieDirector}</span>
                                     </motion.span>
                                 </motion.div>
 
@@ -483,7 +423,7 @@ const ShutterIslandMoviePage = ({ movie }) => {
                                     animate={{ opacity: 1 }}
                                     transition={{ delay: 0.7, duration: 0.8 }}
                                 >
-                                    "{getMovieQuote()}"
+                                    "{currentMovieQuote}"
                                 </motion.blockquote>
 
                                 {/* 🔥 SHUTTER ISLAND CONNECTION - 💚 MUTED GREEN WITH FORCED STYLES! */}
@@ -504,7 +444,7 @@ const ShutterIslandMoviePage = ({ movie }) => {
                                     >
                                         <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                                         <div className="text-4xl sm:text-5xl font-extralight text-transparent bg-clip-text bg-gradient-to-b from-yellow-300 to-yellow-500 mb-2 relative z-10">
-                                            {getComplexityScore()}
+                                            {currentComplexityScore}
                                         </div>
                                         <div className="text-sm text-gray-400 uppercase tracking-wider font-medium relative z-10">
                                             Psych Score
@@ -520,7 +460,7 @@ const ShutterIslandMoviePage = ({ movie }) => {
                                         <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                                         <div className="text-4xl sm:text-5xl font-extralight text-white mb-2 flex items-center justify-center lg:justify-start gap-2 relative z-10">
                                             <Star className="w-8 h-8 text-yellow-400 fill-current" />
-                                            {getIMDbRating()}
+                                            {currentMovieRating}
                                         </div>
                                         <div className="text-sm text-gray-400 uppercase tracking-wider font-medium relative z-10">
                                             IMDb Rating

@@ -1,4 +1,4 @@
-// pages/movies/like-memento/[id].js - ENHANCED WITH PUNCHY META TITLES & DESCRIPTIONS
+// pages/movies/like-memento/[id].js - ABSOLUTELY FINAL WORKING VERSION - NO FUNCTION CALLS
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -13,91 +13,89 @@ import TMDBAttribution from '../../../components/TMDBAttribution';
 
 // 🔥 CORRECTED PATHS FOR DATA - GO UP 3 LEVELS TO GET TO utils/
 import { COMPLETE_MOVIE_DATABASE, COMPLETE_MOVIE_DATA, STRATEGIC_QUOTES } from '../../../utils/movieData';
-import { SENSITIVE_TIMELINES, getSensitiveContentTypes } from '../../../utils/sensitiveContent';
 
-const TMDB_API_KEY = '6054e5498fb2619274454959c38bbdfa';
+const MOVIE_YEARS = {
+    'Enemy': '2013',
+    'Primer': '2004',
+    'The Fountain': '2006',
+    'Synecdoche, New York': '2008',
+    'Mulholland Drive': '2001',
+    'Predestination': '2014',
+    'Coherence': '2013',
+    'Donnie Darko': '2001',
+    'Mr. Nobody': '2009',
+    'Shutter Island': '2010',
+    'Memento': '2000',
+    'Inception': '2010',
+    'The Usual Suspects': '1995'
+};
 
 // 🎬 COMPLETE MOVIE DATA WITH MEMENTO CONNECTIONS
 const MOVIE_DATA_BY_TITLE = {
     'Shutter Island': {
-        imdbRating: 8.2,
-        genre: 'Psychological Thriller',
-        runtime: '138 min',
-        director: 'Martin Scorsese',
+        imdbRating: 8.2, genre: 'Psychological Thriller', runtime: '138 min', director: 'Martin Scorsese',
         quote: 'Which would be worse: To live as a monster, or to die as a good man?',
         mementoConnection: 'Like Memento, Shutter Island explores unreliable memory and fragmented identity through psychological manipulation. Both films feature protagonists who cannot trust their own memories.'
     },
     'Mr. Nobody': {
-        imdbRating: 7.7,
-        genre: 'Sci-Fi Drama',
-        runtime: '141 min',
-        director: 'Jaco Van Dormael',
+        imdbRating: 7.7, genre: 'Sci-Fi Drama', runtime: '141 min', director: 'Jaco Van Dormael',
         quote: 'Each of these lives is the right one! Every path is the right path.',
         mementoConnection: 'Like Memento, Mr. Nobody questions the nature of memory and identity through non-linear storytelling. Both films explore how memory shapes our perception of reality.'
     },
     'Primer': {
-        imdbRating: 6.9,
-        genre: 'Sci-Fi Thriller',
-        runtime: '77 min',
-        director: 'Shane Carruth',
+        imdbRating: 6.9, genre: 'Sci-Fi Thriller', runtime: '77 min', director: 'Shane Carruth',
         quote: 'What happens if it actually works?',
         mementoConnection: 'Like Memento, Primer uses complex timeline structure to create confusion about sequence of events. Both films require multiple viewings to fully understand the narrative.'
     },
     'Synecdoche, New York': {
-        imdbRating: 7.5,
-        genre: 'Psychological Drama',
-        runtime: '124 min',
-        director: 'Charlie Kaufman',
+        imdbRating: 7.5, genre: 'Psychological Drama', runtime: '124 min', director: 'Charlie Kaufman',
         quote: 'Most of your time is spent being dead or not yet born.',
         mementoConnection: 'Like Memento, Synecdoche explores fragmented identity and the unreliability of memory and perception. Both films deal with characters losing their sense of self through narrative complexity.'
     },
     'Mulholland Drive': {
-        imdbRating: 7.9,
-        genre: 'Psychological Mystery',
-        runtime: '147 min',
-        director: 'David Lynch',
+        imdbRating: 7.9, genre: 'Psychological Mystery', runtime: '147 min', director: 'David Lynch',
         quote: 'I mean I just came here from Deep River, Ontario, and now I\'m in this dream place.',
         mementoConnection: 'Like Memento, Mulholland Drive uses non-linear narrative to blur the line between reality and delusion. Both films feature protagonists struggling with memory loss and fragmented identity.'
     },
     'Predestination': {
-        imdbRating: 7.4,
-        genre: 'Sci-Fi Thriller',
-        runtime: '97 min',
-        director: 'Michael Spierig, Peter Spierig',
+        imdbRating: 7.4, genre: 'Sci-Fi Thriller', runtime: '97 min', director: 'Michael Spierig, Peter Spierig',
         quote: 'The snake that eats its own tail, forever and ever.',
         mementoConnection: 'Like Memento, Predestination explores identity confusion through a temporal loop structure. Both films reveal information gradually to create confusion about the protagonist\'s true identity.'
     },
     'Coherence': {
-        imdbRating: 7.2,
-        genre: 'Sci-Fi Thriller',
-        runtime: '89 min',
-        director: 'James Ward Byrkit',
+        imdbRating: 7.2, genre: 'Sci-Fi Thriller', runtime: '89 min', director: 'James Ward Byrkit',
         quote: 'This was taken tonight. What? How do you know that? I bought this sweater today.',
         mementoConnection: 'Like Memento, Coherence creates confusion about reality through memory inconsistencies. Both films leave viewers questioning what actually happened.'
     },
     'Donnie Darko': {
-        imdbRating: 8.0,
-        genre: 'Sci-Fi Mystery',
-        runtime: '113 min',
-        director: 'Richard Kelly',
+        imdbRating: 8.0, genre: 'Sci-Fi Mystery', runtime: '113 min', director: 'Richard Kelly',
         quote: 'Destruction is a form of creation.',
         mementoConnection: 'Like Memento, Donnie Darko explores mental confusion and the unreliability of perception. Both films feature protagonists who cannot trust their understanding of reality.'
     },
     'Enemy': {
-        imdbRating: 6.9,
-        genre: 'Psychological Thriller',
-        runtime: '91 min',
-        director: 'Denis Villeneuve',
+        imdbRating: 6.9, genre: 'Psychological Thriller', runtime: '91 min', director: 'Denis Villeneuve',
         quote: 'You never know how your day is gonna turn out.',
         mementoConnection: 'Like Memento, Enemy explores identity crisis and the fragmentation of self. Both films feature protagonists who cannot trust their own memories or perceptions.'
     },
     'The Fountain': {
-        imdbRating: 7.2,
-        genre: 'Sci-Fi Drama',
-        runtime: '96 min',
-        director: 'Darren Aronofsky',
+        imdbRating: 7.2, genre: 'Sci-Fi Drama', runtime: '96 min', director: 'Darren Aronofsky',
         quote: 'Death is a disease...And there\'s a cure.',
         mementoConnection: 'Like Memento, The Fountain deals with memory, loss, and the nature of time and identity. Both films explore how memory and loss shape our understanding of self.'
+    },
+    'Memento': {
+        imdbRating: 8.4, genre: 'Neo-Noir Thriller', runtime: '113 min', director: 'Christopher Nolan',
+        quote: 'I have to believe in a world outside my own mind.',
+        mementoConnection: 'The definitive memory-loss thriller that inspired this entire collection of mind-bending films exploring fragmented identity, unreliable narration, and the nature of memory itself.'
+    },
+    'Inception': {
+        imdbRating: 8.8, genre: 'Sci-Fi Thriller', runtime: '148 min', director: 'Christopher Nolan',
+        quote: 'An idea is like a virus.',
+        mementoConnection: 'Like Memento, Inception explores the unreliable nature of memory and perception through complex layered narrative structure and psychological depth.'
+    },
+    'The Usual Suspects': {
+        imdbRating: 8.5, genre: 'Crime Thriller', runtime: '106 min', director: 'Bryan Singer',
+        quote: 'The greatest trick the devil ever pulled was convincing the world he didn\'t exist.',
+        mementoConnection: 'Like Memento, The Usual Suspects builds to a shocking revelation about identity and memory through unreliable narration and masterful psychological manipulation.'
     }
 };
 
@@ -192,89 +190,10 @@ const MementoBreadcrumb = ({ movie }) => {
     );
 };
 
-// SCHEMA GENERATION FOR MEMENTO SEO
-const generateMovieSchema = (movie) => {
-    const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
-    const correctData = MOVIE_DATA_BY_TITLE[movie.Title];
-    
-    return {
-        "@context": "https://schema.org",
-        "@type": "Movie",
-        "name": movie.Title,
-        "description": movieInfo?.synopsis || `${movie.Title} - A compelling ${correctData?.genre?.toLowerCase() || 'thriller'} film like Memento that explores memory and identity themes`,
-        "genre": movie.Genre,
-        "datePublished": movie.Year?.toString(),
-        "director": {
-            "@type": "Person",
-            "name": correctData?.director || movieInfo?.director || "Acclaimed Director"
-        },
-        "duration": `PT${correctData?.runtime?.replace(' min', '') || '120'}M`,
-        "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": correctData?.imdbRating || movieInfo?.rating || 7.5,
-            "bestRating": 10,
-            "worstRating": 1,
-            "ratingCount": movieInfo?.audienceScore || 10000
-        }
-    };
-};
-
-// 🔥 MEMENTO-FOCUSED FAQ SCHEMA
-const generateFAQSchema = (movie) => {
-    const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
-    const sensitiveData = SENSITIVE_TIMELINES[movie.tmdbId];
-    const contentTypes = getSensitiveContentTypes(movie.tmdbId);
-    const correctData = MOVIE_DATA_BY_TITLE[movie.Title];
-    
-    const faqs = [
-        {
-            question: `What makes ${movie.Title} like Memento in terms of memory loss themes?`,
-            answer: `${movie.Title} explores memory loss and identity confusion similar to Memento through ${correctData?.genre || 'psychological thriller'} elements. Both films feature protagonists who struggle with fragmented memories and unreliable perceptions of reality.`
-        },
-        {
-            question: `Who directed ${movie.Title} and what is its connection to Memento-style films?`,
-            answer: `${movie.Title} was directed by ${correctData?.director || movieInfo?.director || 'acclaimed filmmaker'} in ${movie.Year}. Like Memento, it uses innovative storytelling techniques to explore themes of memory, identity, and psychological complexity through non-linear narrative structure.`
-        },
-        {
-            question: `Where can I watch ${movie.Title} online?`,
-            answer: `${movie.Title} streaming availability varies by region. Check Netflix, Amazon Prime Video, Apple TV+, Hulu, and other major streaming platforms for current availability in your area. The film is often available for rent or purchase on digital platforms.`
-        },
-        {
-            question: `Does ${movie.Title} have mature content like other Memento-style psychological thrillers?`,
-            answer: sensitiveData?.scenes?.length > 0 
-                ? `Yes, ${movie.Title} contains mature content including ${contentTypes ? contentTypes.join(', ') : 'adult themes, psychological intensity, and complex subject matter'}. The film has ${sensitiveData.scenes.length} scenes with mature content, similar to other memory-loss psychological thrillers.`
-                : `${movie.Title} is suitable for most audiences interested in memory-loss and psychological thriller films like Memento, with minimal mature content that focuses on intellectual and emotional complexity rather than explicit material.`
-        },
-        {
-            question: `How does ${movie.Title} compare to Memento in terms of psychological complexity?`,
-            answer: `${movie.Title} shares Memento's psychological complexity through its ${correctData?.genre || 'thriller'} approach to memory and identity themes. Both films require multiple viewings to fully appreciate their intricate narrative structures and psychological depth.`
-        },
-        {
-            question: `What is the IMDb rating of ${movie.Title} and how does it compare to Memento?`,
-            answer: `${movie.Title} has an IMDb rating of ${correctData?.imdbRating || movieInfo?.rating || '7.5+'}/10. Like Memento (8.4/10), it's highly rated for its innovative storytelling, psychological depth, and memory-twisting narrative that challenges conventional film structure.`
-        }
-    ];
-
-    return {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": faqs.map(faq => ({
-            "@type": "Question",
-            "name": faq.question,
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": faq.answer
-            }
-        }))
-    };
-};
-
 // 🧠 MAIN MEMENTO MOVIE PAGE COMPONENT
 const MementoMoviePage = ({ movie }) => {
     const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
     const correctData = MOVIE_DATA_BY_TITLE[movie.Title];
-    const movieSchema = generateMovieSchema(movie);
-    const faqSchema = generateFAQSchema(movie);
     const [scrollY, setScrollY] = useState(0);
 
     // 🔥 FORCE MEMENTO COLLECTION TRACKING
@@ -282,6 +201,7 @@ const MementoMoviePage = ({ movie }) => {
         if (typeof window !== 'undefined') {
             sessionStorage.setItem('fromMementoCollection', 'true');
             sessionStorage.removeItem('fromInceptionCollection');
+            sessionStorage.removeItem('fromShutterIslandCollection');
         }
     }, []);
 
@@ -291,54 +211,83 @@ const MementoMoviePage = ({ movie }) => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // ✅ FIXED DATA GETTERS - NO MORE '2010' FALLBACK!
-    const getGenre = () => correctData?.genre || movie.Genre || movieInfo?.genre || 'Thriller';
-    const getRuntime = () => correctData?.runtime || movie.Runtime || (movieInfo?.runtime ? `${movieInfo.runtime} min` : '120 min');
-    const getDirector = () => correctData?.director || movieInfo?.director || movie.Director || 'Acclaimed Director';
-    const getYear = () => movie.Year || 'Unknown'; // ✅ FIXED - No more 2010 fallback!
-    const getIMDbRating = () => correctData?.imdbRating || movieInfo?.rating || 7.5;
-    const getComplexityScore = () => movieInfo?.mindBendingIndex || 85;
-    const getMovieQuote = () => correctData?.quote || STRATEGIC_QUOTES[movie.tmdbId] || 'A mind-bending cinematic experience';
+    // ALL MOVIE DATA AS DIRECT VARIABLES - HARDCODED FIXES
+    const currentMovieYear = movie.Year || MOVIE_YEARS[movie.Title] || 'Unknown';
+    const currentMovieGenre = correctData?.genre || movie.Genre || movieInfo?.genre || 'Thriller';
+    const currentMovieRuntime = correctData?.runtime || movie.Runtime || (movieInfo?.runtime ? `${movieInfo.runtime} min` : '120 min');
+    const currentMovieDirector = correctData?.director || movieInfo?.director || movie.Director || 'Acclaimed Director';
+    const currentMovieRating = correctData?.imdbRating || movieInfo?.rating || 7.5;
+    const currentComplexityScore = movieInfo?.mindBendingIndex || 85;
+    const currentMovieQuote = correctData?.quote || STRATEGIC_QUOTES[movie.tmdbId] || 'A mind-bending cinematic experience';
+
+    // META DATA AS DIRECT VARIABLES
+    const metaTitle = "Best Movies Like Memento – 10 Best Mind-Bending Memory Loss Thrillers You Must Watch";
+    const metaDescription = "Stop scrolling! This is the most advanced handpicked list on the internet of 10 mind-bending memory loss thrillers like Memento. Carefully analyzed for shocking twists, non-linear storytelling, and unforgettable endings—perfect for true psychological thriller fans!";
+    const metaKeywords = `${movie.Title}, ${currentMovieYear}, like memento, psychological thrillers, memory loss films, non linear storytelling, christopher nolan memento, fragmented identity movies, unreliable narrator films, psychological complexity films`;
+    const ogTitle = "The Most Advanced List on the Internet – 10 Best Mind-Bending Movies Like Memento 🧠";
+    const twitterTitle = "🧠 The Most Advanced Handpicked List – 10 Best Movies Like Memento";
+
+    const movieSchema = {
+        "@context": "https://schema.org",
+        "@type": "Movie",
+        "name": movie.Title,
+        "description": movieInfo?.synopsis || `${movie.Title} - A compelling ${correctData?.genre?.toLowerCase() || 'thriller'} film like Memento that explores memory and identity themes`,
+        "genre": movie.Genre,
+        "datePublished": movie.Year?.toString(),
+        "director": {
+            "@type": "Person",
+            "name": currentMovieDirector
+        },
+        "duration": `PT${correctData?.runtime?.replace(' min', '') || '120'}M`,
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": currentMovieRating,
+            "bestRating": 10,
+            "worstRating": 1,
+            "ratingCount": movieInfo?.audienceScore || 10000
+        }
+    };
+
+    const optimizedH1 = `${movie.Title} (${currentMovieYear}) - ${currentMovieGenre} Like Memento`;
 
     return (
         <div className="min-h-screen bg-black text-white relative overflow-hidden">
-           <Head>
-    {/* 🔥 Meta Title */}
-    <title>Best Movies Like Memento – 10 Best Mind-Bending Thrillers You Must Watch</title>
+            <Head>
+                {/* 🔥 Meta Title - UNIQUE KEY PER MOVIE FOR MEMENTO */}
+                <title key={`movie-memento-${movie.imdbID}`}>{metaTitle}</title>
 
-    {/* 🔥 Meta Description */}
-    <meta
-        name="description"
-        content="Stop scrolling! This is the most advanced handpicked list on the internet of 10 mind-bending thrillers like Memento. Carefully analyzed for shocking twists, expert storytelling, and unforgettable endings—perfect for true psychological thriller fans!"
-    />
+                {/* 🔥 Meta Description - UNIQUE KEY PER MOVIE FOR MEMENTO */}
+                <meta
+                    key={`movie-description-memento-${movie.imdbID}`}
+                    name="description"
+                    content={metaDescription}
+                />
 
-    {/* 🔥 Keywords */}
-    <meta
-        name="keywords"
-        content={`${movie.Title}, ${getYear()}, like memento, psychological thrillers, memory twisting films, non linear storytelling, expert curated, handpicked list, most advanced list on internet, ${getDirector()}, amnesia movies, identity crisis films`}
-    />
-    <meta name="robots" content="index, follow" />
-    <link rel="canonical" href={`https://filmiway.com/movies/like-memento/${movie.imdbID}`} />
-    <link rel="icon" href="/favicon.ico" />
+                {/* 🔥 Keywords - UNIQUE KEY PER MOVIE FOR MEMENTO */}
+                <meta
+                    key={`movie-keywords-memento-${movie.imdbID}`}
+                    name="keywords"
+                    content={metaKeywords}
+                />
+                <meta name="robots" content="index, follow" />
+                <link rel="canonical" href={`https://filmiway.com/movies/like-memento/${movie.imdbID}`} />
+                <link rel="icon" href="/favicon.ico" />
 
-    {/* 🔥 Open Graph */}
-    <meta property="og:title" content="The Most Advanced List on the Internet – 10 Mind-Bending Movies Like Memento 🧠" />
-    <meta property="og:description" content="Warning: This handpicked list of 10 psychological thrillers has been carefully analyzed for shocking twists and expert storytelling. Dare to watch them all!" />
-    <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://filmiway.com/collection/movies-like-memento" />
-    <meta property="og:site_name" content="Filmiway" />
-    <meta property="og:image" content="https://filmiway.com/path-to-poster-collage.jpg" />
+                {/* 🔥 Open Graph - UNIQUE KEYS PER MOVIE FOR MEMENTO */}
+                <meta property="og:title" key={`og-title-movie-memento-${movie.imdbID}`} content={ogTitle} />
+                <meta property="og:description" key={`og-desc-movie-memento-${movie.imdbID}`} content={metaDescription} />
+                <meta property="og:type" content="article" />
+                <meta property="og:url" content="https://filmiway.com/collection/movies-like-memento" />
+                <meta property="og:site_name" content="Filmiway" />
 
-    {/* 🔥 Twitter Cards */}
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="🧠 The Most Advanced Handpicked List – 10 Movies Like Memento" />
-    <meta name="twitter:description" content="Stop scrolling! 10 best mind-bending psychological thrillers like Memento, handpicked and deeply analyzed for shocking twists and expert storytelling." />
-    <meta name="twitter:image" content="https://filmiway.com/path-to-poster-collage.jpg" />
+                {/* 🔥 Twitter Cards - UNIQUE KEYS PER MOVIE FOR MEMENTO */}
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" key={`twitter-title-movie-memento-${movie.imdbID}`} content={twitterTitle} />
+                <meta name="twitter:description" key={`twitter-desc-movie-memento-${movie.imdbID}`} content={metaDescription} />
 
-    {/* JSON-LD Schema */}
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }} />
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-</Head>
+                {/* JSON-LD Schema */}
+                <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }} />
+            </Head>
 
             <SubtleFilmGrain />
             
@@ -382,13 +331,13 @@ const MementoMoviePage = ({ movie }) => {
                                             <div className="flex items-center gap-3">
                                                 <div className="flex items-center gap-2 bg-black/40 backdrop-blur-sm px-3 py-2 rounded-full">
                                                     <Star className="w-5 h-5 text-yellow-400 fill-current" />
-                                                    <span className="text-white font-bold">{getIMDbRating()}</span>
+                                                    <span className="text-white font-bold">{currentMovieRating}</span>
                                                 </div>
                                             </div>
                                             <div className="text-right">
                                                 <div className="bg-yellow-500/20 backdrop-blur-sm px-3 py-2 rounded-full">
                                                     <div className="text-yellow-400 font-bold text-sm">
-                                                        {getComplexityScore()}/100
+                                                        {currentComplexityScore}/100
                                                     </div>
                                                     <div className="text-white/70 text-xs">Memory Score</div>
                                                 </div>
@@ -414,16 +363,8 @@ const MementoMoviePage = ({ movie }) => {
                                     transition={{ delay: 0.3, duration: 1 }}
                                 >
                                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-yellow-200 to-white">
-                                        {movie.Title}
+                                        {optimizedH1}
                                     </span>
-                                    <motion.span 
-                                        className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-amber-300 to-yellow-400 block text-2xl sm:text-3xl lg:text-4xl mt-4 font-normal"
-                                        initial={{ opacity: 0 }}
-                                        animate={{ opacity: 1 }}
-                                        transition={{ delay: 0.6 }}
-                                    >
-                                        ({getYear()})
-                                    </motion.span>
                                 </motion.h1>
 
                                 {/* MEMENTO COLLECTION BADGE - PURPLE FILLED */}
@@ -451,7 +392,7 @@ const MementoMoviePage = ({ movie }) => {
                                         whileHover={{ scale: 1.05, y: -2 }}
                                     >
                                         <Award className="w-5 h-5 text-blue-400" />
-                                        <span className="text-white font-semibold">{getGenre()}</span>
+                                        <span className="text-white font-semibold">{currentMovieGenre}</span>
                                     </motion.span>
                                     
                                     <motion.span 
@@ -459,7 +400,7 @@ const MementoMoviePage = ({ movie }) => {
                                         whileHover={{ scale: 1.05, y: -2 }}
                                     >
                                         <Clock className="w-5 h-5 text-yellow-400" />
-                                        <span className="text-white font-semibold">{getRuntime()}</span>
+                                        <span className="text-white font-semibold">{currentMovieRuntime}</span>
                                     </motion.span>
                                     
                                     <motion.span 
@@ -467,7 +408,7 @@ const MementoMoviePage = ({ movie }) => {
                                         whileHover={{ scale: 1.05, y: -2 }}
                                     >
                                         <span className="text-gray-300">Directed by </span>
-                                        <span className="text-white font-semibold">{getDirector()}</span>
+                                        <span className="text-white font-semibold">{currentMovieDirector}</span>
                                     </motion.span>
                                 </motion.div>
 
@@ -477,7 +418,7 @@ const MementoMoviePage = ({ movie }) => {
                                     animate={{ opacity: 1 }}
                                     transition={{ delay: 0.7, duration: 0.8 }}
                                 >
-                                    "{getMovieQuote()}"
+                                    "{currentMovieQuote}"
                                 </motion.blockquote>
 
                                 {/* MEMENTO CONNECTION - PURPLE FILLED */}
@@ -498,7 +439,7 @@ const MementoMoviePage = ({ movie }) => {
                                     >
                                         <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                                         <div className="text-4xl sm:text-5xl font-extralight text-transparent bg-clip-text bg-gradient-to-b from-yellow-300 to-yellow-500 mb-2 relative z-10">
-                                            {getComplexityScore()}
+                                            {currentComplexityScore}
                                         </div>
                                         <div className="text-sm text-gray-400 uppercase tracking-wider font-medium relative z-10">
                                             Memory Score
@@ -514,7 +455,7 @@ const MementoMoviePage = ({ movie }) => {
                                         <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                                         <div className="text-4xl sm:text-5xl font-extralight text-white mb-2 flex items-center justify-center lg:justify-start gap-2 relative z-10">
                                             <Star className="w-8 h-8 text-yellow-400 fill-current" />
-                                            {getIMDbRating()}
+                                            {currentMovieRating}
                                         </div>
                                         <div className="text-sm text-gray-400 uppercase tracking-wider font-medium relative z-10">
                                             IMDb Rating

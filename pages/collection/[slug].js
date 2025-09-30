@@ -1,4 +1,4 @@
-// pages/collection/[slug].js - SEO OPTIMIZED WITH DNA HELIX FIX - TEXT REMOVED
+// pages/collection/[slug].js - SEO OPTIMIZED WITH FIXED DUPLICATE TITLES
 import React, { useState, useEffect, useCallback } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -81,12 +81,6 @@ const StrategicDNAHelix = ({ movie }) => {
                         </motion.div>
                     ))}
                 </div>
-                
-                {/* 🔥 REMOVED THE DESCRIPTIVE TEXT - JUST REMOVED THIS LINE:
-                <p className="text-gray-400 text-sm text-center leading-relaxed max-w-xs">
-                    Algorithmic analysis of narrative complexity and thematic elements
-                </p>
-                */}
             </div>
         </motion.div>
     );
@@ -304,7 +298,7 @@ const CollectionPage = ({ collection, movies }) => {
         }
     };
 
-    // 🔥 PAGE CONTENT
+   // 🔥 PAGE CONTENT WITH DYNAMIC META TITLES FOR EACH COLLECTION
    const getPageContent = () => {
     if (collection.slug === 'movies-like-memento') {
         return {
@@ -603,7 +597,6 @@ const CollectionPage = ({ collection, movies }) => {
         );
     };
 
-    // 🔥 CINEMATIC HEADER WITH CONSISTENT FORMAT
    // 🔥 MOBILE-OPTIMIZED CINEMATIC HEADER - NO COLLISION WITH LOGO
 const CinematicHeader = React.memo(() => {
     return (
@@ -703,7 +696,6 @@ const CinematicHeader = React.memo(() => {
     );
 });
 
-
     // 🔥 CINEMATIC LOADER
     const CinematicLoader = React.memo(() => {
         return (
@@ -792,24 +784,41 @@ const CinematicHeader = React.memo(() => {
 
     return (
         <div className="min-h-screen bg-black text-white relative overflow-hidden">
-            <Head>
-                <title>{pageContent.title}</title>
-                <meta name="description" content={pageContent.description} />
-                <meta name="keywords" content={pageContent.keywords} />
-                <meta name="robots" content="index, follow" />
-                <link rel="canonical" href={`https://filmiway.com/collection/${collection.slug}`} />
-                <link rel="icon" href="/favicon.ico" />
-                
-                <meta property="og:title" content={pageContent.ogTitle} />
-                <meta property="og:description" content={pageContent.description} />
-                <meta property="og:type" content="website" />
-                <meta property="og:url" content={`https://filmiway.com/collection/${collection.slug}`} />
-                <meta property="og:site_name" content="Filmiway" />
-                
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content={pageContent.twitterTitle} />
-                <meta name="twitter:description" content={pageContent.description} />
-            </Head>
+        <Head>
+    {/* 🔥 Meta Title - DYNAMIC & UNIQUE KEY PER COLLECTION */}
+    <title key={`collection-${collection.slug}`}>{pageContent.title}</title>
+
+    {/* 🔥 Meta Description - DYNAMIC & UNIQUE KEY PER COLLECTION */}
+    <meta
+        key={`collection-description-${collection.slug}`}
+        name="description"
+        content={pageContent.description}
+    />
+
+    {/* 🔥 Keywords - DYNAMIC & UNIQUE KEY PER COLLECTION */}
+    <meta
+        key={`collection-keywords-${collection.slug}`}
+        name="keywords"
+        content={pageContent.keywords}
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={`https://filmiway.com/collection/${collection.slug}`} />
+    <link rel="icon" href="/favicon.ico" />
+
+    {/* 🔥 Open Graph - DYNAMIC & UNIQUE KEYS PER COLLECTION */}
+    <meta property="og:title" key={`og-title-collection-${collection.slug}`} content={pageContent.ogTitle} />
+    <meta property="og:description" key={`og-desc-collection-${collection.slug}`} content={pageContent.description} />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content={`https://filmiway.com/collection/${collection.slug}`} />
+    <meta property="og:site_name" content="Filmiway" />
+    <meta property="og:image" content={`https://filmiway.com/path-to-${collection.slug}-poster-collage.jpg`} />
+
+    {/* 🔥 Twitter Cards - DYNAMIC & UNIQUE KEYS PER COLLECTION */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" key={`twitter-title-collection-${collection.slug}`} content={pageContent.twitterTitle} />
+    <meta name="twitter:description" key={`twitter-desc-collection-${collection.slug}`} content={pageContent.description} />
+    <meta name="twitter:image" content={`https://filmiway.com/path-to-${collection.slug}-poster-collage.jpg`} />
+</Head>
 
             <CinematicBackground />
             <StrategicControls 

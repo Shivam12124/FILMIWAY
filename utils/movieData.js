@@ -13,7 +13,7 @@ export const TMDB_CONFIG = {
 
 // ✅ COMPLETE MOVIE DATABASE (REVERSED ORDER: 11 to 1 for collection page) - ADDED THE USUAL SUSPECTS
 export const COMPLETE_MOVIE_DATABASE = [
-    { "tmdbId": 629, "imdbID": "tt0114814", "Title": "*The Usual Suspects*", "year": 1995, "genre": "Crime", "runtime": 106, "rank": 11 },
+    { "tmdbId": 629, "imdbID": "tt0114814", "Title": "The Usual Suspects", "year": 1995, "genre": "Crime", "runtime": 106, "rank": 11 },
     { "tmdbId": 11324, "imdbID": "tt0825232", "Title": "Shutter Island", "year": 2010, "genre": "Thriller", "runtime": 138, "rank": 10 },
     { "tmdbId": 31011, "imdbID": "tt1130884", "Title": "Mr. Nobody", "year": 2009, "genre": "Sci-Fi", "runtime": 141, "rank": 9 },
     { "tmdbId": 1381, "imdbID": "tt0414993", "Title": "The Fountain", "year": 2006, "genre": "Drama", "runtime": 96, "rank": 8 },
