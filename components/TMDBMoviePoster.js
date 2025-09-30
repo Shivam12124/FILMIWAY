@@ -1,5 +1,6 @@
-// components/TMDBMoviePoster.js - FIXED WITH CORRECT SEARCH FALLBACK
+// components/TMDBMoviePoster.js - PERFORMANCE OPTIMIZED WITH NEXT.JS IMAGE
 import React, { useState, useEffect, useCallback } from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { COMPLETE_MOVIE_DATA } from '../utils/movieData';
 
@@ -7,7 +8,14 @@ const TMDB_API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
 const TMDB_BASE_URL = 'https://api.themoviedb.org/3';
 const TMDB_IMAGE_BASE_URL = 'https://image.tmdb.org/t/p';
 
-const TMDBMoviePoster = React.memo(({ movie, className = "", alt }) => {
+const TMDBMoviePoster = React.memo(({ 
+    movie, 
+    className = "", 
+    alt, 
+    priority = false,
+    width = 300,
+    height = 450 
+}) => {
     const [posterUrl, setPosterUrl] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [hasError, setHasError] = useState(false);
@@ -143,12 +151,25 @@ const TMDBMoviePoster = React.memo(({ movie, className = "", alt }) => {
                 </div>
             )}
             
-            <img 
-                src={posterUrl || createPlaceholderSVG()} 
-                alt={alt || `${movie.Title} (${movie.Year}) - Movie Poster`} 
-                className={`w-full h-full object-cover rounded-xl transition-all duration-500 ${isLoading ? 'opacity-0' : 'opacity-100'}`} 
-                loading="lazy"
-            />
+            {/* 🚀 NEXT.JS OPTIMIZED IMAGE INSTEAD OF REGULAR IMG */}
+            {posterUrl ? (
+                <Image
+                    src={posterUrl}
+                    alt={alt || `${movie.Title} (${movie.Year}) - Movie Poster`}
+                    width={width}
+                    height={height}
+                    priority={priority}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 300px"
+                    className={`w-full h-full object-cover rounded-xl transition-all duration-500 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
+                />
+            ) : (
+                <img 
+                    src={createPlaceholderSVG()} 
+                    alt={alt || `${movie.Title} (${movie.Year}) - Movie Poster`} 
+                    className={`w-full h-full object-cover rounded-xl transition-all duration-500 ${isLoading ? 'opacity-0' : 'opacity-100'}`} 
+                    loading="lazy"
+                />
+            )}
             
             <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent rounded-xl pointer-events-none" />
             
