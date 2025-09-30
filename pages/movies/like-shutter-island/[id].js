@@ -310,7 +310,7 @@ const ShutterIslandMoviePage = ({ movie }) => {
         <div className="min-h-screen bg-black text-white relative overflow-hidden">
           <Head>
     {/* 🔥 Meta Title */}
-    <title>Best Movies Like Shutter Island – 10 Mind-Bending Thrillers You Must Watch</title>
+    <title>Best Movies Like Shutter Island – 10 Best Mind-Bending Thrillers You Must Watch</title>
 
     {/* 🔥 Meta Description */}
     <meta

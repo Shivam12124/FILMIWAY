@@ -345,7 +345,7 @@ const SmartMoviePage = ({ movie }) => {
         <div className="min-h-screen bg-black text-white relative overflow-hidden">
            <Head>
     {/* 🔥 Enhanced Punchy Title */}
-    <title>Best Movies Like Inception – 10 Mind-Bending Thrillers You Must Watch</title>
+    <title>Best Movies Like Inception – 10 Best Mind-Bending Thrillers You Must Watch</title>
 
     {/* 🔥 Enhanced Punchy Description */}
     <meta
@@ -363,7 +363,7 @@ const SmartMoviePage = ({ movie }) => {
     <link rel="icon" href="/favicon.ico" />
     
     {/* 🔥 Enhanced Open Graph */}
-    <meta property="og:title" content="The Most Advanced List on the Internet – 10 Mind-Bending Movies Like Inception 🧠" />
+    <meta property="og:title" content="The Most Advanced List on the Internet – 10 Best Mind-Bending Movies Like Inception 🧠" />
     <meta property="og:description" content="Warning: This handpicked list of 10 sci-fi thrillers has been carefully analyzed for shocking twists and expert storytelling. Dare to watch them all!" />
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://filmiway.com/collection/movies-like-inception" />
@@ -371,8 +371,8 @@ const SmartMoviePage = ({ movie }) => {
 
     {/* 🔥 Enhanced Twitter Cards */}
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="🧠 The Most Advanced Handpicked List – 10 Movies Like Inception" />
-    <meta name="twitter:description" content="Stop scrolling! 10 mind-bending sci-fi thrillers like Inception, handpicked and deeply analyzed for shocking twists and expert storytelling." />
+    <meta name="twitter:title" content="🧠 The Most Advanced Handpicked List – 10 Best Movies Like Inception" />
+    <meta name="twitter:description" content="Stop scrolling! 10 best mind-bending sci-fi thrillers like Inception, handpicked and deeply analyzed for shocking twists and expert storytelling." />
     
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }} />
 </Head>

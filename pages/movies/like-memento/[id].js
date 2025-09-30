@@ -304,7 +304,7 @@ const MementoMoviePage = ({ movie }) => {
         <div className="min-h-screen bg-black text-white relative overflow-hidden">
            <Head>
     {/* 🔥 Meta Title */}
-    <title>Best Movies Like Memento – 10 Mind-Bending Thrillers You Must Watch</title>
+    <title>Best Movies Like Memento – 10 Best Mind-Bending Thrillers You Must Watch</title>
 
     {/* 🔥 Meta Description */}
     <meta
@@ -332,7 +332,7 @@ const MementoMoviePage = ({ movie }) => {
     {/* 🔥 Twitter Cards */}
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="🧠 The Most Advanced Handpicked List – 10 Movies Like Memento" />
-    <meta name="twitter:description" content="Stop scrolling! 10 mind-bending psychological thrillers like Memento, handpicked and deeply analyzed for shocking twists and expert storytelling." />
+    <meta name="twitter:description" content="Stop scrolling! 10 best mind-bending psychological thrillers like Memento, handpicked and deeply analyzed for shocking twists and expert storytelling." />
     <meta name="twitter:image" content="https://filmiway.com/path-to-poster-collage.jpg" />
 
     {/* JSON-LD Schema */}

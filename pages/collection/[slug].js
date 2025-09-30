@@ -256,17 +256,17 @@ const CollectionPage = ({ collection, movies }) => {
     const getHeaderContent = () => {
         if (collection.slug === 'movies-like-memento') {
             return {
-                title: "Best Movies Like Memento – Top 10 Mind-Bending Thrillers You Must Watch",
+                title: "Best Movies Like Memento – 10 Best Mind-Bending Thrillers You Must Watch",
                 subtitle: "Memory-Twisting Psychological Thrillers with Non-Linear Storytelling Ranked by Complexity"
             };
         } else if (collection.slug === 'movies-like-inception') {
             return {
-                title: "Best Movies Like Inception – Top 10 Mind-Bending Thrillers You Must Watch",
+                title: "Best Movies Like Inception – 10 Best Mind-Bending Thrillers You Must Watch",
                 subtitle: "Reality-Bending Sci-Fi Thrillers with Complex Narratives Ranked by Complexity"
             };
         } else if (collection.slug === 'movies-like-shutter-island') {
             return {
-                title: "Best Movies Like Shutter Island – Top 10 Mind-Bending Thrillers You Must Watch",
+                title: "Best Movies Like Shutter Island – 10 Best Mind-Bending Thrillers You Must Watch",
                 subtitle: "Psychological Thrillers with Unreliable Narrators & Shocking Plot Twists Ranked by Complexity"
             };
         } 
@@ -308,7 +308,7 @@ const CollectionPage = ({ collection, movies }) => {
    const getPageContent = () => {
     if (collection.slug === 'movies-like-memento') {
         return {
-            title: "Best Movies Like Memento – Top 10 Mind-Bending Psychological Thrillers You Must Watch",
+            title: "Best Movies Like Memento – 10 Best Mind-Bending Psychological Thrillers You Must Watch",
             description: "Stop scrolling! This is the most advanced handpicked list on the internet of 10 memory-twisting thrillers like Memento including *The Usual Suspects*. Carefully analyzed for shocking twists, expert storytelling, and unforgettable endings—perfect for true psychological thriller fans!",
             keywords: "movies like memento, films similar to memento, memory loss movies, psychological thrillers, non linear storytelling, christopher nolan memento, identity crisis films, memento similar movies, memory twisting films, amnesia movies, reverse chronology films, unreliable narrator movies, the usual suspects",
             ogTitle: "The Most Advanced List on the Internet – Top 10 Mind-Bending Movies Like Memento 🧠",
@@ -317,20 +317,20 @@ const CollectionPage = ({ collection, movies }) => {
         };
     } else if (collection.slug === 'movies-like-inception') {
         return {
-            title: "Best Movies Like Inception – Top 10 Mind-Bending Thrillers You Must Watch",
+            title: "Best Movies Like Inception – 10 Best Mind-Bending Thrillers You Must Watch",
             description: "Stop scrolling! This is the most advanced handpicked list on the internet of 10 mind-bending thrillers like Inception including *The Usual Suspects*. Carefully analyzed for shocking twists, layered narratives, and expert storytelling—perfect for true psychological thriller fans!",
             keywords: "movies like inception, films similar to inception, mind bending movies, psychological thrillers, complex movies with twists, christopher nolan movies, reality bending films, layered narrative films, inception similar movies, mind bending thrillers, dream logic movies, the usual suspects",
-            ogTitle: "The Most Advanced List on the Internet – Top 10 Mind-Bending Movies Like Inception 🧠",
-            twitterTitle: "🧠 The Most Advanced Handpicked List – Top 10 Movies Like Inception",
+            ogTitle: "The Most Advanced List on the Internet – 10 Best Mind-Bending Movies Like Inception 🧠",
+            twitterTitle: "🧠 The Most Advanced Handpicked List – 10 Best Movies Like Inception",
             progressText: `of Top ${movies.length} Movies Like Inception`
         };
     } else if (collection.slug === 'movies-like-shutter-island') {
         return {
-            title: "Best Movies Like Shutter Island – Top 10 Mind-Bending Psychological Thrillers You Must Watch",
+            title: "Best Movies Like Shutter Island – 10 Best Mind-Bending Psychological Thrillers You Must Watch",
             description: "Stop scrolling! This is the most advanced handpicked list on the internet of 10 mind-bending thrillers like Shutter Island including *The Usual Suspects*. Carefully analyzed for shocking twists, unreliable narrators, and expert storytelling—perfect for true psychological thriller fans!",
             keywords: "movies like shutter island, films similar to shutter island, psychological thrillers, unreliable narrator films, identity crisis movies, plot twist movies, martin scorsese shutter island, psychological horror films, reality distortion movies, memory manipulation films, shocking revelations movies, the usual suspects",
-            ogTitle: "The Most Advanced List on the Internet – Top 10 Mind-Bending Movies Like Shutter Island 🧠",
-            twitterTitle: "🧠 The Most Advanced Handpicked List – Top 10 Movies Like Shutter Island",
+            ogTitle: "The Most Advanced List on the Internet –  10 Best Mind-Bending Movies Like Shutter Island 🧠",
+            twitterTitle: "🧠 The Most Advanced Handpicked List – 10 Best Movies Like Shutter Island",
             progressText: `of Top ${movies.length} Movies Like Shutter Island`
             };
         } 
