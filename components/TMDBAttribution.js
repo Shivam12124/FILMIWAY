@@ -1,6 +1,5 @@
-// components/TMDBAttribution.js - PERFORMANCE OPTIMIZED WITH NEXT.JS IMAGE
+// components/TMDBAttribution.js - REUSABLE TMDB ATTRIBUTION WITH LINK
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 
 const TMDBAttribution = ({ className = "", delay = 5 }) => (
     <motion.div 
@@ -20,14 +19,10 @@ const TMDBAttribution = ({ className = "", delay = 5 }) => (
                     rel="noopener noreferrer"
                     className="flex items-center space-x-2 hover:opacity-80 transition-opacity"
                 >
-                    {/* 🚀 NEXT.JS OPTIMIZED IMAGE WITH EXPLICIT DIMENSIONS */}
-                    <Image
-                        src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg"
-                        alt="The Movie Database"
-                        width={154}
-                        height={20}
+                    <img 
+                        src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg" 
+                        alt="The Movie Database" 
                         className="h-4 w-auto"
-                        priority={false}
                     />
                     <span className="text-blue-400 text-xs hover:text-blue-300 transition-colors">
                         The Movie Database (TMDB)
