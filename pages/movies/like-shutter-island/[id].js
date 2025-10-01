@@ -1,4 +1,4 @@
-// pages/movies/like-shutter-island/[id].js - ABSOLUTELY FINAL WORKING VERSION - NO FUNCTION CALLS
+// pages/movies/like-shutter-island/[id].js - ABSOLUTELY FINAL WORKING VERSION - DYNAMIC META FIXED
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -195,6 +195,15 @@ const ShutterIslandBreadcrumb = ({ movie }) => {
     );
 };
 
+// 🔥 DYNAMIC META CONTENT GENERATOR FOR EACH MOVIE
+const getMovieSpecificMeta = (movie, correctData, currentMovieYear, currentMovieGenre) => {
+    return {
+        title: `${movie.Title} (${currentMovieYear}) - ${currentMovieGenre} Like Shutter Island | Filmiway`,
+        description: `${movie.Title} (${currentMovieYear}) - ${correctData?.shutterConnection || `A compelling ${currentMovieGenre?.toLowerCase()} like Shutter Island exploring psychological horror and identity`}. Analysis, ratings & where to stream.`,
+        keywords: `${movie.Title}, ${currentMovieYear}, like shutter island, ${movie.Title} streaming, ${movie.Title} review, psychological thriller, identity crisis, ${movie.Title} analysis`
+    };
+};
+
 // 🧠 MAIN SHUTTER ISLAND MOVIE PAGE COMPONENT
 const ShutterIslandMoviePage = ({ movie }) => {
     const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
@@ -225,12 +234,8 @@ const ShutterIslandMoviePage = ({ movie }) => {
     const currentComplexityScore = movieInfo?.mindBendingIndex || 85;
     const currentMovieQuote = correctData?.quote || STRATEGIC_QUOTES[movie.tmdbId] || 'A mind-bending cinematic experience';
 
-    // META DATA AS DIRECT VARIABLES - NO FUNCTION CALLS
-    const metaTitle = "Best Movies Like Shutter Island – 10 Best Mind-Bending Psychological Thrillers You Must Watch";
-    const metaDescription = "Stop scrolling! This is the most advanced handpicked list on the internet of 10 mind-bending thrillers like Shutter Island including *The Usual Suspects*. Carefully analyzed for shocking twists, unreliable narrators, and expert storytelling—perfect for true psychological thriller fans!";
-    const metaKeywords = `${movie.Title}, ${currentMovieYear}, like shutter island, psychological thrillers, unreliable narrator films, identity crisis movies, plot twist movies, martin scorsese shutter island, psychological horror films, reality distortion movies, memory manipulation films, shocking revelations movies`;
-    const ogTitle = "The Most Advanced List on the Internet –  10 Best Mind-Bending Movies Like Shutter Island 🧠";
-    const twitterTitle = "🧠 The Most Advanced Handpicked List – 10 Best Movies Like Shutter Island";
+    // 🔥 DYNAMIC META DATA - UNIQUE FOR EACH MOVIE
+    const movieMeta = getMovieSpecificMeta(movie, correctData, currentMovieYear, currentMovieGenre);
 
     const movieSchema = {
         "@context": "https://schema.org",
@@ -258,37 +263,37 @@ const ShutterIslandMoviePage = ({ movie }) => {
     return (
         <div className="min-h-screen bg-black text-white relative overflow-hidden">
             <Head>
-                {/* 🔥 Meta Title - UNIQUE KEY PER MOVIE */}
-                <title key={`movie-shutter-${movie.imdbID}`}>{metaTitle}</title>
+                {/* 🔥 DYNAMIC Meta Title - UNIQUE FOR EACH MOVIE */}
+                <title key={`movie-shutter-${movie.imdbID}`}>{movieMeta.title}</title>
 
-                {/* 🔥 Meta Description - UNIQUE KEY PER MOVIE */}
+                {/* 🔥 DYNAMIC Meta Description - UNIQUE FOR EACH MOVIE */}
                 <meta
                     key={`movie-description-shutter-${movie.imdbID}`}
                     name="description"
-                    content={metaDescription}
+                    content={movieMeta.description}
                 />
 
-                {/* 🔥 Keywords - UNIQUE KEY PER MOVIE */}
+                {/* 🔥 DYNAMIC Keywords - UNIQUE FOR EACH MOVIE */}
                 <meta
                     key={`movie-keywords-shutter-${movie.imdbID}`}
                     name="keywords"
-                    content={metaKeywords}
+                    content={movieMeta.keywords}
                 />
                 <meta name="robots" content="index, follow" />
                 <link rel="canonical" href={`https://filmiway.com/movies/like-shutter-island/${movie.imdbID}`} />
                 <link rel="icon" href="/favicon.ico" />
 
-                {/* 🔥 Open Graph - UNIQUE KEYS PER MOVIE */}
-                <meta property="og:title" key={`og-title-movie-shutter-${movie.imdbID}`} content={ogTitle} />
-                <meta property="og:description" key={`og-desc-movie-shutter-${movie.imdbID}`} content={metaDescription} />
+                {/* 🔥 DYNAMIC Open Graph - UNIQUE FOR EACH MOVIE */}
+                <meta property="og:title" key={`og-title-movie-shutter-${movie.imdbID}`} content={movieMeta.title} />
+                <meta property="og:description" key={`og-desc-movie-shutter-${movie.imdbID}`} content={movieMeta.description} />
                 <meta property="og:type" content="article" />
-                <meta property="og:url" content="https://filmiway.com/collection/movies-like-shutter-island" />
+                <meta property="og:url" content={`https://filmiway.com/movies/like-shutter-island/${movie.imdbID}`} />
                 <meta property="og:site_name" content="Filmiway" />
 
-                {/* 🔥 Twitter Cards - UNIQUE KEYS PER MOVIE */}
+                {/* 🔥 DYNAMIC Twitter Cards - UNIQUE FOR EACH MOVIE */}
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" key={`twitter-title-movie-shutter-${movie.imdbID}`} content={twitterTitle} />
-                <meta name="twitter:description" key={`twitter-desc-movie-shutter-${movie.imdbID}`} content={metaDescription} />
+                <meta name="twitter:title" key={`twitter-title-movie-shutter-${movie.imdbID}`} content={movieMeta.title} />
+                <meta name="twitter:description" key={`twitter-desc-movie-shutter-${movie.imdbID}`} content={movieMeta.description} />
 
                 {/* JSON-LD Schema */}
                 <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }} />

@@ -2,7 +2,15 @@
   "name": "filmiway",
   "version": "1.0.0",
   "description": "Filmiway - Where Every Film Finds Its Way. Complete movie discovery platform.",
-  "keywords": ["filmiway", "movies", "cinema", "film discovery", "movie reviews", "tmdb", "film platform"],
+  "keywords": [
+    "filmiway",
+    "movies",
+    "cinema",
+    "film discovery",
+    "movie reviews",
+    "tmdb",
+    "film platform"
+  ],
   "author": "Filmiway Team",
   "homepage": "https://filmiway.com",
   "repository": {

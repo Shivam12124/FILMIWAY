@@ -271,7 +271,7 @@ export const STRATEGIC_QUOTES = {
     181886: "I don't think I'm me", 
     1381: "Death is the road to awe", 
     31011: "Every path is the right path", 
-    11324: "Which would be worse?",
+    11324: "You're smarter than you look,Marshal",
     629: "The greatest trick the devil ever pulled was convincing the world he didn't exist"
 };
 

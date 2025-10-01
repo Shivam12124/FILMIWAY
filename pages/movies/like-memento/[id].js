@@ -1,4 +1,4 @@
-// pages/movies/like-memento/[id].js - ABSOLUTELY FINAL WORKING VERSION - NO FUNCTION CALLS
+// pages/movies/like-memento/[id].js - ABSOLUTELY FINAL WORKING VERSION - DYNAMIC META FIXED
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -190,6 +190,15 @@ const MementoBreadcrumb = ({ movie }) => {
     );
 };
 
+// 🔥 DYNAMIC META CONTENT GENERATOR FOR EACH MOVIE
+const getMovieSpecificMeta = (movie, correctData, currentMovieYear, currentMovieGenre) => {
+    return {
+        title: `${movie.Title} (${currentMovieYear}) - ${currentMovieGenre} Like Memento | Filmiway`,
+        description: `${movie.Title} (${currentMovieYear}) - ${correctData?.mementoConnection || `A compelling ${currentMovieGenre?.toLowerCase()} like Memento exploring memory and identity`}. Analysis, ratings & where to stream.`,
+        keywords: `${movie.Title}, ${currentMovieYear}, like memento, ${movie.Title} streaming, ${movie.Title} review, memory loss thriller, psychological complexity, ${movie.Title} analysis`
+    };
+};
+
 // 🧠 MAIN MEMENTO MOVIE PAGE COMPONENT
 const MementoMoviePage = ({ movie }) => {
     const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
@@ -220,12 +229,8 @@ const MementoMoviePage = ({ movie }) => {
     const currentComplexityScore = movieInfo?.mindBendingIndex || 85;
     const currentMovieQuote = correctData?.quote || STRATEGIC_QUOTES[movie.tmdbId] || 'A mind-bending cinematic experience';
 
-    // META DATA AS DIRECT VARIABLES
-    const metaTitle = "Best Movies Like Memento – 10 Best Mind-Bending Memory Loss Thrillers You Must Watch";
-    const metaDescription = "Stop scrolling! This is the most advanced handpicked list on the internet of 10 mind-bending memory loss thrillers like Memento. Carefully analyzed for shocking twists, non-linear storytelling, and unforgettable endings—perfect for true psychological thriller fans!";
-    const metaKeywords = `${movie.Title}, ${currentMovieYear}, like memento, psychological thrillers, memory loss films, non linear storytelling, christopher nolan memento, fragmented identity movies, unreliable narrator films, psychological complexity films`;
-    const ogTitle = "The Most Advanced List on the Internet – 10 Best Mind-Bending Movies Like Memento 🧠";
-    const twitterTitle = "🧠 The Most Advanced Handpicked List – 10 Best Movies Like Memento";
+    // 🔥 DYNAMIC META DATA - UNIQUE FOR EACH MOVIE
+    const movieMeta = getMovieSpecificMeta(movie, correctData, currentMovieYear, currentMovieGenre);
 
     const movieSchema = {
         "@context": "https://schema.org",
@@ -253,37 +258,37 @@ const MementoMoviePage = ({ movie }) => {
     return (
         <div className="min-h-screen bg-black text-white relative overflow-hidden">
             <Head>
-                {/* 🔥 Meta Title - UNIQUE KEY PER MOVIE FOR MEMENTO */}
-                <title key={`movie-memento-${movie.imdbID}`}>{metaTitle}</title>
+                {/* 🔥 DYNAMIC Meta Title - UNIQUE FOR EACH MOVIE */}
+                <title key={`movie-memento-${movie.imdbID}`}>{movieMeta.title}</title>
 
-                {/* 🔥 Meta Description - UNIQUE KEY PER MOVIE FOR MEMENTO */}
+                {/* 🔥 DYNAMIC Meta Description - UNIQUE FOR EACH MOVIE */}
                 <meta
                     key={`movie-description-memento-${movie.imdbID}`}
                     name="description"
-                    content={metaDescription}
+                    content={movieMeta.description}
                 />
 
-                {/* 🔥 Keywords - UNIQUE KEY PER MOVIE FOR MEMENTO */}
+                {/* 🔥 DYNAMIC Keywords - UNIQUE FOR EACH MOVIE */}
                 <meta
                     key={`movie-keywords-memento-${movie.imdbID}`}
                     name="keywords"
-                    content={metaKeywords}
+                    content={movieMeta.keywords}
                 />
                 <meta name="robots" content="index, follow" />
                 <link rel="canonical" href={`https://filmiway.com/movies/like-memento/${movie.imdbID}`} />
                 <link rel="icon" href="/favicon.ico" />
 
-                {/* 🔥 Open Graph - UNIQUE KEYS PER MOVIE FOR MEMENTO */}
-                <meta property="og:title" key={`og-title-movie-memento-${movie.imdbID}`} content={ogTitle} />
-                <meta property="og:description" key={`og-desc-movie-memento-${movie.imdbID}`} content={metaDescription} />
+                {/* 🔥 DYNAMIC Open Graph - UNIQUE FOR EACH MOVIE */}
+                <meta property="og:title" key={`og-title-movie-memento-${movie.imdbID}`} content={movieMeta.title} />
+                <meta property="og:description" key={`og-desc-movie-memento-${movie.imdbID}`} content={movieMeta.description} />
                 <meta property="og:type" content="article" />
-                <meta property="og:url" content="https://filmiway.com/collection/movies-like-memento" />
+                <meta property="og:url" content={`https://filmiway.com/movies/like-memento/${movie.imdbID}`} />
                 <meta property="og:site_name" content="Filmiway" />
 
-                {/* 🔥 Twitter Cards - UNIQUE KEYS PER MOVIE FOR MEMENTO */}
+                {/* 🔥 DYNAMIC Twitter Cards - UNIQUE FOR EACH MOVIE */}
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" key={`twitter-title-movie-memento-${movie.imdbID}`} content={twitterTitle} />
-                <meta name="twitter:description" key={`twitter-desc-movie-memento-${movie.imdbID}`} content={metaDescription} />
+                <meta name="twitter:title" key={`twitter-title-movie-memento-${movie.imdbID}`} content={movieMeta.title} />
+                <meta name="twitter:description" key={`twitter-desc-movie-memento-${movie.imdbID}`} content={movieMeta.description} />
 
                 {/* JSON-LD Schema */}
                 <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }} />

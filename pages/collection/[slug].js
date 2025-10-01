@@ -298,47 +298,47 @@ const CollectionPage = ({ collection, movies }) => {
         }
     };
 
-   // 🔥 PAGE CONTENT WITH DYNAMIC META TITLES FOR EACH COLLECTION
-   const getPageContent = () => {
-    if (collection.slug === 'movies-like-memento') {
-        return {
-            title: "Best Movies Like Memento – 10 Best Mind-Bending Psychological Thrillers You Must Watch",
-            description: "Stop scrolling! This is the most advanced handpicked list on the internet of 10 memory-twisting thrillers like Memento including *The Usual Suspects*. Carefully analyzed for shocking twists, expert storytelling, and unforgettable endings—perfect for true psychological thriller fans!",
-            keywords: "movies like memento, films similar to memento, memory loss movies, psychological thrillers, non linear storytelling, christopher nolan memento, identity crisis films, memento similar movies, memory twisting films, amnesia movies, reverse chronology films, unreliable narrator movies, the usual suspects",
-            ogTitle: "The Most Advanced List on the Internet – Top 10 Mind-Bending Movies Like Memento 🧠",
-            twitterTitle: "🧠 The Most Advanced Handpicked List – Top 10 Movies Like Memento",
-            progressText: `of Top ${movies.length} Movies Like Memento`
-        };
-    } else if (collection.slug === 'movies-like-inception') {
-        return {
-            title: "Best Movies Like Inception – 10 Best Mind-Bending Thrillers You Must Watch",
-            description: "Stop scrolling! This is the most advanced handpicked list on the internet of 10 mind-bending thrillers like Inception including *The Usual Suspects*. Carefully analyzed for shocking twists, layered narratives, and expert storytelling—perfect for true psychological thriller fans!",
-            keywords: "movies like inception, films similar to inception, mind bending movies, psychological thrillers, complex movies with twists, christopher nolan movies, reality bending films, layered narrative films, inception similar movies, mind bending thrillers, dream logic movies, the usual suspects",
-            ogTitle: "The Most Advanced List on the Internet – 10 Best Mind-Bending Movies Like Inception 🧠",
-            twitterTitle: "🧠 The Most Advanced Handpicked List – 10 Best Movies Like Inception",
-            progressText: `of Top ${movies.length} Movies Like Inception`
-        };
-    } else if (collection.slug === 'movies-like-shutter-island') {
-        return {
-            title: "Best Movies Like Shutter Island – 10 Best Mind-Bending Psychological Thrillers You Must Watch",
-            description: "Stop scrolling! This is the most advanced handpicked list on the internet of 10 mind-bending thrillers like Shutter Island including *The Usual Suspects*. Carefully analyzed for shocking twists, unreliable narrators, and expert storytelling—perfect for true psychological thriller fans!",
-            keywords: "movies like shutter island, films similar to shutter island, psychological thrillers, unreliable narrator films, identity crisis movies, plot twist movies, martin scorsese shutter island, psychological horror films, reality distortion movies, memory manipulation films, shocking revelations movies, the usual suspects",
-            ogTitle: "The Most Advanced List on the Internet –  10 Best Mind-Bending Movies Like Shutter Island 🧠",
-            twitterTitle: "🧠 The Most Advanced Handpicked List – 10 Best Movies Like Shutter Island",
-            progressText: `of Top ${movies.length} Movies Like Shutter Island`
-            };
-        } 
-        else {
+    // 🔥 STATIC META CONTENT GENERATOR FOR EACH COLLECTION
+    const getStaticMetaContent = () => {
+        if (collection.slug === 'movies-like-memento') {
             return {
-                title: `Best ${collection.title} – Top 10 Curated Movie Collection You Must Watch`,
-                description: `Discover ${collection.title} - ${collection.description || 'A curated collection of exceptional films'}.`,
-                keywords: `${collection.title}, curated movies, film collection, cinema, movie recommendations`,
-                ogTitle: `Best ${collection.title} – Top 10 Curated Collection You Must Watch`,
-                twitterTitle: `Best ${collection.title} – Top 10 Curated Collection You Must Watch`,
-                progressText: `of ${collection.title}`
+                title: "Best Movies Like Memento – 10 Best Mind-Bending Memory Loss Thrillers You Must Watch",
+                description: "Stop scrolling! This is the most advanced handpicked list on the internet of 10 memory-twisting thrillers like Memento including *The Usual Suspects*. Carefully analyzed for shocking twists, expert storytelling, and unforgettable endings—perfect for true psychological thriller fans!",
+                keywords: "movies like memento, films similar to memento, memory loss movies, psychological thrillers, non linear storytelling, christopher nolan memento, identity crisis films, memento similar movies, memory twisting films, amnesia movies, reverse chronology films, unreliable narrator movies, the usual suspects",
+                ogTitle: "The Most Advanced List on the Internet – Top 10 Mind-Bending Movies Like Memento 🧠",
+                twitterTitle: "🧠 The Most Advanced Handpicked List – Top 10 Movies Like Memento",
+                progressText: `of Top ${movies.length} Movies Like Memento`
             };
-        }
-    };
+        } else if (collection.slug === 'movies-like-inception') {
+            return {
+                title: "Best Movies Like Inception – 10 Best Mind-Bending Thrillers You Must Watch",
+                description: "Stop scrolling! This is the most advanced handpicked list on the internet of 10 mind-bending thrillers like Inception including *The Usual Suspects*. Carefully analyzed for shocking twists, layered narratives, and expert storytelling—perfect for true psychological thriller fans!",
+                keywords: "movies like inception, films similar to inception, mind bending movies, psychological thrillers, complex movies with twists, christopher nolan movies, reality bending films, layered narrative films, inception similar movies, mind bending thrillers, dream logic movies, the usual suspects",
+                ogTitle: "The Most Advanced List on the Internet – 10 Best Mind-Bending Movies Like Inception 🧠",
+                twitterTitle: "🧠 The Most Advanced Handpicked List – 10 Best Movies Like Inception",
+                progressText: `of Top ${movies.length} Movies Like Inception`
+            };
+        } else if (collection.slug === 'movies-like-shutter-island') {
+            return {
+                title: "Best Movies Like Shutter Island – 10 Best Mind-Bending Psychological Thrillers You Must Watch",
+                description: "Stop scrolling! This is the most advanced handpicked list on the internet of 10 mind-bending thrillers like Shutter Island including *The Usual Suspects*. Carefully analyzed for shocking twists, unreliable narrators, and expert storytelling—perfect for true psychological thriller fans!",
+                keywords: "movies like shutter island, films similar to shutter island, psychological thrillers, unreliable narrator films, identity crisis movies, plot twist movies, martin scorsese shutter island, psychological horror films, reality distortion movies, memory manipulation films, shocking revelations movies, the usual suspects",
+                ogTitle: "The Most Advanced List on the Internet –  10 Best Mind-Bending Movies Like Shutter Island 🧠",
+                twitterTitle: "🧠 The Most Advanced Handpicked List – 10 Best Movies Like Shutter Island",
+                progressText: `of Top ${movies.length} Movies Like Shutter Island`
+                };
+            } 
+            else {
+                return {
+                    title: `Best ${collection.title} – Top 10 Curated Movie Collection You Must Watch`,
+                    description: `Discover ${collection.title} - ${collection.description || 'A curated collection of exceptional films'}.`,
+                    keywords: `${collection.title}, curated movies, film collection, cinema, movie recommendations`,
+                    ogTitle: `Best ${collection.title} – Top 10 Curated Collection You Must Watch`,
+                    twitterTitle: `Best ${collection.title} – Top 10 Curated Collection You Must Watch`,
+                    progressText: `of ${collection.title}`
+                };
+            }
+        };
 
     const nextMovie = useCallback(() => {
         setCurrentMovieIndex((prev) => (prev + 1) % movies.length);
@@ -418,7 +418,7 @@ const CollectionPage = ({ collection, movies }) => {
     const collectionContent = getCollectionContent();
     const headerContent = getHeaderContent();
     const loaderContent = getLoaderContent();
-    const pageContent = getPageContent();
+    const metaContent = getStaticMetaContent(); // 🔥 STATIC META CONTENT
 
     // 🔥 ENHANCED CINEMATIC EXPLORER SECTION WITH DNA HELIX - SHOWS ON POSITION #10
     const CinematicExplorerSection = ({ currentRank }) => {
@@ -597,7 +597,7 @@ const CollectionPage = ({ collection, movies }) => {
         );
     };
 
-   // 🔥 MOBILE-OPTIMIZED CINEMATIC HEADER - NO COLLISION WITH LOGO
+    // 🔥 MOBILE-OPTIMIZED CINEMATIC HEADER - NO COLLISION WITH LOGO
 const CinematicHeader = React.memo(() => {
     return (
         <header className="text-center mb-8 sm:mb-16 lg:mb-20 px-4 sm:px-6 w-full relative pt-20 sm:pt-16 lg:pt-8">
@@ -785,14 +785,14 @@ const CinematicHeader = React.memo(() => {
     return (
         <div className="min-h-screen bg-black text-white relative overflow-hidden">
       <Head>
-    {/* 🔥 FIXED: UNIQUE TITLE WITH PROPER LENGTH */}
-    <title>{pageContent.title}</title>
+    {/* 🔥 FIXED: STATIC META TITLE */}
+    <title key={`collection-title-${collection.slug}`}>{metaContent.title}</title>
 
-    {/* 🔥 FIXED: UNIQUE DESCRIPTION UNDER 160 CHARS */}
-    <meta name="description" content={pageContent.description} />
+    {/* 🔥 FIXED: STATIC META DESCRIPTION */}
+    <meta key={`collection-desc-${collection.slug}`} name="description" content={metaContent.description} />
 
-    {/* 🔥 FIXED: UNIQUE KEYWORDS PER COLLECTION */}
-    <meta name="keywords" content={pageContent.keywords} />
+    {/* 🔥 FIXED: STATIC META KEYWORDS */}
+    <meta key={`collection-keywords-${collection.slug}`} name="keywords" content={metaContent.keywords} />
     
     {/* 🔥 FIXED: SINGLE CANONICAL - NO DUPLICATES */}
     <link rel="canonical" href={`https://filmiway.com/collection/${collection.slug}`} />
@@ -801,18 +801,17 @@ const CinematicHeader = React.memo(() => {
     <meta name="robots" content="index, follow" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     
-    {/* 🔥 FIXED: UNIQUE OPEN GRAPH */}
-    <meta property="og:title" content={pageContent.ogTitle} />
-    <meta property="og:description" content={pageContent.description} />
+    {/* 🔥 FIXED: STATIC OPEN GRAPH */}
+    <meta property="og:title" key={`og-title-${collection.slug}`} content={metaContent.ogTitle} />
+    <meta property="og:description" key={`og-desc-${collection.slug}`} content={metaContent.description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={`https://filmiway.com/collection/${collection.slug}`} />
     
-    {/* 🔥 FIXED: UNIQUE TWITTER CARDS */}
+    {/* 🔥 FIXED: STATIC TWITTER CARDS */}
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={pageContent.twitterTitle} />
-    <meta name="twitter:description" content={pageContent.description} />
+    <meta name="twitter:title" key={`twitter-title-${collection.slug}`} content={metaContent.twitterTitle} />
+    <meta name="twitter:description" key={`twitter-desc-${collection.slug}`} content={metaContent.description} />
 </Head>
-
 
             <CinematicBackground />
             <StrategicControls 
@@ -963,7 +962,7 @@ const CinematicHeader = React.memo(() => {
                                         />
                                     </div>
                                     <span className="text-gray-400 font-light text-sm sm:text-base">
-                                        <span className="hidden sm:inline">{pageContent.progressText}</span>
+                                        <span className="hidden sm:inline">{metaContent.progressText}</span>
                                         <span className="sm:hidden">of {movies.length}</span>
                                     </span>
                                 </div>
