@@ -1,18 +1,23 @@
-// pages/movies/like-inception/[id].js - ABSOLUTELY FINAL WORKING VERSION - DYNAMIC META FIXED
-import React, { useState, useEffect } from 'react';
+// pages/movies/[id].js - CORRECTED COMPONENT PATHS
+import React, { useState, useEffect, useCallback } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { ChevronRight, Star, Clock, Award, ArrowLeft, Brain, Zap } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronLeft, ChevronRight, Crown, Star, MessageSquare, Volume2, VolumeX, Play, Pause, Menu, X, Home, Eye, MousePointer, TrendingUp, Users, Search, Brain, Zap, Film, Award, Mountain, Shield, Clock } from 'lucide-react';
 
-// 🔥 CORRECTED PATHS - GO UP 3 LEVELS FROM pages/movies/like-inception/
-import CinematicBackground from '../../../components/CinematicBackground';
-import TMDBMoviePoster from '../../../components/TMDBMoviePoster';
-import MovieDetailsSection from '../../../components/MovieDetailsSection';
-import TMDBAttribution from '../../../components/TMDBAttribution';
 
-// 🔥 CORRECTED PATHS FOR DATA - GO UP 3 LEVELS TO GET TO utils/
-import { COMPLETE_MOVIE_DATABASE, COMPLETE_MOVIE_DATA, STRATEGIC_QUOTES } from '../../../utils/movieData';
+// 🔥 CORRECTED PATHS - GO UP 2 LEVELS FROM pages/movies/
+import CinematicBackground from '../../components/CinematicBackground';
+import TMDBMoviePoster from '../../components/TMDBMoviePoster';
+import MovieDetailsSection from '../../components/MovieDetailsSection';
+import TMDBAttribution from '../../components/TMDBAttribution';
+import StrategicControls from '../../components/StrategicControls';
+import CinematicMovieCard from '../../components/CinematicMovieCard';
+// ADD Clock to the lucide-react import
+
+// Data imports
+import { COLLECTIONS, getAllCollectionSlugs, getCollectionBySlug } from '../../data/collections';
+import { COMPLETE_MOVIE_DATABASE, COMPLETE_MOVIE_DATA } from '../../utils/movieData';
 
 const MOVIE_YEARS = {
     'Enemy': '2013',
@@ -151,7 +156,7 @@ const SmartBackButton = ({ movie }) => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
         >
-            <ArrowLeft className="w-4 h-4 text-yellow-400" />
+         <ChevronLeft className="w-4 h-4 text-yellow-400" />
             <span className="text-yellow-400 text-sm font-medium">Back to Inception</span>
         </motion.button>
     );
@@ -404,7 +409,8 @@ const InceptionMoviePage = ({ movie }) => {
                                         className="flex items-center gap-2 bg-gradient-to-r from-yellow-900/40 to-yellow-800/40 px-5 py-3 rounded-full backdrop-blur-sm border border-yellow-400/30 hover:border-yellow-400/50 transition-all duration-300"
                                         whileHover={{ scale: 1.05, y: -2 }}
                                     >
-                                        <Clock className="w-5 h-5 text-yellow-400" />
+                                       <Clock className="w-5 h-5 text-yellow-400" />
+
                                         <span className="text-white font-semibold">{currentMovieRuntime}</span>
                                     </motion.span>
                                     
