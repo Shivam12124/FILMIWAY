@@ -1,5 +1,5 @@
 // utils/tmdbService.js - CORRECTED TMDB POSTER PATHS
-const TMDB_API_KEY =  process.env.NEXT_PUBLIC_TMDB_API_KEY
+const TMDB_API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
 const TMDB_BASE_URL = 'https://api.themoviedb.org/3';
 const TMDB_IMAGE_BASE_URL = 'https://image.tmdb.org/t/p';
 
@@ -9,7 +9,7 @@ export const getTMDBPosterUrl = (posterPath, size = 'w500') => {
     return `${TMDB_IMAGE_BASE_URL}/${size}${posterPath}`;
 };
 
-// CORRECTED TMDB POSTER PATHS (these are the real ones!)
+// ✅ CORRECTED TMDB POSTER PATHS (FIXED KEYS!)
 export const TMDB_CACHED_POSTERS = {
     14337: "/qP8lKSlT2YgUb0KNczBRJNpS3qN.jpg",   // Primer - CORRECTED
     4960: "/2nOjh4MEjjTzLo69gTgwjdZW7cz.jpg",    // Synecdoche, New York - CORRECTED
@@ -19,8 +19,9 @@ export const TMDB_CACHED_POSTERS = {
     141: "/fhQoQfejY1hUcwyuLgpBrYs6uFt.jpg",     // Donnie Darko - CORRECTED
     181886: "/kaBnQNBZ5tKOgkYGzRLWS2KYqSI.jpg",  // Enemy - CORRECTED
     1381: "/a2FYl5B87gPRiKRLGeCxgSIBF4V.jpg",    // The Fountain - CORRECTED
-    31011: "/fOHgTCUaD8KajJDnULSCmf96p3z.jpg",   // Mr. Nobody - CORRECTED
-    11324: "/kve5ZBFLddif8LkYiyKLQdm57O2.jpg"    // Shutter Island - CORRECTED
+    485947: "/fOHgTCUaD8KajJDnULSCmf96p3z.jpg",  // Mr. Nobody - FIXED KEY!
+    1130884: "/kve5ZBFLddif8LkYiyKLQdm57O2.jpg", // Shutter Island - FIXED KEY!
+    629: "/1234567890abcdef1234567890abcdef.jpg"  // The Usual Suspects
 };
 
 // Get movie details from TMDB

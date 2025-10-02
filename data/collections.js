@@ -15,8 +15,8 @@ export const COLLECTIONS = {
       'tt0246578',   // #6 Donnie Darko (2001)
       'tt2316411',   // #7 Enemy (2013)
       'tt0414993',   // #8 The Fountain (2006)
-      'tt1130884',   // #9 Mr. Nobody (2009) - FIXED ID!
-      'tt0825232'    // #10 Shutter Island (2010) - FIXED ID!
+      'tt0485947',   // #9 Mr. Nobody (2009) - FIXED ID!
+      'tt1130884'    // #10 Shutter Island (2010) - FIXED ID!
     ],
     badges: [
       { label: 'Mind-Bending', desc: 'Reality-questioning narratives' },
@@ -38,8 +38,8 @@ export const COLLECTIONS = {
       'tt0246578',   // #6 Donnie Darko (2001)
       'tt2316411',   // #7 Enemy (2013)
       'tt0414993',   // #8 The Fountain (2006)
-      'tt1130884',   // #9 Mr. Nobody (2009) - FIXED ID!
-      'tt0825232'    // #10 Shutter Island (2010) - FIXED ID!
+      'tt0485947',   // #9 Mr. Nobody (2009) - FIXED ID!
+      'tt1130884'    // #10 Shutter Island (2010) - FIXED ID!
     ],
     badges: [
       { label: 'Memory-Twisting', desc: 'Fragmented narrative structures' },
@@ -61,8 +61,8 @@ export const COLLECTIONS = {
       'tt0246578',   // #6 Donnie Darko (2001)
       'tt2316411',   // #7 Enemy (2013)
       'tt0414993',   // #8 The Fountain (2006)
-      'tt1130884',   // #9 Mr. Nobody (2009) - FIXED ID!
-      'tt0114814'    // #10 The Usual Suspects (1995)
+      'tt0485947',   // #9 Mr. Nobody (2009) - FIXED ID!
+      'tt0114814'    // #10 The Usual Suspects (1995) - DIFFERENT FOR SHUTTER ISLAND
     ],
     badges: [
       { label: 'Psychological Horror', desc: 'Unreliable narrator thrillers' },
@@ -71,7 +71,7 @@ export const COLLECTIONS = {
     ]
   },
 
-  // 🔥 NEW SURVIVAL COLLECTION - SAME FORMAT AS EXISTING
+  // 🔥 SURVIVAL COLLECTION (KEEP AS IS)
   'best-survival-movies': {
     slug: 'best-survival-movies',
     title: 'Best Survival Movies',
@@ -100,7 +100,6 @@ export const COLLECTIONS = {
       oldestMovie: 'Cast Away (2000)'
     },
 
-    // 🔥 SURVIVAL MOVIE IMDB IDs - SAME FORMAT AS OTHER COLLECTIONS
     movies: [
       'tt1542344',   // #1 127 Hours (2010)
       'tt16277242',  // #2 Society of the Snow (2023)
