@@ -1,4 +1,4 @@
-// pages/collection/[slug].js - SEO OPTIMIZED WITH FIXED DUPLICATE TITLES
+// pages/collection/[slug].js - SEO OPTIMIZED WITH FIXED DUPLICATE TITLES + NEXT.JS 15 FIX
 import React, { useState, useEffect, useCallback } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -326,19 +326,19 @@ const CollectionPage = ({ collection, movies }) => {
                 ogTitle: "The Most Advanced List on the Internet –  10 Best Mind-Bending Movies Like Shutter Island 🧠",
                 twitterTitle: "🧠 The Most Advanced Handpicked List – 10 Best Movies Like Shutter Island",
                 progressText: `of Top ${movies.length} Movies Like Shutter Island`
-                };
-            } 
-            else {
-                return {
-                    title: `Best ${collection.title} – Top 10 Curated Movie Collection You Must Watch`,
-                    description: `Discover ${collection.title} - ${collection.description || 'A curated collection of exceptional films'}.`,
-                    keywords: `${collection.title}, curated movies, film collection, cinema, movie recommendations`,
-                    ogTitle: `Best ${collection.title} – Top 10 Curated Collection You Must Watch`,
-                    twitterTitle: `Best ${collection.title} – Top 10 Curated Collection You Must Watch`,
-                    progressText: `of ${collection.title}`
-                };
-            }
-        };
+            };
+        } 
+        else {
+            return {
+                title: `Best ${collection.title} – Top 10 Curated Movie Collection You Must Watch`,
+                description: `Discover ${collection.title} - ${collection.description || 'A curated collection of exceptional films'}.`,
+                keywords: `${collection.title}, curated movies, film collection, cinema, movie recommendations`,
+                ogTitle: `Best ${collection.title} – Top 10 Curated Collection You Must Watch`,
+                twitterTitle: `Best ${collection.title} – Top 10 Curated Collection You Must Watch`,
+                progressText: `of ${collection.title}`
+            };
+        }
+    };
 
     const nextMovie = useCallback(() => {
         setCurrentMovieIndex((prev) => (prev + 1) % movies.length);
@@ -389,7 +389,7 @@ const CollectionPage = ({ collection, movies }) => {
         }
     };
 
-    // 🔥 MOVIE CLICK HANDLER
+    // 🔥 MOVIE CLICK HANDLER WITH FIXED COLLECTION FLAG LOGIC
     const handleMovieClick = () => {
         if (typeof window !== 'undefined') {
             sessionStorage.setItem('currentMoviePosition', currentMovieIndex.toString());
@@ -877,10 +877,16 @@ const CinematicHeader = React.memo(() => {
                                     </motion.button>
                                 )}
 
-                                {/* Movie Display */}
+                                {/* 🔥 FIXED FOR NEXT.JS 15 - REMOVED <a> TAG */}
                                 <AnimatePresence mode="wait">
                                     <Link 
-                                        href={`/movies/${currentMovie.imdbID}`}
+                                        href={
+                                            collection.slug === 'movies-like-memento' 
+                                                ? `/movies/like-memento/${currentMovie.imdbID}`
+                                                : collection.slug === 'movies-like-shutter-island'
+                                                ? `/movies/like-shutter-island/${currentMovie.imdbID}`
+                                                : `/movies/${currentMovie.imdbID}`
+                                        }
                                         key={currentMovieIndex}
                                         onClick={handleMovieClick}
                                     >
@@ -921,7 +927,18 @@ const CinematicHeader = React.memo(() => {
                                         whileTap={{ scale: 0.98 }}
                                         onClick={() => {
                                             handleMovieClick();
-                                            window.location.href = `/movies/${currentMovie.imdbID}`;
+                                            
+                                            // 🔥 DYNAMIC URL BASED ON COLLECTION
+                                            let detailPageUrl;
+                                            if (collection.slug === 'movies-like-memento') {
+                                                detailPageUrl = `/movies/like-memento/${currentMovie.imdbID}`;
+                                            } else if (collection.slug === 'movies-like-shutter-island') {
+                                                detailPageUrl = `/movies/like-shutter-island/${currentMovie.imdbID}`;
+                                            } else {
+                                                detailPageUrl = `/movies/${currentMovie.imdbID}`;
+                                            }
+                                            
+                                            window.location.href = detailPageUrl;
                                         }}
                                     >
                                         <Eye className="w-6 h-6 text-yellow-400" />
