@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Crown, Star, MessageSquare, Volume2, VolumeX, Play, Pause, Menu, X, Home, Eye, MousePointer, TrendingUp, Users, Search, Brain, Zap, Film, Award, Mountain, Shield, Clock } from 'lucide-react';
 
-
 // 🔥 CORRECTED PATHS - GO UP 2 LEVELS FROM pages/movies/
 import CinematicBackground from '../../components/CinematicBackground';
 import TMDBMoviePoster from '../../components/TMDBMoviePoster';
@@ -13,11 +12,11 @@ import MovieDetailsSection from '../../components/MovieDetailsSection';
 import TMDBAttribution from '../../components/TMDBAttribution';
 import StrategicControls from '../../components/StrategicControls';
 import CinematicMovieCard from '../../components/CinematicMovieCard';
-// ADD Clock to the lucide-react import
 
-// Data imports
+// Data imports - 🔥 ADDED STRATEGIC_QUOTES
 import { COLLECTIONS, getAllCollectionSlugs, getCollectionBySlug } from '../../data/collections';
-import { COMPLETE_MOVIE_DATABASE, COMPLETE_MOVIE_DATA } from '../../utils/movieData';
+import { COMPLETE_MOVIE_DATABASE, COMPLETE_MOVIE_DATA, STRATEGIC_QUOTES } from '../../utils/movieData';
+
 
 const MOVIE_YEARS = {
     'Enemy': '2013',
