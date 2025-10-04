@@ -1,5 +1,6 @@
-// data/collections.js - COMPLETE COLLECTIONS WITH FIXED IMDB IDS
+// data/collections.js - COMPLETE COLLECTIONS WITH NETFLIX DRAMA ADDED
 import { COMPLETE_MOVIE_DATABASE } from '../utils/movieData';
+
 
 export const COLLECTIONS = {
   'movies-like-inception': {
@@ -15,8 +16,8 @@ export const COLLECTIONS = {
       'tt0246578',   // #6 Donnie Darko (2001)
       'tt2316411',   // #7 Enemy (2013)
       'tt0414993',   // #8 The Fountain (2006)
-      'tt0485947',   // #9 Mr. Nobody (2009) - FIXED ID!
-      'tt1130884'    // #10 Shutter Island (2010) - FIXED ID!
+      'tt0485947',   // #9 Mr. Nobody (2009)
+      'tt1130884'    // #10 Shutter Island (2010)
     ],
     badges: [
       { label: 'Mind-Bending', desc: 'Reality-questioning narratives' },
@@ -24,6 +25,7 @@ export const COLLECTIONS = {
       { label: 'Expert Analysis', desc: 'Detailed breakdowns & ratings' }
     ]
   },
+
 
   'movies-like-memento': {
     slug: 'movies-like-memento',
@@ -38,8 +40,8 @@ export const COLLECTIONS = {
       'tt0246578',   // #6 Donnie Darko (2001)
       'tt2316411',   // #7 Enemy (2013)
       'tt0414993',   // #8 The Fountain (2006)
-      'tt0485947',   // #9 Mr. Nobody (2009) - FIXED ID!
-      'tt1130884'    // #10 Shutter Island (2010) - FIXED ID!
+      'tt0485947',   // #9 Mr. Nobody (2009)
+      'tt1130884'    // #10 Shutter Island (2010)
     ],
     badges: [
       { label: 'Memory-Twisting', desc: 'Fragmented narrative structures' },
@@ -47,6 +49,7 @@ export const COLLECTIONS = {
       { label: 'Expert Analysis', desc: 'Detailed breakdowns & ratings' }
     ]
   },
+
 
   'movies-like-shutter-island': {
     slug: 'movies-like-shutter-island', 
@@ -61,8 +64,8 @@ export const COLLECTIONS = {
       'tt0246578',   // #6 Donnie Darko (2001)
       'tt2316411',   // #7 Enemy (2013)
       'tt0414993',   // #8 The Fountain (2006)
-      'tt0485947',   // #9 Mr. Nobody (2009) - FIXED ID!
-      'tt0114814'    // #10 The Usual Suspects (1995) - DIFFERENT FOR SHUTTER ISLAND
+      'tt0485947',   // #9 Mr. Nobody (2009)
+      'tt0114814'    // #10 The Usual Suspects (1995)
     ],
     badges: [
       { label: 'Psychological Horror', desc: 'Unreliable narrator thrillers' },
@@ -71,7 +74,7 @@ export const COLLECTIONS = {
     ]
   },
 
-  // 🔥 SURVIVAL COLLECTION (KEEP AS IS)
+
   'best-survival-movies': {
     slug: 'best-survival-movies',
     title: 'Best Survival Movies',
@@ -151,20 +154,107 @@ export const COLLECTIONS = {
         'numberOfMovies': 10
       }
     }
+  },
+
+
+  // 🎬 NEW NETFLIX DRAMA COLLECTION
+  'best-drama-movies-on-netflix': {
+    slug: 'best-drama-movies-on-netflix',
+    title: 'Best Drama Movies on Netflix',
+    subtitle: 'Powerhouse Performances & Emotional Storytelling',
+    description: 'From war epics to intimate family dramas - experience emotionally gripping stories with award-winning performances streaming now on Netflix.',
+    longDescription: 'Dive into Netflix\'s finest dramatic films, where powerful storytelling meets exceptional acting. These movies span war epics, family sagas, true stories, and modern relationship dramas - each delivering emotional depth and cinematic excellence that defines contemporary drama.',
+    icon: '🎭',
+    emoji: '🎭',
+    theme: 'red',
+    primaryColor: '#dc2626',
+    secondaryColor: '#b91c1c',
+    accentColor: '#991b1b',
+    gradientFrom: 'from-red-600',
+    gradientTo: 'to-red-500',
+    category: 'drama',
+    tags: ['drama', 'netflix', 'emotional', 'award-winning', 'true stories', 'relationships'],
+    metaKeywords: 'best drama movies netflix, netflix drama films, emotional movies, award winning dramas, netflix originals, streaming dramas',
+    
+    stats: {
+      totalMovies: 10,
+      averageRating: 8.0,
+      totalWatchtime: '21 hours 45 minutes',
+      averageEmotionalIntensity: 85.0,
+      mostAcclaimed: '1917 (8.2/10)',
+      newestMovie: 'The Trial of the Chicago 7 (2020)',
+      oldestMovie: 'The Pursuit of Happyness (2006)'
+    },
+
+    movies: [
+      'tt8579674',   // #1 1917 (2019)
+      'tt6155172',   // #2 Roma (2018)
+      'tt1302006',   // #3 The Irishman (2019)
+      'tt7653254',   // #4 Marriage Story (2019)
+      'tt1285016',   // #5 The Social Network (2010)
+      'tt7533152',   // #6 The Boy Who Harnessed the Wind (2019)
+      'tt1853728',   // #7 Django Unchained (2012)
+      'tt0454921',   // #8 The Pursuit of Happyness (2006)
+      'tt10633456',  // #9 Minari (2020)
+      'tt1070874'    // #10 The Trial of the Chicago 7 (2020)
+    ],
+
+    badges: [
+      { label: 'Award-Winning', desc: 'Oscar-nominated performances' },
+      { label: 'Critically Acclaimed', desc: 'Top-tier filmmaking' },
+      { label: 'Netflix Streaming', desc: 'Available to stream now' }
+    ],
+
+    featured: {
+      hero: {
+        title: '1917',
+        subtitle: 'Immersive Cinematic Masterpiece',
+        description: 'Sam Mendes\' breathtaking one-shot war epic delivers edge-of-your-seat tension and stunning cinematography.',
+        poster: 'https://image.tmdb.org/t/p/w500/iZf0KyrE25z1sage4SYFLCCrMi9.jpg',
+        backdrop: 'https://image.tmdb.org/t/p/w1280/path-to-backdrop.jpg',
+        emotionalIntensity: 95
+      }
+    },
+
+    relatedCollections: [
+      'best-survival-movies',
+      'movies-like-inception',
+      'movies-like-shutter-island'
+    ],
+
+    seo: {
+      title: 'Best Drama Movies on Netflix - Award-Winning Films | Filmiway',
+      description: 'Discover the 10 best drama movies streaming on Netflix. From 1917 to Minari, explore emotionally powerful films with Oscar-winning performances available now.',
+      keywords: 'best drama movies netflix, netflix drama films, award winning movies, emotional dramas, netflix originals, streaming movies, 1917, Roma, The Irishman',
+      canonicalUrl: 'https://filmiway.com/collection/best-drama-movies-on-netflix',
+      ogImage: 'https://filmiway.com/images/netflix-drama-collection-og.jpg',
+      structuredData: {
+        '@context': 'https://schema.org',
+        '@type': 'MovieSeries',
+        'name': 'Best Drama Movies on Netflix Collection',
+        'description': 'A curated collection of the best dramatic films streaming on Netflix with award-winning performances',
+        'genre': 'Drama',
+        'numberOfMovies': 10
+      }
+    }
   }
 };
+
 
 export const getAllCollectionSlugs = () => {
   return Object.keys(COLLECTIONS);
 };
 
+
 export const getCollectionBySlug = (slug) => {
   return COLLECTIONS[slug];
 };
 
+
 export const getFeaturedCollections = () => {
   return Object.values(COLLECTIONS).filter(collection => collection.featured);
 };
+
 
 export const getCollectionsByCategory = (category) => {
   return Object.values(COLLECTIONS).filter(collection => 
@@ -172,8 +262,15 @@ export const getCollectionsByCategory = (category) => {
   );
 };
 
+
 export const getSurvivalCollection = () => {
   return COLLECTIONS['best-survival-movies'];
 };
+
+
+export const getNetflixDramaCollection = () => {
+  return COLLECTIONS['best-drama-movies-on-netflix'];
+};
+
 
 export default COLLECTIONS;

@@ -220,6 +220,32 @@ const CollectionPage = ({ collection, movies }) => {
                 }
             };
         } 
+
+       else if (collection.slug === 'best-drama-movies-on-netflix') {
+    return {
+        badge: "Award-Winning Drama Cinema",
+        title: "Netflix Drama", 
+        description: "Dive into a curated collection of emotionally powerful dramas streaming on Netflix, ranked by emotional intensity and critical acclaim",
+        selection: {
+            text1: "From war epics to intimate family stories, these films showcase the finest dramatic performances and storytelling available on Netflix's platform.",
+            text2: "Each drama masterpiece features powerhouse performances, emotionally gripping narratives, and award-winning direction that has defined contemporary cinema."
+        },
+        ranking: {
+            text: "Our emotional intensity index evaluates dramatic depth, performance quality, and the sophistication of storytelling techniques throughout each film.",
+            points: [
+                "Emotional impact intensity",
+                "Performance quality mastery",
+                "Narrative depth complexity", 
+                "Critical acclaim achievement"
+            ]
+        },
+        experience: {
+            text1: "Whether you're seeking Oscar-winning performances or emotionally charged storytelling, this collection delivers Netflix's finest dramatic cinema.",
+            text2: "Each film has been selected for its ability to create lasting emotional impact, with performances and narratives that resonate long after viewing."
+        }
+    };
+}
+ 
         else {
             return {
                 badge: "Cinematic Excellence",
@@ -245,6 +271,7 @@ const CollectionPage = ({ collection, movies }) => {
             };
         }
     };
+    
 
     // 🔥 UPDATED CONSISTENT HEADER FORMAT FOR ALL COLLECTIONS
     const getHeaderContent = () => {
@@ -264,6 +291,15 @@ const CollectionPage = ({ collection, movies }) => {
                 subtitle: "Psychological Thrillers with Unreliable Narrators & Shocking Plot Twists Ranked by Complexity"
             };
         } 
+
+
+        else if (collection.slug === 'best-drama-movies-on-netflix') {
+    return {
+        title: "Best Drama Movies on Netflix – 10 Award-Winning Films You Must Watch",
+        subtitle: "Emotionally Powerful Dramas with Oscar-Winning Performances Streaming Now"
+    };
+}
+
         else {
             return {
                 title: `Best ${collection.title} – Top 10 Curated Collection You Must Watch`,
@@ -290,6 +326,14 @@ const CollectionPage = ({ collection, movies }) => {
                 description: "Curating psychological thrillers with unreliable narrators and shocking plot twists"
             };
         } 
+
+      else if (collection?.slug === 'best-drama-movies-on-netflix') {
+    return {
+        title: "Loading Best Netflix Dramas",
+        description: "Curating award-winning dramatic films with community reviews and ratings"
+    };
+}
+  
         else {
             return {
                 title: "Loading Movie Collection",
@@ -328,6 +372,19 @@ const CollectionPage = ({ collection, movies }) => {
                 progressText: `of Top ${movies.length} Movies Like Shutter Island`
             };
         } 
+
+else if (collection.slug === 'best-drama-movies-on-netflix') {
+    return {
+        title: "Best Drama Movies on Netflix – 10 Award-Winning Films Streaming Now | Filmiway",
+        description: "Discover 10 award-winning drama movies on Netflix, ranked by emotional intensity and critical acclaim. From 1917 to Minari, explore the finest dramatic performances streaming now.",
+        keywords: "best drama movies netflix, netflix drama films, award winning movies, 1917 netflix, roma netflix, the irishman netflix, marriage story, social network, django unchained netflix, pursuit of happyness, minari netflix, chicago 7 netflix, emotional dramas, oscar winners netflix",
+        ogTitle: "Best Drama Movies on Netflix – 10 Award-Winning Films Streaming Now",
+        twitterTitle: "🎬 Best Drama Movies on Netflix – 10 Award-Winning Films",
+        progressText: `of Top ${movies.length} Netflix Dramas`
+    };
+}
+
+        
         else {
             return {
                 title: `Best ${collection.title} – Top 10 Curated Movie Collection You Must Watch`,
