@@ -1,4 +1,4 @@
-// pages/index.js - 🔥 SEO-OPTIMIZED WITH PROFESSIONAL HERO BANNER
+// pages/index.js - ðŸ”¥ SEO-OPTIMIZED WITH PROFESSIONAL HERO BANNER
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Head from 'next/head';
@@ -81,7 +81,7 @@ const FilmiwayHomepage = () => {
         });
     };
 
-    // Navigation Component - 🔥 WITH INTERNAL LINKS ADDED
+    // Navigation Component - ðŸ”¥ WITH INTERNAL LINKS ADDED
     const Navigation = () => (
         <motion.nav 
             className="fixed top-0 w-full z-50 bg-black/95 backdrop-blur-md"
@@ -107,7 +107,7 @@ const FilmiwayHomepage = () => {
                         </div>
                     </Link>
 
-                    {/* Desktop Menu - 🔥 ADDED COLLECTION LINKS */}
+                    {/* Desktop Menu - ðŸ”¥ ADDED COLLECTION LINKS */}
                     <div className="hidden md:flex items-center space-x-8" role="menubar">
                         <Link href="/" className="text-yellow-400 font-medium border-b-2 border-yellow-400 pb-1 text-lg" role="menuitem" aria-current="page">Home</Link>
                         <Link href="/collection/movies-like-inception" className="text-gray-300 hover:text-white transition-colors text-lg" role="menuitem">Collections</Link>
@@ -134,7 +134,7 @@ const FilmiwayHomepage = () => {
                     </button>
                 </div>
 
-                {/* Mobile Menu - 🔥 ADDED MORE COLLECTION LINKS */}
+                {/* Mobile Menu - ðŸ”¥ ADDED MORE COLLECTION LINKS */}
                 <AnimatePresence>
                     {mobileMenuOpen && (
                         <motion.div
@@ -171,7 +171,7 @@ const FilmiwayHomepage = () => {
         </motion.nav>
     );
 
-    // 🔥 PROFESSIONAL HERO SECTION - FIXED AND MUCH BETTER
+    // ðŸ”¥ PROFESSIONAL HERO SECTION - FIXED AND MUCH BETTER
     const HeroSection = () => (
         <section className="relative min-h-screen flex items-center justify-center bg-black overflow-hidden" role="banner">
             {/* Cinematic Background Pattern */}
@@ -208,7 +208,7 @@ const FilmiwayHomepage = () => {
                         </div>
                     </motion.div>
 
-                    {/* 🔥 PROFESSIONAL MAIN H1 TAG - NO MORE MISLEADING "MOVIES LIKE INCEPTION" */}
+                    {/* ðŸ”¥ PROFESSIONAL MAIN H1 TAG - NO MORE MISLEADING "MOVIES LIKE INCEPTION" */}
                     <motion.h1 
                         className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extralight text-white mb-8 leading-tight"
                         style={{ fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif" }}
@@ -291,7 +291,7 @@ const FilmiwayHomepage = () => {
                         </div>
                     </motion.div>
 
-                    {/* 🔥 PROFESSIONAL COLLECTION LINKS - BETTER PRESENTATION */}
+                    {/* ðŸ”¥ PROFESSIONAL COLLECTION LINKS - BETTER PRESENTATION */}
                     <motion.div 
                         className="bg-gradient-to-r from-gray-900/40 via-gray-800/40 to-gray-900/40 backdrop-blur-sm border border-gray-700/30 rounded-3xl p-8 mb-16 max-w-5xl mx-auto"
                         initial={{ opacity: 0, y: 30 }}
@@ -689,7 +689,7 @@ const FilmiwayHomepage = () => {
                 </div>
                 
                 <p className="text-xl sm:text-2xl text-orange-300 mb-6 font-light">
-                    🚧 Something Amazing is Cooking! 🚧
+                    ðŸš§ Something Amazing is Cooking! ðŸš§
                 </p>
                 
                 <p className="text-gray-300 text-lg max-w-2xl mx-auto mb-8">
@@ -698,9 +698,9 @@ const FilmiwayHomepage = () => {
                 </p>
                 
                 <div className="flex items-center justify-center gap-2 text-yellow-400">
-                    <span className="text-lg">👨‍💻</span>
+                    <span className="text-lg">ðŸ‘¨â€ðŸ’»</span>
                     <span className="font-medium">Development in Progress</span>
-                    <span className="text-lg">🔥</span>
+                    <span className="text-lg">ðŸ”¥</span>
                 </div>
             </div>
         </motion.section>
@@ -721,13 +721,13 @@ const FilmiwayHomepage = () => {
     return (
         <>
             <Head>
-                {/* 🔥 SEO-OPTIMIZED TITLE TAG WITH KEYWORDS */}
+                {/* ðŸ”¥ SEO-OPTIMIZED TITLE TAG WITH KEYWORDS */}
                 <title>Filmiway | Curated Movie Collections & Discovery Platform</title>
                 
-                {/* 🔥 SEO META DESCRIPTION */}
+                {/* ðŸ”¥ SEO META DESCRIPTION */}
                 <meta name="description" content="Discover expertly curated movie collections featuring mind-bending thrillers, psychological masterpieces, and sci-fi classics. Your complete film discovery platform." />
                 
-                {/* 🔥 SEO KEYWORDS */}
+                {/* ðŸ”¥ SEO KEYWORDS */}
                 <meta name="keywords" content="movie collections, film discovery platform, curated movies, psychological thrillers, mind bending movies, sci-fi masterpieces, movie recommendations, film database" />
                 
                 <meta name="application-name" content="Filmiway" />
@@ -737,13 +737,13 @@ const FilmiwayHomepage = () => {
                 <meta name="publisher" content="Filmiway" />
                 <meta name="copyright" content="Filmiway 2025" />
                 
-                {/* 🔥 OPEN GRAPH TAGS FOR SOCIAL SHARING */}
+                {/* ðŸ”¥ OPEN GRAPH TAGS FOR SOCIAL SHARING */}
                 <meta property="og:title" content="Filmiway | Curated Movie Collections & Discovery Platform" />
                 <meta property="og:description" content="Discover expertly curated movie collections featuring mind-bending thrillers, psychological masterpieces, and sci-fi classics." />
                 <meta property="og:image" content="https://filmiway.com/og-image.jpg" />
                 <meta property="og:type" content="website" />
                 
-                {/* 🔥 TWITTER CARDS */}
+                {/* ðŸ”¥ TWITTER CARDS */}
                 <meta name="twitter:title" content="Filmiway | Curated Movie Collections & Discovery Platform" />
                 <meta name="twitter:description" content="Discover expertly curated movie collections featuring mind-bending thrillers, psychological masterpieces, and sci-fi classics." />
                 <meta name="twitter:image" content="https://filmiway.com/twitter-image.jpg" />
@@ -760,7 +760,7 @@ const FilmiwayHomepage = () => {
                 <meta name="theme-color" content="#facc15" />
                 <meta name="msapplication-TileColor" content="#000000" />
                 
-                {/* 🔥 ENHANCED STRUCTURED DATA */}
+                {/* ðŸ”¥ ENHANCED STRUCTURED DATA */}
                 <script type="application/ld+json" dangerouslySetInnerHTML={{
                     __html: JSON.stringify({
                         "@context": "https://schema.org",
@@ -909,10 +909,10 @@ const FilmiwayHomepage = () => {
                             </motion.div>
 
                             <div className="flex items-center justify-center space-x-8 text-gray-500 text-sm">
-                                <span>© 2025 Filmiway</span>
-                                <span>•</span>
+                                <span>Â© 2025 Filmiway</span>
+                                <span>â€¢</span>
                                 <span>All Rights Reserved</span>
-                                <span>•</span>
+                                <span>â€¢</span>
                                 <span>Where Every Film Finds Its Way</span>
                             </div>
                         </div>

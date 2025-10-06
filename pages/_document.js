@@ -1,4 +1,3 @@
-// pages/_document.js
 import { Html, Head, Main, NextScript } from 'next/document'
 
 export default function Document() {
@@ -10,9 +9,8 @@ export default function Document() {
         <link rel="dns-prefetch" href="//fonts.gstatic.com" />
         <link rel="dns-prefetch" href="//m.media-amazon.com" />
         
-        {/* Critical CSS - Inline for Performance */}
+        {/* Critical CSS for performance */}
         <style jsx>{`
-          /* Critical CSS for above-the-fold content */
           body {
             margin: 0;
             padding: 0;
@@ -21,11 +19,7 @@ export default function Document() {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             overflow-x: hidden;
           }
-          
-          * {
-            box-sizing: border-box;
-          }
-          
+          * { box-sizing: border-box; }
           .loading-fallback {
             display: flex;
             align-items: center;
@@ -35,25 +29,45 @@ export default function Document() {
             color: #ca8a04;
           }
         `}</style>
-        
-        {/* Structured Data for Organization */}
+
+        {/* Structured Data JSON-LD */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'WebSite',
-              name: 'Movies Like Inception',
-              url: 'https://yoursite.com',
-              description: 'Discover mind-bending movies similar to Inception with community reviews and ratings',
+              name: 'Filmiway',
+              url: 'https://filmiway.com',
+              description: 'Discover curated movie collections with expert analysis and community reviews',
               potentialAction: {
                 '@type': 'SearchAction',
                 target: {
                   '@type': 'EntryPoint',
-                  urlTemplate: 'https://yoursite.com/search?q={search_term_string}'
+                  urlTemplate: 'https://filmiway.com/search?q={search_term_string}'
                 },
                 'query-input': 'required name=search_term_string'
-              }
+              },
+              hasPart: [
+                {
+                  '@type': 'WebPage',
+                  name: 'Movies Like Memento',
+                  url: 'https://filmiway.com/collection/movies-like-memento',
+                  description: 'Best Movies Like Memento – 10 Best Mind-Bending Memory Loss Thrillers You Must Watch'
+                },
+                {
+                  '@type': 'WebPage',
+                  name: 'Movies Like Inception',
+                  url: 'https://filmiway.com/collection/movies-like-inception',
+                  description: 'Best Movies Like Inception – 10 Best Mind-Bending Thrillers You Must Watch'
+                },
+                {
+                  '@type': 'WebPage',
+                  name: 'Movies Like Shutter Island',
+                  url: 'https://filmiway.com/collection/movies-like-shutter-island',
+                  description: 'Best Movies Like Shutter Island – 10 Best Mind-Bending Psychological Thrillers You Must Watch'
+                }
+              ]
             })
           }}
         />
