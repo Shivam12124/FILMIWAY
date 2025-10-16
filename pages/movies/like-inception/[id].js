@@ -1,15 +1,15 @@
-// pages/movies/like-shutter-island/[id].js - OPTIMIZED VERSION ✅
+// pages/movies/like-inception/[id].js - COMPLETE OPTIMIZED VERSION ✅
 import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Play, X, Star, Clock, Award, ArrowLeft, Brain, AlertTriangle, User, Twitter, Hash, Send } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Play, X, User, Twitter, Hash, Send } from 'lucide-react';
 
 import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
 import TMDBAttribution from '../../../components/TMDBAttribution';
-import { COMPLETE_MOVIE_DATABASE, COMPLETE_MOVIE_DATA, STRATEGIC_QUOTES } from '../../../utils/movieData';
+import { COMPLETE_MOVIE_DATABASE, COMPLETE_MOVIE_DATA } from '../../../utils/movieData';
 
 const COLORS = {
   accent: '#EAB308',
@@ -23,6 +23,7 @@ const COLORS = {
   borderAccent: 'rgba(234, 179, 8, 0.2)',
   borderLight: 'rgba(107, 114, 128, 0.2)',
 };
+
 const MOVIE_YEARS = {
     'Enemy': '2013', 'Primer': '2004', 'The Fountain': '2006',
     'Synecdoche, New York': '2008', 'Mulholland Drive': '2001',
@@ -32,19 +33,19 @@ const MOVIE_YEARS = {
 };
 
 const MOVIE_DATA_BY_TITLE = {
-    'Primer': { imdbRating: 6.9, genre: 'Sci-Fi Thriller', director: 'Shane Carruth', shutterConnection: 'Like Shutter Island, Primer creates paranoia through unreliable perception and reality distortion. Both films feature protagonists who cannot trust their understanding of events unfolding around them.' },
-    'Synecdoche, New York': { imdbRating: 7.5, genre: 'Psychological Drama', director: 'Charlie Kaufman', shutterConnection: 'Like Shutter Island, Synecdoche explores mental deterioration and the fragmentation of identity through psychological complexity and unreliable narrative structure.' },
-    'Mulholland Drive': { imdbRating: 7.9, genre: 'Psychological Mystery', director: 'David Lynch', shutterConnection: 'Like Shutter Island, Mulholland Drive uses fragmented identity and memory loss to create a haunting psychological mystery with shocking revelations about reality.' },
-    'Predestination': { imdbRating: 7.4, genre: 'Sci-Fi Thriller', director: 'Michael & Peter Spierig', shutterConnection: 'Like Shutter Island, Predestination gradually reveals the truth about identity confusion through careful psychological manipulation and twisted revelations.' },
-    'Coherence': { imdbRating: 7.2, genre: 'Sci-Fi Thriller', director: 'James Ward Byrkit', shutterConnection: 'Like Shutter Island, Coherence creates psychological tension through reality confusion and paranoia, leaving viewers questioning what is real versus illusion.' },
-    'Donnie Darko': { imdbRating: 8.0, genre: 'Sci-Fi Mystery', director: 'Richard Kelly', shutterConnection: 'Like Shutter Island, Donnie Darko explores psychological instability and mental illness through atmospheric storytelling and reality distortion.' },
-    'Enemy': { imdbRating: 6.9, genre: 'Psychological Thriller', director: 'Denis Villeneuve', shutterConnection: 'Like Shutter Island, Enemy creates psychological horror through identity crisis and the complete breakdown of self-recognition and reality.' },
-    'The Fountain': { imdbRating: 7.2, genre: 'Sci-Fi Drama', director: 'Darren Aronofsky', shutterConnection: 'Like Shutter Island, The Fountain deals with psychological trauma, loss, and the cyclical nature of memory and identity through multiple timelines.' },
-    'Mr. Nobody': { imdbRating: 7.8, genre: 'Sci-Fi Drama', director: 'Jaco Van Dormael', shutterConnection: 'Like Shutter Island, Mr. Nobody explores fragmented memory and multiple realities through psychological complexity and identity questioning.' },
-    'The Usual Suspects': { imdbRating: 8.5, genre: 'Crime Thriller', director: 'Bryan Singer', shutterConnection: 'Like Shutter Island, The Usual Suspects builds to a shocking identity revelation through unreliable narration and masterful psychological manipulation.' },
-    'Shutter Island': { imdbRating: 8.2, genre: 'Psychological Thriller', director: 'Martin Scorsese', shutterConnection: 'The definitive psychological thriller that inspired this entire collection of mind-bending films exploring identity crisis, unreliable narration, and shocking revelations about reality.' },
-    'Memento': { imdbRating: 8.4, genre: 'Neo-Noir Thriller', director: 'Christopher Nolan', shutterConnection: 'Like Shutter Island, Memento explores psychological manipulation and the unreliable nature of memory through complex narrative structure and identity questioning.' },
-    'Inception': { imdbRating: 8.8, genre: 'Sci-Fi Thriller', director: 'Christopher Nolan', shutterConnection: 'Like Shutter Island, Inception explores psychological complexity through reality questioning and the unreliable nature of perception and memory.' }
+    'Shutter Island': { imdbRating: 8.2, genre: 'Psychological Thriller', director: 'Martin Scorsese', inceptionConnection: 'Like Inception, Shutter Island masterfully blurs the line between reality and delusion. Both films question what\'s real through unreliable protagonists navigating layered psychological mysteries with stunning plot twists.' },
+    'Mr. Nobody': { imdbRating: 7.7, genre: 'Sci-Fi Drama', director: 'Jaco Van Dormael', inceptionConnection: 'Like Inception\'s nested dreams creating infinite possibilities, Mr. Nobody explores multiple reality layers and parallel timelines. Both films challenge viewers to question which version of events is truly real.' },
+    'Primer': { imdbRating: 6.9, genre: 'Sci-Fi Thriller', director: 'Shane Carruth', inceptionConnection: 'Like Inception\'s complex dream architecture requiring multiple viewings, Primer builds intricate temporal layers and rules. Both films reward intellectual engagement with mind-bending scientific concepts.' },
+    'Synecdoche, New York': { imdbRating: 7.5, genre: 'Psychological Drama', director: 'Charlie Kaufman', inceptionConnection: 'Like Inception\'s reality-within-reality structure, Synecdoche creates nested worlds where characters lose themselves in elaborate artistic constructions. Both films explore identity fragmentation through layered storytelling.' },
+    'Mulholland Drive': { imdbRating: 7.9, genre: 'Psychological Mystery', director: 'David Lynch', inceptionConnection: 'Like Inception\'s dream logic and surreal sequences, Mulholland Drive operates on mysterious narrative rules where reality shifts unexpectedly. Both films use dreamlike imagery to create haunting experiences.' },
+    'Predestination': { imdbRating: 7.4, genre: 'Sci-Fi Thriller', director: 'Michael Spierig, Peter Spierig', inceptionConnection: 'Like Inception\'s carefully orchestrated heist with multiple moving parts, Predestination reveals information strategically through complex planning. Both films feature protagonists executing elaborate time-sensitive missions.' },
+    'Coherence': { imdbRating: 7.2, genre: 'Sci-Fi Thriller', director: 'James Ward Byrkit', inceptionConnection: 'Like Inception\'s layered reality confusion, Coherence traps characters in parallel possibilities where they question what\'s real. Both films create paranoia through shifting realities and unreliable perceptions.' },
+    'Donnie Darko': { imdbRating: 8.0, genre: 'Sci-Fi Mystery', director: 'Richard Kelly', inceptionConnection: 'Like Inception\'s exploration of subconscious influence and manipulation, Donnie Darko blends psychological depth with sci-fi concepts. Both films feature protagonists struggling to understand their role in complex scenarios.' },
+    'Enemy': { imdbRating: 6.9, genre: 'Psychological Thriller', director: 'Denis Villeneuve', inceptionConnection: 'Like Inception\'s identity confusion within dream layers, Enemy explores psychological doubling and doppelgangers. Both films create unsettling atmospheres through ambiguous reality and identity questions.' },
+    'The Fountain': { imdbRating: 7.2, genre: 'Sci-Fi Drama', director: 'Darren Aronofsky', inceptionConnection: 'Like Inception\'s emotional journey about letting go of the past, The Fountain explores love transcending time and death through three interconnected timelines. Both films combine spectacular visuals with deeply personal themes.' },
+    'The Usual Suspects': { imdbRating: 8.5, genre: 'Crime Thriller', director: 'Bryan Singer', inceptionConnection: 'Like Inception\'s layered deception and misdirection, The Usual Suspects builds an elaborate con through unreliable narration. Both films feature masterful plot twists that recontextualize everything.' },
+    'Inception': { imdbRating: 8.8, genre: 'Sci-Fi Thriller', director: 'Christopher Nolan', inceptionConnection: 'The definitive mind-bending film that inspired this entire collection. Inception explores reality layers, memory manipulation, and the subconscious mind through stunning visuals and complex storytelling.' },
+    'Memento': { imdbRating: 8.4, genre: 'Neo-Noir Thriller', director: 'Christopher Nolan', inceptionConnection: 'Like Inception, Memento explores the unreliable nature of memory and perception through innovative storytelling. Both Christopher Nolan films challenge viewers to question what\'s real.' }
 };
 
 const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
@@ -54,9 +55,9 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
     const timerRef = useRef(null);
 
     const bannerImage = movieData?.backdrop_path ? `https://image.tmdb.org/t/p/original${movieData.backdrop_path}` : `https://via.placeholder.com/1920x600/0B0B0C/444444?text=`;
-    const posterImage = movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : `https://via.placeholder.com/300x450/1f2937/22C55E?text=${encodeURIComponent(movie.Title)}`;
+    const posterImage = movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : `https://via.placeholder.com/300x450/1f2937/EAB308?text=${encodeURIComponent(movie.Title)}`;
     const correctData = MOVIE_DATA_BY_TITLE[movie.Title];
-    const shutterConnection = correctData?.shutterConnection || `Like Shutter Island, ${movie.Title} explores themes of psychological horror and identity through innovative storytelling.`;
+    const inceptionConnection = correctData?.inceptionConnection || `Like Inception, ${movie.Title} explores complex themes of reality and perception through innovative storytelling.`;
 
     useEffect(() => {
         if (!isMobile && trailer && !showTrailer && !hasClosedTrailer) {
@@ -111,9 +112,9 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
                     </motion.div>
                     <motion.div className="flex-1" initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 1.0, duration: 0.8 }}>
                         <h2 className="text-lg sm:text-2xl lg:text-4xl font-bold mb-4 sm:mb-6 flex items-center gap-3" style={{ color: COLORS.accent }}>
-                            <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full animate-pulse" style={{ backgroundColor: COLORS.accent }}></div>Why Similar to Shutter Island
+                            <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full animate-pulse" style={{ backgroundColor: COLORS.accent }}></div>Why Similar to Inception
                         </h2>
-                        <p className="text-sm sm:text-lg lg:text-2xl leading-relaxed" style={{ color: COLORS.textSecondary, lineHeight: '1.8' }}>{shutterConnection}</p>
+                        <p className="text-sm sm:text-lg lg:text-2xl leading-relaxed" style={{ color: COLORS.textSecondary, lineHeight: '1.8' }}>{inceptionConnection}</p>
                     </motion.div>
                 </div>
             </div>
@@ -121,7 +122,7 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
     );
 };
 
-const SmartBackButton = ({ movie }) => {
+const ProfessionalHeader = ({ movie }) => {
     const handleBackClick = () => {
         if (typeof window !== 'undefined') {
             const currentPosition = sessionStorage.getItem('currentMoviePosition');
@@ -129,13 +130,21 @@ const SmartBackButton = ({ movie }) => {
             sessionStorage.setItem('returningFromMovie', 'true');
             if (currentPosition) sessionStorage.setItem('returnToPosition', currentPosition);
             if (currentRank) sessionStorage.setItem('returnToRank', currentRank);
-            window.location.href = '/collection/movies-like-shutter-island';
+            window.location.href = '/collection/movies-like-inception';
         }
     };
     return (
-        <motion.button onClick={handleBackClick} className="fixed top-4 left-4 sm:top-6 sm:left-6 z-50 flex items-center gap-2 px-4 py-2 backdrop-blur-md rounded-lg transition-all duration-300 shadow-xl" style={{ backgroundColor: `${COLORS.bgPrimary}F2`, border: `1px solid ${COLORS.borderLight}` }} whileHover={{ scale: 1.02, x: -2 }} whileTap={{ scale: 0.98 }} initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} onMouseEnter={(e) => e.currentTarget.style.borderColor = COLORS.borderAccent} onMouseLeave={(e) => e.currentTarget.style.borderColor = COLORS.borderLight}>
-            <ArrowLeft className="w-4 h-4" style={{ color: COLORS.accent }} /><span className="text-sm font-medium" style={{ color: COLORS.accent }}>Back to Shutter Island</span>
-        </motion.button>
+        <>
+            <motion.button onClick={handleBackClick} className="fixed top-4 left-4 sm:top-6 sm:left-6 z-50 flex items-center gap-2 px-4 py-2 backdrop-blur-md rounded-lg transition-all duration-300 shadow-xl" style={{ backgroundColor: `${COLORS.bgPrimary}F2`, border: `1px solid ${COLORS.borderLight}` }} whileHover={{ scale: 1.02, x: -2 }} whileTap={{ scale: 0.98 }} initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} onMouseEnter={(e) => e.currentTarget.style.borderColor = COLORS.borderAccent} onMouseLeave={(e) => e.currentTarget.style.borderColor = COLORS.borderLight}>
+                <ChevronLeft className="w-4 h-4" style={{ color: COLORS.accent }} /><span className="text-sm font-medium" style={{ color: COLORS.accent }}>Back to Collection</span>
+            </motion.button>
+            <motion.nav className="mb-8 px-4 sm:px-6 pb-4" style={{ borderBottom: `1px solid ${COLORS.borderLight}` }} initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+                <div className="flex items-center space-x-3 text-sm" style={{ color: COLORS.textMuted }}>
+                    <Link href="/collection/movies-like-inception" className="transition-all duration-300" style={{ color: COLORS.textMuted }} onMouseEnter={(e) => e.currentTarget.style.color = COLORS.accent} onMouseLeave={(e) => e.currentTarget.style.color = COLORS.textMuted}>Inception Collection</Link>
+                    <ChevronRight size={16} style={{ color: COLORS.textDisabled }} /><span className="font-medium" style={{ color: `${COLORS.accent}B3` }}>{movie.Title}</span>
+                </div>
+            </motion.nav>
+        </>
     );
 };
 
@@ -144,7 +153,7 @@ const AuthorCreditSection = () => (
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
             <div className="flex items-center gap-3">
                 <User className="w-5 h-5" style={{ color: COLORS.textDisabled }} />
-                <div><p className="text-sm" style={{ color: COLORS.textMuted }}>Curated by <span className="font-medium" style={{ color: COLORS.textSecondary }}>Filmiway Editorial Team</span></p><p className="text-xs" style={{ color: COLORS.textDisabled }}>Expert analysis of psychological thrillers</p></div>
+                <div><p className="text-sm" style={{ color: COLORS.textMuted }}>Curated by <span className="font-medium" style={{ color: COLORS.textSecondary }}>Filmiway Editorial Team</span></p><p className="text-xs" style={{ color: COLORS.textDisabled }}>Expert analysis of mind-bending cinema</p></div>
             </div>
             <div className="flex items-center gap-4">
                 <span className="text-sm" style={{ color: COLORS.textDisabled }}>Share:</span>
@@ -162,16 +171,7 @@ const SubtleFilmGrain = () => (
     </div>
 );
 
-const ShutterIslandBreadcrumb = ({ movie }) => (
-    <motion.nav className="mb-8 px-4 sm:px-6 pb-4" style={{ borderBottom: `1px solid ${COLORS.borderLight}` }} initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-        <div className="flex items-center space-x-3 text-sm" style={{ color: COLORS.textMuted }}>
-            <Link href="/collection/movies-like-shutter-island" className="transition-all duration-300" style={{ color: COLORS.textMuted }} onMouseEnter={(e) => e.currentTarget.style.color = COLORS.accent} onMouseLeave={(e) => e.currentTarget.style.color = COLORS.textMuted}>Shutter Island Collection</Link>
-            <ChevronRight size={16} style={{ color: COLORS.textDisabled }} /><span className="font-medium" style={{ color: `${COLORS.accent}B3` }}>{movie.Title}</span>
-        </div>
-    </motion.nav>
-);
-
-const ShutterIslandMoviePage = ({ movie }) => {
+const InceptionMoviePage = ({ movie }) => {
     const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
     const correctData = MOVIE_DATA_BY_TITLE[movie.Title];
     const [scrollY, setScrollY] = useState(0);
@@ -196,7 +196,7 @@ const ShutterIslandMoviePage = ({ movie }) => {
         return () => window.removeEventListener('resize', checkMobile);
     }, [movie.tmdbId]);
 
-    useEffect(() => { if (typeof window !== 'undefined') { sessionStorage.setItem('fromShutterIslandCollection', 'true'); sessionStorage.removeItem('fromInceptionCollection'); sessionStorage.removeItem('fromMementoCollection'); } }, []);
+    useEffect(() => { if (typeof window !== 'undefined') sessionStorage.setItem('fromInceptionCollection', 'true'); }, []);
     useEffect(() => { const handleScroll = () => setScrollY(window.scrollY); window.addEventListener('scroll', handleScroll, { passive: true }); return () => window.removeEventListener('scroll', handleScroll); }, []);
 
     const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.Year || 'Unknown';
@@ -208,19 +208,18 @@ const ShutterIslandMoviePage = ({ movie }) => {
     return (
         <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
             <Head>
-                <title>{movie.Title} ({currentMovieYear}) - {currentMovieGenre} Like Shutter Island | Filmiway</title>
-                <meta name="description" content={`${movie.Title} (${currentMovieYear}) - A compelling ${currentMovieGenre?.toLowerCase()} like Shutter Island. Analysis, ratings & where to stream.`} />
-                <link rel="canonical" href={`https://filmiway.com/movies/like-shutter-island/${movie.imdbID}`} />
+                <title>{movie.Title} ({currentMovieYear}) - {currentMovieGenre} Like Inception | Filmiway</title>
+                <meta name="description" content={`${movie.Title} (${currentMovieYear}) - A compelling ${currentMovieGenre?.toLowerCase()} like Inception. Analysis, ratings & where to stream.`} />
+                <link rel="canonical" href={`https://filmiway.com/movies/like-inception/${movie.imdbID}`} />
             </Head>
             <SubtleFilmGrain />
             <div className="absolute inset-0"><CinematicBackground /></div>
-            <SmartBackButton movie={movie} />
-            <div className="relative z-10 pt-12 sm:pt-16">
-                <ShutterIslandBreadcrumb movie={movie} />
+            <ProfessionalHeader movie={movie} />
+            <div className="relative z-10 pt-12 sm:pt-16">                
                 <div className="container mx-auto px-0 pb-20 sm:pb-32 max-w-7xl">
                     <OptimizedBanner movie={movie} movieData={movieData} trailer={trailer} isMobile={isMobile} />
                     <motion.div id="watch" initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.2, duration: 0.8 }} className="space-y-12 px-4 sm:px-6 lg:px-8">
-                        <MovieDetailsSection movie={movie} fromShutterIslandCollection={true} />
+                        <MovieDetailsSection movie={movie} fromInceptionCollection={true} />
                     </motion.div>
                     <div className="px-4 sm:px-6 lg:px-8"><AuthorCreditSection /><TMDBAttribution /></div>
                 </div>
@@ -240,4 +239,4 @@ export async function getStaticProps({ params }) {
     return { props: { movie } };
 }
 
-export default ShutterIslandMoviePage;
+export default InceptionMoviePage;

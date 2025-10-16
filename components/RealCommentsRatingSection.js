@@ -1,9 +1,9 @@
-// components/RealCommentsRatingSection.js - ULTIMATE GOLDEN TICKET VERSION
+// components/RealCommentsRatingSection.js - STARS + VERTICAL BAR GRAPH ✅
 'use client';
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageCircle, User, Clock, Trash2, Send, AlertCircle, Shield } from 'lucide-react';
+import { MessageCircle, User, Clock, Trash2, Send, AlertCircle, Shield, Star, BarChart3 } from 'lucide-react';
 import { 
     collection, 
     addDoc, 
@@ -18,80 +18,81 @@ import {
 } from 'firebase/firestore';
 import { db } from '../firebaseConfig';
 
+// 🎨 UNIFIED COLOR SYSTEM
+const COLORS = {
+  accent: '#EAB308',
+  accentHover: '#FACC15',
+  bgPrimary: '#0B0B0C',
+  bgCard: 'rgba(55, 65, 81, 0.3)',
+  bgCardHover: 'rgba(55, 65, 81, 0.5)',
+  textPrimary: '#FFFFFF',
+  textSecondary: '#D1D5DB',
+  textMuted: '#9CA3AF',
+  textDisabled: '#6B7280',
+  borderAccent: 'rgba(234, 179, 8, 0.2)',
+  borderAccentHover: 'rgba(234, 179, 8, 0.4)',
+  borderNeutral: 'rgba(107, 114, 128, 0.5)',
+  borderLight: 'rgba(107, 114, 128, 0.2)',
+};
+
 const RealCommentsRatingSection = ({ movie }) => {
     const [comments, setComments] = useState([]);
     const [loading, setLoading] = useState(true);
     const [submitting, setSubmitting] = useState(false);
     const [mounted, setMounted] = useState(false);
     
-    // Form states
     const [userName, setUserName] = useState('');
     const [userRating, setUserRating] = useState(0);
     const [commentText, setCommentText] = useState('');
     const [showForm, setShowForm] = useState(false);
     
-    // Session tracking for delete permissions
     const [userSession, setUserSession] = useState('');
 
     const MAX_COMMENT_LENGTH = 500;
 
-    // 🎟️ ULTIMATE GOLDEN TICKET RATING SYSTEM
+    // ⭐ STAR RATING SYSTEM (1-4 stars)
     const ratingOptions = [
         {
             value: 1,
             label: "Disappointment",
-            symbol: "🎫", // Torn/dull ticket
-            color: "text-red-400",
-            bgColor: "bg-red-500/10 border-red-500/30",
+            stars: 1,
+            color: COLORS.textMuted,
+            bgColor: `${COLORS.accent}0D`,
             borderStyle: "border-dashed border-2",
-            shadowColor: "shadow-red-500/20",
-            description: "Torn ticket - Total disappointment",
-            gradient: "from-red-900/30 via-gray-800/20 to-red-700/10",
-            ticketStyle: "opacity-60 transform rotate-1 grayscale"
+            description: "Not worth watching"
         },
         {
             value: 2,
             label: "Flawed", 
-            symbol: "🎟️", // Faded ticket
-            color: "text-orange-400",
-            bgColor: "bg-orange-500/10 border-orange-500/30",
-            borderStyle: "border-solid border-opacity-50",
-            shadowColor: "shadow-orange-500/15",
-            description: "Faded ticket - Has major flaws",
-            gradient: "from-orange-900/20 via-gray-700/20 to-orange-600/10",
-            ticketStyle: "opacity-75 saturate-50"
+            stars: 2,
+            color: COLORS.textMuted,
+            bgColor: `${COLORS.accent}0D`,
+            borderStyle: "border-solid",
+            description: "Has major issues"
         },
         {
             value: 3,
             label: "Worth the Ride",
-            symbol: "🎟️", // Clean ticket
-            color: "text-green-400",
-            bgColor: "bg-green-500/10 border-green-500/30",
+            stars: 3,
+            color: COLORS.accent,
+            bgColor: `${COLORS.accent}1A`,
             borderStyle: "border-solid border-2",
-            shadowColor: "shadow-green-500/20",
-            description: "Clean ticket - Solid entertainment",
-            gradient: "from-green-900/20 via-green-800/15 to-green-600/10",
-            ticketStyle: "opacity-90"
+            description: "Solid entertainment"
         },
         {
             value: 4,
             label: "Exceptional",
-            symbol: "🎫", // ✅ ULTIMATE GOLDEN TICKET
-            color: "text-amber-300", // ✅ PREMIUM AMBER-GOLD
-            bgColor: "bg-gradient-to-br from-amber-400/40 via-yellow-400/30 to-yellow-300/20 border-amber-400/70", 
-            borderStyle: "border-solid border-3 animate-pulse shadow-amber-400/60", // ✅ THICKER GOLDEN BORDER
-            shadowColor: "shadow-amber-400/80 shadow-2xl drop-shadow-2xl",
-            description: " Ultimate ticket - Cinematic masterpiece",
-            gradient: "from-amber-500/50 via-yellow-400/40 to-amber-300/30",
-            ticketStyle: "opacity-100 brightness-200 saturate-200 contrast-125 drop-shadow-2xl transform hover:scale-110 transition-transform duration-300 golden-glow" // ✅ ULTIMATE GOLDEN EFFECTS
+            stars: 4,
+            color: COLORS.accentHover,
+            bgColor: `${COLORS.accent}33`,
+            borderStyle: "border-solid border-3",
+            description: "Cinematic masterpiece"
         }
     ];
 
-    // Handle client-side mounting and session initialization
     useEffect(() => {
         setMounted(true);
         
-        // Initialize user session for comment ownership
         if (typeof window !== 'undefined') {
             let sessionId = sessionStorage.getItem('filmiway_session');
             if (!sessionId) {
@@ -102,7 +103,6 @@ const RealCommentsRatingSection = ({ movie }) => {
         }
     }, []);
 
-    // Load comments from Firebase (only after mounted)
     useEffect(() => {
         if (!mounted || !movie?.imdbID) return;
 
@@ -132,7 +132,6 @@ const RealCommentsRatingSection = ({ movie }) => {
         return () => unsubscribe();
     }, [mounted, movie?.imdbID]);
 
-    // Submit new comment with session tracking
     const handleSubmitComment = async (e) => {
         e.preventDefault();
         
@@ -175,7 +174,6 @@ const RealCommentsRatingSection = ({ movie }) => {
         }
     };
 
-    // SECURE: Only allow deletion if user owns the comment
     const handleDeleteComment = async (comment) => {
         if (comment.userSession !== userSession) {
             alert('You can only delete your own comments.');
@@ -192,12 +190,10 @@ const RealCommentsRatingSection = ({ movie }) => {
         }
     };
 
-    // Check if current user can delete a comment
     const canDeleteComment = (comment) => {
         return comment.userSession === userSession;
     };
 
-    // Format date
     const formatDate = (date) => {
         if (!date) return 'Just now';
         
@@ -213,22 +209,134 @@ const RealCommentsRatingSection = ({ movie }) => {
         return date.toLocaleDateString();
     };
 
-    // Display rating with ultimate golden ticket styling
+    // ⭐ Render stars
+    const renderStars = (count, color = COLORS.accent, size = 'w-4 h-4') => {
+        return (
+            <div className="flex items-center gap-0.5">
+                {[...Array(4)].map((_, i) => (
+                    <Star 
+                        key={i}
+                        className={`${size} ${i < count ? 'fill-current' : ''}`}
+                        style={{ color: i < count ? color : COLORS.textDisabled }}
+                    />
+                ))}
+            </div>
+        );
+    };
+
+    // Display rating with stars
     const displayRating = (rating) => {
         const option = ratingOptions.find(r => r.value === rating);
         if (!option) return null;
         
         return (
             <div className="flex items-center gap-2">
-                <span className={`text-xl ${option.ticketStyle} ${
-                    option.value === 4 ? 'golden-ticket' : ''
-                }`}>
-                    {option.symbol}
-                </span>
-                <span className={`text-sm font-medium ${option.color}`}>
+                {renderStars(option.stars, option.color, 'w-4 h-4')}
+                <span className="text-sm font-medium" style={{ color: option.color }}>
                     {option.label}
                 </span>
             </div>
+        );
+    };
+
+    // Calculate rating distribution
+    const getRatingDistribution = () => {
+        const distribution = { 1: 0, 2: 0, 3: 0, 4: 0 };
+        comments.forEach(comment => {
+            if (distribution[comment.rating] !== undefined) {
+                distribution[comment.rating]++;
+            }
+        });
+        return distribution;
+    };
+
+    // 📊 VERTICAL BAR CHART
+    const VerticalBarChart = () => {
+        if (comments.length === 0) return null;
+
+        const distribution = getRatingDistribution();
+        const maxCount = Math.max(...Object.values(distribution), 1);
+
+        return (
+            <motion.div 
+                className="p-6 rounded-2xl border backdrop-blur-sm"
+                style={{ 
+                  backgroundColor: COLORS.bgCard,
+                  borderColor: COLORS.borderNeutral
+                }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+            >
+                <h3 className="text-lg font-medium mb-6 flex items-center gap-2" 
+                    style={{ color: COLORS.textSecondary }}>
+                    <BarChart3 className="w-5 h-5" style={{ color: COLORS.accent }} />
+                    Rating Distribution
+                </h3>
+                
+                {/* Vertical Bar Graph */}
+                <div className="flex items-end justify-around gap-4 h-48">
+                    {ratingOptions.map((option) => {
+                        const count = distribution[option.value];
+                        const heightPercentage = maxCount > 0 ? (count / maxCount) * 100 : 0;
+                        
+                        return (
+                            <div key={option.value} className="flex flex-col items-center gap-3 flex-1">
+                                {/* Count label */}
+                                <motion.div
+                                    className="text-center"
+                                    initial={{ opacity: 0, y: -10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: 0.8 + option.value * 0.1 }}
+                                >
+                                    <div className="text-xl font-bold" style={{ color: option.color }}>
+                                        {count}
+                                    </div>
+                                    <div className="text-xs" style={{ color: COLORS.textMuted }}>
+                                        {count === 1 ? 'review' : 'reviews'}
+                                    </div>
+                                </motion.div>
+                                
+                                {/* Vertical Bar */}
+                                <div className="w-full h-full flex flex-col justify-end">
+                                    <motion.div
+                                        className="w-full rounded-t-lg relative overflow-hidden"
+                                        style={{ 
+                                            backgroundColor: option.color,
+                                            minHeight: count > 0 ? '20px' : '0px'
+                                        }}
+                                        initial={{ height: 0 }}
+                                        animate={{ height: `${heightPercentage}%` }}
+                                        transition={{ 
+                                            duration: 0.8, 
+                                            delay: 0.5 + option.value * 0.1,
+                                            ease: "easeOut" 
+                                        }}
+                                    >
+                                        <div className="absolute inset-0 bg-gradient-to-t from-white/20 to-transparent"></div>
+                                    </motion.div>
+                                </div>
+                                
+                                {/* Stars + Label */}
+                                <div className="flex flex-col items-center gap-1">
+                                    {renderStars(option.stars, option.color, 'w-3 h-3')}
+                                    <div className="text-xs font-medium text-center" 
+                                         style={{ color: COLORS.textMuted }}>
+                                        {option.label}
+                                    </div>
+                                </div>
+                            </div>
+                        );
+                    })}
+                </div>
+                
+                <div className="mt-6 pt-4 border-t text-center" 
+                     style={{ borderColor: COLORS.borderLight }}>
+                    <span className="text-sm" style={{ color: COLORS.textMuted }}>
+                        {comments.length} total review{comments.length !== 1 ? 's' : ''}
+                    </span>
+                </div>
+            </motion.div>
         );
     };
 
@@ -243,73 +351,75 @@ const RealCommentsRatingSection = ({ movie }) => {
         return (
             <div className="text-center">
                 <div className="flex items-center justify-center gap-2 mb-1">
-                    <span className={`text-3xl ${option?.ticketStyle || ''} ${
-                        option?.value === 4 ? 'golden-ticket' : ''
-                    }`}>
-                        {option?.symbol || '🎟️'}
-                    </span>
-                    <span className={`text-xl font-bold ${option?.color || 'text-gray-400'}`}>
+                    {renderStars(option?.stars || 0, option?.color || COLORS.accent, 'w-6 h-6')}
+                    <span className="text-xl font-bold" style={{ color: option?.color || COLORS.textMuted }}>
                         {option?.label || 'No ratings'}
                     </span>
                 </div>
-                <div className="text-sm text-gray-400">
+                <div className="text-sm" style={{ color: COLORS.textMuted }}>
                     {comments.length} review{comments.length !== 1 ? 's' : ''}
                 </div>
             </div>
         );
     };
 
-    // Don't render until mounted (prevents hydration mismatch)
-    if (!mounted) {
+    if (!mounted || loading) {
         return (
-            <section className="bg-gradient-to-br from-gray-900/30 to-black/50 border border-gray-800/50 rounded-2xl p-6 sm:p-8 lg:p-12 backdrop-blur-sm">
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light text-white mb-8 flex items-center gap-4">
-                    <MessageCircle className="w-6 h-6 sm:w-8 sm:h-8 text-yellow-400" />
+            <section className="rounded-2xl p-6 sm:p-8 lg:p-12 backdrop-blur-sm border"
+                     style={{ 
+                       backgroundColor: COLORS.bgCard,
+                       borderColor: COLORS.borderNeutral
+                     }}>
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light mb-8 flex items-center gap-4"
+                    style={{ color: COLORS.textPrimary }}>
+                    <MessageCircle className="w-6 h-6 sm:w-8 sm:h-8" style={{ color: COLORS.accent }} />
                     Community Reviews
                 </h2>
                 <div className="flex items-center justify-center py-12">
-                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-yellow-400"></div>
-                    <span className="ml-3 text-gray-300">Initializing reviews...</span>
-                </div>
-            </section>
-        );
-    }
-
-    if (loading) {
-        return (
-            <section className="bg-gradient-to-br from-gray-900/30 to-black/50 border border-gray-800/50 rounded-2xl p-6 sm:p-8 lg:p-12 backdrop-blur-sm">
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light text-white mb-8 flex items-center gap-4">
-                    <MessageCircle className="w-6 h-6 sm:w-8 sm:h-8 text-yellow-400" />
-                    Community Reviews
-                </h2>
-                <div className="flex items-center justify-center py-12">
-                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-yellow-400"></div>
-                    <span className="ml-3 text-gray-300">Loading reviews...</span>
+                    <div className="animate-spin rounded-full h-8 w-8 border-b-2" 
+                         style={{ borderColor: COLORS.accent }}></div>
+                    <span className="ml-3" style={{ color: COLORS.textSecondary }}>
+                        {!mounted ? 'Initializing reviews...' : 'Loading reviews...'}
+                    </span>
                 </div>
             </section>
         );
     }
 
     return (
-        <section className="bg-gradient-to-br from-gray-900/30 to-black/50 border border-gray-800/50 rounded-2xl p-6 sm:p-8 lg:p-12 backdrop-blur-sm">
-            <div className="flex items-center justify-between mb-8">
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light text-white flex items-center gap-4">
-                    <MessageCircle className="w-6 h-6 sm:w-8 sm:h-8 text-yellow-400" />
+        <section className="rounded-2xl p-6 sm:p-8 lg:p-12 backdrop-blur-sm border"
+                 style={{ 
+                   backgroundColor: COLORS.bgCard,
+                   borderColor: COLORS.borderNeutral
+                 }}>
+            <div className="flex items-center justify-between mb-8 flex-wrap gap-4">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light flex items-center gap-4"
+                    style={{ color: COLORS.textPrimary }}>
+                    <MessageCircle className="w-6 h-6 sm:w-8 sm:h-8" style={{ color: COLORS.accent }} />
                     Community Reviews
                 </h2>
                 
                 {getAverageRatingDisplay()}
             </div>
 
+            {/* 📊 VERTICAL BAR CHART */}
+            {comments.length > 0 && <VerticalBarChart />}
+
             {/* Add Review Button */}
             {!showForm && (
                 <motion.button
                     onClick={() => setShowForm(true)}
-                    className="mb-8 bg-yellow-400 text-black py-3 px-6 rounded-xl font-medium hover:bg-yellow-300 transition-colors flex items-center gap-2"
+                    className="mb-8 mt-6 py-3 px-6 rounded-xl font-medium transition-all flex items-center gap-2"
+                    style={{ 
+                      backgroundColor: COLORS.accent,
+                      color: COLORS.bgPrimary
+                    }}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
+                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = COLORS.accentHover}
+                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = COLORS.accent}
                 >
-                    <span className="text-lg">🎟️</span>
+                    <Star className="w-5 h-5 fill-current" />
                     Write a Review
                 </motion.button>
             )}
@@ -319,20 +429,26 @@ const RealCommentsRatingSection = ({ movie }) => {
                 {showForm && (
                     <motion.form
                         onSubmit={handleSubmitComment}
-                        className="bg-gray-800/30 border border-gray-700/30 rounded-xl p-6 mb-8"
+                        className="rounded-xl p-6 mb-8 border"
+                        style={{ 
+                          backgroundColor: `${COLORS.bgCard}66`,
+                          borderColor: COLORS.borderLight
+                        }}
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
                         transition={{ duration: 0.3 }}
                     >
-                        <h3 className="text-xl font-medium text-white mb-4 flex items-center gap-2">
-                            <span className="text-2xl golden-ticket">🎫</span>
+                        <h3 className="text-xl font-medium mb-4 flex items-center gap-2"
+                            style={{ color: COLORS.textPrimary }}>
+                            <Star className="w-6 h-6 fill-current" style={{ color: COLORS.accent }} />
                             Share Your Review
                         </h3>
                         
                         {/* Name Input */}
                         <div className="mb-4">
-                            <label className="block text-gray-300 text-sm font-medium mb-2">
+                            <label className="block text-sm font-medium mb-2"
+                                   style={{ color: COLORS.textSecondary }}>
                                 Your Name
                             </label>
                             <input
@@ -340,15 +456,23 @@ const RealCommentsRatingSection = ({ movie }) => {
                                 value={userName}
                                 onChange={(e) => setUserName(e.target.value)}
                                 placeholder="Enter your name"
-                                className="w-full bg-gray-700/50 border border-gray-600/50 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-yellow-400/50 focus:bg-gray-600/50 transition-all"
+                                className="w-full rounded-lg px-4 py-3 transition-all border"
+                                style={{
+                                  backgroundColor: `${COLORS.bgCard}CC`,
+                                  borderColor: COLORS.borderNeutral,
+                                  color: COLORS.textPrimary
+                                }}
+                                onFocus={(e) => e.currentTarget.style.borderColor = COLORS.borderAccent}
+                                onBlur={(e) => e.currentTarget.style.borderColor = COLORS.borderNeutral}
                                 maxLength={50}
                                 required
                             />
                         </div>
 
-                        {/* Ultimate Golden Ticket Rating Input */}
+                        {/* Rating Input with Stars */}
                         <div className="mb-4">
-                            <label className="block text-gray-300 text-sm font-medium mb-2">
+                            <label className="block text-sm font-medium mb-2"
+                                   style={{ color: COLORS.textSecondary }}>
                                 Your Rating
                             </label>
                             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
@@ -357,32 +481,30 @@ const RealCommentsRatingSection = ({ movie }) => {
                                         key={option.value}
                                         type="button"
                                         onClick={() => setUserRating(option.value)}
-                                        className={`p-4 rounded-xl transition-all text-center ${option.borderStyle} ${
-                                            userRating === option.value
-                                                ? `${option.bgColor} ${option.shadowColor} shadow-lg scale-105`
-                                                : 'border-gray-600/50 hover:border-gray-500/50 hover:scale-105'
-                                        }`}
-                                        whileHover={{ y: -2 }}
+                                        className={`p-4 rounded-xl transition-all text-center ${option.borderStyle}`}
+                                        style={{
+                                            backgroundColor: userRating === option.value ? option.bgColor : COLORS.bgCard,
+                                            borderColor: userRating === option.value ? option.color : COLORS.borderNeutral,
+                                            boxShadow: userRating === option.value ? `0 0 20px ${option.color}33` : 'none'
+                                        }}
+                                        whileHover={{ y: -2, scale: 1.05 }}
                                         whileTap={{ scale: 0.95 }}
                                     >
-                                        {/* Ultimate Golden Ticket Symbol with Sparkle Effects */}
-                                        <div className={`text-3xl mb-2 ${option.ticketStyle} ${
-                                            option.value === 4 ? 'golden-ticket' : ''
-                                        } ${userRating === option.value ? option.color : 'text-gray-500'}`}>
-                                            {option.symbol}
+                                        <div className="mb-3 flex justify-center">
+                                            {renderStars(
+                                                option.stars, 
+                                                userRating === option.value ? option.color : COLORS.textDisabled,
+                                                'w-5 h-5'
+                                            )}
                                         </div>
                                         
-                                        {/* Label */}
-                                        <div className={`font-medium text-sm ${
-                                            userRating === option.value ? 'text-white' : 'text-gray-400'
-                                        }`}>
+                                        <div className="font-medium text-sm"
+                                             style={{ color: userRating === option.value ? COLORS.textPrimary : COLORS.textMuted }}>
                                             {option.label}
                                         </div>
                                         
-                                        {/* Description */}
-                                        <div className={`text-xs mt-1 ${
-                                            userRating === option.value ? 'text-gray-300' : 'text-gray-500'
-                                        }`}>
+                                        <div className="text-xs mt-1"
+                                             style={{ color: userRating === option.value ? COLORS.textSecondary : COLORS.textDisabled }}>
                                             {option.description}
                                         </div>
                                     </motion.button>
@@ -391,18 +513,21 @@ const RealCommentsRatingSection = ({ movie }) => {
                             
                             {userRating > 0 && (
                                 <motion.p 
-                                    className="text-yellow-400 font-medium mt-3"
+                                    className="font-medium mt-3 flex items-center gap-2"
+                                    style={{ color: COLORS.accent }}
                                     initial={{ opacity: 0, y: 10 }}
                                     animate={{ opacity: 1, y: 0 }}
                                 >
-                                    You rated this movie: {ratingOptions.find(r => r.value === userRating)?.label}
+                                    You rated this movie: {renderStars(ratingOptions.find(r => r.value === userRating)?.stars, COLORS.accent, 'w-4 h-4')}
+                                    <span>{ratingOptions.find(r => r.value === userRating)?.label}</span>
                                 </motion.p>
                             )}
                         </div>
 
                         {/* Comment Input */}
                         <div className="mb-4">
-                            <label className="block text-gray-300 text-sm font-medium mb-2">
+                            <label className="block text-sm font-medium mb-2"
+                                   style={{ color: COLORS.textSecondary }}>
                                 Your Review
                             </label>
                             <textarea
@@ -410,11 +535,18 @@ const RealCommentsRatingSection = ({ movie }) => {
                                 onChange={(e) => setCommentText(e.target.value)}
                                 placeholder="Share your thoughts about this movie..."
                                 rows={4}
-                                className="w-full bg-gray-700/50 border border-gray-600/50 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-yellow-400/50 focus:bg-gray-600/50 transition-all resize-vertical"
+                                className="w-full rounded-lg px-4 py-3 transition-all resize-vertical border"
+                                style={{
+                                  backgroundColor: `${COLORS.bgCard}CC`,
+                                  borderColor: COLORS.borderNeutral,
+                                  color: COLORS.textPrimary
+                                }}
+                                onFocus={(e) => e.currentTarget.style.borderColor = COLORS.borderAccent}
+                                onBlur={(e) => e.currentTarget.style.borderColor = COLORS.borderNeutral}
                                 maxLength={MAX_COMMENT_LENGTH}
                                 required
                             />
-                            <div className="text-sm text-gray-400 mt-1">
+                            <div className="text-sm mt-1" style={{ color: COLORS.textMuted }}>
                                 {commentText.length}/{MAX_COMMENT_LENGTH} characters
                             </div>
                         </div>
@@ -424,10 +556,17 @@ const RealCommentsRatingSection = ({ movie }) => {
                             <button
                                 type="submit"
                                 disabled={submitting}
-                                className="bg-yellow-400 text-black py-2 px-6 rounded-lg font-medium hover:bg-yellow-300 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center gap-2"
+                                className="py-2 px-6 rounded-lg font-medium transition-colors flex items-center gap-2"
+                                style={{ 
+                                  backgroundColor: COLORS.accent,
+                                  color: COLORS.bgPrimary,
+                                  opacity: submitting ? 0.5 : 1,
+                                  cursor: submitting ? 'not-allowed' : 'pointer'
+                                }}
                             >
                                 {submitting ? (
-                                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-black"></div>
+                                    <div className="animate-spin rounded-full h-4 w-4 border-b-2" 
+                                         style={{ borderColor: COLORS.bgPrimary }}></div>
                                 ) : (
                                     <Send className="w-4 h-4" />
                                 )}
@@ -437,7 +576,11 @@ const RealCommentsRatingSection = ({ movie }) => {
                             <button
                                 type="button"
                                 onClick={() => setShowForm(false)}
-                                className="bg-gray-600 text-white py-2 px-6 rounded-lg font-medium hover:bg-gray-500 transition-colors"
+                                className="py-2 px-6 rounded-lg font-medium transition-colors"
+                                style={{ 
+                                  backgroundColor: COLORS.bgCardHover,
+                                  color: COLORS.textSecondary
+                                }}
                             >
                                 Cancel
                             </button>
@@ -446,26 +589,33 @@ const RealCommentsRatingSection = ({ movie }) => {
                 )}
             </AnimatePresence>
 
-            {/* Comments List with Ultimate Golden Ratings */}
+            {/* Comments List */}
             {comments.length > 0 ? (
                 <div className="space-y-6">
                     {comments.map((comment, index) => (
                         <motion.div
                             key={comment.id}
-                            className="bg-gray-800/20 border border-gray-700/20 rounded-xl p-6 hover:bg-gray-700/20 transition-all"
+                            className="rounded-xl p-6 transition-all border"
+                            style={{ 
+                              backgroundColor: `${COLORS.bgCard}33`,
+                              borderColor: COLORS.borderLight
+                            }}
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: index * 0.1 }}
+                            whileHover={{ backgroundColor: `${COLORS.bgCard}66` }}
                         >
-                            {/* Comment Header */}
                             <div className="flex items-start justify-between mb-4">
                                 <div className="flex items-center gap-3">
-                                    <div className="w-10 h-10 bg-yellow-400 rounded-full flex items-center justify-center">
-                                        <User className="w-5 h-5 text-black" />
+                                    <div className="w-10 h-10 rounded-full flex items-center justify-center"
+                                         style={{ backgroundColor: COLORS.accent }}>
+                                        <User className="w-5 h-5" style={{ color: COLORS.bgPrimary }} />
                                     </div>
                                     <div>
-                                        <h4 className="text-white font-medium">{comment.userName}</h4>
-                                        <div className="flex items-center gap-2 text-sm text-gray-400">
+                                        <h4 className="font-medium" style={{ color: COLORS.textPrimary }}>
+                                            {comment.userName}
+                                        </h4>
+                                        <div className="flex items-center gap-2 text-sm" style={{ color: COLORS.textMuted }}>
                                             <Clock className="w-4 h-4" />
                                             {formatDate(comment.createdAt)}
                                         </div>
@@ -475,11 +625,13 @@ const RealCommentsRatingSection = ({ movie }) => {
                                 <div className="flex items-center gap-3">
                                     {displayRating(comment.rating)}
                                     
-                                    {/* Secure Delete Button - Only for comment owner */}
                                     {canDeleteComment(comment) && (
                                         <button
                                             onClick={() => handleDeleteComment(comment)}
-                                            className="text-gray-400 hover:text-red-400 transition-colors"
+                                            className="transition-colors"
+                                            style={{ color: COLORS.textMuted }}
+                                            onMouseEnter={(e) => e.currentTarget.style.color = '#EF4444'}
+                                            onMouseLeave={(e) => e.currentTarget.style.color = COLORS.textMuted}
                                             title="Delete your comment"
                                         >
                                             <Trash2 className="w-4 h-4" />
@@ -488,8 +640,7 @@ const RealCommentsRatingSection = ({ movie }) => {
                                 </div>
                             </div>
 
-                            {/* Comment Content */}
-                            <p className="text-gray-200 leading-relaxed">
+                            <p className="leading-relaxed" style={{ color: COLORS.textSecondary }}>
                                 {comment.comment}
                             </p>
                         </motion.div>
@@ -497,15 +648,16 @@ const RealCommentsRatingSection = ({ movie }) => {
                 </div>
             ) : (
                 <div className="text-center py-12">
-                    <AlertCircle className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-                    <h3 className="text-xl text-gray-300 mb-2">No reviews yet</h3>
-                    <p className="text-gray-400">Be the first to share your thoughts about this movie!</p>
+                    <AlertCircle className="w-12 h-12 mx-auto mb-4" style={{ color: COLORS.textMuted }} />
+                    <h3 className="text-xl mb-2" style={{ color: COLORS.textSecondary }}>No reviews yet</h3>
+                    <p style={{ color: COLORS.textMuted }}>Be the first to share your thoughts about this movie!</p>
                 </div>
             )}
 
             {/* Comment Guidelines */}
-            <div className="mt-8 pt-6 border-t border-gray-800/50">
-                <p className="text-center text-gray-500 text-sm flex items-center justify-center gap-2">
+            <div className="mt-8 pt-6 border-t" style={{ borderColor: COLORS.borderLight }}>
+                <p className="text-center text-sm flex items-center justify-center gap-2" 
+                   style={{ color: COLORS.textDisabled }}>
                     <Shield className="w-4 h-4" />
                     Reviews are secure - only you can delete your own comments
                 </p>

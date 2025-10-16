@@ -1,4 +1,4 @@
-// pages/index.js
+// pages/index.js - YOUR ORIGINAL WORKING VERSION
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Head from 'next/head';
@@ -237,7 +237,6 @@ const FilmiwayHomepage = () => {
                         </motion.button>
                     </motion.div>
 
-                    {/* STATS SECTION REMOVED - Featured Collections moved up */}
                     <motion.div 
                         className="bg-gradient-to-r from-gray-900/40 via-gray-800/40 to-gray-900/40 backdrop-blur-sm border border-gray-700/30 rounded-3xl p-8 mb-16 max-w-5xl mx-auto"
                         initial={{ opacity: 0, y: 30 }}

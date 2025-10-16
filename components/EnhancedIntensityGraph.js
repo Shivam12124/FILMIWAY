@@ -1,8 +1,8 @@
-// components/EnhancedIntensityGraph.js
+// components/EnhancedIntensityGraph.js - TOOLTIP FIXED ✅
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ResponsiveContainer, AreaChart, Area, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
-import { TrendingUp } from 'lucide-react';
+import { TrendingUp, HelpCircle } from 'lucide-react';
 
 const EnhancedIntensityGraph = React.memo(({ scenes, dominantColor }) => {
     if (!scenes || scenes.length === 0) return null;
@@ -22,10 +22,11 @@ const EnhancedIntensityGraph = React.memo(({ scenes, dominantColor }) => {
 
     return (
         <motion.div 
-            className="mb-8 sm:mb-12 bg-gradient-to-br from-gray-800/40 to-gray-900/60 rounded-xl border border-gray-700/50 p-4 sm:p-8 shadow-2xl backdrop-blur-sm relative overflow-hidden"
+            className="mb-8 sm:mb-12 bg-gradient-to-br from-gray-800/40 to-gray-900/60 rounded-xl border border-gray-700/50 p-4 sm:p-8 shadow-2xl backdrop-blur-sm relative"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
+            style={{ overflow: 'visible' }}
         >
             <div className="absolute top-2 left-2 sm:top-4 sm:left-4 w-3 h-3 sm:w-5 sm:h-5 border-t-2 border-l-2 border-yellow-400/40"></div>
             <div className="absolute top-2 right-2 sm:top-4 sm:right-4 w-3 h-3 sm:w-5 sm:h-5 border-t-2 border-r-2 border-yellow-400/40"></div>
@@ -33,7 +34,7 @@ const EnhancedIntensityGraph = React.memo(({ scenes, dominantColor }) => {
             <div className="absolute bottom-2 right-2 sm:bottom-4 sm:right-4 w-3 h-3 sm:w-5 sm:h-5 border-b-2 border-r-2 border-yellow-400/40"></div>
             
             <motion.div 
-                className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 sm:mb-8 gap-2 sm:gap-0"
+                className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 sm:mb-8 gap-2 sm:gap-0 relative"
                 initial={{ opacity: 0, x: -40 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.4 }}
@@ -46,7 +47,50 @@ const EnhancedIntensityGraph = React.memo(({ scenes, dominantColor }) => {
                     >
                         📊
                     </motion.div>
-                    INTENSITY TIMELINE
+                    INTENSITY GRAPH 
+                    
+                    {/* 💡 TOOLTIP - FIXED POSITIONING */}
+                    <div className="group relative inline-flex items-center">
+                        <motion.div
+                            className="cursor-help"
+                            whileHover={{ scale: 1.15 }}
+                            transition={{ duration: 0.2 }}
+                        >
+                            <HelpCircle className="w-4 h-4 text-gray-400 hover:text-yellow-400 transition-colors" />
+                        </motion.div>
+                        
+                        {/* Tooltip popup - FIXED: Changed positioning and z-index */}
+                        <div 
+                            className="absolute left-1/2 -translate-x-1/2 bottom-full mb-3 px-4 py-3 rounded-lg border backdrop-blur-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 pointer-events-none shadow-2xl"
+                            style={{ 
+                                backgroundColor: 'rgba(17, 24, 39, 0.98)',
+                                borderColor: 'rgba(234, 179, 8, 0.4)',
+                                minWidth: '280px',
+                                maxWidth: '300px',
+                                zIndex: 9999
+                            }}
+                        >
+                            <div className="text-yellow-400 font-semibold mb-1.5 text-sm">
+                                Intensity Graph 
+                            </div>
+                            <div className="text-gray-300 text-xs leading-relaxed">
+                                Shows plot intensity<br/>
+                                throughout the movie. Higher peaks<br/>
+                                indicate more intense moments.
+                            </div>
+                            {/* Arrow pointing down - FIXED */}
+                            <div 
+                                className="absolute top-full left-1/2 -translate-x-1/2 -mt-px"
+                                style={{ 
+                                    width: 0,
+                                    height: 0,
+                                    borderLeft: '6px solid transparent',
+                                    borderRight: '6px solid transparent',
+                                    borderTop: '6px solid rgba(234, 179, 8, 0.4)'
+                                }}
+                            />
+                        </div>
+                    </div>
                 </h4>
                 <div className="text-xs text-gray-400 flex items-center gap-2 sm:gap-3 tracking-wider uppercase">
                     <TrendingUp size={12} className="sm:w-4 sm:h-4" />

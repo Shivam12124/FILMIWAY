@@ -4,7 +4,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Crown, Star, MessageSquare, Volume2, VolumeX, Play, Pause, Menu, X, Home, Eye, MousePointer, TrendingUp, Users, Search, Brain, Zap, Film, Award, Mountain, Shield } from 'lucide-react';
-
+import { COMPLETE_MOVIE_DATABASE as SURVIVAL_DATABASE, COMPLETE_MOVIE_DATA as SURVIVAL_DATA } from '../../utils/survivalMovieData';
 // Components
 import CinematicBackground from '../../components/CinematicBackground';
 import StrategicControls from '../../components/StrategicControls';
@@ -291,6 +291,12 @@ const CollectionPage = ({ collection, movies }) => {
                 subtitle: "Psychological Thrillers with Unreliable Narrators & Shocking Plot Twists Ranked by Complexity"
             };
         } 
+    else if (collection.slug === 'best-survival-movies') {
+    return {
+        title: "10 Best Survival Movies of All Time – Ranked & Reviewed 2025",
+        subtitle: "Human Endurance Against Nature – Wilderness, Mountains & Desert Survival Stories Ranked by Intensity"
+    };
+}
 
 
         else if (collection.slug === 'best-drama-movies-on-netflix') {
@@ -326,6 +332,12 @@ const CollectionPage = ({ collection, movies }) => {
                 description: "Curating psychological thrillers with unreliable narrators and shocking plot twists"
             };
         } 
+        else if (collection?.slug === 'best-survival-movies') {
+    return {
+        title: "Loading Best Survival Movies",
+        description: "Curating the greatest survival films with community reviews and ratings"
+    };
+}
 
       else if (collection?.slug === 'best-drama-movies-on-netflix') {
     return {
@@ -383,8 +395,18 @@ else if (collection.slug === 'best-drama-movies-on-netflix') {
         progressText: `of Top ${movies.length} Netflix Dramas`
     };
 }
+     else if (collection.slug === 'best-survival-movies') {
+    return {
+        title: "10 Best Survival Movies of All Time | Ranked & Reviewed 2025",
+        description: "Discover the 10 greatest survival movies ever made. From 127 Hours to The Revenant, explore gripping tales of human endurance, wilderness survival, and the will to live against all odds. Expert rankings, detailed analysis & where to watch.",
+        keywords: "best survival movies, survival films, wilderness movies, human endurance films, 127 Hours, Cast Away, The Revenant, The Martian, survival cinema, lost at sea movies, mountain survival films, desert survival movies, Unbroken, survival against the odds, true survival stories, best survival films of all time",
+        ogTitle: "10 Best Survival Movies of All Time | Ranked & Reviewed 2025 🏔️",
+        twitterTitle: "🏔️ 10 Best Survival Movies of All Time – Expert Rankings",
+        progressText: `of Top ${movies.length} Best Survival Films`
+    };
+}
 
-        
+          
         else {
             return {
                 title: `Best ${collection.title} – Top 10 Curated Movie Collection You Must Watch`,
@@ -468,7 +490,10 @@ else if (collection.slug === 'best-drama-movies-on-netflix') {
             } else if (collection.slug === 'movies-like-shutter-island') {
                 sessionStorage.setItem('fromShutterIslandCollection', 'true');
             }
-        }
+        }   else if (collection.slug === 'best-survival-movies') {
+    sessionStorage.setItem('fromSurvivalCollection', 'true');
+}
+
     };
 
     // Get dynamic content
@@ -532,7 +557,8 @@ else if (collection.slug === 'best-drama-movies-on-netflix') {
                     </motion.div>
 
                     {/* Three-Column Grid + DNA Helix */}
-                    <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 lg:gap-6 mb-16 sm:mb-20">
+                   <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-6 mb-16 sm:mb-20">
+
                         
                         {/* Column 1 - The Selection */}
                         <motion.div 
@@ -618,15 +644,11 @@ else if (collection.slug === 'best-drama-movies-on-netflix') {
                         </motion.div>
 
                         {/* 🔥 COLUMN 4 - DNA HELIX (WITH TEXT REMOVED) */}
-                        <motion.div 
-                            className="flex justify-center"
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: 2.8, duration: 0.8 }}
-                        >
+                        
+                    
+                        
                             {/* 🔥 PASS CURRENT MOVIE TO DNA COMPONENT */}
-                            <StrategicDNAHelix movie={movies[currentMovieIndex]} />
-                        </motion.div>
+                            
                     </div>
 
                     {/* Cinematic Divider */}
@@ -936,14 +958,19 @@ const CinematicHeader = React.memo(() => {
 
                                 {/* 🔥 FIXED FOR NEXT.JS 15 - REMOVED <a> TAG */}
                                 <AnimatePresence mode="wait">
-                                    <Link 
-                                        href={
-                                            collection.slug === 'movies-like-memento' 
-                                                ? `/movies/like-memento/${currentMovie.imdbID}`
-                                                : collection.slug === 'movies-like-shutter-island'
-                                                ? `/movies/like-shutter-island/${currentMovie.imdbID}`
-                                                : `/movies/${currentMovie.imdbID}`
-                                        }
+                               <Link 
+    href={
+        collection.slug === 'movies-like-inception'
+            ? `/movies/like-inception/${currentMovie.imdbID}`
+            : collection.slug === 'movies-like-memento' 
+            ? `/movies/like-memento/${currentMovie.imdbID}`
+            : collection.slug === 'movies-like-shutter-island'
+            ? `/movies/like-shutter-island/${currentMovie.imdbID}`
+            : collection.slug === 'best-survival-movies'
+            ? `/movies/survival/${currentMovie.imdbID}`
+            : `/movies/${currentMovie.imdbID}`
+    }
+
                                         key={currentMovieIndex}
                                         onClick={handleMovieClick}
                                     >
@@ -984,31 +1011,34 @@ const CinematicHeader = React.memo(() => {
                                         whileTap={{ scale: 0.98 }}
                                         onClick={() => {
                                             handleMovieClick();
-                                            
-                                            // 🔥 DYNAMIC URL BASED ON COLLECTION
-                                            let detailPageUrl;
-                                            if (collection.slug === 'movies-like-memento') {
-                                                detailPageUrl = `/movies/like-memento/${currentMovie.imdbID}`;
-                                            } else if (collection.slug === 'movies-like-shutter-island') {
-                                                detailPageUrl = `/movies/like-shutter-island/${currentMovie.imdbID}`;
-                                            } else {
-                                                detailPageUrl = `/movies/${currentMovie.imdbID}`;
-                                            }
-                                            
-                                            window.location.href = detailPageUrl;
-                                        }}
-                                    >
-                                        <Eye className="w-6 h-6 text-yellow-400" />
-                                        <span className="text-yellow-400 font-medium text-lg">Explore Full Analysis</span>
-                                        <motion.div
-                                            animate={{ x: [0, 8, 0] }}
-                                            transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-                                        >
-                                            <ChevronRight className="w-6 h-6 text-yellow-400" />
-                                        </motion.div>
-                                    </motion.div>
-                                </div>
-                            </motion.div>
+                                      // 🔥 DYNAMIC URL BASED ON COLLECTION - UPDATED WITH SURVIVAL
+let detailPageUrl;
+if (collection.slug === 'movies-like-inception') {
+    detailPageUrl = `/movies/like-inception/${currentMovie.imdbID}`;
+} else if (collection.slug === 'movies-like-memento') {
+    detailPageUrl = `/movies/like-memento/${currentMovie.imdbID}`;
+} else if (collection.slug === 'movies-like-shutter-island') {
+    detailPageUrl = `/movies/like-shutter-island/${currentMovie.imdbID}`;
+} else if (collection.slug === 'best-survival-movies') {
+    detailPageUrl = `/movies/survival/${currentMovie.imdbID}`;
+} else {
+    detailPageUrl = `/movies/${currentMovie.imdbID}`;
+}
+
+window.location.href = detailPageUrl;
+}}
+>
+    <Eye className="w-6 h-6 text-yellow-400" />
+    <span className="text-yellow-400 font-medium text-lg">Explore Full Analysis</span>
+    <motion.div
+        animate={{ x: [0, 8, 0] }}
+        transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+    >
+        <ChevronRight className="w-6 h-6 text-yellow-400" />
+    </motion.div>
+</motion.div>
+</div>
+</motion.div>
 
                             {/* Navigation Dots */}
                             <NavigationDots 
@@ -1108,10 +1138,11 @@ const CinematicHeader = React.memo(() => {
         </div>
     );
 };
-
 // 🔥 SSG FUNCTIONS
 export async function getStaticPaths() {
-    const paths = getAllCollectionSlugs().map((slug) => ({
+    const slugs = getAllCollectionSlugs();
+    
+    const paths = slugs.map((slug) => ({
         params: { slug }
     }));
 
@@ -1130,9 +1161,14 @@ export async function getStaticProps({ params }) {
         };
     }
 
+    // 🔥 SELECT CORRECT DATABASE BASED ON COLLECTION
+    const movieDatabase = collection.slug === 'best-survival-movies' 
+        ? SURVIVAL_DATABASE
+        : COMPLETE_MOVIE_DATABASE;
+
     // Get movies for the collection (reversed for ranking display)
     const movies = collection.movies.map(imdbId => 
-        COMPLETE_MOVIE_DATABASE.find(movie => movie.imdbID === imdbId)
+        movieDatabase.find(movie => movie.imdbID === imdbId)
     ).filter(Boolean).reverse();
 
     return {

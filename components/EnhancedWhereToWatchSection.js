@@ -1,7 +1,24 @@
-// components/EnhancedWhereToWatchSection.js - PROFESSIONAL AUTO-DETECT VERSION
+// components/EnhancedWhereToWatchSection.js - ALL SAME YELLOW COLOR ✅
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, Globe, ExternalLink, Loader, MapPin, ChevronDown, ChevronUp } from 'lucide-react';
+
+// 🎨 UNIFIED COLOR SYSTEM
+const COLORS = {
+  accent: '#EAB308',
+  accentHover: '#FACC15',
+  bgPrimary: '#0B0B0C',
+  bgCard: 'rgba(55, 65, 81, 0.3)',
+  bgCardHover: 'rgba(55, 65, 81, 0.5)',
+  textPrimary: '#FFFFFF',
+  textSecondary: '#D1D5DB',
+  textMuted: '#9CA3AF',
+  textDisabled: '#6B7280',
+  borderAccent: 'rgba(234, 179, 8, 0.2)',
+  borderAccentHover: 'rgba(234, 179, 8, 0.4)',
+  borderNeutral: 'rgba(107, 114, 128, 0.5)',
+  borderLight: 'rgba(107, 114, 128, 0.2)',
+};
 
 const TOP_REGIONS = [
     { code: 'US', name: 'United States', flag: '🇺🇸' },
@@ -18,7 +35,6 @@ const TOP_REGIONS = [
     { code: 'JP', name: 'Japan', flag: '🇯🇵' }
 ];
 
-// Auto-detect user's country using ipinfo
 async function detectUserCountry() {
     try {
         const response = await fetch('https://ipinfo.io/json');
@@ -34,7 +50,6 @@ async function detectUserCountry() {
     return 'US';
 }
 
-// TMDB streaming data fetcher
 async function getAllRegionStreamingData(tmdbId, title) {
     const apiKey = '6054e5498fb2619274454959c38bbdfa';
     const streamingData = {};
@@ -45,6 +60,10 @@ async function getAllRegionStreamingData(tmdbId, title) {
         const response = await fetch(`https://api.themoviedb.org/3/movie/${tmdbId}/watch/providers?api_key=${apiKey}`);
         
         if (!response.ok) {
+            if (response.status === 404) {
+                console.warn(`⚠️ Movie not found in TMDB: ${tmdbId} (${title})`);
+                return {};
+            }
             throw new Error(`TMDB API failed: ${response.status}`);
         }
         
@@ -53,7 +72,6 @@ async function getAllRegionStreamingData(tmdbId, title) {
         
         const results = data.results || {};
         
-        // Process each region we're interested in
         TOP_REGIONS.forEach(region => {
             const regionData = results[region.code];
             if (regionData) {
@@ -96,29 +114,32 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
             console.log(`🎬 Loading streaming data for ${movie.Title}`);
             
             try {
-                // Step 1: Auto-detect user's country
                 const detectedCountry = await detectUserCountry();
                 setUserCountry(detectedCountry);
                 
-                // Step 2: Fetch streaming data for all regions
                 const data = await getAllRegionStreamingData(movie.tmdbId, movie.Title);
-                setStreamingData(data);
                 
-                // Step 3: Auto-select user's region if available, or first available region
-                if (data[detectedCountry]) {
-                    setSelectedRegion(detectedCountry);
-                    console.log(`✅ Using user's country: ${detectedCountry}`);
-                } else {
-                    const availableRegions = Object.keys(data);
-                    if (availableRegions.length > 0) {
-                        setSelectedRegion(availableRegions[0]);
-                        console.log(`⚠️ No data for ${detectedCountry}, using: ${availableRegions[0]}`);
+                if (data && Object.keys(data).length > 0) {
+                    setStreamingData(data);
+                    
+                    if (data[detectedCountry]) {
+                        setSelectedRegion(detectedCountry);
+                        console.log(`✅ Using user's country: ${detectedCountry}`);
+                    } else {
+                        const availableRegions = Object.keys(data);
+                        if (availableRegions.length > 0) {
+                            setSelectedRegion(availableRegions[0]);
+                            console.log(`⚠️ No data for ${detectedCountry}, using: ${availableRegions[0]}`);
+                        }
                     }
+                    console.log('✅ Complete streaming data:', data);
+                } else {
+                    console.warn('⚠️ No streaming data available for this movie');
+                    setStreamingData({});
                 }
-                
-                console.log('✅ Complete streaming data:', data);
             } catch (error) {
                 console.error('❌ Error fetching streaming data:', error);
+                setStreamingData({});
             } finally {
                 setIsLoading(false);
             }
@@ -129,11 +150,17 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
 
     if (!mounted) {
         return (
-            <motion.section className="mb-4 sm:mb-6">
-                <div className="p-3 sm:p-4 bg-gray-800/30 rounded-lg border border-gray-700/50">
+            <motion.section className="mb-12" style={{ marginTop: '48px' }}>
+                <div className="p-6 rounded-2xl border" 
+                     style={{ 
+                       backgroundColor: COLORS.bgCard,
+                       borderColor: COLORS.borderNeutral
+                     }}>
                     <div className="flex items-center justify-center">
-                        <Loader className="w-4 h-4 animate-spin text-yellow-400" />
-                        <span className="ml-2 text-gray-300 text-sm">Loading streaming options...</span>
+                        <Loader className="w-5 h-5 animate-spin" style={{ color: COLORS.accent }} />
+                        <span className="ml-3" style={{ color: COLORS.textSecondary, fontSize: '14px' }}>
+                            Loading streaming options...
+                        </span>
                     </div>
                 </div>
             </motion.section>
@@ -144,10 +171,10 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
     const availableRegions = Object.keys(streamingData);
     const otherRegions = availableRegions.filter(code => code !== selectedRegion);
     
-    // Get region info for display
     const selectedRegionInfo = TOP_REGIONS.find(r => r.code === selectedRegion);
     const userCountryInfo = TOP_REGIONS.find(r => r.code === userCountry);
 
+    // 🔥 UNIFIED STREAMING PLATFORM CARD - ALL SAME YELLOW
     const StreamingPlatformCard = ({ provider, type, region }) => {
         const logoUrl = provider.logo_path ? `https://image.tmdb.org/t/p/w45${provider.logo_path}` : null;
         const deepLink = getDeepLink(provider.provider_id, region, movie.Title, movie.tmdbId);
@@ -160,15 +187,23 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
         return (
             <motion.button
                 onClick={handleClick}
-                className={`group relative p-3 rounded-xl border transition-all duration-300 hover:scale-105 hover:shadow-lg flex flex-col items-center gap-2 min-w-[100px] ${
-                    type === 'flatrate' 
-                        ? 'bg-green-500/10 border-green-500/30 hover:bg-green-500/20' 
-                        : type === 'rent'
-                        ? 'bg-yellow-500/10 border-yellow-500/30 hover:bg-yellow-500/20'
-                        : 'bg-blue-500/10 border-blue-500/30 hover:bg-blue-500/20'
-                }`}
-                whileHover={{ y: -2 }}
+                className="group relative p-4 rounded-xl border transition-all duration-300 flex flex-col items-center gap-3 min-w-[100px]"
+                style={{
+                    backgroundColor: `${COLORS.accent}0D`, // Yellow/5% for ALL
+                    borderColor: COLORS.borderAccent        // Yellow border for ALL
+                }}
+                whileHover={{ y: -2, scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = `${COLORS.accent}1A`; // Yellow/10% on hover
+                    e.currentTarget.style.borderColor = COLORS.borderAccentHover;
+                    e.currentTarget.style.boxShadow = `0 0 20px ${COLORS.accent}33`;
+                }}
+                onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = `${COLORS.accent}0D`;
+                    e.currentTarget.style.borderColor = COLORS.borderAccent;
+                    e.currentTarget.style.boxShadow = 'none';
+                }}
             >
                 {logoUrl && (
                     <img
@@ -182,81 +217,109 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
                 )}
                 
                 <div className="text-center">
-                    <div className="text-xs font-medium text-gray-200 truncate max-w-[80px]">
+                    <div className="text-xs font-medium truncate max-w-[80px]"
+                         style={{ color: COLORS.textSecondary }}>
                         {provider.provider_name}
                     </div>
-                    <div className={`text-xs opacity-75 ${
-                        type === 'flatrate' ? 'text-green-400' : 
-                        type === 'rent' ? 'text-yellow-400' : 'text-blue-400'
-                    }`}>
+                    <div className="text-xs" style={{ color: COLORS.accent }}>
                         {type === 'flatrate' ? 'Stream' : type === 'rent' ? 'Rent' : 'Buy'}
                     </div>
                 </div>
                 
-                <ExternalLink className="absolute top-1 right-1 w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity text-gray-400" />
+                <ExternalLink className="absolute top-2 right-2 w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" 
+                             style={{ color: COLORS.textMuted }} />
             </motion.button>
         );
     };
 
     return (
         <motion.section 
-            className="mb-6 sm:mb-8"
+            className="mb-12"
+            style={{ marginTop: '48px' }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
         >
-            <h3 className="text-base sm:text-lg font-light text-yellow-300 mb-3 sm:mb-4 flex items-center gap-2">
-                <Play size={14} className="sm:w-4 sm:h-4" />
-                🌍 Where to Watch
-            </h3>
+            <h2 className="text-2xl font-medium mb-6 flex items-center gap-3"
+                style={{ color: COLORS.accent, fontSize: '22px' }}>
+                <Play size={20} />
+                Where to Watch
+            </h2>
             
             {isLoading ? (
-                <div className="p-4 sm:p-6 bg-gray-800/30 rounded-xl border border-gray-700/50">
-                    <div className="flex items-center justify-center space-y-4">
+                <div className="p-8 rounded-2xl border" 
+                     style={{ 
+                       backgroundColor: COLORS.bgCard,
+                       borderColor: COLORS.borderNeutral
+                     }}>
+                    <div className="flex items-center justify-center gap-4">
                         <motion.div 
                             animate={{ rotate: 360 }} 
                             transition={{ duration: 2, repeat: Infinity, ease: "linear" }} 
-                            className="w-8 h-8 border-2 border-yellow-400/30 border-t-yellow-400 rounded-full"
+                            className="w-8 h-8 rounded-full"
+                            style={{ 
+                              border: `2px solid ${COLORS.accent}4D`,
+                              borderTopColor: COLORS.accent
+                            }}
                         />
-                        <div className="ml-3">
-                            <p className="text-gray-300 font-medium">Detecting your location and streaming options...</p>
-                            <p className="text-gray-400 text-sm">
+                        <div>
+                            <p style={{ color: COLORS.textSecondary, fontWeight: '500', fontSize: '16px' }}>
+                                Detecting your location and streaming options...
+                            </p>
+                            <p style={{ color: COLORS.textMuted, fontSize: '14px' }}>
                                 Checking availability for {movie?.Title || 'this movie'}
                             </p>
                         </div>
                     </div>
                 </div>
             ) : (
-                <div className="space-y-4 sm:space-y-6">
-                    {/* Current Region Display */}
-                    {selectedRegionInfo && (
-                        <div className="flex items-center justify-between p-4 bg-gray-800/30 rounded-xl border border-gray-700/50">
-                            <div className="flex items-center gap-3">
-                                <span className="text-2xl">{selectedRegionInfo.flag}</span>
+                <div className="space-y-6">
+                    {selectedRegionInfo && availableRegions.length > 0 && (
+                        <div className="flex items-center justify-between p-6 rounded-2xl border" 
+                             style={{ 
+                               backgroundColor: COLORS.bgCard,
+                               borderColor: COLORS.borderNeutral
+                             }}>
+                            <div className="flex items-center gap-4">
+                                <span className="text-3xl">{selectedRegionInfo.flag}</span>
                                 <div>
-                                    <div className="text-white font-medium">
+                                    <div style={{ color: COLORS.textPrimary, fontWeight: '500', fontSize: '16px' }}>
                                         Showing availability in {selectedRegionInfo.name}
                                     </div>
                                     {selectedRegion === userCountry ? (
-                                        <div className="text-green-400 text-sm flex items-center gap-1">
-                                            <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                                        <div className="flex items-center gap-2 mt-1" 
+                                             style={{ color: '#22C55E', fontSize: '14px' }}>
+                                            <div className="w-2 h-2 rounded-full" 
+                                                 style={{ backgroundColor: '#22C55E' }}></div>
                                             Auto-detected from your location
                                         </div>
                                     ) : (
-                                        <div className="text-yellow-400 text-sm">
+                                        <div style={{ color: COLORS.accent, fontSize: '14px', marginTop: '4px' }}>
                                             No availability in {userCountryInfo?.name || userCountry}
                                         </div>
                                     )}
                                 </div>
                             </div>
                             
-                            {/* Other Regions Toggle */}
                             {otherRegions.length > 0 && (
                                 <motion.button
                                     onClick={() => setShowOtherRegions(!showOtherRegions)}
-                                    className="flex items-center gap-2 px-3 py-2 bg-gray-700/50 hover:bg-gray-700/70 rounded-lg text-sm text-gray-300 transition-colors"
+                                    className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm transition-all duration-300"
+                                    style={{
+                                        backgroundColor: COLORS.bgCardHover,
+                                        color: COLORS.textSecondary,
+                                        border: `1px solid ${COLORS.borderLight}`
+                                    }}
                                     whileHover={{ scale: 1.02 }}
                                     whileTap={{ scale: 0.98 }}
+                                    onMouseEnter={(e) => {
+                                        e.currentTarget.style.borderColor = COLORS.borderAccent;
+                                        e.currentTarget.style.color = COLORS.accent;
+                                    }}
+                                    onMouseLeave={(e) => {
+                                        e.currentTarget.style.borderColor = COLORS.borderLight;
+                                        e.currentTarget.style.color = COLORS.textSecondary;
+                                    }}
                                 >
                                     <span>Other regions ({otherRegions.length})</span>
                                     {showOtherRegions ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
@@ -265,7 +328,6 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
                         </div>
                     )}
 
-                    {/* Other Regions Selector */}
                     <AnimatePresence>
                         {showOtherRegions && otherRegions.length > 0 && (
                             <motion.div
@@ -274,11 +336,16 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
                                 exit={{ opacity: 0, height: 0 }}
                                 className="overflow-hidden"
                             >
-                                <div className="p-4 bg-gray-800/20 rounded-xl border border-gray-700/30">
-                                    <h4 className="text-sm font-medium text-gray-300 mb-3">
+                                <div className="p-6 rounded-2xl border" 
+                                     style={{ 
+                                       backgroundColor: `${COLORS.bgCard}66`,
+                                       borderColor: COLORS.borderLight
+                                     }}>
+                                    <h4 className="text-sm font-medium mb-4" 
+                                        style={{ color: COLORS.textSecondary }}>
                                         Also available in:
                                     </h4>
-                                    <div className="flex flex-wrap gap-2">
+                                    <div className="flex flex-wrap gap-3">
                                         {otherRegions.map((regionCode) => {
                                             const region = TOP_REGIONS.find(r => r.code === regionCode);
                                             if (!region) return null;
@@ -290,9 +357,24 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
                                                         setSelectedRegion(regionCode);
                                                         setShowOtherRegions(false);
                                                     }}
-                                                    className="px-3 py-2 rounded-lg border bg-gray-700/50 border-gray-600/50 text-gray-300 hover:bg-gray-600/50 text-sm font-medium transition-all duration-300 flex items-center gap-2"
+                                                    className="px-4 py-2 rounded-lg border text-sm font-medium transition-all duration-300 flex items-center gap-2"
+                                                    style={{
+                                                        backgroundColor: COLORS.bgCardHover,
+                                                        borderColor: COLORS.borderNeutral,
+                                                        color: COLORS.textSecondary
+                                                    }}
                                                     whileHover={{ scale: 1.05 }}
                                                     whileTap={{ scale: 0.95 }}
+                                                    onMouseEnter={(e) => {
+                                                        e.currentTarget.style.borderColor = COLORS.borderAccent;
+                                                        e.currentTarget.style.backgroundColor = `${COLORS.accent}1A`;
+                                                        e.currentTarget.style.color = COLORS.accent;
+                                                    }}
+                                                    onMouseLeave={(e) => {
+                                                        e.currentTarget.style.borderColor = COLORS.borderNeutral;
+                                                        e.currentTarget.style.backgroundColor = COLORS.bgCardHover;
+                                                        e.currentTarget.style.color = COLORS.textSecondary;
+                                                    }}
                                                 >
                                                     <span className="text-lg">{region.flag}</span>
                                                     <span>{region.name}</span>
@@ -305,7 +387,6 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
                         )}
                     </AnimatePresence>
 
-                    {/* Streaming Content for Selected Region */}
                     <AnimatePresence mode="wait">
                         {currentRegionData ? (
                             <motion.div
@@ -314,16 +395,18 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, y: -20 }}
                                 transition={{ duration: 0.3 }}
-                                className="space-y-4"
+                                className="space-y-6"
                             >
-                                {/* Streaming Services */}
+                                {/* 🔥 ALL SECTIONS USE SAME YELLOW COLOR */}
                                 {currentRegionData.flatrate?.length > 0 && (
                                     <div>
-                                        <h4 className="text-sm font-medium text-green-300 mb-3 flex items-center gap-2">
-                                            <div className="w-3 h-3 bg-green-400 rounded-full"></div>
+                                        <h4 className="text-sm font-medium mb-4 flex items-center gap-2" 
+                                            style={{ color: COLORS.accent }}>
+                                            <div className="w-3 h-3 rounded-full" 
+                                                 style={{ backgroundColor: COLORS.accent }}></div>
                                             Stream with Subscription
                                         </h4>
-                                        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3">
+                                        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4">
                                             {currentRegionData.flatrate.map((provider) => (
                                                 <StreamingPlatformCard
                                                     key={`${selectedRegion}-flatrate-${provider.provider_id}`}
@@ -336,14 +419,15 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
                                     </div>
                                 )}
 
-                                {/* Rental Options */}
                                 {currentRegionData.rent?.length > 0 && (
                                     <div>
-                                        <h4 className="text-sm font-medium text-yellow-300 mb-3 flex items-center gap-2">
-                                            <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
+                                        <h4 className="text-sm font-medium mb-4 flex items-center gap-2" 
+                                            style={{ color: COLORS.accent }}>
+                                            <div className="w-3 h-3 rounded-full" 
+                                                 style={{ backgroundColor: COLORS.accent }}></div>
                                             Rent Digital Copy
                                         </h4>
-                                        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3">
+                                        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4">
                                             {currentRegionData.rent.map((provider) => (
                                                 <StreamingPlatformCard
                                                     key={`${selectedRegion}-rent-${provider.provider_id}`}
@@ -356,14 +440,15 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
                                     </div>
                                 )}
 
-                                {/* Purchase Options */}
                                 {currentRegionData.buy?.length > 0 && (
                                     <div>
-                                        <h4 className="text-sm font-medium text-blue-300 mb-3 flex items-center gap-2">
-                                            <div className="w-3 h-3 bg-blue-400 rounded-full"></div>
+                                        <h4 className="text-sm font-medium mb-4 flex items-center gap-2" 
+                                            style={{ color: COLORS.accent }}>
+                                            <div className="w-3 h-3 rounded-full" 
+                                                 style={{ backgroundColor: COLORS.accent }}></div>
                                             Buy Digital Copy
                                         </h4>
-                                        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3">
+                                        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4">
                                             {currentRegionData.buy.map((provider) => (
                                                 <StreamingPlatformCard
                                                     key={`${selectedRegion}-buy-${provider.provider_id}`}
@@ -376,29 +461,50 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
                                     </div>
                                 )}
 
-                                {/* No availability message */}
                                 {(!currentRegionData.flatrate?.length && !currentRegionData.rent?.length && !currentRegionData.buy?.length) && (
-                                    <div className="text-center p-4 bg-gray-800/30 rounded-lg border border-gray-700/30">
-                                        <MapPin className="w-8 h-8 text-gray-400 mx-auto mb-2" />
-                                        <p className="text-gray-400 text-sm">
+                                    <div className="text-center p-6 rounded-2xl border" 
+                                         style={{ 
+                                           backgroundColor: COLORS.bgCard,
+                                           borderColor: COLORS.borderLight
+                                         }}>
+                                        <MapPin className="w-8 h-8 mx-auto mb-3" 
+                                               style={{ color: COLORS.textMuted }} />
+                                        <p style={{ color: COLORS.textMuted, fontSize: '14px' }}>
                                             No streaming options found for {selectedRegionInfo?.name || selectedRegion}
                                         </p>
                                     </div>
                                 )}
                             </motion.div>
                         ) : availableRegions.length === 0 ? (
-                            <div className="text-center p-6 bg-orange-800/20 rounded-lg border border-orange-500/50">
-                                <Globe className="w-12 h-12 text-orange-400 mx-auto mb-3" />
-                                <h4 className="text-lg font-medium text-orange-300 mb-2">
+                            <div className="text-center p-8 rounded-2xl border" 
+                                 style={{ 
+                                   backgroundColor: 'rgba(234, 88, 12, 0.1)',
+                                   borderColor: 'rgba(234, 88, 12, 0.5)'
+                                 }}>
+                                <Globe className="w-12 h-12 mx-auto mb-4" 
+                                      style={{ color: '#EA580C' }} />
+                                <h4 className="text-lg font-medium mb-2" 
+                                    style={{ color: '#FB923C' }}>
                                     Limited Streaming Data
                                 </h4>
-                                <p className="text-orange-200/90 text-sm mb-4">
+                                <p className="mb-4" 
+                                   style={{ 
+                                     color: 'rgba(251, 146, 60, 0.9)', 
+                                     fontSize: '14px',
+                                     lineHeight: '1.6'
+                                   }}>
                                     <strong>{movie?.Title}</strong> may have limited streaming availability
                                 </p>
                                 <motion.button
                                     onClick={() => window.open(`https://www.justwatch.com/search?q=${encodeURIComponent(movie?.Title || '')}`, '_blank')}
-                                    className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2 mx-auto"
+                                    className="px-6 py-3 rounded-lg text-sm font-medium transition-all duration-300 flex items-center gap-2 mx-auto"
+                                    style={{ 
+                                      backgroundColor: '#EA580C',
+                                      color: '#FFFFFF'
+                                    }}
                                     whileHover={{ scale: 1.05 }}
+                                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#DC2626'}
+                                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#EA580C'}
                                 >
                                     <ExternalLink size={14} />
                                     Search on JustWatch
@@ -407,11 +513,10 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
                         ) : null}
                     </AnimatePresence>
 
-                    {/* Footer Note */}
-                    <div className="text-center pt-2">
-                        <p className="text-gray-500 text-xs">
+                    <div className="text-center pt-4">
+                        <p style={{ color: COLORS.textDisabled, fontSize: '12px' }}>
                             Streaming availability powered by{' '}
-                            <span className="text-blue-400 font-medium">TMDB</span> • Auto-detected location via iPinfo
+                            <span style={{ color: '#3B82F6', fontWeight: '500' }}>TMDB</span> • Auto-detected location via iPinfo
                         </p>
                     </div>
                 </div>

@@ -1,13 +1,23 @@
-// components/CinematicMovieCard.js - FIXED PROPERTY NAMES AND STRATEGIC_TAGLINES ERROR
+// components/CinematicMovieCard.js - FIXED TO SUPPORT SURVIVAL COLLECTION ✅
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Crown, Star } from 'lucide-react';
 import TMDBMoviePoster from './TMDBMoviePoster';
 import { COMPLETE_MOVIE_DATA, STRATEGIC_QUOTES } from '../utils/movieData';
+import { COMPLETE_MOVIE_DATA as SURVIVAL_DATA, STRATEGIC_QUOTES as SURVIVAL_QUOTES } from '../utils/survivalMovieData';
 
-const CinematicMovieCard = React.memo(({ movie, rank, isActive }) => {
+const CinematicMovieCard = React.memo(({ movie, rank, isActive, fromSurvivalCollection }) => {
     const [isHovered, setIsHovered] = useState(false);
-    const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId] || {};
+    
+    // 🔥 FIX: Check both survival and regular data
+    const movieInfo = fromSurvivalCollection 
+        ? (SURVIVAL_DATA[movie.tmdbId] || {})
+        : (COMPLETE_MOVIE_DATA[movie.tmdbId] || {});
+    
+    // 🔥 FIX: Get correct quotes based on collection
+    const quote = fromSurvivalCollection
+        ? SURVIVAL_QUOTES[movie.tmdbId]
+        : STRATEGIC_QUOTES[movie.tmdbId];
 
     return (
         <motion.div 
@@ -73,7 +83,7 @@ const CinematicMovieCard = React.memo(({ movie, rank, isActive }) => {
                 </motion.div>
             </div>
             
-            {/* 🔥 FIXED MOVIE INFO - CORRECT PROPERTY NAMES AND FIXED TAGLINE */}
+            {/* 🔥 FIXED MOVIE INFO - NO MORE "undefined..." */}
             <div className="text-center space-y-2 sm:space-y-3 lg:space-y-4 z-10 max-w-sm px-2 sm:px-4">
                 <motion.h2 
                     className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-light tracking-wide text-gray-100 leading-tight" 
@@ -83,19 +93,22 @@ const CinematicMovieCard = React.memo(({ movie, rank, isActive }) => {
                     {movie.Title?.replace(/\*/g, '') || movie.title || 'Unknown Movie'}
                 </motion.h2>
                 
-                {/* 🔥 FIXED RUNTIME DISPLAY - USING CORRECT PROPERTY NAMES */}
+                {/* 🔥 FIXED RUNTIME DISPLAY - HANDLES ALL FORMATS */}
                 <div className="text-gray-400 text-xs sm:text-sm font-light">
-                    {movie.year || movie.Year || '2024'} • {movie.genre?.split(',')[0].trim() || movie.Genre?.split(',')[0].trim() || 'Drama'} • {movie.runtime || movie.Runtime || '120 min'}
+                    {movie.year || movie.Year || '2024'} • {movie.genre?.split(',')[0].trim() || movie.Genre?.split(',')[0].trim() || 'Drama'} • {movie.runtime ? `${movie.runtime} min` : (movie.Runtime || '120 min')}
                 </div>
                 
-                {/* 🔥 FIXED TAGLINE - NOW USES STRATEGIC_QUOTES INSTEAD OF STRATEGIC_TAGLINES */}
-                <motion.p 
-                    className="text-gray-300/80 text-xs sm:text-sm leading-relaxed font-light tracking-wide opacity-0 group-hover:opacity-100 transition-all duration-500"
-                    initial={{ height: 0 }}
-                    animate={{ height: isHovered ? 'auto' : 0 }}
-                >
-                    {STRATEGIC_QUOTES[movie.tmdbId] || movieInfo.synopsis?.substring(0, 80) + '...' || 'A mind-bending cinematic experience'}
-                </motion.p>
+                {/* 🔥 FIXED TAGLINE - NO MORE "undefined..." - ONLY SHOWS ON HOVER */}
+                {isHovered && (quote || movieInfo.synopsis) && (
+                    <motion.p 
+                        className="text-gray-300/80 text-xs sm:text-sm leading-relaxed font-light tracking-wide transition-all duration-500"
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                    >
+                        {quote || (movieInfo.synopsis?.substring(0, 100) + '...') || ''}
+                    </motion.p>
+                )}
             </div>
         </motion.div>
     );

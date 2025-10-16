@@ -1,17 +1,36 @@
-// components/StrategicDNAHelix.js
+// components/StrategicDNAHelix.js - WITH TOOLTIP ✅
 import React from 'react';
 import { motion } from 'framer-motion';
-import { BarChart3 } from 'lucide-react';
-import { CINEMATIC_COLORS } from '../utils/movieData';
+import { BarChart3, HelpCircle } from 'lucide-react';
+
+// 🎨 OPTIMIZED STANDARDIZED GENRE COLORS - EVERY GENRE IS UNIQUE
+const STANDARDIZED_COLORS = {
+  "Drama": "#dc2626",
+  "Thriller": "#0f172a",
+  "Action": "#f59e0b",
+  "Adventure": "#059669",
+  "Sci-Fi": "#3b82f6",
+  "Romance": "#ec4899",
+  "Comedy": "#eab308",
+  "Fantasy": "#8b5cf6",
+  "Neo-Noir": "#0f172a",
+  "Mystery": "#6b21a8",
+  "Horror": "#991b1b",
+  "Crime": "#b91c1c",
+  "Psychological": "#9333ea",
+  "Memory": "#a78bfa",
+  "Dreams": "#60a5fa"
+};
 
 const StrategicDNAHelix = React.memo(({ dna, dominantColor, className = "" }) => {
     if (!dna) return null;
 
     const total = Object.values(dna).reduce((sum, val) => sum + val, 0);
+    
     const genreData = Object.entries(dna).map(([genre, percentage]) => ({ 
         genre, 
         percentage, 
-        color: CINEMATIC_COLORS[genre] || dominantColor, 
+        color: STANDARDIZED_COLORS[genre] || dominantColor || '#ca8a04',
         normalizedPercentage: (percentage / total) * 100 
     }));
 
@@ -135,6 +154,36 @@ const StrategicDNAHelix = React.memo(({ dna, dominantColor, className = "" }) =>
                                 🧬
                             </motion.div>
                             CINEMATIC DNA
+                            
+                            {/* 💡 TOOLTIP */}
+                            <motion.div
+                                className="group relative cursor-help inline-block"
+                                whileHover={{ scale: 1.1 }}
+                            >
+                                <HelpCircle className="w-4 h-4 text-gray-400" />
+                                
+                                {/* Tooltip popup */}
+                                <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-4 py-3 rounded-lg border backdrop-blur-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 whitespace-nowrap z-50 shadow-xl"
+                                     style={{ 
+                                       backgroundColor: 'rgba(31, 41, 55, 0.95)',
+                                       borderColor: 'rgba(234, 179, 8, 0.3)',
+                                       minWidth: '280px'
+                                     }}>
+                                    <div className="text-yellow-400 font-medium mb-1 text-sm">
+                                        Genre DNA Breakdown
+                                    </div>
+                                    <div className="text-gray-300 text-xs leading-relaxed">
+                                        Visual representation of the movie's<br/>
+                                        genre composition. Larger segments<br/>
+                                        indicate dominant genre elements.
+                                    </div>
+                                    {/* Arrow pointing down */}
+                                    <div className="absolute top-full left-1/2 transform -translate-x-1/2">
+                                        <div className="w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent" 
+                                             style={{ borderTopColor: 'rgba(234, 179, 8, 0.3)' }}></div>
+                                    </div>
+                                </div>
+                            </motion.div>
                         </h4>
                         <div className="text-xs text-gray-400 flex items-center gap-2 sm:gap-3 tracking-wider uppercase">
                             <BarChart3 size={14} className="sm:w-4 sm:h-4" />

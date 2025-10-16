@@ -7,7 +7,7 @@
     <!-- 🔥 HOMEPAGE - HIGHEST PRIORITY -->
     <url>
         <loc>https://filmiway.com/</loc>
-        <lastmod>2025-10-13T19:30:00+05:30</lastmod>
+        <lastmod>2025-10-16T12:40:00+05:30</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
@@ -15,7 +15,7 @@
     <!-- 🔥 ABOUT US PAGE - HIGH PRIORITY -->
     <url>
         <loc>https://filmiway.com/about-us</loc>
-        <lastmod>2025-10-13T19:30:00+05:30</lastmod>
+        <lastmod>2025-10-16T12:40:00+05:30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
@@ -23,7 +23,7 @@
     <!-- 🔥 CONTACT PAGE - HIGH PRIORITY -->
     <url>
         <loc>https://filmiway.com/contact</loc>
-        <lastmod>2025-10-13T19:30:00+05:30</lastmod>
+        <lastmod>2025-10-16T12:40:00+05:30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
@@ -31,14 +31,14 @@
     <!-- 🔥 LEGAL PAGES - IMPORTANT FOR TRUST -->
     <url>
         <loc>https://filmiway.com/privacy</loc>
-        <lastmod>2025-10-13T19:30:00+05:30</lastmod>
+        <lastmod>2025-10-16T12:40:00+05:30</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.7</priority>
     </url>
 
     <url>
         <loc>https://filmiway.com/terms</loc>
-        <lastmod>2025-10-13T19:30:00+05:30</lastmod>
+        <lastmod>2025-10-16T12:40:00+05:30</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.7</priority>
     </url>
@@ -46,31 +46,39 @@
     <!-- 🔥 MAIN COLLECTION PAGES - HIGH PRIORITY -->
     <url>
         <loc>https://filmiway.com/collection/movies-like-inception</loc>
-        <lastmod>2025-10-13T19:30:00+05:30</lastmod>
+        <lastmod>2025-10-16T12:40:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
 
     <url>
         <loc>https://filmiway.com/collection/movies-like-memento</loc>
-        <lastmod>2025-10-13T19:30:00+05:30</lastmod>
+        <lastmod>2025-10-16T12:40:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
 
     <url>
         <loc>https://filmiway.com/collection/movies-like-shutter-island</loc>
-        <lastmod>2025-10-13T19:30:00+05:30</lastmod>
+        <lastmod>2025-10-16T12:40:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
 
-    <!-- 🔥 CANONICAL MOVIE URLS - NO DUPLICATES -->
+    <!-- 🏔️ NEW: SURVIVAL MOVIES COLLECTION - HIGH PRIORITY -->
+    <url>
+        <loc>https://filmiway.com/collection/best-survival-movies</loc>
+        <lastmod>2025-10-16T12:40:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- 🔥 MIND-BENDING MOVIES - CANONICAL URLS -->
     
     <!-- PRIMER (2004) -->
     <url>
         <loc>https://filmiway.com/movies/tt0390384</loc>
-        <lastmod>2025-10-13T19:30:00+05:30</lastmod>
+        <lastmod>2025-10-16T12:40:00+05:30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -78,7 +86,7 @@
     <!-- SYNECDOCHE, NEW YORK (2008) -->
     <url>
         <loc>https://filmiway.com/movies/tt0383028</loc>
-        <lastmod>2025-10-13T19:30:00+05:30</lastmod>
+        <lastmod>2025-10-16T12:40:00+05:30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -86,7 +94,7 @@
     <!-- MULHOLLAND DRIVE (2001) -->
     <url>
         <loc>https://filmiway.com/movies/tt0166924</loc>
-        <lastmod>2025-10-13T19:30:00+05:30</lastmod>
+        <lastmod>2025-10-16T12:40:00+05:30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -94,7 +102,7 @@
     <!-- PREDESTINATION (2014) -->
     <url>
         <loc>https://filmiway.com/movies/tt2397535</loc>
-        <lastmod>2025-10-13T19:30:00+05:30</lastmod>
+        <lastmod>2025-10-16T12:40:00+05:30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -102,7 +110,7 @@
     <!-- COHERENCE (2013) -->
     <url>
         <loc>https://filmiway.com/movies/tt2866360</loc>
-        <lastmod>2025-10-13T19:30:00+05:30</lastmod>
+        <lastmod>2025-10-16T12:40:00+05:30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -110,7 +118,7 @@
     <!-- DONNIE DARKO (2001) -->
     <url>
         <loc>https://filmiway.com/movies/tt0246578</loc>
-        <lastmod>2025-10-13T19:30:00+05:30</lastmod>
+        <lastmod>2025-10-16T12:40:00+05:30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -118,7 +126,7 @@
     <!-- ENEMY (2013) -->
     <url>
         <loc>https://filmiway.com/movies/tt2316411</loc>
-        <lastmod>2025-10-13T19:30:00+05:30</lastmod>
+        <lastmod>2025-10-16T12:40:00+05:30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -126,7 +134,7 @@
     <!-- THE FOUNTAIN (2006) -->
     <url>
         <loc>https://filmiway.com/movies/tt0414993</loc>
-        <lastmod>2025-10-13T19:30:00+05:30</lastmod>
+        <lastmod>2025-10-16T12:40:00+05:30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -134,7 +142,7 @@
     <!-- MR. NOBODY (2009) -->
     <url>
         <loc>https://filmiway.com/movies/tt0485947</loc>
-        <lastmod>2025-10-13T19:30:00+05:30</lastmod>
+        <lastmod>2025-10-16T12:40:00+05:30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -142,7 +150,7 @@
     <!-- SHUTTER ISLAND (2010) -->
     <url>
         <loc>https://filmiway.com/movies/tt1130884</loc>
-        <lastmod>2025-10-13T19:30:00+05:30</lastmod>
+        <lastmod>2025-10-16T12:40:00+05:30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -150,7 +158,89 @@
     <!-- THE USUAL SUSPECTS (1995) -->
     <url>
         <loc>https://filmiway.com/movies/tt0114814</loc>
-        <lastmod>2025-10-13T19:30:00+05:30</lastmod>
+        <lastmod>2025-10-16T12:40:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- 🏔️ SURVIVAL MOVIES - CANONICAL URLS -->
+    
+    <!-- 127 HOURS (2010) -->
+    <url>
+        <loc>https://filmiway.com/movies/tt1542344</loc>
+        <lastmod>2025-10-16T12:40:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- SOCIETY OF THE SNOW (2023) -->
+    <url>
+        <loc>https://filmiway.com/movies/tt16277242</loc>
+        <lastmod>2025-10-16T12:40:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- CAST AWAY (2000) -->
+    <url>
+        <loc>https://filmiway.com/movies/tt0162222</loc>
+        <lastmod>2025-10-16T12:40:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- THE REVENANT (2015) -->
+    <url>
+        <loc>https://filmiway.com/movies/tt1663202</loc>
+        <lastmod>2025-10-16T12:40:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- THE MARTIAN (2015) -->
+    <url>
+        <loc>https://filmiway.com/movies/tt3659388</loc>
+        <lastmod>2025-10-16T12:40:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- THE IMPOSSIBLE (2012) -->
+    <url>
+        <loc>https://filmiway.com/movies/tt1649419</loc>
+        <lastmod>2025-10-16T12:40:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- JUNGLE (2017) -->
+    <url>
+        <loc>https://filmiway.com/movies/tt3758172</loc>
+        <lastmod>2025-10-16T12:40:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- APOCALYPTO (2006) -->
+    <url>
+        <loc>https://filmiway.com/movies/tt0472043</loc>
+        <lastmod>2025-10-16T12:40:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- 13 LIVES (2022) -->
+    <url>
+        <loc>https://filmiway.com/movies/tt12262116</loc>
+        <lastmod>2025-10-16T12:40:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- UNBROKEN (2014) -->
+    <url>
+        <loc>https://filmiway.com/movies/tt1809398</loc>
+        <lastmod>2025-10-16T12:40:00+05:30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>

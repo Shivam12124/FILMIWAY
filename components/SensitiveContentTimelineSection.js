@@ -1,8 +1,9 @@
-// components/SensitiveContentTimelineSection.js - RED BUTTON FOR USER ATTENTION
+// components/SensitiveContentTimelineSection.js - FIXED WITH CORRECT IMPORT ✅
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Shield, CheckCircle, AlertTriangle, Eye, X } from 'lucide-react';
-import { SENSITIVE_TIMELINES, getSensitiveContentTypes } from '../utils/sensitiveContent';
+// 🔥 FIXED: Import from survivalMovieData.js instead of sensitiveContent.js
+import { SENSITIVE_TIMELINES, getSensitiveContentTypes } from '../utils/survivalMovieData';
 
 const SensitiveContentTimelineSection = React.memo(({ movie }) => {
     const [showSensitiveOverlay, setShowSensitiveOverlay] = useState(false);
@@ -103,27 +104,28 @@ const SensitiveContentTimelineSection = React.memo(({ movie }) => {
                             <div className="text-center mb-4 sm:mb-6">
                                 <h3 className="text-xl sm:text-2xl font-light text-yellow-300 tracking-wide mb-1">🎬 Sensitive Content Timeline</h3>
                                 <p className="text-xs sm:text-sm text-gray-400">({sensitiveData.scenes.length} scenes found in "{movie.Title}")</p>
-                                {/* Disclaimer for Donnie Darko */}
-                                {movie.tmdbId === 141 && (
-                                    <p className="text-xs text-white mt-2 px-3 py-1 bg-gray-700/50 rounded-lg border border-gray-600/30">
-                                        ⚠️ TIMESTAMP CAN VARIES AS IT IS FROM DVD EDITION NOT FROM DIRECTOR'S CUT
-                                    </p>
-                                )}
                             </div>
 
                             <div className="border-t border-b border-gray-700/50 my-3 sm:my-4 py-3 sm:py-4 space-y-2 sm:space-y-3 max-h-[50vh] sm:max-h-[60vh] overflow-y-auto pr-2">
                                 {sensitiveData.scenes.map((scene, index) => {
-                                    const formatTime = (seconds) => {
-                                        const h = Math.floor(seconds / 3600).toString().padStart(2, '0');
-                                        const m = Math.floor((seconds % 3600) / 60).toString().padStart(2, '0');
-                                        const s = Math.floor(seconds % 60).toString().padStart(2, '0');
-                                        return `${h}:${m}:${s}`;
+                                    // 🔥 FIXED: Parse time strings correctly
+                                    const parseTime = (timeStr) => {
+                                        const parts = timeStr.split(':').map(Number);
+                                        if (parts.length === 3) return parts[0] * 3600 + parts[1] * 60 + parts[2];
+                                        if (parts.length === 2) return parts[0] * 60 + parts[1];
+                                        return 0;
+                                    };
+
+                                    const formatTime = (timeStr) => {
+                                        return timeStr; // Just return the original format since it's already formatted
                                     };
                                     
                                     const getSceneIcon = (type) => {
                                         const lowerType = type.toLowerCase();
                                         if (lowerType.includes('nudity') || lowerType.includes('sex')) return '🔞';
                                         if (lowerType.includes('kissing')) return '💋';
+                                        if (lowerType.includes('bikini')) return '👙';
+                                        if (lowerType.includes('undressing')) return '👔';
                                         if (lowerType.includes('violence')) return '⚔️';
                                         if (lowerType.includes('language')) return '🤬';
                                         return '⚠️';
@@ -139,7 +141,17 @@ const SensitiveContentTimelineSection = React.memo(({ movie }) => {
                                         >
                                             <span className="text-base sm:text-xl mr-3 sm:mr-4">{getSceneIcon(scene.type)}</span>
                                             <span className="font-mono text-yellow-400/90 text-xs sm:text-sm mr-2 sm:mr-4 w-24 sm:w-32">{formatTime(scene.start)} - {formatTime(scene.end)}</span>
-                                            <span className="text-xs sm:text-sm font-light flex-1 capitalize">{scene.type}</span>
+                                            <div className="flex-1">
+                                                <span className="text-xs sm:text-sm font-light capitalize block">{scene.type}</span>
+                                                {scene.description && (
+                                                    <span className="text-xs text-gray-500 block">{scene.description}</span>
+                                                )}
+                                                {scene.severity && (
+                                                    <span className={`text-xs px-2 py-0.5 rounded mt-1 inline-block ${
+                                                        scene.severity === 'Moderate' ? 'bg-orange-500/20 text-orange-300' : 'bg-yellow-500/20 text-yellow-300'
+                                                    }`}>{scene.severity}</span>
+                                                )}
+                                            </div>
                                         </motion.div>
                                     );
                                 })}

@@ -1,82 +1,56 @@
-// components/SurvivalSEOFAQSection.js - FAQ SECTION FOR SURVIVAL MOVIES
-import React, { useState } from 'react';
-import { ChevronDown, ChevronUp, HelpCircle, Mountain } from 'lucide-react';
+// components/SurvivalSEOFAQSection.js - MATCHING INCEPTION DESIGN ✅
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Info } from 'lucide-react';
+import { COMPLETE_MOVIE_DATA as SURVIVAL_MOVIE_DATA, SURVIVAL_MOVIE_FAQS } from '../utils/survivalMovieData';
+import { SENSITIVE_TIMELINES } from '../utils/survivalMovieData';
 
-const SurvivalSEOFAQSection = ({ faqs, movieTitle, themeColor = 'yellow' }) => {
-  const [openIndex, setOpenIndex] = useState(null);
+const SurvivalSEOFAQSection = ({ movie }) => {
+    const movieInfo = SURVIVAL_MOVIE_DATA[movie.tmdbId];
+    const sensitiveData = SENSITIVE_TIMELINES[movie.tmdbId];
+    
+    // 🔥 Get FAQs from SURVIVAL_MOVIE_FAQS data
+    const faqsFromData = movie?.Title && SURVIVAL_MOVIE_FAQS?.[movie.Title] 
+        ? SURVIVAL_MOVIE_FAQS[movie.Title] 
+        : [];
 
-  const toggleFAQ = (index) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
-
-  const themeColors = {
-    yellow: {
-      bg: 'from-yellow-900/40 to-yellow-800/40',
-      border: 'border-yellow-400/30',
-      text: 'text-yellow-300',
-      accent: 'text-yellow-400',
-      hover: 'hover:bg-yellow-600/10'
+    // 🔥 Safety check - return null if no FAQs
+    if (!faqsFromData || faqsFromData.length === 0) {
+        console.log('⚠️ No survival FAQs found for:', movie?.Title);
+        return null;
     }
-  };
-
-  const colors = themeColors[themeColor] || themeColors.yellow;
-
-  return (
-    <div className="relative z-30 py-20">
-      <div className="container mx-auto px-6">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <Mountain className={`w-8 h-8 ${colors.accent}`} />
-              <h2 className="text-3xl sm:text-4xl font-light text-white">
-                Frequently Asked Questions
-              </h2>
-            </div>
-            <p className="text-gray-400 text-lg">
-              Everything you need to know about {movieTitle} and its survival elements
+    
+    return (
+        <motion.section 
+            className="mt-12 sm:mt-16 pt-6 sm:pt-8 border-t border-gray-700/50"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+        >
+            <h2 className="text-xl sm:text-2xl font-light text-yellow-300 mb-6 sm:mb-8 flex items-center gap-2 sm:gap-3">
+                <Info size={20} className="sm:w-6 sm:h-6" />
+                <span className="hidden sm:inline">Frequently Asked Questions About {movie.Title}</span>
+                <span className="sm:hidden">FAQ About {movie.Title}</span>
+            </h2>
+            <p className="text-gray-300 mb-4 sm:mb-6 text-sm sm:text-base">
+                Common questions about {movie.Title} and this extraordinary survival story.
             </p>
-          </div>
-
-          <div className="space-y-4">
-            {faqs.map((faq, index) => (
-              <div
-                key={index}
-                className={`bg-gradient-to-r ${colors.bg} rounded-xl backdrop-blur-sm border ${colors.border} overflow-hidden transition-all duration-300`}
-              >
-                <button
-                  onClick={() => toggleFAQ(index)}
-                  className={`w-full px-8 py-6 text-left ${colors.hover} transition-all duration-300 flex items-center justify-between`}
-                >
-                  <div className="flex items-center gap-4">
-                    <HelpCircle className={`w-5 h-5 ${colors.accent} flex-shrink-0`} />
-                    <h3 className={`text-lg font-medium ${colors.text}`}>
-                      {faq.question}
-                    </h3>
-                  </div>
-                  
-                  {openIndex === index ? (
-                    <ChevronUp className={`w-5 h-5 ${colors.accent} flex-shrink-0`} />
-                  ) : (
-                    <ChevronDown className={`w-5 h-5 ${colors.accent} flex-shrink-0`} />
-                  )}
-                </button>
-
-                {openIndex === index && (
-                  <div className="px-8 pb-6">
-                    <div className="pl-9">
-                      <p className="text-gray-300 leading-relaxed">
-                        {faq.answer}
-                      </p>
-                    </div>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+            <div className="space-y-4 sm:space-y-6">
+                {faqsFromData.map((faq, index) => (
+                    <motion.div 
+                        key={index}
+                        className="bg-gray-800/30 rounded-xl p-4 sm:p-6 border border-gray-700/50"
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.6, delay: index * 0.1 }}
+                    >
+                        <h3 className="text-base sm:text-lg font-medium text-yellow-200 mb-2 sm:mb-3">{faq.question}</h3>
+                        <p className="text-gray-300 leading-relaxed text-sm sm:text-base">{faq.answer}</p>
+                    </motion.div>
+                ))}
+            </div>
+        </motion.section>
+    );
 };
 
 export default SurvivalSEOFAQSection;
