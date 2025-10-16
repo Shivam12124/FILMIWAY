@@ -1,29 +1,21 @@
-// pages/movies/like-memento/[id].js - OPTIMIZED WITH INCEPTION FEATURES ✅
+// pages/movies/like-memento/[id].js - UPGRADED WITH PREMIUM DESIGN ✅
 import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Play, X, Star, Clock, Award, ArrowLeft, Brain, Zap, User, Twitter, Hash, Send } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Play, X, ArrowLeft, Zap, User, Twitter, Hash, Send } from 'lucide-react';
 
 import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
 import TMDBAttribution from '../../../components/TMDBAttribution';
-import { COMPLETE_MOVIE_DATABASE, COMPLETE_MOVIE_DATA, STRATEGIC_QUOTES } from '../../../utils/movieData';
+import { COMPLETE_MOVIE_DATABASE, COMPLETE_MOVIE_DATA } from '../../../utils/movieData';
 
 const COLORS = {
-  accent: '#EAB308',
-  accentLight: '#FDE047',
-  bgPrimary: '#0B0B0C',
-  bgCard: 'rgba(55, 65, 81, 0.3)',
-  textPrimary: '#FFFFFF',
-  textSecondary: '#D1D5DB',
-  textMuted: '#9CA3AF',
-  textDisabled: '#6B7280',
-  borderAccent: 'rgba(234, 179, 8, 0.2)',
-  borderLight: 'rgba(107, 114, 128, 0.2)',
+  accent: '#EAB308', accentLight: '#FDE047', bgPrimary: '#0B0B0C', bgCard: 'rgba(55, 65, 81, 0.3)',
+  textPrimary: '#FFFFFF', textSecondary: '#D1D5DB', textMuted: '#9CA3AF', textDisabled: '#6B7280',
+  borderAccent: 'rgba(234, 179, 8, 0.2)', borderLight: 'rgba(107, 114, 128, 0.2)',
 };
-
 
 const MOVIE_YEARS = {
     'Enemy': '2013', 'Primer': '2004', 'The Fountain': '2006',
@@ -104,18 +96,87 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
                     )}
                 </AnimatePresence>
             </div>
-            <div className="relative px-4 sm:px-6 lg:px-8 py-6 z-20" style={{ backgroundColor: COLORS.bgPrimary }}>
+
+            <div className="relative px-4 sm:px-6 lg:px-8 py-8 z-20" style={{ backgroundColor: COLORS.bgPrimary }}>
                 <div className="flex flex-row gap-4 sm:gap-6 lg:gap-8 items-start">
                     <motion.div className="flex-shrink-0 relative" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8, duration: 0.8 }}>
-                        <div className="relative w-32 sm:w-56 md:w-64 lg:w-80 aspect-[2/3]">
+                        <div className="relative w-32 sm:w-56 md:w-64 lg:w-80" style={{ aspectRatio: '2/3' }}>
                             <Image src={posterImage} alt={`${movie.Title} poster`} fill sizes="(max-width: 640px) 128px, (max-width: 768px) 224px, (max-width: 1024px) 256px, 320px" className="object-cover rounded-xl shadow-2xl" quality={85} unoptimized={posterImage.includes('placeholder')} />
                         </div>
                     </motion.div>
+
                     <motion.div className="flex-1" initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 1.0, duration: 0.8 }}>
-                        <h2 className="text-lg sm:text-2xl lg:text-4xl font-bold mb-4 sm:mb-6 flex items-center gap-3" style={{ color: COLORS.accent }}>
-                            <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full animate-pulse" style={{ backgroundColor: COLORS.accent }}></div>Why Similar to Memento
-                        </h2>
-                        <p className="text-sm sm:text-lg lg:text-2xl leading-relaxed" style={{ color: COLORS.textSecondary, lineHeight: '1.8' }}>{mementoConnection}</p>
+                        <motion.div 
+                            className="relative rounded-2xl overflow-hidden p-6 sm:p-8 backdrop-blur-sm"
+                            style={{ 
+                                background: `linear-gradient(135deg, ${COLORS.bgCard} 0%, rgba(15, 15, 20, 0.5) 100%)`,
+                                border: `1px solid ${COLORS.borderLight}`,
+                                boxShadow: `0 8px 32px rgba(0, 0, 0, 0.4)`
+                            }}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 1.1, duration: 0.8 }}
+                        >
+                            <div 
+                                className="absolute top-0 left-0 right-0 h-1"
+                                style={{ 
+                                    background: `linear-gradient(90deg, transparent, ${COLORS.accent}, transparent)` 
+                                }}
+                            />
+                            
+                            <div className="flex items-center gap-3 mb-5">
+                                <motion.div 
+                                    className="p-2.5 rounded-xl"
+                                    style={{ 
+                                        background: `linear-gradient(135deg, ${COLORS.accent}20, ${COLORS.accent}10)`,
+                                        border: `1px solid ${COLORS.accent}40`
+                                    }}
+                                    whileHover={{ scale: 1.05 }}
+                                    transition={{ duration: 0.2 }}
+                                >
+                                    <Zap className="w-5 h-5 sm:w-6 sm:h-6" style={{ color: COLORS.accent }} />
+                                </motion.div>
+                                
+                                <div>
+                                    <h2 
+                                        className="text-base sm:text-xl lg:text-2xl font-bold"
+                                        style={{ color: COLORS.accent }}
+                                    >
+                                        Why Similar to Memento
+                                    </h2>
+                                    <p className="text-xs sm:text-sm" style={{ color: COLORS.textMuted }}>
+                                        Memory & Identity Connection
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className="relative pl-6 border-l-2" style={{ borderColor: `${COLORS.accent}40` }}>
+                                <motion.div 
+                                    className="absolute -left-2 top-0 w-4 h-4 rounded-full"
+                                    style={{ backgroundColor: COLORS.accent }}
+                                    animate={{ scale: [1, 1.2, 1] }}
+                                    transition={{ duration: 2, repeat: Infinity }}
+                                />
+                                
+                                <p 
+                                    className="text-sm sm:text-base lg:text-lg leading-relaxed font-normal"
+                                    style={{ color: COLORS.textSecondary, lineHeight: '1.9' }}
+                                >
+                                    {mementoConnection}
+                                </p>
+                            </div>
+
+                            <motion.div 
+                                className="mt-6 h-1 rounded-full"
+                                style={{ 
+                                    background: `linear-gradient(90deg, ${COLORS.accent}60, transparent)`,
+                                    width: '40%'
+                                }}
+                                initial={{ scaleX: 0 }}
+                                animate={{ scaleX: 1 }}
+                                transition={{ delay: 1.5, duration: 0.8 }}
+                            />
+                        </motion.div>
                     </motion.div>
                 </div>
             </div>
@@ -123,7 +184,7 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
     );
 };
 
-const SmartBackButton = ({ movie }) => {
+const SmartBackButton = () => {
     const handleBackClick = () => {
         if (typeof window !== 'undefined') {
             const currentPosition = sessionStorage.getItem('currentMoviePosition');
@@ -136,7 +197,7 @@ const SmartBackButton = ({ movie }) => {
     };
     return (
         <motion.button onClick={handleBackClick} className="fixed top-4 left-4 sm:top-6 sm:left-6 z-50 flex items-center gap-2 px-4 py-2 backdrop-blur-md rounded-lg transition-all duration-300 shadow-xl" style={{ backgroundColor: `${COLORS.bgPrimary}F2`, border: `1px solid ${COLORS.borderLight}` }} whileHover={{ scale: 1.02, x: -2 }} whileTap={{ scale: 0.98 }} initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} onMouseEnter={(e) => e.currentTarget.style.borderColor = COLORS.borderAccent} onMouseLeave={(e) => e.currentTarget.style.borderColor = COLORS.borderLight}>
-            <ArrowLeft className="w-4 h-4" style={{ color: COLORS.accent }} /><span className="text-sm font-medium" style={{ color: COLORS.accent }}>Back to Memento</span>
+            <ChevronLeft className="w-4 h-4" style={{ color: COLORS.accent }} /><span className="text-sm font-medium" style={{ color: COLORS.accent }}>Back to Collection</span>
         </motion.button>
     );
 };
@@ -144,23 +205,21 @@ const SmartBackButton = ({ movie }) => {
 const AuthorCreditSection = () => (
     <motion.section className="pt-8 mt-16" style={{ borderTop: `1px solid ${COLORS.borderLight}` }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.8, duration: 0.8 }}>
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
-            <div className="flex items-center gap-3">
-                <User className="w-5 h-5" style={{ color: COLORS.textDisabled }} />
-                <div><p className="text-sm" style={{ color: COLORS.textMuted }}>Curated by <span className="font-medium" style={{ color: COLORS.textSecondary }}>Filmiway Editorial Team</span></p><p className="text-xs" style={{ color: COLORS.textDisabled }}>Expert analysis of memory-loss thrillers</p></div>
-            </div>
-            <div className="flex items-center gap-4">
-                <span className="text-sm" style={{ color: COLORS.textDisabled }}>Share:</span>
-                <div className="flex gap-3">
-                    {[Twitter, Hash, Send].map((Icon, i) => (<button key={i} className="p-2 rounded-full transition-colors" style={{ color: COLORS.textDisabled }} onMouseEnter={(e) => { e.currentTarget.style.color = COLORS.textSecondary; e.currentTarget.style.backgroundColor = COLORS.bgCard; }} onMouseLeave={(e) => { e.currentTarget.style.color = COLORS.textDisabled; e.currentTarget.style.backgroundColor = 'transparent'; }}><Icon className="w-4 h-4" /></button>))}
-                </div>
-            </div>
+            <div className="flex items-center gap-3"><User className="w-5 h-5" style={{ color: COLORS.textDisabled }} /><div><p className="text-sm" style={{ color: COLORS.textMuted }}>Curated by <span className="font-medium" style={{ color: COLORS.textSecondary }}>Filmiway Editorial Team</span></p><p className="text-xs" style={{ color: COLORS.textDisabled }}>Expert analysis of memory-loss thrillers</p></div></div>
+            <div className="flex items-center gap-4"><span className="text-sm" style={{ color: COLORS.textDisabled }}>Share:</span><div className="flex gap-3">{[Twitter, Hash, Send].map((Icon, i) => (<button key={i} className="p-2 rounded-full transition-colors" style={{ color: COLORS.textDisabled }} onMouseEnter={(e) => { e.currentTarget.style.color = COLORS.textSecondary; e.currentTarget.style.backgroundColor = COLORS.bgCard; }} onMouseLeave={(e) => { e.currentTarget.style.color = COLORS.textDisabled; e.currentTarget.style.backgroundColor = 'transparent'; }}><Icon className="w-4 h-4" /></button>))}</div></div>
         </div>
     </motion.section>
 );
 
 const SubtleFilmGrain = () => (
     <div className="fixed inset-0 pointer-events-none z-0 opacity-[0.005]">
-        <div className="w-full h-full bg-repeat" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)' opacity='0.3'/%3E%3C/svg%3E")`, backgroundSize: '60px 60px' }} />
+        <div 
+            className="w-full h-full bg-repeat" 
+            style={{ 
+                backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)' opacity='0.3'/%3E%3C/svg%3E")`, 
+                backgroundSize: '60px 60px' 
+            }} 
+        />
     </div>
 );
 
@@ -198,7 +257,7 @@ const MementoMoviePage = ({ movie }) => {
         return () => window.removeEventListener('resize', checkMobile);
     }, [movie.tmdbId]);
 
-    useEffect(() => { if (typeof window !== 'undefined') { sessionStorage.setItem('fromMementoCollection', 'true'); sessionStorage.removeItem('fromInceptionCollection'); } }, []);
+    useEffect(() => { if (typeof window !== 'undefined') { sessionStorage.setItem('fromMementoCollection', 'true'); sessionStorage.removeItem('fromInceptionCollection'); sessionStorage.removeItem('fromShutterIslandCollection'); sessionStorage.removeItem('fromSurvivalCollection'); } }, []);
     useEffect(() => { const handleScroll = () => setScrollY(window.scrollY); window.addEventListener('scroll', handleScroll, { passive: true }); return () => window.removeEventListener('scroll', handleScroll); }, []);
 
     const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.Year || 'Unknown';
@@ -216,7 +275,7 @@ const MementoMoviePage = ({ movie }) => {
             </Head>
             <SubtleFilmGrain />
             <div className="absolute inset-0"><CinematicBackground /></div>
-            <SmartBackButton movie={movie} />
+            <SmartBackButton />
             <div className="relative z-10 pt-12 sm:pt-16">
                 <MementoBreadcrumb movie={movie} />
                 <div className="container mx-auto px-0 pb-20 sm:pb-32 max-w-7xl">

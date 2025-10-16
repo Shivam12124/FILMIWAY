@@ -192,3 +192,22 @@ export const generateFAQSchema = (faqs) => ({
 
 export const fetchMovieFromTMDB = async (tmdbId) => ({ poster_path: null, title: COMPLETE_MOVIE_DATABASE.find(m => m.tmdbId === tmdbId)?.Title || 'Unknown Movie' });
 export const fetchWatchProviders = async (tmdbId, region = 'US') => null;
+
+
+// ✅ CONVERT SENSITIVE TIMELINES TO COMPONENT FORMAT - FIXED FOR STRING TIME FORMAT
+export const formatSensitiveTimeline = (tmdbId) => {
+    const raw = SENSITIVE_TIMELINES[tmdbId];
+    if (!raw || !raw.scenes || raw.scenes.length === 0) return null;
+    
+    // Times are ALREADY in "HH:MM:SS" or "MM:SS" format, so just return them as-is!
+    return {
+        scenes: raw.scenes.map(scene => ({
+            start: scene.start,  // Already a string like "1:04:35"
+            end: scene.end,      // Already a string like "1:04:50"
+            type: scene.type,
+            description: scene.description || ''
+        }))
+    };
+};
+
+

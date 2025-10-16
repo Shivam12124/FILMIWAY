@@ -559,3 +559,38 @@ export const fetchWatchProviders = async (tmdbId, region = 'US') => {
     return null;
 };
 
+// ✅ CONVERT SENSITIVE TIMELINES TO COMPONENT FORMAT - FIXED TIME CONVERSION
+export const formatSensitiveTimeline = (tmdbId) => {
+    const raw = SENSITIVE_TIMELINES[tmdbId];
+    if (!raw || !raw.scenes || raw.scenes.length === 0) return null;
+    
+    const secondsToTime = (seconds) => {
+        const hours = Math.floor(seconds / 3600);
+        const mins = Math.floor((seconds % 3600) / 60);
+        const secs = seconds % 60;
+        
+        // Format as HH:MM:SS or MM:SS depending on length
+        if (hours > 0) {
+            return `${hours}:${mins < 10 ? '0' + mins : mins}:${secs < 10 ? '0' + secs : secs}`;
+        } else {
+            return `${mins}:${secs < 10 ? '0' + secs : secs}`;
+        }
+    };
+    
+    return {
+        scenes: raw.scenes.map(scene => ({
+            start: secondsToTime(scene.start),
+            end: secondsToTime(scene.end),
+            type: scene.type,
+            description: scene.description || '',
+            severity: scene.severity || 'Moderate'
+        }))
+    };
+};
+
+// ✅ GET SENSITIVE CONTENT TYPES
+export const getSensitiveContentTypes = (tmdbId) => {
+    const timeline = formatSensitiveTimeline(tmdbId);
+    if (!timeline || !timeline.scenes) return [];
+    return [...new Set(timeline.scenes.map(s => s.type))];
+};

@@ -1,14 +1,24 @@
-// components/SensitiveContentTimelineSection.js - FIXED WITH CORRECT IMPORT ✅
+// components/SensitiveContentTimelineSection.js - FIXED WITHOUT SEVERITY BADGES ✅
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Shield, CheckCircle, AlertTriangle, Eye, X } from 'lucide-react';
-// 🔥 FIXED: Import from survivalMovieData.js instead of sensitiveContent.js
-import { SENSITIVE_TIMELINES, getSensitiveContentTypes } from '../utils/survivalMovieData';
+
+// 🔥 FIXED: Import formatting functions from BOTH data sources
+import { formatSensitiveTimeline as formatInceptionTimeline, getSensitiveContentTypes as getInceptionContentTypes } from '../utils/movieData';
+import { formatSensitiveTimeline as formatSurvivalTimeline, getSensitiveContentTypes as getSurvivalContentTypes } from '../utils/survivalMovieData';
 
 const SensitiveContentTimelineSection = React.memo(({ movie }) => {
     const [showSensitiveOverlay, setShowSensitiveOverlay] = useState(false);
-    const sensitiveData = SENSITIVE_TIMELINES[movie.tmdbId];
-    const contentTypes = getSensitiveContentTypes(movie.tmdbId);
+    
+    // 🔥 FIXED: Use formatting functions to convert seconds to MM:SS format
+    const inceptionData = formatInceptionTimeline?.(movie.tmdbId);
+    const survivalData = formatSurvivalTimeline?.(movie.tmdbId);
+    const sensitiveData = inceptionData || survivalData;
+    
+    // 🔥 FIXED: Get content types from appropriate source
+    const contentTypes = inceptionData 
+        ? (getInceptionContentTypes?.(movie.tmdbId) || [])
+        : (getSurvivalContentTypes?.(movie.tmdbId) || []);
 
     if (!sensitiveData?.scenes?.length) {
         return (
@@ -50,7 +60,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie }) => {
                 ⚠️ Content guide for parents and sensitive viewers. Click below to view detailed timestamps and scene descriptions.
             </p>
             
-            {/* 🔥 RED BUTTON INSTEAD OF AMBER FOR USER ATTENTION */}
+            {/* 🔥 RED BUTTON FOR USER ATTENTION */}
             <motion.button
                 onClick={() => setShowSensitiveOverlay(true)}
                 className="w-full bg-red-600/30 text-red-200 border border-red-500/60 px-4 py-3 sm:px-6 sm:py-4 rounded-xl text-xs sm:text-sm font-medium tracking-wide hover:bg-red-600/40 transition-all duration-300 flex items-center justify-between group"
@@ -64,7 +74,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie }) => {
                             🔴 Mature Content Found ({sensitiveData.scenes.length} scenes)
                         </div>
                         <div className="text-xs opacity-80 text-red-200">
-                            Contains: {contentTypes ? contentTypes.join(', ') : 'adult themes'}
+                            Contains: {contentTypes.length > 0 ? contentTypes.join(', ') : 'adult themes'}
                         </div>
                     </div>
                 </div>
@@ -108,18 +118,6 @@ const SensitiveContentTimelineSection = React.memo(({ movie }) => {
 
                             <div className="border-t border-b border-gray-700/50 my-3 sm:my-4 py-3 sm:py-4 space-y-2 sm:space-y-3 max-h-[50vh] sm:max-h-[60vh] overflow-y-auto pr-2">
                                 {sensitiveData.scenes.map((scene, index) => {
-                                    // 🔥 FIXED: Parse time strings correctly
-                                    const parseTime = (timeStr) => {
-                                        const parts = timeStr.split(':').map(Number);
-                                        if (parts.length === 3) return parts[0] * 3600 + parts[1] * 60 + parts[2];
-                                        if (parts.length === 2) return parts[0] * 60 + parts[1];
-                                        return 0;
-                                    };
-
-                                    const formatTime = (timeStr) => {
-                                        return timeStr; // Just return the original format since it's already formatted
-                                    };
-                                    
                                     const getSceneIcon = (type) => {
                                         const lowerType = type.toLowerCase();
                                         if (lowerType.includes('nudity') || lowerType.includes('sex')) return '🔞';
@@ -140,16 +138,11 @@ const SensitiveContentTimelineSection = React.memo(({ movie }) => {
                                             transition={{ delay: index * 0.05 }}
                                         >
                                             <span className="text-base sm:text-xl mr-3 sm:mr-4">{getSceneIcon(scene.type)}</span>
-                                            <span className="font-mono text-yellow-400/90 text-xs sm:text-sm mr-2 sm:mr-4 w-24 sm:w-32">{formatTime(scene.start)} - {formatTime(scene.end)}</span>
+                                            <span className="font-mono text-yellow-400/90 text-xs sm:text-sm mr-2 sm:mr-4 w-24 sm:w-32">{scene.start} - {scene.end}</span>
                                             <div className="flex-1">
                                                 <span className="text-xs sm:text-sm font-light capitalize block">{scene.type}</span>
                                                 {scene.description && (
-                                                    <span className="text-xs text-gray-500 block">{scene.description}</span>
-                                                )}
-                                                {scene.severity && (
-                                                    <span className={`text-xs px-2 py-0.5 rounded mt-1 inline-block ${
-                                                        scene.severity === 'Moderate' ? 'bg-orange-500/20 text-orange-300' : 'bg-yellow-500/20 text-yellow-300'
-                                                    }`}>{scene.severity}</span>
+                                                    <span className="text-xs text-gray-500 block mt-1">{scene.description}</span>
                                                 )}
                                             </div>
                                         </motion.div>

@@ -1,4 +1,4 @@
-// pages/index.js - YOUR ORIGINAL WORKING VERSION
+// pages/index.js - FULLY UPDATED VERSION WITH ONLY SHUTTER ISLAND
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Head from 'next/head';
@@ -102,7 +102,7 @@ const FilmiwayHomepage = () => {
 
                     <div className="hidden md:flex items-center space-x-8">
                         <Link href="/" className="text-yellow-400 font-medium border-b-2 border-yellow-400 pb-1 text-lg">Home</Link>
-                        <Link href="/collection/movies-like-inception" className="text-gray-300 hover:text-white transition-colors text-lg">Collections</Link>
+                        <Link href="/collections" className="text-gray-300 hover:text-white transition-colors text-lg">Collections</Link>
                         <button 
                             onClick={() => scrollToSection(trendingRef)}
                             className="text-gray-300 hover:text-white transition-colors text-lg cursor-pointer"
@@ -130,9 +130,7 @@ const FilmiwayHomepage = () => {
                         >
                             <div className="px-4 py-6 space-y-4">
                                 <Link href="/" className="block text-yellow-400 font-medium py-3 text-lg">Home</Link>
-                                <Link href="/collection/movies-like-inception" className="block text-gray-300 hover:text-white transition-colors py-3 text-lg">Movies Like Inception</Link>
-                                <Link href="/collection/movies-like-memento" className="block text-gray-300 hover:text-white transition-colors py-3 text-lg">Movies Like Memento</Link>
-                                <Link href="/collection/movies-like-shutter-island" className="block text-gray-300 hover:text-white transition-colors py-3 text-lg">Movies Like Shutter Island</Link>
+                                <Link href="/collections" className="block text-gray-300 hover:text-white transition-colors py-3 text-lg">Collections</Link>
                                 <button 
                                     onClick={() => {
                                         scrollToSection(trendingRef);
@@ -214,7 +212,7 @@ const FilmiwayHomepage = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.9, duration: 1 }}
                     >
-                        <Link href="/collection/movies-like-inception">
+                        <Link href="/collections">
                             <motion.button
                                 className="bg-gradient-to-r from-yellow-400 to-amber-400 text-black px-10 py-5 rounded-2xl font-semibold text-lg flex items-center gap-4 hover:from-yellow-300 hover:to-amber-300 transition-all shadow-2xl shadow-yellow-400/25"
                                 whileHover={{ scale: 1.05, y: -3 }}
@@ -237,6 +235,7 @@ const FilmiwayHomepage = () => {
                         </motion.button>
                     </motion.div>
 
+                    {/* ✅ ONLY SHUTTER ISLAND COLLECTION */}
                     <motion.div 
                         className="bg-gradient-to-r from-gray-900/40 via-gray-800/40 to-gray-900/40 backdrop-blur-sm border border-gray-700/30 rounded-3xl p-8 mb-16 max-w-5xl mx-auto"
                         initial={{ opacity: 0, y: 30 }}
@@ -245,32 +244,23 @@ const FilmiwayHomepage = () => {
                     >
                         <div className="flex items-center justify-center mb-6 gap-3">
                             <Layers className="w-6 h-6 text-yellow-400" />
-                            <h2 className="text-2xl font-light text-white">Featured Collections</h2>
+                            <h2 className="text-2xl font-light text-white">Featured Collection</h2>
                             <Layers className="w-6 h-6 text-yellow-400" />
                         </div>
                         
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                            <Link href="/collection/movies-like-inception" className="group">
-                                <div className="bg-gradient-to-br from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-2xl p-6 hover:from-blue-500/20 hover:to-purple-500/20 hover:border-blue-400/40 transition-all duration-300">
-                                    <div className="text-blue-400 font-semibold text-lg mb-2 group-hover:text-blue-300">Mind-Bending Sci-Fi</div>
-                                    <div className="text-gray-300 text-sm group-hover:text-white">Movies Like Inception</div>
+                        <Link href="/collection/movies-like-shutter-island" className="group block">
+                            <div className="bg-gradient-to-br from-green-500/10 to-teal-500/10 border border-green-500/20 rounded-2xl p-8 hover:from-green-500/20 hover:to-teal-500/20 hover:border-green-400/40 transition-all duration-300">
+                                <div className="text-green-400 font-semibold text-2xl mb-3 group-hover:text-green-300">
+                                    Psychological Horror
                                 </div>
-                            </Link>
-                            
-                            <Link href="/collection/movies-like-memento" className="group">
-                                <div className="bg-gradient-to-br from-yellow-500/10 to-orange-500/10 border border-yellow-500/20 rounded-2xl p-6 hover:from-yellow-500/20 hover:to-orange-500/20 hover:border-yellow-400/40 transition-all duration-300">
-                                    <div className="text-yellow-400 font-semibold text-lg mb-2 group-hover:text-yellow-300">Memory Thrillers</div>
-                                    <div className="text-gray-300 text-sm group-hover:text-white">Movies Like Memento</div>
+                                <div className="text-gray-300 text-lg group-hover:text-white mb-4">
+                                    Movies Like Shutter Island
                                 </div>
-                            </Link>
-                            
-                            <Link href="/collection/movies-like-shutter-island" className="group">
-                                <div className="bg-gradient-to-br from-green-500/10 to-teal-500/10 border border-green-500/20 rounded-2xl p-6 hover:from-green-500/20 hover:to-teal-500/20 hover:border-green-400/40 transition-all duration-300">
-                                    <div className="text-green-400 font-semibold text-lg mb-2 group-hover:text-green-300">Psychological Horror</div>
-                                    <div className="text-gray-300 text-sm group-hover:text-white">Movies Like Shutter Island</div>
+                                <div className="text-gray-400 text-sm">
+                                    Mind-bending psychological thrillers that will keep you questioning reality
                                 </div>
-                            </Link>
-                        </div>
+                            </div>
+                        </Link>
                     </motion.div>
                 </motion.div>
 
