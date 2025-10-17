@@ -1111,24 +1111,23 @@ export async function getStaticProps({ params }) {
     // Get movies for the collection (reversed for ranking display)
    // Get movies for the collection (reversed for ranking display)
 // Get movies for the collection (reversed for ranking display)
+// Get movies for the collection (reversed for ranking display)
 const movies = collection.movies.map(imdbId => {
     const movie = movieDatabase.find(m => m.imdbID === imdbId);
     if (!movie) return null;
     
-    // Serialize only primitive values with fallbacks for undefined
+    // Only pass minimal data for SSG build (DNA data loads client-side)
     return {
         imdbID: movie.imdbID || '',
+        tmdbId: movie.tmdbId || 0,
         Title: movie.Title || 'Unknown',
-        Year: movie.Year || '2024',
-        Genre: movie.Genre || 'Drama',
-        Runtime: movie.Runtime || '120 min',
-        Plot: movie.Plot || '',
-        Poster: movie.Poster || '',
-        imdbRating: movie.imdbRating || '7.0',
-        Director: movie.Director || 'Unknown',
-        Actors: movie.Actors || 'Unknown'
+        Year: movie.Year || movie.year || '2024',
+        Genre: movie.Genre || movie.genre || 'Drama',
+        Runtime: movie.Runtime || movie.runtime || 120,
+        rank: movie.rank || 1
     };
 }).filter(Boolean).reverse();
+
 
 
 
