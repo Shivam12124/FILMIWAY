@@ -1109,9 +1109,26 @@ export async function getStaticProps({ params }) {
         : COMPLETE_MOVIE_DATABASE;
 
     // Get movies for the collection (reversed for ranking display)
-    const movies = collection.movies.map(imdbId => 
-        movieDatabase.find(movie => movie.imdbID === imdbId)
-    ).filter(Boolean).reverse();
+   // Get movies for the collection (reversed for ranking display)
+const movies = collection.movies.map(imdbId => {
+    const movie = movieDatabase.find(m => m.imdbID === imdbId);
+    if (!movie) return null;
+    
+    // Serialize only primitive values for Next.js SSG
+    return {
+        imdbID: movie.imdbID,
+        Title: movie.Title,
+        Year: movie.Year,
+        Genre: movie.Genre,
+        Runtime: movie.Runtime,
+        Plot: movie.Plot,
+        Poster: movie.Poster,
+        imdbRating: movie.imdbRating,
+        Director: movie.Director,
+        Actors: movie.Actors
+    };
+}).filter(Boolean).reverse();
+
 
     return {
         props: {
