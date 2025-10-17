@@ -30,7 +30,10 @@ const timeToSeconds = (timeStr) => {
 export const SENSITIVE_TIMELINES = {
     44115: { scenes: [{ start: "1:04:35", end: "1:04:50", type: "Bikini scene", severity: "Mild" }, { start: "1:33:41", end: "1:35:10", type: "Partial undressing", severity: "Mild" }] },
     906126: { scenes: [{ start: "0:03:07", end: "0:03:10", type: "Nudity", severity: "Moderate", description: "Nude man in background" }] },
-    8358: { scenes: [{ start: "Various", end: "Various", type: "Kissing", severity: "Mild", description: "A few casual kissing scenes" }] },
+    
+    // ✅ FIXED - Added "scenes: [" and proper closing
+    8358: { scenes: [{ start: "0:13:15", end: "0:13:45", type: "Kissing", severity: "Mild", description: "Romantic kissing scene before departure" }, { start: "2:05:53", end: "2:06:47", type: "Kissing", severity: "Mild", description: "Emotional reunion kissing scene" }] },
+    
     281957: { scenes: [{ start: "0:06:44", end: "0:06:48", type: "Nudity", severity: "Moderate", description: "Male buttocks" }, { start: "1:44:00", end: "1:44:23", type: "Sex scene", severity: "Moderate" }] },
     286217: { scenes: [{ start: "1:44:55", end: "1:45:08", type: "Partial nudity", severity: "Mild", description: "Male buttocks" }] },
     80278: { scenes: [{ start: "0:05:45", end: "0:05:52", type: "Partial nudity", severity: "Mild", description: "Non-sexual" }, { start: "0:22:10", end: "0:22:22", type: "Partial nudity", severity: "Mild", description: "Non-sexual" }, { start: "0:37:37", end: "0:37:45", type: "Nudity", severity: "Mild", description: "Not sexualized" }, { start: "0:37:52", end: "0:37:57", type: "Nudity", severity: "Mild", description: "Not sexualized" }, { start: "0:41:28", end: "0:41:32", type: "Partial nudity", severity: "Mild", description: "Non-sexual" }] },

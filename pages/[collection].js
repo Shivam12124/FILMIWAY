@@ -1,27 +1,34 @@
-// pages/collection/[collection].js - Dynamic Collection Pages (SSG) - FIXED
+// pages/collection/[collection].js - Mobile-Friendly Dynamic Collection Pages ✅
 import React from 'react';
 import Head from 'next/head';
 
-// ✅ IMPORT YOUR EXISTING COMPONENTS (all already exist)
-import CinematicBackground from '../components/CinematicBackground';
-import BackToHomepageButton from '../components/BackToHomepageButton';
-import EnhancedMovieHero from '../components/EnhancedMovieHero';
-import CinematicMovieCard from '../components/CinematicMovieCard';
-import MovieDetailsSection from '../components/MovieDetailsSection';
-import EnhancedIntensityGraph from '../components/EnhancedIntensityGraph';
-import StrategicDNAHelix from '../components/StrategicDNAHelix';
-import EnhancedWhereToWatchSection from '../components/EnhancedWhereToWatchSection';
-import SensitiveContentTimelineSection from '../components/SensitiveContentTimelineSection';
-import RealCommentsRatingSection from '../components/RealCommentsRatingSection';
-import SEOFAQSection from '../components/SEOFAQSection';
-import TMDBAttribution from '../components/TMDBAttribution';
+// ✅ IMPORT YOUR EXISTING COMPONENTS
+import CinematicBackground from '../../components/CinematicBackground';
+import BackToHomepageButton from '../../components/BackToHomepageButton';
+import EnhancedMovieHero from '../../components/EnhancedMovieHero';
+import CinematicMovieCard from '../../components/CinematicMovieCard';
+import MovieDetailsSection from '../../components/MovieDetailsSection';
+import EnhancedIntensityGraph from '../../components/EnhancedIntensityGraph';
+import StrategicDNAHelix from '../../components/StrategicDNAHelix';
+import EnhancedWhereToWatchSection from '../../components/EnhancedWhereToWatchSection';
+import SensitiveContentTimelineSection from '../../components/SensitiveContentTimelineSection';
+import RealCommentsRatingSection from '../../components/RealCommentsRatingSection';
+import SEOFAQSection from '../../components/SEOFAQSection';
+import TMDBAttribution from '../../components/TMDBAttribution';
 
 // ✅ IMPORT DATA
-import { COLLECTIONS, getCollectionBySlug, getAllCollectionSlugs } from '../data/collections';
+import { COLLECTIONS, getCollectionBySlug, getAllCollectionSlugs } from '../../data/collections';
 
 const CollectionPage = ({ collection, movies, movieData }) => {
     if (!collection || !movies) {
-        return <div>Collection not found</div>;
+        return (
+            <div className="min-h-screen bg-black flex items-center justify-center">
+                <div className="text-white text-center px-4">
+                    <h1 className="text-2xl sm:text-3xl mb-4">Collection not found</h1>
+                    <p className="text-gray-400 text-sm sm:text-base">Please check the URL and try again.</p>
+                </div>
+            </div>
+        );
     }
 
     return (
@@ -29,57 +36,104 @@ const CollectionPage = ({ collection, movies, movieData }) => {
             <Head>
                 <title>{collection.title} | Filmiway</title>
                 <meta name="description" content={collection.description} />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
             </Head>
 
             <CinematicBackground />
             <BackToHomepageButton />
             
-            <div className="min-h-screen bg-black text-white relative">
-                <div className="container mx-auto px-4 py-8">
-                    <h1 className="text-4xl md:text-6xl font-light text-center mb-4">
+            <div className="min-h-screen bg-black text-white relative overflow-x-hidden">
+                <div className="container mx-auto px-3 sm:px-4 lg:px-6 py-6 sm:py-8 lg:py-12">
+                    {/* Header Section */}
+                    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-center mb-3 sm:mb-4 px-2 leading-tight">
                         {collection.headerTitle}
                     </h1>
-                    <p className="text-xl text-gray-300 text-center mb-8">
+                    <p className="text-base sm:text-lg md:text-xl text-gray-300 text-center mb-6 sm:mb-8 px-3 sm:px-4 leading-relaxed">
                         {collection.headerSubtitle}
                     </p>
                     
-                    {/* Collection Badges */}
-                    <div className="flex flex-wrap justify-center gap-4 mb-12">
-                        {collection.badges?.map((badge, index) => (
-                            <div key={index} className="bg-yellow-400/20 border border-yellow-400/50 rounded-lg px-4 py-2">
-                                <div className="text-yellow-400 font-bold text-sm">{badge.label}</div>
-                                <div className="text-gray-300 text-xs">{badge.desc}</div>
-                            </div>
-                        ))}
-                    </div>
+                    {/* Collection Badges - Mobile Optimized */}
+                    {collection.badges && collection.badges.length > 0 && (
+                        <div className="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 mb-8 sm:mb-10 lg:mb-12 px-2">
+                            {collection.badges.map((badge, index) => (
+                                <div 
+                                    key={index} 
+                                    className="bg-yellow-400/20 border border-yellow-400/50 rounded-lg px-3 py-2 sm:px-4 sm:py-2.5 min-w-0 flex-shrink-0"
+                                    style={{ maxWidth: '100%' }}
+                                >
+                                    <div className="text-yellow-400 font-bold text-xs sm:text-sm break-words">
+                                        {badge.label}
+                                    </div>
+                                    <div className="text-gray-300 text-xs break-words">
+                                        {badge.desc}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    )}
 
-                    {/* Movies Grid - Uses your existing CinematicMovieCard */}
-                    <div className="grid grid-cols-2 md:grid-cols-5 gap-6 mb-16">
+                    {/* Movies Grid - Responsive */}
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-5 lg:gap-6 mb-12 sm:mb-14 lg:mb-16">
                         {movies.map((movie, index) => (
                             <CinematicMovieCard 
                                 key={movie.imdbID || movie.id || index}
                                 movie={movie}
-                                rank={10 - index}
+                                rank={movies.length - index}
                             />
                         ))}
                     </div>
                 </div>
 
-                {/* Movie Details - Uses ALL your existing components */}
-                {movies.map((movie) => (
-                    <div key={movie.imdbID || movie.id} className="mb-16">
-                        <EnhancedMovieHero movie={movie} />
-                        <MovieDetailsSection movie={movie} />
-                        <EnhancedIntensityGraph movie={movie} />
-                        <StrategicDNAHelix movie={movie} />
-                        <EnhancedWhereToWatchSection movie={movie} />
-                        <SensitiveContentTimelineSection movie={movie} />
-                        <RealCommentsRatingSection movie={movie} />
-                    </div>
-                ))}
+                {/* Movie Details Section - All Components */}
+                <div className="space-y-8 sm:space-y-12 lg:space-y-16">
+                    {movies.map((movie, index) => (
+                        <div 
+                            key={movie.imdbID || movie.id || index} 
+                            className="w-full"
+                        >
+                            <div className="space-y-6 sm:space-y-8 lg:space-y-12">
+                                <EnhancedMovieHero movie={movie} />
+                                
+                                <div className="container mx-auto px-3 sm:px-4 lg:px-6">
+                                    <MovieDetailsSection movie={movie} />
+                                </div>
+                                
+                                <div className="container mx-auto px-3 sm:px-4 lg:px-6">
+                                    <EnhancedIntensityGraph movie={movie} />
+                                </div>
+                                
+                                <div className="container mx-auto px-3 sm:px-4 lg:px-6">
+                                    <StrategicDNAHelix movie={movie} />
+                                </div>
+                                
+                                <div className="container mx-auto px-3 sm:px-4 lg:px-6">
+                                    <EnhancedWhereToWatchSection movie={movie} />
+                                </div>
+                                
+                                <div className="container mx-auto px-3 sm:px-4 lg:px-6">
+                                    <SensitiveContentTimelineSection movie={movie} />
+                                </div>
+                                
+                                <div className="container mx-auto px-3 sm:px-4 lg:px-6">
+                                    <RealCommentsRatingSection movie={movie} />
+                                </div>
+                            </div>
+                            
+                            {/* Divider between movies (except last one) */}
+                            {index < movies.length - 1 && (
+                                <div className="container mx-auto px-3 sm:px-4 lg:px-6 my-8 sm:my-12 lg:my-16">
+                                    <div className="border-t border-gray-800"></div>
+                                </div>
+                            )}
+                        </div>
+                    ))}
+                </div>
 
-                <SEOFAQSection />
-                <TMDBAttribution />
+                {/* Footer Sections */}
+                <div className="container mx-auto px-3 sm:px-4 lg:px-6 mt-12 sm:mt-16 lg:mt-20 space-y-8 sm:space-y-12 pb-8 sm:pb-12">
+                    <SEOFAQSection />
+                    <TMDBAttribution />
+                </div>
             </div>
         </>
     );
@@ -93,9 +147,16 @@ export async function getStaticPaths() {
             params: { collection: slug }
         }));
 
-        return { paths, fallback: false };
+        return { 
+            paths, 
+            fallback: false 
+        };
     } catch (error) {
-        return { paths: [], fallback: false };
+        console.error('Error generating static paths:', error);
+        return { 
+            paths: [], 
+            fallback: false 
+        };
     }
 }
 
@@ -107,15 +168,20 @@ export async function getStaticProps({ params }) {
             return { notFound: true };
         }
 
-   
-
+        // Import movie data dynamically
+        const dataModule = await import('../../utils/movieData');
         const movies = dataModule?.COMPLETE_MOVIE_DATABASE || [];
         const movieData = dataModule?.COMPLETE_MOVIE_DATA || {};
 
         return {
-            props: { collection, movies, movieData }
+            props: { 
+                collection, 
+                movies, 
+                movieData 
+            }
         };
     } catch (error) {
+        console.error('Error in getStaticProps:', error);
         return { notFound: true };
     }
 }
