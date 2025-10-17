@@ -15,6 +15,8 @@ import { COLLECTIONS, getAllCollectionSlugs, getCollectionBySlug } from '../../d
 // 🔥 UPDATED IMPORT - GET COMPLETE MOVIE DATA WITH DNA INFO
 import { COMPLETE_MOVIE_DATABASE, COMPLETE_MOVIE_DATA } from '../../utils/movieData';
 
+;
+
 // Safe property getters
 const getMovieTitle = (movie) => movie?.Title || movie?.title || movie?.name || 'Unknown Movie';
 const getMovieYear = (movie) => movie?.Year || movie?.year || movie?.releaseYear || '2024';
@@ -24,7 +26,7 @@ const getMovieGenre = (movie) => {
 };
 const getMovieRuntime = (movie) => movie?.Runtime || movie?.runtime || '120 min';
 
-// 🔥 UPDATED STRATEGIC DNA HELIX - REMOVED BOTTOM TEXT ONLY
+
 
 // LOGO COMPONENT
 const TopLeftLogo = () => (
