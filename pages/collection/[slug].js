@@ -25,66 +25,6 @@ const getMovieGenre = (movie) => {
 const getMovieRuntime = (movie) => movie?.Runtime || movie?.runtime || '120 min';
 
 // 🔥 UPDATED STRATEGIC DNA HELIX - REMOVED BOTTOM TEXT ONLY
-const StrategicDNAHelix = ({ movie }) => {
-    // 🔥 GET ACTUAL DNA FROM MOVIE DATA
-    const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
-    const movieDNA = movieInfo?.dna || { "Drama": 50, "Thriller": 30, "Sci-Fi": 20 };
-    
-    return (
-        <motion.div 
-            className="bg-gradient-to-br from-gray-800/30 via-gray-900/20 to-black/30 border border-yellow-500/20 rounded-2xl p-6 backdrop-blur-xl relative overflow-hidden"
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 1.8, duration: 0.8 }}
-            whileHover={{ scale: 1.02, y: -5 }}
-        >
-            <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/5 via-transparent to-amber-400/5"></div>
-            
-            <div className="flex flex-col items-center space-y-6 relative z-10">
-                <div className="w-16 h-16 bg-gradient-to-br from-yellow-400/20 to-amber-400/20 rounded-full flex items-center justify-center border border-yellow-400/30">
-                    <div className="w-8 h-8 relative">
-                        {/* DNA Helix Animation */}
-                        <motion.div 
-                            className="absolute inset-0"
-                            animate={{ rotate: 360 }}
-                            transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-                        >
-                            <div className="w-full h-full border-2 border-yellow-400/60 rounded-full border-dashed"></div>
-                            <div className="absolute top-1 left-1 w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></div>
-                            <div className="absolute bottom-1 right-1 w-2 h-2 bg-amber-400 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-                        </motion.div>
-                    </div>
-                </div>
-                
-                <h3 className="text-yellow-200 text-lg font-medium tracking-wider uppercase text-center">
-                    Genre DNA Composition
-                </h3>
-                
-                {/* 🔥 MOVIE-SPECIFIC DNA FROM movieData.js */}
-                <div className="grid grid-cols-2 gap-3 w-full max-w-sm">
-                    {Object.entries(movieDNA)
-                        .sort(([,a], [,b]) => b - a) // Sort by percentage
-                        .map(([genre, percentage], index) => (
-                        <motion.div 
-                            key={genre}
-                            className="flex items-center justify-between bg-gray-800/40 rounded-lg px-3 py-2 border border-gray-700/30"
-                            initial={{ opacity: 0, x: -20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: 2 + (index * 0.1) }}
-                        >
-                            <span className="text-gray-300 text-sm font-medium capitalize">
-                                {genre}
-                            </span>
-                            <span className="text-yellow-400 text-sm font-bold">
-                                {percentage}%
-                            </span>
-                        </motion.div>
-                    ))}
-                </div>
-            </div>
-        </motion.div>
-    );
-};
 
 // LOGO COMPONENT
 const TopLeftLogo = () => (
