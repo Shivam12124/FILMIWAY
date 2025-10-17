@@ -1,22 +1,25 @@
-// pages/_app.js - 🔥 SEO-FIXED VERSION - NO DUPLICATE CANONICAL
+// pages/_app.js - 🔥 SEO-FIXED VERSION - NO DUPLICATE CANONICAL + SSG FIXED
 import '../styles/globals.css'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
+  const [mounted, setMounted] = useState(false);
   
-  // Create clean canonical URL without query parameters
+  // ✅ Only run on client-side (after hydration)
+  useEffect(() => {
+    setMounted(true);
+    console.log('🎬 Filmiway - SEO Optimized Version Loaded');
+  }, []);
+  
+  // ✅ Create canonical URL safely (only on client)
   const getCanonicalUrl = () => {
+    if (!mounted) return 'https://filmiway.com';  // Default during SSR
     const cleanPath = router.asPath.split('?')[0].split('#')[0];
     return `https://filmiway.com${cleanPath}`;
   };
-  
-  useEffect(() => {
-    // Add any global JavaScript here
-    console.log('🎬 Filmiway - SEO Optimized Version Loaded');
-  }, []);
 
   return (
     <>
