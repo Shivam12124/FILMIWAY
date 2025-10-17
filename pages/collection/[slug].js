@@ -1110,24 +1110,26 @@ export async function getStaticProps({ params }) {
 
     // Get movies for the collection (reversed for ranking display)
    // Get movies for the collection (reversed for ranking display)
+// Get movies for the collection (reversed for ranking display)
 const movies = collection.movies.map(imdbId => {
     const movie = movieDatabase.find(m => m.imdbID === imdbId);
     if (!movie) return null;
     
-    // Serialize only primitive values for Next.js SSG
+    // Serialize only primitive values with fallbacks for undefined
     return {
-        imdbID: movie.imdbID,
-        Title: movie.Title,
-        Year: movie.Year,
-        Genre: movie.Genre,
-        Runtime: movie.Runtime,
-        Plot: movie.Plot,
-        Poster: movie.Poster,
-        imdbRating: movie.imdbRating,
-        Director: movie.Director,
-        Actors: movie.Actors
+        imdbID: movie.imdbID || '',
+        Title: movie.Title || 'Unknown',
+        Year: movie.Year || '2024',
+        Genre: movie.Genre || 'Drama',
+        Runtime: movie.Runtime || '120 min',
+        Plot: movie.Plot || '',
+        Poster: movie.Poster || '',
+        imdbRating: movie.imdbRating || '7.0',
+        Director: movie.Director || 'Unknown',
+        Actors: movie.Actors || 'Unknown'
     };
 }).filter(Boolean).reverse();
+
 
 
     return {
