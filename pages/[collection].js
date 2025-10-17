@@ -2,22 +2,22 @@
 import React from 'react';
 import Head from 'next/head';
 
-// ✅ IMPORT YOUR EXISTING COMPONENTS
-import CinematicBackground from '../../components/CinematicBackground';
-import BackToHomepageButton from '../../components/BackToHomepageButton';
-import EnhancedMovieHero from '../../components/EnhancedMovieHero';
-import CinematicMovieCard from '../../components/CinematicMovieCard';
-import MovieDetailsSection from '../../components/MovieDetailsSection';
-import EnhancedIntensityGraph from '../../components/EnhancedIntensityGraph';
-import StrategicDNAHelix from '../../components/StrategicDNAHelix';
-import EnhancedWhereToWatchSection from '../../components/EnhancedWhereToWatchSection';
-import SensitiveContentTimelineSection from '../../components/SensitiveContentTimelineSection';
-import RealCommentsRatingSection from '../../components/RealCommentsRatingSection';
-import SEOFAQSection from '../../components/SEOFAQSection';
-import TMDBAttribution from '../../components/TMDBAttribution';
+// ✅ FIXED IMPORT PATHS - Changed from ../../ to ../
+import CinematicBackground from '../components/CinematicBackground';
+import BackToHomepageButton from '../components/BackToHomepageButton';
+import EnhancedMovieHero from '../components/EnhancedMovieHero';
+import CinematicMovieCard from '../components/CinematicMovieCard';
+import MovieDetailsSection from '../components/MovieDetailsSection';
+import EnhancedIntensityGraph from '../components/EnhancedIntensityGraph';
+import StrategicDNAHelix from '../components/StrategicDNAHelix';
+import EnhancedWhereToWatchSection from '../components/EnhancedWhereToWatchSection';
+import SensitiveContentTimelineSection from '../components/SensitiveContentTimelineSection';
+import RealCommentsRatingSection from '../components/RealCommentsRatingSection';
+import SEOFAQSection from '../components/SEOFAQSection';
+import TMDBAttribution from '../components/TMDBAttribution';
 
-// ✅ IMPORT DATA
-import { COLLECTIONS, getCollectionBySlug, getAllCollectionSlugs } from '../../data/collections';
+// ✅ FIXED DATA IMPORT PATH
+import { COLLECTIONS, getCollectionBySlug, getAllCollectionSlugs } from '../data/collections';
 
 const CollectionPage = ({ collection, movies, movieData }) => {
     if (!collection || !movies) {
@@ -168,8 +168,8 @@ export async function getStaticProps({ params }) {
             return { notFound: true };
         }
 
-        // Import movie data dynamically
-        const dataModule = await import('../../utils/movieData');
+        // ✅ FIXED IMPORT PATH - Changed from ../../utils to ../utils
+        const dataModule = await import('../utils/movieData');
         const movies = dataModule?.COMPLETE_MOVIE_DATABASE || [];
         const movieData = dataModule?.COMPLETE_MOVIE_DATA || {};
 
