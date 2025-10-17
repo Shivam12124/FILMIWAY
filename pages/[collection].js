@@ -2,7 +2,7 @@
 import React from 'react';
 import Head from 'next/head';
 
-// ✅ FIXED IMPORT PATHS - Changed from ../../ to ../
+// ✅ FIXED IMPORT PATHS
 import CinematicBackground from '../components/CinematicBackground';
 import BackToHomepageButton from '../components/BackToHomepageButton';
 import EnhancedMovieHero from '../components/EnhancedMovieHero';
@@ -16,11 +16,10 @@ import RealCommentsRatingSection from '../components/RealCommentsRatingSection';
 import SEOFAQSection from '../components/SEOFAQSection';
 import TMDBAttribution from '../components/TMDBAttribution';
 
-// ✅ FIXED DATA IMPORT PATH
-import { COLLECTIONS, getCollectionBySlug, getAllCollectionSlugs } from '../data/collections';
+import { getCollectionBySlug, getAllCollectionSlugs } from '../data/collections';
 
 const CollectionPage = ({ collection, movies, movieData }) => {
-    if (!collection || !movies) {
+    if (!collection || !movies || movies.length === 0) {
         return (
             <div className="min-h-screen bg-black flex items-center justify-center">
                 <div className="text-white text-center px-4">
@@ -44,15 +43,13 @@ const CollectionPage = ({ collection, movies, movieData }) => {
             
             <div className="min-h-screen bg-black text-white relative overflow-x-hidden">
                 <div className="container mx-auto px-3 sm:px-4 lg:px-6 py-6 sm:py-8 lg:py-12">
-                    {/* Header Section */}
                     <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-center mb-3 sm:mb-4 px-2 leading-tight">
-                        {collection.headerTitle}
+                        {collection.title}
                     </h1>
                     <p className="text-base sm:text-lg md:text-xl text-gray-300 text-center mb-6 sm:mb-8 px-3 sm:px-4 leading-relaxed">
-                        {collection.headerSubtitle}
+                        {collection.description}
                     </p>
                     
-                    {/* Collection Badges - Mobile Optimized */}
                     {collection.badges && collection.badges.length > 0 && (
                         <div className="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 mb-8 sm:mb-10 lg:mb-12 px-2">
                             {collection.badges.map((badge, index) => (
@@ -72,7 +69,6 @@ const CollectionPage = ({ collection, movies, movieData }) => {
                         </div>
                     )}
 
-                    {/* Movies Grid - Responsive */}
                     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-5 lg:gap-6 mb-12 sm:mb-14 lg:mb-16">
                         {movies.map((movie, index) => (
                             <CinematicMovieCard 
@@ -84,7 +80,6 @@ const CollectionPage = ({ collection, movies, movieData }) => {
                     </div>
                 </div>
 
-                {/* Movie Details Section - All Components */}
                 <div className="space-y-8 sm:space-y-12 lg:space-y-16">
                     {movies.map((movie, index) => (
                         <div 
@@ -119,7 +114,6 @@ const CollectionPage = ({ collection, movies, movieData }) => {
                                 </div>
                             </div>
                             
-                            {/* Divider between movies (except last one) */}
                             {index < movies.length - 1 && (
                                 <div className="container mx-auto px-3 sm:px-4 lg:px-6 my-8 sm:my-12 lg:my-16">
                                     <div className="border-t border-gray-800"></div>
@@ -129,7 +123,6 @@ const CollectionPage = ({ collection, movies, movieData }) => {
                     ))}
                 </div>
 
-                {/* Footer Sections */}
                 <div className="container mx-auto px-3 sm:px-4 lg:px-6 mt-12 sm:mt-16 lg:mt-20 space-y-8 sm:space-y-12 pb-8 sm:pb-12">
                     <SEOFAQSection />
                     <TMDBAttribution />
@@ -139,7 +132,6 @@ const CollectionPage = ({ collection, movies, movieData }) => {
     );
 };
 
-// ✅ SSG Functions
 export async function getStaticPaths() {
     try {
         const slugs = getAllCollectionSlugs();
@@ -168,15 +160,26 @@ export async function getStaticProps({ params }) {
             return { notFound: true };
         }
 
-        // ✅ FIXED IMPORT PATH - Changed from ../../utils to ../utils
         const dataModule = await import('../utils/movieData');
-        const movies = dataModule?.COMPLETE_MOVIE_DATABASE || [];
+        const allMovies = dataModule?.COMPLETE_MOVIE_DATABASE || [];
         const movieData = dataModule?.COMPLETE_MOVIE_DATA || {};
+
+        // ✅ CRITICAL FIX - Filter movies by collection IDs
+        const collectionMovieIds = collection.movies || [];
+        const moviesMap = {};
+        
+        allMovies.forEach(movie => {
+            moviesMap[movie.imdbID] = movie;
+        });
+
+        const movies = collectionMovieIds
+            .map(imdbID => moviesMap[imdbID])
+            .filter(Boolean);
 
         return {
             props: { 
                 collection, 
-                movies, 
+                movies,
                 movieData 
             }
         };
