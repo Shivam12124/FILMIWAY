@@ -136,8 +136,12 @@ export const SENSITIVE_TIMELINES = {
             { start: timeToSeconds("1:59:03"), end: timeToSeconds("1:59:06"), type: "Casual Kissing" }
         ]
     },
-    629: { scenes: [] }, // The Usual Suspects
-    
+    629: { // The Usual Suspects ✅ UPDATED
+        scenes: [
+            { start: timeToSeconds("1:00:15"), end: timeToSeconds("1:00:47"), type: "Sex" }
+        ]
+    },
+
     // NETFLIX DRAMA MOVIES
     530915: { scenes: [] }, // 1917
     426426: { scenes: [] }, // Roma
