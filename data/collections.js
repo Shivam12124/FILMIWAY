@@ -1,6 +1,5 @@
-// data/collections.js - COMPLETE COLLECTIONS WITH NETFLIX DRAMA ADDED
+// data/collections.js - SEO OPTIMIZED FOR "BEST SURVIVAL MOVIES" 🚀
 import { COMPLETE_MOVIE_DATABASE } from '../utils/movieData';
-
 
 export const COLLECTIONS = {
   'movies-like-inception': {
@@ -26,7 +25,6 @@ export const COLLECTIONS = {
     ]
   },
 
-
   'movies-like-memento': {
     slug: 'movies-like-memento',
     title: 'Movies Like Memento',
@@ -49,7 +47,6 @@ export const COLLECTIONS = {
       { label: 'Expert Analysis', desc: 'Detailed breakdowns & ratings' }
     ]
   },
-
 
   'movies-like-shutter-island': {
     slug: 'movies-like-shutter-island', 
@@ -74,7 +71,7 @@ export const COLLECTIONS = {
     ]
   },
 
-
+  // 🔥 SEO-OPTIMIZED SURVIVAL COLLECTION
   'best-survival-movies': {
     slug: 'best-survival-movies',
     title: 'Best Survival Movies',
@@ -91,7 +88,11 @@ export const COLLECTIONS = {
     gradientTo: 'to-yellow-500',
     category: 'survival',
     tags: ['survival', 'extreme', 'endurance', 'true stories', 'human resilience'],
-    metaKeywords: 'best survival movies, survival films, extreme survival, survivability index, brutal survival stories, human endurance movies',
+    
+    // 🚀 NEW: SEO-OPTIMIZED META TAGS
+    metaTitle: '10 Best Survival Movies Ever Made (2025) - Expert Rankings | Filmiway',
+    metaDescription: 'Discover 10 heart-pounding survival movies ranked by intensity. From 127 Hours to The Revenant, explore films that push human endurance to the limit. Updated 2025.',
+    metaKeywords: 'best survival movies, survival films 2025, extreme survival, 127 hours, the revenant, cast away, true story survival movies, survival thriller movies',
     
     stats: {
       totalMovies: 10,
@@ -139,25 +140,24 @@ export const COLLECTIONS = {
       'movies-like-shutter-island'
     ],
 
+    // 🚀 NEW: STRUCTURED DATA FOR GOOGLE
     seo: {
-      title: 'Best Survival Movies - Ranked by Survivability Index | Filmiway',
-      description: 'Discover the 10 most brutal survival movies ever made. From 127 Hours to Unbroken, explore cinema\'s ultimate tests of human endurance ranked by survivability index.',
-      keywords: 'best survival movies, survival films, extreme survival, survivability index, brutal survival stories, human endurance movies, true survival stories',
+      title: '10 Best Survival Movies Ever Made (2025) - Expert Rankings | Filmiway',
+      description: 'Discover 10 heart-pounding survival movies ranked by intensity. From 127 Hours to The Revenant, explore films that push human endurance to the limit. Updated 2025.',
+      keywords: 'best survival movies, survival films, extreme survival, survivability index, brutal survival stories, human endurance movies, true survival stories, 127 hours, the revenant, cast away',
       canonicalUrl: 'https://filmiway.com/collection/best-survival-movies',
       ogImage: 'https://filmiway.com/images/survival-movies-collection-og.jpg',
       structuredData: {
         '@context': 'https://schema.org',
-        '@type': 'MovieSeries',
-        'name': 'Best Survival Movies Collection',
-        'description': 'A curated collection of the most extreme survival movies ranked by survivability index',
-        'genre': 'Survival',
-        'numberOfMovies': 10
+        '@type': 'ItemList',
+        'name': 'Best Survival Movies',
+        'description': 'Expert-curated list of the best survival movies ranked by intensity and realism',
+        'numberOfItems': 10
       }
     }
   },
 
-
-  // 🎬 NEW NETFLIX DRAMA COLLECTION
+  // Netflix Drama Collection
   'best-drama-movies-on-netflix': {
     slug: 'best-drama-movies-on-netflix',
     title: 'Best Drama Movies on Netflix',
@@ -240,21 +240,17 @@ export const COLLECTIONS = {
   }
 };
 
-
 export const getAllCollectionSlugs = () => {
   return Object.keys(COLLECTIONS);
 };
-
 
 export const getCollectionBySlug = (slug) => {
   return COLLECTIONS[slug];
 };
 
-
 export const getFeaturedCollections = () => {
   return Object.values(COLLECTIONS).filter(collection => collection.featured);
 };
-
 
 export const getCollectionsByCategory = (category) => {
   return Object.values(COLLECTIONS).filter(collection => 
@@ -262,15 +258,12 @@ export const getCollectionsByCategory = (category) => {
   );
 };
 
-
 export const getSurvivalCollection = () => {
   return COLLECTIONS['best-survival-movies'];
 };
 
-
 export const getNetflixDramaCollection = () => {
   return COLLECTIONS['best-drama-movies-on-netflix'];
 };
-
 
 export default COLLECTIONS;

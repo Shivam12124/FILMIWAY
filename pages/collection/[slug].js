@@ -15,7 +15,7 @@ import { COLLECTIONS, getAllCollectionSlugs, getCollectionBySlug } from '../../d
 // 🔥 UPDATED IMPORT - GET COMPLETE MOVIE DATA WITH DNA INFO
 import { COMPLETE_MOVIE_DATABASE, COMPLETE_MOVIE_DATA } from '../../utils/movieData';
 
-;
+
 
 // Safe property getters
 const getMovieTitle = (movie) => movie?.Title || movie?.title || movie?.name || 'Unknown Movie';
@@ -803,9 +803,42 @@ const CinematicHeader = React.memo(() => {
         </motion.div>
     );
 
+
+
+
+
+
+        {/* 🚀 NEW: STRUCTURED DATA FOR GOOGLE SEO */}
+<script type="application/ld+json" dangerouslySetInnerHTML={{
+  __html: JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": collection?.title || "",
+    "description": collection?.description || "",
+    "numberOfItems": movies?.length || 0,
+    "url": `https://filmiway.com/collection/${collection?.slug || ""}`,
+    "itemListElement": (movies || []).map((movie, index) => ({
+      "@type": "ListItem",
+      "position": movies.length - index,
+      "item": {
+        "@type": "Movie",
+        "name": movie?.Title || "Unknown Movie",
+        "url": movie?.imdbID ? `https://filmiway.com/collection/${collection?.slug || ""}/${movie.imdbID}` : "",
+        "datePublished": movie?.Year || "2024",
+        "genre": movie?.Genre || "Drama"
+      }
+    }))
+  })
+}} />
+
+
+
     return (
         <div className="min-h-screen bg-black text-white relative overflow-hidden">
-      <Head>
+    
+
+     
+     <Head>
     {/* 🔥 FIXED: STATIC META TITLE */}
     <title key={`collection-title-${collection.slug}`}>{metaContent.title}</title>
 
@@ -832,7 +865,44 @@ const CinematicHeader = React.memo(() => {
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" key={`twitter-title-${collection.slug}`} content={metaContent.twitterTitle} />
     <meta name="twitter:description" key={`twitter-desc-${collection.slug}`} content={metaContent.description} />
+
+    {/* 🚀 NEW: STRUCTURED DATA FOR GOOGLE SEO */}
+    <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "ItemList",
+                "name": collection.title,
+                "description": collection.description,
+                "numberOfItems": movies.length,
+                "url": `https://filmiway.com/collection/${collection.slug}`,
+                "itemListElement": movies.map((movie, index) => ({
+                    "@type": "ListItem",
+                    "position": movies.length - index,
+                    "item": {
+                        "@type": "Movie",
+                        "name": movie.Title,
+                        "url": `https://filmiway.com/${
+                            collection.slug === 'best-survival-movies' 
+                                ? 'movies/survival/' 
+                                : collection.slug === 'movies-like-inception'
+                                ? 'movies/like-inception/'
+                                : collection.slug === 'movies-like-memento'
+                                ? 'movies/like-memento/'
+                                : collection.slug === 'movies-like-shutter-island'
+                                ? 'movies/like-shutter-island/'
+                                : 'movies/'
+                        }${movie.imdbID}`,
+                        "datePublished": movie.Year,
+                        "genre": movie.Genre || "Drama"
+                    }
+                }))
+            })
+        }}
+    />
 </Head>
+
 
             <CinematicBackground />
             <StrategicControls 
@@ -926,29 +996,24 @@ const CinematicHeader = React.memo(() => {
                             </div>
 
                             {/* Enhanced Movie Info */}
-                            <motion.div 
-                                className="text-center mt-12 sm:mt-16"
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ delay: 0.5, duration: 0.8 }}
-                            >
-                                <h2 className="text-3xl sm:text-4xl font-light text-white mb-3">
-                                    {getMovieTitle(currentMovie).replace(/\*/g, '')}
-                                </h2>
-                                <p className="text-gray-400 mb-4 text-lg">
-                                    {getMovieYear(currentMovie)} • {getMovieGenre(currentMovie)} • {getMovieRuntime(currentMovie)}
-                                </p>
-                                
-                                {/* Enhanced Click Indicators */}
-                                <div className="flex flex-col items-center space-y-6">
-                                    <div className="flex items-center justify-center space-x-4 text-sm text-gray-500">
-                                        <span className="px-3 py-1 bg-gray-800/50 rounded-full">#{currentRank} of {movies.length}</span>
-                                        <span>•</span>
-                                        <span>Click poster above for full analysis</span>
-                                    </div>
-                                    
-                                    <motion.div 
-                                        className="flex items-center space-x-4 bg-gradient-to-r from-yellow-400/10 via-amber-400/10 to-yellow-400/10 border border-yellow-400/30 rounded-2xl px-8 py-4 hover:from-yellow-400/20 hover:via-amber-400/20 hover:to-yellow-400/20 hover:border-yellow-400/50 transition-all duration-300 cursor-pointer group"
+                          {/* Enhanced Movie Info */}
+<motion.div 
+    className="text-center mt-12 sm:mt-16"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ delay: 0.5, duration: 0.8 }}
+>
+    {/* Enhanced Click Indicators */}
+    <div className="flex flex-col items-center space-y-6">
+        <div className="flex items-center justify-center space-x-4 text-sm text-gray-500">
+            <span className="px-3 py-1 bg-gray-800/50 rounded-full">#{currentRank} of {movies.length}</span>
+            <span>•</span>
+            <span>Click poster above for full analysis</span>
+        </div>
+        
+        <motion.div 
+            className="flex items-center space-x-4 bg-gradient-to-r from-yellow-400/10 via-amber-400/10 to-yellow-400/10 border border-yellow-400/30 rounded-2xl px-8 py-4 hover:from-yellow-400/20 hover:via-amber-400/20 hover:to-yellow-400/20 hover:border-yellow-400/50 transition-all duration-300 cursor-pointer group"
+
                                         whileHover={{ scale: 1.05, y: -2 }}
                                         whileTap={{ scale: 0.98 }}
                                         onClick={() => {
