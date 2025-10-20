@@ -14,13 +14,13 @@ Crawl-delay: 2
 # 🔍 MAINSTREAM SEARCH ENGINES
 User-agent: Googlebot
 Allow: /
+Allow: /_next/
 Allow: /collection/movies-like-inception
 Allow: /collection/movies-like-memento
 Allow: /collection/movies-like-shutter-island
 Allow: /collection/best-survival-movies
 Allow: /movies/
 Disallow: /api/
-Disallow: /_next/
 Disallow: /admin/
 
 User-agent: Bingbot
