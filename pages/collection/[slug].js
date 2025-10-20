@@ -809,27 +809,36 @@ const CinematicHeader = React.memo(() => {
 
 
         {/* 🚀 NEW: STRUCTURED DATA FOR GOOGLE SEO */}
-<script type="application/ld+json" dangerouslySetInnerHTML={{
-  __html: JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    "name": collection?.title || "",
-    "description": collection?.description || "",
-    "numberOfItems": movies?.length || 0,
-    "url": `https://filmiway.com/collection/${collection?.slug || ""}`,
-    "itemListElement": (movies || []).map((movie, index) => ({
-      "@type": "ListItem",
-      "position": movies.length - index,
-      "item": {
-        "@type": "Movie",
-        "name": movie?.Title || "Unknown Movie",
-        "url": movie?.imdbID ? `https://filmiway.com/collection/${collection?.slug || ""}/${movie.imdbID}` : "",
-        "datePublished": movie?.Year || "2024",
-        "genre": movie?.Genre || "Drama"
-      }
-    }))
-  })
-}} />
+<script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": collection?.title || "",
+      "description": collection?.description || "",
+      "numberOfItems": movies?.length || 0,
+      "url": `https://filmiway.com/collection/${collection?.slug || ""}`,
+      "itemListElement": (movies || []).map((movie, index) => {
+        let itemObj = {
+          "@type": "Movie",
+          "name": movie?.Title || "Unknown Movie",
+          "datePublished": movie?.Year || "2024",
+          "genre": movie?.Genre || "Drama"
+        };
+        if (movie?.imdbID) {
+          itemObj.url = `https://filmiway.com/collection/${collection?.slug || ""}/${movie.imdbID}`;
+        }
+        return {
+          "@type": "ListItem",
+          "position": movies.length - index,
+          "item": itemObj
+        };
+      })
+    })
+  }}
+/>
+
 
 
 
@@ -837,71 +846,88 @@ const CinematicHeader = React.memo(() => {
         <div className="min-h-screen bg-black text-white relative overflow-hidden">
     
 
-     
-     <Head>
-    {/* 🔥 FIXED: STATIC META TITLE */}
-    <title key={`collection-title-${collection.slug}`}>{metaContent.title}</title>
 
-    {/* 🔥 FIXED: STATIC META DESCRIPTION */}
-    <meta key={`collection-desc-${collection.slug}`} name="description" content={metaContent.description} />
 
-    {/* 🔥 FIXED: STATIC META KEYWORDS */}
-    <meta key={`collection-keywords-${collection.slug}`} name="keywords" content={metaContent.keywords} />
-    
-    {/* 🔥 FIXED: SINGLE CANONICAL - NO DUPLICATES */}
-    <link rel="canonical" href={`https://filmiway.com/collection/${collection.slug}`} />
-    
-    {/* SEO ESSENTIALS */}
-    <meta name="robots" content="index, follow" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    
-    {/* 🔥 FIXED: STATIC OPEN GRAPH */}
-    <meta property="og:title" key={`og-title-${collection.slug}`} content={metaContent.ogTitle} />
-    <meta property="og:description" key={`og-desc-${collection.slug}`} content={metaContent.description} />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={`https://filmiway.com/collection/${collection.slug}`} />
-    
-    {/* 🔥 FIXED: STATIC TWITTER CARDS */}
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" key={`twitter-title-${collection.slug}`} content={metaContent.twitterTitle} />
-    <meta name="twitter:description" key={`twitter-desc-${collection.slug}`} content={metaContent.description} />
 
-    {/* 🚀 NEW: STRUCTURED DATA FOR GOOGLE SEO */}
-    <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-                "@context": "https://schema.org",
-                "@type": "ItemList",
-                "name": collection.title,
-                "description": collection.description,
-                "numberOfItems": movies.length,
-                "url": `https://filmiway.com/collection/${collection.slug}`,
-                "itemListElement": movies.map((movie, index) => ({
-                    "@type": "ListItem",
-                    "position": movies.length - index,
-                    "item": {
-                        "@type": "Movie",
-                        "name": movie.Title,
-                        "url": `https://filmiway.com/${
-                            collection.slug === 'best-survival-movies' 
-                                ? 'movies/survival/' 
-                                : collection.slug === 'movies-like-inception'
-                                ? 'movies/like-inception/'
-                                : collection.slug === 'movies-like-memento'
-                                ? 'movies/like-memento/'
-                                : collection.slug === 'movies-like-shutter-island'
-                                ? 'movies/like-shutter-island/'
-                                : 'movies/'
-                        }${movie.imdbID}`,
-                        "datePublished": movie.Year,
-                        "genre": movie.Genre || "Drama"
-                    }
-                }))
-            })
-        }}
-    />
+<Head>
+  {/* Static Meta Title */}
+  <title key={`collection-title-${collection.slug}`}>
+    {metaContent.title || collection.title || "Filmiway - Movie Collection"}
+  </title>
+
+  {/* Static Meta Description */}
+  <meta
+    key={`collection-desc-${collection.slug}`}
+    name="description"
+    content={metaContent.description || collection.description || ""}
+  />
+
+  {/* Static Meta Keywords */}
+  <meta
+    key={`collection-keywords-${collection.slug}`}
+    name="keywords"
+    content={metaContent.keywords || ""}
+  />
+
+  {/* Canonical URL */}
+  <link rel="canonical" href={`https://filmiway.com/collection/${collection.slug}`} />
+
+  {/* SEO Essentials */}
+  <meta name="robots" content="index, follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  {/* Open Graph */}
+  <meta property="og:title" key={`og-title-${collection.slug}`} content={metaContent.ogTitle || metaContent.title || collection.title} />
+  <meta property="og:description" key={`og-desc-${collection.slug}`} content={metaContent.description || collection.description} />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={`https://filmiway.com/collection/${collection.slug}`} />
+
+  {/* Twitter Cards */}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" key={`twitter-title-${collection.slug}`} content={metaContent.twitterTitle || metaContent.title || collection.title} />
+  <meta name="twitter:description" key={`twitter-desc-${collection.slug}`} content={metaContent.description || collection.description} />
+
+  {/* 🚀 Fixed Valid Structured Data Block for Google */}
+  <script
+    type="application/ld+json"
+    dangerouslySetInnerHTML={{
+      __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": collection?.title || "",
+        "description": collection?.description || "",
+        "numberOfItems": movies?.length || 0,
+        "url": `https://filmiway.com/collection/${collection?.slug || ""}`,
+        "itemListElement": (movies || []).map((movie, index) => {
+          let itemObj = {
+            "@type": "Movie",
+            "name": movie?.Title || "Unknown Movie",
+            "datePublished": movie?.Year || "2024",
+            "genre": movie?.Genre || "Drama"
+          };
+          if (movie?.imdbID) {
+            const basePath = collection?.slug === 'best-survival-movies'
+              ? 'movies/survival/'
+              : collection?.slug === 'movies-like-inception'
+              ? 'movies/like-inception/'
+              : collection?.slug === 'movies-like-memento'
+              ? 'movies/like-memento/'
+              : collection?.slug === 'movies-like-shutter-island'
+              ? 'movies/like-shutter-island/'
+              : 'movies/';
+            itemObj.url = `https://filmiway.com/${basePath}${movie.imdbID}`;
+          }
+          return {
+            "@type": "ListItem",
+            "position": movies.length - index,
+            "item": itemObj
+          };
+        })
+      })
+    }}
+  />
 </Head>
+
 
 
             <CinematicBackground />
