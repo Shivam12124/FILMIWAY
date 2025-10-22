@@ -304,24 +304,25 @@ const FilmiwayHomepage = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.9, duration: 0.6 }}
                     >
-                        <div className="flex items-center justify-center mb-4 gap-2">
-                            <Layers className="w-5 h-5 text-yellow-400" />
-                            <h2 className="text-xl font-light text-white">Featured Collection</h2>
-                        </div>
-                        
-                        <Link href="/collection/movies-like-shutter-island" className="group block">
-                            <div className="bg-gradient-to-br from-green-500/10 to-teal-500/10 border border-green-500/20 rounded-2xl p-6 hover:from-green-500/20 hover:to-teal-500/20 hover:border-green-400/40 transition-all duration-300">
-                                <div className="text-green-400 font-semibold text-xl mb-2 group-hover:text-green-300">
-                                    Psychological Horror
-                                </div>
-                                <div className="text-gray-300 text-lg group-hover:text-white mb-3">
-                                    Movies Like Shutter Island
-                                </div>
-                                <div className="text-gray-400 text-sm">
-                                    Mind-bending psychological thrillers that will keep you questioning reality
-                                </div>
-                            </div>
-                        </Link>
+                 <div className="flex items-center justify-center mb-4 gap-2">
+    <Layers className="w-5 h-5 text-yellow-400" />
+    <h2 className="text-xl font-light text-white">Featured Collection</h2>
+</div>
+
+<Link href="/collection/best-survival-movies" className="group block">
+    <div className="bg-gradient-to-br from-green-500/10 to-teal-500/10 border border-green-500/20 rounded-2xl p-6 hover:from-green-500/20 hover:to-teal-500/20 hover:border-green-400/40 transition-all duration-300">
+        <div className="text-green-400 font-semibold text-xl mb-2 group-hover:text-green-300">
+            Survival Movies
+        </div>
+        <div className="text-gray-300 text-lg group-hover:text-white mb-3">
+            The Best Survival Films That Test Human Limits
+        </div>
+        <div className="text-gray-400 text-sm">
+            Intense and raw survival stories emphasizing grit, pain, and human endurance.
+        </div>
+    </div>
+</Link>
+
                     </motion.div>
                 </motion.div>
             </div>
@@ -536,7 +537,7 @@ const FilmiwayHomepage = () => {
     
 
 
-(() 
+
     <motion.section 
         className="py-12 sm:py-16 bg-gradient-to-r from-gray-900/40 via-gray-800/40 to-gray-900/40 rounded-3xl border border-gray-700/20 mb-16 select-none"
         initial={{ opacity: 0, y: 30 }}
@@ -578,7 +579,7 @@ const FilmiwayHomepage = () => {
             </p>
         </div>
     </motion.section>
-));
+
 
                 <footer className="bg-gradient-to-t from-gray-900 to-black py-12 border-t border-gray-800 select-none">
                     <div className="container mx-auto px-4 sm:px-6">
@@ -605,7 +606,7 @@ const FilmiwayHomepage = () => {
                             <div className="flex flex-wrap items-center justify-center gap-4 text-gray-500 text-sm mb-4">
                                 <span>&copy; 2025 Filmiway</span>
                                 <span>&bull;</span>
-                                <Link href="/about" className="hover:text-yellow-400 transition-colors">About</Link>
+                                <Link href="/about-us" className="hover:text-yellow-400 transition-colors">About</Link>
                                 <span>&bull;</span>
                                 <Link href="/privacy" className="hover:text-yellow-400 transition-colors">Privacy</Link>
                             </div>
