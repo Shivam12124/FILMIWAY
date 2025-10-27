@@ -16,17 +16,24 @@ import SEOFAQSection from './SEOFAQSection';
 import MementoSEOFAQSection from './MementoSEOFAQSection';
 import ShutterIslandSEOFAQSection from './ShutterIslandSEOFAQSection';
 import SurvivalSEOFAQSection from './SurvivalSEOFAQSection'; // 🔥 NEW: Import Survival FAQ
+import { COMPLETE_MOVIE_DATABASE as DRAMA_MOVIE_DATA } from '../utils/dramaMovieRoutes';
 
-const MovieDetailsSection = React.memo(({ movie, fromMementoCollection, fromShutterIslandCollection, fromInceptionCollection, fromSurvivalCollection }) => {
+
+
+const MovieDetailsSection = React.memo(({ movie, fromMementoCollection, fromShutterIslandCollection, fromInceptionCollection, fromSurvivalCollection, fromDramaCollection }) => {
+
   if (!movie) {
     console.log('❌ No movie data provided');
     return null;
   }
 
   // 🔥 UPDATED: Get data from correct source based on collection
-  const movieInfo = fromSurvivalCollection 
-      ? SURVIVAL_MOVIE_DATA[movie?.tmdbId]
-      : COMPLETE_MOVIE_DATA[movie?.tmdbId];
+const movieInfo = fromSurvivalCollection 
+    ? SURVIVAL_MOVIE_DATA[movie?.tmdbId]
+    : fromDramaCollection
+    ? DRAMA_MOVIE_DATA[movie?.tmdbId]  // ✅ ADD THIS
+    : COMPLETE_MOVIE_DATA[movie?.tmdbId];
+
   
   const getMovieSpecificData = (title) => {
     const t = title.toLowerCase();

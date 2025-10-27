@@ -298,32 +298,49 @@ const FilmiwayHomepage = () => {
                         </motion.button>
                     </motion.div>
 
-                    <motion.div 
-                        className="bg-gradient-to-r from-gray-900/40 via-gray-800/40 to-gray-900/40 backdrop-blur-sm border border-gray-700/30 rounded-3xl p-6 sm:p-8 mb-12 max-w-4xl mx-auto"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.9, duration: 0.6 }}
-                    >
-                 <div className="flex items-center justify-center mb-4 gap-2">
+          <motion.div 
+  className="bg-gradient-to-r from-gray-900/40 via-gray-800/40 to-gray-900/40 backdrop-blur-sm border border-gray-700/30 rounded-3xl p-6 sm:p-8 mb-12 max-w-4xl mx-auto"
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ delay: 0.9, duration: 0.6 }}
+>
+  <div className="flex items-center justify-center mb-4 gap-2">
     <Layers className="w-5 h-5 text-yellow-400" />
     <h2 className="text-xl font-light text-white">Featured Collection</h2>
-</div>
+  </div>
 
-<Link href="/collection/best-survival-movies" className="group block">
-    <div className="bg-gradient-to-br from-green-500/10 to-teal-500/10 border border-green-500/20 rounded-2xl p-6 hover:from-green-500/20 hover:to-teal-500/20 hover:border-green-400/40 transition-all duration-300">
+  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+    <Link href="/collection/best-survival-movies" className="group block">
+      <div className="bg-gradient-to-br from-green-500/10 to-teal-500/10 border border-green-500/20 rounded-2xl p-6 hover:from-green-500/20 hover:to-teal-500/20 hover:border-green-400/40 transition-all duration-300">
         <div className="text-green-400 font-semibold text-xl mb-2 group-hover:text-green-300">
-            Survival Movies
+          Survival Movies
         </div>
         <div className="text-gray-300 text-lg group-hover:text-white mb-3">
-            The Best Survival Films That Test Human Limits
+          The Best Survival Films That Test Human Limits
         </div>
         <div className="text-gray-400 text-sm">
-            Intense and raw survival stories emphasizing grit, pain, and human endurance.
+          Intense and raw survival stories emphasizing grit, pain, and human endurance.
         </div>
+      </div>
+    </Link>
+
+   <Link href="/collection/movies-like-shutter-island" className="group block">
+  <div className="bg-gradient-to-br from-purple-500/10 to-indigo-500/10 border border-purple-500/20 rounded-2xl p-6 hover:from-purple-500/20 hover:to-indigo-500/20 hover:border-purple-400/40 transition-all duration-300">
+    <div className="text-purple-400 font-semibold text-xl mb-2 group-hover:text-purple-300">
+      Shutter Island Collection
     </div>
+    <div className="text-gray-300 text-lg group-hover:text-white mb-3">
+      Mind-Bending Psychological Thrillers Like Shutter Island
+    </div>
+    <div className="text-gray-400 text-sm">
+      Explore high-intensity psychological mysteries with twists, suspense, and dark secrets.
+    </div>
+  </div>
 </Link>
 
-                    </motion.div>
+  </div>
+</motion.div>
+
                 </motion.div>
             </div>
         </section>

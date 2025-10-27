@@ -28,18 +28,7 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 1018, "imdbID": "tt0166924", "Title": "Mulholland Drive", "year": 2001, "genre": "Mystery", "runtime": 147, "rank": 3 },
     { "tmdbId": 4960, "imdbID": "tt0383028", "Title": "Synecdoche, New York", "year": 2008, "genre": "Drama", "runtime": 124, "rank": 2 },
     { "tmdbId": 14337, "imdbID": "tt0390384", "Title": "Primer", "year": 2004, "genre": "Sci-Fi", "runtime": 77, "rank": 1 },
-    
-    // NETFLIX DRAMA COLLECTION (10 MOVIES)
-    { "tmdbId": 530915, "imdbID": "tt8579674", "Title": "1917", "year": 2019, "genre": "War", "runtime": 119, "rank": 1 },
-    { "tmdbId": 426426, "imdbID": "tt6155172", "Title": "Roma", "year": 2018, "genre": "Drama", "runtime": 135, "rank": 2 },
-    { "tmdbId": 466282, "imdbID": "tt1302006", "Title": "The Irishman", "year": 2019, "genre": "Crime", "runtime": 209, "rank": 3 },
-    { "tmdbId": 492188, "imdbID": "tt7653254", "Title": "Marriage Story", "year": 2019, "genre": "Drama", "runtime": 137, "rank": 4 },
-    { "tmdbId": 37799, "imdbID": "tt1285016", "Title": "The Social Network", "year": 2010, "genre": "Drama", "runtime": 120, "rank": 5 },
-    { "tmdbId": 544401, "imdbID": "tt7533152", "Title": "The Boy Who Harnessed the Wind", "year": 2019, "genre": "Drama", "runtime": 113, "rank": 6 },
-    { "tmdbId": 68718, "imdbID": "tt1853728", "Title": "Django Unchained", "year": 2012, "genre": "Western", "runtime": 165, "rank": 7 },
-    { "tmdbId": 1402, "imdbID": "tt0454921", "Title": "The Pursuit of Happyness", "year": 2006, "genre": "Drama", "runtime": 117, "rank": 8 },
-    { "tmdbId": 588228, "imdbID": "tt10633456", "Title": "Minari", "year": 2020, "genre": "Drama", "runtime": 115, "rank": 9 },
-    { "tmdbId": 531219, "imdbID": "tt1070874", "Title": "The Trial of the Chicago 7", "year": 2020, "genre": "Drama", "runtime": 129, "rank": 10 }
+   
 ];
 
 
@@ -142,25 +131,7 @@ export const SENSITIVE_TIMELINES = {
         ]
     },
 
-    // NETFLIX DRAMA MOVIES
-    530915: { scenes: [] }, // 1917
-    426426: { scenes: [] }, // Roma
-    466282: { scenes: [] }, // The Irishman
-    492188: { // Marriage Story
-        scenes: [
-            { start: timeToSeconds("1:32:15"), end: timeToSeconds("1:32:30"), type: "Kissing" }
-        ]
-    },
-    37799: { scenes: [] }, // The Social Network
-    544401: { scenes: [] }, // The Boy Who Harnessed the Wind
-    68718: { // Django Unchained
-        scenes: [
-            { start: timeToSeconds("1:15:42"), end: timeToSeconds("1:16:05"), type: "Partial Nudity" }
-        ]
-    },
-    1402: { scenes: [] }, // The Pursuit of Happyness
-    588228: { scenes: [] }, // Minari
-    531219: { scenes: [] } // The Trial of the Chicago 7
+    
 };
 
 
@@ -318,117 +289,8 @@ export const COMPLETE_MOVIE_DATA = {
         genreComposition: "A crime thriller at its core with 50%, enhanced by mystery elements at 35% and psychological thriller tension at 15%, creating a perfect storm of deception."
     },
     
-    // 🎬 NETFLIX DRAMA COLLECTION DATA
-    530915: { // 1917
-        emotionalIntensity: 95, dramaLevel: "EXTREME", dominantColor: "#854d0e", rating: 8.2, criticsScore: 78, audienceScore: 88, director: "Sam Mendes", cast: ["George MacKay", "Dean-Charles Chapman", "Mark Strong"], boxOffice: "$384.9 million", budget: "$95 million",
-        dna: { "War": 60, "Drama": 30, "Action": 10 },
-        scenes: [{ time: 15, intensity: 40, label: "The Mission", color: "#854d0e" }, { time: 35, intensity: 70, label: "No Man's Land", color: "#a16207" }, { time: 65, intensity: 85, label: "The Farm", color: "#ca8a04" }, { time: 90, intensity: 95, label: "The Town", color: "#eab308" }, { time: 115, intensity: 100, label: "The Message", color: "#facc15" }],
-        synopsis: "During World War I, two young British soldiers are given an impossible mission: deliver a message deep in enemy territory that will stop 1,600 men from walking into a deadly trap.",
-        themes: ["War", "Heroism", "Time Pressure", "Survival"],
-        awards: ["Academy Award Best Cinematography", "Academy Award Best Visual Effects", "Academy Award Best Sound Mixing"],
-        seoDescription: "Immersive, edge-of-your-seat war drama delivered in stunning one-shot cinematography that puts you in the trenches of WWI.",
-        intensityPeak: "The film reaches maximum intensity at 115 minutes as the soldier races against time to deliver the message.",
-        genreComposition: "Primarily a war film at 60%, with dramatic elements at 30% and intense action sequences at 10%."
-    },
-    426426: { // Roma
-        emotionalIntensity: 82, dramaLevel: "HIGH", dominantColor: "#1e293b", rating: 7.6, criticsScore: 96, audienceScore: 73, director: "Alfonso Cuarón", cast: ["Yalitza Aparicio", "Marina de Tavira", "Diego Cortina Autrey"], boxOffice: "$1.1 million", budget: "$15 million",
-        dna: { "Drama": 70, "Family": 20, "Historical": 10 },
-        scenes: [{ time: 20, intensity: 30, label: "Daily Life", color: "#1e293b" }, { time: 50, intensity: 55, label: "The Beach", color: "#334155" }, { time: 90, intensity: 75, label: "The Hospital", color: "#475569" }, { time: 115, intensity: 85, label: "The Fire", color: "#64748b" }, { time: 130, intensity: 80, label: "Reconciliation", color: "#94a3b8" }],
-        synopsis: "A year in the life of a middle-class family's maid in Mexico City in the early 1970s, capturing intimate domestic life against political turmoil.",
-        themes: ["Class", "Family", "Political Unrest", "Motherhood"],
-        awards: ["Academy Award Best Director", "Academy Award Best Cinematography", "Academy Award Best Foreign Language Film"],
-        seoDescription: "Visual and emotional masterpiece exploring domestic life in 1970s Mexico with stunning black-and-white cinematography.",
-        intensityPeak: "Emotional intensity peaks at 115 minutes during the devastating fire sequence.",
-        genreComposition: "A deeply personal drama at 70%, enriched by family dynamics at 20% and historical context at 10%."
-    },
-    466282: { // The Irishman
-        emotionalIntensity: 78, dramaLevel: "HIGH", dominantColor: "#7f1d1d", rating: 7.8, criticsScore: 95, audienceScore: 86, director: "Martin Scorsese", cast: ["Robert De Niro", "Al Pacino", "Joe Pesci"], boxOffice: "$10 million", budget: "$159 million",
-        dna: { "Crime": 50, "Drama": 40, "Biography": 10 },
-        scenes: [{ time: 25, intensity: 40, label: "The Beginning", color: "#7f1d1d" }, { time: 70, intensity: 60, label: "The Rise", color: "#991b1b" }, { time: 120, intensity: 75, label: "The Hit", color: "#b91c1c" }, { time: 160, intensity: 85, label: "Hoffa", color: "#dc2626" }, { time: 200, intensity: 90, label: "The End", color: "#ef4444" }],
-        synopsis: "An aging hitman recalls his possible involvement with the slaying of Jimmy Hoffa in Scorsese's epic crime saga spanning decades.",
-        themes: ["Loyalty", "Aging", "Crime", "Regret"],
-        awards: ["Academy Award Nominations (10)", "Critics Choice Award Best Acting Ensemble", "BAFTA Best Supporting Actor"],
-        seoDescription: "Epic crime drama featuring legendary performances from De Niro, Pacino, and Pesci in Scorsese's masterful mob saga.",
-        intensityPeak: "The narrative peaks at 200 minutes as the protagonist confronts his lonely final years.",
-        genreComposition: "A crime epic at 50%, enriched by dramatic depth at 40% and biographical elements at 10%."
-    },
-    492188: { // Marriage Story
-        emotionalIntensity: 90, dramaLevel: "EXTREME", dominantColor: "#0f172a", rating: 7.9, criticsScore: 94, audienceScore: 82, director: "Noah Baumbach", cast: ["Adam Driver", "Scarlett Johansson", "Laura Dern"], boxOffice: "$2 million", budget: "$18 million",
-        dna: { "Drama": 80, "Romance": 15, "Comedy": 5 },
-        scenes: [{ time: 15, intensity: 35, label: "The Mediation", color: "#0f172a" }, { time: 45, intensity: 60, label: "The Lawyers", color: "#1e293b" }, { time: 75, intensity: 80, label: "The Argument", color: "#334155" }, { time: 105, intensity: 95, label: "The Fight", color: "#475569" }, { time: 130, intensity: 75, label: "Acceptance", color: "#64748b" }],
-        synopsis: "A stage director and his actor wife struggle through a grueling divorce that pushes them to their personal and creative extremes.",
-        themes: ["Divorce", "Parenting", "Identity", "Love"],
-        awards: ["Academy Award Best Supporting Actress (Laura Dern)", "Academy Award Nominations (6)", "Golden Globe Best Supporting Actress"],
-        seoDescription: "Relatable, modern relationship drama capturing the painful complexity of divorce with raw honesty and compassion.",
-        intensityPeak: "Emotional devastation peaks at 105 minutes during the brutal apartment argument scene.",
-        genreComposition: "Intensely dramatic at 80%, with romantic elements at 15% and subtle dark comedy at 5%."
-    },
-    37799: { // The Social Network
-        emotionalIntensity: 75, dramaLevel: "MEDIUM", dominantColor: "#1e3a8a", rating: 7.8, criticsScore: 96, audienceScore: 95, director: "David Fincher", cast: ["Jesse Eisenberg", "Andrew Garfield", "Justin Timberlake"], boxOffice: "$224.9 million", budget: "$40 million",
-        dna: { "Drama": 60, "Biography": 30, "Thriller": 10 },
-        scenes: [{ time: 10, intensity: 40, label: "The Breakup", color: "#1e3a8a" }, { time: 35, intensity: 60, label: "Facemash", color: "#1d4ed8" }, { time: 70, intensity: 75, label: "The Expansion", color: "#2563eb" }, { time: 100, intensity: 85, label: "The Lawsuit", color: "#3b82f6" }, { time: 115, intensity: 80, label: "The Empire", color: "#60a5fa" }],
-        synopsis: "The story of Facebook's founding and the lawsuits that followed, exploring ambition, betrayal, and the price of creating a social media empire.",
-        themes: ["Ambition", "Betrayal", "Innovation", "Friendship"],
-        awards: ["Academy Award Best Adapted Screenplay", "Academy Award Best Original Score", "Academy Award Best Film Editing"],
-        seoDescription: "Fast-paced, clever, and highly engaging drama chronicling Facebook's explosive rise and the friendships destroyed along the way.",
-        intensityPeak: "Tension peaks at 100 minutes during the climactic courtroom depositions revealing betrayals.",
-        genreComposition: "A character drama at 60%, biographical in nature at 30%, with psychological thriller tension at 10%."
-    },
-    544401: { // The Boy Who Harnessed the Wind
-        emotionalIntensity: 70, dramaLevel: "MEDIUM", dominantColor: "#15803d", rating: 7.6, criticsScore: 87, audienceScore: 83, director: "Chiwetel Ejiofor", cast: ["Maxwell Simba", "Chiwetel Ejiofor", "Aïssa Maïga"], boxOffice: "$0", budget: "Unknown",
-        dna: { "Drama": 60, "Biography": 30, "Family": 10 },
-        scenes: [{ time: 15, intensity: 30, label: "The Drought", color: "#15803d" }, { time: 40, intensity: 50, label: "The Library", color: "#16a34a" }, { time: 70, intensity: 65, label: "The Plan", color: "#22c55e" }, { time: 95, intensity: 85, label: "The Windmill", color: "#4ade80" }, { time: 110, intensity: 75, label: "The Rain", color: "#86efac" }],
-        synopsis: "A 13-year-old boy in Malawi invents an unconventional way to save his family and village from famine by building a windmill from scrap materials.",
-        themes: ["Innovation", "Perseverance", "Family", "Hope"],
-        awards: ["NAACP Image Award Outstanding Directing", "Africa Movie Academy Award Best Film"],
-        seoDescription: "Inspiring, uplifting true story of ingenuity and determination in the face of devastating drought and famine.",
-        intensityPeak: "The film reaches its emotional climax at 95 minutes when the windmill finally works and brings water.",
-        genreComposition: "A heartfelt drama at 60%, based on true events at 30%, with universal family appeal at 10%."
-    },
-    68718: { // Django Unchained
-        emotionalIntensity: 80, dramaLevel: "HIGH", dominantColor: "#991b1b", rating: 8.4, criticsScore: 87, audienceScore: 93, director: "Quentin Tarantino", cast: ["Jamie Foxx", "Christoph Waltz", "Leonardo DiCaprio"], boxOffice: "$425.4 million", budget: "$100 million",
-        dna: { "Western": 50, "Drama": 30, "Action": 20 },
-        scenes: [{ time: 20, intensity: 45, label: "The Deal", color: "#991b1b" }, { time: 60, intensity: 65, label: "The Hunt", color: "#b91c1c" }, { time: 100, intensity: 80, label: "Candyland", color: "#dc2626" }, { time: 140, intensity: 95, label: "The Shootout", color: "#ef4444" }, { time: 160, intensity: 85, label: "Revenge", color: "#f87171" }],
-        synopsis: "With the help of a German bounty hunter, a freed slave sets out to rescue his wife from a brutal Mississippi plantation owner.",
-        themes: ["Slavery", "Revenge", "Freedom", "Justice"],
-        awards: ["Academy Award Best Supporting Actor (Christoph Waltz)", "Academy Award Best Original Screenplay", "Golden Globe Best Supporting Actor"],
-        seoDescription: "Bold, dramatic, stylish action-drama from Tarantino tackling slavery with unflinching intensity and explosive revenge.",
-        intensityPeak: "The film reaches maximum intensity at 140 minutes during the mansion shootout sequence.",
-        genreComposition: "A revisionist Western at 50%, with dramatic storytelling at 30% and stylized action at 20%."
-    },
-    1402: { // The Pursuit of Happyness
-        emotionalIntensity: 85, dramaLevel: "HIGH", dominantColor: "#0369a1", rating: 8.0, criticsScore: 67, audienceScore: 87, director: "Gabriele Muccino", cast: ["Will Smith", "Jaden Smith", "Thandiwe Newton"], boxOffice: "$307 million", budget: "$55 million",
-        dna: { "Drama": 70, "Biography": 25, "Family": 5 },
-        scenes: [{ time: 15, intensity: 40, label: "The Struggle", color: "#0369a1" }, { time: 45, intensity: 60, label: "Homelessness", color: "#0284c7" }, { time: 75, intensity: 75, label: "The Internship", color: "#0ea5e9" }, { time: 100, intensity: 90, label: "Rock Bottom", color: "#38bdf8" }, { time: 112, intensity: 95, label: "The Job", color: "#7dd3fc" }],
-        synopsis: "A struggling salesman takes custody of his son as he's poised to begin a life-changing professional career in this inspiring true story.",
-        themes: ["Perseverance", "Fatherhood", "Poverty", "Success"],
-        awards: ["Academy Award Nomination Best Actor (Will Smith)", "Screen Actors Guild Award Nomination"],
-        seoDescription: "Classic underdog story delivering emotional punch and motivation through Will Smith's powerhouse performance.",
-        intensityPeak: "The film reaches its emotional peak at 112 minutes when the protagonist finally gets the job.",
-        genreComposition: "A moving drama at 70%, based on a true story at 25%, with father-son dynamics at 5%."
-    },
-    588228: { // Minari
-        emotionalIntensity: 78, dramaLevel: "MEDIUM", dominantColor: "#15803d", rating: 7.4, criticsScore: 98, audienceScore: 83, director: "Lee Isaac Chung", cast: ["Steven Yeun", "Yeri Han", "Alan Kim"], boxOffice: "$15.5 million", budget: "$2 million",
-        dna: { "Drama": 70, "Family": 25, "Biography": 5 },
-        scenes: [{ time: 15, intensity: 30, label: "New Life", color: "#15803d" }, { time: 40, intensity: 50, label: "The Farm", color: "#16a34a" }, { time: 70, intensity: 65, label: "The Grandmother", color: "#22c55e" }, { time: 95, intensity: 85, label: "The Fire", color: "#4ade80" }, { time: 110, intensity: 75, label: "Hope", color: "#86efac" }],
-        synopsis: "A Korean-American family moves to an Arkansas farm in search of their own American Dream, finding resilience and hope against all odds.",
-        themes: ["Immigration", "Family", "Dreams", "Culture"],
-        awards: ["Academy Award Best Supporting Actress (Youn Yuh-jung)", "Academy Award Nominations (6)", "Golden Globe Best Foreign Language Film"],
-        seoDescription: "Heartwarming, culturally rich family drama capturing the immigrant experience with tenderness and authenticity.",
-        intensityPeak: "Emotional intensity peaks at 95 minutes during the devastating farm fire that threatens everything.",
-        genreComposition: "A deeply personal family drama at 70%, with universal family themes at 25% and semi-autobiographical elements at 5%."
-    },
-    531219: { // The Trial of the Chicago 7
-        emotionalIntensity: 82, dramaLevel: "HIGH", dominantColor: "#1e3a8a", rating: 7.7, criticsScore: 89, audienceScore: 76, director: "Aaron Sorkin", cast: ["Eddie Redmayne", "Sacha Baron Cohen", "Mark Rylance"], boxOffice: "$0", budget: "$35 million",
-        dna: { "Drama": 60, "Historical": 30, "Legal": 10 },
-        scenes: [{ time: 15, intensity: 45, label: "The Protest", color: "#1e3a8a" }, { time: 45, intensity: 65, label: "The Charges", color: "#1d4ed8" }, { time: 80, intensity: 75, label: "Testimony", color: "#2563eb" }, { time: 110, intensity: 90, label: "The Verdict", color: "#3b82f6" }, { time: 125, intensity: 85, label: "The Names", color: "#60a5fa" }],
-        synopsis: "The story of 7 people on trial stemming from various charges surrounding the uprising at the 1968 Democratic National Convention in Chicago.",
-        themes: ["Justice", "Activism", "Corruption", "Free Speech"],
-        awards: ["Academy Award Nominations (6)", "Golden Globe Best Screenplay", "Screen Actors Guild Award Best Ensemble"],
-        seoDescription: "Engaging courtroom drama tackling socially relevant themes of justice and protest with Aaron Sorkin's signature sharp dialogue.",
-        intensityPeak: "The film reaches maximum intensity at 110 minutes when the controversial verdicts are finally read.",
-        genreComposition: "A riveting courtroom drama at 60%, grounded in historical events at 30%, with legal thriller elements at 10%."
-    }
+   
+    
 };
 
 
@@ -447,17 +309,7 @@ export const STRATEGIC_QUOTES = {
     11324: "You're smarter than you look, Marshal",
     629: "The greatest trick the devil ever pulled was convincing the world he didn't exist",
     
-    // NETFLIX DRAMA MOVIES
-    530915: "I'm going to write to your mother and tell her that I'm bringing you home",
-    426426: "We are alone. No matter what they tell you, we women are always alone",
-    466282: "It is what it is",
-    492188: "I fell in love with him two seconds after I saw him",
-    37799: "If you were the inventors of Facebook, you'd have invented Facebook",
-    544401: "With wind, we can do anything",
-    68718: "The D is silent",
-    1402: "You got a dream, you gotta protect it",
-    588228: "You see, Grandma doesn't need water. She's a tough lady",
-    531219: "The whole world is watching"
+    
 };
 
 

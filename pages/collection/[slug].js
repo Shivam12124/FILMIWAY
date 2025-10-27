@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Crown, Star, MessageSquare, Volume2, VolumeX, Play, Pause, Menu, X, Home, Eye, MousePointer, TrendingUp, Users, Search, Brain, Zap, Film, Award, Mountain, Shield } from 'lucide-react';
 import { COMPLETE_MOVIE_DATABASE as SURVIVAL_DATABASE, COMPLETE_MOVIE_DATA as SURVIVAL_DATA } from '../../utils/survivalMovieData';
+import DRAMA_MOVIES from '../../utils/dramaMovieData'; // ← ADD THIS LINE
+
 // Components
 import CinematicBackground from '../../components/CinematicBackground';
 import StrategicControls from '../../components/StrategicControls';
@@ -997,6 +999,7 @@ const CinematicHeader = React.memo(() => {
                                 {/* 🔥 FIXED FOR NEXT.JS 15 - REMOVED <a> TAG */}
                                 <AnimatePresence mode="wait">
                                <Link 
+
     href={
         collection.slug === 'movies-like-inception'
             ? `/movies/like-inception/${currentMovie.imdbID}`
@@ -1006,8 +1009,11 @@ const CinematicHeader = React.memo(() => {
             ? `/movies/like-shutter-island/${currentMovie.imdbID}`
             : collection.slug === 'best-survival-movies'
             ? `/movies/survival/${currentMovie.imdbID}`
+            : collection.slug === 'best-drama-movies-on-netflix'  // ✅ ADD THIS LINE
+            ? `/movies/netflix/${currentMovie.imdbID}`            // ✅ ADD THIS LINE
             : `/movies/${currentMovie.imdbID}`
     }
+
 
                                         key={currentMovieIndex}
                                         onClick={handleMovieClick}
@@ -1194,10 +1200,16 @@ export async function getStaticProps({ params }) {
         };
     }
 
-    // 🔥 SELECT CORRECT DATABASE BASED ON COLLECTION
-    const movieDatabase = collection.slug === 'best-survival-movies' 
-        ? SURVIVAL_DATABASE
-        : COMPLETE_MOVIE_DATABASE;
+// SELECT CORRECT DATABASE BASED ON COLLECTION
+let movieDatabase;
+if (collection.slug === 'best-survival-movies') {
+  movieDatabase = SURVIVAL_DATABASE;
+} else if (collection.slug === 'best-drama-movies-on-netflix') {
+  movieDatabase = DRAMA_MOVIES; // ← USE DRAMA DATA
+} else {
+  movieDatabase = COMPLETE_MOVIE_DATABASE;
+}
+
 
     // Get movies for the collection (reversed for ranking display)
    // Get movies for the collection (reversed for ranking display)
@@ -1208,11 +1220,12 @@ const movies = collection.movies.map(imdbId => {
     if (!movie) return null;
     
     // Only pass minimal data for SSG build (DNA data loads client-side)
-    return {
-        imdbID: movie.imdbID || '',
-        tmdbId: movie.tmdbId || 0,
-        Title: movie.Title || 'Unknown',
-        Year: movie.Year || movie.year || '2024',
+return {
+    imdbID: movie.imdbID || '',
+    tmdbId: movie.tmdbId || 0,
+    Title: movie.Title || movie.title || 'Unknown',  // ← ADD || movie.title
+    Year: movie.Year || movie.year || '2024',
+
         Genre: movie.Genre || movie.genre || 'Drama',
         Runtime: movie.Runtime || movie.runtime || 120,
         rank: movie.rank || 1
