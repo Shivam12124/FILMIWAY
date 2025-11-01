@@ -1179,68 +1179,63 @@ window.location.href = detailPageUrl;
 };
 // 🔥 SSG FUNCTIONS
 export async function getStaticPaths() {
-    const slugs = getAllCollectionSlugs();
-    
-    const paths = slugs.map((slug) => ({
-        params: { slug }
-    }));
+  const slugs = getAllCollectionSlugs();
 
-    return {
-        paths,
-        fallback: false
-    };
+  const paths = slugs.map((slug) => ({
+    params: { slug }
+  }));
+
+  return {
+    paths,
+    fallback: false
+  };
 }
+
 
 export async function getStaticProps({ params }) {
-    const collection = getCollectionBySlug(params.slug);
-    
-    if (!collection) {
-        return {
-            notFound: true
-        };
-    }
+  const slug = params.slug;
+  const collection = getCollectionBySlug(slug);
 
-// SELECT CORRECT DATABASE BASED ON COLLECTION
-let movieDatabase;
-if (collection.slug === 'best-survival-movies') {
-  movieDatabase = SURVIVAL_DATABASE;
-} else if (collection.slug === 'best-drama-movies-on-netflix') {
-  movieDatabase = DRAMA_MOVIES; // ← USE DRAMA DATA
-} else {
-  movieDatabase = COMPLETE_MOVIE_DATABASE;
-}
+  if (!collection) {
+    return { notFound: true };
+  }
 
+  let movieDatabase;
+  if (collection.slug === 'best-survival-movies') {
+    movieDatabase = SURVIVAL_DATABASE;
+  } else if (collection.slug === 'best-drama-movies-on-netflix') {
+    movieDatabase = DRAMA_MOVIES;
+  } else {
+    movieDatabase = COMPLETE_MOVIE_DATABASE;
+  }
 
-    // Get movies for the collection (reversed for ranking display)
-   // Get movies for the collection (reversed for ranking display)
-// Get movies for the collection (reversed for ranking display)
-// Get movies for the collection (reversed for ranking display)
-const movies = collection.movies.map(imdbId => {
-    const movie = movieDatabase.find(m => m.imdbID === imdbId);
-    if (!movie) return null;
-    
-    // Only pass minimal data for SSG build (DNA data loads client-side)
-return {
-    imdbID: movie.imdbID || '',
-    tmdbId: movie.tmdbId || 0,
-    Title: movie.Title || movie.title || 'Unknown',  // ← ADD || movie.title
-    Year: movie.Year || movie.year || '2024',
+  const movieArray = Array.isArray(movieDatabase) ? movieDatabase : Object.values(movieDatabase);
 
+  const movies = collection.movies
+    .map(imdbId => {
+      const movie = movieArray.find(m => m.imdbID === imdbId);
+      if (!movie) return null;
+
+      return {
+        imdbID: movie.imdbID || '',
+        tmdbId: movie.tmdbId || 0,
+        Title: movie.Title || movie.title || 'Unknown',
+        Year: movie.Year || movie.year || '2024',
         Genre: movie.Genre || movie.genre || 'Drama',
         Runtime: movie.Runtime || movie.runtime || 120,
-        rank: movie.rank || 1
-    };
-}).filter(Boolean).reverse();
+        rank: movie.rank || 1,
+        emotionalIntensity: movie.emotionalIntensity || 0
+      };
+    })
+    .filter(Boolean)
+    .reverse();
 
-
-
-
-    return {
-        props: {
-            collection,
-            movies
-        }
-    };
-}
+  return {
+    props: {
+      collection,
+      movies
+    }
+  };  // <- ADD THIS MISSING CLOSING BRACE HERE
+}       // <= end of getStaticProps
 
 export default CollectionPage;

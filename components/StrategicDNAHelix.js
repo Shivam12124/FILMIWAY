@@ -16,7 +16,7 @@ const STANDARDIZED_COLORS = {
   "Neo-Noir": "#0f172a",
   "Mystery": "#6b21a8",
   "Horror": "#991b1b",
-  "Crime": "#b91c1c",
+  "Crime": "#1d1fb9ff",
   "Psychological": "#9333ea",
   "Memory": "#a78bfa",
   "Dreams": "#60a5fa"

@@ -182,13 +182,13 @@ export const COLLECTIONS = {
       'tt8579674',   // 1917 (2019)
       'tt6155172',   // Roma (2018)
       'tt1302006',   // The Irishman (2019)
-      'tt7653254',   // Marriage Story (2019)
-      'tt1285016',   // The Social Network (2010)
-      'tt7533152',   // The Boy Who Harnessed the Wind (2019)
-      'tt10293406',  // The Power of the Dog (2021)
-      'tt2396589',   // Mudbound (2017)
+      'tt9770150',   // Marriage Story (2019)
+      'tt1677720',   // The Social Network (2010)
+      'tt9419184',   // The Boy Who Harnessed the Wind (2019)
+      'tt7291200',  // The Power of the Dog (2021)
+      'tt2156584',   // Mudbound (2017)
       'tt0454921',   // The Pursuit of Happyness (2006)
-      'tt10633456'   // Minari (2020)
+      'tt10118744'   // Minari (2020)
     ],
     badges: [
       { label: 'Award-Winning', desc: 'Oscar-nominated performances' },

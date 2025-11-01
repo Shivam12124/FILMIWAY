@@ -1,5 +1,5 @@
 // app/layout.jsx
-import ClientProvider from '../src/components/ClientProvider';
+import ClientProvider from './components/ClientProvider';
 
 export default function RootLayout({ children }) {
   return (

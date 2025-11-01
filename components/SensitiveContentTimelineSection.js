@@ -1,4 +1,4 @@
-// components/SensitiveContentTimelineSection.js - FIXED WITHOUT SEVERITY BADGES ✅
+// components/SensitiveContentTimelineSection.js - COMPLETE WITH DRAMA SUPPORT ✅
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Shield, CheckCircle, AlertTriangle, Eye, X } from 'lucide-react';
@@ -7,18 +7,37 @@ import { Shield, CheckCircle, AlertTriangle, Eye, X } from 'lucide-react';
 import { formatSensitiveTimeline as formatInceptionTimeline, getSensitiveContentTypes as getInceptionContentTypes } from '../utils/movieData';
 import { formatSensitiveTimeline as formatSurvivalTimeline, getSensitiveContentTypes as getSurvivalContentTypes } from '../utils/survivalMovieData';
 
-const SensitiveContentTimelineSection = React.memo(({ movie }) => {
+const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) => {
     const [showSensitiveOverlay, setShowSensitiveOverlay] = useState(false);
     
-    // 🔥 FIXED: Use formatting functions to convert seconds to MM:SS format
-    const inceptionData = formatInceptionTimeline?.(movie.tmdbId);
-    const survivalData = formatSurvivalTimeline?.(movie.tmdbId);
-    const sensitiveData = inceptionData || survivalData;
-    
-    // 🔥 FIXED: Get content types from appropriate source
-    const contentTypes = inceptionData 
-        ? (getInceptionContentTypes?.(movie.tmdbId) || [])
-        : (getSurvivalContentTypes?.(movie.tmdbId) || []);
+    // 🔥 PRIORITY: Use passed sensitiveScenes first (from drama collection), then fallback to inception/survival
+    let sensitiveData = null;
+    let contentTypes = [];
+
+    // Step 1: Check if sensitiveScenes prop exists and has data (drama movies)
+    if (sensitiveScenes && sensitiveScenes.length > 0) {
+        sensitiveData = { scenes: sensitiveScenes };
+        // Extract content types from drama sensitive scenes
+        contentTypes = [...new Set(sensitiveScenes.map(scene => {
+            const lowerType = scene.description?.toLowerCase() || '';
+            if (lowerType.includes('nudity') || lowerType.includes('sex')) return 'Nudity/Sexual Content';
+            if (lowerType.includes('kissing')) return 'Kissing';
+            if (lowerType.includes('suggestive')) return 'Suggestive Content';
+            if (lowerType.includes('violence')) return 'Violence';
+            if (lowerType.includes('language')) return 'Strong Language';
+            return 'Mature Content';
+        }))];
+    } else {
+        // Step 2: Fallback to existing inception/survival data
+        const inceptionData = formatInceptionTimeline?.(movie.tmdbId);
+        const survivalData = formatSurvivalTimeline?.(movie.tmdbId);
+        sensitiveData = inceptionData || survivalData;
+        
+        // 🔥 FIXED: Get content types from appropriate source
+        contentTypes = inceptionData 
+            ? (getInceptionContentTypes?.(movie.tmdbId) || [])
+            : (getSurvivalContentTypes?.(movie.tmdbId) || []);
+    }
 
     if (!sensitiveData?.scenes?.length) {
         return (
@@ -118,11 +137,17 @@ const SensitiveContentTimelineSection = React.memo(({ movie }) => {
 
                             <div className="border-t border-b border-gray-700/50 my-3 sm:my-4 py-3 sm:py-4 space-y-2 sm:space-y-3 max-h-[50vh] sm:max-h-[60vh] overflow-y-auto pr-2">
                                 {sensitiveData.scenes.map((scene, index) => {
+                                    // 🔥 HANDLE BOTH DATA FORMATS: drama (start/end/description) and inception/survival (start/end/type/description)
+                                    const sceneStart = scene.start || '';
+                                    const sceneEnd = scene.end || '';
+                                    const sceneType = scene.type || scene.description || 'Content Warning';
+                                    const sceneDescription = scene.description || '';
+
                                     const getSceneIcon = (type) => {
                                         const lowerType = type.toLowerCase();
                                         if (lowerType.includes('nudity') || lowerType.includes('sex')) return '🔞';
                                         if (lowerType.includes('kissing')) return '💋';
-                                        if (lowerType.includes('bikini')) return '👙';
+                                        if (lowerType.includes('bikini') || lowerType.includes('suggestive')) return '👙';
                                         if (lowerType.includes('undressing')) return '👔';
                                         if (lowerType.includes('violence')) return '⚔️';
                                         if (lowerType.includes('language')) return '🤬';
@@ -137,18 +162,19 @@ const SensitiveContentTimelineSection = React.memo(({ movie }) => {
                                             animate={{ opacity: 1, x: 0 }}
                                             transition={{ delay: index * 0.05 }}
                                         >
-                                            <span className="text-base sm:text-xl mr-3 sm:mr-4">{getSceneIcon(scene.type)}</span>
-                                            <span className="font-mono text-yellow-400/90 text-xs sm:text-sm mr-2 sm:mr-4 w-24 sm:w-32">{scene.start} - {scene.end}</span>
+                                            <span className="text-base sm:text-xl mr-3 sm:mr-4">{getSceneIcon(sceneType)}</span>
+                                            <span className="font-mono text-yellow-400/90 text-xs sm:text-sm mr-2 sm:mr-4 w-24 sm:w-32">{sceneStart} - {sceneEnd}</span>
                                             <div className="flex-1">
-                                                <span className="text-xs sm:text-sm font-light capitalize block">{scene.type}</span>
-                                                {scene.description && (
-                                                    <span className="text-xs text-gray-500 block mt-1">{scene.description}</span>
+                                                <span className="text-xs sm:text-sm font-light capitalize block">{sceneType}</span>
+                                                {sceneDescription && (
+                                                    <span className="text-xs text-gray-500 block mt-1">{sceneDescription}</span>
                                                 )}
                                             </div>
                                         </motion.div>
                                     );
                                 })}
                             </div>
+
                             <div className="mt-4 sm:mt-6 flex justify-center">
                                 <motion.button
                                     onClick={() => setShowSensitiveOverlay(false)}

@@ -10,51 +10,62 @@ const CollectionsHub = () => {
     const [expandedCollection, setExpandedCollection] = useState(null);
 
     const collections = [
-        {
-            id: 'mind-bending',
-            title: 'Mind-Bending Movies',
-            description: 'Psychological thrillers that challenge reality and perception',
-            icon: Brain,
-            gradient: 'from-purple-500 to-blue-600',
-            movieCount: '30+',
-            rating: '8.5',
-            hasSubCollections: true,
-            subCollections: [
-                {
-                    slug: 'movies-like-inception',
-                    title: 'Movies Like Inception',
-                    description: 'Mind-bending sci-fi thrillers',
-                    count: '10 films',
-                    poster: 'https://image.tmdb.org/t/p/w500/ljsZTbVsrQSqZgWeep2B1QiDKuh.jpg'
-                },
-                {
-                    slug: 'movies-like-memento',
-                    title: 'Movies Like Memento',
-                    description: 'Nonlinear narratives',
-                    count: '10 films',
-                    poster: 'https://image.tmdb.org/t/p/w500/yuNs09hvpHVU1cBTCAk9zxsL2oW.jpg'
-                },
-                {
-                    slug: 'movies-like-shutter-island',
-                    title: 'Movies Like Shutter Island',
-                    description: 'Psychological horror twists',
-                    count: '10 films',
-                    poster: 'https://image.tmdb.org/t/p/w500/kve20tXwUZpu4GUX8l6X7Z4jmL6.jpg'
-                }
-            ]
-        },
-        {
-            id: 'survival',
-            title: 'Best Survival Movies',
-            description: 'Extreme survival stories that push human endurance',
-            icon: Mountain,
-            gradient: 'from-green-500 to-emerald-600',
-            movieCount: '10',
-            rating: '8.2',
-            directLink: '/collection/best-survival-movies',
-            hasSubCollections: false
-        }
-    ];
+    {
+        id: 'mind-bending',
+        title: 'Mind-Bending Movies',
+        description: 'Psychological thrillers that challenge reality and perception',
+        icon: Brain,
+        gradient: 'from-purple-500 to-blue-600',
+        movieCount: '30',
+        rating: '8.5',
+        hasSubCollections: true,
+        subCollections: [
+            {
+                slug: 'movies-like-inception',
+                title: 'Movies Like Inception',
+                description: 'Mind-bending sci-fi thrillers',
+                count: '10 films',
+                poster: 'https://image.tmdb.org/t/p/w500/ljsZTbVsrQSqZgWeep2B1QiDKuh.jpg'
+            },
+            {
+                slug: 'movies-like-memento',
+                title: 'Movies Like Memento',
+                description: 'Nonlinear narratives',
+                count: '10 films',
+                poster: 'https://image.tmdb.org/t/p/w500/yuNs09hvpHVU1cBTCAk9zxsL2oW.jpg'
+            },
+            {
+                slug: 'movies-like-shutter-island',
+                title: 'Movies Like Shutter Island',
+                description: 'Psychological horror twists',
+                count: '10 films',
+                poster: 'https://image.tmdb.org/t/p/w500/kve20tXwUZpu4GUX8l6X7Z4jmL6.jpg'
+            }
+        ]
+    },
+    {
+        id: 'survival',
+        title: 'Best Survival Movies',
+        description: 'Extreme survival stories that push human endurance',
+        icon: Mountain,
+        gradient: 'from-green-500 to-emerald-600',
+        movieCount: '10',
+        rating: '8.2',
+        directLink: '/collection/best-survival-movies',
+        hasSubCollections: false
+    },
+    {
+        id: 'drama-netflix',
+        title: 'Best Drama Movies on Netflix',
+        description: 'Critically acclaimed drama films streaming on Netflix',
+        icon: Film,
+        gradient: 'from-red-600 to-pink-600',
+        movieCount: '10',
+        rating: '8.0',
+        directLink: '/collection/best-drama-movies-on-netflix',
+        hasSubCollections: false
+    }
+];
 
     const filteredCollections = collections.filter(collection =>
         collection.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -84,14 +95,15 @@ const CollectionsHub = () => {
                     <div className="container mx-auto px-4 sm:px-6">
                         <div className="flex items-center justify-between h-16 sm:h-20">
                             <Link href="/" className="flex items-center">
-                                <div className="w-32 h-12 sm:w-40 sm:h-16 flex items-center">
-                                    <img
-                                        src="/filmiway-logo.svg"
-                                        alt="Filmiway"
-                                        className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
-                                        draggable={false}
-                                    />
-                                </div>
+                               <div className="w-48 h-16 sm:w-60 sm:h-24 flex items-center">
+  <img
+    src="/filmiway-logo.svg"
+    alt="Filmiway"
+    className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
+    draggable={false}
+  />
+</div>
+
                             </Link>
                             <Link href="/">
                                 <button className="text-sm sm:text-base text-gray-300 hover:text-yellow-400 transition-colors px-4 py-2 rounded-lg border border-gray-700/50 hover:border-yellow-400/50">

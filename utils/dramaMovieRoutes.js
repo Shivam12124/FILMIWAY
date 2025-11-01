@@ -1,12 +1,9 @@
 // utils/dramaMovieRoutes.js - DRAMA MOVIE ROUTE MAPPING
 
-import DRAMA_MOVIES from './dramaMovieData';
+import COMPLETE_MOVIE_DATABASE, { DRAMA_MOVIES } from './dramaMovieData';
 
-// ✅ ADD THIS: Convert array to object for MovieDetailsSection
-export const COMPLETE_MOVIE_DATABASE = DRAMA_MOVIES.reduce((acc, movie) => {
-    acc[movie.tmdbId] = movie;
-    return acc;
-}, {});
+// ✅ Use COMPLETE_MOVIE_DATABASE directly (already an object)
+//      No .reduce necessary!
 
 // ✅ DRAMA MOVIE SLUGS MAPPING (IMDB ID TO SLUG)
 export const DRAMA_MOVIE_SLUGS = {
@@ -22,9 +19,6 @@ export const DRAMA_MOVIE_SLUGS = {
     'tt10633456': 'minari'
 };
 
-// ... rest of your code stays the same
-
-
 // ✅ REVERSE SLUG MAPPING (SLUG TO IMDB ID)
 export const SLUG_TO_IMDB = Object.fromEntries(
     Object.entries(DRAMA_MOVIE_SLUGS).map(([imdbId, slug]) => [slug, imdbId])
@@ -39,7 +33,6 @@ export const getMovieByImdbId = (imdbId) => {
 export const getMovieBySlug = (slug) => {
     const imdbId = SLUG_TO_IMDB[slug];
     if (!imdbId) return null;
-    
     return DRAMA_MOVIES.find(movie => movie.imdbID === imdbId);
 };
 
@@ -60,15 +53,15 @@ export const generateDramaMoviePaths = () => {
 // ✅ GET NEXT/PREVIOUS DRAMA MOVIE
 export const getDramaMovieNavigation = (currentMovie) => {
     const currentIndex = DRAMA_MOVIES.findIndex(m => m.imdbID === currentMovie.imdbID);
-    
-    const previousMovie = currentIndex > 0 
+
+    const previousMovie = currentIndex > 0
         ? DRAMA_MOVIES[currentIndex - 1]
         : null;
-        
+
     const nextMovie = currentIndex < DRAMA_MOVIES.length - 1
         ? DRAMA_MOVIES[currentIndex + 1]
         : null;
-    
+
     return {
         previous: previousMovie ? {
             ...previousMovie,
@@ -81,7 +74,10 @@ export const getDramaMovieNavigation = (currentMovie) => {
     };
 };
 
+// Optionally, export everything object-style for legacy default import
 export default {
+    COMPLETE_MOVIE_DATABASE,
+    DRAMA_MOVIES,
     DRAMA_MOVIE_SLUGS,
     SLUG_TO_IMDB,
     getMovieByImdbId,

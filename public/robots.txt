@@ -1,5 +1,5 @@
 # Filmiway - Enhanced robots.txt for SEO & AI Discovery
-# Last updated: October 16, 2025
+# Last updated: November 01, 2025
 
 # 🌍 DEFAULT: ALLOW ALL WITH STRATEGIC RESTRICTIONS
 User-agent: *
@@ -11,24 +11,23 @@ Disallow: /.env
 Disallow: /node_modules/
 Crawl-delay: 2
 
-# 🔍 MAINSTREAM SEARCH ENGINES
+# 🔍 GOOGLEBOT - FULL ACCESS FOR SEO
 User-agent: Googlebot
 Allow: /
-Allow: /_next/
-Allow: /collection/movies-like-inception
-Allow: /collection/movies-like-memento
-Allow: /collection/movies-like-shutter-island
-Allow: /collection/best-survival-movies
-Allow: /movies/
 Disallow: /api/
 Disallow: /admin/
+Disallow: /.env
+Disallow: /node_modules/
+Crawl-delay: 1
 
+# 🔍 OTHER MAINSTREAM SEARCH ENGINES
 User-agent: Bingbot
 Allow: /
 Allow: /collection/movies-like-inception
 Allow: /collection/movies-like-memento
 Allow: /collection/movies-like-shutter-island
 Allow: /collection/best-survival-movies
+Allow: /collection/best-drama-movies-on-netflix
 Allow: /movies/
 Disallow: /api/
 Disallow: /_next/
