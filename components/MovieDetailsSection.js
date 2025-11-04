@@ -5,6 +5,7 @@ import { Users, Film, BookOpen, Star } from 'lucide-react';
 // Data imports
 import { COMPLETE_MOVIE_DATA, STRATEGIC_QUOTES } from '../utils/movieData';
 import { COMPLETE_MOVIE_DATA as SURVIVAL_MOVIE_DATA, STRATEGIC_QUOTES as SURVIVAL_QUOTES, SENSITIVE_TIMELINES } from '../utils/survivalMovieData';
+import { COMPLETE_MOVIE_DATA as THRILLER_MOVIE_DATA, STRATEGIC_QUOTES as THRILLER_QUOTES } from '../utils/thrillerMovieData';
 import dramaRoutes from '../utils/dramaMovieRoutes';
 const DRAMA_MOVIE_DATA = dramaRoutes.COMPLETE_MOVIE_DATABASE;
 
@@ -19,68 +20,115 @@ import MementoSEOFAQSection from './MementoSEOFAQSection';
 import ShutterIslandSEOFAQSection from './ShutterIslandSEOFAQSection';
 import SurvivalSEOFAQSection from './SurvivalSEOFAQSection';
 import DramaSEOFAQSection from './DramaSEOFAQSection';
+import ThrillerSEOFAQSection from './ThrillerSEOFAQSection';
 
-const MovieDetailsSection = React.memo(({ movie, fromMementoCollection, fromShutterIslandCollection, fromInceptionCollection, fromSurvivalCollection, fromDramaCollection }) => {
-
+const MovieDetailsSection = React.memo(({
+  movie,
+  fromMementoCollection,
+  fromShutterIslandCollection,
+  fromInceptionCollection,
+  fromSurvivalCollection,
+  fromDramaCollection,
+  fromThrillerCollection
+}) => {
   if (!movie) {
     console.log('❌ No movie data provided');
     return null;
   }
 
-  // Select movie info from proper collection
-  const movieInfo = fromSurvivalCollection
-    ? SURVIVAL_MOVIE_DATA[movie?.tmdbId]
-    : fromDramaCollection
-    ? DRAMA_MOVIE_DATA[movie?.tmdbId]
-    : COMPLETE_MOVIE_DATA[movie?.tmdbId];
+  const safeLookup = (collection, id) => (collection && id && collection[id]) || null;
 
-  // Title fallback
+  const movieInfo = fromThrillerCollection
+    ? safeLookup(THRILLER_MOVIE_DATA, movie.tmdbId)
+    : fromSurvivalCollection
+    ? safeLookup(SURVIVAL_MOVIE_DATA, movie.tmdbId)
+    : fromDramaCollection
+    ? safeLookup(DRAMA_MOVIE_DATA, movie.tmdbId)
+    : safeLookup(COMPLETE_MOVIE_DATA, movie.tmdbId);
+
   const title = movie.Title || (movieInfo && movieInfo.title) || 'Unknown Title';
 
-  // Fallback function to get movie data by title if missing in collection
-  const getMovieSpecificData = (title) => {
-    const t = title.toLowerCase();
-    return {
-      mindBendingIndex: 85, complexityLevel: 'HIGH', dominantColor: '#ca8a04', rating: movie.imdbRating || 7.5, director: movie.Director || 'Acclaimed Director',
-      scenes: [
-        { time: 20, intensity: 60, label: 'Opening', color: '#92400e' },
-        { time: 50, intensity: 75, label: 'Conflict', color: '#ca8a04' },
-        { time: 80, intensity: 85, label: 'Climax', color: '#eab308' },
-        { time: 100, intensity: 90, label: 'Resolution', color: '#facc15' },
-        { time: 120, intensity: 95, label: 'Revelation', color: '#fde047' }
-      ],
-      dna: { "Mystery": 60, "Thriller": 30, "Drama": 10 },
-      cast: ['Lead Actor', 'Supporting Cast'],
-      boxOffice: 'N/A', budget: 'N/A'
-    };
-  };
+  const getMovieSpecificData = (title) => ({
+    mindBendingIndex: 85,
+    complexityLevel: 'HIGH',
+    dominantColor: '#ca8a04',
+    rating: movie.imdbRating || 7.5,
+    director: movie.Director || 'Acclaimed Director',
+    scenes: [
+      { time: 20, intensity: 60, label: 'Opening', color: '#92400e' },
+      { time: 50, intensity: 75, label: 'Conflict', color: '#ca8a04' },
+      { time: 80, intensity: 85, label: 'Climax', color: '#eab308' },
+      { time: 100, intensity: 90, label: 'Resolution', color: '#facc15' },
+      { time: 120, intensity: 95, label: 'Revelation', color: '#fde047' }
+    ],
+    dna: { Mystery: 60, Thriller: 30, Drama: 10 },
+    cast: ['Lead Actor', 'Supporting Cast'],
+    boxOffice: 'N/A',
+    budget: 'N/A'
+  });
 
   const safeMovieInfo = movieInfo || getMovieSpecificData(title);
 
-  // 🔥 SENSITIVE SCENES EXTRACTION - Gets from drama data if available, otherwise falls back
-  const sensitiveScenes = fromDramaCollection && safeMovieInfo?.sensitiveScenes
-    ? safeMovieInfo.sensitiveScenes
-    : (SENSITIVE_TIMELINES[movie?.tmdbId]?.scenes || []);
+  const sensitiveScenes =
+    fromDramaCollection && safeMovieInfo?.sensitiveScenes
+      ? safeMovieInfo.sensitiveScenes
+      : SENSITIVE_TIMELINES[movie?.tmdbId]?.scenes || [];
 
-  // Accurate runtime by title fallback
   const getAccurateRuntime = (title) => {
     const runtimeData = {
-      'mr. nobody': '141 min', 'primer': '77 min', 'synecdoche, new york': '124 min', 'mulholland drive': '147 min',
-      'predestination': '97 min', 'coherence': '89 min', 'donnie darko': '113 min', 'enemy': '90 min',
-      'the fountain': '96 min', 'shutter island': '138 min', 'the usual suspects': '106 min',
-      'memento': '113 min', 'inception': '148 min'
+      se7en: '127 min',
+      prisoners: '153 min',
+      'no country for old men': '122 min',
+      'the silence of the lambs': '118 min',
+      'memories of murder': '132 min',
+      'mystic river': '138 min',
+      'the departed': '151 min',
+      'wind river': '107 min',
+      'gone girl': '149 min',
+      'the game': '129 min',
+      'mr. nobody': '141 min',
+      primer: '77 min',
+      'synecdoche, new york': '124 min',
+      'mulholland drive': '147 min',
+      predestination: '97 min',
+      coherence: '89 min',
+      'donnie darko': '113 min',
+      enemy: '90 min',
+      'the fountain': '96 min',
+      'shutter island': '138 min',
+      'the usual suspects': '106 min',
+      memento: '113 min',
+      inception: '148 min'
     };
     const titleKey = title.toLowerCase().replace(/[^\w\s]/g, '').trim();
     return runtimeData[titleKey] || safeMovieInfo.runtime || movie.Runtime || '120 min';
   };
 
-  // Age rating fallback
   const getAgeRating = (title) => {
     const ageRatings = {
-      'mr. nobody': 'R', 'primer': 'PG-13', 'synecdoche, new york': 'R', 'mulholland drive': 'R',
-      'predestination': 'R', 'coherence': 'Not Rated', 'donnie darko': 'R', 'enemy': 'R',
-      'the fountain': 'PG-13', 'shutter island': 'R', 'the usual suspects': 'R',
-      'memento': 'R', 'inception': 'PG-13'
+      se7en: 'R',
+      prisoners: 'R',
+      'no country for old men': 'R',
+      'the silence of the lambs': 'R',
+      'memories of murder': 'R',
+      'mystic river': 'R',
+      'the departed': 'R',
+      'wind river': 'R',
+      'gone girl': 'R',
+      'the game': 'R',
+      'mr. nobody': 'R',
+      primer: 'PG-13',
+      'synecdoche, new york': 'R',
+      'mulholland drive': 'R',
+      predestination: 'R',
+      coherence: 'Not Rated',
+      'donnie darko': 'R',
+      enemy: 'R',
+      'the fountain': 'PG-13',
+      'shutter island': 'R',
+      'the usual suspects': 'R',
+      memento: 'R',
+      inception: 'PG-13'
     };
     const titleKey = title.toLowerCase().replace(/[^\w\s]/g, '').trim();
     return ageRatings[titleKey] || safeMovieInfo.ageRating || movie.Rated || 'R';
@@ -91,97 +139,172 @@ const MovieDetailsSection = React.memo(({ movie, fromMementoCollection, fromShut
   const year = movie.Year || movie.year || '20XX';
   const runtime = getAccurateRuntime(title);
   const ageRating = getAgeRating(title);
-
-  const quote = fromSurvivalCollection
-    ? (SURVIVAL_QUOTES[movie.tmdbId] || '')
-    : (STRATEGIC_QUOTES[movie.tmdbId] || '');
-
-  const displayIndex = fromSurvivalCollection
-    ? (safeMovieInfo.survivabilityIndex || safeMovieInfo.mindBendingIndex || 85)
-    : (safeMovieInfo.mindBendingIndex || 85);
-
-  // 🔥 FOR DRAMA COLLECTION: USE EMOTIONAL INTENSITY INSTEAD
-  const scoreValue = fromDramaCollection ? (movie.emotionalIntensity || safeMovieInfo.emotionalIntensity || 75) : displayIndex;
-
-  const complexityLevel = safeMovieInfo.complexityLevel || 'HIGH';
   const cast = safeMovieInfo.cast?.join(', ') || '';
   const boxOffice = safeMovieInfo.boxOffice || 'N/A';
   const budget = safeMovieInfo.budget || 'N/A';
   const rating = safeMovieInfo.rating || '7.5';
 
-  // Color helper functions as you had
+  const quote = fromThrillerCollection
+    ? THRILLER_QUOTES?.[movie.tmdbId] || ''
+    : fromSurvivalCollection
+    ? SURVIVAL_QUOTES?.[movie.tmdbId] || ''
+    : STRATEGIC_QUOTES?.[movie.tmdbId] || '';
+
+  const displayIndex = fromThrillerCollection
+    ? safeMovieInfo.suspenseIndex || safeMovieInfo.mindBendingIndex || 85
+    : fromSurvivalCollection
+    ? safeMovieInfo.survivabilityIndex || safeMovieInfo.mindBendingIndex || 85
+    : safeMovieInfo.mindBendingIndex || 85;
+
+  const scoreValue = fromDramaCollection
+    ? movie.emotionalIntensity || safeMovieInfo.emotionalIntensity || 75
+    : fromThrillerCollection
+    ? movie.suspenseIntensity || safeMovieInfo.suspenseIntensity || displayIndex
+    : displayIndex;
+
+  const complexityLevel = safeMovieInfo.complexityLevel || 'HIGH';
+
   const getComplexityColor = (level) => {
     if (fromDramaCollection) {
-        switch(level) {
-        case 'EXTREME': return '#eab308';
-        case 'HIGH': return '#facc15';
-        case 'MEDIUM': return '#fde047';
-        default: return '#6b7280';
+      switch (level) {
+        case 'EXTREME':
+          return '#eab308';
+        case 'HIGH':
+          return '#facc15';
+        case 'MEDIUM':
+          return '#fde047';
+        default:
+          return '#6b7280';
+      }
+    }
+    if (fromThrillerCollection) {
+      switch (level) {
+        case 'EXTREME':
+          return '#ef4444';
+        case 'HIGH':
+          return '#f87171';
+        case 'MEDIUM':
+          return '#fca5a5';
+        default:
+          return '#6b7280';
       }
     }
     if (fromInceptionCollection) {
-      switch(level) {
-        case 'EXTREME': return '#eab308';
-        case 'HIGH': return '#facc15';
-        case 'MEDIUM': return '#fde047';
-        default: return '#6b7280';
+      switch (level) {
+        case 'EXTREME':
+          return '#eab308';
+        case 'HIGH':
+          return '#facc15';
+        case 'MEDIUM':
+          return '#fde047';
+        default:
+          return '#6b7280';
       }
     }
     if (fromShutterIslandCollection) {
-     switch(level) {
-        case 'EXTREME': return '#eab308';
-        case 'HIGH': return '#facc15';
-        case 'MEDIUM': return '#fde047';
-        default: return '#6b7280';
+      switch (level) {
+        case 'EXTREME':
+          return '#eab308';
+        case 'HIGH':
+          return '#facc15';
+        case 'MEDIUM':
+          return '#fde047';
+        default:
+          return '#6b7280';
       }
     }
-     switch(level) {
-        case 'EXTREME': return '#eab308';
-        case 'HIGH': return '#facc15';
-        case 'MEDIUM': return '#fde047';
-        default: return '#6b7280';
+    switch (level) {
+      case 'EXTREME':
+        return '#eab308';
+      case 'HIGH':
+        return '#facc15';
+      case 'MEDIUM':
+        return '#fde047';
+      default:
+        return '#6b7280';
     }
   };
 
   const getAgeRatingColor = (rating) => {
-    switch(rating) {
-      case 'G': return '#22c55e';
-      case 'PG': return '#3b82f6';
-      case 'PG-13': return '#f59e0b';
-      case 'R': return '#ef4444';
-      case 'NC-17': return '#7c2d12';
-      default: return '#6b7280';
+    switch (rating) {
+      case 'G':
+        return '#22c55e';
+      case 'PG':
+        return '#3b82f6';
+      case 'PG-13':
+        return '#f59e0b';
+      case 'R':
+        return '#ef4444';
+      case 'NC-17':
+        return '#7c2d12';
+      default:
+        return '#6b7280';
     }
   };
 
-  // Description text
   const getUniqueDescription = () => {
     const t = title.toLowerCase();
 
+    if (fromThrillerCollection && safeMovieInfo?.synopsis) return safeMovieInfo.synopsis;
     if (fromSurvivalCollection && safeMovieInfo?.synopsis) return safeMovieInfo.synopsis;
     if (fromDramaCollection && safeMovieInfo?.synopsis) return safeMovieInfo.synopsis;
 
-    // Inception collection descriptions
-    if (t.includes('enemy')) return "A quiet professor discovers his exact double living a different life in the same city. Their obsession with each other fractures reality in disturbing ways. Gyllenhaal's dual performance explores the dark side of identity in Villeneuve's psychological maze.";
-    if (t.includes('primer')) return "Two engineers accidentally discover time travel in their garage. As they exploit multiple timelines for personal gain, reality fractures into dangerous paradoxes. A low-budget masterpiece that will melt your brain.";
-    if (t.includes('coherence')) return "Eight friends gather for dinner as a cosmic phenomenon fractures reality into infinite parallel versions. Each decision splits their world into terrifying new possibilities. A mind-bending thriller shot in one house with endless implications.";
-    if (t.includes('donnie darko')) return "A troubled teenager receives visions from a six-foot rabbit predicting the world's end in 28 days. Time travel, destiny, and suburban paranoia collide in this cult classic. Frank demands increasingly dangerous acts as reality unravels.";
-    if (t.includes('fountain')) return "Three parallel love stories across a thousand years explore mortality, obsession, and acceptance through myth and science. A conquistador, scientist, and space traveler all fight the same impossible battle. Aronofsky's visual poetry about death and transcendence.";
+    // Thriller descriptions
+    if (t.includes('se7en'))
+      return "A serial killer uses the seven deadly sins as motives, leading two detectives down a rain-soaked path of moral decay and psychological horror. Each victim represents a sin, and the methodical killer's endgame proves far darker than anticipated. A masterclass in suspense and bleakness.";
+    if (t.includes('prisoners'))
+      return "When his daughter vanishes, a desperate father pursues a suspect across moral boundaries while an obsessive detective hunts for truth. The film explores whether justice and vengeance are ever the same. Brutal, intense, and emotionally devastating.";
+    if (t.includes('no country for old men'))
+      return "A drug deal goes catastrophically wrong, unleashing an unstoppable force of violence across rural Texas. Anton Chigurh becomes an embodiment of fate itself, relentless and unknowable. A neo-Western masterpiece about the clash between old and new violence.";
+    if (t.includes('silence of the lambs'))
+      return "An FBI trainee must enlist the help of an imprisoned cannibal to catch a living serial killer. Dr. Hannibal Lecter's brilliance and charm mask pure evil, creating one of cinema's most iconic dualities. Psychological warfare at its finest.";
+    if (t.includes('memories of murder'))
+      return "Detectives chase a phantom serial killer through 1980s South Korea, where incompetence, corruption, and changing police regimes muddy the investigation. The ambiguous ending haunts with its implications about justice and closure.";
+    if (t.includes('mystic river'))
+      return "Childhood friends reunite when a murder strikes their neighborhood, awakening dormant trauma and forcing each to confront guilt, trust, and the nature of justice. A sprawling meditation on pain and how it shapes us.";
+    if (t.includes('the departed'))
+      return "A mole in the Boston police department races against a mole in the mob—each trying to expose the other while navigating loyalty and corruption. Scorsese's direction creates explosive tension across two opposing worlds.";
+    if (t.includes('wind river'))
+      return "A taciturn tracker and an FBI agent investigate a murder on a remote Wyoming reservation where indigenous women vanish with impunity. The film combines forensic rigor with scathing critique of systemic indifference.";
+    if (t.includes('gone girl'))
+      return "A wife's disappearance spirals into media madness and marital deception. Nothing is as it appears—neither the marriage nor the people portrayed in the press. A sharp critique of how society constructs narratives around crime.";
+    if (t.includes('the game'))
+      return "An uptight banker is plunged into an elaborate game that erases the line between performance and reality, leaving him unable to trust anyone or anything. Fincher crafts paranoia into an art form.";
 
-    if (t.includes('synecdoche')) return "A theater director creates a life-sized replica of New York inside a warehouse to stage the most honest play ever conceived. Reality and performance blur as his ambitious project becomes infinite recursion. Kaufman's existential meditation on art and mortality.";
-    if (t.includes('mulholland')) return "A car crash on Mulholland Drive sends an amnesiac woman into the dark heart of Hollywood's dream factory. Lynch weaves dreams and nightmares into a puzzle where nothing is real and everything matters. Identity becomes the ultimate mystery.";
-    if (t.includes('predestination')) return "A temporal agent pursues an elusive criminal who has evaded him through time for years, jumping between decades to prevent crimes before they happen. His final assignment leads him to recruit his younger self for a mission that will determine the fate of humanity. The chase becomes a complex temporal puzzle where past, present, and future collide in ways that challenge the very nature of identity and free will.";
-    if (t.includes('mr. nobody') || t.includes('nobody')) return "The last mortal human recounts the infinite lives he could have lived based on different choices. Every decision creates new realities in this quantum meditation on possibility. Each timeline is equally real and unreal.";
-    if (t.includes('usual suspects')) return "Five criminals meet in a police lineup and plan the perfect heist. But their target leads them into the web of Keyser Söze, a legendary crime lord who may not exist. Nothing is as it seems in this masterpiece of deception where the greatest trick is convincing you it's real.";
-    if (t.includes('memento')) return "A man with short-term memory loss hunts his wife's killer using notes, tattoos, and Polaroid photos as his memory. But in a world where he can't form new memories, how can he trust what he's already forgotten? Nolan's breakthrough thriller told in reverse chronological order.";
-    if (t.includes('inception')) return "Dom Cobb infiltrates dreams to steal secrets from the subconscious. His final job requires the impossible: instead of stealing an idea, he must plant one deep within a target's mind. Dreams within dreams create a labyrinth where reality becomes negotiable and time moves differently on each level.";
-    if (t.includes('shutter island')) return "A U.S. Marshal investigates a disappearance at a remote psychiatric facility where nothing is as it appears. His grip on reality slips as dark experiments surface. The investigation becomes a psychological maze with no exit.";
+    // Inception descriptions
+    if (t.includes('enemy'))
+      return "A quiet professor discovers his exact double living a different life in the same city. Their obsession with each other fractures reality in disturbing ways. Gyllenhaal's dual performance explores the dark side of identity in Villeneuve's psychological maze.";
+    if (t.includes('primer'))
+      return "Two engineers accidentally discover time travel in their garage. As they exploit multiple timelines for personal gain, reality fractures into dangerous paradoxes. A low-budget masterpiece that will melt your brain.";
+    if (t.includes('coherence'))
+      return "Eight friends gather for dinner as a cosmic phenomenon fractures reality into infinite parallel versions. Each decision splits their world into terrifying new possibilities. A mind-bending thriller shot in one house with endless implications.";
+    if (t.includes('donnie darko'))
+      return "A troubled teenager receives visions from a six-foot rabbit predicting the world's end in 28 days. Time travel, destiny, and suburban paranoia collide in this cult classic. Frank demands increasingly dangerous acts as reality unravels.";
+    if (t.includes('fountain'))
+      return "Three parallel love stories across a thousand years explore mortality, obsession, and acceptance through myth and science. A conquistador, scientist, and space traveler all fight the same impossible battle. Aronofsky's visual poetry about death and transcendence.";
+    if (t.includes('synecdoche'))
+      return "A theater director creates a life-sized replica of New York inside a warehouse to stage the most honest play ever conceived. Reality and performance blur as his ambitious project becomes infinite recursion. Kaufman's existential meditation on art and mortality.";
+    if (t.includes('mulholland'))
+      return "A car crash on Mulholland Drive sends an amnesiac woman into the dark heart of Hollywood's dream factory. Lynch weaves dreams and nightmares into a puzzle where nothing is real and everything matters. Identity becomes the ultimate mystery.";
+    if (t.includes('predestination'))
+      return "A temporal agent pursues an elusive criminal who has evaded him through time for years. His final assignment leads him to recruit his younger self for a mission that will determine the fate of humanity. The chase becomes a complex temporal puzzle.";
+    if (t.includes('mr. nobody') || t.includes('nobody'))
+      return "The last mortal human recounts the infinite lives he could have lived based on different choices. Every decision creates new realities in this quantum meditation on possibility. Each timeline is equally real and unreal.";
+    if (t.includes('usual suspects'))
+      return "Five criminals meet in a police lineup and plan the perfect heist. But their target leads them into the web of Keyser Söze, a legendary crime lord who may not exist. Nothing is as it seems in this masterpiece of deception.";
+    if (t.includes('memento'))
+      return "A man with short-term memory loss hunts his wife's killer using notes, tattoos, and Polaroid photos as his memory. But in a world where he can't form new memories, how can he trust what he's already forgotten? Nolan's breakthrough thriller told in reverse.";
+    if (t.includes('inception'))
+      return "Dom Cobb infiltrates dreams to steal secrets from the subconscious. His final job requires planting an idea deep within a target's mind. Dreams within dreams create a labyrinth where reality becomes negotiable and time moves differently on each level.";
+    if (t.includes('shutter island'))
+      return "A U.S. Marshal investigates a disappearance at a remote psychiatric facility where nothing is as it appears. His grip on reality slips as dark experiments surface. The investigation becomes a psychological maze with no exit.";
 
-    return safeMovieInfo.synopsis || "A mind-bending exploration of reality where every scene challenges your perception of truth and identity.";
+    return safeMovieInfo.synopsis || "A compelling exploration of truth, identity, and the limits of human understanding.";
   };
 
   const getComplexityScoreTitle = () => {
     if (fromDramaCollection) return 'EMOTIONAL INTENSITY SCORE';
+    if (fromThrillerCollection) return 'SUSPENSE INTENSITY SCORE';
     if (fromSurvivalCollection) return 'SURVIVAL INTENSITY SCORE';
     if (fromInceptionCollection) return 'MIND-BENDING COMPLEXITY SCORE';
     if (fromShutterIslandCollection) return 'PSYCHOLOGICAL COMPLEXITY SCORE';
@@ -191,6 +314,7 @@ const MovieDetailsSection = React.memo(({ movie, fromMementoCollection, fromShut
 
   const getComplexityIndexLabel = () => {
     if (fromDramaCollection) return 'EMOTIONAL INTENSITY';
+    if (fromThrillerCollection) return 'SUSPENSE INDEX';
     if (fromSurvivalCollection) return 'SURVIVABILITY INDEX';
     if (fromInceptionCollection) return 'MIND-BENDING INDEX';
     if (fromShutterIslandCollection) return 'PSYCHOLOGICAL INDEX';
@@ -200,6 +324,7 @@ const MovieDetailsSection = React.memo(({ movie, fromMementoCollection, fromShut
 
   const getComplexityLevelLabel = () => {
     if (fromDramaCollection) return 'EMOTIONAL RESONANCE LEVEL';
+    if (fromThrillerCollection) return 'SUSPENSE INTENSITY LEVEL';
     if (fromSurvivalCollection) return 'SURVIVAL INTENSITY LEVEL';
     if (fromInceptionCollection) return 'COGNITIVE COMPLEXITY LEVEL';
     if (fromShutterIslandCollection) return 'PSYCHOLOGICAL DISTORTION LEVEL';
@@ -209,44 +334,72 @@ const MovieDetailsSection = React.memo(({ movie, fromMementoCollection, fromShut
 
   const getComplexityDescription = () => {
     if (fromDramaCollection) {
-      if (scoreValue >= 90) return "A profoundly moving emotional journey that reaches the deepest corners of human experience, leaving lasting emotional resonance.";
-      if (scoreValue >= 80) return "Intensely emotional narrative with powerful character moments and deeply affecting human connections throughout.";
-      if (scoreValue >= 70) return "Thoughtfully crafted emotional story with genuine heart and compelling human drama that touches the soul.";
-      return "Accessible emotional narrative with authentic feeling and relatable human moments throughout.";
+      if (scoreValue >= 90)
+        return 'A profoundly moving emotional journey that reaches the deepest corners of human experience, leaving lasting emotional resonance.';
+      if (scoreValue >= 80)
+        return 'Intensely emotional narrative with powerful character moments and deeply affecting human connections throughout.';
+      if (scoreValue >= 70)
+        return 'Thoughtfully crafted emotional story with genuine heart and compelling human drama that touches the soul.';
+      return 'Accessible emotional narrative with authentic feeling and relatable human moments throughout.';
+    }
+
+    if (fromThrillerCollection) {
+      if (scoreValue >= 90)
+        return 'An absolutely brutal and relentless suspense masterpiece that dominates psychologically, leaving viewers shaken and questioning morality.';
+      if (scoreValue >= 80)
+        return 'Intensely suspenseful thriller with shocking twists, psychological manipulation, and nerve-wracking tension throughout.';
+      if (scoreValue >= 70)
+        return 'Gripping thriller with compelling mysteries, tense moments, and engaging narrative that keeps viewers guessing.';
+      return 'Accessible thriller with genuine suspense and engaging mystery elements that reward careful viewing.';
     }
 
     if (fromSurvivalCollection) {
-      if (scoreValue >= 90) return "An extraordinary survival experience that pushes human endurance to absolute limits, showcasing unbreakable determination.";
-      if (scoreValue >= 80) return "Intense survival narrative with brutal challenges testing physical and mental resilience throughout.";
-      if (scoreValue >= 70) return "Compelling survival story with engaging life-or-death stakes and authentic human perseverance.";
-      return "Accessible survival drama with genuine tension and relatable human struggle against the odds.";
+      if (scoreValue >= 90)
+        return 'An extraordinary survival experience that pushes human endurance to absolute limits, showcasing unbreakable determination.';
+      if (scoreValue >= 80)
+        return 'Intense survival narrative with brutal challenges testing physical and mental resilience throughout.';
+      if (scoreValue >= 70)
+        return 'Compelling survival story with engaging life-or-death stakes and authentic human perseverance.';
+      return 'Accessible survival drama with genuine tension and relatable human struggle against the odds.';
     }
 
     if (fromInceptionCollection) {
-      if (scoreValue >= 90) return "A transcendent masterpiece that redefines reality-bending storytelling, requiring multiple viewings to fully grasp the layered complexity.";
-      if (scoreValue >= 80) return "Sophisticated mind-bending narrative with advanced reality-questioning elements and identity complexity throughout.";
-      if (scoreValue >= 70) return "Thoughtfully complex reality-bending story with engaging perception-altering elements and philosophical depth.";
-      return "Accessible mind-bending complexity with subtle reality-questioning elements that reward careful viewing.";
+      if (scoreValue >= 90)
+        return 'A transcendent masterpiece that redefines reality-bending storytelling, requiring multiple viewings to fully grasp the layered complexity.';
+      if (scoreValue >= 80)
+        return 'Sophisticated mind-bending narrative with advanced reality-questioning elements and identity complexity throughout.';
+      if (scoreValue >= 70)
+        return 'Thoughtfully complex reality-bending story with engaging perception-altering elements and philosophical depth.';
+      return 'Accessible mind-bending complexity with subtle reality-questioning elements that reward careful viewing.';
     }
 
     if (fromShutterIslandCollection) {
-      if (scoreValue >= 90) return "A transcendent masterpiece that redefines psychological storytelling, requiring multiple viewings for complete comprehension.";
-      if (scoreValue >= 80) return "Sophisticated psychological manipulation with advanced reality-questioning elements and identity complexity.";
-      if (scoreValue >= 70) return "Thoughtfully complex psychological narrative with engaging mind-bending elements throughout.";
-      return "Accessible psychological complexity with subtle reality-questioning elements that reward careful viewing.";
+      if (scoreValue >= 90)
+        return 'A transcendent masterpiece that redefines psychological storytelling, requiring multiple viewings for complete comprehension.';
+      if (scoreValue >= 80)
+        return 'Sophisticated psychological manipulation with advanced reality-questioning elements and identity complexity.';
+      if (scoreValue >= 70)
+        return 'Thoughtfully complex psychological narrative with engaging mind-bending elements throughout.';
+      return 'Accessible psychological complexity with subtle reality-questioning elements that reward careful viewing.';
     }
 
     if (fromMementoCollection) {
-      if (scoreValue >= 90) return "A transcendent masterpiece that redefines memory-based storytelling, requiring multiple viewings for complete comprehension.";
-      if (scoreValue >= 80) return "Sophisticated memory manipulation with advanced identity-questioning elements and temporal complexity.";
-      if (scoreValue >= 70) return "Thoughtfully complex memory narrative with engaging identity-bending elements throughout.";
-      return "Accessible memory complexity with subtle identity-questioning elements that reward careful viewing.";
+      if (scoreValue >= 90)
+        return 'A transcendent masterpiece that redefines memory-based storytelling, requiring multiple viewings for complete comprehension.';
+      if (scoreValue >= 80)
+        return 'Sophisticated memory manipulation with advanced identity-questioning elements and temporal complexity.';
+      if (scoreValue >= 70)
+        return 'Thoughtfully complex memory narrative with engaging identity-bending elements throughout.';
+      return 'Accessible memory complexity with subtle identity-questioning elements that reward careful viewing.';
     }
 
-    if (scoreValue >= 90) return "A transcendent masterpiece that redefines narrative complexity, requiring multiple viewings for complete comprehension.";
-    if (scoreValue >= 80) return "Sophisticated cinematic storytelling with advanced non-linear elements and reality-bending concepts.";
-    if (scoreValue >= 70) return "Thoughtfully complex narrative structure with engaging mind-bending elements throughout.";
-    return "Accessible complexity with subtle mind-bending elements that reward careful viewing.";
+    if (scoreValue >= 90)
+      return 'A transcendent masterpiece that redefines narrative complexity, requiring multiple viewings for complete comprehension.';
+    if (scoreValue >= 80)
+      return 'Sophisticated cinematic storytelling with advanced non-linear elements and reality-bending concepts.';
+    if (scoreValue >= 70)
+      return 'Thoughtfully complex narrative structure with engaging mind-bending elements throughout.';
+    return 'Accessible complexity with subtle mind-bending elements that reward careful viewing.';
   };
 
   return (
@@ -315,9 +468,7 @@ const MovieDetailsSection = React.memo(({ movie, fromMementoCollection, fromShut
             <h3 className="text-2xl font-light text-yellow-300">The Experience</h3>
           </div>
 
-          <p className="text-gray-200 leading-relaxed text-lg">
-            {getUniqueDescription()}
-          </p>
+          <p className="text-gray-200 leading-relaxed text-lg">{getUniqueDescription()}</p>
         </div>
       </motion.div>
 
@@ -372,39 +523,74 @@ const MovieDetailsSection = React.memo(({ movie, fromMementoCollection, fromShut
         transition={{ duration: 0.8 }}
         whileHover={{ scale: 1.01 }}
       >
-        <div className={`absolute top-2 left-2 sm:top-4 sm:left-4 w-3 h-3 sm:w-5 sm:h-5 border-t-2 border-l-2 ${
-          fromDramaCollection ? 'border-red-400/40' :
-          fromInceptionCollection ? 'border-yellow-400/40' :
-          fromShutterIslandCollection ? 'border-green-400/40' :
-          'border-yellow-400/40'
-        }`}></div>
-        <div className={`absolute top-2 right-2 sm:top-4 sm:right-4 w-3 h-3 sm:w-5 sm:h-5 border-t-2 border-r-2 ${
-          fromDramaCollection ? 'border-red-400/40' :
-          fromInceptionCollection ? 'border-yellow-400/40' :
-          fromShutterIslandCollection ? 'border-green-400/40' :
-          'border-yellow-400/40'
-        }`}></div>
-        <div className={`absolute bottom-2 left-2 sm:bottom-4 sm:left-4 w-3 h-3 sm:w-5 sm:h-5 border-b-2 border-l-2 ${
-          fromDramaCollection ? 'border-red-400/40' :
-          fromInceptionCollection ? 'border-yellow-400/40' :
-          fromShutterIslandCollection ? 'border-green-400/40' :
-          'border-yellow-400/40'
-        }`}></div>
-        <div className={`absolute bottom-2 right-2 sm:bottom-4 sm:right-4 w-3 h-3 sm:w-5 sm:h-5 border-b-2 border-r-2 ${
-          fromDramaCollection ? 'border-red-400/40' :
-          fromInceptionCollection ? 'border-yellow-400/40' :
-          fromShutterIslandCollection ? 'border-green-400/40' :
-          'border-yellow-400/40'
-        }`}></div>
+        <div
+          className={`absolute top-2 left-2 sm:top-4 sm:left-4 w-3 h-3 sm:w-5 sm:h-5 border-t-2 border-l-2 ${
+            fromDramaCollection
+              ? 'border-red-400/40'
+              : fromThrillerCollection
+              ? 'border-red-400/40'
+              : fromInceptionCollection
+              ? 'border-yellow-400/40'
+              : fromShutterIslandCollection
+              ? 'border-green-400/40'
+              : 'border-yellow-400/40'
+          }`}
+        />
+        <div
+          className={`absolute top-2 right-2 sm:top-4 sm:right-4 w-3 h-3 sm:w-5 sm:h-5 border-t-2 border-r-2 ${
+            fromDramaCollection
+              ? 'border-red-400/40'
+              : fromThrillerCollection
+              ? 'border-red-400/40'
+              : fromInceptionCollection
+              ? 'border-yellow-400/40'
+              : fromShutterIslandCollection
+              ? 'border-green-400/40'
+              : 'border-yellow-400/40'
+          }`}
+        />
+        <div
+          className={`absolute bottom-2 left-2 sm:bottom-4 sm:left-4 w-3 h-3 sm:w-5 sm:h-5 border-b-2 border-l-2 ${
+            fromDramaCollection
+              ? 'border-red-400/40'
+              : fromThrillerCollection
+              ? 'border-red-400/40'
+              : fromInceptionCollection
+              ? 'border-yellow-400/40'
+              : fromShutterIslandCollection
+              ? 'border-green-400/40'
+              : 'border-yellow-400/40'
+          }`}
+        />
+        <div
+          className={`absolute bottom-2 right-2 sm:bottom-4 sm:right-4 w-3 h-3 sm:w-5 sm:h-5 border-b-2 border-r-2 ${
+            fromDramaCollection
+              ? 'border-red-400/40'
+              : fromThrillerCollection
+              ? 'border-red-400/40'
+              : fromInceptionCollection
+              ? 'border-yellow-400/40'
+              : fromShutterIslandCollection
+              ? 'border-green-400/40'
+              : 'border-yellow-400/40'
+          }`}
+        />
 
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 sm:mb-8 gap-4 sm:gap-6">
           <div className="flex items-center gap-4">
-            <Star className={`w-6 h-6 ${
-              fromDramaCollection ? 'text-red-400' :
-              fromInceptionCollection ? 'text-yellow-400' :
-              fromShutterIslandCollection ? 'text-green-400' :
-              'text-green-400'
-            }`} />
+            <Star
+              className={`w-6 h-6 ${
+                fromDramaCollection
+                  ? 'text-red-400'
+                  : fromThrillerCollection
+                  ? 'text-red-400'
+                  : fromInceptionCollection
+                  ? 'text-yellow-400'
+                  : fromShutterIslandCollection
+                  ? 'text-green-400'
+                  : 'text-green-400'
+              }`}
+            />
             <h3 className="text-2xl font-light text-gray-200 tracking-wide uppercase">
               {getComplexityScoreTitle()}
             </h3>
@@ -413,9 +599,7 @@ const MovieDetailsSection = React.memo(({ movie, fromMementoCollection, fromShut
           <div className="flex items-center gap-6 sm:gap-8">
             <div className="text-right">
               <div className="text-3xl sm:text-4xl font-extralight mb-1 tracking-wider text-gray-200">{scoreValue}</div>
-              <div className="text-xs text-gray-400 font-light tracking-wide uppercase">
-                {getComplexityIndexLabel()}
-              </div>
+              <div className="text-xs text-gray-400 font-light tracking-wide uppercase">{getComplexityIndexLabel()}</div>
             </div>
             <div className="text-right">
               <div className="text-3xl sm:text-4xl font-extralight mb-1 tracking-wider text-gray-200">{rating}</div>
@@ -427,9 +611,7 @@ const MovieDetailsSection = React.memo(({ movie, fromMementoCollection, fromShut
         <div className="space-y-4 sm:space-y-6">
           <div>
             <div className="flex items-center justify-between mb-2 sm:mb-3">
-              <span className="text-sm text-gray-300 font-light tracking-wider uppercase">
-                {getComplexityLevelLabel()}
-              </span>
+              <span className="text-sm text-gray-300 font-light tracking-wider uppercase">{getComplexityLevelLabel()}</span>
               <span
                 className="text-sm font-light px-3 py-1 sm:px-4 sm:py-2 rounded-lg border backdrop-blur-sm tracking-wider uppercase"
                 style={{
@@ -448,42 +630,49 @@ const MovieDetailsSection = React.memo(({ movie, fromMementoCollection, fromShut
                 style={{ backgroundColor: getComplexityColor(complexityLevel) }}
                 initial={{ width: 0 }}
                 animate={{ width: `${scoreValue}%` }}
-                transition={{ duration: 2, delay: 0.5, ease: "easeOut" }}
+                transition={{ duration: 2, delay: 0.5, ease: 'easeOut' }}
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent animate-pulse"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent animate-pulse" />
               </motion.div>
 
               <div className="absolute -top-1 sm:-top-2 left-0 w-full flex justify-between">
-                {[25, 50, 75].map(mark => (
+                {[25, 50, 75].map((mark) => (
                   <div
                     key={mark}
                     className={`w-0.5 sm:w-1 h-4 sm:h-7 rounded-full ${
-                      fromDramaCollection ? 'bg-pink-400/30' :
-                      fromInceptionCollection ? 'bg-yellow-400/30' :
-                      fromShutterIslandCollection ? 'bg-green-400/30' :
-                      'bg-yellow-400/30'
+                      fromDramaCollection
+                        ? 'bg-pink-400/30'
+                        : fromThrillerCollection
+                        ? 'bg-red-400/30'
+                        : fromInceptionCollection
+                        ? 'bg-yellow-400/30'
+                        : fromShutterIslandCollection
+                        ? 'bg-green-400/30'
+                        : 'bg-yellow-400/30'
                     }`}
                     style={{ left: `${mark}%` }}
-                  ></div>
+                  />
                 ))}
               </div>
             </div>
 
-            <p className="text-gray-300/90 text-sm font-light leading-relaxed tracking-wide mt-3">
-              {getComplexityDescription()}
-            </p>
+            <p className="text-gray-300/90 text-sm font-light leading-relaxed tracking-wide mt-3">{getComplexityDescription()}</p>
           </div>
         </div>
       </motion.div>
 
-      {/* 🔥 PASS SENSITIVE SCENES TO THE COMPONENT */}
+      {/* Sensitive content timeline */}
       <SensitiveContentTimelineSection movie={movie} sensitiveScenes={sensitiveScenes} />
-      
+
+      {/* Graphs and comment section */}
       <EnhancedIntensityGraph scenes={safeMovieInfo.scenes} dominantColor={safeMovieInfo.dominantColor} />
       <StrategicDNAHelix dna={safeMovieInfo.dna} dominantColor={safeMovieInfo.dominantColor} />
       <RealCommentsRatingSection movie={movie} />
 
-      {fromSurvivalCollection ? (
+      {/* FAQ Section */}
+      {fromThrillerCollection ? (
+        <ThrillerSEOFAQSection movie={movie} />
+      ) : fromSurvivalCollection ? (
         <SurvivalSEOFAQSection movie={movie} />
       ) : fromDramaCollection ? (
         <DramaSEOFAQSection movie={movie} />

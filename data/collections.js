@@ -185,7 +185,7 @@ export const COLLECTIONS = {
       'tt9770150',   // Marriage Story (2019)
       'tt1677720',   // The Social Network (2010)
       'tt9419184',   // The Boy Who Harnessed the Wind (2019)
-      'tt7291200',  // The Power of the Dog (2021)
+      'tt7291200',   // The Power of the Dog (2021)
       'tt2156584',   // Mudbound (2017)
       'tt0454921',   // The Pursuit of Happyness (2006)
       'tt10118744'   // Minari (2020)
@@ -225,6 +225,47 @@ export const COLLECTIONS = {
         numberOfMovies: 10
       }
     }
+  },
+
+  // 🩸 BEST THRILLER MOVIES COLLECTION
+  'best-thriller-movies': {
+    slug: 'best-thriller-movies',
+    title: 'The 10 Best Thriller Movies of All Time',
+    description: 'Ranked by Intensity - The Filmiway Standard',
+    movies: [
+      'tt0114369',  // Se7en (1995)
+      'tt1392214',  // Prisoners (2013)
+      'tt0477348',  // No Country for Old Men (2007)
+      'tt0102926',  // The Silence of the Lambs (1991)
+      'tt0353969',  // Memories of Murder (2003)
+      'tt0327056',  // Mystic River (2003)
+      'tt0407887',  // The Departed (2006)
+      'tt5362988',  // Wind River (2017)
+      'tt2267998',  // Gone Girl (2014)
+      'tt0119174'   // The Game (1997)
+    ],
+    badges: [
+      { label: 'Psychological', desc: 'Mind-bending intensity' },
+      { label: 'Critically Acclaimed', desc: 'Highly ranked thrillers' },
+      { label: 'Masterful Storytelling', desc: 'Suspense and tension' }
+    ],
+    metaTitle: 'Best Thriller Movies of All Time (2025) | Intensity Ranked',
+    metaDescription: 'Explore the top 10 thriller movies as ranked by intensity and cinematic mastery. Experience psychological nightmares, emotional brutality, and cerebral manipulation.',
+    metaKeywords: 'best thriller movies, psychological thrillers, suspense movies, top thriller films, best intense thrillers, 2025 thriller rankings',
+    theme: 'red',
+    primaryColor: '#b91c1c',
+    secondaryColor: '#dc2626',
+    accentColor: '#991b1b',
+    emoji: '🩸',
+    category: 'thriller',
+    canonicalUrl: 'https://filmiway.com/collection/best-thriller-movies',
+    seo: {
+      title: 'Best Thriller Movies of All Time | Filmiway',
+      description: 'The definitive list of top thriller films ranked by intensity and psychological depth, curated by Filmiway.',
+      keywords: 'thriller movies, intense thrillers, psychological suspense movies, best thriller films, thriller rankings',
+      canonicalUrl: 'https://filmiway.com/collection/best-thriller-movies',
+      ogImage: 'https://filmiway.com/images/thriller-movies-collection-og.jpg'
+    }
   }
 };
 
@@ -234,4 +275,5 @@ export const getFeaturedCollections = () => Object.values(COLLECTIONS).filter(co
 export const getCollectionsByCategory = (category) => Object.values(COLLECTIONS).filter(collection => collection.category === category);
 export const getSurvivalCollection = () => COLLECTIONS['best-survival-movies'];
 export const getNetflixDramaCollection = () => COLLECTIONS['best-drama-movies-on-netflix'];
+export const getThrillerCollection = () => COLLECTIONS['best-thriller-movies'];
 export default COLLECTIONS;

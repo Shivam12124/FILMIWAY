@@ -1,3 +1,5 @@
+// pages/movies/thriller/[id].js
+
 import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
@@ -7,102 +9,89 @@ import { Play, X, Award, Film, ChevronLeft } from 'lucide-react';
 import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
 import TMDBAttribution from '../../../components/TMDBAttribution';
-import { DRAMA_MOVIES } from '../../../utils/dramaMovieData';
 
-
-const mobileHeroCSS = `
-@media (max-width: 767px) {
-  .mobile-hero-row {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    width: 100vw;
-    max-width: 100vw;
-    gap: 10px;
-    margin: 0;
-    padding: 0 8px;
-  }
-  .mobile-hero-poster {
-    width: 38vw;
-    min-width: 106px;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 3px 14px #0007;
-    margin: 0;
-    flex-shrink: 0;
-  }
-  .mobile-hero-poster img {
-    width: 100%;
-    height: auto;
-    border-radius: 12px;
-    display: block;
-  }
-  .mobile-drama-card {
-    background: #19181c;
-    border-radius: 12px;
-    box-shadow: 0 2px 12px #0006;
-    margin: 0;
-    flex: 1;
-    border-left: 4px solid #E50914;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    padding: 10px 10px 10px 12px;
-    min-height: 110px;
-    position: relative;
-  }
-  .mobile-drama-row {
-    display: flex;
-    align-items: flex-start;
-    gap: 7px;
-  }
-  .mobile-drama-icon {
-    min-width: 24px;
-    min-height: 24px;
-    color: #E50914;
-    margin-top: 2px;
-  }
-  .mobile-drama-title {
-    font-size: 15px;
-    font-weight: bold;
-    color: #e50914;
-    margin-bottom: 1px;
-    line-height: 1.12;
-  }
-  .mobile-drama-desc {
-    font-size: 12.3px;
-    color: #ededed;
-    line-height: 1.36;
-    margin-top: 2px;
-  }
-}
-`;
+// Import thriller movies data and routes
+import { THRILLER_MOVIES } from '../../../utils/thrillerMovieData';
 
 const COLORS = {
-  accent: '#E50914',
-  accentLight: '#F40612',
-  bgPrimary: '#0B0B0C',
-  bgCard: 'rgba(55, 65, 81, 0.3)',
+  accent: '#DC143C',
+  accentLight: '#F06A6A',
+  bgPrimary: '#100B0D',
+  bgCard: 'rgba(34, 18, 25, 0.7)',
   textPrimary: '#FFFFFF',
-  textSecondary: '#D1D5DB',
-  textMuted: '#9CA3AF',
-  textDisabled: '#6B7280',
-  borderAccent: 'rgba(229, 9, 20, 0.2)',
-  borderLight: 'rgba(107, 114, 128, 0.2)',
+  textSecondary: '#DDDDDD',
+  textMuted: '#888888',
+  borderAccent: '#DC143C33',
+  borderLight: '#66101F33',
 };
 
-const DRAMA_INSIGHTS = {
-  '1917': 'Filmed to appear as one continuous shot, 1917 immerses viewers in the visceral experience of WWI. The technical achievement matches emotional weight - every minute is a race against death.',
-  'Roma': "Alfonso Cuarón's love letter to his childhood nanny captures intimate family dynamics against Mexico City's political turmoil. Shot in stunning black and white, it finds beauty in everyday moments.",
-  'The Irishman': "Scorsese's sprawling crime epic spans decades of American mob history. De-aging technology serves a meditation on aging, loyalty, and the cost of a life in organized crime.",
-  'Marriage Story': "Noah Baumbach dissects divorce with unflinching honesty. Adam Driver and Scarlett Johansson deliver career-defining performances in this raw portrait of love's dissolution.",
-  'The Social Network': "David Fincher transforms Facebook's creation into a Shakespearean drama of ambition and betrayal. Aaron Sorkin's razor-sharp dialogue crackles with intelligence.",
-  'The Boy Who Harnessed the Wind': "Chiwetel Ejiofor's directorial debut tells the inspiring true story of a Malawian boy who built a windmill to save his village from famine using library books and scrap.",
-  'The Power of the Dog': 'Jane Campion returns with a slow-burn psychological Western. Benedict Cumberbatch\'s toxic rancher hides deep secrets in this masterful exploration of repressed desire and masculinity.',
-  'Mudbound': 'Dee Rees crafts a powerful examination of racism in rural Mississippi. Two families - one Black, one white - face parallel struggles as their sons return from WWII.',
-  'The Pursuit of Happyness': 'Will Smith delivers his most vulnerable performance as Chris Gardner, a homeless father fighting to secure his son\'s future. Based on a true story that defined perseverance.',
-  'Minari': "Lee Isaac Chung's semi-autobiographical gem follows a Korean family chasing the American Dream in 1980s Arkansas. Youn Yuh-jung won an Oscar for her unforgettable grandmother role."
-};
+const mobileHeroCSS = `
+  @media (max-width: 767px) {
+    .mobile-hero-row {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      width: 100vw;
+      max-width: 100vw;
+      gap: 10px;
+      margin: 0;
+      padding: 0 8px;
+    }
+    .mobile-hero-poster {
+      width: 38vw;
+      min-width: 106px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 3px 14px #0007;
+      margin: 0;
+      flex-shrink: 0;
+    }
+    .mobile-hero-poster img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      display: block;
+    }
+    .mobile-thriller-card {
+      background: #19181c;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px #0006;
+      margin: 0;
+      flex: 1;
+      border-left: 4px solid #DC143C;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding: 10px 10px 10px 12px;
+      min-height: 110px;
+      position: relative;
+    }
+    .mobile-thriller-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 7px;
+    }
+    .mobile-thriller-icon {
+      min-width: 24px;
+      min-height: 24px;
+      color: #DC143C;
+      margin-top: 2px;
+    }
+    .mobile-thriller-title {
+      font-size: 15px;
+      font-weight: bold;
+      color: #dc143c;
+      margin-bottom: 1px;
+      line-height: 1.12;
+    }
+    .mobile-thriller-desc {
+      font-size: 12.3px;
+      color: #ededed;
+      line-height: 1.36;
+      margin-top: 2px;
+    }
+  }
+`;
 
 const getTMDBImage = (path, size = 'w1280') =>
   path ? `https://image.tmdb.org/t/p/${size}${path}` : undefined;
@@ -115,19 +104,16 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
 
   const bannerImage =
     movieData?.backdrop_path
-      ? getTMDBImage(movieData?.backdrop_path, 'w1280')
-      : movieData?.backdrop ||
-        movie.backdrop ||
-        getTMDBImage(movie?.backdrop_path, 'w1280');
+      ? getTMDBImage(movieData.backdrop_path, 'w1280')
+      : movieData?.backdrop || movie.backdrop || getTMDBImage(movie?.backdrop_path, 'w1280');
 
   const posterImage =
     movieData?.poster_path
-      ? getTMDBImage(movieData?.poster_path, 'w500')
-      : movieData?.poster ||
-        movie.poster ||
-        getTMDBImage(movie?.poster_path, 'w500');
+      ? getTMDBImage(movieData.poster_path, 'w500')
+      : movieData?.poster || movie.poster || getTMDBImage(movie?.poster_path, 'w500');
 
-  const dramaInsight = DRAMA_INSIGHTS[movie.title];
+  // For simplicity, use the movie synopsis as insight
+  const thrillerInsight = movie.synopsis || 'Masterclass suspense thriller movie.';
 
   useEffect(() => {
     if (!isMobile && trailer && !showTrailer && !hasClosedTrailer) {
@@ -166,6 +152,7 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
       transition={{ duration: 0.8 }}
     >
       <style>{mobileHeroCSS}</style>
+
       <div className="relative h-[300px] sm:h-[400px] lg:h-[600px]">
         <AnimatePresence mode="wait">
           {showTrailer && trailer ? (
@@ -213,11 +200,8 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
                     className="object-cover"
                   />
                 ) : (
-                  <div
-                    className="w-full h-full flex items-center justify-center"
-                    style={{ backgroundColor: COLORS.bgCard }}
-                  >
-                    <Film className="w-16 h-16 sm:w-24 sm:h-24" style={{ color: COLORS.textDisabled }} />
+                  <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: COLORS.bgCard }}>
+                    <Film className="w-16 h-16 sm:w-24 sm:h-24" style={{ color: COLORS.textMuted }} />
                   </div>
                 )}
                 <div
@@ -266,10 +250,7 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
                   transition={{ delay: 0.5 }}
                 >
                   <div className="flex items-center gap-2 text-xs sm:text-sm font-medium">
-                    <div
-                      className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full animate-pulse"
-                      style={{ backgroundColor: COLORS.accent }}
-                    ></div>
+                    <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full animate-pulse" style={{ backgroundColor: COLORS.accent }}></div>
                     Trailer in {countdown}s
                   </div>
                 </motion.div>
@@ -278,19 +259,20 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
           )}
         </AnimatePresence>
       </div>
+
       {isMobile ? (
         <div className="mobile-hero-row">
           <div className="mobile-hero-poster">
             <img src={posterImage} alt={`${movie.title} poster`} />
           </div>
-          <div className="mobile-drama-card">
-            <div className="mobile-drama-row">
-              <Award className="mobile-drama-icon" />
+          <div className="mobile-thriller-card">
+            <div className="mobile-thriller-row">
+              <Award className="mobile-thriller-icon" />
               <div>
-                <div className="mobile-drama-title">Why This is Essential Drama</div>
+                <div className="mobile-thriller-title">Why This Thriller is Special</div>
               </div>
             </div>
-            <div className="mobile-drama-desc">{dramaInsight}</div>
+            <div className="mobile-thriller-desc">{thrillerInsight}</div>
           </div>
         </div>
       ) : (
@@ -350,7 +332,7 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
                   </motion.div>
                   <div className="min-w-0 flex-1">
                     <h2 className="text-sm sm:text-base lg:text-xl xl:text-2xl font-bold leading-tight" style={{ color: COLORS.accent }}>
-                      Why This is Essential Drama
+                      Why This Thriller is Special
                     </h2>
                     <p className="text-xs sm:text-sm hidden sm:block" style={{ color: COLORS.textMuted }}>
                       Expert Analysis
@@ -365,7 +347,7 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
                     transition={{ duration: 2, repeat: Infinity }}
                   />
                   <p className="text-xs sm:text-sm lg:text-base xl:text-lg leading-relaxed font-normal break-words" style={{ color: COLORS.textSecondary, lineHeight: '1.8' }}>
-                    {dramaInsight}
+                    {thrillerInsight}
                   </p>
                 </div>
                 <motion.div
@@ -380,15 +362,15 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
           </div>
         </div>
       )}
+      <TMDBAttribution />
     </motion.div>
   );
 };
 
-const DramaBackButton = () => {
+const ThrillerBackButton = () => {
   const handleBackClick = () => {
     if (typeof window !== "undefined") {
-      window.location.href = "/collection/best-drama-movies-on-netflix";
-
+      window.location.href = "/collection/best-thriller-movies";
     }
   };
 
@@ -413,7 +395,7 @@ const DramaBackButton = () => {
   );
 };
 
-const DramaMoviePage = ({ movie }) => {
+const ThrillerMoviePage = ({ movie }) => {
   const [scrollY, setScrollY] = useState(0);
   const [movieData, setMovieData] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
@@ -428,7 +410,7 @@ const DramaMoviePage = ({ movie }) => {
       try {
         setIsLoading(true);
         const response = await fetch(
-          `https://api.themoviedb.org/3/movie/${movie.tmdbId}?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&append_to_response=videos`
+          `https://api.themoviedb.org/3/movie/${movie.tmdbId}?api_key=YOUR_API_KEY&append_to_response=videos`
         );
         const data = await response.json();
         setMovieData(data);
@@ -445,7 +427,8 @@ const DramaMoviePage = ({ movie }) => {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      sessionStorage.setItem("fromDramaCollection", "true");
+      sessionStorage.setItem("fromThrillerCollection", "true");
+      sessionStorage.removeItem("fromDramaCollection");
       sessionStorage.removeItem("fromSurvivalCollection");
       sessionStorage.removeItem("fromInceptionCollection");
       sessionStorage.removeItem("fromMementoCollection");
@@ -477,20 +460,20 @@ const DramaMoviePage = ({ movie }) => {
   return (
     <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
       <Head>
-        <title>{movie.title} ({movie.year}) - {movie.genre} Drama Film | Filmiway</title>
+        <title>{movie.title} ({movie.year}) - {movie.genre} Thriller Film | Filmiway</title>
         <meta name="description" content={`${movie.title} (${movie.year}) - ${movie.synopsis.substring(0, 150)}...`} />
-        <link rel="canonical" href={`https://filmiway.com/movies/netflix/${movie.imdbID}`} />
+        <link rel="canonical" href={`https://filmiway.com/movies/thriller/${movie.imdbID}`} />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
       </Head>
       <div className="absolute inset-0">
         <CinematicBackground />
       </div>
-      <DramaBackButton />
+      <ThrillerBackButton />
       <div className="relative z-10 pt-10 sm:pt-12 lg:pt-16">
         <OptimizedBanner movie={movie} movieData={movieData} trailer={trailer} isMobile={isMobile} />
         <div className="container mx-auto px-0 pb-16 sm:pb-24 lg:pb-32 max-w-7xl">
           <motion.div id="watch" initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.2, duration: 0.8 }} className="space-y-8 sm:space-y-12 px-3 sm:px-4 lg:px-6">
-            <MovieDetailsSection movie={{ ...movie, Title: movie.title }} fromDramaCollection={true} />
+            <MovieDetailsSection movie={{ ...movie, Title: movie.title }} fromThrillerCollection={true} />
           </motion.div>
           <div className="px-3 sm:px-4 lg:px-6">
             <TMDBAttribution />
@@ -502,16 +485,16 @@ const DramaMoviePage = ({ movie }) => {
 };
 
 export async function getStaticPaths() {
-  const paths = DRAMA_MOVIES.map((movie) => ({
+  const paths = THRILLER_MOVIES.map((movie) => ({
     params: { id: movie.imdbID }
   }));
   return { paths, fallback: false };
 }
 
 export async function getStaticProps({ params }) {
-  const movie = DRAMA_MOVIES.find((m) => m.imdbID === params.id);
+  const movie = THRILLER_MOVIES.find((m) => m.imdbID === params.id);
   if (!movie) return { notFound: true };
   return { props: { movie } };
 }
 
-export default DramaMoviePage;
+export default ThrillerMoviePage;

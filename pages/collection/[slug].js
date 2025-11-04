@@ -1,11 +1,13 @@
-// pages/collection/[slug].js - SEO OPTIMIZED WITH FIXED DUPLICATE TITLES + NEXT.JS 15 FIX
+// pages/collection/[slug].js - SEO OPTIMIZED WITH THRILLER COLLECTION SUPPORT ✅
+
 import React, { useState, useEffect, useCallback } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Crown, Star, MessageSquare, Volume2, VolumeX, Play, Pause, Menu, X, Home, Eye, MousePointer, TrendingUp, Users, Search, Brain, Zap, Film, Award, Mountain, Shield } from 'lucide-react';
 import { COMPLETE_MOVIE_DATABASE as SURVIVAL_DATABASE, COMPLETE_MOVIE_DATA as SURVIVAL_DATA } from '../../utils/survivalMovieData';
-import DRAMA_MOVIES from '../../utils/dramaMovieData'; // ← ADD THIS LINE
+import DRAMA_MOVIES from '../../utils/dramaMovieData';
+import { THRILLER_MOVIES } from '../../utils/thrillerMovieData'; // 🔥 ADD THIS LINE FOR THRILLER
 
 // Components
 import CinematicBackground from '../../components/CinematicBackground';
@@ -14,10 +16,7 @@ import CinematicMovieCard from '../../components/CinematicMovieCard';
 
 // Data
 import { COLLECTIONS, getAllCollectionSlugs, getCollectionBySlug } from '../../data/collections';
-// 🔥 UPDATED IMPORT - GET COMPLETE MOVIE DATA WITH DNA INFO
 import { COMPLETE_MOVIE_DATABASE, COMPLETE_MOVIE_DATA } from '../../utils/movieData';
-
-
 
 // Safe property getters
 const getMovieTitle = (movie) => movie?.Title || movie?.title || movie?.name || 'Unknown Movie';
@@ -27,8 +26,6 @@ const getMovieGenre = (movie) => {
     return typeof genre === 'string' ? genre.split(',')[0].trim() : 'Drama';
 };
 const getMovieRuntime = (movie) => movie?.Runtime || movie?.runtime || '120 min';
-
-
 
 // LOGO COMPONENT
 const TopLeftLogo = () => (
@@ -68,7 +65,7 @@ const HomepageButton = () => (
     </motion.div>
 );
 
-// 🔥 COLLECTION PAGE COMPONENT WITH POSITION #10 FIX
+// 🔥 COLLECTION PAGE COMPONENT WITH THRILLER SUPPORT
 const CollectionPage = ({ collection, movies }) => {
     const [currentMovieIndex, setCurrentMovieIndex] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
@@ -92,7 +89,7 @@ const CollectionPage = ({ collection, movies }) => {
         return () => clearTimeout(timer);
     }, []);
 
-    // 🔥 COLLECTION-SPECIFIC CONTENT FUNCTION WITH SURVIVAL SUPPORT
+    // 🔥 COLLECTION-SPECIFIC CONTENT FUNCTION WITH THRILLER SUPPORT
     const getCollectionContent = () => {
         if (collection.slug === 'movies-like-memento') {
             return {
@@ -163,34 +160,76 @@ const CollectionPage = ({ collection, movies }) => {
                     text2: "Each film has been selected for its ability to completely reframe the viewing experience, with revelations that transform every previous scene into something entirely different."
                 }
             };
-        } 
-
-       else if (collection.slug === 'best-drama-movies-on-netflix') {
-    return {
-        badge: "Award-Winning Drama Cinema",
-        title: "Netflix Drama", 
-        description: "Dive into a curated collection of emotionally powerful dramas streaming on Netflix, ranked by emotional intensity and critical acclaim",
-        selection: {
-            text1: "From war epics to intimate family stories, these films showcase the finest dramatic performances and storytelling available on Netflix's platform.",
-            text2: "Each drama masterpiece features powerhouse performances, emotionally gripping narratives, and award-winning direction that has defined contemporary cinema."
-        },
-        ranking: {
-            text: "Our emotional intensity index evaluates dramatic depth, performance quality, and the sophistication of storytelling techniques throughout each film.",
-            points: [
-                "Emotional impact intensity",
-                "Performance quality mastery",
-                "Narrative depth complexity", 
-                "Critical acclaim achievement"
-            ]
-        },
-        experience: {
-            text1: "Whether you're seeking Oscar-winning performances or emotionally charged storytelling, this collection delivers Netflix's finest dramatic cinema.",
-            text2: "Each film has been selected for its ability to create lasting emotional impact, with performances and narratives that resonate long after viewing."
-        }
-    };
-}
- 
-        else {
+        } else if (collection.slug === 'best-thriller-movies') {  // 🔥 ADD THRILLER COLLECTION
+            return {
+                badge: "Suspense Thriller Cinema",
+                title: "Suspense Thrillers",
+                description: "Dive into a curated collection of edge-of-your-seat suspense thrillers known for their gripping narratives, intriguing twists, and intense atmosphere, ranked by suspense intensity",
+                selection: {
+                    text1: "From psychological mind games to action-packed espionage, these films deliver masterful pacing with intriguing plot twists that keep audiences on the edge of their seats.",
+                    text2: "Each suspense thriller masterpiece features protagonists facing impossible odds, mysterious conspiracies, and shocking revelations, creating an experience that lingers long after the credits roll."
+                },
+                ranking: {
+                    text: "Our suspense intensity index evaluates pacing, plot twist brilliance, character complexity depth, and the overall atmosphere of tension and anticipation throughout each film.",
+                    points: [
+                        "Pacing and tension build-up",
+                        "Plot twist brilliance",
+                        "Character complexity depth",
+                        "Atmospheric suspense strength"
+                    ]
+                },
+                experience: {
+                    text1: "Whether you're seeking thrilling narratives or psychological intrigue, this collection delivers cinema's finest suspense-driven storytelling experiences.",
+                    text2: "Each film has been selected for its ability to create sustained tension, with masterfully crafted twists that completely redefine what you thought was happening."
+                }
+            };
+        } else if (collection.slug === 'best-survival-movies') {
+            return {
+                badge: "Survival Cinema",
+                title: "Survival",
+                description: "Dive into a curated collection of the greatest survival films showcasing human endurance against nature, ranked by intensity and authenticity",
+                selection: {
+                    text1: "From mountains to deserts, these films showcase the finest examples of human willpower, ingenuity, and perseverance against impossible odds and brutal natural environments.",
+                    text2: "Each survival masterpiece features protagonists battling extreme elements, isolation, and desperation, creating raw, emotionally authentic experiences of human resilience."
+                },
+                ranking: {
+                    text: "Our survival intensity index evaluates realism, environmental brutality, human perseverance, and the emotional impact of each protagonist's struggle for survival.",
+                    points: [
+                        "Environmental brutality intensity",
+                        "Human perseverance depth",
+                        "Realism and authenticity level",
+                        "Emotional impact strength"
+                    ]
+                },
+                experience: {
+                    text1: "Whether you're seeking raw survival stories or emotional depth, this collection delivers cinema's most powerful explorations of human endurance.",
+                    text2: "Each film has been selected for its ability to inspire through authentic struggle, with narratives that showcase the incredible will to survive against all odds."
+                }
+            };
+        } else if (collection.slug === 'best-drama-movies-on-netflix') {
+            return {
+                badge: "Award-Winning Drama Cinema",
+                title: "Netflix Drama", 
+                description: "Dive into a curated collection of emotionally powerful dramas streaming on Netflix, ranked by emotional intensity and critical acclaim",
+                selection: {
+                    text1: "From war epics to intimate family stories, these films showcase the finest dramatic performances and storytelling available on Netflix's platform.",
+                    text2: "Each drama masterpiece features powerhouse performances, emotionally gripping narratives, and award-winning direction that has defined contemporary cinema."
+                },
+                ranking: {
+                    text: "Our emotional intensity index evaluates dramatic depth, performance quality, and the sophistication of storytelling techniques throughout each film.",
+                    points: [
+                        "Emotional impact intensity",
+                        "Performance quality mastery",
+                        "Narrative depth complexity", 
+                        "Critical acclaim achievement"
+                    ]
+                },
+                experience: {
+                    text1: "Whether you're seeking Oscar-winning performances or emotionally charged storytelling, this collection delivers Netflix's finest dramatic cinema.",
+                    text2: "Each film has been selected for its ability to create lasting emotional impact, with performances and narratives that resonate long after viewing."
+                }
+            };
+        } else {
             return {
                 badge: "Cinematic Excellence",
                 title: collection.title || "Cinema", 
@@ -215,9 +254,8 @@ const CollectionPage = ({ collection, movies }) => {
             };
         }
     };
-    
 
-    // 🔥 UPDATED CONSISTENT HEADER FORMAT FOR ALL COLLECTIONS
+    // 🔥 UPDATED CONSISTENT HEADER FORMAT FOR ALL COLLECTIONS INCLUDING THRILLER
     const getHeaderContent = () => {
         if (collection.slug === 'movies-like-memento') {
             return {
@@ -231,26 +269,25 @@ const CollectionPage = ({ collection, movies }) => {
             };
         } else if (collection.slug === 'movies-like-shutter-island') {
             return {
-                title: "Best Movies Like Shutter Island – 10 Best Mind-Bending Thrillers You Must Watch",
+                title: "Best Movies Like Shutter Island – 10 Best Mind-Bending Psychological Thrillers You Must Watch",
                 subtitle: "Psychological Thrillers with Unreliable Narrators & Shocking Plot Twists Ranked by Complexity"
             };
-        } 
-    else if (collection.slug === 'best-survival-movies') {
-    return {
-        title: "10 Best Survival Movies of All Time – Ranked & Reviewed 2025",
-        subtitle: "Human Endurance Against Nature – Wilderness, Mountains & Desert Survival Stories Ranked by Intensity"
-    };
-}
-
-
-        else if (collection.slug === 'best-drama-movies-on-netflix') {
-    return {
-        title: "Best Drama Movies on Netflix – 10 Award-Winning Films You Must Watch",
-        subtitle: "Emotionally Powerful Dramas with Oscar-Winning Performances Streaming Now"
-    };
-}
-
-        else {
+        } else if (collection.slug === 'best-thriller-movies') {  // 🔥 ADD THRILLER
+            return {
+                title: "Best Suspense Thriller Movies – 10 Best Edge-of-Your-Seat Thrillers You Must Watch",
+                subtitle: "Suspense-Driven Thrillers with Intense Pacing & Plot Twists Ranked by Suspense Intensity"
+            };
+        } else if (collection.slug === 'best-survival-movies') {
+            return {
+                title: "10 Best Survival Movies of All Time – Ranked & Reviewed 2025",
+                subtitle: "Human Endurance Against Nature – Wilderness, Mountains & Desert Survival Stories Ranked by Intensity"
+            };
+        } else if (collection.slug === 'best-drama-movies-on-netflix') {
+            return {
+                title: "Best Drama Movies on Netflix – 10 Award-Winning Films You Must Watch",
+                subtitle: "Emotionally Powerful Dramas with Oscar-Winning Performances Streaming Now"
+            };
+        } else {
             return {
                 title: `Best ${collection.title} – Top 10 Curated Collection You Must Watch`,
                 subtitle: collection.description || "Exceptional Cinema Ranked by Quality"
@@ -258,7 +295,7 @@ const CollectionPage = ({ collection, movies }) => {
         }
     };
 
-    // 🔥 LOADER CONTENT
+    // 🔥 LOADER CONTENT INCLUDING THRILLER
     const getLoaderContent = () => {
         if (collection?.slug === 'movies-like-memento') {
             return {
@@ -275,22 +312,22 @@ const CollectionPage = ({ collection, movies }) => {
                 title: "Loading Movies Like Shutter Island",
                 description: "Curating psychological thrillers with unreliable narrators and shocking plot twists"
             };
-        } 
-        else if (collection?.slug === 'best-survival-movies') {
-    return {
-        title: "Loading Best Survival Movies",
-        description: "Curating the greatest survival films with community reviews and ratings"
-    };
-}
-
-      else if (collection?.slug === 'best-drama-movies-on-netflix') {
-    return {
-        title: "Loading Best Netflix Dramas",
-        description: "Curating award-winning dramatic films with community reviews and ratings"
-    };
-}
-  
-        else {
+        } else if (collection?.slug === 'best-thriller-movies') {  // 🔥 ADD THRILLER
+            return {
+                title: "Loading Best Thriller Movies",
+                description: "Curating edge-of-your-seat suspense thrillers with community reviews and ratings"
+            };
+        } else if (collection?.slug === 'best-survival-movies') {
+            return {
+                title: "Loading Best Survival Movies",
+                description: "Curating the greatest survival films with community reviews and ratings"
+            };
+        } else if (collection?.slug === 'best-drama-movies-on-netflix') {
+            return {
+                title: "Loading Best Netflix Dramas",
+                description: "Curating award-winning dramatic films with community reviews and ratings"
+            };
+        } else {
             return {
                 title: "Loading Movie Collection",
                 description: "Curating exceptional cinema with community reviews and ratings"
@@ -298,7 +335,7 @@ const CollectionPage = ({ collection, movies }) => {
         }
     };
 
-    // 🔥 STATIC META CONTENT GENERATOR FOR EACH COLLECTION
+    // 🔥 STATIC META CONTENT GENERATOR FOR EACH COLLECTION INCLUDING THRILLER
     const getStaticMetaContent = () => {
         if (collection.slug === 'movies-like-memento') {
             return {
@@ -327,31 +364,34 @@ const CollectionPage = ({ collection, movies }) => {
                 twitterTitle: "🧠 The Most Advanced Handpicked List – 10 Best Movies Like Shutter Island",
                 progressText: `of Top ${movies.length} Movies Like Shutter Island`
             };
-        } 
-
-else if (collection.slug === 'best-drama-movies-on-netflix') {
-    return {
-        title: "Best Drama Movies on Netflix – 10 Award-Winning Films Streaming Now | Filmiway",
-        description: "Discover 10 award-winning drama movies on Netflix, ranked by emotional intensity and critical acclaim. From 1917 to Minari, explore the finest dramatic performances streaming now.",
-        keywords: "best drama movies netflix, netflix drama films, award winning movies, 1917 netflix, roma netflix, the irishman netflix, marriage story, social network, django unchained netflix, pursuit of happyness, minari netflix, chicago 7 netflix, emotional dramas, oscar winners netflix",
-        ogTitle: "Best Drama Movies on Netflix – 10 Award-Winning Films Streaming Now",
-        twitterTitle: "🎬 Best Drama Movies on Netflix – 10 Award-Winning Films",
-        progressText: `of Top ${movies.length} Netflix Dramas`
-    };
-}
-     else if (collection.slug === 'best-survival-movies') {
-    return {
-        title: "10 Best Survival Movies of All Time | Ranked & Reviewed 2025",
-        description: "Discover the 10 greatest survival movies ever made. From 127 Hours to The Revenant, explore gripping tales of human endurance, wilderness survival, and the will to live against all odds. Expert rankings, detailed analysis & where to watch.",
-        keywords: "best survival movies, survival films, wilderness movies, human endurance films, 127 Hours, Cast Away, The Revenant, The Martian, survival cinema, lost at sea movies, mountain survival films, desert survival movies, Unbroken, survival against the odds, true survival stories, best survival films of all time",
-        ogTitle: "10 Best Survival Movies of All Time | Ranked & Reviewed 2025 🏔️",
-        twitterTitle: "🏔️ 10 Best Survival Movies of All Time – Expert Rankings",
-        progressText: `of Top ${movies.length} Best Survival Films`
-    };
-}
-
-          
-        else {
+        } else if (collection.slug === 'best-thriller-movies') {  // 🔥 ADD THRILLER META
+            return {
+                title: "Best Suspense Thriller Movies – 10 Best Edge-of-Your-Seat Thrillers You Must Watch",
+                description: "Stop scrolling! This is the most advanced handpicked list on the internet of 10 suspense thrillers with intense pacing, masterful plot twists, and captivating storytelling. Carefully analyzed for tension, suspense intensity, and expert execution—perfect for true thriller fans!",
+                keywords: "best thriller movies, suspense thriller films, best suspense movies, psychological thrillers, plot twist movies, tension filled movies, intense thrillers, edge of seat thrillers, thriller cinema, suspense cinema, best thriller films all time, thriller recommendations",
+                ogTitle: "The Most Advanced List on the Internet – 10 Best Suspense Thriller Movies 🔥",
+                twitterTitle: "🔥 The Most Advanced Handpicked List – 10 Best Thriller Movies",
+                progressText: `of Top ${movies.length} Best Thriller Films`
+            };
+        } else if (collection.slug === 'best-survival-movies') {
+            return {
+                title: "10 Best Survival Movies of All Time | Ranked & Reviewed 2025",
+                description: "Discover the 10 greatest survival movies ever made. From 127 Hours to The Revenant, explore gripping tales of human endurance, wilderness survival, and the will to live against all odds. Expert rankings, detailed analysis & where to watch.",
+                keywords: "best survival movies, survival films, wilderness movies, human endurance films, 127 Hours, Cast Away, The Revenant, The Martian, survival cinema, lost at sea movies, mountain survival films, desert survival movies, Unbroken, survival against the odds, true survival stories, best survival films of all time",
+                ogTitle: "10 Best Survival Movies of All Time | Ranked & Reviewed 2025 🏔️",
+                twitterTitle: "🏔️ 10 Best Survival Movies of All Time – Expert Rankings",
+                progressText: `of Top ${movies.length} Best Survival Films`
+            };
+        } else if (collection.slug === 'best-drama-movies-on-netflix') {
+            return {
+                title: "Best Drama Movies on Netflix – 10 Award-Winning Films Streaming Now | Filmiway",
+                description: "Discover 10 award-winning drama movies on Netflix, ranked by emotional intensity and critical acclaim. From 1917 to Minari, explore the finest dramatic performances streaming now.",
+                keywords: "best drama movies netflix, netflix drama films, award winning movies, 1917 netflix, roma netflix, the irishman netflix, marriage story, social network, django unchained netflix, pursuit of happyness, minari netflix, chicago 7 netflix, emotional dramas, oscar winners netflix",
+                ogTitle: "Best Drama Movies on Netflix – 10 Award-Winning Films Streaming Now",
+                twitterTitle: "🎬 Best Drama Movies on Netflix – 10 Award-Winning Films",
+                progressText: `of Top ${movies.length} Netflix Dramas`
+            };
+        } else {
             return {
                 title: `Best ${collection.title} – Top 10 Curated Movie Collection You Must Watch`,
                 description: `Discover ${collection.title} - ${collection.description || 'A curated collection of exceptional films'}.`,
@@ -385,11 +425,11 @@ else if (collection.slug === 'best-drama-movies-on-netflix') {
         return () => window.removeEventListener('keydown', handleKeyPress);
     }, [nextMovie, prevMovie]);
 
-    // 🔥 FIXED: Get current movie and calculate rank CORRECTLY
+    // 🔥 GET CURRENT MOVIE AND CALCULATE RANK CORRECTLY
     const currentMovie = movies[currentMovieIndex];
     const currentRank = movies.length - currentMovieIndex;
 
-    // 🔥 FIXED: Smart navigation logic - NOW ALL 10 POSITIONS SHOW
+    // 🔥 SMART NAVIGATION LOGIC - NOW ALL 10 POSITIONS SHOW
     const isFirstMovie = currentMovieIndex === 0;      // Position #10 (index 0)
     const isLastMovie = currentMovieIndex === movies.length - 1; // Position #1 (index 9)
 
@@ -425,6 +465,9 @@ else if (collection.slug === 'best-drama-movies-on-netflix') {
             sessionStorage.removeItem('fromInceptionCollection');
             sessionStorage.removeItem('fromMementoCollection');
             sessionStorage.removeItem('fromShutterIslandCollection');
+            sessionStorage.removeItem('fromSurvivalCollection');
+            sessionStorage.removeItem('fromThrillerCollection');  // 🔥 ADD THRILLER FLAG REMOVAL
+            sessionStorage.removeItem('fromDramaCollection');
             
             // Set appropriate collection flag
             if (collection.slug === 'movies-like-inception') {
@@ -433,18 +476,21 @@ else if (collection.slug === 'best-drama-movies-on-netflix') {
                 sessionStorage.setItem('fromMementoCollection', 'true');
             } else if (collection.slug === 'movies-like-shutter-island') {
                 sessionStorage.setItem('fromShutterIslandCollection', 'true');
+            } else if (collection.slug === 'best-survival-movies') {
+                sessionStorage.setItem('fromSurvivalCollection', 'true');
+            } else if (collection.slug === 'best-thriller-movies') {  // 🔥 ADD THRILLER
+                sessionStorage.setItem('fromThrillerCollection', 'true');
+            } else if (collection.slug === 'best-drama-movies-on-netflix') {
+                sessionStorage.setItem('fromDramaCollection', 'true');
             }
-        }   else if (collection.slug === 'best-survival-movies') {
-    sessionStorage.setItem('fromSurvivalCollection', 'true');
-}
-
+        }
     };
 
     // Get dynamic content
     const collectionContent = getCollectionContent();
     const headerContent = getHeaderContent();
     const loaderContent = getLoaderContent();
-    const metaContent = getStaticMetaContent(); // 🔥 STATIC META CONTENT
+    const metaContent = getStaticMetaContent();
 
     // 🔥 ENHANCED CINEMATIC EXPLORER SECTION WITH DNA HELIX - SHOWS ON POSITION #10
     const CinematicExplorerSection = ({ currentRank }) => {
@@ -500,10 +546,8 @@ else if (collection.slug === 'best-drama-movies-on-netflix') {
                         </p>
                     </motion.div>
 
-                    {/* Three-Column Grid + DNA Helix */}
-                   <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-6 mb-16 sm:mb-20">
-
-                        
+                    {/* Three-Column Grid */}
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-6 mb-16 sm:mb-20">
                         {/* Column 1 - The Selection */}
                         <motion.div 
                             className="space-y-6"
@@ -586,13 +630,6 @@ else if (collection.slug === 'best-drama-movies-on-netflix') {
                                 </div>
                             </div>
                         </motion.div>
-
-                        {/* 🔥 COLUMN 4 - DNA HELIX (WITH TEXT REMOVED) */}
-                        
-                    
-                        
-                            {/* 🔥 PASS CURRENT MOVIE TO DNA COMPONENT */}
-                            
                     </div>
 
                     {/* Cinematic Divider */}
@@ -620,104 +657,91 @@ else if (collection.slug === 'best-drama-movies-on-netflix') {
         );
     };
 
-    // 🔥 MOBILE-OPTIMIZED CINEMATIC HEADER - NO COLLISION WITH LOGO
-const CinematicHeader = React.memo(() => {
-    return (
-        <header className="text-center mb-8 sm:mb-16 lg:mb-20 px-4 sm:px-6 w-full relative pt-20 sm:pt-16 lg:pt-8">
-            {/* 🔥 ADDED pt-20 for mobile to avoid logo collision */}
-            <motion.div 
-                initial={{ opacity: 0, y: -40 }} 
-                animate={{ opacity: 1, y: 0 }} 
-                transition={{ duration: 1.2, ease: "easeOut" }} 
-                className="space-y-4 sm:space-y-6 lg:space-y-8 xl:space-y-12 relative z-10"
-                /* 🔥 REDUCED space-y on mobile */
-            >
-                <motion.div className="relative">
-                    {/* 🔥 MOBILE-RESPONSIVE H1 - SMALLER ON MOBILE */}
-                    <motion.h1 
-                        className="text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-extralight tracking-[0.05em] sm:tracking-[0.1em] text-transparent bg-clip-text bg-gradient-to-r from-yellow-100 via-yellow-300 to-amber-300" 
-                        /* 🔥 STARTED FROM text-xl (was text-2xl) */
-                        style={{ 
-                            fontFamily: "'Playfair Display', serif", 
-                            textShadow: '0 0 80px rgba(234, 179, 8, 0.15)',
-                            lineHeight: '1.1' /* 🔥 TIGHTER LINE HEIGHT ON MOBILE */
-                        }} 
-                        whileHover={{ 
-                            scale: 1.02, 
-                            textShadow: '0 0 100px rgba(234, 179, 8, 0.25)'
-                        }} 
-                        transition={{ duration: 0.4 }}
-                    >
-                        <span className="block leading-tight" style={{ letterSpacing: '0.02em' }}>
-                            {/* 🔥 REDUCED letter spacing on mobile */}
-                            {headerContent.title}
-                        </span>
-                    </motion.h1>
-                    
-                    {/* 🔥 MOBILE-RESPONSIVE SUBTITLE */}
-                    <motion.p 
-                        className="text-sm sm:text-lg md:text-xl lg:text-2xl font-light mt-3 sm:mt-6 text-yellow-200/60"
-                        /* 🔥 STARTED FROM text-sm (was text-lg) */
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.5, duration: 0.8 }}
-                    >
-                        {headerContent.subtitle}
-                    </motion.p>
-                    
-                    <motion.div 
-                        initial={{ scaleX: 0 }} 
-                        animate={{ scaleX: 1 }} 
-                        transition={{ delay: 1.2, duration: 2, ease: "easeInOut" }} 
-                        className="absolute -bottom-3 sm:-bottom-6 left-1/2 transform -translate-x-1/2 w-24 sm:w-32 lg:w-64 xl:w-96 h-px bg-gradient-to-r from-transparent via-yellow-400/50 to-transparent" 
-                        /* 🔥 SMALLER DIVIDER ON MOBILE */
-                    />
-                </motion.div>
-                
-                {/* 🔥 MOBILE-RESPONSIVE BADGE GRID */}
+    // 🔥 MOBILE-OPTIMIZED CINEMATIC HEADER
+    const CinematicHeader = React.memo(() => {
+        return (
+            <header className="text-center mb-8 sm:mb-16 lg:mb-20 px-4 sm:px-6 w-full relative pt-20 sm:pt-16 lg:pt-8">
                 <motion.div 
-                    className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 lg:gap-6 mt-12 sm:mt-16 lg:mt-20 max-w-4xl mx-auto" 
-                    /* 🔥 REDUCED gaps and margins on mobile */
-                    initial={{ opacity: 0, y: 40 }} 
+                    initial={{ opacity: 0, y: -40 }} 
                     animate={{ opacity: 1, y: 0 }} 
-                    transition={{ delay: 2, duration: 0.8 }}
+                    transition={{ duration: 1.2, ease: "easeOut" }} 
+                    className="space-y-4 sm:space-y-6 lg:space-y-8 xl:space-y-12 relative z-10"
                 >
-                    {collection.badges?.map((badge, index) => (
-                        <motion.div 
-                            key={index}
-                            className="relative group" 
-                            whileHover={{ y: -8, scale: 1.03 }} 
+                    <motion.div className="relative">
+                        <motion.h1 
+                            className="text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-extralight tracking-[0.05em] sm:tracking-[0.1em] text-transparent bg-clip-text bg-gradient-to-r from-yellow-100 via-yellow-300 to-amber-300" 
+                            style={{ 
+                                fontFamily: "'Playfair Display', serif", 
+                                textShadow: '0 0 80px rgba(234, 179, 8, 0.15)',
+                                lineHeight: '1.1'
+                            }} 
+                            whileHover={{ 
+                                scale: 1.02, 
+                                textShadow: '0 0 100px rgba(234, 179, 8, 0.25)'
+                            }} 
                             transition={{ duration: 0.4 }}
                         >
-                            <div className="p-4 sm:p-6 lg:p-8 bg-gradient-to-br from-gray-800/40 via-gray-900/30 to-black/40 border border-yellow-500/20 rounded-2xl backdrop-blur-xl relative overflow-hidden">
-                                {/* 🔥 SMALLER PADDING ON MOBILE */}
-                                <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/5 via-transparent to-amber-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                                
-                                <div className="flex flex-col items-center space-y-3 sm:space-y-4 relative z-10">
-                                    <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-yellow-400/20 to-amber-400/20 rounded-xl flex items-center justify-center border border-yellow-400/30">
-                                        {/* 🔥 SMALLER ICONS ON MOBILE */}
-                                        {index === 0 && <Brain className="w-6 h-6 sm:w-7 sm:h-7 text-yellow-400" />}
-                                        {index === 1 && <Star className="w-6 h-6 sm:w-7 sm:h-7 text-yellow-400" />}
-                                        {index === 2 && <Award className="w-6 h-6 sm:w-7 sm:h-7 text-yellow-400" />}
-                                    </div>
+                            <span className="block leading-tight" style={{ letterSpacing: '0.02em' }}>
+                                {headerContent.title}
+                            </span>
+                        </motion.h1>
+                        
+                        <motion.p 
+                            className="text-sm sm:text-lg md:text-xl lg:text-2xl font-light mt-3 sm:mt-6 text-yellow-200/60"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.5, duration: 0.8 }}
+                        >
+                            {headerContent.subtitle}
+                        </motion.p>
+                        
+                        <motion.div 
+                            initial={{ scaleX: 0 }} 
+                            animate={{ scaleX: 1 }} 
+                            transition={{ delay: 1.2, duration: 2, ease: "easeInOut" }} 
+                            className="absolute -bottom-3 sm:-bottom-6 left-1/2 transform -translate-x-1/2 w-24 sm:w-32 lg:w-64 xl:w-96 h-px bg-gradient-to-r from-transparent via-yellow-400/50 to-transparent"
+                        />
+                    </motion.div>
+                    
+                    {/* Badge Grid */}
+                    <motion.div 
+                        className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 lg:gap-6 mt-12 sm:mt-16 lg:mt-20 max-w-4xl mx-auto" 
+                        initial={{ opacity: 0, y: 40 }} 
+                        animate={{ opacity: 1, y: 0 }} 
+                        transition={{ delay: 2, duration: 0.8 }}
+                    >
+                        {collection.badges?.map((badge, index) => (
+                            <motion.div 
+                                key={index}
+                                className="relative group" 
+                                whileHover={{ y: -8, scale: 1.03 }} 
+                                transition={{ duration: 0.4 }}
+                            >
+                                <div className="p-4 sm:p-6 lg:p-8 bg-gradient-to-br from-gray-800/40 via-gray-900/30 to-black/40 border border-yellow-500/20 rounded-2xl backdrop-blur-xl relative overflow-hidden">
+                                    <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/5 via-transparent to-amber-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                                     
-                                    <h3 className="text-yellow-200 text-sm sm:text-base lg:text-lg font-medium tracking-wider uppercase text-center leading-tight">
-                                        {/* 🔥 SMALLER TEXT ON MOBILE */}
-                                        {badge.label}
-                                    </h3>
-                                    <p className="text-gray-400 text-xs sm:text-sm text-center leading-relaxed">
-                                        {/* 🔥 SMALLER TEXT ON MOBILE */}
-                                        {badge.desc}
-                                    </p>
+                                    <div className="flex flex-col items-center space-y-3 sm:space-y-4 relative z-10">
+                                        <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-yellow-400/20 to-amber-400/20 rounded-xl flex items-center justify-center border border-yellow-400/30">
+                                            {index === 0 && <Brain className="w-6 h-6 sm:w-7 sm:h-7 text-yellow-400" />}
+                                            {index === 1 && <Star className="w-6 h-6 sm:w-7 sm:h-7 text-yellow-400" />}
+                                            {index === 2 && <Award className="w-6 h-6 sm:w-7 sm:h-7 text-yellow-400" />}
+                                        </div>
+                                        
+                                        <h3 className="text-yellow-200 text-sm sm:text-base lg:text-lg font-medium tracking-wider uppercase text-center leading-tight">
+                                            {badge.label}
+                                        </h3>
+                                        <p className="text-gray-400 text-xs sm:text-sm text-center leading-relaxed">
+                                            {badge.desc}
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
-                        </motion.div>
-                    ))}
+                            </motion.div>
+                        ))}
+                    </motion.div>
                 </motion.div>
-            </motion.div>
-        </header>
-    );
-});
+            </header>
+        );
+    });
 
     // 🔥 CINEMATIC LOADER
     const CinematicLoader = React.memo(() => {
@@ -805,132 +829,82 @@ const CinematicHeader = React.memo(() => {
         </motion.div>
     );
 
-
-
-
-
-
-        {/* 🚀 NEW: STRUCTURED DATA FOR GOOGLE SEO */}
-<script
-  type="application/ld+json"
-  dangerouslySetInnerHTML={{
-    __html: JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "ItemList",
-      "name": collection?.title || "",
-      "description": collection?.description || "",
-      "numberOfItems": movies?.length || 0,
-      "url": `https://filmiway.com/collection/${collection?.slug || ""}`,
-      "itemListElement": (movies || []).map((movie, index) => {
-        let itemObj = {
-          "@type": "Movie",
-          "name": movie?.Title || "Unknown Movie",
-          "datePublished": movie?.Year || "2024",
-          "genre": movie?.Genre || "Drama"
-        };
-        if (movie?.imdbID) {
-          itemObj.url = `https://filmiway.com/collection/${collection?.slug || ""}/${movie.imdbID}`;
-        }
-        return {
-          "@type": "ListItem",
-          "position": movies.length - index,
-          "item": itemObj
-        };
-      })
-    })
-  }}
-/>
-
-
-
-
     return (
         <div className="min-h-screen bg-black text-white relative overflow-hidden">
-    
+            <Head>
+                <title key={`collection-title-${collection.slug}`}>
+                    {metaContent.title || collection.title || "Filmiway - Movie Collection"}
+                </title>
 
+                <meta
+                    key={`collection-desc-${collection.slug}`}
+                    name="description"
+                    content={metaContent.description || collection.description || ""}
+                />
 
+                <meta
+                    key={`collection-keywords-${collection.slug}`}
+                    name="keywords"
+                    content={metaContent.keywords || ""}
+                />
 
+                <link rel="canonical" href={`https://filmiway.com/collection/${collection.slug}`} />
 
-<Head>
-  {/* Static Meta Title */}
-  <title key={`collection-title-${collection.slug}`}>
-    {metaContent.title || collection.title || "Filmiway - Movie Collection"}
-  </title>
+                <meta name="robots" content="index, follow" />
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  {/* Static Meta Description */}
-  <meta
-    key={`collection-desc-${collection.slug}`}
-    name="description"
-    content={metaContent.description || collection.description || ""}
-  />
+                <meta property="og:title" key={`og-title-${collection.slug}`} content={metaContent.ogTitle || metaContent.title || collection.title} />
+                <meta property="og:description" key={`og-desc-${collection.slug}`} content={metaContent.description || collection.description} />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content={`https://filmiway.com/collection/${collection.slug}`} />
 
-  {/* Static Meta Keywords */}
-  <meta
-    key={`collection-keywords-${collection.slug}`}
-    name="keywords"
-    content={metaContent.keywords || ""}
-  />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" key={`twitter-title-${collection.slug}`} content={metaContent.twitterTitle || metaContent.title || collection.title} />
+                <meta name="twitter:description" key={`twitter-desc-${collection.slug}`} content={metaContent.description || collection.description} />
 
-  {/* Canonical URL */}
-  <link rel="canonical" href={`https://filmiway.com/collection/${collection.slug}`} />
-
-  {/* SEO Essentials */}
-  <meta name="robots" content="index, follow" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  {/* Open Graph */}
-  <meta property="og:title" key={`og-title-${collection.slug}`} content={metaContent.ogTitle || metaContent.title || collection.title} />
-  <meta property="og:description" key={`og-desc-${collection.slug}`} content={metaContent.description || collection.description} />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content={`https://filmiway.com/collection/${collection.slug}`} />
-
-  {/* Twitter Cards */}
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" key={`twitter-title-${collection.slug}`} content={metaContent.twitterTitle || metaContent.title || collection.title} />
-  <meta name="twitter:description" key={`twitter-desc-${collection.slug}`} content={metaContent.description || collection.description} />
-
-  {/* 🚀 Fixed Valid Structured Data Block for Google */}
-  <script
-    type="application/ld+json"
-    dangerouslySetInnerHTML={{
-      __html: JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "ItemList",
-        "name": collection?.title || "",
-        "description": collection?.description || "",
-        "numberOfItems": movies?.length || 0,
-        "url": `https://filmiway.com/collection/${collection?.slug || ""}`,
-        "itemListElement": (movies || []).map((movie, index) => {
-          let itemObj = {
-            "@type": "Movie",
-            "name": movie?.Title || "Unknown Movie",
-            "datePublished": movie?.Year || "2024",
-            "genre": movie?.Genre || "Drama"
-          };
-          if (movie?.imdbID) {
-            const basePath = collection?.slug === 'best-survival-movies'
-              ? 'movies/survival/'
-              : collection?.slug === 'movies-like-inception'
-              ? 'movies/like-inception/'
-              : collection?.slug === 'movies-like-memento'
-              ? 'movies/like-memento/'
-              : collection?.slug === 'movies-like-shutter-island'
-              ? 'movies/like-shutter-island/'
-              : 'movies/';
-            itemObj.url = `https://filmiway.com/${basePath}${movie.imdbID}`;
-          }
-          return {
-            "@type": "ListItem",
-            "position": movies.length - index,
-            "item": itemObj
-          };
-        })
-      })
-    }}
-  />
-</Head>
-
-
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
+                            "@context": "https://schema.org",
+                            "@type": "ItemList",
+                            "name": collection?.title || "",
+                            "description": collection?.description || "",
+                            "numberOfItems": movies?.length || 0,
+                            "url": `https://filmiway.com/collection/${collection?.slug || ""}`,
+                            "itemListElement": (movies || []).map((movie, index) => {
+                                let itemObj = {
+                                    "@type": "Movie",
+                                    "@name": movie?.Title || "Unknown Movie",
+                                    "datePublished": movie?.Year || "2024",
+                                    "genre": movie?.Genre || "Drama"
+                                };
+                                if (movie?.imdbID) {
+                                    const basePath = collection?.slug === 'best-survival-movies'
+                                        ? 'movies/survival/'
+                                        : collection?.slug === 'movies-like-inception'
+                                        ? 'movies/like-inception/'
+                                        : collection?.slug === 'movies-like-memento'
+                                        ? 'movies/like-memento/'
+                                        : collection?.slug === 'movies-like-shutter-island'
+                                        ? 'movies/like-shutter-island/'
+                                        : collection?.slug === 'best-thriller-movies'  // 🔥 ADD THRILLER
+                                        ? 'movies/thriller/'                            // 🔥 ADD THRILLER
+                                        : collection?.slug === 'best-drama-movies-on-netflix'
+                                        ? 'movies/netflix/'
+                                        : 'movies/';
+                                    itemObj.url = `https://filmiway.com/${basePath}${movie.imdbID}`;
+                                }
+                                return {
+                                    "@type": "ListItem",
+                                    "position": movies.length - index,
+                                    "item": itemObj
+                                };
+                            })
+                        })
+                    }}
+                />
+            </Head>
 
             <CinematicBackground />
             <StrategicControls 
@@ -966,11 +940,11 @@ const CinematicHeader = React.memo(() => {
                         <div className="container mx-auto px-3 sm:px-6 py-8 sm:py-12">
                             <CinematicHeader />
                             
-                            {/* 🔥 CINEMATIC EXPLORER SECTION - SHOWS ON POSITION #10 WITH DNA HELIX (TEXT REMOVED) */}
+                            {/* 🔥 CINEMATIC EXPLORER SECTION */}
                             <CinematicExplorerSection currentRank={currentRank} />
                             
                             <div className="relative flex items-center justify-center min-h-[70vh] sm:min-h-[80vh]">
-                                {/* 🔥 FIXED NAVIGATION BUTTONS - NO LEFT ARROW ON POSITION #10 */}
+                                {/* 🔥 FIXED NAVIGATION BUTTONS */}
                                 {!isFirstMovie && (
                                     <motion.button
                                         onClick={prevMovie}
@@ -983,7 +957,6 @@ const CinematicHeader = React.memo(() => {
                                     </motion.button>
                                 )}
 
-                                {/* 🔥 NO RIGHT ARROW ON POSITION #1 */}
                                 {!isLastMovie && (
                                     <motion.button
                                         onClick={nextMovie}
@@ -996,25 +969,24 @@ const CinematicHeader = React.memo(() => {
                                     </motion.button>
                                 )}
 
-                                {/* 🔥 FIXED FOR NEXT.JS 15 - REMOVED <a> TAG */}
+                                {/* 🔥 FIXED FOR NEXT.JS 15 - WITH THRILLER URL */}
                                 <AnimatePresence mode="wait">
-                               <Link 
-
-    href={
-        collection.slug === 'movies-like-inception'
-            ? `/movies/like-inception/${currentMovie.imdbID}`
-            : collection.slug === 'movies-like-memento' 
-            ? `/movies/like-memento/${currentMovie.imdbID}`
-            : collection.slug === 'movies-like-shutter-island'
-            ? `/movies/like-shutter-island/${currentMovie.imdbID}`
-            : collection.slug === 'best-survival-movies'
-            ? `/movies/survival/${currentMovie.imdbID}`
-            : collection.slug === 'best-drama-movies-on-netflix'  // ✅ ADD THIS LINE
-            ? `/movies/netflix/${currentMovie.imdbID}`            // ✅ ADD THIS LINE
-            : `/movies/${currentMovie.imdbID}`
-    }
-
-
+                                    <Link 
+                                        href={
+                                            collection.slug === 'movies-like-inception'
+                                                ? `/movies/like-inception/${currentMovie.imdbID}`
+                                                : collection.slug === 'movies-like-memento' 
+                                                ? `/movies/like-memento/${currentMovie.imdbID}`
+                                                : collection.slug === 'movies-like-shutter-island'
+                                                ? `/movies/like-shutter-island/${currentMovie.imdbID}`
+                                                : collection.slug === 'best-survival-movies'
+                                                ? `/movies/survival/${currentMovie.imdbID}`
+                                                : collection.slug === 'best-thriller-movies'  // 🔥 ADD THRILLER
+                                                ? `/movies/thriller/${currentMovie.imdbID}`   // 🔥 ADD THRILLER URL
+                                                : collection.slug === 'best-drama-movies-on-netflix'
+                                                ? `/movies/netflix/${currentMovie.imdbID}`
+                                                : `/movies/${currentMovie.imdbID}`
+                                        }
                                         key={currentMovieIndex}
                                         onClick={handleMovieClick}
                                     >
@@ -1028,56 +1000,55 @@ const CinematicHeader = React.memo(() => {
                             </div>
 
                             {/* Enhanced Movie Info */}
-                          {/* Enhanced Movie Info */}
-<motion.div 
-    className="text-center mt-12 sm:mt-16"
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    transition={{ delay: 0.5, duration: 0.8 }}
->
-    {/* Enhanced Click Indicators */}
-    <div className="flex flex-col items-center space-y-6">
-        <div className="flex items-center justify-center space-x-4 text-sm text-gray-500">
-            <span className="px-3 py-1 bg-gray-800/50 rounded-full">#{currentRank} of {movies.length}</span>
-            <span>•</span>
-            <span>Click poster above for full analysis</span>
-        </div>
-        
-        <motion.div 
-            className="flex items-center space-x-4 bg-gradient-to-r from-yellow-400/10 via-amber-400/10 to-yellow-400/10 border border-yellow-400/30 rounded-2xl px-8 py-4 hover:from-yellow-400/20 hover:via-amber-400/20 hover:to-yellow-400/20 hover:border-yellow-400/50 transition-all duration-300 cursor-pointer group"
-
+                            <motion.div 
+                                className="text-center mt-12 sm:mt-16"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ delay: 0.5, duration: 0.8 }}
+                            >
+                                <div className="flex flex-col items-center space-y-6">
+                                    <div className="flex items-center justify-center space-x-4 text-sm text-gray-500">
+                                        <span className="px-3 py-1 bg-gray-800/50 rounded-full">#{currentRank} of {movies.length}</span>
+                                        <span>•</span>
+                                        <span>Click poster above for full analysis</span>
+                                    </div>
+                                    
+                                    <motion.div 
+                                        className="flex items-center space-x-4 bg-gradient-to-r from-yellow-400/10 via-amber-400/10 to-yellow-400/10 border border-yellow-400/30 rounded-2xl px-8 py-4 hover:from-yellow-400/20 hover:via-amber-400/20 hover:to-yellow-400/20 hover:border-yellow-400/50 transition-all duration-300 cursor-pointer group"
                                         whileHover={{ scale: 1.05, y: -2 }}
                                         whileTap={{ scale: 0.98 }}
                                         onClick={() => {
                                             handleMovieClick();
-                                      // 🔥 DYNAMIC URL BASED ON COLLECTION - UPDATED WITH SURVIVAL
-let detailPageUrl;
-if (collection.slug === 'movies-like-inception') {
-    detailPageUrl = `/movies/like-inception/${currentMovie.imdbID}`;
-} else if (collection.slug === 'movies-like-memento') {
-    detailPageUrl = `/movies/like-memento/${currentMovie.imdbID}`;
-} else if (collection.slug === 'movies-like-shutter-island') {
-    detailPageUrl = `/movies/like-shutter-island/${currentMovie.imdbID}`;
-} else if (collection.slug === 'best-survival-movies') {
-    detailPageUrl = `/movies/survival/${currentMovie.imdbID}`;
-} else {
-    detailPageUrl = `/movies/${currentMovie.imdbID}`;
-}
-
-window.location.href = detailPageUrl;
-}}
->
-    <Eye className="w-6 h-6 text-yellow-400" />
-    <span className="text-yellow-400 font-medium text-lg">Explore Full Analysis</span>
-    <motion.div
-        animate={{ x: [0, 8, 0] }}
-        transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-    >
-        <ChevronRight className="w-6 h-6 text-yellow-400" />
-    </motion.div>
-</motion.div>
-</div>
-</motion.div>
+                                            let detailPageUrl;
+                                            if (collection.slug === 'movies-like-inception') {
+                                                detailPageUrl = `/movies/like-inception/${currentMovie.imdbID}`;
+                                            } else if (collection.slug === 'movies-like-memento') {
+                                                detailPageUrl = `/movies/like-memento/${currentMovie.imdbID}`;
+                                            } else if (collection.slug === 'movies-like-shutter-island') {
+                                                detailPageUrl = `/movies/like-shutter-island/${currentMovie.imdbID}`;
+                                            } else if (collection.slug === 'best-survival-movies') {
+                                                detailPageUrl = `/movies/survival/${currentMovie.imdbID}`;
+                                            } else if (collection.slug === 'best-thriller-movies') {  // 🔥 ADD THRILLER
+                                                detailPageUrl = `/movies/thriller/${currentMovie.imdbID}`;  // 🔥 ADD THRILLER URL
+                                            } else if (collection.slug === 'best-drama-movies-on-netflix') {
+                                                detailPageUrl = `/movies/netflix/${currentMovie.imdbID}`;
+                                            } else {
+                                                detailPageUrl = `/movies/${currentMovie.imdbID}`;
+                                            }
+                                            window.location.href = detailPageUrl;
+                                        }}
+                                    >
+                                        <Eye className="w-6 h-6 text-yellow-400" />
+                                        <span className="text-yellow-400 font-medium text-lg">Explore Full Analysis</span>
+                                        <motion.div
+                                            animate={{ x: [0, 8, 0] }}
+                                            transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                                        >
+                                            <ChevronRight className="w-6 h-6 text-yellow-400" />
+                                        </motion.div>
+                                    </motion.div>
+                                </div>
+                            </motion.div>
 
                             {/* Navigation Dots */}
                             <NavigationDots 
@@ -1177,65 +1148,68 @@ window.location.href = detailPageUrl;
         </div>
     );
 };
-// 🔥 SSG FUNCTIONS
+
+// 🔥 SSG FUNCTIONS WITH THRILLER SUPPORT
 export async function getStaticPaths() {
-  const slugs = getAllCollectionSlugs();
+    const slugs = getAllCollectionSlugs();
 
-  const paths = slugs.map((slug) => ({
-    params: { slug }
-  }));
+    const paths = slugs.map((slug) => ({
+        params: { slug }
+    }));
 
-  return {
-    paths,
-    fallback: false
-  };
+    return {
+        paths,
+        fallback: false
+    };
 }
 
-
 export async function getStaticProps({ params }) {
-  const slug = params.slug;
-  const collection = getCollectionBySlug(slug);
+    const slug = params.slug;
+    const collection = getCollectionBySlug(slug);
 
-  if (!collection) {
-    return { notFound: true };
-  }
-
-  let movieDatabase;
-  if (collection.slug === 'best-survival-movies') {
-    movieDatabase = SURVIVAL_DATABASE;
-  } else if (collection.slug === 'best-drama-movies-on-netflix') {
-    movieDatabase = DRAMA_MOVIES;
-  } else {
-    movieDatabase = COMPLETE_MOVIE_DATABASE;
-  }
-
-  const movieArray = Array.isArray(movieDatabase) ? movieDatabase : Object.values(movieDatabase);
-
-  const movies = collection.movies
-    .map(imdbId => {
-      const movie = movieArray.find(m => m.imdbID === imdbId);
-      if (!movie) return null;
-
-      return {
-        imdbID: movie.imdbID || '',
-        tmdbId: movie.tmdbId || 0,
-        Title: movie.Title || movie.title || 'Unknown',
-        Year: movie.Year || movie.year || '2024',
-        Genre: movie.Genre || movie.genre || 'Drama',
-        Runtime: movie.Runtime || movie.runtime || 120,
-        rank: movie.rank || 1,
-        emotionalIntensity: movie.emotionalIntensity || 0
-      };
-    })
-    .filter(Boolean)
-    .reverse();
-
-  return {
-    props: {
-      collection,
-      movies
+    if (!collection) {
+        return { notFound: true };
     }
-  };  // <- ADD THIS MISSING CLOSING BRACE HERE
-}       // <= end of getStaticProps
+
+    let movieDatabase;
+    if (collection.slug === 'best-survival-movies') {
+        movieDatabase = SURVIVAL_DATABASE;
+    } else if (collection.slug === 'best-thriller-movies') {  // 🔥 ADD THRILLER DATA
+        movieDatabase = THRILLER_MOVIES;                      // 🔥 ADD THRILLER DATA
+    } else if (collection.slug === 'best-drama-movies-on-netflix') {
+        movieDatabase = DRAMA_MOVIES;
+    } else {
+        movieDatabase = COMPLETE_MOVIE_DATABASE;
+    }
+
+    const movieArray = Array.isArray(movieDatabase) ? movieDatabase : Object.values(movieDatabase);
+
+    const movies = collection.movies
+        .map(imdbId => {
+            const movie = movieArray.find(m => m.imdbID === imdbId);
+            if (!movie) return null;
+
+            return {
+                imdbID: movie.imdbID || '',
+                tmdbId: movie.tmdbId || 0,
+                Title: movie.Title || movie.title || 'Unknown',
+                Year: movie.Year || movie.year || '2024',
+                Genre: movie.Genre || movie.genre || 'Thriller',
+                Runtime: movie.Runtime || movie.runtime || 120,
+                rank: movie.rank || 1,
+                emotionalIntensity: movie.emotionalIntensity || 0,
+                suspenseIntensity: movie.suspenseIntensity || 0  // 🔥 ADD THRILLER FIELD
+            };
+        })
+        .filter(Boolean)
+        .reverse();
+
+    return {
+        props: {
+            collection,
+            movies
+        }
+    };
+}
 
 export default CollectionPage;
