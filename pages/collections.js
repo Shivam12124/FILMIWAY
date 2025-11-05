@@ -55,6 +55,18 @@ const CollectionsHub = () => {
         hasSubCollections: false
     },
     {
+    id: 'suspense-thriller',
+    title: 'Best Suspense Thriller Movies',
+    description: 'The ultimate selection of nail-biting, edge-of-your-seat suspense thrillers.',
+    icon: Star,
+    gradient: 'from-yellow-500 to-orange-700',
+    movieCount: '10',
+    rating: '8.8',
+    directLink: '/collection/best-thriller-movies',
+    hasSubCollections: false
+},
+
+    {
         id: 'drama-netflix',
         title: 'Best Drama Movies on Netflix',
         description: 'Critically acclaimed drama films streaming on Netflix',

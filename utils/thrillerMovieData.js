@@ -1,4 +1,4 @@
-// utils/thrillerMovieData.js - ULTIMATE SUSPENSE THRILLER COLLECTION ✅ PURE SUSPENSE INTENSITY
+// utils/thrillerMovieData.js - ULTIMATE SUSPENSE THRILLER COLLECTION ✅ WITH DNA & SENSITIVE CONTENT
 
 export const THRILLER_MOVIES = [
   {
@@ -28,6 +28,7 @@ export const THRILLER_MOVIES = [
     ],
     suspenseIntensity: 98,
     dominantColor: '#8b1e3f',
+    dna: { Mystery: 50, Thriller: 40, Crime: 10 },
     sensitiveScenes: []
   },
   {
@@ -56,7 +57,8 @@ export const THRILLER_MOVIES = [
       { time: 145, intensity: 96, label: 'Buried Alive', color: '#dc2626' }
     ],
     suspenseIntensity: 96,
-    dominantColor: '#2b3548',
+    dominantColor: '#042258ff',
+    dna: { Crime: 45, Thriller: 40, Drama: 15 },
     sensitiveScenes: []
   },
   {
@@ -85,7 +87,8 @@ export const THRILLER_MOVIES = [
       { time: 115, intensity: 95, label: 'Inevitable Fate', color: '#dc2626' }
     ],
     suspenseIntensity: 95,
-    dominantColor: '#312100',
+    dominantColor: '#865c07ff',
+    dna: { Thriller: 50, Crime: 35, Drama: 15 },
     sensitiveScenes: []
   },
   {
@@ -115,11 +118,15 @@ export const THRILLER_MOVIES = [
     ],
     suspenseIntensity: 94,
     dominantColor: '#72696e',
-    sensitiveScenes: []
+    dna: { Thriller: 55, Crime: 30, Horror: 15 },
+    sensitiveScenes: [
+      { start: "18:50", end: "18:57", description: "Explicit Scene" },
+      { start: "1:36:30", end: "1:36:37", description: "Nudity (man)" }
+    ]
   },
   {
     imdbID: 'tt0353969',
-    tmdbId: 194,
+    tmdbId: 11423,
     title: 'Memories of Murder',
     director: 'Bong Joon Ho',
     genre: 'Crime, Drama, Mystery',
@@ -144,7 +151,13 @@ export const THRILLER_MOVIES = [
     ],
     suspenseIntensity: 93,
     dominantColor: '#313a35',
-    sensitiveScenes: []
+    dna: { Crime: 50, Thriller: 35, Drama: 15 },
+    sensitiveScenes: [
+      { start: "9:58", end: "10:10", description: "Sex" },
+      { start: "54:34", end: "54:55", description: "Nudity (men)" },
+      { start: "1:01:12", end: "1:02:40", description: "Masturbating (man)" },
+      { start: "1:25:12", end: "1:25:47", description: "Partial nudity (woman)" }
+    ]
   },
   {
     imdbID: 'tt0327056',
@@ -173,7 +186,11 @@ export const THRILLER_MOVIES = [
     ],
     suspenseIntensity: 91,
     dominantColor: '#152c48',
-    sensitiveScenes: []
+    dna: { Crime: 45, Drama: 40, Thriller: 15 },
+    sensitiveScenes: [
+      { start: "11:45", end: "12:16", description: "Kissing" },
+      { start: "2:09:45", end: "2:10:16", description: "Passionate kissing" }
+    ]
   },
   {
     imdbID: 'tt0407887',
@@ -202,11 +219,16 @@ export const THRILLER_MOVIES = [
     ],
     suspenseIntensity: 90,
     dominantColor: '#b84f3a',
-    sensitiveScenes: []
+    dna: { Crime: 50, Thriller: 35, Drama: 15 },
+    sensitiveScenes: [
+      { start: "1:13:18", end: "1:13:22", description: "Kissing" },
+      { start: "1:21:50", end: "1:22:20", description: "Passionate kissing + Undressing" },
+      { start: "1:24:40", end: "1:24:47", description: "Implied Sexual Gesture" }
+    ]
   },
   {
     imdbID: 'tt5362988',
-    tmdbId: 395992,
+    tmdbId: 395834,
     title: 'Wind River',
     director: 'Taylor Sheridan',
     genre: 'Crime, Drama, Mystery',
@@ -231,7 +253,11 @@ export const THRILLER_MOVIES = [
     ],
     suspenseIntensity: 89,
     dominantColor: '#a6cef4',
-    sensitiveScenes: []
+    dna: { Crime: 45, Thriller: 40, Drama: 15 },
+    sensitiveScenes: [
+      { start: "1:12:05", end: "1:12:10", description: "Kissing" },
+      { start: "1:17:50", end: "1:18:20", description: "Sex" }
+    ]
   },
   {
     imdbID: 'tt2267998',
@@ -246,7 +272,7 @@ export const THRILLER_MOVIES = [
     cast: ['Ben Affleck', 'Rosamund Pike', 'Neil Patrick Harris'],
     boxOffice: '$369.3 million',
     budget: '$61 million',
-    synopsis: "A media-age thriller of deceit and ego; elegance with a scalpel's edge. A husband becomes the prime suspect in his wife’s disappearance.",
+    synopsis: "A media-age thriller of deceit and ego; elegance with a scalpel's edge. A husband becomes the prime suspect in his wife's disappearance.",
     poster: '/path/to/gonegirl-poster.jpg',
     backdrop: '/path/to/gonegirl-backdrop.jpg',
     backdrop_path: '/path/to/gonegirl-backdrop.jpg',
@@ -260,7 +286,16 @@ export const THRILLER_MOVIES = [
     ],
     suspenseIntensity: 88,
     dominantColor: '#e6c79c',
-    sensitiveScenes: []
+    dna: { Thriller: 50, Drama: 30, Mystery: 20 },
+    sensitiveScenes: [
+      { start: "6:41", end: "6:59", description: "Sex" },
+      { start: "20:57", end: "21:04", description: "Sex" },
+      { start: "43:20", end: "44:54", description: "Passionate kissing and partial nudity" },
+      { start: "45:00", end: "45:10", description: "Sex" },
+      { start: "2:00:10", end: "2:00:15", description: "Kissing" },
+      { start: "2:03:50", end: "2:04:55", description: "Sex" },
+      { start: "2:12:30", end: "2:13:45", description: "Nudity" }
+    ]
   },
   {
     imdbID: 'tt0119174',
@@ -289,7 +324,10 @@ export const THRILLER_MOVIES = [
     ],
     suspenseIntensity: 87,
     dominantColor: '#060f1e',
-    sensitiveScenes: []
+    dna: { Thriller: 55, Mystery: 30, Drama: 15 },
+    sensitiveScenes: [
+      { start: "52:32", end: "52:42", description: "Suggestive clothing (woman in bra)" }
+    ]
   }
 ];
 

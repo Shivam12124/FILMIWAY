@@ -10,21 +10,14 @@ import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
 import TMDBAttribution from '../../../components/TMDBAttribution';
 
-// Import thriller movies data and routes
+// Import thriller movies data
 import { THRILLER_MOVIES } from '../../../utils/thrillerMovieData';
 
 const COLORS = {
-  accent: '#DC143C',
-  accentLight: '#F06A6A',
-  bgPrimary: '#100B0D',
-  bgCard: 'rgba(34, 18, 25, 0.7)',
-  textPrimary: '#FFFFFF',
-  textSecondary: '#DDDDDD',
-  textMuted: '#888888',
-  borderAccent: '#DC143C33',
-  borderLight: '#66101F33',
+  accent: '#EAB308', accentLight: '#FDE047', bgPrimary: '#0B0B0C', bgCard: 'rgba(55, 65, 81, 0.3)',
+  textPrimary: '#FFFFFF', textSecondary: '#D1D5DB', textMuted: '#9CA3AF', textDisabled: '#6B7280',
+  borderAccent: 'rgba(234, 179, 8, 0.2)', borderLight: 'rgba(107, 114, 128, 0.2)',
 };
-
 const mobileHeroCSS = `
   @media (max-width: 767px) {
     .mobile-hero-row {
@@ -58,7 +51,7 @@ const mobileHeroCSS = `
       box-shadow: 0 2px 12px #0006;
       margin: 0;
       flex: 1;
-      border-left: 4px solid #DC143C;
+      border-left: 4px solid #dccf14ff;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
@@ -74,13 +67,13 @@ const mobileHeroCSS = `
     .mobile-thriller-icon {
       min-width: 24px;
       min-height: 24px;
-      color: #DC143C;
+      color: #cecb0aff;
       margin-top: 2px;
     }
     .mobile-thriller-title {
       font-size: 15px;
       font-weight: bold;
-      color: #dc143c;
+      color: #dcd914ff;
       margin-bottom: 1px;
       line-height: 1.12;
     }
@@ -102,18 +95,53 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
   const [hasClosedTrailer, setHasClosedTrailer] = useState(false);
   const timerRef = useRef(null);
 
-  const bannerImage =
-    movieData?.backdrop_path
-      ? getTMDBImage(movieData.backdrop_path, 'w1280')
-      : movieData?.backdrop || movie.backdrop || getTMDBImage(movie?.backdrop_path, 'w1280');
+  // ✅ MERGED BANNER IMAGE (priority: local data → API data → fallback)
+const bannerImage =
+  movieData?.backdrop_path
+    ? getTMDBImage(movieData.backdrop_path, 'w1280')
+    : movieData?.backdrop ||
+      movie?.backdrop ||
+      getTMDBImage(movie?.backdrop_path, 'w1280');
 
-  const posterImage =
-    movieData?.poster_path
-      ? getTMDBImage(movieData.poster_path, 'w500')
-      : movieData?.poster || movie.poster || getTMDBImage(movie?.poster_path, 'w500');
+const posterImage =
+  movieData?.poster_path
+    ? getTMDBImage(movieData.poster_path, 'w500')
+    : movieData?.poster ||
+      movie?.poster ||
+      getTMDBImage(movie?.poster_path, 'w500');
 
-  // For simplicity, use the movie synopsis as insight
-  const thrillerInsight = movie.synopsis || 'Masterclass suspense thriller movie.';
+
+  // Use local synopsis for better thriller insights
+const getThrillerInsight = (title) => {
+  switch (title) {
+    case 'Se7en':
+      return 'Devours your nerves with its bleak, rain-soaked dread and a finale you never forget.';
+    case 'Prisoners':
+      return 'Cranks moral tension to the max—unbearably intense, haunting, and unforgettable.';
+    case 'No Country for Old Men':
+      return 'Cold, terrifying, and philosophical—a new kind of Western with a villain for the ages.';
+    case 'The Silence of the Lambs':
+      return 'Masterclass in psychological chess—cinema’s two greatest minds locked in a duel of wits.';
+    case 'Memories of Murder':
+      return 'Procedural perfection—stumbling detectives, brooding atmosphere, and endless dead ends.';
+    case 'Mystic River':
+      return 'Raw trauma and guilt form the backbone of this relentlessly tragic neighborhood thriller.';
+    case 'The Departed':
+      return 'Betrayal, blood, chaos—Scorsese crafts the ultimate undercover nail-biter.';
+    case 'Wind River':
+      return 'Isolation, loss, and violence—nature weaponizes grief in a white-knuckle murder mystery.';
+    case 'Gone Girl':
+      return 'Media obsession, marriage, lies—Fincher’s razor-sharp twist thriller will cut you in half.';
+    case 'The Game':
+      return 'Reality warps, trust evaporates—Fincher keeps you guessing till the final frame.';
+    default:
+      return 'Masterclass suspense thriller movie.';
+  }
+};
+
+const thrillerInsight = getThrillerInsight(movie?.title);
+
+
 
   useEffect(() => {
     if (!isMobile && trailer && !showTrailer && !hasClosedTrailer) {
@@ -192,7 +220,7 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
                 {bannerImage ? (
                   <Image
                     src={bannerImage}
-                    alt={`${movie.title} banner`}
+                    alt={`${movie?.title} banner`}
                     fill
                     priority
                     sizes="100vw"
@@ -263,16 +291,24 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
       {isMobile ? (
         <div className="mobile-hero-row">
           <div className="mobile-hero-poster">
-            <img src={posterImage} alt={`${movie.title} poster`} />
+            {posterImage ? (
+              <img src={posterImage} alt={`${movie?.title} poster`} />
+            ) : (
+              <div style={{ background: COLORS.bgCard, width: '100%', height: '150px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <Film style={{ color: COLORS.textMuted }} />
+              </div>
+            )}
           </div>
           <div className="mobile-thriller-card">
             <div className="mobile-thriller-row">
               <Award className="mobile-thriller-icon" />
               <div>
-                <div className="mobile-thriller-title">Why This Thriller is Special</div>
+                <div className="mobile-thriller-title">Suspense Index</div>
               </div>
             </div>
-            <div className="mobile-thriller-desc">{thrillerInsight}</div>
+            <div className="mobile-thriller-desc">
+              <strong>{movie?.suspenseIntensity || 85}</strong> - {thrillerInsight}
+            </div>
           </div>
         </div>
       ) : (
@@ -285,14 +321,20 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
               transition={{ delay: 0.8, duration: 0.8 }}
             >
               <div className="relative" style={{ aspectRatio: '2/3' }}>
-                <Image
-                  src={posterImage}
-                  alt={`${movie.title} poster`}
-                  fill
-                  sizes="(max-width: 640px) 96px, (max-width: 768px) 192px, (max-width: 1024px) 224px, 320px"
-                  quality={85}
-                  className="object-cover rounded-lg sm:rounded-xl shadow-2xl"
-                />
+                {posterImage ? (
+                  <Image
+                    src={posterImage}
+                    alt={`${movie?.title} poster`}
+                    fill
+                    sizes="(max-width: 640px) 96px, (max-width: 768px) 192px, (max-width: 1024px) 224px, 320px"
+                    quality={85}
+                    className="object-cover rounded-lg sm:rounded-xl shadow-2xl"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: COLORS.bgCard, borderRadius: '12px' }}>
+                    <Film style={{ color: COLORS.textMuted }} />
+                  </div>
+                )}
               </div>
             </motion.div>
             <motion.div
@@ -335,7 +377,7 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
                       Why This Thriller is Special
                     </h2>
                     <p className="text-xs sm:text-sm hidden sm:block" style={{ color: COLORS.textMuted }}>
-                      Expert Analysis
+                      Suspense Index: {movie?.suspenseIntensity || 85}/100
                     </p>
                   </div>
                 </div>
@@ -362,15 +404,15 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
           </div>
         </div>
       )}
-      <TMDBAttribution />
+  
     </motion.div>
   );
 };
 
 const ThrillerBackButton = () => {
   const handleBackClick = () => {
-    if (typeof window !== "undefined") {
-      window.location.href = "/collection/best-thriller-movies";
+    if (typeof window !== 'undefined') {
+      window.location.href = '/collection/best-thriller-movies';
     }
   };
 
@@ -404,46 +446,56 @@ const ThrillerMoviePage = ({ movie }) => {
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
     checkMobile();
-    window.addEventListener("resize", checkMobile);
+    window.addEventListener('resize', checkMobile);
 
     const fetchMovieData = async () => {
       try {
         setIsLoading(true);
         const response = await fetch(
-          `https://api.themoviedb.org/3/movie/${movie.tmdbId}?api_key=YOUR_API_KEY&append_to_response=videos`
+          `https://api.themoviedb.org/3/movie/${movie.tmdbId}?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&append_to_response=videos`
         );
         const data = await response.json();
         setMovieData(data);
       } catch (error) {
-        console.error("Failed to fetch movie data:", error);
+        console.error('Failed to fetch movie data:', error);
       } finally {
         setIsLoading(false);
       }
     };
 
     fetchMovieData();
-    return () => window.removeEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener('resize', checkMobile);
   }, [movie.tmdbId]);
 
+  // Merge local movie data with API fetched movieData for images and fallback
+  const mergedMovieData = {
+    ...movieData,
+    backdrop_path: movieData?.backdrop_path || movie?.backdrop_path,
+    poster_path: movieData?.poster_path || movie?.poster_path,
+    backdrop: movie?.backdrop || (movieData && movieData.backdrop_path ? undefined : undefined),
+    poster: movie?.poster || (movieData && movieData.poster_path ? undefined : undefined),
+  };
+
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      sessionStorage.setItem("fromThrillerCollection", "true");
-      sessionStorage.removeItem("fromDramaCollection");
-      sessionStorage.removeItem("fromSurvivalCollection");
-      sessionStorage.removeItem("fromInceptionCollection");
-      sessionStorage.removeItem("fromMementoCollection");
-      sessionStorage.removeItem("fromShutterIslandCollection");
+    if (typeof window !== 'undefined') {
+      sessionStorage.setItem('fromThrillerCollection', 'true');
+      sessionStorage.removeItem('fromDramaCollection');
+      sessionStorage.removeItem('fromSurvivalCollection');
+      sessionStorage.removeItem('fromInceptionCollection');
+      sessionStorage.removeItem('fromMementoCollection');
+      sessionStorage.removeItem('fromShutterIslandCollection');
     }
   }, []);
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const trailer = movieData?.videos?.results?.find(
-    (video) => video.type === "Trailer" && video.site === "YouTube"
+  const trailer = mergedMovieData?.videos?.results?.find(
+    (video) => video.type === 'Trailer' && video.site === 'YouTube'
   );
 
   if (isLoading) {
@@ -461,7 +513,7 @@ const ThrillerMoviePage = ({ movie }) => {
     <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
       <Head>
         <title>{movie.title} ({movie.year}) - {movie.genre} Thriller Film | Filmiway</title>
-        <meta name="description" content={`${movie.title} (${movie.year}) - ${movie.synopsis.substring(0, 150)}...`} />
+        <meta name="description" content={`${movie.title} (${movie.year}) - ${movie.synopsis?.substring(0, 150) || 'Thriller film'}...`} />
         <link rel="canonical" href={`https://filmiway.com/movies/thriller/${movie.imdbID}`} />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
       </Head>
@@ -470,14 +522,12 @@ const ThrillerMoviePage = ({ movie }) => {
       </div>
       <ThrillerBackButton />
       <div className="relative z-10 pt-10 sm:pt-12 lg:pt-16">
-        <OptimizedBanner movie={movie} movieData={movieData} trailer={trailer} isMobile={isMobile} />
+        <OptimizedBanner movie={movie} movieData={mergedMovieData} trailer={trailer} isMobile={isMobile} />
         <div className="container mx-auto px-0 pb-16 sm:pb-24 lg:pb-32 max-w-7xl">
           <motion.div id="watch" initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.2, duration: 0.8 }} className="space-y-8 sm:space-y-12 px-3 sm:px-4 lg:px-6">
             <MovieDetailsSection movie={{ ...movie, Title: movie.title }} fromThrillerCollection={true} />
           </motion.div>
-          <div className="px-3 sm:px-4 lg:px-6">
-            <TMDBAttribution />
-          </div>
+         
         </div>
       </div>
     </div>
@@ -486,7 +536,7 @@ const ThrillerMoviePage = ({ movie }) => {
 
 export async function getStaticPaths() {
   const paths = THRILLER_MOVIES.map((movie) => ({
-    params: { id: movie.imdbID }
+    params: { id: movie.imdbID },
   }));
   return { paths, fallback: false };
 }
