@@ -27,7 +27,9 @@
     "analyze": "cross-env ANALYZE=true next build"
   },
   "dependencies": {
+    "@microsoft/clarity": "^1.0.0",
     "@tailwindcss/typography": "^0.5.16",
+    "clarity-js": "^0.8.39",
     "critters": "^0.0.23",
     "firebase": "^10.14.1",
     "framer-motion": "^10.16.4",
