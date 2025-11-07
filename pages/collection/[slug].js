@@ -1221,18 +1221,19 @@ export async function getStaticProps({ params }) {
         return { notFound: true };
     }
 
-    let movieDatabase;
-    if (collection.slug === 'best-survival-movies') {
-        movieDatabase = SURVIVALDATABASE;
-    } else if (collection.slug === 'best-thriller-movies') {
-        movieDatabase = THRILLERMOVIES;
-    } else if (collection.slug === 'best-mystery-thriller-movies') {  // ✅ MYSTERY THRILLER ADDED
-        movieDatabase = MYSTERY_THRILLER_MOVIES;                      // ✅ MYSTERY THRILLER DATABASE
-    } else if (collection.slug === 'best-drama-movies-on-netflix') {
-        movieDatabase = DRAMAMOVIES;
-    } else {
-        movieDatabase = COMPLETEMOVIEDATABASE;
-    }
+   let movieDatabase;
+if (collection.slug === 'best-survival-movies') {
+    movieDatabase = SURVIVAL_DATABASE;
+} else if (collection.slug === 'best-thriller-movies') {
+    movieDatabase = THRILLER_MOVIES;
+} else if (collection.slug === 'best-mystery-thriller-movies') {
+    movieDatabase = MYSTERY_THRILLER_MOVIES;
+} else if (collection.slug === 'best-drama-movies-on-netflix') {
+    movieDatabase = DRAMA_MOVIES;
+} else {
+    movieDatabase = COMPLETE_MOVIE_DATABASE;
+}
+
 
     const movieArray = Array.isArray(movieDatabase) ? movieDatabase : Object.values(movieDatabase);
 
