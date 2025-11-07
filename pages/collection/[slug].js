@@ -302,7 +302,7 @@ const CollectionPage = ({ collection, movies }) => {
             };
         } else if (collection.slug === 'best-mystery-thriller-movies') {  // ✅ MYSTERY THRILLER ADDED
             return {
-                title: "Best Mystery Thriller Movies – 10 Greatest Detective Films You Must Watch",
+                title: "Best Mystery Thriller Movies – 10 Greatest Mystery  Films You Must Watch",
                 subtitle: "Mystery Thrillers with Clever Detective Work & Impossible Puzzles Ranked by Mystery Complexity"
             };
         } else if (collection.slug === 'best-survival-movies') {
