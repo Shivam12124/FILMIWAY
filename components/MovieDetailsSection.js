@@ -6,6 +6,7 @@ import { Users, Film, BookOpen, Star } from 'lucide-react';
 import { COMPLETE_MOVIE_DATA, STRATEGIC_QUOTES } from '../utils/movieData';
 import { COMPLETE_MOVIE_DATA as SURVIVAL_MOVIE_DATA, STRATEGIC_QUOTES as SURVIVAL_QUOTES, SENSITIVE_TIMELINES } from '../utils/survivalMovieData';
 import COMPLETE_THRILLER_DATABASE from '../utils/thrillerMovieData';
+import MYSTERY_THRILLER_DATABASE from '../utils/mysteryThrillerMovieData';  // ✅ ADDED
 import dramaRoutes from '../utils/dramaMovieRoutes';
 const DRAMA_MOVIE_DATA = dramaRoutes.COMPLETE_MOVIE_DATABASE;
 
@@ -21,6 +22,7 @@ import ShutterIslandSEOFAQSection from './ShutterIslandSEOFAQSection';
 import SurvivalSEOFAQSection from './SurvivalSEOFAQSection';
 import DramaSEOFAQSection from './DramaSEOFAQSection';
 import ThrillerSEOFAQSection from './ThrillerSEOFAQSection';
+import MysteryThrillerSEOFAQSection from './MysteryThrillerSEOFAQSection';
 
 const MovieDetailsSection = React.memo(({
   movie,
@@ -29,21 +31,32 @@ const MovieDetailsSection = React.memo(({
   fromInceptionCollection,
   fromSurvivalCollection,
   fromDramaCollection,
-  fromThrillerCollection
+  fromThrillerCollection,
+  fromMysteryThrillerCollection
 }) => {
+
   if (!movie) return null;
 
   const safeLookup = (collection, id) => (collection && id && collection[id]) || null;
 
-  // ✅ UNIFIED THRILLER LOOKUP - Uses object map with tmdbId keys
+  // ✅ THRILLER LOOKUP
   const getThrillerMovieInfo = () => {
     if (!fromThrillerCollection || !movie.tmdbId) return null;
     if (!COMPLETE_THRILLER_DATABASE) return null;
     return COMPLETE_THRILLER_DATABASE[movie.tmdbId] || null;
   };
 
+  // ✅ MYSTERY THRILLER LOOKUP
+  const getMysteryThrillerMovieInfo = () => {
+    if (!fromMysteryThrillerCollection || !movie.tmdbId) return null;
+    if (!MYSTERY_THRILLER_DATABASE) return null;
+    return MYSTERY_THRILLER_DATABASE[movie.tmdbId] || null;
+  };
+
   // ✅ GET MOVIE INFO FROM CORRECT COLLECTION
-  const movieInfo = fromThrillerCollection
+  const movieInfo = fromMysteryThrillerCollection
+    ? getMysteryThrillerMovieInfo()
+    : fromThrillerCollection
     ? getThrillerMovieInfo()
     : fromSurvivalCollection
     ? safeLookup(SURVIVAL_MOVIE_DATA, movie.tmdbId)
@@ -88,19 +101,25 @@ const MovieDetailsSection = React.memo(({
 
   const sensitiveScenes = safeMovieInfo.sensitiveScenes || SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes || [];
 
-  const quote = fromThrillerCollection
+  const quote = fromMysteryThrillerCollection
+    ? safeMovieInfo.synopsis || ''
+    : fromThrillerCollection
     ? safeMovieInfo.synopsis || ''
     : fromSurvivalCollection
     ? SURVIVAL_QUOTES?.[movie.tmdbId] || ''
     : STRATEGIC_QUOTES?.[movie.tmdbId] || '';
 
-  const displayIndex = fromThrillerCollection
+  const displayIndex = fromMysteryThrillerCollection
+    ? safeMovieInfo.mysteryComplexity || 85
+    : fromThrillerCollection
     ? safeMovieInfo.suspenseIntensity || 85
     : fromSurvivalCollection
     ? safeMovieInfo.survivabilityIndex || 85
     : safeMovieInfo.mindBendingIndex || 85;
 
-  const scoreValue = fromDramaCollection
+  const scoreValue = fromMysteryThrillerCollection
+    ? movie.mysteryComplexity || safeMovieInfo.mysteryComplexity || displayIndex
+    : fromDramaCollection
     ? movie.emotionalIntensity || safeMovieInfo.emotionalIntensity || 75
     : fromThrillerCollection
     ? movie.suspenseIntensity || safeMovieInfo.suspenseIntensity || displayIndex
@@ -109,6 +128,14 @@ const MovieDetailsSection = React.memo(({
   const complexityLevel = safeMovieInfo.complexityLevel || 'HIGH';
 
   const getComplexityColor = (level) => {
+    if (fromMysteryThrillerCollection) {
+      switch (level) {
+        case 'EXTREME': return '#7c3aed';
+        case 'HIGH': return '#a78bfa';
+        case 'MEDIUM': return '#c4b5fd';
+        default: return '#6b7280';
+      }
+    }
     if (fromDramaCollection) {
       switch (level) {
         case 'EXTREME': return '#ea0808ff';
@@ -158,6 +185,7 @@ const MovieDetailsSection = React.memo(({
   };
 
   const getComplexityScoreTitle = () => {
+    if (fromMysteryThrillerCollection) return 'MYSTERY COMPLEXITY SCORE';
     if (fromDramaCollection) return 'EMOTIONAL INTENSITY SCORE';
     if (fromThrillerCollection) return 'SUSPENSE INTENSITY SCORE';
     if (fromSurvivalCollection) return 'SURVIVAL INTENSITY SCORE';
@@ -168,6 +196,7 @@ const MovieDetailsSection = React.memo(({
   };
 
   const getComplexityIndexLabel = () => {
+    if (fromMysteryThrillerCollection) return 'MYSTERY INDEX';
     if (fromDramaCollection) return 'EMOTIONAL INTENSITY';
     if (fromThrillerCollection) return 'SUSPENSE INDEX';
     if (fromSurvivalCollection) return 'SURVIVABILITY INDEX';
@@ -178,6 +207,7 @@ const MovieDetailsSection = React.memo(({
   };
 
   const getComplexityLevelLabel = () => {
+    if (fromMysteryThrillerCollection) return 'MYSTERY COMPLEXITY LEVEL';
     if (fromDramaCollection) return 'EMOTIONAL RESONANCE LEVEL';
     if (fromThrillerCollection) return 'SUSPENSE INTENSITY LEVEL';
     if (fromSurvivalCollection) return 'SURVIVAL INTENSITY LEVEL';
@@ -188,6 +218,12 @@ const MovieDetailsSection = React.memo(({
   };
 
   const getComplexityDescription = () => {
+    if (fromMysteryThrillerCollection) {
+      if (scoreValue >= 90) return 'A masterfully crafted mystery with layers of deception, leaving audiences questioning everything until the final reveal.';
+      if (scoreValue >= 80) return 'Intricately plotted thriller with compelling mysteries and shocking revelations throughout.';
+      if (scoreValue >= 70) return 'Engaging mystery with well-crafted clues and satisfying detective work.';
+      return 'Accessible mystery thriller with genuine intrigue and compelling storylines.';
+    }
     if (fromDramaCollection) {
       if (scoreValue >= 90) return 'A profoundly moving emotional journey reaching the deepest corners of human experience.';
       if (scoreValue >= 80) return 'Intensely emotional narrative with powerful character moments and deeply affecting connections.';
@@ -207,6 +243,7 @@ const MovieDetailsSection = React.memo(({
   };
 
   const getBorderColor = () => {
+    if (fromThrillerCollection) return 'border-yellow-400/40';
     if (fromDramaCollection) return 'border-red-400/40';
     if (fromThrillerCollection) return 'border-yellow-400/40';
     if (fromInceptionCollection) return 'border-yellow-400/40';
@@ -216,6 +253,7 @@ const MovieDetailsSection = React.memo(({
   };
 
   const getStarColor = () => {
+    if (fromThrillerCollection) return 'text-yellow-400';
     if (fromDramaCollection) return 'text-red-400';
     if (fromThrillerCollection) return 'text-yellow-400';
     if (fromInceptionCollection) return 'text-yellow-400';
@@ -231,6 +269,7 @@ const MovieDetailsSection = React.memo(({
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
     >
+      {/* REST OF YOUR JSX STAYS THE SAME */}
       <div className="text-center space-y-6">
         <motion.h2
           className="text-4xl md:text-6xl font-extralight tracking-widest text-white"
@@ -417,8 +456,10 @@ const MovieDetailsSection = React.memo(({
 
       <RealCommentsRatingSection movie={movie} />
 
-      {/* ✅ COLLECTION-SPECIFIC FAQ */}
-      {fromThrillerCollection ? (
+      {/* ✅ COLLECTION-SPECIFIC FAQ - INCLUDES MYSTERY THRILLER */}
+      {fromMysteryThrillerCollection ? (
+        <MysteryThrillerSEOFAQSection movie={movie} />
+      ) : fromThrillerCollection ? (
         <ThrillerSEOFAQSection movie={movie} />
       ) : fromSurvivalCollection ? (
         <SurvivalSEOFAQSection movie={movie} />
@@ -433,6 +474,7 @@ const MovieDetailsSection = React.memo(({
       ) : (
         <SEOFAQSection movie={movie} />
       )}
+
     </motion.div>
   );
 });

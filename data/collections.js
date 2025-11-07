@@ -226,6 +226,48 @@ export const COLLECTIONS = {
       }
     }
   },
+// 🕵️‍♂️ BEST MYSTERY THRILLERS COLLECTION
+'best-mystery-thriller-movies': {
+  slug: 'best-mystery-thriller-movies',
+  title: 'The 10 Best Mystery Thriller Movies of All Time',
+  description: 'The most gripping, mind-bending, and unpredictable mystery thrillers—ranked for suspense, complexity, and twist factor.',
+  movies: [
+    'tt0114369',  // Se7en (1995)
+    'tt1130884',  // Shutter Island (2010)
+    'tt1392214',  // Prisoners (2013)
+    'tt0443706',  // Zodiac (2007)
+    'tt2267998',  // Gone Girl (2014)
+    'tt0353969',  // Memories of Murder (2003)
+    'tt4857264',  // The Invisible Guest (2016)
+    'tt7282468',  // Burning (2018)
+    'tt0119174',  // The Game (1997)
+    'tt0119177'   // Identity (2003)
+  ],
+  badges: [
+    { label: 'Mysterious', desc: 'Complex, twist-filled plots' },
+    { label: 'Unpredictable', desc: 'Keeps you guessing till the end' },
+    { label: 'Mind-Bending', desc: 'Reality-questioning narratives' }
+  ],
+  metaTitle: '10 Best Mystery Thriller Movies Ever Made - Filmiway Ranking (2025)',
+  metaDescription: 'Unlock the most suspenseful, mysterious, and mind-warping thrillers in cinema. The definitive top 10, curated and ranked by expert cinephiles.',
+  metaKeywords: 'best mystery thriller movies, twists, detective films, best mystery movies, plot twist thrillers, psychological mysteries',
+  theme: 'purple',
+  primaryColor: '#7c3aed',
+  secondaryColor: '#a78bfa',
+  accentColor: '#fbbf24',
+  emoji: '🕵️‍♂️',
+  category: 'mystery-thriller',
+  canonicalUrl: 'https://filmiway.com/collection/best-mystery-thriller-movies',
+  seo: {
+    title: 'Best Mystery Thriller Movies | Filmiway Ranking',
+    description: 'Top 10 mystery thriller movies ranked for mind games and suspense, curated by Filmiway. Experience the pinnacle of cinematic suspense and mystery.',
+    keywords: 'mystery thriller movies, best thrillers, suspense films, plot twists, must watch mysteries',
+    canonicalUrl: 'https://filmiway.com/collection/best-mystery-thriller-movies',
+    ogImage: 'https://filmiway.com/images/mystery-thriller-movies-collection-og.jpg'
+  }
+},
+
+
 
   // 🩸 BEST THRILLER MOVIES COLLECTION
   'best-thriller-movies': {
