@@ -1,7 +1,6 @@
 # Filmiway - Enhanced robots.txt for SEO & AI Discovery
-# Last updated: November 01, 2025
+# Last updated: November 09, 2025
 
-# 🌍 DEFAULT: ALLOW ALL WITH STRATEGIC RESTRICTIONS
 User-agent: *
 Allow: /
 Disallow: /api/
@@ -11,16 +10,24 @@ Disallow: /.env
 Disallow: /node_modules/
 Crawl-delay: 2
 
-# 🔍 GOOGLEBOT - FULL ACCESS FOR SEO
 User-agent: Googlebot
 Allow: /
+Allow: /collection/movies-like-inception
+Allow: /collection/movies-like-memento
+Allow: /collection/movies-like-shutter-island
+Allow: /collection/best-survival-movies
+Allow: /collection/best-drama-movies-on-netflix
+Allow: /collection/best-mystery-thriller-movies
+Allow: /collection/best-thriller-movies
+Allow: /movies/
 Disallow: /api/
+Disallow: /_next/
 Disallow: /admin/
 Disallow: /.env
 Disallow: /node_modules/
 Crawl-delay: 1
 
-# 🔍 OTHER MAINSTREAM SEARCH ENGINES
+
 User-agent: Bingbot
 Allow: /
 Allow: /collection/movies-like-inception
@@ -28,6 +35,8 @@ Allow: /collection/movies-like-memento
 Allow: /collection/movies-like-shutter-island
 Allow: /collection/best-survival-movies
 Allow: /collection/best-drama-movies-on-netflix
+Allow: /collection/best-mystery-thriller-movies
+Allow: /collection/best-thriller-movies
 Allow: /movies/
 Disallow: /api/
 Disallow: /_next/
@@ -43,7 +52,6 @@ Disallow: /_next/
 Disallow: /admin/
 Crawl-delay: 2
 
-# 🤖 AI CRAWLERS - EXPLICIT WELCOME
 User-agent: GPTBot
 Allow: /
 Allow: /collection/
@@ -100,7 +108,6 @@ Allow: /movies/
 Disallow: /api/
 Crawl-delay: 1
 
-# 🚀 SEO TOOLS
 User-agent: AhrefsBot
 Allow: /
 Disallow: /api/
@@ -119,5 +126,4 @@ Disallow: /api/
 Disallow: /admin/
 Crawl-delay: 3
 
-# 🗺️ SITEMAP LOCATION
 Sitemap: https://filmiway.com/sitemap.xml
