@@ -65,6 +65,20 @@ const CollectionsHub = () => {
             directLink: '/collection/best-thriller-movies',
             hasSubCollections: false
         },
+
+           {
+    id: 'detective-thriller',
+    title: 'Best Detective Thriller Movies',
+    description: 'Gripping detective stories with intense investigations and suspenseful mysteries',
+    icon: Star,
+    gradient: 'from-blue-500 to-indigo-700',
+    movieCount: '10',
+    rating: '8.5',
+    directLink: '/collection/best-detective-thriller-movies',
+    hasSubCollections: false
+       },
+
+
         {
             id: 'mystery-thriller',  // ✅ MYSTERY THRILLER COLLECTION ADDED
             title: 'Best Mystery Thriller Movies',

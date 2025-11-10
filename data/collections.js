@@ -1,4 +1,4 @@
-// data/collections.js - SEO OPTIMIZED FOR "BEST SURVIVAL MOVIES" 🚀
+// data/collections.js - SEO OPTIMIZED 🚀
 
 import { COMPLETE_MOVIE_DATABASE } from '../utils/movieData';
 
@@ -226,6 +226,48 @@ export const COLLECTIONS = {
       }
     }
   },
+
+    // 🕵️‍♂️ 10 BEST DETECTIVE THRILLER MOVIES COLLECTION
+  'best-detective-thriller-movies': {
+    slug: 'best-detective-thriller-movies',
+    title: '10 Best Detective Thriller Movies',
+    description: 'Top detective & investigation thriller movies featuring gripping crime-solving and suspense.',
+    movies: [
+      'tt0114369', // Se7en (1995)
+      'tt0443706', // Zodiac (2007)
+      'tt1392214', // Prisoners (2013)
+      'tt1305806', // The Secret in Their Eyes (2009)
+      'tt0353969', // Memories of Murder (2003)
+      'tt1190539', // The Chaser (2008)
+      'tt0327056', // Mystic River (2003)
+      'tt32539724', // Marshland (2014)
+      'tt0116282', // Fargo (1996)
+      'tt0106977'  // The Fugitive (1993)
+    ],
+    badges: [
+      { label: 'Detective Thrillers', desc: 'Crime-solving and intense investigations' },
+      { label: 'Expert Picks', desc: 'Curated by film experts and enthusiasts' },
+      { label: 'High Suspense', desc: 'Gripping narratives with twists' }
+    ],
+    metaTitle: '10 Best Detective Thriller Movies - Expert Ranking | Filmiway',
+    metaDescription: 'Discover the top 10 detective thriller movies that combine mystery, crime, and suspense for the ultimate investigative experience.',
+    metaKeywords: 'best detective thriller movies, crime thrillers, mystery movies, detective movies, top thriller films',
+    theme: 'blue',
+    primaryColor: '#2563eb',
+    secondaryColor: '#3b82f6',
+    accentColor: '#60a5fa',
+    emoji: '🕵️‍♂️',
+    category: 'detective-thriller',
+    canonicalUrl: 'https://filmiway.com/collection/best-detective-thriller-movies',
+    seo: {
+      title: '10 Best Detective Thriller Movies - Expert Ranking | Filmiway',
+      description: 'Discover the top 10 detective thriller movies that combine mystery, crime, and suspense for the ultimate investigative experience.',
+      keywords: 'best detective thriller movies, crime thrillers, mystery movies, detective movies, top thriller films',
+      canonicalUrl: 'https://filmiway.com/collection/best-detective-thriller-movies',
+      ogImage: 'https://filmiway.com/images/detective-thriller-collection-og.jpg'
+    }
+  },
+
 // 🕵️‍♂️ BEST MYSTERY THRILLERS COLLECTION
 'best-mystery-thriller-movies': {
   slug: 'best-mystery-thriller-movies',
@@ -312,10 +354,22 @@ export const COLLECTIONS = {
 };
 
 export const getAllCollectionSlugs = () => Object.keys(COLLECTIONS);
+
 export const getCollectionBySlug = (slug) => COLLECTIONS[slug];
+
 export const getFeaturedCollections = () => Object.values(COLLECTIONS).filter(collection => collection.featured);
+
 export const getCollectionsByCategory = (category) => Object.values(COLLECTIONS).filter(collection => collection.category === category);
+
 export const getSurvivalCollection = () => COLLECTIONS['best-survival-movies'];
+
 export const getNetflixDramaCollection = () => COLLECTIONS['best-drama-movies-on-netflix'];
+
 export const getThrillerCollection = () => COLLECTIONS['best-thriller-movies'];
+
+export const getDetectiveThrillerCollection = () => COLLECTIONS['best-detective-thriller-movies'];
+
+export const getMysteryThrillerCollection = () => COLLECTIONS['best-mystery-thriller-movies'];
+
 export default COLLECTIONS;
+

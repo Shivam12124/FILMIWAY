@@ -9,6 +9,8 @@ import { COMPLETE_MOVIE_DATABASE as SURVIVAL_DATABASE, COMPLETE_MOVIE_DATA as SU
 import DRAMA_MOVIES from '../../utils/dramaMovieData';
 import { THRILLER_MOVIES } from '../../utils/thrillerMovieData'; // 🔥 ADD THIS LINE FOR THRILLER
 import { MYSTERY_THRILLER_MOVIES } from '../../utils/mysteryThrillerMovieData'; 
+import { DETECTIVE_THRILLER_MOVIES } from '../../utils/detectiveThrillerMovieData';
+
 // Components
 import CinematicBackground from '../../components/CinematicBackground';
 import StrategicControls from '../../components/StrategicControls';
@@ -160,6 +162,31 @@ const CollectionPage = ({ collection, movies }) => {
                     text2: "Each film has been selected for its ability to completely reframe the viewing experience, with revelations that transform every previous scene into something entirely different."
                 }
             };
+
+  } else if (collection.slug === 'best-detective-thriller-movies') {  // ✅ Added detective thriller
+      return {
+        badge: "Detective Thriller Cinema",
+        title: "Detective Thrillers",
+        description: "Dive into an expertly curated collection of gripping detective thrillers featuring cunning detectives, intricate mysteries, and thrilling investigations, ranked by detective brilliance and suspense.",
+        selection: {
+          text1: "From classic whodunits to modern detective masterpieces, these films challenge your deductive skills and keep you guessing until the very end.",
+          text2: "Each detective thriller showcases brilliant investigative work, complex characters, and shocking twists that redefine mystery storytelling."
+        },
+        ranking: {
+          text: "Our detective brilliance index evaluates puzzle complexity, investigative depth, character intelligence, and the suspense built throughout each film.",
+          points: [
+            "Complex detective puzzles",
+            "Character intelligence and insight",
+            "Suspense and tension buildup",
+            "Narrative twist and resolution quality"
+          ]
+        },
+        experience: {
+          text1: "Perfect for fans of cerebral thrillers and master detectives who love unraveling puzzles under tight suspense.",
+          text2: "Selected for their unforgettable investigations, iconic detectives, and genre-defining storytelling."
+        }
+      };
+
         } else if (collection.slug === 'best-thriller-movies') {
             return {
                 badge: "Suspense Thriller Cinema",
@@ -315,6 +342,12 @@ const CollectionPage = ({ collection, movies }) => {
                 title: "Best Drama Movies on Netflix – 10 Award-Winning Films You Must Watch",
                 subtitle: "Emotionally Powerful Dramas with Oscar-Winning Performances Streaming Now"
             };
+            } else if (collection.slug === 'best-detective-thriller-movies') {  // ✅ Added detective thriller
+      return {
+      title: "10 Best Detective Thriller Movies Like Zodiac & Prisoners",
+       subtitle: "Detective Thrillers with Intricate Mysteries and Masterfully Crafted Suspense Ranked by Investigative Brilliance"
+
+      };
         } else {
             return {
                 title: `Best ${collection.title} – Top 10 Curated Collection You Must Watch`,
@@ -340,6 +373,12 @@ const CollectionPage = ({ collection, movies }) => {
                 title: "Loading Movies Like Shutter Island",
                 description: "Curating psychological thrillers with unreliable narrators and shocking plot twists"
             };
+ } else if (collection?.slug === 'best-detective-thriller-movies') {  // ✅ Added detective thriller
+      return {
+        title: "Loading Best Detective Thriller Movies",
+        description: "Curating the finest detective thrillers with community reviews and ratings"
+      };
+
         } else if (collection?.slug === 'best-thriller-movies') {
             return {
                 title: "Loading Best Thriller Movies",
@@ -433,6 +472,16 @@ const CollectionPage = ({ collection, movies }) => {
                 twitterTitle: "🎬 Best Drama Movies on Netflix – 10 Award-Winning Films",
                 progressText: `of Top ${movies.length} Netflix Dramas`
             };
+} else if (collection.slug === 'best-detective-thriller-movies') {  // ✅ Added detective thriller
+  return {
+    title: "10 Best Detective Thriller Movies Like Zodiac & Prisoners",
+    description: "Stop scrolling! This is the most advanced handpicked list on the internet of 10 detective thrillers with gripping mysteries, master detectives, and expert storytelling. Perfect for fans of suspense and cerebral crime narratives!",
+    keywords: "best detective thriller movies, detective films, investigative thrillers, mystery thrillers, cerebral crime stories, gripping detective stories, thriller investigations, crime mystery films, sherlock holmes style, detective cinema, suspense thrillers",
+    ogTitle: "The Most Advanced List on the Internet – 10 Best Detective Thriller Movies 🔎",
+    twitterTitle: "🔎 The Most Advanced Handpicked List – 10 Best Detective Thriller Movies",
+    progressText: `of Top ${movies.length} Best Detective Thrillers`
+  };
+
         } else {
             return {
                 title: `Best ${collection.title} – Top 10 Curated Movie Collection You Must Watch`,
@@ -504,32 +553,35 @@ const CollectionPage = ({ collection, movies }) => {
             sessionStorage.setItem('fromCollection', 'true');
             
             // Clear all collection flags first
-            sessionStorage.removeItem('fromInceptionCollection');
-            sessionStorage.removeItem('fromMementoCollection');
-            sessionStorage.removeItem('fromShutterIslandCollection');
-            sessionStorage.removeItem('fromSurvivalCollection');
-            sessionStorage.removeItem('fromThrillerCollection');
-            sessionStorage.removeItem('fromMysteryThrillerCollection');  // ✅ MYSTERY THRILLER FLAG
-            sessionStorage.removeItem('fromDramaCollection');
+ sessionStorage.removeItem('fromInceptionCollection');
+      sessionStorage.removeItem('fromMementoCollection');
+      sessionStorage.removeItem('fromShutterIslandCollection');
+      sessionStorage.removeItem('fromSurvivalCollection');
+      sessionStorage.removeItem('fromThrillerCollection');
+      sessionStorage.removeItem('fromMysteryThrillerCollection');
+      sessionStorage.removeItem('fromDramaCollection');
+      sessionStorage.removeItem('fromDetectiveThrillerCollection');  // ✅ Add flag here
+
             
-            // Set appropriate collection flag
-            if (collection.slug === 'movies-like-inception') {
-                sessionStorage.setItem('fromInceptionCollection', 'true');
-            } else if (collection.slug === 'movies-like-memento') {
-                sessionStorage.setItem('fromMementoCollection', 'true');
-            } else if (collection.slug === 'movies-like-shutter-island') {
-                sessionStorage.setItem('fromShutterIslandCollection', 'true');
-            } else if (collection.slug === 'best-survival-movies') {
-                sessionStorage.setItem('fromSurvivalCollection', 'true');
-            } else if (collection.slug === 'best-thriller-movies') {
-                sessionStorage.setItem('fromThrillerCollection', 'true');
-            } else if (collection.slug === 'best-mystery-thriller-movies') {  // ✅ MYSTERY THRILLER FLAG
-                sessionStorage.setItem('fromMysteryThrillerCollection', 'true');
-            } else if (collection.slug === 'best-drama-movies-on-netflix') {
-                sessionStorage.setItem('fromDramaCollection', 'true');
-            }
-        }
-    };
+      if (collection.slug === 'movies-like-inception') {
+        sessionStorage.setItem('fromInceptionCollection', 'true');
+      } else if (collection.slug === 'movies-like-memento') {
+        sessionStorage.setItem('fromMementoCollection', 'true');
+      } else if (collection.slug === 'movies-like-shutter-island') {
+        sessionStorage.setItem('fromShutterIslandCollection', 'true');
+      } else if (collection.slug === 'best-survival-movies') {
+        sessionStorage.setItem('fromSurvivalCollection', 'true');
+      } else if (collection.slug === 'best-thriller-movies') {
+        sessionStorage.setItem('fromThrillerCollection', 'true');
+      } else if (collection.slug === 'best-mystery-thriller-movies') {
+        sessionStorage.setItem('fromMysteryThrillerCollection', 'true');
+      } else if (collection.slug === 'best-drama-movies-on-netflix') {
+        sessionStorage.setItem('fromDramaCollection', 'true');
+      } else if (collection.slug === 'best-detective-thriller-movies') {  // ✅ Add detective thriller case
+        sessionStorage.setItem('fromDetectiveThrillerCollection', 'true');
+      }
+    }
+  };
 
     // Get dynamic content
     const collectionContent = getCollectionContent();
@@ -923,23 +975,28 @@ return (
                                 "datePublished": movie?.Year || "2024",
                                 "genre": movie?.Genre || "Drama"
                             };
-                            if (movie?.imdbID) {
-                                const basePath = collection?.slug === 'best-survival-movies'
-                                    ? 'movies/survival/'
-                                    : collection?.slug === 'movies-like-inception'
-                                    ? 'movies/like-inception/'
-                                    : collection?.slug === 'movies-like-memento'
-                                    ? 'movies/like-memento/'
-                                    : collection?.slug === 'movies-like-shutter-island'
-                                    ? 'movies/like-shutter-island/'
-                                    : collection?.slug === 'best-thriller-movies'
-                                    ? 'movies/thriller/'
-                                    : collection?.slug === 'best-mystery-thriller-movies'  // ✅ MYSTERY THRILLER ADDED
-                                    ? 'movies/mystery-thriller/'                            // ✅ MYSTERY THRILLER URL
-                                    : collection?.slug === 'best-drama-movies-on-netflix'
-                                    ? 'movies/netflix/'
-                                    : 'movies/';
-                                itemObj.url = `https://filmiway.com/${basePath}${movie.imdbID}`;
+if (movie?.imdbID) {
+  const basePath =
+    collection?.slug === 'best-survival-movies'
+      ? 'movies/survival/'
+      : collection?.slug === 'movies-like-inception'
+      ? 'movies/like-inception/'
+      : collection?.slug === 'movies-like-memento'
+      ? 'movies/like-memento/'
+      : collection?.slug === 'movies-like-shutter-island'
+      ? 'movies/like-shutter-island/'
+      : collection?.slug === 'best-thriller-movies'
+      ? 'movies/thriller/'
+      : collection?.slug === 'best-mystery-thriller-movies'  // ✅ MYSTERY THRILLER
+      ? 'movies/mystery-thriller/'
+      : collection?.slug === 'best-detective-thriller-movies'  // ✅ Added detective thriller collection slug check
+      ? 'movies/detective-thriller/'                            // ✅ Added detective thriller URL path
+      : collection?.slug === 'best-drama-movies-on-netflix'
+      ? 'movies/netflix/'
+      : 'movies/';
+  itemObj.url = `https://filmiway.com/${basePath}${movie.imdbID}`;
+
+
                             }
                             return {
                                 "@type": "ListItem",
@@ -1019,21 +1076,23 @@ return (
                             <AnimatePresence mode="wait">
                                 <Link 
                                     href={
-                                        collection.slug === 'movies-like-inception'
-                                            ? `/movies/like-inception/${currentMovie.imdbID}`
-                                            : collection.slug === 'movies-like-memento' 
-                                            ? `/movies/like-memento/${currentMovie.imdbID}`
-                                            : collection.slug === 'movies-like-shutter-island'
-                                            ? `/movies/like-shutter-island/${currentMovie.imdbID}`
-                                            : collection.slug === 'best-survival-movies'
-                                            ? `/movies/survival/${currentMovie.imdbID}`
-                                            : collection.slug === 'best-thriller-movies'
-                                            ? `/movies/thriller/${currentMovie.imdbID}`
-                                            : collection.slug === 'best-mystery-thriller-movies'  // ✅ MYSTERY THRILLER ADDED
-                                            ? `/movies/mystery-thriller/${currentMovie.imdbID}`   // ✅ MYSTERY THRILLER URL
-                                            : collection.slug === 'best-drama-movies-on-netflix'
-                                            ? `/movies/netflix/${currentMovie.imdbID}`
-                                            : `/movies/${currentMovie.imdbID}`
+      collection.slug === 'movies-like-inception'
+        ? `/movies/like-inception/${currentMovie.imdbID}`
+        : collection.slug === 'movies-like-memento'
+        ? `/movies/like-memento/${currentMovie.imdbID}`
+        : collection.slug === 'movies-like-shutter-island'
+        ? `/movies/like-shutter-island/${currentMovie.imdbID}`
+        : collection.slug === 'best-survival-movies'
+        ? `/movies/survival/${currentMovie.imdbID}`
+        : collection.slug === 'best-thriller-movies'
+        ? `/movies/thriller/${currentMovie.imdbID}`
+        : collection.slug === 'best-mystery-thriller-movies'  // ✅ Mystery thriller
+        ? `/movies/mystery-thriller/${currentMovie.imdbID}`
+        : collection.slug === 'best-detective-thriller-movies' // ✅ Detective thriller
+        ? `/movies/detective-thriller/${currentMovie.imdbID}`
+        : collection.slug === 'best-drama-movies-on-netflix'
+        ? `/movies/netflix/${currentMovie.imdbID}`
+        : `/movies/${currentMovie.imdbID}`
                                     }
                                     key={currentMovieIndex}
                                     onClick={handleMovieClick}
@@ -1221,18 +1280,21 @@ export async function getStaticProps({ params }) {
         return { notFound: true };
     }
 
-   let movieDatabase;
+let movieDatabase;
 if (collection.slug === 'best-survival-movies') {
     movieDatabase = SURVIVAL_DATABASE;
 } else if (collection.slug === 'best-thriller-movies') {
     movieDatabase = THRILLER_MOVIES;
 } else if (collection.slug === 'best-mystery-thriller-movies') {
     movieDatabase = MYSTERY_THRILLER_MOVIES;
+} else if (collection.slug === 'best-detective-thriller-movies') {  // ✅ Added detective thriller collection
+    movieDatabase = DETECTIVE_THRILLER_MOVIES;                       // ✅ Set its respective DB
 } else if (collection.slug === 'best-drama-movies-on-netflix') {
     movieDatabase = DRAMA_MOVIES;
 } else {
     movieDatabase = COMPLETE_MOVIE_DATABASE;
 }
+
 
 
     const movieArray = Array.isArray(movieDatabase) ? movieDatabase : Object.values(movieDatabase);
