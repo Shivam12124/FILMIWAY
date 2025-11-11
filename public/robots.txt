@@ -19,6 +19,7 @@ Allow: /collection/best-survival-movies
 Allow: /collection/best-drama-movies-on-netflix
 Allow: /collection/best-mystery-thriller-movies
 Allow: /collection/best-thriller-movies
+Allow: /collection/best-detective-thriller-movies
 Allow: /movies/
 Disallow: /api/
 Disallow: /_next/
@@ -26,7 +27,6 @@ Disallow: /admin/
 Disallow: /.env
 Disallow: /node_modules/
 Crawl-delay: 1
-
 
 User-agent: Bingbot
 Allow: /
@@ -37,6 +37,7 @@ Allow: /collection/best-survival-movies
 Allow: /collection/best-drama-movies-on-netflix
 Allow: /collection/best-mystery-thriller-movies
 Allow: /collection/best-thriller-movies
+Allow: /collection/best-detective-thriller-movies
 Allow: /movies/
 Disallow: /api/
 Disallow: /_next/

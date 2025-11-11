@@ -313,6 +313,79 @@
         <priority>0.8</priority>
     </url>
 
+<!-- 🕵️‍♂️ DETECTIVE THRILLER COLLECTION PAGE -->
+<url>
+  <loc>https://filmiway.com/collection/best-detective-thriller-movies</loc>
+  <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.9</priority>
+</url>
+
+<!-- 🕵️‍♂️ DETECTIVE THRILLER MOVIES -->
+<url>
+  <loc>https://filmiway.com/movies/tt0114369</loc>
+  <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://filmiway.com/movies/tt0443706</loc>
+  <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://filmiway.com/movies/tt1392214</loc>
+  <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://filmiway.com/movies/tt1305806</loc>
+  <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://filmiway.com/movies/tt0353969</loc>
+  <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://filmiway.com/movies/tt1190539</loc>
+  <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://filmiway.com/movies/tt0327056</loc>
+  <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://filmiway.com/movies/tt32539724</loc>
+  <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://filmiway.com/movies/tt0116282</loc>
+  <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://filmiway.com/movies/tt0106977</loc>
+  <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+</url>
+
+
+
+
     <!-- 🕵️‍♂️ MYSTERY THRILLER MOVIES -->
     <url>
         <loc>https://filmiway.com/movies/tt0114369</loc>
