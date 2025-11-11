@@ -1341,13 +1341,14 @@ export async function getStaticProps({ params }) {
         })
         .filter(Boolean);
 
-    return {
-        props: {
-            collection,
-            movies
-        },
-        revalidate: 3600  // ISR: regenerate every hour
-    };
+return {
+    props: {
+        collection,
+        movies
+    },
+    revalidate: false  // Disables ISR, compatible with static export
+};
+
 }
 
 export default CollectionPage;
