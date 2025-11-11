@@ -125,22 +125,28 @@ const MovieDetailsSection = React.memo(({
     
 
   const displayIndex = fromMysteryThrillerCollection
-    ? safeMovieInfo.mysteryComplexity || 85
-    : fromThrillerCollection
-    ? safeMovieInfo.suspenseIntensity || 85
-    : fromSurvivalCollection
-    ? safeMovieInfo.survivabilityIndex || 85
-    : safeMovieInfo.mindBendingIndex || 85;
-    
-    
+  ? safeMovieInfo.mysteryComplexity ?? null
+  : fromThrillerCollection
+  ? safeMovieInfo.suspenseIntensity ?? null
+  : fromSurvivalCollection
+  ? safeMovieInfo.survivabilityIndex ?? null
+  : safeMovieInfo.mindBendingIndex ?? null;
 
-  const scoreValue = fromMysteryThrillerCollection
-    ? movie.mysteryComplexity || safeMovieInfo.mysteryComplexity || displayIndex
-    : fromDramaCollection
-    ? movie.emotionalIntensity || safeMovieInfo.emotionalIntensity || 75
-    : fromThrillerCollection
-    ? movie.suspenseIntensity || safeMovieInfo.suspenseIntensity || displayIndex
-    : displayIndex;
+const scoreValue = fromMysteryThrillerCollection
+  ? movie.mysteryComplexity ?? safeMovieInfo.mysteryComplexity ?? 0
+  : fromDetectiveThrillerCollection
+  ? movie.mysteryComplexity ?? safeMovieInfo.mysteryComplexity ?? 0
+  : fromDramaCollection
+  ? movie.emotionalIntensity ?? safeMovieInfo.emotionalIntensity ?? 0
+  : fromThrillerCollection
+  ? movie.suspenseIntensity ?? safeMovieInfo.suspenseIntensity ?? 0
+  : fromSurvivalCollection
+  ? movie.survivabilityIndex ?? safeMovieInfo.survivabilityIndex ?? 0
+  : fromInceptionCollection
+  ? movie.mindBendingIndex ?? safeMovieInfo.mindBendingIndex ?? 0
+  : safeMovieInfo.mindBendingIndex ?? 0;
+
+
 
   const complexityLevel = safeMovieInfo.complexityLevel || 'HIGH';
 
@@ -179,10 +185,10 @@ const MovieDetailsSection = React.memo(({
       }
     }
     switch (level) {
-      case 'EXTREME': return '#eab308';
-      case 'HIGH': return '#facc15';
-      case 'MEDIUM': return '#fde047';
-      default: return '#6b7280';
+        case 'EXTREME': return '#ea0808ff';
+        case 'HIGH': return '#f79400ff';
+        case 'MEDIUM': return '#bb9e0cff';
+        default: return '#6b7280';
     }
   };
 
@@ -211,7 +217,7 @@ const MovieDetailsSection = React.memo(({
   };
 
 const getComplexityScoreTitle = () => {
-  if (fromDetectiveThrillerCollection) return 'DETECTIVE INTENSITY SCORE';
+  if (fromDetectiveThrillerCollection) return 'MYSTERY COMPLEXITY SCORE';
   if (fromMysteryThrillerCollection) return 'MYSTERY COMPLEXITY SCORE';
   if (fromDramaCollection) return 'EMOTIONAL INTENSITY SCORE';
   if (fromThrillerCollection) return 'SUSPENSE INTENSITY SCORE';
@@ -223,7 +229,7 @@ const getComplexityScoreTitle = () => {
 };
 
 const getComplexityIndexLabel = () => {
-  if (fromDetectiveThrillerCollection) return 'DETECTIVE INTENSITY';
+  if (fromDetectiveThrillerCollection) return 'MYSTERY INDEX';
   if (fromMysteryThrillerCollection) return 'MYSTERY INDEX';
   if (fromDramaCollection) return 'EMOTIONAL INTENSITY';
   if (fromThrillerCollection) return 'SUSPENSE INDEX';
@@ -235,7 +241,7 @@ const getComplexityIndexLabel = () => {
 };
 
 const getComplexityLevelLabel = () => {
-  if (fromDetectiveThrillerCollection) return 'DETECTIVE INTENSITY LEVEL';
+  if (fromDetectiveThrillerCollection) return 'MYSTERY COMPLEXITY LEVEL';
   if (fromMysteryThrillerCollection) return 'MYSTERY COMPLEXITY LEVEL';
   if (fromDramaCollection) return 'EMOTIONAL RESONANCE LEVEL';
   if (fromThrillerCollection) return 'SUSPENSE INTENSITY LEVEL';

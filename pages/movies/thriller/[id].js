@@ -113,30 +113,30 @@ const posterImage =
 
   // Use local synopsis for better thriller insights
 const getThrillerInsight = (title) => {
-  switch (title) {
-    case 'Se7en':
-      return 'Devours your nerves with its bleak, rain-soaked dread and a finale you never forget.';
-    case 'Prisoners':
-      return 'Cranks moral tension to the max—unbearably intense, haunting, and unforgettable.';
-    case 'No Country for Old Men':
-      return 'Cold, terrifying, and philosophical—a new kind of Western with a villain for the ages.';
-    case 'The Silence of the Lambs':
-      return 'Masterclass in psychological chess—cinema’s two greatest minds locked in a duel of wits.';
-    case 'Memories of Murder':
-      return 'Procedural perfection—stumbling detectives, brooding atmosphere, and endless dead ends.';
-    case 'Mystic River':
-      return 'Raw trauma and guilt form the backbone of this relentlessly tragic neighborhood thriller.';
-    case 'The Departed':
-      return 'Betrayal, blood, chaos—Scorsese crafts the ultimate undercover nail-biter.';
-    case 'Wind River':
-      return 'Isolation, loss, and violence—nature weaponizes grief in a white-knuckle murder mystery.';
-    case 'Gone Girl':
-      return 'Media obsession, marriage, lies—Fincher’s razor-sharp twist thriller will cut you in half.';
-    case 'The Game':
-      return 'Reality warps, trust evaporates—Fincher keeps you guessing till the final frame.';
-    default:
-      return 'Masterclass suspense thriller movie.';
-  }
+  switch (title) {
+    case 'Se7en':
+      return 'A relentlessly dark, grim, and devastatingly intricate psychological thriller. This film stands as a true masterpiece of the detective genre, known for its visceral atmosphere and shocking, thought-provoking conclusion.';
+    case 'Prisoners':
+      return 'A deeply desperate and morally complex cinematic journey centered on the frantic search for two trapped children. The narrative masterfully blurs the conventional lines between legal justice and personal, primal vengeance.';
+    case 'No Country for Old Men':
+      return 'A chillingly cold, terrifying, and philosophical masterpiece. This film redefines the Western genre with its stark violence and introduces one of cinema\'s most iconic, relentless, and terrifying villains—a true agent of chaos.';
+    case 'The Silence of the Lambs':
+      return 'A genuine masterclass in psychological chess and riveting suspense. It features a legendary duel of wits between a young FBI trainee and cinema’s most intelligent and disturbing psychopath, Dr. Hannibal Lecter.';
+    case 'Memories of Murder':
+      return 'A landmark Korean crime classic that expertly dissects the systemic flaws within police procedure and the deep, haunting psychological effects that an unsolved mystery inflicts upon those dedicated to solving it.';
+    case 'Mystic River':
+      return 'An emotionally complex and profoundly moving drama where the indelible trauma of childhood tragedy intersects catastrophically with a dark, twisting murder investigation in a working-class community.';
+    case 'The Departed':
+      return 'A furious, blood-soaked saga of betrayal, chaos, and double-crossing. Scorsese crafts the ultimate modern crime thriller centered on an undercover cop and a police mole desperately trying to expose each other before they are exposed themselves.';
+    case 'Wind River':
+      return 'A deeply affecting and white-knuckle murder mystery set against the brutally beautiful backdrop of the isolated Wind River Indian Reservation. The film weaponizes grief, loss, and the hostile natural environment to explore justice for the forgotten.';
+    case 'Gone Girl':
+      return 'A twisted examination of marriage, media spectacle, and ruthless manipulation. Fincher crafts a mystery that constantly pulls the rug out from under the audience, questioning every character\'s motives and the very nature of truth.';
+    case 'The Game':
+      return 'An intense, mind-bending thriller where wealth and reality dissolve into an orchestrated nightmare. The mystery hinges on a terrifying question: Is this elaborate "Game" designed to save the protagonist or utterly destroy him? Trust is the most expensive commodity.';
+    default:
+      return 'A compelling narrative defined by its intricate plot, masterful character development, and gripping sense of suspense. This film embodies the core elements that make the genre so fascinating and enduringly popular.';
+  }
 };
 
 const thrillerInsight = getThrillerInsight(movie?.title);

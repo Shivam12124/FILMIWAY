@@ -15,7 +15,7 @@ export const DETECTIVE_THRILLER_MOVIES = [
     cast: ['Brad Pitt', 'Morgan Freeman', 'Kevin Spacey'],
     boxOffice: '$327.3 million',
     budget: '$33 million',
-    synopsis: "Dark, relentless serial killer investigation; a psychological nightmare with a groundbreaking twist.",
+    synopsis: "Two detectives—a weary, retiring veteran and an intense, young newcomer—are dropped into a perpetually rain-soaked, morally rotting city to hunt a chillingly methodical serial killer. This killer uses the seven deadly sins as the disturbing inspiration for his gruesome, symbolic murders. It’s a relentless, psychological nightmare that challenges the limits of justice and human endurance, culminating in one of cinema’s most notorious and unforgettable twists.",
     poster: '/path/to/se7en-poster.jpg',
     backdrop: '/path/to/se7en-backdrop.jpg',
     backdrop_path: '/path/to/se7en-backdrop.jpg',
@@ -27,7 +27,7 @@ export const DETECTIVE_THRILLER_MOVIES = [
       { time: 102, intensity: 92, label: 'Desert Confrontation', color: '#fde68a' },
       { time: 120, intensity: 98, label: "What's in the Box?", color: '#dc2626' }
     ],
-    mysteryIntensity: 98,
+    mysteryComplexity: 98,
     dominantColor: '#8b1e3f',
     dna: { Mystery: 50, Thriller: 40, Crime: 10 },
     sensitiveScenes: []  // NO SEXUAL CONTENT FOUND
@@ -45,7 +45,7 @@ export const DETECTIVE_THRILLER_MOVIES = [
     cast: ['Hugh Jackman', 'Jake Gyllenhaal', 'Viola Davis'],
     boxOffice: '$122.1 million',
     budget: '$46 million',
-    synopsis: "Tense, morally complex kidnapping case with gripping investigation and suspense.",
+    synopsis: "When his six-year-old daughter and her friend vanish on Thanksgiving, a desperate father (Hugh Jackman) refuses to wait for the police. Convinced that the strange, frightened man (Paul Dano) initially arrested holds the key, he makes the morally agonizing decision to take justice into his own violent hands. This deeply tense and complex thriller forces a detective (Jake Gyllenhaal) to race against the clock to find the truth before the desperate father crosses a point of no return.",
     poster: '/path/to/prisoners-poster.jpg',
     backdrop: '/path/to/prisoners-backdrop.jpg',
     backdrop_path: '/path/to/prisoners-backdrop.jpg',
@@ -57,7 +57,7 @@ export const DETECTIVE_THRILLER_MOVIES = [
       { time: 120, intensity: 90, label: 'Maze Hints', color: '#fde68a' },
       { time: 145, intensity: 96, label: 'Buried Alive', color: '#dc2626' }
     ],
-    mysteryIntensity: 96,
+    mysteryComplexity: 95,
     dominantColor: '#042258ff',
     dna: { Crime: 45, Thriller: 40, Mystery: 15 },
     sensitiveScenes: []  // NO SEXUAL CONTENT FOUND
@@ -75,7 +75,7 @@ export const DETECTIVE_THRILLER_MOVIES = [
     cast: ['Jake Gyllenhaal', 'Robert Downey Jr.', 'Mark Ruffalo'],
     boxOffice: '$84.8 million',
     budget: '$65 million',
-    synopsis: "Obsessive real-life serial killer investigation; atmospheric and slowly mounting tension.",
+    synopsis: "A meticulous, atmospheric recreation of the true story of the infamous Zodiac Killer, who terrorized the San Francisco Bay Area in the late 1960s and 70s. The film follows four men—a reporter, two police inspectors, and a cartoonist—as they become utterly obsessed with deciphering the killer’s cryptic ciphers and identifying the elusive figure. It's a gripping, years-long investigation that expertly captures the maddening frustration of an unsolvable mystery.",
     poster: '/path/to/zodiac-poster.jpg',
     backdrop: '/path/to/zodiac-backdrop.jpg',
     backdrop_path: '/path/to/zodiac-backdrop.jpg',
@@ -87,7 +87,7 @@ export const DETECTIVE_THRILLER_MOVIES = [
       { time: 134, intensity: 87, label: 'Confrontation', color: '#ebc634' },
       { time: 148, intensity: 94, label: "Graysmith's Realization", color: '#b23c65' }
     ],
-    mysteryIntensity: 94,
+    mysteryComplexity: 94,
     dominantColor: '#4a6187',
     dna: { Mystery: 60, Thriller: 25, Crime: 15 },
     sensitiveScenes: []  // NO SEXUAL CONTENT FOUND
@@ -105,7 +105,7 @@ export const DETECTIVE_THRILLER_MOVIES = [
     cast: ['Ricardo Darín', 'Soledad Villamil', 'Pablo Rago'],
     boxOffice: '$34.2 million',
     budget: '$2 million',
-    synopsis: "A retired detective revisits a haunting unsolved case; mixes romance with high-stakes investigation.",
+    synopsis: "A retired Argentinian federal justice agent decides to write a novel about a brutal, unsolved rape and murder case that has haunted him for twenty-five years. As he revisits the investigation, the story unfolds across time, revealing a passionate lost love, the enduring pain of trauma, and a deeply shocking secret about justice and vengeance hidden in plain sight.",
     poster: '/path/to/secretirs-poster.jpg',
     backdrop: '/path/to/secretirs-backdrop.jpg',
     backdrop_path: '/path/to/secretirs-backdrop.jpg',
@@ -117,7 +117,7 @@ export const DETECTIVE_THRILLER_MOVIES = [
       { time: 112, intensity: 83, label: 'Courtroom', color: '#fde68a' },
       { time: 126, intensity: 93, label: 'Shocking Finale', color: '#dc2626' }
     ],
-    mysteryIntensity: 93,
+    mysteryComplexity: 99,
     dominantColor: '#5d6c8f',
     dna: { Mystery: 55, Thriller: 30, Drama: 15 },
     sensitiveScenes: [
@@ -140,7 +140,7 @@ export const DETECTIVE_THRILLER_MOVIES = [
     cast: ['Song Kang-ho', 'Kim Sang-kyung', 'Kim Roi-ha'],
     boxOffice: '$20.1 million',
     budget: '$2 million',
-    synopsis: "Atmospheric procedural with slow-building mystery and unresolved tension.",
+    synopsis: "Set in 1980s South Korea, this slow-burning, dark-humored procedural follows two local detectives with vastly different approaches to investigation—one brutal and instinctual, the other sharp and clinical—as they chase the country's first confirmed serial killer. Against a politically unstable backdrop, the film masterfully captures the frustration, futility, and eventual psychic toll of hunting a ghost.",
     poster: '/path/to/memories-poster.jpg',
     backdrop: '/path/to/memories-backdrop.jpg',
     backdrop_path: '/path/to/memories-backdrop.jpg',
@@ -152,7 +152,7 @@ export const DETECTIVE_THRILLER_MOVIES = [
       { time: 110, intensity: 85, label: 'The Confrontation', color: '#fde68a' },
       { time: 128, intensity: 93, label: 'Haunting End', color: '#dc2626' }
     ],
-    mysteryIntensity: 97,
+    mysteryComplexity: 97,
     dominantColor: '#313a35',
     dna: { Mystery: 55, Crime: 25, Thriller: 20 },
     sensitiveScenes: [
@@ -175,7 +175,7 @@ export const DETECTIVE_THRILLER_MOVIES = [
     cast: ['Kim Yoon-seok', 'Ha Jung-woo', 'Seo Young-hee'],
     boxOffice: '$35.8 million',
     budget: '$2.5 million',
-    synopsis: "Merciless pursuit of a killer by a disgraced detective; gritty, fast-paced investigation.",
+    synopsis: "A disgraced former detective, now running a small-time prostitution ring, realizes that the girls disappearing from his operation are all being taken by the same client. This launches him into a desperate, frantic, and extremely gritty street chase against a sadistic killer he has already apprehended and then accidentally let go. It’s a relentless, high-octane thriller about one flawed man's brutal race to save the only person who can connect him to the crimes.",
     poster: '/path/to/chaser-poster.jpg',
     backdrop: '/path/to/chaser-backdrop.jpg',
     backdrop_path: '/path/to/chaser-backdrop.jpg',
@@ -187,7 +187,7 @@ export const DETECTIVE_THRILLER_MOVIES = [
       { time: 92, intensity: 88, label: 'Detective Cornered', color: '#dc8841' },
       { time: 121, intensity: 97, label: 'Final Scene', color: '#d84315' }
     ],
-    mysteryIntensity: 97,
+    mysteryComplexity: 88,
     dominantColor: '#352e21',
     dna: { Crime: 50, Thriller: 40, Mystery: 10 },
     sensitiveScenes: [
@@ -207,7 +207,7 @@ export const DETECTIVE_THRILLER_MOVIES = [
     cast: ['Sean Penn', 'Tim Robbins', 'Kevin Bacon'],
     boxOffice: '$156.6 million',
     budget: '$30 million',
-    synopsis: "Haunting investigation reveals deep trauma and tragic secrets among childhood friends.",
+    synopsis: "Three childhood friends from a working-class Boston neighborhood are bound by a terrible, shared trauma from twenty-five years ago. When the daughter of one friend (Sean Penn) is brutally murdered, another (Kevin Bacon) is assigned to the case as a detective, while the third (Tim Robbins) becomes a prime, tragic suspect. The investigation peels back layers of guilt, suspicion, and deep-seated pain, revealing how a single past event can catastrophically shape three adult lives.",
     poster: '/path/to/mysticriver-poster.jpg',
     backdrop: '/path/to/mysticriver-backdrop.jpg',
     backdrop_path: '/path/to/mysticriver-backdrop.jpg',
@@ -219,7 +219,7 @@ export const DETECTIVE_THRILLER_MOVIES = [
       { time: 112, intensity: 85, label: 'The Reveal', color: '#bd5e42' },
       { time: 134, intensity: 88, label: 'Tragic Ending', color: '#e1374d' }
     ],
-    mysteryIntensity: 95,
+    mysteryComplexity: 88,
     dominantColor: '#4e6c82',
     dna: { Mystery: 42, Crime: 38, Drama: 20 },
     sensitiveScenes: [
@@ -240,7 +240,7 @@ export const DETECTIVE_THRILLER_MOVIES = [
     cast: ['Raúl Arévalo', 'Javier Gutiérrez', 'Antonio de la Torre'],
     boxOffice: '$8.7 million',
     budget: '$1.2 million',
-    synopsis: "Two detectives in post-Franco Spain chase a serial killer haunting marshes; brooding and tense.",
+    synopsis: "In the isolated, brooding marshlands of southern Spain in 1980, two homicide detectives from Madrid are sent to investigate the gruesome disappearance of two teenage sisters. Forced to work together despite their radically opposed political beliefs, they uncover a dark network of secrets, corruption, and old prejudices that are as thick and menacing as the swampy landscape around them.",
     poster: '/path/to/marshland-poster.jpg',
     backdrop: '/path/to/marshland-backdrop.jpg',
     backdrop_path: '/path/to/marshland-backdrop.jpg',
@@ -252,9 +252,9 @@ export const DETECTIVE_THRILLER_MOVIES = [
       { time: 83, intensity: 88, label: 'True Motive', color: '#b01934' },
       { time: 104, intensity: 94, label: 'Catch', color: '#1b3128' }
     ],
-    mysteryIntensity: 94,
+    mysteryComplexity: 92,
     dominantColor: '#a38b70',
-    dna: { Crime: 46, Thriller: 38, Drama: 16 },
+    dna: { Crime: 45, Thriller: 30, Drama: 25 },
     sensitiveScenes: [
       { start: "11:58", end: "12:10", description: "Partial nudity (brief sexualized imagery in photographs)" },
       { start: "20:58", end: "23:00", description: "Partial nudity" },
@@ -274,7 +274,7 @@ export const DETECTIVE_THRILLER_MOVIES = [
     cast: ['Frances McDormand', 'William H. Macy', 'Steve Buscemi'],
     boxOffice: '$60.6 million',
     budget: '$7 million',
-    synopsis: "A pregnant detective investigates a botched kidnapping with jet-black humor and gnarly violence.",
+    synopsis: "In snowy, unassuming Minnesota, a desperate car salesman (William H. Macy) hires two truly inept criminals to kidnap his own wife in a bizarre attempt to swindle his wealthy father-in-law. The plan immediately unravels, leaving a trail of unexpected, comical, and horrifying violence. Enter Marge Gunderson (Frances McDormand), a highly capable and very pregnant local police chief, who calmly and methodically pieces together the absurd and bloody mess.",
     poster: '/path/to/fargo-poster.jpg',
     backdrop: '/path/to/fargo-backdrop.jpg',
     backdrop_path: '/path/to/fargo-backdrop.jpg',
@@ -286,7 +286,7 @@ export const DETECTIVE_THRILLER_MOVIES = [
       { time: 74, intensity: 88, label: 'Woodchipper', color: '#f94144' },
       { time: 95, intensity: 95, label: 'Final Arrest', color: '#277da1' }
     ],
-    mysteryIntensity: 95,
+    mysteryComplexity: 85,
     dominantColor: '#f8c626',
     dna: { Crime: 55, Thriller: 35, Drama: 10 },
     sensitiveScenes: [
@@ -307,7 +307,7 @@ export const DETECTIVE_THRILLER_MOVIES = [
     cast: ['Harrison Ford', 'Tommy Lee Jones', 'Sela Ward'],
     boxOffice: '$368.9 million',
     budget: '$44 million',
-    synopsis: "Wrongly-accused doctor pursued by a relentless US Marshal; iconic investigation-action blend.",
+    synopsis: "Dr. Richard Kimble (Harrison Ford), a respected vascular surgeon, is wrongly convicted of murdering his wife. After a spectacular, high-stakes prison transport accident, he escapes and goes on the run. Now a fugitive, Kimble must simultaneously evade the relentless pursuit of an extremely sharp and dry-witted U.S. Marshal (Tommy Lee Jones) while conducting his own dangerous, thrilling investigation to find the one-armed man who truly committed the crime.",
     poster: '/path/to/fugitive-poster.jpg',
     backdrop: '/path/to/fugitive-backdrop.jpg',
     backdrop_path: '/path/to/fugitive-backdrop.jpg',
@@ -319,7 +319,7 @@ export const DETECTIVE_THRILLER_MOVIES = [
       { time: 111, intensity: 88, label: 'Reveal', color: '#bd7e5e' },
       { time: 128, intensity: 95, label: 'Justice', color: '#e1e137' }
     ],
-    mysteryIntensity: 93,
+    mysteryComplexity: 82,
     dominantColor: '#c8c8c8',
     dna: { Crime: 45, Thriller: 40, Action: 15 },
     sensitiveScenes: []  // NO SEXUAL CONTENT FOUND

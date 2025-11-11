@@ -91,19 +91,19 @@ const getTMDBImage = (path, size = 'w1280') =>
   path ? `https://image.tmdb.org/t/p/${size}${path}` : undefined;
 
 const getMysteryInsight = (title) => {
-  switch (title) {
-    case 'Se7en': return 'Bleak, rain-soaked, unforgettable investigation with a finale that redefines modern mystery.';
-    case 'Shutter Island': return 'Reality and paranoia spiral into a labyrinth—Scorsese keeps you doubting everything.';
-    case 'Prisoners': return 'Parent, cop—no one is innocent. It turns the screws with moral ambiguity and clues you missed.';
-    case 'Zodiac': return 'Obsessive, atmospheric, and chillingly unresolved—no cop procedural haunts you more.';
-    case 'Gone Girl': return 'Marriage, media, and manipulation—Fincher’s mystery pulls the rug out again and again.';
-    case 'Memories of Murder': return 'Murder mystery, dead ends, and dread—Bong Joon Ho leaves you with more questions.';
-    case 'The Invisible Guest': return 'Every confession is a puzzle piece, and nothing adds up until the very last frame.';
-    case 'Burning': return 'Jealousy, ambiguity, and a missing girl—no movie messes with your head quite like this.';
-    case 'The Game': return 'Trust no one—mystery is the only constant in the mind-bending world of “The Game.”';
-    case 'Identity': return 'Strangers, secrets, storm—every theory you have will get shattered by the end.';
-    default: return 'Unravel a web of mystery in this masterclass suspense thriller.';
-  }
+  switch (title) {
+    case 'Se7en': return 'A relentlessly dark, grim, and devastatingly intricate psychological thriller. This film stands as a true masterpiece of the detective genre, known for its visceral atmosphere and shocking, thought-provoking conclusion.';
+    case 'Shutter Island': return 'An unsettling journey where reality and paranoia spiral into a complex psychological labyrinth**. Scorsese masterfully keeps the viewer constantly doubting the sanity and purpose of the protagonist, leading to a mind-bending revelation.';
+    case 'Prisoners': return 'A deeply desperate and morally complex cinematic journey centered on the frantic search for two trapped children. The narrative masterfully blurs the conventional lines between legal justice and personal, primal vengeance.';
+    case 'Zodiac': return 'An obsessively detailed and meticulously recreated true crime drama. It offers a chillingly realistic portrayal of the frustrating, years-long pursuit of an elusive serial killer, leaving a haunting sense of unresolved tension.';
+    case 'Gone Girl': return 'A twisted examination of marriage, media spectacle, and ruthless manipulation. Fincher crafts a mystery that constantly pulls the rug out from under the audience, questioning every character\'s motives and the very nature of truth.';
+    case 'Memories of Murder': return 'A landmark Korean crime classic that expertly dissects the systemic flaws within police procedure and the deep, haunting psychological effects that an unsolved mystery inflicts upon those dedicated to solving it.';
+    case 'The Invisible Guest': return 'A slick, high-stakes mystery where every confession is a calculated puzzle piece. The tension builds masterfully as the protagonist recounts a fatal encounter, forcing the audience to piece together a truth that is only fully revealed in the very last frame.';
+    case 'Burning': return 'A profoundly ambiguous and unsettling narrative fueled by jealousy, class division, and a sudden, inexplicable disappearance. Lee Chang-dong crafts a psychological mystery that leaves you deeply uncertain about what is real and what is obsession.';
+    case 'The Game': return 'An intense, mind-bending thriller where wealth and reality dissolve into an orchestrated nightmare. The mystery hinges on a terrifying question: Is this elaborate "Game" designed to save the protagonist or utterly destroy him? Trust is the most expensive commodity.';
+    case 'Identity': return 'A masterful deconstruction of the slasher genre, trapping strangers with dark secrets inside a desolate motel during a severe storm. As they are picked off one by one, every theory is shattered by a shocking, inventive reveal that redefines the entire mystery.';
+    default: return 'A compelling narrative defined by its intricate detective work, masterful character development, and gripping sense of suspense**. This film embodies the core elements that make the genre so fascinating and enduringly popular.';
+  }
 };
 
 const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
@@ -290,7 +290,7 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
               </div>
             </div>
             <div className="mobile-mystery-desc">
-              <strong>{movie?.mysteryIntensity || 87}</strong> - {insight}
+              <strong>{movie?.mysteryComplexity || 87}</strong> - {insight}
             </div>
           </div>
         </div>
@@ -360,7 +360,7 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
                       Why This Mystery Thriller is Special
                     </h2>
                     <p className="text-xs sm:text-sm hidden sm:block" style={{ color: COLORS.textMuted }}>
-                      Mystery Index: {movie?.mysteryIntensity || 87}/100
+                      Mystery Index: {movie?.mysteryComplexity || 87}/100
                     </p>
                   </div>
                 </div>

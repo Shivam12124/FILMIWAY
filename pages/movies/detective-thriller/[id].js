@@ -91,19 +91,19 @@ const getTMDBImage = (path, size = 'w1280') =>
   path ? `https://image.tmdb.org/t/p/${size}${path}` : undefined;
 
 const getDetectiveInsight = (title) => {
-  switch (title) {
-    case 'Se7en': return 'Dark, grim, and devastatingly intricate, a masterpiece of detective thrillers.';
-    case 'Zodiac': return 'Obsessively detailed and chilling true crime drama with haunting unresolved tension.';
-    case 'Prisoners': return 'The desperate and morally complex search for trapped children blurs lines of justice.';
-    case 'The Secret in Their Eyes': return 'A haunting tale of obsession, lost love, and justice beyond years.';
-    case 'Memories of Murder': return 'Korean crime classic revealing flaws in police and the haunted effects of mystery.';
-    case 'The Chaser': return 'High tension chase featuring gritty crime realities and flawed heroes.';
-    case 'Mystic River': return 'Emotionally complex story of childhood trauma intersecting with a dark investigation.';
-    case 'Marshland': return 'Atmospheric Spanish noir infused with political tension and mystery.';
-    case 'Fargo': return 'Dark humor and crime in snowy climes with unforgettable characters and twists.';
-    case 'The Fugitive': return 'Intense thriller of a man on the run, fighting for justice and truth.';
-    default: return 'Intricate detective work and gripping suspense define this film.';
-  }
+  switch (title) {
+    case 'Se7en': return 'A relentlessly dark, grim, and devastatingly intricate psychological thriller. This film stands as a true masterpiece of the detective genre, known for its visceral atmosphere and shocking, thought-provoking conclusion.';
+    case 'Zodiac': return 'An obsessively detailed and meticulously recreated true crime drama. It offers a chillingly realistic portrayal of the frustrating, years-long pursuit of an elusive serial killer, leaving a haunting sense of unresolved tension.';
+    case 'Prisoners': return 'A deeply desperate and morally complex cinematic journey centered on the frantic search for two trapped children. The narrative masterfully blurs the conventional lines between legal justice and personal, primal vengeance.';
+    case 'The Secret in Their Eyes': return 'A haunting and emotionally rich tale from Argentina, brilliantly weaving together themes of enduring obsession, profound lost love, and the slow, inexorable nature of justice that stretches across many decades.';
+    case 'Memories of Murder': return 'A landmark Korean crime classic that expertly dissects the systemic flaws within police procedure and the deep, haunting psychological effects that an unsolved mystery inflicts upon those dedicated to solving it.';
+    case 'The Chaser': return 'An exceptionally high-tension, relentless chase thriller that plunges the viewer into the gritty, brutal realities of the criminal underworld, featuring a flawed, morally ambiguous protagonist forced into a heroic role.';
+    case 'Mystic River': return 'An emotionally complex and profoundly moving drama where the indelible trauma of childhood tragedy intersects catastrophically with a dark, twisting murder investigation in a working-class community.';
+    case 'Marshland': return 'An incredibly atmospheric Spanish noir set against the striking, politically charged backdrop of post-Franco Spain. The film delivers a slow-burn, suspenseful mystery infused with palpable tension and a sense of historical dread.';
+    case 'Fargo': return 'A brilliant blend of dark, often absurd humor and brutal, unexpected crime set against the stark, snowy landscapes of the American Midwest. It features an array of unforgettable, quirky characters and narrative twists.';
+    case 'The Fugitive': return 'An intense, pulse-pounding, classic thriller focused on a highly skilled man desperately on the run, relentlessly fighting to expose the conspiracy and establish his innocence in the face of overwhelming odds.';
+    default: return 'A compelling narrative defined by its intricate detective work, masterful character development, and gripping sense of suspense. This film embodies the core elements that make the genre so fascinating and enduringly popular.';
+  }
 };
 
 const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
@@ -282,11 +282,11 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
             <div className="mobile-mystery-row">
               <Award className="mobile-mystery-icon" />
               <div>
-                <div className="mobile-mystery-title">Detective Insight</div>
+                <div className="mobile-mystery-title">Mystery Index</div>
               </div>
             </div>
             <div className="mobile-mystery-desc">
-              <strong>{movie?.detectiveInsight || 88}</strong> - {insight}
+              <strong>{movie?.mysteryComplexity || 88}</strong> - {insight}
             </div>
           </div>
         </div>
@@ -356,7 +356,7 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
                       Why This Detective Thriller is Special
                     </h2>
                     <p className="text-xs sm:text-sm hidden sm:block" style={{ color: COLORS.textMuted }}>
-                      Detective Insight: {movie?.detectiveInsight || 88}/100
+                      Mystery Index: {movie?.mysteryComplexity || 88}/100
                     </p>
                   </div>
                 </div>

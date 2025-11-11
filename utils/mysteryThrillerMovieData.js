@@ -14,7 +14,7 @@ export const MYSTERY_THRILLER_MOVIES = [
     cast: ['Brad Pitt', 'Morgan Freeman', 'Kevin Spacey'],
     boxOffice: '$327.3 million',
     budget: '$33 million',
-    synopsis: "Dark, relentless serial killer investigation; a psychological nightmare with a groundbreaking twist.",
+    synopsis: "Two detectives—a weary, retiring veteran and an intense, young newcomer—are dropped into a perpetually rain-soaked, morally rotting city to hunt a chillingly methodical serial killer. This killer uses the seven deadly sins as the disturbing inspiration for his gruesome, symbolic murders. It’s a relentless, psychological nightmare that challenges the limits of justice and human endurance, culminating in one of cinema’s most notorious and unforgettable twists.",
     poster: '/path/to/se7en-poster.jpg',
     backdrop: '/path/to/se7en-backdrop.jpg',
     backdrop_path: '/path/to/se7en-backdrop.jpg',
@@ -26,7 +26,7 @@ export const MYSTERY_THRILLER_MOVIES = [
       { time: 102, intensity: 92, label: 'Desert Confrontation', color: '#fde68a' },
       { time: 120, intensity: 98, label: "What's in the Box?", color: '#dc2626' }
     ],
-    mysteryIntensity: 98,
+    mysteryComplexity: 98,
     dominantColor: '#8b1e3f',
     dna: { Mystery: 50, Thriller: 40, Crime: 10 },
     sensitiveScenes: []
@@ -44,7 +44,7 @@ export const MYSTERY_THRILLER_MOVIES = [
     cast: ['Leonardo DiCaprio', 'Mark Ruffalo', 'Ben Kingsley'],
     boxOffice: '$294.8 million',
     budget: '$80 million',
-    synopsis: "Intense psychological thriller exploring paranoia and reality; masterful suspense and haunting twists.",
+    synopsis: "In 1954, two U.S. Marshals arrive at a remote, foreboding island asylum for the criminally insane to investigate the baffling disappearance of a patient. As a massive hurricane cuts them off from the mainland, the lead investigator (Leonardo DiCaprio) begins to unravel, tormented by flashes of his own violent past and growing suspicions about the true nature of the isolated hospital. It is a masterful, reality-bending plunge into paranoia where nothing is as it seems.",
     poster: '/path/to/shutter-poster.jpg',
     backdrop: '/path/to/shutter-backdrop.jpg',
     backdrop_path: '/path/to/shutter-backdrop.jpg',
@@ -56,7 +56,7 @@ export const MYSTERY_THRILLER_MOVIES = [
       { time: 110, intensity: 89, label: "The Lighthouse", color: '#fbbf24' },
       { time: 136, intensity: 97, label: "Truth Revealed", color: '#e94e77' }
     ],
-    mysteryIntensity: 97,
+    mysteryComplexity: 97,
     dominantColor: '#1c253d',
     dna: { Mystery: 50, Thriller: 40, Drama: 10 },
     sensitiveScenes: [
@@ -77,7 +77,7 @@ export const MYSTERY_THRILLER_MOVIES = [
     cast: ['Hugh Jackman', 'Jake Gyllenhaal', 'Viola Davis'],
     boxOffice: '$122.1 million',
     budget: '$46 million',
-    synopsis: "Tense, morally complex kidnapping case with gripping investigation and suspense.",
+    synopsis: "When his six-year-old daughter and her friend vanish on Thanksgiving, a desperate father (Hugh Jackman) refuses to wait for the police. Convinced that the strange, frightened man (Paul Dano) initially arrested holds the key, he makes the morally agonizing decision to take justice into his own violent hands. This deeply tense and complex thriller forces a detective (Jake Gyllenhaal) to race against the clock to find the truth before the desperate father crosses a point of no return.",
     poster: '/path/to/prisoners-poster.jpg',
     backdrop: '/path/to/prisoners-backdrop.jpg',
     backdrop_path: '/path/to/prisoners-backdrop.jpg',
@@ -89,7 +89,7 @@ export const MYSTERY_THRILLER_MOVIES = [
       { time: 120, intensity: 90, label: 'Maze Hints', color: '#fde68a' },
       { time: 145, intensity: 96, label: 'Buried Alive', color: '#dc2626' }
     ],
-    mysteryIntensity: 96,
+    mysteryComplexity: 96,
     dominantColor: '#042258ff',
     dna: { Crime: 45, Thriller: 40, Mystery: 15 },
     sensitiveScenes: []
@@ -107,7 +107,7 @@ export const MYSTERY_THRILLER_MOVIES = [
     cast: ['Jake Gyllenhaal', 'Robert Downey Jr.', 'Mark Ruffalo'],
     boxOffice: '$84.8 million',
     budget: '$65 million',
-    synopsis: "Obsessive real-life serial killer investigation; atmospheric and slowly mounting tension.",
+    synopsis: "A meticulous, atmospheric recreation of the true story of the infamous Zodiac Killer, who terrorized the San Francisco Bay Area in the late 1960s and 70s. The film follows four men—a reporter, two police inspectors, and a cartoonist—as they become utterly consumed by the pursuit of the killer’s cryptic ciphers and identifying the elusive figure. It's a gripping, years-long investigation that expertly captures the maddening frustration of an unsolved mystery.",
     poster: '/path/to/zodiac-poster.jpg',
     backdrop: '/path/to/zodiac-backdrop.jpg',
     backdrop_path: '/path/to/zodiac-backdrop.jpg',
@@ -119,7 +119,7 @@ export const MYSTERY_THRILLER_MOVIES = [
       { time: 134, intensity: 87, label: 'Confrontation', color: '#ebc634' },
       { time: 148, intensity: 94, label: "Graysmith's Realization", color: '#b23c65' }
     ],
-    mysteryIntensity: 94,
+    mysteryComplexity: 94,
     dominantColor: '#4a6187',
     dna: { Mystery: 60, Thriller: 25, Crime: 15 },
     sensitiveScenes: []
@@ -137,7 +137,7 @@ export const MYSTERY_THRILLER_MOVIES = [
     cast: ['Ben Affleck', 'Rosamund Pike', 'Neil Patrick Harris'],
     boxOffice: '$369.3 million',
     budget: '$61 million',
-    synopsis: "Dark psychological mystery filled with shocking twists and unreliable narration.",
+    synopsis: "On the morning of his fifth wedding anniversary, Nick Dunne (Ben Affleck) finds his beautiful, brilliant wife, Amy, missing, with signs of a struggle. Under intense media scrutiny and relentless police questioning, Nick's shifty behavior and mounting lies lead everyone to ask the chilling question: Did he murder his wife? This dark, brilliant Fincher mystery is a twisted, cynical examination of marriage and media manipulation that keeps the audience guessing with shocking, unpredictable revelations.",
     poster: '/path/to/gonegirl-poster.jpg',
     backdrop: '/path/to/gonegirl-backdrop.jpg',
     backdrop_path: '/path/to/gonegirl-backdrop.jpg',
@@ -149,7 +149,7 @@ export const MYSTERY_THRILLER_MOVIES = [
       { time: 126, intensity: 86, label: 'Plot Twist', color: '#dcbd56' },
       { time: 145, intensity: 95, label: 'Return Home', color: '#c65454' }
     ],
-    mysteryIntensity: 95,
+    mysteryComplexity: 95,
     dominantColor: '#a6785d',
     dna: { Mystery: 50, Thriller: 40, Drama: 10 },
     sensitiveScenes: [
@@ -175,7 +175,7 @@ export const MYSTERY_THRILLER_MOVIES = [
     cast: ['Song Kang-ho', 'Kim Sang-kyung', 'Kim Roi-ha'],
     boxOffice: '$20.1 million',
     budget: '$2 million',
-    synopsis: "Atmospheric procedural with slow-building mystery and unresolved tension.",
+    synopsis: "Set in 1980s South Korea, this slow-burning, dark-humored procedural follows two local detectives with vastly different approaches to investigation—one brutal and instinctual, the other sharp and clinical—as they chase the country's first confirmed serial killer. Against a politically unstable backdrop, the film masterfully captures the frustration, futility, and eventual psychic toll of hunting a ghost.",
     poster: '/path/to/memories-poster.jpg',
     backdrop: '/path/to/memories-backdrop.jpg',
     backdrop_path: '/path/to/memories-backdrop.jpg',
@@ -187,7 +187,7 @@ export const MYSTERY_THRILLER_MOVIES = [
       { time: 110, intensity: 85, label: 'The Confrontation', color: '#fde68a' },
       { time: 128, intensity: 93, label: 'Haunting End', color: '#dc2626' }
     ],
-    mysteryIntensity: 97,
+    mysteryComplexity: 97,
     dominantColor: '#313a35',
     dna: { Mystery: 55, Crime: 25, Thriller: 20 },
     sensitiveScenes: [
@@ -210,7 +210,7 @@ export const MYSTERY_THRILLER_MOVIES = [
     cast: ['Mario Casas', 'Ana Wagener', 'Jose Coronado'],
     boxOffice: '$33.5 million',
     budget: '$4 million',
-    synopsis: "Fast-paced, clever thriller filled with intricate misdirection.",
+    synopsis: "A successful young businessman is locked down in a hotel room with his formidable defense attorney after being charged with the murder of his mistress. Over the course of one night, he recounts his version of the fatal encounter—a complex story of a car crash, blackmail, and misdirection. Every piece of his confession is a lie, a half-truth, or a calculated misdirection, forcing the lawyer (and the audience) to frantically assemble the true, shocking sequence of events before dawn.",
     poster: '/path/to/invisibleguest-poster.jpg',
     backdrop: '/path/to/invisibleguest-backdrop.jpg',
     backdrop_path: '/path/to/invisibleguest-backdrop.jpg',
@@ -222,7 +222,7 @@ export const MYSTERY_THRILLER_MOVIES = [
       { time: 85, intensity: 85, label: 'Twist', color: '#a67ca8' },
       { time: 101, intensity: 93, label: "Truth", color: '#1f8a70' }
     ],
-    mysteryIntensity: 93,
+    mysteryComplexity: 93,
     dominantColor: '#5d6c8f',
     dna: { Mystery: 60, Thriller: 40 },
     sensitiveScenes: []
@@ -240,7 +240,7 @@ export const MYSTERY_THRILLER_MOVIES = [
     cast: ['Yoo Ah-in', 'Steven Yeun', 'Jeon Jong-seo'],
     boxOffice: '$7.2 million',
     budget: '$4 million',
-    synopsis: "Ambiguous, slow-burn psychological mystery layered with subtle tension.",
+    synopsis: "A lonely, working-class young man runs into a former childhood acquaintance who introduces him to Ben (Steven Yeun), a wealthy, smooth-talking, and utterly enigmatic man. After the woman suddenly vanishes without a trace, the jealous and suspicious protagonist becomes convinced that Ben is a secret serial arsonist—or perhaps something far worse. This deeply psychological, slow-burn mystery is an ambiguous, unsettling masterpiece of dread and modern class envy.",
     poster: '/path/to/burning-poster.jpg',
     backdrop: '/path/to/burning-backdrop.jpg',
     backdrop_path: '/path/to/burning-backdrop.jpg',
@@ -252,7 +252,7 @@ export const MYSTERY_THRILLER_MOVIES = [
       { time: 137, intensity: 89, label: 'The Confession', color: '#f94040' },
       { time: 142, intensity: 92, label: "Ending", color: '#b17e56' }
     ],
-    mysteryIntensity: 92,
+    mysteryComplexity: 92,
     dominantColor: '#c4377a',
     dna: { Mystery: 65, Drama: 25, Thriller: 10 },
     sensitiveScenes: [
@@ -276,7 +276,7 @@ export const MYSTERY_THRILLER_MOVIES = [
     cast: ['Michael Douglas', 'Sean Penn', 'Deborah Kara Unger'],
     boxOffice: '$109.4 million',
     budget: '$50 million',
-    synopsis: "Paranoia-soaked psychological puzzle with unpredictable and disturbing twists.",
+    synopsis: "Nicholas Van Orton (Michael Douglas), a cold, immensely wealthy investment banker, receives a strange birthday gift from his estranged brother: participation in a mysterious, real-life Game. As the line between the scripted game and his actual life begins to dangerously dissolve, Nicholas is plunged into a terrifying, paranoia-soaked world where he loses control of everything. This is a spectacular, mind-bending thriller that constantly shifts the stakes until the surprising final moment.",
     poster: '/path/to/game-poster.jpg',
     backdrop: '/path/to/game-backdrop.jpg',
     backdrop_path: '/path/to/game-backdrop.jpg',
@@ -288,7 +288,7 @@ export const MYSTERY_THRILLER_MOVIES = [
       { time: 109, intensity: 80, label: 'Rooftop', color: '#dc8841' },
       { time: 129, intensity: 90, label: 'The End', color: '#d84315' }
     ],
-    mysteryIntensity: 90,
+    mysteryComplexity: 90,
     dominantColor: '#0f1423',
     dna: { Mystery: 50, Thriller: 40, Drama: 10 },
     sensitiveScenes: []
@@ -306,7 +306,7 @@ export const MYSTERY_THRILLER_MOVIES = [
     cast: ['John Cusack', 'Ray Liotta', 'Amanda Peet'],
     boxOffice: '$90.2 million',
     budget: '$28 million',
-    synopsis: "Psychological thriller with strangers trapped and a shocking, unforgettable reveal.",
+    synopsis: "Ten strangers—including a cop transporting a killer, a fading actress, a married couple, and a limousine driver—are stranded at a desolate Nevada motel during a fierce storm. When they begin to be violently killed off one by one, they realize the murders are connected. This frantic, high-tension mystery culminates in a truly unforgettable, twist-heavy final act that reframes everything you thought you knew about the identity of the killer and the victims.",
     poster: '/path/to/identity-poster.jpg',
     backdrop: '/path/to/identity-backdrop.jpg',
     backdrop_path: '/path/to/identity-backdrop.jpg',
@@ -318,7 +318,7 @@ export const MYSTERY_THRILLER_MOVIES = [
       { time: 78, intensity: 83, label: 'Reveal', color: '#ebae34' },
       { time: 90, intensity: 93, label: 'Final Twist', color: '#6839eb' }
     ],
-    mysteryIntensity: 93,
+    mysteryComplexity: 93,
     dominantColor: '#3e464f',
     dna: { Mystery: 65, Thriller: 35 },
     sensitiveScenes: []
