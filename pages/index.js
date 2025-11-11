@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useRef, useCallback, memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Head from 'next/head';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { 
@@ -28,14 +29,16 @@ const MovieCard = memo(({ movie, index, isMobile, onClick }) => (
         style={{ contain: 'layout style paint' }}
     >
         <div className="relative aspect-[2/3] rounded-2xl overflow-hidden bg-gray-900 shadow-xl">
-            <img
-                src={`${IMAGE_BASE_URL}/w500${movie.poster_path}`}
-                alt={movie.title}
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                loading="lazy"
-                draggable={false}
-                decoding="async"
-            />
+<Image
+    src={`${IMAGE_BASE_URL}/w500${movie.poster_path}`}
+    alt={movie.title}
+    width={500}
+    height={750}
+    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+    loading="lazy"
+    draggable={false}
+/>
+
             
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div className="absolute bottom-6 left-6 right-6">
@@ -154,13 +157,16 @@ const FilmiwayHomepage = () => {
                 <div className="flex items-center justify-between h-20 sm:h-24">
                     <Link href="/" className="flex items-center justify-start relative">
                        <div className="w-48 h-20 sm:w-56 sm:h-24 md:w-64 md:h-28 lg:w-72 lg:h-32 flex items-center justify-start">
-                            <img 
-                                src="/filmiway-logo.svg" 
-                                alt="Filmiway" 
-                                className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
-                                draggable={false}
-                                loading="eager"
-                            />
+                           <Image
+    src="/filmiway-logo.svg"
+    alt="Filmiway"
+    width={192}
+    height={80}
+    priority={true}
+    className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
+    draggable={false}
+/>
+
                         </div>
                     </Link>
 
@@ -603,7 +609,15 @@ const FilmiwayHomepage = () => {
                         <div className="text-center">
                             <div className="flex items-center justify-center mb-6">
                                 <div className="w-32 h-16 sm:w-40 sm:h-20 flex items-center justify-center">
-                                    <img src="/filmiway-logo.svg" alt="Filmiway" className="w-full h-full object-contain" draggable={false} loading="lazy" />
+                                    <Image
+    src="/filmiway-logo.svg"
+    alt="Filmiway"
+    width={160}
+    height={80}
+    className="w-full h-full object-contain"
+    draggable={false}
+/>
+
                                 </div>
                             </div>
                             <p className="text-gray-400 mb-6 max-w-md mx-auto text-sm">
@@ -614,7 +628,14 @@ const FilmiwayHomepage = () => {
                                 <div className="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-4">
                                     <p className="text-gray-600 text-sm">Powered by</p>
                                     <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 hover:opacity-80">
-                                        <img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg" alt="TMDB" className="h-5 w-auto" loading="lazy" />
+                                      <Image
+    src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg"
+    alt="TMDB"
+    width={50}
+    height={20}
+    className="h-5 w-auto"
+/>
+
                                         <span className="text-blue-400 text-sm">TMDB</span>
                                     </a>
                                 </div>

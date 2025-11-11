@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Crown, Star, MessageSquare, Volume2, VolumeX, Play, Pause, Menu, X, Home, Eye, MousePointer, TrendingUp, Users, Search, Brain, Zap, Film, Award, Mountain, Shield } from 'lucide-react';
 import { COMPLETE_MOVIE_DATABASE as SURVIVAL_DATABASE, COMPLETE_MOVIE_DATA as SURVIVAL_DATA } from '../../utils/survivalMovieData';
@@ -39,11 +40,14 @@ const TopLeftLogo = () => (
     >
         <Link href="/" className="flex items-center justify-start">
             <div className="w-32 h-16 sm:w-40 sm:h-20 md:w-48 md:h-24 flex items-center justify-start hover:scale-105 transition-transform duration-300">
-                <img 
-                    src="/filmiway-logo.svg" 
-                    alt="Filmiway" 
-                    className="w-full h-full object-contain"
-                />
+              <Image
+  src="/filmiway-logo.svg"
+  alt="Filmiway"
+  width={192}
+  height={96}
+  priority={true}
+  className="w-full h-full object-contain"
+/>
             </div>
         </Link>
     </motion.div>
@@ -1227,11 +1231,15 @@ if (movie?.imdbID) {
                                         rel="noopener noreferrer"
                                         className="flex items-center space-x-2 hover:opacity-80 transition-opacity"
                                     >
-                                        <img 
-                                            src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg" 
-                                            alt="The Movie Database" 
-                                            className="h-5 w-auto"
-                                        />
+                                        <Image
+  src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue/short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg"
+  alt="The Movie Database"
+  width={50}
+  height={20}
+  className="h-5 w-auto"
+  loading="lazy"
+/>
+
                                         <span className="text-blue-400 text-sm hover:text-blue-300 transition-colors">
                                             The Movie Database (TMDB)
                                         </span>

@@ -1,6 +1,7 @@
 // pages/movie/[id].js - COMPLETE CINEMATIC EXPERIENCE WITH STREAMING 🎬📺
 import React from 'react';
 import Head from 'next/head';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
@@ -168,11 +169,15 @@ const MoviePage = () => {
                                         >
                                             <div className="relative bg-gradient-to-br from-gray-800 to-gray-900 p-4 sm:p-6 rounded-2xl border-2 border-gray-700 group-hover:border-yellow-400 transition-all duration-500 shadow-xl">
                                                 <div className="aspect-square mb-3 sm:mb-4">
-                                                    <img
-                                                        src={`https://image.tmdb.org/t/p/w200${provider.logo_path}`}
-                                                        alt={provider.provider_name}
-                                                        className="w-full h-full object-cover rounded-xl"
-                                                    />
+<Image
+  src={`https://image.tmdb.org/t/p/w200${provider.logo_path}`}
+  alt={provider.provider_name}
+  width={200}
+  height={200}
+  className="w-full h-full object-cover rounded-xl"
+  loading="lazy"
+/>
+
                                                 </div>
                                                 <h4 className="text-white font-semibold text-center text-xs sm:text-sm group-hover:text-yellow-400 transition-colors duration-300">
                                                     {provider.provider_name}
@@ -205,11 +210,15 @@ const MoviePage = () => {
                                         >
                                             <div className="relative bg-gradient-to-br from-gray-800 to-gray-900 p-4 sm:p-6 rounded-2xl border-2 border-gray-700 group-hover:border-blue-400 transition-all duration-500 shadow-xl">
                                                 <div className="aspect-square mb-3 sm:mb-4">
-                                                    <img
-                                                        src={`https://image.tmdb.org/t/p/w200${provider.logo_path}`}
-                                                        alt={provider.provider_name}
-                                                        className="w-full h-full object-cover rounded-xl"
-                                                    />
+                                                   <Image
+  src={`https://image.tmdb.org/t/p/w200${provider.logo_path}`}
+  alt={provider.provider_name}
+  width={200}
+  height={200}
+  className="w-full h-full object-cover rounded-xl"
+  loading="lazy"
+/>
+
                                                 </div>
                                                 <h4 className="text-white font-semibold text-center text-xs sm:text-sm group-hover:text-blue-400 transition-colors duration-300">
                                                     {provider.provider_name}
@@ -423,11 +432,15 @@ const MoviePage = () => {
                                         boxShadow: '0 25px 50px rgba(0,0,0,0.8), 0 0 30px rgba(255,215,0,0.4), 0 0 60px rgba(30,144,255,0.2)',
                                     }}
                                 >
-                                    <img 
-                                        src={movie.poster}
-                                        alt={movie.title}
-                                        className="w-full h-full object-cover"
-                                    />
+<Image
+  src={movie.poster}
+  alt={movie.title}
+  width={300}
+  height={450}
+  priority={true}
+  className="w-full h-full object-cover group-hover:scale-110 transition-all duration-700"
+/>
+
                                     
                                     {/* SPOTLIGHT OVERLAY */}
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent group-hover:from-black/40 transition-all duration-700"></div>
@@ -693,15 +706,15 @@ const MoviePage = () => {
                                             }}
                                         >
                                             {actor.profile_path ? (
-                                                <img 
-                                                    src={`https://image.tmdb.org/t/p/w300${actor.profile_path}`}
-                                                    alt={actor.name}
-                                                    className="w-full h-full object-cover group-hover:scale-110 transition-all duration-700"
-                                                    style={{ 
-                                                        filter: 'inherit',
-                                                        transition: 'all 0.7s ease'
-                                                    }}
-                                                />
+                                               <Image
+  src={`https://image.tmdb.org/t/p/w300${actor.profilePath}`}
+  alt={actor.name}
+  width={300}
+  height={300}
+  className="w-full h-full object-cover group-hover:scale-110 transition-all duration-700"
+  loading="lazy"
+/>
+
                                             ) : (
                                                 <div className="w-full h-full bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center">
                                                     <Users size={32} className="text-gray-500" />
@@ -772,11 +785,15 @@ const MoviePage = () => {
                                 >
                                     {company.logo_path ? (
                                         <div className="h-16 sm:h-20 flex items-center justify-center mb-4 grayscale group-hover:grayscale-0 transition-all duration-700">
-                                            <img 
-                                                src={`https://image.tmdb.org/t/p/w200${company.logo_path}`}
-                                                alt={company.name}
-                                                className="max-h-full max-w-full object-contain filter brightness-75 invert group-hover:brightness-100 group-hover:invert-0 group-hover:drop-shadow-lg transition-all duration-700"
-                                            />
+                                           <Image
+  src={`https://image.tmdb.org/t/p/w200${company.logoPath}`}
+  alt={company.name}
+  width={200}
+  height={200}
+  className="max-h-full max-w-full object-contain filter brightness-75 invert group-hover:brightness-100 group-hover:invert-0 group-hover:drop-shadow-lg transition-all duration-700"
+  loading="lazy"
+/>
+
                                         </div>
                                     ) : (
                                         <div className="h-16 sm:h-20 flex items-center justify-center mb-4">
@@ -846,12 +863,16 @@ const MoviePage = () => {
                                                     }}
                                                 >
                                                     {rec.poster_path ? (
-                                                        <img 
-                                                            src={`https://image.tmdb.org/t/p/w500${rec.poster_path}`}
-                                                            alt={rec.title}
-                                                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                                                            loading="lazy"
-                                                        />
+<Image
+  src={`https://image.tmdb.org/t/p/w500${rec.posterPath}`}
+  alt={rec.title}
+  width={500}
+  height={750}
+  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+  loading="lazy"
+/>
+
+
                                                     ) : (
                                                         <div className="w-full h-full bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center">
                                                             <Film size={64} className="text-gray-500" />
@@ -1014,11 +1035,14 @@ const MoviePage = () => {
                                     rel="noopener noreferrer"
                                     className="flex items-center space-x-3 hover:opacity-80 transition-all duration-500 group"
                                 >
-                                    <img 
-                                        src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg" 
-                                        alt="The Movie Database" 
-                                        className="h-6 sm:h-8 w-auto filter brightness-75 group-hover:brightness-100 transition-all duration-500"
-                                    />
+                                   <Image
+  src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg"
+  alt="The Movie Database"
+  width={150}
+  height={60}
+  className="h-6 sm:h-8 w-auto filter brightness-75 group-hover:brightness-100 transition-all duration-500"
+/>
+
                                     <div className="text-center sm:text-left">
                                         <span className="text-blue-400 text-base sm:text-lg font-bold hover:text-blue-300 transition-colors duration-500 tracking-wide uppercase cinema-glow">
                                             THE MOVIE DATABASE
