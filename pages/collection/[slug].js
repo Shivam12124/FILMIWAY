@@ -1072,7 +1072,7 @@ if (movie?.imdbID) {
                                 </motion.button>
                             )}
 
-                            {/* 🔥 FIXED FOR NEXT.JS 15 - WITH ALL 7 COLLECTION URLS */}
+                            {/* 🔥 FIXED FOR NEXT.JS 15 - WITH ALL 8 COLLECTION URLS */}
                             <AnimatePresence mode="wait">
                                 <Link 
                                     href={
@@ -1258,7 +1258,8 @@ if (movie?.imdbID) {
 );
 };
 
-// 🔥 SSG FUNCTIONS WITH ALL 7 COLLECTIONS INCLUDING MYSTERY THRILLER
+// 🔥 SSG FUNCTIONS WITH ALL 8 COLLECTIONS INCLUDING MYSTERY THRILLER
+// ✅ CORRECT getStaticPaths() - generates all 8 collections
 export async function getStaticPaths() {
     const slugs = getAllCollectionSlugs();
 
@@ -1266,12 +1267,16 @@ export async function getStaticPaths() {
         params: { slug }
     }));
 
+    console.log('✅ Building paths for:', paths.map(p => p.params.slug));
+
     return {
         paths,
-        fallback: false
+        fallback: false  // ✅ CRITICAL: Must be false for SSG/export
     };
 }
 
+
+// ✅ CORRECT getStaticProps() - maps correct database to each collection
 export async function getStaticProps({ params }) {
     const slug = params.slug;
     const collection = getCollectionBySlug(slug);
@@ -1280,25 +1285,35 @@ export async function getStaticProps({ params }) {
         return { notFound: true };
     }
 
-let movieDatabase;
-if (collection.slug === 'best-survival-movies') {
-    movieDatabase = SURVIVAL_DATABASE;
-} else if (collection.slug === 'best-thriller-movies') {
-    movieDatabase = THRILLER_MOVIES;
-} else if (collection.slug === 'best-mystery-thriller-movies') {
-    movieDatabase = MYSTERY_THRILLER_MOVIES;
-} else if (collection.slug === 'best-detective-thriller-movies') {  // ✅ Added detective thriller collection
-    movieDatabase = DETECTIVE_THRILLER_MOVIES;                       // ✅ Set its respective DB
-} else if (collection.slug === 'best-drama-movies-on-netflix') {
-    movieDatabase = DRAMA_MOVIES;
-} else {
-    movieDatabase = COMPLETE_MOVIE_DATABASE;
-}
+    // ✅ SELECT DATABASE FOR EACH COLLECTION
+    let movieDatabase;
+    
+    switch(collection.slug) {
+        case 'best-survival-movies':
+            movieDatabase = SURVIVAL_DATABASE;
+            break;
+        case 'best-thriller-movies':
+            movieDatabase = THRILLER_MOVIES;
+            break;
+        case 'best-mystery-thriller-movies':
+            movieDatabase = MYSTERY_THRILLER_MOVIES;
+            break;
+        case 'best-detective-thriller-movies':
+            movieDatabase = DETECTIVE_THRILLER_MOVIES;
+            break;
+        case 'best-drama-movies-on-netflix':
+            movieDatabase = DRAMA_MOVIES;
+            break;
+        default:
+            // movies-like-inception, movies-like-memento, movies-like-shutter-island
+            movieDatabase = COMPLETE_MOVIE_DATABASE;
+    }
 
+    const movieArray = Array.isArray(movieDatabase) 
+        ? movieDatabase 
+        : Object.values(movieDatabase);
 
-
-    const movieArray = Array.isArray(movieDatabase) ? movieDatabase : Object.values(movieDatabase);
-
+    // ✅ FIND MOVIES - search by imdbID
     const movies = collection.movies
         .map(imdbId => {
             const movie = movieArray.find(m => m.imdbID === imdbId);
@@ -1311,20 +1326,19 @@ if (collection.slug === 'best-survival-movies') {
                 Year: movie.Year || movie.year || '2024',
                 Genre: movie.Genre || movie.genre || 'Thriller',
                 Runtime: movie.Runtime || movie.runtime || 120,
-                rank: movie.rank || 1,
-                emotionalIntensity: movie.emotionalIntensity || 0,
-                suspenseIntensity: movie.suspenseIntensity || 0,
-                mysteryComplexity: movie.mysteryComplexity || 0  // ✅ MYSTERY THRILLER FIELD
+                Poster: movie.Poster || movie.poster || '',
+                Plot: movie.Plot || movie.plot || movie.synopsis || '',
+                rating: movie.rating || 0
             };
         })
-        .filter(Boolean)
-        .reverse();
+        .filter(Boolean);
 
     return {
         props: {
             collection,
             movies
-        }
+        },
+        revalidate: 3600  // ISR: regenerate every hour
     };
 }
 
