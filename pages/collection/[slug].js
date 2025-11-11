@@ -522,8 +522,7 @@ const CollectionPage = ({ collection, movies }) => {
 
     // 🔥 GET CURRENT MOVIE AND CALCULATE RANK CORRECTLY
     const currentMovie = movies[currentMovieIndex];
-  const currentRank = movies.length - currentMovieIndex;
-
+const currentRank = movies.length - currentMovieIndex;
 
 
     // 🔥 SMART NAVIGATION LOGIC
@@ -1341,7 +1340,8 @@ export async function getStaticProps({ params }) {
                 rating: movie.rating || 0
             };
         })
-        .filter(Boolean);
+        .filter(Boolean)
+         .reverse();  //
 
 return {
     props: {
