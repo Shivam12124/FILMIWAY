@@ -522,7 +522,8 @@ const CollectionPage = ({ collection, movies }) => {
 
     // 🔥 GET CURRENT MOVIE AND CALCULATE RANK CORRECTLY
     const currentMovie = movies[currentMovieIndex];
-   const currentRank = currentMovieIndex + 1;
+  const currentRank = movies.length - currentMovieIndex;
+
 
 
     // 🔥 SMART NAVIGATION LOGIC
