@@ -1345,9 +1345,10 @@ return {
     props: {
         collection,
         movies
-    },
-    revalidate: false  // Disables ISR, compatible with static export
+    }
+    // No revalidate means pure static generation compatible with export
 };
+
 
 }
 
