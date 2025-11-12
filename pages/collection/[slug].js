@@ -1023,57 +1023,66 @@ return (
             <meta name="twitter:title" key={`twitter-title-${collection.slug}`} content={metaContent.twitterTitle || metaContent.title || collection.title} />
             <meta name="twitter:description" key={`twitter-desc-${collection.slug}`} content={metaContent.description || collection.description} />
 
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{
-                    __html: JSON.stringify({
-                        "@context": "https://schema.org",
-                        "@type": "ItemList",
-                        "name": collection?.title || "",
-                        "description": collection?.description || "",
-                        "numberOfItems": movies?.length || 0,
-                        "url": `https://filmiway.com/collection/${collection?.slug || ""}`,
-                        "itemListElement": (movies || []).map((movie, index) => {
-                            let itemObj = {
-                                "@type": "Movie",
-                                "@name": movie?.Title || "Unknown Movie",
-                                "datePublished": movie?.Year || "2024",
-                                "genre": movie?.Genre || "Drama"
-                            };
-if (movie?.imdbID) {
-    const basePath =
-        collection?.slug === 'best-survival-movies'
-            ? 'movies/survival/'
-            : collection?.slug === 'movies-like-inception'
-            ? 'movies/like-inception/'
-            : collection?.slug === 'movies-like-memento'
-            ? 'movies/like-memento/'
-            : collection?.slug === 'movies-like-shutter-island'
-            ? 'movies/like-shutter-island/'
-            : collection?.slug === 'best-thriller-movies'
-            ? 'movies/thriller/'
-            : collection?.slug === 'best-mystery-thriller-movies'
-            ? 'movies/mystery-thriller/'
-            : collection?.slug === 'best-detective-thriller-movies'
-            ? 'movies/detective-thriller/'
-            : collection?.slug === 'best-drama-movies-on-netflix'
-            ? 'movies/netflix/'
-            : collection?.slug ==='best-psychological-thriller-movies'  // Add psychological thriller URL path
-            ? 'movies/psychological-thriller/'
-            : 'movies/';
+<script
+    type="application/ld+json"
+    dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            "name": collection?.title || "",
+            "description": collection?.description || "",
+            "numberOfItems": movies?.length || 0,
+            "url": `https://filmiway.com/collection/${collection?.slug || ""}`,
+            "itemListElement": (movies || []).map((movie, index) => {
+                const basePath =
+                    collection?.slug === 'best-survival-movies'
+                        ? 'movies/survival/'
+                        : collection?.slug === 'movies-like-inception'
+                        ? 'movies/like-inception/'
+                        : collection?.slug === 'movies-like-memento'
+                        ? 'movies/like-memento/'
+                        : collection?.slug === 'movies-like-shutter-island'
+                        ? 'movies/like-shutter-island/'
+                        : collection?.slug === 'best-thriller-movies'
+                        ? 'movies/thriller/'
+                        : collection?.slug === 'best-mystery-thriller-movies'
+                        ? 'movies/mystery-thriller/'
+                        : collection?.slug === 'best-detective-thriller-movies'
+                        ? 'movies/detective-thriller/'
+                        : collection?.slug === 'best-drama-movies-on-netflix'
+                        ? 'movies/netflix/'
+                        : collection?.slug === 'best-psychological-thriller-movies'
+                        ? 'movies/psychological-thriller/'
+                        : 'movies/';
 
-    itemObj.url = `https://filmiway.com/${basePath}${movie.imdbID}`;
-}
+                let itemObj = {
+                    "@type": "Movie",
+                    "name": movie?.Title || "Unknown Movie",  // ✅ FIX: "name" not "@name"
+                    "image": movie?.posterPath 
+                        ? `https://image.tmdb.org/t/p/w500${movie.posterPath}`
+                        : null,  // ✅ ADD: image field
+                    "datePublished": movie?.Year || "2024",
+                    "genre": movie?.Genre || "Drama",
+                    "director": movie?.director ? {
+                        "@type": "Person",
+                        "name": movie.director
+                    } : null  // ✅ ADD: director field
+                };
 
-                            return {
-                                "@type": "ListItem",
-                                "position": movies.length - index,
-                                "item": itemObj
-                            };
-                        })
-                    })
-                }}
-            />
+                if (movie?.imdbID) {
+                    itemObj.url = `https://filmiway.com/${basePath}${movie.imdbID}`;
+                }
+
+                return {
+                    "@type": "ListItem",
+                    "position": index + 1,  // ✅ FIX: use index + 1, not movies.length - index
+                    "item": itemObj
+                };
+            })
+        })
+    }}
+/>
+
         </Head>
 
         <CinematicBackground />
