@@ -1057,17 +1057,23 @@ return (
 
                 let itemObj = {
                     "@type": "Movie",
-                    "name": movie?.Title || "Unknown Movie",  // ✅ FIX: "name" not "@name"
-                    "image": movie?.posterPath 
-                        ? `https://image.tmdb.org/t/p/w500${movie.posterPath}`
-                        : null,  // ✅ ADD: image field
+                    "name": movie?.Title || "Unknown Movie",
+                    "image": movie?.poster_path 
+                        ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+                        : movie?.posterUrl 
+                        ? movie.posterUrl
+                        : "https://via.placeholder.com/300x450?text=No+Image",
                     "datePublished": movie?.Year || "2024",
-                    "genre": movie?.Genre || "Drama",
-                    "director": movie?.director ? {
+                    "genre": movie?.Genre || "Drama"
+                };
+
+                // Add director if exists
+                if (movie?.director) {
+                    itemObj.director = {
                         "@type": "Person",
                         "name": movie.director
-                    } : null  // ✅ ADD: director field
-                };
+                    };
+                }
 
                 if (movie?.imdbID) {
                     itemObj.url = `https://filmiway.com/${basePath}${movie.imdbID}`;
@@ -1075,13 +1081,14 @@ return (
 
                 return {
                     "@type": "ListItem",
-                    "position": index + 1,  // ✅ FIX: use index + 1, not movies.length - index
+                    "position": index + 1,
                     "item": itemObj
                 };
             })
         })
     }}
 />
+
 
         </Head>
 
