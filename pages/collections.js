@@ -54,6 +54,19 @@ const CollectionsHub = () => {
             directLink: '/collection/best-survival-movies',
             hasSubCollections: false
         },
+
+        {
+        id: 'psychological-thriller',  // Added psychological thriller collection
+        title: 'Best Psychological Thrillers',
+        description: 'Mind-bending narratives with intense psychological suspense and twists',
+        icon: Brain,
+        gradient: 'from-pink-600 to-red-700',
+        movieCount: '10',
+        rating: '8.7',
+        directLink: '/collection/best-psychological-thriller-movies',
+        hasSubCollections: false
+    },
+
         {
             id: 'suspense-thriller',
             title: 'Best Suspense Thriller Movies',

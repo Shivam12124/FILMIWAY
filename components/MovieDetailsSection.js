@@ -9,6 +9,8 @@ import COMPLETE_THRILLER_DATABASE from '../utils/thrillerMovieData';
 import MYSTERY_THRILLER_DATABASE from '../utils/mysteryThrillerMovieData';  // ✅ ADDED
 import dramaRoutes from '../utils/dramaMovieRoutes';
 import DETECTIVE_THRILLER_DATABASE from '../utils/detectiveThrillerMovieData';  // ✅ Added detective thriller
+import COMPLETE_PSYCH_THRILLER_DATABASE from '../utils/psychologicalThrillerMovieData';  // Add this import
+
 
 const DRAMA_MOVIE_DATA = dramaRoutes.COMPLETE_MOVIE_DATABASE;
 
@@ -26,6 +28,7 @@ import DramaSEOFAQSection from './DramaSEOFAQSection';
 import ThrillerSEOFAQSection from './ThrillerSEOFAQSection';
 import MysteryThrillerSEOFAQSection from './MysteryThrillerSEOFAQSection';
 import DetectiveThrillerSEOFAQSection from './DetectiveThrillerSEOFAQSection';
+import PsychThrillerSEOFAQSection from './PsychThrillerSEOFAQSection';
 
 const MovieDetailsSection = React.memo(({
   movie,
@@ -34,6 +37,7 @@ const MovieDetailsSection = React.memo(({
   fromInceptionCollection,
   fromSurvivalCollection,
   fromDramaCollection,
+  fromPsychologicalThrillerCollection, 
   fromThrillerCollection,
   fromMysteryThrillerCollection,
   fromDetectiveThrillerCollection  // ✅ Added detective thriller flag
@@ -43,7 +47,12 @@ const MovieDetailsSection = React.memo(({
 
   const safeLookup = (collection, id) => (collection && id && collection[id]) || null;
 
-  
+  const getPsychologicalThrillerMovieInfo = () => {
+  if (!fromPsychologicalThrillerCollection || !movie.tmdbId) return null;
+  if (!PSYCHOLOGICAL_THRILLER_DATABASE) return null;
+  return PSYCHOLOGICAL_THRILLER_DATABASE[movie.tmdbId] || null;
+};
+
   // ✅ DETECTIVE THRILLER LOOKUP
   const getDetectiveThrillerMovieInfo = () => {
     if (!fromDetectiveThrillerCollection || !movie.tmdbId) return null;
@@ -100,9 +109,10 @@ const MovieDetailsSection = React.memo(({
     ageRating: 'R'
   });
 
-  const safeMovieInfo = movieInfo || getMovieSpecificData(title);
+const title = movie.Title || (movieInfo && movieInfo.title) || 'Unknown Title';
 
-  const title = movie.Title || (movieInfo && movieInfo.title) || 'Unknown Title';
+const safeMovieInfo = movieInfo || getMovieSpecificData(title);
+
   const director = safeMovieInfo.director || movie.Director || 'Unknown Director';
   const genre = safeMovieInfo.genre || movie.Genre || 'Drama';
   const year = movie.Year || movie.year || '20XX';
@@ -148,49 +158,56 @@ const scoreValue = fromMysteryThrillerCollection
 
 
 
-  const complexityLevel = safeMovieInfo.complexityLevel || 'HIGH';
+const complexityLevel = safeMovieInfo.complexityLevel || 'HIGH';
 
-  const getComplexityColor = (level) => {
-
-      if (fromDetectiveThrillerCollection) {
+const getComplexityColor = (level) => {
+  if (fromDetectiveThrillerCollection) {
     switch (level) {
-        case 'EXTREME': return '#ea0808ff';
-        case 'HIGH': return '#f79400ff';
-        case 'MEDIUM': return '#bb9e0cff';
-        default: return '#6b7280';
+      case 'EXTREME': return '#ea0808ff';
+      case 'HIGH': return '#f79400ff';
+      case 'MEDIUM': return '#bb9e0cff';
+      default: return '#6b7280';
     }
   }
-    if (fromMysteryThrillerCollection) {
-      switch (level) {
-        case 'EXTREME': return '#ea0808ff';
-        case 'HIGH': return '#f79400ff';
-        case 'MEDIUM': return '#bb9e0cff';
-        default: return '#6b7280';
-      }
-    }
-    if (fromDramaCollection) {
-      switch (level) {
-        case 'EXTREME': return '#ea0808ff';
-        case 'HIGH': return '#f79400ff';
-        case 'MEDIUM': return '#bb9e0cff';
-        default: return '#6b7280';
-      }
-    }
-    if (fromThrillerCollection) {
-      switch (level) {
-        case 'EXTREME': return '#ea0808ff';
-        case 'HIGH': return '#f79400ff';
-        case 'MEDIUM': return '#bb9e0cff';
-        default: return '#6b7280';
-      }
-    }
+  if (fromMysteryThrillerCollection) {
     switch (level) {
-        case 'EXTREME': return '#ea0808ff';
-        case 'HIGH': return '#f79400ff';
-        case 'MEDIUM': return '#bb9e0cff';
-        default: return '#6b7280';
+      case 'EXTREME': return '#ea0808ff';
+      case 'HIGH': return '#f79400ff';
+      case 'MEDIUM': return '#bb9e0cff';
+      default: return '#6b7280';
     }
-  };
+  }
+  if (fromPsychologicalThrillerCollection) {  // Added psychological thriller case
+    switch (level) {
+      case 'EXTREME': return '#ea0808ff';
+      case 'HIGH': return '#f79400ff';
+      case 'MEDIUM': return '#bb9e0cff';
+      default: return '#6b7280';
+    }
+  }
+  if (fromDramaCollection) {
+    switch (level) {
+      case 'EXTREME': return '#ea0808ff';
+      case 'HIGH': return '#f79400ff';
+      case 'MEDIUM': return '#bb9e0cff';
+      default: return '#6b7280';
+    }
+  }
+  if (fromThrillerCollection) {
+    switch (level) {
+      case 'EXTREME': return '#ea0808ff';
+      case 'HIGH': return '#f79400ff';
+      case 'MEDIUM': return '#bb9e0cff';
+      default: return '#6b7280';
+    }
+  }
+  switch (level) {
+    case 'EXTREME': return '#ea0808ff';
+    case 'HIGH': return '#f79400ff';
+    case 'MEDIUM': return '#bb9e0cff';
+    default: return '#6b7280';
+  }
+};
 
   const getAgeRatingColor = (rating) => {
     switch (rating) {
@@ -219,6 +236,7 @@ const scoreValue = fromMysteryThrillerCollection
 const getComplexityScoreTitle = () => {
   if (fromDetectiveThrillerCollection) return 'MYSTERY COMPLEXITY SCORE';
   if (fromMysteryThrillerCollection) return 'MYSTERY COMPLEXITY SCORE';
+  if (fromPsychologicalThrillerCollection) return 'PSYCHOLOGICAL COMPLEXITY SCORE';  // Added
   if (fromDramaCollection) return 'EMOTIONAL INTENSITY SCORE';
   if (fromThrillerCollection) return 'SUSPENSE INTENSITY SCORE';
   if (fromSurvivalCollection) return 'SURVIVAL INTENSITY SCORE';
@@ -231,6 +249,7 @@ const getComplexityScoreTitle = () => {
 const getComplexityIndexLabel = () => {
   if (fromDetectiveThrillerCollection) return 'MYSTERY INDEX';
   if (fromMysteryThrillerCollection) return 'MYSTERY INDEX';
+  if (fromPsychologicalThrillerCollection) return 'PSYCHOLOGICAL INDEX';  // Added
   if (fromDramaCollection) return 'EMOTIONAL INTENSITY';
   if (fromThrillerCollection) return 'SUSPENSE INDEX';
   if (fromSurvivalCollection) return 'SURVIVABILITY INDEX';
@@ -243,6 +262,7 @@ const getComplexityIndexLabel = () => {
 const getComplexityLevelLabel = () => {
   if (fromDetectiveThrillerCollection) return 'MYSTERY COMPLEXITY LEVEL';
   if (fromMysteryThrillerCollection) return 'MYSTERY COMPLEXITY LEVEL';
+  if (fromPsychologicalThrillerCollection) return 'PSYCHOLOGICAL DISTORTION LEVEL';  // Added
   if (fromDramaCollection) return 'EMOTIONAL RESONANCE LEVEL';
   if (fromThrillerCollection) return 'SUSPENSE INTENSITY LEVEL';
   if (fromSurvivalCollection) return 'SURVIVAL INTENSITY LEVEL';
@@ -265,6 +285,12 @@ const getComplexityDescription = () => {
     if (scoreValue >= 70) return 'Engaging mystery with well-crafted clues and satisfying detective work.';
     return 'Accessible mystery thriller with genuine intrigue and compelling storylines.';
   }
+  if (fromPsychologicalThrillerCollection) {  // Added psychological thriller descriptions
+    if (scoreValue >= 90) return 'A mind-bending psychological thriller with intense twists and profound character exploration.';
+    if (scoreValue >= 80) return 'An immersive psychological thriller that delves deep into the human psyche and suspense.';
+    if (scoreValue >= 70) return 'A compelling psychological thriller with gripping tension and layered storytelling.';
+    return 'An engaging psychological thriller that captivates with mystery and emotional depth.';
+  }
   if (fromDramaCollection) {
     if (scoreValue >= 90) return 'A profoundly moving emotional journey reaching the deepest corners of human experience.';
     if (scoreValue >= 80) return 'Intensely emotional narrative with powerful character moments and deeply affecting connections.';
@@ -284,17 +310,19 @@ const getComplexityDescription = () => {
 };
 
 const getBorderColor = () => {
-  if (fromDetectiveThrillerCollection)  return 'border-yellow-400/40';
+  if (fromDetectiveThrillerCollection) return 'border-yellow-400/40';
+  if (fromPsychologicalThrillerCollection) return 'border-yellow-400/40';  // Added
   if (fromThrillerCollection) return 'border-yellow-400/40';
   if (fromDramaCollection) return 'border-red-400/40';
   if (fromInceptionCollection) return 'border-yellow-400/40';
-  if (fromShutterIslandCollection)  return 'border-yellow-400/40';
-  if (fromMementoCollection)  return 'border-yellow-400/40';
+  if (fromShutterIslandCollection) return 'border-yellow-400/40';
+  if (fromMementoCollection) return 'border-yellow-400/40';
   return 'border-yellow-400/40';
 };
 
 const getStarColor = () => {
   if (fromDetectiveThrillerCollection) return 'text-yellow-400';
+  if (fromPsychologicalThrillerCollection) return 'text-yellow-400';  // Added
   if (fromThrillerCollection) return 'text-yellow-400';
   if (fromDramaCollection) return 'text-red-400';
   if (fromInceptionCollection) return 'text-yellow-400';
@@ -302,7 +330,6 @@ const getStarColor = () => {
   if (fromMementoCollection) return 'text-yellow-400';
   return 'text-yellow-400';
 };
-
 
   return (
     <motion.div

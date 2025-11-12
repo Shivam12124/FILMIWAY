@@ -11,6 +11,10 @@ import DRAMA_MOVIES from '../../utils/dramaMovieData';
 import { THRILLER_MOVIES } from '../../utils/thrillerMovieData'; // 🔥 ADD THIS LINE FOR THRILLER
 import { MYSTERY_THRILLER_MOVIES } from '../../utils/mysteryThrillerMovieData'; 
 import { DETECTIVE_THRILLER_MOVIES } from '../../utils/detectiveThrillerMovieData';
+import { PSYCH_THRILLER_MOVIES } from '../../utils/psychologicalThrillerMovieData'; 
+
+;
+
 
 // Components
 import CinematicBackground from '../../components/CinematicBackground';
@@ -166,6 +170,32 @@ const CollectionPage = ({ collection, movies }) => {
                     text2: "Each film has been selected for its ability to completely reframe the viewing experience, with revelations that transform every previous scene into something entirely different."
                 }
             };
+
+            } else if (collection.slug ==='best-psychological-thriller-movies') {
+    return {
+        badge: "Psychological Thriller Cinema",
+        title: "Psychological Thriller",
+        description: "Dive into a curated collection of psychological thrillers with mind-bending narratives, unreliable narrators, and chilling tensions.",
+        selection: {
+            text1: "These films explore the darkest reaches of the human mind, with plots filled with twists, paranoia, and complex characters.",
+            text2: "Each psychological thriller invites you to unravel intricate stories where truth is elusive and perception shifts."
+        },
+        ranking: {
+            text: "Our psychological thriller index evaluates the depth of psychological complexity, narrative deception, and tension build-up throughout each film.",
+            points: [
+                "Psychological depth complexity",
+                "Narrative deception and twists",
+                "Character psychological profile",
+                "Atmospheric tension build-up"
+            ]
+        },
+        experience: {
+            text1: "Perfect for fans of cerebral and unsettling thrillers that keep you questioning reality and motives.",
+            text2: "Each film selected for its ability to disturb, intrigue, and leave a lasting psychological impression."
+        }
+    };
+
+
 
   } else if (collection.slug === 'best-detective-thriller-movies') {  // ✅ Added detective thriller
       return {
@@ -326,6 +356,14 @@ const CollectionPage = ({ collection, movies }) => {
                 title: "Best Movies Like Shutter Island – 10 Best Mind-Bending Psychological Thrillers You Must Watch",
                 subtitle: "Psychological Thrillers with Unreliable Narrators & Shocking Plot Twists Ranked by Complexity"
             };
+
+            } else if (collection.slug ==='best-psychological-thriller-movies') {
+    return {
+        title: "Best Psychological Thriller Movies – Top Mind-Bending Psychological Thrillers",
+        subtitle: "Psychological Thrillers with Intricate Plots, Twists, and Psychological Depth Ranked by Complexity"
+    };
+
+
         } else if (collection.slug === 'best-thriller-movies') {
             return {
                 title: "Best Suspense Thriller Movies – 10 Best Edge-of-Your-Seat Thrillers You Must Watch",
@@ -377,6 +415,14 @@ const CollectionPage = ({ collection, movies }) => {
                 title: "Loading Movies Like Shutter Island",
                 description: "Curating psychological thrillers with unreliable narrators and shocking plot twists"
             };
+
+            } else if (collection?.slug ==='best-psychological-thriller-movies') {
+    return {
+        title: "Loading Psychological Thriller Movies",
+        description: "Curating psychological thrillers with complex narratives, tension, and mind-bending twists."
+    };
+
+
  } else if (collection?.slug === 'best-detective-thriller-movies') {  // ✅ Added detective thriller
       return {
         title: "Loading Best Detective Thriller Movies",
@@ -439,7 +485,19 @@ const CollectionPage = ({ collection, movies }) => {
                 ogTitle: "The Most Advanced List on the Internet –  10 Best Mind-Bending Movies Like Shutter Island 🧠",
                 twitterTitle: "🧠 The Most Advanced Handpicked List – 10 Best Movies Like Shutter Island",
                 progressText: `of Top ${movies.length} Movies Like Shutter Island`
+                
             };
+            } else if (collection.slug ==='best-psychological-thriller-movies') {
+    return {
+        title: "Best Psychological Thriller Movies – Mind-Bending Psychological Thrillers You Must Watch",
+        description: "Discover a handpicked list of psychological thrillers known for mind-bending plots, psychological depth, and chilling tension. Expertly curated for fans of cerebral cinema.",
+        keywords: "psychological thrillers, mind-bending movies, cerebral thrillers, psychological depth films, thriller movies with twists, suspense thrillers, chilling psychological narratives",
+        ogTitle: "Top Psychological Thriller Movies – Mind-Bending Psychological Thrillers",
+        twitterTitle: "Mind-Bending Psychological Thriller Movies – Expert Curated List",
+        progressText: `of Top ${movies.length} Psychological Thriller Movies`
+    };
+
+
         } else if (collection.slug === 'best-thriller-movies') {
             return {
                 title: "Best Suspense Thriller Movies – 10 Best Edge-of-Your-Seat Thrillers You Must Watch",
@@ -549,44 +607,46 @@ const currentRank = movies.length - currentMovieIndex;
     };
 
     // 🔥 MOVIE CLICK HANDLER WITH ALL 7 COLLECTIONS
-    const handleMovieClick = () => {
-        if (typeof window !== 'undefined') {
-            sessionStorage.setItem('currentMoviePosition', currentMovieIndex.toString());
-            sessionStorage.setItem('currentMovieRank', currentRank.toString());
-            sessionStorage.setItem('currentCollection', collection.slug);
-            sessionStorage.setItem('collectionTitle', collection.title);
-            sessionStorage.setItem('fromCollection', 'true');
-            
-            // Clear all collection flags first
- sessionStorage.removeItem('fromInceptionCollection');
-      sessionStorage.removeItem('fromMementoCollection');
-      sessionStorage.removeItem('fromShutterIslandCollection');
-      sessionStorage.removeItem('fromSurvivalCollection');
-      sessionStorage.removeItem('fromThrillerCollection');
-      sessionStorage.removeItem('fromMysteryThrillerCollection');
-      sessionStorage.removeItem('fromDramaCollection');
-      sessionStorage.removeItem('fromDetectiveThrillerCollection');  // ✅ Add flag here
+  const handleMovieClick = () => {
+    if (typeof window !== 'undefined') {
+        sessionStorage.setItem('currentMoviePosition', currentMovieIndex.toString());
+        sessionStorage.setItem('currentMovieRank', currentRank.toString());
+        sessionStorage.setItem('currentCollection', collection.slug);
+        sessionStorage.setItem('collectionTitle', collection.title);
+        sessionStorage.setItem('fromCollection', 'true');
 
-            
-      if (collection.slug === 'movies-like-inception') {
-        sessionStorage.setItem('fromInceptionCollection', 'true');
-      } else if (collection.slug === 'movies-like-memento') {
-        sessionStorage.setItem('fromMementoCollection', 'true');
-      } else if (collection.slug === 'movies-like-shutter-island') {
-        sessionStorage.setItem('fromShutterIslandCollection', 'true');
-      } else if (collection.slug === 'best-survival-movies') {
-        sessionStorage.setItem('fromSurvivalCollection', 'true');
-      } else if (collection.slug === 'best-thriller-movies') {
-        sessionStorage.setItem('fromThrillerCollection', 'true');
-      } else if (collection.slug === 'best-mystery-thriller-movies') {
-        sessionStorage.setItem('fromMysteryThrillerCollection', 'true');
-      } else if (collection.slug === 'best-drama-movies-on-netflix') {
-        sessionStorage.setItem('fromDramaCollection', 'true');
-      } else if (collection.slug === 'best-detective-thriller-movies') {  // ✅ Add detective thriller case
-        sessionStorage.setItem('fromDetectiveThrillerCollection', 'true');
-      }
+        // Clear all collection flags first
+        sessionStorage.removeItem('fromInceptionCollection');
+        sessionStorage.removeItem('fromMementoCollection');
+        sessionStorage.removeItem('fromShutterIslandCollection');
+        sessionStorage.removeItem('fromSurvivalCollection');
+        sessionStorage.removeItem('fromThrillerCollection');
+        sessionStorage.removeItem('fromMysteryThrillerCollection');
+        sessionStorage.removeItem('fromDramaCollection');
+        sessionStorage.removeItem('fromDetectiveThrillerCollection');
+        sessionStorage.removeItem('fromPsychologicalThrillerCollection');  // Add clear flag for psychological thriller
+
+        if (collection.slug === 'movies-like-inception') {
+            sessionStorage.setItem('fromInceptionCollection', 'true');
+        } else if (collection.slug === 'movies-like-memento') {
+            sessionStorage.setItem('fromMementoCollection', 'true');
+        } else if (collection.slug === 'movies-like-shutter-island') {
+            sessionStorage.setItem('fromShutterIslandCollection', 'true');
+        } else if (collection.slug === 'best-survival-movies') {
+            sessionStorage.setItem('fromSurvivalCollection', 'true');
+        } else if (collection.slug === 'best-thriller-movies') {
+            sessionStorage.setItem('fromThrillerCollection', 'true');
+        } else if (collection.slug === 'best-mystery-thriller-movies') {
+            sessionStorage.setItem('fromMysteryThrillerCollection', 'true');
+        } else if (collection.slug === 'best-drama-movies-on-netflix') {
+            sessionStorage.setItem('fromDramaCollection', 'true');
+        } else if (collection.slug === 'best-detective-thriller-movies') {
+            sessionStorage.setItem('fromDetectiveThrillerCollection', 'true');
+        } else if (collection.slug ==='best-psychological-thriller-movies') {
+            sessionStorage.setItem('fromPsychologicalThrillerCollection', 'true');  // Set flag for psychological thriller
+        }
     }
-  };
+};
 
     // Get dynamic content
     const collectionContent = getCollectionContent();
@@ -981,28 +1041,30 @@ return (
                                 "genre": movie?.Genre || "Drama"
                             };
 if (movie?.imdbID) {
-  const basePath =
-    collection?.slug === 'best-survival-movies'
-      ? 'movies/survival/'
-      : collection?.slug === 'movies-like-inception'
-      ? 'movies/like-inception/'
-      : collection?.slug === 'movies-like-memento'
-      ? 'movies/like-memento/'
-      : collection?.slug === 'movies-like-shutter-island'
-      ? 'movies/like-shutter-island/'
-      : collection?.slug === 'best-thriller-movies'
-      ? 'movies/thriller/'
-      : collection?.slug === 'best-mystery-thriller-movies'  // ✅ MYSTERY THRILLER
-      ? 'movies/mystery-thriller/'
-      : collection?.slug === 'best-detective-thriller-movies'  // ✅ Added detective thriller collection slug check
-      ? 'movies/detective-thriller/'                            // ✅ Added detective thriller URL path
-      : collection?.slug === 'best-drama-movies-on-netflix'
-      ? 'movies/netflix/'
-      : 'movies/';
-  itemObj.url = `https://filmiway.com/${basePath}${movie.imdbID}`;
+    const basePath =
+        collection?.slug === 'best-survival-movies'
+            ? 'movies/survival/'
+            : collection?.slug === 'movies-like-inception'
+            ? 'movies/like-inception/'
+            : collection?.slug === 'movies-like-memento'
+            ? 'movies/like-memento/'
+            : collection?.slug === 'movies-like-shutter-island'
+            ? 'movies/like-shutter-island/'
+            : collection?.slug === 'best-thriller-movies'
+            ? 'movies/thriller/'
+            : collection?.slug === 'best-mystery-thriller-movies'
+            ? 'movies/mystery-thriller/'
+            : collection?.slug === 'best-detective-thriller-movies'
+            ? 'movies/detective-thriller/'
+            : collection?.slug === 'best-drama-movies-on-netflix'
+            ? 'movies/netflix/'
+            : collection?.slug ==='best-psychological-thriller-movies'  // Add psychological thriller URL path
+            ? 'movies/psychological-thriller/'
+            : 'movies/';
 
+    itemObj.url = `https://filmiway.com/${basePath}${movie.imdbID}`;
+}
 
-                            }
                             return {
                                 "@type": "ListItem",
                                 "position": movies.length - index,
@@ -1078,27 +1140,30 @@ if (movie?.imdbID) {
                             )}
 
                             {/* 🔥 FIXED FOR NEXT.JS 15 - WITH ALL 8 COLLECTION URLS */}
-                            <AnimatePresence mode="wait">
-                                <Link 
-                                    href={
-      collection.slug === 'movies-like-inception'
-        ? `/movies/like-inception/${currentMovie.imdbID}`
-        : collection.slug === 'movies-like-memento'
-        ? `/movies/like-memento/${currentMovie.imdbID}`
-        : collection.slug === 'movies-like-shutter-island'
-        ? `/movies/like-shutter-island/${currentMovie.imdbID}`
-        : collection.slug === 'best-survival-movies'
-        ? `/movies/survival/${currentMovie.imdbID}`
-        : collection.slug === 'best-thriller-movies'
-        ? `/movies/thriller/${currentMovie.imdbID}`
-        : collection.slug === 'best-mystery-thriller-movies'  // ✅ Mystery thriller
-        ? `/movies/mystery-thriller/${currentMovie.imdbID}`
-        : collection.slug === 'best-detective-thriller-movies' // ✅ Detective thriller
-        ? `/movies/detective-thriller/${currentMovie.imdbID}`
-        : collection.slug === 'best-drama-movies-on-netflix'
-        ? `/movies/netflix/${currentMovie.imdbID}`
-        : `/movies/${currentMovie.imdbID}`
-                                    }
+<AnimatePresence mode="wait">
+    <Link 
+        href={
+            collection.slug === 'movies-like-inception'
+            ? `/movies/like-inception/${currentMovie.imdbID}`
+            : collection.slug === 'movies-like-memento'
+            ? `/movies/like-memento/${currentMovie.imdbID}`
+            : collection.slug === 'movies-like-shutter-island'
+            ? `/movies/like-shutter-island/${currentMovie.imdbID}`
+            : collection.slug === 'best-survival-movies'
+            ? `/movies/survival/${currentMovie.imdbID}`
+            : collection.slug === 'best-thriller-movies'
+            ? `/movies/thriller/${currentMovie.imdbID}`
+            : collection.slug === 'best-mystery-thriller-movies'
+            ? `/movies/mystery-thriller/${currentMovie.imdbID}`
+            : collection.slug === 'best-detective-thriller-movies'
+            ? `/movies/detective-thriller/${currentMovie.imdbID}`
+            : collection.slug === 'best-drama-movies-on-netflix'
+            ? `/movies/netflix/${currentMovie.imdbID}`
+            : collection.slug === 'best-psychological-thriller-movies'
+            ? `/movies/psych-thriller/${currentMovie.imdbID}`   // Added psychological thriller slug
+            
+            : `/movies/${currentMovie.imdbID}`
+        }
                                     key={currentMovieIndex}
                                     onClick={handleMovieClick}
                                 >
@@ -1131,27 +1196,31 @@ if (movie?.imdbID) {
                                     whileTap={{ scale: 0.98 }}
                                     onClick={() => {
                                         handleMovieClick();
-                                        let detailPageUrl;
-                                        if (collection.slug === 'movies-like-inception') {
-                                            detailPageUrl = `/movies/like-inception/${currentMovie.imdbID}`;
-                                        } else if (collection.slug === 'movies-like-memento') {
-                                            detailPageUrl = `/movies/like-memento/${currentMovie.imdbID}`;
-                                        } else if (collection.slug === 'movies-like-shutter-island') {
-                                            detailPageUrl = `/movies/like-shutter-island/${currentMovie.imdbID}`;
-                                        } else if (collection.slug === 'best-survival-movies') {
-                                            detailPageUrl = `/movies/survival/${currentMovie.imdbID}`;
-                                        } else if (collection.slug === 'best-thriller-movies') {
-                                            detailPageUrl = `/movies/thriller/${currentMovie.imdbID}`;
-                                        } else if (collection.slug === 'best-mystery-thriller-movies') {  // ✅ MYSTERY THRILLER ADDED
-                                            detailPageUrl = `/movies/mystery-thriller/${currentMovie.imdbID}`;  // ✅ MYSTERY THRILLER URL
-                                        } else if (collection.slug === 'best-drama-movies-on-netflix') {
-                                            detailPageUrl = `/movies/netflix/${currentMovie.imdbID}`;
-                                        } else {
-                                            detailPageUrl = `/movies/${currentMovie.imdbID}`;
-                                        }
-                                        window.location.href = detailPageUrl;
-                                    }}
-                                >
+let detailPageUrl;
+                if (collection.slug === 'movies-like-inception') {
+                    detailPageUrl = `/movies/like-inception/${currentMovie.imdbID}`;
+                } else if (collection.slug === 'movies-like-memento') {
+                    detailPageUrl = `/movies/like-memento/${currentMovie.imdbID}`;
+                } else if (collection.slug === 'movies-like-shutter-island') {
+                    detailPageUrl = `/movies/like-shutter-island/${currentMovie.imdbID}`;
+                } else if (collection.slug === 'best-survival-movies') {
+                    detailPageUrl = `/movies/survival/${currentMovie.imdbID}`;
+                } else if (collection.slug === 'best-thriller-movies') {
+                    detailPageUrl = `/movies/thriller/${currentMovie.imdbID}`;
+                } else if (collection.slug === 'best-mystery-thriller-movies') {
+                    detailPageUrl = `/movies/mystery-thriller/${currentMovie.imdbID}`;
+                } else if (collection.slug === 'best-detective-thriller-movies') {
+                    detailPageUrl = `/movies/detective-thriller/${currentMovie.imdbID}`;
+                } else if (collection.slug === 'best-drama-movies-on-netflix') {
+                    detailPageUrl = `/movies/netflix/${currentMovie.imdbID}`;
+                } else if (collection.slug ==='best-psychological-thriller-movies') {  // Added psychological thriller slug
+                    detailPageUrl = `/movies/psychological-thriller/${currentMovie.imdbID}`;
+                } else {
+                    detailPageUrl = `/movies/${currentMovie.imdbID}`;
+                }
+                window.location.href = detailPageUrl;
+            }}
+        >
                                     <Eye className="w-6 h-6 text-yellow-400" />
                                     <span className="text-yellow-400 font-medium text-lg">Explore Full Analysis</span>
                                     <motion.div
@@ -1313,6 +1382,9 @@ export async function getStaticProps({ params }) {
         case 'best-drama-movies-on-netflix':
             movieDatabase = DRAMA_MOVIES;
             break;
+        case'best-psychological-thriller-movies':  // Added case for psychological thriller
+            movieDatabase = PSYCH_THRILLER_MOVIES;
+            break;
         default:
             // movies-like-inception, movies-like-memento, movies-like-shutter-island
             movieDatabase = COMPLETE_MOVIE_DATABASE;
@@ -1341,17 +1413,15 @@ export async function getStaticProps({ params }) {
             };
         })
         .filter(Boolean)
-         .reverse();  //
+        .reverse();
 
-return {
-    props: {
-        collection,
-        movies
-    }
-    // No revalidate means pure static generation compatible with export
-};
-
-
+    return {
+        props: {
+            collection,
+            movies
+        }
+        // No revalidate means pure static generation compatible with export
+    };
 }
 
 export default CollectionPage;

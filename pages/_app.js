@@ -58,21 +58,7 @@ export default function App({ Component, pageProps }) {
         <meta name="twitter:site" content="@filmiway" />
         <meta name="twitter:creator" content="@filmiway" />
         
-        {/* Schema.org Structured Data */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "WebSite",
-            "name": "Filmiway",
-            "url": "https://filmiway.com",
-            "description": "Discover curated collections of mind-bending movies like Inception, Memento, and Shutter Island",
-            "potentialAction": {
-              "@type": "SearchAction",
-              "target": "https://filmiway.com/search?q={search_term_string}",
-              "query-input": "required name=search_term_string"
-            }
-          })}
-        </script>
+        
 
         {/* Fonts, Icons, Manifest */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />

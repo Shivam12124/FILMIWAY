@@ -227,6 +227,46 @@ export const COLLECTIONS = {
     }
   },
 
+ 'best-psychological-thriller-movies': {
+    slug: 'best-psychological-thriller-movies',
+    title: '10 Best Psychological Thriller Movies of All Time',
+    description: 'Top psychological thrillers with intense mind games, complex characters, and riveting suspense.',
+    movies: [
+      'tt0102926', // The Silence of the Lambs (1991)
+      'tt0137523', // Fight Club (1999)
+      'tt0209144', // Memento (2000)
+      'tt0114369', // Se7en (1995)
+      'tt1130884', // Shutter Island (2010)
+      'tt0947798', // Black Swan (2010)
+      'tt0361862', // The Machinist (2004)
+      'tt0364569', // Oldboy (2003)
+      'tt0075314', // Taxi Driver (1976)
+      'tt0081505'  // The Shining (1980)
+    ],
+    badges: [
+      { label: 'Psychological Thrillers', desc: 'Intense mind games & suspense' },
+      { label: 'Highly Rated', desc: 'Critically acclaimed masterpieces' },
+      { label: 'Cult Classics', desc: 'Timeless and influential films' }
+    ],
+    metaTitle: '10 Best Psychological Thriller Movies of All Time - Filmiway',
+    metaDescription: 'Explore the best psychological thriller movies known for their mind-bending plots, intense suspense, and complex characters. Curated by Filmiway for 2025.',
+    metaKeywords: 'psychological thriller movies, best thriller films, mind-bending movies, suspense movies, top psychological thrillers',
+    theme: 'purple',
+    primaryColor: '#7c3aed',
+    secondaryColor: '#a78bfa',
+    accentColor: '#fbbf24',
+    emoji: '🧠',
+    category: 'psychological-thriller',
+    canonicalUrl: 'https://filmiway.com/collection/best-psychological-thriller-movies',
+    seo: {
+      title: '10 Best Psychological Thriller Movies of All Time | Filmiway',
+      description: 'Dive into a curated list of the top psychological thrillers filled with suspense, mystery, and mind games. Updated for 2025.',
+      keywords: 'psychological thrillers, suspense films, mind-bending movies, best thriller collection',
+      canonicalUrl: 'https://filmiway.com/collection/best-psychological-thriller-movies',
+      ogImage: 'https://filmiway.com/images/psychological-thriller-collection-og.jpg'
+    }
+  },
+
     // 🕵️‍♂️ 10 BEST DETECTIVE THRILLER MOVIES COLLECTION
   'best-detective-thriller-movies': {
     slug: 'best-detective-thriller-movies',
