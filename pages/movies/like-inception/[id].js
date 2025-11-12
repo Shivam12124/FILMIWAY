@@ -283,12 +283,47 @@ const InceptionMoviePage = ({ movie }) => {
 
     return (
         <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
-            <Head>
-                <title>{movie.Title} ({currentMovieYear}) - {currentMovieGenre} Like Inception | Filmiway</title>
-                <meta name="description" content={`${movie.Title} (${currentMovieYear}) - A compelling ${currentMovieGenre?.toLowerCase()} like Inception. Analysis, ratings & where to stream.`} />
-                <link rel="canonical" href={`https://filmiway.com/movies/like-inception/${movie.imdbID}`} />
-                <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-            </Head>
+<Head>
+    <title>{movie.Title} ({currentMovieYear}) - {currentMovieGenre} Like Inception | Filmiway</title>
+    <meta name="description" content={`${movie.Title} (${currentMovieYear}) - A compelling ${currentMovieGenre?.toLowerCase()} like Inception. Analysis, ratings & where to stream.`} />
+    <link rel="canonical" href={`https://filmiway.com/movies/like-inception/${movie.imdbID}`} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    
+    {/* 🎬 MOVIE SCHEMA - FULLY VALID */}
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Movie",
+          "name": movie.Title,
+          "image": movieData?.poster_path 
+            ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}`
+            : `https://via.placeholder.com/300x450/1f2937/EAB308?text=${encodeURIComponent(movie.Title)}`,
+          "url": `https://filmiway.com/movies/like-inception/${movie.imdbID}`,
+          "datePublished": currentMovieYear,
+          "genre": currentMovieGenre,
+          "director": correctData?.director ? {
+            "@type": "Person",
+            "name": correctData.director
+          } : undefined,
+          "description": `${movie.Title} is a ${currentMovieGenre?.toLowerCase()} similar to Inception. ${correctData?.inceptionConnection || ''}`,
+          "potentialAction": {
+            "@type": "WatchAction",
+            "target": {
+              "@type": "EntryPoint",
+              "url": `https://filmiway.com/movies/like-inception/${movie.imdbID}#watch`,
+              "actionPlatform": [
+                "http://schema.org/DesktopWebPlatform",
+                "http://schema.org/MobileWebPlatform"
+              ]
+            }
+          }
+        })
+      }}
+    />
+</Head>
+
             <SubtleFilmGrain />
             <div className="absolute inset-0"><CinematicBackground /></div>
             <ProfessionalHeader movie={movie} />
