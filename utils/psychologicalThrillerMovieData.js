@@ -66,7 +66,7 @@ export const PSYCH_THRILLER_MOVIES = [
   },
   {
     imdbID: 'tt0209144',
-    tmdbId: 1124,
+    tmdbId: 77,
     title: 'Memento',
     director: 'Christopher Nolan',
     genre: 'Mystery, Thriller',
@@ -125,7 +125,7 @@ export const PSYCH_THRILLER_MOVIES = [
   },
   {
     imdbID: 'tt1130884',
-    tmdbId: 68734,
+    tmdbId: 11324,
     title: 'Shutter Island',
     director: 'Martin Scorsese',
     genre: 'Mystery, Thriller',
@@ -155,7 +155,7 @@ export const PSYCH_THRILLER_MOVIES = [
   },
   {
     imdbID: 'tt0947798',
-    tmdbId: 15602,
+    tmdbId: 44214,
     title: 'Black Swan',
     director: 'Darren Aronofsky',
     genre: 'Drama, Thriller',
@@ -185,7 +185,7 @@ export const PSYCH_THRILLER_MOVIES = [
   },
   {
     imdbID: 'tt0361862',
-    tmdbId: 592,
+    tmdbId: 4553,
     title: 'The Machinist',
     director: 'Brad Anderson',
     genre: 'Drama, Thriller',
@@ -215,7 +215,7 @@ export const PSYCH_THRILLER_MOVIES = [
   },
   {
     imdbID: 'tt0364569',
-    tmdbId: 785,
+    tmdbId: 670,
     title: 'Oldboy',
     director: 'Park Chan-wook',
     genre: 'Action, Drama, Mystery',
@@ -245,7 +245,7 @@ export const PSYCH_THRILLER_MOVIES = [
   },
   {
     imdbID: 'tt0075314',
-    tmdbId: 2760,
+    tmdbId: 103,
     title: 'Taxi Driver',
     director: 'Martin Scorsese',
     genre: 'Crime, Drama',

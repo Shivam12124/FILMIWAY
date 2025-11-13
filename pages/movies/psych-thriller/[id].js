@@ -524,7 +524,8 @@ const PsychThrillerMoviePage = ({ movie }) => {
         <OptimizedBanner movie={movie} movieData={mergedMovieData} trailer={trailer} isMobile={isMobile} />
         <div className="container mx-auto px-0 pb-16 sm:pb-24 lg:pb-32 max-w-7xl">
           <motion.div id="watch" initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.2, duration: 0.8 }} className="space-y-8 sm:space-y-12 px-3 sm:px-4 lg:px-6">
-            <MovieDetailsSection movie={{ ...movie, Title: movie.title }} fromPsychThrillerCollection={true} />
+           <MovieDetailsSection movie={{ ...movie, Title: movie.title }} fromPsychologicalThrillerCollection={true} />
+
           </motion.div>
         </div>
       </div>

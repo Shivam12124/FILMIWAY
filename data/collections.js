@@ -411,5 +411,6 @@ export const getDetectiveThrillerCollection = () => COLLECTIONS['best-detective-
 
 export const getMysteryThrillerCollection = () => COLLECTIONS['best-mystery-thriller-movies'];
 
-export default COLLECTIONS;
+export const getPsychologicalThrillerCollection = () => COLLECTIONS['best-psychological-thriller-movies'];
 
+export default COLLECTIONS;

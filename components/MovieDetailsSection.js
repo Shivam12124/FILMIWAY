@@ -9,7 +9,7 @@ import COMPLETE_THRILLER_DATABASE from '../utils/thrillerMovieData';
 import MYSTERY_THRILLER_DATABASE from '../utils/mysteryThrillerMovieData';  // ✅ ADDED
 import dramaRoutes from '../utils/dramaMovieRoutes';
 import DETECTIVE_THRILLER_DATABASE from '../utils/detectiveThrillerMovieData';  // ✅ Added detective thriller
-import COMPLETE_PSYCH_THRILLER_DATABASE from '../utils/psychologicalThrillerMovieData';  // Add this import
+import COMPLETE_PSYCH_THRILLER_DATABASE from '../utils/psychologicalThrillerMovieData';
 
 
 const DRAMA_MOVIE_DATA = dramaRoutes.COMPLETE_MOVIE_DATABASE;
@@ -49,8 +49,8 @@ const MovieDetailsSection = React.memo(({
 
   const getPsychologicalThrillerMovieInfo = () => {
   if (!fromPsychologicalThrillerCollection || !movie.tmdbId) return null;
-  if (!PSYCHOLOGICAL_THRILLER_DATABASE) return null;
-  return PSYCHOLOGICAL_THRILLER_DATABASE[movie.tmdbId] || null;
+  if (!COMPLETE_PSYCH_THRILLER_DATABASE) return null;
+  return COMPLETE_PSYCH_THRILLER_DATABASE[movie.tmdbId] || null;
 };
 
   // ✅ DETECTIVE THRILLER LOOKUP
@@ -76,10 +76,12 @@ const MovieDetailsSection = React.memo(({
   };
 
   // ✅ GET MOVIE INFO FROM CORRECT COLLECTION
- const movieInfo = fromDetectiveThrillerCollection
+const movieInfo = fromDetectiveThrillerCollection
     ? getDetectiveThrillerMovieInfo()
     : fromMysteryThrillerCollection
     ? getMysteryThrillerMovieInfo()
+    : fromPsychologicalThrillerCollection  // ✅ ADD THIS
+    ? getPsychologicalThrillerMovieInfo()
     : fromThrillerCollection
     ? getThrillerMovieInfo()
     : fromSurvivalCollection
@@ -87,6 +89,7 @@ const MovieDetailsSection = React.memo(({
     : fromDramaCollection
     ? safeLookup(DRAMA_MOVIE_DATA, movie.tmdbId)
     : safeLookup(COMPLETE_MOVIE_DATA, movie.tmdbId);
+
   // ✅ DEFAULT FALLBACK DATA
   const getMovieSpecificData = (title) => ({
     mindBendingIndex: 85,
@@ -146,6 +149,8 @@ const scoreValue = fromMysteryThrillerCollection
   ? movie.mysteryComplexity ?? safeMovieInfo.mysteryComplexity ?? 0
   : fromDetectiveThrillerCollection
   ? movie.mysteryComplexity ?? safeMovieInfo.mysteryComplexity ?? 0
+  : fromPsychologicalThrillerCollection  // ✅ ADD THIS
+  ? movie.suspenseIntensity ?? safeMovieInfo.suspenseIntensity ?? 0  // ✅ Uses suspenseIntensity
   : fromDramaCollection
   ? movie.emotionalIntensity ?? safeMovieInfo.emotionalIntensity ?? 0
   : fromThrillerCollection
@@ -155,7 +160,6 @@ const scoreValue = fromMysteryThrillerCollection
   : fromInceptionCollection
   ? movie.mindBendingIndex ?? safeMovieInfo.mindBendingIndex ?? 0
   : safeMovieInfo.mindBendingIndex ?? 0;
-
 
 
 const complexityLevel = safeMovieInfo.complexityLevel || 'HIGH';
@@ -523,29 +527,31 @@ const getStarColor = () => {
       <EnhancedIntensityGraph scenes={safeMovieInfo.scenes} dominantColor={safeMovieInfo.dominantColor} />
       <StrategicDNAHelix dna={safeMovieInfo.dna} dominantColor={safeMovieInfo.dominantColor} />
 
-      <RealCommentsRatingSection movie={movie} />
+   <RealCommentsRatingSection movie={movie} />
 
-{fromDetectiveThrillerCollection ? (
-      <DetectiveThrillerSEOFAQSection movie={movie} />
-    ) : fromMysteryThrillerCollection ? (
-      <MysteryThrillerSEOFAQSection movie={movie} />
-    ) : fromThrillerCollection ? (
-      <ThrillerSEOFAQSection movie={movie} />
-    ) : fromSurvivalCollection ? (
-      <SurvivalSEOFAQSection movie={movie} />
-    ) : fromDramaCollection ? (
-      <DramaSEOFAQSection movie={movie} />
-    ) : fromInceptionCollection ? (
-      <SEOFAQSection movie={movie} />
-    ) : fromShutterIslandCollection ? (
-      <ShutterIslandSEOFAQSection movie={movie} />
-    ) : fromMementoCollection ? (
-      <MementoSEOFAQSection movie={movie} />
-    ) : (
-      <SEOFAQSection movie={movie} />
-    )}
-  </motion.div>
-);
+      {fromDetectiveThrillerCollection ? (
+        <DetectiveThrillerSEOFAQSection movie={movie} />
+      ) : fromMysteryThrillerCollection ? (
+        <MysteryThrillerSEOFAQSection movie={movie} />
+      ) : fromPsychologicalThrillerCollection ? (
+        <PsychThrillerSEOFAQSection movie={movie} />
+      ) : fromThrillerCollection ? (
+        <ThrillerSEOFAQSection movie={movie} />
+      ) : fromSurvivalCollection ? (
+        <SurvivalSEOFAQSection movie={movie} />
+      ) : fromDramaCollection ? (
+        <DramaSEOFAQSection movie={movie} />
+      ) : fromInceptionCollection ? (
+        <SEOFAQSection movie={movie} />
+      ) : fromShutterIslandCollection ? (
+        <ShutterIslandSEOFAQSection movie={movie} />
+      ) : fromMementoCollection ? (
+        <MementoSEOFAQSection movie={movie} />
+      ) : (
+        <SEOFAQSection movie={movie} />
+      )}
+    </motion.div>
+  );
 });
 
 MovieDetailsSection.displayName = 'MovieDetailsSection';
