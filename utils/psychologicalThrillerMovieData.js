@@ -62,7 +62,11 @@ export const PSYCH_THRILLER_MOVIES = [
     suspenseIntensity: 98,
     dominantColor: '#401e15',
     dna: { Drama: 70, Psychological: 20, Thriller: 10 },
-    sensitiveScenes: []
+    sensitiveScenes: [
+      { start: '48:40', end: '48:55', description: 'Sex' },
+      { start: '48:40', end: '48:55', description: 'Sexual sounds' },
+      { start: '1:06:55', end: '1:07:35', description: 'Partial nudity + kissing' }
+    ]
   },
   {
     imdbID: 'tt0209144',
@@ -91,7 +95,9 @@ export const PSYCH_THRILLER_MOVIES = [
     suspenseIntensity: 90,
     dominantColor: '#2a2a2a',
     dna: { Mystery: 50, Thriller: 30, Drama: 20 },
-    sensitiveScenes: []
+    sensitiveScenes: [
+      { start: '31:08', end: '31:13', description: 'Casual Kissing' }
+    ]
   },
   {
     imdbID: 'tt0114369',
@@ -151,7 +157,10 @@ export const PSYCH_THRILLER_MOVIES = [
     suspenseIntensity: 90,
     dominantColor: '#343a40',
     dna: { Mystery: 50, Thriller: 35, Drama: 15 },
-    sensitiveScenes: []
+    sensitiveScenes: [
+      { start: '1:10:43', end: '1:10:47', description: 'Nudity' },
+      { start: '1:59:03', end: '1:59:06', description: 'Casual Kissing' }
+    ]
   },
   {
     imdbID: 'tt0947798',
@@ -181,7 +190,14 @@ export const PSYCH_THRILLER_MOVIES = [
     suspenseIntensity: 85,
     dominantColor: '#552d32',
     dna: { Drama: 55, Thriller: 40, Psychological: 5 },
-    sensitiveScenes: []
+    sensitiveScenes: [
+      { start: '21:34', end: '21:40', description: 'Kissing' },
+      { start: '39:40', end: '40:40', description: 'Masturbating' },
+      { start: '48:52', end: '49:10', description: 'Sexually Suggestive Scene' },
+      { start: '51:20', end: '51:40', description: 'Masturbating' },
+      { start: '1:08:20', end: '1:11:01', description: 'Sex' },
+      { start: '1:20:20', end: '1:20:40', description: 'Sex' }
+    ]
   },
   {
     imdbID: 'tt0361862',
@@ -211,7 +227,10 @@ export const PSYCH_THRILLER_MOVIES = [
     suspenseIntensity: 82,
     dominantColor: '#3b3b3b',
     dna: { Drama: 40, Thriller: 40, Psychological: 20 },
-    sensitiveScenes: []
+    sensitiveScenes: [
+      { start: '17:00', end: '18:25', description: 'Sex' },
+      { start: '1:16:10', end: '1:16:15', description: 'Kissing' }
+    ]
   },
   {
     imdbID: 'tt0364569',
@@ -241,7 +260,13 @@ export const PSYCH_THRILLER_MOVIES = [
     suspenseIntensity: 90,
     dominantColor: '#15232f',
     dna: { Drama: 40, Mystery: 30, Thriller: 30 },
-    sensitiveScenes: []
+    sensitiveScenes: [
+      { start: '11:20', end: '11:40', description: 'Masturbating' },
+      { start: '57:37', end: '1:01:10', description: 'Partial nudity (woman)' },
+      { start: '1:03:35', end: '1:05:10', description: 'Sex' },
+      { start: '1:22:20', end: '1:22:36', description: 'Sexually Suggestive Scene' },
+      { start: '1:30:30', end: '1:30:38', description: 'Partial nudity (man)' }
+    ]
   },
   {
     imdbID: 'tt0075314',
@@ -271,7 +296,10 @@ export const PSYCH_THRILLER_MOVIES = [
     suspenseIntensity: 90,
     dominantColor: '#3f3a38',
     dna: { Drama: 50, Crime: 30, Thriller: 20 },
-    sensitiveScenes: []
+    sensitiveScenes: [
+      { start: '35:34', end: '35:45', description: 'Sexually Suggestive Scene' },
+      { start: '58:52', end: '59:05', description: 'Sexually Suggestive Scene' }
+    ]
   },
   {
     imdbID: 'tt0081505',
@@ -301,7 +329,10 @@ export const PSYCH_THRILLER_MOVIES = [
     suspenseIntensity: 93,
     dominantColor: '#4b392d',
     dna: { Drama: 50, Horror: 30, Thriller: 20 },
-    sensitiveScenes: []
+    sensitiveScenes: [
+      { start: '1:10:40', end: '1:11:00', description: 'Background Painting' },
+      { start: '1:13:10', end: '1:16:00', description: 'Nudity + Kissing' }
+    ]
   }
 ];
 
