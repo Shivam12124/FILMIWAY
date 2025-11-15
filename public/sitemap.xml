@@ -7,14 +7,14 @@
     <!-- 🔥 HOMEPAGE - HIGHEST PRIORITY -->
     <url>
         <loc>https://filmiway.com/</loc>
-        <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
 
     <url>
         <loc>https://filmiway.com/collections</loc>
-        <lastmod>2025-11-15T17:30:00+05:30</lastmod>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
@@ -22,594 +22,720 @@
     <!-- 🔥 ABOUT US PAGE -->
     <url>
         <loc>https://filmiway.com/about-us</loc>
-        <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
 
-    
- 
-
     <!-- 🔥 LEGAL PAGES -->
     <url>
         <loc>https://filmiway.com/privacy</loc>
-        <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.7</priority>
     </url>
 
-
-
-    <!-- 🔥 ALL  MAIN COLLECTION PAGES -->
+    <!-- 🔥 ALL MAIN COLLECTION PAGES -->
     <url>
         <loc>https://filmiway.com/collection/movies-like-inception</loc>
-        <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
 
     <url>
         <loc>https://filmiway.com/collection/movies-like-memento</loc>
-        <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
 
     <url>
         <loc>https://filmiway.com/collection/movies-like-shutter-island</loc>
-        <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
 
     <url>
         <loc>https://filmiway.com/collection/best-survival-movies</loc>
-        <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
 
     <url>
         <loc>https://filmiway.com/collection/best-drama-movies-on-netflix</loc>
-        <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
 
-<url>
-  <loc>https://filmiway.com/collection/best-psychological-thriller-movies</loc>
-  <lastmod>2025-11-15T17:30:00+05:30</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.9</priority>
-</url>
+    <url>
+        <loc>https://filmiway.com/collection/best-psychological-thriller-movies</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
 
     <url>
         <loc>https://filmiway.com/collection/best-mystery-thriller-movies</loc>
-        <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
 
     <url>
         <loc>https://filmiway.com/collection/best-thriller-movies</loc>
-        <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
 
-    <!-- 🔥 MIND-BENDING MOVIES -->
     <url>
-        <loc>https://filmiway.com/movies/tt0390384</loc>
-        <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+        <loc>https://filmiway.com/collection/best-detective-thriller-movies</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- 🧠 MOVIES LIKE INCEPTION (30 MIND-BENDING MOVIES WITH CORRECT SLUG) -->
+    <url>
+        <loc>https://filmiway.com/movies/like-inception/tt0468569</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://filmiway.com/movies/tt0383028</loc>
-        <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+        <loc>https://filmiway.com/movies/like-inception/tt0209144</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://filmiway.com/movies/tt0166924</loc>
-        <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+        <loc>https://filmiway.com/movies/like-inception/tt1130884</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://filmiway.com/movies/tt2397535</loc>
-        <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+        <loc>https://filmiway.com/movies/like-inception/tt0090605</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://filmiway.com/movies/tt2866360</loc>
-        <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+        <loc>https://filmiway.com/movies/like-inception/tt0482571</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://filmiway.com/movies/tt0246578</loc>
-        <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+        <loc>https://filmiway.com/movies/like-inception/tt0338013</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://filmiway.com/movies/tt2316411</loc>
-        <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+        <loc>https://filmiway.com/movies/like-inception/tt2380307</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://filmiway.com/movies/tt0414993</loc>
-        <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+        <loc>https://filmiway.com/movies/like-inception/tt0119116</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://filmiway.com/movies/tt0485947</loc>
-        <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+        <loc>https://filmiway.com/movies/like-inception/tt0407887</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://filmiway.com/movies/tt1130884</loc>
-        <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+        <loc>https://filmiway.com/movies/like-inception/tt0133093</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- 🧠 MOVIES LIKE MEMENTO (10 MOVIES WITH CORRECT SLUG) -->
+    <url>
+        <loc>https://filmiway.com/movies/like-memento/tt0390384</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://filmiway.com/movies/tt0114814</loc>
-        <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+        <loc>https://filmiway.com/movies/like-memento/tt0383028</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
+    <url>
+        <loc>https://filmiway.com/movies/like-memento/tt0166924</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
 
+    <url>
+        <loc>https://filmiway.com/movies/like-memento/tt2397535</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
 
+    <url>
+        <loc>https://filmiway.com/movies/like-memento/tt2866360</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://filmiway.com/movies/like-memento/tt0246578</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://filmiway.com/movies/like-memento/tt2316411</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://filmiway.com/movies/like-memento/tt0414993</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://filmiway.com/movies/like-memento/tt0485947</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://filmiway.com/movies/like-memento/tt0114814</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- 🏝️ MOVIES LIKE SHUTTER ISLAND (10 MOVIES WITH CORRECT SLUG) -->
+    <url>
+        <loc>https://filmiway.com/movies/like-shutter-island/tt0816692</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://filmiway.com/movies/like-shutter-island/tt1375666</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://filmiway.com/movies/like-shutter-island/tt0364569</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://filmiway.com/movies/like-shutter-island/tt0347149</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://filmiway.com/movies/like-shutter-island/tt0144084</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://filmiway.com/movies/like-shutter-island/tt0268978</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://filmiway.com/movies/like-shutter-island/tt2543164</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://filmiway.com/movies/like-shutter-island/tt1345836</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://filmiway.com/movies/like-shutter-island/tt0137523</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://filmiway.com/movies/like-shutter-island/tt6048596</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
 
     <!-- 🏔️ SURVIVAL MOVIES -->
     <url>
-        <loc>https://filmiway.com/movies/tt1542344</loc>
-        <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+        <loc>https://filmiway.com/movies/survival/tt1542344</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://filmiway.com/movies/tt16277242</loc>
-        <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+        <loc>https://filmiway.com/movies/survival/tt16277242</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://filmiway.com/movies/tt0162222</loc>
-        <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+        <loc>https://filmiway.com/movies/survival/tt0162222</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://filmiway.com/movies/tt1663202</loc>
-        <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+        <loc>https://filmiway.com/movies/survival/tt1663202</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://filmiway.com/movies/tt3659388</loc>
-        <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+        <loc>https://filmiway.com/movies/survival/tt3659388</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://filmiway.com/movies/tt1649419</loc>
-        <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+        <loc>https://filmiway.com/movies/survival/tt1649419</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://filmiway.com/movies/tt3758172</loc>
-        <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+        <loc>https://filmiway.com/movies/survival/tt3758172</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://filmiway.com/movies/tt0472043</loc>
-        <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+        <loc>https://filmiway.com/movies/survival/tt0472043</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://filmiway.com/movies/tt12262116</loc>
-        <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+        <loc>https://filmiway.com/movies/survival/tt12262116</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://filmiway.com/movies/tt1809398</loc>
-        <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+        <loc>https://filmiway.com/movies/survival/tt1809398</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <!-- 🎭 DRAMA MOVIES ON NETFLIX -->
     <url>
-        <loc>https://filmiway.com/movies/tt8579674</loc>
-        <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+        <loc>https://filmiway.com/movies/netflix/tt8579674</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://filmiway.com/movies/tt6155172</loc>
-        <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+        <loc>https://filmiway.com/movies/netflix/tt6155172</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://filmiway.com/movies/tt1302006</loc>
-        <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+        <loc>https://filmiway.com/movies/netflix/tt1302006</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://filmiway.com/movies/tt9770150</loc>
-        <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+        <loc>https://filmiway.com/movies/netflix/tt9770150</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://filmiway.com/movies/tt1677720</loc>
-        <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+        <loc>https://filmiway.com/movies/netflix/tt1677720</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://filmiway.com/movies/tt9419184</loc>
-        <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+        <loc>https://filmiway.com/movies/netflix/tt9419184</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://filmiway.com/movies/tt7291200</loc>
-        <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+        <loc>https://filmiway.com/movies/netflix/tt7291200</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://filmiway.com/movies/tt2156584</loc>
-        <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+        <loc>https://filmiway.com/movies/netflix/tt2156584</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://filmiway.com/movies/tt0454921</loc>
-        <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+        <loc>https://filmiway.com/movies/netflix/tt0454921</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://filmiway.com/movies/tt10118744</loc>
-        <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+        <loc>https://filmiway.com/movies/netflix/tt10118744</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
-<!-- 🕵️‍♂️ DETECTIVE THRILLER COLLECTION PAGE -->
-<url>
-  <loc>https://filmiway.com/collection/best-detective-thriller-movies</loc>
-  <lastmod>2025-11-09T11:33:00+05:30</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.9</priority>
-</url>
-
-<!-- 🕵️‍♂️ DETECTIVE THRILLER MOVIES -->
-<url>
-  <loc>https://filmiway.com/movies/tt0114369</loc>
-  <lastmod>2025-11-09T11:33:00+05:30</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://filmiway.com/movies/tt0443706</loc>
-  <lastmod>2025-11-09T11:33:00+05:30</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://filmiway.com/movies/tt1392214</loc>
-  <lastmod>2025-11-09T11:33:00+05:30</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://filmiway.com/movies/tt1305806</loc>
-  <lastmod>2025-11-09T11:33:00+05:30</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://filmiway.com/movies/tt0353969</loc>
-  <lastmod>2025-11-09T11:33:00+05:30</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://filmiway.com/movies/tt1190539</loc>
-  <lastmod>2025-11-09T11:33:00+05:30</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://filmiway.com/movies/tt0327056</loc>
-  <lastmod>2025-11-09T11:33:00+05:30</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://filmiway.com/movies/tt32539724</loc>
-  <lastmod>2025-11-09T11:33:00+05:30</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://filmiway.com/movies/tt0116282</loc>
-  <lastmod>2025-11-09T11:33:00+05:30</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://filmiway.com/movies/tt0106977</loc>
-  <lastmod>2025-11-09T11:33:00+05:30</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://filmiway.com/movies/tt0102926</loc>
-  <lastmod>2025-11-15T17:30:00+05:30</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.8</priority>
-</url>
-
-<url>
-  <loc>https://filmiway.com/movies/tt0137523</loc>
-  <lastmod>2025-11-15T17:30:00+05:30</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.8</priority>
-</url>
-
-<url>
-  <loc>https://filmiway.com/movies/tt0209144</loc>
-  <lastmod>2025-11-15T17:30:00+05:30</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.8</priority>
-</url>
-
-<url>
-  <loc>https://filmiway.com/movies/tt0114369</loc>
-  <lastmod>2025-11-15T17:30:00+05:30</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.8</priority>
-</url>
-
-<url>
-  <loc>https://filmiway.com/movies/tt1130884</loc>
-  <lastmod>2025-11-15T17:30:00+05:30</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.8</priority>
-</url>
-
-<url>
-  <loc>https://filmiway.com/movies/tt0947798</loc>
-  <lastmod>2025-11-15T17:30:00+05:30</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.8</priority>
-</url>
-
-<url>
-  <loc>https://filmiway.com/movies/tt0361862</loc>
-  <lastmod>2025-11-15T17:30:00+05:30</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.8</priority>
-</url>
-
-<url>
-  <loc>https://filmiway.com/movies/tt0364569</loc>
-  <lastmod>2025-11-15T17:30:00+05:30</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.8</priority>
-</url>
-
-<url>
-  <loc>https://filmiway.com/movies/tt0075314</loc>
-  <lastmod>2025-11-15T17:30:00+05:30</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.8</priority>
-</url>
-
-<url>
-  <loc>https://filmiway.com/movies/tt0081505</loc>
-  <lastmod>2025-11-15T17:30:00+05:30</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.8</priority>
-</url>
-
-
-
-    <!-- 🕵️‍♂️ MYSTERY THRILLER MOVIES -->
+    <!-- 🕵️ DETECTIVE THRILLER MOVIES -->
     <url>
-        <loc>https://filmiway.com/movies/tt0114369</loc>
-        <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+        <loc>https://filmiway.com/movies/detective-thriller/tt0114369</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://filmiway.com/movies/tt1392214</loc>
-        <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+        <loc>https://filmiway.com/movies/detective-thriller/tt0443706</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://filmiway.com/movies/tt0443706</loc>
-        <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+        <loc>https://filmiway.com/movies/detective-thriller/tt1392214</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://filmiway.com/movies/tt2267998</loc>
-        <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+        <loc>https://filmiway.com/movies/detective-thriller/tt1305806</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://filmiway.com/movies/tt0353969</loc>
-        <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+        <loc>https://filmiway.com/movies/detective-thriller/tt0353969</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://filmiway.com/movies/tt4857264</loc>
-        <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+        <loc>https://filmiway.com/movies/detective-thriller/tt1190539</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://filmiway.com/movies/tt7282468</loc>
-        <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+        <loc>https://filmiway.com/movies/detective-thriller/tt0327056</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://filmiway.com/movies/tt0119174</loc>
-        <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+        <loc>https://filmiway.com/movies/detective-thriller/tt32539724</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-  <loc>https://filmiway.com/movies/tt1130884</loc>
-  <lastmod>2025-11-15T17:30:00+05:30</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.8</priority>
-</url>
+        <loc>https://filmiway.com/movies/detective-thriller/tt0116282</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
 
-<url>
-  <loc>https://filmiway.com/movies/tt0119177</loc>
-  <lastmod>2025-11-15T17:30:00+05:30</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.8</priority>
-</url>
+    <url>
+        <loc>https://filmiway.com/movies/detective-thriller/tt0106977</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
 
-  
+    <!-- 😨 PSYCHOLOGICAL THRILLER MOVIES -->
+    <url>
+        <loc>https://filmiway.com/movies/psych-thriller/tt0102926</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://filmiway.com/movies/psych-thriller/tt0137523</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://filmiway.com/movies/psych-thriller/tt0209144</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://filmiway.com/movies/psych-thriller/tt0114369</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://filmiway.com/movies/psych-thriller/tt1130884</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://filmiway.com/movies/psych-thriller/tt0947798</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://filmiway.com/movies/psych-thriller/tt0361862</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://filmiway.com/movies/psych-thriller/tt0364569</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://filmiway.com/movies/psych-thriller/tt0075314</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://filmiway.com/movies/psych-thriller/tt0081505</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- 🎪 MYSTERY THRILLER MOVIES -->
+    <url>
+        <loc>https://filmiway.com/movies/mystery-thriller/tt0114369</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://filmiway.com/movies/mystery-thriller/tt1392214</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://filmiway.com/movies/mystery-thriller/tt0443706</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://filmiway.com/movies/mystery-thriller/tt2267998</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://filmiway.com/movies/mystery-thriller/tt0353969</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://filmiway.com/movies/mystery-thriller/tt4857264</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://filmiway.com/movies/mystery-thriller/tt7282468</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://filmiway.com/movies/mystery-thriller/tt0119174</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://filmiway.com/movies/mystery-thriller/tt1130884</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://filmiway.com/movies/mystery-thriller/tt0119177</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
     <!-- 🩸 BEST THRILLER MOVIES -->
     <url>
-        <loc>https://filmiway.com/movies/tt0477348</loc>
-        <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+        <loc>https://filmiway.com/movies/thriller/tt0477348</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://filmiway.com/movies/tt0102926</loc>
-        <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+        <loc>https://filmiway.com/movies/thriller/tt0102926</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://filmiway.com/movies/tt0327056</loc>
-        <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+        <loc>https://filmiway.com/movies/thriller/tt0327056</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://filmiway.com/movies/tt0407887</loc>
-        <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+        <loc>https://filmiway.com/movies/thriller/tt0407887</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://filmiway.com/movies/tt5362988</loc>
-        <lastmod>2025-11-09T11:33:00+05:30</lastmod>
+        <loc>https://filmiway.com/movies/thriller/tt5362988</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
+    <url>
+        <loc>https://filmiway.com/movies/thriller/tt0114369</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
 
+    <url>
+        <loc>https://filmiway.com/movies/thriller/tt1392214</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
 
-<!-- 🩸 BEST THRILLER MOVIES - MISSING 5 -->
-<url>
-  <loc>https://filmiway.com/movies/tt0114369</loc>
-  <lastmod>2025-11-15T17:30:00+05:30</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.8</priority>
-</url>
+    <url>
+        <loc>https://filmiway.com/movies/thriller/tt0353969</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
 
-<url>
-  <loc>https://filmiway.com/movies/tt1392214</loc>
-  <lastmod>2025-11-15T17:30:00+05:30</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.8</priority>
-</url>
+    <url>
+        <loc>https://filmiway.com/movies/thriller/tt2267998</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
 
-<url>
-  <loc>https://filmiway.com/movies/tt0353969</loc>
-  <lastmod>2025-11-15T17:30:00+05:30</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.8</priority>
-</url>
-
-<url>
-  <loc>https://filmiway.com/movies/tt2267998</loc>
-  <lastmod>2025-11-15T17:30:00+05:30</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.8</priority>
-</url>
-
-<url>
-  <loc>https://filmiway.com/movies/tt0119174</loc>
-  <lastmod>2025-11-15T17:30:00+05:30</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.8</priority>
-</url>
-
-
-
-
-
+    <url>
+        <loc>https://filmiway.com/movies/thriller/tt0119174</loc>
+        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
 
 </urlset>
