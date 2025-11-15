@@ -26,29 +26,7 @@ const nextConfig = {
     pagesBufferLength: 5,
   },
 
-  // 🔥 **CRITICAL: ALLOW INDEXING - ADD THIS SECTION** 🔥
-  headers: async () => {
-    return [
-      {
-        source: '/collection/:path*',
-        headers: [
-          {
-            key: 'X-Robots-Tag',
-            value: 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1'
-          }
-        ]
-      },
-      {
-        source: '/movies/:path*',
-        headers: [
-          {
-            key: 'X-Robots-Tag',
-            value: 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1'
-          }
-        ]
-      }
-    ]
-  },
+  // ❌ DO NOT INCLUDE headers: async() {...} - IT DOESN'T WORK WITH output: 'export'!
 }
 
 module.exports = nextConfig

@@ -1,3 +1,4 @@
+# 🔥 Netlify Build Configuration for Filmiway
 [build]
   publish = "out"
   command = "npm run build"
@@ -6,4 +7,23 @@
   NODE_VERSION = "18"
   NEXT_PUBLIC_TMDB_API_KEY = "6054e5498fb2619274454959c38bbdfa"
 
-# 🔥 NO REDIRECTS - LET STATIC FILES SERVE DIRECTLY
+# ✅ **SEO HEADERS FOR INDEXING** - THIS IS CRITICAL!
+[[headers]]
+  for = "/collection/*"
+  [headers.values]
+    X-Robots-Tag = "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+
+[[headers]]
+  for = "/movies/*"
+  [headers.values]
+    X-Robots-Tag = "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+
+# ✅ **SECURITY HEADERS**
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
