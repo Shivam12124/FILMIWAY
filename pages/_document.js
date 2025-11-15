@@ -8,9 +8,9 @@ export default function Document() {
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
         <link rel="dns-prefetch" href="//fonts.gstatic.com" />
         <link rel="dns-prefetch" href="//m.media-amazon.com" />
-        
-        {/* Critical CSS for performance */}
-        <style jsx>{`
+
+        {/* Global CSS - moved out of styled-jsx */}
+        <style>{`
           body {
             margin: 0;
             padding: 0;
@@ -19,7 +19,9 @@ export default function Document() {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             overflow-x: hidden;
           }
-          * { box-sizing: border-box; }
+          * { 
+            box-sizing: border-box; 
+          }
           .loading-fallback {
             display: flex;
             align-items: center;

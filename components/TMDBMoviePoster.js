@@ -3,14 +3,17 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { COMPLETE_MOVIE_DATA } from '../utils/movieData';
 
+
 const TMDB_API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
 const TMDB_BASE_URL = 'https://api.themoviedb.org/3';
 const TMDB_IMAGE_BASE_URL = 'https://image.tmdb.org/t/p';
+
 
 const TMDBMoviePoster = React.memo(({ movie, className = "", alt }) => {
     const [posterUrl, setPosterUrl] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [hasError, setHasError] = useState(false);
+
 
     // 🔥 SEARCH BY MOVIE TITLE + YEAR IF DIRECT ID FAILS
     const searchMovieByTitle = useCallback(async (title, year) => {
@@ -46,6 +49,7 @@ const TMDBMoviePoster = React.memo(({ movie, className = "", alt }) => {
         }
         return null;
     }, []);
+
 
     // Fetch poster with search fallback
     const fetchMoviePoster = useCallback(async (tmdbId) => {
@@ -84,6 +88,8 @@ const TMDBMoviePoster = React.memo(({ movie, className = "", alt }) => {
         }
     }, [movie.Title, movie.Year, searchMovieByTitle]);
 
+
+    // ✅ FIXED: Added movie.Title to dependency array
     useEffect(() => {
         setIsLoading(true);
         setHasError(false);
@@ -96,7 +102,8 @@ const TMDBMoviePoster = React.memo(({ movie, className = "", alt }) => {
             setIsLoading(false);
             setHasError(true);
         }
-    }, [movie.tmdbId, fetchMoviePoster]);
+    }, [movie.tmdbId, movie.Title, fetchMoviePoster]);
+
 
     const createPlaceholderSVG = () => {
         const dominantColor = COMPLETE_MOVIE_DATA[movie.tmdbId]?.dominantColor || '#ca8a04';
@@ -122,6 +129,7 @@ const TMDBMoviePoster = React.memo(({ movie, className = "", alt }) => {
             </svg>
         `)}`;
     };
+
 
     return (
         <div className={`relative ${className}`}>
@@ -167,6 +175,8 @@ const TMDBMoviePoster = React.memo(({ movie, className = "", alt }) => {
     );
 });
 
+
 TMDBMoviePoster.displayName = 'TMDBMoviePoster';
+
 
 export default TMDBMoviePoster;
