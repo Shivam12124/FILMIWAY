@@ -1,6 +1,7 @@
 # Filmiway - Enhanced robots.txt for SEO & AI Discovery
-# Last updated: November 09, 2025
+# Last updated: November 15, 2025
 
+# Default rules for all bots
 User-agent: *
 Allow: /
 Disallow: /api/
@@ -10,17 +11,9 @@ Disallow: /.env
 Disallow: /node_modules/
 Crawl-delay: 2
 
+# Googlebot - Priority bot
 User-agent: Googlebot
 Allow: /
-Allow: /collection/movies-like-inception
-Allow: /collection/movies-like-memento
-Allow: /collection/movies-like-shutter-island
-Allow: /collection/best-survival-movies
-Allow: /collection/best-drama-movies-on-netflix
-Allow: /collection/best-mystery-thriller-movies
-Allow: /collection/best-thriller-movies
-Allow: /collection/best-detective-thriller-movies
-Allow: /movies/
 Disallow: /api/
 Disallow: /_next/
 Disallow: /admin/
@@ -28,87 +21,66 @@ Disallow: /.env
 Disallow: /node_modules/
 Crawl-delay: 1
 
+# Bingbot - FIXED: Removed specific Allow rules
 User-agent: Bingbot
 Allow: /
-Allow: /collection/movies-like-inception
-Allow: /collection/movies-like-memento
-Allow: /collection/movies-like-shutter-island
-Allow: /collection/best-survival-movies
-Allow: /collection/best-drama-movies-on-netflix
-Allow: /collection/best-mystery-thriller-movies
-Allow: /collection/best-thriller-movies
-Allow: /collection/best-detective-thriller-movies
-Allow: /movies/
 Disallow: /api/
 Disallow: /_next/
 Disallow: /admin/
+Disallow: /.env
+Disallow: /node_modules/
 Crawl-delay: 1
 
+# YandexBot
 User-agent: YandexBot
 Allow: /
-Allow: /collection/
-Allow: /movies/
 Disallow: /api/
 Disallow: /_next/
 Disallow: /admin/
 Crawl-delay: 2
 
+# AI Crawlers (GPT, Claude, Perplexity, etc.)
 User-agent: GPTBot
 Allow: /
-Allow: /collection/
-Allow: /movies/
 Disallow: /api/
 Crawl-delay: 1
 
 User-agent: ChatGPT-User
 Allow: /
-Allow: /collection/
-Allow: /movies/
 Disallow: /api/
 Crawl-delay: 1
 
 User-agent: ClaudeBot
 Allow: /
-Allow: /collection/
-Allow: /movies/
 Disallow: /api/
 Crawl-delay: 1
 
 User-agent: Claude-User
 Allow: /
-Allow: /collection/
-Allow: /movies/
 Disallow: /api/
 Crawl-delay: 1
 
 User-agent: PerplexityBot
 Allow: /
-Allow: /collection/
-Allow: /movies/
 Disallow: /api/
 Crawl-delay: 1
 
 User-agent: Google-Extended
 Allow: /
-Allow: /collection/
-Allow: /movies/
 Disallow: /api/
 Crawl-delay: 1
 
 User-agent: anthropic-ai
 Allow: /
-Allow: /collection/
-Allow: /movies/
 Disallow: /api/
 Crawl-delay: 1
 
 User-agent: Applebot
 Allow: /
-Allow: /collection/
-Allow: /movies/
 Disallow: /api/
 Crawl-delay: 1
 
+# SEO Tools
 User-agent: AhrefsBot
 Allow: /
 Disallow: /api/
@@ -127,4 +99,5 @@ Disallow: /api/
 Disallow: /admin/
 Crawl-delay: 3
 
+# Sitemap
 Sitemap: https://filmiway.com/sitemap.xml
