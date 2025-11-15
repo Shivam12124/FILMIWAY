@@ -5,8 +5,6 @@ const nextConfig = {
   trailingSlash: false,
   reactStrictMode: false,
 
-  // ❌ REMOVED: swcMinify: true, (DEPRECATED in Next.js 15+)
-
   // ✅ IMAGE OPTIMIZATION
   images: {
     unoptimized: true // Required for static export
@@ -22,16 +20,35 @@ const nextConfig = {
   poweredByHeader: false,
   compress: true,
 
-  // ✅ BUILD CACHE (NEW - speeds up rebuilds)
+  // ✅ BUILD CACHE
   onDemandEntries: {
     maxInactiveAge: 60 * 1000,
     pagesBufferLength: 5,
   },
 
-  // ❌ REMOVE THIS SECTION - Conflicts with output: export
-  // redirects: async () => {
-  //   return []
-  // },
+  // 🔥 **CRITICAL: ALLOW INDEXING - ADD THIS SECTION** 🔥
+  headers: async () => {
+    return [
+      {
+        source: '/collection/:path*',
+        headers: [
+          {
+            key: 'X-Robots-Tag',
+            value: 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1'
+          }
+        ]
+      },
+      {
+        source: '/movies/:path*',
+        headers: [
+          {
+            key: 'X-Robots-Tag',
+            value: 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1'
+          }
+        ]
+      }
+    ]
+  },
 }
 
 module.exports = nextConfig
