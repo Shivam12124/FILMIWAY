@@ -1,24 +1,24 @@
-// pages/movies/detective-thriller/[id].js
+// pages/movies/crime-thriller/[id].js - CRIME THRILLER MOVIE PAGE
 
 import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Play, X, Award, Film, ChevronLeft } from 'lucide-react';
+import { Play, X, Shield, Film, ChevronLeft } from 'lucide-react';
 
-// Components
 import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
 import TMDBAttribution from '../../../components/TMDBAttribution';
 
-// Import detective thriller movie data
-import { DETECTIVE_THRILLER_MOVIES } from '../../../utils/detectiveThrillerMovieData';
+// Import crime thriller movies data
+import { CRIME_THRILLER_MOVIES } from '../../../utils/crimeThrillerMovieData';
 
 const COLORS = {
-  accent: '#EAB308', accentLight: '#FDE047', bgPrimary: '#0B0B0C', bgCard: 'rgba(55, 65, 81, 0.3)',
+  accent: '#64748b', accentLight: '#94a3b8', bgPrimary: '#0B0B0C', bgCard: 'rgba(55, 65, 81, 0.3)',
   textPrimary: '#FFFFFF', textSecondary: '#D1D5DB', textMuted: '#9CA3AF', textDisabled: '#6B7280',
-  borderAccent: 'rgba(234, 179, 8, 0.2)', borderLight: 'rgba(107, 114, 128, 0.2)',
+  borderAccent: 'rgba(100, 116, 139, 0.2)', borderLight: 'rgba(107, 114, 128, 0.2)',
 };
+
 const mobileHeroCSS = `
   @media (max-width: 767px) {
     .mobile-hero-row {
@@ -46,13 +46,13 @@ const mobileHeroCSS = `
       border-radius: 12px;
       display: block;
     }
-    .mobile-thriller-card {
-      background: #19181c;
+    .mobile-crime-card {
+      background: #1a1a1c;
       border-radius: 12px;
       box-shadow: 0 2px 12px #0006;
       margin: 0;
       flex: 1;
-      border-left: 4px solid #dccf14ff;
+      border-left: 4px solid #64748b;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
@@ -60,25 +60,25 @@ const mobileHeroCSS = `
       min-height: 110px;
       position: relative;
     }
-    .mobile-thriller-row {
+    .mobile-crime-row {
       display: flex;
       align-items: flex-start;
       gap: 7px;
     }
-    .mobile-thriller-icon {
+    .mobile-crime-icon {
       min-width: 24px;
       min-height: 24px;
-      color: #cecb0aff;
+      color: #94a3b8;
       margin-top: 2px;
     }
-    .mobile-thriller-title {
+    .mobile-crime-title {
       font-size: 15px;
       font-weight: bold;
-      color: #dcd914ff;
+      color: #94a3b8;
       margin-bottom: 1px;
       line-height: 1.12;
     }
-    .mobile-thriller-desc {
+    .mobile-crime-desc {
       font-size: 12.3px;
       color: #ededed;
       line-height: 1.36;
@@ -90,22 +90,6 @@ const mobileHeroCSS = `
 const getTMDBImage = (path, size = 'w1280') =>
   path ? `https://image.tmdb.org/t/p/${size}${path}` : undefined;
 
-const getDetectiveInsight = (title) => {
-  switch (title) {
-    case 'Se7en': return 'A relentlessly dark, grim, and devastatingly intricate psychological thriller. This film stands as a true masterpiece of the detective genre, known for its visceral atmosphere and shocking, thought-provoking conclusion.';
-    case 'Zodiac': return 'An obsessively detailed and meticulously recreated true crime drama. It offers a chillingly realistic portrayal of the frustrating, years-long pursuit of an elusive serial killer, leaving a haunting sense of unresolved tension.';
-    case 'Prisoners': return 'A deeply desperate and morally complex cinematic journey centered on the frantic search for two trapped children. The narrative masterfully blurs the conventional lines between legal justice and personal, primal vengeance.';
-    case 'The Secret in Their Eyes': return 'A haunting and emotionally rich tale from Argentina, brilliantly weaving together themes of enduring obsession, profound lost love, and the slow, inexorable nature of justice that stretches across many decades.';
-    case 'Memories of Murder': return 'A landmark Korean crime classic that expertly dissects the systemic flaws within police procedure and the deep, haunting psychological effects that an unsolved mystery inflicts upon those dedicated to solving it.';
-    case 'The Chaser': return 'An exceptionally high-tension, relentless chase thriller that plunges the viewer into the gritty, brutal realities of the criminal underworld, featuring a flawed, morally ambiguous protagonist forced into a heroic role.';
-    case 'Mystic River': return 'An emotionally complex and profoundly moving drama where the indelible trauma of childhood tragedy intersects catastrophically with a dark, twisting murder investigation in a working-class community.';
-    case 'Marshland': return 'An incredibly atmospheric Spanish noir set against the striking, politically charged backdrop of post-Franco Spain. The film delivers a slow-burn, suspenseful mystery infused with palpable tension and a sense of historical dread.';
-    case 'Fargo': return 'A brilliant blend of dark, often absurd humor and brutal, unexpected crime set against the stark, snowy landscapes of the American Midwest. It features an array of unforgettable, quirky characters and narrative twists.';
-    case 'The Fugitive': return 'An intense, pulse-pounding, classic thriller focused on a highly skilled man desperately on the run, relentlessly fighting to expose the conspiracy and establish his innocence in the face of overwhelming odds.';
-    default: return 'A compelling narrative defined by its intricate detective work, masterful character development, and gripping sense of suspense. This film embodies the core elements that make the genre so fascinating and enduringly popular.';
-  }
-};
-
 const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
   const [showTrailer, setShowTrailer] = useState(false);
   const [countdown, setCountdown] = useState(4);
@@ -115,14 +99,46 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
   const bannerImage =
     movieData?.backdrop_path
       ? getTMDBImage(movieData.backdrop_path, 'w1280')
-      : movieData?.backdrop || movie?.backdrop || getTMDBImage(movie?.backdrop_path, 'w1280');
+      : movieData?.backdrop ||
+        movie?.backdrop ||
+        getTMDBImage(movie?.backdrop_path, 'w1280');
 
   const posterImage =
     movieData?.poster_path
       ? getTMDBImage(movieData.poster_path, 'w500')
-      : movieData?.poster || movie?.poster || getTMDBImage(movie?.poster_path, 'w500');
+      : movieData?.poster ||
+        movie?.poster ||
+        getTMDBImage(movie?.poster_path, 'w500');
 
-  const insight = getDetectiveInsight(movie?.title);
+  // Crime Thriller Insights
+  const getCrimeThrillerInsight = (title) => {
+    switch (title) {
+      case 'Heat':
+        return 'Michael Mann\'s magnum opus—a sprawling crime epic featuring the legendary coffee shop confrontation between De Niro and Pacino. The downtown shootout remains cinema\'s most realistic gunfight.';
+      case 'L.A. Confidential':
+        return 'A neo-noir masterpiece that peels back 1950s Los Angeles\' glamorous facade to expose police corruption, political conspiracy, and the rot beneath the City of Angels.';
+      case 'No Country for Old Men':
+        return 'The Coen Brothers\' chilling meditation on fate and violence, featuring Javier Bardem\'s terrifying hitman—a remorseless force of nature with a captive bolt pistol and a coin.';
+      case 'Zodiac':
+        return 'Fincher\'s meticulous procedural captures the obsessive hunt for the Zodiac Killer and the psychological toll of an unsolved case that haunts investigators for decades.';
+      case 'Prisoners':
+        return 'Villeneuve\'s visceral thriller asks: How far would you go? Hugh Jackman\'s desperate father takes justice into his own hands when his daughter vanishes, crossing every moral line.';
+      case 'The Usual Suspects':
+        return 'Bryan Singer\'s neo-noir features one of cinema\'s most iconic twist endings. Kevin Spacey\'s Verbal Kint spins an intricate tale of crime and the mythical Keyser Söze.';
+      case 'Mystic River':
+        return 'Eastwood\'s devastating drama reunites three childhood friends torn apart by tragedy. A murder investigation spirals into paranoia, guilt, and the indelible scars of the past.';
+      case 'Memories of Murder':
+        return 'Bong Joon Ho\'s masterpiece captures the frustration of hunting South Korea\'s first serial killer in a system unprepared for such evil. Dark, haunting, and unforgettable.';
+      case 'The Departed':
+        return 'Scorsese\'s Oscar-winning crime epic pits an undercover cop against a police mole in a violent, high-stakes game of cat-and-mouse through Boston\'s Irish mob underworld.';
+      case 'Training Day':
+        return 'Denzel Washington\'s Oscar-winning performance as a corrupt LAPD detective who drags a rookie cop through one day of chaos, betrayal, and moral disintegration in LA\'s streets.';
+      default:
+        return 'A masterclass in crime cinema—combining complex characters, moral ambiguity, and edge-of-your-seat suspense that defines the genre.';
+    }
+  };
+
+  const crimeInsight = getCrimeThrillerInsight(movie?.title);
 
   useEffect(() => {
     if (!isMobile && trailer && !showTrailer && !hasClosedTrailer) {
@@ -161,6 +177,7 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
       transition={{ duration: 0.8 }}
     >
       <style>{mobileHeroCSS}</style>
+
       <div className="relative h-[300px] sm:h-[400px] lg:h-[600px]">
         <AnimatePresence mode="wait">
           {showTrailer && trailer ? (
@@ -267,6 +284,7 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
           )}
         </AnimatePresence>
       </div>
+
       {isMobile ? (
         <div className="mobile-hero-row">
           <div className="mobile-hero-poster">
@@ -278,15 +296,15 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
               </div>
             )}
           </div>
-          <div className="mobile-mystery-card">
-            <div className="mobile-mystery-row">
-              <Award className="mobile-mystery-icon" />
+          <div className="mobile-crime-card">
+            <div className="mobile-crime-row">
+              <Shield className="mobile-crime-icon" />
               <div>
-                <div className="mobile-mystery-title">Mystery Index</div>
+                <div className="mobile-crime-title">Crime Intensity</div>
               </div>
             </div>
-            <div className="mobile-mystery-desc">
-              <strong>{movie?.mysteryComplexity || 88}</strong> - {insight}
+            <div className="mobile-crime-desc">
+              <strong>{movie?.suspenseIntensity || 88}</strong> - {crimeInsight}
             </div>
           </div>
         </div>
@@ -325,9 +343,9 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
               <motion.div
                 className="relative rounded-xl sm:rounded-2xl overflow-hidden p-4 sm:p-6 lg:p-8 backdrop-blur-sm"
                 style={{
-                  background: `linear-gradient(135deg, ${COLORS.bgCard} 0%, rgba(33, 25, 50, 0.5) 100%)`,
+                  background: `linear-gradient(135deg, ${COLORS.bgCard} 0%, rgba(15, 15, 20, 0.5) 100%)`,
                   border: `1px solid ${COLORS.borderLight}`,
-                  boxShadow: `0 8px 32px rgba(0, 0, 0, 0.34)`,
+                  boxShadow: `0 8px 32px rgba(0, 0, 0, 0.4)`,
                 }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -349,14 +367,14 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <Award className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" style={{ color: COLORS.accent }} />
+                    <Shield className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" style={{ color: COLORS.accent }} />
                   </motion.div>
                   <div className="min-w-0 flex-1">
                     <h2 className="text-sm sm:text-base lg:text-xl xl:text-2xl font-bold leading-tight" style={{ color: COLORS.accent }}>
-                      Why This Detective Thriller is Special
+                      Why This Crime Thriller is Essential
                     </h2>
                     <p className="text-xs sm:text-sm hidden sm:block" style={{ color: COLORS.textMuted }}>
-                      Mystery Index: {movie?.mysteryComplexity || 88}/100
+                      Crime Intensity: {movie?.suspenseIntensity || 88}/100
                     </p>
                   </div>
                 </div>
@@ -368,7 +386,7 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
                     transition={{ duration: 2, repeat: Infinity }}
                   />
                   <p className="text-xs sm:text-sm lg:text-base xl:text-lg leading-relaxed font-normal break-words" style={{ color: COLORS.textSecondary, lineHeight: '1.8' }}>
-                    {insight}
+                    {crimeInsight}
                   </p>
                 </div>
                 <motion.div
@@ -387,10 +405,10 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
   );
 };
 
-const DetectiveBackButton = () => {
+const CrimeThrillerBackButton = () => {
   const handleBackClick = () => {
     if (typeof window !== 'undefined') {
-      window.location.href = '/collection/best-detective-thriller-movies';
+      window.location.href = '/collection/best-crime-thriller-movies';
     }
   };
 
@@ -415,7 +433,7 @@ const DetectiveBackButton = () => {
   );
 };
 
-const DetectiveThrillerMoviePage = ({ movie }) => {
+const CrimeThrillerMoviePage = ({ movie }) => {
   const [scrollY, setScrollY] = useState(0);
   const [movieData, setMovieData] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
@@ -456,13 +474,10 @@ const DetectiveThrillerMoviePage = ({ movie }) => {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      sessionStorage.setItem('fromDetectiveThrillerCollection', 'true');
+      sessionStorage.setItem('fromCrimeThrillerCollection', 'true');
       sessionStorage.removeItem('fromThrillerCollection');
       sessionStorage.removeItem('fromDramaCollection');
       sessionStorage.removeItem('fromSurvivalCollection');
-      sessionStorage.removeItem('fromInceptionCollection');
-      sessionStorage.removeItem('fromMementoCollection');
-      sessionStorage.removeItem('fromShutterIslandCollection');
     }
   }, []);
 
@@ -485,29 +500,41 @@ const DetectiveThrillerMoviePage = ({ movie }) => {
         </div>
       </div>
     );
-  }
+  };
 
   return (
     <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
       <Head>
-  <title>{movie.title} ({movie.year}) - Detective Thriller | Filmiway</title>
-  <meta name="description" content={`${movie.title} (${movie.year}) - ${movie.synopsis?.substring(0, 150) || 'Detective thriller film'}...`} />
-  <link rel="canonical" href={`https://filmiway.com/movies/detective-thriller/${movie.imdbID}`} />
+  <title>{movie.title} ({movie.year}) - Best Crime Thriller | Filmiway</title>
+  <meta name="description" content={`${movie.title} (${movie.year}) - ${movie.synopsis?.substring(0, 150) || 'Crime thriller film'}...`} />
+  <link rel="canonical" href={`https://filmiway.com/movies/crime-thriller/${movie.imdbID}`} />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
   <meta name="robots" content="index, follow" />
-  <meta property="og:url" content={`https://filmiway.com/movies/detective-thriller/${movie.imdbID}`} />
+  <meta name="language" content="English" />
+  
+  {/* Open Graph */}
+  <meta property="og:title" content={`${movie.title} (${movie.year}) - Crime Thriller`} />
+  <meta property="og:description" content={movie.synopsis?.substring(0, 120) || 'A crime thriller film'} />
   <meta property="og:type" content="video.movie" />
+  <meta property="og:url" content={`https://filmiway.com/movies/crime-thriller/${movie.imdbID}`} />
+  <meta property="og:image" content={mergedMovieData?.poster_path ? getTMDBImage(mergedMovieData.poster_path, 'w500') : ''} />
+  
+  {/* Twitter Card */}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={`${movie.title} (${movie.year})`} />
+  <meta name="twitter:description" content={movie.synopsis?.substring(0, 120) || 'A crime thriller'} />
+  <meta name="twitter:image" content={mergedMovieData?.poster_path ? getTMDBImage(mergedMovieData.poster_path, 'w500') : ''} />
 </Head>
 
       <div className="absolute inset-0">
         <CinematicBackground />
       </div>
-      <DetectiveBackButton />
+      <CrimeThrillerBackButton />
       <div className="relative z-10 pt-10 sm:pt-12 lg:pt-16">
         <OptimizedBanner movie={movie} movieData={mergedMovieData} trailer={trailer} isMobile={isMobile} />
         <div className="container mx-auto px-0 pb-16 sm:pb-24 lg:pb-32 max-w-7xl">
           <motion.div id="watch" initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.2, duration: 0.8 }} className="space-y-8 sm:space-y-12 px-3 sm:px-4 lg:px-6">
-            <MovieDetailsSection movie={{ ...movie, Title: movie.title }} fromDetectiveThrillerCollection={true} />
+            <MovieDetailsSection movie={{ ...movie, Title: movie.title }} fromCrimeThrillerCollection={true} />
           </motion.div>
         </div>
       </div>
@@ -516,16 +543,16 @@ const DetectiveThrillerMoviePage = ({ movie }) => {
 };
 
 export async function getStaticPaths() {
-  const paths = DETECTIVE_THRILLER_MOVIES.map((movie) => ({
+  const paths = CRIME_THRILLER_MOVIES.map((movie) => ({
     params: { id: movie.imdbID },
   }));
   return { paths, fallback: false };
 }
 
 export async function getStaticProps({ params }) {
-  const movie = DETECTIVE_THRILLER_MOVIES.find((m) => m.imdbID === params.id);
+  const movie = CRIME_THRILLER_MOVIES.find((m) => m.imdbID === params.id);
   if (!movie) return { notFound: true };
   return { props: { movie } };
 }
 
-export default DetectiveThrillerMoviePage;
+export default CrimeThrillerMoviePage;

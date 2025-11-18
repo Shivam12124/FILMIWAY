@@ -227,6 +227,93 @@ export const COLLECTIONS = {
     }
   },
 
+
+// 🎬 BEST CRIME THRILLER MOVIES COLLECTION
+'best-crime-thriller-movies': {
+  slug: 'best-crime-thriller-movies',
+  title: 'The 10 Best Crime Thriller Movies of All Time',
+  subtitle: 'Definitive Crime Thriller Rankings',
+  description: 'The ultimate crime thrillers ranked by intensity, storytelling, and cinematic mastery—from Heat to The Departed.',
+  longDescription: 'Experience the most gripping crime thrillers ever made. From cat-and-mouse heists to corrupt cop dramas, these films define the genre with masterful direction, complex characters, and edge-of-your-seat suspense.',
+  
+  emoji: '🔫',
+  theme: 'slate',
+  primaryColor: '#334155',
+  secondaryColor: '#475569',
+  accentColor: '#64748b',
+  gradientFrom: 'from-slate-700',
+  gradientTo: 'to-slate-600',
+  category: 'crime-thriller',
+  tags: ['crime', 'thriller', 'heist', 'detective', 'noir', 'police'],
+  
+  metaTitle: '10 Best Crime Thriller Movies Ever Made (2025) | Expert Rankings',
+  metaDescription: 'Discover the top 10 crime thriller movies ranked by experts—from Heat to Memories of Murder. Experience the ultimate in crime cinema.',
+  metaKeywords: 'best crime thriller movies, crime films, heist movies, detective thrillers, noir, heat, the departed, prisoners, zodiac',
+  
+  stats: {
+    totalMovies: 10,
+    averageRating: 8.1,
+    totalWatchtime: '23 hours 22 minutes',
+    averageIntensity: 92.0,
+    mostAcclaimed: 'Heat (8.3/10)',
+    newestMovie: 'Prisoners (2013)',
+    oldestMovie: 'Heat (1995)'
+  },
+  
+  movies: [
+    'tt0113277',  // Heat (1995)
+    'tt0119488',  // L.A. Confidential (1997)
+    'tt0477348',  // No Country for Old Men (2007)
+    'tt0443706',  // Zodiac (2007)
+    'tt1392214',  // Prisoners (2013)
+    'tt0114369',  // The Usual Suspects (1995)
+    'tt0327056',  // Mystic River (2003)
+    'tt0353969',  // Memories of Murder (2003)
+    'tt0407887',  // The Departed (2006)
+    'tt0472043'   // Training Day (2001)
+  ],
+  
+  badges: [
+    { label: 'Crime Masterpieces', desc: 'Genre-defining crime cinema' },
+    { label: 'Critically Acclaimed', desc: 'Top-tier filmmaking' },
+    { label: 'Intensity Ranked', desc: 'Ranked by suspense & impact' }
+  ],
+  
+  featured: {
+    hero: {
+      title: 'Heat',
+      subtitle: 'The Ultimate Crime Epic',
+      description: 'Michael Mann\'s masterpiece featuring the legendary De Niro-Pacino coffee shop confrontation.',
+      poster: 'https://image.tmdb.org/t/p/w500/zMyfPUelumio3tiDKPffaUpsQTD.jpg',
+      backdrop: 'https://image.tmdb.org/t/p/w1280/umSVjVdbVwtx5ryCA2QXL44Durz.jpg',
+      intensity: 96
+    }
+  },
+  
+  relatedCollections: [
+    'best-thriller-movies',
+    'best-detective-thriller-movies',
+    'best-mystery-thriller-movies'
+  ],
+  
+  seo: {
+    title: '10 Best Crime Thriller Movies of All Time (2025) | Filmiway',
+    description: 'Explore the definitive ranking of crime thriller movies—from Heat to The Departed. Expert-curated collection of the greatest crime films ever made.',
+    keywords: 'best crime thriller movies, crime films, heist movies, detective thrillers, noir cinema, heat movie, the departed, prisoners, zodiac, memories of murder',
+    canonicalUrl: 'https://filmiway.com/collection/best-crime-thriller-movies',
+    ogImage: 'https://filmiway.com/images/crime-thriller-collection-og.jpg',
+    structuredData: {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      name: 'Best Crime Thriller Movies',
+      description: 'Expert-curated list of the best crime thriller movies ranked by intensity and cinematic mastery',
+      numberOfItems: 10
+    }
+  }
+},
+
+
+
  'best-psychological-thriller-movies': {
     slug: 'best-psychological-thriller-movies',
     title: '10 Best Psychological Thriller Movies of All Time',

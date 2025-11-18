@@ -323,12 +323,28 @@ const SurvivalMoviePage = ({ movie }) => {
 
     return (
         <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
-            <Head>
-                <title>{movie.Title} ({currentMovieYear}) - {currentMovieGenre} Survival Film | Filmiway</title>
-                <meta name="description" content={`${movie.Title} (${currentMovieYear}) - A gripping ${currentMovieGenre?.toLowerCase()} survival film. Analysis, ratings & where to stream.`} />
-                <link rel="canonical" href={`https://filmiway.com/movies/survival/${movie.imdbID}`} />
-                <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-            </Head>
+           <Head>
+  <title>{movie.Title} ({currentMovieYear}) - Best Survival Film | Filmiway</title>
+  <meta name="description" content={`${movie.Title} (${currentMovieYear}) - A gripping survival film. Analysis, ratings & where to stream.`} />
+  <link rel="canonical" href={`https://filmiway.com/movies/survival/${movie.imdbID}`} />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <meta name="robots" content="index, follow" />
+  <meta name="language" content="English" />
+  
+  {/* Open Graph */}
+  <meta property="og:title" content={`${movie.Title} (${currentMovieYear}) - Survival`} />
+  <meta property="og:description" content={`A gripping survival film. Analysis, ratings & where to stream.`} />
+  <meta property="og:type" content="video.movie" />
+  <meta property="og:url" content={`https://filmiway.com/movies/survival/${movie.imdbID}`} />
+  <meta property="og:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
+  
+  {/* Twitter Card */}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={`${movie.Title} (${currentMovieYear})`} />
+  <meta name="twitter:description" content={`A gripping survival film`} />
+  <meta name="twitter:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
+</Head>
+
             <SubtleFilmGrain />
             <div className="absolute inset-0"><CinematicBackground /></div>
             <SmartBackButton />

@@ -476,12 +476,27 @@ const DramaMoviePage = ({ movie }) => {
 
   return (
     <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
-      <Head>
-        <title>{movie.title} ({movie.year}) - {movie.genre} Drama Film | Filmiway</title>
-        <meta name="description" content={`${movie.title} (${movie.year}) - ${movie.synopsis.substring(0, 150)}...`} />
-        <link rel="canonical" href={`https://filmiway.com/movies/netflix/${movie.imdbID}`} />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-      </Head>
+<Head>
+  <title>{movie.title} ({movie.year}) - Best Drama Film | Filmiway</title>
+  <meta name="description" content={`${movie.title} (${movie.year}) - ${movie.synopsis?.substring(0, 150) || 'Drama film'}...`} />
+  <link rel="canonical" href={`https://filmiway.com/movies/netflix/${movie.imdbID}`} />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <meta name="robots" content="index, follow" />
+  <meta name="language" content="English" />
+  
+  {/* Open Graph */}
+  <meta property="og:title" content={`${movie.title} (${movie.year}) - Drama`} />
+  <meta property="og:description" content={movie.synopsis?.substring(0, 120) || 'A drama film'} />
+  <meta property="og:type" content="video.movie" />
+  <meta property="og:url" content={`https://filmiway.com/movies/netflix/${movie.imdbID}`} />
+  <meta property="og:image" content={movieData?.poster_path ? getTMDBImage(movieData.poster_path, 'w500') : ''} />
+  
+  {/* Twitter Card */}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={`${movie.title} (${movie.year})`} />
+  <meta name="twitter:description" content={movie.synopsis?.substring(0, 120) || 'A drama film'} />
+  <meta name="twitter:image" content={movieData?.poster_path ? getTMDBImage(movieData.poster_path, 'w500') : ''} />
+</Head>
       <div className="absolute inset-0">
         <CinematicBackground />
       </div>

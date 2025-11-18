@@ -494,12 +494,28 @@ const MysteryThrillerMoviePage = ({ movie }) => {
 
   return (
     <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
-      <Head>
-        <title>{movie.title} ({movie.year}) - {movie.genre} Mystery Thriller | Filmiway</title>
-        <meta name="description" content={`${movie.title} (${movie.year}) - ${movie.synopsis?.substring(0, 150) || 'Mystery thriller film'}...`} />
-        <link rel="canonical" href={`https://filmiway.com/movies/mystery-thriller/${movie.imdbID}`} />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-      </Head>
+     <Head>
+  <title>{movie.title} ({movie.year}) - Best Mystery Thriller | Filmiway</title>
+  <meta name="description" content={`${movie.title} (${movie.year}) - ${movie.synopsis?.substring(0, 150) || 'Mystery thriller film'}...`} />
+  <link rel="canonical" href={`https://filmiway.com/movies/mystery-thriller/${movie.imdbID}`} />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <meta name="robots" content="index, follow" />
+  <meta name="language" content="English" />
+  
+  {/* Open Graph */}
+  <meta property="og:title" content={`${movie.title} (${movie.year}) - Mystery Thriller`} />
+  <meta property="og:description" content={movie.synopsis?.substring(0, 120) || 'A mystery thriller film'} />
+  <meta property="og:type" content="video.movie" />
+  <meta property="og:url" content={`https://filmiway.com/movies/mystery-thriller/${movie.imdbID}`} />
+  <meta property="og:image" content={mergedMovieData?.poster_path ? getTMDBImage(mergedMovieData.poster_path, 'w500') : ''} />
+  
+  {/* Twitter Card */}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={`${movie.title} (${movie.year})`} />
+  <meta name="twitter:description" content={movie.synopsis?.substring(0, 120) || 'A mystery thriller'} />
+  <meta name="twitter:image" content={mergedMovieData?.poster_path ? getTMDBImage(mergedMovieData.poster_path, 'w500') : ''} />
+</Head>
+
       <div className="absolute inset-0">
         <CinematicBackground />
       </div>

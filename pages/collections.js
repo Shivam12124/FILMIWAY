@@ -3,7 +3,9 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Head from 'next/head';
 import Link from 'next/link';
-import { Search, Brain, Mountain, Film, ChevronDown, Sparkles, Plus, ArrowRight, Star, Clock, Eye } from 'lucide-react';
+import { Search, Brain, Mountain, Film, ChevronDown, Sparkles, Plus, ArrowRight, Star, Clock, Eye, Scale } from 'lucide-react';
+
+
 
 const CollectionsHub = () => {
     const [searchQuery, setSearchQuery] = useState('');
@@ -54,6 +56,21 @@ const CollectionsHub = () => {
             directLink: '/collection/best-survival-movies',
             hasSubCollections: false
         },
+ 
+        {
+            id: 'crime-thriller',  // ✅ CRIME THRILLER COLLECTION ADDED
+            title: 'Best Crime Thriller Movies',
+            description: 'Gritty crime epics with moral complexity, brilliant heists, and law vs. lawlessness',
+            icon: Scale,  // ✅ USING SCALE ICON (JUSTICE/CRIME)
+            gradient: 'from-slate-600 to-gray-900',  // ✅ DARK SLATE/GRAY GRADIENT
+            movieCount: '10',
+            rating: '8.9',
+            directLink: '/collection/best-crime-thriller-movies',
+            hasSubCollections: false
+        },
+
+
+
 
         {
         id: 'psychological-thriller',  // Added psychological thriller collection

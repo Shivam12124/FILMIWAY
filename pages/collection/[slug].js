@@ -12,6 +12,7 @@ import { THRILLER_MOVIES } from '../../utils/thrillerMovieData'; // 🔥 ADD THI
 import { MYSTERY_THRILLER_MOVIES } from '../../utils/mysteryThrillerMovieData'; 
 import { DETECTIVE_THRILLER_MOVIES } from '../../utils/detectiveThrillerMovieData';
 import { PSYCH_THRILLER_MOVIES } from '../../utils/psychologicalThrillerMovieData'; 
+import { CRIME_THRILLER_MOVIES } from '../../utils/crimeThrillerMovieData';
 
 ;
 
@@ -195,6 +196,32 @@ const CollectionPage = ({ collection, movies }) => {
         }
     };
 
+} else if (collection.slug === 'best-crime-thriller-movies') {  // ✅ CRIME THRILLER ADDED
+    return {
+        badge: "Crime Thriller Cinema",
+        title: "Crime Thrillers",
+        description: "Dive into a curated collection of gripping crime thrillers featuring cops, criminals, heists, and investigations—ranked by crime intensity and storytelling mastery",
+        selection: {
+            text1: "From cat-and-mouse heists to corrupt cop dramas, these films define the crime thriller genre with masterful direction, complex moral ambiguity, and edge-of-your-seat suspense.",
+            text2: "Each crime thriller showcases the finest in investigative storytelling, moral dilemmas, and the thin line between law and lawlessness in cinema's most intense narratives."
+        },
+        ranking: {
+            text: "Our crime intensity index evaluates storytelling complexity, character depth, moral ambiguity, and the sophistication of crime narrative techniques throughout each film.",
+            points: [
+                "Crime narrative complexity",
+                "Moral ambiguity depth",
+                "Character intelligence mastery",
+                "Atmospheric tension intensity"
+            ]
+        },
+        experience: {
+            text1: "Perfect for fans of heist movies, detective stories, and crime epics who love intricate plots and morally complex characters.",
+            text2: "Selected for their unforgettable investigations, iconic criminals, and genre-defining storytelling that redefined crime cinema."
+        }
+    };
+
+
+
 
 
   } else if (collection.slug === 'best-detective-thriller-movies') {  // ✅ Added detective thriller
@@ -357,6 +384,15 @@ const CollectionPage = ({ collection, movies }) => {
                 subtitle: "Psychological Thrillers with Unreliable Narrators & Shocking Plot Twists Ranked by Complexity"
             };
 
+    } else if (collection.slug === 'best-crime-thriller-movies') {  // ✅ CRIME THRILLER ADDED
+    return {
+        title: "10 Best Crime Thriller Movies – From Heat to The Departed",
+        subtitle: "Crime Thrillers with Heists, Investigations & Moral Complexity Ranked by Crime Intensity"
+    };
+
+
+
+
             } else if (collection.slug ==='best-psychological-thriller-movies') {
     return {
         title: "Best Psychological Thriller Movies – Top Mind-Bending Psychological Thrillers",
@@ -415,6 +451,14 @@ const CollectionPage = ({ collection, movies }) => {
                 title: "Loading Movies Like Shutter Island",
                 description: "Curating psychological thrillers with unreliable narrators and shocking plot twists"
             };
+
+} else if (collection.slug === 'best-crime-thriller-movies') {  // ✅ CRIME THRILLER ADDED
+    return {
+        title: "Loading Best Crime Thriller Movies",
+        description: "Curating the greatest crime thrillers with community reviews and ratings"
+    };
+
+
 
             } else if (collection?.slug ==='best-psychological-thriller-movies') {
     return {
@@ -487,6 +531,18 @@ const CollectionPage = ({ collection, movies }) => {
                 progressText: `of Top ${movies.length} Movies Like Shutter Island`
                 
             };
+
+} else if (collection.slug === 'best-crime-thriller-movies') {  // ✅ CRIME THRILLER ADDED
+    return {
+        title: "10 Best Crime Thriller Movies – From Heat to The Departed | Ranked 2025",
+        description: "Stop scrolling! This is the most advanced handpicked list on the internet of 10 crime thrillers from Heat to The Departed. Carefully analyzed for heist mastery, investigative brilliance, and expert storytelling—perfect for crime cinema fans!",
+        keywords: "best crime thriller movies, crime films, heist movies, detective thrillers, heat movie, the departed, prisoners, zodiac, la confidential, no country for old men, memories of murder, training day, crime cinema, cop thrillers, investigation films",
+        ogTitle: "The Most Advanced List on the Internet – 10 Best Crime Thriller Movies 🔫",
+        twitterTitle: "🔫 The Most Advanced Handpicked List – 10 Best Crime Thriller Movies",
+        progressText: `of Top ${movies.length} Best Crime Thriller Films`
+    };
+
+
             } else if (collection.slug ==='best-psychological-thriller-movies') {
     return {
         title: "Best Psychological Thriller Movies – Mind-Bending Psychological Thrillers You Must Watch",
@@ -606,8 +662,7 @@ const currentRank = movies.length - currentMovieIndex;
         }
     };
 
-    // 🔥 MOVIE CLICK HANDLER WITH ALL 7 COLLECTIONS
-  const handleMovieClick = () => {
+   const handleMovieClick = () => {
     if (typeof window !== 'undefined') {
         sessionStorage.setItem('currentMoviePosition', currentMovieIndex.toString());
         sessionStorage.setItem('currentMovieRank', currentRank.toString());
@@ -624,8 +679,10 @@ const currentRank = movies.length - currentMovieIndex;
         sessionStorage.removeItem('fromMysteryThrillerCollection');
         sessionStorage.removeItem('fromDramaCollection');
         sessionStorage.removeItem('fromDetectiveThrillerCollection');
-        sessionStorage.removeItem('fromPsychologicalThrillerCollection');  // Add clear flag for psychological thriller
+        sessionStorage.removeItem('fromPsychologicalThrillerCollection');
+        sessionStorage.removeItem('fromCrimeThrillerCollection');  // ✅ CRIME THRILLER ADDED
 
+        // Set appropriate collection flag
         if (collection.slug === 'movies-like-inception') {
             sessionStorage.setItem('fromInceptionCollection', 'true');
         } else if (collection.slug === 'movies-like-memento') {
@@ -642,8 +699,10 @@ const currentRank = movies.length - currentMovieIndex;
             sessionStorage.setItem('fromDramaCollection', 'true');
         } else if (collection.slug === 'best-detective-thriller-movies') {
             sessionStorage.setItem('fromDetectiveThrillerCollection', 'true');
-        } else if (collection.slug ==='best-psychological-thriller-movies') {
-            sessionStorage.setItem('fromPsychologicalThrillerCollection', 'true');  // Set flag for psychological thriller
+        } else if (collection.slug === 'best-psychological-thriller-movies') {
+            sessionStorage.setItem('fromPsychologicalThrillerCollection', 'true');
+        } else if (collection.slug === 'best-crime-thriller-movies') {  // ✅ CRIME THRILLER ADDED
+            sessionStorage.setItem('fromCrimeThrillerCollection', 'true');
         }
     }
 };
@@ -1053,6 +1112,8 @@ return (
                         ? 'movies/netflix/'
                         : collection?.slug === 'best-psychological-thriller-movies'
                         ? 'movies/psychological-thriller/'
+                        : collection?.slug === 'best-crime-thriller-movies'  // ✅ CRIME THRILLER ADDED
+                        ? 'movies/crime-thriller/'
                         : 'movies/';
 
                 let itemObj = {
@@ -1155,7 +1216,7 @@ return (
                                 </motion.button>
                             )}
 
-                            {/* 🔥 FIXED FOR NEXT.JS 15 - WITH ALL 8 COLLECTION URLS */}
+{/* 🔥 FIXED FOR NEXT.JS 15 - WITH ALL 10 COLLECTION URLS */}
 <AnimatePresence mode="wait">
     <Link 
         href={
@@ -1176,20 +1237,22 @@ return (
             : collection.slug === 'best-drama-movies-on-netflix'
             ? `/movies/netflix/${currentMovie.imdbID}`
             : collection.slug === 'best-psychological-thriller-movies'
-            ? `/movies/psych-thriller/${currentMovie.imdbID}`   // Added psychological thriller slug
-            
+            ? `/movies/psychological-thriller/${currentMovie.imdbID}`
+            : collection.slug === 'best-crime-thriller-movies'  // ✅ CRIME THRILLER ADDED
+            ? `/movies/crime-thriller/${currentMovie.imdbID}`
             : `/movies/${currentMovie.imdbID}`
         }
-                                    key={currentMovieIndex}
-                                    onClick={handleMovieClick}
-                                >
-                                    <CinematicMovieCard
-                                        movie={currentMovie}
-                                        rank={currentRank}
-                                        isActive={true}
-                                    />
-                                </Link>
-                            </AnimatePresence>
+        key={currentMovieIndex}
+        onClick={handleMovieClick}
+    >
+        <CinematicMovieCard
+            movie={currentMovie}
+            rank={currentRank}
+            isActive={true}
+        />
+    </Link>
+</AnimatePresence>
+
                         </div>
 
                         {/* Enhanced Movie Info */}
@@ -1206,37 +1269,40 @@ return (
                                     <span>Click poster above for full analysis</span>
                                 </div>
                                 
-                                <motion.div 
-                                    className="flex items-center space-x-4 bg-gradient-to-r from-yellow-400/10 via-amber-400/10 to-yellow-400/10 border border-yellow-400/30 rounded-2xl px-8 py-4 hover:from-yellow-400/20 hover:via-amber-400/20 hover:to-yellow-400/20 hover:border-yellow-400/50 transition-all duration-300 cursor-pointer group"
-                                    whileHover={{ scale: 1.05, y: -2 }}
-                                    whileTap={{ scale: 0.98 }}
-                                    onClick={() => {
-                                        handleMovieClick();
-let detailPageUrl;
-                if (collection.slug === 'movies-like-inception') {
-                    detailPageUrl = `/movies/like-inception/${currentMovie.imdbID}`;
-                } else if (collection.slug === 'movies-like-memento') {
-                    detailPageUrl = `/movies/like-memento/${currentMovie.imdbID}`;
-                } else if (collection.slug === 'movies-like-shutter-island') {
-                    detailPageUrl = `/movies/like-shutter-island/${currentMovie.imdbID}`;
-                } else if (collection.slug === 'best-survival-movies') {
-                    detailPageUrl = `/movies/survival/${currentMovie.imdbID}`;
-                } else if (collection.slug === 'best-thriller-movies') {
-                    detailPageUrl = `/movies/thriller/${currentMovie.imdbID}`;
-                } else if (collection.slug === 'best-mystery-thriller-movies') {
-                    detailPageUrl = `/movies/mystery-thriller/${currentMovie.imdbID}`;
-                } else if (collection.slug === 'best-detective-thriller-movies') {
-                    detailPageUrl = `/movies/detective-thriller/${currentMovie.imdbID}`;
-                } else if (collection.slug === 'best-drama-movies-on-netflix') {
-                    detailPageUrl = `/movies/netflix/${currentMovie.imdbID}`;
-                } else if (collection.slug ==='best-psychological-thriller-movies') {  // Added psychological thriller slug
-                    detailPageUrl = `/movies/psychological-thriller/${currentMovie.imdbID}`;
-                } else {
-                    detailPageUrl = `/movies/${currentMovie.imdbID}`;
-                }
-                window.location.href = detailPageUrl;
-            }}
-        >
+<motion.div 
+    className="flex items-center space-x-4 bg-gradient-to-r from-yellow-400/10 via-amber-400/10 to-yellow-400/10 border border-yellow-400/30 rounded-2xl px-8 py-4 hover:from-yellow-400/20 hover:via-amber-400/20 hover:to-yellow-400/20 hover:border-yellow-400/50 transition-all duration-300 cursor-pointer group"
+    whileHover={{ scale: 1.05, y: -2 }}
+    whileTap={{ scale: 0.98 }}
+    onClick={() => {
+        handleMovieClick();
+        let detailPageUrl;
+        if (collection.slug === 'movies-like-inception') {
+            detailPageUrl = `/movies/like-inception/${currentMovie.imdbID}`;
+        } else if (collection.slug === 'movies-like-memento') {
+            detailPageUrl = `/movies/like-memento/${currentMovie.imdbID}`;
+        } else if (collection.slug === 'movies-like-shutter-island') {
+            detailPageUrl = `/movies/like-shutter-island/${currentMovie.imdbID}`;
+        } else if (collection.slug === 'best-survival-movies') {
+            detailPageUrl = `/movies/survival/${currentMovie.imdbID}`;
+        } else if (collection.slug === 'best-thriller-movies') {
+            detailPageUrl = `/movies/thriller/${currentMovie.imdbID}`;
+        } else if (collection.slug === 'best-mystery-thriller-movies') {
+            detailPageUrl = `/movies/mystery-thriller/${currentMovie.imdbID}`;
+        } else if (collection.slug === 'best-detective-thriller-movies') {
+            detailPageUrl = `/movies/detective-thriller/${currentMovie.imdbID}`;
+        } else if (collection.slug === 'best-drama-movies-on-netflix') {
+            detailPageUrl = `/movies/netflix/${currentMovie.imdbID}`;
+        } else if (collection.slug === 'best-psychological-thriller-movies') {
+            detailPageUrl = `/movies/psychological-thriller/${currentMovie.imdbID}`;
+        } else if (collection.slug === 'best-crime-thriller-movies') {  // ✅ CRIME THRILLER ADDED
+            detailPageUrl = `/movies/crime-thriller/${currentMovie.imdbID}`;
+        } else {
+            detailPageUrl = `/movies/${currentMovie.imdbID}`;
+        }
+        window.location.href = detailPageUrl;
+    }}
+>
+
                                     <Eye className="w-6 h-6 text-yellow-400" />
                                     <span className="text-yellow-400 font-medium text-lg">Explore Full Analysis</span>
                                     <motion.div
@@ -1398,8 +1464,11 @@ export async function getStaticProps({ params }) {
         case 'best-drama-movies-on-netflix':
             movieDatabase = DRAMA_MOVIES;
             break;
-        case'best-psychological-thriller-movies':  // Added case for psychological thriller
+        case 'best-psychological-thriller-movies':
             movieDatabase = PSYCH_THRILLER_MOVIES;
+            break;
+        case 'best-crime-thriller-movies':  // ✅ CRIME THRILLER ADDED
+            movieDatabase = CRIME_THRILLER_MOVIES;
             break;
         default:
             // movies-like-inception, movies-like-memento, movies-like-shutter-island
@@ -1436,7 +1505,6 @@ export async function getStaticProps({ params }) {
             collection,
             movies
         }
-        // No revalidate means pure static generation compatible with export
     };
 }
 
