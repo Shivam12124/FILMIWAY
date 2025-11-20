@@ -1111,7 +1111,7 @@ return (
                         : collection?.slug === 'best-drama-movies-on-netflix'
                         ? 'movies/netflix/'
                         : collection?.slug === 'best-psychological-thriller-movies'
-                        ? 'movies/psychological-thriller/'
+                        ? 'movies/psych-thriller/'
                         : collection?.slug === 'best-crime-thriller-movies'  // ✅ CRIME THRILLER ADDED
                         ? 'movies/crime-thriller/'
                         : 'movies/';
@@ -1237,7 +1237,7 @@ return (
             : collection.slug === 'best-drama-movies-on-netflix'
             ? `/movies/netflix/${currentMovie.imdbID}`
             : collection.slug === 'best-psychological-thriller-movies'
-            ? `/movies/psychological-thriller/${currentMovie.imdbID}`
+            ? `/movies/psych-thriller/${currentMovie.imdbID}`
             : collection.slug === 'best-crime-thriller-movies'  // ✅ CRIME THRILLER ADDED
             ? `/movies/crime-thriller/${currentMovie.imdbID}`
             : `/movies/${currentMovie.imdbID}`
@@ -1293,7 +1293,7 @@ return (
         } else if (collection.slug === 'best-drama-movies-on-netflix') {
             detailPageUrl = `/movies/netflix/${currentMovie.imdbID}`;
         } else if (collection.slug === 'best-psychological-thriller-movies') {
-            detailPageUrl = `/movies/psychological-thriller/${currentMovie.imdbID}`;
+            detailPageUrl = `/movies/psych-thriller/${currentMovie.imdbID}`;
         } else if (collection.slug === 'best-crime-thriller-movies') {  // ✅ CRIME THRILLER ADDED
             detailPageUrl = `/movies/crime-thriller/${currentMovie.imdbID}`;
         } else {
