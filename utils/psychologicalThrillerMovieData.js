@@ -258,7 +258,7 @@ export const PSYCH_THRILLER_MOVIES = [
       { time: 120, intensity: 93, label: 'Revelation', color: '#dc2626' }
     ],
     suspenseIntensity: 90,
-    dominantColor: '#15232f',
+    dominantColor: '#022c50ff',
     dna: { Drama: 40, Mystery: 30, Thriller: 30 },
     sensitiveScenes: [
       { start: '11:20', end: '11:40', description: 'Masturbating' },

@@ -323,7 +323,7 @@ export const THRILLER_MOVIES = [
       { time: 120, intensity: 87, label: 'Ultimate Reveal', color: '#dc2626' }
     ],
     suspenseIntensity: 87,
-    dominantColor: '#060f1e',
+    dominantColor: '#0d50c3ff',
     dna: { Thriller: 55, Mystery: 30, Drama: 15 },
     sensitiveScenes: [
       { start: "52:32", end: "52:42", description: "Suggestive clothing (woman in bra)" }

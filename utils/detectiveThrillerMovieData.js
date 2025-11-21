@@ -58,7 +58,7 @@ export const DETECTIVE_THRILLER_MOVIES = [
       { time: 145, intensity: 96, label: 'Buried Alive', color: '#dc2626' }
     ],
     mysteryComplexity: 95,
-    dominantColor: '#042258ff',
+    dominantColor: '#052c74ff',
     dna: { Crime: 45, Thriller: 40, Mystery: 15 },
     sensitiveScenes: []  // NO SEXUAL CONTENT FOUND
   },
@@ -88,7 +88,7 @@ export const DETECTIVE_THRILLER_MOVIES = [
       { time: 148, intensity: 94, label: "Graysmith's Realization", color: '#b23c65' }
     ],
     mysteryComplexity: 94,
-    dominantColor: '#4a6187',
+    dominantColor: '#237e86ff',
     dna: { Mystery: 60, Thriller: 25, Crime: 15 },
     sensitiveScenes: []  // NO SEXUAL CONTENT FOUND
   },
@@ -118,8 +118,8 @@ export const DETECTIVE_THRILLER_MOVIES = [
       { time: 126, intensity: 93, label: 'Shocking Finale', color: '#dc2626' }
     ],
     mysteryComplexity: 99,
-    dominantColor: '#5d6c8f',
-    dna: { Mystery: 55, Thriller: 30, Drama: 15 },
+    dominantColor: '#4276efff',
+    dna: { Mystery: 50, Thriller: 30, Drama: 20 },
     sensitiveScenes: [
       { start: "3:35", end: "3:48", description: "Sexual assault" },
       { start: "13:00", end: "14:42", description: "Nudity (woman)" },
@@ -153,7 +153,7 @@ export const DETECTIVE_THRILLER_MOVIES = [
       { time: 128, intensity: 93, label: 'Haunting End', color: '#dc2626' }
     ],
     mysteryComplexity: 97,
-    dominantColor: '#313a35',
+    dominantColor: '#214f36ff',
     dna: { Mystery: 55, Crime: 25, Thriller: 20 },
     sensitiveScenes: [
       { start: "9:58", end: "10:10", description: "Sex" },

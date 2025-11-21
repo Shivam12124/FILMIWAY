@@ -90,7 +90,7 @@ export const MYSTERY_THRILLER_MOVIES = [
       { time: 145, intensity: 96, label: 'Buried Alive', color: '#dc2626' }
     ],
     mysteryComplexity: 96,
-    dominantColor: '#042258ff',
+    dominantColor: '#032b77ff',
     dna: { Crime: 45, Thriller: 40, Mystery: 15 },
     sensitiveScenes: []
   },
@@ -289,7 +289,7 @@ export const MYSTERY_THRILLER_MOVIES = [
       { time: 129, intensity: 90, label: 'The End', color: '#d84315' }
     ],
     mysteryComplexity: 90,
-    dominantColor: '#0f1423',
+    dominantColor: '#062992ff',
     dna: { Mystery: 50, Thriller: 40, Drama: 10 },
     sensitiveScenes: []
   },
