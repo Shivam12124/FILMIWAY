@@ -362,7 +362,7 @@ export const COLLECTIONS = {
     'tt0327056',  // Mystic River (2003)
     'tt0353969',  // Memories of Murder (2003)
     'tt0407887',  // The Departed (2006)
-    'tt0139654yyyy'   // Training Day (2001)
+    'tt0139654',  // Training Day (2001)
   ],
   
   badges: [
