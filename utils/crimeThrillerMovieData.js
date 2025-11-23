@@ -33,7 +33,7 @@ export const CRIME_THRILLER_MOVIES = [
   },
   {
     imdbID: 'tt0119488',
-    tmdbId: 11632,
+    tmdbId: 2118,
     title: 'L.A. Confidential',
     director: 'Curtis Hanson',
     genre: 'Crime, Drama, Mystery',
@@ -156,7 +156,7 @@ export const CRIME_THRILLER_MOVIES = [
   },
   {
     imdbID: 'tt0114369',
-    tmdbId: 807,
+    tmdbId: 629,
     title: 'The Usual Suspects',
     director: 'Bryan Singer',
     genre: 'Crime, Mystery, Thriller',
@@ -288,7 +288,7 @@ export const CRIME_THRILLER_MOVIES = [
   },
   {
     imdbID: 'tt0139654',
-    tmdbId: 48395,
+    tmdbId: 2034,
     title: 'Training Day',
     director: 'Antoine Fuqua',
     genre: 'Crime, Drama, Thriller',
