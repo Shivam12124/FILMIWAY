@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Head from 'next/head';
 import Link from 'next/link';
-import { Search, Brain, Mountain, Film, ChevronDown, Sparkles, Plus, ArrowRight, Star, Clock, Eye, Scale } from 'lucide-react';
+import { Search, Brain, Mountain, Film, ChevronDown, Sparkles, Plus, ArrowRight, Star, Clock, Eye, Scale, DollarSign } from 'lucide-react';
 
 
 
@@ -69,6 +69,18 @@ const CollectionsHub = () => {
             hasSubCollections: false
         },
 
+
+         {
+            id: 'heist-thriller',  // ✅ HEIST THRILLER COLLECTION ADDED
+            title: 'Best Heist Thriller Movies',
+            description: 'Masterful heist films with elaborate plans, high-stakes robberies, and criminal masterminds',
+            icon: DollarSign,  // ✅ USING DOLLARSIGN ICON (MONEY/HEIST)
+            gradient: 'from-amber-500 to-orange-700',  // ✅ GOLD/AMBER GRADIENT
+            movieCount: '10',
+            rating: '8.7',
+            directLink: '/collection/best-heist-thriller-movies',
+            hasSubCollections: false
+        },
 
 
 

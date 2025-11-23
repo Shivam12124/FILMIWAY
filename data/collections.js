@@ -226,6 +226,98 @@ export const COLLECTIONS = {
       }
     }
   },
+    
+
+
+  // 💰 BEST HEIST THRILLER MOVIES COLLECTION
+  'best-heist-thriller-movies': {
+    slug: 'best-heist-thriller-movies',
+    title: 'The 10 Best Heist Thriller Movies of All Time',
+    subtitle: 'Definitive Heist Thriller Rankings',
+    description: 'The ultimate heist thrillers ranked by complexity, execution brilliance, and cinematic mastery—from Heat to Ocean\'s Eleven.',
+    longDescription: 'Experience the most ingenious heist thrillers ever made. From meticulous bank robberies to impossible casino jobs, these films define the genre with elaborate planning, high-stakes action, and criminal masterminds.',
+    
+    emoji: '💰',
+    theme: 'amber',
+    primaryColor: '#f59e0b',
+    secondaryColor: '#d97706',
+    accentColor: '#b45309',
+    gradientFrom: 'from-amber-600',
+    gradientTo: 'to-amber-500',
+    category: 'heist-thriller',
+    tags: ['heist', 'thriller', 'robbery', 'caper', 'crime', 'mastermind'],
+    
+    metaTitle: '10 Best Heist Thriller Movies Ever Made (2025) | Expert Rankings',
+    metaDescription: 'Discover the top 10 heist thriller movies ranked by experts—from Heat to Ocean\'s Eleven. Experience the ultimate in heist cinema.',
+    metaKeywords: 'best heist thriller movies, heist films, robbery movies, caper films, heat, oceans eleven, inside man, the italian job, bank heist movies',
+    
+    stats: {
+      totalMovies: 10,
+      averageRating: 7.9,
+      totalWatchtime: '22 hours 15 minutes',
+      averageComplexity: 91.0,
+      mostAcclaimed: 'Heat (8.3/10)',
+      newestMovie: 'Hell or High Water (2016)',
+      oldestMovie: 'The Italian Job (1969)'
+    },
+    
+    movies: [
+      'tt0113277',  // Heat (1995)
+      'tt0064505',  // The Italian Job (1969)
+      'tt0240772',  // Ocean's Eleven (2001)
+      'tt0454848',  // Inside Man (2006)
+      'tt0435761',  // The Town (2010)
+      'tt0105236',  // Reservoir Dogs (1992)
+      'tt2582802',  // Hell or High Water (2016)
+      'tt0080846',  // Thief (1981)
+      'tt1200251',  // The Bank Job (2008)
+      'tt0072890'   // Dog Day Afternoon (1975)
+    ],
+    
+    badges: [
+      { label: 'Heist Masterpieces', desc: 'Genre-defining heist cinema' },
+      { label: 'Critically Acclaimed', desc: 'Top-tier filmmaking' },
+      { label: 'Complexity Ranked', desc: 'Ranked by plan sophistication' }
+    ],
+    
+    featured: {
+      hero: {
+        title: 'Heat',
+        subtitle: 'The Ultimate Heist Epic',
+        description: 'Michael Mann\'s masterpiece featuring the legendary bank heist and De Niro-Pacino coffee shop confrontation.',
+        poster: 'https://image.tmdb.org/t/p/w500/zMyfPUelumio3tiDKPffaUpsQTD.jpg',
+        backdrop: 'https://image.tmdb.org/t/p/w1280/umSVjVdbVwtx5ryCA2QXL44Durz.jpg',
+        complexity: 98
+      }
+    },
+    
+    relatedCollections: [
+      'best-crime-thriller-movies',
+      'best-thriller-movies',
+      'best-mystery-thriller-movies'
+    ],
+    
+    seo: {
+      title: '10 Best Heist Thriller Movies of All Time (2025) | Filmiway',
+      description: 'Explore the definitive ranking of heist thriller movies—from Heat to Ocean\'s Eleven. Expert-curated collection of the greatest heist films ever made.',
+      keywords: 'best heist thriller movies, heist films, bank robbery movies, caper films, oceans eleven, heat, inside man, the italian job, reservoir dogs',
+      canonicalUrl: 'https://filmiway.com/collection/best-heist-thriller-movies',
+      ogImage: 'https://filmiway.com/images/heist-thriller-collection-og.jpg',
+      structuredData: {
+        '@context': 'https://schema.org',
+        '@type': 'ItemList',
+        name: 'Best Heist Thriller Movies',
+        description: 'Expert-curated list of the best heist thriller movies ranked by complexity and cinematic mastery',
+        numberOfItems: 10
+      }
+    }
+  },
+
+
+
+
+
+
 
 
 // 🎬 BEST CRIME THRILLER MOVIES COLLECTION
@@ -270,7 +362,7 @@ export const COLLECTIONS = {
     'tt0327056',  // Mystic River (2003)
     'tt0353969',  // Memories of Murder (2003)
     'tt0407887',  // The Departed (2006)
-    'tt0472043'   // Training Day (2001)
+    'tt0139654yyyy'   // Training Day (2001)
   ],
   
   badges: [

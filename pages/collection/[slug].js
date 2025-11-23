@@ -8,13 +8,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Crown, Star, MessageSquare, Volume2, VolumeX, Play, Pause, Menu, X, Home, Eye, MousePointer, TrendingUp, Users, Search, Brain, Zap, Film, Award, Mountain, Shield } from 'lucide-react';
 import { COMPLETE_MOVIE_DATABASE as SURVIVAL_DATABASE, COMPLETE_MOVIE_DATA as SURVIVAL_DATA } from '../../utils/survivalMovieData';
 import DRAMA_MOVIES from '../../utils/dramaMovieData';
-import { THRILLER_MOVIES } from '../../utils/thrillerMovieData'; // 🔥 ADD THIS LINE FOR THRILLER
+import { THRILLER_MOVIES } from '../../utils/thrillerMovieData';
 import { MYSTERY_THRILLER_MOVIES } from '../../utils/mysteryThrillerMovieData'; 
 import { DETECTIVE_THRILLER_MOVIES } from '../../utils/detectiveThrillerMovieData';
 import { PSYCH_THRILLER_MOVIES } from '../../utils/psychologicalThrillerMovieData'; 
 import { CRIME_THRILLER_MOVIES } from '../../utils/crimeThrillerMovieData';
+import { HEIST_THRILLER_MOVIES } from '../../utils/heistThrillerMovieData';
 
-;
 
 
 // Components
@@ -25,6 +25,7 @@ import CinematicMovieCard from '../../components/CinematicMovieCard';
 // Data
 import { COLLECTIONS, getAllCollectionSlugs, getCollectionBySlug } from '../../data/collections';
 import { COMPLETE_MOVIE_DATABASE, COMPLETE_MOVIE_DATA } from '../../utils/movieData';
+
 
 // Safe property getters
 const getMovieTitle = (movie) => movie?.Title || movie?.title || movie?.name || 'Unknown Movie';
@@ -99,518 +100,532 @@ const CollectionPage = ({ collection, movies }) => {
         const timer = setTimeout(() => setIsLoading(false), 2500);
         return () => clearTimeout(timer);
     }, []);
-
-    // 🔥 COLLECTION-SPECIFIC CONTENT FUNCTION WITH ALL 7 COLLECTIONS
-    const getCollectionContent = () => {
-        if (collection.slug === 'movies-like-memento') {
-            return {
-                badge: "Memory-Twisting Cinema",
-                title: "Memento",
-                description: "Dive into a curated collection of memory-twisting psychological thrillers that challenge identity and perception, ranked by memory complexity and engaging storytelling",
-                selection: {
-                    text1: "From reverse chronology to fragmented memories, these films challenge viewers to piece together narratives just as protagonists struggle to understand their own identities and past.",
-                    text2: "Each memory-twisting masterpiece features protagonists battling amnesia, false memories, or temporal confusion, creating experiences that mirror the disorientation of memory loss itself."
-                },
-                ranking: {
-                    text: "Our memory complexity index evaluates narrative structure, identity confusion, and the sophistication of memory-related storytelling techniques used throughout each film.",
-                    points: [
-                        "Non-linear narrative complexity",
-                        "Identity confusion depth", 
-                        "Memory manipulation techniques",
-                        "Psychological impact intensity"
-                    ]
-                },
-                experience: {
-                    text1: "Whether you're seeking intricate plot structures or psychological depth, this collection delivers cinema's most sophisticated explorations of memory and identity.",
-                    text2: "Each film has been selected for its ability to create genuine confusion and revelation, mirroring the experience of characters struggling with fractured memories and uncertain identities."
-                }
-            };
-        } else if (collection.slug === 'movies-like-inception') {
-            return {
-                badge: "Mind-Bending Cinema",
-                title: "Inception", 
-                description: "Dive into a curated collection of reality-bending masterpieces that challenge perception and ignite the mind, ranked by complexity and engaging storytelling",
-                selection: {
-                    text1: "From multi-layered dreamscapes to parallel realities, these films push the boundaries of narrative structure while maintaining emotional depth and philosophical weight.",
-                    text2: "Each mind-bending masterpiece features complex protagonists navigating impossible scenarios, time paradoxes, and reality distortions that challenge everything you think you know."
-                },
-                ranking: {
-                    text: "Our mind-bending index evaluates narrative complexity, reality distortion, and the sophistication of conceptual storytelling techniques used throughout each film.",
-                    points: [
-                        "Conceptual complexity depth",
-                        "Reality distortion intensity",
-                        "Narrative structure innovation", 
-                        "Philosophical impact weight"
-                    ]
-                },
-                experience: {
-                    text1: "Whether you're seeking intricate plot mechanics or philosophical depth, this collection delivers cinema's most ambitious reality-bending experiences.",
-                    text2: "Each film has been selected for its ability to create lasting impact, with concepts that continue revealing new layers upon repeated viewings and deeper analysis."
-                }
-            };
-        } else if (collection.slug === 'movies-like-shutter-island') {
-            return {
-                badge: "Psychological Thriller Cinema",
-                title: "Shutter Island",
-                description: "Dive into a curated collection of psychological thrillers with unreliable narrators, identity crises, and shocking revelations that redefine everything you thought you knew",
-                selection: {
-                    text1: "From unreliable narrators to shocking plot twists, these films master the art of psychological manipulation while maintaining gripping thriller elements and emotional authenticity.",
-                    text2: "Each psychological masterpiece features protagonists whose perception of reality becomes increasingly questionable, leading viewers down paths of doubt, paranoia, and ultimate revelation."
-                },
-                ranking: {
-                    text: "Our psychological complexity index evaluates narrative deception, identity questioning, and the sophistication of psychological thriller techniques throughout each film.",
-                    points: [
-                        "Unreliable narrator mastery",
-                        "Identity crisis complexity",
-                        "Plot twist sophistication",
-                        "Psychological manipulation depth"
-                    ]
-                },
-                experience: {
-                    text1: "Whether you're seeking shocking revelations or psychological depth, this collection delivers cinema's most masterful explorations of identity and reality distortion.",
-                    text2: "Each film has been selected for its ability to completely reframe the viewing experience, with revelations that transform every previous scene into something entirely different."
-                }
-            };
-
-            } else if (collection.slug ==='best-psychological-thriller-movies') {
-    return {
-        badge: "Psychological Thriller Cinema",
-        title: "Psychological Thriller",
-        description: "Dive into a curated collection of psychological thrillers with mind-bending narratives, unreliable narrators, and chilling tensions.",
-        selection: {
-            text1: "These films explore the darkest reaches of the human mind, with plots filled with twists, paranoia, and complex characters.",
-            text2: "Each psychological thriller invites you to unravel intricate stories where truth is elusive and perception shifts."
-        },
-        ranking: {
-            text: "Our psychological thriller index evaluates the depth of psychological complexity, narrative deception, and tension build-up throughout each film.",
-            points: [
-                "Psychological depth complexity",
-                "Narrative deception and twists",
-                "Character psychological profile",
-                "Atmospheric tension build-up"
-            ]
-        },
-        experience: {
-            text1: "Perfect for fans of cerebral and unsettling thrillers that keep you questioning reality and motives.",
-            text2: "Each film selected for its ability to disturb, intrigue, and leave a lasting psychological impression."
-        }
-    };
-
-} else if (collection.slug === 'best-crime-thriller-movies') {  // ✅ CRIME THRILLER ADDED
-    return {
-        badge: "Crime Thriller Cinema",
-        title: "Crime Thrillers",
-        description: "Dive into a curated collection of gripping crime thrillers featuring cops, criminals, heists, and investigations—ranked by crime intensity and storytelling mastery",
-        selection: {
-            text1: "From cat-and-mouse heists to corrupt cop dramas, these films define the crime thriller genre with masterful direction, complex moral ambiguity, and edge-of-your-seat suspense.",
-            text2: "Each crime thriller showcases the finest in investigative storytelling, moral dilemmas, and the thin line between law and lawlessness in cinema's most intense narratives."
-        },
-        ranking: {
-            text: "Our crime intensity index evaluates storytelling complexity, character depth, moral ambiguity, and the sophistication of crime narrative techniques throughout each film.",
-            points: [
-                "Crime narrative complexity",
-                "Moral ambiguity depth",
-                "Character intelligence mastery",
-                "Atmospheric tension intensity"
-            ]
-        },
-        experience: {
-            text1: "Perfect for fans of heist movies, detective stories, and crime epics who love intricate plots and morally complex characters.",
-            text2: "Selected for their unforgettable investigations, iconic criminals, and genre-defining storytelling that redefined crime cinema."
-        }
-    };
-
-
-
-
-
-  } else if (collection.slug === 'best-detective-thriller-movies') {  // ✅ Added detective thriller
-      return {
-        badge: "Detective Thriller Cinema",
-        title: "Detective Thrillers",
-        description: "Dive into an expertly curated collection of gripping detective thrillers featuring cunning detectives, intricate mysteries, and thrilling investigations, ranked by detective brilliance and suspense.",
-        selection: {
-          text1: "From classic whodunits to modern detective masterpieces, these films challenge your deductive skills and keep you guessing until the very end.",
-          text2: "Each detective thriller showcases brilliant investigative work, complex characters, and shocking twists that redefine mystery storytelling."
-        },
-        ranking: {
-          text: "Our detective brilliance index evaluates puzzle complexity, investigative depth, character intelligence, and the suspense built throughout each film.",
-          points: [
-            "Complex detective puzzles",
-            "Character intelligence and insight",
-            "Suspense and tension buildup",
-            "Narrative twist and resolution quality"
-          ]
-        },
-        experience: {
-          text1: "Perfect for fans of cerebral thrillers and master detectives who love unraveling puzzles under tight suspense.",
-          text2: "Selected for their unforgettable investigations, iconic detectives, and genre-defining storytelling."
-        }
-      };
-
-        } else if (collection.slug === 'best-thriller-movies') {
-            return {
-                badge: "Suspense Thriller Cinema",
-                title: "Suspense Thrillers",
-                description: "Dive into a curated collection of edge-of-your-seat suspense thrillers known for their gripping narratives, intriguing twists, and intense atmosphere, ranked by suspense intensity",
-                selection: {
-                    text1: "From psychological mind games to action-packed espionage, these films deliver masterful pacing with intriguing plot twists that keep audiences on the edge of their seats.",
-                    text2: "Each suspense thriller masterpiece features protagonists facing impossible odds, mysterious conspiracies, and shocking revelations, creating an experience that lingers long after the credits roll."
-                },
-                ranking: {
-                    text: "Our suspense intensity index evaluates pacing, plot twist brilliance, character complexity depth, and the overall atmosphere of tension and anticipation throughout each film.",
-                    points: [
-                        "Pacing and tension build-up",
-                        "Plot twist brilliance",
-                        "Character complexity depth",
-                        "Atmospheric suspense strength"
-                    ]
-                },
-                experience: {
-                    text1: "Whether you're seeking thrilling narratives or psychological intrigue, this collection delivers cinema's finest suspense-driven storytelling experiences.",
-                    text2: "Each film has been selected for its ability to create sustained tension, with masterfully crafted twists that completely redefine what you thought was happening."
-                }
-            };
-        } else if (collection.slug === 'best-mystery-thriller-movies') {  // ✅ MYSTERY THRILLER ADDED
-            return {
-                badge: "Mystery Thriller Cinema",
-                title: "Mystery Thrillers",
-                description: "Dive into a curated collection of the greatest mystery thrillers featuring detectives, enigmatic plots, and clever narrative tricks, ranked by mystery complexity",
-                selection: {
-                    text1: "From Agatha Christie puzzles to neo-noir crime dramas, these films test your mind and your nerves with intricate detective work and impossible mysteries.",
-                    text2: "Each mystery thriller masterpiece features brilliant detectives, cunning criminals, and plot revelations that challenge viewers to solve the puzzle before the final act."
-                },
-                ranking: {
-                    text: "Our mystery complexity index evaluates puzzle sophistication, detective brilliance, plot deception mastery, and the quality of narrative revelation throughout each film.",
-                    points: [
-                        "Puzzle complexity sophistication",
-                        "Detective vs villain intelligence",
-                        "Atmospheric intensity depth",
-                        "Narrative deception mastery"
-                    ]
-                },
-                experience: {
-                    text1: "Perfect for fans of Whodunits and mind games who love piecing together clues alongside master detectives.",
-                    text2: "Selected for their lasting intrigue, iconic twists, and ability to keep viewers guessing until the final reveal."
-                }
-            };
-        } else if (collection.slug === 'best-survival-movies') {
-            return {
-                badge: "Survival Cinema",
-                title: "Survival",
-                description: "Dive into a curated collection of the greatest survival films showcasing human endurance against nature, ranked by intensity and authenticity",
-                selection: {
-                    text1: "From mountains to deserts, these films showcase the finest examples of human willpower, ingenuity, and perseverance against impossible odds and brutal natural environments.",
-                    text2: "Each survival masterpiece features protagonists battling extreme elements, isolation, and desperation, creating raw, emotionally authentic experiences of human resilience."
-                },
-                ranking: {
-                    text: "Our survival intensity index evaluates realism, environmental brutality, human perseverance, and the emotional impact of each protagonist's struggle for survival.",
-                    points: [
-                        "Environmental brutality intensity",
-                        "Human perseverance depth",
-                        "Realism and authenticity level",
-                        "Emotional impact strength"
-                    ]
-                },
-                experience: {
-                    text1: "Whether you're seeking raw survival stories or emotional depth, this collection delivers cinema's most powerful explorations of human endurance.",
-                    text2: "Each film has been selected for its ability to inspire through authentic struggle, with narratives that showcase the incredible will to survive against all odds."
-                }
-            };
-        } else if (collection.slug === 'best-drama-movies-on-netflix') {
-            return {
-                badge: "Award-Winning Drama Cinema",
-                title: "Netflix Drama", 
-                description: "Dive into a curated collection of emotionally powerful dramas streaming on Netflix, ranked by emotional intensity and critical acclaim",
-                selection: {
-                    text1: "From war epics to intimate family stories, these films showcase the finest dramatic performances and storytelling available on Netflix's platform.",
-                    text2: "Each drama masterpiece features powerhouse performances, emotionally gripping narratives, and award-winning direction that has defined contemporary cinema."
-                },
-                ranking: {
-                    text: "Our emotional intensity index evaluates dramatic depth, performance quality, and the sophistication of storytelling techniques throughout each film.",
-                    points: [
-                        "Emotional impact intensity",
-                        "Performance quality mastery",
-                        "Narrative depth complexity", 
-                        "Critical acclaim achievement"
-                    ]
-                },
-                experience: {
-                    text1: "Whether you're seeking Oscar-winning performances or emotionally charged storytelling, this collection delivers Netflix's finest dramatic cinema.",
-                    text2: "Each film has been selected for its ability to create lasting emotional impact, with performances and narratives that resonate long after viewing."
-                }
-            };
-        } else {
-            return {
-                badge: "Cinematic Excellence",
-                title: collection.title || "Cinema", 
-                description: `Dive into a curated collection of ${collection.title || 'amazing films'} that deliver exceptional storytelling and cinematic brilliance`,
-                selection: {
-                    text1: `This carefully curated selection represents the finest examples of ${collection.title || 'cinema'}, chosen for their exceptional storytelling, technical mastery, and lasting cultural impact.`,
-                    text2: "Each film demonstrates mastery of the cinematic arts, combining innovative techniques with compelling narratives that have influenced generations of filmmakers and audiences."
-                },
-                ranking: {
-                    text: "Our ranking system evaluates artistic achievement, cultural impact, and technical excellence to identify the most essential films in this category.",
-                    points: [
-                        "Artistic achievement level",
-                        "Cultural impact depth",
-                        "Technical excellence mastery",
-                        "Narrative innovation strength"
-                    ]
-                },
-                experience: {
-                    text1: "Whether you're a casual viewer or serious cinephile, this collection offers films that showcase the very best of cinematic storytelling and artistic expression.",
-                    text2: "Each selection represents a significant contribution to film history, offering both entertainment value and deeper artistic appreciation for the medium's possibilities."
-                }
-            };
-        }
-    };
-
-    // 🔥 HEADER CONTENT FOR ALL 7 COLLECTIONS
-    const getHeaderContent = () => {
-        if (collection.slug === 'movies-like-memento') {
-            return {
-                title: "Best Movies Like Memento – 10 Best Mind-Bending Thrillers You Must Watch",
-                subtitle: "Memory-Twisting Psychological Thrillers with Non-Linear Storytelling Ranked by Complexity"
-            };
-        } else if (collection.slug === 'movies-like-inception') {
-            return {
-                title: "Best Movies Like Inception – 10 Best Mind-Bending Thrillers You Must Watch",
-                subtitle: "Reality-Bending Sci-Fi Thrillers with Complex Narratives Ranked by Complexity"
-            };
-        } else if (collection.slug === 'movies-like-shutter-island') {
-            return {
-                title: "Best Movies Like Shutter Island – 10 Best Mind-Bending Psychological Thrillers You Must Watch",
-                subtitle: "Psychological Thrillers with Unreliable Narrators & Shocking Plot Twists Ranked by Complexity"
-            };
-
-    } else if (collection.slug === 'best-crime-thriller-movies') {  // ✅ CRIME THRILLER ADDED
-    return {
-        title: "10 Best Crime Thriller Movies – From Heat to The Departed",
-        subtitle: "Crime Thrillers with Heists, Investigations & Moral Complexity Ranked by Crime Intensity"
-    };
+// 🔥 COLLECTION-SPECIFIC CONTENT FUNCTION WITH ALL 8 COLLECTIONS
+const getCollectionContent = () => {
+    if (collection.slug === 'movies-like-memento') {
+        return {
+            badge: "Memory-Twisting Cinema",
+            title: "Memento",
+            description: "Dive into a curated collection of memory-twisting psychological thrillers that challenge identity and perception, ranked by memory complexity and engaging storytelling",
+            selection: {
+                text1: "From reverse chronology to fragmented memories, these films challenge viewers to piece together narratives just as protagonists struggle to understand their own identities and past.",
+                text2: "Each memory-twisting masterpiece features protagonists battling amnesia, false memories, or temporal confusion, creating experiences that mirror the disorientation of memory loss itself."
+            },
+            ranking: {
+                text: "Our memory complexity index evaluates narrative structure, identity confusion, and the sophistication of memory-related storytelling techniques used throughout each film.",
+                points: [
+                    "Non-linear narrative complexity",
+                    "Identity confusion depth", 
+                    "Memory manipulation techniques",
+                    "Psychological impact intensity"
+                ]
+            },
+            experience: {
+                text1: "Whether you're seeking intricate plot structures or psychological depth, this collection delivers cinema's most sophisticated explorations of memory and identity.",
+                text2: "Each film has been selected for its ability to create genuine confusion and revelation, mirroring the experience of characters struggling with fractured memories and uncertain identities."
+            }
+        };
+    } else if (collection.slug === 'movies-like-inception') {
+        return {
+            badge: "Mind-Bending Cinema",
+            title: "Inception", 
+            description: "Dive into a curated collection of reality-bending masterpieces that challenge perception and ignite the mind, ranked by complexity and engaging storytelling",
+            selection: {
+                text1: "From multi-layered dreamscapes to parallel realities, these films push the boundaries of narrative structure while maintaining emotional depth and philosophical weight.",
+                text2: "Each mind-bending masterpiece features complex protagonists navigating impossible scenarios, time paradoxes, and reality distortions that challenge everything you think you know."
+            },
+            ranking: {
+                text: "Our mind-bending index evaluates narrative complexity, reality distortion, and the sophistication of conceptual storytelling techniques used throughout each film.",
+                points: [
+                    "Conceptual complexity depth",
+                    "Reality distortion intensity",
+                    "Narrative structure innovation", 
+                    "Philosophical impact weight"
+                ]
+            },
+            experience: {
+                text1: "Whether you're seeking intricate plot mechanics or philosophical depth, this collection delivers cinema's most ambitious reality-bending experiences.",
+                text2: "Each film has been selected for its ability to create lasting impact, with concepts that continue revealing new layers upon repeated viewings and deeper analysis."
+            }
+        };
+    } else if (collection.slug === 'movies-like-shutter-island') {
+        return {
+            badge: "Psychological Thriller Cinema",
+            title: "Shutter Island",
+            description: "Dive into a curated collection of psychological thrillers with unreliable narrators, identity crises, and shocking revelations that redefine everything you thought you knew",
+            selection: {
+                text1: "From unreliable narrators to shocking plot twists, these films master the art of psychological manipulation while maintaining gripping thriller elements and emotional authenticity.",
+                text2: "Each psychological masterpiece features protagonists whose perception of reality becomes increasingly questionable, leading viewers down paths of doubt, paranoia, and ultimate revelation."
+            },
+            ranking: {
+                text: "Our psychological complexity index evaluates narrative deception, identity questioning, and the sophistication of psychological thriller techniques throughout each film.",
+                points: [
+                    "Unreliable narrator mastery",
+                    "Identity crisis complexity",
+                    "Plot twist sophistication",
+                    "Psychological manipulation depth"
+                ]
+            },
+            experience: {
+                text1: "Whether you're seeking shocking revelations or psychological depth, this collection delivers cinema's most masterful explorations of identity and reality distortion.",
+                text2: "Each film has been selected for its ability to completely reframe the viewing experience, with revelations that transform every previous scene into something entirely different."
+            }
+        };
+    } else if (collection.slug === 'best-psychological-thriller-movies') {
+        return {
+            badge: "Psychological Thriller Cinema",
+            title: "Psychological Thriller",
+            description: "Dive into a curated collection of psychological thrillers with mind-bending narratives, unreliable narrators, and chilling tensions.",
+            selection: {
+                text1: "These films explore the darkest reaches of the human mind, with plots filled with twists, paranoia, and complex characters.",
+                text2: "Each psychological thriller invites you to unravel intricate stories where truth is elusive and perception shifts."
+            },
+            ranking: {
+                text: "Our psychological thriller index evaluates the depth of psychological complexity, narrative deception, and tension build-up throughout each film.",
+                points: [
+                    "Psychological depth complexity",
+                    "Narrative deception and twists",
+                    "Character psychological profile",
+                    "Atmospheric tension build-up"
+                ]
+            },
+            experience: {
+                text1: "Perfect for fans of cerebral and unsettling thrillers that keep you questioning reality and motives.",
+                text2: "Each film selected for its ability to disturb, intrigue, and leave a lasting psychological impression."
+            }
+        };
+    } else if (collection.slug === 'best-crime-thriller-movies') {
+        return {
+            badge: "Crime Thriller Cinema",
+            title: "Crime Thrillers",
+            description: "Dive into a curated collection of gripping crime thrillers featuring cops, criminals, heists, and investigations—ranked by crime intensity and storytelling mastery",
+            selection: {
+                text1: "From cat-and-mouse heists to corrupt cop dramas, these films define the crime thriller genre with masterful direction, complex moral ambiguity, and edge-of-your-seat suspense.",
+                text2: "Each crime thriller showcases the finest in investigative storytelling, moral dilemmas, and the thin line between law and lawlessness in cinema's most intense narratives."
+            },
+            ranking: {
+                text: "Our crime intensity index evaluates storytelling complexity, character depth, moral ambiguity, and the sophistication of crime narrative techniques throughout each film.",
+                points: [
+                    "Crime narrative complexity",
+                    "Moral ambiguity depth",
+                    "Character intelligence mastery",
+                    "Atmospheric tension intensity"
+                ]
+            },
+            experience: {
+                text1: "Perfect for fans of heist movies, detective stories, and crime epics who love intricate plots and morally complex characters.",
+                text2: "Selected for their unforgettable investigations, iconic criminals, and genre-defining storytelling that redefined crime cinema."
+            }
+        };
+    } else if (collection.slug === 'best-heist-thriller-movies') {  // ✅ HEIST THRILLER ADDED
+        return {
+            badge: "Heist Thriller Cinema",
+            title: "Heist Thrillers",
+            description: "Dive into a curated collection of masterful heist thrillers featuring elaborate plans, high-stakes robberies, and criminal masterminds—ranked by heist complexity and execution brilliance",
+            selection: {
+                text1: "From meticulous bank robberies to impossible vault jobs, these films showcase the art of the heist with intricate planning, unexpected twists, and pulse-pounding execution sequences.",
+                text2: "Each heist masterpiece features criminal geniuses, elaborate schemes, and cat-and-mouse games between thieves and law enforcement, delivering edge-of-your-seat tension and ingenious plot mechanics."
+            },
+            ranking: {
+                text: "Our heist complexity index evaluates plan sophistication, execution brilliance, character intelligence, and the narrative tension created throughout each meticulously crafted robbery.",
+                points: [
+                    "Heist plan complexity",
+                    "Execution brilliance mastery",
+                    "Character intelligence depth",
+                    "Tension and suspense intensity"
+                ]
+            },
+            experience: {
+                text1: "Perfect for fans of Ocean's Eleven-style capers and Heat-level crime epics who love watching master thieves execute impossible jobs.",
+                text2: "Selected for their unforgettable heists, iconic criminals, and genre-defining sequences that redefined heist cinema forever."
+            }
+        };
+    } else if (collection.slug === 'best-detective-thriller-movies') {
+        return {
+            badge: "Detective Thriller Cinema",
+            title: "Detective Thrillers",
+            description: "Dive into an expertly curated collection of gripping detective thrillers featuring cunning detectives, intricate mysteries, and thrilling investigations, ranked by detective brilliance and suspense.",
+            selection: {
+                text1: "From classic whodunits to modern detective masterpieces, these films challenge your deductive skills and keep you guessing until the very end.",
+                text2: "Each detective thriller showcases brilliant investigative work, complex characters, and shocking twists that redefine mystery storytelling."
+            },
+            ranking: {
+                text: "Our detective brilliance index evaluates puzzle complexity, investigative depth, character intelligence, and the suspense built throughout each film.",
+                points: [
+                    "Complex detective puzzles",
+                    "Character intelligence and insight",
+                    "Suspense and tension buildup",
+                    "Narrative twist and resolution quality"
+                ]
+            },
+            experience: {
+                text1: "Perfect for fans of cerebral thrillers and master detectives who love unraveling puzzles under tight suspense.",
+                text2: "Selected for their unforgettable investigations, iconic detectives, and genre-defining storytelling."
+            }
+        };
+    } else if (collection.slug === 'best-thriller-movies') {
+        return {
+            badge: "Suspense Thriller Cinema",
+            title: "Suspense Thrillers",
+            description: "Dive into a curated collection of edge-of-your-seat suspense thrillers known for their gripping narratives, intriguing twists, and intense atmosphere, ranked by suspense intensity",
+            selection: {
+                text1: "From psychological mind games to action-packed espionage, these films deliver masterful pacing with intriguing plot twists that keep audiences on the edge of their seats.",
+                text2: "Each suspense thriller masterpiece features protagonists facing impossible odds, mysterious conspiracies, and shocking revelations, creating an experience that lingers long after the credits roll."
+            },
+            ranking: {
+                text: "Our suspense intensity index evaluates pacing, plot twist brilliance, character complexity depth, and the overall atmosphere of tension and anticipation throughout each film.",
+                points: [
+                    "Pacing and tension build-up",
+                    "Plot twist brilliance",
+                    "Character complexity depth",
+                    "Atmospheric suspense strength"
+                ]
+            },
+            experience: {
+                text1: "Whether you're seeking thrilling narratives or psychological intrigue, this collection delivers cinema's finest suspense-driven storytelling experiences.",
+                text2: "Each film has been selected for its ability to create sustained tension, with masterfully crafted twists that completely redefine what you thought was happening."
+            }
+        };
+    } else if (collection.slug === 'best-mystery-thriller-movies') {
+        return {
+            badge: "Mystery Thriller Cinema",
+            title: "Mystery Thrillers",
+            description: "Dive into a curated collection of the greatest mystery thrillers featuring detectives, enigmatic plots, and clever narrative tricks, ranked by mystery complexity",
+            selection: {
+                text1: "From Agatha Christie puzzles to neo-noir crime dramas, these films test your mind and your nerves with intricate detective work and impossible mysteries.",
+                text2: "Each mystery thriller masterpiece features brilliant detectives, cunning criminals, and plot revelations that challenge viewers to solve the puzzle before the final act."
+            },
+            ranking: {
+                text: "Our mystery complexity index evaluates puzzle sophistication, detective brilliance, plot deception mastery, and the quality of narrative revelation throughout each film.",
+                points: [
+                    "Puzzle complexity sophistication",
+                    "Detective vs villain intelligence",
+                    "Atmospheric intensity depth",
+                    "Narrative deception mastery"
+                ]
+            },
+            experience: {
+                text1: "Perfect for fans of Whodunits and mind games who love piecing together clues alongside master detectives.",
+                text2: "Selected for their lasting intrigue, iconic twists, and ability to keep viewers guessing until the final reveal."
+            }
+        };
+    } else if (collection.slug === 'best-survival-movies') {
+        return {
+            badge: "Survival Cinema",
+            title: "Survival",
+            description: "Dive into a curated collection of the greatest survival films showcasing human endurance against nature, ranked by intensity and authenticity",
+            selection: {
+                text1: "From mountains to deserts, these films showcase the finest examples of human willpower, ingenuity, and perseverance against impossible odds and brutal natural environments.",
+                text2: "Each survival masterpiece features protagonists battling extreme elements, isolation, and desperation, creating raw, emotionally authentic experiences of human resilience."
+            },
+            ranking: {
+                text: "Our survival intensity index evaluates realism, environmental brutality, human perseverance, and the emotional impact of each protagonist's struggle for survival.",
+                points: [
+                    "Environmental brutality intensity",
+                    "Human perseverance depth",
+                    "Realism and authenticity level",
+                    "Emotional impact strength"
+                ]
+            },
+            experience: {
+                text1: "Whether you're seeking raw survival stories or emotional depth, this collection delivers cinema's most powerful explorations of human endurance.",
+                text2: "Each film has been selected for its ability to inspire through authentic struggle, with narratives that showcase the incredible will to survive against all odds."
+            }
+        };
+    } else if (collection.slug === 'best-drama-movies-on-netflix') {
+        return {
+            badge: "Award-Winning Drama Cinema",
+            title: "Netflix Drama", 
+            description: "Dive into a curated collection of emotionally powerful dramas streaming on Netflix, ranked by emotional intensity and critical acclaim",
+            selection: {
+                text1: "From war epics to intimate family stories, these films showcase the finest dramatic performances and storytelling available on Netflix's platform.",
+                text2: "Each drama masterpiece features powerhouse performances, emotionally gripping narratives, and award-winning direction that has defined contemporary cinema."
+            },
+            ranking: {
+                text: "Our emotional intensity index evaluates dramatic depth, performance quality, and the sophistication of storytelling techniques throughout each film.",
+                points: [
+                    "Emotional impact intensity",
+                    "Performance quality mastery",
+                    "Narrative depth complexity", 
+                    "Critical acclaim achievement"
+                ]
+            },
+            experience: {
+                text1: "Whether you're seeking Oscar-winning performances or emotionally charged storytelling, this collection delivers Netflix's finest dramatic cinema.",
+                text2: "Each film has been selected for its ability to create lasting emotional impact, with performances and narratives that resonate long after viewing."
+            }
+        };
+    } else {
+        return {
+            badge: "Cinematic Excellence",
+            title: collection.title || "Cinema", 
+            description: `Dive into a curated collection of ${collection.title || 'amazing films'} that deliver exceptional storytelling and cinematic brilliance`,
+            selection: {
+                text1: `This carefully curated selection represents the finest examples of ${collection.title || 'cinema'}, chosen for their exceptional storytelling, technical mastery, and lasting cultural impact.`,
+                text2: "Each film demonstrates mastery of the cinematic arts, combining innovative techniques with compelling narratives that have influenced generations of filmmakers and audiences."
+            },
+            ranking: {
+                text: "Our ranking system evaluates artistic achievement, cultural impact, and technical excellence to identify the most essential films in this category.",
+                points: [
+                    "Artistic achievement level",
+                    "Cultural impact depth",
+                    "Technical excellence mastery",
+                    "Narrative innovation strength"
+                ]
+            },
+            experience: {
+                text1: "Whether you're a casual viewer or serious cinephile, this collection offers films that showcase the very best of cinematic storytelling and artistic expression.",
+                text2: "Each selection represents a significant contribution to film history, offering both entertainment value and deeper artistic appreciation for the medium's possibilities."
+            }
+        };
+    }
+};
 
 
+// 🔥 HEADER CONTENT FOR ALL 8 COLLECTIONS
+const getHeaderContent = () => {
+    if (collection.slug === 'movies-like-memento') {
+        return {
+            title: "Best Movies Like Memento – 10 Best Mind-Bending Thrillers You Must Watch",
+            subtitle: "Memory-Twisting Psychological Thrillers with Non-Linear Storytelling Ranked by Complexity"
+        };
+    } else if (collection.slug === 'movies-like-inception') {
+        return {
+            title: "Best Movies Like Inception – 10 Best Mind-Bending Thrillers You Must Watch",
+            subtitle: "Reality-Bending Sci-Fi Thrillers with Complex Narratives Ranked by Complexity"
+        };
+    } else if (collection.slug === 'movies-like-shutter-island') {
+        return {
+            title: "Best Movies Like Shutter Island – 10 Best Mind-Bending Psychological Thrillers You Must Watch",
+            subtitle: "Psychological Thrillers with Unreliable Narrators & Shocking Plot Twists Ranked by Complexity"
+        };
+    } else if (collection.slug === 'best-crime-thriller-movies') {
+        return {
+            title: "10 Best Crime Thriller Movies – From Heat to The Departed",
+            subtitle: "Crime Thrillers with Heists, Investigations & Moral Complexity Ranked by Crime Intensity"
+        };
+    } else if (collection.slug === 'best-heist-thriller-movies') {  // ✅ HEIST THRILLER ADDED
+        return {
+            title: "10 Best Heist Thriller Movies – From Heat to Ocean's Eleven",
+            subtitle: "Heist Thrillers with Elaborate Plans, High-Stakes Robberies & Criminal Masterminds Ranked by Heist Complexity"
+        };
+    } else if (collection.slug === 'best-psychological-thriller-movies') {
+        return {
+            title: "Best Psychological Thriller Movies – Top Mind-Bending Psychological Thrillers",
+            subtitle: "Psychological Thrillers with Intricate Plots, Twists, and Psychological Depth Ranked by Complexity"
+        };
+    } else if (collection.slug === 'best-thriller-movies') {
+        return {
+            title: "Best Suspense Thriller Movies – 10 Best Edge-of-Your-Seat Thrillers You Must Watch",
+            subtitle: "Suspense-Driven Thrillers with Intense Pacing & Plot Twists Ranked by Suspense Intensity"
+        };
+    } else if (collection.slug === 'best-mystery-thriller-movies') {
+        return {
+            title: "Best Mystery Thriller Movies – 10 Greatest Mystery Films You Must Watch",
+            subtitle: "Mystery Thrillers with Clever Detective Work & Impossible Puzzles Ranked by Mystery Complexity"
+        };
+    } else if (collection.slug === 'best-survival-movies') {
+        return {
+            title: "10 Best Survival Movies of All Time – Ranked & Reviewed 2025",
+            subtitle: "Human Endurance Against Nature – Wilderness, Mountains & Desert Survival Stories Ranked by Intensity"
+        };
+    } else if (collection.slug === 'best-drama-movies-on-netflix') {
+        return {
+            title: "Best Drama Movies on Netflix – 10 Award-Winning Films You Must Watch",
+            subtitle: "Emotionally Powerful Dramas with Oscar-Winning Performances Streaming Now"
+        };
+    } else if (collection.slug === 'best-detective-thriller-movies') {
+        return {
+            title: "10 Best Detective Thriller Movies Like Zodiac & Prisoners",
+            subtitle: "Detective Thrillers with Intricate Mysteries and Masterfully Crafted Suspense Ranked by Investigative Brilliance"
+        };
+    } else {
+        return {
+            title: `Best ${collection.title} – Top 10 Curated Collection You Must Watch`,
+            subtitle: collection.description || "Exceptional Cinema Ranked by Quality"
+        };
+    }
+};
 
 
-            } else if (collection.slug ==='best-psychological-thriller-movies') {
-    return {
-        title: "Best Psychological Thriller Movies – Top Mind-Bending Psychological Thrillers",
-        subtitle: "Psychological Thrillers with Intricate Plots, Twists, and Psychological Depth Ranked by Complexity"
-    };
+// 🔥 LOADER CONTENT FOR ALL 8 COLLECTIONS
+const getLoaderContent = () => {
+    if (collection?.slug === 'movies-like-memento') {
+        return {
+            title: "Loading Movies Like Memento",
+            description: "Curating memory-twisting psychological thrillers with community reviews and ratings"
+        };
+    } else if (collection?.slug === 'movies-like-inception') {
+        return {
+            title: "Loading Movies Like Inception", 
+            description: "Curating mind-bending sci-fi thrillers with community reviews and ratings"
+        };
+    } else if (collection?.slug === 'movies-like-shutter-island') {
+        return {
+            title: "Loading Movies Like Shutter Island",
+            description: "Curating psychological thrillers with unreliable narrators and shocking plot twists"
+        };
+    } else if (collection.slug === 'best-crime-thriller-movies') {
+        return {
+            title: "Loading Best Crime Thriller Movies",
+            description: "Curating the greatest crime thrillers with community reviews and ratings"
+        };
+    } else if (collection?.slug === 'best-heist-thriller-movies') {  // ✅ HEIST THRILLER ADDED
+        return {
+            title: "Loading Best Heist Thriller Movies",
+            description: "Curating masterful heist thrillers with community reviews and ratings"
+        };
+    } else if (collection?.slug === 'best-psychological-thriller-movies') {
+        return {
+            title: "Loading Psychological Thriller Movies",
+            description: "Curating psychological thrillers with complex narratives, tension, and mind-bending twists."
+        };
+    } else if (collection?.slug === 'best-detective-thriller-movies') {
+        return {
+            title: "Loading Best Detective Thriller Movies",
+            description: "Curating the finest detective thrillers with community reviews and ratings"
+        };
+    } else if (collection?.slug === 'best-thriller-movies') {
+        return {
+            title: "Loading Best Thriller Movies",
+            description: "Curating edge-of-your-seat suspense thrillers with community reviews and ratings"
+        };
+    } else if (collection?.slug === 'best-mystery-thriller-movies') {
+        return {
+            title: "Loading Best Mystery Thriller Movies",
+            description: "Curating the greatest detective mystery thrillers with community reviews and ratings"
+        };
+    } else if (collection?.slug === 'best-survival-movies') {
+        return {
+            title: "Loading Best Survival Movies",
+            description: "Curating the greatest survival films with community reviews and ratings"
+        };
+    } else if (collection?.slug === 'best-drama-movies-on-netflix') {
+        return {
+            title: "Loading Best Netflix Dramas",
+            description: "Curating award-winning dramatic films with community reviews and ratings"
+        };
+    } else {
+        return {
+            title: "Loading Movie Collection",
+            description: "Curating exceptional cinema with community reviews and ratings"
+        };
+    }
+};
 
 
-        } else if (collection.slug === 'best-thriller-movies') {
-            return {
-                title: "Best Suspense Thriller Movies – 10 Best Edge-of-Your-Seat Thrillers You Must Watch",
-                subtitle: "Suspense-Driven Thrillers with Intense Pacing & Plot Twists Ranked by Suspense Intensity"
-            };
-        } else if (collection.slug === 'best-mystery-thriller-movies') {  // ✅ MYSTERY THRILLER ADDED
-            return {
-                title: "Best Mystery Thriller Movies – 10 Greatest Mystery  Films You Must Watch",
-                subtitle: "Mystery Thrillers with Clever Detective Work & Impossible Puzzles Ranked by Mystery Complexity"
-            };
-        } else if (collection.slug === 'best-survival-movies') {
-            return {
-                title: "10 Best Survival Movies of All Time – Ranked & Reviewed 2025",
-                subtitle: "Human Endurance Against Nature – Wilderness, Mountains & Desert Survival Stories Ranked by Intensity"
-            };
-        } else if (collection.slug === 'best-drama-movies-on-netflix') {
-            return {
-                title: "Best Drama Movies on Netflix – 10 Award-Winning Films You Must Watch",
-                subtitle: "Emotionally Powerful Dramas with Oscar-Winning Performances Streaming Now"
-            };
-            } else if (collection.slug === 'best-detective-thriller-movies') {  // ✅ Added detective thriller
-      return {
-      title: "10 Best Detective Thriller Movies Like Zodiac & Prisoners",
-       subtitle: "Detective Thrillers with Intricate Mysteries and Masterfully Crafted Suspense Ranked by Investigative Brilliance"
-
-      };
-        } else {
-            return {
-                title: `Best ${collection.title} – Top 10 Curated Collection You Must Watch`,
-                subtitle: collection.description || "Exceptional Cinema Ranked by Quality"
-            };
-        }
-    };
-
-    // 🔥 LOADER CONTENT FOR ALL 7 COLLECTIONS
-    const getLoaderContent = () => {
-        if (collection?.slug === 'movies-like-memento') {
-            return {
-                title: "Loading Movies Like Memento",
-                description: "Curating memory-twisting psychological thrillers with community reviews and ratings"
-            };
-        } else if (collection?.slug === 'movies-like-inception') {
-            return {
-                title: "Loading Movies Like Inception", 
-                description: "Curating mind-bending sci-fi thrillers with community reviews and ratings"
-            };
-        } else if (collection?.slug === 'movies-like-shutter-island') {
-            return {
-                title: "Loading Movies Like Shutter Island",
-                description: "Curating psychological thrillers with unreliable narrators and shocking plot twists"
-            };
-
-} else if (collection.slug === 'best-crime-thriller-movies') {  // ✅ CRIME THRILLER ADDED
-    return {
-        title: "Loading Best Crime Thriller Movies",
-        description: "Curating the greatest crime thrillers with community reviews and ratings"
-    };
-
-
-
-            } else if (collection?.slug ==='best-psychological-thriller-movies') {
-    return {
-        title: "Loading Psychological Thriller Movies",
-        description: "Curating psychological thrillers with complex narratives, tension, and mind-bending twists."
-    };
-
-
- } else if (collection?.slug === 'best-detective-thriller-movies') {  // ✅ Added detective thriller
-      return {
-        title: "Loading Best Detective Thriller Movies",
-        description: "Curating the finest detective thrillers with community reviews and ratings"
-      };
-
-        } else if (collection?.slug === 'best-thriller-movies') {
-            return {
-                title: "Loading Best Thriller Movies",
-                description: "Curating edge-of-your-seat suspense thrillers with community reviews and ratings"
-            };
-        } else if (collection?.slug === 'best-mystery-thriller-movies') {  // ✅ MYSTERY THRILLER ADDED
-            return {
-                title: "Loading Best Mystery Thriller Movies",
-                description: "Curating the greatest detective mystery thrillers with community reviews and ratings"
-            };
-        } else if (collection?.slug === 'best-survival-movies') {
-            return {
-                title: "Loading Best Survival Movies",
-                description: "Curating the greatest survival films with community reviews and ratings"
-            };
-        } else if (collection?.slug === 'best-drama-movies-on-netflix') {
-            return {
-                title: "Loading Best Netflix Dramas",
-                description: "Curating award-winning dramatic films with community reviews and ratings"
-            };
-        } else {
-            return {
-                title: "Loading Movie Collection",
-                description: "Curating exceptional cinema with community reviews and ratings"
-            };
-        }
-    };
-
-    // 🔥 STATIC META CONTENT FOR ALL 7 COLLECTIONS
-    const getStaticMetaContent = () => {
-        if (collection.slug === 'movies-like-memento') {
-            return {
-                title: "Best Movies Like Memento – 10 Best Mind-Bending Memory Loss Thrillers You Must Watch",
-                description: "Stop scrolling! This is the most advanced handpicked list on the internet of 10 memory-twisting thrillers like Memento including *The Usual Suspects*. Carefully analyzed for shocking twists, expert storytelling, and unforgettable endings—perfect for true psychological thriller fans!",
-                keywords: "movies like memento, films similar to memento, memory loss movies, psychological thrillers, non linear storytelling, christopher nolan memento, identity crisis films, memento similar movies, memory twisting films, amnesia movies, reverse chronology films, unreliable narrator movies, the usual suspects",
-                ogTitle: "The Most Advanced List on the Internet – Top 10 Mind-Bending Movies Like Memento 🧠",
-                twitterTitle: "🧠 The Most Advanced Handpicked List – Top 10 Movies Like Memento",
-                progressText: `of Top ${movies.length} Movies Like Memento`
-            };
-        } else if (collection.slug === 'movies-like-inception') {
-            return {
-                title: "Best Movies Like Inception – 10 Best Mind-Bending Thrillers You Must Watch",
-                description: "Stop scrolling! This is the most advanced handpicked list on the internet of 10 mind-bending thrillers like Inception including *The Usual Suspects*. Carefully analyzed for shocking twists, layered narratives, and expert storytelling—perfect for true psychological thriller fans!",
-                keywords: "movies like inception, films similar to inception, mind bending movies, psychological thrillers, complex movies with twists, christopher nolan movies, reality bending films, layered narrative films, inception similar movies, mind bending thrillers, dream logic movies, the usual suspects",
-                ogTitle: "The Most Advanced List on the Internet – 10 Best Mind-Bending Movies Like Inception 🧠",
-                twitterTitle: "🧠 The Most Advanced Handpicked List – 10 Best Movies Like Inception",
-                progressText: `of Top ${movies.length} Movies Like Inception`
-            };
-        } else if (collection.slug === 'movies-like-shutter-island') {
-            return {
-                title: "Best Movies Like Shutter Island – 10 Best Mind-Bending Psychological Thrillers You Must Watch",
-                description: "Stop scrolling! This is the most advanced handpicked list on the internet of 10 mind-bending thrillers like Shutter Island including *The Usual Suspects*. Carefully analyzed for shocking twists, unreliable narrators, and expert storytelling—perfect for true psychological thriller fans!",
-                keywords: "movies like shutter island, films similar to shutter island, psychological thrillers, unreliable narrator films, identity crisis movies, plot twist movies, martin scorsese shutter island, psychological horror films, reality distortion movies, memory manipulation films, shocking revelations movies, the usual suspects",
-                ogTitle: "The Most Advanced List on the Internet –  10 Best Mind-Bending Movies Like Shutter Island 🧠",
-                twitterTitle: "🧠 The Most Advanced Handpicked List – 10 Best Movies Like Shutter Island",
-                progressText: `of Top ${movies.length} Movies Like Shutter Island`
-                
-            };
-
-} else if (collection.slug === 'best-crime-thriller-movies') {  // ✅ CRIME THRILLER ADDED
-    return {
-        title: "10 Best Crime Thriller Movies – From Heat to The Departed | Ranked 2025",
-        description: "Stop scrolling! This is the most advanced handpicked list on the internet of 10 crime thrillers from Heat to The Departed. Carefully analyzed for heist mastery, investigative brilliance, and expert storytelling—perfect for crime cinema fans!",
-        keywords: "best crime thriller movies, crime films, heist movies, detective thrillers, heat movie, the departed, prisoners, zodiac, la confidential, no country for old men, memories of murder, training day, crime cinema, cop thrillers, investigation films",
-        ogTitle: "The Most Advanced List on the Internet – 10 Best Crime Thriller Movies 🔫",
-        twitterTitle: "🔫 The Most Advanced Handpicked List – 10 Best Crime Thriller Movies",
-        progressText: `of Top ${movies.length} Best Crime Thriller Films`
-    };
-
-
-            } else if (collection.slug ==='best-psychological-thriller-movies') {
-    return {
-        title: "Best Psychological Thriller Movies – Mind-Bending Psychological Thrillers You Must Watch",
-        description: "Discover a handpicked list of psychological thrillers known for mind-bending plots, psychological depth, and chilling tension. Expertly curated for fans of cerebral cinema.",
-        keywords: "psychological thrillers, mind-bending movies, cerebral thrillers, psychological depth films, thriller movies with twists, suspense thrillers, chilling psychological narratives",
-        ogTitle: "Top Psychological Thriller Movies – Mind-Bending Psychological Thrillers",
-        twitterTitle: "Mind-Bending Psychological Thriller Movies – Expert Curated List",
-        progressText: `of Top ${movies.length} Psychological Thriller Movies`
-    };
-
-
-        } else if (collection.slug === 'best-thriller-movies') {
-            return {
-                title: "Best Suspense Thriller Movies – 10 Best Edge-of-Your-Seat Thrillers You Must Watch",
-                description: "Stop scrolling! This is the most advanced handpicked list on the internet of 10 suspense thrillers with intense pacing, masterful plot twists, and captivating storytelling. Carefully analyzed for tension, suspense intensity, and expert execution—perfect for true thriller fans!",
-                keywords: "best thriller movies, suspense thriller films, best suspense movies, psychological thrillers, plot twist movies, tension filled movies, intense thrillers, edge of seat thrillers, thriller cinema, suspense cinema, best thriller films all time, thriller recommendations",
-                ogTitle: "The Most Advanced List on the Internet – 10 Best Suspense Thriller Movies 🔥",
-                twitterTitle: "🔥 The Most Advanced Handpicked List – 10 Best Thriller Movies",
-                progressText: `of Top ${movies.length} Best Thriller Films`
-            };
-        } else if (collection.slug === 'best-mystery-thriller-movies') {  // ✅ MYSTERY THRILLER ADDED
-            return {
-                title: "Best Mystery Thriller Movies – 10 Greatest Detective Mystery Films You Must Watch",
-                description: "Stop scrolling! This is the most advanced handpicked list on the internet of 10 mystery thrillers with brilliant detective work, impossible puzzles, and shocking revelations. Carefully analyzed for mystery complexity, puzzle sophistication, and expert storytelling—perfect for true mystery fans!",
-                keywords: "best mystery thriller movies, detective films, mystery movies, whodunit films, detective mystery thrillers, agatha christie style films, sherlock holmes movies, noir mystery thrillers, detective cinema, mystery puzzle films, crime mystery thrillers, investigation films",
-                ogTitle: "The Most Advanced List on the Internet – 10 Best Mystery Thriller Movies 🔍",
-                twitterTitle: "🔍 The Most Advanced Handpicked List – 10 Best Mystery Thriller Movies",
-                progressText: `of Top ${movies.length} Best Mystery Thriller Films`
-            };
-        } else if (collection.slug === 'best-survival-movies') {
-            return {
-                title: "10 Best Survival Movies of All Time | Ranked & Reviewed 2025",
-                description: "Discover the 10 greatest survival movies ever made. From 127 Hours to The Revenant, explore gripping tales of human endurance, wilderness survival, and the will to live against all odds. Expert rankings, detailed analysis & where to watch.",
-                keywords: "best survival movies, survival films, wilderness movies, human endurance films, 127 Hours, Cast Away, The Revenant, The Martian, survival cinema, lost at sea movies, mountain survival films, desert survival movies, Unbroken, survival against the odds, true survival stories, best survival films of all time",
-                ogTitle: "10 Best Survival Movies of All Time | Ranked & Reviewed 2025 🏔️",
-                twitterTitle: "🏔️ 10 Best Survival Movies of All Time – Expert Rankings",
-                progressText: `of Top ${movies.length} Best Survival Films`
-            };
-        } else if (collection.slug === 'best-drama-movies-on-netflix') {
-            return {
-                title: "Best Drama Movies on Netflix – 10 Award-Winning Films Streaming Now | Filmiway",
-                description: "Discover 10 award-winning drama movies on Netflix, ranked by emotional intensity and critical acclaim. From 1917 to Minari, explore the finest dramatic performances streaming now.",
-                keywords: "best drama movies netflix, netflix drama films, award winning movies, 1917 netflix, roma netflix, the irishman netflix, marriage story, social network, django unchained netflix, pursuit of happyness, minari netflix, chicago 7 netflix, emotional dramas, oscar winners netflix",
-                ogTitle: "Best Drama Movies on Netflix – 10 Award-Winning Films Streaming Now",
-                twitterTitle: "🎬 Best Drama Movies on Netflix – 10 Award-Winning Films",
-                progressText: `of Top ${movies.length} Netflix Dramas`
-            };
-} else if (collection.slug === 'best-detective-thriller-movies') {  // ✅ Added detective thriller
-  return {
-    title: "10 Best Detective Thriller Movies Like Zodiac & Prisoners",
-    description: "Stop scrolling! This is the most advanced handpicked list on the internet of 10 detective thrillers with gripping mysteries, master detectives, and expert storytelling. Perfect for fans of suspense and cerebral crime narratives!",
-    keywords: "best detective thriller movies, detective films, investigative thrillers, mystery thrillers, cerebral crime stories, gripping detective stories, thriller investigations, crime mystery films, sherlock holmes style, detective cinema, suspense thrillers",
-    ogTitle: "The Most Advanced List on the Internet – 10 Best Detective Thriller Movies 🔎",
-    twitterTitle: "🔎 The Most Advanced Handpicked List – 10 Best Detective Thriller Movies",
-    progressText: `of Top ${movies.length} Best Detective Thrillers`
-  };
-
-        } else {
-            return {
-                title: `Best ${collection.title} – Top 10 Curated Movie Collection You Must Watch`,
-                description: `Discover ${collection.title} - ${collection.description || 'A curated collection of exceptional films'}.`,
-                keywords: `${collection.title}, curated movies, film collection, cinema, movie recommendations`,
-                ogTitle: `Best ${collection.title} – Top 10 Curated Collection You Must Watch`,
-                twitterTitle: `Best ${collection.title} – Top 10 Curated Collection You Must Watch`,
-                progressText: `of ${collection.title}`
-            };
-        }
-    };
+// 🔥 STATIC META CONTENT FOR ALL 8 COLLECTIONS
+const getStaticMetaContent = () => {
+    if (collection.slug === 'movies-like-memento') {
+        return {
+            title: "Best Movies Like Memento – 10 Best Mind-Bending Memory Loss Thrillers You Must Watch",
+            description: "Stop scrolling! This is the most advanced handpicked list on the internet of 10 memory-twisting thrillers like Memento including *The Usual Suspects*. Carefully analyzed for shocking twists, expert storytelling, and unforgettable endings—perfect for true psychological thriller fans!",
+            keywords: "movies like memento, films similar to memento, memory loss movies, psychological thrillers, non linear storytelling, christopher nolan memento, identity crisis films, memento similar movies, memory twisting films, amnesia movies, reverse chronology films, unreliable narrator movies, the usual suspects",
+            ogTitle: "The Most Advanced List on the Internet – Top 10 Mind-Bending Movies Like Memento 🧠",
+            twitterTitle: "🧠 The Most Advanced Handpicked List – Top 10 Movies Like Memento",
+            progressText: `of Top ${movies.length} Movies Like Memento`
+        };
+    } else if (collection.slug === 'movies-like-inception') {
+        return {
+            title: "Best Movies Like Inception – 10 Best Mind-Bending Thrillers You Must Watch",
+            description: "Stop scrolling! This is the most advanced handpicked list on the internet of 10 mind-bending thrillers like Inception including *The Usual Suspects*. Carefully analyzed for shocking twists, layered narratives, and expert storytelling—perfect for true psychological thriller fans!",
+            keywords: "movies like inception, films similar to inception, mind bending movies, psychological thrillers, complex movies with twists, christopher nolan movies, reality bending films, layered narrative films, inception similar movies, mind bending thrillers, dream logic movies, the usual suspects",
+            ogTitle: "The Most Advanced List on the Internet – 10 Best Mind-Bending Movies Like Inception 🧠",
+            twitterTitle: "🧠 The Most Advanced Handpicked List – 10 Best Movies Like Inception",
+            progressText: `of Top ${movies.length} Movies Like Inception`
+        };
+    } else if (collection.slug === 'movies-like-shutter-island') {
+        return {
+            title: "Best Movies Like Shutter Island – 10 Best Mind-Bending Psychological Thrillers You Must Watch",
+            description: "Stop scrolling! This is the most advanced handpicked list on the internet of 10 mind-bending thrillers like Shutter Island including *The Usual Suspects*. Carefully analyzed for shocking twists, unreliable narrators, and expert storytelling—perfect for true psychological thriller fans!",
+            keywords: "movies like shutter island, films similar to shutter island, psychological thrillers, unreliable narrator films, identity crisis movies, plot twist movies, martin scorsese shutter island, psychological horror films, reality distortion movies, memory manipulation films, shocking revelations movies, the usual suspects",
+            ogTitle: "The Most Advanced List on the Internet – 10 Best Mind-Bending Movies Like Shutter Island 🧠",
+            twitterTitle: "🧠 The Most Advanced Handpicked List – 10 Best Movies Like Shutter Island",
+            progressText: `of Top ${movies.length} Movies Like Shutter Island`
+        };
+    } else if (collection.slug === 'best-crime-thriller-movies') {
+        return {
+            title: "10 Best Crime Thriller Movies – From Heat to The Departed | Ranked 2025",
+            description: "Stop scrolling! This is the most advanced handpicked list on the internet of 10 crime thrillers from Heat to The Departed. Carefully analyzed for heist mastery, investigative brilliance, and expert storytelling—perfect for crime cinema fans!",
+            keywords: "best crime thriller movies, crime films, heist movies, detective thrillers, heat movie, the departed, prisoners, zodiac, la confidential, no country for old men, memories of murder, training day, crime cinema, cop thrillers, investigation films",
+            ogTitle: "The Most Advanced List on the Internet – 10 Best Crime Thriller Movies 🔫",
+            twitterTitle: "🔫 The Most Advanced Handpicked List – 10 Best Crime Thriller Movies",
+            progressText: `of Top ${movies.length} Best Crime Thriller Films`
+        };
+    } else if (collection.slug === 'best-heist-thriller-movies') {  // ✅ HEIST THRILLER ADDED
+        return {
+            title: "10 Best Heist Thriller Movies – From Heat to Ocean's Eleven | Ranked 2025",
+            description: "Stop scrolling! This is the most advanced handpicked list on the internet of 10 heist thrillers from Heat to Ocean's Eleven. Carefully analyzed for plan complexity, execution brilliance, and expert storytelling—perfect for heist cinema fans!",
+            keywords: "best heist thriller movies, heist films, bank robbery movies, oceans eleven, heat movie, inside man, the italian job, reservoir dogs, heist cinema, caper films, robbery thrillers, criminal masterminds, elaborate heists, theft movies",
+            ogTitle: "The Most Advanced List on the Internet – 10 Best Heist Thriller Movies 💰",
+            twitterTitle: "💰 The Most Advanced Handpicked List – 10 Best Heist Thriller Movies",
+            progressText: `of Top ${movies.length} Best Heist Thriller Films`
+        };
+    } else if (collection.slug === 'best-psychological-thriller-movies') {
+        return {
+            title: "Best Psychological Thriller Movies – Mind-Bending Psychological Thrillers You Must Watch",
+            description: "Discover a handpicked list of psychological thrillers known for mind-bending plots, psychological depth, and chilling tension. Expertly curated for fans of cerebral cinema.",
+            keywords: "psychological thrillers, mind-bending movies, cerebral thrillers, psychological depth films, thriller movies with twists, suspense thrillers, chilling psychological narratives",
+            ogTitle: "Top Psychological Thriller Movies – Mind-Bending Psychological Thrillers",
+            twitterTitle: "Mind-Bending Psychological Thriller Movies – Expert Curated List",
+            progressText: `of Top ${movies.length} Psychological Thriller Movies`
+        };
+    } else if (collection.slug === 'best-thriller-movies') {
+        return {
+            title: "Best Suspense Thriller Movies – 10 Best Edge-of-Your-Seat Thrillers You Must Watch",
+            description: "Stop scrolling! This is the most advanced handpicked list on the internet of 10 suspense thrillers with intense pacing, masterful plot twists, and captivating storytelling. Carefully analyzed for tension, suspense intensity, and expert execution—perfect for true thriller fans!",
+            keywords: "best thriller movies, suspense thriller films, best suspense movies, psychological thrillers, plot twist movies, tension filled movies, intense thrillers, edge of seat thrillers, thriller cinema, suspense cinema, best thriller films all time, thriller recommendations",
+            ogTitle: "The Most Advanced List on the Internet – 10 Best Suspense Thriller Movies 🔥",
+            twitterTitle: "🔥 The Most Advanced Handpicked List – 10 Best Thriller Movies",
+            progressText: `of Top ${movies.length} Best Thriller Films`
+        };
+    } else if (collection.slug === 'best-mystery-thriller-movies') {
+        return {
+            title: "Best Mystery Thriller Movies – 10 Greatest Detective Mystery Films You Must Watch",
+            description: "Stop scrolling! This is the most advanced handpicked list on the internet of 10 mystery thrillers with brilliant detective work, impossible puzzles, and shocking revelations. Carefully analyzed for mystery complexity, puzzle sophistication, and expert storytelling—perfect for true mystery fans!",
+            keywords: "best mystery thriller movies, detective films, mystery movies, whodunit films, detective mystery thrillers, agatha christie style films, sherlock holmes movies, noir mystery thrillers, detective cinema, mystery puzzle films, crime mystery thrillers, investigation films",
+            ogTitle: "The Most Advanced List on the Internet – 10 Best Mystery Thriller Movies 🔍",
+            twitterTitle: "🔍 The Most Advanced Handpicked List – 10 Best Mystery Thriller Movies",
+            progressText: `of Top ${movies.length} Best Mystery Thriller Films`
+        };
+    } else if (collection.slug === 'best-survival-movies') {
+        return {
+            title: "10 Best Survival Movies of All Time | Ranked & Reviewed 2025",
+            description: "Discover the 10 greatest survival movies ever made. From 127 Hours to The Revenant, explore gripping tales of human endurance, wilderness survival, and the will to live against all odds. Expert rankings, detailed analysis & where to watch.",
+            keywords: "best survival movies, survival films, wilderness movies, human endurance films, 127 Hours, Cast Away, The Revenant, The Martian, survival cinema, lost at sea movies, mountain survival films, desert survival movies, Unbroken, survival against the odds, true survival stories, best survival films of all time",
+            ogTitle: "10 Best Survival Movies of All Time | Ranked & Reviewed 2025 🏔️",
+            twitterTitle: "🏔️ 10 Best Survival Movies of All Time – Expert Rankings",
+            progressText: `of Top ${movies.length} Best Survival Films`
+        };
+    } else if (collection.slug === 'best-drama-movies-on-netflix') {
+        return {
+            title: "Best Drama Movies on Netflix – 10 Award-Winning Films Streaming Now | Filmiway",
+            description: "Discover 10 award-winning drama movies on Netflix, ranked by emotional intensity and critical acclaim. From 1917 to Minari, explore the finest dramatic performances streaming now.",
+            keywords: "best drama movies netflix, netflix drama films, award winning movies, 1917 netflix, roma netflix, the irishman netflix, marriage story, social network, django unchained netflix, pursuit of happyness, minari netflix, chicago 7 netflix, emotional dramas, oscar winners netflix",
+            ogTitle: "Best Drama Movies on Netflix – 10 Award-Winning Films Streaming Now",
+            twitterTitle: "🎬 Best Drama Movies on Netflix – 10 Award-Winning Films",
+            progressText: `of Top ${movies.length} Netflix Dramas`
+        };
+    } else if (collection.slug === 'best-detective-thriller-movies') {
+        return {
+            title: "10 Best Detective Thriller Movies Like Zodiac & Prisoners",
+            description: "Stop scrolling! This is the most advanced handpicked list on the internet of 10 detective thrillers with gripping mysteries, master detectives, and expert storytelling. Perfect for fans of suspense and cerebral crime narratives!",
+            keywords: "best detective thriller movies, detective films, investigative thrillers, mystery thrillers, cerebral crime stories, gripping detective stories, thriller investigations, crime mystery films, sherlock holmes style, detective cinema, suspense thrillers",
+            ogTitle: "The Most Advanced List on the Internet – 10 Best Detective Thriller Movies 🔎",
+            twitterTitle: "🔎 The Most Advanced Handpicked List – 10 Best Detective Thriller Movies",
+            progressText: `of Top ${movies.length} Best Detective Thrillers`
+        };
+    } else {
+        return {
+            title: `Best ${collection.title} – Top 10 Curated Movie Collection You Must Watch`,
+            description: `Discover ${collection.title} - ${collection.description || 'A curated collection of exceptional films'}.`,
+            keywords: `${collection.title}, curated movies, film collection, cinema, movie recommendations`,
+            ogTitle: `Best ${collection.title} – Top 10 Curated Collection You Must Watch`,
+            twitterTitle: `Best ${collection.title} – Top 10 Curated Collection You Must Watch`,
+            progressText: `of ${collection.title}`
+        };
+    }
+};
 
     const nextMovie = useCallback(() => {
         setCurrentMovieIndex((prev) => (prev + 1) % movies.length);
@@ -662,7 +677,7 @@ const currentRank = movies.length - currentMovieIndex;
         }
     };
 
-   const handleMovieClick = () => {
+  const handleMovieClick = () => {
     if (typeof window !== 'undefined') {
         sessionStorage.setItem('currentMoviePosition', currentMovieIndex.toString());
         sessionStorage.setItem('currentMovieRank', currentRank.toString());
@@ -680,7 +695,8 @@ const currentRank = movies.length - currentMovieIndex;
         sessionStorage.removeItem('fromDramaCollection');
         sessionStorage.removeItem('fromDetectiveThrillerCollection');
         sessionStorage.removeItem('fromPsychologicalThrillerCollection');
-        sessionStorage.removeItem('fromCrimeThrillerCollection');  // ✅ CRIME THRILLER ADDED
+        sessionStorage.removeItem('fromCrimeThrillerCollection');
+        sessionStorage.removeItem('fromHeistThrillerCollection');  // ✅ HEIST THRILLER ADDED
 
         // Set appropriate collection flag
         if (collection.slug === 'movies-like-inception') {
@@ -701,11 +717,14 @@ const currentRank = movies.length - currentMovieIndex;
             sessionStorage.setItem('fromDetectiveThrillerCollection', 'true');
         } else if (collection.slug === 'best-psychological-thriller-movies') {
             sessionStorage.setItem('fromPsychologicalThrillerCollection', 'true');
-        } else if (collection.slug === 'best-crime-thriller-movies') {  // ✅ CRIME THRILLER ADDED
+        } else if (collection.slug === 'best-crime-thriller-movies') {
             sessionStorage.setItem('fromCrimeThrillerCollection', 'true');
+        } else if (collection.slug === 'best-heist-thriller-movies') {  // ✅ HEIST THRILLER ADDED
+            sessionStorage.setItem('fromHeistThrillerCollection', 'true');
         }
     }
 };
+
 
     // Get dynamic content
     const collectionContent = getCollectionContent();
@@ -1017,38 +1036,39 @@ const currentRank = movies.length - currentMovieIndex;
         );
     });
 
-    // NAVIGATION DOTS COMPONENT
-    const NavigationDots = ({ movies, currentMovieIndex, goToMovie }) => (
-        <motion.div 
-            className="flex justify-center items-center space-x-3 mt-8"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1, duration: 0.8 }}
-        >
-            {movies.map((_, index) => (
-                <motion.button
-                    key={index}
-                    onClick={() => goToMovie(index)}
-                    className={`w-3 h-3 rounded-full transition-all duration-300 relative ${
-                        index === currentMovieIndex 
-                            ? 'bg-yellow-400 scale-125' 
-                            : 'bg-gray-600 hover:bg-gray-400'
-                    }`}
-                    whileHover={{ scale: index === currentMovieIndex ? 1.3 : 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                >
-                    {index === currentMovieIndex && (
-                        <motion.div
-                            className="absolute inset-0 bg-yellow-400/30 rounded-full"
-                            initial={{ scale: 1 }}
-                            animate={{ scale: [1, 1.5, 1] }}
-                            transition={{ duration: 2, repeat: Infinity }}
-                        />
-                    )}
-                </motion.button>
-            ))}
-        </motion.div>
-    );
+   // NAVIGATION DOTS COMPONENT
+const NavigationDots = ({ movies, currentMovieIndex, goToMovie }) => (
+    <motion.div 
+        className="flex justify-center items-center space-x-3 mt-8"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1, duration: 0.8 }}
+    >
+        {movies.map((_, index) => (
+            <motion.button
+                key={index}
+                onClick={() => goToMovie(index)}
+                className={`w-3 h-3 rounded-full transition-all duration-300 relative ${
+                    index === currentMovieIndex 
+                        ? 'bg-yellow-400 scale-125' 
+                        : 'bg-gray-600 hover:bg-gray-400'
+                }`}
+                whileHover={{ scale: index === currentMovieIndex ? 1.3 : 1.1 }}
+                whileTap={{ scale: 0.9 }}
+            >
+                {index === currentMovieIndex && (
+                    <motion.div
+                        className="absolute inset-0 bg-yellow-400/30 rounded-full"
+                        initial={{ scale: 1 }}
+                        animate={{ scale: [1, 1.5, 1] }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                    />
+                )}
+            </motion.button>
+        ))}
+    </motion.div>
+);
+
 return (
     <div className="min-h-screen bg-black text-white relative overflow-hidden">
         <Head>
@@ -1082,75 +1102,75 @@ return (
             <meta name="twitter:title" key={`twitter-title-${collection.slug}`} content={metaContent.twitterTitle || metaContent.title || collection.title} />
             <meta name="twitter:description" key={`twitter-desc-${collection.slug}`} content={metaContent.description || collection.description} />
 
-<script
-    type="application/ld+json"
-    dangerouslySetInnerHTML={{
-        __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "ItemList",
-            "name": collection?.title || "",
-            "description": collection?.description || "",
-            "numberOfItems": movies?.length || 0,
-            "url": `https://filmiway.com/collection/${collection?.slug || ""}`,
-            "itemListElement": (movies || []).map((movie, index) => {
-                const basePath =
-                    collection?.slug === 'best-survival-movies'
-                        ? 'movies/survival/'
-                        : collection?.slug === 'movies-like-inception'
-                        ? 'movies/like-inception/'
-                        : collection?.slug === 'movies-like-memento'
-                        ? 'movies/like-memento/'
-                        : collection?.slug === 'movies-like-shutter-island'
-                        ? 'movies/like-shutter-island/'
-                        : collection?.slug === 'best-thriller-movies'
-                        ? 'movies/thriller/'
-                        : collection?.slug === 'best-mystery-thriller-movies'
-                        ? 'movies/mystery-thriller/'
-                        : collection?.slug === 'best-detective-thriller-movies'
-                        ? 'movies/detective-thriller/'
-                        : collection?.slug === 'best-drama-movies-on-netflix'
-                        ? 'movies/netflix/'
-                        : collection?.slug === 'best-psychological-thriller-movies'
-                        ? 'movies/psych-thriller/'
-                        : collection?.slug === 'best-crime-thriller-movies'  // ✅ CRIME THRILLER ADDED
-                        ? 'movies/crime-thriller/'
-                        : 'movies/';
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "ItemList",
+                        "name": collection?.title || "",
+                        "description": collection?.description || "",
+                        "numberOfItems": movies?.length || 0,
+                        "url": `https://filmiway.com/collection/${collection?.slug || ""}`,
+                        "itemListElement": (movies || []).map((movie, index) => {
+                            const basePath =
+                                collection?.slug === 'best-survival-movies'
+                                    ? 'movies/survival/'
+                                    : collection?.slug === 'movies-like-inception'
+                                    ? 'movies/like-inception/'
+                                    : collection?.slug === 'movies-like-memento'
+                                    ? 'movies/like-memento/'
+                                    : collection?.slug === 'movies-like-shutter-island'
+                                    ? 'movies/like-shutter-island/'
+                                    : collection?.slug === 'best-thriller-movies'
+                                    ? 'movies/thriller/'
+                                    : collection?.slug === 'best-mystery-thriller-movies'
+                                    ? 'movies/mystery-thriller/'
+                                    : collection?.slug === 'best-detective-thriller-movies'
+                                    ? 'movies/detective-thriller/'
+                                    : collection?.slug === 'best-drama-movies-on-netflix'
+                                    ? 'movies/netflix/'
+                                    : collection?.slug === 'best-psychological-thriller-movies'
+                                    ? 'movies/psych-thriller/'
+                                    : collection?.slug === 'best-crime-thriller-movies'
+                                    ? 'movies/crime-thriller/'
+                                    : collection?.slug === 'best-heist-thriller-movies'  // ✅ HEIST THRILLER ADDED
+                                    ? 'movies/heist-thriller/'
+                                    : 'movies/';
 
-                let itemObj = {
-                    "@type": "Movie",
-                    "name": movie?.Title || "Unknown Movie",
-                    "image": movie?.poster_path 
-                        ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-                        : movie?.posterUrl 
-                        ? movie.posterUrl
-                        : "https://via.placeholder.com/300x450?text=No+Image",
-                    "datePublished": movie?.Year || "2024",
-                    "genre": movie?.Genre || "Drama"
-                };
+                            let itemObj = {
+                                "@type": "Movie",
+                                "name": movie?.Title || "Unknown Movie",
+                                "image": movie?.poster_path 
+                                    ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+                                    : movie?.posterUrl 
+                                    ? movie.posterUrl
+                                    : "https://via.placeholder.com/300x450?text=No+Image",
+                                "datePublished": movie?.Year || "2024",
+                                "genre": movie?.Genre || "Drama"
+                            };
 
-                // Add director if exists
-                if (movie?.director) {
-                    itemObj.director = {
-                        "@type": "Person",
-                        "name": movie.director
-                    };
-                }
+                            // Add director if exists
+                            if (movie?.director) {
+                                itemObj.director = {
+                                    "@type": "Person",
+                                    "name": movie.director
+                                };
+                            }
 
-                if (movie?.imdbID) {
-                    itemObj.url = `https://filmiway.com/${basePath}${movie.imdbID}`;
-                }
+                            if (movie?.imdbID) {
+                                itemObj.url = `https://filmiway.com/${basePath}${movie.imdbID}`;
+                            }
 
-                return {
-                    "@type": "ListItem",
-                    "position": index + 1,
-                    "item": itemObj
-                };
-            })
-        })
-    }}
-/>
-
-
+                            return {
+                                "@type": "ListItem",
+                                "position": index + 1,
+                                "item": itemObj
+                            };
+                        })
+                    })
+                }}
+            />
         </Head>
 
         <CinematicBackground />
@@ -1216,43 +1236,44 @@ return (
                                 </motion.button>
                             )}
 
-{/* 🔥 FIXED FOR NEXT.JS 15 - WITH ALL 10 COLLECTION URLS */}
-<AnimatePresence mode="wait">
-    <Link 
-        href={
-            collection.slug === 'movies-like-inception'
-            ? `/movies/like-inception/${currentMovie.imdbID}`
-            : collection.slug === 'movies-like-memento'
-            ? `/movies/like-memento/${currentMovie.imdbID}`
-            : collection.slug === 'movies-like-shutter-island'
-            ? `/movies/like-shutter-island/${currentMovie.imdbID}`
-            : collection.slug === 'best-survival-movies'
-            ? `/movies/survival/${currentMovie.imdbID}`
-            : collection.slug === 'best-thriller-movies'
-            ? `/movies/thriller/${currentMovie.imdbID}`
-            : collection.slug === 'best-mystery-thriller-movies'
-            ? `/movies/mystery-thriller/${currentMovie.imdbID}`
-            : collection.slug === 'best-detective-thriller-movies'
-            ? `/movies/detective-thriller/${currentMovie.imdbID}`
-            : collection.slug === 'best-drama-movies-on-netflix'
-            ? `/movies/netflix/${currentMovie.imdbID}`
-            : collection.slug === 'best-psychological-thriller-movies'
-            ? `/movies/psych-thriller/${currentMovie.imdbID}`
-            : collection.slug === 'best-crime-thriller-movies'  // ✅ CRIME THRILLER ADDED
-            ? `/movies/crime-thriller/${currentMovie.imdbID}`
-            : `/movies/${currentMovie.imdbID}`
-        }
-        key={currentMovieIndex}
-        onClick={handleMovieClick}
-    >
-        <CinematicMovieCard
-            movie={currentMovie}
-            rank={currentRank}
-            isActive={true}
-        />
-    </Link>
-</AnimatePresence>
-
+                            {/* 🔥 FIXED FOR NEXT.JS 15 - WITH ALL 11 COLLECTION URLS */}
+                            <AnimatePresence mode="wait">
+                                <Link 
+                                    href={
+                                        collection.slug === 'movies-like-inception'
+                                        ? `/movies/like-inception/${currentMovie.imdbID}`
+                                        : collection.slug === 'movies-like-memento'
+                                        ? `/movies/like-memento/${currentMovie.imdbID}`
+                                        : collection.slug === 'movies-like-shutter-island'
+                                        ? `/movies/like-shutter-island/${currentMovie.imdbID}`
+                                        : collection.slug === 'best-survival-movies'
+                                        ? `/movies/survival/${currentMovie.imdbID}`
+                                        : collection.slug === 'best-thriller-movies'
+                                        ? `/movies/thriller/${currentMovie.imdbID}`
+                                        : collection.slug === 'best-mystery-thriller-movies'
+                                        ? `/movies/mystery-thriller/${currentMovie.imdbID}`
+                                        : collection.slug === 'best-detective-thriller-movies'
+                                        ? `/movies/detective-thriller/${currentMovie.imdbID}`
+                                        : collection.slug === 'best-drama-movies-on-netflix'
+                                        ? `/movies/netflix/${currentMovie.imdbID}`
+                                        : collection.slug === 'best-psychological-thriller-movies'
+                                        ? `/movies/psych-thriller/${currentMovie.imdbID}`
+                                        : collection.slug === 'best-crime-thriller-movies'
+                                        ? `/movies/crime-thriller/${currentMovie.imdbID}`
+                                        : collection.slug === 'best-heist-thriller-movies'  // ✅ HEIST THRILLER ADDED
+                                        ? `/movies/heist-thriller/${currentMovie.imdbID}`
+                                        : `/movies/${currentMovie.imdbID}`
+                                    }
+                                    key={currentMovieIndex}
+                                    onClick={handleMovieClick}
+                                >
+                                    <CinematicMovieCard
+                                        movie={currentMovie}
+                                        rank={currentRank}
+                                        isActive={true}
+                                    />
+                                </Link>
+                            </AnimatePresence>
                         </div>
 
                         {/* Enhanced Movie Info */}
@@ -1269,40 +1290,41 @@ return (
                                     <span>Click poster above for full analysis</span>
                                 </div>
                                 
-<motion.div 
-    className="flex items-center space-x-4 bg-gradient-to-r from-yellow-400/10 via-amber-400/10 to-yellow-400/10 border border-yellow-400/30 rounded-2xl px-8 py-4 hover:from-yellow-400/20 hover:via-amber-400/20 hover:to-yellow-400/20 hover:border-yellow-400/50 transition-all duration-300 cursor-pointer group"
-    whileHover={{ scale: 1.05, y: -2 }}
-    whileTap={{ scale: 0.98 }}
-    onClick={() => {
-        handleMovieClick();
-        let detailPageUrl;
-        if (collection.slug === 'movies-like-inception') {
-            detailPageUrl = `/movies/like-inception/${currentMovie.imdbID}`;
-        } else if (collection.slug === 'movies-like-memento') {
-            detailPageUrl = `/movies/like-memento/${currentMovie.imdbID}`;
-        } else if (collection.slug === 'movies-like-shutter-island') {
-            detailPageUrl = `/movies/like-shutter-island/${currentMovie.imdbID}`;
-        } else if (collection.slug === 'best-survival-movies') {
-            detailPageUrl = `/movies/survival/${currentMovie.imdbID}`;
-        } else if (collection.slug === 'best-thriller-movies') {
-            detailPageUrl = `/movies/thriller/${currentMovie.imdbID}`;
-        } else if (collection.slug === 'best-mystery-thriller-movies') {
-            detailPageUrl = `/movies/mystery-thriller/${currentMovie.imdbID}`;
-        } else if (collection.slug === 'best-detective-thriller-movies') {
-            detailPageUrl = `/movies/detective-thriller/${currentMovie.imdbID}`;
-        } else if (collection.slug === 'best-drama-movies-on-netflix') {
-            detailPageUrl = `/movies/netflix/${currentMovie.imdbID}`;
-        } else if (collection.slug === 'best-psychological-thriller-movies') {
-            detailPageUrl = `/movies/psych-thriller/${currentMovie.imdbID}`;
-        } else if (collection.slug === 'best-crime-thriller-movies') {  // ✅ CRIME THRILLER ADDED
-            detailPageUrl = `/movies/crime-thriller/${currentMovie.imdbID}`;
-        } else {
-            detailPageUrl = `/movies/${currentMovie.imdbID}`;
-        }
-        window.location.href = detailPageUrl;
-    }}
->
-
+                                <motion.div 
+                                    className="flex items-center space-x-4 bg-gradient-to-r from-yellow-400/10 via-amber-400/10 to-yellow-400/10 border border-yellow-400/30 rounded-2xl px-8 py-4 hover:from-yellow-400/20 hover:via-amber-400/20 hover:to-yellow-400/20 hover:border-yellow-400/50 transition-all duration-300 cursor-pointer group"
+                                    whileHover={{ scale: 1.05, y: -2 }}
+                                    whileTap={{ scale: 0.98 }}
+                                    onClick={() => {
+                                        handleMovieClick();
+                                        let detailPageUrl;
+                                        if (collection.slug === 'movies-like-inception') {
+                                            detailPageUrl = `/movies/like-inception/${currentMovie.imdbID}`;
+                                        } else if (collection.slug === 'movies-like-memento') {
+                                            detailPageUrl = `/movies/like-memento/${currentMovie.imdbID}`;
+                                        } else if (collection.slug === 'movies-like-shutter-island') {
+                                            detailPageUrl = `/movies/like-shutter-island/${currentMovie.imdbID}`;
+                                        } else if (collection.slug === 'best-survival-movies') {
+                                            detailPageUrl = `/movies/survival/${currentMovie.imdbID}`;
+                                        } else if (collection.slug === 'best-thriller-movies') {
+                                            detailPageUrl = `/movies/thriller/${currentMovie.imdbID}`;
+                                        } else if (collection.slug === 'best-mystery-thriller-movies') {
+                                            detailPageUrl = `/movies/mystery-thriller/${currentMovie.imdbID}`;
+                                        } else if (collection.slug === 'best-detective-thriller-movies') {
+                                            detailPageUrl = `/movies/detective-thriller/${currentMovie.imdbID}`;
+                                        } else if (collection.slug === 'best-drama-movies-on-netflix') {
+                                            detailPageUrl = `/movies/netflix/${currentMovie.imdbID}`;
+                                        } else if (collection.slug === 'best-psychological-thriller-movies') {
+                                            detailPageUrl = `/movies/psych-thriller/${currentMovie.imdbID}`;
+                                        } else if (collection.slug === 'best-crime-thriller-movies') {
+                                            detailPageUrl = `/movies/crime-thriller/${currentMovie.imdbID}`;
+                                        } else if (collection.slug === 'best-heist-thriller-movies') {  // ✅ HEIST THRILLER ADDED
+                                            detailPageUrl = `/movies/heist-thriller/${currentMovie.imdbID}`;
+                                        } else {
+                                            detailPageUrl = `/movies/${currentMovie.imdbID}`;
+                                        }
+                                        window.location.href = detailPageUrl;
+                                    }}
+                                >
                                     <Eye className="w-6 h-6 text-yellow-400" />
                                     <span className="text-yellow-400 font-medium text-lg">Explore Full Analysis</span>
                                     <motion.div
@@ -1384,14 +1406,13 @@ return (
                                         className="flex items-center space-x-2 hover:opacity-80 transition-opacity"
                                     >
                                         <Image
-  src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue/short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg"
-  alt="The Movie Database"
-  width={50}
-  height={20}
-  className="h-5 w-auto"
-  loading="lazy"
-/>
-
+                                            src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue/short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg"
+                                            alt="The Movie Database"
+                                            width={50}
+                                            height={20}
+                                            className="h-5 w-auto"
+                                            loading="lazy"
+                                        />
                                         <span className="text-blue-400 text-sm hover:text-blue-300 transition-colors">
                                             The Movie Database (TMDB)
                                         </span>
@@ -1418,8 +1439,8 @@ return (
 );
 };
 
-// 🔥 SSG FUNCTIONS WITH ALL 8 COLLECTIONS INCLUDING MYSTERY THRILLER
-// ✅ CORRECT getStaticPaths() - generates all 8 collections
+// 🔥 SSG FUNCTIONS WITH ALL 9 COLLECTIONS INCLUDING HEIST THRILLER
+// ✅ RECT getStaticPaths() - generates all 9 collections
 export async function getStaticPaths() {
     const slugs = getAllCollectionSlugs();
 
@@ -1434,7 +1455,6 @@ export async function getStaticPaths() {
         fallback: false  // ✅ CRITICAL: Must be false for SSG/export
     };
 }
-
 
 // ✅ CORRECT getStaticProps() - maps correct database to each collection
 export async function getStaticProps({ params }) {
@@ -1467,17 +1487,22 @@ export async function getStaticProps({ params }) {
         case 'best-psychological-thriller-movies':
             movieDatabase = PSYCH_THRILLER_MOVIES;
             break;
-        case 'best-crime-thriller-movies':  // ✅ CRIME THRILLER ADDED
+        case 'best-crime-thriller-movies':
             movieDatabase = CRIME_THRILLER_MOVIES;
             break;
+case 'best-heist-thriller-movies':
+    movieDatabase = HEIST_THRILLER_MOVIES;  // Use the array export
+    break;
+
         default:
             // movies-like-inception, movies-like-memento, movies-like-shutter-island
             movieDatabase = COMPLETE_MOVIE_DATABASE;
     }
 
-    const movieArray = Array.isArray(movieDatabase) 
-        ? movieDatabase 
-        : Object.values(movieDatabase);
+const movieArray = Array.isArray(movieDatabase)
+    ? movieDatabase
+    : (movieDatabase ? Object.values(movieDatabase) : []);
+
 
     // ✅ FIND MOVIES - search by imdbID
     const movies = collection.movies

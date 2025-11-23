@@ -287,7 +287,7 @@ export const CRIME_THRILLER_MOVIES = [
     ]
   },
   {
-    imdbID: 'tt0472043',
+    imdbID: 'tt0139654',
     tmdbId: 48395,
     title: 'Training Day',
     director: 'Antoine Fuqua',
