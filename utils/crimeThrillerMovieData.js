@@ -1,4 +1,4 @@
-// utils/crimeThrillerMovieData.js - BEST CRIME THRILLER COLLECTION ✅
+// utils/crimeThrillerMovieData.js - BEST CRIME THRILLER COLLECTION ✅ WITH SENSITIVE CONTENT
 
 export const CRIME_THRILLER_MOVIES = [
   {
@@ -29,7 +29,12 @@ export const CRIME_THRILLER_MOVIES = [
     suspenseIntensity: 96,
     dominantColor: '#1a2b3c',
     dna: { Crime: 50, Thriller: 35, Drama: 15 },
-    sensitiveScenes: []
+    sensitiveScenes: [
+      { start: "4:23", end: "5:13", description: "Passionate kissing" },
+      { start: "22:00", end: "22:07", description: "Kissing" },
+      { start: "30:50", end: "31:17", description: "Kissing" },
+      { start: "1:07:35", end: "1:07:38", description: "Kissing" }
+    ]
   },
   {
     imdbID: 'tt0119488',
@@ -60,8 +65,11 @@ export const CRIME_THRILLER_MOVIES = [
     dominantColor: '#8b6914',
     dna: { Crime: 45, Mystery: 35, Drama: 20 },
     sensitiveScenes: [
-      { start: "47:15", end: "47:45", description: "Nudity (woman)" },
-      { start: "1:12:30", end: "1:13:10", description: "Sex scene" }
+      { start: "12:02", end: "12:10", description: "Partial nudity" },
+      { start: "35:00", end: "35:08", description: "Partial nudity" },
+      { start: "57:28", end: "57:34", description: "Partial nudity" },
+      { start: "1:04:05", end: "1:04:10", description: "Partial nudity (Photographs)" },
+      { start: "1:07:35", end: "1:07:43", description: "Kissing" }
     ]
   },
   {
@@ -182,7 +190,9 @@ export const CRIME_THRILLER_MOVIES = [
     suspenseIntensity: 97,
     dominantColor: '#1f2d3d',
     dna: { Crime: 50, Mystery: 35, Thriller: 15 },
-    sensitiveScenes: []
+    sensitiveScenes: [
+      { start: "1:00:15", end: "1:00:47", description: "Sexual content" }
+    ]
   },
   {
     imdbID: 'tt0327056',
@@ -315,16 +325,15 @@ export const CRIME_THRILLER_MOVIES = [
     dominantColor: '#3d2817',
     dna: { Crime: 50, Thriller: 35, Drama: 15 },
     sensitiveScenes: [
-      { start: "38:20", end: "38:45", description: "Drug use" }
+      { start: "52:00", end: "52:13", description: "Kissing" },
+      { start: "1:37:55", end: "1:39:45", description: "Nudity" }
     ]
   }
 ];
-
 
 // Build object map by tmdbId
 export const COMPLETE_CRIME_THRILLER_DATABASE = Object.fromEntries(
   CRIME_THRILLER_MOVIES.map(m => [m.tmdbId, m])
 );
-
 
 export default COMPLETE_CRIME_THRILLER_DATABASE;

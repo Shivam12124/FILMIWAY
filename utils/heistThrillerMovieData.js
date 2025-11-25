@@ -242,8 +242,8 @@ export const HEIST_THRILLER_MOVIES = [
     sensitiveScenes: []
   },
   {
-    imdbID: 'tt0074751',
-    tmdbId: 118,
+    imdbID: 'tt0317740',
+    tmdbId: 9654,
     title: 'The Italian Job',
     director: 'Peter Collinson',
     genre: 'Action, Crime, Thriller',
