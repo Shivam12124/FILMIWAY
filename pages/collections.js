@@ -83,6 +83,19 @@ const CollectionsHub = () => {
         },
 
 
+        {
+    id: 'time-travel',
+    title: 'Best Time Travel Movies',
+    description: 'Mind-bending time travel films with paradoxes, causality loops, and temporal complexity',
+    icon: Clock,  // ✅ USING CLOCK ICON
+    gradient: 'from-blue-500 to-cyan-600',  // ✅ BLUE/CYAN GRADIENT
+    movieCount: '10',
+    rating: '8.1',
+    directLink: '/collection/best-time-travel-movies',
+    hasSubCollections: false
+},
+
+
 
         {
         id: 'psychological-thriller',  // Added psychological thriller collection

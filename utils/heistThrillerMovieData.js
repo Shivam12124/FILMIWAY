@@ -3,7 +3,7 @@
 export const HEIST_THRILLER_MOVIES = [
   {
     imdbID: 'tt0113277',
-    tmdbId: 124,
+    tmdbId: 949,
     title: 'Heat',
     director: 'Michael Mann',
     genre: 'Crime, Drama, Thriller',
@@ -33,7 +33,7 @@ export const HEIST_THRILLER_MOVIES = [
   },
   {
     imdbID: 'tt0105236',
-    tmdbId: 527,
+    tmdbId: 500,
     title: 'Reservoir Dogs',
     director: 'Quentin Tarantino',
     genre: 'Crime, Thriller',
@@ -63,7 +63,7 @@ export const HEIST_THRILLER_MOVIES = [
   },
   {
     imdbID: 'tt0844708',
-    tmdbId: 6774,
+    tmdbId: 23168,
     title: 'The Town',
     director: 'Ben Affleck',
     genre: 'Crime, Drama, Thriller',
@@ -93,7 +93,7 @@ export const HEIST_THRILLER_MOVIES = [
   },
   {
     imdbID: 'tt0475304',
-    tmdbId: 531,
+    tmdbId: 338766,
     title: 'Hell or High Water',
     director: 'David Mackenzie',
     genre: 'Crime, Drama, Thriller',
@@ -153,7 +153,7 @@ export const HEIST_THRILLER_MOVIES = [
   },
   {
     imdbID: 'tt0454848',
-    tmdbId: 1571,
+    tmdbId: 388,
     title: 'Inside Man',
     director: 'Spike Lee',
     genre: 'Crime, Drama, Thriller',
@@ -183,7 +183,7 @@ export const HEIST_THRILLER_MOVIES = [
   },
   {
     imdbID: 'tt0081505',
-    tmdbId: 810,
+    tmdbId: 968,
     title: 'Thief',
     director: 'Michael Mann',
     genre: 'Crime, Thriller',
@@ -273,7 +273,7 @@ export const HEIST_THRILLER_MOVIES = [
   },
   {
     imdbID: 'tt0240772',
-    tmdbId: 54364,
+    tmdbId: 161,
     title: "Ocean's Eleven",
     director: 'Steven Soderbergh',
     genre: 'Crime, Thriller',

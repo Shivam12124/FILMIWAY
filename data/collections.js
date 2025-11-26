@@ -227,6 +227,95 @@ export const COLLECTIONS = {
     }
   },
     
+  
+
+// 🕰️ Best Time Travel Movies Collection
+'best-time-travel-movies': {
+  slug: 'best-time-travel-movies',
+  title: '10 Best Time Travel Movies Ever',
+  subtitle: 'The Ultimate Time Travel Film List',
+  description: 'Filmiway’s definitive ranking of the most iconic, mind-bending time travel movies of all time.',
+  longDescription: 'Explore the greatest time travel adventures in cinematic history. From crowd-pleasing blockbusters to cerebral indie gems, these films reinvent the genre with daring paradoxes, inventive storytelling, and powerful emotional stakes.',
+
+  emoji: '⏳',
+  theme: 'blue',
+  primaryColor: '#3b82f6',
+  secondaryColor: '#60a5fa',
+  accentColor: '#0891b2',
+  gradientFrom: 'from-blue-600',
+  gradientTo: 'to-blue-500',
+  category: 'time-travel',
+  tags: [
+    'time travel', 'paradox', 'sci-fi', 'intensity', 'classic', 'mind-bending'
+  ],
+
+  metaTitle: '10 Best Time Travel Movies of All Time (2025) | Filmiway Ranking',
+  metaDescription: 'Discover the top 10 time travel movies—ranked by intensity, complexity and storytelling. From Back to the Future to Interstellar.',
+  metaKeywords: 'best time travel movies, time travel films, sci-fi movies, paradox movies, back to the future, interstellar, predestination, primer',
+
+  stats: {
+    totalMovies: 10,
+    averageRating: 8.1,
+    totalWatchtime: '15 hours 13 minutes',
+    averageTimeTravelIntensity: 93,
+    mostIntense: 'Primer (98/100)',
+    newestMovie: 'Predestination (2014)',
+    oldestMovie: 'Back to the Future (1985)'
+  },
+
+  movies: [
+    'tt0088763', // Back to the Future
+    'tt0103064', // Terminator 2: Judgment Day
+    'tt0088247', // The Terminator
+    'tt0816692', // Interstellar
+    'tt2397535', // Predestination
+    'tt0390384', // Primer
+    'tt0114746', // 12 Monkeys
+    'tt0246578', // Donnie Darko
+    'tt0107048', // Groundhog Day
+    'tt0480669'  // Timecrimes
+  ],
+
+  badges: [
+    { label: 'Time Travel Classics', desc: 'Iconic, inventive genre-defining films' },
+    { label: 'Complex Paradoxes', desc: 'Cerebral, challenging narratives' },
+    { label: 'Intensity Ranked', desc: 'Ranked by time travel impact' }
+  ],
+
+  featured: {
+    hero: {
+      title: 'Primer',
+      subtitle: 'The Mind-Bending Indie Masterpiece',
+      description: 'Shane Carruth\'s legendary cult film: ultra-complex, paradox-driven, and the most intense time travel experience in cinema.',
+      poster: 'https://image.tmdb.org/t/p/w500/6A12eReb26D1jY7ZfXr5Ekbptxx.jpg',
+      backdrop: 'https://image.tmdb.org/t/p/w1280/2xdUu7lbivzxw2wGxLZM1jI1E0J.jpg',
+      timeTravelIntensity: 98
+    }
+  },
+
+  relatedCollections: [
+    'movies-like-inception',
+    'movies-like-memento',
+    'best-thriller-movies'
+  ],
+
+  seo: {
+    title: '10 Best Time Travel Movies of All Time (2025) | Filmiway',
+    description: 'Discover the experts’ definitive ranking—10 greatest time travel movies, from Back to the Future and Interstellar to indie gems like Primer.',
+    keywords: 'best time travel movies, time travel film ranking, thriller time travel, paradox movies, genre classics, sci-fi, iconic time travel cinema',
+    canonicalUrl: 'https://filmiway.com/collection/best-time-travel-movies',
+    ogImage: 'https://filmiway.com/images/time-travel-movies-collection-og.jpg',
+    structuredData: {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      name: 'Best Time Travel Movies',
+      description: 'Expert-curated ranking of the best time travel movies of all time, with intensity index and genre-defining impact.',
+      numberOfItems: 10
+    }
+  }
+},
+
+
 
 
 'best-heist-thriller-movies': {

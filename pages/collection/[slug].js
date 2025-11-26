@@ -14,8 +14,7 @@ import { DETECTIVE_THRILLER_MOVIES } from '../../utils/detectiveThrillerMovieDat
 import { PSYCH_THRILLER_MOVIES } from '../../utils/psychologicalThrillerMovieData'; 
 import { CRIME_THRILLER_MOVIES } from '../../utils/crimeThrillerMovieData';
 import { HEIST_THRILLER_MOVIES } from '../../utils/heistThrillerMovieData';
-
-
+import { TIME_TRAVEL_MOVIES } from '../../utils/timeTravelMovieData';  // ✅ TIME TRAVEL ADDED
 
 // Components
 import CinematicBackground from '../../components/CinematicBackground';
@@ -100,7 +99,7 @@ const CollectionPage = ({ collection, movies }) => {
         const timer = setTimeout(() => setIsLoading(false), 2500);
         return () => clearTimeout(timer);
     }, []);
-// 🔥 COLLECTION-SPECIFIC CONTENT FUNCTION WITH ALL 8 COLLECTIONS
+// 🔥 COLLECTION-SPECIFIC CONTENT FUNCTION WITH TIME TRAVEL ADDED
 const getCollectionContent = () => {
     if (collection.slug === 'movies-like-memento') {
         return {
@@ -217,7 +216,7 @@ const getCollectionContent = () => {
                 text2: "Selected for their unforgettable investigations, iconic criminals, and genre-defining storytelling that redefined crime cinema."
             }
         };
-    } else if (collection.slug === 'best-heist-thriller-movies') {  // ✅ HEIST THRILLER ADDED
+    } else if (collection.slug === 'best-heist-thriller-movies') {
         return {
             badge: "Heist Thriller Cinema",
             title: "Heist Thrillers",
@@ -238,6 +237,29 @@ const getCollectionContent = () => {
             experience: {
                 text1: "Perfect for fans of Ocean's Eleven-style capers and Heat-level crime epics who love watching master thieves execute impossible jobs.",
                 text2: "Selected for their unforgettable heists, iconic criminals, and genre-defining sequences that redefined heist cinema forever."
+            }
+        };
+    } else if (collection.slug === 'best-time-travel-movies') {  // ✅ TIME TRAVEL ADDED
+        return {
+            badge: "Time Travel Cinema",
+            title: "Time Travel",
+            description: "Dive into a curated collection of mind-bending time travel films featuring paradoxes, causality loops, and temporal complexity—ranked by time travel intensity and storytelling mastery",
+            selection: {
+                text1: "From bootstrap paradoxes to temporal causality loops, these films showcase the finest examples of time travel storytelling with inventive mechanics, emotional depth, and philosophical weight.",
+                text2: "Each time travel masterpiece features protagonists navigating impossible temporal scenarios, changing the past, or trapped in infinite loops, creating experiences that challenge linear thinking."
+            },
+            ranking: {
+                text: "Our time travel complexity index evaluates paradox sophistication, temporal mechanics, narrative innovation, and the philosophical implications of time manipulation throughout each film.",
+                points: [
+                    "Temporal paradox complexity",
+                    "Time mechanics sophistication",
+                    "Narrative structure innovation",
+                    "Philosophical depth intensity"
+                ]
+            },
+            experience: {
+                text1: "Perfect for fans of Primer's cerebral puzzles and Back to the Future's adventure who love unraveling intricate temporal mechanics and causality loops.",
+                text2: "Selected for their unforgettable time travel sequences, iconic paradoxes, and genre-defining storytelling that redefined time travel cinema."
             }
         };
     } else if (collection.slug === 'best-detective-thriller-movies') {
@@ -382,7 +404,8 @@ const getCollectionContent = () => {
 };
 
 
-// 🔥 HEADER CONTENT FOR ALL 8 COLLECTIONS
+
+// 🔥 HEADER CONTENT WITH TIME TRAVEL ADDED
 const getHeaderContent = () => {
     if (collection.slug === 'movies-like-memento') {
         return {
@@ -404,10 +427,15 @@ const getHeaderContent = () => {
             title: "10 Best Crime Thriller Movies – From Heat to The Departed",
             subtitle: "Crime Thrillers with Heists, Investigations & Moral Complexity Ranked by Crime Intensity"
         };
-    } else if (collection.slug === 'best-heist-thriller-movies') {  // ✅ HEIST THRILLER ADDED
+    } else if (collection.slug === 'best-heist-thriller-movies') {
         return {
             title: "10 Best Heist Thriller Movies – From Heat to Ocean's Eleven",
             subtitle: "Heist Thrillers with Elaborate Plans, High-Stakes Robberies & Criminal Masterminds Ranked by Heist Complexity"
+        };
+    } else if (collection.slug === 'best-time-travel-movies') {  // ✅ TIME TRAVEL ADDED
+        return {
+            title: "10 Best Time Travel Movies – From Back to the Future to Primer",
+            subtitle: "Time Travel Films with Paradoxes, Causality Loops & Temporal Complexity Ranked by Time Travel Intensity"
         };
     } else if (collection.slug === 'best-psychological-thriller-movies') {
         return {
@@ -448,7 +476,8 @@ const getHeaderContent = () => {
 };
 
 
-// 🔥 LOADER CONTENT FOR ALL 8 COLLECTIONS
+
+// 🔥 LOADER CONTENT WITH TIME TRAVEL ADDED
 const getLoaderContent = () => {
     if (collection?.slug === 'movies-like-memento') {
         return {
@@ -470,10 +499,15 @@ const getLoaderContent = () => {
             title: "Loading Best Crime Thriller Movies",
             description: "Curating the greatest crime thrillers with community reviews and ratings"
         };
-    } else if (collection?.slug === 'best-heist-thriller-movies') {  // ✅ HEIST THRILLER ADDED
+    } else if (collection?.slug === 'best-heist-thriller-movies') {
         return {
             title: "Loading Best Heist Thriller Movies",
             description: "Curating masterful heist thrillers with community reviews and ratings"
+        };
+    } else if (collection?.slug === 'best-time-travel-movies') {  // ✅ TIME TRAVEL ADDED
+        return {
+            title: "Loading Best Time Travel Movies",
+            description: "Curating mind-bending time travel films with community reviews and ratings"
         };
     } else if (collection?.slug === 'best-psychological-thriller-movies') {
         return {
@@ -514,7 +548,8 @@ const getLoaderContent = () => {
 };
 
 
-// 🔥 STATIC META CONTENT FOR ALL 8 COLLECTIONS
+
+// 🔥 STATIC META CONTENT WITH TIME TRAVEL ADDED
 const getStaticMetaContent = () => {
     if (collection.slug === 'movies-like-memento') {
         return {
@@ -552,7 +587,7 @@ const getStaticMetaContent = () => {
             twitterTitle: "🔫 The Most Advanced Handpicked List – 10 Best Crime Thriller Movies",
             progressText: `of Top ${movies.length} Best Crime Thriller Films`
         };
-    } else if (collection.slug === 'best-heist-thriller-movies') {  // ✅ HEIST THRILLER ADDED
+    } else if (collection.slug === 'best-heist-thriller-movies') {
         return {
             title: "10 Best Heist Thriller Movies – From Heat to Ocean's Eleven | Ranked 2025",
             description: "Stop scrolling! This is the most advanced handpicked list on the internet of 10 heist thrillers from Heat to Ocean's Eleven. Carefully analyzed for plan complexity, execution brilliance, and expert storytelling—perfect for heist cinema fans!",
@@ -560,6 +595,15 @@ const getStaticMetaContent = () => {
             ogTitle: "The Most Advanced List on the Internet – 10 Best Heist Thriller Movies 💰",
             twitterTitle: "💰 The Most Advanced Handpicked List – 10 Best Heist Thriller Movies",
             progressText: `of Top ${movies.length} Best Heist Thriller Films`
+        };
+    } else if (collection.slug === 'best-time-travel-movies') {  // ✅ TIME TRAVEL ADDED
+        return {
+            title: "10 Best Time Travel Movies – From Back to the Future to Primer | Ranked 2025",
+            description: "Stop scrolling! This is the most advanced handpicked list on the internet of 10 time travel movies from Back to the Future to Primer. Carefully analyzed for paradox complexity, temporal mechanics, and expert storytelling—perfect for sci-fi fans!",
+            keywords: "best time travel movies, time travel films, paradox movies, back to the future, primer, interstellar, predestination, terminator, 12 monkeys, donnie darko, groundhog day, timecrimes, temporal paradox films, causality loop movies, sci-fi time travel",
+            ogTitle: "The Most Advanced List on the Internet – 10 Best Time Travel Movies ⏳",
+            twitterTitle: "⏳ The Most Advanced Handpicked List – 10 Best Time Travel Movies",
+            progressText: `of Top ${movies.length} Best Time Travel Films`
         };
     } else if (collection.slug === 'best-psychological-thriller-movies') {
         return {
@@ -627,6 +671,7 @@ const getStaticMetaContent = () => {
     }
 };
 
+
     const nextMovie = useCallback(() => {
         setCurrentMovieIndex((prev) => (prev + 1) % movies.length);
     }, [movies.length]);
@@ -677,7 +722,7 @@ const currentRank = movies.length - currentMovieIndex;
         }
     };
 
-  const handleMovieClick = () => {
+const handleMovieClick = () => {
     if (typeof window !== 'undefined') {
         sessionStorage.setItem('currentMoviePosition', currentMovieIndex.toString());
         sessionStorage.setItem('currentMovieRank', currentRank.toString());
@@ -696,7 +741,8 @@ const currentRank = movies.length - currentMovieIndex;
         sessionStorage.removeItem('fromDetectiveThrillerCollection');
         sessionStorage.removeItem('fromPsychologicalThrillerCollection');
         sessionStorage.removeItem('fromCrimeThrillerCollection');
-        sessionStorage.removeItem('fromHeistThrillerCollection');  // ✅ HEIST THRILLER ADDED
+        sessionStorage.removeItem('fromHeistThrillerCollection');
+        sessionStorage.removeItem('fromTimeTravelCollection');  // ✅ TIME TRAVEL ADDED
 
         // Set appropriate collection flag
         if (collection.slug === 'movies-like-inception') {
@@ -719,12 +765,13 @@ const currentRank = movies.length - currentMovieIndex;
             sessionStorage.setItem('fromPsychologicalThrillerCollection', 'true');
         } else if (collection.slug === 'best-crime-thriller-movies') {
             sessionStorage.setItem('fromCrimeThrillerCollection', 'true');
-        } else if (collection.slug === 'best-heist-thriller-movies') {  // ✅ HEIST THRILLER ADDED
+        } else if (collection.slug === 'best-heist-thriller-movies') {
             sessionStorage.setItem('fromHeistThrillerCollection', 'true');
+        } else if (collection.slug === 'best-time-travel-movies') {  // ✅ TIME TRAVEL ADDED
+            sessionStorage.setItem('fromTimeTravelCollection', 'true');
         }
     }
 };
-
 
     // Get dynamic content
     const collectionContent = getCollectionContent();
@@ -1134,8 +1181,10 @@ return (
                                     ? 'movies/psych-thriller/'
                                     : collection?.slug === 'best-crime-thriller-movies'
                                     ? 'movies/crime-thriller/'
-                                    : collection?.slug === 'best-heist-thriller-movies'  // ✅ HEIST THRILLER ADDED
+                                    : collection?.slug === 'best-heist-thriller-movies'
                                     ? 'movies/heist-thriller/'
+                                    : collection?.slug === 'best-time-travel-movies'  // ✅ TIME TRAVEL ADDED
+                                    ? 'movies/time-travel/'
                                     : 'movies/';
 
                             let itemObj = {
@@ -1236,7 +1285,7 @@ return (
                                 </motion.button>
                             )}
 
-                            {/* 🔥 FIXED FOR NEXT.JS 15 - WITH ALL 11 COLLECTION URLS */}
+                            {/* 🔥 FIXED FOR NEXT.JS 15 - WITH TIME TRAVEL COLLECTION URL */}
                             <AnimatePresence mode="wait">
                                 <Link 
                                     href={
@@ -1260,8 +1309,10 @@ return (
                                         ? `/movies/psych-thriller/${currentMovie.imdbID}`
                                         : collection.slug === 'best-crime-thriller-movies'
                                         ? `/movies/crime-thriller/${currentMovie.imdbID}`
-                                        : collection.slug === 'best-heist-thriller-movies'  // ✅ HEIST THRILLER ADDED
+                                        : collection.slug === 'best-heist-thriller-movies'
                                         ? `/movies/heist-thriller/${currentMovie.imdbID}`
+                                        : collection.slug === 'best-time-travel-movies'  // ✅ TIME TRAVEL ADDED
+                                        ? `/movies/time-travel/${currentMovie.imdbID}`
                                         : `/movies/${currentMovie.imdbID}`
                                     }
                                     key={currentMovieIndex}
@@ -1317,8 +1368,10 @@ return (
                                             detailPageUrl = `/movies/psych-thriller/${currentMovie.imdbID}`;
                                         } else if (collection.slug === 'best-crime-thriller-movies') {
                                             detailPageUrl = `/movies/crime-thriller/${currentMovie.imdbID}`;
-                                        } else if (collection.slug === 'best-heist-thriller-movies') {  // ✅ HEIST THRILLER ADDED
+                                        } else if (collection.slug === 'best-heist-thriller-movies') {
                                             detailPageUrl = `/movies/heist-thriller/${currentMovie.imdbID}`;
+                                        } else if (collection.slug === 'best-time-travel-movies') {  // ✅ TIME TRAVEL ADDED
+                                            detailPageUrl = `/movies/time-travel/${currentMovie.imdbID}`;
                                         } else {
                                             detailPageUrl = `/movies/${currentMovie.imdbID}`;
                                         }
@@ -1439,8 +1492,8 @@ return (
 );
 };
 
-// 🔥 SSG FUNCTIONS WITH ALL 9 COLLECTIONS INCLUDING HEIST THRILLER
-// ✅ RECT getStaticPaths() - generates all 9 collections
+// 🔥 SSG FUNCTIONS WITH TIME TRAVEL COLLECTION ADDED
+// ✅ CORRECT getStaticPaths() - generates all collections
 export async function getStaticPaths() {
     const slugs = getAllCollectionSlugs();
 
@@ -1490,19 +1543,20 @@ export async function getStaticProps({ params }) {
         case 'best-crime-thriller-movies':
             movieDatabase = CRIME_THRILLER_MOVIES;
             break;
-case 'best-heist-thriller-movies':
-    movieDatabase = HEIST_THRILLER_MOVIES;  // Use the array export
-    break;
-
+        case 'best-heist-thriller-movies':
+            movieDatabase = HEIST_THRILLER_MOVIES;
+            break;
+        case 'best-time-travel-movies':  // ✅ TIME TRAVEL ADDED
+            movieDatabase = TIME_TRAVEL_MOVIES;
+            break;
         default:
             // movies-like-inception, movies-like-memento, movies-like-shutter-island
             movieDatabase = COMPLETE_MOVIE_DATABASE;
     }
 
-const movieArray = Array.isArray(movieDatabase)
-    ? movieDatabase
-    : (movieDatabase ? Object.values(movieDatabase) : []);
-
+    const movieArray = Array.isArray(movieDatabase)
+        ? movieDatabase
+        : (movieDatabase ? Object.values(movieDatabase) : []);
 
     // ✅ FIND MOVIES - search by imdbID
     const movies = collection.movies

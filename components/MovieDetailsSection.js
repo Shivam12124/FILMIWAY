@@ -11,7 +11,8 @@ import dramaRoutes from '../utils/dramaMovieRoutes';
 import DETECTIVE_THRILLER_DATABASE from '../utils/detectiveThrillerMovieData';
 import COMPLETE_PSYCH_THRILLER_DATABASE from '../utils/psychologicalThrillerMovieData';
 import CRIME_THRILLER_DATABASE from '../utils/crimeThrillerMovieData';
-import HEIST_THRILLER_DATABASE from '../utils/heistThrillerMovieData';  // ✅ HEIST THRILLER ADDED
+import HEIST_THRILLER_DATABASE from '../utils/heistThrillerMovieData';
+import TIME_TRAVEL_DATABASE from '../utils/timeTravelMovieData';  // ✅ TIME TRAVEL ADDED
 
 const DRAMA_MOVIE_DATA = dramaRoutes.COMPLETE_MOVIE_DATABASE;
 
@@ -31,7 +32,8 @@ import MysteryThrillerSEOFAQSection from './MysteryThrillerSEOFAQSection';
 import DetectiveThrillerSEOFAQSection from './DetectiveThrillerSEOFAQSection';
 import PsychThrillerSEOFAQSection from './PsychThrillerSEOFAQSection';
 import CrimeThrillerSEOFAQSection from './CrimeThrillerSEOFAQSection';
-import HeistThrillerSEOFAQSection from './HeistThrillerSEOFAQSection';  // ✅ HEIST THRILLER FAQ ADDED
+import HeistThrillerSEOFAQSection from './HeistThrillerSEOFAQSection';
+import TimeTravelSEOFAQSection from './TimeTravelSEOFAQSection';  // ✅ TIME TRAVEL FAQ ADDED
 
 const MovieDetailsSection = React.memo(({
   movie,
@@ -45,13 +47,20 @@ const MovieDetailsSection = React.memo(({
   fromMysteryThrillerCollection,
   fromDetectiveThrillerCollection,
   fromCrimeThrillerCollection,
-  fromHeistThrillerCollection  // ✅ HEIST THRILLER FLAG ADDED
+  fromHeistThrillerCollection,
+  fromTimeTravelCollection  // ✅ TIME TRAVEL FLAG ADDED
 }) => {
 
   if (!movie) return null;
 
   const safeLookup = (collection, id) => (collection && id && collection[id]) || null;
 
+// ✅ TIME TRAVEL LOOKUP
+const getTimeTravelMovieInfo = () => {
+  if (!fromTimeTravelCollection || !movie.tmdbId) return null;
+  if (!TIME_TRAVEL_DATABASE) return null;
+  return TIME_TRAVEL_DATABASE[movie.tmdbId] || null;
+};
 
 // ✅ HEIST THRILLER LOOKUP
 const getHeistThrillerMovieInfo = () => {
@@ -91,8 +100,10 @@ const getMysteryThrillerMovieInfo = () => {
   return MYSTERY_THRILLER_DATABASE[movie.tmdbId] || null;
 };
 
-// ✅ GET MOVIE INFO FROM CORRECT COLLECTION (INCLUDING HEIST THRILLER)
-const movieInfo = fromHeistThrillerCollection  // ✅ HEIST THRILLER ADDED FIRST
+// ✅ GET MOVIE INFO FROM CORRECT COLLECTION (INCLUDING TIME TRAVEL)
+const movieInfo = fromTimeTravelCollection  // ✅ TIME TRAVEL ADDED FIRST
+  ? getTimeTravelMovieInfo()
+  : fromHeistThrillerCollection
   ? getHeistThrillerMovieInfo()
   : fromCrimeThrillerCollection
   ? getCrimeThrillerMovieInfo()
@@ -163,7 +174,9 @@ const displayIndex = fromMysteryThrillerCollection
   ? safeMovieInfo.survivabilityIndex ?? null
   : safeMovieInfo.mindBendingIndex ?? null;
 
-const scoreValue = fromHeistThrillerCollection  // ✅ HEIST THRILLER ADDED
+const scoreValue = fromTimeTravelCollection  // ✅ TIME TRAVEL ADDED
+  ? movie.timeComplexity ?? safeMovieInfo.timeComplexity ?? 0
+  : fromHeistThrillerCollection
   ? movie.heistComplexity ?? safeMovieInfo.heistComplexity ?? 0
   : fromCrimeThrillerCollection
   ? movie.suspenseIntensity ?? safeMovieInfo.suspenseIntensity ?? 0
@@ -186,7 +199,16 @@ const scoreValue = fromHeistThrillerCollection  // ✅ HEIST THRILLER ADDED
 const complexityLevel = safeMovieInfo.complexityLevel || 'HIGH';
 
 const getComplexityColor = (level) => {
-  if (fromHeistThrillerCollection) {  // ✅ HEIST THRILLER ADDED
+  if (fromTimeTravelCollection) {  // ✅ TIME TRAVEL ADDED
+    switch (level) {
+      case 'EXTREME': return '#ea0808ff';
+      case 'HIGH': return '#f79400ff';
+      case 'MEDIUM': return '#bb9e0cff';
+      default: return '#6b7280';
+    }
+  }
+
+  if (fromHeistThrillerCollection) {
     switch (level) {
       case 'EXTREME': return '#ea0808ff';
       case 'HIGH': return '#f79400ff';
@@ -272,6 +294,10 @@ const getUniqueDescription = () => {
   if (safeMovieInfo?.synopsis) return safeMovieInfo.synopsis;
   const t = title.toLowerCase();
   
+  if (t.includes('back to the future')) return "Marty McFly travels back in time to ensure his parents fall in love, while navigating temporal paradoxes.";
+  if (t.includes('primer')) return "Engineers accidentally discover time travel in their garage, leading to increasingly complex temporal loops.";
+  if (t.includes('interstellar')) return "Astronauts journey through a wormhole seeking a new home, experiencing extreme time dilation.";
+  if (t.includes('terminator')) return "A cyborg assassin from the future hunts a woman whose son will lead humanity's resistance.";
   if (t.includes('heat')) return "Master thief Neil McCauley and detective Vincent Hanna face off in a high-stakes cat-and-mouse game across Los Angeles.";
   if (t.includes('italian job')) return "A crew of thieves execute an elaborate gold heist using Mini Coopers through Turin's historic streets.";
   if (t.includes('ocean')) return "Danny Ocean assembles an all-star crew for an impossible casino heist in Las Vegas.";
@@ -282,7 +308,8 @@ const getUniqueDescription = () => {
 };
 
 const getComplexityScoreTitle = () => {
-  if (fromHeistThrillerCollection) return 'HEIST COMPLEXITY SCORE';  // ✅ HEIST THRILLER ADDED
+  if (fromTimeTravelCollection) return 'TIME TRAVEL COMPLEXITY SCORE';  // ✅ TIME TRAVEL ADDED
+  if (fromHeistThrillerCollection) return 'HEIST COMPLEXITY SCORE';
   if (fromCrimeThrillerCollection) return 'CRIME INTENSITY SCORE';
   if (fromDetectiveThrillerCollection) return 'MYSTERY COMPLEXITY SCORE';
   if (fromMysteryThrillerCollection) return 'MYSTERY COMPLEXITY SCORE';
@@ -297,7 +324,8 @@ const getComplexityScoreTitle = () => {
 };
 
 const getComplexityIndexLabel = () => {
-  if (fromHeistThrillerCollection) return 'HEIST INDEX';  // ✅ HEIST THRILLER ADDED
+  if (fromTimeTravelCollection) return 'TIME COMPLEXITY INDEX';  // ✅ TIME TRAVEL ADDED
+  if (fromHeistThrillerCollection) return 'HEIST COMPLEXITY INDEX';
   if (fromCrimeThrillerCollection) return 'CRIME INTENSITY INDEX';
   if (fromDetectiveThrillerCollection) return 'MYSTERY INDEX';
   if (fromMysteryThrillerCollection) return 'MYSTERY INDEX';
@@ -312,7 +340,8 @@ const getComplexityIndexLabel = () => {
 };
 
 const getComplexityLevelLabel = () => {
-  if (fromHeistThrillerCollection) return 'HEIST COMPLEXITY LEVEL';  // ✅ HEIST THRILLER ADDED
+  if (fromTimeTravelCollection) return 'TEMPORAL PARADOX LEVEL';  // ✅ TIME TRAVEL ADDED
+  if (fromHeistThrillerCollection) return 'HEIST COMPLEXITY LEVEL';
   if (fromCrimeThrillerCollection) return 'CRIME COMPLEXITY LEVEL';
   if (fromDetectiveThrillerCollection) return 'MYSTERY COMPLEXITY LEVEL';
   if (fromMysteryThrillerCollection) return 'MYSTERY COMPLEXITY LEVEL';
@@ -327,11 +356,18 @@ const getComplexityLevelLabel = () => {
 };
 
 const getComplexityDescription = () => {
-  if (fromHeistThrillerCollection) {  // ✅ HEIST THRILLER ADDED
-    if (scoreValue >= 90) return 'A masterfully crafted heist epic with unparalleled plan complexity, execution brilliance, and cinematic excellence.';
-    if (scoreValue >= 80) return 'A gripping heist thriller with intricate planning, high-stakes action, and masterful direction.';
-    if (scoreValue >= 70) return 'An engaging heist narrative with clever schemes and compelling criminal masterminds.';
-    return 'An accessible heist thriller that captivates with smart planning and genuine suspense.';
+  if (fromTimeTravelCollection) {  // ✅ TIME TRAVEL ADDED
+    if (scoreValue >= 90) return 'A mind-bending temporal masterpiece with paradoxes, causality loops, and revolutionary time travel mechanics.';
+    if (scoreValue >= 80) return 'An intricate time travel narrative with complex paradoxes and sophisticated temporal mechanics.';
+    if (scoreValue >= 70) return 'An engaging time travel story with thoughtful paradoxes and compelling temporal logic.';
+    return 'An accessible time travel adventure with clever mechanics and satisfying temporal storytelling.';
+  }
+
+  if (fromHeistThrillerCollection) {
+    if (scoreValue >= 90) return 'A masterfully executed heist thriller with unparalleled planning complexity, ingenious execution, and cinematic brilliance.';
+    if (scoreValue >= 80) return 'A brilliantly crafted heist film with intricate schemes, masterful execution, and edge-of-your-seat tension.';
+    if (scoreValue >= 70) return 'An engaging heist thriller with clever planning, solid execution, and satisfying narrative payoffs.';
+    return 'An accessible heist adventure with smart plotting and entertaining criminal masterminds.';
   }
   
   if (fromCrimeThrillerCollection) {
@@ -383,7 +419,8 @@ const getComplexityDescription = () => {
 };
 
 const getBorderColor = () => {
-  if (fromHeistThrillerCollection) return 'border-yellow-400/40';  // ✅ HEIST THRILLER ADDED
+  if (fromTimeTravelCollection) return 'border-cyan-400/40';  // ✅ TIME TRAVEL ADDED
+  if (fromHeistThrillerCollection) return 'border-amber-400/40';
   if (fromCrimeThrillerCollection) return 'border-slate-400/40'; 
   if (fromDetectiveThrillerCollection) return 'border-yellow-400/40';
   if (fromPsychologicalThrillerCollection) return 'border-yellow-400/40';
@@ -396,7 +433,8 @@ const getBorderColor = () => {
 };
 
 const getStarColor = () => {
-  if (fromHeistThrillerCollection) return 'text-yellow-400';  // ✅ HEIST THRILLER ADDED
+  if (fromTimeTravelCollection) return 'text-cyan-400';  // ✅ TIME TRAVEL ADDED
+  if (fromHeistThrillerCollection) return 'text-amber-400';
   if (fromCrimeThrillerCollection) return 'text-slate-400';  
   if (fromDetectiveThrillerCollection) return 'text-yellow-400';
   if (fromPsychologicalThrillerCollection) return 'text-yellow-400';
@@ -407,6 +445,7 @@ const getStarColor = () => {
   if (fromMementoCollection) return 'text-yellow-400';
   return 'text-yellow-400';
 };
+
 
   return (
     <motion.div
@@ -510,91 +549,94 @@ const getStarColor = () => {
         </div>
       </motion.div>
 
-      <EnhancedWhereToWatchSection movie={movie} />
+         <EnhancedWhereToWatchSection movie={movie} />
 
-      <motion.div
-        className="mb-8 sm:mb-12 bg-gradient-to-br from-gray-800/40 to-gray-900/60 rounded-xl border border-gray-700/50 p-4 sm:p-8 shadow-2xl backdrop-blur-sm relative overflow-hidden"
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.8 }}
-        whileHover={{ scale: 1.01 }}
-      >
-        {[
-          { pos: 'top-2 left-2 sm:top-4 sm:left-4', border: 'border-t-2 border-l-2' },
-          { pos: 'top-2 right-2 sm:top-4 sm:right-4', border: 'border-t-2 border-r-2' },
-          { pos: 'bottom-2 left-2 sm:bottom-4 sm:left-4', border: 'border-b-2 border-l-2' },
-          { pos: 'bottom-2 right-2 sm:bottom-4 sm:right-4', border: 'border-b-2 border-r-2' }
-        ].map((corner, i) => (
-          <div
-            key={i}
-            className={`absolute ${corner.pos} w-3 h-3 sm:w-5 sm:h-5 ${corner.border} ${getBorderColor()}`}
-          />
-        ))}
+      {!fromHeistThrillerCollection && (
+        <motion.div
+          className="mb-8 sm:mb-12 bg-gradient-to-br from-gray-800/40 to-gray-900/60 rounded-xl border border-gray-700/50 p-4 sm:p-8 shadow-2xl backdrop-blur-sm relative overflow-hidden"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8 }}
+          whileHover={{ scale: 1.01 }}
+        >
+          {[
+            { pos: 'top-2 left-2 sm:top-4 sm:left-4', border: 'border-t-2 border-l-2' },
+            { pos: 'top-2 right-2 sm:top-4 sm:right-4', border: 'border-t-2 border-r-2' },
+            { pos: 'bottom-2 left-2 sm:bottom-4 sm:left-4', border: 'border-b-2 border-l-2' },
+            { pos: 'bottom-2 right-2 sm:bottom-4 sm:right-4', border: 'border-b-2 border-r-2' }
+          ].map((corner, i) => (
+            <div
+              key={i}
+              className={`absolute ${corner.pos} w-3 h-3 sm:w-5 sm:h-5 ${corner.border} ${getBorderColor()}`}
+            />
+          ))}
 
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 sm:mb-8 gap-4 sm:gap-6">
-          <div className="flex items-center gap-4">
-            <Star className={`w-6 h-6 ${getStarColor()}`} />
-            <h3 className="text-2xl font-light text-gray-200 tracking-wide uppercase">
-              {getComplexityScoreTitle()}
-            </h3>
-          </div>
-
-          <div className="flex items-center gap-6 sm:gap-8">
-            <div className="text-right">
-              <div className="text-3xl sm:text-4xl font-extralight mb-1 tracking-wider text-gray-200">{scoreValue}</div>
-              <div className="text-xs text-gray-400 font-light tracking-wide uppercase">{getComplexityIndexLabel()}</div>
-            </div>
-            <div className="text-right">
-              <div className="text-3xl sm:text-4xl font-extralight mb-1 tracking-wider text-gray-200">{rating}</div>
-              <div className="text-xs text-gray-400 font-light tracking-wide uppercase">IMDB RATING</div>
-            </div>
-          </div>
-        </div>
-
-        <div className="space-y-4 sm:space-y-6">
-          <div>
-            <div className="flex items-center justify-between mb-2 sm:mb-3">
-              <span className="text-sm text-gray-300 font-light tracking-wider uppercase">{getComplexityLevelLabel()}</span>
-              <span
-                className="text-sm font-light px-3 py-1 sm:px-4 sm:py-2 rounded-lg border backdrop-blur-sm tracking-wider uppercase"
-                style={{
-                  color: getComplexityColor(complexityLevel),
-                  borderColor: getComplexityColor(complexityLevel),
-                  backgroundColor: `${getComplexityColor(complexityLevel)}15`
-                }}
-              >
-                {complexityLevel}
-              </span>
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 sm:mb-8 gap-4 sm:gap-6">
+            <div className="flex items-center gap-4">
+              <Star className={`w-6 h-6 ${getStarColor()}`} />
+              <h3 className="text-2xl font-light text-gray-200 tracking-wide uppercase">
+                {getComplexityScoreTitle()}
+              </h3>
             </div>
 
-            <div className="relative w-full bg-gray-700/50 rounded-full h-4 overflow-hidden">
-              <motion.div
-                className="h-full rounded-full relative"
-                style={{ backgroundColor: getComplexityColor(complexityLevel) }}
-                initial={{ width: 0 }}
-                animate={{ width: `${scoreValue}%` }}
-                transition={{ duration: 2, delay: 0.5, ease: 'easeOut' }}
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent animate-pulse" />
-              </motion.div>
-
-              <div className="absolute -top-1 sm:-top-2 left-0 w-full flex justify-between">
-                {[25, 50, 75].map((mark) => (
-                  <div
-                    key={mark}
-                    className={`w-0.5 sm:w-1 h-4 sm:h-7 rounded-full ${getBorderColor().replace('border', 'bg').replace('/40', '/30')}`}
-                    style={{ left: `${mark}%` }}
-                  />
-                ))}
+            <div className="flex items-center gap-6 sm:gap-8">
+              <div className="text-right">
+                <div className="text-3xl sm:text-4xl font-extralight mb-1 tracking-wider text-gray-200">{scoreValue}</div>
+                <div className="text-xs text-gray-400 font-light tracking-wide uppercase">{getComplexityIndexLabel()}</div>
+              </div>
+              <div className="text-right">
+                <div className="text-3xl sm:text-4xl font-extralight mb-1 tracking-wider text-gray-200">{rating}</div>
+                <div className="text-xs text-gray-400 font-light tracking-wide uppercase">IMDB RATING</div>
               </div>
             </div>
-
-            <p className="text-gray-300/90 text-sm font-light leading-relaxed tracking-wide mt-3">{getComplexityDescription()}</p>
           </div>
-        </div>
-      </motion.div>
+
+          <div className="space-y-4 sm:space-y-6">
+            <div>
+              <div className="flex items-center justify-between mb-2 sm:mb-3">
+                <span className="text-sm text-gray-300 font-light tracking-wider uppercase">{getComplexityLevelLabel()}</span>
+                <span
+                  className="text-sm font-light px-3 py-1 sm:px-4 sm:py-2 rounded-lg border backdrop-blur-sm tracking-wider uppercase"
+                  style={{
+                    color: getComplexityColor(complexityLevel),
+                    borderColor: getComplexityColor(complexityLevel),
+                    backgroundColor: `${getComplexityColor(complexityLevel)}15`
+                  }}
+                >
+                  {complexityLevel}
+                </span>
+              </div>
+
+              <div className="relative w-full bg-gray-700/50 rounded-full h-4 overflow-hidden">
+                <motion.div
+                  className="h-full rounded-full relative"
+                  style={{ backgroundColor: getComplexityColor(complexityLevel) }}
+                  initial={{ width: 0 }}
+                  animate={{ width: `${scoreValue}%` }}
+                  transition={{ duration: 2, delay: 0.5, ease: 'easeOut' }}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent animate-pulse" />
+                </motion.div>
+
+                <div className="absolute -top-1 sm:-top-2 left-0 w-full flex justify-between">
+                  {[25, 50, 75].map((mark) => (
+                    <div
+                      key={mark}
+                      className={`w-0.5 sm:w-1 h-4 sm:h-7 rounded-full ${getBorderColor().replace('border', 'bg').replace('/40', '/30')}`}
+                      style={{ left: `${mark}%` }}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              <p className="text-gray-300/90 text-sm font-light leading-relaxed tracking-wide mt-3">{getComplexityDescription()}</p>
+            </div>
+          </div>
+        </motion.div>
+      )}
 
       <SensitiveContentTimelineSection movie={movie} sensitiveScenes={sensitiveScenes} />
+
 
     {/* ✅ DYNAMIC DNA AND INTENSITY GRAPH FROM MOVIEINFO */}
 <EnhancedIntensityGraph scenes={safeMovieInfo.scenes} dominantColor={safeMovieInfo.dominantColor} />
