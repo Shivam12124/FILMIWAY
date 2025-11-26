@@ -182,12 +182,12 @@ export const HEIST_THRILLER_MOVIES = [
     sensitiveScenes: []
   },
   {
-    imdbID: 'tt0081505',
-    tmdbId: 968,
+    imdbID: 'tt0083190',
+    tmdbId: 11524,
     title: 'Thief',
     director: 'Michael Mann',
     genre: 'Crime, Thriller',
-    year: 1981,
+    year: 11524,
     runtime: '120 min',
     ageRating: 'R',
     rating: 7.5,
@@ -213,7 +213,7 @@ export const HEIST_THRILLER_MOVIES = [
   },
   {
     imdbID: 'tt0073195',
-    tmdbId: 10025,
+    tmdbId: 1981,
     title: 'Dog Day Afternoon',
     director: 'Sidney Lumet',
     genre: 'Crime, Drama, Thriller',

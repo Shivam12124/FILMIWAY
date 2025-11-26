@@ -356,7 +356,7 @@ export const COLLECTIONS = {
     'tt0475304',  // Hell or High Water
     'tt0305224',  // The Bank Job
     'tt0454848',  // Inside Man
-    'tt0081505',  // Thief 
+    'tt0083190',  // Thief 
     'tt0073195',  // Dog Day Afternoon
     'tt0317740',  // The Italian Job
     'tt0240772'   // Ocean's Eleven
