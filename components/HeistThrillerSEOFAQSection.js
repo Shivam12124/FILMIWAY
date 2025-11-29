@@ -1,120 +1,311 @@
-// components/HeistThrillerSEOFAQSection.js - FULL DETAILED FAQS FOR ALL 10 HEIST THRILLER FILMS
+// components/HeistThrillerSEOFAQSection.js - FULL DETAILED FAQS (5 PER MOVIE)
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Info } from 'lucide-react';
+import { Info, ChevronDown, ChevronUp } from 'lucide-react';
 
 const heistThrillerMovieFAQs = {
   "Heat": [
-    { q: 'What is the core premise of Heat?', a: "Heat follows master thief Neil McCauley and detective Vincent Hanna in a high-stakes cat-and-mouse game across Los Angeles, blending intense heist action with deep character exploration." },
-    { q: 'Is Heat known for its iconic coffee shop scene?', a: "The legendary café scene between De Niro and Pacino is one of cinema's greatest moments—two titans discussing fate, loyalty, and the hunter-prey dynamic with quiet intensity." },
-    { q: 'Who directed Heat?', a: "Michael Mann directed this masterpiece, crafting meticulous action sequences and atmospheric night-time LA visuals that defined the modern crime thriller." },
-    { q: 'Was Heat critically acclaimed?', a: "Heat received universal acclaim for its performances, direction, and realistic portrayal of professional criminals—it's considered the gold standard of heist cinema." },
-    { q: 'What themes define Heat?', a: "Major themes include professionalism versus personal connection, the loneliness of obsession, moral ambiguity, and the thin line between cop and criminal." }
+    { 
+      q: 'How did the actors prepare for the bank shootout scene?', 
+      a: "The downtown LA shootout is famous for its tactical realism. The actors, including Val Kilmer and Robert De Niro, underwent months of rigorous weapons training with Andy McNab, a former British SAS soldier. They practiced live-fire drills to master reloading and movement. The result was so technically perfect that the clip of Val Kilmer reloading his rifle under fire has been shown to US Marine recruits as a textbook example of weapons handling." 
+    },
+    { 
+      q: 'What is the significance of the "coffee shop" scene?', 
+      a: "This scene marked the first time acting legends Al Pacino and Robert De Niro appeared on screen together in film history. It was shot without rehearsal to keep the tension fresh. The conversation establishes the film's central theme: the 'cop' and the 'criminal' are not opposites, but mirror images of each other—both professionals solely dedicated to their craft, knowing they will likely have to kill the other." 
+    },
+    { 
+      q: 'Why did Michael Mann choose to shoot the film primarily at night?', 
+      a: "Director Michael Mann wanted to capture a specific 'nocturnal poetry' of Los Angeles. He avoided using traditional soundstages, shooting almost entirely on location. He utilized specific film stocks and lighting to capture the depth of the night sky and the neon glow of the city, creating a visual style now known as 'Mann Blue'—a cold, metallic aesthetic that emphasizes the isolation of the characters." 
+    },
+    { 
+      q: 'Is the character of Waingro significant beyond being a villain?', 
+      a: "Waingro represents the 'chaos factor.' In Neil McCauley's (De Niro) disciplined world, everything is calculated and precise. Waingro is the unpredictable variable—a serial killer and sociopath who lacks discipline. His inclusion in the crew is the 'loose thread' that eventually unravels Neil's entire perfectly constructed life, proving that no amount of planning can account for pure human chaotic evil." 
+    },
+    { 
+      q: 'What is the meaning of the final shot of the film?', 
+      a: "The final image of Vincent (Pacino) holding the hand of the dying Neil (De Niro) underlines the tragedy of their relationship. They were the only two people who truly understood each other. In a world of broken marriages and shallow connections, their bond—forged in opposition—was the most genuine. The ending isn't a victory for the police; it's a moment of mourning for a worthy adversary." 
+    }
   ],
+
   "The Italian Job": [
-    { q: 'What is The Italian Job about?', a: "A crew of thieves execute an elaborate gold heist in Turin using Mini Coopers for a thrilling getaway through the city's historic streets and tunnels." },
-    { q: 'Who stars in the original film?', a: "Michael Caine leads the iconic 1969 version with charm and wit, while the 2003 remake features Mark Wahlberg, Charlize Theron, and Edward Norton." },
-    { q: 'What makes The Italian Job so entertaining?', a: "Its perfect blend of clever planning, stylish execution, witty dialogue, and unforgettable car chase sequences through Turin's tight corridors." },
-    { q: 'Is The Italian Job based on true events?', a: "The story is fictional but captures the spirit of 1960s caper films with its emphasis on ingenuity over violence." },
-    { q: 'What is the famous ending line?', a: "The 1969 version ends with the iconic cliffhanger: 'Hang on a minute lads, I've got a great idea'—one of cinema's most memorable endings." }
+    { 
+      q: 'Why were Mini Coopers chosen for the getaway vehicles?', 
+      a: "The Mini Cooper was chosen because it was a symbol of 1960s 'Cool Britannia' and was small enough to navigate the narrow arcades, sewers, and rooftops of Turin. BMC (the manufacturer) initially refused to donate cars for the film, so the production crew bought them at trade price. The cars' agility allowed for stunts that would have been impossible with standard sedans, revolutionizing the car chase genre." 
+    },
+    { 
+      q: 'How did they film the traffic jam scenes in Turin?', 
+      a: "The massive traffic jam paralyzing the city was real—but intentional. The production team, with the cooperation of the Fiat boss Gianni Agnelli (who loved the script), was allowed to actually block major parts of Turin. The chaos shown on screen is genuine Italian traffic confusion, captured to emphasize the scale of the heist's diversion tactic." 
+    },
+    { 
+      q: 'What does the cliffhanger ending represent?', 
+      a: "The literal cliffhanger—the bus teetering over the edge of the Alps—is a perfect metaphor for the film's anti-establishment tone. The thieves have the gold, but they can't reach it without losing their lives. It's a cynical, humorous cosmic joke. Although a sequel was discussed to resolve it, the ambiguous ending has become legendary for capturing the spirit of a gamble that didn't quite pay off." 
+    },
+    { 
+      q: 'Is the film critical of the British class system?', 
+      a: "Yes, satirically. The heist is funded by the aristocratic Mr. Bridger (who runs the prison like a king) but executed by the working-class Cockney Charlie Croker. The film contrasts the rigid, pompous British establishment with the scrappy, innovative energy of the working class, suggesting that true ingenuity comes from the streets, not the palaces." 
+    },
+    { 
+      q: 'What is the "Bloody Doors" line?', 
+      a: "Michael Caine's line, 'You were only supposed to blow the bloody doors off!' was improvised in frustration during a take where the explosion was too large. It has since become one of the most famous quotes in British cinema history, perfectly encapsulating the character's exasperation with his team's lack of subtlety." 
+    }
   ],
+
   "Ocean's Eleven": [
-    { q: 'Who made Ocean\'s Eleven?', a: "Steven Soderbergh directed this slick 2001 remake, assembling an all-star cast led by George Clooney, Brad Pitt, and Matt Damon for a casino heist extravaganza." },
-    { q: 'What casinos do they rob?', a: "Danny Ocean's crew targets three Las Vegas casinos—the Bellagio, Mirage, and MGM Grand—all owned by ruthless Terry Benedict." },
-    { q: 'Did the film spawn sequels?', a: "Yes—Ocean's Twelve (2004) and Ocean's Thirteen (2007) continued the franchise, maintaining the stylish tone and ensemble chemistry." },
-    { q: 'How does the heist work?', a: "The elaborate plan involves impersonating workers, creating a fake vault, and exploiting casino security systems—all revealed through clever reverse storytelling." },
-    { q: 'Why is it regarded as a modern classic?', a: "Witty dialogue, star power, stylish cinematography, and a perfectly executed twist ending make it the definitive modern heist film." }
+    { 
+      q: 'How does the narrative structure enhance the heist reveal?', 
+      a: "The film uses a 'lying flashback' or concealed narrative technique. The audience is shown the planning stages, but key details (like the SWAT team involvement) are deliberately withheld. This allows the audience to be tricked alongside the villain, Terry Benedict. The climax works because we realize we were watching the distraction, not the main event, recontextualizing the entire third act." 
+    },
+    { 
+      q: 'What is the significance of the fountain scene at the end?', 
+      a: "The final scene in front of the Bellagio fountains is the only moment the entire team stands still together. Set to Debussy's 'Clair de Lune,' it provides a moment of serene beauty and melancholy after the kinetic energy of the heist. It symbolizes the fleeting nature of their victory—they disband one by one, disappearing into the night, emphasizing that they are ghosts in the machine." 
+    },
+    { 
+      q: 'Why is the villain Terry Benedict important to the plot?', 
+      a: "A great heist needs a villain who 'deserves' to be robbed. Terry Benedict (Andy Garcia) is portrayed as cold, corporate, and ruthless—he cares more about money than people. This provides the moral justification for the thieves. Stealing from him feels like an act of karma rather than a crime, allowing the audience to root for the criminals without guilt." 
+    },
+    { 
+      q: 'Did the cast actually gamble during filming?', 
+      a: "Yes, the cast spent their downtime gambling in the casinos where they were filming. Reportedly, George Clooney was the unlucky one, losing heavily at the blackjack tables, while Brad Pitt and Matt Damon fared better. This off-screen camaraderie and risk-taking translated directly into their on-screen chemistry, giving the 'Rat Pack' dynamic authenticity." 
+    },
+    { 
+      q: 'What is "The Pinch"?', 
+      a: "The 'Pinch' is an electromagnetic pulse (EMP) device used to knock out the power grid in Las Vegas. While the science in the film is exaggerated (a device that small couldn't blackout a city), it serves as the crucial plot device that forces the casino to reboot its security systems, creating the 30-second window of darkness necessary for the crew to breach the vault undetected." 
+    }
   ],
+
   "Inside Man": [
-    { q: 'What is the plot of Inside Man?', a: "A perfectly planned bank robbery on Wall Street becomes a tense hostage situation as detective Keith Frazier tries to outsmart mastermind Dalton Russell." },
-    { q: 'What is iconic about Dalton Russell?', a: "Clive Owen's calculated criminal orchestrates a heist where nothing is as it seems—his opening monologue sets the tone for layers of deception." },
-    { q: 'Did the film win awards?', a: "While not an Oscar winner, Inside Man became Spike Lee's highest-grossing film and received widespread critical acclaim for its intelligent plotting." },
-    { q: 'Who directed it?', a: "Spike Lee directed with precision and social commentary, elevating the heist genre with questions about power, greed, and historical justice." },
-    { q: 'What themes does it explore?', a: "It interrogates wealth inequality, Nazi collaboration, moral compromise, and the corrupting influence of old money protected by institutions." }
+    { 
+      q: 'How does the opening monologue foreshadow the ending?', 
+      a: "Dalton Russell's opening monologue ('I choose my words carefully...') breaks the fourth wall and tells the audience exactly what is happening, but in a way that only makes sense *after* the film ends. He says he is in a 'cell,' which the audience assumes is prison, but is actually the hidden wall inside the bank. It's a brilliant narrative trick that hides the answer in plain sight." 
+    },
+    { 
+      q: 'What distinguishes Inside Man from other bank robbery films?', 
+      a: "Unlike most heist films that focus on the money, Inside Man focuses on secrets. The money is almost irrelevant; the true objective is a specific safe deposit box containing evidence of Nazi war crimes. This elevates the stakes from simple greed to historical justice, turning the robber into a paradoxical moral agent exposing the corruption of the 'respectable' banking establishment." 
+    },
+    { 
+      q: 'What is the significance of the "Ring and the Diamond"?', 
+      a: "The Cartier ring found in the safe deposit box represents the 'blood money' of the Holocaust. By taking the ring but leaving the diamonds, Dalton Russell sends a message to the bank's founder that he knows the truth. It signifies that some crimes (like genocide profiteering) have no statute of limitations, and that the heist is an act of punishment, not just theft." 
+    },
+    { 
+      q: 'How does Spike Lee inject social commentary into the genre?', 
+      a: "Spike Lee uses the hostage situation to explore the racial and cultural tensions of post-9/11 New York. The police's treatment of the Sikh hostage (who they assume is an Arab terrorist) and the diversity of the hostages themselves turn the bank into a microcosm of the city. The film is as much about the melting pot of NYC as it is about the robbery." 
+    },
+    { 
+      q: 'Why does the detective let the robber go?', 
+      a: "By the end, Detective Frazier realizes that Dalton Russell has exposed a much greater evil (the Nazi collaborator) and hasn't actually physically harmed anyone. Finding the diamond in his pocket is the confirmation that Russell has 'tipped him' for his services. It's a moment of mutual respect where the lawman acknowledges that sometimes justice requires breaking the law." 
+    }
   ],
+
   "The Town": [
-    { q: 'What inspired The Town?', a: "Based on Chuck Hogan's novel 'Prince of Thieves,' it follows Charlestown bank robbers trapped between loyalty, love, and the FBI closing in." },
-    { q: 'Who directed this film?', a: "Ben Affleck directs and stars as Doug MacRay, a thief seeking escape from his criminal life in Boston's tight-knit robbery culture." },
-    { q: 'Why is the action so intense?', a: "Realistic armored car and bank heist sequences shot on location in Boston create visceral, documentary-style authenticity rarely seen in heist films." },
-    { q: 'Is it character-driven?', a: "Absolutely—The Town balances thrilling action with deep character exploration of redemption, friendship, and the weight of criminal legacy." },
-    { q: 'What\'s the emotional core?', a: "The tragic impossibility of escaping one's past while protecting those you love—Doug's doomed romance with Claire drives the film's heart." }
+    { 
+      q: 'How accurate is the depiction of Charlestown?', 
+      a: "The film creates a heightened but culturally grounded depiction of Charlestown, a neighborhood in Boston that once had the highest number of bank robberies per capita in the US. Ben Affleck used local residents as extras and filmed on location to capture the specific accent and insular 'code of silence' that defines the community, giving the film a gritty, documentary-like texture." 
+    },
+    { 
+      q: 'What makes the nun mask heist scene iconic?', 
+      a: "The visual of heavily armed men in nun masks creates a disturbing contrast between innocence/piety and brutal violence. It's shocking and memorable. The silence of the scene, followed by the chaotic violence, highlights the professionalism of the crew. It also serves as a metaphor for the characters hiding their sins behind a facade of normalcy." 
+    },
+    { 
+      q: 'What is the role of Jem (Jeremy Renner) in the story?', 
+      a: "Jem represents the tragic inevitability of the criminal life. While Doug (Affleck) wants to evolve and escape, Jem is a 'lifer'—he knows nothing else and doesn't want to. His loyalty is absolute, but it's also a cage. Renner's Oscar-nominated performance embodies the dangerous, volatile energy that eventually forces Doug to choose between his past and his future." 
+    },
+    { 
+      q: 'What does the ending signify for Doug?', 
+      a: "Doug escapes to Florida, but he is alone. He leaves the money for Claire to better her life, an act of penance. The ending is bittersweet; he physically survives the 'Town,' but he has lost his home, his best friend, and the woman he loves. It suggests that while you can escape your environment, the cost of leaving is leaving a part of yourself behind." 
+    },
+    { 
+      q: 'Why is the "Not your car" note important?', 
+      a: "When the crew burns a getaway car, they leave a note on the dashboard saying 'Not your car' for the owner to find. This detail humanizes the robbers—they view themselves as stealing from institutions (banks), not working-class people. It highlights the twisted moral code of the neighborhood: they are criminals, but they still identify with the local community." 
+    }
   ],
+
   "Reservoir Dogs": [
-    { q: 'What is Reservoir Dogs about?', a: "A failed diamond heist spirals into paranoia and violence as color-coded criminals try to identify the rat who tipped off the police." },
-    { q: 'Is Reservoir Dogs Tarantino\'s debut?', a: "Yes—Quentin Tarantino's explosive 1992 debut revolutionized indie cinema with non-linear storytelling and razor-sharp dialogue." },
-    { q: 'Who stars in Reservoir Dogs?', a: "Harvey Keitel, Tim Roth, Steve Buscemi, and Michael Madsen lead an ensemble cast delivering unforgettable performances of loyalty and betrayal." },
-    { q: 'What are its main themes?', a: "Themes of trust, betrayal, honor among thieves, and the breakdown of criminal professionalism under pressure define the narrative." },
-    { q: 'How was it received?', a: "Initially controversial for its violence, it's now celebrated as a landmark of independent cinema that launched Tarantino's legendary career." }
+    { 
+      q: 'Why do we never see the actual heist?', 
+      a: "Budget constraints were the initial reason, but Quentin Tarantino turned it into a masterstroke of storytelling. By skipping the heist and focusing only on the aftermath, the film becomes a character study rather than an action movie. It forces the audience to piece together the events through the conflicting, panicked accounts of the criminals, ramping up the tension and paranoia." 
+    },
+    { 
+      q: 'What is the meaning behind the color-coded names?', 
+      a: "The names (Mr. White, Mr. Orange, Mr. Pink, etc.) strip the characters of their identities and humanity, turning them into interchangeable parts of a machine. It emphasizes the 'strictly business' attitude of the boss, Joe Cabot. Ironically, their distinct personalities bleed through the colors immediately, proving that human nature cannot be suppressed by professional anonymity." 
+    },
+    { 
+      q: 'Why is the "Stuck in the Middle with You" torture scene so disturbing?', 
+      a: "The scene is disturbing because of the juxtaposition of upbeat, catchy pop music with horrific violence. Mr. Blonde dances playfully while mutilating a police officer, showing his complete lack of empathy. It subverts movie tropes by having the camera pan away at the moment of the ear-cutting, leaving the violence to the audience's imagination, which is often worse than seeing it." 
+    },
+    { 
+      q: 'Who is the "Rat" and how does the film handle the reveal?', 
+      a: "Mr. Orange (Tim Roth) is the undercover cop. The film reveals this to the audience midway through, creating dramatic irony. We know he is bleeding to death and is a cop, while the other characters (except Mr. White) suspect him but don't know for sure. This knowledge makes Mr. White's protective, fatherly behavior toward Orange tragic, as we know his loyalty is misplaced." 
+    },
+    { 
+      q: 'What are the influences behind the Mexican Standoff ending?', 
+      a: "The final triangular standoff is a direct homage to Hong Kong action cinema, specifically Ringo Lam's *City on Fire* and the films of John Woo. It represents the total collapse of trust. In a world where no one can trust anyone, the only logical conclusion is mutual destruction. It is a Shakespearean tragedy played out with handguns in a warehouse." 
+    }
   ],
+
   "Hell or High Water": [
-    { q: 'What is the premise of Hell or High Water?', a: "Two brothers rob banks across West Texas to save their family ranch, pursued by a retiring Texas Ranger in a modern Western thriller." },
-    { q: 'Who directed and starred?', a: "David Mackenzie directs Chris Pine, Ben Foster, and Jeff Bridges in a meditation on economic desperation and family loyalty." },
-    { q: 'Was Hell or High Water adapted from another source?', a: "Taylor Sheridan wrote the original screenplay, examining modern American poverty through the heist genre lens." },
-    { q: 'Did it win awards?', a: "It received four Oscar nominations including Best Picture, with universal praise for its acting, writing, and social commentary." },
-    { q: 'What sets it apart?', a: "Blending neo-Western atmosphere with economic desperation, it transforms bank robbery into a desperate act of survival against institutional greed." }
+    { 
+      q: 'How does the film comment on the 2008 financial crisis?', 
+      a: "The film posits the banks as the true villains. The brothers are robbing the very bank that is foreclosing on their family land, using the stolen money to pay off the loan. It portrays a cycle where the institutions prey on the poor, and the robbery is an act of economic rebellion. The graffiti 'Three tours in Iraq but no bail for people like us' underscores the betrayal felt by rural America." 
+    },
+    { 
+      q: 'Why do the brothers only steal small bills?', 
+      a: "It shows their intelligence and desperation. Stealing small, unmarked bills makes the money untraceable and usable immediately. It emphasizes that they aren't greedy career criminals looking for a glamorous score; they are desperate men calculating exactly how much they need to survive. This methodical approach contrasts with the chaotic violence that eventually erupts." 
+    },
+    { 
+      q: 'What is the significance of the "Comanche" metaphor?', 
+      a: "Tanner (Ben Foster) calls himself a 'Comanche,' referencing the Native Americans who once ruled the plains but were driven out by settlers. The film draws a parallel between the Native Americans losing their land to armies and the modern ranchers losing their land to banks. It suggests that history is a continuous cycle of conquest, and now the poor whites are the ones being conquered by capitalism." 
+    },
+    { 
+      q: 'What does Jeff Bridges\' character represent?', 
+      a: "Sheriff Marcus Hamilton represents the 'Old West.' He is intuitive, patient, and follows an ancient code of justice, but he is also aging out of a world he no longer understands. His racist teasing of his partner is a relic of an older time. His final confrontation with Toby (Chris Pine) is a standoff between the old law and the new, desperate morality of the frontier." 
+    },
+    { 
+      q: 'How does the ending resolve the conflict?', 
+      a: "The ending is a tense, verbal standoff. Toby is not in jail, but he is in a prison of his own making, living on the ranch that reminds him of his crimes. Hamilton knows Toby is guilty but can't prove it. Their promise to 'meet again' suggests that the violence isn't over, and that peace is impossible when built on a foundation of blood and theft." 
+    }
   ],
+
   "Thief": [
-    { q: 'What is the story of Thief?', a: "Frank, a professional safecracker, dreams of going straight but is pulled deeper into organized crime for one last massive jewelry heist." },
-    { q: 'Who helmed this film?', a: "Michael Mann's 1981 directorial debut established his signature style—neon-lit cities, electronic scores, and morally complex criminals." },
-    { q: 'Which themes does it explore?', a: "Themes of freedom versus control, the impossibility of escape from criminal life, and maintaining dignity within corrupt systems dominate." },
-    { q: 'Is it based on true events?', a: "While fictional, Mann researched real safecrackers to create authentic procedural detail in Frank's meticulous heist techniques." },
-    { q: 'What is the visual style?', a: "Neon-soaked Chicago nights, Tangerine Dream's synth score, and clinical precision create Mann's proto-Heat aesthetic blueprint." }
+    { 
+      q: 'How realistic are the safe-cracking scenes?', 
+      a: "Extremely realistic. Michael Mann hired real-life professional thieves as technical advisors. The thermal lance used by James Caan to melt through the safe was real, and the actors were trained to use the tools properly. The sparks, the molten metal, and the sweat are authentic. This focus on 'process' defined Mann's career, treating crime as a skilled trade rather than a dramatic adventure." 
+    },
+    { 
+      q: 'What is the significance of the "collage" Frank carries?', 
+      a: "Frank carries a photo collage of a house, a wife, and a child—a vision of a normal life he constructed while in prison. It represents the 'American Dream' as a commodity he thinks he can buy with stolen money. His tragedy is realizing that you cannot buy a life; you have to build it, and his criminal nature makes building it impossible." 
+    },
+    { 
+      q: 'How does the Tangerine Dream score affect the movie?', 
+      a: "The electronic synth score by Tangerine Dream was revolutionary for 1981. Instead of traditional orchestral suspense music, the pulsing synths give the film a dreamlike, modern, and industrial feel. It creates a rhythm that matches the mechanical nature of the heists and the neon-lit, sleepless atmosphere of Chicago at night." 
+    },
+    { 
+      q: 'Why does Frank destroy his own house and car at the end?', 
+      a: "Frank realizes that having attachments (a wife, a house, a child) gives the mob leverage over him. To be free and to survive the coming war, he must have 'nothing he cannot walk out on in 30 seconds.' destroying his own dream is a heartbreaking act of self-mutilation; he chooses survival and independence over love and happiness, embracing his identity as a loner." 
+    },
+    { 
+      q: 'How does this film relate to Heat?', 
+      a: "Thief is considered the spiritual predecessor to Heat. Frank (James Caan) is essentially a younger, rawer version of Neil McCauley (De Niro). Both are loners with a strict code, both are experts in high-end theft, and both face the dilemma of attachment. Watching Thief provides the blueprint for the themes Michael Mann would perfect 14 years later in Heat." 
+    }
   ],
+
   "The Bank Job": [
-    { q: 'What is The Bank Job\'s narrative twist?', a: "A 1971 London bank robbery uncovers royal scandals, MI5 conspiracies, and criminal underworld secrets that powerful people will kill to protect." },
-    { q: 'Who directed and who stars?', a: "Roger Donaldson directs Jason Statham in a rare dramatic role as small-time crook Terry Leather, caught between criminals and government agents." },
-    { q: 'Is it based on a true story?', a: "Yes—based on the real Baker Street robbery where stolen safe deposit contents allegedly included compromising royal photographs and MI5 evidence." },
-    { q: 'How does the film treat conspiracy?', a: "It reveals how ordinary criminals accidentally stumbled into state secrets, forcing government cover-ups through D-notices and intimidation." },
-    { q: 'Did The Bank Job influence heist cinema?', a: "It proved fact-based heist thrillers could blend action with political intrigue, inspiring renewed interest in true crime caper films." }
+    { 
+      q: 'How much of The Bank Job is true?', 
+      a: "The film is based on the 1971 Baker Street robbery, which famously had a 'D-Notice' (government gag order) placed on it shortly after the news broke. While the dialogue is fictional, the core premise—that the robbers accidentally stole compromising photos of Princess Margaret and evidence of police corruption—is a widely accepted theory explaining why the government covered up the investigation." 
+    },
+    { 
+      q: 'What is the "D-Notice" mentioned in the film?', 
+      a: "A D-Notice (Defence and Security Media Advisory Notice) is an official request from the British government to news editors not to publish specific items for reasons of national security. The fact that a D-Notice was issued for a simple bank robbery fueled decades of conspiracy theories, which the film uses as its central plot device to suggest high-level royal involvement." 
+    },
+    { 
+      q: 'Who is Michael X and why is he important?', 
+      a: "Michael X was a real-life black power leader and criminal in 1970s London. In the film (and allegedly in real life), he used the contents of a safe deposit box to blackmail the British establishment, keeping the police from arresting him. The film portrays him as the catalyst for the heist—MI5 hires the robbers specifically to retrieve his box, not the money." 
+    },
+    { 
+      q: 'How does the film depict the 1970s London underworld?', 
+      a: "It captures the gritty, unglamorous nature of 70s London crime. Unlike the slick tech of Ocean's Eleven, these robbers use ham radios, sledgehammers, and thermal lances. It portrays a world where corrupt cops, pornographers, and intelligence agents all rub shoulders in the same Soho clubs, highlighting the systemic corruption of the era." 
+    },
+    { 
+      q: 'What happens to the characters at the end?', 
+      a: "The film suggests that the robbers used the leverage of the photos to negotiate their freedom. In reality, several men were arrested and jailed, though the ringleader remained elusive. The film provides a satisfying 'movie' ending where the little guys outsmart the spy agencies, blending historical fact with the wish-fulfillment of the heist genre." 
+    }
   ],
+
   "Dog Day Afternoon": [
-    { q: 'What is the premise of Dog Day Afternoon?', a: "Based on a true story, a desperate man robs a Brooklyn bank to fund his partner's gender confirmation surgery, sparking a media circus and hostage crisis." },
-    { q: 'Who directed Dog Day Afternoon?', a: "Sidney Lumet helms this pressure-cooker thriller, transforming a failed heist into a profound character study of desperation and media spectacle." },
-    { q: 'How does the film blur fiction and reality?', a: "Shot documentary-style with improvised dialogue, it captures the absurdity of the 1972 incident that captivated New York during a sweltering August day." },
-    { q: 'What genre is it?', a: "Crime drama with dark comedy elements—using the heist framework to explore sexuality, mental health, and the American Dream's broken promises." },
-    { q: 'How was it received?', a: "Six Oscar nominations including Best Picture, with Al Pacino's 'Attica! Attica!' chant becoming one of cinema's most iconic improvised moments." }
+    { 
+      q: 'What is the real motivation behind the robbery?', 
+      a: "The robbery was committed by John Wojtowicz (named Sonny in the film) to pay for his partner's gender confirmation surgery. This revelation turns the film from a standard crime drama into a complex exploration of love, sexuality, and desperation. It was one of the first mainstream films to sympathetically portray a bisexual protagonist and a trans woman's struggle." 
+    },
+    { 
+      q: 'Why does the crowd cheer "Attica!"?', 
+      a: "Sonny chants 'Attica!' referencing the 1971 Attica Prison riot where inmates demanded better conditions and were violently suppressed by the state. By chanting it, Sonny turns the crowd against the police, framing himself as an anti-establishment hero fighting the system. It captures the rebellious, anti-authority mood of 1970s America." 
+    },
+    { 
+      q: 'How much of the dialogue was improvised?', 
+      a: "Director Sidney Lumet encouraged heavy improvisation during rehearsals to make the dialogue feel natural and frantic. Al Pacino and the cast improvised many of the interactions with the bank tellers, creating a unique dynamic where the hostages and robbers develop a strange, friendly rapport (Stockholm Syndrome) because they are all just 'ordinary people' trapped in a crazy situation." 
+    },
+    { 
+      q: 'Why is there no musical score in the film?', 
+      a: "Sidney Lumet chose not to use a musical score to maintain absolute realism. The only music heard is from the radio in the opening scene (Elton John's 'Amoreena'). The lack of music prevents the audience from being emotionally manipulated; instead, we are forced to sit with the uncomfortable silence, the heat, and the growing anxiety of the characters in real-time." 
+    },
+    { 
+      q: 'What is the tragedy of Sal\'s character?', 
+      a: "Sal (John Cazale) is the tragic counterweight to Sonny's charisma. He is quiet, deeply religious, and terrified of going back to prison ('I don't smoke, I don't drink...'). His readiness to die rather than be captured adds a layer of fatalism to the film. While Sonny plays to the crowd, Sal is the reminder that this is a deadly serious situation that will inevitably end in blood." 
+    }
   ]
 };
 
 const HeistThrillerSEOFAQSection = ({ movie }) => {
   const [openIndex, setOpenIndex] = useState(null);
   const title = movie.Title;
+  // Fallback if movie title not found
   const faqs = heistThrillerMovieFAQs[title] || [
     { q: 'What makes this heist thriller unique?', a: "Intricate planning, high-stakes execution, and memorable criminal masterminds make this a must-watch for heist cinema fans." },
     { q: 'Where can I watch this film?', a: "Check major streaming platforms in your region for availability." },
-    { q: 'Who directed this movie?', a: "A visionary filmmaker whose craft elevated this heist thriller to cinematic excellence." }
+    { q: 'Who directed this movie?', a: "A visionary filmmaker whose craft elevated this heist thriller to cinematic excellence." },
+    { q: 'Is there a twist ending?', a: "Many heist films rely on a third-act twist. Watch closely to see if you can spot the deception before the reveal." },
+    { q: 'Is this based on a true story?', a: "Some heist films are dramatizations of real robberies, while others are pure fiction. Check the specific film details." }
   ];
 
+  const toggleFAQ = (index) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
   return (
-    <motion.section
-      className="mt-12 sm:mt-16 pt-6 sm:pt-8 border-t border-gray-700/50"
+    <motion.section 
+      className="mt-12 sm:mt-16 pt-8 sm:pt-10 border-t border-gray-700/50"
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 0.4 }}
     >
-      <h2 className="text-xl sm:text-2xl font-light text-yellow-300 mb-6 sm:mb-8 flex items-center gap-2 sm:gap-3">
-        <Info size={20} className="sm:w-6 sm:h-6" />
-        <span className="hidden sm:inline">Frequently Asked Questions About {title}</span>
-        <span className="sm:hidden">FAQ About {title}</span>
-      </h2>
-      <p className="text-gray-300 mb-4 sm:mb-6 text-sm sm:text-base">
-        Deep dive into {title} with insider knowledge, production details, and insights about this masterful heist thriller.
-      </p>
-      <div className="space-y-4 sm:space-y-6">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 sm:mb-10 gap-4">
+        <div>
+          <h2 className="text-2xl sm:text-3xl font-light text-yellow-100 flex items-center gap-3">
+            <Info size={24} className="text-yellow-400" />
+            <span>FAQs: Understanding <span className="font-semibold text-yellow-300">{title}</span></span>
+          </h2>
+          <p className="text-gray-400 mt-2 text-sm sm:text-base max-w-2xl">
+            Dive deeper into the planning, the execution, and the cinematic legacy of {title}. 
+            Warning: Some answers may contain spoilers.
+          </p>
+        </div>
+      </div>
+
+      <div className="space-y-4">
         {faqs.map((faq, idx) => (
-          <motion.div
+          <motion.div 
             key={idx}
-            className="bg-gray-800/30 rounded-xl p-4 sm:p-6 border border-gray-700/50 hover:border-yellow-400/50 transition-all duration-300"
+            className={`bg-gray-800/40 rounded-xl overflow-hidden border transition-all duration-300 ${
+              openIndex === idx ? 'border-yellow-500/50 bg-gray-800/60' : 'border-gray-700/50 hover:border-yellow-600/30'
+            }`}
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: idx * 0.1 }}
+            transition={{ duration: 0.5, delay: idx * 0.1 }}
           >
-            <h3 className="text-base sm:text-lg font-medium text-yellow-200 mb-3 sm:mb-4 leading-relaxed">
-              {faq.q}
-            </h3>
-            <p className="text-gray-300 leading-relaxed text-sm sm:text-base font-light">
-              {faq.a}
-            </p>
+            <button
+              onClick={() => toggleFAQ(idx)}
+              className="w-full flex items-center justify-between p-5 text-left focus:outline-none"
+            >
+              <span className="text-base sm:text-lg font-medium text-yellow-100 pr-4">
+                {faq.q}
+              </span>
+              {openIndex === idx ? (
+                <ChevronUp className="w-5 h-5 text-yellow-400 flex-shrink-0" />
+              ) : (
+                <ChevronDown className="w-5 h-5 text-gray-500 flex-shrink-0" />
+              )}
+            </button>
+            
+            <motion.div
+              initial={false}
+              animate={{ height: openIndex === idx ? 'auto' : 0, opacity: openIndex === idx ? 1 : 0 }}
+              transition={{ duration: 0.3 }}
+              className="overflow-hidden"
+            >
+              <div className="p-5 pt-0 text-gray-300 leading-relaxed text-sm sm:text-base font-light border-t border-gray-700/30 mt-2">
+                {faq.a}
+              </div>
+            </motion.div>
           </motion.div>
         ))}
       </div>

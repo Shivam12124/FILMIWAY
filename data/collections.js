@@ -227,7 +227,94 @@ export const COLLECTIONS = {
     }
   },
     
-  
+    
+
+
+// 🚀 TOP 10 SCI-FI MOVIES COLLECTION
+'top-10-sci-fi-movies': {
+  slug: 'top-10-sci-fi-movies',
+  title: 'Top 10 Sci-Fi Movies of All Time',
+  subtitle: 'The Ultimate Science Fiction Film List',
+  description: 'The definitive ranking of the greatest science fiction movies ever made—from cosmic odysseys to dystopian futures.',
+  longDescription: 'Journey through the greatest sci-fi films in cinematic history. From Kubrick\'s philosophical masterpieces to Nolan\'s mind-bending epics, these films push the boundaries of imagination, exploring humanity\'s relationship with technology, space, and the unknown.',
+
+  emoji: '🚀',
+  theme: 'cyan',
+  primaryColor: '#0891b2',
+  secondaryColor: '#06b6d4',
+  accentColor: '#0e7490',
+  gradientFrom: 'from-cyan-600',
+  gradientTo: 'to-cyan-500',
+  category: 'sci-fi',
+  tags: ['sci-fi', 'science fiction', 'space', 'AI', 'future', 'dystopian', 'mind-bending'],
+
+  metaTitle: 'Top 10 Sci-Fi Movies of All Time (2025) | Definitive Rankings',
+  metaDescription: 'Discover the top 10 science fiction movies ranked by experts—from 2001: A Space Odyssey to Blade Runner 2049. The ultimate sci-fi film collection.',
+  metaKeywords: 'best sci-fi movies, science fiction films, 2001 space odyssey, blade runner, the matrix, interstellar, inception, arrival, star wars',
+
+  stats: {
+    totalMovies: 10,
+    averageRating: 8.2,
+    totalWatchtime: '24 hours 7 minutes',
+    averageSciFiComplexity: 93,
+    mostComplex: 'Inception (98/100)',
+    newestMovie: 'Blade Runner 2049 (2017)',
+    oldestMovie: '2001: A Space Odyssey (1968)'
+  },
+
+  movies: [
+    'tt0062622',  // 2001: A Space Odyssey (1968)
+    'tt0082869',  // Blade Runner (1982)
+    'tt0133093',  // The Matrix (1999)
+    'tt0078748',  // Alien (1979)
+    'tt0816692',  // Interstellar (2014)
+    'tt0103064',  // Terminator 2: Judgment Day (1991)
+    'tt1375666',  // Inception (2010)
+    'tt2543164',  // Arrival (2016)
+    'tt0076759',  // Star Wars: A New Hope (1977)
+    'tt0338013'   // Blade Runner 2049 (2017)
+  ],
+
+  badges: [
+    { label: 'Sci-Fi Masterpieces', desc: 'Genre-defining science fiction' },
+    { label: 'Visionary Cinema', desc: 'Groundbreaking visual effects' },
+    { label: 'Complexity Ranked', desc: 'Ranked by sci-fi depth' }
+  ],
+
+  featured: {
+    hero: {
+      title: '2001: A Space Odyssey',
+      subtitle: 'Kubrick\'s Transcendent Masterpiece',
+      description: 'A groundbreaking exploration of human evolution, AI, and cosmic destiny that redefined science fiction cinema forever.',
+      poster: 'https://image.tmdb.org/t/p/w500/ve72VxNqjGM69Uky4WTo2bK6rfq.jpg',
+      backdrop: 'https://image.tmdb.org/t/p/w1280/1Tvm5he5uG6JYTy1POjYRUeIBpf.jpg',
+      sciFiComplexity: 99
+    }
+  },
+
+  relatedCollections: [
+    'best-time-travel-movies',
+    'movies-like-inception',
+    'best-thriller-movies'
+  ],
+
+  seo: {
+    title: 'Top 10 Sci-Fi Movies of All Time (2025) | Expert Rankings | Filmiway',
+    description: 'Explore the definitive ranking of the greatest science fiction movies—from 2001: A Space Odyssey to Blade Runner 2049. Expert-curated collection of sci-fi cinema.',
+    keywords: 'best sci-fi movies, science fiction films, top sci-fi ranking, 2001 space odyssey, blade runner, the matrix, interstellar, arrival, star wars, inception',
+    canonicalUrl: 'https://filmiway.com/collection/top-10-sci-fi-movies',
+    ogImage: 'https://filmiway.com/images/sci-fi-movies-collection-og.jpg',
+    structuredData: {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      name: 'Top 10 Sci-Fi Movies',
+      description: 'Expert-curated list of the greatest science fiction movies ranked by complexity and cinematic impact',
+      numberOfItems: 10
+    }
+  }
+},
+
+
 
 // 🕰️ Best Time Travel Movies Collection
 'best-time-travel-movies': {

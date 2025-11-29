@@ -175,7 +175,7 @@ const displayIndex = fromMysteryThrillerCollection
   : safeMovieInfo.mindBendingIndex ?? null;
 
 const scoreValue = fromTimeTravelCollection  // ✅ TIME TRAVEL ADDED
-  ? movie.timeComplexity ?? safeMovieInfo.timeComplexity ?? 0
+  ? movie.timeTravelIntensity ?? safeMovieInfo.timeTravelIntensity ?? 0
   : fromHeistThrillerCollection
   ? movie.heistComplexity ?? safeMovieInfo.heistComplexity ?? 0
   : fromCrimeThrillerCollection
@@ -644,8 +644,10 @@ const getStarColor = () => {
 
 <RealCommentsRatingSection movie={movie} />
 
-{/* ✅ FAQ SECTION WITH HEIST THRILLER SUPPORT */}
-{fromHeistThrillerCollection ? (  // ✅ HEIST THRILLER ADDED FIRST
+{/* ✅ FAQ SECTION WITH TIME TRAVEL SUPPORT - TIME TRAVEL FIRST */}
+{fromTimeTravelCollection ? (  // ✅ TIME TRAVEL ADDED FIRST
+  <TimeTravelSEOFAQSection movie={movie} />
+) : fromHeistThrillerCollection ? (
   <HeistThrillerSEOFAQSection movie={movie} />
 ) : fromCrimeThrillerCollection ? (
   <CrimeThrillerSEOFAQSection movie={movie} />
@@ -670,6 +672,7 @@ const getStarColor = () => {
 ) : (
   <SEOFAQSection movie={movie} />
 )}
+
 </motion.div>
 );
 });

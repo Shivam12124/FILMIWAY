@@ -14,7 +14,7 @@ export const PSYCH_THRILLER_MOVIES = [
     cast: ['Jodie Foster', 'Anthony Hopkins', 'Scott Glenn'],
     boxOffice: '$272.7 million',
     budget: '$19 million',
-    synopsis: "The Silence of the Lambs (1991): A young, determined FBI trainee, Clarice Starling, is forced to seek the horrifyingly brilliant counsel of Dr. Hannibal Lecter, an imprisoned cannibalistic psychiatrist. Her mission: to gain insight into Lecter's mind to track down a new, active serial killer named \"Buffalo Bill.\" This is a definitive, high-stakes psychological chess match where the line between mentor and predator blurs completely.",
+    synopsis: "Clarice Starling, a young and ambitious FBI trainee, is thrown into the deep end to catch 'Buffalo Bill,' a serial killer who skins his female victims. To save the next girl, she must enter the high-security dungeon of Dr. Hannibal Lecter—a brilliant psychiatrist turned cannibalistic monster. What begins as an interrogation evolves into a chilling, psychological waltz where Clarice must trade her own traumatic memories for Lecter's insights, risking her sanity to stop a slaughter.",
     poster: '/path/to/silence-poster.jpg',
     backdrop: '/path/to/silence-backdrop.jpg',
     backdrop_path: '/path/to/silence-backdrop.jpg',
@@ -27,7 +27,7 @@ export const PSYCH_THRILLER_MOVIES = [
       { time: 113, intensity: 94, label: 'Ending', color: '#dc2626' }
     ],
     suspenseIntensity: 94,
-    dominantColor: '#72696e',
+    dominantColor: '#4a5568', // Institutional Grey/Dungeon Stone - Cold, clinical, damp
     dna: { Thriller: 55, Crime: 30, Horror: 15 },
     sensitiveScenes: [
       { start: '18:50', end: '18:57', description: 'Explicit Scene' },
@@ -47,7 +47,7 @@ export const PSYCH_THRILLER_MOVIES = [
     cast: ['Edward Norton', 'Brad Pitt', 'Helena Bonham Carter'],
     boxOffice: '$101.2 million',
     budget: '$63 million',
-    synopsis: "Fight Club (1999): An anonymous, insomniac office worker, disillusioned with his mundane consumer life, seeks a way out. He forms an underground fight club with the charismatic, anarchic soap salesman Tyler Durden. What starts as a simple outlet for primal aggression spirals into a dangerous and destructive domestic terrorist organization, all leading up to a famous, mind-bending identity twist.",
+    synopsis: "A ticking time bomb of an insomniac, suffocated by his IKEA-catalog life, finds a strange release in the company of Tyler Durden—a charismatic soap salesman who believes self-destruction is the answer to everything. Together, they create an underground fight club that evolves into something far more dangerous: a cult-like army targeting the foundations of society itself. But as the chaos spreads, the narrator realizes that Tyler Durden is not who he seems.",
     poster: '/path/to/fightclub-poster.jpg',
     backdrop: '/path/to/fightclub-backdrop.jpg',
     backdrop_path: '/path/to/fightclub-backdrop.jpg',
@@ -60,7 +60,7 @@ export const PSYCH_THRILLER_MOVIES = [
       { time: 125, intensity: 98, label: 'Final Twist', color: '#dc2626' }
     ],
     suspenseIntensity: 98,
-    dominantColor: '#401e15',
+    dominantColor: '#3f6212', // Fincher Green - Sickly, fluorescent, grime-covered
     dna: { Drama: 70, Psychological: 20, Thriller: 10 },
     sensitiveScenes: [
       { start: '48:40', end: '48:55', description: 'Sex' },
@@ -81,7 +81,7 @@ export const PSYCH_THRILLER_MOVIES = [
     cast: ['Guy Pearce', 'Carrie-Anne Moss', 'Joe Pantoliano'],
     boxOffice: '$39.7 million',
     budget: '$9 million',
-    synopsis: "Memento (2000): Leonard Shelby is hunting the man who raped and murdered his wife. However, he suffers from a rare form of anterograde amnesia—he cannot form new memories. To cope, he uses a system of intricate notes, Polaroid photos, and mnemonic tattoos to piece together his life and his investigation, forcing the audience to follow his story in reverse chronological order.",
+    synopsis: "Leonard Shelby is a man living in a fractured reality. Unable to form new memories since the attack that killed his wife, he hunts her murderer using a complex system of Polaroid photos, handwritten notes, and tattoos on his own skin. Told in reverse chronological order, the film forces you to experience Leonard's disorientation firsthand, slowly revealing a devastating truth: when you can't trust your own mind, everyone is a suspect, including yourself.",
     poster: '/path/to/memento-poster.jpg',
     backdrop: '/path/to/memento-backdrop.jpg',
     backdrop_path: '/path/to/memento-backdrop.jpg',
@@ -93,7 +93,7 @@ export const PSYCH_THRILLER_MOVIES = [
       { time: 105, intensity: 85, label: 'Final Reveal', color: '#fde68a' }
     ],
     suspenseIntensity: 90,
-    dominantColor: '#2a2a2a',
+    dominantColor: '#d6c8b2', // Polaroid Beige - Faded, dusty, sun-bleached memory
     dna: { Mystery: 50, Thriller: 30, Drama: 20 },
     sensitiveScenes: [
       { start: '31:08', end: '31:13', description: 'Casual Kissing' }
@@ -112,7 +112,7 @@ export const PSYCH_THRILLER_MOVIES = [
     cast: ['Brad Pitt', 'Morgan Freeman', 'Kevin Spacey'],
     boxOffice: '$327.3 million',
     budget: '$33 million',
-    synopsis: "Se7en (1995): Two disparate detectives—a weary, retiring veteran and an intense, young newcomer—are dropped into a perpetually rain-soaked, morally rotting city to hunt a chillingly methodical serial killer. This killer uses the seven deadly sins as the disturbing inspiration for his gruesome, symbolic murders. It’s a relentless, psychological nightmare that culminates in one of cinema’s most notorious and unforgettable twists.",
+    synopsis: "In a city drowning in constant rain and moral decay, two detectives—one a weary veteran, the other a brash rookie—hunt a serial killer who turns the Seven Deadly Sins into gruesome tableaus of torture. As they move from one horrific crime scene to the next, they realize they aren't just catching a criminal; they are pawns in his masterwork. It is a descent into pure nihilism, ending in a desert showdown that will leave you scarred.",
     poster: '/path/to/se7en-poster.jpg',
     backdrop: '/path/to/se7en-backdrop.jpg',
     backdrop_path: '/path/to/se7en-backdrop.jpg',
@@ -125,7 +125,7 @@ export const PSYCH_THRILLER_MOVIES = [
       { time: 120, intensity: 98, label: "What's in the Box?", color: '#dc2626' }
     ],
     suspenseIntensity: 98,
-    dominantColor: '#8b1e3f',
+    dominantColor: '#1c1917', // Apathy Black - High contrast shadows, sepia rot, darkness
     dna: { Mystery: 50, Thriller: 40, Crime: 10 },
     sensitiveScenes: []
   },
@@ -142,7 +142,7 @@ export const PSYCH_THRILLER_MOVIES = [
     cast: ['Leonardo DiCaprio', 'Mark Ruffalo', 'Ben Kingsley'],
     boxOffice: '$294 million',
     budget: '$80 million',
-    synopsis: "Shutter Island (2010): In 1954, two U.S. Marshals arrive at a remote, foreboding island asylum for the criminally insane to investigate the baffling disappearance of a patient. As a massive hurricane cuts them off from the mainland, the lead investigator begins to unravel, tormented by flashes of his own violent past and growing suspicions about the true nature of the isolated hospital. It is a masterful, reality-bending plunge into paranoia.",
+    synopsis: "U.S. Marshal Teddy Daniels arrives at Shutter Island, a fortress-like asylum for the criminally insane, to find a missing patient who vanished from a locked room. But as a hurricane rips through the island, cutting off all escape, Teddy discovers that the doctors are hiding something terrible. Haunted by his own tragic past and plagued by migraines and hallucinations, he begins to suspect that he was never meant to leave the island alive.",
     poster: '/path/to/shutter-poster.jpg',
     backdrop: '/path/to/shutter-backdrop.jpg',
     backdrop_path: '/path/to/shutter-backdrop.jpg',
@@ -155,7 +155,7 @@ export const PSYCH_THRILLER_MOVIES = [
       { time: 130, intensity: 93, label: 'Truth Revealed', color: '#dc2626' }
     ],
     suspenseIntensity: 90,
-    dominantColor: '#343a40',
+    dominantColor: '#334155', // Stormy Atlantic - Blue-grey, wet rocks, dark uniforms
     dna: { Mystery: 50, Thriller: 35, Drama: 15 },
     sensitiveScenes: [
       { start: '1:10:43', end: '1:10:47', description: 'Nudity' },
@@ -175,7 +175,7 @@ export const PSYCH_THRILLER_MOVIES = [
     cast: ['Natalie Portman', 'Mila Kunis', 'Vincent Cassel'],
     boxOffice: '$106.9 million',
     budget: '$13 million',
-    synopsis: "Black Swan (2010): Nina, a painfully dedicated and fragile ballerina, lands the coveted lead role in a production of Swan Lake. As the pressure of perfection mounts and the line between her disciplined existence and the seductive chaos of her performance blurs, Nina descends into a terrifying psychological breakdown. Her obsession with the role threatens to consume her, blurring the lines between reality, competition, and hallucination.",
+    synopsis: "Nina is a ballerina whose life is consumed by dance. When she wins the lead role in 'Swan Lake,' she easily embodies the innocent White Swan but struggles to find the seductive darkness required for the Black Swan. As a rival dancer threatens to replace her, Nina's desperation triggers a terrifying metamorphosis. The pressure fractures her reality, leading to a hallucinatory nightmare where perfection demands the ultimate sacrifice.",
     poster: '/path/to/blackswan-poster.jpg',
     backdrop: '/path/to/blackswan-backdrop.jpg',
     backdrop_path: '/path/to/blackswan-backdrop.jpg',
@@ -188,7 +188,7 @@ export const PSYCH_THRILLER_MOVIES = [
       { time: 105, intensity: 90, label: 'Final Performance', color: '#dc2626' }
     ],
     suspenseIntensity: 85,
-    dominantColor: '#552d32',
+    dominantColor: '#18181b', // Obsidian Black - feathers, darkness, mirrors
     dna: { Drama: 55, Thriller: 40, Psychological: 5 },
     sensitiveScenes: [
       { start: '21:34', end: '21:40', description: 'Kissing' },
@@ -212,7 +212,7 @@ export const PSYCH_THRILLER_MOVIES = [
     cast: ['Christian Bale', 'Jennifer Jason Leigh', 'Aitana Sánchez-Gijón'],
     boxOffice: '$8.6 million',
     budget: '$5 million',
-    synopsis: "The Machinist (2004): Trevor Reznik, a machine factory worker, hasn't slept in a year. Gaunt and mentally deteriorating, he is haunted by paranoia and inexplicable events after a workplace accident. As he frantically tries to uncover a sinister conspiracy against him, the audience is taken on a dizzying journey through insomnia and guilt, desperate to distinguish between objective reality and Trevor's shattered mind.",
+    synopsis: "Trevor Reznik is a skeletal shadow of a man who hasn't slept in a year. His insomnia has eroded his mind, leaving him prone to vivid hallucinations and paranoia. When a workplace accident he causes costs a coworker his arm, Trevor becomes convinced that an enigmatic figure named Ivan is orchestrating a plot to destroy him. But as he connects the clues, he finds that the conspiracy is far more personal—and horrifying—than he imagined.",
     poster: '/path/to/machinist-poster.jpg',
     backdrop: '/path/to/machinist-backdrop.jpg',
     backdrop_path: '/path/to/machinist-backdrop.jpg',
@@ -225,7 +225,7 @@ export const PSYCH_THRILLER_MOVIES = [
       { time: 100, intensity: 85, label: 'Final Revelation', color: '#dc2626' }
     ],
     suspenseIntensity: 82,
-    dominantColor: '#3b3b3b',
+    dominantColor: '#94a3b8', // Industrial Steel - Desaturated, metallic, cold blue-grey
     dna: { Drama: 40, Thriller: 40, Psychological: 20 },
     sensitiveScenes: [
       { start: '17:00', end: '18:25', description: 'Sex' },
@@ -245,7 +245,7 @@ export const PSYCH_THRILLER_MOVIES = [
     cast: ['Choi Min-sik', 'Yoo Ji-tae', 'Kang Hye-jung'],
     boxOffice: '$15.5 million',
     budget: '$3 million',
-    synopsis: "Oldboy (2003): An ordinary man is kidnapped and inexplicably imprisoned in a dingy, isolated hotel room for fifteen long years without any explanation. Just as suddenly, he is released, given money, a cell phone, and five days to uncover the identity and motive of his tormentor. He embarks on a brutal quest for revenge, only to discover his freedom is part of an elaborate, horrifying, and pre-meditated plot.",
+    synopsis: "On a rainy night, an ordinary businessman is kidnapped and locked in a cheap hotel room for 15 years without explanation. His only connection to the world is a TV set. Then, suddenly, he is released. Armed with a hammer and a thirst for vengeance, he has five days to find his captor and discover the reason for his imprisonment. But the truth is part of a twisted game that is far more violent and tragic than his confinement ever was.",
     poster: '/path/to/oldboy-poster.jpg',
     backdrop: '/path/to/oldboy-backdrop.jpg',
     backdrop_path: '/path/to/oldboy-backdrop.jpg',
@@ -258,7 +258,7 @@ export const PSYCH_THRILLER_MOVIES = [
       { time: 120, intensity: 93, label: 'Revelation', color: '#dc2626' }
     ],
     suspenseIntensity: 90,
-    dominantColor: '#022c50ff',
+    dominantColor: '#365314', // Wallpaper Green - The sickly, patterned green of the hallway
     dna: { Drama: 40, Mystery: 30, Thriller: 30 },
     sensitiveScenes: [
       { start: '11:20', end: '11:40', description: 'Masturbating' },
@@ -281,7 +281,7 @@ export const PSYCH_THRILLER_MOVIES = [
     cast: ['Robert De Niro', 'Jodie Foster', 'Harvey Keitel'],
     boxOffice: '$28.6 million',
     budget: '$12 million',
-    synopsis: "Taxi Driver (1976): Travis Bickle, an isolated and deeply disturbed Vietnam veteran, works as a taxi driver on the sleazy, grimy streets of New York City. Unable to connect with society, he watches the city's moral decay with growing contempt. His loneliness curdles into violent obsession, leading him down a path of desperate political assassination plots and, eventually, a terrifying, righteous rampage.",
+    synopsis: "Travis Bickle is God's lonely man—a Vietnam vet driving a cab through the neon-soaked squalor of 1970s New York. Disgusted by the 'filth' he sees on the streets at night, his isolation festers into a dangerous obsession. He buys a gun, shaves his head into a Mohawk, and prepares for a self-appointed mission to wash the scum off the streets. It is a terrifying portrait of a man slowly becoming a loaded gun.",
     poster: '/path/to/taxidriver-poster.jpg',
     backdrop: '/path/to/taxidriver-backdrop.jpg',
     backdrop_path: '/path/to/taxidriver-backdrop.jpg',
@@ -294,7 +294,7 @@ export const PSYCH_THRILLER_MOVIES = [
       { time: 113, intensity: 98, label: 'Ending', color: '#dc2626' }
     ],
     suspenseIntensity: 90,
-    dominantColor: '#3f3a38',
+    dominantColor: '#eab308', // Taxi Yellow/Neon - Bright yellow against grimy night
     dna: { Drama: 50, Crime: 30, Thriller: 20 },
     sensitiveScenes: [
       { start: '35:34', end: '35:45', description: 'Sexually Suggestive Scene' },
@@ -314,7 +314,7 @@ export const PSYCH_THRILLER_MOVIES = [
     cast: ['Jack Nicholson', 'Shelley Duvall', 'Danny Lloyd'],
     boxOffice: '$44 million',
     budget: '$19 million',
-    synopsis: "The Shining (1980): Jack Torrance, a struggling writer and recovering alcoholic, takes a job as the winter caretaker at the isolated Overlook Hotel in the Colorado Rockies. As heavy snow traps Jack and his family inside the immense, empty hotel, malevolent supernatural forces—and his own demons—begin to prey on his sanity, driving him into a terrifying, murderous madness.",
+    synopsis: "Jack Torrance hopes that a winter caretaking job at the isolated Overlook Hotel will cure his writer's block. But the hotel is not as empty as it seems. As the snow piles up outside, cutting the family off from the world, the hotel's dark history begins to bleed into the present. Jack's sanity crumbles under the weight of cabin fever and supernatural influence, turning him against his wife and son in a terrifying crescendo of madness.",
     poster: '/path/to/shining-poster.jpg',
     backdrop: '/path/to/shining-backdrop.jpg',
     backdrop_path: '/path/to/shining-backdrop.jpg',
@@ -327,7 +327,7 @@ export const PSYCH_THRILLER_MOVIES = [
       { time: 140, intensity: 95, label: 'The Finale', color: '#dc2626' }
     ],
     suspenseIntensity: 93,
-    dominantColor: '#4b392d',
+    dominantColor: '#ea580c', // Overlook Hexagon Carpet - The iconic retro orange/brown
     dna: { Drama: 50, Horror: 30, Thriller: 20 },
     sensitiveScenes: [
       { start: '1:10:40', end: '1:11:00', description: 'Background Painting' },

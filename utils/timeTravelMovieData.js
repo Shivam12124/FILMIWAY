@@ -14,7 +14,7 @@ export const TIME_TRAVEL_MOVIES = [
     cast: ['Michael J. Fox', 'Christopher Lloyd', 'Lea Thompson'],
     boxOffice: '$388.8 million',
     budget: '$19 million',
-    synopsis: "Marty McFly, a typical American teenager, is accidentally sent back to 1955 in a time-traveling DeLorean invented by his eccentric scientist friend, Doc Brown. While there, he must ensure his teenage parents fall in love—or risk erasing his own existence. The quintessential time travel adventure that perfectly blends humor, heart, and iconic sci-fi storytelling.",
+    synopsis: "Marty McFly is just a typical teenager trying to play guitar and survive high school, until he is accidentally blasted 30 years into the past in a plutonium-powered DeLorean. Trapped in 1955, he inadvertently prevents his parents from meeting, setting off a chain reaction that begins to erase him from existence. Now, with the help of a younger, eccentric Doc Brown, Marty must play matchmaker to his own parents to save his future—before he fades away completely.",
     poster: '/path/to/bttf-poster.jpg',
     backdrop: '/path/to/bttf-backdrop.jpg',
     backdrop_path: '/path/to/bttf-backdrop.jpg',
@@ -28,7 +28,7 @@ export const TIME_TRAVEL_MOVIES = [
     ],
     timeTravelIntensity: 92,
     complexityLevel: 'MEDIUM',
-    dominantColor: '#3b82f6',
+    dominantColor: '#f59e0b', // Fire Trails Orange - Energetic, warm, nostalgic
     dna: { Adventure: 50, Comedy: 30, SciFi: 20 },
     sensitiveScenes: []
   },
@@ -45,7 +45,7 @@ export const TIME_TRAVEL_MOVIES = [
     cast: ['Arnold Schwarzenegger', 'Linda Hamilton', 'Edward Furlong'],
     boxOffice: '$520.9 million',
     budget: '$102 million',
-    synopsis: "A cyborg (Schwarzenegger) is sent back in time to protect young John Connor—the future leader of the human resistance—from a more advanced liquid-metal Terminator. Epic action sequences meet emotionally resonant storytelling in this groundbreaking sequel that redefined sci-fi cinema and time travel stakes.",
+    synopsis: "Ten years have passed since the first machine failed to kill Sarah Connor. Now, the future supercomputer Skynet sends a new, terrifyingly advanced liquid-metal Terminator back in time to eliminate her son, John, the future leader of the human resistance. But the resistance has sent back a protector of their own—a reprogrammed version of the very machine that once tried to kill Sarah. It is a race against an unkillable enemy to change the future.",
     poster: '/path/to/t2-poster.jpg',
     backdrop: '/path/to/t2-backdrop.jpg',
     backdrop_path: '/path/to/t2-backdrop.jpg',
@@ -59,7 +59,7 @@ export const TIME_TRAVEL_MOVIES = [
     ],
     timeTravelIntensity: 96,
     complexityLevel: 'HIGH',
-    dominantColor: '#dc2626',
+    dominantColor: '#1e3a8a', // Steel Blue Night - The iconic "Cameron Blue" lighting
     dna: { Action: 50, SciFi: 35, Thriller: 15 },
     sensitiveScenes: [
       { start: "1:32:45", end: "1:33:10", description: "Partial nudity (man)" }
@@ -78,7 +78,7 @@ export const TIME_TRAVEL_MOVIES = [
     cast: ['Arnold Schwarzenegger', 'Linda Hamilton', 'Michael Biehn'],
     boxOffice: '$78.4 million',
     budget: '$6.4 million',
-    synopsis: "A relentless cyborg assassin is sent from 2029 to 1984 to kill Sarah Connor, whose unborn son will one day lead humanity's resistance against machines. A soldier from the future follows to protect her. Groundbreaking sci-fi classic that launched one of cinema's most iconic franchises with pure time travel stakes.",
+    synopsis: "In the ashes of a nuclear future, machines rule the world. To crush the final human resistance, they send an unstoppable cyborg assassin back to 1984 to kill Sarah Connor, the unsuspecting waitress destined to birth humanity's savior. Her only hope lies with Kyle Reese, a lone soldier sent from the future to protect her. A relentless, gritty sci-fi horror where love is born in the shadow of the apocalypse.",
     poster: '/path/to/terminator-poster.jpg',
     backdrop: '/path/to/terminator-backdrop.jpg',
     backdrop_path: '/path/to/terminator-backdrop.jpg',
@@ -92,7 +92,7 @@ export const TIME_TRAVEL_MOVIES = [
     ],
     timeTravelIntensity: 94,
     complexityLevel: 'HIGH',
-    dominantColor: '#7c2d12',
+    dominantColor: '#ef4444', // Cybernetic Eye Red - High contrast noir and laser red
     dna: { Action: 45, SciFi: 40, Thriller: 15 },
     sensitiveScenes: [
       { start: "52:20", end: "53:15", description: "Sex scene" },
@@ -112,7 +112,7 @@ export const TIME_TRAVEL_MOVIES = [
     cast: ['Matthew McConaughey', 'Anne Hathaway', 'Jessica Chastain'],
     boxOffice: '$677.5 million',
     budget: '$165 million',
-    synopsis: "A team of explorers travels through a wormhole in space in an attempt to ensure humanity's survival. Mind-bending exploration of relativity, time dilation, and the emotional cost of time travel across dimensions. Visually stunning and deeply moving examination of love transcending space and time.",
+    synopsis: "With Earth plagued by blight and humanity facing extinction, ex-pilot Cooper is recruited for a desperate mission: to travel through a wormhole in search of a new habitable planet. But the mission comes with a devastating cost—relativity means that for every hour he spends in space, years pass for his children back on Earth. It is a visually spectacular, emotional epic about a father's love stretching across dimensions and time.",
     poster: '/path/to/interstellar-poster.jpg',
     backdrop: '/path/to/interstellar-backdrop.jpg',
     backdrop_path: '/path/to/interstellar-backdrop.jpg',
@@ -126,7 +126,7 @@ export const TIME_TRAVEL_MOVIES = [
     ],
     timeTravelIntensity: 95,
     complexityLevel: 'EXTREME',
-    dominantColor: '#0891b2',
+    dominantColor: '#0c4a6e', // Deep Space/Black Hole - Majestic, dark, cosmic
     dna: { SciFi: 50, Drama: 30, Adventure: 20 },
     sensitiveScenes: []
   },
@@ -143,7 +143,7 @@ export const TIME_TRAVEL_MOVIES = [
     cast: ['Ethan Hawke', 'Sarah Snook', 'Noah Taylor'],
     boxOffice: '$5.6 million',
     budget: '$5 million',
-    synopsis: "A temporal agent embarks on his final time-traveling mission to prevent an elusive criminal known as the 'Fizzle Bomber' from launching an attack that kills thousands. Paradox-heavy cerebral thriller that's one of the smartest, most intricately plotted time travel films ever made with a stunning twist.",
+    synopsis: "A temporal agent on his final assignment travels through time to catch the one criminal who has always eluded him: the 'Fizzle Bomber.' He poses as a bartender and listens to the tragic, unbelievable life story of a patron. As their narratives intertwine, the film spirals into a dizzying, paradox-laden masterpiece where the snake eats its own tail, and identity is the ultimate mystery.",
     poster: '/path/to/predestination-poster.jpg',
     backdrop: '/path/to/predestination-backdrop.jpg',
     backdrop_path: '/path/to/predestination-backdrop.jpg',
@@ -157,7 +157,7 @@ export const TIME_TRAVEL_MOVIES = [
     ],
     timeTravelIntensity: 97,
     complexityLevel: 'EXTREME',
-    dominantColor: '#854d0e',
+    dominantColor: '#78350f', // Vintage Leather/Sepia - Noir atmosphere
     dna: { SciFi: 50, Mystery: 35, Drama: 15 },
     sensitiveScenes: [
       { start: "1:02:15", end: "1:03:20", description: "Sex scene" }
@@ -176,7 +176,7 @@ export const TIME_TRAVEL_MOVIES = [
     cast: ['Shane Carruth', 'David Sullivan', 'Casey Gooden'],
     boxOffice: '$841,926',
     budget: '$7,000',
-    synopsis: "Two engineers accidentally discover a means of time travel. Ultra-complex indie masterpiece filmed on a shoestring budget. Technical, cerebral, and highly respected by time travel enthusiasts for its commitment to scientific plausibility and layered narrative complexity requiring multiple viewings.",
+    synopsis: "In a suburban garage, two engineers accidentally discover a side-effect of their error-checking device: it's a time machine. There are no special effects here, only the terrifying realism of what would actually happen if ordinary men discovered god-like power. As they exploit the timeline for stock market gains, their friendship fractures under the weight of paranoia, double-crosses, and the physical toll of rewriting reality.",
     poster: '/path/to/primer-poster.jpg',
     backdrop: '/path/to/primer-backdrop.jpg',
     backdrop_path: '/path/to/primer-backdrop.jpg',
@@ -190,7 +190,7 @@ export const TIME_TRAVEL_MOVIES = [
     ],
     timeTravelIntensity: 98,
     complexityLevel: 'EXTREME',
-    dominantColor: '#475569',
+    dominantColor: '#94a3b8', // Garage Grey/Fluorescent - Cold, clinical, low-budget realism
     dna: { SciFi: 60, Thriller: 25, Drama: 15 },
     sensitiveScenes: []
   },
@@ -207,7 +207,7 @@ export const TIME_TRAVEL_MOVIES = [
     cast: ['Bruce Willis', 'Madeleine Stowe', 'Brad Pitt'],
     boxOffice: '$168.8 million',
     budget: '$29.5 million',
-    synopsis: "In a future devastated by disease, a convict is sent back in time to gather information about the man-made virus that wiped out most of humanity. Dark, psychological, and dystopian with time travel central to its haunting, circular story about fate and madness.",
+    synopsis: "By 2035, humanity is forced to live underground after a deadly virus wipes out the population. James Cole, a convict, is volunteered to travel back to the 1990s to locate the virus's source: the Army of the Twelve Monkeys. But Cole is haunted by a recurring dream from his childhood and begins to question his own sanity. Is he a savior from the future, or just a madman lost in time?",
     poster: '/path/to/12monkeys-poster.jpg',
     backdrop: '/path/to/12monkeys-backdrop.jpg',
     backdrop_path: '/path/to/12monkeys-backdrop.jpg',
@@ -221,7 +221,7 @@ export const TIME_TRAVEL_MOVIES = [
     ],
     timeTravelIntensity: 93,
     complexityLevel: 'HIGH',
-    dominantColor: '#065f46',
+    dominantColor: '#dc2626', // The 12 Monkeys Logo Red - Anarchic, painted
     dna: { SciFi: 45, Thriller: 35, Mystery: 20 },
     sensitiveScenes: [
       { start: "1:23:40", end: "1:24:15", description: "Partial nudity" }
@@ -240,7 +240,7 @@ export const TIME_TRAVEL_MOVIES = [
     cast: ['Jake Gyllenhaal', 'Jena Malone', 'Mary McDonnell'],
     boxOffice: '$7.6 million',
     budget: '$4.5 million',
-    synopsis: "A troubled teenager is plagued by visions of a man in a large rabbit suit who manipulates him to commit a series of crimes. Surreal cult classic exploring deep time loop paradoxes, parallel universes, and existential themes with haunting atmosphere.",
+    synopsis: "Donnie Darko is a troubled teenager who narrowly escapes death when a jet engine crashes into his bedroom. He begins seeing a demonic rabbit named Frank, who tells him the world will end in 28 days. As Donnie is manipulated into committing crimes by this figure, he discovers he may be living in a Tangent Universe that is collapsing in on itself. A haunting, surreal cult classic about destiny, sacrifice, and time travel.",
     poster: '/path/to/donniedarko-poster.jpg',
     backdrop: '/path/to/donniedarko-backdrop.jpg',
     backdrop_path: '/path/to/donniedarko-backdrop.jpg',
@@ -254,7 +254,7 @@ export const TIME_TRAVEL_MOVIES = [
     ],
     timeTravelIntensity: 91,
     complexityLevel: 'HIGH',
-    dominantColor: '#581c87',
+    dominantColor: '#312e81', // Deep Indigo/Night Sky - Dreamlike, eerie, suburban night
     dna: { Drama: 45, SciFi: 35, Mystery: 20 },
     sensitiveScenes: []
   },
@@ -271,7 +271,7 @@ export const TIME_TRAVEL_MOVIES = [
     cast: ['Bill Murray', 'Andie MacDowell', 'Chris Elliott'],
     boxOffice: '$105 million',
     budget: '$14.6 million',
-    synopsis: "A cynical TV weatherman finds himself reliving the same day over and over again during an assignment in Punxsutawney, Pennsylvania. Iconic time loop comedy that's emotional, existential, and widely loved for its storytelling influence on the entire time loop genre.",
+    synopsis: "Phil Connors is an arrogant, cynical weatherman sent to cover the Groundhog Day festivities in Punxsutawney. But when he wakes up the next morning, it's Groundhog Day again. And again. And again. Trapped in a time loop with no consequences and no escape, Phil moves from hedonism to despair to eventual self-discovery. It is the gold standard of time loop films—funny, philosophical, and deeply redeeming.",
     poster: '/path/to/groundhog-poster.jpg',
     backdrop: '/path/to/groundhog-backdrop.jpg',
     backdrop_path: '/path/to/groundhog-backdrop.jpg',
@@ -285,13 +285,13 @@ export const TIME_TRAVEL_MOVIES = [
     ],
     timeTravelIntensity: 89,
     complexityLevel: 'MEDIUM',
-    dominantColor: '#be123c',
+    dominantColor: '#0ea5e9', // Winter Sky Blue - Bright, cold, clear
     dna: { Comedy: 50, Drama: 30, Fantasy: 20 },
     sensitiveScenes: []
   },
   {
     imdbID: 'tt0480669',
-    tmdbId: 13014,
+    tmdbId: 14139,
     title: 'Timecrimes',
     director: 'Nacho Vigalondo',
     genre: 'Mystery, Sci-Fi, Thriller',
@@ -302,7 +302,7 @@ export const TIME_TRAVEL_MOVIES = [
     cast: ['Karra Elejalde', 'Candela Fernández', 'Bárbara Goenaga'],
     boxOffice: '$574,188',
     budget: '$2.6 million',
-    synopsis: "A man accidentally gets into a time machine and travels back an hour. Tight, suspenseful Spanish indie thriller with clever plotting and perfect pacing for fans of mind-bending time loops and causality paradoxes.",
+    synopsis: "A man relaxing in his garden spots a mysterious woman in the woods and is suddenly attacked by a figure with a pink bandage wrapped around his face. Fleeing to a nearby facility, he stumbles into a scientific experiment and is sent back in time by one hour. What follows is a tightly wound, terrifying puzzle where he becomes the architect of his own nightmare, desperately trying to fix the past only to make it worse.",
     poster: '/path/to/timecrimes-poster.jpg',
     backdrop: '/path/to/timecrimes-backdrop.jpg',
     backdrop_path: '/path/to/timecrimes-backdrop.jpg',
@@ -316,7 +316,7 @@ export const TIME_TRAVEL_MOVIES = [
     ],
     timeTravelIntensity: 90,
     complexityLevel: 'HIGH',
-    dominantColor: '#15803d',
+    dominantColor: '#be185d', // Bloody Bandage Pink - The striking, horrific visual of the villain
     dna: { Thriller: 50, SciFi: 35, Mystery: 15 },
     sensitiveScenes: [
       { start: "18:45", end: "19:20", description: "Nudity (woman)" }
