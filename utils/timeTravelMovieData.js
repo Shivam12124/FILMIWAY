@@ -1,4 +1,4 @@
-// utils/timeTravelMovieData.js - ULTIMATE TIME TRAVEL COLLECTION ✅
+// utils/timeTravelMovieData.js - TIME TRAVEL COLLECTION WITH SENSITIVE SCENES ✅
 
 export const TIME_TRAVEL_MOVIES = [
   {
@@ -28,9 +28,13 @@ export const TIME_TRAVEL_MOVIES = [
     ],
     timeTravelIntensity: 92,
     complexityLevel: 'MEDIUM',
-    dominantColor: '#f59e0b', // Fire Trails Orange - Energetic, warm, nostalgic
+    dominantColor: '#f59e0b',
     dna: { Adventure: 50, Comedy: 30, SciFi: 20 },
-    sensitiveScenes: []
+    sensitiveScenes: [
+      { start: '1:19:30', end: '1:19:40', description: 'Kissing' },
+      { start: '1:21:49', end: '1:22:13', description: 'Sexual harassment' },
+      { start: '1:26:08', end: '1:26:12', description: 'Kissing' }
+    ]
   },
   {
     imdbID: 'tt0103064',
@@ -59,10 +63,11 @@ export const TIME_TRAVEL_MOVIES = [
     ],
     timeTravelIntensity: 96,
     complexityLevel: 'HIGH',
-    dominantColor: '#1e3a8a', // Steel Blue Night - The iconic "Cameron Blue" lighting
+    dominantColor: '#1e3a8a',
     dna: { Action: 50, SciFi: 35, Thriller: 15 },
     sensitiveScenes: [
-      { start: "1:32:45", end: "1:33:10", description: "Partial nudity (man)" }
+      { start: '6:10', end: '6:20', description: 'Partial Nudity (male, not sexual)' },
+      { start: '11:40', end: '11:52', description: 'Partial Nudity (male, not sexual)' }
     ]
   },
   {
@@ -92,11 +97,11 @@ export const TIME_TRAVEL_MOVIES = [
     ],
     timeTravelIntensity: 94,
     complexityLevel: 'HIGH',
-    dominantColor: '#ef4444', // Cybernetic Eye Red - High contrast noir and laser red
+    dominantColor: '#ef4444',
     dna: { Action: 45, SciFi: 40, Thriller: 15 },
     sensitiveScenes: [
-      { start: "52:20", end: "53:15", description: "Sex scene" },
-      { start: "1:12:30", end: "1:12:45", description: "Partial nudity" }
+      { start: '5:00', end: '7:30', description: 'Nudity (man)' },
+      { start: '1:21:50', end: '1:23:00', description: 'Passionate kissing + sex' }
     ]
   },
   {
@@ -126,7 +131,7 @@ export const TIME_TRAVEL_MOVIES = [
     ],
     timeTravelIntensity: 95,
     complexityLevel: 'EXTREME',
-    dominantColor: '#0c4a6e', // Deep Space/Black Hole - Majestic, dark, cosmic
+    dominantColor: '#0c4a6e',
     dna: { SciFi: 50, Drama: 30, Adventure: 20 },
     sensitiveScenes: []
   },
@@ -157,10 +162,12 @@ export const TIME_TRAVEL_MOVIES = [
     ],
     timeTravelIntensity: 97,
     complexityLevel: 'EXTREME',
-    dominantColor: '#78350f', // Vintage Leather/Sepia - Noir atmosphere
+    dominantColor: '#78350f',
     dna: { SciFi: 50, Mystery: 35, Drama: 15 },
     sensitiveScenes: [
-      { start: "1:02:15", end: "1:03:20", description: "Sex scene" }
+      { start: '19:07', end: '19:20', description: 'Sex + Partial Nudity' },
+      { start: '42:20', end: '42:50', description: 'Nudity' },
+      { start: '1:12:50', end: '1:12:58', description: 'Kissing' }
     ]
   },
   {
@@ -190,7 +197,7 @@ export const TIME_TRAVEL_MOVIES = [
     ],
     timeTravelIntensity: 98,
     complexityLevel: 'EXTREME',
-    dominantColor: '#94a3b8', // Garage Grey/Fluorescent - Cold, clinical, low-budget realism
+    dominantColor: '#94a3b8',
     dna: { SciFi: 60, Thriller: 25, Drama: 15 },
     sensitiveScenes: []
   },
@@ -221,10 +228,11 @@ export const TIME_TRAVEL_MOVIES = [
     ],
     timeTravelIntensity: 93,
     complexityLevel: 'HIGH',
-    dominantColor: '#dc2626', // The 12 Monkeys Logo Red - Anarchic, painted
+    dominantColor: '#dc2626',
     dna: { SciFi: 45, Thriller: 35, Mystery: 20 },
     sensitiveScenes: [
-      { start: "1:23:40", end: "1:24:15", description: "Partial nudity" }
+      { start: '16:00', end: '16:10', description: 'Partial Nudity (Man\'s butt)' },
+      { start: '1:54:08', end: '1:54:12', description: 'Kissing' }
     ]
   },
   {
@@ -254,9 +262,13 @@ export const TIME_TRAVEL_MOVIES = [
     ],
     timeTravelIntensity: 91,
     complexityLevel: 'HIGH',
-    dominantColor: '#312e81', // Deep Indigo/Night Sky - Dreamlike, eerie, suburban night
+    dominantColor: '#312e81',
     dna: { Drama: 45, SciFi: 35, Mystery: 20 },
-    sensitiveScenes: []
+    sensitiveScenes: [
+      { start: '1:18:18', end: '1:18:35', description: 'Kissing' },
+      { start: '1:27:18', end: '1:27:26', description: 'Kissing' },
+      { start: '1:48:10', end: '1:48:39', description: 'Passionate kissing' }
+    ]
   },
   {
     imdbID: 'tt0107048',
@@ -285,9 +297,13 @@ export const TIME_TRAVEL_MOVIES = [
     ],
     timeTravelIntensity: 89,
     complexityLevel: 'MEDIUM',
-    dominantColor: '#0ea5e9', // Winter Sky Blue - Bright, cold, clear
+    dominantColor: '#0ea5e9',
     dna: { Comedy: 50, Drama: 30, Fantasy: 20 },
-    sensitiveScenes: []
+    sensitiveScenes: [
+      { start: '55:00', end: '56:00', description: 'Kissing' },
+      { start: '1:25:00', end: '1:26:16', description: 'Kissing' },
+      { start: '1:40:00', end: '1:40:21', description: 'Kissing' }
+    ]
   },
   {
     imdbID: 'tt0480669',
@@ -316,10 +332,14 @@ export const TIME_TRAVEL_MOVIES = [
     ],
     timeTravelIntensity: 90,
     complexityLevel: 'HIGH',
-    dominantColor: '#be185d', // Bloody Bandage Pink - The striking, horrific visual of the villain
+    dominantColor: '#be185d',
     dna: { Thriller: 50, SciFi: 35, Mystery: 15 },
     sensitiveScenes: [
-      { start: "18:45", end: "19:20", description: "Nudity (woman)" }
+      { start: '5:05', end: '5:20', description: 'Kissing' },
+      { start: '7:07', end: '7:14', description: 'Partial nudity (woman)' },
+      { start: '10:20', end: '11:34', description: 'Nudity (woman)' },
+      { start: '46:15', end: '47:10', description: 'Suggestive Clothing (woman in underwear)' },
+      { start: '49:15', end: '49:50', description: 'Nudity (woman)' }
     ]
   }
 ];
