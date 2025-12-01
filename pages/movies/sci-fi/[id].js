@@ -409,7 +409,7 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
 const SciFiBackButton = () => {
   const handleBackClick = () => {
     if (typeof window !== 'undefined') {
-      window.location.href = '/collection/top-10-sci-fi-movies';
+      window.location.href = '/collection/best-sci-fi-movies';  // ✅ FIXED
     }
   };
 

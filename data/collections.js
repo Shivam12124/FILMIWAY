@@ -230,14 +230,12 @@ export const COLLECTIONS = {
     
 
 
-// 🚀 TOP 10 SCI-FI MOVIES COLLECTION
-'top-10-sci-fi-movies': {
-  slug: 'top-10-sci-fi-movies',
-  title: 'Top 10 Sci-Fi Movies of All Time',
+// 🚀 Best SCI-FI MOVIES COLLECTION
+'best-sci-fi-movies': {
+  slug: 'best-sci-fi-movies',
+  title: 'Best Sci-Fi Movies',
   subtitle: 'The Ultimate Science Fiction Film List',
   description: 'The definitive ranking of the greatest science fiction movies ever made—from cosmic odysseys to dystopian futures.',
-  longDescription: 'Journey through the greatest sci-fi films in cinematic history. From Kubrick\'s philosophical masterpieces to Nolan\'s mind-bending epics, these films push the boundaries of imagination, exploring humanity\'s relationship with technology, space, and the unknown.',
-
   emoji: '🚀',
   theme: 'cyan',
   primaryColor: '#0891b2',
@@ -271,8 +269,8 @@ export const COLLECTIONS = {
     'tt0103064',  // Terminator 2: Judgment Day (1991)
     'tt1375666',  // Inception (2010)
     'tt2543164',  // Arrival (2016)
-    'tt0076759',  // Star Wars: A New Hope (1977)
-    'tt0338013'   // Blade Runner 2049 (2017)
+    'tt0080684',  // Star Wars: 
+    'tt1856101'   // Blade Runner 2049 (2017)
   ],
 
   badges: [

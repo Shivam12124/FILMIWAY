@@ -84,13 +84,13 @@ const CollectionsHub = () => {
 
 {
     id: 'sci-fi',
-    title: 'Top 10 Sci-Fi Movies',
+    title: 'Best Sci-Fi Movies',
     description: 'Visionary science fiction films exploring humanity, technology, and the cosmos',
     icon: Sparkles,  // ✅ USING SPARKLES ICON (FUTURISTIC/SCI-FI)
     gradient: 'from-cyan-500 to-blue-700',  // ✅ CYAN/BLUE GRADIENT
     movieCount: '10',
     rating: '8.2',
-    directLink: '/collection/top-10-sci-fi-movies',
+    directLink: '/collection/best-sci-fi-movies',  // ✅ FIXED SLUG
     hasSubCollections: false
 },
 

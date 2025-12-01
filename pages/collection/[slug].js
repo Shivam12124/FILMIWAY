@@ -15,7 +15,7 @@ import { PSYCH_THRILLER_MOVIES } from '../../utils/psychologicalThrillerMovieDat
 import { CRIME_THRILLER_MOVIES } from '../../utils/crimeThrillerMovieData';
 import { HEIST_THRILLER_MOVIES } from '../../utils/heistThrillerMovieData';
 import { TIME_TRAVEL_MOVIES } from '../../utils/timeTravelMovieData';  // ✅ TIME TRAVEL ADDED
-
+import { SCI_FI_MOVIES } from '../../utils/sciFiMovieData';
 // Components
 import CinematicBackground from '../../components/CinematicBackground';
 import StrategicControls from '../../components/StrategicControls';
@@ -99,7 +99,7 @@ const CollectionPage = ({ collection, movies }) => {
         const timer = setTimeout(() => setIsLoading(false), 2500);
         return () => clearTimeout(timer);
     }, []);
-// 🔥 COLLECTION-SPECIFIC CONTENT FUNCTION WITH TIME TRAVEL ADDED
+// 🔥 COLLECTION-SPECIFIC CONTENT FUNCTION WITH SCI-FI & TIME TRAVEL ADDED
 const getCollectionContent = () => {
     if (collection.slug === 'movies-like-memento') {
         return {
@@ -170,6 +170,52 @@ const getCollectionContent = () => {
                 text2: "Each film has been selected for its ability to completely reframe the viewing experience, with revelations that transform every previous scene into something entirely different."
             }
         };
+    } else if (collection.slug === 'best-time-travel-movies') {  // ✅ TIME TRAVEL ADDED
+        return {
+            badge: "Temporal Paradox Cinema",
+            title: "Time Travel",
+            description: "Dive into a curated collection of mind-bending time travel films with causality loops, temporal paradoxes, and revolutionary physics that redefine reality.",
+            selection: {
+                text1: "From bootstrap paradoxes to grandfather paradoxes, these films explore the philosophical implications of time travel while maintaining thrilling narratives and emotional depth.",
+                text2: "Each time travel masterpiece features protagonists wrestling with temporal mechanics, causality loops, and the consequences of altering the past, creating experiences that challenge linear thinking."
+            },
+            ranking: {
+                text: "Our time travel complexity index evaluates temporal mechanics sophistication, paradox handling, and the depth of time travel storytelling techniques used throughout each film.",
+                points: [
+                    "Temporal paradox complexity",
+                    "Causality loop sophistication",
+                    "Time mechanics innovation",
+                    "Philosophical temporal depth"
+                ]
+            },
+            experience: {
+                text1: "Whether you're seeking intricate temporal mechanics or philosophical exploration of time itself, this collection delivers cinema's most ambitious time travel experiences.",
+                text2: "Each film has been selected for its ability to create lasting cerebral impact, with time travel concepts that continue revealing new temporal paradoxes upon repeated analysis."
+            }
+        };
+    } else if (collection.slug === 'best-sci-fi-movies') {  // ✅ SCI-FI ADDED
+        return {
+            badge: "Visionary Science Fiction",
+            title: "Sci-Fi Cinema",
+            description: "Dive into a curated collection of groundbreaking science fiction films with revolutionary concepts, philosophical depth, and stunning visual spectacle that redefine the genre.",
+            selection: {
+                text1: "From dystopian futures to cosmic adventures, these films push the boundaries of imagination while exploring profound questions about humanity, consciousness, and existence.",
+                text2: "Each sci-fi masterpiece features visionary worldbuilding, innovative concepts, and complex characters navigating extraordinary scenarios that challenge our understanding of reality and possibility."
+            },
+            ranking: {
+                text: "Our sci-fi complexity index evaluates conceptual innovation, world-building sophistication, and the depth of speculative storytelling techniques used throughout each film.",
+                points: [
+                    "Conceptual innovation depth",
+                    "World-building sophistication",
+                    "Visual spectacle achievement",
+                    "Philosophical exploration weight"
+                ]
+            },
+            experience: {
+                text1: "Whether you're seeking innovative concepts or philosophical depth, this collection delivers cinema's most visionary science fiction experiences.",
+                text2: "Each film has been selected for its ability to expand imagination and challenge perspective, with concepts that continue inspiring new ways of thinking about science, technology, and humanity."
+            }
+        };
     } else if (collection.slug === 'best-psychological-thriller-movies') {
         return {
             badge: "Psychological Thriller Cinema",
@@ -185,227 +231,203 @@ const getCollectionContent = () => {
                     "Psychological depth complexity",
                     "Narrative deception and twists",
                     "Character psychological profile",
-                    "Atmospheric tension build-up"
+                    "Tension and suspense intensity"
                 ]
             },
             experience: {
-                text1: "Perfect for fans of cerebral and unsettling thrillers that keep you questioning reality and motives.",
-                text2: "Each film selected for its ability to disturb, intrigue, and leave a lasting psychological impression."
+                text1: "Whether you're seeking psychological depth or shocking revelations, this collection delivers cinema's most intense psychological thriller experiences.",
+                text2: "Each film has been selected for its masterful exploration of the human psyche and its ability to keep viewers on edge from beginning to end."
+            }
+        };
+    } else if (collection.slug === 'best-heist-thriller-movies') {
+        return {
+            badge: "Heist Master Cinema",
+            title: "Heist Thriller",
+            description: "Dive into a curated collection of expertly crafted heist thrillers with elaborate schemes, high-stakes action, and criminal masterminds.",
+            selection: {
+                text1: "From Ocean's Eleven to Heat, these films showcase the perfect blend of planning, execution, and unexpected twists that keep audiences engaged.",
+                text2: "Each heist masterpiece features meticulous planning, brilliant execution, and the constant tension of potential failure or betrayal."
+            },
+            ranking: {
+                text: "Our heist complexity index evaluates scheme sophistication, execution brilliance, and the depth of criminal storytelling techniques used throughout each film.",
+                points: [
+                    "Heist plan sophistication",
+                    "Execution complexity",
+                    "Criminal character depth",
+                    "Suspense and tension build"
+                ]
+            },
+            experience: {
+                text1: "Whether you're seeking intricate planning or adrenaline-pumping action, this collection delivers cinema's most thrilling heist experiences.",
+                text2: "Each film has been selected for its ability to maintain tension throughout while showcasing brilliantly crafted schemes and unforgettable characters."
             }
         };
     } else if (collection.slug === 'best-crime-thriller-movies') {
         return {
             badge: "Crime Thriller Cinema",
-            title: "Crime Thrillers",
-            description: "Dive into a curated collection of gripping crime thrillers featuring cops, criminals, heists, and investigations—ranked by crime intensity and storytelling mastery",
+            title: "Crime Thriller",
+            description: "Dive into a curated collection of gripping crime thrillers exploring moral complexity, investigative brilliance, and criminal psychology.",
             selection: {
-                text1: "From cat-and-mouse heists to corrupt cop dramas, these films define the crime thriller genre with masterful direction, complex moral ambiguity, and edge-of-your-seat suspense.",
-                text2: "Each crime thriller showcases the finest in investigative storytelling, moral dilemmas, and the thin line between law and lawlessness in cinema's most intense narratives."
+                text1: "These films delve into the world of crime from multiple perspectives, creating complex narratives filled with ethical dilemmas and intense drama.",
+                text2: "Each crime thriller features masterfully crafted investigations, complex antagonists, and the psychological cat-and-mouse games that define great crime cinema."
             },
             ranking: {
-                text: "Our crime intensity index evaluates storytelling complexity, character depth, moral ambiguity, and the sophistication of crime narrative techniques throughout each film.",
+                text: "Our crime thriller index evaluates investigative complexity, moral ambiguity, and the sophistication of crime storytelling techniques throughout each film.",
                 points: [
-                    "Crime narrative complexity",
+                    "Investigative complexity",
                     "Moral ambiguity depth",
-                    "Character intelligence mastery",
-                    "Atmospheric tension intensity"
+                    "Criminal psychology insight",
+                    "Narrative tension intensity"
                 ]
             },
             experience: {
-                text1: "Perfect for fans of heist movies, detective stories, and crime epics who love intricate plots and morally complex characters.",
-                text2: "Selected for their unforgettable investigations, iconic criminals, and genre-defining storytelling that redefined crime cinema."
-            }
-        };
-    } else if (collection.slug === 'best-heist-thriller-movies') {
-        return {
-            badge: "Heist Thriller Cinema",
-            title: "Heist Thrillers",
-            description: "Dive into a curated collection of masterful heist thrillers featuring elaborate plans, high-stakes robberies, and criminal masterminds—ranked by heist complexity and execution brilliance",
-            selection: {
-                text1: "From meticulous bank robberies to impossible vault jobs, these films showcase the art of the heist with intricate planning, unexpected twists, and pulse-pounding execution sequences.",
-                text2: "Each heist masterpiece features criminal geniuses, elaborate schemes, and cat-and-mouse games between thieves and law enforcement, delivering edge-of-your-seat tension and ingenious plot mechanics."
-            },
-            ranking: {
-                text: "Our heist complexity index evaluates plan sophistication, execution brilliance, character intelligence, and the narrative tension created throughout each meticulously crafted robbery.",
-                points: [
-                    "Heist plan complexity",
-                    "Execution brilliance mastery",
-                    "Character intelligence depth",
-                    "Tension and suspense intensity"
-                ]
-            },
-            experience: {
-                text1: "Perfect for fans of Ocean's Eleven-style capers and Heat-level crime epics who love watching master thieves execute impossible jobs.",
-                text2: "Selected for their unforgettable heists, iconic criminals, and genre-defining sequences that redefined heist cinema forever."
-            }
-        };
-    } else if (collection.slug === 'best-time-travel-movies') {  // ✅ TIME TRAVEL ADDED
-        return {
-            badge: "Time Travel Cinema",
-            title: "Time Travel",
-            description: "Dive into a curated collection of mind-bending time travel films featuring paradoxes, causality loops, and temporal complexity—ranked by time travel intensity and storytelling mastery",
-            selection: {
-                text1: "From bootstrap paradoxes to temporal causality loops, these films showcase the finest examples of time travel storytelling with inventive mechanics, emotional depth, and philosophical weight.",
-                text2: "Each time travel masterpiece features protagonists navigating impossible temporal scenarios, changing the past, or trapped in infinite loops, creating experiences that challenge linear thinking."
-            },
-            ranking: {
-                text: "Our time travel complexity index evaluates paradox sophistication, temporal mechanics, narrative innovation, and the philosophical implications of time manipulation throughout each film.",
-                points: [
-                    "Temporal paradox complexity",
-                    "Time mechanics sophistication",
-                    "Narrative structure innovation",
-                    "Philosophical depth intensity"
-                ]
-            },
-            experience: {
-                text1: "Perfect for fans of Primer's cerebral puzzles and Back to the Future's adventure who love unraveling intricate temporal mechanics and causality loops.",
-                text2: "Selected for their unforgettable time travel sequences, iconic paradoxes, and genre-defining storytelling that redefined time travel cinema."
+                text1: "Whether you're seeking complex investigations or moral exploration, this collection delivers cinema's most gripping crime thriller experiences.",
+                text2: "Each film has been selected for its ability to explore the psychology of crime while maintaining intense narrative momentum and character development."
             }
         };
     } else if (collection.slug === 'best-detective-thriller-movies') {
         return {
-            badge: "Detective Thriller Cinema",
-            title: "Detective Thrillers",
-            description: "Dive into an expertly curated collection of gripping detective thrillers featuring cunning detectives, intricate mysteries, and thrilling investigations, ranked by detective brilliance and suspense.",
+            badge: "Detective Mystery Cinema",
+            title: "Detective Thriller",
+            description: "Dive into a curated collection of masterfully crafted detective thrillers with intricate mysteries, brilliant investigations, and shocking revelations.",
             selection: {
-                text1: "From classic whodunits to modern detective masterpieces, these films challenge your deductive skills and keep you guessing until the very end.",
-                text2: "Each detective thriller showcases brilliant investigative work, complex characters, and shocking twists that redefine mystery storytelling."
+                text1: "From procedural brilliance to psychological depth, these films showcase detectives unraveling complex cases through intelligence, intuition, and perseverance.",
+                text2: "Each detective masterpiece features layered mysteries, complex protagonists, and investigation techniques that keep audiences engaged until the final reveal."
             },
             ranking: {
-                text: "Our detective brilliance index evaluates puzzle complexity, investigative depth, character intelligence, and the suspense built throughout each film.",
+                text: "Our detective thriller index evaluates mystery complexity, investigative brilliance, and the sophistication of detective storytelling throughout each film.",
                 points: [
-                    "Complex detective puzzles",
-                    "Character intelligence and insight",
-                    "Suspense and tension buildup",
-                    "Narrative twist and resolution quality"
+                    "Mystery intricacy depth",
+                    "Detective brilliance",
+                    "Investigation methodology",
+                    "Revelation impact power"
                 ]
             },
             experience: {
-                text1: "Perfect for fans of cerebral thrillers and master detectives who love unraveling puzzles under tight suspense.",
-                text2: "Selected for their unforgettable investigations, iconic detectives, and genre-defining storytelling."
-            }
-        };
-    } else if (collection.slug === 'best-thriller-movies') {
-        return {
-            badge: "Suspense Thriller Cinema",
-            title: "Suspense Thrillers",
-            description: "Dive into a curated collection of edge-of-your-seat suspense thrillers known for their gripping narratives, intriguing twists, and intense atmosphere, ranked by suspense intensity",
-            selection: {
-                text1: "From psychological mind games to action-packed espionage, these films deliver masterful pacing with intriguing plot twists that keep audiences on the edge of their seats.",
-                text2: "Each suspense thriller masterpiece features protagonists facing impossible odds, mysterious conspiracies, and shocking revelations, creating an experience that lingers long after the credits roll."
-            },
-            ranking: {
-                text: "Our suspense intensity index evaluates pacing, plot twist brilliance, character complexity depth, and the overall atmosphere of tension and anticipation throughout each film.",
-                points: [
-                    "Pacing and tension build-up",
-                    "Plot twist brilliance",
-                    "Character complexity depth",
-                    "Atmospheric suspense strength"
-                ]
-            },
-            experience: {
-                text1: "Whether you're seeking thrilling narratives or psychological intrigue, this collection delivers cinema's finest suspense-driven storytelling experiences.",
-                text2: "Each film has been selected for its ability to create sustained tension, with masterfully crafted twists that completely redefine what you thought was happening."
+                text1: "Whether you're seeking complex mysteries or brilliant detective work, this collection delivers cinema's finest detective thriller experiences.",
+                text2: "Each film has been selected for its masterful construction of intricate cases and unforgettable detective characters who captivate audiences."
             }
         };
     } else if (collection.slug === 'best-mystery-thriller-movies') {
         return {
             badge: "Mystery Thriller Cinema",
-            title: "Mystery Thrillers",
-            description: "Dive into a curated collection of the greatest mystery thrillers featuring detectives, enigmatic plots, and clever narrative tricks, ranked by mystery complexity",
+            title: "Mystery Thriller",
+            description: "Dive into a curated collection of compelling mystery thrillers filled with puzzles, secrets, and shocking twists.",
             selection: {
-                text1: "From Agatha Christie puzzles to neo-noir crime dramas, these films test your mind and your nerves with intricate detective work and impossible mysteries.",
-                text2: "Each mystery thriller masterpiece features brilliant detectives, cunning criminals, and plot revelations that challenge viewers to solve the puzzle before the final act."
+                text1: "These films masterfully weave mysteries that challenge viewers to piece together clues and anticipate shocking revelations.",
+                text2: "Each mystery thriller features intricate plots where nothing is as it seems and every clue matters in the final revelation."
             },
             ranking: {
-                text: "Our mystery complexity index evaluates puzzle sophistication, detective brilliance, plot deception mastery, and the quality of narrative revelation throughout each film.",
+                text: "Our mystery thriller index evaluates puzzle complexity, narrative cleverness, and the sophistication of mystery storytelling throughout each film.",
                 points: [
-                    "Puzzle complexity sophistication",
-                    "Detective vs villain intelligence",
-                    "Atmospheric intensity depth",
-                    "Narrative deception mastery"
+                    "Mystery puzzle intricacy",
+                    "Clue sophistication",
+                    "Narrative structure cleverness",
+                    "Revelation satisfaction"
                 ]
             },
             experience: {
-                text1: "Perfect for fans of Whodunits and mind games who love piecing together clues alongside master detectives.",
-                text2: "Selected for their lasting intrigue, iconic twists, and ability to keep viewers guessing until the final reveal."
+                text1: "Whether you're seeking intricate puzzles or shocking twists, this collection delivers cinema's most engaging mystery thriller experiences.",
+                text2: "Each film has been selected for its ability to engage viewers intellectually while delivering satisfying and unexpected revelations."
+            }
+        };
+    } else if (collection.slug === 'best-thriller-movies') {
+        return {
+            badge: "Suspense Thriller Cinema",
+            title: "Thriller",
+            description: "Dive into a curated collection of pulse-pounding thrillers with edge-of-your-seat suspense, intense action, and psychological depth.",
+            selection: {
+                text1: "From relentless pacing to psychological tension, these films deliver the ultimate adrenaline rush while exploring complex characters and moral dilemmas.",
+                text2: "Each thriller masterpiece features high-stakes scenarios, unexpected twists, and the constant threat of danger that keeps audiences engaged."
+            },
+            ranking: {
+                text: "Our thriller index evaluates suspense intensity, pacing sophistication, and the depth of thriller storytelling techniques throughout each film.",
+                points: [
+                    "Suspense intensity",
+                    "Pacing momentum",
+                    "Character psychological depth",
+                    "Action sequence caliber"
+                ]
+            },
+            experience: {
+                text1: "Whether you're seeking intense suspense or psychological exploration, this collection delivers cinema's most thrilling experiences.",
+                text2: "Each film has been selected for its ability to maintain constant tension while developing compelling characters and narratives."
             }
         };
     } else if (collection.slug === 'best-survival-movies') {
         return {
             badge: "Survival Cinema",
             title: "Survival",
-            description: "Dive into a curated collection of the greatest survival films showcasing human endurance against nature, ranked by intensity and authenticity",
+            description: "Dive into a curated collection of intense survival films showcasing human resilience, raw nature, and the will to overcome impossible odds.",
             selection: {
-                text1: "From mountains to deserts, these films showcase the finest examples of human willpower, ingenuity, and perseverance against impossible odds and brutal natural environments.",
-                text2: "Each survival masterpiece features protagonists battling extreme elements, isolation, and desperation, creating raw, emotionally authentic experiences of human resilience."
+                text1: "From wilderness perils to environmental catastrophes, these films capture the essence of human determination against nature's unforgiving forces.",
+                text2: "Each survival masterpiece features protagonists battling elements, wildlife, and their own physical and psychological limits in pursuit of survival."
             },
             ranking: {
-                text: "Our survival intensity index evaluates realism, environmental brutality, human perseverance, and the emotional impact of each protagonist's struggle for survival.",
+                text: "Our survival index evaluates environmental intensity, human resilience, and the authenticity of survival scenarios throughout each film.",
                 points: [
-                    "Environmental brutality intensity",
-                    "Human perseverance depth",
-                    "Realism and authenticity level",
-                    "Emotional impact strength"
+                    "Environmental intensity",
+                    "Physical challenge realism",
+                    "Psychological endurance depth",
+                    "Survival ingenuity display"
                 ]
             },
             experience: {
-                text1: "Whether you're seeking raw survival stories or emotional depth, this collection delivers cinema's most powerful explorations of human endurance.",
-                text2: "Each film has been selected for its ability to inspire through authentic struggle, with narratives that showcase the incredible will to survive against all odds."
+                text1: "Whether you're seeking intense action or psychological exploration of human limits, this collection delivers cinema's most gripping survival experiences.",
+                text2: "Each film has been selected for its raw portrayal of human resilience and the primal struggle for survival against overwhelming odds."
             }
         };
     } else if (collection.slug === 'best-drama-movies-on-netflix') {
         return {
-            badge: "Award-Winning Drama Cinema",
-            title: "Netflix Drama", 
-            description: "Dive into a curated collection of emotionally powerful dramas streaming on Netflix, ranked by emotional intensity and critical acclaim",
+            badge: "Award-Winning Drama",
+            title: "Drama",
+            description: "Dive into a curated collection of emotionally powerful dramas featuring Oscar-winning performances and deeply moving storytelling.",
             selection: {
-                text1: "From war epics to intimate family stories, these films showcase the finest dramatic performances and storytelling available on Netflix's platform.",
-                text2: "Each drama masterpiece features powerhouse performances, emotionally gripping narratives, and award-winning direction that has defined contemporary cinema."
+                text1: "From intimate character studies to epic family sagas, these films showcase cinema's ability to capture the full spectrum of human emotion.",
+                text2: "Each drama masterpiece features complex characters, authentic relationships, and narratives that resonate with the human experience."
             },
             ranking: {
-                text: "Our emotional intensity index evaluates dramatic depth, performance quality, and the sophistication of storytelling techniques throughout each film.",
+                text: "Our drama index evaluates emotional depth, character development, and the sophistication of dramatic storytelling throughout each film.",
                 points: [
-                    "Emotional impact intensity",
-                    "Performance quality mastery",
-                    "Narrative depth complexity", 
-                    "Critical acclaim achievement"
+                    "Emotional authenticity",
+                    "Character development depth",
+                    "Narrative emotional impact",
+                    "Performance caliber"
                 ]
             },
             experience: {
-                text1: "Whether you're seeking Oscar-winning performances or emotionally charged storytelling, this collection delivers Netflix's finest dramatic cinema.",
-                text2: "Each film has been selected for its ability to create lasting emotional impact, with performances and narratives that resonate long after viewing."
+                text1: "Whether you're seeking emotional catharsis or character exploration, this collection delivers cinema's most powerful dramatic experiences.",
+                text2: "Each film has been selected for its ability to move audiences through authentic human stories and unforgettable performances."
             }
         };
     } else {
         return {
-            badge: "Cinematic Excellence",
-            title: collection.title || "Cinema", 
-            description: `Dive into a curated collection of ${collection.title || 'amazing films'} that deliver exceptional storytelling and cinematic brilliance`,
+            badge: collection.title,
+            title: collection.title,
+            description: collection.description || "Dive into a curated collection of exceptional cinema.",
             selection: {
-                text1: `This carefully curated selection represents the finest examples of ${collection.title || 'cinema'}, chosen for their exceptional storytelling, technical mastery, and lasting cultural impact.`,
-                text2: "Each film demonstrates mastery of the cinematic arts, combining innovative techniques with compelling narratives that have influenced generations of filmmakers and audiences."
+                text1: "Expertly selected films from our comprehensive database.",
+                text2: "Each selection represents the finest in cinematic storytelling and artistic achievement."
             },
             ranking: {
-                text: "Our ranking system evaluates artistic achievement, cultural impact, and technical excellence to identify the most essential films in this category.",
+                text: "Our ranking system evaluates quality, impact, and viewer engagement.",
                 points: [
-                    "Artistic achievement level",
-                    "Cultural impact depth",
-                    "Technical excellence mastery",
-                    "Narrative innovation strength"
+                    "Artistic excellence",
+                    "Narrative sophistication",
+                    "Visual achievement",
+                    "Emotional resonance"
                 ]
             },
             experience: {
-                text1: "Whether you're a casual viewer or serious cinephile, this collection offers films that showcase the very best of cinematic storytelling and artistic expression.",
-                text2: "Each selection represents a significant contribution to film history, offering both entertainment value and deeper artistic appreciation for the medium's possibilities."
+                text1: "Discover exceptional cinema tailored to your preferences.",
+                text2: "Each film has been selected for its unique contribution to cinema."
             }
         };
     }
 };
 
 
-
-// 🔥 HEADER CONTENT WITH TIME TRAVEL ADDED
+// 🔥 HEADER CONTENT WITH SCI-FI ADDED
 const getHeaderContent = () => {
     if (collection.slug === 'movies-like-memento') {
         return {
@@ -432,10 +454,15 @@ const getHeaderContent = () => {
             title: "10 Best Heist Thriller Movies – From Heat to Ocean's Eleven",
             subtitle: "Heist Thrillers with Elaborate Plans, High-Stakes Robberies & Criminal Masterminds Ranked by Heist Complexity"
         };
-    } else if (collection.slug === 'best-time-travel-movies') {  // ✅ TIME TRAVEL ADDED
+    } else if (collection.slug === 'best-time-travel-movies') {
         return {
             title: "10 Best Time Travel Movies – From Back to the Future to Primer",
             subtitle: "Time Travel Films with Paradoxes, Causality Loops & Temporal Complexity Ranked by Time Travel Intensity"
+        };
+    } else if (collection.slug === 'best-sci-fi-movies') {  // ✅ SCI-FI ADDED
+        return {
+            title: "10 Best Sci-Fi Movies – From Blade Runner to Interstellar",
+            subtitle: "Groundbreaking Science Fiction with Visionary Concepts & Philosophical Depth Ranked by Sci-Fi Complexity"
         };
     } else if (collection.slug === 'best-psychological-thriller-movies') {
         return {
@@ -476,8 +503,7 @@ const getHeaderContent = () => {
 };
 
 
-
-// 🔥 LOADER CONTENT WITH TIME TRAVEL ADDED
+// 🔥 LOADER CONTENT WITH SCI-FI ADDED
 const getLoaderContent = () => {
     if (collection?.slug === 'movies-like-memento') {
         return {
@@ -504,10 +530,15 @@ const getLoaderContent = () => {
             title: "Loading Best Heist Thriller Movies",
             description: "Curating masterful heist thrillers with community reviews and ratings"
         };
-    } else if (collection?.slug === 'best-time-travel-movies') {  // ✅ TIME TRAVEL ADDED
+    } else if (collection?.slug === 'best-time-travel-movies') {
         return {
             title: "Loading Best Time Travel Movies",
             description: "Curating mind-bending time travel films with community reviews and ratings"
+        };
+    } else if (collection?.slug === 'best-sci-fi-movies') {  // ✅ SCI-FI ADDED
+        return {
+            title: "Loading Best Sci-Fi Movies",
+            description: "Curating visionary science fiction films with community reviews and ratings"
         };
     } else if (collection?.slug === 'best-psychological-thriller-movies') {
         return {
@@ -549,7 +580,8 @@ const getLoaderContent = () => {
 
 
 
-// 🔥 STATIC META CONTENT WITH TIME TRAVEL ADDED
+
+// 🔥 STATIC META CONTENT WITH SCI-FI & TIME TRAVEL ADDED
 const getStaticMetaContent = () => {
     if (collection.slug === 'movies-like-memento') {
         return {
@@ -604,6 +636,15 @@ const getStaticMetaContent = () => {
             ogTitle: "The Most Advanced List on the Internet – 10 Best Time Travel Movies ⏳",
             twitterTitle: "⏳ The Most Advanced Handpicked List – 10 Best Time Travel Movies",
             progressText: `of Top ${movies.length} Best Time Travel Films`
+        };
+    } else if (collection.slug === 'best-sci-fi-movies') {  // ✅ SCI-FI ADDED
+        return {
+            title: "10 Best Sci-Fi Movies – From Blade Runner to Interstellar | Ranked 2025",
+            description: "Stop scrolling! This is the most advanced handpicked list on the internet of 10 groundbreaking sci-fi movies from Blade Runner to Interstellar. Carefully analyzed for visionary concepts, philosophical depth, and expert storytelling—perfect for science fiction fans!",
+            keywords: "best sci-fi movies, science fiction films, blade runner, interstellar, 2001 space odyssey, the matrix, arrival, ex machina, dune, foundation, sci-fi cinema, visionary sci-fi, philosophical sci-fi, space movies, dystopian films, artificial intelligence movies",
+            ogTitle: "The Most Advanced List on the Internet – 10 Best Sci-Fi Movies 🚀",
+            twitterTitle: "🚀 The Most Advanced Handpicked List – 10 Best Sci-Fi Movies",
+            progressText: `of Top ${movies.length} Best Sci-Fi Films`
         };
     } else if (collection.slug === 'best-psychological-thriller-movies') {
         return {
@@ -670,6 +711,7 @@ const getStaticMetaContent = () => {
         };
     }
 };
+
 
 
     const nextMovie = useCallback(() => {
@@ -742,7 +784,8 @@ const handleMovieClick = () => {
         sessionStorage.removeItem('fromPsychologicalThrillerCollection');
         sessionStorage.removeItem('fromCrimeThrillerCollection');
         sessionStorage.removeItem('fromHeistThrillerCollection');
-        sessionStorage.removeItem('fromTimeTravelCollection');  // ✅ TIME TRAVEL ADDED
+        sessionStorage.removeItem('fromTimeTravelCollection');
+        sessionStorage.removeItem('fromSciFiCollection');  // ✅ SCI-FI ADDED
 
         // Set appropriate collection flag
         if (collection.slug === 'movies-like-inception') {
@@ -767,11 +810,14 @@ const handleMovieClick = () => {
             sessionStorage.setItem('fromCrimeThrillerCollection', 'true');
         } else if (collection.slug === 'best-heist-thriller-movies') {
             sessionStorage.setItem('fromHeistThrillerCollection', 'true');
-        } else if (collection.slug === 'best-time-travel-movies') {  // ✅ TIME TRAVEL ADDED
+        } else if (collection.slug === 'best-time-travel-movies') {
             sessionStorage.setItem('fromTimeTravelCollection', 'true');
+        } else if (collection.slug === 'best-sci-fi-movies') {  // ✅ SCI-FI ADDED
+            sessionStorage.setItem('fromSciFiCollection', 'true');
         }
     }
 };
+
 
     // Get dynamic content
     const collectionContent = getCollectionContent();
@@ -1183,8 +1229,10 @@ return (
                                     ? 'movies/crime-thriller/'
                                     : collection?.slug === 'best-heist-thriller-movies'
                                     ? 'movies/heist-thriller/'
-                                    : collection?.slug === 'best-time-travel-movies'  // ✅ TIME TRAVEL ADDED
+                                    : collection?.slug === 'best-time-travel-movies'
                                     ? 'movies/time-travel/'
+                                    : collection?.slug === 'best-sci-fi-movies'  // ✅ SCI-FI ADDED
+                                    ? 'movies/sci-fi/'
                                     : 'movies/';
 
                             let itemObj = {
@@ -1285,7 +1333,7 @@ return (
                                 </motion.button>
                             )}
 
-                            {/* 🔥 FIXED FOR NEXT.JS 15 - WITH TIME TRAVEL COLLECTION URL */}
+                            {/* 🔥 FIXED FOR NEXT.JS 15 - WITH SCI-FI & TIME TRAVEL COLLECTION URL */}
                             <AnimatePresence mode="wait">
                                 <Link 
                                     href={
@@ -1311,8 +1359,10 @@ return (
                                         ? `/movies/crime-thriller/${currentMovie.imdbID}`
                                         : collection.slug === 'best-heist-thriller-movies'
                                         ? `/movies/heist-thriller/${currentMovie.imdbID}`
-                                        : collection.slug === 'best-time-travel-movies'  // ✅ TIME TRAVEL ADDED
+                                        : collection.slug === 'best-time-travel-movies'
                                         ? `/movies/time-travel/${currentMovie.imdbID}`
+                                        : collection.slug === 'best-sci-fi-movies'  // ✅ SCI-FI ADDED
+                                        ? `/movies/sci-fi/${currentMovie.imdbID}`
                                         : `/movies/${currentMovie.imdbID}`
                                     }
                                     key={currentMovieIndex}
@@ -1370,8 +1420,10 @@ return (
                                             detailPageUrl = `/movies/crime-thriller/${currentMovie.imdbID}`;
                                         } else if (collection.slug === 'best-heist-thriller-movies') {
                                             detailPageUrl = `/movies/heist-thriller/${currentMovie.imdbID}`;
-                                        } else if (collection.slug === 'best-time-travel-movies') {  // ✅ TIME TRAVEL ADDED
+                                        } else if (collection.slug === 'best-time-travel-movies') {
                                             detailPageUrl = `/movies/time-travel/${currentMovie.imdbID}`;
+                                        } else if (collection.slug === 'best-sci-fi-movies') {  // ✅ SCI-FI ADDED
+                                            detailPageUrl = `/movies/sci-fi/${currentMovie.imdbID}`;
                                         } else {
                                             detailPageUrl = `/movies/${currentMovie.imdbID}`;
                                         }
@@ -1459,7 +1511,7 @@ return (
                                         className="flex items-center space-x-2 hover:opacity-80 transition-opacity"
                                     >
                                         <Image
-                                            src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue/short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg"
+                                            src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg"
                                             alt="The Movie Database"
                                             width={50}
                                             height={20}
@@ -1492,7 +1544,7 @@ return (
 );
 };
 
-// 🔥 SSG FUNCTIONS WITH TIME TRAVEL COLLECTION ADDED
+// 🔥 SSG FUNCTIONS WITH SCI-FI & TIME TRAVEL COLLECTION ADDED
 // ✅ CORRECT getStaticPaths() - generates all collections
 export async function getStaticPaths() {
     const slugs = getAllCollectionSlugs();
@@ -1546,8 +1598,11 @@ export async function getStaticProps({ params }) {
         case 'best-heist-thriller-movies':
             movieDatabase = HEIST_THRILLER_MOVIES;
             break;
-        case 'best-time-travel-movies':  // ✅ TIME TRAVEL ADDED
+        case 'best-time-travel-movies':
             movieDatabase = TIME_TRAVEL_MOVIES;
+            break;
+        case 'best-sci-fi-movies':  // ✅ SCI-FI ADDED
+            movieDatabase = SCI_FI_MOVIES;
             break;
         default:
             // movies-like-inception, movies-like-memento, movies-like-shutter-island
