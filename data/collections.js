@@ -630,7 +630,7 @@ export const COLLECTIONS = {
       'tt0353969', // Memories of Murder (2003)
       'tt1190539', // The Chaser (2008)
       'tt0327056', // Mystic River (2003)
-      'tt32539724', // Marshland (2014)
+      'tt3253930', // Marshland (2014)
       'tt0116282', // Fargo (1996)
       'tt0106977'  // The Fugitive (1993)
     ],

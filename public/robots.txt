@@ -1,5 +1,5 @@
 # Filmiway - Enhanced robots.txt for SEO & AI Discovery
-# Last updated: November 15, 2025
+# Last updated: December 1, 2025
 
 # Default rules for all bots
 User-agent: *
@@ -9,7 +9,8 @@ Disallow: /_next/
 Disallow: /admin/
 Disallow: /.env
 Disallow: /node_modules/
-Crawl-delay: 2
+
+# NO crawl-delay for general bots - removes the bottleneck
 
 # Googlebot - Priority bot
 User-agent: Googlebot
@@ -19,7 +20,6 @@ Disallow: /_next/
 Disallow: /admin/
 Disallow: /.env
 Disallow: /node_modules/
-Crawl-delay: 1
 
 # Bingbot - FIXED: Removed specific Allow rules
 User-agent: Bingbot
@@ -29,7 +29,6 @@ Disallow: /_next/
 Disallow: /admin/
 Disallow: /.env
 Disallow: /node_modules/
-Crawl-delay: 1
 
 # YandexBot
 User-agent: YandexBot
@@ -37,67 +36,55 @@ Allow: /
 Disallow: /api/
 Disallow: /_next/
 Disallow: /admin/
-Crawl-delay: 2
 
 # AI Crawlers (GPT, Claude, Perplexity, etc.)
 User-agent: GPTBot
 Allow: /
 Disallow: /api/
-Crawl-delay: 1
 
 User-agent: ChatGPT-User
 Allow: /
 Disallow: /api/
-Crawl-delay: 1
 
 User-agent: ClaudeBot
 Allow: /
 Disallow: /api/
-Crawl-delay: 1
 
 User-agent: Claude-User
 Allow: /
 Disallow: /api/
-Crawl-delay: 1
 
 User-agent: PerplexityBot
 Allow: /
 Disallow: /api/
-Crawl-delay: 1
 
 User-agent: Google-Extended
 Allow: /
 Disallow: /api/
-Crawl-delay: 1
 
 User-agent: anthropic-ai
 Allow: /
 Disallow: /api/
-Crawl-delay: 1
 
 User-agent: Applebot
 Allow: /
 Disallow: /api/
-Crawl-delay: 1
 
 # SEO Tools
 User-agent: AhrefsBot
 Allow: /
 Disallow: /api/
 Disallow: /admin/
-Crawl-delay: 3
 
 User-agent: SemrushBot
 Allow: /
 Disallow: /api/
 Disallow: /admin/
-Crawl-delay: 3
 
 User-agent: MJ12bot
 Allow: /
 Disallow: /api/
 Disallow: /admin/
-Crawl-delay: 3
 
 # Sitemap
 Sitemap: https://filmiway.com/sitemap.xml

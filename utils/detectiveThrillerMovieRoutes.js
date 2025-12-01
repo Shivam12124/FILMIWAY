@@ -11,7 +11,7 @@ export const DETECTIVE_THRILLER_MOVIE_SLUGS = {
   'tt0353969': 'memories-of-murder',
   'tt1190539': 'the-chaser',
   'tt0327056': 'mystic-river',
-  'tt32539724': 'marshland',
+  'tt3253930': 'marshland',
   'tt0116282': 'fargo',
   'tt0106977': 'the-fugitive'
 };
