@@ -280,7 +280,7 @@ export const THRILLER_MOVIES = [
     scenes: [
       { time: 23, intensity: 45, label: 'Disappearance', color: '#b91c1c' },
       { time: 54, intensity: 67, label: 'Clue Hunt', color: '#f87171' },
-      { time: 92, intensity: 76, label: 'Twist', color: '#fbbf24' },
+      { time: 92, intensity: 76, label: 'Twist', color: '#403b2dff' },
       { time: 127, intensity: 84, label: 'Media Frenzy', color: '#fde68a' },
       { time: 145, intensity: 88, label: 'Revelation', color: '#dc2626' }
     ],
