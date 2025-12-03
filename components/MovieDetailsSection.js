@@ -2,9 +2,14 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Users, Film, BookOpen, Star } from 'lucide-react';
 
+
 // Data imports
 import { COMPLETE_MOVIE_DATA, STRATEGIC_QUOTES } from '../utils/movieData';
-import { COMPLETE_MOVIE_DATA as SURVIVAL_MOVIE_DATA, STRATEGIC_QUOTES as SURVIVAL_QUOTES, SENSITIVE_TIMELINES } from '../utils/survivalMovieData';
+import {
+  COMPLETE_MOVIE_DATA as SURVIVAL_MOVIE_DATA,
+  STRATEGIC_QUOTES as SURVIVAL_QUOTES,
+  SENSITIVE_TIMELINES
+} from '../utils/survivalMovieData';
 import COMPLETE_THRILLER_DATABASE from '../utils/thrillerMovieData';
 import MYSTERY_THRILLER_DATABASE from '../utils/mysteryThrillerMovieData';
 import dramaRoutes from '../utils/dramaMovieRoutes';
@@ -14,6 +19,7 @@ import CRIME_THRILLER_DATABASE from '../utils/crimeThrillerMovieData';
 import HEIST_THRILLER_DATABASE from '../utils/heistThrillerMovieData';
 import TIME_TRAVEL_DATABASE from '../utils/timeTravelMovieData';
 import { SCI_FI_MOVIES } from '../utils/sciFiMovieData';  // ✅ SCI-FI IMPORT ADDED
+import { WAR_FILMS_DATABASE } from '../utils/warFilmsMovieData';  // ✅ WAR FILMS IMPORT ADDED
 
 const DRAMA_MOVIE_DATA = dramaRoutes.COMPLETE_MOVIE_DATABASE;
 
@@ -21,6 +27,7 @@ const DRAMA_MOVIE_DATA = dramaRoutes.COMPLETE_MOVIE_DATABASE;
 const COMPLETE_SCI_FI_DATABASE = Object.fromEntries(
   SCI_FI_MOVIES.map(m => [m.tmdbId, m])
 );
+
 
 // Component imports
 import EnhancedIntensityGraph from './EnhancedIntensityGraph';
@@ -41,6 +48,8 @@ import CrimeThrillerSEOFAQSection from './CrimeThrillerSEOFAQSection';
 import HeistThrillerSEOFAQSection from './HeistThrillerSEOFAQSection';
 import TimeTravelSEOFAQSection from './TimeTravelSEOFAQSection';
 import SciFiSEOFAQSection from './SciFiSEOFAQSection';  // ✅ SCI-FI FAQ IMPORT ADDED
+import WarFilmsSEOFAQSection from './WarFilmsSEOFAQSection';  // ✅ WAR FAQ IMPORT ADDED
+
 
 const MovieDetailsSection = React.memo(({
   movie,
@@ -49,19 +58,22 @@ const MovieDetailsSection = React.memo(({
   fromInceptionCollection,
   fromSurvivalCollection,
   fromDramaCollection,
-  fromPsychologicalThrillerCollection, 
+  fromPsychologicalThrillerCollection,
   fromThrillerCollection,
   fromMysteryThrillerCollection,
   fromDetectiveThrillerCollection,
   fromCrimeThrillerCollection,
   fromHeistThrillerCollection,
   fromTimeTravelCollection,
-  fromSciFiCollection  // ✅ SCI-FI FLAG ADDED
+  fromSciFiCollection,   // ✅ SCI-FI FLAG ADDED
+  fromWarFilmsCollection // ✅ WAR FLAG ADDED
 }) => {
+
 
   if (!movie) return null;
 
-  const safeLookup = (collection, id) => (collection && id && collection[id]) || null;
+ const safeLookup = (collection, id) => (collection && id && collection[id]) || null;
+
 
   // ✅ SCI-FI LOOKUP ADDED
   const getSciFiMovieInfo = () => {
@@ -70,12 +82,22 @@ const MovieDetailsSection = React.memo(({
     return COMPLETE_SCI_FI_DATABASE[movie.tmdbId] || null;
   };
 
+
   // ✅ TIME TRAVEL LOOKUP
   const getTimeTravelMovieInfo = () => {
     if (!fromTimeTravelCollection || !movie.tmdbId) return null;
     if (!TIME_TRAVEL_DATABASE) return null;
     return TIME_TRAVEL_DATABASE[movie.tmdbId] || null;
   };
+
+
+  // ✅ WAR FILMS LOOKUP ADDED
+  const getWarFilmsMovieInfo = () => {
+    if (!fromWarFilmsCollection || !movie.tmdbId) return null;
+    if (!WAR_FILMS_DATABASE) return null;
+    return WAR_FILMS_DATABASE[movie.tmdbId] || null;
+  };
+
 
   // ✅ HEIST THRILLER LOOKUP
   const getHeistThrillerMovieInfo = () => {
@@ -84,6 +106,7 @@ const MovieDetailsSection = React.memo(({
     return HEIST_THRILLER_DATABASE[movie.tmdbId] || null;
   };
 
+
   // ✅ CRIME THRILLER LOOKUP
   const getCrimeThrillerMovieInfo = () => {
     if (!fromCrimeThrillerCollection || !movie.tmdbId) return null;
@@ -91,11 +114,13 @@ const MovieDetailsSection = React.memo(({
     return CRIME_THRILLER_DATABASE[movie.tmdbId] || null;
   };
 
+
   const getPsychologicalThrillerMovieInfo = () => {
     if (!fromPsychologicalThrillerCollection || !movie.tmdbId) return null;
     if (!COMPLETE_PSYCH_THRILLER_DATABASE) return null;
     return COMPLETE_PSYCH_THRILLER_DATABASE[movie.tmdbId] || null;
   };
+
 
   const getDetectiveThrillerMovieInfo = () => {
     if (!fromDetectiveThrillerCollection || !movie.tmdbId) return null;
@@ -103,11 +128,13 @@ const MovieDetailsSection = React.memo(({
     return DETECTIVE_THRILLER_DATABASE[movie.tmdbId] || null;
   };
 
+
   const getThrillerMovieInfo = () => {
     if (!fromThrillerCollection || !movie.tmdbId) return null;
     if (!COMPLETE_THRILLER_DATABASE) return null;
     return COMPLETE_THRILLER_DATABASE[movie.tmdbId] || null;
   };
+
 
   const getMysteryThrillerMovieInfo = () => {
     if (!fromMysteryThrillerCollection || !movie.tmdbId) return null;
@@ -115,8 +142,11 @@ const MovieDetailsSection = React.memo(({
     return MYSTERY_THRILLER_DATABASE[movie.tmdbId] || null;
   };
 
-  // ✅ GET MOVIE INFO FROM CORRECT COLLECTION (SCI-FI ADDED FIRST)
-  const movieInfo = fromSciFiCollection  // ✅ SCI-FI ADDED FIRST
+
+  // ✅ GET MOVIE INFO FROM CORRECT COLLECTION (WAR FILMS ADDED)
+  const movieInfo = fromWarFilmsCollection  // ✅ WAR FILMS ADDED FIRST
+    ? getWarFilmsMovieInfo()
+    : fromSciFiCollection
     ? getSciFiMovieInfo()
     : fromTimeTravelCollection
     ? getTimeTravelMovieInfo()
@@ -137,6 +167,7 @@ const MovieDetailsSection = React.memo(({
     : fromDramaCollection
     ? safeLookup(DRAMA_MOVIE_DATA, movie.tmdbId)
     : safeLookup(COMPLETE_MOVIE_DATA, movie.tmdbId);
+
 
   // ✅ DEFAULT FALLBACK DATA
   const getMovieSpecificData = (title) => ({
@@ -160,8 +191,10 @@ const MovieDetailsSection = React.memo(({
     ageRating: 'R'
   });
 
+
   const title = movie.Title || (movieInfo && movieInfo.title) || 'Unknown Title';
   const safeMovieInfo = movieInfo || getMovieSpecificData(title);
+
 
   const director = safeMovieInfo.director || movie.Director || 'Unknown Director';
   const genre = safeMovieInfo.genre || movie.Genre || 'Drama';
@@ -173,7 +206,9 @@ const MovieDetailsSection = React.memo(({
   const budget = safeMovieInfo.budget || 'N/A';
   const rating = safeMovieInfo.rating || movie.imdbRating || 7.5;
 
+
   const sensitiveScenes = safeMovieInfo.sensitiveScenes || SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes || [];
+
 
   const quote = fromMysteryThrillerCollection
     ? safeMovieInfo.synopsis || ''
@@ -183,7 +218,10 @@ const MovieDetailsSection = React.memo(({
     ? SURVIVAL_QUOTES?.[movie.tmdbId] || ''
     : STRATEGIC_QUOTES?.[movie.tmdbId] || '';
 
-  const displayIndex = fromSciFiCollection  // ✅ SCI-FI ADDED
+
+  const displayIndex = fromWarFilmsCollection  // ✅ WAR FILMS ADDED
+    ? safeMovieInfo.warIntensity ?? null
+    : fromSciFiCollection
     ? safeMovieInfo.sciFiComplexity ?? null
     : fromMysteryThrillerCollection
     ? safeMovieInfo.mysteryComplexity ?? null
@@ -193,7 +231,10 @@ const MovieDetailsSection = React.memo(({
     ? safeMovieInfo.survivabilityIndex ?? null
     : safeMovieInfo.mindBendingIndex ?? null;
 
-  const scoreValue = fromSciFiCollection  // ✅ SCI-FI ADDED
+
+  const scoreValue = fromWarFilmsCollection  // ✅ WAR FILMS ADDED
+    ? movie.warIntensity ?? safeMovieInfo.warIntensity ?? 0
+    : fromSciFiCollection
     ? movie.sciFiComplexity ?? safeMovieInfo.sciFiComplexity ?? 0
     : fromTimeTravelCollection
     ? movie.timeTravelIntensity ?? safeMovieInfo.timeTravelIntensity ?? 0
@@ -217,10 +258,21 @@ const MovieDetailsSection = React.memo(({
     ? movie.mindBendingIndex ?? safeMovieInfo.mindBendingIndex ?? 0
     : safeMovieInfo.mindBendingIndex ?? 0;
 
+
   const complexityLevel = safeMovieInfo.complexityLevel || 'HIGH';
 
+
   const getComplexityColor = (level) => {
-    if (fromSciFiCollection) {  // ✅ SCI-FI ADDED
+    if (fromWarFilmsCollection) {  // ✅ WAR FILMS ADDED
+      switch (level) {
+        case 'EXTREME': return '#991b1b';
+        case 'HIGH': return '#dc2626';
+        case 'MEDIUM': return '#f87171';
+        default: return '#6b7280';
+      }
+    }
+
+    if (fromSciFiCollection) {
       switch (level) {
         case 'EXTREME': return '#0891b2';
         case 'HIGH': return '#06b6d4';
@@ -228,6 +280,7 @@ const MovieDetailsSection = React.memo(({
         default: return '#6b7280';
       }
     }
+
 
     if (fromTimeTravelCollection) {
       switch (level) {
@@ -237,6 +290,7 @@ const MovieDetailsSection = React.memo(({
         default: return '#6b7280';
       }
     }
+
 
     if (fromHeistThrillerCollection) {
       switch (level) {
@@ -255,6 +309,7 @@ const MovieDetailsSection = React.memo(({
         default: return '#6b7280';
       }
     }
+
 
     if (fromCrimeThrillerCollection) {
       switch (level) {
@@ -309,6 +364,7 @@ const MovieDetailsSection = React.memo(({
     }
   };
 
+
   const getAgeRatingColor = (rating) => {
     switch (rating) {
       case 'G': return '#22c55e';
@@ -320,10 +376,21 @@ const MovieDetailsSection = React.memo(({
     }
   };
 
+
   const getUniqueDescription = () => {
     if (safeMovieInfo?.synopsis) return safeMovieInfo.synopsis;
     const t = title.toLowerCase();
     
+    if (t.includes('saving private ryan')) return "Following D-Day, soldiers undertake a desperate mission to find Private Ryan amid the chaos of Normandy.";
+    if (t.includes('apocalypse now')) return "A captain travels upriver through the Vietnamese jungle to locate a rogue colonel descended into madness.";
+    if (t.includes('das boot')) return "A German U-boat crew experiences the claustrophobic horror and psychological toll of submarine warfare.";
+    if (t.includes('platoon')) return "A young soldier witnesses the brutal reality and moral corruption of the Vietnam War firsthand.";
+    if (t.includes('1917')) return "Two soldiers race through no man's land to deliver orders that could save thousands during WWI.";
+    if (t.includes('come and see')) return "A young partisan witnesses devastating German atrocities during WWII occupation in Belarus.";
+    if (t.includes('schindler')) return "A businessman risks everything to save over a thousand Jewish refugees from the Holocaust.";
+    if (t.includes('full metal jacket')) return "Marines endure brutal boot camp training before confronting the chaos of Vietnam combat.";
+    if (t.includes('paths of glory')) return "A colonel challenges a senseless WWI military order to defend soldiers condemned to death.";
+    if (t.includes('lawrence of arabia')) return "T.E. Lawrence becomes a legendary leader of Arab forces during World War I.";
     if (t.includes('back to the future')) return "Marty McFly travels back in time to ensure his parents fall in love, while navigating temporal paradoxes.";
     if (t.includes('primer')) return "Engineers accidentally discover time travel in their garage, leading to increasingly complex temporal loops.";
     if (t.includes('interstellar')) return "Astronauts journey through a wormhole seeking a new home, experiencing extreme time dilation.";
@@ -337,8 +404,10 @@ const MovieDetailsSection = React.memo(({
     return "A compelling exploration of truth, identity, and the limits of human understanding.";
   };
 
+
   const getComplexityScoreTitle = () => {
-    if (fromSciFiCollection) return 'SCI-FI COMPLEXITY SCORE';  // ✅ SCI-FI ADDED
+    if (fromWarFilmsCollection) return 'WAR INTENSITY SCORE';  // ✅ WAR FILMS ADDED
+    if (fromSciFiCollection) return 'SCI-FI COMPLEXITY SCORE';
     if (fromTimeTravelCollection) return 'TIME TRAVEL COMPLEXITY SCORE';
     if (fromHeistThrillerCollection) return 'HEIST COMPLEXITY SCORE';
     if (fromCrimeThrillerCollection) return 'CRIME INTENSITY SCORE';
@@ -354,8 +423,10 @@ const MovieDetailsSection = React.memo(({
     return 'COMPLEXITY SCORE';
   };
 
+
   const getComplexityIndexLabel = () => {
-    if (fromSciFiCollection) return 'SCI-FI COMPLEXITY INDEX';  // ✅ SCI-FI ADDED
+    if (fromWarFilmsCollection) return 'WAR INTENSITY INDEX';  // ✅ WAR FILMS ADDED
+    if (fromSciFiCollection) return 'SCI-FI COMPLEXITY INDEX';
     if (fromTimeTravelCollection) return 'TIME COMPLEXITY INDEX';
     if (fromHeistThrillerCollection) return 'HEIST COMPLEXITY INDEX';
     if (fromCrimeThrillerCollection) return 'CRIME INTENSITY INDEX';
@@ -371,8 +442,10 @@ const MovieDetailsSection = React.memo(({
     return 'MIND-BENDING INDEX';
   };
 
+
   const getComplexityLevelLabel = () => {
-    if (fromSciFiCollection) return 'COSMIC COMPLEXITY LEVEL';  // ✅ SCI-FI ADDED
+    if (fromWarFilmsCollection) return 'COMBAT REALISM LEVEL';  // ✅ WAR FILMS ADDED
+    if (fromSciFiCollection) return 'COSMIC COMPLEXITY LEVEL';
     if (fromTimeTravelCollection) return 'TEMPORAL PARADOX LEVEL';
     if (fromHeistThrillerCollection) return 'HEIST COMPLEXITY LEVEL';
     if (fromCrimeThrillerCollection) return 'CRIME COMPLEXITY LEVEL';
@@ -388,13 +461,22 @@ const MovieDetailsSection = React.memo(({
     return 'COGNITIVE DISTORTION LEVEL';
   };
 
+
   const getComplexityDescription = () => {
-    if (fromSciFiCollection) {  // ✅ SCI-FI ADDED
+    if (fromWarFilmsCollection) {  // ✅ WAR FILMS ADDED
+      if (scoreValue >= 90) return 'An absolutely brutal and unflinching war masterpiece with visceral combat realism, devastating human cost, and profound anti-war sentiment.';
+      if (scoreValue >= 80) return 'A powerful war epic with intense combat sequences, complex moral questions, and significant psychological and emotional impact.';
+      if (scoreValue >= 70) return 'An engaging war narrative with authentic combat sequences, compelling storytelling, and meaningful war themes.';
+      return 'An accessible war film with solid action sequences and engaging military storytelling.';
+    }
+
+    if (fromSciFiCollection) {
       if (scoreValue >= 90) return 'A visionary sci-fi masterpiece with groundbreaking concepts, philosophical depth, and transcendent cosmic storytelling.';
       if (scoreValue >= 80) return 'A sophisticated sci-fi epic with innovative world-building, complex themes, and stunning visual spectacle.';
       if (scoreValue >= 70) return 'An engaging sci-fi narrative with compelling ideas, imaginative world-building, and solid execution.';
       return 'An accessible sci-fi adventure with creative concepts and entertaining storytelling.';
     }
+
 
     if (fromTimeTravelCollection) {
       if (scoreValue >= 90) return 'A mind-bending temporal masterpiece with paradoxes, causality loops, and revolutionary time travel mechanics.';
@@ -402,6 +484,7 @@ const MovieDetailsSection = React.memo(({
       if (scoreValue >= 70) return 'An engaging time travel story with thoughtful paradoxes and compelling temporal logic.';
       return 'An accessible time travel adventure with clever mechanics and satisfying temporal storytelling.';
     }
+
 
     if (fromHeistThrillerCollection) {
       if (scoreValue >= 90) return 'A masterfully executed heist thriller with unparalleled planning complexity, ingenious execution, and cinematic brilliance.';
@@ -458,8 +541,10 @@ const MovieDetailsSection = React.memo(({
     return 'Accessible complexity with subtle mind-bending elements rewarding careful viewing.';
   };
 
+
   const getBorderColor = () => {
-    if (fromSciFiCollection) return 'border-cyan-400/40';  // ✅ SCI-FI ADDED
+    if (fromWarFilmsCollection) return 'border-red-400/40';  // ✅ WAR FILMS ADDED
+    if (fromSciFiCollection) return 'border-cyan-400/40';
     if (fromTimeTravelCollection) return 'border-cyan-400/40';
     if (fromHeistThrillerCollection) return 'border-amber-400/40';
     if (fromCrimeThrillerCollection) return 'border-slate-400/40'; 
@@ -473,8 +558,10 @@ const MovieDetailsSection = React.memo(({
     return 'border-yellow-400/40';
   };
 
+
   const getStarColor = () => {
-    if (fromSciFiCollection) return 'text-cyan-400';  // ✅ SCI-FI ADDED
+    if (fromWarFilmsCollection) return 'text-red-400';  // ✅ WAR FILMS ADDED
+    if (fromSciFiCollection) return 'text-cyan-400';
     if (fromTimeTravelCollection) return 'text-cyan-400';
     if (fromHeistThrillerCollection) return 'text-amber-400';
     if (fromCrimeThrillerCollection) return 'text-slate-400';  
@@ -487,8 +574,6 @@ const MovieDetailsSection = React.memo(({
     if (fromMementoCollection) return 'text-yellow-400';
     return 'text-yellow-400';
   };
-
-
 
   return (
     <motion.div
@@ -680,45 +765,53 @@ const MovieDetailsSection = React.memo(({
 
       <SensitiveContentTimelineSection movie={movie} sensitiveScenes={sensitiveScenes} />
 
-    {/* ✅ DYNAMIC DNA AND INTENSITY GRAPH FROM MOVIEINFO */}
-    <EnhancedIntensityGraph scenes={safeMovieInfo.scenes} dominantColor={safeMovieInfo.dominantColor} />
-    <StrategicDNAHelix dna={safeMovieInfo.dna} dominantColor={safeMovieInfo.dominantColor} />
+      {/* ✅ DYNAMIC DNA AND INTENSITY GRAPH FROM MOVIEINFO */}
+  <EnhancedIntensityGraph
+    scenes={safeMovieInfo.scenes}
+    dominantColor={safeMovieInfo.dominantColor}
+  />
+  <StrategicDNAHelix
+    dna={safeMovieInfo.dna}
+    dominantColor={safeMovieInfo.dominantColor}
+  />
 
-    <RealCommentsRatingSection movie={movie} />
+  <RealCommentsRatingSection movie={movie} />
 
-    {/* ✅ FAQ SECTION WITH SCI-FI AND TIME TRAVEL SUPPORT - SCI-FI FIRST */}
-    {fromSciFiCollection ? (  // ✅ SCI-FI ADDED FIRST
-      <SciFiSEOFAQSection movie={movie} />
-    ) : fromTimeTravelCollection ? (
-      <TimeTravelSEOFAQSection movie={movie} />
-    ) : fromHeistThrillerCollection ? (
-      <HeistThrillerSEOFAQSection movie={movie} />
-    ) : fromCrimeThrillerCollection ? (
-      <CrimeThrillerSEOFAQSection movie={movie} />
-    ) : fromDetectiveThrillerCollection ? (
-      <DetectiveThrillerSEOFAQSection movie={movie} />
-    ) : fromMysteryThrillerCollection ? (
-      <MysteryThrillerSEOFAQSection movie={movie} />
-    ) : fromPsychologicalThrillerCollection ? (
-      <PsychThrillerSEOFAQSection movie={movie} />
-    ) : fromThrillerCollection ? (
-      <ThrillerSEOFAQSection movie={movie} />
-    ) : fromSurvivalCollection ? (
-      <SurvivalSEOFAQSection movie={movie} />
-    ) : fromDramaCollection ? (
-      <DramaSEOFAQSection movie={movie} />
-    ) : fromInceptionCollection ? (
-      <SEOFAQSection movie={movie} />
-    ) : fromShutterIslandCollection ? (
-      <ShutterIslandSEOFAQSection movie={movie} />
-    ) : fromMementoCollection ? (
-      <MementoSEOFAQSection movie={movie} />
-    ) : (
-      <SEOFAQSection movie={movie} />
-    )}
+  {/* ✅ FAQ SECTION WITH WAR, SCI-FI AND TIME TRAVEL SUPPORT - WAR FIRST */}
+  {fromWarFilmsCollection ? (
+    <WarFilmsSEOFAQSection movie={movie} />
+  ) : fromSciFiCollection ? (  // ✅ SCI-FI NEXT
+    <SciFiSEOFAQSection movie={movie} />
+  ) : fromTimeTravelCollection ? (
+    <TimeTravelSEOFAQSection movie={movie} />
+  ) : fromHeistThrillerCollection ? (
+    <HeistThrillerSEOFAQSection movie={movie} />
+  ) : fromCrimeThrillerCollection ? (
+    <CrimeThrillerSEOFAQSection movie={movie} />
+  ) : fromDetectiveThrillerCollection ? (
+    <DetectiveThrillerSEOFAQSection movie={movie} />
+  ) : fromMysteryThrillerCollection ? (
+    <MysteryThrillerSEOFAQSection movie={movie} />
+  ) : fromPsychologicalThrillerCollection ? (
+    <PsychThrillerSEOFAQSection movie={movie} />
+  ) : fromThrillerCollection ? (
+    <ThrillerSEOFAQSection movie={movie} />
+  ) : fromSurvivalCollection ? (
+    <SurvivalSEOFAQSection movie={movie} />
+  ) : fromDramaCollection ? (
+    <DramaSEOFAQSection movie={movie} />
+  ) : fromInceptionCollection ? (
+    <SEOFAQSection movie={movie} />
+  ) : fromShutterIslandCollection ? (
+    <ShutterIslandSEOFAQSection movie={movie} />
+  ) : fromMementoCollection ? (
+    <MementoSEOFAQSection movie={movie} />
+  ) : (
+    <SEOFAQSection movie={movie} />
+  )}
 
-  </motion.div>
-  );
+</motion.div>
+);
 });
 
 MovieDetailsSection.displayName = 'MovieDetailsSection';

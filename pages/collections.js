@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Head from 'next/head';
 import Link from 'next/link';
-import { Search, Brain, Mountain, Film, ChevronDown, Sparkles, Plus, ArrowRight, Star, Clock, Eye, Scale, DollarSign } from 'lucide-react';
+import { Search, Brain, Mountain, Film, ChevronDown, Sparkles, Plus, ArrowRight, Star, Clock, Eye, Scale, DollarSign, Shield } from 'lucide-react';
 
 
 
@@ -57,6 +57,21 @@ const CollectionsHub = () => {
             hasSubCollections: false
         },
  
+
+{
+  id: 'war-films',
+  title: 'Best War Films',
+  description: 'Brutally realistic war movies capturing combat, sacrifice, and the human cost of conflict',
+  icon: Shield, // 🛡 War / protection symbolism
+  gradient: 'from-red-600 to-amber-700', // Deep red/amber war tone
+  movieCount: '10',
+  rating: '9.0',
+  directLink: '/collection/best-war-films',
+  hasSubCollections: false
+},
+
+
+
         {
             id: 'crime-thriller',  // ✅ CRIME THRILLER COLLECTION ADDED
             title: 'Best Crime Thriller Movies',

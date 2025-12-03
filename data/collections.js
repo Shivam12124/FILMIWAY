@@ -230,6 +230,127 @@ export const COLLECTIONS = {
     
 
 
+
+  // ⚔️ BEST WAR FILMS COLLECTION
+  'best-war-films': {
+    slug: 'best-war-films',
+    title: '10 Best War Films Ever Made',
+    subtitle: 'Brutal, Unflinching War Masterpieces',
+    description:
+      'From D-Day beaches to jungle firefights and submarine claustrophobia, these war films expose the chaos, trauma, and humanity inside battle.',
+    longDescription:
+      'This collection brings together the most essential war films ever made—stories that go beyond tactics and heroism to confront trauma, moral collapse, and the human cost of conflict. From the visceral Normandy landings of Saving Private Ryan to the nightmarish psychological descent of Apocalypse Now and the stark anti-war fury of Come and See, each film here is chosen for its cinematic power, realism, and emotional impact.',
+
+    emoji: '⚔️',
+    theme: 'red',
+    primaryColor: '#dc2626',
+    secondaryColor: '#b91c1c',
+    accentColor: '#7f1d1d',
+    gradientFrom: 'from-red-700',
+    gradientTo: 'to-red-600',
+
+    category: 'war',
+    tags: [
+      'war',
+      'world war ii',
+      'vietnam war',
+      'anti-war',
+      'combat',
+      'epic',
+      'true stories'
+    ],
+
+    metaTitle:
+      '10 Best War Films Ever Made (2025) | Expert War Movies Ranking',
+    metaDescription:
+      'Explore 10 essential war films—from Saving Private Ryan and Apocalypse Now to Das Boot and Paths of Glory. A definitive, expert-curated ranking of the greatest war movies ever made, updated for 2025.',
+    metaKeywords:
+      'best war films, best war movies, world war 2 films, vietnam war movies, saving private ryan, apocalypse now, schindlers list, full metal jacket, das boot, platoon, paths of glory, 1917',
+
+    stats: {
+      totalMovies: 10,
+      averageRating: 8.4,
+      totalWatchtime: '24 hours 5 minutes',
+      averageWarIntensity: 92,
+      mostAcclaimed: 'Saving Private Ryan (8.6/10)',
+      newestMovie: '1917 (2019)',
+      oldestMovie: 'Paths of Glory (1957)'
+    },
+
+    movies: [
+      'tt0120815', // Saving Private Ryan (1998)
+      'tt0078788', // Apocalypse Now (1979)
+      'tt0056172', // Lawrence of Arabia (1962)
+      'tt0091251', // Come and See (1985)
+      'tt0108052', // Schindler's List (1993)
+      'tt0093058', // Full Metal Jacket (1987)
+      'tt8183660', // 1917 (2019)
+      'tt0082096', // Das Boot (1981)
+      'tt0091763', // Platoon (1986)
+      'tt0047528'  // Paths of Glory (1957)
+    ],
+
+    badges: [
+      {
+        label: 'Anti-War Impact',
+        desc: 'Films that confront the true cost of conflict'
+      },
+      {
+        label: 'Critically Acclaimed',
+        desc: 'Oscar-winning and top-rated war cinema'
+      },
+      {
+        label: 'Historically Grounded',
+        desc: 'Stories rooted in real wars and events'
+      }
+    ],
+
+    featured: {
+      hero: {
+        title: 'Saving Private Ryan',
+        subtitle: 'D-Day Realism Redefined',
+        description:
+          'Steven Spielberg’s landmark World War II epic that combines unflinching battlefield realism with devastating emotional power.',
+        poster:
+          'https://image.tmdb.org/t/p/w500/miDoEMlYDJhOCvxlzI0wZqBs9Yt.jpg',
+        backdrop:
+          'https://image.tmdb.org/t/p/w1280/1wY4psJ5NVEhCuOYROwLH2XExM2.jpg',
+        warIntensity: 97
+      }
+    },
+
+    relatedCollections: [
+      'best-drama-movies-on-netflix',
+      'best-survival-movies',
+      'best-crime-thriller-movies'
+    ],
+
+    seo: {
+      title:
+        '10 Best War Films Ever Made (2025) | Expert War Movies Ranking | Filmiway',
+      description:
+        'Discover Filmiway’s definitive ranking of the 10 greatest war films ever made, from Saving Private Ryan and Apocalypse Now to Das Boot and Paths of Glory.',
+      keywords:
+        'best war films, war movie ranking, world war 2 films, vietnam war films, anti-war cinema, saving private ryan, apocalypse now, das boot, platoon, paths of glory',
+      canonicalUrl: 'https://filmiway.com/collection/best-war-films',
+      ogImage: 'https://filmiway.com/images/war-films-collection-og.jpg',
+      structuredData: {
+        '@context': 'https://schema.org',
+        '@type': 'ItemList',
+        name: 'Best War Films',
+        description:
+          'Expert-curated list of the greatest war films ranked by intensity, realism, and historical impact',
+        numberOfItems: 10
+      }
+    }
+  },
+
+
+
+
+
+
+
 // 🚀 Best SCI-FI MOVIES COLLECTION
 'best-sci-fi-movies': {
   slug: 'best-sci-fi-movies',

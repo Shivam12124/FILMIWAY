@@ -1,4 +1,4 @@
-// pages/_app.js - 🔥 SEO + CLARITY (Script Method - Next.js Safe)
+// pages/_app.js - 🔥 SEO + CLARITY (Script Method - Next.js Safe) - CANONICAL REMOVED
 import '../styles/globals.css'
 import { useEffect, useState } from 'react'
 import Head from 'next/head'
@@ -23,11 +23,11 @@ export default function App({ Component, pageProps }) {
     }
   }, []);
   
-  // ✅ Create canonical URL safely
-  const getCanonicalUrl = () => {
-    if (!mounted) return 'https://filmiway.com';  // Default during SSR
+  // ✅ Get current URL for Open Graph (no canonical needed here)
+  const getCurrentUrl = () => {
+    const baseUrl = 'https://filmiway.com';
     const cleanPath = router.asPath.split('?')[0].split('#')[0];
-    return `https://filmiway.com${cleanPath}`;
+    return `${baseUrl}${cleanPath}`;
   };
 
   return (
@@ -38,8 +38,7 @@ export default function App({ Component, pageProps }) {
         <meta name="googlebot" content="index, follow" />
         <meta name="bingbot" content="index, follow" />
         
-        {/* ✅ Canonical URL */}
-        <link rel="canonical" href={getCanonicalUrl()} />
+        {/* ✅ REMOVED CANONICAL - Pages set their own */}
         
         {/* Viewport & Theme */}
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -48,7 +47,7 @@ export default function App({ Component, pageProps }) {
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         
         {/* Open Graph */}
-        <meta property="og:url" content={getCanonicalUrl()} />
+        <meta property="og:url" content={getCurrentUrl()} />
         <meta property="og:site_name" content="Filmiway" />
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_US" />
@@ -58,8 +57,6 @@ export default function App({ Component, pageProps }) {
         <meta name="twitter:site" content="@filmiway" />
         <meta name="twitter:creator" content="@filmiway" />
         
-        
-
         {/* Fonts, Icons, Manifest */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
