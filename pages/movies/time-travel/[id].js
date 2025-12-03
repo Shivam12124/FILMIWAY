@@ -542,15 +542,78 @@ const TimeTravelMoviePage = ({ movie }) => {
       <TimeTravelBackButton />
       <div className="relative z-10 pt-10 sm:pt-12 lg:pt-16">
         <OptimizedBanner movie={movie} movieData={mergedMovieData} trailer={trailer} isMobile={isMobile} />
-        <div className="container mx-auto px-0 pb-16 sm:pb-24 lg:pb-32 max-w-7xl">
+              <div className="container mx-auto px-0 pb-16 sm:pb-24 lg:pb-32 max-w-7xl">
           <motion.div id="watch" initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.2, duration: 0.8 }} className="space-y-8 sm:space-y-12 px-3 sm:px-4 lg:px-6">
             <MovieDetailsSection movie={{ ...movie, Title: movie.title }} fromTimeTravelCollection={true} />
           </motion.div>
         </div>
-      </div>
-    </div>
+
+        {/* ✅ FOOTER SECTION */}
+        <motion.footer
+          className="relative z-20 bg-gradient-to-t from-gray-900 to-black mt-16 pt-12 border-t border-gray-800/30 text-center w-full"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.5, duration: 0.8 }}
+        >
+          <p className="text-gray-500 text-sm sm:text-base font-light tracking-wide mb-8 px-4">
+            Curated cinema for discerning viewers — Expert analysis and community insights
+          </p>
+
+          <div className="flex justify-center items-center gap-8 sm:gap-12 mb-8">
+            <div className="w-16 sm:w-24 h-px bg-gradient-to-r from-transparent to-gray-700"></div>
+            <div className="text-blue-400/60 text-xs tracking-[0.3em] uppercase font-medium">
+              Filmiway · Time Travel Collection
+            </div>
+            <div className="w-16 sm:w-24 h-px bg-gradient-to-l from-transparent to-gray-700"></div>
+          </div>
+
+          {/* TMDB Attribution */}
+          <motion.div
+            className="mb-8 pt-6 border-t border-gray-900/50 px-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.8, duration: 1 }}
+          >
+            <div className="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-4">
+              <p className="text-gray-600 text-sm">Movie data and posters powered by</p>
+              <a
+                href="https://www.themoviedb.org"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center space-x-2 hover:opacity-80 transition-opacity"
+              >
+                <Image
+                  src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg"
+                  alt="The Movie Database"
+                  width={50}
+                  height={20}
+                  className="h-5 w-auto"
+                  loading="lazy"
+                />
+                <span className="text-blue-400 text-sm hover:text-blue-300 transition-colors">
+                  The Movie Database (TMDB)
+                </span>
+              </a>
+            </div>
+            <p className="text-gray-700 text-xs mt-2 text-center">
+              This product uses the TMDB API but is not endorsed or certified by TMDB.
+            </p>
+          </motion.div>
+
+          <div className="flex items-center justify-center space-x-8 text-gray-500 text-sm pb-8">
+            <span>© 2025 Filmiway</span>
+            <span>•</span>
+            <span>All Rights Reserved</span>
+            <span>•</span>
+            <span>Where Every Film Finds Its Way</span>
+          </div>
+        </motion.footer>
+
+      </div> {/* Close pt-10 div */}
+    </div> 
   );
 };
+
 
 export async function getStaticPaths() {
   const paths = TIME_TRAVEL_MOVIES.map((movie) => ({

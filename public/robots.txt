@@ -1,5 +1,5 @@
 # Filmiway - Enhanced robots.txt for SEO & AI Discovery
-# Last updated: December 1, 2025
+# Last updated: December 3, 2025
 
 # Default rules for all bots
 User-agent: *
@@ -10,8 +10,6 @@ Disallow: /admin/
 Disallow: /.env
 Disallow: /node_modules/
 
-# NO crawl-delay for general bots - removes the bottleneck
-
 # Googlebot - Priority bot
 User-agent: Googlebot
 Allow: /
@@ -21,7 +19,7 @@ Disallow: /admin/
 Disallow: /.env
 Disallow: /node_modules/
 
-# Bingbot - FIXED: Removed specific Allow rules
+# Bingbot
 User-agent: Bingbot
 Allow: /
 Disallow: /api/
@@ -37,7 +35,7 @@ Disallow: /api/
 Disallow: /_next/
 Disallow: /admin/
 
-# AI Crawlers (GPT, Claude, Perplexity, etc.)
+# AI Crawlers
 User-agent: GPTBot
 Allow: /
 Disallow: /api/

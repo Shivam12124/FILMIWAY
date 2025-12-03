@@ -62,8 +62,9 @@ export const SCI_FI_MOVIES = [
     dominantColor: '#1a1a1a',
     dna: { SciFi: 60, Thriller: 25, Drama: 15 },
     sensitiveScenes: [
-      { start: '38:20', end: '38:45', description: 'Nudity (woman)' },
-      { start: '1:02:15', end: '1:03:00', description: 'Sex scene' }
+      { start: '53:50', end: '55:00', description: 'Partial Nudity (Women)' },
+      { start: '1:11:20', end: '1:12:40', description: 'Passionately kissing' },
+      { start: '1:35:15', end: '1:35:25', description: 'Kissing' }
     ]
   },
   {
@@ -96,7 +97,8 @@ export const SCI_FI_MOVIES = [
     dominantColor: '#003300',
     dna: { SciFi: 50, Action: 40, Thriller: 10 },
     sensitiveScenes: [
-      { start: '54:30', end: '55:15', description: 'Suggestive clothing' }
+      { start: '2:04:30', end: '2:04:40', description: 'Kissing' },
+      { start: '2:07:41', end: '2:07:50', description: 'Kissing' }
     ]
   },
   {
@@ -128,9 +130,7 @@ export const SCI_FI_MOVIES = [
     complexityLevel: 'HIGH',
     dominantColor: '#2f4f4f',
     dna: { Horror: 45, SciFi: 40, Thriller: 15 },
-    sensitiveScenes: [
-      { start: '51:15', end: '51:30', description: 'Nudity (woman)' }
-    ]
+    sensitiveScenes: []
   },
   {
     imdbID: 'tt0816692',
@@ -193,7 +193,8 @@ export const SCI_FI_MOVIES = [
     dominantColor: '#1e3a8a',
     dna: { Action: 50, SciFi: 35, Thriller: 15 },
     sensitiveScenes: [
-      { start: '1:32:45', end: '1:33:10', description: 'Partial nudity (man)' }
+      { start: '6:10', end: '6:20', description: 'Partial Nudity (male, not sexual)' },
+      { start: '11:40', end: '11:52', description: 'Partial Nudity (male, not sexual)' }
     ]
   },
   {
@@ -225,9 +226,7 @@ export const SCI_FI_MOVIES = [
     complexityLevel: 'EXTREME',
     dominantColor: '#1f2937',
     dna: { SciFi: 55, Action: 30, Thriller: 15 },
-    sensitiveScenes: [
-      { start: '48:30', end: '49:00', description: 'Suggestive clothing (brief swimsuit scenes)' }
-    ]
+    sensitiveScenes: []
   },
   {
     imdbID: 'tt2543164',
@@ -260,38 +259,39 @@ export const SCI_FI_MOVIES = [
     dna: { SciFi: 50, Drama: 35, Adventure: 15 },
     sensitiveScenes: []
   },
-{
-  imdbID: 'tt0080684',
-  tmdbId: 1891,
-  title: 'Star Wars: The Empire Strikes Back',
-  director: 'Irvin Kershner',
-  genre: 'Action, Adventure, Fantasy, Sci-Fi',
-  year: 1980,
-  runtime: '124 min',
-  ageRating: 'PG',
-  rating: 8.7,
-  cast: ['Mark Hamill', 'Harrison Ford', 'Carrie Fisher'],
-  boxOffice: '$538.4 million',
-  budget: '$18 million',
-  synopsis: "After the Rebels are brutally overpowered by the Empire on the ice planet Hoth, Luke Skywalker begins Jedi training with Yoda, while his friends are pursued by Darth Vader and bounty hunter Boba Fett. Luke confronts Vader in a lightsaber duel where he learns a devastating truth about his father. Widely considered the best Star Wars film, a darker, more mature chapter in the saga.",
-  poster: 'https://image.tmdb.org/t/p/w500/nNAeTmF4CtdSgMDplXTDPOpYzsX.jpg',
-  backdrop: 'https://image.tmdb.org/t/p/w1280/tmYlZ0Cpt6mAT29J8MeUBAWqEH.jpg',
-  backdrop_path: 'https://image.tmdb.org/t/p/w1280/tmYlZ0Cpt6mAT29J8MeUBAWqEH.jpg',
-  poster_path: 'https://image.tmdb.org/t/p/w500/nNAeTmF4CtdSgMDplXTDPOpYzsX.jpg',
-  scenes: [
-    { time: 15, intensity: 52, label: 'Battle of Hoth', color: '#e0f2fe' },
-    { time: 48, intensity: 58, label: 'Asteroid Chase', color: '#7c3aed' },
-    { time: 82, intensity: 72, label: 'Cloud City Betrayal', color: '#fb923c' },
-    { time: 105, intensity: 88, label: 'Lightsaber Duel', color: '#ef4444' },
-    { time: 120, intensity: 95, label: 'I Am Your Father', color: '#dc2626' }
-  ],
-  sciFiComplexity: 90,
-  complexityLevel: 'HIGH',
-  dominantColor: '#1e3a8a',
-  dna: { SciFi: 40, Adventure: 35, Fantasy: 25 },
-  sensitiveScenes: []
-},
-
+  {
+    imdbID: 'tt0080684',
+    tmdbId: 1891,
+    title: 'Star Wars: The Empire Strikes Back',
+    director: 'Irvin Kershner',
+    genre: 'Action, Adventure, Fantasy, Sci-Fi',
+    year: 1980,
+    runtime: '124 min',
+    ageRating: 'PG',
+    rating: 8.7,
+    cast: ['Mark Hamill', 'Harrison Ford', 'Carrie Fisher'],
+    boxOffice: '$538.4 million',
+    budget: '$18 million',
+    synopsis: "After the Rebels are brutally overpowered by the Empire on the ice planet Hoth, Luke Skywalker begins Jedi training with Yoda, while his friends are pursued by Darth Vader and bounty hunter Boba Fett. Luke confronts Vader in a lightsaber duel where he learns a devastating truth about his father. Widely considered the best Star Wars film, a darker, more mature chapter in the saga.",
+    poster: 'https://image.tmdb.org/t/p/w500/nNAeTmF4CtdSgMDplXTDPOpYzsX.jpg',
+    backdrop: 'https://image.tmdb.org/t/p/w1280/tmYlZ0Cpt6mAT29J8MeUBAWqEH.jpg',
+    backdrop_path: 'https://image.tmdb.org/t/p/w1280/tmYlZ0Cpt6mAT29J8MeUBAWqEH.jpg',
+    poster_path: 'https://image.tmdb.org/t/p/w500/nNAeTmF4CtdSgMDplXTDPOpYzsX.jpg',
+    scenes: [
+      { time: 15, intensity: 52, label: 'Battle of Hoth', color: '#e0f2fe' },
+      { time: 48, intensity: 58, label: 'Asteroid Chase', color: '#7c3aed' },
+      { time: 82, intensity: 72, label: 'Cloud City Betrayal', color: '#fb923c' },
+      { time: 105, intensity: 88, label: 'Lightsaber Duel', color: '#ef4444' },
+      { time: 120, intensity: 95, label: 'I Am Your Father', color: '#dc2626' }
+    ],
+    sciFiComplexity: 90,
+    complexityLevel: 'HIGH',
+    dominantColor: '#1e3a8a',
+    dna: { SciFi: 40, Adventure: 35, Fantasy: 25 },
+    sensitiveScenes: [
+      { start: '52:00', end: '52:05', description: 'Kissing' }
+    ]
+  },
   {
     imdbID: 'tt1856101',
     tmdbId: 335984,
@@ -322,18 +322,24 @@ export const SCI_FI_MOVIES = [
     dominantColor: '#1a1a2e',
     dna: { SciFi: 60, Drama: 25, Mystery: 15 },
     sensitiveScenes: [
-      { start: '28:15', end: '28:45', description: 'Nudity (holographic woman)' },
-      { start: '1:12:30', end: '1:13:15', description: 'Sex scene (stylized)' }
+      { start: '38:10', end: '42:45', description: 'Nudity (Woman)' },
+      { start: '1:29:25', end: '1:29:40', description: 'Kissing' },
+      { start: '1:30:50', end: '1:31:00', description: 'Glimpse Nudity (Woman)' },
+      { start: '2:02:58', end: '2:03:03', description: 'Glimpse Partial Nudity (Woman)' },
+      { start: '2:17:00', end: '2:18:05', description: 'Nudity (Woman)' }
     ]
   }
 ];
+
 
 // Build object map by tmdbId
 export const COMPLETE_SCI_FI_DATABASE = Object.fromEntries(
   SCI_FI_MOVIES.map(m => [m.tmdbId, m])
 );
 
+
 // Export as named export for compatibility
 export const SCI_FI_DATABASE = COMPLETE_SCI_FI_DATABASE;
+
 
 export default COMPLETE_SCI_FI_DATABASE;
