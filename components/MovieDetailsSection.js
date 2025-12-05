@@ -2,7 +2,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Users, Film, BookOpen, Star } from 'lucide-react';
 
-
 // Data imports
 import { COMPLETE_MOVIE_DATA, STRATEGIC_QUOTES } from '../utils/movieData';
 import {
@@ -19,6 +18,7 @@ import CRIME_THRILLER_DATABASE from '../utils/crimeThrillerMovieData';
 import HEIST_THRILLER_DATABASE from '../utils/heistThrillerMovieData';
 import TIME_TRAVEL_DATABASE from '../utils/timeTravelMovieData';
 import { SCI_FI_MOVIES } from '../utils/sciFiMovieData';  // ✅ SCI-FI IMPORT ADDED
+import { REVENGE_MOVIES } from '../utils/revengeMovieData';  // ✅ REVENGE IMPORT ADDED
 import { WAR_FILMS_DATABASE } from '../utils/warFilmsMovieData';  // ✅ WAR FILMS IMPORT ADDED
 
 const DRAMA_MOVIE_DATA = dramaRoutes.COMPLETE_MOVIE_DATABASE;
@@ -28,6 +28,10 @@ const COMPLETE_SCI_FI_DATABASE = Object.fromEntries(
   SCI_FI_MOVIES.map(m => [m.tmdbId, m])
 );
 
+// Build revenge database object
+const REVENGE_DATABASE = Object.fromEntries(
+  REVENGE_MOVIES.map(m => [m.tmdbId, m])
+);
 
 // Component imports
 import EnhancedIntensityGraph from './EnhancedIntensityGraph';
@@ -48,8 +52,8 @@ import CrimeThrillerSEOFAQSection from './CrimeThrillerSEOFAQSection';
 import HeistThrillerSEOFAQSection from './HeistThrillerSEOFAQSection';
 import TimeTravelSEOFAQSection from './TimeTravelSEOFAQSection';
 import SciFiSEOFAQSection from './SciFiSEOFAQSection';  // ✅ SCI-FI FAQ IMPORT ADDED
+import RevengeMovieSEOFAQSection from './RevengeMovieSEOFAQSection';  // ✅ REVENGE FAQ IMPORT ADDED
 import WarFilmsSEOFAQSection from './WarFilmsSEOFAQSection';  // ✅ WAR FAQ IMPORT ADDED
-
 
 const MovieDetailsSection = React.memo(({
   movie,
@@ -66,514 +70,537 @@ const MovieDetailsSection = React.memo(({
   fromHeistThrillerCollection,
   fromTimeTravelCollection,
   fromSciFiCollection,   // ✅ SCI-FI FLAG ADDED
+  fromRevengeCollection, // ✅ REVENGE FLAG ADDED
   fromWarFilmsCollection // ✅ WAR FLAG ADDED
 }) => {
 
 
-  if (!movie) return null;
 
- const safeLookup = (collection, id) => (collection && id && collection[id]) || null;
+ if (!movie) return null;
 
+const safeLookup = (collection, id) => (collection && id && collection[id]) || null;
 
-  // ✅ SCI-FI LOOKUP ADDED
-  const getSciFiMovieInfo = () => {
-    if (!fromSciFiCollection || !movie.tmdbId) return null;
-    if (!COMPLETE_SCI_FI_DATABASE) return null;
-    return COMPLETE_SCI_FI_DATABASE[movie.tmdbId] || null;
-  };
+// ✅ SCI-FI LOOKUP ADDED
+const getSciFiMovieInfo = () => {
+  if (!fromSciFiCollection || !movie.tmdbId) return null;
+  if (!COMPLETE_SCI_FI_DATABASE) return null;
+  return COMPLETE_SCI_FI_DATABASE[movie.tmdbId] || null;
+};
 
+// ✅ TIME TRAVEL LOOKUP
+const getTimeTravelMovieInfo = () => {
+  if (!fromTimeTravelCollection || !movie.tmdbId) return null;
+  if (!TIME_TRAVEL_DATABASE) return null;
+  return TIME_TRAVEL_DATABASE[movie.tmdbId] || null;
+};
 
-  // ✅ TIME TRAVEL LOOKUP
-  const getTimeTravelMovieInfo = () => {
-    if (!fromTimeTravelCollection || !movie.tmdbId) return null;
-    if (!TIME_TRAVEL_DATABASE) return null;
-    return TIME_TRAVEL_DATABASE[movie.tmdbId] || null;
-  };
+// ✅ REVENGE LOOKUP ADDED
+const getRevengeMovieInfo = () => {
+  if (!fromRevengeCollection || !movie.tmdbId) return null;
+  if (!REVENGE_DATABASE) return null;
+  return REVENGE_DATABASE[movie.tmdbId] || null;
+};
 
+// ✅ WAR FILMS LOOKUP ADDED
+const getWarFilmsMovieInfo = () => {
+  if (!fromWarFilmsCollection || !movie.tmdbId) return null;
+  if (!WAR_FILMS_DATABASE) return null;
+  return WAR_FILMS_DATABASE[movie.tmdbId] || null;
+};
 
-  // ✅ WAR FILMS LOOKUP ADDED
-  const getWarFilmsMovieInfo = () => {
-    if (!fromWarFilmsCollection || !movie.tmdbId) return null;
-    if (!WAR_FILMS_DATABASE) return null;
-    return WAR_FILMS_DATABASE[movie.tmdbId] || null;
-  };
+// ✅ HEIST THRILLER LOOKUP
+const getHeistThrillerMovieInfo = () => {
+  if (!fromHeistThrillerCollection || !movie.tmdbId) return null;
+  if (!HEIST_THRILLER_DATABASE) return null;
+  return HEIST_THRILLER_DATABASE[movie.tmdbId] || null;
+};
 
+// ✅ CRIME THRILLER LOOKUP
+const getCrimeThrillerMovieInfo = () => {
+  if (!fromCrimeThrillerCollection || !movie.tmdbId) return null;
+  if (!CRIME_THRILLER_DATABASE) return null;
+  return CRIME_THRILLER_DATABASE[movie.tmdbId] || null;
+};
 
-  // ✅ HEIST THRILLER LOOKUP
-  const getHeistThrillerMovieInfo = () => {
-    if (!fromHeistThrillerCollection || !movie.tmdbId) return null;
-    if (!HEIST_THRILLER_DATABASE) return null;
-    return HEIST_THRILLER_DATABASE[movie.tmdbId] || null;
-  };
+const getPsychologicalThrillerMovieInfo = () => {
+  if (!fromPsychologicalThrillerCollection || !movie.tmdbId) return null;
+  if (!COMPLETE_PSYCH_THRILLER_DATABASE) return null;
+  return COMPLETE_PSYCH_THRILLER_DATABASE[movie.tmdbId] || null;
+};
 
+const getDetectiveThrillerMovieInfo = () => {
+  if (!fromDetectiveThrillerCollection || !movie.tmdbId) return null;
+  if (!DETECTIVE_THRILLER_DATABASE) return null;
+  return DETECTIVE_THRILLER_DATABASE[movie.tmdbId] || null;
+};
 
-  // ✅ CRIME THRILLER LOOKUP
-  const getCrimeThrillerMovieInfo = () => {
-    if (!fromCrimeThrillerCollection || !movie.tmdbId) return null;
-    if (!CRIME_THRILLER_DATABASE) return null;
-    return CRIME_THRILLER_DATABASE[movie.tmdbId] || null;
-  };
+const getThrillerMovieInfo = () => {
+  if (!fromThrillerCollection || !movie.tmdbId) return null;
+  if (!COMPLETE_THRILLER_DATABASE) return null;
+  return COMPLETE_THRILLER_DATABASE[movie.tmdbId] || null;
+};
 
+const getMysteryThrillerMovieInfo = () => {
+  if (!fromMysteryThrillerCollection || !movie.tmdbId) return null;
+  if (!MYSTERY_THRILLER_DATABASE) return null;
+  return MYSTERY_THRILLER_DATABASE[movie.tmdbId] || null;
+};
 
-  const getPsychologicalThrillerMovieInfo = () => {
-    if (!fromPsychologicalThrillerCollection || !movie.tmdbId) return null;
-    if (!COMPLETE_PSYCH_THRILLER_DATABASE) return null;
-    return COMPLETE_PSYCH_THRILLER_DATABASE[movie.tmdbId] || null;
-  };
+// ✅ GET MOVIE INFO FROM CORRECT COLLECTION (REVENGE & WAR FILMS ADDED)
+const movieInfo = fromRevengeCollection  // ✅ REVENGE ADDED FIRST
+  ? getRevengeMovieInfo()
+  : fromWarFilmsCollection
+  ? getWarFilmsMovieInfo()
+  : fromSciFiCollection
+  ? getSciFiMovieInfo()
+  : fromTimeTravelCollection
+  ? getTimeTravelMovieInfo()
+  : fromHeistThrillerCollection
+  ? getHeistThrillerMovieInfo()
+  : fromCrimeThrillerCollection
+  ? getCrimeThrillerMovieInfo()
+  : fromDetectiveThrillerCollection
+  ? getDetectiveThrillerMovieInfo()
+  : fromMysteryThrillerCollection
+  ? getMysteryThrillerMovieInfo()
+  : fromPsychologicalThrillerCollection
+  ? getPsychologicalThrillerMovieInfo()
+  : fromThrillerCollection
+  ? getThrillerMovieInfo()
+  : fromSurvivalCollection
+  ? safeLookup(SURVIVAL_MOVIE_DATA, movie.tmdbId)
+  : fromDramaCollection
+  ? safeLookup(DRAMA_MOVIE_DATA, movie.tmdbId)
+  : safeLookup(COMPLETE_MOVIE_DATA, movie.tmdbId);
 
+// ✅ DEFAULT FALLBACK DATA
+const getMovieSpecificData = (title) => ({
+  mindBendingIndex: 85,
+  complexityLevel: 'HIGH',
+  dominantColor: '#ca8a04',
+  rating: movie.imdbRating || 7.5,
+  director: movie.Director || 'Acclaimed Director',
+  scenes: [
+    { time: 20, intensity: 60, label: 'Opening', color: '#92400e' },
+    { time: 50, intensity: 75, label: 'Conflict', color: '#ca8a04' },
+    { time: 80, intensity: 85, label: 'Climax', color: '#eab308' },
+    { time: 100, intensity: 90, label: 'Resolution', color: '#facc15' },
+    { time: 120, intensity: 95, label: 'Revelation', color: '#fde047' }
+  ],
+  dna: { Mystery: 60, Thriller: 30, Drama: 10 },
+  cast: ['Lead Actor', 'Supporting Cast'],
+  boxOffice: 'N/A',
+  budget: 'N/A',
+  synopsis: 'A compelling exploration of cinema.',
+  ageRating: 'R'
+});
 
-  const getDetectiveThrillerMovieInfo = () => {
-    if (!fromDetectiveThrillerCollection || !movie.tmdbId) return null;
-    if (!DETECTIVE_THRILLER_DATABASE) return null;
-    return DETECTIVE_THRILLER_DATABASE[movie.tmdbId] || null;
-  };
+const title = movie.Title || (movieInfo && movieInfo.title) || 'Unknown Title';
+const safeMovieInfo = movieInfo || getMovieSpecificData(title);
 
+const director = safeMovieInfo.director || movie.Director || 'Unknown Director';
+const genre = safeMovieInfo.genre || movie.Genre || 'Drama';
+const year = movie.Year || movie.year || '20XX';
+const runtime = safeMovieInfo.runtime || movie.Runtime || '120 min';
+const ageRating = safeMovieInfo.ageRating || movie.Rated || 'R';
+const cast = safeMovieInfo.cast?.join(', ') || '';
+const boxOffice = safeMovieInfo.boxOffice || 'N/A';
+const budget = safeMovieInfo.budget || 'N/A';
+const rating = safeMovieInfo.rating || movie.imdbRating || 7.5;
 
-  const getThrillerMovieInfo = () => {
-    if (!fromThrillerCollection || !movie.tmdbId) return null;
-    if (!COMPLETE_THRILLER_DATABASE) return null;
-    return COMPLETE_THRILLER_DATABASE[movie.tmdbId] || null;
-  };
+const sensitiveScenes = safeMovieInfo.sensitiveScenes || SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes || [];
 
+const quote = fromMysteryThrillerCollection
+  ? safeMovieInfo.synopsis || ''
+  : fromThrillerCollection
+  ? safeMovieInfo.synopsis || ''
+  : fromSurvivalCollection
+  ? SURVIVAL_QUOTES?.[movie.tmdbId] || ''
+  : STRATEGIC_QUOTES?.[movie.tmdbId] || '';
 
-  const getMysteryThrillerMovieInfo = () => {
-    if (!fromMysteryThrillerCollection || !movie.tmdbId) return null;
-    if (!MYSTERY_THRILLER_DATABASE) return null;
-    return MYSTERY_THRILLER_DATABASE[movie.tmdbId] || null;
-  };
+const displayIndex = fromRevengeCollection  // ✅ REVENGE ADDED
+  ? safeMovieInfo.revengeIntensity ?? null
+  : fromWarFilmsCollection
+  ? safeMovieInfo.warIntensity ?? null
+  : fromSciFiCollection
+  ? safeMovieInfo.sciFiComplexity ?? null
+  : fromMysteryThrillerCollection
+  ? safeMovieInfo.mysteryComplexity ?? null
+  : fromThrillerCollection
+  ? safeMovieInfo.suspenseIntensity ?? null
+  : fromSurvivalCollection
+  ? safeMovieInfo.survivabilityIndex ?? null
+  : safeMovieInfo.mindBendingIndex ?? null;
 
+const scoreValue = fromRevengeCollection  // ✅ REVENGE ADDED
+  ? movie.revengeIntensity ?? safeMovieInfo.revengeIntensity ?? 0
+  : fromWarFilmsCollection
+  ? movie.warIntensity ?? safeMovieInfo.warIntensity ?? 0
+  : fromSciFiCollection
+  ? movie.sciFiComplexity ?? safeMovieInfo.sciFiComplexity ?? 0
+  : fromTimeTravelCollection
+  ? movie.timeTravelIntensity ?? safeMovieInfo.timeTravelIntensity ?? 0
+  : fromHeistThrillerCollection
+  ? movie.heistComplexity ?? safeMovieInfo.heistComplexity ?? 0
+  : fromCrimeThrillerCollection
+  ? movie.suspenseIntensity ?? safeMovieInfo.suspenseIntensity ?? 0
+  : fromMysteryThrillerCollection
+  ? movie.mysteryComplexity ?? safeMovieInfo.mysteryComplexity ?? 0
+  : fromDetectiveThrillerCollection
+  ? movie.mysteryComplexity ?? safeMovieInfo.mysteryComplexity ?? 0
+  : fromPsychologicalThrillerCollection
+  ? movie.suspenseIntensity ?? safeMovieInfo.suspenseIntensity ?? 0
+  : fromDramaCollection
+  ? movie.emotionalIntensity ?? safeMovieInfo.emotionalIntensity ?? 0
+  : fromThrillerCollection
+  ? movie.suspenseIntensity ?? safeMovieInfo.suspenseIntensity ?? 0
+  : fromSurvivalCollection
+  ? movie.survivabilityIndex ?? safeMovieInfo.survivabilityIndex ?? 0
+  : fromInceptionCollection
+  ? movie.mindBendingIndex ?? safeMovieInfo.mindBendingIndex ?? 0
+  : safeMovieInfo.mindBendingIndex ?? 0;
 
-  // ✅ GET MOVIE INFO FROM CORRECT COLLECTION (WAR FILMS ADDED)
-  const movieInfo = fromWarFilmsCollection  // ✅ WAR FILMS ADDED FIRST
-    ? getWarFilmsMovieInfo()
-    : fromSciFiCollection
-    ? getSciFiMovieInfo()
-    : fromTimeTravelCollection
-    ? getTimeTravelMovieInfo()
-    : fromHeistThrillerCollection
-    ? getHeistThrillerMovieInfo()
-    : fromCrimeThrillerCollection
-    ? getCrimeThrillerMovieInfo()
-    : fromDetectiveThrillerCollection
-    ? getDetectiveThrillerMovieInfo()
-    : fromMysteryThrillerCollection
-    ? getMysteryThrillerMovieInfo()
-    : fromPsychologicalThrillerCollection
-    ? getPsychologicalThrillerMovieInfo()
-    : fromThrillerCollection
-    ? getThrillerMovieInfo()
-    : fromSurvivalCollection
-    ? safeLookup(SURVIVAL_MOVIE_DATA, movie.tmdbId)
-    : fromDramaCollection
-    ? safeLookup(DRAMA_MOVIE_DATA, movie.tmdbId)
-    : safeLookup(COMPLETE_MOVIE_DATA, movie.tmdbId);
+const complexityLevel = safeMovieInfo.complexityLevel || 'HIGH';
 
-
-  // ✅ DEFAULT FALLBACK DATA
-  const getMovieSpecificData = (title) => ({
-    mindBendingIndex: 85,
-    complexityLevel: 'HIGH',
-    dominantColor: '#ca8a04',
-    rating: movie.imdbRating || 7.5,
-    director: movie.Director || 'Acclaimed Director',
-    scenes: [
-      { time: 20, intensity: 60, label: 'Opening', color: '#92400e' },
-      { time: 50, intensity: 75, label: 'Conflict', color: '#ca8a04' },
-      { time: 80, intensity: 85, label: 'Climax', color: '#eab308' },
-      { time: 100, intensity: 90, label: 'Resolution', color: '#facc15' },
-      { time: 120, intensity: 95, label: 'Revelation', color: '#fde047' }
-    ],
-    dna: { Mystery: 60, Thriller: 30, Drama: 10 },
-    cast: ['Lead Actor', 'Supporting Cast'],
-    boxOffice: 'N/A',
-    budget: 'N/A',
-    synopsis: 'A compelling exploration of cinema.',
-    ageRating: 'R'
-  });
-
-
-  const title = movie.Title || (movieInfo && movieInfo.title) || 'Unknown Title';
-  const safeMovieInfo = movieInfo || getMovieSpecificData(title);
-
-
-  const director = safeMovieInfo.director || movie.Director || 'Unknown Director';
-  const genre = safeMovieInfo.genre || movie.Genre || 'Drama';
-  const year = movie.Year || movie.year || '20XX';
-  const runtime = safeMovieInfo.runtime || movie.Runtime || '120 min';
-  const ageRating = safeMovieInfo.ageRating || movie.Rated || 'R';
-  const cast = safeMovieInfo.cast?.join(', ') || '';
-  const boxOffice = safeMovieInfo.boxOffice || 'N/A';
-  const budget = safeMovieInfo.budget || 'N/A';
-  const rating = safeMovieInfo.rating || movie.imdbRating || 7.5;
-
-
-  const sensitiveScenes = safeMovieInfo.sensitiveScenes || SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes || [];
-
-
-  const quote = fromMysteryThrillerCollection
-    ? safeMovieInfo.synopsis || ''
-    : fromThrillerCollection
-    ? safeMovieInfo.synopsis || ''
-    : fromSurvivalCollection
-    ? SURVIVAL_QUOTES?.[movie.tmdbId] || ''
-    : STRATEGIC_QUOTES?.[movie.tmdbId] || '';
-
-
-  const displayIndex = fromWarFilmsCollection  // ✅ WAR FILMS ADDED
-    ? safeMovieInfo.warIntensity ?? null
-    : fromSciFiCollection
-    ? safeMovieInfo.sciFiComplexity ?? null
-    : fromMysteryThrillerCollection
-    ? safeMovieInfo.mysteryComplexity ?? null
-    : fromThrillerCollection
-    ? safeMovieInfo.suspenseIntensity ?? null
-    : fromSurvivalCollection
-    ? safeMovieInfo.survivabilityIndex ?? null
-    : safeMovieInfo.mindBendingIndex ?? null;
-
-
-  const scoreValue = fromWarFilmsCollection  // ✅ WAR FILMS ADDED
-    ? movie.warIntensity ?? safeMovieInfo.warIntensity ?? 0
-    : fromSciFiCollection
-    ? movie.sciFiComplexity ?? safeMovieInfo.sciFiComplexity ?? 0
-    : fromTimeTravelCollection
-    ? movie.timeTravelIntensity ?? safeMovieInfo.timeTravelIntensity ?? 0
-    : fromHeistThrillerCollection
-    ? movie.heistComplexity ?? safeMovieInfo.heistComplexity ?? 0
-    : fromCrimeThrillerCollection
-    ? movie.suspenseIntensity ?? safeMovieInfo.suspenseIntensity ?? 0
-    : fromMysteryThrillerCollection
-    ? movie.mysteryComplexity ?? safeMovieInfo.mysteryComplexity ?? 0
-    : fromDetectiveThrillerCollection
-    ? movie.mysteryComplexity ?? safeMovieInfo.mysteryComplexity ?? 0
-    : fromPsychologicalThrillerCollection
-    ? movie.suspenseIntensity ?? safeMovieInfo.suspenseIntensity ?? 0
-    : fromDramaCollection
-    ? movie.emotionalIntensity ?? safeMovieInfo.emotionalIntensity ?? 0
-    : fromThrillerCollection
-    ? movie.suspenseIntensity ?? safeMovieInfo.suspenseIntensity ?? 0
-    : fromSurvivalCollection
-    ? movie.survivabilityIndex ?? safeMovieInfo.survivabilityIndex ?? 0
-    : fromInceptionCollection
-    ? movie.mindBendingIndex ?? safeMovieInfo.mindBendingIndex ?? 0
-    : safeMovieInfo.mindBendingIndex ?? 0;
-
-
-  const complexityLevel = safeMovieInfo.complexityLevel || 'HIGH';
-
-
-  const getComplexityColor = (level) => {
-    if (fromWarFilmsCollection) {  // ✅ WAR FILMS ADDED
-      switch (level) {
-        case 'EXTREME': return '#991b1b';
-        case 'HIGH': return '#dc2626';
-        case 'MEDIUM': return '#f87171';
-        default: return '#6b7280';
-      }
+const getComplexityColor = (level) => {
+  if (fromRevengeCollection) {  // ✅ REVENGE ADDED
+    switch (level) {
+      case 'EXTREME': return '#7f1d1d';
+      case 'HIGH': return '#991b1b';
+      case 'MEDIUM': return '#dc2626';
+      default: return '#6b7280';
     }
+  }
 
-    if (fromSciFiCollection) {
-      switch (level) {
-        case 'EXTREME': return '#0891b2';
-        case 'HIGH': return '#06b6d4';
-        case 'MEDIUM': return '#22d3ee';
-        default: return '#6b7280';
-      }
+  if (fromWarFilmsCollection) {
+    switch (level) {
+      case 'EXTREME': return '#991b1b';
+      case 'HIGH': return '#dc2626';
+      case 'MEDIUM': return '#f87171';
+      default: return '#6b7280';
     }
+  }
 
+  if (fromSciFiCollection) {
+    switch (level) {
+      case 'EXTREME': return '#0891b2';
+      case 'HIGH': return '#06b6d4';
+      case 'MEDIUM': return '#22d3ee';
+      default: return '#6b7280';
+    }
+  }
 
-    if (fromTimeTravelCollection) {
-      switch (level) {
-        case 'EXTREME': return '#0891b2';
-        case 'HIGH': return '#06b6d4';
-        case 'MEDIUM': return '#22d3ee';
-        default: return '#6b7280';
-      }
+  if (fromTimeTravelCollection) {
+    switch (level) {
+      case 'EXTREME': return '#0891b2';
+      case 'HIGH': return '#06b6d4';
+      case 'MEDIUM': return '#22d3ee';
+      default: return '#6b7280';
     }
+  }
 
-
-    if (fromHeistThrillerCollection) {
-      switch (level) {
-        case 'EXTREME': return '#ea0808ff';
-        case 'HIGH': return '#f79400ff';
-        case 'MEDIUM': return '#bb9e0cff';
-        default: return '#6b7280';
-      }
-    }
-    
-    if (fromDetectiveThrillerCollection) {
-      switch (level) {
-        case 'EXTREME': return '#ea0808ff';
-        case 'HIGH': return '#f79400ff';
-        case 'MEDIUM': return '#bb9e0cff';
-        default: return '#6b7280';
-      }
-    }
-
-
-    if (fromCrimeThrillerCollection) {
-      switch (level) {
-        case 'EXTREME': return '#ea0808ff';
-        case 'HIGH': return '#f79400ff';
-        case 'MEDIUM': return '#bb9e0cff';
-        default: return '#6b7280';
-      }
-    }
-    
-    if (fromMysteryThrillerCollection) {
-      switch (level) {
-        case 'EXTREME': return '#ea0808ff';
-        case 'HIGH': return '#f79400ff';
-        case 'MEDIUM': return '#bb9e0cff';
-        default: return '#6b7280';
-      }
-    }
-    
-    if (fromPsychologicalThrillerCollection) {
-      switch (level) {
-        case 'EXTREME': return '#ea0808ff';
-        case 'HIGH': return '#f79400ff';
-        case 'MEDIUM': return '#bb9e0cff';
-        default: return '#6b7280';
-      }
-    }
-    
-    if (fromDramaCollection) {
-      switch (level) {
-        case 'EXTREME': return '#ea0808ff';
-        case 'HIGH': return '#f79400ff';
-        case 'MEDIUM': return '#bb9e0cff';
-        default: return '#6b7280';
-      }
-    }
-    
-    if (fromThrillerCollection) {
-      switch (level) {
-        case 'EXTREME': return '#ea0808ff';
-        case 'HIGH': return '#f79400ff';
-        case 'MEDIUM': return '#bb9e0cff';
-        default: return '#6b7280';
-      }
-    }
-    
+  if (fromHeistThrillerCollection) {
     switch (level) {
       case 'EXTREME': return '#ea0808ff';
       case 'HIGH': return '#f79400ff';
       case 'MEDIUM': return '#bb9e0cff';
       default: return '#6b7280';
     }
-  };
-
-
-  const getAgeRatingColor = (rating) => {
-    switch (rating) {
-      case 'G': return '#22c55e';
-      case 'PG': return '#3b82f6';
-      case 'PG-13': return '#f59e0b';
-      case 'R': return '#ef4444';
-      case 'NC-17': return '#7c2d12';
+  }
+  
+  if (fromDetectiveThrillerCollection) {
+    switch (level) {
+      case 'EXTREME': return '#ea0808ff';
+      case 'HIGH': return '#f79400ff';
+      case 'MEDIUM': return '#bb9e0cff';
       default: return '#6b7280';
     }
-  };
+  }
 
-
-  const getUniqueDescription = () => {
-    if (safeMovieInfo?.synopsis) return safeMovieInfo.synopsis;
-    const t = title.toLowerCase();
-    
-    if (t.includes('saving private ryan')) return "Following D-Day, soldiers undertake a desperate mission to find Private Ryan amid the chaos of Normandy.";
-    if (t.includes('apocalypse now')) return "A captain travels upriver through the Vietnamese jungle to locate a rogue colonel descended into madness.";
-    if (t.includes('das boot')) return "A German U-boat crew experiences the claustrophobic horror and psychological toll of submarine warfare.";
-    if (t.includes('platoon')) return "A young soldier witnesses the brutal reality and moral corruption of the Vietnam War firsthand.";
-    if (t.includes('1917')) return "Two soldiers race through no man's land to deliver orders that could save thousands during WWI.";
-    if (t.includes('come and see')) return "A young partisan witnesses devastating German atrocities during WWII occupation in Belarus.";
-    if (t.includes('schindler')) return "A businessman risks everything to save over a thousand Jewish refugees from the Holocaust.";
-    if (t.includes('full metal jacket')) return "Marines endure brutal boot camp training before confronting the chaos of Vietnam combat.";
-    if (t.includes('paths of glory')) return "A colonel challenges a senseless WWI military order to defend soldiers condemned to death.";
-    if (t.includes('lawrence of arabia')) return "T.E. Lawrence becomes a legendary leader of Arab forces during World War I.";
-    if (t.includes('back to the future')) return "Marty McFly travels back in time to ensure his parents fall in love, while navigating temporal paradoxes.";
-    if (t.includes('primer')) return "Engineers accidentally discover time travel in their garage, leading to increasingly complex temporal loops.";
-    if (t.includes('interstellar')) return "Astronauts journey through a wormhole seeking a new home, experiencing extreme time dilation.";
-    if (t.includes('terminator')) return "A cyborg assassin from the future hunts a woman whose son will lead humanity's resistance.";
-    if (t.includes('heat')) return "Master thief Neil McCauley and detective Vincent Hanna face off in a high-stakes cat-and-mouse game across Los Angeles.";
-    if (t.includes('italian job')) return "A crew of thieves execute an elaborate gold heist using Mini Coopers through Turin's historic streets.";
-    if (t.includes('ocean')) return "Danny Ocean assembles an all-star crew for an impossible casino heist in Las Vegas.";
-    if (t.includes('inside man')) return "A perfectly planned bank robbery becomes a tense hostage situation with layers of deception.";
-    if (t.includes('town')) return "Charlestown bank robbers navigate loyalty, love, and the FBI closing in on their criminal empire.";
-    
-    return "A compelling exploration of truth, identity, and the limits of human understanding.";
-  };
-
-
-  const getComplexityScoreTitle = () => {
-    if (fromWarFilmsCollection) return 'WAR INTENSITY SCORE';  // ✅ WAR FILMS ADDED
-    if (fromSciFiCollection) return 'SCI-FI COMPLEXITY SCORE';
-    if (fromTimeTravelCollection) return 'TIME TRAVEL COMPLEXITY SCORE';
-    if (fromHeistThrillerCollection) return 'HEIST COMPLEXITY SCORE';
-    if (fromCrimeThrillerCollection) return 'CRIME INTENSITY SCORE';
-    if (fromDetectiveThrillerCollection) return 'MYSTERY COMPLEXITY SCORE';
-    if (fromMysteryThrillerCollection) return 'MYSTERY COMPLEXITY SCORE';
-    if (fromPsychologicalThrillerCollection) return 'PSYCHOLOGICAL COMPLEXITY SCORE';
-    if (fromDramaCollection) return 'EMOTIONAL INTENSITY SCORE';
-    if (fromThrillerCollection) return 'SUSPENSE INTENSITY SCORE';
-    if (fromSurvivalCollection) return 'SURVIVAL INTENSITY SCORE';
-    if (fromInceptionCollection) return 'MIND-BENDING COMPLEXITY SCORE';
-    if (fromShutterIslandCollection) return 'PSYCHOLOGICAL COMPLEXITY SCORE';
-    if (fromMementoCollection) return 'MEMORY COMPLEXITY SCORE';
-    return 'COMPLEXITY SCORE';
-  };
-
-
-  const getComplexityIndexLabel = () => {
-    if (fromWarFilmsCollection) return 'WAR INTENSITY INDEX';  // ✅ WAR FILMS ADDED
-    if (fromSciFiCollection) return 'SCI-FI COMPLEXITY INDEX';
-    if (fromTimeTravelCollection) return 'TIME COMPLEXITY INDEX';
-    if (fromHeistThrillerCollection) return 'HEIST COMPLEXITY INDEX';
-    if (fromCrimeThrillerCollection) return 'CRIME INTENSITY INDEX';
-    if (fromDetectiveThrillerCollection) return 'MYSTERY INDEX';
-    if (fromMysteryThrillerCollection) return 'MYSTERY INDEX';
-    if (fromPsychologicalThrillerCollection) return 'PSYCHOLOGICAL INDEX';
-    if (fromDramaCollection) return 'EMOTIONAL INTENSITY';
-    if (fromThrillerCollection) return 'SUSPENSE INDEX';
-    if (fromSurvivalCollection) return 'SURVIVABILITY INDEX';
-    if (fromInceptionCollection) return 'MIND-BENDING INDEX';
-    if (fromShutterIslandCollection) return 'PSYCHOLOGICAL INDEX';
-    if (fromMementoCollection) return 'MEMORY INDEX';
-    return 'MIND-BENDING INDEX';
-  };
-
-
-  const getComplexityLevelLabel = () => {
-    if (fromWarFilmsCollection) return 'COMBAT REALISM LEVEL';  // ✅ WAR FILMS ADDED
-    if (fromSciFiCollection) return 'COSMIC COMPLEXITY LEVEL';
-    if (fromTimeTravelCollection) return 'TEMPORAL PARADOX LEVEL';
-    if (fromHeistThrillerCollection) return 'HEIST COMPLEXITY LEVEL';
-    if (fromCrimeThrillerCollection) return 'CRIME COMPLEXITY LEVEL';
-    if (fromDetectiveThrillerCollection) return 'MYSTERY COMPLEXITY LEVEL';
-    if (fromMysteryThrillerCollection) return 'MYSTERY COMPLEXITY LEVEL';
-    if (fromPsychologicalThrillerCollection) return 'PSYCHOLOGICAL DISTORTION LEVEL';
-    if (fromDramaCollection) return 'EMOTIONAL RESONANCE LEVEL';
-    if (fromThrillerCollection) return 'SUSPENSE INTENSITY LEVEL';
-    if (fromSurvivalCollection) return 'SURVIVAL INTENSITY LEVEL';
-    if (fromInceptionCollection) return 'COGNITIVE COMPLEXITY LEVEL';
-    if (fromShutterIslandCollection) return 'PSYCHOLOGICAL DISTORTION LEVEL';
-    if (fromMementoCollection) return 'MEMORY DISTORTION LEVEL';
-    return 'COGNITIVE DISTORTION LEVEL';
-  };
-
-
-  const getComplexityDescription = () => {
-    if (fromWarFilmsCollection) {  // ✅ WAR FILMS ADDED
-      if (scoreValue >= 90) return 'An absolutely brutal and unflinching war masterpiece with visceral combat realism, devastating human cost, and profound anti-war sentiment.';
-      if (scoreValue >= 80) return 'A powerful war epic with intense combat sequences, complex moral questions, and significant psychological and emotional impact.';
-      if (scoreValue >= 70) return 'An engaging war narrative with authentic combat sequences, compelling storytelling, and meaningful war themes.';
-      return 'An accessible war film with solid action sequences and engaging military storytelling.';
+  if (fromCrimeThrillerCollection) {
+    switch (level) {
+      case 'EXTREME': return '#ea0808ff';
+      case 'HIGH': return '#f79400ff';
+      case 'MEDIUM': return '#bb9e0cff';
+      default: return '#6b7280';
     }
-
-    if (fromSciFiCollection) {
-      if (scoreValue >= 90) return 'A visionary sci-fi masterpiece with groundbreaking concepts, philosophical depth, and transcendent cosmic storytelling.';
-      if (scoreValue >= 80) return 'A sophisticated sci-fi epic with innovative world-building, complex themes, and stunning visual spectacle.';
-      if (scoreValue >= 70) return 'An engaging sci-fi narrative with compelling ideas, imaginative world-building, and solid execution.';
-      return 'An accessible sci-fi adventure with creative concepts and entertaining storytelling.';
+  }
+  
+  if (fromMysteryThrillerCollection) {
+    switch (level) {
+      case 'EXTREME': return '#ea0808ff';
+      case 'HIGH': return '#f79400ff';
+      case 'MEDIUM': return '#bb9e0cff';
+      default: return '#6b7280';
     }
+  }
+  
+  if (fromPsychologicalThrillerCollection) {
+    switch (level) {
+      case 'EXTREME': return '#ea0808ff';
+      case 'HIGH': return '#f79400ff';
+      case 'MEDIUM': return '#bb9e0cff';
+      default: return '#6b7280';
+    }
+  }
+  
+  if (fromDramaCollection) {
+    switch (level) {
+      case 'EXTREME': return '#ea0808ff';
+      case 'HIGH': return '#f79400ff';
+      case 'MEDIUM': return '#bb9e0cff';
+      default: return '#6b7280';
+    }
+  }
+  
+  if (fromThrillerCollection) {
+    switch (level) {
+      case 'EXTREME': return '#ea0808ff';
+      case 'HIGH': return '#f79400ff';
+      case 'MEDIUM': return '#bb9e0cff';
+      default: return '#6b7280';
+    }
+  }
+  
+  switch (level) {
+    case 'EXTREME': return '#ea0808ff';
+    case 'HIGH': return '#f79400ff';
+    case 'MEDIUM': return '#bb9e0cff';
+    default: return '#6b7280';
+  }
+};
+
+const getAgeRatingColor = (rating) => {
+  switch (rating) {
+    case 'G': return '#22c55e';
+    case 'PG': return '#3b82f6';
+    case 'PG-13': return '#f59e0b';
+    case 'R': return '#ef4444';
+    case 'NC-17': return '#7c2d12';
+    default: return '#6b7280';
+  }
+};
+
+const getUniqueDescription = () => {
+  if (safeMovieInfo?.synopsis) return safeMovieInfo.synopsis;
+  const t = title.toLowerCase();
+  
+  // Revenge movie descriptions
+  if (t.includes('oldboy')) return "After 15 years of mysterious imprisonment, Oh Dae-su is released and seeks vengeance against his unknown captor.";
+  if (t.includes('gladiator')) return "A betrayed Roman general becomes a gladiator to avenge his murdered family and restore honor to Rome.";
+  if (t.includes('unforgiven')) return "A reformed gunslinger returns to violence for one last bounty, confronting his dark past and moral corruption.";
+  if (t.includes('braveheart')) return "William Wallace leads Scotland's rebellion for independence after English soldiers murder his wife.";
+  if (t.includes('prestige')) return "Two rival magicians engage in an obsessive battle of one-upmanship with devastating consequences.";
+  if (t.includes('revenant')) return "After being left for dead, frontiersman Hugh Glass survives brutal wilderness to track his betrayer.";
+  if (t.includes('kill bill')) return "The Bride concludes her roaring rampage of revenge against the assassins who tried to kill her.";
+  if (t.includes('john wick')) return "A retired assassin unleashes methodical vengeance after criminals kill the puppy his late wife left him.";
+  if (t.includes('i saw the devil')) return "A secret agent captures and tortures the serial killer who murdered his fiancée in an endless cycle of brutality.";
+  if (t.includes('count of monte cristo')) return "After 14 years of false imprisonment, Edmond Dantès systematically destroys everyone who betrayed him.";
+  
+  // War film descriptions
+  if (t.includes('saving private ryan')) return "Following D-Day, soldiers undertake a desperate mission to find Private Ryan amid the chaos of Normandy.";
+  if (t.includes('apocalypse now')) return "A captain travels upriver through the Vietnamese jungle to locate a rogue colonel descended into madness.";
+  if (t.includes('das boot')) return "A German U-boat crew experiences the claustrophobic horror and psychological toll of submarine warfare.";
+  if (t.includes('platoon')) return "A young soldier witnesses the brutal reality and moral corruption of the Vietnam War firsthand.";
+  if (t.includes('1917')) return "Two soldiers race through no man's land to deliver orders that could save thousands during WWI.";
+  if (t.includes('come and see')) return "A young partisan witnesses devastating German atrocities during WWII occupation in Belarus.";
+  if (t.includes('schindler')) return "A businessman risks everything to save over a thousand Jewish refugees from the Holocaust.";
+  if (t.includes('full metal jacket')) return "Marines endure brutal boot camp training before confronting the chaos of Vietnam combat.";
+  if (t.includes('paths of glory')) return "A colonel challenges a senseless WWI military order to defend soldiers condemned to death.";
+  if (t.includes('lawrence of arabia')) return "T.E. Lawrence becomes a legendary leader of Arab forces during World War I.";
+  
+  // Time travel descriptions
+  if (t.includes('back to the future')) return "Marty McFly travels back in time to ensure his parents fall in love, while navigating temporal paradoxes.";
+  if (t.includes('primer')) return "Engineers accidentally discover time travel in their garage, leading to increasingly complex temporal loops.";
+  if (t.includes('interstellar')) return "Astronauts journey through a wormhole seeking a new home, experiencing extreme time dilation.";
+  if (t.includes('terminator')) return "A cyborg assassin from the future hunts a woman whose son will lead humanity's resistance.";
+  
+  // Heist descriptions
+  if (t.includes('heat')) return "Master thief Neil McCauley and detective Vincent Hanna face off in a high-stakes cat-and-mouse game across Los Angeles.";
+  if (t.includes('italian job')) return "A crew of thieves execute an elaborate gold heist using Mini Coopers through Turin's historic streets.";
+  if (t.includes('ocean')) return "Danny Ocean assembles an all-star crew for an impossible casino heist in Las Vegas.";
+  if (t.includes('inside man')) return "A perfectly planned bank robbery becomes a tense hostage situation with layers of deception.";
+  if (t.includes('town')) return "Charlestown bank robbers navigate loyalty, love, and the FBI closing in on their criminal empire.";
+  
+  return "A compelling exploration of truth, identity, and the limits of human understanding.";
+};
+
+const getComplexityScoreTitle = () => {
+  if (fromRevengeCollection) return 'REVENGE INTENSITY SCORE';  // ✅ REVENGE ADDED
+  if (fromWarFilmsCollection) return 'WAR INTENSITY SCORE';
+  if (fromSciFiCollection) return 'SCI-FI COMPLEXITY SCORE';
+  if (fromTimeTravelCollection) return 'TIME TRAVEL COMPLEXITY SCORE';
+  if (fromHeistThrillerCollection) return 'HEIST COMPLEXITY SCORE';
+  if (fromCrimeThrillerCollection) return 'CRIME INTENSITY SCORE';
+  if (fromDetectiveThrillerCollection) return 'MYSTERY COMPLEXITY SCORE';
+  if (fromMysteryThrillerCollection) return 'MYSTERY COMPLEXITY SCORE';
+  if (fromPsychologicalThrillerCollection) return 'PSYCHOLOGICAL COMPLEXITY SCORE';
+  if (fromDramaCollection) return 'EMOTIONAL INTENSITY SCORE';
+  if (fromThrillerCollection) return 'SUSPENSE INTENSITY SCORE';
+  if (fromSurvivalCollection) return 'SURVIVAL INTENSITY SCORE';
+  if (fromInceptionCollection) return 'MIND-BENDING COMPLEXITY SCORE';
+  if (fromShutterIslandCollection) return 'PSYCHOLOGICAL COMPLEXITY SCORE';
+  if (fromMementoCollection) return 'MEMORY COMPLEXITY SCORE';
+  return 'COMPLEXITY SCORE';
+};
+
+const getComplexityIndexLabel = () => {
+  if (fromRevengeCollection) return 'REVENGE INTENSITY INDEX';  // ✅ REVENGE ADDED
+  if (fromWarFilmsCollection) return 'WAR INTENSITY INDEX';
+  if (fromSciFiCollection) return 'SCI-FI COMPLEXITY INDEX';
+  if (fromTimeTravelCollection) return 'TIME COMPLEXITY INDEX';
+  if (fromHeistThrillerCollection) return 'HEIST COMPLEXITY INDEX';
+  if (fromCrimeThrillerCollection) return 'CRIME INTENSITY INDEX';
+  if (fromDetectiveThrillerCollection) return 'MYSTERY INDEX';
+  if (fromMysteryThrillerCollection) return 'MYSTERY INDEX';
+  if (fromPsychologicalThrillerCollection) return 'PSYCHOLOGICAL INDEX';
+  if (fromDramaCollection) return 'EMOTIONAL INTENSITY';
+  if (fromThrillerCollection) return 'SUSPENSE INDEX';
+  if (fromSurvivalCollection) return 'SURVIVABILITY INDEX';
+  if (fromInceptionCollection) return 'MIND-BENDING INDEX';
+  if (fromShutterIslandCollection) return 'PSYCHOLOGICAL INDEX';
+  if (fromMementoCollection) return 'MEMORY INDEX';
+  return 'MIND-BENDING INDEX';
+};
+
+const getComplexityLevelLabel = () => {
+  if (fromRevengeCollection) return 'VENGEANCE BRUTALITY LEVEL';  // ✅ REVENGE ADDED
+  if (fromWarFilmsCollection) return 'COMBAT REALISM LEVEL';
+  if (fromSciFiCollection) return 'COSMIC COMPLEXITY LEVEL';
+  if (fromTimeTravelCollection) return 'TEMPORAL PARADOX LEVEL';
+  if (fromHeistThrillerCollection) return 'HEIST COMPLEXITY LEVEL';
+  if (fromCrimeThrillerCollection) return 'CRIME COMPLEXITY LEVEL';
+  if (fromDetectiveThrillerCollection) return 'MYSTERY COMPLEXITY LEVEL';
+  if (fromMysteryThrillerCollection) return 'MYSTERY COMPLEXITY LEVEL';
+  if (fromPsychologicalThrillerCollection) return 'PSYCHOLOGICAL DISTORTION LEVEL';
+  if (fromDramaCollection) return 'EMOTIONAL RESONANCE LEVEL';
+  if (fromThrillerCollection) return 'SUSPENSE INTENSITY LEVEL';
+  if (fromSurvivalCollection) return 'SURVIVAL INTENSITY LEVEL';
+  if (fromInceptionCollection) return 'COGNITIVE COMPLEXITY LEVEL';
+  if (fromShutterIslandCollection) return 'PSYCHOLOGICAL DISTORTION LEVEL';
+  if (fromMementoCollection) return 'MEMORY DISTORTION LEVEL';
+  return 'COGNITIVE DISTORTION LEVEL';
+};
 
 
-    if (fromTimeTravelCollection) {
-      if (scoreValue >= 90) return 'A mind-bending temporal masterpiece with paradoxes, causality loops, and revolutionary time travel mechanics.';
-      if (scoreValue >= 80) return 'An intricate time travel narrative with complex paradoxes and sophisticated temporal mechanics.';
-      if (scoreValue >= 70) return 'An engaging time travel story with thoughtful paradoxes and compelling temporal logic.';
-      return 'An accessible time travel adventure with clever mechanics and satisfying temporal storytelling.';
-    }
+const getComplexityDescription = () => {
+  if (fromRevengeCollection) {  // ✅ REVENGE ADDED
+    if (scoreValue >= 90) return 'A brutal and devastating revenge masterpiece with visceral violence, profound moral complexity, and the soul-crushing cost of vengeance that transforms both avenger and target.';
+    if (scoreValue >= 80) return 'A powerful revenge narrative with intense retribution, complex moral questions, and significant psychological impact exploring the dark path of vengeance.';
+    if (scoreValue >= 70) return 'An engaging revenge story with satisfying payback, compelling character motivations, and meaningful exploration of justice versus vengeance.';
+    return 'An accessible revenge film with solid action sequences, emotional stakes, and entertaining retribution storytelling.';
+  }
 
+  if (fromWarFilmsCollection) {
+    if (scoreValue >= 90) return 'An absolutely brutal and unflinching war masterpiece with visceral combat realism, devastating human cost, and profound anti-war sentiment.';
+    if (scoreValue >= 80) return 'A powerful war epic with intense combat sequences, complex moral questions, and significant psychological and emotional impact.';
+    if (scoreValue >= 70) return 'An engaging war narrative with authentic combat sequences, compelling storytelling, and meaningful war themes.';
+    return 'An accessible war film with solid action sequences and engaging military storytelling.';
+  }
 
-    if (fromHeistThrillerCollection) {
-      if (scoreValue >= 90) return 'A masterfully executed heist thriller with unparalleled planning complexity, ingenious execution, and cinematic brilliance.';
-      if (scoreValue >= 80) return 'A brilliantly crafted heist film with intricate schemes, masterful execution, and edge-of-your-seat tension.';
-      if (scoreValue >= 70) return 'An engaging heist thriller with clever planning, solid execution, and satisfying narrative payoffs.';
-      return 'An accessible heist adventure with smart plotting and entertaining criminal masterminds.';
-    }
-    
-    if (fromCrimeThrillerCollection) {
-      if (scoreValue >= 90) return 'A masterfully crafted crime epic with unparalleled narrative complexity, moral ambiguity, and cinematic excellence.';
-      if (scoreValue >= 80) return 'A gripping crime thriller with intricate plotting, complex characters, and masterful direction.';
-      if (scoreValue >= 70) return 'An engaging crime narrative with solid storytelling and compelling investigative work.';
-      return 'An accessible crime thriller that captivates with clever plotting and genuine suspense.';
-    }
-    
-    if (fromDetectiveThrillerCollection) {
-      if (scoreValue >= 90) return 'A masterfully intricate detective thriller with unparalleled investigative depth and suspense.';
-      if (scoreValue >= 80) return 'A gripping detective story with complex puzzles and expertly crafted suspense.';
-      if (scoreValue >= 70) return 'An engaging detective narrative providing solid mystery and thoughtful investigation.';
-      return 'An accessible detective thriller that captivates with clever storytelling and intrigue.';
-    }
-    
-    if (fromMysteryThrillerCollection) {
-      if (scoreValue >= 90) return 'A masterfully crafted mystery with layers of deception, leaving audiences questioning everything until the final reveal.';
-      if (scoreValue >= 80) return 'Intricately plotted thriller with compelling mysteries and shocking revelations throughout.';
-      if (scoreValue >= 70) return 'Engaging mystery with well-crafted clues and satisfying detective work.';
-      return 'Accessible mystery thriller with genuine intrigue and compelling storylines.';
-    }
-    
-    if (fromPsychologicalThrillerCollection) {
-      if (scoreValue >= 90) return 'A mind-bending psychological thriller with intense twists and profound character exploration.';
-      if (scoreValue >= 80) return 'An immersive psychological thriller that delves deep into the human psyche and suspense.';
-      if (scoreValue >= 70) return 'A compelling psychological thriller with gripping tension and layered storytelling.';
-      return 'An engaging psychological thriller that captivates with mystery and emotional depth.';
-    }
-    
-    if (fromDramaCollection) {
-      if (scoreValue >= 90) return 'A profoundly moving emotional journey reaching the deepest corners of human experience.';
-      if (scoreValue >= 80) return 'Intensely emotional narrative with powerful character moments and deeply affecting connections.';
-      if (scoreValue >= 70) return 'Thoughtfully crafted emotional story with genuine heart and compelling drama.';
-      return 'Accessible emotional narrative with authentic feeling and relatable moments.';
-    }
-    
-    if (fromThrillerCollection) {
-      if (scoreValue >= 90) return 'An absolutely brutal and relentless suspense masterpiece, leaving viewers shaken.';
-      if (scoreValue >= 80) return 'Intensely suspenseful thriller with shocking twists and psychological manipulation.';
-      if (scoreValue >= 70) return 'Gripping thriller with compelling mysteries and tense moments throughout.';
-      return 'Accessible thriller with genuine suspense and engaging mystery elements.';
-    }
-    
-    if (scoreValue >= 90) return 'A transcendent masterpiece redefining narrative complexity.';
-    if (scoreValue >= 80) return 'Sophisticated cinematic storytelling with advanced non-linear elements.';
-    if (scoreValue >= 70) return 'Thoughtfully complex narrative with engaging mind-bending elements.';
-    return 'Accessible complexity with subtle mind-bending elements rewarding careful viewing.';
-  };
+  if (fromSciFiCollection) {
+    if (scoreValue >= 90) return 'A visionary sci-fi masterpiece with groundbreaking concepts, philosophical depth, and transcendent cosmic storytelling.';
+    if (scoreValue >= 80) return 'A sophisticated sci-fi epic with innovative world-building, complex themes, and stunning visual spectacle.';
+    if (scoreValue >= 70) return 'An engaging sci-fi narrative with compelling ideas, imaginative world-building, and solid execution.';
+    return 'An accessible sci-fi adventure with creative concepts and entertaining storytelling.';
+  }
 
+  if (fromTimeTravelCollection) {
+    if (scoreValue >= 90) return 'A mind-bending temporal masterpiece with paradoxes, causality loops, and revolutionary time travel mechanics.';
+    if (scoreValue >= 80) return 'An intricate time travel narrative with complex paradoxes and sophisticated temporal mechanics.';
+    if (scoreValue >= 70) return 'An engaging time travel story with thoughtful paradoxes and compelling temporal logic.';
+    return 'An accessible time travel adventure with clever mechanics and satisfying temporal storytelling.';
+  }
 
-  const getBorderColor = () => {
-    if (fromWarFilmsCollection) return 'border-red-400/40';  // ✅ WAR FILMS ADDED
-    if (fromSciFiCollection) return 'border-cyan-400/40';
-    if (fromTimeTravelCollection) return 'border-cyan-400/40';
-    if (fromHeistThrillerCollection) return 'border-amber-400/40';
-    if (fromCrimeThrillerCollection) return 'border-slate-400/40'; 
-    if (fromDetectiveThrillerCollection) return 'border-yellow-400/40';
-    if (fromPsychologicalThrillerCollection) return 'border-yellow-400/40';
-    if (fromThrillerCollection) return 'border-yellow-400/40';
-    if (fromDramaCollection) return 'border-red-400/40';
-    if (fromInceptionCollection) return 'border-yellow-400/40';
-    if (fromShutterIslandCollection) return 'border-yellow-400/40';
-    if (fromMementoCollection) return 'border-yellow-400/40';
-    return 'border-yellow-400/40';
-  };
+  if (fromHeistThrillerCollection) {
+    if (scoreValue >= 90) return 'A masterfully executed heist thriller with unparalleled planning complexity, ingenious execution, and cinematic brilliance.';
+    if (scoreValue >= 80) return 'A brilliantly crafted heist film with intricate schemes, masterful execution, and edge-of-your-seat tension.';
+    if (scoreValue >= 70) return 'An engaging heist thriller with clever planning, solid execution, and satisfying narrative payoffs.';
+    return 'An accessible heist adventure with smart plotting and entertaining criminal masterminds.';
+  }
+  
+  if (fromCrimeThrillerCollection) {
+    if (scoreValue >= 90) return 'A masterfully crafted crime epic with unparalleled narrative complexity, moral ambiguity, and cinematic excellence.';
+    if (scoreValue >= 80) return 'A gripping crime thriller with intricate plotting, complex characters, and masterful direction.';
+    if (scoreValue >= 70) return 'An engaging crime narrative with solid storytelling and compelling investigative work.';
+    return 'An accessible crime thriller that captivates with clever plotting and genuine suspense.';
+  }
+  
+  if (fromDetectiveThrillerCollection) {
+    if (scoreValue >= 90) return 'A masterfully intricate detective thriller with unparalleled investigative depth and suspense.';
+    if (scoreValue >= 80) return 'A gripping detective story with complex puzzles and expertly crafted suspense.';
+    if (scoreValue >= 70) return 'An engaging detective narrative providing solid mystery and thoughtful investigation.';
+    return 'An accessible detective thriller that captivates with clever storytelling and intrigue.';
+  }
+  
+  if (fromMysteryThrillerCollection) {
+    if (scoreValue >= 90) return 'A masterfully crafted mystery with layers of deception, leaving audiences questioning everything until the final reveal.';
+    if (scoreValue >= 80) return 'Intricately plotted thriller with compelling mysteries and shocking revelations throughout.';
+    if (scoreValue >= 70) return 'Engaging mystery with well-crafted clues and satisfying detective work.';
+    return 'Accessible mystery thriller with genuine intrigue and compelling storylines.';
+  }
+  
+  if (fromPsychologicalThrillerCollection) {
+    if (scoreValue >= 90) return 'A mind-bending psychological thriller with intense twists and profound character exploration.';
+    if (scoreValue >= 80) return 'An immersive psychological thriller that delves deep into the human psyche and suspense.';
+    if (scoreValue >= 70) return 'A compelling psychological thriller with gripping tension and layered storytelling.';
+    return 'An engaging psychological thriller that captivates with mystery and emotional depth.';
+  }
+  
+  if (fromDramaCollection) {
+    if (scoreValue >= 90) return 'A profoundly moving emotional journey reaching the deepest corners of human experience.';
+    if (scoreValue >= 80) return 'Intensely emotional narrative with powerful character moments and deeply affecting connections.';
+    if (scoreValue >= 70) return 'Thoughtfully crafted emotional story with genuine heart and compelling drama.';
+    return 'Accessible emotional narrative with authentic feeling and relatable moments.';
+  }
+  
+  if (fromThrillerCollection) {
+    if (scoreValue >= 90) return 'An absolutely brutal and relentless suspense masterpiece, leaving viewers shaken.';
+    if (scoreValue >= 80) return 'Intensely suspenseful thriller with shocking twists and psychological manipulation.';
+    if (scoreValue >= 70) return 'Gripping thriller with compelling mysteries and tense moments throughout.';
+    return 'Accessible thriller with genuine suspense and engaging mystery elements.';
+  }
+  
+  if (scoreValue >= 90) return 'A transcendent masterpiece redefining narrative complexity.';
+  if (scoreValue >= 80) return 'Sophisticated cinematic storytelling with advanced non-linear elements.';
+  if (scoreValue >= 70) return 'Thoughtfully complex narrative with engaging mind-bending elements.';
+  return 'Accessible complexity with subtle mind-bending elements rewarding careful viewing.';
+};
 
+const getBorderColor = () => {
+  if (fromRevengeCollection) return 'border-red-400/40';  // ✅ REVENGE ADDED
+  if (fromWarFilmsCollection) return 'border-red-400/40';
+  if (fromSciFiCollection) return 'border-cyan-400/40';
+  if (fromTimeTravelCollection) return 'border-cyan-400/40';
+  if (fromHeistThrillerCollection) return 'border-amber-400/40';
+  if (fromCrimeThrillerCollection) return 'border-slate-400/40'; 
+  if (fromDetectiveThrillerCollection) return 'border-yellow-400/40';
+  if (fromPsychologicalThrillerCollection) return 'border-yellow-400/40';
+  if (fromThrillerCollection) return 'border-yellow-400/40';
+  if (fromDramaCollection) return 'border-red-400/40';
+  if (fromInceptionCollection) return 'border-yellow-400/40';
+  if (fromShutterIslandCollection) return 'border-yellow-400/40';
+  if (fromMementoCollection) return 'border-yellow-400/40';
+  return 'border-yellow-400/40';
+};
 
-  const getStarColor = () => {
-    if (fromWarFilmsCollection) return 'text-red-400';  // ✅ WAR FILMS ADDED
-    if (fromSciFiCollection) return 'text-cyan-400';
-    if (fromTimeTravelCollection) return 'text-cyan-400';
-    if (fromHeistThrillerCollection) return 'text-amber-400';
-    if (fromCrimeThrillerCollection) return 'text-slate-400';  
-    if (fromDetectiveThrillerCollection) return 'text-yellow-400';
-    if (fromPsychologicalThrillerCollection) return 'text-yellow-400';
-    if (fromThrillerCollection) return 'text-yellow-400';
-    if (fromDramaCollection) return 'text-red-400';
-    if (fromInceptionCollection) return 'text-yellow-400';
-    if (fromShutterIslandCollection) return 'text-yellow-400';
-    if (fromMementoCollection) return 'text-yellow-400';
-    return 'text-yellow-400';
-  };
+const getStarColor = () => {
+  if (fromRevengeCollection) return 'text-red-400';  // ✅ REVENGE ADDED
+  if (fromWarFilmsCollection) return 'text-red-400';
+  if (fromSciFiCollection) return 'text-cyan-400';
+  if (fromTimeTravelCollection) return 'text-cyan-400';
+  if (fromHeistThrillerCollection) return 'text-amber-400';
+  if (fromCrimeThrillerCollection) return 'text-slate-400';  
+  if (fromDetectiveThrillerCollection) return 'text-yellow-400';
+  if (fromPsychologicalThrillerCollection) return 'text-yellow-400';
+  if (fromThrillerCollection) return 'text-yellow-400';
+  if (fromDramaCollection) return 'text-red-400';
+  if (fromInceptionCollection) return 'text-yellow-400';
+  if (fromShutterIslandCollection) return 'text-yellow-400';
+  if (fromMementoCollection) return 'text-yellow-400';
+  return 'text-yellow-400';
+};
+
 
   return (
     <motion.div
@@ -763,7 +790,9 @@ const MovieDetailsSection = React.memo(({
         </motion.div>
       )}
 
-      <SensitiveContentTimelineSection movie={movie} sensitiveScenes={sensitiveScenes} />
+    {!fromWarFilmsCollection && (
+  <SensitiveContentTimelineSection movie={movie} sensitiveScenes={sensitiveScenes} />
+)}
 
       {/* ✅ DYNAMIC DNA AND INTENSITY GRAPH FROM MOVIEINFO */}
   <EnhancedIntensityGraph
@@ -777,10 +806,12 @@ const MovieDetailsSection = React.memo(({
 
   <RealCommentsRatingSection movie={movie} />
 
-  {/* ✅ FAQ SECTION WITH WAR, SCI-FI AND TIME TRAVEL SUPPORT - WAR FIRST */}
-  {fromWarFilmsCollection ? (
+  {/* ✅ FAQ SECTION WITH REVENGE, WAR, SCI-FI AND TIME TRAVEL SUPPORT */}
+  {fromRevengeCollection ? (  // ✅ REVENGE ADDED FIRST
+    <RevengeMovieSEOFAQSection movie={movie} />
+  ) : fromWarFilmsCollection ? (
     <WarFilmsSEOFAQSection movie={movie} />
-  ) : fromSciFiCollection ? (  // ✅ SCI-FI NEXT
+  ) : fromSciFiCollection ? (
     <SciFiSEOFAQSection movie={movie} />
   ) : fromTimeTravelCollection ? (
     <TimeTravelSEOFAQSection movie={movie} />

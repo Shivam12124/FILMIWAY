@@ -345,6 +345,90 @@ export const COLLECTIONS = {
     }
   },
 
+  // 🗡️ BEST REVENGE MOVIES COLLECTION
+  'best-revenge-movies': {
+    slug: 'best-revenge-movies',
+    title: 'Best Revenge Movies',
+    subtitle: 'Brutal Vengeance Masterpieces',
+    description: 'From Oldboy to John Wick—the most brutal and satisfying revenge films ever made, ranked by vengeance intensity.',
+    longDescription: 'Experience cinema\'s most powerful revenge narratives, where protagonists pushed beyond breaking point transform grief and rage into calculated or chaotic vengeance. From methodical takedowns to explosive rampages, these films explore the primal satisfaction and devastating cost of crossing the line into personal justice.',
+
+    emoji: '🗡️',
+    theme: 'red',
+    primaryColor: '#dc2626',
+    secondaryColor: '#b91c1c',
+    accentColor: '#991b1b',
+    gradientFrom: 'from-red-700',
+    gradientTo: 'to-red-600',
+
+    category: 'revenge',
+    tags: ['revenge', 'vengeance', 'retribution', 'action', 'thriller', 'brutal', 'justice'],
+
+    metaTitle: 'Best Revenge Movies: 10 Brutal Films (2025) | Expert Rankings',
+    metaDescription: 'Discover the 10 greatest revenge movies ranked by intensity—from Oldboy and Gladiator to John Wick. Experience visceral vengeance and moral complexity.',
+    metaKeywords: 'best revenge movies, revenge films, vengeance movies, oldboy, gladiator, john wick, kill bill, count of monte cristo, brutal revenge films',
+
+    stats: {
+      totalMovies: 10,
+      averageRating: 8.0,
+      totalWatchtime: '22 hours 27 minutes',
+      averageRevengeIntensity: 95.5,
+      mostIntense: 'Oldboy (99/100)',
+      newestMovie: 'John Wick (2014)',
+      oldestMovie: 'Unforgiven (1992)'
+    },
+
+    movies: [
+      'tt0364569',  // Oldboy (2003)
+      'tt0172495',  // Gladiator (2000)
+      'tt0105695',  // Unforgiven (1992)
+      'tt0112573',  // Braveheart (1995)
+      'tt0482571',  // The Prestige (2006)
+      'tt1663202',  // The Revenant (2015)
+      'tt0378194',  // Kill Bill: Vol. 2 (2004)
+      'tt2911666',  // John Wick (2014)
+      'tt1588170',  // I Saw the Devil (2010)
+      'tt0245844'   // The Count of Monte Cristo (2002)
+    ],
+
+    badges: [
+      { label: 'Revenge Masterpieces', desc: 'Brutal vengeance cinema' },
+      { label: 'Morally Complex', desc: 'Justice vs. retribution' },
+      { label: 'Intensity Ranked', desc: 'Ranked by revenge satisfaction' }
+    ],
+
+    featured: {
+      hero: {
+        title: 'Oldboy',
+        subtitle: 'The Ultimate Revenge Masterpiece',
+        description: 'Park Chan-wook\'s twisted Korean classic delivers 15 years of imprisonment leading to cinema\'s most shocking, devastating revenge.',
+        poster: 'https://image.tmdb.org/t/p/w500/pWDtjs568ZfOTMbURQBYuT4Qb7P.jpg',
+        backdrop: 'https://image.tmdb.org/t/p/w1280/path-to-backdrop.jpg',
+        revengeIntensity: 99
+      }
+    },
+
+    relatedCollections: [
+      'best-thriller-movies',
+      'best-crime-thriller-movies',
+      'best-psychological-thriller-movies'
+    ],
+
+    seo: {
+      title: '10 Best Revenge Movies of All Time (2025) | Expert Rankings | Filmiway',
+      description: 'Explore the definitive ranking of revenge movies—from Oldboy to John Wick. Expert-curated collection of cinema\'s most brutal vengeance tales.',
+      keywords: 'best revenge movies, revenge films, vengeance cinema, oldboy, gladiator, john wick, kill bill, the revenant, brutal revenge, retribution movies',
+      canonicalUrl: 'https://filmiway.com/collection/best-revenge-movies',
+      ogImage: 'https://filmiway.com/images/revenge-movies-collection-og.jpg',
+      structuredData: {
+        '@context': 'https://schema.org',
+        '@type': 'ItemList',
+        name: 'Best Revenge Movies',
+        description: 'Expert-curated list of the greatest revenge movies ranked by intensity and moral complexity',
+        numberOfItems: 10
+      }
+    }
+  },
 
 
 
@@ -862,24 +946,38 @@ export const COLLECTIONS = {
   }
 };
 
+// 🔍 COLLECTION ACCESSORS
 export const getAllCollectionSlugs = () => Object.keys(COLLECTIONS);
 
 export const getCollectionBySlug = (slug) => COLLECTIONS[slug];
 
-export const getFeaturedCollections = () => Object.values(COLLECTIONS).filter(collection => collection.featured);
+export const getFeaturedCollections = () => 
+  Object.values(COLLECTIONS).filter(collection => collection.featured);
 
-export const getCollectionsByCategory = (category) => Object.values(COLLECTIONS).filter(collection => collection.category === category);
+export const getCollectionsByCategory = (category) => 
+  Object.values(COLLECTIONS).filter(collection => collection.category === category);
 
+// 🎬 SPECIFIC COLLECTION GETTERS (All 15 collections)
+export const getInceptionCollection = () => COLLECTIONS['movies-like-inception'];
+export const getMementoCollection = () => COLLECTIONS['movies-like-memento'];
+export const getShutterIslandCollection = () => COLLECTIONS['movies-like-shutter-island'];
 export const getSurvivalCollection = () => COLLECTIONS['best-survival-movies'];
-
 export const getNetflixDramaCollection = () => COLLECTIONS['best-drama-movies-on-netflix'];
-
+export const getWarFilmsCollection = () => COLLECTIONS['best-war-films'];
+export const getRevengeMoviesCollection = () => COLLECTIONS['best-revenge-movies'];
+export const getSciFiMoviesCollection = () => COLLECTIONS['best-sci-fi-movies'];
+export const getTimeTravelMoviesCollection = () => COLLECTIONS['best-time-travel-movies'];
+export const getHeistThillerCollection = () => COLLECTIONS['best-heist-thriller-movies'];
+export const getCrimeThillerCollection = () => COLLECTIONS['best-crime-thriller-movies'];
+export const getPsychologicalThillerCollection = () => COLLECTIONS['best-psychological-thriller-movies'];
+export const getDetectiveThillerCollection = () => COLLECTIONS['best-detective-thriller-movies'];
+export const getMysteryThillerCollection = () => COLLECTIONS['best-mystery-thriller-movies'];
 export const getThrillerCollection = () => COLLECTIONS['best-thriller-movies'];
 
-export const getDetectiveThrillerCollection = () => COLLECTIONS['best-detective-thriller-movies'];
 
-export const getMysteryThrillerCollection = () => COLLECTIONS['best-mystery-thriller-movies'];
 
-export const getPsychologicalThrillerCollection = () => COLLECTIONS['best-psychological-thriller-movies'];
+  
+
 
 export default COLLECTIONS;
+

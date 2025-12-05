@@ -70,6 +70,17 @@ const CollectionsHub = () => {
   hasSubCollections: false
 },
 
+{
+    id: 'revenge',
+    title: 'Best Revenge Movies',
+    description: 'Brutal vengeance films exploring retribution, moral cost, and the devastating path of revenge',
+    icon: Shield,  // 🗡️ Using Shield icon (can change to another if preferred)
+    gradient: 'from-red-700 to-rose-900',  // Dark red/crimson gradient
+    movieCount: '10',
+    rating: '8.0',
+    directLink: '/collection/best-revenge-movies',
+    hasSubCollections: false
+},
 
 
         {
@@ -198,11 +209,12 @@ const CollectionsHub = () => {
 
     return (
         <>
-            <Head>
+                       <Head>
                 <title>Movie Collections | Filmiway - Curated Film Lists</title>
                 <meta name="description" content="Explore expertly curated movie collections including mind-bending thrillers, survival films, mystery thrillers and more. Find your next favorite movie." />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
             </Head>
+
 
             <div className="min-h-screen bg-black text-white">
                 {/* Fixed Header */}
@@ -233,6 +245,7 @@ const CollectionsHub = () => {
                     </div>
                 </motion.header>
 
+
                 {/* Main Content */}
                 <main className="pt-20 sm:pt-24 pb-16">
                     <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
@@ -254,6 +267,7 @@ const CollectionsHub = () => {
                             </p>
                         </motion.div>
 
+
                         {/* Search Bar */}
                         <motion.div
                             className="max-w-2xl mx-auto mb-12"
@@ -273,6 +287,7 @@ const CollectionsHub = () => {
                             </div>
                         </motion.div>
 
+
                         {/* Collections Grid */}
                         <div className="space-y-6">
                             {filteredCollections.map((collection, index) => (
@@ -282,56 +297,53 @@ const CollectionsHub = () => {
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: 0.3 + index * 0.1, duration: 0.5 }}
                                 >
-                                    {/* Collection Card */}
-                                    <div
-                                        className="group relative bg-gradient-to-br from-gray-900 to-gray-900/50 border border-gray-800/50 rounded-2xl overflow-hidden hover:border-yellow-400/30 transition-all duration-300 cursor-pointer"
-                                        onClick={() => {
-                                            if (collection.hasSubCollections) {
-                                                toggleExpand(collection.id);
-                                            } else {
-                                                window.location.href = collection.directLink;
-                                            }
-                                        }}
-                                    >
-                                        <div className="p-6 sm:p-8">
-                                            <div className="flex items-start justify-between gap-4">
-                                                <div className="flex-1">
-                                                    <div className="flex items-center gap-4 mb-3">
-                                                        <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br ${collection.gradient} flex items-center justify-center`}>
-                                                            <collection.icon className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
-                                                        </div>
-                                                        <div>
-                                                            <h2 className="text-xl sm:text-2xl font-semibold text-white group-hover:text-yellow-400 transition-colors">
-                                                                {collection.title}
-                                                            </h2>
-                                                            <p className="text-sm sm:text-base text-gray-400 mt-1">
-                                                                {collection.description}
-                                                            </p>
-                                                        </div>
-                                                    </div>
+                                  {/* ✅ WRAPPED IN LINK - GOOGLE CAN NOW SEE IT */}
+<Link href={collection.directLink || `#${collection.id}`}>
+    <div className="group relative bg-gradient-to-br from-gray-900 to-gray-900/50 border border-gray-800/50 rounded-2xl overflow-hidden hover:border-yellow-400/30 transition-all duration-300 cursor-pointer">
+        <div className="p-6 sm:p-8">
+            <div className="flex items-start justify-between gap-4">
+                <div className="flex-1">
+                    <div className="flex items-center gap-4 mb-3">
+                        <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br ${collection.gradient} flex items-center justify-center`}>
+                            {(() => {
+                                const IconComponent = collection.icon;
+                                return <IconComponent className="w-6 h-6 sm:w-7 sm:h-7 text-white" />;
+                            })()}
+                        </div>
+                        <div>
+                            <h2 className="text-xl sm:text-2xl font-semibold text-white group-hover:text-yellow-400 transition-colors">
+                                {collection.title}
+                            </h2>
+                            <p className="text-sm sm:text-base text-gray-400 mt-1">
+                                {collection.description}
+                            </p>
+                        </div>
+                    </div>
+                    <div className="flex items-center gap-4 mt-4">
+                        <div className="flex items-center gap-2 text-sm text-gray-400">
+                            <Film className="w-4 h-4 text-yellow-400" />
+                            <span>{collection.movieCount} Films</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-sm text-gray-400">
+                            <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                            <span>{collection.rating}/10</span>
+                        </div>
+                    </div>
+                </div>
+                {collection.hasSubCollections && (
+                    <div className="flex-shrink-0">
+                        <ChevronDown
+                            className={`w-6 h-6 text-yellow-400 transition-transform duration-300 ${
+                                expandedCollection === collection.id ? 'rotate-180' : ''
+                            }`}
+                        />
+                    </div>
+                )}
+            </div>
+        </div>
+    </div>
+</Link>
 
-                                                    <div className="flex items-center gap-4 mt-4">
-                                                        <div className="flex items-center gap-2 text-sm text-gray-400">
-                                                            <Film className="w-4 h-4 text-yellow-400" />
-                                                            <span>{collection.movieCount} Films</span>
-                                                        </div>
-                                                        <div className="flex items-center gap-2 text-sm text-gray-400">
-                                                            <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                                                            <span>{collection.rating}/10</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div className="flex-shrink-0">
-                                                    <ChevronDown
-                                                        className={`w-6 h-6 text-yellow-400 transition-transform duration-300 ${
-                                                            expandedCollection === collection.id ? 'rotate-180' : ''
-                                                        }`}
-                                                    />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
 
                                     {/* Sub-Collections */}
                                     <AnimatePresence>
@@ -383,6 +395,7 @@ const CollectionsHub = () => {
                             ))}
                         </div>
 
+
                         {/* Coming Soon */}
                         <motion.div
                             className="mt-12 bg-gradient-to-br from-gray-900/50 to-gray-900/30 border border-gray-800/30 rounded-2xl p-8 text-center"
@@ -412,5 +425,6 @@ const CollectionsHub = () => {
         </>
     );
 };
+
 
 export default CollectionsHub;

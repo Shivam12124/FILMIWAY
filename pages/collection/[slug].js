@@ -19,6 +19,8 @@ import { TIME_TRAVEL_MOVIES } from '../../utils/timeTravelMovieData';
 import { SCI_FI_MOVIES } from '../../utils/sciFiMovieData';
 import { WAR_FILMS_DATABASE } from '../../utils/warFilmsMovieData';  // ✅ WAR FILMS ADDED
 
+import { REVENGE_MOVIES } from '../../utils/revengeMovieData';
+
 // Components
 import CinematicBackground from '../../components/CinematicBackground';
 import StrategicControls from '../../components/StrategicControls';
@@ -312,6 +314,29 @@ const getCollectionContent = () => {
                 text2: "Each film has been selected for its masterful construction of intricate cases and unforgettable detective characters whose obsession with truth captivates and inspires."
             }
         };
+    } else if (collection.slug === 'best-revenge-movies') {
+        return {
+            badge: "Revenge Cinema",
+            title: "Revenge",
+            description: "Brutal revenge films where justice becomes personal. Systematic vengeance, moral complexity & visceral satisfaction as protagonists destroy those who wronged them.",
+            selection: {
+                text1: "From methodical takedowns to explosive rampages—these films explore the primal satisfaction of revenge while confronting the psychological and moral cost of crossing that line.",
+                text2: "Each revenge masterpiece features protagonists pushed beyond breaking point, transforming grief and rage into calculated or chaotic vengeance that reshapes their entire existence."
+            },
+            ranking: {
+                text: "Our revenge intensity index evaluates vengeance satisfaction, moral complexity depth, and the sophistication of revenge storytelling techniques throughout each film.",
+                points: [
+                    "Revenge intensity scale",
+                    "Moral complexity depth",
+                    "Vengeance satisfaction level",
+                    "Psychological transformation arc"
+                ]
+            },
+            experience: {
+                text1: "Whether you're seeking cathartic violence or profound moral questioning about justice and vengeance, this collection delivers cinema's most powerful revenge experiences without apology.",
+                text2: "Each film has been selected for its unflinching exploration of revenge's seductive power and devastating consequences—creating visceral, unforgettable narratives that challenge what justice truly means."
+            }
+        };
     } else if (collection.slug === 'best-mystery-thriller-movies') {
         return {
             badge: "Mystery Thriller Cinema",
@@ -454,7 +479,7 @@ const getCollectionContent = () => {
 };
 
 
-// 🔥 HEADER CONTENT WITH WAR FILMS ADDED
+// 🔥 HEADER CONTENT WITH REVENGE ADDED
 const getHeaderContent = () => {
     if (collection.slug === 'movies-like-memento') {
         return {
@@ -521,6 +546,11 @@ const getHeaderContent = () => {
             title: "Best Detective Thrillers: 10 Brilliant Films",
             subtitle: "From Zodiac to Prisoners—intricate mysteries & shocking revelations"
         };
+    } else if (collection.slug === 'best-revenge-movies') {  // ✅ REVENGE ADDED
+        return {
+            title: "Best Revenge Movies: 10 Brutal Films",
+            subtitle: "From Oldboy to John Wick—systematic vengeance & visceral satisfaction"
+        };
     } else if (collection.slug === 'best-war-films') {
         return {
             title: "Best War Films: 10 Unflinching Masterpieces",
@@ -535,7 +565,8 @@ const getHeaderContent = () => {
 };
 
 
-// 🔥 LOADER CONTENT WITH WAR FILMS ADDED
+
+// 🔥 LOADER CONTENT WITH REVENGE ADDED
 const getLoaderContent = () => {
     if (collection?.slug === 'movies-like-memento') {
         return {
@@ -602,7 +633,12 @@ const getLoaderContent = () => {
             title: "Loading Best Netflix Dramas",
             description: "Curating award-winning dramatic films with community reviews and ratings"
         };
-    } else if (collection?.slug === 'best-war-films') {  // ✅ WAR FILMS ADDED
+    } else if (collection?.slug === 'best-revenge-movies') {  // ✅ REVENGE ADDED
+        return {
+            title: "Loading Best Revenge Movies",
+            description: "Curating brutal revenge masterpieces with community reviews and ratings"
+        };
+    } else if (collection?.slug === 'best-war-films') {
         return {
             title: "Loading Best War Films",
             description: "Curating unflinching war masterpieces with community reviews and ratings"
@@ -616,7 +652,8 @@ const getLoaderContent = () => {
 };
 
 
-// 🔥 STATIC META CONTENT WITH WAR FILMS ADDED
+
+// 🔥 STATIC META CONTENT WITH REVENGE ADDED
 const getStaticMetaContent = () => {
     if (collection.slug === 'movies-like-memento') {
         return {
@@ -735,6 +772,15 @@ const getStaticMetaContent = () => {
             twitterTitle: "🔍 10 Brilliant Detective Thrillers (Zodiac, Prisoners, Se7en)",
             progressText: `of Top ${movies.length} Detective Thriller Movies`
         };
+    } else if (collection.slug === 'best-revenge-movies') {  // ✅ REVENGE ADDED
+        return {
+            title: "Best Revenge Movies: 10 Brutal Films", // ✅ 39 chars
+            description: "From Oldboy to John Wick—10 brutal revenge films with systematic vengeance, moral complexity & visceral satisfaction. Justice becomes personal.", // ✅ 152 chars
+            keywords: "best revenge movies, revenge films, oldboy, john wick, kill bill, vengeance movies",
+            ogTitle: "10 Best Revenge Movies: Oldboy to John Wick 🗡️",
+            twitterTitle: "🗡️ 10 Brutal Revenge Movies (Oldboy, Gladiator, John Wick)",
+            progressText: `of Top ${movies.length} Revenge Movies`
+        };
     } else if (collection.slug === 'best-war-films') {
         return {
             title: "Best War Films: 10 Unflinching Masterpieces", // ✅ 48 chars
@@ -755,7 +801,6 @@ const getStaticMetaContent = () => {
         };
     }
 };
-
 
 
     const nextMovie = useCallback(() => {
@@ -816,7 +861,6 @@ const handleMovieClick = () => {
         sessionStorage.setItem('collectionTitle', collection.title);
         sessionStorage.setItem('fromCollection', 'true');
 
-
         // Clear all collection flags first
         sessionStorage.removeItem('fromInceptionCollection');
         sessionStorage.removeItem('fromMementoCollection');
@@ -831,8 +875,8 @@ const handleMovieClick = () => {
         sessionStorage.removeItem('fromHeistThrillerCollection');
         sessionStorage.removeItem('fromTimeTravelCollection');
         sessionStorage.removeItem('fromSciFiCollection');
-        sessionStorage.removeItem('fromWarFilmsCollection');  // ✅ WAR FILMS ADDED
-
+        sessionStorage.removeItem('fromRevengeCollection');  // ✅ REVENGE ADDED
+        sessionStorage.removeItem('fromWarFilmsCollection');
 
         // Set appropriate collection flag
         if (collection.slug === 'movies-like-inception') {
@@ -861,7 +905,9 @@ const handleMovieClick = () => {
             sessionStorage.setItem('fromTimeTravelCollection', 'true');
         } else if (collection.slug === 'best-sci-fi-movies') {
             sessionStorage.setItem('fromSciFiCollection', 'true');
-        } else if (collection.slug === 'best-war-films') {  // ✅ WAR FILMS ADDED
+        } else if (collection.slug === 'best-revenge-movies') {  // ✅ REVENGE ADDED
+            sessionStorage.setItem('fromRevengeCollection', 'true');
+        } else if (collection.slug === 'best-war-films') {
             sessionStorage.setItem('fromWarFilmsCollection', 'true');
         }
     }
@@ -1221,13 +1267,11 @@ return (
                 {metaContent.title || collection.title || "Filmiway - Movie Collection"}
             </title>
 
-
             <meta
                 key={`collection-desc-${collection.slug}`}
                 name="description"
                 content={metaContent.description || collection.description || ""}
             />
-
 
             <meta
                 key={`collection-keywords-${collection.slug}`}
@@ -1235,24 +1279,19 @@ return (
                 content={metaContent.keywords || ""}
             />
 
-
             <link rel="canonical" href={`https://filmiway.com/collection/${collection.slug}`} />
-
 
             <meta name="robots" content="index, follow" />
             <meta name="viewport" content="width=device-width, initial-scale=1" />
-
 
             <meta property="og:title" key={`og-title-${collection.slug}`} content={metaContent.ogTitle || metaContent.title || collection.title} />
             <meta property="og:description" key={`og-desc-${collection.slug}`} content={metaContent.description || collection.description} />
             <meta property="og:type" content="website" />
             <meta property="og:url" content={`https://filmiway.com/collection/${collection.slug}`} />
 
-
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:title" key={`twitter-title-${collection.slug}`} content={metaContent.twitterTitle || metaContent.title || collection.title} />
             <meta name="twitter:description" key={`twitter-desc-${collection.slug}`} content={metaContent.description || collection.description} />
-
 
             <script
                 type="application/ld+json"
@@ -1292,10 +1331,11 @@ return (
                                     ? 'movies/time-travel/'
                                     : collection?.slug === 'best-sci-fi-movies'
                                     ? 'movies/sci-fi/'
-                                    : collection?.slug === 'best-war-films'  // ✅ WAR FILMS ADDED
+                                    : collection?.slug === 'best-revenge-movies'  // ✅ REVENGE ADDED
+                                    ? 'movies/revenge/'
+                                    : collection?.slug === 'best-war-films'
                                     ? 'movies/war-films/'
                                     : 'movies/';
-
 
                             let itemObj = {
                                 "@type": "Movie",
@@ -1309,7 +1349,6 @@ return (
                                 "genre": movie?.Genre || "Drama"
                             };
 
-
                             // Add director if exists
                             if (movie?.director) {
                                 itemObj.director = {
@@ -1318,11 +1357,9 @@ return (
                                 };
                             }
 
-
                             if (movie?.imdbID) {
                                 itemObj.url = `https://filmiway.com/${basePath}${movie.imdbID}`;
                             }
-
 
                             return {
                                 "@type": "ListItem",
@@ -1334,7 +1371,6 @@ return (
                 }}
             />
         </Head>
-
 
         <CinematicBackground />
         <StrategicControls 
@@ -1387,7 +1423,6 @@ return (
                                 </motion.button>
                             )}
 
-
                             {!isLastMovie && (
                                 <motion.button
                                     onClick={nextMovie}
@@ -1400,7 +1435,7 @@ return (
                                 </motion.button>
                             )}
 
-{/* 🔥 FIXED FOR NEXT.JS 15 - WITH SCI-FI, TIME TRAVEL & WAR COLLECTION URL */}
+{/* 🔥 FIXED FOR NEXT.JS 15 - WITH REVENGE COLLECTION URL */}
 <AnimatePresence mode="wait">
   {currentMovie && (
     <Link
@@ -1431,7 +1466,9 @@ return (
           ? `/movies/time-travel/${currentMovie.imdbID}`
           : collection.slug === 'best-sci-fi-movies'
           ? `/movies/sci-fi/${currentMovie.imdbID}`
-          : collection.slug === 'best-war-films' // ✅ WAR FILMS
+          : collection.slug === 'best-revenge-movies' // ✅ REVENGE
+          ? `/movies/revenge/${currentMovie.imdbID}`
+          : collection.slug === 'best-war-films'
           ? `/movies/war-films/${currentMovie.imdbID}`
           : `/movies/${currentMovie.imdbID}`
       }
@@ -1448,7 +1485,6 @@ return (
 </AnimatePresence>
 
                         </div>
-
 
                         {/* Enhanced Movie Info */}
                         <motion.div 
@@ -1497,7 +1533,9 @@ return (
                                             detailPageUrl = `/movies/time-travel/${currentMovie.imdbID}`;
                                         } else if (collection.slug === 'best-sci-fi-movies') {
                                             detailPageUrl = `/movies/sci-fi/${currentMovie.imdbID}`;
-                                        } else if (collection.slug === 'best-war-films') {  // ✅ WAR FILMS ADDED
+                                        } else if (collection.slug === 'best-revenge-movies') {  // ✅ REVENGE
+                                            detailPageUrl = `/movies/revenge/${currentMovie.imdbID}`;
+                                        } else if (collection.slug === 'best-war-films') {
                                             detailPageUrl = `/movies/war-films/${currentMovie.imdbID}`;
                                         } else {
                                             detailPageUrl = `/movies/${currentMovie.imdbID}`;
@@ -1517,14 +1555,12 @@ return (
                             </div>
                         </motion.div>
 
-
                         {/* Navigation Dots */}
                         <NavigationDots 
                             movies={movies}
                             currentMovieIndex={currentMovieIndex}
                             goToMovie={goToMovie}
                         />
-
 
                         {/* Movie Counter */}
                         <motion.div
@@ -1550,7 +1586,6 @@ return (
                                 </span>
                             </div>
                         </motion.div>
-
 
                         {/* Footer */}
                         <motion.footer
@@ -1606,7 +1641,6 @@ return (
                                 </p>
                             </motion.div>
 
-
                             <div className="flex items-center justify-center space-x-8 text-gray-500 text-sm pb-8">
                                 <span>© 2025 Filmiway</span>
                                 <span>•</span>
@@ -1623,20 +1657,16 @@ return (
 );
 };
 
-
-// 🔥 SSG FUNCTIONS WITH WAR FILMS COLLECTION ADDED ⚔️
+// 🔥 SSG FUNCTIONS WITH REVENGE COLLECTION ADDED 🗡️
 // ✅ CORRECT getStaticPaths() - generates all collections
 export async function getStaticPaths() {
     const slugs = getAllCollectionSlugs();
-
 
     const paths = slugs.map((slug) => ({
         params: { slug }
     }));
 
-
     console.log('✅ Building paths for:', paths.map(p => p.params.slug));
-
 
     return {
         paths,
@@ -1644,17 +1674,14 @@ export async function getStaticPaths() {
     };
 }
 
-
-// ✅ CORRECT getStaticProps() - maps correct database to each collection WITH WAR FILMS
+// ✅ CORRECT getStaticProps() - maps correct database to each collection WITH REVENGE
 export async function getStaticProps({ params }) {
     const slug = params.slug;
     const collection = getCollectionBySlug(slug);
 
-
     if (!collection) {
         return { notFound: true };
     }
-
 
     // ✅ SELECT DATABASE FOR EACH COLLECTION
     let movieDatabase;
@@ -1690,7 +1717,10 @@ export async function getStaticProps({ params }) {
         case 'best-sci-fi-movies':
             movieDatabase = SCI_FI_MOVIES;
             break;
-        case 'best-war-films':  // ✅ WAR FILMS ADDED
+        case 'best-revenge-movies':  // ✅ REVENGE ADDED
+            movieDatabase = REVENGE_MOVIES;
+            break;
+        case 'best-war-films':
             movieDatabase = WAR_FILMS_DATABASE;
             break;
         default:
@@ -1698,11 +1728,9 @@ export async function getStaticProps({ params }) {
             movieDatabase = COMPLETE_MOVIE_DATABASE;
     }
 
-
     const movieArray = Array.isArray(movieDatabase)
         ? movieDatabase
         : (movieDatabase ? Object.values(movieDatabase) : []);
-
 
     // ✅ FIND MOVIES - search by imdbID
     const movies = collection.movies
@@ -1710,13 +1738,12 @@ export async function getStaticProps({ params }) {
             const movie = movieArray.find(m => m.imdbID === imdbId);
             if (!movie) return null;
 
-
             return {
                 imdbID: movie.imdbID || '',
                 tmdbId: movie.tmdbId || 0,
                 Title: movie.Title || movie.title || 'Unknown',
                 Year: movie.Year || movie.year || '2024',
-                Genre: movie.Genre || movie.genre || 'War',
+                Genre: movie.Genre || movie.genre || 'Thriller',
                 Runtime: movie.Runtime || movie.runtime || 120,
                 Poster: movie.Poster || movie.poster || '',
                 Plot: movie.Plot || movie.plot || movie.synopsis || '',
@@ -1726,7 +1753,6 @@ export async function getStaticProps({ params }) {
         .filter(Boolean)
         .reverse();
 
-
     return {
         props: {
             collection,
@@ -1734,6 +1760,5 @@ export async function getStaticProps({ params }) {
         }
     };
 }
-
 
 export default CollectionPage;

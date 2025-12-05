@@ -72,7 +72,7 @@ export const WAR_FILMS = [
   },
   {
     imdbID: 'tt0056172',
-    tmdbId: 282,
+    tmdbId: 947,
     title: 'Lawrence of Arabia',
     director: 'David Lean',
     genre: 'Adventure, Biography, Drama, War',
@@ -105,7 +105,7 @@ export const WAR_FILMS = [
   },
   {
     imdbID: 'tt0091251',
-    tmdbId: 12321,
+    tmdbId: 25237,
     title: 'Come and See',
     director: 'Elem Klimov',
     genre: 'Drama, War',
@@ -140,7 +140,7 @@ export const WAR_FILMS = [
   },
   {
     imdbID: 'tt0108052',
-    tmdbId: 514,
+    tmdbId: 424,
     title: 'Schindler\'s List',
     director: 'Steven Spielberg',
     genre: 'Biography, Drama, History, War',
@@ -175,7 +175,7 @@ export const WAR_FILMS = [
   },
   {
     imdbID: 'tt0093058',
-    tmdbId: 278,
+    tmdbId: 600,
     title: 'Full Metal Jacket',
     director: 'Stanley Kubrick',
     genre: 'Drama, War',
@@ -243,7 +243,7 @@ export const WAR_FILMS = [
   },
   {
     imdbID: 'tt0082096',
-    tmdbId: 95,
+    tmdbId: 156249,
     title: 'Das Boot',
     director: 'Wolfgang Petersen',
     genre: 'Drama, War',
@@ -277,7 +277,7 @@ export const WAR_FILMS = [
   },
   {
     imdbID: 'tt0091763',
-    tmdbId: 755,
+    tmdbId: 792,
     title: 'Platoon',
     director: 'Oliver Stone',
     genre: 'Drama, War',
@@ -311,7 +311,7 @@ export const WAR_FILMS = [
   },
   {
     imdbID: 'tt0047528',
-    tmdbId: 505,
+    tmdbId: 975,
     title: 'Paths of Glory',
     director: 'Stanley Kubrick',
     genre: 'Drama, War',

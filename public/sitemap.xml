@@ -108,221 +108,253 @@
     <priority>0.9</priority>
 </url>
 
+<url>
+    <loc>https://filmiway.com/collection/best-time-travel-movies</loc>
+    <lastmod>2025-12-01T09:40:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/collection/best-heist-thriller-movies</loc>
+    <lastmod>2025-12-01T09:35:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/collection/best-crime-thriller-movies</loc>
+    <lastmod>2025-11-25T10:21:00+05:30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+</url>
+
+
+<!-- ⚔️ BEST WAR FILMS COLLECTION PAGE -->
+<url>
+    <loc>https://filmiway.com/collection/best-war-films</loc>
+    <lastmod>2025-12-05T11:50:00+05:30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+</url>
 
 
 
-    <!-- 🧠 MOVIES LIKE INCEPTION (30 MIND-BENDING MOVIES WITH CORRECT SLUG) -->
-    <url>
-        <loc>https://filmiway.com/movies/like-inception/tt0468569</loc>
-        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
+<!-- 🧠 MOVIES LIKE INCEPTION (10 MOVIES - CORRECTED) -->
+<url>
+    <loc>https://filmiway.com/movies/like-inception/tt0390384</loc>
+    <lastmod>2025-12-05T10:10:00+05:30</lastmod>
+  <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
 
-    <url>
-        <loc>https://filmiway.com/movies/like-inception/tt0209144</loc>
-        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
+<url>
+    <loc>https://filmiway.com/movies/like-inception/tt0383028</loc>
+    <lastmod>2025-12-05T10:10:00+05:30</lastmod>
+  <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
 
-    <url>
-        <loc>https://filmiway.com/movies/like-inception/tt1130884</loc>
-        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
+<url>
+    <loc>https://filmiway.com/movies/like-inception/tt0166924</loc>
+    <lastmod>2025-12-05T10:10:00+05:30</lastmod>
+  <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
 
-    <url>
-        <loc>https://filmiway.com/movies/like-inception/tt0090605</loc>
-        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
+<url>
+    <loc>https://filmiway.com/movies/like-inception/tt2397535</loc>
+    <lastmod>2025-12-05T10:10:00+05:30</lastmod>
+  <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
 
-    <url>
-        <loc>https://filmiway.com/movies/like-inception/tt0482571</loc>
-        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
+<url>
+    <loc>https://filmiway.com/movies/like-inception/tt2866360</loc>
+    <lastmod>2025-12-05T10:10:00+05:30</lastmod>
+  <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
 
-    <url>
-        <loc>https://filmiway.com/movies/like-inception/tt0338013</loc>
-        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
+<url>
+    <loc>https://filmiway.com/movies/like-inception/tt0246578</loc>
+    <lastmod>2025-12-05T10:10:00+05:30</lastmod>
+  <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
 
-    <url>
-        <loc>https://filmiway.com/movies/like-inception/tt2380307</loc>
-        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
+<url>
+    <loc>https://filmiway.com/movies/like-inception/tt2316411</loc>
+    <lastmod>2025-12-05T10:10:00+05:30</lastmod>
+  <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
 
-    <url>
-        <loc>https://filmiway.com/movies/like-inception/tt0119116</loc>
-        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
+<url>
+    <loc>https://filmiway.com/movies/like-inception/tt0414993</loc>
+    <lastmod>2025-12-05T10:10:00+05:30</lastmod>
+  <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
 
-    <url>
-        <loc>https://filmiway.com/movies/like-inception/tt0407887</loc>
-        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
+<url>
+    <loc>https://filmiway.com/movies/like-inception/tt0485947</loc>
+    <lastmod>2025-12-05T10:10:00+05:30</lastmod>
+  <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
 
-    <url>
-        <loc>https://filmiway.com/movies/like-inception/tt1130884</loc>
-        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
+<url>
+    <loc>https://filmiway.com/movies/like-inception/tt1130884</loc>
+    <lastmod>2025-12-05T10:10:00+05:30</lastmod>
+  <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
 
-    <!-- 🧠 MOVIES LIKE MEMENTO (10 MOVIES WITH CORRECT SLUG) -->
-    <url>
-        <loc>https://filmiway.com/movies/like-memento/tt0390384</loc>
-        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
 
-    <url>
-        <loc>https://filmiway.com/movies/like-memento/tt0383028</loc>
-        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
+<!-- 🧠 MOVIES LIKE MEMENTO (10 MOVIES - ALL CORRECT ✅) -->
+<url>
+    <loc>https://filmiway.com/movies/like-memento/tt0390384</loc>
+    <lastmod>2025-12-05T10:10:00+05:30</lastmod>
+  <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
 
-    <url>
-        <loc>https://filmiway.com/movies/like-memento/tt0166924</loc>
-        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
+<url>
+    <loc>https://filmiway.com/movies/like-memento/tt0383028</loc>
+    <lastmod>2025-12-05T10:10:00+05:30</lastmod>
+  <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
 
-    <url>
-        <loc>https://filmiway.com/movies/like-memento/tt2397535</loc>
-        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
+<url>
+    <loc>https://filmiway.com/movies/like-memento/tt0166924</loc>
+    <lastmod>2025-12-05T10:10:00+05:30</lastmod>
+  <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
 
-    <url>
-        <loc>https://filmiway.com/movies/like-memento/tt2866360</loc>
-        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
+<url>
+    <loc>https://filmiway.com/movies/like-memento/tt2397535</loc>
+    <lastmod>2025-12-05T10:10:00+05:30</lastmod>
+  <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
 
-    <url>
-        <loc>https://filmiway.com/movies/like-memento/tt0246578</loc>
-        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
+<url>
+    <loc>https://filmiway.com/movies/like-memento/tt2866360</loc>
+    <lastmod>2025-12-05T10:10:00+05:30</lastmod>
+  <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
 
-    <url>
-        <loc>https://filmiway.com/movies/like-memento/tt2316411</loc>
-        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
+<url>
+    <loc>https://filmiway.com/movies/like-memento/tt0246578</loc>
+    <lastmod>2025-12-05T10:10:00+05:30</lastmod>
+  <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
 
-    <url>
-        <loc>https://filmiway.com/movies/like-memento/tt0414993</loc>
-        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
+<url>
+    <loc>https://filmiway.com/movies/like-memento/tt2316411</loc>
+    <lastmod>2025-12-05T10:10:00+05:30</lastmod>
+  <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
 
-    <url>
-        <loc>https://filmiway.com/movies/like-memento/tt0485947</loc>
-        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
+<url>
+    <loc>https://filmiway.com/movies/like-memento/tt0414993</loc>
+    <lastmod>2025-12-05T10:10:00+05:30</lastmod>
+  <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
 
-    <url>
-        <loc>https://filmiway.com/movies/like-memento/tt1130884</loc>
-        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
+<url>
+    <loc>https://filmiway.com/movies/like-memento/tt0485947</loc>
+    <lastmod>2025-12-05T10:10:00+05:30</lastmod>
+  <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
 
-    <!-- 🏝️ MOVIES LIKE SHUTTER ISLAND (10 MOVIES WITH CORRECT SLUG) -->
-    <url>
-        <loc>https://filmiway.com/movies/like-shutter-island/tt0816692</loc>
-        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
+<url>
+    <loc>https://filmiway.com/movies/like-memento/tt1130884</loc>
+    <lastmod>2025-12-05T10:10:00+05:30</lastmod>
+  <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
 
-    <url>
-        <loc>https://filmiway.com/movies/like-shutter-island/tt1375666</loc>
-        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
 
-    <url>
-        <loc>https://filmiway.com/movies/like-shutter-island/tt0364569</loc>
-        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
+<!-- 🏝️ MOVIES LIKE SHUTTER ISLAND (10 MOVIES - CORRECTED) -->
+<url>
+    <loc>https://filmiway.com/movies/like-shutter-island/tt0390384</loc>
+    <lastmod>2025-12-05T10:10:00+05:30</lastmod>
+  <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
 
-    <url>
-        <loc>https://filmiway.com/movies/like-shutter-island/tt0347149</loc>
-        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
+<url>
+    <loc>https://filmiway.com/movies/like-shutter-island/tt0383028</loc>
+    <lastmod>2025-12-05T10:10:00+05:30</lastmod>
+  <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
 
-    <url>
-        <loc>https://filmiway.com/movies/like-shutter-island/tt0144084</loc>
-        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
+<url>
+    <loc>https://filmiway.com/movies/like-shutter-island/tt0166924</loc>
+    <lastmod>2025-12-05T10:10:00+05:30</lastmod>
+  <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
 
-    <url>
-        <loc>https://filmiway.com/movies/like-shutter-island/tt0268978</loc>
-        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
+<url>
+    <loc>https://filmiway.com/movies/like-shutter-island/tt2397535</loc>
+    <lastmod>2025-12-05T10:10:00+05:30</lastmod>
+  <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
 
-    <url>
-        <loc>https://filmiway.com/movies/like-shutter-island/tt2543164</loc>
-        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
+<url>
+    <loc>https://filmiway.com/movies/like-shutter-island/tt2866360</loc>
+    <lastmod>2025-12-05T10:10:00+05:30</lastmod>
+  <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
 
-    <url>
-        <loc>https://filmiway.com/movies/like-shutter-island/tt1345836</loc>
-        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
+<url>
+    <loc>https://filmiway.com/movies/like-shutter-island/tt0246578</loc>
+    <lastmod>2025-12-05T10:10:00+05:30</lastmod>
+  <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
 
-    <url>
-        <loc>https://filmiway.com/movies/like-shutter-island/tt0137523</loc>
-        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
+<url>
+    <loc>https://filmiway.com/movies/like-shutter-island/tt2316411</loc>
+    <lastmod>2025-12-05T10:10:00+05:30</lastmod>
+  <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
 
-    <url>
-        <loc>https://filmiway.com/movies/like-shutter-island/tt6048596</loc>
-        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
+<url>
+    <loc>https://filmiway.com/movies/like-shutter-island/tt0414993</loc>
+    <lastmod>2025-12-05T10:10:00+05:30</lastmod>
+  <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/like-shutter-island/tt0485947</loc>
+    <lastmod>2025-12-05T10:10:00+05:30</lastmod>
+  <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/like-shutter-island/tt0114814</loc>
+    <lastmod>2025-12-05T10:10:00+05:30</lastmod>
+   <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
 
     <!-- 🏔️ SURVIVAL MOVIES -->
     <url>
@@ -468,6 +500,79 @@
 
 
 
+<!-- ⚔️ 10 BEST WAR FILMS -->
+<url>
+    <loc>https://filmiway.com/movies/war-films/tt0120815</loc>
+    <lastmod>2025-12-05T11:50:00+05:30</lastmod>
+  <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/war-films/tt0078788</loc>
+    <lastmod>2025-12-05T11:50:00+05:30</lastmod>
+  <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/war-films/tt0056172</loc>
+    <lastmod>2025-12-05T11:50:00+05:30</lastmod>
+  <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/war-films/tt0091251</loc>
+    <lastmod>2025-12-05T11:50:00+05:30</lastmod>
+  <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/war-films/tt0108052</loc>
+    <lastmod>2025-12-05T11:50:00+05:30</lastmod>
+  <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/war-films/tt0093058</loc>
+    <lastmod>2025-12-05T11:50:00+05:30</lastmod>
+  <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/war-films/tt8183660</loc>
+    <lastmod>2025-12-05T11:50:00+05:30</lastmod>
+  <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/war-films/tt0082096</loc>
+    <lastmod>2025-12-05T11:50:00+05:30</lastmod>
+  <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/war-films/tt0091763</loc>
+    <lastmod>2025-12-05T11:50:00+05:30</lastmod>
+  <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/war-films/tt0047528</loc>
+    <lastmod>2025-12-05T11:50:00+05:30</lastmod>
+  <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+
+
 
 <!-- 🔬 10 BEST SCI-FI MOVIES -->
 <url>
@@ -557,12 +662,6 @@
 
 
 <!-- ⏳ BEST TIME TRAVEL MOVIES COLLECTION PAGE -->
-<url>
-    <loc>https://filmiway.com/collection/best-time-travel-movies</loc>
-    <lastmod>2025-12-01T09:40:00+05:30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-</url>
 
 
 <!-- ⏳ 10 BEST TIME TRAVEL MOVIES -->
@@ -649,12 +748,7 @@
 
 
 <!-- 💰 BEST HEIST THRILLER MOVIES COLLECTION PAGE -->
-<url>
-    <loc>https://filmiway.com/collection/best-heist-thriller-movies</loc>
-    <lastmod>2025-12-01T09:35:00+05:30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-</url>
+
 
 
 <!-- 💰 10 BEST HEIST THRILLER MOVIES -->
@@ -741,12 +835,6 @@
 
 
 <!-- 🎯 BEST CRIME THRILLER MOVIES COLLECTION PAGE -->
-<url>
-    <loc>https://filmiway.com/collection/best-crime-thriller-movies</loc>
-    <lastmod>2025-11-25T10:21:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-</url>
 
 <!-- 🎯 10 BEST CRIME THRILLER MOVIES -->
 <url>
