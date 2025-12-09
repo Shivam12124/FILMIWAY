@@ -14,8 +14,8 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 2489, "imdbID": "tt0069293", "Title": "Solaris", "year": 1972, "genre": "Sci-Fi", "runtime": 167, "rank": 4, "sciFiComplexity": 90 },
     { "tmdbId": 369972, "imdbID": "tt1213641", "Title": "First Man", "year": 2018, "genre": "Drama", "runtime": 141, "rank": 5, "sciFiComplexity": 82 },
     { "tmdbId": 286217, "imdbID": "tt3659388", "Title": "The Martian", "year": 2015, "genre": "Sci-Fi", "runtime": 144, "rank": 6, "sciFiComplexity": 85 },
-    { "tmdbId": 62213, "imdbID": "tt1454468", "Title": "Gravity", "year": 2013, "genre": "Sci-Fi", "runtime": 91, "rank": 7, "sciFiComplexity": 80 },
-    { "tmdbId": 16320, "imdbID": "tt0448134", "Title": "Sunshine", "year": 2007, "genre": "Sci-Fi", "runtime": 107, "rank": 8, "sciFiComplexity": 85 },
+    { "tmdbId": 49047, "imdbID": "tt1454468", "Title": "Gravity", "year": 2013, "genre": "Sci-Fi", "runtime": 91, "rank": 7, "sciFiComplexity": 80 },
+    { "tmdbId": 1272, "imdbID": "tt0448134", "Title": "Sunshine", "year": 2007, "genre": "Sci-Fi", "runtime": 107, "rank": 8, "sciFiComplexity": 85 },
     { "tmdbId": 17431, "imdbID": "tt1182345", "Title": "Moon", "year": 2009, "genre": "Sci-Fi", "runtime": 97, "rank": 9, "sciFiComplexity": 88 },
     { "tmdbId": 419704, "imdbID": "tt2935510", "Title": "Ad Astra", "year": 2019, "genre": "Sci-Fi", "runtime": 123, "rank": 10, "sciFiComplexity": 86 }
 ];
@@ -29,17 +29,27 @@ const timeToSeconds = (timeStr) => {
 };
 
 export const SENSITIVE_TIMELINES = {
-    62: { scenes: [] },
-    329865: { scenes: [] },
-    686: { scenes: [] },
-    2489: { scenes: [{ start: "1:47:20", end: "1:48:15", type: "Nudity", severity: "Moderate" }] },
-    369972: { scenes: [] },
-    286217: { scenes: [{ start: "1:44:55", end: "1:45:08", type: "Partial nudity", severity: "Mild" }] },
-    62213: { scenes: [] },
-    16320: { scenes: [] },
-    17431: { scenes: [] },
-    419704: { scenes: [] }
+    62: { scenes: [] }, // 2001: A Space Odyssey - No sexual content
+    329865: { scenes: [] }, // Arrival - No sexual content
+    686: { scenes: [] }, // Contact - No sexual content
+    2489: { scenes: [] }, // Solaris (1972) - No sexual content (you listed as no content)
+    369972: { scenes: [] }, // First Man - No sexual content
+    286217: { 
+        scenes: [
+            { start: "1:44:55", end: "1:45:08", type: "Partial Nudity", severity: "Mild", description: "Male buttocks visible" }
+        ] 
+    }, // The Martian
+    49047: { scenes: [] }, // Gravity - No sexual content
+    1272: { scenes: [] }, // Sunshine - No sexual content
+    17431: { 
+        scenes: [
+            { start: "7:34", end: "7:38", type: "Partial Nudity", severity: "Mild", description: "Brief partial nudity" },
+            { start: "13:30", end: "13:50", type: "Intimacy", severity: "Mild", description: "Passionate kissing, suggestive clothing (underwear)" }
+        ] 
+    }, // Moon (2009)
+    419704: { scenes: [] } // Ad Astra - No sexual content
 };
+
 
 export const FALLBACK_POSTERS = {
     62: "https://m.media-amazon.com/images/M/MV5BNDYyMDgxNDQ5Nl5BMl5BanBnXkFtZTcwMjc1ODg3OA@@._V1_SX500.jpg",
@@ -48,8 +58,8 @@ export const FALLBACK_POSTERS = {
     2489: "https://m.media-amazon.com/images/M/MV5BZmY4Yjc0OWQtZDMzZS00ODI2LWE5ZmUtMjE5ZTNhYjUzZWFjXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX500.jpg",
     369972: "https://m.media-amazon.com/images/M/MV5BMDBhOTMxN2UtYjllYS00NWNiLWE4NmQtNjczMjk4YTdhZDY2XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX500.jpg",
     286217: "https://m.media-amazon.com/images/M/MV5BMTc2MTQ3MDA1Nl5BMl5BanBnXkFtZTgwODA3OTI4NjE@._V1_SX500.jpg",
-    62213: "https://m.media-amazon.com/images/M/MV5BNjE5MzYwMzYxMF5BMl5BanBnXkFtZTcwOTk4MTk0OQ@@._V1_SX500.jpg",
-    16320: "https://m.media-amazon.com/images/M/MV5BMTU5Nzg2OTk2NF5BMl5BanBnXkFtZTcwMTk5NjQ3MQ@@._V1_SX500.jpg",
+    49047: "https://m.media-amazon.com/images/M/MV5BNjE5MzYwMzYxMF5BMl5BanBnXkFtZTcwOTk4MTk0OQ@@._V1_SX500.jpg",
+    1272: "https://m.media-amazon.com/images/M/MV5BMTU5Nzg2OTk2NF5BMl5BanBnXkFtZTcwMTk5NjQ3MQ@@._V1_SX500.jpg",
     17431: "https://m.media-amazon.com/images/M/MV5BMTk2MTQ2MzUzNV5BMl5BanBnXkFtZTgwNDYwNTM5NjE@._V1_SX500.jpg",
     419704: "https://m.media-amazon.com/images/M/MV5BZTllZTdlOGEtZGRhMi00YzJhLWJmOTMtMjE0MjY5ZjE4MzlkXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_SX500.jpg"
 };
@@ -69,9 +79,9 @@ export const COMPLETE_MOVIE_DATA = {
     
     286217: createMovieData({ sciFiComplexity: 85, complexityLevel: "MEDIUM", dominantColor: "#c54c24", rating: 8.0, criticsScore: 91, audienceScore: 92, director: "Ridley Scott", cast: ["Matt Damon", "Jessica Chastain", "Kristen Wiig"], boxOffice: "$630 million", budget: "$108 million", dna: { "Sci-Fi": 60, "Adventure": 25, "Drama": 15 }, scenes: [{ time: 15, intensity: 50, label: "Storm", color: "#c54c24" }, { time: 45, intensity: 30, label: "Potatoes", color: "#d66230" }, { time: 80, intensity: 65, label: "Communication", color: "#e7783c" }, { time: 120, intensity: 85, label: "Rescue", color: "#f88e48" }, { time: 140, intensity: 90, label: "Launch", color: "#ffa454" }], synopsis: "Stranded alone on Mars, astronaut Mark Watney must 'science the shit' out of survival—growing food, creating water, and MacGyvering 1970s tech to call home.", themes: ["Problem-Solving", "Optimism", "Ingenuity"], awards: ["Academy Award Nominations", "Golden Globe Winner"] }),
     
-    62213: createMovieData({ sciFiComplexity: 80, complexityLevel: "MEDIUM", dominantColor: "#0a0a0a", rating: 7.7, criticsScore: 96, audienceScore: 80, director: "Alfonso Cuarón", cast: ["Sandra Bullock", "George Clooney"], boxOffice: "$723 million", budget: "$100 million", dna: { "Sci-Fi": 60, "Thriller": 30, "Drama": 10 }, scenes: [{ time: 5, intensity: 40, label: "Routine", color: "#0a0a0a" }, { time: 15, intensity: 90, label: "Debris", color: "#1c1c1c" }, { time: 45, intensity: 70, label: "Alone", color: "#2e2e2e" }, { time: 70, intensity: 85, label: "Fire", color: "#404040" }, { time: 88, intensity: 80, label: "Re-entry", color: "#525252" }], synopsis: "When debris obliterates their shuttle, Dr. Ryan Stone and Matt Kowalski are stranded in orbit. Cuarón's technical masterpiece captures space survival as primal rebirth.", themes: ["Survival", "Isolation", "Rebirth"], awards: ["Academy Award Winner (7)", "BAFTA Winner"] }),
+    49047: createMovieData({ sciFiComplexity: 80, complexityLevel: "MEDIUM", dominantColor: "#0a0a0a", rating: 7.7, criticsScore: 96, audienceScore: 80, director: "Alfonso Cuarón", cast: ["Sandra Bullock", "George Clooney"], boxOffice: "$723 million", budget: "$100 million", dna: { "Sci-Fi": 60, "Thriller": 30, "Drama": 10 }, scenes: [{ time: 5, intensity: 40, label: "Routine", color: "#0a0a0a" }, { time: 15, intensity: 90, label: "Debris", color: "#1c1c1c" }, { time: 45, intensity: 70, label: "Alone", color: "#2e2e2e" }, { time: 70, intensity: 85, label: "Fire", color: "#404040" }, { time: 88, intensity: 80, label: "Re-entry", color: "#525252" }], synopsis: "When debris obliterates their shuttle, Dr. Ryan Stone and Matt Kowalski are stranded in orbit. Cuarón's technical masterpiece captures space survival as primal rebirth.", themes: ["Survival", "Isolation", "Rebirth"], awards: ["Academy Award Winner (7)", "BAFTA Winner"] }),
     
-    16320: createMovieData({ sciFiComplexity: 85, complexityLevel: "HIGH", dominantColor: "#ff8800", rating: 7.2, criticsScore: 76, audienceScore: 68, director: "Danny Boyle", cast: ["Cillian Murphy", "Chris Evans", "Rose Byrne"], boxOffice: "$32 million", budget: "$40 million", dna: { "Sci-Fi": 70, "Thriller": 25, "Horror": 5 }, scenes: [{ time: 15, intensity: 35, label: "Mercury", color: "#ff8800" }, { time: 45, intensity: 55, label: "Icarus I", color: "#ff9920" }, { time: 70, intensity: 75, label: "Descent", color: "#ffaa40" }, { time: 90, intensity: 90, label: "Sacrifice", color: "#ffbb60" }, { time: 105, intensity: 95, label: "The Sun", color: "#ffcc80" }], synopsis: "Earth's dying Sun prompts humanity's last hope—Icarus II carrying a bomb to reignite it. When the crew detects the lost Icarus I, their rescue attempt triggers madness and sabotage.", themes: ["Sacrifice", "Madness", "Obsession"], awards: ["Saturn Award Nomination", "Cult Classic"] }),
+    1272: createMovieData({ sciFiComplexity: 85, complexityLevel: "HIGH", dominantColor: "#ff8800", rating: 7.2, criticsScore: 76, audienceScore: 68, director: "Danny Boyle", cast: ["Cillian Murphy", "Chris Evans", "Rose Byrne"], boxOffice: "$32 million", budget: "$40 million", dna: { "Sci-Fi": 70, "Thriller": 25, "Horror": 5 }, scenes: [{ time: 15, intensity: 35, label: "Mercury", color: "#ff8800" }, { time: 45, intensity: 55, label: "Icarus I", color: "#ff9920" }, { time: 70, intensity: 75, label: "Descent", color: "#ffaa40" }, { time: 90, intensity: 90, label: "Sacrifice", color: "#ffbb60" }, { time: 105, intensity: 95, label: "The Sun", color: "#ffcc80" }], synopsis: "Earth's dying Sun prompts humanity's last hope—Icarus II carrying a bomb to reignite it. When the crew detects the lost Icarus I, their rescue attempt triggers madness and sabotage.", themes: ["Sacrifice", "Madness", "Obsession"], awards: ["Saturn Award Nomination", "Cult Classic"] }),
     
     17431: createMovieData({ sciFiComplexity: 88, complexityLevel: "HIGH", dominantColor: "#3d3d3d", rating: 7.8, criticsScore: 90, audienceScore: 89, director: "Duncan Jones", cast: ["Sam Rockwell", "Kevin Spacey (voice)"], boxOffice: "$9.8 million", budget: "$5 million", dna: { "Sci-Fi": 75, "Mystery": 20, "Drama": 5 }, scenes: [{ time: 15, intensity: 30, label: "Routine", color: "#3d3d3d" }, { time: 40, intensity: 60, label: "Accident", color: "#4f4f4f" }, { time: 65, intensity: 80, label: "Discovery", color: "#616161" }, { time: 85, intensity: 90, label: "Truth", color: "#737373" }, { time: 95, intensity: 75, label: "Escape", color: "#858585" }], synopsis: "Lunar miner Sam Bell nears his three-year contract's end when he discovers a horrifying truth about his mission and his own identity. Intimate sci-fi exploring consciousness and corporate exploitation.", themes: ["Identity", "Exploitation", "Isolation"], awards: ["BAFTA Winner", "Independent Spirit"] }),
     
@@ -85,8 +95,8 @@ export const STRATEGIC_QUOTES = {
     2489: "We don't need other worlds. We need mirrors",
     369972: "One small step for man, one giant leap for mankind",
     286217: "I'm going to have to science the shit out of this",
-    62213: "Either way, it's going to be one hell of a ride",
-    16320: "What do you see?",
+    49047: "Either way, it's going to be one hell of a ride",
+    1272: "What do you see?",
     17431: "I'm Sam Bell, and I'm coming home",
     419704: "We're all we've got"
 };

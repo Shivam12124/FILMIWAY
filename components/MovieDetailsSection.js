@@ -30,7 +30,8 @@ import {
 
 import HEIST_THRILLER_DATABASE from '../utils/heistThrillerMovieData';
 import TIME_TRAVEL_DATABASE from '../utils/timeTravelMovieData';
-import { SCI_FI_MOVIES } from '../utils/sciFiMovieData';  // ✅ SCI-FI IMPORT ADDED
+import { SCI_FI_MOVIES, SENSITIVE_TIMELINES as SCI_FI_SENSITIVE_TIMELINES } from '../utils/sciFiMovieData';
+// ✅ SCI-FI IMPORT ADDED
 import { REVENGE_MOVIES } from '../utils/revengeMovieData';  // ✅ REVENGE IMPORT ADDED
 import { WAR_FILMS_DATABASE } from '../utils/warFilmsMovieData';  // ✅ WAR FILMS IMPORT ADDED
 
@@ -226,9 +227,12 @@ const budget = safeMovieInfo.budget || 'N/A';
 const rating = safeMovieInfo.rating || movie.imdbRating || 7.5;
 
 const sensitiveScenes = safeMovieInfo.sensitiveScenes 
+  || SCI_FI_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
   || CRIME_THRILLER_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
+  || INTERSTELLAR_TIMELINES?.[movie?.tmdbId]?.scenes
   || SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
   || [];
+
 
 
 const quote = fromCrimeThrillerCollection
@@ -262,15 +266,14 @@ const displayIndex = fromRevengeCollection
   : fromSurvivalCollection
   ? safeMovieInfo.survivabilityIndex ?? null
   : safeMovieInfo.mindBendingIndex ?? null;
-
-const scoreValue = fromRevengeCollection  // ✅ REVENGE ADDED
+const scoreValue = fromRevengeCollection
   ? movie.revengeIntensity ?? safeMovieInfo.revengeIntensity ?? 0
   : fromWarFilmsCollection
   ? movie.warIntensity ?? safeMovieInfo.warIntensity ?? 0
   : fromSciFiCollection
   ? movie.sciFiComplexity ?? safeMovieInfo.sciFiComplexity ?? 0
-    ? movie.sciFiComplexity ?? safeMovieInfo.sciFiComplexity ?? 0
-  : fromInterstellarCollection  // ✅ ADD THIS
+  : fromInterstellarCollection
+  ? movie.sciFiComplexity ?? safeMovieInfo.sciFiComplexity ?? 0
   : fromTimeTravelCollection
   ? movie.timeTravelIntensity ?? safeMovieInfo.timeTravelIntensity ?? 0
   : fromHeistThrillerCollection
@@ -292,6 +295,7 @@ const scoreValue = fromRevengeCollection  // ✅ REVENGE ADDED
   : fromInceptionCollection
   ? movie.mindBendingIndex ?? safeMovieInfo.mindBendingIndex ?? 0
   : safeMovieInfo.mindBendingIndex ?? 0;
+
 
 const complexityLevel = safeMovieInfo.complexityLevel || 'HIGH';
 
