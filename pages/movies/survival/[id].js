@@ -1,9 +1,11 @@
+
 // pages/movies/survival/[id].js - MOBILE-OPTIMIZED VERSION ✅
 import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
+import Image from 'next/image'
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Play, X, Award, Mountain, User, Twitter, Hash, Send } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Play, X, Award, Mountain, Film, User, Twitter, Hash, Send } from 'lucide-react';
 
 import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
@@ -48,212 +50,374 @@ const SURVIVAL_TAGS = {
     'Unbroken': { tags: ['Ocean', 'War', 'POW Camp'], symbol: '⚓', color: '#000080' }
 };
 
+
+const getTMDBImage = (path, size = 'w1280') =>
+  path ? `https://image.tmdb.org/t/p/${size}${path}` : undefined;
+
+const getSurvivalInsight = (title) => {
+  const data = MOVIE_DATA_BY_TITLE[title];
+  return data?.survivalConnection || 'An extraordinary exploration of human endurance and the will to survive against impossible odds.';
+};
+
+// ✅ UPDATED BANNER COMPONENT FOR SURVIVAL COLLECTION (REPLACE EXISTING)
+
 const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
-    const [showTrailer, setShowTrailer] = useState(false);
-    const [countdown, setCountdown] = useState(4);
-    const [hasClosedTrailer, setHasClosedTrailer] = useState(false);
-    const timerRef = useRef(null);
+  const [showTrailer, setShowTrailer] = useState(false);
+  const [countdown, setCountdown] = useState(4);
+  const [hasClosedTrailer, setHasClosedTrailer] = useState(false);
+  const timerRef = useRef(null);
 
-    const bannerImage = movieData?.backdrop_path 
-        ? `https://image.tmdb.org/t/p/original${movieData.backdrop_path}`
-        : (movieData?.poster_path ? `https://image.tmdb.org/t/p/w780${movieData.poster_path}` : '');
-    
-    const posterImage = movieData?.poster_path 
-        ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}`
-        : '';
+  const bannerImage =
+    movieData?.backdrop_path
+      ? getTMDBImage(movieData.backdrop_path, 'w1280')
+      : movieData?.backdrop || movie?.backdrop || getTMDBImage(movie?.backdrop_path, 'w1280');
 
-    const correctData = MOVIE_DATA_BY_TITLE[movie.Title];
-    const survivalConnection = correctData?.survivalConnection || `${movie.Title} showcases extraordinary human endurance and the will to survive against impossible odds.`;
+  const posterImage =
+    movieData?.poster_path
+      ? getTMDBImage(movieData.poster_path, 'w500')
+      : movieData?.poster || movie?.poster || getTMDBImage(movie?.poster_path, 'w500');
 
-    useEffect(() => {
-        if (!isMobile && trailer && !showTrailer && !hasClosedTrailer) {
-            timerRef.current = setInterval(() => {
-                setCountdown(prev => {
-                    if (prev <= 1) { clearInterval(timerRef.current); setShowTrailer(true); return 0; }
-                    return prev - 1;
-                });
-            }, 1000);
-        }
-        return () => { if (timerRef.current) clearInterval(timerRef.current); };
-    }, [isMobile, trailer, showTrailer, hasClosedTrailer]);
+  const insight = getSurvivalInsight(movie?.Title);
+  const mobileHeroCSS = `
+  @media (max-width: 767px) {
+    .mobile-hero-row {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      width: 100vw;
+      max-width: 100vw;
+      gap: 10px;
+      margin: 0;
+      padding: 0 8px;
+    }
+    .mobile-hero-poster {
+      width: 38vw;
+      min-width: 106px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 3px 14px #0007;
+      margin: 0;
+      flex-shrink: 0;
+    }
+    .mobile-hero-poster img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      display: block;
+    }
+    .mobile-survival-card {
+      background: #1a0f0a;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px #0006;
+      margin: 0;
+      flex: 1;
+      border-left: 4px solid #EAB308;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding: 10px 10px 10px 12px;
+      min-height: 110px;
+      position: relative;
+    }
+    .mobile-survival-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 7px;
+    }
+    .mobile-survival-icon {
+      min-width: 24px;
+      min-height: 24px;
+      color: #FDE047;
+      margin-top: 2px;
+    }
+    .mobile-survival-title {
+      font-size: 15px;
+      font-weight: bold;
+      color: #FDE047;
+      margin-bottom: 1px;
+      line-height: 1.12;
+    }
+    .mobile-survival-desc {
+      font-size: 12.3px;
+      color: #ededed;
+      line-height: 1.36;
+      margin-top: 2px;
+    }
+  }
+`;
 
-    const handleCloseTrailer = () => { setShowTrailer(false); setHasClosedTrailer(true); if (timerRef.current) clearInterval(timerRef.current); };
-    const handlePlayClick = () => { setShowTrailer(true); setHasClosedTrailer(false); };
+  const survivalIntensity = movie?.survivabilityIndex || 95;
 
-    return (
-        <motion.div 
-            className="relative w-full overflow-hidden mb-6 sm:mb-8 mx-0 sm:mx-4 lg:mx-6 rounded-none sm:rounded-3xl" 
-            initial={{ opacity: 0 }} 
-            animate={{ opacity: 1 }} 
-            transition={{ duration: 0.8 }}
-        >
-            <div className="relative h-[300px] sm:h-[400px] lg:h-[600px]">
-                <AnimatePresence mode="wait">
-                    {showTrailer && trailer ? (
-                        <motion.div key="trailer" className="absolute inset-0 rounded-none sm:rounded-3xl overflow-hidden" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
-                            <iframe width="100%" height="100%" src={`https://www.youtube.com/embed/${trailer.key}?autoplay=1&mute=1&controls=1`} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen className="w-full h-full" />
-                            <button onClick={handleCloseTrailer} className="absolute top-4 right-4 sm:top-6 sm:right-6 p-2 sm:p-3 rounded-full backdrop-blur-md shadow-xl transition-all duration-300 hover:scale-110 z-50" style={{ backgroundColor: `${COLORS.bgPrimary}DD`, color: COLORS.textPrimary }}>
-                                <X className="w-4 h-4 sm:w-5 sm:h-5" />
-                            </button>
-                        </motion.div>
-                    ) : (
-                        <motion.div key="image" className="absolute inset-0 rounded-none sm:rounded-3xl overflow-hidden" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
-                            <div className="relative w-full h-full">
-                                {bannerImage ? (
-                                    <img src={bannerImage} alt={`${movie.Title} banner`} className="w-full h-full object-cover" onError={(e) => e.target.style.display = 'none'} />
-                                ) : (
-                                    <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: COLORS.bgCard }}>
-                                        <Mountain className="w-16 h-16 sm:w-24 sm:h-24" style={{ color: COLORS.textDisabled }} />
-                                    </div>
-                                )}
-                                <div className="absolute inset-0 z-10" style={{ background: `linear-gradient(to bottom, transparent 0%, transparent 60%, ${COLORS.bgPrimary}80 85%, ${COLORS.bgPrimary} 100%)` }} />
-                            </div>
-                            {trailer && (
-                                <motion.div className="absolute inset-0 flex items-center justify-center z-20" initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 1, duration: 0.8 }}>
-                                    <motion.button onClick={handlePlayClick} className="p-4 sm:p-6 rounded-full backdrop-blur-lg shadow-2xl transition-all duration-300" style={{ backgroundColor: `${COLORS.bgPrimary}BB`, border: `2px sm:border-3 solid ${COLORS.textPrimary}`, color: COLORS.textPrimary }} whileHover={{ scale: 1.15, backgroundColor: `${COLORS.accent}DD`, borderColor: COLORS.accent }} whileTap={{ scale: 0.95 }}>
-                                        <Play className="w-6 h-6 sm:w-8 sm:h-8 ml-1" />
-                                    </motion.button>
-                                </motion.div>
-                            )}
-                            {!isMobile && trailer && !showTrailer && !hasClosedTrailer && countdown > 0 && (
-                                <motion.div className="absolute top-6 sm:top-8 right-6 sm:right-8 backdrop-blur-md rounded-full px-3 sm:px-4 py-1.5 sm:py-2 border z-30" style={{ backgroundColor: `${COLORS.bgPrimary}CC`, borderColor: `${COLORS.accent}66`, color: COLORS.accent }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>
-                                    <div className="flex items-center gap-2 text-xs sm:text-sm font-medium">
-                                        <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full animate-pulse" style={{ backgroundColor: COLORS.accent }}></div>
-                                        Trailer in {countdown}s
-                                    </div>
-                                </motion.div>
-                            )}
-                        </motion.div>
-                    )}
-                </AnimatePresence>
+  useEffect(() => {
+    if (!isMobile && trailer && !showTrailer && !hasClosedTrailer) {
+      timerRef.current = setInterval(() => {
+        setCountdown((prev) => {
+          if (prev <= 1) {
+            clearInterval(timerRef.current);
+            setShowTrailer(true);
+            return 0;
+          }
+          return prev - 1;
+        });
+      }, 1000);
+    }
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, [isMobile, trailer, showTrailer, hasClosedTrailer]);
+
+  const handleCloseTrailer = () => {
+    setShowTrailer(false);
+    setHasClosedTrailer(true);
+    if (timerRef.current) clearInterval(timerRef.current);
+  };
+
+  const handlePlayClick = () => {
+    setShowTrailer(true);
+    setHasClosedTrailer(false);
+  };
+
+  return (
+    <motion.div
+      className="relative w-full overflow-hidden mb-6 sm:mb-8 mx-0 sm:mx-4 lg:mx-6 rounded-none sm:rounded-3xl"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
+    >
+      <style>{mobileHeroCSS}</style>
+      <div className="relative h-[300px] sm:h-[400px] lg:h-[600px]">
+        <AnimatePresence mode="wait">
+          {showTrailer && trailer ? (
+            <motion.div
+              key="trailer"
+              className="absolute inset-0 rounded-none sm:rounded-3xl overflow-hidden"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6 }}
+            >
+              <iframe
+                width="100%"
+                height="100%"
+                src={`https://www.youtube.com/embed/${trailer.key}?autoplay=1&mute=1&controls=1`}
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="w-full h-full"
+              />
+              <button
+                onClick={handleCloseTrailer}
+                className="absolute top-4 right-4 sm:top-6 sm:right-6 p-2 sm:p-3 rounded-full backdrop-blur-md shadow-xl transition-all duration-300 hover:scale-110 z-50"
+                style={{ backgroundColor: `${COLORS.bgPrimary}DD`, color: COLORS.textPrimary }}
+              >
+                <X className="w-4 h-4 sm:w-5 sm:h-5" />
+              </button>
+            </motion.div>
+          ) : (
+            <motion.div
+              key="image"
+              className="absolute inset-0 rounded-none sm:rounded-3xl overflow-hidden"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="relative w-full h-full">
+                {bannerImage ? (
+                  <Image
+                    src={bannerImage}
+                    alt={`${movie?.Title} banner`}
+                    fill
+                    priority
+                    sizes="100vw"
+                    quality={90}
+                    className="object-cover"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: COLORS.bgCard }}>
+                    <Film className="w-16 h-16 sm:w-24 sm:h-24" style={{ color: COLORS.textMuted }} />
+                  </div>
+                )}
+                <div
+                  className="absolute inset-0 z-10"
+                  style={{
+                    background: `linear-gradient(to bottom, transparent 0%, transparent 60%, ${COLORS.bgPrimary}80 85%, ${COLORS.bgPrimary} 100%)`,
+                  }}
+                />
+              </div>
+              {trailer && (
+                <motion.div
+                  className="absolute inset-0 flex items-center justify-center z-20"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 1, duration: 0.8 }}
+                >
+                  <motion.button
+                    onClick={handlePlayClick}
+                    className="p-4 sm:p-6 rounded-full backdrop-blur-lg shadow-2xl transition-all duration-300"
+                    style={{
+                      backgroundColor: `${COLORS.bgPrimary}BB`,
+                      border: `2px solid ${COLORS.textPrimary}`,
+                      color: COLORS.textPrimary,
+                    }}
+                    whileHover={{
+                      scale: 1.15,
+                      backgroundColor: `${COLORS.accent}DD`,
+                      borderColor: COLORS.accent,
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Play className="w-6 h-6 sm:w-8 sm:h-8 ml-1" />
+                  </motion.button>
+                </motion.div>
+              )}
+              {!isMobile && trailer && !showTrailer && !hasClosedTrailer && countdown > 0 && (
+                <motion.div
+                  className="absolute top-6 sm:top-8 right-6 sm:right-8 backdrop-blur-md rounded-full px-3 sm:px-4 py-1.5 sm:py-2 border z-30"
+                  style={{
+                    backgroundColor: `${COLORS.bgPrimary}CC`,
+                    borderColor: `${COLORS.accent}66`,
+                    color: COLORS.accent,
+                  }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.5 }}
+                >
+                  <div className="flex items-center gap-2 text-xs sm:text-sm font-medium">
+                    <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full animate-pulse" style={{ backgroundColor: COLORS.accent }}></div>
+                    Trailer in {countdown}s
+                  </div>
+                </motion.div>
+              )}
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+
+      {/* ✅ MOBILE LAYOUT - Side by Side (SCI-FI STYLE) */}
+      {isMobile ? (
+        <div className="mobile-hero-row">
+          <div className="mobile-hero-poster">
+            {posterImage ? (
+              <img src={posterImage} alt={`${movie?.Title} poster`} />
+            ) : (
+              <div style={{ background: COLORS.bgCard, width: '100%', height: '150px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <Mountain style={{ color: COLORS.textMuted }} />
+              </div>
+            )}
+          </div>
+          <div className="mobile-survival-card">
+            <div className="mobile-survival-row">
+              <Mountain className="mobile-survival-icon" />
+              <div>
+                <div className="mobile-survival-title">Survival Index</div>
+              </div>
             </div>
+            <div className="mobile-survival-desc">
+              <strong>{survivalIntensity}</strong> - {insight}
+            </div>
+          </div>
+        </div>
+      ) : (
+        /* ✅ DESKTOP LAYOUT (SCI-FI STYLE) */
+        <div className="relative px-3 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8 z-20" style={{ backgroundColor: COLORS.bgPrimary }}>
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 lg:gap-8 items-start">
+            <motion.div
+              className="flex-shrink-0 relative w-24 sm:w-48 md:w-56 lg:w-80 mx-auto sm:mx-0"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8, duration: 0.8 }}
+            >
+              <div className="relative" style={{ aspectRatio: '2/3' }}>
+                {posterImage ? (
+                  <Image
+                    src={posterImage}
+                    alt={`${movie?.Title} poster`}
+                    fill
+                    sizes="(max-width: 640px) 96px, (max-width: 768px) 192px, (max-width: 1024px) 224px, 320px"
+                    quality={85}
+                    className="object-cover rounded-lg sm:rounded-xl shadow-2xl"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: COLORS.bgCard, borderRadius: '12px' }}>
+                    <Mountain style={{ color: COLORS.textMuted }} />
+                  </div>
+                )}
+              </div>
+            </motion.div>
 
-            <div className="relative px-3 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8 z-20" style={{ backgroundColor: COLORS.bgPrimary }}>
-                <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 lg:gap-8 items-start">
-                    <motion.div 
-                        className="flex-shrink-0 relative w-24 sm:w-48 md:w-56 lg:w-80 mx-auto sm:mx-0" 
-                        initial={{ opacity: 0, y: 30 }} 
-                        animate={{ opacity: 1, y: 0 }} 
-                        transition={{ delay: 0.8, duration: 0.8 }}
-                    >
-                        <div className="relative" style={{ aspectRatio: '2/3' }}>
-                            {posterImage ? (
-                                <img src={posterImage} alt={`${movie.Title} poster`} className="w-full h-full object-cover rounded-lg sm:rounded-xl shadow-2xl" onError={(e) => e.target.style.display = 'none'} />
-                            ) : (
-                                <div className="w-full h-full flex items-center justify-center rounded-lg sm:rounded-xl shadow-2xl" style={{ backgroundColor: COLORS.bgCard }}>
-                                    <Mountain className="w-12 h-12 sm:w-16 sm:h-16" style={{ color: COLORS.textDisabled }} />
-                                </div>
-                            )}
-                        </div>
-                    </motion.div>
+            <motion.div
+              className="flex-1 w-full min-w-0"
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 1.0, duration: 0.8 }}
+            >
+              <motion.div
+                className="relative rounded-xl sm:rounded-2xl overflow-hidden p-4 sm:p-6 lg:p-8 backdrop-blur-sm"
+                style={{
+                  background: `linear-gradient(135deg, ${COLORS.bgCard} 0%, rgba(15, 15, 20, 0.5) 100%)`,
+                  border: `1px solid ${COLORS.borderLight}`,
+                  boxShadow: `0 8px 32px rgba(0, 0, 0, 0.34)`,
+                }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.1, duration: 0.8 }}
+              >
+                <div
+                  className="absolute top-0 left-0 right-0 h-0.5 sm:h-1"
+                  style={{
+                    background: `linear-gradient(90deg, transparent, ${COLORS.accent}, transparent)`,
+                  }}
+                />
 
-                    <motion.div 
-                        className="flex-1 w-full min-w-0" 
-                        initial={{ opacity: 0, x: 30 }} 
-                        animate={{ opacity: 1, x: 0 }} 
-                        transition={{ delay: 1.0, duration: 0.8 }}
-                    >
-                        <motion.div 
-                            className="flex flex-wrap gap-1.5 sm:gap-2 mb-4 sm:mb-6" 
-                            initial={{ opacity: 0, y: 10 }} 
-                            animate={{ opacity: 1, y: 0 }} 
-                            transition={{ delay: 0.9, duration: 0.6 }}
-                        >
-                            {SURVIVAL_TAGS[movie.Title]?.tags.map((tag, index) => (
-                                <motion.span
-                                    key={tag}
-                                    className="px-2 sm:px-3 py-1 sm:py-1.5 rounded-full text-xs font-semibold backdrop-blur-sm flex items-center gap-1 sm:gap-1.5 flex-shrink-0"
-                                    style={{ 
-                                        backgroundColor: `${SURVIVAL_TAGS[movie.Title].color}30`,
-                                        border: `1px solid ${SURVIVAL_TAGS[movie.Title].color}80`,
-                                        color: COLORS.textPrimary 
-                                    }}
-                                    initial={{ opacity: 0, scale: 0.9 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    transition={{ delay: 0.9 + (index * 0.08), duration: 0.4 }}
-                                >
-                                    <span className="text-sm sm:text-base">{SURVIVAL_TAGS[movie.Title].symbol}</span>
-                                    <span className="whitespace-nowrap">{tag}</span>
-                                </motion.span>
-                            ))}
-                        </motion.div>
-                        
-                        <motion.div 
-                            className="relative rounded-xl sm:rounded-2xl overflow-hidden p-4 sm:p-6 lg:p-8 backdrop-blur-sm"
-                            style={{ 
-                                background: `linear-gradient(135deg, ${COLORS.bgCard} 0%, rgba(15, 15, 20, 0.5) 100%)`,
-                                border: `1px solid ${COLORS.borderLight}`,
-                                boxShadow: `0 8px 32px rgba(0, 0, 0, 0.4)`
-                            }}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 1.1, duration: 0.8 }}
-                        >
-                            <div 
-                                className="absolute top-0 left-0 right-0 h-0.5 sm:h-1"
-                                style={{ 
-                                    background: `linear-gradient(90deg, transparent, ${COLORS.accent}, transparent)` 
-                                }}
-                            />
-                            
-                            <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5">
-                                <motion.div 
-                                    className="p-2 sm:p-2.5 rounded-lg sm:rounded-xl flex-shrink-0"
-                                    style={{ 
-                                        background: `linear-gradient(135deg, ${COLORS.accent}20, ${COLORS.accent}10)`,
-                                        border: `1px solid ${COLORS.accent}40`
-                                    }}
-                                    whileHover={{ scale: 1.05 }}
-                                    transition={{ duration: 0.2 }}
-                                >
-                                    <Award className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" style={{ color: COLORS.accent }} />
-                                </motion.div>
-                                
-                                <div className="min-w-0 flex-1">
-                                    <h2 
-                                        className="text-sm sm:text-base lg:text-xl xl:text-2xl font-bold leading-tight"
-                                        style={{ color: COLORS.accent }}
-                                    >
-                                        Why This is a Top Survival Film
-                                    </h2>
-                                    <p className="text-xs sm:text-sm hidden sm:block" style={{ color: COLORS.textMuted }}>
-                                        Expert Analysis
-                                    </p>
-                                </div>
-                            </div>
+                <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5">
+                  <motion.div
+                    className="p-2 sm:p-2.5 rounded-lg sm:rounded-xl flex-shrink-0"
+                    style={{
+                      background: `linear-gradient(135deg, ${COLORS.accent}20, ${COLORS.accent}10)`,
+                      border: `1px solid ${COLORS.accent}40`,
+                    }}
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <Mountain className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" style={{ color: COLORS.accent }} />
+                  </motion.div>
 
-                            <div className="relative pl-4 sm:pl-6 border-l-2" style={{ borderColor: `${COLORS.accent}40` }}>
-                                <motion.div 
-                                    className="absolute -left-1.5 sm:-left-2 top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full"
-                                    style={{ backgroundColor: COLORS.accent }}
-                                    animate={{ scale: [1, 1.2, 1] }}
-                                    transition={{ duration: 2, repeat: Infinity }}
-                                />
-                                
-                                <p 
-                                    className="text-xs sm:text-sm lg:text-base xl:text-lg leading-relaxed font-normal break-words"
-                                    style={{ color: COLORS.textSecondary, lineHeight: '1.8' }}
-                                >
-                                    {survivalConnection}
-                                </p>
-                            </div>
-
-                            <motion.div 
-                                className="mt-4 sm:mt-6 h-0.5 sm:h-1 rounded-full"
-                                style={{ 
-                                    background: `linear-gradient(90deg, ${COLORS.accent}60, transparent)`,
-                                    width: '40%'
-                                }}
-                                initial={{ scaleX: 0 }}
-                                animate={{ scaleX: 1 }}
-                                transition={{ delay: 1.5, duration: 0.8 }}
-                            />
-                        </motion.div>
-                    </motion.div>
+                  <div className="min-w-0 flex-1">
+                    <h2 className="text-sm sm:text-base lg:text-xl xl:text-2xl font-bold leading-tight" style={{ color: COLORS.accent }}>
+                      Why This Survival Film is Extraordinary
+                    </h2>
+                    <p className="text-xs sm:text-sm hidden sm:block" style={{ color: COLORS.textMuted }}>
+                      Survival Index: {survivalIntensity}/100
+                    </p>
+                  </div>
                 </div>
-            </div>
-        </motion.div>
-    );
+
+                <div className="relative pl-4 sm:pl-6 border-l-2" style={{ borderColor: `${COLORS.accent}40` }}>
+                  <motion.div
+                    className="absolute -left-1.5 sm:-left-2 top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full"
+                    style={{ backgroundColor: COLORS.accent }}
+                    animate={{ scale: [1, 1.2, 1] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  />
+
+                  <p className="text-xs sm:text-sm lg:text-base xl:text-lg leading-relaxed font-normal break-words" style={{ color: COLORS.textSecondary, lineHeight: '1.8' }}>
+                    {insight}
+                  </p>
+                </div>
+
+                <motion.div
+                  className="mt-4 sm:mt-6 h-0.5 sm:h-1 rounded-full"
+                  style={{ background: `linear-gradient(90deg, ${COLORS.accent}60, transparent)`, width: '40%' }}
+                  initial={{ scaleX: 0 }}
+                  animate={{ scaleX: 1 }}
+                  transition={{ delay: 1.5, duration: 0.8 }}
+                />
+              </motion.div>
+            </motion.div>
+          </div>
+        </div>
+      )}
+    </motion.div>
+  );
 };
 
 const SmartBackButton = () => {

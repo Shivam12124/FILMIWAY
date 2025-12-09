@@ -229,6 +229,50 @@ export const COLLECTIONS = {
     
     
 
+  // 🚀 MOVIES LIKE INTERSTELLAR COLLECTION
+  'movies-like-interstellar': {
+    slug: 'movies-like-interstellar',
+    title: 'Movies Like Interstellar',
+    description: 'Epic sci-fi films with cosmic scope, time dilation, and emotional depth',
+    movies: [
+      'tt0062622',  // 2001: A Space Odyssey (1968)
+      'tt2543164',  // Arrival (2016)
+      'tt0118884',  // Contact (1997)
+      'tt0069293',  // Solaris (1972)
+      'tt1213641',  // First Man (2018)
+      'tt3659388',  // The Martian (2015)
+      'tt1454468',  // Gravity (2013)
+      'tt0448134',  // Sunshine (2007)
+      'tt1182345',  // Moon (2009)
+      'tt2935510'   // Ad Astra (2019)
+    ],
+
+    badges: [
+      { label: 'Cosmic Scope', desc: 'Space exploration & time dilation' },
+      { label: 'Emotionally Deep', desc: 'Human stories amid cosmic wonder' },
+      { label: 'Visually Stunning', desc: 'Breathtaking cinematography' }
+    ],
+    metaTitle: 'Movies Like Interstellar - Space Epics & Time Travel | Filmiway',
+    metaDescription: 'Discover movies like Interstellar with cosmic scope, emotional depth, and mind-bending sci-fi. From Inception to 2001: A Space Odyssey.',
+    metaKeywords: 'movies like interstellar, space movies, time dilation films, sci-fi movies, christopher nolan films, cosmic movies',
+    theme: 'cyan',
+    primaryColor: '#0891b2',
+    secondaryColor: '#06b6d4',
+    accentColor: '#0e7490',
+    emoji: '🌌',
+    category: 'interstellar',
+    canonicalUrl: 'https://filmiway.com/collection/movies-like-interstellar',
+    seo: {
+      title: 'Movies Like Interstellar | Filmiway',
+      description: 'Explore epic sci-fi films like Interstellar with cosmic themes, time travel, and emotional storytelling.',
+      keywords: 'interstellar movies, space exploration films, time dilation, christopher nolan, sci-fi epics',
+      canonicalUrl: 'https://filmiway.com/collection/movies-like-interstellar',
+      ogImage: 'https://filmiway.com/images/interstellar-collection-og.jpg'
+    }
+  },
+
+
+
 
 
   // ⚔️ BEST WAR FILMS COLLECTION

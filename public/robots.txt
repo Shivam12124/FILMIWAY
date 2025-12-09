@@ -1,5 +1,5 @@
 # Filmiway - Enhanced robots.txt for SEO & AI Discovery
-# Last updated: December 3, 2025
+# Last updated: December 5, 2025
 
 # Default rules for all bots
 User-agent: *

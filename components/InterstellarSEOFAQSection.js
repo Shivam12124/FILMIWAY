@@ -1,25 +1,23 @@
-// components/CrimeThrillerSEOFAQSection.js - MATCHING SURVIVAL DESIGN ✅
+// components/InterstellarSEOFAQSection.js - MATCHING INCEPTION DESIGN ✅
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Info } from 'lucide-react';
-import { 
-  COMPLETE_MOVIE_DATA as CRIME_THRILLER_MOVIE_DATA, 
-  CRIME_THRILLER_FAQS 
-} from '../utils/crimeThrillerMovieData';
+import { COMPLETE_MOVIE_DATA as INTERSTELLAR_MOVIE_DATA, INTERSTELLAR_MOVIE_FAQS } from '../utils/interstellarMovieData';
+import { SENSITIVE_TIMELINES } from '../utils/interstellarMovieData';
 
 
-const CrimeThrillerSEOFAQSection = ({ movie }) => {
-    const movieInfo = CRIME_THRILLER_MOVIE_DATA[movie.tmdbId];
+const InterstellarSEOFAQSection = ({ movie }) => {
+    const movieInfo = INTERSTELLAR_MOVIE_DATA[movie.tmdbId];
+    const sensitiveData = SENSITIVE_TIMELINES[movie.tmdbId];
     
-    // 🔥 Get FAQs from CRIME_THRILLER_FAQS data
-    const faqsFromData = movie?.Title && CRIME_THRILLER_FAQS?.[movie.Title] 
-        ? CRIME_THRILLER_FAQS[movie.Title] 
+    // 🔥 Get FAQs from INTERSTELLAR_MOVIE_FAQS data
+    const faqsFromData = movie?.Title && INTERSTELLAR_MOVIE_FAQS?.[movie.Title] 
+        ? INTERSTELLAR_MOVIE_FAQS[movie.Title] 
         : [];
-
 
     // 🔥 Safety check - return null if no FAQs
     if (!faqsFromData || faqsFromData.length === 0) {
-        console.log('⚠️ No crime thriller FAQs found for:', movie?.Title);
+        console.log('⚠️ No Interstellar FAQs found for:', movie?.Title);
         return null;
     }
     
@@ -30,13 +28,13 @@ const CrimeThrillerSEOFAQSection = ({ movie }) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
         >
-            <h2 className="text-xl sm:text-2xl font-light text-slate-300 mb-6 sm:mb-8 flex items-center gap-2 sm:gap-3">
+            <h2 className="text-xl sm:text-2xl font-light text-yellow-300 mb-6 sm:mb-8 flex items-center gap-2 sm:gap-3">
                 <Info size={20} className="sm:w-6 sm:h-6" />
                 <span className="hidden sm:inline">Frequently Asked Questions About {movie.Title}</span>
                 <span className="sm:hidden">FAQ About {movie.Title}</span>
             </h2>
             <p className="text-gray-300 mb-4 sm:mb-6 text-sm sm:text-base">
-                Common questions about {movie.Title} and this gripping crime thriller.
+                Common questions about {movie.Title} and this extraordinary sci-fi journey.
             </p>
             <div className="space-y-4 sm:space-y-6">
                 {faqsFromData.map((faq, index) => (
@@ -47,7 +45,7 @@ const CrimeThrillerSEOFAQSection = ({ movie }) => {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.6, delay: index * 0.1 }}
                     >
-                        <h3 className="text-base sm:text-lg font-medium text-slate-200 mb-2 sm:mb-3">{faq.question}</h3>
+                        <h3 className="text-base sm:text-lg font-medium text-yellow-200 mb-2 sm:mb-3">{faq.question}</h3>
                         <p className="text-gray-300 leading-relaxed text-sm sm:text-base">{faq.answer}</p>
                     </motion.div>
                 ))}
@@ -56,5 +54,4 @@ const CrimeThrillerSEOFAQSection = ({ movie }) => {
     );
 };
 
-
-export default CrimeThrillerSEOFAQSection;
+export default InterstellarSEOFAQSection;

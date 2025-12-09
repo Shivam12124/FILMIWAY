@@ -58,6 +58,22 @@ const CollectionsHub = () => {
         },
  
 
+        {
+            id: 'interstellar',
+            title: 'Movies Like Interstellar',
+            description: 'Epic space odysseys with cosmic scope, time dilation, and profound human emotion',
+            icon: Sparkles,
+            gradient: 'from-cyan-600 to-blue-800',
+            movieCount: '10',
+            rating: '8.3',
+            directLink: '/collection/movies-like-interstellar',
+            hasSubCollections: false
+        },
+
+
+
+
+
 {
   id: 'war-films',
   title: 'Best War Films',

@@ -1,5 +1,4 @@
-// pages/collection/[slug].js - SEO OPTIMIZED WITH WAR FILMS COLLECTION SUPPORT ✅
-
+// pages/collection/[slug].js - SEO OPTIMIZED WITH SURVIVAL FORMAT ✅
 
 import React, { useState, useEffect, useCallback } from 'react';
 import Head from 'next/head';
@@ -7,25 +6,28 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Crown, Star, MessageSquare, Volume2, VolumeX, Play, Pause, Menu, X, Home, Eye, MousePointer, TrendingUp, Users, Search, Brain, Zap, Film, Award, Mountain, Shield } from 'lucide-react';
+
+// ✅ NEW SURVIVAL FORMAT IMPORTS
 import { COMPLETE_MOVIE_DATABASE as SURVIVAL_DATABASE, COMPLETE_MOVIE_DATA as SURVIVAL_DATA } from '../../utils/survivalMovieData';
+import { COMPLETE_MOVIE_DATABASE as INTERSTELLAR_DATABASE, COMPLETE_MOVIE_DATA as INTERSTELLAR_DATA } from '../../utils/interstellarMovieData';
+import { COMPLETE_MOVIE_DATABASE as CRIME_THRILLER_DATABASE, COMPLETE_MOVIE_DATA as CRIME_THRILLER_DATA } from '../../utils/crimeThrillerMovieData';
+import { COMPLETE_MOVIE_DATABASE as WAR_FILMS_DATABASE, COMPLETE_MOVIE_DATA as WAR_FILMS_DATA } from '../../utils/warFilmsMovieData';
+
+// Other Collections (Old Format - To be converted later)
 import DRAMA_MOVIES from '../../utils/dramaMovieData';
 import { THRILLER_MOVIES } from '../../utils/thrillerMovieData';
 import { MYSTERY_THRILLER_MOVIES } from '../../utils/mysteryThrillerMovieData'; 
 import { DETECTIVE_THRILLER_MOVIES } from '../../utils/detectiveThrillerMovieData';
 import { PSYCH_THRILLER_MOVIES } from '../../utils/psychologicalThrillerMovieData'; 
-import { CRIME_THRILLER_MOVIES } from '../../utils/crimeThrillerMovieData';
 import { HEIST_THRILLER_MOVIES } from '../../utils/heistThrillerMovieData';
 import { TIME_TRAVEL_MOVIES } from '../../utils/timeTravelMovieData';
 import { SCI_FI_MOVIES } from '../../utils/sciFiMovieData';
-import { WAR_FILMS_DATABASE } from '../../utils/warFilmsMovieData';  // ✅ WAR FILMS ADDED
-
 import { REVENGE_MOVIES } from '../../utils/revengeMovieData';
 
 // Components
 import CinematicBackground from '../../components/CinematicBackground';
 import StrategicControls from '../../components/StrategicControls';
 import CinematicMovieCard from '../../components/CinematicMovieCard';
-
 
 // Data
 import { COLLECTIONS, getAllCollectionSlugs, getCollectionBySlug } from '../../data/collections';
@@ -153,6 +155,29 @@ const getCollectionContent = () => {
                 text2: "Each film has been selected for its ability to create lasting impact—with concepts that continue revealing new layers upon repeated viewings. Your brain will thank you."
             }
         };
+    } else if (collection.slug === 'movies-like-interstellar') { // ✅ NEW INTERSTELLAR COLLECTION
+        return {
+            badge: "Space Exploration Cinema",
+            title: "Interstellar",
+            description: "Cerebral space films that explore humanity's cosmic destiny. Philosophical depth, scientific accuracy & mind-expanding journeys beyond Earth that redefine sci-fi.",
+            selection: {
+                text1: "From Kubrick's cosmic odyssey to Villeneuve's linguistic mysteries—these films use space exploration as a canvas for profound questions about consciousness, time, and humanity's place in the universe.",
+                text2: "Each space masterpiece features visionary directors tackling complex scientific concepts while maintaining emotional authenticity and philosophical depth that transcends typical sci-fi spectacle."
+            },
+            ranking: {
+                text: "Our space complexity index evaluates philosophical depth, scientific rigor, emotional resonance, and the sophistication of cerebral storytelling techniques throughout each film.",
+                points: [
+                    "Space complexity sophistication",
+                    "Philosophical depth weight",
+                    "Scientific accuracy level",
+                    "Emotional-intellectual balance"
+                ]
+            },
+            experience: {
+                text1: "Whether you're seeking hard science or existential exploration, this collection delivers cinema's most ambitious space films that treat audiences like intelligent adults capable of grappling with big ideas.",
+                text2: "Each film has been selected for its ability to inspire wonder and contemplation—with concepts about time, space, and consciousness that'll haunt you long after the final frame."
+            }
+        };
     } else if (collection.slug === 'movies-like-shutter-island') {
         return {
             badge: "Psychological Thriller Cinema",
@@ -268,29 +293,31 @@ const getCollectionContent = () => {
                 text2: "Each film has been selected for its ability to maintain relentless tension throughout—while showcasing brilliantly crafted schemes and unforgettable criminal masterminds you'll root for."
             }
         };
-    } else if (collection.slug === 'best-crime-thriller-movies') {
-        return {
-            badge: "Crime Thriller Cinema",
-            title: "Crime Thriller",
-            description: "Gritty crime thrillers that expose moral complexity. Ruthless investigations, criminal psychology & ethical dilemmas that blur the line between good and evil.",
-            selection: {
-                text1: "These films delve deep into the criminal underworld from multiple perspectives—creating complex narratives filled with ethical dilemmas, intense drama, and moral ambiguity.",
-                text2: "Each crime thriller features masterfully crafted investigations, complex antagonists you'll understand, and the psychological cat-and-mouse games that define great crime cinema."
-            },
-            ranking: {
-                text: "Our crime thriller index evaluates investigative complexity, moral ambiguity depth, and the sophistication of crime storytelling techniques throughout each film.",
-                points: [
-                    "Investigative complexity",
-                    "Moral ambiguity depth",
-                    "Criminal psychology insight",
-                    "Narrative tension intensity"
-                ]
-            },
-            experience: {
-                text1: "Whether you're seeking complex investigations or moral exploration, this collection delivers cinema's most gripping crime thriller experiences that challenge your sense of justice.",
-                text2: "Each film has been selected for its ability to explore the psychology of crime while maintaining intense narrative momentum and unforgettable character development."
-            }
-        };
+  } else if (collection.slug === 'best-crime-thriller-movies') {
+    return {
+        badge: "Crime Thriller Cinema",
+        title: "Crime Thriller",
+        description: "Intense crime thrillers with ruthless investigations. From Heat to The Departed—ranked by suspense intensity, moral complexity & psychological depth.",
+        selection: {
+            text1: "From cat-and-mouse detective games to criminal underworlds—these films expose the dark psychology of crime while maintaining relentless tension and complex moral questions.",
+            text2: "Each crime thriller features brilliant investigations, morally gray protagonists, and the psychological warfare between cops and criminals that defines masterful crime cinema."
+        },
+        ranking: {
+            text: "Our suspense intensity index evaluates investigative complexity, moral ambiguity depth, and the sophistication of crime storytelling techniques used throughout each film.",
+            points: [
+                "Suspense intensity level",
+                "Investigative complexity",
+                "Moral ambiguity depth",
+                "Criminal psychology insight"
+            ]
+        },
+        experience: {
+            text1: "Whether you're seeking intense investigations or profound moral exploration, this collection delivers cinema's most gripping crime thriller experiences that'll challenge your sense of justice.",
+            text2: "Each film has been selected for its ability to maintain relentless tension throughout—while exploring the psychology of crime and creating unforgettable criminal masterminds."
+        }
+    };
+
+
     } else if (collection.slug === 'best-detective-thriller-movies') {
         return {
             badge: "Detective Mystery Cinema",
@@ -479,17 +506,23 @@ const getCollectionContent = () => {
 };
 
 
-// 🔥 HEADER CONTENT WITH REVENGE ADDED
+
+// 🔥 HEADER CONTENT WITH INTERSTELLAR ADDED
 const getHeaderContent = () => {
     if (collection.slug === 'movies-like-memento') {
         return {
-            title: "Movies Like Memento: 10 Mind-Bending Films", // ✅ Matches meta title
+            title: "Movies Like Memento: 10 Mind-Bending Films",
             subtitle: "Memory loss thrillers with shocking twists, non-linear storytelling & identity crisis"
         };
     } else if (collection.slug === 'movies-like-inception') {
         return {
             title: "Movies Like Inception: 10 Reality-Bending Films",
             subtitle: "Layered dreams, reality distortion & Christopher Nolan-level genius storytelling"
+        };
+    } else if (collection.slug === 'movies-like-interstellar') { // ✅ NEW INTERSTELLAR HEADER
+        return {
+            title: "Movies Like Interstellar: 10 Cerebral Space Films",
+            subtitle: "Philosophical space exploration with scientific depth, emotional resonance & cosmic wonder"
         };
     } else if (collection.slug === 'movies-like-shutter-island') {
         return {
@@ -546,7 +579,7 @@ const getHeaderContent = () => {
             title: "Best Detective Thrillers: 10 Brilliant Films",
             subtitle: "From Zodiac to Prisoners—intricate mysteries & shocking revelations"
         };
-    } else if (collection.slug === 'best-revenge-movies') {  // ✅ REVENGE ADDED
+    } else if (collection.slug === 'best-revenge-movies') {
         return {
             title: "Best Revenge Movies: 10 Brutal Films",
             subtitle: "From Oldboy to John Wick—systematic vengeance & visceral satisfaction"
@@ -565,8 +598,7 @@ const getHeaderContent = () => {
 };
 
 
-
-// 🔥 LOADER CONTENT WITH REVENGE ADDED
+// 🔥 LOADER CONTENT WITH INTERSTELLAR ADDED
 const getLoaderContent = () => {
     if (collection?.slug === 'movies-like-memento') {
         return {
@@ -577,6 +609,11 @@ const getLoaderContent = () => {
         return {
             title: "Loading Movies Like Inception", 
             description: "Curating mind-bending sci-fi thrillers with community reviews and ratings"
+        };
+    } else if (collection?.slug === 'movies-like-interstellar') { // ✅ NEW INTERSTELLAR LOADER
+        return {
+            title: "Loading Movies Like Interstellar",
+            description: "Curating cerebral space exploration films with community reviews and ratings"
         };
     } else if (collection?.slug === 'movies-like-shutter-island') {
         return {
@@ -633,7 +670,7 @@ const getLoaderContent = () => {
             title: "Loading Best Netflix Dramas",
             description: "Curating award-winning dramatic films with community reviews and ratings"
         };
-    } else if (collection?.slug === 'best-revenge-movies') {  // ✅ REVENGE ADDED
+    } else if (collection?.slug === 'best-revenge-movies') {
         return {
             title: "Loading Best Revenge Movies",
             description: "Curating brutal revenge masterpieces with community reviews and ratings"
@@ -653,7 +690,8 @@ const getLoaderContent = () => {
 
 
 
-// 🔥 STATIC META CONTENT WITH REVENGE ADDED
+
+// 🔥 STATIC META CONTENT WITH INTERSTELLAR ADDED
 const getStaticMetaContent = () => {
     if (collection.slug === 'movies-like-memento') {
         return {
@@ -672,6 +710,15 @@ const getStaticMetaContent = () => {
             ogTitle: "Movies Like Inception: 10 Reality-Bending Masterpieces 🧠",
             twitterTitle: "🧠 Loved Inception? These 10 Films Will Blow Your Mind",
             progressText: `of Top ${movies.length} Movies Like Inception`
+        };
+    } else if (collection.slug === 'movies-like-interstellar') { // ✅ NEW INTERSTELLAR META
+        return {
+            title: "Movies Like Interstellar: 10 Cerebral Space Films", // ✅ 54 chars
+            description: "Loved Interstellar? Explore 10 philosophical space films with scientific depth, emotional resonance & cosmic wonder. From 2001 to Arrival.", // ✅ 144 chars
+            keywords: "movies like interstellar, space exploration movies, cerebral sci fi, philosophical space films, 2001 space odyssey",
+            ogTitle: "Movies Like Interstellar: 10 Cerebral Space Exploration Films 🚀",
+            twitterTitle: "🚀 Loved Interstellar? These 10 Space Films Are Just as Deep",
+            progressText: `of Top ${movies.length} Movies Like Interstellar`
         };
     } else if (collection.slug === 'movies-like-shutter-island') {
         return {
@@ -772,7 +819,7 @@ const getStaticMetaContent = () => {
             twitterTitle: "🔍 10 Brilliant Detective Thrillers (Zodiac, Prisoners, Se7en)",
             progressText: `of Top ${movies.length} Detective Thriller Movies`
         };
-    } else if (collection.slug === 'best-revenge-movies') {  // ✅ REVENGE ADDED
+    } else if (collection.slug === 'best-revenge-movies') {
         return {
             title: "Best Revenge Movies: 10 Brutal Films", // ✅ 39 chars
             description: "From Oldboy to John Wick—10 brutal revenge films with systematic vengeance, moral complexity & visceral satisfaction. Justice becomes personal.", // ✅ 152 chars
@@ -863,6 +910,7 @@ const handleMovieClick = () => {
 
         // Clear all collection flags first
         sessionStorage.removeItem('fromInceptionCollection');
+        sessionStorage.removeItem('fromInterstellarCollection'); // ✅ NEW
         sessionStorage.removeItem('fromMementoCollection');
         sessionStorage.removeItem('fromShutterIslandCollection');
         sessionStorage.removeItem('fromSurvivalCollection');
@@ -875,12 +923,14 @@ const handleMovieClick = () => {
         sessionStorage.removeItem('fromHeistThrillerCollection');
         sessionStorage.removeItem('fromTimeTravelCollection');
         sessionStorage.removeItem('fromSciFiCollection');
-        sessionStorage.removeItem('fromRevengeCollection');  // ✅ REVENGE ADDED
+        sessionStorage.removeItem('fromRevengeCollection');
         sessionStorage.removeItem('fromWarFilmsCollection');
 
         // Set appropriate collection flag
         if (collection.slug === 'movies-like-inception') {
             sessionStorage.setItem('fromInceptionCollection', 'true');
+        } else if (collection.slug === 'movies-like-interstellar') { // ✅ NEW
+            sessionStorage.setItem('fromInterstellarCollection', 'true');
         } else if (collection.slug === 'movies-like-memento') {
             sessionStorage.setItem('fromMementoCollection', 'true');
         } else if (collection.slug === 'movies-like-shutter-island') {
@@ -905,7 +955,7 @@ const handleMovieClick = () => {
             sessionStorage.setItem('fromTimeTravelCollection', 'true');
         } else if (collection.slug === 'best-sci-fi-movies') {
             sessionStorage.setItem('fromSciFiCollection', 'true');
-        } else if (collection.slug === 'best-revenge-movies') {  // ✅ REVENGE ADDED
+        } else if (collection.slug === 'best-revenge-movies') {
             sessionStorage.setItem('fromRevengeCollection', 'true');
         } else if (collection.slug === 'best-war-films') {
             sessionStorage.setItem('fromWarFilmsCollection', 'true');
@@ -1309,6 +1359,8 @@ return (
                                     ? 'movies/survival/'
                                     : collection?.slug === 'movies-like-inception'
                                     ? 'movies/like-inception/'
+                                    : collection?.slug === 'movies-like-interstellar' // ✅ NEW
+                                    ? 'movies/interstellar/'
                                     : collection?.slug === 'movies-like-memento'
                                     ? 'movies/like-memento/'
                                     : collection?.slug === 'movies-like-shutter-island'
@@ -1331,7 +1383,7 @@ return (
                                     ? 'movies/time-travel/'
                                     : collection?.slug === 'best-sci-fi-movies'
                                     ? 'movies/sci-fi/'
-                                    : collection?.slug === 'best-revenge-movies'  // ✅ REVENGE ADDED
+                                    : collection?.slug === 'best-revenge-movies'
                                     ? 'movies/revenge/'
                                     : collection?.slug === 'best-war-films'
                                     ? 'movies/war-films/'
@@ -1435,13 +1487,15 @@ return (
                                 </motion.button>
                             )}
 
-{/* 🔥 FIXED FOR NEXT.JS 15 - WITH REVENGE COLLECTION URL */}
+{/* 🔥 FIXED FOR NEXT.JS 15 - WITH INTERSTELLAR COLLECTION URL */}
 <AnimatePresence mode="wait">
   {currentMovie && (
     <Link
       href={
         collection.slug === 'movies-like-inception'
           ? `/movies/like-inception/${currentMovie.imdbID}`
+          : collection.slug === 'movies-like-interstellar' // ✅ NEW
+          ? `/movies/interstellar/${currentMovie.imdbID}`
           : collection.slug === 'movies-like-memento'
           ? `/movies/like-memento/${currentMovie.imdbID}`
           : collection.slug === 'movies-like-shutter-island'
@@ -1466,7 +1520,7 @@ return (
           ? `/movies/time-travel/${currentMovie.imdbID}`
           : collection.slug === 'best-sci-fi-movies'
           ? `/movies/sci-fi/${currentMovie.imdbID}`
-          : collection.slug === 'best-revenge-movies' // ✅ REVENGE
+          : collection.slug === 'best-revenge-movies'
           ? `/movies/revenge/${currentMovie.imdbID}`
           : collection.slug === 'best-war-films'
           ? `/movies/war-films/${currentMovie.imdbID}`
@@ -1509,6 +1563,8 @@ return (
                                         let detailPageUrl;
                                         if (collection.slug === 'movies-like-inception') {
                                             detailPageUrl = `/movies/like-inception/${currentMovie.imdbID}`;
+                                        } else if (collection.slug === 'movies-like-interstellar') { // ✅ NEW
+                                            detailPageUrl = `/movies/interstellar/${currentMovie.imdbID}`;
                                         } else if (collection.slug === 'movies-like-memento') {
                                             detailPageUrl = `/movies/like-memento/${currentMovie.imdbID}`;
                                         } else if (collection.slug === 'movies-like-shutter-island') {
@@ -1533,7 +1589,7 @@ return (
                                             detailPageUrl = `/movies/time-travel/${currentMovie.imdbID}`;
                                         } else if (collection.slug === 'best-sci-fi-movies') {
                                             detailPageUrl = `/movies/sci-fi/${currentMovie.imdbID}`;
-                                        } else if (collection.slug === 'best-revenge-movies') {  // ✅ REVENGE
+                                        } else if (collection.slug === 'best-revenge-movies') {
                                             detailPageUrl = `/movies/revenge/${currentMovie.imdbID}`;
                                         } else if (collection.slug === 'best-war-films') {
                                             detailPageUrl = `/movies/war-films/${currentMovie.imdbID}`;
@@ -1657,7 +1713,7 @@ return (
 );
 };
 
-// 🔥 SSG FUNCTIONS WITH REVENGE COLLECTION ADDED 🗡️
+// 🔥 SSG FUNCTIONS WITH INTERSTELLAR COLLECTION ADDED 🚀
 // ✅ CORRECT getStaticPaths() - generates all collections
 export async function getStaticPaths() {
     const slugs = getAllCollectionSlugs();
@@ -1674,7 +1730,7 @@ export async function getStaticPaths() {
     };
 }
 
-// ✅ CORRECT getStaticProps() - maps correct database to each collection WITH REVENGE
+// ✅ CORRECT getStaticProps() - maps correct database to each collection WITH INTERSTELLAR
 export async function getStaticProps({ params }) {
     const slug = params.slug;
     const collection = getCollectionBySlug(slug);
@@ -1689,6 +1745,9 @@ export async function getStaticProps({ params }) {
     switch(collection.slug) {
         case 'best-survival-movies':
             movieDatabase = SURVIVAL_DATABASE;
+            break;
+        case 'movies-like-interstellar': // ✅ NEW
+            movieDatabase = INTERSTELLAR_DATABASE;
             break;
         case 'best-thriller-movies':
             movieDatabase = THRILLER_MOVIES;
@@ -1705,9 +1764,10 @@ export async function getStaticProps({ params }) {
         case 'best-psychological-thriller-movies':
             movieDatabase = PSYCH_THRILLER_MOVIES;
             break;
-        case 'best-crime-thriller-movies':
-            movieDatabase = CRIME_THRILLER_MOVIES;
-            break;
+case 'best-crime-thriller-movies':
+    movieDatabase = CRIME_THRILLER_DATABASE;  // ✅ ADD THIS
+    break;
+
         case 'best-heist-thriller-movies':
             movieDatabase = HEIST_THRILLER_MOVIES;
             break;
@@ -1717,7 +1777,7 @@ export async function getStaticProps({ params }) {
         case 'best-sci-fi-movies':
             movieDatabase = SCI_FI_MOVIES;
             break;
-        case 'best-revenge-movies':  // ✅ REVENGE ADDED
+        case 'best-revenge-movies':
             movieDatabase = REVENGE_MOVIES;
             break;
         case 'best-war-films':
