@@ -1001,10 +1001,11 @@ export const getFeaturedCollections = () =>
 export const getCollectionsByCategory = (category) => 
   Object.values(COLLECTIONS).filter(collection => collection.category === category);
 
-// 🎬 SPECIFIC COLLECTION GETTERS (All 15 collections)
+// 🎬 SPECIFIC COLLECTION GETTERS (All 16 collections)
 export const getInceptionCollection = () => COLLECTIONS['movies-like-inception'];
 export const getMementoCollection = () => COLLECTIONS['movies-like-memento'];
 export const getShutterIslandCollection = () => COLLECTIONS['movies-like-shutter-island'];
+export const getInterstellarCollection = () => COLLECTIONS['movies-like-interstellar'];
 export const getSurvivalCollection = () => COLLECTIONS['best-survival-movies'];
 export const getNetflixDramaCollection = () => COLLECTIONS['best-drama-movies-on-netflix'];
 export const getWarFilmsCollection = () => COLLECTIONS['best-war-films'];
@@ -1018,10 +1019,6 @@ export const getDetectiveThillerCollection = () => COLLECTIONS['best-detective-t
 export const getMysteryThillerCollection = () => COLLECTIONS['best-mystery-thriller-movies'];
 export const getThrillerCollection = () => COLLECTIONS['best-thriller-movies'];
 
-
-
-  
-
-
 export default COLLECTIONS;
+
 

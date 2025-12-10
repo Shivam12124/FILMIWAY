@@ -1,4 +1,4 @@
-// pages/movies/interstellar/[id].js - MOBILE-OPTIMIZED VERSION ✅
+// pages/movies/interstellar/[id].js - SURVIVAL-STYLE BANNER ✅
 import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -23,16 +23,16 @@ const MOVIE_YEARS = {
 };
 
 const MOVIE_DATA_BY_TITLE = {
-    '2001: A Space Odyssey': { imdbRating: 8.3, genre: 'Philosophical Sci-Fi', director: 'Stanley Kubrick', spaceConnection: '2001: A Space Odyssey transcends cinema to become a meditation on human evolution and cosmic destiny. Kubrick\'s visionary masterpiece explores consciousness, artificial intelligence, and humanity\'s place in the universe through breathtaking visuals and profound philosophical questions.' },
-    'Arrival': { imdbRating: 7.9, genre: 'Cerebral Sci-Fi', director: 'Denis Villeneuve', spaceConnection: 'Arrival treats first contact not as spectacle but as linguistic puzzle that reshapes our perception of time itself. Denis Villeneuve crafts a poetic meditation on language, free will, and human connection that proves some of cinema\'s most profound moments happen in quiet conversation.' },
-    'Contact': { imdbRating: 7.5, genre: 'Hard Sci-Fi', director: 'Robert Zemeckis', spaceConnection: 'Contact explores humanity\'s eternal question: are we alone? Carl Sagan\'s vision, brought to life by Zemeckis, examines the boundaries between science and faith, evidence and belief, in our search for cosmic connection and meaning beyond Earth.' },
-    'Solaris': { imdbRating: 8.0, genre: 'Psychological Sci-Fi', director: 'Andrei Tarkovsky', spaceConnection: 'Solaris uses space exploration as a mirror to examine human consciousness, memory, and grief. Tarkovsky\'s meditative masterpiece suggests that the most profound alien encounter may be confronting the depths of our own psyche and unresolved past.' },
-    'First Man': { imdbRating: 7.3, genre: 'Biographical Drama', director: 'Damien Chazelle', spaceConnection: 'First Man strips away heroic mythology to reveal the devastating personal cost behind humanity\'s greatest achievement. Chazelle shows Neil Armstrong\'s journey to the Moon as intimate tragedy and catharsis, making the Apollo program feel viscerally human and hauntingly real.' },
-    'The Martian': { imdbRating: 8.0, genre: 'Survival Sci-Fi', director: 'Ridley Scott', spaceConnection: 'The Martian celebrates human ingenuity and optimism in the face of impossible odds. Ridley Scott transforms survival on Mars into a witty, scientifically grounded adventure where problem-solving with humor and intelligence becomes humanity\'s greatest strength.' },
-    'Gravity': { imdbRating: 7.7, genre: 'Space Thriller', director: 'Alfonso Cuarón', spaceConnection: 'Gravity captures the terrifying beauty and primal danger of space like no film before. Cuarón\'s technical masterpiece uses orbital disaster as metaphor for emotional rebirth, making the void of space feel both deadly real and spiritually transformative.' },
-    'Sunshine': { imdbRating: 7.2, genre: 'Space Horror', director: 'Danny Boyle', spaceConnection: 'Sunshine explores humanity\'s relationship with cosmic forces beyond comprehension. Boyle\'s mission to reignite the dying Sun becomes a descent into madness and obsession, examining what humans become when carrying the weight of species survival.' },
-    'Moon': { imdbRating: 7.8, genre: 'Indie Sci-Fi', director: 'Duncan Jones', spaceConnection: 'Moon proves that profound sci-fi needs neither massive budgets nor spectacle. Duncan Jones crafts an intimate character study about identity, consciousness, and corporate exploitation that asks what truly defines humanity in an age of cloning and disposable workers.' },
-    'Ad Astra': { imdbRating: 6.5, genre: 'Contemplative Sci-Fi', director: 'James Gray', spaceConnection: 'Ad Astra uses interplanetary journey as framework for internal psychological exploration. James Gray suggests that the true frontier isn\'t Neptune or the stars, but the emotional connections we struggle to maintain—making inner space more vast than outer space.' }
+    '2001: A Space Odyssey': { imdbRating: 8.3, genre: 'Philosophical Sci-Fi', director: 'Stanley Kubrick', spaceComplexity: 98, spaceConnection: '2001: A Space Odyssey transcends cinema to become a meditation on human evolution and cosmic destiny. Kubrick\'s visionary masterpiece explores consciousness, artificial intelligence, and humanity\'s place in the universe through breathtaking visuals and profound philosophical questions.' },
+    'Arrival': { imdbRating: 7.9, genre: 'Cerebral Sci-Fi', director: 'Denis Villeneuve', spaceComplexity: 92, spaceConnection: 'Arrival treats first contact not as spectacle but as linguistic puzzle that reshapes our perception of time itself. Denis Villeneuve crafts a poetic meditation on language, free will, and human connection that proves some of cinema\'s most profound moments happen in quiet conversation.' },
+    'Contact': { imdbRating: 7.5, genre: 'Hard Sci-Fi', director: 'Robert Zemeckis', spaceComplexity: 88, spaceConnection: 'Contact explores humanity\'s eternal question: are we alone? Carl Sagan\'s vision, brought to life by Zemeckis, examines the boundaries between science and faith, evidence and belief, in our search for cosmic connection and meaning beyond Earth.' },
+    'Solaris': { imdbRating: 8.0, genre: 'Psychological Sci-Fi', director: 'Andrei Tarkovsky', spaceComplexity: 94, spaceConnection: 'Solaris uses space exploration as a mirror to examine human consciousness, memory, and grief. Tarkovsky\'s meditative masterpiece suggests that the most profound alien encounter may be confronting the depths of our own psyche and unresolved past.' },
+    'First Man': { imdbRating: 7.3, genre: 'Biographical Drama', director: 'Damien Chazelle', spaceComplexity: 84, spaceConnection: 'First Man strips away heroic mythology to reveal the devastating personal cost behind humanity\'s greatest achievement. Chazelle shows Neil Armstrong\'s journey to the Moon as intimate tragedy and catharsis, making the Apollo program feel viscerally human and hauntingly real.' },
+    'The Martian': { imdbRating: 8.0, genre: 'Survival Sci-Fi', director: 'Ridley Scott', spaceComplexity: 86, spaceConnection: 'The Martian celebrates human ingenuity and optimism in the face of impossible odds. Ridley Scott transforms survival on Mars into a witty, scientifically grounded adventure where problem-solving with humor and intelligence becomes humanity\'s greatest strength.' },
+    'Gravity': { imdbRating: 7.7, genre: 'Space Thriller', director: 'Alfonso Cuarón', spaceComplexity: 90, spaceConnection: 'Gravity captures the terrifying beauty and primal danger of space like no film before. Cuarón\'s technical masterpiece uses orbital disaster as metaphor for emotional rebirth, making the void of space feel both deadly real and spiritually transformative.' },
+    'Sunshine': { imdbRating: 7.2, genre: 'Space Horror', director: 'Danny Boyle', spaceComplexity: 87, spaceConnection: 'Sunshine explores humanity\'s relationship with cosmic forces beyond comprehension. Boyle\'s mission to reignite the dying Sun becomes a descent into madness and obsession, examining what humans become when carrying the weight of species survival.' },
+    'Moon': { imdbRating: 7.8, genre: 'Indie Sci-Fi', director: 'Duncan Jones', spaceComplexity: 89, spaceConnection: 'Moon proves that profound sci-fi needs neither massive budgets nor spectacle. Duncan Jones crafts an intimate character study about identity, consciousness, and corporate exploitation that asks what truly defines humanity in an age of cloning and disposable workers.' },
+    'Ad Astra': { imdbRating: 6.5, genre: 'Contemplative Sci-Fi', director: 'James Gray', spaceComplexity: 85, spaceConnection: 'Ad Astra uses interplanetary journey as framework for internal psychological exploration. James Gray suggests that the true frontier isn\'t Neptune or the stars, but the emotional connections we struggle to maintain—making inner space more vast than outer space.' }
 };
 
 const SPACE_TAGS = {
@@ -48,6 +48,7 @@ const SPACE_TAGS = {
     'Ad Astra': { tags: ['Neptune', 'Father-Son', 'Introspective'], symbol: '🪐', color: '#1a1a2e' }
 };
 
+// ✅ SURVIVAL-STYLE OPTIMIZED BANNER
 const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
     const [showTrailer, setShowTrailer] = useState(false);
     const [countdown, setCountdown] = useState(4);
@@ -64,6 +65,7 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
 
     const correctData = MOVIE_DATA_BY_TITLE[movie.Title];
     const spaceConnection = correctData?.spaceConnection || `${movie.Title} showcases extraordinary cinematic vision and profound exploration of humanity's place in the cosmos.`;
+    const spaceComplexity = correctData?.spaceComplexity || 88;
 
     useEffect(() => {
         if (!isMobile && trailer && !showTrailer && !hasClosedTrailer) {
@@ -81,178 +83,282 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
     const handlePlayClick = () => { setShowTrailer(true); setHasClosedTrailer(false); };
 
     return (
-        <motion.div 
-            className="relative w-full overflow-hidden mb-6 sm:mb-8 mx-0 sm:mx-4 lg:mx-6 rounded-none sm:rounded-3xl" 
-            initial={{ opacity: 0 }} 
-            animate={{ opacity: 1 }} 
-            transition={{ duration: 0.8 }}
-        >
-            <div className="relative h-[300px] sm:h-[400px] lg:h-[600px]">
-                <AnimatePresence mode="wait">
-                    {showTrailer && trailer ? (
-                        <motion.div key="trailer" className="absolute inset-0 rounded-none sm:rounded-3xl overflow-hidden" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
-                            <iframe width="100%" height="100%" src={`https://www.youtube.com/embed/${trailer.key}?autoplay=1&mute=1&controls=1`} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen className="w-full h-full" />
-                            <button onClick={handleCloseTrailer} className="absolute top-4 right-4 sm:top-6 sm:right-6 p-2 sm:p-3 rounded-full backdrop-blur-md shadow-xl transition-all duration-300 hover:scale-110 z-50" style={{ backgroundColor: `${COLORS.bgPrimary}DD`, color: COLORS.textPrimary }}>
-                                <X className="w-4 h-4 sm:w-5 sm:h-5" />
-                            </button>
-                        </motion.div>
-                    ) : (
-                        <motion.div key="image" className="absolute inset-0 rounded-none sm:rounded-3xl overflow-hidden" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
-                            <div className="relative w-full h-full">
-                                {bannerImage ? (
-                                    <img src={bannerImage} alt={`${movie.Title} banner`} className="w-full h-full object-cover" onError={(e) => e.target.style.display = 'none'} />
-                                ) : (
-                                    <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: COLORS.bgCard }}>
-                                        <Rocket className="w-16 h-16 sm:w-24 sm:h-24" style={{ color: COLORS.textDisabled }} />
-                                    </div>
-                                )}
-                                <div className="absolute inset-0 z-10" style={{ background: `linear-gradient(to bottom, transparent 0%, transparent 60%, ${COLORS.bgPrimary}80 85%, ${COLORS.bgPrimary} 100%)` }} />
-                            </div>
-                            {trailer && (
-                                <motion.div className="absolute inset-0 flex items-center justify-center z-20" initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 1, duration: 0.8 }}>
-                                    <motion.button onClick={handlePlayClick} className="p-4 sm:p-6 rounded-full backdrop-blur-lg shadow-2xl transition-all duration-300" style={{ backgroundColor: `${COLORS.bgPrimary}BB`, border: `2px sm:border-3 solid ${COLORS.textPrimary}`, color: COLORS.textPrimary }} whileHover={{ scale: 1.15, backgroundColor: `${COLORS.accent}DD`, borderColor: COLORS.accent }} whileTap={{ scale: 0.95 }}>
-                                        <Play className="w-6 h-6 sm:w-8 sm:h-8 ml-1" />
-                                    </motion.button>
-                                </motion.div>
-                            )}
-                            {!isMobile && trailer && !showTrailer && !hasClosedTrailer && countdown > 0 && (
-                                <motion.div className="absolute top-6 sm:top-8 right-6 sm:right-8 backdrop-blur-md rounded-full px-3 sm:px-4 py-1.5 sm:py-2 border z-30" style={{ backgroundColor: `${COLORS.bgPrimary}CC`, borderColor: `${COLORS.accent}66`, color: COLORS.accent }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>
-                                    <div className="flex items-center gap-2 text-xs sm:text-sm font-medium">
-                                        <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full animate-pulse" style={{ backgroundColor: COLORS.accent }}></div>
-                                        Trailer in {countdown}s
-                                    </div>
-                                </motion.div>
-                            )}
-                        </motion.div>
-                    )}
-                </AnimatePresence>
-            </div>
+        <>
+            <style jsx>{`
+                @media (max-width: 767px) {
+                    .mobile-hero-row {
+                        display: flex;
+                        flex-direction: row;
+                        align-items: flex-start;
+                        width: 100%;
+                        gap: 10px;
+                        margin: 0;
+                        padding: 0 12px;
+                    }
+                    .mobile-hero-poster {
+                        width: 38vw;
+                        min-width: 106px;
+                        border-radius: 12px;
+                        overflow: hidden;
+                        box-shadow: 0 3px 14px rgba(0,0,0,0.4);
+                        margin: 0;
+                        flex-shrink: 0;
+                    }
+                    .mobile-hero-poster img {
+                        width: 100%;
+                        height: auto;
+                        border-radius: 12px;
+                        display: block;
+                    }
+                    .mobile-space-card {
+                        background: linear-gradient(135deg, rgba(8, 145, 178, 0.15) 0%, rgba(15, 44, 51, 0.3) 100%);
+                        border-radius: 12px;
+                        box-shadow: 0 2px 12px rgba(0,0,0,0.35);
+                        margin: 0;
+                        flex: 1;
+                        border-left: 4px solid #0891b2;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: flex-start;
+                        padding: 10px 10px 10px 12px;
+                        min-height: 110px;
+                        position: relative;
+                    }
+                    .mobile-space-row {
+                        display: flex;
+                        align-items: flex-start;
+                        gap: 7px;
+                        margin-bottom: 6px;
+                    }
+                    .mobile-space-icon {
+                        min-width: 24px;
+                        min-height: 24px;
+                        color: #22d3ee;
+                        margin-top: 2px;
+                        flex-shrink: 0;
+                    }
+                    .mobile-space-title {
+                        font-size: 15px;
+                        font-weight: bold;
+                        color: #22d3ee;
+                        margin-bottom: 1px;
+                        line-height: 1.12;
+                    }
+                    .mobile-space-complexity {
+                        font-size: 11.5px;
+                        color: rgba(255, 255, 255, 0.7);
+                        line-height: 1.2;
+                    }
+                    .mobile-space-desc {
+                        font-size: 12.3px;
+                        color: #ededed;
+                        line-height: 1.36;
+                        margin-top: 2px;
+                    }
+                }
+            `}</style>
 
-            <div className="relative px-3 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8 z-20" style={{ backgroundColor: COLORS.bgPrimary }}>
-                <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 lg:gap-8 items-start">
-                    <motion.div 
-                        className="flex-shrink-0 relative w-24 sm:w-48 md:w-56 lg:w-80 mx-auto sm:mx-0" 
-                        initial={{ opacity: 0, y: 30 }} 
-                        animate={{ opacity: 1, y: 0 }} 
-                        transition={{ delay: 0.8, duration: 0.8 }}
-                    >
-                        <div className="relative" style={{ aspectRatio: '2/3' }}>
+            <motion.div 
+                className="relative w-full overflow-hidden mb-6 sm:mb-8 mx-0 sm:mx-4 lg:mx-6 rounded-none sm:rounded-3xl" 
+                initial={{ opacity: 0 }} 
+                animate={{ opacity: 1 }} 
+                transition={{ duration: 0.8 }}
+            >
+                <div className="relative h-[300px] sm:h-[400px] lg:h-[600px]">
+                    <AnimatePresence mode="wait">
+                        {showTrailer && trailer ? (
+                            <motion.div key="trailer" className="absolute inset-0 rounded-none sm:rounded-3xl overflow-hidden" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
+                                <iframe width="100%" height="100%" src={`https://www.youtube.com/embed/${trailer.key}?autoplay=1&mute=1&controls=1`} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen className="w-full h-full" />
+                                <button onClick={handleCloseTrailer} className="absolute top-4 right-4 sm:top-6 sm:right-6 p-2 sm:p-3 rounded-full backdrop-blur-md shadow-xl transition-all duration-300 hover:scale-110 z-50" style={{ backgroundColor: `${COLORS.bgPrimary}DD`, color: COLORS.textPrimary }}>
+                                    <X className="w-4 h-4 sm:w-5 sm:h-5" />
+                                </button>
+                            </motion.div>
+                        ) : (
+                            <motion.div key="image" className="absolute inset-0 rounded-none sm:rounded-3xl overflow-hidden" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
+                                <div className="relative w-full h-full">
+                                    {bannerImage ? (
+                                        <img src={bannerImage} alt={`${movie.Title} banner`} className="w-full h-full object-cover" onError={(e) => e.target.style.display = 'none'} />
+                                    ) : (
+                                        <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: COLORS.bgCard }}>
+                                            <Rocket className="w-16 h-16 sm:w-24 sm:h-24" style={{ color: COLORS.textDisabled }} />
+                                        </div>
+                                    )}
+                                    <div className="absolute inset-0 z-10" style={{ background: `linear-gradient(to bottom, transparent 0%, transparent 60%, ${COLORS.bgPrimary}80 85%, ${COLORS.bgPrimary} 100%)` }} />
+                                </div>
+                                {trailer && (
+                                    <motion.div className="absolute inset-0 flex items-center justify-center z-20" initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 1, duration: 0.8 }}>
+                                        <motion.button onClick={handlePlayClick} className="p-4 sm:p-6 rounded-full backdrop-blur-lg shadow-2xl transition-all duration-300" style={{ backgroundColor: `${COLORS.bgPrimary}BB`, border: `2px solid ${COLORS.textPrimary}`, color: COLORS.textPrimary }} whileHover={{ scale: 1.15, backgroundColor: `${COLORS.accent}DD`, borderColor: COLORS.accent }} whileTap={{ scale: 0.95 }}>
+                                            <Play className="w-6 h-6 sm:w-8 sm:h-8 ml-1" />
+                                        </motion.button>
+                                    </motion.div>
+                                )}
+                                {!isMobile && trailer && !showTrailer && !hasClosedTrailer && countdown > 0 && (
+                                    <motion.div className="absolute top-6 sm:top-8 right-6 sm:right-8 backdrop-blur-md rounded-full px-3 sm:px-4 py-1.5 sm:py-2 border z-30" style={{ backgroundColor: `${COLORS.bgPrimary}CC`, borderColor: `${COLORS.accent}66`, color: COLORS.accent }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>
+                                        <div className="flex items-center gap-2 text-xs sm:text-sm font-medium">
+                                            <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full animate-pulse" style={{ backgroundColor: COLORS.accent }}></div>
+                                            Trailer in {countdown}s
+                                        </div>
+                                    </motion.div>
+                                )}
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+                </div>
+
+                {/* MOBILE: SURVIVAL-STYLE ROW */}
+                {isMobile ? (
+                    <div className="mobile-hero-row" style={{ paddingTop: '16px', paddingBottom: '12px' }}>
+                        <div className="mobile-hero-poster">
                             {posterImage ? (
-                                <img src={posterImage} alt={`${movie.Title} poster`} className="w-full h-full object-cover rounded-lg sm:rounded-xl shadow-2xl" onError={(e) => e.target.style.display = 'none'} />
+                                <img src={posterImage} alt={`${movie.Title} poster`} />
                             ) : (
-                                <div className="w-full h-full flex items-center justify-center rounded-lg sm:rounded-xl shadow-2xl" style={{ backgroundColor: COLORS.bgCard }}>
-                                    <Rocket className="w-12 h-12 sm:w-16 sm:h-16" style={{ color: COLORS.textDisabled }} />
+                                <div style={{ background: COLORS.bgCard, width: '100%', aspectRatio: '2/3', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '12px' }}>
+                                    <Rocket style={{ color: COLORS.textMuted, width: '32px', height: '32px' }} />
                                 </div>
                             )}
                         </div>
-                    </motion.div>
-
-                    <motion.div 
-                        className="flex-1 w-full min-w-0" 
-                        initial={{ opacity: 0, x: 30 }} 
-                        animate={{ opacity: 1, x: 0 }} 
-                        transition={{ delay: 1.0, duration: 0.8 }}
-                    >
-                        <motion.div 
-                            className="flex flex-wrap gap-1.5 sm:gap-2 mb-4 sm:mb-6" 
-                            initial={{ opacity: 0, y: 10 }} 
-                            animate={{ opacity: 1, y: 0 }} 
-                            transition={{ delay: 0.9, duration: 0.6 }}
-                        >
-                            {SPACE_TAGS[movie.Title]?.tags.map((tag, index) => (
-                                <motion.span
-                                    key={tag}
-                                    className="px-2 sm:px-3 py-1 sm:py-1.5 rounded-full text-xs font-semibold backdrop-blur-sm flex items-center gap-1 sm:gap-1.5 flex-shrink-0"
-                                    style={{ 
-                                        backgroundColor: `${SPACE_TAGS[movie.Title].color}30`,
-                                        border: `1px solid ${SPACE_TAGS[movie.Title].color}80`,
-                                        color: COLORS.textPrimary 
-                                    }}
-                                    initial={{ opacity: 0, scale: 0.9 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    transition={{ delay: 0.9 + (index * 0.08), duration: 0.4 }}
-                                >
-                                    <span className="text-sm sm:text-base">{SPACE_TAGS[movie.Title].symbol}</span>
-                                    <span className="whitespace-nowrap">{tag}</span>
-                                </motion.span>
-                            ))}
-                        </motion.div>
-                        
-                        <motion.div 
-                            className="relative rounded-xl sm:rounded-2xl overflow-hidden p-4 sm:p-6 lg:p-8 backdrop-blur-sm"
-                            style={{ 
-                                background: `linear-gradient(135deg, ${COLORS.bgCard} 0%, rgba(15, 15, 20, 0.5) 100%)`,
-                                border: `1px solid ${COLORS.borderLight}`,
-                                boxShadow: `0 8px 32px rgba(0, 0, 0, 0.4)`
-                            }}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 1.1, duration: 0.8 }}
-                        >
-                            <div 
-                                className="absolute top-0 left-0 right-0 h-0.5 sm:h-1"
-                                style={{ 
-                                    background: `linear-gradient(90deg, transparent, ${COLORS.accent}, transparent)` 
-                                }}
-                            />
-                            
-                            <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5">
-                                <motion.div 
-                                    className="p-2 sm:p-2.5 rounded-lg sm:rounded-xl flex-shrink-0"
-                                    style={{ 
-                                        background: `linear-gradient(135deg, ${COLORS.accent}20, ${COLORS.accent}10)`,
-                                        border: `1px solid ${COLORS.accent}40`
-                                    }}
-                                    whileHover={{ scale: 1.05 }}
-                                    transition={{ duration: 0.2 }}
-                                >
-                                    <Award className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" style={{ color: COLORS.accent }} />
-                                </motion.div>
-                                
-                                <div className="min-w-0 flex-1">
-                                    <h2 
-                                        className="text-sm sm:text-base lg:text-xl xl:text-2xl font-bold leading-tight"
-                                        style={{ color: COLORS.accent }}
-                                    >
-                                        Why This is Like Interstellar
-                                    </h2>
-                                    <p className="text-xs sm:text-sm hidden sm:block" style={{ color: COLORS.textMuted }}>
-                                        Expert Analysis
-                                    </p>
+                        <div className="mobile-space-card">
+                            <div className="mobile-space-row">
+                                <Rocket className="mobile-space-icon" />
+                                <div>
+                                    <div className="mobile-space-title">Space Complexity</div>
+                                    <div className="mobile-space-complexity">Score: {spaceComplexity}/100</div>
                                 </div>
                             </div>
-
-                            <div className="relative pl-4 sm:pl-6 border-l-2" style={{ borderColor: `${COLORS.accent}40` }}>
-                                <motion.div 
-                                    className="absolute -left-1.5 sm:-left-2 top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full"
-                                    style={{ backgroundColor: COLORS.accent }}
-                                    animate={{ scale: [1, 1.2, 1] }}
-                                    transition={{ duration: 2, repeat: Infinity }}
-                                />
-                                
-                                <p 
-                                    className="text-xs sm:text-sm lg:text-base xl:text-lg leading-relaxed font-normal break-words"
-                                    style={{ color: COLORS.textSecondary, lineHeight: '1.8' }}
-                                >
-                                    {spaceConnection}
-                                </p>
+                            <div className="mobile-space-desc">
+                                {spaceConnection.substring(0, 120)}...
                             </div>
+                        </div>
+                    </div>
+                ) : (
+                    /* DESKTOP: ORIGINAL DESIGN */
+                    <div className="relative px-3 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8 z-20" style={{ backgroundColor: COLORS.bgPrimary }}>
+                        <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 lg:gap-8 items-start">
+                            <motion.div 
+                                className="flex-shrink-0 relative w-24 sm:w-48 md:w-56 lg:w-80 mx-auto sm:mx-0" 
+                                initial={{ opacity: 0, y: 30 }} 
+                                animate={{ opacity: 1, y: 0 }} 
+                                transition={{ delay: 0.8, duration: 0.8 }}
+                            >
+                                <div className="relative" style={{ aspectRatio: '2/3' }}>
+                                    {posterImage ? (
+                                        <img src={posterImage} alt={`${movie.Title} poster`} className="w-full h-full object-cover rounded-lg sm:rounded-xl shadow-2xl" onError={(e) => e.target.style.display = 'none'} />
+                                    ) : (
+                                        <div className="w-full h-full flex items-center justify-center rounded-lg sm:rounded-xl shadow-2xl" style={{ backgroundColor: COLORS.bgCard }}>
+                                            <Rocket className="w-12 h-12 sm:w-16 sm:h-16" style={{ color: COLORS.textDisabled }} />
+                                        </div>
+                                    )}
+                                </div>
+                            </motion.div>
 
                             <motion.div 
-                                className="mt-4 sm:mt-6 h-0.5 sm:h-1 rounded-full"
-                                style={{ 
-                                    background: `linear-gradient(90deg, ${COLORS.accent}60, transparent)`,
-                                    width: '40%'
-                                }}
-                                initial={{ scaleX: 0 }}
-                                animate={{ scaleX: 1 }}
-                                transition={{ delay: 1.5, duration: 0.8 }}
-                            />
-                        </motion.div>
-                    </motion.div>
-                </div>
-            </div>
-        </motion.div>
+                                className="flex-1 w-full min-w-0" 
+                                initial={{ opacity: 0, x: 30 }} 
+                                animate={{ opacity: 1, x: 0 }} 
+                                transition={{ delay: 1.0, duration: 0.8 }}
+                            >
+                                <motion.div 
+                                    className="flex flex-wrap gap-1.5 sm:gap-2 mb-4 sm:mb-6" 
+                                    initial={{ opacity: 0, y: 10 }} 
+                                    animate={{ opacity: 1, y: 0 }} 
+                                    transition={{ delay: 0.9, duration: 0.6 }}
+                                >
+                                    {SPACE_TAGS[movie.Title]?.tags.map((tag, index) => (
+                                        <motion.span
+                                            key={tag}
+                                            className="px-2 sm:px-3 py-1 sm:py-1.5 rounded-full text-xs font-semibold backdrop-blur-sm flex items-center gap-1 sm:gap-1.5 flex-shrink-0"
+                                            style={{ 
+                                                backgroundColor: `${SPACE_TAGS[movie.Title].color}30`,
+                                                border: `1px solid ${SPACE_TAGS[movie.Title].color}80`,
+                                                color: COLORS.textPrimary 
+                                            }}
+                                            initial={{ opacity: 0, scale: 0.9 }}
+                                            animate={{ opacity: 1, scale: 1 }}
+                                            transition={{ delay: 0.9 + (index * 0.08), duration: 0.4 }}
+                                        >
+                                            <span className="text-sm sm:text-base">{SPACE_TAGS[movie.Title].symbol}</span>
+                                            <span className="whitespace-nowrap">{tag}</span>
+                                        </motion.span>
+                                    ))}
+                                </motion.div>
+                                
+                                <motion.div 
+                                    className="relative rounded-xl sm:rounded-2xl overflow-hidden p-4 sm:p-6 lg:p-8 backdrop-blur-sm"
+                                    style={{ 
+                                        background: `linear-gradient(135deg, ${COLORS.bgCard} 0%, rgba(15, 15, 20, 0.5) 100%)`,
+                                        border: `1px solid ${COLORS.borderLight}`,
+                                        boxShadow: `0 8px 32px rgba(0, 0, 0, 0.4)`
+                                    }}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: 1.1, duration: 0.8 }}
+                                >
+                                    <div 
+                                        className="absolute top-0 left-0 right-0 h-0.5 sm:h-1"
+                                        style={{ 
+                                            background: `linear-gradient(90deg, transparent, ${COLORS.accent}, transparent)` 
+                                        }}
+                                    />
+                                    
+                                    <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5">
+                                        <motion.div 
+                                            className="p-2 sm:p-2.5 rounded-lg sm:rounded-xl flex-shrink-0"
+                                            style={{ 
+                                                background: `linear-gradient(135deg, ${COLORS.accent}20, ${COLORS.accent}10)`,
+                                                border: `1px solid ${COLORS.accent}40`
+                                            }}
+                                            whileHover={{ scale: 1.05 }}
+                                            transition={{ duration: 0.2 }}
+                                        >
+                                            <Rocket className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" style={{ color: COLORS.accent }} />
+                                        </motion.div>
+                                        
+                                        <div className="min-w-0 flex-1">
+                                            <h2 
+                                                className="text-sm sm:text-base lg:text-xl xl:text-2xl font-bold leading-tight"
+                                                style={{ color: COLORS.accent }}
+                                            >
+                                                Why This is Like Interstellar
+                                            </h2>
+                                            <p className="text-xs sm:text-sm hidden sm:block" style={{ color: COLORS.textMuted }}>
+                                                Space Complexity: {spaceComplexity}/100
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div className="relative pl-4 sm:pl-6 border-l-2" style={{ borderColor: `${COLORS.accent}40` }}>
+                                        <motion.div 
+                                            className="absolute -left-1.5 sm:-left-2 top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full"
+                                            style={{ backgroundColor: COLORS.accent }}
+                                            animate={{ scale: [1, 1.2, 1] }}
+                                            transition={{ duration: 2, repeat: Infinity }}
+                                        />
+                                        
+                                        <p 
+                                            className="text-xs sm:text-sm lg:text-base xl:text-lg leading-relaxed font-normal break-words"
+                                            style={{ color: COLORS.textSecondary, lineHeight: '1.8' }}
+                                        >
+                                            {spaceConnection}
+                                        </p>
+                                    </div>
+
+                                    <motion.div 
+                                        className="mt-4 sm:mt-6 h-0.5 sm:h-1 rounded-full"
+                                        style={{ 
+                                            background: `linear-gradient(90deg, ${COLORS.accent}60, transparent)`,
+                                            width: '40%'
+                                        }}
+                                        initial={{ scaleX: 0 }}
+                                        animate={{ scaleX: 1 }}
+                                        transition={{ delay: 1.5, duration: 0.8 }}
+                                    />
+                                </motion.div>
+                            </motion.div>
+                        </div>
+                    </div>
+                )}
+            </motion.div>
+        </>
     );
 };
 
