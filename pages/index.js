@@ -12,9 +12,11 @@ import {
     Compass, Globe, Layers
 } from 'lucide-react';
 
+
 const TMDB_API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
 const TMDB_BASE_URL = 'https://api.themoviedb.org/3';
 const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p';
+
 
 // ✅ Memoized Movie Card for better performance
 const MovieCard = memo(({ movie, index, isMobile, onClick }) => (
@@ -29,15 +31,15 @@ const MovieCard = memo(({ movie, index, isMobile, onClick }) => (
         style={{ contain: 'layout style paint' }}
     >
         <div className="relative aspect-[2/3] rounded-2xl overflow-hidden bg-gray-900 shadow-xl">
-<Image
-    src={`${IMAGE_BASE_URL}/w500${movie.poster_path}`}
-    alt={movie.title}
-    width={500}
-    height={750}
-    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-    loading="lazy"
-    draggable={false}
-/>
+            <Image
+                src={`${IMAGE_BASE_URL}/w500${movie.poster_path}`}
+                alt={movie.title}
+                width={500}
+                height={750}
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                loading="lazy"
+                draggable={false}
+            />
 
             
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -70,7 +72,217 @@ const MovieCard = memo(({ movie, index, isMobile, onClick }) => (
     </motion.div>
 ));
 
+
 MovieCard.displayName = 'MovieCard';
+
+
+// 🎯 FEATURED COLLECTIONS - All 14 Strategic Crawl Links
+const FeaturedCollectionsSection = memo(() => {
+  const collections = [
+    {
+      slug: 'best-crime-thriller-movies',
+      title: 'Crime Thrillers',
+      subtitle: 'Heat to The Departed',
+      icon: '🔫',
+      color: 'from-red-500/10 to-orange-500/10',
+      borderColor: 'border-red-500/20',
+      hoverColor: 'hover:from-red-500/20 hover:to-orange-500/20 hover:border-red-400/40',
+      accentColor: 'text-red-400'
+    },
+    {
+      slug: 'best-heist-thriller-movies',
+      title: 'Heist Masterpieces',
+      subtitle: "Ocean's Eleven to Inside Man",
+      icon: '💰',
+      color: 'from-amber-500/10 to-yellow-500/10',
+      borderColor: 'border-amber-500/20',
+      hoverColor: 'hover:from-amber-500/20 hover:to-yellow-500/20 hover:border-amber-400/40',
+      accentColor: 'text-amber-400'
+    },
+    {
+      slug: 'best-survival-movies',
+      title: 'Survival Epics',
+      subtitle: 'Against All Odds',
+      icon: '⛰️',
+      color: 'from-green-500/10 to-teal-500/10',
+      borderColor: 'border-green-500/20',
+      hoverColor: 'hover:from-green-500/20 hover:to-teal-500/20 hover:border-green-400/40',
+      accentColor: 'text-green-400'
+    },
+    {
+      slug: 'best-time-travel-movies',
+      title: 'Time Travel',
+      subtitle: 'Paradox Films',
+      icon: '⏳',
+      color: 'from-purple-500/10 to-pink-500/10',
+      borderColor: 'border-purple-500/20',
+      hoverColor: 'hover:from-purple-500/20 hover:to-pink-500/20 hover:border-purple-400/40',
+      accentColor: 'text-purple-400'
+    },
+    {
+      slug: 'best-sci-fi-movies',
+      title: 'Sci-Fi Classics',
+      subtitle: 'Blade Runner to Interstellar',
+      icon: '🚀',
+      color: 'from-indigo-500/10 to-blue-500/10',
+      borderColor: 'border-indigo-500/20',
+      hoverColor: 'hover:from-indigo-500/20 hover:to-blue-500/20 hover:border-indigo-400/40',
+      accentColor: 'text-indigo-400'
+    },
+    {
+      slug: 'best-psychological-thriller-movies',
+      title: 'Psychological Thrillers',
+      subtitle: 'Mind-Bending Darkness',
+      icon: '🧠',
+      color: 'from-blue-500/10 to-cyan-500/10',
+      borderColor: 'border-blue-500/20',
+      hoverColor: 'hover:from-blue-500/20 hover:to-cyan-500/20 hover:border-blue-400/40',
+      accentColor: 'text-blue-400'
+    },
+    {
+      slug: 'best-detective-thriller-movies',
+      title: 'Detective Mysteries',
+      subtitle: 'Zodiac to Prisoners',
+      icon: '🔍',
+      color: 'from-yellow-500/10 to-orange-500/10',
+      borderColor: 'border-yellow-500/20',
+      hoverColor: 'hover:from-yellow-500/20 hover:to-orange-500/20 hover:border-yellow-400/40',
+      accentColor: 'text-yellow-400'
+    },
+    {
+      slug: 'best-mystery-thriller-movies',
+      title: 'Mystery Thrillers',
+      subtitle: 'Unsolvable Puzzles',
+      icon: '🎭',
+      color: 'from-pink-500/10 to-rose-500/10',
+      borderColor: 'border-pink-500/20',
+      hoverColor: 'hover:from-pink-500/20 hover:to-rose-500/20 hover:border-pink-400/40',
+      accentColor: 'text-pink-400'
+    },
+    {
+      slug: 'best-thriller-movies',
+      title: 'Suspense Thrillers',
+      subtitle: 'Edge-of-Seat Films',
+      icon: '⚡',
+      color: 'from-red-500/10 to-pink-500/10',
+      borderColor: 'border-red-500/20',
+      hoverColor: 'hover:from-red-500/20 hover:to-pink-500/20 hover:border-red-400/40',
+      accentColor: 'text-red-400'
+    },
+    {
+      slug: 'best-revenge-movies',
+      title: 'Revenge Cinema',
+      subtitle: 'Oldboy to John Wick',
+      icon: '⚔️',
+      color: 'from-red-500/10 to-red-600/10',
+      borderColor: 'border-red-500/20',
+      hoverColor: 'hover:from-red-500/20 hover:to-red-600/20 hover:border-red-400/40',
+      accentColor: 'text-red-400'
+    },
+    {
+      slug: 'best-war-films',
+      title: 'War Masterpieces',
+      subtitle: 'D-Day to Jungle Combat',
+      icon: '🎬',
+      color: 'from-slate-500/10 to-gray-500/10',
+      borderColor: 'border-slate-500/20',
+      hoverColor: 'hover:from-slate-500/20 hover:to-gray-500/20 hover:border-slate-400/40',
+      accentColor: 'text-slate-400'
+    },
+    {
+      slug: 'best-drama-movies-on-netflix',
+      title: 'Award-Winning Dramas',
+      subtitle: 'Oscar-Level Films',
+      icon: '🏆',
+      color: 'from-amber-500/10 to-yellow-500/10',
+      borderColor: 'border-amber-500/20',
+      hoverColor: 'hover:from-amber-500/20 hover:to-yellow-500/20 hover:border-amber-400/40',
+      accentColor: 'text-amber-400'
+    },
+    {
+      slug: 'movies-like-inception',
+      title: 'Like Inception',
+      subtitle: 'Mind-Bending Masterpieces',
+      icon: '💭',
+      color: 'from-violet-500/10 to-purple-500/10',
+      borderColor: 'border-violet-500/20',
+      hoverColor: 'hover:from-violet-500/20 hover:to-purple-500/20 hover:border-violet-400/40',
+      accentColor: 'text-violet-400'
+    },
+    {
+      slug: 'movies-like-shutter-island',
+      title: 'Like Shutter Island',
+      subtitle: 'Twisted Psychological Thrillers',
+      icon: '🏝️',
+      color: 'from-teal-500/10 to-cyan-500/10',
+      borderColor: 'border-teal-500/20',
+      hoverColor: 'hover:from-teal-500/20 hover:to-cyan-500/20 hover:border-teal-400/40',
+      accentColor: 'text-teal-400'
+    }
+  ];
+
+  return (
+    <section className="mb-24 select-none">
+      <motion.div
+        className="text-center mb-12"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        <div className="flex items-center justify-center gap-3 mb-3">
+          <Layers className="w-7 h-7 text-yellow-400" />
+          <h2 className="text-3xl sm:text-4xl font-light text-white">
+            Curated Collections
+          </h2>
+        </div>
+        <p className="text-gray-400 max-w-3xl mx-auto text-lg font-light">
+          Expertly ranked film collections. Each curated for intensity, storytelling, and impact.
+        </p>
+      </motion.div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+        {collections.map((collection, index) => (
+          <motion.div
+            key={collection.slug}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.08, duration: 0.5 }}
+          >
+            <Link href={`/collection/${collection.slug}`} className="group block h-full">
+              <div className={`bg-gradient-to-br ${collection.color} border ${collection.borderColor} rounded-2xl p-6 h-full transition-all duration-300 ${collection.hoverColor} hover:-translate-y-1 cursor-pointer`}>
+                {/* Icon & Title Row */}
+                <div className="flex items-start justify-between mb-4">
+                  <div>
+                    <h3 className={`text-2xl font-semibold ${collection.accentColor} mb-1 group-hover:brightness-110 transition-all`}>
+                      {collection.title}
+                    </h3>
+                    <p className="text-gray-400 text-sm font-light">
+                      {collection.subtitle}
+                    </p>
+                  </div>
+                  <span className="text-4xl opacity-60 group-hover:opacity-100 transition-opacity">
+                    {collection.icon}
+                  </span>
+                </div>
+
+                {/* Action Indicator */}
+                <div className="flex items-center gap-2 text-yellow-400 text-sm font-medium group-hover:gap-3 transition-all">
+                  <span>Explore</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </div>
+              </div>
+            </Link>
+          </motion.div>
+        ))}
+      </div>
+    </section>
+  );
+});
+
+FeaturedCollectionsSection.displayName = 'FeaturedCollectionsSection';
+
 
 const FilmiwayHomepage = () => {
     const router = useRouter();
@@ -84,6 +296,7 @@ const FilmiwayHomepage = () => {
     const trendingRef = useRef(null);
     const popularRef = useRef(null);
     const topRatedRef = useRef(null);
+
 
     // ✅ FILTER FUNCTION - Excludes Indian language movies
     const filterOutIndianMovies = (movies) => {
@@ -117,6 +330,7 @@ const FilmiwayHomepage = () => {
         };
     }, []);
 
+
     // ✅ OPTIMIZED API CALLS WITH REGION FILTERING
     useEffect(() => {
         const fetchMovies = async () => {
@@ -128,16 +342,19 @@ const FilmiwayHomepage = () => {
                     fetch(`${TMDB_BASE_URL}/movie/top_rated?api_key=${TMDB_API_KEY}&region=US&language=en-US`)
                 ]);
 
+
                 const [trending, popular, topRated] = await Promise.all([
                     trendingRes.json(),
                     popularRes.json(),
                     topRatedRes.json()
                 ]);
 
+
                 // ✅ BACKUP FILTER: Only needed for edge cases (co-productions)
                 const filteredTrending = filterOutIndianMovies(trending.results?.slice(0, 10) || []);
                 const filteredPopular = filterOutIndianMovies(popular.results?.slice(0, 10) || []);
                 const filteredTopRated = filterOutIndianMovies(topRated.results?.slice(0, 10) || []);
+
 
                 setTrendingMovies(filteredTrending);
                 setPopularMovies(filteredPopular);
@@ -150,8 +367,10 @@ const FilmiwayHomepage = () => {
             }
         };
 
+
         fetchMovies();
     }, []);
+
 
     const scrollToSection = useCallback((ref) => {
         ref.current?.scrollIntoView({ 
@@ -159,6 +378,7 @@ const FilmiwayHomepage = () => {
             block: 'start'
         });
     }, []);
+
 
     const Navigation = memo(() => (
         <motion.nav 
@@ -183,6 +403,7 @@ const FilmiwayHomepage = () => {
                         </div>
                     </Link>
 
+
                     <div className="hidden md:flex items-center space-x-6">
                         <Link href="/" className="text-yellow-400 font-medium border-b-2 border-yellow-400 pb-1">Home</Link>
                         <Link href="/collections" className="text-gray-300 hover:text-white transition-colors">Collections</Link>
@@ -195,6 +416,7 @@ const FilmiwayHomepage = () => {
                         <Link href="/about" className="text-gray-300 hover:text-white transition-colors">About</Link>
                     </div>
 
+
                     <button 
                         className="md:hidden text-gray-300 hover:text-yellow-400 transition-colors"
                         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -202,6 +424,7 @@ const FilmiwayHomepage = () => {
                         {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
                     </button>
                 </div>
+
 
                 <AnimatePresence>
                     {mobileMenuOpen && (
@@ -232,7 +455,9 @@ const FilmiwayHomepage = () => {
         </motion.nav>
     ));
 
+
     Navigation.displayName = 'Navigation';
+
 
     const HeroSection = memo(() => (
         <section className="relative min-h-screen flex items-center justify-center bg-black overflow-hidden select-none">
@@ -243,8 +468,10 @@ const FilmiwayHomepage = () => {
                 }} />
             </div>
 
+
             <div className="absolute top-20 left-10 w-96 h-96 bg-yellow-400/10 rounded-full blur-3xl animate-pulse"></div>
             <div className="absolute bottom-20 right-10 w-80 h-80 bg-yellow-400/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+
 
             <div className="relative z-10 container mx-auto px-4 sm:px-6 text-center pt-24 sm:pt-32">
                 <motion.div
@@ -266,6 +493,7 @@ const FilmiwayHomepage = () => {
                         </div>
                     </motion.div>
 
+
                     <motion.h1 
                         className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extralight text-white mb-6 leading-tight"
                         initial={{ opacity: 0, y: 20 }}
@@ -278,6 +506,7 @@ const FilmiwayHomepage = () => {
                         </span>
                     </motion.h1>
 
+
                     <motion.p 
                         className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-10 font-light leading-relaxed max-w-4xl mx-auto"
                         initial={{ opacity: 0, y: 20 }}
@@ -287,6 +516,7 @@ const FilmiwayHomepage = () => {
                         From mind-bending psychological thrillers to sci-fi masterpieces, explore expertly curated collections.
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-amber-300 font-normal"> Where every film finds its way.</span>
                     </motion.p>
+
 
                     <motion.div 
                         className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
@@ -317,6 +547,7 @@ const FilmiwayHomepage = () => {
                         </motion.button>
                     </motion.div>
 
+
                     <motion.div 
                         className="bg-gradient-to-r from-gray-900/40 via-gray-800/40 to-gray-900/40 backdrop-blur-sm border border-gray-700/30 rounded-3xl p-6 sm:p-8 mb-12 max-w-4xl mx-auto"
                         initial={{ opacity: 0, y: 20 }}
@@ -327,6 +558,7 @@ const FilmiwayHomepage = () => {
                             <Layers className="w-5 h-5 text-yellow-400" />
                             <h2 className="text-xl font-light text-white">Featured Collection</h2>
                         </div>
+
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                             <Link href="/collection/best-survival-movies" className="group block">
@@ -342,6 +574,7 @@ const FilmiwayHomepage = () => {
                                     </div>
                                 </div>
                             </Link>
+
 
                             <Link href="/collection/movies-like-shutter-island" className="group block">
                                 <div className="bg-gradient-to-br from-purple-500/10 to-indigo-500/10 border border-purple-500/20 rounded-2xl p-6 hover:from-purple-500/20 hover:to-indigo-500/20 hover:border-purple-400/40 transition-all duration-300">
@@ -363,7 +596,9 @@ const FilmiwayHomepage = () => {
         </section>
     ));
 
+
     HeroSection.displayName = 'HeroSection';
+
 
     const ProfessionalCarousel = memo(({ movies, sectionRef }) => {
         const [currentIndex, setCurrentIndex] = useState(0);
@@ -374,13 +609,16 @@ const FilmiwayHomepage = () => {
         const itemsPerView = isMobile ? 2 : (typeof window !== 'undefined' && window.innerWidth < 1024 ? 3 : 6);
         const maxIndex = Math.max(0, movies.length - itemsPerView);
 
+
         const nextSlide = useCallback(() => {
             setCurrentIndex(prev => Math.min(prev + 1, maxIndex));
         }, [maxIndex]);
 
+
         const prevSlide = useCallback(() => {
             setCurrentIndex(prev => Math.max(prev - 1, 0));
         }, []);
+
 
         const handleStart = useCallback((e) => {
             setIsDragging(true);
@@ -389,11 +627,13 @@ const FilmiwayHomepage = () => {
             setCurrentX(clientX);
         }, []);
 
+
         const handleMove = useCallback((e) => {
             if (!isDragging) return;
             const clientX = e.touches ? e.touches[0].clientX : e.clientX;
             setCurrentX(clientX);
         }, [isDragging]);
+
 
         const handleEnd = useCallback(() => {
             if (!isDragging) return;
@@ -414,6 +654,7 @@ const FilmiwayHomepage = () => {
             setCurrentX(0);
         }, [isDragging, startX, currentX, currentIndex, maxIndex, nextSlide, prevSlide]);
 
+
         return (
             <div ref={sectionRef} className="relative select-none">
                 {!isMobile && (
@@ -428,6 +669,7 @@ const FilmiwayHomepage = () => {
                             <ChevronLeft className={`w-5 h-5 ${currentIndex === 0 ? 'text-gray-600' : 'text-yellow-400'}`} />
                         </button>
 
+
                         <button
                             onClick={nextSlide}
                             className={`absolute right-0 top-1/2 transform -translate-y-1/2 z-10 w-10 h-10 bg-gray-900/80 backdrop-blur-sm rounded-full border border-gray-700/50 transition-all duration-300 flex items-center justify-center ${
@@ -439,6 +681,7 @@ const FilmiwayHomepage = () => {
                         </button>
                     </>
                 )}
+
 
                 <div 
                     className={`overflow-hidden ${!isMobile ? 'px-8' : 'px-0'} ${isMobile ? 'cursor-grab active:cursor-grabbing' : ''} select-none`}
@@ -475,6 +718,7 @@ const FilmiwayHomepage = () => {
                     </div>
                 </div>
 
+
                 {maxIndex > 0 && (
                     <div className="flex justify-center mt-6 space-x-2">
                         {Array.from({ length: maxIndex + 1 }).map((_, index) => (
@@ -494,7 +738,9 @@ const FilmiwayHomepage = () => {
         );
     });
 
+
     ProfessionalCarousel.displayName = 'ProfessionalCarousel';
+
 
     const MovieSection = memo(({ title, movies, icon: Icon, description, sectionRef }) => (
         <section className="mb-16 select-none">
@@ -516,7 +762,9 @@ const FilmiwayHomepage = () => {
         </section>
     ));
 
+
     MovieSection.displayName = 'MovieSection';
+
 
     if (loading) {
         return (
@@ -530,6 +778,7 @@ const FilmiwayHomepage = () => {
         );
     }
 
+
     return (
         <>
             <Head>
@@ -539,9 +788,15 @@ const FilmiwayHomepage = () => {
                 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
             </Head>
 
+
             <div className="min-h-screen bg-black select-none">
                 <Navigation />
                 <HeroSection />
+
+                {/* 🎯 FEATURED COLLECTIONS - ALL 14 */}
+                <div className="container mx-auto px-4 sm:px-6">
+                    <FeaturedCollectionsSection />
+                </div>
 
                 <main className="container mx-auto px-4 sm:px-6 py-16 space-y-16">
                     <MovieSection 
@@ -568,164 +823,156 @@ const FilmiwayHomepage = () => {
                         sectionRef={topRatedRef}
                     />
                 </main>
-    
 
-
-
-    <motion.section 
-        className="py-12 sm:py-16 bg-gradient-to-r from-gray-900/40 via-gray-800/40 to-gray-900/40 rounded-3xl border border-gray-700/20 mb-16 select-none"
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-    >
-        <div className="text-center px-4">
-            <div className="flex items-center justify-center gap-3 mb-4">
-                <Construction className="w-8 h-8 text-orange-400 animate-bounce" />
-                <h2 className="text-2xl sm:text-3xl font-light text-white">Something is Cooking</h2>
-                <Sparkles className="w-6 h-6 text-yellow-400 animate-pulse" />
-            </div>
-            
-            <p className="text-lg sm:text-xl text-orange-300 mb-4 font-light">
-                🔥 New Features Coming Soon!
-            </p>
-            
-            <p className="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto mb-6">
-                We're working behind the scenes to bring you something amazing. 
-                Stay tuned for exciting updates!
-            </p>
-            
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm text-gray-400">
-                <div className="flex items-center gap-2">
-                    <span className="text-lg"></span>
-                    <span>Development in Progress</span>
-                </div>
-                <span className="hidden sm:block">•</span>
-                <div className="flex items-center gap-2">
-                    <span className="text-lg"></span>
-                    <span>Launching Very Soon</span>
-                </div>
-            </div>
-            
-            {/* Small hint text */}
-            <p className="text-xs text-gray-500 mt-6 italic">
-               
-            </p>
-        </div>
-    </motion.section>
-
-<footer className="bg-gradient-to-t from-gray-900 to-black py-12 border-t border-gray-800 select-none">
-    <div className="container mx-auto px-4 sm:px-6">
-        <div className="text-center">
-            {/* Logo */}
-            <div className="flex items-center justify-center mb-6">
-                <div className="w-32 h-16 sm:w-40 sm:h-20 flex items-center justify-center">
-                    <Image
-                        src="/filmiway-logo.svg"
-                        alt="Filmiway"
-                        width={160}
-                        height={80}
-                        className="w-full h-full object-contain"
-                        draggable={false}
-                    />
-                </div>
-            </div>
-
-            {/* Description */}
-            <p className="text-gray-400 mb-6 max-w-md mx-auto text-sm">
-                Your complete movie discovery platform for amazing films.
-            </p>
-
-            {/* Social Media Icons */}
-            <div className="flex items-center justify-center gap-6 mb-8">
-                {/* YouTube */}
-                <a
-                    href="https://youtube.com/@filmiway.official"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Follow us on YouTube"
-                    className="text-gray-400 hover:text-red-500 transition-colors duration-300"
+                <motion.section 
+                    className="container mx-auto px-4 sm:px-6 py-12 sm:py-16 bg-gradient-to-r from-gray-900/40 via-gray-800/40 to-gray-900/40 rounded-3xl border border-gray-700/20 mb-16 select-none"
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
                 >
-                    <svg className="w-7 h-7 sm:w-8 sm:h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                    </svg>
-                </a>
+                    <div className="text-center px-4">
+                        <div className="flex items-center justify-center gap-3 mb-4">
+                            <Construction className="w-8 h-8 text-orange-400 animate-bounce" />
+                            <h2 className="text-2xl sm:text-3xl font-light text-white">Something is Cooking</h2>
+                            <Sparkles className="w-6 h-6 text-yellow-400 animate-pulse" />
+                        </div>
+                        
+                        <p className="text-lg sm:text-xl text-orange-300 mb-4 font-light">
+                            🔥 New Features Coming Soon!
+                        </p>
+                        
+                        <p className="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto mb-6">
+                            We're working behind the scenes to bring you something amazing. 
+                            Stay tuned for exciting updates!
+                        </p>
+                        
+                        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm text-gray-400">
+                            <div className="flex items-center gap-2">
+                                <span className="text-lg">⚙️</span>
+                                <span>Development in Progress</span>
+                            </div>
+                            <span className="hidden sm:block">•</span>
+                            <div className="flex items-center gap-2">
+                                <span className="text-lg">🚀</span>
+                                <span>Launching Very Soon</span>
+                            </div>
+                        </div>
+                    </div>
+                </motion.section>
 
-                {/* Instagram */}
-                <a
-                    href="https://www.instagram.com/filmiway.official/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Follow us on Instagram"
-                    className="text-gray-400 hover:text-pink-500 transition-colors duration-300"
-                >
-                    <svg className="w-7 h-7 sm:w-8 sm:h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                    </svg>
-                </a>
+                <footer className="bg-gradient-to-t from-gray-900 to-black py-12 border-t border-gray-800 select-none">
+                    <div className="container mx-auto px-4 sm:px-6">
+                        <div className="text-center">
+                            {/* Logo */}
+                            <div className="flex items-center justify-center mb-6">
+                                <div className="w-32 h-16 sm:w-40 sm:h-20 flex items-center justify-center">
+                                    <Image
+                                        src="/filmiway-logo.svg"
+                                        alt="Filmiway"
+                                        width={160}
+                                        height={80}
+                                        className="w-full h-full object-contain"
+                                        draggable={false}
+                                    />
+                                </div>
+                            </div>
 
-                {/* Facebook */}
-                <a
-                    href="https://www.facebook.com/profile.php?id=61583157321288"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Follow us on Facebook"
-                    className="text-gray-400 hover:text-blue-500 transition-colors duration-300"
-                >
-                    <svg className="w-7 h-7 sm:w-8 sm:h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                    </svg>
-                </a>
+                            {/* Description */}
+                            <p className="text-gray-400 mb-6 max-w-md mx-auto text-sm">
+                                Your complete movie discovery platform for amazing films.
+                            </p>
 
-                {/* X (Twitter) */}
-                <a
-                    href="https://x.com/FilmiwayMedia"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Follow us on X"
-                    className="text-gray-400 hover:text-white transition-colors duration-300"
-                >
-                    <svg className="w-7 h-7 sm:w-8 sm:h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                    </svg>
-                </a>
-            </div>
+                            {/* Social Media Icons */}
+                            <div className="flex items-center justify-center gap-6 mb-8">
+                                {/* YouTube */}
+                                <a
+                                    href="https://youtube.com/@filmiway.official"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="Follow us on YouTube"
+                                    className="text-gray-400 hover:text-red-500 transition-colors duration-300"
+                                >
+                                    <svg className="w-7 h-7 sm:w-8 sm:h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                                    </svg>
+                                </a>
 
-            {/* Powered by TMDB */}
-            <div className="mb-6 pt-4 border-t border-gray-900/50">
-                <div className="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-4">
-                    <p className="text-gray-600 text-sm">Powered by</p>
-                    <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
-                        <Image
-                            src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg"
-                            alt="TMDB"
-                            width={50}
-                            height={20}
-                            className="h-5 w-auto"
-                        />
-                        <span className="text-blue-400 text-sm">TMDB</span>
-                    </a>
-                </div>
-            </div>
+                                {/* Instagram */}
+                                <a
+                                    href="https://www.instagram.com/filmiway.official/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="Follow us on Instagram"
+                                    className="text-gray-400 hover:text-pink-500 transition-colors duration-300"
+                                >
+                                    <svg className="w-7 h-7 sm:w-8 sm:h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                                    </svg>
+                                </a>
 
-            {/* Copyright & Links */}
-            <div className="flex flex-wrap items-center justify-center gap-4 text-gray-500 text-sm mb-4">
-                <span>&copy; 2025 Filmiway</span>
-                <span>&bull;</span>
-                <Link href="/about-us" className="hover:text-yellow-400 transition-colors">About</Link>
-                <span>&bull;</span>
-                <Link href="/privacy" className="hover:text-yellow-400 transition-colors">Privacy</Link>
-            </div>
+                                {/* Facebook */}
+                                <a
+                                    href="https://www.facebook.com/profile.php?id=61583157321288"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="Follow us on Facebook"
+                                    className="text-gray-400 hover:text-blue-500 transition-colors duration-300"
+                                >
+                                    <svg className="w-7 h-7 sm:w-8 sm:h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                                    </svg>
+                                </a>
 
-            {/* Tagline */}
-            <p className="text-gray-600 text-sm italic">Where Every Film Finds Its Way</p>
-        </div>
-    </div>
-</footer>
+                                {/* X (Twitter) */}
+                                <a
+                                    href="https://x.com/FilmiwayMedia"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="Follow us on X"
+                                    className="text-gray-400 hover:text-white transition-colors duration-300"
+                                >
+                                    <svg className="w-7 h-7 sm:w-8 sm:h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                                    </svg>
+                                </a>
+                            </div>
 
+                            {/* Powered by TMDB */}
+                            <div className="mb-6 pt-4 border-t border-gray-900/50">
+                                <div className="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-4">
+                                    <p className="text-gray-600 text-sm">Powered by</p>
+                                    <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
+                                        <Image
+                                            src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg"
+                                            alt="TMDB"
+                                            width={50}
+                                            height={20}
+                                            className="h-5 w-auto"
+                                        />
+                                        <span className="text-blue-400 text-sm">TMDB</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            {/* Copyright & Links */}
+                            <div className="flex flex-wrap items-center justify-center gap-4 text-gray-500 text-sm mb-4">
+                                <span>&copy; 2025 Filmiway</span>
+                                <span>&bull;</span>
+                                <Link href="/about-us" className="hover:text-yellow-400 transition-colors">About</Link>
+                                <span>&bull;</span>
+                                <Link href="/privacy" className="hover:text-yellow-400 transition-colors">Privacy</Link>
+                            </div>
+
+                            {/* Tagline */}
+                            <p className="text-gray-600 text-sm italic">Where Every Film Finds Its Way</p>
+                        </div>
+                    </div>
+                </footer>
             </div>
         </>
     );
 };
+
 
 export default FilmiwayHomepage;
