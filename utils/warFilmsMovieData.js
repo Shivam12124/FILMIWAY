@@ -1,4 +1,4 @@
-// utils/warFilmsMovieData.js - 10 BEST WAR FILMS OF ALL TIME 🎬 WITH SENSITIVE CONTENT
+// utils/warFilmsMovieData.js - 10 BEST WAR FILMS OF ALL TIME 🎬 WITH SENSITIVE CONTENT & FIXES
 
 export const WAR_FILMS = [
   {
@@ -349,7 +349,24 @@ export const COMPLETE_WAR_FILMS_DATABASE = Object.fromEntries(
   WAR_FILMS.map(m => [m.tmdbId, m])
 );
 
+// ✅ FIX 1: ADD SENSITIVE_TIMELINES EXPORT (Consistent with SciFi)
+export const SENSITIVE_TIMELINES = {};
+WAR_FILMS.forEach(movie => {
+  SENSITIVE_TIMELINES[movie.tmdbId] = {
+    scenes: movie.sensitiveScenes.map(scene => ({
+      start: scene.start,
+      end: scene.end,
+      type: scene.description.toLowerCase().includes('nudity') ? 'Nudity' : 
+           scene.description.toLowerCase().includes('sexual') ? 'Sexual Content' : 
+           'Violence/Gore',
+      severity: scene.description.toLowerCase().includes('graphic') ? 'High' : 'Moderate',
+      description: scene.description
+    }))
+  };
+});
 
+// ✅ FIX 2: EXPORT AS COMPLETE_MOVIE_DATABASE (Fixes Build Error)
+export const COMPLETE_MOVIE_DATABASE = COMPLETE_WAR_FILMS_DATABASE;
 export const WAR_FILMS_DATABASE = COMPLETE_WAR_FILMS_DATABASE;
 
 export default COMPLETE_WAR_FILMS_DATABASE;

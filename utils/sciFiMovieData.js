@@ -331,15 +331,28 @@ export const SCI_FI_MOVIES = [
   }
 ];
 
-
 // Build object map by tmdbId
 export const COMPLETE_SCI_FI_DATABASE = Object.fromEntries(
   SCI_FI_MOVIES.map(m => [m.tmdbId, m])
 );
 
+// ✅ AUTOMATICALLY GENERATE SENSITIVE_TIMELINES FROM MOVIE DATA
+// This fixes the "Attempted import error: 'SENSITIVE_TIMELINES' is not exported" crash
+export const SENSITIVE_TIMELINES = {};
+SCI_FI_MOVIES.forEach(movie => {
+  SENSITIVE_TIMELINES[movie.tmdbId] = {
+    scenes: movie.sensitiveScenes.map(scene => ({
+      start: scene.start,
+      end: scene.end,
+      type: scene.description.toLowerCase().includes('nudity') ? 'Nudity' : 
+           scene.description.toLowerCase().includes('kissing') ? 'Kissing' : 'Other',
+      severity: scene.description.toLowerCase().includes('nudity') ? 'Moderate' : 'Mild',
+      description: scene.description
+    }))
+  };
+});
 
 // Export as named export for compatibility
 export const SCI_FI_DATABASE = COMPLETE_SCI_FI_DATABASE;
-
 
 export default COMPLETE_SCI_FI_DATABASE;
