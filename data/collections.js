@@ -474,6 +474,87 @@ export const COLLECTIONS = {
     }
   },
 
+ // 🚀 MOVIES LIKE THE MATRIX COLLECTION (ADD THIS)
+'movies-like-the-matrix': {
+  slug: 'movies-like-the-matrix',
+  title: 'Movies Like The Matrix',
+  subtitle: 'Cyberpunk Reality-Bending Masterpieces',
+  description: 'The ultimate collection of films like The Matrix—simulated realities, digital consciousness, and awakening from illusion.',
+  emoji: '🔴',
+  theme: 'emerald',
+  primaryColor: '#10b981',
+  secondaryColor: '#059669',
+  accentColor: '#047857',
+  gradientFrom: 'from-emerald-500',
+  gradientTo: 'to-teal-600',
+  category: 'matrix',
+  tags: ['matrix', 'cyberpunk', 'simulation', 'reality-bending', 'sci-fi', 'digital-consciousness', 'awakening'],
+
+  metaTitle: 'Top 10 Movies Like The Matrix (2025) | Reality-Bending Films',
+  metaDescription: 'Discover the best movies like The Matrix ranked by simulation complexity—from cyberpunk classics to digital awakening masterpieces.',
+  metaKeywords: 'movies like the matrix, cyberpunk movies, simulation theory films, dark city, inception, thirteenth floor, existenz',
+
+  stats: {
+    totalMovies: 10,
+    averageRating: 8.4,
+    totalWatchtime: '22 hours 45 minutes',
+    averageRealityScore: 92,
+    mostComplex: 'The Matrix (98/100)',
+    newestMovie: 'Blade Runner 2049 (2017)',
+    oldestMovie: 'Dark City (1998)'
+  },
+
+  movies: [
+    'tt0118929',  // Dark City (1998)
+    'tt1375666',  // Inception (2010)
+    'tt0139809',  // The Thirteenth Floor (1999)
+    'tt0120663',  // eXistenZ (1999)
+    'tt0945513',  // Source Code (2011)
+    'tt0181689',  // Minority Report (2002)
+    'tt6499752',  // Upgrade (2018)
+    'tt0100802',  // Total Recall (1990)
+    'tt1856101',  // Blade Runner 2049 (2017)
+    'tt1631867'   // Edge of Tomorrow (2014)
+  ],
+
+  badges: [
+    { label: 'Reality Distortion', desc: 'Simulation-breaking narratives' },
+    { label: 'Cyberpunk Classics', desc: 'Digital world masterpieces' },
+    { label: 'Awakening Ranked', desc: 'Ranked by reality distortion' }
+  ],
+
+  featured: {
+    hero: {
+      title: 'The Matrix',
+      subtitle: 'Take the Red Pill',
+      description: 'The groundbreaking cyberpunk masterpiece that redefined reality, choice, and digital consciousness for modern cinema.',
+      poster: 'https://image.tmdb.org/t/p/w500/mc1dU7MSf1u3i9S8Fz5lEvNvfAr.jpg',
+      backdrop: 'https://image.tmdb.org/t/p/w1280/tnAuBimRihohTFFr8Wki1cNPGtA.jpg',
+      realityScore: 98
+    }
+  },
+
+  relatedCollections: [
+    'best-sci-fi-movies',
+    'movies-like-inception',
+    'best-time-travel-movies'
+  ],
+
+  seo: {
+    title: 'Top 10 Movies Like The Matrix (2025) | Cyberpunk Reality Films | Filmiway',
+    description: 'The definitive collection of movies like The Matrix—cyberpunk films with simulation theory, digital consciousness, and reality-bending awakenings.',
+    keywords: 'movies like matrix, cyberpunk films, simulation movies, dark city, inception, thirteenth floor, existenz, source code',
+    canonicalUrl: 'https://filmiway.com/collection/movies-like-the-matrix',
+    ogImage: 'https://filmiway.com/images/matrix-movies-collection-og.jpg',
+    structuredData: {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      name: 'Movies Like The Matrix',
+      description: 'Expert-curated cyberpunk films ranked by reality distortion and simulation complexity',
+      numberOfItems: 10
+    }
+  }
+},
 
 
 

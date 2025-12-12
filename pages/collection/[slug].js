@@ -1,4 +1,4 @@
-// pages/collection/[slug].js - SEO OPTIMIZED WITH SURVIVAL FORMAT ✅
+// pages/collection/[slug].js - SEO OPTIMIZED WITH MATRIX FORMAT ✅
 
 import React, { useState, useEffect, useCallback } from 'react';
 import Head from 'next/head';
@@ -7,8 +7,11 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Crown, Star, MessageSquare, Volume2, VolumeX, Play, Pause, Menu, X, Home, Eye, MousePointer, TrendingUp, Users, Search, Brain, Zap, Film, Award, Mountain, Shield } from 'lucide-react';
 
-// ✅ NEW SURVIVAL FORMAT IMPORTS
+// ✅ NEW SURVIVAL FORMAT IMPORTS (MATRIX ADDED)
 import { COMPLETE_MOVIE_DATABASE as SURVIVAL_DATABASE, COMPLETE_MOVIE_DATA as SURVIVAL_DATA } from '../../utils/survivalMovieData';
+// pages/collection/[slug].js - ADD THIS IMPORT
+import { COMPLETE_MOVIE_DATABASE as MATRIX_DATABASE } from '../../utils/matrixMovieData';
+
 import { COMPLETE_MOVIE_DATABASE as INTERSTELLAR_DATABASE, COMPLETE_MOVIE_DATA as INTERSTELLAR_DATA } from '../../utils/interstellarMovieData';
 import { COMPLETE_MOVIE_DATABASE as CRIME_THRILLER_DATABASE, COMPLETE_MOVIE_DATA as CRIME_THRILLER_DATA } from '../../utils/crimeThrillerMovieData';
 import { COMPLETE_MOVIE_DATABASE as WAR_FILMS_DATABASE, COMPLETE_MOVIE_DATA as WAR_FILMS_DATA } from '../../utils/warFilmsMovieData';
@@ -33,7 +36,6 @@ import CinematicMovieCard from '../../components/CinematicMovieCard';
 import { COLLECTIONS, getAllCollectionSlugs, getCollectionBySlug } from '../../data/collections';
 import { COMPLETE_MOVIE_DATABASE, COMPLETE_MOVIE_DATA } from '../../utils/movieData';
 
-
 // Safe property getters
 const getMovieTitle = (movie) => movie?.Title || movie?.title || movie?.name || 'Unknown Movie';
 const getMovieYear = (movie) => movie?.Year || movie?.year || movie?.releaseYear || '2024';
@@ -42,6 +44,7 @@ const getMovieGenre = (movie) => {
     return typeof genre === 'string' ? genre.split(',')[0].trim() : 'Drama';
 };
 const getMovieRuntime = (movie) => movie?.Runtime || movie?.runtime || '120 min';
+
 
 // LOGO COMPONENT
 const TopLeftLogo = () => (
@@ -107,7 +110,7 @@ const CollectionPage = ({ collection, movies }) => {
         const timer = setTimeout(() => setIsLoading(false), 2500);
         return () => clearTimeout(timer);
     }, []);
-// 🔥 SEO-OPTIMIZED COLLECTION CONTENT WITH ENGAGING COPY
+// 🔥 SEO-OPTIMIZED COLLECTION CONTENT WITH MATRIX COLLECTION ADDED
 const getCollectionContent = () => {
     if (collection.slug === 'movies-like-memento') {
         return {
@@ -155,7 +158,30 @@ const getCollectionContent = () => {
                 text2: "Each film has been selected for its ability to create lasting impact—with concepts that continue revealing new layers upon repeated viewings. Your brain will thank you."
             }
         };
-    } else if (collection.slug === 'movies-like-interstellar') { // ✅ NEW INTERSTELLAR COLLECTION
+    } else if (collection.slug === 'movies-like-the-matrix') { // ✅ NEW MATRIX COLLECTION
+        return {
+            badge: "Cyberpunk Reality Cinema",
+            title: "The Matrix",
+            description: "Mind-bending cyberpunk films exploring simulated realities. Digital consciousness, reality distortion & protagonist awakening that redefine what we think about existence itself.",
+            selection: {
+                text1: "From dystopian AIs to consciousness transfers—these films explore the boundary between digital and human consciousness, asking profound questions about the nature of reality and free will.",
+                text2: "Each cyberpunk masterpiece features protagonists discovering their world is artificial, leading them through layers of deception toward uncomfortable truths about existence and control."
+            },
+            ranking: {
+                text: "Our cyber-complexity index evaluates digital world sophistication, consciousness exploration depth, and the intensity of reality distortion throughout each film.",
+                points: [
+                    "Cyber-reality complexity",
+                    "Consciousness distortion depth",
+                    "Digital world sophistication",
+                    "Awakening narrative power"
+                ]
+            },
+            experience: {
+                text1: "Whether you're seeking technological thrills or existential questioning, this collection delivers cinema's most ambitious cyberpunk experiences that blur the line between real and artificial.",
+                text2: "Each film has been selected for its ability to create lasting philosophical impact—exploring themes of free will, consciousness, and artificial reality that continue fascinating viewers long after credits roll."
+            }
+        };
+    } else if (collection.slug === 'movies-like-interstellar') {
         return {
             badge: "Space Exploration Cinema",
             title: "Interstellar",
@@ -316,8 +342,6 @@ const getCollectionContent = () => {
             text2: "Each film has been selected for its ability to maintain relentless tension throughout—while exploring the psychology of crime and creating unforgettable criminal masterminds."
         }
     };
-
-
     } else if (collection.slug === 'best-detective-thriller-movies') {
         return {
             badge: "Detective Mystery Cinema",
@@ -505,9 +529,7 @@ const getCollectionContent = () => {
     }
 };
 
-
-
-// 🔥 HEADER CONTENT WITH INTERSTELLAR ADDED
+// 🔥 HEADER CONTENT WITH MATRIX ADDED
 const getHeaderContent = () => {
     if (collection.slug === 'movies-like-memento') {
         return {
@@ -519,7 +541,12 @@ const getHeaderContent = () => {
             title: "Movies Like Inception: 10 Reality-Bending Films",
             subtitle: "Layered dreams, reality distortion & Christopher Nolan-level genius storytelling"
         };
-    } else if (collection.slug === 'movies-like-interstellar') { // ✅ NEW INTERSTELLAR HEADER
+    } else if (collection.slug === 'movies-like-the-matrix') { // ✅ NEW MATRIX HEADER
+        return {
+            title: "Movies Like The Matrix: 10 Cyberpunk Films",
+            subtitle: "Digital consciousness, simulated realities & mind-bending awakening that challenges everything"
+        };
+    } else if (collection.slug === 'movies-like-interstellar') {
         return {
             title: "Movies Like Interstellar: 10 Cerebral Space Films",
             subtitle: "Philosophical space exploration with scientific depth, emotional resonance & cosmic wonder"
@@ -597,8 +624,7 @@ const getHeaderContent = () => {
     }
 };
 
-
-// 🔥 LOADER CONTENT WITH INTERSTELLAR ADDED
+// 🔥 LOADER CONTENT WITH MATRIX ADDED
 const getLoaderContent = () => {
     if (collection?.slug === 'movies-like-memento') {
         return {
@@ -610,7 +636,12 @@ const getLoaderContent = () => {
             title: "Loading Movies Like Inception", 
             description: "Curating mind-bending sci-fi thrillers with community reviews and ratings"
         };
-    } else if (collection?.slug === 'movies-like-interstellar') { // ✅ NEW INTERSTELLAR LOADER
+    } else if (collection?.slug === 'movies-like-the-matrix') { // ✅ NEW MATRIX LOADER
+        return {
+            title: "Loading Movies Like The Matrix",
+            description: "Curating cyberpunk reality-bending films with community reviews and ratings"
+        };
+    } else if (collection?.slug === 'movies-like-interstellar') {
         return {
             title: "Loading Movies Like Interstellar",
             description: "Curating cerebral space exploration films with community reviews and ratings"
@@ -689,9 +720,7 @@ const getLoaderContent = () => {
 };
 
 
-
-
-// 🔥 STATIC META CONTENT WITH INTERSTELLAR ADDED
+// 🔥 STATIC META CONTENT WITH MATRIX ADDED ✅
 const getStaticMetaContent = () => {
     if (collection.slug === 'movies-like-memento') {
         return {
@@ -711,7 +740,16 @@ const getStaticMetaContent = () => {
             twitterTitle: "🧠 Loved Inception? These 10 Films Will Blow Your Mind",
             progressText: `of Top ${movies.length} Movies Like Inception`
         };
-    } else if (collection.slug === 'movies-like-interstellar') { // ✅ NEW INTERSTELLAR META
+    } else if (collection.slug === 'movies-like-the-matrix') { // ✅ NEW MATRIX META
+        return {
+            title: "Movies Like The Matrix: 10 Cyberpunk Films", // ✅ 47 chars
+            description: "Loved The Matrix? Explore 10 cyberpunk thrillers with digital consciousness, simulated realities & mind-bending awakening. Reality is not what it seems.", // ✅ 159 chars
+            keywords: "movies like the matrix, cyberpunk movies, sci-fi reality films, digital consciousness, simulation movies",
+            ogTitle: "Movies Like The Matrix: 10 Cyberpunk Reality-Bending Films 🔴",
+            twitterTitle: "🔴 Loved The Matrix? These 10 Cyberpunk Films Will Break Your Brain",
+            progressText: `of Top ${movies.length} Movies Like The Matrix`
+        };
+    } else if (collection.slug === 'movies-like-interstellar') {
         return {
             title: "Movies Like Interstellar: 10 Cerebral Space Films", // ✅ 54 chars
             description: "Loved Interstellar? Explore 10 philosophical space films with scientific depth, emotional resonance & cosmic wonder. From 2001 to Arrival.", // ✅ 144 chars
@@ -849,7 +887,6 @@ const getStaticMetaContent = () => {
     }
 };
 
-
     const nextMovie = useCallback(() => {
         setCurrentMovieIndex((prev) => (prev + 1) % movies.length);
     }, [movies.length]);
@@ -874,8 +911,7 @@ const getStaticMetaContent = () => {
 
     // 🔥 GET CURRENT MOVIE AND CALCULATE RANK CORRECTLY
     const currentMovie = movies[currentMovieIndex];
-const currentRank = movies.length - currentMovieIndex;
-
+    const currentRank = movies.length - currentMovieIndex;
 
     // 🔥 SMART NAVIGATION LOGIC
     const isFirstMovie = currentMovieIndex === 0;
@@ -900,68 +936,71 @@ const currentRank = movies.length - currentMovieIndex;
         }
     };
 
-const handleMovieClick = () => {
-    if (typeof window !== 'undefined') {
-        sessionStorage.setItem('currentMoviePosition', currentMovieIndex.toString());
-        sessionStorage.setItem('currentMovieRank', currentRank.toString());
-        sessionStorage.setItem('currentCollection', collection.slug);
-        sessionStorage.setItem('collectionTitle', collection.title);
-        sessionStorage.setItem('fromCollection', 'true');
+    const handleMovieClick = () => {
+        if (typeof window !== 'undefined') {
+            sessionStorage.setItem('currentMoviePosition', currentMovieIndex.toString());
+            sessionStorage.setItem('currentMovieRank', currentRank.toString());
+            sessionStorage.setItem('currentCollection', collection.slug);
+            sessionStorage.setItem('collectionTitle', collection.title);
+            sessionStorage.setItem('fromCollection', 'true');
 
-        // Clear all collection flags first
-        sessionStorage.removeItem('fromInceptionCollection');
-        sessionStorage.removeItem('fromInterstellarCollection'); // ✅ NEW
-        sessionStorage.removeItem('fromMementoCollection');
-        sessionStorage.removeItem('fromShutterIslandCollection');
-        sessionStorage.removeItem('fromSurvivalCollection');
-        sessionStorage.removeItem('fromThrillerCollection');
-        sessionStorage.removeItem('fromMysteryThrillerCollection');
-        sessionStorage.removeItem('fromDramaCollection');
-        sessionStorage.removeItem('fromDetectiveThrillerCollection');
-        sessionStorage.removeItem('fromPsychologicalThrillerCollection');
-        sessionStorage.removeItem('fromCrimeThrillerCollection');
-        sessionStorage.removeItem('fromHeistThrillerCollection');
-        sessionStorage.removeItem('fromTimeTravelCollection');
-        sessionStorage.removeItem('fromSciFiCollection');
-        sessionStorage.removeItem('fromRevengeCollection');
-        sessionStorage.removeItem('fromWarFilmsCollection');
+            // Clear all collection flags first ✅
+            sessionStorage.removeItem('fromInceptionCollection');
+            sessionStorage.removeItem('fromMementoCollection');
+            sessionStorage.removeItem('fromMatrixCollection'); // ✅ NEW MATRIX
+            sessionStorage.removeItem('fromInterstellarCollection');
+            sessionStorage.removeItem('fromShutterIslandCollection');
+            sessionStorage.removeItem('fromSurvivalCollection');
+            sessionStorage.removeItem('fromThrillerCollection');
+            sessionStorage.removeItem('fromMysteryThrillerCollection');
+            sessionStorage.removeItem('fromDramaCollection');
+            sessionStorage.removeItem('fromDetectiveThrillerCollection');
+            sessionStorage.removeItem('fromPsychologicalThrillerCollection');
+            sessionStorage.removeItem('fromCrimeThrillerCollection');
+            sessionStorage.removeItem('fromHeistThrillerCollection');
+            sessionStorage.removeItem('fromTimeTravelCollection');
+            sessionStorage.removeItem('fromSciFiCollection');
+            sessionStorage.removeItem('fromRevengeCollection');
+            sessionStorage.removeItem('fromWarFilmsCollection');
 
-        // Set appropriate collection flag
-        if (collection.slug === 'movies-like-inception') {
-            sessionStorage.setItem('fromInceptionCollection', 'true');
-        } else if (collection.slug === 'movies-like-interstellar') { // ✅ NEW
-            sessionStorage.setItem('fromInterstellarCollection', 'true');
-        } else if (collection.slug === 'movies-like-memento') {
-            sessionStorage.setItem('fromMementoCollection', 'true');
-        } else if (collection.slug === 'movies-like-shutter-island') {
-            sessionStorage.setItem('fromShutterIslandCollection', 'true');
-        } else if (collection.slug === 'best-survival-movies') {
-            sessionStorage.setItem('fromSurvivalCollection', 'true');
-        } else if (collection.slug === 'best-thriller-movies') {
-            sessionStorage.setItem('fromThrillerCollection', 'true');
-        } else if (collection.slug === 'best-mystery-thriller-movies') {
-            sessionStorage.setItem('fromMysteryThrillerCollection', 'true');
-        } else if (collection.slug === 'best-drama-movies-on-netflix') {
-            sessionStorage.setItem('fromDramaCollection', 'true');
-        } else if (collection.slug === 'best-detective-thriller-movies') {
-            sessionStorage.setItem('fromDetectiveThrillerCollection', 'true');
-        } else if (collection.slug === 'best-psychological-thriller-movies') {
-            sessionStorage.setItem('fromPsychologicalThrillerCollection', 'true');
-        } else if (collection.slug === 'best-crime-thriller-movies') {
-            sessionStorage.setItem('fromCrimeThrillerCollection', 'true');
-        } else if (collection.slug === 'best-heist-thriller-movies') {
-            sessionStorage.setItem('fromHeistThrillerCollection', 'true');
-        } else if (collection.slug === 'best-time-travel-movies') {
-            sessionStorage.setItem('fromTimeTravelCollection', 'true');
-        } else if (collection.slug === 'best-sci-fi-movies') {
-            sessionStorage.setItem('fromSciFiCollection', 'true');
-        } else if (collection.slug === 'best-revenge-movies') {
-            sessionStorage.setItem('fromRevengeCollection', 'true');
-        } else if (collection.slug === 'best-war-films') {
-            sessionStorage.setItem('fromWarFilmsCollection', 'true');
+            // Set appropriate collection flag ✅
+            if (collection.slug === 'movies-like-inception') {
+                sessionStorage.setItem('fromInceptionCollection', 'true');
+            } else if (collection.slug === 'movies-like-memento') {
+                sessionStorage.setItem('fromMementoCollection', 'true');
+            } else if (collection.slug === 'movies-like-the-matrix') { // ✅ NEW MATRIX
+                sessionStorage.setItem('fromMatrixCollection', 'true');
+            } else if (collection.slug === 'movies-like-interstellar') {
+                sessionStorage.setItem('fromInterstellarCollection', 'true');
+            } else if (collection.slug === 'movies-like-shutter-island') {
+                sessionStorage.setItem('fromShutterIslandCollection', 'true');
+            } else if (collection.slug === 'best-survival-movies') {
+                sessionStorage.setItem('fromSurvivalCollection', 'true');
+            } else if (collection.slug === 'best-thriller-movies') {
+                sessionStorage.setItem('fromThrillerCollection', 'true');
+            } else if (collection.slug === 'best-mystery-thriller-movies') {
+                sessionStorage.setItem('fromMysteryThrillerCollection', 'true');
+            } else if (collection.slug === 'best-drama-movies-on-netflix') {
+                sessionStorage.setItem('fromDramaCollection', 'true');
+            } else if (collection.slug === 'best-detective-thriller-movies') {
+                sessionStorage.setItem('fromDetectiveThrillerCollection', 'true');
+            } else if (collection.slug === 'best-psychological-thriller-movies') {
+                sessionStorage.setItem('fromPsychologicalThrillerCollection', 'true');
+            } else if (collection.slug === 'best-crime-thriller-movies') {
+                sessionStorage.setItem('fromCrimeThrillerCollection', 'true');
+            } else if (collection.slug === 'best-heist-thriller-movies') {
+                sessionStorage.setItem('fromHeistThrillerCollection', 'true');
+            } else if (collection.slug === 'best-time-travel-movies') {
+                sessionStorage.setItem('fromTimeTravelCollection', 'true');
+            } else if (collection.slug === 'best-sci-fi-movies') {
+                sessionStorage.setItem('fromSciFiCollection', 'true');
+            } else if (collection.slug === 'best-revenge-movies') {
+                sessionStorage.setItem('fromRevengeCollection', 'true');
+            } else if (collection.slug === 'best-war-films') {
+                sessionStorage.setItem('fromWarFilmsCollection', 'true');
+            }
         }
-    }
-};
+    };
 
 
 
@@ -1359,7 +1398,9 @@ return (
                                     ? 'movies/survival/'
                                     : collection?.slug === 'movies-like-inception'
                                     ? 'movies/like-inception/'
-                                    : collection?.slug === 'movies-like-interstellar' // ✅ NEW
+                                    : collection?.slug === 'movies-like-the-matrix' // ✅ NEW MATRIX
+                                    ? 'movies/matrix/'
+                                    : collection?.slug === 'movies-like-interstellar'
                                     ? 'movies/interstellar/'
                                     : collection?.slug === 'movies-like-memento'
                                     ? 'movies/like-memento/'
@@ -1487,56 +1528,58 @@ return (
                                 </motion.button>
                             )}
 
-{/* 🔥 FIXED FOR NEXT.JS 15 - WITH INTERSTELLAR COLLECTION URL */}
-<AnimatePresence mode="wait">
-  {currentMovie && (
-    <Link
-      href={
-        collection.slug === 'movies-like-inception'
-          ? `/movies/like-inception/${currentMovie.imdbID}`
-          : collection.slug === 'movies-like-interstellar' // ✅ NEW
-          ? `/movies/interstellar/${currentMovie.imdbID}`
-          : collection.slug === 'movies-like-memento'
-          ? `/movies/like-memento/${currentMovie.imdbID}`
-          : collection.slug === 'movies-like-shutter-island'
-          ? `/movies/like-shutter-island/${currentMovie.imdbID}`
-          : collection.slug === 'best-survival-movies'
-          ? `/movies/survival/${currentMovie.imdbID}`
-          : collection.slug === 'best-thriller-movies'
-          ? `/movies/thriller/${currentMovie.imdbID}`
-          : collection.slug === 'best-mystery-thriller-movies'
-          ? `/movies/mystery-thriller/${currentMovie.imdbID}`
-          : collection.slug === 'best-detective-thriller-movies'
-          ? `/movies/detective-thriller/${currentMovie.imdbID}`
-          : collection.slug === 'best-drama-movies-on-netflix'
-          ? `/movies/netflix/${currentMovie.imdbID}`
-          : collection.slug === 'best-psychological-thriller-movies'
-          ? `/movies/psych-thriller/${currentMovie.imdbID}`
-          : collection.slug === 'best-crime-thriller-movies'
-          ? `/movies/crime-thriller/${currentMovie.imdbID}`
-          : collection.slug === 'best-heist-thriller-movies'
-          ? `/movies/heist-thriller/${currentMovie.imdbID}`
-          : collection.slug === 'best-time-travel-movies'
-          ? `/movies/time-travel/${currentMovie.imdbID}`
-          : collection.slug === 'best-sci-fi-movies'
-          ? `/movies/sci-fi/${currentMovie.imdbID}`
-          : collection.slug === 'best-revenge-movies'
-          ? `/movies/revenge/${currentMovie.imdbID}`
-          : collection.slug === 'best-war-films'
-          ? `/movies/war-films/${currentMovie.imdbID}`
-          : `/movies/${currentMovie.imdbID}`
-      }
-      key={currentMovieIndex}
-      onClick={handleMovieClick}
-    >
-      <CinematicMovieCard
-        movie={currentMovie}
-        rank={currentRank}
-        isActive={true}
-      />
-    </Link>
-  )}
-</AnimatePresence>
+                            {/* 🔥 FIXED FOR NEXT.JS 15 - WITH MATRIX COLLECTION URL ✅ */}
+                            <AnimatePresence mode="wait">
+                                {currentMovie && (
+                                    <Link
+                                        href={
+                                            collection.slug === 'movies-like-inception'
+                                                ? `/movies/like-inception/${currentMovie.imdbID}`
+                                                : collection.slug === 'movies-like-the-matrix' // ✅ NEW MATRIX
+                                                ? `/movies/matrix/${currentMovie.imdbID}`
+                                                : collection.slug === 'movies-like-interstellar'
+                                                ? `/movies/interstellar/${currentMovie.imdbID}`
+                                                : collection.slug === 'movies-like-memento'
+                                                ? `/movies/like-memento/${currentMovie.imdbID}`
+                                                : collection.slug === 'movies-like-shutter-island'
+                                                ? `/movies/like-shutter-island/${currentMovie.imdbID}`
+                                                : collection.slug === 'best-survival-movies'
+                                                ? `/movies/survival/${currentMovie.imdbID}`
+                                                : collection.slug === 'best-thriller-movies'
+                                                ? `/movies/thriller/${currentMovie.imdbID}`
+                                                : collection.slug === 'best-mystery-thriller-movies'
+                                                ? `/movies/mystery-thriller/${currentMovie.imdbID}`
+                                                : collection.slug === 'best-detective-thriller-movies'
+                                                ? `/movies/detective-thriller/${currentMovie.imdbID}`
+                                                : collection.slug === 'best-drama-movies-on-netflix'
+                                                ? `/movies/netflix/${currentMovie.imdbID}`
+                                                : collection.slug === 'best-psychological-thriller-movies'
+                                                ? `/movies/psych-thriller/${currentMovie.imdbID}`
+                                                : collection.slug === 'best-crime-thriller-movies'
+                                                ? `/movies/crime-thriller/${currentMovie.imdbID}`
+                                                : collection.slug === 'best-heist-thriller-movies'
+                                                ? `/movies/heist-thriller/${currentMovie.imdbID}`
+                                                : collection.slug === 'best-time-travel-movies'
+                                                ? `/movies/time-travel/${currentMovie.imdbID}`
+                                                : collection.slug === 'best-sci-fi-movies'
+                                                ? `/movies/sci-fi/${currentMovie.imdbID}`
+                                                : collection.slug === 'best-revenge-movies'
+                                                ? `/movies/revenge/${currentMovie.imdbID}`
+                                                : collection.slug === 'best-war-films'
+                                                ? `/movies/war-films/${currentMovie.imdbID}`
+                                                : `/movies/${currentMovie.imdbID}`
+                                        }
+                                        key={currentMovieIndex}
+                                        onClick={handleMovieClick}
+                                    >
+                                        <CinematicMovieCard
+                                            movie={currentMovie}
+                                            rank={currentRank}
+                                            isActive={true}
+                                        />
+                                    </Link>
+                                )}
+                            </AnimatePresence>
 
                         </div>
 
@@ -1563,7 +1606,9 @@ return (
                                         let detailPageUrl;
                                         if (collection.slug === 'movies-like-inception') {
                                             detailPageUrl = `/movies/like-inception/${currentMovie.imdbID}`;
-                                        } else if (collection.slug === 'movies-like-interstellar') { // ✅ NEW
+                                        } else if (collection.slug === 'movies-like-the-matrix') { // ✅ NEW MATRIX
+                                            detailPageUrl = `/movies/matrix/${currentMovie.imdbID}`;
+                                        } else if (collection.slug === 'movies-like-interstellar') {
                                             detailPageUrl = `/movies/interstellar/${currentMovie.imdbID}`;
                                         } else if (collection.slug === 'movies-like-memento') {
                                             detailPageUrl = `/movies/like-memento/${currentMovie.imdbID}`;
@@ -1713,7 +1758,7 @@ return (
 );
 };
 
-// 🔥 SSG FUNCTIONS WITH INTERSTELLAR COLLECTION ADDED 🚀
+// 🔥 SSG FUNCTIONS WITH MATRIX COLLECTION ADDED 🔴
 // ✅ CORRECT getStaticPaths() - generates all collections
 export async function getStaticPaths() {
     const slugs = getAllCollectionSlugs();
@@ -1730,7 +1775,7 @@ export async function getStaticPaths() {
     };
 }
 
-// ✅ CORRECT getStaticProps() - maps correct database to each collection WITH INTERSTELLAR
+// ✅ CORRECT getStaticProps() - maps correct database to each collection WITH MATRIX
 export async function getStaticProps({ params }) {
     const slug = params.slug;
     const collection = getCollectionBySlug(slug);
@@ -1746,8 +1791,20 @@ export async function getStaticProps({ params }) {
         case 'best-survival-movies':
             movieDatabase = SURVIVAL_DATABASE;
             break;
-        case 'movies-like-interstellar': // ✅ NEW
+        case 'movies-like-the-matrix': // ✅ NEW MATRIX
+            movieDatabase = MATRIX_DATABASE;
+            break;
+        case 'movies-like-interstellar':
             movieDatabase = INTERSTELLAR_DATABASE;
+            break;
+        case 'movies-like-inception': // ✅ Added for completeness
+            movieDatabase = INCEPTION_DATABASE || COMPLETE_MOVIE_DATABASE;
+            break;
+        case 'movies-like-memento': // ✅ Added for completeness
+            movieDatabase = COMPLETE_MOVIE_DATABASE;
+            break;
+        case 'movies-like-shutter-island': // ✅ Added for completeness
+            movieDatabase = COMPLETE_MOVIE_DATABASE;
             break;
         case 'best-thriller-movies':
             movieDatabase = THRILLER_MOVIES;
@@ -1764,10 +1821,9 @@ export async function getStaticProps({ params }) {
         case 'best-psychological-thriller-movies':
             movieDatabase = PSYCH_THRILLER_MOVIES;
             break;
-case 'best-crime-thriller-movies':
-    movieDatabase = CRIME_THRILLER_DATABASE;  // ✅ ADD THIS
-    break;
-
+        case 'best-crime-thriller-movies':
+            movieDatabase = CRIME_THRILLER_DATABASE;
+            break;
         case 'best-heist-thriller-movies':
             movieDatabase = HEIST_THRILLER_MOVIES;
             break;
@@ -1784,7 +1840,6 @@ case 'best-crime-thriller-movies':
             movieDatabase = WAR_FILMS_DATABASE;
             break;
         default:
-            // movies-like-inception, movies-like-memento, movies-like-shutter-island
             movieDatabase = COMPLETE_MOVIE_DATABASE;
     }
 

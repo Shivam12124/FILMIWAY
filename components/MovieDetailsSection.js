@@ -9,31 +9,39 @@ import {
   STRATEGIC_QUOTES as SURVIVAL_QUOTES,
   SENSITIVE_TIMELINES
 } from '../utils/survivalMovieData';
+// ✅ ADD THIS IMPORT (line 1-5)
+// components/MovieDetailsSection.js - ENSURE THIS IMPORT
+import { 
+  COMPLETE_MOVIE_DATA as MATRIX_MOVIE_DATA, 
+  STRATEGIC_QUOTES as MATRIX_QUOTES, 
+  SENSITIVE_TIMELINES as MATRIX_SENSITIVE_TIMELINES 
+} from '../utils/matrixMovieData';
+
+
+
 import {
   COMPLETE_MOVIE_DATA as INTERSTELLAR_MOVIE_DATA,
   STRATEGIC_QUOTES as INTERSTELLAR_QUOTES,
   SENSITIVE_TIMELINES as INTERSTELLAR_TIMELINES
 } from '../utils/interstellarMovieData';
 
+// ✅ CORRECT FORMAT (like Survival Collection)
+import {
+  COMPLETE_MOVIE_DATA as CRIME_THRILLER_MOVIE_DATA,
+  STRATEGIC_QUOTES as CRIME_THRILLER_QUOTES,
+  SENSITIVE_TIMELINES as CRIME_THRILLER_SENSITIVE_TIMELINES
+} from '../utils/crimeThrillerMovieData';
+
 import COMPLETE_THRILLER_DATABASE from '../utils/thrillerMovieData';
 import MYSTERY_THRILLER_DATABASE from '../utils/mysteryThrillerMovieData';
 import dramaRoutes from '../utils/dramaMovieRoutes';
 import DETECTIVE_THRILLER_DATABASE from '../utils/detectiveThrillerMovieData';
 import COMPLETE_PSYCH_THRILLER_DATABASE from '../utils/psychologicalThrillerMovieData';
-// ✅ CORRECT FORMAT (like Survival Collection)
-import {
-  COMPLETE_MOVIE_DATA as CRIME_THRILLER_MOVIE_DATA,
-  STRATEGIC_QUOTES as CRIME_THRILLER_QUOTES,
-  SENSITIVE_TIMELINES as CRIME_THRILLER_SENSITIVE_TIMELINES  // ✅ ADD THIS
-} from '../utils/crimeThrillerMovieData';
-
-
 import HEIST_THRILLER_DATABASE from '../utils/heistThrillerMovieData';
 import TIME_TRAVEL_DATABASE from '../utils/timeTravelMovieData';
 import { SCI_FI_MOVIES, SENSITIVE_TIMELINES as SCI_FI_SENSITIVE_TIMELINES } from '../utils/sciFiMovieData';
-// ✅ SCI-FI IMPORT ADDED
-import { REVENGE_MOVIES } from '../utils/revengeMovieData';  // ✅ REVENGE IMPORT ADDED
-import { WAR_FILMS_DATABASE } from '../utils/warFilmsMovieData';  // ✅ WAR FILMS IMPORT ADDED
+import { REVENGE_MOVIES } from '../utils/revengeMovieData';
+import { WAR_FILMS_DATABASE } from '../utils/warFilmsMovieData';
 
 const DRAMA_MOVIE_DATA = dramaRoutes.COMPLETE_MOVIE_DATABASE;
 
@@ -65,10 +73,11 @@ import PsychThrillerSEOFAQSection from './PsychThrillerSEOFAQSection';
 import CrimeThrillerSEOFAQSection from './CrimeThrillerSEOFAQSection';
 import HeistThrillerSEOFAQSection from './HeistThrillerSEOFAQSection';
 import TimeTravelSEOFAQSection from './TimeTravelSEOFAQSection';
-import SciFiSEOFAQSection from './SciFiSEOFAQSection';  // ✅ SCI-FI FAQ IMPORT ADDED
-import RevengeMovieSEOFAQSection from './RevengeMovieSEOFAQSection';  // ✅ REVENGE FAQ IMPORT ADDED
-import WarFilmsSEOFAQSection from './WarFilmsSEOFAQSection';  // ✅ WAR FAQ IMPORT ADDED
+import SciFiSEOFAQSection from './SciFiSEOFAQSection';
+import RevengeMovieSEOFAQSection from './RevengeMovieSEOFAQSection';
+import WarFilmsSEOFAQSection from './WarFilmsSEOFAQSection';
 import InterstellarSEOFAQSection from './InterstellarSEOFAQSection';
+import MatrixSEOFAQSection from './MatrixSEOFAQSection'; // ✅ NEW MATRIX FAQ
 
 const MovieDetailsSection = React.memo(({
   movie,
@@ -76,6 +85,7 @@ const MovieDetailsSection = React.memo(({
   fromShutterIslandCollection,
   fromInceptionCollection,
   fromSurvivalCollection,
+  fromMatrixCollection, // ✅ NEW MATRIX FLAG
   fromInterstellarCollection,
   fromDramaCollection,
   fromPsychologicalThrillerCollection,
@@ -85,11 +95,10 @@ const MovieDetailsSection = React.memo(({
   fromCrimeThrillerCollection,
   fromHeistThrillerCollection,
   fromTimeTravelCollection,
-  fromSciFiCollection,   // ✅ SCI-FI FLAG ADDED
-  fromRevengeCollection, // ✅ REVENGE FLAG ADDED
-  fromWarFilmsCollection // ✅ WAR FLAG ADDED
+  fromSciFiCollection,
+  fromRevengeCollection,
+  fromWarFilmsCollection
 }) => {
-
 
 
  if (!movie) return null;
@@ -160,8 +169,10 @@ const getMysteryThrillerMovieInfo = () => {
   return MYSTERY_THRILLER_DATABASE[movie.tmdbId] || null;
 };
 
-// ✅ GET MOVIE INFO FROM CORRECT COLLECTION (REVENGE & WAR FILMS ADDED)
-const movieInfo = fromRevengeCollection
+// ✅ GET MOVIE INFO FROM CORRECT COLLECTION (MATRIX ADDED)
+const movieInfo = fromMatrixCollection           // ✅ NEW MATRIX (TOP PRIORITY)
+  ? safeLookup(MATRIX_MOVIE_DATA, movie.tmdbId)  // ✅ SIMPLE WAY (matches Interstellar/Survival)
+  : fromRevengeCollection
   ? getRevengeMovieInfo()
   : fromWarFilmsCollection
   ? getWarFilmsMovieInfo()
@@ -171,9 +182,8 @@ const movieInfo = fromRevengeCollection
   ? getTimeTravelMovieInfo()
   : fromHeistThrillerCollection
   ? getHeistThrillerMovieInfo()
-: fromCrimeThrillerCollection  // ✅ SIMPLE WAY
-? safeLookup(CRIME_THRILLER_MOVIE_DATA, movie.tmdbId)  // ✅ USE THE ALIAS NAME
-
+  : fromCrimeThrillerCollection
+  ? safeLookup(CRIME_THRILLER_MOVIE_DATA, movie.tmdbId)
   : fromDetectiveThrillerCollection
   ? getDetectiveThrillerMovieInfo()
   : fromMysteryThrillerCollection
@@ -182,13 +192,14 @@ const movieInfo = fromRevengeCollection
   ? getPsychologicalThrillerMovieInfo()
   : fromThrillerCollection
   ? getThrillerMovieInfo()
-  : fromInterstellarCollection  // ✅ SIMPLE WAY
+  : fromInterstellarCollection
   ? safeLookup(INTERSTELLAR_MOVIE_DATA, movie.tmdbId)
   : fromSurvivalCollection
   ? safeLookup(SURVIVAL_MOVIE_DATA, movie.tmdbId)
   : fromDramaCollection
   ? safeLookup(DRAMA_MOVIE_DATA, movie.tmdbId)
   : safeLookup(COMPLETE_MOVIE_DATA, movie.tmdbId);
+
 
 
 // ✅ DEFAULT FALLBACK DATA
@@ -201,7 +212,7 @@ const getMovieSpecificData = (title) => ({
   scenes: [
     { time: 20, intensity: 60, label: 'Opening', color: '#92400e' },
     { time: 50, intensity: 75, label: 'Conflict', color: '#ca8a04' },
-    { time: 80, intensity: 85, label: 'Climax', color: '#eab308' },
+    { time: 80, intensity: 85, label: 'Climax', color: '#ea6208ff' },
     { time: 100, intensity: 90, label: 'Resolution', color: '#facc15' },
     { time: 120, intensity: 95, label: 'Revelation', color: '#fde047' }
   ],
@@ -227,15 +238,16 @@ const budget = safeMovieInfo.budget || 'N/A';
 const rating = safeMovieInfo.rating || movie.imdbRating || 7.5;
 
 const sensitiveScenes = safeMovieInfo.sensitiveScenes 
+  || MATRIX_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes // ✅ NEW MATRIX
   || SCI_FI_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
   || CRIME_THRILLER_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
-  || INTERSTELLAR_TIMELINES?.[movie?.tmdbId]?.scenes
+  || INTERSTELLAR_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes // ✅ Fixed naming
   || SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
   || [];
 
-
-
-const quote = fromCrimeThrillerCollection
+const quote = fromMatrixCollection // ✅ NEW MATRIX
+  ? MATRIX_QUOTES?.[movie.tmdbId] || ''
+  : fromCrimeThrillerCollection
   ? CRIME_THRILLER_QUOTES?.[movie.tmdbId] || ''
   : fromMysteryThrillerCollection
   ? safeMovieInfo.synopsis || ''
@@ -246,10 +258,10 @@ const quote = fromCrimeThrillerCollection
   : fromSurvivalCollection
   ? SURVIVAL_QUOTES?.[movie.tmdbId] || ''
   : STRATEGIC_QUOTES?.[movie.tmdbId] || '';
-;
 
-
-const displayIndex = fromRevengeCollection
+const displayIndex = fromMatrixCollection // ✅ NEW MATRIX
+  ? safeMovieInfo.matrixRealityIndex ?? null
+  : fromRevengeCollection
   ? safeMovieInfo.revengeIntensity ?? null
   : fromWarFilmsCollection
   ? safeMovieInfo.warIntensity ?? null
@@ -257,7 +269,7 @@ const displayIndex = fromRevengeCollection
   ? safeMovieInfo.sciFiComplexity ?? null
   : fromInterstellarCollection
   ? safeMovieInfo.sciFiComplexity ?? null
-  : fromCrimeThrillerCollection  // ✅ ADD THIS
+  : fromCrimeThrillerCollection
   ? safeMovieInfo.suspenseIntensity ?? null
   : fromMysteryThrillerCollection
   ? safeMovieInfo.mysteryComplexity ?? null
@@ -266,7 +278,10 @@ const displayIndex = fromRevengeCollection
   : fromSurvivalCollection
   ? safeMovieInfo.survivabilityIndex ?? null
   : safeMovieInfo.mindBendingIndex ?? null;
-const scoreValue = fromRevengeCollection
+
+const scoreValue = fromMatrixCollection // ✅ NEW MATRIX
+  ? movie.matrixRealityIndex ?? safeMovieInfo.matrixRealityIndex ?? 0
+  : fromRevengeCollection
   ? movie.revengeIntensity ?? safeMovieInfo.revengeIntensity ?? 0
   : fromWarFilmsCollection
   ? movie.warIntensity ?? safeMovieInfo.warIntensity ?? 0
@@ -296,8 +311,8 @@ const scoreValue = fromRevengeCollection
   ? movie.mindBendingIndex ?? safeMovieInfo.mindBendingIndex ?? 0
   : safeMovieInfo.mindBendingIndex ?? 0;
 
-
 const complexityLevel = safeMovieInfo.complexityLevel || 'HIGH';
+
 
 const getComplexityColor = (level) => {
   if (fromRevengeCollection) {  // ✅ REVENGE ADDED
@@ -320,23 +335,25 @@ const getComplexityColor = (level) => {
 
   
 
-  if (fromSciFiCollection) {
+    if (fromHeistThrillerCollection) {
     switch (level) {
-      case 'EXTREME': return '#0891b2';
-      case 'HIGH': return '#06b6d4';
-      case 'MEDIUM': return '#22d3ee';
+      case 'EXTREME': return '#ea0808ff';
+      case 'HIGH': return '#f79400ff';
+      case 'MEDIUM': return '#bb9e0cff';
       default: return '#6b7280';
     }
   }
+  
 
-  if (fromTimeTravelCollection) {
+  if (fromHeistThrillerCollection) {
     switch (level) {
-      case 'EXTREME': return '#0891b2';
-      case 'HIGH': return '#06b6d4';
-      case 'MEDIUM': return '#22d3ee';
+      case 'EXTREME': return '#ea0808ff';
+      case 'HIGH': return '#f79400ff';
+      case 'MEDIUM': return '#bb9e0cff';
       default: return '#6b7280';
     }
   }
+  
 
   if (fromHeistThrillerCollection) {
     switch (level) {
@@ -396,8 +413,8 @@ const getComplexityColor = (level) => {
   
   switch (level) {
     case 'EXTREME': return '#ea0808ff';
-    case 'HIGH': return '#f79400ff';
-    case 'MEDIUM': return '#bb9e0cff';
+    case 'HIGH': return '#eb7a09ff';
+    case 'MEDIUM': return '#8d7708ff';
     default: return '#6b7280';
   }
 };
@@ -458,10 +475,11 @@ const getUniqueDescription = () => {
 };
 
 const getComplexityScoreTitle = () => {
-  if (fromRevengeCollection) return 'REVENGE INTENSITY SCORE';  // ✅ REVENGE ADDED
+  if (fromMatrixCollection) return 'MATRIX REALITY SCORE'; // ✅ NEW MATRIX
+  if (fromRevengeCollection) return 'REVENGE INTENSITY SCORE';
   if (fromWarFilmsCollection) return 'WAR INTENSITY SCORE';
   if (fromSciFiCollection) return 'SCI-FI COMPLEXITY SCORE';
-  if (fromInterstellarCollection) return 'SCI-FI COMPLEXITY SCORE';  // ✅ ADD THIS
+  if (fromInterstellarCollection) return 'SCI-FI COMPLEXITY SCORE';
   if (fromTimeTravelCollection) return 'TIME TRAVEL COMPLEXITY SCORE';
   if (fromHeistThrillerCollection) return 'HEIST COMPLEXITY SCORE';
   if (fromCrimeThrillerCollection) return 'CRIME INTENSITY SCORE';
@@ -478,10 +496,11 @@ const getComplexityScoreTitle = () => {
 };
 
 const getComplexityIndexLabel = () => {
-  if (fromRevengeCollection) return 'REVENGE INTENSITY INDEX';  // ✅ REVENGE ADDED
+  if (fromMatrixCollection) return 'REALITY DISTORTION INDEX'; // ✅ NEW MATRIX
+  if (fromRevengeCollection) return 'REVENGE INTENSITY INDEX';
   if (fromWarFilmsCollection) return 'WAR INTENSITY INDEX';
   if (fromSciFiCollection) return 'SCI-FI COMPLEXITY INDEX';
-  if (fromInterstellarCollection) return 'SCI-FI COMPLEXITY INDEX';  // ✅ ADD THIS
+  if (fromInterstellarCollection) return 'SCI-FI COMPLEXITY INDEX';
   if (fromTimeTravelCollection) return 'TIME COMPLEXITY INDEX';
   if (fromHeistThrillerCollection) return 'HEIST COMPLEXITY INDEX';
   if (fromCrimeThrillerCollection) return 'CRIME INTENSITY INDEX';
@@ -498,10 +517,11 @@ const getComplexityIndexLabel = () => {
 };
 
 const getComplexityLevelLabel = () => {
-  if (fromRevengeCollection) return 'VENGEANCE BRUTALITY LEVEL';  // ✅ REVENGE ADDED
+  if (fromMatrixCollection) return 'SIMULATION DISTORTION LEVEL'; // ✅ NEW MATRIX
+  if (fromRevengeCollection) return 'VENGEANCE BRUTALITY LEVEL';
   if (fromWarFilmsCollection) return 'COMBAT REALISM LEVEL';
   if (fromSciFiCollection) return 'COSMIC COMPLEXITY LEVEL';
-   if (fromInterstellarCollection) return 'SCI-FI COMPLEXITY LEVEL';  // ✅ ADD THIS
+  if (fromInterstellarCollection) return 'SCI-FI COMPLEXITY LEVEL';
   if (fromTimeTravelCollection) return 'TEMPORAL PARADOX LEVEL';
   if (fromHeistThrillerCollection) return 'HEIST COMPLEXITY LEVEL';
   if (fromCrimeThrillerCollection) return 'CRIME COMPLEXITY LEVEL';
@@ -516,6 +536,7 @@ const getComplexityLevelLabel = () => {
   if (fromMementoCollection) return 'MEMORY DISTORTION LEVEL';
   return 'COGNITIVE DISTORTION LEVEL';
 };
+
 
 
 const getComplexityDescription = () => {
@@ -598,9 +619,10 @@ const getComplexityDescription = () => {
 };
 
 const getBorderColor = () => {
-  if (fromRevengeCollection) return 'border-red-400/40';  // ✅ REVENGE ADDED
+  if (fromMatrixCollection) return 'border-emerald-400/40'; // ✅ NEW MATRIX (green digital rain)
+  if (fromRevengeCollection) return 'border-red-400/40';
   if (fromWarFilmsCollection) return 'border-red-400/40';
-   if (fromInterstellarCollection)return 'border-cyan-400/40';  // ✅ ADD THIS
+  if (fromInterstellarCollection) return 'border-cyan-400/40';
   if (fromSciFiCollection) return 'border-cyan-400/40';
   if (fromTimeTravelCollection) return 'border-cyan-400/40';
   if (fromHeistThrillerCollection) return 'border-amber-400/40';
@@ -616,10 +638,11 @@ const getBorderColor = () => {
 };
 
 const getStarColor = () => {
-  if (fromRevengeCollection) return 'text-red-400';  // ✅ REVENGE ADDED
+  if (fromMatrixCollection) return 'text-emerald-400'; // ✅ NEW MATRIX (green digital rain)
+  if (fromRevengeCollection) return 'text-red-400';
   if (fromWarFilmsCollection) return 'text-red-400';
   if (fromSciFiCollection) return 'text-cyan-400';
-   if (fromInterstellarCollection)return 'text-cyan-400';
+  if (fromInterstellarCollection) return 'text-cyan-400';
   if (fromTimeTravelCollection) return 'text-cyan-400';
   if (fromHeistThrillerCollection) return 'text-amber-400';
   if (fromCrimeThrillerCollection) return 'text-slate-400';  
@@ -838,42 +861,44 @@ const getStarColor = () => {
 
   <RealCommentsRatingSection movie={movie} />
 
-  {/* ✅ FAQ SECTION WITH INTERSTELLAR, REVENGE, WAR, SCI-FI AND TIME TRAVEL SUPPORT */}
-  {fromRevengeCollection ? (  // ✅ REVENGE ADDED FIRST
-    <RevengeMovieSEOFAQSection movie={movie} />
-  ) : fromWarFilmsCollection ? (
-    <WarFilmsSEOFAQSection movie={movie} />
-  ) : fromSciFiCollection ? (
-    <SciFiSEOFAQSection movie={movie} />
-  ) : fromTimeTravelCollection ? (
-    <TimeTravelSEOFAQSection movie={movie} />
-  ) : fromHeistThrillerCollection ? (
-    <HeistThrillerSEOFAQSection movie={movie} />
-  ) : fromCrimeThrillerCollection ? (
-    <CrimeThrillerSEOFAQSection movie={movie} />
-  ) : fromDetectiveThrillerCollection ? (
-    <DetectiveThrillerSEOFAQSection movie={movie} />
-  ) : fromMysteryThrillerCollection ? (
-    <MysteryThrillerSEOFAQSection movie={movie} />
-  ) : fromPsychologicalThrillerCollection ? (
-    <PsychThrillerSEOFAQSection movie={movie} />
-  ) : fromThrillerCollection ? (
-    <ThrillerSEOFAQSection movie={movie} />
-  ) : fromInterstellarCollection ? (  // ✅ INTERSTELLAR ADDED
-    <InterstellarSEOFAQSection movie={movie} />
-  ) : fromSurvivalCollection ? (
-    <SurvivalSEOFAQSection movie={movie} />
-  ) : fromDramaCollection ? (
-    <DramaSEOFAQSection movie={movie} />
-  ) : fromInceptionCollection ? (
-    <SEOFAQSection movie={movie} />
-  ) : fromShutterIslandCollection ? (
-    <ShutterIslandSEOFAQSection movie={movie} />
-  ) : fromMementoCollection ? (
-    <MementoSEOFAQSection movie={movie} />
-  ) : (
-    <SEOFAQSection movie={movie} />
-  )}
+{/* ✅ FAQ SECTION WITH MATRIX, INTERSTELLAR, REVENGE, WAR, SCI-FI SUPPORT */}
+{fromMatrixCollection ? ( // ✅ NEW MATRIX (positioned with sci-fi)
+  <MatrixSEOFAQSection movie={movie} />
+) : fromRevengeCollection ? (
+  <RevengeMovieSEOFAQSection movie={movie} />
+) : fromWarFilmsCollection ? (
+  <WarFilmsSEOFAQSection movie={movie} />
+) : fromSciFiCollection ? (
+  <SciFiSEOFAQSection movie={movie} />
+) : fromTimeTravelCollection ? (
+  <TimeTravelSEOFAQSection movie={movie} />
+) : fromInterstellarCollection ? (
+  <InterstellarSEOFAQSection movie={movie} />
+) : fromHeistThrillerCollection ? (
+  <HeistThrillerSEOFAQSection movie={movie} />
+) : fromCrimeThrillerCollection ? (
+  <CrimeThrillerSEOFAQSection movie={movie} />
+) : fromDetectiveThrillerCollection ? (
+  <DetectiveThrillerSEOFAQSection movie={movie} />
+) : fromMysteryThrillerCollection ? (
+  <MysteryThrillerSEOFAQSection movie={movie} />
+) : fromPsychologicalThrillerCollection ? (
+  <PsychThrillerSEOFAQSection movie={movie} />
+) : fromThrillerCollection ? (
+  <ThrillerSEOFAQSection movie={movie} />
+) : fromSurvivalCollection ? (
+  <SurvivalSEOFAQSection movie={movie} />
+) : fromDramaCollection ? (
+  <DramaSEOFAQSection movie={movie} />
+) : fromInceptionCollection ? (
+  <SEOFAQSection movie={movie} />
+) : fromShutterIslandCollection ? (
+  <ShutterIslandSEOFAQSection movie={movie} />
+) : fromMementoCollection ? (
+  <MementoSEOFAQSection movie={movie} />
+) : (
+  <SEOFAQSection movie={movie} />
+)}
 
 
 </motion.div>

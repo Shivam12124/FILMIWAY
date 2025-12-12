@@ -70,7 +70,17 @@ const CollectionsHub = () => {
             hasSubCollections: false
         },
 
-
+{
+    id: 'matrix',
+    title: 'Movies Like The Matrix',
+    description: 'Cyberpunk masterpieces with simulated realities, digital consciousness, and reality-bending awakenings',
+    icon: Sparkles,  // ✨ Digital/matrix aesthetic
+    gradient: 'from-emerald-500 to-teal-600',  // ✅ MATRIX GREEN DIGITAL RAIN
+    movieCount: '10',
+    rating: '8.4',
+    directLink: '/collection/movies-like-the-matrix',
+    hasSubCollections: false
+},
 
 
 

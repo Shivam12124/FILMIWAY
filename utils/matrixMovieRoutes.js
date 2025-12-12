@@ -1,7 +1,6 @@
-// utils/matrixMovieRoutes.js - COMPLETELY FIXED SSG ROUTE MAPPING
-// EXACT CARBON COPY STRUCTURE OF SURVIVAL ROUTES - ADAPTED FOR MATRIX COLLECTION
+// utils/matrixMovieRoutes.js - COMPLETE ROUTE MAPPING FOR MATRIX-LIKE MOVIES
 
-import { COMPLETE_MOVIE_DATABASE } from './matrixMovieData';
+import { COMPLETE_MOVIE_DATABASE as MATRIX_MOVIE_DB } from './matrixMovieData';
 
 // ✅ GENERATE URL SLUG FROM MOVIE TITLE
 export const generateMovieSlug = (title) => {
@@ -13,36 +12,35 @@ export const generateMovieSlug = (title) => {
         .trim();
 };
 
-// ✅ COMPLETE MATRIX MOVIE SLUG MAPPING (ALL 10 FILMS) - EX MACHINA → EDGE OF TOMORROW
 export const MATRIX_MOVIE_SLUGS = {
-    // Rank 1: Dark City
-    'tt0112817': 'dark-city',
+    // Rank 1: Dark City (1998)
+    'tt0118929': 'dark-city',
     
-    // Rank 2: Inception
+    // Rank 2: Inception (2010)
     'tt1375666': 'inception',
     
-    // Rank 3: The Thirteenth Floor
-    'tt0139809': 'the-thirteenth-floor',
+    // Rank 3: Thirteenth Floor (1999)
+    'tt0139809': 'thirteenth-floor',
     
-    // Rank 4: eXistenZ
-    'tt0120663': 'existenz',
+    // Rank 4: eXistenZ (1999)
+    'tt0120907': 'existenz',
     
-    // Rank 5: Source Code
-    'tt0945513': 'source-code',
+    // Rank 5: Source Code (2011)
+    'tt1446714': 'source-code',
     
-    // Rank 6: Minority Report
+    // Rank 6: Minority Report (2002)
     'tt0181689': 'minority-report',
     
-    // Rank 7: Upgrade
+    // Rank 7: Upgrade (2018)
     'tt6499752': 'upgrade',
     
-    // Rank 8: Total Recall
+    // Rank 8: Total Recall (1990)
     'tt0100802': 'total-recall',
     
-    // Rank 9: Blade Runner 2049
+    // Rank 9: Blade Runner 2049 (2017)
     'tt1856101': 'blade-runner-2049',
     
-    // Rank 10: Edge of Tomorrow (REPLACED Ex Machina)
+    // Rank 10: Edge of Tomorrow (2014)
     'tt1631867': 'edge-of-tomorrow'
 };
 
@@ -51,12 +49,12 @@ export const SLUG_TO_IMDB = Object.fromEntries(
     Object.entries(MATRIX_MOVIE_SLUGS).map(([imdbId, slug]) => [slug, imdbId])
 );
 
-// ✅ GET MOVIE BY SLUG - FIXED
+// ✅ GET MOVIE BY SLUG
 export const getMovieBySlug = (slug) => {
     const imdbId = SLUG_TO_IMDB[slug];
     if (!imdbId) return null;
     
-    return COMPLETE_MOVIE_DATABASE.find(movie => movie.imdbID === imdbId);
+    return MATRIX_MOVIE_DB[imdbId] || null;
 };
 
 // ✅ GET MOVIE SLUG BY IMDB ID
@@ -64,13 +62,16 @@ export const getMovieSlug = (imdbId) => {
     return MATRIX_MOVIE_SLUGS[imdbId] || null;
 };
 
-// ✅ GENERATE ALL STATIC PATHS FOR MATRIX MOVIES - FIXED
+// ✅ GENERATE ALL STATIC PATHS FOR MATRIX MOVIES
 export const generateMatrixMoviePaths = () => {
-    return COMPLETE_MOVIE_DATABASE.map(movie => ({
-        params: {
-            slug: MATRIX_MOVIE_SLUGS[movie.imdbID]
-        }
-    }));
+    return Object.keys(MATRIX_MOVIE_DB).map(tmdbId => {
+        const movie = MATRIX_MOVIE_DB[tmdbId];
+        return {
+            params: {
+                slug: MATRIX_MOVIE_SLUGS[movie.imdbID] || generateMovieSlug(movie.title)
+            }
+        };
+    });
 };
 
 // ✅ MATRIX MOVIE NAVIGATION BREADCRUMBS
@@ -78,21 +79,22 @@ export const getMatrixMovieBreadcrumbs = (movie) => {
     return [
         { label: 'Home', href: '/' },
         { label: 'Collections', href: '/collection' },
-        { label: 'Reality-Bending Sci-Fi Movies', href: '/collection/best-reality-bending-movies' },
-        { label: movie.Title, href: `/collection/best-reality-bending-movies/${MATRIX_MOVIE_SLUGS[movie.imdbID]}` }
+        { label: 'Movies Like The Matrix', href: '/collection/movies-like-the-matrix' },
+        { label: movie.title, href: `/collection/movies-like-the-matrix/${MATRIX_MOVIE_SLUGS[movie.imdbID]}` }
     ];
 };
 
-// ✅ GET NEXT/PREVIOUS MATRIX MOVIE - FIXED
+// ✅ GET NEXT/PREVIOUS MATRIX MOVIE
 export const getMatrixMovieNavigation = (currentMovie) => {
-    const currentIndex = COMPLETE_MOVIE_DATABASE.findIndex(m => m.imdbID === currentMovie.imdbID);
+    const movieArray = Object.values(MATRIX_MOVIE_DB);
+    const currentIndex = movieArray.findIndex(m => m.imdbID === currentMovie.imdbID);
     
     const previousMovie = currentIndex > 0 
-        ? COMPLETE_MOVIE_DATABASE[currentIndex - 1]
+        ? movieArray[currentIndex - 1]
         : null;
         
-    const nextMovie = currentIndex < COMPLETE_MOVIE_DATABASE.length - 1
-        ? COMPLETE_MOVIE_DATABASE[currentIndex + 1]
+    const nextMovie = currentIndex < movieArray.length - 1
+        ? movieArray[currentIndex + 1]
         : null;
     
     return {
@@ -111,11 +113,12 @@ export const getMatrixMovieNavigation = (currentMovie) => {
 export const getRelatedMatrixMovies = (currentMovie, limit = 3) => {
     const currentDecade = Math.floor(currentMovie.year / 10) * 10;
     const currentGenre = currentMovie.genre;
+    const movieArray = Object.values(MATRIX_MOVIE_DB);
     
-    return COMPLETE_MOVIE_DATABASE
+    return movieArray
         .filter(movie => 
             movie.imdbID !== currentMovie.imdbID && (
-                movie.genre === currentGenre || 
+                movie.genre.includes(currentGenre.split(',')[0].trim()) || 
                 Math.floor(movie.year / 10) * 10 === currentDecade
             )
         )
@@ -126,20 +129,18 @@ export const getRelatedMatrixMovies = (currentMovie, limit = 3) => {
         }));
 };
 
-// ✅ MATRIX COLLECTION METADATA - FIXED WITH REAL DATA
+// ✅ MATRIX COLLECTION METADATA
 export const MATRIX_COLLECTION_META = {
-    title: 'Top 10 Reality-Bending Sci-Fi Movies Like The Matrix',
-    description: 'Discover 10 mind-bending reality-shifting sci-fi films ranked by complexity. From Dark City to Edge of Tomorrow - films that challenge perception.',
-    keywords: 'reality bending movies, simulation theory films, mind bending sci-fi, matrix like movies, complex sci-fi, existential sci-fi movies, edge of tomorrow, time loop movies',
-    canonicalUrl: 'https://filmiway.com/collection/best-reality-bending-movies',
+    title: 'Top 10 Movies Like The Matrix',
+    description: 'Discover mind-bending cyberpunk and sci-fi thriller films. From Dark City to Inception - philosophical cyber-noir masterpieces that explore reality and consciousness.',
+    keywords: 'movies like matrix, cyberpunk movies, philosophical sci-fi, mind-bending thrillers, best matrix-like films, cyber noir',
+    canonicalUrl: 'https://filmiway.com/collection/movies-like-the-matrix',
     ogImage: 'https://filmiway.com/images/matrix-movies-collection.jpg',
-    totalMovies: COMPLETE_MOVIE_DATABASE.length,
-    // ✅ FIXED - NOW USES REAL COMPLEXITY DATA
-    averageRealityIndex: Math.round(
-        COMPLETE_MOVIE_DATABASE.reduce((sum, movie) => {
-            const movieData = COMPLETE_MOVIE_DATA[movie.tmdbId];
-            return sum + (movieData?.realityIndex || 92); // ✅ REAL DATA - Changed to realityIndex
-        }, 0) / COMPLETE_MOVIE_DATABASE.length
+    totalMovies: Object.keys(MATRIX_MOVIE_DB).length,
+    averageComplexity: Math.round(
+        Object.values(MATRIX_MOVIE_DB).reduce((sum, movie) => {
+            return sum + (movie.sciFiComplexity || movie.complexityScore || 0);
+        }, 0) / Object.keys(MATRIX_MOVIE_DB).length
     )
 };
 
@@ -147,16 +148,16 @@ export const MATRIX_COLLECTION_META = {
 export const generateMatrixMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
     const urls = [
         {
-            url: `${baseUrl}/collection/best-reality-bending-movies`,
+            url: `${baseUrl}/collection/movies-like-the-matrix`,
             lastmod: new Date().toISOString(),
             priority: '0.8',
             changefreq: 'weekly'
         }
     ];
     
-    COMPLETE_MOVIE_DATABASE.forEach(movie => {
+    Object.values(MATRIX_MOVIE_DB).forEach(movie => {
         urls.push({
-            url: `${baseUrl}/collection/best-reality-bending-movies/${MATRIX_MOVIE_SLUGS[movie.imdbID]}`,
+            url: `${baseUrl}/collection/movies-like-the-matrix/${MATRIX_MOVIE_SLUGS[movie.imdbID]}`,
             lastmod: new Date().toISOString(),
             priority: '0.7',
             changefreq: 'monthly'
@@ -171,17 +172,18 @@ export const isValidMatrixMovieSlug = (slug) => {
     return Object.values(MATRIX_MOVIE_SLUGS).includes(slug);
 };
 
-// ✅ MATRIX MOVIE SEARCH/FILTER UTILITIES - FIXED
+// ✅ MATRIX MOVIE SEARCH/FILTER UTILITIES
 export const searchMatrixMovies = (query) => {
     const lowercaseQuery = query.toLowerCase();
+    const movieArray = Object.values(MATRIX_MOVIE_DB);
     
-    return COMPLETE_MOVIE_DATABASE
-        .filter(movie => 
-            movie.Title.toLowerCase().includes(lowercaseQuery) ||
-            movie.genre.toLowerCase().includes(lowercaseQuery) ||
-            (COMPLETE_MOVIE_DATA[movie.tmdbId]?.director || '').toLowerCase().includes(lowercaseQuery) ||
-            movie.year.toString().includes(query)
-        )
+    return movieArray
+        .filter(movie => {
+            return movie.title.toLowerCase().includes(lowercaseQuery) ||
+                movie.genre.toLowerCase().includes(lowercaseQuery) ||
+                movie.director?.toLowerCase().includes(lowercaseQuery) ||
+                movie.year.toString().includes(query);
+        })
         .map(movie => ({
             ...movie,
             slug: MATRIX_MOVIE_SLUGS[movie.imdbID]
@@ -189,87 +191,94 @@ export const searchMatrixMovies = (query) => {
 };
 
 export const filterMatrixMoviesByGenre = (genre) => {
-    if (genre === 'All') return COMPLETE_MOVIE_DATABASE;
+    if (genre === 'All') return Object.values(MATRIX_MOVIE_DB);
     
-    return COMPLETE_MOVIE_DATABASE
-        .filter(movie => movie.genre === genre)
+    const movieArray = Object.values(MATRIX_MOVIE_DB);
+    return movieArray
+        .filter(movie => movie.genre.includes(genre))
         .map(movie => ({
             ...movie,
             slug: MATRIX_MOVIE_SLUGS[movie.imdbID]
         }));
 };
 
-// ✅ FIXED SORTING - NOW USES REAL DATA
+// ✅ SORTING UTILITIES
 export const sortMatrixMovies = (movies, sortBy) => {
     const sortedMovies = [...movies];
     
     switch (sortBy) {
         case 'rating':
-            return sortedMovies.sort((a, b) => {
-                const aRating = COMPLETE_MOVIE_DATA[a.tmdbId]?.rating || 0;
-                const bRating = COMPLETE_MOVIE_DATA[b.tmdbId]?.rating || 0;
-                return bRating - aRating;
-            });
+            return sortedMovies.sort((a, b) => (b.rating || 0) - (a.rating || 0));
         case 'year':
             return sortedMovies.sort((a, b) => b.year - a.year);
         case 'complexity':
             return sortedMovies.sort((a, b) => {
-                const aComplexity = COMPLETE_MOVIE_DATA[a.tmdbId]?.complexityLevel || 'MEDIUM';
-                const bComplexity = COMPLETE_MOVIE_DATA[b.tmdbId]?.complexityLevel || 'MEDIUM';
-                const complexityOrder = { 'EXTREME': 3, 'HIGH': 2, 'MEDIUM': 1 };
-                return complexityOrder[bComplexity] - complexityOrder[aComplexity];
+                const complexityA = b.sciFiComplexity || b.complexityScore || 0;
+                const complexityB = a.sciFiComplexity || a.complexityScore || 0;
+                return complexityA - complexityB;
             });
         case 'runtime':
-            return sortedMovies.sort((a, b) => b.runtime - a.runtime);
+            const getRuntimeMinutes = (runtime) => {
+                if (typeof runtime === 'number') return runtime;
+                if (typeof runtime === 'string') {
+                    const match = runtime.match(/(\d+)/);
+                    return match ? parseInt(match[1]) : 0;
+                }
+                return 0;
+            };
+            return sortedMovies.sort((a, b) => 
+                getRuntimeMinutes(b.runtime) - getRuntimeMinutes(a.runtime)
+            );
         default:
-            return sortedMovies.sort((a, b) => a.rank - b.rank);
+            return sortedMovies;
     }
 };
 
-// ✅ GET MATRIX COLLECTION STATS
+// ✅ GET MATRIX MOVIE COLLECTION STATS
 export const getMatrixCollectionStats = () => {
-    const genres = [...new Set(COMPLETE_MOVIE_DATABASE.map(m => m.genre))];
-    const decades = [...new Set(COMPLETE_MOVIE_DATABASE.map(m => Math.floor(m.year / 10) * 10))];
+    const movieArray = Object.values(MATRIX_MOVIE_DB);
+    const genres = [...new Set(movieArray.flatMap(m => m.genre.split(',').map(g => g.trim())))];
+    const decades = [...new Set(movieArray.map(m => Math.floor(m.year / 10) * 10))];
     const yearRange = {
-        earliest: Math.min(...COMPLETE_MOVIE_DATABASE.map(m => m.year)),
-        latest: Math.max(...COMPLETE_MOVIE_DATABASE.map(m => m.year))
+        earliest: Math.min(...movieArray.map(m => m.year)),
+        latest: Math.max(...movieArray.map(m => m.year))
+    };
+    
+    const getRuntimeMinutes = (runtime) => {
+        if (typeof runtime === 'number') return runtime;
+        if (typeof runtime === 'string') {
+            const match = runtime.match(/(\d+)/);
+            return match ? parseInt(match[1]) : 0;
+        }
+        return 0;
     };
     
     return {
-        totalMovies: COMPLETE_MOVIE_DATABASE.length,
+        totalMovies: movieArray.length,
         genres: genres.length,
         genreList: genres,
         decades: decades.sort((a, b) => a - b),
         yearRange,
         averageYear: Math.round(
-            COMPLETE_MOVIE_DATABASE.reduce((sum, m) => sum + m.year, 0) / COMPLETE_MOVIE_DATABASE.length
+            movieArray.reduce((sum, m) => sum + m.year, 0) / movieArray.length
         ),
         averageRuntime: Math.round(
-            COMPLETE_MOVIE_DATABASE.reduce((sum, m) => sum + m.runtime, 0) / COMPLETE_MOVIE_DATABASE.length
+            movieArray.reduce((sum, m) => sum + getRuntimeMinutes(m.runtime), 0) / movieArray.length
         ),
-        // ✅ ADDED - AVERAGE COMPLEXITY
-        averageComplexity: 'HIGH',
-        // ✅ ADDED - AVERAGE RATING
+        averageComplexity: Math.round(
+            movieArray.reduce((sum, m) => {
+                return sum + (m.sciFiComplexity || m.complexityScore || 0);
+            }, 0) / movieArray.length
+        ),
         averageRating: (
-            COMPLETE_MOVIE_DATABASE.reduce((sum, m) => {
-                const movieData = COMPLETE_MOVIE_DATA[m.tmdbId];
-                return sum + (movieData?.rating || 7.5);
-            }, 0) / COMPLETE_MOVIE_DATABASE.length
-        ).toFixed(1),
-        // ✅ ADDED - THEME BREAKDOWN
-        complexityBreakdown: {
-            EXTREME: COMPLETE_MOVIE_DATABASE.filter(m => COMPLETE_MOVIE_DATA[m.tmdbId]?.complexityLevel === 'EXTREME').length,
-            HIGH: COMPLETE_MOVIE_DATABASE.filter(m => COMPLETE_MOVIE_DATA[m.tmdbId]?.complexityLevel === 'HIGH').length,
-            MEDIUM: COMPLETE_MOVIE_DATABASE.filter(m => COMPLETE_MOVIE_DATA[m.tmdbId]?.complexityLevel === 'MEDIUM').length
-        }
+            movieArray.reduce((sum, m) => {
+                return sum + (m.rating || 0);
+            }, 0) / movieArray.length
+        ).toFixed(1)
     };
 };
 
-// ✅ GET MOVIE DATA REFERENCE
-export const getMovieDataReference = (movie) => {
-    return COMPLETE_MOVIE_DATA[movie.tmdbId] || null;
-};
-
+// ✅ EXPORT ALL UTILITIES AS DEFAULT
 export default {
     generateMovieSlug,
     MATRIX_MOVIE_SLUGS,
@@ -286,6 +295,5 @@ export default {
     searchMatrixMovies,
     filterMatrixMoviesByGenre,
     sortMatrixMovies,
-    getMatrixCollectionStats,
-    getMovieDataReference
+    getMatrixCollectionStats
 };
