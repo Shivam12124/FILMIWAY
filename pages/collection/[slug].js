@@ -1,4 +1,4 @@
-// pages/collection/[slug].js - SEO OPTIMIZED WITH MATRIX FORMAT ✅
+// pages/collection/[slug].js - SEO OPTIMIZED WITH MATRIX & SE7EN FORMAT ✅
 
 import React, { useState, useEffect, useCallback } from 'react';
 import Head from 'next/head';
@@ -7,10 +7,10 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Crown, Star, MessageSquare, Volume2, VolumeX, Play, Pause, Menu, X, Home, Eye, MousePointer, TrendingUp, Users, Search, Brain, Zap, Film, Award, Mountain, Shield } from 'lucide-react';
 
-// ✅ NEW SURVIVAL FORMAT IMPORTS (MATRIX ADDED)
+// ✅ NEW SURVIVAL FORMAT IMPORTS (MATRIX & SE7EN ADDED)
 import { COMPLETE_MOVIE_DATABASE as SURVIVAL_DATABASE, COMPLETE_MOVIE_DATA as SURVIVAL_DATA } from '../../utils/survivalMovieData';
-// pages/collection/[slug].js - ADD THIS IMPORT
 import { COMPLETE_MOVIE_DATABASE as MATRIX_DATABASE } from '../../utils/matrixMovieData';
+import { COMPLETE_MOVIE_DATABASE as SE7EN_DATABASE, COMPLETE_MOVIE_DATA as SE7EN_DATA } from '../../utils/se7enMovieData'; // ✅ SE7EN IMPORT ADDED
 
 import { COMPLETE_MOVIE_DATABASE as INTERSTELLAR_DATABASE, COMPLETE_MOVIE_DATA as INTERSTELLAR_DATA } from '../../utils/interstellarMovieData';
 import { COMPLETE_MOVIE_DATABASE as CRIME_THRILLER_DATABASE, COMPLETE_MOVIE_DATA as CRIME_THRILLER_DATA } from '../../utils/crimeThrillerMovieData';
@@ -110,7 +110,7 @@ const CollectionPage = ({ collection, movies }) => {
         const timer = setTimeout(() => setIsLoading(false), 2500);
         return () => clearTimeout(timer);
     }, []);
-// 🔥 SEO-OPTIMIZED COLLECTION CONTENT WITH MATRIX COLLECTION ADDED
+// 🔥 SEO-OPTIMIZED COLLECTION CONTENT WITH MATRIX & SE7EN COLLECTIONS ADDED
 const getCollectionContent = () => {
     if (collection.slug === 'movies-like-memento') {
         return {
@@ -158,7 +158,7 @@ const getCollectionContent = () => {
                 text2: "Each film has been selected for its ability to create lasting impact—with concepts that continue revealing new layers upon repeated viewings. Your brain will thank you."
             }
         };
-    } else if (collection.slug === 'movies-like-the-matrix') { // ✅ NEW MATRIX COLLECTION
+    } else if (collection.slug === 'movies-like-the-matrix') {
         return {
             badge: "Cyberpunk Reality Cinema",
             title: "The Matrix",
@@ -179,6 +179,29 @@ const getCollectionContent = () => {
             experience: {
                 text1: "Whether you're seeking technological thrills or existential questioning, this collection delivers cinema's most ambitious cyberpunk experiences that blur the line between real and artificial.",
                 text2: "Each film has been selected for its ability to create lasting philosophical impact—exploring themes of free will, consciousness, and artificial reality that continue fascinating viewers long after credits roll."
+            }
+        };
+    } else if (collection.slug === 'movies-like-se7en') { // ✅ NEW SE7EN COLLECTION ADDED
+        return {
+            badge: "Dark Noir Masterpieces",
+            title: "Se7en",
+            description: "Gritty, rain-soaked noir thrillers hunting pure evil. Obsessive detectives, sadistic killers & nihilistic atmospheres that explore the seven deadly sins of humanity.",
+            selection: {
+                text1: "From the rain-slicked streets of Fincher's city to the rural darkness of South Korea—these films track the obsessive, often self-destructive hunt for monsters who hide in plain sight.",
+                text2: "Each noir gem features weary detectives pushed to their breaking points, atmospheric tension you can feel, and endings that refuse to compromise with a traditional happy resolution."
+            },
+            ranking: {
+                text: "Our noir intensity index evaluates atmospheric gloom, detective obsession depth, and the disturbing complexity of the antagonist's grand design.",
+                points: [
+                    "Atmospheric dread level",
+                    "Detective obsession depth",
+                    "Villainous complexity",
+                    "Nihilistic narrative impact"
+                ]
+            },
+            experience: {
+                text1: "Whether you're drawn to the procedural details or the psychological toll of the hunt, this collection delivers cinema's most compelling descents into darkness.",
+                text2: "Each film forces you to confront the uncomfortable reality that sometimes, understanding the monster means losing a part of yourself in the process."
             }
         };
     } else if (collection.slug === 'movies-like-interstellar') {
@@ -319,29 +342,29 @@ const getCollectionContent = () => {
                 text2: "Each film has been selected for its ability to maintain relentless tension throughout—while showcasing brilliantly crafted schemes and unforgettable criminal masterminds you'll root for."
             }
         };
-  } else if (collection.slug === 'best-crime-thriller-movies') {
-    return {
-        badge: "Crime Thriller Cinema",
-        title: "Crime Thriller",
-        description: "Intense crime thrillers with ruthless investigations. From Heat to The Departed—ranked by suspense intensity, moral complexity & psychological depth.",
-        selection: {
-            text1: "From cat-and-mouse detective games to criminal underworlds—these films expose the dark psychology of crime while maintaining relentless tension and complex moral questions.",
-            text2: "Each crime thriller features brilliant investigations, morally gray protagonists, and the psychological warfare between cops and criminals that defines masterful crime cinema."
-        },
-        ranking: {
-            text: "Our suspense intensity index evaluates investigative complexity, moral ambiguity depth, and the sophistication of crime storytelling techniques used throughout each film.",
-            points: [
-                "Suspense intensity level",
-                "Investigative complexity",
-                "Moral ambiguity depth",
-                "Criminal psychology insight"
-            ]
-        },
-        experience: {
-            text1: "Whether you're seeking intense investigations or profound moral exploration, this collection delivers cinema's most gripping crime thriller experiences that'll challenge your sense of justice.",
-            text2: "Each film has been selected for its ability to maintain relentless tension throughout—while exploring the psychology of crime and creating unforgettable criminal masterminds."
-        }
-    };
+    } else if (collection.slug === 'best-crime-thriller-movies') {
+        return {
+            badge: "Crime Thriller Cinema",
+            title: "Crime Thriller",
+            description: "Intense crime thrillers with ruthless investigations. From Heat to The Departed—ranked by suspense intensity, moral complexity & psychological depth.",
+            selection: {
+                text1: "From cat-and-mouse detective games to criminal underworlds—these films expose the dark psychology of crime while maintaining relentless tension and complex moral questions.",
+                text2: "Each crime thriller features brilliant investigations, morally gray protagonists, and the psychological warfare between cops and criminals that defines masterful crime cinema."
+            },
+            ranking: {
+                text: "Our suspense intensity index evaluates investigative complexity, moral ambiguity depth, and the sophistication of crime storytelling techniques used throughout each film.",
+                points: [
+                    "Suspense intensity level",
+                    "Investigative complexity",
+                    "Moral ambiguity depth",
+                    "Criminal psychology insight"
+                ]
+            },
+            experience: {
+                text1: "Whether you're seeking intense investigations or profound moral exploration, this collection delivers cinema's most gripping crime thriller experiences that'll challenge your sense of justice.",
+                text2: "Each film has been selected for its ability to maintain relentless tension throughout—while exploring the psychology of crime and creating unforgettable criminal masterminds."
+            }
+        };
     } else if (collection.slug === 'best-detective-thriller-movies') {
         return {
             badge: "Detective Mystery Cinema",
@@ -529,7 +552,8 @@ const getCollectionContent = () => {
     }
 };
 
-// 🔥 HEADER CONTENT WITH MATRIX ADDED
+
+// 🔥 HEADER CONTENT WITH MATRIX & SE7EN ADDED
 const getHeaderContent = () => {
     if (collection.slug === 'movies-like-memento') {
         return {
@@ -541,10 +565,15 @@ const getHeaderContent = () => {
             title: "Movies Like Inception: 10 Reality-Bending Films",
             subtitle: "Layered dreams, reality distortion & Christopher Nolan-level genius storytelling"
         };
-    } else if (collection.slug === 'movies-like-the-matrix') { // ✅ NEW MATRIX HEADER
+    } else if (collection.slug === 'movies-like-the-matrix') {
         return {
             title: "Movies Like The Matrix: 10 Cyberpunk Films",
             subtitle: "Digital consciousness, simulated realities & mind-bending awakening that challenges everything"
+        };
+    } else if (collection.slug === 'movies-like-se7en') { // ✅ NEW SE7EN HEADER
+        return {
+            title: "Movies Like Se7en: 10 Dark Noir Thrillers",
+            subtitle: "Gritty investigations, obsessive detectives & shocking twists in the rain-soaked dark"
         };
     } else if (collection.slug === 'movies-like-interstellar') {
         return {
@@ -624,7 +653,7 @@ const getHeaderContent = () => {
     }
 };
 
-// 🔥 LOADER CONTENT WITH MATRIX ADDED
+// 🔥 LOADER CONTENT WITH MATRIX & SE7EN ADDED
 const getLoaderContent = () => {
     if (collection?.slug === 'movies-like-memento') {
         return {
@@ -636,10 +665,15 @@ const getLoaderContent = () => {
             title: "Loading Movies Like Inception", 
             description: "Curating mind-bending sci-fi thrillers with community reviews and ratings"
         };
-    } else if (collection?.slug === 'movies-like-the-matrix') { // ✅ NEW MATRIX LOADER
+    } else if (collection?.slug === 'movies-like-the-matrix') {
         return {
             title: "Loading Movies Like The Matrix",
             description: "Curating cyberpunk reality-bending films with community reviews and ratings"
+        };
+    } else if (collection?.slug === 'movies-like-se7en') { // ✅ NEW SE7EN LOADER
+        return {
+            title: "Loading Movies Like Se7en",
+            description: "Curating gritty noir thrillers and dark investigations with community reviews and ratings"
         };
     } else if (collection?.slug === 'movies-like-interstellar') {
         return {
@@ -719,8 +753,7 @@ const getLoaderContent = () => {
     }
 };
 
-
-// 🔥 STATIC META CONTENT WITH MATRIX ADDED ✅
+// 🔥 STATIC META CONTENT WITH MATRIX & SE7EN ADDED
 const getStaticMetaContent = () => {
     if (collection.slug === 'movies-like-memento') {
         return {
@@ -740,7 +773,7 @@ const getStaticMetaContent = () => {
             twitterTitle: "🧠 Loved Inception? These 10 Films Will Blow Your Mind",
             progressText: `of Top ${movies.length} Movies Like Inception`
         };
-    } else if (collection.slug === 'movies-like-the-matrix') { // ✅ NEW MATRIX META
+    } else if (collection.slug === 'movies-like-the-matrix') {
         return {
             title: "Movies Like The Matrix: 10 Cyberpunk Films", // ✅ 47 chars
             description: "Loved The Matrix? Explore 10 cyberpunk thrillers with digital consciousness, simulated realities & mind-bending awakening. Reality is not what it seems.", // ✅ 159 chars
@@ -748,6 +781,15 @@ const getStaticMetaContent = () => {
             ogTitle: "Movies Like The Matrix: 10 Cyberpunk Reality-Bending Films 🔴",
             twitterTitle: "🔴 Loved The Matrix? These 10 Cyberpunk Films Will Break Your Brain",
             progressText: `of Top ${movies.length} Movies Like The Matrix`
+        };
+    } else if (collection.slug === 'movies-like-se7en') { // ✅ NEW SE7EN META
+        return {
+            title: "Movies Like Se7en: 10 Dark Noir Thrillers", // ✅ 44 chars
+            description: "Loved Se7en? Discover 10 gritty noir thrillers with obsessive detectives, shocking twists & dark investigations like Zodiac & Prisoners.", // ✅ 144 chars
+            keywords: "movies like se7en, movies like seven, noir thrillers, dark detective movies, zodiac, prisoners",
+            ogTitle: "Movies Like Se7en: 10 Gritty Noir Masterpieces 🌧️",
+            twitterTitle: "🌧️ Loved Se7en? These 10 Dark Thrillers Will Haunt You",
+            progressText: `of Top ${movies.length} Movies Like Se7en`
         };
     } else if (collection.slug === 'movies-like-interstellar') {
         return {
@@ -887,6 +929,7 @@ const getStaticMetaContent = () => {
     }
 };
 
+
     const nextMovie = useCallback(() => {
         setCurrentMovieIndex((prev) => (prev + 1) % movies.length);
     }, [movies.length]);
@@ -935,7 +978,6 @@ const getStaticMetaContent = () => {
             }
         }
     };
-
     const handleMovieClick = () => {
         if (typeof window !== 'undefined') {
             sessionStorage.setItem('currentMoviePosition', currentMovieIndex.toString());
@@ -947,7 +989,8 @@ const getStaticMetaContent = () => {
             // Clear all collection flags first ✅
             sessionStorage.removeItem('fromInceptionCollection');
             sessionStorage.removeItem('fromMementoCollection');
-            sessionStorage.removeItem('fromMatrixCollection'); // ✅ NEW MATRIX
+            sessionStorage.removeItem('fromMatrixCollection');
+            sessionStorage.removeItem('fromSe7enCollection'); // ✅ NEW SE7EN
             sessionStorage.removeItem('fromInterstellarCollection');
             sessionStorage.removeItem('fromShutterIslandCollection');
             sessionStorage.removeItem('fromSurvivalCollection');
@@ -968,8 +1011,10 @@ const getStaticMetaContent = () => {
                 sessionStorage.setItem('fromInceptionCollection', 'true');
             } else if (collection.slug === 'movies-like-memento') {
                 sessionStorage.setItem('fromMementoCollection', 'true');
-            } else if (collection.slug === 'movies-like-the-matrix') { // ✅ NEW MATRIX
+            } else if (collection.slug === 'movies-like-the-matrix') {
                 sessionStorage.setItem('fromMatrixCollection', 'true');
+            } else if (collection.slug === 'movies-like-se7en') { // ✅ NEW SE7EN
+                sessionStorage.setItem('fromSe7enCollection', 'true');
             } else if (collection.slug === 'movies-like-interstellar') {
                 sessionStorage.setItem('fromInterstellarCollection', 'true');
             } else if (collection.slug === 'movies-like-shutter-island') {
@@ -1001,7 +1046,6 @@ const getStaticMetaContent = () => {
             }
         }
     };
-
 
 
     // Get dynamic content
@@ -1398,8 +1442,10 @@ return (
                                     ? 'movies/survival/'
                                     : collection?.slug === 'movies-like-inception'
                                     ? 'movies/like-inception/'
-                                    : collection?.slug === 'movies-like-the-matrix' // ✅ NEW MATRIX
+                                    : collection?.slug === 'movies-like-the-matrix'
                                     ? 'movies/matrix/'
+                                    : collection?.slug === 'movies-like-se7en' // ✅ NEW SE7EN PATH
+                                    ? 'collection/movies-like-se7en/'
                                     : collection?.slug === 'movies-like-interstellar'
                                     ? 'movies/interstellar/'
                                     : collection?.slug === 'movies-like-memento'
@@ -1465,6 +1511,7 @@ return (
             />
         </Head>
 
+
         <CinematicBackground />
         <StrategicControls 
             isMuted={isMuted}
@@ -1527,16 +1574,17 @@ return (
                                     <div className="absolute inset-0 bg-gradient-to-l from-yellow-400/10 to-amber-400/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
                                 </motion.button>
                             )}
-
-                            {/* 🔥 FIXED FOR NEXT.JS 15 - WITH MATRIX COLLECTION URL ✅ */}
+                            {/* 🔥 FIXED FOR NEXT.JS 15 - WITH MATRIX & SE7EN COLLECTION URLS ✅ */}
                             <AnimatePresence mode="wait">
                                 {currentMovie && (
                                     <Link
                                         href={
                                             collection.slug === 'movies-like-inception'
                                                 ? `/movies/like-inception/${currentMovie.imdbID}`
-                                                : collection.slug === 'movies-like-the-matrix' // ✅ NEW MATRIX
+                                                : collection.slug === 'movies-like-the-matrix'
                                                 ? `/movies/matrix/${currentMovie.imdbID}`
+                                                : collection.slug === 'movies-like-se7en' // ✅ ADDED SE7EN LINK
+                                                ? `/collection/movies-like-se7en/${currentMovie.imdbID}`
                                                 : collection.slug === 'movies-like-interstellar'
                                                 ? `/movies/interstellar/${currentMovie.imdbID}`
                                                 : collection.slug === 'movies-like-memento'
@@ -1606,8 +1654,10 @@ return (
                                         let detailPageUrl;
                                         if (collection.slug === 'movies-like-inception') {
                                             detailPageUrl = `/movies/like-inception/${currentMovie.imdbID}`;
-                                        } else if (collection.slug === 'movies-like-the-matrix') { // ✅ NEW MATRIX
+                                        } else if (collection.slug === 'movies-like-the-matrix') {
                                             detailPageUrl = `/movies/matrix/${currentMovie.imdbID}`;
+                                        } else if (collection.slug === 'movies-like-se7en') { // ✅ ADDED SE7EN BUTTON LOGIC
+                                            detailPageUrl = `/collection/movies-like-se7en/${currentMovie.imdbID}`;
                                         } else if (collection.slug === 'movies-like-interstellar') {
                                             detailPageUrl = `/movies/interstellar/${currentMovie.imdbID}`;
                                         } else if (collection.slug === 'movies-like-memento') {
@@ -1644,6 +1694,7 @@ return (
                                         window.location.href = detailPageUrl;
                                     }}
                                 >
+
                                     <Eye className="w-6 h-6 text-yellow-400" />
                                     <span className="text-yellow-400 font-medium text-lg">Explore Full Analysis</span>
                                     <motion.div
@@ -1775,7 +1826,7 @@ export async function getStaticPaths() {
     };
 }
 
-// ✅ CORRECT getStaticProps() - maps correct database to each collection WITH MATRIX
+// ✅ CORRECT getStaticProps() - maps correct database to each collection WITH MATRIX & SE7EN
 export async function getStaticProps({ params }) {
     const slug = params.slug;
     const collection = getCollectionBySlug(slug);
@@ -1791,19 +1842,22 @@ export async function getStaticProps({ params }) {
         case 'best-survival-movies':
             movieDatabase = SURVIVAL_DATABASE;
             break;
-        case 'movies-like-the-matrix': // ✅ NEW MATRIX
+        case 'movies-like-the-matrix': 
             movieDatabase = MATRIX_DATABASE;
+            break;
+        case 'movies-like-se7en': // ✅ NEW SE7EN COLLECTION
+            movieDatabase = SE7EN_DATABASE;
             break;
         case 'movies-like-interstellar':
             movieDatabase = INTERSTELLAR_DATABASE;
             break;
-        case 'movies-like-inception': // ✅ Added for completeness
+        case 'movies-like-inception':
             movieDatabase = INCEPTION_DATABASE || COMPLETE_MOVIE_DATABASE;
             break;
-        case 'movies-like-memento': // ✅ Added for completeness
+        case 'movies-like-memento':
             movieDatabase = COMPLETE_MOVIE_DATABASE;
             break;
-        case 'movies-like-shutter-island': // ✅ Added for completeness
+        case 'movies-like-shutter-island':
             movieDatabase = COMPLETE_MOVIE_DATABASE;
             break;
         case 'best-thriller-movies':

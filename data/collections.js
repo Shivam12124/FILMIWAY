@@ -474,6 +474,86 @@ export const COLLECTIONS = {
     }
   },
 
+
+    // 📦 SE7EN COLLECTION - DARK CRIME THRILLERS
+  'movies-like-se7en': {
+    slug: 'movies-like-se7en',
+    title: 'Movies Like Se7en',
+    subtitle: 'Dark Detective & Psychological Noir',
+    description: 'Gritty, atmospheric crime thrillers featuring obsessed detectives, sadistic killers, and morally complex narratives.',
+    longDescription: 'Step into the shadows of cinema’s darkest crime thrillers. Curated for fans of David Fincher’s masterpiece, this collection features films defined by rain-soaked streets, intricate serial killer hunts, psychological cat-and-mouse games, and shocking twists. These movies explore the darkest corners of the human psyche.',
+    icon: '📦',
+    emoji: '📦',
+    theme: 'amber',
+    primaryColor: '#d97706',
+    secondaryColor: '#b45309',
+    accentColor: '#78350f',
+    gradientFrom: 'from-amber-900',
+    gradientTo: 'to-gray-900',
+    category: 'crime-thriller',
+    tags: ['crime', 'psychological thriller', 'serial killer', 'detective', 'noir'],
+    metaTitle: '10 Movies Like Se7en (2025) - Best Dark Crime Thrillers | Filmiway',
+    metaDescription: 'Craving the grit of Se7en? Discover 10 dark crime thrillers like Zodiac, Prisoners, and Silence of the Lambs. Ranked by atmospheric tension and plot twists.',
+    metaKeywords: 'movies like se7en, best crime thrillers, zodiac, prisoners, silence of the lambs, dark detective movies, psychological noir, serial killer movies',
+    stats: {
+      totalMovies: 10,
+      averageRating: 8.1,
+      totalWatchtime: '22 hours 15 minutes',
+      averageSe7enDNAScore: 92.5,
+      mostDisturbing: 'Oldboy (96/100)',
+      newestMovie: 'The Batman (2022)',
+      oldestMovie: 'The Silence of the Lambs (1991)'
+    },
+    movies: [
+      'tt0443706', // Zodiac (2007)
+      'tt0353969', // Memories of Murder (2003)
+      'tt1392214', // Prisoners (2013)
+      'tt0102926', // The Silence of the Lambs (1991)
+      'tt1568346', // The Girl with the Dragon Tattoo (2011)
+      'tt1190539', // The Chaser (2008)
+      'tt1877830', // The Batman (2022)
+      'tt0123948', // Cure (1997)
+      'tt0096163', // The Vanishing (1988)
+      'tt0327056'  // Mystic River (2003)
+    ],
+
+    badges: [
+      { label: 'Psychological Noir', desc: 'Dark, atmospheric storytelling' },
+      { label: 'Serial Killer Hunt', desc: 'High-stakes detective work' },
+      { label: 'Shocking Twists', desc: 'Endings you won\'t forget' }
+    ],
+    featured: {
+      hero: {
+        title: 'Zodiac',
+        subtitle: 'Obsession is a Killer',
+        description: 'David Fincher’s other masterpiece. A chilling, meticulous dive into the hunt for America’s most elusive serial killer.',
+        poster: 'https://image.tmdb.org/t/p/w500/6YkeTnSE8Uwh1qV93lU41Q9iK3M.jpg',
+        backdrop: 'https://image.tmdb.org/t/p/w1280/qJ2tW6WMUDux911r6m7haRef0WH.jpg',
+        se7enDNAScore: 95
+      }
+    },
+    relatedCollections: [
+      'movies-like-shutter-island',
+      'best-psychological-thriller-movies',
+      'best-detective-thriller-movies'
+    ],
+    seo: {
+      title: '10 Movies Like Se7en (2025) - Best Dark Crime Thrillers | Filmiway',
+      description: 'Craving the grit of Se7en? Discover 10 dark crime thrillers like Zodiac, Prisoners, and Silence of the Lambs. Ranked by atmospheric tension and plot twists.',
+      keywords: 'movies like se7en, dark thriller movies, zodiac movie, prisoners movie, silence of the lambs, best serial killer movies, psychological noir',
+      canonicalUrl: 'https://filmiway.com/collection/movies-like-se7en',
+      ogImage: 'https://filmiway.com/images/se7en-collection-og.jpg',
+      structuredData: {
+        '@context': 'https://schema.org',
+        '@type': 'ItemList',
+        name: 'Movies Like Se7en',
+        description: 'Curated list of dark crime thrillers and psychological noir films similar to Se7en',
+        numberOfItems: 10
+      }
+    }
+  },
+
+
  // 🚀 MOVIES LIKE THE MATRIX COLLECTION (ADD THIS)
 'movies-like-the-matrix': {
   slug: 'movies-like-the-matrix',
@@ -1082,11 +1162,13 @@ export const getFeaturedCollections = () =>
 export const getCollectionsByCategory = (category) => 
   Object.values(COLLECTIONS).filter(collection => collection.category === category);
 
-// 🎬 SPECIFIC COLLECTION GETTERS (All 16 collections)
+// 🎬 SPECIFIC COLLECTION GETTERS (All 18 collections)
 export const getInceptionCollection = () => COLLECTIONS['movies-like-inception'];
 export const getMementoCollection = () => COLLECTIONS['movies-like-memento'];
 export const getShutterIslandCollection = () => COLLECTIONS['movies-like-shutter-island'];
 export const getInterstellarCollection = () => COLLECTIONS['movies-like-interstellar'];
+export const getMatrixCollection = () => COLLECTIONS['movies-like-the-matrix']; // ✅ NEW MATRIX
+export const getSe7enCollection = () => COLLECTIONS['movies-like-se7en']; // ✅ NEW SE7EN
 export const getSurvivalCollection = () => COLLECTIONS['best-survival-movies'];
 export const getNetflixDramaCollection = () => COLLECTIONS['best-drama-movies-on-netflix'];
 export const getWarFilmsCollection = () => COLLECTIONS['best-war-films'];
@@ -1101,5 +1183,6 @@ export const getMysteryThillerCollection = () => COLLECTIONS['best-mystery-thril
 export const getThrillerCollection = () => COLLECTIONS['best-thriller-movies'];
 
 export default COLLECTIONS;
+
 
 

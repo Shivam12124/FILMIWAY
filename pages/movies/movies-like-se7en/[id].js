@@ -1,16 +1,22 @@
-// pages/collection/movies-like-se7en/[id].js - MOBILE-OPTIMIZED VERSION (ID BASED) ✅
+// pages/collection/movies-like-se7en/[id].js - FULLY CORRECTED ✅
 
 import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
-import Image from 'next/image'
+import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Play, X, Award, Fingerprint, Film, User, Twitter, Hash, Send } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Play, X, User, Twitter, Hash, Send, Fingerprint, Film } from 'lucide-react';
 
 import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
 import TMDBAttribution from '../../../components/TMDBAttribution';
-import { COMPLETE_MOVIE_DATABASE, COMPLETE_MOVIE_DATA } from '../../../utils/se7enMovieData';
+
+// ✅ IMPORT FALLBACK POSTERS HERE
+import { 
+  COMPLETE_MOVIE_DATABASE, 
+  COMPLETE_MOVIE_DATA, 
+  FALLBACK_POSTERS 
+} from '../../../utils/se7enMovieData';
 
 // ✅ DARK NOIR COLOR PALETTE
 const COLORS = {
@@ -20,36 +26,23 @@ const COLORS = {
 };
 
 const MOVIE_YEARS = {
-    'Zodiac': '2007', 'Memories of Murder': '2003', 'Prisoners': '2013', 'The Silence of the Lambs': '1991',
-    'The Girl with the Dragon Tattoo': '2011', 'The Chaser': '2008', 'The Batman': '2022', 'Cure': '1997',
-    'The Vanishing': '1988', 'Mystic River': '2003'
+  'Zodiac': '2007', 'Memories of Murder': '2003', 'Prisoners': '2013', 'The Silence of the Lambs': '1991',
+  'The Girl with the Dragon Tattoo': '2011', 'The Chaser': '2008', 'The Batman': '2022', 'Cure': '1997',
+  'The Vanishing': '1988', 'Mystic River': '2003'
 };
 
 // ✅ SPECIALIZED INSIGHTS FOR SE7EN COLLECTION
 const MOVIE_DATA_BY_TITLE = {
-    'Zodiac': { imdbRating: 7.7, genre: 'Obsessive Procedural', director: 'David Fincher', se7enConnection: 'Zodiac is the spiritual successor to Se7en, trading the seven deadly sins for an unsolvable cipher. It captures the same crushing weight of obsession, but where Se7en is about the horror of the act, Zodiac is about the horror of not knowing.' },
-    'Memories of Murder': { imdbRating: 8.1, genre: 'Rural Noir', director: 'Bong Joon-ho', se7enConnection: 'Often called the "Korean Se7en," this masterpiece shares the DNA of desperate detectives hunting an elusive killer in the rain. It explores the incompetence of authority and the terrifying realization that evil can hide in plain sight.' },
-    'Prisoners': { imdbRating: 8.1, genre: 'Moral Decay Thriller', director: 'Denis Villeneuve', se7enConnection: 'Prisoners mirrors Se7en’s exploration of how far a good man will go when pushed by evil. Like Mills, Keller Dover is consumed by rage and desperation, turning the hunter into a monster in his quest for justice.' },
-    'The Silence of the Lambs': { imdbRating: 8.6, genre: 'Psychological Horror', director: 'Jonathan Demme', se7enConnection: 'The definitive psychological thriller that paved the way for Se7en. It shares the procedural structure of hunting a serial killer, but elevates the genre by making the monster (Lecter) the smartest person in the room.' },
-    'The Girl with the Dragon Tattoo': { imdbRating: 7.8, genre: 'Tech Noir', director: 'David Fincher', se7enConnection: 'Fincher returns to the serial killer genre with the same cold, clinical eye as Se7en. It features a mismatched duo uncovering a history of biblical/religious violence hidden beneath the pristine surface of society.' },
-    'The Chaser': { imdbRating: 7.8, genre: 'Race Against Time', director: 'Na Hong-jin', se7enConnection: 'The Chaser flips the Se7en formula: the killer is caught early, but the horror comes from the bureaucratic inability to stop him. It matches Se7en’s grit, rain-soaked streets, and nihilistic view of the justice system.' },
-    'The Batman': { imdbRating: 7.8, genre: 'Detective Noir', director: 'Matt Reeves', se7enConnection: 'Matt Reeves explicitly cited Se7en as a primary influence. The Riddler is modeled after John Doe, using elaborate traps and journals to expose corruption, turning Gotham into the same rainy, decaying hellscape as Fincher’s city.' },
-    'Cure': { imdbRating: 7.5, genre: 'Hypnotic Horror', director: 'Kiyoshi Kurosawa', se7enConnection: 'Cure is the spiritual ancestor to Se7en’s philosophy of contagion. It explores how evil spreads like a virus through suggestion. The atmosphere of dread and the crumbling mental state of the detective mirror Mills’ descent perfectly.' },
-    'The Vanishing': { imdbRating: 7.7, genre: 'Existential Thriller', director: 'George Sluizer', se7enConnection: 'The Vanishing shares Se7en’s uncompromising ending and obsession with the banality of evil. It is a terrifying study of curiosity and fate, proving that sometimes the worst thing that can happen is finding out the truth.' },
-    'Mystic River': { imdbRating: 7.9, genre: 'Tragic Drama', director: 'Clint Eastwood', se7enConnection: 'Like Se7en, Mystic River is about how a single act of violence poisons an entire community. It explores the inescapable nature of the past and how trauma warps good people into doing terrible things.' }
-};
-
-const SE7EN_TAGS = {
-    'Zodiac': { tags: ['Obsession', 'Cipher', 'Cold Case'], symbol: '📰', color: '#1e293b' },
-    'Memories of Murder': { tags: ['Rain', 'Failure', 'Rural'], symbol: '🌾', color: '#3f3f46' },
-    'Prisoners': { tags: ['Torture', 'Maze', 'Faith'], symbol: '🔨', color: '#374151' },
-    'The Silence of the Lambs': { tags: ['Cannibal', 'Moths', 'FBI'], symbol: '🦋', color: '#57534e' },
-    'The Girl with the Dragon Tattoo': { tags: ['Hacker', 'Nazi', 'Snow'], symbol: '💻', color: '#0f172a' },
-    'The Chaser': { tags: ['Pimp', 'Hammer', 'Time'], symbol: '🏃', color: '#7f1d1d' },
-    'The Batman': { tags: ['Gotham', 'Riddles', 'Rain'], symbol: '🦇', color: '#c2410c' },
-    'Cure': { tags: ['Hypnosis', 'X', 'Water'], symbol: '❌', color: '#171717' },
-    'The Vanishing': { tags: ['Buried', 'Egg', 'Fate'], symbol: '⚰️', color: '#ca8a04' },
-    'Mystic River': { tags: ['Boston', 'River', 'Trauma'], symbol: '🌊', color: '#1c1917' }
+  'Zodiac': { imdbRating: 7.7, genre: 'Obsessive Procedural', director: 'David Fincher', se7enConnection: 'Zodiac is the spiritual successor to Se7en, trading the seven deadly sins for an unsolvable cipher. It captures the same crushing weight of obsession, but where Se7en is about the horror of the act, Zodiac is about the horror of not knowing.' },
+  'Memories of Murder': { imdbRating: 8.1, genre: 'Rural Noir', director: 'Bong Joon-ho', se7enConnection: 'Often called the "Korean Se7en," this masterpiece shares the DNA of desperate detectives hunting an elusive killer in the rain. It explores the incompetence of authority and the terrifying realization that evil can hide in plain sight.' },
+  'Prisoners': { imdbRating: 8.1, genre: 'Moral Decay Thriller', director: 'Denis Villeneuve', se7enConnection: 'Prisoners mirrors Se7en’s exploration of how far a good man will go when pushed by evil. Like Mills, Keller Dover is consumed by rage and desperation, turning the hunter into a monster in his quest for justice.' },
+  'The Silence of the Lambs': { imdbRating: 8.6, genre: 'Psychological Horror', director: 'Jonathan Demme', se7enConnection: 'The definitive psychological thriller that paved the way for Se7en. It shares the procedural structure of hunting a serial killer, but elevates the genre by making the monster (Lecter) the smartest person in the room.' },
+  'The Girl with the Dragon Tattoo': { imdbRating: 7.8, genre: 'Tech Noir', director: 'David Fincher', se7enConnection: 'Fincher returns to the serial killer genre with the same cold, clinical eye as Se7en. It features a mismatched duo uncovering a history of biblical/religious violence hidden beneath the pristine surface of society.' },
+  'The Chaser': { imdbRating: 7.8, genre: 'Race Against Time', director: 'Na Hong-jin', se7enConnection: 'The Chaser flips the Se7en formula: the killer is caught early, but the horror comes from the bureaucratic inability to stop him. It matches Se7en’s grit, rain-soaked streets, and nihilistic view of the justice system.' },
+  'The Batman': { imdbRating: 7.8, genre: 'Detective Noir', director: 'Matt Reeves', se7enConnection: 'Matt Reeves explicitly cited Se7en as a primary influence. The Riddler is modeled after John Doe, using elaborate traps and journals to expose corruption, turning Gotham into the same rainy, decaying hellscape as Fincher’s city.' },
+  'Cure': { imdbRating: 7.5, genre: 'Hypnotic Horror', director: 'Kiyoshi Kurosawa', se7enConnection: 'Cure is the spiritual ancestor to Se7en’s philosophy of contagion. It explores how evil spreads like a virus through suggestion. The atmosphere of dread and the crumbling mental state of the detective mirror Mills’ descent perfectly.' },
+  'The Vanishing': { imdbRating: 7.7, genre: 'Existential Thriller', director: 'George Sluizer', se7enConnection: 'The Vanishing shares Se7en’s uncompromising ending and obsession with the banality of evil. It is a terrifying study of curiosity and fate, proving that sometimes the worst thing that can happen is finding out the truth.' },
+  'Mystic River': { imdbRating: 7.9, genre: 'Tragic Drama', director: 'Clint Eastwood', se7enConnection: 'Like Se7en, Mystic River is about how a single act of violence poisons an entire community. It explores the inescapable nature of the past and how trauma warps good people into doing terrible things.' }
 };
 
 const getTMDBImage = (path, size = 'w1280') =>
@@ -60,7 +53,7 @@ const getSe7enInsight = (title) => {
   return data?.se7enConnection || 'A masterclass in tension that explores the darkest corners of the human psyche.';
 };
 
-// ✅ UPDATED BANNER COMPONENT FOR SE7EN COLLECTION (REPLACE EXISTING)
+// ✅ UPDATED BANNER COMPONENT
 const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
   const [showTrailer, setShowTrailer] = useState(false);
   const [countdown, setCountdown] = useState(4);
@@ -78,6 +71,8 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
       : movieData?.poster || movie?.poster || getTMDBImage(movie?.poster_path, 'w500');
 
   const insight = getSe7enInsight(movie?.Title);
+  const se7enDNAScore = COMPLETE_MOVIE_DATA[movie.tmdbId]?.se7enDNAScore || 90;
+
   const mobileHeroCSS = `
   @media (max-width: 767px) {
     .mobile-hero-row {
@@ -145,8 +140,6 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
     }
   }
 `;
-
-  const se7enDNAScore = COMPLETE_MOVIE_DATA[movie.tmdbId]?.se7enDNAScore || 90;
 
   useEffect(() => {
     if (!isMobile && trailer && !showTrailer && !hasClosedTrailer) {
@@ -292,7 +285,6 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
         </AnimatePresence>
       </div>
 
-      {/* ✅ MOBILE LAYOUT - Side by Side (SCI-FI STYLE) */}
       {isMobile ? (
         <div className="mobile-hero-row">
           <div className="mobile-hero-poster">
@@ -317,7 +309,6 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
           </div>
         </div>
       ) : (
-        /* ✅ DESKTOP LAYOUT (SCI-FI STYLE) */
         <div className="relative px-3 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8 z-20" style={{ backgroundColor: COLORS.bgPrimary }}>
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 lg:gap-8 items-start">
             <motion.div
@@ -421,121 +412,135 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
 };
 
 const SmartBackButton = () => {
-    const handleBackClick = () => { if (typeof window !== 'undefined') window.location.href = '/collection/movies-like-se7en'; };
-    return (
-        <motion.button onClick={handleBackClick} className="fixed top-4 left-4 sm:top-6 sm:left-6 z-50 flex items-center gap-2 px-3 sm:px-4 py-2 backdrop-blur-md rounded-lg transition-all duration-300 shadow-xl text-xs sm:text-sm" style={{ backgroundColor: `${COLORS.bgPrimary}F2`, border: `1px solid ${COLORS.borderLight}` }} whileHover={{ scale: 1.02, x: -2 }} whileTap={{ scale: 0.98 }} initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} onMouseEnter={(e) => e.currentTarget.style.borderColor = COLORS.borderAccent} onMouseLeave={(e) => e.currentTarget.style.borderColor = COLORS.borderLight}>
-            <ChevronLeft className="w-3 h-3 sm:w-4 sm:h-4" style={{ color: COLORS.accent }} /><span className="font-medium" style={{ color: COLORS.accent }}>Back to Se7en Collection</span>
-        </motion.button>
-    );
+  const handleBackClick = () => { if (typeof window !== 'undefined') window.location.href = '/collection/movies-like-se7en'; };
+  return (
+    <motion.button onClick={handleBackClick} className="fixed top-4 left-4 sm:top-6 sm:left-6 z-50 flex items-center gap-2 px-3 sm:px-4 py-2 backdrop-blur-md rounded-lg transition-all duration-300 shadow-xl text-xs sm:text-sm" style={{ backgroundColor: `${COLORS.bgPrimary}F2`, border: `1px solid ${COLORS.borderLight}` }} whileHover={{ scale: 1.02, x: -2 }} whileTap={{ scale: 0.98 }} initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} onMouseEnter={(e) => e.currentTarget.style.borderColor = COLORS.borderAccent} onMouseLeave={(e) => e.currentTarget.style.borderColor = COLORS.borderLight}>
+      <ChevronLeft className="w-3 h-3 sm:w-4 sm:h-4" style={{ color: COLORS.accent }} /><span className="font-medium" style={{ color: COLORS.accent }}>Back to Se7en Collection</span>
+    </motion.button>
+  );
 };
 
 const AuthorCreditSection = () => (
-    <motion.section className="pt-6 sm:pt-8 mt-12 sm:mt-16" style={{ borderTop: `1px solid ${COLORS.borderLight}` }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.8, duration: 0.8 }}>
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
-            <div className="flex items-center gap-3"><User className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: COLORS.textDisabled }} /><div><p className="text-xs sm:text-sm" style={{ color: COLORS.textMuted }}>Curated by <span className="font-medium" style={{ color: COLORS.textSecondary }}>Filmiway Editorial Team</span></p><p className="text-xs" style={{ color: COLORS.textDisabled }}>Expert analysis of dark psychological cinema</p></div></div>
-            <div className="flex items-center gap-3 sm:gap-4"><span className="text-xs sm:text-sm" style={{ color: COLORS.textDisabled }}>Share:</span><div className="flex gap-2 sm:gap-3">{[Twitter, Hash, Send].map((Icon, i) => (<button key={i} className="p-1.5 sm:p-2 rounded-full transition-colors" style={{ color: COLORS.textDisabled }} onMouseEnter={(e) => { e.currentTarget.style.color = COLORS.textSecondary; e.currentTarget.style.backgroundColor = COLORS.bgCard; }} onMouseLeave={(e) => { e.currentTarget.style.color = COLORS.textDisabled; e.currentTarget.style.backgroundColor = 'transparent'; }}><Icon className="w-3 h-3 sm:w-4 sm:h-4" /></button>))}</div></div>
-        </div>
-    </motion.section>
+  <motion.section className="pt-6 sm:pt-8 mt-12 sm:mt-16" style={{ borderTop: `1px solid ${COLORS.borderLight}` }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.8, duration: 0.8 }}>
+    <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
+      <div className="flex items-center gap-3"><User className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: COLORS.textDisabled }} /><div><p className="text-xs sm:text-sm" style={{ color: COLORS.textMuted }}>Curated by <span className="font-medium" style={{ color: COLORS.textSecondary }}>Filmiway Editorial Team</span></p><p className="text-xs" style={{ color: COLORS.textDisabled }}>Expert analysis of dark psychological cinema</p></div></div>
+      <div className="flex items-center gap-3 sm:gap-4"><span className="text-xs sm:text-sm" style={{ color: COLORS.textDisabled }}>Share:</span><div className="flex gap-2 sm:gap-3">{[Twitter, Hash, Send].map((Icon, i) => (<button key={i} className="p-1.5 sm:p-2 rounded-full transition-colors" style={{ color: COLORS.textDisabled }} onMouseEnter={(e) => { e.currentTarget.style.color = COLORS.textSecondary; e.currentTarget.style.backgroundColor = COLORS.bgCard; }} onMouseLeave={(e) => { e.currentTarget.style.color = COLORS.textDisabled; e.currentTarget.style.backgroundColor = 'transparent'; }}><Icon className="w-3 h-3 sm:w-4 sm:h-4" /></button>))}</div></div>
+    </div>
+  </motion.section>
 );
 
 const SubtleFilmGrain = () => (
-    <div className="fixed inset-0 pointer-events-none z-0 opacity-[0.03]"><div className="w-full h-full bg-repeat" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)' opacity='0.3'/%3E%3C/svg%3E")`, backgroundSize: '60px 60px' }} /></div>
+  <div className="fixed inset-0 pointer-events-none z-0 opacity-[0.03]"><div className="w-full h-full bg-repeat" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)' opacity='0.3'/%3E%3C/svg%3E")`, backgroundSize: '60px 60px' }} /></div>
 );
 
 const Se7enBreadcrumb = ({ movie }) => (
-    <motion.nav className="mb-6 sm:mb-8 px-3 sm:px-4 lg:px-6 pb-3 sm:pb-4" style={{ borderBottom: `1px solid ${COLORS.borderLight}` }} initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-        <div className="flex items-center space-x-2 sm:space-x-3 text-xs sm:text-sm" style={{ color: COLORS.textMuted }}>
-            <Link href="/collection/movies-like-se7en" className="transition-all duration-300 truncate" style={{ color: COLORS.textMuted }} onMouseEnter={(e) => e.currentTarget.style.color = COLORS.accent} onMouseLeave={(e) => e.currentTarget.style.color = COLORS.textMuted}>Movies Like Se7en</Link>
-            <ChevronRight size={14} className="flex-shrink-0" style={{ color: COLORS.textDisabled }} /><span className="font-medium truncate" style={{ color: `${COLORS.accent}B3` }}>{movie.Title}</span>
-        </div>
-    </motion.nav>
+  <motion.nav className="mb-6 sm:mb-8 px-3 sm:px-4 lg:px-6 pb-3 sm:pb-4" style={{ borderBottom: `1px solid ${COLORS.borderLight}` }} initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+    <div className="flex items-center space-x-2 sm:space-x-3 text-xs sm:text-sm" style={{ color: COLORS.textMuted }}>
+      <Link href="/collection/movies-like-se7en" className="transition-all duration-300 truncate" style={{ color: COLORS.textMuted }} onMouseEnter={(e) => e.currentTarget.style.color = COLORS.accent} onMouseLeave={(e) => e.currentTarget.style.color = COLORS.textMuted}>Movies Like Se7en</Link>
+      <ChevronRight size={14} className="flex-shrink-0" style={{ color: COLORS.textDisabled }} /><span className="font-medium truncate" style={{ color: `${COLORS.accent}B3` }}>{movie.Title}</span>
+    </div>
+  </motion.nav>
 );
 
-const Se7enMoviePage = ({ movie }) => {
-    const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
-    const correctData = MOVIE_DATA_BY_TITLE[movie.Title];
-    const [scrollY, setScrollY] = useState(0);
-    const [movieData, setMovieData] = useState(null);
-    const [isMobile, setIsMobile] = useState(false);
-    const [isLoading, setIsLoading] = useState(true);
+// ✅ ACCEPT NEW PROPS HERE (posterUrl)
+const Se7enMoviePage = ({ movie, posterUrl }) => {
+  const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
+  const correctData = MOVIE_DATA_BY_TITLE[movie.Title];
+  const [scrollY, setScrollY] = useState(0);
+  const [movieData, setMovieData] = useState(null);
+  const [isMobile, setIsMobile] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
-    useEffect(() => {
-        const checkMobile = () => setIsMobile(window.innerWidth < 768);
-        checkMobile();
-        window.addEventListener('resize', checkMobile);
-        const fetchMovieData = async () => {
-            try {
-                setIsLoading(true);
-                const response = await fetch(`https://api.themoviedb.org/3/movie/${movie.tmdbId}?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&append_to_response=videos`);
-                const data = await response.json();
-                setMovieData(data);
-            } catch (error) { console.error('Failed to fetch movie data:', error); }
-            finally { setIsLoading(false); }
-        };
-        fetchMovieData();
-        return () => window.removeEventListener('resize', checkMobile);
-    }, [movie.tmdbId]);
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    const fetchMovieData = async () => {
+      try {
+        setIsLoading(true);
+        const response = await fetch(`https://api.themoviedb.org/3/movie/${movie.tmdbId}?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&append_to_response=videos`);
+        const data = await response.json();
+        setMovieData(data);
+      } catch (error) { console.error('Failed to fetch movie data:', error); }
+      finally { setIsLoading(false); }
+    };
+    fetchMovieData();
+    return () => window.removeEventListener('resize', checkMobile);
+  }, [movie.tmdbId]);
 
-    useEffect(() => { if (typeof window !== 'undefined') { sessionStorage.setItem('fromSe7enCollection', 'true'); sessionStorage.removeItem('fromInceptionCollection'); sessionStorage.removeItem('fromMementoCollection'); sessionStorage.removeItem('fromShutterIslandCollection'); } }, []);
-    useEffect(() => { const handleScroll = () => setScrollY(window.scrollY); window.addEventListener('scroll', handleScroll, { passive: true }); return () => window.removeEventListener('scroll', handleScroll); }, []);
+  useEffect(() => { if (typeof window !== 'undefined') { sessionStorage.setItem('fromSe7enCollection', 'true'); sessionStorage.removeItem('fromInceptionCollection'); sessionStorage.removeItem('fromMementoCollection'); sessionStorage.removeItem('fromShutterIslandCollection'); } }, []);
+  useEffect(() => { const handleScroll = () => setScrollY(window.scrollY); window.addEventListener('scroll', handleScroll, { passive: true }); return () => window.removeEventListener('scroll', handleScroll); }, []);
 
-    const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
-    const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
+  const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
+  const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
-    if (isLoading) return (<div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: COLORS.bgPrimary }}><div className="text-center"><div className="w-12 h-12 sm:w-16 sm:h-16 border-4 rounded-full animate-spin mx-auto mb-4" style={{ borderColor: COLORS.borderLight, borderTopColor: COLORS.accent }}></div><p className="text-sm sm:text-base" style={{ color: COLORS.textMuted }}>Loading...</p></div></div>);
+  if (isLoading) return (<div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: COLORS.bgPrimary }}><div className="text-center"><div className="w-12 h-12 sm:w-16 sm:h-16 border-4 rounded-full animate-spin mx-auto mb-4" style={{ borderColor: COLORS.borderLight, borderTopColor: COLORS.accent }}></div><p className="text-sm sm:text-base" style={{ color: COLORS.textMuted }}>Loading...</p></div></div>);
 
-    return (
-        <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
-            <Head>
-                <title>{movie.Title} ({currentMovieYear}) - Movies Like Se7en | Filmiway</title>
-                <meta name="description" content={`${movie.Title} (${currentMovieYear}) - A dark psychological thriller like Se7en. Analysis, ratings & where to stream.`} />
-                <link rel="canonical" href={`https://filmiway.com/collection/movies-like-se7en/${movie.imdbID}`} />
-                <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-                <meta name="robots" content="index, follow" />
-                <meta name="language" content="English" />
-                
-                {/* Open Graph */}
-                <meta property="og:title" content={`${movie.Title} (${currentMovieYear}) - Movies Like Se7en`} />
-                <meta property="og:description" content={`A dark psychological thriller like Se7en. Analysis, ratings & where to stream.`} />
-                <meta property="og:type" content="video.movie" />
-                <meta property="og:url" content={`https://filmiway.com/collection/movies-like-se7en/${movie.imdbID}`} />
-                <meta property="og:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
-                
-                {/* Twitter Card */}
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content={`${movie.Title} (${currentMovieYear})`} />
-                <meta name="twitter:description" content={`A dark psychological thriller like Se7en`} />
-                <meta name="twitter:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
-            </Head>
+  return (
+    <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
+      <Head>
+        <title>{movie.Title} ({currentMovieYear}) - Movies Like Se7en | Filmiway</title>
+        <meta name="description" content={`${movie.Title} (${currentMovieYear}) - A dark psychological thriller like Se7en. Analysis, ratings & where to stream.`} />
+        <link rel="canonical" href={`https://filmiway.com/collection/movies-like-se7en/${movie.imdbID}`} />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+        <meta name="robots" content="index, follow" />
+        <meta name="language" content="English" />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content={`${movie.Title} (${currentMovieYear}) - Movies Like Se7en`} />
+        <meta property="og:description" content={`A dark psychological thriller like Se7en. Analysis, ratings & where to stream.`} />
+        <meta property="og:type" content="video.movie" />
+        <meta property="og:url" content={`https://filmiway.com/collection/movies-like-se7en/${movie.imdbID}`} />
+        <meta property="og:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={`${movie.Title} (${currentMovieYear})`} />
+        <meta name="twitter:description" content={`A dark psychological thriller like Se7en`} />
+        <meta name="twitter:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
+      </Head>
 
-            <SubtleFilmGrain />
-            <div className="absolute inset-0"><CinematicBackground /></div>
-            <SmartBackButton />
-            <div className="relative z-10 pt-10 sm:pt-12 lg:pt-16">
-                <Se7enBreadcrumb movie={movie} />
-                <div className="container mx-auto px-0 pb-16 sm:pb-24 lg:pb-32 max-w-7xl">
-                    <OptimizedBanner movie={movie} movieData={movieData} trailer={trailer} isMobile={isMobile} />
-                    <motion.div id="watch" initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.2, duration: 0.8 }} className="space-y-8 sm:space-y-12 px-3 sm:px-4 lg:px-6">
-                        <MovieDetailsSection movie={movie} fromSe7enCollection={true} />
-                    </motion.div>
-                    <div className="px-3 sm:px-4 lg:px-6"><AuthorCreditSection /><TMDBAttribution /></div>
-                </div>
-            </div>
+      <SubtleFilmGrain />
+      <div className="absolute inset-0"><CinematicBackground /></div>
+      <SmartBackButton />
+      <div className="relative z-10 pt-10 sm:pt-12 lg:pt-16">
+        <Se7enBreadcrumb movie={movie} />
+        <div className="container mx-auto px-0 pb-16 sm:pb-24 lg:pb-32 max-w-7xl">
+          {/* ✅ PASS POSTER URL TO BANNER SO IT SHOWS UP IMMEDIATELY */}
+          <OptimizedBanner movie={{ ...movie, poster: posterUrl }} movieData={movieData} trailer={trailer} isMobile={isMobile} />
+          <motion.div id="watch" initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.2, duration: 0.8 }} className="space-y-8 sm:space-y-12 px-3 sm:px-4 lg:px-6">
+            <MovieDetailsSection movie={movie} fromSe7enCollection={true} />
+          </motion.div>
+          <div className="px-3 sm:px-4 lg:px-6"><AuthorCreditSection /><TMDBAttribution /></div>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 // ✅ FIXED: Using ID instead of Slug for static paths
 export async function getStaticPaths() {
-    const paths = COMPLETE_MOVIE_DATABASE.map((movie) => ({ params: { id: movie.imdbID } }));
+    const paths = COMPLETE_MOVIE_DATABASE.map((movie) => ({ 
+        params: { id: movie.imdbID } // You are telling Next.js to build paths like /tt0468569
+    }));
     return { paths, fallback: false };
 }
 
-// ✅ FIXED: Using ID instead of Slug for props
+
+// ✅ FIXED: Passing all required props including fallback posters
 export async function getStaticProps({ params }) {
-    const movie = COMPLETE_MOVIE_DATABASE.find(m => m.imdbID === params.id);
-    if (!movie) return { notFound: true };
-    return { props: { movie } };
+  const movie = COMPLETE_MOVIE_DATABASE.find(m => m.imdbID === params.id);
+  
+  if (!movie) return { notFound: true };
+  
+  return { 
+    props: { 
+      movie,
+      movieData: COMPLETE_MOVIE_DATA[movie.tmdbId] || null, // Pass detailed data
+      posterUrl: FALLBACK_POSTERS[movie.tmdbId] || null,    // Pass fallback poster
+      fromSe7enCollection: true                             // Pass flag
+    } 
+  };
 }
 
 export default Se7enMoviePage;

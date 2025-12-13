@@ -70,6 +70,21 @@ const CollectionsHub = () => {
             hasSubCollections: false
         },
 
+
+        {
+            id: 'se7en',
+            title: 'Movies Like Se7en',
+            description: 'Dark, atmospheric crime thrillers with obsessed detectives and shocking psychological twists',
+            icon: Eye,  // 👁️ Using Eye icon (signifying investigation/witnessing horror)
+            gradient: 'from-amber-700 to-gray-900',  // 🟧🌑 Gritty Amber/Dark Gray gradient
+            movieCount: '10',
+            rating: '8.8',
+            directLink: '/collection/movies-like-se7en',
+            hasSubCollections: false
+        },
+
+
+
 {
     id: 'matrix',
     title: 'Movies Like The Matrix',

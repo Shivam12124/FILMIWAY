@@ -13,7 +13,7 @@ export const COMPLETE_MOVIE_DATABASE = [
   { tmdbId: 146233, imdbID: 'tt1392214', Title: 'Prisoners', year: 2013, genre: 'Crime Thriller', runtime: 153, rank: 3 },
   { tmdbId: 274, imdbID: 'tt0102926', Title: 'The Silence of the Lambs', year: 1991, genre: 'Psychological Horror', runtime: 118, rank: 4 },
   { tmdbId: 65754, imdbID: 'tt1568346', Title: 'The Girl with the Dragon Tattoo', year: 2011, genre: 'Mystery Thriller', runtime: 158, rank: 5 },
-  { tmdbId: 12589, imdbID: 'tt1190539', Title: 'The Chaser', year: 2008, genre: 'Action Thriller', runtime: 125, rank: 6 },
+  { tmdbId: 13855, imdbID: 'tt1190539', Title: 'The Chaser', year: 2008, genre: 'Action Thriller', runtime: 125, rank: 6 },
   { tmdbId: 414906, imdbID: 'tt1877830', Title: 'The Batman', year: 2022, genre: 'Neo-Noir', runtime: 176, rank: 7 },
   { tmdbId: 36095, imdbID: 'tt0123948', Title: 'Cure', year: 1997, genre: 'Psychological Horror', runtime: 111, rank: 8 },
   { tmdbId: 8740, imdbID: 'tt0096163', Title: 'The Vanishing', year: 1988, genre: 'Thriller', runtime: 107, rank: 9 },
@@ -41,7 +41,7 @@ export const SENSITIVE_TIMELINES = {
     { start: '01:05:00', end: '01:10:00', type: 'Sexual Violence', severity: 'Extreme', description: 'Assault scene' },
     { start: '01:15:00', end: '01:20:00', type: 'Revenge', severity: 'Extreme', description: 'Revenge scene' }
   ]},
-  12589: { scenes: [
+  13855: { scenes: [
     { start: '00:45:00', end: '00:50:00', type: 'Violence', severity: 'High', description: 'Hammer attack' }
   ]},
   414906: { scenes: [
@@ -64,7 +64,7 @@ export const FALLBACK_POSTERS = {
   146233: 'https://image.tmdb.org/t/p/w500/tuRcCnSj.jpg',
   274: 'https://image.tmdb.org/t/p/w500/rplLJ2hPcOQ.jpg',
   65754: 'https://image.tmdb.org/t/p/w500/mq14.jpg',
-  12589: 'https://image.tmdb.org/t/p/w500/7I5b.jpg',
+  13855: 'https://image.tmdb.org/t/p/w500/7I5b.jpg',
   414906: 'https://image.tmdb.org/t/p/w500/74xTEgt7R36Fpo.jpg',
   36095: 'https://image.tmdb.org/t/p/w500/py0f.jpg',
   8740: 'https://image.tmdb.org/t/p/w500/2j4h.jpg',
@@ -205,8 +205,8 @@ export const COMPLETE_MOVIE_DATA = {
     themes: ["Corruption", "Abuse", "Secrets", "Revenge"],
     awards: "Academy Award Winner (Editing)"
   }),
-  12589: createMovieData({
-    tmdbId: 12589,
+  13855: createMovieData({
+    tmdbId: 13855,
     imdbID: 'tt1190539',
     Title: 'The Chaser',
     se7enDNAScore: 90,
@@ -258,7 +258,7 @@ export const COMPLETE_MOVIE_DATA = {
     awards: "Academy Award Nomination (Sound)"
   }),
   36095: createMovieData({
-    tmdbId: 36095,
+    tmdbId:36095,
     imdbID: 'tt0123948',
     Title: 'Cure',
     se7enDNAScore: 88,
@@ -343,7 +343,7 @@ export const STRATEGIC_QUOTES = {
   146233: "Pray for the best, prepare for the worst.",
   274: "Quid pro quo, Clarice.",
   65754: "I want you to help me catch a killer of women.",
-  12589: "Hey, did you sell her?",
+  138559: "Hey, did you sell her?",
   414906: "I am the shadows.",
   36095: "Who are you?",
   8740: "I just want to know what happened.",
