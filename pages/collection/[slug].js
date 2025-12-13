@@ -7,14 +7,8 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Crown, Star, MessageSquare, Volume2, VolumeX, Play, Pause, Menu, X, Home, Eye, MousePointer, TrendingUp, Users, Search, Brain, Zap, Film, Award, Mountain, Shield } from 'lucide-react';
 
-// ✅ NEW SURVIVAL FORMAT IMPORTS (MATRIX & SE7EN ADDED)
-import { COMPLETE_MOVIE_DATABASE as SURVIVAL_DATABASE, COMPLETE_MOVIE_DATA as SURVIVAL_DATA } from '../../utils/survivalMovieData';
-import { COMPLETE_MOVIE_DATABASE as MATRIX_DATABASE } from '../../utils/matrixMovieData';
-import { COMPLETE_MOVIE_DATABASE as SE7EN_DATABASE, COMPLETE_MOVIE_DATA as SE7EN_DATA } from '../../utils/se7enMovieData'; // ✅ SE7EN IMPORT ADDED
-
-import { COMPLETE_MOVIE_DATABASE as INTERSTELLAR_DATABASE, COMPLETE_MOVIE_DATA as INTERSTELLAR_DATA } from '../../utils/interstellarMovieData';
-import { COMPLETE_MOVIE_DATABASE as CRIME_THRILLER_DATABASE, COMPLETE_MOVIE_DATA as CRIME_THRILLER_DATA } from '../../utils/crimeThrillerMovieData';
-import { COMPLETE_MOVIE_DATABASE as WAR_FILMS_DATABASE, COMPLETE_MOVIE_DATA as WAR_FILMS_DATA } from '../../utils/warFilmsMovieData';
+// ✅ SINGLE IMPORT - all movies in one database
+import { COMPLETE_MOVIE_DATABASE, COMPLETE_MOVIE_DATA } from '../../utils/movieData';
 
 // Other Collections (Old Format - To be converted later)
 import DRAMA_MOVIES from '../../utils/dramaMovieData';
@@ -34,7 +28,7 @@ import CinematicMovieCard from '../../components/CinematicMovieCard';
 
 // Data
 import { COLLECTIONS, getAllCollectionSlugs, getCollectionBySlug } from '../../data/collections';
-import { COMPLETE_MOVIE_DATABASE, COMPLETE_MOVIE_DATA } from '../../utils/movieData';
+
 
 // Safe property getters
 const getMovieTitle = (movie) => movie?.Title || movie?.title || movie?.name || 'Unknown Movie';
