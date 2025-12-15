@@ -499,7 +499,7 @@ const SurvivalMoviePage = ({ movie }) => {
   <meta property="og:title" content={`${movie.Title} (${currentMovieYear}) - Survival`} />
   <meta property="og:description" content={`A gripping survival film. Analysis, ratings & where to stream.`} />
   <meta property="og:type" content="video.movie" />
-  <meta property="og:url" content={`https://filmiway.com/movies/survival/${movie.imdbID}`} />
+ 
   <meta property="og:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
   
   {/* Twitter Card */}

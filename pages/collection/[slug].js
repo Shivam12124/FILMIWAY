@@ -7,7 +7,16 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Crown, Star, MessageSquare, Volume2, VolumeX, Play, Pause, Menu, X, Home, Eye, MousePointer, TrendingUp, Users, Search, Brain, Zap, Film, Award, Mountain, Shield } from 'lucide-react';
 
-// ✅ SINGLE IMPORT - all movies in one database
+// ✅ NEW SURVIVAL FORMAT IMPORTS (MATRIX & SE7EN ADDED)
+import { COMPLETE_MOVIE_DATABASE as SURVIVAL_DATABASE, COMPLETE_MOVIE_DATA as SURVIVAL_DATA } from '../../utils/survivalMovieData';
+import { COMPLETE_MOVIE_DATABASE as MATRIX_DATABASE } from '../../utils/matrixMovieData';
+import { COMPLETE_MOVIE_DATABASE as SE7EN_DATABASE, COMPLETE_MOVIE_DATA as SE7EN_DATA } from '../../utils/se7enMovieData';
+
+import { COMPLETE_MOVIE_DATABASE as INTERSTELLAR_DATABASE, COMPLETE_MOVIE_DATA as INTERSTELLAR_DATA } from '../../utils/interstellarMovieData';
+import { COMPLETE_MOVIE_DATABASE as CRIME_THRILLER_DATABASE, COMPLETE_MOVIE_DATA as CRIME_THRILLER_DATA } from '../../utils/crimeThrillerMovieData';
+import { COMPLETE_MOVIE_DATABASE as WAR_FILMS_DATABASE, COMPLETE_MOVIE_DATA as WAR_FILMS_DATA } from '../../utils/warFilmsMovieData';
+
+// ✅ INCEPTION, MEMENTO, SHUTTER ISLAND (from movieData.js)
 import { COMPLETE_MOVIE_DATABASE, COMPLETE_MOVIE_DATA } from '../../utils/movieData';
 
 // Other Collections (Old Format - To be converted later)
@@ -1229,18 +1238,28 @@ const getStaticMetaContent = () => {
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 1.2, ease: "easeOut" }}
 >
-    <h1 
-        className="text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-extralight tracking-[0.05em] sm:tracking-[0.1em] text-transparent bg-clip-text bg-gradient-to-r from-yellow-100 via-yellow-300 to-amber-300" 
-        style={{ 
-            fontFamily: "'Playfair Display', serif", 
-            textShadow: '0 0 80px rgba(234, 179, 8, 0.15)',
-            lineHeight: '1.1'
-        }}
-    >
-        <span className="block leading-tight" style={{ letterSpacing: '0.02em' }}>
-            {headerContent.title}
-        </span>
-    </h1>
+{/* ✅ HIDDEN H1 FOR SEO (GOOGLE READS THIS) */}
+<h1 className="sr-only">
+    {headerContent.title}
+</h1>
+
+{/* ✅ VISUAL H1 (BEAUTIFUL GRADIENT FOR USERS) */}
+<div 
+    className="text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-extralight tracking-[0.05em] sm:tracking-[0.1em] text-transparent bg-clip-text bg-gradient-to-r from-yellow-100 via-yellow-300 to-amber-300" 
+    style={{ 
+        fontFamily: "'Playfair Display', serif", 
+        textShadow: '0 0 80px rgba(234, 179, 8, 0.15)',
+        lineHeight: '1.1'
+    }}
+    role="heading"
+    aria-level="1"
+    aria-label={headerContent.title}
+>
+    <span className="block leading-tight" style={{ letterSpacing: '0.02em' }}>
+        {headerContent.title}
+    </span>
+</div>
+
 </motion.div>
 
                         
@@ -1414,7 +1433,7 @@ return (
             <meta property="og:title" key={`og-title-${collection.slug}`} content={metaContent.ogTitle || metaContent.title || collection.title} />
             <meta property="og:description" key={`og-desc-${collection.slug}`} content={metaContent.description || collection.description} />
             <meta property="og:type" content="website" />
-            <meta property="og:url" content={`https://filmiway.com/collection/${collection.slug}`} />
+           
 
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:title" key={`twitter-title-${collection.slug}`} content={metaContent.twitterTitle || metaContent.title || collection.title} />
@@ -1439,7 +1458,7 @@ return (
                                     : collection?.slug === 'movies-like-the-matrix'
                                     ? 'movies/matrix/'
                                     : collection?.slug === 'movies-like-se7en' // ✅ NEW SE7EN PATH
-                                    ? 'collection/movies-like-se7en/'
+                                    ? `/movies/like-se7en/${currentMovie.imdbID}`
                                     : collection?.slug === 'movies-like-interstellar'
                                     ? 'movies/interstellar/'
                                     : collection?.slug === 'movies-like-memento'
@@ -1577,8 +1596,8 @@ return (
                                                 ? `/movies/like-inception/${currentMovie.imdbID}`
                                                 : collection.slug === 'movies-like-the-matrix'
                                                 ? `/movies/matrix/${currentMovie.imdbID}`
-                                                : collection.slug === 'movies-like-se7en' // ✅ ADDED SE7EN LINK
-                                                ? `/collection/movies-like-se7en/${currentMovie.imdbID}`
+                                                : collection.slug === 'movies-like-se7en' // ✅ FIXED SE7EN LINK
+                                                ? `/movies/like-se7en/${currentMovie.imdbID}`
                                                 : collection.slug === 'movies-like-interstellar'
                                                 ? `/movies/interstellar/${currentMovie.imdbID}`
                                                 : collection.slug === 'movies-like-memento'
@@ -1611,6 +1630,7 @@ return (
                                                 ? `/movies/war-films/${currentMovie.imdbID}`
                                                 : `/movies/${currentMovie.imdbID}`
                                         }
+
                                         key={currentMovieIndex}
                                         onClick={handleMovieClick}
                                     >
@@ -1651,7 +1671,7 @@ return (
                                         } else if (collection.slug === 'movies-like-the-matrix') {
                                             detailPageUrl = `/movies/matrix/${currentMovie.imdbID}`;
                                         } else if (collection.slug === 'movies-like-se7en') { // ✅ ADDED SE7EN BUTTON LOGIC
-                                            detailPageUrl = `/collection/movies-like-se7en/${currentMovie.imdbID}`;
+detailPageUrl = `/movies/like-se7en/${currentMovie.imdbID}`;
                                         } else if (collection.slug === 'movies-like-interstellar') {
                                             detailPageUrl = `/movies/interstellar/${currentMovie.imdbID}`;
                                         } else if (collection.slug === 'movies-like-memento') {
@@ -1839,15 +1859,15 @@ export async function getStaticProps({ params }) {
         case 'movies-like-the-matrix': 
             movieDatabase = MATRIX_DATABASE;
             break;
-        case 'movies-like-se7en': // ✅ NEW SE7EN COLLECTION
-            movieDatabase = SE7EN_DATABASE;
-            break;
+case 'movies-like-se7en':  // ✅ ADD THIS CASE
+    movieDatabase = SE7EN_DATABASE;
+    break;
         case 'movies-like-interstellar':
             movieDatabase = INTERSTELLAR_DATABASE;
             break;
-        case 'movies-like-inception':
-            movieDatabase = INCEPTION_DATABASE || COMPLETE_MOVIE_DATABASE;
-            break;
+case 'movies-like-inception':
+    movieDatabase = COMPLETE_MOVIE_DATABASE;
+    break;
         case 'movies-like-memento':
             movieDatabase = COMPLETE_MOVIE_DATABASE;
             break;

@@ -99,6 +99,16 @@
         <priority>0.9</priority>
     </url>
 
+   
+
+<!-- ⚔️ BEST REVENGE MOVIES COLLECTION PAGE -->
+<url>
+    <loc>https://filmiway.com/collection/best-revenge-movies</loc>
+    <lastmod>2025-12-15T11:10:00+05:30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+</url>
+
 
 <!-- 🔬 BEST SCI-FI MOVIES COLLECTION PAGE -->
 <url>
@@ -147,6 +157,23 @@
     <priority>0.9</priority>
 </url>
 
+<!-- 🔍 MOVIES LIKE SE7EN COLLECTION PAGE -->
+<url>
+    <loc>https://filmiway.com/collection/movies-like-se7en</loc>
+    <lastmod>2025-12-15T10:58:00+05:30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+</url>
+
+
+
+<!-- 🕶️ MOVIES LIKE THE MATRIX COLLECTION PAGE -->
+<url>
+    <loc>https://filmiway.com/collection/movies-like-the-matrix</loc>
+    <lastmod>2025-12-15T11:18:00+05:30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+</url>
 
 
 <!-- 🧠 MOVIES LIKE INCEPTION (10 MOVIES - CORRECTED) -->
@@ -508,6 +535,231 @@
     </url>
 
 
+<!-- 🕶️ 10 MOVIES LIKE THE MATRIX -->
+<url>
+    <loc>https://filmiway.com/movies/matrix/tt0118929</loc>
+    <lastmod>2025-12-15T11:18:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/matrix/tt1375666</loc>
+    <lastmod>2025-12-15T11:18:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/matrix/tt0139809</loc>
+    <lastmod>2025-12-15T11:18:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/matrix/tt0120663</loc>
+    <lastmod>2025-12-15T11:18:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/matrix/tt0945513</loc>
+    <lastmod>2025-12-15T11:18:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/matrix/tt0181689</loc>
+    <lastmod>2025-12-15T11:18:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/matrix/tt6499752</loc>
+    <lastmod>2025-12-15T11:18:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/matrix/tt0100802</loc>
+    <lastmod>2025-12-15T11:18:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/matrix/tt1856101</loc>
+    <lastmod>2025-12-15T11:18:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/matrix/tt1631867</loc>
+    <lastmod>2025-12-15T11:18:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+
+
+<!-- ⚔️ 10 BEST REVENGE MOVIES -->
+<url>
+    <loc>https://filmiway.com/movies/revenge/tt0364569</loc>
+    <lastmod>2025-12-15T11:10:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/revenge/tt0172495</loc>
+    <lastmod>2025-12-15T11:10:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/revenge/tt0105695</loc>
+    <lastmod>2025-12-15T11:10:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/revenge/tt0112573</loc>
+    <lastmod>2025-12-15T11:10:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/revenge/tt0482571</loc>
+    <lastmod>2025-12-15T11:10:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/revenge/tt1663202</loc>
+    <lastmod>2025-12-15T11:10:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/revenge/tt0378194</loc>
+    <lastmod>2025-12-15T11:10:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/revenge/tt2911666</loc>
+    <lastmod>2025-12-15T11:10:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/revenge/tt1588170</loc>
+    <lastmod>2025-12-15T11:10:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/revenge/tt0245844</loc>
+    <lastmod>2025-12-15T11:10:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+
+
+<!-- 🔍 MOVIES LIKE SE7EN (11 MOVIES) -->
+<url>
+    <loc>https://filmiway.com/movies/like-se7en/tt0443706</loc>
+    <lastmod>2025-12-15T10:51:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/like-se7en/tt0353969</loc>
+    <lastmod>2025-12-15T10:51:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/like-se7en/tt1392214</loc>
+    <lastmod>2025-12-15T10:51:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/like-se7en/tt0102926</loc>
+    <lastmod>2025-12-15T10:51:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/like-se7en/tt1568346</loc>
+    <lastmod>2025-12-15T10:51:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/like-se7en/tt1190539</loc>
+    <lastmod>2025-12-15T10:51:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/like-se7en/tt1877830</loc>
+    <lastmod>2025-12-15T10:51:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/like-se7en/tt0123948</loc>
+    <lastmod>2025-12-15T10:51:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/like-se7en/tt0096163</loc>
+    <lastmod>2025-12-15T10:51:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/like-se7en/tt0327056</loc>
+    <lastmod>2025-12-15T10:51:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/like-se7en/tt0114369</loc>
+    <lastmod>2025-12-15T10:51:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+
 
 <!-- ⚔️ 10 BEST WAR FILMS -->
 <url>
@@ -756,7 +1008,7 @@
 
 
 
-<!-- 💰 BEST HEIST THRILLER MOVIES COLLECTION PAGE -->
+
 
 
 

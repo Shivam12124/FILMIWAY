@@ -76,212 +76,6 @@ const MovieCard = memo(({ movie, index, isMobile, onClick }) => (
 MovieCard.displayName = 'MovieCard';
 
 
-// 🎯 FEATURED COLLECTIONS - All 14 Strategic Crawl Links
-const FeaturedCollectionsSection = memo(() => {
-  const collections = [
-    {
-      slug: 'best-crime-thriller-movies',
-      title: 'Crime Thrillers',
-      subtitle: 'Heat to The Departed',
-      icon: '🔫',
-      color: 'from-red-500/10 to-orange-500/10',
-      borderColor: 'border-red-500/20',
-      hoverColor: 'hover:from-red-500/20 hover:to-orange-500/20 hover:border-red-400/40',
-      accentColor: 'text-red-400'
-    },
-    {
-      slug: 'best-heist-thriller-movies',
-      title: 'Heist Masterpieces',
-      subtitle: "Ocean's Eleven to Inside Man",
-      icon: '💰',
-      color: 'from-amber-500/10 to-yellow-500/10',
-      borderColor: 'border-amber-500/20',
-      hoverColor: 'hover:from-amber-500/20 hover:to-yellow-500/20 hover:border-amber-400/40',
-      accentColor: 'text-amber-400'
-    },
-    {
-      slug: 'best-survival-movies',
-      title: 'Survival Epics',
-      subtitle: 'Against All Odds',
-      icon: '⛰️',
-      color: 'from-green-500/10 to-teal-500/10',
-      borderColor: 'border-green-500/20',
-      hoverColor: 'hover:from-green-500/20 hover:to-teal-500/20 hover:border-green-400/40',
-      accentColor: 'text-green-400'
-    },
-    {
-      slug: 'best-time-travel-movies',
-      title: 'Time Travel',
-      subtitle: 'Paradox Films',
-      icon: '⏳',
-      color: 'from-purple-500/10 to-pink-500/10',
-      borderColor: 'border-purple-500/20',
-      hoverColor: 'hover:from-purple-500/20 hover:to-pink-500/20 hover:border-purple-400/40',
-      accentColor: 'text-purple-400'
-    },
-    {
-      slug: 'best-sci-fi-movies',
-      title: 'Sci-Fi Classics',
-      subtitle: 'Blade Runner to Interstellar',
-      icon: '🚀',
-      color: 'from-indigo-500/10 to-blue-500/10',
-      borderColor: 'border-indigo-500/20',
-      hoverColor: 'hover:from-indigo-500/20 hover:to-blue-500/20 hover:border-indigo-400/40',
-      accentColor: 'text-indigo-400'
-    },
-    {
-      slug: 'best-psychological-thriller-movies',
-      title: 'Psychological Thrillers',
-      subtitle: 'Mind-Bending Darkness',
-      icon: '🧠',
-      color: 'from-blue-500/10 to-cyan-500/10',
-      borderColor: 'border-blue-500/20',
-      hoverColor: 'hover:from-blue-500/20 hover:to-cyan-500/20 hover:border-blue-400/40',
-      accentColor: 'text-blue-400'
-    },
-    {
-      slug: 'best-detective-thriller-movies',
-      title: 'Detective Mysteries',
-      subtitle: 'Zodiac to Prisoners',
-      icon: '🔍',
-      color: 'from-yellow-500/10 to-orange-500/10',
-      borderColor: 'border-yellow-500/20',
-      hoverColor: 'hover:from-yellow-500/20 hover:to-orange-500/20 hover:border-yellow-400/40',
-      accentColor: 'text-yellow-400'
-    },
-    {
-      slug: 'best-mystery-thriller-movies',
-      title: 'Mystery Thrillers',
-      subtitle: 'Unsolvable Puzzles',
-      icon: '🎭',
-      color: 'from-pink-500/10 to-rose-500/10',
-      borderColor: 'border-pink-500/20',
-      hoverColor: 'hover:from-pink-500/20 hover:to-rose-500/20 hover:border-pink-400/40',
-      accentColor: 'text-pink-400'
-    },
-    {
-      slug: 'best-thriller-movies',
-      title: 'Suspense Thrillers',
-      subtitle: 'Edge-of-Seat Films',
-      icon: '⚡',
-      color: 'from-red-500/10 to-pink-500/10',
-      borderColor: 'border-red-500/20',
-      hoverColor: 'hover:from-red-500/20 hover:to-pink-500/20 hover:border-red-400/40',
-      accentColor: 'text-red-400'
-    },
-    {
-      slug: 'best-revenge-movies',
-      title: 'Revenge Cinema',
-      subtitle: 'Oldboy to John Wick',
-      icon: '⚔️',
-      color: 'from-red-500/10 to-red-600/10',
-      borderColor: 'border-red-500/20',
-      hoverColor: 'hover:from-red-500/20 hover:to-red-600/20 hover:border-red-400/40',
-      accentColor: 'text-red-400'
-    },
-    {
-      slug: 'best-war-films',
-      title: 'War Masterpieces',
-      subtitle: 'D-Day to Jungle Combat',
-      icon: '🎬',
-      color: 'from-slate-500/10 to-gray-500/10',
-      borderColor: 'border-slate-500/20',
-      hoverColor: 'hover:from-slate-500/20 hover:to-gray-500/20 hover:border-slate-400/40',
-      accentColor: 'text-slate-400'
-    },
-    {
-      slug: 'best-drama-movies-on-netflix',
-      title: 'Award-Winning Dramas',
-      subtitle: 'Oscar-Level Films',
-      icon: '🏆',
-      color: 'from-amber-500/10 to-yellow-500/10',
-      borderColor: 'border-amber-500/20',
-      hoverColor: 'hover:from-amber-500/20 hover:to-yellow-500/20 hover:border-amber-400/40',
-      accentColor: 'text-amber-400'
-    },
-    {
-      slug: 'movies-like-inception',
-      title: 'Like Inception',
-      subtitle: 'Mind-Bending Masterpieces',
-      icon: '💭',
-      color: 'from-violet-500/10 to-purple-500/10',
-      borderColor: 'border-violet-500/20',
-      hoverColor: 'hover:from-violet-500/20 hover:to-purple-500/20 hover:border-violet-400/40',
-      accentColor: 'text-violet-400'
-    },
-    {
-      slug: 'movies-like-shutter-island',
-      title: 'Like Shutter Island',
-      subtitle: 'Twisted Psychological Thrillers',
-      icon: '🏝️',
-      color: 'from-teal-500/10 to-cyan-500/10',
-      borderColor: 'border-teal-500/20',
-      hoverColor: 'hover:from-teal-500/20 hover:to-cyan-500/20 hover:border-teal-400/40',
-      accentColor: 'text-teal-400'
-    }
-  ];
-
-  return (
-    <section className="mb-24 select-none">
-      <motion.div
-        className="text-center mb-12"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-      >
-        <div className="flex items-center justify-center gap-3 mb-3">
-          <Layers className="w-7 h-7 text-yellow-400" />
-          <h2 className="text-3xl sm:text-4xl font-light text-white">
-            Curated Collections
-          </h2>
-        </div>
-        <p className="text-gray-400 max-w-3xl mx-auto text-lg font-light">
-          Expertly ranked film collections. Each curated for intensity, storytelling, and impact.
-        </p>
-      </motion.div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-        {collections.map((collection, index) => (
-          <motion.div
-            key={collection.slug}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.08, duration: 0.5 }}
-          >
-            <Link href={`/collection/${collection.slug}`} className="group block h-full">
-              <div className={`bg-gradient-to-br ${collection.color} border ${collection.borderColor} rounded-2xl p-6 h-full transition-all duration-300 ${collection.hoverColor} hover:-translate-y-1 cursor-pointer`}>
-                {/* Icon & Title Row */}
-                <div className="flex items-start justify-between mb-4">
-                  <div>
-                    <h3 className={`text-2xl font-semibold ${collection.accentColor} mb-1 group-hover:brightness-110 transition-all`}>
-                      {collection.title}
-                    </h3>
-                    <p className="text-gray-400 text-sm font-light">
-                      {collection.subtitle}
-                    </p>
-                  </div>
-                  <span className="text-4xl opacity-60 group-hover:opacity-100 transition-opacity">
-                    {collection.icon}
-                  </span>
-                </div>
-
-                {/* Action Indicator */}
-                <div className="flex items-center gap-2 text-yellow-400 text-sm font-medium group-hover:gap-3 transition-all">
-                  <span>Explore</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </div>
-              </div>
-            </Link>
-          </motion.div>
-        ))}
-      </div>
-    </section>
-  );
-});
-
-FeaturedCollectionsSection.displayName = 'FeaturedCollectionsSection';
 
 
 const FilmiwayHomepage = () => {
@@ -556,48 +350,47 @@ const FilmiwayHomepage = () => {
                     >
                         <div className="flex items-center justify-center mb-4 gap-2">
                             <Layers className="w-5 h-5 text-yellow-400" />
-                            <h2 className="text-xl font-light text-white">Featured Collection</h2>
-                        </div>
+<h2 className="text-xl font-light text-white">Featured Collections</h2>
+</div>
 
-
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                            <Link href="/collection/best-survival-movies" className="group block">
-                                <div className="bg-gradient-to-br from-green-500/10 to-teal-500/10 border border-green-500/20 rounded-2xl p-6 hover:from-green-500/20 hover:to-teal-500/20 hover:border-green-400/40 transition-all duration-300">
-                                    <div className="text-green-400 font-semibold text-xl mb-2 group-hover:text-green-300">
-                                        Survival Movies
-                                    </div>
-                                    <div className="text-gray-300 text-lg group-hover:text-white mb-3">
-                                        The Best Survival Films That Test Human Limits
-                                    </div>
-                                    <div className="text-gray-400 text-sm">
-                                        Intense and raw survival stories emphasizing grit, pain, and human endurance.
-                                    </div>
-                                </div>
-                            </Link>
-
-
-                            <Link href="/collection/movies-like-shutter-island" className="group block">
-                                <div className="bg-gradient-to-br from-purple-500/10 to-indigo-500/10 border border-purple-500/20 rounded-2xl p-6 hover:from-purple-500/20 hover:to-indigo-500/20 hover:border-purple-400/40 transition-all duration-300">
-                                    <div className="text-purple-400 font-semibold text-xl mb-2 group-hover:text-purple-300">
-                                        Shutter Island Collection
-                                    </div>
-                                    <div className="text-gray-300 text-lg group-hover:text-white mb-3">
-                                        Mind-Bending Psychological Thrillers Like Shutter Island
-                                    </div>
-                                    <div className="text-gray-400 text-sm">
-                                        Explore high-intensity psychological mysteries with twists, suspense, and dark secrets.
-                                    </div>
-                                </div>
-                            </Link>
-                        </div>
-                    </motion.div>
-                </motion.div>
+<div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+    {/* 🎬 COLLECTION 1: Movies Like Se7en */}
+    <Link href="/collection/movies-like-se7en" className="group block">
+        <div className="bg-gradient-to-br from-red-500/10 to-orange-500/10 border border-red-500/20 rounded-2xl p-6 hover:from-red-500/20 hover:to-orange-500/20 hover:border-red-400/40 transition-all duration-300">
+            <div className="text-red-400 font-semibold text-xl mb-2 group-hover:text-red-300">
+                Like Se7en
             </div>
-        </section>
-    ));
+            <div className="text-gray-300 text-lg group-hover:text-white mb-3">
+                Dark Detective Thrillers with Twisted Minds
+            </div>
+            <div className="text-gray-400 text-sm">
+                Gritty crime mysteries featuring detectives hunting serial killers with haunting atmospheres.
+            </div>
+        </div>
+    </Link>
 
+    {/* 🎬 COLLECTION 2: Movies Like The Matrix */}
+    <Link href="/collection/movies-like-the-matrix" className="group block">
+        <div className="bg-gradient-to-br from-cyan-500/10 to-blue-500/10 border border-cyan-500/20 rounded-2xl p-6 hover:from-cyan-500/20 hover:to-blue-500/20 hover:border-cyan-400/40 transition-all duration-300">
+            <div className="text-cyan-400 font-semibold text-xl mb-2 group-hover:text-cyan-300">
+                Like The Matrix
+            </div>
+            <div className="text-gray-300 text-lg group-hover:text-white mb-3">
+                Mind-Bending Sci-Fi Reality Benders
+            </div>
+            <div className="text-gray-400 text-sm">
+                Reality-questioning sci-fi epics with groundbreaking visuals and philosophical depth.
+            </div>
+        </div>
+    </Link>
+</div>
+</motion.div>
+</motion.div>
+</div>
+</section>
+));
 
-    HeroSection.displayName = 'HeroSection';
+HeroSection.displayName = 'HeroSection';
 
 
     const ProfessionalCarousel = memo(({ movies, sectionRef }) => {
@@ -793,10 +586,7 @@ const FilmiwayHomepage = () => {
                 <Navigation />
                 <HeroSection />
 
-                {/* 🎯 FEATURED COLLECTIONS - ALL 14 */}
-                <div className="container mx-auto px-4 sm:px-6">
-                    <FeaturedCollectionsSection />
-                </div>
+              
 
                 <main className="container mx-auto px-4 sm:px-6 py-16 space-y-16">
                     <MovieSection 

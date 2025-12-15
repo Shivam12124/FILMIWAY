@@ -506,7 +506,7 @@ const MysteryThrillerMoviePage = ({ movie }) => {
   <meta property="og:title" content={`${movie.title} (${movie.year}) - Mystery Thriller`} />
   <meta property="og:description" content={movie.synopsis?.substring(0, 120) || 'A mystery thriller film'} />
   <meta property="og:type" content="video.movie" />
-  <meta property="og:url" content={`https://filmiway.com/movies/mystery-thriller/${movie.imdbID}`} />
+  
   <meta property="og:image" content={mergedMovieData?.poster_path ? getTMDBImage(mergedMovieData.poster_path, 'w500') : ''} />
   
   {/* Twitter Card */}

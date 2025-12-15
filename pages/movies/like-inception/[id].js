@@ -295,7 +295,7 @@ const InceptionMoviePage = ({ movie }) => {
   <meta property="og:title" content={`${movie.Title} (${currentMovieYear}) - Like Inception`} />
   <meta property="og:description" content={`A compelling mind-bending film similar to Inception`} />
   <meta property="og:type" content="video.movie" />
-  <meta property="og:url" content={`https://filmiway.com/movies/like-inception/${movie.imdbID}`} />
+  
   <meta property="og:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
   
   {/* Twitter Card */}

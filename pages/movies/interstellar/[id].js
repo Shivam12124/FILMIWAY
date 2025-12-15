@@ -441,7 +441,7 @@ const InterstellarMoviePage = ({ movie }) => {
   <meta property="og:title" content={`${movie.Title} (${currentMovieYear}) - Space Exploration`} />
   <meta property="og:description" content={`A mind-bending space film. Analysis, ratings & where to stream.`} />
   <meta property="og:type" content="video.movie" />
-  <meta property="og:url" content={`https://filmiway.com/movies/interstellar/${movie.imdbID}`} />
+ 
   <meta property="og:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
   
   {/* Twitter Card */}

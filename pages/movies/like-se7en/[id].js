@@ -490,7 +490,7 @@ const Se7enMoviePage = ({ movie, posterUrl }) => {
         <meta property="og:title" content={`${movie.Title} (${currentMovieYear}) - Movies Like Se7en`} />
         <meta property="og:description" content={`A dark psychological thriller like Se7en. Analysis, ratings & where to stream.`} />
         <meta property="og:type" content="video.movie" />
-        <meta property="og:url" content={`https://filmiway.com/collection/movies-like-se7en/${movie.imdbID}`} />
+       
         <meta property="og:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
         
         {/* Twitter Card */}
