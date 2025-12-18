@@ -151,9 +151,6 @@ const ALL_REGIONS = [
   { code: 'ZW', name: 'Zimbabwe', flag: '🇿🇼' },
 ];
 
-// Top 12 regions for quick selection
-const TOP_REGIONS = ALL_REGIONS.slice(0, 12);
-
 async function detectUserCountry() {
   try {
     const response = await fetch('https://ipinfo.io/json');
@@ -213,10 +210,42 @@ function getDeepLink(providerId, region, title, tmdbId) {
   return `https://www.themoviedb.org/movie/${tmdbId}/watch?locale=${region}`;
 }
 
+// 🔧 SMART REGION SELECTION LOGIC
+function selectBestRegion(streamingData, userCountry) {
+  const availableRegions = Object.keys(streamingData);
+  
+  if (availableRegions.length === 0) {
+    return { selectedRegion: null, fallbackMessage: 'No data' };
+  }
+
+  // Priority 1: User's country
+  if (streamingData[userCountry]) {
+    console.log(`✅ Using user's country: ${userCountry}`);
+    return { selectedRegion: userCountry, fallbackMessage: null };
+  }
+
+  // Priority 2: USA (fallback)
+  if (streamingData['US']) {
+    console.log(`⚠️ ${userCountry} not available, falling back to USA`);
+    return { 
+      selectedRegion: 'US', 
+      fallbackMessage: `Not available in your country (${userCountry}). Showing USA availability instead.` 
+    };
+  }
+
+  // Priority 3: First available region
+  console.log(`⚠️ Neither ${userCountry} nor US available, using first available: ${availableRegions[0]}`);
+  return { 
+    selectedRegion: availableRegions[0], 
+    fallbackMessage: `Not available in your country. Showing ${ALL_REGIONS.find(r => r.code === availableRegions[0])?.name || availableRegions[0]} availability instead.` 
+  };
+}
+
 const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
   const [streamingData, setStreamingData] = useState({});
   const [userCountry, setUserCountry] = useState(null);
   const [selectedRegion, setSelectedRegion] = useState(null);
+  const [fallbackMessage, setFallbackMessage] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [showOtherRegions, setShowOtherRegions] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -241,24 +270,21 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
         if (data && Object.keys(data).length > 0) {
           setStreamingData(data);
 
-          if (data[detectedCountry]) {
-            setSelectedRegion(detectedCountry);
-            console.log(`✅ Using user's country: ${detectedCountry}`);
-          } else {
-            const availableRegions = Object.keys(data);
-            if (availableRegions.length > 0) {
-              setSelectedRegion(availableRegions[0]);
-              console.log(`⚠️ No data for ${detectedCountry}, using: ${availableRegions[0]}`);
-            }
-          }
+          // Use smart selection logic
+          const { selectedRegion: bestRegion, fallbackMessage: message } = selectBestRegion(data, detectedCountry);
+          setSelectedRegion(bestRegion);
+          setFallbackMessage(message);
+
           console.log('✅ Complete streaming data:', data);
         } else {
           console.warn('⚠️ No streaming data available for this movie');
           setStreamingData({});
+          setFallbackMessage('No streaming data available');
         }
       } catch (error) {
         console.error('❌ Error fetching streaming data:', error);
         setStreamingData({});
+        setFallbackMessage('Error loading streaming data');
       } finally {
         setIsLoading(false);
       }
@@ -295,7 +321,6 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
   const selectedRegionInfo = ALL_REGIONS.find((r) => r.code === selectedRegion);
   const userCountryInfo = ALL_REGIONS.find((r) => r.code === userCountry);
 
-  // 🔥 UNIFIED STREAMING PLATFORM CARD - ALL SAME YELLOW
   const StreamingPlatformCard = ({ provider, type, region }) => {
     const logoUrl = provider.logo_path ? `https://image.tmdb.org/t/p/w45${provider.logo_path}` : null;
     const deepLink = getDeepLink(provider.provider_id, region, movie.Title, movie.tmdbId);
@@ -308,7 +333,7 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
     return (
       <motion.button
         onClick={handleClick}
-        className="group relative p-4 rounded-xl border transition-all duration-300 flex flex-col items-center gap-3 min-w-[100px]"
+        className="group relative p-2 xs:p-3 rounded-lg border transition-all duration-300 flex flex-col items-center gap-2 w-full"
         style={{
           backgroundColor: `${COLORS.accent}0D`,
           borderColor: COLORS.borderAccent
@@ -330,23 +355,23 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
           <img
             src={logoUrl}
             alt={provider.provider_name}
-            className="w-12 h-12 object-contain rounded-lg"
+            className="w-8 h-8 xs:w-9 xs:h-9 sm:w-10 sm:h-10 object-contain rounded"
             onError={(e) => {
               e.target.style.display = 'none';
             }}
           />
         )}
 
-        <div className="text-center">
-          <div className="text-xs font-medium truncate max-w-[80px]" style={{ color: COLORS.textSecondary }}>
+        <div className="text-center w-full min-h-[32px] flex flex-col justify-center">
+          <div className="text-xs font-medium truncate w-full px-1" style={{ color: COLORS.textSecondary }}>
             {provider.provider_name}
           </div>
-          <div className="text-xs" style={{ color: COLORS.accent }}>
+          <div className="text-xs leading-tight" style={{ color: COLORS.accent, fontSize: '10px' }}>
             {type === 'flatrate' ? 'Stream' : type === 'rent' ? 'Rent' : 'Buy'}
           </div>
         </div>
 
-        <ExternalLink className="absolute top-2 right-2 w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" style={{ color: COLORS.textMuted }} />
+        <ExternalLink className="absolute top-1 right-1 xs:top-1.5 xs:right-1.5 w-2.5 h-2.5 xs:w-3 xs:h-3 opacity-0 group-hover:opacity-100 transition-opacity" style={{ color: COLORS.textMuted }} />
       </motion.button>
     );
   };
@@ -394,28 +419,46 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
         </div>
       ) : (
         <div className="space-y-6">
+          {/* 🟡 FALLBACK MESSAGE - Shows when region is different from user country */}
+          {fallbackMessage && selectedRegion && selectedRegion !== userCountry && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="p-4 rounded-lg border"
+              style={{
+                backgroundColor: 'rgba(251, 146, 60, 0.1)',
+                borderColor: 'rgba(251, 146, 60, 0.3)'
+              }}
+            >
+              <p style={{ color: '#FB923C', fontSize: '14px', fontWeight: '500' }}>
+                📍 {fallbackMessage}
+              </p>
+            </motion.div>
+          )}
+
+          {/* 🔵 REGION SELECTOR */}
           {selectedRegionInfo && availableRegions.length > 0 && (
             <div
-              className="flex items-center justify-between p-6 rounded-2xl border"
+              className="flex flex-col xs:flex-row xs:items-center xs:justify-between gap-3 xs:gap-4 p-3 xs:p-4 sm:p-6 rounded-lg xs:rounded-xl border"
               style={{
                 backgroundColor: COLORS.bgCard,
                 borderColor: COLORS.borderNeutral
               }}
             >
-              <div className="flex items-center gap-4">
-                <span className="text-3xl">{selectedRegionInfo.flag}</span>
-                <div>
-                  <div style={{ color: COLORS.textPrimary, fontWeight: '500', fontSize: '16px' }}>
-                    Showing availability in {selectedRegionInfo.name}
+              <div className="flex items-center gap-3">
+                <span className="text-2xl xs:text-3xl">{selectedRegionInfo.flag}</span>
+                <div className="min-w-0">
+                  <div style={{ color: COLORS.textPrimary, fontWeight: '500', fontSize: '14px' }} className="xs:text-base truncate">
+                    {selectedRegionInfo.name}
                   </div>
                   {selectedRegion === userCountry ? (
-                    <div className="flex items-center gap-2 mt-1" style={{ color: '#22C55E', fontSize: '14px' }}>
-                      <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#22C55E' }}></div>
-                      Auto-detected from your location
+                    <div className="flex items-center gap-2 mt-0.5 xs:mt-1" style={{ color: '#22C55E', fontSize: '12px' }}>
+                      <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: '#22C55E' }}></div>
+                      <span>Auto-detected</span>
                     </div>
                   ) : (
-                    <div style={{ color: COLORS.accent, fontSize: '14px', marginTop: '4px' }}>
-                      No availability in {userCountryInfo?.name || userCountry}
+                    <div style={{ color: COLORS.accent, fontSize: '12px', marginTop: '2px' }}>
+                      {userCountryInfo?.name || userCountry} unavailable
                     </div>
                   )}
                 </div>
@@ -424,7 +467,7 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
               {otherRegions.length > 0 && (
                 <motion.button
                   onClick={() => setShowOtherRegions(!showOtherRegions)}
-                  className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm transition-all duration-300"
+                  className="flex items-center justify-center xs:justify-start gap-2 px-3 xs:px-4 py-2 rounded-lg text-xs xs:text-sm transition-all duration-300 w-full xs:w-auto"
                   style={{
                     backgroundColor: COLORS.bgCardHover,
                     color: COLORS.textSecondary,
@@ -432,22 +475,15 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
                   }}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = COLORS.borderAccent;
-                    e.currentTarget.style.color = COLORS.accent;
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = COLORS.borderLight;
-                    e.currentTarget.style.color = COLORS.textSecondary;
-                  }}
                 >
                   <span>Other regions ({otherRegions.length})</span>
-                  {showOtherRegions ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+                  {showOtherRegions ? <ChevronUp size={14} className="xs:w-4 xs:h-4" /> : <ChevronDown size={14} className="xs:w-4 xs:h-4" />}
                 </motion.button>
               )}
             </div>
           )}
 
+          {/* 🟣 OTHER REGIONS DROPDOWN */}
           <AnimatePresence>
             {showOtherRegions && otherRegions.length > 0 && (
               <motion.div
@@ -477,6 +513,7 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
                           onClick={() => {
                             setSelectedRegion(regionCode);
                             setShowOtherRegions(false);
+                            setFallbackMessage(null);
                           }}
                           className="px-4 py-2 rounded-lg border text-sm font-medium transition-all duration-300 flex items-center gap-2"
                           style={{
@@ -508,6 +545,7 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
             )}
           </AnimatePresence>
 
+          {/* 🟢 STREAMING CONTENT */}
           <AnimatePresence mode="wait">
             {currentRegionData ? (
               <motion.div
@@ -527,7 +565,7 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
                       <div className="w-3 h-3 rounded-full" style={{ backgroundColor: COLORS.accent }}></div>
                       Stream with Subscription
                     </h4>
-                    <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4">
+                    <div className="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2 xs:gap-3 sm:gap-4">
                       {currentRegionData.flatrate.map((provider) => (
                         <StreamingPlatformCard
                           key={`${selectedRegion}-flatrate-${provider.provider_id}`}
@@ -549,7 +587,7 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
                       <div className="w-3 h-3 rounded-full" style={{ backgroundColor: COLORS.accent }}></div>
                       Rent Digital Copy
                     </h4>
-                    <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4">
+                    <div className="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2 xs:gap-3 sm:gap-4">
                       {currentRegionData.rent.map((provider) => (
                         <StreamingPlatformCard
                           key={`${selectedRegion}-rent-${provider.provider_id}`}
@@ -571,7 +609,7 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
                       <div className="w-3 h-3 rounded-full" style={{ backgroundColor: COLORS.accent }}></div>
                       Buy Digital Copy
                     </h4>
-                    <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4">
+                    <div className="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2 xs:gap-3 sm:gap-4">
                       {currentRegionData.buy.map((provider) => (
                         <StreamingPlatformCard
                           key={`${selectedRegion}-buy-${provider.provider_id}`}
@@ -611,7 +649,7 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
               >
                 <Globe className="w-12 h-12 mx-auto mb-4" style={{ color: '#EA580C' }} />
                 <h4 className="text-lg font-medium mb-2" style={{ color: '#FB923C' }}>
-                  Limited Streaming Data
+                  No Streaming Data Available
                 </h4>
                 <p
                   className="mb-4"
@@ -621,7 +659,7 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
                     lineHeight: '1.6'
                   }}
                 >
-                  <strong>{movie?.Title}</strong> may have limited streaming availability
+                  <strong>{movie?.Title}</strong> is not available on any streaming platform in the database, or streaming data is not yet available for this title.
                 </p>
                 <motion.button
                   onClick={() =>
@@ -645,7 +683,7 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
 
           <div className="text-center pt-4">
             <p style={{ color: COLORS.textDisabled, fontSize: '12px' }}>
-              Streaming availability powered by <span style={{ color: '#3B82F6', fontWeight: '500' }}>TMDB</span> • Auto-detected location via iPinfo • Supports 100+ Countries (A-Z)
+              Streaming availability powered by <span style={{ color: '#3B82F6', fontWeight: '500' }}>TMDB</span> • Auto-detected location via IPinfo • Supports 100+ Countries (A-Z)
             </p>
           </div>
         </div>
