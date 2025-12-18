@@ -112,6 +112,9 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
   const [hasClosedTrailer, setHasClosedTrailer] = useState(false);
   const timerRef = useRef(null);
 
+
+
+
   const bannerImage =
     movieData?.backdrop_path
       ? getTMDBImage(movieData.backdrop_path, 'w1280')

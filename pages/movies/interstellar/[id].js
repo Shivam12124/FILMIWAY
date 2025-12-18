@@ -84,79 +84,104 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
 
     return (
         <>
-            <style jsx>{`
-                @media (max-width: 767px) {
-                    .mobile-hero-row {
-                        display: flex;
-                        flex-direction: row;
-                        align-items: flex-start;
-                        width: 100%;
-                        gap: 10px;
-                        margin: 0;
-                        padding: 0 12px;
-                    }
-                    .mobile-hero-poster {
-                        width: 38vw;
-                        min-width: 106px;
-                        border-radius: 12px;
-                        overflow: hidden;
-                        box-shadow: 0 3px 14px rgba(0,0,0,0.4);
-                        margin: 0;
-                        flex-shrink: 0;
-                    }
-                    .mobile-hero-poster img {
-                        width: 100%;
-                        height: auto;
-                        border-radius: 12px;
-                        display: block;
-                    }
-                    .mobile-space-card {
-                        background: linear-gradient(135deg, rgba(8, 145, 178, 0.15) 0%, rgba(15, 44, 51, 0.3) 100%);
-                        border-radius: 12px;
-                        box-shadow: 0 2px 12px rgba(0,0,0,0.35);
-                        margin: 0;
-                        flex: 1;
-                        border-left: 4px solid #0891b2;
-                        display: flex;
-                        flex-direction: column;
-                        justify-content: flex-start;
-                        padding: 10px 10px 10px 12px;
-                        min-height: 110px;
-                        position: relative;
-                    }
-                    .mobile-space-row {
-                        display: flex;
-                        align-items: flex-start;
-                        gap: 7px;
-                        margin-bottom: 6px;
-                    }
-                    .mobile-space-icon {
-                        min-width: 24px;
-                        min-height: 24px;
-                        color: #22d3ee;
-                        margin-top: 2px;
-                        flex-shrink: 0;
-                    }
-                    .mobile-space-title {
-                        font-size: 15px;
-                        font-weight: bold;
-                        color: #22d3ee;
-                        margin-bottom: 1px;
-                        line-height: 1.12;
-                    }
-                    .mobile-space-complexity {
-                        font-size: 11.5px;
-                        color: rgba(255, 255, 255, 0.7);
-                        line-height: 1.2;
-                    }
-                    .mobile-space-desc {
-                        font-size: 12.3px;
-                        color: #ededed;
-                        line-height: 1.36;
-                        margin-top: 2px;
-                    }
-                }
-            `}</style>
+          <style jsx>{`
+    @media (max-width: 767px) {
+        .mobile-hero-row {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            width: 100%;
+            gap: 8px;
+            margin: 0;
+            padding: 16px 8px 12px 8px;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        @media (max-width: 480px) {
+            .mobile-hero-row {
+                padding: 16px 6px 12px 6px;
+                gap: 6px;
+            }
+        }
+
+        .mobile-hero-poster {
+            width: 35vw;
+            min-width: 100px;
+            max-width: 140px;
+            aspect-ratio: 2/3;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            margin: 0;
+            flex-shrink: 0;
+        }
+
+        .mobile-hero-poster img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+            display: block;
+        }
+
+        .mobile-space-card {
+            background: linear-gradient(135deg, rgba(8, 145, 178, 0.15) 0%, rgba(15, 44, 51, 0.3) 100%);
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            margin: 0;
+            flex: 1;
+            border-left: 3px solid #0891b2;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding: 10px;
+            min-height: 110px;
+            position: relative;
+        }
+
+        .mobile-space-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 6px;
+            margin-bottom: 6px;
+        }
+
+        .mobile-space-icon {
+            min-width: 20px;
+            min-height: 20px;
+            color: #22d3ee;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        .mobile-space-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: #22d3ee;
+            margin-bottom: 1px;
+            line-height: 1.1;
+        }
+
+        .mobile-space-complexity {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.2;
+        }
+
+        .mobile-space-desc {
+            font-size: 12px;
+            color: #ededed;
+            line-height: 1.4;
+            margin-top: 4px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+    }
+`}</style>
+
 
             <motion.div 
                 className="relative w-full overflow-hidden mb-6 sm:mb-8 mx-0 sm:mx-4 lg:mx-6 rounded-none sm:rounded-3xl" 
@@ -167,12 +192,43 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
                 <div className="relative h-[300px] sm:h-[400px] lg:h-[600px]">
                     <AnimatePresence mode="wait">
                         {showTrailer && trailer ? (
-                            <motion.div key="trailer" className="absolute inset-0 rounded-none sm:rounded-3xl overflow-hidden" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
-                                <iframe width="100%" height="100%" src={`https://www.youtube.com/embed/${trailer.key}?autoplay=1&mute=1&controls=1`} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen className="w-full h-full" />
-                                <button onClick={handleCloseTrailer} className="absolute top-4 right-4 sm:top-6 sm:right-6 p-2 sm:p-3 rounded-full backdrop-blur-md shadow-xl transition-all duration-300 hover:scale-110 z-50" style={{ backgroundColor: `${COLORS.bgPrimary}DD`, color: COLORS.textPrimary }}>
-                                    <X className="w-4 h-4 sm:w-5 sm:h-5" />
-                                </button>
-                            </motion.div>
+<motion.div 
+    key="trailer" 
+    className="absolute inset-0 rounded-none sm:rounded-3xl overflow-hidden" 
+    initial={{ opacity: 0 }} 
+    animate={{ opacity: 1 }} 
+    transition={{ duration: 0.6 }}
+>
+    <iframe 
+        style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+        }}
+        src={`https://www.youtube.com/embed/${trailer.key}?autoplay=1&mute=1&controls=1`}
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+    />
+    <button 
+        onClick={handleCloseTrailer} 
+        className="absolute top-4 right-4 sm:top-6 sm:right-6 p-2 sm:p-3 rounded-full backdrop-blur-md shadow-xl transition-all duration-300 hover:scale-110 z-50"
+        style={{ 
+            backgroundColor: `${COLORS.bgPrimary}DD`, 
+            color: COLORS.textPrimary,
+            minWidth: '44px',
+            minHeight: '44px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+        }}
+    >
+        <X className="w-5 h-5" />
+    </button>
+</motion.div>
+
                         ) : (
                             <motion.div key="image" className="absolute inset-0 rounded-none sm:rounded-3xl overflow-hidden" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
                                 <div className="relative w-full h-full">
@@ -206,31 +262,45 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
                 </div>
 
                 {/* MOBILE: SURVIVAL-STYLE ROW */}
-                {isMobile ? (
-                    <div className="mobile-hero-row" style={{ paddingTop: '16px', paddingBottom: '12px' }}>
-                        <div className="mobile-hero-poster">
-                            {posterImage ? (
-                                <img src={posterImage} alt={`${movie.Title} poster`} />
-                            ) : (
-                                <div style={{ background: COLORS.bgCard, width: '100%', aspectRatio: '2/3', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '12px' }}>
-                                    <Rocket style={{ color: COLORS.textMuted, width: '32px', height: '32px' }} />
-                                </div>
-                            )}
-                        </div>
-                        <div className="mobile-space-card">
-                            <div className="mobile-space-row">
-                                <Rocket className="mobile-space-icon" />
-                                <div>
-                                    <div className="mobile-space-title">Space Complexity</div>
-                                    <div className="mobile-space-complexity">Score: {spaceComplexity}/100</div>
-                                </div>
-                            </div>
-                            <div className="mobile-space-desc">
-                                {spaceConnection.substring(0, 120)}...
-                            </div>
-                        </div>
-                    </div>
-                ) : (
+{isMobile ? (
+    <div className="mobile-hero-row">
+        <div className="mobile-hero-poster">
+            {posterImage ? (
+                <img 
+                    src={posterImage} 
+                    alt={`${movie.Title} poster`}
+                    loading="lazy"
+                    decoding="async"
+                />
+            ) : (
+                <div style={{ 
+                    background: COLORS.bgCard, 
+                    width: '100%', 
+                    height: '100%', 
+                    display: 'flex', 
+                    alignItems: 'center', 
+                    justifyContent: 'center', 
+                    borderRadius: '12px' 
+                }}>
+                    <Rocket style={{ color: COLORS.textMuted, width: '24px', height: '24px' }} />
+                </div>
+            )}
+        </div>
+        <div className="mobile-space-card">
+            <div className="mobile-space-row">
+                <Rocket className="mobile-space-icon" />
+                <div>
+                    <div className="mobile-space-title">Space Complexity</div>
+                    <div className="mobile-space-complexity">Score: {spaceComplexity}/100</div>
+                </div>
+            </div>
+            <div className="mobile-space-desc">
+                {spaceConnection.substring(0, 100)}...
+            </div>
+        </div>
+    </div>
+) : (
+
                     /* DESKTOP: ORIGINAL DESIGN */
                     <div className="relative px-3 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8 z-20" style={{ backgroundColor: COLORS.bgPrimary }}>
                         <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 lg:gap-8 items-start">
@@ -363,13 +433,36 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
 };
 
 const SmartBackButton = () => {
-    const handleBackClick = () => { if (typeof window !== 'undefined') window.location.href = '/collection/movies-like-interstellar'; };
+    const handleBackClick = () => { 
+        if (typeof window !== 'undefined') window.location.href = '/collection/movies-like-interstellar'; 
+    };
+
     return (
-        <motion.button onClick={handleBackClick} className="fixed top-4 left-4 sm:top-6 sm:left-6 z-50 flex items-center gap-2 px-3 sm:px-4 py-2 backdrop-blur-md rounded-lg transition-all duration-300 shadow-xl text-xs sm:text-sm" style={{ backgroundColor: `${COLORS.bgPrimary}F2`, border: `1px solid ${COLORS.borderLight}` }} whileHover={{ scale: 1.02, x: -2 }} whileTap={{ scale: 0.98 }} initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} onMouseEnter={(e) => e.currentTarget.style.borderColor = COLORS.borderAccent} onMouseLeave={(e) => e.currentTarget.style.borderColor = COLORS.borderLight}>
-            <ChevronLeft className="w-3 h-3 sm:w-4 sm:h-4" style={{ color: COLORS.accent }} /><span className="font-medium" style={{ color: COLORS.accent }}>Back to Collection</span>
+        <motion.button 
+            onClick={handleBackClick} 
+            className="fixed z-50 flex items-center justify-center gap-2 px-3 sm:px-4 py-2 backdrop-blur-md rounded-lg transition-all duration-300 shadow-xl text-xs sm:text-sm"
+            style={{ 
+                backgroundColor: `${COLORS.bgPrimary}F2`, 
+                border: `1px solid ${COLORS.borderLight}`,
+                top: 'max(1rem, env(safe-area-inset-top))',
+                left: 'max(1rem, env(safe-area-inset-left))',
+                minWidth: '44px',
+                minHeight: '44px',
+            }} 
+            whileHover={{ scale: 1.02, x: -2 }} 
+            whileTap={{ scale: 0.98 }} 
+            initial={{ opacity: 0, x: -50 }} 
+            animate={{ opacity: 1, x: 0 }} 
+            transition={{ duration: 0.8 }}
+            onMouseEnter={(e) => e.currentTarget.style.borderColor = COLORS.borderAccent}
+            onMouseLeave={(e) => e.currentTarget.style.borderColor = COLORS.borderLight}
+        >
+            <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: COLORS.accent }} />
+            <span className="font-medium hidden sm:inline" style={{ color: COLORS.accent }}>Back</span>
         </motion.button>
     );
 };
+
 
 const AuthorCreditSection = () => (
     <motion.section className="pt-6 sm:pt-8 mt-12 sm:mt-16" style={{ borderTop: `1px solid ${COLORS.borderLight}` }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.8, duration: 0.8 }}>
@@ -385,13 +478,31 @@ const SubtleFilmGrain = () => (
 );
 
 const InterstellarBreadcrumb = ({ movie }) => (
-    <motion.nav className="mb-6 sm:mb-8 px-3 sm:px-4 lg:px-6 pb-3 sm:pb-4" style={{ borderBottom: `1px solid ${COLORS.borderLight}` }} initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-        <div className="flex items-center space-x-2 sm:space-x-3 text-xs sm:text-sm" style={{ color: COLORS.textMuted }}>
-            <Link href="/collection/movies-like-interstellar" className="transition-all duration-300 truncate" style={{ color: COLORS.textMuted }} onMouseEnter={(e) => e.currentTarget.style.color = COLORS.accent} onMouseLeave={(e) => e.currentTarget.style.color = COLORS.textMuted}>Movies Like Interstellar</Link>
-            <ChevronRight size={14} className="flex-shrink-0" style={{ color: COLORS.textDisabled }} /><span className="font-medium truncate" style={{ color: `${COLORS.accent}B3` }}>{movie.Title}</span>
+    <motion.nav 
+        className="mb-6 sm:mb-8 px-3 sm:px-4 lg:px-6 pb-3 sm:pb-4" 
+        style={{ borderBottom: `1px solid ${COLORS.borderLight}` }} 
+        initial={{ opacity: 0, y: -20 }} 
+        animate={{ opacity: 1, y: 0 }} 
+        transition={{ duration: 0.8 }}
+    >
+        <div className="flex items-center space-x-1 sm:space-x-2 text-xs sm:text-sm overflow-x-auto -mx-1 px-1 pb-1">
+            <Link 
+                href="/collection/movies-like-interstellar" 
+                className="whitespace-nowrap transition-all duration-300"
+                style={{ color: COLORS.textMuted }}
+                onMouseEnter={(e) => e.currentTarget.style.color = COLORS.accent}
+                onMouseLeave={(e) => e.currentTarget.style.color = COLORS.textMuted}
+            >
+                Interstellar
+            </Link>
+            <ChevronRight size={12} className="flex-shrink-0" style={{ color: COLORS.textDisabled }} />
+            <span className="truncate whitespace-nowrap" style={{ color: `${COLORS.accent}B3` }}>
+                {movie.Title}
+            </span>
         </div>
     </motion.nav>
 );
+
 
 const InterstellarMoviePage = ({ movie }) => {
     const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
