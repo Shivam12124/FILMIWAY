@@ -4,6 +4,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Play, X, Award, Rocket, User, Twitter, Hash, Send } from 'lucide-react';
+import InternalCollectionsSection from '../../../components/InternalCollectionsSection';
 
 import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
@@ -570,9 +571,16 @@ const InterstellarMoviePage = ({ movie }) => {
                 <div className="container mx-auto px-0 pb-16 sm:pb-24 lg:pb-32 max-w-7xl">
                     <OptimizedBanner movie={movie} movieData={movieData} trailer={trailer} isMobile={isMobile} />
                     <motion.div id="watch" initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.2, duration: 0.8 }} className="space-y-8 sm:space-y-12 px-3 sm:px-4 lg:px-6">
-                        <MovieDetailsSection movie={movie} fromInterstellarCollection={true} />
-                    </motion.div>
-                    <div className="px-3 sm:px-4 lg:px-6"><AuthorCreditSection /><TMDBAttribution /></div>
+<MovieDetailsSection movie={movie} fromInterstellarCollection={true} />
+</motion.div>
+<div className="px-3 sm:px-4 lg:px-6">
+    <InternalCollectionsSection currentSlug="movies-like-interstellar" />
+    <AuthorCreditSection />
+    <TMDBAttribution />
+</div>
+
+
+
                 </div>
             </div>
         </div>

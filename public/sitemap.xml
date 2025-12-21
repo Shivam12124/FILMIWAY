@@ -176,6 +176,15 @@
 </url>
 
 
+<!-- 🎭 MOVIES LIKE PARASITE COLLECTION PAGE -->
+<url>
+    <loc>https://filmiway.com/collection/movies-like-parasite</loc>
+    <lastmod>2025-12-21T12:30:00+05:30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+</url>
+
+
 <!-- 🧠 MOVIES LIKE INCEPTION (10 MOVIES - CORRECTED) -->
 <url>
     <loc>https://filmiway.com/movies/like-inception/tt0390384</loc>
@@ -535,13 +544,88 @@
     </url>
 
 
-<!-- 🕶️ 10 MOVIES LIKE THE MATRIX -->
+
+<!-- 🎭 10 MOVIES LIKE PARASITE -->
+<!-- 1. The Handmaiden (2016) -->
 <url>
-    <loc>https://filmiway.com/movies/matrix/tt0118929</loc>
-    <lastmod>2025-12-15T11:18:00+05:30</lastmod>
+    <loc>https://filmiway.com/movies/parasite/tt4016934</loc>
+    <lastmod>2025-12-21T12:30:00+05:30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
 </url>
+
+<!-- 2. Burning (2018) -->
+<url>
+    <loc>https://filmiway.com/movies/parasite/tt7282468</loc>
+    <lastmod>2025-12-21T12:30:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<!-- 3. Snowpiercer (2013) -->
+<url>
+    <loc>https://filmiway.com/movies/parasite/tt1706620</loc>
+    <lastmod>2025-12-21T12:30:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<!-- 4. Memories of Murder (2003) -->
+<url>
+    <loc>https://filmiway.com/movies/parasite/tt0353969</loc>
+    <lastmod>2025-12-21T12:30:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<!-- 5. Shoplifters (2018) -->
+<url>
+    <loc>https://filmiway.com/movies/parasite/tt8075192</loc>
+    <lastmod>2025-12-21T12:30:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<!-- 6. The Platform (2019) -->
+<url>
+    <loc>https://filmiway.com/movies/parasite/tt8228288</loc>
+    <lastmod>2025-12-21T12:30:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<!-- 7. Mother (2009) -->
+<url>
+    <loc>https://filmiway.com/movies/parasite/tt1216496</loc>
+    <lastmod>2025-12-21T12:30:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<!-- 8. The Killing of a Sacred Deer (2017) -->
+<url>
+    <loc>https://filmiway.com/movies/parasite/tt5715874</loc>
+    <lastmod>2025-12-21T12:30:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<!-- 9. The Housemaid (1960) -->
+<url>
+    <loc>https://filmiway.com/movies/parasite/tt0150980</loc>
+    <lastmod>2025-12-21T12:30:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<!-- 10. The Talented Mr. Ripley (1999) -->
+<url>
+    <loc>https://filmiway.com/movies/parasite/tt0134119</loc>
+    <lastmod>2025-12-21T12:30:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
 
 <url>
     <loc>https://filmiway.com/movies/matrix/tt1375666</loc>

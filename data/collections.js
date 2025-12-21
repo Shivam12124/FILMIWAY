@@ -73,81 +73,164 @@ export const COLLECTIONS = {
   },
 
   // 🔥 SEO-OPTIMIZED SURVIVAL COLLECTION
-  'best-survival-movies': {
-    slug: 'best-survival-movies',
-    title: 'Best Survival Movies',
-    subtitle: 'Ultimate Tests of Human Endurance',
-    description: 'Experience the most brutal and intense survival stories ever captured on film. Ranked by survivability index - from impossible escapes to ultimate human resilience.',
-    longDescription: 'Dive into cinema\'s most extreme survival stories, where ordinary people face extraordinary circumstances. These films showcase the depths of human endurance, from being trapped under boulders to surviving plane crashes in remote mountains. Each movie demonstrates what it truly means to fight for survival against impossible odds.',
-    icon: '🏔️',
-    emoji: '🏔️',
-    theme: 'yellow',
-    primaryColor: '#facc15',
-    secondaryColor: '#eab308',
-    accentColor: '#ca8a04',
-    gradientFrom: 'from-yellow-600',
-    gradientTo: 'to-yellow-500',
-    category: 'survival',
-    tags: ['survival', 'extreme', 'endurance', 'true stories', 'human resilience'],
-    metaTitle: '10 Best Survival Movies Ever Made (2025) - Expert Rankings | Filmiway',
-    metaDescription: 'Discover 10 heart-pounding survival movies ranked by intensity. From 127 Hours to The Revenant, explore films that push human endurance to the limit. Updated 2025.',
-    metaKeywords: 'best survival movies, survival films 2025, extreme survival, 127 hours, the revenant, cast away, true story survival movies, survival thriller movies',
-    stats: {
-      totalMovies: 10,
-      averageRating: 7.7,
-      totalWatchtime: '21 hours 33 minutes',
-      averageSurvivabilityIndex: 89.0,
-      mostExtreme: '127 Hours (98/100)',
-      newestMovie: 'Society of the Snow (2023)',
-      oldestMovie: 'Cast Away (2000)'
-    },
-    movies: [
-      'tt1542344',   // 127 Hours (2010)
-      'tt16277242',  // Society of the Snow (2023)
-      'tt0162222',   // Cast Away (2000)
-      'tt1663202',   // The Revenant (2015)
-      'tt3659388',   // The Martian (2015)
-      'tt1649419',   // The Impossible (2012)
-      'tt3758172',   // Jungle (2017)
-      'tt0472043',   // Apocalypto (2006)
-      'tt12262116',  // 13 Lives (2022)
-      'tt1809398'    // Unbroken (2014)
-    ],
-    badges: [
-      { label: 'Extreme Survival', desc: 'Ultimate tests of human endurance' },
-      { label: 'Survivability Indexed', desc: 'Ranked by survival difficulty' },
-      { label: 'True Stories', desc: 'Many based on real events' }
-    ],
-    featured: {
-      hero: {
-        title: '127 Hours',
-        subtitle: 'The Ultimate Test of Human Will',
-        description: 'Danny Boyle\'s masterpiece showcases the most extreme survival scenario ever captured on film.',
-        poster: 'https://image.tmdb.org/t/p/w500/2fWl4WGEzfr3VbrqhZftLNdlL6Q.jpg',
-        backdrop: 'https://image.tmdb.org/t/p/w1280/path-to-backdrop.jpg',
-        survivabilityIndex: 98
-      }
-    },
-    relatedCollections: [
-      'movies-like-memento',
-      'movies-like-inception',
-      'movies-like-shutter-island'
-    ],
-    seo: {
-      title: '10 Best Survival Movies Ever Made (2025) - Expert Rankings | Filmiway',
-      description: 'Discover 10 heart-pounding survival movies ranked by intensity. From 127 Hours to The Revenant, explore films that push human endurance to the limit. Updated 2025.',
-      keywords: 'best survival movies, survival films, extreme survival, survivability index, brutal survival stories, human endurance movies, true survival stories, 127 hours, the revenant, cast away',
-      canonicalUrl: 'https://filmiway.com/collection/best-survival-movies',
-      ogImage: 'https://filmiway.com/images/survival-movies-collection-og.jpg',
-      structuredData: {
-        '@context': 'https://schema.org',
-        '@type': 'ItemList',
-        name: 'Best Survival Movies',
-        description: 'Expert-curated list of the best survival movies ranked by intensity and realism',
-        numberOfItems: 10
-      }
+'best-survival-movies': {
+  slug: 'best-survival-movies',
+  title: 'Best Survival Movies',
+  subtitle: 'Ultimate Tests of Human Endurance',
+  description: 'Experience the most brutal and intense survival stories ever captured on film. Ranked by survivability index - from impossible escapes to ultimate human resilience.',
+  longDescription: 'Dive into cinema\'s most extreme survival stories, where ordinary people face extraordinary circumstances. These films showcase the depths of human endurance, from being trapped under boulders to surviving plane crashes in remote mountains. Each movie demonstrates what it truly means to fight for survival against impossible odds.',
+  icon: '🏔️',
+  emoji: '🏔️',
+  theme: 'yellow',
+  primaryColor: '#facc15',
+  secondaryColor: '#eab308',
+  accentColor: '#ca8a04',
+  gradientFrom: 'from-yellow-600',
+  gradientTo: 'to-yellow-500',
+  category: 'survival',
+  tags: ['survival', 'extreme', 'endurance', 'true stories', 'human resilience'],
+  metaTitle: '10 Best Survival Movies Ever Made (2025) - Expert Rankings | Filmiway',
+  metaDescription: 'Discover 10 heart-pounding survival movies ranked by intensity. From 127 Hours to The Revenant, explore films that push human endurance to the limit. Updated 2025.',
+  metaKeywords: 'best survival movies, survival films 2025, extreme survival, 127 hours, the revenant, cast away, true story survival movies, survival thriller movies',
+  stats: {
+    totalMovies: 10,
+    averageRating: 7.7,
+    totalWatchtime: '21 hours 33 minutes',
+    averageSurvivabilityIndex: 89.0,
+    mostExtreme: '127 Hours (98/100)',
+    newestMovie: 'Society of the Snow (2023)',
+    oldestMovie: 'Cast Away (2000)'
+  },
+  movies: [
+    'tt1542344',   // 127 Hours (2010)
+    'tt16277242',  // Society of the Snow (2023)
+    'tt0162222',   // Cast Away (2000)
+    'tt1663202',   // The Revenant (2015)
+    'tt3659388',   // The Martian (2015)
+    'tt1649419',   // The Impossible (2012)
+    'tt3758172',   // Jungle (2017)
+    'tt0472043',   // Apocalypto (2006)
+    'tt12262116',  // 13 Lives (2022)
+    'tt1809398'    // Unbroken (2014)
+  ],
+  badges: [
+    { label: 'Extreme Survival', desc: 'Ultimate tests of human endurance' },
+    { label: 'Survivability Indexed', desc: 'Ranked by survival difficulty' },
+    { label: 'True Stories', desc: 'Many based on real events' }
+  ],
+  featured: {
+    hero: {
+      title: '127 Hours',
+      subtitle: 'The Ultimate Test of Human Will',
+      description: 'Danny Boyle\'s masterpiece showcases the most extreme survival scenario ever captured on film.',
+      poster: 'https://image.tmdb.org/t/p/w500/2fWl4WGEzfr3VbrqhZftLNdlL6Q.jpg',
+      backdrop: 'https://image.tmdb.org/t/p/w1280/path-to-backdrop.jpg',
+      survivabilityIndex: 98
     }
   },
+  internalLinks: [
+    'movies-like-interstellar',
+    'movies-like-se7en',
+    'movies-like-the-matrix',
+    'movies-like-inception',
+    'movies-like-memento',
+    'movies-like-shutter-island'
+  ],
+  seo: {
+    title: '10 Best Survival Movies Ever Made (2025) - Expert Rankings | Filmiway',
+    description: 'Discover 10 heart-pounding survival movies ranked by intensity. From 127 Hours to The Revenant, explore films that push human endurance to the limit. Updated 2025.',
+    keywords: 'best survival movies, survival films, extreme survival, survivability index, brutal survival stories, human endurance movies, true survival stories, 127 hours, the revenant, cast away',
+    canonicalUrl: 'https://filmiway.com/collection/best-survival-movies',
+    ogImage: 'https://filmiway.com/images/survival-movies-collection-og.jpg',
+    structuredData: {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      name: 'Best Survival Movies',
+      description: 'Expert-curated list of the best survival movies ranked by intensity and realism',
+      numberOfItems: 10
+    }
+  }
+},
+// 🔥 SEO-OPTIMIZED SURVIVAL COLLECTION
+'best-survival-movies': {
+  slug: 'best-survival-movies',
+  title: 'Best Survival Movies',
+  subtitle: 'Ultimate Tests of Human Endurance',
+  description: 'Experience the most brutal and intense survival stories ever captured on film. Ranked by survivability index - from impossible escapes to ultimate human resilience.',
+  longDescription: 'Dive into cinema\'s most extreme survival stories, where ordinary people face extraordinary circumstances. These films showcase the depths of human endurance, from being trapped under boulders to surviving plane crashes in remote mountains. Each movie demonstrates what it truly means to fight for survival against impossible odds.',
+  icon: '🏔️',
+  emoji: '🏔️',
+  theme: 'yellow',
+  primaryColor: '#facc15',
+  secondaryColor: '#eab308',
+  accentColor: '#ca8a04',
+  gradientFrom: 'from-yellow-600',
+  gradientTo: 'to-yellow-500',
+  category: 'survival',
+  tags: ['survival', 'extreme', 'endurance', 'true stories', 'human resilience'],
+  metaTitle: '10 Best Survival Movies Ever Made (2025) - Expert Rankings | Filmiway',
+  metaDescription: 'Discover 10 heart-pounding survival movies ranked by intensity. From 127 Hours to The Revenant, explore films that push human endurance to the limit. Updated 2025.',
+  metaKeywords: 'best survival movies, survival films 2025, extreme survival, 127 hours, the revenant, cast away, true story survival movies, survival thriller movies',
+  stats: {
+    totalMovies: 10,
+    averageRating: 7.7,
+    totalWatchtime: '21 hours 33 minutes',
+    averageSurvivabilityIndex: 89.0,
+    mostExtreme: '127 Hours (98/100)',
+    newestMovie: 'Society of the Snow (2023)',
+    oldestMovie: 'Cast Away (2000)'
+  },
+  movies: [
+    'tt1542344',   // 127 Hours (2010)
+    'tt16277242',  // Society of the Snow (2023)
+    'tt0162222',   // Cast Away (2000)
+    'tt1663202',   // The Revenant (2015)
+    'tt3659388',   // The Martian (2015)
+    'tt1649419',   // The Impossible (2012)
+    'tt3758172',   // Jungle (2017)
+    'tt0472043',   // Apocalypto (2006)
+    'tt12262116',  // 13 Lives (2022)
+    'tt1809398'    // Unbroken (2014)
+  ],
+  badges: [
+    { label: 'Extreme Survival', desc: 'Ultimate tests of human endurance' },
+    { label: 'Survivability Indexed', desc: 'Ranked by survival difficulty' },
+    { label: 'True Stories', desc: 'Many based on real events' }
+  ],
+  featured: {
+    hero: {
+      title: '127 Hours',
+      subtitle: 'The Ultimate Test of Human Will',
+      description: 'Danny Boyle\'s masterpiece showcases the most extreme survival scenario ever captured on film.',
+      poster: 'https://image.tmdb.org/t/p/w500/2fWl4WGEzfr3VbrqhZftLNdlL6Q.jpg',
+      backdrop: 'https://image.tmdb.org/t/p/w1280/path-to-backdrop.jpg',
+      survivabilityIndex: 98
+    }
+  },
+  internalLinks: [
+    'movies-like-interstellar',
+    'movies-like-se7en',
+    'movies-like-the-matrix',
+    'movies-like-inception',
+    'movies-like-memento',
+    'movies-like-shutter-island'
+  ],
+  seo: {
+    title: '10 Best Survival Movies Ever Made (2025) - Expert Rankings | Filmiway',
+    description: 'Discover 10 heart-pounding survival movies ranked by intensity. From 127 Hours to The Revenant, explore films that push human endurance to the limit. Updated 2025.',
+    keywords: 'best survival movies, survival films, extreme survival, survivability index, brutal survival stories, human endurance movies, true survival stories, 127 hours, the revenant, cast away',
+    canonicalUrl: 'https://filmiway.com/collection/best-survival-movies',
+    ogImage: 'https://filmiway.com/images/survival-movies-collection-og.jpg',
+    structuredData: {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      name: 'Best Survival Movies',
+      description: 'Expert-curated list of the best survival movies ranked by intensity and realism',
+      numberOfItems: 10
+    }
+  }
+},
+
 
   // 🎭 NETFLIX DRAMA COLLECTION - PURE DRAMA EDITION
   'best-drama-movies-on-netflix': {
@@ -227,7 +310,92 @@ export const COLLECTIONS = {
     }
   },
     
-    
+    // 🏠 MOVIES LIKE PARASITE COLLECTION
+'movies-like-parasite': {
+  slug: 'movies-like-parasite',
+  title: 'Movies Like Parasite',
+  subtitle: 'Class Warfare Cinema Masterpieces',
+  description: 'Dark, satirical films about class divide, social inequality, and the brutal reality of wealth disparity—inspired by Bong Joon-ho\'s masterpiece.',
+  longDescription: 'Explore cinema\'s most powerful examinations of class warfare and social hierarchy. From Bong Joon-ho\'s Korean classics to haunting international dramas, these films expose the violence, manipulation, and desperation born from economic inequality—where survival means clawing your way up or pulling others down.',
+
+  emoji: '🏠',
+  theme: 'emerald',
+  primaryColor: '#10b981',
+  secondaryColor: '#059669',
+  accentColor: '#047857',
+  gradientFrom: 'from-emerald-600',
+  gradientTo: 'to-emerald-500',
+  category: 'parasite',
+  tags: ['class warfare', 'social inequality', 'dark comedy', 'satire', 'korean cinema', 'wealth divide'],
+
+  metaTitle: '10 Movies Like Parasite (2025) | Class Warfare Cinema | Filmiway',
+  metaDescription: 'Discover 10 films like Parasite exploring class divide and social inequality—from The Handmaiden to Snowpiercer. Dark, satirical masterpieces ranked by intensity.',
+  metaKeywords: 'movies like parasite, class warfare films, social inequality movies, bong joon-ho films, korean cinema, snowpiercer, burning, shoplifters, the platform',
+
+  stats: {
+    totalMovies: 10,
+    averageRating: 8.1,
+    totalWatchtime: '21 hours 18 minutes',
+    averageClassWarfareIntensity: 94.0,
+    mostIntense: 'Parasite (99/100)',
+    newestMovie: 'The Platform (2019)',
+    oldestMovie: 'The Talented Mr. Ripley (1999)'
+  },
+
+  movies: [
+  'tt4016934',  // ✅ Rank 1: The Handmaiden (2016) - CORRECT
+  'tt7282468',  // ✅ Rank 2: Burning (2018) - CORRECT
+  'tt1706620',  // ✅ Rank 3: Snowpiercer (2013) - CORRECT
+  'tt0353969',  // ✅ Rank 4: Memories of Murder (2003) - CORRECT
+  'tt8075192',  // ✅ Rank 5: Shoplifters (2018) - CORRECT
+  'tt8228288',  // ✅ Rank 6: The Platform (2019) - CORRECT
+  'tt1216496',  // ✅ Rank 7: Mother (2009) - CORRECT
+  'tt5715874',  // ✅ Rank 8: The Killing of a Sacred Deer (2017) - CORRECT
+'tt0150980',  // ✅ Rank 9: The Housemaid (1960) - CORRECT
+  'tt0134119'   // ✅ Rank 10: The Talented Mr. Ripley (1999) - CORRECT
+],
+
+
+  badges: [
+    { label: 'Class Warfare', desc: 'Brutal wealth divide narratives' },
+    { label: 'Satirical Masterpieces', desc: 'Dark comedy meets social critique' },
+    { label: 'Internationally Acclaimed', desc: 'Award-winning global cinema' }
+  ],
+
+  featured: {
+    hero: {
+      title: 'Parasite',
+      subtitle: 'The Class Warfare Masterpiece',
+      description: 'Bong Joon-ho\'s Oscar-winning masterpiece: a darkly comedic, genre-defying exploration of wealth, desperation, and the violence of inequality.',
+      poster: 'https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg',
+      backdrop: 'https://image.tmdb.org/t/p/w1280/TU9NIjwzjoKPwQHoHshkFcQUCG.jpg',
+      classWarfareIntensity: 99
+    }
+  },
+
+  relatedCollections: [
+    'movies-like-se7en',
+    'best-thriller-movies',
+    'best-mystery-thriller-movies'
+  ],
+
+  seo: {
+    title: '10 Movies Like Parasite (2025) | Class Warfare Cinema | Filmiway',
+    description: 'Explore the definitive ranking of films like Parasite—from The Handmaiden to Snowpiercer. Experience cinema\'s most brutal examinations of class divide and social inequality.',
+    keywords: 'movies like parasite, class warfare cinema, social inequality films, bong joon-ho movies, korean films, the handmaiden, burning, snowpiercer, the platform, shoplifters',
+    canonicalUrl: 'https://filmiway.com/collection/movies-like-parasite',
+    ogImage: 'https://filmiway.com/images/parasite-movies-collection-og.jpg',
+    structuredData: {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      name: 'Movies Like Parasite',
+      description: 'Expert-curated list of the best films like Parasite ranked by class warfare intensity and social commentary',
+      numberOfItems: 10
+    }
+  }
+},
+
+
 
   // 🚀 MOVIES LIKE INTERSTELLAR COLLECTION
   'movies-like-interstellar': {

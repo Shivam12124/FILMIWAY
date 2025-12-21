@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Play, X, User, Twitter, Hash, Send, Brain } from 'lucide-react';
+import InternalCollectionsSection from '../../../components/InternalCollectionsSection';
 
 import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
@@ -314,7 +315,10 @@ const InceptionMoviePage = ({ movie }) => {
                     <motion.div id="watch" initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.2, duration: 0.8 }} className="space-y-8 sm:space-y-12 px-3 sm:px-4 lg:px-6">
                         <MovieDetailsSection movie={movie} fromInceptionCollection={true} />
                     </motion.div>
-                    <div className="px-3 sm:px-4 lg:px-6"><AuthorCreditSection /><TMDBAttribution /></div>
+                    <InternalCollectionsSection currentSlug="movies-like-inception" />
+<TMDBAttribution />
+
+
                 </div>
             </div>
         </div>

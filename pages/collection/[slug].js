@@ -1,4 +1,4 @@
-// pages/collection/[slug].js - SEO OPTIMIZED WITH MATRIX & SE7EN FORMAT ✅
+// pages/collection/[slug].js - SEO OPTIMIZED WITH MATRIX, SE7EN & PARASITE FORMAT ✅
 
 import React, { useState, useEffect, useCallback } from 'react';
 import Head from 'next/head';
@@ -7,10 +7,11 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Crown, Star, MessageSquare, Volume2, VolumeX, Play, Pause, Menu, X, Home, Eye, MousePointer, TrendingUp, Users, Search, Brain, Zap, Film, Award, Mountain, Shield } from 'lucide-react';
 
-// ✅ NEW SURVIVAL FORMAT IMPORTS (MATRIX & SE7EN ADDED)
+// ✅ NEW SURVIVAL FORMAT IMPORTS (MATRIX, SE7EN & PARASITE ADDED)
 import { COMPLETE_MOVIE_DATABASE as SURVIVAL_DATABASE, COMPLETE_MOVIE_DATA as SURVIVAL_DATA } from '../../utils/survivalMovieData';
 import { COMPLETE_MOVIE_DATABASE as MATRIX_DATABASE } from '../../utils/matrixMovieData';
 import { COMPLETE_MOVIE_DATABASE as SE7EN_DATABASE, COMPLETE_MOVIE_DATA as SE7EN_DATA } from '../../utils/se7enMovieData';
+import { COMPLETE_MOVIE_DATABASE as PARASITE_DATABASE, COMPLETE_MOVIE_DATA as PARASITE_DATA } from '../../utils/parasiteMovieData'; // ✅ NEW PARASITE
 
 import { COMPLETE_MOVIE_DATABASE as INTERSTELLAR_DATABASE, COMPLETE_MOVIE_DATA as INTERSTELLAR_DATA } from '../../utils/interstellarMovieData';
 import { COMPLETE_MOVIE_DATABASE as CRIME_THRILLER_DATABASE, COMPLETE_MOVIE_DATA as CRIME_THRILLER_DATA } from '../../utils/crimeThrillerMovieData';
@@ -37,7 +38,6 @@ import CinematicMovieCard from '../../components/CinematicMovieCard';
 
 // Data
 import { COLLECTIONS, getAllCollectionSlugs, getCollectionBySlug } from '../../data/collections';
-
 
 // Safe property getters
 const getMovieTitle = (movie) => movie?.Title || movie?.title || movie?.name || 'Unknown Movie';
@@ -113,7 +113,7 @@ const CollectionPage = ({ collection, movies }) => {
         const timer = setTimeout(() => setIsLoading(false), 2500);
         return () => clearTimeout(timer);
     }, []);
-// 🔥 SEO-OPTIMIZED COLLECTION CONTENT WITH MATRIX & SE7EN COLLECTIONS ADDED
+// 🔥 SEO-OPTIMIZED COLLECTION CONTENT WITH MATRIX, SE7EN & PARASITE COLLECTIONS ADDED
 const getCollectionContent = () => {
     if (collection.slug === 'movies-like-memento') {
         return {
@@ -184,7 +184,7 @@ const getCollectionContent = () => {
                 text2: "Each film has been selected for its ability to create lasting philosophical impact—exploring themes of free will, consciousness, and artificial reality that continue fascinating viewers long after credits roll."
             }
         };
-    } else if (collection.slug === 'movies-like-se7en') { // ✅ NEW SE7EN COLLECTION ADDED
+    } else if (collection.slug === 'movies-like-se7en') {
         return {
             badge: "Dark Noir Masterpieces",
             title: "Se7en",
@@ -205,6 +205,29 @@ const getCollectionContent = () => {
             experience: {
                 text1: "Whether you're drawn to the procedural details or the psychological toll of the hunt, this collection delivers cinema's most compelling descents into darkness.",
                 text2: "Each film forces you to confront the uncomfortable reality that sometimes, understanding the monster means losing a part of yourself in the process."
+            }
+        };
+    } else if (collection.slug === 'movies-like-parasite') { // ✅ NEW PARASITE COLLECTION ADDED
+        return {
+            badge: "Class Warfare Cinema",
+            title: "Parasite",
+            description: "Brutal class war films exposing capitalism's cruelty. Social inequality, economic desperation & systemic injustice where the poor and rich wage psychological warfare.",
+            selection: {
+                text1: "From Bong Joon-ho's architectural metaphors to desperate families infiltrating the wealthy—these films dissect how capitalism creates parasites on both ends of the economic spectrum.",
+                text2: "Each class warfare masterpiece exposes the uncomfortable truth that survival under late-stage capitalism requires deception, exploitation, and moral compromise from everyone involved."
+            },
+            ranking: {
+                text: "Our class warfare index evaluates social commentary depth, economic desperation intensity, and the sophistication of capitalism critique throughout each film.",
+                points: [
+                    "Class divide intensity",
+                    "Social commentary depth",
+                    "Economic desperation realism",
+                    "Systemic critique power"
+                ]
+            },
+            experience: {
+                text1: "Whether you're seeking sharp political allegory or visceral human drama, this collection delivers cinema's most unflinching explorations of class conflict and economic inequality.",
+                text2: "Each film has been selected for its refusal to romanticize poverty or demonize wealth—instead revealing how systemic inequality corrupts everyone trapped within its architecture."
             }
         };
     } else if (collection.slug === 'movies-like-interstellar') {
@@ -303,7 +326,7 @@ const getCollectionContent = () => {
         return {
             badge: "Psychological Thriller Cinema",
             title: "Psychological Thriller",
-            description: "Twisted psychological thrillers that'll disturb you. Mind-bending narratives, unreliable narrators & chilling tension that explores the darkest corners of the human psyche.",
+            description: "Twisted psychological thrillers that'll disturb you. Mind-bending narratives, unreliable narators & chilling tension that explores the darkest corners of the human psyche.",
             selection: {
                 text1: "These films explore the darkest reaches of the human mind—with plots filled with paranoia, shocking twists, and complex characters whose sanity hangs by a thread.",
                 text2: "Each psychological thriller invites you to unravel intricate stories where truth is elusive, perception constantly shifts, and nothing is quite what it seems on the surface."
@@ -555,8 +578,7 @@ const getCollectionContent = () => {
     }
 };
 
-
-// 🔥 HEADER CONTENT WITH MATRIX & SE7EN ADDED
+// 🔥 HEADER CONTENT WITH MATRIX, SE7EN & PARASITE ADDED
 const getHeaderContent = () => {
     if (collection.slug === 'movies-like-memento') {
         return {
@@ -573,10 +595,15 @@ const getHeaderContent = () => {
             title: "Movies Like The Matrix: 10 Cyberpunk Films",
             subtitle: "Digital consciousness, simulated realities & mind-bending awakening that challenges everything"
         };
-    } else if (collection.slug === 'movies-like-se7en') { // ✅ NEW SE7EN HEADER
+    } else if (collection.slug === 'movies-like-se7en') {
         return {
             title: "Movies Like Se7en: 10 Dark Noir Thrillers",
             subtitle: "Gritty investigations, obsessive detectives & shocking twists in the rain-soaked dark"
+        };
+    } else if (collection.slug === 'movies-like-parasite') { // ✅ NEW PARASITE HEADER
+        return {
+            title: "Movies Like Parasite: 10 Class Warfare Films",
+            subtitle: "Social inequality, economic desperation & systemic injustice where rich and poor collide"
         };
     } else if (collection.slug === 'movies-like-interstellar') {
         return {
@@ -656,7 +683,8 @@ const getHeaderContent = () => {
     }
 };
 
-// 🔥 LOADER CONTENT WITH MATRIX & SE7EN ADDED
+
+// 🔥 LOADER CONTENT WITH MATRIX, SE7EN & PARASITE ADDED
 const getLoaderContent = () => {
     if (collection?.slug === 'movies-like-memento') {
         return {
@@ -673,10 +701,15 @@ const getLoaderContent = () => {
             title: "Loading Movies Like The Matrix",
             description: "Curating cyberpunk reality-bending films with community reviews and ratings"
         };
-    } else if (collection?.slug === 'movies-like-se7en') { // ✅ NEW SE7EN LOADER
+    } else if (collection?.slug === 'movies-like-se7en') {
         return {
             title: "Loading Movies Like Se7en",
             description: "Curating gritty noir thrillers and dark investigations with community reviews and ratings"
+        };
+    } else if (collection?.slug === 'movies-like-parasite') { // ✅ NEW PARASITE LOADER
+        return {
+            title: "Loading Movies Like Parasite",
+            description: "Curating class warfare films and social inequality thrillers with community reviews and ratings"
         };
     } else if (collection?.slug === 'movies-like-interstellar') {
         return {
@@ -756,7 +789,8 @@ const getLoaderContent = () => {
     }
 };
 
-// 🔥 STATIC META CONTENT WITH MATRIX & SE7EN ADDED
+
+// 🔥 STATIC META CONTENT WITH MATRIX, SE7EN & PARASITE ADDED
 const getStaticMetaContent = () => {
     if (collection.slug === 'movies-like-memento') {
         return {
@@ -785,7 +819,7 @@ const getStaticMetaContent = () => {
             twitterTitle: "🔴 Loved The Matrix? These 10 Cyberpunk Films Will Break Your Brain",
             progressText: `of Top ${movies.length} Movies Like The Matrix`
         };
-    } else if (collection.slug === 'movies-like-se7en') { // ✅ NEW SE7EN META
+    } else if (collection.slug === 'movies-like-se7en') {
         return {
             title: "Movies Like Se7en: 10 Dark Noir Thrillers", // ✅ 44 chars
             description: "Loved Se7en? Discover 10 gritty noir thrillers with obsessive detectives, shocking twists & dark investigations like Zodiac & Prisoners.", // ✅ 144 chars
@@ -793,6 +827,15 @@ const getStaticMetaContent = () => {
             ogTitle: "Movies Like Se7en: 10 Gritty Noir Masterpieces 🌧️",
             twitterTitle: "🌧️ Loved Se7en? These 10 Dark Thrillers Will Haunt You",
             progressText: `of Top ${movies.length} Movies Like Se7en`
+        };
+    } else if (collection.slug === 'movies-like-parasite') { // ✅ NEW PARASITE META
+        return {
+            title: "Movies Like Parasite: 10 Class Warfare Films", // ✅ 49 chars
+            description: "Loved Parasite? Discover 10 class warfare films with social inequality, economic desperation & Bong Joon-ho-level brilliance like Snowpiercer.", // ✅ 150 chars
+            keywords: "movies like parasite, class warfare movies, social inequality films, bong joon ho movies, snowpiercer, the platform",
+            ogTitle: "Movies Like Parasite: 10 Brutal Class Warfare Films 🏢",
+            twitterTitle: "🏢 Loved Parasite? These 10 Class War Films Are Just as Brutal",
+            progressText: `of Top ${movies.length} Movies Like Parasite`
         };
     } else if (collection.slug === 'movies-like-interstellar') {
         return {
@@ -993,7 +1036,8 @@ const getStaticMetaContent = () => {
             sessionStorage.removeItem('fromInceptionCollection');
             sessionStorage.removeItem('fromMementoCollection');
             sessionStorage.removeItem('fromMatrixCollection');
-            sessionStorage.removeItem('fromSe7enCollection'); // ✅ NEW SE7EN
+            sessionStorage.removeItem('fromSe7enCollection');
+            sessionStorage.removeItem('fromParasiteCollection'); // ✅ NEW PARASITE
             sessionStorage.removeItem('fromInterstellarCollection');
             sessionStorage.removeItem('fromShutterIslandCollection');
             sessionStorage.removeItem('fromSurvivalCollection');
@@ -1016,8 +1060,10 @@ const getStaticMetaContent = () => {
                 sessionStorage.setItem('fromMementoCollection', 'true');
             } else if (collection.slug === 'movies-like-the-matrix') {
                 sessionStorage.setItem('fromMatrixCollection', 'true');
-            } else if (collection.slug === 'movies-like-se7en') { // ✅ NEW SE7EN
+            } else if (collection.slug === 'movies-like-se7en') {
                 sessionStorage.setItem('fromSe7enCollection', 'true');
+            } else if (collection.slug === 'movies-like-parasite') { // ✅ NEW PARASITE
+                sessionStorage.setItem('fromParasiteCollection', 'true');
             } else if (collection.slug === 'movies-like-interstellar') {
                 sessionStorage.setItem('fromInterstellarCollection', 'true');
             } else if (collection.slug === 'movies-like-shutter-island') {
@@ -1049,6 +1095,7 @@ const getStaticMetaContent = () => {
             }
         }
     };
+
 
 
     // Get dynamic content
@@ -1434,7 +1481,6 @@ return (
             <meta property="og:description" key={`og-desc-${collection.slug}`} content={metaContent.description || collection.description} />
             <meta property="og:type" content="website" />
            
-
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:title" key={`twitter-title-${collection.slug}`} content={metaContent.twitterTitle || metaContent.title || collection.title} />
             <meta name="twitter:description" key={`twitter-desc-${collection.slug}`} content={metaContent.description || collection.description} />
@@ -1457,8 +1503,10 @@ return (
                                     ? 'movies/like-inception/'
                                     : collection?.slug === 'movies-like-the-matrix'
                                     ? 'movies/matrix/'
-                                    : collection?.slug === 'movies-like-se7en' // ✅ NEW SE7EN PATH
-                                    ? `/movies/like-se7en/${currentMovie.imdbID}`
+                                    : collection?.slug === 'movies-like-se7en'
+                                    ? 'movies/like-se7en/'
+                                    : collection?.slug === 'movies-like-parasite' // ✅ NEW PARASITE PATH
+                                    ? 'movies/parasite/'
                                     : collection?.slug === 'movies-like-interstellar'
                                     ? 'movies/interstellar/'
                                     : collection?.slug === 'movies-like-memento'
@@ -1524,7 +1572,6 @@ return (
             />
         </Head>
 
-
         <CinematicBackground />
         <StrategicControls 
             isMuted={isMuted}
@@ -1587,7 +1634,8 @@ return (
                                     <div className="absolute inset-0 bg-gradient-to-l from-yellow-400/10 to-amber-400/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
                                 </motion.button>
                             )}
-                            {/* 🔥 FIXED FOR NEXT.JS 15 - WITH MATRIX & SE7EN COLLECTION URLS ✅ */}
+                            
+                            {/* 🔥 FIXED FOR NEXT.JS 15 - WITH MATRIX, SE7EN & PARASITE COLLECTION URLS ✅ */}
                             <AnimatePresence mode="wait">
                                 {currentMovie && (
                                     <Link
@@ -1596,8 +1644,10 @@ return (
                                                 ? `/movies/like-inception/${currentMovie.imdbID}`
                                                 : collection.slug === 'movies-like-the-matrix'
                                                 ? `/movies/matrix/${currentMovie.imdbID}`
-                                                : collection.slug === 'movies-like-se7en' // ✅ FIXED SE7EN LINK
+                                                : collection.slug === 'movies-like-se7en'
                                                 ? `/movies/like-se7en/${currentMovie.imdbID}`
+                                                : collection.slug === 'movies-like-parasite' // ✅ NEW PARASITE LINK
+                                                ? `/movies/parasite/${currentMovie.imdbID}`
                                                 : collection.slug === 'movies-like-interstellar'
                                                 ? `/movies/interstellar/${currentMovie.imdbID}`
                                                 : collection.slug === 'movies-like-memento'
@@ -1670,8 +1720,10 @@ return (
                                             detailPageUrl = `/movies/like-inception/${currentMovie.imdbID}`;
                                         } else if (collection.slug === 'movies-like-the-matrix') {
                                             detailPageUrl = `/movies/matrix/${currentMovie.imdbID}`;
-                                        } else if (collection.slug === 'movies-like-se7en') { // ✅ ADDED SE7EN BUTTON LOGIC
-detailPageUrl = `/movies/like-se7en/${currentMovie.imdbID}`;
+                                        } else if (collection.slug === 'movies-like-se7en') {
+                                            detailPageUrl = `/movies/like-se7en/${currentMovie.imdbID}`;
+                                        } else if (collection.slug === 'movies-like-parasite') { // ✅ NEW PARASITE BUTTON LOGIC
+                                            detailPageUrl = `/movies/parasite/${currentMovie.imdbID}`;
                                         } else if (collection.slug === 'movies-like-interstellar') {
                                             detailPageUrl = `/movies/interstellar/${currentMovie.imdbID}`;
                                         } else if (collection.slug === 'movies-like-memento') {
@@ -1708,6 +1760,7 @@ detailPageUrl = `/movies/like-se7en/${currentMovie.imdbID}`;
                                         window.location.href = detailPageUrl;
                                     }}
                                 >
+
 
                                     <Eye className="w-6 h-6 text-yellow-400" />
                                     <span className="text-yellow-400 font-medium text-lg">Explore Full Analysis</span>
@@ -1840,7 +1893,7 @@ export async function getStaticPaths() {
     };
 }
 
-// ✅ CORRECT getStaticProps() - maps correct database to each collection WITH MATRIX & SE7EN
+// ✅ CORRECT getStaticProps() - maps correct database to each collection WITH MATRIX, SE7EN & PARASITE
 export async function getStaticProps({ params }) {
     const slug = params.slug;
     const collection = getCollectionBySlug(slug);
@@ -1859,15 +1912,18 @@ export async function getStaticProps({ params }) {
         case 'movies-like-the-matrix': 
             movieDatabase = MATRIX_DATABASE;
             break;
-case 'movies-like-se7en':  // ✅ ADD THIS CASE
-    movieDatabase = SE7EN_DATABASE;
-    break;
+        case 'movies-like-se7en':
+            movieDatabase = SE7EN_DATABASE;
+            break;
+        case 'movies-like-parasite': // ✅ NEW PARASITE CASE
+            movieDatabase = PARASITE_DATABASE;
+            break;
         case 'movies-like-interstellar':
             movieDatabase = INTERSTELLAR_DATABASE;
             break;
-case 'movies-like-inception':
-    movieDatabase = COMPLETE_MOVIE_DATABASE;
-    break;
+        case 'movies-like-inception':
+            movieDatabase = COMPLETE_MOVIE_DATABASE;
+            break;
         case 'movies-like-memento':
             movieDatabase = COMPLETE_MOVIE_DATABASE;
             break;

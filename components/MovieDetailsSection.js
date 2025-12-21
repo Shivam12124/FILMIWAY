@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Users, Film, BookOpen, Star } from 'lucide-react';
 
+
 // Data imports
 import { COMPLETE_MOVIE_DATA, STRATEGIC_QUOTES } from '../utils/movieData';
 import {
@@ -10,18 +11,29 @@ import {
   SENSITIVE_TIMELINES
 } from '../utils/survivalMovieData';
 
+
 import { 
   COMPLETE_MOVIE_DATA as MATRIX_MOVIE_DATA, 
   STRATEGIC_QUOTES as MATRIX_QUOTES, 
   SENSITIVE_TIMELINES as MATRIX_SENSITIVE_TIMELINES 
 } from '../utils/matrixMovieData';
 
-// ✅ ADDED SE7EN IMPORTS
+
+// ✅ PARASITE COLLECTION IMPORTS
+import { 
+  COMPLETE_MOVIE_DATA as PARASITE_MOVIE_DATA, 
+  STRATEGIC_QUOTES as PARASITE_QUOTES, 
+  SENSITIVE_TIMELINES as PARASITE_SENSITIVE_TIMELINES 
+} from '../utils/parasiteMovieData';
+
+
+// ✅ SE7EN COLLECTION IMPORTS
 import { 
   COMPLETE_MOVIE_DATA as SE7EN_MOVIE_DATA, 
   STRATEGIC_QUOTES as SE7EN_QUOTES, 
   SENSITIVE_TIMELINES as SE7EN_SENSITIVE_TIMELINES 
 } from '../utils/se7enMovieData';
+
 
 import {
   COMPLETE_MOVIE_DATA as INTERSTELLAR_MOVIE_DATA,
@@ -29,12 +41,14 @@ import {
   SENSITIVE_TIMELINES as INTERSTELLAR_TIMELINES
 } from '../utils/interstellarMovieData';
 
-// ✅ CORRECT FORMAT (like Survival Collection)
+
+// ✅ CRIME THRILLER COLLECTION
 import {
   COMPLETE_MOVIE_DATA as CRIME_THRILLER_MOVIE_DATA,
   STRATEGIC_QUOTES as CRIME_THRILLER_QUOTES,
   SENSITIVE_TIMELINES as CRIME_THRILLER_SENSITIVE_TIMELINES
 } from '../utils/crimeThrillerMovieData';
+
 
 import COMPLETE_THRILLER_DATABASE from '../utils/thrillerMovieData';
 import MYSTERY_THRILLER_DATABASE from '../utils/mysteryThrillerMovieData';
@@ -46,6 +60,7 @@ import TIME_TRAVEL_DATABASE from '../utils/timeTravelMovieData';
 import { SCI_FI_MOVIES, SENSITIVE_TIMELINES as SCI_FI_SENSITIVE_TIMELINES } from '../utils/sciFiMovieData';
 import { REVENGE_MOVIES } from '../utils/revengeMovieData';
 import { WAR_FILMS_DATABASE } from '../utils/warFilmsMovieData';
+
 
 const DRAMA_MOVIE_DATA = dramaRoutes.COMPLETE_MOVIE_DATABASE;
 
@@ -82,7 +97,9 @@ import RevengeMovieSEOFAQSection from './RevengeMovieSEOFAQSection';
 import WarFilmsSEOFAQSection from './WarFilmsSEOFAQSection';
 import InterstellarSEOFAQSection from './InterstellarSEOFAQSection';
 import MatrixSEOFAQSection from './MatrixSEOFAQSection';
-import Se7enSEOFAQSection from './Se7enSEOFAQSection'; // ✅ NEW SE7EN FAQ
+import Se7enSEOFAQSection from './Se7enSEOFAQSection'; // ✅ SE7EN FAQ
+import ParasiteSEOFAQSection from './ParasiteSEOFAQSection'; // ✅ NEW PARASITE FAQ
+
 
 const MovieDetailsSection = React.memo(({
   movie,
@@ -91,7 +108,8 @@ const MovieDetailsSection = React.memo(({
   fromInceptionCollection,
   fromSurvivalCollection,
   fromMatrixCollection,
-  fromSe7enCollection, // ✅ NEW SE7EN FLAG
+  fromSe7enCollection, // ✅ SE7EN FLAG
+  fromParasiteCollection, // ✅ NEW PARASITE FLAG
   fromInterstellarCollection,
   fromDramaCollection,
   fromPsychologicalThrillerCollection,
@@ -163,6 +181,8 @@ const getDetectiveThrillerMovieInfo = () => {
   return DETECTIVE_THRILLER_DATABASE[movie.tmdbId] || null;
 };
 
+
+
 const getThrillerMovieInfo = () => {
   if (!fromThrillerCollection || !movie.tmdbId) return null;
   if (!COMPLETE_THRILLER_DATABASE) return null;
@@ -175,10 +195,12 @@ const getMysteryThrillerMovieInfo = () => {
   return MYSTERY_THRILLER_DATABASE[movie.tmdbId] || null;
 };
 
-// ✅ GET MOVIE INFO FROM CORRECT COLLECTION (MATRIX & SE7EN ADDED)
-const movieInfo = fromMatrixCollection           // ✅ MATRIX (TOP PRIORITY)
+// ✅ GET MOVIE INFO FROM CORRECT COLLECTION (MATRIX, SE7EN & PARASITE ADDED)
+const movieInfo = fromParasiteCollection               // ✅ NEW PARASITE COLLECTION (TOP PRIORITY)
+  ? safeLookup(PARASITE_MOVIE_DATA, movie.tmdbId)
+  : fromMatrixCollection                               // ✅ MATRIX
   ? safeLookup(MATRIX_MOVIE_DATA, movie.tmdbId)
-  : fromSe7enCollection                          // ✅ NEW SE7EN COLLECTION
+  : fromSe7enCollection                                // ✅ SE7EN COLLECTION
   ? safeLookup(SE7EN_MOVIE_DATA, movie.tmdbId)
   : fromRevengeCollection
   ? getRevengeMovieInfo()
@@ -207,7 +229,6 @@ const movieInfo = fromMatrixCollection           // ✅ MATRIX (TOP PRIORITY)
   : fromDramaCollection
   ? safeLookup(DRAMA_MOVIE_DATA, movie.tmdbId)
   : safeLookup(COMPLETE_MOVIE_DATA, movie.tmdbId);
-
 
 
 
@@ -247,17 +268,21 @@ const budget = safeMovieInfo.budget || 'N/A';
 const rating = safeMovieInfo.rating || movie.imdbRating || 7.5;
 
 const sensitiveScenes = safeMovieInfo.sensitiveScenes 
+  || PARASITE_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes // ✅ NEW PARASITE
   || MATRIX_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
-  || SE7EN_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes // ✅ NEW SE7EN
+  || SE7EN_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes // ✅ SE7EN
   || SCI_FI_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
   || CRIME_THRILLER_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
   || INTERSTELLAR_TIMELINES?.[movie?.tmdbId]?.scenes 
   || SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
   || [];
 
-const quote = fromMatrixCollection 
+
+const quote = fromParasiteCollection                    // ✅ NEW PARASITE
+  ? PARASITE_QUOTES?.[movie.tmdbId] || ''
+  : fromMatrixCollection 
   ? MATRIX_QUOTES?.[movie.tmdbId] || ''
-  : fromSe7enCollection // ✅ NEW SE7EN
+  : fromSe7enCollection                                 // ✅ SE7EN
   ? SE7EN_QUOTES?.[movie.tmdbId] || ''
   : fromCrimeThrillerCollection
   ? CRIME_THRILLER_QUOTES?.[movie.tmdbId] || ''
@@ -271,9 +296,11 @@ const quote = fromMatrixCollection
   ? SURVIVAL_QUOTES?.[movie.tmdbId] || ''
   : STRATEGIC_QUOTES?.[movie.tmdbId] || '';
 
-const displayIndex = fromMatrixCollection 
+const displayIndex = fromParasiteCollection             // ✅ PARASITE - NO BAR
+  ? null                                                 // ✅ Don't show bar
+  : fromMatrixCollection 
   ? safeMovieInfo.matrixRealityIndex ?? null
-  : fromSe7enCollection // ✅ NEW SE7EN
+  : fromSe7enCollection
   ? safeMovieInfo.se7enDNAScore ?? null
   : fromRevengeCollection
   ? safeMovieInfo.revengeIntensity ?? null
@@ -293,9 +320,12 @@ const displayIndex = fromMatrixCollection
   ? safeMovieInfo.survivabilityIndex ?? null
   : safeMovieInfo.mindBendingIndex ?? null;
 
-const scoreValue = fromMatrixCollection 
+
+const scoreValue = fromParasiteCollection               // ✅ PARASITE - NO BAR
+  ? 0                                                    // ✅ Return 0 to hide bar
+  : fromMatrixCollection 
   ? movie.matrixRealityIndex ?? safeMovieInfo.matrixRealityIndex ?? 0
-  : fromSe7enCollection // ✅ NEW SE7EN
+  : fromSe7enCollection
   ? movie.se7enDNAScore ?? safeMovieInfo.se7enDNAScore ?? 0
   : fromRevengeCollection
   ? movie.revengeIntensity ?? safeMovieInfo.revengeIntensity ?? 0
@@ -326,6 +356,9 @@ const scoreValue = fromMatrixCollection
   : fromInceptionCollection
   ? movie.mindBendingIndex ?? safeMovieInfo.mindBendingIndex ?? 0
   : safeMovieInfo.mindBendingIndex ?? 0;
+
+
+
 
 const complexityLevel = safeMovieInfo.complexityLevel || 'HIGH';
 
@@ -494,7 +527,7 @@ const getUniqueDescription = () => {
 
 const getComplexityScoreTitle = () => {
   if (fromMatrixCollection) return 'MATRIX REALITY SCORE';
-  if (fromSe7enCollection) return 'SE7EN DNA SCORE'; // ✅ NEW SE7EN
+  if (fromSe7enCollection) return 'SE7EN DNA SCORE';                       // ✅ SE7EN
   if (fromRevengeCollection) return 'REVENGE INTENSITY SCORE';
   if (fromWarFilmsCollection) return 'WAR INTENSITY SCORE';
   if (fromSciFiCollection) return 'SCI-FI COMPLEXITY SCORE';
@@ -514,9 +547,11 @@ const getComplexityScoreTitle = () => {
   return 'COMPLEXITY SCORE';
 };
 
+
 const getComplexityIndexLabel = () => {
+         
   if (fromMatrixCollection) return 'REALITY DISTORTION INDEX';
-  if (fromSe7enCollection) return 'NOIR DARKNESS INDEX'; // ✅ NEW SE7EN
+  if (fromSe7enCollection) return 'NOIR DARKNESS INDEX';                  // ✅ SE7EN
   if (fromRevengeCollection) return 'REVENGE INTENSITY INDEX';
   if (fromWarFilmsCollection) return 'WAR INTENSITY INDEX';
   if (fromSciFiCollection) return 'SCI-FI COMPLEXITY INDEX';
@@ -536,9 +571,11 @@ const getComplexityIndexLabel = () => {
   return 'MIND-BENDING INDEX';
 };
 
+
 const getComplexityLevelLabel = () => {
+       
   if (fromMatrixCollection) return 'SIMULATION DISTORTION LEVEL';
-  if (fromSe7enCollection) return 'PSYCHOLOGICAL GRIT LEVEL'; // ✅ NEW SE7EN
+  if (fromSe7enCollection) return 'PSYCHOLOGICAL GRIT LEVEL';             // ✅ SE7EN
   if (fromRevengeCollection) return 'VENGEANCE BRUTALITY LEVEL';
   if (fromWarFilmsCollection) return 'COMBAT REALISM LEVEL';
   if (fromSciFiCollection) return 'COSMIC COMPLEXITY LEVEL';
@@ -557,6 +594,7 @@ const getComplexityLevelLabel = () => {
   if (fromMementoCollection) return 'MEMORY DISTORTION LEVEL';
   return 'COGNITIVE DISTORTION LEVEL';
 };
+
 
 
 
@@ -640,8 +678,9 @@ const getComplexityDescription = () => {
 };
 
 const getBorderColor = () => {
+           
   if (fromMatrixCollection) return 'border-emerald-400/40'; 
-  if (fromSe7enCollection) return 'border-amber-700/40'; // ✅ NEW SE7EN (gritty amber/brown)
+  if (fromSe7enCollection) return 'border-amber-700/40';                 // ✅ SE7EN (gritty amber/brown)
   if (fromRevengeCollection) return 'border-red-400/40';
   if (fromWarFilmsCollection) return 'border-red-400/40';
   if (fromInterstellarCollection) return 'border-cyan-400/40';
@@ -659,9 +698,11 @@ const getBorderColor = () => {
   return 'border-yellow-400/40';
 };
 
+
 const getStarColor = () => {
+ 
   if (fromMatrixCollection) return 'text-emerald-400'; 
-  if (fromSe7enCollection) return 'text-amber-600'; // ✅ NEW SE7EN (darker amber)
+  if (fromSe7enCollection) return 'text-amber-600';                      // ✅ SE7EN (darker amber)
   if (fromRevengeCollection) return 'text-red-400';
   if (fromWarFilmsCollection) return 'text-red-400';
   if (fromSciFiCollection) return 'text-cyan-400';
@@ -678,7 +719,6 @@ const getStarColor = () => {
   if (fromMementoCollection) return 'text-yellow-400';
   return 'text-yellow-400';
 };
-
 
   return (
     <motion.div
@@ -788,34 +828,33 @@ const getStarColor = () => {
 
          <EnhancedWhereToWatchSection movie={movie} />
 
-      {!fromHeistThrillerCollection && (
-        <motion.div
-         className="mb-6 sm:mb-8 md:mb-12 bg-gradient-to-br from-gray-800/40 to-gray-900/60 rounded-lg sm:rounded-xl border border-gray-700/50 p-3 sm:p-4 md:p-8 shadow-2xl backdrop-blur-sm relative overflow-hidden"
+{!fromParasiteCollection && !fromHeistThrillerCollection && (
+  <motion.div
+    className="mb-6 sm:mb-8 md:mb-12 bg-gradient-to-br from-gray-800/40 to-gray-900/60 rounded-lg sm:rounded-xl border border-gray-700/50 p-3 sm:p-4 md:p-8 shadow-2xl backdrop-blur-sm relative overflow-hidden"
+    initial={{ opacity: 0, scale: 0.95 }}
+    animate={{ opacity: 1, scale: 1 }}
+    transition={{ duration: 0.8 }}
+    whileHover={{ scale: 1.01 }}
+  >
+    {[
+      { pos: 'top-2 left-2 sm:top-4 sm:left-4', border: 'border-t-2 border-l-2' },
+      { pos: 'top-2 right-2 sm:top-4 sm:right-4', border: 'border-t-2 border-r-2' },
+      { pos: 'bottom-2 left-2 sm:bottom-4 sm:left-4', border: 'border-b-2 border-l-2' },
+      { pos: 'bottom-2 right-2 sm:bottom-4 sm:right-4', border: 'border-b-2 border-r-2' }
+    ].map((corner, i) => (
+      <div
+        key={i}
+        className={`absolute ${corner.pos} w-3 h-3 sm:w-5 sm:h-5 ${corner.border} ${getBorderColor()}`}
+      />
+    ))}
 
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8 }}
-          whileHover={{ scale: 1.01 }}
-        >
-          {[
-            { pos: 'top-2 left-2 sm:top-4 sm:left-4', border: 'border-t-2 border-l-2' },
-            { pos: 'top-2 right-2 sm:top-4 sm:right-4', border: 'border-t-2 border-r-2' },
-            { pos: 'bottom-2 left-2 sm:bottom-4 sm:left-4', border: 'border-b-2 border-l-2' },
-            { pos: 'bottom-2 right-2 sm:bottom-4 sm:right-4', border: 'border-b-2 border-r-2' }
-          ].map((corner, i) => (
-            <div
-              key={i}
-              className={`absolute ${corner.pos} w-3 h-3 sm:w-5 sm:h-5 ${corner.border} ${getBorderColor()}`}
-            />
-          ))}
-
-<div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 sm:mb-6 md:mb-8 gap-3 sm:gap-4 md:gap-6">
-  <div className="flex items-center gap-2 sm:gap-3">
-    <Star className={`w-5 h-5 sm:w-6 sm:h-6 ${getStarColor()}`} />
-    <h3 className="text-lg sm:text-xl md:text-2xl font-light text-gray-200 tracking-normal sm:tracking-wide uppercase">
-      {getComplexityScoreTitle()}
-    </h3>
-  </div>
+    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 sm:mb-6 md:mb-8 gap-3 sm:gap-4 md:gap-6">
+      <div className="flex items-center gap-2 sm:gap-3">
+        <Star className={`w-5 h-5 sm:w-6 sm:h-6 ${getStarColor()}`} />
+        <h3 className="text-lg sm:text-xl md:text-2xl font-light text-gray-200 tracking-normal sm:tracking-wide uppercase">
+          {getComplexityScoreTitle()}
+        </h3>
+      </div>
 
 
 <div className="flex items-center gap-4 sm:gap-6 md:gap-8">
@@ -892,10 +931,12 @@ const getStarColor = () => {
 
   <RealCommentsRatingSection movie={movie} />
 
-{/* ✅ FAQ SECTION WITH MATRIX, SE7EN, INTERSTELLAR, REVENGE, WAR, SCI-FI SUPPORT */}
-{fromMatrixCollection ? (
+{/* ✅ FAQ SECTION WITH PARASITE, MATRIX, SE7EN, INTERSTELLAR, REVENGE, WAR, SCI-FI SUPPORT */}
+{fromParasiteCollection ? (                          // ✅ NEW PARASITE FAQ SECTION
+  <ParasiteSEOFAQSection movie={movie} />
+) : fromMatrixCollection ? (
   <MatrixSEOFAQSection movie={movie} />
-) : fromSe7enCollection ? ( // ✅ NEW SE7EN FAQ SECTION
+) : fromSe7enCollection ? (                          // ✅ SE7EN FAQ SECTION
   <Se7enSEOFAQSection movie={movie} />
 ) : fromRevengeCollection ? (
   <RevengeMovieSEOFAQSection movie={movie} />
@@ -933,9 +974,11 @@ const getStarColor = () => {
   <SEOFAQSection movie={movie} />
 )}
 
+
 </motion.div>
 );
 });
+
 
 MovieDetailsSection.displayName = 'MovieDetailsSection';
 export default MovieDetailsSection;

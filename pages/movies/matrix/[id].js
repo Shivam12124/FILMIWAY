@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Play, X, Award, Zap, Film, User, Twitter, Hash, Send } from 'lucide-react';
+import InternalCollectionsSection from '../../../components/InternalCollectionsSection';
 
 import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
@@ -517,7 +518,10 @@ const MatrixMoviePage = ({ movie }) => {
           <motion.div id="watch" initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.2, duration: 0.8 }} className="space-y-8 sm:space-y-12 px-3 sm:px-4 lg:px-6">
             <MovieDetailsSection movie={movie} fromMatrixCollection={true} />
           </motion.div>
-          <div className="px-3 sm:px-4 lg:px-6"><AuthorCreditSection /><TMDBAttribution /></div>
+         <InternalCollectionsSection currentSlug="movies-like-the-matrix" />
+<TMDBAttribution />
+
+
         </div>
       </div>
     </div>

@@ -83,6 +83,17 @@ const CollectionsHub = () => {
             hasSubCollections: false
         },
 
+{
+    id: 'parasite',
+    title: 'Movies Like Parasite',
+    description: 'Dark satires exposing class warfare, wealth disparity, and social injustice with thriller intensity',
+    icon: Scale,  // ⚖️ Balance/scales representing class divide
+    gradient: 'from-slate-700 to-gray-900',  // 🌑 Dark slate/gray (Parasite's aesthetic)
+    movieCount: '10',
+    rating: '8.5',
+    directLink: '/collection/movies-like-parasite',
+    hasSubCollections: false
+},
 
 
 {

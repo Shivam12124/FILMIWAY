@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Play, X, User, Twitter, Hash, Send, Fingerprint, Film } from 'lucide-react';
-
+import InternalCollectionsSection from '../../../components/InternalCollectionsSection';
 import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
 import TMDBAttribution from '../../../components/TMDBAttribution';
@@ -511,8 +511,11 @@ const Se7enMoviePage = ({ movie, posterUrl }) => {
           <motion.div id="watch" initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.2, duration: 0.8 }} className="space-y-8 sm:space-y-12 px-3 sm:px-4 lg:px-6">
             <MovieDetailsSection movie={movie} fromSe7enCollection={true} />
           </motion.div>
-          <div className="px-3 sm:px-4 lg:px-6"><AuthorCreditSection /><TMDBAttribution /></div>
-        </div>
+          <InternalCollectionsSection currentSlug="movies-like-se7en" />
+<TMDBAttribution />
+</div>
+
+        
       </div>
     </div>
   );
