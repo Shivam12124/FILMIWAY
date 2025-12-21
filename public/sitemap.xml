@@ -545,6 +545,7 @@
 
 
 
+
 <!-- 🎭 10 MOVIES LIKE PARASITE -->
 <!-- 1. The Handmaiden (2016) -->
 <url>
@@ -626,6 +627,17 @@
     <priority>0.8</priority>
 </url>
 
+
+    
+
+
+<!-- 🕶️ 10 MOVIES LIKE THE MATRIX -->
+<url>
+    <loc>https://filmiway.com/movies/matrix/tt0118929</loc>
+    <lastmod>2025-12-15T11:18:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
 
 <url>
     <loc>https://filmiway.com/movies/matrix/tt1375666</loc>
