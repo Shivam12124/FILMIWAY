@@ -276,12 +276,195 @@ export const RATING_OPTIONS = [
 ];
 
 export const PARASITE_MOVIE_FAQS = {
-    'Parasite': [
-        { question: 'What is the meaning behind Parasite?', answer: 'Class inequality & capitalism. Both families are parasites—the Kims infiltrate the Parks\' home, but the Parks rely on exploiting cheap labor.' },
-        { question: 'Is Parasite based on a true story?', answer: 'No, but Bong Joon Ho was inspired by his own tutor experience and South Korea\'s extreme wealth gap.' },
-        { question: 'Why did Parasite win the Oscar?', answer: 'Universal themes, masterful genre-blending, perfect pacing, and razor-sharp social commentary made it the first non-English film to win Best Picture.' },
-        { question: 'What does the ending mean?', answer: 'Ki-woo fantasizes about buying the house and freeing his father—a dream that would take 564 years. It\'s about inescapable poverty.' }
-    ]
+  'The Handmaiden': [
+    { 
+      question: "How does the three-part structure change the story?", 
+      answer: "The film uses a 'Rashomon-style' narrative where the same events are replayed from different perspectives. Part 1 sets up the con, Part 2 reveals the secret alliance between the women that completely reframes the previous scenes, and Part 3 delivers the final retribution. It turns a story of victimization into one of masterful empowerment." 
+    },
+    { 
+      question: "What is the significance of the Japanese/Korean language switch?", 
+      answer: "The language switching is a tool of power and colonial submission. Characters switch to Japanese (the occupier's language) to assert authority or hide truth, while Korean is used for intimacy. Sook-hee destroying the Japanese library symbolizes the destruction of the colonial patriarchal authority that imprisoned Hideko." 
+    },
+    { 
+      question: "Is the relationship between the women genuine or a con?", 
+      answer: "While it starts as a mutual con—Sook-hee planning to institutionalize Hideko, and Hideko planning to use Sook-hee as a scapegoat—it evolves into genuine love. Their romance becomes the ultimate rebellion against the men who view them merely as objects to be collected, sold, or married for fortune." 
+    },
+    { 
+      question: "Why is the octopus imagery significant?", 
+      answer: "The octopus is a reference to the famous Japanese erotic print 'The Dream of the Fisherman's Wife,' symbolizing the Uncle's perverse, objectifying fantasy. By keeping the octopus in a tank, the film highlights how he collects 'exotic' things—books, porn, and women—trapping them in a dead, stagnant environment." 
+    }
+  ],
+
+  'Burning': [
+    { 
+      question: "Did Ben actually kill Haemi?", 
+      answer: "The film deliberately never confirms it, but the clues (the watch, the cat, the 'burning greenhouses' metaphor) strongly imply he is a serial killer who targets lonely, 'useless' women. However, the brilliance of the film lies in the ambiguity—it could all be Jong-su's class-fueled paranoia projecting evil onto a wealthy rival." 
+    },
+    { 
+      question: "What does the 'burning greenhouses' metaphor mean?", 
+      answer: "Ben claims he burns abandoned greenhouses because they are 'dirty and useless.' This is likely a chilling metaphor for murdering marginalized women whom society won't miss. It highlights the terrifying callousness of the ultra-rich who view the poor as expendable clutter to be removed for their own amusement." 
+    },
+    { 
+      question: "Why is the 'Great Hunger' dance scene so famous?", 
+      answer: "Haemi's topless dance at twilight to Miles Davis is the film's emotional peak. It represents her desperate search for the 'Great Hunger' (meaning of life) versus the 'Little Hunger' (physical survival). It is a moment of pure, tragic freedom before she disappears into the void of a society that doesn't value her." 
+    },
+    { 
+      question: "What is the significance of the final scene?", 
+      answer: "Jong-su stripping naked after the murder is a primal act of shedding his social identity. Throughout the film, he is constrained by poverty and politeness. The violent finale is his only way to reclaim agency in a world where men like Ben hold all the power. It is an act of class warfare turned literal." 
+    }
+  ],
+
+  'Snowpiercer': [
+    { 
+      question: "What does the train symbolize?", 
+      answer: "The train is a literal model of capitalism. The front section represents the ultra-rich living in hedonistic luxury, while the tail section represents the impoverished proletariat kept in squalor. The train relies on the suffering of the back to power the front, arguing that the system isn't 'broken'—it's working exactly as designed." 
+    },
+    { 
+      question: "What is the horrifying truth about the protein blocks?", 
+      answer: "The black gelatinous bars fed to the tail section are made of ground-up cockroaches. This reveals how the elite dehumanize the poor, literally feeding them pests, while they dine on sushi and steak. It is a visceral representation of the resource inequality that sustains the class divide." 
+    },
+    { 
+      question: "Why does Curtis refuse to take control of the engine?", 
+      answer: "Curtis realizes that replacing Wilford at the front of the train doesn't change the system; it just changes the operator. He chooses to derail the train instead because the film argues that true revolution isn't about taking power within an unjust system, but destroying the system entirely to build something new." 
+    },
+    { 
+      question: "What is the meaning of the ending with the polar bear?", 
+      answer: "The derailment kills almost everyone, but the survival of the two children and the sighting of the polar bear proves that life is possible outside the system. It refutes Wilford's lie that the train (capitalism) is the only way to survive. It symbolizes hope for a natural, uncorrupted future." 
+    }
+  ],
+
+  'Memories of Murder': [
+    { 
+      question: "Why is the ending stare so haunting?", 
+      answer: "In the final shot, Detective Park stares directly into the camera. Bong Joon Ho intended this for the real-life killer (who was caught years later in 2019). It breaks the fourth wall to ask the audience: 'Are you him?' It implies the killer is an ordinary-looking person hiding in plain sight among us." 
+    },
+    { 
+      question: "How does the film criticize the police?", 
+      answer: "Unlike Hollywood cop movies where technology solves crimes, this film depicts the 1980s Korean police as brutal, incompetent, and obsessed with forced confessions. Their reliance on 'drop-kicking' suspects and fabricating evidence is shown as a major reason the killer was able to slip away for so long." 
+    },
+    { 
+      question: "What is the significance of the 'ordinary' killer?", 
+      answer: "The film emphasizes the banality of evil. The suspects aren't comic book villains; they are factory workers and locals. The title refers to the memories of a time when the nation was helpless against darkness, highlighting how the chaos of the military dictatorship allowed such crimes to go unsolved." 
+    },
+    { 
+      question: "Why is it considered an 'anti-procedural'?", 
+      answer: "Traditional crime films offer closure and justice. *Memories of Murder* offers neither. It is about the failure of truth and the frustration of not knowing. The rain washes away footprints, DNA samples get confused, and suspects die. It captures the feeling of helplessness rather than the triumph of justice." 
+    }
+  ],
+
+  'Shoplifters': [
+    { 
+      question: "What is the meaning of the title vs. the family?", 
+      answer: "The title suggests a film about criminals, but the story reveals a tender, loving family unit. The irony is that this 'fake' family, bonded by crime and choice, shows more genuine love and care than the 'real' biological families that abused and abandoned these characters." 
+    },
+    { 
+      question: "Why does the grandmother keep the family together?", 
+      answer: "Grandma Hatsue is the financial anchor (via her pension) and the emotional center. Her home provides a sanctuary for society's castaways. Her character challenges the concept of blood relation, suggesting that shared survival and kindness create stronger bonds than genetics." 
+    },
+    { 
+      question: "Is the ending a tragedy or a return to order?", 
+      answer: "It is a tragedy disguised as order. The law separates the family and returns the children to their 'rightful' but abusive or neglectful environments. The film critiques a society that values legal definitions of family over actual well-being, showing how the 'system' destroys the only safety these characters had." 
+    },
+    { 
+      question: "What does the film say about poverty in Japan?", 
+      answer: "It exposes the 'invisible' poverty in a wealthy nation. The Shibatas work hard but can't survive without stealing. It critiques the social safety net that lets children and the elderly slip through the cracks, forcing them to form alternative, illegal communities just to survive." 
+    }
+  ],
+
+  'The Platform': [
+    { 
+      question: "What does the 'Vertical Self-Management Center' represent?", 
+      answer: "It is a brutal allegory for trickle-down economics. There is enough food for everyone, but those at the top gorge themselves, leaving nothing for those below. It argues that human greed and a lack of 'spontaneous solidarity' make a fair system impossible without enforced rationing." 
+    },
+    { 
+      question: "What is the message behind the ending with the girl?", 
+      answer: "The child on the lowest level represents the system's ultimate victim. Sending her back up to Level 0 is 'The Message' to the Administration that the system is broken. It suggests that the only way to disrupt a corrupt hierarchy is to protect the most vulnerable, even at the cost of your own life." 
+    },
+    { 
+      question: "Why does Goreng bring a book (Don Quixote)?", 
+      answer: "Goreng represents the idealist intellectual who thinks he can change the world with culture and reason. He is contrasted with Trimagasi (the realist/consumer). The film shows how idealism is quickly crushed by hunger, forcing Goreng to become a violent revolutionary to survive." 
+    },
+    { 
+      question: "What is the significance of the word 'Obvio'?", 
+      answer: "Trimagasi's catchphrase 'Obvio' (Obviously) reflects the acceptance of the cruel status quo. To him, it is 'obvious' that those above eat and those below starve. The film fights against this complacency, challenging the audience to question inequalities that we accept as 'obvious' in the real world." 
+    }
+  ],
+
+  'Mother': [
+    { 
+      question: "Is the son actually guilty?", 
+      answer: "Yes. The twist reveals that the mentally disabled son, Do-joon, did kill the girl, albeit perhaps misunderstanding the situation. The horror of the film is not his guilt, but the lengths his mother goes to—murdering a witness and framing an innocent man—to protect him." 
+    },
+    { 
+      question: "What does the opening and closing dance symbolize?", 
+      answer: "The mother's dance represents a descent into madness and a desperate attempt to shake off the pain of her reality. It bookmarks the film: in the beginning, it's an expression of her chaotic life; at the end, it is a hypnotic, acupuncture-induced trance to forget the monstrous crimes she committed." 
+    },
+    { 
+      question: "How does the acupuncture theme fit the story?", 
+      answer: "The mother is an unlicensed acupuncturist who claims to hit 'memory points' to help people forget bad memories. This is the central theme: willful ignorance. To survive and live with herself, she chooses to erase the truth, physically and metaphorically closing her eyes to her son's nature." 
+    },
+    { 
+      question: "How does this compare to traditional mother figures?", 
+      answer: "Bong Joon Ho subverts the 'sacrificial mother' trope. Instead of a noble protector, she becomes a monster. Her maternal instinct is so intense it bypasses all morality. The film asks a terrifying question: Is a mother's love a form of unconditional good, or can it be a destructive, selfish force?" 
+    }
+  ],
+
+  'The Killing of a Sacred Deer': [
+    { 
+      question: "What is the myth behind the story?", 
+      answer: "The film is a modern retelling of the Greek myth of Iphigenia. King Agamemnon killed a sacred deer belonging to Artemis, and to balance the scales, he had to sacrifice his daughter. Here, the surgeon (Agamemnon) accidentally killed Martin's father (the deer), and Martin (Artemis) demands a blood sacrifice in return." 
+    },
+    { 
+      question: "Why is the acting so wooden and deadpan?", 
+      answer: "Yorgos Lanthimos directs his actors to speak in a stilted, emotionless monotone. This Brechtian technique creates a sense of detachment and uncanniness. It highlights the absurdity of the upper class's polite facade, which cracks only when faced with primal, supernatural violence." 
+    },
+    { 
+      question: "What does the spaghetti eating scene signify?", 
+      answer: "It is one of the most unsettling scenes in modern horror. Martin eats spaghetti messily while explaining his plan to destroy Steven's family. The contrast between the mundane act of eating and the horrific threat emphasizes Martin's total lack of empathy and the inevitability of the curse." 
+    },
+    { 
+      question: "Is there a logical explanation for the illness?", 
+      answer: "No, and the film refuses to give one. The doctors' inability to diagnose the paralysis represents the failure of science and rationality against cosmic justice. Steven, a man of science (surgeon), is forced to accept a supernatural reality where 'an eye for an eye' is the only law that matters." 
+    }
+  ],
+
+  'The Housemaid': [
+    { 
+      question: "How did this film inspire Parasite?", 
+      answer: "Bong Joon Ho cites this 1960 classic as his biggest influence. Both films feature a working-class intruder entering a wealthy home, the use of stairs to represent social hierarchy, and a domestic space turning into a battlefield. It established the 'home invasion' genre in Korean cinema." 
+    },
+    { 
+      question: "What does the Housemaid represent?", 
+      answer: "She is the ultimate 'Femme Fatale' and a symbol of class disruption. She enters the bourgeois home and systematically dismantles the nuclear family through seduction and manipulation. She represents the repressed chaotic forces that the rigid, middle-class society tries to keep out." 
+    },
+    { 
+      question: "What is the significance of the rat poison?", 
+      answer: "Rat poison is a recurring motif representing the toxicity within the household. It is used to kill rats (pests/poor), but eventually becomes the weapon that destroys the family itself. It blurs the line between who is the pest and who is the homeowner." 
+    },
+    { 
+      question: "Why is the ending considered a 'cop-out'?", 
+      answer: "The film ends with the husband addressing the audience, warning them about affairs, revealing the plot might have been a dream. This was likely forced by 1960s censors to uphold moral standards. Modern viewers often ignore this meta-ending, focusing on the bleak destruction that preceded it." 
+    }
+  ],
+
+  'The Talented Mr. Ripley': [
+    { 
+      question: "Is Tom Ripley a villain or a victim of class?", 
+      answer: "Tom is a complex anti-hero driven by intense class envy. He doesn't just want money; he wants *to be* Dickie Greenleaf—to have his taste, confidence, and privilege. The film explores how the exclusion of the working class can curdle into a desperate, violent need to assimilate." 
+    },
+    { 
+      question: "What does the quote 'fake somebody vs real nobody' mean?", 
+      answer: "This is Tom's core philosophy. He would rather live a lie as a wealthy man than accept his reality as a poor 'nobody.' It highlights the crushing weight of social invisibility and how identity in a capitalist society is often defined solely by status and possessions." 
+    },
+    { 
+      question: "How does the film handle the queer subtext?", 
+      answer: "Unlike the book, the film makes Tom's attraction to Dickie explicit. This adds a layer of tragedy—Tom is rejected not just for his class, but for his love. His murder of Dickie is a 'crime of passion' born from the humiliation of being looked down upon by the person he idolizes." 
+    },
+    { 
+      question: "What role does Italy play in the film?", 
+      answer: "Italy serves as the ultimate playground for the wealthy American elite. It is beautiful but morally lawless for them. The setting emphasizes the gap between the locals/Tom and the tourists like Dickie, for whom life is just an endless, consequence-free vacation." 
+    }
+  ]
 };
 
 export const getTMDBPosterUrl = (posterPath, size = 'medium') => {
