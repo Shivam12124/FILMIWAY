@@ -25,6 +25,13 @@ import {
   STRATEGIC_QUOTES as PARASITE_QUOTES, 
   SENSITIVE_TIMELINES as PARASITE_SENSITIVE_TIMELINES 
 } from '../utils/parasiteMovieData';
+ 
+// ✅ OLDBOY COLLECTION IMPORTS
+import { 
+  COMPLETE_MOVIE_DATA as OLDBOY_MOVIE_DATA, 
+  STRATEGIC_QUOTES as OLDBOY_QUOTES, 
+  SENSITIVE_TIMELINES as OLDBOY_SENSITIVE_TIMELINES 
+} from '../utils/oldboyMovieData';
 
 
 // ✅ SE7EN COLLECTION IMPORTS
@@ -99,6 +106,10 @@ import InterstellarSEOFAQSection from './InterstellarSEOFAQSection';
 import MatrixSEOFAQSection from './MatrixSEOFAQSection';
 import Se7enSEOFAQSection from './Se7enSEOFAQSection'; // ✅ SE7EN FAQ
 import ParasiteSEOFAQSection from './ParasiteSEOFAQSection'; // ✅ NEW PARASITE FAQ
+// ✅ CORRECT IMPORT (Replace line ~120)
+import OldboySEOFAQSection from './OldboySEOFAQSection';
+
+
 
 
 const MovieDetailsSection = React.memo(({
@@ -110,6 +121,7 @@ const MovieDetailsSection = React.memo(({
   fromMatrixCollection,
   fromSe7enCollection, // ✅ SE7EN FLAG
   fromParasiteCollection, // ✅ NEW PARASITE FLAG
+  fromOldboyCollection, // ✅ NEW OLDBOY FLAG
   fromInterstellarCollection,
   fromDramaCollection,
   fromPsychologicalThrillerCollection,
@@ -197,11 +209,14 @@ const getMysteryThrillerMovieInfo = () => {
 
 // ✅ GET MOVIE INFO FROM CORRECT COLLECTION (MATRIX, SE7EN & PARASITE ADDED)
 const movieInfo = fromParasiteCollection               // ✅ NEW PARASITE COLLECTION (TOP PRIORITY)
+
   ? safeLookup(PARASITE_MOVIE_DATA, movie.tmdbId)
   : fromMatrixCollection                               // ✅ MATRIX
   ? safeLookup(MATRIX_MOVIE_DATA, movie.tmdbId)
   : fromSe7enCollection                                // ✅ SE7EN COLLECTION
   ? safeLookup(SE7EN_MOVIE_DATA, movie.tmdbId)
+  : fromOldboyCollection
+? safeLookup(OLDBOY_MOVIE_DATA, movie.tmdbId)
   : fromRevengeCollection
   ? getRevengeMovieInfo()
   : fromWarFilmsCollection
@@ -269,6 +284,7 @@ const rating = safeMovieInfo.rating || movie.imdbRating || 7.5;
 
 const sensitiveScenes = safeMovieInfo.sensitiveScenes 
   || PARASITE_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes // ✅ NEW PARASITE
+  || OLDBOY_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
   || MATRIX_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
   || SE7EN_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes // ✅ SE7EN
   || SCI_FI_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
@@ -280,6 +296,9 @@ const sensitiveScenes = safeMovieInfo.sensitiveScenes
 
 const quote = fromParasiteCollection                    // ✅ NEW PARASITE
   ? PARASITE_QUOTES?.[movie.tmdbId] || ''
+  : fromOldboyCollection
+? OLDBOY_QUOTES?.[movie.tmdbId] || ''
+
   : fromMatrixCollection 
   ? MATRIX_QUOTES?.[movie.tmdbId] || ''
   : fromSe7enCollection                                 // ✅ SE7EN
@@ -300,6 +319,10 @@ const displayIndex = fromParasiteCollection             // ✅ PARASITE - NO BAR
   ? null                                                 // ✅ Don't show bar
   : fromMatrixCollection 
   ? safeMovieInfo.matrixRealityIndex ?? null
+
+  : fromOldboyCollection
+? safeMovieInfo.revengeIntensity ?? null
+
   : fromSe7enCollection
   ? safeMovieInfo.se7enDNAScore ?? null
   : fromRevengeCollection
@@ -325,6 +348,9 @@ const scoreValue = fromParasiteCollection               // ✅ PARASITE - NO BAR
   ? 0                                                    // ✅ Return 0 to hide bar
   : fromMatrixCollection 
   ? movie.matrixRealityIndex ?? safeMovieInfo.matrixRealityIndex ?? 0
+  : fromOldboyCollection
+? movie.revengeIntensity ?? safeMovieInfo.revengeIntensity ?? 0
+
   : fromSe7enCollection
   ? movie.se7enDNAScore ?? safeMovieInfo.se7enDNAScore ?? 0
   : fromRevengeCollection
@@ -828,7 +854,8 @@ const getStarColor = () => {
 
          <EnhancedWhereToWatchSection movie={movie} />
 
-{!fromParasiteCollection && !fromHeistThrillerCollection && (
+{!fromParasiteCollection && !fromOldboyCollection && !fromHeistThrillerCollection && (
+
   <motion.div
     className="mb-6 sm:mb-8 md:mb-12 bg-gradient-to-br from-gray-800/40 to-gray-900/60 rounded-lg sm:rounded-xl border border-gray-700/50 p-3 sm:p-4 md:p-8 shadow-2xl backdrop-blur-sm relative overflow-hidden"
     initial={{ opacity: 0, scale: 0.95 }}
@@ -936,6 +963,10 @@ const getStarColor = () => {
   <ParasiteSEOFAQSection movie={movie} />
 ) : fromMatrixCollection ? (
   <MatrixSEOFAQSection movie={movie} />
+
+  ) : fromOldboyCollection ? (
+  <OldboySEOFAQSection movie={movie} />
+
 ) : fromSe7enCollection ? (                          // ✅ SE7EN FAQ SECTION
   <Se7enSEOFAQSection movie={movie} />
 ) : fromRevengeCollection ? (

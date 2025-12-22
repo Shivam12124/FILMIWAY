@@ -309,6 +309,90 @@ export const COLLECTIONS = {
       }
     }
   },
+
+  'movies-like-oldboy': {
+  slug: 'movies-like-oldboy',
+  title: 'Movies Like Oldboy',
+  subtitle: 'Ultimate Revenge Masterpieces',
+  description: 'Brutal, twisted revenge thrillers with shocking twists and unrelenting vengeance—like Park Chan-wook’s iconic masterpiece.',
+  longDescription: 'Experience cinema’s most devastating revenge tales where betrayal, imprisonment, and primal rage collide. Curated for Oldboy fans, these films deliver jaw-dropping revelations, moral complexity, and cathartic violence that redefine vengeance storytelling.',
+  
+  emoji: '🔪',
+  theme: 'red',
+  primaryColor: '#dc2626',
+  secondaryColor: '#b91c1c',
+  accentColor: '#991b1b',
+  gradientFrom: 'from-red-700',
+  gradientTo: 'to-red-600',
+  category: 'oldboy',
+  tags: ['revenge', 'vengeance', 'korean cinema', 'psychological thriller', 'shocking twists', 'brutal violence'],
+
+  metaTitle: '10 Movies Like Oldboy (2025) | Ultimate Revenge Thrillers | Filmiway',
+  metaDescription: 'Discover 10 brutal revenge movies like Oldboy ranked by vengeance intensity—from I Saw the Devil to Lady Vengeance. Twisted tales of betrayal and retribution.',
+  metaKeywords: 'movies like oldboy, revenge thrillers, korean revenge movies, i saw the devil, lady vengeance, park chan wook, vengeance films',
+
+  stats: {
+    totalMovies: 10,
+    averageRating: 7.8,
+    totalWatchtime: '22 hours 45 minutes',
+    averageRevengeIntensity: 94.0,
+    mostIntense: 'Oldboy (99/100)',
+    newestMovie: 'The Handmaiden (2016)',
+    oldestMovie: 'Sympathy for Mr. Vengeance (2002)'
+  },
+
+  movies: [
+    'tt0310775',  // I Saw the Devil (2010)
+    'tt0310775',  // Sympathy for Mr. Vengeance (2002)
+    'tt0451094',  // Lady Vengeance (2005)
+    'tt1527788',  // The Man from Nowhere (2010)
+    'tt1190539',  // The Chaser (2008)
+    'tt0456912',  // A Bittersweet Life (2005)
+    'tt1255953',  // Incendies (2010)
+    'tt4016934',  // The Handmaiden (2016)
+    'tt1540399',  // No Mercy (2010)
+    'tt1392214'   // Prisoners (2013)
+  ],
+
+  badges: [
+    { label: 'Revenge Masterpieces', desc: 'Oldboy-style vengeance cinema' },
+    { label: 'Korean Cinema Gems', desc: 'Park Chan-wook influence' },
+    { label: 'Shocking Twists', desc: 'Mind-blowing revelations' }
+  ],
+
+  featured: {
+    hero: {
+      title: 'Oldboy',
+      subtitle: 'The Ultimate Revenge Masterpiece',
+      description: 'Park Chan-wook’s twisted Korean classic delivers 15 years of imprisonment leading to cinema’s most shocking, devastating revenge.',
+      poster: 'https://image.tmdb.org/t/p/w500/pWDtjs568ZfOTMbURQBYuT4Qb7P.jpg',
+      backdrop: 'https://image.tmdb.org/t/p/w1280/6I5wLq9F2C713tKzvpw4V8iG0oZ.jpg',
+      revengeIntensity: 99
+    }
+  },
+
+  relatedCollections: [
+    'best-revenge-movies',
+    'movies-like-se7en',
+    'best-psychological-thriller-movies'
+  ],
+
+  seo: {
+    title: '10 Movies Like Oldboy (2025) | Ultimate Revenge Thrillers | Filmiway',
+    description: 'The definitive Oldboy-inspired collection—brutal revenge films with shocking twists and unrelenting vengeance. From I Saw the Devil to Lady Vengeance.',
+    keywords: 'movies like oldboy, revenge movies, korean thrillers, i saw the devil, lady vengeance, sympathy for mr vengeance, park chan wook films',
+    canonicalUrl: 'https://filmiway.com/collection/movies-like-oldboy',
+    ogImage: 'https://filmiway.com/images/oldboy-movies-collection-og.jpg',
+    structuredData: {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      name: 'Movies Like Oldboy',
+      description: 'Expert-curated revenge thrillers ranked by vengeance intensity, inspired by Park Chan-wook’s masterpiece',
+      numberOfItems: 10
+    }
+  }
+},
+
     
     // 🏠 MOVIES LIKE PARASITE COLLECTION
 'movies-like-parasite': {

@@ -12,6 +12,7 @@ import { COMPLETE_MOVIE_DATABASE as SURVIVAL_DATABASE, COMPLETE_MOVIE_DATA as SU
 import { COMPLETE_MOVIE_DATABASE as MATRIX_DATABASE } from '../../utils/matrixMovieData';
 import { COMPLETE_MOVIE_DATABASE as SE7EN_DATABASE, COMPLETE_MOVIE_DATA as SE7EN_DATA } from '../../utils/se7enMovieData';
 import { COMPLETE_MOVIE_DATABASE as PARASITE_DATABASE, COMPLETE_MOVIE_DATA as PARASITE_DATA } from '../../utils/parasiteMovieData'; // ✅ NEW PARASITE
+import { COMPLETE_MOVIE_DATABASE as OLDBOY_DATABASE, COMPLETE_MOVIE_DATA as OLDBOY_DATA } from '../../utils/oldboyMovieData'; // ✅ NEW OLDBOY
 
 import { COMPLETE_MOVIE_DATABASE as INTERSTELLAR_DATABASE, COMPLETE_MOVIE_DATA as INTERSTELLAR_DATA } from '../../utils/interstellarMovieData';
 import { COMPLETE_MOVIE_DATABASE as CRIME_THRILLER_DATABASE, COMPLETE_MOVIE_DATA as CRIME_THRILLER_DATA } from '../../utils/crimeThrillerMovieData';
@@ -207,6 +208,33 @@ const getCollectionContent = () => {
                 text2: "Each film forces you to confront the uncomfortable reality that sometimes, understanding the monster means losing a part of yourself in the process."
             }
         };
+
+
+    } else if (collection.slug === 'movies-like-oldboy') { // ✅ OLD BOY COLLECTION ADDED
+        return {
+            badge: "Ultimate Revenge Cinema",
+            title: "Oldboy",
+            description: "Brutal revenge thrillers with shocking twists that'll haunt you. Twisted vengeance, moral devastation & cathartic violence where justice becomes personal destruction.",
+            selection: {
+                text1: "From 15 years of mysterious imprisonment to endless revenge cycles—these films explore vengeance's primal satisfaction while revealing its psychological devastation and moral complexity.",
+                text2: "Each revenge masterpiece features protagonists pushed beyond human limits, discovering betrayals that shatter their world, and unleashing calculated destruction that consumes everything."
+            },
+            ranking: {
+                text: "Our vengeance intensity index evaluates revenge brutality, moral complexity depth, twist sophistication, and psychological devastation throughout each film.",
+                points: [
+                    "Vengeance brutality scale",
+                    "Moral complexity depth",
+                    "Twist revelation power",
+                    "Psychological devastation impact"
+                ]
+            },
+            experience: {
+                text1: "Whether you're seeking visceral catharsis or profound moral reckoning, this collection delivers cinema's most devastating revenge experiences that redefine justice itself.",
+                text2: "Each film has been selected for its unflinching portrayal of vengeance's seductive power and ultimate tragedy—creating unforgettable narratives where revenge destroys both hunter and hunted."
+            }
+        };
+
+
     } else if (collection.slug === 'movies-like-parasite') { // ✅ NEW PARASITE COLLECTION ADDED
         return {
             badge: "Class Warfare Cinema",
@@ -605,6 +633,16 @@ const getHeaderContent = () => {
             title: "Movies Like Parasite: 10 Class Warfare Films",
             subtitle: "Social inequality, economic desperation & systemic injustice where rich and poor collide"
         };
+
+            } else if (collection.slug === 'movies-like-oldboy') {
+        return {
+            title: "Movies Like Oldboy: 10 Brutal Revenge Films",
+            subtitle: "Twisted vengeance, shocking twists & moral devastation from Park Chan-wook's masterpiece"
+        };
+    
+
+
+
     } else if (collection.slug === 'movies-like-interstellar') {
         return {
             title: "Movies Like Interstellar: 10 Cerebral Space Films",
@@ -706,6 +744,15 @@ const getLoaderContent = () => {
             title: "Loading Movies Like Se7en",
             description: "Curating gritty noir thrillers and dark investigations with community reviews and ratings"
         };
+
+    } else if (collection?.slug === 'movies-like-oldboy') {
+        return {
+            title: "Loading Movies Like Oldboy",
+            description: "Curating brutal revenge thrillers with shocking twists and community reviews"
+        };
+
+
+
     } else if (collection?.slug === 'movies-like-parasite') { // ✅ NEW PARASITE LOADER
         return {
             title: "Loading Movies Like Parasite",
@@ -828,6 +875,19 @@ const getStaticMetaContent = () => {
             twitterTitle: "🌧️ Loved Se7en? These 10 Dark Thrillers Will Haunt You",
             progressText: `of Top ${movies.length} Movies Like Se7en`
         };
+
+    } else if (collection.slug === 'movies-like-oldboy') {
+        return {
+            title: "Movies Like Oldboy: 10 Brutal Revenge Films", // ✅ 47 chars
+            description: "Loved Oldboy? Discover 10 twisted revenge thrillers with shocking twists, moral devastation & Park Chan-wook-level vengeance like I Saw the Devil.", // ✅ 158 chars
+            keywords: "movies like oldboy, revenge thrillers, korean revenge movies, i saw the devil, lady vengeance, park chan wook",
+            ogTitle: "Movies Like Oldboy: 10 Brutal Revenge Masterpieces 🔪",
+            twitterTitle: "🔪 Loved Oldboy? These 10 Revenge Films Are Just as Twisted",
+            progressText: `of Top ${movies.length} Movies Like Oldboy`
+        };
+
+
+
     } else if (collection.slug === 'movies-like-parasite') { // ✅ NEW PARASITE META
         return {
             title: "Movies Like Parasite: 10 Class Warfare Films", // ✅ 49 chars
@@ -1037,6 +1097,7 @@ const getStaticMetaContent = () => {
             sessionStorage.removeItem('fromMementoCollection');
             sessionStorage.removeItem('fromMatrixCollection');
             sessionStorage.removeItem('fromSe7enCollection');
+            sessionStorage.removeItem('fromOldboyCollection');
             sessionStorage.removeItem('fromParasiteCollection'); // ✅ NEW PARASITE
             sessionStorage.removeItem('fromInterstellarCollection');
             sessionStorage.removeItem('fromShutterIslandCollection');
@@ -1064,6 +1125,8 @@ const getStaticMetaContent = () => {
                 sessionStorage.setItem('fromSe7enCollection', 'true');
             } else if (collection.slug === 'movies-like-parasite') { // ✅ NEW PARASITE
                 sessionStorage.setItem('fromParasiteCollection', 'true');
+         } else if (collection.slug === 'movies-like-oldboy') {
+          sessionStorage.setItem('fromOldboyCollection', 'true');
             } else if (collection.slug === 'movies-like-interstellar') {
                 sessionStorage.setItem('fromInterstellarCollection', 'true');
             } else if (collection.slug === 'movies-like-shutter-island') {
@@ -1507,6 +1570,10 @@ return (
                                     ? 'movies/like-se7en/'
                                     : collection?.slug === 'movies-like-parasite' // ✅ NEW PARASITE PATH
                                     ? 'movies/parasite/'
+                           : collection?.slug === 'movies-like-oldboy'
+? 'movies/oldboy/'
+
+
                                     : collection?.slug === 'movies-like-interstellar'
                                     ? 'movies/interstellar/'
                                     : collection?.slug === 'movies-like-memento'
@@ -1648,6 +1715,10 @@ return (
                                                 ? `/movies/like-se7en/${currentMovie.imdbID}`
                                                 : collection.slug === 'movies-like-parasite' // ✅ NEW PARASITE LINK
                                                 ? `/movies/parasite/${currentMovie.imdbID}`
+
+                                                : collection.slug === 'movies-like-oldboy'
+? `/movies/oldboy/${currentMovie.imdbID}`
+ 
                                                 : collection.slug === 'movies-like-interstellar'
                                                 ? `/movies/interstellar/${currentMovie.imdbID}`
                                                 : collection.slug === 'movies-like-memento'
@@ -1724,6 +1795,11 @@ return (
                                             detailPageUrl = `/movies/like-se7en/${currentMovie.imdbID}`;
                                         } else if (collection.slug === 'movies-like-parasite') { // ✅ NEW PARASITE BUTTON LOGIC
                                             detailPageUrl = `/movies/parasite/${currentMovie.imdbID}`;
+
+                                                            } else if (collection.slug === 'movies-like-oldboy') {
+                            detailPageUrl = `/movies/oldboy/${currentMovie.imdbID}`;
+
+
                                         } else if (collection.slug === 'movies-like-interstellar') {
                                             detailPageUrl = `/movies/interstellar/${currentMovie.imdbID}`;
                                         } else if (collection.slug === 'movies-like-memento') {
@@ -1918,6 +1994,16 @@ export async function getStaticProps({ params }) {
         case 'movies-like-parasite': // ✅ NEW PARASITE CASE
             movieDatabase = PARASITE_DATABASE;
             break;
+
+         
+
+case 'movies-like-oldboy':
+    movieDatabase = OLDBOY_DATABASE;
+    break;
+
+
+
+             
         case 'movies-like-interstellar':
             movieDatabase = INTERSTELLAR_DATABASE;
             break;

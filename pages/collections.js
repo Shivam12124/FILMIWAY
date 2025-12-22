@@ -56,7 +56,18 @@ const CollectionsHub = () => {
             directLink: '/collection/best-survival-movies',
             hasSubCollections: false
         },
- 
+ {
+    id: 'oldboy',
+    title: 'Movies Like Oldboy',
+    description: 'Brutal revenge thrillers with shocking twists, twisted vengeance, and moral devastation',
+    icon: Shield,  // 🔪 Revenge/protection symbolism
+    gradient: 'from-red-700 to-rose-900',  // Dark crimson revenge gradient
+    movieCount: '10',
+    rating: '8.7',
+    directLink: '/collection/movies-like-oldboy',
+    hasSubCollections: false
+},
+
 
         {
             id: 'interstellar',

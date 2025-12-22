@@ -185,6 +185,16 @@
 </url>
 
 
+
+  <!-- 🔥 MAIN COLLECTION -->
+  <url>
+    <loc>https://filmiway.com/collection/movies-like-oldboy</loc>
+    <lastmod>2025-12-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+
 <!-- 🧠 MOVIES LIKE INCEPTION (10 MOVIES - CORRECTED) -->
 <url>
     <loc>https://filmiway.com/movies/like-inception/tt0390384</loc>
@@ -543,6 +553,70 @@
         <priority>0.8</priority>
     </url>
 
+
+
+  <!-- 🔥 10 FILM INDIVIDUAL PAGES -->
+  <url>
+    <loc>https://filmiway.com/movies/oldboy/tt0310775</loc>
+    <lastmod>2025-12-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://filmiway.com/movies/oldboy/tt0310775</loc>
+    <lastmod>2025-12-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://filmiway.com/movies/oldboy/tt0451094</loc>
+    <lastmod>2025-12-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://filmiway.com/movies/oldboy/tt1527788</loc>
+    <lastmod>2025-12-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://filmiway.com/movies/oldboy/tt1190539</loc>
+    <lastmod>2025-12-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://filmiway.com/movies/oldboy/tt0456912</loc>
+    <lastmod>2025-12-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://filmiway.com/movies/oldboy/tt1255953</loc>
+    <lastmod>2025-12-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://filmiway.com/movies/oldboy/tt4016934</loc>
+    <lastmod>2025-12-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://filmiway.com/movies/oldboy/tt1540399</loc>
+    <lastmod>2025-12-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://filmiway.com/movies/oldboy/tt1392214</loc>
+    <lastmod>2025-12-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>
 
 
 
