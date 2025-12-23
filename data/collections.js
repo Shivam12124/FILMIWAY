@@ -479,6 +479,89 @@ export const COLLECTIONS = {
   }
 },
 
+// 🌀 MOVIES LIKE DONNIE DARKO COLLECTION
+'movies-like-donnie-darko': {
+  slug: 'movies-like-donnie-darko',
+  title: 'Movies Like Donnie Darko',
+  subtitle: 'Reality-Warping Cinema Masterpieces',
+  description: 'Mind-bending films about time travel paradoxes, butterfly effects, doppelgängers, and fractured realities—inspired by Richard Kelly\'s cult masterpiece.',
+  longDescription: 'Explore cinema\'s most disorienting examinations of time, reality, and consciousness. From temporal loops to alternate dimensions, these films shatter linear perception with butterfly effects, dying dreams, and existential doppelgängers that question the fabric of existence itself.',
+
+  emoji: '🌀',
+  theme: 'indigo',
+  primaryColor: '#6366f1',
+  secondaryColor: '#4f46e5',
+  accentColor: '#4338ca',
+  gradientFrom: 'from-indigo-600',
+  gradientTo: 'to-indigo-500',
+  category: 'donnie-darko',
+  tags: ['reality warping', 'time travel', 'butterfly effect', 'psychological sci-fi', 'cult classics', 'temporal paradoxes'],
+
+  metaTitle: '10 Movies Like Donnie Darko (2025) | Reality-Warping Cinema | Filmiway',
+  metaDescription: 'Discover 10 films like Donnie Darko exploring time paradoxes and reality distortion—from The Butterfly Effect to Enemy. Mind-bending masterpieces ranked by reality warp intensity.',
+  metaKeywords: 'movies like donnie darko, reality warping films, time travel movies, butterfly effect films, psychological sci-fi, the butterfly effect, 12 monkeys, coherence, mulholland drive, eternal sunshine',
+
+  stats: {
+    totalMovies: 10,
+    averageRating: 7.9,
+    totalWatchtime: '20 hours 45 minutes',
+    averageRealityWarpIndex: 92.5,
+    mostIntense: 'The Butterfly Effect (98/100)',
+    newestMovie: 'Enemy (2013)',
+    oldestMovie: 'Jacob\'s Ladder (1990)'
+  },
+
+  movies: [
+    'tt0289879',  // ✅ Rank 1: The Butterfly Effect (2004)
+    'tt0114746',  // ✅ Rank 2: 12 Monkeys (1995)
+    'tt0366627',  // ✅ Rank 3: The Jacket (2005)
+    'tt0125659',  // ✅ Rank 4: Open Your Eyes (1997)
+    'tt2866360',  // ✅ Rank 5: Coherence (2013)
+    'tt0099871',  // ✅ Rank 6: Jacob\'s Ladder (1990)
+    'tt0118929',  // ✅ Rank 7: Dark City (1998)
+    'tt0166924',  // ✅ Rank 8: Mulholland Drive (2001)
+    'tt0338013',  // ✅ Rank 9: Eternal Sunshine of the Spotless Mind (2004)
+    'tt2316411'   // ✅ Rank 10: Enemy (2013)
+  ],
+
+  badges: [
+    { label: 'Reality Warping', desc: 'Temporal paradoxes & fractured realities' },
+    { label: 'Mind-Bending Cults', desc: 'Existential sci-fi that demands rewatches' },
+    { label: 'Consciousness Puzzles', desc: 'Identity crises & doppelgänger mysteries' }
+  ],
+
+  featured: {
+    hero: {
+      title: 'Donnie Darko',
+      subtitle: 'The Reality-Warping Cult Classic',
+      description: 'Richard Kelly\'s mind-shattering masterpiece: a haunting blend of time travel, teenage angst, and apocalyptic visions featuring Frank the Bunny.',
+      poster: 'https://image.tmdb.org/t/p/w500/uUD28aiP0IsJl5vRrPmuB8prY2g.jpg',
+      backdrop: 'https://image.tmdb.org/t/p/w1280/4q2rV9wE9sUuliM90V82LOrH.jpg',
+      realityWarpIndex: 97
+    }
+  },
+
+  relatedCollections: [
+    'best-time-travel-movies',
+    'best-sci-fi-movies',
+    'best-psychological-thriller-movies'
+  ],
+
+  seo: {
+    title: '10 Movies Like Donnie Darko (2025) | Reality-Warping Cinema | Filmiway',
+    description: 'Explore the definitive ranking of films like Donnie Darko—from The Butterfly Effect to Enemy. Experience cinema\'s most disorienting reality-warping masterpieces.',
+    keywords: 'movies like donnie darko, reality warping cinema, time travel paradoxes, butterfly effect movies, psychological sci-fi films, the butterfly effect, 12 monkeys, coherence, mulholland drive, enemy, jacob\'s ladder',
+    canonicalUrl: 'https://filmiway.com/collection/movies-like-donnie-darko',
+    ogImage: 'https://filmiway.com/images/donnie-darko-movies-collection-og.jpg',
+    structuredData: {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      name: 'Movies Like Donnie Darko',
+      description: 'Expert-curated list of the best reality-warping films like Donnie Darko ranked by reality distortion intensity and temporal complexity',
+      numberOfItems: 10
+    }
+  }
+},
 
 
   // 🚀 MOVIES LIKE INTERSTELLAR COLLECTION

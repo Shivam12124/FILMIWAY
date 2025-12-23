@@ -49,6 +49,16 @@ import {
 } from '../utils/interstellarMovieData';
 
 
+// ✅ DONNIE DARKO COLLECTION IMPORTS
+import { 
+  COMPLETE_MOVIE_DATA as DONNIE_DARKO_MOVIE_DATA, 
+  STRATEGIC_QUOTES as DONNIE_DARKO_QUOTES, 
+  SENSITIVE_TIMELINES as DONNIE_DARKO_SENSITIVE_TIMELINES 
+} from '../utils/donnieDarkoMovieData';
+
+
+
+
 // ✅ CRIME THRILLER COLLECTION
 import {
   COMPLETE_MOVIE_DATA as CRIME_THRILLER_MOVIE_DATA,
@@ -108,6 +118,7 @@ import Se7enSEOFAQSection from './Se7enSEOFAQSection'; // ✅ SE7EN FAQ
 import ParasiteSEOFAQSection from './ParasiteSEOFAQSection'; // ✅ NEW PARASITE FAQ
 // ✅ CORRECT IMPORT (Replace line ~120)
 import OldboySEOFAQSection from './OldboySEOFAQSection';
+import DonnieDarkoSEOFAQSection from './DonnieDarkoSEOFAQSection';
 
 
 
@@ -121,6 +132,7 @@ const MovieDetailsSection = React.memo(({
   fromMatrixCollection,
   fromSe7enCollection, // ✅ SE7EN FLAG
   fromParasiteCollection, // ✅ NEW PARASITE FLAG
+  fromDonnieDarkoCollection,
   fromOldboyCollection, // ✅ NEW OLDBOY FLAG
   fromInterstellarCollection,
   fromDramaCollection,
@@ -208,7 +220,9 @@ const getMysteryThrillerMovieInfo = () => {
 };
 
 // ✅ GET MOVIE INFO FROM CORRECT COLLECTION (MATRIX, SE7EN & PARASITE ADDED)
-const movieInfo = fromParasiteCollection               // ✅ NEW PARASITE COLLECTION (TOP PRIORITY)
+const movieInfo = fromDonnieDarkoCollection
+  ? safeLookup(DONNIE_DARKO_MOVIE_DATA, movie.tmdbId)
+  : fromParasiteCollection             // ✅ NEW PARASITE COLLECTION (TOP PRIORITY)
 
   ? safeLookup(PARASITE_MOVIE_DATA, movie.tmdbId)
   : fromMatrixCollection                               // ✅ MATRIX
@@ -283,7 +297,9 @@ const budget = safeMovieInfo.budget || 'N/A';
 const rating = safeMovieInfo.rating || movie.imdbRating || 7.5;
 
 const sensitiveScenes = safeMovieInfo.sensitiveScenes 
+  || DONNIE_DARKO_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
   || PARASITE_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes // ✅ NEW PARASITE
+
   || OLDBOY_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
   || MATRIX_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
   || SE7EN_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes // ✅ SE7EN
@@ -293,8 +309,10 @@ const sensitiveScenes = safeMovieInfo.sensitiveScenes
   || SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
   || [];
 
+const quote = fromDonnieDarkoCollection
+  ? DONNIE_DARKO_QUOTES?.[movie.tmdbId] || ''
+  : fromParasiteCollection                    // ✅ NEW PARASITE
 
-const quote = fromParasiteCollection                    // ✅ NEW PARASITE
   ? PARASITE_QUOTES?.[movie.tmdbId] || ''
   : fromOldboyCollection
 ? OLDBOY_QUOTES?.[movie.tmdbId] || ''
@@ -344,7 +362,10 @@ const displayIndex = fromParasiteCollection             // ✅ PARASITE - NO BAR
   : safeMovieInfo.mindBendingIndex ?? null;
 
 
-const scoreValue = fromParasiteCollection               // ✅ PARASITE - NO BAR
+const scoreValue = fromDonnieDarkoCollection
+  ? movie.realityWarpIndex ?? safeMovieInfo.realityWarpIndex ?? 0
+  : fromParasiteCollection               // ✅ PARASITE - NO BAR
+           // ✅ PARASITE - NO BAR
   ? 0                                                    // ✅ Return 0 to hide bar
   : fromMatrixCollection 
   ? movie.matrixRealityIndex ?? safeMovieInfo.matrixRealityIndex ?? 0
@@ -959,7 +980,10 @@ const getStarColor = () => {
   <RealCommentsRatingSection movie={movie} />
 
 {/* ✅ FAQ SECTION WITH PARASITE, MATRIX, SE7EN, INTERSTELLAR, REVENGE, WAR, SCI-FI SUPPORT */}
-{fromParasiteCollection ? (                          // ✅ NEW PARASITE FAQ SECTION
+{fromDonnieDarkoCollection ? (
+  <DonnieDarkoSEOFAQSection movie={movie} />
+) : fromParasiteCollection ? (                  // ✅ NEW PARASITE FAQ SECTION
+                      // ✅ NEW PARASITE FAQ SECTION
   <ParasiteSEOFAQSection movie={movie} />
 ) : fromMatrixCollection ? (
   <MatrixSEOFAQSection movie={movie} />

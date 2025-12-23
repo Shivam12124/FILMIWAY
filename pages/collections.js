@@ -69,6 +69,21 @@ const CollectionsHub = () => {
 },
 
 
+{
+    id: 'donnie-darko',
+    title: 'Movies Like Donnie Darko',
+    description: 'Mind-bending time travel, reality-warping films with psychological complexity and existential twists',
+    icon: Clock,  // ⏰ Time/reality symbolism
+    gradient: 'from-purple-600 to-indigo-800',  // 🌀 Purple cosmic gradient
+    movieCount: '10',
+    rating: '8.6',
+    directLink: '/collection/movies-like-donnie-darko',
+    hasSubCollections: false
+},
+
+
+
+
         {
             id: 'interstellar',
             title: 'Movies Like Interstellar',

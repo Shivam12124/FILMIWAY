@@ -13,6 +13,7 @@ import { COMPLETE_MOVIE_DATABASE as MATRIX_DATABASE } from '../../utils/matrixMo
 import { COMPLETE_MOVIE_DATABASE as SE7EN_DATABASE, COMPLETE_MOVIE_DATA as SE7EN_DATA } from '../../utils/se7enMovieData';
 import { COMPLETE_MOVIE_DATABASE as PARASITE_DATABASE, COMPLETE_MOVIE_DATA as PARASITE_DATA } from '../../utils/parasiteMovieData'; // ✅ NEW PARASITE
 import { COMPLETE_MOVIE_DATABASE as OLDBOY_DATABASE, COMPLETE_MOVIE_DATA as OLDBOY_DATA } from '../../utils/oldboyMovieData'; // ✅ NEW OLDBOY
+import { COMPLETE_MOVIE_DATABASE as DONNIE_DARKO_DATABASE, COMPLETE_MOVIE_DATA as DONNIE_DARKO_DATA } from '../../utils/donnieDarkoMovieData';
 
 import { COMPLETE_MOVIE_DATABASE as INTERSTELLAR_DATABASE, COMPLETE_MOVIE_DATA as INTERSTELLAR_DATA } from '../../utils/interstellarMovieData';
 import { COMPLETE_MOVIE_DATABASE as CRIME_THRILLER_DATABASE, COMPLETE_MOVIE_DATA as CRIME_THRILLER_DATA } from '../../utils/crimeThrillerMovieData';
@@ -208,6 +209,33 @@ const getCollectionContent = () => {
                 text2: "Each film forces you to confront the uncomfortable reality that sometimes, understanding the monster means losing a part of yourself in the process."
             }
         };
+
+
+
+          } else if (collection.slug === 'movies-like-donnie-darko') {
+    return {
+        badge: "Reality-Warping Cinema",
+        title: "Donnie Darko",
+        description: "Mind-bending time travel & reality-warping films. Butterfly effects, temporal loops, dying dreams & doppelgängers that shatter your perception of reality itself.",
+        selection: {
+            text1: "From time-traveling journals to quantum multiverses—these films explore fractured realities, temporal paradoxes, and consciousness unraveling where nothing is as it seems.",
+            text2: "Each reality-warping masterpiece features protagonists trapped between timelines, alternate selves, and existential nightmares that question the very fabric of existence."
+        },
+        ranking: {
+            text: "Our mind-bend index evaluates reality distortion complexity, temporal mechanics sophistication, and psychological unraveling depth throughout each film.",
+            points: [
+                "Reality distortion complexity",
+                "Temporal paradox sophistication", 
+                "Consciousness unraveling depth",
+                "Existential impact power"
+            ]
+        },
+        experience: {
+            text1: "Whether you're seeking temporal paradoxes or psychological disintegration, this collection delivers cinema's most disorienting reality-warping experiences.",
+            text2: "Each film creates genuine existential confusion—mirroring protagonists' descent into temporal madness where linear reality ceases to exist. Your perception will never recover."
+        }
+    };
+    
 
 
     } else if (collection.slug === 'movies-like-oldboy') { // ✅ OLD BOY COLLECTION ADDED
@@ -640,6 +668,11 @@ const getHeaderContent = () => {
             subtitle: "Twisted vengeance, shocking twists & moral devastation from Park Chan-wook's masterpiece"
         };
     
+} else if (collection.slug === 'movies-like-donnie-darko') {
+    return {
+        title: "Movies Like Donnie Darko: 10 Reality-Warping Films",
+        subtitle: "Time travel paradoxes, dying dreams & doppelgängers that shatter reality itself"
+    };
 
 
 
@@ -750,6 +783,13 @@ const getLoaderContent = () => {
             title: "Loading Movies Like Oldboy",
             description: "Curating brutal revenge thrillers with shocking twists and community reviews"
         };
+
+
+} else if (collection?.slug === 'movies-like-donnie-darko') {
+    return {
+        title: "Loading Movies Like Donnie Darko",
+        description: "Curating reality-warping time travel films with community reviews and ratings"
+    };
 
 
 
@@ -887,6 +927,17 @@ const getStaticMetaContent = () => {
         };
 
 
+          } else if (collection.slug === 'movies-like-donnie-darko') {
+    return {
+        title: "Movies Like Donnie Darko: 10 Reality-Warping Films", // ✅ 50 chars
+        description: "Loved Donnie Darko? Discover 10 mind-bending films with time travel paradoxes, dying dreams & doppelgängers that shatter reality itself.", // ✅ 152 chars
+        keywords: "movies like donnie darko, time travel movies, reality warping films, psychological sci-fi, butterfly effect",
+        ogTitle: "Movies Like Donnie Darko: 10 Reality-Warping Masterpieces 🌌",
+        twitterTitle: "🌌 Loved Donnie Darko? These 10 Films Will Break Reality",
+        progressText: `of Top ${movies.length} Movies Like Donnie Darko`
+    };
+
+         
 
     } else if (collection.slug === 'movies-like-parasite') { // ✅ NEW PARASITE META
         return {
@@ -1098,6 +1149,7 @@ const getStaticMetaContent = () => {
             sessionStorage.removeItem('fromMatrixCollection');
             sessionStorage.removeItem('fromSe7enCollection');
             sessionStorage.removeItem('fromOldboyCollection');
+            sessionStorage.removeItem('fromDonnieDarkoCollection');
             sessionStorage.removeItem('fromParasiteCollection'); // ✅ NEW PARASITE
             sessionStorage.removeItem('fromInterstellarCollection');
             sessionStorage.removeItem('fromShutterIslandCollection');
@@ -1127,6 +1179,9 @@ const getStaticMetaContent = () => {
                 sessionStorage.setItem('fromParasiteCollection', 'true');
          } else if (collection.slug === 'movies-like-oldboy') {
           sessionStorage.setItem('fromOldboyCollection', 'true');
+
+          } else if (collection.slug === 'movies-like-donnie-darko') {
+    sessionStorage.setItem('fromDonnieDarkoCollection', 'true');
             } else if (collection.slug === 'movies-like-interstellar') {
                 sessionStorage.setItem('fromInterstellarCollection', 'true');
             } else if (collection.slug === 'movies-like-shutter-island') {
@@ -1573,6 +1628,10 @@ return (
                            : collection?.slug === 'movies-like-oldboy'
 ? 'movies/oldboy/'
 
+: collection?.slug === 'movies-like-donnie-darko'
+? 'movies/donnie-darko/'
+
+
 
                                     : collection?.slug === 'movies-like-interstellar'
                                     ? 'movies/interstellar/'
@@ -1718,7 +1777,11 @@ return (
 
                                                 : collection.slug === 'movies-like-oldboy'
 ? `/movies/oldboy/${currentMovie.imdbID}`
- 
+  
+               : collection.slug === 'movies-like-donnie-darko'
+? `/movies/donnie-darko/${currentMovie.imdbID}`
+
+            
                                                 : collection.slug === 'movies-like-interstellar'
                                                 ? `/movies/interstellar/${currentMovie.imdbID}`
                                                 : collection.slug === 'movies-like-memento'
@@ -1798,6 +1861,11 @@ return (
 
                                                             } else if (collection.slug === 'movies-like-oldboy') {
                             detailPageUrl = `/movies/oldboy/${currentMovie.imdbID}`;
+
+
+         } else if (collection.slug === 'movies-like-donnie-darko') {
+    detailPageUrl = `/movies/donnie-darko/${currentMovie.imdbID}`;
+
 
 
                                         } else if (collection.slug === 'movies-like-interstellar') {
@@ -2002,6 +2070,9 @@ case 'movies-like-oldboy':
     break;
 
 
+case 'movies-like-donnie-darko':
+    movieDatabase = DONNIE_DARKO_DATABASE;
+    break;
 
              
         case 'movies-like-interstellar':
