@@ -4,7 +4,7 @@ import Head from 'next/head';
 import Image from 'next/image'
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Play, X, Award, Brain, Film, User, Twitter, Hash, Send } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Play, X, Award, Brain, Film, User, Twitter, Hash, Send,Knife } from 'lucide-react';
 import InternalCollectionsSection from '../../../components/InternalCollectionsSection';
 
 
