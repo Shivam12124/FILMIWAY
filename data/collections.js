@@ -342,7 +342,7 @@ export const COLLECTIONS = {
   },
 
   movies: [
-    'tt0310775',  // I Saw the Devil (2010)
+    'tt1588170',  // I Saw the Devil (2010)
     'tt0310775',  // Sympathy for Mr. Vengeance (2002)
     'tt0451094',  // Lady Vengeance (2005)
     'tt1527788',  // The Man from Nowhere (2010)

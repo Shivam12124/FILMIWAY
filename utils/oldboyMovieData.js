@@ -8,7 +8,7 @@ export const TMDB_CONFIG = {
 };
 
 export const COMPLETE_MOVIE_DATABASE = [
-    { tmdbId: 49026, imdbID: "tt1588170", Title: "I Saw the Devil", year: 2010, genre: "Thriller", runtime: 144, rank: 1 },
+    { tmdbId:49797, imdbID: "tt1588170", Title: "I Saw the Devil", year: 2010, genre: "Thriller", runtime: 144, rank: 1 },
     { tmdbId: 4689, imdbID: "tt0310775", Title: "Sympathy for Mr. Vengeance", year: 2002, genre: "Thriller", runtime: 121, rank: 2 },
     { tmdbId: 4550, imdbID: "tt0451094", Title: "Lady Vengeance", year: 2005, genre: "Thriller", runtime: 115, rank: 3 },
     { tmdbId: 51608, imdbID: "tt1527788", Title: "The Man from Nowhere", year: 2010, genre: "Action", runtime: 119, rank: 4 },
@@ -31,7 +31,7 @@ const timeToSeconds = (timeStr) => {
 
 // Precise timestamps for sensitive content logic
 export const SENSITIVE_TIMELINES = {
-    49026: { scenes: [{ start: "0:12:05", end: "0:12:45", type: "Nudity", severity: "Severe" }, { start: "1:22:10", end: "1:24:30", type: "Sexual Violence", severity: "Severe" }] },
+    49797: { scenes: [{ start: "0:12:05", end: "0:12:45", type: "Nudity", severity: "Severe" }, { start: "1:22:10", end: "1:24:30", type: "Sexual Violence", severity: "Severe" }] },
     4689: { scenes: [{ start: "0:25:30", end: "0:27:15", type: "Sex scene", severity: "Strong" }] },
     4550: { scenes: [{ start: "0:55:10", end: "0:56:45", type: "Nudity", severity: "Moderate" }, { start: "1:10:20", end: "1:11:30", type: "Sex scene", severity: "Strong" }] },
     51608: { scenes: [{ start: "0:25:00", end: "0:26:00", type: "Drug Use", severity: "Strong" }] },
@@ -44,7 +44,7 @@ export const SENSITIVE_TIMELINES = {
 };
 
 export const FALLBACK_POSTERS = {
-    49026: "https://image.tmdb.org/t/p/original/37Qdbd0x0d43f6xXy79p64d5k7d.jpg",
+    49797: "https://image.tmdb.org/t/p/original/37Qdbd0x0d43f6xXy79p64d5k7d.jpg",
     4689: "https://image.tmdb.org/t/p/original/AlV5tGbJk5bWE0bA8Ut9ESbuOvZ.jpg",
     4550: "https://image.tmdb.org/t/p/original/s7CA1C9A9cdq8klOvsEHQq5oIP2.jpg",
     51608: "https://image.tmdb.org/t/p/original/4CGkV2D4AuBatnTVlnG6rV2mQeI.jpg",
@@ -56,7 +56,7 @@ export const FALLBACK_POSTERS = {
     146233: "https://image.tmdb.org/t/p/original/A1XHZ1nZrAvzf6ZQHDxTu5GYGvN.jpg"
 };
 export const COMPLETE_MOVIE_DATA = {
-    49026: createMovieData({
+   49797: createMovieData({
         classWarfareIndex: 20, complexityLevel: "EXTREME", dominantColor: "#991b1b",
         rating: 8.0, criticsScore: 82, audienceScore: 80,
         director: "Kim Jee-woon", cast: ["Lee Byung-hun", "Choi Min-sik"],
@@ -229,7 +229,7 @@ export const COMPLETE_MOVIE_DATA = {
 };
 
 export const STRATEGIC_QUOTES = {
-    49026: "I will kill you when you are in the most pain.",
+    49797: "I will kill you when you are in the most pain.",
     4689: "I know you're a good guy, but you know why I have to kill you.",
     4550: "Why don't you worry about yourself?",
     51608: "I'll kill you all.",

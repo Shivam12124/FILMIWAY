@@ -1574,276 +1574,450 @@ const NavigationDots = ({ movies, currentMovieIndex, goToMovie }) => (
 return (
     <div className="min-h-screen bg-black text-white relative overflow-hidden">
         <Head>
-            {/* META TAGS - KEEP EXACTLY AS IS */}
             <title key={`collection-title-${collection.slug}`}>
                 {metaContent.title || collection.title || "Filmiway - Movie Collection"}
             </title>
+
             <meta
                 key={`collection-desc-${collection.slug}`}
                 name="description"
                 content={metaContent.description || collection.description || ""}
             />
+
             <meta
                 key={`collection-keywords-${collection.slug}`}
                 name="keywords"
                 content={metaContent.keywords || ""}
             />
+
             <link rel="canonical" href={`https://filmiway.com/collection/${collection.slug}`} />
+
             <meta name="robots" content="index, follow" />
             <meta name="viewport" content="width=device-width, initial-scale=1" />
+
             <meta property="og:title" key={`og-title-${collection.slug}`} content={metaContent.ogTitle || metaContent.title || collection.title} />
             <meta property="og:description" key={`og-desc-${collection.slug}`} content={metaContent.description || collection.description} />
             <meta property="og:type" content="website" />
+           
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:title" key={`twitter-title-${collection.slug}`} content={metaContent.twitterTitle || metaContent.title || collection.title} />
             <meta name="twitter:description" key={`twitter-desc-${collection.slug}`} content={metaContent.description || collection.description} />
-            <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify({"@context": "https://schema.org", "@type": "ItemList", "name": collection?.title || "", "description": collection?.description || "", "numberOfItems": movies?.length || 0, "url": `https://filmiway.com/collection/${collection?.slug || ""}`, "itemListElement": (movies || []).map((movie, index) => {const basePath = collection?.slug === 'best-survival-movies' ? 'movies/survival/' : collection?.slug === 'movies-like-inception' ? 'movies/like-inception/' : collection?.slug === 'movies-like-the-matrix' ? 'movies/matrix/' : collection?.slug === 'movies-like-se7en' ? 'movies/like-se7en/' : collection?.slug === 'movies-like-parasite' ? 'movies/parasite/' : collection?.slug === 'movies-like-oldboy' ? 'movies/oldboy/' : collection?.slug === 'movies-like-donnie-darko' ? 'movies/donnie-darko/' : collection?.slug === 'movies-like-interstellar' ? 'movies/interstellar/' : collection?.slug === 'movies-like-memento' ? 'movies/like-memento/' : collection?.slug === 'movies-like-shutter-island' ? 'movies/like-shutter-island/' : collection?.slug === 'best-thriller-movies' ? 'movies/thriller/' : collection?.slug === 'best-mystery-thriller-movies' ? 'movies/mystery-thriller/' : collection?.slug === 'best-detective-thriller-movies' ? 'movies/detective-thriller/' : collection?.slug === 'best-drama-movies-on-netflix' ? 'movies/netflix/' : collection?.slug === 'best-psychological-thriller-movies' ? 'movies/psych-thriller/' : collection?.slug === 'best-crime-thriller-movies' ? 'movies/crime-thriller/' : collection?.slug === 'best-heist-thriller-movies' ? 'movies/heist-thriller/' : collection?.slug === 'best-time-travel-movies' ? 'movies/time-travel/' : collection?.slug === 'best-sci-fi-movies' ? 'movies/sci-fi/' : collection?.slug === 'best-revenge-movies' ? 'movies/revenge/' : collection?.slug === 'best-war-films' ? 'movies/war-films/' : 'movies/'; let itemObj = {"@type": "Movie", "name": movie?.Title || "Unknown Movie", "image": movie?.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : movie?.posterUrl ? movie.posterUrl : "https://via.placeholder.com/300x450?text=No+Image", "datePublished": movie?.Year || "2024", "genre": movie?.Genre || "Drama"}; if (movie?.director) { itemObj.director = {"@type": "Person", "name": movie.director}; } if (movie?.imdbID) { itemObj.url = `https://filmiway.com/${basePath}${movie.imdbID}`; } return {"@type": "ListItem", "position": index + 1, "item": itemObj};})})}} />
+
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "ItemList",
+                        "name": collection?.title || "",
+                        "description": collection?.description || "",
+                        "numberOfItems": movies?.length || 0,
+                        "url": `https://filmiway.com/collection/${collection?.slug || ""}`,
+                        "itemListElement": (movies || []).map((movie, index) => {
+                            const basePath =
+                                collection?.slug === 'best-survival-movies'
+                                    ? 'movies/survival/'
+                                    : collection?.slug === 'movies-like-inception'
+                                    ? 'movies/like-inception/'
+                                    : collection?.slug === 'movies-like-the-matrix'
+                                    ? 'movies/matrix/'
+                                    : collection?.slug === 'movies-like-se7en'
+                                    ? 'movies/like-se7en/'
+                                    : collection?.slug === 'movies-like-parasite' // ✅ NEW PARASITE PATH
+                                    ? 'movies/parasite/'
+                           : collection?.slug === 'movies-like-oldboy'
+? 'movies/oldboy/'
+
+: collection?.slug === 'movies-like-donnie-darko'
+? 'movies/donnie-darko/'
+
+
+
+                                    : collection?.slug === 'movies-like-interstellar'
+                                    ? 'movies/interstellar/'
+                                    : collection?.slug === 'movies-like-memento'
+                                    ? 'movies/like-memento/'
+                                    : collection?.slug === 'movies-like-shutter-island'
+                                    ? 'movies/like-shutter-island/'
+                                    : collection?.slug === 'best-thriller-movies'
+                                    ? 'movies/thriller/'
+                                    : collection?.slug === 'best-mystery-thriller-movies'
+                                    ? 'movies/mystery-thriller/'
+                                    : collection?.slug === 'best-detective-thriller-movies'
+                                    ? 'movies/detective-thriller/'
+                                    : collection?.slug === 'best-drama-movies-on-netflix'
+                                    ? 'movies/netflix/'
+                                    : collection?.slug === 'best-psychological-thriller-movies'
+                                    ? 'movies/psych-thriller/'
+                                    : collection?.slug === 'best-crime-thriller-movies'
+                                    ? 'movies/crime-thriller/'
+                                    : collection?.slug === 'best-heist-thriller-movies'
+                                    ? 'movies/heist-thriller/'
+                                    : collection?.slug === 'best-time-travel-movies'
+                                    ? 'movies/time-travel/'
+                                    : collection?.slug === 'best-sci-fi-movies'
+                                    ? 'movies/sci-fi/'
+                                    : collection?.slug === 'best-revenge-movies'
+                                    ? 'movies/revenge/'
+                                    : collection?.slug === 'best-war-films'
+                                    ? 'movies/war-films/'
+                                    : 'movies/';
+
+                            let itemObj = {
+                                "@type": "Movie",
+                                "name": movie?.Title || "Unknown Movie",
+                                "image": movie?.poster_path 
+                                    ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+                                    : movie?.posterUrl 
+                                    ? movie.posterUrl
+                                    : "https://via.placeholder.com/300x450?text=No+Image",
+                                "datePublished": movie?.Year || "2024",
+                                "genre": movie?.Genre || "Drama"
+                            };
+
+                            // Add director if exists
+                            if (movie?.director) {
+                                itemObj.director = {
+                                    "@type": "Person",
+                                    "name": movie.director
+                                };
+                            }
+
+                            if (movie?.imdbID) {
+                                itemObj.url = `https://filmiway.com/${basePath}${movie.imdbID}`;
+                            }
+
+                            return {
+                                "@type": "ListItem",
+                                "position": index + 1,
+                                "item": itemObj
+                            };
+                        })
+                    })
+                }}
+            />
         </Head>
 
-        {/* 🔥 CONTENT ALWAYS IN HTML (FOR SEO - GOOGLEBOT & BINGBOT READ THIS) */}
-        <div className="relative z-0">
-            <CinematicBackground />
-            <StrategicControls 
-                isMuted={isMuted}
-                setIsMuted={setIsMuted}
-                isAutoPlay={isAutoPlay}
-                setIsAutoPlay={setIsAutoPlay}
-                playSound={playSound}
-            />
-            <TopLeftLogo />
-            <HomepageButton />
-            
-            <div className="container mx-auto px-3 sm:px-6 py-8 sm:py-12">
-                <CinematicHeader />
-                <CinematicExplorerSection currentRank={currentRank} />
-                
-                <div className="relative flex items-center justify-center min-h-[70vh] sm:min-h-[80vh]">
-                    {!isFirstMovie && (
-                        <motion.button
-                            onClick={prevMovie}
-                            className="absolute left-2 sm:left-8 z-20 w-14 h-14 sm:w-18 sm:h-18 bg-gradient-to-r from-gray-800/90 to-gray-900/90 backdrop-blur-xl rounded-2xl border border-yellow-400/20 hover:border-yellow-400/40 transition-all duration-300 flex items-center justify-center group"
-                            whileHover={{ scale: 1.1, x: -8 }}
-                            whileTap={{ scale: 0.95 }}
-                        >
-                            <ChevronLeft size={24} className="sm:w-7 sm:h-7 text-gray-300 group-hover:text-yellow-400 transition-colors" />
-                            <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/10 to-amber-400/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                        </motion.button>
-                    )}
-
-                    {/* MOVIE CARD - VISIBLE IN HTML */}
-                    {currentMovie && (
-                        <CinematicMovieCard 
-                            movie={currentMovie} 
-                            currentRank={currentRank}
-                            totalMovies={movies.length}
-                            onMovieClick={handleMovieClick}
-                            collection={collection}
-                        />
-                    )}
-
-                    {!isLastMovie && (
-                        <motion.button
-                            onClick={nextMovie}
-                            className="absolute right-2 sm:right-8 z-20 w-14 h-14 sm:w-18 sm:h-18 bg-gradient-to-r from-gray-800/90 to-gray-900/90 backdrop-blur-xl rounded-2xl border border-yellow-400/20 hover:border-yellow-400/40 transition-all duration-300 flex items-center justify-center group"
-                            whileHover={{ scale: 1.1, x: 8 }}
-                            whileTap={{ scale: 0.95 }}
-                        >
-                            <ChevronRight size={24} className="sm:w-7 sm:h-7 text-gray-300 group-hover:text-yellow-400 transition-colors" />
-                            <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/10 to-amber-400/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                        </motion.button>
-                    )}
-                </div>
-
-                <motion.div 
-                    className="text-center mt-12 sm:mt-16"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.5, duration: 0.8 }}
-                >
-                    <div className="flex flex-col items-center space-y-6">
-                        <div className="flex items-center justify-center space-x-4 text-sm text-gray-500">
-                            <span className="px-3 py-1 bg-gray-800/50 rounded-full">#{currentRank} of {movies.length}</span>
-                            <span>•</span>
-                            <span>Click poster above for full analysis</span>
-                        </div>
-                        
-                        <motion.div 
-                            className="flex items-center space-x-4 bg-gradient-to-r from-yellow-400/10 via-amber-400/10 to-yellow-400/10 border border-yellow-400/30 rounded-2xl px-8 py-4 hover:from-yellow-400/20 hover:via-amber-400/20 hover:to-yellow-400/20 hover:border-yellow-400/50 transition-all duration-300 cursor-pointer group"
-                            whileHover={{ scale: 1.05, y: -2 }}
-                            whileTap={{ scale: 0.98 }}
-                            onClick={() => {
-                                handleMovieClick();
-                                let detailPageUrl;
-                                if (collection.slug === 'movies-like-inception') {
-                                    detailPageUrl = `/movies/like-inception/${currentMovie.imdbID}`;
-                                } else if (collection.slug === 'movies-like-the-matrix') {
-                                    detailPageUrl = `/movies/matrix/${currentMovie.imdbID}`;
-                                } else if (collection.slug === 'movies-like-se7en') {
-                                    detailPageUrl = `/movies/like-se7en/${currentMovie.imdbID}`;
-                                } else if (collection.slug === 'movies-like-parasite') {
-                                    detailPageUrl = `/movies/parasite/${currentMovie.imdbID}`;
-                                } else if (collection.slug === 'movies-like-oldboy') {
-                                    detailPageUrl = `/movies/oldboy/${currentMovie.imdbID}`;
-                                } else if (collection.slug === 'movies-like-donnie-darko') {
-                                    detailPageUrl = `/movies/donnie-darko/${currentMovie.imdbID}`;
-                                } else if (collection.slug === 'movies-like-interstellar') {
-                                    detailPageUrl = `/movies/interstellar/${currentMovie.imdbID}`;
-                                } else if (collection.slug === 'movies-like-memento') {
-                                    detailPageUrl = `/movies/like-memento/${currentMovie.imdbID}`;
-                                } else if (collection.slug === 'movies-like-shutter-island') {
-                                    detailPageUrl = `/movies/like-shutter-island/${currentMovie.imdbID}`;
-                                } else if (collection.slug === 'best-survival-movies') {
-                                    detailPageUrl = `/movies/survival/${currentMovie.imdbID}`;
-                                } else if (collection.slug === 'best-thriller-movies') {
-                                    detailPageUrl = `/movies/thriller/${currentMovie.imdbID}`;
-                                } else if (collection.slug === 'best-mystery-thriller-movies') {
-                                    detailPageUrl = `/movies/mystery-thriller/${currentMovie.imdbID}`;
-                                } else if (collection.slug === 'best-detective-thriller-movies') {
-                                    detailPageUrl = `/movies/detective-thriller/${currentMovie.imdbID}`;
-                                } else if (collection.slug === 'best-drama-movies-on-netflix') {
-                                    detailPageUrl = `/movies/netflix/${currentMovie.imdbID}`;
-                                } else if (collection.slug === 'best-psychological-thriller-movies') {
-                                    detailPageUrl = `/movies/psych-thriller/${currentMovie.imdbID}`;
-                                } else if (collection.slug === 'best-crime-thriller-movies') {
-                                    detailPageUrl = `/movies/crime-thriller/${currentMovie.imdbID}`;
-                                } else if (collection.slug === 'best-heist-thriller-movies') {
-                                    detailPageUrl = `/movies/heist-thriller/${currentMovie.imdbID}`;
-                                } else if (collection.slug === 'best-time-travel-movies') {
-                                    detailPageUrl = `/movies/time-travel/${currentMovie.imdbID}`;
-                                } else if (collection.slug === 'best-sci-fi-movies') {
-                                    detailPageUrl = `/movies/sci-fi/${currentMovie.imdbID}`;
-                                } else if (collection.slug === 'best-revenge-movies') {
-                                    detailPageUrl = `/movies/revenge/${currentMovie.imdbID}`;
-                                } else if (collection.slug === 'best-war-films') {
-                                    detailPageUrl = `/movies/war-films/${currentMovie.imdbID}`;
-                                } else {
-                                    detailPageUrl = `/movies/${currentMovie.imdbID}`;
-                                }
-                                window.location.href = detailPageUrl;
-                            }}
-                        >
-                            <Eye className="w-6 h-6 text-yellow-400" />
-                            <span className="text-yellow-400 font-medium text-lg">Explore Full Analysis</span>
-                            <motion.div
-                                animate={{ x: [0, 8, 0] }}
-                                transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-                            >
-                                <ChevronRight className="w-6 h-6 text-yellow-400" />
-                            </motion.div>
-                        </motion.div>
-                    </div>
-                </motion.div>
-
-                <NavigationDots 
-                    movies={movies}
-                    currentMovieIndex={currentMovieIndex}
-                    goToMovie={goToMovie}
-                />
-
+        <CinematicBackground />
+        <StrategicControls 
+            isMuted={isMuted}
+            setIsMuted={setIsMuted}
+            isAutoPlay={isAutoPlay}
+            setIsAutoPlay={setIsAutoPlay}
+            playSound={playSound}
+        />
+        
+        <TopLeftLogo />
+        <HomepageButton />
+        
+        <AnimatePresence mode="wait">
+            {isLoading ? (
                 <motion.div
-                    className="flex justify-center mt-8"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 3.5 }}
-                >
-                    <div className="flex items-center gap-4 sm:gap-6 px-6 py-4 sm:px-8 sm:py-5 bg-gradient-to-r from-gray-800/40 via-gray-900/40 to-gray-800/40 backdrop-blur-xl rounded-2xl border border-yellow-400/20">
-                        <span className="text-yellow-400 font-light text-lg sm:text-xl">
-                            #{currentRank}
-                        </span>
-                        <div className="w-16 sm:w-24 h-2 bg-gray-700/50 rounded-full overflow-hidden">
-                            <motion.div
-                                className="h-full bg-gradient-to-r from-yellow-400 to-amber-400 rounded-full"
-                                style={{ width: `${((currentMovieIndex + 1) / movies.length) * 100}%` }}
-                                transition={{ duration: 0.5, ease: "easeOut" }}
-                            />
-                        </div>
-                        <span className="text-gray-400 font-light text-sm sm:text-base">
-                            <span className="hidden sm:inline">{metaContent.progressText}</span>
-                            <span className="sm:hidden">of {movies.length}</span>
-                        </span>
-                    </div>
-                </motion.div>
-
-                <motion.footer
-                    className="bg-gradient-to-t from-gray-900 to-black mt-16 pt-12 border-t border-gray-800/30 text-center"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 4.5 }}
-                >
-                    <p className="text-gray-500 text-sm sm:text-base font-light tracking-wide mb-8">
-                        Curated cinema for discerning viewers • Expert analysis and community insights
-                    </p>
-                    
-                    <div className="flex justify-center items-center gap-8 sm:gap-12 mb-8">
-                        <div className="w-16 sm:w-24 h-px bg-gradient-to-r from-transparent to-gray-700"></div>
-                        <div className="text-yellow-400/60 text-xs tracking-[0.3em] uppercase font-medium">
-                            Filmiway {collection.title} Collection
-                        </div>
-                        <div className="w-16 sm:w-24 h-px bg-gradient-to-l from-transparent to-gray-700"></div>
-                    </div>
-                    
-                    <motion.div 
-                        className="mb-8 pt-6 border-t border-gray-900/50"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 5, duration: 1 }}
-                    >
-                        <div className="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-4">
-                            <p className="text-gray-600 text-sm">
-                                Movie data and posters powered by
-                            </p>
-                            <a 
-                                href="https://www.themoviedb.org/" 
-                                target="_blank" 
-                                rel="noopener noreferrer"
-                                className="flex items-center space-x-2 hover:opacity-80 transition-opacity"
-                            >
-                                <Image
-                                    src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg"
-                                    alt="The Movie Database"
-                                    width={50}
-                                    height={20}
-                                    className="h-5 w-auto"
-                                    loading="lazy"
-                                />
-                                <span className="text-blue-400 text-sm hover:text-blue-300 transition-colors">
-                                    The Movie Database (TMDB)
-                                </span>
-                            </a>
-                        </div>
-                        <p className="text-gray-700 text-xs mt-2 text-center">
-                            This product uses the TMDB API but is not endorsed or certified by TMDB.
-                        </p>
-                    </motion.div>
-
-                    <div className="flex items-center justify-center space-x-8 text-gray-500 text-sm pb-8">
-                        <span>© 2025 Filmiway</span>
-                        <span>•</span>
-                        <span>All Rights Reserved</span>
-                        <span>•</span>
-                        <span>Where Every Film Finds Its Way</span>
-                    </div>
-                </motion.footer>
-            </div>
-        </div>
-
-        {/* 🔥 OVERLAY LOADER - ONLY FOR USERS (HIDDEN FROM BOTS) */}
-        <AnimatePresence>
-            {isLoading && (
-                <motion.div
-                    key="loader-overlay"
+                    key="loader"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    className="fixed inset-0 z-50 flex items-center justify-center bg-black"
+                    className="min-h-screen flex items-center justify-center"
                 >
                     <CinematicLoader />
+                </motion.div>
+            ) : (
+                <motion.div
+                    key="collection"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="relative z-10"
+                >
+                    <div className="container mx-auto px-3 sm:px-6 py-8 sm:py-12">
+                        <CinematicHeader />
+                        
+                        {/* 🔥 CINEMATIC EXPLORER SECTION */}
+                        <CinematicExplorerSection currentRank={currentRank} />
+                        
+                        <div className="relative flex items-center justify-center min-h-[70vh] sm:min-h-[80vh]">
+                            {/* 🔥 FIXED NAVIGATION BUTTONS */}
+                            {!isFirstMovie && (
+                                <motion.button
+                                    onClick={prevMovie}
+                                    className="absolute left-2 sm:left-8 z-20 w-14 h-14 sm:w-18 sm:h-18 bg-gradient-to-r from-gray-800/90 to-gray-900/90 backdrop-blur-xl rounded-2xl border border-yellow-400/20 hover:border-yellow-400/40 transition-all duration-300 flex items-center justify-center group"
+                                    whileHover={{ scale: 1.1, x: -8 }}
+                                    whileTap={{ scale: 0.95 }}
+                                >
+                                    <ChevronLeft size={24} className="sm:w-7 sm:h-7 text-gray-300 group-hover:text-yellow-400 transition-colors" />
+                                    <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/10 to-amber-400/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                                </motion.button>
+                            )}
+
+                            {!isLastMovie && (
+                                <motion.button
+                                    onClick={nextMovie}
+                                    className="absolute right-2 sm:right-8 z-20 w-14 h-14 sm:w-18 sm:h-18 bg-gradient-to-l from-gray-800/90 to-gray-900/90 backdrop-blur-xl rounded-2xl border border-yellow-400/20 hover:border-yellow-400/40 transition-all duration-300 flex items-center justify-center group"
+                                    whileHover={{ scale: 1.1, x: 8 }}
+                                    whileTap={{ scale: 0.95 }}
+                                >
+                                    <ChevronRight size={24} className="sm:w-7 sm:h-7 text-gray-300 group-hover:text-yellow-400 transition-colors" />
+                                    <div className="absolute inset-0 bg-gradient-to-l from-yellow-400/10 to-amber-400/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                                </motion.button>
+                            )}
+                            
+                            {/* 🔥 FIXED FOR NEXT.JS 15 - WITH MATRIX, SE7EN & PARASITE COLLECTION URLS ✅ */}
+                            <AnimatePresence mode="wait">
+                                {currentMovie && (
+                                    <Link
+                                        href={
+                                            collection.slug === 'movies-like-inception'
+                                                ? `/movies/like-inception/${currentMovie.imdbID}`
+                                                : collection.slug === 'movies-like-the-matrix'
+                                                ? `/movies/matrix/${currentMovie.imdbID}`
+                                                : collection.slug === 'movies-like-se7en'
+                                                ? `/movies/like-se7en/${currentMovie.imdbID}`
+                                                : collection.slug === 'movies-like-parasite' // ✅ NEW PARASITE LINK
+                                                ? `/movies/parasite/${currentMovie.imdbID}`
+
+                                                : collection.slug === 'movies-like-oldboy'
+? `/movies/oldboy/${currentMovie.imdbID}`
+  
+               : collection.slug === 'movies-like-donnie-darko'
+? `/movies/donnie-darko/${currentMovie.imdbID}`
+
+            
+                                                : collection.slug === 'movies-like-interstellar'
+                                                ? `/movies/interstellar/${currentMovie.imdbID}`
+                                                : collection.slug === 'movies-like-memento'
+                                                ? `/movies/like-memento/${currentMovie.imdbID}`
+                                                : collection.slug === 'movies-like-shutter-island'
+                                                ? `/movies/like-shutter-island/${currentMovie.imdbID}`
+                                                : collection.slug === 'best-survival-movies'
+                                                ? `/movies/survival/${currentMovie.imdbID}`
+                                                : collection.slug === 'best-thriller-movies'
+                                                ? `/movies/thriller/${currentMovie.imdbID}`
+                                                : collection.slug === 'best-mystery-thriller-movies'
+                                                ? `/movies/mystery-thriller/${currentMovie.imdbID}`
+                                                : collection.slug === 'best-detective-thriller-movies'
+                                                ? `/movies/detective-thriller/${currentMovie.imdbID}`
+                                                : collection.slug === 'best-drama-movies-on-netflix'
+                                                ? `/movies/netflix/${currentMovie.imdbID}`
+                                                : collection.slug === 'best-psychological-thriller-movies'
+                                                ? `/movies/psych-thriller/${currentMovie.imdbID}`
+                                                : collection.slug === 'best-crime-thriller-movies'
+                                                ? `/movies/crime-thriller/${currentMovie.imdbID}`
+                                                : collection.slug === 'best-heist-thriller-movies'
+                                                ? `/movies/heist-thriller/${currentMovie.imdbID}`
+                                                : collection.slug === 'best-time-travel-movies'
+                                                ? `/movies/time-travel/${currentMovie.imdbID}`
+                                                : collection.slug === 'best-sci-fi-movies'
+                                                ? `/movies/sci-fi/${currentMovie.imdbID}`
+                                                : collection.slug === 'best-revenge-movies'
+                                                ? `/movies/revenge/${currentMovie.imdbID}`
+                                                : collection.slug === 'best-war-films'
+                                                ? `/movies/war-films/${currentMovie.imdbID}`
+                                                : `/movies/${currentMovie.imdbID}`
+                                        }
+
+                                        key={currentMovieIndex}
+                                        onClick={handleMovieClick}
+                                    >
+                                        <CinematicMovieCard
+                                            movie={currentMovie}
+                                            rank={currentRank}
+                                            isActive={true}
+                                        />
+                                    </Link>
+                                )}
+                            </AnimatePresence>
+
+                        </div>
+
+                        {/* Enhanced Movie Info */}
+                        <motion.div 
+                            className="text-center mt-12 sm:mt-16"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.5, duration: 0.8 }}
+                        >
+                            <div className="flex flex-col items-center space-y-6">
+                                <div className="flex items-center justify-center space-x-4 text-sm text-gray-500">
+                                    <span className="px-3 py-1 bg-gray-800/50 rounded-full">#{currentRank} of {movies.length}</span>
+                                    <span>•</span>
+                                    <span>Click poster above for full analysis</span>
+                                </div>
+                                
+                                <motion.div 
+                                    className="flex items-center space-x-4 bg-gradient-to-r from-yellow-400/10 via-amber-400/10 to-yellow-400/10 border border-yellow-400/30 rounded-2xl px-8 py-4 hover:from-yellow-400/20 hover:via-amber-400/20 hover:to-yellow-400/20 hover:border-yellow-400/50 transition-all duration-300 cursor-pointer group"
+                                    whileHover={{ scale: 1.05, y: -2 }}
+                                    whileTap={{ scale: 0.98 }}
+                                    onClick={() => {
+                                        handleMovieClick();
+                                        let detailPageUrl;
+                                        if (collection.slug === 'movies-like-inception') {
+                                            detailPageUrl = `/movies/like-inception/${currentMovie.imdbID}`;
+                                        } else if (collection.slug === 'movies-like-the-matrix') {
+                                            detailPageUrl = `/movies/matrix/${currentMovie.imdbID}`;
+                                        } else if (collection.slug === 'movies-like-se7en') {
+                                            detailPageUrl = `/movies/like-se7en/${currentMovie.imdbID}`;
+                                        } else if (collection.slug === 'movies-like-parasite') { // ✅ NEW PARASITE BUTTON LOGIC
+                                            detailPageUrl = `/movies/parasite/${currentMovie.imdbID}`;
+
+                                                            } else if (collection.slug === 'movies-like-oldboy') {
+                            detailPageUrl = `/movies/oldboy/${currentMovie.imdbID}`;
+
+
+         } else if (collection.slug === 'movies-like-donnie-darko') {
+    detailPageUrl = `/movies/donnie-darko/${currentMovie.imdbID}`;
+
+
+
+                                        } else if (collection.slug === 'movies-like-interstellar') {
+                                            detailPageUrl = `/movies/interstellar/${currentMovie.imdbID}`;
+                                        } else if (collection.slug === 'movies-like-memento') {
+                                            detailPageUrl = `/movies/like-memento/${currentMovie.imdbID}`;
+                                        } else if (collection.slug === 'movies-like-shutter-island') {
+                                            detailPageUrl = `/movies/like-shutter-island/${currentMovie.imdbID}`;
+                                        } else if (collection.slug === 'best-survival-movies') {
+                                            detailPageUrl = `/movies/survival/${currentMovie.imdbID}`;
+                                        } else if (collection.slug === 'best-thriller-movies') {
+                                            detailPageUrl = `/movies/thriller/${currentMovie.imdbID}`;
+                                        } else if (collection.slug === 'best-mystery-thriller-movies') {
+                                            detailPageUrl = `/movies/mystery-thriller/${currentMovie.imdbID}`;
+                                        } else if (collection.slug === 'best-detective-thriller-movies') {
+                                            detailPageUrl = `/movies/detective-thriller/${currentMovie.imdbID}`;
+                                        } else if (collection.slug === 'best-drama-movies-on-netflix') {
+                                            detailPageUrl = `/movies/netflix/${currentMovie.imdbID}`;
+                                        } else if (collection.slug === 'best-psychological-thriller-movies') {
+                                            detailPageUrl = `/movies/psych-thriller/${currentMovie.imdbID}`;
+                                        } else if (collection.slug === 'best-crime-thriller-movies') {
+                                            detailPageUrl = `/movies/crime-thriller/${currentMovie.imdbID}`;
+                                        } else if (collection.slug === 'best-heist-thriller-movies') {
+                                            detailPageUrl = `/movies/heist-thriller/${currentMovie.imdbID}`;
+                                        } else if (collection.slug === 'best-time-travel-movies') {
+                                            detailPageUrl = `/movies/time-travel/${currentMovie.imdbID}`;
+                                        } else if (collection.slug === 'best-sci-fi-movies') {
+                                            detailPageUrl = `/movies/sci-fi/${currentMovie.imdbID}`;
+                                        } else if (collection.slug === 'best-revenge-movies') {
+                                            detailPageUrl = `/movies/revenge/${currentMovie.imdbID}`;
+                                        } else if (collection.slug === 'best-war-films') {
+                                            detailPageUrl = `/movies/war-films/${currentMovie.imdbID}`;
+                                        } else {
+                                            detailPageUrl = `/movies/${currentMovie.imdbID}`;
+                                        }
+                                        window.location.href = detailPageUrl;
+                                    }}
+                                >
+
+
+                                    <Eye className="w-6 h-6 text-yellow-400" />
+                                    <span className="text-yellow-400 font-medium text-lg">Explore Full Analysis</span>
+                                    <motion.div
+                                        animate={{ x: [0, 8, 0] }}
+                                        transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                                    >
+                                        <ChevronRight className="w-6 h-6 text-yellow-400" />
+                                    </motion.div>
+                                </motion.div>
+                            </div>
+                        </motion.div>
+
+                        {/* Navigation Dots */}
+                        <NavigationDots 
+                            movies={movies}
+                            currentMovieIndex={currentMovieIndex}
+                            goToMovie={goToMovie}
+                        />
+
+                        {/* Movie Counter */}
+                        <motion.div
+                            className="flex justify-center mt-8"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 3.5 }}
+                        >
+                            <div className="flex items-center gap-4 sm:gap-6 px-6 py-4 sm:px-8 sm:py-5 bg-gradient-to-r from-gray-800/40 via-gray-900/40 to-gray-800/40 backdrop-blur-xl rounded-2xl border border-yellow-400/20">
+                                <span className="text-yellow-400 font-light text-lg sm:text-xl">
+                                    #{currentRank}
+                                </span>
+                                <div className="w-16 sm:w-24 h-2 bg-gray-700/50 rounded-full overflow-hidden">
+                                    <motion.div
+                                        className="h-full bg-gradient-to-r from-yellow-400 to-amber-400 rounded-full"
+                                        style={{ width: `${((currentMovieIndex + 1) / movies.length) * 100}%` }}
+                                        transition={{ duration: 0.5, ease: "easeOut" }}
+                                    />
+                                </div>
+                                <span className="text-gray-400 font-light text-sm sm:text-base">
+                                    <span className="hidden sm:inline">{metaContent.progressText}</span>
+                                    <span className="sm:hidden">of {movies.length}</span>
+                                </span>
+                            </div>
+                        </motion.div>
+
+                        {/* Footer */}
+                        <motion.footer
+                            className="bg-gradient-to-t from-gray-900 to-black mt-16 pt-12 border-t border-gray-800/30 text-center"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 4.5 }}
+                        >
+                            <p className="text-gray-500 text-sm sm:text-base font-light tracking-wide mb-8">
+                                Curated cinema for discerning viewers • Expert analysis and community insights
+                            </p>
+                            
+                            <div className="flex justify-center items-center gap-8 sm:gap-12 mb-8">
+                                <div className="w-16 sm:w-24 h-px bg-gradient-to-r from-transparent to-gray-700"></div>
+                                <div className="text-yellow-400/60 text-xs tracking-[0.3em] uppercase font-medium">
+                                    Filmiway {collection.title} Collection
+                                </div>
+                                <div className="w-16 sm:w-24 h-px bg-gradient-to-l from-transparent to-gray-700"></div>
+                            </div>
+                            
+                            {/* TMDB Attribution */}
+                            <motion.div 
+                                className="mb-8 pt-6 border-t border-gray-900/50"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ delay: 5, duration: 1 }}
+                            >
+                                <div className="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-4">
+                                    <p className="text-gray-600 text-sm">
+                                        Movie data and posters powered by
+                                    </p>
+                                    <a 
+                                        href="https://www.themoviedb.org/" 
+                                        target="_blank" 
+                                        rel="noopener noreferrer"
+                                        className="flex items-center space-x-2 hover:opacity-80 transition-opacity"
+                                    >
+                                        <Image
+                                            src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg"
+                                            alt="The Movie Database"
+                                            width={50}
+                                            height={20}
+                                            className="h-5 w-auto"
+                                            loading="lazy"
+                                        />
+                                        <span className="text-blue-400 text-sm hover:text-blue-300 transition-colors">
+                                            The Movie Database (TMDB)
+                                        </span>
+                                    </a>
+                                </div>
+                                <p className="text-gray-700 text-xs mt-2 text-center">
+                                    This product uses the TMDB API but is not endorsed or certified by TMDB.
+                                </p>
+                            </motion.div>
+
+                            <div className="flex items-center justify-center space-x-8 text-gray-500 text-sm pb-8">
+                                <span>© 2025 Filmiway</span>
+                                <span>•</span>
+                                <span>All Rights Reserved</span>
+                                <span>•</span>
+                                <span>Where Every Film Finds Its Way</span>
+                            </div>
+                        </motion.footer>
+                    </div>
                 </motion.div>
             )}
         </AnimatePresence>
     </div>
 );
-
 };
 
 // 🔥 SSG FUNCTIONS WITH MATRIX COLLECTION ADDED 🔴
