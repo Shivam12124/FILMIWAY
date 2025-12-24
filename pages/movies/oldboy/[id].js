@@ -4,9 +4,8 @@ import Head from 'next/head';
 import Image from 'next/image'
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Play, X, Award, Brain, Film, User, Twitter, Hash, Send,Knife } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Play, X, Award, Brain, Film, User, Twitter, Hash, Send } from 'lucide-react';
 import InternalCollectionsSection from '../../../components/InternalCollectionsSection';
-
 
 import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
@@ -19,49 +18,18 @@ const COLORS = {
   borderAccent: 'rgba(153, 27, 27, 0.2)', borderLight: 'rgba(107, 114, 128, 0.2)',
 };
 
-// ✅ ADD THIS - REPLACES ALL MISSING ICONS
-const Icons = {
-  Knife: ({ className = "", style = {}, ...props }) => (
-    <div className={`flex items-center justify-center ${className}`} style={{ fontSize: "24px", ...style }} {...props}>
-      🔪
-    </div>
-  ),
-  Play: ({ className = "", style = {}, ...props }) => (
-    <div className={`flex items-center justify-center ${className}`} style={{ fontSize: "28px", ...style }} {...props}>
-      ▶️
-    </div>
-  ),
-  X: ({ className = "", ...props }) => (
-    <div className={`flex items-center justify-center ${className}`} style={{ fontSize: "20px", lineHeight: 1 }} {...props}>
-      ✕
-    </div>
-  ),
-  ChevronLeft: ({ className = "", style = {}, ...props }) => (
-    <div className={`flex items-center justify-center ${className}`} style={{ fontSize: "16px", ...style }} {...props}>
-      ‹
-    </div>
-  ),
-  ChevronRight: ({ className = "", style = {}, ...props }) => (
-    <div className={`flex items-center justify-center ${className}`} style={{ fontSize: "16px", ...style }} {...props}>
-      ›
-    </div>
-  ),
-  User: ({ className = "", style = {}, ...props }) => (
-    <div className={`flex items-center justify-center ${className}`} style={{ fontSize: "20px", ...style }} {...props}>
-      👤
-    </div>
-  ),
-  Twitter: () => <div>🐦</div>,
-  Hash: () => <div>#</div>,
-  Send: () => <div>📤</div>
-};
+// ✅ CUSTOM ICONS (NO lucide-react Knife)
+const Knife = ({ className = "", style = {}, ...props }) => (
+  <div className={`flex items-center justify-center ${className}`} style={{ fontSize: "24px", ...style }} {...props}>
+    🔪
+  </div>
+);
 
 const MOVIE_YEARS = {
     'I Saw the Devil': '2010', 'Sympathy for Mr. Vengeance': '2002', 'Lady Vengeance': '2005',
     'The Man from Nowhere': '2010', 'The Chaser': '2008', 'A Bittersweet Life': '2005',
     'Incendies': '2010', 'The Handmaiden': '2016', 'No Mercy': '2010', 'Prisoners': '2013'
 };
-
 
 const MOVIE_DATA_BY_TITLE = {
     'I Saw the Devil': {
@@ -126,7 +94,6 @@ const MOVIE_DATA_BY_TITLE = {
     }
 };
 
-
 const OLDBOY_TAGS = {
     'I Saw the Devil': { tags: ['Cat-and-Mouse', 'Torture', 'Obsession'], symbol: '🔪', color: '#991b1b' },
     'Sympathy for Mr. Vengeance': { tags: ['Vengeance Trilogy', 'Tragedy', 'Cycle'], symbol: '⚖️', color: '#115e59' },
@@ -140,16 +107,13 @@ const OLDBOY_TAGS = {
     'Prisoners': { tags: ['Vigilante', 'Moral Descent', 'Missing Child'], symbol: '⛓️', color: '#525252' }
 };
 
-
 const getTMDBImage = (path, size = 'w1280') =>
   path ? `https://image.tmdb.org/t/p/${size}${path}` : undefined;
-
 
 const getOldboyInsight = (title) => {
   const data = MOVIE_DATA_BY_TITLE[title];
   return data?.revengeConnection || 'A masterful exploration of vengeance, obsession, and moral complexity in the style of Oldboy.';
 };
-
 
 const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
   const [showTrailer, setShowTrailer] = useState(false);
@@ -157,22 +121,18 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
   const [hasClosedTrailer, setHasClosedTrailer] = useState(false);
   const timerRef = useRef(null);
 
-
   const bannerImage =
     movieData?.backdrop_path
       ? getTMDBImage(movieData.backdrop_path, 'w1280')
       : movieData?.backdrop || movie?.backdrop || getTMDBImage(movie?.backdrop_path, 'w1280');
-
 
   const posterImage =
     movieData?.poster_path
       ? getTMDBImage(movieData.poster_path, 'w500')
       : movieData?.poster || movie?.poster || getTMDBImage(movie?.poster_path, 'w500');
 
-
   const insight = getOldboyInsight(movie?.Title);
   const revengeIntensity = COMPLETE_MOVIE_DATA[movie.tmdbId]?.customRating || '96/100';
-
 
   const mobileHeroCSS = `
   @media (max-width: 767px) {
@@ -186,7 +146,6 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
     .mobile-revenge-desc { font-size: 12.3px; color: #ededed; line-height: 1.36; margin-top: 2px; }
   }
 `;
-
 
   useEffect(() => {
     if (!isMobile && trailer && !showTrailer && !hasClosedTrailer) {
@@ -206,19 +165,16 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
     };
   }, [isMobile, trailer, showTrailer, hasClosedTrailer]);
 
-
   const handleCloseTrailer = () => {
     setShowTrailer(false);
     setHasClosedTrailer(true);
     if (timerRef.current) clearInterval(timerRef.current);
   };
 
-
   const handlePlayClick = () => {
     setShowTrailer(true);
     setHasClosedTrailer(false);
   };
-
 
   return (
     <motion.div
@@ -335,7 +291,6 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
         </AnimatePresence>
       </div>
 
-
       {/* ✅ MOBILE LAYOUT - Side by Side (OLDBOY STYLE) */}
       {isMobile ? (
         <div className="mobile-hero-row">
@@ -388,7 +343,6 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
               </div>
             </motion.div>
 
-
             <motion.div
               className="flex-1 w-full min-w-0"
               initial={{ opacity: 0, x: 30 }}
@@ -413,7 +367,6 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
                   }}
                 />
 
-
                 <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5">
                   <motion.div
                     className="p-2 sm:p-2.5 rounded-lg sm:rounded-xl flex-shrink-0"
@@ -424,9 +377,8 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.2 }}
                   >
-                 
+                    <Knife style={{ color: COLORS.accent, fontSize: '20px' }} />
                   </motion.div>
-
 
                   <div className="min-w-0 flex-1">
                     <h2 className="text-sm sm:text-base lg:text-xl xl:text-2xl font-bold leading-tight" style={{ color: COLORS.accent }}>
@@ -438,7 +390,6 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
                   </div>
                 </div>
 
-
                 <div className="relative pl-4 sm:pl-6 border-l-2" style={{ borderColor: `${COLORS.accent}40` }}>
                   <motion.div
                     className="absolute -left-1.5 sm:-left-2 top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full"
@@ -447,12 +398,10 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
                     transition={{ duration: 2, repeat: Infinity }}
                   />
 
-
                   <p className="text-xs sm:text-sm lg:text-base xl:text-lg leading-relaxed font-normal break-words" style={{ color: COLORS.textSecondary, lineHeight: '1.8' }}>
                     {insight}
                   </p>
                 </div>
-
 
                 <motion.div
                   className="mt-4 sm:mt-6 h-0.5 sm:h-1 rounded-full"
@@ -470,7 +419,6 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
   );
 };
 
-
 const SmartBackButton = () => {
     const handleBackClick = () => { if (typeof window !== 'undefined') window.location.href = '/collection/movies-like-oldboy'; };
     return (
@@ -479,7 +427,6 @@ const SmartBackButton = () => {
         </motion.button>
     );
 };
-
 
 const AuthorCreditSection = () => (
     <motion.section className="pt-6 sm:pt-8 mt-12 sm:mt-16" style={{ borderTop: `1px solid ${COLORS.borderLight}` }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.8, duration: 0.8 }}>
@@ -490,11 +437,9 @@ const AuthorCreditSection = () => (
     </motion.section>
 );
 
-
 const SubtleFilmGrain = () => (
     <div className="fixed inset-0 pointer-events-none z-0 opacity-[0.005]"><div className="w-full h-full bg-repeat" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)' opacity='0.3'/%3E%3C/svg%3E")`, backgroundSize: '60px 60px' }} /></div>
 );
-
 
 const OldboyBreadcrumb = ({ movie }) => (
     <motion.nav className="mb-6 sm:mb-8 px-3 sm:px-4 lg:px-6 pb-3 sm:pb-4" style={{ borderBottom: `1px solid ${COLORS.borderLight}` }} initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
@@ -505,7 +450,6 @@ const OldboyBreadcrumb = ({ movie }) => (
     </motion.nav>
 );
 
-
 const OldboyMoviePage = ({ movie }) => {
     const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
     const correctData = MOVIE_DATA_BY_TITLE[movie.Title];
@@ -513,7 +457,6 @@ const OldboyMoviePage = ({ movie }) => {
     const [movieData, setMovieData] = useState(null);
     const [isMobile, setIsMobile] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
-
 
     useEffect(() => {
         const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -532,7 +475,6 @@ const OldboyMoviePage = ({ movie }) => {
         return () => window.removeEventListener('resize', checkMobile);
     }, [movie.tmdbId]);
 
-
     useEffect(() => {
         if (typeof window !== 'undefined') {
             sessionStorage.setItem('fromCollection', 'oldboy');
@@ -540,11 +482,9 @@ const OldboyMoviePage = ({ movie }) => {
         }
     }, []);
 
-
     const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
     const currentMovieGenre = correctData?.genre || movie.genre || movieInfo?.genre || 'Revenge Thriller';
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
-
 
     if (isLoading) return (
         <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: COLORS.bgPrimary }}>
@@ -554,7 +494,6 @@ const OldboyMoviePage = ({ movie }) => {
             </div>
         </div>
     );
-
 
     return (
         <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
@@ -578,7 +517,6 @@ const OldboyMoviePage = ({ movie }) => {
                 <meta name="twitter:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
             </Head>
 
-
             <SubtleFilmGrain />
             <div className="absolute inset-0"><CinematicBackground /></div>
             <SmartBackButton />
@@ -599,18 +537,15 @@ const OldboyMoviePage = ({ movie }) => {
     );
 };
 
-
 export async function getStaticPaths() {
     const paths = COMPLETE_MOVIE_DATABASE.map((movie) => ({ params: { id: movie.imdbID } }));
     return { paths, fallback: false };
 }
-
 
 export async function getStaticProps({ params }) {
     const movie = COMPLETE_MOVIE_DATABASE.find(m => m.imdbID === params.id);
     if (!movie) return { notFound: true };
     return { props: { movie } };
 }
-
 
 export default OldboyMoviePage;
