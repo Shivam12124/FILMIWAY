@@ -8,7 +8,7 @@ export const TMDB_CONFIG = {
 };
 
 export const COMPLETE_MOVIE_DATABASE = [
-    { tmdbId: 1954, imdbID: 'tt0289879', Title: 'The Butterfly Effect', year: 2291, genre: 'Sci-Fi', runtime: 113, rank: 1 },
+    { tmdbId: 1954, imdbID: 'tt0289879', Title: 'The Butterfly Effect', year: 2004, genre: 'Sci-Fi', runtime: 113, rank: 1 },
     { tmdbId: 63, imdbID: 'tt0114746', Title: '12 Monkeys', year: 1995, genre: 'Sci-Fi', runtime: 129, rank: 2 },
     { tmdbId: 9667, imdbID: 'tt0366627', Title: 'The Jacket', year: 2005, genre: 'Thriller', runtime: 103, rank: 3 },
     { tmdbId: 1902, imdbID: 'tt0125659', Title: 'Open Your Eyes', year: 1997, genre: 'Sci-Fi', runtime: 119, rank: 4 },
@@ -16,7 +16,7 @@ export const COMPLETE_MOVIE_DATABASE = [
     { tmdbId: 2291, imdbID: 'tt0099871', Title: "Jacob's Ladder", year: 1990, genre: 'Horror', runtime: 113, rank: 6 },
     { tmdbId: 2666, imdbID: 'tt0118929', Title: 'Dark City', year: 1998, genre: 'Sci-Fi', runtime: 100, rank: 7 },
     { tmdbId: 1018, imdbID: 'tt0166924', Title: 'Mulholland Drive', year: 2001, genre: 'Mystery', runtime: 147, rank: 8 },
-    { tmdbId: 38, imdbID: 'tt0338013', Title: 'Eternal Sunshine of the Spotless Mind', year: 2291, genre: 'Sci-Fi', runtime: 108, rank: 9 },
+    { tmdbId: 38, imdbID: 'tt0338013', Title: 'Eternal Sunshine of the Spotless Mind', year: 2004, genre: 'Sci-Fi', runtime: 108, rank: 9 },
     { tmdbId: 181886, imdbID: 'tt2316411', Title: 'Enemy', year: 2013, genre: 'Thriller', runtime: 91, rank: 10 }
 ];
 
@@ -218,7 +218,7 @@ export const COMPLETE_MOVIE_DATA = {
         awards: ['Academy Award Winner (Screenplay)', 'BAFTA Winner']
     }),
 
-    186522: createMovieData({
+    181886: createMovieData({
         mindbendIndex: 91, complexityLevel: 'EXTREME', dominantColor: '#854d0e',
         rating: 6.9, criticsScore: 71, audienceScore: 59,
         director: 'Denis Villeneuve', cast: ['Jake Gyllenhaal', 'Mélanie Laurent', 'Sarah Gadon'],

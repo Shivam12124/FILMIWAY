@@ -875,7 +875,7 @@ const getStarColor = () => {
 
          <EnhancedWhereToWatchSection movie={movie} />
 
-{!fromParasiteCollection && !fromOldboyCollection && !fromHeistThrillerCollection && (
+{!fromParasiteCollection && !fromOldboyCollection && !fromHeistThrillerCollection && !fromDonnieDarkoCollection && (
 
   <motion.div
     className="mb-6 sm:mb-8 md:mb-12 bg-gradient-to-br from-gray-800/40 to-gray-900/60 rounded-lg sm:rounded-xl border border-gray-700/50 p-3 sm:p-4 md:p-8 shadow-2xl backdrop-blur-sm relative overflow-hidden"

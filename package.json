@@ -24,7 +24,8 @@
     "start": "next start",
     "lint": "next lint",
     "export": "next export",
-    "analyze": "cross-env ANALYZE=true next build"
+    "analyze": "cross-env ANALYZE=true next build",
+    "indexnow": "node scripts/indexnow-submit.js"
   },
   "dependencies": {
     "@microsoft/clarity": "^1.0.0",
@@ -33,6 +34,7 @@
     "critters": "^0.0.23",
     "firebase": "^10.14.1",
     "framer-motion": "^10.16.4",
+    "indexnow": "^0.1.0",
     "lucide-react": "^0.292.0",
     "next": "^15.5.3",
     "react": "^18.2.0",
