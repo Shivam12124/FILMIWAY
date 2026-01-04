@@ -4,7 +4,7 @@ import Head from 'next/head';
 import Image from 'next/image'
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Play, X, Award, Zap, Film, User, Twitter, Hash, Send } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Play, X, Award, Zap, Film, User, Twitter, Hash, Send,Fingerprint } from 'lucide-react';
 import InternalCollectionsSection from '../../../components/InternalCollectionsSection';
 
 import CinematicBackground from '../../../components/CinematicBackground';
@@ -292,7 +292,7 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
       </div>
 
       {/* ✅ MOBILE LAYOUT - MATRIX STYLE */}
-{isMobile ? (
+      {isMobile ? (
   <div className="mobile-hero-row">
     <div className="mobile-hero-poster">
       {posterImage ? (
@@ -315,19 +315,19 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
             justifyContent: 'center',
           }}
         >
-          <Fingerprint style={{ color: COLORS.textMuted }} />
+          <Zap style={{ color: COLORS.textMuted }} />
         </div>
       )}
     </div>
-    <div className="mobile-se7en-card">
-      <div className="mobile-se7en-row">
-        <Fingerprint className="mobile-se7en-icon" />
+    <div className="mobile-matrix-card">
+      <div className="mobile-matrix-row">
+        <Zap className="mobile-matrix-icon" />
         <div>
-          <div className="mobile-se7en-title">Se7en DNA Score</div>
+          <div className="mobile-matrix-title">Cyber Complexity</div>
         </div>
       </div>
-      <div className="mobile-se7en-desc">
-        <strong>{se7enDNAScore}</strong> - {insight}
+      <div className="mobile-matrix-desc">
+        <strong>{cyberComplexity}</strong> - {insight}
       </div>
     </div>
   </div>
