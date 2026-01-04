@@ -324,30 +324,47 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
           )}
         </AnimatePresence>
       </div>
-      {isMobile ? (
-        <div className="mobile-hero-row">
-          <div className="mobile-hero-poster">
-            {posterImage ? (
-              <img src={posterImage} alt={`${movie?.title} poster`} />
-            ) : (
-              <div style={{ background: COLORS.bgCard, width: '100%', height: '150px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <Film style={{ color: COLORS.textMuted }} />
-              </div>
-            )}
-          </div>
-          <div className="mobile-thriller-card">
-            <div className="mobile-thriller-row">
-              <Award className="mobile-thriller-icon" />
-              <div>
-                <div className="mobile-thriller-title">Heist Index</div>
-              </div>
-            </div>
-            <div className="mobile-thriller-desc">
-              <strong>{movie?.heistComplexity || 88}</strong> - {insight}
-            </div>
-          </div>
-        </div>
+{isMobile ? (
+  <div className="mobile-hero-row">
+    <div className="mobile-hero-poster">
+      {posterImage ? (
+        <Image
+          src={posterImage}
+          alt={`${movie?.title} poster`}
+          width={320}
+          height={480}
+          className="w-full h-auto"
+          priority
+        />
       ) : (
+        <div
+          style={{
+            background: COLORS.bgCard,
+            width: '100%',
+            height: '150px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <Film style={{ color: COLORS.textMuted }} />
+        </div>
+      )}
+    </div>
+    <div className="mobile-thriller-card">
+      <div className="mobile-thriller-row">
+        <Award className="mobile-thriller-icon" />
+        <div>
+          <div className="mobile-thriller-title">Heist Index</div>
+        </div>
+      </div>
+      <div className="mobile-thriller-desc">
+        <strong>{movie?.heistComplexity || 88}</strong> - {insight}
+      </div>
+    </div>
+  </div>
+) : (
+
         <div className="relative px-3 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8 z-20" style={{ backgroundColor: COLORS.bgPrimary }}>
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 lg:gap-8 items-start">
             <motion.div

@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Play, X, Award, Rocket, User, Twitter, Hash, Send } from 'lucide-react';
 import InternalCollectionsSection from '../../../components/InternalCollectionsSection';
@@ -233,13 +234,21 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
                         ) : (
                             <motion.div key="image" className="absolute inset-0 rounded-none sm:rounded-3xl overflow-hidden" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
                                 <div className="relative w-full h-full">
-                                    {bannerImage ? (
-                                        <img src={bannerImage} alt={`${movie.Title} banner`} className="w-full h-full object-cover" onError={(e) => e.target.style.display = 'none'} />
-                                    ) : (
-                                        <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: COLORS.bgCard }}>
-                                            <Rocket className="w-16 h-16 sm:w-24 sm:h-24" style={{ color: COLORS.textDisabled }} />
-                                        </div>
-                                    )}
+{bannerImage ? (
+  <Image
+    src={bannerImage}
+    alt={`${movie.Title} banner`}
+    fill
+    priority
+    sizes="100vw"
+    className="object-cover"
+  />
+) : (
+  <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: COLORS.bgCard }}>
+    <Rocket className="w-16 h-16 sm:w-24 sm:h-24" style={{ color: COLORS.textDisabled }} />
+  </div>
+)}
+
                                     <div className="absolute inset-0 z-10" style={{ background: `linear-gradient(to bottom, transparent 0%, transparent 60%, ${COLORS.bgPrimary}80 85%, ${COLORS.bgPrimary} 100%)` }} />
                                 </div>
                                 {trailer && (
@@ -264,43 +273,39 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
 
                 {/* MOBILE: SURVIVAL-STYLE ROW */}
 {isMobile ? (
-    <div className="mobile-hero-row">
-        <div className="mobile-hero-poster">
-            {posterImage ? (
-                <img 
-                    src={posterImage} 
-                    alt={`${movie.Title} poster`}
-                    loading="lazy"
-                    decoding="async"
-                />
-            ) : (
-                <div style={{ 
-                    background: COLORS.bgCard, 
-                    width: '100%', 
-                    height: '100%', 
-                    display: 'flex', 
-                    alignItems: 'center', 
-                    justifyContent: 'center', 
-                    borderRadius: '12px' 
-                }}>
-                    <Rocket style={{ color: COLORS.textMuted, width: '24px', height: '24px' }} />
-                </div>
-            )}
+  <div className="mobile-hero-row">
+    <div className="mobile-hero-poster">
+      {posterImage ? (
+        <Image
+          src={posterImage}
+          alt={`${movie.Title} poster`}
+          width={320}
+          height={480}
+          className="w-full h-full object-cover"
+          loading="lazy"
+        />
+      ) : (
+        <div
+          style={{
+            background: COLORS.bgCard,
+            width: '100%',
+            height: '100%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            borderRadius: '12px',
+          }}
+        >
+          <Rocket style={{ color: COLORS.textMuted, width: '24px', height: '24px' }} />
         </div>
-        <div className="mobile-space-card">
-            <div className="mobile-space-row">
-                <Rocket className="mobile-space-icon" />
-                <div>
-                    <div className="mobile-space-title">Space Complexity</div>
-                    <div className="mobile-space-complexity">Score: {spaceComplexity}/100</div>
-                </div>
-            </div>
-            <div className="mobile-space-desc">
-                {spaceConnection.substring(0, 100)}...
-            </div>
-        </div>
+      )}
     </div>
+    <div className="mobile-space-card">
+      ...
+    </div>
+  </div>
 ) : (
+
 
                     /* DESKTOP: ORIGINAL DESIGN */
                     <div className="relative px-3 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8 z-20" style={{ backgroundColor: COLORS.bgPrimary }}>
@@ -313,12 +318,22 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
                             >
                                 <div className="relative" style={{ aspectRatio: '2/3' }}>
                                     {posterImage ? (
-                                        <img src={posterImage} alt={`${movie.Title} poster`} className="w-full h-full object-cover rounded-lg sm:rounded-xl shadow-2xl" onError={(e) => e.target.style.display = 'none'} />
-                                    ) : (
-                                        <div className="w-full h-full flex items-center justify-center rounded-lg sm:rounded-xl shadow-2xl" style={{ backgroundColor: COLORS.bgCard }}>
-                                            <Rocket className="w-12 h-12 sm:w-16 sm:h-16" style={{ color: COLORS.textDisabled }} />
-                                        </div>
-                                    )}
+  <Image
+    src={posterImage}
+    alt={`${movie.Title} poster`}
+    fill
+    className="object-cover rounded-lg sm:rounded-xl shadow-2xl"
+    sizes="(max-width: 640px) 96px, (max-width: 768px) 192px, (max-width: 1024px) 224px, 320px"
+  />
+) : (
+  <div
+    className="w-full h-full flex items-center justify-center rounded-lg sm:rounded-xl shadow-2xl"
+    style={{ backgroundColor: COLORS.bgCard }}
+  >
+    <Rocket className="w-12 h-12 sm:w-16 sm:h-16" style={{ color: COLORS.textDisabled }} />
+  </div>
+)}
+
                                 </div>
                             </motion.div>
 

@@ -374,38 +374,46 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
 
       {/* ✅ MOBILE LAYOUT - Side by Side */}
       {isMobile ? (
-        <div className="mobile-hero-row">
-          <div className="mobile-hero-poster">
-            {posterImage ? (
-              <img src={posterImage} alt={`${movie?.Title} poster`} />
-            ) : (
-              <div
-                style={{
-                  background: COLORS.bgCard,
-                  width: '100%',
-                  height: '150px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
-              >
-                <Theater style={{ color: COLORS.textMuted }} />
-              </div>
-            )}
-          </div>
-          <div className="mobile-psych-card">
-            <div className="mobile-psych-row">
-              <Theater className="mobile-psych-icon" />
-              <div>
-                <div className="mobile-psych-title">Psychological Intensity</div>
-              </div>
-            </div>
-            <div className="mobile-psych-desc">
-              <strong>{intensity}</strong> – {insight}
-            </div>
-          </div>
-        </div>
+  <div className="mobile-hero-row">
+    <div className="mobile-hero-poster">
+      {posterImage ? (
+        <Image
+          src={posterImage}
+          alt={`${movie?.Title} poster`}
+          width={320}
+          height={480}
+          className="w-full h-auto"
+          priority
+        />
       ) : (
+        <div
+          style={{
+            background: COLORS.bgCard,
+            width: '100%',
+            height: '150px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <Theater style={{ color: COLORS.textMuted }} />
+        </div>
+      )}
+    </div>
+    <div className="mobile-psych-card">
+      <div className="mobile-psych-row">
+        <Theater className="mobile-psych-icon" />
+        <div>
+          <div className="mobile-psych-title">Psychological Intensity</div>
+        </div>
+      </div>
+      <div className="mobile-psych-desc">
+        <strong>{intensity}</strong> – {insight}
+      </div>
+    </div>
+  </div>
+) : (
+
         /* ✅ DESKTOP LAYOUT */
         <div
           className="relative px-3 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8 z-20"
