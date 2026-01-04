@@ -14,6 +14,7 @@ import { COMPLETE_MOVIE_DATABASE as SE7EN_DATABASE, COMPLETE_MOVIE_DATA as SE7EN
 import { COMPLETE_MOVIE_DATABASE as PARASITE_DATABASE, COMPLETE_MOVIE_DATA as PARASITE_DATA } from '../../utils/parasiteMovieData'; // ✅ NEW PARASITE
 import { COMPLETE_MOVIE_DATABASE as OLDBOY_DATABASE, COMPLETE_MOVIE_DATA as OLDBOY_DATA } from '../../utils/oldboyMovieData'; // ✅ NEW OLDBOY
 import { COMPLETE_MOVIE_DATABASE as DONNIE_DARKO_DATABASE, COMPLETE_MOVIE_DATA as DONNIE_DARKO_DATA } from '../../utils/donnieDarkoMovieData';
+import { COMPLETE_MOVIE_DATABASE as BLACK_SWAN_DATABASE, COMPLETE_MOVIE_DATA as BLACK_SWAN_DATA } from '../../utils/blackSwanMovieData';
 
 import { COMPLETE_MOVIE_DATABASE as INTERSTELLAR_DATABASE, COMPLETE_MOVIE_DATA as INTERSTELLAR_DATA } from '../../utils/interstellarMovieData';
 import { COMPLETE_MOVIE_DATABASE as CRIME_THRILLER_DATABASE, COMPLETE_MOVIE_DATA as CRIME_THRILLER_DATA } from '../../utils/crimeThrillerMovieData';
@@ -207,6 +208,31 @@ const getCollectionContent = () => {
             experience: {
                 text1: "Whether you're drawn to the procedural details or the psychological toll of the hunt, this collection delivers cinema's most compelling descents into darkness.",
                 text2: "Each film forces you to confront the uncomfortable reality that sometimes, understanding the monster means losing a part of yourself in the process."
+            }
+        };
+
+
+    } else if (collection.slug === 'movies-like-black-swan') {
+        return {
+            badge: "Psychological Obsession Cinema",
+            title: "Black Swan",
+            description: "Intense psychological thrillers about performance pressure and identity collapse. Ballet obsession, perfectionism spirals & psychological breakdowns that blur reality and nightmare.",
+            selection: {
+                text1: "From ballet studios to music conservatories—these films explore how artistic perfection demands total sacrifice, pushing protagonists into identity crises where they can no longer distinguish their performance from their true self.",
+                text2: "Each psychological masterpiece features characters consumed by their craft, facing mentors who demand the impossible, and spiraling into madness as the line between dedication and self-destruction disappears completely."
+            },
+            ranking: {
+                text: "Our psychological intensity index evaluates perfectionism pressure, identity dissolution depth, and the sophistication of mental breakdown portrayal throughout each film.",
+                points: [
+                    "Perfectionism pressure scale",
+                    "Identity crisis intensity",
+                    "Psychological breakdown sophistication",
+                    "Performance vs reality blur"
+                ]
+            },
+            experience: {
+                text1: "Whether you're seeking psychological depth or disturbing character studies, this collection delivers cinema's most intense explorations of obsession and identity collapse.",
+                text2: "Each film has been selected for its unflinching portrayal of artistic sacrifice—creating unforgettable narratives where ambition becomes indistinguishable from madness, leaving viewers questioning where dedication ends and self-destruction begins."
             }
         };
 
@@ -646,6 +672,15 @@ const getHeaderContent = () => {
             title: "Movies Like Inception: 10 Reality-Bending Films",
             subtitle: "Layered dreams, reality distortion & Christopher Nolan-level genius storytelling"
         };
+
+    } else if (collection.slug === 'movies-like-black-swan') {
+        return {
+            title: "Movies Like Black Swan: 10 Psychological Obsession Films",
+            subtitle: "Performance pressure, identity collapse & psychological breakdowns that blur reality"
+        };
+
+
+
     } else if (collection.slug === 'movies-like-the-matrix') {
         return {
             title: "Movies Like The Matrix: 10 Cyberpunk Films",
@@ -927,6 +962,17 @@ const getStaticMetaContent = () => {
         };
 
 
+            } else if (collection.slug === 'movies-like-black-swan') {
+        return {
+            title: "Movies Like Black Swan: 10 Psychological Obsession Films", // ✅ 49 chars
+            description: "Loved Black Swan? Discover 10 psychological obsession films with performance pressure, identity collapse & psychological breakdowns.", // ✅ 150 chars
+            keywords: "movies like black swan, psychological obsession films, performance pressure movies, identity collapse cinema",
+            ogTitle: "Movies Like Black Swan: 10 Psychological Obsession Films 🩰",
+            twitterTitle: "🩰 Loved Black Swan? These 10 Films Are Just as Intense",
+            progressText: `of Top ${movies.length} Movies Like Black Swan`
+        };
+
+
           } else if (collection.slug === 'movies-like-donnie-darko') {
     return {
         title: "Movies Like Donnie Darko: 10 Reality-Warping Films", // ✅ 50 chars
@@ -1099,6 +1145,8 @@ const getStaticMetaContent = () => {
         setCurrentMovieIndex(index);
     }, []);
 
+    
+
     useEffect(() => {
         const handleKeyPress = (e) => {
             if (e.key === 'ArrowLeft') prevMovie();
@@ -1150,6 +1198,7 @@ const getStaticMetaContent = () => {
             sessionStorage.removeItem('fromSe7enCollection');
             sessionStorage.removeItem('fromOldboyCollection');
             sessionStorage.removeItem('fromDonnieDarkoCollection');
+            sessionStorage.removeItem('fromBlackSwanCollection');
             sessionStorage.removeItem('fromParasiteCollection'); // ✅ NEW PARASITE
             sessionStorage.removeItem('fromInterstellarCollection');
             sessionStorage.removeItem('fromShutterIslandCollection');
@@ -1179,6 +1228,9 @@ const getStaticMetaContent = () => {
                 sessionStorage.setItem('fromParasiteCollection', 'true');
          } else if (collection.slug === 'movies-like-oldboy') {
           sessionStorage.setItem('fromOldboyCollection', 'true');
+
+          } else if (collection.slug === 'movies-like-black-swan') {
+    sessionStorage.setItem('fromBlackSwanCollection', 'true');
 
           } else if (collection.slug === 'movies-like-donnie-darko') {
     sessionStorage.setItem('fromDonnieDarkoCollection', 'true');
@@ -1630,6 +1682,8 @@ return (
 
 : collection?.slug === 'movies-like-donnie-darko'
 ? 'movies/donnie-darko/'
+: collection?.slug === 'movies-like-black-swan'
+? 'movies/black-swan/'
 
 
 
@@ -1866,6 +1920,8 @@ return (
          } else if (collection.slug === 'movies-like-donnie-darko') {
     detailPageUrl = `/movies/donnie-darko/${currentMovie.imdbID}`;
 
+} else if (collection.slug === 'movies-like-black-swan') {
+    detailPageUrl = `/movies/black-swan/${currentMovie.imdbID}`;
 
 
                                         } else if (collection.slug === 'movies-like-interstellar') {
@@ -2063,7 +2119,11 @@ export async function getStaticProps({ params }) {
             movieDatabase = PARASITE_DATABASE;
             break;
 
-         
+         case 'movies-like-black-swan':
+    movieDatabase = BLACK_SWAN_DATABASE;
+    break;
+
+
 
 case 'movies-like-oldboy':
     movieDatabase = OLDBOY_DATABASE;

@@ -13,6 +13,13 @@ import {
 
 
 import { 
+  COMPLETE_MOVIE_DATA as BLACK_SWAN_MOVIE_DATA, 
+  STRATEGIC_QUOTES as BLACK_SWAN_QUOTES,
+  SENSITIVE_TIMELINES as BLACK_SWAN_SENSITIVE_TIMELINES 
+} from '../utils/blackSwanMovieData';
+
+
+import { 
   COMPLETE_MOVIE_DATA as MATRIX_MOVIE_DATA, 
   STRATEGIC_QUOTES as MATRIX_QUOTES, 
   SENSITIVE_TIMELINES as MATRIX_SENSITIVE_TIMELINES 
@@ -119,6 +126,7 @@ import ParasiteSEOFAQSection from './ParasiteSEOFAQSection'; // ✅ NEW PARASITE
 // ✅ CORRECT IMPORT (Replace line ~120)
 import OldboySEOFAQSection from './OldboySEOFAQSection';
 import DonnieDarkoSEOFAQSection from './DonnieDarkoSEOFAQSection';
+import BlackSwanSEOFAQSection from './BlackSwanSEOFAQSection';
 
 
 
@@ -130,6 +138,8 @@ const MovieDetailsSection = React.memo(({
   fromInceptionCollection,
   fromSurvivalCollection,
   fromMatrixCollection,
+  fromBlackSwanCollection, // ✅ NEW BLACK SWAN FLAG
+
   fromSe7enCollection, // ✅ SE7EN FLAG
   fromParasiteCollection, // ✅ NEW PARASITE FLAG
   fromDonnieDarkoCollection,
@@ -231,6 +241,9 @@ const movieInfo = fromDonnieDarkoCollection
   ? safeLookup(SE7EN_MOVIE_DATA, movie.tmdbId)
   : fromOldboyCollection
 ? safeLookup(OLDBOY_MOVIE_DATA, movie.tmdbId)
+: fromBlackSwanCollection // ✅ NEW BLACK SWAN COLLECTION
+? safeLookup(BLACK_SWAN_MOVIE_DATA, movie.tmdbId)
+
   : fromRevengeCollection
   ? getRevengeMovieInfo()
   : fromWarFilmsCollection
@@ -299,6 +312,7 @@ const rating = safeMovieInfo.rating || movie.imdbRating || 7.5;
 const sensitiveScenes = safeMovieInfo.sensitiveScenes 
   || DONNIE_DARKO_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
   || PARASITE_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes // ✅ NEW PARASITE
+  || BLACK_SWAN_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes // ✅ BLACK SWAN
 
   || OLDBOY_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
   || MATRIX_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
@@ -316,6 +330,9 @@ const quote = fromDonnieDarkoCollection
   ? PARASITE_QUOTES?.[movie.tmdbId] || ''
   : fromOldboyCollection
 ? OLDBOY_QUOTES?.[movie.tmdbId] || ''
+
+: fromBlackSwanCollection // ✅ BLACK SWAN
+? BLACK_SWAN_QUOTES?.[movie.tmdbId] || ''
 
   : fromMatrixCollection 
   ? MATRIX_QUOTES?.[movie.tmdbId] || ''
@@ -340,6 +357,7 @@ const displayIndex = fromParasiteCollection             // ✅ PARASITE - NO BAR
 
   : fromOldboyCollection
 ? safeMovieInfo.revengeIntensity ?? null
+
 
   : fromSe7enCollection
   ? safeMovieInfo.se7enDNAScore ?? null
@@ -371,6 +389,9 @@ const scoreValue = fromDonnieDarkoCollection
   ? movie.matrixRealityIndex ?? safeMovieInfo.matrixRealityIndex ?? 0
   : fromOldboyCollection
 ? movie.revengeIntensity ?? safeMovieInfo.revengeIntensity ?? 0
+  : fromBlackSwanCollection // ✅ BLACK SWAN
+  ? movie.psychologicalIntensity ?? safeMovieInfo.psychologicalIntensity ?? 0
+
 
   : fromSe7enCollection
   ? movie.se7enDNAScore ?? safeMovieInfo.se7enDNAScore ?? 0
@@ -875,7 +896,8 @@ const getStarColor = () => {
 
          <EnhancedWhereToWatchSection movie={movie} />
 
-{!fromParasiteCollection && !fromOldboyCollection && !fromHeistThrillerCollection && !fromDonnieDarkoCollection && (
+{!fromParasiteCollection && !fromOldboyCollection && !fromHeistThrillerCollection && !fromDonnieDarkoCollection && !fromBlackSwanCollection && (
+
 
   <motion.div
     className="mb-6 sm:mb-8 md:mb-12 bg-gradient-to-br from-gray-800/40 to-gray-900/60 rounded-lg sm:rounded-xl border border-gray-700/50 p-3 sm:p-4 md:p-8 shadow-2xl backdrop-blur-sm relative overflow-hidden"
@@ -991,6 +1013,9 @@ const getStarColor = () => {
   ) : fromOldboyCollection ? (
   <OldboySEOFAQSection movie={movie} />
 
+  ): fromBlackSwanCollection ? (
+  <BlackSwanSEOFAQSection movie={movie} />
+  
 ) : fromSe7enCollection ? (                          // ✅ SE7EN FAQ SECTION
   <Se7enSEOFAQSection movie={movie} />
 ) : fromRevengeCollection ? (

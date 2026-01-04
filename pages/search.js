@@ -1,3 +1,18 @@
+
+// pages/search.js
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import Head from 'next/head';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { 
+    Search, Star, Calendar, Clock, Film, X, 
+    TrendingUp, Award, ArrowLeft, Loader, 
+    ChevronLeft, ChevronRight
+} from 'lucide-react';
+import Image from 'next/image';
+
+
 <Head>
     <title>Search Movies - Filmiway</title>
     <meta name="application-name" content="Filmiway" />
@@ -151,14 +166,17 @@ const SearchPage = () => {
             onClick={() => router.push(`/movie/${movie.id}`)}
         >
             <div className="relative aspect-[2/3] rounded-2xl overflow-hidden bg-gray-900 shadow-xl">
-                {movie.poster_path ? (
-                    <img
-                        src={`${IMAGE_BASE_URL}/w500${movie.poster_path}`}
-                        alt={movie.title}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                        loading="lazy"
-                    />
-                ) : (
+              {movie.poster_path ? (
+    <Image
+        src={`${IMAGE_BASE_URL}/w500${movie.poster_path}`}
+        alt={movie.title}
+        width={500}
+        height={750}
+        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+        loading="lazy"
+    />
+) : (
+
                     <div className="w-full h-full bg-gray-800 flex items-center justify-center">
                         <Film className="w-16 h-16 text-gray-600" />
                     </div>
@@ -213,13 +231,17 @@ const SearchPage = () => {
                     {/* Logo & Back - SAME SIZE AS HOMEPAGE */}
                     <div className="flex items-center space-x-6">
                         <Link href="/" className="flex items-center justify-start">
-                            <div className="w-44 h-24 sm:w-52 sm:h-28 md:w-60 md:h-32 lg:w-64 lg:h-36 flex items-center justify-start">
-                                <img 
-                                    src="/filmiway-logo.svg" 
-                                    alt="Filmiway" 
-                                    className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
-                                />
-                            </div>
+                           <div className="w-44 h-24 sm:w-52 sm:h-28 md:w-60 md:h-32 lg:w-64 lg:h-36 flex items-center justify-start">
+    <Image
+        src="/filmiway-logo.svg"
+        alt="Filmiway"
+        width={256}
+        height={96}
+        className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
+        priority={false}
+    />
+</div>
+
                         </Link>
                         <Link 
                             href="/" 
@@ -461,13 +483,16 @@ const SearchPage = () => {
                     <div className="container mx-auto px-4 sm:px-6">
                         <div className="text-center">
                             <div className="flex items-center justify-center mb-8">
-                                <div className="w-32 h-20 sm:w-40 sm:h-24 flex items-center justify-center">
-                                    <img 
-                                        src="/filmiway-logo.svg" 
-                                        alt="Filmiway" 
-                                        className="w-full h-full object-contain"
-                                    />
-                                </div>
+                          <div className="w-32 h-20 sm:w-40 sm:h-24 flex items-center justify-center">
+    <Image
+        src="/filmiway-logo.svg"
+        alt="Filmiway"
+        width={200}
+        height={80}
+        className="w-full h-full object-contain"
+    />
+</div>
+
                             </div>
                             <p className="text-gray-400 mb-8 max-w-md mx-auto">
                                 Search and discover amazing films across every genre and era.
@@ -490,11 +515,14 @@ const SearchPage = () => {
                                         rel="noopener noreferrer"
                                         className="flex items-center space-x-2 hover:opacity-80 transition-opacity"
                                     >
-                                        <img 
-                                            src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg" 
-                                            alt="The Movie Database" 
-                                            className="h-5 w-auto"
-                                        />
+<Image
+    src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg"
+    alt="The Movie Database"
+    width={80}
+    height={20}
+    className="h-5 w-auto"
+/>
+
                                         <span className="text-blue-400 text-sm hover:text-blue-300 transition-colors">
                                             The Movie Database (TMDB)
                                         </span>

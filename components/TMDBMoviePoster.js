@@ -1,19 +1,17 @@
 // components/TMDBMoviePoster.js - FIXED WITH CORRECT SEARCH FALLBACK
 import React, { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { COMPLETE_MOVIE_DATA } from '../utils/movieData';
-
 
 const TMDB_API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
 const TMDB_BASE_URL = 'https://api.themoviedb.org/3';
 const TMDB_IMAGE_BASE_URL = 'https://image.tmdb.org/t/p';
 
-
 const TMDBMoviePoster = React.memo(({ movie, className = "", alt }) => {
     const [posterUrl, setPosterUrl] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [hasError, setHasError] = useState(false);
-
 
     // 🔥 SEARCH BY MOVIE TITLE + YEAR IF DIRECT ID FAILS
     const searchMovieByTitle = useCallback(async (title, year) => {
@@ -49,7 +47,6 @@ const TMDBMoviePoster = React.memo(({ movie, className = "", alt }) => {
         }
         return null;
     }, []);
-
 
     // Fetch poster with search fallback
     const fetchMoviePoster = useCallback(async (tmdbId) => {
@@ -88,7 +85,6 @@ const TMDBMoviePoster = React.memo(({ movie, className = "", alt }) => {
         }
     }, [movie.Title, movie.Year, searchMovieByTitle]);
 
-
     // ✅ FIXED: Added movie.Title to dependency array
     useEffect(() => {
         setIsLoading(true);
@@ -103,7 +99,6 @@ const TMDBMoviePoster = React.memo(({ movie, className = "", alt }) => {
             setHasError(true);
         }
     }, [movie.tmdbId, movie.Title, fetchMoviePoster]);
-
 
     const createPlaceholderSVG = () => {
         const dominantColor = COMPLETE_MOVIE_DATA[movie.tmdbId]?.dominantColor || '#ca8a04';
@@ -130,7 +125,6 @@ const TMDBMoviePoster = React.memo(({ movie, className = "", alt }) => {
         `)}`;
     };
 
-
     return (
         <div className={`relative ${className}`}>
             {isLoading && (
@@ -151,10 +145,12 @@ const TMDBMoviePoster = React.memo(({ movie, className = "", alt }) => {
                 </div>
             )}
             
-            <img 
-                src={posterUrl || createPlaceholderSVG()} 
-                alt={alt || `${movie.Title} (${movie.Year}) - Movie Poster`} 
-                className={`w-full h-full object-cover rounded-xl transition-all duration-500 ${isLoading ? 'opacity-0' : 'opacity-100'}`} 
+            <Image
+                src={posterUrl || createPlaceholderSVG()}
+                alt={alt || `${movie.Title} (${movie.Year}) - Movie Poster`}
+                width={400}
+                height={600}
+                className={`w-full h-full object-cover rounded-xl transition-all duration-500 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
                 loading="lazy"
             />
             
@@ -175,8 +171,6 @@ const TMDBMoviePoster = React.memo(({ movie, className = "", alt }) => {
     );
 });
 
-
 TMDBMoviePoster.displayName = 'TMDBMoviePoster';
-
 
 export default TMDBMoviePoster;

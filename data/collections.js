@@ -310,6 +310,100 @@ export const COLLECTIONS = {
     }
   },
 
+
+
+
+
+// 🦢 MOVIES LIKE BLACK SWAN COLLECTION
+'movies-like-black-swan': {
+  slug: 'movies-like-black-swan',
+  title: 'Movies Like Black Swan',
+  subtitle: 'Psychological Descent & Artistic Horror Masterpieces',
+  description: 'Haunting psychological thrillers exploring artistic obsession, identity fragmentation, and the dark side of perfection—like Darren Aronofsky\'s visceral masterpiece.',
+  longDescription: 'Experience cinema\'s most unsettling explorations of artistic ambition and psychological breakdown. From ballet dancers to jazz musicians, these films plunge into the abyss where dedication becomes obsession, reality fractures, and the pursuit of perfection demands a terrifying price. Each story maps the disintegration of identity under pressure.',
+  
+  emoji: '🦢',
+  theme: 'purple',
+  primaryColor: '#9333ea',
+  secondaryColor: '#7c3aed',
+  accentColor: '#6d28d9',
+  gradientFrom: 'from-purple-700',
+  gradientTo: 'to-purple-600',
+  category: 'black-swan',
+  tags: ['psychological horror', 'artistic obsession', 'identity crisis', 'descent into madness', 'performance art', 'body horror'],
+  
+  metaTitle: '10 Movies Like Black Swan (2025) | Psychological Descent Cinema | Filmiway',
+  metaDescription: 'Discover 10 haunting films like Black Swan exploring artistic obsession and psychological breakdown—from Perfect Blue to The Piano Teacher. Masterpieces of identity horror ranked by intensity.',
+  metaKeywords: 'movies like black swan, psychological horror films, artistic obsession movies, darren aronofsky, perfect blue, whiplash, suspiria, the red shoes, mulholland drive, the piano teacher',
+  
+  stats: {
+    totalMovies: 10,
+    averageRating: 8.0,
+    totalWatchtime: '20 hours 45 minutes',
+    averagePsychologicalIntensity: 92.5,
+    mostIntense: 'Black Swan (98/100)',
+    newestMovie: 'Pearl (2022)',
+    oldestMovie: 'The Red Shoes (1948)'
+  },
+  
+  movies: [
+    'tt0156887',  // ✅ Rank 1: Perfect Blue (1997) - Anime masterpiece of identity horror
+    'tt2582802',  // ✅ Rank 2: Whiplash (2014) - Jazz drummer's obsessive pursuit
+    'tt1034415',  // ✅ Rank 3: Suspiria (2018) - Ballet academy witchcraft horror
+    'tt0040725',  // ✅ Rank 4: The Red Shoes (1948) - Classic ballet obsession
+    'tt1125849',  // ✅ Rank 5: The Wrestler (2008) - Aronofsky's physical sacrifice
+    'tt0166924',  // ✅ Rank 6: Mulholland Drive (2001) - Lynchian identity fracture
+    'tt0254686',  // ✅ Rank 7: The Piano Teacher (2001) - Haneke's psychological control
+    'tt2562232',  // ✅ Rank 8: Birdman (2014) - Actor's ego collapse
+    'tt0180093',  // ✅ Rank 9: Requiem for a Dream (2000) - Aronofsky's addiction descent
+    'tt2872718'   // ✅ Rank 10: Nightcrawler (2014) - Media obsession thriller
+  ],
+  
+  badges: [
+    { label: 'Psychological Descent', desc: 'Identity fragmentation & madness' },
+    { label: 'Artistic Obsession', desc: 'Perfection at a terrifying cost' },
+    { label: 'Award-Winning', desc: 'Critically acclaimed masterpieces' }
+  ],
+  
+  featured: {
+    hero: {
+      title: 'Black Swan',
+      subtitle: 'The Ultimate Psychological Descent',
+      description: 'Darren Aronofsky\'s haunting masterpiece: a ballet dancer\'s obsessive pursuit of perfection leads to a terrifying psychological breakdown where reality and nightmare merge.',
+      poster: 'https://image.tmdb.org/t/p/w500/2TeJfUZMGolE6jI4mc7EBWkWhqL.jpg',
+      backdrop: 'https://image.tmdb.org/t/p/w1280/path-to-backdrop.jpg',
+      psychologicalIntensity: 98
+    }
+  },
+  
+  relatedCollections: [
+    'best-psychological-thriller-movies',
+    'movies-like-shutter-island',
+    'best-crime-thriller-movies'
+  ],
+  
+  seo: {
+    title: '10 Movies Like Black Swan (2025) | Psychological Descent Cinema | Filmiway',
+    description: 'Explore the definitive ranking of films like Black Swan—from Perfect Blue to The Piano Teacher. Experience cinema\'s most haunting explorations of artistic obsession and psychological breakdown.',
+    keywords: 'movies like black swan, psychological horror, artistic obsession films, darren aronofsky movies, perfect blue, whiplash, suspiria, mulholland drive, the piano teacher, birdman, requiem for a dream',
+    canonicalUrl: 'https://filmiway.com/collection/movies-like-black-swan',
+    ogImage: 'https://filmiway.com/images/black-swan-movies-collection-og.jpg',
+    structuredData: {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      name: 'Movies Like Black Swan',
+      description: 'Expert-curated list of the best psychological horror films like Black Swan ranked by psychological intensity and artistic obsession themes',
+      numberOfItems: 10
+    }
+  }
+},
+
+
+
+
+
+
+
   'movies-like-oldboy': {
   slug: 'movies-like-oldboy',
   title: 'Movies Like Oldboy',

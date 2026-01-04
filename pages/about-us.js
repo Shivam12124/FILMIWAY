@@ -17,6 +17,7 @@ import {
   Target,
   Zap,
 } from "lucide-react";
+import Image from "next/image";
 
 const FilmReel = () => (
   <div className="flex justify-center my-10 select-none">
@@ -117,14 +118,18 @@ export default function AboutUs() {
         {/* Navigation Header */}
        <nav className="fixed top-0 w-full z-50 bg-black/95 backdrop-blur-md border-b border-gray-800">
   <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-    <Link href="/" aria-label="Homepage">
-      <img 
-        src="/filmiway-logo.svg" 
-        alt="Filmiway Logo" 
-        className="w-40 h-28 sm:w-48 sm:h-32 object-contain hover:scale-105 transition-transform duration-300" 
-        draggable={false} 
-      />
-    </Link>
+   <Link href="/" aria-label="Homepage">
+  <Image
+    src="/filmiway-logo.svg"
+    alt="Filmiway Logo"
+    width={192}      // approx Tailwind w-40
+    height={112}     // approx Tailwind h-28
+    className="w-40 h-28 sm:w-48 sm:h-32 object-contain hover:scale-105 transition-transform duration-300"
+    draggable={false}
+    priority
+  />
+</Link>
+
     <Link 
       href="/" 
       className="px-8 py-3 rounded-full bg-yellow-400 text-black font-semibold hover:bg-yellow-500 transition shadow-lg"

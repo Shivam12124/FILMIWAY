@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Head from 'next/head';
 import Link from 'next/link';
 import { Search, Brain, Mountain, Film, ChevronDown, Sparkles, Plus, ArrowRight, Star, Clock, Eye, Scale, DollarSign, Shield } from 'lucide-react';
+import Image from 'next/image';
 
 
 
@@ -118,6 +119,18 @@ const CollectionsHub = () => {
     movieCount: '10',
     rating: '8.5',
     directLink: '/collection/movies-like-parasite',
+    hasSubCollections: false
+},
+
+{
+    id: 'black-swan',
+    title: 'Movies Like Black Swan',
+    description: 'Psychological horror exploring artistic obsession, identity fragmentation, and the dark side of perfection',
+    icon: Brain,
+    gradient: 'from-purple-600 to-pink-800',
+    movieCount: '10',
+    rating: '8.2',
+    directLink: '/collection/movies-like-black-swan',
     hasSubCollections: false
 },
 
@@ -305,14 +318,18 @@ const CollectionsHub = () => {
                     <div className="container mx-auto px-4 sm:px-6">
                         <div className="flex items-center justify-between h-16 sm:h-20">
                             <Link href="/" className="flex items-center">
-                                <div className="w-48 h-16 sm:w-60 sm:h-24 flex items-center">
-                                    <img
-                                        src="/filmiway-logo.svg"
-                                        alt="Filmiway"
-                                        className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
-                                        draggable={false}
-                                    />
-                                </div>
+                               <div className="w-48 h-16 sm:w-60 sm:h-24 flex items-center">
+    <Image
+        src="/filmiway-logo.svg"
+        alt="Filmiway"
+        width={240}
+        height={96}
+        className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
+        draggable={false}
+        priority
+    />
+</div>
+
                             </Link>
                             <Link href="/">
                                 <button className="text-sm sm:text-base text-gray-300 hover:text-yellow-400 transition-colors px-4 py-2 rounded-lg border border-gray-700/50 hover:border-yellow-400/50">
@@ -441,15 +458,18 @@ const CollectionsHub = () => {
                                                             className="group/sub block"
                                                         >
                                                             <div className="bg-gray-900/80 border border-gray-800/50 rounded-xl overflow-hidden hover:border-yellow-400/50 transition-all duration-300">
-                                                                <div className="aspect-[2/3] w-full overflow-hidden">
-                                                                    <img
-                                                                        src={subCollection.poster}
-                                                                        alt={subCollection.title}
-                                                                        className="w-full h-full object-cover group-hover/sub:scale-105 transition-transform duration-300"
-                                                                        loading="lazy"
-                                                                        draggable={false}
-                                                                    />
-                                                                </div>
+<div className="aspect-[2/3] w-full overflow-hidden">
+    <Image
+        src={subCollection.poster}
+        alt={subCollection.title}
+        width={500}
+        height={750}
+        className="w-full h-full object-cover group-hover/sub:scale-105 transition-transform duration-300"
+        loading="lazy"
+        draggable={false}
+    />
+</div>
+
                                                                 <div className="p-4">
                                                                     <h3 className="text-base sm:text-lg font-semibold text-white mb-1 group-hover/sub:text-yellow-400 transition-colors line-clamp-2">
                                                                         {subCollection.title}

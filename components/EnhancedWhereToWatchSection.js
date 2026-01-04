@@ -1,6 +1,9 @@
+// components/EnhancedWhereToWatchSection.js
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, Globe, ExternalLink, Loader, MapPin, ChevronDown, ChevronUp } from 'lucide-react';
+import Image from 'next/image';
+
 
 // 🎨 UNIFIED COLOR SYSTEM
 const COLORS = {
@@ -351,16 +354,20 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
           e.currentTarget.style.boxShadow = 'none';
         }}
       >
-        {logoUrl && (
-          <img
-            src={logoUrl}
-            alt={provider.provider_name}
-            className="w-8 h-8 xs:w-9 xs:h-9 sm:w-10 sm:h-10 object-contain rounded"
-            onError={(e) => {
-              e.target.style.display = 'none';
-            }}
-          />
-        )}
+{logoUrl && (
+  <Image
+    src={logoUrl}
+    alt={provider.provider_name}
+    width={40}
+    height={40}
+    className="w-8 h-8 xs:w-9 xs:h-9 sm:w-10 sm:h-10 object-contain rounded"
+    loading="lazy"
+    onError={(e) => {
+      // hide the logo if it fails to load
+      e.target.style.display = 'none';
+    }}
+  />
+)}
 
         <div className="text-center w-full min-h-[32px] flex flex-col justify-center">
           <div className="text-xs font-medium truncate w-full px-1" style={{ color: COLORS.textSecondary }}>
