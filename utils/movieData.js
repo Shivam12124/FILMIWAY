@@ -166,131 +166,199 @@ export const FALLBACK_POSTERS = {
 
 // ✅ COMPLETE MOVIE DATA - ALL 21 MOVIES WITH FULL METADATA
 export const COMPLETE_MOVIE_DATA = {
-    // MIND-BENDING MOVIES (KEEP EXACTLY AS IS)
+// MIND-BENDING MOVIES (UNIVERSALLY STANDARDIZED INTENSITY) ✅
+
+
+    // 1. Primer (2004) - Intellectual Peak
     14337: {
-        mindBendingIndex: 95, complexityLevel: "EXTREME", dominantColor: "#1e3a8a", rating: 6.9, criticsScore: 77, audienceScore: 73, director: "Shane Carruth", cast: ["Shane Carruth", "David Sullivan", "Casey Gooden"], boxOffice: "$424,760", budget: "$7,000", 
+        mindBendingIndex: 98, complexityLevel: "EXTREME", dominantColor: "#1e3a8a", 
+        rating: 6.9, criticsScore: 73, audienceScore: 79, director: "Shane Carruth", 
+        cast: ["Shane Carruth", "David Sullivan"], boxOffice: "$424,760", budget: "$7,000", 
         dna: { "Sci-Fi": 75, "Thriller": 15, "Drama": 10 }, 
-        scenes: [{ time: 10, intensity: 35, label: "Discovery", color: "#1e3a8a" }, { time: 25, intensity: 60, label: "First Loop", color: "#1d4ed8" }, { time: 40, intensity: 75, label: "Exploitation", color: "#2563eb" }, { time: 55, intensity: 90, label: "Paradox", color: "#3b82f6" }, { time: 70, intensity: 100, label: "Chaos", color: "#60a5fa" }], 
-        synopsis: "Four friends accidentally discover a way to travel back in time, leading to increasingly complex moral and temporal dilemmas in this ultra-low budget masterpiece.", 
-        themes: ["Time Travel", "Friendship", "Moral Ambiguity", "Scientific Ethics"], 
-        awards: ["Sundance Film Festival Winner", "Alfred P. Sloan Prize"],
-        seoDescription: "Like Inception, Primer plays with time and reality in complex layers that require multiple viewings to fully understand.",
-        intensityPeak: "The narrative intensity peaks at 70 minutes when temporal chaos erupts and multiple timelines collide.",
-        genreComposition: "This film is predominantly Sci-Fi at 75%, with thriller elements at 15% and drama at 10%, creating a unique blend of scientific complexity and emotional tension."
+        scenes: [
+            { time: 10, intensity: 30, label: "The Discovery", color: "#1e3a8a" }, 
+            { time: 25, intensity: 45, label: "Temporal Loop", color: "#1d4ed8" }, 
+            { time: 40, intensity: 55, label: "Paradox Logic", color: "#2563eb" }, 
+            { time: 55, intensity: 75, label: "The Failsafe", color: "#3b82f6" }, 
+            { time: 70, intensity: 88, label: "Timeline Collapse", color: "#60a5fa" }
+        ], 
+        synopsis: "Two engineers accidentally build a device in their garage that allows them to travel back in time. What begins as a profitable experiment rapidly fractures into a paranoid nightmare of multiple timelines and betrayal. Widely cited as the most scientifically dense and logically complex time-travel film ever made, it demands total focus to solve its impossible puzzle.", 
+        themes: ["Temporal Logic", "Scientific Ethics", "Betrayal", "Solipsism"],
+        awards: ["Sundance Grand Jury Prize"],
+        seoDescription: "The gold standard for time-travel logic. Like Inception, it requires multiple viewings to untangle its nested timelines."
     },
+
+    // 2. Synecdoche, New York (2008) - Psychological Peak
     4960: {
-        mindBendingIndex: 92, complexityLevel: "EXTREME", dominantColor: "#7c2d12", rating: 7.5, criticsScore: 85, audienceScore: 69, director: "Charlie Kaufman", cast: ["Philip Seymour Hoffman", "Samantha Morton", "Michelle Williams"], boxOffice: "$4.4 million", budget: "$20 million", 
+        mindBendingIndex: 95, complexityLevel: "EXTREME", dominantColor: "#7c2d12", 
+        rating: 7.5, criticsScore: 83, audienceScore: 84, director: "Charlie Kaufman", 
+        cast: ["Philip Seymour Hoffman", "Samantha Morton"], boxOffice: "$4.4 million", budget: "$20 million", 
         dna: { "Drama": 60, "Comedy": 25, "Fantasy": 15 }, 
-        scenes: [{ time: 15, intensity: 25, label: "The Grant", color: "#7c2d12" }, { time: 40, intensity: 50, label: "Construction", color: "#a16207" }, { time: 70, intensity: 75, label: "Reality Blurs", color: "#ca8a04" }, { time: 100, intensity: 90, label: "Infinite Recursion", color: "#eab308" }, { time: 120, intensity: 95, label: "Final Truth", color: "#facc15" }], 
-        synopsis: "A theater director creates a life-size replica of New York inside a warehouse, blurring the lines between art and reality in Kaufman's surreal masterpiece.", 
-        themes: ["Art vs Reality", "Death", "Identity", "Creative Process"], 
-        awards: ["Palme d'Or Nomination", "Best Original Screenplay Nomination"],
-        seoDescription: "Like Inception's layered dreams, Synecdoche New York creates nested realities within theatrical productions.",
-        intensityPeak: "The film reaches maximum intensity at 120 minutes when the final truth about reality and identity is revealed.",
-        genreComposition: "Primarily a drama at 60%, enhanced by dark comedy at 25% and fantasy elements at 15% that blur the boundaries between performance and life."
+        scenes: [
+            { time: 15, intensity: 25, label: "The Grant", color: "#7c2d12" }, 
+            { time: 40, intensity: 50, label: "The Warehouse", color: "#a16207" }, 
+            { time: 70, intensity: 65, label: "Reality Recursion", color: "#ca8a04" }, 
+            { time: 100, intensity: 82, label: "Identity Loss", color: "#eab308" }, 
+            { time: 124, intensity: 94, label: "The Final Instruction", color: "#facc15" }
+        ], 
+        synopsis: "A theater director attempts to create a life-size replica of New York inside a massive warehouse. As the play mimics his real life with frightening precision, actors start playing actors playing actors, until the distinction between life and performance vanishes. A surreal odyssey that explores the infinite layers of human existence and the terrifying blur between art and mortality.", 
+        themes: ["Recursive Reality", "Mortality", "Artistic Obsession", "Identity"],
+        awards: ["Independent Spirit Award"],
+        seoDescription: "A meta-masterpiece. If you loved Inception's nested dreams, this offers a nested reality on a staggering, cosmic scale."
     },
+
+    // 3. Mulholland Drive (2001) - Subconscious Peak
     1018: {
-        mindBendingIndex: 94, complexityLevel: "EXTREME", dominantColor: "#701a75", rating: 7.9, criticsScore: 85, audienceScore: 82, director: "David Lynch", cast: ["Naomi Watts", "Laura Harring", "Justin Theroux"], boxOffice: "$20.1 million", budget: "$15 million", 
+        mindBendingIndex: 96, complexityLevel: "EXTREME", dominantColor: "#701a75", 
+        rating: 7.9, criticsScore: 85, audienceScore: 82, director: "David Lynch", 
+        cast: ["Naomi Watts", "Laura Harring"], boxOffice: "$20.1 million", budget: "$15 million", 
         dna: { "Mystery": 50, "Drama": 30, "Thriller": 20 }, 
-        scenes: [{ time: 20, intensity: 40, label: "The Accident", color: "#701a75" }, { time: 60, intensity: 65, label: "Hollywood Dreams", color: "#86198f" }, { time: 90, intensity: 75, label: "Club Silencio", color: "#a21caf" }, { time: 120, intensity: 90, label: "Blue Box", color: "#c026d3" }, { time: 140, intensity: 95, label: "Reality Shift", color: "#d946ef" }], 
-        synopsis: "Lynch's surreal exploration of Hollywood dreams and nightmares follows two women searching for truth in a world where reality constantly shifts.", 
-        themes: ["Dreams vs Reality", "Hollywood", "Identity", "Lesbian Romance"], 
-        awards: ["Palme d'Or Winner", "Best Director Cannes"],
-        seoDescription: "Like Inception's dream layers, Mulholland Drive weaves between dreams and reality in Lynch's signature surreal style.",
-        intensityPeak: "The narrative reaches its climax at 140 minutes when reality dramatically shifts and the true story is revealed.",
-        genreComposition: "A mystery at its core with 50%, enriched by dramatic elements at 30% and thriller tension at 20%, creating Lynch's trademark atmospheric confusion."
+        scenes: [
+            { time: 20, intensity: 40, label: "The Accident", color: "#701a75" }, 
+            { time: 60, intensity: 55, label: "Betty's Audition", color: "#86198f" }, 
+            { time: 105, intensity: 85, label: "Club Silencio", color: "#a21caf" }, 
+            { time: 120, intensity: 98, label: "The Blue Box", color: "#c026d3" }, 
+            { time: 140, intensity: 92, label: "Reality Awakening", color: "#d946ef" }
+        ], 
+        synopsis: "A dark-haired woman is left with amnesia after a car crash on Mulholland Drive. She wanders into the apartment of a perky aspiring actress, and together they descend into the neon-lit shadows of Hollywood to find her identity. David Lynch shatters the dream of fame to reveal a tragic reality of obsession and rejection in cinema's most famous mind-bender.", 
+        themes: ["Dream Logic", "Hollywood Noir", "Identity Fragmentation", "Guilt"]
     },
+
+    // 4. Predestination (2014) - Paradox Peak
     206487: {
-        mindBendingIndex: 89, complexityLevel: "EXTREME", dominantColor: "#0f172a", rating: 7.4, criticsScore: 84, audienceScore: 85, director: "Michael & Peter Spierig", cast: ["Ethan Hawke", "Sarah Snook", "Noah Taylor"], boxOffice: "$5.1 million", budget: "$5 million", 
+        mindBendingIndex: 90, complexityLevel: "EXTREME", dominantColor: "#0f172a", 
+        rating: 7.4, criticsScore: 84, audienceScore: 85, director: "The Spierig Brothers", 
+        cast: ["Ethan Hawke", "Sarah Snook"], boxOffice: "$5.1 million", budget: "$5 million", 
         dna: { "Sci-Fi": 60, "Thriller": 35, "Action": 5 }, 
-        scenes: [{ time: 10, intensity: 65, label: "The Hunt", color: "#0f172a" }, { time: 30, intensity: 35, label: "The Story", color: "#1e293b" }, { time: 60, intensity: 80, label: "Time Jump", color: "#334155" }, { time: 75, intensity: 95, label: "The Loop", color: "#475569" }, { time: 90, intensity: 100, label: "Identity", color: "#64748b" }], 
-        synopsis: "A temporal agent's final assignment becomes a mind-bending journey through identity, love, and predestination in this perfectly crafted time-travel thriller.", 
-        themes: ["Predestination", "Gender Identity", "Time Travel", "Self-Sacrifice"], 
-        awards: ["AACTA Best Screenplay", "Saturn Award Nomination"],
-        seoDescription: "Like Inception's complex plot structure, Predestination creates an intricate temporal puzzle with shocking revelations.",
-        intensityPeak: "The film peaks at 90 minutes when the protagonist's true identity is revealed in a mind-bending twist.",
-        genreComposition: "Primarily Sci-Fi at 60% with strong thriller elements at 35% and minimal action at 5%, focusing on intellectual complexity over spectacle."
+        scenes: [
+            { time: 10, intensity: 40, label: "The Bombing", color: "#0f172a" }, 
+            { time: 40, intensity: 55, label: "The Bar Story", color: "#1e293b" }, 
+            { time: 65, intensity: 75, label: "Timeline Jump", color: "#334155" }, 
+            { time: 85, intensity: 94, label: "The Reveal", color: "#475569" }, 
+            { time: 94, intensity: 97, label: "Self-Origin", color: "#64748b" }
+        ], 
+        synopsis: "A temporal agent travels through time to prevent a series of mass bombings. On his final assignment, he must recruit his younger self to ensure his own survival. This film constructs a perfectly closed temporal loop where fate, parenthood, and identity are all revealed to be one impossible existence. A puzzle-box movie where every piece fits with surgical precision.", 
+        themes: ["Predestination", "Causality Paradox", "Fate", "Identity Transfer"]
     },
+
+    // 5. Coherence (2013) - Paranoia Peak
     220289: {
-        mindBendingIndex: 78, complexityLevel: "HIGH", dominantColor: "#166534", rating: 7.2, criticsScore: 88, audienceScore: 85, director: "James Ward Byrkit", cast: ["Emily Baldoni", "Maury Sterling", "Nicholas Brendon"], boxOffice: "$102,617", budget: "$50,000", 
+        mindBendingIndex: 82, complexityLevel: "HIGH", dominantColor: "#166534", 
+        rating: 7.2, criticsScore: 88, audienceScore: 85, director: "James Ward Byrkit", 
+        cast: ["Emily Baldoni", "Nicholas Brendon"], boxOffice: "$102,617", budget: "$50,000", 
         dna: { "Sci-Fi": 45, "Thriller": 35, "Drama": 20 }, 
-        scenes: [{ time: 8, intensity: 20, label: "Dinner Begins", color: "#166534" }, { time: 18, intensity: 45, label: "Comet Effect", color: "#16a34a" }, { time: 35, intensity: 65, label: "Other House", color: "#22c55e" }, { time: 55, intensity: 80, label: "Paranoia", color: "#4ade80" }, { time: 75, intensity: 95, label: "Reality Choice", color: "#86efac" }], 
-        synopsis: "A dinner party becomes a labyrinth of parallel realities when a comet passes overhead in this ingenious low-budget sci-fi thriller.", 
-        themes: ["Parallel Realities", "Choice", "Relationship Dynamics", "Quantum Physics"], 
-        awards: ["Fantastic Fest Winner", "Critics Choice Nomination"],
-        seoDescription: "Like Inception's multiple reality layers, Coherence explores parallel dimensions during a single dinner party.",
-        intensityPeak: "Maximum tension occurs at 75 minutes when characters must choose between different versions of reality.",
-        genreComposition: "Balanced between Sci-Fi at 45%, thriller tension at 35%, and interpersonal drama at 20%, creating intimate yet cosmic storytelling."
+        scenes: [
+            { time: 10, intensity: 20, label: "The Comet", color: "#166534" }, 
+            { time: 25, intensity: 50, label: "The Dark Zone", color: "#16a34a" }, 
+            { time: 45, intensity: 70, label: "The Other House", color: "#22c55e" }, 
+            { time: 65, intensity: 88, label: "Multi-Reality Paranoia", color: "#4ade80" }, 
+            { time: 85, intensity: 95, label: "The Best Reality", color: "#86efac" }
+        ], 
+        synopsis: "During a dinner party, a comet passes overhead, causing reality to split into multiple parallel dimensions. The guests realize that every time they leave the house, they might return to a slightly different version of their lives. A terrifying exploration of quantum decoherence and the dark choices we make to find a better reality.", 
+        themes: ["Quantum Physics", "Parallel Realities", "Paranoia", "Choice"]
     },
+
+    // 6. Donnie Darko (2001) - Cult Mystery Peak
     141: {
-        mindBendingIndex: 85, complexityLevel: "HIGH", dominantColor: "#9a3412", rating: 8.0, criticsScore: 85, audienceScore: 87, director: "Richard Kelly", cast: ["Jake Gyllenhaal", "Jena Malone", "Drew Barrymore"], boxOffice: "$7.5 million", budget: "$4.5 million", 
+        mindBendingIndex: 88, complexityLevel: "HIGH", dominantColor: "#1e293b", 
+        rating: 8.0, criticsScore: 85, audienceScore: 87, director: "Richard Kelly", 
+        cast: ["Jake Gyllenhaal", "Maggie Gyllenhaal"], boxOffice: "$7.5 million", budget: "$4.5 million", 
         dna: { "Sci-Fi": 40, "Drama": 35, "Thriller": 25 }, 
-        scenes: [{ time: 8, intensity: 50, label: "The Engine", color: "#9a3412" }, { time: 25, intensity: 60, label: "Frank", color: "#c2410c" }, { time: 80, intensity: 70, label: "School Flood", color: "#ea580c" }, { time: 105, intensity: 85, label: "Death", color: "#f97316" }, { time: 118, intensity: 90, label: "The Loop", color: "#fb923c" }], 
-        synopsis: "A troubled teenager is guided by a mysterious figure through a complex tale of time travel, destiny, and sacrifice in Kelly's cult classic.", 
-        themes: ["Time Travel", "Destiny", "Adolescence", "Mental Health"], 
-        awards: ["Teen Choice Award", "Cult Classic Status"],
-        seoDescription: "Like Inception's reality manipulation, Donnie Darko blends time travel with psychological complexity in a cult masterpiece.",
-        intensityPeak: "The story culminates at 118 minutes when the time loop closes and Donnie makes his ultimate sacrifice.",
-        genreComposition: "Evenly balanced with Sci-Fi elements at 40%, emotional drama at 35%, and psychological thriller aspects at 25%."
+        scenes: [
+            { time: 10, intensity: 50, label: "Frank's Warning", color: "#1e293b" }, 
+            { time: 40, intensity: 65, label: "Tangent Universe", color: "#334155" }, 
+            { time: 80, intensity: 75, label: "Prophecy", color: "#475569" }, 
+            { time: 100, intensity: 85, label: "Cellar Door", color: "#64748b" }, 
+            { time: 113, intensity: 92, label: "The Loop Closes", color: "#94a3b8" }
+        ], 
+        synopsis: "After escaping a freak accident, a troubled teenager is plagued by visions of a giant rabbit named Frank who tells him the world will end in 28 days. Guided by a divine prophecy, Donnie must navigate a 'Tangent Universe' that threatens to destroy reality itself. A moody, atmospheric blend of time-travel lore and high school angst.", 
+        themes: ["Determinism", "Mental Health", "Sacrifice", "Time Loops"]
     },
+
+    // 7. Enemy (2013) - Surreal Duality Peak
     181886: {
-        mindBendingIndex: 82, complexityLevel: "HIGH", dominantColor: "#7c2d12", rating: 6.9, criticsScore: 75, audienceScore: 70, director: "Denis Villeneuve", cast: ["Jake Gyllenhaal", "Mélanie Laurent", "Sarah Gadon"], boxOffice: "$3.4 million", budget: "$9 million", 
+        mindBendingIndex: 85, complexityLevel: "HIGH", dominantColor: "#854d0e", 
+        rating: 6.9, criticsScore: 75, audienceScore: 70, director: "Denis Villeneuve", 
+        cast: ["Jake Gyllenhaal", "Sarah Gadon"], boxOffice: "$3.4 million", budget: "$9 million", 
         dna: { "Thriller": 70, "Mystery": 20, "Drama": 10 }, 
-        scenes: [{ time: 18, intensity: 35, label: "Discovery", color: "#7c2d12" }, { time: 45, intensity: 65, label: "First Contact", color: "#a16207" }, { time: 70, intensity: 80, label: "Obsession", color: "#ca8a04" }, { time: 88, intensity: 95, label: "Truth", color: "#eab308" }], 
-        synopsis: "Villeneuve's psychological thriller explores identity and obsession as a man discovers his exact double in this Kafkaesque nightmare.", 
-        themes: ["Duality", "Identity Crisis", "Obsession", "Subconscious"], 
-        awards: ["Toronto International Film Festival", "Genie Award Winner"],
-        seoDescription: "Like Inception's exploration of the subconscious, Enemy delves into psychological duality and identity confusion.",
-        intensityPeak: "The film reaches its disturbing climax at 88 minutes when the horrifying truth about identity is unveiled.",
-        genreComposition: "Dominated by psychological thriller elements at 70%, with mystery components at 20% and dramatic undertones at 10%."
+        scenes: [
+            { time: 15, intensity: 35, label: "The Rental", color: "#854d0e" }, 
+            { time: 40, intensity: 60, label: "The Meeting", color: "#a16207" }, 
+            { time: 60, intensity: 75, label: "Identity Theft", color: "#ca8a04" }, 
+            { time: 80, intensity: 85, label: "The Accident", color: "#eab308" }, 
+            { time: 90, intensity: 96, label: "The Symbolic Reveal", color: "#facc15" }
+        ], 
+        synopsis: "A mild-mannered history professor discovers his exact physical double working as a bit-part actor in a movie. His obsession with his doppelgänger leads to a dark, claustrophobic exchange of lives that explores subconscious fear and infidelity. Villeneuve’s Kafkaesque nightmare ends with one of the most jarring, debated final shots in history.", 
+        themes: ["Duality", "Subconscious", "Infidelity", "Control"]
     },
+
+    // 8. The Fountain (2006) - Emotional Odyssey Peak
     1381: {
-        mindBendingIndex: 87, complexityLevel: "HIGH", dominantColor: "#581c87", rating: 7.2, criticsScore: 69, audienceScore: 75, director: "Darren Aronofsky", cast: ["Hugh Jackman", "Rachel Weisz", "Ellen Burstyn"], boxOffice: "$16 million", budget: "$35 million", 
+        mindBendingIndex: 87, complexityLevel: "HIGH", dominantColor: "#4c1d95", 
+        rating: 7.2, criticsScore: 68, audienceScore: 75, director: "Darren Aronofsky", 
+        cast: ["Hugh Jackman", "Rachel Weisz"], boxOffice: "$16 million", budget: "$35 million", 
         dna: { "Drama": 50, "Sci-Fi": 30, "Romance": 20 }, 
-        scenes: [{ time: 15, intensity: 45, label: "The Quest", color: "#581c87" }, { time: 35, intensity: 40, label: "Modern Love", color: "#7c3aed" }, { time: 55, intensity: 65, label: "Future Journey", color: "#8b5cf6" }, { time: 75, intensity: 85, label: "Convergence", color: "#a78bfa" }, { time: 90, intensity: 80, label: "Acceptance", color: "#c4b5fd" }], 
-        synopsis: "Aronofsky's ambitious meditation on love, death, and immortality spans three timelines in this visually stunning philosophical epic.", 
-        themes: ["Immortality", "Love", "Death", "Spiritual Journey"], 
-        awards: ["Venice Film Festival", "Visual Effects Society Award"],
-        seoDescription: "Like Inception's multiple timeline structure, The Fountain weaves three interconnected stories across different eras.",
-        intensityPeak: "Emotional intensity peaks at 75 minutes when all three timelines converge in a spectacular climax.",
-        genreComposition: "Primarily a drama at 50%, elevated by Sci-Fi concepts at 30% and romantic elements at 20%, creating Aronofsky's signature philosophical blend."
+        scenes: [
+            { time: 15, intensity: 45, label: "Xibalba", color: "#4c1d95" }, 
+            { time: 35, intensity: 55, label: "The Inquisitor", color: "#5b21b6" }, 
+            { time: 60, intensity: 75, label: "Convergence", color: "#6d28d9" }, 
+            { time: 80, intensity: 90, label: "Death is the Road", color: "#7c3aed" }, 
+            { time: 96, intensity: 95, label: "Supernova Acceptance", color: "#8b5cf6" }
+        ], 
+        synopsis: "A man travels through three timelines—the 16th century, the present day, and the deep future—in a desperate quest to find a cure for his dying wife. Spanning a thousand years, this visually breathtaking film is a meditation on love, rebirth, and the human struggle to accept mortality as a part of life.", 
+        themes: ["Eternal Love", "Mortality", "Rebirth", "Spiritual Acceptance"]
     },
+
+    // 9. Mr. Nobody (2009) - Quantum Choice Peak
     31011: {
-        mindBendingIndex: 93, complexityLevel: "EXTREME", dominantColor: "#be185d", rating: 7.8, criticsScore: 86, audienceScore: 81, director: "Jaco Van Dormael", cast: ["Jared Leto", "Sarah Polley", "Diane Kruger"], boxOffice: "$3.6 million", budget: "$47 million", 
+        mindBendingIndex: 94, complexityLevel: "EXTREME", dominantColor: "#9d174d", 
+        rating: 7.8, criticsScore: 68, audienceScore: 76, director: "Jaco Van Dormael", 
+        cast: ["Jared Leto", "Diane Kruger"], boxOffice: "$3.6 million", budget: "$47 million", 
         dna: { "Sci-Fi": 50, "Drama": 30, "Fantasy": 20 }, 
-        scenes: [{ time: 15, intensity: 30, label: "The Choice", color: "#be185d" }, { time: 45, intensity: 60, label: "Multiple Lives", color: "#db2777" }, { time: 85, intensity: 70, label: "Love Stories", color: "#ec4899" }, { time: 115, intensity: 85, label: "Old Age", color: "#f472b6" }, { time: 135, intensity: 95, label: "Big Bang", color: "#f9a8d4" }], 
-        synopsis: "Van Dormael's ambitious exploration of choice and possibility follows the last mortal human through infinite potential lives in this visually stunning epic.", 
-        themes: ["Choice", "Possibility", "Love", "Mortality"], 
-        awards: ["European Film Award", "Magritte Award Winner"],
-        seoDescription: "Like Inception's branching possibilities, Mr. Nobody explores infinite life paths and the consequences of choice.",
-        intensityPeak: "The narrative reaches cosmic proportions at 135 minutes with the Big Bang sequence revealing universal connections.",
-        genreComposition: "Half Sci-Fi at 50% exploring quantum possibilities, complemented by human drama at 30% and fantasy elements at 20%."
+        scenes: [
+            { time: 20, intensity: 30, label: "The Train Station", color: "#9d174d" }, 
+            { time: 50, intensity: 65, label: "Anna/Elise/Jean", color: "#be123c" }, 
+            { time: 90, intensity: 80, label: "Big Crunch", color: "#e11d48" }, 
+            { time: 120, intensity: 88, label: "Entropy", color: "#f43f5e" }, 
+            { time: 141, intensity: 94, label: "The Architect", color: "#fb7185" }
+        ], 
+        synopsis: "In the year 2092, the last mortal human on Earth recounts his life to a reporter. However, he describes multiple lives he could have led based on a single decision at a train station. Exploring the Butterfly Effect and quantum physics, this film proves that every choice is the right one, provided it is lived.", 
+        themes: ["Choice", "Butterfly Effect", "Entropy", "Parallel Universes"]
     },
+
+    // 10. Shutter Island (2010) - UNIVERSAL REFERENCE (Grip Peak 100)
     11324: {
-        mindBendingIndex: 75, complexityLevel: "MEDIUM", dominantColor: "#0c4a6e", rating: 8.2, criticsScore: 68, audienceScore: 89, director: "Martin Scorsese", cast: ["Leonardo DiCaprio", "Mark Ruffalo", "Ben Kingsley"], boxOffice: "$294.8 million", budget: "$80 million", 
+        mindBendingIndex: 80, complexityLevel: "MEDIUM", dominantColor: "#0c4a6e", 
+        rating: 8.2, criticsScore: 69, audienceScore: 77, director: "Martin Scorsese", 
+        cast: ["Leonardo DiCaprio", "Mark Ruffalo"], boxOffice: "$294.8 million", budget: "$80 million", 
         dna: { "Thriller": 60, "Mystery": 25, "Drama": 15 }, 
-        scenes: [{ time: 15, intensity: 35, label: "Arrival", color: "#0c4a6e" }, { time: 45, intensity: 55, label: "Investigation", color: "#0284c7" }, { time: 85, intensity: 70, label: "Ward C", color: "#0ea5e9" }, { time: 115, intensity: 85, label: "Flashbacks", color: "#38bdf8" }, { time: 135, intensity: 100, label: "The Truth", color: "#7dd3fc" }], 
-        synopsis: "Scorsese's psychological thriller traps two marshals on a mysterious island where nothing is as it seems in this masterful mind-bender.", 
-        themes: ["Reality vs Delusion", "Guilt", "Mental Health", "Truth"], 
-        awards: ["Teen Choice Award", "People's Choice Award"],
-        seoDescription: "Like Inception's questioning of reality, Shutter Island masterfully blurs the line between truth and delusion.",
-        intensityPeak: "The shocking truth is revealed at 135 minutes when reality and delusion collide in Scorsese's masterful climax.",
-        genreComposition: "Primarily a psychological thriller at 60%, enhanced by mystery elements at 25% and dramatic depth at 15%."
+        scenes: [
+            { time: 15, intensity: 35, label: "Arrival", color: "#0c4a6e" }, 
+            { time: 50, intensity: 60, label: "The Lighthouse", color: "#1e293b" }, 
+            { time: 90, intensity: 85, label: "Ward C", color: "#334155" }, 
+            { time: 120, intensity: 96, label: "The Truth", color: "#475569" }, 
+            { time: 138, intensity: 100, label: "Live as a Monster", color: "#64748b" }
+        ], 
+        synopsis: "A US Marshal investigates the disappearance of a patient from an island asylum. He soon suspects a massive medical conspiracy, only to realize that the truth is far more personal and devastating. Scorsese’s psychological masterwork is the ultimate study in repressed trauma and constructed reality.", 
+        themes: ["Grief", "Repression", "Sanity", "Constructed Truth"]
     },
+
+    // 11. The Usual Suspects (1995) - Narrative Misdirection Peak (Grip Peak 100)
     629: {
-        mindBendingIndex: 88, complexityLevel: "HIGH", dominantColor: "#dc2626", rating: 8.5, criticsScore: 88, audienceScore: 94, director: "Bryan Singer", cast: ["Kevin Spacey", "Gabriel Byrne", "Chazz Palminteri", "Stephen Baldwin", "Benicio Del Toro"], boxOffice: "$23.3 million", budget: "$6 million", 
+        mindBendingIndex: 88, complexityLevel: "HIGH", dominantColor: "#dc2626", 
+        rating: 8.5, criticsScore: 88, audienceScore: 94, director: "Bryan Singer", 
+        cast: ["Kevin Spacey", "Gabriel Byrne"], boxOffice: "$23.3 million", budget: "$6 million", 
         dna: { "Crime": 50, "Mystery": 35, "Thriller": 15 }, 
-        scenes: [{ time: 10, intensity: 30, label: "The Lineup", color: "#dc2626" }, { time: 25, intensity: 50, label: "The Job", color: "#ef4444" }, { time: 60, intensity: 70, label: "Keaton's Plan", color: "#f87171" }, { time: 85, intensity: 85, label: "The Reveal", color: "#fca5a5" }, { time: 103, intensity: 95, label: "Keyser Söze", color: "#fecaca" }], 
-        synopsis: "A sole survivor tells feds about the supposed mastermind behind a pier massacre. But who is Keyser Söze? Singer's neo-noir thriller delivers one of cinema's greatest plot twists.", 
-        themes: ["Deception", "Identity", "Criminal Psychology", "Unreliable Narrator"], 
-        awards: ["Academy Award Best Supporting Actor", "Academy Award Best Original Screenplay", "BAFTA Best Editing"],
-        seoDescription: "Like Inception's layered reality, The Usual Suspects masterfully constructs an intricate web of deception and misdirection.",
-        intensityPeak: "The film's legendary twist is revealed at 103 minutes when the true identity of Keyser Söze becomes devastatingly clear.",
-        genreComposition: "A crime thriller at its core with 50%, enhanced by mystery elements at 35% and psychological thriller tension at 15%, creating a perfect storm of deception."
-    },
-    
-   
-    
+        scenes: [
+            { time: 10, intensity: 30, label: "The Lineup", color: "#dc2626" }, 
+            { time: 35, intensity: 55, label: "The Heist", color: "#ef4444" }, 
+            { time: 65, intensity: 70, label: "The Boat massacre", color: "#f87171" }, 
+            { time: 90, intensity: 88, label: "The Story Folds", color: "#fca5a5" }, 
+            { time: 103, intensity: 100, label: "Keyser Söze", color: "#fecaca" }
+        ], 
+        synopsis: "Following a bloody massacre on a ship, the sole survivor tells the feds about a legendary criminal mastermind. Through an intricate web of stories, the film constructs a labyrinth of deception that shatters in its final seconds. A film that redefined the 'unreliable narrator' for a generation.", 
+        themes: ["Deception", "Criminal Mythos", "Psychological Manipulation", "Identity"]
+    }
 };
 
 

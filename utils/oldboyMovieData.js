@@ -55,175 +55,196 @@ export const FALLBACK_POSTERS = {
     50475: "https://image.tmdb.org/t/p/original/h9p7nhUT3yWOiI9e1C7I9r8qf3k.jpg",
     146233: "https://image.tmdb.org/t/p/original/A1XHZ1nZrAvzf6ZQHDxTu5GYGvN.jpg"
 };
+// utils/oldboyMoviesData.js - VENGEANCE COLLECTION DATA ✅
+
 export const COMPLETE_MOVIE_DATA = {
-   49797: createMovieData({
+    // 1. I Saw the Devil (2010)
+    49797: createMovieData({
         classWarfareIndex: 20, complexityLevel: "EXTREME", dominantColor: "#991b1b",
         rating: 8.0, criticsScore: 82, audienceScore: 80,
         director: "Kim Jee-woon", cast: ["Lee Byung-hun", "Choi Min-sik"],
         boxOffice: "$12.9 million", budget: "$6 million",
-        dna: { Thriller: 45, Action: 35, Horror: 20 },
+        dna: { "Thriller": 45, "Action": 35, "Horror": 20 },
         scenes: [
-            { time: 10, intensity: 80, label: "The Promise", color: "#991b1b" },
-            { time: 45, intensity: 65, label: "Catch & Release", color: "#b91c1c" },
-            { time: 90, intensity: 85, label: "The Greenhouse", color: "#dc2626" },
-            { time: 125, intensity: 90, label: "Surrender", color: "#ef4444" },
-            { time: 140, intensity: 100, label: "Total Hollow", color: "#f87171" }
+            { time: 10, intensity: 80, label: "The Promise", color: "#0f172a" },
+            { time: 45, intensity: 65, label: "Catch & Release", color: "#f59e0b" },
+            { time: 90, intensity: 88, label: "The Greenhouse", color: "#991b1b" },
+            { time: 125, intensity: 92, label: "Surrender", color: "#0f172a" },
+            { time: 140, intensity: 100, label: "Total Hollow", color: "#dc2626" }
         ],
-        synopsis: "A secret agent tracks a serial killer who murdered his fiancée. He captures him, tortures him, and releases him repeatedly, blurring the line between justice and monster.",
-        themes: ["Obsession", "Revenge", "Moral Corruption", "Violence"],
+        synopsis: "A secret agent descends into a dark abyss of madness after his fiancée is murdered by a psychopathic serial killer. He chooses not to kill the monster immediately, but to capture, torture, and release him in a relentless cycle. This is a visceral masterpiece that explores the devastating truth: when you hunt a monster through pure vengeance, you become the very nightmare you seek to destroy.",
+        themes: ["Obsession", "Revenge", "Moral Corruption"],
         awards: ["Asian Film Awards", "Blue Dragon Winner"]
     }),
+
+    // 2. Sympathy for Mr. Vengeance (2002)
     4689: createMovieData({
         classWarfareIndex: 95, complexityLevel: "HIGH", dominantColor: "#115e59",
         rating: 7.5, criticsScore: 73, audienceScore: 71,
         director: "Park Chan-wook", cast: ["Song Kang-ho", "Shin Ha-kyun"],
         boxOffice: "$2 million", budget: "$4 million",
-        dna: { Drama: 55, Thriller: 30, Action: 15 },
+        dna: { "Drama": 50, "Thriller": 30, "Crime": 20 },
         scenes: [
-            { time: 15, intensity: 45, label: "Desperation", color: "#115e59" },
-            { time: 40, intensity: 70, label: "The Kidnapping", color: "#0f766e" },
-            { time: 80, intensity: 90, label: "Riverbed Tragedy", color: "#14b8a6" },
-            { time: 100, intensity: 85, label: "Electrocution", color: "#2dd4bf" },
-            { time: 120, intensity: 95, label: "Anarchy", color: "#5eead4" }
+            { time: 15, intensity: 45, label: "Desperation", color: "#dc2626" },
+            { time: 40, intensity: 65, label: "The Kidnapping", color: "#1d1fb9ff" },
+            { time: 80, intensity: 88, label: "Riverbed Tragedy", color: "#dc2626" },
+            { time: 100, intensity: 82, label: "Electrocution", color: "#0f172a" },
+            { time: 120, intensity: 94, label: "Anarchy", color: "#1d1fb9ff" }
         ],
-        synopsis: "A deaf-mute worker kidnaps his boss's daughter to pay for his sister's kidney transplant. The plan goes disastrously wrong, triggering a chain of vengeance.",
-        themes: ["Class Desperation", "Tragedy", "Fate", "Cycle of Violence"],
+        synopsis: "A deaf-mute worker’s simple attempt to save his sister's life through a desperate kidnapping plan spirals into a catastrophic chain of mutual destruction. As the first entry in Park Chan-wook's Vengeance Trilogy, this film strips away the glamour of revenge to reveal the raw, mundane, and inevitable tragedy of the 'eye for an eye' philosophy.",
+        themes: ["Class Desperation", "Tragedy", "Cycle of Violence"],
         awards: ["Fantasia Film Festival"]
     }),
+
+    // 3. Lady Vengeance (2005)
     4550: createMovieData({
         classWarfareIndex: 50, complexityLevel: "HIGH", dominantColor: '#831843',
         rating: 7.6, criticsScore: 77, audienceScore: 75,
         director: 'Park Chan-wook', cast: ['Lee Young-ae', 'Choi Min-sik'],
         boxOffice: '$23 million', budget: '$4.5 million',
-        dna: { Psychological: 50, Drama: 35, Action: 15 },
+        dna: { "Psychological": 50, "Drama": 35, "Thriller": 15 },
         scenes: [
-            { time: 15, intensity: 40, label: 'The Saint', color: '#831843' },
-            { time: 50, intensity: 60, label: 'Assembly', color: '#9d174d' },
-            { time: 85, intensity: 75, label: 'The Capture', color: '#be185d' },
-            { time: 105, intensity: 95, label: 'Group Justice', color: '#db2777' },
-            { time: 115, intensity: 50, label: 'White Tofu', color: '#f472b6' }
+            { time: 15, intensity: 40, label: 'The Saint', color: '#9333ea' },
+            { time: 50, intensity: 60, label: 'Assembly', color: '#dc2626' },
+            { time: 85, intensity: 75, label: 'The Capture', color: '#9333ea' },
+            { time: 105, intensity: 96, label: 'Group Justice', color: '#dc2626' },
+            { time: 115, intensity: 50, label: 'White Tofu', color: '#dc2626' }
         ],
-        synopsis: 'After 13 years of wrongful imprisonment, a woman seeks a calculated revenge on the man who framed her. The final, most stylish entry in the Vengeance Trilogy.',
-        themes: ['Redemption', 'Maternal Vengeance', 'Justice', 'Sacrifice'],
+        synopsis: "After 13 years of wrongful imprisonment, a woman seeks a poetic and calculated retribution against the teacher who framed her. The final, most visually stunning entry in the Vengeance Trilogy replaces masculine rage with a sophisticated, maternal pursuit of justice that challenges the very idea of redemption.",
+        themes: ['Redemption', 'Maternal Vengeance', 'Justice'],
         awards: ['Venice Film Festival']
     }),
+
+    // 4. The Man from Nowhere (2010)
     51608: createMovieData({
         classWarfareIndex: 70, complexityLevel: "MEDIUM", dominantColor: '#1e1b4b',
         rating: 7.7, criticsScore: 79, audienceScore: 82,
         director: 'Lee Jeong-beom', cast: ['Won Bin', 'Kim Sae-ron'],
         boxOffice: '$42 million', budget: '$6 million',
-        dna: { Action: 60, Drama: 25, Thriller: 15 },
+        dna: { "Action": 60, "Drama": 25, "Thriller": 15 },
         scenes: [
-            { time: 20, intensity: 55, label: 'The Pawnshop', color: '#1e1b4b' },
-            { time: 45, intensity: 80, label: 'Escape', color: '#312e81' },
-            { time: 75, intensity: 85, label: 'The Club', color: '#4338ca' },
-            { time: 95, intensity: 98, label: 'Knife Fight', color: '#6366f1' },
-            { time: 115, intensity: 65, label: 'The Hug', color: '#818cf8' }
+            { time: 20, intensity: 55, label: 'The Pawnshop', color: '#dc2626' },
+            { time: 45, intensity: 80, label: 'Awakening', color: '#f59e0b' },
+            { time: 75, intensity: 85, label: 'The Club', color: '#0f172a' },
+            { time: 95, intensity: 98, label: 'Knife Fight', color: '#f59e0b' },
+            { time: 115, intensity: 65, label: 'The Hug', color: '#dc2626' }
         ],
-        synopsis: 'A quiet pawnshop keeper with a violent past takes on a human trafficking ring to save a young girl who is his only friend.',
-        themes: ['Protection', 'Isolation', 'One-Man Army', 'Redemption'],
+        synopsis: "A quiet pawnshop keeper with a mysterious past is forced out of isolation when a young girl—his only friend—is taken by a brutal human trafficking ring. Watch a one-man army dismantle a criminal empire with clinical, bone-crunching efficiency in this high-octane action thriller.",
+        themes: ['Protection', 'Isolation', 'One-Man Army'],
         awards: ['Grand Bell Awards']
     }),
+
+    // 5. The Chaser (2008)
     13855: createMovieData({
         classWarfareIndex: 60, complexityLevel: "HIGH", dominantColor: '#3f3f46',
         rating: 7.6, criticsScore: 76, audienceScore: 78,
         director: 'Na Hong-jin', cast: ['Kim Yoon-seok', 'Ha Jung-woo'],
         boxOffice: '$35 million', budget: '$4 million',
-        dna: { Thriller: 50, Crime: 35, Psychological: 15 },
+        dna: { "Thriller": 50, "Crime": 35, "Psychological": 15 },
         scenes: [
-            { time: 20, intensity: 60, label: 'The Crash', color: '#3f3f46' },
-            { time: 50, intensity: 75, label: 'Deadlock', color: '#52525b' },
-            { time: 80, intensity: 90, label: 'Escape Attempt', color: '#71717a' },
-            { time: 100, intensity: 100, label: 'The Supermarket', color: '#a1a1aa' },
-            { time: 120, intensity: 85, label: 'The Aquarium', color: '#d4d4d8' }
+            { time: 20, intensity: 60, label: 'The Crash', color: '#0f172a' },
+            { time: 50, intensity: 75, label: 'Deadlock', color: '#1d1fb9ff' },
+            { time: 80, intensity: 88, label: 'Escape Attempt', color: '#9333ea' },
+            { time: 100, intensity: 98, label: 'The Supermarket', color: '#0f172a' },
+            { time: 120, intensity: 85, label: 'The Aquarium', color: '#1d1fb9ff' }
         ],
-        synopsis: 'A disgraced ex-detective turned pimp hunts a serial killer when his girls start disappearing. A race against time that exposes police incompetence.',
-        themes: ['Institutional Failure', 'Hunt', 'Serial Killer', 'Moral Ambiguity'],
+        synopsis: "An ex-detective turned pimp hunts a serial killer when his girls start disappearing. As the police get bogged down in bureaucracy, he must race against time to find the killer's lair. A gritty masterpiece of suspense that exposes the raw desperation of those living in the shadows.",
+        themes: ['Institutional Failure', 'Hunt', 'Serial Killer'],
         awards: ['Asian Film Awards']
     }),
+
+    // 6. A Bittersweet Life (2005)
     11344: createMovieData({
         classWarfareIndex: 55, complexityLevel: "MEDIUM", dominantColor: '#171717',
         rating: 7.5, criticsScore: 74, audienceScore: 76,
         director: 'Kim Jee-woon', cast: ['Lee Byung-hun', 'Shin Min-a'],
         boxOffice: '$10 million', budget: '$5 million',
-        dna: { Action: 50, Crime: 35, Drama: 15 },
+        dna: { "Action": 50, "Crime": 35, "Drama": 15 },
         scenes: [
-            { time: 15, intensity: 45, label: 'The Choice', color: '#000000' },
-            { time: 45, intensity: 80, label: 'Buried Alive', color: '#171717' },
-            { time: 75, intensity: 85, label: 'Resurrection', color: '#262626' },
-            { time: 100, intensity: 95, label: 'The Lounge', color: '#404040' },
-            { time: 115, intensity: 60, label: 'Sweet Dreams', color: '#525252' }
+            { time: 15, intensity: 45, label: 'The Choice', color: '#dc2626' },
+            { time: 45, intensity: 80, label: 'Buried Alive', color: '#1d1fb9ff' },
+            { time: 75, intensity: 85, label: 'Resurrection', color: '#f59e0b' },
+            { time: 100, intensity: 95, label: 'The Lounge', color: '#f59e0b' },
+            { time: 115, intensity: 60, label: 'Sweet Dreams', color: '#dc2626' }
         ],
-        synopsis: 'A high-ranking mobster is ordered to kill his boss’s cheating mistress. When he spares her, he triggers a war that destroys everything he built.',
-        themes: ['Loyalty', 'Betrayal', 'Identity', 'Pride'],
+        synopsis: "A loyal mob enforcer’s perfect life is destroyed by a single moment of mercy for his boss’s mistress. Cast out and left for dead, he embarks on a neon-drenched retaliatory strike that burns down everything he once served. A visual symphony of betrayal and pride.",
+        themes: ['Loyalty', 'Betrayal', 'Identity'],
         awards: ['Sitges Film Festival']
     }),
+
+    // 7. Incendies (2010)
     46738: createMovieData({
         classWarfareIndex: 85, complexityLevel: "EXTREME", dominantColor: '#ea580c',
         rating: 8.2, criticsScore: 85, audienceScore: 83,
         director: 'Denis Villeneuve', cast: ['Lubna Azabal', 'Mélissa Désormeaux-Poulin'],
         boxOffice: '$16 million', budget: '$6.8 million',
-        dna: { Drama: 60, Mystery: 30, Thriller: 10 },
+        dna: { "Drama": 60, "Mystery": 30, "Thriller": 10 },
         scenes: [
-            { time: 15, intensity: 40, label: 'The Testament', color: '#ea580c' },
-            { time: 60, intensity: 85, label: 'The Bus', color: '#c2410c' },
-            { time: 90, intensity: 75, label: 'Prisoner 72', color: '#9a3412' },
-            { time: 120, intensity: 100, label: 'The Math', color: '#7c2d12' },
-            { time: 130, intensity: 60, label: 'Silence', color: '#431407' }
+            { time: 15, intensity: 40, label: 'The Testament', color: '#dc2626' },
+            { time: 60, intensity: 85, label: 'The Bus', color: '#6b21a8' },
+            { time: 90, intensity: 75, label: 'Prisoner 72', color: '#9333ea' },
+            { time: 120, intensity: 100, label: 'The Math', color: '#6b21a8' },
+            { time: 130, intensity: 60, label: 'Silence', color: '#dc2626' }
         ],
-        synopsis: 'Twins travel to the Middle East to fulfill their mother\'s dying wish and uncover a horrifying family secret rooted in war and trauma.',
-        themes: ['Family Secrets', 'War', 'Forgiveness', 'Generational Trauma'],
+        synopsis: "A woman’s dying wish sends her twins on a journey to the Middle East to find the family they never knew. What they uncover is a devastating history forged in war, trauma, and a mind-bending truth that reframes their entire existence.",
+        themes: ['Family Secrets', 'War', 'Forgiveness'],
         awards: ['Oscar Nomination']
     }),
+
+    // 8. The Handmaiden (2016)
     290098: createMovieData({
         classWarfareIndex: 90, complexityLevel: "HIGH", dominantColor: '#be185d',
         rating: 8.1, criticsScore: 95, audienceScore: 89,
         director: 'Park Chan-wook', cast: ['Kim Min-hee', 'Kim Tae-ri'],
         boxOffice: '$38 million', budget: '$8 million',
-        dna: { Thriller: 40, Romance: 35, Drama: 25 },
+        dna: { "Thriller": 40, "Romance": 35, "Mystery": 25 },
         scenes: [
-            { time: 30, intensity: 50, label: 'The Trap', color: '#be185d' },
-            { time: 65, intensity: 75, label: 'The Hanging', color: '#db2777' },
-            { time: 95, intensity: 90, label: 'The Asylum', color: '#ec4899' },
-            { time: 120, intensity: 85, label: 'The Library', color: '#f472b6' },
-            { time: 140, intensity: 70, label: 'Liberation', color: '#f9a8d4' }
+            { time: 30, intensity: 50, label: 'The Trap', color: '#0f172a' },
+            { time: 65, intensity: 75, label: 'The Hanging', color: '#6b21a8' },
+            { time: 95, intensity: 85, label: 'The Asylum', color: '#9333ea' },
+            { time: 120, intensity: 90, label: 'The Library', color: '#6b21a8' },
+            { time: 140, intensity: 70, label: 'Liberation', color: '#ec4899' }
         ],
-        synopsis: 'A con man hires a pickpocket to serve a wealthy heiress as part of a plot to defraud her. A twisty game of deception where nothing is as it seems.',
-        themes: ['Deception', 'Colonialism', 'Female Power', 'Liberation'],
+        synopsis: "A con man hires a pickpocket to serve a wealthy Japanese heiress as part of an elaborate scheme to defraud her. However, as hidden desires surface, the con turns into a twisty game of psychological warfare where nothing is as it seems.",
+        themes: ['Deception', 'Colonialism', 'Female Power'],
         awards: ['BAFTA Winner']
     }),
+
+    // 9. No Mercy (2010)
     50475: createMovieData({
         classWarfareIndex: 82, complexityLevel: "HIGH", dominantColor: '#312e81',
         rating: 7.4, criticsScore: 72, audienceScore: 74,
         director: 'Kim Hyeong-jun', cast: ['Sol Kyung-gu', 'Ryoo Seung-bum'],
         boxOffice: '$7 million', budget: '$3 million',
-        dna: { Crime: 50, Thriller: 35, Mystery: 15 },
+        dna: { "Crime": 50, "Thriller": 35, "Mystery": 15 },
         scenes: [
-            { time: 15, intensity: 55, label: 'The Body', color: '#312e81' },
-            { time: 45, intensity: 75, label: 'Blackmail', color: '#3730a3' },
-            { time: 80, intensity: 85, label: 'Tampering', color: '#4338ca' },
-            { time: 100, intensity: 80, label: 'The Deal', color: '#4f46e5' },
-            { time: 115, intensity: 100, label: 'Devastation', color: '#6366f1' }
+            { time: 15, intensity: 55, label: 'The Body', color: '#1d1fb9ff' },
+            { time: 45, intensity: 75, label: 'Blackmail', color: '#0f172a' },
+            { time: 80, intensity: 85, label: 'Tampering', color: '#1d1fb9ff' },
+            { time: 100, intensity: 80, label: 'The Deal', color: '#6b21a8' },
+            { time: 115, intensity: 100, label: 'Devastation', color: '#dc2626' }
         ],
-        synopsis: 'A forensic pathologist is forced to tamper with evidence in a murder case to save his kidnapped daughter from an environmental terrorist.',
-        themes: ['Coercion', 'Ethics', 'Paternal Love', 'Revenge'],
+        synopsis: "A brilliant forensic pathologist is forced to tamper with evidence in a murder case to save his kidnapped daughter. As the police close in, he must navigate a web of blackmail and moral compromise that leads to a soul-crushing sacrifice.",
+        themes: ['Coercion', 'Ethics', 'Paternal Love'],
         awards: []
     }),
+
+    // 10. Prisoners (2013)
     146233: createMovieData({
         classWarfareIndex: 65, complexityLevel: "HIGH", dominantColor: '#525252',
         rating: 8.0, criticsScore: 81, audienceScore: 79,
         director: 'Denis Villeneuve', cast: ['Hugh Jackman', 'Jake Gyllenhaal'],
         boxOffice: '$122 million', budget: '$46 million',
-        dna: { Thriller: 50, Psychological: 35, Drama: 15 },
+        dna: { "Psychological": 50, "Thriller": 35, "Drama": 15 },
         scenes: [
-            { time: 20, intensity: 65, label: 'Vanished', color: '#525252' },
-            { time: 50, intensity: 85, label: 'The Hammer', color: '#737373' },
-            { time: 90, intensity: 75, label: 'The Maze', color: '#a3a3a3' },
-            { time: 130, intensity: 90, label: 'The Pit', color: '#d4d4d4' },
-            { time: 150, intensity: 95, label: 'The Whistle', color: '#e5e5e5' }
+            { time: 20, intensity: 65, label: 'Vanished', color: '#0f172a' },
+            { time: 50, intensity: 85, label: 'The Hammer', color: '#9333ea' },
+            { time: 90, intensity: 75, label: 'The Maze', color: '#6b21a8' },
+            { time: 130, intensity: 90, label: 'The Pit', color: '#9333ea' },
+            { time: 150, intensity: 98, label: 'The Whistle', color: '#dc2626' }
         ],
-        synopsis: 'When his daughter goes missing, a desperate father takes the law into his own hands, kidnapping the prime suspect while a detective hunts the real truth.',
-        themes: ['Vigilantism', 'Faith', 'Desperation', 'Moral Ambiguity'],
+        synopsis: "When his daughter disappears, a father takes the law into his own hands, kidnapping a suspect while a detective hunts the truth. This atmospheric masterpiece explores the thin, blood-soaked line between justice and primal vengeance.",
+        themes: ['Vigilantism', 'Faith', 'Desperation'],
         awards: ['Oscar Nomination']
     })
 };
