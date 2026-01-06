@@ -1,12 +1,10 @@
-// pages/collections.js - PROFESSIONAL CLEAN COLLECTIONS HUB WITH MYSTERY THRILLER
+// pages/collections.js - FIXED MIND-BENDING EXPANSION LOGIC ✅
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Head from 'next/head';
 import Link from 'next/link';
 import { Search, Brain, Mountain, Film, ChevronDown, Sparkles, Plus, ArrowRight, Star, Clock, Eye, Scale, DollarSign, Shield } from 'lucide-react';
 import Image from 'next/image';
-
-
 
 const CollectionsHub = () => {
     const [searchQuery, setSearchQuery] = useState('');
@@ -57,34 +55,28 @@ const CollectionsHub = () => {
             directLink: '/collection/best-survival-movies',
             hasSubCollections: false
         },
- {
-    id: 'oldboy',
-    title: 'Movies Like Oldboy',
-    description: 'Brutal revenge thrillers with shocking twists, twisted vengeance, and moral devastation',
-    icon: Shield,  // 🔪 Revenge/protection symbolism
-    gradient: 'from-red-700 to-rose-900',  // Dark crimson revenge gradient
-    movieCount: '10',
-    rating: '8.7',
-    directLink: '/collection/movies-like-oldboy',
-    hasSubCollections: false
-},
-
-
-{
-    id: 'donnie-darko',
-    title: 'Movies Like Donnie Darko',
-    description: 'Mind-bending time travel, reality-warping films with psychological complexity and existential twists',
-    icon: Clock,  // ⏰ Time/reality symbolism
-    gradient: 'from-purple-600 to-indigo-800',  // 🌀 Purple cosmic gradient
-    movieCount: '10',
-    rating: '8.6',
-    directLink: '/collection/movies-like-donnie-darko',
-    hasSubCollections: false
-},
-
-
-
-
+        {
+            id: 'oldboy',
+            title: 'Movies Like Oldboy',
+            description: 'Brutal revenge thrillers with shocking twists, twisted vengeance, and moral devastation',
+            icon: Shield,
+            gradient: 'from-red-700 to-rose-900',
+            movieCount: '10',
+            rating: '8.7',
+            directLink: '/collection/movies-like-oldboy',
+            hasSubCollections: false
+        },
+        {
+            id: 'donnie-darko',
+            title: 'Movies Like Donnie Darko',
+            description: 'Mind-bending time travel, reality-warping films with psychological complexity and existential twists',
+            icon: Clock,
+            gradient: 'from-purple-600 to-indigo-800',
+            movieCount: '10',
+            rating: '8.6',
+            directLink: '/collection/movies-like-donnie-darko',
+            hasSubCollections: false
+        },
         {
             id: 'interstellar',
             title: 'Movies Like Interstellar',
@@ -96,150 +88,127 @@ const CollectionsHub = () => {
             directLink: '/collection/movies-like-interstellar',
             hasSubCollections: false
         },
-
-
         {
             id: 'se7en',
             title: 'Movies Like Se7en',
             description: 'Dark, atmospheric crime thrillers with obsessed detectives and shocking psychological twists',
-            icon: Eye,  // 👁️ Using Eye icon (signifying investigation/witnessing horror)
-            gradient: 'from-amber-700 to-gray-900',  // 🟧🌑 Gritty Amber/Dark Gray gradient
+            icon: Eye,
+            gradient: 'from-amber-700 to-gray-900',
             movieCount: '10',
             rating: '8.8',
             directLink: '/collection/movies-like-se7en',
             hasSubCollections: false
         },
-
-{
-    id: 'parasite',
-    title: 'Movies Like Parasite',
-    description: 'Dark satires exposing class warfare, wealth disparity, and social injustice with thriller intensity',
-    icon: Scale,  // ⚖️ Balance/scales representing class divide
-    gradient: 'from-slate-700 to-gray-900',  // 🌑 Dark slate/gray (Parasite's aesthetic)
-    movieCount: '10',
-    rating: '8.5',
-    directLink: '/collection/movies-like-parasite',
-    hasSubCollections: false
-},
-
-{
-    id: 'black-swan',
-    title: 'Movies Like Black Swan',
-    description: 'Psychological horror exploring artistic obsession, identity fragmentation, and the dark side of perfection',
-    icon: Brain,
-    gradient: 'from-purple-600 to-pink-800',
-    movieCount: '10',
-    rating: '8.2',
-    directLink: '/collection/movies-like-black-swan',
-    hasSubCollections: false
-},
-
-
-{
-    id: 'matrix',
-    title: 'Movies Like The Matrix',
-    description: 'Cyberpunk masterpieces with simulated realities, digital consciousness, and reality-bending awakenings',
-    icon: Sparkles,  // ✨ Digital/matrix aesthetic
-    gradient: 'from-emerald-500 to-teal-600',  // ✅ MATRIX GREEN DIGITAL RAIN
-    movieCount: '10',
-    rating: '8.4',
-    directLink: '/collection/movies-like-the-matrix',
-    hasSubCollections: false
-},
-
-
-
-{
-  id: 'war-films',
-  title: 'Best War Films',
-  description: 'Brutally realistic war movies capturing combat, sacrifice, and the human cost of conflict',
-  icon: Shield, // 🛡 War / protection symbolism
-  gradient: 'from-red-600 to-amber-700', // Deep red/amber war tone
-  movieCount: '10',
-  rating: '9.0',
-  directLink: '/collection/best-war-films',
-  hasSubCollections: false
-},
-
-{
-    id: 'revenge',
-    title: 'Best Revenge Movies',
-    description: 'Brutal vengeance films exploring retribution, moral cost, and the devastating path of revenge',
-    icon: Shield,  // 🗡️ Using Shield icon (can change to another if preferred)
-    gradient: 'from-red-700 to-rose-900',  // Dark red/crimson gradient
-    movieCount: '10',
-    rating: '8.0',
-    directLink: '/collection/best-revenge-movies',
-    hasSubCollections: false
-},
-
-
         {
-            id: 'crime-thriller',  // ✅ CRIME THRILLER COLLECTION ADDED
+            id: 'parasite',
+            title: 'Movies Like Parasite',
+            description: 'Dark satires exposing class warfare, wealth disparity, and social injustice with thriller intensity',
+            icon: Scale,
+            gradient: 'from-slate-700 to-gray-900',
+            movieCount: '10',
+            rating: '8.5',
+            directLink: '/collection/movies-like-parasite',
+            hasSubCollections: false
+        },
+        {
+            id: 'black-swan',
+            title: 'Movies Like Black Swan',
+            description: 'Psychological horror exploring artistic obsession, identity fragmentation, and the dark side of perfection',
+            icon: Brain,
+            gradient: 'from-purple-600 to-pink-800',
+            movieCount: '10',
+            rating: '8.2',
+            directLink: '/collection/movies-like-black-swan',
+            hasSubCollections: false
+        },
+        {
+            id: 'matrix',
+            title: 'Movies Like The Matrix',
+            description: 'Cyberpunk masterpieces with simulated realities, digital consciousness, and reality-bending awakenings',
+            icon: Sparkles,
+            gradient: 'from-emerald-500 to-teal-600',
+            movieCount: '10',
+            rating: '8.4',
+            directLink: '/collection/movies-like-the-matrix',
+            hasSubCollections: false
+        },
+        {
+            id: 'war-films',
+            title: 'Best War Films',
+            description: 'Brutally realistic war movies capturing combat, sacrifice, and the human cost of conflict',
+            icon: Shield,
+            gradient: 'from-red-600 to-amber-700',
+            movieCount: '10',
+            rating: '9.0',
+            directLink: '/collection/best-war-films',
+            hasSubCollections: false
+        },
+        {
+            id: 'revenge',
+            title: 'Best Revenge Movies',
+            description: 'Brutal vengeance films exploring retribution, moral cost, and the devastating path of revenge',
+            icon: Shield,
+            gradient: 'from-red-700 to-rose-900',
+            movieCount: '10',
+            rating: '8.0',
+            directLink: '/collection/best-revenge-movies',
+            hasSubCollections: false
+        },
+        {
+            id: 'crime-thriller',
             title: 'Best Crime Thriller Movies',
             description: 'Gritty crime epics with moral complexity, brilliant heists, and law vs. lawlessness',
-            icon: Scale,  // ✅ USING SCALE ICON (JUSTICE/CRIME)
-            gradient: 'from-slate-600 to-gray-900',  // ✅ DARK SLATE/GRAY GRADIENT
+            icon: Scale,
+            gradient: 'from-slate-600 to-gray-900',
             movieCount: '10',
             rating: '8.9',
             directLink: '/collection/best-crime-thriller-movies',
             hasSubCollections: false
         },
-
-
-         {
-            id: 'heist-thriller',  // ✅ HEIST THRILLER COLLECTION ADDED
+        {
+            id: 'heist-thriller',
             title: 'Best Heist Thriller Movies',
             description: 'Masterful heist films with elaborate plans, high-stakes robberies, and criminal masterminds',
-            icon: DollarSign,  // ✅ USING DOLLARSIGN ICON (MONEY/HEIST)
-            gradient: 'from-amber-500 to-orange-700',  // ✅ GOLD/AMBER GRADIENT
+            icon: DollarSign,
+            gradient: 'from-amber-500 to-orange-700',
             movieCount: '10',
             rating: '8.7',
             directLink: '/collection/best-heist-thriller-movies',
             hasSubCollections: false
         },
-
-{
-    id: 'sci-fi',
-    title: 'Best Sci-Fi Movies',
-    description: 'Visionary science fiction films exploring humanity, technology, and the cosmos',
-    icon: Sparkles,  // ✅ USING SPARKLES ICON (FUTURISTIC/SCI-FI)
-    gradient: 'from-cyan-500 to-blue-700',  // ✅ CYAN/BLUE GRADIENT
-    movieCount: '10',
-    rating: '8.2',
-    directLink: '/collection/best-sci-fi-movies',  // ✅ FIXED SLUG
-    hasSubCollections: false
-},
-
-
-
-
         {
-    id: 'time-travel',
-    title: 'Best Time Travel Movies',
-    description: 'Mind-bending time travel films with paradoxes, causality loops, and temporal complexity',
-    icon: Clock,  // ✅ USING CLOCK ICON
-    gradient: 'from-blue-500 to-cyan-600',  // ✅ BLUE/CYAN GRADIENT
-    movieCount: '10',
-    rating: '8.1',
-    directLink: '/collection/best-time-travel-movies',
-    hasSubCollections: false
-},
-
-
-
+            id: 'sci-fi',
+            title: 'Best Sci-Fi Movies',
+            description: 'Visionary science fiction films exploring humanity, technology, and the cosmos',
+            icon: Sparkles,
+            gradient: 'from-cyan-500 to-blue-700',
+            movieCount: '10',
+            rating: '8.2',
+            directLink: '/collection/best-sci-fi-movies',
+            hasSubCollections: false
+        },
         {
-        id: 'psychological-thriller',  // Added psychological thriller collection
-        title: 'Best Psychological Thrillers',
-        description: 'Mind-bending narratives with intense psychological suspense and twists',
-        icon: Brain,
-        gradient: 'from-pink-600 to-red-700',
-        movieCount: '10',
-        rating: '8.7',
-        directLink: '/collection/best-psychological-thriller-movies',
-        hasSubCollections: false
-    },
-
+            id: 'time-travel',
+            title: 'Best Time Travel Movies',
+            description: 'Mind-bending time travel films with paradoxes, causality loops, and temporal complexity',
+            icon: Clock,
+            gradient: 'from-blue-500 to-cyan-600',
+            movieCount: '10',
+            rating: '8.1',
+            directLink: '/collection/best-time-travel-movies',
+            hasSubCollections: false
+        },
+        {
+            id: 'psychological-thriller',
+            title: 'Best Psychological Thrillers',
+            description: 'Mind-bending narratives with intense psychological suspense and twists',
+            icon: Brain,
+            gradient: 'from-pink-600 to-red-700',
+            movieCount: '10',
+            rating: '8.7',
+            directLink: '/collection/best-psychological-thriller-movies',
+            hasSubCollections: false
+        },
         {
             id: 'suspense-thriller',
             title: 'Best Suspense Thriller Movies',
@@ -251,22 +220,19 @@ const CollectionsHub = () => {
             directLink: '/collection/best-thriller-movies',
             hasSubCollections: false
         },
-
-           {
-    id: 'detective-thriller',
-    title: 'Best Detective Thriller Movies',
-    description: 'Gripping detective stories with intense investigations and suspenseful mysteries',
-    icon: Star,
-    gradient: 'from-blue-500 to-indigo-700',
-    movieCount: '10',
-    rating: '8.5',
-    directLink: '/collection/best-detective-thriller-movies',
-    hasSubCollections: false
-       },
-
-
         {
-            id: 'mystery-thriller',  // ✅ MYSTERY THRILLER COLLECTION ADDED
+            id: 'detective-thriller',
+            title: 'Best Detective Thriller Movies',
+            description: 'Gripping detective stories with intense investigations and suspenseful mysteries',
+            icon: Star,
+            gradient: 'from-blue-500 to-indigo-700',
+            movieCount: '10',
+            rating: '8.5',
+            directLink: '/collection/best-detective-thriller-movies',
+            hasSubCollections: false
+        },
+        {
+            id: 'mystery-thriller',
             title: 'Best Mystery Thriller Movies',
             description: 'Intricate detective mysteries with brilliant puzzle-solving and shocking reveals',
             icon: Eye,
@@ -300,12 +266,11 @@ const CollectionsHub = () => {
 
     return (
         <>
-                       <Head>
+            <Head>
                 <title>Movie Collections | Filmiway - Curated Film Lists</title>
                 <meta name="description" content="Explore expertly curated movie collections including mind-bending thrillers, survival films, mystery thrillers and more. Find your next favorite movie." />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
             </Head>
-
 
             <div className="min-h-screen bg-black text-white">
                 {/* Fixed Header */}
@@ -318,18 +283,17 @@ const CollectionsHub = () => {
                     <div className="container mx-auto px-4 sm:px-6">
                         <div className="flex items-center justify-between h-16 sm:h-20">
                             <Link href="/" className="flex items-center">
-                               <div className="w-48 h-16 sm:w-60 sm:h-24 flex items-center">
-    <Image
-        src="/filmiway-logo.svg"
-        alt="Filmiway"
-        width={240}
-        height={96}
-        className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
-        draggable={false}
-        priority
-    />
-</div>
-
+                                <div className="w-48 h-16 sm:w-60 sm:h-24 flex items-center">
+                                    <Image
+                                        src="/filmiway-logo.svg"
+                                        alt="Filmiway"
+                                        width={240}
+                                        height={96}
+                                        className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
+                                        draggable={false}
+                                        priority
+                                    />
+                                </div>
                             </Link>
                             <Link href="/">
                                 <button className="text-sm sm:text-base text-gray-300 hover:text-yellow-400 transition-colors px-4 py-2 rounded-lg border border-gray-700/50 hover:border-yellow-400/50">
@@ -339,7 +303,6 @@ const CollectionsHub = () => {
                         </div>
                     </div>
                 </motion.header>
-
 
                 {/* Main Content */}
                 <main className="pt-20 sm:pt-24 pb-16">
@@ -362,7 +325,6 @@ const CollectionsHub = () => {
                             </p>
                         </motion.div>
 
-
                         {/* Search Bar */}
                         <motion.div
                             className="max-w-2xl mx-auto mb-12"
@@ -382,117 +344,126 @@ const CollectionsHub = () => {
                             </div>
                         </motion.div>
 
-
                         {/* Collections Grid */}
                         <div className="space-y-6">
-                            {filteredCollections.map((collection, index) => (
-                                <motion.div
-                                    key={collection.id}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: 0.3 + index * 0.1, duration: 0.5 }}
-                                >
-                                  {/* ✅ WRAPPED IN LINK - GOOGLE CAN NOW SEE IT */}
-<Link href={collection.directLink || `#${collection.id}`}>
-    <div className="group relative bg-gradient-to-br from-gray-900 to-gray-900/50 border border-gray-800/50 rounded-2xl overflow-hidden hover:border-yellow-400/30 transition-all duration-300 cursor-pointer">
-        <div className="p-6 sm:p-8">
-            <div className="flex items-start justify-between gap-4">
-                <div className="flex-1">
-                    <div className="flex items-center gap-4 mb-3">
-                        <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br ${collection.gradient} flex items-center justify-center`}>
-                            {(() => {
-                                const IconComponent = collection.icon;
-                                return <IconComponent className="w-6 h-6 sm:w-7 sm:h-7 text-white" />;
-                            })()}
-                        </div>
-                        <div>
-                            <h2 className="text-xl sm:text-2xl font-semibold text-white group-hover:text-yellow-400 transition-colors">
-                                {collection.title}
-                            </h2>
-                            <p className="text-sm sm:text-base text-gray-400 mt-1">
-                                {collection.description}
-                            </p>
-                        </div>
-                    </div>
-                    <div className="flex items-center gap-4 mt-4">
-                        <div className="flex items-center gap-2 text-sm text-gray-400">
-                            <Film className="w-4 h-4 text-yellow-400" />
-                            <span>{collection.movieCount} Films</span>
-                        </div>
-                        <div className="flex items-center gap-2 text-sm text-gray-400">
-                            <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                            <span>{collection.rating}/10</span>
-                        </div>
-                    </div>
-                </div>
-                {collection.hasSubCollections && (
-                    <div className="flex-shrink-0">
-                        <ChevronDown
-                            className={`w-6 h-6 text-yellow-400 transition-transform duration-300 ${
-                                expandedCollection === collection.id ? 'rotate-180' : ''
-                            }`}
-                        />
-                    </div>
-                )}
-            </div>
-        </div>
-    </div>
-</Link>
+                            {filteredCollections.map((collection, index) => {
+                                // 🔥 LOGIC FIX: If it has sub-collections (Mind-Bending), use DIV + onClick. If not, use LINK.
+                                const CardContent = (
+                                    <div className={`group relative bg-gradient-to-br from-gray-900 to-gray-900/50 border border-gray-800/50 rounded-2xl overflow-hidden hover:border-yellow-400/30 transition-all duration-300 cursor-pointer ${collection.hasSubCollections ? 'hover:bg-gray-800/30' : ''}`}>
+                                        <div className="p-6 sm:p-8">
+                                            <div className="flex items-start justify-between gap-4">
+                                                <div className="flex-1">
+                                                    <div className="flex items-center gap-4 mb-3">
+                                                        <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br ${collection.gradient} flex items-center justify-center`}>
+                                                            {(() => {
+                                                                const IconComponent = collection.icon;
+                                                                return <IconComponent className="w-6 h-6 sm:w-7 sm:h-7 text-white" />;
+                                                            })()}
+                                                        </div>
+                                                        <div>
+                                                            <h2 className="text-xl sm:text-2xl font-semibold text-white group-hover:text-yellow-400 transition-colors">
+                                                                {collection.title}
+                                                            </h2>
+                                                            <p className="text-sm sm:text-base text-gray-400 mt-1">
+                                                                {collection.description}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div className="flex items-center gap-4 mt-4">
+                                                        <div className="flex items-center gap-2 text-sm text-gray-400">
+                                                            <Film className="w-4 h-4 text-yellow-400" />
+                                                            <span>{collection.movieCount} Films</span>
+                                                        </div>
+                                                        <div className="flex items-center gap-2 text-sm text-gray-400">
+                                                            <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                                                            <span>{collection.rating}/10</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {collection.hasSubCollections && (
+                                                    <div className="flex-shrink-0">
+                                                        <ChevronDown
+                                                            className={`w-6 h-6 text-yellow-400 transition-transform duration-300 ${
+                                                                expandedCollection === collection.id ? 'rotate-180' : ''
+                                                            }`}
+                                                        />
+                                                    </div>
+                                                )}
+                                            </div>
+                                        </div>
+                                    </div>
+                                );
 
+                                return (
+                                    <motion.div
+                                        key={collection.id}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: 0.3 + index * 0.1, duration: 0.5 }}
+                                    >
+                                        {/* 🔥 CONDITIONAL WRAPPING: Link for direct pages, Div with onClick for expandable hubs */}
+                                        {collection.hasSubCollections ? (
+                                            <div onClick={() => toggleExpand(collection.id)}>
+                                                {CardContent}
+                                            </div>
+                                        ) : (
+                                            <Link href={collection.directLink || '#'}>
+                                                {CardContent}
+                                            </Link>
+                                        )}
 
-                                    {/* Sub-Collections */}
-                                    <AnimatePresence>
-                                        {expandedCollection === collection.id && collection.hasSubCollections && (
-                                            <motion.div
-                                                initial={{ opacity: 0, height: 0 }}
-                                                animate={{ opacity: 1, height: 'auto' }}
-                                                exit={{ opacity: 0, height: 0 }}
-                                                transition={{ duration: 0.3 }}
-                                                className="mt-4"
-                                            >
-                                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                                                    {collection.subCollections.map((subCollection) => (
-                                                        <Link
-                                                            key={subCollection.slug}
-                                                            href={`/collection/${subCollection.slug}`}
-                                                            className="group/sub block"
-                                                        >
-                                                            <div className="bg-gray-900/80 border border-gray-800/50 rounded-xl overflow-hidden hover:border-yellow-400/50 transition-all duration-300">
-<div className="aspect-[2/3] w-full overflow-hidden">
-    <Image
-        src={subCollection.poster}
-        alt={subCollection.title}
-        width={500}
-        height={750}
-        className="w-full h-full object-cover group-hover/sub:scale-105 transition-transform duration-300"
-        loading="lazy"
-        draggable={false}
-    />
-</div>
-
-                                                                <div className="p-4">
-                                                                    <h3 className="text-base sm:text-lg font-semibold text-white mb-1 group-hover/sub:text-yellow-400 transition-colors line-clamp-2">
-                                                                        {subCollection.title}
-                                                                    </h3>
-                                                                    <p className="text-xs sm:text-sm text-gray-400 mb-3 line-clamp-2">
-                                                                        {subCollection.description}
-                                                                    </p>
-                                                                    <div className="flex items-center justify-between">
-                                                                        <span className="text-xs text-gray-500">{subCollection.count}</span>
-                                                                        <ArrowRight className="w-4 h-4 text-yellow-400 group-hover/sub:translate-x-1 transition-transform" />
+                                        {/* Sub-Collections */}
+                                        <AnimatePresence>
+                                            {expandedCollection === collection.id && collection.hasSubCollections && (
+                                                <motion.div
+                                                    initial={{ opacity: 0, height: 0 }}
+                                                    animate={{ opacity: 1, height: 'auto' }}
+                                                    exit={{ opacity: 0, height: 0 }}
+                                                    transition={{ duration: 0.3 }}
+                                                    className="mt-4"
+                                                >
+                                                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                                                        {collection.subCollections.map((subCollection) => (
+                                                            <Link
+                                                                key={subCollection.slug}
+                                                                href={`/collection/${subCollection.slug}`}
+                                                                className="group/sub block"
+                                                            >
+                                                                <div className="bg-gray-900/80 border border-gray-800/50 rounded-xl overflow-hidden hover:border-yellow-400/50 transition-all duration-300">
+                                                                    <div className="aspect-[2/3] w-full overflow-hidden">
+                                                                        <Image
+                                                                            src={subCollection.poster}
+                                                                            alt={subCollection.title}
+                                                                            width={500}
+                                                                            height={750}
+                                                                            className="w-full h-full object-cover group-hover/sub:scale-105 transition-transform duration-300"
+                                                                            loading="lazy"
+                                                                            draggable={false}
+                                                                        />
+                                                                    </div>
+                                                                    <div className="p-4">
+                                                                        <h3 className="text-base sm:text-lg font-semibold text-white mb-1 group-hover/sub:text-yellow-400 transition-colors line-clamp-2">
+                                                                            {subCollection.title}
+                                                                        </h3>
+                                                                        <p className="text-xs sm:text-sm text-gray-400 mb-3 line-clamp-2">
+                                                                            {subCollection.description}
+                                                                        </p>
+                                                                        <div className="flex items-center justify-between">
+                                                                            <span className="text-xs text-gray-500">{subCollection.count}</span>
+                                                                            <ArrowRight className="w-4 h-4 text-yellow-400 group-hover/sub:translate-x-1 transition-transform" />
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                        </Link>
-                                                    ))}
-                                                </div>
-                                            </motion.div>
-                                        )}
-                                    </AnimatePresence>
-                                </motion.div>
-                            ))}
+                                                            </Link>
+                                                        ))}
+                                                    </div>
+                                                </motion.div>
+                                            )}
+                                        </AnimatePresence>
+                                    </motion.div>
+                                );
+                            })}
                         </div>
-
 
                         {/* Coming Soon */}
                         <motion.div
@@ -523,6 +494,5 @@ const CollectionsHub = () => {
         </>
     );
 };
-
 
 export default CollectionsHub;
