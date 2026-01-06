@@ -15,7 +15,7 @@ export const generateMovieSlug = (title) => {
 // ✅ COMPLETE BLACK SWAN MOVIE SLUG MAPPING
 export const BLACK_SWAN_MOVIE_SLUGS = {
     // Rank 1: Perfect Blue
-    'tt0119994': 'perfect-blue',
+    'tt0156887': 'perfect-blue',
     
     // Rank 2: Whiplash
     'tt2582802': 'whiplash',
@@ -24,10 +24,10 @@ export const BLACK_SWAN_MOVIE_SLUGS = {
     'tt1034415': 'suspiria',
     
     // Rank 4: The Red Shoes
-    'tt0040563': 'the-red-shoes',
+    'ttt0040725': 'the-red-shoes',
     
     // Rank 5: The Wrestler
-    'tt1135089': 'the-wrestler',
+    'tt1125849': 'the-wrestler',
     
     // Rank 6: Mulholland Drive
     'tt0166924': 'mulholland-drive',
