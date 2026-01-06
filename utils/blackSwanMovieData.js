@@ -63,9 +63,12 @@ export const SENSITIVE_TIMELINES = {
     // 6. Mulholland Drive
     1018: { 
         scenes: [
-            { start: "1:38:45", end: "1:42:18", type: "Nudity", severity: "High" },
-            { start: "2:01:27", end: "2:02:59", type: "Nudity", severity: "High" }
-        ] 
+            { start: timeToSeconds("1:19:38"), end: timeToSeconds("1:20:02"), type: "Kissing" },
+            { start: timeToSeconds("1:38:45"), end: timeToSeconds("1:42:18"), type: "Nudity" },
+            { start: timeToSeconds("2:01:27"), end: timeToSeconds("2:02:59"), type: "Nudity " },
+            { start: timeToSeconds("2:04:36"), end: timeToSeconds("2:05:03"), type: "Kissing" },
+            { start: timeToSeconds("2:15:50"), end: timeToSeconds("2:15:58"), type: "Kissing" }
+        ]
     },
 
     // 7. The Piano Teacher
