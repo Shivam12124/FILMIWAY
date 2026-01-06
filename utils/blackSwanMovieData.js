@@ -31,7 +31,7 @@ const timeToSeconds = (timeStr) => {
 // ✅ UPDATED SENSITIVE TIMELINES (Sexual Content & Nudity ONLY - No Descriptions)
 export const SENSITIVE_TIMELINES = {
     // 1. Perfect Blue
-    13973: { 
+    10494: { 
         scenes: [
             { start: "0:33:20", end: "0:35:10", type: "Sexual Content", severity: "Extreme" },
             { start: "0:45:40", end: "0:48:00", type: "Nudity", severity: "High" }
@@ -42,17 +42,17 @@ export const SENSITIVE_TIMELINES = {
     244786: { scenes: [] },
 
     // 3. Suspiria
-    485975: { 
+    361292: { 
         scenes: [
             { start: "1:35:40", end: "1:37:15", type: "Nudity", severity: "High" }
         ] 
     },
 
     // 4. The Red Shoes (Clean)
-    41079: { scenes: [] },
+   19542: { scenes: [] },
 
     // 5. The Wrestler
-    12500: { 
+    12163: { 
         scenes: [
             { start: "0:20:22", end: "0:20:50", type: "Nudity", severity: "Moderate" },
             { start: "0:43:10", end: "0:44:10", type: "Nudity", severity: "Moderate" },
@@ -69,7 +69,7 @@ export const SENSITIVE_TIMELINES = {
     },
 
     // 7. The Piano Teacher
-    11252: { 
+   1791: { 
         scenes: [
             { start: "0:25:00", end: "0:27:50", type: "Nudity/Sexual Content", severity: "High" },
             { start: "0:52:00", end: "0:53:20", type: "Sexual Content", severity: "High" },
@@ -101,13 +101,13 @@ export const SENSITIVE_TIMELINES = {
 };
 
 export const FALLBACK_POSTERS = {
-    13973: "https://m.media-amazon.com/images/M/MV5BMTdiYmM3NGUtZTZlYS00ZjU2LWE5YmQtOWYxNjhhM2Y3MGY0XkEyXkFqcGdeQXVyNjQzNDI3NzI@._V1_SX500.jpg",
+    10494: "https://m.media-amazon.com/images/M/MV5BMTdiYmM3NGUtZTZlYS00ZjU2LWE5YmQtOWYxNjhhM2Y3MGY0XkEyXkFqcGdeQXVyNjQzNDI3NzI@._V1_SX500.jpg",
     244786: "https://m.media-amazon.com/images/M/MV5BOTA5NDZlZGUtMjAxOS00YTRkLTkwYmMtYWQ0NTEwZDZiZTUxXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX500.jpg",
-    485975: "https://m.media-amazon.com/images/M/MV5BMjQ2MTIyNjM2MF5BMl5BanBnXkFtZTgwNzgwNzE5NTM@._V1_SX500.jpg",
-    41079: "https://m.media-amazon.com/images/M/MV5BMTI5Nzk5NTAzMl5BMl5BanBnXkFtZTcwNjk4MTA0Nw@@._V1_SX500.jpg",
-    12500: "https://m.media-amazon.com/images/M/MV5BMTQ5MzcwOTI4NV5BMl5BanBnXkFtZTcwMTE4OTQwMg@@._V1_SX500.jpg",
+    361292: "https://m.media-amazon.com/images/M/MV5BMjQ2MTIyNjM2MF5BMl5BanBnXkFtZTgwNzgwNzE5NTM@._V1_SX500.jpg",
+   19542: "https://m.media-amazon.com/images/M/MV5BMTI5Nzk5NTAzMl5BMl5BanBnXkFtZTcwNjk4MTA0Nw@@._V1_SX500.jpg",
+    12163: "https://m.media-amazon.com/images/M/MV5BMTQ5MzcwOTI4NV5BMl5BanBnXkFtZTcwMTE4OTQwMg@@._V1_SX500.jpg",
     1018: "https://m.media-amazon.com/images/M/MV5BYzJjMTYyMjEtZDQ0My00N2EzLWE4NjQtZGIzZGE5YjYzNGRiXkEyXkFqcGdeQXVyNzQ1ODk3MTQ@._V1_SX500.jpg",
-    11252: "https://m.media-amazon.com/images/M/MV5BMTQ5NDk2NTg3MF5BMl5BanBnXkFtZTcwNTA5NDk2NA@@._V1_SX500.jpg",
+   1791: "https://m.media-amazon.com/images/M/MV5BMTQ5NDk2NTg3MF5BMl5BanBnXkFtZTcwNTA5NDk2NA@@._V1_SX500.jpg",
     194662: "https://m.media-amazon.com/images/M/MV5BODAzNDMxMzAxOV5BMl5BanBnXkFtZTgwMDMxMjA4MjE@._V1_SX500.jpg",
     641: "https://m.media-amazon.com/images/M/MV5BOTdiNzJlOWUtN2VlZS00MjE1LTkxN2QtN2Y3YjY3MDI5YmM4XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX500.jpg",
     242582: "https://m.media-amazon.com/images/M/MV5BNjkyMDQ1NTEwMl5BMl5BanBnXkFtZTgwNzQ4NDE5NTM@._V1_SX500.jpg"
@@ -118,7 +118,7 @@ const createMovieData = (data) => data;
 
 
 export const COMPLETE_MOVIE_DATA = {
-    13973: createMovieData({ 
+    10494: createMovieData({ 
         psychologicalIntensity: 95, artisticObsession: 98, identityHorror: 100,
         complexityLevel: "EXTREME", dominantColor: "#dc2626", rating: 8.0, 
         criticsScore: 67, audienceScore: 85, director: "Satoshi Kon", 
@@ -153,7 +153,7 @@ export const COMPLETE_MOVIE_DATA = {
         themes: ["Perfectionism", "Toxic Mentorship", "Artistic Sacrifice"],
         awards: ["Won 3 Academy Awards"]
     }),
-    485975: createMovieData({ 
+    361292: createMovieData({ 
         psychologicalIntensity: 88, artisticObsession: 90, identityHorror: 85,
         complexityLevel: "EXTREME", dominantColor: "#059669", rating: 6.7, 
         criticsScore: 64, audienceScore: 58, director: "Luca Guadagnino", 
@@ -169,7 +169,7 @@ export const COMPLETE_MOVIE_DATA = {
         synopsis: "Susie Bannion arrives at a world-renowned dance academy in 1970s Berlin, unaware that she is stepping into a coven of dark, ancient secrets. Under the hypnotic guidance of the artistic director, Susie’s dance becomes something more than art—it becomes a ritual. As students disappear and horrific 'injuries' occur that defy the laws of physics, the line between dance and witchcraft vanishes. This is a visceral, blood-chilling exploration of artistic possession and maternal power. By the time the final performance begins, you’ll realize that in this school, your body is no longer your own.",
         themes: ["Witchcraft", "Maternal Power", "Physical Brutality"]
     }),
-    41079: createMovieData({ 
+   19542: createMovieData({ 
         psychologicalIntensity: 75, artisticObsession: 88, identityHorror: 70,
         complexityLevel: "HIGH", dominantColor: "#7c2d12", rating: 8.1, 
         criticsScore: 95, audienceScore: 89, director: "Michael Powell", 
@@ -185,7 +185,7 @@ export const COMPLETE_MOVIE_DATA = {
         synopsis: "Victoria Page is a ballerina caught in a lethal tug-of-war between her heart and her art. Under the gaze of a director who believes a great artist must renounce all human emotion, she is propelled toward international stardom. But as the surreal ballet of 'The Red Shoes' begins to mirror her own life, Victoria finds that once you put on the shoes of obsession, you can never stop dancing. A lush, Technicolor nightmare that defines the tragic cost of aesthetic perfection, this film is the grandfather of the 'obsessed artist' genre, proving that the spotlight can be the most dangerous place on earth.",
         themes: ["Art vs Life", "Total Devotion", "Tragic Fate"]
     }),
-    12500: createMovieData({ 
+   12163: createMovieData({ 
         psychologicalIntensity: 85, artisticObsession: 90, identityHorror: 60,
         complexityLevel: "HIGH", dominantColor: "#15803d", rating: 7.9, 
         criticsScore: 98, audienceScore: 88, director: "Darren Aronofsky", 
@@ -217,7 +217,7 @@ export const COMPLETE_MOVIE_DATA = {
         synopsis: "A perky aspiring actress and a dark-haired woman with amnesia collide in the shadows of Hollywood. Armed with only a purse full of cash and a mysterious blue key, they embark on a search for identity that quickly devolves into a surreal nightmare. In David Lynch’s masterpiece, the 'dream' of fame is a thin veil for a reality of jealousy and rejection. As identities dissolve and characters shift, you’ll witness the psychological trauma of the failed artist in its purest, most terrifying form. Remember: it is all an illusion. Silencio.",
         themes: ["Identity Fracture", "Hollywood Underbelly", "Dream Logic"]
     }),
-    11252: createMovieData({ 
+   1791: createMovieData({ 
         psychologicalIntensity: 95, artisticObsession: 92, identityHorror: 80,
         complexityLevel: "HIGH", dominantColor: "#334155", rating: 7.5, 
         criticsScore: 74, audienceScore: 78, director: "Michael Haneke", 
@@ -284,13 +284,13 @@ export const COMPLETE_MOVIE_DATA = {
 };
 
 export const STRATEGIC_QUOTES = {
-    13973: "Who are you?",
+    10494: "Who are you?",
     244786: "There are no two words in the English language more harmful than 'good job'.",
-    485975: "Why is everyone so ready to think the worst is over?",
-    41079: "Why do you want to dance? Why do you want to live?",
-    12500: "The only place I get hurt is out there. The world don't give a sh*t about me.",
+    361292: "Why is everyone so ready to think the worst is over?",
+   19542: "Why do you want to dance? Why do you want to live?",
+    12163: "The only place I get hurt is out there. The world don't give a sh*t about me.",
     1018: "Silencio.",
-    11252: "I have no feelings. Get that into your head.",
+   1791: "I have no feelings. Get that into your head.",
     194662: "You are not your work.",
     641: "I'm gonna be on television.",
     242582: "I like to say that if you're seeing me, you're having the worst day of your life."
