@@ -1,34 +1,43 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // ❌ REMOVED: output: 'export' 
+  // (Deleting this line unlocks ISR, revalidate, and Image Optimization)
+
   // ✅ CORE SETTINGS
-  output: 'export',
   trailingSlash: false,
   reactStrictMode: false,
 
-  // ✅ IMAGE OPTIMIZATION
+  // ✅ IMAGE OPTIMIZATION (Enabled for SEO & Speed)
   images: {
-    unoptimized: true // Required for static export
+    // We allow Next.js to optimize images from these sources
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'image.tmdb.org',
+      },
+      {
+        protocol: 'https',
+        hostname: 'm.media-amazon.com',
+      },
+    ],
   },
 
   // ✅ ENVIRONMENT VARIABLES
-env: {
-  NEXT_PUBLIC_TMDB_API_KEY: process.env.NEXT_PUBLIC_TMDB_API_KEY,
-
-
+  env: {
+    NEXT_PUBLIC_TMDB_API_KEY: process.env.NEXT_PUBLIC_TMDB_API_KEY,
   },
 
   // ✅ PERFORMANCE SETTINGS
-  generateEtags: false,
+  // generateEtags: true is better for ISR caching
+  generateEtags: true, 
   poweredByHeader: false,
   compress: true,
 
-  // ✅ BUILD CACHE
+  // ✅ BUILD CACHE (Kept your settings)
   onDemandEntries: {
     maxInactiveAge: 60 * 1000,
     pagesBufferLength: 5,
   },
-
-  // ❌ DO NOT INCLUDE headers: async() {...} - IT DOESN'T WORK WITH output: 'export'!
 }
 
-module.exports = nextConfig
+module.exports = nextConfig;

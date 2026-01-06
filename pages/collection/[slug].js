@@ -825,7 +825,11 @@ const getLoaderContent = () => {
         title: "Loading Movies Like Donnie Darko",
         description: "Curating reality-warping time travel films with community reviews and ratings"
     };
-
+} else if (collection?.slug === 'movies-like-black-swan') { 
+    return {
+        title: "Loading Movies Like Black Swan",
+        description: "Curating films about perfectionism, identity collapse, and psychological obsession."
+    };
 
 
     } else if (collection?.slug === 'movies-like-parasite') { // ✅ NEW PARASITE LOADER
@@ -1818,55 +1822,55 @@ return (
                             {/* 🔥 FIXED FOR NEXT.JS 15 - WITH MATRIX, SE7EN & PARASITE COLLECTION URLS ✅ */}
                             <AnimatePresence mode="wait">
                                 {currentMovie && (
-                                    <Link
-                                        href={
-                                            collection.slug === 'movies-like-inception'
-                                                ? `/movies/like-inception/${currentMovie.imdbID}`
-                                                : collection.slug === 'movies-like-the-matrix'
-                                                ? `/movies/matrix/${currentMovie.imdbID}`
-                                                : collection.slug === 'movies-like-se7en'
-                                                ? `/movies/like-se7en/${currentMovie.imdbID}`
-                                                : collection.slug === 'movies-like-parasite' // ✅ NEW PARASITE LINK
-                                                ? `/movies/parasite/${currentMovie.imdbID}`
+<Link
+  href={
+    collection.slug === 'movies-like-inception'
+      ? `/movies/like-inception/${currentMovie.imdbID}`
+      : collection.slug === 'movies-like-the-matrix'
+      ? `/movies/matrix/${currentMovie.imdbID}`
+      : collection.slug === 'movies-like-se7en'
+      ? `/movies/like-se7en/${currentMovie.imdbID}`
+      : collection.slug === 'movies-like-parasite'
+      ? `/movies/parasite/${currentMovie.imdbID}`
 
-                                                : collection.slug === 'movies-like-oldboy'
-? `/movies/oldboy/${currentMovie.imdbID}`
-  
-               : collection.slug === 'movies-like-donnie-darko'
-? `/movies/donnie-darko/${currentMovie.imdbID}`
+      : collection.slug === 'movies-like-oldboy'
+      ? `/movies/oldboy/${currentMovie.imdbID}`
+      : collection.slug === 'movies-like-donnie-darko'
+      ? `/movies/donnie-darko/${currentMovie.imdbID}`
+      : collection.slug === 'movies-like-black-swan'
+      ? `/movies/black-swan/${currentMovie.imdbID}`
 
-            
-                                                : collection.slug === 'movies-like-interstellar'
-                                                ? `/movies/interstellar/${currentMovie.imdbID}`
-                                                : collection.slug === 'movies-like-memento'
-                                                ? `/movies/like-memento/${currentMovie.imdbID}`
-                                                : collection.slug === 'movies-like-shutter-island'
-                                                ? `/movies/like-shutter-island/${currentMovie.imdbID}`
-                                                : collection.slug === 'best-survival-movies'
-                                                ? `/movies/survival/${currentMovie.imdbID}`
-                                                : collection.slug === 'best-thriller-movies'
-                                                ? `/movies/thriller/${currentMovie.imdbID}`
-                                                : collection.slug === 'best-mystery-thriller-movies'
-                                                ? `/movies/mystery-thriller/${currentMovie.imdbID}`
-                                                : collection.slug === 'best-detective-thriller-movies'
-                                                ? `/movies/detective-thriller/${currentMovie.imdbID}`
-                                                : collection.slug === 'best-drama-movies-on-netflix'
-                                                ? `/movies/netflix/${currentMovie.imdbID}`
-                                                : collection.slug === 'best-psychological-thriller-movies'
-                                                ? `/movies/psych-thriller/${currentMovie.imdbID}`
-                                                : collection.slug === 'best-crime-thriller-movies'
-                                                ? `/movies/crime-thriller/${currentMovie.imdbID}`
-                                                : collection.slug === 'best-heist-thriller-movies'
-                                                ? `/movies/heist-thriller/${currentMovie.imdbID}`
-                                                : collection.slug === 'best-time-travel-movies'
-                                                ? `/movies/time-travel/${currentMovie.imdbID}`
-                                                : collection.slug === 'best-sci-fi-movies'
-                                                ? `/movies/sci-fi/${currentMovie.imdbID}`
-                                                : collection.slug === 'best-revenge-movies'
-                                                ? `/movies/revenge/${currentMovie.imdbID}`
-                                                : collection.slug === 'best-war-films'
-                                                ? `/movies/war-films/${currentMovie.imdbID}`
-                                                : `/movies/${currentMovie.imdbID}`
+      : collection.slug === 'movies-like-interstellar'
+      ? `/movies/interstellar/${currentMovie.imdbID}`
+      : collection.slug === 'movies-like-memento'
+      ? `/movies/like-memento/${currentMovie.imdbID}`
+      : collection.slug === 'movies-like-shutter-island'
+      ? `/movies/like-shutter-island/${currentMovie.imdbID}`
+      : collection.slug === 'best-survival-movies'
+      ? `/movies/survival/${currentMovie.imdbID}`
+      : collection.slug === 'best-thriller-movies'
+      ? `/movies/thriller/${currentMovie.imdbID}`
+      : collection.slug === 'best-mystery-thriller-movies'
+      ? `/movies/mystery-thriller/${currentMovie.imdbID}`
+      : collection.slug === 'best-detective-thriller-movies'
+      ? `/movies/detective-thriller/${currentMovie.imdbID}`
+      : collection.slug === 'best-drama-movies-on-netflix'
+      ? `/movies/netflix/${currentMovie.imdbID}`
+      : collection.slug === 'best-psychological-thriller-movies'
+      ? `/movies/psych-thriller/${currentMovie.imdbID}`
+      : collection.slug === 'best-crime-thriller-movies'
+      ? `/movies/crime-thriller/${currentMovie.imdbID}`
+      : collection.slug === 'best-heist-thriller-movies'
+      ? `/movies/heist-thriller/${currentMovie.imdbID}`
+      : collection.slug === 'best-time-travel-movies'
+      ? `/movies/time-travel/${currentMovie.imdbID}`
+      : collection.slug === 'best-sci-fi-movies'
+      ? `/movies/sci-fi/${currentMovie.imdbID}`
+      : collection.slug === 'best-revenge-movies'
+      ? `/movies/revenge/${currentMovie.imdbID}`
+      : collection.slug === 'best-war-films'
+      ? `/movies/war-films/${currentMovie.imdbID}`
+      : `/movies/${currentMovie.imdbID}`
                                         }
 
                                         key={currentMovieIndex}

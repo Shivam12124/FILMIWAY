@@ -9,13 +9,13 @@ export const TMDB_CONFIG = {
 };
 
 export const COMPLETE_MOVIE_DATABASE = [
-    { "tmdbId": 13973, "imdbID": "tt0156887", "Title": "Perfect Blue", "year": 1997, "genre": "Animation", "runtime": 81, "rank": 1 },
+    { "tmdbId": 10494, "imdbID": "tt0156887", "Title": "Perfect Blue", "year": 1997, "genre": "Animation", "runtime": 81, "rank": 1 },
     { "tmdbId": 244786, "imdbID": "tt2582802", "Title": "Whiplash", "year": 2014, "genre": "Drama", "runtime": 106, "rank": 2 },
-    { "tmdbId": 485975, "imdbID": "tt1034415", "Title": "Suspiria", "year": 2018, "genre": "Horror", "runtime": 152, "rank": 3 },
-    { "tmdbId": 41079, "imdbID": "tt0040725", "Title": "The Red Shoes", "year": 1948, "genre": "Drama", "runtime": 135, "rank": 4 },
-    { "tmdbId": 12500, "imdbID": "tt1125849", "Title": "The Wrestler", "year": 2008, "genre": "Drama", "runtime": 109, "rank": 5 },
+    { "tmdbId": 361292, "imdbID": "tt1034415", "Title": "Suspiria", "year": 2018, "genre": "Horror", "runtime": 152, "rank": 3 },
+    { "tmdbId": 19542, "imdbID": "tt0040725", "Title": "The Red Shoes", "year": 1948, "genre": "Drama", "runtime": 135, "rank": 4 },
+    { "tmdbId": 12163, "imdbID": "tt1125849", "Title": "The Wrestler", "year": 2008, "genre": "Drama", "runtime": 109, "rank": 5 },
     { "tmdbId": 1018, "imdbID": "tt0166924", "Title": "Mulholland Drive", "year": 2001, "genre": "Mystery", "runtime": 147, "rank": 6 },
-    { "tmdbId": 11252, "imdbID": "tt0254686", "Title": "The Piano Teacher", "year": 2001, "genre": "Drama", "runtime": 131, "rank": 7 },
+    { "tmdbId": 1791, "imdbID": "tt0254686", "Title": "The Piano Teacher", "year": 2001, "genre": "Drama", "runtime": 131, "rank": 7 },
     { "tmdbId": 194662, "imdbID": "tt2562232", "Title": "Birdman", "year": 2014, "genre": "Comedy", "runtime": 119, "rank": 8 },
     { "tmdbId": 641, "imdbID": "tt0180093", "Title": "Requiem for a Dream", "year": 2000, "genre": "Drama", "runtime": 102, "rank": 9 },
     { "tmdbId": 242582, "imdbID": "tt2872718", "Title": "Nightcrawler", "year": 2014, "genre": "Thriller", "runtime": 117, "rank": 10 }
@@ -28,17 +28,76 @@ const timeToSeconds = (timeStr) => {
     return 0;
 };
 
+// ✅ UPDATED SENSITIVE TIMELINES (Sexual Content & Nudity ONLY - No Descriptions)
 export const SENSITIVE_TIMELINES = {
-    13973: { scenes: [{ start: "0:42:15", end: "0:42:45", type: "Violence", severity: "Moderate", description: "Stabbing scene" }, { start: "1:15:20", end: "1:16:10", type: "Nudity", severity: "Moderate", description: "Non-sexual, artistic context" }] },
-    244786: { scenes: [{ start: "1:23:40", end: "1:24:30", type: "Violence", severity: "Mild", description: "Instrument throwing" }, { start: "1:45:10", end: "1:46:00", type: "Violence", severity: "Moderate", description: "Car crash aftermath" }] },
-    485975: { scenes: [{ start: "0:45:30", end: "0:46:20", type: "Nudity", severity: "Moderate", description: "Ritual context" }, { start: "1:32:15", end: "1:33:45", type: "Violence", severity: "Extreme", description: "Graphic body horror" }] },
-    41079: { scenes: [{ start: "1:55:20", end: "1:56:10", type: "Partial nudity", severity: "Mild", description: "Ballet performance" }] },
-    12500: { scenes: [{ start: "0:58:45", end: "0:59:30", type: "Nudity", severity: "Moderate", description: "Backstage scene" }, { start: "1:12:20", end: "1:13:00", type: "Violence", severity: "Extreme", description: "Graphic wrestling injury" }] },
-    1018: { scenes: [{ start: "1:08:15", end: "1:09:45", type: "Sexual content", severity: "Moderate", description: "Disturbing context" }, { start: "1:25:30", end: "1:26:20", type: "Drug use", severity: "Extreme", description: "Graphic injection" }] },
-    11252: { scenes: [{ start: "0:35:10", end: "0:36:20", type: "Sexual content", severity: "Extreme", description: "BDSM context" }, { start: "1:18:45", end: "1:19:30", type: "Violence", severity: "Extreme", description: "Self-harm" }] },
-    194662: { scenes: [{ start: "0:15:30", end: "0:16:10", type: "Partial nudity", severity: "Mild", description: "Dressing room" }] },
-    641: { scenes: [{ start: "0:42:20", end: "0:43:10", type: "Sexual content", severity: "Moderate", description: "Disturbing context" }, { start: "1:05:15", end: "1:06:30", type: "Drug use", severity: "Extreme", description: "Graphic addiction scenes" }] },
-    242582: { scenes: [{ start: "0:28:45", end: "0:29:20", type: "Violence", severity: "Moderate", description: "Crime scene photography" }, { start: "1:35:10", end: "1:36:00", type: "Violence", severity: "Extreme", description: "Graphic confrontation" }] }
+    // 1. Perfect Blue
+    13973: { 
+        scenes: [
+            { start: "0:33:20", end: "0:35:10", type: "Sexual Content", severity: "Extreme" },
+            { start: "0:45:40", end: "0:48:00", type: "Nudity", severity: "High" }
+        ] 
+    },
+
+    // 2. Whiplash (Clean)
+    244786: { scenes: [] },
+
+    // 3. Suspiria
+    485975: { 
+        scenes: [
+            { start: "1:35:40", end: "1:37:15", type: "Nudity", severity: "High" }
+        ] 
+    },
+
+    // 4. The Red Shoes (Clean)
+    41079: { scenes: [] },
+
+    // 5. The Wrestler
+    12500: { 
+        scenes: [
+            { start: "0:20:22", end: "0:20:50", type: "Nudity", severity: "Moderate" },
+            { start: "0:43:10", end: "0:44:10", type: "Nudity", severity: "Moderate" },
+            { start: "1:33:33", end: "1:34:30", type: "Nudity", severity: "Moderate" }
+        ] 
+    },
+
+    // 6. Mulholland Drive
+    1018: { 
+        scenes: [
+            { start: "1:38:45", end: "1:42:18", type: "Nudity", severity: "High" },
+            { start: "2:01:27", end: "2:02:59", type: "Nudity", severity: "High" }
+        ] 
+    },
+
+    // 7. The Piano Teacher
+    11252: { 
+        scenes: [
+            { start: "0:25:00", end: "0:27:50", type: "Nudity/Sexual Content", severity: "High" },
+            { start: "0:52:00", end: "0:53:20", type: "Sexual Content", severity: "High" },
+            { start: "1:06:50", end: "1:12:10", type: "Sexual Content", severity: "Extreme" },
+            { start: "1:39:40", end: "1:41:40", type: "Sexual Content", severity: "High" }, 
+            { start: "1:45:40", end: "1:49:40", type: "Sexual Content", severity: "Extreme" },
+            { start: "1:53:40", end: "2:03:40", type: "Nudity/Sexual Content", severity: "Extreme" }
+        ] 
+    },
+
+    // 8. Birdman
+    194662: { 
+        scenes: [
+            { start: "0:18:10", end: "0:18:50", type: "Partial Nudity", severity: "Mild" }
+        ] 
+    },
+
+    // 9. Requiem for a Dream
+    641: { 
+        scenes: [
+            { start: "0:20:00", end: "0:20:30", type: "Nudity", severity: "Moderate" },
+            { start: "0:33:00", end: "0:34:25", type: "Nudity", severity: "Moderate" },
+            { start: "0:37:00", end: "0:37:25", type: "Nudity", severity: "Moderate" }
+        ] 
+    },
+
+    // 10. Nightcrawler (Clean)
+    242582: { scenes: [] }
 };
 
 export const FALLBACK_POSTERS = {
@@ -56,218 +115,171 @@ export const FALLBACK_POSTERS = {
 
 const createMovieData = (data) => data;
 
-// ... [Previous part of file]
+
 
 export const COMPLETE_MOVIE_DATA = {
     13973: createMovieData({ 
-        psychologicalIntensity: 95, 
-        artisticObsession: 98, 
-        identityHorror: 100,
-        complexityLevel: "EXTREME", 
-        dominantColor: "#dc2626", 
-        rating: 8.0, 
-        criticsScore: 67, 
-        audienceScore: 85, 
-        director: "Satoshi Kon", 
-        cast: ["Junko Iwao", "Rica Matsumoto", "Shinpachi Tsuji"], 
-        boxOffice: "$0.8 million", 
-        budget: "$1.2 million", 
+        psychologicalIntensity: 95, artisticObsession: 98, identityHorror: 100,
+        complexityLevel: "EXTREME", dominantColor: "#dc2626", rating: 8.0, 
+        criticsScore: 67, audienceScore: 85, director: "Satoshi Kon", 
+        cast: ["Junko Iwao", "Rica Matsumoto"], boxOffice: "$0.8 million", budget: "$1.2 million", 
         dna: { "Psychological Horror": 40, "Animation": 30, "Thriller": 30 },
-        scenes: [{ time: 20, intensity: 60, label: "Career Change", color: "#dc2626" }, { time: 45, intensity: 85, label: "Stalker Terror", color: "#ef4444" }, { time: 65, intensity: 95, label: "Identity Break", color: "#f87171" }, { time: 80, intensity: 100, label: "Reality Collapse", color: "#fca5a5" }],
-        synopsis: "Pop idol Mima Kirigoe transitions to acting, but her fans reject this change. As she takes darker roles, reality fractures—she can't distinguish her identity from characters, her stalker from protectors, or nightmares from waking life. A masterpiece of psychological horror that questions the cost of artistic transformation.",
-        themes: ["Identity Loss", "Celebrity Culture", "Psychological Horror", "Artistic Transformation"],
-        awards: ["6 wins & 4 nominations"],
-        whyIncluded: "The ultimate psychological descent film that directly inspired Black Swan. Explores identity fragmentation through performance art with terrifying surrealism.",
-        metaThemes: ["Identity Fragmentation", "Celebrity Culture", "Reality vs Illusion"]
+        scenes: [
+            { time: 15, intensity: 55, label: "The Shift", color: "#dc2626" },
+            { time: 40, intensity: 75, label: "Stalker Shadows", color: "#ef4444" },
+            { time: 60, intensity: 90, label: "Room Hallucination", color: "#f87171" },
+            { time: 75, intensity: 100, label: "The Chase", color: "#fca5a5" },
+            { time: 80, intensity: 65, label: "New Reality", color: "#fecaca" }
+        ],
+        synopsis: "Pop idol Mima Kirigoe sheds her innocent image to become a serious actress, but the cost of her ambition is higher than she ever imagined. As she takes on dark, soul-crushing roles, her reality begins to fracture. Obsessive fans turn into stalkers, and a ghostly version of her past self begins to haunt her every move. Satoshi Kon’s visionary masterpiece is a mind-bending descent into the digital age's fractured identity—a film so influential it served as the direct blueprint for Black Swan's psychological collapse. You will finish this movie questioning what is real and what is merely a performance.",
+        themes: ["Identity Loss", "Celebrity Culture", "Psychological Horror"],
+        awards: ["Fantasia Film Festival Winner"],
+        whyIncluded: "The primary inspiration for Black Swan. Standard-setter for identity-fracture intensity."
     }),
     244786: createMovieData({ 
-        psychologicalIntensity: 92, 
-        artisticObsession: 95, 
-        identityHorror: 60,
-        complexityLevel: "HIGH", 
-        dominantColor: "#1e40af", 
-        rating: 8.5, 
-        criticsScore: 88, 
-        audienceScore: 94, 
-        director: "Damien Chazelle", 
-        cast: ["Miles Teller", "J.K. Simmons", "Melissa Benoist"], 
-        boxOffice: "$13.1 million", 
-        budget: "$3.3 million", 
+        psychologicalIntensity: 92, artisticObsession: 95, identityHorror: 60,
+        complexityLevel: "HIGH", dominantColor: "#1e40af", rating: 8.5, 
+        criticsScore: 88, audienceScore: 94, director: "Damien Chazelle", 
+        cast: ["Miles Teller", "J.K. Simmons"], boxOffice: "$13.1 million", budget: "$3.3 million", 
         dna: { "Drama": 60, "Music": 30, "Thriller": 10 },
-        scenes: [{ time: 15, intensity: 40, label: "Audition", color: "#1e40af" }, { time: 35, intensity: 70, label: "Abuse Begins", color: "#3b82f6" }, { time: 60, intensity: 85, label: "Car Crash", color: "#60a5fa" }, { time: 85, intensity: 95, label: "Final Performance", color: "#93c5fd" }],
-        synopsis: "A promising young drummer enrolls at a cut-throat music conservatory where his dreams of greatness are mentored by an instructor who will stop at nothing to realize a student's potential. The pursuit of artistic perfection becomes a psychological war that threatens to destroy both teacher and student.",
-        themes: ["Artistic Perfection", "Mentorship Abuse", "Psychological Warfare", "Sacrifice for Greatness"],
-        awards: ["Won 3 Oscars. 97 wins & 158 nominations total"],
-        whyIncluded: "Explores the same toxic mentorship and artistic obsession that drives Black Swan's protagonist to madness. The psychological abuse for artistic perfection mirrors Nina's descent.",
-        metaThemes: ["Toxic Mentorship", "Perfectionism", "Psychological Abuse"]
+        scenes: [
+            { time: 10, intensity: 35, label: "Not My Tempo", color: "#1e40af" },
+            { time: 45, intensity: 65, label: "Rushing", color: "#3b82f6" },
+            { time: 65, intensity: 88, label: "The Car Crash", color: "#60a5fa" },
+            { time: 95, intensity: 98, label: "Caravan Solo", color: "#93c5fd" },
+            { time: 105, intensity: 85, label: "Acknowledgment", color: "#dbeafe" }
+        ],
+        synopsis: "Andrew Neiman doesn't just want to be a drummer; he wants to be one of the greats. But at the country’s most elite conservatory, greatness is overseen by Terence Fletcher—a conductor who uses psychological warfare to push his students to the breaking point. Andrew's hunger for perfection quickly spirals into an all-consuming obsession, turning the drum kit into a blood-soaked battlefield. This isn't a movie about music; it's a high-octane war of wills that examines how much of your humanity you're willing to sacrifice to achieve artistic immortality. Brace yourself for the most intense finale in modern cinema history.",
+        themes: ["Perfectionism", "Toxic Mentorship", "Artistic Sacrifice"],
+        awards: ["Won 3 Academy Awards"]
     }),
     485975: createMovieData({ 
-        psychologicalIntensity: 88, 
-        artisticObsession: 90, 
-        identityHorror: 85,
-        complexityLevel: "EXTREME", 
-        dominantColor: "#059669", 
-        rating: 6.7, 
-        criticsScore: 64, 
-        audienceScore: 58, 
-        director: "Luca Guadagnino", 
-        cast: ["Chloë Grace Moretz", "Tilda Swinton", "Doris Hick"], 
-        boxOffice: "$7.7 million", 
-        budget: "$20 million", 
+        psychologicalIntensity: 88, artisticObsession: 90, identityHorror: 85,
+        complexityLevel: "EXTREME", dominantColor: "#059669", rating: 6.7, 
+        criticsScore: 64, audienceScore: 58, director: "Luca Guadagnino", 
+        cast: ["Dakota Johnson", "Tilda Swinton"], boxOffice: "$7.7 million", budget: "$20 million", 
         dna: { "Horror": 40, "Fantasy": 30, "Mystery": 30 },
-        scenes: [{ time: 25, intensity: 50, label: "Dance Academy", color: "#059669" }, { time: 50, intensity: 75, label: "Dark Rituals", color: "#10b981" }, { time: 90, intensity: 90, label: "Body Horror", color: "#34d399" }, { time: 130, intensity: 95, label: "Final Transformation", color: "#6ee7b7" }],
-        synopsis: "A darkness swirls at the center of a world-renowned dance company, one that will engulf the artistic director, an ambitious young dancer, and a grieving psychotherapist. Some will succumb to the nightmare. Others will finally wake up.",
-        themes: ["Dance Horror", "Witchcraft", "Artistic Possession", "Body Transformation"],
-        awards: ["2 wins & 8 nominations"],
-        whyIncluded: "Directly parallels Black Swan's dance world horror but amplifies the supernatural elements. Both explore how artistic dedication can become literal possession.",
-        metaThemes: ["Dance as Horror", "Coven Psychology", "Body Autonomy Loss"]
+        scenes: [
+            { time: 25, intensity: 50, label: "Volk", color: "#059669" },
+            { time: 45, intensity: 92, label: "The Mirror Death", color: "#10b981" },
+            { time: 85, intensity: 75, label: "The Coven", color: "#34d399" },
+            { time: 130, intensity: 98, label: "The Sabbath", color: "#6ee7b7" },
+            { time: 145, intensity: 45, label: "Mercy", color: "#a7f3d0" }
+        ],
+        synopsis: "Susie Bannion arrives at a world-renowned dance academy in 1970s Berlin, unaware that she is stepping into a coven of dark, ancient secrets. Under the hypnotic guidance of the artistic director, Susie’s dance becomes something more than art—it becomes a ritual. As students disappear and horrific 'injuries' occur that defy the laws of physics, the line between dance and witchcraft vanishes. This is a visceral, blood-chilling exploration of artistic possession and maternal power. By the time the final performance begins, you’ll realize that in this school, your body is no longer your own.",
+        themes: ["Witchcraft", "Maternal Power", "Physical Brutality"]
     }),
     41079: createMovieData({ 
-        psychologicalIntensity: 75, 
-        artisticObsession: 88, 
-        identityHorror: 70,
-        complexityLevel: "HIGH", 
-        dominantColor: "#7c2d12", 
-        rating: 8.1, 
-        criticsScore: 95, 
-        audienceScore: 89, 
-        director: "Michael Powell", 
-        cast: ["Anton Walbrook", "Marius Goring", "Moira Shearer"], 
-        boxOffice: "$5.1 million", 
-        budget: "$1.2 million", 
+        psychologicalIntensity: 75, artisticObsession: 88, identityHorror: 70,
+        complexityLevel: "HIGH", dominantColor: "#7c2d12", rating: 8.1, 
+        criticsScore: 95, audienceScore: 89, director: "Michael Powell", 
+        cast: ["Moira Shearer", "Anton Walbrook"], boxOffice: "$5.1 million", budget: "$1.2 million", 
         dna: { "Drama": 50, "Romance": 30, "Music": 20 },
-        scenes: [{ time: 30, intensity: 45, label: "Ballet Rehearsal", color: "#7c2d12" }, { time: 60, intensity: 65, label: "Performance Pressure", color: "#92400e" }, { time: 90, intensity: 80, label: "The Choice", color: "#b45309" }, { time: 130, intensity: 100, label: "Tragic Finale", color: "#d97706" }],
-        synopsis: "A young ballerina is torn between two possessing forces: the composer who loves her, and the impresario determined to make her a great dancer. She is forced to choose between her art and her life, a choice that leads to a devastating conclusion under the spell of the Red Shoes.",
-        themes: ["Art vs Life", "Obsession", "Sacrifice", "Destiny"],
-        awards: ["Won 2 Oscars. 5 wins & 6 nominations total"],
-        whyIncluded: "The definitive film on the destructive cost of artistic greatness. Established the archetype of the dancer consumed by her art that Black Swan modernizes.",
-        metaThemes: ["Artistic Sacrifice", "Obsession", "Destructive Ambition"]
+        scenes: [
+            { time: 30, intensity: 40, label: "Rehearsals", color: "#7c2d12" },
+            { time: 65, intensity: 65, label: "Success", color: "#92400e" },
+            { time: 90, intensity: 75, label: "Broken Heart", color: "#b45309" },
+            { time: 125, intensity: 90, label: "The Spotlight", color: "#d97706" },
+            { time: 133, intensity: 96, label: "Leap of Faith", color: "#fbbf24" }
+        ],
+        synopsis: "Victoria Page is a ballerina caught in a lethal tug-of-war between her heart and her art. Under the gaze of a director who believes a great artist must renounce all human emotion, she is propelled toward international stardom. But as the surreal ballet of 'The Red Shoes' begins to mirror her own life, Victoria finds that once you put on the shoes of obsession, you can never stop dancing. A lush, Technicolor nightmare that defines the tragic cost of aesthetic perfection, this film is the grandfather of the 'obsessed artist' genre, proving that the spotlight can be the most dangerous place on earth.",
+        themes: ["Art vs Life", "Total Devotion", "Tragic Fate"]
     }),
     12500: createMovieData({ 
-        psychologicalIntensity: 85, 
-        artisticObsession: 90, 
-        identityHorror: 60,
-        complexityLevel: "HIGH", 
-        dominantColor: "#15803d", 
-        rating: 7.9, 
-        criticsScore: 98, 
-        audienceScore: 88, 
-        director: "Darren Aronofsky", 
-        cast: ["Mickey Rourke", "Marisa Tomei", "Evan Rachel Wood"], 
-        boxOffice: "$44.7 million", 
-        budget: "$6 million", 
+        psychologicalIntensity: 85, artisticObsession: 90, identityHorror: 60,
+        complexityLevel: "HIGH", dominantColor: "#15803d", rating: 7.9, 
+        criticsScore: 98, audienceScore: 88, director: "Darren Aronofsky", 
+        cast: ["Mickey Rourke", "Marisa Tomei"], boxOffice: "$44.7 million", budget: "$6 million", 
         dna: { "Drama": 70, "Sport": 20, "Romance": 10 },
-        scenes: [{ time: 20, intensity: 50, label: "The Grind", color: "#15803d" }, { time: 55, intensity: 75, label: "Health Collapse", color: "#16a34a" }, { time: 85, intensity: 85, label: "Broken Relationships", color: "#22c55e" }, { time: 105, intensity: 100, label: "The Ram Jam", color: "#4ade80" }],
-        synopsis: "A faded professional wrestler must retire after a heart attack but finds life outside the ring unbearable. Struggling to reconnect with his estranged daughter and finding solace with a stripper, he is ultimately drawn back to the only place he feels alive—the ring—even if it kills him.",
-        themes: ["Faded Glory", "Body Horror", "Redemption", "Addiction to Fame"],
-        awards: ["Nominated for 2 Oscars. 56 wins & 88 nominations total"],
-        whyIncluded: "Directed by Aronofsky as a companion piece to Black Swan. Swaps ballet for wrestling but explores the exact same theme: destroying the body for the sake of the performance.",
-        metaThemes: ["Body Destruction", "Performance Addiction", "Faded Glory"]
+        scenes: [
+            { time: 20, intensity: 45, label: "The Locker Room", color: "#15803d" },
+            { time: 55, intensity: 85, label: "Staple Gun", color: "#16a34a" },
+            { time: 85, intensity: 70, label: "Daughter's Door", color: "#22c55e" },
+            { time: 105, intensity: 94, label: "The Jump", color: "#4ade80" },
+            { time: 109, intensity: 80, label: "The Cheers", color: "#86efac" }
+        ],
+        synopsis: "Randy 'The Ram' Robinson was a 1980s wrestling legend, but now his body is a roadmap of scars and steroid-induced damage. When a heart attack forces him into a mundane life, Randy realizes that outside the ring, he is a ghost. Despite the pleas of his daughter and the toll on his failing health, the siren call of the spotlight proves impossible to resist. Directed by Darren Aronofsky as the raw, masculine companion to Black Swan, this film tracks the grotesque beauty of a man willing to destroy his physical vessel for one last moment of glory. It is survival at its most heart-wrenching.",
+        themes: ["Body Horror", "Lost Glory", "Addiction to Performance"]
     }),
     1018: createMovieData({ 
-        psychologicalIntensity: 98, 
-        artisticObsession: 85, 
-        identityHorror: 100,
-        complexityLevel: "EXTREME", 
-        dominantColor: "#1e3a8a", 
-        rating: 7.9, 
-        criticsScore: 84, 
-        audienceScore: 87, 
-        director: "David Lynch", 
-        cast: ["Naomi Watts", "Laura Harring", "Justin Theroux"], 
-        boxOffice: "$20.1 million", 
-        budget: "$15 million", 
+        psychologicalIntensity: 98, artisticObsession: 85, identityHorror: 100,
+        complexityLevel: "EXTREME", dominantColor: "#1e3a8a", rating: 7.9, 
+        criticsScore: 84, audienceScore: 87, director: "David Lynch", 
+        cast: ["Naomi Watts", "Laura Harring"], boxOffice: "$20.1 million", budget: "$15 million", 
         dna: { "Mystery": 50, "Thriller": 30, "Drama": 20 },
-        scenes: [{ time: 30, intensity: 40, label: "Hollywood Dream", color: "#1e3a8a" }, { time: 70, intensity: 60, label: "Mystery Deepens", color: "#2563eb" }, { time: 110, intensity: 90, label: "Club Silencio", color: "#3b82f6" }, { time: 140, intensity: 100, label: "Reality Shatters", color: "#60a5fa" }],
-        synopsis: "A bright-eyed young actress travels to Hollywood only to become ensnared in a dark conspiracy involving a woman who was nearly murdered. As the two women search for answers, dreams and reality fracture into a surreal nightmare about the dark underbelly of ambition and identity.",
-        themes: ["Identity Fracture", "Hollywood Dark Side", "Dreams vs Reality", "Lost Innocence"],
-        awards: ["Nominated for 1 Oscar. 45 wins & 64 nominations total"],
-        whyIncluded: "The ultimate film about the 'double' and the shattering of identity in Hollywood. Mirrors Black Swan's descent into a surreal nightmare where the protagonist loses herself.",
-        metaThemes: ["Identity Dissociation", "Hollywood Nightmare", "Dream Logic"]
+        scenes: [
+            { time: 25, intensity: 40, label: "Winkie's", color: "#1e3a8a" },
+            { time: 70, intensity: 55, label: "Audition", color: "#2563eb" },
+            { time: 110, intensity: 95, label: "Silencio", color: "#3b82f6" },
+            { time: 125, intensity: 100, label: "The Box", color: "#60a5fa" },
+            { time: 140, intensity: 90, label: "Reality", color: "#93c5fd" }
+        ],
+        synopsis: "A perky aspiring actress and a dark-haired woman with amnesia collide in the shadows of Hollywood. Armed with only a purse full of cash and a mysterious blue key, they embark on a search for identity that quickly devolves into a surreal nightmare. In David Lynch’s masterpiece, the 'dream' of fame is a thin veil for a reality of jealousy and rejection. As identities dissolve and characters shift, you’ll witness the psychological trauma of the failed artist in its purest, most terrifying form. Remember: it is all an illusion. Silencio.",
+        themes: ["Identity Fracture", "Hollywood Underbelly", "Dream Logic"]
     }),
     11252: createMovieData({ 
-        psychologicalIntensity: 95, 
-        artisticObsession: 92, 
-        identityHorror: 80,
-        complexityLevel: "HIGH", 
-        dominantColor: "#334155", 
-        rating: 7.5, 
-        criticsScore: 74, 
-        audienceScore: 78, 
-        director: "Michael Haneke", 
-        cast: ["Isabelle Huppert", "Annie Girardot", "Benoît Magimel"], 
-        boxOffice: "$2.4 million", 
-        budget: "$6.5 million", 
+        psychologicalIntensity: 95, artisticObsession: 92, identityHorror: 80,
+        complexityLevel: "HIGH", dominantColor: "#334155", rating: 7.5, 
+        criticsScore: 74, audienceScore: 78, director: "Michael Haneke", 
+        cast: ["Isabelle Huppert", "Benoît Magimel"], boxOffice: "$2.4 million", budget: "$6.5 million", 
         dna: { "Drama": 60, "Romance": 20, "Thriller": 20 },
-        scenes: [{ time: 25, intensity: 50, label: "Repression", color: "#334155" }, { time: 60, intensity: 75, label: "Obsession Begins", color: "#475569" }, { time: 95, intensity: 90, label: "Sexual Violence", color: "#64748b" }, { time: 125, intensity: 100, label: "Self Destruction", color: "#94a3b8" }],
-        synopsis: "A piano professor at a Vienna conservatory lives with her tyrannical mother in a state of emotional repression. When a young student becomes obsessed with her, their relationship descends into a dark game of control, voyeurism, and masochism.",
-        themes: ["Sexual Repression", "Control", "Masochism", "Maternal dominance"],
-        awards: ["25 wins & 17 nominations"],
-        whyIncluded: "Explores the disturbing psychological consequences of strict artistic discipline and repression. Erika is a dark reflection of what Nina could become—cold, repressed, and self-destructive.",
-        metaThemes: ["Sexual Repression", "Masochism", "Toxic Perfectionism"]
+        scenes: [
+            { time: 20, intensity: 45, label: "Peeping", color: "#334155" },
+            { time: 60, intensity: 65, label: "Glass in Shoes", color: "#475569" },
+            { time: 95, intensity: 92, label: "The Letter", color: "#64748b" },
+            { time: 120, intensity: 85, label: "Violation", color: "#94a3b8" },
+            { time: 131, intensity: 75, label: "The Knife", color: "#cbd5e1" }
+        ],
+        synopsis: "Erika Kohut is the picture of icy composure—a prestigious piano professor living under the thumb of her tyrannical mother. But beneath the surface of classical music discipline lies a storm of repressed desires and masochistic tendencies. When a talented student begins to pursue her, their connection descends into a clinical, disturbing game of dominance and submission. Michael Haneke’s unflinching film explores how the pursuit of high-art perfection can lead to a total breakdown of human empathy. It is a cold, calculated descent that will leave you breathless and deeply unsettled.",
+        themes: ["Repression", "Masochism", "Control"]
     }),
     194662: createMovieData({ 
-        psychologicalIntensity: 85, 
-        artisticObsession: 95, 
-        identityHorror: 60,
-        complexityLevel: "HIGH", 
-        dominantColor: "#c2410c", 
-        rating: 7.7, 
-        criticsScore: 91, 
-        audienceScore: 78, 
-        director: "Alejandro G. Iñárritu", 
-        cast: ["Michael Keaton", "Zach Galifianakis", "Edward Norton"], 
-        boxOffice: "$103.2 million", 
-        budget: "$18 million", 
+        psychologicalIntensity: 85, artisticObsession: 95, identityHorror: 60,
+        complexityLevel: "HIGH", dominantColor: "#c2410c", rating: 7.7, 
+        criticsScore: 91, audienceScore: 78, director: "Alejandro G. Iñárritu", 
+        cast: ["Michael Keaton", "Edward Norton"], boxOffice: "$103.2 million", budget: "$18 million", 
         dna: { "Drama": 40, "Comedy": 40, "Fantasy": 20 },
-        scenes: [{ time: 20, intensity: 45, label: "Backstage Chaos", color: "#c2410c" }, { time: 60, intensity: 70, label: "Ego Clash", color: "#ea580c" }, { time: 90, intensity: 85, label: "Mental Break", color: "#f97316" }, { time: 115, intensity: 100, label: "On Stage", color: "#fb923c" }],
-        synopsis: "A washed-up superhero actor attempts to revive his fading career by writing, directing, and starring in a Broadway production. As opening night approaches, he battles his ego, his family, and his internal sanity in a seamless, continuous shot.",
-        themes: ["Ego vs Art", "Relevance", "Reality vs Performance", "Fame"],
-        awards: ["Won 4 Oscars. 193 wins & 292 nominations total"],
-        whyIncluded: "Captures the frantic, claustrophobic pressure of backstage artistic life. The continuous shot technique mirrors the unrelenting psychological pressure seen in Black Swan.",
-        metaThemes: ["Ego Dissolution", "Artistic Relevance", "Performance Anxiety"]
+        scenes: [
+            { time: 15, intensity: 40, label: "Whispers", color: "#c2410c" },
+            { time: 55, intensity: 65, label: "Times Square", color: "#ea580c" },
+            { time: 90, intensity: 85, label: "The Critic", color: "#f97316" },
+            { time: 110, intensity: 100, label: "Opening Night", color: "#fb923c" },
+            { time: 118, intensity: 75, label: "The Window", color: "#fdba74" }
+        ],
+        synopsis: "A washed-up superhero actor tries to reclaim his soul by mounting a Broadway play, but his own ego is his most dangerous enemy. Riggan Thomson is literally haunted by the voice of his former persona, which taunts him with his lack of relevance. Shot in one continuous, breathless take, Birdman plunges you into the claustrophobic anxiety of the theater, where the line between the performance and the performer’s mental break is paper-thin. Watch a man struggle to soar one last time as his reality collapses around him. An adrenaline-fueled dive into the existential crisis of being an artist.",
+        themes: ["Ego Dissolution", "Artistic Integrity", "Fame"]
     }),
     641: createMovieData({ 
-        psychologicalIntensity: 98, 
-        artisticObsession: 90, 
-        identityHorror: 95,
-        complexityLevel: "HIGH", 
-        dominantColor: "#0f172a", 
-        rating: 8.3, 
-        criticsScore: 79, 
-        audienceScore: 93, 
-        director: "Darren Aronofsky", 
-        cast: ["Ellen Burstyn", "Jared Leto", "Jennifer Connelly"], 
-        boxOffice: "$7.4 million", 
-        budget: "$4.5 million", 
+        psychologicalIntensity: 98, artisticObsession: 90, identityHorror: 95,
+        complexityLevel: "HIGH", dominantColor: "#0f172a", rating: 8.3, 
+        criticsScore: 79, audienceScore: 93, director: "Darren Aronofsky", 
+        cast: ["Ellen Burstyn", "Jared Leto"], boxOffice: "$7.4 million", budget: "$4.5 million", 
         dna: { "Drama": 80, "Psychological": 20 },
-        scenes: [{ time: 25, intensity: 50, label: "Summer High", color: "#0f172a" }, { time: 55, intensity: 75, label: "Fall Decline", color: "#1e293b" }, { time: 85, intensity: 95, label: "Winter Spiral", color: "#334155" }, { time: 100, intensity: 100, label: "Requiem", color: "#475569" }],
-        synopsis: "The hopes and dreams of four ambitious people are shattered when their drug addictions begin spiraling out of control. A widow's diet pills and her son's heroin habit lead to a terrifying crescendo of hallucinations, degradation, and imprisonment.",
-        themes: ["Addiction", "Delusion", "Destruction of Self", "American Dream"],
-        awards: ["Nominated for 1 Oscar. 37 wins & 66 nominations total"],
-        whyIncluded: "Aronofsky's earlier masterpiece on obsession. Uses the same frenetic editing and subjective camera work to show the destruction of the self through addiction, mirroring Nina's destruction through dance.",
-        metaThemes: ["Addiction as Obsession", "Self-Destruction", "Delusional Ambition"]
+        scenes: [
+            { time: 25, intensity: 55, label: "Summer High", color: "#0f172a" },
+            { time: 55, intensity: 75, label: "Fall Decline", color: "#1e293b" },
+            { time: 85, intensity: 90, label: "Winter Psychosis", color: "#334155" },
+            { time: 98, intensity: 100, label: "The Crescendo", color: "#475569" },
+            { time: 102, intensity: 70, label: "Fetal Position", color: "#64748b" }
+        ],
+        synopsis: "From the heights of a summer high to the freezing depths of winter, four individuals chase a version of happiness that is slowly killing them. Whether it’s the obsession with fitting into a red dress for television or the rush of a needle, the result is the same: a total shattering of the human spirit. Using frenetic editing that mimics the physiological rush of addiction, Darren Aronofsky delivers the ultimate warning on how obsession—for fame, for escape, or for love—destroys the soul. This is not just a movie; it is a visceral, sensory experience that will stay with you long after the screen goes black.",
+        themes: ["Addiction", "Self-Destruction", "Hallucination"]
     }),
     242582: createMovieData({ 
-        psychologicalIntensity: 80, 
-        artisticObsession: 92, 
-        identityHorror: 50,
-        complexityLevel: "MEDIUM", 
-        dominantColor: "#10b981", 
-        rating: 7.8, 
-        criticsScore: 95, 
-        audienceScore: 86, 
-        director: "Dan Gilroy", 
-        cast: ["Jake Gyllenhaal", "Rene Russo", "Bill Paxton"], 
-        boxOffice: "$50.3 million", 
-        budget: "$8.5 million", 
+        psychologicalIntensity: 80, artisticObsession: 92, identityHorror: 50,
+        complexityLevel: "MEDIUM", dominantColor: "#10b981", rating: 7.8, 
+        criticsScore: 95, audienceScore: 86, director: "Dan Gilroy", 
+        cast: ["Jake Gyllenhaal", "Rene Russo"], boxOffice: "$50.3 million", budget: "$8.5 million", 
         dna: { "Thriller": 60, "Crime": 30, "Drama": 10 },
-        scenes: [{ time: 20, intensity: 40, label: "First Shoot", color: "#10b981" }, { time: 55, intensity: 65, label: "Crossing Lines", color: "#059669" }, { time: 90, intensity: 85, label: "Sabotage", color: "#047857" }, { time: 110, intensity: 95, label: "The Setup", color: "#065f46" }],
-        synopsis: "Louis Bloom is a driven man desperate for work who discovers the high-speed world of L.A. crime journalism. He begins filming car crashes, fires, and murder, but soon blurs the line between observer and participant to get the perfect shot.",
-        themes: ["Media Ethics", "Capitalism", "Sociopathy", "Ambition"],
-        awards: ["Nominated for 1 Oscar. 47 wins & 129 nominations total"],
-        whyIncluded: "A study of sociopathic ambition. Louis Bloom is the 'evil twin' of the artistic obsessive—driven by success with zero empathy, contrasting Nina's fragile emotional state.",
-        metaThemes: ["Toxic Ambition", "Media exploitation", "Capitalist Psychopathy"]
+        scenes: [
+            { time: 20, intensity: 45, label: "The Camera", color: "#10b981" },
+            { time: 50, intensity: 65, label: "Home Invasion", color: "#059669" },
+            { time: 85, intensity: 80, label: "The Sabotage", color: "#047857" },
+            { time: 110, intensity: 96, label: "The Chase", color: "#065f46" },
+            { time: 117, intensity: 70, label: "The Intern", color: "#34d399" }
+        ],
+        synopsis: "Louis Bloom is a petty thief who discovers the high-speed world of L.A. crime journalism, where the first person to film a tragedy wins. Armed with a camcorder and zero empathy, Lou turns the spectacle of car crashes and murder into a cold, calculated art form. His obsession with the 'perfect shot' leads him to cross moral lines that will leave you chilled to the bone. Nightcrawler is a study of ruthless ambition in its most sociopathic form—a dark reflection of what happens when a human being views the world only through a lens. This is the artist as a predator.",
+        themes: ["Media Exploitation", "Sociopathy", "Ruthless Ambition"]
     })
 };
 

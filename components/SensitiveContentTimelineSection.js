@@ -76,7 +76,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                 Sensitive Content Timeline
             </h3>
             <p className="text-gray-400 text-xs sm:text-sm mb-3 sm:mb-4">
-                ⚠️ Content guide for parents and sensitive viewers. Click below to view detailed timestamps and scene descriptions.
+                ⚠️ Content guide for parents and sensitive viewers. Click below to view detailed timestamps.
             </p>
             
             {/* 🔥 RED BUTTON FOR USER ATTENTION */}
