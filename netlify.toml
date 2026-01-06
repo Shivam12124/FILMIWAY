@@ -1,6 +1,6 @@
 # 🔥 Netlify Build Configuration for Filmiway
 [build]
-  publish = "out"
+  publish = ".next"
   command = "npm run build"
 
 [build.environment]
