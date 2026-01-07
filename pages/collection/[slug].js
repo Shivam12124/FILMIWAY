@@ -15,7 +15,7 @@ import { COMPLETE_MOVIE_DATABASE as PARASITE_DATABASE, COMPLETE_MOVIE_DATA as PA
 import { COMPLETE_MOVIE_DATABASE as OLDBOY_DATABASE, COMPLETE_MOVIE_DATA as OLDBOY_DATA } from '../../utils/oldboyMovieData'; // ✅ NEW OLDBOY
 import { COMPLETE_MOVIE_DATABASE as DONNIE_DARKO_DATABASE, COMPLETE_MOVIE_DATA as DONNIE_DARKO_DATA } from '../../utils/donnieDarkoMovieData';
 import { COMPLETE_MOVIE_DATABASE as BLACK_SWAN_DATABASE, COMPLETE_MOVIE_DATA as BLACK_SWAN_DATA } from '../../utils/blackSwanMovieData';
-
+import { COMPLETE_MOVIE_DATABASE as EYES_WIDE_SHUT_DATABASE, COMPLETE_MOVIE_DATA as EYES_WIDE_SHUT_DATA } from '../../utils/eyesWideShutMovieData';
 import { COMPLETE_MOVIE_DATABASE as INTERSTELLAR_DATABASE, COMPLETE_MOVIE_DATA as INTERSTELLAR_DATA } from '../../utils/interstellarMovieData';
 import { COMPLETE_MOVIE_DATABASE as CRIME_THRILLER_DATABASE, COMPLETE_MOVIE_DATA as CRIME_THRILLER_DATA } from '../../utils/crimeThrillerMovieData';
 import { COMPLETE_MOVIE_DATABASE as WAR_FILMS_DATABASE, COMPLETE_MOVIE_DATA as WAR_FILMS_DATA } from '../../utils/warFilmsMovieData';
@@ -233,6 +233,31 @@ const getCollectionContent = () => {
             experience: {
                 text1: "Whether you're seeking psychological depth or disturbing character studies, this collection delivers cinema's most intense explorations of obsession and identity collapse.",
                 text2: "Each film has been selected for its unflinching portrayal of artistic sacrifice—creating unforgettable narratives where ambition becomes indistinguishable from madness, leaving viewers questioning where dedication ends and self-destruction begins."
+            }
+        };
+
+
+} else if (collection.slug === 'movies-like-eyes-wide-shut') {
+        return {
+            badge: "Occult Paranoia Cinema",
+            title: "Eyes Wide Shut",
+            description: "Surreal thrillers about the hidden elite. Secret societies, occult rituals & paranoid descents into the forbidden worlds of the wealthy that feel like waking nightmares.",
+            selection: {
+                text1: "From masked balls to satanic cults—these films peel back the curtain on the ultra-rich, revealing a shadow world of rituals and power that outsiders were never meant to see.",
+                text2: "Each paranoid masterpiece features protagonists who stumble into conspiracies way above their pay grade, navigating dream-like logic and hidden hierarchies where curiosity is a death sentence."
+            },
+            ranking: {
+                text: "Our paranoia intensity index evaluates the atmospheric dread, the complexity of the secret society, and the surreal 'dream logic' used to disorient the viewer.",
+                points: [
+                    "Secret society atmosphere",
+                    "Paranoia & conspiracy depth",
+                    "Surreal dream logic",
+                    "Social decay commentary"
+                ]
+            },
+            experience: {
+                text1: "Whether you're seeking occult mysteries or social satire, this collection delivers cinema's most unsettling glimpses into the dark heart of the elite.",
+                text2: "Each film creates a suffocating sense of being watched—mirroring the protagonist's realization that the world is run by forces they cannot understand or control. You'll never look at the rich the same way again."
             }
         };
 
@@ -709,6 +734,11 @@ const getHeaderContent = () => {
         subtitle: "Time travel paradoxes, dying dreams & doppelgängers that shatter reality itself"
     };
 
+    } else if (collection.slug === 'movies-like-eyes-wide-shut') {
+        return {
+            title: "Movies Like Eyes Wide Shut: 10 Paranoid Thrillers",
+            subtitle: "Secret societies, occult rituals & elite conspiracies hidden in plain sight"
+        };
 
 
     } else if (collection.slug === 'movies-like-interstellar') {
@@ -819,6 +849,12 @@ const getLoaderContent = () => {
             description: "Curating brutal revenge thrillers with shocking twists and community reviews"
         };
 
+
+        } else if (collection?.slug === 'movies-like-eyes-wide-shut') {
+        return {
+            title: "Loading Movies Like Eyes Wide Shut",
+            description: "Curating paranoid thrillers about secret societies and the occult elite with community reviews"
+        };
 
 } else if (collection?.slug === 'movies-like-donnie-darko') {
     return {
@@ -964,6 +1000,18 @@ const getStaticMetaContent = () => {
             twitterTitle: "🔪 Loved Oldboy? These 10 Revenge Films Are Just as Twisted",
             progressText: `of Top ${movies.length} Movies Like Oldboy`
         };
+
+
+} else if (collection.slug === 'movies-like-eyes-wide-shut') {
+        return {
+            title: "Movies Like Eyes Wide Shut: 10 Paranoid Thrillers", // ✅ 49 chars
+            description: "Loved Eyes Wide Shut? Discover 10 paranoid thrillers about secret societies, occult rituals & the hidden elite like The Ninth Gate & Rosemary's Baby.", // ✅ 156 chars
+            keywords: "movies like eyes wide shut, secret society movies, occult thrillers, paranoia films, mulholland drive, the ninth gate",
+            ogTitle: "Movies Like Eyes Wide Shut: 10 Paranoid Occult Thrillers 👁️",
+            twitterTitle: "👁️ Loved Eyes Wide Shut? These 10 Paranoid Films Are Terrifying",
+            progressText: `of Top ${movies.length} Movies Like Eyes Wide Shut`
+        };
+
 
 
             } else if (collection.slug === 'movies-like-black-swan') {
@@ -1201,6 +1249,7 @@ const getStaticMetaContent = () => {
             sessionStorage.removeItem('fromMatrixCollection');
             sessionStorage.removeItem('fromSe7enCollection');
             sessionStorage.removeItem('fromOldboyCollection');
+            sessionStorage.removeItem('fromEyesWideShutCollection');
             sessionStorage.removeItem('fromDonnieDarkoCollection');
             sessionStorage.removeItem('fromBlackSwanCollection');
             sessionStorage.removeItem('fromParasiteCollection'); // ✅ NEW PARASITE
@@ -1232,6 +1281,8 @@ const getStaticMetaContent = () => {
                 sessionStorage.setItem('fromParasiteCollection', 'true');
          } else if (collection.slug === 'movies-like-oldboy') {
           sessionStorage.setItem('fromOldboyCollection', 'true');
+} else if (collection.slug === 'movies-like-eyes-wide-shut') {
+                sessionStorage.setItem('fromEyesWideShutCollection', 'true');
 
           } else if (collection.slug === 'movies-like-black-swan') {
     sessionStorage.setItem('fromBlackSwanCollection', 'true');
@@ -1690,6 +1741,9 @@ return (
 ? 'movies/black-swan/'
 
 
+: collection?.slug === 'movies-like-eyes-wide-shut'
+? 'movies/eyes-wide-shut/'
+
 
                                     : collection?.slug === 'movies-like-interstellar'
                                     ? 'movies/interstellar/'
@@ -1839,6 +1893,8 @@ return (
       ? `/movies/donnie-darko/${currentMovie.imdbID}`
       : collection.slug === 'movies-like-black-swan'
       ? `/movies/black-swan/${currentMovie.imdbID}`
+: collection.slug === 'movies-like-eyes-wide-shut'
+? `/movies/eyes-wide-shut/${currentMovie.imdbID}`
 
       : collection.slug === 'movies-like-interstellar'
       ? `/movies/interstellar/${currentMovie.imdbID}`
@@ -1926,6 +1982,9 @@ return (
 
 } else if (collection.slug === 'movies-like-black-swan') {
     detailPageUrl = `/movies/black-swan/${currentMovie.imdbID}`;
+
+} else if (collection.slug === 'movies-like-eyes-wide-shut') {
+    detailPageUrl = `/movies/eyes-wide-shut/${currentMovie.imdbID}`;
 
 
                                         } else if (collection.slug === 'movies-like-interstellar') {
@@ -2137,7 +2196,9 @@ case 'movies-like-oldboy':
 case 'movies-like-donnie-darko':
     movieDatabase = DONNIE_DARKO_DATABASE;
     break;
-
+case 'movies-like-eyes-wide-shut':
+            movieDatabase = EYES_WIDE_SHUT_DATABASE;
+            break;
              
         case 'movies-like-interstellar':
             movieDatabase = INTERSTELLAR_DATABASE;

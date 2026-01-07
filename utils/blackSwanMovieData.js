@@ -121,7 +121,7 @@ const createMovieData = (data) => data;
 
 export const COMPLETE_MOVIE_DATA = {
     // 1. Perfect Blue
-    13973: createMovieData({ 
+    10494: createMovieData({ 
         psychologicalIntensity: 95, artisticObsession: 98, identityHorror: 100, complexityLevel: "EXTREME", 
         dominantColor: "#991b1b", rating: 8.0, criticsScore: 81, audienceScore: 85, director: "Satoshi Kon", 
         cast: ["Junko Iwao", "Rica Matsumoto"], boxOffice: "$0.8 million", budget: "$1.2 million", 
@@ -156,7 +156,7 @@ export const COMPLETE_MOVIE_DATA = {
     }),
 
     // 3. Suspiria (2018)
-    485975: createMovieData({ 
+    361292: createMovieData({ 
         psychologicalIntensity: 88, artisticObsession: 90, identityHorror: 85, complexityLevel: "EXTREME", 
         dominantColor: "#991b1b", rating: 6.7, criticsScore: 66, audienceScore: 65, director: "Luca Guadagnino", 
         cast: ["Dakota Johnson", "Tilda Swinton"], boxOffice: "$7.9 million", budget: "$20 million", 
@@ -173,7 +173,7 @@ export const COMPLETE_MOVIE_DATA = {
     }),
 
     // 4. The Red Shoes
-    41079: createMovieData({ 
+    19542: createMovieData({ 
         psychologicalIntensity: 75, artisticObsession: 88, identityHorror: 70, complexityLevel: "HIGH", 
         dominantColor: "#dc2626", rating: 8.1, criticsScore: 97, audienceScore: 92, director: "Michael Powell", 
         cast: ["Moira Shearer", "Anton Walbrook"], boxOffice: "$5 million", budget: "$1.2 million", 
@@ -190,7 +190,7 @@ export const COMPLETE_MOVIE_DATA = {
     }),
 
     // 5. The Wrestler
-    12500: createMovieData({ 
+   12163: createMovieData({ 
         psychologicalIntensity: 85, artisticObsession: 90, identityHorror: 60, complexityLevel: "HIGH", 
         dominantColor: "#dc2626", rating: 7.9, criticsScore: 98, audienceScore: 88, director: "Darren Aronofsky", 
         cast: ["Mickey Rourke", "Marisa Tomei"], boxOffice: "$44.7 million", budget: "$6 million", 
@@ -224,7 +224,7 @@ export const COMPLETE_MOVIE_DATA = {
     }),
 
     // 7. The Piano Teacher
-    11252: createMovieData({ 
+    1791: createMovieData({ 
         psychologicalIntensity: 95, artisticObsession: 92, identityHorror: 80, complexityLevel: "HIGH", 
         dominantColor: "#9333ea", rating: 7.5, criticsScore: 74, audienceScore: 78, director: "Michael Haneke", 
         cast: ["Isabelle Huppert", "Benoît Magimel"], boxOffice: "$2.4 million", budget: "$6.5 million", 

@@ -72,7 +72,12 @@ import {
   STRATEGIC_QUOTES as CRIME_THRILLER_QUOTES,
   SENSITIVE_TIMELINES as CRIME_THRILLER_SENSITIVE_TIMELINES
 } from '../utils/crimeThrillerMovieData';
-
+// ✅ EYES WIDE SHUT COLLECTION IMPORTS
+import { 
+  COMPLETE_MOVIE_DATA as EYES_WIDE_SHUT_MOVIE_DATA, 
+  STRATEGIC_QUOTES as EYES_WIDE_SHUT_QUOTES, 
+  SENSITIVE_TIMELINES as EYES_WIDE_SHUT_SENSITIVE_TIMELINES 
+} from '../utils/eyesWideShutMovieData';
 
 import COMPLETE_THRILLER_DATABASE from '../utils/thrillerMovieData';
 import MYSTERY_THRILLER_DATABASE from '../utils/mysteryThrillerMovieData';
@@ -127,12 +132,13 @@ import ParasiteSEOFAQSection from './ParasiteSEOFAQSection'; // ✅ NEW PARASITE
 import OldboySEOFAQSection from './OldboySEOFAQSection';
 import DonnieDarkoSEOFAQSection from './DonnieDarkoSEOFAQSection';
 import BlackSwanSEOFAQSection from './BlackSwanSEOFAQSection';
-
+import EyesWideShutSEOFAQSection from './EyesWideShutSEOFAQSection';
 
 
 
 const MovieDetailsSection = React.memo(({
   movie,
+  fromEyesWideShutCollection, // ✅ NEW EYES WIDE SHUT FLAG
   fromMementoCollection,
   fromShutterIslandCollection,
   fromInceptionCollection,
@@ -243,6 +249,8 @@ const movieInfo = fromDonnieDarkoCollection
 ? safeLookup(OLDBOY_MOVIE_DATA, movie.tmdbId)
 : fromBlackSwanCollection // ✅ NEW BLACK SWAN COLLECTION
 ? safeLookup(BLACK_SWAN_MOVIE_DATA, movie.tmdbId)
+: fromEyesWideShutCollection
+  ? safeLookup(EYES_WIDE_SHUT_MOVIE_DATA, movie.tmdbId)
 
   : fromRevengeCollection
   ? getRevengeMovieInfo()
@@ -313,7 +321,7 @@ const sensitiveScenes = safeMovieInfo.sensitiveScenes
   || DONNIE_DARKO_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
   || PARASITE_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes // ✅ NEW PARASITE
   || BLACK_SWAN_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes // ✅ BLACK SWAN
-
+  || EYES_WIDE_SHUT_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
   || OLDBOY_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
   || MATRIX_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
   || SE7EN_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes // ✅ SE7EN
@@ -333,7 +341,8 @@ const quote = fromDonnieDarkoCollection
 
 : fromBlackSwanCollection // ✅ BLACK SWAN
 ? BLACK_SWAN_QUOTES?.[movie.tmdbId] || ''
-
+: fromEyesWideShutCollection
+  ? EYES_WIDE_SHUT_QUOTES?.[movie.tmdbId] || ''
   : fromMatrixCollection 
   ? MATRIX_QUOTES?.[movie.tmdbId] || ''
   : fromSe7enCollection                                 // ✅ SE7EN
@@ -1016,6 +1025,9 @@ const getStarColor = () => {
   ): fromBlackSwanCollection ? (
   <BlackSwanSEOFAQSection movie={movie} />
   
+) : fromEyesWideShutCollection ? (
+  <EyesWideShutSEOFAQSection movie={movie} />
+
 ) : fromSe7enCollection ? (                          // ✅ SE7EN FAQ SECTION
   <Se7enSEOFAQSection movie={movie} />
 ) : fromRevengeCollection ? (

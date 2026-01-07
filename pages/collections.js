@@ -77,6 +77,18 @@ const CollectionsHub = () => {
             directLink: '/collection/movies-like-donnie-darko',
             hasSubCollections: false
         },
+
+        {
+            id: 'eyes-wide-shut',
+            title: 'Movies Like Eyes Wide Shut',
+            description: 'Paranoid thrillers about secret societies, occult rituals, and the hidden elite',
+            icon: Eye,
+            gradient: 'from-violet-700 to-slate-900',
+            movieCount: '10',
+            rating: '7.6',
+            directLink: '/collection/movies-like-eyes-wide-shut',
+            hasSubCollections: false
+        },
         {
             id: 'interstellar',
             title: 'Movies Like Interstellar',

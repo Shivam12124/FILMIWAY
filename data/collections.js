@@ -495,6 +495,94 @@ export const COLLECTIONS = {
   }
 },
 
+
+
+// 👁️ MOVIES LIKE EYES WIDE SHUT COLLECTION
+'movies-like-eyes-wide-shut': {
+  slug: 'movies-like-eyes-wide-shut',
+  title: 'Movies Like Eyes Wide Shut',
+  subtitle: 'Secret Societies & Occult Paranoia',
+  description: 'Surreal thrillers about the hidden elite, secret rituals, and the terrifying paranoia of discovering what happens behind closed doors.',
+  longDescription: 'Step into the forbidden world of the elite. Inspired by Stanley Kubrick’s final masterpiece, this collection explores films where wealthy power brokers hide dark secrets, reality feels like a dream, and curiosity can get you killed. From occult rituals to psychological fugue states, these are cinema’s most paranoid nightmares.',
+
+  emoji: '👁️',
+  theme: 'violet',
+  primaryColor: '#7c3aed',
+  secondaryColor: '#6d28d9',
+  accentColor: '#5b21b6',
+  gradientFrom: 'from-violet-900',
+  gradientTo: 'to-slate-900',
+  category: 'eyes-wide-shut',
+  tags: ['secret societies', 'occult', 'paranoia', 'surrealism', 'erotic thriller', 'cults', 'wealth'],
+
+  metaTitle: '10 Movies Like Eyes Wide Shut (2025) | Occult Paranoia Films | Filmiway',
+  metaDescription: 'Discover 10 paranoid thrillers like Eyes Wide Shut—from Mulholland Drive to The Ninth Gate. Films about secret societies, rituals, and the dark elite.',
+  metaKeywords: 'movies like eyes wide shut, secret society movies, occult thrillers, mulholland drive, the ninth gate, rosemarys baby, illuminati movies, paranoia films',
+
+  stats: {
+    totalMovies: 10,
+    averageRating: 7.6,
+    totalWatchtime: '21 hours 10 minutes',
+    averageParanoiaLevel: 91.5,
+    mostParanoid: 'Rosemary\'s Baby (100/100)',
+    newestMovie: 'Get Out (2017)',
+    oldestMovie: 'Rosemary\'s Baby (1968)'
+  },
+
+  movies: [
+    'tt0166924',  // ✅ Rank 1: Mulholland Drive (2001)
+    'tt0142688',  // ✅ Rank 2: The Ninth Gate (1999)
+    'tt0090756',  // ✅ Rank 3: Blue Velvet (1986)
+    'tt0063522',  // ✅ Rank 4: Rosemary's Baby (1968)
+    'tt0119174',  // ✅ Rank 5: The Game (1997)
+    'tt0116922',  // ✅ Rank 6: Lost Highway (1997)
+    'tt0098354',  // ✅ Rank 7: Society (1989)
+    'tt0134273',  // ✅ Rank 8: 8mm (1999)
+    'tt5052448',  // ✅ Rank 9: Get Out (2017)
+    'tt7026672'   // ✅ Rank 10: The Killing of a Sacred Deer (2017)
+  ],
+
+  badges: [
+    { label: 'Secret Societies', desc: 'Hidden worlds of the elite' },
+    { label: 'Occult Atmosphere', desc: 'Dark rituals and mystery' },
+    { label: 'Dream Logic', desc: 'Surreal, nightmarish storytelling' }
+  ],
+
+  featured: {
+    hero: {
+      title: 'Eyes Wide Shut',
+      subtitle: 'The Ultimate Occult Nightmare',
+      description: 'Stanley Kubrick’s final masterpiece exposes the terrifying, masked underbelly of the wealthy elite in a dream-like odyssey of paranoia.',
+      poster: 'https://image.tmdb.org/t/p/w500/knHT4niVCN0d5d5vR5c50lY8Wz.jpg',
+      backdrop: 'https://image.tmdb.org/t/p/w1280/8rIoyM6zYXJNjzGseco3AaSSlnK.jpg',
+      paranoiaLevel: 98
+    }
+  },
+
+  relatedCollections: [
+    'movies-like-mulholland-drive',
+    'best-psychological-thriller-movies',
+    'best-mystery-thriller-movies'
+  ],
+
+  seo: {
+    title: '10 Movies Like Eyes Wide Shut (2025) | Occult Paranoia Films | Filmiway',
+    description: 'Explore the definitive ranking of films like Eyes Wide Shut. Expert-curated thrillers about secret societies, the occult, and elite paranoia.',
+    keywords: 'movies like eyes wide shut, secret society films, occult movies, mulholland drive, the ninth gate, blue velvet, cult movies, stanley kubrick style',
+    canonicalUrl: 'https://filmiway.com/collection/movies-like-eyes-wide-shut',
+    ogImage: 'https://filmiway.com/images/eyes-wide-shut-movies-collection-og.jpg',
+    structuredData: {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      name: 'Movies Like Eyes Wide Shut',
+      description: 'Expert-curated list of the best films about secret societies and paranoia ranked by intensity',
+      numberOfItems: 10
+    }
+  }
+},
+
+
+
 // 🌀 MOVIES LIKE DONNIE DARKO COLLECTION
 'movies-like-donnie-darko': {
   slug: 'movies-like-donnie-darko',
