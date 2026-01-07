@@ -216,7 +216,7 @@ export const COMPLETE_MOVIE_DATA = {
         psychologicalIntensity: 98, destructiveObsession: 85, visceralImpact: 100, complexityLevel: "EXTREME", 
         dominantColor: "#6b21a8", rating: 7.9, criticsScore: 85, audienceScore: 87, director: "David Lynch", 
         cast: ["Naomi Watts", "Laura Harring"], boxOffice: "$20.1 million", budget: "$15 million", 
-        dna: { "Mystery": 40, "Dreams": 35, "Neo-Noir": 25 },
+          dna: { Mystery: 50, Thriller: 30, Drama: 20 },
         scenes: [
             { time: 25, intensity: 40, label: "Winkie's", color: "#6b21a8" },
             { time: 70, intensity: 55, label: "Audition", color: "#dc2626" },
