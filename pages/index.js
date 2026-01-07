@@ -330,7 +330,7 @@ const FilmiwayHomepage = () => {
                         </motion.button>
                     </motion.div>
 
-                    <motion.div 
+<motion.div 
                         className="bg-gradient-to-r from-gray-900/40 via-gray-800/40 to-gray-900/40 backdrop-blur-sm border border-gray-700/30 rounded-2xl xs:rounded-3xl p-4 xs:p-6 sm:p-8 mb-8 xs:mb-12 max-w-4xl mx-auto"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -342,30 +342,32 @@ const FilmiwayHomepage = () => {
                         </div>
 
                         <div className="grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-2 gap-3 xs:gap-4 sm:gap-6">
-                            <Link href="/collection/movies-like-se7en" className="group block">
-                                <div className="bg-gradient-to-br from-red-500/10 to-orange-500/10 border border-red-500/20 rounded-xl xs:rounded-2xl p-3 xs:p-6 hover:from-red-500/20 hover:to-orange-500/20 hover:border-red-400/40 transition-all duration-300">
-                                    <div className="text-red-400 font-semibold text-base xs:text-lg xs:text-xl mb-1 xs:mb-2 group-hover:text-red-300">
-                                        Like Se7en
+                            {/* Black Swan Collection */}
+                            <Link href="/collection/movies-like-black-swan" className="group block">
+                                <div className="bg-gradient-to-br from-fuchsia-500/10 to-rose-500/10 border border-fuchsia-500/20 rounded-xl xs:rounded-2xl p-3 xs:p-6 hover:from-fuchsia-500/20 hover:to-rose-500/20 hover:border-fuchsia-400/40 transition-all duration-300">
+                                    <div className="text-fuchsia-400 font-semibold text-base xs:text-lg xs:text-xl mb-1 xs:mb-2 group-hover:text-fuchsia-300">
+                                        Like Black Swan
                                     </div>
                                     <div className="text-gray-300 text-sm xs:text-base xs:text-lg group-hover:text-white mb-2 xs:mb-3">
-                                        Dark Detective Thrillers with Twisted Minds
+                                        Psychological Descents into Obsession
                                     </div>
                                     <div className="text-gray-400 text-xs xs:text-sm">
-                                        Gritty crime mysteries featuring detectives hunting serial killers with haunting atmospheres.
+                                        Intense character studies blurring the lines between reality, artistic perfection, and madness.
                                     </div>
                                 </div>
                             </Link>
 
-                            <Link href="/collection/movies-like-the-matrix" className="group block">
-                                <div className="bg-gradient-to-br from-cyan-500/10 to-blue-500/10 border border-cyan-500/20 rounded-xl xs:rounded-2xl p-3 xs:p-6 hover:from-cyan-500/20 hover:to-blue-500/20 hover:border-cyan-400/40 transition-all duration-300">
-                                    <div className="text-cyan-400 font-semibold text-base xs:text-lg xs:text-xl mb-1 xs:mb-2 group-hover:text-cyan-300">
-                                        Like The Matrix
+                            {/* Donnie Darko Collection */}
+                            <Link href="/collection/movies-like-donnie-darko" className="group block">
+                                <div className="bg-gradient-to-br from-indigo-500/10 to-violet-500/10 border border-indigo-500/20 rounded-xl xs:rounded-2xl p-3 xs:p-6 hover:from-indigo-500/20 hover:to-violet-500/20 hover:border-indigo-400/40 transition-all duration-300">
+                                    <div className="text-indigo-400 font-semibold text-base xs:text-lg xs:text-xl mb-1 xs:mb-2 group-hover:text-indigo-300">
+                                        Like Donnie Darko
                                     </div>
                                     <div className="text-gray-300 text-sm xs:text-base xs:text-lg group-hover:text-white mb-2 xs:mb-3">
-                                        Mind-Bending Sci-Fi Reality Benders
+                                        Surreal Sci-Fi & Existential Mystery
                                     </div>
                                     <div className="text-gray-400 text-xs xs:text-sm">
-                                        Reality-questioning sci-fi epics with groundbreaking visuals and philosophical depth.
+                                        Atmospheric cult classics exploring time travel, suburban angst, and twisted realities.
                                     </div>
                                 </div>
                             </Link>
