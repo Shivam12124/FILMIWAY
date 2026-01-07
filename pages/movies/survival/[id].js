@@ -1,6 +1,5 @@
-// pages/movies/survival/[id].js - SURVIVAL EDITION ⛰️✅
-// VISUALS: Minimalist (Banner + Details Only)
-// SCHEMA: Maximalist (Hidden Survivability Metrics, Peak Moments, and FAQs)
+// pages/movies/survival/[id].js - FIXED BUILD ERROR ✅
+// Added missing SubtleFilmGrain component definition
 
 import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
@@ -36,7 +35,7 @@ const MOVIE_YEARS = {
 const getTMDBImage = (path, size = 'w1280') =>
   path ? `https://image.tmdb.org/t/p/${size}${path}` : undefined;
 
-// ✅ OPTIMIZED BANNER (Hydration Fixed + Survival Metrics)
+// ✅ OPTIMIZED BANNER
 const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
   const [showTrailer, setShowTrailer] = useState(false);
   const [countdown, setCountdown] = useState(4);
@@ -44,14 +43,12 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
   const [mounted, setMounted] = useState(false);
   const timerRef = useRef(null);
 
-  // Priority: Rich Data > TMDB Data > Movie Object
   const backdropPath = richData?.backdrop_path || movieData?.backdrop_path || movie?.backdrop_path;
   const posterPath = richData?.poster_path || movieData?.poster_path || movie?.poster_path;
 
   const bannerImage = backdropPath ? getTMDBImage(backdropPath, 'w1280') : null;
   const posterImage = posterPath ? getTMDBImage(posterPath, 'w500') : null;
 
-  // Insight & Metrics (Survival Specific)
   const insight = richData?.synopsis || "An extraordinary exploration of human endurance and the will to survive against impossible odds.";
   const survivalIndex = richData?.survivabilityIndex || 85;
 
@@ -169,6 +166,11 @@ const AuthorCreditSection = () => (
             <div className="flex items-center gap-3 sm:gap-4"><span className="text-xs sm:text-sm" style={{ color: COLORS.textDisabled }}>Share:</span><div className="flex gap-2 sm:gap-3">{[Twitter, Hash, Send].map((Icon, i) => (<button key={i} className="p-1.5 sm:p-2 rounded-full transition-colors" style={{ color: COLORS.textDisabled }} onMouseEnter={(e) => { e.currentTarget.style.color = COLORS.textSecondary; e.currentTarget.style.backgroundColor = COLORS.bgCard; }} onMouseLeave={(e) => { e.currentTarget.style.color = COLORS.textDisabled; e.currentTarget.style.backgroundColor = 'transparent'; }}><Icon className="w-3 h-3 sm:w-4 sm:h-4" /></button>))}</div></div>
         </div>
     </motion.section>
+);
+
+// ✅ ADDED MISSING COMPONENT
+const SubtleFilmGrain = () => (
+    <div className="fixed inset-0 pointer-events-none z-0 opacity-[0.005]"><div className="w-full h-full bg-repeat" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)' opacity='0.3'/%3E%3C/svg%3E")`, backgroundSize: '60px 60px' }} /></div>
 );
 
 const SurvivalBreadcrumb = ({ movie }) => (
