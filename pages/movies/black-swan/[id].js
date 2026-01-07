@@ -201,31 +201,47 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
   const sensitiveData = SENSITIVE_TIMELINES[movie.tmdbId];
   const faqs = BLACK_SWAN_MOVIE_FAQS[movie.Title] || [];
 
-  // ... (Keep your existing stats/description logic) ... 
+  // 1. CALCULATE THE PEAK MOMENT (New Feature)
+  let peakStats = "Peak info unavailable.";
+  if (data?.scenes && data.scenes.length > 0) {
+    // Find the scene with the highest intensity
+    const peakScene = data.scenes.reduce((prev, current) => 
+      (current.intensity > prev.intensity) ? current : prev
+    );
+    peakStats = `[PEAK MOMENT] Maximum Intensity (${peakScene.intensity}/100) hits at minute ${peakScene.time}: "${peakScene.label}".`;
+  }
+
+  // 2. METRICS (Updated with your specific keys)
   const intensityStats = `
     [FILMIWAY METRICS]
     - Psychological Intensity: ${data?.psychologicalIntensity || 0}/100
-    - Artistic Obsession: ${data?.artisticObsession || 0}/100
-    - Identity Horror: ${data?.identityHorror || 0}/100
-    - Complexity Level: ${data?.complexityLevel || 'High'}
+    - Destructive Obsession: ${data?.destructiveObsession || 0}/100
+    - Visceral Impact: ${data?.visceralImpact || 0}/100
   `;
 
   const dnaStats = data?.dna 
     ? `[GENRE DNA] ${Object.entries(data.dna).map(([genre, val]) => `${genre}: ${val}%`).join(', ')}`
     : 'Psychological Thriller';
 
+ // ✅ FIXED: Now shows exact timestamps if they exist in your data
   const contentWarnings = sensitiveData?.scenes 
-    ? `[CONTENT ADVISORY] Contains: ${sensitiveData.scenes.map(s => `${s.type} (${s.severity})`).join(', ')}.`
+    ? `[CONTENT ADVISORY] ${sensitiveData.scenes.map(s => 
+        // If strict timestamps exist, show them clearly
+        (s.start && s.end) 
+          ? `${s.type}: ${s.start}-${s.end} (${s.severity})` 
+          : `${s.type} (${s.severity})` // Fallback if no times listed
+      ).join(' | ')}.`
     : 'No specific content warnings listed.';
-
   const faqText = faqs.length > 0
     ? `[COMMON QUESTIONS] ${faqs.map(f => `Q: ${f.question} A: ${f.answer}`).join(' | ')}`
     : '';
 
+  // 3. COMPILE FULL DESCRIPTION
   const fullDescription = `
     ${data?.synopsis || movie.description || "A psychologically intense film."}
     
     --- DETAILED ANALYSIS ---
+    ${peakStats} 
     ${intensityStats}
     ${dnaStats}
     ${contentWarnings}
@@ -235,7 +251,7 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
     Production: Budget ${data?.budget || 'N/A'}, Box Office ${data?.boxOffice || 'N/A'}.
   `.replace(/\s+/g, ' ').trim();
 
-  // ✅ 3. MAIN MOVIE SCHEMA WITH CRITIC REVIEW
+  // 4. MAIN MOVIE SCHEMA
   const movieSchema = {
     "@context": "https://schema.org",
     "@type": "Movie",
@@ -252,8 +268,6 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
       "name": actor
     })) || [],
     
-    // 🔥 CHANGE: Removed "AggregateRating" (The Fake Audience Score)
-    // ✅ ADDED: "Review" (Your Honest Critic Score)
     "review": {
       "@type": "Review",
       "author": {
@@ -262,7 +276,7 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
       },
       "reviewRating": {
         "@type": "Rating",
-        "ratingValue": data?.rating || 8.0, // Uses your real rating
+        "ratingValue": data?.rating || 8.0, 
         "bestRating": "10",
         "worstRating": "1"
       }

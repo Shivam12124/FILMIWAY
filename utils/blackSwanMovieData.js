@@ -116,17 +116,25 @@ export const FALLBACK_POSTERS = {
     242582: "https://m.media-amazon.com/images/M/MV5BNjkyMDQ1NTEwMl5BMl5BanBnXkFtZTgwNzQ4NDE5NTM@._V1_SX500.jpg"
 };
 
-const createMovieData = (data) => data;
 
+
+// ✅ Helper function to ensure defaults
+const createMovieData = (data) => ({
+  psychologicalIntensity: 80,
+  destructiveObsession: 80, 
+  visceralImpact: 70,       
+  complexityLevel: "HIGH",
+  dominantColor: "#000000",
+  ...data,
+});
 
 export const COMPLETE_MOVIE_DATA = {
-    // 1. Perfect Blue
+    // 1. Perfect Blue (The Blueprint)
     10494: createMovieData({ 
-        psychologicalIntensity: 95, artisticObsession: 98, identityHorror: 100, complexityLevel: "EXTREME", 
+        psychologicalIntensity: 95, destructiveObsession: 98, visceralImpact: 95, complexityLevel: "EXTREME", 
         dominantColor: "#991b1b", rating: 8.0, criticsScore: 81, audienceScore: 85, director: "Satoshi Kon", 
         cast: ["Junko Iwao", "Rica Matsumoto"], boxOffice: "$0.8 million", budget: "$1.2 million", 
-        // 🧬 DNA: Map strictly to STANDARDIZED_COLORS
-        dna: {   "Psychological": 45, "Horror": 30, "Mystery": 25 },
+        dna: { "Psychological": 45, "Horror": 30, "Mystery": 25 },
         scenes: [
             { time: 15, intensity: 45, label: "The Shift", color: "#991b1b" },
             { time: 40, intensity: 70, label: "Me-Mania", color: "#9333ea" },
@@ -138,9 +146,9 @@ export const COMPLETE_MOVIE_DATA = {
         themes: ["Identity Loss", "Celebrity Culture", "Psychological Horror"]
     }),
 
-    // 2. Whiplash
+    // 2. Whiplash (The Twin)
     244786: createMovieData({ 
-        psychologicalIntensity: 92, artisticObsession: 95, identityHorror: 60, complexityLevel: "HIGH", 
+        psychologicalIntensity: 92, destructiveObsession: 95, visceralImpact: 80, complexityLevel: "HIGH", 
         dominantColor: "#dc2626", rating: 8.5, criticsScore: 94, audienceScore: 94, director: "Damien Chazelle", 
         cast: ["Miles Teller", "J.K. Simmons"], boxOffice: "$49 million", budget: "$3.3 million", 
         dna: { "Drama": 50, "Psychological": 30, "Thriller": 20 },
@@ -155,9 +163,9 @@ export const COMPLETE_MOVIE_DATA = {
         themes: ["Perfectionism", "Toxic Mentorship", "Sacrifice"]
     }),
 
-    // 3. Suspiria (2018)
+    // 3. Suspiria (The Witchy Sister)
     361292: createMovieData({ 
-        psychologicalIntensity: 88, artisticObsession: 90, identityHorror: 85, complexityLevel: "EXTREME", 
+        psychologicalIntensity: 88, destructiveObsession: 90, visceralImpact: 85, complexityLevel: "EXTREME", 
         dominantColor: "#991b1b", rating: 6.7, criticsScore: 66, audienceScore: 65, director: "Luca Guadagnino", 
         cast: ["Dakota Johnson", "Tilda Swinton"], boxOffice: "$7.9 million", budget: "$20 million", 
         dna: { "Horror": 45, "Fantasy": 35, "Mystery": 20 },
@@ -172,9 +180,9 @@ export const COMPLETE_MOVIE_DATA = {
         themes: ["Witchcraft", "Maternal Power", "Physical Brutality"]
     }),
 
-    // 4. The Red Shoes
+    // 4. The Red Shoes (The Grandmother)
     19542: createMovieData({ 
-        psychologicalIntensity: 75, artisticObsession: 88, identityHorror: 70, complexityLevel: "HIGH", 
+        psychologicalIntensity: 75, destructiveObsession: 88, visceralImpact: 75, complexityLevel: "HIGH", 
         dominantColor: "#dc2626", rating: 8.1, criticsScore: 97, audienceScore: 92, director: "Michael Powell", 
         cast: ["Moira Shearer", "Anton Walbrook"], boxOffice: "$5 million", budget: "$1.2 million", 
         dna: { "Drama": 45, "Romance": 35, "Fantasy": 20 },
@@ -189,9 +197,9 @@ export const COMPLETE_MOVIE_DATA = {
         themes: ["Art vs Life", "Total Devotion", "Tragic Fate"]
     }),
 
-    // 5. The Wrestler
-   12163: createMovieData({ 
-        psychologicalIntensity: 85, artisticObsession: 90, identityHorror: 60, complexityLevel: "HIGH", 
+    // 5. The Wrestler (The Brother)
+    12163: createMovieData({ 
+        psychologicalIntensity: 85, destructiveObsession: 90, visceralImpact: 85, complexityLevel: "HIGH", 
         dominantColor: "#dc2626", rating: 7.9, criticsScore: 98, audienceScore: 88, director: "Darren Aronofsky", 
         cast: ["Mickey Rourke", "Marisa Tomei"], boxOffice: "$44.7 million", budget: "$6 million", 
         dna: { "Drama": 60, "Action": 25, "Romance": 15 },
@@ -206,9 +214,9 @@ export const COMPLETE_MOVIE_DATA = {
         themes: ["Body Horror", "Lost Glory", "Addiction to Performance"]
     }),
 
-    // 6. Mulholland Drive
+    // 6. Mulholland Drive (The Nightmare)
     1018: createMovieData({ 
-        psychologicalIntensity: 98, artisticObsession: 85, identityHorror: 100, complexityLevel: "EXTREME", 
+        psychologicalIntensity: 98, destructiveObsession: 85, visceralImpact: 100, complexityLevel: "EXTREME", 
         dominantColor: "#6b21a8", rating: 7.9, criticsScore: 85, audienceScore: 87, director: "David Lynch", 
         cast: ["Naomi Watts", "Laura Harring"], boxOffice: "$20.1 million", budget: "$15 million", 
         dna: { "Mystery": 40, "Dreams": 35, "Neo-Noir": 25 },
@@ -223,9 +231,9 @@ export const COMPLETE_MOVIE_DATA = {
         themes: ["Identity Fracture", "Hollywood Underbelly", "Dream Logic"]
     }),
 
-    // 7. The Piano Teacher
+    // 7. The Piano Teacher (The Dark Mirror)
     1791: createMovieData({ 
-        psychologicalIntensity: 95, artisticObsession: 92, identityHorror: 80, complexityLevel: "HIGH", 
+        psychologicalIntensity: 95, destructiveObsession: 92, visceralImpact: 88, complexityLevel: "HIGH", 
         dominantColor: "#9333ea", rating: 7.5, criticsScore: 74, audienceScore: 78, director: "Michael Haneke", 
         cast: ["Isabelle Huppert", "Benoît Magimel"], boxOffice: "$2.4 million", budget: "$6.5 million", 
         dna: { "Psychological": 50, "Drama": 30, "Romance": 20 },
@@ -240,9 +248,9 @@ export const COMPLETE_MOVIE_DATA = {
         themes: ["Repression", "Masochism", "Control"]
     }),
 
-    // 8. Birdman
+    // 8. Birdman (The Ego)
     194662: createMovieData({ 
-        psychologicalIntensity: 85, artisticObsession: 95, identityHorror: 60, complexityLevel: "HIGH", 
+        psychologicalIntensity: 85, destructiveObsession: 95, visceralImpact: 60, complexityLevel: "HIGH", 
         dominantColor: "#f59e0b", rating: 7.7, criticsScore: 91, audienceScore: 78, director: "Alejandro G. Iñárritu", 
         cast: ["Michael Keaton", "Edward Norton"], boxOffice: "$103.2 million", budget: "$18 million", 
         dna: { "Comedy": 40, "Drama": 30, "Psychological": 30 },
@@ -257,27 +265,26 @@ export const COMPLETE_MOVIE_DATA = {
         themes: ["Ego Dissolution", "Artistic Integrity", "Fame"]
     }),
 
-// 9. Requiem for a Dream - UNIVERSAL INTENSITY Benchmark (100)
+    // 9. Requiem for a Dream (The Addiction)
     641: createMovieData({ 
-        psychologicalIntensity: 98, artisticObsession: 90, identityHorror: 95, complexityLevel: "HIGH", 
+        psychologicalIntensity: 98, destructiveObsession: 90, visceralImpact: 100, complexityLevel: "HIGH", 
         dominantColor: "#dc2626", rating: 8.3, criticsScore: 79, audienceScore: 93, director: "Darren Aronofsky", 
         cast: ["Ellen Burstyn", "Jared Leto"], boxOffice: "$7.4 million", budget: "$4.5 million", 
-        // 🧬 DNA Fixed: Strictly using your Genre Color Keys
         dna: { "Drama": 50, "Horror": 30, "Psychological": 20 },
         scenes: [
-            { time: 25, intensity: 55, label: "Summer High", color: "#f59e0b" }, // Action/High Energy
-            { time: 55, intensity: 75, label: "Fall Decline", color: "#dc2626" }, // Drama/Tension
-            { time: 85, intensity: 92, label: "Winter Psychosis", color: "#9333ea" }, // Psychological
-            { time: 98, intensity: 100, label: "The Crescendo", color: "#991b1b" }, // Horror (Climax)
-            { time: 102, intensity: 85, label: "Fetal Position", color: "#0f172a" }  // Thriller/Cold Ending
+            { time: 25, intensity: 55, label: "Summer High", color: "#f59e0b" }, 
+            { time: 55, intensity: 75, label: "Fall Decline", color: "#dc2626" }, 
+            { time: 85, intensity: 92, label: "Winter Psychosis", color: "#9333ea" }, 
+            { time: 98, intensity: 100, label: "The Crescendo", color: "#991b1b" }, 
+            { time: 102, intensity: 85, label: "Fetal Position", color: "#0f172a" } 
         ],
         synopsis: "Four individuals on the edge of Coney Island chase dreams of a better life, only to be consumed by the very addictions they used to escape. Using frenetic, hypnotic editing, Aronofsky delivers a devastating warning on the price of obsession. This is not just a film; it is a sensory journey into a psychological void that peaks with one of the most intense, heart-shattering finales ever committed to screen.",
         themes: ["Addiction", "Self-Destruction", "Hallucination"]
     }),
 
-    // 10. Nightcrawler
+    // 10. Nightcrawler (The Sociopath)
     242582: createMovieData({ 
-        psychologicalIntensity: 80, artisticObsession: 92, identityHorror: 50, complexityLevel: "MEDIUM", 
+        psychologicalIntensity: 80, destructiveObsession: 92, visceralImpact: 60, complexityLevel: "MEDIUM", 
         dominantColor: "#0f172a", rating: 7.8, criticsScore: 95, audienceScore: 86, director: "Dan Gilroy", 
         cast: ["Jake Gyllenhaal", "Rene Russo"], boxOffice: "$50.3 million", budget: "$8.5 million", 
         dna: { "Crime": 40, "Thriller": 40, "Neo-Noir": 20 },
