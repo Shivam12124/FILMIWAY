@@ -1,4 +1,4 @@
-// utils/sciFiMovieData.js - SCI-FI COLLECTION DATA
+// utils/sciFiMovieData.js - SCI-FI COLLECTION DATA ✅
 // Movies exploring the future, artificial intelligence, and the nature of reality.
 
 export const TMDB_CONFIG = {
@@ -8,17 +8,34 @@ export const TMDB_CONFIG = {
     POSTER_SIZES: { small: 'w300', medium: 'w500', large: 'w780', original: 'original' }
 };
 
+// 1️⃣ COMPLETE_MOVIE_DATABASE (The List)
+export const COMPLETE_MOVIE_DATABASE = [
+    { tmdbId: 62, imdbID: "tt0062622", Title: "2001: A Space Odyssey", year: 1968, genre: "Sci-Fi", runtime: 149, rank: 1 },
+    { tmdbId: 78, imdbID: "tt0082869", Title: "Blade Runner", year: 1982, genre: "Sci-Fi", runtime: 117, rank: 2 },
+    { tmdbId: 603, imdbID: "tt0133093", Title: "The Matrix", year: 1999, genre: "Sci-Fi", runtime: 136, rank: 3 },
+    { tmdbId: 348, imdbID: "tt0078748", Title: "Alien", year: 1979, genre: "Sci-Fi", runtime: 117, rank: 4 },
+    { tmdbId: 157336, imdbID: "tt0816692", Title: "Interstellar", year: 2014, genre: "Sci-Fi", runtime: 169, rank: 5 },
+    { tmdbId: 280, imdbID: "tt0103064", Title: "Terminator 2: Judgment Day", year: 1991, genre: "Sci-Fi", runtime: 137, rank: 6 },
+    { tmdbId: 27205, imdbID: "tt1375666", Title: "Inception", year: 2010, genre: "Sci-Fi", runtime: 148, rank: 7 },
+    { tmdbId: 329865, imdbID: "tt2543164", Title: "Arrival", year: 2016, genre: "Sci-Fi", runtime: 116, rank: 8 },
+    { tmdbId: 1891, imdbID: "tt0080684", Title: "Star Wars: Episode V - The Empire Strikes Back", year: 1980, genre: "Sci-Fi", runtime: 124, rank: 9 },
+    { tmdbId: 335984, imdbID: "tt1856101", Title: "Blade Runner 2049", year: 2017, genre: "Sci-Fi", runtime: 164, rank: 10 }
+];
+
+// 🔥 VITAL EXPORT FOR BUILD 🔥
+export const SCI_FI_MOVIES = COMPLETE_MOVIE_DATABASE;
+
 // ✅ HELPER: Sci-Fi Metrics
 const createMovieData = (data) => ({
-  sciFiComplexity: 90,    // Hard Sci-Fi vs Soft Sci-Fi factor
-  visualSpectacle: 90,    // VFX / World Building
-  philosophicalDepth: 85, // Intellectual weight
-  complexityLevel: "HIGH",
-  dominantColor: "#000000",
-  ...data,
+    sciFiComplexity: 90,    // Hard Sci-Fi vs Soft Sci-Fi factor
+    visualSpectacle: 90,    // VFX / World Building
+    philosophicalDepth: 85, // Intellectual weight
+    complexityLevel: "HIGH",
+    dominantColor: "#000000",
+    ...data,
 });
 
-// 1. MAIN MOVIE DATA (Graph Data + Analysis)
+// 2️⃣ COMPLETE_MOVIE_DATA (The Details)
 export const COMPLETE_MOVIE_DATA = {
     // 1. 2001: A Space Odyssey
     62: createMovieData({ 
@@ -140,7 +157,7 @@ export const COMPLETE_MOVIE_DATA = {
     }),
 
     // 8. Arrival
-    203416: createMovieData({ 
+    329865: createMovieData({ 
         sciFiComplexity: 89, visualSpectacle: 85, philosophicalDepth: 98, complexityLevel: "HIGH", 
         dominantColor: "#164e63", rating: 7.9, criticsScore: 94, audienceScore: 82, director: "Denis Villeneuve", 
         cast: ["Amy Adams", "Jeremy Renner", "Forest Whitaker"], boxOffice: "$203.2 million", budget: "$47 million", 
@@ -169,7 +186,7 @@ export const COMPLETE_MOVIE_DATA = {
             { time: 105, intensity: 88, label: "Carbon Freeze", color: "#ef4444" }, 
             { time: 120, intensity: 95, label: "The Revelation", color: "#dc2626" }
         ], 
-        synopsis: "After the Rebels are overpowered on the ice planet Hoth, Luke Skywalker begins Jedi training with Yoda, while his friends are pursued by Darth Vader. Luke confronts Vader in a duel where he learns a devastating truth. A darker, more mature chapter in the saga.", 
+        synopsis: "After the Rebels are brutally overpowered by the Empire on the ice planet Hoth, Luke Skywalker begins Jedi training with Yoda, while his friends are pursued by Darth Vader. Luke confronts Vader in a duel where he learns a devastating truth. A darker, more mature chapter in the saga.", 
         themes: ["Good vs Evil", "Patience", "Failure", "Destiny"]
     }),
 
@@ -191,7 +208,7 @@ export const COMPLETE_MOVIE_DATA = {
     })
 };
 
-// 2. SENSITIVE TIMELINES (Schema Data)
+// 3. SENSITIVE TIMELINES (Schema Data)
 export const SENSITIVE_TIMELINES = {
     62: { scenes: [] }, // 2001 (Clean)
     78: { scenes: [
@@ -210,7 +227,7 @@ export const SENSITIVE_TIMELINES = {
         { start: '11:40', end: '11:52', type: 'Partial Nudity', severity: 'Mild', description: 'Non-sexual male buttocks' }
     ] },
     27205: { scenes: [] }, // Inception (Clean)
-    203416: { scenes: [] }, // Arrival (Clean)
+    329865: { scenes: [] }, // Arrival (Clean)
     1891: { scenes: [
         { start: '52:00', end: '52:05', type: 'Kissing', severity: 'Mild' }
     ] },
@@ -223,6 +240,7 @@ export const SENSITIVE_TIMELINES = {
     ] }
 };
 
+// 4. FAQS (Deep Analysis & Insight Edition)
 // 3. FAQS (Deep Analysis & Insight Edition)
 export const SCI_FI_MOVIE_FAQS = {
     '2001: A Space Odyssey': [
@@ -407,7 +425,7 @@ export const SCI_FI_MOVIE_FAQS = {
     ]
 };
 
-// 4. STRATEGIC QUOTES
+// 5. STRATEGIC QUOTES
 export const STRATEGIC_QUOTES = {
     62: "I'm sorry, Dave. I'm afraid I can't do that.",
     78: "All those moments will be lost in time, like tears in rain.",
@@ -421,29 +439,18 @@ export const STRATEGIC_QUOTES = {
     335984: "Dying for the right cause. It's the most human thing we can do."
 };
 
-// 5. COLORS
+// 6. COLORS
 export const CINEMATIC_COLORS = {
     "SciFi": "#0ea5e9", "Action": "#dc2626", "Thriller": "#f59e0b", "Drama": "#8b5cf6", "Adventure": "#10b981", "Horror": "#9f1239", "Mystery": "#6366f1", "Fantasy": "#ec4899"
 };
 
-// 6. RATING OPTIONS
+// 7. RATING OPTIONS
 export const RATING_OPTIONS = [
     { value: 1, label: "Glitch in the Matrix", color: "#dc2626", symbol: "🔌", bgColor: "bg-red-900/30", description: "System Failure" },
     { value: 2, label: "Malfunctioning", color: "#ea580c", symbol: "🤖", bgColor: "bg-orange-900/30", description: "Needs repairs" },
     { value: 3, label: "Stable System", color: "#16a34a", symbol: "🚀", bgColor: "bg-green-900/30", description: "Solid functionality" },
     { value: 4, label: "Transcendence", color: "#eab308", symbol: "✨", bgColor: "bg-yellow-900/30", description: "Evolutionary Masterpiece" }
 ];
-
-// 7. DATABASE LIST
-export const COMPLETE_MOVIE_DATABASE = Object.values(COMPLETE_MOVIE_DATA).map(m => ({
-    tmdbId: m.tmdbId,
-    imdbID: m.imdbID,
-    Title: m.title,
-    year: m.year,
-    genre: m.genre,
-    runtime: parseInt(m.runtime),
-    rank: 0 // You can assign ranks if needed
-}));
 
 // 8. UTILITY FUNCTIONS
 export const getTMDBPosterUrl = (posterPath, size = 'medium') => {
@@ -471,7 +478,6 @@ export const generateFAQData = (movie) => {
 
 export const generateMovieSchema = (movie) => {
     const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
-    // This function can be expanded as needed by the page component
     return {
         "@context": "https://schema.org", "@type": "Movie", "name": movie.Title
     };
