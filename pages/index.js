@@ -1,6 +1,4 @@
-
-// pages/index.js - FULLY OPTIMIZED VERSION ⚡
-// ALL ISSUES FIXED: Images, Carousel, Mobile, Performance
+// pages/index.js - FINAL SEO VERSION (With Complete Footer Links) 🚀
 import React, { useState, useEffect, useRef, useCallback, memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Head from 'next/head';
@@ -18,7 +16,7 @@ const TMDB_API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
 const TMDB_BASE_URL = 'https://api.themoviedb.org/3';
 const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p';
 
-// ✅ ICON SIZE SYSTEM - Consistent across app
+// ✅ ICON SIZE SYSTEM
 const ICON_SIZES = {
     xs: 'w-3 h-3 sm:w-4 sm:h-4',
     sm: 'w-4 h-4 sm:w-5 sm:h-5',
@@ -27,7 +25,7 @@ const ICON_SIZES = {
     xl: 'w-7 h-7 sm:w-8 sm:h-8',
 };
 
-// ✅ MEMOIZED MOVIE CARD - Better performance
+// ✅ MEMOIZED MOVIE CARD
 const MovieCard = memo(({ movie, index, isMobile, onClick }) => (
     <motion.div
         className="group cursor-pointer select-none"
@@ -181,18 +179,17 @@ const FilmiwayHomepage = () => {
             <div className="container mx-auto px-4 sm:px-6">
                 <div className="flex items-center justify-between h-16 sm:h-20">
                     <Link href="/" className="flex items-center justify-start">
-<div className="w-48 sm:w-60 md:w-72 h-20 sm:h-24 md:h-28 flex items-center justify-start">
-    <Image
-        src="/filmiway-logo.svg"
-        alt="Filmiway"
-        width={288}
-        height={112}
-        priority={true}
-        className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
-        draggable={false}
-    />
-</div>
-
+                        <div className="w-48 sm:w-60 md:w-72 h-20 sm:h-24 md:h-28 flex items-center justify-start">
+                            <Image
+                                src="/filmiway-logo.svg"
+                                alt="Filmiway"
+                                width={288}
+                                height={112}
+                                priority={true}
+                                className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
+                                draggable={false}
+                            />
+                        </div>
                     </Link>
 
                     <div className="hidden md:flex items-center space-x-6">
@@ -204,7 +201,6 @@ const FilmiwayHomepage = () => {
                         >
                             Trending
                         </button>
-                       
                     </div>
 
                     <button 
@@ -235,7 +231,6 @@ const FilmiwayHomepage = () => {
                                 >
                                     Trending
                                 </button>
-                              
                             </div>
                         </motion.div>
                     )}
@@ -330,7 +325,7 @@ const FilmiwayHomepage = () => {
                         </motion.button>
                     </motion.div>
 
-<motion.div 
+                    <motion.div 
                         className="bg-gradient-to-r from-gray-900/40 via-gray-800/40 to-gray-900/40 backdrop-blur-sm border border-gray-700/30 rounded-2xl xs:rounded-3xl p-4 xs:p-6 sm:p-8 mb-8 xs:mb-12 max-w-4xl mx-auto"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -341,36 +336,47 @@ const FilmiwayHomepage = () => {
                             <h2 className="text-lg xs:text-xl font-light text-white">Featured Collections</h2>
                         </div>
 
-                        <div className="grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-2 gap-3 xs:gap-4 sm:gap-6">
-                            {/* Black Swan Collection */}
-                            <Link href="/collection/movies-like-black-swan" className="group block">
-                                <div className="bg-gradient-to-br from-fuchsia-500/10 to-rose-500/10 border border-fuchsia-500/20 rounded-xl xs:rounded-2xl p-3 xs:p-6 hover:from-fuchsia-500/20 hover:to-rose-500/20 hover:border-fuchsia-400/40 transition-all duration-300">
-                                    <div className="text-fuchsia-400 font-semibold text-base xs:text-lg xs:text-xl mb-1 xs:mb-2 group-hover:text-fuchsia-300">
-                                        Like Black Swan
+                        <div className="grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 xs:gap-4 sm:gap-6">
+                          
+
+                            {/* 2. Donnie Darko (Mind-Bending) */}
+                            <Link href="/collection/movies-like-donnie-darko" className="group block">
+                                <div className="h-full bg-gradient-to-br from-indigo-900/20 to-violet-900/20 border border-indigo-500/20 rounded-xl xs:rounded-2xl p-4 hover:from-indigo-900/40 hover:to-violet-900/40 hover:border-indigo-400/40 transition-all duration-300">
+                                    <div className="text-indigo-400 font-semibold text-lg mb-1 group-hover:text-indigo-300">
+                                        Like Donnie Darko
                                     </div>
-                                    <div className="text-gray-300 text-sm xs:text-base xs:text-lg group-hover:text-white mb-2 xs:mb-3">
-                                        Psychological Descents into Obsession
-                                    </div>
-                                    <div className="text-gray-400 text-xs xs:text-sm">
-                                        Intense character studies blurring the lines between reality, artistic perfection, and madness.
+                                    <div className="text-gray-400 text-xs">
+                                        Surreal sci-fi, time travel & twisted realities.
                                     </div>
                                 </div>
                             </Link>
 
-                            {/* Donnie Darko Collection */}
-                            <Link href="/collection/movies-like-donnie-darko" className="group block">
-                                <div className="bg-gradient-to-br from-indigo-500/10 to-violet-500/10 border border-indigo-500/20 rounded-xl xs:rounded-2xl p-3 xs:p-6 hover:from-indigo-500/20 hover:to-violet-500/20 hover:border-indigo-400/40 transition-all duration-300">
-                                    <div className="text-indigo-400 font-semibold text-base xs:text-lg xs:text-xl mb-1 xs:mb-2 group-hover:text-indigo-300">
-                                        Like Donnie Darko
+                         
+                            {/* 4. Oldboy (Revenge) - NEW 🔥 */}
+                            <Link href="/collection/movies-like-oldboy" className="group block">
+                                <div className="h-full bg-gradient-to-br from-red-900/20 to-orange-900/20 border border-red-500/20 rounded-xl xs:rounded-2xl p-4 hover:from-red-900/40 hover:to-orange-900/40 hover:border-red-400/40 transition-all duration-300">
+                                    <div className="text-red-400 font-semibold text-lg mb-1 group-hover:text-red-300">
+                                        Like Oldboy
                                     </div>
-                                    <div className="text-gray-300 text-sm xs:text-base xs:text-lg group-hover:text-white mb-2 xs:mb-3">
-                                        Surreal Sci-Fi & Existential Mystery
-                                    </div>
-                                    <div className="text-gray-400 text-xs xs:text-sm">
-                                        Atmospheric cult classics exploring time travel, suburban angst, and twisted realities.
+                                    <div className="text-gray-400 text-xs">
+                                        Visceral revenge & shocking twists.
                                     </div>
                                 </div>
                             </Link>
+
+                            {/* 5. Se7en (Noir) - NEW 🔥 */}
+                            <Link href="/collection/movies-like-se7en" className="group block">
+                                <div className="h-full bg-gradient-to-br from-slate-800/40 to-gray-800/40 border border-slate-500/20 rounded-xl xs:rounded-2xl p-4 hover:from-slate-800/60 hover:to-gray-800/60 hover:border-slate-400/40 transition-all duration-300">
+                                    <div className="text-slate-400 font-semibold text-lg mb-1 group-hover:text-slate-300">
+                                        Like Se7en
+                                    </div>
+                                    <div className="text-gray-400 text-xs">
+                                        Gritty detective noir & serial killer hunts.
+                                    </div>
+                                </div>
+                            </Link>
+
+                          
                         </div>
                     </motion.div>
                 </motion.div>
@@ -380,21 +386,20 @@ const FilmiwayHomepage = () => {
 
     HeroSection.displayName = 'HeroSection';
 
-    // ✅ OPTIMIZED CAROUSEL - FIXED DRAG + RESPONSIVE
+    // ✅ OPTIMIZED CAROUSEL
     const ProfessionalCarousel = memo(({ movies, sectionRef }) => {
         const [currentIndex, setCurrentIndex] = useState(0);
         const dragRef = useRef({ isDragging: false, startX: 0, currentX: 0, offset: 0 });
         const containerRef = useRef(null);
 
-        // ✅ BETTER ITEMS PER VIEW CALCULATION
         const getItemsPerView = useCallback(() => {
             if (typeof window === 'undefined') return 2;
             const width = window.innerWidth;
-            if (width < 640) return 2;           // Mobile
-            if (width < 768) return 2.5;         // Small tablet
-            if (width < 1024) return 3;          // Tablet
-            if (width < 1280) return 4;          // Small desktop
-            return 6;                            // Large desktop
+            if (width < 640) return 2;
+            if (width < 768) return 2.5;
+            if (width < 1024) return 3;
+            if (width < 1280) return 4;
+            return 6;
         }, []);
 
         const itemsPerView = getItemsPerView();
@@ -408,7 +413,6 @@ const FilmiwayHomepage = () => {
             setCurrentIndex(prev => Math.max(prev - 1, 0));
         }, []);
 
-        // ✅ POINTER EVENTS (works for mouse + touch)
         const handlePointerDown = useCallback((e) => {
             dragRef.current.isDragging = true;
             dragRef.current.startX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
@@ -427,7 +431,7 @@ const FilmiwayHomepage = () => {
             if (!dragRef.current.isDragging) return;
             
             const diff = dragRef.current.offset;
-            const threshold = 30; // ✅ REDUCED from 50 for easier mobile swipe
+            const threshold = 30;
             
             if (Math.abs(diff) > threshold) {
                 if (diff > 0 && currentIndex < maxIndex) {
@@ -443,7 +447,6 @@ const FilmiwayHomepage = () => {
 
         return (
             <div ref={sectionRef} className="relative select-none">
-                {/* ✅ DESKTOP ARROWS */}
                 {!isMobile && (
                     <>
                         <button
@@ -468,7 +471,6 @@ const FilmiwayHomepage = () => {
                     </>
                 )}
 
-                {/* ✅ CAROUSEL CONTAINER */}
                 <div 
                     ref={containerRef}
                     className={`overflow-hidden ${!isMobile ? 'px-8' : 'px-0'} ${isMobile ? 'cursor-grab active:cursor-grabbing' : ''} select-none`}
@@ -501,7 +503,6 @@ const FilmiwayHomepage = () => {
                     </div>
                 </div>
 
-                {/* ✅ DOT INDICATORS */}
                 {maxIndex > 0 && (
                     <div className="flex justify-center mt-4 xs:mt-6 space-x-2">
                         {Array.from({ length: Math.ceil(maxIndex) + 1 }).map((_, index) => (
@@ -634,9 +635,65 @@ const FilmiwayHomepage = () => {
                     </div>
                 </motion.section>
 
-                {/* ✅ FOOTER - OPTIMIZED */}
+                {/* ✅ FOOTER - FULLY OPTIMIZED WITH ALL LINKS FOR SEO */}
                 <footer className="bg-gradient-to-t from-gray-900 to-black py-8 sm:py-12 border-t border-gray-800 select-none">
                     <div className="container mx-auto px-4 sm:px-6">
+                        
+                        {/* 🚀 SEO FOOTER LINKS - CRITICAL FOR INDEXING */}
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12 border-b border-gray-800 pb-12 text-left">
+                            
+                            {/* Column 1: Mind Bending */}
+                            <div>
+                                <h3 className="text-yellow-400 font-bold mb-4 uppercase text-xs tracking-wider">Mind Bending</h3>
+                                <ul className="space-y-2 text-sm text-gray-400">
+                                    <li><Link href="/collection/movies-like-inception" className="hover:text-white transition-colors">Like Inception</Link></li>
+                                    <li><Link href="/collection/movies-like-memento" className="hover:text-white transition-colors">Like Memento</Link></li>
+                                    <li><Link href="/collection/movies-like-shutter-island" className="hover:text-white transition-colors">Like Shutter Island</Link></li>
+                                    <li><Link href="/collection/movies-like-donnie-darko" className="hover:text-white transition-colors">Like Donnie Darko</Link></li>
+                                    <li><Link href="/collection/movies-like-black-swan" className="hover:text-white transition-colors">Like Black Swan</Link></li>
+                                    <li><Link href="/collection/movies-like-the-matrix" className="hover:text-white transition-colors">Like The Matrix</Link></li>
+                                </ul>
+                            </div>
+
+                            {/* Column 2: Dark & Gritty */}
+                            <div>
+                                <h3 className="text-yellow-400 font-bold mb-4 uppercase text-xs tracking-wider">Dark & Gritty</h3>
+                                <ul className="space-y-2 text-sm text-gray-400">
+                                    <li><Link href="/collection/movies-like-se7en" className="hover:text-white transition-colors">Like Se7en</Link></li>
+                                    <li><Link href="/collection/movies-like-oldboy" className="hover:text-white transition-colors">Like Oldboy</Link></li>
+                                    <li><Link href="/collection/movies-like-parasite" className="hover:text-white transition-colors">Like Parasite</Link></li>
+                                    <li><Link href="/collection/movies-like-eyes-wide-shut" className="hover:text-white transition-colors">Like Eyes Wide Shut</Link></li>
+                                    <li><Link href="/collection/best-revenge-movies" className="hover:text-white transition-colors">Best Revenge Movies</Link></li>
+                                    <li><Link href="/collection/best-crime-thriller-movies" className="hover:text-white transition-colors">Best Crime Thrillers</Link></li>
+                                </ul>
+                            </div>
+
+                            {/* Column 3: Sci-Fi & Action */}
+                            <div>
+                                <h3 className="text-yellow-400 font-bold mb-4 uppercase text-xs tracking-wider">Sci-Fi & Action</h3>
+                                <ul className="space-y-2 text-sm text-gray-400">
+                                    <li><Link href="/collection/movies-like-interstellar" className="hover:text-white transition-colors">Like Interstellar</Link></li>
+                                    <li><Link href="/collection/best-sci-fi-movies" className="hover:text-white transition-colors">Best Sci-Fi Movies</Link></li>
+                                    <li><Link href="/collection/best-time-travel-movies" className="hover:text-white transition-colors">Best Time Travel</Link></li>
+                                    <li><Link href="/collection/best-heist-thriller-movies" className="hover:text-white transition-colors">Best Heist Movies</Link></li>
+                                    <li><Link href="/collection/best-war-films" className="hover:text-white transition-colors">Best War Films</Link></li>
+                                    <li><Link href="/collection/best-survival-movies" className="hover:text-white transition-colors">Best Survival Movies</Link></li>
+                                </ul>
+                            </div>
+
+                            {/* Column 4: Thrillers & Drama */}
+                            <div>
+                                <h3 className="text-yellow-400 font-bold mb-4 uppercase text-xs tracking-wider">Thrillers & Drama</h3>
+                                <ul className="space-y-2 text-sm text-gray-400">
+                                    <li><Link href="/collection/best-psychological-thriller-movies" className="hover:text-white transition-colors">Psychological Thrillers</Link></li>
+                                    <li><Link href="/collection/best-mystery-thriller-movies" className="hover:text-white transition-colors">Mystery Thrillers</Link></li>
+                                    <li><Link href="/collection/best-detective-thriller-movies" className="hover:text-white transition-colors">Detective Thrillers</Link></li>
+                                    <li><Link href="/collection/best-thriller-movies" className="hover:text-white transition-colors">Best Thrillers</Link></li>
+                                    <li><Link href="/collection/best-drama-movies-on-netflix" className="hover:text-white transition-colors">Netflix Dramas</Link></li>
+                                </ul>
+                            </div>
+                        </div>
+
                         <div className="text-center">
                             <div className="flex items-center justify-center mb-4 xs:mb-6">
                                 <div className="w-28 xs:w-32 sm:w-40 h-12 xs:h-14 sm:h-20 flex items-center justify-center">
@@ -660,27 +717,13 @@ const FilmiwayHomepage = () => {
                                 <a href="https://youtube.com/@filmiway.official" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-red-500 transition-colors">
                                     <svg className="w-6 h-6 xs:w-7 xs:h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
                                 </a>
-                               <a
-  href="https://www.instagram.com/filmiway.official/"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="text-gray-400 hover:text-pink-500 transition-colors"
->
-  <svg
-    className="w-6 h-6 xs:w-7 xs:h-7"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-  </svg>
-</a>
-
+                                <a href="https://www.instagram.com/filmiway.official/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-pink-500 transition-colors">
+                                    <svg className="w-6 h-6 xs:w-7 xs:h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                                    </svg>
+                                </a>
                                 <a href="https://www.facebook.com/profile.php?id=61583157321288" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-500 transition-colors">
                                     <svg className="w-6 h-6 xs:w-7 xs:h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
                                 </a>

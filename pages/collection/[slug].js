@@ -1174,7 +1174,7 @@ const getStaticMetaContent = () => {
         };
     } else {
         return {
-            title: `Best ${collection.title}: Top 10 Films (2025)`,
+            title: `Best ${collection.title}: Top 10 Films (2026)`,
             description: `10 curated ${collection.title.toLowerCase()} films ranked by quality, impact & engagement. For true cinema fans.`,
             keywords: `best ${collection.title.toLowerCase()}, curated films, exceptional cinema`,
             ogTitle: `Best ${collection.title}: 10 Must-Watch Films`,
@@ -2124,7 +2124,7 @@ return (
                             </motion.div>
 
                             <div className="flex items-center justify-center space-x-8 text-gray-500 text-sm pb-8">
-                                <span>© 2025 Filmiway</span>
+                                <span>© 2026 Filmiway</span>
                                 <span>•</span>
                                 <span>All Rights Reserved</span>
                                 <span>•</span>
