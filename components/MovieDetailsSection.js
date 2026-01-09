@@ -392,16 +392,16 @@ const displayIndex = fromParasiteCollection             // ✅ PARASITE - NO BAR
 const scoreValue = fromDonnieDarkoCollection
   ? movie.realityWarpIndex ?? safeMovieInfo.realityWarpIndex ?? 0
   : fromParasiteCollection               // ✅ PARASITE - NO BAR
-           // ✅ PARASITE - NO BAR
-  ? 0                                                    // ✅ Return 0 to hide bar
+  ? 0                                    // ✅ Return 0 to hide bar
   : fromMatrixCollection 
   ? movie.matrixRealityIndex ?? safeMovieInfo.matrixRealityIndex ?? 0
   : fromOldboyCollection
-? movie.revengeIntensity ?? safeMovieInfo.revengeIntensity ?? 0
-  : fromBlackSwanCollection // ✅ BLACK SWAN
+  ? movie.revengeIntensity ?? safeMovieInfo.revengeIntensity ?? 0
+  : fromBlackSwanCollection               // ✅ BLACK SWAN
   ? movie.psychologicalIntensity ?? safeMovieInfo.psychologicalIntensity ?? 0
-
-
+  : fromEyesWideShutCollection            // ✅ EYES WIDE SHUT (Added)
+  ? movie.psychologicalIntensity ?? safeMovieInfo.psychologicalIntensity ?? 0
+  
   : fromSe7enCollection
   ? movie.se7enDNAScore ?? safeMovieInfo.se7enDNAScore ?? 0
   : fromRevengeCollection
@@ -905,8 +905,12 @@ const getStarColor = () => {
 
          <EnhancedWhereToWatchSection movie={movie} />
 
-{!fromParasiteCollection && !fromOldboyCollection && !fromHeistThrillerCollection && !fromDonnieDarkoCollection && !fromBlackSwanCollection && (
-
+{!fromParasiteCollection && 
+ !fromOldboyCollection && 
+ !fromHeistThrillerCollection && 
+ !fromDonnieDarkoCollection && 
+ !fromBlackSwanCollection && 
+ !fromEyesWideShutCollection && (
 
   <motion.div
     className="mb-6 sm:mb-8 md:mb-12 bg-gradient-to-br from-gray-800/40 to-gray-900/60 rounded-lg sm:rounded-xl border border-gray-700/50 p-3 sm:p-4 md:p-8 shadow-2xl backdrop-blur-sm relative overflow-hidden"

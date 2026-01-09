@@ -42,7 +42,7 @@ export const EYES_WIDE_SHUT_MOVIE_SLUGS = {
     'tt5052448': 'get-out',
     
     // Rank 10: The Killing of a Sacred Deer
-    'tt7026672': 'the-killing-of-a-sacred-deer'
+    'tt5715874': 'the-killing-of-a-sacred-deer'
 };
 
 // ✅ REVERSE SLUG MAPPING (SLUG TO IMDB ID)

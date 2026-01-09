@@ -1,4 +1,4 @@
-// pages/index.js - FINAL FIXED VERSION (Hydration & API Fixed) 🚀
+// pages/index.js - PURE SSG VERSION (No Client Fetching) 🚀
 import React, { useState, useEffect, useRef, useCallback, memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Head from 'next/head';
@@ -342,7 +342,7 @@ const MovieSection = memo(({ title, movies, icon: Icon, description, sectionRef 
 
 MovieSection.displayName = 'MovieSection';
 
-// ✅ MAIN COMPONENT
+// ✅ MAIN COMPONENT - PURE SSG (Receives Props Only)
 const FilmiwayHomepage = ({ trendingMovies, popularMovies, topRatedMovies }) => {
     const router = useRouter();
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -430,6 +430,8 @@ const FilmiwayHomepage = ({ trendingMovies, popularMovies, topRatedMovies }) => 
                 <footer className="bg-gradient-to-t from-gray-900 to-black py-8 sm:py-12 border-t border-gray-800 select-none">
                     <div className="container mx-auto px-4 sm:px-6">
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12 border-b border-gray-800 pb-12 text-left">
+                            
+                            {/* COL 1: Mind Bending & Sci-Fi */}
                             <div>
                                 <h3 className="text-yellow-400 font-bold mb-4 uppercase text-xs tracking-wider">Mind Bending</h3>
                                 <ul className="space-y-2 text-sm text-gray-400">
@@ -437,32 +439,49 @@ const FilmiwayHomepage = ({ trendingMovies, popularMovies, topRatedMovies }) => 
                                     <li><Link href="/collection/movies-like-memento" className="hover:text-white transition-colors">Like Memento</Link></li>
                                     <li><Link href="/collection/movies-like-shutter-island" className="hover:text-white transition-colors">Like Shutter Island</Link></li>
                                     <li><Link href="/collection/movies-like-donnie-darko" className="hover:text-white transition-colors">Like Donnie Darko</Link></li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h3 className="text-yellow-400 font-bold mb-4 uppercase text-xs tracking-wider">Dark & Gritty</h3>
-                                <ul className="space-y-2 text-sm text-gray-400">
-                                    <li><Link href="/collection/movies-like-se7en" className="hover:text-white transition-colors">Like Se7en</Link></li>
-                                    <li><Link href="/collection/movies-like-oldboy" className="hover:text-white transition-colors">Like Oldboy</Link></li>
-                                    <li><Link href="/collection/movies-like-parasite" className="hover:text-white transition-colors">Like Parasite</Link></li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h3 className="text-yellow-400 font-bold mb-4 uppercase text-xs tracking-wider">Sci-Fi & Action</h3>
-                                <ul className="space-y-2 text-sm text-gray-400">
                                     <li><Link href="/collection/movies-like-interstellar" className="hover:text-white transition-colors">Like Interstellar</Link></li>
-                                    <li><Link href="/collection/best-sci-fi-movies" className="hover:text-white transition-colors">Best Sci-Fi Movies</Link></li>
-                                    <li><Link href="/collection/best-time-travel-movies" className="hover:text-white transition-colors">Best Time Travel</Link></li>
+                                    <li><Link href="/collection/movies-like-the-matrix" className="hover:text-white transition-colors">Like The Matrix</Link></li>
                                 </ul>
                             </div>
+
+                            {/* COL 2: Global & Psychological */}
                             <div>
-                                <h3 className="text-yellow-400 font-bold mb-4 uppercase text-xs tracking-wider">Thrillers & Drama</h3>
+                                <h3 className="text-yellow-400 font-bold mb-4 uppercase text-xs tracking-wider">Global & Psychological</h3>
                                 <ul className="space-y-2 text-sm text-gray-400">
+                                    <li><Link href="/collection/movies-like-parasite" className="hover:text-white transition-colors">Like Parasite</Link></li>
+                                    <li><Link href="/collection/movies-like-oldboy" className="hover:text-white transition-colors">Like Oldboy</Link></li>
+                                    <li><Link href="/collection/movies-like-black-swan" className="hover:text-white transition-colors">Like Black Swan</Link></li>
+                                    <li><Link href="/collection/movies-like-eyes-wide-shut" className="hover:text-white transition-colors">Like Eyes Wide Shut</Link></li>
+                                    <li><Link href="/collection/movies-like-se7en" className="hover:text-white transition-colors">Like Se7en</Link></li>
                                     <li><Link href="/collection/best-psychological-thriller-movies" className="hover:text-white transition-colors">Psychological Thrillers</Link></li>
+                                </ul>
+                            </div>
+
+                            {/* COL 3: Genre Collections */}
+                            <div>
+                                <h3 className="text-yellow-400 font-bold mb-4 uppercase text-xs tracking-wider">Genre Collections</h3>
+                                <ul className="space-y-2 text-sm text-gray-400">
+                                    <li><Link href="/collection/best-sci-fi-movies" className="hover:text-white transition-colors">Best Sci-Fi Movies</Link></li>
+                                    <li><Link href="/collection/best-time-travel-movies" className="hover:text-white transition-colors">Time Travel Movies</Link></li>
+                                    <li><Link href="/collection/best-survival-movies" className="hover:text-white transition-colors">Survival Movies</Link></li>
+                                    <li><Link href="/collection/best-war-films" className="hover:text-white transition-colors">War Films</Link></li>
+                                    <li><Link href="/collection/best-revenge-movies" className="hover:text-white transition-colors">Revenge Movies</Link></li>
+                                    <li><Link href="/collection/best-drama-movies-on-netflix" className="hover:text-white transition-colors">Netflix Dramas</Link></li>
+                                </ul>
+                            </div>
+
+                            {/* COL 4: Thrillers & Crime */}
+                            <div>
+                                <h3 className="text-yellow-400 font-bold mb-4 uppercase text-xs tracking-wider">Thrillers & Crime</h3>
+                                <ul className="space-y-2 text-sm text-gray-400">
+                                    <li><Link href="/collection/best-crime-thriller-movies" className="hover:text-white transition-colors">Crime Thrillers</Link></li>
+                                    <li><Link href="/collection/best-heist-thriller-movies" className="hover:text-white transition-colors">Heist Thrillers</Link></li>
+                                    <li><Link href="/collection/best-detective-thriller-movies" className="hover:text-white transition-colors">Detective Thrillers</Link></li>
                                     <li><Link href="/collection/best-mystery-thriller-movies" className="hover:text-white transition-colors">Mystery Thrillers</Link></li>
                                     <li><Link href="/collection/best-thriller-movies" className="hover:text-white transition-colors">Best Thrillers</Link></li>
                                 </ul>
                             </div>
+
                         </div>
                         <div className="text-center">
                             <div className="flex items-center justify-center mb-4 xs:mb-6">
@@ -512,7 +531,7 @@ export default FilmiwayHomepage;
 
 // ✅ SERVER SIDE GENERATION (SSG) - FINAL FIXED VERSION WITH HARDCODED KEY
 export async function getStaticProps() {
-  // ✅ HERE IS THE FIX: I added your key directly.
+  // ✅ HARDCODED API KEY (Guarantees Access on Build Server)
   const TMDB_API_KEY = '6054e5498fb2619274454959c38bbdfa'; 
   const TMDB_BASE_URL = 'https://api.themoviedb.org/3';
 
@@ -530,6 +549,7 @@ export async function getStaticProps() {
       fetch(`${TMDB_BASE_URL}/movie/top_rated?api_key=${TMDB_API_KEY}&region=US&language=en-US`)
     ]);
 
+    // Check if requests were successful
     if (!trendingRes.ok || !popularRes.ok || !topRatedRes.ok) {
         console.error("❌ API Error: Check your API Key.");
         throw new Error("Failed to fetch data");
@@ -541,6 +561,8 @@ export async function getStaticProps() {
       topRatedRes.json()
     ]);
 
+    console.log(`✅ Server Successfully Fetched Movies: ${trending.results?.length}`);
+
     return {
       props: {
         trendingMovies: filterOutIndianMovies(trending.results?.slice(0, 15) || []),
@@ -551,6 +573,7 @@ export async function getStaticProps() {
     };
   } catch (error) {
     console.error('❌ Server Error fetching movies:', error);
+    // Return empty arrays to prevent build failure, but page will be empty until fixed
     return {
       props: {
         trendingMovies: [],

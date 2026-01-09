@@ -212,16 +212,16 @@ export const COMPLETE_MOVIE_DATA = {
         mindBendingIndex: 96, complexityLevel: "EXTREME", dominantColor: "#701a75", 
         rating: 7.9, criticsScore: 85, audienceScore: 82, director: "David Lynch", 
         cast: ["Naomi Watts", "Laura Harring"], boxOffice: "$20.1 million", budget: "$15 million", 
-        dna: { "Mystery": 50, "Drama": 30, "Thriller": 20 }, 
+          dna: { Mystery: 50, Thriller: 30, Drama: 20 },
         scenes: [
-            { time: 20, intensity: 40, label: "The Accident", color: "#701a75" }, 
-            { time: 60, intensity: 55, label: "Betty's Audition", color: "#86198f" }, 
-            { time: 105, intensity: 85, label: "Club Silencio", color: "#a21caf" }, 
-            { time: 120, intensity: 98, label: "The Blue Box", color: "#c026d3" }, 
-            { time: 140, intensity: 92, label: "Reality Awakening", color: "#d946ef" }
-        ], 
-        synopsis: "A dark-haired woman is left with amnesia after a car crash on Mulholland Drive. She wanders into the apartment of a perky aspiring actress, and together they descend into the neon-lit shadows of Hollywood to find her identity. David Lynch shatters the dream of fame to reveal a tragic reality of obsession and rejection in cinema's most famous mind-bender.", 
-        themes: ["Dream Logic", "Hollywood Noir", "Identity Fragmentation", "Guilt"]
+            { time: 25, intensity: 40, label: "Winkie's", color: "#6b21a8" },
+            { time: 70, intensity: 55, label: "Audition", color: "#dc2626" },
+            { time: 110, intensity: 95, label: "Silencio", color: "#60a5fa" },
+            { time: 125, intensity: 100, label: "The Box", color: "#0f172a" },
+            { time: 140, intensity: 90, label: "Reality", color: "#a78bfa" }
+        ],
+        synopsis: "An aspiring actress and an amnesiac woman collide in a search for identity that devolves into a surreal nightmare. Lynch shatters the Hollywood dream to expose the psychological trauma of rejection in cinema's most famous mind-bender.",
+        themes: ["Identity Fracture", "Hollywood Underbelly", "Dream Logic"]
     },
 
     // 4. Predestination (2014) - Paradox Peak

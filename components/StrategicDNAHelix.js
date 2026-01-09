@@ -18,8 +18,6 @@ const STANDARDIZED_COLORS = {
   "Horror": "#991b1b",
   "Crime": "#1d1fb9ff",
   "Psychological": "#9333ea",
-  "Memory": "#a78bfa",
-  "Dreams": "#60a5fa"
 };
 
 const StrategicDNAHelix = React.memo(({ dna, dominantColor, className = "" }) => {

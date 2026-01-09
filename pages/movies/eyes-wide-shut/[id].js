@@ -7,7 +7,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, Play, X, User, Twitter, Hash, Send, Film, Theater, Eye } from 'lucide-react'; // Added Eye icon
+import { ChevronLeft, Play, X, User, Twitter, Hash, Send, Film, Theater, Eye } from 'lucide-react';
 import InternalCollectionsSection from '../../../components/InternalCollectionsSection';
 import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
@@ -18,7 +18,7 @@ import {
   COMPLETE_MOVIE_DATABASE, 
   COMPLETE_MOVIE_DATA,
   SENSITIVE_TIMELINES,
-  EYES_WIDE_SHUT_MOVIE_FAQS // 👈 Updated Import
+  EYES_WIDE_SHUT_MOVIE_FAQS // 👈 Imported for Schema
 } from '../../../utils/eyesWideShutMovieData';
 
 const COLORS = {
@@ -68,7 +68,7 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
   const posterImage = posterPath ? getTMDBImage(posterPath, 'w500') : null;
 
   const insight = getPsychologicalInsight(movie?.Title);
-  // Note: We use psychologicalIntensity key, but it represents "Paranoia Level" for this collection
+  // Note: psychologicalIntensity maps to "Paranoia Level" for this collection
   const psychIntensity = richData?.psychologicalIntensity || 85;
 
   const mobileHeroCSS = `
@@ -206,8 +206,7 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
   const intensityStats = `
     [FILMIWAY METRICS]
     - Paranoia Level: ${data?.psychologicalIntensity || 0}/100
-    - Occult Atmosphere: ${data?.artisticObsession || 0}/100
-    - Societal Decay: ${data?.identityHorror || 0}/100
+
     - Complexity Level: ${data?.complexityLevel || 'High'}
   `;
 
@@ -357,7 +356,7 @@ const EyesWideShutMoviePage = ({ movie, tmdbData: movieData }) => {
                     <OptimizedBanner movie={movie} movieData={movieData} richData={richData} trailer={trailer} isMobile={isMobile} />
                     
                     <motion.div id="watch" initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 2.0, duration: 0.8 }} className="space-y-8 sm:space-y-12 px-3 sm:px-4 lg:px-6">
-                        <MovieDetailsSection movie={movie} fromBlackSwanCollection={false} />
+                        <MovieDetailsSection movie={movie} fromEyesWideShutCollection={true} />
                     </motion.div>
                     
                     <div className="px-3 sm:px-4 lg:px-6">

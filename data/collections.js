@@ -539,7 +539,7 @@ export const COLLECTIONS = {
     'tt0098354',  // ✅ Rank 7: Society (1989)
     'tt0134273',  // ✅ Rank 8: 8mm (1999)
     'tt5052448',  // ✅ Rank 9: Get Out (2017)
-    'tt7026672'   // ✅ Rank 10: The Killing of a Sacred Deer (2017)
+    'tt5715874'   // ✅ Rank 10: The Killing of a Sacred Deer (2017)
   ],
 
   badges: [
@@ -566,7 +566,7 @@ export const COLLECTIONS = {
   ],
 
   seo: {
-    title: '10 Movies Like Eyes Wide Shut (2025) | Occult Paranoia Films | Filmiway',
+    title: '10 Movies Like Eyes Wide Shut (2026) | Occult Paranoia Films | Filmiway',
     description: 'Explore the definitive ranking of films like Eyes Wide Shut. Expert-curated thrillers about secret societies, the occult, and elite paranoia.',
     keywords: 'movies like eyes wide shut, secret society films, occult movies, mulholland drive, the ninth gate, blue velvet, cult movies, stanley kubrick style',
     canonicalUrl: 'https://filmiway.com/collection/movies-like-eyes-wide-shut',

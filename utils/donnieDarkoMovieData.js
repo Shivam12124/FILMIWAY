@@ -138,21 +138,23 @@ export const COMPLETE_MOVIE_DATA = {
     }),
 
     // 8. Mulholland Drive
-    1018: createMovieData({
-        psychologicalIntensity: 98, mindBendScore: 100, complexityLevel: "MASTERPIECE",
-        dominantColor: "#be185d", rating: 7.9, criticsScore: 84, audienceScore: 87, director: "David Lynch",
-        cast: ["Naomi Watts", "Laura Harring", "Justin Theroux"], boxOffice: "$20.1 million", budget: "$15 million",
-        dna: { "Mystery": 50, "Thriller": 30, "Drama": 20 },
+   
+    1018: createMovieData({ 
+        psychologicalIntensity: 98, destructiveObsession: 85, visceralImpact: 100, complexityLevel: "EXTREME", 
+        dominantColor: "#6b21a8", rating: 7.9, criticsScore: 85, audienceScore: 87, director: "David Lynch", 
+        cast: ["Naomi Watts", "Laura Harring"], boxOffice: "$20.1 million", budget: "$15 million", 
+          dna: { Mystery: 50, Thriller: 30, Drama: 20 },
         scenes: [
-            { time: 20, intensity: 40, label: "The Accident", color: "#be185d" },
-            { time: 60, intensity: 65, label: "The Audition", color: "#db2777" },
-            { time: 100, intensity: 80, label: "Club Silencio", color: "#ec4899" },
-            { time: 125, intensity: 95, label: "The Blue Box", color: "#f472b6" },
-            { time: 145, intensity: 100, label: "Reality Collapse", color: "#f9a8d4" }
+            { time: 25, intensity: 40, label: "Winkie's", color: "#6b21a8" },
+            { time: 70, intensity: 55, label: "Audition", color: "#dc2626" },
+            { time: 110, intensity: 95, label: "Silencio", color: "#60a5fa" },
+            { time: 125, intensity: 100, label: "The Box", color: "#0f172a" },
+            { time: 140, intensity: 90, label: "Reality", color: "#a78bfa" }
         ],
-        synopsis: "After a car wreck on the winding Mulholland Drive renders a woman amnesiac, she and a perky Hollywood-hopeful search for clues and answers across Los Angeles in a twisting venture beyond dreams and reality. A surreal exploration of the dark side of Hollywood ambition.",
-        themes: ["Hollywood Nightmare", "Identity", "Dream Logic", "Guilt"]
+        synopsis: "An aspiring actress and an amnesiac woman collide in a search for identity that devolves into a surreal nightmare. Lynch shatters the Hollywood dream to expose the psychological trauma of rejection in cinema's most famous mind-bender.",
+        themes: ["Identity Fracture", "Hollywood Underbelly", "Dream Logic"]
     }),
+
 
     // 9. Eternal Sunshine of the Spotless Mind
     38: createMovieData({
@@ -198,7 +200,13 @@ export const SENSITIVE_TIMELINES = {
     220289: { scenes: [] }, // Clean
     2291: { scenes: [{ start: '0:42:30', end: '0:43:15', type: 'Sexual content', severity: 'Moderate' }] },
     2666: { scenes: [{ start: '0:52:10', end: '0:53:45', type: 'Implied nudity', severity: 'Mild' }] },
-    1018: { scenes: [{ start: '1:38:45', end: '1:42:55', type: 'Nudity', severity: 'High' }] },
+1018: {
+        scenes: [
+            { start: '0:23:32', end: '0:24:30', type: 'Nudity (Blurred)', severity: 'Moderate' },
+            { start: '1:38:45', end: '1:42:55', type: 'Nudity', severity: 'High' },
+            { start: '2:01:27', end: '2:02:59', type: 'Nudity', severity: 'High' }
+        ]
+    },
     38: { scenes: [{ start: '0:42:30', end: '0:43:20', type: 'Partial nudity', severity: 'Mild' }] },
     181886: { scenes: [{ start: '0:45:20', end: '0:47:35', type: 'Sex scene', severity: 'Strong' }] }
 };
