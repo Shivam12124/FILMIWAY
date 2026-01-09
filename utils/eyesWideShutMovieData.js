@@ -21,6 +21,20 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 399057, "imdbID": "tt5715874", "Title": "The Killing of a Sacred Deer", "year": 2017, "genre": "Drama", "runtime": 121, "rank": 10 }
 ];
 
+// ✅ REVISED STRATEGIC QUOTES (100% Clean & SEO Safe)
+export const STRATEGIC_QUOTES = {
+    1018: "It's the girl.", // Mulholland Drive
+    622: "Silence is golden.", // The Ninth Gate
+    793: "It's a strange world, isn't it?", // Blue Velvet (Clean & Iconic)
+    805: "He has his father's eyes.", // Rosemary's Baby
+    2649: "I don't care about the money. I'm pulling back the curtain.", // The Game
+    638: "We've met before, haven't we?", // Lost Highway
+    22244: "The rich are different from us. They eat us.", // Society
+    8224: "If you dance with the devil, the devil don't change. The devil changes you.", // 8mm
+    419430: "You know I can't give you the keys, right babe?", // Get Out
+    399057: "It's a metaphor. It's symbolic." // The Killing of a Sacred Deer
+};
+
 
 // ✅ SENSITIVE TIMELINES (The "Utility" Data)
 export const SENSITIVE_TIMELINES = {
