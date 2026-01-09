@@ -252,11 +252,18 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
       "@type": "Person",
       "name": actor
     })) || [],
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": data?.rating || 8.0,
-      "bestRating": 10,
-      "worstRating": 1
+  "review": {
+      "@type": "Review",
+      "author": {
+        "@type": "Organization",
+        "name": "Filmiway"
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": data?.rating || 8.0, 
+        "bestRating": "10",
+        "worstRating": "1"
+      }
     },
     "genre": data?.dna ? Object.keys(data.dna) : ["Psychological Thriller", "Mystery"],
     "keywords": "Eyes Wide Shut, Secret Society, Cults, Occult, Paranoia, " + (data?.themes ? data.themes.join(", ") : ""),
