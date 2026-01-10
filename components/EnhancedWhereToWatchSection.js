@@ -1,9 +1,8 @@
-// components/EnhancedWhereToWatchSection.js
+// components/EnhancedWhereToWatchSection.js - SEO HIERARCHY FIXED (H2 -> H3) 🍷✅
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, Globe, ExternalLink, Loader, MapPin, ChevronDown, ChevronUp } from 'lucide-react';
 import Image from 'next/image';
-
 
 // 🎨 UNIFIED COLOR SYSTEM
 const COLORS = {
@@ -22,7 +21,7 @@ const COLORS = {
   borderLight: 'rgba(107, 114, 128, 0.2)',
 };
 
-// 🌍 ALL TMDB SUPPORTED COUNTRIES - FULLY ALPHABETICAL (100+)
+// 🌍 ALL TMDB SUPPORTED COUNTRIES - FULLY ALPHABETICAL
 const ALL_REGIONS = [
   { code: 'AL', name: 'Albania', flag: '🇦🇱' },
   { code: 'DZ', name: 'Algeria', flag: '🇩🇿' },
@@ -354,20 +353,20 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
           e.currentTarget.style.boxShadow = 'none';
         }}
       >
-{logoUrl && (
-  <Image
-    src={logoUrl}
-    alt={provider.provider_name}
-    width={40}
-    height={40}
-    className="w-8 h-8 xs:w-9 xs:h-9 sm:w-10 sm:h-10 object-contain rounded"
-    loading="lazy"
-    onError={(e) => {
-      // hide the logo if it fails to load
-      e.target.style.display = 'none';
-    }}
-  />
-)}
+        {logoUrl && (
+          <Image
+            src={logoUrl}
+            alt={provider.provider_name}
+            width={40}
+            height={40}
+            className="w-8 h-8 xs:w-9 xs:h-9 sm:w-10 sm:h-10 object-contain rounded"
+            loading="lazy"
+            onError={(e) => {
+              // hide the logo if it fails to load
+              e.target.style.display = 'none';
+            }}
+          />
+        )}
 
         <div className="text-center w-full min-h-[32px] flex flex-col justify-center">
           <div className="text-xs font-medium truncate w-full px-1" style={{ color: COLORS.textSecondary }}>
@@ -391,6 +390,7 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.1 }}
     >
+      {/* ✅ H2: Where to Watch (Main Heading) */}
       <h2 className="text-2xl font-medium mb-6 flex items-center gap-3" style={{ color: COLORS.accent, fontSize: '22px' }}>
         <Play size={20} />
         Where to Watch
@@ -426,7 +426,6 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
         </div>
       ) : (
         <div className="space-y-6">
-          {/* 🟡 FALLBACK MESSAGE - Shows when region is different from user country */}
           {fallbackMessage && selectedRegion && selectedRegion !== userCountry && (
             <motion.div
               initial={{ opacity: 0, y: -10 }}
@@ -443,7 +442,6 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
             </motion.div>
           )}
 
-          {/* 🔵 REGION SELECTOR */}
           {selectedRegionInfo && availableRegions.length > 0 && (
             <div
               className="flex flex-col xs:flex-row xs:items-center xs:justify-between gap-3 xs:gap-4 p-3 xs:p-4 sm:p-6 rounded-lg xs:rounded-xl border"
@@ -490,7 +488,6 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
             </div>
           )}
 
-          {/* 🟣 OTHER REGIONS DROPDOWN */}
           <AnimatePresence>
             {showOtherRegions && otherRegions.length > 0 && (
               <motion.div
@@ -506,9 +503,10 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
                     borderColor: COLORS.borderLight
                   }}
                 >
-                  <h4 className="text-sm font-medium mb-4" style={{ color: COLORS.textSecondary }}>
+                  {/* ✅ H3: Also available in (Sub-heading) */}
+                  <h3 className="text-sm font-medium mb-4" style={{ color: COLORS.textSecondary }}>
                     Also available in:
-                  </h4>
+                  </h3>
                   <div className="flex flex-wrap gap-3 max-h-96 overflow-y-auto">
                     {otherRegions.map((regionCode) => {
                       const region = ALL_REGIONS.find((r) => r.code === regionCode);
@@ -552,7 +550,6 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
             )}
           </AnimatePresence>
 
-          {/* 🟢 STREAMING CONTENT */}
           <AnimatePresence mode="wait">
             {currentRegionData ? (
               <motion.div
@@ -565,13 +562,14 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
               >
                 {currentRegionData.flatrate?.length > 0 && (
                   <div>
-                    <h4
+                    {/* ✅ H3: Stream with Subscription (Sub-heading) */}
+                    <h3
                       className="text-sm font-medium mb-4 flex items-center gap-2"
                       style={{ color: COLORS.accent }}
                     >
                       <div className="w-3 h-3 rounded-full" style={{ backgroundColor: COLORS.accent }}></div>
                       Stream with Subscription
-                    </h4>
+                    </h3>
                     <div className="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2 xs:gap-3 sm:gap-4">
                       {currentRegionData.flatrate.map((provider) => (
                         <StreamingPlatformCard
@@ -587,13 +585,14 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
 
                 {currentRegionData.rent?.length > 0 && (
                   <div>
-                    <h4
+                    {/* ✅ H3: Rent Digital Copy (Sub-heading) */}
+                    <h3
                       className="text-sm font-medium mb-4 flex items-center gap-2"
                       style={{ color: COLORS.accent }}
                     >
                       <div className="w-3 h-3 rounded-full" style={{ backgroundColor: COLORS.accent }}></div>
                       Rent Digital Copy
-                    </h4>
+                    </h3>
                     <div className="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2 xs:gap-3 sm:gap-4">
                       {currentRegionData.rent.map((provider) => (
                         <StreamingPlatformCard
@@ -609,13 +608,14 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
 
                 {currentRegionData.buy?.length > 0 && (
                   <div>
-                    <h4
+                    {/* ✅ H3: Buy Digital Copy (Sub-heading) */}
+                    <h3
                       className="text-sm font-medium mb-4 flex items-center gap-2"
                       style={{ color: COLORS.accent }}
                     >
                       <div className="w-3 h-3 rounded-full" style={{ backgroundColor: COLORS.accent }}></div>
                       Buy Digital Copy
-                    </h4>
+                    </h3>
                     <div className="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2 xs:gap-3 sm:gap-4">
                       {currentRegionData.buy.map((provider) => (
                         <StreamingPlatformCard
@@ -655,9 +655,10 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
                 }}
               >
                 <Globe className="w-12 h-12 mx-auto mb-4" style={{ color: '#EA580C' }} />
-                <h4 className="text-lg font-medium mb-2" style={{ color: '#FB923C' }}>
+                {/* ✅ H3: No Streaming Data (Sub-heading) */}
+                <h3 className="text-lg font-medium mb-2" style={{ color: '#FB923C' }}>
                   No Streaming Data Available
-                </h4>
+                </h3>
                 <p
                   className="mb-4"
                   style={{

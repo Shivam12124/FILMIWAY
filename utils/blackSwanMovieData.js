@@ -87,15 +87,16 @@ scenes: [       { start: "0:23:32", end: "0:24:30", type: "Nudity(Blurred)", sev
         ] 
     },
 
-    // 9. Requiem for a Dream
+// 9. Requiem for a Dream
     641: { 
         scenes: [
             { start: "0:20:00", end: "0:20:30", type: "Nudity", severity: "Moderate" },
             { start: "0:33:00", end: "0:34:25", type: "Nudity", severity: "Moderate" },
-            { start: "0:37:00", end: "0:37:25", type: "Nudity", severity: "Moderate" }
+            { start: "0:37:00", end: "0:37:25", type: "Nudity", severity: "Moderate" },
+            // 🔥 NEW SCENE ADDED
+            { start: "1:30:30", end: "1:33:50", type: "Sex & Nudity", severity: "Extreme" }
         ] 
     },
-
     // 10. Nightcrawler (Clean)
     242582: { scenes: [] }
 };

@@ -1,14 +1,23 @@
-// components/SensitiveContentTimelineSection.js - COMPLETE WITH DRAMA SUPPORT ✅
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Shield, CheckCircle, AlertTriangle, Eye, X } from 'lucide-react';
+// components/SensitiveContentTimelineSection.js - SEO PERFECTED (ALL H2s) 🏆
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Shield, CheckCircle, AlertTriangle, Clock, AlertOctagon } from 'lucide-react';
 
-// 🔥 FIXED: Import formatting functions from BOTH data sources
+// Import formatting functions from BOTH data sources
 import { formatSensitiveTimeline as formatInceptionTimeline, getSensitiveContentTypes as getInceptionContentTypes } from '../utils/movieData';
 import { formatSensitiveTimeline as formatSurvivalTimeline, getSensitiveContentTypes as getSurvivalContentTypes } from '../utils/survivalMovieData';
 
+const COLORS = {
+  warningBg: 'rgba(127, 29, 29, 0.15)', // Deep Red Fade
+  warningBorder: 'rgba(248, 113, 113, 0.2)', // Soft Red Border
+  textPrimary: '#FFFFFF',
+  textSecondary: '#D1D5DB',
+  accent: '#F87171', // Soft Red
+  safeBg: 'rgba(6, 95, 70, 0.2)', // Deep Green Fade
+  safeBorder: 'rgba(52, 211, 153, 0.2)', // Soft Green Border
+};
+
 const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) => {
-    const [showSensitiveOverlay, setShowSensitiveOverlay] = useState(false);
     
     // 🔥 PRIORITY: Use passed sensitiveScenes first (from drama collection), then fallback to inception/survival
     let sensitiveData = null;
@@ -17,7 +26,6 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
     // Step 1: Check if sensitiveScenes prop exists and has data (drama movies)
     if (sensitiveScenes && sensitiveScenes.length > 0) {
         sensitiveData = { scenes: sensitiveScenes };
-        // Extract content types from drama sensitive scenes
         contentTypes = [...new Set(sensitiveScenes.map(scene => {
             const lowerType = scene.description?.toLowerCase() || '';
             if (lowerType.includes('nudity') || lowerType.includes('sex')) return 'Nudity/Sexual Content';
@@ -33,162 +41,148 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
         const survivalData = formatSurvivalTimeline?.(movie.tmdbId);
         sensitiveData = inceptionData || survivalData;
         
-        // 🔥 FIXED: Get content types from appropriate source
         contentTypes = inceptionData 
             ? (getInceptionContentTypes?.(movie.tmdbId) || [])
             : (getSurvivalContentTypes?.(movie.tmdbId) || []);
     }
 
+    // ✅ CASE 1: NO SENSITIVE CONTENT (Safe Movie)
     if (!sensitiveData?.scenes?.length) {
         return (
             <motion.section 
-                className="mb-6 sm:mb-8"
-                initial={{ opacity: 0, y: 20 }}
+                className="mb-8"
+                initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
+                transition={{ duration: 0.5 }}
             >
-                <h3 className="text-base sm:text-lg font-light text-yellow-300 mb-3 sm:mb-4 flex items-center gap-2">
-                    <Shield size={14} className="sm:w-4 sm:h-4" />
-                    Sensitive Content Timeline
-                </h3>
-                <motion.div
-                    className="w-full bg-green-500/20 text-green-300 border border-green-500/50 px-3 py-2 sm:px-4 sm:py-3 rounded-lg text-xs sm:text-sm font-light tracking-wide flex items-center justify-center gap-2"
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.6 }}
+                <div 
+                    className="w-full px-6 py-5 rounded-2xl border backdrop-blur-sm flex items-center gap-4"
+                    style={{ 
+                        backgroundColor: COLORS.safeBg, 
+                        borderColor: COLORS.safeBorder 
+                    }}
                 >
-                    <CheckCircle size={14} className="sm:w-4 sm:h-4" />
-                    <span><strong>{movie.Title}</strong> does not contain any sensitive scenes - Family Friendly Content</span>
-                </motion.div>
+                    <div className="p-2 rounded-full bg-emerald-500/20 text-emerald-400">
+                        <CheckCircle size={24} />
+                    </div>
+                    <div>
+                        {/* ✅ SEO FIX: Changed H3 to H2 for correct hierarchy */}
+                        <h2 className="text-emerald-300 font-medium text-lg">Clean Content Record</h2>
+                        <p className="text-emerald-400/70 text-sm font-light">
+                            <strong>{movie.Title}</strong>: No sexual content or graphic scenes present in this film.
+                        </p>
+                    </div>
+                </div>
             </motion.section>
         );
     }
 
+    // ✅ CASE 2: HAS SENSITIVE CONTENT (Cinematic List)
     return (
         <motion.section 
-            className="mb-6 sm:mb-8"
+            className="mb-12"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.6 }}
         >
-            <h3 className="text-base sm:text-lg font-light text-yellow-300 mb-3 sm:mb-4 flex items-center gap-2">
-                <Shield size={14} className="sm:w-4 sm:h-4" />
-                Sensitive Content Timeline
-            </h3>
-            <p className="text-gray-400 text-xs sm:text-sm mb-3 sm:mb-4">
-                ⚠️ Content guide for parents and sensitive viewers. Click below to view detailed timestamps.
-            </p>
-            
-            {/* 🔥 RED BUTTON FOR USER ATTENTION */}
-            <motion.button
-                onClick={() => setShowSensitiveOverlay(true)}
-                className="w-full bg-red-600/30 text-red-200 border border-red-500/60 px-4 py-3 sm:px-6 sm:py-4 rounded-xl text-xs sm:text-sm font-medium tracking-wide hover:bg-red-600/40 transition-all duration-300 flex items-center justify-between group"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+            <div className="flex items-end justify-between mb-6 border-b border-white/5 pb-4">
+                <div>
+                    {/* ✅ SEO CONFIRMED: This is H2 */}
+                    <h2 className="text-2xl font-light text-red-200 flex items-center gap-3 tracking-wide">
+                        <Shield className="text-red-500 w-6 h-6" />
+                        Content Advisory
+                    </h2>
+                    <p className="text-sm text-gray-500 mt-1.5 ml-1">
+                        Contains: <span className="text-gray-400 font-medium">{contentTypes.length > 0 ? contentTypes.join(', ') : 'Mature Themes'}</span>
+                    </p>
+                </div>
+            </div>
+
+            {/* 🔥 MODERN LIST DESIGN */}
+            <div 
+                className="rounded-2xl overflow-hidden border backdrop-blur-md relative"
+                style={{ 
+                    backgroundColor: 'rgba(10, 10, 12, 0.4)',
+                    borderColor: 'rgba(255, 255, 255, 0.08)'
+                }}
             >
-                <div className="flex items-center gap-2 sm:gap-3">
-                    <AlertTriangle size={16} className="sm:w-5 sm:h-5 group-hover:animate-pulse text-red-300" />
-                    <div className="text-left">
-                        <div className="font-semibold text-sm sm:text-base text-red-100">
-                            🔴 Mature Content Found ({sensitiveData.scenes.length} scenes)
-                        </div>
-                        <div className="text-xs opacity-80 text-red-200">
-                            Contains: {contentTypes.length > 0 ? contentTypes.join(', ') : 'adult themes'}
-                        </div>
-                    </div>
-                </div>
-                <div className="flex items-center gap-2">
-                    <Eye size={14} className="sm:w-4 sm:h-4" />
-                    <span className="text-xs">View Timeline</span>
-                </div>
-            </motion.button>
+                {/* Header Gradient Line */}
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-600/50 via-orange-600/50 to-transparent opacity-50" />
 
-            {/* Sensitive Scenes Overlay */}
-            <AnimatePresence>
-                {showSensitiveOverlay && (
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        className="fixed inset-0 bg-black/80 backdrop-blur-lg flex items-center justify-center z-[100] p-4"
-                        onClick={() => setShowSensitiveOverlay(false)}
-                    >
-                        <motion.div
-                            initial={{ scale: 0.9, y: 50, opacity: 0 }}
-                            animate={{ scale: 1, y: 0, opacity: 1 }}
-                            exit={{ scale: 0.9, y: -50, opacity: 0 }}
-                            transition={{ duration: 0.3, ease: "easeOut" }}
-                            className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 border border-yellow-500/20 rounded-2xl shadow-2xl w-full max-w-md sm:max-w-lg p-4 sm:p-8 relative flex flex-col max-h-[90vh]"
-                            onClick={(e) => e.stopPropagation()}
-                        >
-                            <motion.button
-                                onClick={() => setShowSensitiveOverlay(false)}
-                                className="absolute top-3 right-3 sm:top-4 sm:right-4 text-gray-400 hover:text-white transition-colors z-10"
-                                whileHover={{ scale: 1.1, rotate: 90 }}
-                                whileTap={{ scale: 0.9 }}
+                <div className="divide-y divide-white/5">
+                    {sensitiveData.scenes.map((scene, index) => {
+                        const sceneStart = scene.start || '';
+                        const sceneEnd = scene.end || '';
+                        const sceneType = scene.type || scene.description || 'Content Warning';
+                        const sceneDescription = scene.description || '';
+
+                        const getSceneIcon = (type) => {
+                            const lowerType = type.toLowerCase();
+                            if (lowerType.includes('nudity') || lowerType.includes('sex')) return '🔞';
+                            if (lowerType.includes('kissing')) return '💋';
+                            if (lowerType.includes('violence') || lowerType.includes('blood')) return '⚔️';
+                            if (lowerType.includes('language')) return '🤬';
+                            return '⚠️';
+                        };
+
+                        return (
+                            <div 
+                                key={index} 
+                                className="group flex flex-col sm:flex-row sm:items-start gap-4 p-5 hover:bg-white/[0.03] transition-colors duration-300"
                             >
-                                <X size={20} className="sm:w-6 sm:h-6" />
-                            </motion.button>
-                            
-                            <div className="text-center mb-4 sm:mb-6">
-                                <h3 className="text-xl sm:text-2xl font-light text-yellow-300 tracking-wide mb-1">🎬 Sensitive Content Timeline</h3>
-                                <p className="text-xs sm:text-sm text-gray-400">({sensitiveData.scenes.length} scenes found in "{movie.Title}")</p>
-                            </div>
-
-                            <div className="border-t border-b border-gray-700/50 my-3 sm:my-4 py-3 sm:py-4 space-y-2 sm:space-y-3 max-h-[50vh] sm:max-h-[60vh] overflow-y-auto pr-2">
-                                {sensitiveData.scenes.map((scene, index) => {
-                                    // 🔥 HANDLE BOTH DATA FORMATS: drama (start/end/description) and inception/survival (start/end/type/description)
-                                    const sceneStart = scene.start || '';
-                                    const sceneEnd = scene.end || '';
-                                    const sceneType = scene.type || scene.description || 'Content Warning';
-                                    const sceneDescription = scene.description || '';
-
-                                    const getSceneIcon = (type) => {
-                                        const lowerType = type.toLowerCase();
-                                        if (lowerType.includes('nudity') || lowerType.includes('sex')) return '🔞';
-                                        if (lowerType.includes('kissing')) return '💋';
-                                        if (lowerType.includes('bikini') || lowerType.includes('suggestive')) return '👙';
-                                        if (lowerType.includes('undressing')) return '👔';
-                                        if (lowerType.includes('violence')) return '⚔️';
-                                        if (lowerType.includes('language')) return '🤬';
-                                        return '⚠️';
-                                    };
-
-                                    return (
-                                        <motion.div
-                                            key={index}
-                                            className="flex items-center text-gray-200 p-2 sm:p-3 rounded-lg hover:bg-white/5 transition-colors"
-                                            initial={{ opacity: 0, x: -20 }}
-                                            animate={{ opacity: 1, x: 0 }}
-                                            transition={{ delay: index * 0.05 }}
-                                        >
-                                            <span className="text-base sm:text-xl mr-3 sm:mr-4">{getSceneIcon(sceneType)}</span>
-                                            <span className="font-mono text-yellow-400/90 text-xs sm:text-sm mr-2 sm:mr-4 w-24 sm:w-32">{sceneStart} - {sceneEnd}</span>
-                                            <div className="flex-1">
-                                                <span className="text-xs sm:text-sm font-light capitalize block">{sceneType}</span>
-                                                {sceneDescription && (
-                                                    <span className="text-xs text-gray-500 block mt-1">{sceneDescription}</span>
+                                {/* Digital Clock Style Timestamp */}
+                                <div className="flex items-center gap-2 min-w-[140px] pt-1">
+                                    <div className="p-1.5 rounded-md bg-white/5 text-gray-400 group-hover:text-yellow-500 transition-colors">
+                                        <Clock size={14} />
+                                    </div>
+                                    <span className="font-mono text-gray-300 text-sm tracking-wider font-medium group-hover:text-yellow-400 transition-colors">
+                                        {sceneStart} {sceneEnd && <span className="opacity-50 mx-1">→</span>} {sceneEnd}
+                                    </span>
+                                </div>
+                                
+                                {/* Content Detail */}
+                                <div className="flex-1">
+                                    <div className="flex items-start justify-between gap-4">
+                                        <div className="flex items-start gap-3">
+                                            <span className="text-xl mt-[-2px] grayscale group-hover:grayscale-0 transition-all duration-300 transform group-hover:scale-110" role="img" aria-label="icon">
+                                                {getSceneIcon(sceneType)}
+                                            </span>
+                                            <div>
+                                                <span className="text-gray-200 text-base font-medium block leading-tight group-hover:text-white transition-colors">
+                                                    {sceneType}
+                                                </span>
+                                                {sceneDescription && sceneDescription !== sceneType && (
+                                                    <span className="text-xs text-gray-500 block mt-1.5 leading-relaxed max-w-xl">
+                                                        {sceneDescription}
+                                                    </span>
                                                 )}
                                             </div>
-                                        </motion.div>
-                                    );
-                                })}
-                            </div>
+                                        </div>
 
-                            <div className="mt-4 sm:mt-6 flex justify-center">
-                                <motion.button
-                                    onClick={() => setShowSensitiveOverlay(false)}
-                                    className="bg-yellow-500/20 text-yellow-200 border border-yellow-400/50 px-6 py-2 sm:px-10 sm:py-3 rounded-lg text-xs sm:text-sm font-light tracking-wide hover:bg-yellow-500/30 transition-colors"
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.95 }}
-                                >
-                                    Close Timeline
-                                </motion.button>
+                                        {/* Modern Severity Badge */}
+                                        {scene.severity && (
+                                            <span className={`
+                                                px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest border shadow-lg backdrop-blur-md
+                                                ${scene.severity.toLowerCase() === 'high' || scene.severity.toLowerCase() === 'extreme' 
+                                                    ? 'bg-red-500/10 text-red-400 border-red-500/20 shadow-red-900/10' 
+                                                    : 'bg-yellow-500/10 text-yellow-500/80 border-yellow-500/20 shadow-yellow-900/10'}
+                                            `}>
+                                                {scene.severity}
+                                            </span>
+                                        )}
+                                    </div>
+                                </div>
                             </div>
-                        </motion.div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
+                        );
+                    })}
+                </div>
+
+                {/* Footer Warning */}
+                <div className="bg-black/30 p-3 flex items-center justify-center gap-2 text-[10px] text-gray-600 uppercase tracking-[0.2em]">
+                    <AlertOctagon size={10} />
+                    <span>Viewer Discretion Advised</span>
+                </div>
+            </div>
         </motion.section>
     );
 });

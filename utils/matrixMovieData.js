@@ -38,7 +38,10 @@ export const SENSITIVE_TIMELINES = {
   180: { scenes: [{ start: '0:30:00', end: '0:32:00', type: 'Action Violence', severity: 'Moderate', description: 'Chase and combat' }] },
   500664: { scenes: [{ start: '1:20:00', end: '1:25:00', type: 'Violence/Gore', severity: 'High', description: 'Intense AI-assisted combat' }] },
   861: { scenes: [{ start: '1:20:00', end: '1:23:00', type: 'Action Violence', severity: 'Moderate', description: 'Mars action scenes' }] },
-  335984: { scenes: [{ start: '1:50:00', end: '1:55:00', type: 'Action Violence', severity: 'Moderate', description: 'Final confrontation' }] },
+  335984: { scenes: [{ start: '38:10', end: '42:45', type: 'Nudity', severity: 'Moderate', description: 'Holographic nudity (Woman)' },
+        { start: '1:30:50', end: '1:31:00', type: 'Nudity', severity: 'Moderate', description: 'Glimpse nudity (Woman)' },
+        { start: '2:02:58', end: '2:03:03', type: 'Partial Nudity', severity: 'Mild', description: 'Glimpse partial nudity (Woman)' },
+        { start: '2:17:00', end: '2:18:05', type: 'Nudity', severity: 'Moderate', description: 'Full nudity (Woman)' }] },
   137113: { scenes: [] }
 };
 

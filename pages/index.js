@@ -1,4 +1,4 @@
-// pages/index.js - PURE SSG VERSION (No Client Fetching) 🚀
+// pages/index.js - SEO FIXED VERSION (Bing/Google Optimized) 🚀
 import React, { useState, useEffect, useRef, useCallback, memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Head from 'next/head';
@@ -38,23 +38,21 @@ const MovieCard = memo(({ movie, index, isMobile, onClick }) => (
     >
         <div className="relative aspect-[2/3] rounded-2xl overflow-hidden bg-gray-900 shadow-xl w-full h-full">
             <Image
-                src={`${IMAGE_BASE_URL}/w342${movie.poster_path}`}
+                src={movie.poster_path ? `${IMAGE_BASE_URL}/w342${movie.poster_path}` : "https://via.placeholder.com/342x513?text=No+Image"}
                 alt={movie.title}
                 width={342}
                 height={513}
-                srcSet={`
+                srcSet={movie.poster_path ? `
                     ${IMAGE_BASE_URL}/w154${movie.poster_path} 154w,
                     ${IMAGE_BASE_URL}/w342${movie.poster_path} 342w,
                     ${IMAGE_BASE_URL}/w500${movie.poster_path} 500w
-                `}
+                ` : undefined}
                 sizes="(max-width: 640px) 154px, (max-width: 1024px) 342px, 500px"
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 loading="lazy"
                 draggable={false}
-                placeholder="blur"
-                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABoAGgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWm5ybnJ2eoqOkpaanqKmqsrO0tba2uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlbaWmJmaoqOkpaanqKmqsrO0tba2uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD5/KKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD/9k="
             />
-
+            
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div className="absolute bottom-3 sm:bottom-6 left-3 sm:left-6 right-3 sm:right-6">
                     <h3 className="text-white font-semibold text-xs sm:text-sm md:text-base mb-2 line-clamp-2">
@@ -66,7 +64,7 @@ const MovieCard = memo(({ movie, index, isMobile, onClick }) => (
                             <span className="text-yellow-400 font-medium text-xs">{movie.vote_average?.toFixed(1)}</span>
                         </div>
                         <span className="text-gray-300 text-xs">
-                            {new Date(movie.release_date).getFullYear()}
+                            {movie.release_date ? new Date(movie.release_date).getFullYear() : 'N/A'}
                         </span>
                     </div>
                     <button className="w-full bg-yellow-400 text-black py-1.5 sm:py-2 rounded-lg font-medium hover:bg-yellow-300 transition-colors text-xs sm:text-sm">
@@ -120,12 +118,15 @@ const HeroSection = memo(() => (
                     </div>
                 </motion.div>
 
-                {/* ✅ SEO FIX: H1 TAG FOR BING */}
+                {/* ✅ SEO FIX: Standard H1 for bots, Motion H1 for users */}
+                <h1 className="sr-only">Filmiway - Explore the Best of Global Cinema</h1>
+                
                 <motion.h1 
                     className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extralight text-white mb-4 xs:mb-6 leading-tight"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3, duration: 0.6 }}
+                    aria-hidden="true" // Hide from screen readers to avoid duplicate H1
                 >
                     Explore the Best of
                     <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-amber-300 to-yellow-400 font-light">
@@ -396,10 +397,11 @@ const FilmiwayHomepage = ({ trendingMovies, popularMovies, topRatedMovies }) => 
 
     return (
         <>
+            {/* ✅ SEO HEAD MOVED TO TOP OF FRAGMENT */}
             <Head>
-                {/* 1. Fixed Title Tag for Bing */}
+                {/* 1. Title is Critical */}
                 <title>Filmiway - Global Film Recommendations & Discovery</title>
-                {/* 2. Fixed Meta Description for Bing */}
+                {/* 2. Meta Description */}
                 <meta name="description" content="Discover the best of global cinema. Filmiway is your ultimate guide for movie recommendations, reviews, and hidden gems from around the world." />
                 <link rel="canonical" href="https://filmiway.com/" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
@@ -529,9 +531,9 @@ const FilmiwayHomepage = ({ trendingMovies, popularMovies, topRatedMovies }) => 
 
 export default FilmiwayHomepage;
 
-// ✅ SERVER SIDE GENERATION (SSG) - FINAL FIXED VERSION WITH HARDCODED KEY
+// ✅ SERVER SIDE GENERATION (SSG) - FINAL FIXED VERSION
 export async function getStaticProps() {
-  // ✅ HARDCODED API KEY (Guarantees Access on Build Server)
+  // ⚠️ PASTE YOUR API KEY INSIDE THE QUOTES BELOW IF IT STILL SHOWS EMPTY
   const TMDB_API_KEY = '6054e5498fb2619274454959c38bbdfa'; 
   const TMDB_BASE_URL = 'https://api.themoviedb.org/3';
 
@@ -543,18 +545,20 @@ export async function getStaticProps() {
   };
 
   try {
+    // 1. Fetch raw data
     const [trendingRes, popularRes, topRatedRes] = await Promise.all([
       fetch(`${TMDB_BASE_URL}/trending/movie/week?api_key=${TMDB_API_KEY}&region=US&language=en-US`),
       fetch(`${TMDB_BASE_URL}/movie/popular?api_key=${TMDB_API_KEY}&region=US&language=en-US`),
       fetch(`${TMDB_BASE_URL}/movie/top_rated?api_key=${TMDB_API_KEY}&region=US&language=en-US`)
     ]);
 
-    // Check if requests were successful
+    // 2. Check if requests were successful
     if (!trendingRes.ok || !popularRes.ok || !topRatedRes.ok) {
         console.error("❌ API Error: Check your API Key.");
         throw new Error("Failed to fetch data");
     }
 
+    // 3. Parse JSON
     const [trending, popular, topRated] = await Promise.all([
       trendingRes.json(),
       popularRes.json(),

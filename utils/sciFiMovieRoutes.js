@@ -13,7 +13,7 @@ export const SCI_FI_MOVIE_SLUGS = {
   'tt1375666': 'inception',
   'tt2543164': 'arrival',
   'tt0076759': 'star-wars-a-new-hope',
-  'tt0338013': 'blade-runner-2049' // must match imdbID used in sciFiMovieData
+  'tt1856101': 'blade-runner-2049' // must match imdbID used in sciFiMovieData
 };
 
 // ✅ REVERSE SLUG MAPPING (SLUG TO IMDB ID)

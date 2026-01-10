@@ -22,6 +22,9 @@ export const COMPLETE_MOVIE_DATABASE = [
     { tmdbId: 335984, imdbID: "tt1856101", Title: "Blade Runner 2049", year: 2017, genre: "Sci-Fi", runtime: 164, rank: 10 }
 ];
 
+
+
+
 // 🔥 VITAL EXPORT FOR BUILD 🔥
 export const SCI_FI_MOVIES = COMPLETE_MOVIE_DATABASE;
 
@@ -30,213 +33,220 @@ const createMovieData = (data) => ({
     sciFiComplexity: 90,    // Hard Sci-Fi vs Soft Sci-Fi factor
     visualSpectacle: 90,    // VFX / World Building
     philosophicalDepth: 85, // Intellectual weight
-    complexityLevel: "HIGH",
     dominantColor: "#000000",
     ...data,
 });
 
 // 2️⃣ COMPLETE_MOVIE_DATA (The Details)
 export const COMPLETE_MOVIE_DATA = {
-    // 1. 2001: A Space Odyssey
+// 1. 2001: A Space Odyssey
     62: createMovieData({ 
         sciFiComplexity: 99, visualSpectacle: 100, philosophicalDepth: 100, complexityLevel: "EXTREME", 
-        dominantColor: "#0a0a0a", rating: 8.4, criticsScore: 92, audienceScore: 89, director: "Stanley Kubrick", 
-        cast: ["Keir Dullea", "Gary Lockwood", "Douglas Rain"], boxOffice: "$146.2 million", budget: "$10.5 million", 
-        dna: { "SciFi": 70, "Drama": 20, "Adventure": 10 }, 
+        dominantColor: "#ffffff", rating: 8.4, criticsScore: 92, audienceScore: 89, director: "Stanley Kubrick", 
+        cast: ["Keir Dullea", "Gary Lockwood"], boxOffice: "$146.2M", budget: "$10.5M", 
+        dna: { "Sci-Fi": 60, "Drama": 30, "Mystery": 10 }, 
         scenes: [
-            { time: 5, intensity: 30, label: "The Monolith", color: "#000000" }, 
-            { time: 55, intensity: 45, label: "Moon Base", color: "#e8e8e8" }, 
-            { time: 90, intensity: 60, label: "Discovery One", color: "#0066ff" }, 
-            { time: 125, intensity: 78, label: "HAL Awakens", color: "#ff0000" }, 
-            { time: 140, intensity: 88, label: "Star Child", color: "#ffff00" }
+            { time: 5, intensity: 35, label: "Dawn of Man", color: "#000000" }, 
+            { time: 55, intensity: 48, label: "TMA-1 Monolith", color: "#e8e8e8" }, 
+            { time: 90, intensity: 65, label: "HAL Disconnect", color: "#ff0000" }, 
+            { time: 125, intensity: 88, label: "The Stargate", color: "#7c3aed" }, 
+            { time: 140, intensity: 100, label: "THE STAR CHILD", color: "#ffffff" } // ✅ 100 TIER
         ], 
-        synopsis: "An extraordinary exploration of human evolution, artificial intelligence, and cosmic destiny. A mysterious black monolith appears at pivotal moments in human history. A space mission to Jupiter becomes a profound philosophical odyssey when the ship's AI, HAL 9000, begins to malfunction. A masterpiece of visual storytelling that transcends narrative to become pure cinema.", 
-        themes: ["Evolution", "Artificial Intelligence", "Isolation", "Existentialism"]
+        synopsis: "Stanley Kubrick’s absolute masterpiece spans the entirety of human history, from the first prehistoric tools to a future among the stars. When a mysterious black monolith is discovered buried on the lunar surface, it sends a signal toward Jupiter. The crew of the Discovery One, led by Dr. Dave Bowman, embarks on a mission that turns into a fight for survival against the ship’s sentient AI, HAL 9000. It is a visual and philosophical odyssey that ultimately leads to the next step in human evolution.", 
+        themes: ["Evolution", "AI Supremacy", "Cosmic Loneliness", "Destiny"]
     }),
 
-    // 2. Blade Runner
+    // 2. Blade Runner (1982)
     78: createMovieData({ 
         sciFiComplexity: 96, visualSpectacle: 95, philosophicalDepth: 98, complexityLevel: "EXTREME", 
-        dominantColor: "#1a1a1a", rating: 8.1, criticsScore: 89, audienceScore: 91, director: "Ridley Scott", 
-        cast: ["Harrison Ford", "Rutger Hauer", "Sean Young"], boxOffice: "$33.7 million", budget: "$28 million", 
-        dna: { "SciFi": 60, "Thriller": 25, "Drama": 15 }, 
+        dominantColor: "#0b4476", rating: 8.1, criticsScore: 89, audienceScore: 91, director: "Ridley Scott", 
+        cast: ["Harrison Ford", "Rutger Hauer"], boxOffice: "$33.7M", budget: "$28M", 
+        dna: { "Sci-Fi": 50, "Thriller": 30, "Drama": 20 }, 
         scenes: [
             { time: 12, intensity: 35, label: "Voight-Kampff", color: "#8b0000" }, 
-            { time: 38, intensity: 58, label: "Eye Chew", color: "#ff1493" }, 
-            { time: 72, intensity: 75, label: "Rooftop Chase", color: "#ffd700" }, 
-            { time: 100, intensity: 88, label: "Meeting Maker", color: "#4169e1" }, 
-            { time: 112, intensity: 95, label: "Tears in Rain", color: "#dc143c" }
+            { time: 38, intensity: 52, label: "Zhora's Fall", color: "#ff1493" }, 
+            { time: 72, intensity: 68, label: "Tyrell's End", color: "#ffd700" }, 
+            { time: 100, intensity: 84, label: "Rooftop Duel", color: "#0b4476" }, 
+            { time: 112, intensity: 98, label: "TEARS IN RAIN", color: "#ffffff" }
         ], 
-        synopsis: "In a rain-soaked, neon-lit Los Angeles of 2019, blade runner Rick Deckard is tasked with hunting down illegal replicants—artificial beings almost indistinguishable from humans. As he tracks them, Deckard begins to question the nature of his own humanity. A visually stunning, noir-influenced masterpiece exploring what it means to be alive.", 
-        themes: ["What is Human?", "Memory", "Mortality", "Corporate Power"]
+        synopsis: "In a decaying, rain-soaked Los Angeles of 2019, 'Blade Runner' Rick Deckard is pulled out of retirement to hunt down four escaped replicants—synthetic humans engineered for slave labor. Led by the brilliant Roy Batty, the replicants seek to confront their creator at the Tyrell Corporation to demand longer lives. As Deckard tracks them through the neon shadows, he begins to question the moral validity of his mission and the very nature of his own humanity in a world where machines can feel more than men.", 
+        themes: ["What is Human?", "Memory Distortion", "Corporate Tyranny", "Mortality"]
     }),
 
     // 3. The Matrix
     603: createMovieData({ 
         sciFiComplexity: 92, visualSpectacle: 98, philosophicalDepth: 90, complexityLevel: "HIGH", 
-        dominantColor: "#003300", rating: 8.7, criticsScore: 88, audienceScore: 85, director: "Lana & Lilly Wachowski", 
-        cast: ["Keanu Reeves", "Laurence Fishburne", "Carrie-Anne Moss"], boxOffice: "$467.2 million", budget: "$63 million", 
-        dna: { "SciFi": 50, "Action": 40, "Thriller": 10 }, 
+        dominantColor: "#10b981", rating: 8.7, criticsScore: 88, audienceScore: 85, director: "The Wachowskis", 
+        cast: ["Keanu Reeves", "Laurence Fishburne"], boxOffice: "$467.2M", budget: "$63M", 
+        dna: { "Action": 45, "Sci-Fi": 40, "Thriller": 15 }, 
         scenes: [
-            { time: 18, intensity: 40, label: "Rabbit Hole", color: "#00ff00" }, 
-            { time: 52, intensity: 68, label: "The Oracle", color: "#ffff00" }, 
-            { time: 88, intensity: 80, label: "Lobby Shootout", color: "#00ffff" }, 
-            { time: 115, intensity: 88, label: "Subway Fight", color: "#ff00ff" }, 
-            { time: 130, intensity: 92, label: "The One", color: "#ff0000" }
+            { time: 18, intensity: 42, label: "Red Pill", color: "#ef4444" }, 
+            { time: 52, intensity: 64, label: "The Training", color: "#10b981" }, 
+            { time: 88, intensity: 85, label: "Lobby Shootout", color: "#064e3b" }, 
+            { time: 115, intensity: 92, label: "Subway Fight", color: "#059669" }, 
+            { time: 130, intensity: 98, label: "THE ONE AWAKENS", color: "#ffffff" }
         ], 
-        synopsis: "Thomas Anderson, a computer programmer known as 'Neo,' discovers the world he knows is a simulation created by machines to enslave humanity. Freed by rebels who believe he is 'The One,' Neo must embrace his power to end the war. A revolutionary film that blended cyberpunk philosophy with Hong Kong action cinema.", 
-        themes: ["Reality vs Simulation", "Free Will", "Identity", "Control"]
+        synopsis: "Thomas Anderson is a disillusioned programmer by day and a hacker named 'Neo' by night. His life is shattered when a mysterious woman named Trinity introduces him to Morpheus, who reveals a terrifying truth: the world as he knows it is a simulation called the Matrix, built by machines to keep humanity enslaved while harvesting their bio-electric energy. Neo must choose between a comfortable lie and a brutal reality, eventually realizing he is the prophesied 'One' who can rewrite the rules of the system and free mankind.", 
+        themes: ["Reality vs Simulation", "Free Will", "Identity", "Totalitarianism"]
     }),
 
     // 4. Alien
     348: createMovieData({ 
         sciFiComplexity: 94, visualSpectacle: 90, philosophicalDepth: 80, complexityLevel: "HIGH", 
-        dominantColor: "#2f4f4f", rating: 8.5, criticsScore: 98, audienceScore: 94, director: "Ridley Scott", 
-        cast: ["Sigourney Weaver", "Tom Skerritt", "John Hurt"], boxOffice: "$106.2 million", budget: "$11 million", 
-        dna: { "Horror": 45, "SciFi": 40, "Thriller": 15 }, 
+        dominantColor: "#134e4a", rating: 8.5, criticsScore: 98, audienceScore: 94, director: "Ridley Scott", 
+        cast: ["Sigourney Weaver", "John Hurt"], boxOffice: "$106.2M", budget: "$11M", 
+        dna: { "Horror": 55, "Sci-Fi": 30, "Thriller": 15 }, 
         scenes: [
-            { time: 22, intensity: 45, label: "Derelict Ship", color: "#4a4a4a" }, 
-            { time: 58, intensity: 72, label: "Chestburster", color: "#8b0000" }, 
-            { time: 85, intensity: 85, label: "The Vents", color: "#ff6347" }, 
-            { time: 105, intensity: 92, label: "Ash Malfunction", color: "#ffff00" }, 
-            { time: 115, intensity: 98, label: "Final Report", color: "#ff0000" }
+            { time: 22, intensity: 40, label: "The Derelict", color: "#4b5563" }, 
+            { time: 58, intensity: 100, label: "CHESTBURSTER", color: "#dc2626" }, // ✅ 100 TIER
+            { time: 85, intensity: 75, label: "Air Vents", color: "#111827" }, 
+            { time: 105, intensity: 68, label: "Ash Malfunction", color: "#ffffff" }, 
+            { time: 115, intensity: 94, label: "Last Survivor", color: "#ef4444" }
         ], 
-        synopsis: "The crew of a deep-space mining vessel investigates a distress signal and discovers a terrifying parasitic organism. Trapped aboard with an unstoppable predator that hunts them one by one, the crew fights desperately for survival. A masterpiece that introduced the 'Blue Collar Space' aesthetic.", 
-        themes: ["Cosmic Horror", "Corporate Greed", "Survival", "Invasion"]
+        synopsis: "The crew of the commercial starship Nostromo is awakened from stasis early to investigate a mysterious distress signal originating from a desolate moon. While exploring a derelict alien vessel, a crew member is attacked by a parasitic organism. Back on the ship, the parasite births a terrifying, unstoppable predator that begins hunting the crew through the industrial dark. It is a masterclass in cosmic horror, blending blue-collar survival with the realization that in space, no one can hear you scream.", 
+        themes: ["Survival", "Corporate Greed", "Invasive Parasitism", "Isolation"]
     }),
 
     // 5. Interstellar
     157336: createMovieData({ 
-        sciFiComplexity: 95, visualSpectacle: 98, philosophicalDepth: 90, complexityLevel: "EXTREME", 
-        dominantColor: "#0c4a6e", rating: 8.7, criticsScore: 73, audienceScore: 86, director: "Christopher Nolan", 
-        cast: ["Matthew McConaughey", "Anne Hathaway", "Jessica Chastain"], boxOffice: "$677.5 million", budget: "$165 million", 
-        dna: { "SciFi": 50, "Drama": 30, "Adventure": 20 }, 
+        sciFiComplexity: 96, visualSpectacle: 98, philosophicalDepth: 94, complexityLevel: "EXTREME", 
+        dominantColor: "#082f49", rating: 8.7, criticsScore: 73, audienceScore: 86, director: "Christopher Nolan", 
+        cast: ["Matthew McConaughey", "Anne Hathaway"], boxOffice: "$677.5M", budget: "$165M", 
+        dna: { "Sci-Fi": 50, "Drama": 40, "Action": 10 }, 
         scenes: [
-            { time: 45, intensity: 50, label: "Launch", color: "#0891b2" }, 
-            { time: 82, intensity: 68, label: "Miller's Planet", color: "#06b6d4" }, 
-            { time: 118, intensity: 82, label: "Mann's Betrayal", color: "#22d3ee" }, 
-            { time: 145, intensity: 90, label: "The Tesseract", color: "#67e8f9" }, 
-            { time: 162, intensity: 95, label: "Murph", color: "#a5f3fc" }
+            { time: 45, intensity: 48, label: "Launch", color: "#8b5e34" }, 
+            { time: 82, intensity: 94, label: "YEARS OF VIDEOS", color: "#0ea5e9" }, 
+            { time: 118, intensity: 82, label: "Docking", color: "#ffffff" }, 
+            { time: 145, intensity: 90, label: "The Tesseract", color: "#22d3ee" }, 
+            { time: 162, intensity: 88, label: "Reunion", color: "#60a5fa" }
         ], 
-        synopsis: "With Earth plagued by blight, ex-pilot Cooper travels through a wormhole in search of a new home for humanity. But the mission comes with a devastating cost: relativity means that for every hour he spends in space, years pass for his children back on Earth. A visually spectacular epic about love stretching across dimensions.", 
-        themes: ["Time & Relativity", "Love", "Survival", "Parental Sacrifice"]
+        synopsis: "Earth is dying from a global blight, and humanity’s survival depends on finding a new home. Cooper, a widowed pilot and father, joins a team of astronauts to travel through a newly discovered wormhole near Saturn. Their journey takes them to planets orbiting a black hole, where time dilation means every hour spent on the surface equals seven years on Earth. Cooper must grapple with the agonizing reality that while he tries to save the human race, his own children are growing old and dying back home without him.", 
+        themes: ["Relativity", "Parental Sacrifice", "Love Across Dimensions", "Science vs Hope"]
     }),
 
     // 6. Terminator 2: Judgment Day
     280: createMovieData({ 
-        sciFiComplexity: 96, visualSpectacle: 100, philosophicalDepth: 85, complexityLevel: "HIGH", 
+        sciFiComplexity: 85, visualSpectacle: 100, philosophicalDepth: 85, complexityLevel: "HIGH", 
         dominantColor: "#1e3a8a", rating: 8.6, criticsScore: 93, audienceScore: 95, director: "James Cameron", 
-        cast: ["Arnold Schwarzenegger", "Linda Hamilton", "Edward Furlong"], boxOffice: "$520.9 million", budget: "$102 million", 
-        dna: { "Action": 50, "SciFi": 35, "Thriller": 15 }, 
+        cast: ["Arnold Schwarzenegger", "Linda Hamilton"], boxOffice: "$520.9M", budget: "$102M", 
+        dna: { "Action": 60, "Sci-Fi": 25, "Thriller": 15 }, 
         scenes: [
-            { time: 15, intensity: 50, label: "The Arrival", color: "#dc2626" }, 
-            { time: 42, intensity: 72, label: "Hospital Escape", color: "#ef4444" }, 
-            { time: 78, intensity: 85, label: "No Fate", color: "#f87171" }, 
-            { time: 110, intensity: 92, label: "Liquid Metal", color: "#fca5a5" }, 
-            { time: 130, intensity: 96, label: "Thumbs Up", color: "#fecaca" }
+            { time: 15, intensity: 45, label: "Canal Chase", color: "#0ea5e9" }, 
+            { time: 42, intensity: 70, label: "Sarah's Escape", color: "#94a3b8" }, 
+            { time: 78, intensity: 62, label: "No Fate", color: "#475569" }, 
+            { time: 110, intensity: 92, label: "Molten Steel", color: "#f97316" }, 
+            { time: 130, intensity: 96, label: "FINAL SACRIFICE", color: "#ea580c" }
         ], 
-        synopsis: "The future supercomputer Skynet sends a new liquid-metal Terminator back in time to kill the future leader of the resistance. But the resistance sends back a reprogrammed protector. It is a race against an unkillable enemy to change the future. The rare sequel that surpasses the original.", 
-        themes: ["Fate vs Free Will", "Technology", "Humanity", "Fatherhood"]
+        synopsis: "Over a decade has passed since the first Terminator failed to kill Sarah Connor. Now, a more advanced and unkillable liquid-metal Terminator, the T-1000, is sent back in time to kill her son, John Connor. However, the future resistance sends a reprogrammed T-800 to protect him. Sarah must break out of a psychiatric hospital and join forces with the machine she once feared to prevent 'Judgment Day'—the nuclear holocaust that will end human civilization. It is an action epic with a profound heart.", 
+        themes: ["Fate vs Choice", "Technological Decay", "Fatherhood", "Sacrifice"]
     }),
 
     // 7. Inception
     27205: createMovieData({ 
         sciFiComplexity: 98, visualSpectacle: 95, philosophicalDepth: 88, complexityLevel: "EXTREME", 
-        dominantColor: "#1f2937", rating: 8.8, criticsScore: 87, audienceScore: 91, director: "Christopher Nolan", 
-        cast: ["Leonardo DiCaprio", "Marion Cotillard", "Tom Hardy"], boxOffice: "$839.5 million", budget: "$160 million", 
-        dna: { "SciFi": 55, "Action": 30, "Thriller": 15 }, 
+        dominantColor: "#ca8a04", rating: 8.8, criticsScore: 87, audienceScore: 91, director: "Christopher Nolan", 
+        cast: ["Leonardo DiCaprio", "Tom Hardy"], boxOffice: "$839.5M", budget: "$160M", 
+        dna: { "Sci-Fi": 45, "Action": 35, "Thriller": 20 }, 
         scenes: [
-            { time: 22, intensity: 55, label: "The Architect", color: "#ca8a04" }, 
-            { time: 62, intensity: 75, label: "Zero Gravity", color: "#eab308" }, 
-            { time: 98, intensity: 85, label: "The Kick", color: "#fde68a" }, 
-            { time: 128, intensity: 92, label: "Limbo", color: "#fbbf24" }, 
-            { time: 142, intensity: 95, label: "The Totem", color: "#dc2626" }
+            { time: 22, intensity: 50, label: "Paris Fold", color: "#ca8a04" }, 
+            { time: 62, intensity: 78, label: "Hallway Fight", color: "#71717a" }, 
+            { time: 98, intensity: 88, label: "The Kick", color: "#ffffff" }, 
+            { time: 128, intensity: 82, label: "Limbo", color: "#64748b" }, 
+            { time: 142, intensity: 98, label: "THE TOTEM", color: "#dc2626" }
         ], 
-        synopsis: "Dom Cobb is a thief who steals secrets from the subconscious during dreams. He is offered a chance at redemption: perform an 'inception,' planting an idea rather than stealing one. Assembling a team, Cobb leads them deep into nested dreams where the laws of physics are bent.", 
-        themes: ["Reality vs Dream", "Grief", "Catharsis", "Subconscious"]
+        synopsis: "Dom Cobb is a professional thief who specializes in extraction—the art of stealing secrets from deep within the subconscious during the dream state. His skills have made him a fugitive, but he is offered a chance at redemption if he can achieve the impossible: 'Inception.' Instead of stealing an idea, he must plant one. To succeed, Cobb assembles a specialist team and dives through layers of nested dreams where physics are irrelevant and his own past begins to haunt the mission in the form of his late wife, Mal.", 
+        themes: ["Grief", "Nested Realities", "Subconscious Trauma", "Catharsis"]
     }),
 
     // 8. Arrival
     329865: createMovieData({ 
-        sciFiComplexity: 89, visualSpectacle: 85, philosophicalDepth: 98, complexityLevel: "HIGH", 
+        sciFiComplexity: 88, visualSpectacle: 85, philosophicalDepth: 98, complexityLevel: "HIGH", 
         dominantColor: "#164e63", rating: 7.9, criticsScore: 94, audienceScore: 82, director: "Denis Villeneuve", 
-        cast: ["Amy Adams", "Jeremy Renner", "Forest Whitaker"], boxOffice: "$203.2 million", budget: "$47 million", 
-        dna: { "SciFi": 50, "Drama": 35, "Adventure": 15 }, 
+        cast: ["Amy Adams", "Jeremy Renner"], boxOffice: "$203.2M", budget: "$47M", 
+        dna: { "Sci-Fi": 50, "Drama": 40, "Thriller": 10 }, 
         scenes: [
-            { time: 14, intensity: 38, label: "First Contact", color: "#0891b2" }, 
-            { time: 48, intensity: 60, label: "The Logogram", color: "#06b6d4" }, 
-            { time: 82, intensity: 75, label: "Non-Zero Sum", color: "#22d3ee" }, 
-            { time: 108, intensity: 88, label: "The Gift", color: "#67e8f9" }, 
-            { time: 114, intensity: 93, label: "The Choice", color: "#a5f3fc" }
+            { time: 14, intensity: 45, label: "First Entry", color: "#083344" }, 
+            { time: 48, intensity: 62, label: "Logogram", color: "#ffffff" }, 
+            { time: 82, intensity: 75, label: "Abbott Dies", color: "#164e63" }, 
+            { time: 108, intensity: 96, label: "NON-LINEAR TIME", color: "#ffffff" }, 
+            { time: 114, intensity: 85, label: "The Choice", color: "#ec4899" }
         ], 
-        synopsis: "Twelve mysterious spacecraft touch down around the world. Linguist Louise Banks is tasked with communicating with the visitors. As she deciphers their complex language, she discovers profound truths about time, memory, and the nature of existence.", 
+        synopsis: "Twelve giant, egg-shaped spacecraft land at various locations around the globe, throwing humanity into a state of panic and paranoia. Linguistic expert Louise Banks is recruited by the military to find a way to communicate with the 'Heptapods' inside. As she begins to decode their non-linear language, her own perception of time and memory begins to warp. She discovers that the aliens' gift is a tool that allows her to see the future, forcing her to make a heart-wrenching choice about her own life.", 
         themes: ["Communication", "Determinism", "Grief", "Unity"]
     }),
 
     // 9. Star Wars: The Empire Strikes Back
     1891: createMovieData({ 
-        sciFiComplexity: 90, visualSpectacle: 95, philosophicalDepth: 80, complexityLevel: "HIGH", 
-        dominantColor: "#1e3a8a", rating: 8.7, criticsScore: 94, audienceScore: 97, director: "Irvin Kershner", 
-        cast: ["Mark Hamill", "Harrison Ford", "Carrie Fisher"], boxOffice: "$538.4 million", budget: "$18 million", 
-        dna: { "SciFi": 40, "Adventure": 35, "Fantasy": 25 }, 
+        sciFiComplexity: 82, visualSpectacle: 95, philosophicalDepth: 80, complexityLevel: "HIGH", 
+        dominantColor: "#dc2626", rating: 8.7, criticsScore: 94, audienceScore: 97, director: "Irvin Kershner", 
+        cast: ["Mark Hamill", "Harrison Ford"], boxOffice: "$538.4M", budget: "$18M", 
+        dna: { "Action": 40, "Sci-Fi": 40, "Drama": 20 }, 
         scenes: [
-            { time: 15, intensity: 52, label: "Hoth Battle", color: "#e0f2fe" }, 
-            { time: 48, intensity: 58, label: "Asteroid Field", color: "#7c3aed" }, 
-            { time: 82, intensity: 72, label: "Yoda's Teachings", color: "#fb923c" }, 
-            { time: 105, intensity: 88, label: "Carbon Freeze", color: "#ef4444" }, 
-            { time: 120, intensity: 95, label: "The Revelation", color: "#dc2626" }
+            { time: 15, intensity: 60, label: "Hoth", color: "#f8fafc" }, 
+            { time: 48, intensity: 55, label: "Yoda's Training", color: "#22c55e" }, 
+            { time: 82, intensity: 48, label: "Cloud City", color: "#f97316" }, 
+            { time: 105, intensity: 85, label: "Carbon Freeze", color: "#334155" }, 
+            { time: 120, intensity: 100, label: "THE REVELATION", color: "#dc2626" } // ✅ 100 TIER
         ], 
-        synopsis: "After the Rebels are brutally overpowered by the Empire on the ice planet Hoth, Luke Skywalker begins Jedi training with Yoda, while his friends are pursued by Darth Vader. Luke confronts Vader in a duel where he learns a devastating truth. A darker, more mature chapter in the saga.", 
-        themes: ["Good vs Evil", "Patience", "Failure", "Destiny"]
+        synopsis: "The Galactic Empire has hunted the Rebels to the frozen world of Hoth. After a devastating retreat, Luke Skywalker travels to the Dagobah system to train with the ancient Jedi Master Yoda. Meanwhile, Han Solo and Princess Leia are pursued across the galaxy by Darth Vader, eventually seeking refuge in Cloud City. The film culminates in one of the most famous confrontations in cinematic history, where Luke faces his greatest failure and discovers a secret that shatters his identity and the balance of the Force.", 
+        themes: ["Failure", "Legacy", "Destiny", "The Father Figure"]
     }),
 
     // 10. Blade Runner 2049
     335984: createMovieData({ 
         sciFiComplexity: 94, visualSpectacle: 100, philosophicalDepth: 95, complexityLevel: "EXTREME", 
-        dominantColor: "#1a1a2e", rating: 8.0, criticsScore: 88, audienceScore: 81, director: "Denis Villeneuve", 
-        cast: ["Ryan Gosling", "Harrison Ford", "Ana de Armas"], boxOffice: "$259.2 million", budget: "$185 million", 
-        dna: { "SciFi": 60, "Drama": 25, "Mystery": 15 }, 
+        dominantColor: "#f97316", rating: 8.0, criticsScore: 88, audienceScore: 81, director: "Denis Villeneuve", 
+        cast: ["Ryan Gosling", "Harrison Ford"], boxOffice: "$259.2M", budget: "$185M", 
+        dna: { "Sci-Fi": 50, "Drama": 30, "Thriller": 20 }, 
         scenes: [
-            { time: 18, intensity: 40, label: "The Farm", color: "#8b7355" }, 
-            { time: 55, intensity: 62, label: "Las Vegas", color: "#ff6347" }, 
-            { time: 98, intensity: 78, label: "The Archive", color: "#ffd700" }, 
-            { time: 138, intensity: 88, label: "Sea Wall", color: "#4169e1" }, 
-            { time: 160, intensity: 94, label: "Dying for the Right Cause", color: "#dc143c" }
+            { time: 18, intensity: 35, label: "Sapper Morton", color: "#8b4513" }, 
+            { time: 55, intensity: 62, label: "Las Vegas", color: "#f97316" }, 
+            { time: 98, intensity: 72, label: "The Miracle", color: "#fde047" }, 
+            { time: 138, intensity: 88, label: "Sea Wall", color: "#1e3a8a" }, 
+            { time: 160, intensity: 94, label: "THE SNOW", color: "#ffffff" }
         ], 
-        synopsis: "Thirty years after the original, blade runner K discovers a secret that could destabilize society. Searching for answers in a decaying future, K must confront questions about humanity, mortality, and what it means to have a soul.", 
-        themes: ["What is Real?", "Legacy", "Soul", "Artificial Life"]
+        synopsis: "Thirty years after Rick Deckard disappeared, a new Blade Runner, K, unearths a long-buried secret: a replicant once gave birth to a child. This revelation threatens to trigger a war between humans and synthetic beings. Ordered to find and destroy the child, K’s investigation leads him to the long-missing Deckard. In a journey through radioactive dust and digital ghosts, K must decide if he is merely a tool of his corporate masters or if his individual actions can prove that he has a soul.", 
+        themes: ["Authenticity", "Legacy", "The Miracle of Birth", "Individual Agency"]
     })
 };
 
-// 3. SENSITIVE TIMELINES (Schema Data)
+/// 3. SENSITIVE TIMELINES (Schema Data)
 export const SENSITIVE_TIMELINES = {
     62: { scenes: [] }, // 2001 (Clean)
+    
+    // Blade Runner (Original)
     78: { scenes: [
-        { start: '53:50', end: '55:00', type: 'Partial Nudity', severity: 'Moderate' },
+        { start: '53:50', end: '55:00', type: 'Nudity', severity: 'Moderate', description: 'Brief nudity (Woman)' },
         { start: '1:11:20', end: '1:12:40', type: 'Intense Kissing', severity: 'Mild' },
         { start: '1:35:15', end: '1:35:25', type: 'Kissing', severity: 'Mild' }
     ] },
+    
     603: { scenes: [
         { start: '2:04:30', end: '2:04:40', type: 'Kissing', severity: 'Mild' },
         { start: '2:07:41', end: '2:07:50', type: 'Kissing', severity: 'Mild' }
-    ] },
-    348: { scenes: [] }, // Alien (Clean of sex/nudity, contains gore but usually tagged separately)
+    ] }, // Matrix
+    
+    348: { scenes: [] }, // Alien (Clean of sex/nudity)
     157336: { scenes: [] }, // Interstellar (Clean)
+    
     280: { scenes: [
-        { start: '6:10', end: '6:20', type: 'Partial Nudity', severity: 'Mild', description: 'Non-sexual male buttocks' },
-        { start: '11:40', end: '11:52', type: 'Partial Nudity', severity: 'Mild', description: 'Non-sexual male buttocks' }
-    ] },
+        { start: '6:10', end: '6:20', type: 'Partial Nudity', severity: 'Mild', description: 'Non-sexual ' },
+        { start: '11:40', end: '11:52', type: 'Partial Nudity', severity: 'Mild', description: 'Non-sexual' }
+    ] }, // Terminator 2
+    
     27205: { scenes: [] }, // Inception (Clean)
     329865: { scenes: [] }, // Arrival (Clean)
+    
     1891: { scenes: [
         { start: '52:00', end: '52:05', type: 'Kissing', severity: 'Mild' }
-    ] },
+    ] }, // Empire Strikes Back
+
+    // Blade Runner 2049
     335984: { scenes: [
-        { start: '38:10', end: '42:45', type: 'Nudity', severity: 'Moderate', description: 'Holographic nudity' },
-        { start: '1:29:25', end: '1:29:40', type: 'Kissing', severity: 'Mild' },
-        { start: '1:30:50', end: '1:31:00', type: 'Nudity', severity: 'Moderate' },
-        { start: '2:02:58', end: '2:03:03', type: 'Partial Nudity', severity: 'Mild' },
-        { start: '2:17:00', end: '2:18:05', type: 'Nudity', severity: 'Moderate' }
+        { start: '38:10', end: '42:45', type: 'Nudity', severity: 'Moderate', description: 'Holographic nudity (Woman)' },
+        { start: '1:30:50', end: '1:31:00', type: 'Nudity', severity: 'Moderate', description: 'Glimpse nudity (Woman)' },
+        { start: '2:02:58', end: '2:03:03', type: 'Partial Nudity', severity: 'Mild', description: 'Glimpse partial nudity (Woman)' },
+        { start: '2:17:00', end: '2:18:05', type: 'Nudity', severity: 'Moderate', description: 'Full nudity (Woman)' }
     ] }
 };
 

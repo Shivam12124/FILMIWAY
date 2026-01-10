@@ -1,6 +1,6 @@
-// pages/movies/sci-fi/[id].js - SCI-FI EDITION 🚀✅
+// pages/movies/sci-fi/[id].js - SCI-FI EDITION (WITH CURATED INSIGHTS) 🚀✅
 // VISUALS: Minimalist (Banner + Details Only)
-// SCHEMA: Maximalist (Hidden Complexity Metrics, Peak Moments, and FAQs)
+// SCHEMA: Maximalist (Hidden Complexity, Spectacle, and FAQs for Bots)
 
 import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
@@ -27,10 +27,30 @@ const COLORS = {
   borderAccent: 'rgba(14, 165, 233, 0.25)', borderLight: 'rgba(55, 65, 81, 0.5)',
 };
 
+// 🔥 NEW: CURATED INSIGHTS FOR SCI-FI COLLECTION
+const MOVIE_DATA_BY_TITLE = {
+  '2001: A Space Odyssey': { connection: 'The monolith of the genre. It moved sci-fi from B-movie pulp to high art, establishing a visual language for space that remains the gold standard.' },
+  'Blade Runner': { connection: 'The definitive cyberpunk noir. Its rain-soaked aesthetic and questions about artificial consciousness defined how we visualize the future city.' },
+  'The Matrix': { connection: 'A philosophical action masterpiece that merged cyberpunk literature with Hong Kong cinema, questioning the very fabric of our perceived reality.' },
+  'Alien': { connection: 'The perfect organism of sci-fi horror. It stripped away the glamour of space travel to reveal a gritty, industrial survival nightmare.' },
+  'Interstellar': { connection: 'A hard sci-fi epic that dares to ground complex relativity physics in the simplest human emotion: the bond between a father and daughter.' },
+  'Terminator 2: Judgment Day': { connection: 'The rare sequel that transcends its original. It turned a horror slasher premise into a philosophical action epic about fate and free will.' },
+  'Inception': { connection: 'A cerebral heist thriller that treats the architecture of the human mind with the rigorous logic of hard science fiction.' },
+  'Arrival': { connection: 'A profound first-contact film that bypasses explosions for linguistics, suggesting that understanding—not weaponry—is humanity\'s greatest tool.' },
+  'Star Wars: Episode V - The Empire Strikes Back': { connection: 'The film that matured the space opera. By introducing failure and complex lineage, it proved blockbusters could have dark, emotional souls.' },
+  'Blade Runner 2049': { connection: 'A miraculous successor that expands the philosophical inquiries of the original, asking if an artificial soul is any less real than a born one.' }
+};
+
 const getTMDBImage = (path, size = 'w1280') =>
   path ? `https://image.tmdb.org/t/p/${size}${path}` : undefined;
 
-// ✅ OPTIMIZED BANNER (Hydration Fixed + Sci-Fi Metrics)
+// ✅ NEW HELPER: Get Insight
+const getSciFiInsight = (title) => {
+  const data = MOVIE_DATA_BY_TITLE[title];
+  return data?.connection || 'A transcendent masterpiece exploring the boundaries of technology, reality, and human evolution.';
+};
+
+// ✅ OPTIMIZED BANNER
 const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
   const [showTrailer, setShowTrailer] = useState(false);
   const [countdown, setCountdown] = useState(4);
@@ -44,8 +64,8 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
   const bannerImage = backdropPath ? getTMDBImage(backdropPath, 'w1280') : null;
   const posterImage = posterPath ? getTMDBImage(posterPath, 'w500') : null;
 
-  // Insight & Metrics (Sci-Fi Specific)
-  const insight = richData?.synopsis || "A transcendent masterpiece exploring the boundaries of technology, reality, and human evolution.";
+  // 🔥 UPDATED: Use the new curated insight
+  const insight = getSciFiInsight(movie?.Title);
   const complexityIndex = richData?.sciFiComplexity || 90;
 
   useEffect(() => { setMounted(true); }, []);
@@ -217,8 +237,12 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
     ? `[COMMON QUESTIONS] ${faqs.map(f => `Q: ${f.question} A: ${f.answer}`).join(' | ')}`
     : '';
 
+  // 🔥 SEO POWER PHRASE INJECTED HERE
   const fullDescription = `
     ${data?.synopsis || movie.description || "A masterpiece of science fiction."}
+    
+    Includes exact timestamps for sensitive content, sci-fi complexity scores, and philosophical analysis.
+    
     --- DETAILED ANALYSIS ---
     ${peakStats}
     ${intensityStats}
@@ -263,7 +287,8 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
 };
 
 const SciFiMoviePage = ({ movie, tmdbData: movieData }) => {
-    const richData = COMPLETE_MOVIE_DATA[movie.tmdbId]; 
+    // ✅ SAFETY CHECK: Handle missing data elegantly
+    const richData = COMPLETE_MOVIE_DATA[movie?.tmdbId] || {}; 
     const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -287,8 +312,9 @@ const SciFiMoviePage = ({ movie, tmdbData: movieData }) => {
     return (
         <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
             <Head>
-                <title>{movie.Title} ({currentMovieYear}) - Best Sci-Fi Film | Filmiway</title>
-                <meta name="description" content={`${movie.Title} - A masterpiece of science fiction. Analysis & where to stream.`} />
+                {/* 🔥 SEO OPTIMIZED TITLE & DESCRIPTION */}
+                <title>{movie.Title} ({currentMovieYear}) - Sci-Fi Analysis & Timestamps | Filmiway</title>
+                <meta name="description" content={`${movie.Title} - ${richData.synopsis ? richData.synopsis.substring(0, 100) : 'Sci-Fi Masterpiece'}... Includes exact timestamps for sensitive content.`} />
                 <link rel="canonical" href={`https://filmiway.com/movies/sci-fi/${movie.imdbID}`} />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                 <meta name="robots" content="index, follow" />
@@ -306,6 +332,7 @@ const SciFiMoviePage = ({ movie, tmdbData: movieData }) => {
                     <OptimizedBanner movie={movie} movieData={movieData} richData={richData} trailer={trailer} isMobile={isMobile} />
                     
                     <motion.div id="watch" initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 2.0, duration: 0.8 }} className="space-y-8 sm:space-y-12 px-3 sm:px-4 lg:px-6">
+                        {/* ✅ Passing flag correctly */}
                         <MovieDetailsSection movie={movie} fromSciFiCollection={true} />
                     </motion.div>
                     

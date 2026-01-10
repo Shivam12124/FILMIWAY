@@ -952,222 +952,211 @@ const getLoaderContent = () => {
 };
 
 
-// 🔥 STATIC META CONTENT WITH MATRIX, SE7EN & PARASITE ADDED
+// 🔥 STATIC META CONTENT - CLEAN & STANDARDIZED (Timestamps Only)
 const getStaticMetaContent = () => {
     if (collection.slug === 'movies-like-memento') {
         return {
-            title: "Movies Like Memento: 10 Mind-Bending Films", // ✅ 46 chars
-            description: "Obsessed with Memento? Discover 10 psychological thrillers with shocking twists, memory loss & non-linear storytelling that'll mess with your mind.", // ✅ 157 chars
-            keywords: "movies like memento, memory loss movies, psychological thrillers, non linear storytelling, amnesia movies",
+            title: "Movies Like Memento: 10 Mind-Bending Films",
+            description: "Obsessed with Memento? Discover 10 psychological thrillers with memory loss & non-linear plots. Includes exact timestamps for sensitive content.", 
+            keywords: "movies like memento, memory loss movies, psychological thrillers, sensitive content timestamps",
             ogTitle: "Movies Like Memento: 10 Mind-Bending Psychological Thrillers 🧠",
             twitterTitle: "🧠 Obsessed with Memento? Watch These 10 Mind-Bending Films",
             progressText: `of Top ${movies.length} Movies Like Memento`
         };
     } else if (collection.slug === 'movies-like-inception') {
         return {
-            title: "Movies Like Inception: 10 Reality-Bending Films", // ✅ 50 chars
-            description: "Loved Inception? Explore 10 mind-bending thrillers with layered dreams, reality distortion & Christopher Nolan-level genius. Prepare to be confused.", // ✅ 156 chars
-            keywords: "movies like inception, mind bending movies, reality bending films, christopher nolan movies",
+            title: "Movies Like Inception: 10 Reality-Bending Films",
+            description: "Loved Inception? Explore 10 mind-bending thrillers with layered dreams & reality distortion. Includes exact timestamps for sensitive content.", 
+            keywords: "movies like inception, mind bending movies, reality bending films, sensitive content timestamps",
             ogTitle: "Movies Like Inception: 10 Reality-Bending Masterpieces 🧠",
             twitterTitle: "🧠 Loved Inception? These 10 Films Will Blow Your Mind",
             progressText: `of Top ${movies.length} Movies Like Inception`
         };
     } else if (collection.slug === 'movies-like-the-matrix') {
         return {
-            title: "Movies Like The Matrix: 10 Cyberpunk Films", // ✅ 47 chars
-            description: "Loved The Matrix? Explore 10 cyberpunk thrillers with digital consciousness, simulated realities & mind-bending awakening. Reality is not what it seems.", // ✅ 159 chars
-            keywords: "movies like the matrix, cyberpunk movies, sci-fi reality films, digital consciousness, simulation movies",
+            title: "Movies Like The Matrix: 10 Cyberpunk Films",
+            description: "Loved The Matrix? Explore 10 cyberpunk thrillers with digital consciousness & simulated realities. Includes exact timestamps for sensitive content.", 
+            keywords: "movies like the matrix, cyberpunk movies, sci-fi reality films, sensitive content timestamps",
             ogTitle: "Movies Like The Matrix: 10 Cyberpunk Reality-Bending Films 🔴",
             twitterTitle: "🔴 Loved The Matrix? These 10 Cyberpunk Films Will Break Your Brain",
             progressText: `of Top ${movies.length} Movies Like The Matrix`
         };
     } else if (collection.slug === 'movies-like-se7en') {
         return {
-            title: "Movies Like Se7en: 10 Dark Noir Thrillers", // ✅ 44 chars
-            description: "Loved Se7en? Discover 10 gritty noir thrillers with obsessive detectives, shocking twists & dark investigations like Zodiac & Prisoners.", // ✅ 144 chars
-            keywords: "movies like se7en, movies like seven, noir thrillers, dark detective movies, zodiac, prisoners",
+            title: "Movies Like Se7en: 10 Dark Noir Thrillers",
+            description: "Loved Se7en? Discover 10 gritty noir thrillers with obsessive detectives & shocking twists. Includes exact timestamps for sensitive content.", 
+            keywords: "movies like se7en, noir thrillers, dark detective movies, sensitive content timestamps",
             ogTitle: "Movies Like Se7en: 10 Gritty Noir Masterpieces 🌧️",
             twitterTitle: "🌧️ Loved Se7en? These 10 Dark Thrillers Will Haunt You",
             progressText: `of Top ${movies.length} Movies Like Se7en`
         };
-
     } else if (collection.slug === 'movies-like-oldboy') {
         return {
-            title: "Movies Like Oldboy: 10 Brutal Revenge Films", // ✅ 47 chars
-            description: "Loved Oldboy? Discover 10 twisted revenge thrillers with shocking twists, moral devastation & Park Chan-wook-level vengeance like I Saw the Devil.", // ✅ 158 chars
-            keywords: "movies like oldboy, revenge thrillers, korean revenge movies, i saw the devil, lady vengeance, park chan wook",
+            title: "Movies Like Oldboy: 10 Brutal Revenge Films",
+            description: "Loved Oldboy? Discover 10 twisted revenge thrillers with shocking twists & moral devastation. Includes exact timestamps for sensitive content.", 
+            keywords: "movies like oldboy, revenge thrillers, korean revenge movies, sensitive content timestamps",
             ogTitle: "Movies Like Oldboy: 10 Brutal Revenge Masterpieces 🔪",
             twitterTitle: "🔪 Loved Oldboy? These 10 Revenge Films Are Just as Twisted",
             progressText: `of Top ${movies.length} Movies Like Oldboy`
         };
-
-
-} else if (collection.slug === 'movies-like-eyes-wide-shut') {
+    } else if (collection.slug === 'movies-like-eyes-wide-shut') {
         return {
-            title: "Movies Like Eyes Wide Shut: 10 Paranoid Thrillers", // ✅ 49 chars
-            description: "Loved Eyes Wide Shut? Discover 10 paranoid thrillers about secret societies, occult rituals & the hidden elite like The Ninth Gate & Rosemary's Baby.", // ✅ 156 chars
-            keywords: "movies like eyes wide shut, secret society movies, occult thrillers, paranoia films, mulholland drive, the ninth gate",
+            title: "Movies Like Eyes Wide Shut: 10 Paranoid Thrillers",
+            description: "Loved Eyes Wide Shut? Discover 10 paranoid thrillers about secret societies & occult rituals. Includes exact timestamps for sensitive content.", 
+            keywords: "movies like eyes wide shut, secret society movies, occult thrillers, sensitive content timestamps",
             ogTitle: "Movies Like Eyes Wide Shut: 10 Paranoid Occult Thrillers 👁️",
             twitterTitle: "👁️ Loved Eyes Wide Shut? These 10 Paranoid Films Are Terrifying",
             progressText: `of Top ${movies.length} Movies Like Eyes Wide Shut`
         };
-
-
-
-            } else if (collection.slug === 'movies-like-black-swan') {
+    } else if (collection.slug === 'movies-like-black-swan') {
         return {
-            title: "Movies Like Black Swan: 10 Psychological Obsession Films", // ✅ 49 chars
-            description: "Loved Black Swan? Discover 10 psychological obsession films with performance pressure, identity collapse & psychological breakdowns.", // ✅ 150 chars
-            keywords: "movies like black swan, psychological obsession films, performance pressure movies, identity collapse cinema",
+            title: "Movies Like Black Swan: 10 Psychological Obsession Films",
+            description: "Loved Black Swan? Discover 10 films about obsession, performance pressure & identity collapse. Includes exact timestamps for sensitive content.", 
+            keywords: "movies like black swan, psychological obsession films, sensitive content timestamps",
             ogTitle: "Movies Like Black Swan: 10 Psychological Obsession Films 🩰",
             twitterTitle: "🩰 Loved Black Swan? These 10 Films Are Just as Intense",
             progressText: `of Top ${movies.length} Movies Like Black Swan`
         };
-
-
-          } else if (collection.slug === 'movies-like-donnie-darko') {
-    return {
-        title: "Movies Like Donnie Darko: 10 Reality-Warping Films", // ✅ 50 chars
-        description: "Loved Donnie Darko? Discover 10 mind-bending films with time travel paradoxes, dying dreams & doppelgängers that shatter reality itself.", // ✅ 152 chars
-        keywords: "movies like donnie darko, time travel movies, reality warping films, psychological sci-fi, butterfly effect",
-        ogTitle: "Movies Like Donnie Darko: 10 Reality-Warping Masterpieces 🌌",
-        twitterTitle: "🌌 Loved Donnie Darko? These 10 Films Will Break Reality",
-        progressText: `of Top ${movies.length} Movies Like Donnie Darko`
-    };
-
-         
-
-    } else if (collection.slug === 'movies-like-parasite') { // ✅ NEW PARASITE META
+    } else if (collection.slug === 'movies-like-donnie-darko') {
         return {
-            title: "Movies Like Parasite: 10 Class Warfare Films", // ✅ 49 chars
-            description: "Loved Parasite? Discover 10 class warfare films with social inequality, economic desperation & Bong Joon-ho-level brilliance like Snowpiercer.", // ✅ 150 chars
-            keywords: "movies like parasite, class warfare movies, social inequality films, bong joon ho movies, snowpiercer, the platform",
+            title: "Movies Like Donnie Darko: 10 Reality-Warping Films",
+            description: "Loved Donnie Darko? Discover 10 mind-bending films with time travel & paradoxes. Includes exact timestamps for sensitive content.", 
+            keywords: "movies like donnie darko, time travel movies, reality warping films, sensitive content timestamps",
+            ogTitle: "Movies Like Donnie Darko: 10 Reality-Warping Masterpieces 🌌",
+            twitterTitle: "🌌 Loved Donnie Darko? These 10 Films Will Break Reality",
+            progressText: `of Top ${movies.length} Movies Like Donnie Darko`
+        };
+    } else if (collection.slug === 'movies-like-parasite') { 
+        return {
+            title: "Movies Like Parasite: 10 Class Warfare Films",
+            description: "Loved Parasite? Discover 10 class warfare films with social inequality & thriller tension. Includes exact timestamps for sensitive content.", 
+            keywords: "movies like parasite, class warfare movies, social thriller, sensitive content timestamps",
             ogTitle: "Movies Like Parasite: 10 Brutal Class Warfare Films 🏢",
             twitterTitle: "🏢 Loved Parasite? These 10 Class War Films Are Just as Brutal",
             progressText: `of Top ${movies.length} Movies Like Parasite`
         };
     } else if (collection.slug === 'movies-like-interstellar') {
         return {
-            title: "Movies Like Interstellar: 10 Cerebral Space Films", // ✅ 54 chars
-            description: "Loved Interstellar? Explore 10 philosophical space films with scientific depth, emotional resonance & cosmic wonder. From 2001 to Arrival.", // ✅ 144 chars
-            keywords: "movies like interstellar, space exploration movies, cerebral sci fi, philosophical space films, 2001 space odyssey",
+            title: "Movies Like Interstellar: 10 Cerebral Space Films",
+            description: "Loved Interstellar? Explore 10 philosophical space films with scientific depth & cosmic wonder. Includes exact timestamps for sensitive content.", 
+            keywords: "movies like interstellar, cerebral sci fi, space exploration movies, sensitive content timestamps",
             ogTitle: "Movies Like Interstellar: 10 Cerebral Space Exploration Films 🚀",
             twitterTitle: "🚀 Loved Interstellar? These 10 Space Films Are Just as Deep",
             progressText: `of Top ${movies.length} Movies Like Interstellar`
         };
     } else if (collection.slug === 'movies-like-shutter-island') {
         return {
-            title: "Movies Like Shutter Island: 10 Twisted Films", // ✅ 47 chars
-            description: "Can't stop thinking about Shutter Island? Watch 10 psychological thrillers with unreliable narrators, shocking twists & reality-shattering endings.", // ✅ 157 chars
-            keywords: "movies like shutter island, psychological thrillers, unreliable narrator, plot twist movies",
+            title: "Movies Like Shutter Island: 10 Twisted Films",
+            description: "Can't stop thinking about Shutter Island? Watch 10 psychological thrillers with shocking twists. Includes exact timestamps for sensitive content.", 
+            keywords: "movies like shutter island, plot twist movies, psychological thrillers, sensitive content timestamps",
             ogTitle: "Movies Like Shutter Island: 10 Twisted Psychological Thrillers",
             twitterTitle: "🎬 Can't Forget Shutter Island? Watch These 10 Twisted Films",
             progressText: `of Top ${movies.length} Movies Like Shutter Island`
         };
     } else if (collection.slug === 'best-crime-thriller-movies') {
         return {
-            title: "Best Crime Thrillers: 10 Ruthless Films", // ✅ 44 chars
-            description: "From Heat to The Departed—10 gritty crime thrillers with heists, investigations & moral complexity. For fans who crave dark, intelligent cinema.", // ✅ 153 chars
-            keywords: "best crime thriller movies, crime films, heist movies, investigation thrillers",
+            title: "Best Crime Thrillers: 10 Ruthless Films",
+            description: "From Heat to The Departed—10 gritty crime thrillers with heists & investigations. Includes exact timestamps for sensitive content.", 
+            keywords: "best crime thriller movies, gritty crime films, sensitive content timestamps",
             ogTitle: "10 Best Crime Thrillers: Heat to The Departed 🔫",
             twitterTitle: "🔫 10 Ruthless Crime Thrillers You Can't Miss (Heat, Departed)",
             progressText: `of Top ${movies.length} Crime Thriller Movies`
         };
     } else if (collection.slug === 'best-heist-thriller-movies') {
         return {
-            title: "Best Heist Movies: 10 Master Robberies", // ✅ 42 chars
-            description: "From Ocean's Eleven to Heat—10 genius heist thrillers with elaborate plans, high-stakes robberies & criminal masterminds. Every plan is perfect.", // ✅ 154 chars
-            keywords: "best heist movies, heist thriller, ocean's eleven, heat movie, robbery films",
+            title: "Best Heist Movies: 10 Master Robberies",
+            description: "From Ocean's Eleven to Heat—10 genius heist thrillers with elaborate plans & high stakes. Includes exact timestamps for sensitive content.", 
+            keywords: "best heist movies, smart robbery films, sensitive content timestamps",
             ogTitle: "10 Best Heist Movies: Ocean's Eleven to Heat 💰",
             twitterTitle: "💰 10 Genius Heist Movies (Ocean's, Heat, Inside Man)",
             progressText: `of Top ${movies.length} Heist Thriller Movies`
         };
     } else if (collection.slug === 'best-time-travel-movies') {
         return {
-            title: "Best Time Travel Movies: 10 Paradox Films", // ✅ 47 chars
-            description: "From Primer to Back to the Future—10 mind-bending time travel films with paradoxes, causality loops & temporal chaos. Your brain will hurt.", // ✅ 149 chars
-            keywords: "best time travel movies, time loop films, paradox movies, primer, back to the future",
+            title: "Best Time Travel Movies: 10 Paradox Films",
+            description: "From Primer to Back to the Future—10 mind-bending time travel films with paradoxes & loops. Includes exact timestamps for sensitive content.", 
+            keywords: "best time travel movies, time loop films, sensitive content timestamps",
             ogTitle: "10 Best Time Travel Movies: Primer to Back to the Future ⏰",
             twitterTitle: "⏰ 10 Mind-Bending Time Travel Movies (Primer, Interstellar)",
             progressText: `of Top ${movies.length} Time Travel Movies`
         };
     } else if (collection.slug === 'best-sci-fi-movies') {
         return {
-            title: "Best Sci-Fi Movies: 10 Visionary Films", // ✅ 41 chars
-            description: "From Blade Runner to Interstellar—10 groundbreaking sci-fi films with visionary concepts, philosophical depth & stunning visuals. Pure genius.", // ✅ 152 chars
-            keywords: "best sci fi movies, science fiction films, blade runner, interstellar, visionary sci fi",
+            title: "Best Sci-Fi Movies: 10 Visionary Films",
+            description: "From Blade Runner to Interstellar—10 groundbreaking sci-fi films with visionary concepts. Includes exact timestamps for sensitive content.", 
+            keywords: "best sci fi movies, visionary science fiction, sensitive content timestamps",
             ogTitle: "10 Best Sci-Fi Movies: Blade Runner to Interstellar 🚀",
             twitterTitle: "🚀 10 Visionary Sci-Fi Movies (Blade Runner, Interstellar)",
             progressText: `of Top ${movies.length} Sci-Fi Movies`
         };
     } else if (collection.slug === 'best-psychological-thriller-movies') {
         return {
-            title: "Best Psychological Thrillers: 10 Twisted Films", // ✅ 51 chars
-            description: "10 mind-bending psychological thrillers with intricate plots, shocking twists & psychological warfare. Perfect for fans who love being disturbed.", // ✅ 154 chars
-            keywords: "best psychological thriller movies, mind bending thrillers, psychological depth films",
+            title: "Best Psychological Thrillers: 10 Twisted Films",
+            description: "10 mind-bending psychological thrillers with intricate plots & shocking twists. Includes exact timestamps for sensitive content.", 
+            keywords: "best psychological thriller movies, mind games movies, sensitive content timestamps",
             ogTitle: "10 Best Psychological Thrillers That'll Mess With Your Mind 🧠",
             twitterTitle: "🧠 10 Twisted Psychological Thrillers That'll Haunt You",
             progressText: `of Top ${movies.length} Psychological Thriller Movies`
         };
     } else if (collection.slug === 'best-thriller-movies') {
         return {
-            title: "Best Thriller Movies: 10 Edge-of-Seat Films", // ✅ 48 chars
-            description: "10 edge-of-your-seat suspense thrillers with relentless pacing, plot twists & psychological depth. You won't pause. You can't look away.", // ✅ 145 chars
-            keywords: "best thriller movies, suspense thrillers, edge of your seat movies, thriller films",
+            title: "Best Thriller Movies: 10 Edge-of-Seat Films",
+            description: "10 edge-of-your-seat suspense thrillers with relentless pacing & plot twists. Includes exact timestamps for sensitive content.", 
+            keywords: "best thriller movies, high suspense movies, sensitive content timestamps",
             ogTitle: "10 Best Thriller Movies: You Won't Pause 🔥",
             twitterTitle: "🔥 10 Edge-of-Your-Seat Thrillers You Can't Pause",
             progressText: `of Top ${movies.length} Thriller Movies`
         };
     } else if (collection.slug === 'best-mystery-thriller-movies') {
         return {
-            title: "Best Mystery Thrillers: 10 Unsolvable Films", // ✅ 48 chars
-            description: "10 detective mystery thrillers with clever investigations, impossible puzzles & shocking revelations. Every clue matters. Every twist counts.", // ✅ 150 chars
-            keywords: "best mystery thriller movies, detective films, mystery movies, puzzle thrillers",
+            title: "Best Mystery Thrillers: 10 Unsolvable Films",
+            description: "10 detective mystery thrillers with clever investigations & impossible puzzles. Includes exact timestamps for sensitive content.", 
+            keywords: "best mystery thriller movies, whodunit movies, sensitive content timestamps",
             ogTitle: "10 Best Mystery Thrillers: Unsolvable Until the End 🔍",
             twitterTitle: "🔍 10 Detective Mystery Thrillers That'll Stump You",
             progressText: `of Top ${movies.length} Mystery Thriller Movies`
         };
     } else if (collection.slug === 'best-survival-movies') {
         return {
-            title: "Best Survival Movies: 10 Against-All-Odds Films", // ✅ 52 chars
-            description: "10 intense survival films with human resilience against brutal nature. Wilderness, mountains & deserts—ranked by realism. They survive or die.", // ✅ 151 chars
-            keywords: "best survival movies, wilderness survival, human endurance films, nature survival",
+            title: "Best Survival Movies: 10 Against-All-Odds Films",
+            description: "10 intense survival films with human resilience against brutal nature. Includes exact timestamps for sensitive content.", 
+            keywords: "best survival movies, realistic survival films, sensitive content timestamps",
             ogTitle: "10 Best Survival Movies: Against All Odds ⛰️",
             twitterTitle: "⛰️ 10 Survival Movies Where Nature Doesn't Care",
             progressText: `of Top ${movies.length} Survival Movies`
         };
     } else if (collection.slug === 'best-drama-movies-on-netflix') {
         return {
-            title: "Best Netflix Dramas: 10 Award-Winning Films", // ✅ 48 chars
-            description: "10 award-winning dramas streaming on Netflix now. Oscar-winning performances, emotionally devastating stories & deeply moving cinema. Tissues required.", // ✅ 160 chars
-            keywords: "best drama movies netflix, netflix dramas, award winning films, oscar winning movies netflix",
+            title: "Best Netflix Dramas: 10 Award-Winning Films",
+            description: "10 award-winning dramas streaming on Netflix. Deep, moving cinema with powerful acting. Includes exact timestamps for sensitive content.", 
+            keywords: "best drama movies netflix, netflix dramas, sensitive content timestamps",
             ogTitle: "10 Best Netflix Dramas: Award-Winning Films to Watch Now 🎭",
             twitterTitle: "🎭 10 Award-Winning Dramas on Netflix (Tissues Required)",
             progressText: `of Top ${movies.length} Netflix Drama Movies`
         };
     } else if (collection.slug === 'best-detective-thriller-movies') {
         return {
-            title: "Best Detective Thrillers: 10 Brilliant Films", // ✅ 49 chars
-            description: "From Zodiac to Prisoners—10 masterful detective thrillers with intricate mysteries, brilliant investigations & shocking revelations. Pure genius.", // ✅ 154 chars
-            keywords: "best detective thriller movies, zodiac movie, prisoners film, detective investigation films",
+            title: "Best Detective Thrillers: 10 Brilliant Films",
+            description: "From Zodiac to Prisoners—10 masterful detective thrillers with intricate mysteries. Includes exact timestamps for sensitive content.", 
+            keywords: "best detective thriller movies, smart detective films, sensitive content timestamps",
             ogTitle: "10 Best Detective Thrillers: Zodiac to Prisoners 🔍",
             twitterTitle: "🔍 10 Brilliant Detective Thrillers (Zodiac, Prisoners, Se7en)",
             progressText: `of Top ${movies.length} Detective Thriller Movies`
         };
     } else if (collection.slug === 'best-revenge-movies') {
         return {
-            title: "Best Revenge Movies: 10 Brutal Films", // ✅ 39 chars
-            description: "From Oldboy to John Wick—10 brutal revenge films with systematic vengeance, moral complexity & visceral satisfaction. Justice becomes personal.", // ✅ 152 chars
-            keywords: "best revenge movies, revenge films, oldboy, john wick, kill bill, vengeance movies",
+            title: "Best Revenge Movies: 10 Brutal Films",
+            description: "From Oldboy to John Wick—10 brutal revenge films with systematic vengeance. Includes exact timestamps for sensitive content.", 
+            keywords: "best revenge movies, satisfying revenge films, sensitive content timestamps",
             ogTitle: "10 Best Revenge Movies: Oldboy to John Wick 🗡️",
             twitterTitle: "🗡️ 10 Brutal Revenge Movies (Oldboy, Gladiator, John Wick)",
             progressText: `of Top ${movies.length} Revenge Movies`
         };
     } else if (collection.slug === 'best-war-films') {
         return {
-            title: "Best War Films: 10 Unflinching Masterpieces", // ✅ 48 chars
-            description: "From D-Day to jungle combat—10 unflinching war masterpieces with visceral battle scenes, moral reckoning & anti-war themes. War is hell.", // ✅ 144 chars
-            keywords: "best war films, war movies, d-day films, combat movies, anti-war films",
+            title: "Best War Films: 10 Unflinching Masterpieces",
+            description: "10 unflinching war masterpieces with visceral battle scenes & anti-war themes. Includes exact timestamps for sensitive content.", 
+            keywords: "best war films, realistic war movies, sensitive content timestamps",
             ogTitle: "10 Best War Films: Unflinching D-Day to Jungle Combat ⚔️",
             twitterTitle: "⚔️ 10 Unflinching War Films That Show War's True Cost",
             progressText: `of Top ${movies.length} War Films`
@@ -1175,8 +1164,8 @@ const getStaticMetaContent = () => {
     } else {
         return {
             title: `Best ${collection.title}: Top 10 Films (2026)`,
-            description: `10 curated ${collection.title.toLowerCase()} films ranked by quality, impact & engagement. For true cinema fans.`,
-            keywords: `best ${collection.title.toLowerCase()}, curated films, exceptional cinema`,
+            description: `10 curated ${collection.title.toLowerCase()} films ranked by quality & impact. Includes exact timestamps for sensitive content.`,
+            keywords: `best ${collection.title.toLowerCase()}, curated films, sensitive content timestamps`,
             ogTitle: `Best ${collection.title}: 10 Must-Watch Films`,
             twitterTitle: `🎬 Best ${collection.title}: 10 Films You Can't Miss`,
             progressText: `of Top ${movies.length} ${collection.title}`
