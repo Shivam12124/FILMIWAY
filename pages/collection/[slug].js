@@ -1505,6 +1505,7 @@ const getStaticMetaContent = () => {
 </h1>
 
 {/* ✅ VISUAL H1 (BEAUTIFUL GRADIENT FOR USERS) */}
+{/* ✅ VISUAL H1 (BEAUTIFUL GRADIENT FOR USERS) */}
 <div 
     className="text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-extralight tracking-[0.05em] sm:tracking-[0.1em] text-transparent bg-clip-text bg-gradient-to-r from-yellow-100 via-yellow-300 to-amber-300" 
     style={{ 
@@ -1514,10 +1515,9 @@ const getStaticMetaContent = () => {
     }}
     role="heading"
     aria-level="1"
-    aria-label={headerContent.title}
 >
     <span className="block leading-tight" style={{ letterSpacing: '0.02em' }}>
-        {headerContent.title}
+        {`${headerContent.title}`} {/* ✅ Fixed here too */}
     </span>
 </div>
 
@@ -1670,35 +1670,35 @@ const NavigationDots = ({ movies, currentMovieIndex, goToMovie }) => (
 return (
     <div className="min-h-screen bg-black text-white relative overflow-hidden">
         <Head>
-            <title key={`collection-title-${collection.slug}`}>
-                {metaContent.title || collection.title || "Filmiway - Movie Collection"}
-            </title>
+    {/* ✅ FIXED: Template literal prevents hydration comments in Google Search results */}
+    <title key={`collection-title-${collection.slug}`}>
+        {`${metaContent.title || collection.title || "Filmiway - Movie Collection"}`}
+    </title>
 
-            <meta
-                key={`collection-desc-${collection.slug}`}
-                name="description"
-                content={metaContent.description || collection.description || ""}
-            />
+    <meta
+        key={`collection-desc-${collection.slug}`}
+        name="description"
+        content={`${metaContent.description || collection.description || ""}`}
+    />
 
-            <meta
-                key={`collection-keywords-${collection.slug}`}
-                name="keywords"
-                content={metaContent.keywords || ""}
-            />
+    <meta
+        key={`collection-keywords-${collection.slug}`}
+        name="keywords"
+        content={`${metaContent.keywords || ""}`}
+    />
 
-            <link rel="canonical" href={`https://filmiway.com/collection/${collection.slug}`} />
+    <link rel="canonical" href={`https://filmiway.com/collection/${collection.slug}`} />
 
-            <meta name="robots" content="index, follow" />
-            <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="index, follow" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-            <meta property="og:title" key={`og-title-${collection.slug}`} content={metaContent.ogTitle || metaContent.title || collection.title} />
-            <meta property="og:description" key={`og-desc-${collection.slug}`} content={metaContent.description || collection.description} />
-            <meta property="og:type" content="website" />
-           
-            <meta name="twitter:card" content="summary_large_image" />
-            <meta name="twitter:title" key={`twitter-title-${collection.slug}`} content={metaContent.twitterTitle || metaContent.title || collection.title} />
-            <meta name="twitter:description" key={`twitter-desc-${collection.slug}`} content={metaContent.description || collection.description} />
-
+    <meta property="og:title" key={`og-title-${collection.slug}`} content={`${metaContent.ogTitle || metaContent.title || collection.title}`} />
+    <meta property="og:description" key={`og-desc-${collection.slug}`} content={`${metaContent.description || collection.description}`} />
+    <meta property="og:type" content="website" />
+   
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" key={`twitter-title-${collection.slug}`} content={`${metaContent.twitterTitle || metaContent.title || collection.title}`} />
+    <meta name="twitter:description" key={`twitter-desc-${collection.slug}`} content={`${metaContent.description || collection.description}`} />
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{

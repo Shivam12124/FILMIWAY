@@ -1,4 +1,4 @@
-// pages/movies/black-swan/[id].js - ICEBERG EDITION + HIDDEN FAQs 🧊✅
+// pages/movies/black-swan/[id].js - HYDRATION BUG FIXED 🐛✅
 // VISUALS: Minimalist (Banner + Details Only)
 // SCHEMA: Maximalist (Hidden Intensity, DNA, and FAQs for Bots)
 
@@ -338,7 +338,8 @@ const BlackSwanMoviePage = ({ movie, tmdbData: movieData }) => {
     return (
         <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
             <Head>
-                <title>{movie.Title} ({currentMovieYear}) - Movies Like Black Swan | Filmiway</title>
+                {/* 🔥 HYDRATION BUG FIXED: Title is now a single template literal string */}
+                <title>{`${movie.Title} (${currentMovieYear}) - Movies Like Black Swan | Filmiway`}</title>
                 <meta name="description" content={`${movie.Title} (${currentMovieYear}) - A psychologically intense film like Black Swan. Analysis, ratings & where to stream.`} />
                 <link rel="canonical" href={`https://filmiway.com/movies/black-swan/${movie.imdbID}`} />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
