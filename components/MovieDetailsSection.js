@@ -1,19 +1,24 @@
-// components/MovieDetailsSection.js - FIXED SCI-FI DATA IMPORT 🧬✅
+// components/MovieDetailsSection.js - FIXED IMPORTS & DATA MAPPING ✅
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Users, Film, BookOpen, Star } from 'lucide-react';
 
-// Data imports
+// ==================== DATA IMPORTS ====================
+
+// 1. Base / Standard
 import { COMPLETE_MOVIE_DATA, STRATEGIC_QUOTES } from '../utils/movieData';
-import {
-  COMPLETE_MOVIE_DATA as SURVIVAL_MOVIE_DATA,
-  STRATEGIC_QUOTES as SURVIVAL_QUOTES,
-  SENSITIVE_TIMELINES
+
+// 2. Specialized Collections (New Format)
+import { 
+  COMPLETE_MOVIE_DATA as SURVIVAL_MOVIE_DATA, 
+  STRATEGIC_QUOTES as SURVIVAL_QUOTES, 
+  SENSITIVE_TIMELINES 
 } from '../utils/survivalMovieData';
 
 import { 
   COMPLETE_MOVIE_DATA as BLACK_SWAN_MOVIE_DATA, 
-  STRATEGIC_QUOTES as BLACK_SWAN_QUOTES,
+  STRATEGIC_QUOTES as BLACK_SWAN_QUOTES, 
   SENSITIVE_TIMELINES as BLACK_SWAN_SENSITIVE_TIMELINES 
 } from '../utils/blackSwanMovieData';
 
@@ -41,10 +46,10 @@ import {
   SENSITIVE_TIMELINES as SE7EN_SENSITIVE_TIMELINES 
 } from '../utils/se7enMovieData';
 
-import {
-  COMPLETE_MOVIE_DATA as INTERSTELLAR_MOVIE_DATA,
-  STRATEGIC_QUOTES as INTERSTELLAR_QUOTES,
-  SENSITIVE_TIMELINES as INTERSTELLAR_TIMELINES
+import { 
+  COMPLETE_MOVIE_DATA as INTERSTELLAR_MOVIE_DATA, 
+  STRATEGIC_QUOTES as INTERSTELLAR_QUOTES, 
+  SENSITIVE_TIMELINES as INTERSTELLAR_TIMELINES 
 } from '../utils/interstellarMovieData';
 
 import { 
@@ -53,49 +58,71 @@ import {
   SENSITIVE_TIMELINES as DONNIE_DARKO_SENSITIVE_TIMELINES 
 } from '../utils/donnieDarkoMovieData';
 
-import {
-  COMPLETE_MOVIE_DATA as CRIME_THRILLER_MOVIE_DATA,
-  STRATEGIC_QUOTES as CRIME_THRILLER_QUOTES,
-  SENSITIVE_TIMELINES as CRIME_THRILLER_SENSITIVE_TIMELINES
-} from '../utils/crimeThrillerMovieData';
-
 import { 
   COMPLETE_MOVIE_DATA as EYES_WIDE_SHUT_MOVIE_DATA, 
   STRATEGIC_QUOTES as EYES_WIDE_SHUT_QUOTES, 
   SENSITIVE_TIMELINES as EYES_WIDE_SHUT_SENSITIVE_TIMELINES 
 } from '../utils/eyesWideShutMovieData';
 
-import COMPLETE_THRILLER_DATABASE from '../utils/thrillerMovieData';
-import MYSTERY_THRILLER_DATABASE from '../utils/mysteryThrillerMovieData';
-import dramaRoutes from '../utils/dramaMovieRoutes';
-import DETECTIVE_THRILLER_DATABASE from '../utils/detectiveThrillerMovieData';
-import COMPLETE_PSYCH_THRILLER_DATABASE from '../utils/psychologicalThrillerMovieData';
-import HEIST_THRILLER_DATABASE from '../utils/heistThrillerMovieData';
-import TIME_TRAVEL_DATABASE from '../utils/timeTravelMovieData';
-
-// 🔥 FIXED IMPORT: IMPORTED COMPLETE_MOVIE_DATA AS SCI_FI_MOVIE_DATA
+// 3. Recently Converted Collections (Fixed Imports)
 import { 
-  SCI_FI_MOVIES, 
-  SENSITIVE_TIMELINES as SCI_FI_SENSITIVE_TIMELINES,
-  COMPLETE_MOVIE_DATA as SCI_FI_MOVIE_DATA 
+  COMPLETE_MOVIE_DATA as CRIME_THRILLER_MOVIE_DATA, 
+  SENSITIVE_TIMELINES as CRIME_THRILLER_SENSITIVE_TIMELINES 
+} from '../utils/crimeThrillerMovieData';
+
+import { 
+  COMPLETE_MOVIE_DATA as HEIST_THRILLER_MOVIE_DATA, 
+  SENSITIVE_TIMELINES as HEIST_THRILLER_SENSITIVE_TIMELINES 
+} from '../utils/heistThrillerMovieData';
+
+import { 
+  COMPLETE_MOVIE_DATA as TIME_TRAVEL_MOVIE_DATA, 
+  SENSITIVE_TIMELINES as TIME_TRAVEL_SENSITIVE_TIMELINES 
+} from '../utils/timeTravelMovieData';
+
+import { 
+  COMPLETE_MOVIE_DATA as SCI_FI_MOVIE_DATA, 
+  SENSITIVE_TIMELINES as SCI_FI_SENSITIVE_TIMELINES 
 } from '../utils/sciFiMovieData';
 
-import { REVENGE_MOVIES } from '../utils/revengeMovieData';
-import { WAR_FILMS_DATABASE } from '../utils/warFilmsMovieData';
+import { 
+  COMPLETE_MOVIE_DATA as REVENGE_MOVIE_DATA, 
+  SENSITIVE_TIMELINES as REVENGE_SENSITIVE_TIMELINES 
+} from '../utils/revengeMovieData';
 
-const DRAMA_MOVIE_DATA = dramaRoutes.COMPLETE_MOVIE_DATABASE;
+import { 
+  COMPLETE_MOVIE_DATA as WAR_FILMS_MOVIE_DATA 
+} from '../utils/warFilmsMovieData';
 
-// Build revenge database object
-const REVENGE_DATABASE = Object.fromEntries(
-  REVENGE_MOVIES.map(m => [m.tmdbId, m])
-);
+import { 
+  COMPLETE_MOVIE_DATA as THRILLER_MOVIE_DATA, 
+  SENSITIVE_TIMELINES as THRILLER_SENSITIVE_TIMELINES 
+} from '../utils/thrillerMovieData';
 
-// Component imports
+import { 
+  COMPLETE_MOVIE_DATA as MYSTERY_THRILLER_MOVIE_DATA, 
+  SENSITIVE_TIMELINES as MYSTERY_THRILLER_SENSITIVE_TIMELINES 
+} from '../utils/mysteryThrillerMovieData';
+
+import { 
+  COMPLETE_MOVIE_DATA as DETECTIVE_THRILLER_MOVIE_DATA 
+} from '../utils/detectiveThrillerMovieData';
+
+import { 
+  COMPLETE_MOVIE_DATA as PSYCH_THRILLER_MOVIE_DATA 
+} from '../utils/psychologicalThrillerMovieData';
+
+import { COMPLETE_MOVIE_DATA as DRAMA_MOVIE_DATA } from '../utils/dramaMovieData';
+
+
+// ==================== COMPONENT IMPORTS ====================
 import EnhancedIntensityGraph from './EnhancedIntensityGraph';
 import StrategicDNAHelix from './StrategicDNAHelix';
 import SensitiveContentTimelineSection from './SensitiveContentTimelineSection';
 import EnhancedWhereToWatchSection from './EnhancedWhereToWatchSection';
 import RealCommentsRatingSection from './RealCommentsRatingSection';
+
+// FAQ Sections
 import SEOFAQSection from './SEOFAQSection';
 import MementoSEOFAQSection from './MementoSEOFAQSection';
 import ShutterIslandSEOFAQSection from './ShutterIslandSEOFAQSection';
@@ -149,262 +176,250 @@ const MovieDetailsSection = React.memo(({
 
  if (!movie) return null;
 
-const safeLookup = (collection, id) => (collection && id && collection[id]) || null;
+ const safeLookup = (collection, id) => (collection && id && collection[id]) || null;
 
-// LOOKUPS
-const getTimeTravelMovieInfo = () => (!fromTimeTravelCollection || !movie.tmdbId || !TIME_TRAVEL_DATABASE) ? null : TIME_TRAVEL_DATABASE[movie.tmdbId];
-const getRevengeMovieInfo = () => (!fromRevengeCollection || !movie.tmdbId || !REVENGE_DATABASE) ? null : REVENGE_DATABASE[movie.tmdbId];
-const getWarFilmsMovieInfo = () => (!fromWarFilmsCollection || !movie.tmdbId || !WAR_FILMS_DATABASE) ? null : WAR_FILMS_DATABASE[movie.tmdbId];
-const getHeistThrillerMovieInfo = () => (!fromHeistThrillerCollection || !movie.tmdbId || !HEIST_THRILLER_DATABASE) ? null : HEIST_THRILLER_DATABASE[movie.tmdbId];
-const getPsychologicalThrillerMovieInfo = () => (!fromPsychologicalThrillerCollection || !movie.tmdbId || !COMPLETE_PSYCH_THRILLER_DATABASE) ? null : COMPLETE_PSYCH_THRILLER_DATABASE[movie.tmdbId];
-const getDetectiveThrillerMovieInfo = () => (!fromDetectiveThrillerCollection || !movie.tmdbId || !DETECTIVE_THRILLER_DATABASE) ? null : DETECTIVE_THRILLER_DATABASE[movie.tmdbId];
-const getThrillerMovieInfo = () => (!fromThrillerCollection || !movie.tmdbId || !COMPLETE_THRILLER_DATABASE) ? null : COMPLETE_THRILLER_DATABASE[movie.tmdbId];
-const getMysteryThrillerMovieInfo = () => (!fromMysteryThrillerCollection || !movie.tmdbId || !MYSTERY_THRILLER_DATABASE) ? null : MYSTERY_THRILLER_DATABASE[movie.tmdbId];
-
-// GET MOVIE INFO
-// 🔥 FIXED: Direct lookup for SCI_FI_MOVIE_DATA
-const movieInfo = fromDonnieDarkoCollection ? safeLookup(DONNIE_DARKO_MOVIE_DATA, movie.tmdbId)
+ // ✅ UNIFIED MOVIE INFO LOOKUP STRATEGY
+ const movieInfo = fromDonnieDarkoCollection ? safeLookup(DONNIE_DARKO_MOVIE_DATA, movie.tmdbId)
   : fromParasiteCollection ? safeLookup(PARASITE_MOVIE_DATA, movie.tmdbId)
   : fromMatrixCollection ? safeLookup(MATRIX_MOVIE_DATA, movie.tmdbId)
   : fromSe7enCollection ? safeLookup(SE7EN_MOVIE_DATA, movie.tmdbId)
   : fromOldboyCollection ? safeLookup(OLDBOY_MOVIE_DATA, movie.tmdbId)
   : fromBlackSwanCollection ? safeLookup(BLACK_SWAN_MOVIE_DATA, movie.tmdbId)
   : fromEyesWideShutCollection ? safeLookup(EYES_WIDE_SHUT_MOVIE_DATA, movie.tmdbId)
-  : fromRevengeCollection ? getRevengeMovieInfo()
-  : fromWarFilmsCollection ? getWarFilmsMovieInfo()
-  : fromSciFiCollection ? safeLookup(SCI_FI_MOVIE_DATA, movie.tmdbId) // ✅ NOW USING RICH DATA
-  : fromTimeTravelCollection ? getTimeTravelMovieInfo()
-  : fromHeistThrillerCollection ? getHeistThrillerMovieInfo()
+  : fromRevengeCollection ? safeLookup(REVENGE_MOVIE_DATA, movie.tmdbId)
+  : fromWarFilmsCollection ? safeLookup(WAR_FILMS_MOVIE_DATA, movie.tmdbId)
+  : fromSciFiCollection ? safeLookup(SCI_FI_MOVIE_DATA, movie.tmdbId)
+  : fromTimeTravelCollection ? safeLookup(TIME_TRAVEL_MOVIE_DATA, movie.tmdbId)
+  : fromHeistThrillerCollection ? safeLookup(HEIST_THRILLER_MOVIE_DATA, movie.tmdbId)
   : fromCrimeThrillerCollection ? safeLookup(CRIME_THRILLER_MOVIE_DATA, movie.tmdbId)
-  : fromDetectiveThrillerCollection ? getDetectiveThrillerMovieInfo()
-  : fromMysteryThrillerCollection ? getMysteryThrillerMovieInfo()
-  : fromPsychologicalThrillerCollection ? getPsychologicalThrillerMovieInfo()
-  : fromThrillerCollection ? getThrillerMovieInfo()
+  : fromDetectiveThrillerCollection ? safeLookup(DETECTIVE_THRILLER_MOVIE_DATA, movie.tmdbId)
+  : fromMysteryThrillerCollection ? safeLookup(MYSTERY_THRILLER_MOVIE_DATA, movie.tmdbId)
+  : fromPsychologicalThrillerCollection ? safeLookup(PSYCH_THRILLER_MOVIE_DATA, movie.tmdbId)
+  : fromThrillerCollection ? safeLookup(THRILLER_MOVIE_DATA, movie.tmdbId)
   : fromInterstellarCollection ? safeLookup(INTERSTELLAR_MOVIE_DATA, movie.tmdbId)
   : fromSurvivalCollection ? safeLookup(SURVIVAL_MOVIE_DATA, movie.tmdbId)
   : fromDramaCollection ? safeLookup(DRAMA_MOVIE_DATA, movie.tmdbId)
   : safeLookup(COMPLETE_MOVIE_DATA, movie.tmdbId);
 
-// DEFAULT FALLBACK DATA
-const getMovieSpecificData = (title) => ({
-  mindBendingIndex: 85,
-  complexityLevel: 'HIGH',
-  dominantColor: '#ca8a04',
-  rating: movie.imdbRating || 7.5,
-  director: movie.Director || 'Acclaimed Director',
-  scenes: [
-    { time: 20, intensity: 60, label: 'Opening', color: '#92400e' },
-    { time: 50, intensity: 75, label: 'Conflict', color: '#ca8a04' },
-    { time: 80, intensity: 85, label: 'Climax', color: '#ea6208ff' },
-    { time: 100, intensity: 90, label: 'Resolution', color: '#facc15' },
-    { time: 120, intensity: 95, label: 'Revelation', color: '#fde047' }
-  ],
-  dna: { Mystery: 60, Thriller: 30, Drama: 10 },
-  cast: ['Lead Actor', 'Supporting Cast'],
-  boxOffice: 'N/A',
-  budget: 'N/A',
-  synopsis: 'A compelling exploration of cinema.',
-  ageRating: 'R'
-});
+ // Fallback data generator if lookup fails
+ const getMovieSpecificData = (title) => ({
+   mindBendingIndex: 85,
+   complexityLevel: 'HIGH',
+   dominantColor: '#ca8a04',
+   rating: movie.imdbRating || 7.5,
+   director: movie.Director || 'Acclaimed Director',
+   scenes: [
+     { time: 20, intensity: 60, label: 'Opening', color: '#92400e' },
+     { time: 50, intensity: 75, label: 'Conflict', color: '#ca8a04' },
+     { time: 80, intensity: 85, label: 'Climax', color: '#ea6208ff' },
+     { time: 100, intensity: 90, label: 'Resolution', color: '#facc15' },
+     { time: 120, intensity: 95, label: 'Revelation', color: '#fde047' }
+   ],
+   dna: { Mystery: 60, Thriller: 30, Drama: 10 },
+   cast: ['Lead Actor', 'Supporting Cast'],
+   boxOffice: 'N/A',
+   budget: 'N/A',
+   synopsis: 'A compelling exploration of cinema.',
+   ageRating: 'R'
+ });
 
-const title = movie.Title || (movieInfo && movieInfo.title) || 'Unknown Title';
-const safeMovieInfo = movieInfo || getMovieSpecificData(title);
+ const title = movie.Title || (movieInfo && movieInfo.title) || 'Unknown Title';
+ const safeMovieInfo = movieInfo || getMovieSpecificData(title);
 
-const director = safeMovieInfo.director || movie.Director || 'Unknown Director';
-const genre = safeMovieInfo.genre || movie.Genre || 'Drama';
-const year = movie.Year || movie.year || '20XX';
-const runtime = safeMovieInfo.runtime || movie.Runtime || '120 min';
-const ageRating = safeMovieInfo.ageRating || movie.Rated || 'R';
-const cast = safeMovieInfo.cast?.join(', ') || '';
-const boxOffice = safeMovieInfo.boxOffice || 'N/A';
-const budget = safeMovieInfo.budget || 'N/A';
-const rating = safeMovieInfo.rating || movie.imdbRating || 7.5;
+ // Extract details
+ const director = safeMovieInfo.director || movie.Director || 'Unknown Director';
+ const year = movie.Year || movie.year || '20XX';
+ const runtime = safeMovieInfo.runtime || movie.Runtime || '120 min';
+ const ageRating = safeMovieInfo.ageRating || movie.Rated || 'R';
+ const cast = safeMovieInfo.cast?.join(', ') || '';
+ const boxOffice = safeMovieInfo.boxOffice || 'N/A';
+ const budget = safeMovieInfo.budget || 'N/A';
+ const rating = safeMovieInfo.rating || movie.imdbRating || 7.5;
 
-const sensitiveScenes = safeMovieInfo.sensitiveScenes 
-  || DONNIE_DARKO_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-  || PARASITE_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-  || BLACK_SWAN_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-  || EYES_WIDE_SHUT_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-  || OLDBOY_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-  || MATRIX_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
-  || SE7EN_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-  || SCI_FI_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-  || CRIME_THRILLER_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
-  || INTERSTELLAR_TIMELINES?.[movie?.tmdbId]?.scenes 
-  || SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
-  || [];
+ // ✅ UNIFIED SENSITIVE SCENES LOOKUP
+ const sensitiveScenes = safeMovieInfo.sensitiveScenes 
+   || DONNIE_DARKO_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
+   || PARASITE_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
+   || BLACK_SWAN_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
+   || EYES_WIDE_SHUT_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
+   || OLDBOY_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
+   || MATRIX_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
+   || SE7EN_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
+   || SCI_FI_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
+   || TIME_TRAVEL_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
+   || HEIST_THRILLER_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
+   || REVENGE_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
+   || CRIME_THRILLER_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
+   || THRILLER_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
+   || MYSTERY_THRILLER_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
+   || INTERSTELLAR_TIMELINES?.[movie?.tmdbId]?.scenes 
+   || SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
+   || [];
 
-const displayIndex = fromParasiteCollection ? null
-  : fromMatrixCollection ? safeMovieInfo.matrixRealityIndex ?? null
-  : fromOldboyCollection ? safeMovieInfo.revengeIntensity ?? null
-  : fromSe7enCollection ? safeMovieInfo.se7enDNAScore ?? null
-  : fromRevengeCollection ? safeMovieInfo.revengeIntensity ?? null
-  : fromWarFilmsCollection ? safeMovieInfo.warIntensity ?? null
-  : fromSciFiCollection ? safeMovieInfo.sciFiComplexity ?? null
-  : fromInterstellarCollection ? safeMovieInfo.sciFiComplexity ?? null
-  : fromCrimeThrillerCollection ? safeMovieInfo.suspenseIntensity ?? null
-  : fromMysteryThrillerCollection ? safeMovieInfo.mysteryComplexity ?? null
-  : fromThrillerCollection ? safeMovieInfo.suspenseIntensity ?? null
-  : fromSurvivalCollection ? safeMovieInfo.survivabilityIndex ?? null
-  : safeMovieInfo.mindBendingIndex ?? null;
+ // ✅ DYNAMIC SCORE VALUE SELECTION (Priority: Local Prop -> Data File -> Default)
+ const scoreValue = fromDonnieDarkoCollection ? movie.realityWarpIndex ?? safeMovieInfo.realityWarpIndex ?? 0
+   : fromParasiteCollection ? movie.classWarfareIndex ?? safeMovieInfo.classWarfareIndex ?? 0
+   : fromMatrixCollection ? movie.cyberComplexity ?? safeMovieInfo.cyberComplexity ?? 0 // Updated to cyberComplexity
+   : fromOldboyCollection ? movie.revengeIntensity ?? safeMovieInfo.revengeIntensity ?? 0
+   : fromBlackSwanCollection ? movie.psychologicalIntensity ?? safeMovieInfo.psychologicalIntensity ?? 0
+   : fromEyesWideShutCollection ? movie.paranoiaIntensity ?? safeMovieInfo.paranoiaIntensity ?? 0
+   : fromSe7enCollection ? movie.se7enDNAScore ?? safeMovieInfo.se7enDNAScore ?? 0
+   : fromRevengeCollection ? movie.revengeIntensity ?? safeMovieInfo.revengeIntensity ?? 0
+   : fromWarFilmsCollection ? movie.warIntensity ?? safeMovieInfo.warIntensity ?? 0
+   : fromSciFiCollection ? movie.sciFiComplexity ?? safeMovieInfo.sciFiComplexity ?? 0
+   : fromInterstellarCollection ? movie.spaceComplexity ?? safeMovieInfo.spaceComplexity ?? 0
+   : fromTimeTravelCollection ? movie.timeTravelIntensity ?? safeMovieInfo.timeTravelIntensity ?? 0
+   : fromHeistThrillerCollection ? movie.heistComplexity ?? safeMovieInfo.heistComplexity ?? 0
+   : fromCrimeThrillerCollection ? movie.suspenseIntensity ?? safeMovieInfo.suspenseIntensity ?? 0
+   : fromMysteryThrillerCollection ? movie.mysteryComplexity ?? safeMovieInfo.mysteryComplexity ?? 0
+   : fromDetectiveThrillerCollection ? movie.mysteryComplexity ?? safeMovieInfo.mysteryComplexity ?? 0
+   : fromPsychologicalThrillerCollection ? movie.suspenseIntensity ?? safeMovieInfo.suspenseIntensity ?? 0
+   : fromDramaCollection ? movie.emotionalIntensity ?? safeMovieInfo.emotionalIntensity ?? 0
+   : fromThrillerCollection ? movie.suspenseIntensity ?? safeMovieInfo.suspenseIntensity ?? 0
+   : fromSurvivalCollection ? movie.survivabilityIndex ?? safeMovieInfo.survivabilityIndex ?? 0
+   : fromInceptionCollection ? movie.mindBendingIndex ?? safeMovieInfo.mindBendingIndex ?? 0
+   : safeMovieInfo.mindBendingIndex ?? 0;
 
-const scoreValue = fromDonnieDarkoCollection ? movie.realityWarpIndex ?? safeMovieInfo.realityWarpIndex ?? 0
-  : fromParasiteCollection ? 0
-  : fromMatrixCollection ? movie.matrixRealityIndex ?? safeMovieInfo.matrixRealityIndex ?? 0
-  : fromOldboyCollection ? movie.revengeIntensity ?? safeMovieInfo.revengeIntensity ?? 0
-  : fromBlackSwanCollection ? movie.psychologicalIntensity ?? safeMovieInfo.psychologicalIntensity ?? 0
-  : fromEyesWideShutCollection ? movie.psychologicalIntensity ?? safeMovieInfo.psychologicalIntensity ?? 0
-  : fromSe7enCollection ? movie.se7enDNAScore ?? safeMovieInfo.se7enDNAScore ?? 0
-  : fromRevengeCollection ? movie.revengeIntensity ?? safeMovieInfo.revengeIntensity ?? 0
-  : fromWarFilmsCollection ? movie.warIntensity ?? safeMovieInfo.warIntensity ?? 0
-  : fromSciFiCollection ? movie.sciFiComplexity ?? safeMovieInfo.sciFiComplexity ?? 0
-  : fromInterstellarCollection ? movie.sciFiComplexity ?? safeMovieInfo.sciFiComplexity ?? 0
-  : fromTimeTravelCollection ? movie.timeTravelIntensity ?? safeMovieInfo.timeTravelIntensity ?? 0
-  : fromHeistThrillerCollection ? movie.heistComplexity ?? safeMovieInfo.heistComplexity ?? 0
-  : fromCrimeThrillerCollection ? movie.suspenseIntensity ?? safeMovieInfo.suspenseIntensity ?? 0
-  : fromMysteryThrillerCollection ? movie.mysteryComplexity ?? safeMovieInfo.mysteryComplexity ?? 0
-  : fromDetectiveThrillerCollection ? movie.mysteryComplexity ?? safeMovieInfo.mysteryComplexity ?? 0
-  : fromPsychologicalThrillerCollection ? movie.suspenseIntensity ?? safeMovieInfo.suspenseIntensity ?? 0
-  : fromDramaCollection ? movie.emotionalIntensity ?? safeMovieInfo.emotionalIntensity ?? 0
-  : fromThrillerCollection ? movie.suspenseIntensity ?? safeMovieInfo.suspenseIntensity ?? 0
-  : fromSurvivalCollection ? movie.survivabilityIndex ?? safeMovieInfo.survivabilityIndex ?? 0
-  : fromInceptionCollection ? movie.mindBendingIndex ?? safeMovieInfo.mindBendingIndex ?? 0
-  : safeMovieInfo.mindBendingIndex ?? 0;
+ const complexityLevel = safeMovieInfo.complexityLevel || 'HIGH';
 
-const complexityLevel = safeMovieInfo.complexityLevel || 'HIGH';
+ const getComplexityColor = (level) => {
+   if (fromRevengeCollection || fromWarFilmsCollection || fromDramaCollection) {
+     switch (level) {
+       case 'EXTREME': return '#991b1b';
+       case 'HIGH': return '#dc2626';
+       case 'MEDIUM': return '#f87171';
+       default: return '#6b7280';
+     }
+   }
+   switch (level) {
+     case 'EXTREME': return '#ea0808ff';
+     case 'HIGH': return '#eb7a09ff';
+     case 'MEDIUM': return '#8d7708ff';
+     default: return '#6b7280';
+   }
+ };
 
-const getComplexityColor = (level) => {
-  if (fromRevengeCollection || fromWarFilmsCollection || fromDramaCollection) {
-    switch (level) {
-      case 'EXTREME': return '#991b1b';
-      case 'HIGH': return '#dc2626';
-      case 'MEDIUM': return '#f87171';
-      default: return '#6b7280';
-    }
-  }
-  switch (level) {
-    case 'EXTREME': return '#ea0808ff';
-    case 'HIGH': return '#eb7a09ff';
-    case 'MEDIUM': return '#8d7708ff';
-    default: return '#6b7280';
-  }
-};
+ const getAgeRatingColor = (rating) => {
+   switch (rating) {
+     case 'G': return '#22c55e';
+     case 'PG': return '#3b82f6';
+     case 'PG-13': return '#f59e0b';
+     case 'R': return '#ef4444';
+     case 'NC-17': return '#7c2d12';
+     default: return '#6b7280';
+   }
+ };
 
-const getAgeRatingColor = (rating) => {
-  switch (rating) {
-    case 'G': return '#22c55e';
-    case 'PG': return '#3b82f6';
-    case 'PG-13': return '#f59e0b';
-    case 'R': return '#ef4444';
-    case 'NC-17': return '#7c2d12';
-    default: return '#6b7280';
-  }
-};
+ const getUniqueDescription = () => {
+   if (safeMovieInfo?.synopsis) return safeMovieInfo.synopsis;
+   const t = title.toLowerCase();
+   
+   if (t.includes('oldboy')) return "After 15 years of mysterious imprisonment, Oh Dae-su is released and seeks vengeance against his unknown captor.";
+   if (t.includes('parasite')) return "Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan.";
+   
+   return "A compelling exploration of truth, identity, and the limits of human understanding.";
+ };
 
-const getUniqueDescription = () => {
-  if (safeMovieInfo?.synopsis) return safeMovieInfo.synopsis;
-  const t = title.toLowerCase();
-  
-  // Revenge descriptions
-  if (t.includes('oldboy')) return "After 15 years of mysterious imprisonment, Oh Dae-su is released and seeks vengeance against his unknown captor.";
-  // ... (Your other descriptions remain here)
-  
-  return "A compelling exploration of truth, identity, and the limits of human understanding.";
-};
+ const getComplexityScoreTitle = () => {
+   if (fromMatrixCollection) return 'SCI-FI COMPLEXITY SCORE'; // Updated
+   if (fromSe7enCollection) return 'SE7EN DNA SCORE';
+   if (fromRevengeCollection) return 'REVENGE INTENSITY SCORE';
+   if (fromWarFilmsCollection) return 'WAR INTENSITY SCORE';
+   if (fromSciFiCollection) return 'SCI-FI COMPLEXITY SCORE';
+   if (fromInterstellarCollection) return 'SPACE COMPLEXITY SCORE';
+   if (fromTimeTravelCollection) return 'TIME TRAVEL COMPLEXITY SCORE';
+   if (fromHeistThrillerCollection) return 'HEIST COMPLEXITY SCORE';
+   if (fromCrimeThrillerCollection) return 'CRIME INTENSITY SCORE';
+   if (fromDetectiveThrillerCollection || fromMysteryThrillerCollection) return 'MYSTERY COMPLEXITY SCORE';
+   if (fromPsychologicalThrillerCollection) return 'PSYCHOLOGICAL COMPLEXITY SCORE';
+   if (fromDramaCollection) return 'EMOTIONAL INTENSITY SCORE';
+   if (fromThrillerCollection) return 'SUSPENSE INTENSITY SCORE';
+   if (fromSurvivalCollection) return 'SURVIVAL INTENSITY SCORE';
+   if (fromInceptionCollection) return 'MIND-BENDING COMPLEXITY SCORE';
+   if (fromShutterIslandCollection) return 'PSYCHOLOGICAL COMPLEXITY SCORE';
+   if (fromMementoCollection) return 'MEMORY COMPLEXITY SCORE';
+   return 'COMPLEXITY SCORE';
+ };
 
-const getComplexityScoreTitle = () => {
-  if (fromMatrixCollection) return 'MATRIX REALITY SCORE';
-  if (fromSe7enCollection) return 'SE7EN DNA SCORE';
-  if (fromRevengeCollection) return 'REVENGE INTENSITY SCORE';
-  if (fromWarFilmsCollection) return 'WAR INTENSITY SCORE';
-  if (fromSciFiCollection || fromInterstellarCollection) return 'SCI-FI COMPLEXITY SCORE';
-  if (fromTimeTravelCollection) return 'TIME TRAVEL COMPLEXITY SCORE';
-  if (fromHeistThrillerCollection) return 'HEIST COMPLEXITY SCORE';
-  if (fromCrimeThrillerCollection) return 'CRIME INTENSITY SCORE';
-  if (fromDetectiveThrillerCollection || fromMysteryThrillerCollection) return 'MYSTERY COMPLEXITY SCORE';
-  if (fromPsychologicalThrillerCollection) return 'PSYCHOLOGICAL COMPLEXITY SCORE';
-  if (fromDramaCollection) return 'EMOTIONAL INTENSITY SCORE';
-  if (fromThrillerCollection) return 'SUSPENSE INTENSITY SCORE';
-  if (fromSurvivalCollection) return 'SURVIVAL INTENSITY SCORE';
-  if (fromInceptionCollection) return 'MIND-BENDING COMPLEXITY SCORE';
-  if (fromShutterIslandCollection) return 'PSYCHOLOGICAL COMPLEXITY SCORE';
-  if (fromMementoCollection) return 'MEMORY COMPLEXITY SCORE';
-  return 'COMPLEXITY SCORE';
-};
+ const getComplexityIndexLabel = () => {
+   if (fromMatrixCollection) return 'MIND BENDING SCORE'; // Updated
+   if (fromSe7enCollection) return 'NOIR DARKNESS INDEX';
+   if (fromRevengeCollection) return 'REVENGE INTENSITY INDEX';
+   if (fromWarFilmsCollection) return 'WAR INTENSITY INDEX';
+   if (fromSciFiCollection) return 'SCI-FI COMPLEXITY INDEX';
+   if (fromInterstellarCollection) return 'COSMIC REALISM INDEX';
+   if (fromTimeTravelCollection) return 'TIME COMPLEXITY INDEX';
+   if (fromHeistThrillerCollection) return 'HEIST COMPLEXITY INDEX';
+   if (fromCrimeThrillerCollection) return 'CRIME INTENSITY INDEX';
+   if (fromDetectiveThrillerCollection || fromMysteryThrillerCollection) return 'MYSTERY INDEX';
+   if (fromPsychologicalThrillerCollection) return 'PSYCHOLOGICAL INDEX';
+   if (fromDramaCollection) return 'EMOTIONAL INTENSITY';
+   if (fromThrillerCollection) return 'SUSPENSE INDEX';
+   if (fromSurvivalCollection) return 'SURVIVABILITY INDEX';
+   if (fromInceptionCollection) return 'MIND-BENDING INDEX';
+   if (fromShutterIslandCollection) return 'PSYCHOLOGICAL INDEX';
+   if (fromMementoCollection) return 'MEMORY INDEX';
+   return 'MIND-BENDING INDEX';
+ };
 
-const getComplexityIndexLabel = () => {
-  if (fromMatrixCollection) return 'REALITY DISTORTION INDEX';
-  if (fromSe7enCollection) return 'NOIR DARKNESS INDEX';
-  if (fromRevengeCollection) return 'REVENGE INTENSITY INDEX';
-  if (fromWarFilmsCollection) return 'WAR INTENSITY INDEX';
-  if (fromSciFiCollection || fromInterstellarCollection) return 'SCI-FI COMPLEXITY INDEX';
-  if (fromTimeTravelCollection) return 'TIME COMPLEXITY INDEX';
-  if (fromHeistThrillerCollection) return 'HEIST COMPLEXITY INDEX';
-  if (fromCrimeThrillerCollection) return 'CRIME INTENSITY INDEX';
-  if (fromDetectiveThrillerCollection || fromMysteryThrillerCollection) return 'MYSTERY INDEX';
-  if (fromPsychologicalThrillerCollection) return 'PSYCHOLOGICAL INDEX';
-  if (fromDramaCollection) return 'EMOTIONAL INTENSITY';
-  if (fromThrillerCollection) return 'SUSPENSE INDEX';
-  if (fromSurvivalCollection) return 'SURVIVABILITY INDEX';
-  if (fromInceptionCollection) return 'MIND-BENDING INDEX';
-  if (fromShutterIslandCollection) return 'PSYCHOLOGICAL INDEX';
-  if (fromMementoCollection) return 'MEMORY INDEX';
-  return 'MIND-BENDING INDEX';
-};
+ const getComplexityLevelLabel = () => {
+   if (fromMatrixCollection) return 'SCI-FI COMPLEXITY LEVEL'; // Updated
+   if (fromSe7enCollection) return 'PSYCHOLOGICAL GRIT LEVEL';
+   if (fromRevengeCollection) return 'VENGEANCE BRUTALITY LEVEL';
+   if (fromWarFilmsCollection) return 'COMBAT REALISM LEVEL';
+   if (fromSciFiCollection) return 'SCI-FI COMPLEXITY LEVEL';
+   if (fromInterstellarCollection) return 'COSMIC SCALE LEVEL';
+   if (fromTimeTravelCollection) return 'TEMPORAL PARADOX LEVEL';
+   if (fromHeistThrillerCollection) return 'HEIST COMPLEXITY LEVEL';
+   if (fromCrimeThrillerCollection) return 'CRIME COMPLEXITY LEVEL';
+   if (fromDetectiveThrillerCollection || fromMysteryThrillerCollection) return 'MYSTERY COMPLEXITY LEVEL';
+   if (fromPsychologicalThrillerCollection) return 'PSYCHOLOGICAL DISTORTION LEVEL';
+   if (fromDramaCollection) return 'EMOTIONAL RESONANCE LEVEL';
+   if (fromThrillerCollection) return 'SUSPENSE INTENSITY LEVEL';
+   if (fromSurvivalCollection) return 'SURVIVAL INTENSITY LEVEL';
+   if (fromInceptionCollection) return 'COGNITIVE COMPLEXITY LEVEL';
+   if (fromShutterIslandCollection) return 'PSYCHOLOGICAL DISTORTION LEVEL';
+   if (fromMementoCollection) return 'MEMORY DISTORTION LEVEL';
+   return 'COGNITIVE DISTORTION LEVEL';
+ };
 
-const getComplexityLevelLabel = () => {
-  if (fromMatrixCollection) return 'SIMULATION DISTORTION LEVEL';
-  if (fromSe7enCollection) return 'PSYCHOLOGICAL GRIT LEVEL';
-  if (fromRevengeCollection) return 'VENGEANCE BRUTALITY LEVEL';
-  if (fromWarFilmsCollection) return 'COMBAT REALISM LEVEL';
-  if (fromSciFiCollection || fromInterstellarCollection) return 'SCI-FI COMPLEXITY LEVEL';
-  if (fromTimeTravelCollection) return 'TEMPORAL PARADOX LEVEL';
-  if (fromHeistThrillerCollection) return 'HEIST COMPLEXITY LEVEL';
-  if (fromCrimeThrillerCollection) return 'CRIME COMPLEXITY LEVEL';
-  if (fromDetectiveThrillerCollection || fromMysteryThrillerCollection) return 'MYSTERY COMPLEXITY LEVEL';
-  if (fromPsychologicalThrillerCollection) return 'PSYCHOLOGICAL DISTORTION LEVEL';
-  if (fromDramaCollection) return 'EMOTIONAL RESONANCE LEVEL';
-  if (fromThrillerCollection) return 'SUSPENSE INTENSITY LEVEL';
-  if (fromSurvivalCollection) return 'SURVIVAL INTENSITY LEVEL';
-  if (fromInceptionCollection) return 'COGNITIVE COMPLEXITY LEVEL';
-  if (fromShutterIslandCollection) return 'PSYCHOLOGICAL DISTORTION LEVEL';
-  if (fromMementoCollection) return 'MEMORY DISTORTION LEVEL';
-  return 'COGNITIVE DISTORTION LEVEL';
-};
+ const getComplexityDescription = () => {
+   if (fromMatrixCollection) {
+        if (scoreValue >= 90) return 'A groundbreaking sci-fi masterpiece exploring deep philosophical questions about reality and consciousness.';
+        if (scoreValue >= 80) return 'A visually stunning and intellectually stimulating sci-fi experience.';
+        return 'An engaging sci-fi film with intriguing concepts and solid execution.';
+   }
+   if (fromRevengeCollection) {
+     if (scoreValue >= 90) return 'A brutal and devastating revenge masterpiece with visceral violence, profound moral complexity, and the soul-crushing cost of vengeance.';
+     if (scoreValue >= 80) return 'A powerful revenge narrative with intense retribution, complex moral questions, and significant psychological impact.';
+     return 'An engaging revenge story with satisfying payback and compelling character motivations.';
+   }
+   // Generic fallback
+   if (scoreValue >= 90) return 'A transcendent masterpiece redefining narrative complexity.';
+   if (scoreValue >= 80) return 'Sophisticated cinematic storytelling with advanced non-linear elements.';
+   if (scoreValue >= 70) return 'Thoughtfully complex narrative with engaging mind-bending elements.';
+   return 'Accessible complexity with subtle mind-bending elements rewarding careful viewing.';
+ };
 
-const getComplexityDescription = () => {
-  if (fromRevengeCollection) {
-    if (scoreValue >= 90) return 'A brutal and devastating revenge masterpiece with visceral violence, profound moral complexity, and the soul-crushing cost of vengeance that transforms both avenger and target.';
-    if (scoreValue >= 80) return 'A powerful revenge narrative with intense retribution, complex moral questions, and significant psychological impact exploring the dark path of vengeance.';
-    if (scoreValue >= 70) return 'An engaging revenge story with satisfying payback, compelling character motivations, and meaningful exploration of justice versus vengeance.';
-    return 'An accessible revenge film with solid action sequences, emotional stakes, and entertaining retribution storytelling.';
-  }
-  // ... (Other complexity descriptions omitted for brevity, logic remains same)
-  if (scoreValue >= 90) return 'A transcendent masterpiece redefining narrative complexity.';
-  if (scoreValue >= 80) return 'Sophisticated cinematic storytelling with advanced non-linear elements.';
-  if (scoreValue >= 70) return 'Thoughtfully complex narrative with engaging mind-bending elements.';
-  return 'Accessible complexity with subtle mind-bending elements rewarding careful viewing.';
-};
+ const getBorderColor = () => {
+   if (fromMatrixCollection) return 'border-emerald-400/40'; 
+   if (fromSe7enCollection) return 'border-amber-700/40';
+   if (fromRevengeCollection || fromWarFilmsCollection || fromDramaCollection) return 'border-red-400/40';
+   if (fromInterstellarCollection || fromSciFiCollection || fromTimeTravelCollection) return 'border-cyan-400/40';
+   if (fromHeistThrillerCollection) return 'border-amber-400/40';
+   if (fromCrimeThrillerCollection) return 'border-slate-400/40'; 
+   return 'border-yellow-400/40';
+ };
 
-const getBorderColor = () => {
-  if (fromMatrixCollection) return 'border-emerald-400/40'; 
-  if (fromSe7enCollection) return 'border-amber-700/40';
-  if (fromRevengeCollection || fromWarFilmsCollection || fromDramaCollection) return 'border-red-400/40';
-  if (fromInterstellarCollection || fromSciFiCollection || fromTimeTravelCollection) return 'border-cyan-400/40';
-  if (fromHeistThrillerCollection) return 'border-amber-400/40';
-  if (fromCrimeThrillerCollection) return 'border-slate-400/40'; 
-  return 'border-yellow-400/40';
-};
-
-const getStarColor = () => {
-  if (fromMatrixCollection) return 'text-emerald-400'; 
-  if (fromSe7enCollection) return 'text-amber-600';
-  if (fromRevengeCollection || fromWarFilmsCollection || fromDramaCollection) return 'text-red-400';
-  if (fromSciFiCollection || fromInterstellarCollection || fromTimeTravelCollection) return 'text-cyan-400';
-  if (fromHeistThrillerCollection) return 'text-amber-400';
-  if (fromCrimeThrillerCollection) return 'text-slate-400';
-  return 'text-yellow-400';
-};
+ const getStarColor = () => {
+   if (fromMatrixCollection) return 'text-emerald-400'; 
+   if (fromSe7enCollection) return 'text-amber-600';
+   if (fromRevengeCollection || fromWarFilmsCollection || fromDramaCollection) return 'text-red-400';
+   if (fromSciFiCollection || fromInterstellarCollection || fromTimeTravelCollection) return 'text-cyan-400';
+   if (fromHeistThrillerCollection) return 'text-amber-400';
+   if (fromCrimeThrillerCollection) return 'text-slate-400';
+   return 'text-yellow-400';
+ };
 
   return (
     <motion.div

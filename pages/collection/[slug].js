@@ -1,4 +1,4 @@
-// pages/collection/[slug].js - SEO OPTIMIZED WITH MATRIX, SE7EN & PARASITE FORMAT ✅
+// pages/collection/[slug].js - FIXED IMPORTS FOR BUILD ✅
 
 import React, { useState, useEffect, useCallback } from 'react';
 import Head from 'next/head';
@@ -11,8 +11,8 @@ import { ChevronLeft, ChevronRight, Crown, Star, MessageSquare, Volume2, VolumeX
 import { COMPLETE_MOVIE_DATABASE as SURVIVAL_DATABASE, COMPLETE_MOVIE_DATA as SURVIVAL_DATA } from '../../utils/survivalMovieData';
 import { COMPLETE_MOVIE_DATABASE as MATRIX_DATABASE } from '../../utils/matrixMovieData';
 import { COMPLETE_MOVIE_DATABASE as SE7EN_DATABASE, COMPLETE_MOVIE_DATA as SE7EN_DATA } from '../../utils/se7enMovieData';
-import { COMPLETE_MOVIE_DATABASE as PARASITE_DATABASE, COMPLETE_MOVIE_DATA as PARASITE_DATA } from '../../utils/parasiteMovieData'; // ✅ NEW PARASITE
-import { COMPLETE_MOVIE_DATABASE as OLDBOY_DATABASE, COMPLETE_MOVIE_DATA as OLDBOY_DATA } from '../../utils/oldboyMovieData'; // ✅ NEW OLDBOY
+import { COMPLETE_MOVIE_DATABASE as PARASITE_DATABASE, COMPLETE_MOVIE_DATA as PARASITE_DATA } from '../../utils/parasiteMovieData'; 
+import { COMPLETE_MOVIE_DATABASE as OLDBOY_DATABASE, COMPLETE_MOVIE_DATA as OLDBOY_DATA } from '../../utils/oldboyMovieData'; 
 import { COMPLETE_MOVIE_DATABASE as DONNIE_DARKO_DATABASE, COMPLETE_MOVIE_DATA as DONNIE_DARKO_DATA } from '../../utils/donnieDarkoMovieData';
 import { COMPLETE_MOVIE_DATABASE as BLACK_SWAN_DATABASE, COMPLETE_MOVIE_DATA as BLACK_SWAN_DATA } from '../../utils/blackSwanMovieData';
 import { COMPLETE_MOVIE_DATABASE as EYES_WIDE_SHUT_DATABASE, COMPLETE_MOVIE_DATA as EYES_WIDE_SHUT_DATA } from '../../utils/eyesWideShutMovieData';
@@ -23,16 +23,16 @@ import { COMPLETE_MOVIE_DATABASE as WAR_FILMS_DATABASE, COMPLETE_MOVIE_DATA as W
 // ✅ INCEPTION, MEMENTO, SHUTTER ISLAND (from movieData.js)
 import { COMPLETE_MOVIE_DATABASE, COMPLETE_MOVIE_DATA } from '../../utils/movieData';
 
-// Other Collections (Old Format - To be converted later)
-import DRAMA_MOVIES from '../../utils/dramaMovieData';
-import { THRILLER_MOVIES } from '../../utils/thrillerMovieData';
-import { MYSTERY_THRILLER_MOVIES } from '../../utils/mysteryThrillerMovieData'; 
-import { DETECTIVE_THRILLER_MOVIES } from '../../utils/detectiveThrillerMovieData';
-import { PSYCH_THRILLER_MOVIES } from '../../utils/psychologicalThrillerMovieData'; 
-import { HEIST_THRILLER_MOVIES } from '../../utils/heistThrillerMovieData';
-import { TIME_TRAVEL_MOVIES } from '../../utils/timeTravelMovieData';
-import { SCI_FI_MOVIES } from '../../utils/sciFiMovieData';
-import { REVENGE_MOVIES } from '../../utils/revengeMovieData';
+// ✅ FIXED IMPORTS: Aliasing COMPLETE_MOVIE_DATABASE to old variable names
+import { COMPLETE_MOVIE_DATABASE as DRAMA_MOVIES } from '../../utils/dramaMovieData';
+import { COMPLETE_MOVIE_DATABASE as THRILLER_MOVIES } from '../../utils/thrillerMovieData';
+import { COMPLETE_MOVIE_DATABASE as MYSTERY_THRILLER_MOVIES } from '../../utils/mysteryThrillerMovieData'; 
+import { COMPLETE_MOVIE_DATABASE as DETECTIVE_THRILLER_MOVIES } from '../../utils/detectiveThrillerMovieData';
+import { COMPLETE_MOVIE_DATABASE as PSYCH_THRILLER_MOVIES } from '../../utils/psychologicalThrillerMovieData'; 
+import { COMPLETE_MOVIE_DATABASE as HEIST_THRILLER_MOVIES } from '../../utils/heistThrillerMovieData';
+import { COMPLETE_MOVIE_DATABASE as TIME_TRAVEL_MOVIES } from '../../utils/timeTravelMovieData';
+import { COMPLETE_MOVIE_DATABASE as SCI_FI_MOVIES } from '../../utils/sciFiMovieData';
+import { COMPLETE_MOVIE_DATABASE as REVENGE_MOVIES } from '../../utils/revengeMovieData';
 
 // Components
 import CinematicBackground from '../../components/CinematicBackground';
@@ -1721,7 +1721,7 @@ return (
                                     ? 'movies/like-se7en/'
                                     : collection?.slug === 'movies-like-parasite' // ✅ NEW PARASITE PATH
                                     ? 'movies/parasite/'
-                           : collection?.slug === 'movies-like-oldboy'
+                                   : collection?.slug === 'movies-like-oldboy'
 ? 'movies/oldboy/'
 
 : collection?.slug === 'movies-like-donnie-darko'
@@ -1916,17 +1916,17 @@ return (
       : collection.slug === 'best-war-films'
       ? `/movies/war-films/${currentMovie.imdbID}`
       : `/movies/${currentMovie.imdbID}`
-                                        }
+                                    }
 
-                                        key={currentMovieIndex}
-                                        onClick={handleMovieClick}
-                                    >
-                                        <CinematicMovieCard
-                                            movie={currentMovie}
-                                            rank={currentRank}
-                                            isActive={true}
-                                        />
-                                    </Link>
+                                    key={currentMovieIndex}
+                                    onClick={handleMovieClick}
+                                >
+                                    <CinematicMovieCard
+                                        movie={currentMovie}
+                                        rank={currentRank}
+                                        isActive={true}
+                                    />
+                                </Link>
                                 )}
                             </AnimatePresence>
 
@@ -1962,8 +1962,8 @@ return (
                                         } else if (collection.slug === 'movies-like-parasite') { // ✅ NEW PARASITE BUTTON LOGIC
                                             detailPageUrl = `/movies/parasite/${currentMovie.imdbID}`;
 
-                                                            } else if (collection.slug === 'movies-like-oldboy') {
-                            detailPageUrl = `/movies/oldboy/${currentMovie.imdbID}`;
+                                                                                } else if (collection.slug === 'movies-like-oldboy') {
+                                            detailPageUrl = `/movies/oldboy/${currentMovie.imdbID}`;
 
 
          } else if (collection.slug === 'movies-like-donnie-darko') {
@@ -2188,7 +2188,7 @@ case 'movies-like-donnie-darko':
 case 'movies-like-eyes-wide-shut':
             movieDatabase = EYES_WIDE_SHUT_DATABASE;
             break;
-             
+              
         case 'movies-like-interstellar':
             movieDatabase = INTERSTELLAR_DATABASE;
             break;
