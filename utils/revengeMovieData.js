@@ -30,7 +30,7 @@ const timeToSeconds = (timeStr) => {
 };
 
 // 2. SENSITIVE TIMELINES
-export const REVENGE_SENSITIVE_TIMELINES  = {
+export const SENSITIVE_TIMELINES = {
     670: { scenes: [{ start: '1:24:00', end: '1:28:00', type: 'Explicit Violence', severity: 'Extreme' }, { start: '1:45:00', end: '1:48:00', type: 'Sexual Content', severity: 'High' }] },
     98: { scenes: [{ start: '0:10:00', end: '0:15:00', type: 'Violence', severity: 'High' }] },
     33: { scenes: [] },
