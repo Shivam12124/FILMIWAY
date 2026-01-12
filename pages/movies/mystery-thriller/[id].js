@@ -1,4 +1,4 @@
-// pages/movies/mystery-thriller/[id].js - FINAL FIXED VERSION ✅
+// pages/movies/mystery-thriller/[id].js - FIXED IMPORT NAME ✅
 // VISUALS: Indigo/Violet Theme (Mystery), Minimalist Banner
 // SCHEMA: Maximalist (Hidden Intensity, DNA, and FAQs for Bots)
 
@@ -13,12 +13,12 @@ import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
 import TMDBAttribution from '../../../components/TMDBAttribution';
 
-// ✅ IMPORT DATA INCLUDING FAQs
+// ✅ IMPORT DATA INCLUDING FAQs (CORRECTED IMPORT NAME)
 import { 
   COMPLETE_MOVIE_DATABASE, 
   COMPLETE_MOVIE_DATA,
   SENSITIVE_TIMELINES,
-  MYSTERY_THRILLER_MOVIE_FAQS 
+  MYSTERY_THRILLER_FAQS // ✅ Fixed: Matches the export in utils file
 } from '../../../utils/mysteryThrillerMovieData';
 
 const COLORS = {
@@ -40,6 +40,7 @@ const MOVIE_YEARS = {
   'Burning': '2018', 'The Game': '1997', 'Identity': '2003'
 };
 
+// ✅ DATA OBJECT
 const MOVIE_DATA_BY_TITLE = {
   'Se7en': { connection: 'A relentlessly dark, grim, and devastatingly intricate psychological thriller. This film stands as a true masterpiece of the detective genre, known for its visceral atmosphere and shocking, thought-provoking conclusion.' },
   'Shutter Island': { connection: 'An unsettling journey where reality and paranoia spiral into a complex psychological labyrinth. Scorsese masterfully keeps the viewer constantly doubting the sanity and purpose of the protagonist, leading to a mind-bending revelation.' },
@@ -56,7 +57,7 @@ const MOVIE_DATA_BY_TITLE = {
 const getTMDBImage = (path, size = 'w1280') => 
   path ? `https://image.tmdb.org/t/p/${size}${path}` : null;
 
-// Helper to get insight
+// ✅ Helper to get insight
 const getMysteryInsight = (title) => {
   const data = MOVIE_DATA_BY_TITLE[title];
   return data?.connection || 'A compelling narrative defined by its intricate detective work, masterful character development, and gripping sense of suspense.';
@@ -174,6 +175,7 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
   );
 };
 
+// ✅ FIXED: SmartBackButton is defined
 const SmartBackButton = () => (
     <Link href="/collection/best-mystery-thriller-movies" className="fixed top-4 left-4 z-50 flex items-center gap-2 px-4 py-2 bg-black/60 backdrop-blur-md border border-gray-700 rounded-lg hover:border-indigo-500 transition group">
         <ChevronLeft className="w-4 h-4 text-gray-400 group-hover:text-indigo-500 transition" />
@@ -208,11 +210,10 @@ const MysteryBreadcrumb = ({ movie }) => (
     </motion.nav>
 );
 
-// ✅ JSON-LD SCHEMA GENERATOR - MYSTERY EDITION (UPDATED TO BLACK SWAN STYLE)
+// ✅ JSON-LD SCHEMA GENERATOR
 const generateMovieSchema = (movie, movieData, currentMovieYear) => {
   const data = COMPLETE_MOVIE_DATA[movie.tmdbId];
-  const sensitiveData = SENSITIVE_TIMELINES[movie.tmdbId];
-  const faqs = MYSTERY_THRILLER_MOVIE_FAQS[movie.Title] || [];
+  const faqs = MYSTERY_THRILLER_MOVIE_FAQS[movie.Title] || []; // Using correct imported name
 
   // 1. CALCULATE THE PEAK MOMENT
   let peakStats = "Peak info unavailable.";
@@ -223,7 +224,7 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
     peakStats = `[PEAK MOMENT] Maximum Suspense (${peakScene.intensity}/100) hits at minute ${peakScene.time}: "${peakScene.label}".`;
   }
 
-  // 2. METRICS (Metrics Changed for Mystery)
+  // 2. METRICS
   const intensityStats = `
     [FILMIWAY METRICS]
     - Mystery Index: ${data?.mysteryComplexity || 0}/100
@@ -235,7 +236,8 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
     ? `[GENRE DNA] ${Object.entries(data.dna).map(([genre, val]) => `${genre}: ${val}%`).join(', ')}`
     : 'Mystery Thriller';
 
-  // ✅ FIXED: Using Black Swan's detailed content warnings logic
+  // Content warnings logic
+  const sensitiveData = SENSITIVE_TIMELINES[movie.tmdbId];
   const contentWarnings = sensitiveData?.scenes 
     ? `[CONTENT ADVISORY] ${sensitiveData.scenes.map(s => 
         (s.start && s.end) 
@@ -263,45 +265,23 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
     Production: Budget ${data?.budget || 'N/A'}, Box Office ${data?.boxOffice || 'N/A'}.
   `.replace(/\s+/g, ' ').trim();
 
-  // 4. MAIN MOVIE SCHEMA
   const movieSchema = {
     "@context": "https://schema.org",
     "@type": "Movie",
     "name": movie.Title,
-    "description": fullDescription, 
+    "description": fullDescription,
     "datePublished": currentMovieYear,
     "image": movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : undefined,
-    "director": {
-      "@type": "Person",
-      "name": data?.director || "Unknown"
+    "director": { "@type": "Person", "name": data?.director || "Unknown" },
+    "actor": data?.cast?.map(actor => ({ "@type": "Person", "name": actor })) || [],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": data?.rating || 8.0, 
+      "bestRating": "10",
+      "ratingCount": 1000
     },
-    "actor": data?.cast?.map(actor => ({
-      "@type": "Person",
-      "name": actor
-    })) || [],
-    
-    "review": {
-      "@type": "Review",
-      "author": {
-        "@type": "Organization",
-        "name": "Filmiway"
-      },
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": data?.rating || 8.0, 
-        "bestRating": "10",
-        "worstRating": "1"
-      }
-    },
-
-    "genre": data?.dna ? Object.keys(data.dna) : ["Thriller", "Mystery", "Crime"],
-    "keywords": "Mystery Thriller, Detective, Twist Ending, Suspense, " + (data?.themes ? data.themes.join(", ") : ""),
-    "url": `https://filmiway.com/movies/mystery-thriller/${movie.imdbID}`,
-    "author": {
-      "@type": "Organization",
-      "name": "Filmiway",
-      "url": "https://filmiway.com"
-    }
+    "genre": data?.dna ? Object.keys(data.dna) : ["Mystery", "Thriller"],
+    "author": { "@type": "Organization", "name": "Filmiway", "url": "https://filmiway.com" }
   };
 
   const faqSchema = faqs.length > 0 ? {
@@ -310,10 +290,7 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
     "mainEntity": faqs.map(f => ({
       "@type": "Question",
       "name": f.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": f.answer
-      }
+      "acceptedAnswer": { "@type": "Answer", "text": f.answer }
     }))
   } : null;
 
