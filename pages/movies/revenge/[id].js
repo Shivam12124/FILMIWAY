@@ -7,13 +7,13 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, Play, X, User, Twitter, Hash, Send, Film, Award } from 'lucide-react'; // Added Award icon for Revenge Index
+import { ChevronLeft, Play, X, User, Twitter, Hash, Send, Film, Award } from 'lucide-react'; 
 import InternalCollectionsSection from '../../../components/InternalCollectionsSection';
 import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
 import TMDBAttribution from '../../../components/TMDBAttribution';
 
-// ✅ IMPORT REVENGE DATA
+// ✅ IMPORT REVENGE DATA (Corrected)
 import { 
   COMPLETE_MOVIE_DATABASE, 
   COMPLETE_MOVIE_DATA, 

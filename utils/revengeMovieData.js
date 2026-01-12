@@ -199,8 +199,21 @@ export const COMPLETE_MOVIE_DATA = {
         themes: ["Patience", "Betrayal", "Justice vs Revenge"]
     })
 };
+// 1. THE RANKED DATABASE LIST (Array)
+export const COMPLETE_MOVIE_DATABASE = [
+    { tmdbId: 670, imdbID: 'tt0364569', Title: 'Oldboy', year: 2003, genre: 'Action Mystery', runtime: 120, rank: 1 },
+    { tmdbId: 98, imdbID: 'tt0172495', Title: 'Gladiator', year: 2000, genre: 'Action Drama', runtime: 155, rank: 2 },
+    { tmdbId: 33, imdbID: 'tt0105695', Title: 'Unforgiven', year: 1992, genre: 'Western', runtime: 130, rank: 3 },
+    { tmdbId: 197, imdbID: 'tt0112573', Title: 'Braveheart', year: 1995, genre: 'History Drama', runtime: 178, rank: 4 },
+    { tmdbId: 1124, imdbID: 'tt0482571', Title: 'The Prestige', year: 2006, genre: 'Sci-Fi Thriller', runtime: 130, rank: 5 },
+    { tmdbId: 281957, imdbID: 'tt1663202', Title: 'The Revenant', year: 2015, genre: 'Adventure Drama', runtime: 156, rank: 6 },
+    { tmdbId: 393, imdbID: 'tt0378194', Title: 'Kill Bill: Vol. 2', year: 2004, genre: 'Action Crime', runtime: 137, rank: 7 },
+    { tmdbId: 245891, imdbID: 'tt2911666', Title: 'John Wick', year: 2014, genre: 'Action Thriller', runtime: 101, rank: 8 },
+    { tmdbId: 49797, imdbID: 'tt1588170', Title: 'I Saw the Devil', year: 2010, genre: 'Thriller Horror', runtime: 144, rank: 9 },
+    { tmdbId: 11362, imdbID: 'tt0295297', Title: 'The Count of Monte Cristo', year: 2002, genre: 'Adventure Action', runtime: 131, rank: 10 }
+];
 
-// ✅ CUSTOM FAQs FOR REVENGE MOVIES
+// 5. CUSTOM FAQs FOR REVENGE MOVIES
 export const REVENGE_MOVIE_FAQS = {
     'Oldboy': [
         { question: "What is the twist in Oldboy?", answer: "The twist reveals that the antagonist, Woo-jin, manipulated Dae-su into falling in love with and sleeping with his own daughter, Mi-do, as revenge for a rumor Dae-su spread years ago." },
@@ -265,6 +278,12 @@ export const REVENGE_MOVIE_FAQS = {
 };
 
 // HELPER FUNCTIONS
+export const getTMDBPosterUrl = (posterPath, size = 'medium') => {
+    if (!posterPath) return null;
+    const posterSize = TMDB_CONFIG.POSTER_SIZES[size] || TMDB_CONFIG.POSTER_SIZES.medium;
+    return `${TMDB_CONFIG.IMAGE_BASE_URL}/${posterSize}${posterPath}`;
+};
+
 export const getSensitiveContentTypes = (tmdbId) => {
     const sensitiveData = SENSITIVE_TIMELINES[tmdbId];
     if (!sensitiveData?.scenes?.length) return null;
@@ -280,11 +299,13 @@ export const getSensitiveContentTypes = (tmdbId) => {
 };
 
 export const generateFAQData = (movie) => {
-    return DRAMA_MOVIE_FAQS[movie.Title] || [];
+    return REVENGE_MOVIE_FAQS[movie.Title] || [];
 };
 
 export const generateMovieSchema = (movie) => {
     const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
+    const posterUrl = FALLBACK_POSTERS[movie.tmdbId];
+    
     return {
         '@context': 'https://schema.org',
         '@type': 'Movie',
@@ -295,7 +316,7 @@ export const generateMovieSchema = (movie) => {
         'director': { '@type': 'Person', 'name': movieInfo?.director || 'Director' },
         'actor': movieInfo?.cast?.map(actor => ({ '@type': 'Person', 'name': actor })) || [],
         'duration': `PT${movie.runtime}M`,
-        'image': `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
+        'image': posterUrl,
         'aggregateRating': { 
             '@type': 'AggregateRating', 
             'ratingValue': movieInfo?.rating || 7.5, 
@@ -318,7 +339,7 @@ export const generateFAQSchema = (faqs) => ({
 
 export const fetchMovieFromTMDB = async (tmdbId) => ({ 
     poster_path: null, 
-    title: DRAMA_MOVIES.find(m => m.tmdbId === tmdbId)?.title || 'Unknown Movie' 
+    title: COMPLETE_MOVIE_DATABASE.find(m => m.tmdbId === tmdbId)?.Title || 'Unknown Movie' 
 });
 
 export const fetchWatchProviders = async (tmdbId, region = 'US') => null;
@@ -335,4 +356,9 @@ export const formatSensitiveTimeline = (tmdbId) => {
             displayLabel: `${scene.type} (${scene.severity})` 
         }))
     };
-};  
+};
+
+// Export named export for compatibility if needed
+export const REVENGE_MOVIES = COMPLETE_MOVIE_DATABASE;
+
+export default COMPLETE_MOVIE_DATABASE;
