@@ -242,7 +242,7 @@ export const COMPLETE_MOVIE_DATA = {
             { time: 38, intensity: 52, label: 'Realization', color: '#e11d48' },
             { time: 58, intensity: 66, label: 'No Consequences', color: '#f43f5e' },
             { time: 78, intensity: 78, label: 'Self-Improvement', color: '#fb7185' },
-            { time: 96, intensity: 89, label: 'True Love', color: '#fda4af' }
+            { time: 96, intensity: 89, label: 'True Love', color: '#ef8390ff' }
         ], 
         synopsis: "Phil Connors is an arrogant, cynical weatherman sent to cover the Groundhog Day festivities in Punxsutawney. But when he wakes up the next morning, it's Groundhog Day again. And again. And again. Trapped in a time loop with no consequences and no escape, Phil moves from hedonism to despair to eventual self-discovery. It is the gold standard of time loop films—funny, philosophical, and deeply redeeming.", 
         themes: ["Redemption", "Love", "Philosophy", "Time Loop"], 
