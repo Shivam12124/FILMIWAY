@@ -1,4 +1,4 @@
-// pages/movies/mystery-thriller/[id].js - FIXED IMPORT NAME ✅
+// pages/movies/mystery-thriller/[id].js - FINAL FIXED VERSION ✅
 // VISUALS: Indigo/Violet Theme (Mystery), Minimalist Banner
 // SCHEMA: Maximalist (Hidden Intensity, DNA, and FAQs for Bots)
 
@@ -13,12 +13,12 @@ import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
 import TMDBAttribution from '../../../components/TMDBAttribution';
 
-// ✅ IMPORT DATA INCLUDING FAQs (CORRECTED IMPORT NAME)
+// ✅ IMPORT DATA (CORRECT NAME MATCHING UTILS)
 import { 
   COMPLETE_MOVIE_DATABASE, 
   COMPLETE_MOVIE_DATA,
   SENSITIVE_TIMELINES,
-  MYSTERY_THRILLER_FAQS // ✅ Fixed: Matches the export in utils file
+  MYSTERY_THRILLER_FAQS 
 } from '../../../utils/mysteryThrillerMovieData';
 
 const COLORS = {
@@ -40,7 +40,7 @@ const MOVIE_YEARS = {
   'Burning': '2018', 'The Game': '1997', 'Identity': '2003'
 };
 
-// ✅ DATA OBJECT
+// ✅ DATA OBJECT FOR BANNER INSIGHTS
 const MOVIE_DATA_BY_TITLE = {
   'Se7en': { connection: 'A relentlessly dark, grim, and devastatingly intricate psychological thriller. This film stands as a true masterpiece of the detective genre, known for its visceral atmosphere and shocking, thought-provoking conclusion.' },
   'Shutter Island': { connection: 'An unsettling journey where reality and paranoia spiral into a complex psychological labyrinth. Scorsese masterfully keeps the viewer constantly doubting the sanity and purpose of the protagonist, leading to a mind-bending revelation.' },
@@ -57,7 +57,7 @@ const MOVIE_DATA_BY_TITLE = {
 const getTMDBImage = (path, size = 'w1280') => 
   path ? `https://image.tmdb.org/t/p/${size}${path}` : null;
 
-// ✅ Helper to get insight
+// ✅ HELPER FOR BANNER
 const getMysteryInsight = (title) => {
   const data = MOVIE_DATA_BY_TITLE[title];
   return data?.connection || 'A compelling narrative defined by its intricate detective work, masterful character development, and gripping sense of suspense.';
@@ -213,7 +213,7 @@ const MysteryBreadcrumb = ({ movie }) => (
 // ✅ JSON-LD SCHEMA GENERATOR
 const generateMovieSchema = (movie, movieData, currentMovieYear) => {
   const data = COMPLETE_MOVIE_DATA[movie.tmdbId];
-  const faqs = MYSTERY_THRILLER_MOVIE_FAQS[movie.Title] || []; // Using correct imported name
+  const faqs = MYSTERY_THRILLER_FAQS[movie.Title] || []; // ✅ CORRECTED VARIABLE NAME
 
   // 1. CALCULATE THE PEAK MOMENT
   let peakStats = "Peak info unavailable.";
