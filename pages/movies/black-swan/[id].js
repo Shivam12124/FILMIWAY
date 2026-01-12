@@ -1,4 +1,4 @@
-// pages/movies/black-swan/[id].js - HYDRATION BUG FIXED 🐛✅
+// pages/movies/black-swan/[id].js - H1 SEO FIX + HYDRATION FIX ✅
 // VISUALS: Minimalist (Banner + Details Only)
 // SCHEMA: Maximalist (Hidden Intensity, DNA, and FAQs for Bots)
 
@@ -18,7 +18,7 @@ import {
   COMPLETE_MOVIE_DATABASE, 
   COMPLETE_MOVIE_DATA,
   SENSITIVE_TIMELINES,
-  BLACK_SWAN_MOVIE_FAQS // 👈 Imported for Schema
+  BLACK_SWAN_MOVIE_FAQS 
 } from '../../../utils/blackSwanMovieData';
 
 const COLORS = {
@@ -375,6 +375,10 @@ const BlackSwanMoviePage = ({ movie, tmdbData: movieData }) => {
             <SmartBackButton />
             
             <div className="relative z-10 pt-10 sm:pt-12 lg:pt-16">
+                
+                {/* ✅ SEO FIX: HIDDEN H1 ADDED HERE FOR BING & GOOGLE */}
+                <h1 className="sr-only">{`${movie.Title} (${currentMovieYear}) - Movies Like Black Swan`}</h1>
+
                 <BlackSwanBreadcrumb movie={movie} />
                 <div className="container mx-auto px-0 pb-16 sm:pb-24 lg:pb-32 max-w-7xl">
                     <OptimizedBanner movie={movie} movieData={movieData} richData={richData} trailer={trailer} isMobile={isMobile} />

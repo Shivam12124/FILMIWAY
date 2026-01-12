@@ -1,4 +1,4 @@
-// pages/movies/eyes-wide-shut/[id].js - ICEBERG EDITION + HIDDEN FAQs 🧊✅
+// pages/movies/eyes-wide-shut/[id].js - H1 SEO FIX + HYDRATION FIX ✅
 // VISUALS: Minimalist (Banner + Details Only)
 // SCHEMA: Maximalist (Hidden Intensity, DNA, and FAQs for Bots)
 
@@ -18,7 +18,7 @@ import {
   COMPLETE_MOVIE_DATABASE, 
   COMPLETE_MOVIE_DATA,
   SENSITIVE_TIMELINES,
-  EYES_WIDE_SHUT_MOVIE_FAQS // 👈 Imported for Schema
+  EYES_WIDE_SHUT_MOVIE_FAQS 
 } from '../../../utils/eyesWideShutMovieData';
 
 const COLORS = {
@@ -252,7 +252,8 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
       "@type": "Person",
       "name": actor
     })) || [],
-  "review": {
+    
+    "review": {
       "@type": "Review",
       "author": {
         "@type": "Organization",
@@ -265,6 +266,7 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
         "worstRating": "1"
       }
     },
+
     "genre": data?.dna ? Object.keys(data.dna) : ["Psychological Thriller", "Mystery"],
     "keywords": "Eyes Wide Shut, Secret Society, Cults, Occult, Paranoia, " + (data?.themes ? data.themes.join(", ") : ""),
     "url": `https://filmiway.com/movies/eyes-wide-shut/${movie.imdbID}`,
@@ -322,7 +324,8 @@ const EyesWideShutMoviePage = ({ movie, tmdbData: movieData }) => {
     return (
         <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
             <Head>
-                <title>{movie.Title} ({currentMovieYear}) - Movies Like Eyes Wide Shut | Filmiway</title>
+                {/* 🔥 HYDRATION BUG FIXED: Title is now a single template literal string */}
+                <title>{`${movie.Title} (${currentMovieYear}) - Movies Like Eyes Wide Shut | Filmiway`}</title>
                 <meta name="description" content={`${movie.Title} (${currentMovieYear}) - A paranoid thriller like Eyes Wide Shut. Analysis, ratings & where to stream.`} />
                 <link rel="canonical" href={`https://filmiway.com/movies/eyes-wide-shut/${movie.imdbID}`} />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
@@ -358,6 +361,10 @@ const EyesWideShutMoviePage = ({ movie, tmdbData: movieData }) => {
             <SmartBackButton />
             
             <div className="relative z-10 pt-10 sm:pt-12 lg:pt-16">
+                
+                {/* ✅ SEO FIX: HIDDEN H1 ADDED HERE FOR BING & GOOGLE */}
+                <h1 className="sr-only">{`${movie.Title} (${currentMovieYear}) - Movies Like Eyes Wide Shut`}</h1>
+
                 <EyesWideShutBreadcrumb movie={movie} />
                 <div className="container mx-auto px-0 pb-16 sm:pb-24 lg:pb-32 max-w-7xl">
                     <OptimizedBanner movie={movie} movieData={movieData} richData={richData} trailer={trailer} isMobile={isMobile} />

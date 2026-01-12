@@ -1,4 +1,4 @@
-// utils/crimeThrillerMovieData.js - COMPLETE SURVIVAL FORMAT ✅
+// utils/crimeThrillerMovieData.js - COMPLETE CRIME THRILLER COLLECTION 🔥
 
 export const TMDB_CONFIG = {
     API_KEY: 'a07e22bc18f5cb106bfe4cc1f83ad8ed',
@@ -7,7 +7,6 @@ export const TMDB_CONFIG = {
     POSTER_SIZES: { small: 'w300', medium: 'w500', large: 'w780', original: 'original' }
 };
 
-// 1️⃣ COMPLETE_MOVIE_DATABASE
 export const COMPLETE_MOVIE_DATABASE = [
     { tmdbId: 949, imdbID: "tt0113277", Title: "Heat", year: 1995, genre: "Crime", runtime: 170, rank: 1 },
     { tmdbId: 2118, imdbID: "tt0119488", Title: "L.A. Confidential", year: 1997, genre: "Crime", runtime: 138, rank: 2 },
@@ -21,14 +20,16 @@ export const COMPLETE_MOVIE_DATABASE = [
     { tmdbId: 2034, imdbID: "tt0139654", Title: "Training Day", year: 2001, genre: "Crime", runtime: 122, rank: 10 }
 ];
 
-const timeToSeconds = (timeStr) => {
-    const parts = timeStr.split(':').map(Number);
-    if (parts.length === 3) return parts[0] * 3600 + parts[1] * 60 + parts[2];
-    if (parts.length === 2) return parts[0] * 60 + parts[1];
-    return 0;
-};
+// Helper to ensure default values
+const createMovieData = (data) => ({
+    crimeIntensity: 85,
+    psychologicalTension: 80,
+    visceralImpact: 75,
+    complexityLevel: "HIGH",
+    dominantColor: "#000000",
+    ...data,
+});
 
-// 2️⃣ SENSITIVE_TIMELINES
 export const SENSITIVE_TIMELINES = {
     949: { scenes: [
         { start: "4:23", end: "5:13", type: "Kissing", severity: "Mild" },
@@ -56,7 +57,7 @@ export const SENSITIVE_TIMELINES = {
     11423: { scenes: [
         { start: "9:58", end: "10:10", type: "Sex", severity: "Moderate" },
         { start: "54:34", end: "54:55", type: "Nudity", severity: "Mild", description: "Men" },
-        { start: "1:01:12", end: "1:02:40", type: "Masturbating", severity: "Moderate", description: "Man" },
+        { start: "1:01:12", end: "1:02:40", type: "Sexual material", severity: "Moderate", description: "Man" },
         { start: "1:25:12", end: "1:25:47", type: "Partial nudity", severity: "Mild", description: "Woman" }
     ]},
     1422: { scenes: [
@@ -70,7 +71,6 @@ export const SENSITIVE_TIMELINES = {
     ]}
 };
 
-// 3️⃣ FALLBACK_POSTERS
 export const FALLBACK_POSTERS = {
     949: "https://m.media-amazon.com/images/M/MV5BNGMwNzUwNjYtZWM5NS00YzMyLWI4NjAtNjM0ZDBiMzE1YWExXkEyXkFqcGdeQXVyNDk3NzU2MTQ@._V1_SX500.jpg",
     2118: "https://m.media-amazon.com/images/M/MV5BMDQ2YzEyZGItYWRhOS00MjBmLTkzMDUtMTdjYzkyMmQxZTJlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX500.jpg",
@@ -84,21 +84,13 @@ export const FALLBACK_POSTERS = {
     2034: "https://m.media-amazon.com/images/M/MV5BODZlYTZhMWItYTRmNy00ZDI0LWEzZjktN2YzYWJmOTYxYjkxXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX500.jpg"
 };
 
-const createMovieData = (data) => data;
-
-// 4️⃣ COMPLETE_MOVIE_DATA - ALL 10 FILMS!
 export const COMPLETE_MOVIE_DATA = {
+    // 1. Heat
     949: createMovieData({ 
-        suspenseIntensity: 96, 
-        complexityLevel: "EXTREME", 
-        dominantColor: "#1a2b3c", 
-        rating: 8.3, 
-        criticsScore: 93, 
-        audienceScore: 90, 
-        director: "Michael Mann", 
-        cast: ["Al Pacino", "Robert De Niro", "Val Kilmer"], 
-        boxOffice: "$187.4 million", 
-        budget: "$60 million", 
+        crimeIntensity: 96, psychologicalTension: 88, visceralImpact: 95, complexityLevel: "EXTREME", 
+        dominantColor: "#1a2b3c", rating: 8.3, criticsScore: 93, audienceScore: 90, 
+        director: "Michael Mann", cast: ["Al Pacino", "Robert De Niro", "Val Kilmer"], 
+        boxOffice: "$187.4 million", budget: "$60 million", 
         dna: { Crime: 50, Thriller: 35, Drama: 15 }, 
         scenes: [
             { time: 38, intensity: 52, label: "Coffee Shop Meeting", color: "#b91c1c" },
@@ -112,17 +104,12 @@ export const COMPLETE_MOVIE_DATA = {
         awards: ["AFI Top 100", "Critical Acclaim"] 
     }),
     
+    // 2. L.A. Confidential
     2118: createMovieData({ 
-        suspenseIntensity: 94, 
-        complexityLevel: "HIGH", 
-        dominantColor: "#8b6914", 
-        rating: 8.2, 
-        criticsScore: 99, 
-        audienceScore: 92, 
-        director: "Curtis Hanson", 
-        cast: ["Kevin Spacey", "Russell Crowe", "Guy Pearce"], 
-        boxOffice: "$126.2 million", 
-        budget: "$35 million", 
+        crimeIntensity: 94, psychologicalTension: 85, visceralImpact: 80, complexityLevel: "HIGH", 
+        dominantColor: "#8b6914", rating: 8.2, criticsScore: 99, audienceScore: 92, 
+        director: "Curtis Hanson", cast: ["Kevin Spacey", "Russell Crowe", "Guy Pearce"], 
+        boxOffice: "$126.2 million", budget: "$35 million", 
         dna: { Crime: 45, Mystery: 35, Drama: 20 }, 
         scenes: [
             { time: 22, intensity: 48, label: "Night Owl Massacre", color: "#b91c1c" },
@@ -136,17 +123,12 @@ export const COMPLETE_MOVIE_DATA = {
         awards: ["Academy Award Winner", "BAFTA Winner"] 
     }),
 
+    // 3. No Country for Old Men
     6977: createMovieData({ 
-        suspenseIntensity: 95, 
-        complexityLevel: "EXTREME", 
-        dominantColor: "#865c07", 
-        rating: 8.2, 
-        criticsScore: 93, 
-        audienceScore: 89, 
-        director: "Coen Brothers", 
-        cast: ["Tommy Lee Jones", "Javier Bardem", "Josh Brolin"], 
-        boxOffice: "$171.6 million", 
-        budget: "$25 million", 
+        crimeIntensity: 95, psychologicalTension: 98, visceralImpact: 92, complexityLevel: "EXTREME", 
+        dominantColor: "#865c07", rating: 8.2, criticsScore: 93, audienceScore: 89, 
+        director: "Coen Brothers", cast: ["Tommy Lee Jones", "Javier Bardem", "Josh Brolin"], 
+        boxOffice: "$171.6 million", budget: "$25 million", 
         dna: { Thriller: 50, Crime: 35, Drama: 15 }, 
         scenes: [
             { time: 15, intensity: 60, label: "Coin Toss", color: "#b91c1c" },
@@ -160,17 +142,12 @@ export const COMPLETE_MOVIE_DATA = {
         awards: ["Academy Award Winner", "4 Oscars"] 
     }),
 
+    // 4. Zodiac
     1949: createMovieData({ 
-        suspenseIntensity: 92, 
-        complexityLevel: "EXTREME", 
-        dominantColor: "#1e3a5f", 
-        rating: 7.7, 
-        criticsScore: 90, 
-        audienceScore: 84, 
-        director: "David Fincher", 
-        cast: ["Jake Gyllenhaal", "Mark Ruffalo", "Robert Downey Jr."], 
-        boxOffice: "$84.7 million", 
-        budget: "$65 million", 
+        crimeIntensity: 92, psychologicalTension: 95, visceralImpact: 85, complexityLevel: "EXTREME", 
+        dominantColor: "#1e3a5f", rating: 7.7, criticsScore: 90, audienceScore: 84, 
+        director: "David Fincher", cast: ["Jake Gyllenhaal", "Mark Ruffalo", "Robert Downey Jr."], 
+        boxOffice: "$84.7 million", budget: "$65 million", 
         dna: { Crime: 50, Mystery: 35, Thriller: 15 }, 
         scenes: [
             { time: 25, intensity: 55, label: "First Murder", color: "#b91c1c" },
@@ -184,17 +161,12 @@ export const COMPLETE_MOVIE_DATA = {
         awards: ["Saturn Award", "Critical Acclaim"] 
     }),
 
+    // 5. Prisoners
     146233: createMovieData({ 
-        suspenseIntensity: 93, 
-        complexityLevel: "HIGH", 
-        dominantColor: "#2d4a5c", 
-        rating: 8.1, 
-        criticsScore: 81, 
-        audienceScore: 89, 
-        director: "Denis Villeneuve", 
-        cast: ["Hugh Jackman", "Jake Gyllenhaal", "Paul Dano"], 
-        boxOffice: "$122 million", 
-        budget: "$46 million", 
+        crimeIntensity: 93, psychologicalTension: 97, visceralImpact: 88, complexityLevel: "HIGH", 
+        dominantColor: "#2d4a5c", rating: 8.1, criticsScore: 81, audienceScore: 89, 
+        director: "Denis Villeneuve", cast: ["Hugh Jackman", "Jake Gyllenhaal", "Paul Dano"], 
+        boxOffice: "$122 million", budget: "$46 million", 
         dna: { Crime: 45, Thriller: 40, Drama: 15 }, 
         scenes: [
             { time: 18, intensity: 62, label: "Disappearance", color: "#b91c1c" },
@@ -208,17 +180,12 @@ export const COMPLETE_MOVIE_DATA = {
         awards: ["Academy Award Nomination", "Critics Choice"] 
     }),
 
+    // 6. The Usual Suspects
     629: createMovieData({ 
-        suspenseIntensity: 97, 
-        complexityLevel: "EXTREME", 
-        dominantColor: "#2a3a4f", 
-        rating: 8.5, 
-        criticsScore: 88, 
-        audienceScore: 94, 
-        director: "Bryan Singer", 
-        cast: ["Kevin Spacey", "Gabriel Byrne", "Benicio del Toro"], 
-        boxOffice: "$23.3 million", 
-        budget: "$6 million", 
+        crimeIntensity: 85, psychologicalTension: 90, visceralImpact: 70, complexityLevel: "EXTREME", 
+        dominantColor: "#2a3a4f", rating: 8.5, criticsScore: 88, audienceScore: 94, 
+        director: "Bryan Singer", cast: ["Kevin Spacey", "Gabriel Byrne", "Benicio del Toro"], 
+        boxOffice: "$23.3 million", budget: "$6 million", 
         dna: { Crime: 50, Mystery: 40, Thriller: 10 }, 
         scenes: [
             { time: 15, intensity: 45, label: "The Lineup", color: "#b91c1c" },
@@ -232,17 +199,12 @@ export const COMPLETE_MOVIE_DATA = {
         awards: ["Academy Award Winner", "2 Oscars"] 
     }),
 
+    // 7. Mystic River
     322: createMovieData({ 
-        suspenseIntensity: 89, 
-        complexityLevel: "HIGH", 
-        dominantColor: "#3d4f5c", 
-        rating: 7.9, 
-        criticsScore: 87, 
-        audienceScore: 91, 
-        director: "Clint Eastwood", 
-        cast: ["Sean Penn", "Tim Robbins", "Kevin Bacon"], 
-        boxOffice: "$156.8 million", 
-        budget: "$30 million", 
+        crimeIntensity: 89, psychologicalTension: 92, visceralImpact: 85, complexityLevel: "HIGH", 
+        dominantColor: "#3d4f5c", rating: 7.9, criticsScore: 87, audienceScore: 91, 
+        director: "Clint Eastwood", cast: ["Sean Penn", "Tim Robbins", "Kevin Bacon"], 
+        boxOffice: "$156.8 million", budget: "$30 million", 
         dna: { Crime: 40, Drama: 45, Mystery: 15 }, 
         scenes: [
             { time: 22, intensity: 58, label: "Childhood Trauma", color: "#b91c1c" },
@@ -256,17 +218,12 @@ export const COMPLETE_MOVIE_DATA = {
         awards: ["Academy Award Winner", "2 Oscars"] 
     }),
 
+    // 8. Memories of Murder
     11423: createMovieData({ 
-        suspenseIntensity: 91, 
-        complexityLevel: "HIGH", 
-        dominantColor: "#556b2f", 
-        rating: 8.1, 
-        criticsScore: 82, 
-        audienceScore: 88, 
-        director: "Bong Joon-ho", 
-        cast: ["Song Kang-ho", "Kim Sang-kyung", "Kim Roi-ha"], 
-        boxOffice: "$1.2 million", 
-        budget: "$2.8 million", 
+        crimeIntensity: 91, psychologicalTension: 94, visceralImpact: 88, complexityLevel: "HIGH", 
+        dominantColor: "#556b2f", rating: 8.1, criticsScore: 82, audienceScore: 88, 
+        director: "Bong Joon-ho", cast: ["Song Kang-ho", "Kim Sang-kyung", "Kim Roi-ha"], 
+        boxOffice: "$1.2 million", budget: "$2.8 million", 
         dna: { Crime: 50, Mystery: 30, Drama: 20 }, 
         scenes: [
             { time: 18, intensity: 60, label: "First Murder", color: "#b91c1c" },
@@ -280,17 +237,12 @@ export const COMPLETE_MOVIE_DATA = {
         awards: ["Blue Dragon Film Awards", "International Acclaim"] 
     }),
 
+    // 9. The Departed
     1422: createMovieData({ 
-        suspenseIntensity: 94, 
-        complexityLevel: "HIGH", 
-        dominantColor: "#4a5568", 
-        rating: 8.5, 
-        criticsScore: 90, 
-        audienceScore: 94, 
-        director: "Martin Scorsese", 
-        cast: ["Leonardo DiCaprio", "Matt Damon", "Jack Nicholson"], 
-        boxOffice: "$291.5 million", 
-        budget: "$90 million", 
+        crimeIntensity: 94, psychologicalTension: 90, visceralImpact: 92, complexityLevel: "HIGH", 
+        dominantColor: "#4a5568", rating: 8.5, criticsScore: 90, audienceScore: 94, 
+        director: "Martin Scorsese", cast: ["Leonardo DiCaprio", "Matt Damon", "Jack Nicholson"], 
+        boxOffice: "$291.5 million", budget: "$90 million", 
         dna: { Crime: 50, Thriller: 35, Drama: 15 }, 
         scenes: [
             { time: 28, intensity: 62, label: "Double Life", color: "#b91c1c" },
@@ -304,17 +256,12 @@ export const COMPLETE_MOVIE_DATA = {
         awards: ["Academy Award Winner", "4 Oscars including Best Picture"] 
     }),
 
+    // 10. Training Day
     2034: createMovieData({ 
-        suspenseIntensity: 88, 
-        complexityLevel: "MEDIUM", 
-        dominantColor: "#6b4423", 
-        rating: 7.8, 
-        criticsScore: 73, 
-        audienceScore: 87, 
-        director: "Antoine Fuqua", 
-        cast: ["Denzel Washington", "Ethan Hawke", "Scott Glenn"], 
-        boxOffice: "$104.9 million", 
-        budget: "$45 million", 
+        crimeIntensity: 88, psychologicalTension: 85, visceralImpact: 80, complexityLevel: "MEDIUM", 
+        dominantColor: "#6b4423", rating: 7.8, criticsScore: 73, audienceScore: 87, 
+        director: "Antoine Fuqua", cast: ["Denzel Washington", "Ethan Hawke", "Scott Glenn"], 
+        boxOffice: "$104.9 million", budget: "$45 million", 
         dna: { Crime: 45, Thriller: 35, Drama: 20 }, 
         scenes: [
             { time: 18, intensity: 55, label: "First Day", color: "#b91c1c" },

@@ -8,7 +8,6 @@ export const TMDB_CONFIG = {
 };
 
 export const COMPLETE_MOVIE_DATABASE = [
-
     { tmdbId: 290098, imdbID: 'tt4016934', Title: 'The Handmaiden', year: 2016, genre: 'Thriller', runtime: 145, rank: 1},
     { tmdbId: 491584, imdbID: 'tt7282468', Title: 'Burning', year: 2018, genre: 'Mystery', runtime: 148, rank: 2 },
     { tmdbId: 110415, imdbID: 'tt1706620', Title: 'Snowpiercer', year: 2013, genre: 'Sci-Fi', runtime: 126, rank: 3 },
@@ -17,22 +16,20 @@ export const COMPLETE_MOVIE_DATABASE = [
     { tmdbId: 619264, imdbID: 'tt8228288', Title: 'The Platform', year: 2019, genre: 'Sci-Fi', runtime: 94, rank: 6 },
     { tmdbId: 44865, imdbID: 'tt1216496', Title: 'Mother', year: 2009, genre: 'Thriller', runtime: 129, rank: 7 },
     { tmdbId: 326359, imdbID: 'tt5715874', Title: 'The Killing of a Sacred Deer', year: 2017, genre: 'Thriller', runtime: 121, rank: 8 },
-   { tmdbId: 42506, imdbID: 'tt0150980', Title: 'The Housemaid', year: 1960, genre: 'Thriller', runtime: 108, rank: 9 },
-
+    { tmdbId: 42506, imdbID: 'tt0150980', Title: 'The Housemaid', year: 1960, genre: 'Thriller', runtime: 108, rank: 9 },
     { tmdbId: 1213, imdbID: 'tt0134119', Title: 'The Talented Mr. Ripley', year: 1999, genre: 'Thriller', runtime: 139, rank: 10 }
 ];
 
-const createMovieData = (data) => data;
-
-const timeToSeconds = (timeStr) => {
-    const parts = timeStr.split(':').map(Number);
-    if (parts.length === 3) return parts[0] * 3600 + parts[1] * 60 + parts[2];
-    if (parts.length === 2) return parts[0] * 60 + parts[1];
-    return 0;
-};
+// Helper function to ensure defaults
+const createMovieData = (data) => ({
+    classWarfareIndex: 80,
+    thrillerElements: 80, // ✅ ADDED DEFAULT
+    complexityLevel: 'HIGH',
+    dominantColor: '#000000',
+    ...data,
+});
 
 export const SENSITIVE_TIMELINES = {
-    496243: { scenes: [{ start: '0:57:20', end: '0:57:35', type: 'Kissing', severity: 'Mild' }, { start: '1:38:45', end: '1:39:10', type: 'Implied sex', severity: 'Moderate' }] },
     290098: { scenes: [{ start: '0:35:20', end: '0:36:45', type: 'Sex scene', severity: 'Strong', description: 'Explicit lesbian scene' }, { start: '1:42:10', end: '1:43:30', type: 'Sex scene', severity: 'Strong' }, { start: '2:04:15', end: '2:05:20', type: 'Nudity', severity: 'Strong' }] },
     491584: { scenes: [{ start: '1:58:40', end: '1:59:15', type: 'Nudity', severity: 'Moderate', description: 'Female topless' }] },
     110415: { scenes: [] },
@@ -46,7 +43,6 @@ export const SENSITIVE_TIMELINES = {
 };
 
 export const FALLBACK_POSTERS = {
-    496243: 'https://m.media-amazon.com/images/M/MV5BZWFlYmRiNTEtNjQ1Ny00YzQ4LWFkNDMtNzc0MjExNDdhYjlmXkEyXkFqcGdeQXVyNzAwMjU2MTY@._V1_SX500.jpg',
     290098: 'https://m.media-amazon.com/images/M/MV5BNDJhYTk2MTctZmVmOS00OTViLTgxNjQtMzQxOTRiMDdmNGRjXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX500.jpg',
     491584: 'https://m.media-amazon.com/images/M/MV5BMTQ5MzkzNTkwMl5BMl5BanBnXkFtZTgwMjE2MjA0NjM@._V1_SX500.jpg',
     110415: 'https://m.media-amazon.com/images/M/MV5BMTQ3NzUzOTc5MV5BMl5BanBnXkFtZTgwMzE2ODg1MDE@._V1_SX500.jpg',
@@ -60,25 +56,9 @@ export const FALLBACK_POSTERS = {
 };
 
 export const COMPLETE_MOVIE_DATA = {
-    496243: createMovieData({
-        classWarfareIndex: 100, complexityLevel: 'MASTERPIECE', dominantColor: '#1e293b',
-        rating: 8.5, criticsScore: 98, audienceScore: 93,
-        director: 'Bong Joon Ho', cast: ['Song Kang-ho', 'Lee Sun-kyun', 'Cho Yeo-jeong'],
-        boxOffice: '$258.8 million', budget: '$11.4 million',
-        dna: { Thriller: 50, Drama: 30, 'Dark Comedy': 20 },
-        scenes: [
-            { time: 15, intensity: 30, label: 'Infiltration', color: '#1e293b' },
-            { time: 40, intensity: 55, label: 'Deception', color: '#334155' },
-            { time: 70, intensity: 45, label: 'Feast', color: '#475569' },
-            { time: 95, intensity: 75, label: 'Revelation', color: '#64748b' },
-            { time: 125, intensity: 95, label: 'Chaos', color: '#94a3b8' }
-        ],
-        synopsis: 'The Kim family—unemployed, desperate, and living in a squalid semi-basement—sees an opportunity when son Ki-woo is hired to tutor the daughter of the wealthy Park family. One by one, the Kims infiltrate the Park household, posing as unrelated professionals. But their con spirals out of control when they discover they aren\'t the only ones with secrets hiding in the shadows. Bong Joon Ho\'s Palme d\'Or and Oscar-winning masterpiece is a razor-sharp dissection of class inequality, where dark comedy collides with shocking violence.',
-        themes: ['Class Inequality', 'Capitalism', 'Family', 'Deception'],
-        awards: ['Academy Award Winner (Best Picture)', 'Palme d\'Or Winner', 'BAFTA Winner']
-    }),
+    // 2. The Handmaiden
     290098: createMovieData({
-        classWarfareIndex: 85, complexityLevel: 'HIGH', dominantColor: '#be185d',
+        classWarfareIndex: 85, thrillerElements: 90, complexityLevel: 'HIGH', dominantColor: '#be185d',
         rating: 8.1, criticsScore: 95, audienceScore: 89,
         director: 'Park Chan-wook', cast: ['Kim Min-hee', 'Kim Tae-ri', 'Ha Jung-woo'],
         boxOffice: '$37.8 million', budget: '$8.8 million',
@@ -94,8 +74,10 @@ export const COMPLETE_MOVIE_DATA = {
         themes: ['Deception', 'Female Agency', 'Colonialism', 'Forbidden Love'],
         awards: ['BAFTA Winner', 'Cannes Official Selection']
     }),
+
+    // 3. Burning
     491584: createMovieData({
-        classWarfareIndex: 80, complexityLevel: 'HIGH', dominantColor: '#dc2626',
+        classWarfareIndex: 80, thrillerElements: 75, complexityLevel: 'HIGH', dominantColor: '#dc2626',
         rating: 7.5, criticsScore: 94, audienceScore: 72,
         director: 'Lee Chang-dong', cast: ['Yoo Ah-in', 'Steven Yeun', 'Jeon Jong-seo'],
         boxOffice: '$7.1 million', budget: '$5.5 million',
@@ -111,8 +93,10 @@ export const COMPLETE_MOVIE_DATA = {
         themes: ['Class Resentment', 'Obsession', 'Mystery', 'Alienation'],
         awards: ['Cannes Official Selection', 'Critics Choice Award']
     }),
+
+    // 4. Snowpiercer
     110415: createMovieData({
-        classWarfareIndex: 95, complexityLevel: 'EXTREME', dominantColor: '#0f172a',
+        classWarfareIndex: 95, thrillerElements: 85, complexityLevel: 'EXTREME', dominantColor: '#0f172a',
         rating: 7.1, criticsScore: 95, audienceScore: 72,
         director: 'Bong Joon Ho', cast: ['Chris Evans', 'Song Kang-ho', 'Tilda Swinton'],
         boxOffice: '$86.8 million', budget: '$40 million',
@@ -128,8 +112,10 @@ export const COMPLETE_MOVIE_DATA = {
         themes: ['Class System', 'Revolution', 'Dystopia', 'Survival'],
         awards: ['Grand Bell Awards', 'Blue Dragon Film Awards']
     }),
+
+    // 5. Memories of Murder
     11423: createMovieData({
-        classWarfareIndex: 70, complexityLevel: 'HIGH', dominantColor: '#422006',
+        classWarfareIndex: 70, thrillerElements: 90, complexityLevel: 'HIGH', dominantColor: '#422006',
         rating: 8.1, criticsScore: 99, audienceScore: 94,
         director: 'Bong Joon Ho', cast: ['Song Kang-ho', 'Kim Sang-kyung', 'Kim Roi-ha'],
         boxOffice: '$1.2 million', budget: '$2.8 million',
@@ -141,16 +127,18 @@ export const COMPLETE_MOVIE_DATA = {
             { time: 110, intensity: 80, label: 'Breakthrough', color: '#b45309' },
             { time: 128, intensity: 90, label: 'Haunting End', color: '#d97706' }
         ],
-        synopsis: 'In 1986 South Korea—under military dictatorship with no forensic infrastructure—a serial killer terrorizes a rural province. Two detectives struggle with science they don\'t have and justice the system won\'t allow. Bong Joon Ho\'s masterpiece explores institutional failure and class injustice.',
+        synopsis: 'In 1986 South Korea, a serial killer terrorizes a rural province. Two detectives struggle with science they don\'t have and justice the system won\'t allow. Bong Joon Ho\'s masterpiece explores institutional failure and class injustice.',
         themes: ['Institutional Failure', 'Justice Denied', 'Class Injustice', 'Authoritarianism'],
         awards: ['Asian Film Awards', 'Blue Dragon Film Awards']
     }),
+
+    // 6. Shoplifters
     505192: createMovieData({
-        classWarfareIndex: 75, complexityLevel: 'MEDIUM', dominantColor: '#0369a1',
+        classWarfareIndex: 75, thrillerElements: 40, complexityLevel: 'MEDIUM', dominantColor: '#0369a1',
         rating: 7.9, criticsScore: 99, audienceScore: 91,
         director: 'Hirokazu Kore-eda', cast: ['Lily Franky', 'Sakura Ando', 'Mayu Matsuoka'],
         boxOffice: '$68.2 million', budget: '$8.2 million',
-        dna: { Drama: 70, Family: 25, 'Social Commentary': 5 },
+        dna: { Drama: 70, Family: 25, Crime: 5 },
         scenes: [
             { time: 15, intensity: 20, label: 'Family Life', color: '#0369a1' },
             { time: 40, intensity: 35, label: 'Yuri Arrives', color: '#0284c7' },
@@ -158,12 +146,14 @@ export const COMPLETE_MOVIE_DATA = {
             { time: 95, intensity: 75, label: 'Discovery', color: '#38bdf8' },
             { time: 115, intensity: 85, label: 'Separation', color: '#7dd3fc' }
         ],
-        synopsis: 'On the margins of Tokyo, the Shibata family survives through petty shoplifting and low-wage work. When they take in an abused girl named Yuri, their fragile happiness grows—until authorities discover their secret. What defines a family? Kore-eda\'s Palme d\'Or winner is a devastating portrait of Japan\'s invisible underclass.',
+        synopsis: 'On the margins of Tokyo, the Shibata family survives through petty shoplifting. When they take in an abused girl named Yuri, their fragile happiness grows—until authorities discover their secret. Kore-eda\'s Palme d\'Or winner is a devastating portrait of Japan\'s invisible underclass.',
         themes: ['Chosen Family', 'Poverty', 'Social Invisibility', 'Love vs Law'],
         awards: ['Palme d\'Or Winner', 'Academy Award Nomination']
     }),
+
+    // 7. The Platform
     619264: createMovieData({
-        classWarfareIndex: 92, complexityLevel: 'EXTREME', dominantColor: '#57534e',
+        classWarfareIndex: 92, thrillerElements: 88, complexityLevel: 'EXTREME', dominantColor: '#57534e',
         rating: 7.0, criticsScore: 80, audienceScore: 73,
         director: 'Galder Gaztelu-Urrutia', cast: ['Iván Massagué', 'Zorion Eguileor', 'Antonia San Juan'],
         boxOffice: '$6.3 million', budget: '$4 million',
@@ -175,12 +165,14 @@ export const COMPLETE_MOVIE_DATA = {
             { time: 75, intensity: 90, label: 'Cannibalism', color: '#d6d3d1' },
             { time: 92, intensity: 85, label: 'Message', color: '#e7e5e4' }
         ],
-        synopsis: 'In a vertical prison where inmates are assigned random levels, a food platform descends daily—loaded at top, empty at bottom. Those above feast. Those below starve. This Spanish sci-fi nightmare is capitalism where sharing means dying and selfishness means survival.',
+        synopsis: 'In a vertical prison, a food platform descends daily—loaded at top, empty at bottom. Those above feast. Those below starve. This Spanish sci-fi nightmare is capitalism where sharing means dying and selfishness means survival.',
         themes: ['Capitalism', 'Resource Inequality', 'Human Nature', 'Survival Ethics'],
         awards: ['Goya Award Nomination', 'Sitges Film Festival Winner']
     }),
+
+    // 8. Mother
     44865: createMovieData({
-        classWarfareIndex: 65, complexityLevel: 'MEDIUM', dominantColor: '#1e3a8a',
+        classWarfareIndex: 65, thrillerElements: 85, complexityLevel: 'MEDIUM', dominantColor: '#1e3a8a',
         rating: 7.8, criticsScore: 89, audienceScore: 85,
         director: 'Bong Joon Ho', cast: ['Kim Hye-ja', 'Won Bin', 'Jin Goo'],
         boxOffice: '$14.8 million', budget: '$5 million',
@@ -196,8 +188,10 @@ export const COMPLETE_MOVIE_DATA = {
         themes: ['Maternal Obsession', 'Justice vs Love', 'Class Prejudice', 'Moral Ambiguity'],
         awards: ['Asian Film Awards', 'Blue Dragon Film Awards']
     }),
+
+    // 9. The Killing of a Sacred Deer
     326359: createMovieData({
-        classWarfareIndex: 60, complexityLevel: 'HIGH', dominantColor: '#164e63',
+        classWarfareIndex: 60, thrillerElements: 92, complexityLevel: 'HIGH', dominantColor: '#164e63',
         rating: 7.0, criticsScore: 79, audienceScore: 58,
         director: 'Yorgos Lanthimos', cast: ['Colin Farrell', 'Nicole Kidman', 'Barry Keoghan'],
         boxOffice: '$6.9 million', budget: '$6 million',
@@ -209,16 +203,18 @@ export const COMPLETE_MOVIE_DATA = {
             { time: 100, intensity: 85, label: 'Choice', color: '#22d3ee' },
             { time: 118, intensity: 90, label: 'Punishment', color: '#67e8f9' }
         ],
-        synopsis: 'Cardiac surgeon Steven lives a perfect upper-class life until mysterious teenager Martin enters their world. Martin demands a horrifying sacrifice. Lanthimos\'s icy thriller is Greek tragedy as psychological horror where rationality collapses and moral choices become impossible.',
+        synopsis: 'Cardiac surgeon Steven lives a perfect upper-class life until mysterious teenager Martin enters their world. Martin demands a horrifying sacrifice. Lanthimos\'s icy thriller is Greek tragedy as psychological horror.',
         themes: ['Revenge', 'Moral Punishment', 'Class Guilt', 'Greek Tragedy'],
         awards: ['Cannes Best Screenplay', 'European Film Award']
     }),
-   42506: createMovieData({
-        classWarfareIndex: 88, complexityLevel: 'HIGH', dominantColor: '#7c2d12',
+
+    // 10. The Housemaid
+    42506: createMovieData({
+        classWarfareIndex: 88, thrillerElements: 80, complexityLevel: 'HIGH', dominantColor: '#7c2d12',
         rating: 6.4, criticsScore: 77, audienceScore: 62,
         director: 'Im Sang-soo', cast: ['Jeon Do-yeon', 'Lee Jung-jae', 'Youn Yuh-jung'],
         boxOffice: '$7.7 million', budget: '$3 million',
-        dna: { Thriller: 60, Drama: 30, Erotic: 10 },
+        dna: { Thriller: 60, Drama: 30, Romance: 10 },
         scenes: [
             { time: 15, intensity: 30, label: 'Hired', color: '#7c2d12' },
             { time: 45, intensity: 60, label: 'Seduction', color: '#991b1b' },
@@ -226,12 +222,14 @@ export const COMPLETE_MOVIE_DATA = {
             { time: 95, intensity: 85, label: 'Manipulation', color: '#dc2626' },
             { time: 105, intensity: 95, label: 'Destruction', color: '#ef4444' }
         ],
-        synopsis: 'Eun-yi is hired as a housemaid for a wealthy family. When the husband seduces her and she becomes pregnant, the family\'s facade shatters. Im Sang-soo\'s erotic thriller exposes the violence lurking beneath wealth. This is class as sexual exploitation.',
+        synopsis: 'Eun-yi is hired as a housemaid for a wealthy family. When the husband seduces her and she becomes pregnant, the family\'s facade shatters. Im Sang-soo\'s erotic thriller exposes the violence lurking beneath wealth.',
         themes: ['Class Exploitation', 'Sexual Power', 'Revenge', 'Wealth\'s Cruelty'],
         awards: ['Cannes Official Selection', 'Asian Film Award Nomination']
     }),
+
+    // 11. The Talented Mr. Ripley
     1213: createMovieData({
-        classWarfareIndex: 78, complexityLevel: 'HIGH', dominantColor: '#083344',
+        classWarfareIndex: 78, thrillerElements: 90, complexityLevel: 'HIGH', dominantColor: '#083344',
         rating: 7.4, criticsScore: 84, audienceScore: 87,
         director: 'Anthony Minghella', cast: ['Matt Damon', 'Jude Law', 'Gwyneth Paltrow'],
         boxOffice: '$128.8 million', budget: '$40 million',
@@ -243,7 +241,7 @@ export const COMPLETE_MOVIE_DATA = {
             { time: 115, intensity: 85, label: 'Impersonation', color: '#0284c7' },
             { time: 135, intensity: 90, label: 'Paranoia', color: '#0ea5e9' }
         ],
-        synopsis: 'Tom Ripley is sent to Italy to retrieve wealthy playboy Dickie Greenleaf. But Tom doesn\'t want to return him—he wants to become him. Envious of Dickie\'s charm and privilege, Tom murders him and assumes his identity. Minghella\'s thriller reveals class envy as existential crisis.',
+        synopsis: 'Tom Ripley is sent to Italy to retrieve wealthy playboy Dickie Greenleaf. But Tom doesn\'t want to return him—he wants to become him. Envious of Dickie\'s charm and privilege, Tom murders him and assumes his identity.',
         themes: ['Class Envy', 'Identity Theft', 'Obsession', 'Moral Decay'],
         awards: ['Academy Award Nominations', 'BAFTA Nominations']
     })
@@ -259,7 +257,7 @@ export const STRATEGIC_QUOTES = {
     619264: 'There are three kinds of people: those above, those below, and those who fall',
     44865: 'Who cares if I\'m smart or stupid as long as I\'m better than him?',
     326359: 'A surgeon never apologizes',
-   42506: 'I\'m going to destroy your family',
+    42506: 'I\'m going to destroy your family',
     1213: 'I always thought it would be better to be a fake somebody than a real nobody'
 };
 
@@ -504,17 +502,30 @@ export const generateMovieSchema = (movie) => {
         'actor': movieInfo?.cast?.map(actor => ({ '@type': 'Person', 'name': actor })) || [],
         'duration': `PT${movie.runtime}M`,
         'image': posterUrl,
-        'aggregateRating': { '@type': 'AggregateRating', 'ratingValue': movieInfo?.rating || 7.5, 'bestRating': 10, 'worstRating': 1, 'ratingCount': movieInfo?.audienceScore || 100 }
+        'aggregateRating': { 
+            '@type': 'AggregateRating', 
+            'ratingValue': movieInfo?.rating || 7.5, 
+            'bestRating': 10, 
+            'worstRating': 1, 
+            'ratingCount': movieInfo?.audienceScore || 100 
+        }
     };
 };
 
 export const generateFAQSchema = (faqs) => ({
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    'mainEntity': faqs.map(faq => ({ '@type': 'Question', 'name': faq.question, 'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer } }))
+    'mainEntity': faqs.map(faq => ({ 
+        '@type': 'Question', 
+        'name': faq.question, 
+        'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer } 
+    }))
 });
 
-export const fetchMovieFromTMDB = async (tmdbId) => ({ poster_path: null, title: COMPLETE_MOVIE_DATABASE.find(m => m.tmdbId === tmdbId)?.Title || 'Unknown Movie' });
+export const fetchMovieFromTMDB = async (tmdbId) => ({ 
+    poster_path: null, 
+    title: COMPLETE_MOVIE_DATABASE.find(m => m.tmdbId === tmdbId)?.Title || 'Unknown Movie' 
+});
 
 export const fetchWatchProviders = async (tmdbId, region = 'US') => null;
 

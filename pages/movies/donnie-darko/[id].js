@@ -50,6 +50,42 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
 
   useEffect(() => { setMounted(true); }, []);
 
+
+
+const MOVIE_DATA_BY_TITLE = {
+  'The Butterfly Effect': { 
+    connection: 'The definitive companion to Donnie Darko: both explore how a single, seemingly insignificant childhood moment can create a cascading ripple of tragedy across parallel timelines.' 
+  },
+  '12 Monkeys': { 
+    connection: 'Like Donnie, the protagonist here is haunted by premonitions of the future, trapped in a fatalistic time loop where every attempt to prevent a disaster only ensures its occurrence.' 
+  },
+  'The Jacket': { 
+    connection: 'A psychological bridge between time travel and mental institutionalization; it captures that specific, cold feeling of being an observer of your own life from a different point in time.' 
+  },
+  'Open Your Eyes': { 
+    connection: 'Before Vanilla Sky, this original masterpiece blurred the lines between dreams, cryonics, and waking reality, questioning if the world we see is merely a cognitive construct.' 
+  },
+  'Coherence': { 
+    connection: 'A masterclass in quantum-physics horror. It shares Donnie Darko’s "Tangent Universe" concept, showing how a passing celestial event can cause the walls between alternate realities to collapse.' 
+  },
+  'Jacob\'s Ladder': { 
+    connection: 'The spiritual father of psychological mind-bends. It explores the terrifying transition between life and death through surreal, demonic hallucinations that mirror Donnie’s own visions.' 
+  },
+  'Dark City': { 
+    connection: 'A visual and philosophical twin to the Darko atmosphere, where the reality of the city is surgically altered every night, leaving the protagonist to question the origin of his memories.' 
+  },
+  'Mulholland Drive': { 
+    connection: 'Lynch’s masterpiece shatters identity in the same way Donnie Darko shatters time, forcing the viewer to piece together a puzzle where the pieces belong to two different versions of the same person.' 
+  },
+  'Eternal Sunshine of the Spotless Mind': { 
+    connection: 'While more romantic, it shares the "erased timeline" sorrow. It explores the brain’s architecture as a physical space where memories can be hunted and lost, much like Donnie’s manipulated path.' 
+  },
+  'Enemy': { 
+    connection: 'A suffocating exploration of the "Double." Like the appearance of Frank in Donnie Darko, Enemy uses surreal symbolism to show a man’s internal subconscious war becoming a literal, physical nightmare.' 
+  }
+};
+
+
   const mobileHeroCSS = `
   @media (max-width: 767px) {
     .mobile-hero-row { display: flex; flex-direction: row; align-items: flex-start; width: 100vw; max-width: 100vw; gap: 10px; margin: 0; padding: 0 8px; }

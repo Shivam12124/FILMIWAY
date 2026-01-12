@@ -1,325 +1,338 @@
-// utils/revengeMovieData.js - TOP 10 REVENGE MOVIES OF ALL TIME 🔥🗡️
+// utils/revengeMovieData.js - COMPLETE REVENGE COLLECTION
+// Focused on visceral impact, moral complexity, and the cost of vengeance.
 
-export const REVENGE_MOVIES = [
-  {
-    imdbID: 'tt0364569',
-    tmdbId: 670,
-    title: 'Oldboy',
-    director: 'Park Chan-wook',
-    genre: 'Action, Drama, Mystery',
-    year: 2003,
-    runtime: '120 min',
-    ageRating: 'R',
-    rating: 8.3,
-    cast: ['Choi Min-sik', 'Yoo Ji-tae', 'Kang Hye-jeong'],
-    boxOffice: '$17.6 million',
-    budget: '$3 million',
-    synopsis: "Oh Dae-su, an ordinary salary man, is inexplicably kidnapped and imprisoned in a sealed, windowless hotel room for fifteen brutal years with no explanation. When he's suddenly released without warning, he emerges with one singular, all-consuming obsession: to discover who imprisoned him and why. What begins as a straightforward quest for vengeance spirals into a nightmarish, intensely disturbing mystery with one of cinema's most shocking, devastating revelations.",
-    poster: '/path/to/oldboy-poster.jpg',
-    backdrop: '/path/to/oldboy-backdrop.jpg',
-    backdrop_path: '/path/to/oldboy-backdrop.jpg',
-    poster_path: '/path/to/oldboy-poster.jpg',
-    scenes: [
-      { time: 8, intensity: 45, label: 'Abduction', color: '#2c3e50' },
-      { time: 42, intensity: 62, label: 'Release', color: '#34495e' },
-      { time: 68, intensity: 89, label: 'Corridor Fight', color: '#c0392b' },
-      { time: 95, intensity: 76, label: 'Restaurant Revelation', color: '#e74c3c' },
-      { time: 115, intensity: 99, label: 'The Truth', color: '#7f8c8d' }
-    ],
-    revengeIntensity: 99,
-    dominantColor: '#2c3e50',
-    dna: { Mystery: 40, Thriller: 35, Action: 25 },
-    sensitiveScenes: [
-      { start: "23:45", end: "25:12", description: "Sexual content" },
-      { start: "1:15:20", end: "1:17:45", description: "Disturbing incestuous revelation" },
-      { start: "1:45:30", end: "1:47:00", description: "Intense violence and torture" }
-    ]
-  },
-  {
-    imdbID: 'tt0172495',
-    tmdbId: 98,
-    title: 'Gladiator',
-    director: 'Ridley Scott',
-    genre: 'Action, Adventure, Drama',
-    year: 2000,
-    runtime: '155 min',
-    ageRating: 'R',
-    rating: 8.5,
-    cast: ['Russell Crowe', 'Joaquin Phoenix', 'Connie Nielsen'],
-    boxOffice: '$465.4 million',
-    budget: '$103 million',
-    synopsis: "Maximus Decimus Meridius, Rome's most powerful and respected general, is betrayed by the corrupt, power-hungry prince Commodus, who murders Maximus' emperor-father and orders the execution of Maximus' family. Escaping death by the narrowest margin, Maximus is sold into slavery and forced to become a gladiator. Rising from the blood-soaked arenas of provincial Africa to the colossal Colosseum in Rome, he transforms from a broken slave into the people's champion, determined to exact brutal, public vengeance on the emperor who destroyed everything he loved.",
-    poster: '/path/to/gladiator-poster.jpg',
-    backdrop: '/path/to/gladiator-backdrop.jpg',
-    backdrop_path: '/path/to/gladiator-backdrop.jpg',
-    poster_path: '/path/to/gladiator-poster.jpg',
-    scenes: [
-      { time: 18, intensity: 52, label: 'Germania Battle', color: '#8b4513' },
-      { time: 45, intensity: 78, label: 'Family Murdered', color: '#dc143c' },
-      { time: 92, intensity: 70, label: 'First Colosseum Fight', color: '#ff8c00' },
-      { time: 124, intensity: 88, label: 'Tiger Battle', color: '#ff4500' },
-      { time: 148, intensity: 97, label: 'Final Duel', color: '#8b0000' }
-    ],
-    revengeIntensity: 98,
-    dominantColor: '#8b4513',
-    dna: { Action: 45, Drama: 35, Epic: 20 },
-    sensitiveScenes: []
-  },
-  {
-    imdbID: 'tt0105695',
-    tmdbId: 33,
-    title: 'Unforgiven',
-    director: 'Clint Eastwood',
-    genre: 'Drama, Western',
-    year: 1992,
-    runtime: '130 min',
-    ageRating: 'R',
-    rating: 8.2,
-    cast: ['Clint Eastwood', 'Gene Hackman', 'Morgan Freeman'],
-    boxOffice: '$159.2 million',
-    budget: '$14.4 million',
-    synopsis: "William Munny, a once-notorious gunslinger turned peaceful pig farmer, is reluctantly pulled back into his violent past when a group of prostitutes offers a substantial bounty for killing two cowboys who brutally disfigured one of their own. Accompanied by his old partner Ned Logan and a young, naive gunslinger, Munny travels to the town of Big Whiskey, where he confronts the ruthless, sadistic sheriff Little Bill Daggett. This dark, morally complex Western strips away Hollywood myth to reveal the brutal, unglamorous reality of violence and the haunting toll revenge takes on the human soul.",
-    poster: '/path/to/unforgiven-poster.jpg',
-    backdrop: '/path/to/unforgiven-backdrop.jpg',
-    backdrop_path: '/path/to/unforgiven-backdrop.jpg',
-    poster_path: '/path/to/unforgiven-poster.jpg',
-    scenes: [
-      { time: 22, intensity: 38, label: 'The Proposition', color: '#8b7355' },
-      { time: 56, intensity: 52, label: 'Journey to Big Whiskey', color: '#a0522d' },
-      { time: 85, intensity: 68, label: 'Ned Captured', color: '#cd853f' },
-      { time: 108, intensity: 82, label: "Ned's Death", color: '#8b4513' },
-      { time: 124, intensity: 96, label: 'Saloon Showdown', color: '#2f4f4f' }
-    ],
-    revengeIntensity: 94,
-    dominantColor: '#8b7355',
-    dna: { Western: 50, Drama: 35, Action: 15 },
-    sensitiveScenes: []
-  },
-  {
-    imdbID: 'tt0112573',
-    tmdbId: 197,
-    title: 'Braveheart',
-    director: 'Mel Gibson',
-    genre: 'Biography, Drama, History',
-    year: 1995,
-    runtime: '178 min',
-    ageRating: 'R',
-    rating: 8.3,
-    cast: ['Mel Gibson', 'Sophie Marceau', 'Patrick McGoohan'],
-    boxOffice: '$213.2 million',
-    budget: '$72 million',
-    synopsis: "In late 13th-century Scotland, humble farmer William Wallace witnesses the brutal murder of his secret wife by English soldiers. Consumed by grief and rage, he transforms into a legendary warrior who unites the fractured Scottish clans to fight for freedom against the tyrannical rule of King Edward I of England. Leading a ragtag army of common men, Wallace ignites a rebellion that becomes a full-scale war for Scottish independence. This epic tale of courage, sacrifice, and vengeance follows one man's extraordinary fight against impossible odds.",
-    poster: '/path/to/braveheart-poster.jpg',
-    backdrop: '/path/to/braveheart-backdrop.jpg',
-    backdrop_path: '/path/to/braveheart-backdrop.jpg',
-    poster_path: '/path/to/braveheart-poster.jpg',
-    scenes: [
-      { time: 35, intensity: 62, label: "Murron's Murder", color: '#8b0000' },
-      { time: 58, intensity: 75, label: 'First Rebellion', color: '#228b22' },
-      { time: 95, intensity: 82, label: 'Battle of Stirling', color: '#4169e1' },
-      { time: 138, intensity: 88, label: 'Battle of Falkirk', color: '#dc143c' },
-      { time: 168, intensity: 97, label: 'Execution', color: '#2f4f4f' }
-    ],
-    revengeIntensity: 96,
-    dominantColor: '#228b22',
-    dna: { Epic: 45, War: 35, Drama: 20 },
-    sensitiveScenes: [
-      { start: "33:15", end: "34:45", description: "Graphic violence - throat slashing" },
-      { start: "2:45:30", end: "2:50:00", description: "Torture and execution scene" }
-    ]
-  },
-  {
-    imdbID: 'tt0482571',
-    tmdbId: 1124,
-    title: 'The Prestige',
-    director: 'Christopher Nolan',
-    genre: 'Drama, Mystery, Sci-Fi',
-    year: 2006,
-    runtime: '130 min',
-    ageRating: 'PG-13',
-    rating: 8.5,
-    cast: ['Christian Bale', 'Hugh Jackman', 'Scarlett Johansson'],
-    boxOffice: '$109.7 million',
-    budget: '$40 million',
-    synopsis: "In Victorian-era London, two talented stage magicians—Robert Angier and Alfred Borden—begin as friends and collaborators. But after a tragic accident during a performance kills Angier's wife, their relationship shatters into a bitter, all-consuming rivalry. Both men become obsessed with sabotaging each other's acts and discovering the secrets behind each other's greatest illusions. Their dangerous game of one-upmanship escalates to shocking extremes, with each willing to sacrifice everything—their careers, their loved ones, and ultimately their lives—to achieve the perfect trick and destroy the other.",
-    poster: '/path/to/prestige-poster.jpg',
-    backdrop: '/path/to/prestige-backdrop.jpg',
-    backdrop_path: '/path/to/prestige-backdrop.jpg',
-    poster_path: '/path/to/prestige-poster.jpg',
-    scenes: [
-      { time: 12, intensity: 58, label: 'The Drowning', color: '#2c3e50' },
-      { time: 42, intensity: 65, label: 'Diary Discovery', color: '#34495e' },
-      { time: 78, intensity: 74, label: 'Tesla Machine', color: '#4169e1' },
-      { time: 105, intensity: 88, label: 'The Transported Man', color: '#8a2be2' },
-      { time: 125, intensity: 97, label: 'The Final Prestige', color: '#191970' }
-    ],
-    revengeIntensity: 92,
-    dominantColor: '#2c3e50',
-    dna: { Mystery: 45, Drama: 35, Thriller: 20 },
-    sensitiveScenes: []
-  },
-  {
-    imdbID: 'tt1663202',
-    tmdbId: 281957,
-    title: 'The Revenant',
-    director: 'Alejandro G. Iñárritu',
-    genre: 'Action, Adventure, Drama',
-    year: 2015,
-    runtime: '156 min',
-    ageRating: 'R',
-    rating: 8.0,
-    cast: ['Leonardo DiCaprio', 'Tom Hardy', 'Will Poulter'],
-    boxOffice: '$533.0 million',
-    budget: '$135 million',
-    synopsis: "In the harsh, unforgiving wilderness of 1820s America, frontiersman Hugh Glass is mauled nearly to death by a grizzly bear during a fur trapping expedition. His companion, the treacherous John Fitzgerald, murders Glass's young son and leaves him for dead in the frozen landscape. Against all odds, Glass survives and embarks on an epic, grueling 200-mile journey of survival and revenge through brutal terrain, hostile elements, and indigenous conflicts to exact justice on the man who betrayed him.",
-    poster: '/path/to/revenant-poster.jpg',
-    backdrop: '/path/to/revenant-backdrop.jpg',
-    backdrop_path: '/path/to/revenant-backdrop.jpg',
-    poster_path: '/path/to/revenant-poster.jpg',
-    scenes: [
-      { time: 18, intensity: 72, label: 'Bear Attack', color: '#8b7355' },
-      { time: 42, intensity: 81, label: 'Son Murdered', color: '#a0522d' },
-      { time: 78, intensity: 68, label: 'River Escape', color: '#4682b4' },
-      { time: 118, intensity: 85, label: 'Village Massacre', color: '#8b0000' },
-      { time: 148, intensity: 94, label: 'Final Confrontation', color: '#2f4f4f' }
-    ],
-    revengeIntensity: 92,
-    dominantColor: '#8b7355',
-    dna: { Survival: 45, Drama: 35, Action: 20 },
-    sensitiveScenes: [
-      { start: "15:30", end: "18:45", description: "Graphic bear attack" },
-      { start: "1:38:20", end: "1:40:30", description: "Graphic violence" }
-    ]
-  },
-  {
-    imdbID: 'tt0378194',
-    tmdbId: 393,
-    title: 'Kill Bill: Vol. 2',
-    director: 'Quentin Tarantino',
-    genre: 'Action, Crime, Thriller',
-    year: 2004,
-    runtime: '137 min',
-    ageRating: 'R',
-    rating: 8.0,
-    cast: ['Uma Thurman', 'David Carradine', 'Michael Madsen'],
-    boxOffice: '$152.2 million',
-    budget: '$30 million',
-    synopsis: "The Bride continues her methodical quest of vengeance against the remaining members of the Deadly Viper Assassination Squad: the brutal, reclusive trailer-dwelling Budd and the treacherous, one-eyed California Mountain Snake, Elle Driver. Her journey culminates in a tense, emotional confrontation with Bill himself, the man she once loved and who orchestrated the massacre that nearly killed her and her unborn child. This volume completes her roaring rampage of revenge with psychological depth, shocking revelations, and a bittersweet reckoning.",
-    poster: '/path/to/killbill2-poster.jpg',
-    backdrop: '/path/to/killbill2-backdrop.jpg',
-    backdrop_path: '/path/to/killbill2-backdrop.jpg',
-    poster_path: '/path/to/killbill2-poster.jpg',
-    scenes: [
-      { time: 22, intensity: 62, label: 'Budd Betrayal', color: '#d4a574' },
-      { time: 48, intensity: 78, label: 'Buried Alive', color: '#8b4513' },
-      { time: 71, intensity: 83, label: 'Pai Mei Training', color: '#ffd700' },
-      { time: 99, intensity: 88, label: 'Elle Driver Fight', color: '#dc143c' },
-      { time: 129, intensity: 95, label: 'Bill Confrontation', color: '#2f4f4f' }
-    ],
-    revengeIntensity: 96,
-    dominantColor: '#d4a574',
-    dna: { Action: 45, Drama: 35, Thriller: 20 },
-    sensitiveScenes: []
-  },
-  {
-    imdbID: 'tt2911666',
-    tmdbId: 245891,
-    title: 'John Wick',
-    director: 'Chad Stahelski',
-    genre: 'Action, Crime, Thriller',
-    year: 2014,
-    runtime: '101 min',
-    ageRating: 'R',
-    rating: 7.4,
-    cast: ['Keanu Reeves', 'Michael Nyqvist', 'Alfie Allen'],
-    boxOffice: '$86.1 million',
-    budget: '$20 million',
-    synopsis: "John Wick, a legendary retired hitman living in peaceful mourning after his wife's death, is pulled violently back into the criminal underworld he left behind when a group of foolish Russian mobsters break into his home, steal his prized 1969 Mustang, and kill the puppy his late wife left him as a final gift. This seemingly small act ignites an unstoppable wave of vengeance as Wick systematically dismantles an entire criminal empire with brutal, balletic precision to punish those who took the last symbol of his wife's love.",
-    poster: '/path/to/johnwick-poster.jpg',
-    backdrop: '/path/to/johnwick-backdrop.jpg',
-    backdrop_path: '/path/to/johnwick-backdrop.jpg',
-    poster_path: '/path/to/johnwick-poster.jpg',
-    scenes: [
-      { time: 15, intensity: 68, label: 'Home Invasion', color: '#2c3e50' },
-      { time: 32, intensity: 75, label: 'Red Circle Assault', color: '#c0392b' },
-      { time: 58, intensity: 82, label: 'Church Shootout', color: '#e74c3c' },
-      { time: 78, intensity: 88, label: 'Nightclub Battle', color: '#dc143c' },
-      { time: 95, intensity: 94, label: 'Final Showdown', color: '#8b0000' }
-    ],
-    revengeIntensity: 95,
-    dominantColor: '#2c3e50',
-    dna: { Action: 70, Thriller: 20, Crime: 10 },
-    sensitiveScenes: []
-  },
-  {
-    imdbID: 'tt1588170',
-    tmdbId: 44222,
-    title: 'I Saw the Devil',
-    director: 'Kim Jee-woon',
-    genre: 'Action, Crime, Horror',
-    year: 2010,
-    runtime: '144 min',
-    ageRating: 'NR',
-    rating: 7.8,
-    cast: ['Lee Byung-hun', 'Choi Min-sik', 'Jeon Gook-hwan'],
-    boxOffice: '$13.0 million',
-    budget: '$6 million',
-    synopsis: "When a sadistic serial killer brutally murders his pregnant fiancée, elite special agent Soo-hyun embarks on a harrowing, personal vendetta that crosses every moral boundary. Rather than simply killing the monster, he chooses to torture him in the most psychologically devastating way possible: capturing him, brutalizing him, releasing him, and hunting him down again in an endless, vicious cycle. This is an unflinching, extraordinarily violent exploration of how the pursuit of revenge can transform a righteous man into the very evil he's hunting.",
-    poster: '/path/to/isawthedevil-poster.jpg',
-    backdrop: '/path/to/isawthedevil-backdrop.jpg',
-    backdrop_path: '/path/to/isawthedevil-backdrop.jpg',
-    poster_path: '/path/to/isawthedevil-poster.jpg',
-    scenes: [
-      { time: 8, intensity: 68, label: 'Brutal Murder', color: '#8b0000' },
-      { time: 42, intensity: 77, label: 'First Capture', color: '#b22222' },
-      { time: 78, intensity: 86, label: 'Taxi Slaughter', color: '#dc143c' },
-      { time: 112, intensity: 91, label: 'Greenhouse Torture', color: '#ff0000' },
-      { time: 138, intensity: 98, label: 'Final Reckoning', color: '#4b0000' }
-    ],
-    revengeIntensity: 99,
-    dominantColor: '#8b0000',
-    dna: { Thriller: 45, Horror: 35, Action: 20 },
-    sensitiveScenes: [
-      { start: "3:45", end: "7:30", description: "Graphic violence and sexual assault" },
-      { start: "45:20", end: "47:15", description: "Extreme torture and violence" },
-      { start: "1:18:30", end: "1:22:00", description: "Graphic murder sequence" }
-    ]
-  },
-  {
-    imdbID: 'tt0245844',
-    tmdbId: 11362,
-    title: 'The Count of Monte Cristo',
-    director: 'Kevin Reynolds',
-    genre: 'Action, Adventure, Drama',
-    year: 2002,
-    runtime: '131 min',
-    ageRating: 'PG-13',
-    rating: 7.7,
-    cast: ['Jim Caviezel', 'Guy Pearce', 'Richard Harris'],
-    boxOffice: '$75.4 million',
-    budget: '$35 million',
-    synopsis: "In 1815, naive young sailor Edmond Dantès is on the cusp of marrying the love of his life and earning a prestigious captaincy. But his envious best friend Fernand Mondego and scheming colleague Danglars falsely accuse him of treason, condemning him to rot in the nightmarish island prison fortress of Château d'If. After fourteen years, Dantès escapes, discovers an unimaginable hidden fortune, and transforms himself into the wealthy, mysterious Count of Monte Cristo. He returns to exact meticulous, devastating revenge on every person who destroyed his life.",
-    poster: '/path/to/monte-cristo-poster.jpg',
-    backdrop: '/path/to/monte-cristo-backdrop.jpg',
-    backdrop_path: '/path/to/monte-cristo-backdrop.jpg',
-    poster_path: '/path/to/monte-cristo-poster.jpg',
-    scenes: [
-      { time: 15, intensity: 48, label: 'Betrayal', color: '#34495e' },
-      { time: 38, intensity: 55, label: 'Prison Years', color: '#2c3e50' },
-      { time: 62, intensity: 68, label: 'Escape & Treasure', color: '#f39c12' },
-      { time: 95, intensity: 82, label: 'Systematic Revenge', color: '#e67e22' },
-      { time: 125, intensity: 94, label: 'Final Confrontation', color: '#c0392b' }
-    ],
-    revengeIntensity: 95,
-    dominantColor: '#2c3e50',
-    dna: { Adventure: 40, Drama: 35, Action: 25 },
-    sensitiveScenes: []
-  }
-];
+export const TMDB_CONFIG = {
+    API_KEY: 'a07e22bc18f5cb106bfe4cc1f83ad8ed',
+    BASE_URL: 'https://api.themoviedb.org/3',
+    IMAGE_BASE_URL: 'https://image.tmdb.org/t/p',
+    POSTER_SIZES: { small: 'w300', medium: 'w500', large: 'w780', original: 'original' }
+};
 
-// Build object map by tmdbId
-export const COMPLETE_REVENGE_DATABASE = Object.fromEntries(
-  REVENGE_MOVIES.map(m => [m.tmdbId, m])
-);
+// HELPER: Create Data with Revenge Metrics
+const createRevengeData = (data) => ({
+    revengeIntensity: 90,
+    moralComplexity: 85,
+    visceralImpact: 90,
+    complexityLevel: "HIGH",
+    dominantColor: "#000000",
+    ...data,
+});
 
-export default COMPLETE_REVENGE_DATABASE;
+export const COMPLETE_MOVIE_DATA = {
+    // 1. Oldboy
+    670: createRevengeData({
+        revengeIntensity: 99, moralComplexity: 95, visceralImpact: 98, complexityLevel: "EXTREME",
+        dominantColor: "#0f172a",
+        rating: 8.3, director: "Park Chan-wook",
+        cast: ['Choi Min-sik', 'Yoo Ji-tae'], boxOffice: '$17.6 million', budget: '$3 million',
+        dna: { "Mystery": 40, "Thriller": 35, "Action": 25 },
+        scenes: [
+            { time: 8, intensity: 45, label: 'Abduction', color: '#0f172a' },
+            { time: 25, intensity: 60, label: 'The Release', color: '#334155' },
+            { time: 68, intensity: 89, label: 'Corridor Fight', color: '#dc2626' },
+            { time: 90, intensity: 75, label: 'Woo-jin\'s Penthouse', color: '#475569' },
+            { time: 115, intensity: 99, label: 'The Truth', color: '#991b1b' }
+        ],
+        synopsis: "Oh Dae-su, an ordinary salary man, is inexplicably kidnapped...",
+        themes: ["Incest", "Memory", "Futile Vengeance"]
+    }),
+
+    // 2. Gladiator
+    98: createRevengeData({
+        revengeIntensity: 96, moralComplexity: 60, visceralImpact: 90, complexityLevel: "MEDIUM",
+        dominantColor: "#f59e0b",
+        rating: 8.5, director: "Ridley Scott",
+        cast: ['Russell Crowe', 'Joaquin Phoenix'], boxOffice: '$465.4 million', budget: '$103 million',
+        dna: { "Action": 45, "Drama": 35, "Adventure": 20 },
+        scenes: [],
+        synopsis: "Maximus Decimus Meridius...",
+        themes: ["Honor", "Political Corruption", "Legacy"]
+    }),
+
+    // 3. Unforgiven ✅ UPDATED
+    33: createRevengeData({
+        revengeIntensity: 94, moralComplexity: 90, visceralImpact: 85, complexityLevel: "HIGH",
+        dominantColor: "#dc2626",
+        rating: 8.2, director: "Clint Eastwood",
+        cast: ['Clint Eastwood', 'Gene Hackman'], boxOffice: '$159.2 million', budget: '$14.4 million',
+        dna: { 
+            "Drama": 65,
+            "Action": 25,
+            "Thriller": 10
+        },
+        scenes: [
+            { time: 20, intensity: 30, label: 'The Pig Farm', color: '#7f1d1d' },
+            { time: 60, intensity: 55, label: 'Little Bill\'s Beating', color: '#991b1b' },
+            { time: 108, intensity: 82, label: "Ned's Death", color: '#b91c1c' },
+            { time: 115, intensity: 88, label: 'Whiskey Bottle', color: '#ef4444' },
+            { time: 124, intensity: 96, label: 'Saloon Showdown', color: '#0f172a' }
+        ],
+        synopsis: "William Munny, a retired gunslinger...",
+        themes: ["Aging", "Myth vs Reality", "Cycles of Violence"]
+    }),
+
+    // 4. Braveheart
+    197: createRevengeData({
+        revengeIntensity: 95, moralComplexity: 75, visceralImpact: 95, complexityLevel: "MEDIUM",
+        dominantColor: "#f59e0b",
+        rating: 8.3, director: "Mel Gibson",
+        cast: ['Mel Gibson', 'Sophie Marceau'], boxOffice: '$213.2 million', budget: '$72 million',
+        dna: { "Action": 45, "Drama": 35, "Romance": 20 },
+        scenes: [],
+        synopsis: "After his secret wife is murdered...",
+        themes: ["Freedom", "Martyrdom", "Nationalism"]
+    }),
+
+    // 5. The Prestige ✅ UPDATED
+    1124: createRevengeData({
+        revengeIntensity: 90, moralComplexity: 95, visceralImpact: 80, complexityLevel: "EXTREME",
+        dominantColor: "#6b21a8",
+        rating: 8.5, director: "Christopher Nolan",
+        cast: ['Christian Bale', 'Hugh Jackman'], boxOffice: '$109.7 million', budget: '$40 million',
+        dna: { 
+            "Mystery": 50,
+            "Drama": 40,
+            "Sci-Fi": 10
+        },
+        scenes: [
+            { time: 12, intensity: 58, label: 'The Drowning', color: '#581c87' },
+            { time: 45, intensity: 65, label: 'The Bullet Catch', color: '#6b21a8' },
+            { time: 80, intensity: 78, label: 'Tesla\'s Lab', color: '#7e22ce' },
+            { time: 100, intensity: 85, label: 'Angier\'s Return', color: '#9333ea' },
+            { time: 125, intensity: 97, label: 'The Final Prestige', color: '#3b0764' }
+        ],
+        synopsis: "Two rival magicians engage in a bitter...",
+        themes: ["Obsession", "Duality", "Sacrifice"]
+    }),
+
+    // 6. The Revenant ✅ UPDATED
+    281957: createRevengeData({
+        revengeIntensity: 88, moralComplexity: 65, visceralImpact: 100, complexityLevel: "HIGH",
+        dominantColor: "#059669",
+        rating: 8.0, director: "Alejandro G. Iñárritu",
+        cast: ['Leonardo DiCaprio', 'Tom Hardy'], boxOffice: '$533.0 million', budget: '$135 million',
+        dna: { 
+            "Drama": 40,
+            "Adventure": 35,
+            "Action": 25
+        },
+        scenes: [
+            { time: 18, intensity: 72, label: 'Bear Attack', color: '#047857' },
+            { time: 42, intensity: 81, label: 'Son Murdered', color: '#dc2626' },
+            { time: 80, intensity: 65, label: 'Wilderness Survival', color: '#059669' },
+            { time: 110, intensity: 70, label: 'The Horse', color: '#065f46' },
+            { time: 148, intensity: 94, label: 'Final Confrontation', color: '#0f172a' }
+        ],
+        synopsis: "Mauled by a bear and left for dead...",
+        themes: ["Survival", "Nature vs Man", "Fatherhood"]
+    }),
+
+    // 7. Kill Bill: Vol. 2
+    393: createRevengeData({
+        revengeIntensity: 92, moralComplexity: 70, visceralImpact: 85, complexityLevel: "MEDIUM",
+        dominantColor: "#f59e0b", // Action
+        rating: 8.0, director: "Quentin Tarantino",
+        cast: ['Uma Thurman', 'David Carradine'], boxOffice: '$152.2 million', budget: '$30 million',
+        dna: { "Action": 45, "Drama": 35, "Thriller": 20 },
+        scenes: [
+            { time: 15, intensity: 45, label: 'Chapel Rehearsal', color: '#f59e0b' },
+            { time: 48, intensity: 78, label: 'Buried Alive', color: '#b45309' },
+            { time: 80, intensity: 70, label: 'Training Montage', color: '#d97706' },
+            { time: 110, intensity: 85, label: 'Elle Driver Fight', color: '#dc2626' },
+            { time: 129, intensity: 95, label: 'Bill Confrontation', color: '#0f172a' }
+        ],
+        synopsis: "The Bride concludes her roaring rampage of revenge. After dispatching her former squad mates, she tracks down Bill for a final, surprisingly emotional confrontation that explores the cost of vengeance and the bond of motherhood.",
+        themes: ["Motherhood", "Betrayal", "Closure"]
+    }),
+
+    // 8. John Wick
+    245891: createRevengeData({
+        revengeIntensity: 95, moralComplexity: 40, visceralImpact: 92, complexityLevel: "MEDIUM",
+        dominantColor: "#f59e0b", // Action
+        rating: 7.4, director: "Chad Stahelski",
+        cast: ['Keanu Reeves', 'Michael Nyqvist'], boxOffice: '$86.1 million', budget: '$20 million',
+        dna: { "Action": 70, "Thriller": 20, "Crime": 10 },
+        scenes: [
+            { time: 15, intensity: 68, label: 'Puppy Death', color: '#dc2626' },
+            { time: 30, intensity: 55, label: 'Hammering Floor', color: '#475569' },
+            { time: 50, intensity: 75, label: 'Home Invasion', color: '#f59e0b' },
+            { time: 78, intensity: 88, label: 'Nightclub Battle', color: '#9333ea' },
+            { time: 95, intensity: 90, label: 'Dock Showdown', color: '#0f172a' }
+        ],
+        synopsis: "A retired hitman returns to the criminal underworld after mobsters kill the puppy left to him by his late wife. It is a stylish, brutal masterclass in action choreography where one man dismantles an entire syndicate over a dog.",
+        themes: ["Grief", "Consequences", "Legend"]
+    }),
+
+    // 9. I Saw the Devil
+    44222: createRevengeData({
+        revengeIntensity: 100, moralComplexity: 90, visceralImpact: 100, complexityLevel: "HIGH",
+        dominantColor: "#991b1b", // Horror
+        rating: 7.8, director: "Kim Jee-woon",
+        cast: ['Lee Byung-hun', 'Choi Min-sik'], boxOffice: '$13.0 million', budget: '$6 million',
+        dna: { "Thriller": 45, "Horror": 35, "Action": 20 },
+        scenes: [
+            { time: 8, intensity: 68, label: 'Brutal Murder', color: '#991b1b' },
+            { time: 40, intensity: 75, label: 'First Capture', color: '#b91c1c' },
+            { time: 85, intensity: 85, label: 'The Clinic', color: '#7f1d1d' },
+            { time: 110, intensity: 92, label: 'Turning Tables', color: '#0f172a' },
+            { time: 138, intensity: 98, label: 'Final Reckoning', color: '#000000' }
+        ],
+        synopsis: "A secret agent decides to hunt down the serial killer who murdered his fiancée—but instead of arresting him, he catches and releases him repeatedly to inflict maximum pain. It explores how the pursuit of a monster can turn a good man into one.",
+        themes: ["Monstrosity", "Corruption of Good", "Sadism"]
+    }),
+
+    // 10. The Count of Monte Cristo
+    11362: createRevengeData({
+        revengeIntensity: 95, moralComplexity: 60, visceralImpact: 60, complexityLevel: "MEDIUM",
+        dominantColor: "#059669", // Adventure
+        rating: 7.7, director: "Kevin Reynolds",
+        cast: ['Jim Caviezel', 'Guy Pearce'], boxOffice: '$75.4 million', budget: '$35 million',
+        dna: { "Adventure": 40, "Drama": 35, "Action": 25 },
+        scenes: [
+            { time: 15, intensity: 48, label: 'Betrayal', color: '#0f172a' },
+            { time: 40, intensity: 55, label: 'Chateau d\'If', color: '#334155' },
+            { time: 75, intensity: 65, label: 'The Escape', color: '#059669' },
+            { time: 100, intensity: 80, label: 'Social Destruction', color: '#f59e0b' },
+            { time: 125, intensity: 94, label: 'Final Confrontation', color: '#dc2626' }
+        ],
+        synopsis: "After being wrongfully imprisoned for 13 years, a sailor escapes, finds a hidden fortune, and reinvents himself as a wealthy count to systematically destroy the lives of the men who betrayed him. The ultimate tale of patience and calculated payback.",
+        themes: ["Patience", "Betrayal", "Justice vs Revenge"]
+    })
+};
+
+// ✅ CUSTOM FAQs FOR REVENGE MOVIES
+export const REVENGE_MOVIE_FAQS = {
+    'Oldboy': [
+        { question: "What is the twist in Oldboy?", answer: "The twist reveals that the antagonist, Woo-jin, manipulated Dae-su into falling in love with and sleeping with his own daughter, Mi-do, as revenge for a rumor Dae-su spread years ago." },
+        { question: "Is the octopus scene real?", answer: "Yes, actor Choi Min-sik actually ate four live octopuses to get the shot right. He is a Buddhist and prayed for each one before eating it." },
+        { question: "Why was he imprisoned for 15 years?", answer: "The 15 years were carefully calculated so that his daughter would grow up to be an adult woman, allowing the incestuous revenge plot to take place." },
+        { question: "Does Dae-su know the truth at the end?", answer: "It is ambiguous. He visits a hypnotist to erase the memory, but his final smile leaves it open to interpretation whether the monster inside him truly forgot." }
+    ],
+    'Gladiator': [
+        { question: "Is Maximus based on a real person?", answer: "Maximus is a fictional character, but he is inspired by figures like Narcissus (who killed Commodus), Spartacus (who led a slave revolt), and Cincinnatus (a farmer-general)." },
+        { question: "Did Commodus really kill his father?", answer: "Historically, Marcus Aurelius died of natural causes (likely the plague). The movie dramatizes his death to establish Commodus as a patricidal villain." },
+        { question: "Was the Colosseum built for the movie?", answer: "A massive replica of about one-third of the Colosseum was built in Malta for the film, with the rest generated using CGI." },
+        { question: "What does the ending mean?", answer: "Maximus dies and joins his family in the afterlife (Elysium), having fulfilled his vow of vengeance and restored the dream of a Roman Republic." }
+    ],
+    'Unforgiven': [
+        { question: "What makes Unforgiven a 'revisionist' Western?", answer: "It deconstructs the romantic myth of the Wild West. Instead of heroic gunfights, violence is shown as clumsy, painful, and traumatizing." },
+        { question: "Why did William Munny take the job?", answer: "Despite his changed ways, Munny was desperate for money to support his children. The failing hog farm forced him back into a life he had sworn to leave behind." },
+        { question: "Is the writer character based on anyone?", answer: "W.W. Beauchamp represents the dime novelists of the era who exaggerated gritty events into heroic legends, criticizing how we mythologize violence." },
+        { question: "What does the final line mean?", answer: "The final warning Munny gives—that he will kill anyone who hurts the prostitutes—shows that while he is leaving, his capacity for extreme violence remains." }
+    ],
+    'Braveheart': [
+        { question: "How accurate is Braveheart?", answer: "It is historically loose. Kilts were not worn in that era, the romance with the Princess is fiction (she was a child then), and William Wallace was a minor noble, not a poor farmer." },
+        { question: "Why does he scream 'Freedom' at the end?", answer: "It is his final act of defiance. Even while being tortured to death, he refuses to submit to English rule, inspiring his countrymen to continue the fight." },
+        { question: "Did the Battle of Stirling Bridge happen on a bridge?", answer: "Historically, yes, the bridge was crucial to the victory. In the film, it was staged on an open field because a bridge would have limited the scale of the battle sequences." },
+        { question: "Why is his face painted blue?", answer: "The blue woad face paint was actually a tradition of the ancient Picts (Roman era), not 13th-century Scots, but Gibson used it to give the army a primal, terrifying look." }
+    ],
+    'The Prestige': [
+        { question: "What is the twist regarding Borden?", answer: "Alfred Borden was actually identical twins living as one man. One loved Sarah, the other loved Olivia. They took turns living half a life to perform the Transported Man trick perfectly." },
+        { question: "Did the machine really work?", answer: "Yes, Tesla's machine actually cloned Angier every time it was used. Angier would drown the 'original' (or the clone) in a tank under the stage, killing himself night after night." },
+        { question: "What does 'The Prestige' mean?", answer: "In magic, the 'Prestige' is the third act of a trick where the object (or person) that vanished is brought back. It is the hardest part and the one that earns the applause." },
+        { question: "Who is the villain?", answer: "Both men are villains in their own way. Their obsession destroys everyone around them—Angier sacrifices his humanity, and the Borden twins sacrifice their own identity and happiness." }
+    ],
+    'The Revenant': [
+        { question: "Is The Revenant a true story?", answer: "Yes, it is based on the real survival story of Hugh Glass in 1823. He was mauled by a bear and crawled over 200 miles to safety, though the revenge plot is largely dramatized." },
+        { question: "Did Leonardo DiCaprio really sleep in a horse?", answer: "No, the horse carcass was a prop built by the special effects team, but DiCaprio did eat raw bison liver and endured freezing temperatures for the role." },
+        { question: "Why didn't Glass kill Fitzgerald himself?", answer: "Glass realizes that 'revenge is in the Creator's hands.' He sends Fitzgerald down the river to the Arikara natives, letting fate (and them) decide his punishment." },
+        { question: "How was the bear attack filmed?", answer: "It was a mix of CGI and stunt work. A stuntman in a blue suit threw DiCaprio around on cables to simulate the bear's weight and ferocity, combined with digital animation." }
+    ],
+    'Kill Bill: Vol. 2': [
+        { question: "What is the Five Point Palm Exploding Heart Technique?", answer: "It is a fictional martial arts move taught by Pai Mei. It disrupts the heart's rhythm so that once the victim takes five steps, their heart explodes and they die." },
+        { question: "Why is Bill's death so quiet?", answer: "After two movies of chaos, Tarantino chose a quiet ending to emphasize the relationship between Bill and the Bride. It is a conversation between former lovers, not just a fight." },
+        { question: "What is the real name of The Bride?", answer: "Her name is Beatrix Kiddo. It is bleeped out in Volume 1 to maintain her mystery and dehumanization, but revealed in Volume 2 to humanize her as a mother." },
+        { question: "Why did Bill try to kill her?", answer: "Bill explains that he overreacted to her leaving him because he thought she was dead. When he found her pregnant and marrying another man, his heartbreak turned into murderous jealousy." }
+    ],
+    'John Wick': [
+        { question: "Why is the dog so important?", answer: "The puppy was a final gift from his dying wife, Helen. It represented her love and his only tether to a normal, peaceful life. Killing it destroyed his last hope for humanity." },
+        { question: "What is the Gold Coin currency?", answer: "The gold coins are not worth a specific dollar amount; they represent a currency of favors and access within the underworld society, used for services like hotels and body disposal." },
+        { question: "Did Keanu Reeves do his own stunts?", answer: "Yes, Keanu Reeves performed about 90% of his own stunts. He underwent months of intensive training in judo, jujitsu, and 'gun-fu' tactical shooting." },
+        { question: "What is 'Baba Yaga'?", answer: "In the film, he is called 'Baba Yaga' (the Boogeyman). Russian mobsters clarify he isn't the Boogeyman, but 'the one you send to kill the Boogeyman.'" }
+    ],
+    'I Saw the Devil': [
+        { question: "What is the message of the film?", answer: "The film warns that when you fight monsters, you risk becoming one. By torturing the killer, the protagonist descends to his level and loses his own humanity in the process." },
+        { question: "Why does he keep letting the killer go?", answer: "He wants to inflict prolonged suffering rather than a quick death. He tracks the killer via a swallowed GPS transmitter to catch him just as he feels safe or powerful." },
+        { question: "Is there an alternate ending?", answer: "Yes, an alternate ending exists where the protagonist is shown walking away more stoically, but the theatrical cut ends with him breaking down, emphasizing his total emotional destruction." },
+        { question: "Why is the violence so graphic?", answer: "The extreme violence is intended to make the audience uncomfortable with the concept of revenge. Unlike action movies that glorify it, this film shows vengeance as messy, ugly, and horrifying." }
+    ],
+    'The Count of Monte Cristo': [
+        { question: "How does this version differ from the book?", answer: "The 2002 movie simplifies the plot significantly. It changes the ending so Edmond ends up with Mercedes, and makes Albert his biological son, which is not in the novel." },
+        { question: "Where was the prison filmed?", answer: "The Château d'If scenes were filmed at Comino Tower in Malta. The real Château d'If is located off the coast of Marseille, France." },
+        { question: "What is the meaning of 'Zatarra'?", answer: "In the film, Edmond is called 'Zatarra' by the smuggler, which is said to mean 'Driftwood.' It symbolizes his state of being lost at sea before finding his purpose." },
+        { question: "Why does he spare Mondego initially?", answer: "He wants Mondego to lose everything—his family, his fortune, and his reputation—before he dies. Death is too quick; he wants him to suffer the same loss Edmond did." }
+    ]
+};
+
+// HELPER FUNCTIONS
+export const getSensitiveContentTypes = (tmdbId) => {
+    const sensitiveData = SENSITIVE_TIMELINES[tmdbId];
+    if (!sensitiveData?.scenes?.length) return null;
+    const types = new Set();
+    sensitiveData.scenes.forEach(scene => {
+        const lowerType = scene.type.toLowerCase();
+        if (lowerType.includes('sex') || lowerType.includes('violation')) types.add('intimate scenes');
+        if (lowerType.includes('nudity')) types.add('nudity');
+        if (lowerType.includes('violence') || lowerType.includes('injury')) types.add('graphic violence');
+        if (lowerType.includes('self-harm') || lowerType.includes('drug') || lowerType.includes('masochism') || lowerType.includes('voyeurism')) types.add('disturbing content');
+    });
+    return Array.from(types);
+};
+
+export const generateFAQData = (movie) => {
+    return DRAMA_MOVIE_FAQS[movie.Title] || [];
+};
+
+export const generateMovieSchema = (movie) => {
+    const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
+    return {
+        '@context': 'https://schema.org',
+        '@type': 'Movie',
+        'name': movie.Title,
+        'description': movieInfo?.synopsis || `${movie.Title} - A compelling drama.`,
+        'genre': movie.genre,
+        'datePublished': movie.year.toString(),
+        'director': { '@type': 'Person', 'name': movieInfo?.director || 'Director' },
+        'actor': movieInfo?.cast?.map(actor => ({ '@type': 'Person', 'name': actor })) || [],
+        'duration': `PT${movie.runtime}M`,
+        'image': `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
+        'aggregateRating': { 
+            '@type': 'AggregateRating', 
+            'ratingValue': movieInfo?.rating || 7.5, 
+            'bestRating': 10, 
+            'worstRating': 1, 
+            'ratingCount': 100 
+        }
+    };
+};
+
+export const generateFAQSchema = (faqs) => ({
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    'mainEntity': faqs.map(faq => ({ 
+        '@type': 'Question', 
+        'name': faq.question, 
+        'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer } 
+    }))
+});
+
+export const fetchMovieFromTMDB = async (tmdbId) => ({ 
+    poster_path: null, 
+    title: DRAMA_MOVIES.find(m => m.tmdbId === tmdbId)?.title || 'Unknown Movie' 
+});
+
+export const fetchWatchProviders = async (tmdbId, region = 'US') => null;
+
+export const formatSensitiveTimeline = (tmdbId) => {
+    const raw = SENSITIVE_TIMELINES[tmdbId];
+    if (!raw || !raw.scenes || raw.scenes.length === 0) return null;
+    return {
+        scenes: raw.scenes.map(scene => ({
+            start: scene.start,
+            end: scene.end,
+            type: scene.type,
+            description: scene.description || '',
+            displayLabel: `${scene.type} (${scene.severity})` 
+        }))
+    };
+};  

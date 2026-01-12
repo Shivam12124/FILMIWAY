@@ -1,4 +1,4 @@
-// utils/matrixMovieData.js - FINAL VERSION WITH FAQ DATA (Matches Survival Format)
+// utils/matrixMovieData.js - FINAL VERSION (Metrics Fixed: Sci-Fi Complexity & Mind Bending Score) ✅
 
 export const TMDB_CONFIG = {
   API_KEY: 'a07e22bc18f5cb106bfe4cc1f83ad8ed',
@@ -7,7 +7,7 @@ export const TMDB_CONFIG = {
   POSTER_SIZES: { small: 'w300', medium: 'w500', large: 'w780', original: 'original' }
 };
 
-// ✅ 1. THE RANKED DATABASE LIST (Array)
+// ✅ 1. THE RANKED DATABASE LIST
 export const COMPLETE_MOVIE_DATABASE = [
   { tmdbId: 2666, imdbID: 'tt0118929', Title: 'Dark City', year: 1998, genre: 'Sci-Fi', runtime: 100, rank: 1 },
   { tmdbId: 27205, imdbID: 'tt1375666', Title: 'Inception', year: 2010, genre: 'Sci-Fi', runtime: 148, rank: 2 },
@@ -21,14 +21,15 @@ export const COMPLETE_MOVIE_DATABASE = [
   { tmdbId: 137113, imdbID: 'tt1631867', Title: 'Edge of Tomorrow', year: 2014, genre: 'Sci-Fi', runtime: 113, rank: 10 }
 ];
 
-const timeToSeconds = (timeStr) => {
-  const parts = timeStr.split(':').map(Number);
-  if (parts.length === 3) return parts[0] * 3600 + parts[1] * 60 + parts[2];
-  if (parts.length === 2) return parts[0] * 60 + parts[1];
-  return 0;
-};
+// Helper to ensure default values exist
+const createMovieData = (data) => ({
+  cyberComplexity: 90,      // Maps to "Sci-Fi Complexity"
+  philosophicalDepth: 85,   // Maps to "Mind Bending Score"
+  complexityLevel: "HIGH",
+  dominantColor: "#000000",
+  ...data,
+});
 
-// ✅ 2. SENSITIVE TIMELINES
 export const SENSITIVE_TIMELINES = {
   2666: { scenes: [{ start: '0:15:20', end: '0:16:00', type: 'Violence', severity: 'Moderate', description: 'Detective violence' }] },
   27205: { scenes: [{ start: '1:20:00', end: '1:25:00', type: 'Action Sequences', severity: 'Moderate', description: 'Dream world combat' }] },
@@ -38,14 +39,14 @@ export const SENSITIVE_TIMELINES = {
   180: { scenes: [{ start: '0:30:00', end: '0:32:00', type: 'Action Violence', severity: 'Moderate', description: 'Chase and combat' }] },
   500664: { scenes: [{ start: '1:20:00', end: '1:25:00', type: 'Violence/Gore', severity: 'High', description: 'Intense AI-assisted combat' }] },
   861: { scenes: [{ start: '1:20:00', end: '1:23:00', type: 'Action Violence', severity: 'Moderate', description: 'Mars action scenes' }] },
-  335984: { scenes: [{ start: '38:10', end: '42:45', type: 'Nudity', severity: 'Moderate', description: 'Holographic nudity (Woman)' },
-        { start: '1:30:50', end: '1:31:00', type: 'Nudity', severity: 'Moderate', description: 'Glimpse nudity (Woman)' },
-        { start: '2:02:58', end: '2:03:03', type: 'Partial Nudity', severity: 'Mild', description: 'Glimpse partial nudity (Woman)' },
-        { start: '2:17:00', end: '2:18:05', type: 'Nudity', severity: 'Moderate', description: 'Full nudity (Woman)' }] },
+  335984: { scenes: [
+      { start: '38:10', end: '42:45', type: 'Nudity', severity: 'Moderate', description: 'Holographic nudity (Woman)' },
+      { start: '1:30:50', end: '1:31:00', type: 'Nudity', severity: 'Moderate', description: 'Glimpse nudity (Woman)' },
+      { start: '2:17:00', end: '2:18:05', type: 'Nudity', severity: 'Moderate', description: 'Full nudity (Woman)' }
+  ]},
   137113: { scenes: [] }
 };
 
-// ✅ 3. FALLBACK POSTERS
 export const FALLBACK_POSTERS = {
   2666: 'https://m.media-amazon.com/images/M/MV5BZmY4Yjc0OWQtZDMzZS00ODI2LWE5ZmUtMjE5ZTNhYjUzZWFjXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX500.jpg',
   27205: 'https://m.media-amazon.com/images/M/MV5BMDBhOTMxN2UtYjllYS00NWNiLWE4NmQtNjczMjk4YTdhZDY2XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX500.jpg',
@@ -59,24 +60,15 @@ export const FALLBACK_POSTERS = {
   137113: 'https://m.media-amazon.com/images/M/MV5BMTk1NTQyMzk0NF5BMl5BanBnXkFtZTgwNDk0NjY3MTE@._V1_SX500.jpg'
 };
 
-const createMovieData = (data) => data;
-
-// ✅ 4. DETAILED MOVIE DATA (Object)
 export const COMPLETE_MOVIE_DATA = {
+  // 1. Dark City
   2666: createMovieData({ 
-    tmdbId: 2666,
-    imdbID: 'tt0118929',
-    Title: 'Dark City',
-    matrixRealityIndex: 95, 
-    complexityLevel: "EXTREME", 
-    dominantColor: "#10b981", 
-    rating: 7.6, 
-    criticsScore: 75, 
-    audienceScore: 80, 
-    director: "Alex Proyas", 
-    cast: ["Rufus Sewell", "Kiefer Sutherland", "Jennifer Connelly"], 
-    boxOffice: "$14.4 million", 
-    budget: "$27 million", 
+    tmdbId: 2666, imdbID: 'tt0118929', Title: 'Dark City',
+    cyberComplexity: 95, philosophicalDepth: 94,
+    complexityLevel: "EXTREME", dominantColor: "#10b981", 
+    rating: 7.6, criticsScore: 75, audienceScore: 80, 
+    director: "Alex Proyas", cast: ["Rufus Sewell", "Kiefer Sutherland", "Jennifer Connelly"], 
+    boxOffice: "$14.4 million", budget: "$27 million", 
     dna: { "Sci-Fi": 70, "Mystery": 20, "Noir": 10 }, 
     scenes: [
       { time: 15, intensity: 40, label: "Awakening", color: "#047857" }, 
@@ -90,20 +82,14 @@ export const COMPLETE_MOVIE_DATA = {
     awards: ["Saturn Award Nominations", "Hugo Award Winner"] 
   }),
   
+  // 2. Inception
   27205: createMovieData({ 
-    tmdbId: 27205,
-    imdbID: 'tt1375666',
-    Title: 'Inception',
-    matrixRealityIndex: 94, 
-    complexityLevel: "EXTREME", 
-    dominantColor: "#1e40af", 
-    rating: 8.8, 
-    criticsScore: 87, 
-    audienceScore: 91, 
-    director: "Christopher Nolan", 
-    cast: ["Leonardo DiCaprio", "Joseph Gordon-Levitt", "Ellen Page"], 
-    boxOffice: "$836.8 million", 
-    budget: "$160 million", 
+    tmdbId: 27205, imdbID: 'tt1375666', Title: 'Inception',
+    cyberComplexity: 94, philosophicalDepth: 90,
+    complexityLevel: "EXTREME", dominantColor: "#1e40af", 
+    rating: 8.8, criticsScore: 87, audienceScore: 91, 
+    director: "Christopher Nolan", cast: ["Leonardo DiCaprio", "Joseph Gordon-Levitt", "Elliot Page"], 
+    boxOffice: "$836.8 million", budget: "$160 million", 
     dna: { "Sci-Fi": 60, "Thriller": 25, "Action": 15 }, 
     scenes: [
       { time: 20, intensity: 50, label: "Dream Heist", color: "#1e3a8a" }, 
@@ -117,20 +103,14 @@ export const COMPLETE_MOVIE_DATA = {
     awards: ["Academy Award Winner", "BAFTA Winner"] 
   }),
   
+  // 3. The Thirteenth Floor
   1090: createMovieData({ 
-    tmdbId: 1090,
-    imdbID: 'tt0139809',
-    Title: 'The Thirteenth Floor',
-    matrixRealityIndex: 92, 
-    complexityLevel: "HIGH", 
-    dominantColor: "#7c2d12", 
-    rating: 7.1, 
-    criticsScore: 42, 
-    audienceScore: 62, 
-    director: "Josef Rusnak", 
-    cast: ["Craig Bierko", "Armin Mueller-Stahl", "Gretchen Mol"], 
-    boxOffice: "$3.5 million", 
-    budget: "$34 million", 
+    tmdbId: 1090, imdbID: 'tt0139809', Title: 'The Thirteenth Floor',
+    cyberComplexity: 92, philosophicalDepth: 90,
+    complexityLevel: "HIGH", dominantColor: "#7c2d12", 
+    rating: 7.1, criticsScore: 42, audienceScore: 62, 
+    director: "Josef Rusnak", cast: ["Craig Bierko", "Armin Mueller-Stahl", "Gretchen Mol"], 
+    boxOffice: "$3.5 million", budget: "$34 million", 
     dna: { "Sci-Fi": 65, "Thriller": 25, "Mystery": 10 }, 
     scenes: [
       { time: 10, intensity: 30, label: "Murder", color: "#7c2d12" }, 
@@ -144,20 +124,14 @@ export const COMPLETE_MOVIE_DATA = {
     awards: ["Saturn Award Nomination"] 
   }),
   
+  // 4. eXistenZ
   1946: createMovieData({ 
-    tmdbId: 1946,
-    imdbID: 'tt0120663',
-    Title: 'eXistenZ',
-    matrixRealityIndex: 90, 
-    complexityLevel: "HIGH", 
-    dominantColor: "#be123c", 
-    rating: 6.8, 
-    criticsScore: 70, 
-    audienceScore: 62, 
-    director: "David Cronenberg", 
-    cast: ["Jennifer Jason Leigh", "Jude Law", "Ian Holm"], 
-    boxOffice: "$2.9 million", 
-    budget: "$35 million", 
+    tmdbId: 1946, imdbID: 'tt0120663', Title: 'eXistenZ',
+    cyberComplexity: 90, philosophicalDepth: 88,
+    complexityLevel: "HIGH", dominantColor: "#be123c", 
+    rating: 6.8, criticsScore: 70, audienceScore: 62, 
+    director: "David Cronenberg", cast: ["Jennifer Jason Leigh", "Jude Law", "Ian Holm"], 
+    boxOffice: "$2.9 million", budget: "$35 million", 
     dna: { "Sci-Fi": 55, "Horror": 30, "Thriller": 15 }, 
     scenes: [
       { time: 15, intensity: 45, label: "BioPort", color: "#be123c" }, 
@@ -171,20 +145,14 @@ export const COMPLETE_MOVIE_DATA = {
     awards: ["Cannes Film Festival"] 
   }),
   
+  // 5. Source Code
   45612: createMovieData({ 
-    tmdbId: 45612,
-    imdbID: 'tt0945513',
-    Title: 'Source Code',
-    matrixRealityIndex: 88, 
-    complexityLevel: "HIGH", 
-    dominantColor: "#ea580c", 
-    rating: 7.5, 
-    criticsScore: 92, 
-    audienceScore: 86, 
-    director: "Duncan Jones", 
-    cast: ["Jake Gyllenhaal", "Michelle Monaghan", "Vera Farmiga"], 
-    boxOffice: "$147.3 million", 
-    budget: "$32 million", 
+    tmdbId: 45612, imdbID: 'tt0945513', Title: 'Source Code',
+    cyberComplexity: 88, philosophicalDepth: 85,
+    complexityLevel: "HIGH", dominantColor: "#ea580c", 
+    rating: 7.5, criticsScore: 92, audienceScore: 86, 
+    director: "Duncan Jones", cast: ["Jake Gyllenhaal", "Michelle Monaghan", "Vera Farmiga"], 
+    boxOffice: "$147.3 million", budget: "$32 million", 
     dna: { "Sci-Fi": 60, "Thriller": 30, "Action": 10 }, 
     scenes: [
       { time: 10, intensity: 60, label: "Explosion", color: "#ea580c" }, 
@@ -198,20 +166,14 @@ export const COMPLETE_MOVIE_DATA = {
     awards: ["Saturn Award Winner"] 
   }),
   
+  // 6. Minority Report
   180: createMovieData({ 
-    tmdbId: 180,
-    imdbID: 'tt0181689',
-    Title: 'Minority Report',
-    matrixRealityIndex: 86, 
-    complexityLevel: "HIGH", 
-    dominantColor: "#1e293b", 
-    rating: 7.6, 
-    criticsScore: 74, 
-    audienceScore: 77, 
-    director: "Steven Spielberg", 
-    cast: ["Tom Cruise", "Colin Farrell", "Samantha Morton"], 
-    boxOffice: "$358.4 million", 
-    budget: "$102 million", 
+    tmdbId: 180, imdbID: 'tt0181689', Title: 'Minority Report',
+    cyberComplexity: 86, philosophicalDepth: 92,
+    complexityLevel: "HIGH", dominantColor: "#1e293b", 
+    rating: 7.6, criticsScore: 74, audienceScore: 77, 
+    director: "Steven Spielberg", cast: ["Tom Cruise", "Colin Farrell", "Samantha Morton"], 
+    boxOffice: "$358.4 million", budget: "$102 million", 
     dna: { "Sci-Fi": 65, "Action": 20, "Thriller": 15 }, 
     scenes: [
       { time: 20, intensity: 50, label: "PreCrime", color: "#1e293b" }, 
@@ -225,20 +187,14 @@ export const COMPLETE_MOVIE_DATA = {
     awards: ["Academy Award Nominations"] 
   }),
   
+  // 7. Upgrade
   500664: createMovieData({ 
-    tmdbId: 500664,
-    imdbID: 'tt6499752',
-    Title: 'Upgrade',
-    matrixRealityIndex: 85, 
-    complexityLevel: "MEDIUM", 
-    dominantColor: "#7c2d12", 
-    rating: 7.5, 
-    criticsScore: 88, 
-    audienceScore: 84, 
-    director: "Leigh Whannell", 
-    cast: ["Logan Marshall-Green", "Melanie Vallejo", "Betty Gabriel"], 
-    boxOffice: "$43.5 million", 
-    budget: "$6 million", 
+    tmdbId: 500664, imdbID: 'tt6499752', Title: 'Upgrade',
+    cyberComplexity: 85, philosophicalDepth: 80,
+    complexityLevel: "MEDIUM", dominantColor: "#7c2d12", 
+    rating: 7.5, criticsScore: 88, audienceScore: 84, 
+    director: "Leigh Whannell", cast: ["Logan Marshall-Green", "Melanie Vallejo", "Betty Gabriel"], 
+    boxOffice: "$43.5 million", budget: "$6 million", 
     dna: { "Sci-Fi": 55, "Action": 30, "Thriller": 15 }, 
     scenes: [
       { time: 15, intensity: 40, label: "Wife Murdered", color: "#7c2d12" }, 
@@ -252,20 +208,14 @@ export const COMPLETE_MOVIE_DATA = {
     awards: ["Saturn Award Nominations"] 
   }),
   
+  // 8. Total Recall
   861: createMovieData({ 
-    tmdbId: 861,
-    imdbID: 'tt0100802',
-    Title: 'Total Recall',
-    matrixRealityIndex: 84, 
-    complexityLevel: "HIGH", 
-    dominantColor: "#ec4899", 
-    rating: 7.5, 
-    criticsScore: 57, 
-    audienceScore: 76, 
-    director: "Paul Verhoeven", 
-    cast: ["Arnold Schwarzenegger", "Rachel Ticotin", "Sharon Stone"], 
-    boxOffice: "$261.3 million", 
-    budget: "$65 million", 
+    tmdbId: 861, imdbID: 'tt0100802', Title: 'Total Recall',
+    cyberComplexity: 84, philosophicalDepth: 82,
+    complexityLevel: "HIGH", dominantColor: "#ec4899", 
+    rating: 7.5, criticsScore: 57, audienceScore: 76, 
+    director: "Paul Verhoeven", cast: ["Arnold Schwarzenegger", "Rachel Ticotin", "Sharon Stone"], 
+    boxOffice: "$261.3 million", budget: "$65 million", 
     dna: { "Sci-Fi": 60, "Action": 25, "Thriller": 15 }, 
     scenes: [
       { time: 20, intensity: 50, label: "False Memories", color: "#ec4899" }, 
@@ -279,20 +229,14 @@ export const COMPLETE_MOVIE_DATA = {
     awards: ["Saturn Award Winner"] 
   }),
   
+  // 9. Blade Runner 2049
   335984: createMovieData({ 
-    tmdbId: 335984,
-    imdbID: 'tt1856101',
-    Title: 'Blade Runner 2049',
-    matrixRealityIndex: 85, 
-    complexityLevel: "EXTREME", 
-    dominantColor: "#1e293b", 
-    rating: 8.0, 
-    criticsScore: 88, 
-    audienceScore: 81, 
-    director: "Denis Villeneuve", 
-    cast: ["Ryan Gosling", "Harrison Ford", "Ana de Armas"], 
-    boxOffice: "$259.3 million", 
-    budget: "$150 million", 
+    tmdbId: 335984, imdbID: 'tt1856101', Title: 'Blade Runner 2049',
+    cyberComplexity: 85, philosophicalDepth: 98,
+    complexityLevel: "EXTREME", dominantColor: "#1e293b", 
+    rating: 8.0, criticsScore: 88, audienceScore: 81, 
+    director: "Denis Villeneuve", cast: ["Ryan Gosling", "Harrison Ford", "Ana de Armas"], 
+    boxOffice: "$259.3 million", budget: "$150 million", 
     dna: { "Sci-Fi": 70, "Noir": 20, "Thriller": 10 }, 
     scenes: [
       { time: 25, intensity: 40, label: "Replicant Hunt", color: "#1e293b" }, 
@@ -301,25 +245,19 @@ export const COMPLETE_MOVIE_DATA = {
       { time: 125, intensity: 85, label: "Blackout", color: "#64748b" }, 
       { time: 155, intensity: 95, label: "Wallace", color: "#94a3b8" }
     ], 
-    synopsis: "Thirty years after the Nexus-8 revolt, blade runner K hunts rogue replicants in neon-drenched dystopian Los Angeles. When K uncovers implanted childhood memories identical to legendary Deckard’s daughter, he questions whether he’s human, replicant, or living memory fragment. Villeneuve expands Ridley Scott’s universe into profound questions of created consciousness, authentic experience, and whether artificial beings dreaming electric sheep can claim personhood in a world that engineered them as slaves.", 
+    synopsis: "Thirty years after the Nexus-8 revolt, blade runner K hunts rogue replicants in neon-drenched dystopian Los Angeles. When K uncovers implanted childhood memories identical to legendary Deckard’s daughter, he questions his nature. Villeneuve expands Ridley Scott’s universe into profound questions of created consciousness, authentic experience, and whether artificial beings dreaming electric sheep can claim personhood in a world that engineered them as slaves.", 
     themes: ["Artificial Memory", "Replicant Rights", "Corporate Godhood"], 
     awards: ["Academy Award Nominations", "BAFTA Winner"] 
   }),
   
+  // 10. Edge of Tomorrow
   137113: createMovieData({ 
-    tmdbId: 137113,
-    imdbID: 'tt1631867',
-    Title: 'Edge of Tomorrow',
-    matrixRealityIndex: 92, 
-    complexityLevel: "HIGH", 
-    dominantColor: "#ea580c", 
-    rating: 7.9, 
-    criticsScore: 91, 
-    audienceScore: 85, 
-    director: "Doug Liman", 
-    cast: ["Tom Cruise", "Emily Blunt", "Bill Paxton"], 
-    boxOffice: "$370.5 million", 
-    budget: "$178 million", 
+    tmdbId: 137113, imdbID: 'tt1631867', Title: 'Edge of Tomorrow',
+    cyberComplexity: 92, philosophicalDepth: 80,
+    complexityLevel: "HIGH", dominantColor: "#ea580c", 
+    rating: 7.9, criticsScore: 91, audienceScore: 85, 
+    director: "Doug Liman", cast: ["Tom Cruise", "Emily Blunt", "Bill Paxton"], 
+    boxOffice: "$370.5 million", budget: "$178 million", 
     dna: { "Sci-Fi": 55, "Action": 35, "Thriller": 10 }, 
     scenes: [
       { time: 15, intensity: 70, label: "Omega Death", color: "#ea580c" }, 
@@ -334,7 +272,6 @@ export const COMPLETE_MOVIE_DATA = {
   })
 };
 
-// ✅ 5. STRATEGIC QUOTES
 export const STRATEGIC_QUOTES = {
   2666: 'Remember who you are in a world that forgets you.',
   27205: "You're waiting for a train…",
@@ -348,12 +285,10 @@ export const STRATEGIC_QUOTES = {
   137113: 'Live. Die. Repeat.'
 };
 
-// ✅ 6. CINEMATIC COLORS
 export const CINEMATIC_COLORS = {
   'Sci-Fi': '#00ff00', 'Action': '#ff0000', 'Thriller': '#ff6600', 'Mystery': '#9900ff', 'Drama': '#0066ff', 'Noir': '#333333', 'Horror': '#660000'
 };
 
-// ✅ 7. RATING OPTIONS
 export const RATING_OPTIONS = [
   { value: 1, label: 'Glitch in the Matrix', color: '#dc2626', symbol: '🎫', bgColor: 'bg-red-900/30', description: 'Torn ticket - Total disappointment' },
   { value: 2, label: 'Confused Reality', color: '#ea580c', symbol: '🎟️', bgColor: 'bg-orange-900/30', description: 'Faded ticket - Has major flaws' },
@@ -361,7 +296,6 @@ export const RATING_OPTIONS = [
   { value: 4, label: 'The One', color: '#eab308', symbol: '🎫', bgColor: 'bg-yellow-900/30', description: 'Golden ticket - Cinematic masterpiece' }
 ];
 
-// ✅ 8. FAQ DATA FOR ALL MATRIX MOVIES
 export const MATRIX_MOVIE_FAQS = {
   'Dark City': [
     { question: 'What are the Strangers doing?', answer: 'They rebuild the city nightly, altering memories to study human nature.' },
@@ -415,7 +349,6 @@ export const MATRIX_MOVIE_FAQS = {
   ]
 };
 
-// ✅ 9. HELPER FUNCTIONS (Exact matches)
 export const getTMDBPosterUrl = (posterPath, size = 'medium') => {
   if (!posterPath) return null;
   const posterSize = TMDB_CONFIG.POSTER_SIZES[size] || TMDB_CONFIG.POSTER_SIZES.medium;

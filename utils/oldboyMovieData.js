@@ -1,4 +1,4 @@
-// utils/oldboyMoviesData.js - REVENGE THRILLERS LIKE OLDBOY (PARASITE FORMAT) 🔥
+// utils/oldboyMovieData.js - REVENGE THRILLERS LIKE OLDBOY (PARASITE FORMAT) 🔥
 
 export const TMDB_CONFIG = {
     API_KEY: 'a07e22bc18f5cb106bfe4cc1f83ad8ed',
@@ -8,7 +8,7 @@ export const TMDB_CONFIG = {
 };
 
 export const COMPLETE_MOVIE_DATABASE = [
-    { tmdbId:49797, imdbID: "tt1588170", Title: "I Saw the Devil", year: 2010, genre: "Thriller", runtime: 144, rank: 1 },
+    { tmdbId: 49797, imdbID: "tt1588170", Title: "I Saw the Devil", year: 2010, genre: "Thriller", runtime: 144, rank: 1 },
     { tmdbId: 4689, imdbID: "tt0310775", Title: "Sympathy for Mr. Vengeance", year: 2002, genre: "Thriller", runtime: 121, rank: 2 },
     { tmdbId: 4550, imdbID: "tt0451094", Title: "Lady Vengeance", year: 2005, genre: "Thriller", runtime: 115, rank: 3 },
     { tmdbId: 51608, imdbID: "tt1527788", Title: "The Man from Nowhere", year: 2010, genre: "Action", runtime: 119, rank: 4 },
@@ -20,16 +20,16 @@ export const COMPLETE_MOVIE_DATABASE = [
     { tmdbId: 146233, imdbID: "tt1392214", Title: "Prisoners", year: 2013, genre: "Thriller", runtime: 153, rank: 10 }
 ];
 
-const createMovieData = (data) => data;
+// Helper to ensure default values
+const createMovieData = (data) => ({
+    revengeIntensity: 85,
+    visceralImpact: 80,
+    moralComplexity: 75,
+    complexityLevel: "HIGH",
+    dominantColor: "#000000",
+    ...data,
+});
 
-const timeToSeconds = (timeStr) => {
-    const parts = timeStr.split(':').map(Number);
-    if (parts.length === 3) return parts[0] * 3600 + parts[1] * 60 + parts[2];
-    if (parts.length === 2) return parts[0] * 60 + parts[1];
-    return 0;
-};
-
-// Precise timestamps for sensitive content logic
 export const SENSITIVE_TIMELINES = {
     49797: { scenes: [{ start: "0:12:05", end: "0:12:45", type: "Nudity", severity: "Severe" }, { start: "1:22:10", end: "1:24:30", type: "Sexual Violence", severity: "Severe" }] },
     4689: { scenes: [{ start: "0:25:30", end: "0:27:15", type: "Sex scene", severity: "Strong" }] },
@@ -55,12 +55,11 @@ export const FALLBACK_POSTERS = {
     50475: "https://image.tmdb.org/t/p/original/h9p7nhUT3yWOiI9e1C7I9r8qf3k.jpg",
     146233: "https://image.tmdb.org/t/p/original/A1XHZ1nZrAvzf6ZQHDxTu5GYGvN.jpg"
 };
-// utils/oldboyMoviesData.js - VENGEANCE COLLECTION DATA ✅
 
 export const COMPLETE_MOVIE_DATA = {
     // 1. I Saw the Devil (2010)
     49797: createMovieData({
-        classWarfareIndex: 20, complexityLevel: "EXTREME", dominantColor: "#991b1b",
+        revengeIntensity: 100, visceralImpact: 98, moralComplexity: 90, complexityLevel: "EXTREME", dominantColor: "#991b1b",
         rating: 8.0, criticsScore: 82, audienceScore: 80,
         director: "Kim Jee-woon", cast: ["Lee Byung-hun", "Choi Min-sik"],
         boxOffice: "$12.9 million", budget: "$6 million",
@@ -79,7 +78,7 @@ export const COMPLETE_MOVIE_DATA = {
 
     // 2. Sympathy for Mr. Vengeance (2002)
     4689: createMovieData({
-        classWarfareIndex: 95, complexityLevel: "HIGH", dominantColor: "#115e59",
+        revengeIntensity: 90, visceralImpact: 85, moralComplexity: 95, complexityLevel: "HIGH", dominantColor: "#115e59",
         rating: 7.5, criticsScore: 73, audienceScore: 71,
         director: "Park Chan-wook", cast: ["Song Kang-ho", "Shin Ha-kyun"],
         boxOffice: "$2 million", budget: "$4 million",
@@ -98,7 +97,7 @@ export const COMPLETE_MOVIE_DATA = {
 
     // 3. Lady Vengeance (2005)
     4550: createMovieData({
-        classWarfareIndex: 50, complexityLevel: "HIGH", dominantColor: '#831843',
+        revengeIntensity: 85, visceralImpact: 75, moralComplexity: 92, complexityLevel: "HIGH", dominantColor: '#831843',
         rating: 7.6, criticsScore: 77, audienceScore: 75,
         director: 'Park Chan-wook', cast: ['Lee Young-ae', 'Choi Min-sik'],
         boxOffice: '$23 million', budget: '$4.5 million',
@@ -117,7 +116,7 @@ export const COMPLETE_MOVIE_DATA = {
 
     // 4. The Man from Nowhere (2010)
     51608: createMovieData({
-        classWarfareIndex: 70, complexityLevel: "MEDIUM", dominantColor: '#1e1b4b',
+        revengeIntensity: 92, visceralImpact: 90, moralComplexity: 60, complexityLevel: "MEDIUM", dominantColor: '#1e1b4b',
         rating: 7.7, criticsScore: 79, audienceScore: 82,
         director: 'Lee Jeong-beom', cast: ['Won Bin', 'Kim Sae-ron'],
         boxOffice: '$42 million', budget: '$6 million',
@@ -136,7 +135,7 @@ export const COMPLETE_MOVIE_DATA = {
 
     // 5. The Chaser (2008)
     13855: createMovieData({
-        classWarfareIndex: 60, complexityLevel: "HIGH", dominantColor: '#3f3f46',
+        revengeIntensity: 88, visceralImpact: 85, moralComplexity: 80, complexityLevel: "HIGH", dominantColor: '#3f3f46',
         rating: 7.6, criticsScore: 76, audienceScore: 78,
         director: 'Na Hong-jin', cast: ['Kim Yoon-seok', 'Ha Jung-woo'],
         boxOffice: '$35 million', budget: '$4 million',
@@ -155,7 +154,7 @@ export const COMPLETE_MOVIE_DATA = {
 
     // 6. A Bittersweet Life (2005)
     11344: createMovieData({
-        classWarfareIndex: 55, complexityLevel: "MEDIUM", dominantColor: '#171717',
+        revengeIntensity: 80, visceralImpact: 85, moralComplexity: 70, complexityLevel: "MEDIUM", dominantColor: '#171717',
         rating: 7.5, criticsScore: 74, audienceScore: 76,
         director: 'Kim Jee-woon', cast: ['Lee Byung-hun', 'Shin Min-a'],
         boxOffice: '$10 million', budget: '$5 million',
@@ -174,7 +173,7 @@ export const COMPLETE_MOVIE_DATA = {
 
     // 7. Incendies (2010)
     46738: createMovieData({
-        classWarfareIndex: 85, complexityLevel: "EXTREME", dominantColor: '#ea580c',
+        revengeIntensity: 90, visceralImpact: 85, moralComplexity: 95, complexityLevel: "EXTREME", dominantColor: '#ea580c',
         rating: 8.2, criticsScore: 85, audienceScore: 83,
         director: 'Denis Villeneuve', cast: ['Lubna Azabal', 'Mélissa Désormeaux-Poulin'],
         boxOffice: '$16 million', budget: '$6.8 million',
@@ -193,7 +192,7 @@ export const COMPLETE_MOVIE_DATA = {
 
     // 8. The Handmaiden (2016)
     290098: createMovieData({
-        classWarfareIndex: 90, complexityLevel: "HIGH", dominantColor: '#be185d',
+        revengeIntensity: 75, visceralImpact: 70, moralComplexity: 85, complexityLevel: "HIGH", dominantColor: '#be185d',
         rating: 8.1, criticsScore: 95, audienceScore: 89,
         director: 'Park Chan-wook', cast: ['Kim Min-hee', 'Kim Tae-ri'],
         boxOffice: '$38 million', budget: '$8 million',
@@ -212,7 +211,7 @@ export const COMPLETE_MOVIE_DATA = {
 
     // 9. No Mercy (2010)
     50475: createMovieData({
-        classWarfareIndex: 82, complexityLevel: "HIGH", dominantColor: '#312e81',
+        revengeIntensity: 88, visceralImpact: 82, moralComplexity: 90, complexityLevel: "HIGH", dominantColor: '#312e81',
         rating: 7.4, criticsScore: 72, audienceScore: 74,
         director: 'Kim Hyeong-jun', cast: ['Sol Kyung-gu', 'Ryoo Seung-bum'],
         boxOffice: '$7 million', budget: '$3 million',
@@ -231,7 +230,7 @@ export const COMPLETE_MOVIE_DATA = {
 
     // 10. Prisoners (2013)
     146233: createMovieData({
-        classWarfareIndex: 65, complexityLevel: "HIGH", dominantColor: '#525252',
+        revengeIntensity: 85, visceralImpact: 85, moralComplexity: 90, complexityLevel: "HIGH", dominantColor: '#525252',
         rating: 8.0, criticsScore: 81, audienceScore: 79,
         director: 'Denis Villeneuve', cast: ['Hugh Jackman', 'Jake Gyllenhaal'],
         boxOffice: '$122 million', budget: '$46 million',
@@ -274,7 +273,6 @@ export const RATING_OPTIONS = [
     { value: 4, label: 'Exceptional', color: '#eab308', symbol: '🎫', bgColor: 'bg-yellow-900/30', description: 'Golden ticket - Cinematic masterpiece' }
 ];
 
-// 🔥 EXPANDED FAQ DATA FOR MOVIES LIKE OLDBOY (50-60 words per answer!)
 export const OLDBOY_MOVIE_FAQS = {
   'I Saw the Devil': [
     { 
@@ -466,6 +464,7 @@ export const OLDBOY_MOVIE_FAQS = {
     }
   ]
 };
+
 // HELPER FUNCTIONS (Schema & Posters)
 export const getTMDBPosterUrl = (posterPath, size = 'medium') => {
     if (!posterPath) return null;
@@ -473,7 +472,20 @@ export const getTMDBPosterUrl = (posterPath, size = 'medium') => {
     return `${TMDB_CONFIG.IMAGE_BASE_URL}/${posterSize}${posterPath}`;
 };
 
-export const generateFAQData = (movie) => PARASITE_MOVIE_FAQS[movie.Title] || [];
+export const getSensitiveContentTypes = (tmdbId) => {
+    const sensitiveData = SENSITIVE_TIMELINES[tmdbId];
+    if (!sensitiveData?.scenes?.length) return null;
+    const types = new Set();
+    sensitiveData.scenes.forEach(scene => {
+        const lowerType = scene.type.toLowerCase();
+        if (lowerType.includes('sex')) types.add('intimate scenes');
+        if (lowerType.includes('nudity')) types.add('nudity');
+        if (lowerType.includes('violence')) types.add('graphic violence');
+    });
+    return Array.from(types);
+};
+
+export const generateFAQData = (movie) => OLDBOY_MOVIE_FAQS[movie.Title] || [];
 
 export const generateMovieSchema = (movie) => {
     const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
@@ -493,20 +505,18 @@ export const generateMovieSchema = (movie) => {
     };
 };
 
-export const getSensitiveContentTypes = (tmdbId) => {
-    const sensitiveData = SENSITIVE_TIMELINES[tmdbId];
-    if (!sensitiveData?.scenes?.length) return null;
-    const types = new Set();
-    sensitiveData.scenes.forEach(scene => {
-        const lowerType = scene.type.toLowerCase();
-        if (lowerType.includes('sex')) types.add('intimate scenes');
-        if (lowerType.includes('nudity')) types.add('nudity');
-        if (lowerType.includes('violence')) types.add('graphic violence');
-    });
-    return Array.from(types);
-};
+export const generateFAQSchema = (faqs) => ({
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    'mainEntity': faqs.map(faq => ({ 
+        '@type': 'Question', 
+        'name': faq.question, 
+        'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer } 
+    }))
+});
 
 export const fetchMovieFromTMDB = async (tmdbId) => ({ poster_path: null, title: COMPLETE_MOVIE_DATABASE.find(m => m.tmdbId === tmdbId)?.Title || 'Unknown Movie' });
+
 export const fetchWatchProviders = async (tmdbId, region = 'US') => null;
 
 export const formatSensitiveTimeline = (tmdbId) => {
