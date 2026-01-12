@@ -467,52 +467,52 @@ export const OLDBOY_MOVIE_FAQS = {
 
 // HELPER FUNCTIONS (Schema & Posters)
 export const getTMDBPosterUrl = (posterPath, size = 'medium') => {
-    if (!posterPath) return null;
-    const posterSize = TMDB_CONFIG.POSTER_SIZES[size] || TMDB_CONFIG.POSTER_SIZES.medium;
-    return `${TMDB_CONFIG.IMAGE_BASE_URL}/${posterSize}${posterPath}`;
+    if (!posterPath) return null;
+    const posterSize = TMDB_CONFIG.POSTER_SIZES[size] || TMDB_CONFIG.POSTER_SIZES.medium;
+    return `${TMDB_CONFIG.IMAGE_BASE_URL}/${posterSize}${posterPath}`;
 };
 
 export const getSensitiveContentTypes = (tmdbId) => {
-    const sensitiveData = SENSITIVE_TIMELINES[tmdbId];
-    if (!sensitiveData?.scenes?.length) return null;
-    const types = new Set();
-    sensitiveData.scenes.forEach(scene => {
-        const lowerType = scene.type.toLowerCase();
-        if (lowerType.includes('sex')) types.add('intimate scenes');
-        if (lowerType.includes('nudity')) types.add('nudity');
-        if (lowerType.includes('violence')) types.add('graphic violence');
-    });
-    return Array.from(types);
+    const sensitiveData = SENSITIVE_TIMELINES[tmdbId];
+    if (!sensitiveData?.scenes?.length) return null;
+    const types = new Set();
+    sensitiveData.scenes.forEach(scene => {
+        const lowerType = scene.type.toLowerCase();
+        if (lowerType.includes('sex')) types.add('intimate scenes');
+        if (lowerType.includes('nudity')) types.add('nudity');
+        if (lowerType.includes('violence')) types.add('graphic violence');
+    });
+    return Array.from(types);
 };
 
 export const generateFAQData = (movie) => OLDBOY_MOVIE_FAQS[movie.Title] || [];
 
 export const generateMovieSchema = (movie) => {
-    const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
-    const posterUrl = FALLBACK_POSTERS[movie.tmdbId] || '';
-    return {
-        '@context': 'https://schema.org',
-        '@type': 'Movie',
-        'name': movie.Title,
-        'description': movieInfo?.synopsis || `${movie.Title} - A intense cinematic experience.`,
-        'genre': movie.genre,
-        'datePublished': movie.year.toString(),
-        'director': { '@type': 'Person', 'name': movieInfo?.director || 'Director' },
-        'actor': movieInfo?.cast?.map(actor => ({ '@type': 'Person', 'name': actor })) || [],
-        'duration': `PT${movie.runtime}M`,
-        'image': posterUrl,
-        'aggregateRating': { '@type': 'AggregateRating', 'ratingValue': movieInfo?.rating || 7.5, 'bestRating': 10, 'worstRating': 1, 'ratingCount': movieInfo?.audienceScore || 100 }
-    };
+    const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
+    const posterUrl = FALLBACK_POSTERS[movie.tmdbId] || '';
+    return {
+        '@context': 'https://schema.org',
+        '@type': 'Movie',
+        'name': movie.Title,
+        'description': movieInfo?.synopsis || `${movie.Title} - A intense cinematic experience.`,
+        'genre': movie.genre,
+        'datePublished': movie.year.toString(),
+        'director': { '@type': 'Person', 'name': movieInfo?.director || 'Director' },
+        'actor': movieInfo?.cast?.map(actor => ({ '@type': 'Person', 'name': actor })) || [],
+        'duration': `PT${movie.runtime}M`,
+        'image': posterUrl,
+        'aggregateRating': { '@type': 'AggregateRating', 'ratingValue': movieInfo?.rating || 7.5, 'bestRating': 10, 'worstRating': 1, 'ratingCount': movieInfo?.audienceScore || 100 }
+    };
 };
 
 export const generateFAQSchema = (faqs) => ({
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    'mainEntity': faqs.map(faq => ({ 
-        '@type': 'Question', 
-        'name': faq.question, 
-        'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer } 
-    }))
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    'mainEntity': faqs.map(faq => ({ 
+        '@type': 'Question', 
+        'name': faq.question, 
+        'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer } 
+    }))
 });
 
 export const fetchMovieFromTMDB = async (tmdbId) => ({ poster_path: null, title: COMPLETE_MOVIE_DATABASE.find(m => m.tmdbId === tmdbId)?.Title || 'Unknown Movie' });
@@ -520,14 +520,21 @@ export const fetchMovieFromTMDB = async (tmdbId) => ({ poster_path: null, title:
 export const fetchWatchProviders = async (tmdbId, region = 'US') => null;
 
 export const formatSensitiveTimeline = (tmdbId) => {
-    const raw = SENSITIVE_TIMELINES[tmdbId];
-    if (!raw || !raw.scenes || raw.scenes.length === 0) return null;
-    return {
-        scenes: raw.scenes.map(scene => ({
-            start: scene.start,
-            end: scene.end,
-            type: scene.type,
-            description: scene.description || ''
-        }))
-    };
+    const raw = SENSITIVE_TIMELINES[tmdbId];
+    if (!raw || !raw.scenes || raw.scenes.length === 0) return null;
+    return {
+        scenes: raw.scenes.map(scene => ({
+            start: scene.start,
+            end: scene.end,
+            type: scene.type,
+            description: scene.description || ''
+        }))
+    };
+};
+
+export default {
+    COMPLETE_MOVIE_DATABASE,
+    COMPLETE_MOVIE_DATA,
+    SENSITIVE_TIMELINES,
+    OLDBOY_MOVIE_FAQS
 };
