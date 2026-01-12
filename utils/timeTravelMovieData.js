@@ -70,11 +70,11 @@ export const FALLBACK_POSTERS = {
     218: "https://image.tmdb.org/t/p/w500/qvktm0BHcnmDpul4Hz01GIazWPr.jpg",
     157336: "https://image.tmdb.org/t/p/w500/gEU2QniL6C8zYEfe4NCZvq6DuNZ.jpg",
     206487: "https://image.tmdb.org/t/p/w500/5M0j0B18abtBI5gi2RhfjjurTqb.jpg",
-    14337: "https://image.tmdb.org/t/p/w500/p4O9nE7x0p7M1n01fVj4j5.jpg", // Placeholder URL for Primer
+    14337: "https://image.tmdb.org/t/p/w500/p4O9nE7x0p7M1n01fVj4j5.jpg",
     63: "https://image.tmdb.org/t/p/w500/6Sj9wDu3YsxjbVZHU14q6Ed7a.jpg",
-    141: "https://image.tmdb.org/t/p/w500/j9q3f7.jpg", // Placeholder for Donnie Darko
-    137: "https://image.tmdb.org/t/p/w500/v3QyEo6hH4oF9.jpg", // Placeholder for Groundhog Day
-    14139: "https://image.tmdb.org/t/p/w500/4.jpg" // Placeholder for Timecrimes
+    141: "https://image.tmdb.org/t/p/w500/j9q3f7.jpg",
+    137: "https://image.tmdb.org/t/p/w500/v3QyEo6hH4oF9.jpg",
+    14139: "https://image.tmdb.org/t/p/w500/4.jpg"
 };
 
 export const COMPLETE_MOVIE_DATA = {
@@ -92,7 +92,7 @@ export const COMPLETE_MOVIE_DATA = {
             { time: 95, intensity: 88, label: 'Clock Tower', color: '#bfdbfe' },
             { time: 110, intensity: 92, label: 'Return to 1985', color: '#dbeafe' }
         ], 
-        synopsis: "Marty McFly is just a typical teenager trying to play guitar and survive high school, until he is accidentally blasted 30 years into the past in a plutonium-powered DeLorean. Trapped in 1955, he inadvertently prevents his parents from meeting, setting off a chain reaction that begins to erase him from existence. Now, with the help of a younger, eccentric Doc Brown, Marty must play matchmaker to his own parents to save his future—before he fades away completely.", 
+        synopsis: "Marty McFly is just a typical teenager trying to play guitar and survive high school, until he is accidentally blasted 30 years into the past in a plutonium-powered DeLorean. Trapped in 1955, he inadvertently prevents his parents from meeting, setting off a chain reaction that begins to erase him from existence. Now, with the help of a younger, eccentric Doc Brown, Marty must play matchmaker to his own parents to save his future.", 
         themes: ["Destiny", "Family", "Consequences", "Adventure"], 
         awards: ["Oscar for Sound Effects", "National Film Registry"] 
     }),
@@ -149,7 +149,7 @@ export const COMPLETE_MOVIE_DATA = {
             { time: 145, intensity: 90, label: 'Tesseract', color: '#67e8f9' },
             { time: 162, intensity: 95, label: 'Reunion', color: '#a5f3fc' }
         ], 
-        synopsis: "With Earth plagued by blight and humanity facing extinction, ex-pilot Cooper is recruited for a desperate mission: to travel through a wormhole in search of a new habitable planet. But the mission comes with a devastating cost—relativity means that for every hour he spends in space, years pass for his children back on Earth. It is a visually spectacular, emotional epic about a father's love stretching across dimensions and time.", 
+        synopsis: "With Earth plagued by blight and humanity facing extinction, ex-pilot Cooper is recruited for a desperate mission: to travel through a wormhole in search of a new habitable planet. But the mission comes with a devastating cost—relativity means that for every hour he spends in space, years pass for his children back on Earth. It is a visually spectacular, emotional epic about a father's love stretching across dimensions.", 
         themes: ["Love", "Relativity", "Survival", "Exploration"], 
         awards: ["Oscar for Visual Effects", "Saturn Award"] 
     }),
@@ -269,8 +269,22 @@ export const COMPLETE_MOVIE_DATA = {
     })
 };
 
+// 6️⃣ CINEMATIC_COLORS
+export const CINEMATIC_COLORS = {
+    Thriller: '#1e293b', Drama: '#dc2626', Mystery: '#dc2626', 'Sci-Fi': '#0f172a',
+    Crime: '#422006', Romance: '#be185d', Action: '#991b1b', Psychological: '#7c3aed', Horror: '#0f172a'
+};
+
+// 7️⃣ RATING_OPTIONS
+export const RATING_OPTIONS = [
+    { value: 1, label: "A Disappointment", color: "#dc2626", symbol: "🎫", bgColor: "bg-red-900/30", description: "Torn ticket - Total disappointment" },
+    { value: 2, label: "Flawed", color: "#ea580c", symbol: "🎟️", bgColor: "bg-orange-900/30", description: "Faded ticket - Has major flaws" },
+    { value: 3, label: "Worth the Ride", color: "#16a34a", symbol: "🎟️", bgColor: "bg-green-900/30", description: "Clean ticket - Solid entertainment" },
+    { value: 4, label: "Exceptional", color: "#eab308", symbol: "🎫", bgColor: "bg-yellow-900/30", description: "Golden ticket - Cinematic masterpiece" }
+];
+
 // 8️⃣ TIME_TRAVEL_FAQS
-export const TIME_TRAVEL_FAQS = {
+export const TIME_TRAVEL_MOVIE_FAQS = { // Renamed correctly to match imports
     'Back to the Future': [
         { question: "Does the time travel follow scientific rules?", answer: "It follows the 'Single Mutable Timeline' theory. Changes in the past ripple forward and alter the present (like the photo fading). It prioritizes fun logic over hard physics." },
         { question: "Why doesn't Marty's dad recognize him?", answer: "He only knew 'Calvin Klein' for a week 30 years ago. Memories fade, and he likely just sees a vague resemblance to a kid who helped him once, not realizing it's his son." },
@@ -354,15 +368,15 @@ export const getSensitiveContentTypes = (tmdbId) => {
 };
 
 export const generateFAQData = (movie) => {
-    return TIME_TRAVEL_FAQS[movie.Title] || [];
+    return TIME_TRAVEL_MOVIE_FAQS[movie.Title] || [];
 };
 
 export const generateMovieSchema = (movie) => {
     const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
     const posterUrl = FALLBACK_POSTERS[movie.tmdbId] || '';
     return {
-        "@context": "https://schema.org",
-        "@type": "Movie",
+        '@context': 'https://schema.org',
+        '@type': 'Movie',
         "name": movie.Title,
         "description": movieInfo?.synopsis || `${movie.Title} - A mind-bending time travel film`,
         "genre": movie.genre,
@@ -376,7 +390,7 @@ export const generateMovieSchema = (movie) => {
             "ratingValue": movieInfo?.rating || 7.5, 
             "bestRating": 10, 
             "worstRating": 1, 
-            "ratingCount": movieInfo?.audienceScore || 100 
+            "ratingCount": 100 
         }
     };
 };
@@ -411,9 +425,16 @@ export const formatSensitiveTimeline = (tmdbId) => {
     };
 };
 
-// Build object map by tmdbId
+// Build object map by tmdbId (Export named variable)
 export const COMPLETE_TIME_TRAVEL_DATABASE = Object.fromEntries(
     COMPLETE_MOVIE_DATABASE.map(m => [m.tmdbId, m])
 );
 
-export default COMPLETE_TIME_TRAVEL_DATABASE;
+// ✅ EXPORT DEFAULT (Containing all exports for compatibility)
+export default {
+    COMPLETE_MOVIE_DATABASE,
+    COMPLETE_MOVIE_DATA,
+    SENSITIVE_TIMELINES,
+    TIME_TRAVEL_MOVIE_FAQS,
+    COMPLETE_TIME_TRAVEL_DATABASE
+};
