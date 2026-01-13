@@ -23,6 +23,25 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 14337, "imdbID": "tt0390384", "Title": "Primer", "year": 2004, "genre": "Sci-Fi", "runtime": 77, "rank": 1 }
 ];
 
+
+
+// ✅ STRATEGIC QUOTES FOR MIND-BENDING COLLECTION
+export const STRATEGIC_QUOTES = {
+    14337: "They say time is the fire in which we burn.", // Primer
+    4960: "Everything is more complicated than you think.", // Synecdoche, New York
+    1018: "No hay banda. There is no band.", // Mulholland Drive
+    206487: "What if I told you that you're the person you're trying to catch?", // Predestination
+    220289: "There are dark places where terrible things have happened.", // Coherence
+    141: "Every living creature on earth dies alone.", // Donnie Darko
+    181886: "I don't think I'm me.", // Enemy
+    1381: "Death is the road to awe.", // The Fountain
+    31011: "Every path is the right path.", // Mr. Nobody
+    11324: "You're smarter than you look, Marshal.", // Shutter Island
+    629: "The greatest trick the devil ever pulled was convincing the world he didn't exist." // The Usual Suspects
+};
+
+
+
 // 2. SENSITIVE TIMELINES (Converted to String Format)
 export const SENSITIVE_TIMELINES = {
     // 1. Primer
@@ -93,6 +112,10 @@ export const SENSITIVE_TIMELINES = {
             { start: "1:23:55", end: "1:24:08", type: "Nudity", severity: "High" }
         ]
     },
+
+
+
+    
 
     // 8. The Fountain
     1381: { 
