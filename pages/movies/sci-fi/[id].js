@@ -27,7 +27,6 @@ const COLORS = {
   borderAccent: 'rgba(14, 165, 233, 0.25)', borderLight: 'rgba(55, 65, 81, 0.5)',
 };
 
-// 🔥 NEW: CURATED INSIGHTS FOR SCI-FI COLLECTION
 const MOVIE_DATA_BY_TITLE = {
   '2001: A Space Odyssey': { connection: 'The monolith of the genre. It moved sci-fi from B-movie pulp to high art, establishing a visual language for space that remains the gold standard.' },
   'Blade Runner': { connection: 'The definitive cyberpunk noir. Its rain-soaked aesthetic and questions about artificial consciousness defined how we visualize the future city.' },
@@ -44,13 +43,11 @@ const MOVIE_DATA_BY_TITLE = {
 const getTMDBImage = (path, size = 'w1280') =>
   path ? `https://image.tmdb.org/t/p/${size}${path}` : undefined;
 
-// ✅ NEW HELPER: Get Insight
 const getSciFiInsight = (title) => {
   const data = MOVIE_DATA_BY_TITLE[title];
   return data?.connection || 'A transcendent masterpiece exploring the boundaries of technology, reality, and human evolution.';
 };
 
-// ✅ OPTIMIZED BANNER
 const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
   const [showTrailer, setShowTrailer] = useState(false);
   const [countdown, setCountdown] = useState(4);
@@ -64,7 +61,6 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
   const bannerImage = backdropPath ? getTMDBImage(backdropPath, 'w1280') : null;
   const posterImage = posterPath ? getTMDBImage(posterPath, 'w500') : null;
 
-  // 🔥 UPDATED: Use the new curated insight
   const insight = getSciFiInsight(movie?.Title);
   const complexityIndex = richData?.sciFiComplexity || 90;
 
@@ -203,7 +199,6 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
   const sensitiveData = SENSITIVE_TIMELINES[movie.tmdbId];
   const faqs = SCI_FI_MOVIE_FAQS[movie.Title] || [];
 
-  // 1. CALCULATE PEAK MOMENT
   let peakStats = "Peak info unavailable.";
   if (data?.scenes && data.scenes.length > 0) {
     const peakScene = data.scenes.reduce((prev, current) => 
@@ -212,7 +207,6 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
     peakStats = `[PEAK MOMENT] Maximum Intensity (${peakScene.intensity}/100) hits at minute ${peakScene.time}: "${peakScene.label}".`;
   }
 
-  // 2. METRICS (Sci-Fi Specific)
   const intensityStats = `
     [FILMIWAY METRICS]
     - Sci-Fi Complexity: ${data?.sciFiComplexity || 0}/100
@@ -224,7 +218,6 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
     ? `[GENRE DNA] ${Object.entries(data.dna).map(([genre, val]) => `${genre}: ${val}%`).join(', ')}`
     : 'Sci-Fi Thriller';
 
-  // 3. CONTENT WARNINGS
   const contentWarnings = sensitiveData?.scenes 
     ? `[CONTENT ADVISORY] ${sensitiveData.scenes.map(s => 
         (s.start && s.end) 
@@ -237,12 +230,9 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
     ? `[COMMON QUESTIONS] ${faqs.map(f => `Q: ${f.question} A: ${f.answer}`).join(' | ')}`
     : '';
 
-  // 🔥 SEO POWER PHRASE INJECTED HERE
   const fullDescription = `
     ${data?.synopsis || movie.description || "A masterpiece of science fiction."}
-    
     Includes exact timestamps for sensitive content, sci-fi complexity scores, and philosophical analysis.
-    
     --- DETAILED ANALYSIS ---
     ${peakStats}
     ${intensityStats}
@@ -265,7 +255,10 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
     "review": {
       "@type": "Review",
       "author": { "@type": "Organization", "name": "Filmiway" },
-      "reviewRating": { "@type": "Rating", "ratingValue": data?.rating || 8.0, "bestRating": "10", "worstRating": "1" }
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": data?.rating || 8.0, "bestRating": "10", "worstRating": "1"
+      }
     },
     "genre": data?.dna ? Object.keys(data.dna) : ["Sci-Fi", "Thriller"],
     "keywords": "Sci-Fi Movie, Artificial Intelligence, Space, " + (data?.themes ? data.themes.join(", ") : ""),
@@ -287,7 +280,6 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
 };
 
 const SciFiMoviePage = ({ movie, tmdbData: movieData }) => {
-    // ✅ SAFETY CHECK: Handle missing data elegantly
     const richData = COMPLETE_MOVIE_DATA[movie?.tmdbId] || {}; 
     const [isMobile, setIsMobile] = useState(false);
 
@@ -307,17 +299,30 @@ const SciFiMoviePage = ({ movie, tmdbData: movieData }) => {
 
     const currentMovieYear = movie.year || 'Unknown';
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
+
+    // ✅ SEO FIX: Join title into a single string variable to prevent hydration markers ()
+    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Sci-Fi Analysis & Timestamps | Filmiway`;
+    const cleanSEODesc = `${movie.Title} - ${richData.synopsis ? richData.synopsis.substring(0, 100) : 'Sci-Fi Masterpiece'}... Includes exact timestamps for sensitive content.`;
+
     const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear);
 
     return (
         <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
             <Head>
-                {/* 🔥 HYDRATION BUG FIXED: Title is now a single template literal string */}
-                <title>{`${movie.Title} (${currentMovieYear}) - Sci-Fi Analysis & Timestamps | Filmiway`}</title>
-                <meta name="description" content={`${movie.Title} - ${richData.synopsis ? richData.synopsis.substring(0, 100) : 'Sci-Fi Masterpiece'}... Includes exact timestamps for sensitive content.`} />
+                {/* ✅ HYDRATION BUG RESOLVED: No more split variables inside title tag */}
+                <title>{cleanSEOTitle}</title>
+                <meta name="description" content={cleanSEODesc} />
                 <link rel="canonical" href={`https://filmiway.com/movies/sci-fi/${movie.imdbID}`} />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                 <meta name="robots" content="index, follow" />
+                
+                {/* Social Meta Tags */}
+                <meta property="og:title" content={cleanSEOTitle} />
+                <meta property="og:description" content={cleanSEODesc} />
+                <meta property="og:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
+                <meta name="twitter:title" content={cleanSEOTitle} />
+                <meta name="twitter:description" content={cleanSEODesc} />
+
                 <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }} />
                 {faqSchema && (<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />)}
             </Head>
@@ -328,15 +333,14 @@ const SciFiMoviePage = ({ movie, tmdbData: movieData }) => {
             
             <div className="relative z-10 pt-10 sm:pt-12 lg:pt-16">
                 
-                {/* ✅ SEO FIX: HIDDEN H1 ADDED HERE FOR BING & GOOGLE */}
-                <h1 className="sr-only">{`${movie.Title} (${currentMovieYear}) - Best Sci-Fi Movies`}</h1>
+                {/* ✅ SEO FIX: HIDDEN H1 ADDED HERE FOR GOOGLE & BING */}
+                <h1 className="sr-only">{cleanSEOTitle}</h1>
 
                 <SciFiBreadcrumb movie={movie} />
                 <div className="container mx-auto px-0 pb-16 sm:pb-24 lg:pb-32 max-w-7xl">
                     <OptimizedBanner movie={movie} movieData={movieData} richData={richData} trailer={trailer} isMobile={isMobile} />
                     
                     <motion.div id="watch" initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 2.0, duration: 0.8 }} className="space-y-8 sm:space-y-12 px-3 sm:px-4 lg:px-6">
-                        {/* ✅ Passing flag correctly */}
                         <MovieDetailsSection movie={movie} fromSciFiCollection={true} />
                     </motion.div>
                     

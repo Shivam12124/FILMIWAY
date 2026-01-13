@@ -389,7 +389,6 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
 const InceptionMoviePage = ({ movie, tmdbData }) => {
     // Note: Inception collection uses the generic movieData file.
     const movieInfo = COMPLETE_MOVIE_DATA?.[movie.tmdbId] || {};
-    const correctData = MOVIE_DATA_BY_TITLE?.[movie.Title] || {};
     const [movieData, setMovieData] = useState(tmdbData); // Initialize with SS data
     const [isMobile, setIsMobile] = useState(false);
 
@@ -410,19 +409,33 @@ const InceptionMoviePage = ({ movie, tmdbData }) => {
     const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
+    // ✅ SEO FIX: Join title into a single string variable to prevent hydration markers ()
+    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Movies Like Inception | Filmiway`;
+    const cleanSEODesc = `${movie.Title} (${currentMovieYear}) - A mind-bending masterpiece like Inception. Analysis, ratings & where to stream.`;
+
     // Generate schema
     const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear);
 
     return (
         <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
             <Head>
-                {/* 🔥 HYDRATION BUG FIX */}
-                <title>{`${movie.Title} (${currentMovieYear}) - Movies Like Inception | Filmiway`}</title>
-                <meta name="description" content={`${movie.Title} (${currentMovieYear}) - A mind-bending masterpiece like Inception. Analysis, ratings & where to stream.`} />
+                {/* 🔥 HYDRATION BUG FIXED */}
+                <title>{cleanSEOTitle}</title>
+                <meta name="description" content={cleanSEODesc} />
                 <link rel="canonical" href={`https://filmiway.com/movies/like-inception/${movie.imdbID}`} />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
                 <meta name="robots" content="index, follow" />
                 <meta name="language" content="English" />
+
+                {/* Meta Tags */}
+                <meta property="og:title" content={cleanSEOTitle} />
+                <meta property="og:description" content="A mind-bending journey into perception and reality." />
+                <meta property="og:type" content="video.movie" />
+                <meta property="og:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content={cleanSEOTitle} />
+                <meta name="twitter:description" content="A mind-bending journey into perception and reality." />
+                <meta name="twitter:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
 
                 {/* ✅ SCHEMA INJECTION */}
                 <script
@@ -435,16 +448,6 @@ const InceptionMoviePage = ({ movie, tmdbData }) => {
                         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
                     />
                 )}
-
-                {/* Meta Tags */}
-                <meta property="og:title" content={`${movie.Title} (${currentMovieYear}) - Mind-Bending Thriller`} />
-                <meta property="og:description" content={`A mind-bending journey into perception and reality.`} />
-                <meta property="og:type" content="video.movie" />
-                <meta property="og:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content={`${movie.Title} (${currentMovieYear})`} />
-                <meta name="twitter:description" content={`A mind-bending journey into perception and reality.`} />
-                <meta name="twitter:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
             </Head>
 
             <SubtleFilmGrain />
@@ -453,8 +456,8 @@ const InceptionMoviePage = ({ movie, tmdbData }) => {
             
             <div className="relative z-10 pt-10 sm:pt-12 lg:pt-16">
                 
-                {/* ✅ HIDDEN H1 FOR SEO */}
-                <h1 className="sr-only">{`${movie.Title} (${currentMovieYear}) - Movies Like Inception`}</h1>
+                {/* ✅ HIDDEN H1 FOR SEO PARITY */}
+                <h1 className="sr-only">{cleanSEOTitle}</h1>
 
                 <InceptionBreadcrumb movie={movie} />
                 <div className="container mx-auto px-0 pb-16 sm:pb-24 lg:pb-32 max-w-7xl">

@@ -44,47 +44,10 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
   const bannerImage = backdropPath ? getTMDBImage(backdropPath, 'w1280') : null;
   const posterImage = posterPath ? getTMDBImage(posterPath, 'w500') : null;
 
-  // Insight & Metrics (Donnie Darko Specific)
   const insight = richData?.synopsis || "An extraordinary exploration of reality, time, and the fragile nature of consciousness.";
   const mindBendScore = richData?.mindBendScore || 90;
 
   useEffect(() => { setMounted(true); }, []);
-
-
-
-const MOVIE_DATA_BY_TITLE = {
-  'The Butterfly Effect': { 
-    connection: 'The definitive companion to Donnie Darko: both explore how a single, seemingly insignificant childhood moment can create a cascading ripple of tragedy across parallel timelines.' 
-  },
-  '12 Monkeys': { 
-    connection: 'Like Donnie, the protagonist here is haunted by premonitions of the future, trapped in a fatalistic time loop where every attempt to prevent a disaster only ensures its occurrence.' 
-  },
-  'The Jacket': { 
-    connection: 'A psychological bridge between time travel and mental institutionalization; it captures that specific, cold feeling of being an observer of your own life from a different point in time.' 
-  },
-  'Open Your Eyes': { 
-    connection: 'Before Vanilla Sky, this original masterpiece blurred the lines between dreams, cryonics, and waking reality, questioning if the world we see is merely a cognitive construct.' 
-  },
-  'Coherence': { 
-    connection: 'A masterclass in quantum-physics horror. It shares Donnie Darko’s "Tangent Universe" concept, showing how a passing celestial event can cause the walls between alternate realities to collapse.' 
-  },
-  'Jacob\'s Ladder': { 
-    connection: 'The spiritual father of psychological mind-bends. It explores the terrifying transition between life and death through surreal, demonic hallucinations that mirror Donnie’s own visions.' 
-  },
-  'Dark City': { 
-    connection: 'A visual and philosophical twin to the Darko atmosphere, where the reality of the city is surgically altered every night, leaving the protagonist to question the origin of his memories.' 
-  },
-  'Mulholland Drive': { 
-    connection: 'Lynch’s masterpiece shatters identity in the same way Donnie Darko shatters time, forcing the viewer to piece together a puzzle where the pieces belong to two different versions of the same person.' 
-  },
-  'Eternal Sunshine of the Spotless Mind': { 
-    connection: 'While more romantic, it shares the "erased timeline" sorrow. It explores the brain’s architecture as a physical space where memories can be hunted and lost, much like Donnie’s manipulated path.' 
-  },
-  'Enemy': { 
-    connection: 'A suffocating exploration of the "Double." Like the appearance of Frank in Donnie Darko, Enemy uses surreal symbolism to show a man’s internal subconscious war becoming a literal, physical nightmare.' 
-  }
-};
-
 
   const mobileHeroCSS = `
   @media (max-width: 767px) {
@@ -219,7 +182,6 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
   const sensitiveData = SENSITIVE_TIMELINES[movie.tmdbId];
   const faqs = DONNIE_DARKO_MOVIE_FAQS[movie.Title] || [];
 
-  // 1. CALCULATE PEAK MOMENT
   let peakStats = "Peak info unavailable.";
   if (data?.scenes && data.scenes.length > 0) {
     const peakScene = data.scenes.reduce((prev, current) => 
@@ -228,7 +190,6 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
     peakStats = `[PEAK MOMENT] Maximum Intensity (${peakScene.intensity}/100) hits at minute ${peakScene.time}: "${peakScene.label}".`;
   }
 
-  // 2. METRICS (Mind-Bend Specific)
   const intensityStats = `
     [FILMIWAY METRICS]
     - Mind-Bend Score: ${data?.mindBendScore || 0}/100
@@ -239,7 +200,6 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
     ? `[GENRE DNA] ${Object.entries(data.dna).map(([genre, val]) => `${genre}: ${val}%`).join(', ')}`
     : 'Psychological Thriller';
 
-  // 3. CONTENT WARNINGS
   const contentWarnings = sensitiveData?.scenes 
     ? `[CONTENT ADVISORY] ${sensitiveData.scenes.map(s => 
         (s.start && s.end) 
@@ -317,18 +277,33 @@ const DonnieDarkoMoviePage = ({ movie, tmdbData: movieData }) => {
 
     const currentMovieYear = movie.year || 'Unknown';
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
+
+    // ✅ SEO FIX: Construct clean title and description strings FIRST to prevent hydration comments ()
+    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Mind-Bending Film | Filmiway`;
+    const cleanSEODesc = `${movie.Title} - A mind-bending thriller. Analysis & where to stream.`;
+
     const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear);
 
     return (
         <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
             <Head>
-                <title>{movie.Title} ({currentMovieYear}) - Mind-Bending Film | Filmiway</title>
-                <meta name="description" content={`${movie.Title} - A mind-bending thriller. Analysis & where to stream.`} />
+                {/* ✅ HYDRATION BUG RESOLVED: No more split variables inside title tag */}
+                <title>{cleanSEOTitle}</title>
+                <meta name="description" content={cleanSEODesc} />
                 <link rel="canonical" href={`https://filmiway.com/movies/donnie-darko/${movie.imdbID}`} />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                 <meta name="robots" content="index, follow" />
+                
+                {/* JSON-LD Schema */}
                 <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }} />
                 {faqSchema && (<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />)}
+
+                {/* Social Meta Tags */}
+                <meta property="og:title" content={cleanSEOTitle} />
+                <meta property="og:description" content={cleanSEODesc} />
+                <meta property="og:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
+                <meta name="twitter:title" content={cleanSEOTitle} />
+                <meta name="twitter:description" content={cleanSEODesc} />
             </Head>
 
             <SubtleFilmGrain />
@@ -336,6 +311,10 @@ const DonnieDarkoMoviePage = ({ movie, tmdbData: movieData }) => {
             <SmartBackButton />
             
             <div className="relative z-10 pt-10 sm:pt-12 lg:pt-16">
+                
+                {/* ✅ HIDDEN H1 ADDED HERE FOR GOOGLE & BING SEO PARITY */}
+                <h1 className="sr-only">{cleanSEOTitle}</h1>
+
                 <MindbendBreadcrumb movie={movie} />
                 <div className="container mx-auto px-0 pb-16 sm:pb-24 lg:pb-32 max-w-7xl">
                     <OptimizedBanner movie={movie} movieData={movieData} richData={richData} trailer={trailer} isMobile={isMobile} />

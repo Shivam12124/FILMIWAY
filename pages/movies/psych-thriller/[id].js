@@ -7,7 +7,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, Play, X, User, Twitter, Hash, Send, Film, Brain } from 'lucide-react'; // Changed icon to Brain for Psych Thriller
+import { ChevronLeft, Play, X, User, Twitter, Hash, Send, Film, Brain } from 'lucide-react'; 
 import InternalCollectionsSection from '../../../components/InternalCollectionsSection';
 import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
@@ -75,7 +75,6 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
   const posterImage = posterPath ? getTMDBImage(posterPath, 'w500') : null;
 
   const insight = getPsychInsight(movie?.Title);
-  // METRIC CHANGE: Psychological Intensity
   const psychIntensity = richData?.psychologicalIntensity || 90;
 
   const mobileHeroCSS = `
@@ -203,13 +202,11 @@ const PsychBreadcrumb = ({ movie }) => (
     </motion.nav>
 );
 
-// ✅ JSON-LD SCHEMA GENERATOR - PSYCH EDITION
 const generateMovieSchema = (movie, movieData, currentMovieYear) => {
   const data = COMPLETE_MOVIE_DATA[movie.tmdbId];
   const sensitiveData = SENSITIVE_TIMELINES[movie.tmdbId];
   const faqs = PSYCH_THRILLER_FAQS[movie.Title] || [];
 
-  // 1. CALCULATE THE PEAK MOMENT
   let peakStats = "Peak info unavailable.";
   if (data?.scenes && data.scenes.length > 0) {
     const peakScene = data.scenes.reduce((prev, current) => 
@@ -218,7 +215,6 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
     peakStats = `[PEAK MOMENT] Maximum Tension (${peakScene.intensity}/100) hits at minute ${peakScene.time}: "${peakScene.label}".`;
   }
 
-  // 2. METRICS (Metrics Changed for Psych)
   const intensityStats = `
     [FILMIWAY METRICS]
     - Psychological Intensity: ${data?.psychologicalIntensity || 0}/100
@@ -242,22 +238,18 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
     ? `[COMMON QUESTIONS] ${faqs.map(f => `Q: ${f.question} A: ${f.answer}`).join(' | ')}`
     : '';
 
-  // 3. COMPILE FULL DESCRIPTION
   const fullDescription = `
     ${data?.synopsis || movie.description || "A masterful psychological thriller."}
-    
     --- DETAILED ANALYSIS ---
     ${peakStats} 
     ${intensityStats}
     ${dnaStats}
     ${contentWarnings}
     ${faqText}
-    
     Ranking: #${movie.rank || 'N/A'} in Psychological Cinema.
     Production: Budget ${data?.budget || 'N/A'}, Box Office ${data?.boxOffice || 'N/A'}.
   `.replace(/\s+/g, ' ').trim();
 
-  // 4. MAIN MOVIE SCHEMA
   const movieSchema = {
     "@context": "https://schema.org",
     "@type": "Movie",
@@ -265,21 +257,11 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
     "description": fullDescription, 
     "datePublished": currentMovieYear,
     "image": movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : undefined,
-    "director": {
-      "@type": "Person",
-      "name": data?.director || "Unknown"
-    },
-    "actor": data?.cast?.map(actor => ({
-      "@type": "Person",
-      "name": actor
-    })) || [],
-    
+    "director": { "@type": "Person", "name": data?.director || "Unknown" },
+    "actor": data?.cast?.map(actor => ({ "@type": "Person", "name": actor })) || [],
     "review": {
       "@type": "Review",
-      "author": {
-        "@type": "Organization",
-        "name": "Filmiway"
-      },
+      "author": { "@type": "Organization", "name": "Filmiway" },
       "reviewRating": {
         "@type": "Rating",
         "ratingValue": data?.rating || 8.0, 
@@ -287,15 +269,10 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
         "worstRating": "1"
       }
     },
-
     "genre": data?.dna ? Object.keys(data.dna) : ["Thriller", "Mystery", "Psychological"],
     "keywords": "Psychological Thriller, Mind-Bending, Suspense, Paranoia, " + (data?.themes ? data.themes.join(", ") : ""),
     "url": `https://filmiway.com/movies/psych-thriller/${movie.imdbID}`,
-    "author": {
-      "@type": "Organization",
-      "name": "Filmiway",
-      "url": "https://filmiway.com"
-    }
+    "author": { "@type": "Organization", "name": "Filmiway", "url": "https://filmiway.com" }
   };
 
   const faqSchema = faqs.length > 0 ? {
@@ -304,10 +281,7 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
     "mainEntity": faqs.map(f => ({
       "@type": "Question",
       "name": f.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": f.answer
-      }
+      "acceptedAnswer": { "@type": "Answer", "text": f.answer }
     }))
   } : null;
 
@@ -315,11 +289,8 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
 };
 
 const PsychThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
-    // Aliasing tmdbData to movieData
     const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
-    // Pass rich data to Banner for fallback
     const richData = COMPLETE_MOVIE_DATA[movie.tmdbId]; 
-    const correctData = MOVIE_DATA_BY_TITLE[movie.Title];
     const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -339,21 +310,24 @@ const PsychThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
     const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
-    // Generate schema
+    // ✅ SEO FIX: Construct clean title and description strings FIRST to prevent hydration markers ()
+    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Best Psychological Thrillers | Filmiway`;
+    const cleanSEODesc = `${movie.Title} (${currentMovieYear}) - A masterful psychological thriller. Analysis, intensity ratings & where to stream.`;
+
     const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear);
 
     return (
         <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
             <Head>
-                {/* 🔥 HYDRATION BUG FIX */}
-                <title>{`${movie.Title} (${currentMovieYear}) - Best Psychological Thrillers | Filmiway`}</title>
-                <meta name="description" content={`${movie.Title} (${currentMovieYear}) - A masterful psychological thriller. Analysis, intensity ratings & where to stream.`} />
+                {/* ✅ HYDRATION BUG RESOLVED: Titles now use pre-joined strings */}
+                <title>{cleanSEOTitle}</title>
+                <meta name="description" content={cleanSEODesc} />
                 <link rel="canonical" href={`https://filmiway.com/movies/psych-thriller/${movie.imdbID}`} />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
                 <meta name="robots" content="index, follow" />
                 <meta name="language" content="English" />
 
-                {/* ✅ SCHEMA INJECTION */}
+                {/* JSON-LD Schema */}
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }}
@@ -365,14 +339,14 @@ const PsychThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
                     />
                 )}
 
-                {/* Meta Tags */}
-                <meta property="og:title" content={`${movie.Title} (${currentMovieYear}) - Psychological Thriller`} />
-                <meta property="og:description" content={`A gripping psychological mystery.`} />
+                {/* Social Meta Tags */}
+                <meta property="og:title" content={cleanSEOTitle} />
+                <meta property="og:description" content="A gripping psychological mystery." />
                 <meta property="og:type" content="video.movie" />
                 <meta property="og:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content={`${movie.Title} (${currentMovieYear})`} />
-                <meta name="twitter:description" content={`A gripping psychological mystery.`} />
+                <meta name="twitter:title" content={cleanSEOTitle} />
+                <meta name="twitter:description" content="A gripping psychological mystery." />
                 <meta name="twitter:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
             </Head>
 
@@ -382,8 +356,8 @@ const PsychThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
             
             <div className="relative z-10 pt-10 sm:pt-12 lg:pt-16">
                 
-                {/* ✅ HIDDEN H1 FOR SEO */}
-                <h1 className="sr-only">{`${movie.Title} (${currentMovieYear}) - Best Psychological Thriller Movies`}</h1>
+                {/* ✅ SEO FIX: HIDDEN H1 ADDED HERE FOR GOOGLE & BING */}
+                <h1 className="sr-only">{cleanSEOTitle}</h1>
 
                 <PsychBreadcrumb movie={movie} />
                 <div className="container mx-auto px-0 pb-16 sm:pb-24 lg:pb-32 max-w-7xl">

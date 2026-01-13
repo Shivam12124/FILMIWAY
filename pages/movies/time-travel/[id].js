@@ -76,7 +76,6 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
   const posterImage = posterPath ? getTMDBImage(posterPath, 'w500') : null;
 
   const insight = getTimeInsight(movie?.Title);
-  // METRIC CHANGE: Time Travel Intensity
   const timeIndex = richData?.timeTravelIntensity || 90;
 
   const mobileHeroCSS = `
@@ -316,11 +315,8 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
 };
 
 const TimeTravelMoviePage = ({ movie, tmdbData: movieData }) => {
-    // Aliasing tmdbData to movieData
     const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
-    // Pass rich data to Banner for fallback
     const richData = COMPLETE_MOVIE_DATA[movie.tmdbId]; 
-    const correctData = MOVIE_DATA_BY_TITLE[movie.Title];
     const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -340,15 +336,19 @@ const TimeTravelMoviePage = ({ movie, tmdbData: movieData }) => {
     const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
+    // ✅ SEO FIX: Pre-construct clean strings to prevent hydration markers () in search snippets
+    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Best Time Travel Movies | Filmiway`;
+    const cleanSEODesc = `${movie.Title} (${currentMovieYear}) - A mind-bending time travel masterpiece. Analysis, complexity ratings & where to stream.`;
+
     // Generate schema
     const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear);
 
     return (
         <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
             <Head>
-                {/* 🔥 HYDRATION BUG FIX */}
-                <title>{`${movie.Title} (${currentMovieYear}) - Best Time Travel Movies | Filmiway`}</title>
-                <meta name="description" content={`${movie.Title} (${currentMovieYear}) - A mind-bending time travel masterpiece. Analysis, complexity ratings & where to stream.`} />
+                {/* ✅ HYDRATION BUG FULLY RESOLVED: Now using flat string variables */}
+                <title>{cleanSEOTitle}</title>
+                <meta name="description" content={cleanSEODesc} />
                 <link rel="canonical" href={`https://filmiway.com/movies/time-travel/${movie.imdbID}`} />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
                 <meta name="robots" content="index, follow" />
@@ -366,14 +366,14 @@ const TimeTravelMoviePage = ({ movie, tmdbData: movieData }) => {
                     />
                 )}
 
-                {/* Meta Tags */}
-                <meta property="og:title" content={`${movie.Title} (${currentMovieYear}) - Time Travel Thriller`} />
-                <meta property="og:description" content={`A mind-bending journey through time and paradoxes.`} />
+                {/* Social Meta Tags */}
+                <meta property="og:title" content={cleanSEOTitle} />
+                <meta property="og:description" content="A mind-bending journey through time and paradoxes." />
                 <meta property="og:type" content="video.movie" />
                 <meta property="og:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content={`${movie.Title} (${currentMovieYear})`} />
-                <meta name="twitter:description" content={`A mind-bending journey through time and paradoxes.`} />
+                <meta name="twitter:title" content={cleanSEOTitle} />
+                <meta name="twitter:description" content="A mind-bending journey through time and paradoxes." />
                 <meta name="twitter:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
             </Head>
 
@@ -383,8 +383,8 @@ const TimeTravelMoviePage = ({ movie, tmdbData: movieData }) => {
             
             <div className="relative z-10 pt-10 sm:pt-12 lg:pt-16">
                 
-                {/* ✅ HIDDEN H1 FOR SEO */}
-                <h1 className="sr-only">{`${movie.Title} (${currentMovieYear}) - Best Time Travel Movies`}</h1>
+                {/* ✅ SEO FIX: HIDDEN H1 ADDED HERE FOR GOOGLE & BING PARITY */}
+                <h1 className="sr-only">{cleanSEOTitle}</h1>
 
                 <TimeTravelBreadcrumb movie={movie} />
                 <div className="container mx-auto px-0 pb-16 sm:pb-24 lg:pb-32 max-w-7xl">

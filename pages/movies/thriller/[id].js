@@ -7,7 +7,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, Play, X, User, Twitter, Hash, Send, Film, Award } from 'lucide-react'; // Added Award icon for Suspense Index
+import { ChevronLeft, Play, X, User, Twitter, Hash, Send, Film, Award } from 'lucide-react'; 
 import InternalCollectionsSection from '../../../components/InternalCollectionsSection';
 import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
@@ -75,7 +75,6 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
   const posterImage = posterPath ? getTMDBImage(posterPath, 'w500') : null;
 
   const insight = getThrillerInsight(movie?.Title);
-  // METRIC CHANGE: Suspense Intensity
   const suspenseIntensity = richData?.suspenseIntensity || 85;
 
   const mobileHeroCSS = `
@@ -209,7 +208,6 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
   const sensitiveData = SENSITIVE_TIMELINES[movie.tmdbId];
   const faqs = THRILLER_FAQS[movie.Title] || [];
 
-  // 1. CALCULATE THE PEAK MOMENT
   let peakStats = "Peak info unavailable.";
   if (data?.scenes && data.scenes.length > 0) {
     const peakScene = data.scenes.reduce((prev, current) => 
@@ -218,7 +216,6 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
     peakStats = `[PEAK MOMENT] Maximum Suspense (${peakScene.intensity}/100) hits at minute ${peakScene.time}: "${peakScene.label}".`;
   }
 
-  // 2. METRICS (Metrics Changed for Thriller)
   const intensityStats = `
     [FILMIWAY METRICS]
     - Suspense Intensity: ${data?.suspenseIntensity || 0}/100
@@ -242,22 +239,18 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
     ? `[COMMON QUESTIONS] ${faqs.map(f => `Q: ${f.question} A: ${f.answer}`).join(' | ')}`
     : '';
 
-  // 3. COMPILE FULL DESCRIPTION
   const fullDescription = `
     ${data?.synopsis || movie.description || "A gripping suspense thriller."}
-    
     --- DETAILED ANALYSIS ---
     ${peakStats} 
     ${intensityStats}
     ${dnaStats}
     ${contentWarnings}
     ${faqText}
-    
     Ranking: #${movie.rank || 'N/A'} in Thriller Cinema.
     Production: Budget ${data?.budget || 'N/A'}, Box Office ${data?.boxOffice || 'N/A'}.
   `.replace(/\s+/g, ' ').trim();
 
-  // 4. MAIN MOVIE SCHEMA
   const movieSchema = {
     "@context": "https://schema.org",
     "@type": "Movie",
@@ -273,13 +266,9 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
       "@type": "Person",
       "name": actor
     })) || [],
-    
     "review": {
       "@type": "Review",
-      "author": {
-        "@type": "Organization",
-        "name": "Filmiway"
-      },
+      "author": { "@type": "Organization", "name": "Filmiway" },
       "reviewRating": {
         "@type": "Rating",
         "ratingValue": data?.rating || 8.0, 
@@ -287,7 +276,6 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
         "worstRating": "1"
       }
     },
-
     "genre": data?.dna ? Object.keys(data.dna) : ["Thriller", "Suspense", "Mystery"],
     "keywords": "Thriller, Suspense, Mystery, Twist Ending, " + (data?.themes ? data.themes.join(", ") : ""),
     "url": `https://filmiway.com/movies/thriller/${movie.imdbID}`,
@@ -315,11 +303,8 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
 };
 
 const ThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
-    // Aliasing tmdbData to movieData
     const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
-    // Pass rich data to Banner for fallback
     const richData = COMPLETE_MOVIE_DATA[movie.tmdbId]; 
-    const correctData = MOVIE_DATA_BY_TITLE[movie.Title];
     const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -339,15 +324,18 @@ const ThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
     const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
-    // Generate schema
+    // ✅ SEO FIX: Pre-construct clean strings to prevent hydration placeholders in snippets
+    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Best Thriller Movies | Filmiway`;
+    const cleanSEODesc = `${movie.Title} (${currentMovieYear}) - A gripping suspense thriller. Analysis, intensity ratings & where to stream.`;
+
     const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear);
 
     return (
         <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
             <Head>
-                {/* 🔥 HYDRATION BUG FIX */}
-                <title>{`${movie.Title} (${currentMovieYear}) - Best Thriller Movies | Filmiway`}</title>
-                <meta name="description" content={`${movie.Title} (${currentMovieYear}) - A gripping suspense thriller. Analysis, intensity ratings & where to stream.`} />
+                {/* ✅ HYDRATION BUG REMOVED: Now using a flat string for the title tag */}
+                <title>{cleanSEOTitle}</title>
+                <meta name="description" content={cleanSEODesc} />
                 <link rel="canonical" href={`https://filmiway.com/movies/thriller/${movie.imdbID}`} />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
                 <meta name="robots" content="index, follow" />
@@ -365,14 +353,14 @@ const ThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
                     />
                 )}
 
-                {/* Meta Tags */}
-                <meta property="og:title" content={`${movie.Title} (${currentMovieYear}) - Suspense Thriller`} />
-                <meta property="og:description" content={`A gripping suspense thriller.`} />
+                {/* Social Meta Tags */}
+                <meta property="og:title" content={cleanSEOTitle} />
+                <meta property="og:description" content="A gripping suspense thriller." />
                 <meta property="og:type" content="video.movie" />
                 <meta property="og:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content={`${movie.Title} (${currentMovieYear})`} />
-                <meta name="twitter:description" content={`A gripping suspense thriller.`} />
+                <meta name="twitter:title" content={cleanSEOTitle} />
+                <meta name="twitter:description" content="A gripping suspense thriller." />
                 <meta name="twitter:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
             </Head>
 
@@ -382,8 +370,8 @@ const ThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
             
             <div className="relative z-10 pt-10 sm:pt-12 lg:pt-16">
                 
-                {/* ✅ HIDDEN H1 FOR SEO */}
-                <h1 className="sr-only">{`${movie.Title} (${currentMovieYear}) - Best Thriller Movies`}</h1>
+                {/* ✅ HIDDEN H1 FOR GOOGLE/BING SEO PARITY */}
+                <h1 className="sr-only">{cleanSEOTitle}</h1>
 
                 <ThrillerBreadcrumb movie={movie} />
                 <div className="container mx-auto px-0 pb-16 sm:pb-24 lg:pb-32 max-w-7xl">

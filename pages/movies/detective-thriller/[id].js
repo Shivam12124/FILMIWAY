@@ -7,7 +7,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, Play, X, User, Twitter, Hash, Send, Film, Search } from 'lucide-react'; // Changed icon to Search/Magnifying Glass
+import { ChevronLeft, Play, X, User, Twitter, Hash, Send, Film, Search } from 'lucide-react'; 
 import InternalCollectionsSection from '../../../components/InternalCollectionsSection';
 import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
@@ -68,7 +68,6 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
   const posterImage = posterPath ? getTMDBImage(posterPath, 'w500') : null;
 
   const insight = getDetectiveInsight(movie?.Title);
-  // METRIC CHANGE: Mystery Index
   const mysteryIndex = richData?.mysteryComplexity || 88;
 
   const mobileHeroCSS = `
@@ -76,7 +75,7 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
     .mobile-hero-row { display: flex; flex-direction: row; align-items: flex-start; width: 100vw; max-width: 100vw; gap: 10px; margin: 0; padding: 0 8px; }
     .mobile-hero-poster { width: 38vw; min-width: 106px; border-radius: 12px; overflow: hidden; box-shadow: 0 3px 14px #0007; margin: 0; flex-shrink: 0; }
     .mobile-hero-poster img { width: 100%; height: auto; border-radius: 12px; display: block; }
-    .mobile-detective-card { background: linear-gradient(135deg, #1a1600 0%, #0f0f15 100%); border-radius: 12px; box-shadow: 0 2px 12px #0006; margin: 0; flex: 1; border-left: 4px solid #EAB308; display: flex; flex-direction: column; justify-content: flex-start; padding: 10px 10px 10px 12px; min-height: 110px; position: relative; }
+    .mobile-detective-card { background: linear-gradient(135deg, #1a1600 0%, #0f172a 100%); border-radius: 12px; box-shadow: 0 2px 12px #0006; margin: 0; flex: 1; border-left: 4px solid #EAB308; display: flex; flex-direction: column; justify-content: flex-start; padding: 10px 10px 10px 12px; min-height: 110px; position: relative; }
     .mobile-detective-row { display: flex; align-items: flex-start; gap: 7px; }
     .mobile-detective-icon { min-width: 24px; min-height: 24px; color: #FDE047; margin-top: 2px; }
     .mobile-detective-title { font-size: 15px; font-weight: bold; color: #FDE047; margin-bottom: 1px; line-height: 1.12; }
@@ -202,7 +201,6 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
   const sensitiveData = SENSITIVE_TIMELINES[movie.tmdbId];
   const faqs = DETECTIVE_THRILLER_FAQS[movie.Title] || [];
 
-  // 1. CALCULATE THE PEAK MOMENT
   let peakStats = "Peak info unavailable.";
   if (data?.scenes && data.scenes.length > 0) {
     const peakScene = data.scenes.reduce((prev, current) => 
@@ -211,7 +209,6 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
     peakStats = `[PEAK MOMENT] Maximum Suspense (${peakScene.intensity}/100) hits at minute ${peakScene.time}: "${peakScene.label}".`;
   }
 
-  // 2. METRICS (Metrics Changed for Detective Genre)
   const intensityStats = `
     [FILMIWAY METRICS]
     - Mystery Index: ${data?.mysteryComplexity || 0}/100
@@ -234,22 +231,18 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
     ? `[COMMON QUESTIONS] ${faqs.map(f => `Q: ${f.question} A: ${f.answer}`).join(' | ')}`
     : '';
 
-  // 3. COMPILE FULL DESCRIPTION
   const fullDescription = `
     ${data?.synopsis || movie.description || "A masterful detective thriller."}
-    
     --- DETAILED ANALYSIS ---
     ${peakStats} 
     ${intensityStats}
     ${dnaStats}
     ${contentWarnings}
     ${faqText}
-    
     Ranking: #${movie.rank || 'N/A'} in Detective Cinema.
     Production: Budget ${data?.budget || 'N/A'}, Box Office ${data?.boxOffice || 'N/A'}.
   `.replace(/\s+/g, ' ').trim();
 
-  // 4. MAIN MOVIE SCHEMA
   const movieSchema = {
     "@context": "https://schema.org",
     "@type": "Movie",
@@ -268,10 +261,7 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
     
     "review": {
       "@type": "Review",
-      "author": {
-        "@type": "Organization",
-        "name": "Filmiway"
-      },
+      "author": { "@type": "Organization", "name": "Filmiway" },
       "reviewRating": {
         "@type": "Rating",
         "ratingValue": data?.rating || 8.0, 
@@ -279,14 +269,11 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
         "worstRating": "1"
       }
     },
-
     "genre": data?.dna ? Object.keys(data.dna) : ["Thriller", "Mystery", "Crime"],
     "keywords": "Detective, Murder Mystery, Serial Killer, Investigation, " + (data?.themes ? data.themes.join(", ") : ""),
     "url": `https://filmiway.com/movies/detective-thriller/${movie.imdbID}`,
     "author": {
-      "@type": "Organization",
-      "name": "Filmiway",
-      "url": "https://filmiway.com"
+      "@type": "Organization", "name": "Filmiway", "url": "https://filmiway.com"
     }
   };
 
@@ -307,9 +294,7 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
 };
 
 const DetectiveThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
-    // Aliasing tmdbData to movieData
     const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
-    // Pass rich data to Banner for fallback
     const richData = COMPLETE_MOVIE_DATA[movie.tmdbId]; 
     const correctData = MOVIE_DATA_BY_TITLE[movie.Title];
     const [isMobile, setIsMobile] = useState(false);
@@ -331,19 +316,32 @@ const DetectiveThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
     const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
-    // Generate schema
+    // ✅ SEO FIX: Join title into a single string variable to prevent hydration markers ()
+    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Best Detective Thrillers | Filmiway`;
+    const cleanSEODesc = `${movie.Title} (${currentMovieYear}) - A masterful detective thriller. Analysis, mystery ratings & where to stream.`;
+
     const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear);
 
     return (
         <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
             <Head>
-                {/* 🔥 HYDRATION BUG FIX */}
-                <title>{`${movie.Title} (${currentMovieYear}) - Best Detective Thrillers | Filmiway`}</title>
-                <meta name="description" content={`${movie.Title} (${currentMovieYear}) - A masterful detective thriller. Analysis, mystery ratings & where to stream.`} />
+                {/* ✅ HYDRATION BUG REMOVED: Now using a flat string for the title tag */}
+                <title>{cleanSEOTitle}</title>
+                <meta name="description" content={cleanSEODesc} />
                 <link rel="canonical" href={`https://filmiway.com/movies/detective-thriller/${movie.imdbID}`} />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
                 <meta name="robots" content="index, follow" />
                 <meta name="language" content="English" />
+
+                {/* Social Meta Tags */}
+                <meta property="og:title" content={cleanSEOTitle} />
+                <meta property="og:description" content="A gripping mystery about the pursuit of truth." />
+                <meta property="og:type" content="video.movie" />
+                <meta property="og:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content={cleanSEOTitle} />
+                <meta name="twitter:description" content="A gripping detective mystery." />
+                <meta name="twitter:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
 
                 {/* ✅ SCHEMA INJECTION */}
                 <script
@@ -356,16 +354,6 @@ const DetectiveThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
                         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
                     />
                 )}
-
-                {/* Meta Tags */}
-                <meta property="og:title" content={`${movie.Title} (${currentMovieYear}) - Detective Thriller`} />
-                <meta property="og:description" content={`A gripping mystery about the pursuit of truth.`} />
-                <meta property="og:type" content="video.movie" />
-                <meta property="og:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content={`${movie.Title} (${currentMovieYear})`} />
-                <meta name="twitter:description" content={`A gripping detective mystery.`} />
-                <meta name="twitter:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
             </Head>
 
             <SubtleFilmGrain />
@@ -373,9 +361,8 @@ const DetectiveThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
             <SmartBackButton />
             
             <div className="relative z-10 pt-10 sm:pt-12 lg:pt-16">
-                
-                {/* ✅ HIDDEN H1 FOR SEO */}
-                <h1 className="sr-only">{`${movie.Title} (${currentMovieYear}) - Best Detective Thriller Movies`}</h1>
+                {/* ✅ HIDDEN H1 FOR GOOGLE/BING SEO PARITY */}
+                <h1 className="sr-only">{cleanSEOTitle}</h1>
 
                 <DetectiveBreadcrumb movie={movie} />
                 <div className="container mx-auto px-0 pb-16 sm:pb-24 lg:pb-32 max-w-7xl">

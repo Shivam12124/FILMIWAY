@@ -1,4 +1,4 @@
-// pages/movies/survival/[id].js - FIXED BUILD ERROR ✅
+// pages/movies/survival/[id].js - FIXED BUILD ERROR + HYDRATION FIX ✅
 // Added missing SubtleFilmGrain component definition
 
 import React, { useState, useEffect, useRef } from 'react';
@@ -168,7 +168,6 @@ const AuthorCreditSection = () => (
     </motion.section>
 );
 
-// ✅ ADDED MISSING COMPONENT
 const SubtleFilmGrain = () => (
     <div className="fixed inset-0 pointer-events-none z-0 opacity-[0.005]"><div className="w-full h-full bg-repeat" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)' opacity='0.3'/%3E%3C/svg%3E")`, backgroundSize: '60px 60px' }} /></div>
 );
@@ -188,7 +187,6 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
   const sensitiveData = SENSITIVE_TIMELINES[movie.tmdbId];
   const faqs = SURVIVAL_MOVIE_FAQS[movie.Title] || [];
 
-  // 1. CALCULATE PEAK MOMENT
   let peakStats = "Peak info unavailable.";
   if (data?.scenes && data.scenes.length > 0) {
     const peakScene = data.scenes.reduce((prev, current) => 
@@ -197,7 +195,6 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
     peakStats = `[PEAK MOMENT] Maximum Intensity (${peakScene.intensity}/100) hits at minute ${peakScene.time}: "${peakScene.label}".`;
   }
 
-  // 2. METRICS (Survival Specific)
   const intensityStats = `
     [FILMIWAY METRICS]
     - Survivability Index: ${data?.survivabilityIndex || 0}/100
@@ -208,7 +205,6 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
     ? `[GENRE DNA] ${Object.entries(data.dna).map(([genre, val]) => `${genre}: ${val}%`).join(', ')}`
     : 'Survival Thriller';
 
-  // 3. CONTENT WARNINGS (Exact Timestamps)
   const contentWarnings = sensitiveData?.scenes 
     ? `[CONTENT ADVISORY] ${sensitiveData.scenes.map(s => 
         (s.start && s.end) 
@@ -245,7 +241,9 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
     "review": {
       "@type": "Review",
       "author": { "@type": "Organization", "name": "Filmiway" },
-      "reviewRating": { "@type": "Rating", "ratingValue": data?.rating || 8.0, "bestRating": "10", "worstRating": "1" }
+      "reviewRating": {
+        "@type": "Rating", "ratingValue": data?.rating || 8.0, "bestRating": "10", "worstRating": "1"
+      }
     },
     "genre": data?.dna ? Object.keys(data.dna) : ["Survival", "Thriller"],
     "keywords": "Survival Movie, Human Endurance, Isolation, " + (data?.themes ? data.themes.join(", ") : ""),
@@ -286,18 +284,33 @@ const SurvivalMoviePage = ({ movie, tmdbData: movieData }) => {
 
     const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
+
+    // ✅ SEO FIX: Join title and description strings FIRST to prevent hydration markers ()
+    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Best Survival Film | Filmiway`;
+    const cleanSEODesc = `${movie.Title} - A compelling survival film. Analysis & where to stream.`;
+
     const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear);
 
     return (
         <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
             <Head>
-                <title>{movie.Title} ({currentMovieYear}) - Best Survival Film | Filmiway</title>
-                <meta name="description" content={`${movie.Title} - A gripping survival film. Analysis & where to stream.`} />
+                {/* ✅ HYDRATION BUG RESOLVED: No more split variables inside title tag */}
+                <title>{cleanSEOTitle}</title>
+                <meta name="description" content={cleanSEODesc} />
                 <link rel="canonical" href={`https://filmiway.com/movies/survival/${movie.imdbID}`} />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                 <meta name="robots" content="index, follow" />
+                
+                {/* JSON-LD Schema */}
                 <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }} />
                 {faqSchema && (<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />)}
+
+                {/* Social Meta Tags */}
+                <meta property="og:title" content={cleanSEOTitle} />
+                <meta property="og:description" content={cleanSEODesc} />
+                <meta property="og:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
+                <meta name="twitter:title" content={cleanSEOTitle} />
+                <meta name="twitter:description" content={cleanSEODesc} />
             </Head>
 
             <SubtleFilmGrain />
@@ -305,6 +318,10 @@ const SurvivalMoviePage = ({ movie, tmdbData: movieData }) => {
             <SmartBackButton />
             
             <div className="relative z-10 pt-10 sm:pt-12 lg:pt-16">
+                
+                {/* ✅ HIDDEN H1 ADDED HERE FOR GOOGLE & BING SEO PARITY */}
+                <h1 className="sr-only">{cleanSEOTitle}</h1>
+
                 <SurvivalBreadcrumb movie={movie} />
                 <div className="container mx-auto px-0 pb-16 sm:pb-24 lg:pb-32 max-w-7xl">
                     <OptimizedBanner movie={movie} movieData={movieData} richData={richData} trailer={trailer} isMobile={isMobile} />

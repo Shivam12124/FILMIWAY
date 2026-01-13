@@ -68,7 +68,6 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
   const posterImage = posterPath ? getTMDBImage(posterPath, 'w500') : null;
 
   const insight = getPsychologicalInsight(movie?.Title);
-  // Note: psychologicalIntensity maps to "Paranoia Level" for this collection
   const psychIntensity = richData?.psychologicalIntensity || 85;
 
   const mobileHeroCSS = `
@@ -200,13 +199,11 @@ const EyesWideShutBreadcrumb = ({ movie }) => (
 const generateMovieSchema = (movie, movieData, currentMovieYear) => {
   const data = COMPLETE_MOVIE_DATA[movie.tmdbId];
   const sensitiveData = SENSITIVE_TIMELINES[movie.tmdbId];
-  // ✅ 1. GET FAQs FOR THIS SPECIFIC MOVIE
   const faqs = EYES_WIDE_SHUT_MOVIE_FAQS[movie.Title] || [];
 
   const intensityStats = `
     [FILMIWAY METRICS]
     - Paranoia Level: ${data?.psychologicalIntensity || 0}/100
-
     - Complexity Level: ${data?.complexityLevel || 'High'}
   `;
 
@@ -218,7 +215,6 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
     ? `[CONTENT ADVISORY] Contains: ${sensitiveData.scenes.map(s => `${s.type} (${s.severity})`).join(', ')}.`
     : 'No specific content warnings listed.';
 
-  // ✅ 2. FORMAT FAQs TEXT FOR LLMs
   const faqText = faqs.length > 0
     ? `[COMMON QUESTIONS] ${faqs.map(f => `Q: ${f.question} A: ${f.answer}`).join(' | ')}`
     : '';
@@ -236,7 +232,6 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
     Production: Budget ${data?.budget || 'N/A'}, Box Office ${data?.boxOffice || 'N/A'}.
   `.replace(/\s+/g, ' ').trim();
 
-  // ✅ 3. MAIN MOVIE SCHEMA
   const movieSchema = {
     "@context": "https://schema.org",
     "@type": "Movie",
@@ -277,7 +272,6 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
     }
   };
 
-  // ✅ 4. SEPARATE FAQ SCHEMA (Rich Snippet Gold)
   const faqSchema = faqs.length > 0 ? {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -296,7 +290,6 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
 
 const EyesWideShutMoviePage = ({ movie, tmdbData: movieData }) => {
     const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
-    // Pass rich data to Banner for fallback
     const richData = COMPLETE_MOVIE_DATA[movie.tmdbId]; 
     const correctData = MOVIE_DATA_BY_TITLE[movie.Title];
     const [isMobile, setIsMobile] = useState(false);
@@ -318,15 +311,18 @@ const EyesWideShutMoviePage = ({ movie, tmdbData: movieData }) => {
     const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
-    // Generate schema on client
+    // ✅ SEO STRINGS (HYDRATION FIX)
+    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Movies Like Eyes Wide Shut | Filmiway`;
+    const cleanSEODesc = `${movie.Title} (${currentMovieYear}) - A paranoid thriller like Eyes Wide Shut. Analysis, ratings & where to stream.`;
+
     const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear);
 
     return (
         <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
             <Head>
-                {/* 🔥 HYDRATION BUG FIXED: Title is now a single template literal string */}
-                <title>{`${movie.Title} (${currentMovieYear}) - Movies Like Eyes Wide Shut | Filmiway`}</title>
-                <meta name="description" content={`${movie.Title} (${currentMovieYear}) - A paranoid thriller like Eyes Wide Shut. Analysis, ratings & where to stream.`} />
+                {/* ✅ HYDRATION BUG RESOLVED: No more split variables inside title tag */}
+                <title>{cleanSEOTitle}</title>
+                <meta name="description" content={cleanSEODesc} />
                 <link rel="canonical" href={`https://filmiway.com/movies/eyes-wide-shut/${movie.imdbID}`} />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
                 <meta name="robots" content="index, follow" />
@@ -337,7 +333,6 @@ const EyesWideShutMoviePage = ({ movie, tmdbData: movieData }) => {
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }}
                 />
-                {/* ✅ FAQ SCHEMA INJECTED HERE */}
                 {faqSchema && (
                     <script
                         type="application/ld+json"
@@ -345,14 +340,14 @@ const EyesWideShutMoviePage = ({ movie, tmdbData: movieData }) => {
                     />
                 )}
 
-                {/* Standard Meta Tags */}
-                <meta property="og:title" content={`${movie.Title} (${currentMovieYear}) - Paranoia Thriller`} />
-                <meta property="og:description" content={`A gripping film about secret societies and hidden elites.`} />
+                {/* Social Meta Tags */}
+                <meta property="og:title" content={cleanSEOTitle} />
+                <meta property="og:description" content="A gripping film about secret societies and hidden elites." />
                 <meta property="og:type" content="video.movie" />
                 <meta property="og:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content={`${movie.Title} (${currentMovieYear})`} />
-                <meta name="twitter:description" content={`A gripping film about secret societies and hidden elites.`} />
+                <meta name="twitter:title" content={cleanSEOTitle} />
+                <meta name="twitter:description" content="A gripping film about secret societies and hidden elites." />
                 <meta name="twitter:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
             </Head>
 
@@ -362,8 +357,8 @@ const EyesWideShutMoviePage = ({ movie, tmdbData: movieData }) => {
             
             <div className="relative z-10 pt-10 sm:pt-12 lg:pt-16">
                 
-                {/* ✅ SEO FIX: HIDDEN H1 ADDED HERE FOR BING & GOOGLE */}
-                <h1 className="sr-only">{`${movie.Title} (${currentMovieYear}) - Movies Like Eyes Wide Shut`}</h1>
+                {/* ✅ HIDDEN H1 FOR GOOGLE/BING SEO PARITY */}
+                <h1 className="sr-only">{cleanSEOTitle}</h1>
 
                 <EyesWideShutBreadcrumb movie={movie} />
                 <div className="container mx-auto px-0 pb-16 sm:pb-24 lg:pb-32 max-w-7xl">

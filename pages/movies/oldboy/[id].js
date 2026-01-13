@@ -7,7 +7,6 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-// ✅ ADDED ChevronRight to imports
 import { ChevronLeft, ChevronRight, Play, X, User, Twitter, Hash, Send, Film } from 'lucide-react';
 import InternalCollectionsSection from '../../../components/InternalCollectionsSection';
 import CinematicBackground from '../../../components/CinematicBackground';
@@ -62,7 +61,6 @@ const getOldboyInsight = (title) => {
   return data?.connection || 'A masterful exploration of vengeance, obsession, and moral complexity in the style of Oldboy.';
 };
 
-// ✅ OPTIMIZED BANNER
 const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
   const [showTrailer, setShowTrailer] = useState(false);
   const [countdown, setCountdown] = useState(4);
@@ -76,7 +74,6 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
   const posterImage = posterPath ? getTMDBImage(posterPath, 'w500') : null;
 
   const insight = getOldboyInsight(movie?.Title);
-  // METRIC CHANGE: Revenge Intensity
   const revengeIntensity = richData?.revengeIntensity || 90;
 
   const mobileHeroCSS = `
@@ -199,19 +196,16 @@ const OldboyBreadcrumb = ({ movie }) => (
     <motion.nav className="mb-6 sm:mb-8 px-3 sm:px-4 lg:px-6 pb-3 sm:pb-4" style={{ borderBottom: `1px solid ${COLORS.borderLight}` }} initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
         <div className="flex items-center space-x-2 sm:space-x-3 text-xs sm:text-sm" style={{ color: COLORS.textMuted }}>
             <Link href="/collection/movies-like-oldboy" className="transition-all duration-300 truncate" style={{ color: COLORS.textMuted }} onMouseEnter={(e) => e.currentTarget.style.color = COLORS.accent} onMouseLeave={(e) => e.currentTarget.style.color = COLORS.textMuted}>Movies Like Oldboy</Link>
-            {/* ✅ CHEVRON RIGHT ADDED HERE */}
             <ChevronRight size={14} className="flex-shrink-0" style={{ color: COLORS.textDisabled }} /><span className="font-medium truncate" style={{ color: `${COLORS.accent}B3` }}>{movie.Title}</span>
         </div>
     </motion.nav>
 );
 
-// ✅ JSON-LD SCHEMA GENERATOR - OLDBOY EDITION
 const generateMovieSchema = (movie, movieData, currentMovieYear) => {
   const data = COMPLETE_MOVIE_DATA[movie.tmdbId];
   const sensitiveData = SENSITIVE_TIMELINES[movie.tmdbId];
   const faqs = OLDBOY_MOVIE_FAQS[movie.Title] || [];
 
-  // 1. CALCULATE THE PEAK MOMENT
   let peakStats = "Peak info unavailable.";
   if (data?.scenes && data.scenes.length > 0) {
     const peakScene = data.scenes.reduce((prev, current) => 
@@ -220,7 +214,6 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
     peakStats = `[PEAK MOMENT] Maximum Intensity (${peakScene.intensity}/100) hits at minute ${peakScene.time}: "${peakScene.label}".`;
   }
 
-  // 2. METRICS (Metrics Changed for Revenge)
   const intensityStats = `
     [FILMIWAY METRICS]
     - Revenge Intensity: ${data?.revengeIntensity || 0}/100
@@ -244,22 +237,18 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
     ? `[COMMON QUESTIONS] ${faqs.map(f => `Q: ${f.question} A: ${f.answer}`).join(' | ')}`
     : '';
 
-  // 3. COMPILE FULL DESCRIPTION
   const fullDescription = `
     ${data?.synopsis || movie.description || "A brutal revenge thriller."}
-    
     --- DETAILED ANALYSIS ---
     ${peakStats} 
     ${intensityStats}
     ${dnaStats}
     ${contentWarnings}
     ${faqText}
-    
     Ranking: #${movie.rank || 'N/A'} in Revenge Cinema.
     Production: Budget ${data?.budget || 'N/A'}, Box Office ${data?.boxOffice || 'N/A'}.
   `.replace(/\s+/g, ' ').trim();
 
-  // 4. MAIN MOVIE SCHEMA
   const movieSchema = {
     "@context": "https://schema.org",
     "@type": "Movie",
@@ -275,13 +264,9 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
       "@type": "Person",
       "name": actor
     })) || [],
-    
     "review": {
       "@type": "Review",
-      "author": {
-        "@type": "Organization",
-        "name": "Filmiway"
-      },
+      "author": { "@type": "Organization", "name": "Filmiway" },
       "reviewRating": {
         "@type": "Rating",
         "ratingValue": data?.rating || 8.0, 
@@ -289,7 +274,6 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
         "worstRating": "1"
       }
     },
-
     "genre": data?.dna ? Object.keys(data.dna) : ["Thriller", "Action"],
     "keywords": "Oldboy, Revenge, Asian Cinema, Thriller, " + (data?.themes ? data.themes.join(", ") : ""),
     "url": `https://filmiway.com/movies/oldboy/${movie.imdbID}`,
@@ -317,11 +301,8 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
 };
 
 const OldboyMoviePage = ({ movie, tmdbData: movieData }) => {
-    // Aliasing tmdbData to movieData
     const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
-    // Pass rich data to Banner for fallback
     const richData = COMPLETE_MOVIE_DATA[movie.tmdbId]; 
-    const correctData = MOVIE_DATA_BY_TITLE[movie.Title];
     const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -341,21 +322,24 @@ const OldboyMoviePage = ({ movie, tmdbData: movieData }) => {
     const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
-    // Generate schema
+    // ✅ SEO FIX: Construct clean title and description strings FIRST to prevent hydration comments ()
+    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Movies Like Oldboy | Filmiway`;
+    const cleanSEODesc = `${movie.Title} (${currentMovieYear}) - A brutal revenge thriller like Oldboy. Analysis, ratings & where to stream.`;
+
     const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear);
 
     return (
         <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
             <Head>
-                {/* 🔥 HYDRATION BUG FIX */}
-                <title>{`${movie.Title} (${currentMovieYear}) - Movies Like Oldboy | Filmiway`}</title>
-                <meta name="description" content={`${movie.Title} (${currentMovieYear}) - A brutal revenge thriller like Oldboy. Analysis, ratings & where to stream.`} />
+                {/* ✅ HYDRATION BUG FULLY RESOLVED: Titles now use pre-joined strings */}
+                <title>{cleanSEOTitle}</title>
+                <meta name="description" content={cleanSEODesc} />
                 <link rel="canonical" href={`https://filmiway.com/movies/oldboy/${movie.imdbID}`} />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
                 <meta name="robots" content="index, follow" />
                 <meta name="language" content="English" />
 
-                {/* ✅ SCHEMA INJECTION */}
+                {/* JSON-LD Schema */}
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }}
@@ -367,14 +351,14 @@ const OldboyMoviePage = ({ movie, tmdbData: movieData }) => {
                     />
                 )}
 
-                {/* Meta Tags */}
-                <meta property="og:title" content={`${movie.Title} (${currentMovieYear}) - Revenge Thriller`} />
-                <meta property="og:description" content={`A brutal tale of vengeance.`} />
+                {/* Social Meta Tags */}
+                <meta property="og:title" content={cleanSEOTitle} />
+                <meta property="og:description" content="A brutal tale of vengeance and obsession." />
                 <meta property="og:type" content="video.movie" />
                 <meta property="og:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content={`${movie.Title} (${currentMovieYear})`} />
-                <meta name="twitter:description" content={`A brutal tale of vengeance.`} />
+                <meta name="twitter:title" content={cleanSEOTitle} />
+                <meta name="twitter:description" content="A brutal tale of vengeance and obsession." />
                 <meta name="twitter:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
             </Head>
 
@@ -383,9 +367,8 @@ const OldboyMoviePage = ({ movie, tmdbData: movieData }) => {
             <SmartBackButton />
             
             <div className="relative z-10 pt-10 sm:pt-12 lg:pt-16">
-                
-                {/* ✅ HIDDEN H1 FOR SEO */}
-                <h1 className="sr-only">{`${movie.Title} (${currentMovieYear}) - Movies Like Oldboy`}</h1>
+                {/* ✅ HIDDEN H1 FOR GOOGLE & BING SEO PARITY */}
+                <h1 className="sr-only">{cleanSEOTitle}</h1>
 
                 <OldboyBreadcrumb movie={movie} />
                 <div className="container mx-auto px-0 pb-16 sm:pb-24 lg:pb-32 max-w-7xl">
@@ -421,9 +404,7 @@ export async function getStaticProps({ params }) {
         );
         const tmdbData = tmdbResponse.ok ? await tmdbResponse.json() : null;
 
-        return {
-            props: { movie, tmdbData },
-        };
+        return { props: { movie, tmdbData } };
     } catch (error) {
         console.error('Error fetching TMDB data:', error);
         return {

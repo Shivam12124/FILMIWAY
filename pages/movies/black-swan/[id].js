@@ -204,7 +204,6 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
   // 1. CALCULATE THE PEAK MOMENT (New Feature)
   let peakStats = "Peak info unavailable.";
   if (data?.scenes && data.scenes.length > 0) {
-    // Find the scene with the highest intensity
     const peakScene = data.scenes.reduce((prev, current) => 
       (current.intensity > prev.intensity) ? current : prev
     );
@@ -223,13 +222,11 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
     ? `[GENRE DNA] ${Object.entries(data.dna).map(([genre, val]) => `${genre}: ${val}%`).join(', ')}`
     : 'Psychological Thriller';
 
- // ✅ FIXED: Now shows exact timestamps if they exist in your data
   const contentWarnings = sensitiveData?.scenes 
     ? `[CONTENT ADVISORY] ${sensitiveData.scenes.map(s => 
-        // If strict timestamps exist, show them clearly
         (s.start && s.end) 
           ? `${s.type}: ${s.start}-${s.end} (${s.severity})` 
-          : `${s.type} (${s.severity})` // Fallback if no times listed
+          : `${s.type} (${s.severity})` 
       ).join(' | ')}.`
     : 'No specific content warnings listed.';
   const faqText = faqs.length > 0
@@ -307,12 +304,10 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
 
   return { movieSchema, faqSchema };
 };
+
 const BlackSwanMoviePage = ({ movie, tmdbData: movieData }) => {
-    // We aliased tmdbData to movieData to fix the naming bug
     const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
-    // Pass rich data to Banner for fallback
     const richData = COMPLETE_MOVIE_DATA[movie.tmdbId]; 
-    const correctData = MOVIE_DATA_BY_TITLE[movie.Title];
     const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -332,15 +327,18 @@ const BlackSwanMoviePage = ({ movie, tmdbData: movieData }) => {
     const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
-    // Generate schema on client or pass from server (here we do it inside render using data available)
+    // ✅ SEO FIX: Construct clean title and description strings FIRST to prevent hydration comments ()
+    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Movies Like Black Swan | Filmiway`;
+    const cleanSEODesc = `${movie.Title} (${currentMovieYear}) - A psychologically intense film like Black Swan. Analysis, ratings & where to stream.`;
+
     const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear);
 
     return (
         <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
             <Head>
-                {/* 🔥 HYDRATION BUG FIXED: Title is now a single template literal string */}
-                <title>{`${movie.Title} (${currentMovieYear}) - Movies Like Black Swan | Filmiway`}</title>
-                <meta name="description" content={`${movie.Title} (${currentMovieYear}) - A psychologically intense film like Black Swan. Analysis, ratings & where to stream.`} />
+                {/* ✅ HYDRATION BUG FULLY RESOLVED: Titles now use pre-joined strings */}
+                <title>{cleanSEOTitle}</title>
+                <meta name="description" content={cleanSEODesc} />
                 <link rel="canonical" href={`https://filmiway.com/movies/black-swan/${movie.imdbID}`} />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
                 <meta name="robots" content="index, follow" />
@@ -351,7 +349,6 @@ const BlackSwanMoviePage = ({ movie, tmdbData: movieData }) => {
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }}
                 />
-                {/* ✅ FAQ SCHEMA INJECTED HERE */}
                 {faqSchema && (
                     <script
                         type="application/ld+json"
@@ -360,13 +357,13 @@ const BlackSwanMoviePage = ({ movie, tmdbData: movieData }) => {
                 )}
 
                 {/* Standard Meta Tags */}
-                <meta property="og:title" content={`${movie.Title} (${currentMovieYear}) - Psychological Thriller`} />
-                <meta property="og:description" content={`A gripping psychological film about obsession and identity.`} />
+                <meta property="og:title" content={cleanSEOTitle} />
+                <meta property="og:description" content="A gripping psychological film about obsession and identity." />
                 <meta property="og:type" content="video.movie" />
                 <meta property="og:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content={`${movie.Title} (${currentMovieYear})`} />
-                <meta name="twitter:description" content={`A psychologically intense film about performance and identity.`} />
+                <meta name="twitter:title" content={cleanSEOTitle} />
+                <meta name="twitter:description" content="A psychologically intense film about performance and identity." />
                 <meta name="twitter:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
             </Head>
 
@@ -377,13 +374,11 @@ const BlackSwanMoviePage = ({ movie, tmdbData: movieData }) => {
             <div className="relative z-10 pt-10 sm:pt-12 lg:pt-16">
                 
                 {/* ✅ SEO FIX: HIDDEN H1 ADDED HERE FOR BING & GOOGLE */}
-                <h1 className="sr-only">{`${movie.Title} (${currentMovieYear}) - Movies Like Black Swan`}</h1>
+                <h1 className="sr-only">{cleanSEOTitle}</h1>
 
                 <BlackSwanBreadcrumb movie={movie} />
                 <div className="container mx-auto px-0 pb-16 sm:pb-24 lg:pb-32 max-w-7xl">
                     <OptimizedBanner movie={movie} movieData={movieData} richData={richData} trailer={trailer} isMobile={isMobile} />
-                    
-                    {/* ✅ VISUALS CLEANED UP: No extra graphs shown here */}
                     
                     <motion.div id="watch" initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 2.0, duration: 0.8 }} className="space-y-8 sm:space-y-12 px-3 sm:px-4 lg:px-6">
                         <MovieDetailsSection movie={movie} fromBlackSwanCollection={true} />
@@ -417,7 +412,6 @@ export async function getStaticProps({ params }) {
 
         return {
             props: { movie, tmdbData },
-            // Removed revalidate as per your Static Export request
         };
     } catch (error) {
         console.error('Error fetching TMDB data:', error);

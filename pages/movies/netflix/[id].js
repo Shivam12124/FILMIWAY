@@ -49,8 +49,7 @@ const getTMDBImage = (path, size = 'w1280') =>
 const generateMovieSchema = (movie, movieData) => {
   const insight = DRAMA_INSIGHTS[movie.title] || movie.synopsis;
 
-  // Custom Metrics for Drama
-  const emotionalImpact = 95; // Default high for this collection
+  const emotionalImpact = 95;
   const characterDepth = 90;
   const narrativePower = 88;
 
@@ -265,18 +264,30 @@ const DramaMoviePage = ({ movie }) => {
   const trailer = movieData?.videos?.results?.find((video) => video.type === "Trailer" && video.site === "YouTube");
   const movieSchema = generateMovieSchema(movie, movieData);
 
+  // ✅ SEO STRINGS (HYDRATION FIX)
+  const cleanTitle = `${movie.title} (${movie.year}) - Best Drama Film | Filmiway`;
+  const cleanDescription = `${movie.title} - ${movie.synopsis?.substring(0, 150)}...`;
+
   if (isLoading) return <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: COLORS.bgPrimary }}><div className="text-center"><div className="w-12 h-12 sm:w-16 sm:h-16 border-4 rounded-full animate-spin mx-auto mb-4" style={{ borderColor: COLORS.borderLight, borderTopColor: COLORS.accent }}></div><p className="text-sm sm:text-base" style={{ color: COLORS.textMuted }}>Loading...</p></div></div>;
 
   return (
     <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
       <Head>
-        {/* 🔥 FIX 1: Hydration-safe Title */}
-        <title>{`${movie.title} (${movie.year}) - Best Drama Film | Filmiway`}</title>
-        <meta name="description" content={`${movie.title} - ${movie.synopsis?.substring(0, 150)}...`} />
+        {/* ✅ HYDRATION BUG RESOLVED: No more split variables inside title tag */}
+        <title>{cleanTitle}</title>
+        <meta name="description" content={cleanDescription} />
         <link rel="canonical" href={`https://filmiway.com/movies/netflix/${movie.imdbID}`} />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="robots" content="index, follow" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }} />
+        
+        {/* Social Meta Tags */}
+        <meta property="og:title" content={cleanTitle} />
+        <meta property="og:description" content={cleanDescription} />
+        <meta property="og:type" content="video.movie" />
+        <meta property="og:image" content={movieData?.poster_path ? getTMDBImage(movieData.poster_path, 'w500') : ''} />
+        <meta name="twitter:title" content={cleanTitle} />
+        <meta name="twitter:description" content={cleanDescription} />
       </Head>
 
       <div className="absolute inset-0"><CinematicBackground /></div>
@@ -284,8 +295,8 @@ const DramaMoviePage = ({ movie }) => {
 
       <div className="relative z-10 pt-10 sm:pt-12 lg:pt-16">
         
-        {/* 🔥 FIX 2: Hidden H1 for SEO */}
-        <h1 className="sr-only">{`${movie.title} (${movie.year}) - Best Netflix Dramas`}</h1>
+        {/* ✅ HIDDEN H1 ADDED FOR GOOGLE/BING SEO PARITY */}
+        <h1 className="sr-only">{cleanTitle}</h1>
 
         <OptimizedBanner movie={movie} movieData={movieData} trailer={trailer} isMobile={isMobile} />
         

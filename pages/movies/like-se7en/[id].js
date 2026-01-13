@@ -77,7 +77,6 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
   const posterImage = posterPath ? getTMDBImage(posterPath, 'w500') : null;
 
   const insight = getSe7enInsight(movie?.Title);
-  // METRIC CHANGE: Se7en DNA Score
   const noirIntensity = richData?.se7enDNAScore || 90;
 
   const mobileHeroCSS = `
@@ -220,7 +219,7 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
     peakStats = `[PEAK MOMENT] Maximum Tension (${peakScene.intensity}/100) hits at minute ${peakScene.time}: "${peakScene.label}".`;
   }
 
-  // 2. METRICS (Removed Procedural Realism as requested)
+  // 2. METRICS
   const intensityStats = `
     [FILMIWAY METRICS]
     - Se7en DNA Score: ${data?.se7enDNAScore || 0}/100
@@ -316,11 +315,10 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
 };
 
 const Se7enMoviePage = ({ movie, tmdbData: movieData }) => {
-    // Aliasing tmdbData to movieData
-    const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
-    // Pass rich data to Banner
-    const richData = COMPLETE_MOVIE_DATA[movie.tmdbId]; 
-    const correctData = MOVIE_DATA_BY_TITLE[movie.Title];
+    // Note: Use optional chaining to safely access data
+    const movieInfo = COMPLETE_MOVIE_DATA?.[movie.tmdbId] || {};
+    const richData = COMPLETE_MOVIE_DATA?.[movie.tmdbId] || {}; 
+    const correctData = MOVIE_DATA_BY_TITLE?.[movie.Title] || {};
     const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -340,15 +338,19 @@ const Se7enMoviePage = ({ movie, tmdbData: movieData }) => {
     const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
+    // ✅ SEO FIX: Combine variables into single string FIRST to prevent React hydration anchors ()
+    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Movies Like Se7en | Filmiway`;
+    const cleanSEODesc = `${movie.Title} (${currentMovieYear}) - A dark, procedural noir like Se7en. Analysis, intensity ratings & where to stream.`;
+
     // Generate schema
     const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear);
 
     return (
         <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
             <Head>
-                {/* 🔥 HYDRATION BUG FIX */}
-                <title>{`${movie.Title} (${currentMovieYear}) - Movies Like Se7en | Filmiway`}</title>
-                <meta name="description" content={`${movie.Title} (${currentMovieYear}) - A dark, procedural noir like Se7en. Analysis, intensity ratings & where to stream.`} />
+                {/* ✅ HYDRATION BUG REMOVED: Now using a flat string for the title tag */}
+                <title>{cleanSEOTitle}</title>
+                <meta name="description" content={cleanSEODesc} />
                 <link rel="canonical" href={`https://filmiway.com/collection/movies-like-se7en/${movie.imdbID}`} />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
                 <meta name="robots" content="index, follow" />
@@ -366,14 +368,14 @@ const Se7enMoviePage = ({ movie, tmdbData: movieData }) => {
                     />
                 )}
 
-                {/* Meta Tags */}
-                <meta property="og:title" content={`${movie.Title} (${currentMovieYear}) - Noir Thriller`} />
-                <meta property="og:description" content={`A dark film about obsession and crime.`} />
+                {/* Social Meta Tags */}
+                <meta property="og:title" content={cleanSEOTitle} />
+                <meta property="og:description" content="A dark film about obsession and crime." />
                 <meta property="og:type" content="video.movie" />
                 <meta property="og:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content={`${movie.Title} (${currentMovieYear})`} />
-                <meta name="twitter:description" content={`A dark procedural film.`} />
+                <meta name="twitter:title" content={cleanSEOTitle} />
+                <meta name="twitter:description" content="A dark procedural film." />
                 <meta name="twitter:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
             </Head>
 
@@ -383,8 +385,8 @@ const Se7enMoviePage = ({ movie, tmdbData: movieData }) => {
             
             <div className="relative z-10 pt-10 sm:pt-12 lg:pt-16">
                 
-                {/* ✅ HIDDEN H1 FOR SEO */}
-                <h1 className="sr-only">{`${movie.Title} (${currentMovieYear}) - Movies Like Se7en`}</h1>
+                {/* ✅ HIDDEN H1 FOR GOOGLE/BING SEO PARITY */}
+                <h1 className="sr-only">{cleanSEOTitle}</h1>
 
                 <Se7enBreadcrumb movie={movie} />
                 <div className="container mx-auto px-0 pb-16 sm:pb-24 lg:pb-32 max-w-7xl">
