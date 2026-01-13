@@ -1,4 +1,5 @@
-// components/CinematicMovieCard.js - FIXED TO SUPPORT SURVIVAL COLLECTION ✅
+// components/CinematicMovieCard.js - FIXED RUNTIME ERROR ✅
+
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Crown, Star } from 'lucide-react';
@@ -9,15 +10,15 @@ import { COMPLETE_MOVIE_DATA as SURVIVAL_DATA, STRATEGIC_QUOTES as SURVIVAL_QUOT
 const CinematicMovieCard = React.memo(({ movie, rank, isActive, fromSurvivalCollection }) => {
     const [isHovered, setIsHovered] = useState(false);
     
-    // 🔥 FIX: Check both survival and regular data
+    // 🔥 FIX: Safe data access with fallback to empty object
     const movieInfo = fromSurvivalCollection 
-        ? (SURVIVAL_DATA[movie.tmdbId] || {})
-        : (COMPLETE_MOVIE_DATA[movie.tmdbId] || {});
+        ? (SURVIVAL_DATA?.[movie.tmdbId] || {})
+        : (COMPLETE_MOVIE_DATA?.[movie.tmdbId] || {});
     
-    // 🔥 FIX: Get correct quotes based on collection
+    // 🔥 FIX: Safe quote access
     const quote = fromSurvivalCollection
-        ? SURVIVAL_QUOTES[movie.tmdbId]
-        : STRATEGIC_QUOTES[movie.tmdbId];
+        ? (SURVIVAL_QUOTES?.[movie.tmdbId] || null)
+        : (STRATEGIC_QUOTES?.[movie.tmdbId] || null);
 
     return (
         <motion.div 
@@ -43,7 +44,7 @@ const CinematicMovieCard = React.memo(({ movie, rank, isActive, fromSurvivalColl
                     <TMDBMoviePoster movie={movie} className="w-full h-full" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent rounded-xl" />
                     
-                    {/* Mobile-Optimized Rank Badge */}
+                    {/* Rank Badge */}
                     <div className="absolute top-2 left-2 sm:top-3 sm:left-3">
                         <motion.div 
                             className={`w-8 h-8 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-xl backdrop-blur-xl border flex items-center justify-center text-xs sm:text-sm font-light ${
@@ -56,7 +57,7 @@ const CinematicMovieCard = React.memo(({ movie, rank, isActive, fromSurvivalColl
                         </motion.div>
                     </div>
                     
-                    {/* Mobile-Optimized Complexity Badge */}
+                    {/* Complexity Badge */}
                     <div className="absolute top-2 right-2 sm:top-3 sm:right-3">
                         <motion.div 
                             className="px-2 py-1 sm:px-3 sm:py-1 bg-gray-800/90 backdrop-blur-xl border border-gray-700/50 rounded-lg text-xs font-light tracking-wider uppercase" 
@@ -71,7 +72,7 @@ const CinematicMovieCard = React.memo(({ movie, rank, isActive, fromSurvivalColl
                         </motion.div>
                     </div>
                     
-                    {/* Mobile-Optimized Rating Badge */}
+                    {/* Rating Badge */}
                     <motion.div 
                         initial={{ opacity: 0, x: -30 }} 
                         animate={{ opacity: isHovered ? 1 : 0, x: isHovered ? 0 : -30 }} 
@@ -83,7 +84,6 @@ const CinematicMovieCard = React.memo(({ movie, rank, isActive, fromSurvivalColl
                 </motion.div>
             </div>
             
-            {/* 🔥 FIXED MOVIE INFO - NO MORE "undefined..." */}
             <div className="text-center space-y-2 sm:space-y-3 lg:space-y-4 z-10 max-w-sm px-2 sm:px-4">
                 <motion.h2 
                     className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-light tracking-wide text-gray-100 leading-tight" 
@@ -93,12 +93,10 @@ const CinematicMovieCard = React.memo(({ movie, rank, isActive, fromSurvivalColl
                     {movie.Title?.replace(/\*/g, '') || movie.title || 'Unknown Movie'}
                 </motion.h2>
                 
-                {/* 🔥 FIXED RUNTIME DISPLAY - HANDLES ALL FORMATS */}
                 <div className="text-gray-400 text-xs sm:text-sm font-light">
                     {movie.year || movie.Year || '2024'} • {movie.genre?.split(',')[0].trim() || movie.Genre?.split(',')[0].trim() || 'Drama'} • {movie.runtime ? `${movie.runtime} min` : (movie.Runtime || '120 min')}
                 </div>
                 
-                {/* 🔥 FIXED TAGLINE - NO MORE "undefined..." - ONLY SHOWS ON HOVER */}
                 {isHovered && (quote || movieInfo.synopsis) && (
                     <motion.p 
                         className="text-gray-300/80 text-xs sm:text-sm leading-relaxed font-light tracking-wide transition-all duration-500"

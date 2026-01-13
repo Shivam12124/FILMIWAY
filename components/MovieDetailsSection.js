@@ -1,4 +1,4 @@
-// components/MovieDetailsSection.js - FIXED IMPORTS & DATA MAPPING ✅
+// components/MovieDetailsSection.js - FIXED CARD HEIGHTS & ALIGNMENT ✅
 
 import React from 'react';
 import { motion } from 'framer-motion';
@@ -9,7 +9,7 @@ import { Users, Film, BookOpen, Star } from 'lucide-react';
 // 1. Base / Standard
 import { COMPLETE_MOVIE_DATA, STRATEGIC_QUOTES } from '../utils/movieData';
 
-// 2. Specialized Collections (New Format)
+// 2. Specialized Collections
 import { 
   COMPLETE_MOVIE_DATA as SURVIVAL_MOVIE_DATA, 
   STRATEGIC_QUOTES as SURVIVAL_QUOTES, 
@@ -64,7 +64,7 @@ import {
   SENSITIVE_TIMELINES as EYES_WIDE_SHUT_SENSITIVE_TIMELINES 
 } from '../utils/eyesWideShutMovieData';
 
-// 3. Recently Converted Collections (Fixed Imports)
+// 3. Recently Converted Collections
 import { 
   COMPLETE_MOVIE_DATA as CRIME_THRILLER_MOVIE_DATA, 
   SENSITIVE_TIMELINES as CRIME_THRILLER_SENSITIVE_TIMELINES 
@@ -178,7 +178,7 @@ const MovieDetailsSection = React.memo(({
 
  const safeLookup = (collection, id) => (collection && id && collection[id]) || null;
 
- // ✅ UNIFIED MOVIE INFO LOOKUP STRATEGY
+ // ✅ UNIFIED MOVIE INFO LOOKUP
  const movieInfo = fromDonnieDarkoCollection ? safeLookup(DONNIE_DARKO_MOVIE_DATA, movie.tmdbId)
   : fromParasiteCollection ? safeLookup(PARASITE_MOVIE_DATA, movie.tmdbId)
   : fromMatrixCollection ? safeLookup(MATRIX_MOVIE_DATA, movie.tmdbId)
@@ -201,20 +201,13 @@ const MovieDetailsSection = React.memo(({
   : fromDramaCollection ? safeLookup(DRAMA_MOVIE_DATA, movie.tmdbId)
   : safeLookup(COMPLETE_MOVIE_DATA, movie.tmdbId);
 
- // Fallback data generator if lookup fails
  const getMovieSpecificData = (title) => ({
    mindBendingIndex: 85,
    complexityLevel: 'HIGH',
    dominantColor: '#ca8a04',
    rating: movie.imdbRating || 7.5,
    director: movie.Director || 'Acclaimed Director',
-   scenes: [
-     { time: 20, intensity: 60, label: 'Opening', color: '#92400e' },
-     { time: 50, intensity: 75, label: 'Conflict', color: '#ca8a04' },
-     { time: 80, intensity: 85, label: 'Climax', color: '#ea6208ff' },
-     { time: 100, intensity: 90, label: 'Resolution', color: '#facc15' },
-     { time: 120, intensity: 95, label: 'Revelation', color: '#fde047' }
-   ],
+   scenes: [],
    dna: { Mystery: 60, Thriller: 30, Drama: 10 },
    cast: ['Lead Actor', 'Supporting Cast'],
    boxOffice: 'N/A',
@@ -256,10 +249,10 @@ const MovieDetailsSection = React.memo(({
    || SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
    || [];
 
- // ✅ DYNAMIC SCORE VALUE SELECTION (Priority: Local Prop -> Data File -> Default)
+ // ✅ DYNAMIC SCORE VALUE SELECTION
  const scoreValue = fromDonnieDarkoCollection ? movie.realityWarpIndex ?? safeMovieInfo.realityWarpIndex ?? 0
    : fromParasiteCollection ? movie.classWarfareIndex ?? safeMovieInfo.classWarfareIndex ?? 0
-   : fromMatrixCollection ? movie.cyberComplexity ?? safeMovieInfo.cyberComplexity ?? 0 // Updated to cyberComplexity
+   : fromMatrixCollection ? movie.cyberComplexity ?? safeMovieInfo.cyberComplexity ?? 0
    : fromOldboyCollection ? movie.revengeIntensity ?? safeMovieInfo.revengeIntensity ?? 0
    : fromBlackSwanCollection ? movie.psychologicalIntensity ?? safeMovieInfo.psychologicalIntensity ?? 0
    : fromEyesWideShutCollection ? movie.paranoiaIntensity ?? safeMovieInfo.paranoiaIntensity ?? 0
@@ -321,7 +314,7 @@ const MovieDetailsSection = React.memo(({
  };
 
  const getComplexityScoreTitle = () => {
-   if (fromMatrixCollection) return 'SCI-FI COMPLEXITY SCORE'; // Updated
+   if (fromMatrixCollection) return 'SCI-FI COMPLEXITY SCORE';
    if (fromSe7enCollection) return 'SE7EN DNA SCORE';
    if (fromRevengeCollection) return 'REVENGE INTENSITY SCORE';
    if (fromWarFilmsCollection) return 'WAR INTENSITY SCORE';
@@ -342,7 +335,7 @@ const MovieDetailsSection = React.memo(({
  };
 
  const getComplexityIndexLabel = () => {
-   if (fromMatrixCollection) return 'MIND BENDING SCORE'; // Updated
+   if (fromMatrixCollection) return 'MIND BENDING SCORE';
    if (fromSe7enCollection) return 'NOIR DARKNESS INDEX';
    if (fromRevengeCollection) return 'REVENGE INTENSITY INDEX';
    if (fromWarFilmsCollection) return 'WAR INTENSITY INDEX';
@@ -363,7 +356,7 @@ const MovieDetailsSection = React.memo(({
  };
 
  const getComplexityLevelLabel = () => {
-   if (fromMatrixCollection) return 'SCI-FI COMPLEXITY LEVEL'; // Updated
+   if (fromMatrixCollection) return 'SCI-FI COMPLEXITY LEVEL';
    if (fromSe7enCollection) return 'PSYCHOLOGICAL GRIT LEVEL';
    if (fromRevengeCollection) return 'VENGEANCE BRUTALITY LEVEL';
    if (fromWarFilmsCollection) return 'COMBAT REALISM LEVEL';
@@ -479,35 +472,38 @@ const MovieDetailsSection = React.memo(({
         </div>
       </motion.div>
 
+      {/* ✅ FIXED: Smaller, Equal Height Cards */}
       <motion.div
-        className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 max-w-4xl mx-auto"
+        className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 max-w-4xl mx-auto"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
       >
-        <div className="p-4 sm:p-6 bg-gray-900/40 rounded-lg sm:rounded-xl border-l-2 border-yellow-400/50">
-          <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+        {/* CAST & CREW CARD */}
+        <div className="p-3 sm:p-5 bg-gray-900/40 rounded-lg sm:rounded-xl border-l-2 border-yellow-400/50 h-full min-h-[160px] flex flex-col justify-start">
+          <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
             <Users className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400" />
-            <h3 className="text-base sm:text-lg font-light text-white">Cast & Crew</h3>
+            <h3 className="text-sm sm:text-base font-light text-white">Cast & Crew</h3>
           </div>
-          <div className="space-y-1 sm:space-y-2">
-            <p className="text-gray-300 text-xs sm:text-sm"><span className="text-gray-500">Director:</span> {director}</p>
-            <p className="text-gray-300 text-xs sm:text-sm"><span className="text-gray-500">Starring:</span> {cast}</p>
+          <div className="space-y-2 sm:space-y-3">
+            <p className="text-gray-300 text-xs sm:text-sm leading-relaxed"><span className="text-gray-500 font-medium block mb-0.5">Director:</span> {director}</p>
+            <p className="text-gray-300 text-xs sm:text-sm leading-relaxed"><span className="text-gray-500 font-medium block mb-0.5">Starring:</span> {cast}</p>
           </div>
         </div>
 
-        <div className="p-4 sm:p-6 bg-gray-900/40 rounded-lg sm:rounded-xl border-l-2 border-blue-400/50">
-          <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+        {/* PRODUCTION DETAILS CARD */}
+        <div className="p-3 sm:p-5 bg-gray-900/40 rounded-lg sm:rounded-xl border-l-2 border-blue-400/50 h-full min-h-[160px] flex flex-col justify-start">
+          <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
             <Film className="w-4 h-4 sm:w-5 sm:h-5 text-blue-400" />
-            <h3 className="text-base sm:text-lg font-light text-white">Production Details</h3>
+            <h3 className="text-sm sm:text-base font-light text-white">Production Details</h3>
           </div>
-          <div className="space-y-2">
-            <p className="text-gray-300"><span className="text-gray-500">Budget:</span> {budget}</p>
-            <p className="text-gray-300"><span className="text-gray-500">Box Office:</span> {boxOffice}</p>
-            <p className="text-gray-300">
-              <span className="text-gray-500">Age Rating:</span>
+          <div className="space-y-2 sm:space-y-3">
+            <p className="text-gray-300 text-xs sm:text-sm"><span className="text-gray-500 font-medium block mb-0.5">Budget:</span> {budget}</p>
+            <p className="text-gray-300 text-xs sm:text-sm"><span className="text-gray-500 font-medium block mb-0.5">Box Office:</span> {boxOffice}</p>
+            <div className="text-gray-300 text-xs sm:text-sm">
+              <span className="text-gray-500 font-medium block mb-0.5">Age Rating:</span>
               <span
-                className="ml-2 px-2 py-1 rounded border text-sm font-medium"
+                className="inline-block px-1.5 py-0.5 rounded border text-[10px] sm:text-xs font-medium mt-0.5"
                 style={{
                   color: getAgeRatingColor(ageRating),
                   borderColor: getAgeRatingColor(ageRating),
@@ -516,7 +512,7 @@ const MovieDetailsSection = React.memo(({
               >
                 {ageRating}
               </span>
-            </p>
+            </div>
           </div>
         </div>
       </motion.div>

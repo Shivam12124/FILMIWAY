@@ -23,19 +23,84 @@ export const COMPLETE_MOVIE_DATABASE = [
 ];
 
 // 2. SENSITIVE TIMELINES (Sexual Content & Nudity Only)
+// 2. SENSITIVE TIMELINES (Sexual Content & Nudity Only)
 export const SENSITIVE_TIMELINES = {
-    1954: { scenes: [{ start: '0:15:20', end: '0:16:45', type: 'Nudity', severity: 'Moderate' }, { start: '0:42:10', end: '0:43:30', type: 'Sex scene', severity: 'Strong' }] },
-    63: { scenes: [{ start: '1:22:15', end: '1:22:45', type: 'Partial nudity', severity: 'Mild' }] },
-    9667: { scenes: [{ start: '0:28:40', end: '0:30:15', type: 'Sex scene', severity: 'Strong' }] },
-    1902: { scenes: [{ start: '0:35:15', end: '0:37:40', type: 'Sex scene', severity: 'Strong' }] },
-    220289: { scenes: [] }, 
-    2291: { scenes: [{ start: '0:42:30', end: '0:43:15', type: 'Sexual content', severity: 'Moderate' }] },
-    2666: { scenes: [{ start: '0:52:10', end: '0:53:45', type: 'Implied nudity', severity: 'Mild' }] },
-    1018: { scenes: [{ start: '0:23:32', end: '0:24:30', type: 'Nudity (Blurred)', severity: 'Moderate' }, { start: '1:38:45', end: '1:42:55', type: 'Nudity', severity: 'High' }, { start: '2:01:27', end: '2:02:59', type: 'Nudity', severity: 'High' }] },
-    38: { scenes: [{ start: '0:42:30', end: '0:43:20', type: 'Partial nudity', severity: 'Mild' }] },
-    181886: { scenes: [{ start: '0:45:20', end: '0:47:35', type: 'Sex scene', severity: 'Strong' }] }
-};
+    // 1. The Butterfly Effect
+    1954: { 
+        scenes: [
+            { start: "0:56:42", end: "0:56:50", type: "Nudity", severity: "Moderate" }
+        ] 
+    },
 
+    // 2. 12 Monkeys
+    63: { scenes: [] }, // No sexual content
+
+    // 3. The Jacket
+    9667: { 
+        scenes: [
+            { start: "0:27:30", end: "0:28:00", type: "Nudity", severity: "Moderate" },
+            { start: "1:30:00", end: "1:30:30", type: "Sex & Nudity", severity: "Strong" }
+        ] 
+    },
+
+    // 4. Open Your Eyes (Abre los ojos)
+    1902: { 
+        scenes: [
+            { start: "1:06:00", end: "1:07:10", type: "Sex & Nudity", severity: "Strong" },
+            { start: "1:26:30", end: "1:27:50", type: "Sex & Nudity", severity: "Strong" }
+        ] 
+    },
+
+    // 5. Coherence
+    220289: { scenes: [] }, // No sexual content present
+
+    // 6. Jacob's Ladder
+    2291: { 
+        scenes: [
+            { start: "0:15:30", end: "0:15:37", type: "Nudity", severity: "Moderate" },
+            { start: "0:17:50", end: "0:19:10", type: "Nudity", severity: "High" },
+            { start: "0:32:00", end: "0:33:45", type: "Nudity", severity: "High" }
+        ] 
+    },
+
+    // 7. Dark City
+    2666: { 
+        scenes: [
+            { start: "0:02:38", end: "0:03:00", type: "Partial nudity (man)", severity: "Mild" },
+            { start: "0:18:00", end: "0:19:00", type: "Nudity (woman)", severity: "High" }
+        ] 
+    },
+
+    // 8. Mulholland Drive
+    1018: { 
+        scenes: [
+            { start: "0:23:32", end: "0:24:30", type: "Nudity (Blurred)", severity: "Moderate" },
+            { start: "1:38:45", end: "1:42:55", type: "Nudity", severity: "High" },
+            { start: "2:01:27", end: "2:02:59", type: "Nudity", severity: "High" }
+        ] 
+    },
+
+    // 9. Eternal Sunshine of the Spotless Mind
+    38: { scenes: [] }, // No sexual content found
+
+    // 10. Enemy
+    181886: { 
+        scenes: [
+            { start: "0:01:46", end: "0:01:50", type: "Partial Nudity", severity: "Mild" },
+            { start: "0:02:50", end: "0:04:58", type: "Nudity", severity: "High" },
+            { start: "0:07:23", end: "0:07:29", type: "Kissing", severity: "Mild" },
+            { start: "0:07:50", end: "0:08:05", type: "Sexual Content", severity: "High" },
+            { start: "0:08:37", end: "0:08:42", type: "Sexual Content", severity: "High" },
+            { start: "0:09:10", end: "0:09:15", type: "Sexual Content", severity: "High" },
+            { start: "0:14:38", end: "0:15:10", type: "Sexual Content", severity: "High" },
+            { start: "0:45:20", end: "0:45:52", type: "Nudity", severity: "High" },
+            { start: "1:14:25", end: "1:14:41", type: "Partial Nudity", severity: "Moderate" },
+            { start: "1:19:30", end: "1:20:35", type: "Sexual Content", severity: "High" },
+            { start: "1:22:20", end: "1:22:42", type: "Kissing/Nudity", severity: "High" },
+            { start: "1:23:55", end: "1:24:08", type: "Nudity", severity: "High" }
+        ]
+    }
+};
 // 3. FALLBACK POSTERS
 export const FALLBACK_POSTERS = {
     1954: "https://image.tmdb.org/t/p/w500/vHof7S85J9vAnYyE6UscGfE6V5X.jpg",
