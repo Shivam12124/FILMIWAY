@@ -7,7 +7,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, Play, X, User, Twitter, Hash, Send, Film, Award, DollarSign } from 'lucide-react'; // Added icons
+import { ChevronLeft, Play, X, User, Twitter, Hash, Send, Film, Lock, DollarSign } from 'lucide-react'; 
 import InternalCollectionsSection from '../../../components/InternalCollectionsSection';
 import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
@@ -18,25 +18,22 @@ import {
   COMPLETE_MOVIE_DATABASE, 
   COMPLETE_MOVIE_DATA, 
   SENSITIVE_TIMELINES,
-  HEIST_THRILLER_MOVIE_FAQS 
+  HEIST_THRILLER_FAQS 
 } from '../../../utils/heistThrillerMovieData';
 
 const COLORS = {
-  accent: '#EAB308', // Amber/Yellow for Heist
+  accent: '#f59e0b', // Amber for Heist (Gold)
   bgPrimary: '#0B0B0C', 
   bgCard: 'rgba(55, 65, 81, 0.3)', 
   textPrimary: '#FFFFFF', 
-  textSecondary: '#D1D5DB', 
   textMuted: '#9CA3AF', 
-  textDisabled: '#6B7280',
-  borderAccent: 'rgba(234, 179, 8, 0.25)', 
   borderLight: 'rgba(107, 114, 128, 0.3)',
 };
 
 const MOVIE_YEARS = {
-  'Heat': '1995', 'Reservoir Dogs': '1992', 'The Town': '2010', 'Hell or High Water': '2016',
-  'The Bank Job': '2008', 'Inside Man': '2006', 'Thief': '1981', 'Dog Day Afternoon': '1975',
-  'The Italian Job': '1969', "Ocean's Eleven": '2001'
+  'Heat': '1995', 'Inception': '2010', 'Reservoir Dogs': '1992', 'The Town': '2010',
+  'Inside Man': '2006', 'Ocean\'s Eleven': '2001', 'Baby Driver': '2017', 'Hell or High Water': '2016',
+  'Dog Day Afternoon': '1975', 'Widows': '2018', 'The Bank Job': '2008', 'Thief': '1981', 'The Italian Job': '1969'
 };
 
 const MOVIE_DATA_BY_TITLE = {
@@ -61,16 +58,16 @@ const getHeistInsight = (title) => {
 };
 
 // ✅ OPTIMIZED BANNER
-const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
+const OptimizedBanner = ({ movie, movieData, trailer, richData }) => {
   const [showTrailer, setShowTrailer] = useState(false);
   const [countdown, setCountdown] = useState(4);
   const [hasClosedTrailer, setHasClosedTrailer] = useState(false);
   const timerRef = useRef(null);
 
-  const backdropPath = movieData?.backdrop_path || richData?.backdrop_path || movie?.backdrop_path;
-  const posterPath = movieData?.poster_path || richData?.poster_path || movie?.poster_path;
-  const bannerImage = backdropPath ? getTMDBImage(backdropPath, 'w1280') : null;
-  const posterImage = posterPath ? getTMDBImage(posterPath, 'w500') : null;
+  const backdropPath = movieData?.backdrop_path || richData?.backdrop_path;
+  const posterPath = movieData?.poster_path || richData?.poster_path;
+  const bannerImage = getTMDBImage(backdropPath, 'w1280');
+  const posterImage = getTMDBImage(posterPath, 'w500');
   
   const insight = getHeistInsight(movie?.Title);
   const complexityIndex = richData?.heistComplexity || 90;
@@ -103,72 +100,88 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
   }`;
 
   return (
-    <motion.div className="relative w-full overflow-hidden mb-6 sm:mb-8 mx-0 sm:mx-4 lg:mx-6 rounded-none sm:rounded-3xl" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8 }}>
+    <div className="relative w-full mb-8">
       <style>{mobileHeroCSS}</style>
-      <div className="relative h-[300px] sm:h-[400px] lg:h-[600px]">
+      <div className="hidden md:block relative h-[500px] rounded-3xl overflow-hidden mx-6 shadow-2xl border border-gray-800">
         <AnimatePresence mode="wait">
           {showTrailer && trailer ? (
-             <motion.div key="trailer" className="absolute inset-0 rounded-none sm:rounded-3xl overflow-hidden" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+             <motion.div key="trailer" className="absolute inset-0 z-50 bg-black" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
                <iframe width="100%" height="100%" src={`https://www.youtube.com/embed/${trailer.key}?autoplay=1&mute=1&controls=1`} allow="autoplay; encrypted-media" allowFullScreen className="w-full h-full border-0" />
                <button onClick={handleCloseTrailer} className="absolute top-4 right-4 p-2 bg-black/50 rounded-full text-white hover:bg-amber-600 transition backdrop-blur-sm"><X /></button>
              </motion.div>
           ) : (
-            <motion.div key="image" className="absolute inset-0 rounded-none sm:rounded-3xl overflow-hidden" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
-              <div className="relative w-full h-full">
-                {bannerImage ? <Image src={bannerImage} alt={`${movie?.Title} banner`} fill priority sizes="100vw" quality={90} className="object-cover" /> : <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: COLORS.bgCard }}><Film className="w-16 h-16 sm:w-24 sm:h-24" style={{ color: COLORS.textMuted }} /></div>}
-                <div className="absolute inset-0 z-10" style={{ background: `linear-gradient(to bottom, transparent 0%, transparent 60%, ${COLORS.bgPrimary}80 85%, ${COLORS.bgPrimary} 100%)` }} />
+            <div className="relative w-full h-full">
+              {bannerImage && <Image src={bannerImage} alt={movie.Title} fill className="object-cover" priority quality={90} />}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0B0B0C] via-[#0B0B0C]/40 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#0B0B0C]/80 via-transparent to-transparent" />
+              
+              <div className="absolute bottom-0 left-0 p-10 w-full flex items-end gap-8">
+                 <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }} className="relative w-48 aspect-[2/3] shadow-2xl rounded-xl overflow-hidden border-2 border-white/10 hidden lg:block transform hover:scale-105 transition-transform duration-500">
+                    {posterImage && <Image src={posterImage} alt={movie.Title} fill className="object-cover" />}
+                 </motion.div>
+                 
+                 <div className="mb-4 flex-1">
+                    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7 }} className="flex items-center gap-4 mb-4">
+                       {trailer && (
+                        <button onClick={handlePlayClick} className="flex items-center gap-3 px-6 py-3 bg-amber-600 hover:bg-amber-500 text-white rounded-full font-bold transition-all shadow-lg hover:shadow-amber-500/30 group">
+                            <Play className="w-5 h-5 fill-current group-hover:scale-110 transition-transform" /> Watch Trailer
+                        </button>
+                       )}
+                       <div className="px-4 py-2 bg-black/40 backdrop-blur-md rounded-full border border-amber-500/30 flex items-center gap-2 text-amber-400">
+                          <Lock className="w-4 h-4" />
+                          <span className="text-sm font-bold tracking-wide">Heist Complexity: {complexityIndex}/100</span>
+                       </div>
+                    </motion.div>
+                    
+                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.9 }} className="p-5 bg-black/40 backdrop-blur-md rounded-xl border-l-4 border-amber-500 max-w-3xl">
+                        <p className="text-lg text-gray-100 leading-relaxed font-light italic">"{insight}"</p>
+                    </motion.div>
+                 </div>
+                 
+                 {trailer && !hasClosedTrailer && countdown > 0 && (
+                    <div className="absolute top-8 right-8 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full border border-gray-700 text-xs text-gray-300">Auto-play in {countdown}s</div>
+                 )}
               </div>
-              {trailer && (
-                <motion.div className="absolute inset-0 flex items-center justify-center z-20" initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 1, duration: 0.8 }}>
-                  <motion.button onClick={handlePlayClick} className="p-4 sm:p-6 rounded-full backdrop-blur-lg shadow-2xl transition-all duration-300" style={{ backgroundColor: `${COLORS.bgPrimary}BB`, border: `2px solid ${COLORS.textPrimary}`, color: COLORS.textPrimary }} whileHover={{ scale: 1.15, backgroundColor: `${COLORS.accent}DD`, borderColor: COLORS.accent }} whileTap={{ scale: 0.95 }}><Play className="w-6 h-6 sm:w-8 sm:h-8 ml-1" /></motion.button>
-                </motion.div>
-              )}
-              {!isMobile && trailer && !showTrailer && !hasClosedTrailer && countdown > 0 && (
-                <motion.div className="absolute top-6 sm:top-8 right-6 sm:right-8 backdrop-blur-md rounded-full px-3 sm:px-4 py-1.5 sm:py-2 border z-30" style={{ backgroundColor: `${COLORS.bgPrimary}CC`, borderColor: `${COLORS.accent}66`, color: COLORS.accent }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>
-                  <div className="flex items-center gap-2 text-xs sm:text-sm font-medium"><div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full animate-pulse" style={{ backgroundColor: COLORS.accent }}></div>Trailer in {countdown}s</div>
-                </motion.div>
-              )}
-            </motion.div>
+            </div>
           )}
         </AnimatePresence>
       </div>
 
-      {/* MOBILE HERO */}
-      {isMobile ? (
-        <div className="mobile-hero-row">
-          <div className="mobile-hero-poster">{posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} width={320} height={480} className="w-full h-auto" priority /> : <div style={{ background: COLORS.bgCard, width: '100%', height: '150px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Film style={{ color: COLORS.textMuted }} /></div>}</div>
-          <div className="mobile-heist-card">
-            <div className="mobile-heist-row"><DollarSign className="mobile-heist-icon" /><div><div className="mobile-heist-title">Heist Index</div></div></div>
-            <div className="mobile-heist-desc"><strong>{complexityIndex}/100</strong> - {insight.substring(0, 80)}...</div>
-          </div>
-        </div>
-      ) : (
-        /* DESKTOP CONTENT */
-        <div className="relative px-3 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8 z-20" style={{ backgroundColor: COLORS.bgPrimary }}>
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 lg:gap-8 items-start">
-            <motion.div className="flex-shrink-0 relative w-24 sm:w-48 md:w-56 lg:w-80 mx-auto sm:mx-0" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8, duration: 0.8 }}>
-              <div className="relative" style={{ aspectRatio: '2/3' }}>
-                {posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} fill sizes="(max-width: 640px) 96px, (max-width: 768px) 192px, (max-width: 1024px) 224px, 320px" quality={85} className="object-cover rounded-lg sm:rounded-xl shadow-2xl" /> : <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: COLORS.bgCard, borderRadius: '12px' }}><Film style={{ color: COLORS.textMuted }} /></div>}
-              </div>
-            </motion.div>
-            <motion.div className="flex-1 w-full min-w-0" initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 1.0, duration: 0.8 }}>
-              <motion.div className="relative rounded-xl sm:rounded-2xl overflow-hidden p-4 sm:p-6 lg:p-8 backdrop-blur-sm" style={{ background: `linear-gradient(135deg, rgba(234, 179, 8, 0.15) 0%, rgba(15, 15, 20, 0.5) 100%)`, border: `1px solid ${COLORS.borderLight}`, boxShadow: `0 8px 32px rgba(234, 179, 8, 0.2)` }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.1, duration: 0.8 }}>
-                <div className="absolute top-0 left-0 right-0 h-0.5 sm:h-1" style={{ background: `linear-gradient(90deg, transparent, ${COLORS.accent}, transparent)` }} />
-                <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5">
-                  <motion.div className="p-2 sm:p-2.5 rounded-lg sm:rounded-xl flex-shrink-0" style={{ background: `linear-gradient(135deg, ${COLORS.accent}20, ${COLORS.accent}10)`, border: `1px solid ${COLORS.accent}40` }} whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}><Award className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" style={{ color: COLORS.accent }} /></motion.div>
-                  <div className="min-w-0 flex-1"><h2 className="text-sm sm:text-base lg:text-xl xl:text-2xl font-bold leading-tight" style={{ color: COLORS.accent }}>Why This Heist Thriller is Special</h2><p className="text-xs sm:text-sm hidden sm:block" style={{ color: COLORS.textMuted }}>Heist Index: {complexityIndex}/100</p></div>
+      <div className="md:hidden">
+         <div className="relative h-[280px] w-full">
+            {showTrailer && trailer ? (
+                <div className="absolute inset-0 z-50 bg-black">
+                    <iframe width="100%" height="100%" src={`https://www.youtube.com/embed/${trailer.key}?autoplay=1&mute=0&controls=1`} allow="autoplay; encrypted-media" allowFullScreen className="w-full h-full border-0" />
+                    <button onClick={handleCloseTrailer} className="absolute top-2 right-2 p-2 bg-black/50 rounded-full text-white"><X className="w-5 h-5" /></button>
                 </div>
-                <div className="relative pl-4 sm:pl-6 border-l-2" style={{ borderColor: `${COLORS.accent}40` }}>
-                  <motion.div className="absolute -left-1.5 sm:-left-2 top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full" style={{ backgroundColor: COLORS.accent }} animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 2, repeat: Infinity }} />
-                  <p className="text-xs sm:text-sm lg:text-base xl:text-lg leading-relaxed font-normal break-words" style={{ color: COLORS.textSecondary, lineHeight: '1.8' }}>{insight}</p>
+            ) : (
+                <div className="relative w-full h-full">
+                    {bannerImage ? <Image src={bannerImage} alt={movie.Title} fill className="object-cover" priority /> : <div className="w-full h-full bg-gray-900" />}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0B0B0C] via-transparent to-transparent" />
+                    {trailer && (
+                        <div className="absolute inset-0 flex items-center justify-center">
+                            <button onClick={handlePlayClick} className="p-4 bg-amber-600/90 rounded-full shadow-lg border border-white/20"><Play className="w-8 h-8 text-white fill-current ml-1" /></button>
+                        </div>
+                    )}
                 </div>
-                <motion.div className="mt-4 sm:mt-6 h-0.5 sm:h-1 rounded-full" style={{ background: `linear-gradient(90deg, ${COLORS.accent}60, transparent)`, width: '40%' }} initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 1.5, duration: 0.8 }} />
-              </motion.div>
-            </motion.div>
-          </div>
-        </div>
-      )}
-    </motion.div>
+            )}
+         </div>
+         <div className="px-4 -mt-10 relative z-10">
+            <div className="flex gap-4 p-4 bg-[#151517] rounded-xl shadow-2xl border border-gray-800 border-l-4 border-l-amber-500">
+                <div className="w-20 flex-shrink-0 rounded-md overflow-hidden relative aspect-[2/3] shadow-lg">
+                    {posterImage && <Image src={posterImage} alt={movie.Title} fill className="object-cover" />}
+                </div>
+                <div className="flex-1 flex flex-col justify-center">
+                    <h3 className="text-amber-400 font-bold text-xs uppercase tracking-widest flex items-center gap-2 mb-1">
+                        <DollarSign className="w-3 h-3" /> Heist Complexity
+                    </h3>
+                    <div className="text-3xl font-black text-white">{complexityIndex}</div>
+                    <p className="text-xs text-gray-400 mt-2 line-clamp-2 leading-relaxed">{richData?.synopsis}</p>
+                </div>
+            </div>
+         </div>
+      </div>
+    </div>
   );
 };
 
@@ -207,10 +220,10 @@ const HeistBreadcrumb = ({ movie }) => (
     </motion.nav>
 );
 
-// ✅ JSON-LD SCHEMA GENERATOR - HEIST EDITION
+// ✅ JSON-LD SCHEMA GENERATOR
 const generateMovieSchema = (movie, movieData, currentMovieYear) => {
   const data = COMPLETE_MOVIE_DATA[movie.tmdbId];
-  const faqs = HEIST_THRILLER_MOVIE_FAQS[movie.Title] || [];
+  const faqs = HEIST_THRILLER_FAQS[movie.Title] || [];
 
   // 1. CALCULATE THE PEAK MOMENT
   let peakStats = "Peak info unavailable.";
@@ -221,7 +234,7 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
     peakStats = `[PEAK MOMENT] Maximum Tension (${peakScene.intensity}/100) hits at minute ${peakScene.time}: "${peakScene.label}".`;
   }
 
-  // 2. METRICS (Metrics Changed for Heist)
+  // 2. METRICS
   const intensityStats = `
     [FILMIWAY METRICS]
     - Heist Complexity: ${data?.heistComplexity || 0}/100
@@ -342,7 +355,7 @@ const HeistThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
                 <h1 className="sr-only">{movie.Title} - Heist Movie Analysis</h1>
                 
                 <div className="container mx-auto px-0 pb-16 max-w-7xl">
-                    <OptimizedBanner movie={movie} movieData={tmdbData} richData={richData} trailer={trailer} isMobile={isMobile} />
+                    <OptimizedBanner movie={movie} movieData={movieData} richData={richData} trailer={trailer} />
                     
                     <div className="px-4 lg:px-6 space-y-12 mt-8">
                          {/* Pass flag to MovieDetailsSection */}
