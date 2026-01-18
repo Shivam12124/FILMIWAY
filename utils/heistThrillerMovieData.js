@@ -40,27 +40,27 @@ export const SENSITIVE_TIMELINES = {
     500: { scenes: [] }, // Reservoir Dogs (Violent but no sexual content)
     23168: { scenes: [
         { start: '21:08', end: '21:26', type: 'Sex', severity: 'Moderate' },
-        { start: '1:05:15', end: '1:06:30', type: 'Kissing + Sex', severity: 'Moderate' }
+        { start: '1:05:15', end: '1:06:30', type: 'Sex', severity: 'Moderate' }
     ]},
     338766: { scenes: [
         { start: '45:07', end: '45:13', type: 'Sex (in the background)', severity: 'Mild' }
     ]},
     374: { scenes: [
-        { start: '1:00', end: '1:45', type: 'Sex + Nudity', severity: 'High' },
-        { start: '12:13', end: '13:10', type: 'Nudity + Passionate Kissing', severity: 'High' },
-        { start: '15:15', end: '16:00', type: 'Partial Nudity (women)', severity: 'Moderate' },
+        { start: '1:00', end: '1:45', type: 'Sex & Nudity', severity: 'High' },
+        { start: '12:13', end: '13:10', type: 'Nudity ', severity: 'High' },
+        { start: '15:15', end: '16:00', type: 'Nudity ', severity: 'Moderate' },
         { start: '50:07', end: '50:18', type: 'Passionate Kissing', severity: 'Mild' },
-        { start: '52:20', end: '52:45', type: 'Suggestive image (woman naked)', severity: 'Moderate' },
-        { start: '1:15:00', end: '1:15:19', type: 'Partial Nudity (woman)', severity: 'Moderate' }
+        { start: '52:20', end: '52:45', type: 'Suggestive image ', severity: 'Moderate' },
+        { start: '1:15:00', end: '1:15:19', type: 'Nudity ', severity: 'Moderate' }
     ]},
     388: { scenes: [
-        { start: '19:40', end: '20:35', type: 'Suggestive clothing (men and women in undergarments)', severity: 'Mild' },
+        { start: '19:40', end: '20:35', type: 'Suggestive clothing ', severity: 'Mild' },
         { start: '2:21:29', end: '2:21:50', type: 'Kissing', severity: 'Mild' }
     ]},
     11524: { scenes: [] }, // Thief
     1981: { scenes: [] }, // Dog Day Afternoon
     9654: { scenes: [
-        { start: '41:15', end: '41:30', type: 'Suggestive Clothing (woman in bra)', severity: 'Mild' }
+        { start: '41:15', end: '41:30', type: 'Suggestive Clothing ', severity: 'Mild' }
     ]},
     161: { scenes: [
         { start: '1:50:50', end: '1:50:55', type: 'Kissing', severity: 'Mild' }

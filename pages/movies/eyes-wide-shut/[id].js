@@ -364,7 +364,8 @@ const EyesWideShutMoviePage = ({ movie, tmdbData: movieData }) => {
                 <div className="container mx-auto px-0 pb-16 sm:pb-24 lg:pb-32 max-w-7xl">
                     <OptimizedBanner movie={movie} movieData={movieData} richData={richData} trailer={trailer} isMobile={isMobile} />
                     
-                    <motion.div id="watch" initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 2.0, duration: 0.8 }} className="space-y-8 sm:space-y-12 px-3 sm:px-4 lg:px-6">
+                    {/* ✅ FIXED: DELAY REMOVED FOR BOTS ✅ */}
+                    <motion.div id="watch" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0, duration: 0.5 }} className="space-y-8 sm:space-y-12 px-3 sm:px-4 lg:px-6">
                         <MovieDetailsSection movie={movie} fromEyesWideShutCollection={true} />
                     </motion.div>
                     

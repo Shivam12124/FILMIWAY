@@ -3,9 +3,8 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Head from 'next/head';
 import Link from 'next/link';
-import { Search, Brain, Mountain, Film, ChevronDown, Sparkles, Plus, ArrowRight, Star, Clock, Eye, Scale, DollarSign, Shield } from 'lucide-react';
+import { Search, Brain, Mountain, Film, ChevronDown, Sparkles, Plus, ArrowRight, Star, Clock, Eye, Scale, DollarSign, Shield, Zap,Heart } from 'lucide-react';
 import Image from 'next/image';
-
 const CollectionsHub = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const [expandedCollection, setExpandedCollection] = useState(null);
@@ -55,6 +54,57 @@ const CollectionsHub = () => {
             directLink: '/collection/best-survival-movies',
             hasSubCollections: false
         },
+
+
+
+{
+            id: 'hulu-action',
+            title: 'Best Action Movies on Hulu',
+            description: 'High-octane action films ranked by adrenaline score, fight choreography, and stunts',
+            icon: Zap, // Make sure 'Zap' is imported from lucide-react
+            gradient: 'from-orange-500 to-red-600',
+            movieCount: '10',
+            rating: '8.4',
+            directLink: '/collection/best-action-movies-on-hulu',
+            hasSubCollections: false
+        },
+
+{
+            id: 'hulu-romance',
+            title: 'Best Romance Movies on Hulu',
+            description: 'Prestige love stories with electric chemistry and deep emotional resonance',
+            icon: Heart, // Make sure 'Heart' is imported from lucide-react
+            gradient: 'from-pink-500 to-rose-600',
+            movieCount: '10',
+            rating: '7.4',
+            directLink: '/collection/best-romance-movies-on-hulu',
+            hasSubCollections: false
+        },
+
+{
+            id: 'hulu-horror',
+            title: 'Best Horror Movies on Hulu',
+            description: 'The most brutally terrifying films streaming on Hulu. From trauma-inducing gore to slow-burn dread.',
+            icon: Ghost,
+            gradient: 'from-red-900 to-stone-900',
+            movieCount: '10',
+            rating: '7.1',
+            directLink: '/collection/best-horror-movies-on-hulu',
+            hasSubCollections: false
+        },
+
+{
+            id: 'hulu-comedy',
+            title: 'Best Comedy Movies on Hulu',
+            description: 'The funniest films streaming on Hulu. From teen chaos and mockumentaries to biting satire.',
+            icon: Smile,
+            gradient: 'from-yellow-400 to-orange-500',
+            movieCount: '10',
+            rating: '7.3',
+            directLink: '/collection/best-comedy-movies-on-hulu',
+            hasSubCollections: false
+        },
+
         {
             id: 'oldboy',
             title: 'Movies Like Oldboy',

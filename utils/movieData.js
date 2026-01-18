@@ -73,7 +73,7 @@ export const SENSITIVE_TIMELINES = {
     // 4. Predestination
     206487: { 
         scenes: [
-            { start: "0:19:07", end: "0:19:20", type: "Sex + Partial Nudity", severity: "High" },
+            { start: "0:19:07", end: "0:19:20", type: "Sex & Nudity", severity: "High" },
             { start: "0:42:20", end: "0:42:50", type: "Nudity", severity: "High" },
             { start: "1:12:50", end: "1:12:58", type: "Kissing", severity: "Mild" }
         ]

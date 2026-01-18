@@ -76,7 +76,7 @@ scenes: [       { start: "0:23:32", end: "0:24:30", type: "Nudity(Blurred)", sev
             { start: "1:06:50", end: "1:12:10", type: "Sexual Content", severity: "Extreme" },
             { start: "1:39:40", end: "1:41:40", type: "Sexual Content", severity: "High" }, 
             { start: "1:45:40", end: "1:49:40", type: "Sexual Content", severity: "Extreme" },
-            { start: "1:53:40", end: "2:03:40", type: "Nudity/Sexual Content", severity: "Extreme" }
+            { start: "1:53:40", end: "2:03:40", type: "Nudity & Sex", severity: "Extreme" }
         ] 
     },
 
@@ -251,7 +251,7 @@ export const COMPLETE_MOVIE_DATA = {
         psychologicalIntensity: 85, destructiveObsession: 95, visceralImpact: 60, complexityLevel: "HIGH", 
         dominantColor: "#f59e0b", rating: 7.7, criticsScore: 91, audienceScore: 78, director: "Alejandro G. Iñárritu", 
         cast: ["Michael Keaton", "Edward Norton"], boxOffice: "$103.2 million", budget: "$18 million", 
-        dna: { "Comedy": 40, "Drama": 30, "Psychological": 30 },
+        dna: { "Drama": 40, "Comedy": 30, "Psychological": 30 },
         scenes: [
             { time: 15, intensity: 40, label: "Whispers", color: "#9333ea" },
             { time: 55, intensity: 65, label: "Times Square", color: "#eab308" },

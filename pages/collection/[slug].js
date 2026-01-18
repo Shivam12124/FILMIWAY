@@ -1,4 +1,4 @@
-// pages/collection/[slug].js - FIXED IMPORTS FOR BUILD ✅
+// pages/collection/[slug].js - FIXED BOTTOM GAP ✅
 
 import React, { useState, useEffect, useCallback } from 'react';
 import Head from 'next/head';
@@ -19,8 +19,11 @@ import { COMPLETE_MOVIE_DATABASE as EYES_WIDE_SHUT_DATABASE, COMPLETE_MOVIE_DATA
 import { COMPLETE_MOVIE_DATABASE as INTERSTELLAR_DATABASE, COMPLETE_MOVIE_DATA as INTERSTELLAR_DATA } from '../../utils/interstellarMovieData';
 import { COMPLETE_MOVIE_DATABASE as CRIME_THRILLER_DATABASE, COMPLETE_MOVIE_DATA as CRIME_THRILLER_DATA } from '../../utils/crimeThrillerMovieData';
 import { COMPLETE_MOVIE_DATABASE as WAR_FILMS_DATABASE, COMPLETE_MOVIE_DATA as WAR_FILMS_DATA } from '../../utils/warFilmsMovieData';
+import { COMPLETE_MOVIE_DATABASE as HULU_ACTION_DATABASE, COMPLETE_MOVIE_DATA as HULU_ACTION_DATA } from '../../utils/huluActionMovieData';
+import { COMPLETE_MOVIE_DATABASE as HULU_ROMANCE_DATABASE, COMPLETE_MOVIE_DATA as HULU_ROMANCE_DATA } from '../../utils/huluRomanceMovieData';
+import { COMPLETE_MOVIE_DATABASE as HULU_HORROR_DATABASE, COMPLETE_MOVIE_DATA as HULU_HORROR_DATA } from '../../utils/huluHorrorMovieData';
+import { COMPLETE_MOVIE_DATABASE as HULU_COMEDY_DATABASE, COMPLETE_MOVIE_DATA as HULU_COMEDY_DATA } from '../../utils/huluComedyMovieData';
 
-// ✅ INCEPTION, MEMENTO, SHUTTER ISLAND (from movieData.js)
 import { COMPLETE_MOVIE_DATABASE, COMPLETE_MOVIE_DATA } from '../../utils/movieData';
 
 // ✅ FIXED IMPORTS: Aliasing COMPLETE_MOVIE_DATABASE to old variable names
@@ -55,21 +58,21 @@ const getMovieRuntime = (movie) => movie?.Runtime || movie?.runtime || '120 min'
 // LOGO COMPONENT
 const TopLeftLogo = () => (
     <motion.div 
-        className="fixed top-4 left-4 sm:top-6 sm:left-6 z-50"
+        className="absolute top-6 left-6 z-50 pointer-events-auto"
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8 }}
     >
         <Link href="/" className="flex items-center justify-start">
-            <div className="w-32 h-16 sm:w-40 sm:h-20 md:w-48 md:h-24 flex items-center justify-start hover:scale-105 transition-transform duration-300">
+            <div className="w-36 h-16 sm:w-44 sm:h-20 md:w-56 md:h-24 flex items-center justify-start hover:scale-105 transition-transform duration-300">
               <Image
-  src="/filmiway-logo.svg"
-  alt="Filmiway"
-  width={192}
-  height={96}
-  priority={true}
-  className="w-full h-full object-contain"
-/>
+                src="/filmiway-logo.svg"
+                alt="Filmiway"
+                width={220}
+                height={110}
+                priority={true}
+                className="w-full h-full object-contain object-left"
+              />
             </div>
         </Link>
     </motion.div>
@@ -78,22 +81,22 @@ const TopLeftLogo = () => (
 // HOMEPAGE BUTTON
 const HomepageButton = () => (
     <motion.div 
-        className="fixed top-24 left-4 sm:top-32 sm:left-6 md:top-36 md:left-6 z-50"
-        initial={{ opacity: 0, x: -50 }}
+        className="absolute top-9 right-6 z-50 pointer-events-auto"
+        initial={{ opacity: 0, x: 50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8, delay: 0.3 }}
     >
         <Link 
             href="/" 
-            className="flex items-center gap-2 px-4 py-2 bg-gray-900/80 backdrop-blur-sm border border-gray-700/50 rounded-lg hover:bg-gray-800/90 hover:border-yellow-400/50 transition-all duration-300"
+            className="flex items-center gap-2 px-4 py-2 bg-gray-900/80 backdrop-blur-sm border border-gray-700/50 rounded-lg hover:bg-gray-800/90 hover:border-yellow-400/50 transition-all duration-300 shadow-lg group"
         >
-            <Home className="w-4 h-4 text-yellow-400" />
+            <Home className="w-4 h-4 text-yellow-400 group-hover:scale-110 transition-transform" />
             <span className="text-yellow-400 text-sm font-medium">Home</span>
         </Link>
     </motion.div>
 );
 
-// 🔥 COLLECTION PAGE COMPONENT WITH ALL 7 COLLECTIONS INCLUDING MYSTERY THRILLER
+// 🔥 COLLECTION PAGE COMPONENT
 const CollectionPage = ({ collection, movies }) => {
     const [currentMovieIndex, setCurrentMovieIndex] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
@@ -116,7 +119,8 @@ const CollectionPage = ({ collection, movies }) => {
         const timer = setTimeout(() => setIsLoading(false), 2500);
         return () => clearTimeout(timer);
     }, []);
-// 🔥 SEO-OPTIMIZED COLLECTION CONTENT WITH MATRIX, SE7EN & PARASITE COLLECTIONS ADDED
+
+// 🔥 SEO-OPTIMIZED COLLECTION CONTENT
 const getCollectionContent = () => {
     if (collection.slug === 'movies-like-memento') {
         return {
@@ -212,6 +216,105 @@ const getCollectionContent = () => {
         };
 
 
+} else if (collection.slug === 'best-horror-movies-on-hulu') {
+        return {
+            badge: "Visceral Horror Cinema",
+            title: "Best Horror Movies on Hulu",
+            description: "The most brutally terrifying films streaming on Hulu. From trauma-inducing gore to slow-burn dread & cosmic horror.",
+            selection: {
+                text1: "From the rule-breaking chaos of 'When Evil Lurks' to the suffocating dread of 'Longlegs'—these films represent the darkest corners of the Hulu library.",
+                text2: "Each selection features visceral scares, psychological trauma, and atmospheres so oppressive they feel cursed. Not for the faint of heart."
+            },
+            ranking: {
+                text: "Our scariness index evaluates atmospheric dread, visceral shock value, and the lingering psychological trauma left by the film.",
+                points: [
+                    "Atmospheric dread level",
+                    "Visceral shock & gore",
+                    "Psychological trauma depth",
+                    "Unpredictable terror factor"
+                ]
+            },
+            experience: {
+                text1: "Whether you're seeking cosmic nihilism or slasher brutality, this collection delivers cinema's most traumatizing experiences.",
+                text2: "Each film has been selected for its ability to ruin your sleep—offering nightmares that stick with you long after the credits roll."
+            }
+        };
+
+
+} else if (collection.slug === 'best-romance-movies-on-hulu') {
+        return {
+            badge: "Prestige Romance Cinema",
+            title: "Romance Movies on Hulu",
+            description: "The most emotionally resonant romance films streaming on Hulu. From Palme d'Or winners to devastating ghost stories & nostalgic first loves.",
+            selection: {
+                text1: "From the chaotic energy of 'Anora' to the quiet devastation of 'All of Us Strangers'—these films represent the pinnacle of modern romantic cinema available on Hulu.",
+                text2: "Each selection features electric chemistry, profound emotional stakes, and narratives that move beyond clichés to explore the messy, beautiful reality of connection."
+            },
+            ranking: {
+                text: "Our emotional resonance index evaluates on-screen chemistry, narrative emotional weight, and the lasting impact of the film's romantic arc.",
+                points: [
+                    "Chemistry intensity",
+                    "Emotional narrative depth",
+                    "Prestige & acclaim",
+                    "Romantic tension payoff"
+                ]
+            },
+            experience: {
+                text1: "Whether you're seeking a good cry or a rush of joy, this collection delivers cinema's most powerful explorations of the human heart.",
+                text2: "Each film has been selected for its ability to linger with you—offering moments of intimacy and heartbreak that feel deeply, authentically real."
+            }
+        };
+
+
+} else if (collection.slug === 'best-action-movies-on-hulu') {
+        return {
+            badge: "High-Octane Cinema",
+            title: "Action Movies on Hulu",
+            description: "High-octane action movies streaming on Hulu. Brutal fight choreography, relentless pacing & adrenaline-fueled plots that redefine the genre.",
+            selection: {
+                text1: "From the primal hunt of 'Prey' to the stylized violence of 'Kingsman'—these films represent the pinnacle of modern action cinema available on Hulu.",
+                text2: "Each selection features innovative fight choreography, memorable heroes, and set pieces that have become legendary in the action genre."
+            },
+            ranking: {
+                text: "Our adrenaline index evaluates fight choreography quality, pacing intensity, and the visceral impact of action sequences throughout each film.",
+                points: [
+                    "Fight choreography innovation",
+                    "Pacing and momentum",
+                    "Visceral impact level",
+                    "Stunt work quality"
+                ]
+            },
+            experience: {
+                text1: "Whether you're seeking martial arts mastery or sci-fi warfare, this collection delivers cinema's most thrilling adrenaline rushes.",
+                text2: "Each film has been selected for its ability to keep your heart racing—with action sequences that demand to be rewatched and analyzed."
+            }
+        };
+
+        } else if (collection.slug === 'best-comedy-movies-on-hulu') {
+        return {
+            badge: "Side-Splitting Cinema",
+            title: "Best Comedy Movies on Hulu",
+            description: "The funniest films streaming on Hulu. From teen chaos and mockumentaries to biting satire & action-packed laughs.",
+            selection: {
+                text1: "From the legendary teen awkwardness of 'Superbad' to the unscripted chaos of 'Borat'—these films represent the gold standard of modern comedy.",
+                text2: "Each selection features unforgettable quotes, chaotic energy, and performances that range from slapstick genius to biting social satire."
+            },
+            ranking: {
+                text: "Our laughter index evaluates the frequency of laughs, the chaos factor of the plot, and the enduring quotability of the script.",
+                points: [
+                    "Laughter frequency & intensity",
+                    "Chaos factor & unpredictability",
+                    "Script quotability score",
+                    " comedic performance impact"
+                ]
+            },
+            experience: {
+                text1: "Whether you're seeking nostalgic comfort or shocking satire, this collection delivers cinema's most effective dopamine hits.",
+                text2: "Each film has been selected for its ability to improve your mood instantly—offering laughs that have stood the test of time and culture."
+            }
+        };
+
+
     } else if (collection.slug === 'movies-like-black-swan') {
         return {
             badge: "Psychological Obsession Cinema",
@@ -289,7 +392,7 @@ const getCollectionContent = () => {
     
 
 
-    } else if (collection.slug === 'movies-like-oldboy') { // ✅ OLD BOY COLLECTION ADDED
+    } else if (collection.slug === 'movies-like-oldboy') { 
         return {
             badge: "Ultimate Revenge Cinema",
             title: "Oldboy",
@@ -314,7 +417,7 @@ const getCollectionContent = () => {
         };
 
 
-    } else if (collection.slug === 'movies-like-parasite') { // ✅ NEW PARASITE COLLECTION ADDED
+    } else if (collection.slug === 'movies-like-parasite') { 
         return {
             badge: "Class Warfare Cinema",
             title: "Parasite",
@@ -541,7 +644,7 @@ const getCollectionContent = () => {
             },
             experience: {
                 text1: "Whether you're seeking cathartic violence or profound moral questioning about justice and vengeance, this collection delivers cinema's most powerful revenge experiences without apology.",
-                text2: "Each film has been selected for its unflinching exploration of revenge's seductive power and devastating consequences—creating visceral, unforgettable narratives that challenge what justice truly means."
+                text2: "Each film has been selected for its unflinching exploration of revenge's seductive power and devastating consequences—creating unforgettable narratives that challenge what justice truly means."
             }
         };
     } else if (collection.slug === 'best-mystery-thriller-movies') {
@@ -685,7 +788,7 @@ const getCollectionContent = () => {
     }
 };
 
-// 🔥 HEADER CONTENT WITH MATRIX, SE7EN & PARASITE ADDED
+// 🔥 HEADER CONTENT 
 const getHeaderContent = () => {
     if (collection.slug === 'movies-like-memento') {
         return {
@@ -716,7 +819,7 @@ const getHeaderContent = () => {
             title: "Movies Like Se7en: 10 Dark Noir Thrillers",
             subtitle: "Gritty investigations, obsessive detectives & shocking twists in the rain-soaked dark"
         };
-    } else if (collection.slug === 'movies-like-parasite') { // ✅ NEW PARASITE HEADER
+    } else if (collection.slug === 'movies-like-parasite') { 
         return {
             title: "Movies Like Parasite: 10 Class Warfare Films",
             subtitle: "Social inequality, economic desperation & systemic injustice where rich and poor collide"
@@ -728,6 +831,31 @@ const getHeaderContent = () => {
             subtitle: "Twisted vengeance, shocking twists & moral devastation from Park Chan-wook's masterpiece"
         };
     
+} else if (collection.slug === 'best-action-movies-on-hulu') {
+        return {
+            title: "Best Action Movies on Hulu: 10 High-Octane Films",
+            subtitle: "Adrenaline-fueled cinema with brutal fight choreography, relentless pacing & explosive set pieces"
+        };
+
+} else if (collection.slug === 'best-romance-movies-on-hulu') {
+        return {
+            title: "Best Romance Movies on Hulu: 10 Prestige Films",
+            subtitle: "Emotionally resonant love stories, from Palme d'Or winners to devastating ghost stories & electric chemistry"
+        };
+
+        } else if (collection.slug === 'best-horror-movies-on-hulu') {
+        return {
+            title: "Best Horror Movies on Hulu: 10 Terrifying Films",
+            subtitle: "From trauma-inducing gore to slow-burn dread—ranked by visceral fear & psychological impact"
+        };
+
+} else if (collection.slug === 'best-comedy-movies-on-hulu') {
+        return {
+            title: "Best Comedy Movies on Hulu: 10 Funniest Films",
+            subtitle: "From teen chaos and mockumentaries to biting satire & action-packed laughs"
+        };
+
+
 } else if (collection.slug === 'movies-like-donnie-darko') {
     return {
         title: "Movies Like Donnie Darko: 10 Reality-Warping Films",
@@ -820,7 +948,7 @@ const getHeaderContent = () => {
 };
 
 
-// 🔥 LOADER CONTENT WITH MATRIX, SE7EN & PARASITE ADDED
+// 🔥 LOADER CONTENT
 const getLoaderContent = () => {
     if (collection?.slug === 'movies-like-memento') {
         return {
@@ -867,8 +995,33 @@ const getLoaderContent = () => {
         description: "Curating films about perfectionism, identity collapse, and psychological obsession."
     };
 
+} else if (collection?.slug === 'best-romance-movies-on-hulu') {
+        return {
+            title: "Loading Best Romance Movies on Hulu",
+            description: "Curating emotionally resonant romance films with community reviews and ratings"
+        };
 
-    } else if (collection?.slug === 'movies-like-parasite') { // ✅ NEW PARASITE LOADER
+
+} else if (collection?.slug === 'best-action-movies-on-hulu') {
+        return {
+            title: "Loading Best Action Movies on Hulu",
+            description: "Curating high-octane action films with intense fight choreography and community reviews"
+        };
+
+} else if (collection?.slug === 'best-horror-movies-on-hulu') {
+        return {
+            title: "Loading Best Horror Movies on Hulu",
+            description: "Curating trauma-inducing horror films with community reviews and ratings"
+        };
+
+} else if (collection?.slug === 'best-comedy-movies-on-hulu') {
+        return {
+            title: "Loading Best Comedy Movies on Hulu",
+            description: "Curating hilarious comedy films with laughter scores and community reviews"
+        };
+
+
+    } else if (collection?.slug === 'movies-like-parasite') { 
         return {
             title: "Loading Movies Like Parasite",
             description: "Curating class warfare films and social inequality thrillers with community reviews and ratings"
@@ -952,7 +1105,7 @@ const getLoaderContent = () => {
 };
 
 
-// 🔥 STATIC META CONTENT - CLEAN & STANDARDIZED (Timestamps Only)
+// 🔥 STATIC META CONTENT
 const getStaticMetaContent = () => {
     if (collection.slug === 'movies-like-memento') {
         return {
@@ -1008,6 +1161,49 @@ const getStaticMetaContent = () => {
             twitterTitle: "👁️ Loved Eyes Wide Shut? These 10 Paranoid Films Are Terrifying",
             progressText: `of Top ${movies.length} Movies Like Eyes Wide Shut`
         };
+
+
+} else if (collection.slug === 'best-romance-movies-on-hulu') {
+        return {
+            title: "Best Romance Movies on Hulu: 10 Prestige Films",
+            description: "10 best romance movies streaming on Hulu. Featuring Anora, All of Us Strangers & Brooklyn. Ranked by emotional resonance & chemistry. Includes sensitive content timestamps.",
+            keywords: "best romance movies on hulu, hulu romance films, anora, all of us strangers, romantic movies streaming, sensitive content timestamps",
+            ogTitle: "10 Best Romance Movies on Hulu: Prestige & Heartbreak 💖",
+            twitterTitle: "💖 10 Best Romance Movies on Hulu (Anora, All of Us Strangers)",
+            progressText: `of Top ${movies.length} Romance Movies on Hulu`
+        };
+
+
+} else if (collection.slug === 'best-action-movies-on-hulu') {
+        return {
+            title: "Best Action Movies on Hulu: 10 High-Octane Films",
+            description: "10 high-octane action movies streaming on Hulu. Featuring Predator, Taken & Prey. Ranked by adrenaline score & fight choreography. Includes sensitive content timestamps.",
+            keywords: "best action movies on hulu, hulu action films, high octane movies, predator hulu, sensitive content timestamps",
+            ogTitle: "10 Best Action Movies on Hulu: High-Octane & Adrenaline-Fueled 🔥",
+            twitterTitle: "🔥 10 Best Action Movies on Hulu You Need to Stream Now",
+            progressText: `of Top ${movies.length} Action Movies on Hulu`
+        };
+
+} else if (collection.slug === 'best-horror-movies-on-hulu') {
+        return {
+            title: "10 Best Horror Movies on Hulu: Ranked by Scariness",
+            description: "10 scariest movies on Hulu. Featuring When Evil Lurks, Longlegs & The First Omen. Ranked by visceral dread & psychological trauma. Includes sensitive content timestamps.",
+            keywords: "best horror movies on hulu, hulu horror films, scariest movies streaming, when evil lurks, longlegs, horror rankings, sensitive content timestamps",
+            ogTitle: "10 Best Horror Movies on Hulu: Pure Nightmare Fuel 🩸",
+            twitterTitle: "🩸 10 Scariest Movies on Hulu (When Evil Lurks, Longlegs)",
+            progressText: `of Top ${movies.length} Horror Movies on Hulu`
+        };
+
+} else if (collection.slug === 'best-comedy-movies-on-hulu') {
+        return {
+            title: "10 Best Comedy Movies on Hulu: Ranked by Laughter",
+            description: "10 funniest movies on Hulu. Featuring Superbad, Borat & Palm Springs. Ranked by laughter frequency & chaotic energy. Includes sensitive content timestamps.",
+            keywords: "best comedy movies on hulu, hulu comedy films, funniest movies streaming, superbad, borat, comedy rankings, sensitive content timestamps",
+            ogTitle: "10 Best Comedy Movies on Hulu: Side-Splitting & Chaotic 😂",
+            twitterTitle: "😂 10 Funniest Movies on Hulu (Superbad, Borat)",
+            progressText: `of Top ${movies.length} Comedy Movies on Hulu`
+        };
+
     } else if (collection.slug === 'movies-like-black-swan') {
         return {
             title: "Movies Like Black Swan: 10 Psychological Obsession Films",
@@ -1238,10 +1434,14 @@ const getStaticMetaContent = () => {
             sessionStorage.removeItem('fromMatrixCollection');
             sessionStorage.removeItem('fromSe7enCollection');
             sessionStorage.removeItem('fromOldboyCollection');
+            sessionStorage.removeItem('fromHuluRomanceCollection');
+            sessionStorage.removeItem('fromHuluActionCollection');
+            sessionStorage.removeItem('fromHuluHorrorCollection');
+            sessionStorage.removeItem('fromHuluComedyCollection');
             sessionStorage.removeItem('fromEyesWideShutCollection');
             sessionStorage.removeItem('fromDonnieDarkoCollection');
             sessionStorage.removeItem('fromBlackSwanCollection');
-            sessionStorage.removeItem('fromParasiteCollection'); // ✅ NEW PARASITE
+            sessionStorage.removeItem('fromParasiteCollection'); 
             sessionStorage.removeItem('fromInterstellarCollection');
             sessionStorage.removeItem('fromShutterIslandCollection');
             sessionStorage.removeItem('fromSurvivalCollection');
@@ -1266,7 +1466,15 @@ const getStaticMetaContent = () => {
                 sessionStorage.setItem('fromMatrixCollection', 'true');
             } else if (collection.slug === 'movies-like-se7en') {
                 sessionStorage.setItem('fromSe7enCollection', 'true');
-            } else if (collection.slug === 'movies-like-parasite') { // ✅ NEW PARASITE
+} else if (collection.slug === 'best-action-movies-on-hulu') {
+                sessionStorage.setItem('fromHuluActionCollection', 'true');
+} else if (collection.slug === 'best-romance-movies-on-hulu') {
+                sessionStorage.setItem('fromHuluRomanceCollection', 'true');
+                } else if (collection.slug === 'best-horror-movies-on-hulu') {
+                sessionStorage.setItem('fromHuluHorrorCollection', 'true');
+                } else if (collection.slug === 'best-comedy-movies-on-hulu') {
+                sessionStorage.setItem('fromHuluComedyCollection', 'true');
+            } else if (collection.slug === 'movies-like-parasite') { 
                 sessionStorage.setItem('fromParasiteCollection', 'true');
          } else if (collection.slug === 'movies-like-oldboy') {
           sessionStorage.setItem('fromOldboyCollection', 'true');
@@ -1483,82 +1691,79 @@ const getStaticMetaContent = () => {
         );
     };
 
-    // 🔥 MOBILE-OPTIMIZED CINEMATIC HEADER
-    const CinematicHeader = React.memo(() => {
-        return (
-            <header className="text-center mb-8 sm:mb-16 lg:mb-20 px-4 sm:px-6 w-full relative pt-20 sm:pt-16 lg:pt-8">
-                <motion.div 
-                    initial={{ opacity: 0, y: -40 }} 
-                    animate={{ opacity: 1, y: 0 }} 
-                    transition={{ duration: 1.2, ease: "easeOut" }} 
-                    className="space-y-4 sm:space-y-6 lg:space-y-8 xl:space-y-12 relative z-10"
-                >
-                    <motion.div className="relative">
-<motion.div
-    initial={{ opacity: 0, y: -40 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 1.2, ease: "easeOut" }}
->
-{/* ✅ HIDDEN H1 FOR SEO (GOOGLE READS THIS) */}
-<h1 className="sr-only">
-    {headerContent.title}
-</h1>
+// 🔥 MOBILE-OPTIMIZED CINEMATIC HEADER
+   // 🔥 MOBILE-OPTIMIZED CINEMATIC HEADER - REMOVED EXTRA PADDING ✅
+const CinematicHeader = React.memo(() => {
+    return (
+        // ✅ CHANGED: Removed 'pt-32' classes. Now relies on container only.
+        <header className="text-center mb-8 sm:mb-16 lg:mb-20 px-4 sm:px-6 w-full relative">
+            <motion.div 
+                initial={{ opacity: 0, y: -40 }} 
+                animate={{ opacity: 1, y: 0 }} 
+                transition={{ duration: 1.2, ease: "easeOut" }} 
+                className="space-y-2 sm:space-y-6 lg:space-y-8 xl:space-y-12 relative z-10"
+            >
+                <motion.div className="relative">
+                    <motion.div
+                        initial={{ opacity: 0, y: -40 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 1.2, ease: "easeOut" }}
+                    >
+                    <h1 className="sr-only">
+                        {headerContent.title}
+                    </h1>
 
-{/* ✅ VISUAL H1 (BEAUTIFUL GRADIENT FOR USERS) */}
-{/* ✅ VISUAL H1 (BEAUTIFUL GRADIENT FOR USERS) */}
-<div 
-    className="text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-extralight tracking-[0.05em] sm:tracking-[0.1em] text-transparent bg-clip-text bg-gradient-to-r from-yellow-100 via-yellow-300 to-amber-300" 
-    style={{ 
-        fontFamily: "'Playfair Display', serif", 
-        textShadow: '0 0 80px rgba(234, 179, 8, 0.15)',
-        lineHeight: '1.1'
-    }}
-    role="heading"
-    aria-level="1"
->
-    <span className="block leading-tight" style={{ letterSpacing: '0.02em' }}>
-        {`${headerContent.title}`} {/* ✅ Fixed here too */}
-    </span>
-</div>
+                    <div 
+                        className="text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-extralight tracking-[0.05em] sm:tracking-[0.1em] text-transparent bg-clip-text bg-gradient-to-r from-yellow-100 via-yellow-300 to-amber-300" 
+                        style={{ 
+                            fontFamily: "'Playfair Display', serif", 
+                            textShadow: '0 0 80px rgba(234, 179, 8, 0.15)',
+                            lineHeight: '1.1'
+                        }}
+                        role="heading"
+                        aria-level="1"
+                    >
+                        <span className="block leading-tight" style={{ letterSpacing: '0.02em' }}>
+                            {`${headerContent.title}`}
+                        </span>
+                    </div>
 
-</motion.div>
-
-                        
-                        <motion.p 
-                            className="text-sm sm:text-lg md:text-xl lg:text-2xl font-light mt-3 sm:mt-6 text-yellow-200/60"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 0.5, duration: 0.8 }}
-                        >
-                            {headerContent.subtitle}
-                        </motion.p>
-                        
-                        <motion.div 
-                            initial={{ scaleX: 0 }} 
-                            animate={{ scaleX: 1 }} 
-                            transition={{ delay: 1.2, duration: 2, ease: "easeInOut" }} 
-                            className="absolute -bottom-3 sm:-bottom-6 left-1/2 transform -translate-x-1/2 w-24 sm:w-32 lg:w-64 xl:w-96 h-px bg-gradient-to-r from-transparent via-yellow-400/50 to-transparent"
-                        />
                     </motion.div>
                     
-                    {/* Badge Grid */}
-                    <motion.div 
-                        className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 lg:gap-6 mt-12 sm:mt-16 lg:mt-20 max-w-4xl mx-auto" 
-                        initial={{ opacity: 0, y: 40 }} 
-                        animate={{ opacity: 1, y: 0 }} 
-                        transition={{ delay: 2, duration: 0.8 }}
+                    <motion.p 
+                        className="text-sm sm:text-lg md:text-xl lg:text-2xl font-light mt-2 sm:mt-6 text-yellow-200/60"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.5, duration: 0.8 }}
                     >
-                        {collection.badges?.map((badge, index) => (
-                            <motion.div 
-                                key={index}
-                                className="relative group" 
-                                whileHover={{ y: -8, scale: 1.03 }} 
-                                transition={{ duration: 0.4 }}
-                            >
-                                <div className="p-4 sm:p-6 lg:p-8 bg-gradient-to-br from-gray-800/40 via-gray-900/30 to-black/40 border border-yellow-500/20 rounded-2xl backdrop-blur-xl relative overflow-hidden">
-                                    <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/5 via-transparent to-amber-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                                    
-                                    <div className="flex flex-col items-center space-y-3 sm:space-y-4 relative z-10">
+                        {headerContent.subtitle}
+                    </motion.p>
+                    
+                    <motion.div 
+                        initial={{ scaleX: 0 }} 
+                        animate={{ scaleX: 1 }} 
+                        transition={{ delay: 1.2, duration: 2, ease: "easeInOut" }} 
+                        className="absolute -bottom-3 sm:-bottom-6 left-1/2 transform -translate-x-1/2 w-24 sm:w-32 lg:w-64 xl:w-96 h-px bg-gradient-to-r from-transparent via-yellow-400/50 to-transparent"
+                    />
+                </motion.div>
+                
+                <motion.div 
+                    className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 lg:gap-6 mt-8 sm:mt-16 lg:mt-20 max-w-4xl mx-auto" 
+                    initial={{ opacity: 0, y: 40 }} 
+                    animate={{ opacity: 1, y: 0 }} 
+                    transition={{ delay: 2, duration: 0.8 }}
+                >
+                    {collection.badges?.map((badge, index) => (
+                        <motion.div 
+                            key={index}
+                            className="relative group" 
+                            whileHover={{ y: -8, scale: 1.03 }} 
+                            transition={{ duration: 0.4 }}
+                        >
+                            <div className="p-4 sm:p-6 lg:p-8 bg-gradient-to-br from-gray-800/40 via-gray-900/30 to-black/40 border border-yellow-500/20 rounded-2xl backdrop-blur-xl relative overflow-hidden">
+                                <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/5 via-transparent to-amber-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                
+                                <div className="flex flex-col items-center space-y-3 sm:space-y-4 relative z-10">
                                         <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-yellow-400/20 to-amber-400/20 rounded-xl flex items-center justify-center border border-yellow-400/30">
                                             {index === 0 && <Brain className="w-6 h-6 sm:w-7 sm:h-7 text-yellow-400" />}
                                             {index === 1 && <Star className="w-6 h-6 sm:w-7 sm:h-7 text-yellow-400" />}
@@ -1571,16 +1776,15 @@ const getStaticMetaContent = () => {
                                         <p className="text-gray-400 text-xs sm:text-sm text-center leading-relaxed">
                                             {badge.desc}
                                         </p>
-                                    </div>
                                 </div>
-                            </motion.div>
-                        ))}
-                    </motion.div>
+                            </div>
+                        </motion.div>
+                    ))}
                 </motion.div>
-            </header>
-        );
-    });
-
+            </motion.div>
+        </header>
+    );
+});
     // 🔥 CINEMATIC LOADER
     const CinematicLoader = React.memo(() => {
         return (
@@ -1668,6 +1872,7 @@ const NavigationDots = ({ movies, currentMovieIndex, goToMovie }) => (
 );
 
 return (
+    // ✅ REMOVED EXCESSIVE BOTTOM PADDING (pb-24) TO FIX THE GAP
     <div className="min-h-screen bg-black text-white relative overflow-hidden">
         <Head>
     {/* ✅ FIXED: Template literal prevents hydration comments in Google Search results */}
@@ -1695,7 +1900,7 @@ return (
     <meta property="og:title" key={`og-title-${collection.slug}`} content={`${metaContent.ogTitle || metaContent.title || collection.title}`} />
     <meta property="og:description" key={`og-desc-${collection.slug}`} content={`${metaContent.description || collection.description}`} />
     <meta property="og:type" content="website" />
-   
+    
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" key={`twitter-title-${collection.slug}`} content={`${metaContent.twitterTitle || metaContent.title || collection.title}`} />
     <meta name="twitter:description" key={`twitter-desc-${collection.slug}`} content={`${metaContent.description || collection.description}`} />
@@ -1719,7 +1924,7 @@ return (
                                     ? 'movies/matrix/'
                                     : collection?.slug === 'movies-like-se7en'
                                     ? 'movies/like-se7en/'
-                                    : collection?.slug === 'movies-like-parasite' // ✅ NEW PARASITE PATH
+                                    : collection?.slug === 'movies-like-parasite' 
                                     ? 'movies/parasite/'
                                    : collection?.slug === 'movies-like-oldboy'
 ? 'movies/oldboy/'
@@ -1732,8 +1937,15 @@ return (
 
 : collection?.slug === 'movies-like-eyes-wide-shut'
 ? 'movies/eyes-wide-shut/'
+: collection?.slug === 'best-action-movies-on-hulu'
+                                    ? 'movies/best-action-movies-on-hulu/'
+: collection?.slug === 'best-romance-movies-on-hulu'
+                                   ? 'movies/best-romance-movies-on-hulu/'
 
-
+: collection?.slug === 'best-horror-movies-on-hulu'
+                                 ? 'movies/best-horror-movies-on-hulu/'
+: collection?.slug === 'best-comedy-movies-on-hulu'
+                                   ? 'movies/best-comedy-movies-on-hulu/'
                                     : collection?.slug === 'movies-like-interstellar'
                                     ? 'movies/interstellar/'
                                     : collection?.slug === 'movies-like-memento'
@@ -1811,7 +2023,7 @@ return (
         <TopLeftLogo />
         <HomepageButton />
         
-        <AnimatePresence mode="wait">
+       <AnimatePresence mode="wait">
             {isLoading ? (
                 <motion.div
                     key="loader"
@@ -1828,16 +2040,16 @@ return (
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    className="relative z-10"
+                    className="relative z-10 flex flex-col min-h-screen" // ✅ Fixes layout height
                 >
-                    <div className="container mx-auto px-3 sm:px-6 py-8 sm:py-12">
+                    {/* ✅ Main Content - Pushes footer down */}
+                {/* ✅ Main Content - Pushes footer down. Changed pt-32 to pt-24 */}
+<div className="container mx-auto px-3 sm:px-6 pt-24 sm:pt-40 lg:pt-16 pb-12 flex-grow">
                         <CinematicHeader />
                         
-                        {/* 🔥 CINEMATIC EXPLORER SECTION */}
                         <CinematicExplorerSection currentRank={currentRank} />
                         
                         <div className="relative flex items-center justify-center min-h-[70vh] sm:min-h-[80vh]">
-                            {/* 🔥 FIXED NAVIGATION BUTTONS */}
                             {!isFirstMovie && (
                                 <motion.button
                                     onClick={prevMovie}
@@ -1862,7 +2074,6 @@ return (
                                 </motion.button>
                             )}
                             
-                            {/* 🔥 FIXED FOR NEXT.JS 15 - WITH MATRIX, SE7EN & PARASITE COLLECTION URLS ✅ */}
                             <AnimatePresence mode="wait">
                                 {currentMovie && (
 <Link
@@ -1875,7 +2086,6 @@ return (
       ? `/movies/like-se7en/${currentMovie.imdbID}`
       : collection.slug === 'movies-like-parasite'
       ? `/movies/parasite/${currentMovie.imdbID}`
-
       : collection.slug === 'movies-like-oldboy'
       ? `/movies/oldboy/${currentMovie.imdbID}`
       : collection.slug === 'movies-like-donnie-darko'
@@ -1884,7 +2094,14 @@ return (
       ? `/movies/black-swan/${currentMovie.imdbID}`
 : collection.slug === 'movies-like-eyes-wide-shut'
 ? `/movies/eyes-wide-shut/${currentMovie.imdbID}`
-
+: collection.slug === 'best-action-movies-on-hulu'
+      ? `/movies/best-action-movies-on-hulu/${currentMovie.imdbID}`
+: collection.slug === 'best-romance-movies-on-hulu'
+       ? `/movies/best-romance-movies-on-hulu/${currentMovie.imdbID}`
+: collection.slug === 'best-horror-movies-on-hulu'
+      ? `/movies/best-horror-movies-on-hulu/${currentMovie.imdbID}`
+      : collection.slug === 'best-comedy-movies-on-hulu'
+      ? `/movies/best-comedy-movies-on-hulu/${currentMovie.imdbID}`
       : collection.slug === 'movies-like-interstellar'
       ? `/movies/interstellar/${currentMovie.imdbID}`
       : collection.slug === 'movies-like-memento'
@@ -1959,23 +2176,24 @@ return (
                                             detailPageUrl = `/movies/matrix/${currentMovie.imdbID}`;
                                         } else if (collection.slug === 'movies-like-se7en') {
                                             detailPageUrl = `/movies/like-se7en/${currentMovie.imdbID}`;
-                                        } else if (collection.slug === 'movies-like-parasite') { // ✅ NEW PARASITE BUTTON LOGIC
+                                        } else if (collection.slug === 'movies-like-parasite') { 
                                             detailPageUrl = `/movies/parasite/${currentMovie.imdbID}`;
-
-                                                                                } else if (collection.slug === 'movies-like-oldboy') {
+                                        } else if (collection.slug === 'movies-like-oldboy') {
                                             detailPageUrl = `/movies/oldboy/${currentMovie.imdbID}`;
-
-
-         } else if (collection.slug === 'movies-like-donnie-darko') {
-    detailPageUrl = `/movies/donnie-darko/${currentMovie.imdbID}`;
-
-} else if (collection.slug === 'movies-like-black-swan') {
-    detailPageUrl = `/movies/black-swan/${currentMovie.imdbID}`;
-
-} else if (collection.slug === 'movies-like-eyes-wide-shut') {
-    detailPageUrl = `/movies/eyes-wide-shut/${currentMovie.imdbID}`;
-
-
+                                        } else if (collection.slug === 'movies-like-donnie-darko') {
+                                            detailPageUrl = `/movies/donnie-darko/${currentMovie.imdbID}`;
+                                        } else if (collection.slug === 'movies-like-black-swan') {
+                                            detailPageUrl = `/movies/black-swan/${currentMovie.imdbID}`;
+                                        } else if (collection.slug === 'movies-like-eyes-wide-shut') {
+                                            detailPageUrl = `/movies/eyes-wide-shut/${currentMovie.imdbID}`;
+                                        } else if (collection.slug === 'best-action-movies-on-hulu') {
+                                            detailPageUrl = `/movies/best-action-movies-on-hulu/${currentMovie.imdbID}`;
+                                        } else if (collection.slug === 'best-romance-movies-on-hulu') {
+                                            detailPageUrl = `/movies/best-romance-movies-on-hulu/${currentMovie.imdbID}`;
+                                        } else if (collection.slug === 'best-horror-movies-on-hulu') {
+                                            detailPageUrl = `/movies/best-horror-movies-on-hulu/${currentMovie.imdbID}`;
+                                        } else if (collection.slug === 'best-comedy-movies-on-hulu') {
+                                            detailPageUrl = `/movies/best-comedy-movies-on-hulu/${currentMovie.imdbID}`;
                                         } else if (collection.slug === 'movies-like-interstellar') {
                                             detailPageUrl = `/movies/interstellar/${currentMovie.imdbID}`;
                                         } else if (collection.slug === 'movies-like-memento') {
@@ -2026,14 +2244,12 @@ return (
                             </div>
                         </motion.div>
 
-                        {/* Navigation Dots */}
                         <NavigationDots 
                             movies={movies}
                             currentMovieIndex={currentMovieIndex}
                             goToMovie={goToMovie}
                         />
 
-                        {/* Movie Counter */}
                         <motion.div
                             className="flex justify-center mt-8"
                             initial={{ opacity: 0, y: 20 }}
@@ -2057,14 +2273,16 @@ return (
                                 </span>
                             </div>
                         </motion.div>
+                    </div>
 
-                        {/* Footer */}
-                        <motion.footer
-                            className="bg-gradient-to-t from-gray-900 to-black mt-16 pt-12 border-t border-gray-800/30 text-center"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 4.5 }}
-                        >
+                    {/* ✅ FOOTER MOVED OUTSIDE CONTAINER - FIXES SIDE GAPS */}
+                    <motion.footer
+                        className="w-full bg-gradient-to-t from-gray-900 to-black pt-12 border-t border-gray-800/30 text-center relative z-20 mt-auto"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 4.5 }}
+                    >
+                        <div className="container mx-auto px-6 pb-12">
                             <p className="text-gray-500 text-sm sm:text-base font-light tracking-wide mb-8">
                                 Curated cinema for discerning viewers • Expert analysis and community insights
                             </p>
@@ -2077,7 +2295,6 @@ return (
                                 <div className="w-16 sm:w-24 h-px bg-gradient-to-l from-transparent to-gray-700"></div>
                             </div>
                             
-                            {/* TMDB Attribution */}
                             <motion.div 
                                 className="mb-8 pt-6 border-t border-gray-900/50"
                                 initial={{ opacity: 0 }}
@@ -2112,15 +2329,15 @@ return (
                                 </p>
                             </motion.div>
 
-                            <div className="flex items-center justify-center space-x-8 text-gray-500 text-sm pb-8">
+                            <div className="flex items-center justify-center space-x-8 text-gray-500 text-sm pb-10">
                                 <span>© 2026 Filmiway</span>
                                 <span>•</span>
                                 <span>All Rights Reserved</span>
                                 <span>•</span>
                                 <span>Where Every Film Finds Its Way</span>
                             </div>
-                        </motion.footer>
-                    </div>
+                        </div>
+                    </motion.footer>
                 </motion.div>
             )}
         </AnimatePresence>
@@ -2167,7 +2384,7 @@ export async function getStaticProps({ params }) {
         case 'movies-like-se7en':
             movieDatabase = SE7EN_DATABASE;
             break;
-        case 'movies-like-parasite': // ✅ NEW PARASITE CASE
+        case 'movies-like-parasite': 
             movieDatabase = PARASITE_DATABASE;
             break;
 
@@ -2188,7 +2405,23 @@ case 'movies-like-donnie-darko':
 case 'movies-like-eyes-wide-shut':
             movieDatabase = EYES_WIDE_SHUT_DATABASE;
             break;
-              
+
+            case 'best-action-movies-on-hulu':
+            movieDatabase = HULU_ACTION_DATABASE;
+            break;
+
+            case 'best-romance-movies-on-hulu':
+            movieDatabase = HULU_ROMANCE_DATABASE;
+            break;
+               
+case 'best-horror-movies-on-hulu':
+            movieDatabase = HULU_HORROR_DATABASE;
+            break;
+
+            case 'best-comedy-movies-on-hulu':
+            movieDatabase = HULU_COMEDY_DATABASE;
+            break;
+
         case 'movies-like-interstellar':
             movieDatabase = INTERSTELLAR_DATABASE;
             break;

@@ -233,8 +233,346 @@ export const COLLECTIONS = {
   },
 
 
+// 💥 BEST ACTION MOVIES ON HULU COLLECTION
+  'best-action-movies-on-hulu': {
+    slug: 'best-action-movies-on-hulu',
+    title: 'Best Action Movies on Hulu',
+    subtitle: 'High-Octane Adrenaline Hits',
+    description: 'The top 10 action movies streaming on Hulu right now. From Predator to Bullet Train—ranked by fight choreography and pure adrenaline.',
+    longDescription: 'Looking for the best action movies on Hulu? This list ranks the most intense, hard-hitting, and adrenaline-fueled films available on the platform. From classic 80s sci-fi action to modern martial arts masterpieces and stylized spy thrillers, these are the movies that define "high-octane."',
+    
+    emoji: '💥',
+    theme: 'orange',
+    primaryColor: '#f97316',
+    secondaryColor: '#ea580c',
+    accentColor: '#c2410c',
+    gradientFrom: 'from-orange-600',
+    gradientTo: 'to-red-600',
+    
+    category: 'action',
+    tags: ['action', 'hulu', 'streaming', 'martial arts', 'sci-fi action', 'thriller', 'high octane'],
+    
+    metaTitle: '10 Best Action Movies on Hulu (2025) | Ranked by Adrenaline | Filmiway',
+    metaDescription: 'Discover the top 10 action movies on Hulu—from Predator to Prey. Expert-curated ranking of high-octane films with brutal fights and non-stop action.',
+    metaKeywords: 'best action movies on hulu, hulu action films, predator hulu, taken movie hulu, prey movie, bullet train hulu, action movies streaming',
+    
+    stats: {
+      totalMovies: 10,
+      averageRating: 7.6,
+      totalWatchtime: '18 hours 15 minutes',
+      averageAdrenalineScore: 89.5,
+      mostIntense: 'Predator (98/100)',
+      newestMovie: 'Predator: Killer of Killers (2025)',
+      oldestMovie: 'Predator (1987)'
+    },
+    
+    movies: [
+      'tt0093773', // Predator (1987)
+      'tt0936501', // Taken (2008)
+      'tt_placeholder', // Predator: Killer of Killers (2025) - Needs real ID
+      'tt2103281', // Dawn of the Planet of the Apes (2014)
+      'tt11866324', // Prey (2022)
+      'tt0455944', // The Equalizer (2014)
+      'tt1220719', // Ip Man (2008)
+      'tt2802144', // Kingsman: The Secret Service (2014)
+      'tt12593682', // Bullet Train (2022)
+      'tt9066658'  // Boss Level (2020)
+    ],
+    
+    badges: [
+      { label: 'High Octane', desc: 'Non-stop action and stunts' },
+      { label: 'Hulu Exclusive', desc: 'Available to stream now' },
+      { label: 'Fight Mastery', desc: 'Top-tier choreography' }
+    ],
+    
+    featured: {
+      hero: {
+        title: 'Predator',
+        subtitle: 'The Ultimate Action Classic',
+        description: 'Arnold Schwarzenegger vs. an alien hunter in the jungle. The definitive sci-fi action movie that set the standard for the genre.',
+        poster: 'https://image.tmdb.org/t/p/w500/k3mW4qfJo6SKqe6laRyNGnbB9n5.jpg',
+        backdrop: 'https://image.tmdb.org/t/p/w1280/schVFkTx8ZeGPQNJfOSWFxl8uYp.jpg',
+        adrenalineScore: 98
+      }
+    },
+    
+    relatedCollections: [
+      'best-sci-fi-movies',
+      'best-survival-movies',
+      'best-thriller-movies'
+    ],
+    
+    seo: {
+      title: '10 Best Action Movies on Hulu (2025) | Adrenaline Ranked | Filmiway',
+      description: 'The definitive ranking of the best action movies on Hulu. From Predator to Bullet Train, find your next high-octane watch here.',
+      keywords: 'action movies hulu, best action films streaming, predator, taken, prey, bullet train, kingsman, boss level, ip man',
+      canonicalUrl: 'https://filmiway.com/collection/best-action-movies-on-hulu',
+      ogImage: 'https://filmiway.com/images/hulu-action-collection-og.jpg',
+      structuredData: {
+        '@context': 'https://schema.org',
+        '@type': 'ItemList',
+        name: 'Best Action Movies on Hulu',
+        description: 'Expert-curated list of the best action movies available on Hulu ranked by adrenaline and fight choreography',
+        numberOfItems: 10
+      }
+    }
+  },
+
+// 💖 BEST ROMANCE MOVIES ON HULU COLLECTION
+  'best-romance-movies-on-hulu': {
+    slug: 'best-romance-movies-on-hulu',
+    title: 'Best Romance Movies on Hulu',
+    subtitle: 'Prestige Love Stories & Emotional Masterpieces',
+    description: 'The top 10 romance movies streaming on Hulu right now. From Palme d\'Or winners to devastating ghost stories—ranked by emotional resonance.',
+    longDescription: 'Discover the most powerful love stories on Hulu. This collection moves beyond standard rom-coms to feature prestige cinema, critical darlings, and emotionally complex narratives. From the chaotic energy of Anora to the quiet devastation of All of Us Strangers, these are films that linger in the heart.',
+
+    emoji: '💖',
+    theme: 'pink',
+    primaryColor: '#ec4899',
+    secondaryColor: '#db2777',
+    accentColor: '#be123c',
+    gradientFrom: 'from-pink-600',
+    gradientTo: 'to-rose-600',
+
+    category: 'romance',
+    tags: ['romance', 'hulu', 'streaming', 'drama', 'comedy', 'lgbtq+', 'prestige', 'love'],
+
+    metaTitle: '10 Best Romance Movies on Hulu (2025) | Ranked by Emotion | Filmiway',
+    metaDescription: 'Discover the top 10 romance movies on Hulu—from Anora to Brooklyn. Expert-curated ranking of emotionally resonant films with electric chemistry.',
+    metaKeywords: 'best romance movies on hulu, hulu romance films, anora, all of us strangers, brooklyn movie, palm springs, rye lane, romantic movies streaming',
+
+    stats: {
+      totalMovies: 10,
+      averageRating: 7.4,
+      totalWatchtime: '17 hours 37 minutes',
+      averageEmotionalResonance: 92.0,
+      mostIntense: 'All of Us Strangers (98/100)',
+      newestMovie: 'Anora (2024)',
+      oldestMovie: '13 Going on 30 (2004)'
+    },
+
+    movies: [
+      'tt22359552', // Anora (2024)
+      'tt21192142', // All of Us Strangers (2023)
+      'tt8966292', // And Then We Danced (2019)
+      'tt2381111', // Brooklyn (2015)
+      'tt0412922', // Little Manhattan (2005)
+      'tt8385738', // Palm Springs (2020)
+      'tt15893794', // Rye Lane (2023)
+      'tt1263670', // Crazy Heart (2009)
+      'tt13352968', // Good Luck to You, Leo Grande (2022)
+      'tt0337563'  // 13 Going on 30 (2004)
+    ],
+
+    badges: [
+      { label: 'Prestige Romance', desc: 'Award-winning love stories' },
+      { label: 'Hulu Exclusive', desc: 'Available to stream now' },
+      { label: 'High Chemistry', desc: 'Electric on-screen pairings' }
+    ],
+
+    featured: {
+      hero: {
+        title: 'Anora',
+        subtitle: 'The Palme d\'Or Winner',
+        description: 'A chaotic, high-energy romance that mixes the Cinderella fantasy with the gritty reality of sex work and class warfare. Sean Baker\'s masterpiece.',
+        poster: 'https://image.tmdb.org/t/p/w500/7Mrg94aa3ypigf5A6J7lB6Q77t.jpg',
+        backdrop: 'https://image.tmdb.org/t/p/w1280/tEznSif397X5sr9f5bwC2GNIyLM.jpg',
+        emotionalResonance: 95
+      }
+    },
+
+    relatedCollections: [
+      'best-drama-movies-on-netflix',
+      'movies-like-parasite',
+      'best-psychological-thriller-movies'
+    ],
+
+    seo: {
+      title: '10 Best Romance Movies on Hulu (2025) | Emotion Ranked | Filmiway',
+      description: 'The definitive ranking of the best romance movies on Hulu. From Anora to Brooklyn, find your next emotional watch here.',
+      keywords: 'romance movies hulu, best romance films streaming, anora, all of us strangers, brooklyn, rye lane, palm springs, love stories',
+      canonicalUrl: 'https://filmiway.com/collection/best-romance-movies-on-hulu',
+      ogImage: 'https://filmiway.com/images/hulu-romance-collection-og.jpg',
+      structuredData: {
+        '@context': 'https://schema.org',
+        '@type': 'ItemList',
+        name: 'Best Romance Movies on Hulu',
+        description: 'Expert-curated list of the best romance movies available on Hulu ranked by emotional resonance and chemistry',
+        numberOfItems: 10
+      }
+    }
+  },
 
 
+// 🩸 BEST HORROR MOVIES ON HULU COLLECTION
+'best-horror-movies-on-hulu': {
+    slug: 'best-horror-movies-on-hulu',
+    title: '10 Best Horror Movies on Hulu',
+    subtitle: 'Ranked by Scariness & Dread',
+    description: 'The most brutally terrifying films streaming on Hulu. From trauma-inducing gore to slow-burn dread & cosmic horror.',
+    longDescription: 'Prepare for sleepless nights. This collection ranks the most terrifying horror movies currently streaming on Hulu. We move beyond simple jump scares to explore deep psychological trauma, visceral gore, and atmospheres so oppressive they feel cursed. From the rule-breaking chaos of "When Evil Lurks" to the suffocating procedural dread of "Longlegs".',
+
+    emoji: '🩸',
+    theme: 'red',
+    primaryColor: '#dc2626',
+    secondaryColor: '#b91c1c',
+    accentColor: '#7f1d1d',
+    gradientFrom: 'from-red-900',
+    gradientTo: 'to-black',
+
+    category: 'horror',
+    tags: ['horror', 'hulu', 'scary', 'gore', 'psychological', 'supernatural', 'streaming'],
+
+    metaTitle: '10 Best Horror Movies on Hulu (2026) | Ranked by Scariness | Filmiway',
+    metaDescription: 'Discover the 10 scariest movies on Hulu—from When Evil Lurks to Longlegs. Expert-curated ranking of visceral horror and psychological dread.',
+    metaKeywords: 'best horror movies on hulu, scariest movies on hulu, when evil lurks, longlegs, barbarian, horror movies streaming, hulu horror 2026',
+
+    stats: {
+        totalMovies: 10,
+        averageRating: 7.1,
+        totalWatchtime: '18 hours 45 minutes',
+        averageDreadScore: 94.0,
+        mostTerrifying: 'When Evil Lurks (100/100)',
+        newestMovie: 'Longlegs (2024)',
+        oldestMovie: 'The Babadook (2014)'
+    },
+
+    movies: [
+        'tt16300962', // When Evil Lurks
+        'tt23468450', // Longlegs
+        'tt4003440', // The House That Jack Built
+        'tt26466146', // Oddity
+        'tt2321549', // The Babadook
+        'tt5867314', // The Empty Man
+        'tt14966898', // Late Night with the Devil
+        'tt15791034', // Barbarian
+        'tt5676368', // The First Omen
+        'tt13352216'  // Fresh
+    ],
+
+    badges: [
+        { label: 'Visceral Horror', desc: 'Extreme gore & shock' },
+        { label: 'Psychological Dread', desc: 'Atmospheres that suffocate' },
+        { label: 'Critical Hits', desc: 'Rotten Tomatoes certified fresh' }
+    ],
+
+    featured: {
+        hero: {
+            title: 'When Evil Lurks',
+            subtitle: 'The Scariest Movie of the Decade',
+            description: 'A possession film that breaks every rule of the genre. Brutal, unforgiving, and absolutely terrifying.',
+            poster: 'https://image.tmdb.org/t/p/w500/2yl2zC3tX7F2KyD62P8R92V7X9o.jpg',
+            backdrop: 'https://image.tmdb.org/t/p/w1280/iIvQnZyzgx9TkbrOgcXX0p7aLiq.jpg',
+            dreadScore: 100
+        }
+    },
+
+    relatedCollections: [
+        'best-psychological-thriller-movies',
+        'movies-like-se7en',
+        'best-mystery-thriller-movies'
+    ],
+
+    seo: {
+        title: '10 Best Horror Movies on Hulu (2026) | Ranked by Scariness',
+        description: 'The definitive ranking of the scariest movies on Hulu. From the trauma of When Evil Lurks to the cosmic dread of The Empty Man.',
+        keywords: 'horror movies hulu, best horror films streaming, when evil lurks, longlegs, barbarian, the first omen, scary movies hulu',
+        canonicalUrl: 'https://filmiway.com/collection/best-horror-movies-on-hulu',
+        ogImage: 'https://filmiway.com/images/hulu-horror-collection-og.jpg',
+        structuredData: {
+            '@context': 'https://schema.org',
+            '@type': 'ItemList',
+            name: 'Best Horror Movies on Hulu',
+            description: 'Expert-curated list of the scariest horror movies available on Hulu ranked by dread and visceral impact',
+            numberOfItems: 10
+        }
+    }
+},
+
+// 😂 BEST COMEDY MOVIES ON HULU COLLECTION
+'best-comedy-movies-on-hulu': {
+    slug: 'best-comedy-movies-on-hulu',
+    title: '10 Best Comedy Movies on Hulu',
+    subtitle: 'Ranked by Laughter & Chaos',
+    description: 'The funniest films streaming on Hulu right now. From teen chaos and mockumentaries to biting satire & action-packed laughs.',
+    longDescription: 'Need a laugh? This collection ranks the absolute funniest movies on Hulu. We prioritize laughter frequency, memorable quotes, and pure chaotic energy. From the legendary teen awkwardness of Superbad to the unscripted genius of Borat, these are the films that guarantee a good time.',
+
+    emoji: '😂',
+    theme: 'yellow',
+    primaryColor: '#facc15', // Bright Yellow
+    secondaryColor: '#eab308', // Darker Yellow
+    accentColor: '#ca8a04', // Deep Gold
+    gradientFrom: 'from-yellow-500',
+    gradientTo: 'to-orange-500',
+
+    category: 'comedy',
+    tags: ['comedy', 'hulu', 'funny', 'satire', 'teen comedy', 'mockumentary', 'streaming'],
+
+    metaTitle: '10 Best Comedy Movies on Hulu (2026) | Ranked by Laughter | Filmiway',
+    metaDescription: 'Discover the 10 funniest movies on Hulu—from Superbad to Borat. Expert-curated ranking of side-splitting comedies and cult classics.',
+    metaKeywords: 'best comedy movies on hulu, funny movies on hulu, superbad, borat, palm springs, comedy movies streaming, hulu comedy 2026',
+
+    stats: {
+        totalMovies: 10,
+        averageRating: 7.3,
+        totalWatchtime: '16 hours 20 minutes',
+        averageLaughterScore: 92.0,
+        mostHilarious: 'Superbad (98/100)',
+        newestMovie: 'Twinless (2025)',
+        oldestMovie: 'Big (1988)'
+    },
+
+    movies: [
+        'tt0829482', // Superbad
+        'tt0190590', // O Brother, Where Art Thou?
+        'tt0443453', // Borat
+        'tt12593682', // Bullet Train
+        'tt8385738', // Palm Springs
+        'tt0247745', // Super Troopers
+        'tt27995662', // Twinless
+        'tt0094737', // Big
+        'tt21376880', // Theater Camp
+        'tt0387808'  // Idiocracy
+    ],
+
+    badges: [
+        { label: 'Side-Splitting', desc: 'Guaranteed to make you laugh' },
+        { label: 'Cult Classics', desc: 'Quotable and timeless' },
+        { label: 'Satirical Genius', desc: 'Smart, biting humor' }
+    ],
+
+    featured: {
+        hero: {
+            title: 'Superbad',
+            subtitle: 'The King of Teen Comedy',
+            description: 'Two co-dependent high school seniors are forced to deal with separation anxiety as their quest to get alcohol for a party goes hilariously wrong.',
+            poster: 'https://image.tmdb.org/t/p/w500/ek8e8txUyUwd2BNqj6lFEerJnhq.jpg',
+            backdrop: 'https://image.tmdb.org/t/p/w1280/6bCplwMc1YJU5znDwQPaAK4XZ3l.jpg',
+            laughterScore: 98
+        }
+    },
+
+    relatedCollections: [
+        'best-romance-movies-on-hulu',
+        'best-action-movies-on-hulu',
+        'best-sci-fi-movies'
+    ],
+
+    seo: {
+        title: '10 Best Comedy Movies on Hulu (2026) | Ranked by Laughter',
+        description: 'The definitive ranking of the funniest movies on Hulu. From the chaos of Superbad to the satire of Borat.',
+        keywords: 'comedy movies hulu, best comedy films streaming, superbad, borat, palm springs, funny movies hulu',
+        canonicalUrl: 'https://filmiway.com/collection/best-comedy-movies-on-hulu',
+        ogImage: 'https://filmiway.com/images/hulu-comedy-collection-og.jpg',
+        structuredData: {
+            '@context': 'https://schema.org',
+            '@type': 'ItemList',
+            name: 'Best Comedy Movies on Hulu',
+            description: 'Expert-curated list of the funniest comedy movies available on Hulu ranked by laughter and chaotic energy',
+            numberOfItems: 10
+        }
+    }
+},
 
 // 🦢 MOVIES LIKE BLACK SWAN COLLECTION
 'movies-like-black-swan': {

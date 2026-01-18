@@ -64,6 +64,34 @@ import {
   SENSITIVE_TIMELINES as EYES_WIDE_SHUT_SENSITIVE_TIMELINES 
 } from '../utils/eyesWideShutMovieData';
 
+// ✅ HULU ACTION COLLECTION
+import { 
+  COMPLETE_MOVIE_DATA as HULU_ACTION_MOVIE_DATA, 
+  STRATEGIC_QUOTES as HULU_ACTION_QUOTES, 
+  SENSITIVE_TIMELINES as HULU_ACTION_SENSITIVE_TIMELINES 
+} from '../utils/huluActionMovieData';
+
+// ✅ HULU ROMANCE COLLECTION
+import { 
+  COMPLETE_MOVIE_DATA as HULU_ROMANCE_MOVIE_DATA, 
+  STRATEGIC_QUOTES as HULU_ROMANCE_QUOTES, 
+  SENSITIVE_TIMELINES as HULU_ROMANCE_SENSITIVE_TIMELINES 
+} from '../utils/huluRomanceMovieData';
+
+// ✅ HULU HORROR COLLECTION
+import { 
+  COMPLETE_MOVIE_DATA as HULU_HORROR_MOVIE_DATA, 
+  STRATEGIC_QUOTES as HULU_HORROR_QUOTES, 
+  SENSITIVE_TIMELINES as HULU_HORROR_SENSITIVE_TIMELINES 
+} from '../utils/huluHorrorMovieData';
+
+// ✅ NEW: HULU COMEDY COLLECTION
+import { 
+  COMPLETE_MOVIE_DATA as HULU_COMEDY_MOVIE_DATA, 
+  STRATEGIC_QUOTES as HULU_COMEDY_QUOTES, 
+  SENSITIVE_TIMELINES as HULU_COMEDY_SENSITIVE_TIMELINES 
+} from '../utils/huluComedyMovieData';
+
 // 3. Recently Converted Collections
 import { 
   COMPLETE_MOVIE_DATA as CRIME_THRILLER_MOVIE_DATA, 
@@ -146,6 +174,10 @@ import OldboySEOFAQSection from './OldboySEOFAQSection';
 import DonnieDarkoSEOFAQSection from './DonnieDarkoSEOFAQSection';
 import BlackSwanSEOFAQSection from './BlackSwanSEOFAQSection';
 import EyesWideShutSEOFAQSection from './EyesWideShutSEOFAQSection';
+import HuluActionSEOFAQSection from './HuluActionSEOFAQSection';
+import HuluRomanceSEOFAQSection from './HuluRomanceSEOFAQSection';
+import HuluHorrorSEOFAQSection from './HuluHorrorSEOFAQSection';
+import HuluComedySEOFAQSection from './HuluComedySEOFAQSection'; // ✅ Added
 
 const MovieDetailsSection = React.memo(({
   movie,
@@ -171,7 +203,11 @@ const MovieDetailsSection = React.memo(({
   fromTimeTravelCollection,
   fromSciFiCollection,
   fromRevengeCollection,
-  fromWarFilmsCollection
+  fromWarFilmsCollection,
+  fromHuluActionCollection,
+  fromHuluRomanceCollection,
+  fromHuluHorrorCollection,
+  fromHuluComedyCollection // ✅ Added prop
 }) => {
 
  if (!movie) return null;
@@ -179,7 +215,11 @@ const MovieDetailsSection = React.memo(({
  const safeLookup = (collection, id) => (collection && id && collection[id]) || null;
 
  // ✅ UNIFIED MOVIE INFO LOOKUP
- const movieInfo = fromDonnieDarkoCollection ? safeLookup(DONNIE_DARKO_MOVIE_DATA, movie.tmdbId)
+ const movieInfo = fromHuluComedyCollection ? safeLookup(HULU_COMEDY_MOVIE_DATA, movie.tmdbId) // ✅ Added check
+  : fromHuluHorrorCollection ? safeLookup(HULU_HORROR_MOVIE_DATA, movie.tmdbId)
+  : fromHuluRomanceCollection ? safeLookup(HULU_ROMANCE_MOVIE_DATA, movie.tmdbId)
+  : fromHuluActionCollection ? safeLookup(HULU_ACTION_MOVIE_DATA, movie.tmdbId)
+  : fromDonnieDarkoCollection ? safeLookup(DONNIE_DARKO_MOVIE_DATA, movie.tmdbId)
   : fromParasiteCollection ? safeLookup(PARASITE_MOVIE_DATA, movie.tmdbId)
   : fromMatrixCollection ? safeLookup(MATRIX_MOVIE_DATA, movie.tmdbId)
   : fromSe7enCollection ? safeLookup(SE7EN_MOVIE_DATA, movie.tmdbId)
@@ -231,6 +271,10 @@ const MovieDetailsSection = React.memo(({
 
  // ✅ UNIFIED SENSITIVE SCENES LOOKUP
  const sensitiveScenes = safeMovieInfo.sensitiveScenes 
+   || HULU_COMEDY_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes // ✅ Added
+   || HULU_HORROR_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
+   || HULU_ROMANCE_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
+   || HULU_ACTION_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || DONNIE_DARKO_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || PARASITE_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || BLACK_SWAN_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
@@ -250,7 +294,11 @@ const MovieDetailsSection = React.memo(({
    || [];
 
  // ✅ DYNAMIC SCORE VALUE SELECTION
- const scoreValue = fromDonnieDarkoCollection ? movie.realityWarpIndex ?? safeMovieInfo.realityWarpIndex ?? 0
+ const scoreValue = fromHuluComedyCollection ? movie.psychologicalIntensity ?? safeMovieInfo.psychologicalIntensity ?? 0 // ✅ Comedy uses Laughter Score
+   : fromHuluHorrorCollection ? movie.psychologicalIntensity ?? safeMovieInfo.psychologicalIntensity ?? 0 
+   : fromHuluRomanceCollection ? movie.psychologicalIntensity ?? safeMovieInfo.psychologicalIntensity ?? 0 
+   : fromHuluActionCollection ? movie.psychologicalIntensity ?? safeMovieInfo.psychologicalIntensity ?? 0
+   : fromDonnieDarkoCollection ? movie.realityWarpIndex ?? safeMovieInfo.realityWarpIndex ?? 0
    : fromParasiteCollection ? movie.classWarfareIndex ?? safeMovieInfo.classWarfareIndex ?? 0
    : fromMatrixCollection ? movie.cyberComplexity ?? safeMovieInfo.cyberComplexity ?? 0
    : fromOldboyCollection ? movie.revengeIntensity ?? safeMovieInfo.revengeIntensity ?? 0
@@ -276,6 +324,37 @@ const MovieDetailsSection = React.memo(({
  const complexityLevel = safeMovieInfo.complexityLevel || 'HIGH';
 
  const getComplexityColor = (level) => {
+   if (fromHuluComedyCollection) { // ✅ Added Comedy colors
+        switch (level) {
+            case 'LEGENDARY': return '#ca8a04'; // Deep Gold
+            case 'CHAOTIC': return '#ea580c'; // Orange
+            case 'MASTERPIECE': return '#eab308'; // Dark Yellow
+            default: return '#facc15'; // Bright Yellow
+        }
+   }
+   if (fromHuluHorrorCollection) {
+        switch (level) {
+            case 'TRAUMA': return '#7f1d1d'; // Dark Red
+            case 'DREAD': return '#dc2626'; // Red
+            case 'DISTURBING': return '#ea580c'; // Orange
+            default: return '#b91c1c';
+        }
+   }
+   if (fromHuluRomanceCollection) {
+        switch (level) {
+            case 'MASTERPIECE': return '#8b5cf6'; // Violet
+            case "PALME D'OR": return '#ec4899'; // Pink
+            case 'NOSTALGIC': return '#facc15'; // Yellow
+            default: return '#fbbf24'; // Orange
+        }
+   }
+   if (fromHuluActionCollection) {
+        switch (level) {
+            case 'LEGENDARY': return '#ef4444'; // Red
+            case 'DIRECT': return '#f97316'; // Orange
+            default: return '#fbbf24'; // Yellow
+        }
+   }
    if (fromRevengeCollection || fromWarFilmsCollection || fromDramaCollection) {
      switch (level) {
        case 'EXTREME': return '#991b1b';
@@ -314,6 +393,10 @@ const MovieDetailsSection = React.memo(({
  };
 
  const getComplexityScoreTitle = () => {
+   if (fromHuluComedyCollection) return 'LAUGHTER SCORE'; // ✅ Added
+   if (fromHuluHorrorCollection) return 'DREAD SCORE'; 
+   if (fromHuluRomanceCollection) return 'EMOTIONAL RESONANCE';
+   if (fromHuluActionCollection) return 'ADRENALINE SCORE';
    if (fromMatrixCollection) return 'SCI-FI COMPLEXITY SCORE';
    if (fromSe7enCollection) return 'SE7EN DNA SCORE';
    if (fromRevengeCollection) return 'REVENGE INTENSITY SCORE';
@@ -335,6 +418,10 @@ const MovieDetailsSection = React.memo(({
  };
 
  const getComplexityIndexLabel = () => {
+   if (fromHuluComedyCollection) return 'HILARITY INDEX'; // ✅ Added
+   if (fromHuluHorrorCollection) return 'DREAD INDEX'; 
+   if (fromHuluRomanceCollection) return 'EMOTION INDEX';
+   if (fromHuluActionCollection) return 'ADRENALINE INDEX';
    if (fromMatrixCollection) return 'MIND BENDING SCORE';
    if (fromSe7enCollection) return 'NOIR DARKNESS INDEX';
    if (fromRevengeCollection) return 'REVENGE INTENSITY INDEX';
@@ -356,6 +443,10 @@ const MovieDetailsSection = React.memo(({
  };
 
  const getComplexityLevelLabel = () => {
+   if (fromHuluComedyCollection) return 'CHAOS LEVEL'; // ✅ Added
+   if (fromHuluHorrorCollection) return 'SCARINESS LEVEL'; 
+   if (fromHuluRomanceCollection) return 'ROMANCE TIER';
+   if (fromHuluActionCollection) return 'ACTION INTENSITY LEVEL';
    if (fromMatrixCollection) return 'SCI-FI COMPLEXITY LEVEL';
    if (fromSe7enCollection) return 'PSYCHOLOGICAL GRIT LEVEL';
    if (fromRevengeCollection) return 'VENGEANCE BRUTALITY LEVEL';
@@ -377,6 +468,26 @@ const MovieDetailsSection = React.memo(({
  };
 
  const getComplexityDescription = () => {
+   if (fromHuluComedyCollection) { // ✅ Added Comedy descriptions
+        if (scoreValue >= 90) return 'Legendary status. A film that defines a generation of humor and is quoted endlessly.';
+        if (scoreValue >= 80) return 'Extremely funny with unforgettable lines and chaotic energy.';
+        return 'A solid comedy that delivers consistent laughs and good vibes.';
+   }
+   if (fromHuluHorrorCollection) {
+        if (scoreValue >= 90) return 'Pure nightmare fuel. A visceral, traumatizing experience that ignores all safety rules.';
+        if (scoreValue >= 80) return 'Suffocating dread and high-stakes terror. Will leave you unsettled for days.';
+        return 'Effective horror with solid scares and creepy atmosphere.';
+   }
+   if (fromHuluRomanceCollection) {
+        if (scoreValue >= 90) return 'A deeply emotional masterpiece that will linger in your heart for days.';
+        if (scoreValue >= 80) return 'A beautiful, resonant film with undeniable chemistry and heart.';
+        return 'A solid romance with sweet moments and genuine connection.';
+   }
+   if (fromHuluActionCollection) {
+        if (scoreValue >= 90) return 'A relentless, high-octane adrenaline rush with masterclass choreography.';
+        if (scoreValue >= 80) return 'Intense, fast-paced action with thrilling set pieces.';
+        return 'Solid action entertainment with satisfying combat and stunts.';
+   }
    if (fromMatrixCollection) {
         if (scoreValue >= 90) return 'A groundbreaking sci-fi masterpiece exploring deep philosophical questions about reality and consciousness.';
         if (scoreValue >= 80) return 'A visually stunning and intellectually stimulating sci-fi experience.';
@@ -395,6 +506,10 @@ const MovieDetailsSection = React.memo(({
  };
 
  const getBorderColor = () => {
+   if (fromHuluComedyCollection) return 'border-yellow-400/40'; // ✅ Added
+   if (fromHuluHorrorCollection) return 'border-red-600/40';
+   if (fromHuluRomanceCollection) return 'border-pink-500/40';
+   if (fromHuluActionCollection) return 'border-red-500/40';
    if (fromMatrixCollection) return 'border-emerald-400/40'; 
    if (fromSe7enCollection) return 'border-amber-700/40';
    if (fromRevengeCollection || fromWarFilmsCollection || fromDramaCollection) return 'border-red-400/40';
@@ -405,6 +520,10 @@ const MovieDetailsSection = React.memo(({
  };
 
  const getStarColor = () => {
+   if (fromHuluComedyCollection) return 'text-yellow-400'; // ✅ Added
+   if (fromHuluHorrorCollection) return 'text-red-600'; 
+   if (fromHuluRomanceCollection) return 'text-pink-500'; 
+   if (fromHuluActionCollection) return 'text-red-500';
    if (fromMatrixCollection) return 'text-emerald-400'; 
    if (fromSe7enCollection) return 'text-amber-600';
    if (fromRevengeCollection || fromWarFilmsCollection || fromDramaCollection) return 'text-red-400';
@@ -627,7 +746,11 @@ const MovieDetailsSection = React.memo(({
       <RealCommentsRatingSection movie={movie} />
 
       {/* FAQ SECTIONS */}
-      {fromDonnieDarkoCollection ? <DonnieDarkoSEOFAQSection movie={movie} />
+      {fromHuluComedyCollection ? <HuluComedySEOFAQSection movie={movie} /> // ✅ Added Comedy FAQ
+        : fromHuluHorrorCollection ? <HuluHorrorSEOFAQSection movie={movie} /> 
+        : fromHuluRomanceCollection ? <HuluRomanceSEOFAQSection movie={movie} /> 
+        : fromHuluActionCollection ? <HuluActionSEOFAQSection movie={movie} />
+        : fromDonnieDarkoCollection ? <DonnieDarkoSEOFAQSection movie={movie} />
         : fromParasiteCollection ? <ParasiteSEOFAQSection movie={movie} />
         : fromMatrixCollection ? <MatrixSEOFAQSection movie={movie} />
         : fromOldboyCollection ? <OldboySEOFAQSection movie={movie} />

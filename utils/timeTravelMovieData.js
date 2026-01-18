@@ -33,19 +33,19 @@ const createMovieData = (data) => ({
 export const SENSITIVE_TIMELINES = {
     105: { scenes: [ // Back to the Future
         { start: '1:19:30', end: '1:19:40', type: 'Kissing', severity: 'Mild' },
-        { start: '1:21:49', end: '1:22:13', type: 'Sexual Content (Assault Attempt)', severity: 'Moderate' }
+        { start: '1:21:49', end: '1:22:13', type: 'Sexual Content', severity: 'Moderate' }
     ]},
     280: { scenes: [ // T2
-        { start: '6:10', end: '6:20', type: 'Partial Nudity (male, not sexual)', severity: 'Mild' }
+        { start: '6:10', end: '6:20', type: 'Partial Nudity (', severity: 'Mild' }
     ]},
     218: { scenes: [ // The Terminator
-        { start: '5:00', end: '7:30', type: 'Nudity (man)', severity: 'Moderate' },
-        { start: '1:21:50', end: '1:23:00', type: 'Passionate kissing + sex', severity: 'High' }
+        { start: '5:00', end: '7:30', type: 'Nudity ', severity: 'Mild' },
+        { start: '1:21:50', end: '1:23:00', type: 'Sex', severity: 'High' }
     ]},
     157336: { scenes: [] }, // Interstellar
     206487: { scenes: [ // Predestination
-        { start: '19:07', end: '19:20', type: 'Sex + Partial Nudity', severity: 'High' },
-        { start: '42:20', end: '42:50', type: 'Nudity (non-sexual)', severity: 'High' }
+        { start: '19:07', end: '19:20', type: 'Sex & Nudity', severity: 'High' },
+        { start: '42:20', end: '42:50', type: 'Nudity', severity: 'Mild' }
     ]},
     14337: { scenes: [] }, // Primer
     63: { scenes: [ // 12 Monkeys
@@ -59,8 +59,8 @@ export const SENSITIVE_TIMELINES = {
         { start: '1:25:00', end: '1:26:16', type: 'Kissing', severity: 'Mild' }
     ]},
     14139: { scenes: [ // Timecrimes
-        { start: '7:07', end: '7:14', type: 'Partial nudity (woman)', severity: 'Moderate' },
-        { start: '10:20', end: '11:34', type: 'Nudity (woman)', severity: 'High' }
+        { start: '7:07', end: '7:14', type: 'Partial nudity ', severity: 'Moderate' },
+        { start: '10:20', end: '11:34', type: 'Nudity ', severity: 'High' }
     ]}
 };
 
