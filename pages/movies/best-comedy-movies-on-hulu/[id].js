@@ -1,6 +1,6 @@
 // pages/best-comedy-movies-on-hulu/[id].js - HULU COMEDY MOVIES
 // VISUALS: Comedy/Fun Theme (Yellow/Gold/Bright)
-// SCHEMA: Maximalist (Hidden Laughter, Chaos, and FAQs for Bots)
+// SCHEMA: Maximalist (Hidden Laughter Index and FAQs for Bots)
 
 import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
@@ -8,10 +8,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, Play, X, User, Twitter, Hash, Send, Film, Smile, Zap, Theater, PartyPopper } from 'lucide-react'; // ✅ Added Comedy Icons
-import InternalCollectionsSection from '../../components/InternalCollectionsSection';
-import CinematicBackground from '../../components/CinematicBackground';
-import MovieDetailsSection from '../../components/MovieDetailsSection';
-import TMDBAttribution from '../../components/TMDBAttribution';
+
+import InternalCollectionsSection from '../../../components/InternalCollectionsSection';
+import CinematicBackground from '../../../components/CinematicBackground';
+import MovieDetailsSection from '../../../components/MovieDetailsSection';
+import TMDBAttribution from '../../../components/TMDBAttribution';
 
 // ✅ IMPORT DATA INCLUDING FAQs
 import { 
@@ -19,7 +20,7 @@ import {
   COMPLETE_MOVIE_DATA,
   SENSITIVE_TIMELINES,
   HULU_COMEDY_MOVIE_FAQS 
-} from '../../utils/huluComedyMovieData';
+} from '../../../utils/huluComedyMovieData';
 
 const COLORS = {
   accent: '#FACC15', accentLight: '#FEF08A', bgPrimary: '#1a1400', bgCard: 'rgba(30, 25, 5, 0.8)', // Yellow/Dark Gold for Comedy
@@ -69,7 +70,8 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
   const posterImage = posterPath ? getTMDBImage(posterPath, 'w500') : null;
 
   const insight = getComedyInsight(movie?.Title);
-  const laughterScore = richData?.psychologicalIntensity || 85; // Mapping 'psychologicalIntensity' to Laughter Score
+  // ✅ UPDATED: Uses 'laughterIndex' instead of 'psychologicalIntensity'
+  const laughterScore = richData?.laughterIndex || 85; 
 
   const mobileHeroCSS = `
   @media (max-width: 767px) {
@@ -132,7 +134,8 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
         <div className="mobile-hero-row">
           <div className="mobile-hero-poster">{posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} width={320} height={480} className="w-full h-auto" priority /> : <div style={{ background: COLORS.bgCard, width: '100%', height: '150px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Theater style={{ color: COLORS.textMuted }} /></div>}</div>
           <div className="mobile-psych-card">
-            <div className="mobile-psych-row"><Smile className="mobile-psych-icon" /><div><div className="mobile-psych-title">Laughter Score</div></div></div>
+            {/* ✅ UPDATED LABEL: Laughter Index */}
+            <div className="mobile-psych-row"><Smile className="mobile-psych-icon" /><div><div className="mobile-psych-title">Laughter Index</div></div></div>
             <div className="mobile-psych-desc"><strong>{laughterScore}/100</strong> - {insight.substring(0, 80)}...</div>
           </div>
         </div>
@@ -149,7 +152,8 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
                 <div className="absolute top-0 left-0 right-0 h-0.5 sm:h-1" style={{ background: `linear-gradient(90deg, transparent, ${COLORS.accent}, transparent)` }} />
                 <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5">
                   <motion.div className="p-2 sm:p-2.5 rounded-lg sm:rounded-xl flex-shrink-0" style={{ background: `linear-gradient(135deg, ${COLORS.accent}20, ${COLORS.accent}10)`, border: `1px solid ${COLORS.accent}40` }} whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}><PartyPopper className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" style={{ color: COLORS.accent }} /></motion.div>
-                  <div className="min-w-0 flex-1"><h2 className="text-sm sm:text-base lg:text-xl xl:text-2xl font-bold leading-tight" style={{ color: COLORS.accent }}>Why It's Hilarious</h2><p className="text-xs sm:text-sm hidden sm:block" style={{ color: COLORS.textMuted }}>Laughter Score: {laughterScore}/100</p></div>
+                  {/* ✅ UPDATED LABEL: Laughter Index */}
+                  <div className="min-w-0 flex-1"><h2 className="text-sm sm:text-base lg:text-xl xl:text-2xl font-bold leading-tight" style={{ color: COLORS.accent }}>Why It's Hilarious</h2><p className="text-xs sm:text-sm hidden sm:block" style={{ color: COLORS.textMuted }}>Laughter Index: {laughterScore}/100</p></div>
                 </div>
                 <div className="relative pl-4 sm:pl-6 border-l-2" style={{ borderColor: `${COLORS.accent}40` }}>
                   <motion.div className="absolute -left-1.5 sm:-left-2 top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full" style={{ backgroundColor: COLORS.accent }} animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 2, repeat: Infinity }} />
@@ -212,11 +216,10 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
   }
 
   // 2. METRICS (Using Comedy Specific Terms for Bots)
+  // ✅ UPDATED: ONLY Laughter Index
   const intensityStats = `
-    [FILMIWAY METRICS]
-    - Laughter Index: ${data?.psychologicalIntensity || 0}/100
-    - Chaos Factor: ${data?.destructiveObsession || 0}/100
-    - Quotability Score: ${data?.visceralImpact || 0}/100
+    [FILMIWAY METRIC]
+    - Laughter Index: ${data?.laughterIndex || 0}/100
   `;
 
   const dnaStats = data?.dna 
@@ -282,7 +285,7 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
 
     "genre": data?.dna ? Object.keys(data.dna) : ["Comedy"],
     "keywords": "Comedy Movies Hulu, Funniest Movies on Hulu, " + (data?.themes ? data.themes.join(", ") : ""),
-    "url": `https://filmiway.com/best-comedy-movies-on-hulu/${movie.imdbID}`,
+    "url": `https://filmiway.com/collection/best-comedy-movies-on-hulu/${movie.imdbID}`,
     "author": {
       "@type": "Organization",
       "name": "Filmiway",

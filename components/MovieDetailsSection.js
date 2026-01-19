@@ -294,10 +294,10 @@ const MovieDetailsSection = React.memo(({
    || [];
 
  // ✅ DYNAMIC SCORE VALUE SELECTION
- const scoreValue = fromHuluComedyCollection ? movie.psychologicalIntensity ?? safeMovieInfo.psychologicalIntensity ?? 0 // ✅ Comedy uses Laughter Score
-   : fromHuluHorrorCollection ? movie.psychologicalIntensity ?? safeMovieInfo.psychologicalIntensity ?? 0 
-   : fromHuluRomanceCollection ? movie.psychologicalIntensity ?? safeMovieInfo.psychologicalIntensity ?? 0 
-   : fromHuluActionCollection ? movie.psychologicalIntensity ?? safeMovieInfo.psychologicalIntensity ?? 0
+ const scoreValue = fromHuluComedyCollection ? movie.laughterIndex ?? safeMovieInfo.laughterIndex ?? 0 // ✅ Comedy uses Laughter Score
+   : fromHuluHorrorCollection ? movie.scariness ?? safeMovieInfo.scariness ?? 0 
+   : fromHuluRomanceCollection ? movie.romanticIntensity ?? safeMovieInfo.romanticIntensity ?? 0 
+   : fromHuluActionCollection ? movie.adrenalineScore ?? safeMovieInfo.adrenalineScore ?? 0
    : fromDonnieDarkoCollection ? movie.realityWarpIndex ?? safeMovieInfo.realityWarpIndex ?? 0
    : fromParasiteCollection ? movie.classWarfareIndex ?? safeMovieInfo.classWarfareIndex ?? 0
    : fromMatrixCollection ? movie.cyberComplexity ?? safeMovieInfo.cyberComplexity ?? 0

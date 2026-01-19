@@ -1,6 +1,6 @@
 // pages/best-romance-movies-on-hulu/[id].js - HULU ROMANCE MOVIES
 // VISUALS: Romantic/Warm Theme (Pink/Rose Accents)
-// SCHEMA: Maximalist (Hidden Emotional Resonance, Chemistry, and FAQs for Bots)
+// SCHEMA: Maximalist (Hidden Romantic Intensity and FAQs for Bots)
 
 import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
@@ -69,7 +69,8 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
   const posterImage = posterPath ? getTMDBImage(posterPath, 'w500') : null;
 
   const insight = getRomanceInsight(movie?.Title);
-  const emotionalScore = richData?.psychologicalIntensity || 85; // Mapping 'psychologicalIntensity' to Emotional Resonance
+  // ✅ UPDATED: Now using Romantic Intensity
+  const romanceScore = richData?.romanticIntensity || 85; 
 
   const mobileHeroCSS = `
   @media (max-width: 767px) {
@@ -132,8 +133,9 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
         <div className="mobile-hero-row">
           <div className="mobile-hero-poster">{posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} width={320} height={480} className="w-full h-auto" priority /> : <div style={{ background: COLORS.bgCard, width: '100%', height: '150px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Theater style={{ color: COLORS.textMuted }} /></div>}</div>
           <div className="mobile-psych-card">
-            <div className="mobile-psych-row"><Heart className="mobile-psych-icon" /><div><div className="mobile-psych-title">Emotional Score</div></div></div>
-            <div className="mobile-psych-desc"><strong>{emotionalScore}/100</strong> - {insight.substring(0, 80)}...</div>
+            {/* ✅ UPDATED LABEL: Romantic Intensity */}
+            <div className="mobile-psych-row"><Heart className="mobile-psych-icon" /><div><div className="mobile-psych-title">Romantic Intensity</div></div></div>
+            <div className="mobile-psych-desc"><strong>{romanceScore}/100</strong> - {insight.substring(0, 80)}...</div>
           </div>
         </div>
       ) : (
@@ -149,7 +151,8 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
                 <div className="absolute top-0 left-0 right-0 h-0.5 sm:h-1" style={{ background: `linear-gradient(90deg, transparent, ${COLORS.accent}, transparent)` }} />
                 <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5">
                   <motion.div className="p-2 sm:p-2.5 rounded-lg sm:rounded-xl flex-shrink-0" style={{ background: `linear-gradient(135deg, ${COLORS.accent}20, ${COLORS.accent}10)`, border: `1px solid ${COLORS.accent}40` }} whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}><Heart className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" style={{ color: COLORS.accent }} /></motion.div>
-                  <div className="min-w-0 flex-1"><h2 className="text-sm sm:text-base lg:text-xl xl:text-2xl font-bold leading-tight" style={{ color: COLORS.accent }}>Why It Resonates</h2><p className="text-xs sm:text-sm hidden sm:block" style={{ color: COLORS.textMuted }}>Emotional Resonance: {emotionalScore}/100</p></div>
+                  {/* ✅ UPDATED LABEL: Romantic Intensity */}
+                  <div className="min-w-0 flex-1"><h2 className="text-sm sm:text-base lg:text-xl xl:text-2xl font-bold leading-tight" style={{ color: COLORS.accent }}>Why It Resonates</h2><p className="text-xs sm:text-sm hidden sm:block" style={{ color: COLORS.textMuted }}>Romantic Intensity: {romanceScore}/100</p></div>
                 </div>
                 <div className="relative pl-4 sm:pl-6 border-l-2" style={{ borderColor: `${COLORS.accent}40` }}>
                   <motion.div className="absolute -left-1.5 sm:-left-2 top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full" style={{ backgroundColor: COLORS.accent }} animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 2, repeat: Infinity }} />
@@ -212,11 +215,10 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
   }
 
   // 2. METRICS (Using Romance Specific Terms for Bots)
+  // ✅ UPDATED: ONLY Romantic Intensity
   const intensityStats = `
-    [FILMIWAY METRICS]
-    - Emotional Resonance: ${data?.psychologicalIntensity || 0}/100
-    - Romantic Tension: ${data?.destructiveObsession || 0}/100
-    - Chemistry Score: ${data?.visceralImpact || 0}/100
+    [FILMIWAY METRIC]
+    - Romantic Intensity: ${data?.romanticIntensity || 0}/100
   `;
 
   const dnaStats = data?.dna 
@@ -282,7 +284,7 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
 
     "genre": data?.dna ? Object.keys(data.dna) : ["Romance", "Drama"],
     "keywords": "Romance Movies Hulu, Best Romance Films, " + (data?.themes ? data.themes.join(", ") : ""),
-    "url": `https://filmiway.com/best-romance-movies-on-hulu/${movie.imdbID}`,
+    "url": `https://filmiway.com/collection/best-romance-movies-on-hulu/${movie.imdbID}`,
     "author": {
       "@type": "Organization",
       "name": "Filmiway",

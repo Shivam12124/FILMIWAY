@@ -69,7 +69,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                         {/* ✅ SEO FIX: Changed H3 to H2 for correct hierarchy */}
                         <h2 className="text-emerald-300 font-medium text-lg">Clean Content Record</h2>
                         <p className="text-emerald-400/70 text-sm font-light">
-                            <strong>{movie.Title}</strong>: No sexual content or graphic scenes present in this film.
+                            <strong>{movie.Title}</strong>: Content is free of sexual content and explicit scenes.
                         </p>
                     </div>
                 </div>

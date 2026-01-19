@@ -433,7 +433,7 @@ const FilmiwayHomepage = ({ trendingMovies, popularMovies, topRatedMovies }) => 
                     <div className="container mx-auto px-4 sm:px-6">
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12 border-b border-gray-800 pb-12 text-left">
                             
-                            {/* COL 1: Mind Bending & Sci-Fi */}
+{/* COL 1: Mind Bending */}
                             <div>
                                 <h3 className="text-yellow-400 font-bold mb-4 uppercase text-xs tracking-wider">Mind Bending</h3>
                                 <ul className="space-y-2 text-sm text-gray-400">
@@ -459,16 +459,19 @@ const FilmiwayHomepage = ({ trendingMovies, popularMovies, topRatedMovies }) => 
                                 </ul>
                             </div>
 
-                            {/* COL 3: Genre Collections */}
+                            {/* COL 3: Genre & Streaming (UPDATED) */}
                             <div>
-                                <h3 className="text-yellow-400 font-bold mb-4 uppercase text-xs tracking-wider">Genre Collections</h3>
+                                <h3 className="text-yellow-400 font-bold mb-4 uppercase text-xs tracking-wider">Genre & Streaming</h3>
                                 <ul className="space-y-2 text-sm text-gray-400">
                                     <li><Link href="/collection/best-sci-fi-movies" className="hover:text-white transition-colors">Best Sci-Fi Movies</Link></li>
                                     <li><Link href="/collection/best-time-travel-movies" className="hover:text-white transition-colors">Time Travel Movies</Link></li>
                                     <li><Link href="/collection/best-survival-movies" className="hover:text-white transition-colors">Survival Movies</Link></li>
                                     <li><Link href="/collection/best-war-films" className="hover:text-white transition-colors">War Films</Link></li>
-                                    <li><Link href="/collection/best-revenge-movies" className="hover:text-white transition-colors">Revenge Movies</Link></li>
-                                    <li><Link href="/collection/best-drama-movies-on-netflix" className="hover:text-white transition-colors">Netflix Dramas</Link></li>
+                                    {/* ✅ NEW HULU LINKS ADDED BELOW */}
+                                    <li><Link href="/collection/best-action-movies-on-hulu" className="hover:text-white transition-colors text-gray-300">Best Action on Hulu</Link></li>
+                                    <li><Link href="/collection/best-romance-movies-on-hulu" className="hover:text-white transition-colors text-gray-300">Best Romance on Hulu</Link></li>
+                                    <li><Link href="/collection/best-comedy-movies-on-hulu" className="hover:text-white transition-colors text-gray-300">Best Comedy on Hulu</Link></li>
+                                    <li><Link href="/collection/best-horror-movies-on-hulu" className="hover:text-white transition-colors text-gray-300">Best Horror on Hulu</Link></li>
                                 </ul>
                             </div>
 
@@ -485,6 +488,8 @@ const FilmiwayHomepage = ({ trendingMovies, popularMovies, topRatedMovies }) => 
                             </div>
 
                         </div>
+                        
+                        {/* Footer Bottom Section */}
                         <div className="text-center">
                             <div className="flex items-center justify-center mb-4 xs:mb-6">
                                 <div className="w-28 xs:w-32 sm:w-40 h-12 xs:h-14 sm:h-20 flex items-center justify-center">

@@ -238,8 +238,8 @@ export const COLLECTIONS = {
     slug: 'best-action-movies-on-hulu',
     title: 'Best Action Movies on Hulu',
     subtitle: 'High-Octane Adrenaline Hits',
-    description: 'The top 10 action movies streaming on Hulu right now. From Predator to Bullet Train—ranked by fight choreography and pure adrenaline.',
-    longDescription: 'Looking for the best action movies on Hulu? This list ranks the most intense, hard-hitting, and adrenaline-fueled films available on the platform. From classic 80s sci-fi action to modern martial arts masterpieces and stylized spy thrillers, these are the movies that define "high-octane."',
+    description: 'The top 10 action movies streaming on Hulu right now. From Predator to Unstoppable—ranked by fight choreography and pure adrenaline.',
+    longDescription: 'Looking for the best action movies on Hulu? This list ranks the most intense, hard-hitting, and adrenaline-fueled films available on the platform. From classic 80s sci-fi action to modern martial arts masterpieces and runaway train thrillers, these are the movies that define "high-octane."',
     
     emoji: '💥',
     theme: 'orange',
@@ -253,30 +253,30 @@ export const COLLECTIONS = {
     tags: ['action', 'hulu', 'streaming', 'martial arts', 'sci-fi action', 'thriller', 'high octane'],
     
     metaTitle: '10 Best Action Movies on Hulu (2025) | Ranked by Adrenaline | Filmiway',
-    metaDescription: 'Discover the top 10 action movies on Hulu—from Predator to Prey. Expert-curated ranking of high-octane films with brutal fights and non-stop action.',
-    metaKeywords: 'best action movies on hulu, hulu action films, predator hulu, taken movie hulu, prey movie, bullet train hulu, action movies streaming',
+    metaDescription: 'Discover the top 10 action movies on Hulu—from Predator to Unstoppable. Expert-curated ranking of high-octane films with brutal fights and non-stop tension.',
+    metaKeywords: 'best action movies on hulu, hulu action films, predator hulu, unstoppable movie hulu, prey movie, bullet train hulu, action movies streaming',
     
     stats: {
       totalMovies: 10,
-      averageRating: 7.6,
-      totalWatchtime: '18 hours 15 minutes',
-      averageAdrenalineScore: 89.5,
-      mostIntense: 'Predator (98/100)',
+      averageRating: 7.5,
+      totalWatchtime: '17 hours 53 minutes',
+      averageAdrenalineScore: 83.4,
+      mostIntense: 'Unstoppable (98/100)',
       newestMovie: 'Predator: Killer of Killers (2025)',
       oldestMovie: 'Predator (1987)'
     },
     
     movies: [
-      'tt0093773', // Predator (1987)
-      'tt0936501', // Taken (2008)
-      'tt_placeholder', // Predator: Killer of Killers (2025) - Needs real ID
-      'tt2103281', // Dawn of the Planet of the Apes (2014)
-      'tt11866324', // Prey (2022)
-      'tt0455944', // The Equalizer (2014)
-      'tt1220719', // Ip Man (2008)
-      'tt2802144', // Kingsman: The Secret Service (2014)
-      'tt12593682', // Bullet Train (2022)
-      'tt9066658'  // Boss Level (2020)
+      'tt0093773',  // 1. Predator (1987)
+      'tt1220719',  // 2. Ip Man (2008)
+      'tt2103281',  // 3. Dawn of the Planet of the Apes (2014)
+      'tt36463894', // 4. Predator: Killer of Killers (2025)
+      'tt0455944',  // 5. The Equalizer (2014)
+      'tt2802144',  // 6. Kingsman: The Secret Service (2014)
+      'tt0477080',  // 7. Unstoppable (2010) - Replaces Taken
+      'tt11866324', // 8. Prey (2022)
+      'tt12593682', // 9. Bullet Train (2022)
+      'tt9066658'   // 10. Boss Level (2020)
     ],
     
     badges: [
@@ -292,7 +292,7 @@ export const COLLECTIONS = {
         description: 'Arnold Schwarzenegger vs. an alien hunter in the jungle. The definitive sci-fi action movie that set the standard for the genre.',
         poster: 'https://image.tmdb.org/t/p/w500/k3mW4qfJo6SKqe6laRyNGnbB9n5.jpg',
         backdrop: 'https://image.tmdb.org/t/p/w1280/schVFkTx8ZeGPQNJfOSWFxl8uYp.jpg',
-        adrenalineScore: 98
+        adrenalineScore: 88 // Updated to match new score
       }
     },
     
@@ -305,7 +305,7 @@ export const COLLECTIONS = {
     seo: {
       title: '10 Best Action Movies on Hulu (2025) | Adrenaline Ranked | Filmiway',
       description: 'The definitive ranking of the best action movies on Hulu. From Predator to Bullet Train, find your next high-octane watch here.',
-      keywords: 'action movies hulu, best action films streaming, predator, taken, prey, bullet train, kingsman, boss level, ip man',
+      keywords: 'action movies hulu, best action films streaming, predator, unstoppable, prey, bullet train, kingsman, boss level, ip man',
       canonicalUrl: 'https://filmiway.com/collection/best-action-movies-on-hulu',
       ogImage: 'https://filmiway.com/images/hulu-action-collection-og.jpg',
       structuredData: {
@@ -317,7 +317,6 @@ export const COLLECTIONS = {
       }
     }
   },
-
 // 💖 BEST ROMANCE MOVIES ON HULU COLLECTION
   'best-romance-movies-on-hulu': {
     slug: 'best-romance-movies-on-hulu',
@@ -403,12 +402,11 @@ export const COLLECTIONS = {
     }
   },
 
-
 // 🩸 BEST HORROR MOVIES ON HULU COLLECTION
 'best-horror-movies-on-hulu': {
     slug: 'best-horror-movies-on-hulu',
     title: '10 Best Horror Movies on Hulu',
-    subtitle: 'Ranked by Scariness & Dread',
+    subtitle: 'Ranked by Scariness & Trauma',
     description: 'The most brutally terrifying films streaming on Hulu. From trauma-inducing gore to slow-burn dread & cosmic horror.',
     longDescription: 'Prepare for sleepless nights. This collection ranks the most terrifying horror movies currently streaming on Hulu. We move beyond simple jump scares to explore deep psychological trauma, visceral gore, and atmospheres so oppressive they feel cursed. From the rule-breaking chaos of "When Evil Lurks" to the suffocating procedural dread of "Longlegs".',
 
@@ -425,35 +423,35 @@ export const COLLECTIONS = {
 
     metaTitle: '10 Best Horror Movies on Hulu (2026) | Ranked by Scariness | Filmiway',
     metaDescription: 'Discover the 10 scariest movies on Hulu—from When Evil Lurks to Longlegs. Expert-curated ranking of visceral horror and psychological dread.',
-    metaKeywords: 'best horror movies on hulu, scariest movies on hulu, when evil lurks, longlegs, barbarian, horror movies streaming, hulu horror 2026',
+    metaKeywords: 'best horror movies on hulu, scariest movies on hulu, when evil lurks, longlegs, dont breathe, barbarian, horror movies streaming',
 
     stats: {
         totalMovies: 10,
-        averageRating: 7.1,
-        totalWatchtime: '18 hours 45 minutes',
-        averageDreadScore: 94.0,
-        mostTerrifying: 'When Evil Lurks (100/100)',
+        averageRating: 7.0,
+        totalWatchtime: '18 hours 10 minutes',
+        averageScariness: 88.3,
+        mostTerrifying: 'When Evil Lurks (98/100)',
         newestMovie: 'Longlegs (2024)',
         oldestMovie: 'The Babadook (2014)'
     },
 
     movies: [
-        'tt16300962', // When Evil Lurks
-        'tt23468450', // Longlegs
-        'tt4003440', // The House That Jack Built
-        'tt26466146', // Oddity
-        'tt2321549', // The Babadook
-        'tt5867314', // The Empty Man
-        'tt14966898', // Late Night with the Devil
-        'tt15791034', // Barbarian
-        'tt5676368', // The First Omen
-        'tt13352216'  // Fresh
+        'tt16300962', // 1. When Evil Lurks
+        'tt23468450', // 2. Longlegs
+        'tt4003440',  // 3. The House That Jack Built
+        'tt26466146', // 4. Oddity
+        'tt4160708',  // 5. Don't Breathe (Replaces Babadook position)
+        'tt2321549',  // 6. The Babadook
+        'tt5867314',  // 7. The Empty Man
+        'tt15791034', // 8. Barbarian
+        'tt5676368',  // 9. The First Omen
+        'tt14966898'  // 10. Late Night with the Devil (Replaces Fresh)
     ],
 
-    badges: [
-        { label: 'Visceral Horror', desc: 'Extreme gore & shock' },
-        { label: 'Psychological Dread', desc: 'Atmospheres that suffocate' },
-        { label: 'Critical Hits', desc: 'Rotten Tomatoes certified fresh' }
+  badges: [
+        { label: 'Nightmare Fuel', desc: 'Guaranteed sleepless nights' },
+        { label: 'Hulu Exclusive', desc: 'Top-tier horror streaming now' },
+        { label: 'Ranked by Scariness', desc: 'Sorted by pure intensity' }
     ],
 
     featured: {
@@ -463,7 +461,7 @@ export const COLLECTIONS = {
             description: 'A possession film that breaks every rule of the genre. Brutal, unforgiving, and absolutely terrifying.',
             poster: 'https://image.tmdb.org/t/p/w500/2yl2zC3tX7F2KyD62P8R92V7X9o.jpg',
             backdrop: 'https://image.tmdb.org/t/p/w1280/iIvQnZyzgx9TkbrOgcXX0p7aLiq.jpg',
-            dreadScore: 100
+            scariness: 98 // Updated key to match data
         }
     },
 
@@ -483,12 +481,11 @@ export const COLLECTIONS = {
             '@context': 'https://schema.org',
             '@type': 'ItemList',
             name: 'Best Horror Movies on Hulu',
-            description: 'Expert-curated list of the scariest horror movies available on Hulu ranked by dread and visceral impact',
+            description: 'Expert-curated list of the scariest horror movies available on Hulu ranked by scariness and visceral impact',
             numberOfItems: 10
         }
     }
 },
-
 // 😂 BEST COMEDY MOVIES ON HULU COLLECTION
 'best-comedy-movies-on-hulu': {
     slug: 'best-comedy-movies-on-hulu',

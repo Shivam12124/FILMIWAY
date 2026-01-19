@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Head from 'next/head';
 import Link from 'next/link';
-import { Search, Brain, Mountain, Film, ChevronDown, Sparkles, Plus, ArrowRight, Star, Clock, Eye, Scale, DollarSign, Shield, Zap,Heart } from 'lucide-react';
+import { Search, Brain, Mountain, Film, ChevronDown, Sparkles, Plus, ArrowRight, Star, Clock, Eye, Scale, DollarSign, Shield, Zap,Heart,Ghost,Smile } from 'lucide-react';
 import Image from 'next/image';
 const CollectionsHub = () => {
     const [searchQuery, setSearchQuery] = useState('');

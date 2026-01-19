@@ -1,10 +1,6 @@
 // pages/movies/black-swan/[id].js - H1 SEO FIX + HYDRATION FIX ✅
-
 // VISUALS: Minimalist (Banner + Details Only)
-
 // SCHEMA: Maximalist (Hidden Intensity, DNA, and FAQs for Bots)
-
-
 
 import React, { useState, useEffect, useRef } from 'react';
 

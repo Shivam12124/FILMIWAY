@@ -8,10 +8,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, Play, X, User, Twitter, Hash, Send, Film, Skull, Ghost, Theater, Flame } from 'lucide-react'; // ✅ Added Horror Icons
-import InternalCollectionsSection from '../../components/InternalCollectionsSection';
-import CinematicBackground from '../../components/CinematicBackground';
-import MovieDetailsSection from '../../components/MovieDetailsSection';
-import TMDBAttribution from '../../components/TMDBAttribution';
+import InternalCollectionsSection from '../../../components/InternalCollectionsSection';
+import CinematicBackground from '../../../components/CinematicBackground';
+import MovieDetailsSection from '../../../components/MovieDetailsSection';
+import TMDBAttribution from '../../../components/TMDBAttribution';
 
 // ✅ IMPORT DATA INCLUDING FAQs
 import { 
@@ -19,7 +19,7 @@ import {
   COMPLETE_MOVIE_DATA,
   SENSITIVE_TIMELINES,
   HULU_HORROR_MOVIE_FAQS 
-} from '../../utils/huluHorrorMovieData';
+} from '../../../utils/huluHorrorMovieData';
 
 const COLORS = {
   accent: '#DC2626', accentLight: '#FCA5A5', bgPrimary: '#0f0505', bgCard: 'rgba(20, 5, 5, 0.8)', // Blood Red/Black for Horror
@@ -212,11 +212,11 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
   }
 
   // 2. METRICS (Using Horror Specific Terms for Bots)
+// 2. METRICS (Using Horror Specific Terms for Bots)
+  // ✅ UPDATED: Uses 'scariness' property to match the label
   const intensityStats = `
-    [FILMIWAY METRICS]
-    - Dread Score: ${data?.psychologicalIntensity || 0}/100
-    - The Evil Force: ${data?.destructiveObsession || 0}/100
-    - Gore/Shock Level: ${data?.visceralImpact || 0}/100
+    [FILMIWAY METRIC]
+    - Scariness: ${data?.scariness || 0}/100
   `;
 
   const dnaStats = data?.dna 
@@ -282,7 +282,7 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
 
     "genre": data?.dna ? Object.keys(data.dna) : ["Horror", "Thriller"],
     "keywords": "Horror Movies Hulu, Scariest Movies on Hulu, " + (data?.themes ? data.themes.join(", ") : ""),
-    "url": `https://filmiway.com/best-horror-movies-on-hulu/${movie.imdbID}`,
+    "url": `https://filmiway.com/collection/best-horror-movies-on-hulu/${movie.imdbID}`,
     "author": {
       "@type": "Organization",
       "name": "Filmiway",

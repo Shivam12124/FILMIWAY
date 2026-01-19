@@ -27,23 +27,32 @@ const COLORS = {
   borderAccent: 'rgba(239, 68, 68, 0.25)', borderLight: 'rgba(55, 65, 81, 0.5)',
 };
 
+// ✅ UPDATED MOVIE YEARS (Added Unstoppable)
 const MOVIE_YEARS = {
-  'Predator': '1987', 'Taken': '2008', 'Predator: Killer of Killers': '2025', 
-  'Dawn of the Planet of the Apes': '2014', 'Prey': '2022', 'The Equalizer': '2014', 
-  'Ip Man': '2008', 'Kingsman: The Secret Service': '2014', 'Bullet Train': '2022', 'Boss Level': '2020'
+  'Predator': '1987', 
+  'Ip Man': '2008',
+  'Dawn of the Planet of the Apes': '2014', 
+  'Predator: Killer of Killers': '2025', 
+  'The Equalizer': '2014', 
+  'Kingsman: The Secret Service': '2014', 
+  'Unstoppable': '2010', // New
+  'Prey': '2022', 
+  'Bullet Train': '2022', 
+  'Boss Level': '2020'
 };
 
+// ✅ UPDATED MOVIE DATA & RANKINGS
 const MOVIE_DATA_BY_TITLE = {
-  'Predator': { connection: 'The ultimate survival test. It defines the genre by stripping away technology until only raw instinct remains.' },
-  'Taken': { connection: 'A masterclass in efficiency. It proves that one motivated father is more dangerous than an entire criminal organization.' },
-  'Predator: Killer of Killers': { connection: 'A brutal collision of eras. Vikings versus alien technology creates a visceral, bloody spectacle of honor and gore.' },
-  'Dawn of the Planet of the Apes': { connection: 'War cinema at its peak. It combines emotional depth with the terrifying image of apes dual-wielding machine guns on horseback.' },
-  'Prey': { connection: 'A primal return to form. It strips the Predator franchise back to its roots: wit, traps, and raw survival against superior technology.' },
-  'The Equalizer': { connection: ' precise, calculated violence. It turns a hardware store into a playground of destruction, proving intellect is the deadliest weapon.' },
-  'Ip Man': { connection: 'Martial arts perfection. The "1 vs 10" scene isn\'t just a fight; it is a release of national rage and technical mastery.' },
-  'Kingsman: The Secret Service': { connection: 'Hyper-kinetic style. The church scene redefined how action could be filmed, turning chaos into a choreographed ballet of violence.' },
-  'Bullet Train': { connection: 'Chaos on rails. It mixes Jackie Chan-style prop comedy with John Wick-level lethality in a confined, high-speed setting.' },
-  'Boss Level': { connection: 'Video game logic applied to film. It uses the time loop mechanic to create an escalating symphony of trial-and-error carnage.' }
+  'Predator': { connection: 'Arnold vs. Alien in the jungle. The ultimate classic that defines the survival action genre.' },
+  'Ip Man': { connection: '"I want to fight 10 people!" The best martial arts movie of the 21st century showcasing Wing Chun mastery.' },
+  'Dawn of the Planet of the Apes': { connection: 'Apes on horses with dual machine guns. The best war movie on this list with incredible emotional depth.' },
+  'Predator: Killer of Killers': { connection: 'R-Rated Animated Anthology. Vikings vs. Predator. A brutal, bloody Hulu Exclusive spectacle.' },
+  'The Equalizer': { connection: 'Denzel killing 5 guys in 19 seconds using home improvement tools. Precise, calculated violence.' },
+  'Kingsman: The Secret Service': { connection: 'The "Church Fight" scene is the most viral action clip ever. Hyper-kinetic style meets British manners.' },
+  'Unstoppable': { connection: 'A runaway train thriller that never slows down. Denzel Washington and Chris Pine vs. physics.' },
+  'Prey': { connection: 'Comanche Warrior vs. Predator. Visually stunning and a primal return to the franchise\'s roots.' },
+  'Bullet Train': { connection: 'Brad Pitt on a fast train. Funny, bloody, and fast-paced chaos with Jackie Chan-style prop comedy.' },
+  'Boss Level': { connection: 'Groundhog Day with miniguns. He dies 150 times in an escalating symphony of trial-and-error carnage.' }
 };
 
 const getTMDBImage = (path, size = 'w1280') =>
@@ -68,7 +77,8 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
   const posterImage = posterPath ? getTMDBImage(posterPath, 'w500') : null;
 
   const insight = getAdrenalineInsight(movie?.Title);
-  const adrenalineScore = richData?.psychologicalIntensity || 85; // Mapping 'psychologicalIntensity' to Adrenaline
+  // ✅ UPDATED: Using 'adrenalineScore' directly
+  const adrenalineScore = richData?.adrenalineScore || 85; 
 
   const mobileHeroCSS = `
   @media (max-width: 767px) {
@@ -211,11 +221,11 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
   }
 
   // 2. METRICS (Using Action Specific Terms for Bots)
+  // ✅ UPDATED: Removed Choreography Quality
   const intensityStats = `
     [FILMIWAY METRICS]
-    - Adrenaline Score: ${data?.psychologicalIntensity || 0}/100
-    - Violence Level: ${data?.destructiveObsession || 0}/100
-    - Choreography Quality: ${data?.visceralImpact || 0}/100
+    - Adrenaline Score: ${data?.adrenalineScore || 0}/100
+    - Violence Level: ${data?.violenceLevel || 0}/100
   `;
 
   const dnaStats = data?.dna 

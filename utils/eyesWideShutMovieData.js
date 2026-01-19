@@ -124,30 +124,20 @@ const createMovieData = (data) => ({
 export const COMPLETE_MOVIE_DATA = {
     // 1. Mulholland Drive (The Reference Point)
     1018: createMovieData({ 
-        psychologicalIntensity: 94, 
-        destructiveObsession: 85, 
-        visceralImpact: 80, 
-        complexityLevel: "EXTREME", 
-        dominantColor: "#6b21a8",
-        rating: 7.9, 
-        criticsScore: 85, 
-        audienceScore: 87, 
-        director: "David Lynch", 
-        cast: ["Naomi Watts", "Laura Harring", "Justin Theroux"], 
-        boxOffice: "$20.1 million", 
-        budget: "$15 million",
-        dna: { "Mystery": 45, "Psychological": 40, "Thriller": 15 },
+        psychologicalIntensity: 98, destructiveObsession: 85, visceralImpact: 100, complexityLevel: "EXTREME", 
+        dominantColor: "#6b21a8", rating: 7.9, criticsScore: 85, audienceScore: 87, director: "David Lynch", 
+        cast: ["Naomi Watts", "Laura Harring"], boxOffice: "$20.1 million", budget: "$15 million", 
+          dna: { Mystery: 50, Thriller: 30, Drama: 20 },
         scenes: [
-            { time: 25, intensity: 45, label: "Winkie's Dream", color: "#6b21a8" },
-            { time: 70, intensity: 58, label: "The Audition", color: "#dc2626" },
-            { time: 110, intensity: 88, label: "Silencio", color: "#60a5fa" },
-            { time: 125, intensity: 100, label: "THE BLUE BOX", color: "#0f172a" },
-            { time: 140, intensity: 74, label: "The Awakening", color: "#a78bfa" }
+            { time: 25, intensity: 40, label: "Winkie's", color: "#6b21a8" },
+            { time: 70, intensity: 55, label: "Audition", color: "#dc2626" },
+            { time: 110, intensity: 95, label: "Silencio", color: "#60a5fa" },
+            { time: 125, intensity: 100, label: "The Box", color: "#0f172a" },
+            { time: 140, intensity: 90, label: "Reality", color: "#a78bfa" }
         ],
         synopsis: "An aspiring actress and an amnesiac woman collide in a search for identity that devolves into a surreal nightmare. Lynch shatters the Hollywood dream to expose the psychological trauma of rejection in cinema's most famous mind-bender.",
         themes: ["Identity Fracture", "Hollywood Underbelly", "Dream Logic"]
     }),
-
     // 2. The Ninth Gate
     622: createMovieData({ 
         psychologicalIntensity: 72, 

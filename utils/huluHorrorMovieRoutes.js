@@ -26,14 +26,14 @@ export const HULU_HORROR_MOVIE_SLUGS = {
     // Rank 4: Oddity
     'tt26466146': 'oddity',
     
-    // Rank 5: The Babadook
+    // Rank 5: Don't Breathe (Replaces The Babadook at #5)
+    'tt4160708': 'dont-breathe',
+    
+    // Rank 6: The Babadook
     'tt2321549': 'the-babadook',
     
-    // Rank 6: The Empty Man
+    // Rank 7: The Empty Man
     'tt5867314': 'the-empty-man',
-    
-    // Rank 7: Late Night with the Devil
-    'tt14966898': 'late-night-with-the-devil',
     
     // Rank 8: Barbarian
     'tt15791034': 'barbarian',
@@ -41,8 +41,8 @@ export const HULU_HORROR_MOVIE_SLUGS = {
     // Rank 9: The First Omen
     'tt5676368': 'the-first-omen',
     
-    // Rank 10: Fresh
-    'tt13352216': 'fresh'
+    // Rank 10: Late Night with the Devil (Replaces Fresh)
+    'tt14966898': 'late-night-with-the-devil'
 };
 
 // ✅ REVERSE SLUG MAPPING (SLUG TO IMDB ID)

@@ -14,29 +14,28 @@ export const generateMovieSlug = (title) => {
 
 // ✅ COMPLETE HULU ACTION MOVIE SLUG MAPPING
 export const HULU_ACTION_MOVIE_SLUGS = {
-    // Rank 1: Predator
+// Rank 1: Predator
     'tt0093773': 'predator',
     
-    // Rank 2: Taken
-    'tt0936501': 'taken',
-    
-    // Rank 3: Predator: Killer of Killers
-    'tt_placeholder': 'predator-killer-of-killers',
-    
-    // Rank 4: Dawn of the Planet of the Apes
-    'tt2103281': 'dawn-of-the-planet-of-the-apes',
-    
-    // Rank 5: Prey
-    'tt11866324': 'prey',
-    
-    // Rank 6: The Equalizer
-    'tt0455944': 'the-equalizer',
-    
-    // Rank 7: Ip Man
+    // Rank 2: Ip Man
     'tt1220719': 'ip-man',
     
-    // Rank 8: Kingsman: The Secret Service
+    // Rank 3: Dawn of the Planet of the Apes
+    'tt2103281': 'dawn-of-the-planet-of-the-apes',
+    
+    // Rank 3: Predator: Killer of Killers
+    'tt36463894': 'predator-killer-of-killers',
+    // Rank 5: The Equalizer
+    'tt0455944': 'the-equalizer',
+    
+    // Rank 6: Kingsman: The Secret Service
     'tt2802144': 'kingsman-the-secret-service',
+    
+    // Rank 7: Unstoppable (Replaces Taken)
+    'tt1596346': 'unstoppable',
+    
+    // Rank 8: Prey
+    'tt11866324': 'prey',
     
     // Rank 9: Bullet Train
     'tt12593682': 'bullet-train',
@@ -44,7 +43,6 @@ export const HULU_ACTION_MOVIE_SLUGS = {
     // Rank 10: Boss Level
     'tt9066658': 'boss-level'
 };
-
 // ✅ REVERSE SLUG MAPPING (SLUG TO IMDB ID)
 export const SLUG_TO_IMDB = Object.fromEntries(
     Object.entries(HULU_ACTION_MOVIE_SLUGS).map(([imdbId, slug]) => [slug, imdbId])
