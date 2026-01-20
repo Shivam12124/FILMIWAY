@@ -28,15 +28,17 @@ const COLORS = {
 };
 
 const MOVIE_YEARS = {
-  'Anora': '2024', 'All of Us Strangers': '2023', 'And Then We Danced': '2019', 
+   'All of Us Strangers': '2023',  'Anora': '2024', 'And Then We Danced': '2019', 
   'Brooklyn': '2015', 'Little Manhattan': '2005', 'Palm Springs': '2020', 
   'Rye Lane': '2023', 'Crazy Heart': '2009', 'Good Luck to You, Leo Grande': '2022', 
   '13 Going on 30': '2004'
 };
 
 const MOVIE_DATA_BY_TITLE = {
-  'Anora': { connection: 'A chaotic, high-energy romance that mixes the Cinderella fantasy with the gritty reality of sex work and class warfare.' },
+
+  
   'All of Us Strangers': { connection: 'A devastatingly beautiful ghost story about the healing power of love and the pain of things left unsaid.' },
+  'Anora': { connection: 'A chaotic, high-energy romance that mixes the Cinderella fantasy with the gritty reality of sex work and class warfare.' },
   'And Then We Danced': { connection: 'A passionate awakening. It captures the electric tension between tradition and desire through the medium of dance.' },
   'Brooklyn': { connection: 'Pure, old-school romance. It perfectly captures the ache of homesickness and the comfort of finding a new heart to call home.' },
   'Little Manhattan': { connection: 'The raw, unfiltered intensity of first love. A nostalgic trip that treats childhood emotions with serious respect.' },
@@ -342,7 +344,7 @@ const HuluRomanceMoviePage = ({ movie, tmdbData: movieData }) => {
                 {/* ✅ HYDRATION BUG FULLY RESOLVED */}
                 <title>{cleanSEOTitle}</title>
                 <meta name="description" content={cleanSEODesc} />
-                <link rel="canonical" href={`https://filmiway.com/best-romance-movies-on-hulu/${movie.imdbID}`} />
+                <link rel="canonical" href={`https://filmiway.com/collection/best-romance-movies-on-hulu/${movie.imdbID}`} />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
                 <meta name="robots" content="index, follow" />
                 <meta name="language" content="English" />

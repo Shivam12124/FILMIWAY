@@ -1,13 +1,14 @@
-// pages/best-horror-movies-on-hulu/[id].js - HULU HORROR MOVIES
-// VISUALS: Horror/Dread Theme (Blood Red/Darkness)
-// SCHEMA: Maximalist (Hidden Dread, Gore, and FAQs for Bots)
+// pages/best-thriller-movies-hulu/[id].js - HULU THRILLER MOVIES
+// VISUALS: Thriller/Suspense Theme (Crimson/Dark Red/Black)
+// SCHEMA: Maximalist (Hidden Suspense Intensity and FAQs for Bots)
 
 import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, Play, X, User, Twitter, Hash, Send, Film, Skull, Ghost, Theater, Flame } from 'lucide-react'; // ✅ Added Horror Icons
+import { ChevronLeft, Play, X, User, Twitter, Hash, Send, Film, Zap, Eye, Skull, AlertTriangle,Theater } from 'lucide-react'; // ✅ Added Thriller Icons
+
 import InternalCollectionsSection from '../../../components/InternalCollectionsSection';
 import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
@@ -18,44 +19,44 @@ import {
   COMPLETE_MOVIE_DATABASE, 
   COMPLETE_MOVIE_DATA,
   SENSITIVE_TIMELINES,
-  HULU_HORROR_MOVIE_FAQS 
-} from '../../../utils/huluHorrorMovieData';
+  HULU_THRILLER_MOVIE_FAQS 
+} from '../../../utils/huluThrillerMovieData';
 
 const COLORS = {
-  accent: '#DC2626', accentLight: '#FCA5A5', bgPrimary: '#0f0505', bgCard: 'rgba(20, 5, 5, 0.8)', // Blood Red/Black for Horror
-  textPrimary: '#FFFFFF', textSecondary: '#FECACA', textMuted: '#EF4444', textDisabled: '#991B1B',
-  borderAccent: 'rgba(220, 38, 38, 0.25)', borderLight: 'rgba(69, 10, 10, 0.5)',
+  accent: '#ef4444', accentLight: '#fca5a5', bgPrimary: '#0f172a', bgCard: 'rgba(30, 41, 59, 0.8)', // Crimson/Dark Slate for Thriller
+  textPrimary: '#FFFFFF', textSecondary: '#e2e8f0', textMuted: '#94a3b8', textDisabled: '#475569',
+  borderAccent: 'rgba(239, 68, 68, 0.25)', borderLight: 'rgba(148, 163, 184, 0.2)',
 };
 
 const MOVIE_YEARS = {
-  'When Evil Lurks': '2023', 'Longlegs': '2024', 'The House That Jack Built': '2018', 
-  'Oddity': '2024', 'The Babadook': '2014', 'The Empty Man': '2020', 
-  'Late Night with the Devil': '2023', 'Barbarian': '2022', 'The First Omen': '2024', 
-  'Fresh': '2022'
+  'Heat': '1995', 'Black Swan': '2010', 'Anatomy of a Fall': '2023', 
+  'Donnie Darko': '2001', 'Before the Devil Knows You\'re Dead': '2007', 'The Illusionist': '2006', 
+  'Fresh': '2022', 'The Equalizer': '2014', 'How to Blow Up a Pipeline': '2023', 
+  'The Pledge': '2001'
 };
 
 const MOVIE_DATA_BY_TITLE = {
-  'When Evil Lurks': { connection: 'The most brutally terrifying film on the list. It ignores all safety rules of the genre, delivering pure, unadulterated trauma.' },
-  'Longlegs': { connection: 'A slow-burn procedural that feels genuinely cursed. The atmosphere is suffocating, creating a sense of dread that lingers for days.' },
-  'The House That Jack Built': { connection: 'Lars von Trier’s descent into hell. It is deeply disturbing, cruel, and philosophically scarring. Not for the faint of heart.' },
-  'Oddity': { connection: 'A masterclass in tension. It proves that a silent, wooden mannequin can be more terrifying than any CGI monster.' },
-  'The Babadook': { connection: 'Horror rooted in grief. It transforms the exhaustion of motherhood and depression into a physical monster you cannot escape.' },
-  'The Empty Man': { connection: 'A cosmic cult horror with a legendary opening. It explores existential dread and the terror of ideas that infect the mind.' },
-  'Late Night with the Devil': { connection: 'Found-footage realism meets live TV chaos. It captures the 70s aesthetic perfectly while slowly unleashing hell on air.' },
-  'Barbarian': { connection: 'The ultimate "don\'t go in there" movie. It weaponizes modern anxieties about Airbnbs before pivoting into something completely shocking.' },
-  'The First Omen': { connection: 'Religious horror done right. It features one of the most visceral and shocking scenes of body horror in modern studio history.' },
-  'Fresh': { connection: 'A twisted satire on modern dating. It starts as a rom-com and sharply turns into a nightmare about consumption and survival.' }
+  'Heat': { connection: 'The gold standard for heist cinema. A masterpiece of scale, sound design, and the legendary face-off between Pacino and De Niro.' },
+  'Black Swan': { connection: 'A descent into madness that feels like a body-horror fever dream. Aronofsky’s psychological nightmare is visceral and haunting.' },
+  'Anatomy of a Fall': { connection: 'A cold, calculated dissection of a relationship. It’s a courtroom drama that plays like a high-tension psychological thriller.' },
+  'Donnie Darko': { connection: 'The ultimate "mind-bending" thriller. A cult classic that blends sci-fi, teen angst, and existential dread.' },
+  'Before the Devil Knows You\'re Dead': { connection: 'Sidney Lumet’s final masterclass in tension. The non-linear structure makes the inevitable tragedy feel like a slow-motion car crash.' },
+  'The Illusionist': { connection: 'Sophisticated, lush, and clever. It relies on atmosphere and a brilliant final twist rather than cheap scares.' },
+  'Fresh': { connection: 'A bold, tonal shift that starts as a rom-com and pivots into a grueling survival thriller. A masterclass in the "false sense of security" trope.' },
+  'The Equalizer': { connection: 'Pure catharsis. Denzel’s precision and the brutal, tactical choreography make this the peak of the "Vigilante" sub-genre.' },
+  'How to Blow Up a Pipeline': { connection: 'An eco-thriller that moves with the frantic energy of an undercover heist movie. Gritty, realistic, and incredibly polarizing.' },
+  'The Pledge': { connection: 'A bleak, haunting character study. It subverts every "hero cop" trope in exchange for a devastating reality.' }
 };
 
 const getTMDBImage = (path, size = 'w1280') =>
   path ? `https://image.tmdb.org/t/p/${size}${path}` : undefined;
 
-const getHorrorInsight = (title) => {
+const getThrillerInsight = (title) => {
   const data = MOVIE_DATA_BY_TITLE[title];
-  return data?.connection || 'A terrifying descent into darkness that pushes the boundaries of the horror genre.';
+  return data?.connection || 'A gripping cinematic experience that delivers non-stop suspense and unforgettable tension.';
 };
 
-// ✅ OPTIMIZED BANNER (Horror Theme)
+// ✅ OPTIMIZED BANNER (Thriller Theme)
 const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
   const [showTrailer, setShowTrailer] = useState(false);
   const [countdown, setCountdown] = useState(4);
@@ -68,19 +69,20 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
   const bannerImage = backdropPath ? getTMDBImage(backdropPath, 'w1280') : null;
   const posterImage = posterPath ? getTMDBImage(posterPath, 'w500') : null;
 
-  const insight = getHorrorInsight(movie?.Title);
-  const dreadScore = richData?.psychologicalIntensity || 85; // Mapping 'psychologicalIntensity' to Dread Score
+  const insight = getThrillerInsight(movie?.Title);
+  // ✅ UPDATED: Uses 'suspenseIntensity' instead of 'laughterIndex'
+  const suspenseScore = richData?.suspenseIntensity || 85; 
 
   const mobileHeroCSS = `
   @media (max-width: 767px) {
     .mobile-hero-row { display: flex; flex-direction: row; align-items: flex-start; width: 100vw; max-width: 100vw; gap: 10px; margin: 0; padding: 0 8px; }
     .mobile-hero-poster { width: 38vw; min-width: 106px; border-radius: 12px; overflow: hidden; box-shadow: 0 3px 14px #0007; margin: 0; flex-shrink: 0; }
     .mobile-hero-poster img { width: 100%; height: auto; border-radius: 12px; display: block; }
-    .mobile-psych-card { background: linear-gradient(135deg, #2a0505 0%, #0f0505 100%); border-radius: 12px; box-shadow: 0 2px 12px #0006; margin: 0; flex: 1; border-left: 4px solid #DC2626; display: flex; flex-direction: column; justify-content: flex-start; padding: 10px 10px 10px 12px; min-height: 110px; position: relative; }
+    .mobile-psych-card { background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%); border-radius: 12px; box-shadow: 0 2px 12px #0006; margin: 0; flex: 1; border-left: 4px solid #ef4444; display: flex; flex-direction: column; justify-content: flex-start; padding: 10px 10px 10px 12px; min-height: 110px; position: relative; }
     .mobile-psych-row { display: flex; align-items: flex-start; gap: 7px; }
-    .mobile-psych-icon { min-width: 24px; min-height: 24px; color: #FCA5A5; margin-top: 2px; }
-    .mobile-psych-title { font-size: 15px; font-weight: bold; color: #FCA5A5; margin-bottom: 1px; line-height: 1.12; }
-    .mobile-psych-desc { font-size: 12.3px; color: #ededed; line-height: 1.36; margin-top: 2px; }
+    .mobile-psych-icon { min-width: 24px; min-height: 24px; color: #f87171; margin-top: 2px; }
+    .mobile-psych-title { font-size: 15px; font-weight: bold; color: #f87171; margin-bottom: 1px; line-height: 1.12; }
+    .mobile-psych-desc { font-size: 12.3px; color: #e2e8f0; line-height: 1.36; margin-top: 2px; }
   }`;
 
   useEffect(() => {
@@ -132,8 +134,9 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
         <div className="mobile-hero-row">
           <div className="mobile-hero-poster">{posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} width={320} height={480} className="w-full h-auto" priority /> : <div style={{ background: COLORS.bgCard, width: '100%', height: '150px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Theater style={{ color: COLORS.textMuted }} /></div>}</div>
           <div className="mobile-psych-card">
-            <div className="mobile-psych-row"><Ghost className="mobile-psych-icon" /><div><div className="mobile-psych-title">Dread Score</div></div></div>
-            <div className="mobile-psych-desc"><strong>{dreadScore}/100</strong> - {insight.substring(0, 80)}...</div>
+            {/* ✅ UPDATED LABEL: Suspense Intensity */}
+            <div className="mobile-psych-row"><Zap className="mobile-psych-icon" /><div><div className="mobile-psych-title">Suspense Intensity</div></div></div>
+            <div className="mobile-psych-desc"><strong>{suspenseScore}/100</strong> - {insight.substring(0, 80)}...</div>
           </div>
         </div>
       ) : (
@@ -145,11 +148,12 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
               </div>
             </motion.div>
             <motion.div className="flex-1 w-full min-w-0" initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 1.0, duration: 0.8 }}>
-              <motion.div className="relative rounded-xl sm:rounded-2xl overflow-hidden p-4 sm:p-6 lg:p-8 backdrop-blur-sm" style={{ background: `linear-gradient(135deg, rgba(220, 38, 38, 0.15) 0%, rgba(15, 5, 5, 0.5) 100%)`, border: `1px solid ${COLORS.borderLight}`, boxShadow: `0 8px 32px rgba(220, 38, 38, 0.2)` }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.1, duration: 0.8 }}>
+              <motion.div className="relative rounded-xl sm:rounded-2xl overflow-hidden p-4 sm:p-6 lg:p-8 backdrop-blur-sm" style={{ background: `linear-gradient(135deg, rgba(239, 68, 68, 0.15) 0%, rgba(15, 23, 42, 0.5) 100%)`, border: `1px solid ${COLORS.borderLight}`, boxShadow: `0 8px 32px rgba(239, 68, 68, 0.2)` }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.1, duration: 0.8 }}>
                 <div className="absolute top-0 left-0 right-0 h-0.5 sm:h-1" style={{ background: `linear-gradient(90deg, transparent, ${COLORS.accent}, transparent)` }} />
                 <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5">
-                  <motion.div className="p-2 sm:p-2.5 rounded-lg sm:rounded-xl flex-shrink-0" style={{ background: `linear-gradient(135deg, ${COLORS.accent}20, ${COLORS.accent}10)`, border: `1px solid ${COLORS.accent}40` }} whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}><Skull className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" style={{ color: COLORS.accent }} /></motion.div>
-                  <div className="min-w-0 flex-1"><h2 className="text-sm sm:text-base lg:text-xl xl:text-2xl font-bold leading-tight" style={{ color: COLORS.accent }}>Why It's Terrifying</h2><p className="text-xs sm:text-sm hidden sm:block" style={{ color: COLORS.textMuted }}>Dread Score: {dreadScore}/100</p></div>
+                  <motion.div className="p-2 sm:p-2.5 rounded-lg sm:rounded-xl flex-shrink-0" style={{ background: `linear-gradient(135deg, ${COLORS.accent}20, ${COLORS.accent}10)`, border: `1px solid ${COLORS.accent}40` }} whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}><AlertTriangle className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" style={{ color: COLORS.accent }} /></motion.div>
+                  {/* ✅ UPDATED LABEL: Suspense Intensity */}
+                  <div className="min-w-0 flex-1"><h2 className="text-sm sm:text-base lg:text-xl xl:text-2xl font-bold leading-tight" style={{ color: COLORS.accent }}>Why It's Intense</h2><p className="text-xs sm:text-sm hidden sm:block" style={{ color: COLORS.textMuted }}>Suspense Score: {suspenseScore}/100</p></div>
                 </div>
                 <div className="relative pl-4 sm:pl-6 border-l-2" style={{ borderColor: `${COLORS.accent}40` }}>
                   <motion.div className="absolute -left-1.5 sm:-left-2 top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full" style={{ backgroundColor: COLORS.accent }} animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 2, repeat: Infinity }} />
@@ -166,7 +170,7 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
 };
 
 const SmartBackButton = () => {
-    const handleBackClick = () => { if (typeof window !== 'undefined') window.location.href = '/best-horror-movies-on-hulu'; };
+    const handleBackClick = () => { if (typeof window !== 'undefined') window.location.href = '/best-thriller-movies-hulu'; };
     return (
         <motion.button onClick={handleBackClick} className="fixed top-4 left-4 sm:top-6 sm:left-6 z-50 flex items-center gap-2 px-3 sm:px-4 py-2 backdrop-blur-md rounded-lg transition-all duration-300 shadow-xl text-xs sm:text-sm" style={{ backgroundColor: `${COLORS.bgPrimary}F2`, border: `1px solid ${COLORS.borderLight}` }} whileHover={{ scale: 1.02, x: -2 }} whileTap={{ scale: 0.98 }} initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} onMouseEnter={(e) => e.currentTarget.style.borderColor = COLORS.borderAccent} onMouseLeave={(e) => e.currentTarget.style.borderColor = COLORS.borderLight}>
             <ChevronLeft className="w-3 h-3 sm:w-4 sm:h-4" style={{ color: COLORS.accent }} /><span className="font-medium" style={{ color: COLORS.accent }}>Back to Collection</span>
@@ -177,7 +181,7 @@ const SmartBackButton = () => {
 const AuthorCreditSection = () => (
     <motion.section className="pt-6 sm:pt-8 mt-12 sm:mt-16" style={{ borderTop: `1px solid ${COLORS.borderLight}` }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2.0, duration: 0.8 }}>
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
-            <div className="flex items-center gap-3"><User className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: COLORS.textDisabled }} /><div><p className="text-xs sm:text-sm" style={{ color: COLORS.textMuted }}>Curated by <span className="font-medium" style={{ color: COLORS.textSecondary }}>Filmiway Editorial Team</span></p><p className="text-xs" style={{ color: COLORS.textDisabled }}>Expert analysis of horror cinema</p></div></div>
+            <div className="flex items-center gap-3"><User className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: COLORS.textDisabled }} /><div><p className="text-xs sm:text-sm" style={{ color: COLORS.textMuted }}>Curated by <span className="font-medium" style={{ color: COLORS.textSecondary }}>Filmiway Editorial Team</span></p><p className="text-xs" style={{ color: COLORS.textDisabled }}>Expert analysis of thriller cinema</p></div></div>
             <div className="flex items-center gap-3 sm:gap-4"><span className="text-xs sm:text-sm" style={{ color: COLORS.textDisabled }}>Share:</span><div className="flex gap-2 sm:gap-3">{[Twitter, Hash, Send].map((Icon, i) => (<button key={i} className="p-1.5 sm:p-2 rounded-full transition-colors" style={{ color: COLORS.textDisabled }} onMouseEnter={(e) => { e.currentTarget.style.color = COLORS.textSecondary; e.currentTarget.style.backgroundColor = COLORS.bgCard; }} onMouseLeave={(e) => { e.currentTarget.style.color = COLORS.textDisabled; e.currentTarget.style.backgroundColor = 'transparent'; }}><Icon className="w-3 h-3 sm:w-4 sm:h-4" /></button>))}</div></div>
         </div>
     </motion.section>
@@ -187,20 +191,20 @@ const SubtleFilmGrain = () => (
     <div className="fixed inset-0 pointer-events-none z-0 opacity-[0.005]"><div className="w-full h-full bg-repeat" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)' opacity='0.3'/%3E%3C/svg%3E")`, backgroundSize: '60px 60px' }} /></div>
 );
 
-const HuluHorrorBreadcrumb = ({ movie }) => (
+const HuluThrillerBreadcrumb = ({ movie }) => (
     <motion.nav className="mb-6 sm:mb-8 px-3 sm:px-4 lg:px-6 pb-3 sm:pb-4" style={{ borderBottom: `1px solid ${COLORS.borderLight}` }} initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
         <div className="flex items-center space-x-2 sm:space-x-3 text-xs sm:text-sm" style={{ color: COLORS.textMuted }}>
-            <Link href="/best-horror-movies-on-hulu" className="transition-all duration-300 truncate" style={{ color: COLORS.textMuted }} onMouseEnter={(e) => e.currentTarget.style.color = COLORS.accent} onMouseLeave={(e) => e.currentTarget.style.color = COLORS.textMuted}>Best Horror Movies on Hulu</Link>
+            <Link href="/best-thriller-movies-hulu" className="transition-all duration-300 truncate" style={{ color: COLORS.textMuted }} onMouseEnter={(e) => e.currentTarget.style.color = COLORS.accent} onMouseLeave={(e) => e.currentTarget.style.color = COLORS.textMuted}>Best Thriller Movies on Hulu</Link>
             <ChevronLeft size={14} className="flex-shrink-0" style={{ color: COLORS.textDisabled, transform: 'rotate(180deg)' }} /><span className="font-medium truncate" style={{ color: `${COLORS.accent}B3` }}>{movie.Title}</span>
         </div>
     </motion.nav>
 );
 
-// ✅ JSON-LD SCHEMA GENERATOR - HORROR EDITION
+// ✅ JSON-LD SCHEMA GENERATOR - THRILLER EDITION
 const generateMovieSchema = (movie, movieData, currentMovieYear) => {
   const data = COMPLETE_MOVIE_DATA[movie.tmdbId];
   const sensitiveData = SENSITIVE_TIMELINES[movie.tmdbId];
-  const faqs = HULU_HORROR_MOVIE_FAQS[movie.Title] || [];
+  const faqs = HULU_THRILLER_MOVIE_FAQS[movie.Title] || [];
 
   // 1. CALCULATE THE PEAK MOMENT
   let peakStats = "Peak info unavailable.";
@@ -208,20 +212,19 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
     const peakScene = data.scenes.reduce((prev, current) => 
       (current.intensity > prev.intensity) ? current : prev
     );
-    peakStats = `[PEAK TERROR] Maximum Dread (${peakScene.intensity}/100) hits at minute ${peakScene.time}: "${peakScene.label}".`;
+    peakStats = `[PEAK TENSION] Maximum Suspense (${peakScene.intensity}/100) hits at minute ${peakScene.time}: "${peakScene.label}".`;
   }
 
-  // 2. METRICS (Using Horror Specific Terms for Bots)
-// 2. METRICS (Using Horror Specific Terms for Bots)
-  // ✅ UPDATED: Uses 'scariness' property to match the label
+  // 2. METRICS (Using Thriller Specific Terms)
+  // ✅ UPDATED: Suspense Intensity
   const intensityStats = `
     [FILMIWAY METRIC]
-    - Scariness: ${data?.scariness || 0}/100
+    - Suspense Intensity: ${data?.suspenseIntensity || 0}/100
   `;
 
   const dnaStats = data?.dna 
     ? `[GENRE DNA] ${Object.entries(data.dna).map(([genre, val]) => `${genre}: ${val}%`).join(', ')}`
-    : 'Horror';
+    : 'Thriller';
 
   const contentWarnings = sensitiveData?.scenes 
     ? `[CONTENT ADVISORY] ${sensitiveData.scenes.map(s => 
@@ -229,14 +232,14 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
           ? `${s.type}: ${s.start}-${s.end} (${s.severity})` 
           : `${s.type} (${s.severity})` 
       ).join(' | ')}.`
-    : 'Standard horror violence.';
+    : 'Standard thriller content.';
   const faqText = faqs.length > 0
     ? `[COMMON QUESTIONS] ${faqs.map(f => `Q: ${f.question} A: ${f.answer}`).join(' | ')}`
     : '';
 
   // 3. COMPILE FULL DESCRIPTION
   const fullDescription = `
-    ${data?.synopsis || movie.description || "A terrifying horror film."}
+    ${data?.synopsis || movie.description || "A gripping thriller film."}
     
     --- DETAILED ANALYSIS ---
     ${peakStats} 
@@ -245,7 +248,7 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
     ${contentWarnings}
     ${faqText}
     
-    Ranking: #${movie.rank || 'N/A'} in Horror Movies.
+    Ranking: #${movie.rank || 'N/A'} in Thriller Movies.
     Production: Budget ${data?.budget || 'N/A'}, Box Office ${data?.boxOffice || 'N/A'}.
   `.replace(/\s+/g, ' ').trim();
 
@@ -280,9 +283,9 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
       }
     },
 
-    "genre": data?.dna ? Object.keys(data.dna) : ["Horror", "Thriller"],
-    "keywords": "Horror Movies Hulu, Scariest Movies on Hulu, " + (data?.themes ? data.themes.join(", ") : ""),
-    "url": `https://filmiway.com/collection/best-horror-movies-on-hulu/${movie.imdbID}`,
+    "genre": data?.dna ? Object.keys(data.dna) : ["Thriller"],
+    "keywords": "Thriller Movies Hulu, Suspense Movies Hulu, " + (data?.themes ? data.themes.join(", ") : ""),
+    "url": `https://filmiway.com/collection/collection/best-thriller-movies-hulu/${movie.imdbID}`,
     "author": {
       "@type": "Organization",
       "name": "Filmiway",
@@ -306,7 +309,7 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
   return { movieSchema, faqSchema };
 };
 
-const HuluHorrorMoviePage = ({ movie, tmdbData: movieData }) => {
+const HuluThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
     const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
     const richData = COMPLETE_MOVIE_DATA[movie.tmdbId]; 
     const [isMobile, setIsMobile] = useState(false);
@@ -320,17 +323,17 @@ const HuluHorrorMoviePage = ({ movie, tmdbData: movieData }) => {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-        sessionStorage.setItem('fromCollection', 'best-horror-movies-on-hulu');
-        sessionStorage.setItem('fromCollectionName', 'Best Horror Movies on Hulu');
+        sessionStorage.setItem('fromCollection', 'best-thriller-movies-hulu');
+        sessionStorage.setItem('fromCollectionName', 'Best Thriller Movies on Hulu');
     }
   }, []);
 
     const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
-    // ✅ SEO FIX: Clean strings to prevent hydration errors
-    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Best Horror Movies on Hulu | Filmiway`;
-    const cleanSEODesc = `${movie.Title} (${currentMovieYear}) - A terrifying horror movie streaming on Hulu. Ranked by dread and gore levels.`;
+    // ✅ SEO FIX: Clean strings
+    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Best Thriller Movies on Hulu | Filmiway`;
+    const cleanSEODesc = `${movie.Title} (${currentMovieYear}) - A gripping thriller streaming on Hulu. Ranked by suspense intensity and psychological impact.`;
 
     const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear);
 
@@ -340,7 +343,7 @@ const HuluHorrorMoviePage = ({ movie, tmdbData: movieData }) => {
                 {/* ✅ HYDRATION BUG FULLY RESOLVED */}
                 <title>{cleanSEOTitle}</title>
                 <meta name="description" content={cleanSEODesc} />
-                <link rel="canonical" href={`https://filmiway.com/collection/best-horror-movies-on-hulu/${movie.imdbID}`} />
+                <link rel="canonical" href={`https://filmiway.com/collection/best-thriller-movies-hulu/${movie.imdbID}`} />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
                 <meta name="robots" content="index, follow" />
                 <meta name="language" content="English" />
@@ -359,12 +362,12 @@ const HuluHorrorMoviePage = ({ movie, tmdbData: movieData }) => {
 
                 {/* Standard Meta Tags */}
                 <meta property="og:title" content={cleanSEOTitle} />
-                <meta property="og:description" content="A terrifying horror movie on Hulu." />
+                <meta property="og:description" content="A gripping thriller movie on Hulu." />
                 <meta property="og:type" content="video.movie" />
                 <meta property="og:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content={cleanSEOTitle} />
-                <meta name="twitter:description" content="A terrifying horror movie on Hulu." />
+                <meta name="twitter:description" content="A gripping thriller movie on Hulu." />
                 <meta name="twitter:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
             </Head>
 
@@ -377,7 +380,7 @@ const HuluHorrorMoviePage = ({ movie, tmdbData: movieData }) => {
                 {/* ✅ SEO FIX: HIDDEN H1 */}
                 <h1 className="sr-only">{cleanSEOTitle}</h1>
 
-                <HuluHorrorBreadcrumb movie={movie} />
+                <HuluThrillerBreadcrumb movie={movie} />
                 <div className="container mx-auto px-0 pb-16 sm:pb-24 lg:pb-32 max-w-7xl">
                     <OptimizedBanner movie={movie} movieData={movieData} richData={richData} trailer={trailer} isMobile={isMobile} />
                     
@@ -385,15 +388,15 @@ const HuluHorrorMoviePage = ({ movie, tmdbData: movieData }) => {
     id="watch" 
     initial={{ opacity: 0, y: 20 }} 
     animate={{ opacity: 1, y: 0 }} 
-    transition={{ duration: 0.5 }} // Faster, no massive delay
+    transition={{ duration: 0.5 }} 
     className="space-y-8 sm:space-y-12 px-3 sm:px-4 lg:px-6"
 >
-                        {/* Note: Ensure MovieDetailsSection can handle the 'horror' context, or pass a flag to use specific colors */}
-                        <MovieDetailsSection movie={movie} fromHuluHorrorCollection={true} /> 
+                        {/* ✅ Note: We will need to update MovieDetailsSection to accept 'fromHuluThrillerCollection' later */}
+                        <MovieDetailsSection movie={movie} fromHuluThrillerCollection={true} /> 
                     </motion.div>
                     
                     <div className="px-3 sm:px-4 lg:px-6">
-                        <InternalCollectionsSection currentSlug="best-horror-movies-on-hulu" />
+                        <InternalCollectionsSection currentSlug="best-thriller-movies-hulu" />
                         <TMDBAttribution />
                         <AuthorCreditSection />
                     </div>
@@ -432,4 +435,4 @@ export async function getStaticProps({ params }) {
     }
 }
 
-export default HuluHorrorMoviePage;
+export default HuluThrillerMoviePage;

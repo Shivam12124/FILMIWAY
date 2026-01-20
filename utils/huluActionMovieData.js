@@ -12,7 +12,7 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 106, "imdbID": "tt0093773", "Title": "Predator", "year": 1987, "genre": "Sci-Fi", "runtime": 107, "rank": 1 },
     { "tmdbId": 14756, "imdbID": "tt1220719", "Title": "Ip Man", "year": 2008, "genre": "Action", "runtime": 106, "rank": 2 },
     { "tmdbId": 119450, "imdbID": "tt2103281", "Title": "Dawn of the Planet of the Apes", "year": 2014, "genre": "Sci-Fi", "runtime": 130, "rank": 3 },
-    { "tmdbId": 999001, "imdbID": "tt36463894", "Title": "Predator: Killer of Killers", "year": 2025, "genre": "Animation", "runtime": 45, "rank": 4 },
+    { "tmdbId": 1376434, "imdbID": "tt36463894", "Title": "Predator: Killer of Killers", "year": 2025, "genre": "Animation", "runtime": 45, "rank": 4 },
     { "tmdbId": 156022, "imdbID": "tt0455944", "Title": "The Equalizer", "year": 2014, "genre": "Thriller", "runtime": 132, "rank": 5 },
     { "tmdbId": 207703, "imdbID": "tt2802144", "Title": "Kingsman: The Secret Service", "year": 2014, "genre": "Action", "runtime": 129, "rank": 6 },
     { "tmdbId": 44048, "imdbID": "tt0477080", "Title": "Unstoppable", "year": 2010, "genre": "Thriller", "runtime": 98, "rank": 7 },
@@ -40,7 +40,7 @@ export const SENSITIVE_TIMELINES = {
     119450: { scenes: [] }, // War violence, mostly guns
     
     // 4. Predator: Killer of Killers
-    999001: { 
+    1376434: { 
         scenes: [
             { start: "0:15:00", end: "0:18:00", type: "Animated Gore", severity: "High" }
         ] 
@@ -87,7 +87,7 @@ export const FALLBACK_POSTERS = {
     106: "https://image.tmdb.org/t/p/w500/k3mW4qfJo6SKqe6laRyNGnbB9n5.jpg",
     14756: "https://image.tmdb.org/t/p/w500/ggTTuxwxV76P10J9a9YtV529E7Q.jpg",
     119450: "https://image.tmdb.org/t/p/w500/2EuaZ1p9KT81hMWjV7oqamAQ6RL.jpg",
-    999001: "https://via.placeholder.com/500x750?text=Predator+Killer+of+Killers",
+    1376434: "https://via.placeholder.com/500x750?text=Predator+Killer+of+Killers",
     156022: "https://image.tmdb.org/t/p/w500/9u4yW7yPA0MQ274BeckxdbkF2A.jpg",
     207703: "https://image.tmdb.org/t/p/w500/ay7xwXn1G9fzX9T98qqeE406Zo.jpg",
     44048: "https://image.tmdb.org/t/p/w500/u3kX5Z3yEa3aZ3X5X3X3X3X3X3X.jpg",
@@ -168,7 +168,7 @@ export const COMPLETE_MOVIE_DATA = {
     }),
 
     // 4. Predator: Killer of Killers (ANIMATED EXTREME)
-    999001: createMovieData({ 
+    1376434: createMovieData({ 
         adrenalineScore: 90, 
         violenceLevel: 98, // Animated gore allows higher limits
         visceralImpact: 85, 
@@ -311,7 +311,7 @@ export const STRATEGIC_QUOTES = {
     106: "If it bleeds, we can kill it.",
     14756: "I want to fight ten people!",
     119450: "Apes together strong.",
-    999001: "Valhalla waits for no beast.",
+    1376434: "Valhalla waits for no beast.",
     156022: "Progress, not perfection.",
     207703: "Manners maketh man.",
     44048: "We're not going to make it.",

@@ -472,6 +472,8 @@ const FilmiwayHomepage = ({ trendingMovies, popularMovies, topRatedMovies }) => 
                                     <li><Link href="/collection/best-romance-movies-on-hulu" className="hover:text-white transition-colors text-gray-300">Best Romance on Hulu</Link></li>
                                     <li><Link href="/collection/best-comedy-movies-on-hulu" className="hover:text-white transition-colors text-gray-300">Best Comedy on Hulu</Link></li>
                                     <li><Link href="/collection/best-horror-movies-on-hulu" className="hover:text-white transition-colors text-gray-300">Best Horror on Hulu</Link></li>
+                                    <li><Link href="/collection/best-sci-fi-movies-on-hulu" className="hover:text-white transition-colors text-gray-300">Best Sci-Fi on Hulu</Link></li>
+<li><Link href="/collection/best-thriller-movies-hulu" className="hover:text-white transition-colors text-gray-300">Best Thriller on Hulu</Link></li>
                                 </ul>
                             </div>
 

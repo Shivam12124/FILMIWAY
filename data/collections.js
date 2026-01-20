@@ -351,8 +351,9 @@ export const COLLECTIONS = {
     },
 
     movies: [
-      'tt22359552', // Anora (2024)
+     
       'tt21192142', // All of Us Strangers (2023)
+       'tt22359552', // Anora (2024)
       'tt8966292', // And Then We Danced (2019)
       'tt2381111', // Brooklyn (2015)
       'tt0412922', // Little Manhattan (2005)
@@ -570,6 +571,179 @@ export const COLLECTIONS = {
         }
     }
 },
+
+
+
+// 🛸 BEST SCI-FI MOVIES ON HULU COLLECTION
+  'best-sci-fi-movies-on-hulu': {
+    slug: 'best-sci-fi-movies-on-hulu',
+    title: '10 Best Sci-Fi Movies on Hulu',
+    subtitle: 'Ranked by Mind-Bend & Spectacle',
+    description: 'The most visionary sci-fi films streaming on Hulu. From time-travel paradoxes to alien invasions & dystopian futures.',
+    longDescription: 'Explore the outer limits of imagination with the best science fiction movies on Hulu. This collection features mind-bending time travel, terrifying alien encounters, and dystopian warnings. Whether you want intellectual challenges like Donnie Darko or visceral survival horror like Prey, these films represent the pinnacle of the genre.',
+
+    emoji: '🛸',
+    theme: 'cyan',
+    primaryColor: '#0891b2',
+    secondaryColor: '#06b6d4',
+    accentColor: '#0e7490',
+    gradientFrom: 'from-cyan-600',
+    gradientTo: 'to-blue-600',
+
+    category: 'sci-fi',
+    tags: ['sci-fi', 'hulu', 'streaming', 'aliens', 'time travel', 'dystopia', 'mind-bending'],
+
+    metaTitle: '10 Best Sci-Fi Movies on Hulu (2026) | Ranked by Mind-Bend | Filmiway',
+    metaDescription: 'Discover the 10 best sci-fi movies on Hulu—from Donnie Darko to Prey. Expert-curated ranking of visionary films with mind-bending concepts.',
+    metaKeywords: 'best sci-fi movies on hulu, hulu sci-fi films, donnie darko, prey, predator, no one will save you, sci-fi streaming',
+
+    stats: {
+      totalMovies: 10,
+      averageRating: 7.6,
+      totalWatchtime: '18 hours 45 minutes',
+      averageMindBendScore: 88.5,
+      mostMindBending: 'Donnie Darko (98/100)',
+      newestMovie: 'Predator: Killer of Killers (2025)',
+      oldestMovie: 'Alien (1979)'
+    },
+
+    movies: [
+      'tt0246578', // 1. Donnie Darko
+      'tt0096754', // 2. The Abyss
+      'tt2103281', // 3. Dawn of the Planet of the Apes
+      'tt0093773', // 4. Predator
+      'tt0485947', // 5. Mr. Nobody
+      'tt16537332', // 6. No One Will Save You
+      'tt11866324', // 7. Prey
+      'tt36463894',   // 8. Predator: Killer of Killers (Placeholder ID)
+      'tt1318514', // 9. Rise of the Planet of the Apes
+      'tt32768323'  // 10. The Assessment
+    ],
+
+    badges: [
+      { label: 'Mind-Bending', desc: 'Complex, intellectual sci-fi' },
+      { label: 'Hulu Exclusive', desc: 'Available to stream now' },
+      { label: 'Visual Spectacle', desc: 'Stunning CGI & world-building' }
+    ],
+
+    featured: {
+      hero: {
+        title: 'Donnie Darko',
+        subtitle: 'The Cult Sci-Fi Masterpiece',
+        description: 'A troubled teenager is plagued by visions of a man in a large rabbit suit who manipulates him to commit a series of crimes.',
+        poster: 'https://image.tmdb.org/t/p/w500/fhQoQoeNR72JXYgyqgzTzJluSF1.jpg',
+        backdrop: 'https://image.tmdb.org/t/p/w1280/4q2rV9wE9sUuliM90V82LOrH.jpg',
+        mindBendScore: 98
+      }
+    },
+
+    relatedCollections: [
+      'best-time-travel-movies',
+      'movies-like-interstellar',
+      'best-thriller-movies'
+    ],
+
+    seo: {
+      title: '10 Best Sci-Fi Movies on Hulu (2026) | Ranked by Mind-Bend',
+      description: 'The definitive ranking of the best sci-fi movies on Hulu. From the time loops of Donnie Darko to the survival horror of Prey.',
+      keywords: 'sci-fi movies hulu, best sci-fi films streaming, donnie darko, predator, prey, no one will save you, mind bending movies hulu',
+      canonicalUrl: 'https://filmiway.com/collection/best-sci-fi-movies-on-hulu',
+      ogImage: 'https://filmiway.com/images/hulu-scifi-collection-og.jpg',
+      structuredData: {
+        '@context': 'https://schema.org',
+        '@type': 'ItemList',
+        name: 'Best Sci-Fi Movies on Hulu',
+        description: 'Expert-curated list of the best sci-fi movies available on Hulu ranked by mind-bending complexity and visual spectacle',
+        numberOfItems: 10
+      }
+    }
+  },
+
+// 🔴 BEST THRILLER MOVIES ON HULU COLLECTION
+  'best-thriller-movies-hulu': {
+    slug: 'best-thriller-movies-hulu',
+    title: '10 Best Thriller Movies on Hulu',
+    subtitle: 'Ranked by Suspense & Tension',
+    description: 'The most gripping thrillers streaming on Hulu. From heist masterpieces to psychological nightmares.',
+    longDescription: 'Explore the most suspenseful films on Hulu. This collection ranks movies that master the art of tension—whether it’s the tactical realism of a heist, the claustrophobia of a courtroom, or the descent into psychological madness. These are films that demand your full attention and refuse to let go.',
+
+    emoji: '🔴',
+    theme: 'red',
+    primaryColor: '#b91c1c',
+    secondaryColor: '#ef4444',
+    accentColor: '#991b1b',
+    gradientFrom: 'from-red-700',
+    gradientTo: 'to-slate-900',
+
+    category: 'thriller',
+    tags: ['thriller', 'hulu', 'streaming', 'suspense', 'psychological', 'crime', 'mystery'],
+
+    metaTitle: '10 Best Thriller Movies on Hulu (2025) | Ranked by Suspense | Filmiway',
+    metaDescription: 'Discover the 10 best thriller movies on Hulu—from Heat to Black Swan. Expert-curated ranking of high-tension films with gripping plots.',
+    metaKeywords: 'best thriller movies on hulu, hulu thrillers, heat, black swan, anatomy of a fall, suspense movies streaming, psychological thrillers hulu',
+
+    stats: {
+      totalMovies: 10,
+      averageRating: 7.8,
+      totalWatchtime: '20 hours 15 minutes',
+      averageSuspenseIntensity: 89.5,
+      mostIntense: 'Heat (96/100)',
+      newestMovie: 'Anatomy of a Fall (2023)',
+      oldestMovie: 'Heat (1995)'
+    },
+
+    movies: [
+      'tt0113277', // 1. Heat
+      'tt0947798', // 2. Black Swan
+      'tt17009710', // 3. Anatomy of a Fall
+      'tt0246578', // 4. Donnie Darko
+      'tt0292963', // 5. Before the Devil Knows You're Dead
+      'tt0443543', // 6. The Illusionist
+      'tt13403046', // 7. Fresh
+      'tt0455944', // 8. The Equalizer
+      'tt20446690', // 9. How to Blow Up a Pipeline
+      'tt0237572'  // 10. The Pledge
+    ],
+
+    badges: [
+      { label: 'High Tension', desc: 'Nail-biting suspense' },
+      { label: 'Hulu Exclusive', desc: 'Available to stream now' },
+      { label: 'Psychological Depth', desc: 'Mind-bending narratives' }
+    ],
+
+    featured: {
+      hero: {
+        title: 'Heat',
+        subtitle: 'The Ultimate Crime Thriller',
+        description: 'A group of professional bank robbers start to feel the heat from police when they unknowingly leave a clue at their latest heist.',
+        poster: 'https://image.tmdb.org/t/p/w500/zMyfPUelumio3tiDKPffaUpsQTD.jpg',
+        backdrop: 'https://image.tmdb.org/t/p/w1280/umSVjVdbVwtx5ryCA2QXL44Durz.jpg',
+        suspenseIntensity: 96
+      }
+    },
+
+    relatedCollections: [
+      'best-crime-thriller-movies',
+      'best-psychological-thriller-movies',
+      'best-detective-thriller-movies'
+    ],
+
+    seo: {
+      title: '10 Best Thriller Movies on Hulu (2025) | Ranked by Suspense',
+      description: 'The definitive ranking of the best thriller movies on Hulu. From the tactical action of Heat to the psychological horror of Black Swan.',
+      keywords: 'thriller movies hulu, best suspense films streaming, heat, black swan, anatomy of a fall, fresh, donnie darko, hulu thrillers',
+      canonicalUrl: 'https://filmiway.com/collection/best-thriller-movies-hulu',
+      ogImage: 'https://filmiway.com/images/hulu-thriller-collection-og.jpg',
+      structuredData: {
+        '@context': 'https://schema.org',
+        '@type': 'ItemList',
+        name: 'Best Thriller Movies on Hulu',
+        description: 'Expert-curated list of the best thriller movies available on Hulu ranked by suspense intensity and psychological impact',
+        numberOfItems: 10
+      }
+    }
+  },
+
 
 // 🦢 MOVIES LIKE BLACK SWAN COLLECTION
 'movies-like-black-swan': {

@@ -1,6 +1,6 @@
-// utils/huluRomanceMovieRoutes.js - COMPLETELY FIXED SSG ROUTE MAPPING FOR HULU ROMANCE COLLECTION
+// utils/huluSciFiMovieRoutes.js - SSG ROUTE MAPPING FOR HULU SCI-FI COLLECTION
 
-import { COMPLETE_MOVIE_DATABASE, COMPLETE_MOVIE_DATA } from './huluRomanceMovieData';
+import { COMPLETE_MOVIE_DATABASE, COMPLETE_MOVIE_DATA } from './huluSciFiMovieData';
 
 // ✅ GENERATE URL SLUG FROM MOVIE TITLE
 export const generateMovieSlug = (title) => {
@@ -12,48 +12,45 @@ export const generateMovieSlug = (title) => {
         .trim();
 };
 
-// ✅ COMPLETE HULU ROMANCE MOVIE SLUG MAPPING
-export const HULU_ROMANCE_MOVIE_SLUGS = {
+// ✅ COMPLETE HULU SCI-FI MOVIE SLUG MAPPING
+export const HULU_SCIFI_MOVIE_SLUGS = {
+    // Rank 1: Donnie Darko
+    'tt0246578': 'donnie-darko',
     
-        // Rank 1: All of Us Strangers
-     'tt21192142': 'all-of-us-strangers',
+    // Rank 2: The Abyss
+    'tt0096754': 'the-abyss',
     
-    // Rank 2: Anora
-    'tt22359552': 'anora',
+    // Rank 3: Dawn of the Planet of the Apes
+    'tt2103281': 'dawn-of-the-planet-of-the-apes',
     
- 
+    // Rank 4: Predator
+    'tt0093773': 'predator',
     
-    // Rank 3: And Then We Danced
-    'tt8966292': 'and-then-we-danced',
+    // Rank 5: Mr. Nobody
+    'tt0485947': 'mr-nobody',
     
-    // Rank 4: Brooklyn
-    'tt2381111': 'brooklyn',
+    // Rank 6: No One Will Save You (Replaces Life of Chuck)
+    'tt16537332': 'no-one-will-save-you',
     
-    // Rank 5: Little Manhattan
-    'tt0412922': 'little-manhattan',
+    // Rank 7: Prey
+    'tt11866324': 'prey',
     
-    // Rank 6: Palm Springs
-    'tt8385738': 'palm-springs',
+    // Rank 8: Predator: Killer of Killers
+    'tt36463894': 'predator-killer-of-killers',
     
-    // Rank 7: Rye Lane
-    'tt15893794': 'rye-lane',
+    // Rank 9: Rise of the Planet of the Apes
+    'tt1318514': 'rise-of-the-planet-of-the-apes',
     
-    // Rank 8: Crazy Heart
-    'tt1263670': 'crazy-heart',
-    
-    // Rank 9: Good Luck to You, Leo Grande
-    'tt13352968': 'good-luck-to-you-leo-grande',
-    
-    // Rank 10: 13 Going on 30
-    'tt0337563': '13-going-on-30'
+    // Rank 10: The Assessment
+    'tt32768323': 'the-assessment'
 };
 
 // ✅ REVERSE SLUG MAPPING (SLUG TO IMDB ID)
 export const SLUG_TO_IMDB = Object.fromEntries(
-    Object.entries(HULU_ROMANCE_MOVIE_SLUGS).map(([imdbId, slug]) => [slug, imdbId])
+    Object.entries(HULU_SCIFI_MOVIE_SLUGS).map(([imdbId, slug]) => [slug, imdbId])
 );
 
-// ✅ GET MOVIE BY SLUG - FIXED
+// ✅ GET MOVIE BY SLUG
 export const getMovieBySlug = (slug) => {
     const imdbId = SLUG_TO_IMDB[slug];
     if (!imdbId) return null;
@@ -63,30 +60,30 @@ export const getMovieBySlug = (slug) => {
 
 // ✅ GET MOVIE SLUG BY IMDB ID
 export const getMovieSlug = (imdbId) => {
-    return HULU_ROMANCE_MOVIE_SLUGS[imdbId] || null;
+    return HULU_SCIFI_MOVIE_SLUGS[imdbId] || null;
 };
 
-// ✅ GENERATE ALL STATIC PATHS FOR HULU ROMANCE MOVIES
-export const generateHuluRomanceMoviePaths = () => {
+// ✅ GENERATE ALL STATIC PATHS FOR HULU SCI-FI MOVIES
+export const generateHuluSciFiMoviePaths = () => {
     return COMPLETE_MOVIE_DATABASE.map(movie => ({
         params: {
-            slug: HULU_ROMANCE_MOVIE_SLUGS[movie.imdbID]
+            slug: HULU_SCIFI_MOVIE_SLUGS[movie.imdbID]
         }
     }));
 };
 
-// ✅ HULU ROMANCE MOVIE NAVIGATION BREADCRUMBS
-export const getHuluRomanceMovieBreadcrumbs = (movie) => {
+// ✅ HULU SCI-FI MOVIE NAVIGATION BREADCRUMBS
+export const getHuluSciFiMovieBreadcrumbs = (movie) => {
     return [
         { label: 'Home', href: '/' },
         { label: 'Collections', href: '/collection' },
-        { label: 'Best Romance Movies on Hulu', href: '/best-romance-movies-on-hulu' },
-        { label: movie.Title, href: `/best-romance-movies-on-hulu/${HULU_ROMANCE_MOVIE_SLUGS[movie.imdbID]}` }
+        { label: 'Best Sci-Fi Movies on Hulu', href: '/best-sci-fi-movies-on-hulu' },
+        { label: movie.Title, href: `/best-sci-fi-movies-on-hulu/${HULU_SCIFI_MOVIE_SLUGS[movie.imdbID]}` }
     ];
 };
 
-// ✅ GET NEXT/PREVIOUS HULU ROMANCE MOVIE
-export const getHuluRomanceMovieNavigation = (currentMovie) => {
+// ✅ GET NEXT/PREVIOUS HULU SCI-FI MOVIE
+export const getHuluSciFiMovieNavigation = (currentMovie) => {
     const currentIndex = COMPLETE_MOVIE_DATABASE.findIndex(m => m.imdbID === currentMovie.imdbID);
     
     const previousMovie = currentIndex > 0 
@@ -100,56 +97,55 @@ export const getHuluRomanceMovieNavigation = (currentMovie) => {
     return {
         previous: previousMovie ? {
             ...previousMovie,
-            slug: HULU_ROMANCE_MOVIE_SLUGS[previousMovie.imdbID]
+            slug: HULU_SCIFI_MOVIE_SLUGS[previousMovie.imdbID]
         } : null,
         next: nextMovie ? {
             ...nextMovie,
-            slug: HULU_ROMANCE_MOVIE_SLUGS[nextMovie.imdbID]
+            slug: HULU_SCIFI_MOVIE_SLUGS[nextMovie.imdbID]
         } : null
     };
 };
 
-// ✅ GET RELATED HULU ROMANCE MOVIES (SAME GENRE/DECADE)
-export const getRelatedHuluRomanceMovies = (currentMovie, limit = 3) => {
+// ✅ GET RELATED HULU SCI-FI MOVIES (SAME GENRE/DECADE)
+export const getRelatedHuluSciFiMovies = (currentMovie, limit = 3) => {
     const currentDecade = Math.floor(currentMovie.year / 10) * 10;
-    const currentGenre = currentMovie.genre;
     
     return COMPLETE_MOVIE_DATABASE
         .filter(movie => 
             movie.imdbID !== currentMovie.imdbID && (
-                movie.genre === currentGenre || 
-                Math.floor(movie.year / 10) * 10 === currentDecade
+                Math.abs(movie.year - currentMovie.year) <= 10 || // Within 10 years
+                movie.genre === currentMovie.genre
             )
         )
         .slice(0, limit)
         .map(movie => ({
             ...movie,
-            slug: HULU_ROMANCE_MOVIE_SLUGS[movie.imdbID]
+            slug: HULU_SCIFI_MOVIE_SLUGS[movie.imdbID]
         }));
 };
 
-// ✅ HULU ROMANCE COLLECTION METADATA
-export const HULU_ROMANCE_COLLECTION_META = {
-    title: '10 Best Romance Movies on Hulu (Ranked 2026)',
-    description: 'The definitive ranking of romance movies on Hulu. From the adrenaline of Anora to the nostalgia of Little Manhattan. Ranked by chemistry and emotional resonance.',
-    keywords: 'best romance movies hulu, hulu romance films, anora hulu, all of us strangers, romantic movies streaming, love stories hulu',
-    canonicalUrl: 'https://filmiway.com/best-romance-movies-on-hulu',
-    ogImage: 'https://filmiway.com/images/hulu-romance-collection-og.jpg',
+// ✅ HULU SCI-FI COLLECTION METADATA
+export const HULU_SCIFI_COLLECTION_META = {
+    title: '10 Best Sci-Fi Movies on Hulu (Ranked by Mind-Bend)',
+    description: 'The definitive ranking of the best Sci-Fi movies on Hulu. From the time travel of Donnie Darko to the alien survival of Prey.',
+    keywords: 'best sci-fi movies on hulu, hulu sci-fi films, donnie darko, predator, the abyss, no one will save you, sci-fi streaming',
+    canonicalUrl: 'https://filmiway.com/best-sci-fi-movies-on-hulu',
+    ogImage: 'https://filmiway.com/images/hulu-scifi-collection-og.jpg',
     totalMovies: COMPLETE_MOVIE_DATABASE.length,
-    // ✅ FIXED - CALCULATES AVERAGE EMOTIONAL RESONANCE (psychologicalIntensity)
-    averageEmotionalScore: Math.round(
+    // ✅ FIXED - CALCULATES AVERAGE MIND-BEND SCORE
+    averageMindBendScore: Math.round(
         COMPLETE_MOVIE_DATABASE.reduce((sum, movie) => {
             const data = COMPLETE_MOVIE_DATA[movie.tmdbId];
-            return sum + (data?.psychologicalIntensity || 85); 
+            return sum + (data?.mindBendScore || 70); 
         }, 0) / COMPLETE_MOVIE_DATABASE.length
     )
 };
 
-// ✅ GENERATE HULU ROMANCE MOVIE SITEMAP URLS
-export const generateHuluRomanceMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+// ✅ GENERATE HULU SCI-FI MOVIE SITEMAP URLS
+export const generateHuluSciFiMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
     const urls = [
         {
-            url: `${baseUrl}/best-romance-movies-on-hulu`,
+            url: `${baseUrl}/best-sci-fi-movies-on-hulu`,
             lastmod: new Date().toISOString(),
             priority: '0.8',
             changefreq: 'weekly'
@@ -158,7 +154,7 @@ export const generateHuluRomanceMovieSitemapUrls = (baseUrl = 'https://filmiway.
     
     COMPLETE_MOVIE_DATABASE.forEach(movie => {
         urls.push({
-            url: `${baseUrl}/best-romance-movies-on-hulu/${HULU_ROMANCE_MOVIE_SLUGS[movie.imdbID]}`,
+            url: `${baseUrl}/best-sci-fi-movies-on-hulu/${HULU_SCIFI_MOVIE_SLUGS[movie.imdbID]}`,
             lastmod: new Date().toISOString(),
             priority: '0.7',
             changefreq: 'monthly'
@@ -168,13 +164,13 @@ export const generateHuluRomanceMovieSitemapUrls = (baseUrl = 'https://filmiway.
     return urls;
 };
 
-// ✅ VALIDATE HULU ROMANCE MOVIE SLUG
-export const isValidHuluRomanceMovieSlug = (slug) => {
-    return Object.values(HULU_ROMANCE_MOVIE_SLUGS).includes(slug);
+// ✅ VALIDATE HULU SCI-FI MOVIE SLUG
+export const isValidHuluSciFiMovieSlug = (slug) => {
+    return Object.values(HULU_SCIFI_MOVIE_SLUGS).includes(slug);
 };
 
-// ✅ HULU ROMANCE MOVIE SEARCH/FILTER UTILITIES
-export const searchHuluRomanceMovies = (query) => {
+// ✅ HULU SCI-FI MOVIE SEARCH/FILTER UTILITIES
+export const searchHuluSciFiMovies = (query) => {
     const lowercaseQuery = query.toLowerCase();
     
     return COMPLETE_MOVIE_DATABASE
@@ -186,23 +182,23 @@ export const searchHuluRomanceMovies = (query) => {
         )
         .map(movie => ({
             ...movie,
-            slug: HULU_ROMANCE_MOVIE_SLUGS[movie.imdbID]
+            slug: HULU_SCIFI_MOVIE_SLUGS[movie.imdbID]
         }));
 };
 
-export const filterHuluRomanceMoviesByGenre = (genre) => {
+export const filterHuluSciFiMoviesByGenre = (genre) => {
     if (genre === 'All') return COMPLETE_MOVIE_DATABASE;
     
     return COMPLETE_MOVIE_DATABASE
         .filter(movie => movie.genre === genre)
         .map(movie => ({
             ...movie,
-            slug: HULU_ROMANCE_MOVIE_SLUGS[movie.imdbID]
+            slug: HULU_SCIFI_MOVIE_SLUGS[movie.imdbID]
         }));
 };
 
-// ✅ FIXED SORTING - NOW USES REAL DATA
-export const sortHuluRomanceMovies = (movies, sortBy) => {
+// ✅ SORTING UTILITIES
+export const sortHuluSciFiMovies = (movies, sortBy) => {
     const sortedMovies = [...movies];
     
     switch (sortBy) {
@@ -214,10 +210,16 @@ export const sortHuluRomanceMovies = (movies, sortBy) => {
             });
         case 'year':
             return sortedMovies.sort((a, b) => b.year - a.year);
-        case 'emotion': // Replaces adrenaline/classWarfare
+        case 'mind-bend': // ✅ Custom Metric Sort
             return sortedMovies.sort((a, b) => {
-                const scoreA = COMPLETE_MOVIE_DATA[a.tmdbId]?.psychologicalIntensity || 0;
-                const scoreB = COMPLETE_MOVIE_DATA[b.tmdbId]?.psychologicalIntensity || 0;
+                const scoreA = COMPLETE_MOVIE_DATA[a.tmdbId]?.mindBendScore || 0;
+                const scoreB = COMPLETE_MOVIE_DATA[b.tmdbId]?.mindBendScore || 0;
+                return scoreB - scoreA;
+            });
+        case 'visuals': // ✅ Custom Metric Sort
+            return sortedMovies.sort((a, b) => {
+                const scoreA = COMPLETE_MOVIE_DATA[a.tmdbId]?.visualSpectacle || 0;
+                const scoreB = COMPLETE_MOVIE_DATA[b.tmdbId]?.visualSpectacle || 0;
                 return scoreB - scoreA;
             });
         case 'runtime':
@@ -227,8 +229,8 @@ export const sortHuluRomanceMovies = (movies, sortBy) => {
     }
 };
 
-// ✅ GET HULU ROMANCE MOVIE COLLECTION STATS
-export const getHuluRomanceCollectionStats = () => {
+// ✅ GET HULU SCI-FI MOVIE COLLECTION STATS
+export const getHuluSciFiCollectionStats = () => {
     const genres = [...new Set(COMPLETE_MOVIE_DATABASE.map(m => m.genre))];
     const decades = [...new Set(COMPLETE_MOVIE_DATABASE.map(m => Math.floor(m.year / 10) * 10))];
     const yearRange = {
@@ -248,16 +250,16 @@ export const getHuluRomanceCollectionStats = () => {
         averageRuntime: Math.round(
             COMPLETE_MOVIE_DATABASE.reduce((sum, m) => sum + m.runtime, 0) / COMPLETE_MOVIE_DATABASE.length
         ),
-        // ✅ ADDED - AVERAGE EMOTIONAL SCORE
-        averageEmotionalScore: Math.round(
+        // ✅ ADDED - AVERAGE MIND-BEND SCORE
+        averageMindBendScore: Math.round(
             COMPLETE_MOVIE_DATABASE.reduce((sum, m) => {
-                return sum + (COMPLETE_MOVIE_DATA[m.tmdbId]?.psychologicalIntensity || 85);
+                return sum + (COMPLETE_MOVIE_DATA[m.tmdbId]?.mindBendScore || 70);
             }, 0) / COMPLETE_MOVIE_DATABASE.length
         ),
         // ✅ ADDED - AVERAGE RATING
         averageRating: (
             COMPLETE_MOVIE_DATABASE.reduce((sum, m) => {
-                return sum + (COMPLETE_MOVIE_DATA[m.tmdbId]?.rating || 7.5);
+                return sum + (COMPLETE_MOVIE_DATA[m.tmdbId]?.rating || 7.0);
             }, 0) / COMPLETE_MOVIE_DATABASE.length
         ).toFixed(1)
     };
@@ -266,19 +268,19 @@ export const getHuluRomanceCollectionStats = () => {
 // ✅ EXPORT ALL UTILITIES
 export default {
     generateMovieSlug,
-    HULU_ROMANCE_MOVIE_SLUGS,
+    HULU_SCIFI_MOVIE_SLUGS,
     SLUG_TO_IMDB,
     getMovieBySlug,
     getMovieSlug,
-    generateHuluRomanceMoviePaths,
-    getHuluRomanceMovieBreadcrumbs,
-    getHuluRomanceMovieNavigation,
-    getRelatedHuluRomanceMovies,
-    HULU_ROMANCE_COLLECTION_META,
-    generateHuluRomanceMovieSitemapUrls,
-    isValidHuluRomanceMovieSlug,
-    searchHuluRomanceMovies,
-    filterHuluRomanceMoviesByGenre,
-    sortHuluRomanceMovies,
-    getHuluRomanceCollectionStats
+    generateHuluSciFiMoviePaths,
+    getHuluSciFiMovieBreadcrumbs,
+    getHuluSciFiMovieNavigation,
+    getRelatedHuluSciFiMovies,
+    HULU_SCIFI_COLLECTION_META,
+    generateHuluSciFiMovieSitemapUrls,
+    isValidHuluSciFiMovieSlug,
+    searchHuluSciFiMovies,
+    filterHuluSciFiMoviesByGenre,
+    sortHuluSciFiMovies,
+    getHuluSciFiCollectionStats
 };

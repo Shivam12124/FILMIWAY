@@ -105,6 +105,32 @@ const CollectionsHub = () => {
             hasSubCollections: false
         },
 
+
+{
+            id: 'hulu-scifi',
+            title: 'Best Sci-Fi Movies on Hulu',
+            description: 'Mind-bending sci-fi films ranked by conceptual complexity and visual spectacle',
+            icon: Brain, // Or 'Atom' / 'Sparkles' if you prefer
+            gradient: 'from-cyan-500 to-blue-600',
+            movieCount: '10',
+            rating: '8.3',
+            directLink: '/collection/best-sci-fi-movies-on-hulu',
+            hasSubCollections: false
+        },
+
+
+{
+            id: 'hulu-thriller',
+            title: 'Best Thriller Movies on Hulu',
+            description: 'Intense suspense films ranked by tension, pacing, and psychological impact',
+            icon: Eye, // Or 'Zap' / 'AlertTriangle' if you prefer
+            gradient: 'from-red-600 to-rose-700',
+            movieCount: '10',
+            rating: '7.8',
+            directLink: '/collection/best-thriller-movies-hulu',
+            hasSubCollections: false
+        },
+
         {
             id: 'oldboy',
             title: 'Movies Like Oldboy',

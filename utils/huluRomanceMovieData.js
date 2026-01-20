@@ -106,7 +106,29 @@ const createMovieData = (data) => ({
 });
 
 export const COMPLETE_MOVIE_DATA = {
-    // 1. Anora
+   
+   
+      // 1. All of Us Strangers
+    994108: createMovieData({ 
+        romanticIntensity: 100, 
+        complexityLevel: "MASTERPIECE", 
+        dominantColor: "#6366f1", rating: 7.7, criticsScore: 96, audienceScore: 91, director: "Andrew Haigh", 
+        cast: ["Andrew Scott", "Paul Mescal"], boxOffice: "$19 million", budget: "$15 million", 
+        dna: { "Fantasy": 30, "Romance": 40, "Drama": 30 },
+        scenes: [
+            { time: 15, intensity: 50, label: "The Fire Alarm", color: "#6366f1" },
+            { time: 40, intensity: 75, label: "Meeting Parents", color: "#818cf8" },
+            { time: 65, intensity: 90, label: "Club Night", color: "#4f46e5" },
+            { time: 90, intensity: 98, label: "The Diner Truth", color: "#3730a3" },
+            { time: 100, intensity: 100, label: "Power of Love", color: "#312e81" }
+        ],
+        synopsis: "A screenwriter drawn back to his childhood home enters a fledgling relationship with a mysterious neighbor while discovering his parents appear to be living there, just as they were when they died 30 years ago.",
+        themes: ["Grief", "Memory", "Queer Love"]
+    }),
+   
+   
+   
+    // 2. Anora
     1064213: createMovieData({ 
         romanticIntensity: 98, 
         complexityLevel: "PALME D'OR", 
@@ -124,23 +146,7 @@ export const COMPLETE_MOVIE_DATA = {
         themes: ["Class Divide", "Fantasy vs Reality", "Chaotic Love"]
     }),
 
-    // 2. All of Us Strangers
-    994108: createMovieData({ 
-        romanticIntensity: 100, 
-        complexityLevel: "MASTERPIECE", 
-        dominantColor: "#6366f1", rating: 7.7, criticsScore: 96, audienceScore: 91, director: "Andrew Haigh", 
-        cast: ["Andrew Scott", "Paul Mescal"], boxOffice: "$19 million", budget: "$15 million", 
-        dna: { "Fantasy": 30, "Romance": 40, "Drama": 30 },
-        scenes: [
-            { time: 15, intensity: 50, label: "The Fire Alarm", color: "#6366f1" },
-            { time: 40, intensity: 75, label: "Meeting Parents", color: "#818cf8" },
-            { time: 65, intensity: 90, label: "Club Night", color: "#4f46e5" },
-            { time: 90, intensity: 98, label: "The Diner Truth", color: "#3730a3" },
-            { time: 100, intensity: 100, label: "Power of Love", color: "#312e81" }
-        ],
-        synopsis: "A screenwriter drawn back to his childhood home enters a fledgling relationship with a mysterious neighbor while discovering his parents appear to be living there, just as they were when they died 30 years ago.",
-        themes: ["Grief", "Memory", "Queer Love"]
-    }),
+ 
 
     // 3. And Then We Danced
     572916: createMovieData({ 

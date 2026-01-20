@@ -23,7 +23,8 @@ import { COMPLETE_MOVIE_DATABASE as HULU_ACTION_DATABASE, COMPLETE_MOVIE_DATA as
 import { COMPLETE_MOVIE_DATABASE as HULU_ROMANCE_DATABASE, COMPLETE_MOVIE_DATA as HULU_ROMANCE_DATA } from '../../utils/huluRomanceMovieData';
 import { COMPLETE_MOVIE_DATABASE as HULU_HORROR_DATABASE, COMPLETE_MOVIE_DATA as HULU_HORROR_DATA } from '../../utils/huluHorrorMovieData';
 import { COMPLETE_MOVIE_DATABASE as HULU_COMEDY_DATABASE, COMPLETE_MOVIE_DATA as HULU_COMEDY_DATA } from '../../utils/huluComedyMovieData';
-
+import { COMPLETE_MOVIE_DATABASE as HULU_SCIFI_DATABASE, COMPLETE_MOVIE_DATA as HULU_SCIFI_DATA } from '../../utils/huluSciFiMovieData';
+import { COMPLETE_MOVIE_DATABASE as HULU_THRILLER_DATABASE, COMPLETE_MOVIE_DATA as HULU_THRILLER_DATA } from '../../utils/huluThrillerMovieData';
 import { COMPLETE_MOVIE_DATABASE, COMPLETE_MOVIE_DATA } from '../../utils/movieData';
 
 // ✅ FIXED IMPORTS: Aliasing COMPLETE_MOVIE_DATABASE to old variable names
@@ -313,6 +314,56 @@ const getCollectionContent = () => {
                 text2: "Each film has been selected for its ability to improve your mood instantly—offering laughs that have stood the test of time and culture."
             }
         };
+
+
+} else if (collection.slug === 'best-sci-fi-movies-on-hulu') {
+    return {
+        badge: "Mind-Expanding Sci-Fi",
+        title: "Best Sci-Fi Movies on Hulu",
+        description: "The most visionary sci-fi films streaming on Hulu. From time-travel paradoxes to alien invasions & dystopian futures that challenge reality.",
+        selection: {
+            text1: "From the mind-bending loops of 'Donnie Darko' to the primal survival of 'Prey'—these films represent the most ambitious and visually stunning science fiction available on Hulu.",
+            text2: "Each selection features high-concept storytelling, groundbreaking visuals, and philosophical questions about humanity's future, technology, and place in the universe."
+        },
+        ranking: {
+            text: "Our mind-bend index evaluates conceptual complexity, visual spectacle, and the depth of the sci-fi themes explored throughout each film.",
+            points: [
+                "Conceptual complexity score",
+                "Visual spectacle & world-building",
+                "Narrative innovation level",
+                "Philosophical depth impact"
+            ]
+        },
+        experience: {
+            text1: "Whether you're seeking intellectual challenges or breathtaking alien worlds, this collection delivers cinema's most imaginative visions of the future.",
+            text2: "Each film has been selected for its ability to provoke thought and wonder—offering glimpses into realities that feel both impossible and terrifyingly plausible."
+        }
+    };
+
+
+    } else if (collection.slug === 'best-thriller-movies-hulu') {
+    return {
+        badge: "Edge-of-Seat Thrillers",
+        title: "Best Thriller Movies on Hulu",
+        description: "The most suspenseful thrillers streaming on Hulu. From high-stakes heists to psychological nightmares & courtroom tension.",
+        selection: {
+            text1: "From the tactical perfection of 'Heat' to the psychological descent of 'Black Swan'—these films represent the pinnacle of tension and suspense available on Hulu.",
+            text2: "Each selection features masterclass direction, unforgettable performances, and plots that tighten the screws until the very last frame."
+        },
+        ranking: {
+            text: "Our suspense intensity index evaluates pacing, psychological pressure, and the visceral impact of tension throughout each film.",
+            points: [
+                "Suspense intensity score",
+                "Psychological pressure depth",
+                "Narrative pacing quality",
+                "Visceral impact factor"
+            ]
+        },
+        experience: {
+            text1: "Whether you're seeking intellectual puzzles or heart-pounding action, this collection delivers cinema's most gripping experiences.",
+            text2: "Each film has been selected for its ability to keep you on the edge of your seat—offering twists and tension that demand your full attention."
+        }
+    };
 
 
     } else if (collection.slug === 'movies-like-black-swan') {
@@ -856,6 +907,18 @@ const getHeaderContent = () => {
         };
 
 
+} else if (collection.slug === 'best-sci-fi-movies-on-hulu') {
+    return {
+        title: "Best Sci-Fi Movies on Hulu: 10 Visionary Films",
+        subtitle: "Time travel paradoxes, alien invasions & dystopian futures that challenge reality"
+    };
+
+    } else if (collection.slug === 'best-thriller-movies-hulu') {
+    return {
+        title: "10 Best Thriller Movies on Hulu",
+        subtitle: "Ranked by Suspense, Tension & Psychological Impact"
+    };
+
 } else if (collection.slug === 'movies-like-donnie-darko') {
     return {
         title: "Movies Like Donnie Darko: 10 Reality-Warping Films",
@@ -1019,6 +1082,19 @@ const getLoaderContent = () => {
             title: "Loading Best Comedy Movies on Hulu",
             description: "Curating hilarious comedy films with laughter scores and community reviews"
         };
+
+} else if (collection?.slug === 'best-sci-fi-movies-on-hulu') {
+    return {
+        title: "Loading Best Sci-Fi Movies on Hulu",
+        description: "Curating mind-bending sci-fi films with visual spectacle scores and community reviews"
+    };
+
+
+} else if (collection?.slug === 'best-thriller-movies-hulu') {
+    return {
+        title: "Loading Best Thriller Movies on Hulu",
+        description: "Curating intense suspense thrillers with tension scores and community reviews"
+    };
 
 
     } else if (collection?.slug === 'movies-like-parasite') { 
@@ -1203,6 +1279,28 @@ const getStaticMetaContent = () => {
             twitterTitle: "😂 10 Funniest Movies on Hulu (Superbad, Borat)",
             progressText: `of Top ${movies.length} Comedy Movies on Hulu`
         };
+
+
+} else if (collection.slug === 'best-sci-fi-movies-on-hulu') {
+    return {
+        title: "Best Sci-Fi Movies on Hulu: 10 Visionary Films",
+        description: "10 best sci-fi movies streaming on Hulu. Featuring Donnie Darko, Prey & The Abyss. Ranked by mind-bend score & visual spectacle. Includes sensitive content timestamps.",
+        keywords: "best sci-fi movies on hulu, hulu sci-fi films, donnie darko, predator, sci-fi streaming, sensitive content timestamps",
+        ogTitle: "10 Best Sci-Fi Movies on Hulu: Visionary & Mind-Bending 🛸",
+        twitterTitle: "🛸 10 Best Sci-Fi Movies on Hulu (Donnie Darko, Prey)",
+        progressText: `of Top ${movies.length} Sci-Fi Movies on Hulu`
+    };
+
+} else if (collection.slug === 'best-thriller-movies-hulu') {
+    return {
+        title: "10 Best Thriller Movies on Hulu: Ranked by Suspense",
+        description: "10 best thriller movies streaming on Hulu. Featuring Heat, Black Swan & Anatomy of a Fall. Ranked by suspense intensity & psychological impact. Includes sensitive content timestamps.",
+        keywords: "best thriller movies on hulu, hulu thrillers, suspense films, heat, black swan, anatomy of a fall, thriller streaming, sensitive content timestamps",
+        ogTitle: "10 Best Thriller Movies on Hulu: Suspense & Tension 🔴",
+        twitterTitle: "🔴 10 Best Thriller Movies on Hulu (Heat, Black Swan)",
+        progressText: `of Top ${movies.length} Thriller Movies on Hulu`
+    };
+
 
     } else if (collection.slug === 'movies-like-black-swan') {
         return {
@@ -1438,6 +1536,8 @@ const getStaticMetaContent = () => {
             sessionStorage.removeItem('fromHuluActionCollection');
             sessionStorage.removeItem('fromHuluHorrorCollection');
             sessionStorage.removeItem('fromHuluComedyCollection');
+            sessionStorage.removeItem('fromHuluSciFiCollection');
+            sessionStorage.removeItem('fromHuluThrillerCollection');
             sessionStorage.removeItem('fromEyesWideShutCollection');
             sessionStorage.removeItem('fromDonnieDarkoCollection');
             sessionStorage.removeItem('fromBlackSwanCollection');
@@ -1474,6 +1574,10 @@ const getStaticMetaContent = () => {
                 sessionStorage.setItem('fromHuluHorrorCollection', 'true');
                 } else if (collection.slug === 'best-comedy-movies-on-hulu') {
                 sessionStorage.setItem('fromHuluComedyCollection', 'true');
+} else if (collection.slug === 'best-sci-fi-movies-on-hulu') {
+    sessionStorage.setItem('fromHuluSciFiCollection', 'true');
+    } else if (collection.slug === 'best-thriller-movies-hulu') {
+    sessionStorage.setItem('fromHuluThrillerCollection', 'true');
             } else if (collection.slug === 'movies-like-parasite') { 
                 sessionStorage.setItem('fromParasiteCollection', 'true');
          } else if (collection.slug === 'movies-like-oldboy') {
@@ -1946,6 +2050,10 @@ return (
                                  ? 'movies/best-horror-movies-on-hulu/'
 : collection?.slug === 'best-comedy-movies-on-hulu'
                                    ? 'movies/best-comedy-movies-on-hulu/'
+                                   : collection?.slug === 'best-sci-fi-movies-on-hulu'
+? 'movies/best-sci-fi-movies-on-hulu/'
+: collection?.slug === 'best-thriller-movies-hulu'
+? 'movies/best-thriller-movies-hulu/'
                                     : collection?.slug === 'movies-like-interstellar'
                                     ? 'movies/interstellar/'
                                     : collection?.slug === 'movies-like-memento'
@@ -2102,6 +2210,10 @@ return (
       ? `/movies/best-horror-movies-on-hulu/${currentMovie.imdbID}`
       : collection.slug === 'best-comedy-movies-on-hulu'
       ? `/movies/best-comedy-movies-on-hulu/${currentMovie.imdbID}`
+      : collection.slug === 'best-sci-fi-movies-on-hulu'
+? `/movies/best-sci-fi-movies-on-hulu/${currentMovie.imdbID}`
+: collection.slug === 'best-thriller-movies-hulu'
+? `/movies/best-thriller-movies-hulu/${currentMovie.imdbID}`
       : collection.slug === 'movies-like-interstellar'
       ? `/movies/interstellar/${currentMovie.imdbID}`
       : collection.slug === 'movies-like-memento'
@@ -2194,6 +2306,10 @@ return (
                                             detailPageUrl = `/movies/best-horror-movies-on-hulu/${currentMovie.imdbID}`;
                                         } else if (collection.slug === 'best-comedy-movies-on-hulu') {
                                             detailPageUrl = `/movies/best-comedy-movies-on-hulu/${currentMovie.imdbID}`;
+                                            } else if (collection.slug === 'best-sci-fi-movies-on-hulu') {
+    detailPageUrl = `/movies/best-sci-fi-movies-on-hulu/${currentMovie.imdbID}`;
+    } else if (collection.slug === 'best-thriller-movies-hulu') {
+    detailPageUrl = `/movies/best-thriller-movies-hulu/${currentMovie.imdbID}`;
                                         } else if (collection.slug === 'movies-like-interstellar') {
                                             detailPageUrl = `/movies/interstellar/${currentMovie.imdbID}`;
                                         } else if (collection.slug === 'movies-like-memento') {
@@ -2421,6 +2537,15 @@ case 'best-horror-movies-on-hulu':
             case 'best-comedy-movies-on-hulu':
             movieDatabase = HULU_COMEDY_DATABASE;
             break;
+
+case 'best-sci-fi-movies-on-hulu':
+    movieDatabase = HULU_SCIFI_DATABASE;
+    break;
+
+
+    case 'best-thriller-movies-hulu':
+    movieDatabase = HULU_THRILLER_DATABASE;
+    break;
 
         case 'movies-like-interstellar':
             movieDatabase = INTERSTELLAR_DATABASE;
