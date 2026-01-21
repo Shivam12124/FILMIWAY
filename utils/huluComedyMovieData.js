@@ -87,195 +87,204 @@ const createMovieData = (data) => ({
     dominantColor: "#FACC15",   // Comedy Yellow
     ...data,
 });
-
 export const COMPLETE_MOVIE_DATA = {
     // 1. Superbad (TEEN CHAOS PEAK)
-    // Peak: 88 (Social pressure/Humiliation). Starts low.
+    // Curve: Desperation -> Failure -> Escalation -> Explosion -> Acceptance.
+    // Peak: 95 (The Cop Car Ride - Absolute Chaos).
     8363: createMovieData({ 
         laughterIndex: 90, 
         complexityLevel: "LEGENDARY", 
         dominantColor: "#ef4444", rating: 7.6, criticsScore: 88, audienceScore: 87, director: "Greg Mottola", 
-        cast: ["Jonah Hill", "Michael Cera"], boxOffice: "$170 million", budget: "$20 million", 
+        cast: ["Jonah Hill", "Michael Cera", "Christopher Mintz-Plasse"], boxOffice: "$170 million", budget: "$20 million", 
         dna: { "Comedy": 70, "Coming of Age": 30 },
         scenes: [
-            { time: 10, intensity: 20, label: "The Plan", color: "#facc15" },
-            { time: 40, intensity: 55, label: "McLovin ID", color: "#ef4444" },
-            { time: 70, intensity: 65, label: "The Party", color: "#f97316" },
-            { time: 90, intensity: 88, label: "The Fight", color: "#dc2626" }, // Chaos Peak
-            { time: 110, intensity: 50, label: "Escalator", color: "#eab308" }
+            { time: 10, intensity: 20, label: "The Plan", color: "#facc15" }, // Setup
+            { time: 40, intensity: 55, label: "McLovin ID", color: "#ef4444" }, // Tension/Laughs
+            { time: 70, intensity: 75, label: "The Party", color: "#f97316" }, // Chaos building
+            { time: 90, intensity: 95, label: "Cop Car Ride", color: "#dc2626" }, // PEAK CHAOS
+            { time: 110, intensity: 50, label: "Escalator", color: "#eab308" } // Sweet resolution
         ],
-        synopsis: "The definitive teen comedy of the 2000s. Two co-dependent high school seniors are forced to deal with separation anxiety as their quest to get alcohol for a party goes hilariously wrong.",
+        synopsis: "Two co-dependent high school seniors, Seth and Evan, are forced to deal with separation anxiety as they prepare to go to different colleges. In a desperate bid to be cool and lose their virginity before graduation, they volunteer to supply alcohol for a massive party. Their quest goes hilariously wrong involving two bored cops, a fake ID named 'McLovin', and a night that spirals into absolute absurdity.",
         themes: ["Friendship", "Growing Up", "Partying"]
     }),
 
     // 2. O Brother, Where Art Thou? (ADVENTURE PEAK)
-    // Peak: 85 (Musical triumph). Gentle waves.
+    // Curve: Escape -> Music -> Obstacle -> Triumph -> Salvation.
+    // Peak: 88 (Man of Constant Sorrow - Musical Triumph).
     13389: createMovieData({ 
         laughterIndex: 88, 
         complexityLevel: "MASTERPIECE", 
         dominantColor: "#ca8a04", rating: 7.7, criticsScore: 79, audienceScore: 89, director: "Joel Coen", 
-        cast: ["George Clooney", "John Turturro"], boxOffice: "$71 million", budget: "$26 million", 
+        cast: ["George Clooney", "John Turturro", "Tim Blake Nelson"], boxOffice: "$71 million", budget: "$26 million", 
         dna: { "Comedy": 50, "Adventure": 30, "Music": 20 },
         scenes: [
-            { time: 15, intensity: 25, label: "Chain Gang Escape", color: "#a16207" },
-            { time: 45, intensity: 55, label: "We Thought You Was A Toad", color: "#ca8a04" },
+            { time: 15, intensity: 25, label: "Chain Gang Escape", color: "#a16207" }, // Setup
+            { time: 45, intensity: 55, label: "The Recording", color: "#ca8a04" }, // Joy
             { time: 70, intensity: 40, label: "The Sirens", color: "#d97706" }, // Lull
-            { time: 90, intensity: 85, label: "Man of Constant Sorrow", color: "#b45309" }, // Triumphant Peak
-            { time: 100, intensity: 60, label: "The Flood", color: "#854d0e" }
+            { time: 90, intensity: 88, label: "Concert Hall", color: "#b45309" }, // PEAK TRIUMPH
+            { time: 100, intensity: 65, label: "The Flood", color: "#854d0e" } // Resolution
         ],
-        synopsis: "In the deep south during the 1930s, three escaped convicts search for hidden treasure while a relentless lawman pursues them. A visually stunning, hilariously quoted adaptation of The Odyssey.",
+        synopsis: "In the deep south during the 1930s, three escaped convicts search for hidden treasure while a relentless lawman pursues them. Loosely based on Homer's 'Odyssey,' the trio encounters a series of bizarre characters—including a blind prophet, bank robber George Nelson, and a KKK rally—while inadvertently becoming bluegrass sensations. A visually stunning, hilariously quoted masterpiece of Americana.",
         themes: ["Redemption", "Folk Music", "Americana"]
     }),
 
     // 3. Borat (GENRE-DEFINING CHAOS)
-    // The ONLY film allowed to touch 96. Extreme discomfort.
+    // Curve: Culture Clash -> Offense -> Discomfort -> Extreme Shock -> Resolution.
+    // Peak: 98 (The Hotel Fight - Extreme Discomfort).
     3779: createMovieData({ 
         laughterIndex: 98, 
         complexityLevel: "CHAOTIC", 
         dominantColor: "#fcd34d", rating: 7.4, criticsScore: 91, audienceScore: 79, director: "Larry Charles", 
-        cast: ["Sacha Baron Cohen"], boxOffice: "$262 million", budget: "$18 million", 
+        cast: ["Sacha Baron Cohen", "Ken Davitian", "Luenell"], boxOffice: "$262 million", budget: "$18 million", 
         dna: { "Satire": 60, "Mockumentary": 40 },
         scenes: [
-            { time: 10, intensity: 30, label: "New York", color: "#facc15" },
-            { time: 40, intensity: 96, label: "The Hotel Fight", color: "#ef4444" }, // EXTREME PEAK
-            { time: 60, intensity: 75, label: "The Rodeo", color: "#f97316" },
-            { time: 75, intensity: 88, label: "Pamela", color: "#dc2626" }, // Crisis
-            { time: 80, intensity: 40, label: "Homecoming", color: "#fbbf24" }
+            { time: 10, intensity: 30, label: "Arrival in NY", color: "#facc15" }, // Setup
+            { time: 40, intensity: 98, label: "The Hotel Fight", color: "#ef4444" }, // PEAK SHOCK
+            { time: 60, intensity: 75, label: "The Rodeo", color: "#f97316" }, // High tension
+            { time: 75, intensity: 85, label: "Pamela Anderson", color: "#dc2626" }, // Crisis
+            { time: 80, intensity: 40, label: "Homecoming", color: "#fbbf24" } // Resolution
         ],
-        synopsis: "Kazakh TV talking head Borat is dispatched to the United States to report on the greatest country in the world. Unscripted chaos that exposed the prejudices and absurdities of modern America.",
+        synopsis: "Kazakh TV talking head Borat Sagdiyev is dispatched to the United States to report on the 'greatest country in the world.' However, he becomes more interested in locating and marrying Pamela Anderson. As he travels across the country, his unscripted interactions with real Americans expose deep-seated prejudices, absurdities, and the shocking underbelly of polite society in a way that is both hilarious and terrifying.",
         themes: ["Culture Clash", "Satire", "Prejudice"]
     }),
 
     // 4. Bullet Train (ACTION COMEDY)
-    // Peak: 85 (Spectacle). High baseline tension.
+    // Curve: Mission -> Complication -> Chaos -> Spectacle -> Aftermath.
+    // Peak: 90 (The Train Crash - Visual Spectacle).
     718930: createMovieData({ 
         laughterIndex: 85, 
         complexityLevel: "ACTION-PACKED", 
         dominantColor: "#ec4899", rating: 7.3, criticsScore: 54, audienceScore: 76, director: "David Leitch", 
-        cast: ["Brad Pitt", "Joey King"], boxOffice: "$239 million", budget: "$90 million", 
+        cast: ["Brad Pitt", "Joey King", "Aaron Taylor-Johnson"], boxOffice: "$239 million", budget: "$90 million", 
         dna: { "Action": 50, "Comedy": 50 },
         scenes: [
-            { time: 20, intensity: 35, label: "The Briefcase", color: "#db2777" },
-            { time: 50, intensity: 65, label: "Quiet Car Fight", color: "#be123c" },
-            { time: 80, intensity: 55, label: "Snake on a Train", color: "#9d174d" },
-            { time: 110, intensity: 85, label: "The Crash", color: "#831843" }, // Spectacle Peak
-            { time: 120, intensity: 50, label: "Lemon", color: "#f472b6" }
+            { time: 20, intensity: 35, label: "The Briefcase", color: "#db2777" }, // Setup
+            { time: 50, intensity: 65, label: "Quiet Car Fight", color: "#be123c" }, // Action/Comedy
+            { time: 80, intensity: 55, label: "The Elder Arrives", color: "#9d174d" }, // Plot Twist
+            { time: 110, intensity: 90, label: "The Crash", color: "#831843" }, // PEAK SPECTACLE
+            { time: 120, intensity: 50, label: "Lemon's Truck", color: "#f472b6" } // Punchline
         ],
-        synopsis: "Five assassins aboard a fast moving bullet train find out their missions have something in common. Stylish, fast-paced, and hilarious violence from the director of Deadpool 2.",
+        synopsis: "Ladybug is an unlucky assassin determined to do his job peacefully after one too many gigs gone off the rails. Fate, however, has other plans, as his latest mission puts him on a collision course with lethal adversaries from around the globe—all with connected, yet conflicting, objectives—on the world's fastest train. It is a stylish, neon-soaked ride of kinetic action and dry humor.",
         themes: ["Fate", "Luck", "Assassins"]
     }),
 
     // 5. Palm Springs (SCI-FI ROM-COM)
-    // Peak: 82 (High stakes escape). Smart, structured curve.
+    // Curve: Resignation -> Discovery -> Fun -> Despair -> Hope.
+    // Peak: 88 (The Bridge Scene - Emotional Crisis).
     587792: createMovieData({ 
         laughterIndex: 88, 
         complexityLevel: "SMART", 
         dominantColor: "#34d399", rating: 7.4, criticsScore: 94, audienceScore: 88, director: "Max Barbakow", 
-        cast: ["Andy Samberg", "Cristin Milioti"], boxOffice: "Streaming", budget: "$5 million", 
+        cast: ["Andy Samberg", "Cristin Milioti", "J.K. Simmons"], boxOffice: "Streaming", budget: "$5 million", 
         dna: { "Sci-Fi": 40, "Romance": 30, "Comedy": 30 },
         scenes: [
-            { time: 15, intensity: 20, label: "The Cave", color: "#10b981" },
-            { time: 40, intensity: 45, label: "Waking Up", color: "#059669" },
-            { time: 60, intensity: 65, label: "Montage", color: "#047857" }, // Fun Peak
-            { time: 80, intensity: 75, label: "The Realization", color: "#065f46" },
-            { time: 85, intensity: 82, label: "The Escape", color: "#34d399" } // Stakes Peak
+            { time: 15, intensity: 25, label: "The Cave", color: "#10b981" }, // Setup
+            { time: 40, intensity: 50, label: "Waking Up", color: "#059669" }, // Realization
+            { time: 60, intensity: 75, label: "Montage of Chaos", color: "#047857" }, // Fun
+            { time: 80, intensity: 88, label: "The Bridge", color: "#065f46" }, // PEAK EMOTION
+            { time: 85, intensity: 82, label: "The Escape", color: "#34d399" } // Resolution
         ],
-        synopsis: "When Nyles and Sarah get stuck in a time loop at a Palm Springs wedding, they must live the same day over and over again. A fresh, existential take on the Groundhog Day formula.",
+        synopsis: "When carefree Nyles and reluctant maid of honor Sarah have a chance encounter at a Palm Springs wedding, things get complicated as they are unable to escape the venue, themselves, or each other. Trapped in an infinite time loop, they must navigate the absurdity of living the same day forever, eventually facing the terrifying choice between the safety of infinite nothingness and the risk of a future together.",
         themes: ["Existentialism", "Love", "Time Loops"]
     }),
 
     // 6. Super Troopers (STONER / LOW STAKES)
-    // Peak: 68. Just funny, not intense.
+    // Curve: Prank -> Rivalry -> Screw Up -> Redemption -> Chaos.
+    // Peak: 75 (The Drug Bust - Narrative Climax).
     39939: createMovieData({ 
         laughterIndex: 75, 
         complexityLevel: "CULT CLASSIC", 
         dominantColor: "#1d4ed8", rating: 7.0, criticsScore: 36, audienceScore: 90, director: "Jay Chandrasekhar", 
-        cast: ["Broken Lizard"], boxOffice: "$23 million", budget: "$1.2 million", 
+        cast: ["Jay Chandrasekhar", "Kevin Heffernan", "Steve Lemme"], boxOffice: "$23 million", budget: "$1.2 million", 
         dna: { "Comedy": 80, "Crime": 20 },
         scenes: [
-            { time: 5, intensity: 40, label: "The Opening Stop", color: "#2563eb" },
-            { time: 30, intensity: 55, label: "Meow Game", color: "#1d4ed8" },
-            { time: 50, intensity: 50, label: "Syrup Chug", color: "#1e40af" },
-            { time: 80, intensity: 65, label: "Farva's Shenanigans", color: "#1e3a8a" },
-            { time: 95, intensity: 68, label: "The Bust", color: "#3b82f6" } // Narrativ Peak
+            { time: 5, intensity: 40, label: "The Opening Stop", color: "#2563eb" }, // Setup
+            { time: 30, intensity: 55, label: "Meow Game", color: "#1d4ed8" }, // Classic Bit
+            { time: 50, intensity: 50, label: "Syrup Chug", color: "#1e40af" }, // Gross out
+            { time: 80, intensity: 60, label: "Farva's Shenanigans", color: "#1e3a8a" }, // Conflict
+            { time: 95, intensity: 75, label: "The Bust", color: "#3b82f6" } // PEAK NARRATIVE
         ],
-        synopsis: "Five Vermont state troopers, avid pranksters with a knack for screwing up, try to save their jobs and outdo the local police department by solving a crime. Highly quotable stoner comedy.",
+        synopsis: "Five Vermont state troopers, avid pranksters with a knack for screwing up, try to save their jobs and outdo the local police department by solving a crime. As budget cuts threaten to shut down their station, the troopers must pause their endless games of 'Meow' and syrup chugging to actually do some police work. A highly quotable cult classic.",
         themes: ["Pranks", "Police", "Rivalry"]
     }),
 
     // 7. Twinless (DARK BUDDY COMEDY)
-    // Peak: 75 (Narrative Twist).
+    // Curve: Grief -> Meeting -> Bonding -> Shock -> Acceptance.
+    // Peak: 78 (The Twist - Narrative Shift).
     1105822: createMovieData({ 
         laughterIndex: 80, 
         complexityLevel: "FRESH", 
         dominantColor: "#8b5cf6", rating: 7.0, criticsScore: 85, audienceScore: 80, director: "James Griffiths", 
-        cast: ["Dylan O'Brien", "James Sweeney"], boxOffice: "N/A", budget: "N/A", 
+        cast: ["Dylan O'Brien", "James Sweeney", "Lauren Lapkus"], boxOffice: "N/A", budget: "N/A", 
         dna: { "Comedy": 60, "Drama": 40 },
         scenes: [
-            { time: 10, intensity: 15, label: "The Loss", color: "#a78bfa" },
-            { time: 40, intensity: 35, label: "Support Group", color: "#8b5cf6" },
-            { time: 60, intensity: 50, label: "Bonding", color: "#7c3aed" },
-            { time: 80, intensity: 75, label: "The Twist", color: "#6d28d9" }, // Story Peak
-            { time: 90, intensity: 60, label: "Acceptance", color: "#5b21b6" }
+            { time: 10, intensity: 20, label: "The Loss", color: "#a78bfa" }, // Setup/Sadness
+            { time: 40, intensity: 45, label: "Support Group", color: "#8b5cf6" }, // Awkwardness
+            { time: 60, intensity: 65, label: "Bonding", color: "#7c3aed" }, // Connection
+            { time: 80, intensity: 78, label: "The Twist", color: "#6d28d9" }, // PEAK STORY
+            { time: 90, intensity: 60, label: "Acceptance", color: "#5b21b6" } // Resolution
         ],
-        synopsis: "Two young men form an unlikely bromance after meeting in a support group for twinless twins. A dark, funny, and surprisingly sweet exploration of grief and identity.",
+        synopsis: "Two young men form an unlikely bromance after meeting in a support group for twinless twins. As they navigate the tricky waters of grief and identity, their relationship takes a dark, unexpected turn that challenges their sanity. A fresh, offbeat comedy that manages to be both hilariously weird and surprisingly touching about the process of healing.",
         themes: ["Grief", "Bromance", "Identity"]
     }),
 
     // 8. Big (NOSTALGIC / WARM)
-    // Peak: 65. Comfort movie curve.
+    // Curve: Wish -> Fear -> Wonder -> Success -> Goodbye.
+    // Peak: 85 (The Giant Piano - Pure Joy).
     2280: createMovieData({ 
         laughterIndex: 75, 
         complexityLevel: "NOSTALGIC", 
         dominantColor: "#3b82f6", rating: 7.3, criticsScore: 98, audienceScore: 89, director: "Penny Marshall", 
-        cast: ["Tom Hanks", "Elizabeth Perkins"], boxOffice: "$151 million", budget: "$18 million", 
+        cast: ["Tom Hanks", "Elizabeth Perkins", "Robert Loggia"], boxOffice: "$151 million", budget: "$18 million", 
         dna: { "Comedy": 50, "Fantasy": 30, "Romance": 20 },
         scenes: [
-            { time: 15, intensity: 25, label: "Zoltar", color: "#60a5fa" },
-            { time: 40, intensity: 60, label: "Giant Piano", color: "#3b82f6" }, // Joy Peak
-            { time: 60, intensity: 45, label: "The Loft", color: "#2563eb" },
-            { time: 85, intensity: 55, label: "Business Pitch", color: "#1d4ed8" },
-            { time: 100, intensity: 65, label: "Going Home", color: "#1e40af" } // Emotional Peak
+            { time: 15, intensity: 25, label: "Zoltar Speaks", color: "#60a5fa" }, // Setup
+            { time: 40, intensity: 85, label: "Giant Piano", color: "#3b82f6" }, // PEAK JOY
+            { time: 60, intensity: 50, label: "The Loft", color: "#2563eb" }, // Fun
+            { time: 85, intensity: 65, label: "Business Pitch", color: "#1d4ed8" }, // Success
+            { time: 100, intensity: 70, label: "Going Home", color: "#1e40af" } // Emotional
         ],
-        synopsis: "After wishing to be made big, a teenage boy wakes up the next morning to find himself mysteriously in the body of an adult. A heartwarming classic that features Tom Hanks at his most charming.",
+        synopsis: "After wishing to be made big, a teenage boy wakes up the next morning to find himself mysteriously in the body of an adult. He heads to New York City, gets a job at a toy company, and falls in love, all while trying to hide the fact that he's actually a 12-year-old kid. A heartwarming classic that features Tom Hanks at his most charming.",
         themes: ["Childhood", "Innocence", "Corporate Life"]
     }),
 
     // 9. Theater Camp (MOCKUMENTARY / CRINGE)
-    // Peak: 78 (Chaos/The Show).
+    // Curve: Crisis -> Auditions -> Chaos -> Performance -> Triumph.
+    // Peak: 82 (The Show - Controlled Chaos).
     1002315: createMovieData({ 
         laughterIndex: 82, 
         complexityLevel: "MOCKUMENTARY", 
         dominantColor: "#f43f5e", rating: 7.0, criticsScore: 86, audienceScore: 80, director: "Molly Gordon", 
-        cast: ["Ben Platt", "Molly Gordon"], boxOffice: "$4 million", budget: "N/A", 
+        cast: ["Ben Platt", "Molly Gordon", "Noah Galvin"], boxOffice: "$4 million", budget: "N/A", 
         dna: { "Comedy": 80, "Musical": 20 },
         scenes: [
-            { time: 10, intensity: 30, label: "Auditions", color: "#fb7185" },
-            { time: 40, intensity: 50, label: "Rehearsal Chaos", color: "#f43f5e" },
-            { time: 70, intensity: 45, label: "Crypto Bro", color: "#e11d48" },
-            { time: 85, intensity: 70, label: "Opening Night", color: "#be123c" },
-            { time: 90, intensity: 78, label: "The Show", color: "#9f1239" } // Performance Peak
+            { time: 10, intensity: 30, label: "Joan Coma", color: "#fb7185" }, // Setup
+            { time: 30, intensity: 50, label: "Auditions", color: "#f43f5e" }, // Cringe
+            { time: 70, intensity: 60, label: "Rehearsal Hell", color: "#e11d48" }, // Stress
+            { time: 85, intensity: 75, label: "Crypto Bro", color: "#be123c" }, // Conflict
+            { time: 90, intensity: 82, label: "The Show", color: "#9f1239" } // PEAK PERFORMANCE
         ],
-        synopsis: "The eccentric staff of a rundown theater camp in upstate New York must band together with the beloved founder's crypto-bro son to keep the camp afloat. A hilarious mockumentary for theater kids everywhere.",
+        synopsis: "The eccentric staff of a rundown theater camp in upstate New York must band together with the beloved founder's crypto-bro son to keep the camp afloat. With the founder in a coma, the counselors have three weeks to stage a masterpiece to save their summer sanctuary. A hilarious, heartfelt mockumentary that perfectly captures the intensity of theater kids.",
         themes: ["Theater", "Passion", "Saving the Arts"]
     }),
 
     // 10. Idiocracy (SATIRE / FRUSTRATION)
-    // Peak: 65. Satirical consistency.
+    // Curve: Experiment -> Awakening -> Arrest -> Trial -> Resolution.
+    // Peak: 80 (The Monster Truck Rally - Peak Stupidity).
     2045: createMovieData({ 
         laughterIndex: 80, 
         complexityLevel: "SATIRE", 
         dominantColor: "#eab308", rating: 6.5, criticsScore: 71, audienceScore: 60, director: "Mike Judge", 
-        cast: ["Luke Wilson", "Maya Rudolph"], boxOffice: "$0.5 million", budget: "$2 million", 
+        cast: ["Luke Wilson", "Maya Rudolph", "Dax Shepard"], boxOffice: "$0.5 million", budget: "$2 million", 
         dna: { "Sci-Fi": 40, "Comedy": 60 },
         scenes: [
-            { time: 10, intensity: 15, label: "Hibernation", color: "#facc15" },
-            { time: 30, intensity: 40, label: "Welcome to Costco", color: "#eab308" },
-            { time: 50, intensity: 65, label: "It Has Electrolytes", color: "#ca8a04" }, // Satire Peak
-            { time: 75, intensity: 60, label: "The Trial", color: "#a16207" },
-            { time: 80, intensity: 55, label: "President Camacho", color: "#854d0e" }
+            { time: 10, intensity: 15, label: "Hibernation", color: "#facc15" }, // Setup
+            { time: 30, intensity: 45, label: "Welcome to Costco", color: "#eab308" }, // World building
+            { time: 50, intensity: 70, label: "Electrolytes", color: "#ca8a04" }, // Frustration
+            { time: 75, intensity: 80, label: "Rehabilitation", color: "#a16207" }, // PEAK SATIRE
+            { time: 80, intensity: 65, label: "President Camacho", color: "#854d0e" } // Resolution
         ],
-        synopsis: "Private Joe Bauers is selected for a hibernation experiment but wakes up 500 years in the future to find he is the smartest man alive in a society that has dumbed down significantly. A cult classic satire that feels more like a documentary every year.",
+        synopsis: "Private Joe Bauers, the definition of an average American, is selected for a hibernation experiment but wakes up 500 years in the future to find he is the smartest man alive in a society that has dumbed down significantly. Surrounded by a population that waters crops with sports drinks and elects pro wrestlers, Joe must save the world from its own stupidity. A cult classic satire that feels more like a documentary every year.",
         themes: ["Dystopia", "Commercialism", "Intelligence"]
     })
 };

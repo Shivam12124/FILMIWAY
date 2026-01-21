@@ -286,7 +286,7 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
 
     "genre": data?.dna ? Object.keys(data.dna) : ["Romance", "Drama"],
     "keywords": "Romance Movies Hulu, Best Romance Films, " + (data?.themes ? data.themes.join(", ") : ""),
-    "url": `https://filmiway.com/collection/best-romance-movies-on-hulu/${movie.imdbID}`,
+    "url": `https://filmiway.com/movies/best-romance-movies-on-hulu/${movie.imdbID}`,
     "author": {
       "@type": "Organization",
       "name": "Filmiway",

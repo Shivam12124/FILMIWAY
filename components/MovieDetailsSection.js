@@ -317,7 +317,7 @@ const MovieDetailsSection = React.memo(({
 
  // ✅ DYNAMIC SCORE VALUE SELECTION
  const scoreValue = fromHuluThrillerCollection ? movie.suspenseIntensity ?? safeMovieInfo.suspenseIntensity ?? 0 // ✅ Thriller uses Suspense
-   : fromHuluSciFiCollection ? movie.mindBendScore ?? safeMovieInfo.mindBendScore ?? 0 
+   : fromHuluSciFiCollection ? movie.visualSpectacle ?? safeMovieInfo.visualSpectacle ?? 0 
    : fromHuluComedyCollection ? movie.laughterIndex ?? safeMovieInfo.laughterIndex ?? 0 
    : fromHuluHorrorCollection ? movie.scariness ?? safeMovieInfo.scariness ?? 0 
    : fromHuluRomanceCollection ? movie.romanticIntensity ?? safeMovieInfo.romanticIntensity ?? 0 
@@ -434,7 +434,7 @@ const MovieDetailsSection = React.memo(({
 
  const getComplexityScoreTitle = () => {
    if (fromHuluThrillerCollection) return 'SUSPENSE SCORE'; // ✅ Added
-   if (fromHuluSciFiCollection) return 'MIND-BEND SCORE'; 
+   if (fromHuluSciFiCollection) return 'VISUAL SPECTACLE SCORE'; 
    if (fromHuluComedyCollection) return 'LAUGHTER SCORE'; 
    if (fromHuluHorrorCollection) return 'DREAD SCORE'; 
    if (fromHuluRomanceCollection) return 'EMOTIONAL RESONANCE';
@@ -461,7 +461,7 @@ const MovieDetailsSection = React.memo(({
 
  const getComplexityIndexLabel = () => {
    if (fromHuluThrillerCollection) return 'TENSION INDEX'; // ✅ Added
-   if (fromHuluSciFiCollection) return 'MIND-BENDING INDEX'; 
+   if (fromHuluSciFiCollection) return 'VISUAL SPECTACLE INDEX'; 
    if (fromHuluComedyCollection) return 'HILARITY INDEX'; 
    if (fromHuluHorrorCollection) return 'DREAD INDEX'; 
    if (fromHuluRomanceCollection) return 'EMOTION INDEX';
@@ -488,7 +488,7 @@ const MovieDetailsSection = React.memo(({
 
  const getComplexityLevelLabel = () => {
    if (fromHuluThrillerCollection) return 'THRILL LEVEL'; // ✅ Added
-   if (fromHuluSciFiCollection) return 'MIND-BEND LEVEL'; 
+   if (fromHuluSciFiCollection) return 'VISUAL SPECTACLE LEVEL'; 
    if (fromHuluComedyCollection) return 'CHAOS LEVEL';
    if (fromHuluHorrorCollection) return 'SCARINESS LEVEL'; 
    if (fromHuluRomanceCollection) return 'ROMANCE TIER';

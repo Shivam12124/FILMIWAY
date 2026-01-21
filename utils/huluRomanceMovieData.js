@@ -106,193 +106,206 @@ const createMovieData = (data) => ({
 });
 
 export const COMPLETE_MOVIE_DATA = {
-   
-   
-      // 1. All of Us Strangers
+    // 1. All of Us Strangers
+    // Curve: Isolation -> Tentative Hope -> Surreal Joy -> Devastating Truth -> Transcendence.
+    // Peak: 98 (The Diner Truth - Existential Grief).
     994108: createMovieData({ 
         romanticIntensity: 100, 
         complexityLevel: "MASTERPIECE", 
         dominantColor: "#6366f1", rating: 7.7, criticsScore: 96, audienceScore: 91, director: "Andrew Haigh", 
-        cast: ["Andrew Scott", "Paul Mescal"], boxOffice: "$19 million", budget: "$15 million", 
+        cast: ["Andrew Scott", "Paul Mescal", "Jamie Bell"], boxOffice: "$19 million", budget: "$15 million", 
         dna: { "Fantasy": 30, "Romance": 40, "Drama": 30 },
         scenes: [
-            { time: 15, intensity: 50, label: "The Fire Alarm", color: "#6366f1" },
-            { time: 40, intensity: 75, label: "Meeting Parents", color: "#818cf8" },
-            { time: 65, intensity: 90, label: "Club Night", color: "#4f46e5" },
-            { time: 90, intensity: 98, label: "The Diner Truth", color: "#3730a3" },
-            { time: 100, intensity: 100, label: "Power of Love", color: "#312e81" }
+            { time: 10, intensity: 20, label: "The Fire Alarm", color: "#6366f1" }, // Setup/Isolation
+            { time: 40, intensity: 55, label: "Meeting Parents", color: "#818cf8" }, // Emotional Build
+            { time: 65, intensity: 80, label: "Club Night", color: "#4f46e5" }, // Intimacy
+            { time: 90, intensity: 98, label: "The Diner Truth", color: "#3730a3" }, // PEAK DEVASTATION
+            { time: 100, intensity: 85, label: "Power of Love", color: "#312e81" } // Transcendent Ending
         ],
-        synopsis: "A screenwriter drawn back to his childhood home enters a fledgling relationship with a mysterious neighbor while discovering his parents appear to be living there, just as they were when they died 30 years ago.",
+        synopsis: "Adam, a solitary screenwriter living in a near-empty London tower block, has a chance encounter with his mysterious neighbor Harry that punctures the rhythm of his everyday life. As a relationship develops between them, Adam is preoccupied with memories of the past and finds himself drawn back to his childhood home, where his parents appear to be living just as they were on the day they died, 30 years ago. It is a haunting, metaphysical exploration of grief, queer identity, and the healing power of love.",
         themes: ["Grief", "Memory", "Queer Love"]
     }),
-   
-   
-   
+
     // 2. Anora
+    // Curve: Fun -> Manic Energy -> Chaos -> Crisis -> Quiet Devastation.
+    // Peak: 95 (The Living Room Standoff - Chaotic Stress).
     1064213: createMovieData({ 
         romanticIntensity: 98, 
         complexityLevel: "PALME D'OR", 
         dominantColor: "#f43f5e", rating: 7.9, criticsScore: 97, audienceScore: 85, director: "Sean Baker", 
-        cast: ["Mikey Madison", "Mark Eydelshteyn"], boxOffice: "$10 million", budget: "$6 million", 
+        cast: ["Mikey Madison", "Mark Eydelshteyn", "Yura Borisov"], boxOffice: "$10 million", budget: "$6 million", 
         dna: { "Romance": 40, "Comedy": 40, "Drama": 20 },
         scenes: [
-            { time: 10, intensity: 60, label: "The Club Meet", color: "#db2777" },
-            { time: 45, intensity: 85, label: "Vegas Wedding", color: "#f43f5e" },
-            { time: 80, intensity: 95, label: "The Parents Arrive", color: "#9f1239" },
-            { time: 110, intensity: 90, label: "The Chaos", color: "#881337" },
-            { time: 135, intensity: 88, label: "Quiet Breakdown", color: "#be123c" }
+            { time: 10, intensity: 25, label: "The Club Meet", color: "#db2777" }, // Setup
+            { time: 45, intensity: 70, label: "Vegas Wedding", color: "#f43f5e" }, // High Energy
+            { time: 80, intensity: 95, label: "The Standoff", color: "#9f1239" }, // PEAK CHAOS
+            { time: 110, intensity: 85, label: "The Search", color: "#881337" }, // Desperation
+            { time: 135, intensity: 65, label: "Quiet Breakdown", color: "#be123c" } // Emotional Resolution
         ],
-        synopsis: "A sex worker from Brooklyn marries the son of a Russian oligarch in a whirlwind romance that turns into a chaotic nightmare when his parents fly in to annul the marriage. Pure adrenaline and heart.",
+        synopsis: "Anora, a young sex worker from Brooklyn, gets her chance at a Cinderella story when she meets and impulsively marries the son of a Russian oligarch. But once the news reaches Russia, her fairytale is threatened as his parents set out for New York to get the marriage annulled. What follows is a high-energy, chaotic odyssey across the city that blends screwball comedy with heartbreaking realism about class, transactional relationships, and the fantasy of escape.",
         themes: ["Class Divide", "Fantasy vs Reality", "Chaotic Love"]
     }),
 
- 
-
     // 3. And Then We Danced
+    // Curve: Routine -> Spark -> Tension -> Explosion -> Freedom.
+    // Peak: 92 (The Final Dance - Defiant Passion).
     572916: createMovieData({ 
         romanticIntensity: 92, 
         complexityLevel: "HIGH", 
         dominantColor: "#ea580c", rating: 7.6, criticsScore: 93, audienceScore: 94, director: "Levan Akin", 
-        cast: ["Levan Gelbakhiani", "Bachi Valishvili"], boxOffice: "$1.2 million", budget: "N/A", 
+        cast: ["Levan Gelbakhiani", "Bachi Valishvili", "Ana Javakishvili"], boxOffice: "$1.2 million", budget: "N/A", 
         dna: { "Drama": 50, "Romance": 30, "Dance": 20 },
         scenes: [
-            { time: 20, intensity: 45, label: "Training", color: "#ea580c" },
-            { time: 50, intensity: 80, label: "The Wedding", color: "#f97316" },
-            { time: 75, intensity: 95, label: "First Touch", color: "#c2410c" },
-            { time: 95, intensity: 85, label: "The Injury", color: "#9a3412" },
-            { time: 110, intensity: 98, label: "Final Dance", color: "#ea580c" }
+            { time: 15, intensity: 20, label: "Training", color: "#ea580c" }, // Setup
+            { time: 50, intensity: 60, label: "The Wedding", color: "#f97316" }, // Attraction
+            { time: 75, intensity: 85, label: "First Touch", color: "#c2410c" }, // Intimacy
+            { time: 95, intensity: 75, label: "The Injury", color: "#9a3412" }, // Crisis
+            { time: 110, intensity: 92, label: "Final Dance", color: "#ea580c" } // PEAK CATHARSIS
         ],
-        synopsis: "Merab has been training from a young age at the National Georgian Ensemble with his dance partner Mary. His world turns upside down when the charismatic and carefree Irakli arrives.",
+        synopsis: "Merab has been training from a young age at the National Georgian Ensemble with his dance partner Mary, immersed in the conservative and rigid world of traditional Georgian dance. His world turns upside down when the charismatic and carefree Irakli arrives, becoming both his strongest rival and his deepest desire. Set against a backdrop of tradition, this is a visceral and tender coming-of-age story about finding your own rhythm in a culture that demands conformity.",
         themes: ["Tradition vs Desire", "Self-Discovery", "Passion"]
     }),
 
     // 4. Brooklyn
+    // Curve: Homesickness -> Warmth -> Conflict -> Decision -> Resolution.
+    // Peak: 85 (The Choice - Emotional Dilemma).
     167073: createMovieData({ 
         romanticIntensity: 85, 
         complexityLevel: "PURE", 
         dominantColor: "#0ea5e9", rating: 7.5, criticsScore: 97, audienceScore: 88, director: "John Crowley", 
-        cast: ["Saoirse Ronan", "Emory Cohen"], boxOffice: "$62 million", budget: "$11 million", 
+        cast: ["Saoirse Ronan", "Emory Cohen", "Domhnall Gleeson"], boxOffice: "$62 million", budget: "$11 million", 
         dna: { "Romance": 60, "History": 20, "Drama": 20 },
         scenes: [
-            { time: 15, intensity: 40, label: "Leaving Home", color: "#0ea5e9" },
-            { time: 45, intensity: 75, label: "Meeting Tony", color: "#38bdf8" },
-            { time: 70, intensity: 60, label: "Tragedy Strikes", color: "#0369a1" },
-            { time: 90, intensity: 85, label: "The Choice", color: "#0284c7" },
-            { time: 105, intensity: 95, label: "The Return", color: "#0ea5e9" }
+            { time: 15, intensity: 30, label: "Leaving Home", color: "#0ea5e9" }, // Setup/Sadness
+            { time: 45, intensity: 55, label: "Meeting Tony", color: "#38bdf8" }, // Romance blooms
+            { time: 75, intensity: 65, label: "Tragedy Strikes", color: "#0369a1" }, // Conflict
+            { time: 95, intensity: 85, label: "The Choice", color: "#0284c7" }, // PEAK CONFLICT
+            { time: 105, intensity: 60, label: "The Return", color: "#0ea5e9" } // Resolution
         ],
-        synopsis: "An Irish immigrant lands in 1950s Brooklyn, where she quickly falls into a romance with a local. When her past catches up with her, she must choose between two countries and the lives that exist within.",
+        synopsis: "In the 1950s, Eilis Lacey leaves her small Irish town for a new life in Brooklyn, New York. Struggling with terrible homesickness, she eventually finds her footing and falls for a sweet Italian-American plumber named Tony. But when a family tragedy pulls her back to Ireland, she finds herself drawn into a different life with a different man, forcing her to make a heart-wrenching choice between two countries and two futures.",
         themes: ["Home", "Immigration", "Choice"]
     }),
 
     // 5. Little Manhattan
+    // Curve: Innocence -> First Crush -> Joy -> Heartbreak -> Growth.
+    // Peak: 88 (The Breakup - First Heartbreak).
     14368: createMovieData({ 
         romanticIntensity: 80, 
         complexityLevel: "NOSTALGIC", 
         dominantColor: "#facc15", rating: 7.5, criticsScore: 77, audienceScore: 89, director: "Mark Levin", 
-        cast: ["Josh Hutcherson", "Charlie Ray"], boxOffice: "$1.1 million", budget: "N/A", 
+        cast: ["Josh Hutcherson", "Charlie Ray", "Bradley Whitford"], boxOffice: "$1.1 million", budget: "N/A", 
         dna: { "Family": 40, "Romance": 40, "Comedy": 20 },
         scenes: [
-            { time: 10, intensity: 30, label: "Karate Class", color: "#facc15" },
-            { time: 40, intensity: 60, label: "First Date", color: "#eab308" },
-            { time: 65, intensity: 85, label: "Holding Hands", color: "#ca8a04" },
-            { time: 80, intensity: 70, label: "The Breakup", color: "#a16207" },
-            { time: 88, intensity: 90, label: "Growing Up", color: "#facc15" }
+            { time: 10, intensity: 20, label: "Karate Class", color: "#facc15" }, // Setup
+            { time: 40, intensity: 50, label: "First Date", color: "#eab308" }, // Joy
+            { time: 65, intensity: 75, label: "Holding Hands", color: "#ca8a04" }, // High Point
+            { time: 80, intensity: 88, label: "The Breakup", color: "#a16207" }, // PEAK PAIN
+            { time: 88, intensity: 60, label: "Growing Up", color: "#facc15" } // Acceptance
         ],
-        synopsis: "New York City is the setting for this romantic comedy about two 10-year-olds who fall in love for the first time. A massive nostalgia trip that punches way above its weight.",
+        synopsis: "Gabe is a 10-year-old boy in New York City who finds himself confronting the terrifying and confusing world of first love when he falls for his karate classmate, Rosemary. Narrated with the precocious wisdom of a child trying to understand adult emotions, the film captures the pure, unadulterated intensity of a first crush—the soaring highs, the crushing lows, and the realization that girls aren't actually made of cooties.",
         themes: ["First Love", "Childhood", "NYC"]
     }),
 
     // 6. Palm Springs
+    // Curve: Boredom -> Fun -> Despair -> Conflict -> Leap of Faith.
+    // Peak: 90 (The Quantum Leap - High Stakes).
     587792: createMovieData({ 
         romanticIntensity: 88, 
         complexityLevel: "CLEVER", 
         dominantColor: "#10b981", rating: 7.4, criticsScore: 94, audienceScore: 89, director: "Max Barbakow", 
-        cast: ["Andy Samberg", "Cristin Milioti"], boxOffice: "Streaming", budget: "$5 million", 
+        cast: ["Andy Samberg", "Cristin Milioti", "J.K. Simmons"], boxOffice: "Streaming", budget: "$5 million", 
         dna: { "Comedy": 40, "Sci-Fi": 30, "Romance": 30 },
         scenes: [
-            { time: 10, intensity: 50, label: "The Cave", color: "#10b981" },
-            { time: 35, intensity: 70, label: "Infinite Loop", color: "#34d399" },
-            { time: 60, intensity: 85, label: "Camping", color: "#059669" },
-            { time: 75, intensity: 60, label: "The Fight", color: "#047857" },
-            { time: 85, intensity: 95, label: "Quantum Leap", color: "#10b981" }
+            { time: 10, intensity: 25, label: "The Cave", color: "#10b981" }, // Setup
+            { time: 35, intensity: 60, label: "Infinite Loop", color: "#34d399" }, // Fun/Bonding
+            { time: 65, intensity: 75, label: "Camping Night", color: "#059669" }, // Intimacy
+            { time: 80, intensity: 85, label: "The Fight", color: "#047857" }, // Conflict
+            { time: 90, intensity: 90, label: "Quantum Leap", color: "#10b981" } // PEAK STAKES
         ],
-        synopsis: "When Nyles and Sarah have a chance encounter at a Palm Springs wedding, things get complicated as they are unable to escape the venue, themselves, or each other. Groundhog Day for the modern cynic.",
+        synopsis: "When carefree Nyles and reluctant maid of honor Sarah have a chance encounter at a Palm Springs wedding, things get complicated as they are unable to escape the venue, themselves, or each other. Trapped in a time loop, they must navigate the absurdity of living the same day forever, eventually facing the terrifying choice between the safety of infinite nothingness and the risk of a future together.",
         themes: ["Existentialism", "Commitment", "Time Loops"]
     }),
 
     // 7. Rye Lane
+    // Curve: Awkward -> Bonding -> Fun -> Misunderstanding -> Grand Gesture.
+    // Peak: 85 (The Boat Scene - Emotional Reveal).
     866463: createMovieData({ 
         romanticIntensity: 82, 
         complexityLevel: "FRESH", 
         dominantColor: "#ec4899", rating: 7.2, criticsScore: 98, audienceScore: 85, director: "Raine Allen-Miller", 
-        cast: ["David Jonsson", "Vivian Oparah"], boxOffice: "$1.2 million", budget: "N/A", 
+        cast: ["David Jonsson", "Vivian Oparah", "Alice Hewkin"], boxOffice: "$1.2 million", budget: "N/A", 
         dna: { "Comedy": 50, "Romance": 50 },
         scenes: [
-            { time: 10, intensity: 40, label: "The Toilet Meet", color: "#ec4899" },
-            { time: 35, intensity: 70, label: "South London Walk", color: "#f472b6" },
-            { time: 55, intensity: 80, label: "Karaoke", color: "#db2777" },
-            { time: 70, intensity: 65, label: "The Exes", color: "#be123c" },
-            { time: 80, intensity: 90, label: "The Grand Gesture", color: "#ec4899" }
+            { time: 10, intensity: 20, label: "The Toilet Meet", color: "#ec4899" }, // Setup
+            { time: 35, intensity: 50, label: "South London Walk", color: "#f472b6" }, // Bonding
+            { time: 60, intensity: 75, label: "Karaoke", color: "#db2777" }, // Connection
+            { time: 75, intensity: 85, label: "The Exes", color: "#be123c" }, // PEAK CONFLICT
+            { time: 85, intensity: 80, label: "Grand Gesture", color: "#ec4899" } // Resolution
         ],
-        synopsis: "Two twenty-somethings, both reeling from bad break-ups, connect over the course of an eventful day in South London. Visually stunning, colorful, and incredibly fresh.",
+        synopsis: "Dom and Yas, two twenty-somethings both reeling from messy break-ups, connect over the course of an eventful day in South London. What starts as a chance encounter in a gender-neutral toilet turns into a colorful, fast-paced adventure through Peckham and Brixton, as they help each other confront their exes and rediscover their own self-worth. Visually stunning, vibrant, and incredibly fresh.",
         themes: ["Modern Dating", "Healing", "London"]
     }),
 
     // 8. Crazy Heart
+    // Curve: Despair -> Hope -> Intimacy -> Relapse -> Redemption.
+    // Peak: 90 (Rock Bottom - Emotional Collapse).
     24428: createMovieData({ 
         romanticIntensity: 90, 
         complexityLevel: "OSCAR", 
         dominantColor: "#b45309", rating: 7.0, criticsScore: 90, audienceScore: 80, director: "Scott Cooper", 
-        cast: ["Jeff Bridges", "Maggie Gyllenhaal"], boxOffice: "$47 million", budget: "$7 million", 
+        cast: ["Jeff Bridges", "Maggie Gyllenhaal", "Colin Farrell"], boxOffice: "$47 million", budget: "$7 million", 
         dna: { "Drama": 50, "Music": 30, "Romance": 20 },
         scenes: [
-            { time: 15, intensity: 50, label: "The Tour", color: "#b45309" },
-            { time: 40, intensity: 75, label: "Falling in Love", color: "#d97706" },
-            { time: 70, intensity: 90, label: "The Relapse", color: "#92400e" },
-            { time: 95, intensity: 85, label: "Clean Sober", color: "#78350f" },
-            { time: 110, intensity: 80, label: "The Song", color: "#b45309" }
+            { time: 15, intensity: 30, label: "The Tour", color: "#b45309" }, // Setup
+            { time: 40, intensity: 60, label: "Falling in Love", color: "#d97706" }, // Hope
+            { time: 70, intensity: 80, label: "The Relapse", color: "#92400e" }, // Tension
+            { time: 95, intensity: 90, label: "Rock Bottom", color: "#78350f" }, // PEAK CRISIS
+            { time: 110, intensity: 65, label: "The Song", color: "#b45309" } // Redemption
         ],
-        synopsis: "A faded country music musician is forced to reassess his dysfunctional life during a doomed romance that also inspires him. Jeff Bridges won Best Actor for this prestige drama.",
+        synopsis: "Bad Blake is a broken-down, hard-living country music singer who has had way too many marriages, far too many years on the road, and one too many drinks. However, Bad finds salvation with Jean, a journalist who discovers the real man behind the musician. But as Bad struggles down the road of redemption, he learns how hard it is to keep his demons from derailing his last chance at love and a comeback.",
         themes: ["Redemption", "Addiction", "Music"]
     }),
 
     // 9. Good Luck to You, Leo Grande
+    // Curve: Nervousness -> Conversation -> Vulnerability -> Confrontation -> Self-Acceptance.
+    // Peak: 88 (The Mirror - Self-Love Climax).
     800366: createMovieData({ 
         romanticIntensity: 85, 
         complexityLevel: "INTIMATE", 
         dominantColor: "#f59e0b", rating: 7.2, criticsScore: 93, audienceScore: 85, director: "Sophie Hyde", 
-        cast: ["Emma Thompson", "Daryl McCormack"], boxOffice: "$14 million", budget: "$4 million", 
+        cast: ["Emma Thompson", "Daryl McCormack", "Isabella Laughland"], boxOffice: "$14 million", budget: "$4 million", 
         dna: { "Comedy": 40, "Drama": 40, "Romance": 20 },
         scenes: [
-            { time: 10, intensity: 40, label: "The Hotel Room", color: "#f59e0b" },
-            { time: 30, intensity: 60, label: "Awkward Talk", color: "#fbbf24" },
-            { time: 55, intensity: 75, label: "Breaking Barriers", color: "#d97706" },
-            { time: 80, intensity: 90, label: "True Intimacy", color: "#b45309" },
-            { time: 95, intensity: 95, label: "The Mirror", color: "#f59e0b" }
+            { time: 10, intensity: 30, label: "The Hotel Room", color: "#f59e0b" }, // Setup
+            { time: 35, intensity: 55, label: "Awkward Talk", color: "#fbbf24" }, // Breaking Ice
+            { time: 60, intensity: 75, label: "Breaking Barriers", color: "#d97706" }, // Intimacy
+            { time: 80, intensity: 85, label: "The Argument", color: "#b45309" }, // Conflict
+            { time: 95, intensity: 88, label: "The Mirror", color: "#f59e0b" } // PEAK ACCEPTANCE
         ],
-        synopsis: "Nancy Stokes, a retired school teacher and widow, is yearning for some adventure, some human connection, and some sex. Brave, honest, and stripped back.",
+        synopsis: "Nancy Stokes, a retired school teacher and widow, is yearning for some adventure, some human connection, and some sex. Good sex. For the first time in her life. She hires a young sex worker named Leo Grande for a night of bliss. What ensues is a funny, tender, and surprisingly moving series of meetings where masks begin to slip and two strangers find an unexpected connection that changes how they view themselves.",
         themes: ["Body Positivity", "Sex Work", "Self-Love"]
     }),
 
     // 10. 13 Going on 30
+    // Curve: Wish -> Wonder -> Success -> Regret -> Correction.
+    // Peak: 85 (The Realization - Emotional Turning Point).
     10096: createMovieData({ 
         romanticIntensity: 70, 
         complexityLevel: "COMFORT", 
         dominantColor: "#db2777", rating: 6.3, criticsScore: 65, audienceScore: 78, director: "Gary Winick", 
-        cast: ["Jennifer Garner", "Mark Ruffalo"], boxOffice: "$96 million", budget: "$37 million", 
+        cast: ["Jennifer Garner", "Mark Ruffalo", "Judy Greer"], boxOffice: "$96 million", budget: "$37 million", 
         dna: { "Comedy": 50, "Fantasy": 25, "Romance": 25 },
         scenes: [
-            { time: 10, intensity: 40, label: "The Closet Game", color: "#db2777" },
-            { time: 25, intensity: 60, label: "Waking Up 30", color: "#ec4899" },
-            { time: 60, intensity: 90, label: "Thriller Dance", color: "#f472b6" },
-            { time: 85, intensity: 85, label: "Razzles", color: "#db2777" },
-            { time: 95, intensity: 95, label: "Second Chance", color: "#be123c" }
+            { time: 10, intensity: 20, label: "The Closet Game", color: "#db2777" }, // Setup
+            { time: 30, intensity: 50, label: "Waking Up 30", color: "#ec4899" }, // Fun
+            { time: 60, intensity: 70, label: "Thriller Dance", color: "#f472b6" }, // Joy
+            { time: 85, intensity: 85, label: "The Realization", color: "#be123c" }, // PEAK REGRET
+            { time: 95, intensity: 65, label: "Second Chance", color: "#db2777" } // Resolution
         ],
-        synopsis: "A girl makes a wish on her 13th birthday, wakes up the next day as a 30-year-old woman, and discovers that her life isn't quite what she expected. The ultimate comfort watch.",
+        synopsis: "Jenna Rink, a socially awkward 13-year-old girl who is frustrated with her uncool life, makes a wish on her birthday to be '30, flirty, and thriving.' She wakes up the next day as a successful 30-year-old magazine editor in New York City. But as she navigates her adult life, she discovers that having it all might mean she lost the one thing—and the one person—that mattered most. The ultimate comfort watch about staying true to yourself.",
         themes: ["Nostalgia", "Growth", "Second Chances"]
     })
 };
-
 export const STRATEGIC_QUOTES = {
     1064213: "I'm not a hooker, I'm an escort.",
     994108: "I've always been lonely. That's why I'm here.",

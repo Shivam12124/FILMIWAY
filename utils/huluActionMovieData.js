@@ -108,202 +108,222 @@ const createMovieData = (data) => ({
 
 export const COMPLETE_MOVIE_DATA = {
     // 1. Predator (THE CLASSIC)
+    // Curve: Insertion -> Discovery -> The Trap -> Primal Duel -> Explosion.
+    // Peak: 95 (Self Destruct - Survival Climax).
     106: createMovieData({ 
         adrenalineScore: 88, 
         violenceLevel: 85, 
         visceralImpact: 98, 
         complexityLevel: "LEGENDARY", 
         dominantColor: "#166534", rating: 8.5, criticsScore: 82, audienceScore: 87, director: "John McTiernan", 
-        cast: ["Arnold Schwarzenegger", "Carl Weathers"], boxOffice: "$98.3 million", budget: "$15 million", 
+        cast: ["Arnold Schwarzenegger", "Carl Weathers", "Jesse Ventura"], boxOffice: "$98.3 million", budget: "$15 million", 
         dna: { "Action": 40, "Sci-Fi": 30, "Horror": 30 }, 
         scenes: [
-            { time: 10, intensity: 30, label: "The Insertion", color: "#166534" },
-            { time: 35, intensity: 60, label: "Something's Watching", color: "#65a30d" },
-            { time: 55, intensity: 85, label: "Old Painless", color: "#ef4444" }, 
-            { time: 80, intensity: 90, label: "Get to the Choppa", color: "#b91c1c" },
-            { time: 95, intensity: 98, label: "Dutch vs Predator", color: "#f59e0b" }
+            { time: 10, intensity: 20, label: "The Insertion", color: "#166534" }, // Setup
+            { time: 35, intensity: 50, label: "Something's Watching", color: "#65a30d" }, // Unease
+            { time: 55, intensity: 85, label: "Old Painless", color: "#ef4444" }, // Firepower
+            { time: 90, intensity: 90, label: "Mud Camouflage", color: "#3f6212" }, // Strategy
+            { time: 95, intensity: 95, label: "Self Destruct", color: "#f59e0b" } // PEAK SURVIVAL
         ],
-        synopsis: "A team of commandos on a mission in a Central American jungle find themselves hunted by an extraterrestrial warrior. The ultimate test of testosterone vs. alien technology.",
+        synopsis: "Dutch, the leader of an elite special forces rescue team, leads his men deep into the Central American jungle on a CIA mission to recover hostages from guerrillas. However, the mission goes horribly sideways when they realize they are being hunted by something not of this world—an invisible, technologically advanced extraterrestrial warrior that hunts humans for sport and honor.",
         themes: ["Survival", "The Hunt", "Man vs Monster"]
     }),
 
     // 2. Ip Man (MARTIAL ARTS PEAK)
+    // Curve: Peace -> Occupation -> Outrage -> Duel -> Escape.
+    // Peak: 92 (I Want 10! - Emotional Explosion).
     14756: createMovieData({ 
         adrenalineScore: 82, 
-        violenceLevel: 60, // Brutal but not gory
+        violenceLevel: 60, 
         visceralImpact: 98, 
         complexityLevel: "HIGH", 
         dominantColor: "#d4d4d8", rating: 8.0, criticsScore: 86, audienceScore: 93, director: "Wilson Yip", 
-        cast: ["Donnie Yen", "Simon Yam"], boxOffice: "$21 million", budget: "$11 million", 
+        cast: ["Donnie Yen", "Simon Yam", "Lynn Hung"], boxOffice: "$21 million", budget: "$11 million", 
         dna: { "Martial Arts": 70, "History": 15, "Drama": 15 },
         scenes: [
-            { time: 15, intensity: 40, label: "Friendly Spar", color: "#d4d4d8" },
-            { time: 40, intensity: 65, label: "Cotton Mill", color: "#52525b" },
-            { time: 60, intensity: 100, label: "I Want 10!", color: "#18181b" }, // Iconic scene
-            { time: 80, intensity: 70, label: "Training Montage", color: "#71717a" },
-            { time: 95, intensity: 90, label: "General Miura", color: "#52525b" }
+            { time: 15, intensity: 30, label: "Friendly Spar", color: "#d4d4d8" }, // Skill display
+            { time: 40, intensity: 65, label: "The Occupation", color: "#52525b" }, // Oppression
+            { time: 60, intensity: 92, label: "I Want 10!", color: "#18181b" }, // PEAK RAGE
+            { time: 80, intensity: 70, label: "Training Montage", color: "#71717a" }, // Focus
+            { time: 95, intensity: 88, label: "General Miura", color: "#52525b" } // Final Duel
         ],
-        synopsis: "During the Japanese invasion of China, a wealthy martial artist is forced to leave his home when his city is occupied. With little means of survival, Ip Man must use his Wing Chun skills to defend his people.",
+        synopsis: "Set during the Sino-Japanese War, the film follows Ip Man, a wealthy and respected martial artist who is forced into destitution when the Japanese army occupies his city. Refusing to bow to oppression, he uses his mastery of Wing Chun to defend his people's dignity, culminating in a legendary challenge against a karate dojo that cemented his status as a folk hero.",
         themes: ["Honor", "Nationalism", "Martial Arts"]
     }),
 
     // 3. Dawn of the Planet of the Apes (WAR SCALE)
+    // Curve: Truce -> Tension -> Betrayal -> Battle -> Standoff.
+    // Peak: 90 (The Attack Begins - War Spectacle).
     119450: createMovieData({ 
         adrenalineScore: 85, 
         violenceLevel: 70, 
         visceralImpact: 92, 
         complexityLevel: "HIGH", 
         dominantColor: "#3f3f46", rating: 7.6, criticsScore: 90, audienceScore: 88, director: "Matt Reeves", 
-        cast: ["Andy Serkis", "Jason Clarke"], boxOffice: "$710 million", budget: "$170 million", 
+        cast: ["Andy Serkis", "Jason Clarke", "Gary Oldman"], boxOffice: "$710 million", budget: "$170 million", 
         dna: { "War": 50, "Sci-Fi": 30, "Drama": 20 },
         scenes: [
-            { time: 15, intensity: 35, label: "The Bear Hunt", color: "#166534" },
-            { time: 45, intensity: 60, label: "Koba's Trick", color: "#71717a" },
-            { time: 70, intensity: 85, label: "The Attack Begins", color: "#ef4444" },
-            { time: 95, intensity: 92, label: "Apes on Horses", color: "#0f172a" },
-            { time: 120, intensity: 88, label: "Caesar vs Koba", color: "#3f3f46" }
+            { time: 15, intensity: 35, label: "The Bear Hunt", color: "#166534" }, // Introduction
+            { time: 45, intensity: 60, label: "Koba's Trick", color: "#71717a" }, // Political Tension
+            { time: 70, intensity: 85, label: "Betrayal", color: "#ef4444" }, // Breaking Point
+            { time: 95, intensity: 90, label: "War Begins", color: "#b91c1c" }, // PEAK BATTLE
+            { time: 120, intensity: 80, label: "Caesar vs Koba", color: "#3f3f46" } // Emotional Climax
         ],
-        synopsis: "A growing nation of genetically evolved apes led by Caesar is threatened by a band of human survivors. The tension breaks into an all-out war featuring apes dual-wielding machine guns on horseback.",
+        synopsis: "Ten years after a deadly virus wiped out most of humanity, a growing nation of genetically evolved apes led by Caesar is living in a fragile peace. When a group of human survivors enters their territory seeking power, a delicate truce is formed but short-lived. Betrayal from within both camps ignites an all-out war that will determine which species will become Earth's dominant power.",
         themes: ["War", "Trust", "Leadership"]
     }),
 
     // 4. Predator: Killer of Killers (ANIMATED EXTREME)
+    // Curve: Landing -> Skirmish -> Slaughter -> Rage -> Death.
+    // Peak: 95 (Honor Death - Visceral Climax).
     1376434: createMovieData({ 
         adrenalineScore: 90, 
-        violenceLevel: 98, // Animated gore allows higher limits
+        violenceLevel: 98, 
         visceralImpact: 85, 
         complexityLevel: "ANIMATED", 
-        dominantColor: "#7f1d1d", rating: 8.0, criticsScore: 85, audienceScore: 88, director: "Unknown", 
-        cast: ["Voice Cast"], boxOffice: "N/A", budget: "N/A", 
+        dominantColor: "#7f1d1d", rating: 7.4, criticsScore: 85, audienceScore: 88, director: "Unknown", 
+        cast: ["Lindsay LaVanchy", "Louis Ozawa", "Rick Gonzalez"], boxOffice: "Streaming", budget: "$50 million",
         dna: { "Action": 50, "Animation": 30, "Horror": 20 },
         scenes: [
-            { time: 5, intensity: 45, label: "The Landing", color: "#1f2937" },
-            { time: 15, intensity: 70, label: "First Blood", color: "#991b1b" },
-            { time: 25, intensity: 85, label: "Vikings vs Beast", color: "#ef4444" },
-            { time: 35, intensity: 90, label: "Berserker Mode", color: "#7f1d1d" },
-            { time: 42, intensity: 95, label: "Honor Death", color: "#b91c1c" }
+            { time: 5, intensity: 40, label: "The Landing", color: "#1f2937" }, // Setup
+            { time: 15, intensity: 70, label: "First Blood", color: "#991b1b" }, // Escalation
+            { time: 25, intensity: 85, label: "Vikings vs Beast", color: "#ef4444" }, // Combat
+            { time: 35, intensity: 90, label: "Berserker Mode", color: "#7f1d1d" }, // Fury
+            { time: 42, intensity: 95, label: "Honor Death", color: "#b91c1c" } // PEAK GORE
         ],
-        synopsis: "An R-rated animated anthology chapter where Viking warriors face the ultimate hunter. Steel meets plasma technology in a brutal clash of eras.",
+        synopsis: "An R-rated animated anthology chapter that pits a group of hardened Viking warriors against the ultimate hunter. As the Predator picks them off one by one using advanced plasma technology against their steel axes, the survivors must embrace a berserker rage to stand a chance. It is a brutal, stylish clash of eras that pushes the boundaries of animated violence.",
         themes: ["History vs Sci-Fi", "Warrior Code", "Survival"]
     }),
 
     // 5. The Equalizer (PRECISION)
+    // Curve: Quiet -> Skill Reveal -> Warning -> Escalation -> Trap.
+    // Peak: 88 (Home Depot Trap - Tactical Mastery).
     156022: createMovieData({ 
-        adrenalineScore: 75, // Calculated pace
-        violenceLevel: 90,   // Brutal finishers
+        adrenalineScore: 75, 
+        violenceLevel: 90, 
         visceralImpact: 88, 
         complexityLevel: "MEDIUM", 
         dominantColor: "#171717", rating: 7.2, criticsScore: 60, audienceScore: 76, director: "Antoine Fuqua", 
-        cast: ["Denzel Washington", "Marton Csokas"], boxOffice: "$192 million", budget: "$55 million", 
+        cast: ["Denzel Washington", "Marton Csokas", "Chloë Grace Moretz"], boxOffice: "$192 million", budget: "$55 million", 
         dna: { "Thriller": 50, "Action": 30, "Crime": 20 },
         scenes: [
-            { time: 20, intensity: 30, label: "Diner Scene", color: "#f59e0b" },
-            { time: 28, intensity: 92, label: "19 Seconds", color: "#ef4444" },
-            { time: 55, intensity: 65, label: "Dirty Cops", color: "#171717" },
-            { time: 80, intensity: 75, label: "Money Train", color: "#0f172a" },
-            { time: 110, intensity: 88, label: "Home Depot Trap", color: "#eab308" }
+            { time: 20, intensity: 30, label: "Diner Scene", color: "#f59e0b" }, // Setup
+            { time: 28, intensity: 85, label: "19 Seconds", color: "#ef4444" }, // Action Spike
+            { time: 55, intensity: 65, label: "Dirty Cops", color: "#171717" }, // Threat
+            { time: 80, intensity: 75, label: "Money Train", color: "#0f172a" }, // Heist
+            { time: 110, intensity: 88, label: "Home Depot Trap", color: "#eab308" } // PEAK TACTICS
         ],
-        synopsis: "A man who believes he has put his mysterious past behind him cannot stand idly by when he meets a young girl under the control of ultra-violent Russian gangsters. Denzel makes hardware stores terrifying.",
+        synopsis: "Robert McCall is a man who believes he has put his mysterious, violent past behind him, dedicating himself to a quiet life. But when he meets Teri, a young girl under the control of ultra-violent Russian gangsters, he cannot stand idly by. Armed with hidden skills and a stopwatch, he comes out of retirement to wage a one-man war against the entire criminal organization.",
         themes: ["Justice", "Vigilantism", "Precision"]
     }),
 
     // 6. Kingsman: The Secret Service (KINETIC)
+    // Curve: Introduction -> Training -> Test -> Massacre -> Celebration.
+    // Peak: 98 (Church Fight - Genre-Defining Chaos).
     207703: createMovieData({ 
         adrenalineScore: 92, 
         violenceLevel: 85, 
         visceralImpact: 95, 
         complexityLevel: "FUN", 
         dominantColor: "#ea580c", rating: 7.7, criticsScore: 75, audienceScore: 84, director: "Matthew Vaughn", 
-        cast: ["Taron Egerton", "Colin Firth"], boxOffice: "$414 million", budget: "$81 million", 
+        cast: ["Taron Egerton", "Colin Firth", "Samuel L. Jackson"], boxOffice: "$414 million", budget: "$81 million", 
         dna: { "Action": 50, "Comedy": 30, "Spy": 20 },
         scenes: [
-            { time: 10, intensity: 50, label: "Manners Maketh Man", color: "#1e3a8a" },
-            { time: 45, intensity: 65, label: "Skydiving Test", color: "#3b82f6" },
-            { time: 80, intensity: 98, label: "Church Fight", color: "#ef4444" }, // Action Peak
-            { time: 95, intensity: 80, label: "Gazelle Fight", color: "#ea580c" },
-            { time: 110, intensity: 90, label: "Exploding Heads", color: "#f97316" }
+            { time: 10, intensity: 50, label: "Manners Maketh Man", color: "#1e3a8a" }, // Style
+            { time: 45, intensity: 65, label: "Skydiving Test", color: "#3b82f6" }, // Tension
+            { time: 80, intensity: 98, label: "Church Fight", color: "#ef4444" }, // PEAK ACTION
+            { time: 95, intensity: 80, label: "Gazelle Fight", color: "#ea580c" }, // Boss Battle
+            { time: 110, intensity: 90, label: "Exploding Heads", color: "#f97316" } // Spectacle
         ],
-        synopsis: "A spy organization recruits a promising street kid into the agency's ultra-competitive training program just as a global threat emerges. Featuring the most viral action scene of the decade.",
+        synopsis: "A super-secret spy organization recruits an unrefined but promising street kid into the agency's ultra-competitive training program just as a global threat emerges from a twisted tech genius. Mixing classic James Bond tropes with hyper-violent, stylized action, it features one of the most famous single-take fight sequences in cinema history set inside a hate group's church.",
         themes: ["Class Warfare", "Spy Satire", "Gentleman Spy"]
     }),
 
     // 7. Unstoppable (PURE ADRENALINE)
+    // Curve: Mistake -> Realization -> Failure -> Risk -> Success.
+    // Peak: 96 (The Stanton Curve - High Stakes Physics).
     44048: createMovieData({ 
-        adrenalineScore: 98, // Non-stop tension
-        violenceLevel: 20,   // Low violence, high danger
-        visceralImpact: 90,  // Practical stunts
+        adrenalineScore: 98, 
+        violenceLevel: 20, 
+        visceralImpact: 90, 
         complexityLevel: "DIRECT", 
         dominantColor: "#dc2626", rating: 6.8, criticsScore: 87, audienceScore: 72, director: "Tony Scott", 
-        cast: ["Denzel Washington", "Chris Pine"], boxOffice: "$167 million", budget: "$100 million", 
+        cast: ["Denzel Washington", "Chris Pine", "Rosario Dawson"], boxOffice: "$167 million", budget: "$100 million", 
         dna: { "Thriller": 80, "Action": 20 },
         scenes: [
-            { time: 10, intensity: 45, label: "The Mistake", color: "#fca5a5" },
-            { time: 45, intensity: 75, label: "Collision Course", color: "#ef4444" },
-            { time: 65, intensity: 85, label: "The Marine Attempt", color: "#b91c1c" },
-            { time: 80, intensity: 95, label: "The Stanton Curve", color: "#7f1d1d" },
-            { time: 92, intensity: 97, label: "Coupling Up", color: "#991b1b" }
+            { time: 10, intensity: 45, label: "The Mistake", color: "#fca5a5" }, // Inciting Incident
+            { time: 45, intensity: 75, label: "Collision Course", color: "#ef4444" }, // Escalation
+            { time: 65, intensity: 85, label: "The Marine Attempt", color: "#b91c1c" }, // Failure
+            { time: 80, intensity: 96, label: "The Stanton Curve", color: "#7f1d1d" }, // PEAK TENSION
+            { time: 92, intensity: 90, label: "Coupling Up", color: "#991b1b" } // Climax
         ],
-        synopsis: "A veteran engineer and a young conductor must race against the clock to stop a runaway freight train carrying toxic chemicals from wiping out a city. Physics is the enemy.",
+        synopsis: "A veteran engineer and a young conductor are paired together for the first time on a routine day that turns into a nightmare. They must race against the clock to stop an unmanned, runaway freight train carrying toxic chemicals from wiping out a city. With time running out and physics working against them, they are the only hope to prevent a catastrophe.",
         themes: ["Disaster", "Blue Collar Heroism", "Tension"]
     }),
 
     // 8. Prey (SURVIVAL)
+    // Curve: Hunt -> Ambush -> Massacre -> Flight -> Duel.
+    // Peak: 92 (Mud & Tactics - Brains vs Brawn).
     766507: createMovieData({ 
         adrenalineScore: 85, 
         violenceLevel: 88, 
         visceralImpact: 88, 
         complexityLevel: "HIGH", 
         dominantColor: "#064e3b", rating: 7.1, criticsScore: 94, audienceScore: 74, director: "Dan Trachtenberg", 
-        cast: ["Amber Midthunder", "Dakota Beavers"], boxOffice: "Streaming", budget: "$65 million", 
+        cast: ["Amber Midthunder", "Dakota Beavers", "Dane DiLiegro"], boxOffice: "Streaming", budget: "$65 million", 
         dna: { "Sci-Fi": 40, "Action": 30, "Thriller": 30 },
         scenes: [
-            { time: 15, intensity: 45, label: "Lion Hunt", color: "#a16207" },
-            { time: 35, intensity: 60, label: "The Bear Fight", color: "#78350f" },
-            { time: 60, intensity: 85, label: "Trappers Massacre", color: "#ef4444" },
-            { time: 75, intensity: 88, label: "Tree Escape", color: "#166534" },
-            { time: 90, intensity: 92, label: "Mud & Tactics", color: "#064e3b" }
+            { time: 15, intensity: 45, label: "Lion Hunt", color: "#a16207" }, // Setup
+            { time: 35, intensity: 60, label: "The Bear Fight", color: "#78350f" }, // Escalation
+            { time: 60, intensity: 85, label: "Trappers Massacre", color: "#ef4444" }, // Chaos
+            { time: 75, intensity: 88, label: "Tree Escape", color: "#166534" }, // Tension
+            { time: 90, intensity: 92, label: "Mud & Tactics", color: "#064e3b" } // PEAK ACTION
         ],
-        synopsis: "The origin story of the Predator in the world of the Comanche Nation 300 years ago. Naru, a skilled warrior, fights to protect her tribe against one of the first highly-evolved Predators to land on Earth.",
+        synopsis: "The origin story of the Predator in the world of the Comanche Nation 300 years ago. Naru, a fierce and highly skilled warrior, has been raised in the shadow of legendary hunters. But when she sets out to protect her tribe from a mysterious threat, the prey she stalks turns out to be a highly evolved alien predator with a technically advanced arsenal.",
         themes: ["Underdog", "Skill vs Tech", "Nature"]
     }),
 
     // 9. Bullet Train (STYLISH FUN)
+    // Curve: Boarding -> Skirmish -> Complication -> Crash -> Aftermath.
+    // Peak: 90 (The Train Crash - Visual Spectacle).
     718930: createMovieData({ 
         adrenalineScore: 80, 
         violenceLevel: 75, 
         visceralImpact: 82, 
         complexityLevel: "KINETIC", 
         dominantColor: "#ec4899", rating: 7.3, criticsScore: 54, audienceScore: 76, director: "David Leitch", 
-        cast: ["Brad Pitt", "Joey King"], boxOffice: "$239 million", budget: "$90 million", 
+        cast: ["Brad Pitt", "Joey King", "Aaron Taylor-Johnson"], boxOffice: "$239 million", budget: "$90 million", 
         dna: { "Action": 40, "Comedy": 40, "Mystery": 20 },
         scenes: [
-            { time: 15, intensity: 40, label: "Quiet Car", color: "#3b82f6" },
-            { time: 40, intensity: 60, label: "The Snake", color: "#22c55e" },
-            { time: 55, intensity: 75, label: "Tangerine vs Lemon", color: "#f97316" },
-            { time: 90, intensity: 80, label: "The Wolf", color: "#7f1d1d" },
-            { time: 110, intensity: 90, label: "Train Crash", color: "#ec4899" }
+            { time: 15, intensity: 40, label: "Quiet Car", color: "#3b82f6" }, // Setup
+            { time: 40, intensity: 60, label: "The Snake", color: "#22c55e" }, // Comedy/Action
+            { time: 55, intensity: 75, label: "Tangerine vs Lemon", color: "#f97316" }, // Conflict
+            { time: 90, intensity: 80, label: "The Wolf", color: "#7f1d1d" }, // Reveal
+            { time: 110, intensity: 90, label: "Train Crash", color: "#ec4899" } // PEAK SPECTACLE
         ],
-        synopsis: "Five assassins aboard a fast-moving bullet train find out their missions have something in common. John Wick meets comedy on rails.",
+        synopsis: "Ladybug is an unlucky assassin determined to do his job peacefully after one too many gigs gone off the rails. Fate, however, has other plans, as his latest mission puts him on a collision course with lethal adversaries from around the globe—all with connected, yet conflicting, objectives—on the world's fastest train. It is a neon-soaked, kinetic action-comedy that never slows down.",
         themes: ["Fate", "Luck", "Chaos"]
     }),
 
     // 10. Boss Level (LOOP MAYHEM)
+    // Curve: Death -> Practice -> Bonding -> Arcade Fight -> Final Attempt.
+    // Peak: 86 (Final Run - Perfect Execution).
     513310: createMovieData({ 
         adrenalineScore: 78, 
         violenceLevel: 80, 
         visceralImpact: 75, 
         complexityLevel: "LOOP", 
         dominantColor: "#3b82f6", rating: 6.8, criticsScore: 74, audienceScore: 76, director: "Joe Carnahan", 
-        cast: ["Frank Grillo", "Mel Gibson"], boxOffice: "Streaming", budget: "$45 million", 
+        cast: ["Frank Grillo", "Mel Gibson", "Naomi Watts"], boxOffice: "Streaming", budget: "$45 million", 
         dna: { "Action": 50, "Sci-Fi": 25, "Comedy": 25 },
         scenes: [
-            { time: 5, intensity: 75, label: "Wake Up Dead", color: "#3b82f6" },
-            { time: 25, intensity: 65, label: "Guan Yin Fight", color: "#ec4899" },
-            { time: 45, intensity: 55, label: "Learning Curves", color: "#eab308" },
-            { time: 70, intensity: 80, label: "The Arcade", color: "#8b5cf6" },
-            { time: 90, intensity: 86, label: "Final Run", color: "#ef4444" }
+            { time: 5, intensity: 75, label: "Wake Up Dead", color: "#3b82f6" }, // High Start
+            { time: 25, intensity: 65, label: "Guan Yin Fight", color: "#ec4899" }, // Repetition
+            { time: 45, intensity: 55, label: "Learning Curves", color: "#eab308" }, // Bonding
+            { time: 70, intensity: 80, label: "The Arcade", color: "#8b5cf6" }, // Action spike
+            { time: 90, intensity: 86, label: "Final Run", color: "#ef4444" } // PEAK FLOW
         ],
-        synopsis: "A retired special forces officer is trapped in a never-ending time loop on the day of his death. Groundhog Day with miniguns and swords.",
+        synopsis: "Roy Pulver, a retired special forces officer, is trapped in a never-ending time loop on the day of his death. Hunted by a colorful team of assassins, he must die hundreds of times to uncover the truth about a shadowy government project. Blending video game logic with heart, he has to level up his skills to save his ex-wife and break the cycle once and for all.",
         themes: ["Time Loop", "Redemption", "Video Game Logic"]
     })
 };

@@ -170,7 +170,7 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
 };
 
 const SmartBackButton = () => {
-    const handleBackClick = () => { if (typeof window !== 'undefined') window.location.href = '/best-thriller-movies-hulu'; };
+    const handleBackClick = () => { if (typeof window !== 'undefined') window.location.href = '/collection/best-thriller-movies-hulu'; };
     return (
         <motion.button onClick={handleBackClick} className="fixed top-4 left-4 sm:top-6 sm:left-6 z-50 flex items-center gap-2 px-3 sm:px-4 py-2 backdrop-blur-md rounded-lg transition-all duration-300 shadow-xl text-xs sm:text-sm" style={{ backgroundColor: `${COLORS.bgPrimary}F2`, border: `1px solid ${COLORS.borderLight}` }} whileHover={{ scale: 1.02, x: -2 }} whileTap={{ scale: 0.98 }} initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} onMouseEnter={(e) => e.currentTarget.style.borderColor = COLORS.borderAccent} onMouseLeave={(e) => e.currentTarget.style.borderColor = COLORS.borderLight}>
             <ChevronLeft className="w-3 h-3 sm:w-4 sm:h-4" style={{ color: COLORS.accent }} /><span className="font-medium" style={{ color: COLORS.accent }}>Back to Collection</span>
@@ -343,7 +343,7 @@ const HuluThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
                 {/* ✅ HYDRATION BUG FULLY RESOLVED */}
                 <title>{cleanSEOTitle}</title>
                 <meta name="description" content={cleanSEODesc} />
-                <link rel="canonical" href={`https://filmiway.com/collection/best-thriller-movies-hulu/${movie.imdbID}`} />
+                <link rel="canonical" href={`https://filmiway.com/movies/best-thriller-movies-hulu/${movie.imdbID}`} />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
                 <meta name="robots" content="index, follow" />
                 <meta name="language" content="English" />

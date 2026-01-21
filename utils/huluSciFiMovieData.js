@@ -62,7 +62,7 @@ export const SENSITIVE_TIMELINES = {
     // 9. Rise of the Planet of the Apes
     61791: { scenes: [{ start: "0:30:00", end: "0:35:00", type: "Animal Abuse", severity: "Moderate" }] },
     // 10. The Assessment (New Entry)
-    1086591: { 
+    1317088: { 
         scenes: [
             { start: "0:45:00", end: "0:50:00", type: "Psychological Abuse", severity: "High" },
             { start: "1:10:00", end: "1:15:00", type: "Sexual Coercion/Tension", severity: "High" }
@@ -80,7 +80,7 @@ export const FALLBACK_POSTERS = {
     766507: "https://image.tmdb.org/t/p/w500/ujr5pztc1oirVRgiIYWO0pWitVD.jpg",
     1376434: "https://via.placeholder.com/500x750?text=Predator+Killer+of+Killers",
     61791: "https://image.tmdb.org/t/p/w500/cjLSuo15sXhPL2q5y92X2X85.jpg",
-    1086591: "https://image.tmdb.org/t/p/w500/8X2k2X2k2X2k2X2k2X2k2X.jpg" // Placeholder hash, use real if available
+    1317088: "https://image.tmdb.org/t/p/w500/8X2k2X2k2X2k2X2k2X2k2X.jpg" // Placeholder hash, use real if available
 };
 
 // ✅ HELPER: Sci-Fi Specific Metrics
@@ -94,184 +94,198 @@ const createMovieData = (data) => ({
 
 export const COMPLETE_MOVIE_DATA = {
     // 1. Donnie Darko (MIND BEND PEAK)
-    // Blueprint: Atmospheric start, psychological peaks, emotional climax (95).
+    // Curve: Weirdness -> Mystery -> Dread -> Existential Peak -> Melancholy.
+    // Peak: 98 (Mad World - Reality Collapse).
     141: createMovieData({ 
         mindBendScore: 98, 
         visualSpectacle: 70, 
         complexityLevel: "PUZZLE", 
         dominantColor: "#1e1b4b", rating: 8.0, criticsScore: 87, audienceScore: 80, director: "Richard Kelly", 
-        cast: ["Jake Gyllenhaal", "Jena Malone"], boxOffice: "$7.5 million", budget: "$4.5 million", 
+        cast: ["Jake Gyllenhaal", "Jena Malone", "Mary McDonnell"], boxOffice: "$7.5 million", budget: "$4.5 million", 
         dna: { "Sci-Fi": 40, "Thriller": 40, "Drama": 20 },
         scenes: [
-            { time: 10, intensity: 25, label: "Wake Up", color: "#1e1b4b" },
-            { time: 40, intensity: 50, label: "Frank the Rabbit", color: "#4c1d95" },
-            { time: 70, intensity: 65, label: "Cellar Door", color: "#6d28d9" },
-            { time: 90, intensity: 85, label: "Halloween Party", color: "#5b21b6" },
-            { time: 110, intensity: 95, label: "Mad World", color: "#312e81" } // Emotional Peak
+            { time: 10, intensity: 25, label: "Wake Up", color: "#1e1b4b" }, // Setup
+            { time: 40, intensity: 50, label: "Frank the Rabbit", color: "#4c1d95" }, // Unease
+            { time: 70, intensity: 65, label: "Cellar Door", color: "#6d28d9" }, // Mystery
+            { time: 90, intensity: 85, label: "Halloween Party", color: "#5b21b6" }, // Crisis
+            { time: 110, intensity: 98, label: "Mad World", color: "#312e81" } // EXISTENTIAL PEAK
         ],
-        synopsis: "A troubled teenager is plagued by visions of a man in a large rabbit suit who manipulates him to commit a series of crimes, after he narrowly escapes a bizarre accident.",
+        synopsis: "In the quiet suburb of Middlesex, troubled teenager Donnie Darko narrowly escapes a bizarre accident when a jet engine crashes into his bedroom. He is lured out of the house by a terrifying figure in a rabbit suit named Frank, who prophesies that the world will end in 28 days. As the countdown begins, Donnie is pulled into a wormhole of time travel, metaphysics, and hallucinatory visions, forcing him to question whether he is losing his mind or if he is the chosen agent of a cosmic destiny.",
         themes: ["Time Travel", "Mental Health", "Determinism"]
     }),
 
     // 2. The Abyss (UNDERWATER SPECTACLE)
-    // Blueprint: Slow burn tension (30s) -> Intense Crisis (88) -> Awe (95).
+    // Curve: Slow burn -> Claustrophobia -> Crisis -> Awe.
+    // Peak: 95 (First Contact - Transcendence).
     2756: createMovieData({ 
         mindBendScore: 75, 
         visualSpectacle: 95, // Groundbreaking CGI
         complexityLevel: "MASTERPIECE", 
         dominantColor: "#0c4a6e", rating: 7.9, criticsScore: 89, audienceScore: 83, director: "James Cameron", 
-        cast: ["Ed Harris", "Mary Elizabeth Mastrantonio"], boxOffice: "$90 million", budget: "$70 million", 
+        cast: ["Ed Harris", "Mary Elizabeth Mastrantonio", "Michael Biehn"], boxOffice: "$90 million", budget: "$70 million", 
         dna: { "Sci-Fi": 60, "Thriller": 30, "Romance": 10 },
         scenes: [
-            { time: 15, intensity: 30, label: "The Crash", color: "#082f49" },
-            { time: 60, intensity: 65, label: "Water Tentacle", color: "#0284c7" },
+            { time: 15, intensity: 30, label: "The Crash", color: "#082f49" }, // Setup
+            { time: 60, intensity: 65, label: "Water Tentacle", color: "#0284c7" }, // Wonder/Tension
             { time: 90, intensity: 88, label: "Resuscitation", color: "#0369a1" }, // Emotional Peak
-            { time: 120, intensity: 75, label: "The Drop", color: "#075985" },
-            { time: 135, intensity: 95, label: "First Contact", color: "#38bdf8" } // Wonder Peak
+            { time: 120, intensity: 75, label: "The Drop", color: "#075985" }, // Isolation
+            { time: 135, intensity: 95, label: "First Contact", color: "#38bdf8" } // GENRE PEAK
         ],
-        synopsis: "A civilian diving team is enlisted to search for a lost nuclear submarine and faces danger while encountering an alien aquatic species. James Cameron's underwater masterpiece.",
+        synopsis: "When a US nuclear submarine mysteriously sinks in the Caribbean, a civilian deep-sea oil drilling team is pressed into service to help the Navy SEALs recover the vessel before a storm hits. As tensions rise between the blue-collar workers and the military personnel, they discover that something else is down there with them—a mysterious, bioluminescent intelligence that challenges their understanding of life itself. It is a claustrophobic thriller that transforms into a transcendent encounter.",
         themes: ["First Contact", "Isolation", "Humanity"]
     }),
 
     // 3. Dawn of the Planet of the Apes (SOCIOLOGICAL SCI-FI)
-    // Blueprint: War tension. Peaks at action spectacle (90).
+    // Curve: Peace -> Distrust -> Betrayal -> War.
+    // Peak: 90 (War Begins - Action Spectacle).
     119450: createMovieData({ 
         mindBendScore: 70, 
         visualSpectacle: 92, 
         complexityLevel: "HIGH", 
         dominantColor: "#3f3f46", rating: 7.6, criticsScore: 90, audienceScore: 88, director: "Matt Reeves", 
-        cast: ["Andy Serkis", "Jason Clarke"], boxOffice: "$710 million", budget: "$170 million", 
+        cast: ["Andy Serkis", "Jason Clarke", "Gary Oldman"], boxOffice: "$710 million", budget: "$170 million", 
         dna: { "Sci-Fi": 40, "War": 40, "Drama": 20 },
         scenes: [
-            { time: 20, intensity: 35, label: "Apes Home", color: "#166534" },
-            { time: 50, intensity: 60, label: "Trust Building", color: "#52525b" },
-            { time: 75, intensity: 85, label: "Betrayal", color: "#ef4444" },
-            { time: 95, intensity: 90, label: "War Begins", color: "#b91c1c" },
-            { time: 120, intensity: 80, label: "Caesar's Choice", color: "#3f3f46" }
+            { time: 20, intensity: 35, label: "Apes Home", color: "#166534" }, // World Building
+            { time: 50, intensity: 60, label: "Trust Building", color: "#52525b" }, // Tension
+            { time: 75, intensity: 85, label: "Betrayal", color: "#ef4444" }, // Breaking Point
+            { time: 95, intensity: 90, label: "War Begins", color: "#b91c1c" }, // PEAK CONFLICT
+            { time: 120, intensity: 80, label: "Caesar's Choice", color: "#3f3f46" } // Resolution
         ],
-        synopsis: "A growing nation of genetically evolved apes led by Caesar is threatened by a band of human survivors of the devastating virus unleashed a decade earlier.",
+        synopsis: "Ten years after a deadly virus wiped out most of humanity, a growing nation of genetically evolved apes led by Caesar lives in fragile peace in the forests outside San Francisco. When a group of human survivors enters their territory seeking to restore power to their city, a delicate truce is formed. However, dissent and betrayal on both sides threaten to shatter the peace, plunging both species into a war that will determine who will emerge as Earth's dominant species.",
         themes: ["Evolution", "War", "Leadership"]
     }),
 
     // 4. Predator (ACTION SCI-FI)
-    // Blueprint: Hunter/Prey dynamic. Builds to survival peak (95).
+    // Curve: Mission -> Hunt -> Fear -> Primeval Duel.
+    // Peak: 95 (Self Destruct - Survival Climax).
     106: createMovieData({ 
         mindBendScore: 60, 
         visualSpectacle: 85, 
         complexityLevel: "LEGENDARY", 
         dominantColor: "#166534", rating: 8.5, criticsScore: 82, audienceScore: 87, director: "John McTiernan", 
-        cast: ["Arnold Schwarzenegger", "Carl Weathers"], boxOffice: "$98 million", budget: "$15 million", 
+        cast: ["Arnold Schwarzenegger", "Carl Weathers", "Jesse Ventura"], boxOffice: "$98 million", budget: "$15 million", 
         dna: { "Action": 50, "Sci-Fi": 30, "Horror": 20 },
         scenes: [
-            { time: 10, intensity: 20, label: "Insertion", color: "#166534" },
-            { time: 40, intensity: 50, label: "Contact", color: "#4d7c0f" },
-            { time: 70, intensity: 80, label: "The Trap", color: "#b91c1c" },
-            { time: 90, intensity: 90, label: "Mud Camouflage", color: "#3f6212" },
-            { time: 100, intensity: 95, label: "Self Destruct", color: "#f59e0b" }
+            { time: 10, intensity: 20, label: "Insertion", color: "#166534" }, // Setup
+            { time: 40, intensity: 50, label: "Contact", color: "#4d7c0f" }, // Action
+            { time: 70, intensity: 80, label: "The Trap", color: "#b91c1c" }, // Fear
+            { time: 90, intensity: 90, label: "Mud Camouflage", color: "#3f6212" }, // Strategy
+            { time: 100, intensity: 95, label: "Self Destruct", color: "#f59e0b" } // PEAK SURVIVAL
         ],
-        synopsis: "A team of commandos on a mission in a Central American jungle find themselves hunted by an extraterrestrial warrior.",
+        synopsis: "Dutch, a leader of an elite special forces team, leads his men into the Central American jungle on a CIA mission to rescue hostages from guerrillas. But the mission goes sideways when they realize they are being stalked by something far more dangerous than any human enemy—an invisible, technologically advanced extraterrestrial warrior that hunts for sport. One by one, the team is picked off, forcing Dutch into a primal battle of wits and strength against the ultimate predator.",
         themes: ["Hunt", "Survival", "Technology"]
     }),
 
     // 5. Mr. Nobody (PHILOSOPHICAL ODYSSEY)
-    // Blueprint: Complex structure. High mind-bend score.
+    // Curve: Confusion -> Romance -> Multiverse -> Cosmic Truth.
+    // Peak: 90 (Big Crunch - Conceptual Awe).
     31011: createMovieData({ 
         mindBendScore: 95, 
         visualSpectacle: 88, 
         complexityLevel: "COMPLEX", 
         dominantColor: "#0ea5e9", rating: 7.8, criticsScore: 68, audienceScore: 76, director: "Jaco Van Dormael", 
-        cast: ["Jared Leto", "Sarah Polley"], boxOffice: "$3.6 million", budget: "$47 million", 
+        cast: ["Jared Leto", "Sarah Polley", "Diane Kruger"], boxOffice: "$3.6 million", budget: "$47 million", 
         dna: { "Sci-Fi": 50, "Romance": 30, "Drama": 20 },
         scenes: [
-            { time: 10, intensity: 20, label: "The Choice", color: "#0ea5e9" },
-            { time: 40, intensity: 55, label: "Life with Elise", color: "#38bdf8" },
-            { time: 80, intensity: 70, label: "Mars Journey", color: "#ef4444" },
-            { time: 110, intensity: 85, label: "Old Age", color: "#cbd5e1" },
-            { time: 130, intensity: 90, label: "Big Crunch", color: "#ffffff" }
+            { time: 10, intensity: 20, label: "The Choice", color: "#0ea5e9" }, // Setup
+            { time: 40, intensity: 55, label: "Life with Elise", color: "#38bdf8" }, // Emotional
+            { time: 80, intensity: 70, label: "Mars Journey", color: "#ef4444" }, // Sci-Fi
+            { time: 110, intensity: 85, label: "Old Age", color: "#cbd5e1" }, // Reflection
+            { time: 130, intensity: 90, label: "Big Crunch", color: "#ffffff" } // PEAK CONCEPT
         ],
-        synopsis: "A boy stands on a station platform as a train is about to leave. Should he go with his mother or stay with his father? Infinite possibilities arise from this decision.",
+        synopsis: "In the year 2092, Nemo Nobody is the last mortal human on Earth, reflecting on his life at age 118. But his memories are a fractured kaleidoscope of contradictory lives: in one, he married Elise; in another, Jean; in a third, Anna. The narrative hinges on a single impossible choice made by a 9-year-old boy at a train station. It is a visually dazzling exploration of the butterfly effect, quantum mechanics, and the infinite possibilities that exist within a single decision.",
         themes: ["Choice", "Butterfly Effect", "Time"]
     }),
 
     // 6. No One Will Save You (ALIEN INVASION)
-    // Blueprint: Constant tension. 
+    // Curve: Quiet -> Invasion -> Siege -> Abduction -> Twist.
+    // Peak: 85 (Abduction - High Tension).
     1022204: createMovieData({ 
         mindBendScore: 65, 
         visualSpectacle: 82, 
         complexityLevel: "UNIQUE", 
         dominantColor: "#64748b", rating: 6.3, criticsScore: 82, audienceScore: 57, director: "Brian Duffield", 
-        cast: ["Kaitlyn Dever"], boxOffice: "Streaming", budget: "$22 million", 
+        cast: ["Kaitlyn Dever", "Zack Duhame", "Lauren L. Murray"], boxOffice: "Streaming", budget: "$22 million", 
         dna: { "Sci-Fi": 50, "Horror": 50 },
         scenes: [
-            { time: 10, intensity: 30, label: "The Intruder", color: "#1e293b" },
-            { time: 30, intensity: 65, label: "Hide and Seek", color: "#334155" },
-            { time: 60, intensity: 80, label: "Abduction", color: "#0ea5e9" },
-            { time: 80, intensity: 75, label: "The Dance", color: "#94a3b8" },
-            { time: 90, intensity: 85, label: "Acceptance", color: "#f8fafc" }
+            { time: 10, intensity: 30, label: "The Intruder", color: "#1e293b" }, // Setup
+            { time: 30, intensity: 65, label: "Hide and Seek", color: "#334155" }, // Tension
+            { time: 60, intensity: 85, label: "Abduction", color: "#0ea5e9" }, // PEAK TENSION
+            { time: 80, intensity: 75, label: "The Dance", color: "#94a3b8" }, // Weirdness
+            { time: 90, intensity: 60, label: "Acceptance", color: "#f8fafc" } // Surreal Ending
         ],
-        synopsis: "An exiled anxiety-ridden homebody must battle an alien who has found its way into her home. A Hulu Original with almost no dialogue.",
+        synopsis: "Brynn is a talented young woman who has been alienated from her community and lives in solitude in her childhood home. Her quiet existence is shattered one night by decidedly unearthly noises from intruders. What follows is an action-packed, dialogue-free showdown between Brynn and a host of extraterrestrial beings who threaten her future while forcing her to deal with her past. A unique, visceral home invasion thriller with a sci-fi twist.",
         themes: ["Isolation", "Grief", "Aliens"]
     }),
 
     // 7. Prey (PREDATOR PREQUEL)
-    // Blueprint: Survival curve.
+    // Curve: Hunt -> Discovery -> Combat -> Strategy.
+    // Peak: 92 (Brain vs Brawn - Triumph).
     766507: createMovieData({ 
         mindBendScore: 60, 
         visualSpectacle: 88, 
         complexityLevel: "VISCERAL", 
         dominantColor: "#064e3b", rating: 7.1, criticsScore: 94, audienceScore: 74, director: "Dan Trachtenberg", 
-        cast: ["Amber Midthunder", "Dakota Beavers"], boxOffice: "Streaming", budget: "$65 million", 
+        cast: ["Amber Midthunder", "Dakota Beavers", "Dane DiLiegro"], boxOffice: "Streaming", budget: "$65 million", 
         dna: { "Sci-Fi": 40, "Action": 40, "History": 20 },
         scenes: [
-            { time: 15, intensity: 30, label: "Lion Hunt", color: "#a16207" },
-            { time: 45, intensity: 60, label: "Bear Attack", color: "#78350f" },
-            { time: 65, intensity: 85, label: "Invisible Enemy", color: "#ef4444" },
-            { time: 85, intensity: 80, label: "Bait", color: "#166534" },
-            { time: 95, intensity: 92, label: "Brain vs Brawn", color: "#064e3b" }
+            { time: 15, intensity: 30, label: "Lion Hunt", color: "#a16207" }, // Setup
+            { time: 45, intensity: 60, label: "Bear Attack", color: "#78350f" }, // Conflict
+            { time: 65, intensity: 85, label: "Invisible Enemy", color: "#ef4444" }, // Crisis
+            { time: 85, intensity: 80, label: "Bait", color: "#166534" }, // Strategy
+            { time: 95, intensity: 92, label: "Brain vs Brawn", color: "#064e3b" } // PEAK ACTION
         ],
-        synopsis: "The origin story of the Predator in the world of the Comanche Nation 300 years ago. Naru fights to protect her tribe against one of the first highly-evolved Predators to land on Earth.",
+        synopsis: "Set in the Comanche Nation 300 years ago, this visceral prequel tells the story of Naru, a fierce and highly skilled warrior who has been raised in the shadow of some of the most legendary hunters who roam the Great Plains. When danger threatens her camp, she sets out to protect her people. The prey she stalks turns out to be a highly evolved alien predator with a technically advanced arsenal, leading to a vicious and terrifying showdown.",
         themes: ["Underdog", "Nature", "Survival"]
     }),
 
     // 8. Predator: Killer of Killers (ANIMATED)
+    // Curve: Legend -> Encounter -> Slaughter -> Duel.
+    // Peak: 90 (Final Duel - Animated Violence).
     1376434: createMovieData({ 
         mindBendScore: 50, 
         visualSpectacle: 80, 
         complexityLevel: "ANIMATED", 
-        dominantColor: "#7f1d1d", rating: 8.0, criticsScore: 85, audienceScore: 88, director: "Unknown", 
-        cast: ["Voice Cast"], boxOffice: "N/A", budget: "N/A", 
+        dominantColor: "#7f1d1d", rating: 7.4, criticsScore: 85, audienceScore: 88, director: "Unknown", 
+        cast: ["Lindsay LaVanchy", "Louis Ozawa", "Rick Gonzalez"], boxOffice: "Streaming", budget: "$50 million",
         dna: { "Sci-Fi": 40, "Animation": 40, "Action": 20 },
         scenes: [
-            { time: 10, intensity: 40, label: "Viking Arrival", color: "#1f2937" },
-            { time: 30, intensity: 85, label: "Plasma vs Axe", color: "#ef4444" },
-            { time: 40, intensity: 90, label: "Final Duel", color: "#7f1d1d" }
+            { time: 10, intensity: 40, label: "Viking Arrival", color: "#1f2937" }, // Setup
+            { time: 20, intensity: 60, label: "The Shadow", color: "#4b5563" }, // Tension
+            { time: 30, intensity: 85, label: "Plasma vs Axe", color: "#ef4444" }, // Crisis
+            { time: 40, intensity: 90, label: "Final Duel", color: "#7f1d1d" }, // PEAK COMBAT
+            { time: 45, intensity: 50, label: "Survivor", color: "#9ca3af" } // Resolution
         ],
-        synopsis: "An R-rated animated anthology chapter where Viking warriors face the ultimate hunter. Part of the expanding Predator universe.",
+        synopsis: "An R-rated animated anthology chapter that expands the Predator mythology into the Viking age. A group of hardened Norse warriors finds their raid interrupted by an invisible demon that hunts the strongest among them. It is a brutal, stylish clash of steel and plasma technology that showcases the Predator's history of hunting Earth's greatest warriors across time.",
         themes: ["History", "Lore", "Combat"]
     }),
 
     // 9. Rise of the Planet of the Apes (ORIGIN)
+    // Curve: Science -> Growth -> Injustice -> Revolution.
+    // Peak: 85 (Golden Gate Bridge - Spectacle).
     61791: createMovieData({ 
         mindBendScore: 75, 
         visualSpectacle: 85, 
         complexityLevel: "EMOTIONAL", 
         dominantColor: "#065f46", rating: 7.6, criticsScore: 82, audienceScore: 77, director: "Rupert Wyatt", 
-        cast: ["James Franco", "Andy Serkis"], boxOffice: "$481 million", budget: "$93 million", 
+        cast: ["James Franco", "Andy Serkis", "Freida Pinto"], boxOffice: "$481 million", budget: "$93 million", 
         dna: { "Sci-Fi": 50, "Drama": 40, "Action": 10 },
         scenes: [
-            { time: 15, intensity: 20, label: "Bright Eyes", color: "#065f46" },
-            { time: 45, intensity: 50, label: "Caesar Speaks", color: "#047857" }, // Key moment
-            { time: 75, intensity: 70, label: "The Escape", color: "#059669" },
-            { time: 90, intensity: 85, label: "Golden Gate Bridge", color: "#9ca3af" },
-            { time: 100, intensity: 75, label: "Redwoods", color: "#166534" }
+            { time: 15, intensity: 20, label: "Bright Eyes", color: "#065f46" }, // Setup
+            { time: 45, intensity: 50, label: "Caesar Speaks", color: "#047857" }, // Narrative Shift
+            { time: 75, intensity: 70, label: "The Escape", color: "#059669" }, // Action Build
+            { time: 90, intensity: 85, label: "Golden Gate Bridge", color: "#9ca3af" }, // PEAK REVOLUTION
+            { time: 100, intensity: 75, label: "Redwoods", color: "#166534" } // Emotional Resolution
         ],
-        synopsis: "A substance designed to help the brain repair itself gives rise to a super-intelligent chimp who leads an ape uprising.",
+        synopsis: "Will Rodman is a scientist working on a cure for Alzheimer's who tests a genetically engineered retrovirus on chimpanzees. The virus gives the apes human-level intelligence but proves fatal to humans. Caesar, an infant chimp born with the virus, is raised by Will in secret. As Caesar grows, he witnesses the cruelty of humanity and eventually leads an ape uprising that will change the planet forever. A grounded, emotionally resonant origin story.",
         themes: ["Ethics", "Family", "Hubris"]
     }),
 
     // 10. The Assessment (DYSTOPIAN TENSION)
-    // Blueprint: Uneasy build-up (35), Social Chaos (80), Existential Climax (88).
-    1086591: createMovieData({ 
+    // Curve: Unease -> Test -> Chaos -> Verdict.
+    // Peak: 88 (The Verdict - Psychological Breaking Point).
+    1317088: createMovieData({ 
         mindBendScore: 85, 
         visualSpectacle: 75, 
         complexityLevel: "PSYCHOLOGICAL", 
@@ -279,13 +293,13 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Elizabeth Olsen", "Alicia Vikander", "Himesh Patel"], boxOffice: "N/A", budget: "N/A", 
         dna: { "Sci-Fi": 40, "Drama": 40, "Thriller": 20 },
         scenes: [
-            { time: 15, intensity: 20, label: "The Arrival", color: "#a78bfa" },
-            { time: 40, intensity: 45, label: "Toddler Test", color: "#8b5cf6" }, // Weirdness builds
+            { time: 15, intensity: 20, label: "The Arrival", color: "#a78bfa" }, // Setup
+            { time: 40, intensity: 45, label: "Toddler Test", color: "#8b5cf6" }, // Weirdness
             { time: 75, intensity: 80, label: "Dinner Party", color: "#7c3aed" }, // Social Chaos
             { time: 95, intensity: 85, label: "Greenhouse Fire", color: "#b91c1c" }, // Crisis
-            { time: 110, intensity: 88, label: "The Verdict", color: "#4c1d95" } // Emotional Peak
+            { time: 110, intensity: 88, label: "The Verdict", color: "#4c1d95" } // PEAK PSYCHOLOGICAL
         ],
-        synopsis: "In a dystopian future where parenthood is strictly controlled, a couple must undergo a grueling 7-day assessment by a government official who simulates a child to test their worthiness.",
+        synopsis: "In a near-future world destroyed by climate change, society has been rebuilt into a controlled utopia where parenthood is a privilege, not a right. A couple hoping to start a family must undergo a grueling 7-day assessment by a government official (Vikander) who simulates a child to test their worthiness. As the test becomes increasingly invasive and psychological, the couple's relationship and sanity are pushed to the breaking point.",
         themes: ["Parenthood", "Dystopia", "Control"]
     })
 };
@@ -300,7 +314,7 @@ export const STRATEGIC_QUOTES = {
     766507: "It thinks I am prey.",
     1376434: "Valhalla waits.",
     61791: "No!",
-    1086591: "If you fail, you will never be parents."
+    1317088: "If you fail, you will never be parents."
 };
 
 export const CINEMATIC_COLORS = {

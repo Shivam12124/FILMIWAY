@@ -123,172 +123,192 @@ const createMovieData = (data) => ({
 
 export const COMPLETE_MOVIE_DATA = {
     // 1. When Evil Lurks
+    // Curve: Unease -> Violence -> Dread -> Chaos -> Hopelessness.
+    // Peak: 100 (No Rules - Genre-breaking cruelty).
     1017409: createMovieData({ 
         scariness: 98, 
         dominantColor: "#7f1d1d", rating: 7.0, criticsScore: 96, audienceScore: 78, director: "Demián Rugna", 
-        cast: ["Ezequiel Rodríguez", "Demián Salomón"], boxOffice: "$0.6 million", budget: "$4 million", 
-        dna: { "Horror": 80, "Thriller": 20 }, // Fixed DNA
+        cast: ["Ezequiel Rodríguez", "Demián Salomón", "Silvina Sabater"], boxOffice: "$0.6 million", budget: "$4 million", 
+        dna: { "Horror": 80, "Thriller": 20 }, 
         scenes: [
-            { time: 10, intensity: 45, label: "The Rotten One", color: "#7f1d1d" },
-            { time: 30, intensity: 75, label: "The Dog", color: "#991b1b" },
-            { time: 50, intensity: 88, label: "The Road", color: "#b91c1c" },
-            { time: 75, intensity: 82, label: "The School", color: "#dc2626" },
-            { time: 95, intensity: 100, label: "No Rules", color: "#ef4444" } // 100: Breaks genre rules
+            { time: 10, intensity: 45, label: "The Rotten One", color: "#7f1d1d" }, // Initial shock
+            { time: 30, intensity: 75, label: "The Dog", color: "#991b1b" }, // Escalation
+            { time: 50, intensity: 88, label: "The Road", color: "#b91c1c" }, // Crisis
+            { time: 75, intensity: 82, label: "The School", color: "#dc2626" }, // Sustained dread
+            { time: 95, intensity: 100, label: "No Rules", color: "#ef4444" } // PEAK TRAUMA
         ],
-        synopsis: "In a remote village, two brothers find a demon-infected man just about to give birth to evil itself. In their attempt to dispose of him, they unleash a chaos that disregards all rules of horror safety. No mercy. Pure trauma.",
+        synopsis: "In a remote village, two brothers discover a demon-infected man just days away from 'giving birth' to evil itself. Desperate to avoid a government protocol that would level their town, they attempt to dispose of the body themselves, but their actions inadvertently trigger a contagion of violence that spreads like a virus. It is a brutal, unforgiving film that disregards every safety rule of the genre—children, animals, and pregnant women are not safe here.",
         themes: ["Contagion", "Nihilism", "Family Trauma"]
     }),
 
     // 2. Longlegs
+    // Curve: Mystery -> Codebreaking -> Dread -> Revelation -> Curse.
+    // Peak: 92 (Hail Satan - Psychological Peak).
     1079373: createMovieData({ 
         scariness: 95, 
         dominantColor: "#fcd34d", rating: 7.2, criticsScore: 86, audienceScore: 60, director: "Osgood Perkins", 
-        cast: ["Maika Monroe", "Nicolas Cage"], boxOffice: "$100 million", budget: "$10 million", 
-        dna: { "Horror": 60, "Crime": 40 }, // Fixed DNA
+        cast: ["Maika Monroe", "Nicolas Cage", "Alicia Witt"], boxOffice: "$100 million", budget: "$10 million", 
+        dna: { "Horror": 60, "Crime": 40 }, 
         scenes: [
-            { time: 5, intensity: 70, label: "The Opening", color: "#fbbf24" },
-            { time: 40, intensity: 55, label: "Cipher", color: "#f59e0b" },
-            { time: 70, intensity: 80, label: "Interrogation", color: "#d97706" },
-            { time: 90, intensity: 92, label: "Hail Satan", color: "#b45309" }, // Peak is 92
-            { time: 100, intensity: 85, label: "The Birthday", color: "#78350f" }
+            { time: 5, intensity: 25, label: "The Opening", color: "#fbbf24" }, // Setup
+            { time: 40, intensity: 55, label: "The Cipher", color: "#f59e0b" }, // Mystery
+            { time: 70, intensity: 80, label: "Interrogation", color: "#d97706" }, // Tension
+            { time: 90, intensity: 92, label: "Hail Satan", color: "#b45309" }, // PEAK DREAD
+            { time: 100, intensity: 85, label: "The Birthday", color: "#78350f" } // Lingering ending
         ],
-        synopsis: "FBI Agent Lee Harker is assigned to an unsolved serial killer case that takes an unexpected turn, revealing evidence of the occult. A slow-burn, suffocating atmosphere that feels genuinely cursed.",
+        synopsis: "FBI Agent Lee Harker, a gifted new recruit with psychic intuition, is assigned to an unsolved serial killer case that has baffled authorities for decades. As she uncovers evidence of the occult, she realizes a personal connection to the killer known only as 'Longlegs.' Drenched in a suffocating, satanic atmosphere, the film is a procedural nightmare that feels less like a movie and more like a curse captured on celluloid.",
         themes: ["Satanism", "Procedural", "Atmospheric Dread"]
     }),
 
     // 3. The House That Jack Built
+    // Curve: Philosophy -> Cruelty -> Sadism -> Descent -> Hell.
+    // Peak: 98 (The Picnic - Moral abyss).
     400535: createMovieData({ 
         scariness: 95, 
         dominantColor: "#ef4444", rating: 6.8, criticsScore: 59, audienceScore: 67, director: "Lars von Trier", 
-        cast: ["Matt Dillon", "Bruno Ganz"], boxOffice: "$5 million", budget: "$10 million", 
-        dna: { "Horror": 50, "Drama": 30, "Crime": 20 }, // Fixed DNA
+        cast: ["Matt Dillon", "Bruno Ganz", "Uma Thurman"], boxOffice: "$5 million", budget: "$10 million", 
+        dna: { "Horror": 50, "Drama": 30, "Crime": 20 }, 
         scenes: [
-            { time: 20, intensity: 50, label: "1st Incident", color: "#ef4444" },
-            { time: 50, intensity: 98, label: "The Picnic", color: "#b91c1c" }, // 98: Extreme cruelty
-            { time: 80, intensity: 65, label: "Simple", color: "#991b1b" },
-            { time: 110, intensity: 85, label: "Full Metal Jacket", color: "#7f1d1d" },
-            { time: 145, intensity: 90, label: "The Descent", color: "#450a0a" }
+            { time: 20, intensity: 50, label: "1st Incident", color: "#ef4444" }, // Start
+            { time: 50, intensity: 98, label: "The Picnic", color: "#b91c1c" }, // PEAK CRUELTY
+            { time: 80, intensity: 65, label: "Simple", color: "#991b1b" }, // Philosophical lull
+            { time: 110, intensity: 85, label: "Full Metal Jacket", color: "#7f1d1d" }, // Escalation
+            { time: 145, intensity: 90, label: "The Descent", color: "#450a0a" } // Metaphysical ending
         ],
-        synopsis: "The story follows Jack, a highly intelligent serial killer, over the course of 12 years, depicting the murders that define his development as a serial killer. Deeply disturbing, cruel, and philosophically scarring.",
+        synopsis: "Set in the USA in the 1970s, the film follows Jack, a highly intelligent serial killer, over the course of 12 years. Through five 'incidents' that define his development, Jack views each murder as a work of art, engaging in a running dialogue with a mysterious figure named Verge about philosophy, history, and the nature of evil. It is a deeply disturbing, provocative examination of narcissism and psychopathy that refuses to look away.",
         themes: ["Narcissism", "Art vs Violence", "Psychopathy"]
     }),
 
     // 4. Oddity
+    // Curve: Intrigue -> Unease -> Supernatural -> Terror -> Reveal.
+    // Peak: 92 (The Wooden Man - High Tension).
     1094318: createMovieData({ 
         scariness: 88, 
         dominantColor: "#78350f", rating: 7.0, criticsScore: 96, audienceScore: 83, director: "Damian McCarthy", 
-        cast: ["Gwilym Lee", "Carolyn Bracken"], boxOffice: "$1 million", budget: "N/A", 
-        dna: { "Horror": 70, "Mystery": 30 }, // Fixed DNA
+        cast: ["Gwilym Lee", "Carolyn Bracken", "Tadhg Murphy"], boxOffice: "$1 million", budget: "N/A", 
+        dna: { "Horror": 70, "Mystery": 30 }, 
         scenes: [
-            { time: 15, intensity: 40, label: "The Glass Eye", color: "#a16207" },
-            { time: 45, intensity: 75, label: "The Tent", color: "#854d0e" },
-            { time: 70, intensity: 92, label: "The Wooden Man", color: "#713f12" }, // Peak is 92
-            { time: 85, intensity: 80, label: "Trapdoor", color: "#451a03" },
-            { time: 95, intensity: 60, label: "The Bell", color: "#78350f" }
+            { time: 15, intensity: 40, label: "The Glass Eye", color: "#a16207" }, // Setup
+            { time: 45, intensity: 75, label: "The Tent", color: "#854d0e" }, // Unease
+            { time: 70, intensity: 92, label: "The Wooden Man", color: "#713f12" }, // PEAK TERROR
+            { time: 85, intensity: 80, label: "Trapdoor", color: "#451a03" }, // Action
+            { time: 95, intensity: 60, label: "The Bell", color: "#78350f" } // Chilling Resolve
         ],
-        synopsis: "A blind medium uncovers the truth behind her twin sister's death with the help of a terrifying wooden mannequin. Relentless tension that relies on atmosphere rather than cheap jumps.",
+        synopsis: "After the brutal murder of her twin sister, a blind medium and curio shop owner visits the remote country house where the crime occurred. Armed with a terrifying life-sized wooden mannequin that acts as a conduit for the supernatural, she begins to peel back the layers of lies told by her brother-in-law. A masterclass in atmosphere and pacing, relying on dread rather than cheap jump scares to unsettle you.",
         themes: ["Cursed Objects", "Grief", "Revenge"]
     }),
 
     // 5. Don't Breathe
+    // Curve: Confidence -> Surprise -> Hunt -> Shock -> Escape.
+    // Peak: 94 (The Basement - Twisted Reveal).
     300669: createMovieData({ 
         scariness: 90, 
         dominantColor: "#171717", rating: 7.1, criticsScore: 88, audienceScore: 79, director: "Fede Álvarez", 
-        cast: ["Stephen Lang", "Jane Levy"], boxOffice: "$157 million", budget: "$9 million", 
-        dna: { "Horror": 50, "Thriller": 50 }, // Fixed DNA
+        cast: ["Stephen Lang", "Jane Levy", "Dylan Minnette"], boxOffice: "$157 million", budget: "$9 million", 
+        dna: { "Horror": 50, "Thriller": 50 }, 
         scenes: [
-            { time: 15, intensity: 20, label: "The Break In", color: "#404040" },
-            { time: 45, intensity: 80, label: "Lights Out", color: "#171717" },
-            { time: 70, intensity: 88, label: "The Dog Chase", color: "#dc2626" },
-            { time: 85, intensity: 94, label: "The Basement", color: "#7f1d1d" }, // 94: Shock factor
-            { time: 95, intensity: 85, label: "The Escape", color: "#b91c1c" }
+            { time: 15, intensity: 20, label: "The Break In", color: "#404040" }, // Setup
+            { time: 45, intensity: 80, label: "Lights Out", color: "#171717" }, // Hunter mode
+            { time: 70, intensity: 88, label: "The Dog Chase", color: "#dc2626" }, // Action
+            { time: 85, intensity: 94, label: "The Basement", color: "#7f1d1d" }, // PEAK HORROR
+            { time: 95, intensity: 85, label: "The Escape", color: "#b91c1c" } // Climax
         ],
-        synopsis: "Three thieves break into the house of a wealthy blind man, thinking he is an easy target. They are wrong. Trapped in the dark, they are hunted by a man with heightened senses and a terrible secret.",
+        synopsis: "Three young thieves break into the house of a wealthy blind veteran in Detroit, thinking it will be an easy score to fund their new lives in California. They are dead wrong. Trapped inside with a man who has heightened senses and lethal combat skills, the hunters become the hunted. But the true horror lies in the terrible secret he is hiding in the basement, turning a heist film into a nightmare.",
         themes: ["Home Invasion", "Disability", "Moral Ambiguity"]
     }),
 
     // 6. The Babadook
+    // Curve: Exhaustion -> Suggestion -> Manifestation -> Possession -> Coexistence.
+    // Peak: 90 (The Basement - Psychological Break).
     242224: createMovieData({ 
         scariness: 85, 
         dominantColor: "#171717", rating: 6.8, criticsScore: 98, audienceScore: 72, director: "Jennifer Kent", 
-        cast: ["Essie Davis", "Noah Wiseman"], boxOffice: "$10 million", budget: "$2 million", 
-        dna: { "Horror": 60, "Drama": 40 }, // Fixed DNA
+        cast: ["Essie Davis", "Noah Wiseman", "Daniel Henshall"], boxOffice: "$10 million", budget: "$2 million", 
+        dna: { "Horror": 60, "Drama": 40 }, 
         scenes: [
-            { time: 15, intensity: 30, label: "Bedtime Story", color: "#404040" },
-            { time: 45, intensity: 70, label: "Baba-Dook-Dook", color: "#262626" },
-            { time: 70, intensity: 85, label: "Possession", color: "#171717" },
-            { time: 85, intensity: 90, label: "The Basement", color: "#0a0a0a" }, // Peak is 90
-            { time: 92, intensity: 50, label: "Feeding Time", color: "#404040" }
+            { time: 15, intensity: 30, label: "Bedtime Story", color: "#404040" }, // Unease
+            { time: 45, intensity: 70, label: "Baba-Dook-Dook", color: "#262626" }, // Fear
+            { time: 70, intensity: 85, label: "Possession", color: "#171717" }, // Crisis
+            { time: 85, intensity: 90, label: "The Basement", color: "#0a0a0a" }, // PEAK CONFRONTATION
+            { time: 92, intensity: 50, label: "Feeding Time", color: "#404040" } // Resolution
         ],
-        synopsis: "A single mother, plagued by the violent death of her husband, battles with her son's fear of a monster lurking in the house, but soon discovers a sinister presence all around her. A masterpiece of grief horror.",
+        synopsis: "Amelia, a single mother still plagued by the violent death of her husband, struggles to raise her difficult 6-year-old son, Samuel. When a disturbing storybook called 'Mister Babadook' turns up at their house, Samuel is convinced that the monster in the book is real. As Amelia's sleep deprivation grows, she begins to sense a sinister presence herself, leading to a terrifying battle for her sanity and her son's soul.",
         themes: ["Grief", "Motherhood", "Mental Illness"]
     }),
 
     // 7. The Empty Man
+    // Curve: Mystery -> Cult Intrigue -> Cosmic Dread -> Reality Break -> Nihilism.
+    // Peak: 90 (The Signal - Mind-Bending Reveal).
     516632: createMovieData({ 
         scariness: 82, 
         dominantColor: "#1e3a8a", rating: 6.2, criticsScore: 76, audienceScore: 40, director: "David Prior", 
-        cast: ["James Badge Dale", "Marin Ireland"], boxOffice: "$4 million", budget: "$16 million", 
-        dna: { "Horror": 60, "Mystery": 40 }, // Fixed DNA
+        cast: ["James Badge Dale", "Marin Ireland", "Stephen Root"], boxOffice: "$4 million", budget: "$16 million", 
+        dna: { "Horror": 60, "Mystery": 40 }, 
         scenes: [
-            { time: 20, intensity: 85, label: "The Cave Prologue", color: "#172554" },
-            { time: 50, intensity: 50, label: "The Bridge", color: "#1e3a8a" },
-            { time: 85, intensity: 65, label: "The Campfire", color: "#1d4ed8" },
-            { time: 110, intensity: 88, label: "The Cult", color: "#2563eb" }, // Peak is 88
-            { time: 130, intensity: 90, label: "The Signal", color: "#172554" }
+            { time: 20, intensity: 85, label: "The Cave Prologue", color: "#172554" }, // High Start
+            { time: 50, intensity: 50, label: "The Bridge", color: "#1e3a8a" }, // Investigation
+            { time: 85, intensity: 65, label: "The Campfire", color: "#1d4ed8" }, // Dread
+            { time: 110, intensity: 88, label: "The Cult", color: "#2563eb" }, // Crisis
+            { time: 130, intensity: 90, label: "The Signal", color: "#172554" } // PEAK EXISTENTIAL
         ],
-        synopsis: "On the trail of a missing girl, an ex-cop comes across a secretive group attempting to summon a terrifying supernatural entity. Cosmic cult horror with an unforgettable 20-minute opening.",
+        synopsis: "On the trail of a missing girl, an ex-cop encounters a secretive group attempting to summon a terrifying supernatural entity known as 'The Empty Man.' What starts as an urban legend investigation spirals into a cosmic horror nightmare involving ancient cults, tulpa theory, and the nature of reality itself. Features a legendary 20-minute prologue that stands as its own mini-masterpiece of dread.",
         themes: ["Nihilism", "Cults", "Tulpa Theory"]
     }),
 
     // 8. Barbarian
+    // Curve: Suspense -> Shock -> Backstory -> Horror -> Climax.
+    // Peak: 88 (The Tape Measure - Discovery).
     913290: createMovieData({ 
         scariness: 80, 
         dominantColor: "#111827", rating: 7.0, criticsScore: 93, audienceScore: 71, director: "Zach Cregger", 
-        cast: ["Georgina Campbell", "Bill Skarsgård"], boxOffice: "$45 million", budget: "$4.5 million", 
-        dna: { "Horror": 70, "Thriller": 30 }, // Fixed DNA
+        cast: ["Georgina Campbell", "Bill Skarsgård", "Justin Long"], boxOffice: "$45 million", budget: "$4.5 million", 
+        dna: { "Horror": 70, "Thriller": 30 }, 
         scenes: [
-            { time: 15, intensity: 40, label: "The Basement", color: "#1f2937" },
-            { time: 40, intensity: 88, label: "The Tape Measure", color: "#111827" }, // Peak is 88
-            { time: 60, intensity: 20, label: "The Cut (Flashback)", color: "#374151" },
-            { time: 85, intensity: 75, label: "The Mother", color: "#1f2937" },
-            { time: 95, intensity: 85, label: "Water Tower", color: "#111827" }
+            { time: 15, intensity: 40, label: "The Double Booking", color: "#1f2937" }, // Unease
+            { time: 40, intensity: 88, label: "The Tape Measure", color: "#111827" }, // PEAK DISCOVERY
+            { time: 60, intensity: 20, label: "The Cut (Flashback)", color: "#374151" }, // Reset
+            { time: 85, intensity: 75, label: "The Mother", color: "#1f2937" }, // Horror
+            { time: 95, intensity: 85, label: "Water Tower", color: "#111827" } // Action
         ],
-        synopsis: "A woman staying at an Airbnb discovers that the house she has rented is not what it seems. Features a terrifying first half and a shocking narrative pivot that changes the genre entirely.",
+        synopsis: "A young woman traveling to Detroit for a job interview books a rental home, only to arrive late at night and discover that the house is double-booked and a strange man is already staying there. Against her better judgment, she decides to spend the evening. But she soon discovers that there is a lot more to fear than just an unexpected houseguest. A wild, unpredictable ride that completely shifts genres halfway through.",
         themes: ["Urban Decay", "Toxic Masculinity", "Secrets"]
     }),
 
     // 9. The First Omen
+    // Curve: Faith -> Conspiracy -> Body Horror -> Ritual -> Birth.
+    // Peak: 94 (The Birth Scene - Visceral Horror).
     824372: createMovieData({ 
         scariness: 85, 
         dominantColor: "#991b1b", rating: 6.5, criticsScore: 81, audienceScore: 70, director: "Arkasha Stevenson", 
-        cast: ["Nell Tiger Free", "Ralph Ineson"], boxOffice: "$53 million", budget: "$30 million", 
-        dna: { "Horror": 80, "Mystery": 20 }, // Fixed DNA
+        cast: ["Nell Tiger Free", "Ralph Ineson", "Sonia Braga"], boxOffice: "$53 million", budget: "$30 million", 
+        dna: { "Horror": 80, "Mystery": 20 }, 
         scenes: [
-            { time: 15, intensity: 30, label: "The Convent", color: "#991b1b" },
-            { time: 55, intensity: 94, label: "The Birth Scene", color: "#7f1d1d" }, // 94: Body horror peak
-            { time: 80, intensity: 75, label: "The Discovery", color: "#b91c1c" },
-            { time: 100, intensity: 85, label: "The Ritual", color: "#991b1b" },
-            { time: 115, intensity: 90, label: "It's All For You", color: "#7f1d1d" }
+            { time: 15, intensity: 30, label: "The Convent", color: "#991b1b" }, // Atmosphere
+            { time: 55, intensity: 94, label: "The Birth Scene", color: "#7f1d1d" }, // PEAK BODY HORROR
+            { time: 80, intensity: 75, label: "The Discovery", color: "#b91c1c" }, // Plot Twist
+            { time: 100, intensity: 85, label: "The Ritual", color: "#991b1b" }, // Climax
+            { time: 115, intensity: 90, label: "It's All For You", color: "#7f1d1d" } // Iconic connection
         ],
-        synopsis: "A young American woman is sent to Rome to begin a life of service to the church, but encounters a darkness that causes her to question her own faith and uncovers a terrifying conspiracy.",
+        synopsis: "A young American woman is sent to Rome to begin a life of service to the church. However, she encounters a darkness that causes her to question her own faith and uncovers a terrifying conspiracy within the church to bring about the birth of the Antichrist. A stunningly shot, visceral prequel that honors the original classic while delivering some of the most intense body horror in recent memory.",
         themes: ["Religious Conspiracy", "Bodily Autonomy", "Antichrist"]
     }),
 
     // 10. Late Night with the Devil
+    // Curve: Talk Show -> Unease -> Hypnosis -> Chaos -> Signal Loss.
+    // Peak: 92 (Static - Total Collapse).
     1014590: createMovieData({ 
         scariness: 85, 
         dominantColor: "#c2410c", rating: 7.0, criticsScore: 97, audienceScore: 81, director: "Cameron Cairnes", 
-        cast: ["David Dastmalchian", "Laura Gordon"], boxOffice: "$12 million", budget: "$2 million", 
-        dna: { "Horror": 70, "Thriller": 30 }, // Fixed DNA
+        cast: ["David Dastmalchian", "Laura Gordon", "Ian Bliss"], boxOffice: "$12 million", budget: "$2 million", 
+        dna: { "Horror": 70, "Thriller": 30 }, 
         scenes: [
-            { time: 20, intensity: 30, label: "The Setup", color: "#c2410c" },
-            { time: 50, intensity: 60, label: "The Hypnosis", color: "#ea580c" },
-            { time: 70, intensity: 75, label: "The Manifestation", color: "#f97316" },
-            { time: 85, intensity: 88, label: "Live TV Chaos", color: "#c2410c" }, // Peak is 88
-            { time: 90, intensity: 92, label: "Static", color: "#9a3412" }
+            { time: 20, intensity: 30, label: "The Setup", color: "#c2410c" }, // Tv vibes
+            { time: 50, intensity: 60, label: "The Hypnosis", color: "#ea580c" }, // Creepy
+            { time: 70, intensity: 75, label: "The Manifestation", color: "#f97316" }, // Escalation
+            { time: 85, intensity: 88, label: "Live TV Chaos", color: "#c2410c" }, // Panic
+            { time: 90, intensity: 92, label: "Static", color: "#9a3412" } // PEAK SURREALISM
         ],
-        synopsis: "A live television broadcast in 1977 goes horribly wrong, unleashing evil into the nation's living rooms. Found-footage realism meets 70s aesthetics in a creepy, chaotic ride.",
+        synopsis: "Jack Delroy is the host of a syndicated talk show 'Night Owls' that has long been a trusted companion to insomniacs around the country. But with ratings plummeting, Jack plans a Halloween special in 1977 like no other—unaware he is about to unleash evil into the living rooms of America. Presented as 'found footage' of the broadcast, it captures the 70s aesthetic perfectly while descending into absolute madness.",
         themes: ["Fame", "Occult", "Media Manipulation"]
     })
 };

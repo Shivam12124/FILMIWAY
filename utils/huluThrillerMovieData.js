@@ -109,7 +109,8 @@ const createMovieData = (data) => ({
 
 export const COMPLETE_MOVIE_DATA = {
     // 1. Heat (HEIST MASTERPIECE)
-    // Peak: 98 (The Shootout).
+    // Curve: Slow build -> Tactical tension -> Visceral explosion -> Tragic finale.
+    // Peak: 96 (The Shootout - Genre-defining spectacle).
     949: createMovieData({ 
         suspenseIntensity: 96, 
         complexityLevel: "MASTERPIECE", 
@@ -117,18 +118,19 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Al Pacino", "Robert De Niro", "Val Kilmer"], boxOffice: "$187 million", budget: "$60 million", 
         dna: { "Crime": 50, "Action": 30, "Drama": 20 },
         scenes: [
-            { time: 15, intensity: 30, label: "The Setup", color: "#334155" },
-            { time: 60, intensity: 50, label: "Coffee Shop", color: "#475569" },
-            { time: 105, intensity: 98, label: "The Shootout", color: "#ef4444" }, // Action Peak
-            { time: 140, intensity: 70, label: "The Betrayal", color: "#94a3b8" },
-            { time: 165, intensity: 90, label: "Airport Finale", color: "#b91c1c" } 
+            { time: 15, intensity: 20, label: "The Setup", color: "#334155" }, // Setup
+            { time: 60, intensity: 45, label: "Coffee Shop", color: "#475569" }, // Meaningful engagement
+            { time: 105, intensity: 65, label: "The Bank Job", color: "#94a3b8" }, // Strong Tension
+            { time: 120, intensity: 96, label: "The Shootout", color: "#ef4444" }, // GENRE PEAK
+            { time: 165, intensity: 75, label: "Airport Finale", color: "#b91c1c" } // Tragic Resolution
         ],
-        synopsis: "The gold standard for heist cinema. Between the tactical realism of the downtown LA shootout and the high-stakes cat-and-mouse game between Pacino and De Niro, it remains untouchable. A masterpiece of scale and sound design.",
+        synopsis: "In the sprawling concrete jungle of Los Angeles, a master thief and his elite crew plan one final, impossible heist while being hunted by a relentless, obsessive detective. As the stakes rise, the line between criminal and cop blurs, revealing two men who are mirror images of each other on opposite sides of the law. It culminates in a legendary downtown shootout where tactical realism meets operatic tragedy.",
         themes: ["Duality", "Professionalism", "Obsession"]
     }),
 
     // 2. Black Swan (PSYCHOLOGICAL HORROR)
-    // Peak: 95 (Transformation).
+    // Curve: Unease -> Pressure -> Paranoia -> Total Collapse.
+    // Peak: 95 (The Performance - Psychological collapse).
     44214: createMovieData({ 
         suspenseIntensity: 94, 
         complexityLevel: "PSYCHOLOGICAL", 
@@ -136,18 +138,19 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Natalie Portman", "Mila Kunis"], boxOffice: "$329 million", budget: "$13 million", 
         dna: { "Psychological": 60, "Horror": 40 },
         scenes: [
-            { time: 20, intensity: 30, label: "The Casting", color: "#pink-200" },
-            { time: 50, intensity: 60, label: "The Club", color: "#be123c" },
-            { time: 80, intensity: 85, label: "Transformation", color: "#9f1239" },
-            { time: 95, intensity: 90, label: "The Stab", color: "#881337" },
-            { time: 105, intensity: 95, label: "Perfect", color: "#000000" } // Climax
+            { time: 15, intensity: 20, label: "The Casting", color: "#pink-200" }, // Setup
+            { time: 50, intensity: 55, label: "The Club", color: "#be123c" }, // Loss of control
+            { time: 80, intensity: 75, label: "Metamorphosis", color: "#9f1239" }, // Crisis
+            { time: 100, intensity: 95, label: "Black Swan", color: "#000000" }, // PEAK TRAUMA
+            { time: 108, intensity: 85, label: "I Was Perfect", color: "#881337" } // Devastating Ending
         ],
-        synopsis: "A ballerina slowly loses her grip on reality as she competes for the lead in Swan Lake. Darren Aronofsky’s psychological nightmare is visceral and haunting—a descent into madness that feels like a body-horror fever dream.",
+        synopsis: "Nina, a dedicated ballerina, wins the lead role in Tchaikovsky's Swan Lake, but the pressure to embody both the innocent White Swan and the seductive Black Swan begins to fracture her mind. As a rival dancer threatens her position and her mother's control tightens, Nina's reality warps into a waking nightmare of body horror and paranoia. It is a visceral descent into madness where the pursuit of artistic perfection demands the ultimate sacrifice.",
         themes: ["Perfectionism", "Identity", "Paranoia"]
     }),
 
     // 3. Anatomy of a Fall (LEGAL TENSION)
-    // Peak: 88 (The Argument Recording).
+    // Curve: Mystery -> Investigation -> Emotional Violence -> Ambiguity.
+    // Peak: 88 (The Recording - Emotional shattering).
     915935: createMovieData({ 
         suspenseIntensity: 88, 
         complexityLevel: "CEREBRAL", 
@@ -155,17 +158,19 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Sandra Hüller", "Swann Arlaud"], boxOffice: "$29 million", budget: "$6.7 million", 
         dna: { "Legal": 50, "Mystery": 30, "Drama": 20 },
         scenes: [
-            { time: 10, intensity: 40, label: "The Fall", color: "#93c5fd" },
-            { time: 60, intensity: 65, label: "The Investigation", color: "#60a5fa" },
-            { time: 100, intensity: 88, label: "The Recording", color: "#2563eb" }, // Emotional Peak
-            { time: 130, intensity: 75, label: "The Verdict", color: "#1d4ed8" }
+            { time: 10, intensity: 25, label: "The Fall", color: "#93c5fd" }, // Setup
+            { time: 50, intensity: 45, label: "The Reconstruction", color: "#60a5fa" }, // Intellectual pull
+            { time: 90, intensity: 65, label: "The Son's Testimony", color: "#2563eb" }, // Tension
+            { time: 110, intensity: 88, label: "The Argument", color: "#1d4ed8" }, // PEAK CONFLICT
+            { time: 145, intensity: 60, label: "The Verdict", color: "#1e3a8a" } // Open/Unsettling
         ],
-        synopsis: "A man dies in the snow outside his chalet. Was it suicide, an accident, or did his wife do it? This Palme d'Or winner is a cold, calculated dissection of a relationship that plays like a high-tension psychological thriller.",
+        synopsis: "When a man falls to his death in the snow outside his secluded chalet, his wife Sandra becomes the only suspect in a case with no witnesses other than their visually impaired son. The ensuring trial transforms into a forensic dissection of their turbulent marriage, exposing resentments, secrets, and ambiguities that make the truth impossible to pin down. It is a courtroom drama that plays like a psychological thriller, questioning whether justice can ever truly be found.",
         themes: ["Truth", "Marriage", "Ambiguity"]
     }),
 
     // 4. Donnie Darko (MIND-BENDING)
-    // Peak: 85 (The End of the World).
+    // Curve: Weirdness -> Mystery -> Dread -> Existential Peak.
+    // Peak: 85 (Mad World - Existential Rupture).
     141: createMovieData({ 
         suspenseIntensity: 85, 
         complexityLevel: "SURREAL", 
@@ -173,17 +178,19 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Jake Gyllenhaal", "Jena Malone"], boxOffice: "$7.5 million", budget: "$4.5 million", 
         dna: { "Sci-Fi": 40, "Psychological": 40, "Teen": 20 },
         scenes: [
-            { time: 10, intensity: 25, label: "Wake Up", color: "#5b21b6" },
-            { time: 50, intensity: 60, label: "Frank", color: "#6d28d9" },
-            { time: 90, intensity: 75, label: "Cellar Door", color: "#7c3aed" },
-            { time: 110, intensity: 85, label: "Mad World", color: "#4c1d95" } // Narrative Peak
+            { time: 10, intensity: 15, label: "28 Days", color: "#5b21b6" }, // Setup
+            { time: 45, intensity: 40, label: "The Axe", color: "#6d28d9" }, // Unease
+            { time: 80, intensity: 65, label: "Fear & Love", color: "#7c3aed" }, // Tension
+            { time: 105, intensity: 85, label: "Mad World", color: "#4c1d95" }, // PEAK EXISTENTIAL
+            { time: 113, intensity: 50, label: "Waking Up", color: "#2e1065" } // Bittersweet
         ],
-        synopsis: "A troubled teenager is plagued by visions of a large, demonic rabbit that predicts the end of the world. The ultimate 'mind-bending' thriller that demands a second viewing.",
+        synopsis: "In a quiet suburban town, troubled teenager Donnie narrowly escapes a jet engine crashing into his bedroom after being lured out by a terrifying figure in a rabbit suit named Frank. Frank tells him the world will end in 28 days, setting Donnie on a bizarre path of time travel, metaphysics, and vandalism. As the countdown ticks away, Donnie must unravel the fabric of the universe to understand his role in a cosmic destiny.",
         themes: ["Time Travel", "Fate", "Mental Health"]
     }),
 
     // 5. Before the Devil Knows You're Dead (NON-LINEAR TRAGEDY)
-    // Peak: 90 (The Robbery Gone Wrong).
+    // Curve: Desperation -> Shock -> Spiral -> Devastation.
+    // Peak: 90 (The Hospital - Irreversible Rupture).
     7972: createMovieData({ 
         suspenseIntensity: 89, 
         complexityLevel: "GRITTY", 
@@ -191,17 +198,19 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Philip Seymour Hoffman", "Ethan Hawke"], boxOffice: "$25 million", budget: "$18 million", 
         dna: { "Crime": 60, "Drama": 40 },
         scenes: [
-            { time: 15, intensity: 50, label: "The Plan", color: "#c2410c" },
-            { time: 45, intensity: 90, label: "The Robbery", color: "#ea580c" }, // Shock Peak
-            { time: 80, intensity: 75, label: "The Aftermath", color: "#fb923c" },
-            { time: 110, intensity: 85, label: "The Hospital", color: "#7c2d12" }
+            { time: 10, intensity: 20, label: "The Proposal", color: "#c2410c" }, // Setup
+            { time: 40, intensity: 75, label: "The Heist", color: "#ea580c" }, // Crisis
+            { time: 70, intensity: 60, label: "The Fallout", color: "#fb923c" }, // Tension
+            { time: 100, intensity: 90, label: "The Hospital", color: "#7c2d12" }, // PEAK TRAGEDY
+            { time: 115, intensity: 70, label: "Final Breath", color: "#431407" } // Bleak Ending
         ],
-        synopsis: "Two desperate brothers plot the 'perfect' robbery of their parents' jewelry store. Sidney Lumet’s final film is a masterclass in tension, where the non-linear structure makes the inevitable tragedy feel like a slow-motion car crash.",
+        synopsis: "Desperate for cash, two brothers hatch a seemingly victimless plan to rob their parents' jewelry store, assuming insurance will cover the loss. But when the heist goes horribly wrong, it triggers a cascading series of betrayals, violence, and emotional devastation that tears the family apart. Sidney Lumet’s final film uses a fractured timeline to maximize the tension, making the inevitable tragedy feel like a slow-motion car crash you can't look away from.",
         themes: ["Greed", "Family", "Consequences"]
     }),
 
     // 6. The Illusionist (MYSTERY/PERIOD)
-    // Peak: 80 (The Trick).
+    // Curve: Mystery -> Romance -> Threat -> Reveal.
+    // Peak: 80 (The Orange Tree - Truth Revelation).
     1491: createMovieData({ 
         suspenseIntensity: 78, 
         complexityLevel: "ELEGANT", 
@@ -209,17 +218,19 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Edward Norton", "Jessica Biel"], boxOffice: "$87 million", budget: "$16 million", 
         dna: { "Mystery": 60, "Romance": 40 },
         scenes: [
-            { time: 20, intensity: 30, label: "The Locket", color: "#fbbf24" },
-            { time: 60, intensity: 60, label: "The Prince", color: "#d97706" },
-            { time: 90, intensity: 75, label: "The Arrest", color: "#b45309" },
-            { time: 105, intensity: 80, label: "The Orange Tree", color: "#f59e0b" } // Twist Peak
+            { time: 15, intensity: 15, label: "Childhood", color: "#fbbf24" }, // Setup
+            { time: 50, intensity: 45, label: "The Performance", color: "#d97706" }, // Wonder/Tension
+            { time: 80, intensity: 65, label: "The Ultimatum", color: "#b45309" }, // Conflict
+            { time: 100, intensity: 80, label: "The Disappearance", color: "#f59e0b" }, // PEAK MYSTERY
+            { time: 110, intensity: 50, label: "The Truth", color: "#78350f" } // Satisfaction
         ],
-        synopsis: "A magician in 1900s Vienna uses his craft to reclaim his lost love from a corrupt Prince. Sophisticated, lush, and clever—it relies on atmosphere and a brilliant final twist rather than cheap scares.",
+        synopsis: "In turn-of-the-century Vienna, a mysterious magician uses his supernatural abilities to win back the love of a woman engaged to a corrupt and dangerous Crown Prince. As the Prince's jealousy turns violent, the illusionist constructs his greatest trick yet—one that blurs the line between magic and reality to destabilize the monarchy itself. Sophisticated and atmospheric, it builds toward a final revelation that redefines everything you've seen.",
         themes: ["Magic", "Class", "Deception"]
     }),
 
     // 7. Fresh (HORROR THRILLER)
-    // Peak: 92 (The Dinner).
+    // Curve: Rom-Com -> Sharp Turn -> Survival -> Climax.
+    // Peak: 92 (The Dinner Table - Visceral Horror).
     787752: createMovieData({ 
         suspenseIntensity: 85, 
         complexityLevel: "TWISTED", 
@@ -227,17 +238,19 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Daisy Edgar-Jones", "Sebastian Stan"], boxOffice: "Streaming", budget: "N/A", 
         dna: { "Horror": 50, "Thriller": 50 },
         scenes: [
-            { time: 15, intensity: 20, label: "The Date", color: "#fbcfe8" },
-            { time: 35, intensity: 80, label: "The Twist", color: "#db2777" }, // Tonal Shift
-            { time: 70, intensity: 85, label: "The Surgery", color: "#be123c" },
-            { time: 100, intensity: 92, label: "The Escape", color: "#881337" }
+            { time: 10, intensity: 10, label: "Swipe Left", color: "#fbcfe8" }, // Low Start
+            { time: 33, intensity: 85, label: "The Turn", color: "#db2777" }, // SHOCK SPIKE
+            { time: 60, intensity: 65, label: "Appetite", color: "#be123c" }, // Dread
+            { time: 95, intensity: 92, label: "The Escape", color: "#881337" }, // PEAK SURVIVAL
+            { time: 110, intensity: 60, label: "Survivor", color: "#4c0519" } // Relief
         ],
-        synopsis: "Modern dating is a horror show—literally. Sebastian Stan is the 'perfect' guy with a very specific appetite. A bold tonal shift that starts as a rom-com and pivots into a grueling survival thriller.",
+        synopsis: "Frustrated with the horrors of modern dating apps, Noa takes a chance on a charming man she meets in a grocery store, only to discover his 'perfect guy' persona hides a terrifying appetite. What begins as a sweet romantic comedy takes a sharp, brutal turn into survival horror as Noa discovers the true nature of his business. A bold, tonal high-wire act that satirizes the commodification of women's bodies.",
         themes: ["Dating", "Survival", "Commoditization"]
     }),
 
     // 8. The Equalizer (ACTION THRILLER)
-    // Peak: 88 (Home Depot Climax).
+    // Curve: Calm -> Warning -> Release -> War.
+    // Peak: 88 (Home Depot - Heroic Domination).
     156022: createMovieData({ 
         suspenseIntensity: 82, 
         complexityLevel: "VISCERAL", 
@@ -245,17 +258,19 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Denzel Washington", "Chloë Grace Moretz"], boxOffice: "$192 million", budget: "$55 million", 
         dna: { "Action": 70, "Thriller": 30 },
         scenes: [
-            { time: 20, intensity: 40, label: "The Diner", color: "#334155" },
-            { time: 45, intensity: 75, label: "19 Seconds", color: "#475569" },
-            { time: 90, intensity: 60, label: "Interrogation", color: "#1e293b" },
-            { time: 120, intensity: 88, label: "Hardware Store", color: "#0f172a" } // Action Peak
+            { time: 15, intensity: 15, label: "Quiet Life", color: "#334155" }, // Setup
+            { time: 40, intensity: 50, label: "The Warning", color: "#475569" }, // Tension
+            { time: 55, intensity: 75, label: "19 Seconds", color: "#1e293b" }, // Action spike
+            { time: 110, intensity: 88, label: "Hardware Store", color: "#0f172a" }, // PEAK ACTION
+            { time: 130, intensity: 40, label: "Balance", color: "#020617" } // Resolution
         ],
-        synopsis: "Pure catharsis. Denzel Washington is a retired black-ops commando who comes out of the shadows to protect a young girl. Denzel’s precision and the brutal, tactical choreography make this the peak of the 'Vigilante' sub-genre.",
+        synopsis: "Robert McCall, a retired black-ops commando living a quiet life, is forced out of self-imposed exile to protect a young girl from ultra-violent Russian gangsters. Utilizing his elite tactical skills, he wages a one-man war against the criminal organization, turning everyday objects into lethal weapons. It is a masterclass in vigilante cinema, delivering brutal, calculated catharsis for anyone who believes in balancing the scales.",
         themes: ["Justice", "Vigilantism", "Skill"]
     }),
 
     // 9. How to Blow Up a Pipeline (ECO-THRILLER)
-    // Peak: 85 (Execution).
+    // Curve: Planning -> Risk -> Execution -> Consequences.
+    // Peak: 85 (Detonation - Crisis).
     1041513: createMovieData({ 
         suspenseIntensity: 84, 
         complexityLevel: "POLITICAL", 
@@ -263,17 +278,19 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Ariela Barer", "Kristine Froseth"], boxOffice: "$1 million", budget: "$1 million", 
         dna: { "Thriller": 70, "Politics": 30 },
         scenes: [
-            { time: 15, intensity: 30, label: "The Assembly", color: "#f59e0b" },
-            { time: 50, intensity: 70, label: "The Desert", color: "#d97706" },
-            { time: 80, intensity: 85, label: "The Sabotage", color: "#b45309" }, // Tension Peak
-            { time: 95, intensity: 60, label: "The Fallout", color: "#78350f" }
+            { time: 15, intensity: 25, label: "The Gathering", color: "#f59e0b" }, // Setup
+            { time: 45, intensity: 55, label: "Building It", color: "#d97706" }, // Process
+            { time: 70, intensity: 75, label: "The Obstacle", color: "#b45309" }, // Complication
+            { time: 90, intensity: 85, label: "Detonation", color: "#78350f" }, // PEAK TENSION
+            { time: 100, intensity: 50, label: "Fallout", color: "#451a03" } // Ending
         ],
-        synopsis: "A group of young environmental activists executes a daring plan to sabotage a major oil pipeline. It’s an eco-thriller that moves with the frantic energy of an undercover heist movie. Gritty, realistic, and incredibly polarizing.",
+        synopsis: "A crew of young environmental activists from diverse backgrounds converges in the Texas desert to execute a daring plan: sabotage a major oil pipeline to disrupt the fossil fuel industry. Filmed with the nervous energy of a heist movie, the film explores the moral and physical stakes of radical activism. It is a gritty, high-tension thriller that asks how far is too far when fighting for the planet's survival.",
         themes: ["Activism", "Sabotage", "Climate Change"]
     }),
 
     // 10. The Pledge (NEO-NOIR)
-    // Peak: 75 (The Trap).
+    // Curve: Promise -> Obsession -> Trap -> Void.
+    // Peak: 80 (The Ambush - Psychological Pressure).
     11232: createMovieData({ 
         suspenseIntensity: 80, 
         complexityLevel: "BLEAK", 
@@ -281,12 +298,13 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Jack Nicholson", "Benicio Del Toro"], boxOffice: "$29 million", budget: "$35 million", 
         dna: { "Mystery": 60, "Drama": 40 },
         scenes: [
-            { time: 10, intensity: 30, label: "Retirement", color: "#a8a29e" },
-            { time: 50, intensity: 50, label: "The Promise", color: "#78716c" },
-            { time: 90, intensity: 65, label: "The Bait", color: "#57534e" },
-            { time: 115, intensity: 75, label: "The Wait", color: "#44403c" } // Psychological Peak
+            { time: 10, intensity: 15, label: "Retirement", color: "#a8a29e" }, // Setup
+            { time: 40, intensity: 45, label: "The Promise", color: "#78716c" }, // Motivation
+            { time: 80, intensity: 65, label: "The Bait", color: "#57534e" }, // Tension
+            { time: 110, intensity: 80, label: "The Wait", color: "#44403c" }, // PEAK PSYCHOLOGICAL
+            { time: 120, intensity: 75, label: "The Void", color: "#292524" } // Devastating/Open
         ],
-        synopsis: "On the day of his retirement, a detective makes a promise to a grieving mother that he will find her daughter’s killer. A bleak, haunting character study directed by Sean Penn that subverts every 'hero cop' trope in exchange for a devastating reality.",
+        synopsis: "On the day of his retirement, a seasoned homicide detective makes a solemn pledge to a grieving mother that he will find the man who murdered her young daughter. As his obsession with the case grows, he sets a dangerous trap using another child as bait, slowly losing his grip on sanity and morality. A bleak, haunting character study that subverts the 'hero cop' trope in exchange for a devastating, ambiguous reality.",
         themes: ["Obsession", "Failure", "Promises"]
     })
 };

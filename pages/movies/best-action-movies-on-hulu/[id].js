@@ -291,7 +291,7 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
 
     "genre": data?.dna ? Object.keys(data.dna) : ["Action", "Thriller"],
     "keywords": "Action Movies Hulu, Best Action Films, " + (data?.themes ? data.themes.join(", ") : ""),
-    "url": `https://filmiway.com/collection/best-action-movies-on-hulu/${movie.imdbID}`, // Changed to collection URL pattern
+    "url": `https://filmiway.com/movies/best-action-movies-on-hulu/${movie.imdbID}`, // Changed to collection URL pattern
     "author": {
       "@type": "Organization",
       "name": "Filmiway",
