@@ -1,160 +1,128 @@
-// components/MovieDetailsSection.js - FIXED CARD HEIGHTS & ALIGNMENT ✅
+// components/MovieDetailsSection.js - AUTO-FETCH ALL DATA (Cast, Crew, Budget, Ratings) ✅
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Users, Film, BookOpen, Star } from 'lucide-react';
 
 // ==================== DATA IMPORTS ====================
-
-// 1. Base / Standard
 import { COMPLETE_MOVIE_DATA, STRATEGIC_QUOTES } from '../utils/movieData';
-
-// 2. Specialized Collections
 import { 
   COMPLETE_MOVIE_DATA as SURVIVAL_MOVIE_DATA, 
   STRATEGIC_QUOTES as SURVIVAL_QUOTES, 
   SENSITIVE_TIMELINES 
 } from '../utils/survivalMovieData';
-
 import { 
   COMPLETE_MOVIE_DATA as BLACK_SWAN_MOVIE_DATA, 
   STRATEGIC_QUOTES as BLACK_SWAN_QUOTES, 
   SENSITIVE_TIMELINES as BLACK_SWAN_SENSITIVE_TIMELINES 
 } from '../utils/blackSwanMovieData';
-
 import { 
   COMPLETE_MOVIE_DATA as MATRIX_MOVIE_DATA, 
   STRATEGIC_QUOTES as MATRIX_QUOTES, 
   SENSITIVE_TIMELINES as MATRIX_SENSITIVE_TIMELINES 
 } from '../utils/matrixMovieData';
-
 import { 
   COMPLETE_MOVIE_DATA as PARASITE_MOVIE_DATA, 
   STRATEGIC_QUOTES as PARASITE_QUOTES, 
   SENSITIVE_TIMELINES as PARASITE_SENSITIVE_TIMELINES 
 } from '../utils/parasiteMovieData';
- 
 import { 
   COMPLETE_MOVIE_DATA as OLDBOY_MOVIE_DATA, 
   STRATEGIC_QUOTES as OLDBOY_QUOTES, 
   SENSITIVE_TIMELINES as OLDBOY_SENSITIVE_TIMELINES 
 } from '../utils/oldboyMovieData';
-
 import { 
   COMPLETE_MOVIE_DATA as SE7EN_MOVIE_DATA, 
   STRATEGIC_QUOTES as SE7EN_QUOTES, 
   SENSITIVE_TIMELINES as SE7EN_SENSITIVE_TIMELINES 
 } from '../utils/se7enMovieData';
-
 import { 
   COMPLETE_MOVIE_DATA as INTERSTELLAR_MOVIE_DATA, 
   STRATEGIC_QUOTES as INTERSTELLAR_QUOTES, 
   SENSITIVE_TIMELINES as INTERSTELLAR_TIMELINES 
 } from '../utils/interstellarMovieData';
-
 import { 
   COMPLETE_MOVIE_DATA as DONNIE_DARKO_MOVIE_DATA, 
   STRATEGIC_QUOTES as DONNIE_DARKO_QUOTES, 
   SENSITIVE_TIMELINES as DONNIE_DARKO_SENSITIVE_TIMELINES 
 } from '../utils/donnieDarkoMovieData';
-
 import { 
   COMPLETE_MOVIE_DATA as EYES_WIDE_SHUT_MOVIE_DATA, 
   STRATEGIC_QUOTES as EYES_WIDE_SHUT_QUOTES, 
   SENSITIVE_TIMELINES as EYES_WIDE_SHUT_SENSITIVE_TIMELINES 
 } from '../utils/eyesWideShutMovieData';
-
-// ✅ HULU ACTION COLLECTION
 import { 
   COMPLETE_MOVIE_DATA as HULU_ACTION_MOVIE_DATA, 
   STRATEGIC_QUOTES as HULU_ACTION_QUOTES, 
   SENSITIVE_TIMELINES as HULU_ACTION_SENSITIVE_TIMELINES 
 } from '../utils/huluActionMovieData';
-
-// ✅ HULU ROMANCE COLLECTION
 import { 
   COMPLETE_MOVIE_DATA as HULU_ROMANCE_MOVIE_DATA, 
   STRATEGIC_QUOTES as HULU_ROMANCE_QUOTES, 
   SENSITIVE_TIMELINES as HULU_ROMANCE_SENSITIVE_TIMELINES 
 } from '../utils/huluRomanceMovieData';
-
-// ✅ HULU HORROR COLLECTION
 import { 
   COMPLETE_MOVIE_DATA as HULU_HORROR_MOVIE_DATA, 
   STRATEGIC_QUOTES as HULU_HORROR_QUOTES, 
   SENSITIVE_TIMELINES as HULU_HORROR_SENSITIVE_TIMELINES 
 } from '../utils/huluHorrorMovieData';
-
-// ✅ HULU COMEDY COLLECTION
 import { 
   COMPLETE_MOVIE_DATA as HULU_COMEDY_MOVIE_DATA, 
   STRATEGIC_QUOTES as HULU_COMEDY_QUOTES, 
   SENSITIVE_TIMELINES as HULU_COMEDY_SENSITIVE_TIMELINES 
 } from '../utils/huluComedyMovieData';
-
-// ✅ HULU SCI-FI COLLECTION
 import { 
   COMPLETE_MOVIE_DATA as HULU_SCIFI_MOVIE_DATA, 
   STRATEGIC_QUOTES as HULU_SCIFI_QUOTES, 
   SENSITIVE_TIMELINES as HULU_SCIFI_SENSITIVE_TIMELINES 
 } from '../utils/huluSciFiMovieData';
-
-// ✅ NEW: HULU THRILLER COLLECTION
 import { 
   COMPLETE_MOVIE_DATA as HULU_THRILLER_MOVIE_DATA, 
   STRATEGIC_QUOTES as HULU_THRILLER_QUOTES, 
   SENSITIVE_TIMELINES as HULU_THRILLER_SENSITIVE_TIMELINES 
 } from '../utils/huluThrillerMovieData';
-
-// 3. Recently Converted Collections
+import { 
+  COMPLETE_MOVIE_DATA as HULU_BEST_MOVIE_DATA, 
+  HULU_BEST_MOVIE_FAQS,
+  SENSITIVE_TIMELINES as HULU_BEST_SENSITIVE_TIMELINES 
+} from '../utils/huluBestMoviesData';
 import { 
   COMPLETE_MOVIE_DATA as CRIME_THRILLER_MOVIE_DATA, 
   SENSITIVE_TIMELINES as CRIME_THRILLER_SENSITIVE_TIMELINES 
 } from '../utils/crimeThrillerMovieData';
-
 import { 
   COMPLETE_MOVIE_DATA as HEIST_THRILLER_MOVIE_DATA, 
   SENSITIVE_TIMELINES as HEIST_THRILLER_SENSITIVE_TIMELINES 
 } from '../utils/heistThrillerMovieData';
-
 import { 
   COMPLETE_MOVIE_DATA as TIME_TRAVEL_MOVIE_DATA, 
   SENSITIVE_TIMELINES as TIME_TRAVEL_SENSITIVE_TIMELINES 
 } from '../utils/timeTravelMovieData';
-
 import { 
   COMPLETE_MOVIE_DATA as SCI_FI_MOVIE_DATA, 
   SENSITIVE_TIMELINES as SCI_FI_SENSITIVE_TIMELINES 
 } from '../utils/sciFiMovieData';
-
 import { 
   COMPLETE_MOVIE_DATA as REVENGE_MOVIE_DATA, 
   SENSITIVE_TIMELINES as REVENGE_SENSITIVE_TIMELINES 
 } from '../utils/revengeMovieData';
-
 import { 
   COMPLETE_MOVIE_DATA as WAR_FILMS_MOVIE_DATA 
 } from '../utils/warFilmsMovieData';
-
 import { 
   COMPLETE_MOVIE_DATA as THRILLER_MOVIE_DATA, 
   SENSITIVE_TIMELINES as THRILLER_SENSITIVE_TIMELINES 
 } from '../utils/thrillerMovieData';
-
 import { 
   COMPLETE_MOVIE_DATA as MYSTERY_THRILLER_MOVIE_DATA, 
   SENSITIVE_TIMELINES as MYSTERY_THRILLER_SENSITIVE_TIMELINES 
 } from '../utils/mysteryThrillerMovieData';
-
 import { 
   COMPLETE_MOVIE_DATA as DETECTIVE_THRILLER_MOVIE_DATA 
 } from '../utils/detectiveThrillerMovieData';
-
 import { 
   COMPLETE_MOVIE_DATA as PSYCH_THRILLER_MOVIE_DATA 
 } from '../utils/psychologicalThrillerMovieData';
-
-import { COMPLETE_MOVIE_DATA as DRAMA_MOVIE_DATA } from '../utils/dramaMovieData';
 
 
 // ==================== COMPONENT IMPORTS ====================
@@ -169,7 +137,7 @@ import SEOFAQSection from './SEOFAQSection';
 import MementoSEOFAQSection from './MementoSEOFAQSection';
 import ShutterIslandSEOFAQSection from './ShutterIslandSEOFAQSection';
 import SurvivalSEOFAQSection from './SurvivalSEOFAQSection';
-import DramaSEOFAQSection from './DramaSEOFAQSection';
+
 import ThrillerSEOFAQSection from './ThrillerSEOFAQSection';
 import MysteryThrillerSEOFAQSection from './MysteryThrillerSEOFAQSection';
 import DetectiveThrillerSEOFAQSection from './DetectiveThrillerSEOFAQSection';
@@ -193,7 +161,8 @@ import HuluRomanceSEOFAQSection from './HuluRomanceSEOFAQSection';
 import HuluHorrorSEOFAQSection from './HuluHorrorSEOFAQSection';
 import HuluComedySEOFAQSection from './HuluComedySEOFAQSection';
 import HuluSciFiSEOFAQSection from './HuluSciFiSEOFAQSection';
-import HuluThrillerSEOFAQSection from './HuluThrillerSEOFAQSection'; // ✅ Added Thriller FAQ
+import HuluThrillerSEOFAQSection from './HuluThrillerSEOFAQSection';
+import HuluBestSEOFAQSection from './HuluBestSEOFAQSection';
 
 const MovieDetailsSection = React.memo(({
   movie,
@@ -225,7 +194,8 @@ const MovieDetailsSection = React.memo(({
   fromHuluHorrorCollection,
   fromHuluComedyCollection,
   fromHuluSciFiCollection,
-  fromHuluThrillerCollection // ✅ Added prop
+  fromHuluThrillerCollection,
+  fromHuluBestCollection
 }) => {
 
  if (!movie) return null;
@@ -233,7 +203,8 @@ const MovieDetailsSection = React.memo(({
  const safeLookup = (collection, id) => (collection && id && collection[id]) || null;
 
  // ✅ UNIFIED MOVIE INFO LOOKUP
- const movieInfo = fromHuluThrillerCollection ? safeLookup(HULU_THRILLER_MOVIE_DATA, movie.tmdbId) // ✅ Added check
+ const movieInfo = fromHuluBestCollection ? safeLookup(HULU_BEST_MOVIE_DATA, movie.tmdbId)
+  : fromHuluThrillerCollection ? safeLookup(HULU_THRILLER_MOVIE_DATA, movie.tmdbId)
   : fromHuluSciFiCollection ? safeLookup(HULU_SCIFI_MOVIE_DATA, movie.tmdbId)
   : fromHuluComedyCollection ? safeLookup(HULU_COMEDY_MOVIE_DATA, movie.tmdbId)
   : fromHuluHorrorCollection ? safeLookup(HULU_HORROR_MOVIE_DATA, movie.tmdbId)
@@ -273,25 +244,94 @@ const MovieDetailsSection = React.memo(({
    boxOffice: 'N/A',
    budget: 'N/A',
    synopsis: 'A compelling exploration of cinema.',
-   ageRating: 'R'
+   ageRating: 'Rated'
  });
 
  const title = movie.Title || (movieInfo && movieInfo.title) || 'Unknown Title';
  const safeMovieInfo = movieInfo || getMovieSpecificData(title);
 
- // Extract details
- const director = safeMovieInfo.director || movie.Director || 'Unknown Director';
  const year = movie.Year || movie.year || '20XX';
  const runtime = safeMovieInfo.runtime || movie.Runtime || '120 min';
- const ageRating = safeMovieInfo.ageRating || movie.Rated || 'R';
- const cast = safeMovieInfo.cast?.join(', ') || '';
- const boxOffice = safeMovieInfo.boxOffice || 'N/A';
- const budget = safeMovieInfo.budget || 'N/A';
  const rating = safeMovieInfo.rating || movie.imdbRating || 7.5;
+
+ // 🔥🔥🔥 AUTO-FETCH LOGIC FOR ALL MOVIE DATA 🔥🔥🔥
+ // Initialize with static data (fallback)
+ const [dynamicMovieData, setDynamicMovieData] = useState({
+    director: safeMovieInfo.director || movie.Director || 'Unknown Director',
+    cast: safeMovieInfo.cast?.join(', ') || '',
+    budget: safeMovieInfo.budget || 'N/A',
+    boxOffice: safeMovieInfo.boxOffice || 'N/A',
+    ageRating: safeMovieInfo.ageRating || 'Rated'
+ });
+
+ useEffect(() => {
+    if (!movie.tmdbId) return;
+
+    const fetchAllData = async () => {
+        try {
+            const API_KEY = 'a07e22bc18f5cb106bfe4cc1f83ad8ed';
+            
+            // Parallel Fetching for Speed
+            const [detailsRes, creditsRes, releasesRes] = await Promise.all([
+                fetch(`https://api.themoviedb.org/3/movie/${movie.tmdbId}?api_key=${API_KEY}`),
+                fetch(`https://api.themoviedb.org/3/movie/${movie.tmdbId}/credits?api_key=${API_KEY}`),
+                fetch(`https://api.themoviedb.org/3/movie/${movie.tmdbId}/release_dates?api_key=${API_KEY}`)
+            ]);
+
+            const details = await detailsRes.json();
+            const credits = await creditsRes.json();
+            const releases = await releasesRes.json();
+
+            // --- 1. PROCESSING BUDGET & REVENUE ---
+            const formatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
+            
+            const newBudget = details.budget && details.budget > 0 
+                ? formatter.format(details.budget) 
+                : dynamicMovieData.budget; // Fallback to static if 0
+
+            const newRevenue = details.revenue && details.revenue > 0 
+                ? formatter.format(details.revenue) 
+                : dynamicMovieData.boxOffice; // Fallback to static if 0
+
+            // --- 2. PROCESSING CAST & DIRECTOR ---
+            const directorObj = credits.crew?.find(person => person.job === 'Director');
+            const newDirector = directorObj ? directorObj.name : dynamicMovieData.director;
+
+            const topCast = credits.cast?.slice(0, 3).map(c => c.name).join(', ') || dynamicMovieData.cast;
+
+            // --- 3. PROCESSING AGE RATING ---
+            let newRating = dynamicMovieData.ageRating;
+            // Look for US certification
+            const usRelease = releases.results?.find(r => r.iso_3166_1 === 'US');
+            if (usRelease) {
+                // Find first non-empty certification
+                const cert = usRelease.release_dates.find(d => d.certification !== '')?.certification;
+                if (cert) newRating = cert;
+            }
+
+            // Update State with API Data
+            setDynamicMovieData({
+                director: newDirector,
+                cast: topCast,
+                budget: newBudget,
+                boxOffice: newRevenue,
+                ageRating: newRating
+            });
+
+        } catch (error) {
+            console.error("TMDB Auto-Fetch Failed:", error);
+            // If fails, it silently keeps the static data (safe fallback)
+        }
+    };
+
+    fetchAllData();
+ }, [movie.tmdbId]);
+ // 🔥🔥🔥 END AUTO-FETCH LOGIC 🔥🔥🔥
 
  // ✅ UNIFIED SENSITIVE SCENES LOOKUP
  const sensitiveScenes = safeMovieInfo.sensitiveScenes 
-   || HULU_THRILLER_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes // ✅ Added Thriller
+   || HULU_BEST_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
+   || HULU_THRILLER_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || HULU_SCIFI_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
    || HULU_COMEDY_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || HULU_HORROR_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
@@ -315,8 +355,9 @@ const MovieDetailsSection = React.memo(({
    || SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
    || [];
 
- // ✅ DYNAMIC SCORE VALUE SELECTION
- const scoreValue = fromHuluThrillerCollection ? movie.suspenseIntensity ?? safeMovieInfo.suspenseIntensity ?? 0 // ✅ Thriller uses Suspense
+ // ✅ DYNAMIC SCORE VALUE SELECTION (Same as before)
+ const scoreValue = fromHuluBestCollection ? movie.adrenalineScore ?? safeMovieInfo.adrenalineScore ?? 0 
+   : fromHuluThrillerCollection ? movie.suspenseIntensity ?? safeMovieInfo.suspenseIntensity ?? 0
    : fromHuluSciFiCollection ? movie.visualSpectacle ?? safeMovieInfo.visualSpectacle ?? 0 
    : fromHuluComedyCollection ? movie.laughterIndex ?? safeMovieInfo.laughterIndex ?? 0 
    : fromHuluHorrorCollection ? movie.scariness ?? safeMovieInfo.scariness ?? 0 
@@ -332,7 +373,7 @@ const MovieDetailsSection = React.memo(({
    : fromRevengeCollection ? movie.revengeIntensity ?? safeMovieInfo.revengeIntensity ?? 0
    : fromWarFilmsCollection ? movie.warIntensity ?? safeMovieInfo.warIntensity ?? 0
    : fromSciFiCollection ? movie.sciFiComplexity ?? safeMovieInfo.sciFiComplexity ?? 0
-   : fromInterstellarCollection ? movie.spaceComplexity ?? safeMovieInfo.spaceComplexity ?? 0
+   : fromInterstellarCollection ? movie. sciFiComplexity?? safeMovieInfo. sciFiComplexity?? 0
    : fromTimeTravelCollection ? movie.timeTravelIntensity ?? safeMovieInfo.timeTravelIntensity ?? 0
    : fromHeistThrillerCollection ? movie.heistComplexity ?? safeMovieInfo.heistComplexity ?? 0
    : fromCrimeThrillerCollection ? movie.suspenseIntensity ?? safeMovieInfo.suspenseIntensity ?? 0
@@ -348,51 +389,59 @@ const MovieDetailsSection = React.memo(({
  const complexityLevel = safeMovieInfo.complexityLevel || 'HIGH';
 
  const getComplexityColor = (level) => {
-   if (fromHuluThrillerCollection) { // ✅ Added Thriller colors (Red/Dark Red)
+   if (fromHuluBestCollection) { 
         switch (level) {
-            case 'MASTERPIECE': return '#ef4444'; // Red
-            case 'VISCERAL': return '#b91c1c'; // Dark Red
-            case 'CEREBRAL': return '#991b1b'; // Deep Red
-            default: return '#f87171'; // Light Red
+            case 'ESSENTIAL': return '#f59e0b'; // Gold
+            case 'LEGENDARY': return '#d97706'; // Dark Gold
+            case 'MASTERPIECE': return '#b45309'; // Deep Amber
+            default: return '#fbbf24'; // Light Gold
+        }
+   }
+   if (fromHuluThrillerCollection) {
+        switch (level) {
+            case 'MASTERPIECE': return '#ef4444'; 
+            case 'VISCERAL': return '#b91c1c'; 
+            case 'CEREBRAL': return '#991b1b'; 
+            default: return '#f87171'; 
         }
    }
    if (fromHuluSciFiCollection) { 
         switch (level) {
-            case 'LEGENDARY': return '#0ea5e9'; // Deep Cyan
-            case 'PUZZLE': return '#a855f7'; // Purple
-            case 'MASTERPIECE': return '#22d3ee'; // Bright Cyan
-            default: return '#38bdf8'; // Sky Blue
+            case 'LEGENDARY': return '#0ea5e9'; 
+            case 'PUZZLE': return '#a855f7'; 
+            case 'MASTERPIECE': return '#22d3ee'; 
+            default: return '#38bdf8'; 
         }
    }
    if (fromHuluComedyCollection) {
         switch (level) {
-            case 'LEGENDARY': return '#ca8a04'; // Deep Gold
-            case 'CHAOTIC': return '#ea580c'; // Orange
-            case 'MASTERPIECE': return '#eab308'; // Dark Yellow
-            default: return '#facc15'; // Bright Yellow
+            case 'LEGENDARY': return '#ca8a04'; 
+            case 'CHAOTIC': return '#ea580c'; 
+            case 'MASTERPIECE': return '#eab308'; 
+            default: return '#facc15'; 
         }
    }
    if (fromHuluHorrorCollection) {
         switch (level) {
-            case 'TRAUMA': return '#7f1d1d'; // Dark Red
-            case 'DREAD': return '#dc2626'; // Red
-            case 'DISTURBING': return '#ea580c'; // Orange
+            case 'TRAUMA': return '#7f1d1d'; 
+            case 'DREAD': return '#dc2626'; 
+            case 'DISTURBING': return '#ea580c'; 
             default: return '#b91c1c';
         }
    }
    if (fromHuluRomanceCollection) {
         switch (level) {
-            case 'MASTERPIECE': return '#8b5cf6'; // Violet
-            case "PALME D'OR": return '#ec4899'; // Pink
-            case 'NOSTALGIC': return '#facc15'; // Yellow
-            default: return '#fbbf24'; // Orange
+            case 'MASTERPIECE': return '#8b5cf6'; 
+            case "PALME D'OR": return '#ec4899'; 
+            case 'NOSTALGIC': return '#facc15'; 
+            default: return '#fbbf24'; 
         }
    }
    if (fromHuluActionCollection) {
         switch (level) {
-            case 'LEGENDARY': return '#ef4444'; // Red
-            case 'DIRECT': return '#f97316'; // Orange
-            default: return '#fbbf24'; // Yellow
+            case 'LEGENDARY': return '#ef4444'; 
+            case 'DIRECT': return '#f97316'; 
+            default: return '#fbbf24'; 
         }
    }
    if (fromRevengeCollection || fromWarFilmsCollection || fromDramaCollection) {
@@ -411,6 +460,7 @@ const MovieDetailsSection = React.memo(({
    }
  };
 
+ // ✅ HELPER: Age Rating Colors
  const getAgeRatingColor = (rating) => {
    switch (rating) {
      case 'G': return '#22c55e';
@@ -433,7 +483,8 @@ const MovieDetailsSection = React.memo(({
  };
 
  const getComplexityScoreTitle = () => {
-   if (fromHuluThrillerCollection) return 'SUSPENSE SCORE'; // ✅ Added
+   if (fromHuluBestCollection) return 'INTENSITY SCORE'; 
+   if (fromHuluThrillerCollection) return 'SUSPENSE SCORE';
    if (fromHuluSciFiCollection) return 'VISUAL SPECTACLE SCORE'; 
    if (fromHuluComedyCollection) return 'LAUGHTER SCORE'; 
    if (fromHuluHorrorCollection) return 'DREAD SCORE'; 
@@ -444,7 +495,7 @@ const MovieDetailsSection = React.memo(({
    if (fromRevengeCollection) return 'REVENGE INTENSITY SCORE';
    if (fromWarFilmsCollection) return 'WAR INTENSITY SCORE';
    if (fromSciFiCollection) return 'SCI-FI COMPLEXITY SCORE';
-   if (fromInterstellarCollection) return 'SPACE COMPLEXITY SCORE';
+   if (fromInterstellarCollection) return 'SCI-FI COMPLEXITY SCORE';
    if (fromTimeTravelCollection) return 'TIME TRAVEL COMPLEXITY SCORE';
    if (fromHeistThrillerCollection) return 'HEIST COMPLEXITY SCORE';
    if (fromCrimeThrillerCollection) return 'CRIME INTENSITY SCORE';
@@ -460,7 +511,8 @@ const MovieDetailsSection = React.memo(({
  };
 
  const getComplexityIndexLabel = () => {
-   if (fromHuluThrillerCollection) return 'TENSION INDEX'; // ✅ Added
+   if (fromHuluBestCollection) return 'ACCLAIM INDEX'; 
+   if (fromHuluThrillerCollection) return 'TENSION INDEX';
    if (fromHuluSciFiCollection) return 'VISUAL SPECTACLE INDEX'; 
    if (fromHuluComedyCollection) return 'HILARITY INDEX'; 
    if (fromHuluHorrorCollection) return 'DREAD INDEX'; 
@@ -471,7 +523,7 @@ const MovieDetailsSection = React.memo(({
    if (fromRevengeCollection) return 'REVENGE INTENSITY INDEX';
    if (fromWarFilmsCollection) return 'WAR INTENSITY INDEX';
    if (fromSciFiCollection) return 'SCI-FI COMPLEXITY INDEX';
-   if (fromInterstellarCollection) return 'COSMIC REALISM INDEX';
+   if (fromInterstellarCollection) return 'SCI-FI COMPLEXITY INDEX';
    if (fromTimeTravelCollection) return 'TIME COMPLEXITY INDEX';
    if (fromHeistThrillerCollection) return 'HEIST COMPLEXITY INDEX';
    if (fromCrimeThrillerCollection) return 'CRIME INTENSITY INDEX';
@@ -487,7 +539,8 @@ const MovieDetailsSection = React.memo(({
  };
 
  const getComplexityLevelLabel = () => {
-   if (fromHuluThrillerCollection) return 'THRILL LEVEL'; // ✅ Added
+   if (fromHuluBestCollection) return 'PRESTIGE LEVEL'; 
+   if (fromHuluThrillerCollection) return 'THRILL LEVEL';
    if (fromHuluSciFiCollection) return 'VISUAL SPECTACLE LEVEL'; 
    if (fromHuluComedyCollection) return 'CHAOS LEVEL';
    if (fromHuluHorrorCollection) return 'SCARINESS LEVEL'; 
@@ -498,7 +551,7 @@ const MovieDetailsSection = React.memo(({
    if (fromRevengeCollection) return 'VENGEANCE BRUTALITY LEVEL';
    if (fromWarFilmsCollection) return 'COMBAT REALISM LEVEL';
    if (fromSciFiCollection) return 'SCI-FI COMPLEXITY LEVEL';
-   if (fromInterstellarCollection) return 'COSMIC SCALE LEVEL';
+   if (fromInterstellarCollection) return 'SCI-FI COMPLEXITY LEVEL';
    if (fromTimeTravelCollection) return 'TEMPORAL PARADOX LEVEL';
    if (fromHeistThrillerCollection) return 'HEIST COMPLEXITY LEVEL';
    if (fromCrimeThrillerCollection) return 'CRIME COMPLEXITY LEVEL';
@@ -514,7 +567,12 @@ const MovieDetailsSection = React.memo(({
  };
 
  const getComplexityDescription = () => {
-   if (fromHuluThrillerCollection) { // ✅ Added Thriller descriptions
+   if (fromHuluBestCollection) { 
+        if (scoreValue >= 90) return 'A cinematic masterpiece that defines its genre and demands to be seen.';
+        if (scoreValue >= 80) return 'Critically acclaimed filmmaking with powerful storytelling and high production value.';
+        return 'A highly rated, essential watch that delivers quality entertainment.';
+   }
+   if (fromHuluThrillerCollection) { 
         if (scoreValue >= 90) return 'A masterclass in tension that will leave you breathless and shaken.';
         if (scoreValue >= 80) return 'Incredibly suspenseful with high stakes and gripping pacing.';
         return 'A solid thriller with engaging twists and moments of real tension.';
@@ -562,7 +620,8 @@ const MovieDetailsSection = React.memo(({
  };
 
  const getBorderColor = () => {
-   if (fromHuluThrillerCollection) return 'border-red-500/40'; // ✅ Added
+   if (fromHuluBestCollection) return 'border-amber-500/40'; 
+   if (fromHuluThrillerCollection) return 'border-red-500/40';
    if (fromHuluSciFiCollection) return 'border-cyan-400/40'; 
    if (fromHuluComedyCollection) return 'border-yellow-400/40';
    if (fromHuluHorrorCollection) return 'border-red-600/40';
@@ -578,7 +637,8 @@ const MovieDetailsSection = React.memo(({
  };
 
  const getStarColor = () => {
-   if (fromHuluThrillerCollection) return 'text-red-500'; // ✅ Added
+   if (fromHuluBestCollection) return 'text-amber-500'; 
+   if (fromHuluThrillerCollection) return 'text-red-500';
    if (fromHuluSciFiCollection) return 'text-cyan-400'; 
    if (fromHuluComedyCollection) return 'text-yellow-400';
    if (fromHuluHorrorCollection) return 'text-red-600'; 
@@ -619,19 +679,20 @@ const MovieDetailsSection = React.memo(({
         >
           <span>{year}</span>
           <span>•</span>
-          <span>{director}</span>
+          {/* 🔥 UPDATED TO USE DYNAMIC STATE */}
+          <span>{dynamicMovieData.director}</span>
           <span>•</span>
           <span>{runtime}</span>
           <span>•</span>
           <span
             className="px-2 py-1 rounded border font-medium"
             style={{
-              color: getAgeRatingColor(ageRating),
-              borderColor: getAgeRatingColor(ageRating),
-              backgroundColor: `${getAgeRatingColor(ageRating)}15`
+              color: getAgeRatingColor(dynamicMovieData.ageRating),
+              borderColor: getAgeRatingColor(dynamicMovieData.ageRating),
+              backgroundColor: `${getAgeRatingColor(dynamicMovieData.ageRating)}15`
             }}
           >
-            {ageRating}
+            {dynamicMovieData.ageRating}
           </span>
         </motion.div>
       </div>
@@ -665,8 +726,9 @@ const MovieDetailsSection = React.memo(({
             <h3 className="text-sm sm:text-base font-light text-white">Cast & Crew</h3>
           </div>
           <div className="space-y-2 sm:space-y-3">
-            <p className="text-gray-300 text-xs sm:text-sm leading-relaxed"><span className="text-gray-500 font-medium block mb-0.5">Director:</span> {director}</p>
-            <p className="text-gray-300 text-xs sm:text-sm leading-relaxed"><span className="text-gray-500 font-medium block mb-0.5">Starring:</span> {cast}</p>
+            {/* 🔥 UPDATED TO USE DYNAMIC STATE */}
+            <p className="text-gray-300 text-xs sm:text-sm leading-relaxed"><span className="text-gray-500 font-medium block mb-0.5">Director:</span> {dynamicMovieData.director}</p>
+            <p className="text-gray-300 text-xs sm:text-sm leading-relaxed"><span className="text-gray-500 font-medium block mb-0.5">Starring:</span> {dynamicMovieData.cast}</p>
           </div>
         </div>
 
@@ -677,19 +739,20 @@ const MovieDetailsSection = React.memo(({
             <h3 className="text-sm sm:text-base font-light text-white">Production Details</h3>
           </div>
           <div className="space-y-2 sm:space-y-3">
-            <p className="text-gray-300 text-xs sm:text-sm"><span className="text-gray-500 font-medium block mb-0.5">Budget:</span> {budget}</p>
-            <p className="text-gray-300 text-xs sm:text-sm"><span className="text-gray-500 font-medium block mb-0.5">Box Office:</span> {boxOffice}</p>
+            {/* 🔥 UPDATED TO USE DYNAMIC STATE */}
+            <p className="text-gray-300 text-xs sm:text-sm"><span className="text-gray-500 font-medium block mb-0.5">Budget:</span> {dynamicMovieData.budget}</p>
+            <p className="text-gray-300 text-xs sm:text-sm"><span className="text-gray-500 font-medium block mb-0.5">Box Office:</span> {dynamicMovieData.boxOffice}</p>
             <div className="text-gray-300 text-xs sm:text-sm">
               <span className="text-gray-500 font-medium block mb-0.5">Age Rating:</span>
               <span
                 className="inline-block px-1.5 py-0.5 rounded border text-[10px] sm:text-xs font-medium mt-0.5"
                 style={{
-                  color: getAgeRatingColor(ageRating),
-                  borderColor: getAgeRatingColor(ageRating),
-                  backgroundColor: `${getAgeRatingColor(ageRating)}15`
+                  color: getAgeRatingColor(dynamicMovieData.ageRating),
+                  borderColor: getAgeRatingColor(dynamicMovieData.ageRating),
+                  backgroundColor: `${getAgeRatingColor(dynamicMovieData.ageRating)}15`
                 }}
               >
-                {ageRating}
+                {dynamicMovieData.ageRating}
               </span>
             </div>
           </div>
@@ -703,7 +766,8 @@ const MovieDetailsSection = React.memo(({
        !fromHeistThrillerCollection && 
        !fromDonnieDarkoCollection && 
        !fromBlackSwanCollection && 
-       !fromEyesWideShutCollection && (
+       !fromEyesWideShutCollection && 
+       !fromHuluBestCollection && (
         <motion.div
           className="mb-6 sm:mb-8 md:mb-12 bg-gradient-to-br from-gray-800/40 to-gray-900/60 rounded-lg sm:rounded-xl border border-gray-700/50 p-3 sm:p-4 md:p-8 shadow-2xl backdrop-blur-sm relative overflow-hidden"
           initial={{ opacity: 0, scale: 0.95 }}
@@ -806,7 +870,8 @@ const MovieDetailsSection = React.memo(({
       <RealCommentsRatingSection movie={movie} />
 
       {/* FAQ SECTIONS */}
-      {fromHuluThrillerCollection ? <HuluThrillerSEOFAQSection movie={movie} /> // ✅ Added Thriller FAQ
+      {fromHuluBestCollection ? <HuluBestSEOFAQSection movie={movie} /> // ✅ Added Best Movies FAQ
+        : fromHuluThrillerCollection ? <HuluThrillerSEOFAQSection movie={movie} />
         : fromHuluSciFiCollection ? <HuluSciFiSEOFAQSection movie={movie} />
         : fromHuluComedyCollection ? <HuluComedySEOFAQSection movie={movie} />
         : fromHuluHorrorCollection ? <HuluHorrorSEOFAQSection movie={movie} /> 

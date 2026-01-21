@@ -129,13 +129,11 @@ export const COLLECTIONS = {
       survivabilityIndex: 98
     }
   },
-  internalLinks: [
-    'movies-like-interstellar',
-    'movies-like-se7en',
-    'movies-like-the-matrix',
-    'movies-like-inception',
-    'movies-like-memento',
-    'movies-like-shutter-island'
+// ✅ FIX: Renamed from 'internalLinks' to 'relatedCollections' to match component logic
+  relatedCollections: [
+    'best-war-films',              // Thematic Sibling (High Stakes)
+    'movies-like-interstellar',    // Thematic Sibling (Survival in Space)
+    'best-drama-movies-on-netflix' // Cross-Link
   ],
   seo: {
     title: '10 Best Survival Movies Ever Made (2025) - Expert Rankings | Filmiway',
@@ -154,84 +152,7 @@ export const COLLECTIONS = {
 },
 
 
-  // 🎭 NETFLIX DRAMA COLLECTION - PURE DRAMA EDITION
-  'best-drama-movies-on-netflix': {
-    slug: 'best-drama-movies-on-netflix',
-    title: 'Best Drama Movies on Netflix',
-    subtitle: 'Pure Drama Edition',
-    description: 'From war epics to intimate family sagas—these are the most emotionally gripping dramas now streaming on Netflix.',
-    longDescription: 'Dive into Netflix\'s most powerful dramas, where storytelling, direction, and performance unite. This carefully curated set features modern masterpieces—war epics, slow-burn westerns, true stories, and psychological sagas—each delivering pathos and cinematic craft at its peak.',
-
-    emoji: '🎭',
-    theme: 'red',
-    primaryColor: '#dc2626',
-    secondaryColor: '#b91c1c',
-    accentColor: '#991b1b',
-    gradientFrom: 'from-red-600',
-    gradientTo: 'to-red-500',
-    category: 'drama',
-    tags: ['drama', 'netflix', 'emotional', 'award-winning', 'true stories', 'powerful performances'],
-    metaTitle: 'Best Drama Movies on Netflix (2025) | Pure Drama Edition',
-    metaDescription: 'Explore 10 critically acclaimed Netflix drama movies from 1917 to Minari. Experience intimately human stories and powerhouse performances, curated by Filmiway for 2025.',
-    metaKeywords: 'best drama movies netflix, netflix drama films, emotional movies, award winning dramas, minari, mudbound, roma, 1917, the power of the dog, marriage story',
-    stats: {
-      totalMovies: 10,
-      averageRating: 8.1,
-      totalWatchtime: '21 hours 38 minutes',
-      averageEmotionalIntensity: 85.0,
-      mostAcclaimed: '1917 (8.2/10)',
-      newestMovie: 'The Power of the Dog (2021)',
-      oldestMovie: 'The Pursuit of Happyness (2006)'
-    },
-    movies: [
-      'tt8579674',   // 1917 (2019)
-      'tt6155172',   // Roma (2018)
-      'tt1302006',   // The Irishman (2019)
-      'tt9770150',   // Marriage Story (2019)
-      'tt1677720',   // The Social Network (2010)
-      'tt9419184',   // The Boy Who Harnessed the Wind (2019)
-      'tt7291200',   // The Power of the Dog (2021)
-      'tt2156584',   // Mudbound (2017)
-      'tt0454921',   // The Pursuit of Happyness (2006)
-      'tt10118744'   // Minari (2020)
-    ],
-    badges: [
-      { label: 'Award-Winning', desc: 'Oscar-nominated performances' },
-      { label: 'Critically Acclaimed', desc: 'Top-tier filmmaking' },
-      { label: 'Netflix Streaming', desc: 'Available to stream now' }
-    ],
-    featured: {
-      hero: {
-        title: '1917',
-        subtitle: 'Immersive Cinematic Masterpiece',
-        description: 'Sam Mendes\' breathtaking one-take war epic delivers edge-of-your-seat tension and stunning cinematography.',
-        poster: 'https://image.tmdb.org/t/p/w500/iZf0KyrE25z1sage4SYFLCCrMi9.jpg',
-        backdrop: 'https://image.tmdb.org/t/p/w1280/path-to-backdrop.jpg',
-        emotionalIntensity: 95
-      }
-    },
-    relatedCollections: [
-      'best-survival-movies',
-      'movies-like-inception',
-      'movies-like-shutter-island'
-    ],
-    seo: {
-      title: 'Best Drama Movies on Netflix - Award-Winning Films | Filmiway',
-      description: 'Discover the 10 best Netflix drama movies—handpicked by Filmiway. From 1917 to The Power of the Dog, these stories bring emotional resonance and cinematic mastery.',
-      keywords: 'best drama movies netflix, netflix drama films, award winning movies, emotional dramas, netflix originals, streaming movies, 1917, Roma, The Irishman',
-      canonicalUrl: 'https://filmiway.com/collection/best-drama-movies-on-netflix',
-      ogImage: 'https://filmiway.com/images/netflix-drama-collection-og.jpg',
-      structuredData: {
-        '@context': 'https://schema.org',
-        '@type': 'MovieSeries',
-        name: 'Best Drama Movies on Netflix Collection',
-        description: 'A curated collection of the best dramatic films streaming on Netflix with award-winning performances',
-        genre: 'Drama',
-        numberOfMovies: 10
-      }
-    }
-  },
-
+ 
 
 // 💥 BEST ACTION MOVIES ON HULU COLLECTION
   'best-action-movies-on-hulu': {
@@ -382,7 +303,7 @@ export const COLLECTIONS = {
     },
 
     relatedCollections: [
-      'best-drama-movies-on-netflix',
+    
       'movies-like-parasite',
       'best-psychological-thriller-movies'
     ],
@@ -739,6 +660,96 @@ export const COLLECTIONS = {
         '@type': 'ItemList',
         name: 'Best Thriller Movies on Hulu',
         description: 'Expert-curated list of the best thriller movies available on Hulu ranked by suspense intensity and psychological impact',
+        numberOfItems: 10
+      }
+    }
+  },
+
+
+// 🏆 BEST MOVIES ON HULU COLLECTION
+  'best-movies-on-hulu': {
+    slug: 'best-movies-on-hulu',
+    title: 'Top 10 Best Movies on Hulu',
+    subtitle: 'The Definitive Ranking',
+    description: 'The highest-rated films streaming on Hulu right now. From Heat to Superbad, covering all genres.',
+    longDescription: 'Looking for the absolute best movies on Hulu? This definitive ranking cuts through the noise to bring you the highest-rated, most critically acclaimed films available on the platform right now. Spanning action, drama, sci-fi, and comedy, these are the essential watches that define quality streaming.',
+
+    emoji: '🏆',
+    theme: 'amber',
+    primaryColor: '#f59e0b', // Gold
+    secondaryColor: '#d97706', // Dark Gold
+    accentColor: '#b45309', // Deep Amber
+    gradientFrom: 'from-amber-500',
+    gradientTo: 'to-orange-600',
+
+    category: 'best-of-hulu',
+    tags: ['hulu', 'streaming', 'best movies', 'top rated', 'critically acclaimed', 'must watch', 'ranking'],
+
+    metaTitle: '10 Best Movies on Hulu (2025) | The Ultimate Ranking | Filmiway',
+    metaDescription: 'The definitive top 10 movies on Hulu right now. From Heat to Superbad, discover the highest-rated films across all genres. Expert curated.',
+    metaKeywords: 'best movies on hulu, top rated hulu films, heat movie hulu, hacksaw ridge hulu, perfect days hulu, best streaming movies 2025',
+
+    stats: {
+      totalMovies: 10,
+      averageRating: 7.9,
+      totalWatchtime: '20 hours 15 minutes',
+      averageCriticScore: 88,
+      mostAcclaimed: 'Perfect Days (96% Critic Score)',
+      newestMovie: 'All of Us Strangers (2023)',
+      oldestMovie: 'Predator (1987)'
+    },
+
+    movies: [
+      'tt0113277', // 1. Heat
+      'tt2119532', // 2. Hacksaw Ridge
+      'tt1220719', // 3. Ip Man
+      'tt0246578', // 4. Donnie Darko
+      'tt0947798', // 5. Black Swan
+      'tt27503384', // 6. Perfect Days
+      'tt0093773', // 7. Predator
+      'tt0190590', // 8. O Brother, Where Art Thou?
+      'tt21192142', // 9. All of Us Strangers
+      'tt0829482'  // 10. Superbad
+    ],
+
+    badges: [
+      { label: 'Essential Viewing', desc: 'Must-watch cinema' },
+      { label: 'Genre Defining', desc: 'The best of their kind' },
+      { label: 'Critically Acclaimed', desc: 'Top-tier filmmaking' }
+    ],
+
+    featured: {
+      hero: {
+        title: 'Heat',
+        subtitle: 'The Greatest Crime Saga',
+        description: 'Michael Mann\'s masterpiece unites Al Pacino and Robert De Niro in the definitive Los Angeles crime epic.',
+        poster: 'https://image.tmdb.org/t/p/w500/zMyfPUelumio3tiDKPffaUpsQTD.jpg',
+        backdrop: 'https://image.tmdb.org/t/p/w1280/umSVjVdbVwtx5ryCA2QXL44Durz.jpg',
+        rating: 8.3
+      }
+    },
+
+    // 🔗 UPDATED: Full Hub & Spoke Links
+    relatedCollections: [
+      'best-action-movies-on-hulu',
+      'best-horror-movies-on-hulu',
+      'best-romance-movies-on-hulu',
+      'best-comedy-movies-on-hulu',
+      'best-sci-fi-movies-on-hulu',
+      'best-thriller-movies-hulu'
+    ],
+
+    seo: {
+      title: '10 Best Movies on Hulu (2025) | The Ultimate Ranking | Filmiway',
+      description: 'Discover the 10 best movies streaming on Hulu right now. From Heat to Superbad, explore our expert-curated list of top-rated films across all genres.',
+      keywords: 'best movies on hulu, top rated hulu movies, what to watch on hulu, best films streaming, heat, hacksaw ridge, black swan, superbad',
+      canonicalUrl: 'https://filmiway.com/collection/best-movies-on-hulu',
+      ogImage: 'https://filmiway.com/images/hulu-best-movies-collection-og.jpg',
+      structuredData: {
+        '@context': 'https://schema.org',
+        '@type': 'ItemList',
+        name: 'Best Movies on Hulu',
+        description: 'Expert-curated list of the absolute best movies available on Hulu ranked by critical acclaim and cinematic legacy',
         numberOfItems: 10
       }
     }
@@ -1177,48 +1188,6 @@ export const COLLECTIONS = {
 },
 
 
-  // 🚀 MOVIES LIKE INTERSTELLAR COLLECTION
-  'movies-like-interstellar': {
-    slug: 'movies-like-interstellar',
-    title: 'Movies Like Interstellar',
-    description: 'Epic sci-fi films with cosmic scope, time dilation, and emotional depth',
-    movies: [
-      'tt0062622',  // 2001: A Space Odyssey (1968)
-      'tt2543164',  // Arrival (2016)
-      'tt0118884',  // Contact (1997)
-      'tt0069293',  // Solaris (1972)
-      'tt1213641',  // First Man (2018)
-      'tt3659388',  // The Martian (2015)
-      'tt1454468',  // Gravity (2013)
-      'tt0448134',  // Sunshine (2007)
-      'tt1182345',  // Moon (2009)
-      'tt2935510'   // Ad Astra (2019)
-    ],
-
-    badges: [
-      { label: 'Cosmic Scope', desc: 'Space exploration & time dilation' },
-      { label: 'Emotionally Deep', desc: 'Human stories amid cosmic wonder' },
-      { label: 'Visually Stunning', desc: 'Breathtaking cinematography' }
-    ],
-    metaTitle: 'Movies Like Interstellar - Space Epics & Time Travel | Filmiway',
-    metaDescription: 'Discover movies like Interstellar with cosmic scope, emotional depth, and mind-bending sci-fi. From Inception to 2001: A Space Odyssey.',
-    metaKeywords: 'movies like interstellar, space movies, time dilation films, sci-fi movies, christopher nolan films, cosmic movies',
-    theme: 'cyan',
-    primaryColor: '#0891b2',
-    secondaryColor: '#06b6d4',
-    accentColor: '#0e7490',
-    emoji: '🌌',
-    category: 'interstellar',
-    canonicalUrl: 'https://filmiway.com/collection/movies-like-interstellar',
-    seo: {
-      title: 'Movies Like Interstellar | Filmiway',
-      description: 'Explore epic sci-fi films like Interstellar with cosmic themes, time travel, and emotional storytelling.',
-      keywords: 'interstellar movies, space exploration films, time dilation, christopher nolan, sci-fi epics',
-      canonicalUrl: 'https://filmiway.com/collection/movies-like-interstellar',
-      ogImage: 'https://filmiway.com/images/interstellar-collection-og.jpg'
-    }
-  },
-
 
 
 
@@ -1312,14 +1281,14 @@ export const COLLECTIONS = {
     },
 
     relatedCollections: [
-      'best-drama-movies-on-netflix',
+      
       'best-survival-movies',
       'best-crime-thriller-movies'
     ],
 
     seo: {
       title:
-        '10 Best War Films Ever Made (2025) | Expert War Movies Ranking | Filmiway',
+        '10 Best War Films Ever Made (2026) | Expert War Movies Ranking | Filmiway',
       description:
         'Discover Filmiway’s definitive ranking of the 10 greatest war films ever made, from Saving Private Ryan and Apocalypse Now to Das Boot and Paths of Glory.',
       keywords:
@@ -1760,6 +1729,92 @@ export const COLLECTIONS = {
 
 
 
+// 🚀 MOVIES LIKE INTERSTELLAR COLLECTION
+  'movies-like-interstellar': {
+    slug: 'movies-like-interstellar',
+    title: 'Movies Like Interstellar',
+    subtitle: 'Space Epics & Time Dilated Emotions',
+    description: 'Epic sci-fi films with cosmic scope, time dilation, and emotional depth—ranked by complexity and visual spectacle.',
+    longDescription: 'Journey beyond the stars with this collection of films that match the ambition, scientific grounding, and emotional core of Christopher Nolan\'s masterpiece. From the hard sci-fi of 2001: A Space Odyssey to the intimate linguistics of Arrival, these movies explore what it means to be human against the infinite backdrop of space.',
+
+    emoji: '🌌',
+    theme: 'cyan',
+    primaryColor: '#0891b2',
+    secondaryColor: '#06b6d4',
+    accentColor: '#0e7490',
+    gradientFrom: 'from-cyan-600',
+    gradientTo: 'to-blue-600',
+
+    category: 'interstellar',
+    tags: ['sci-fi', 'space', 'time-travel', 'hard-sci-fi', 'space-exploration', 'mind-bending', 'emotional'],
+
+    metaTitle: '10 Movies Like Interstellar (2025) | Space Epics Ranked | Filmiway',
+    metaDescription: 'Discover the 10 best movies like Interstellar—from Arrival to 2001: A Space Odyssey. Expert-curated ranking of cosmic sci-fi with emotional depth.',
+    metaKeywords: 'movies like interstellar, space movies, sci-fi epics, arrival, contact, 2001 space odyssey, the martian, gravity, ad astra, sunshine',
+
+    stats: {
+      totalMovies: 10,
+      averageRating: 7.8,
+      totalWatchtime: '21 hours 15 minutes',
+      averageSpaceComplexity: 88,
+      mostComplex: '2001: A Space Odyssey (98/100)',
+      newestMovie: 'Ad Astra (2019)',
+      oldestMovie: '2001: A Space Odyssey (1968)'
+    },
+
+    movies: [
+      'tt0062622',  // 1. 2001: A Space Odyssey
+      'tt2543164',  // 2. Arrival
+      'tt0118884',  // 3. Contact
+      'tt0069293',  // 4. Solaris
+      'tt1213641',  // 5. First Man
+      'tt3659388',  // 6. The Martian
+      'tt1454468',  // 7. Gravity
+      'tt0448134',  // 8. Sunshine
+      'tt1182345',  // 9. Moon
+      'tt2935510'   // 10. Ad Astra
+    ],
+
+    badges: [
+      { label: 'Cosmic Scope', desc: 'Epic space exploration narratives' },
+      { label: 'Hard Sci-Fi', desc: 'Grounded in scientific theory' },
+      { label: 'Emotional Depth', desc: 'Human stories in the void' }
+    ],
+
+    featured: {
+      hero: {
+        title: '2001: A Space Odyssey',
+        subtitle: 'The Ultimate Sci-Fi Masterpiece',
+        description: 'Stanley Kubrick\'s visionary journey from the dawn of man to the stars. The definitive precursor to Interstellar.',
+        poster: 'https://image.tmdb.org/t/p/w500/ve72VxNqjGM69Uky4WTo2bK6rfq.jpg',
+        backdrop: 'https://image.tmdb.org/t/p/w1280/1Tvm5he5uG6JYTy1POjYRUeIBpf.jpg',
+        spaceComplexity: 98
+      }
+    },
+
+    relatedCollections: [
+      'best-sci-fi-movies',
+      'best-time-travel-movies',
+      'movies-like-inception'
+    ],
+
+    seo: {
+      title: '10 Movies Like Interstellar (2025) | Space Epics Ranked | Filmiway',
+      description: 'Explore the definitive ranking of films like Interstellar. Expert-curated collection of cerebral space epics and emotional sci-fi.',
+      keywords: 'movies like interstellar, space exploration films, hard sci-fi, christopher nolan style, arrival, contact, the martian, gravity, solaris',
+      canonicalUrl: 'https://filmiway.com/collection/movies-like-interstellar',
+      ogImage: 'https://filmiway.com/images/interstellar-movies-collection-og.jpg',
+      structuredData: {
+        '@context': 'https://schema.org',
+        '@type': 'ItemList',
+        name: 'Movies Like Interstellar',
+        description: 'Expert-curated list of the best space sci-fi films like Interstellar ranked by complexity and emotional impact',
+        numberOfItems: 10
+      }
+    }
+  },
+
+
 
 'best-heist-thriller-movies': {
   slug: 'best-heist-thriller-movies',
@@ -2118,7 +2173,6 @@ export const getInterstellarCollection = () => COLLECTIONS['movies-like-interste
 export const getMatrixCollection = () => COLLECTIONS['movies-like-the-matrix']; // ✅ NEW MATRIX
 export const getSe7enCollection = () => COLLECTIONS['movies-like-se7en']; // ✅ NEW SE7EN
 export const getSurvivalCollection = () => COLLECTIONS['best-survival-movies'];
-export const getNetflixDramaCollection = () => COLLECTIONS['best-drama-movies-on-netflix'];
 export const getWarFilmsCollection = () => COLLECTIONS['best-war-films'];
 export const getRevengeMoviesCollection = () => COLLECTIONS['best-revenge-movies'];
 export const getSciFiMoviesCollection = () => COLLECTIONS['best-sci-fi-movies'];

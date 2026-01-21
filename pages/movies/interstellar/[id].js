@@ -66,7 +66,7 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
 
     const correctData = MOVIE_DATA_BY_TITLE[movie.Title];
     const spaceConnection = correctData?.spaceConnection || `${movie.Title} showcases extraordinary cinematic vision of the cosmos.`;
-    const spaceComplexity = correctData?.spaceComplexity || 88;
+    const  sciFiComplexity= correctData?. sciFiComplexity|| 88;
 
     useEffect(() => {
         if (!isMobile && trailer && !showTrailer && !hasClosedTrailer) {

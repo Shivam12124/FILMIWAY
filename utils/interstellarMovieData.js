@@ -17,7 +17,7 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 49047, "imdbID": "tt1454468", "Title": "Gravity", "year": 2013, "genre": "Sci-Fi", "runtime": 91, "rank": 7, "sciFiComplexity": 80 },
     { "tmdbId": 1272, "imdbID": "tt0448134", "Title": "Sunshine", "year": 2007, "genre": "Sci-Fi", "runtime": 107, "rank": 8, "sciFiComplexity": 85 },
     { "tmdbId": 17431, "imdbID": "tt1182345", "Title": "Moon", "year": 2009, "genre": "Sci-Fi", "runtime": 97, "rank": 9, "sciFiComplexity": 88 },
-    { "tmdbId": 419704, "imdbID": "tt2935510", "Title": "Ad Astra", "year": 2019, "genre": "Sci-Fi", "runtime": 123, "rank": 10, "sciFiComplexity": 86 }
+    { "tmdbId": 419704, "imdbID": "tt2935510", "Title": "Ad Astra", "year": 2019, "genre": "Sci-Fi", "runtime": 123, "rank": 10, "sciFiComplexity": 76 }
 ];
 
 
@@ -90,7 +90,7 @@ export const COMPLETE_MOVIE_DATA = {
     
     // 2. Arrival (2016) - Linguistic Complexity Peak
     329865: createMovieData({ 
-        sciFiComplexity: 92, complexityLevel: "HIGH", dominantColor: "#6b21a8", 
+        sciFiComplexity: 95, complexityLevel: "HIGH", dominantColor: "#6b21a8", 
         rating: 7.9, criticsScore: 94, audienceScore: 82, director: "Denis Villeneuve", 
         cast: ["Amy Adams", "Jeremy Renner"], boxOffice: "$203 million", budget: "$47 million", 
         dna: { "Sci-Fi": 40, "Psychological": 35, "Drama": 25 }, 
@@ -230,7 +230,7 @@ export const COMPLETE_MOVIE_DATA = {
     
     // 10. Ad Astra (2019) - Meditative Solitude
     419704: createMovieData({ 
-        sciFiComplexity: 86, complexityLevel: "HIGH", dominantColor: "#0f172a", 
+        sciFiComplexity: 79, complexityLevel: "HIGH", dominantColor: "#0f172a", 
         rating: 6.5, criticsScore: 83, audienceScore: 40, director: "James Gray", 
         cast: ["Brad Pitt", "Tommy Lee Jones"], boxOffice: "$135 million", budget: "$87.5 million", 
         dna: { "Sci-Fi": 40, "Drama": 40, "Adventure": 20 }, 

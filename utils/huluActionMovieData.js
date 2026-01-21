@@ -139,13 +139,13 @@ export const COMPLETE_MOVIE_DATA = {
         complexityLevel: "HIGH", 
         dominantColor: "#d4d4d8", rating: 8.0, criticsScore: 86, audienceScore: 93, director: "Wilson Yip", 
         cast: ["Donnie Yen", "Simon Yam", "Lynn Hung"], boxOffice: "$21 million", budget: "$11 million", 
-        dna: { "Martial Arts": 70, "History": 15, "Drama": 15 },
+        dna: { "Action": 60, "History": 20, "Drama": 20 },
         scenes: [
-            { time: 15, intensity: 30, label: "Friendly Spar", color: "#d4d4d8" }, // Skill display
-            { time: 40, intensity: 65, label: "The Occupation", color: "#52525b" }, // Oppression
-            { time: 60, intensity: 92, label: "I Want 10!", color: "#18181b" }, // PEAK RAGE
-            { time: 80, intensity: 70, label: "Training Montage", color: "#71717a" }, // Focus
-            { time: 95, intensity: 88, label: "General Miura", color: "#52525b" } // Final Duel
+            { time: 15, intensity: 35, label: "Friendly Spar", color: "#d4d4d8" },
+            { time: 45, intensity: 65, label: "The Occupation", color: "#52525b" },
+            { time: 65, intensity: 92, label: "I Want 10!", color: "#18181b" },
+            { time: 85, intensity: 75, label: "Cotton Mill", color: "#71717a" },
+            { time: 100, intensity: 88, label: "General Miura", color: "#3f3f46" }
         ],
         synopsis: "Set during the Sino-Japanese War, the film follows Ip Man, a wealthy and respected martial artist who is forced into destitution when the Japanese army occupies his city. Refusing to bow to oppression, he uses his mastery of Wing Chun to defend his people's dignity, culminating in a legendary challenge against a karate dojo that cemented his status as a folk hero.",
         themes: ["Honor", "Nationalism", "Martial Arts"]

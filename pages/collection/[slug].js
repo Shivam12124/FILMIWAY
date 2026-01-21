@@ -26,9 +26,9 @@ import { COMPLETE_MOVIE_DATABASE as HULU_COMEDY_DATABASE, COMPLETE_MOVIE_DATA as
 import { COMPLETE_MOVIE_DATABASE as HULU_SCIFI_DATABASE, COMPLETE_MOVIE_DATA as HULU_SCIFI_DATA } from '../../utils/huluSciFiMovieData';
 import { COMPLETE_MOVIE_DATABASE as HULU_THRILLER_DATABASE, COMPLETE_MOVIE_DATA as HULU_THRILLER_DATA } from '../../utils/huluThrillerMovieData';
 import { COMPLETE_MOVIE_DATABASE, COMPLETE_MOVIE_DATA } from '../../utils/movieData';
-
+import { COMPLETE_MOVIE_DATABASE as HULU_BEST_DATABASE, COMPLETE_MOVIE_DATA as HULU_BEST_DATA } from '../../utils/huluBestMoviesData';
 // ✅ FIXED IMPORTS: Aliasing COMPLETE_MOVIE_DATABASE to old variable names
-import { COMPLETE_MOVIE_DATABASE as DRAMA_MOVIES } from '../../utils/dramaMovieData';
+
 import { COMPLETE_MOVIE_DATABASE as THRILLER_MOVIES } from '../../utils/thrillerMovieData';
 import { COMPLETE_MOVIE_DATABASE as MYSTERY_THRILLER_MOVIES } from '../../utils/mysteryThrillerMovieData'; 
 import { COMPLETE_MOVIE_DATABASE as DETECTIVE_THRILLER_MOVIES } from '../../utils/detectiveThrillerMovieData';
@@ -364,6 +364,33 @@ const getCollectionContent = () => {
             text2: "Each film has been selected for its ability to keep you on the edge of your seat—offering twists and tension that demand your full attention."
         }
     };
+
+
+
+} else if (collection.slug === 'best-movies-on-hulu') {
+    return {
+        badge: "Streaming Essentials",
+        title: "Best Movies on Hulu",
+        description: "The definitive ranking of the highest-rated films streaming on Hulu right now. From Heat to Superbad, covering all genres.",
+        selection: {
+            text1: "From the tactical perfection of 'Heat' to the quiet mastery of 'Perfect Days'—these films represent the absolute best cinema available on the platform right now.",
+            text2: "Each selection is a genre-defining masterpiece, chosen for its critical acclaim, cultural impact, and rewatchability across action, drama, sci-fi, and romance."
+        },
+        ranking: {
+            text: "Our definitive ranking evaluates cinematic legacy, critical reception, and audience impact to determine the essential watchlist for any serious film lover.",
+            points: [
+                "Cinematic legacy & impact",
+                "Critical acclaim score",
+                "Genre-defining quality",
+                "Rewatchability factor"
+            ]
+        },
+        experience: {
+            text1: "Whether you're seeking high-octane thrills or profound emotional depth, this collection delivers the most essential viewing experiences on Hulu.",
+            text2: "Each film has been selected as a 'must-watch'—guaranteeing that no matter what you pick, you are watching a top-tier example of filmmaking craft."
+        }
+    };
+
 
 
     } else if (collection.slug === 'movies-like-black-swan') {
@@ -919,6 +946,13 @@ const getHeaderContent = () => {
         subtitle: "Ranked by Suspense, Tension & Psychological Impact"
     };
 
+} else if (collection.slug === 'best-movies-on-hulu') {
+    return {
+        title: "Best Movies on Hulu: 10 Essential Films",
+        subtitle: "The definitive ranking of the highest-rated films streaming now—from Heat to Superbad"
+    };
+
+
 } else if (collection.slug === 'movies-like-donnie-darko') {
     return {
         title: "Movies Like Donnie Darko: 10 Reality-Warping Films",
@@ -1094,6 +1128,13 @@ const getLoaderContent = () => {
     return {
         title: "Loading Best Thriller Movies on Hulu",
         description: "Curating intense suspense thrillers with tension scores and community reviews"
+    };
+
+
+} else if (collection?.slug === 'best-movies-on-hulu') {
+    return {
+        title: "Loading Best Movies on Hulu",
+        description: "Curating the definitive list of top-rated films across all genres with community reviews"
     };
 
 
@@ -1301,6 +1342,16 @@ const getStaticMetaContent = () => {
         progressText: `of Top ${movies.length} Thriller Movies on Hulu`
     };
 
+
+    } else if (collection.slug === 'best-movies-on-hulu') {
+    return {
+        title: "10 Best Movies on Hulu: The Ultimate Ranking",
+        description: "10 highest-rated movies on Hulu right now. From Heat to Superbad. Ranked by critical acclaim & cinematic legacy. Includes sensitive content timestamps.",
+        keywords: "best movies on hulu, hulu top rated films, heat, hacksaw ridge, perfect days, best hulu movies ranking, sensitive content timestamps",
+        ogTitle: "10 Best Movies on Hulu: The Definitive Ranking 🏆",
+        twitterTitle: "🏆 10 Highest-Rated Movies Streaming on Hulu Right Now",
+        progressText: `of Top ${movies.length} Best Movies on Hulu`
+    };
 
     } else if (collection.slug === 'movies-like-black-swan') {
         return {
@@ -1538,6 +1589,7 @@ const getStaticMetaContent = () => {
             sessionStorage.removeItem('fromHuluComedyCollection');
             sessionStorage.removeItem('fromHuluSciFiCollection');
             sessionStorage.removeItem('fromHuluThrillerCollection');
+            sessionStorage.removeItem('fromHuluBestCollection');
             sessionStorage.removeItem('fromEyesWideShutCollection');
             sessionStorage.removeItem('fromDonnieDarkoCollection');
             sessionStorage.removeItem('fromBlackSwanCollection');
@@ -1578,6 +1630,8 @@ const getStaticMetaContent = () => {
     sessionStorage.setItem('fromHuluSciFiCollection', 'true');
     } else if (collection.slug === 'best-thriller-movies-hulu') {
     sessionStorage.setItem('fromHuluThrillerCollection', 'true');
+    } else if (collection.slug === 'best-movies-on-hulu') {
+    sessionStorage.setItem('fromHuluBestCollection', 'true');
             } else if (collection.slug === 'movies-like-parasite') { 
                 sessionStorage.setItem('fromParasiteCollection', 'true');
          } else if (collection.slug === 'movies-like-oldboy') {
@@ -2054,6 +2108,9 @@ return (
 ? 'movies/best-sci-fi-movies-on-hulu/'
 : collection?.slug === 'best-thriller-movies-hulu'
 ? 'movies/best-thriller-movies-hulu/'
+: collection?.slug === 'best-movies-on-hulu'
+? 'movies/best-movies-on-hulu/'
+
                                     : collection?.slug === 'movies-like-interstellar'
                                     ? 'movies/interstellar/'
                                     : collection?.slug === 'movies-like-memento'
@@ -2214,6 +2271,8 @@ return (
 ? `/movies/best-sci-fi-movies-on-hulu/${currentMovie.imdbID}`
 : collection.slug === 'best-thriller-movies-hulu'
 ? `/movies/best-thriller-movies-hulu/${currentMovie.imdbID}`
+: collection.slug === 'best-movies-on-hulu'
+? `/movies/best-movies-on-hulu/${currentMovie.imdbID}`
       : collection.slug === 'movies-like-interstellar'
       ? `/movies/interstellar/${currentMovie.imdbID}`
       : collection.slug === 'movies-like-memento'
@@ -2310,6 +2369,8 @@ return (
     detailPageUrl = `/movies/best-sci-fi-movies-on-hulu/${currentMovie.imdbID}`;
     } else if (collection.slug === 'best-thriller-movies-hulu') {
     detailPageUrl = `/movies/best-thriller-movies-hulu/${currentMovie.imdbID}`;
+    } else if (collection.slug === 'best-movies-on-hulu') {
+    detailPageUrl = `/movies/best-movies-on-hulu/${currentMovie.imdbID}`;
                                         } else if (collection.slug === 'movies-like-interstellar') {
                                             detailPageUrl = `/movies/interstellar/${currentMovie.imdbID}`;
                                         } else if (collection.slug === 'movies-like-memento') {
@@ -2546,6 +2607,10 @@ case 'best-sci-fi-movies-on-hulu':
     case 'best-thriller-movies-hulu':
     movieDatabase = HULU_THRILLER_DATABASE;
     break;
+
+    case 'best-movies-on-hulu':
+        movieDatabase = HULU_BEST_DATABASE;
+        break;
 
         case 'movies-like-interstellar':
             movieDatabase = INTERSTELLAR_DATABASE;

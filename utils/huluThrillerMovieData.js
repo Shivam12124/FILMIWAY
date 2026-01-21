@@ -73,13 +73,13 @@ export const SENSITIVE_TIMELINES = {
         ] 
     },
     // 9. How to Blow Up a Pipeline
-    1041513: { 
+    1008048: { 
         scenes: [
             { start: "0:50:00", end: "0:55:00", type: "Explosive Tension", severity: "Moderate" }
         ] 
     },
     // 10. The Pledge
-    11232: { 
+   5955: { 
         scenes: [
             { start: "0:15:00", end: "0:20:00", type: "Child Murder Scene (Implied)", severity: "High" }
         ] 
@@ -95,8 +95,8 @@ export const FALLBACK_POSTERS = {
     1491: "https://image.tmdb.org/t/p/w500/w1.jpg",
     787752: "https://image.tmdb.org/t/p/w500/t.jpg",
     156022: "https://image.tmdb.org/t/p/w500/2.jpg",
-    1041513: "https://image.tmdb.org/t/p/w500/8.jpg",
-    11232: "https://image.tmdb.org/t/p/w500/9.jpg"
+    1008048: "https://image.tmdb.org/t/p/w500/8.jpg",
+   5955: "https://image.tmdb.org/t/p/w500/9.jpg"
 };
 
 // ✅ HELPER: Single Metric "Suspense Score"
@@ -271,7 +271,7 @@ export const COMPLETE_MOVIE_DATA = {
     // 9. How to Blow Up a Pipeline (ECO-THRILLER)
     // Curve: Planning -> Risk -> Execution -> Consequences.
     // Peak: 85 (Detonation - Crisis).
-    1041513: createMovieData({ 
+    1008048: createMovieData({ 
         suspenseIntensity: 84, 
         complexityLevel: "POLITICAL", 
         dominantColor: "#d97706", rating: 7.0, criticsScore: 94, audienceScore: 68, director: "Daniel Goldhaber", 
@@ -291,7 +291,7 @@ export const COMPLETE_MOVIE_DATA = {
     // 10. The Pledge (NEO-NOIR)
     // Curve: Promise -> Obsession -> Trap -> Void.
     // Peak: 80 (The Ambush - Psychological Pressure).
-    11232: createMovieData({ 
+   5955: createMovieData({ 
         suspenseIntensity: 80, 
         complexityLevel: "BLEAK", 
         dominantColor: "#57534e", rating: 6.8, criticsScore: 78, audienceScore: 62, director: "Sean Penn", 
@@ -318,8 +318,8 @@ export const STRATEGIC_QUOTES = {
     1491: "Everything is an illusion.",
     787752: "It's not about the meat.",
     156022: "Progress.",
-    1041513: "This was an act of self-defense.",
-    11232: "I made a promise."
+    1008048: "This was an act of self-defense.",
+   5955: "I made a promise."
 };
 
 export const CINEMATIC_COLORS = {

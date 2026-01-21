@@ -50,7 +50,7 @@ export const SENSITIVE_TIMELINES = {
     // 5. Mr. Nobody
     31011: { scenes: [] }, // Existential but safe
     // 6. No One Will Save You
-    1022204: { 
+    820609: { 
         scenes: [
             { start: "0:15:00", end: "0:20:00", type: "Home Invasion", severity: "High" }
         ] 
@@ -76,7 +76,7 @@ export const FALLBACK_POSTERS = {
     119450: "https://image.tmdb.org/t/p/w500/2EuaZ1p9KT81hMWjV7oqamAQ6RL.jpg",
     106: "https://image.tmdb.org/t/p/w500/k3mW4qfJo6SKqe6laRyNGnbB9n5.jpg",
     31011: "https://image.tmdb.org/t/p/w500/z6C74AgF59rU5728Vj7L2Z5g7Gz.jpg",
-    1022204: "https://image.tmdb.org/t/p/w500/ehG1cfVjJ42L48Ym6XThF3X4sQ.jpg",
+    820609: "https://image.tmdb.org/t/p/w500/ehG1cfVjJ42L48Ym6XThF3X4sQ.jpg",
     766507: "https://image.tmdb.org/t/p/w500/ujr5pztc1oirVRgiIYWO0pWitVD.jpg",
     1376434: "https://via.placeholder.com/500x750?text=Predator+Killer+of+Killers",
     61791: "https://image.tmdb.org/t/p/w500/cjLSuo15sXhPL2q5y92X2X85.jpg",
@@ -201,7 +201,7 @@ export const COMPLETE_MOVIE_DATA = {
     // 6. No One Will Save You (ALIEN INVASION)
     // Curve: Quiet -> Invasion -> Siege -> Abduction -> Twist.
     // Peak: 85 (Abduction - High Tension).
-    1022204: createMovieData({ 
+    820609: createMovieData({ 
         mindBendScore: 65, 
         visualSpectacle: 82, 
         complexityLevel: "UNIQUE", 
@@ -310,7 +310,7 @@ export const STRATEGIC_QUOTES = {
     119450: "Apes together strong.",
     106: "If it bleeds, we can kill it.",
     31011: "As long as we don't choose, everything remains possible.",
-    1022204: "...",
+    820609: "...",
     766507: "It thinks I am prey.",
     1376434: "Valhalla waits.",
     61791: "No!",

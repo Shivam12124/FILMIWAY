@@ -50,7 +50,7 @@ export const SENSITIVE_TIMELINES = {
         ] 
     },
     // 5. Little Manhattan
-    14368: { scenes: [] }, // Clean, family friendly
+   16553: { scenes: [] }, // Clean, family friendly
     
     // 6. Palm Springs
     587792: { 
@@ -88,7 +88,7 @@ export const FALLBACK_POSTERS = {
     994108: "https://image.tmdb.org/t/p/w500/b679b398679b98679b.jpg",
     572916: "https://image.tmdb.org/t/p/w500/3E37373737.jpg",
     167073: "https://image.tmdb.org/t/p/w500/9J9J9J9J9J.jpg",
-    14368: "https://image.tmdb.org/t/p/w500/5K5K5K5K5K.jpg",
+   16553: "https://image.tmdb.org/t/p/w500/5K5K5K5K5K.jpg",
     587792: "https://image.tmdb.org/t/p/w500/1G1G1G1G1G.jpg",
     866463: "https://image.tmdb.org/t/p/w500/2H2H2H2H2H.jpg",
     24428: "https://image.tmdb.org/t/p/w500/4F4F4F4F4F.jpg",
@@ -189,7 +189,7 @@ export const COMPLETE_MOVIE_DATA = {
     // 5. Little Manhattan
     // Curve: Innocence -> First Crush -> Joy -> Heartbreak -> Growth.
     // Peak: 88 (The Breakup - First Heartbreak).
-    14368: createMovieData({ 
+   16553: createMovieData({ 
         romanticIntensity: 80, 
         complexityLevel: "NOSTALGIC", 
         dominantColor: "#facc15", rating: 7.5, criticsScore: 77, audienceScore: 89, director: "Mark Levin", 
@@ -311,7 +311,7 @@ export const STRATEGIC_QUOTES = {
     994108: "I've always been lonely. That's why I'm here.",
     572916: "There is no sex in Georgian dance!",
     167073: "You'll feel so homesick that you'll want to die, and there's nothing you can do about it apart from endure it.",
-    14368: "Love is an ugly, terrible business practiced by fools.",
+   16553: "Love is an ugly, terrible business practiced by fools.",
     587792: "Today, tomorrow, it's all the same.",
     866463: "You know when you see someone and you just know?",
     24428: "I used to be somebody, but now I'm somebody else.",

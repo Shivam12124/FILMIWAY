@@ -136,7 +136,7 @@ export const INTERSTELLAR_COLLECTION_META = {
     averageSpaceComplexity: Math.round(
         COMPLETE_MOVIE_DATABASE.reduce((sum, movie) => {
             const movieData = require('./interstellarMovieData').COMPLETE_MOVIE_DATA[movie.tmdbId];
-            return sum + (movieData?.spaceComplexity || 0);
+            return sum + (movieData?. sciFiComplexity|| 0);
         }, 0) / COMPLETE_MOVIE_DATABASE.length
     )
 };
@@ -215,8 +215,8 @@ export const sortInterstellarMovies = (movies, sortBy) => {
             return sortedMovies.sort((a, b) => b.year - a.year);
         case 'complexity':
             return sortedMovies.sort((a, b) => {
-                const complexityA = COMPLETE_MOVIE_DATA[a.tmdbId]?.spaceComplexity || 0;
-                const complexityB = COMPLETE_MOVIE_DATA[b.tmdbId]?.spaceComplexity || 0;
+                const complexityA = COMPLETE_MOVIE_DATA[a.tmdbId]?. sciFiComplexity|| 0;
+                const complexityB = COMPLETE_MOVIE_DATA[b.tmdbId]?. sciFiComplexity|| 0;
                 return complexityB - complexityA;
             });
         case 'runtime':
@@ -250,7 +250,7 @@ export const getInterstellarCollectionStats = () => {
         ),
         averageSpaceComplexity: Math.round(
             COMPLETE_MOVIE_DATABASE.reduce((sum, m) => {
-                return sum + (COMPLETE_MOVIE_DATA[m.tmdbId]?.spaceComplexity || 0);
+                return sum + (COMPLETE_MOVIE_DATA[m.tmdbId]?. sciFiComplexity|| 0);
             }, 0) / COMPLETE_MOVIE_DATABASE.length
         ),
         averageRating: (

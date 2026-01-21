@@ -1,73 +1,98 @@
-// pages/movies/survival/[id].js - FIXED BUILD ERROR + HYDRATION FIX ✅
-// Added missing SubtleFilmGrain component definition
+// pages/best-movies-on-hulu/[id].js - TOP 10 BEST MOVIES ON HULU
+// VISUALS: Prestige Cinema Theme (Gold/Slate Accents)
+// SCHEMA: Maximalist (Hidden Metrics and FAQs for Bots)
 
 import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Play, X, User, Twitter, Hash, Send, Film, Mountain } from 'lucide-react';
+import { ChevronLeft, Play, X, User, Twitter, Hash, Send, Film, Star, Award, Theater } from 'lucide-react';
 import InternalCollectionsSection from '../../../components/InternalCollectionsSection';
 import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
 import TMDBAttribution from '../../../components/TMDBAttribution';
 
-// ✅ IMPORT SURVIVAL DATA
+// ✅ IMPORT DATA INCLUDING FAQs
 import { 
   COMPLETE_MOVIE_DATABASE, 
   COMPLETE_MOVIE_DATA,
   SENSITIVE_TIMELINES,
-  SURVIVAL_MOVIE_FAQS 
-} from '../../../utils/survivalMovieData';
+  HULU_BEST_MOVIE_FAQS 
+} from '../../../utils/huluBestMoviesData';
 
 const COLORS = {
-  accent: '#EAB308', accentLight: '#FDE047', bgPrimary: '#050509', bgCard: 'rgba(15, 23, 42, 0.6)',
+  accent: '#f59e0b', accentLight: '#fcd34d', bgPrimary: '#0f172a', bgCard: 'rgba(15, 23, 42, 0.8)', // Gold/Slate for Prestige
   textPrimary: '#FFFFFF', textSecondary: '#E5E7EB', textMuted: '#9CA3AF', textDisabled: '#6B7280',
-  borderAccent: 'rgba(234, 179, 8, 0.25)', borderLight: 'rgba(55, 65, 81, 0.5)',
+  borderAccent: 'rgba(245, 158, 11, 0.25)', borderLight: 'rgba(55, 65, 81, 0.5)',
 };
 
+// ✅ UPDATED MOVIE YEARS
 const MOVIE_YEARS = {
-  '127 Hours': '2010', 'Society of the Snow': '2023', 'Cast Away': '2000', 'The Revenant': '2015',
-  'The Martian': '2015', 'The Impossible': '2012', 'Jungle': '2017', 'Apocalypto': '2006',
-  '13 Lives': '2022', 'Unbroken': '2014'
+  'Heat': '1995', 
+  'Hacksaw Ridge': '2016',
+  'Ip Man': '2008', 
+  'Donnie Darko': '2001', 
+  'Black Swan': '2010', 
+  'Perfect Days': '2023', 
+  'Predator': '1987', 
+  'O Brother, Where Art Thou?': '2000', 
+  'All of Us Strangers': '2023', 
+  'Superbad': '2007'
+};
+
+// ✅ UPDATED MOVIE DATA & INSIGHTS
+const MOVIE_DATA_BY_TITLE = {
+  'Heat': { connection: 'The ultimate crime saga. Pacino vs. De Niro in the most realistic shootout ever filmed.' },
+  'Hacksaw Ridge': { connection: 'A pacifist goes to war. Mel Gibson directs one of the most intense WWII movies of the century.' },
+  'Ip Man': { connection: 'The man who taught Bruce Lee. A martial arts masterpiece about dignity under occupation.' },
+  'Donnie Darko': { connection: 'A cult sci-fi mind-bender. Time travel, giant rabbits, and 80s nostalgia colliding perfectly.' },
+  'Black Swan': { connection: 'Psychological horror at the ballet. Natalie Portman\'s Oscar-winning descent into madness.' },
+  'Perfect Days': { connection: 'A Tokyo toilet cleaner finds joy in routine. A quiet, masterful meditation on life.' },
+  'Predator': { connection: 'Sci-fi action perfection. Arnold Schwarzenegger vs. the ultimate alien hunter in the jungle.' },
+  'O Brother, Where Art Thou?': { connection: 'The Odyssey in the Deep South. The Coen Brothers\' musical comedy masterpiece.' },
+  'All of Us Strangers': { connection: 'A ghostly romance that breaks your heart. Andrew Scott and Paul Mescal in a dreamlike drama.' },
+  'Superbad': { connection: 'The definitive teen comedy. Hilarious, vulgar, and surprisingly sweet story of male friendship.' }
 };
 
 const getTMDBImage = (path, size = 'w1280') =>
   path ? `https://image.tmdb.org/t/p/${size}${path}` : undefined;
 
-// ✅ OPTIMIZED BANNER
+const getMovieInsight = (title) => {
+  const data = MOVIE_DATA_BY_TITLE[title];
+  return data?.connection || 'A masterpiece of cinema streaming on Hulu.';
+};
+
+// ✅ OPTIMIZED BANNER (Prestige Theme)
 const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
   const [showTrailer, setShowTrailer] = useState(false);
   const [countdown, setCountdown] = useState(4);
   const [hasClosedTrailer, setHasClosedTrailer] = useState(false);
-  const [mounted, setMounted] = useState(false);
   const timerRef = useRef(null);
 
-  const backdropPath = richData?.backdrop_path || movieData?.backdrop_path || movie?.backdrop_path;
-  const posterPath = richData?.poster_path || movieData?.poster_path || movie?.poster_path;
+  const backdropPath = movieData?.backdrop_path || richData?.backdrop_path || movie?.backdrop_path;
+  const posterPath = movieData?.poster_path || richData?.poster_path || movie?.poster_path;
 
   const bannerImage = backdropPath ? getTMDBImage(backdropPath, 'w1280') : null;
   const posterImage = posterPath ? getTMDBImage(posterPath, 'w500') : null;
 
-  const insight = richData?.synopsis || "An extraordinary exploration of human endurance and the will to survive against impossible odds.";
-  const survivalIndex = richData?.survivabilityIndex || 85;
-
-  useEffect(() => { setMounted(true); }, []);
+  const insight = getMovieInsight(movie?.Title);
+  const rating = richData?.rating || 8.0; 
 
   const mobileHeroCSS = `
   @media (max-width: 767px) {
     .mobile-hero-row { display: flex; flex-direction: row; align-items: flex-start; width: 100vw; max-width: 100vw; gap: 10px; margin: 0; padding: 0 8px; }
     .mobile-hero-poster { width: 38vw; min-width: 106px; border-radius: 12px; overflow: hidden; box-shadow: 0 3px 14px #0007; margin: 0; flex-shrink: 0; }
     .mobile-hero-poster img { width: 100%; height: auto; border-radius: 12px; display: block; }
-    .mobile-psych-card { background: linear-gradient(135deg, #0f172a 0%, #000000 100%); border-radius: 12px; box-shadow: 0 2px 12px #0006; margin: 0; flex: 1; border-left: 4px solid #EAB308; display: flex; flex-direction: column; justify-content: flex-start; padding: 10px 10px 10px 12px; min-height: 110px; position: relative; }
+    .mobile-psych-card { background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%); border-radius: 12px; box-shadow: 0 2px 12px #0006; margin: 0; flex: 1; border-left: 4px solid #f59e0b; display: flex; flex-direction: column; justify-content: flex-start; padding: 10px 10px 10px 12px; min-height: 110px; position: relative; }
     .mobile-psych-row { display: flex; align-items: flex-start; gap: 7px; }
-    .mobile-psych-icon { min-width: 24px; min-height: 24px; color: #FDE047; margin-top: 2px; }
-    .mobile-psych-title { font-size: 15px; font-weight: bold; color: #FDE047; margin-bottom: 1px; line-height: 1.12; }
+    .mobile-psych-icon { min-width: 24px; min-height: 24px; color: #fcd34d; margin-top: 2px; }
+    .mobile-psych-title { font-size: 15px; font-weight: bold; color: #fcd34d; margin-bottom: 1px; line-height: 1.12; }
     .mobile-psych-desc { font-size: 12.3px; color: #ededed; line-height: 1.36; margin-top: 2px; }
   }`;
 
   useEffect(() => {
-    if (mounted && !isMobile && trailer && !showTrailer && !hasClosedTrailer) {
+    if (!isMobile && trailer && !showTrailer && !hasClosedTrailer) {
       timerRef.current = setInterval(() => {
         setCountdown((prev) => {
           if (prev <= 1) { clearInterval(timerRef.current); setShowTrailer(true); return 0; }
@@ -76,12 +101,10 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
       }, 1000);
     }
     return () => { if (timerRef.current) clearInterval(timerRef.current); };
-  }, [mounted, isMobile, trailer, showTrailer, hasClosedTrailer]);
+  }, [isMobile, trailer, showTrailer, hasClosedTrailer]);
 
   const handleCloseTrailer = () => { setShowTrailer(false); setHasClosedTrailer(true); if (timerRef.current) clearInterval(timerRef.current); };
   const handlePlayClick = () => { setShowTrailer(true); setHasClosedTrailer(false); };
-
-  if (!mounted) return <div className="h-[300px] w-full bg-black/50" />;
 
   return (
     <motion.div className="relative w-full overflow-hidden mb-6 sm:mb-8 mx-0 sm:mx-4 lg:mx-6 rounded-none sm:rounded-3xl" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8 }}>
@@ -96,7 +119,7 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
           ) : (
             <motion.div key="image" className="absolute inset-0 rounded-none sm:rounded-3xl overflow-hidden" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
               <div className="relative w-full h-full">
-                {bannerImage ? <Image src={bannerImage} alt={`${movie?.Title} banner`} fill priority sizes="100vw" quality={90} className="object-cover" /> : <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: COLORS.bgCard }}><Mountain className="w-16 h-16 sm:w-24 sm:h-24" style={{ color: COLORS.textMuted }} /></div>}
+                {bannerImage ? <Image src={bannerImage} alt={`${movie?.Title} banner`} fill priority sizes="100vw" quality={90} className="object-cover" /> : <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: COLORS.bgCard }}><Film className="w-16 h-16 sm:w-24 sm:h-24" style={{ color: COLORS.textMuted }} /></div>}
                 <div className="absolute inset-0 z-10" style={{ background: `linear-gradient(to bottom, transparent 0%, transparent 60%, ${COLORS.bgPrimary}80 85%, ${COLORS.bgPrimary} 100%)` }} />
               </div>
               {trailer && (
@@ -115,10 +138,10 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
       </div>
       {isMobile ? (
         <div className="mobile-hero-row">
-          <div className="mobile-hero-poster">{posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} width={320} height={480} className="w-full h-auto" priority /> : <div style={{ background: COLORS.bgCard, width: '100%', height: '150px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Mountain style={{ color: COLORS.textMuted }} /></div>}</div>
+          <div className="mobile-hero-poster">{posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} width={320} height={480} className="w-full h-auto" priority /> : <div style={{ background: COLORS.bgCard, width: '100%', height: '150px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Theater style={{ color: COLORS.textMuted }} /></div>}</div>
           <div className="mobile-psych-card">
-            <div className="mobile-psych-row"><Mountain className="mobile-psych-icon" /><div><div className="mobile-psych-title">Survivability Index</div></div></div>
-            <div className="mobile-psych-desc"><strong>{survivalIndex}</strong> - {insight.substring(0, 80)}...</div>
+            <div className="mobile-psych-row"><Star className="mobile-psych-icon" /><div><div className="mobile-psych-title">IMDB Rating</div></div></div>
+            <div className="mobile-psych-desc"><strong>{rating}/10</strong> - {insight.substring(0, 80)}...</div>
           </div>
         </div>
       ) : (
@@ -126,15 +149,15 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 lg:gap-8 items-start">
             <motion.div className="flex-shrink-0 relative w-24 sm:w-48 md:w-56 lg:w-80 mx-auto sm:mx-0" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8, duration: 0.8 }}>
               <div className="relative" style={{ aspectRatio: '2/3' }}>
-                {posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} fill sizes="(max-width: 640px) 96px, (max-width: 768px) 192px, (max-width: 1024px) 224px, 320px" quality={85} className="object-cover rounded-lg sm:rounded-xl shadow-2xl" /> : <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: COLORS.bgCard, borderRadius: '12px' }}><Mountain style={{ color: COLORS.textMuted }} /></div>}
+                {posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} fill sizes="(max-width: 640px) 96px, (max-width: 768px) 192px, (max-width: 1024px) 224px, 320px" quality={85} className="object-cover rounded-lg sm:rounded-xl shadow-2xl" /> : <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: COLORS.bgCard, borderRadius: '12px' }}><Theater style={{ color: COLORS.textMuted }} /></div>}
               </div>
             </motion.div>
             <motion.div className="flex-1 w-full min-w-0" initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 1.0, duration: 0.8 }}>
-              <motion.div className="relative rounded-xl sm:rounded-2xl overflow-hidden p-4 sm:p-6 lg:p-8 backdrop-blur-sm" style={{ background: `linear-gradient(135deg, rgba(234, 179, 8, 0.15) 0%, rgba(15, 15, 20, 0.5) 100%)`, border: `1px solid ${COLORS.borderLight}`, boxShadow: `0 8px 32px rgba(234, 179, 8, 0.2)` }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.1, duration: 0.8 }}>
+              <motion.div className="relative rounded-xl sm:rounded-2xl overflow-hidden p-4 sm:p-6 lg:p-8 backdrop-blur-sm" style={{ background: `linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(15, 23, 42, 0.5) 100%)`, border: `1px solid ${COLORS.borderLight}`, boxShadow: `0 8px 32px rgba(245, 158, 11, 0.2)` }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.1, duration: 0.8 }}>
                 <div className="absolute top-0 left-0 right-0 h-0.5 sm:h-1" style={{ background: `linear-gradient(90deg, transparent, ${COLORS.accent}, transparent)` }} />
                 <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5">
-                  <motion.div className="p-2 sm:p-2.5 rounded-lg sm:rounded-xl flex-shrink-0" style={{ background: `linear-gradient(135deg, ${COLORS.accent}20, ${COLORS.accent}10)`, border: `1px solid ${COLORS.accent}40` }} whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}><Mountain className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" style={{ color: COLORS.accent }} /></motion.div>
-                  <div className="min-w-0 flex-1"><h2 className="text-sm sm:text-base lg:text-xl xl:text-2xl font-bold leading-tight" style={{ color: COLORS.accent }}>The Will to Survive</h2><p className="text-xs sm:text-sm hidden sm:block" style={{ color: COLORS.textMuted }}>Survivability Index: {survivalIndex}/100</p></div>
+                  <motion.div className="p-2 sm:p-2.5 rounded-lg sm:rounded-xl flex-shrink-0" style={{ background: `linear-gradient(135deg, ${COLORS.accent}20, ${COLORS.accent}10)`, border: `1px solid ${COLORS.accent}40` }} whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}><Award className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" style={{ color: COLORS.accent }} /></motion.div>
+                  <div className="min-w-0 flex-1"><h2 className="text-sm sm:text-base lg:text-xl xl:text-2xl font-bold leading-tight" style={{ color: COLORS.accent }}>Filmiway Selection</h2><p className="text-xs sm:text-sm hidden sm:block" style={{ color: COLORS.textMuted }}>IMDB Rating: {rating}/10</p></div>
                 </div>
                 <div className="relative pl-4 sm:pl-6 border-l-2" style={{ borderColor: `${COLORS.accent}40` }}>
                   <motion.div className="absolute -left-1.5 sm:-left-2 top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full" style={{ backgroundColor: COLORS.accent }} animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 2, repeat: Infinity }} />
@@ -151,7 +174,7 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
 };
 
 const SmartBackButton = () => {
-    const handleBackClick = () => { if (typeof window !== 'undefined') window.location.href = '/collection/best-survival-movies'; };
+    const handleBackClick = () => { if (typeof window !== 'undefined') window.location.href = '/collection/best-movies-on-hulu'; };
     return (
         <motion.button onClick={handleBackClick} className="fixed top-4 left-4 sm:top-6 sm:left-6 z-50 flex items-center gap-2 px-3 sm:px-4 py-2 backdrop-blur-md rounded-lg transition-all duration-300 shadow-xl text-xs sm:text-sm" style={{ backgroundColor: `${COLORS.bgPrimary}F2`, border: `1px solid ${COLORS.borderLight}` }} whileHover={{ scale: 1.02, x: -2 }} whileTap={{ scale: 0.98 }} initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} onMouseEnter={(e) => e.currentTarget.style.borderColor = COLORS.borderAccent} onMouseLeave={(e) => e.currentTarget.style.borderColor = COLORS.borderLight}>
             <ChevronLeft className="w-3 h-3 sm:w-4 sm:h-4" style={{ color: COLORS.accent }} /><span className="font-medium" style={{ color: COLORS.accent }}>Back to Collection</span>
@@ -162,7 +185,7 @@ const SmartBackButton = () => {
 const AuthorCreditSection = () => (
     <motion.section className="pt-6 sm:pt-8 mt-12 sm:mt-16" style={{ borderTop: `1px solid ${COLORS.borderLight}` }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2.0, duration: 0.8 }}>
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
-            <div className="flex items-center gap-3"><User className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: COLORS.textDisabled }} /><div><p className="text-xs sm:text-sm" style={{ color: COLORS.textMuted }}>Curated by <span className="font-medium" style={{ color: COLORS.textSecondary }}>Filmiway Editorial Team</span></p><p className="text-xs" style={{ color: COLORS.textDisabled }}>Expert analysis of survival cinema</p></div></div>
+            <div className="flex items-center gap-3"><User className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: COLORS.textDisabled }} /><div><p className="text-xs sm:text-sm" style={{ color: COLORS.textMuted }}>Curated by <span className="font-medium" style={{ color: COLORS.textSecondary }}>Filmiway Editorial Team</span></p><p className="text-xs" style={{ color: COLORS.textDisabled }}>Expert analysis of cinema</p></div></div>
             <div className="flex items-center gap-3 sm:gap-4"><span className="text-xs sm:text-sm" style={{ color: COLORS.textDisabled }}>Share:</span><div className="flex gap-2 sm:gap-3">{[Twitter, Hash, Send].map((Icon, i) => (<button key={i} className="p-1.5 sm:p-2 rounded-full transition-colors" style={{ color: COLORS.textDisabled }} onMouseEnter={(e) => { e.currentTarget.style.color = COLORS.textSecondary; e.currentTarget.style.backgroundColor = COLORS.bgCard; }} onMouseLeave={(e) => { e.currentTarget.style.color = COLORS.textDisabled; e.currentTarget.style.backgroundColor = 'transparent'; }}><Icon className="w-3 h-3 sm:w-4 sm:h-4" /></button>))}</div></div>
         </div>
     </motion.section>
@@ -172,21 +195,22 @@ const SubtleFilmGrain = () => (
     <div className="fixed inset-0 pointer-events-none z-0 opacity-[0.005]"><div className="w-full h-full bg-repeat" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)' opacity='0.3'/%3E%3C/svg%3E")`, backgroundSize: '60px 60px' }} /></div>
 );
 
-const SurvivalBreadcrumb = ({ movie }) => (
+const HuluBestBreadcrumb = ({ movie }) => (
     <motion.nav className="mb-6 sm:mb-8 px-3 sm:px-4 lg:px-6 pb-3 sm:pb-4" style={{ borderBottom: `1px solid ${COLORS.borderLight}` }} initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
         <div className="flex items-center space-x-2 sm:space-x-3 text-xs sm:text-sm" style={{ color: COLORS.textMuted }}>
-            <Link href="/collection/best-survival-movies" className="transition-all duration-300 truncate" style={{ color: COLORS.textMuted }} onMouseEnter={(e) => e.currentTarget.style.color = COLORS.accent} onMouseLeave={(e) => e.currentTarget.style.color = COLORS.textMuted}>Best Survival Movies</Link>
-            <ChevronRight size={14} className="flex-shrink-0" style={{ color: COLORS.textDisabled }} /><span className="font-medium truncate" style={{ color: `${COLORS.accent}B3` }}>{movie.Title}</span>
+            <Link href="/collection/best-movies-on-hulu" className="transition-all duration-300 truncate" style={{ color: COLORS.textMuted }} onMouseEnter={(e) => e.currentTarget.style.color = COLORS.accent} onMouseLeave={(e) => e.currentTarget.style.color = COLORS.textMuted}>Best Movies on Hulu</Link>
+            <ChevronLeft size={14} className="flex-shrink-0" style={{ color: COLORS.textDisabled, transform: 'rotate(180deg)' }} /><span className="font-medium truncate" style={{ color: `${COLORS.accent}B3` }}>{movie.Title}</span>
         </div>
     </motion.nav>
 );
 
-// ✅ SCHEMA GENERATOR (SURVIVAL EDITION)
+// ✅ JSON-LD SCHEMA GENERATOR
 const generateMovieSchema = (movie, movieData, currentMovieYear) => {
   const data = COMPLETE_MOVIE_DATA[movie.tmdbId];
   const sensitiveData = SENSITIVE_TIMELINES[movie.tmdbId];
-  const faqs = SURVIVAL_MOVIE_FAQS[movie.Title] || [];
+  const faqs = HULU_BEST_MOVIE_FAQS[movie.Title] || [];
 
+  // 1. CALCULATE THE PEAK MOMENT
   let peakStats = "Peak info unavailable.";
   if (data?.scenes && data.scenes.length > 0) {
     const peakScene = data.scenes.reduce((prev, current) => 
@@ -195,40 +219,44 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
     peakStats = `[PEAK MOMENT] Maximum Intensity (${peakScene.intensity}/100) hits at minute ${peakScene.time}: "${peakScene.label}".`;
   }
 
+  // 2. METRICS
   const intensityStats = `
     [FILMIWAY METRICS]
-    - Survivability Index: ${data?.survivabilityIndex || 0}/100
-    - Physical Toll: ${data?.physicalToll || 0}/100
+    - Rating: ${data?.rating || 0}/10
+    - Intensity Score: ${data?.adrenalineScore || 85}/100
   `;
 
   const dnaStats = data?.dna 
     ? `[GENRE DNA] ${Object.entries(data.dna).map(([genre, val]) => `${genre}: ${val}%`).join(', ')}`
-    : 'Survival Thriller';
+    : 'Drama / Thriller';
 
   const contentWarnings = sensitiveData?.scenes 
     ? `[CONTENT ADVISORY] ${sensitiveData.scenes.map(s => 
         (s.start && s.end) 
           ? `${s.type}: ${s.start}-${s.end} (${s.severity})` 
-          : `${s.type} (${s.severity})`
+          : `${s.type} (${s.severity})` 
       ).join(' | ')}.`
-    : 'No specific content warnings listed.';
-
+    : 'Standard content rating.';
   const faqText = faqs.length > 0
     ? `[COMMON QUESTIONS] ${faqs.map(f => `Q: ${f.question} A: ${f.answer}`).join(' | ')}`
     : '';
 
+  // 3. COMPILE FULL DESCRIPTION
   const fullDescription = `
-    ${data?.synopsis || movie.description || "A compelling survival film."}
+    ${data?.synopsis || movie.description || "A top-rated movie streaming on Hulu."}
+    
     --- DETAILED ANALYSIS ---
-    ${peakStats}
+    ${peakStats} 
     ${intensityStats}
     ${dnaStats}
     ${contentWarnings}
     ${faqText}
-    Ranking: #${movie.rank || 'N/A'} in Best Survival Movies.
+    
+    Ranking: #${movie.rank || 'N/A'} in Best Movies on Hulu.
     Production: Budget ${data?.budget || 'N/A'}, Box Office ${data?.boxOffice || 'N/A'}.
   `.replace(/\s+/g, ' ').trim();
 
+  // 4. MAIN MOVIE SCHEMA
   const movieSchema = {
     "@context": "https://schema.org",
     "@type": "Movie",
@@ -236,19 +264,37 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
     "description": fullDescription, 
     "datePublished": currentMovieYear,
     "image": movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : undefined,
-    "director": { "@type": "Person", "name": data?.director || "Unknown" },
-    "actor": data?.cast?.map(actor => ({ "@type": "Person", "name": actor })) || [],
+    "director": {
+      "@type": "Person",
+      "name": data?.director || "Unknown"
+    },
+    "actor": data?.cast?.map(actor => ({
+      "@type": "Person",
+      "name": actor
+    })) || [],
+    
     "review": {
       "@type": "Review",
-      "author": { "@type": "Organization", "name": "Filmiway" },
+      "author": {
+        "@type": "Organization",
+        "name": "Filmiway"
+      },
       "reviewRating": {
-        "@type": "Rating", "ratingValue": data?.rating || 8.0, "bestRating": "10", "worstRating": "1"
+        "@type": "Rating",
+        "ratingValue": data?.rating || 7.5, 
+        "bestRating": "10",
+        "worstRating": "1"
       }
     },
-    "genre": data?.dna ? Object.keys(data.dna) : ["Survival", "Thriller"],
-    "keywords": "Survival Movie, Human Endurance, Isolation, " + (data?.themes ? data.themes.join(", ") : ""),
-    "url": `https://filmiway.com/movies/survival/${movie.imdbID}`,
-    "author": { "@type": "Organization", "name": "Filmiway", "url": "https://filmiway.com" }
+
+    "genre": data?.dna ? Object.keys(data.dna) : ["Drama", "Action"],
+    "keywords": "Best Movies Hulu, Top Rated Films, " + (data?.themes ? data.themes.join(", ") : ""),
+    "url": `https://filmiway.com/movies/best-movies-on-hulu/${movie.imdbID}`,
+    "author": {
+      "@type": "Organization",
+      "name": "Filmiway",
+      "url": "https://filmiway.com"
+    }
   };
 
   const faqSchema = faqs.length > 0 ? {
@@ -257,14 +303,18 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
     "mainEntity": faqs.map(f => ({
       "@type": "Question",
       "name": f.question,
-      "acceptedAnswer": { "@type": "Answer", "text": f.answer }
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": f.answer
+      }
     }))
   } : null;
 
   return { movieSchema, faqSchema };
 };
 
-const SurvivalMoviePage = ({ movie, tmdbData: movieData }) => {
+const HuluBestMoviePage = ({ movie, tmdbData: movieData }) => {
+    const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
     const richData = COMPLETE_MOVIE_DATA[movie.tmdbId]; 
     const [isMobile, setIsMobile] = useState(false);
 
@@ -277,40 +327,49 @@ const SurvivalMoviePage = ({ movie, tmdbData: movieData }) => {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-        sessionStorage.setItem('fromCollection', 'survival');
-        sessionStorage.setItem('fromCollectionName', 'Best Survival Movies');
+        sessionStorage.setItem('fromCollection', 'best-movies-on-hulu');
+        sessionStorage.setItem('fromCollectionName', 'Best Movies on Hulu');
     }
   }, []);
 
     const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
-    // ✅ SEO FIX: Join title and description strings FIRST to prevent hydration markers ()
-    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Best Survival Film | Filmiway`;
-    const cleanSEODesc = `${movie.Title} - A compelling survival film. Analysis & where to stream.`;
+    // ✅ SEO TITLE
+    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Best Movies on Hulu | Filmiway`;
+    const cleanSEODesc = `${movie.Title} (${currentMovieYear}) - One of the highest-rated movies streaming on Hulu right now. Read our analysis, intensity score, and review.`;
 
     const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear);
 
     return (
         <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
             <Head>
-                {/* ✅ HYDRATION BUG RESOLVED: No more split variables inside title tag */}
                 <title>{cleanSEOTitle}</title>
                 <meta name="description" content={cleanSEODesc} />
-                <link rel="canonical" href={`https://filmiway.com/movies/survival/${movie.imdbID}`} />
-                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <link rel="canonical" href={`https://filmiway.com/collection/best-movies-on-hulu/${movie.imdbID}`} />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
                 <meta name="robots" content="index, follow" />
-                
-                {/* JSON-LD Schema */}
-                <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }} />
-                {faqSchema && (<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />)}
+                <meta name="language" content="English" />
 
-                {/* Social Meta Tags */}
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }}
+                />
+                {faqSchema && (
+                    <script
+                        type="application/ld+json"
+                        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+                    />
+                )}
+
                 <meta property="og:title" content={cleanSEOTitle} />
-                <meta property="og:description" content={cleanSEODesc} />
+                <meta property="og:description" content="One of the best movies streaming on Hulu." />
+                <meta property="og:type" content="video.movie" />
                 <meta property="og:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
+                <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content={cleanSEOTitle} />
-                <meta name="twitter:description" content={cleanSEODesc} />
+                <meta name="twitter:description" content="One of the best movies streaming on Hulu." />
+                <meta name="twitter:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
             </Head>
 
             <SubtleFilmGrain />
@@ -318,11 +377,9 @@ const SurvivalMoviePage = ({ movie, tmdbData: movieData }) => {
             <SmartBackButton />
             
             <div className="relative z-10 pt-10 sm:pt-12 lg:pt-16">
-                
-                {/* ✅ HIDDEN H1 ADDED HERE FOR GOOGLE & BING SEO PARITY */}
                 <h1 className="sr-only">{cleanSEOTitle}</h1>
 
-                <SurvivalBreadcrumb movie={movie} />
+                <HuluBestBreadcrumb movie={movie} />
                 <div className="container mx-auto px-0 pb-16 sm:pb-24 lg:pb-32 max-w-7xl">
                     <OptimizedBanner movie={movie} movieData={movieData} richData={richData} trailer={trailer} isMobile={isMobile} />
                     
@@ -330,15 +387,15 @@ const SurvivalMoviePage = ({ movie, tmdbData: movieData }) => {
                         id="watch" 
                         initial={{ opacity: 0, y: 20 }} 
                         animate={{ opacity: 1, y: 0 }} 
-                        transition={{ duration: 0.5 }} // Faster, no massive delay
+                        transition={{ duration: 0.5 }} 
                         className="space-y-8 sm:space-y-12 px-3 sm:px-4 lg:px-6"
                     >
-                        <MovieDetailsSection movie={movie} fromSurvivalCollection={true} />
+                        {/* ✅ Passing a generic collection prop since this is a mixed bag */}
+                        <MovieDetailsSection movie={movie} fromHuluBestCollection={true} /> 
                     </motion.div>
                     
                     <div className="px-3 sm:px-4 lg:px-6">
-                        {/* ✅ THIS IS THE FIX: Explicitly passing currentSlug="best-survival-movies" */}
-                        <InternalCollectionsSection currentSlug="best-survival-movies" />
+                        <InternalCollectionsSection currentSlug="best-movies-on-hulu" />
                         <TMDBAttribution />
                         <AuthorCreditSection />
                     </div>
@@ -358,13 +415,23 @@ export async function getStaticProps({ params }) {
         const movie = COMPLETE_MOVIE_DATABASE.find((m) => m.imdbID === params.id);
         if (!movie) return { notFound: true };
 
-        const tmdbResponse = await fetch(`https://api.themoviedb.org/3/movie/${movie.tmdbId}?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&append_to_response=videos`);
+        const tmdbResponse = await fetch(
+            `https://api.themoviedb.org/3/movie/${movie.tmdbId}?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&append_to_response=videos`
+        );
         const tmdbData = tmdbResponse.ok ? await tmdbResponse.json() : null;
 
-        return { props: { movie, tmdbData } };
+        return {
+            props: { movie, tmdbData },
+        };
     } catch (error) {
-        return { props: { movie: COMPLETE_MOVIE_DATABASE.find((m) => m.imdbID === params.id), tmdbData: null } };
+        console.error('Error fetching TMDB data:', error);
+        return {
+            props: {
+                movie: COMPLETE_MOVIE_DATABASE.find((m) => m.imdbID === params.id),
+                tmdbData: null,
+            },
+        };
     }
 }
 
-export default SurvivalMoviePage;
+export default HuluBestMoviePage;

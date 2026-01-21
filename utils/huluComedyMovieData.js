@@ -32,7 +32,7 @@ export const SENSITIVE_TIMELINES = {
         ] 
     },
     // 2. O Brother, Where Art Thou?
-    13389: { scenes: [] }, 
+    134: { scenes: [] }, 
     // 3. Borat
     3779: { 
         scenes: [
@@ -54,13 +54,13 @@ export const SENSITIVE_TIMELINES = {
         ] 
     },
     // 7. Twinless
-    1105822: { scenes: [] },
+   1245347: { scenes: [] },
     // 8. Big
     2280: { scenes: [] },
     // 9. Theater Camp
-    1002315: { scenes: [] },
+  986054: { scenes: [] },
     // 10. Idiocracy
-    2045: { 
+  7512: { 
         scenes: [
             { start: "0:10:00", end: "0:15:00", type: "Crude Language", severity: "Mild" }
         ] 
@@ -69,15 +69,15 @@ export const SENSITIVE_TIMELINES = {
 
 export const FALLBACK_POSTERS = {
     8363: "https://image.tmdb.org/t/p/w500/ek8e8txUyUwd2BNqj6lFEerJnhq.jpg",
-    13389: "https://image.tmdb.org/t/p/w500/min5Q6Xo3Xj8B86629K9qfD0Q5.jpg",
+    134: "https://image.tmdb.org/t/p/w500/min5Q6Xo3Xj8B86629K9qfD0Q5.jpg",
     3779: "https://image.tmdb.org/t/p/w500/y1Z77dY1jYdc2Jg6Y3B6S77Z.jpg",
     718930: "https://image.tmdb.org/t/p/w500/tVxDe01Zy3kZqaPETYiXe2FOUVy.jpg",
     587792: "https://image.tmdb.org/t/p/w500/1SBNmo4JG2ziZFnXA23jJ2Sbd.jpg",
     39939: "https://image.tmdb.org/t/p/w500/3s9Y5w27dGHX03aA7Y5W6v.jpg",
-    1105822: "https://image.tmdb.org/t/p/w500/placeholder.jpg",
+   1245347: "https://image.tmdb.org/t/p/w500/placeholder.jpg",
     2280: "https://image.tmdb.org/t/p/w500/ur1593c.jpg",
-    1002315: "https://image.tmdb.org/t/p/w500/3X.jpg",
-    2045: "https://image.tmdb.org/t/p/w500/gZ.jpg"
+  986054: "https://image.tmdb.org/t/p/w500/3X.jpg",
+  7512: "https://image.tmdb.org/t/p/w500/gZ.jpg"
 };
 
 // ✅ HELPER: Single Metric "Laughter Index"
@@ -111,7 +111,7 @@ export const COMPLETE_MOVIE_DATA = {
     // 2. O Brother, Where Art Thou? (ADVENTURE PEAK)
     // Curve: Escape -> Music -> Obstacle -> Triumph -> Salvation.
     // Peak: 88 (Man of Constant Sorrow - Musical Triumph).
-    13389: createMovieData({ 
+    134: createMovieData({ 
         laughterIndex: 88, 
         complexityLevel: "MASTERPIECE", 
         dominantColor: "#ca8a04", rating: 7.7, criticsScore: 79, audienceScore: 89, director: "Joel Coen", 
@@ -211,7 +211,7 @@ export const COMPLETE_MOVIE_DATA = {
     // 7. Twinless (DARK BUDDY COMEDY)
     // Curve: Grief -> Meeting -> Bonding -> Shock -> Acceptance.
     // Peak: 78 (The Twist - Narrative Shift).
-    1105822: createMovieData({ 
+   1245347: createMovieData({ 
         laughterIndex: 80, 
         complexityLevel: "FRESH", 
         dominantColor: "#8b5cf6", rating: 7.0, criticsScore: 85, audienceScore: 80, director: "James Griffiths", 
@@ -251,7 +251,7 @@ export const COMPLETE_MOVIE_DATA = {
     // 9. Theater Camp (MOCKUMENTARY / CRINGE)
     // Curve: Crisis -> Auditions -> Chaos -> Performance -> Triumph.
     // Peak: 82 (The Show - Controlled Chaos).
-    1002315: createMovieData({ 
+  986054: createMovieData({ 
         laughterIndex: 82, 
         complexityLevel: "MOCKUMENTARY", 
         dominantColor: "#f43f5e", rating: 7.0, criticsScore: 86, audienceScore: 80, director: "Molly Gordon", 
@@ -271,7 +271,7 @@ export const COMPLETE_MOVIE_DATA = {
     // 10. Idiocracy (SATIRE / FRUSTRATION)
     // Curve: Experiment -> Awakening -> Arrest -> Trial -> Resolution.
     // Peak: 80 (The Monster Truck Rally - Peak Stupidity).
-    2045: createMovieData({ 
+  7512: createMovieData({ 
         laughterIndex: 80, 
         complexityLevel: "SATIRE", 
         dominantColor: "#eab308", rating: 6.5, criticsScore: 71, audienceScore: 60, director: "Mike Judge", 
@@ -290,15 +290,15 @@ export const COMPLETE_MOVIE_DATA = {
 };
 export const STRATEGIC_QUOTES = {
     8363: "I am McLovin.",
-    13389: "We thought you was a toad!",
+    134: "We thought you was a toad!",
     3779: "Very nice!",
     718930: "Diesel is a diesel.",
     587792: "Today, tomorrow, it's all the same.",
     39939: "The snozberries taste like snozberries.",
-    1105822: "We are the twinless.",
+   1245347: "We are the twinless.",
     2280: "I wish I were big.",
-    1002315: "Joan, still.",
-    2045: "It's got electrolytes."
+  986054: "Joan, still.",
+  7512: "It's got electrolytes."
 };
 
 export const CINEMATIC_COLORS = {

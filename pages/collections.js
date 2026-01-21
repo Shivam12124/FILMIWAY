@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Head from 'next/head';
 import Link from 'next/link';
-import { Search, Brain, Mountain, Film, ChevronDown, Sparkles, Plus, ArrowRight, Star, Clock, Eye, Scale, DollarSign, Shield, Zap,Heart,Ghost,Smile } from 'lucide-react';
+import { Search, Brain, Mountain, Film, ChevronDown, Sparkles, Plus, ArrowRight, Star, Clock, Eye, Scale, DollarSign, Shield, Zap,Heart,Ghost,Smile,Crown  } from 'lucide-react';
 import Image from 'next/image';
 const CollectionsHub = () => {
     const [searchQuery, setSearchQuery] = useState('');
@@ -130,6 +130,18 @@ const CollectionsHub = () => {
             directLink: '/collection/best-thriller-movies-hulu',
             hasSubCollections: false
         },
+
+{
+    id: 'hulu-best',
+    title: 'Top 10 Best Movies on Hulu',
+    description: 'The definitive ranking of the highest-rated films streaming on Hulu right now.',
+    icon: Crown, // Ensure 'Crown' is imported from 'lucide-react'
+    gradient: 'from-amber-500 to-yellow-600',
+    movieCount: '10',
+    rating: '7.9',
+    directLink: '/collection/best-movies-on-hulu',
+    hasSubCollections: false
+},
 
         {
             id: 'oldboy',
