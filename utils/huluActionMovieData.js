@@ -22,17 +22,15 @@ export const COMPLETE_MOVIE_DATABASE = [
 ];
 
 // ✅ SENSITIVE TIMELINES (Focusing on Extreme Violence & Gore)
+// ✅ SENSITIVE TIMELINES (Action Collection - Updated)
 export const SENSITIVE_TIMELINES = {
     // 1. Predator
-    106: { 
-        scenes: [
-            { start: "0:46:00", end: "0:47:00", type: "Gore", severity: "High" }, // Skinned bodies
-            { start: "1:15:20", end: "1:16:30", type: "Violence", severity: "Extreme" } // Spine rip
-        ] 
-    },
+    106: 
+{ scenes: [] },
     // 2. Ip Man
     14756: { 
         scenes: [
+            { start: "12:21", end: "12:24", type: "Partial Nudity (Non-Sexual)", severity: "Low" },
             { start: "0:58:00", end: "1:02:00", type: "Violence", severity: "High" } // 1 vs 10 bone breaking
         ] 
     },
@@ -40,49 +38,35 @@ export const SENSITIVE_TIMELINES = {
     119450: { scenes: [] }, // War violence, mostly guns
     
     // 4. Predator: Killer of Killers
-    1376434: { 
-        scenes: [
-            { start: "0:15:00", end: "0:18:00", type: "Animated Gore", severity: "High" }
-        ] 
-    },
+    1376434:  
+      { scenes: [] },
     // 5. The Equalizer
     156022: { 
         scenes: [
-            { start: "1:25:00", end: "1:27:00", type: "Violence", severity: "Extreme" }, // Drill scene
-            { start: "0:28:00", end: "0:29:00", type: "Violence", severity: "High" } // Bar fight
+           
+            { start: "2:04:35", end: "2:04:55", type: "Nudity (Non-Sexual)", severity: "Moderate" }
         ] 
     },
     // 6. Kingsman: The Secret Service
     207703: { 
         scenes: [
-            { start: "1:24:00", end: "1:28:00", type: "Violence", severity: "Extreme" }, // Church Fight
-            { start: "1:35:00", end: "1:36:00", type: "Exploding Heads", severity: "High" }
+          
+            { start: "1:59:22", end: "1:59:29", type: "Partial Nudity", severity: "Moderate" }
         ] 
     },
     // 7. Unstoppable
     44048: { scenes: [] }, // High tension, low violence
     
     // 8. Prey
-    766507: { 
-        scenes: [
-            { start: "0:55:00", end: "0:58:00", type: "Gore", severity: "High" } // Bear trap sequence
-        ] 
-    },
+    766507:  
+        { scenes: [] },
     // 9. Bullet Train
-    718930: { 
-        scenes: [
-            { start: "0:50:00", end: "0:52:00", type: "Bloody Violence", severity: "High" }, // Eye stab
-            { start: "1:40:00", end: "1:45:00", type: "Violence", severity: "High" }
-        ] 
-    },
+    718930:  
+{ scenes: [] },
     // 10. Boss Level
-    513310: { 
-        scenes: [
-            { start: "0:35:00", end: "0:36:00", type: "Gore", severity: "High" } // Decapitation
-        ] 
-    }
+    513310: 
+{ scenes: [] },
 };
-
 export const FALLBACK_POSTERS = {
     106: "https://image.tmdb.org/t/p/w500/k3mW4qfJo6SKqe6laRyNGnbB9n5.jpg",
     14756: "https://image.tmdb.org/t/p/w500/ggTTuxwxV76P10J9a9YtV529E7Q.jpg",

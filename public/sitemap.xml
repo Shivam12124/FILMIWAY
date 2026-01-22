@@ -276,6 +276,13 @@
     </url>
 
 
+<url>
+        <loc>https://filmiway.com/collection/best-drama-movies-on-hulu</loc>
+        <lastmod>2026-01-20T12:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
 <!-- 🧠 MOVIES LIKE INCEPTION (10 MOVIES - CORRECTED) -->
 <url>
     <loc>https://filmiway.com/movies/like-inception/tt0390384</loc>
@@ -558,77 +565,6 @@
 
     <url>
         <loc>https://filmiway.com/movies/survival/tt1809398</loc>
-        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-
-    <!-- 🎭 DRAMA MOVIES ON NETFLIX -->
-    <url>
-        <loc>https://filmiway.com/movies/netflix/tt8579674</loc>
-        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-
-    <url>
-        <loc>https://filmiway.com/movies/netflix/tt6155172</loc>
-        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-
-    <url>
-        <loc>https://filmiway.com/movies/netflix/tt1302006</loc>
-        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-
-    <url>
-        <loc>https://filmiway.com/movies/netflix/tt9770150</loc>
-        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-
-    <url>
-        <loc>https://filmiway.com/movies/netflix/tt1677720</loc>
-        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-
-    <url>
-        <loc>https://filmiway.com/movies/netflix/tt9419184</loc>
-        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-
-    <url>
-        <loc>https://filmiway.com/movies/netflix/tt7291200</loc>
-        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-
-    <url>
-        <loc>https://filmiway.com/movies/netflix/tt2156584</loc>
-        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-
-    <url>
-        <loc>https://filmiway.com/movies/netflix/tt0454921</loc>
-        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-
-    <url>
-        <loc>https://filmiway.com/movies/netflix/tt10118744</loc>
         <lastmod>2025-11-15T18:40:00+05:30</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -1075,6 +1011,79 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
 </url>
+
+
+<url>
+        <loc>https://filmiway.com/movies/best-drama-movies-on-hulu/tt1065073</loc>
+        <lastmod>2026-01-20T12:00:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://filmiway.com/movies/best-drama-movies-on-hulu/tt27503384</loc>
+        <lastmod>2026-01-20T12:00:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://filmiway.com/movies/best-drama-movies-on-hulu/tt2381111</loc>
+        <lastmod>2026-01-20T12:00:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://filmiway.com/movies/best-drama-movies-on-hulu/tt27196021</loc>
+        <lastmod>2026-01-20T12:00:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://filmiway.com/movies/best-drama-movies-on-hulu/tt21192142</loc>
+        <lastmod>2026-01-20T12:00:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://filmiway.com/movies/best-drama-movies-on-hulu/tt21867434</loc>
+        <lastmod>2026-01-20T12:00:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://filmiway.com/movies/best-drama-movies-on-hulu/tt21823606</loc>
+        <lastmod>2026-01-20T12:00:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://filmiway.com/movies/best-drama-movies-on-hulu/tt30321095</loc>
+        <lastmod>2026-01-20T12:00:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://filmiway.com/movies/best-drama-movies-on-hulu/tt0449059</loc>
+        <lastmod>2026-01-20T12:00:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://filmiway.com/movies/best-drama-movies-on-hulu/tt18550182</loc>
+        <lastmod>2026-01-20T12:00:00+05:30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+
 
     <url>
         <loc>https://filmiway.com/movies/eyes-wide-shut/tt0090756</loc>

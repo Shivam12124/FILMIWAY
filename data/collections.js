@@ -736,7 +736,8 @@ export const COLLECTIONS = {
       'best-romance-movies-on-hulu',
       'best-comedy-movies-on-hulu',
       'best-sci-fi-movies-on-hulu',
-      'best-thriller-movies-hulu'
+      'best-thriller-movies-hulu',
+      'best-drama-movies-on-hulu'
     ],
 
     seo: {
@@ -754,6 +755,95 @@ export const COLLECTIONS = {
       }
     }
   },
+
+
+
+// 🎭 BEST DRAMA MOVIES ON HULU COLLECTION
+'best-drama-movies-on-hulu': {
+    slug: 'best-drama-movies-on-hulu',
+    title: '10 Best Drama Movies on Hulu',
+    subtitle: 'Ranked by Emotional Impact',
+    description: 'The most emotionally resonant dramas streaming on Hulu right now. From Palme d\'Or winners to devastating character studies.',
+    longDescription: 'Prepare for an emotional journey. This collection ranks the most powerful drama films currently streaming on Hulu. We prioritize emotional authenticity, character depth, and narrative impact. From the 12-year cinematic experiment of Boyhood to the quiet devastation of All of Us Strangers, these are the films that stay with you long after the credits roll.',
+
+    emoji: '🎭',
+    theme: 'blue',
+    primaryColor: '#3b82f6', // Blue
+    secondaryColor: '#2563eb', // Darker Blue
+    accentColor: '#1d4ed8', // Deep Blue
+    gradientFrom: 'from-blue-600',
+    gradientTo: 'to-indigo-600',
+
+    category: 'drama',
+    tags: ['drama', 'hulu', 'streaming', 'emotional', 'indie', 'award-winning', 'tearjerker'],
+
+    metaTitle: '10 Best Drama Movies on Hulu (2025) | Ranked by Emotion | Filmiway',
+    metaDescription: 'Discover the top 10 drama movies on Hulu—from Boyhood to Perfect Days. Expert-curated ranking of emotionally powerful films and critical darlings.',
+    metaKeywords: 'best drama movies on hulu, hulu drama films, boyhood, perfect days, all of us strangers, brooklyn, emotional movies hulu, drama streaming 2025',
+
+    stats: {
+        totalMovies: 10,
+        averageRating: 7.7,
+        totalWatchtime: '19 hours 45 minutes',
+        averageEmotionalIntensity: 89.5,
+        mostEmotional: 'All of Us Strangers (99/100)',
+        newestMovie: 'Small Things Like These (2024)',
+        oldestMovie: 'Little Miss Sunshine (2006)'
+    },
+
+    movies: [
+        'tt1065073',  // 1. Boyhood (2014)
+        'tt27503384', // 2. Perfect Days (2023)
+        'tt2381111',  // 3. Brooklyn (2015)
+        'tt27209383', // 4. Small Things Like These (2024)
+        'tt21192142', // 5. All of Us Strangers (2023)
+        'tt21867434', // 6. BlackBerry (2023)
+        'tt28769062', // 7. A Real Pain (2024)
+        'tt30048492', // 8. Ghostlight (2024)
+        'tt0449059',  // 9. Little Miss Sunshine (2006)
+        'tt19861552'  // 10. R.M.N. (2022)
+    ],
+
+    badges: [
+        { label: 'Emotional Impact', desc: 'Guaranteed to move you' },
+        { label: 'Critical Darlings', desc: 'Award-winning masterpieces' },
+        { label: 'Character Driven', desc: 'Deep psychological depth' }
+    ],
+
+    featured: {
+        hero: {
+            title: 'Boyhood',
+            subtitle: 'A Cinematic Miracle',
+            description: 'Richard Linklater\'s 12-year epic capturing the fleeting, beautiful reality of growing up. A once-in-a-lifetime film.',
+            poster: 'https://image.tmdb.org/t/p/w500/1QNO36V0qEf04d9bY58557053.jpg',
+            backdrop: 'https://image.tmdb.org/t/p/w1280/b7w1Vn9R2y09f7a6a7a6a7a6.jpg', // Placeholder backdrop path needed
+            emotionalIntensity: 98
+        }
+    },
+
+    relatedCollections: [
+        'best-romance-movies-on-hulu',
+        'movies-like-black-swan',
+        'best-movies-on-hulu'
+    ],
+
+    seo: {
+        title: '10 Best Drama Movies on Hulu (2025) | Ranked by Emotion',
+        description: 'The definitive ranking of the best drama movies on Hulu. From the life-spanning Boyhood to the meditative Perfect Days.',
+        keywords: 'drama movies hulu, best drama films streaming, boyhood, perfect days, all of us strangers, blackberry, sad movies hulu',
+        canonicalUrl: 'https://filmiway.com/collection/best-drama-movies-on-hulu',
+        ogImage: 'https://filmiway.com/images/hulu-drama-collection-og.jpg',
+        structuredData: {
+            '@context': 'https://schema.org',
+            '@type': 'ItemList',
+            name: 'Best Drama Movies on Hulu',
+            description: 'Expert-curated list of the best drama movies available on Hulu ranked by emotional intensity and storytelling',
+            numberOfItems: 10
+        }
+    }
+},
+
+
 
 
 // 🦢 MOVIES LIKE BLACK SWAN COLLECTION

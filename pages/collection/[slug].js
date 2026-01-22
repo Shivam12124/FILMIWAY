@@ -27,6 +27,7 @@ import { COMPLETE_MOVIE_DATABASE as HULU_SCIFI_DATABASE, COMPLETE_MOVIE_DATA as 
 import { COMPLETE_MOVIE_DATABASE as HULU_THRILLER_DATABASE, COMPLETE_MOVIE_DATA as HULU_THRILLER_DATA } from '../../utils/huluThrillerMovieData';
 import { COMPLETE_MOVIE_DATABASE, COMPLETE_MOVIE_DATA } from '../../utils/movieData';
 import { COMPLETE_MOVIE_DATABASE as HULU_BEST_DATABASE, COMPLETE_MOVIE_DATA as HULU_BEST_DATA } from '../../utils/huluBestMoviesData';
+import { COMPLETE_MOVIE_DATABASE as HULU_DRAMA_DATABASE, COMPLETE_MOVIE_DATA as HULU_DRAMA_DATA } from '../../utils/huluDramaMovieData';
 // ✅ FIXED IMPORTS: Aliasing COMPLETE_MOVIE_DATABASE to old variable names
 
 import { COMPLETE_MOVIE_DATABASE as THRILLER_MOVIES } from '../../utils/thrillerMovieData';
@@ -390,6 +391,31 @@ const getCollectionContent = () => {
             text2: "Each film has been selected as a 'must-watch'—guaranteeing that no matter what you pick, you are watching a top-tier example of filmmaking craft."
         }
     };
+
+
+} else if (collection.slug === 'best-drama-movies-on-hulu') {
+        return {
+            badge: "Emotional Powerhouse Cinema",
+            title: "Best Drama Movies on Hulu",
+            description: "The most emotionally resonant dramas streaming on Hulu. Deep character studies, heartbreaking performances & human stories that stay with you forever.",
+            selection: {
+                text1: "From the 12-year journey of 'Boyhood' to the quiet devastation of 'All of Us Strangers'—these films represent the pinnacle of emotional storytelling available on Hulu.",
+                text2: "Each selection features profound character depth, authentic human connection, and narratives that explore the beautiful, painful complexity of being alive."
+            },
+            ranking: {
+                text: "Our emotional intensity index evaluates character depth, narrative authenticity, and the lasting emotional impact of the film's themes.",
+                points: [
+                    "Emotional resonance depth",
+                    "Character development complexity",
+                    "Narrative authenticity score",
+                    "Thematic impact weight"
+                ]
+            },
+            experience: {
+                text1: "Whether you're seeking cathartic tears or quiet reflection, this collection delivers cinema's most powerful explorations of the human condition.",
+                text2: "Each film has been selected for its ability to touch the soul—offering moments of grace, grief, and connection that feel universally, heartbreakingly real."
+            }
+        };
 
 
 
@@ -953,6 +979,13 @@ const getHeaderContent = () => {
     };
 
 
+} else if (collection.slug === 'best-drama-movies-on-hulu') {
+    return {
+        title: "Best Drama Movies on Hulu: 10 Emotional Films",
+        subtitle: "Profound character studies, tearjerkers & award-winning human stories streaming now"
+    };
+
+
 } else if (collection.slug === 'movies-like-donnie-darko') {
     return {
         title: "Movies Like Donnie Darko: 10 Reality-Warping Films",
@@ -1135,6 +1168,13 @@ const getLoaderContent = () => {
     return {
         title: "Loading Best Movies on Hulu",
         description: "Curating the definitive list of top-rated films across all genres with community reviews"
+    };
+
+
+    } else if (collection?.slug === 'best-drama-movies-on-hulu') {
+    return {
+        title: "Loading Best Drama Movies on Hulu",
+        description: "Curating emotionally powerful dramas and award-winning narratives with community reviews"
     };
 
 
@@ -1352,6 +1392,18 @@ const getStaticMetaContent = () => {
         twitterTitle: "🏆 10 Highest-Rated Movies Streaming on Hulu Right Now",
         progressText: `of Top ${movies.length} Best Movies on Hulu`
     };
+
+
+} else if (collection.slug === 'best-drama-movies-on-hulu') {
+    return {
+        title: "10 Best Drama Movies on Hulu: Emotional Masterpieces",
+        description: "10 best drama movies streaming on Hulu. Featuring Boyhood, Perfect Days & All of Us Strangers. Ranked by emotional impact & character depth. Includes sensitive content timestamps.",
+        keywords: "best drama movies on hulu, hulu emotional films, boyhood, perfect days, all of us strangers, drama rankings, sensitive content timestamps",
+        ogTitle: "10 Best Drama Movies on Hulu: Deeply Emotional Cinema 🎭",
+        twitterTitle: "🎭 10 Emotional Masterpieces Streaming on Hulu Right Now",
+        progressText: `of Top ${movies.length} Drama Movies on Hulu`
+    };
+
 
     } else if (collection.slug === 'movies-like-black-swan') {
         return {
@@ -1590,6 +1642,7 @@ const getStaticMetaContent = () => {
             sessionStorage.removeItem('fromHuluSciFiCollection');
             sessionStorage.removeItem('fromHuluThrillerCollection');
             sessionStorage.removeItem('fromHuluBestCollection');
+            sessionStorage.removeItem('fromHuluDramaCollection');
             sessionStorage.removeItem('fromEyesWideShutCollection');
             sessionStorage.removeItem('fromDonnieDarkoCollection');
             sessionStorage.removeItem('fromBlackSwanCollection');
@@ -1632,6 +1685,9 @@ const getStaticMetaContent = () => {
     sessionStorage.setItem('fromHuluThrillerCollection', 'true');
     } else if (collection.slug === 'best-movies-on-hulu') {
     sessionStorage.setItem('fromHuluBestCollection', 'true');
+} else if (collection.slug === 'best-drama-movies-on-hulu') {
+    sessionStorage.setItem('fromHuluDramaCollection', 'true');
+
             } else if (collection.slug === 'movies-like-parasite') { 
                 sessionStorage.setItem('fromParasiteCollection', 'true');
          } else if (collection.slug === 'movies-like-oldboy') {
@@ -2110,7 +2166,8 @@ return (
 ? 'movies/best-thriller-movies-hulu/'
 : collection?.slug === 'best-movies-on-hulu'
 ? 'movies/best-movies-on-hulu/'
-
+: collection?.slug === 'best-drama-movies-on-hulu'
+? 'movies/best-drama-movies-on-hulu/'
                                     : collection?.slug === 'movies-like-interstellar'
                                     ? 'movies/interstellar/'
                                     : collection?.slug === 'movies-like-memento'
@@ -2273,6 +2330,8 @@ return (
 ? `/movies/best-thriller-movies-hulu/${currentMovie.imdbID}`
 : collection.slug === 'best-movies-on-hulu'
 ? `/movies/best-movies-on-hulu/${currentMovie.imdbID}`
+: collection.slug === 'best-drama-movies-on-hulu'
+? `/collection/best-drama-movies-on-hulu/${currentMovie.imdbID}`
       : collection.slug === 'movies-like-interstellar'
       ? `/movies/interstellar/${currentMovie.imdbID}`
       : collection.slug === 'movies-like-memento'
@@ -2371,6 +2430,8 @@ return (
     detailPageUrl = `/movies/best-thriller-movies-hulu/${currentMovie.imdbID}`;
     } else if (collection.slug === 'best-movies-on-hulu') {
     detailPageUrl = `/movies/best-movies-on-hulu/${currentMovie.imdbID}`;
+    } else if (collection.slug === 'best-drama-movies-on-hulu') {
+    detailPageUrl = `/movies/best-drama-movies-on-hulu/${currentMovie.imdbID}`;
                                         } else if (collection.slug === 'movies-like-interstellar') {
                                             detailPageUrl = `/movies/interstellar/${currentMovie.imdbID}`;
                                         } else if (collection.slug === 'movies-like-memento') {
@@ -2610,6 +2671,10 @@ case 'best-sci-fi-movies-on-hulu':
 
     case 'best-movies-on-hulu':
         movieDatabase = HULU_BEST_DATABASE;
+        break;
+
+case 'best-drama-movies-on-hulu':
+        movieDatabase = HULU_DRAMA_DATABASE;
         break;
 
         case 'movies-like-interstellar':

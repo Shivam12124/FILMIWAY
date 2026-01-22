@@ -143,6 +143,19 @@ const CollectionsHub = () => {
     hasSubCollections: false
 },
 
+{
+    id: 'hulu-drama',
+    title: 'Best Drama Movies on Hulu',
+    description: 'The most emotionally resonant dramas ranked by character depth and impact',
+    icon: Film, // Make sure Film is imported from lucide-react
+    gradient: 'from-blue-500 to-indigo-600',
+    movieCount: '10',
+    rating: '7.7',
+    directLink: '/collection/best-drama-movies-on-hulu',
+    hasSubCollections: false
+},
+
+
         {
             id: 'oldboy',
             title: 'Movies Like Oldboy',

@@ -21,79 +21,62 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 938614, "imdbID": "tt14966898", "Title": "Late Night with the Devil", "year": 2023, "genre": "Horror", "runtime": 93, "rank": 10 }
 ];
 
-// ✅ SENSITIVE TIMELINES (Focusing on Gore, Animal Harm, and Sexual Violence)
+
+// ✅ SENSITIVE TIMELINES (Horror Collection - Updated)
 export const SENSITIVE_TIMELINES = {
     // 1. When Evil Lurks
     1017409: { 
         scenes: [
-            { start: "0:25:00", end: "0:28:00", type: "Animal Harm (Dog)", severity: "Extreme" },
-            { start: "0:45:00", end: "0:48:00", type: "Gore/Self-Harm", severity: "Extreme" },
-            { start: "1:15:00", end: "1:20:00", type: "Child Death", severity: "High" }
+            { start: "32:25", end: "32:45", type: "Nudity", severity: "High" }
         ] 
     },
+    
     // 2. Longlegs
-    1079373: { 
-        scenes: [
-            { start: "0:01:00", end: "0:05:00", type: "Jump Scare/Unsettling", severity: "High" },
-            { start: "1:20:00", end: "1:25:00", type: "Self-Harm", severity: "High" }
-        ] 
-    },
+    1079373: { scenes: [] },
+
     // 3. The House That Jack Built
     400535: { 
         scenes: [
-            { start: "0:30:00", end: "0:35:00", type: "Strangulation", severity: "High" },
-            { start: "0:50:00", end: "0:55:00", type: "Child Harm/Taxidermy", severity: "Extreme" }, // infamous scene
-            { start: "1:10:00", end: "1:15:00", type: "Mutilation", severity: "Extreme" }
+            { start: "1:24:10", end: "1:25:10", type: "Nudity", severity: "High" },
+            { start: "1:38:10", end: "1:39:05", type: "Nudity", severity: "High" }
         ] 
     },
+
     // 4. Oddity
-    1094318: { 
-        scenes: [
-            { start: "0:40:00", end: "0:45:00", type: "Jump Scare", severity: "High" },
-            { start: "1:10:00", end: "1:15:00", type: "Violence", severity: "Moderate" }
-        ] 
-    },
+    1094318: { scenes: [] },
+
     // 5. Don't Breathe
-    300669: {
-        scenes: [
-            { start: "0:55:00", end: "0:58:00", type: "Sexual Assault Implication", severity: "High" }, // The turkey baster scene
-            { start: "1:10:00", end: "1:15:00", type: "Violence", severity: "High" }
-        ]
-    },
+    300669: { scenes: [] },
+
     // 6. The Babadook
-    242224: { 
-        scenes: [
-            { start: "0:55:00", end: "1:00:00", type: "Animal Harm (Dog)", severity: "High" },
-            { start: "1:10:00", end: "1:15:00", type: "Child Threat", severity: "High" }
-        ] 
-    },
+    242224: { scenes: [] }, 
+
     // 7. The Empty Man
     516632: { 
         scenes: [
-            { start: "0:15:00", end: "0:20:00", type: "Suicide", severity: "High" }
+            { start: "1:24:10", end: "1:25:10", type: "Nudity", severity: "High" },
+            { start: "1:38:10", end: "1:39:05", type: "Nudity", severity: "High" }
         ] 
     },
+
     // 8. Barbarian
     913290: { 
         scenes: [
-            { start: "0:40:00", end: "0:45:00", type: "Violence/Gore", severity: "Extreme" },
-            { start: "1:30:00", end: "1:35:00", type: "Body Horror", severity: "High" }
+            { start: "42:28", end: "42:40", type: "Nudity", severity: "High" }
         ] 
     },
+
     // 9. The First Omen
     824372: { 
         scenes: [
-            { start: "0:55:00", end: "1:00:00", type: "Birth Trauma/Gore", severity: "Extreme" } 
+            { start: "4:20", end: "4:50", type: "Nudity", severity: "High" },
+            { start: "1:17:15", end: "1:17:45", type: "Nudity", severity: "High" } 
         ] 
     },
-    // 10. Late Night with the Devil
-    1014590: { 
-        scenes: [
-            { start: "1:15:00", end: "1:25:00", type: "Gore/Body Horror", severity: "High" }
-        ] 
-    }
-};
 
+    // 10. Late Night with the Devil
+    1014590: { scenes: [] }
+};
 export const FALLBACK_POSTERS = {
     1017409: "https://image.tmdb.org/t/p/w500/2yl2zC3tX7F2KyD62P8R92V7X9o.jpg",
     1079373: "https://image.tmdb.org/t/p/w500/5aj8vVGFvGVbXQmZhcs62060w23.jpg",

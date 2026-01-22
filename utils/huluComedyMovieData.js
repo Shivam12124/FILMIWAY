@@ -22,49 +22,69 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 7512, "imdbID": "tt0387808", "Title": "Idiocracy", "year": 2006, "genre": "Comedy", "runtime": 84, "rank": 10 }
 ];
 
-// ✅ SENSITIVE TIMELINES (Comedy Edition)
+
+// ✅ SENSITIVE TIMELINES (Comedy Collection - Updated)
 export const SENSITIVE_TIMELINES = {
     // 1. Superbad
     8363: { 
         scenes: [
-            { start: "0:15:00", end: "0:18:00", type: "Crude Drawings", severity: "Moderate" },
-            { start: "1:20:00", end: "1:25:00", type: "Period Blood Scene", severity: "High" }
+            { start: "4:45", end: "4:55", type: "Nudity", severity: "High" },
+            { start: "9:38", end: "9:45", type: "Nudity", severity: "High" },
+            { start: "18:15", end: "20:30", type: "Nudity", severity: "High" }
         ] 
     },
+
     // 2. O Brother, Where Art Thou?
     134: { scenes: [] }, 
+
     // 3. Borat
     3779: { 
         scenes: [
-            { start: "0:50:00", end: "0:55:00", type: "Full Frontal Nudity", severity: "Extreme" }
+            { start: "3:36", end: "3:50", type: "Partial Nudity", severity: "Moderate" },
+            { start: "55:15", end: "58:20", type: "Sexual Content & Nudity", severity: "Extreme" }
         ] 
     },
+
     // 4. Bullet Train
-    718930: { 
+    718930: 
+  { scenes: [] }, 
+
+    // 5. Palm Springs
+    587792: { 
         scenes: [
-            { start: "0:55:00", end: "1:00:00", type: "Bloody Violence", severity: "High" }
+            { start: "1:12", end: "1:55", type: "Sexual Content", severity: "Moderate" },
+            { start: "29:53", end: "29:59", type: "Partial Nudity", severity: "Low" },
+            { start: "31:20", end: "31:30", type: "Sexual Content", severity: "Moderate" },
+            { start: "39:20", end: "39:30", type: "Sex (No Nudity)", severity: "Moderate" }
         ] 
     },
-    // 5. Palm Springs
-    587792: { scenes: [] },
+
     // 6. Super Troopers
     39939: { 
         scenes: [
-            { start: "0:01:00", end: "0:05:00", type: "Drug Humor", severity: "Moderate" }
+            { start: "44:10", end: "45:15", type: "Nudity", severity: "High" },
+            { start: "58:10", end: "1:00:10", type: "Nudity (Non-Sexual)", severity: "High" },
+            { start: "1:07:27", end: "1:07:37", type: "Partial Nudity (Non-Sexual)", severity: "Low" }
         ] 
     },
+
     // 7. Twinless
-   1245347: { scenes: [] },
+    1245347: { 
+        scenes: [
+            { start: "23:45", end: "25:15", type: "Sex & Nudity", severity: "High" },
+            { start: "1:04:25", end: "1:06:10", type: "Sex & Nudity", severity: "High" }
+        ] 
+    },
+
     // 8. Big
     2280: { scenes: [] },
+
     // 9. Theater Camp
-  986054: { scenes: [] },
+    986054: { scenes: [] },
+
     // 10. Idiocracy
-  7512: { 
-        scenes: [
-            { start: "0:10:00", end: "0:15:00", type: "Crude Language", severity: "Mild" }
-        ] 
-    }
+    7512: 
+        { scenes: [] }, 
 };
 
 export const FALLBACK_POSTERS = {

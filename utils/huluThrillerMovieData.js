@@ -23,67 +23,62 @@ export const COMPLETE_MOVIE_DATABASE = [
 ];
 
 // ✅ SENSITIVE TIMELINES (Thriller Edition)
+// ✅ SENSITIVE TIMELINES (Thriller Collection - Updated)
 export const SENSITIVE_TIMELINES = {
     // 1. Heat
-    949: { 
-        scenes: [
-            { start: "1:45:00", end: "1:55:00", type: "Intense Gunfight", severity: "High" },
-            { start: "0:10:00", end: "0:15:00", type: "Brutal Violence", severity: "Moderate" }
-        ] 
-    },
+    949: { scenes: [] },
+
     // 2. Black Swan
     44214: { 
         scenes: [
-            { start: "0:45:00", end: "0:48:00", type: "Body Horror (Skin Peeling)", severity: "High" },
-            { start: "1:35:00", end: "1:40:00", type: "Stabbing/Self-Harm", severity: "Extreme" }
+            { start: '39:40', end: '40:40', type: 'Sexual content', severity: 'High' },
+            { start: '48:52', end: '49:10', type: 'Sexual content', severity: 'Moderate' },
+            { start: '51:20', end: '51:40', type: 'Sexual content', severity: 'High' },
+            { start: '1:08:20', end: '1:11:01', type: 'Sex', severity: 'High' },
+            { start: '1:20:20', end: '1:20:40', type: 'Sex', severity: 'High' }
         ] 
-    }, 
+    },
+
     // 3. Anatomy of a Fall
-    915935: { 
-        scenes: [
-            { start: "0:05:00", end: "0:08:00", type: "Visual of Corpse", severity: "Moderate" },
-            { start: "1:50:00", end: "2:00:00", type: "Intense Domestic Argument", severity: "High" }
-        ] 
-    },
+    915935: { scenes: [] },
+
     // 4. Donnie Darko
-    141: { 
-        scenes: [
-            { start: "1:40:00", end: "1:45:00", type: "Plane Crash aftermath", severity: "Moderate" }
-        ] 
-    },
+    141: { scenes: [] },
+
     // 5. Before the Devil Knows You're Dead
     7972: { 
         scenes: [
-            { start: "0:00:00", end: "0:03:00", type: "Graphic Intimacy", severity: "High" },
-            { start: "0:20:00", end: "0:25:00", type: "Violent Robbery", severity: "High" }
+            { start: "0:39", end: "4:00", type: "Sex & Nudity", severity: "Extreme" },
+            { start: "14:14", end: "15:15", type: "Nudity", severity: "High" },
+            { start: "37:50", end: "38:15", type: "Nudity", severity: "High" }
         ] 
     },
+
     // 6. The Illusionist
     1491: { scenes: [] },
+
     // 7. Fresh
     787752: { 
         scenes: [
-            { start: "0:35:00", end: "0:40:00", type: "Surgical Gore/Cannibalism", severity: "Extreme" }
+            { start: "8:26", end: "8:32", type: "Nudity", severity: "High" },
+            { start: "19:29", end: "20:00", type: "Sex", severity: "High" },
+            { start: "1:10:10", end: "1:10:30", type: "Nudity", severity: "High" }
         ] 
     },
-    // 8. The Equalizer
+
+       // 8. The Equalizer
     156022: { 
         scenes: [
-            { start: "1:10:00", end: "1:15:00", type: "Brutal Combat", severity: "High" }
+           
+            { start: "2:04:35", end: "2:04:55", type: "Nudity (Non-Sexual)", severity: "Moderate" }
         ] 
     },
+
     // 9. How to Blow Up a Pipeline
-    1008048: { 
-        scenes: [
-            { start: "0:50:00", end: "0:55:00", type: "Explosive Tension", severity: "Moderate" }
-        ] 
-    },
+    1008048: { scenes: [] },
+
     // 10. The Pledge
-   5955: { 
-        scenes: [
-            { start: "0:15:00", end: "0:20:00", type: "Child Murder Scene (Implied)", severity: "High" }
-        ] 
-    }
+    5955: { scenes: [] }
 };
 
 export const FALLBACK_POSTERS = {

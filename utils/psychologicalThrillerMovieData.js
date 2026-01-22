@@ -48,12 +48,17 @@ export const SENSITIVE_TIMELINES = {
         { start: '1:59:03', end: '1:59:06', type: 'Casual Kissing', severity: 'Mild' }
     ]},
     44214: { scenes: [
-        { start: '21:34', end: '21:40', type: 'Kissing', severity: 'Mild' },
-        { start: '39:40', end: '40:40', type: 'Masturbating', severity: 'High' },
-        { start: '48:52', end: '49:10', type: 'Sexually Suggestive Scene', severity: 'Moderate' },
-        { start: '51:20', end: '51:40', type: 'Masturbating', severity: 'High' },
+
+        { start: '39:40', end: '40:40', type: 'Sexual Content', severity: 'High' },
+
+        { start: '48:52', end: '49:10', type: 'Sexual Content', severity: 'Moderate' },
+
+        { start: '51:20', end: '51:40', type: 'Sexual Content', severity: 'High' },
+
         { start: '1:08:20', end: '1:11:01', type: 'Sex', severity: 'High' },
+
         { start: '1:20:20', end: '1:20:40', type: 'Sex', severity: 'High' }
+
     ]},
     4553: { scenes: [
         { start: '17:00', end: '18:25', type: 'Sex', severity: 'High' },

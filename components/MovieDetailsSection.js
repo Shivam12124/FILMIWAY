@@ -87,6 +87,11 @@ import {
   SENSITIVE_TIMELINES as HULU_BEST_SENSITIVE_TIMELINES 
 } from '../utils/huluBestMoviesData';
 import { 
+  COMPLETE_MOVIE_DATA as HULU_DRAMA_MOVIE_DATA, 
+  HULU_DRAMA_MOVIE_FAQS,
+  SENSITIVE_TIMELINES as HULU_DRAMA_SENSITIVE_TIMELINES 
+} from '../utils/huluDramaMovieData';
+import { 
   COMPLETE_MOVIE_DATA as CRIME_THRILLER_MOVIE_DATA, 
   SENSITIVE_TIMELINES as CRIME_THRILLER_SENSITIVE_TIMELINES 
 } from '../utils/crimeThrillerMovieData';
@@ -137,7 +142,6 @@ import SEOFAQSection from './SEOFAQSection';
 import MementoSEOFAQSection from './MementoSEOFAQSection';
 import ShutterIslandSEOFAQSection from './ShutterIslandSEOFAQSection';
 import SurvivalSEOFAQSection from './SurvivalSEOFAQSection';
-
 import ThrillerSEOFAQSection from './ThrillerSEOFAQSection';
 import MysteryThrillerSEOFAQSection from './MysteryThrillerSEOFAQSection';
 import DetectiveThrillerSEOFAQSection from './DetectiveThrillerSEOFAQSection';
@@ -163,6 +167,7 @@ import HuluComedySEOFAQSection from './HuluComedySEOFAQSection';
 import HuluSciFiSEOFAQSection from './HuluSciFiSEOFAQSection';
 import HuluThrillerSEOFAQSection from './HuluThrillerSEOFAQSection';
 import HuluBestSEOFAQSection from './HuluBestSEOFAQSection';
+import HuluDramaSEOFAQSection from './HuluDramaSEOFAQSection';
 
 const MovieDetailsSection = React.memo(({
   movie,
@@ -178,7 +183,7 @@ const MovieDetailsSection = React.memo(({
   fromDonnieDarkoCollection,
   fromOldboyCollection,
   fromInterstellarCollection,
-  fromDramaCollection,
+  fromDramaCollection, // This is Netflix Drama
   fromPsychologicalThrillerCollection,
   fromThrillerCollection,
   fromMysteryThrillerCollection,
@@ -195,7 +200,8 @@ const MovieDetailsSection = React.memo(({
   fromHuluComedyCollection,
   fromHuluSciFiCollection,
   fromHuluThrillerCollection,
-  fromHuluBestCollection
+  fromHuluBestCollection,
+  fromHuluDramaCollection // ✅ NEW: Hulu Drama Prop
 }) => {
 
  if (!movie) return null;
@@ -203,7 +209,8 @@ const MovieDetailsSection = React.memo(({
  const safeLookup = (collection, id) => (collection && id && collection[id]) || null;
 
  // ✅ UNIFIED MOVIE INFO LOOKUP
- const movieInfo = fromHuluBestCollection ? safeLookup(HULU_BEST_MOVIE_DATA, movie.tmdbId)
+ const movieInfo = fromHuluDramaCollection ? safeLookup(HULU_DRAMA_MOVIE_DATA, movie.tmdbId) // ✅ Hulu Drama
+  : fromHuluBestCollection ? safeLookup(HULU_BEST_MOVIE_DATA, movie.tmdbId)
   : fromHuluThrillerCollection ? safeLookup(HULU_THRILLER_MOVIE_DATA, movie.tmdbId)
   : fromHuluSciFiCollection ? safeLookup(HULU_SCIFI_MOVIE_DATA, movie.tmdbId)
   : fromHuluComedyCollection ? safeLookup(HULU_COMEDY_MOVIE_DATA, movie.tmdbId)
@@ -229,7 +236,7 @@ const MovieDetailsSection = React.memo(({
   : fromThrillerCollection ? safeLookup(THRILLER_MOVIE_DATA, movie.tmdbId)
   : fromInterstellarCollection ? safeLookup(INTERSTELLAR_MOVIE_DATA, movie.tmdbId)
   : fromSurvivalCollection ? safeLookup(SURVIVAL_MOVIE_DATA, movie.tmdbId)
-  : fromDramaCollection ? safeLookup(DRAMA_MOVIE_DATA, movie.tmdbId)
+  : fromDramaCollection ? safeLookup(DRAMA_MOVIE_DATA, movie.tmdbId) // Netflix Drama
   : safeLookup(COMPLETE_MOVIE_DATA, movie.tmdbId);
 
  const getMovieSpecificData = (title) => ({
@@ -255,7 +262,6 @@ const MovieDetailsSection = React.memo(({
  const rating = safeMovieInfo.rating || movie.imdbRating || 7.5;
 
  // 🔥🔥🔥 AUTO-FETCH LOGIC FOR ALL MOVIE DATA 🔥🔥🔥
- // Initialize with static data (fallback)
  const [dynamicMovieData, setDynamicMovieData] = useState({
     director: safeMovieInfo.director || movie.Director || 'Unknown Director',
     cast: safeMovieInfo.cast?.join(', ') || '',
@@ -271,7 +277,6 @@ const MovieDetailsSection = React.memo(({
         try {
             const API_KEY = 'a07e22bc18f5cb106bfe4cc1f83ad8ed';
             
-            // Parallel Fetching for Speed
             const [detailsRes, creditsRes, releasesRes] = await Promise.all([
                 fetch(`https://api.themoviedb.org/3/movie/${movie.tmdbId}?api_key=${API_KEY}`),
                 fetch(`https://api.themoviedb.org/3/movie/${movie.tmdbId}/credits?api_key=${API_KEY}`),
@@ -282,34 +287,28 @@ const MovieDetailsSection = React.memo(({
             const credits = await creditsRes.json();
             const releases = await releasesRes.json();
 
-            // --- 1. PROCESSING BUDGET & REVENUE ---
             const formatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
             
             const newBudget = details.budget && details.budget > 0 
                 ? formatter.format(details.budget) 
-                : dynamicMovieData.budget; // Fallback to static if 0
+                : dynamicMovieData.budget;
 
             const newRevenue = details.revenue && details.revenue > 0 
                 ? formatter.format(details.revenue) 
-                : dynamicMovieData.boxOffice; // Fallback to static if 0
+                : dynamicMovieData.boxOffice;
 
-            // --- 2. PROCESSING CAST & DIRECTOR ---
             const directorObj = credits.crew?.find(person => person.job === 'Director');
             const newDirector = directorObj ? directorObj.name : dynamicMovieData.director;
 
             const topCast = credits.cast?.slice(0, 3).map(c => c.name).join(', ') || dynamicMovieData.cast;
 
-            // --- 3. PROCESSING AGE RATING ---
             let newRating = dynamicMovieData.ageRating;
-            // Look for US certification
             const usRelease = releases.results?.find(r => r.iso_3166_1 === 'US');
             if (usRelease) {
-                // Find first non-empty certification
                 const cert = usRelease.release_dates.find(d => d.certification !== '')?.certification;
                 if (cert) newRating = cert;
             }
 
-            // Update State with API Data
             setDynamicMovieData({
                 director: newDirector,
                 cast: topCast,
@@ -320,7 +319,6 @@ const MovieDetailsSection = React.memo(({
 
         } catch (error) {
             console.error("TMDB Auto-Fetch Failed:", error);
-            // If fails, it silently keeps the static data (safe fallback)
         }
     };
 
@@ -330,6 +328,7 @@ const MovieDetailsSection = React.memo(({
 
  // ✅ UNIFIED SENSITIVE SCENES LOOKUP
  const sensitiveScenes = safeMovieInfo.sensitiveScenes 
+   || HULU_DRAMA_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes // ✅ Hulu Drama
    || HULU_BEST_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
    || HULU_THRILLER_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || HULU_SCIFI_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
@@ -355,8 +354,9 @@ const MovieDetailsSection = React.memo(({
    || SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
    || [];
 
- // ✅ DYNAMIC SCORE VALUE SELECTION (Same as before)
- const scoreValue = fromHuluBestCollection ? movie.adrenalineScore ?? safeMovieInfo.adrenalineScore ?? 0 
+ // ✅ DYNAMIC SCORE VALUE SELECTION
+ const scoreValue = fromHuluDramaCollection ? movie.emotionalIntensity ?? safeMovieInfo.emotionalIntensity ?? 0
+   : fromHuluBestCollection ? movie.adrenalineScore ?? safeMovieInfo.adrenalineScore ?? 0 
    : fromHuluThrillerCollection ? movie.suspenseIntensity ?? safeMovieInfo.suspenseIntensity ?? 0
    : fromHuluSciFiCollection ? movie.visualSpectacle ?? safeMovieInfo.visualSpectacle ?? 0 
    : fromHuluComedyCollection ? movie.laughterIndex ?? safeMovieInfo.laughterIndex ?? 0 
@@ -373,7 +373,7 @@ const MovieDetailsSection = React.memo(({
    : fromRevengeCollection ? movie.revengeIntensity ?? safeMovieInfo.revengeIntensity ?? 0
    : fromWarFilmsCollection ? movie.warIntensity ?? safeMovieInfo.warIntensity ?? 0
    : fromSciFiCollection ? movie.sciFiComplexity ?? safeMovieInfo.sciFiComplexity ?? 0
-   : fromInterstellarCollection ? movie. sciFiComplexity?? safeMovieInfo. sciFiComplexity?? 0
+   : fromInterstellarCollection ? movie.spaceComplexity ?? safeMovieInfo.spaceComplexity ?? 0
    : fromTimeTravelCollection ? movie.timeTravelIntensity ?? safeMovieInfo.timeTravelIntensity ?? 0
    : fromHeistThrillerCollection ? movie.heistComplexity ?? safeMovieInfo.heistComplexity ?? 0
    : fromCrimeThrillerCollection ? movie.suspenseIntensity ?? safeMovieInfo.suspenseIntensity ?? 0
@@ -389,12 +389,20 @@ const MovieDetailsSection = React.memo(({
  const complexityLevel = safeMovieInfo.complexityLevel || 'HIGH';
 
  const getComplexityColor = (level) => {
+   if (fromHuluDramaCollection) { // ✅ Hulu Drama
+        switch (level) {
+            case 'MASTERPIECE': return '#3b82f6'; // Blue
+            case 'DEVASTATING': return '#7e22ce'; // Purple
+            case 'HEALING': return '#4f46e5'; // Indigo
+            default: return '#60a5fa'; // Light Blue
+        }
+   }
    if (fromHuluBestCollection) { 
         switch (level) {
-            case 'ESSENTIAL': return '#f59e0b'; // Gold
-            case 'LEGENDARY': return '#d97706'; // Dark Gold
-            case 'MASTERPIECE': return '#b45309'; // Deep Amber
-            default: return '#fbbf24'; // Light Gold
+            case 'ESSENTIAL': return '#f59e0b';
+            case 'LEGENDARY': return '#d97706';
+            case 'MASTERPIECE': return '#b45309';
+            default: return '#fbbf24';
         }
    }
    if (fromHuluThrillerCollection) {
@@ -483,6 +491,7 @@ const MovieDetailsSection = React.memo(({
  };
 
  const getComplexityScoreTitle = () => {
+   if (fromHuluDramaCollection) return 'EMOTIONAL INTENSITY';
    if (fromHuluBestCollection) return 'INTENSITY SCORE'; 
    if (fromHuluThrillerCollection) return 'SUSPENSE SCORE';
    if (fromHuluSciFiCollection) return 'VISUAL SPECTACLE SCORE'; 
@@ -495,7 +504,7 @@ const MovieDetailsSection = React.memo(({
    if (fromRevengeCollection) return 'REVENGE INTENSITY SCORE';
    if (fromWarFilmsCollection) return 'WAR INTENSITY SCORE';
    if (fromSciFiCollection) return 'SCI-FI COMPLEXITY SCORE';
-   if (fromInterstellarCollection) return 'SCI-FI COMPLEXITY SCORE';
+   if (fromInterstellarCollection) return 'SPACE COMPLEXITY SCORE';
    if (fromTimeTravelCollection) return 'TIME TRAVEL COMPLEXITY SCORE';
    if (fromHeistThrillerCollection) return 'HEIST COMPLEXITY SCORE';
    if (fromCrimeThrillerCollection) return 'CRIME INTENSITY SCORE';
@@ -511,6 +520,7 @@ const MovieDetailsSection = React.memo(({
  };
 
  const getComplexityIndexLabel = () => {
+   if (fromHuluDramaCollection) return 'IMPACT INDEX';
    if (fromHuluBestCollection) return 'ACCLAIM INDEX'; 
    if (fromHuluThrillerCollection) return 'TENSION INDEX';
    if (fromHuluSciFiCollection) return 'VISUAL SPECTACLE INDEX'; 
@@ -523,7 +533,7 @@ const MovieDetailsSection = React.memo(({
    if (fromRevengeCollection) return 'REVENGE INTENSITY INDEX';
    if (fromWarFilmsCollection) return 'WAR INTENSITY INDEX';
    if (fromSciFiCollection) return 'SCI-FI COMPLEXITY INDEX';
-   if (fromInterstellarCollection) return 'SCI-FI COMPLEXITY INDEX';
+   if (fromInterstellarCollection) return 'COSMIC REALISM INDEX';
    if (fromTimeTravelCollection) return 'TIME COMPLEXITY INDEX';
    if (fromHeistThrillerCollection) return 'HEIST COMPLEXITY INDEX';
    if (fromCrimeThrillerCollection) return 'CRIME INTENSITY INDEX';
@@ -539,6 +549,7 @@ const MovieDetailsSection = React.memo(({
  };
 
  const getComplexityLevelLabel = () => {
+   if (fromHuluDramaCollection) return 'RESONANCE LEVEL';
    if (fromHuluBestCollection) return 'PRESTIGE LEVEL'; 
    if (fromHuluThrillerCollection) return 'THRILL LEVEL';
    if (fromHuluSciFiCollection) return 'VISUAL SPECTACLE LEVEL'; 
@@ -551,7 +562,7 @@ const MovieDetailsSection = React.memo(({
    if (fromRevengeCollection) return 'VENGEANCE BRUTALITY LEVEL';
    if (fromWarFilmsCollection) return 'COMBAT REALISM LEVEL';
    if (fromSciFiCollection) return 'SCI-FI COMPLEXITY LEVEL';
-   if (fromInterstellarCollection) return 'SCI-FI COMPLEXITY LEVEL';
+   if (fromInterstellarCollection) return 'COSMIC SCALE LEVEL';
    if (fromTimeTravelCollection) return 'TEMPORAL PARADOX LEVEL';
    if (fromHeistThrillerCollection) return 'HEIST COMPLEXITY LEVEL';
    if (fromCrimeThrillerCollection) return 'CRIME COMPLEXITY LEVEL';
@@ -567,6 +578,11 @@ const MovieDetailsSection = React.memo(({
  };
 
  const getComplexityDescription = () => {
+   if (fromHuluDramaCollection) {
+        if (scoreValue >= 90) return 'A devastating, emotional masterpiece that will stay with you forever.';
+        if (scoreValue >= 80) return 'A powerful, deeply resonant film with rich character depth.';
+        return 'A compelling human drama with genuine emotional stakes.';
+   }
    if (fromHuluBestCollection) { 
         if (scoreValue >= 90) return 'A cinematic masterpiece that defines its genre and demands to be seen.';
         if (scoreValue >= 80) return 'Critically acclaimed filmmaking with powerful storytelling and high production value.';
@@ -620,6 +636,7 @@ const MovieDetailsSection = React.memo(({
  };
 
  const getBorderColor = () => {
+   if (fromHuluDramaCollection) return 'border-blue-500/40';
    if (fromHuluBestCollection) return 'border-amber-500/40'; 
    if (fromHuluThrillerCollection) return 'border-red-500/40';
    if (fromHuluSciFiCollection) return 'border-cyan-400/40'; 
@@ -637,6 +654,7 @@ const MovieDetailsSection = React.memo(({
  };
 
  const getStarColor = () => {
+   if (fromHuluDramaCollection) return 'text-blue-500';
    if (fromHuluBestCollection) return 'text-amber-500'; 
    if (fromHuluThrillerCollection) return 'text-red-500';
    if (fromHuluSciFiCollection) return 'text-cyan-400'; 
@@ -870,7 +888,8 @@ const MovieDetailsSection = React.memo(({
       <RealCommentsRatingSection movie={movie} />
 
       {/* FAQ SECTIONS */}
-      {fromHuluBestCollection ? <HuluBestSEOFAQSection movie={movie} /> // ✅ Added Best Movies FAQ
+      {fromHuluDramaCollection ? <HuluDramaSEOFAQSection movie={movie} /> // ✅ Added Hulu Drama FAQ
+        : fromHuluBestCollection ? <HuluBestSEOFAQSection movie={movie} />
         : fromHuluThrillerCollection ? <HuluThrillerSEOFAQSection movie={movie} />
         : fromHuluSciFiCollection ? <HuluSciFiSEOFAQSection movie={movie} />
         : fromHuluComedyCollection ? <HuluComedySEOFAQSection movie={movie} />

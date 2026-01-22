@@ -23,49 +23,54 @@ export const COMPLETE_MOVIE_DATABASE = [
 ];
 
 // ✅ SENSITIVE TIMELINES (Sci-Fi Edition: Existential Dread, Gore, Flashing Lights)
+// ✅ SENSITIVE TIMELINES (Sci-Fi Collection - Updated)
 export const SENSITIVE_TIMELINES = {
     // 1. Donnie Darko
     141: { 
-        scenes: [
-            { start: "0:05:00", end: "0:08:00", type: "Sleepwalking/Danger", severity: "Low" },
-            { start: "1:40:00", end: "1:45:00", type: "Plane Crash/Death", severity: "High" }
-        ] 
+        scenes: { scenes: [] }, 
     },
     // 2. The Abyss
     2756: { 
-        scenes: [
-            { start: "1:30:00", end: "1:35:00", type: "Drowning/Resuscitation", severity: "Extreme" }, // The famous chest slap scene
-            { start: "0:40:00", end: "0:45:00", type: "Claustrophobia", severity: "High" }
-        ] 
+        scenes: { scenes: [] },
     },
     // 3. Dawn of the Planet of the Apes
     119450: { scenes: [] }, // Standard War Violence
+    
     // 4. Predator
     106: { 
-        scenes: [
-            { start: "0:46:00", end: "0:47:00", type: "Gore", severity: "High" },
-            { start: "1:15:00", end: "1:16:00", type: "Spine Removal", severity: "Extreme" }
-        ] 
+        scenes: { scenes: [] },
     },
     // 5. Mr. Nobody
-    31011: { scenes: [] }, // Existential but safe
+    31011: { 
+        scenes: [
+            { start: "1:17:08", end: "1:17:42", type: "Sexual Content", severity: "Moderate" },
+            { start: "1:35:10", end: "1:36:58", type: "Sexual Content", severity: "Moderate" }
+        ] 
+    }, 
     // 6. No One Will Save You
     820609: { 
-        scenes: [
-            { start: "0:15:00", end: "0:20:00", type: "Home Invasion", severity: "High" }
-        ] 
+        scenes:{ scenes: [] },
     },
     // 7. Prey
-    766507: { scenes: [{ start: "0:55:00", end: "0:58:00", type: "Gore", severity: "High" }] },
+    766507: { 
+        scenes:{ scenes: [] },
+    },
     // 8. Predator: Killer of Killers
-    1376434: { scenes: [{ start: "0:15:00", end: "0:18:00", type: "Animated Gore", severity: "High" }] },
+    1376434: { 
+        scenes: { scenes: [] },
+    },
     // 9. Rise of the Planet of the Apes
-    61791: { scenes: [{ start: "0:30:00", end: "0:35:00", type: "Animal Abuse", severity: "Moderate" }] },
-    // 10. The Assessment (New Entry)
+    61791: { 
+        scenes: { scenes: [] },
+    },
+    // 10. The Assessment
     1317088: { 
         scenes: [
-            { start: "0:45:00", end: "0:50:00", type: "Psychological Abuse", severity: "High" },
-            { start: "1:10:00", end: "1:15:00", type: "Sexual Coercion/Tension", severity: "High" }
+            { start: "2:40", end: "3:00", type: "Partial Nudity", severity: "Moderate" },
+            { start: "7:40", end: "8:00", type: "Sex (No Nudity)", severity: "High" },
+            { start: "21:30", end: "23:10", type: "Sex (No Nudity)", severity: "High" },
+            { start: "46:00", end: "47:10", type: "Sex (No Nudity)", severity: "High" },
+            { start: "1:09:25", end: "1:11:25", type: "Sex (No Nudity)", severity: "High" }
         ] 
     }
 };

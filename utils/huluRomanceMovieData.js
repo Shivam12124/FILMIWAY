@@ -21,66 +21,80 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 10096, "imdbID": "tt0337563", "Title": "13 Going on 30", "year": 2004, "genre": "Comedy", "runtime": 98, "rank": 10 }
 ];
 
-// ✅ SENSITIVE TIMELINES (Focusing on Intimacy & Emotional Distress)
+
+// ✅ SENSITIVE TIMELINES (Detailed Sexual Content & Nudity Tracking)
 export const SENSITIVE_TIMELINES = {
     // 1. Anora
     1064213: { 
         scenes: [
-            { start: "0:15:00", end: "0:25:00", type: "Sexual Content", severity: "High" },
-            { start: "1:45:00", end: "1:55:00", type: "Emotional Distress", severity: "High" }
+            { start: "1:00", end: "5:15", type: "Nudity", severity: "High" },
+            { start: "9:00", end: "9:50", type: "Nudity", severity: "High" },
+            { start: "14:45", end: "15:01", type: "Sex & Nudity", severity: "High" },
+            { start: "20:00", end: "20:25", type: "Nudity", severity: "High" },
+            { start: "21:30", end: "21:45", type: "Sex & Nudity", severity: "High" },
+            { start: "24:55", end: "25:15", type: "Sex & Nudity", severity: "High" },
+            { start: "27:55", end: "28:20", type: "Nudity", severity: "High" },
+            { start: "29:20", end: "29:32", type: "Sex & Nudity", severity: "High" },
+            { start: "35:30", end: "36:00", type: "Sex & Nudity", severity: "High" },
+            { start: "1:30:55", end: "1:31:30", type: "Nudity", severity: "High" },
+            { start: "1:34:35", end: "1:38:45", type: "Nudity", severity: "High" },
+            { start: "2:13:30", end: "2:14:30", type: "Sex", severity: "High" }
         ] 
     },
+
     // 2. All of Us Strangers
     994108: { 
         scenes: [
-            { start: "0:45:00", end: "0:50:00", type: "Intimacy", severity: "Moderate" },
-            { start: "1:35:00", end: "1:40:00", type: "Grief/Trauma", severity: "High" }
+            { start: "26:30", end: "28:47", type: "Sex (No Nudity)", severity: "Moderate" }
         ] 
     },
+
     // 3. And Then We Danced
     572916: { 
         scenes: [
-            { start: "1:10:00", end: "1:15:00", type: "Intimacy", severity: "Moderate" }
+            { start: "51:55", end: "52:55", type: "Sexual Content", severity: "Moderate" },
+            { start: "59:45", end: "1:00:21", type: "Sex", severity: "High" }
         ] 
     },
+
     // 4. Brooklyn
-    167073: { 
-        scenes: [
-            { start: "0:55:00", end: "0:58:00", type: "Mild Intimacy", severity: "Low" }
-        ] 
-    },
+    167073: { scenes: [] }, // No sexual content present
+
     // 5. Little Manhattan
-   16553: { scenes: [] }, // Clean, family friendly
-    
+    16553: { scenes: [] }, // No sexual content found
+
     // 6. Palm Springs
     587792: { 
         scenes: [
-            { start: "0:10:00", end: "0:12:00", type: "Sexual Reference", severity: "Moderate" }
+            { start: "1:12", end: "1:55", type: "Sexual Content", severity: "Moderate" },
+            { start: "29:53", end: "29:59", type: "Partial Nudity", severity: "Low" },
+            { start: "31:20", end: "31:30", type: "Sexual Content", severity: "Moderate" },
+            { start: "39:20", end: "39:30", type: "Sex (No Nudity)", severity: "Moderate" }
         ] 
     },
+
     // 7. Rye Lane
-    866463: { scenes: [] },
-    
-    // 8. Crazy Heart
-    24428: { 
+    866463: { 
         scenes: [
-            { start: "0:20:00", end: "0:25:00", type: "Alcoholism", severity: "High" },
-            { start: "0:45:00", end: "0:48:00", type: "Intimacy", severity: "Moderate" }
+            { start: "38:22", end: "38:35", type: "Sex (No Nudity)", severity: "Moderate" },
+            { start: "1:11:30", end: "1:13:28", type: "Nudity", severity: "High" }
         ] 
     },
+
+    // 8. Crazy Heart
+    24428: { scenes: [] }, // No sexual content found
+
     // 9. Good Luck to You, Leo Grande
     800366: { 
         scenes: [
-            { start: "0:05:00", end: "1:30:00", type: "Sexual Discussion", severity: "Moderate" }, // Whole movie concept
-            { start: "1:32:00", end: "1:35:00", type: "Full Nudity", severity: "High" } // The mirror scene
+            { start: "1:05:00", end: "1:06:00", type: "Sex & Nudity", severity: "High" },
+            { start: "1:30:33", end: "1:33:30", type: "Sex & Nudity", severity: "High" },
+            { start: "1:35:15", end: "1:36:00", type: "Full Nudity", severity: "High" }
         ] 
     },
+
     // 10. 13 Going on 30
-    10096: { 
-        scenes: [
-            { start: "0:30:00", end: "0:32:00", type: "Sexual Reference", severity: "Mild" }
-        ] 
-    }
+    10096: { scenes: [] } // No sexual content found
 };
 
 export const FALLBACK_POSTERS = {
