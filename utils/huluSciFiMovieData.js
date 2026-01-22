@@ -24,21 +24,23 @@ export const COMPLETE_MOVIE_DATABASE = [
 
 // ✅ SENSITIVE TIMELINES (Sci-Fi Edition: Existential Dread, Gore, Flashing Lights)
 // ✅ SENSITIVE TIMELINES (Sci-Fi Collection - Updated)
+// ✅ SENSITIVE TIMELINES (FIXED: Removed Double Nesting)
 export const SENSITIVE_TIMELINES = {
     // 1. Donnie Darko
     141: { 
-        scenes: { scenes: [] }, 
+        scenes: [] 
     },
     // 2. The Abyss
     2756: { 
-        scenes: { scenes: [] },
+        scenes: []
     },
     // 3. Dawn of the Planet of the Apes
-    119450: { scenes: [] }, // Standard War Violence
-    
+    119450: { 
+        scenes: [] 
+    },
     // 4. Predator
     106: { 
-        scenes: { scenes: [] },
+        scenes: []
     },
     // 5. Mr. Nobody
     31011: { 
@@ -49,19 +51,19 @@ export const SENSITIVE_TIMELINES = {
     }, 
     // 6. No One Will Save You
     820609: { 
-        scenes:{ scenes: [] },
+        scenes: []
     },
     // 7. Prey
     766507: { 
-        scenes:{ scenes: [] },
+        scenes: []
     },
     // 8. Predator: Killer of Killers
     1376434: { 
-        scenes: { scenes: [] },
+        scenes: []
     },
     // 9. Rise of the Planet of the Apes
     61791: { 
-        scenes: { scenes: [] },
+        scenes: []
     },
     // 10. The Assessment
     1317088: { 
