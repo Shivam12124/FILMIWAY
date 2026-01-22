@@ -101,6 +101,9 @@ export const COMPLETE_MOVIE_DATA = {
     // 1. Donnie Darko (MIND BEND PEAK)
     // Curve: Weirdness -> Mystery -> Dread -> Existential Peak -> Melancholy.
     // Peak: 98 (Mad World - Reality Collapse).
+// 1. Donnie Darko (MIND BEND PEAK)
+    // Curve: Weirdness -> Mystery -> Dread -> Existential Peak -> Melancholy.
+    // Peak: 98 (Mad World - Reality Collapse).
     141: createMovieData({ 
         mindBendScore: 98, 
         visualSpectacle: 70, 
@@ -108,12 +111,13 @@ export const COMPLETE_MOVIE_DATA = {
         dominantColor: "#1e1b4b", rating: 8.0, criticsScore: 87, audienceScore: 80, director: "Richard Kelly", 
         cast: ["Jake Gyllenhaal", "Jena Malone", "Mary McDonnell"], boxOffice: "$7.5 million", budget: "$4.5 million", 
         dna: { "Sci-Fi": 40, "Thriller": 40, "Drama": 20 },
+        // ✅ CRITICAL FIX: Ensure 'scenes' is a direct array of objects
         scenes: [
-            { time: 10, intensity: 25, label: "Wake Up", color: "#1e1b4b" }, // Setup
-            { time: 40, intensity: 50, label: "Frank the Rabbit", color: "#4c1d95" }, // Unease
-            { time: 70, intensity: 65, label: "Cellar Door", color: "#6d28d9" }, // Mystery
-            { time: 90, intensity: 85, label: "Halloween Party", color: "#5b21b6" }, // Crisis
-            { time: 110, intensity: 98, label: "Mad World", color: "#312e81" } // EXISTENTIAL PEAK
+            { time: 10, intensity: 25, label: "Wake Up", color: "#1e1b4b" }, 
+            { time: 40, intensity: 50, label: "Frank the Rabbit", color: "#4c1d95" }, 
+            { time: 70, intensity: 65, label: "Cellar Door", color: "#6d28d9" }, 
+            { time: 90, intensity: 85, label: "Halloween Party", color: "#5b21b6" }, 
+            { time: 110, intensity: 98, label: "Mad World", color: "#312e81" } 
         ],
         synopsis: "In the quiet suburb of Middlesex, troubled teenager Donnie Darko narrowly escapes a bizarre accident when a jet engine crashes into his bedroom. He is lured out of the house by a terrifying figure in a rabbit suit named Frank, who prophesies that the world will end in 28 days. As the countdown begins, Donnie is pulled into a wormhole of time travel, metaphysics, and hallucinatory visions, forcing him to question whether he is losing his mind or if he is the chosen agent of a cosmic destiny.",
         themes: ["Time Travel", "Mental Health", "Determinism"]
