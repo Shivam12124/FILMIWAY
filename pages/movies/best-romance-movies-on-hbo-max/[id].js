@@ -205,7 +205,7 @@ const HboMaxRomanceBreadcrumb = ({ movie }) => (
 const generateMovieSchema = (movie, movieData, currentMovieYear) => {
   const data = COMPLETE_MOVIE_DATA[movie.tmdbId];
   const sensitiveData = SENSITIVE_TIMELINES[movie.tmdbId];
-  const faqs = HBO_MAX_ROMANCE_MOVIE_FAQS[movie.Title] || [];
+  const faqs = HBO_ROMANCE_MOVIE_FAQS[movie.Title] || [];
 
   // 1. CALCULATE THE PEAK MOMENT
   let peakStats = "Peak info unavailable.";

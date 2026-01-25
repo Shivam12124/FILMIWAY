@@ -5,9 +5,9 @@ import { Info } from 'lucide-react';
 import { HBO_ROMANCE_MOVIE_FAQS } from '../utils/hboMaxRomanceMovieData';
 
 const HboMaxRomanceSEOFAQSection = ({ movie }) => {
-    // 🔥 Get FAQs from HBO_MAX_ROMANCE_MOVIE_FAQS data
-    const faqsFromData = movie?.Title && HBO_MAX_ROMANCE_MOVIE_FAQS?.[movie.Title] 
-        ? HBO_MAX_ROMANCE_MOVIE_FAQS[movie.Title] 
+    // 🔥 Get FAQs from HBO_ROMANCE_MOVIE_FAQS data
+    const faqsFromData = movie?.Title && HBO_ROMANCE_MOVIE_FAQS?.[movie.Title] 
+        ? HBO_ROMANCE_MOVIE_FAQS[movie.Title] 
         : [];
 
     // 🔥 Safety check - return null if no FAQs
