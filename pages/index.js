@@ -397,16 +397,22 @@ const FilmiwayHomepage = ({ trendingMovies, popularMovies, topRatedMovies }) => 
 
     return (
         <>
-            {/* ✅ SEO HEAD MOVED TO TOP OF FRAGMENT */}
+{/* ✅ SEO HEAD - PROFESSIONAL & ANTI-PIRACY VERSION */}
             <Head>
-                {/* 1. Title is Critical */}
-                <title>Filmiway - Global Film Recommendations & Discovery</title>
-                {/* 2. Meta Description */}
-                <meta name="description" content="Discover the best of global cinema. Filmiway is your ultimate guide for movie recommendations, reviews, and hidden gems from around the world." />
+                {/* 1. Title: Professional and clear. Visible in the Browser Tab. */}
+                <title>Filmiway | Premium Movie Discovery & Streaming Guide</title>
+                
+                {/* 2. Description: Visible in Google Search Results. */}
+                <meta name="description" content="The ultimate guide for what to watch on Netflix, Hulu, HBO Max, Prime Video, and all major streaming platforms. Expertly curated movie collections and legal viewing options." />
+                
+                {/* 3. Keywords: Tells Google exactly which platforms you cover. */}
+                <meta name="keywords" content="movie recommendations, what to watch, legal streaming guide, Netflix, Hulu, HBO Max, Prime Video, best movies 2026, Filmiway" />
+
                 <link rel="canonical" href="https://filmiway.com/" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+                
+                <meta name="robots" content="index, follow" />
             </Head>
-
             <div className="min-h-screen bg-black select-none">
                 <Navigation />
                 <HeroSection />
@@ -475,6 +481,9 @@ const FilmiwayHomepage = ({ trendingMovies, popularMovies, topRatedMovies }) => 
                                     <li><Link href="/collection/best-sci-fi-movies-on-hulu" className="hover:text-white transition-colors text-gray-300">Best Sci-Fi on Hulu</Link></li>
 <li><Link href="/collection/best-drama-movies-on-hulu" className="hover:text-white transition-colors text-gray-300">Best Drama on Hulu</Link></li>
 <li><Link href="/collection/best-thriller-movies-hulu" className="hover:text-white transition-colors text-gray-300">Best Thriller on Hulu</Link></li>
+<li><Link href="/collection/best-action-movies-on-hbo-max" className="hover:text-white transition-colors text-gray-300">Best Action on HBO Max</Link></li>
+<li><Link href="/collection/best-romance-movies-on-hbo-max" className="hover:text-white transition-colors text-gray-300">Best Romance on HBO Max</Link></li>
+
                                 </ul>
                             </div>
 
@@ -504,12 +513,8 @@ const FilmiwayHomepage = ({ trendingMovies, popularMovies, topRatedMovies }) => 
                                 <a href="https://youtube.com/@filmiway.official" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-red-500 transition-colors">
                                     <svg className="w-6 h-6 xs:w-7 xs:h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
                                 </a>
-                                <a href="https://www.instagram.com/filmiway.official/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-pink-500 transition-colors">
-                                    <svg className="w-6 h-6 xs:w-7 xs:h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" /></svg>
-                                </a>
-                                <a href="https://www.facebook.com/profile.php?id=61583157321288" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-500 transition-colors">
-                                    <svg className="w-6 h-6 xs:w-7 xs:h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                                </a>
+                               
+                              
                                 <a href="https://x.com/FilmiwayMedia" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
                                     <svg className="w-6 h-6 xs:w-7 xs:h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
                                 </a>
@@ -526,7 +531,9 @@ const FilmiwayHomepage = ({ trendingMovies, popularMovies, topRatedMovies }) => 
                             <div className="flex flex-wrap items-center justify-center gap-2 xs:gap-4 text-gray-500 text-xs mb-3 xs:mb-4">
                                 <span>&copy; 2025 Filmiway</span><span>&bull;</span>
                                 <Link href="/about-us" className="hover:text-yellow-400 transition-colors">About</Link><span>&bull;</span>
-                                <Link href="/privacy" className="hover:text-yellow-400 transition-colors">Privacy</Link>
+                                <Link href="/privacy" className="hover:text-yellow-400 transition-colors">Privacy</Link><span>&bull;</span>
+                                <Link href="/terms" className="hover:text-yellow-400 transition-colors">Terms</Link><span>&bull;</span>
+                                <Link href="/faq" className="hover:text-yellow-400 transition-colors">FAQ</Link>
                             </div>
                             <p className="text-gray-600 text-xs italic">Where Every Film Finds Its Way</p>
                         </div>

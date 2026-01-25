@@ -69,6 +69,19 @@ const CollectionsHub = () => {
             hasSubCollections: false
         },
 
+
+{
+    id: 'hulu-family',
+    title: 'Best Family Movies on Hulu',
+    description: 'Wholesome entertainment, animation & adventure for all ages streaming now',
+    icon: Sparkles, // Fits the magic/wonder theme
+    gradient: 'from-yellow-400 to-amber-500',
+    movieCount: '10',
+    rating: '7.5',
+    directLink: '/collection/best-family-movies-on-hulu',
+    hasSubCollections: false
+},
+
 {
             id: 'hulu-romance',
             title: 'Best Romance Movies on Hulu',
@@ -155,6 +168,44 @@ const CollectionsHub = () => {
     hasSubCollections: false
 },
 
+{
+            id: 'hbo-action',
+            title: 'Top 10 Action Movies on HBO Max',
+            description: 'Epic scale battles, mythic heroes, and visceral combat streaming now',
+            icon: Zap, // Or 'Sword' if available in lucide-react, otherwise 'Zap' works for action
+            gradient: 'from-red-600 to-slate-900',
+            movieCount: '10',
+            rating: '8.3',
+            directLink: '/collection/best-action-movies-on-hbo-max',
+            hasSubCollections: false
+        },
+
+
+
+        {
+            id: 'hbo-romance',
+            title: 'Best Romance Movies on HBO Max',
+            description: 'Prestige love stories with electric chemistry and deep emotional resonance',
+            icon: Heart, 
+            gradient: 'from-pink-500 to-rose-900', // Matches the HBO Romance theme
+            movieCount: '10',
+            rating: '8.1',
+            directLink: '/collection/best-romance-movies-on-hbo-max',
+            hasSubCollections: false
+        },
+
+
+{
+    id: 'hbo-thriller',
+    title: 'Best Thriller Movies on HBO Max',
+    description: 'Psychological nightmares, cerebral sci-fi, and high-tension suspense streaming now',
+    icon: Eye, 
+    gradient: 'from-red-700 to-rose-900', // Matches the Thriller theme (Psychological Red)
+    movieCount: '10',
+    rating: '7.8',
+    directLink: '/collection/best-thriller-movies-on-hbo-max',
+    hasSubCollections: false
+},
 
         {
             id: 'oldboy',

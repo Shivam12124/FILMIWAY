@@ -1,60 +1,61 @@
-// pages/movies/black-swan/[id].js - H1 SEO FIX + HYDRATION COMMENT REMOVAL ✅
-// VISUALS: Minimalist (Banner + Details Only)
-// SCHEMA: Maximalist (Hidden Intensity, DNA, and FAQs for Bots)
+// pages/best-romance-movies-on-hbo-max/[id].js - HBO MAX ROMANCE MOVIES
+// VISUALS: Romantic/Warm Theme (Pink/Rose/Gold Accents)
+// SCHEMA: Maximalist (Hidden Emotional Intensity and FAQs for Bots)
 
 import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, Play, X, User, Twitter, Hash, Send, Film, Theater } from 'lucide-react';
+import { ChevronLeft, Play, X, User, Twitter, Hash, Send, Film, Heart, Sparkles, Theater } from 'lucide-react'; 
 import InternalCollectionsSection from '../../../components/InternalCollectionsSection';
 import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
 import TMDBAttribution from '../../../components/TMDBAttribution';
 
-// ✅ IMPORT DATA INCLUDING FAQs
-import {
-  COMPLETE_MOVIE_DATABASE,
+// ✅ IMPORT HBO MAX DATA
+import { 
+  COMPLETE_MOVIE_DATABASE, 
   COMPLETE_MOVIE_DATA,
   SENSITIVE_TIMELINES,
-  BLACK_SWAN_MOVIE_FAQS
-} from '../../../utils/blackSwanMovieData';
+  HBO_MAX_ROMANCE_MOVIE_FAQS 
+} from '../../../utils/hboMaxRomanceMovieData';
 
 const COLORS = {
-  accent: '#EAB308', accentLight: '#FDE047', bgPrimary: '#050509', bgCard: 'rgba(15, 23, 42, 0.6)',
-  textPrimary: '#FFFFFF', textSecondary: '#E5E7EB', textMuted: '#9CA3AF', textDisabled: '#6B7280',
-  borderAccent: 'rgba(234, 179, 8, 0.25)', borderLight: 'rgba(55, 65, 81, 0.5)',
+  accent: '#EC4899', accentLight: '#FBCFE8', bgPrimary: '#0f172a', bgCard: 'rgba(23, 23, 30, 0.8)', // Pink/Rose for Romance Base
+  textPrimary: '#FFFFFF', textSecondary: '#FCE7F3', textMuted: '#DB2777', textDisabled: '#9D174D',
+  borderAccent: 'rgba(236, 72, 153, 0.25)', borderLight: 'rgba(80, 7, 36, 0.5)',
 };
 
 const MOVIE_YEARS = {
-  'Perfect Blue': '1997', 'Whiplash': '2014', 'Suspiria': '2018', 'The Red Shoes': '1948',
-  'The Wrestler': '2008', 'Mulholland Drive': '2001', 'The Piano Teacher': '2001', 'Birdman': '2014',
-  'Requiem for a Dream': '2000', 'Nightcrawler': '2014'
+   'Casablanca': '1942',  'In the Mood for Love': '2000', 'Past Lives': '2023', 
+  'When Harry Met Sally...': '1989', 'Call Me by Your Name': '2017', 'Gone with the Wind': '1939', 
+  "A Summer's Tale": '1996', 'Ali: Fear Eats the Soul': '1974', 'Whisper of the Heart': '1995', 
+  'The Perks of Being a Wallflower': '2012'
 };
 
 const MOVIE_DATA_BY_TITLE = {
-  'Perfect Blue': { connection: 'Perfect Blue is the purest Black Swan companion: both dive into identity fracture, performance pressure, and the horror of not knowing where the role ends and the self begins.' },
-  'Whiplash': { connection: 'Whiplash swaps ballet for jazz drumming but keeps the same core obsession: how far can a mentor push a student before greatness becomes self-destruction.' },
-  'Suspiria': { connection: 'Suspiria takes the dance academy setting of Black Swan and drenches it in occult horror, turning artistic transformation into literal body-breaking witchcraft.' },
-  'The Red Shoes': { connection: 'The Red Shoes is the original "art vs life" ballet tragedy; Black Swan updates its central question: if art demands everything, what is left of the artist.' },
-  'The Wrestler': { connection: 'Directed by the same filmmaker, The Wrestler is Black Swan\'s bruised, masculine twin: a body pushed beyond its limits to keep performing for an unforgiving audience.' },
-  'Mulholland Drive': { connection: 'Mulholland Drive and Black Swan both explore Hollywood performance, split identities, and dreams turning into psychological nightmares.' },
-  'The Piano Teacher': { connection: 'The Piano Teacher shows another artist crushed by control and repression, mirroring Black Swan\'s descent into self-harm and obsession with perfection.' },
-  'Birdman': { connection: 'Birdman is Black Swan for theatre: a washed-up superhero actor gambles everything on one Broadway play as his sense of reality starts to fracture.' },
-  'Requiem for a Dream': { connection: 'Requiem for a Dream is Aronofsky at his most nightmarish; its manic editing and bodily horror anticipate Black Swan\'s psychological breakdown style.' },
-  'Nightcrawler': { connection: 'Nightcrawler swaps ballet for crime journalism, but keeps the same icy focus on ambition mutating into sociopathy and performance for the camera.' }
+  'Casablanca': { connection: 'The ultimate definition of sacrifice. It reminds us that sometimes the greatest act of love is letting go for the greater good.' },
+  'In the Mood for Love': { connection: 'A masterclass in restraint. It captures the intoxicating, suffocating pain of a love that is felt deeply but never spoken.' },
+  'Past Lives': { connection: 'A devastating look at "In-Yun" and destiny. It explores the haunting beauty of the lives we didn\'t live and the people we didn\'t become.' },
+  'When Harry Met Sally...': { connection: 'The gold standard of friends-to-lovers. It proves that true intimacy is built in the quiet moments of conversation, not just grand gestures.' },
+  'Call Me by Your Name': { connection: 'Visceral and sensory. It perfectly encapsulates the all-consuming, sun-drenched intensity of a first summer love that marks you forever.' },
+  'Gone with the Wind': { connection: 'A sweeping epic of passion and survival. It shows love as a turbulent force of nature that can both destroy and rebuild civilizations.' },
+  "A Summer's Tale": { connection: 'A breezy, intellectual exploration of indecision. It captures the specific anxiety of youth where every romantic choice feels like a defining moment.' },
+  'Ali: Fear Eats the Soul': { connection: 'A tender, heartbreaking defiance of social norms. It shows two lonely souls finding comfort in a world that actively rejects them.' },
+  'Whisper of the Heart': { connection: 'Pure, unfiltered inspiration. It connects the flush of first love with the discovery of one\'s own creative voice and ambition.' },
+  'The Perks of Being a Wallflower': { connection: 'A raw anthem for the outcasts. It isn\'t just about falling in love, but about finding the people who make you feel infinite.' }
 };
 
 const getTMDBImage = (path, size = 'w1280') =>
   path ? `https://image.tmdb.org/t/p/${size}${path}` : undefined;
 
-const getPsychologicalInsight = (title) => {
+const getRomanceInsight = (title) => {
   const data = MOVIE_DATA_BY_TITLE[title];
-  return data?.connection || 'A razor-sharp psychological character study about obsession, performance pressure, and the fragile nature of identity.';
+  return data?.connection || 'A deeply emotional film exploring the complexities of connection and desire.';
 };
 
-// ✅ OPTIMIZED BANNER
+// ✅ OPTIMIZED BANNER (Romance/Emotional Theme)
 const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
   const [showTrailer, setShowTrailer] = useState(false);
   const [countdown, setCountdown] = useState(4);
@@ -67,18 +68,20 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
   const bannerImage = backdropPath ? getTMDBImage(backdropPath, 'w1280') : null;
   const posterImage = posterPath ? getTMDBImage(posterPath, 'w500') : null;
 
-  const insight = getPsychologicalInsight(movie?.Title);
-  const psychIntensity = richData?.psychologicalIntensity || 90;
+  const insight = getRomanceInsight(movie?.Title);
+  
+  // ✅ UPDATED: Using 'emotionalIntensity' from HBO Max Data
+  const emotionalScore = richData?.emotionalIntensity || 85; 
 
   const mobileHeroCSS = `
   @media (max-width: 767px) {
     .mobile-hero-row { display: flex; flex-direction: row; align-items: flex-start; width: 100vw; max-width: 100vw; gap: 10px; margin: 0; padding: 0 8px; }
     .mobile-hero-poster { width: 38vw; min-width: 106px; border-radius: 12px; overflow: hidden; box-shadow: 0 3px 14px #0007; margin: 0; flex-shrink: 0; }
     .mobile-hero-poster img { width: 100%; height: auto; border-radius: 12px; display: block; }
-    .mobile-psych-card { background: linear-gradient(135deg, #1a1600 0%, #0f0f15 100%); border-radius: 12px; box-shadow: 0 2px 12px #0006; margin: 0; flex: 1; border-left: 4px solid #EAB308; display: flex; flex-direction: column; justify-content: flex-start; padding: 10px 10px 10px 12px; min-height: 110px; position: relative; }
+    .mobile-psych-card { background: linear-gradient(135deg, #2e0212 0%, #0f0f15 100%); border-radius: 12px; box-shadow: 0 2px 12px #0006; margin: 0; flex: 1; border-left: 4px solid #EC4899; display: flex; flex-direction: column; justify-content: flex-start; padding: 10px 10px 10px 12px; min-height: 110px; position: relative; }
     .mobile-psych-row { display: flex; align-items: flex-start; gap: 7px; }
-    .mobile-psych-icon { min-width: 24px; min-height: 24px; color: #FDE047; margin-top: 2px; }
-    .mobile-psych-title { font-size: 15px; font-weight: bold; color: #FDE047; margin-bottom: 1px; line-height: 1.12; }
+    .mobile-psych-icon { min-width: 24px; min-height: 24px; color: #FBCFE8; margin-top: 2px; }
+    .mobile-psych-title { font-size: 15px; font-weight: bold; color: #FBCFE8; margin-bottom: 1px; line-height: 1.12; }
     .mobile-psych-desc { font-size: 12.3px; color: #ededed; line-height: 1.36; margin-top: 2px; }
   }`;
 
@@ -131,8 +134,9 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
         <div className="mobile-hero-row">
           <div className="mobile-hero-poster">{posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} width={320} height={480} className="w-full h-auto" priority /> : <div style={{ background: COLORS.bgCard, width: '100%', height: '150px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Theater style={{ color: COLORS.textMuted }} /></div>}</div>
           <div className="mobile-psych-card">
-            <div className="mobile-psych-row"><Theater className="mobile-psych-icon" /><div><div className="mobile-psych-title">Psychological Intensity</div></div></div>
-            <div className="mobile-psych-desc"><strong>{psychIntensity}</strong> - {insight.substring(0, 80)}...</div>
+            {/* ✅ UPDATED LABEL: Emotional Intensity */}
+            <div className="mobile-psych-row"><Heart className="mobile-psych-icon" /><div><div className="mobile-psych-title">Emotional Intensity</div></div></div>
+            <div className="mobile-psych-desc"><strong>{emotionalScore}/100</strong> - {insight.substring(0, 80)}...</div>
           </div>
         </div>
       ) : (
@@ -144,11 +148,12 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
               </div>
             </motion.div>
             <motion.div className="flex-1 w-full min-w-0" initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 1.0, duration: 0.8 }}>
-              <motion.div className="relative rounded-xl sm:rounded-2xl overflow-hidden p-4 sm:p-6 lg:p-8 backdrop-blur-sm" style={{ background: `linear-gradient(135deg, rgba(234, 179, 8, 0.15) 0%, rgba(15, 15, 20, 0.5) 100%)`, border: `1px solid ${COLORS.borderLight}`, boxShadow: `0 8px 32px rgba(234, 179, 8, 0.2)` }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.1, duration: 0.8 }}>
+              <motion.div className="relative rounded-xl sm:rounded-2xl overflow-hidden p-4 sm:p-6 lg:p-8 backdrop-blur-sm" style={{ background: `linear-gradient(135deg, rgba(236, 72, 153, 0.15) 0%, rgba(15, 15, 20, 0.5) 100%)`, border: `1px solid ${COLORS.borderLight}`, boxShadow: `0 8px 32px rgba(236, 72, 153, 0.2)` }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.1, duration: 0.8 }}>
                 <div className="absolute top-0 left-0 right-0 h-0.5 sm:h-1" style={{ background: `linear-gradient(90deg, transparent, ${COLORS.accent}, transparent)` }} />
                 <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5">
-                  <motion.div className="p-2 sm:p-2.5 rounded-lg sm:rounded-xl flex-shrink-0" style={{ background: `linear-gradient(135deg, ${COLORS.accent}20, ${COLORS.accent}10)`, border: `1px solid ${COLORS.accent}40` }} whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}><Theater className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" style={{ color: COLORS.accent }} /></motion.div>
-                  <div className="min-w-0 flex-1"><h2 className="text-sm sm:text-base lg:text-xl xl:text-2xl font-bold leading-tight" style={{ color: COLORS.accent }}>Why This Psychological Thriller Hits Hard</h2><p className="text-xs sm:text-sm hidden sm:block" style={{ color: COLORS.textMuted }}>Psychological Intensity: {psychIntensity}/100</p></div>
+                  <motion.div className="p-2 sm:p-2.5 rounded-lg sm:rounded-xl flex-shrink-0" style={{ background: `linear-gradient(135deg, ${COLORS.accent}20, ${COLORS.accent}10)`, border: `1px solid ${COLORS.accent}40` }} whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}><Heart className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" style={{ color: COLORS.accent }} /></motion.div>
+                  {/* ✅ UPDATED LABEL: Emotional Intensity */}
+                  <div className="min-w-0 flex-1"><h2 className="text-sm sm:text-base lg:text-xl xl:text-2xl font-bold leading-tight" style={{ color: COLORS.accent }}>Why It Resonates</h2><p className="text-xs sm:text-sm hidden sm:block" style={{ color: COLORS.textMuted }}>Emotional Intensity: {emotionalScore}/100</p></div>
                 </div>
                 <div className="relative pl-4 sm:pl-6 border-l-2" style={{ borderColor: `${COLORS.accent}40` }}>
                   <motion.div className="absolute -left-1.5 sm:-left-2 top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full" style={{ backgroundColor: COLORS.accent }} animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 2, repeat: Infinity }} />
@@ -165,7 +170,8 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
 };
 
 const SmartBackButton = () => {
-    const handleBackClick = () => { if (typeof window !== 'undefined') window.location.href = '/collection/movies-like-black-swan'; };
+    // ✅ Updated Path for HBO Max Collection
+    const handleBackClick = () => { if (typeof window !== 'undefined') window.location.href = '/best-romance-movies-on-hbo-max'; };
     return (
         <motion.button onClick={handleBackClick} className="fixed top-4 left-4 sm:top-6 sm:left-6 z-50 flex items-center gap-2 px-3 sm:px-4 py-2 backdrop-blur-md rounded-lg transition-all duration-300 shadow-xl text-xs sm:text-sm" style={{ backgroundColor: `${COLORS.bgPrimary}F2`, border: `1px solid ${COLORS.borderLight}` }} whileHover={{ scale: 1.02, x: -2 }} whileTap={{ scale: 0.98 }} initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} onMouseEnter={(e) => e.currentTarget.style.borderColor = COLORS.borderAccent} onMouseLeave={(e) => e.currentTarget.style.borderColor = COLORS.borderLight}>
             <ChevronLeft className="w-3 h-3 sm:w-4 sm:h-4" style={{ color: COLORS.accent }} /><span className="font-medium" style={{ color: COLORS.accent }}>Back to Collection</span>
@@ -176,7 +182,7 @@ const SmartBackButton = () => {
 const AuthorCreditSection = () => (
     <motion.section className="pt-6 sm:pt-8 mt-12 sm:mt-16" style={{ borderTop: `1px solid ${COLORS.borderLight}` }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2.0, duration: 0.8 }}>
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
-            <div className="flex items-center gap-3"><User className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: COLORS.textDisabled }} /><div><p className="text-xs sm:text-sm" style={{ color: COLORS.textMuted }}>Curated by <span className="font-medium" style={{ color: COLORS.textSecondary }}>Filmiway Editorial Team</span></p><p className="text-xs" style={{ color: COLORS.textDisabled }}>Expert analysis of psychological thrillers</p></div></div>
+            <div className="flex items-center gap-3"><User className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: COLORS.textDisabled }} /><div><p className="text-xs sm:text-sm" style={{ color: COLORS.textMuted }}>Curated by <span className="font-medium" style={{ color: COLORS.textSecondary }}>Filmiway Editorial Team</span></p><p className="text-xs" style={{ color: COLORS.textDisabled }}>Expert analysis of HBO Max cinema</p></div></div>
             <div className="flex items-center gap-3 sm:gap-4"><span className="text-xs sm:text-sm" style={{ color: COLORS.textDisabled }}>Share:</span><div className="flex gap-2 sm:gap-3">{[Twitter, Hash, Send].map((Icon, i) => (<button key={i} className="p-1.5 sm:p-2 rounded-full transition-colors" style={{ color: COLORS.textDisabled }} onMouseEnter={(e) => { e.currentTarget.style.color = COLORS.textSecondary; e.currentTarget.style.backgroundColor = COLORS.bgCard; }} onMouseLeave={(e) => { e.currentTarget.style.color = COLORS.textDisabled; e.currentTarget.style.backgroundColor = 'transparent'; }}><Icon className="w-3 h-3 sm:w-4 sm:h-4" /></button>))}</div></div>
         </div>
     </motion.section>
@@ -186,65 +192,64 @@ const SubtleFilmGrain = () => (
     <div className="fixed inset-0 pointer-events-none z-0 opacity-[0.005]"><div className="w-full h-full bg-repeat" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)' opacity='0.3'/%3E%3C/svg%3E")`, backgroundSize: '60px 60px' }} /></div>
 );
 
-const BlackSwanBreadcrumb = ({ movie }) => (
+const HboMaxRomanceBreadcrumb = ({ movie }) => (
     <motion.nav className="mb-6 sm:mb-8 px-3 sm:px-4 lg:px-6 pb-3 sm:pb-4" style={{ borderBottom: `1px solid ${COLORS.borderLight}` }} initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
         <div className="flex items-center space-x-2 sm:space-x-3 text-xs sm:text-sm" style={{ color: COLORS.textMuted }}>
-            <Link href="/collection/movies-like-black-swan" className="transition-all duration-300 truncate" style={{ color: COLORS.textMuted }} onMouseEnter={(e) => e.currentTarget.style.color = COLORS.accent} onMouseLeave={(e) => e.currentTarget.style.color = COLORS.textMuted}>Movies Like Black Swan</Link>
+            <Link href="/best-romance-movies-on-hbo-max" className="transition-all duration-300 truncate" style={{ color: COLORS.textMuted }} onMouseEnter={(e) => e.currentTarget.style.color = COLORS.accent} onMouseLeave={(e) => e.currentTarget.style.color = COLORS.textMuted}>Best Romance Movies on HBO Max</Link>
             <ChevronLeft size={14} className="flex-shrink-0" style={{ color: COLORS.textDisabled, transform: 'rotate(180deg)' }} /><span className="font-medium truncate" style={{ color: `${COLORS.accent}B3` }}>{movie.Title}</span>
         </div>
     </motion.nav>
 );
 
-// ✅ JSON-LD SCHEMA GENERATOR - CRITIC REVIEW EDITION (HONEST & SAFE)
+// ✅ JSON-LD SCHEMA GENERATOR - ROMANCE EDITION
 const generateMovieSchema = (movie, movieData, currentMovieYear) => {
   const data = COMPLETE_MOVIE_DATA[movie.tmdbId];
   const sensitiveData = SENSITIVE_TIMELINES[movie.tmdbId];
-  const faqs = BLACK_SWAN_MOVIE_FAQS[movie.Title] || [];
+  const faqs = HBO_MAX_ROMANCE_MOVIE_FAQS[movie.Title] || [];
 
-  // 1. CALCULATE THE PEAK MOMENT (New Feature)
+  // 1. CALCULATE THE PEAK MOMENT
   let peakStats = "Peak info unavailable.";
   if (data?.scenes && data.scenes.length > 0) {
-    const peakScene = data.scenes.reduce((prev, current) =>
+    const peakScene = data.scenes.reduce((prev, current) => 
       (current.intensity > prev.intensity) ? current : prev
     );
-    peakStats = `[PEAK MOMENT] Maximum Intensity (${peakScene.intensity}/100) hits at minute ${peakScene.time}: "${peakScene.label}".`;
+    peakStats = `[PEAK EMOTION] Maximum Resonance (${peakScene.intensity}/100) hits at minute ${peakScene.time}: "${peakScene.label}".`;
   }
 
-  // 2. METRICS (Updated with your specific keys)
+  // 2. METRICS (Using Romance Specific Terms for Bots)
+  // ✅ UPDATED: Using Emotional Intensity
   const intensityStats = `
-    [FILMIWAY METRICS]
-    - Psychological Intensity: ${data?.psychologicalIntensity || 0}/100
-    - Destructive Obsession: ${data?.destructiveObsession || 0}/100
-    - Visceral Impact: ${data?.visceralImpact || 0}/100
+    [FILMIWAY METRIC]
+    - Emotional Intensity: ${data?.emotionalIntensity || 0}/100
   `;
 
-  const dnaStats = data?.dna
+  const dnaStats = data?.dna 
     ? `[GENRE DNA] ${Object.entries(data.dna).map(([genre, val]) => `${genre}: ${val}%`).join(', ')}`
-    : 'Psychological Thriller';
+    : 'Romance Drama';
 
-  const contentWarnings = sensitiveData?.scenes
-    ? `[CONTENT ADVISORY] ${sensitiveData.scenes.map(s =>
-        (s.start && s.end)
-          ? `${s.type}: ${s.start}-${s.end} (${s.severity})`
-          : `${s.type} (${s.severity})`
+  const contentWarnings = sensitiveData?.scenes 
+    ? `[CONTENT ADVISORY] ${sensitiveData.scenes.map(s => 
+        (s.start && s.end) 
+          ? `${s.type}: ${s.start}-${s.end} (${s.severity})` 
+          : `${s.type} (${s.severity})` 
       ).join(' | ')}.`
-    : 'No specific content warnings listed.';
+    : 'No specific warnings.';
   const faqText = faqs.length > 0
     ? `[COMMON QUESTIONS] ${faqs.map(f => `Q: ${f.question} A: ${f.answer}`).join(' | ')}`
     : '';
 
   // 3. COMPILE FULL DESCRIPTION
   const fullDescription = `
-    ${data?.synopsis || movie.description || "A psychologically intense film."}
+    ${data?.synopsis || movie.description || "A moving romance film on HBO Max."}
     
     --- DETAILED ANALYSIS ---
-    ${peakStats}
+    ${peakStats} 
     ${intensityStats}
     ${dnaStats}
     ${contentWarnings}
     ${faqText}
     
-    Ranking: #${movie.rank || 'N/A'} in Psychological Thrillers.
+    Ranking: #${movie.rank || 'N/A'} in HBO Max Romance.
     Production: Budget ${data?.budget || 'N/A'}, Box Office ${data?.boxOffice || 'N/A'}.
   `.replace(/\s+/g, ' ').trim();
 
@@ -253,7 +258,7 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
     "@context": "https://schema.org",
     "@type": "Movie",
     "name": movie.Title,
-    "description": fullDescription,
+    "description": fullDescription, 
     "datePublished": currentMovieYear,
     "image": movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : undefined,
     "director": {
@@ -273,15 +278,15 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
       },
       "reviewRating": {
         "@type": "Rating",
-        "ratingValue": data?.rating || 8.0,
+        "ratingValue": data?.rating || 7.5, 
         "bestRating": "10",
         "worstRating": "1"
       }
     },
 
-    "genre": data?.dna ? Object.keys(data.dna) : ["Psychological Thriller"],
-    "keywords": "Black Swan, Psychological Thriller, Obsession, Identity Crisis, " + (data?.themes ? data.themes.join(", ") : ""),
-    "url": `https://filmiway.com/movies/black-swan/${movie.imdbID}`,
+    "genre": data?.dna ? Object.keys(data.dna) : ["Romance", "Drama"],
+    "keywords": "Romance Movies HBO Max, Best Romance Films, " + (data?.themes ? data.themes.join(", ") : ""),
+    "url": `https://filmiway.com/movies/best-romance-movies-on-hbo-max/${movie.imdbID}`, // Adjusted URL structure
     "author": {
       "@type": "Organization",
       "name": "Filmiway",
@@ -305,9 +310,9 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
   return { movieSchema, faqSchema };
 };
 
-const BlackSwanMoviePage = ({ movie, tmdbData: movieData }) => {
+const HboMaxRomanceMoviePage = ({ movie, tmdbData: movieData }) => {
     const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
-    const richData = COMPLETE_MOVIE_DATA[movie.tmdbId];
+    const richData = COMPLETE_MOVIE_DATA[movie.tmdbId]; 
     const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -319,32 +324,32 @@ const BlackSwanMoviePage = ({ movie, tmdbData: movieData }) => {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-        sessionStorage.setItem('fromCollection', 'movies-like-black-swan');
-        sessionStorage.setItem('fromCollectionName', 'Movies Like Black Swan');
+        sessionStorage.setItem('fromCollection', 'best-romance-movies-on-hbo-max');
+        sessionStorage.setItem('fromCollectionName', 'Best Romance Movies on HBO Max');
     }
   }, []);
 
     const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
-    // ✅ SEO FIX: Construct clean title and description strings FIRST
-    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Movies Like Black Swan | Filmiway`;
-    const cleanSEODesc = `${movie.Title} (${currentMovieYear}) - A psychologically intense film like Black Swan. Analysis, ratings & where to stream.`;
+    // ✅ SEO FIX: Clean strings to prevent hydration errors
+    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Best Romance Movies on HBO Max | Filmiway`;
+    const cleanSEODesc = `${movie.Title} (${currentMovieYear}) - A top romance movie streaming on HBO Max. Ranked by emotional intensity and chemistry.`;
 
     const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear);
 
     return (
         <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
             <Head>
-                {/* ✅ HYDRATION BUG FULLY RESOLVED: Added unique KEY prop to title */}
-                <title key="title">{cleanSEOTitle}</title>
-                <meta key="desc" name="description" content={cleanSEODesc} />
-                <link rel="canonical" href={`https://filmiway.com/movies/black-swan/${movie.imdbID}`} />
+                {/* ✅ HYDRATION BUG FULLY RESOLVED */}
+                <title>{cleanSEOTitle}</title>
+                <meta name="description" content={cleanSEODesc} />
+                <link rel="canonical" href={`https://filmiway.com/movies/best-romance-movies-on-hbo-max/${movie.imdbID}`} />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
                 <meta name="robots" content="index, follow" />
                 <meta name="language" content="English" />
 
-                {/* ✅ BARRIER #3 DEFEATED: JSON-LD Schema for SEO & LLMs */}
+                {/* ✅ BARRIER #3 DEFEATED: JSON-LD Schema */}
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }}
@@ -358,12 +363,12 @@ const BlackSwanMoviePage = ({ movie, tmdbData: movieData }) => {
 
                 {/* Standard Meta Tags */}
                 <meta property="og:title" content={cleanSEOTitle} />
-                <meta property="og:description" content="A gripping psychological film about obsession and identity." />
+                <meta property="og:description" content="A top romance movie on HBO Max." />
                 <meta property="og:type" content="video.movie" />
                 <meta property="og:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content={cleanSEOTitle} />
-                <meta name="twitter:description" content="A psychologically intense film about performance and identity." />
+                <meta name="twitter:description" content="A top romance movie on HBO Max." />
                 <meta name="twitter:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
             </Head>
 
@@ -373,25 +378,26 @@ const BlackSwanMoviePage = ({ movie, tmdbData: movieData }) => {
             
             <div className="relative z-10 pt-10 sm:pt-12 lg:pt-16">
                 
-                {/* ✅ SEO FIX: HIDDEN H1 ADDED HERE FOR BING & GOOGLE */}
+                {/* ✅ SEO FIX: HIDDEN H1 */}
                 <h1 className="sr-only">{cleanSEOTitle}</h1>
 
-                <BlackSwanBreadcrumb movie={movie} />
+                <HboMaxRomanceBreadcrumb movie={movie} />
                 <div className="container mx-auto px-0 pb-16 sm:pb-24 lg:pb-32 max-w-7xl">
                     <OptimizedBanner movie={movie} movieData={movieData} richData={richData} trailer={trailer} isMobile={isMobile} />
                     
                     <motion.div 
-                        id="watch" 
-                        initial={{ opacity: 0, y: 20 }} 
-                        animate={{ opacity: 1, y: 0 }} 
-                        transition={{ duration: 0.5 }}
-                        className="space-y-8 sm:space-y-12 px-3 sm:px-4 lg:px-6"
-                    >
-                        <MovieDetailsSection movie={movie} fromBlackSwanCollection={true} />
+    id="watch" 
+    initial={{ opacity: 0, y: 20 }} 
+    animate={{ opacity: 1, y: 0 }} 
+    transition={{ duration: 0.5 }} 
+    className="space-y-8 sm:space-y-12 px-3 sm:px-4 lg:px-6"
+>
+                        {/* Note: Ensure MovieDetailsSection can handle the 'romance' context */}
+                        <MovieDetailsSection movie={movie} fromHuluRomanceCollection={true} /> 
                     </motion.div>
                     
                     <div className="px-3 sm:px-4 lg:px-6">
-                        <InternalCollectionsSection currentSlug="movies-like-black-swan" />
+                        <InternalCollectionsSection currentSlug="best-romance-movies-on-hbo-max" />
                         <TMDBAttribution />
                         <AuthorCreditSection />
                     </div>
@@ -430,4 +436,4 @@ export async function getStaticProps({ params }) {
     }
 }
 
-export default BlackSwanMoviePage;
+export default HboMaxRomanceMoviePage;

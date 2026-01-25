@@ -52,6 +52,20 @@ import {
   SENSITIVE_TIMELINES as EYES_WIDE_SHUT_SENSITIVE_TIMELINES 
 } from '../utils/eyesWideShutMovieData';
 import { 
+  COMPLETE_MOVIE_DATA as HBO_ACTION_MOVIE_DATA, 
+  STRATEGIC_QUOTES as HBO_ACTION_QUOTES, 
+  SENSITIVE_TIMELINES as HBO_ACTION_SENSITIVE_TIMELINES 
+} from '../utils/hboActionMovieData';
+import { 
+  COMPLETE_MOVIE_DATA as HBO_ROMANCE_MOVIE_DATA, 
+  STRATEGIC_QUOTES as HBO_ROMANCE_QUOTES, 
+  SENSITIVE_TIMELINES as HBO_ROMANCE_SENSITIVE_TIMELINES 
+} from '../utils/hboMaxRomanceMovieData'; 
+import { 
+  COMPLETE_MOVIE_DATA as HBO_MAX_THRILLER_MOVIE_DATA, 
+  SENSITIVE_TIMELINES as HBO_MAX_THRILLER_SENSITIVE_TIMELINES 
+} from '../utils/hboMaxThrillerMovieData';
+import { 
   COMPLETE_MOVIE_DATA as HULU_ACTION_MOVIE_DATA, 
   STRATEGIC_QUOTES as HULU_ACTION_QUOTES, 
   SENSITIVE_TIMELINES as HULU_ACTION_SENSITIVE_TIMELINES 
@@ -91,6 +105,13 @@ import {
   HULU_DRAMA_MOVIE_FAQS,
   SENSITIVE_TIMELINES as HULU_DRAMA_SENSITIVE_TIMELINES 
 } from '../utils/huluDramaMovieData';
+// ✅ NEW: Hulu Family Import
+import { 
+  COMPLETE_MOVIE_DATA as HULU_FAMILY_MOVIE_DATA, 
+  HULU_FAMILY_MOVIE_FAQS,
+  SENSITIVE_TIMELINES as HULU_FAMILY_SENSITIVE_TIMELINES 
+} from '../utils/huluFamilyMovieData';
+
 import { 
   COMPLETE_MOVIE_DATA as CRIME_THRILLER_MOVIE_DATA, 
   SENSITIVE_TIMELINES as CRIME_THRILLER_SENSITIVE_TIMELINES 
@@ -160,6 +181,9 @@ import OldboySEOFAQSection from './OldboySEOFAQSection';
 import DonnieDarkoSEOFAQSection from './DonnieDarkoSEOFAQSection';
 import BlackSwanSEOFAQSection from './BlackSwanSEOFAQSection';
 import EyesWideShutSEOFAQSection from './EyesWideShutSEOFAQSection';
+import HboActionSEOFAQSection from './HboActionSEOFAQSection';
+import HboMaxRomanceSEOFAQSection from './HboMaxRomanceSEOFAQSection';
+import HboMaxThrillerSEOFAQSection from './HboMaxThrillerSEOFAQSection';
 import HuluActionSEOFAQSection from './HuluActionSEOFAQSection';
 import HuluRomanceSEOFAQSection from './HuluRomanceSEOFAQSection';
 import HuluHorrorSEOFAQSection from './HuluHorrorSEOFAQSection';
@@ -168,6 +192,8 @@ import HuluSciFiSEOFAQSection from './HuluSciFiSEOFAQSection';
 import HuluThrillerSEOFAQSection from './HuluThrillerSEOFAQSection';
 import HuluBestSEOFAQSection from './HuluBestSEOFAQSection';
 import HuluDramaSEOFAQSection from './HuluDramaSEOFAQSection';
+// ✅ NEW: Hulu Family FAQ Import
+import HuluFamilySEOFAQSection from './HuluFamilySEOFAQSection';
 
 const MovieDetailsSection = React.memo(({
   movie,
@@ -194,6 +220,9 @@ const MovieDetailsSection = React.memo(({
   fromSciFiCollection,
   fromRevengeCollection,
   fromWarFilmsCollection,
+  fromHboActionCollection, 
+  fromHboRomanceCollection, 
+  fromHboMaxThrillerCollection, 
   fromHuluActionCollection,
   fromHuluRomanceCollection,
   fromHuluHorrorCollection,
@@ -201,7 +230,8 @@ const MovieDetailsSection = React.memo(({
   fromHuluSciFiCollection,
   fromHuluThrillerCollection,
   fromHuluBestCollection,
-  fromHuluDramaCollection // ✅ NEW: Hulu Drama Prop
+  fromHuluDramaCollection,
+  fromHuluFamilyCollection // ✅ NEW: Hulu Family Prop
 }) => {
 
  if (!movie) return null;
@@ -209,7 +239,11 @@ const MovieDetailsSection = React.memo(({
  const safeLookup = (collection, id) => (collection && id && collection[id]) || null;
 
  // ✅ UNIFIED MOVIE INFO LOOKUP
- const movieInfo = fromHuluDramaCollection ? safeLookup(HULU_DRAMA_MOVIE_DATA, movie.tmdbId) // ✅ Hulu Drama
+ const movieInfo = fromHboActionCollection ? safeLookup(HBO_ACTION_MOVIE_DATA, movie.tmdbId) 
+  : fromHboRomanceCollection ? safeLookup(HBO_ROMANCE_MOVIE_DATA, movie.tmdbId)
+  : fromHboMaxThrillerCollection ? safeLookup(HBO_MAX_THRILLER_MOVIE_DATA, movie.tmdbId)
+  : fromHuluFamilyCollection ? safeLookup(HULU_FAMILY_MOVIE_DATA, movie.tmdbId) // ✅ Hulu Family Added
+  : fromHuluDramaCollection ? safeLookup(HULU_DRAMA_MOVIE_DATA, movie.tmdbId)
   : fromHuluBestCollection ? safeLookup(HULU_BEST_MOVIE_DATA, movie.tmdbId)
   : fromHuluThrillerCollection ? safeLookup(HULU_THRILLER_MOVIE_DATA, movie.tmdbId)
   : fromHuluSciFiCollection ? safeLookup(HULU_SCIFI_MOVIE_DATA, movie.tmdbId)
@@ -236,7 +270,7 @@ const MovieDetailsSection = React.memo(({
   : fromThrillerCollection ? safeLookup(THRILLER_MOVIE_DATA, movie.tmdbId)
   : fromInterstellarCollection ? safeLookup(INTERSTELLAR_MOVIE_DATA, movie.tmdbId)
   : fromSurvivalCollection ? safeLookup(SURVIVAL_MOVIE_DATA, movie.tmdbId)
-  : fromDramaCollection ? safeLookup(DRAMA_MOVIE_DATA, movie.tmdbId) // Netflix Drama
+  : fromDramaCollection ? safeLookup(DRAMA_MOVIE_DATA, movie.tmdbId)
   : safeLookup(COMPLETE_MOVIE_DATA, movie.tmdbId);
 
  const getMovieSpecificData = (title) => ({
@@ -263,72 +297,76 @@ const MovieDetailsSection = React.memo(({
 
  // 🔥🔥🔥 AUTO-FETCH LOGIC FOR ALL MOVIE DATA 🔥🔥🔥
  const [dynamicMovieData, setDynamicMovieData] = useState({
-    director: safeMovieInfo.director || movie.Director || 'Unknown Director',
-    cast: safeMovieInfo.cast?.join(', ') || '',
-    budget: safeMovieInfo.budget || 'N/A',
-    boxOffice: safeMovieInfo.boxOffice || 'N/A',
-    ageRating: safeMovieInfo.ageRating || 'Rated'
+   director: safeMovieInfo.director || movie.Director || 'Unknown Director',
+   cast: safeMovieInfo.cast?.join(', ') || '',
+   budget: safeMovieInfo.budget || 'N/A',
+   boxOffice: safeMovieInfo.boxOffice || 'N/A',
+   ageRating: safeMovieInfo.ageRating || 'Rated'
  });
 
  useEffect(() => {
-    if (!movie.tmdbId) return;
+   if (!movie.tmdbId) return;
 
-    const fetchAllData = async () => {
-        try {
-            const API_KEY = 'a07e22bc18f5cb106bfe4cc1f83ad8ed';
-            
-            const [detailsRes, creditsRes, releasesRes] = await Promise.all([
-                fetch(`https://api.themoviedb.org/3/movie/${movie.tmdbId}?api_key=${API_KEY}`),
-                fetch(`https://api.themoviedb.org/3/movie/${movie.tmdbId}/credits?api_key=${API_KEY}`),
-                fetch(`https://api.themoviedb.org/3/movie/${movie.tmdbId}/release_dates?api_key=${API_KEY}`)
-            ]);
+   const fetchAllData = async () => {
+       try {
+           const API_KEY = 'a07e22bc18f5cb106bfe4cc1f83ad8ed';
+           
+           const [detailsRes, creditsRes, releasesRes] = await Promise.all([
+               fetch(`https://api.themoviedb.org/3/movie/${movie.tmdbId}?api_key=${API_KEY}`),
+               fetch(`https://api.themoviedb.org/3/movie/${movie.tmdbId}/credits?api_key=${API_KEY}`),
+               fetch(`https://api.themoviedb.org/3/movie/${movie.tmdbId}/release_dates?api_key=${API_KEY}`)
+           ]);
 
-            const details = await detailsRes.json();
-            const credits = await creditsRes.json();
-            const releases = await releasesRes.json();
+           const details = await detailsRes.json();
+           const credits = await creditsRes.json();
+           const releases = await releasesRes.json();
 
-            const formatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
-            
-            const newBudget = details.budget && details.budget > 0 
-                ? formatter.format(details.budget) 
-                : dynamicMovieData.budget;
+           const formatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
+           
+           const newBudget = details.budget && details.budget > 0 
+               ? formatter.format(details.budget) 
+               : dynamicMovieData.budget;
 
-            const newRevenue = details.revenue && details.revenue > 0 
-                ? formatter.format(details.revenue) 
-                : dynamicMovieData.boxOffice;
+           const newRevenue = details.revenue && details.revenue > 0 
+               ? formatter.format(details.revenue) 
+               : dynamicMovieData.boxOffice;
 
-            const directorObj = credits.crew?.find(person => person.job === 'Director');
-            const newDirector = directorObj ? directorObj.name : dynamicMovieData.director;
+           const directorObj = credits.crew?.find(person => person.job === 'Director');
+           const newDirector = directorObj ? directorObj.name : dynamicMovieData.director;
 
-            const topCast = credits.cast?.slice(0, 3).map(c => c.name).join(', ') || dynamicMovieData.cast;
+           const topCast = credits.cast?.slice(0, 3).map(c => c.name).join(', ') || dynamicMovieData.cast;
 
-            let newRating = dynamicMovieData.ageRating;
-            const usRelease = releases.results?.find(r => r.iso_3166_1 === 'US');
-            if (usRelease) {
-                const cert = usRelease.release_dates.find(d => d.certification !== '')?.certification;
-                if (cert) newRating = cert;
-            }
+           let newRating = dynamicMovieData.ageRating;
+           const usRelease = releases.results?.find(r => r.iso_3166_1 === 'US');
+           if (usRelease) {
+               const cert = usRelease.release_dates.find(d => d.certification !== '')?.certification;
+               if (cert) newRating = cert;
+           }
 
-            setDynamicMovieData({
-                director: newDirector,
-                cast: topCast,
-                budget: newBudget,
-                boxOffice: newRevenue,
-                ageRating: newRating
-            });
+           setDynamicMovieData({
+               director: newDirector,
+               cast: topCast,
+               budget: newBudget,
+               boxOffice: newRevenue,
+               ageRating: newRating
+           });
 
-        } catch (error) {
-            console.error("TMDB Auto-Fetch Failed:", error);
-        }
-    };
+       } catch (error) {
+           console.error("TMDB Auto-Fetch Failed:", error);
+       }
+   };
 
-    fetchAllData();
+   fetchAllData();
  }, [movie.tmdbId]);
  // 🔥🔥🔥 END AUTO-FETCH LOGIC 🔥🔥🔥
 
  // ✅ UNIFIED SENSITIVE SCENES LOOKUP
  const sensitiveScenes = safeMovieInfo.sensitiveScenes 
-   || HULU_DRAMA_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes // ✅ Hulu Drama
+   || HBO_ACTION_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
+   || HBO_ROMANCE_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
+   || HBO_MAX_THRILLER_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
+   || HULU_FAMILY_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes // ✅ Hulu Family Added
+   || HULU_DRAMA_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
    || HULU_BEST_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
    || HULU_THRILLER_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || HULU_SCIFI_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
@@ -355,7 +393,11 @@ const MovieDetailsSection = React.memo(({
    || [];
 
  // ✅ DYNAMIC SCORE VALUE SELECTION
- const scoreValue = fromHuluDramaCollection ? movie.emotionalIntensity ?? safeMovieInfo.emotionalIntensity ?? 0
+ const scoreValue = fromHboActionCollection ? movie.actionIntensity ?? safeMovieInfo.actionIntensity ?? 0
+   : fromHboRomanceCollection ? movie.emotionalIntensity ?? safeMovieInfo.emotionalIntensity ?? 0 
+   : fromHboMaxThrillerCollection ? movie.suspenseIntensity ?? safeMovieInfo.suspenseIntensity ?? 0 
+   : fromHuluFamilyCollection ? movie.wholesomeScore ?? safeMovieInfo.wholesomeScore ?? 0 // ✅ Hulu Family Added
+   : fromHuluDramaCollection ? movie.emotionalIntensity ?? safeMovieInfo.emotionalIntensity ?? 0
    : fromHuluBestCollection ? movie.adrenalineScore ?? safeMovieInfo.adrenalineScore ?? 0 
    : fromHuluThrillerCollection ? movie.suspenseIntensity ?? safeMovieInfo.suspenseIntensity ?? 0
    : fromHuluSciFiCollection ? movie.visualSpectacle ?? safeMovieInfo.visualSpectacle ?? 0 
@@ -389,12 +431,44 @@ const MovieDetailsSection = React.memo(({
  const complexityLevel = safeMovieInfo.complexityLevel || 'HIGH';
 
  const getComplexityColor = (level) => {
-   if (fromHuluDramaCollection) { // ✅ Hulu Drama
+   if (fromHboActionCollection) {
         switch (level) {
-            case 'MASTERPIECE': return '#3b82f6'; // Blue
-            case 'DEVASTATING': return '#7e22ce'; // Purple
-            case 'HEALING': return '#4f46e5'; // Indigo
-            default: return '#60a5fa'; // Light Blue
+            case 'LEGENDARY': return '#ef4444'; 
+            case 'MASTERPIECE': return '#b91c1c'; 
+            case 'DIRECT': return '#f87171'; 
+            default: return '#fbbf24'; 
+        }
+   }
+   if (fromHboRomanceCollection) { 
+        switch (level) {
+            case 'LEGENDARY': return '#ec4899'; 
+            case 'MASTERPIECE': return '#be123c'; 
+            case 'ICONIC': return '#f43f5e'; 
+            default: return '#fbbf24'; 
+        }
+   }
+   if (fromHboMaxThrillerCollection) { 
+        switch (level) {
+            case 'MASTERPIECE': return '#ef4444'; 
+            case 'DISTURBING': return '#7f1d1d'; 
+            case 'SURREAL': return '#b91c1c'; 
+            default: return '#f87171'; 
+        }
+   }
+   if (fromHuluFamilyCollection) { // ✅ Hulu Family Added
+        switch (level) {
+            case 'MASTERPIECE': return '#f59e0b'; // Amber 500
+            case 'HEARTWARMING': return '#fbbf24'; // Amber 400
+            case 'FUN': return '#fcd34d'; // Amber 300
+            default: return '#fde047'; // Yellow 300
+        }
+   }
+   if (fromHuluDramaCollection) { 
+        switch (level) {
+            case 'MASTERPIECE': return '#3b82f6';
+            case 'DEVASTATING': return '#7e22ce';
+            case 'HEALING': return '#4f46e5';
+            default: return '#60a5fa';
         }
    }
    if (fromHuluBestCollection) { 
@@ -491,6 +565,10 @@ const MovieDetailsSection = React.memo(({
  };
 
  const getComplexityScoreTitle = () => {
+   if (fromHboActionCollection) return 'ACTION INTENSITY';
+   if (fromHboRomanceCollection) return 'EMOTIONAL INTENSITY'; 
+   if (fromHboMaxThrillerCollection) return 'SUSPENSE INTENSITY'; 
+   if (fromHuluFamilyCollection) return 'WHOLESOME SCORE'; // ✅ Hulu Family Added
    if (fromHuluDramaCollection) return 'EMOTIONAL INTENSITY';
    if (fromHuluBestCollection) return 'INTENSITY SCORE'; 
    if (fromHuluThrillerCollection) return 'SUSPENSE SCORE';
@@ -520,6 +598,10 @@ const MovieDetailsSection = React.memo(({
  };
 
  const getComplexityIndexLabel = () => {
+   if (fromHboActionCollection) return 'EPIC SCALE INDEX'; 
+   if (fromHboRomanceCollection) return 'HEARTBREAK INDEX'; 
+   if (fromHboMaxThrillerCollection) return 'TENSION INDEX'; 
+   if (fromHuluFamilyCollection) return 'FAMILY FRIENDLY INDEX'; // ✅ Hulu Family Added
    if (fromHuluDramaCollection) return 'IMPACT INDEX';
    if (fromHuluBestCollection) return 'ACCLAIM INDEX'; 
    if (fromHuluThrillerCollection) return 'TENSION INDEX';
@@ -549,6 +631,10 @@ const MovieDetailsSection = React.memo(({
  };
 
  const getComplexityLevelLabel = () => {
+   if (fromHboActionCollection) return 'CINEMATIC SCALE LEVEL';
+   if (fromHboRomanceCollection) return 'ROMANCE TIER LEVEL'; 
+   if (fromHboMaxThrillerCollection) return 'PSYCHOLOGICAL LEVEL'; 
+   if (fromHuluFamilyCollection) return 'WHOLESOME LEVEL'; // ✅ Hulu Family Added
    if (fromHuluDramaCollection) return 'RESONANCE LEVEL';
    if (fromHuluBestCollection) return 'PRESTIGE LEVEL'; 
    if (fromHuluThrillerCollection) return 'THRILL LEVEL';
@@ -578,6 +664,26 @@ const MovieDetailsSection = React.memo(({
  };
 
  const getComplexityDescription = () => {
+   if (fromHboActionCollection) {
+        if (scoreValue >= 90) return 'A legendary cinematic experience with unmatched scale and visceral combat.';
+        if (scoreValue >= 80) return 'A massive blockbuster epic with high-stakes action and world-building.';
+        return 'A solid action movie with impressive scale and fight choreography.';
+   }
+   if (fromHboRomanceCollection) { 
+        if (scoreValue >= 90) return 'A god-tier emotional masterpiece. Prepare to be devastated in the best way possible.';
+        if (scoreValue >= 80) return 'A deeply resonant romance with unforgettable chemistry and heart.';
+        return 'A beautiful, classic romance that hits all the right emotional notes.';
+   }
+   if (fromHboMaxThrillerCollection) { 
+        if (scoreValue >= 90) return 'A masterclass in psychological tension. Visceral, disturbing, and unforgettable.';
+        if (scoreValue >= 80) return 'Extremely suspenseful with mind-bending twists and high stakes.';
+        return 'A gripping thriller that keeps you on the edge of your seat.';
+   }
+   if (fromHuluFamilyCollection) { // ✅ Hulu Family Added
+        if (scoreValue >= 90) return 'A heartwarming masterpiece that will delight both kids and adults. Pure wholesome magic.';
+        if (scoreValue >= 80) return 'Great family entertainment with positive messages and plenty of fun moments.';
+        return 'A solid family movie that offers good laughs and an enjoyable adventure.';
+   }
    if (fromHuluDramaCollection) {
         if (scoreValue >= 90) return 'A devastating, emotional masterpiece that will stay with you forever.';
         if (scoreValue >= 80) return 'A powerful, deeply resonant film with rich character depth.';
@@ -636,6 +742,10 @@ const MovieDetailsSection = React.memo(({
  };
 
  const getBorderColor = () => {
+   if (fromHboActionCollection) return 'border-red-600/40';
+   if (fromHboRomanceCollection) return 'border-pink-500/40'; 
+   if (fromHboMaxThrillerCollection) return 'border-red-500/40'; 
+   if (fromHuluFamilyCollection) return 'border-yellow-400/40'; // ✅ Hulu Family Added
    if (fromHuluDramaCollection) return 'border-blue-500/40';
    if (fromHuluBestCollection) return 'border-amber-500/40'; 
    if (fromHuluThrillerCollection) return 'border-red-500/40';
@@ -654,6 +764,10 @@ const MovieDetailsSection = React.memo(({
  };
 
  const getStarColor = () => {
+   if (fromHboActionCollection) return 'text-red-600';
+   if (fromHboRomanceCollection) return 'text-pink-500'; 
+   if (fromHboMaxThrillerCollection) return 'text-red-500'; 
+   if (fromHuluFamilyCollection) return 'text-yellow-400'; // ✅ Hulu Family Added
    if (fromHuluDramaCollection) return 'text-blue-500';
    if (fromHuluBestCollection) return 'text-amber-500'; 
    if (fromHuluThrillerCollection) return 'text-red-500';
@@ -888,7 +1002,11 @@ const MovieDetailsSection = React.memo(({
       <RealCommentsRatingSection movie={movie} />
 
       {/* FAQ SECTIONS */}
-      {fromHuluDramaCollection ? <HuluDramaSEOFAQSection movie={movie} /> // ✅ Added Hulu Drama FAQ
+      {fromHboActionCollection ? <HboActionSEOFAQSection movie={movie} />
+        : fromHboRomanceCollection ? <HboMaxRomanceSEOFAQSection movie={movie} /> 
+        : fromHboMaxThrillerCollection ? <HboMaxThrillerSEOFAQSection movie={movie} /> 
+        : fromHuluFamilyCollection ? <HuluFamilySEOFAQSection movie={movie} /> // ✅ Hulu Family FAQ Added
+        : fromHuluDramaCollection ? <HuluDramaSEOFAQSection movie={movie} />
         : fromHuluBestCollection ? <HuluBestSEOFAQSection movie={movie} />
         : fromHuluThrillerCollection ? <HuluThrillerSEOFAQSection movie={movie} />
         : fromHuluSciFiCollection ? <HuluSciFiSEOFAQSection movie={movie} />

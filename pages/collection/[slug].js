@@ -28,6 +28,10 @@ import { COMPLETE_MOVIE_DATABASE as HULU_THRILLER_DATABASE, COMPLETE_MOVIE_DATA 
 import { COMPLETE_MOVIE_DATABASE, COMPLETE_MOVIE_DATA } from '../../utils/movieData';
 import { COMPLETE_MOVIE_DATABASE as HULU_BEST_DATABASE, COMPLETE_MOVIE_DATA as HULU_BEST_DATA } from '../../utils/huluBestMoviesData';
 import { COMPLETE_MOVIE_DATABASE as HULU_DRAMA_DATABASE, COMPLETE_MOVIE_DATA as HULU_DRAMA_DATA } from '../../utils/huluDramaMovieData';
+import { COMPLETE_MOVIE_DATABASE as HULU_FAMILY_DATABASE, COMPLETE_MOVIE_DATA as HULU_FAMILY_DATA } from '../../utils/huluFamilyMovieData';
+import { COMPLETE_MOVIE_DATABASE as HBO_ACTION_DATABASE, COMPLETE_MOVIE_DATA as HBO_ACTION_DATA } from '../../utils/hboActionMovieData';
+import { COMPLETE_MOVIE_DATABASE as HBO_MAX_ROMANCE_DATABASE, COMPLETE_MOVIE_DATA as HBO_MAX_ROMANCE_DATA } from '../../utils/hboMaxRomanceMovieData';
+import { COMPLETE_MOVIE_DATABASE as HBO_MAX_THRILLER_DATABASE, COMPLETE_MOVIE_DATA as HBO_MAX_THRILLER_DATA } from '../../utils/hboMaxThrillerMovieData';
 // ✅ FIXED IMPORTS: Aliasing COMPLETE_MOVIE_DATABASE to old variable names
 
 import { COMPLETE_MOVIE_DATABASE as THRILLER_MOVIES } from '../../utils/thrillerMovieData';
@@ -417,6 +421,106 @@ const getCollectionContent = () => {
             }
         };
 
+
+
+} else if (collection.slug === 'best-family-movies-on-hulu') {
+    return {
+        badge: "Wholesome Family Cinema",
+        title: "Best Family Movies on Hulu",
+        description: "The top 10 family movies streaming on Hulu right now. From Robot Dreams to Night at the Museum—ranked by wholesomeness and entertainment value.",
+        selection: {
+            text1: "From the silent emotional journey of 'Robot Dreams' to the high-energy fun of 'Sonic the Hedgehog 2'—these films represent the best family entertainment available on Hulu.",
+            text2: "Each selection features positive messages, engaging stories for all ages, and moments of genuine warmth that bring families together."
+        },
+        ranking: {
+            text: "Our wholesome score evaluates positive themes, age-appropriateness, and the overall 'feel-good' factor throughout each film.",
+            points: [
+                "Wholesome score intensity",
+                "Fun factor rating",
+                "Family-friendly themes",
+                "Emotional warmth depth"
+            ]
+        },
+        experience: {
+            text1: "Whether you're seeking a fun adventure or a heartwarming story, this collection delivers cinema's most memorable family experiences.",
+            text2: "Each film has been selected for its ability to entertain both kids and adults—offering laughter, tears, and valuable life lessons."
+        }
+    };
+
+
+
+} else if (collection.slug === 'best-action-movies-on-hbo-max') {
+    return {
+        badge: "Epic Action Cinema",
+        title: "Action Movies on HBO Max",
+        description: "Grand-scale action epics streaming on HBO Max. Mythic heroes, visceral combat & cinematic spectacles that define the blockbuster genre.",
+        selection: {
+            text1: "From the tactical gun-fu of 'John Wick' to the mythic scale of 'Dune: Part Two'—these films represent the absolute peak of action filmmaking available on HBO Max.",
+            text2: "Each selection features legendary set pieces, groundbreaking stunts, and narratives that balance massive spectacle with intimate, character-driven stakes."
+        },
+        ranking: {
+            text: "Our adrenaline index evaluates combat intensity, epic scale, and the visceral impact of the action choreography throughout each film.",
+            points: [
+                "Combat choreography excellence",
+                "Epic scale & world-building",
+                "Visceral impact intensity",
+                "Cinematic spectacle score"
+            ]
+        },
+        experience: {
+            text1: "Whether you're seeking gritty crime sagas or fantasy warfare, this collection delivers cinema's most ambitious and adrenaline-fueled experiences.",
+            text2: "Each film has been selected for its ability to awe—offering moments of pure cinematic grandeur that demand the biggest screen possible."
+        }
+    };
+
+} else if (collection.slug === 'best-romance-movies-on-hbo-max') {
+        return {
+            badge: "Prestige Romance Cinema",
+            title: "Best Romance Movies on HBO Max",
+            description: "The definitive ranking of romance movies on HBO Max. From the wartime sacrifice of Casablanca to the restrained longing of In the Mood for Love. Ranked by emotional intensity.",
+            selection: {
+                text1: "From the eternal gold standard of 'Casablanca' to the quiet devastation of 'Past Lives'—these films represent the absolute pinnacle of romantic cinema available on HBO Max.",
+                text2: "Each selection features electric chemistry, profound emotional stakes, and narratives that move beyond clichés to explore the messy, beautiful, and heartbreaking reality of connection."
+            },
+            ranking: {
+                text: "Our emotional intensity index evaluates on-screen chemistry, narrative emotional weight, and the lasting impact of the film's romantic arc.",
+                points: [
+                    "Emotional intensity score",
+                    "Chemistry saturation level",
+                    "Cinematic legacy & impact",
+                    "Narrative devastation weight"
+                ]
+            },
+            experience: {
+                text1: "Whether you're seeking the wit of a perfect rom-com or the ache of forbidden love, this collection delivers cinema's most powerful explorations of the human heart.",
+                text2: "Each film has been selected for its ability to linger with you—offering moments of intimacy and heartbreak that feel universally, heartbreakingly real."
+            }
+        };
+
+
+} else if (collection.slug === 'best-thriller-movies-on-hbo-max') {
+    return {
+        badge: "Psychological Tension Cinema",
+        title: "Best Thriller Movies on HBO Max",
+        description: "The most suspenseful thrillers streaming on HBO Max. From psychological nightmares like Funny Games to cerebral sci-fi like Ex Machina.",
+        selection: {
+            text1: "From the nihilistic home invasion of 'Funny Games' to the social horror of 'Get Out'—these films represent the pinnacle of tension and suspense available on HBO Max.",
+            text2: "Each selection features masterclass direction, unbearable psychological pressure, and narratives that tighten the screws until the very last frame."
+        },
+        ranking: {
+            text: "Our suspense intensity index evaluates pacing, psychological pressure, and the visceral impact of tension throughout each film.",
+            points: [
+                "Suspense intensity score",
+                "Psychological pressure depth",
+                "Narrative twist sophistication",
+                "Visceral impact factor"
+            ]
+        },
+        experience: {
+            text1: "Whether you're seeking cerebral puzzles or heart-pounding dread, this collection delivers cinema's most gripping experiences.",
+            text2: "Each film has been selected for its ability to keep you on the edge of your seat—offering twists and tension that demand your full attention."
+        }
+    };
 
 
     } else if (collection.slug === 'movies-like-black-swan') {
@@ -986,6 +1090,33 @@ const getHeaderContent = () => {
     };
 
 
+} else if (collection.slug === 'best-family-movies-on-hulu') {
+    return {
+        title: "10 Best Family Movies on Hulu",
+        subtitle: "Wholesome entertainment, animation & adventure for all ages streaming now"
+    };
+
+
+} else if (collection.slug === 'best-action-movies-on-hbo-max') {
+    return {
+        title: "Best Action Movies on HBO Max: 10 Epic Films",
+        subtitle: "Grand scale battles, mythic heroes & visceral combat streaming now"
+    };
+
+} else if (collection.slug === 'best-romance-movies-on-hbo-max') {
+        return {
+            title: "Best Romance Movies on HBO Max: 10 Prestige Films",
+            subtitle: "Emotionally resonant masterpieces ranked by chemistry, heartbreak & cinematic legacy"
+        };
+
+
+} else if (collection.slug === 'best-thriller-movies-on-hbo-max') {
+    return {
+        title: "10 Best Thriller Movies on HBO Max",
+        subtitle: "Psychological nightmares, suspense & cerebral sci-fi streaming now"
+    };
+
+
 } else if (collection.slug === 'movies-like-donnie-darko') {
     return {
         title: "Movies Like Donnie Darko: 10 Reality-Warping Films",
@@ -1175,6 +1306,31 @@ const getLoaderContent = () => {
     return {
         title: "Loading Best Drama Movies on Hulu",
         description: "Curating emotionally powerful dramas and award-winning narratives with community reviews"
+    };
+
+} else if (collection?.slug === 'best-family-movies-on-hulu') {
+    return {
+        title: "Loading Best Family Movies on Hulu",
+        description: "Curating wholesome entertainment and animated adventures with community reviews"
+    };
+
+
+} else if (collection?.slug === 'best-action-movies-on-hbo-max') {
+    return {
+        title: "Loading Best Action Movies on HBO Max",
+        description: "Curating epic action masterpieces and grand-scale battles with community reviews"
+    };
+
+} else if (collection?.slug === 'best-romance-movies-on-hbo-max') {
+        return {
+            title: "Loading Best Romance Movies on HBO Max",
+            description: "Curating emotionally resonant prestige romance films with community reviews and ratings"
+        };
+
+} else if (collection?.slug === 'best-thriller-movies-on-hbo-max') {
+    return {
+        title: "Loading Best Thriller Movies on HBO Max",
+        description: "Curating psychological nightmares and high-tension thrillers with community reviews"
     };
 
 
@@ -1402,6 +1558,47 @@ const getStaticMetaContent = () => {
         ogTitle: "10 Best Drama Movies on Hulu: Deeply Emotional Cinema 🎭",
         twitterTitle: "🎭 10 Emotional Masterpieces Streaming on Hulu Right Now",
         progressText: `of Top ${movies.length} Drama Movies on Hulu`
+    };
+
+
+} else if (collection.slug === 'best-family-movies-on-hulu') {
+    return {
+        title: "10 Best Family Movies on Hulu: Wholesome & Fun",
+        description: "10 best family movies streaming on Hulu. Featuring Robot Dreams, Night at the Museum & Sonic 2. Ranked by wholesomeness & fun factor. Includes sensitive content timestamps.",
+        keywords: "best family movies on hulu, hulu kids movies, robot dreams, night at the museum, sonic 2, wholesome movies, sensitive content timestamps",
+        ogTitle: "10 Best Family Movies on Hulu: Wholesome Fun 🍿",
+        twitterTitle: "🍿 10 Best Family Movies on Hulu (Robot Dreams, Sonic 2)",
+        progressText: `of Top ${movies.length} Family Movies on Hulu`
+    };
+
+    } else if (collection.slug === 'best-action-movies-on-hbo-max') {
+    return {
+        title: "Top 10 Epic Action Movies on HBO Max",
+        description: "10 greatest action movies streaming on HBO Max. Featuring Seven Samurai, Dune: Part Two & The Dark Knight. Ranked by epic scale & intensity. Includes sensitive content timestamps.",
+        keywords: "best action movies on hbo max, hbo max epic films, seven samurai, dark knight, dune part two, john wick hbo max, zack snyder justice league, sensitive content timestamps",
+        ogTitle: "10 Epic Action Movies on HBO Max: Mythic Heroes & Scale ⚔️",
+        twitterTitle: "⚔️ 10 Greatest Action Epics on HBO Max (Seven Samurai, Dune 2)",
+        progressText: `of Top ${movies.length} Action Movies on HBO Max`
+    };
+
+} else if (collection.slug === 'best-romance-movies-on-hbo-max') {
+        return {
+            title: "Best Romance Movies on HBO Max: 10 Prestige Films",
+            description: "10 best romance movies streaming on HBO Max. Featuring Casablanca, In the Mood for Love & Past Lives. Ranked by emotional intensity & chemistry. Includes sensitive content timestamps.",
+            keywords: "best romance movies on hbo max, hbo max romance films, casablanca, in the mood for love, past lives, romantic movies streaming, sensitive content timestamps",
+            ogTitle: "10 Best Romance Movies on HBO Max: Prestige & Heartbreak 💖",
+            twitterTitle: "💖 10 Best Romance Movies on HBO Max (Casablanca, Past Lives)",
+            progressText: `of Top ${movies.length} Romance Movies on HBO Max`
+        };
+
+} else if (collection.slug === 'best-thriller-movies-on-hbo-max') {
+    return {
+        title: "10 Best Thriller Movies on HBO Max: Ranked by Suspense",
+        description: "10 most suspenseful thrillers on HBO Max. Featuring Funny Games, Get Out & The Dark Knight. Ranked by psychological tension & twists. Includes sensitive content timestamps.",
+        keywords: "best thriller movies on hbo max, hbo max suspense films, funny games, get out, ex machina, psychological thrillers streaming, sensitive content timestamps",
+        ogTitle: "10 Best Thriller Movies on HBO Max: Suspense & Mind Games 🔴",
+        twitterTitle: "🔴 10 Most Suspenseful Thrillers on HBO Max (Funny Games, Get Out)",
+        progressText: `of Top ${movies.length} Thriller Movies on HBO Max`
     };
 
 
@@ -1643,6 +1840,10 @@ const getStaticMetaContent = () => {
             sessionStorage.removeItem('fromHuluThrillerCollection');
             sessionStorage.removeItem('fromHuluBestCollection');
             sessionStorage.removeItem('fromHuluDramaCollection');
+            sessionStorage.removeItem('fromHuluFamilyCollection');
+            sessionStorage.removeItem('fromHboActionCollection');
+            sessionStorage.removeItem('fromHboRomanceCollection');
+            sessionStorage.removeItem('fromHboMaxThrillerCollection');
             sessionStorage.removeItem('fromEyesWideShutCollection');
             sessionStorage.removeItem('fromDonnieDarkoCollection');
             sessionStorage.removeItem('fromBlackSwanCollection');
@@ -1687,7 +1888,15 @@ const getStaticMetaContent = () => {
     sessionStorage.setItem('fromHuluBestCollection', 'true');
 } else if (collection.slug === 'best-drama-movies-on-hulu') {
     sessionStorage.setItem('fromHuluDramaCollection', 'true');
-
+    } else if (collection.slug === 'best-family-movies-on-hulu') {
+    sessionStorage.setItem('fromHuluFamilyCollection', 'true');
+} else if (collection.slug === 'best-action-movies-on-hbo-max') {
+    sessionStorage.setItem('fromHboActionCollection', 'true');
+    } else if (collection.slug === 'best-romance-movies-on-hbo-max') {
+                sessionStorage.setItem('fromHboRomanceCollection', 'true');
+                } else if (collection.slug === 'best-thriller-movies-on-hbo-max') {
+    sessionStorage.setItem('fromHboMaxThrillerCollection', 'true');
+    
             } else if (collection.slug === 'movies-like-parasite') { 
                 sessionStorage.setItem('fromParasiteCollection', 'true');
          } else if (collection.slug === 'movies-like-oldboy') {
@@ -2168,6 +2377,14 @@ return (
 ? 'movies/best-movies-on-hulu/'
 : collection?.slug === 'best-drama-movies-on-hulu'
 ? 'movies/best-drama-movies-on-hulu/'
+: collection?.slug === 'best-family-movies-on-hulu'
+? 'movies/best-family-movies-on-hulu/'
+: collection?.slug === 'best-action-movies-on-hbo-max'
+? 'movies/best-action-movies-on-hbo-max/'
+: collection?.slug === 'best-romance-movies-on-hbo-max'
+? 'movies/best-romance-movies-on-hbo-max/'
+: collection?.slug === 'best-thriller-movies-on-hbo-max'
+? 'movies/best-thriller-movies-on-hbo-max/'
                                     : collection?.slug === 'movies-like-interstellar'
                                     ? 'movies/interstellar/'
                                     : collection?.slug === 'movies-like-memento'
@@ -2331,7 +2548,15 @@ return (
 : collection.slug === 'best-movies-on-hulu'
 ? `/movies/best-movies-on-hulu/${currentMovie.imdbID}`
 : collection.slug === 'best-drama-movies-on-hulu'
-? `/collection/best-drama-movies-on-hulu/${currentMovie.imdbID}`
+? `/movies/best-drama-movies-on-hulu/${currentMovie.imdbID}`
+: collection.slug === 'best-family-movies-on-hulu'
+? `/movies/best-family-movies-on-hulu/${currentMovie.imdbID}`
+: collection.slug === 'best-action-movies-on-hbo-max'
+? `/movies/best-action-movies-on-hbo-max/${currentMovie.imdbID}`
+: collection.slug === 'best-romance-movies-on-hbo-max'
+? `/movies/best-romance-movies-on-hbo-max/${currentMovie.imdbID}`
+: collection.slug === 'best-thriller-movies-on-hbo-max'
+? `/collection/best-thriller-movies-on-hbo-max/${currentMovie.slug}`
       : collection.slug === 'movies-like-interstellar'
       ? `/movies/interstellar/${currentMovie.imdbID}`
       : collection.slug === 'movies-like-memento'
@@ -2432,6 +2657,14 @@ return (
     detailPageUrl = `/movies/best-movies-on-hulu/${currentMovie.imdbID}`;
     } else if (collection.slug === 'best-drama-movies-on-hulu') {
     detailPageUrl = `/movies/best-drama-movies-on-hulu/${currentMovie.imdbID}`;
+    } else if (collection.slug === 'best-family-movies-on-hulu') {
+    detailPageUrl = `/movies/best-family-movies-on-hulu/${currentMovie.imdbID}`;
+    } else if (collection.slug === 'best-action-movies-on-hbo-max') {
+    detailPageUrl = `/collection/best-action-movies-on-hbo-max/${currentMovie.imdbID}`;
+    } else if (collection.slug === 'best-romance-movies-on-hbo-max') {
+    detailPageUrl = `/collection/best-romance-movies-on-hbo-max/${currentMovie.imdbID}`;
+    } else if (collection.slug === 'best-thriller-movies-on-hbo-max') {
+    detailPageUrl = `/collection/best-thriller-movies-on-hbo-max/${currentMovie.imdbID}`;
                                         } else if (collection.slug === 'movies-like-interstellar') {
                                             detailPageUrl = `/movies/interstellar/${currentMovie.imdbID}`;
                                         } else if (collection.slug === 'movies-like-memento') {
@@ -2676,6 +2909,20 @@ case 'best-sci-fi-movies-on-hulu':
 case 'best-drama-movies-on-hulu':
         movieDatabase = HULU_DRAMA_DATABASE;
         break;
+        case 'best-family-movies-on-hulu':
+    movieDatabase = HULU_FAMILY_DATABASE;
+    break;
+        case 'best-action-movies-on-hbo-max':
+    movieDatabase = HBO_ACTION_DATABASE;
+    break;
+case 'best-romance-movies-on-hbo-max':
+            movieDatabase = HBO_MAX_ROMANCE_DATABASE;
+            break;
+
+
+case 'best-thriller-movies-on-hbo-max':
+    movieDatabase = HBO_MAX_THRILLER_DATABASE;
+    break;
 
         case 'movies-like-interstellar':
             movieDatabase = INTERSTELLAR_DATABASE;
