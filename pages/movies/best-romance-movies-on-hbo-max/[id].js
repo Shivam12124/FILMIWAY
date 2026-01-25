@@ -18,7 +18,7 @@ import {
   COMPLETE_MOVIE_DATABASE, 
   COMPLETE_MOVIE_DATA,
   SENSITIVE_TIMELINES,
-  HBO_MAX_ROMANCE_MOVIE_FAQS 
+  HBO_ROMANCE_MOVIE_FAQS 
 } from '../../../utils/hboMaxRomanceMovieData';
 
 const COLORS = {

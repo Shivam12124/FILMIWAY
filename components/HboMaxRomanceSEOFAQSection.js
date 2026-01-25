@@ -2,7 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Info } from 'lucide-react';
-import { HBO_MAX_ROMANCE_MOVIE_FAQS } from '../utils/hboMaxRomanceMovieData';
+import { HBO_ROMANCE_MOVIE_FAQS } from '../utils/hboMaxRomanceMovieData';
 
 const HboMaxRomanceSEOFAQSection = ({ movie }) => {
     // 🔥 Get FAQs from HBO_MAX_ROMANCE_MOVIE_FAQS data
