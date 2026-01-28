@@ -473,9 +473,9 @@ const MovieDetailsSection = React.memo(({
    : fromInterstellarCollection ? movie.spaceComplexity ?? safeMovieInfo.spaceComplexity ?? 0
    : fromTimeTravelCollection ? movie.timeTravelIntensity ?? safeMovieInfo.timeTravelIntensity ?? 0
    : fromHeistThrillerCollection ? movie.heistComplexity ?? safeMovieInfo.heistComplexity ?? 0
-   : fromCrimeThrillerCollection ? movie.suspenseIntensity ?? safeMovieInfo.suspenseIntensity ?? 0
-   : fromMysteryThrillerCollection ? movie.mysteryComplexity ?? safeMovieInfo.mysteryComplexity ?? 0
-   : fromDetectiveThrillerCollection ? movie.mysteryComplexity ?? safeMovieInfo.mysteryComplexity ?? 0
+   : fromCrimeThrillerCollection ? movie. crimeIntensity ?? safeMovieInfo. crimeIntensity ?? 0
+   : fromMysteryThrillerCollection ? movie.psychologicalTension ?? safeMovieInfo.psychologicalTension ?? 0
+   : fromDetectiveThrillerCollection ? movie.psychologicalTension?? safeMovieInfo.psychologicalTension?? 0
    : fromPsychologicalThrillerCollection ? movie.suspenseIntensity ?? safeMovieInfo.suspenseIntensity ?? 0
    : fromDramaCollection ? movie.emotionalIntensity ?? safeMovieInfo.emotionalIntensity ?? 0
    : fromThrillerCollection ? movie.suspenseIntensity ?? safeMovieInfo.suspenseIntensity ?? 0

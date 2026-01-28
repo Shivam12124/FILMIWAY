@@ -1,4 +1,4 @@
-// pages/index.js - SEO FIXED VERSION (Bing/Google Optimized) 🚀
+// pages/index.js - ENHANCED PROFESSIONAL VERSION 🎬
 import React, { useState, useEffect, useRef, useCallback, memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Head from 'next/head';
@@ -9,13 +9,17 @@ import {
     Play, Star, TrendingUp, Award, 
     Search, Menu, X, ArrowRight, Zap,
     ChevronLeft, ChevronRight, Construction, Sparkles, 
-    Compass, Globe, Layers
+    Compass, Globe, Layers, Film, Tv, List, Brain, Skull, Clapperboard,
+    Clock, Users, Eye
 } from 'lucide-react';
+
+// 1. IMPORT YOUR COLLECTIONS DATA
+import { COLLECTIONS } from '../data/collections';
 
 const TMDB_BASE_URL = 'https://api.themoviedb.org/3';
 const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p';
 
-// ✅ ICON SIZE SYSTEM
+// ✅ ENHANCED ICON SIZE SYSTEM
 const ICON_SIZES = {
     xs: 'w-3 h-3 sm:w-4 sm:h-4',
     sm: 'w-4 h-4 sm:w-5 sm:h-5',
@@ -24,68 +28,125 @@ const ICON_SIZES = {
     xl: 'w-7 h-7 sm:w-8 sm:h-8',
 };
 
-// ✅ MEMOIZED MOVIE CARD
-const MovieCard = memo(({ movie, index, isMobile, onClick }) => (
-    <motion.div
-        className="group cursor-pointer select-none h-full"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-50px" }}
-        transition={{ delay: index * 0.05, duration: 0.4 }}
-        whileHover={!isMobile ? { y: -8, transition: { duration: 0.2 } } : {}}
-        onClick={onClick}
-        style={{ contain: 'layout style paint' }}
-    >
-        <div className="relative aspect-[2/3] rounded-2xl overflow-hidden bg-gray-900 shadow-xl w-full h-full">
-            <Image
-                src={movie.poster_path ? `${IMAGE_BASE_URL}/w342${movie.poster_path}` : "https://via.placeholder.com/342x513?text=No+Image"}
-                alt={movie.title}
-                width={342}
-                height={513}
-                srcSet={movie.poster_path ? `
-                    ${IMAGE_BASE_URL}/w154${movie.poster_path} 154w,
-                    ${IMAGE_BASE_URL}/w342${movie.poster_path} 342w,
-                    ${IMAGE_BASE_URL}/w500${movie.poster_path} 500w
-                ` : undefined}
-                sizes="(max-width: 640px) 154px, (max-width: 1024px) 342px, 500px"
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                loading="lazy"
-                draggable={false}
-            />
-            
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="absolute bottom-3 sm:bottom-6 left-3 sm:left-6 right-3 sm:right-6">
-                    <h3 className="text-white font-semibold text-xs sm:text-sm md:text-base mb-2 line-clamp-2">
-                        {movie.title}
-                    </h3>
-                    <div className="flex items-center justify-between mb-3">
-                        <div className="flex items-center gap-1">
-                            <Star className={`${ICON_SIZES.xs} text-yellow-400 fill-current`} />
-                            <span className="text-yellow-400 font-medium text-xs">{movie.vote_average?.toFixed(1)}</span>
+// ✅ PREMIUM COLLECTION CARD - COMPLETELY REDESIGNED
+const CollectionCard = memo(({ collection, index, isMobile, onClick }) => {
+    const [isHovered, setIsHovered] = useState(false);
+    const [imageLoaded, setImageLoaded] = useState(false);
+
+    return (
+        <motion.div
+            className="group cursor-pointer select-none h-full relative"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.05, duration: 0.5, ease: "easeOut" }}
+            onClick={onClick}
+            onMouseEnter={() => !isMobile && setIsHovered(true)}
+            onMouseLeave={() => !isMobile && setIsHovered(false)}
+        >
+            <div className="relative aspect-[2/3] rounded-2xl overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-black border border-gray-700/50 group-hover:border-yellow-400/30 transition-all duration-500 shadow-2xl group-hover:shadow-yellow-400/10">
+                
+                {/* Background Glow Effect */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-yellow-400/0 via-transparent to-yellow-400/0 group-hover:from-yellow-400/5 group-hover:to-yellow-400/10 transition-all duration-700 z-0" />
+                
+                {/* Poster Image with Loading State */}
+                <div className="relative w-full h-full">
+                    {!imageLoaded && (
+                        <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 animate-pulse" />
+                    )}
+                    <Image
+                      // Changed w500 to w342 (approx 30-40% smaller file size)
+src={collection.poster_path ? `${IMAGE_BASE_URL}/w342${collection.poster_path}` : "..."}
+                        alt={collection.title}
+                        fill
+                        sizes="(max-width: 640px) 180px, (max-width: 1024px) 280px, 350px"
+                        className={`object-cover transition-all duration-700 ease-out ${
+                            imageLoaded ? 'opacity-100' : 'opacity-0'
+                        } ${
+                            isHovered ? 'scale-110 opacity-80' : 'scale-100 opacity-95'
+                        }`}
+                        loading="lazy"
+                        draggable={false}
+                       
+                        onLoad={() => setImageLoaded(true)}
+                    />
+                </div>
+                
+                {/* Multi-Layer Gradient Overlays */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent opacity-90 group-hover:opacity-95 transition-opacity duration-500 z-10" />
+                <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-black/40 opacity-50 z-10" />
+
+                {/* Top Stats Badge - Enhanced */}
+                <div className="absolute top-3 right-3 z-20 flex flex-col gap-2">
+                    <div className="bg-black/70 backdrop-blur-xl px-3 py-1.5 rounded-lg border border-yellow-400/20 shadow-lg">
+                        <div className="flex items-center gap-1.5">
+                            <Film className="w-3.5 h-3.5 text-yellow-400" />
+                            <span className="text-xs font-bold text-white">{collection.item_count}</span>
                         </div>
-                        <span className="text-gray-300 text-xs">
-                            {movie.release_date ? new Date(movie.release_date).getFullYear() : 'N/A'}
-                        </span>
                     </div>
-                    <button className="w-full bg-yellow-400 text-black py-1.5 sm:py-2 rounded-lg font-medium hover:bg-yellow-300 transition-colors text-xs sm:text-sm">
-                        {isMobile ? "Details" : "View Details"}
-                    </button>
+                    {collection.vote_average > 7.5 && (
+                        <div className="bg-gradient-to-r from-yellow-400/90 to-amber-400/90 backdrop-blur-xl px-3 py-1.5 rounded-lg border border-yellow-300/30 shadow-lg">
+                            <div className="flex items-center gap-1">
+                                <Star className="w-3 h-3 fill-yellow-900 text-yellow-900" />
+                                <span className="text-xs font-bold text-black">{collection.vote_average.toFixed(1)}</span>
+                            </div>
+                        </div>
+                    )}
                 </div>
-            </div>
 
-            <div className="absolute top-2 sm:top-4 right-2 sm:right-4 bg-black/80 backdrop-blur-sm px-2 py-1 sm:px-3 rounded-full">
-                <div className="flex items-center gap-1">
-                    <Star className={`${ICON_SIZES.xs} text-yellow-400 fill-current`} />
-                    <span className="text-white text-xs font-medium">{movie.vote_average?.toFixed(1)}</span>
+                {/* Premium Bottom Content */}
+                <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5 z-20">
+                    {/* Title */}
+                    <h3 className="text-white font-semibold text-sm sm:text-base md:text-lg leading-tight mb-2 line-clamp-2 group-hover:text-yellow-300 transition-colors duration-300 drop-shadow-lg">
+                        {collection.title}
+                    </h3>
+                    
+                    {/* Enhanced Meta Info */}
+                    <div className="flex items-center gap-3 text-xs text-gray-300 mb-3">
+                        <span className="flex items-center gap-1.5 bg-white/5 backdrop-blur-sm px-2 py-1 rounded">
+                            <Layers className="w-3 h-3 text-yellow-400" />
+                            <span className="font-medium">Collection</span>
+                        </span>
+                        {collection.vote_average > 0 && collection.vote_average <= 7.5 && (
+                            <span className="flex items-center gap-1">
+                                <Star className="w-3 h-3 fill-yellow-500 text-yellow-500" />
+                                <span className="font-semibold">{collection.vote_average.toFixed(1)}</span>
+                            </span>
+                        )}
+                    </div>
+
+                    {/* Hover CTA - Only on Desktop */}
+                    {!isMobile && (
+                        <motion.div
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: isHovered ? 1 : 0, y: isHovered ? 0 : 10 }}
+                            transition={{ duration: 0.3 }}
+                            className="flex items-center gap-2 text-yellow-400 text-xs font-semibold"
+                        >
+                            <Play className="w-3.5 h-3.5 fill-current" />
+                            <span>Explore Collection</span>
+                            <ArrowRight className="w-3.5 h-3.5" />
+                        </motion.div>
+                    )}
                 </div>
+
+                {/* Shine Effect on Hover */}
+                <motion.div
+                    className="absolute inset-0 z-30 pointer-events-none"
+                    initial={{ x: '-100%' }}
+                    animate={{ x: isHovered ? '100%' : '-100%' }}
+                    transition={{ duration: 0.8, ease: "easeInOut" }}
+                >
+                    <div className="w-1/3 h-full bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-12" />
+                </motion.div>
             </div>
-        </div>
-    </motion.div>
-));
+        </motion.div>
+    );
+});
 
-MovieCard.displayName = 'MovieCard';
+CollectionCard.displayName = 'CollectionCard';
 
-// ✅ HERO SECTION (SEO H1 FIXED)
+// ✅ HERO SECTION (keeping your existing design)
 const HeroSection = memo(() => (
     <section className="relative min-h-screen flex items-center justify-center bg-black overflow-hidden select-none pt-20">
         <div className="absolute inset-0 opacity-5">
@@ -118,7 +179,6 @@ const HeroSection = memo(() => (
                     </div>
                 </motion.div>
 
-                {/* ✅ SEO FIX: Standard H1 for bots, Motion H1 for users */}
                 <h1 className="sr-only">Filmiway - Explore the Best of Global Cinema</h1>
                 
                 <motion.h1 
@@ -126,7 +186,7 @@ const HeroSection = memo(() => (
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3, duration: 0.6 }}
-                    aria-hidden="true" // Hide from screen readers to avoid duplicate H1
+                    aria-hidden="true"
                 >
                     Explore the Best of
                     <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-amber-300 to-yellow-400 font-light">
@@ -163,7 +223,7 @@ const HeroSection = memo(() => (
                     </Link>
                 </motion.div>
 
-                {/* Collections Grid (Short) */}
+                {/* Collections Grid */}
                 <motion.div 
                     className="bg-gradient-to-r from-gray-900/40 via-gray-800/40 to-gray-900/40 backdrop-blur-sm border border-gray-700/30 rounded-2xl xs:rounded-3xl p-4 xs:p-6 sm:p-8 mb-8 xs:mb-12 max-w-4xl mx-auto"
                     initial={{ opacity: 0, y: 20 }}
@@ -203,36 +263,34 @@ const HeroSection = memo(() => (
 
 HeroSection.displayName = 'HeroSection';
 
-// ✅ OPTIMIZED CAROUSEL (WITH HYDRATION FIX)
-const ProfessionalCarousel = memo(({ movies, sectionRef }) => {
+// ✅ ENHANCED PROFESSIONAL CAROUSEL WITH SMOOTHER INTERACTIONS
+const ProfessionalCarousel = memo(({ collections, sectionRef }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [mounted, setMounted] = useState(false);
-    const [itemsPerView, setItemsPerView] = useState(2); // Default mobile view
-    const dragRef = useRef({ isDragging: false, startX: 0, currentX: 0, offset: 0 });
+    const [itemsPerView, setItemsPerView] = useState(2); 
+    const dragRef = useRef({ isDragging: false, startX: 0, currentX: 0, offset: 0, hasDragged: false });
     const containerRef = useRef(null);
-    const [isMobile, setIsMobile] = useState(true); // Default to mobile to match server render
+    const [isMobile, setIsMobile] = useState(true);
 
-    // Handle Resize & Hydration
     useEffect(() => {
         setMounted(true);
         const handleResize = () => {
             const width = window.innerWidth;
             setIsMobile(width < 768);
-            
-            if (width < 640) setItemsPerView(2);
-            else if (width < 768) setItemsPerView(2.5);
-            else if (width < 1024) setItemsPerView(3);
-            else if (width < 1280) setItemsPerView(4);
-            else setItemsPerView(6);
+            // Optimized card sizes for better visibility
+            if (width < 640) setItemsPerView(2.2); 
+            else if (width < 768) setItemsPerView(3.2);
+            else if (width < 1024) setItemsPerView(4.3);
+            else if (width < 1280) setItemsPerView(5.2);
+            else setItemsPerView(6.2);
         };
-
-        handleResize(); // Initial calculation
+        handleResize();
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
-    const safeMovies = Array.isArray(movies) ? movies : [];
-    const maxIndex = Math.max(0, Math.ceil(safeMovies.length - itemsPerView));
+    const safeCollections = Array.isArray(collections) ? collections : [];
+    const maxIndex = Math.max(0, safeCollections.length - Math.floor(itemsPerView));
 
     const nextSlide = useCallback(() => {
         setCurrentIndex(prev => Math.min(prev + 1, maxIndex));
@@ -242,119 +300,191 @@ const ProfessionalCarousel = memo(({ movies, sectionRef }) => {
         setCurrentIndex(prev => Math.max(prev - 1, 0));
     }, []);
 
-    // Pointer events for dragging
     const handlePointerDown = useCallback((e) => {
         dragRef.current.isDragging = true;
+        dragRef.current.hasDragged = false;
         dragRef.current.startX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
-        dragRef.current.currentX = dragRef.current.startX;
         dragRef.current.offset = 0;
     }, []);
 
     const handlePointerMove = useCallback((e) => {
         if (!dragRef.current.isDragging) return;
         const clientX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
-        dragRef.current.currentX = clientX;
         dragRef.current.offset = dragRef.current.startX - clientX;
+        
+        // Mark as dragged if moved more than 5px
+        if (Math.abs(dragRef.current.offset) > 5) {
+            dragRef.current.hasDragged = true;
+        }
     }, []);
 
     const handlePointerUp = useCallback(() => {
         if (!dragRef.current.isDragging) return;
         const diff = dragRef.current.offset;
-        const threshold = 30;
-        if (Math.abs(diff) > threshold) {
-            if (diff > 0 && currentIndex < maxIndex) nextSlide();
-            else if (diff < 0 && currentIndex > 0) prevSlide();
+        
+        // Improved swipe threshold - 50px
+        if (Math.abs(diff) > 50) {
+            if (diff > 0 && currentIndex < maxIndex) {
+                nextSlide();
+            } else if (diff < 0 && currentIndex > 0) {
+                prevSlide();
+            }
         }
-        dragRef.current.isDragging = false;
-        dragRef.current.offset = 0;
+        
+        // Reset after delay
+        setTimeout(() => {
+            dragRef.current.isDragging = false;
+            dragRef.current.hasDragged = false;
+            dragRef.current.offset = 0;
+        }, 100);
     }, [currentIndex, maxIndex, nextSlide, prevSlide]);
 
-    if (!mounted) {
-        // Render a placeholder or the mobile layout initially to prevent jumps
-        return <div className="h-64 bg-gray-900/20 animate-pulse rounded-xl"></div>;
-    }
+    const handleCardClick = (id) => {
+        // Only navigate if we didn't drag
+        if (!dragRef.current.hasDragged && Math.abs(dragRef.current.offset) < 10) {
+            window.location.href = `/collection/${id}`;
+        }
+    };
 
-    if (safeMovies.length === 0) {
-        return <div className="text-gray-500 text-center py-10">No movies found.</div>;
-    }
+    if (!mounted) return <div className="h-96 bg-gradient-to-r from-gray-900/20 to-gray-800/20 animate-pulse rounded-2xl"></div>;
+    if (safeCollections.length === 0) return <div className="text-gray-500 text-center py-16 text-sm">No collections available.</div>;
 
     return (
         <div ref={sectionRef} className="relative select-none group/carousel">
-            {!isMobile && (
+            {/* Enhanced Navigation Arrows */}
+            {!isMobile && safeCollections.length > itemsPerView && (
                 <>
-                    <button 
+                    <motion.button 
                         onClick={prevSlide} 
-                        className={`absolute -left-4 top-1/2 transform -translate-y-1/2 z-10 w-10 h-10 bg-gray-900/90 backdrop-blur-sm rounded-full border border-gray-700/50 transition-all duration-300 flex items-center justify-center opacity-0 group-hover/carousel:opacity-100 ${currentIndex === 0 ? 'opacity-30 cursor-not-allowed' : 'hover:bg-yellow-400 hover:text-black hover:border-yellow-400'}`} 
                         disabled={currentIndex === 0}
+                        className={`absolute -left-6 top-1/2 -translate-y-1/2 z-30 w-14 h-14 bg-gradient-to-r from-gray-900 to-black backdrop-blur-xl rounded-full border border-gray-600/50 flex items-center justify-center opacity-0 group-hover/carousel:opacity-100 transition-all duration-300 hover:scale-110 hover:border-yellow-400/50 hover:shadow-lg hover:shadow-yellow-400/20 ${
+                            currentIndex === 0 ? 'opacity-0! cursor-not-allowed' : ''
+                        }`}
+                        whileHover={{ x: -4 }}
+                        whileTap={{ scale: 0.9 }}
                     >
-                        <ChevronLeft className={`${ICON_SIZES.sm}`} />
-                    </button>
-                    <button 
+                        <ChevronLeft className="w-6 h-6 text-white group-hover:text-yellow-400 transition-colors" />
+                    </motion.button>
+                    <motion.button 
                         onClick={nextSlide} 
-                        className={`absolute -right-4 top-1/2 transform -translate-y-1/2 z-10 w-10 h-10 bg-gray-900/90 backdrop-blur-sm rounded-full border border-gray-700/50 transition-all duration-300 flex items-center justify-center opacity-0 group-hover/carousel:opacity-100 ${currentIndex >= maxIndex ? 'opacity-30 cursor-not-allowed' : 'hover:bg-yellow-400 hover:text-black hover:border-yellow-400'}`} 
                         disabled={currentIndex >= maxIndex}
+                        className={`absolute -right-6 top-1/2 -translate-y-1/2 z-30 w-14 h-14 bg-gradient-to-r from-black to-gray-900 backdrop-blur-xl rounded-full border border-gray-600/50 flex items-center justify-center opacity-0 group-hover/carousel:opacity-100 transition-all duration-300 hover:scale-110 hover:border-yellow-400/50 hover:shadow-lg hover:shadow-yellow-400/20 ${
+                            currentIndex >= maxIndex ? 'opacity-0! cursor-not-allowed' : ''
+                        }`}
+                        whileHover={{ x: 4 }}
+                        whileTap={{ scale: 0.9 }}
                     >
-                        <ChevronRight className={`${ICON_SIZES.sm}`} />
-                    </button>
+                        <ChevronRight className="w-6 h-6 text-white group-hover:text-yellow-400 transition-colors" />
+                    </motion.button>
                 </>
             )}
+
+            {/* Carousel Container */}
             <div 
                 ref={containerRef} 
-                className={`overflow-hidden ${!isMobile ? 'px-1' : 'px-0'} ${isMobile ? 'cursor-grab active:cursor-grabbing' : ''} select-none`} 
+                className="overflow-hidden px-0 py-6 cursor-grab active:cursor-grabbing"
                 onPointerDown={handlePointerDown} 
                 onPointerMove={handlePointerMove} 
                 onPointerUp={handlePointerUp} 
-                onPointerLeave={handlePointerUp} 
+                onPointerLeave={handlePointerUp}
                 style={{ touchAction: 'pan-y' }}
             >
-                <div 
-                    className="flex transition-transform duration-500 ease-out" 
-                    style={{ transform: `translateX(calc(-${currentIndex * (100 / itemsPerView)}% + ${dragRef.current.isDragging ? dragRef.current.offset * 0.25 : 0}px))` }}
+                <motion.div 
+                    className="flex gap-4 sm:gap-6" 
+                    animate={{ 
+                        x: `calc(-${currentIndex * (100 / itemsPerView)}% - ${currentIndex * (isMobile ? 16 : 24)}px + ${dragRef.current.isDragging ? -dragRef.current.offset * 0.3 : 0}px)` 
+                    }}
+                    transition={{ 
+                        type: "spring",
+                        stiffness: 300,
+                        damping: 30,
+                        mass: 0.8
+                    }}
                 >
-                    {safeMovies.map((movie, index) => (
+                    {safeCollections.map((collection, index) => (
                         <div 
-                            key={movie.id} 
-                            className="flex-shrink-0 px-1.5 xs:px-2 sm:px-3" 
-                            style={{ width: `${100 / itemsPerView}%` }}
+                            key={collection.id} 
+                            className="flex-shrink-0" 
+                            style={{ width: `calc(${100 / itemsPerView}% - ${(itemsPerView - 1) * (isMobile ? 16 : 24) / itemsPerView}px)` }}
                         >
-                            <MovieCard movie={movie} index={index} isMobile={isMobile} onClick={() => window.location.href = `/movie/${movie.id}`} />
+                            <CollectionCard 
+                                collection={collection} 
+                                index={index} 
+                                isMobile={isMobile} 
+                                onClick={() => handleCardClick(collection.id)}
+                            />
                         </div>
                     ))}
-                </div>
+                </motion.div>
             </div>
+
+            {/* Progress Indicators */}
+            {safeCollections.length > itemsPerView && (
+                <div className="flex items-center justify-center gap-2 mt-6">
+                    {Array.from({ length: maxIndex + 1 }).map((_, idx) => (
+                        <button
+                            key={idx}
+                            onClick={() => setCurrentIndex(idx)}
+                            className={`h-1.5 rounded-full transition-all duration-300 ${
+                                idx === currentIndex 
+                                    ? 'w-8 bg-yellow-400' 
+                                    : 'w-1.5 bg-gray-600 hover:bg-gray-500'
+                            }`}
+                            aria-label={`Go to slide ${idx + 1}`}
+                        />
+                    ))}
+                </div>
+            )}
         </div>
     );
 });
 
 ProfessionalCarousel.displayName = 'ProfessionalCarousel';
 
+// ✅ ENHANCED SECTION HEADERS
 const MovieSection = memo(({ title, movies, icon: Icon, description, sectionRef }) => (
-    <section className="mb-12 xs:mb-16 select-none">
-        <motion.div className="text-center mb-8 xs:mb-10" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-            <div className="flex items-center justify-center gap-2 xs:gap-3 mb-2 xs:mb-3">
-                <Icon className={ICON_SIZES.md} style={{ color: '#FACC15' }} />
-                <h2 className="text-xl xs:text-2xl sm:text-3xl font-light text-white">{title}</h2>
+    <section className="mb-16 sm:mb-20 select-none border-b border-gray-800/30 pb-16 last:border-0">
+        <motion.div 
+            className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 px-2" 
+            initial={{ opacity: 0, y: 20 }} 
+            whileInView={{ opacity: 1, y: 0 }} 
+            viewport={{ once: true }} 
+            transition={{ duration: 0.6 }}
+        >
+            <div className="flex-1">
+                <div className="flex items-center gap-3 mb-3">
+                    <div className="p-2.5 bg-gradient-to-br from-yellow-400/20 to-amber-400/20 rounded-xl border border-yellow-400/30">
+                        <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-yellow-400" />
+                    </div>
+                    <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-white tracking-tight">{title}</h2>
+                </div>
+                <p className="text-gray-400 text-sm sm:text-base max-w-2xl font-light leading-relaxed pl-1">{description}</p>
             </div>
-            <p className="text-gray-400 max-w-2xl mx-auto text-sm xs:text-base">{description}</p>
+            <Link 
+                href="/collections" 
+                className="hidden sm:flex items-center gap-2 text-sm text-yellow-400 hover:text-yellow-300 transition-colors font-medium group mt-4 sm:mt-0"
+            >
+                <span>View All</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
         </motion.div>
-        <ProfessionalCarousel movies={movies} sectionRef={sectionRef} />
+        <ProfessionalCarousel collections={movies} sectionRef={sectionRef} />
     </section>
 ));
 
 MovieSection.displayName = 'MovieSection';
 
-// ✅ MAIN COMPONENT - PURE SSG (Receives Props Only)
-const FilmiwayHomepage = ({ trendingMovies, popularMovies, topRatedMovies }) => {
+// ✅ MAIN HOMEPAGE COMPONENT
+const FilmiwayHomepage = ({ huluCollections, mindBendingCollections, thrillerCollections, hboCollections }) => {
     const router = useRouter();
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     
-    const trendingRef = useRef(null);
-    const popularRef = useRef(null);
-    const topRatedRef = useRef(null);
+    const huluRef = useRef(null);
+    const mindRef = useRef(null);
+    const thrillerRef = useRef(null);
+    const hboRef = useRef(null);
 
-    const scrollToSection = useCallback((ref) => {
-        ref.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, []);
+    const scrollToSection = (ref) => ref.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
     // Navigation
     const Navigation = () => (
@@ -367,14 +497,15 @@ const FilmiwayHomepage = ({ trendingMovies, popularMovies, topRatedMovies }) => 
             <div className="container mx-auto px-4 sm:px-6">
                 <div className="flex items-center justify-between h-16 sm:h-20">
                     <Link href="/" className="flex items-center justify-start">
-                        <div className="w-48 sm:w-60 md:w-72 h-20 sm:h-24 md:h-28 flex items-center justify-start">
-                            <Image src="/filmiway-logo.svg" alt="Filmiway" width={288} height={112} priority={true} className="w-full h-full object-contain hover:scale-105 transition-transform duration-300" draggable={false} />
+                        <div className="w-24 sm:w-32 h-full flex items-center">
+                            <Image src="/filmiway-logo.svg" alt="Filmiway" width={160} height={60} className="w-full h-full object-contain" />
                         </div>
                     </Link>
-                    <div className="hidden md:flex items-center space-x-6">
-                        <Link href="/" className="text-yellow-400 font-medium border-b-2 border-yellow-400 pb-1 text-sm">Home</Link>
-                        <Link href="/collections" className="text-gray-300 hover:text-white transition-colors text-sm">Collections</Link>
-                        <button onClick={() => scrollToSection(trendingRef)} className="text-gray-300 hover:text-white transition-colors cursor-pointer text-sm">Trending</button>
+                    <div className="hidden md:flex items-center space-x-8">
+                        <Link href="/" className="text-yellow-400 font-medium text-sm">Home</Link>
+                        <button onClick={() => scrollToSection(huluRef)} className="text-gray-300 hover:text-white transition-colors cursor-pointer text-sm">Hulu</button>
+                        <button onClick={() => scrollToSection(mindRef)} className="text-gray-300 hover:text-white transition-colors cursor-pointer text-sm">Mind-Bending</button>
+                        <button onClick={() => scrollToSection(thrillerRef)} className="text-gray-300 hover:text-white transition-colors cursor-pointer text-sm">Thrillers</button>
                     </div>
                     <button className="md:hidden text-gray-300 hover:text-yellow-400 transition-colors" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
                         {mobileMenuOpen ? <X className={ICON_SIZES.md} /> : <Menu className={ICON_SIZES.md} />}
@@ -385,8 +516,9 @@ const FilmiwayHomepage = ({ trendingMovies, popularMovies, topRatedMovies }) => 
                         <motion.div className="md:hidden bg-black/98 backdrop-blur-md border-t border-gray-800" initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }}>
                             <div className="px-4 py-4 space-y-3">
                                 <Link href="/" onClick={() => setMobileMenuOpen(false)} className="block text-yellow-400 font-medium py-2 text-sm">Home</Link>
-                                <Link href="/collections" onClick={() => setMobileMenuOpen(false)} className="block text-gray-300 hover:text-white transition-colors py-2 text-sm">Collections</Link>
-                                <button onClick={() => { scrollToSection(trendingRef); setMobileMenuOpen(false); }} className="block text-gray-300 hover:text-white transition-colors py-2 w-full text-left text-sm">Trending</button>
+                                <button onClick={() => { scrollToSection(huluRef); setMobileMenuOpen(false); }} className="block text-gray-300 hover:text-white transition-colors py-2 w-full text-left text-sm">Hulu</button>
+                                <button onClick={() => { scrollToSection(mindRef); setMobileMenuOpen(false); }} className="block text-gray-300 hover:text-white transition-colors py-2 w-full text-left text-sm">Mind-Bending</button>
+                                <button onClick={() => { scrollToSection(thrillerRef); setMobileMenuOpen(false); }} className="block text-gray-300 hover:text-white transition-colors py-2 w-full text-left text-sm">Thrillers</button>
                             </div>
                         </motion.div>
                     )}
@@ -397,143 +529,115 @@ const FilmiwayHomepage = ({ trendingMovies, popularMovies, topRatedMovies }) => 
 
     return (
         <>
-{/* ✅ SEO HEAD - PROFESSIONAL & ANTI-PIRACY VERSION */}
             <Head>
-                {/* 1. Title: Professional and clear. Visible in the Browser Tab. */}
-                <title>Filmiway | Premium Movie Discovery & Streaming Guide</title>
-                
-                {/* 2. Description: Visible in Google Search Results. */}
-                <meta name="description" content="The ultimate guide for what to watch on Netflix, Hulu, HBO Max, Prime Video, and all major streaming platforms. Expertly curated movie collections and legal viewing options." />
-                
-                {/* 3. Keywords: Tells Google exactly which platforms you cover. */}
-                <meta name="keywords" content="movie recommendations, what to watch, legal streaming guide, Netflix, Hulu, HBO Max, Prime Video, best movies 2026, Filmiway" />
-
+                <title>Filmiway | Premium Movie Collections & Streaming Guide</title>
+                <meta name="description" content="Expertly curated movie collections for Netflix, Hulu, HBO Max. Hand-picked recommendations for true cinema lovers." />
+                <meta name="keywords" content="movie collections, best movies on hulu, movies like inception, best war films, filmiway" />
                 <link rel="canonical" href="https://filmiway.com/" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-                
                 <meta name="robots" content="index, follow" />
             </Head>
-            <div className="min-h-screen bg-black select-none">
+            <div className="min-h-screen bg-black select-none text-white font-sans">
                 <Navigation />
                 <HeroSection />
 
-                <main className="container mx-auto px-4 sm:px-6 py-8 sm:py-16 space-y-8 sm:space-y-16">
-                    <MovieSection title="Trending This Week" description="The most popular films everyone's talking about" movies={trendingMovies} icon={TrendingUp} sectionRef={trendingRef} />
-                    <MovieSection title="Popular Movies" description="Crowd favorites and beloved experiences" movies={popularMovies} icon={Star} sectionRef={popularRef} />
-                    <MovieSection title="Critically Acclaimed" description="Award-winning films praised by critics" movies={topRatedMovies} icon={Award} sectionRef={topRatedRef} />
+                <main className="container mx-auto px-4 sm:px-6 py-8 sm:py-16 space-y-8">
+                    
+                    {/* 1. BEST OF HULU */}
+                    <MovieSection 
+                        title="Best of Hulu" 
+                        description="The absolute best movies streaming on Hulu right now." 
+                        movies={huluCollections} 
+                        icon={Tv} 
+                        sectionRef={huluRef} 
+                    />
+                    
+                    {/* 2. MIND-BENDING & SCI-FI */}
+                    <MovieSection 
+                        title="Mind-Bending & Sci-Fi" 
+                        description="Films that question reality: Inception, Matrix, Interstellar & more." 
+                        movies={mindBendingCollections} 
+                        icon={Brain} 
+                        sectionRef={mindRef} 
+                    />
+                    
+                    {/* 3. THE THRILLER GANG */}
+                    <MovieSection 
+                        title="The Thriller Gang" 
+                        description="Gripping crime, mystery, and revenge thrillers." 
+                        movies={thrillerCollections} 
+                        icon={Skull} 
+                        sectionRef={thrillerRef} 
+                    />
+
+                    {/* 4. HBO MAX ESSENTIALS */}
+                    <MovieSection 
+                        title="HBO Max Essentials" 
+                        description="Epic blockbusters and prestige drama on HBO Max." 
+                        movies={hboCollections} 
+                        icon={Star} 
+                        sectionRef={hboRef} 
+                    />
                 </main>
 
-                <motion.section className="container mx-auto px-4 sm:px-6 py-8 sm:py-12 md:py-16 bg-gradient-to-r from-gray-900/40 via-gray-800/40 to-gray-900/40 rounded-2xl xs:rounded-3xl border border-gray-700/20 mb-12 xs:mb-16 select-none" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
-                    <div className="text-center px-2 xs:px-4">
-                        <div className="flex items-center justify-center gap-2 xs:gap-3 mb-2 xs:mb-4">
-                            <Construction className="w-6 h-6 xs:w-8 xs:h-8 text-orange-400 animate-bounce" />
-                            <h2 className="text-xl xs:text-2xl sm:text-3xl font-light text-white">Something is Cooking</h2>
-                            <Sparkles className="w-5 h-5 xs:w-6 xs:h-6 text-yellow-400 animate-pulse" />
+                <motion.section className="container mx-auto px-4 sm:px-6 py-8 sm:py-12 md:py-16 bg-gray-900/30 rounded-2xl border border-gray-800 mb-12 select-none" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
+                    <div className="text-center px-4">
+                        <div className="flex items-center justify-center gap-3 mb-4">
+                            <Construction className="w-6 h-6 text-orange-400" />
+                            <h2 className="text-xl font-light text-white">Something is Cooking</h2>
                         </div>
-                        <p className="text-base xs:text-lg sm:text-xl text-orange-300 mb-3 xs:mb-4 font-light">🔥 New Features Coming Soon!</p>
-                        <p className="text-gray-300 text-sm xs:text-base sm:text-lg max-w-2xl mx-auto mb-4 xs:mb-6">We're working behind the scenes to bring you something amazing. Stay tuned for exciting updates!</p>
+                        <p className="text-gray-400 text-sm max-w-lg mx-auto">We are building new features to help you discover movies even faster. Stay tuned.</p>
                     </div>
                 </motion.section>
 
-                <footer className="bg-gradient-to-t from-gray-900 to-black py-8 sm:py-12 border-t border-gray-800 select-none">
+                <footer className="bg-black py-12 border-t border-gray-800 select-none">
                     <div className="container mx-auto px-4 sm:px-6">
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12 border-b border-gray-800 pb-12 text-left">
-                            
-{/* COL 1: Mind Bending */}
                             <div>
-                                <h3 className="text-yellow-400 font-bold mb-4 uppercase text-xs tracking-wider">Mind Bending</h3>
-                                <ul className="space-y-2 text-sm text-gray-400">
+                                <h3 className="text-gray-500 font-bold mb-4 uppercase text-[10px] tracking-widest">Mind Bending</h3>
+                                <ul className="space-y-2 text-xs text-gray-400">
                                     <li><Link href="/collection/movies-like-inception" className="hover:text-white transition-colors">Like Inception</Link></li>
                                     <li><Link href="/collection/movies-like-memento" className="hover:text-white transition-colors">Like Memento</Link></li>
                                     <li><Link href="/collection/movies-like-shutter-island" className="hover:text-white transition-colors">Like Shutter Island</Link></li>
-                                    <li><Link href="/collection/movies-like-donnie-darko" className="hover:text-white transition-colors">Like Donnie Darko</Link></li>
-                                    <li><Link href="/collection/movies-like-interstellar" className="hover:text-white transition-colors">Like Interstellar</Link></li>
-                                    <li><Link href="/collection/movies-like-the-matrix" className="hover:text-white transition-colors">Like The Matrix</Link></li>
                                 </ul>
                             </div>
-
-                            {/* COL 2: Global & Psychological */}
                             <div>
-                                <h3 className="text-yellow-400 font-bold mb-4 uppercase text-xs tracking-wider">Global & Psychological</h3>
-                                <ul className="space-y-2 text-sm text-gray-400">
-                                    <li><Link href="/collection/movies-like-parasite" className="hover:text-white transition-colors">Like Parasite</Link></li>
-                                    <li><Link href="/collection/movies-like-oldboy" className="hover:text-white transition-colors">Like Oldboy</Link></li>
-                                    <li><Link href="/collection/movies-like-black-swan" className="hover:text-white transition-colors">Like Black Swan</Link></li>
-                                    <li><Link href="/collection/movies-like-eyes-wide-shut" className="hover:text-white transition-colors">Like Eyes Wide Shut</Link></li>
-                                    <li><Link href="/collection/movies-like-se7en" className="hover:text-white transition-colors">Like Se7en</Link></li>
-                                    <li><Link href="/collection/best-psychological-thriller-movies" className="hover:text-white transition-colors">Psychological Thrillers</Link></li>
+                                <h3 className="text-gray-500 font-bold mb-4 uppercase text-[10px] tracking-widest">Hulu Picks</h3>
+                                <ul className="space-y-2 text-xs text-gray-400">
+                                    <li><Link href="/collection/best-movies-on-hulu" className="hover:text-white transition-colors">Best Movies</Link></li>
+                                    <li><Link href="/collection/best-thriller-movies-hulu" className="hover:text-white transition-colors">Best Thrillers</Link></li>
+                                    <li><Link href="/collection/best-horror-movies-on-hulu" className="hover:text-white transition-colors">Best Horror</Link></li>
                                 </ul>
                             </div>
-
-                            {/* COL 3: Genre & Streaming (UPDATED) */}
                             <div>
-                                <h3 className="text-yellow-400 font-bold mb-4 uppercase text-xs tracking-wider">Genre & Streaming</h3>
-                                <ul className="space-y-2 text-sm text-gray-400">
-                                    <li><Link href="/collection/best-sci-fi-movies" className="hover:text-white transition-colors">Best Sci-Fi Movies</Link></li>
-                                    <li><Link href="/collection/best-time-travel-movies" className="hover:text-white transition-colors">Time Travel Movies</Link></li>
-                                    <li><Link href="/collection/best-survival-movies" className="hover:text-white transition-colors">Survival Movies</Link></li>
-                                    <li><Link href="/collection/best-war-films" className="hover:text-white transition-colors">War Films</Link></li>
-                                    {/* ✅ NEW HULU LINKS ADDED BELOW */}
-                                    <li><Link href="/collection/best-action-movies-on-hulu" className="hover:text-white transition-colors text-gray-300">Best Action on Hulu</Link></li>
-                                    <li><Link href="/collection/best-romance-movies-on-hulu" className="hover:text-white transition-colors text-gray-300">Best Romance on Hulu</Link></li>
-                                    <li><Link href="/collection/best-comedy-movies-on-hulu" className="hover:text-white transition-colors text-gray-300">Best Comedy on Hulu</Link></li>
-                                    <li><Link href="/collection/best-horror-movies-on-hulu" className="hover:text-white transition-colors text-gray-300">Best Horror on Hulu</Link></li>
-                                    <li><Link href="/collection/best-sci-fi-movies-on-hulu" className="hover:text-white transition-colors text-gray-300">Best Sci-Fi on Hulu</Link></li>
-<li><Link href="/collection/best-drama-movies-on-hulu" className="hover:text-white transition-colors text-gray-300">Best Drama on Hulu</Link></li>
-<li><Link href="/collection/best-thriller-movies-hulu" className="hover:text-white transition-colors text-gray-300">Best Thriller on Hulu</Link></li>
-<li><Link href="/collection/best-action-movies-on-hbo-max" className="hover:text-white transition-colors text-gray-300">Best Action on HBO Max</Link></li>
-<li><Link href="/collection/best-romance-movies-on-hbo-max" className="hover:text-white transition-colors text-gray-300">Best Romance on HBO Max</Link></li>
-
+                                <h3 className="text-gray-500 font-bold mb-4 uppercase text-[10px] tracking-widest">Thriller Gang</h3>
+                                <ul className="space-y-2 text-xs text-gray-400">
+                                    <li><Link href="/collection/best-crime-thriller-movies" className="hover:text-white transition-colors">Crime</Link></li>
+                                    <li><Link href="/collection/best-mystery-thriller-movies" className="hover:text-white transition-colors">Mystery</Link></li>
+                                    <li><Link href="/collection/best-revenge-movies" className="hover:text-white transition-colors">Revenge</Link></li>
                                 </ul>
                             </div>
-
-                            {/* COL 4: Thrillers & Crime */}
-                            <div>
-                                <h3 className="text-yellow-400 font-bold mb-4 uppercase text-xs tracking-wider">Thrillers & Crime</h3>
-                                <ul className="space-y-2 text-sm text-gray-400">
-                                    <li><Link href="/collection/best-crime-thriller-movies" className="hover:text-white transition-colors">Crime Thrillers</Link></li>
-                                    <li><Link href="/collection/best-heist-thriller-movies" className="hover:text-white transition-colors">Heist Thrillers</Link></li>
-                                    <li><Link href="/collection/best-detective-thriller-movies" className="hover:text-white transition-colors">Detective Thrillers</Link></li>
-                                    <li><Link href="/collection/best-mystery-thriller-movies" className="hover:text-white transition-colors">Mystery Thrillers</Link></li>
-                                    <li><Link href="/collection/best-thriller-movies" className="hover:text-white transition-colors">Best Thrillers</Link></li>
-                                </ul>
-                            </div>
-
+                           <div>
+    <h3 className="text-gray-500 font-bold mb-4 uppercase text-[10px] tracking-widest">Legal</h3>
+    <ul className="space-y-2 text-xs text-gray-400">
+        <li><Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
+        <li><Link href="/terms" className="hover:text-white transition-colors">Terms of Use</Link></li>
+        <li><Link href="/about-us" className="hover:text-white transition-colors">About Us</Link></li>
+        <li><Link href="/faq" className="hover:text-white transition-colors">FAQ</Link></li>
+    </ul>
+</div>
                         </div>
                         
-                        {/* Footer Bottom Section */}
                         <div className="text-center">
-                            <div className="flex items-center justify-center mb-4 xs:mb-6">
-                                
-                            </div>
-                            <p className="text-gray-400 mb-4 xs:mb-6 max-w-md mx-auto text-xs xs:text-sm">Your complete movie discovery platform for amazing films.</p>
-                            <div className="flex items-center justify-center gap-4 xs:gap-6 mb-6 xs:mb-8">
-                                <a href="https://youtube.com/@filmiway.official" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-red-500 transition-colors">
-                                    <svg className="w-6 h-6 xs:w-7 xs:h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                                </a>
-                               
-                              
-                                <a href="https://x.com/FilmiwayMedia" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
-                                    <svg className="w-6 h-6 xs:w-7 xs:h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                                </a>
-                            </div>
-                            <div className="mb-4 xs:mb-6 pt-3 xs:pt-4 border-t border-gray-900/50">
-                                <div className="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-4">
-                                    <p className="text-gray-600 text-xs xs:text-sm">Powered by</p>
-                                    <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
-                                        <Image src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg" alt="TMDB" width={50} height={20} className="h-4 xs:h-5 w-auto" />
-                                        <span className="text-blue-400 text-xs xs:text-sm">TMDB</span>
-                                    </a>
+                            <div className="flex items-center justify-center mb-6">
+                                <div className="w-20 h-10 flex items-center justify-center opacity-80">
+                                   
                                 </div>
                             </div>
-                            <div className="flex flex-wrap items-center justify-center gap-2 xs:gap-4 text-gray-500 text-xs mb-3 xs:mb-4">
-                                <span>&copy; (2026) Filmiway</span><span>&bull;</span>
-                                <Link href="/about-us" className="hover:text-yellow-400 transition-colors">About</Link><span>&bull;</span>
-                                <Link href="/privacy" className="hover:text-yellow-400 transition-colors">Privacy</Link><span>&bull;</span>
-                                <Link href="/terms" className="hover:text-yellow-400 transition-colors">Terms</Link><span>&bull;</span>
-                                <Link href="/faq" className="hover:text-yellow-400 transition-colors">FAQ</Link>
+                            <p className="text-gray-500 mb-6 text-xs">Where Every Film Finds Its Way.</p>
+                            <div className="flex items-center justify-center gap-4 text-gray-600 text-[10px] uppercase tracking-wider mb-4">
+                                <span>&copy; 2026 Filmiway</span>
                             </div>
-                            <p className="text-gray-600 text-xs italic">Where Every Film Finds Its Way</p>
                         </div>
                     </div>
                 </footer>
@@ -544,59 +648,162 @@ const FilmiwayHomepage = ({ trendingMovies, popularMovies, topRatedMovies }) => 
 
 export default FilmiwayHomepage;
 
-// ✅ SERVER SIDE GENERATION (SSG) - FINAL FIXED VERSION
+// ✅ ENHANCED SERVER SIDE GENERATION WITH UNIQUE POSTER LOGIC
 export async function getStaticProps() {
-  // ⚠️ PASTE YOUR API KEY INSIDE THE QUOTES BELOW IF IT STILL SHOWS EMPTY
-  const TMDB_API_KEY = '6054e5498fb2619274454959c38bbdfa'; 
-  const TMDB_BASE_URL = 'https://api.themoviedb.org/3';
+    const TMDB_API_KEY = '6054e5498fb2619274454959c38bbdfa'; 
+    const TMDB_BASE_URL = 'https://api.themoviedb.org/3';
 
-  // Helper to filter indian movies
-  const filterOutIndianMovies = (movies) => {
-      if (!movies || !Array.isArray(movies)) return [];
-      const indianLanguages = ['hi', 'ta', 'te', 'ml', 'kn', 'gu', 'bn', 'mr', 'pa'];
-      return movies.filter(movie => !indianLanguages.includes(movie.original_language));
-  };
+    // 1. BEST OF HULU
+    const huluKeys = [
+        'best-movies-on-hulu', 
+        'best-action-movies-on-hulu', 
+        'best-romance-movies-on-hulu',
+        'best-comedy-movies-on-hulu', 
+        'best-sci-fi-movies-on-hulu', 
+        'best-thriller-movies-hulu',
+        'best-horror-movies-on-hulu',
+        'best-drama-movies-on-hulu',
+        'best-family-movies-on-hulu'
+    ];
 
-  try {
-    // 1. Fetch raw data
-    const [trendingRes, popularRes, topRatedRes] = await Promise.all([
-      fetch(`${TMDB_BASE_URL}/trending/movie/week?api_key=${TMDB_API_KEY}&region=US&language=en-US`),
-      fetch(`${TMDB_BASE_URL}/movie/popular?api_key=${TMDB_API_KEY}&region=US&language=en-US`),
-      fetch(`${TMDB_BASE_URL}/movie/top_rated?api_key=${TMDB_API_KEY}&region=US&language=en-US`)
-    ]);
+    // 2. MIND BENDING & SCI-FI
+    const mindBendingKeys = [
+        'movies-like-inception', 
+        'movies-like-the-matrix', 
+        'movies-like-interstellar', 
+        'best-sci-fi-movies', 
+        'best-time-travel-movies', 
+        'movies-like-donnie-darko', 
+        'movies-like-memento', 
+        'movies-like-eyes-wide-shut'
+    ];
 
-    // 2. Check if requests were successful
-    if (!trendingRes.ok || !popularRes.ok || !topRatedRes.ok) {
-        console.error("❌ API Error: Check your API Key.");
-        throw new Error("Failed to fetch data");
+    // 3. THRILLER GANG
+    const thrillerKeys = [
+        'best-thriller-movies', 
+        'best-crime-thriller-movies', 
+        'best-heist-thriller-movies', 
+        'best-psychological-thriller-movies', 
+        'best-detective-thriller-movies', 
+        'best-mystery-thriller-movies', 
+        'movies-like-se7en', 
+        'movies-like-shutter-island', 
+        'movies-like-parasite', 
+        'movies-like-oldboy', 
+        'movies-like-black-swan', 
+        'best-revenge-movies'
+    ];
+
+    // 4. HBO MAX
+    const hboKeys = [
+        'best-movies-on-hbo-max', 
+        'best-action-movies-on-hbo-max', 
+        'best-sci-fi-movies-on-hbo-max',
+        'best-horror-movies-on-hbo-max',
+        'best-romance-movies-on-hbo-max',
+        'best-drama-movies-on-hbo-max',
+        'best-comedy-movies-on-hbo-max',
+        'best-family-movies-on-hbo-max',
+        'best-thriller-movies-on-hbo-max'
+    ];
+
+    // 🔥 NEW: Track used posters to ensure uniqueness within each carousel
+    const usedPostersPerSection = {
+        hulu: new Set(),
+        mind: new Set(),
+        thriller: new Set(),
+        hbo: new Set()
+    };
+
+    // Helper: Finds a UNIQUE valid poster from the collection's movies
+    const fetchUniquePosterForCollection = async (movieIds, sectionName) => {
+        if (!movieIds || movieIds.length === 0) return null;
+
+        const usedPosters = usedPostersPerSection[sectionName];
+
+        // Try up to 10 movies to find a unique poster
+        for (let i = 0; i < Math.min(movieIds.length, 10); i++) {
+            const movieId = movieIds[i];
+            try {
+                let posterPath = null;
+                
+                if (movieId.toString().startsWith('tt')) {
+                    const url = `${TMDB_BASE_URL}/find/${movieId}?api_key=${TMDB_API_KEY}&external_source=imdb_id`;
+                    const res = await fetch(url);
+                    const data = await res.json();
+                    if (data.movie_results && data.movie_results.length > 0 && data.movie_results[0].poster_path) {
+                        posterPath = data.movie_results[0].poster_path;
+                    }
+                } else {
+                    const url = `${TMDB_BASE_URL}/movie/${movieId}?api_key=${TMDB_API_KEY}`;
+                    const res = await fetch(url);
+                    const data = await res.json();
+                    if (data.poster_path) {
+                        posterPath = data.poster_path;
+                    }
+                }
+
+                // ✅ Check if this poster is unique in this section
+                if (posterPath && !usedPosters.has(posterPath)) {
+                    usedPosters.add(posterPath);
+                    return posterPath;
+                }
+            } catch (e) {
+                console.error(`Error fetching poster for ${movieId}:`, e);
+            }
+        }
+        return null; // No unique poster found
+    };
+
+    const fetchCollectionData = async (keys, sectionName) => {
+        const results = await Promise.all(keys.map(async (key) => {
+            const collection = COLLECTIONS[key];
+            if (!collection) return null;
+
+            const posterPath = await fetchUniquePosterForCollection(collection.movies, sectionName);
+
+            // 🔥 If no unique poster found, exclude this collection
+            if (!posterPath) return null;
+
+            return {
+                id: collection.slug,
+                title: collection.title,
+                poster_path: posterPath,
+                item_count: collection.movies.length,
+                vote_average: collection.stats?.averageRating || 8.0,
+                isCollection: true
+            };
+        }));
+
+        return results.filter(item => item !== null);
+    };
+
+    try {
+        const [huluData, mindData, thrillerData, hboData] = await Promise.all([
+            fetchCollectionData(huluKeys, 'hulu'),
+            fetchCollectionData(mindBendingKeys, 'mind'),
+            fetchCollectionData(thrillerKeys, 'thriller'),
+            fetchCollectionData(hboKeys, 'hbo')
+        ]);
+
+        return {
+            props: {
+                huluCollections: huluData,
+                mindBendingCollections: mindData,
+                thrillerCollections: thrillerData,
+                hboCollections: hboData
+            },
+            revalidate: 86400,
+        };
+    } catch (error) {
+        console.error('SSG Error:', error);
+        return {
+            props: {
+                huluCollections: [],
+                mindBendingCollections: [],
+                thrillerCollections: [],
+                hboCollections: []
+            },
+        };
     }
-
-    // 3. Parse JSON
-    const [trending, popular, topRated] = await Promise.all([
-      trendingRes.json(),
-      popularRes.json(),
-      topRatedRes.json()
-    ]);
-
-    console.log(`✅ Server Successfully Fetched Movies: ${trending.results?.length}`);
-
-    return {
-      props: {
-        trendingMovies: filterOutIndianMovies(trending.results?.slice(0, 15) || []),
-        popularMovies: filterOutIndianMovies(popular.results?.slice(0, 15) || []),
-        topRatedMovies: filterOutIndianMovies(topRated.results?.slice(0, 15) || []),
-      },
-      revalidate: 86400, // Re-generate page every 24 hours
-    };
-  } catch (error) {
-    console.error('❌ Server Error fetching movies:', error);
-    // Return empty arrays to prevent build failure, but page will be empty until fixed
-    return {
-      props: {
-        trendingMovies: [],
-        popularMovies: [],
-        topRatedMovies: [],
-      },
-    };
-  }
 }

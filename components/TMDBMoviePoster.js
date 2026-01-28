@@ -1,6 +1,5 @@
-// components/TMDBMoviePoster.js - OPTIMIZED FOR SPEED ⚡
+// components/TMDBMoviePoster.js - HIGH SPEED VERSION ⚡
 import React, { useState, useEffect, useCallback } from 'react';
-import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { COMPLETE_MOVIE_DATA } from '../utils/movieData';
 
@@ -8,8 +7,9 @@ const TMDB_API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
 const TMDB_BASE_URL = 'https://api.themoviedb.org/3';
 const TMDB_IMAGE_BASE_URL = 'https://image.tmdb.org/t/p';
 
-// ✅ ADDED "posterSize" prop with a faster default
-const TMDBMoviePoster = React.memo(({ movie, className = "", alt, posterSize = "w342" }) => {
+// ✅ OPTIMIZATION: Default size changed to 'w185' (approx 15KB) vs 'w342' (approx 40KB)
+// Use 'w185' for lists/grids. Use 'w342' or 'w500' only for Hero/Detail pages.
+const TMDBMoviePoster = React.memo(({ movie, className = "", alt, posterSize = "w185" }) => {
     const [posterUrl, setPosterUrl] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [hasError, setHasError] = useState(false);
@@ -17,8 +17,6 @@ const TMDBMoviePoster = React.memo(({ movie, className = "", alt, posterSize = "
     // 🔥 SEARCH BY MOVIE TITLE + YEAR IF DIRECT ID FAILS
     const searchMovieByTitle = useCallback(async (title, year) => {
         try {
-            // console.log(`🔍 Searching for ${title} (${year})`);
-            
             const searchResponse = await fetch(
                 `${TMDB_BASE_URL}/search/movie?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(title)}&year=${year}`
             );
@@ -64,21 +62,20 @@ const TMDBMoviePoster = React.memo(({ movie, className = "", alt, posterSize = "
             }
             
             if (data && data.poster_path) {
-                // ✅ OPTIMIZATION: Use the dynamic 'posterSize' prop here
-                // w185 = Tiny, w342 = Card Standard, w500 = High Quality, w780 = Huge
+                // ✅ SPEED: Construct URL using the requested small size
                 const fullPosterUrl = `${TMDB_IMAGE_BASE_URL}/${posterSize}${data.poster_path}`;
                 
                 setPosterUrl(fullPosterUrl);
-                return fullPosterUrl;
+                // Note: We don't set isLoading(false) here, we let the Image onLoad handle it
+                // so the placeholder stays until the bytes are actually ready.
             } else {
                 throw new Error(`No poster found for ${movie.Title}`);
             }
         } catch (error) {
-            // console.error(`❌ All methods failed for ${movie.Title}:`, error);
             setHasError(true);
-            return null;
+            setIsLoading(false); // Stop loading if error
         }
-    }, [movie.Title, movie.Year, searchMovieByTitle, posterSize]); // Added posterSize dependency
+    }, [movie.Title, movie.Year, searchMovieByTitle, posterSize]); 
 
     useEffect(() => {
         setIsLoading(true);
@@ -86,44 +83,46 @@ const TMDBMoviePoster = React.memo(({ movie, className = "", alt, posterSize = "
         setPosterUrl(null);
         
         if (movie.tmdbId) {
-            fetchMoviePoster(movie.tmdbId).finally(() => setIsLoading(false));
+            fetchMoviePoster(movie.tmdbId);
         } else {
-            console.error(`❌ No TMDB ID provided for ${movie.Title}`);
+            // console.error(`❌ No TMDB ID provided for ${movie.Title}`);
             setIsLoading(false);
             setHasError(true);
         }
     }, [movie.tmdbId, movie.Title, fetchMoviePoster]);
 
-    const createPlaceholderSVG = () => {
-        const dominantColor = COMPLETE_MOVIE_DATA[movie.tmdbId]?.dominantColor || '#ca8a04';
-        const movieTitle = movie.Title || 'Unknown Movie';
-        
-        return `data:image/svg+xml,${encodeURIComponent(`
-            <svg xmlns="http://www.w3.org/2000/svg" width="400" height="600" viewBox="0 0 400 600">
-                <rect width="400" height="600" fill="#111827"/>
-                <text x="200" y="300" text-anchor="middle" fill="${dominantColor}" font-size="24">${movieTitle}</text>
-            </svg>
-        `)}`;
-    };
+    // Simple placeholder to avoid layout shift
+    const placeholderSrc = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"; // Transparent 1x1 GIF
 
     return (
-        <div className={`relative ${className}`}>
+        <div className={`relative bg-gray-900 overflow-hidden ${className}`}>
+            
+            {/* ⚡ LIGHTWEIGHT LOADER: Just a pulse, no complex spinner */}
             {isLoading && (
-                <div className="absolute inset-0 bg-gray-900 rounded-xl flex items-center justify-center z-10">
-                   {/* Reduced loader complexity for performance */}
-                   <div className="w-6 h-6 border-2 border-yellow-400/30 border-t-yellow-400 rounded-full animate-spin" />
-                </div>
+                <div className="absolute inset-0 z-10 bg-gray-800 animate-pulse" />
             )}
             
             <Image
-                src={posterUrl || createPlaceholderSVG()}
+                src={posterUrl || placeholderSrc}
                 alt={alt || `${movie.Title} Poster`}
-                width={342} 
-                height={513}
-                className={`w-full h-full object-cover rounded-xl transition-opacity duration-500 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
+                fill // Use fill to adapt to container size
+                sizes="(max-width: 768px) 33vw, (max-width: 1200px) 20vw, 15vw" // Responsive sizes hint
+                className={`object-cover transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
                 loading="lazy"
-                unoptimized={true} // Optional: Skips Next.js server processing if you want direct TMDB speed
+                unoptimized={true} // 🔥 BYPASS NEXT.JS OPTIMIZATION FOR RAW SPEED
+                onLoadingComplete={() => setIsLoading(false)}
+                onError={() => {
+                    setHasError(true);
+                    setIsLoading(false);
+                }}
             />
+
+            {/* Error Fallback: Only text if image breaks */}
+            {hasError && (
+                <div className="absolute inset-0 flex items-center justify-center p-2 text-center text-xs text-gray-500 bg-gray-900">
+                    {movie.Title}
+                </div>
+            )}
         </div>
     );
 });

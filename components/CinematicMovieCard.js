@@ -1,4 +1,4 @@
-// components/CinematicMovieCard.js - FIXED RUNTIME ERROR ✅
+// components/CinematicMovieCard.js - OPTIMIZED POSTER SIZE ⚡
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
@@ -10,12 +10,11 @@ import { COMPLETE_MOVIE_DATA as SURVIVAL_DATA, STRATEGIC_QUOTES as SURVIVAL_QUOT
 const CinematicMovieCard = React.memo(({ movie, rank, isActive, fromSurvivalCollection }) => {
     const [isHovered, setIsHovered] = useState(false);
     
-    // 🔥 FIX: Safe data access with fallback to empty object
+    // Safety checks for data access
     const movieInfo = fromSurvivalCollection 
         ? (SURVIVAL_DATA?.[movie.tmdbId] || {})
         : (COMPLETE_MOVIE_DATA?.[movie.tmdbId] || {});
     
-    // 🔥 FIX: Safe quote access
     const quote = fromSurvivalCollection
         ? (SURVIVAL_QUOTES?.[movie.tmdbId] || null)
         : (STRATEGIC_QUOTES?.[movie.tmdbId] || null);
@@ -41,7 +40,16 @@ const CinematicMovieCard = React.memo(({ movie, rank, isActive, fromSurvivalColl
                     whileTap={{ scale: 0.98 }}
                     style={{ transformStyle: 'preserve-3d' }}
                 >
-                    <TMDBMoviePoster movie={movie} className="w-full h-full" />
+                    {/* ⚡ OPTIMIZATION: Passed posterSize="w342". 
+                        This reduces file size significantly compared to w500/original 
+                        while maintaining decent quality for this card size.
+                    */}
+                    <TMDBMoviePoster 
+                        movie={movie} 
+                        className="w-full h-full" 
+                        posterSize="w342" 
+                    />
+
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent rounded-xl" />
                     
                     {/* Rank Badge */}

@@ -136,7 +136,7 @@ export const COLLECTIONS = {
     'best-drama-movies-on-netflix' // Cross-Link
   ],
   seo: {
-    title: '10 Best Survival Movies Ever Made ((2026)) - Expert Rankings | Filmiway',
+    title: '10 Best Survival Movies Ever Made (2026) - Expert Rankings | Filmiway',
     description: 'Discover 10 heart-pounding survival movies ranked by intensity. From 127 Hours to The Revenant, explore films that push human endurance to the limit. Updated (2026).',
     keywords: 'best survival movies, survival films, extreme survival, survivability index, brutal survival stories, human endurance movies, true survival stories, 127 hours, the revenant, cast away',
     canonicalUrl: 'https://filmiway.com/collection/best-survival-movies',
@@ -173,7 +173,7 @@ export const COLLECTIONS = {
     category: 'action',
     tags: ['action', 'hulu', 'streaming', 'martial arts', 'sci-fi action', 'thriller', 'high octane'],
     
-    metaTitle: '10 Best Action Movies on Hulu ((2026)) | Ranked by Adrenaline | Filmiway',
+    metaTitle: '10 Best Action Movies on Hulu (2026) | Ranked by Adrenaline | Filmiway',
     metaDescription: 'Discover the top 10 action movies on Hulu—from Predator to Unstoppable. Expert-curated ranking of high-octane films with brutal fights and non-stop tension.',
     metaKeywords: 'best action movies on hulu, hulu action films, predator hulu, unstoppable movie hulu, prey movie, bullet train hulu, action movies streaming',
     
@@ -183,7 +183,7 @@ export const COLLECTIONS = {
       totalWatchtime: '17 hours 53 minutes',
       averageAdrenalineScore: 83.4,
       mostIntense: 'Unstoppable (98/100)',
-      newestMovie: 'Predator: Killer of Killers ((2026))',
+      newestMovie: 'Predator: Killer of Killers (2026)',
       oldestMovie: 'Predator (1987)'
     },
     
@@ -220,11 +220,12 @@ export const COLLECTIONS = {
     relatedCollections: [
       'best-sci-fi-movies',
       'best-survival-movies',
-      'best-thriller-movies'
+      'best-thriller-movies',
+       'best-movies-on-hulu'
     ],
     
     seo: {
-      title: '10 Best Action Movies on Hulu ((2026)) | Adrenaline Ranked | Filmiway',
+      title: '10 Best Action Movies on Hulu (2026) | Adrenaline Ranked | Filmiway',
       description: 'The definitive ranking of the best action movies on Hulu. From Predator to Bullet Train, find your next high-octane watch here.',
       keywords: 'action movies hulu, best action films streaming, predator, unstoppable, prey, bullet train, kingsman, boss level, ip man',
       canonicalUrl: 'https://filmiway.com/collection/best-action-movies-on-hulu',
@@ -257,7 +258,7 @@ export const COLLECTIONS = {
     category: 'romance',
     tags: ['romance', 'hulu', 'streaming', 'drama', 'comedy', 'lgbtq+', 'prestige', 'love'],
 
-    metaTitle: '10 Best Romance Movies on Hulu ((2026)) | Ranked by Emotion | Filmiway',
+    metaTitle: '10 Best Romance Movies on Hulu (2026) | Ranked by Emotion | Filmiway',
     metaDescription: 'Discover the top 10 romance movies on Hulu—from Anora to Brooklyn. Expert-curated ranking of emotionally resonant films with electric chemistry.',
     metaKeywords: 'best romance movies on hulu, hulu romance films, anora, all of us strangers, brooklyn movie, palm springs, rye lane, romantic movies streaming',
 
@@ -305,11 +306,12 @@ export const COLLECTIONS = {
     relatedCollections: [
     
       'movies-like-parasite',
-      'best-psychological-thriller-movies'
+      'best-psychological-thriller-movies',
+      'best-movies-on-hulu'
     ],
 
     seo: {
-      title: '10 Best Romance Movies on Hulu ((2026)) | Emotion Ranked | Filmiway',
+      title: '10 Best Romance Movies on Hulu (2026) | Emotion Ranked | Filmiway',
       description: 'The definitive ranking of the best romance movies on Hulu. From Anora to Brooklyn, find your next emotional watch here.',
       keywords: 'romance movies hulu, best romance films streaming, anora, all of us strangers, brooklyn, rye lane, palm springs, love stories',
       canonicalUrl: 'https://filmiway.com/collection/best-romance-movies-on-hulu',
@@ -474,7 +476,8 @@ export const COLLECTIONS = {
     relatedCollections: [
         'best-romance-movies-on-hulu',
         'best-action-movies-on-hulu',
-        'best-sci-fi-movies'
+        'best-sci-fi-movies',
+        'best-movies-on-hulu'
     ],
 
     seo: {
@@ -561,7 +564,8 @@ export const COLLECTIONS = {
     relatedCollections: [
       'best-time-travel-movies',
       'movies-like-interstellar',
-      'best-thriller-movies'
+      'best-thriller-movies',
+       'best-movies-on-hulu'
     ],
 
     seo: {
@@ -646,7 +650,8 @@ export const COLLECTIONS = {
     relatedCollections: [
       'best-crime-thriller-movies',
       'best-psychological-thriller-movies',
-      'best-detective-thriller-movies'
+      'best-detective-thriller-movies',
+      'best-movies-on-hulu'
     ],
 
     seo: {
@@ -685,7 +690,7 @@ export const COLLECTIONS = {
     category: 'best-of-hulu',
     tags: ['hulu', 'streaming', 'best movies', 'top rated', 'critically acclaimed', 'must watch', 'ranking'],
 
-    metaTitle: '10 Best Movies on Hulu ((2026)) | The Ultimate Ranking | Filmiway',
+    metaTitle: '10 Best Movies on Hulu (2026) | The Ultimate Ranking | Filmiway',
     metaDescription: 'The definitive top 10 movies on Hulu right now. From Heat to Superbad, discover the highest-rated films across all genres. Expert curated.',
     metaKeywords: 'best movies on hulu, top rated hulu films, heat movie hulu, hacksaw ridge hulu, perfect days hulu, best streaming movies (2026)',
 
@@ -738,10 +743,11 @@ export const COLLECTIONS = {
       'best-sci-fi-movies-on-hulu',
       'best-thriller-movies-hulu',
       'best-drama-movies-on-hulu'
+ 
     ],
 
     seo: {
-      title: '10 Best Movies on Hulu ((2026)) | The Ultimate Ranking | Filmiway',
+      title: '10 Best Movies on Hulu (2026) | The Ultimate Ranking | Filmiway',
       description: 'Discover the 10 best movies streaming on Hulu right now. From Heat to Superbad, explore our expert-curated list of top-rated films across all genres.',
       keywords: 'best movies on hulu, top rated hulu movies, what to watch on hulu, best films streaming, heat, hacksaw ridge, black swan, superbad',
       canonicalUrl: 'https://filmiway.com/collection/best-movies-on-hulu',
@@ -828,7 +834,7 @@ export const COLLECTIONS = {
     ],
 
     seo: {
-        title: '10 Best Drama Movies on Hulu ((2026)) | Ranked by Emotion',
+        title: '10 Best Drama Movies on Hulu (2026) | Ranked by Emotion',
         description: 'The definitive ranking of the best drama movies on Hulu. From the life-spanning Boyhood to the meditative Perfect Days.',
         keywords: 'drama movies hulu, best drama films streaming, boyhood, perfect days, all of us strangers, blackberry, sad movies hulu',
         canonicalUrl: 'https://filmiway.com/collection/best-drama-movies-on-hulu',
@@ -914,7 +920,7 @@ export const COLLECTIONS = {
     ],
 
     seo: {
-        title: '10 Best Family Movies on Hulu ((2026)) | Wholesome & Fun | Filmiway',
+        title: '10 Best Family Movies on Hulu (2026) | Wholesome & Fun | Filmiway',
         description: 'The definitive ranking of the best family movies on Hulu. From the masterpiece Robot Dreams to the blockbuster Sonic 2.',
         keywords: 'family movies hulu, best kids films streaming, robot dreams, night at the museum, sonic 2, hotel transylvania, wholesome movies hulu',
         canonicalUrl: 'https://filmiway.com/collection/best-family-movies-on-hulu',
@@ -949,7 +955,7 @@ export const COLLECTIONS = {
     category: 'action',
     tags: ['action', 'hbo max', 'epic', 'sci-fi', 'fantasy', 'superhero', 'streaming'],
 
-    metaTitle: '10 Best Action Movies on HBO Max ((2026)) | Ranked by Epic Scale',
+    metaTitle: '10 Best Action Movies on HBO Max (2026) | Ranked by Epic Scale',
     metaDescription: 'Discover the top 10 action movies on HBO Max—from Seven Samurai to Dune: Part Two. Expert-curated ranking of epic films with massive scale and intensity.',
     metaKeywords: 'best action movies on hbo max, hbo max epic films, seven samurai, dark knight, dune part two, john wick, zack snyder justice league, action movies streaming',
 
@@ -1000,7 +1006,7 @@ export const COLLECTIONS = {
     ],
 
     seo: {
-      title: '10 Best Action Movies on HBO Max ((2026)) | Ranked by Scale',
+      title: '10 Best Action Movies on HBO Max (2026) | Ranked by Scale',
       description: 'The definitive ranking of the best action movies on HBO Max. From Seven Samurai to Dune: Part Two, find your next epic watch here.',
       keywords: 'action movies hbo max, best epic films streaming, seven samurai, dark knight, dune 2, john wick, snyder cut, hbo max action',
       canonicalUrl: 'https://filmiway.com/collection/best-action-movies-on-hbo-max',
@@ -1035,7 +1041,7 @@ export const COLLECTIONS = {
     category: 'romance',
     tags: ['romance', 'hbo max', 'streaming', 'drama', 'classic', 'lgbtq+', 'prestige', 'love'],
 
-    metaTitle: '10 Best Romance Movies on HBO Max ((2026)) | Ranked by Emotion',
+    metaTitle: '10 Best Romance Movies on HBO Max (2026) | Ranked by Emotion',
     metaDescription: 'Discover the top 10 romance movies on HBO Max—from Casablanca to Past Lives. Expert-curated ranking of emotionally resonant films with electric chemistry.',
     metaKeywords: 'best romance movies on hbo max, hbo max romance films, casablanca, past lives, in the mood for love, call me by your name, romantic movies streaming',
 
@@ -1086,7 +1092,7 @@ export const COLLECTIONS = {
     ],
 
     seo: {
-      title: '10 Best Romance Movies on HBO Max ((2026)) | Emotion Ranked',
+      title: '10 Best Romance Movies on HBO Max (2026) | Emotion Ranked',
       description: 'The definitive ranking of the best romance movies on HBO Max. From Casablanca to Past Lives, find your next emotional watch here.',
       keywords: 'romance movies hbo max, best romance films streaming, casablanca, past lives, call me by your name, in the mood for love, love stories',
       canonicalUrl: 'https://filmiway.com/collection/best-romance-movies-on-hbo-max',
@@ -1122,7 +1128,7 @@ export const COLLECTIONS = {
     category: 'thriller',
     tags: ['thriller', 'hbo max', 'suspense', 'psychological', 'crime', 'horror', 'sci-fi', 'streaming'],
 
-    metaTitle: '10 Best Thriller Movies on HBO Max ((2026)) | Ranked by Suspense',
+    metaTitle: '10 Best Thriller Movies on HBO Max (2026) | Ranked by Suspense',
     metaDescription: 'Discover the top 10 thriller movies on HBO Max—from Funny Games to Inception. Expert-curated ranking of high-tension films with gripping plots.',
     metaKeywords: 'best thriller movies hbo max, suspense films hbo max, funny games, get out, ex machina, the killing of a sacred deer, psychological thrillers streaming',
 

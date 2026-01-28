@@ -58,7 +58,7 @@ export default function AboutUs() {
           name="description"
           content="Filmiway is a premium guide for discovering movies on Netflix, Hulu, HBO Max, and Prime Video. We curate the best of global cinema."
         />
-        <link rel="canonical" href="https://filmiway.com/about" />
+        <link rel="canonical" href="https://filmiway.com/about-us" />
         <meta name="robots" content="index, follow" />
       </Head>
 
