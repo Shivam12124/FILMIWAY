@@ -1059,7 +1059,7 @@ const MoviePage = () => {
                         </motion.div>
                         
                         <div className="text-gray-500 text-sm sm:text-base uppercase tracking-widest">
-                            © 2025 FILMIWAY CINEMA
+                            © (2026) FILMIWAY CINEMA
                         </div>
                     </motion.div>
                 </div>

@@ -28,12 +28,18 @@ import { COMPLETE_MOVIE_DATABASE as HULU_THRILLER_DATABASE, COMPLETE_MOVIE_DATA 
 import { COMPLETE_MOVIE_DATABASE, COMPLETE_MOVIE_DATA } from '../../utils/movieData';
 import { COMPLETE_MOVIE_DATABASE as HULU_BEST_DATABASE, COMPLETE_MOVIE_DATA as HULU_BEST_DATA } from '../../utils/huluBestMoviesData';
 import { COMPLETE_MOVIE_DATABASE as HULU_DRAMA_DATABASE, COMPLETE_MOVIE_DATA as HULU_DRAMA_DATA } from '../../utils/huluDramaMovieData';
+import { COMPLETE_MOVIE_DATABASE as HBO_MAX_COMEDY_DATABASE, COMPLETE_MOVIE_DATA as HBO_MAX_COMEDY_DATA } from '../../utils/hboMaxComedyMovieData';
 // Add this line to the top of pages/collection/[slug].js
 import { COMPLETE_MOVIE_DATABASE as HULU_FAMILY_DATABASE, COMPLETE_MOVIE_DATA as HULU_FAMILY_DATA } from '../../utils/huluFamilyMovieData';
 import { COMPLETE_MOVIE_DATABASE as HBO_ACTION_DATABASE, COMPLETE_MOVIE_DATA as HBO_ACTION_DATA } from '../../utils/hboActionMovieData';
 import { COMPLETE_MOVIE_DATABASE as HBO_MAX_ROMANCE_DATABASE, COMPLETE_MOVIE_DATA as HBO_MAX_ROMANCE_DATA } from '../../utils/hboMaxRomanceMovieData';
 import { COMPLETE_MOVIE_DATABASE as HBO_MAX_THRILLER_DATABASE, COMPLETE_MOVIE_DATA as HBO_MAX_THRILLER_DATA } from '../../utils/hboMaxThrillerMovieData';
-// ✅ FIXED IMPORTS: Aliasing COMPLETE_MOVIE_DATABASE to old variable names
+import { COMPLETE_MOVIE_DATABASE as HBO_MAX_FAMILY_DATABASE, COMPLETE_MOVIE_DATA as HBO_MAX_FAMILY_DATA } from '../../utils/hboMaxFamilyMovieData';
+import { COMPLETE_MOVIE_DATABASE as HBO_MAX_SCIFI_DATABASE, COMPLETE_MOVIE_DATA as HBO_MAX_SCIFI_DATA } from '../../utils/hboMaxSciFiMovieData';
+import { COMPLETE_MOVIE_DATABASE as HBO_MAX_HORROR_DATABASE, COMPLETE_MOVIE_DATA as HBO_MAX_HORROR_DATA } from '../../utils/hboMaxHorrorMovieData';
+import { COMPLETE_MOVIE_DATABASE as HBO_MAX_BEST_DATABASE, COMPLETE_MOVIE_DATA as HBO_MAX_BEST_DATA } from '../../utils/hboMaxBestMoviesData';
+import { COMPLETE_MOVIE_DATABASE as HBO_MAX_DRAMA_DATABASE, COMPLETE_MOVIE_DATA as HBO_MAX_DRAMA_DATA } from '../../utils/hboMaxDramaMovieData';
+
 
 import { COMPLETE_MOVIE_DATABASE as THRILLER_MOVIES } from '../../utils/thrillerMovieData';
 import { COMPLETE_MOVIE_DATABASE as MYSTERY_THRILLER_MOVIES } from '../../utils/mysteryThrillerMovieData'; 
@@ -520,6 +526,156 @@ const getCollectionContent = () => {
         experience: {
             text1: "Whether you're seeking cerebral puzzles or heart-pounding dread, this collection delivers cinema's most gripping experiences.",
             text2: "Each film has been selected for its ability to keep you on the edge of your seat—offering twists and tension that demand your full attention."
+        }
+    };
+
+
+} else if (collection.slug === 'best-family-movies-on-hbo-max') {
+    return {
+        badge: "Magical Family Cinema",
+        title: "Best Family Movies on HBO Max",
+        description: "The top 10 family movies streaming on HBO Max right now. From The Wizard of Oz to Harry Potter—ranked by wholesomeness and fun factor.",
+        selection: {
+            text1: "From the timeless magic of 'The Wizard of Oz' to the visual poetry of 'Flow'—these films represent the absolute best family entertainment available on HBO Max.",
+            text2: "Each selection features positive messages, engaging stories for all ages, and moments of genuine wonder that bring families together for a perfect movie night."
+        },
+        ranking: {
+            text: "Our wholesome score evaluates positive themes, age-appropriateness, and the overall 'fun factor' throughout each film.",
+            points: [
+                "Wholesome score intensity",
+                "Fun factor rating",
+                "Family-friendly themes",
+                "Emotional warmth depth"
+            ]
+        },
+        experience: {
+            text1: "Whether you're seeking a nostalgic classic or a modern animated masterpiece, this collection delivers cinema's most memorable family experiences.",
+            text2: "Each film has been selected for its ability to entertain both kids and adults—offering laughter, tears, and valuable life lessons that resonate across generations."
+        }
+    };
+
+
+} else if (collection.slug === 'best-sci-fi-movies-on-hbo-max') {
+    return {
+        badge: "Cosmic Sci-Fi Cinema",
+        title: "Best Sci-Fi Movies on HBO Max",
+        description: "The definitive ranking of the best Sci-Fi movies on HBO Max. From the cosmic scale of 2001 to the visceral action of Mad Max.",
+        selection: {
+            text1: "From the philosophical odyssey of '2001' to the mind-bending architecture of 'Inception'—these films represent the absolute pinnacle of science fiction available on HBO Max.",
+            text2: "Each selection features visionary direction, groundbreaking visuals, and narratives that challenge our understanding of reality, time, and human existence."
+        },
+        ranking: {
+            text: "Our spectacular level index evaluates visual scale, world-building depth, and the conceptual audacity of the sci-fi themes throughout each film.",
+            points: [
+                "Spectacular level intensity",
+                "Mind-bend score",
+                "Conceptual depth",
+                "Cinematic transcendence"
+            ]
+        },
+        experience: {
+            text1: "Whether you're seeking intellectual challenges or breathtaking spectacle, this collection delivers cinema's most ambitious visions of the future.",
+            text2: "Each film has been selected for its ability to awe—offering moments of pure cinematic grandeur that demand the biggest screen possible."
+        }
+    };
+
+    } else if (collection.slug === 'best-horror-movies-on-hbo-max') {
+    return {
+        badge: "Pure Nightmare Fuel",
+        title: "Best Horror Movies on HBO Max",
+        description: "The definitive ranking of the scariest movies on HBO Max. From the jump scares of Insidious to the dread of The Witch.",
+        selection: {
+            text1: "From the supernatural terror of 'The Conjuring' to the relentless gore of 'Evil Dead Rise'—these films represent the darkest, most intense horror available on HBO Max.",
+            text2: "Each selection features visceral scares, psychological trauma, and atmospheres so oppressive they feel cursed. Not for the faint of heart."
+        },
+        ranking: {
+            text: "Our scariness index evaluates atmospheric dread, visceral shock value, and the lingering psychological trauma left by the film.",
+            points: [
+                "Atmospheric dread level",
+                "Visceral shock & gore",
+                "Psychological trauma depth",
+                "Unpredictable terror factor"
+            ]
+        },
+        experience: {
+            text1: "Whether you're seeking cosmic nihilism or supernatural brutality, this collection delivers cinema's most traumatizing experiences.",
+            text2: "Each film has been selected for its ability to ruin your sleep—offering nightmares that stick with you long after the credits roll."
+        }
+    };
+
+
+
+} else if (collection.slug === 'best-movies-on-hbo-max') {
+    return {
+        badge: "Cinematic Masterpieces",
+        title: "Best Movies on HBO Max",
+        description: "The definitive ranking of the highest-rated films streaming on HBO Max right now. From Seven Samurai to Dune: Part Two.",
+        selection: {
+            text1: "From the timeless philosophy of 'Stalker' to the modern sci-fi epic 'Dune: Part Two'—these films represent the absolute best cinema available on the platform.",
+            text2: "Each selection is a genre-defining masterpiece, chosen for its critical acclaim, cultural impact, and cinematic mastery across action, sci-fi, romance, and drama."
+        },
+        ranking: {
+            text: "Our definitive ranking evaluates cinematic mastery, critical reception, and legacy to determine the essential watchlist for any serious film lover.",
+            points: [
+                "Cinematic mastery score",
+                "Critical acclaim level",
+                "Cultural legacy impact",
+                "Visual & narrative innovation"
+            ]
+        },
+        experience: {
+            text1: "Whether you're seeking a classic like 'Casablanca' or a modern epic like 'The Dark Knight', this collection delivers the most essential viewing experiences on HBO Max.",
+            text2: "Each film has been selected as a 'must-watch'—guaranteeing that no matter what you pick, you are watching a top-tier example of filmmaking craft."
+        }
+    };
+
+
+} else if (collection.slug === 'best-drama-movies-on-hbo-max') {
+    return {
+        badge: "Emotional Powerhouse Cinema",
+        title: "Best Drama Movies on HBO Max",
+        description: "The most emotionally resonant dramas streaming on HBO Max. Deep character studies, heartbreaking performances & human stories that stay with you forever.",
+        selection: {
+            text1: "From the visually stunning 'Moonlight' to the raw intensity of 'Taxi Driver'—these films represent the pinnacle of dramatic storytelling available on HBO Max.",
+            text2: "Each selection features profound character depth, authentic human connection, and narratives that explore the beautiful, painful complexity of being alive."
+        },
+        ranking: {
+            text: "Our emotional intensity index evaluates character depth, narrative authenticity, and the lasting emotional impact of the film's themes.",
+            points: [
+                "Emotional resonance depth",
+                "Character development complexity",
+                "Narrative authenticity score",
+                "Thematic impact weight"
+            ]
+        },
+        experience: {
+            text1: "Whether you're seeking cathartic tears or quiet reflection, this collection delivers cinema's most powerful explorations of the human condition.",
+            text2: "Each film has been selected for its ability to touch the soul—offering moments of grace, grief, and connection that feel universally, heartbreakingly real."
+        }
+    };
+
+
+} else if (collection.slug === 'best-comedy-movies-on-hbo-max') {
+    return {
+        badge: "Satirical Masterpieces",
+        title: "Best Comedy Movies on HBO Max",
+        description: "The definitive ranking of the funniest movies on HBO Max. From the satire of The Great Dictator to the chaos of The LEGO Batman Movie.",
+        selection: {
+            text1: "From the timeless slapstick of 'City Lights' to the sharp modern satire of 'Barbie'—these films represent the absolute best comedy available on HBO Max.",
+            text2: "Each selection features brilliant writing, unforgettable performances, and a unique comedic voice that has stood the test of time."
+        },
+        ranking: {
+            text: "Our laughter index evaluates the frequency of laughs, the chaos factor of the plot, and the enduring quotability of the script.",
+            points: [
+                "Laughter frequency & intensity",
+                "Chaos factor & unpredictability",
+                "Script quotability score",
+                "Satirical depth impact"
+            ]
+        },
+        experience: {
+            text1: "Whether you're seeking a classic like 'Singin' in the Rain' or a modern favorite like 'Fargo', this collection delivers cinema's most effective dopamine hits.",
+            text2: "Each film has been selected for its ability to improve your mood instantly—offering laughs that range from intellectual satire to pure, joyful absurdity."
         }
     };
 
@@ -1117,6 +1273,44 @@ const getHeaderContent = () => {
         subtitle: "Psychological nightmares, suspense & cerebral sci-fi streaming now"
     };
 
+} else if (collection.slug === 'best-family-movies-on-hbo-max') {
+    return {
+        title: "10 Best Family Movies on HBO Max",
+        subtitle: "Wholesome entertainment, magical adventures & animation for all ages streaming now"
+    };
+
+    } else if (collection.slug === 'best-sci-fi-movies-on-hbo-max') {
+    return {
+        title: "10 Best Sci-Fi Movies on HBO Max",
+        subtitle: "From 2001 to Dune—ranked by spectacular scale, visual mastery & conceptual depth"
+    };
+
+    } else if (collection.slug === 'best-horror-movies-on-hbo-max') {
+    return {
+        title: "10 Best Horror Movies on HBO Max: Ranked by Scariness",
+        subtitle: "From The Conjuring to Evil Dead Rise—ranked by dread, gore & psychological trauma"
+    };
+
+
+    } else if (collection.slug === 'best-movies-on-hbo-max') {
+    return {
+        title: "Best Movies on HBO Max: 10 Essential Films",
+        subtitle: "The definitive ranking of the highest-rated films streaming now—from Seven Samurai to Dune: Part Two"
+    };
+
+
+    } else if (collection.slug === 'best-drama-movies-on-hbo-max') {
+    return {
+        title: "Best Drama Movies on HBO Max: 10 Emotional Films",
+        subtitle: "Profound character studies, tearjerkers & award-winning human stories streaming now"
+    };
+
+
+    } else if (collection.slug === 'best-comedy-movies-on-hbo-max') {
+    return {
+        title: "Best Comedy Movies on HBO Max: 10 Satirical Masterpieces",
+        subtitle: "From City Lights to Barbie—ranked by influence, wit & cinematic brilliance"
+    };
 
 } else if (collection.slug === 'movies-like-donnie-darko') {
     return {
@@ -1332,6 +1526,44 @@ const getLoaderContent = () => {
     return {
         title: "Loading Best Thriller Movies on HBO Max",
         description: "Curating psychological nightmares and high-tension thrillers with community reviews"
+    };
+
+
+    } else if (collection?.slug === 'best-family-movies-on-hbo-max') {
+    return {
+        title: "Loading Best Family Movies on HBO Max",
+        description: "Curating wholesome entertainment and magical adventures with community reviews"
+    };
+
+    } else if (collection?.slug === 'best-sci-fi-movies-on-hbo-max') {
+    return {
+        title: "Loading Best Sci-Fi Movies on HBO Max",
+        description: "Curating spectacular sci-fi masterpieces and cosmic epics with community reviews"
+    };
+    
+} else if (collection?.slug === 'best-horror-movies-on-hbo-max') {
+    return {
+        title: "Loading Best Horror Movies on HBO Max",
+        description: "Curating terrifying horror masterpieces and nightmare fuel with community reviews"
+    };
+
+
+    } else if (collection?.slug === 'best-movies-on-hbo-max') {
+    return {
+        title: "Loading Best Movies on HBO Max",
+        description: "Curating cinematic masterpieces and definitive classics with community reviews and ratings"
+    };
+
+} else if (collection?.slug === 'best-drama-movies-on-hbo-max') {
+    return {
+        title: "Loading Best Drama Movies on HBO Max",
+        description: "Curating emotionally powerful dramas and character studies with community reviews"
+    };
+
+    } else if (collection?.slug === 'best-comedy-movies-on-hbo-max') {
+    return {
+        title: "Loading Best Comedy Movies on HBO Max",
+        description: "Curating satirical masterpieces and cinematic classics with community reviews and ratings"
     };
 
 
@@ -1603,6 +1835,71 @@ const getStaticMetaContent = () => {
     };
 
 
+    } else if (collection.slug === 'best-family-movies-on-hbo-max') {
+    return {
+        title: "10 Best Family Movies on HBO Max: Wholesome & Magical",
+        description: "10 best family movies streaming on HBO Max. Featuring The Wizard of Oz, Harry Potter & Flow. Ranked by wholesomeness & fun factor. Includes sensitive content timestamps.",
+        keywords: "best family movies on hbo max, hbo max kids movies, wizard of oz, harry potter, flow movie, wholesome movies, sensitive content timestamps",
+        ogTitle: "10 Best Family Movies on HBO Max: Magical & Wholesome 🪄",
+        twitterTitle: "🪄 10 Magical Family Movies on HBO Max (Wizard of Oz, Harry Potter)",
+        progressText: `of Top ${movies.length} Family Movies on HBO Max`
+    };
+
+    } else if (collection.slug === 'best-sci-fi-movies-on-hbo-max') {
+    return {
+        title: "10 Best Sci-Fi Movies on HBO Max: Ranked by Scale",
+        description: "10 best sci-fi movies on HBO Max. Featuring Dune, Inception & 2001: A Space Odyssey. Ranked by spectacular level & conceptual depth. Includes sensitive content timestamps.",
+        keywords: "best sci-fi movies on hbo max, hbo max sci-fi, dune, inception, 2001 space odyssey, sensitive content timestamps",
+        ogTitle: "10 Best Sci-Fi Movies on HBO Max: Spectacular & Mind-Bending 🚀",
+        twitterTitle: "🚀 10 Spectacular Sci-Fi Movies on HBO Max (Dune, Inception)",
+        progressText: `of Top ${movies.length} Sci-Fi Movies on HBO Max`
+    };
+
+    } else if (collection.slug === 'best-horror-movies-on-hbo-max') {
+    return {
+        title: "10 Best Horror Movies on HBO Max: Ranked by Scariness",
+        description: "10 best horror movies on HBO Max. Featuring The Conjuring, Evil Dead Rise & The Witch. Ranked by scariness & trauma. Includes sensitive content timestamps.",
+        keywords: "best horror movies on hbo max, hbo max horror films, the conjuring, insidious, evil dead rise, horror streaming, sensitive content timestamps",
+        ogTitle: "10 Best Horror Movies on HBO Max: Pure Nightmare Fuel 🩸",
+        twitterTitle: "🩸 10 Scariest Movies on HBO Max (The Conjuring, Evil Dead Rise)",
+        progressText: `of Top ${movies.length} Horror Movies on HBO Max`
+    };
+
+
+} else if (collection.slug === 'best-movies-on-hbo-max') {
+    return {
+        title: "Top 10 Best Movies on HBO Max: The Essential List",
+        description: "10 cinematic masterpieces streaming on HBO Max. Featuring Seven Samurai, The Dark Knight & Spirited Away. Ranked by cinematic mastery & legacy. Includes sensitive content timestamps.",
+        keywords: "best movies on hbo max, top rated hbo max films, seven samurai, dark knight, spirited away, dune part two, cinematic masterpieces, sensitive content timestamps",
+        ogTitle: "10 Best Movies on HBO Max: The Essential Watchlist 🏆",
+        twitterTitle: "🏆 10 Cinematic Masterpieces on HBO Max You Must See",
+        progressText: `of Top ${movies.length} Best Movies on HBO Max`
+    };
+
+
+
+    } else if (collection.slug === 'best-drama-movies-on-hbo-max') {
+    return {
+        title: "10 Best Drama Movies on HBO Max: Emotional Masterpieces",
+        description: "10 best drama movies on HBO Max. Featuring Moonlight, Taxi Driver & Paris, Texas. Ranked by emotional impact & character depth. Includes sensitive content timestamps.",
+        keywords: "best drama movies on hbo max, hbo max emotional films, moonlight, taxi driver, paris texas, drama rankings, sensitive content timestamps",
+        ogTitle: "10 Best Drama Movies on HBO Max: Deeply Emotional Cinema 🎭",
+        twitterTitle: "🎭 10 Emotional Masterpieces Streaming on HBO Max Right Now",
+        progressText: `of Top ${movies.length} Drama Movies on HBO Max`
+    };
+
+
+    } else if (collection.slug === 'best-comedy-movies-on-hbo-max') {
+    return {
+        title: "Best Comedy Movies on HBO Max: 10 Satirical Masterpieces",
+        description: "10 funniest movies on HBO Max. Featuring City Lights, The Great Dictator & Barbie. Ranked by influence, wit & cinematic brilliance. Includes sensitive content timestamps.",
+        keywords: "best comedy movies on hbo max, hbo max comedy films, city lights, the great dictator, barbie, comedy rankings, sensitive content timestamps",
+        ogTitle: "10 Best Comedy Movies on HBO Max: Satire & Slapstick 😂",
+        twitterTitle: "😂 10 Funniest Movies on HBO Max (City Lights, Barbie)",
+        progressText: `of Top ${movies.length} Comedy Movies on HBO Max`
+    };
+
+
     } else if (collection.slug === 'movies-like-black-swan') {
         return {
             title: "Movies Like Black Swan: 10 Psychological Obsession Films",
@@ -1720,15 +2017,7 @@ const getStaticMetaContent = () => {
             twitterTitle: "⛰️ 10 Survival Movies Where Nature Doesn't Care",
             progressText: `of Top ${movies.length} Survival Movies`
         };
-    } else if (collection.slug === 'best-drama-movies-on-netflix') {
-        return {
-            title: "Best Netflix Dramas: 10 Award-Winning Films",
-            description: "10 award-winning dramas streaming on Netflix. Deep, moving cinema with powerful acting. Includes exact timestamps for sensitive content.", 
-            keywords: "best drama movies netflix, netflix dramas, sensitive content timestamps",
-            ogTitle: "10 Best Netflix Dramas: Award-Winning Films to Watch Now 🎭",
-            twitterTitle: "🎭 10 Award-Winning Dramas on Netflix (Tissues Required)",
-            progressText: `of Top ${movies.length} Netflix Drama Movies`
-        };
+
     } else if (collection.slug === 'best-detective-thriller-movies') {
         return {
             title: "Best Detective Thrillers: 10 Brilliant Films",
@@ -1845,6 +2134,13 @@ const getStaticMetaContent = () => {
             sessionStorage.removeItem('fromHboActionCollection');
             sessionStorage.removeItem('fromHboRomanceCollection');
             sessionStorage.removeItem('fromHboMaxThrillerCollection');
+            sessionStorage.removeItem('fromHboMaxFamilyCollection');
+            sessionStorage.removeItem('fromHboMaxSciFiCollection');
+            sessionStorage.removeItem('fromHboMaxHorrorCollection');
+            sessionStorage.removeItem('fromHboMaxBestCollection');
+            sessionStorage.removeItem('fromHboMaxDramaCollection');
+            sessionStorage.removeItem('fromHboMaxComedyCollection');
+            sessionStorage.removeItem('fromHboMaxComedyCollection');
             sessionStorage.removeItem('fromEyesWideShutCollection');
             sessionStorage.removeItem('fromDonnieDarkoCollection');
             sessionStorage.removeItem('fromBlackSwanCollection');
@@ -1897,7 +2193,18 @@ const getStaticMetaContent = () => {
                 sessionStorage.setItem('fromHboRomanceCollection', 'true');
                 } else if (collection.slug === 'best-thriller-movies-on-hbo-max') {
     sessionStorage.setItem('fromHboMaxThrillerCollection', 'true');
-    
+    } else if (collection.slug === 'best-family-movies-on-hbo-max') {
+    sessionStorage.setItem('fromHboMaxFamilyCollection', 'true');
+    } else if (collection.slug === 'best-sci-fi-movies-on-hbo-max') {
+    sessionStorage.setItem('fromHboMaxSciFiCollection', 'true');
+    } else if (collection.slug === 'best-horror-movies-on-hbo-max') {
+    sessionStorage.setItem('fromHboMaxHorrorCollection', 'true');
+    } else if (collection.slug === 'best-movies-on-hbo-max') {
+    sessionStorage.setItem('fromHboMaxBestCollection', 'true');
+    } else if (collection.slug === 'best-drama-movies-on-hbo-max') {
+    sessionStorage.setItem('fromHboMaxDramaCollection', 'true');
+    } else if (collection.slug === 'best-comedy-movies-on-hbo-max') {
+    sessionStorage.setItem('fromHboMaxComedyCollection', 'true');
             } else if (collection.slug === 'movies-like-parasite') { 
                 sessionStorage.setItem('fromParasiteCollection', 'true');
          } else if (collection.slug === 'movies-like-oldboy') {
@@ -2386,6 +2693,18 @@ return (
 ? 'movies/best-romance-movies-on-hbo-max/'
 : collection?.slug === 'best-thriller-movies-on-hbo-max'
 ? 'movies/best-thriller-movies-on-hbo-max/'
+: collection?.slug === 'best-family-movies-on-hbo-max'
+? 'movies/best-family-movies-on-hbo-max/'
+: collection?.slug === 'best-sci-fi-movies-on-hbo-max'
+? 'movies/best-sci-fi-movies-on-hbo-max/'
+: collection?.slug === 'best-horror-movies-on-hbo-max'
+? 'movies/best-horror-movies-on-hbo-max/'
+: collection?.slug === 'best-movies-on-hbo-max'
+? 'movies/best-movies-on-hbo-max/'
+: collection?.slug === 'best-drama-movies-on-hbo-max'
+? 'movies/best-drama-movies-on-hbo-max/'
+: collection?.slug === 'best-comedy-movies-on-hbo-max'
+? 'movies/best-comedy-movies-on-hbo-max/'
                                     : collection?.slug === 'movies-like-interstellar'
                                     ? 'movies/interstellar/'
                                     : collection?.slug === 'movies-like-memento'
@@ -2557,7 +2876,19 @@ return (
 : collection.slug === 'best-romance-movies-on-hbo-max'
 ? `/movies/best-romance-movies-on-hbo-max/${currentMovie.imdbID}`
 : collection.slug === 'best-thriller-movies-on-hbo-max'
-? `/collection/best-thriller-movies-on-hbo-max/${currentMovie.slug}`
+? `/movies/best-thriller-movies-on-hbo-max/${currentMovie.slug}`
+: collection.slug === 'best-family-movies-on-hbo-max'
+? `/movies/best-family-movies-on-hbo-max/${currentMovie.imdbID}`
+: collection.slug === 'best-sci-fi-movies-on-hbo-max'
+? `/movies/best-sci-fi-movies-on-hbo-max/${currentMovie.imdbID}`
+: collection.slug === 'best-horror-movies-on-hbo-max'
+? `/movies/best-horror-movies-on-hbo-max/${currentMovie.imdbID}`
+: collection.slug === 'best-movies-on-hbo-max'
+? `/movies/best-movies-on-hbo-max/${currentMovie.imdbID}`
+: collection.slug === 'best-drama-movies-on-hbo-max'
+? `/movies/best-drama-movies-on-hbo-max/${currentMovie.imdbID}`
+: collection.slug === 'best-comedy-movies-on-hbo-max'
+? `/movies/best-comedy-movies-on-hbo-max/${currentMovie.imdbID}`
       : collection.slug === 'movies-like-interstellar'
       ? `/movies/interstellar/${currentMovie.imdbID}`
       : collection.slug === 'movies-like-memento'
@@ -2661,11 +2992,23 @@ return (
     } else if (collection.slug === 'best-family-movies-on-hulu') {
     detailPageUrl = `/movies/best-family-movies-on-hulu/${currentMovie.imdbID}`;
     } else if (collection.slug === 'best-action-movies-on-hbo-max') {
-    detailPageUrl = `/collection/best-action-movies-on-hbo-max/${currentMovie.imdbID}`;
+    detailPageUrl = `/movies/best-action-movies-on-hbo-max/${currentMovie.imdbID}`;
     } else if (collection.slug === 'best-romance-movies-on-hbo-max') {
-    detailPageUrl = `/collection/best-romance-movies-on-hbo-max/${currentMovie.imdbID}`;
+    detailPageUrl = `/movies/best-romance-movies-on-hbo-max/${currentMovie.imdbID}`;
     } else if (collection.slug === 'best-thriller-movies-on-hbo-max') {
-    detailPageUrl = `/collection/best-thriller-movies-on-hbo-max/${currentMovie.imdbID}`;
+    detailPageUrl = `/movies/best-thriller-movies-on-hbo-max/${currentMovie.imdbID}`;
+    } else if (collection.slug === 'best-family-movies-on-hbo-max') {
+    detailPageUrl = `/movies/best-family-movies-on-hbo-max/${currentMovie.imdbID}`;
+    } else if (collection.slug === 'best-sci-fi-movies-on-hbo-max') {
+    detailPageUrl = `/movies/best-sci-fi-movies-on-hbo-max/${currentMovie.imdbID}`;
+    } else if (collection.slug === 'best-horror-movies-on-hbo-max') {
+    detailPageUrl = `/movies/best-horror-movies-on-hbo-max/${currentMovie.imdbID}`;
+    } else if (collection.slug === 'best-movies-on-hbo-max') {
+    detailPageUrl = `/movies/best-movies-on-hbo-max/${currentMovie.imdbID}`;
+    } else if (collection.slug === 'best-drama-movies-on-hbo-max') {
+    detailPageUrl = `/movies/best-drama-movies-on-hbo-max/${currentMovie.imdbID}`;
+    } else if (collection.slug === 'best-comedy-movies-on-hbo-max') {
+    detailPageUrl = `/movies/best-comedy-movies-on-hbo-max/${currentMovie.imdbID}`;
                                         } else if (collection.slug === 'movies-like-interstellar') {
                                             detailPageUrl = `/movies/interstellar/${currentMovie.imdbID}`;
                                         } else if (collection.slug === 'movies-like-memento') {
@@ -2923,6 +3266,29 @@ case 'best-romance-movies-on-hbo-max':
 
 case 'best-thriller-movies-on-hbo-max':
     movieDatabase = HBO_MAX_THRILLER_DATABASE;
+    break;
+
+    case 'best-family-movies-on-hbo-max':
+            movieDatabase = HBO_MAX_FAMILY_DATABASE;
+            break;
+case 'best-sci-fi-movies-on-hbo-max':
+            movieDatabase = HBO_MAX_SCIFI_DATABASE;
+            break;
+
+            case 'best-horror-movies-on-hbo-max':
+            movieDatabase = HBO_MAX_HORROR_DATABASE;
+            break;
+
+case 'best-movies-on-hbo-max':
+            movieDatabase = HBO_MAX_BEST_DATABASE;
+            break;
+
+            case 'best-drama-movies-on-hbo-max':
+    movieDatabase = HBO_MAX_DRAMA_DATABASE;
+    break;
+
+    case 'best-comedy-movies-on-hbo-max':
+    movieDatabase = HBO_MAX_COMEDY_DATABASE;
     break;
 
         case 'movies-like-interstellar':

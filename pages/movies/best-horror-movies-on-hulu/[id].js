@@ -22,7 +22,7 @@ import {
 } from '../../../utils/huluHorrorMovieData';
 
 const COLORS = {
-  accent: '#DC2626', accentLight: '#FCA5A5', bgPrimary: '#0f0505', bgCard: 'rgba(20, 5, 5, 0.8)', // Blood Red/Black for Horror
+  accent: '#DC2626', accentLight: '#FCA5A5', bgPrimary: '#000000ff', bgCard: 'rgba(11, 11, 11, 0.8)', // Blood Red/Black for Horror
   textPrimary: '#FFFFFF', textSecondary: '#FECACA', textMuted: '#EF4444', textDisabled: '#991B1B',
   borderAccent: 'rgba(220, 38, 38, 0.25)', borderLight: 'rgba(69, 10, 10, 0.5)',
 };
@@ -370,7 +370,7 @@ const HuluHorrorMoviePage = ({ movie, tmdbData: movieData }) => {
 
             <SubtleFilmGrain />
             <div className="absolute inset-0"><CinematicBackground /></div>
-            <SmartBackButton />
+            
             
             <div className="relative z-10 pt-10 sm:pt-12 lg:pt-16">
                 

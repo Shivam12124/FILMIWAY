@@ -22,7 +22,7 @@ import {
 } from '../../../utils/huluDramaMovieData';
 
 const COLORS = {
-  accent: '#3b82f6', accentLight: '#60a5fa', bgPrimary: '#0f172a', bgCard: 'rgba(15, 23, 42, 0.8)', // Blue/Slate for Drama
+  accent: '#3b82f6', accentLight: '#60a5fa', bgPrimary: '#000000ff', bgCard: 'rgba(11, 11, 11, 0.8)', // Blue/Slate for Drama
   textPrimary: '#FFFFFF', textSecondary: '#E5E7EB', textMuted: '#9CA3AF', textDisabled: '#6B7280',
   borderAccent: 'rgba(59, 130, 246, 0.25)', borderLight: 'rgba(55, 65, 81, 0.5)',
 };
@@ -374,7 +374,7 @@ const HuluDramaMoviePage = ({ movie, tmdbData: movieData }) => {
 
             <SubtleFilmGrain />
             <div className="absolute inset-0"><CinematicBackground /></div>
-            <SmartBackButton />
+            
             
             <div className="relative z-10 pt-10 sm:pt-12 lg:pt-16">
                 <h1 className="sr-only">{cleanSEOTitle}</h1>

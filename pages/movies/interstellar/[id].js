@@ -13,7 +13,7 @@ import TMDBAttribution from '../../../components/TMDBAttribution';
 import { COMPLETE_MOVIE_DATABASE, COMPLETE_MOVIE_DATA } from '../../../utils/interstellarMovieData';
 
 const COLORS = {
-  accent: '#0891b2', accentLight: '#22d3ee', bgPrimary: '#0B0B0C', bgCard: 'rgba(55, 65, 81, 0.3)',
+  accent: '#0891b2', accentLight: '#22d3ee', bgPrimary: '#000000ff', bgCard: 'rgba(11, 11, 11, 0.8)',
   textPrimary: '#FFFFFF', textSecondary: '#D1D5DB', textMuted: '#9CA3AF', textDisabled: '#6B7280',
   borderAccent: 'rgba(8, 145, 178, 0.2)', borderLight: 'rgba(107, 114, 128, 0.2)',
 };
@@ -220,7 +220,7 @@ const InterstellarMoviePage = ({ movie }) => {
 
             <SubtleFilmGrain />
             <div className="absolute inset-0"><CinematicBackground /></div>
-            <SmartBackButton />
+            
             
             <div className="relative z-10 pt-16">
                 {/* ✅ SEO FIX: HIDDEN H1 ADDED */}

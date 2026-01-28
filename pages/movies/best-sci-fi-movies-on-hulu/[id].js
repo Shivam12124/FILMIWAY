@@ -23,7 +23,7 @@ import {
 } from '../../../utils/huluSciFiMovieData';
 
 const COLORS = {
-  accent: '#0ea5e9', accentLight: '#7dd3fc', bgPrimary: '#020617', bgCard: 'rgba(15, 23, 42, 0.8)', // Cyan/Deep Blue for Sci-Fi
+  accent: '#0ea5e9', accentLight: '#7dd3fc', bgPrimary: '#000000ff', bgCard: 'rgba(11, 11, 11, 0.8)', // Cyan/Deep Blue for Sci-Fi
   textPrimary: '#FFFFFF', textSecondary: '#bae6fd', textMuted: '#7dd3fc', textDisabled: '#0369a1',
   borderAccent: 'rgba(14, 165, 233, 0.25)', borderLight: 'rgba(3, 105, 161, 0.5)',
 };
@@ -374,7 +374,7 @@ const HuluSciFiMoviePage = ({ movie, tmdbData: movieData }) => {
 
             <SubtleFilmGrain />
             <div className="absolute inset-0"><CinematicBackground /></div>
-            <SmartBackButton />
+            
             
             <div className="relative z-10 pt-10 sm:pt-12 lg:pt-16">
                 

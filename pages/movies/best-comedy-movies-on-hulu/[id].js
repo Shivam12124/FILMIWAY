@@ -23,7 +23,7 @@ import {
 } from '../../../utils/huluComedyMovieData';
 
 const COLORS = {
-  accent: '#FACC15', accentLight: '#FEF08A', bgPrimary: '#1a1400', bgCard: 'rgba(30, 25, 5, 0.8)', // Yellow/Dark Gold for Comedy
+  accent: '#FACC15', accentLight: '#FEF08A', bgPrimary: '#000000ff', bgCard: 'rgba(11, 11, 11, 0.8)', // Yellow/Dark Gold for Comedy
   textPrimary: '#FFFFFF', textSecondary: '#FEF3C7', textMuted: '#FDE047', textDisabled: '#CA8A04',
   borderAccent: 'rgba(250, 204, 21, 0.25)', borderLight: 'rgba(133, 77, 14, 0.5)',
 };
@@ -373,7 +373,7 @@ const HuluComedyMoviePage = ({ movie, tmdbData: movieData }) => {
 
             <SubtleFilmGrain />
             <div className="absolute inset-0"><CinematicBackground /></div>
-            <SmartBackButton />
+            
             
             <div className="relative z-10 pt-10 sm:pt-12 lg:pt-16">
                 

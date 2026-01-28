@@ -90,9 +90,9 @@ export const COLLECTIONS = {
   gradientTo: 'to-yellow-500',
   category: 'survival',
   tags: ['survival', 'extreme', 'endurance', 'true stories', 'human resilience'],
-  metaTitle: '10 Best Survival Movies Ever Made (2025) - Expert Rankings | Filmiway',
-  metaDescription: 'Discover 10 heart-pounding survival movies ranked by intensity. From 127 Hours to The Revenant, explore films that push human endurance to the limit. Updated 2025.',
-  metaKeywords: 'best survival movies, survival films 2025, extreme survival, 127 hours, the revenant, cast away, true story survival movies, survival thriller movies',
+  metaTitle: '10 Best Survival Movies Ever Made ((2026)) - Expert Rankings | Filmiway',
+  metaDescription: 'Discover 10 heart-pounding survival movies ranked by intensity. From 127 Hours to The Revenant, explore films that push human endurance to the limit. Updated (2026).',
+  metaKeywords: 'best survival movies, survival films (2026), extreme survival, 127 hours, the revenant, cast away, true story survival movies, survival thriller movies',
   stats: {
     totalMovies: 10,
     averageRating: 7.7,
@@ -136,8 +136,8 @@ export const COLLECTIONS = {
     'best-drama-movies-on-netflix' // Cross-Link
   ],
   seo: {
-    title: '10 Best Survival Movies Ever Made (2025) - Expert Rankings | Filmiway',
-    description: 'Discover 10 heart-pounding survival movies ranked by intensity. From 127 Hours to The Revenant, explore films that push human endurance to the limit. Updated 2025.',
+    title: '10 Best Survival Movies Ever Made ((2026)) - Expert Rankings | Filmiway',
+    description: 'Discover 10 heart-pounding survival movies ranked by intensity. From 127 Hours to The Revenant, explore films that push human endurance to the limit. Updated (2026).',
     keywords: 'best survival movies, survival films, extreme survival, survivability index, brutal survival stories, human endurance movies, true survival stories, 127 hours, the revenant, cast away',
     canonicalUrl: 'https://filmiway.com/collection/best-survival-movies',
     ogImage: 'https://filmiway.com/images/survival-movies-collection-og.jpg',
@@ -173,7 +173,7 @@ export const COLLECTIONS = {
     category: 'action',
     tags: ['action', 'hulu', 'streaming', 'martial arts', 'sci-fi action', 'thriller', 'high octane'],
     
-    metaTitle: '10 Best Action Movies on Hulu (2025) | Ranked by Adrenaline | Filmiway',
+    metaTitle: '10 Best Action Movies on Hulu ((2026)) | Ranked by Adrenaline | Filmiway',
     metaDescription: 'Discover the top 10 action movies on Hulu—from Predator to Unstoppable. Expert-curated ranking of high-octane films with brutal fights and non-stop tension.',
     metaKeywords: 'best action movies on hulu, hulu action films, predator hulu, unstoppable movie hulu, prey movie, bullet train hulu, action movies streaming',
     
@@ -183,7 +183,7 @@ export const COLLECTIONS = {
       totalWatchtime: '17 hours 53 minutes',
       averageAdrenalineScore: 83.4,
       mostIntense: 'Unstoppable (98/100)',
-      newestMovie: 'Predator: Killer of Killers (2025)',
+      newestMovie: 'Predator: Killer of Killers ((2026))',
       oldestMovie: 'Predator (1987)'
     },
     
@@ -191,7 +191,7 @@ export const COLLECTIONS = {
       'tt0093773',  // 1. Predator (1987)
       'tt1220719',  // 2. Ip Man (2008)
       'tt2103281',  // 3. Dawn of the Planet of the Apes (2014)
-      'tt36463894', // 4. Predator: Killer of Killers (2025)
+      'tt36463894', // 4. Predator: Killer of Killers ((2026))
       'tt0455944',  // 5. The Equalizer (2014)
       'tt2802144',  // 6. Kingsman: The Secret Service (2014)
       'tt0477080',  // 7. Unstoppable (2010) - Replaces Taken
@@ -224,7 +224,7 @@ export const COLLECTIONS = {
     ],
     
     seo: {
-      title: '10 Best Action Movies on Hulu (2025) | Adrenaline Ranked | Filmiway',
+      title: '10 Best Action Movies on Hulu ((2026)) | Adrenaline Ranked | Filmiway',
       description: 'The definitive ranking of the best action movies on Hulu. From Predator to Bullet Train, find your next high-octane watch here.',
       keywords: 'action movies hulu, best action films streaming, predator, unstoppable, prey, bullet train, kingsman, boss level, ip man',
       canonicalUrl: 'https://filmiway.com/collection/best-action-movies-on-hulu',
@@ -257,7 +257,7 @@ export const COLLECTIONS = {
     category: 'romance',
     tags: ['romance', 'hulu', 'streaming', 'drama', 'comedy', 'lgbtq+', 'prestige', 'love'],
 
-    metaTitle: '10 Best Romance Movies on Hulu (2025) | Ranked by Emotion | Filmiway',
+    metaTitle: '10 Best Romance Movies on Hulu ((2026)) | Ranked by Emotion | Filmiway',
     metaDescription: 'Discover the top 10 romance movies on Hulu—from Anora to Brooklyn. Expert-curated ranking of emotionally resonant films with electric chemistry.',
     metaKeywords: 'best romance movies on hulu, hulu romance films, anora, all of us strangers, brooklyn movie, palm springs, rye lane, romantic movies streaming',
 
@@ -309,7 +309,7 @@ export const COLLECTIONS = {
     ],
 
     seo: {
-      title: '10 Best Romance Movies on Hulu (2025) | Emotion Ranked | Filmiway',
+      title: '10 Best Romance Movies on Hulu ((2026)) | Emotion Ranked | Filmiway',
       description: 'The definitive ranking of the best romance movies on Hulu. From Anora to Brooklyn, find your next emotional watch here.',
       keywords: 'romance movies hulu, best romance films streaming, anora, all of us strangers, brooklyn, rye lane, palm springs, love stories',
       canonicalUrl: 'https://filmiway.com/collection/best-romance-movies-on-hulu',
@@ -524,7 +524,7 @@ export const COLLECTIONS = {
       totalWatchtime: '18 hours 45 minutes',
       averageMindBendScore: 88.5,
       mostMindBending: 'Donnie Darko (98/100)',
-      newestMovie: 'Predator: Killer of Killers (2025)',
+      newestMovie: 'Predator: Killer of Killers (2026)',
       oldestMovie: 'Alien (1979)'
     },
 
@@ -599,7 +599,7 @@ export const COLLECTIONS = {
     category: 'thriller',
     tags: ['thriller', 'hulu', 'streaming', 'suspense', 'psychological', 'crime', 'mystery'],
 
-    metaTitle: '10 Best Thriller Movies on Hulu (2025) | Ranked by Suspense | Filmiway',
+    metaTitle: '10 Best Thriller Movies on Hulu (2026) | Ranked by Suspense | Filmiway',
     metaDescription: 'Discover the 10 best thriller movies on Hulu—from Heat to Black Swan. Expert-curated ranking of high-tension films with gripping plots.',
     metaKeywords: 'best thriller movies on hulu, hulu thrillers, heat, black swan, anatomy of a fall, suspense movies streaming, psychological thrillers hulu',
 
@@ -650,7 +650,7 @@ export const COLLECTIONS = {
     ],
 
     seo: {
-      title: '10 Best Thriller Movies on Hulu (2025) | Ranked by Suspense',
+      title: '10 Best Thriller Movies on Hulu (2026) | Ranked by Suspense',
       description: 'The definitive ranking of the best thriller movies on Hulu. From the tactical action of Heat to the psychological horror of Black Swan.',
       keywords: 'thriller movies hulu, best suspense films streaming, heat, black swan, anatomy of a fall, fresh, donnie darko, hulu thrillers',
       canonicalUrl: 'https://filmiway.com/collection/best-thriller-movies-hulu',
@@ -685,9 +685,9 @@ export const COLLECTIONS = {
     category: 'best-of-hulu',
     tags: ['hulu', 'streaming', 'best movies', 'top rated', 'critically acclaimed', 'must watch', 'ranking'],
 
-    metaTitle: '10 Best Movies on Hulu (2025) | The Ultimate Ranking | Filmiway',
+    metaTitle: '10 Best Movies on Hulu ((2026)) | The Ultimate Ranking | Filmiway',
     metaDescription: 'The definitive top 10 movies on Hulu right now. From Heat to Superbad, discover the highest-rated films across all genres. Expert curated.',
-    metaKeywords: 'best movies on hulu, top rated hulu films, heat movie hulu, hacksaw ridge hulu, perfect days hulu, best streaming movies 2025',
+    metaKeywords: 'best movies on hulu, top rated hulu films, heat movie hulu, hacksaw ridge hulu, perfect days hulu, best streaming movies (2026)',
 
     stats: {
       totalMovies: 10,
@@ -741,7 +741,7 @@ export const COLLECTIONS = {
     ],
 
     seo: {
-      title: '10 Best Movies on Hulu (2025) | The Ultimate Ranking | Filmiway',
+      title: '10 Best Movies on Hulu ((2026)) | The Ultimate Ranking | Filmiway',
       description: 'Discover the 10 best movies streaming on Hulu right now. From Heat to Superbad, explore our expert-curated list of top-rated films across all genres.',
       keywords: 'best movies on hulu, top rated hulu movies, what to watch on hulu, best films streaming, heat, hacksaw ridge, black swan, superbad',
       canonicalUrl: 'https://filmiway.com/collection/best-movies-on-hulu',
@@ -777,9 +777,9 @@ export const COLLECTIONS = {
     category: 'drama',
     tags: ['drama', 'hulu', 'streaming', 'emotional', 'indie', 'award-winning', 'tearjerker'],
 
-    metaTitle: '10 Best Drama Movies on Hulu (2025) | Ranked by Emotion | Filmiway',
+    metaTitle: '10 Best Drama Movies on Hulu ((2026)) | Ranked by Emotion | Filmiway',
     metaDescription: 'Discover the top 10 drama movies on Hulu—from Boyhood to Perfect Days. Expert-curated ranking of emotionally powerful films and critical darlings.',
-    metaKeywords: 'best drama movies on hulu, hulu drama films, boyhood, perfect days, all of us strangers, brooklyn, emotional movies hulu, drama streaming 2025',
+    metaKeywords: 'best drama movies on hulu, hulu drama films, boyhood, perfect days, all of us strangers, brooklyn, emotional movies hulu, drama streaming (2026)',
 
     stats: {
         totalMovies: 10,
@@ -828,7 +828,7 @@ export const COLLECTIONS = {
     ],
 
     seo: {
-        title: '10 Best Drama Movies on Hulu (2025) | Ranked by Emotion',
+        title: '10 Best Drama Movies on Hulu ((2026)) | Ranked by Emotion',
         description: 'The definitive ranking of the best drama movies on Hulu. From the life-spanning Boyhood to the meditative Perfect Days.',
         keywords: 'drama movies hulu, best drama films streaming, boyhood, perfect days, all of us strangers, blackberry, sad movies hulu',
         canonicalUrl: 'https://filmiway.com/collection/best-drama-movies-on-hulu',
@@ -863,7 +863,7 @@ export const COLLECTIONS = {
     category: 'family',
     tags: ['family', 'hulu', 'kids', 'animation', 'adventure', 'wholesome', 'streaming'],
 
-    metaTitle: '10 Best Family Movies on Hulu (2025) | Wholesome & Fun | Filmiway',
+    metaTitle: '10 Best Family Movies on Hulu ((2026)) | Wholesome & Fun | Filmiway',
     metaDescription: 'Discover the top 10 family movies on Hulu—from Robot Dreams to Night at the Museum. Expert-curated ranking of wholesome films for all ages.',
     metaKeywords: 'best family movies on hulu, hulu kids movies, robot dreams, night at the museum, sonic 2, steven universe movie, wholesome movies streaming',
 
@@ -881,7 +881,7 @@ export const COLLECTIONS = {
         'tt13429870', // 1. Robot Dreams
         'tt0477347', // 2. Night at the Museum
         'tt12412888', // 3. Sonic the Hedgehog 2
-        'tt10515866', // 4. Steven Universe: The Movie
+        'tt10515852', // 4. Steven Universe: The Movie
         'tt0837562', // 5. Hotel Transylvania
         'tt2510894', // 6. Hotel Transylvania 2
         'tt10473036', // 7. The Amazing Maurice
@@ -914,7 +914,7 @@ export const COLLECTIONS = {
     ],
 
     seo: {
-        title: '10 Best Family Movies on Hulu (2025) | Wholesome & Fun | Filmiway',
+        title: '10 Best Family Movies on Hulu ((2026)) | Wholesome & Fun | Filmiway',
         description: 'The definitive ranking of the best family movies on Hulu. From the masterpiece Robot Dreams to the blockbuster Sonic 2.',
         keywords: 'family movies hulu, best kids films streaming, robot dreams, night at the museum, sonic 2, hotel transylvania, wholesome movies hulu',
         canonicalUrl: 'https://filmiway.com/collection/best-family-movies-on-hulu',
@@ -949,7 +949,7 @@ export const COLLECTIONS = {
     category: 'action',
     tags: ['action', 'hbo max', 'epic', 'sci-fi', 'fantasy', 'superhero', 'streaming'],
 
-    metaTitle: '10 Best Action Movies on HBO Max (2025) | Ranked by Epic Scale',
+    metaTitle: '10 Best Action Movies on HBO Max ((2026)) | Ranked by Epic Scale',
     metaDescription: 'Discover the top 10 action movies on HBO Max—from Seven Samurai to Dune: Part Two. Expert-curated ranking of epic films with massive scale and intensity.',
     metaKeywords: 'best action movies on hbo max, hbo max epic films, seven samurai, dark knight, dune part two, john wick, zack snyder justice league, action movies streaming',
 
@@ -1000,7 +1000,7 @@ export const COLLECTIONS = {
     ],
 
     seo: {
-      title: '10 Best Action Movies on HBO Max (2025) | Ranked by Scale',
+      title: '10 Best Action Movies on HBO Max ((2026)) | Ranked by Scale',
       description: 'The definitive ranking of the best action movies on HBO Max. From Seven Samurai to Dune: Part Two, find your next epic watch here.',
       keywords: 'action movies hbo max, best epic films streaming, seven samurai, dark knight, dune 2, john wick, snyder cut, hbo max action',
       canonicalUrl: 'https://filmiway.com/collection/best-action-movies-on-hbo-max',
@@ -1035,7 +1035,7 @@ export const COLLECTIONS = {
     category: 'romance',
     tags: ['romance', 'hbo max', 'streaming', 'drama', 'classic', 'lgbtq+', 'prestige', 'love'],
 
-    metaTitle: '10 Best Romance Movies on HBO Max (2025) | Ranked by Emotion',
+    metaTitle: '10 Best Romance Movies on HBO Max ((2026)) | Ranked by Emotion',
     metaDescription: 'Discover the top 10 romance movies on HBO Max—from Casablanca to Past Lives. Expert-curated ranking of emotionally resonant films with electric chemistry.',
     metaKeywords: 'best romance movies on hbo max, hbo max romance films, casablanca, past lives, in the mood for love, call me by your name, romantic movies streaming',
 
@@ -1054,10 +1054,10 @@ export const COLLECTIONS = {
       'tt0118694', // 2. In the Mood for Love
       'tt13238346', // 3. Past Lives
       'tt0098635', // 4. When Harry Met Sally...
-      'tt5726662', // 5. Call Me by Your Name
+      'tt5726616', // 5. Call Me by Your Name
       'tt0031381', // 6. Gone with the Wind
-      'tt0115963', // 7. A Summer's Tale
-      'tt0069683', // 8. Ali: Fear Eats the Soul
+      'tt0115940', // 7. A Summer's Tale
+      'tt0071141', // 8. Ali: Fear Eats the Soul
       'tt0113824', // 9. Whisper of the Heart
       'tt1659337'  // 10. The Perks of Being a Wallflower
     ],
@@ -1086,7 +1086,7 @@ export const COLLECTIONS = {
     ],
 
     seo: {
-      title: '10 Best Romance Movies on HBO Max (2025) | Emotion Ranked',
+      title: '10 Best Romance Movies on HBO Max ((2026)) | Emotion Ranked',
       description: 'The definitive ranking of the best romance movies on HBO Max. From Casablanca to Past Lives, find your next emotional watch here.',
       keywords: 'romance movies hbo max, best romance films streaming, casablanca, past lives, call me by your name, in the mood for love, love stories',
       canonicalUrl: 'https://filmiway.com/collection/best-romance-movies-on-hbo-max',
@@ -1122,7 +1122,7 @@ export const COLLECTIONS = {
     category: 'thriller',
     tags: ['thriller', 'hbo max', 'suspense', 'psychological', 'crime', 'horror', 'sci-fi', 'streaming'],
 
-    metaTitle: '10 Best Thriller Movies on HBO Max (2025) | Ranked by Suspense',
+    metaTitle: '10 Best Thriller Movies on HBO Max ((2026)) | Ranked by Suspense',
     metaDescription: 'Discover the top 10 thriller movies on HBO Max—from Funny Games to Inception. Expert-curated ranking of high-tension films with gripping plots.',
     metaKeywords: 'best thriller movies hbo max, suspense films hbo max, funny games, get out, ex machina, the killing of a sacred deer, psychological thrillers streaming',
 
@@ -1173,7 +1173,7 @@ export const COLLECTIONS = {
     ],
 
     seo: {
-      title: '10 Best Thriller Movies on HBO Max (2025) | Ranked by Suspense',
+      title: '10 Best Thriller Movies on HBO Max (2026) | Ranked by Suspense',
       description: 'The definitive ranking of the best thriller movies on HBO Max. From the social horror of Get Out to the sci-fi tension of Ex Machina.',
       keywords: 'thriller movies hbo max, best suspense films streaming, funny games, get out, ex machina, fargo, split, psychological thrillers',
       canonicalUrl: 'https://filmiway.com/collection/best-thriller-movies-on-hbo-max',
@@ -1188,6 +1188,525 @@ export const COLLECTIONS = {
     }
   },
 
+// 🪄 BEST FAMILY MOVIES ON HBO MAX COLLECTION
+'best-family-movies-on-hbo-max': {
+  slug: 'best-family-movies-on-hbo-max',
+  title: 'Best Family Movies on HBO Max',
+  subtitle: 'Magical Journeys & Wholesome Classics',
+  description: 'The absolute best family-friendly cinema on HBO Max. From the legendary magic of Oz to the visual poetry of Ghibli and modern masterpieces.',
+  longDescription: 'Discover a world of wonder with our expert-curated list of family movies on HBO Max. This collection spans across generations, featuring timeless live-action classics, the unparalleled artistry of Studio Ghibli, and modern animation that speaks to both children and adults. Perfect for creating lasting movie night memories.',
+  
+  emoji: '🪄',
+  theme: 'yellow',
+  primaryColor: '#facc15',
+  secondaryColor: '#eab308',
+  accentColor: '#ca8a04',
+  gradientFrom: 'from-yellow-500',
+  gradientTo: 'to-amber-600',
+  
+  category: 'family',
+  tags: ['family', 'hbo max', 'animation', 'fantasy', 'ghibli', 'classics', 'wholesome'],
+  
+  metaTitle: '10 Best Family Movies on HBO Max (2026) | Magical & Rated | Filmiway',
+  metaDescription: 'Discover the top 10 family movies on HBO Max. From The Wizard of Oz to Puss in Boots: The Last Wish. Expert rankings of wholesome cinematic masterpieces.',
+  metaKeywords: 'family movies hbo max, kids movies hbo max, wizard of oz, harry potter azkaban, ghibli hbo max, flow 2024, best animation streaming',
+  
+  stats: {
+    totalMovies: 10,
+    averageRating: 8.0,
+    totalWatchtime: '16 hours 47 minutes',
+    averageWholesomeScore: 92.5,
+    mostMagical: 'The Wizard of Oz (100/100)',
+    newestMovie: 'Flow (2024)',
+    oldestMovie: 'The Wizard of Oz (1939)'
+  },
+  
+  movies: [
+    'tt0032138',  // 1. The Wizard of Oz (1939)
+    'tt0304141',  // 2. Harry Potter and the Prisoner of Azkaban (2004)
+    'tt28238129', // 3. Flow (2024)
+    'tt0085334',  // 4. A Christmas Story (1983)
+    'tt3915174',  // 5. Puss in Boots: The Last Wish (2022)
+    'tt0097814',  // 6. Kiki\'s Delivery Service (1989)
+    'tt0106364',  // 7. Batman: Mask of the Phantasm (1993)
+    'tt3398268',  // 8. When Marnie Was There (2014)
+    'tt0441773',  // 9. Kung Fu Panda (2008)
+    'tt4116284'   // 10. The Lego Batman Movie (2017)
+  ],
+  
+  badges: [
+    { label: 'Magical Realism', desc: 'Transportive cinematic worlds' },
+    { label: 'Multi-Generational', desc: 'Loved by kids and adults alike' },
+    { label: 'Visual Storytelling', desc: 'Top-tier animation & direction' }
+  ],
+  
+  featured: {
+    hero: {
+      title: 'The Wizard of Oz',
+      subtitle: 'The Mother of Fantasy Cinema',
+      description: 'The gold standard of family films. A breathtaking transition from sepia to Technicolor that remains the greatest visual trick in history.',
+      poster: 'https://image.tmdb.org/t/p/w500/8c899N8p6fT6p9xS6WJ0X4X6y5E.jpg',
+      backdrop: 'https://image.tmdb.org/t/p/w1280/6x9v8U6G9B9G9B9G9B9G9B9G.jpg',
+      wholesomeScore: 100
+    }
+  },
+  
+  relatedCollections: [
+    'best-movies-on-hulu',
+    'best-sci-fi-movies',
+    'movies-like-interstellar'
+  ],
+  
+  seo: {
+    title: '10 Best Family Movies on HBO Max (2026) | Expert Rankings | Filmiway',
+    description: 'Expert-curated list of the best family movies on HBO Max ranked by visual storytelling, heart, and emotional payoff.',
+    keywords: 'best family movies, hbo max kids, animation ghibli, wizard of oz, wholesome films',
+    canonicalUrl: 'https://filmiway.com/collection/best-family-movies-on-hbo-max',
+    ogImage: 'https://filmiway.com/images/hbo-family-collection-og.jpg',
+    structuredData: {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      name: 'Best Family Movies on HBO Max',
+      description: 'A list of the top 10 family movies available on HBO Max curated for quality and heart.',
+      numberOfItems: 10
+    }
+  }
+},
+
+// 🚀 BEST SCI-FI MOVIES ON HBO MAX COLLECTION
+'best-sci-fi-movies-on-hbo-max': {
+  slug: 'best-sci-fi-movies-on-hbo-max',
+  title: '10 Best Sci-Fi Movies on HBO Max',
+  subtitle: 'Cosmic Scale & Visionary Masterpieces',
+  description: 'The absolute best sci-fi films streaming on HBO Max. From the grandeur of Dune to the mind-bending Inception.',
+  longDescription: 'Explore the outer limits of imagination with the best science fiction movies on HBO Max. This collection prioritizes "Spectacular Level"—films with massive scale, groundbreaking visual effects, and profound conceptual depth. From the desert planet of Arrakis to the digital frontier of the mind, these are the genre\'s heaviest hitters.',
+
+  emoji: '🚀',
+  theme: 'cyan',
+  primaryColor: '#0891b2', // Cyan 600
+  secondaryColor: '#06b6d4', // Cyan 500
+  accentColor: '#155e75', // Cyan 800
+  gradientFrom: 'from-cyan-600',
+  gradientTo: 'to-blue-900',
+
+  category: 'sci-fi',
+  tags: ['sci-fi', 'hbo max', 'space opera', 'cyberpunk', 'dystopia', 'mind-bending', 'streaming'],
+
+  metaTitle: '10 Best Sci-Fi Movies on HBO Max (2026) | Ranked by Scale | Filmiway',
+  metaDescription: 'Discover the top 10 sci-fi movies on HBO Max—from Dune: Part Two to 2001: A Space Odyssey. Expert-curated ranking of spectacular cosmic cinema.',
+  metaKeywords: 'best sci-fi movies on hbo max, hbo max sci-fi films, dune part two, inception, 2001 space odyssey, mad max fury road, mickey 17, sci-fi streaming',
+
+  stats: {
+    totalMovies: 10,
+    averageRating: 8.2,
+    totalWatchtime: '23 hours 45 minutes',
+    averageSpectacularLevel: 94.5,
+    mostSpectacular: 'Dune: Part Two (100/100)',
+    newestMovie: 'Mickey 17 (2025)',
+    oldestMovie: '2001: A Space Odyssey (1968)'
+  },
+
+  movies: [
+    'tt0062622',  // 1. 2001: A Space Odyssey
+    'tt1375666',  // 2. Inception
+    'tt15239678', // 3. Dune: Part Two
+    'tt0079944',  // 4. Stalker
+    'tt1160419',  // 5. Dune
+    'tt3708280',  // 6. Ex Machina
+    'tt12037194',  // 7. Mad Max: Fury Road
+    'tt11858890', // 8. Mickey 17
+    'tt11389872', // 9. Kingdom of the Planet of the Apes
+    'tt3464902'   // 10. The Lobster
+  ],
+
+  badges: [
+    { label: 'Cinematic Spectacle', desc: 'Massive scale & visuals' },
+    { label: 'HBO Max Exclusive', desc: 'Premium blockbuster cinema' },
+    { label: 'Mind-Expanding', desc: 'Deep philosophical concepts' }
+  ],
+
+  featured: {
+    hero: {
+      title: 'Dune: Part Two',
+      subtitle: 'The Ultimate Sci-Fi Epic',
+      description: 'Denis Villeneuve\'s breathtaking continuation of the mythic journey of Paul Atreides. A visual masterpiece that demands to be seen.',
+      poster: 'https://image.tmdb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg',
+      backdrop: 'https://image.tmdb.org/t/p/w1280/xOMo8BRK7PfcJv9JCnx7s5hj0PX.jpg',
+      spectacularLevel: 100
+    }
+  },
+
+  relatedCollections: [
+    'best-sci-fi-movies',
+    'movies-like-interstellar',
+    'movies-like-the-matrix'
+  ],
+
+  seo: {
+    title: '10 Best Sci-Fi Movies on HBO Max (2026) | Ranked by Scale',
+    description: 'The definitive ranking of the best sci-fi movies on HBO Max. From the cosmic scale of 2001 to the visceral action of Mad Max.',
+    keywords: 'sci-fi movies hbo max, best sci-fi films streaming, dune, inception, 2001 space odyssey, mad max fury road, mickey 17',
+    canonicalUrl: 'https://filmiway.com/collection/best-sci-fi-movies-on-hbo-max',
+    ogImage: 'https://filmiway.com/images/hbo-scifi-collection-og.jpg',
+    structuredData: {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      name: 'Best Sci-Fi Movies on HBO Max',
+      description: 'Expert-curated list of the best sci-fi movies available on HBO Max ranked by spectacular level and conceptual depth',
+      numberOfItems: 10
+    }
+  }
+},
+
+
+// 🩸 BEST HORROR MOVIES ON HBO MAX COLLECTION
+'best-horror-movies-on-hbo-max': {
+    slug: 'best-horror-movies-on-hbo-max',
+    title: '10 Best Horror Movies on HBO Max',
+    subtitle: 'Ranked by Scariness & Trauma',
+    description: 'The definitive ranking of the scariest movies on HBO Max. From the jump scares of Insidious to the atmospheric dread of The Witch.',
+    longDescription: 'Prepare for sleepless nights. This collection ranks the most terrifying horror movies currently streaming on HBO Max. We move beyond simple jump scares to explore deep psychological trauma, visceral gore, and atmospheres so oppressive they feel cursed. From the supernatural terror of The Conjuring to the relentless brutality of Evil Dead Rise.',
+
+    emoji: '🩸',
+    theme: 'red',
+    primaryColor: '#dc2626',
+    secondaryColor: '#b91c1c',
+    accentColor: '#7f1d1d',
+    gradientFrom: 'from-red-900',
+    gradientTo: 'to-black',
+
+    category: 'horror',
+    tags: ['horror', 'hbo max', 'scary', 'supernatural', 'demons', 'ghosts', 'streaming'],
+
+    metaTitle: '10 Best Horror Movies on HBO Max (2026) | Ranked by Scariness | Filmiway',
+    metaDescription: 'Discover the 10 scariest movies on HBO Max—from The Conjuring to Evil Dead Rise. Expert-curated ranking of visceral horror and psychological dread.',
+    metaKeywords: 'best horror movies on hbo max, hbo max horror films, the conjuring, insidious, evil dead rise, the witch, it movie, scariest movies streaming',
+
+    stats: {
+        totalMovies: 10,
+        averageRating: 7.2,
+        totalWatchtime: '18 hours 15 minutes',
+        averageScariness: 88.5,
+        mostTerrifying: 'The Conjuring (95/100)',
+        newestMovie: 'Evil Dead Rise (2023)',
+        oldestMovie: 'Insidious (2010)'
+    },
+
+    movies: [
+        'tt1457767', // 1. The Conjuring
+        'tt1591095', // 2. Insidious
+        'tt3065204', // 3. The Conjuring 2
+        'tt5140878', // 4. Annabelle: Creation
+        'tt4263482', // 5. The Witch
+        'tt13345606', // 6. Evil Dead Rise
+        'tt1396484', // 7. It
+        'tt5814060', // 8. The Nun
+        'tt8350360', // 9. Annabelle Comes Home
+        'tt2226417'  // 10. Insidious: Chapter 2
+    ],
+
+    badges: [
+        { label: 'Pure Nightmare Fuel', desc: 'Guaranteed sleepless nights' },
+        { label: 'HBO Max Exclusive', desc: 'Top-tier horror streaming now' },
+        { label: 'Ranked by Scariness', desc: 'Sorted by pure intensity' }
+    ],
+
+    featured: {
+        hero: {
+            title: 'The Conjuring',
+            subtitle: 'The Scariest Movie of the 21st Century',
+            description: 'Based on true events, James Wan’s masterpiece redefined modern horror with its suffocating atmosphere and relentless scares.',
+            poster: 'https://image.tmdb.org/t/p/w500/wVYREutTvI2tmxr6ujrHT704wGF.jpg',
+            backdrop: 'https://image.tmdb.org/t/p/w1280/mzH7171d87e1f71f117171171.jpg',
+            scariness: 95
+        }
+    },
+
+    relatedCollections: [
+        'best-thriller-movies-on-hbo-max',
+        'best-horror-movies-on-hulu',
+        'best-psychological-thriller-movies'
+    ],
+
+    seo: {
+        title: '10 Best Horror Movies on HBO Max (2026) | Ranked by Scariness',
+        description: 'The definitive ranking of the scariest movies on HBO Max. From the supernatural terror of The Conjuring to the folk horror of The Witch.',
+        keywords: 'horror movies hbo max, best horror films streaming, the conjuring, insidious, evil dead rise, the witch, it, scary movies hbo max',
+        canonicalUrl: 'https://filmiway.com/collection/best-horror-movies-on-hbo-max',
+        ogImage: 'https://filmiway.com/images/hbo-horror-collection-og.jpg',
+        structuredData: {
+            '@context': 'https://schema.org',
+            '@type': 'ItemList',
+            name: 'Best Horror Movies on HBO Max',
+            description: 'Expert-curated list of the scariest horror movies available on HBO Max ranked by scariness and visceral impact',
+            numberOfItems: 10
+        }
+    }
+},
+
+
+
+// 🏆 BEST MOVIES ON HBO MAX COLLECTION
+'best-movies-on-hbo-max': {
+    slug: 'best-movies-on-hbo-max',
+    title: 'Top 10 Best Movies on HBO Max',
+    subtitle: 'The Definitive Ranking',
+    description: 'The highest-rated films streaming on HBO Max right now. From Seven Samurai to Dune: Part Two, covering all genres.',
+    longDescription: 'Looking for the absolute best movies on HBO Max? This definitive ranking cuts through the noise to bring you the highest-rated, most critically acclaimed films available on the platform right now. Spanning epic action, silent cinema, sci-fi masterpieces, and timeless romance.',
+
+    emoji: '🏆',
+    theme: 'gold',
+    primaryColor: '#eab308', // Yellow 500
+    secondaryColor: '#ca8a04', // Yellow 600
+    accentColor: '#854d0e', // Yellow 800
+    gradientFrom: 'from-yellow-600',
+    gradientTo: 'to-amber-800',
+
+    category: 'best-of-hbo',
+    tags: ['hbo max', 'streaming', 'best movies', 'top rated', 'critically acclaimed', 'masterpiece', 'ranking'],
+
+    metaTitle: '10 Best Movies on HBO Max (2026) | The Ultimate Ranking | Filmiway',
+    metaDescription: 'The definitive top 10 movies on HBO Max right now. From Seven Samurai to The Dark Knight, discover the highest-rated films across all genres. Expert curated.',
+    metaKeywords: 'best movies on hbo max, top rated hbo max films, seven samurai, dark knight, spirited away, dune part two, best streaming movies 2026',
+
+    stats: {
+        totalMovies: 10,
+        averageRating: 8.6,
+        totalWatchtime: '26 hours 15 minutes',
+        averageCriticScore: 96,
+        mostAcclaimed: 'Seven Samurai (100% Critic Score)',
+        newestMovie: 'Dune: Part Two (2024)',
+        oldestMovie: 'City Lights (1931)'
+    },
+
+    movies: [
+        'tt0047478', // 1. Seven Samurai
+       'tt0062622',  // 10. 2001: A Space Odyssey
+        'tt0167260', // 2. The Return of the King
+        'tt0468569', // 3. The Dark Knight
+        'tt0245429', // 4. Spirited Away
+        'tt0079944', // 5. Stalker
+        'tt0087884', // 6. Paris, Texas
+        'tt15239678', // 7. Dune: Part Two
+        'tt0021749', // 8. City Lights
+        'tt0034583', // 9. Casablanca
+      
+
+        
+    ],
+
+    badges: [
+        { label: 'Cinematic Masterpieces', desc: 'The greatest films ever made' },
+        { label: 'Genre Defining', desc: 'The gold standard of their categories' },
+        { label: 'Critically Acclaimed', desc: 'Top-tier filmmaking' }
+    ],
+
+    featured: {
+        hero: {
+            title: 'Seven Samurai',
+            subtitle: 'The Greatest Action Movie Ever Made',
+            description: 'Akira Kurosawa\'s epic masterpiece about a village of farmers that hires seven masterless samurai to combat bandits.',
+            poster: 'https://image.tmdb.org/t/p/w500/8OKmBV5BUFzqzBmqX5gsROk50u.jpg',
+            backdrop: 'https://image.tmdb.org/t/p/w1280/mzH7171d87e1f71f117171171.jpg',
+            rating: 9.2
+        }
+    },
+
+    relatedCollections: [
+        'best-action-movies-on-hbo-max',
+        'best-sci-fi-movies-on-hbo-max',
+        'best-romance-movies-on-hbo-max',
+        'best-thriller-movies-on-hbo-max',
+        'best-family-movies-on-hbo-max',
+        'best-movies-on-hulu'
+    ],
+
+    seo: {
+        title: '10 Best Movies on HBO Max (2026) | The Ultimate Ranking | Filmiway',
+        description: 'Discover the 10 best movies streaming on HBO Max right now. From Seven Samurai to Dune, explore our expert-curated list of top-rated films.',
+        keywords: 'best movies on hbo max, top rated hbo max movies, what to watch on hbo max, best films streaming, seven samurai, dark knight, spirited away',
+        canonicalUrl: 'https://filmiway.com/collection/best-movies-on-hbo-max',
+        ogImage: 'https://filmiway.com/images/hbo-best-movies-collection-og.jpg',
+        structuredData: {
+            '@context': 'https://schema.org',
+            '@type': 'ItemList',
+            name: 'Best Movies on HBO Max',
+            description: 'Expert-curated list of the absolute best movies available on HBO Max ranked by critical acclaim and cinematic legacy',
+            numberOfItems: 10
+        }
+    }
+},
+
+
+// 🎭 BEST DRAMA MOVIES ON HBO MAX COLLECTION
+'best-drama-movies-on-hbo-max': {
+    slug: 'best-drama-movies-on-hbo-max',
+    title: '10 Best Drama Movies on HBO Max',
+    subtitle: 'Emotional Masterpieces & Character Studies',
+    description: 'The most emotionally resonant dramas streaming on HBO Max. From the poetic Moonlight to the gritty Taxi Driver—ranked by emotional intensity.',
+    longDescription: 'Prepare for cinema that touches the soul. This collection ranks the most powerful drama films currently streaming on HBO Max. We prioritize emotional authenticity, deep character studies, and auteur-driven storytelling. From the neon-soaked streets of Taxi Driver to the quiet devastation of Paris, Texas, these are the films that define the human condition.',
+
+    emoji: '🎭',
+    theme: 'indigo',
+    primaryColor: '#6366f1', // Indigo 500
+    secondaryColor: '#4f46e5', // Indigo 600
+    accentColor: '#312e81', // Indigo 900
+    gradientFrom: 'from-indigo-600',
+    gradientTo: 'to-violet-900',
+
+    category: 'drama',
+    tags: ['drama', 'hbo max', 'streaming', 'emotional', 'prestige', 'award-winning', 'tearjerker', 'arthouse'],
+
+    metaTitle: '10 Best Drama Movies on HBO Max (2026) | Ranked by Emotion | Filmiway',
+    metaDescription: 'Discover the top 10 drama movies on HBO Max—from Moonlight to The Brutalist. Expert-curated ranking of emotionally powerful films and cinematic masterpieces.',
+    metaKeywords: 'best drama movies on hbo max, hbo max drama films, moonlight, taxi driver, paris texas, the brutalist, past lives, emotional movies hbo max',
+
+    stats: {
+        totalMovies: 10,
+        averageRating: 8.1,
+        totalWatchtime: '21 hours 35 minutes',
+        averageEmotionalIntensity: 94.5,
+        mostEmotional: 'Paris, Texas (100/100)',
+        newestMovie: 'The Brutalist (2024)',
+        oldestMovie: 'The Battle of Algiers (1966)'
+    },
+
+    movies: [
+        'tt4975722',  // 1. Moonlight (2016)
+        'tt8999762',  // 2. The Brutalist (2024)
+        'tt0087884',  // 3. Paris, Texas (1984)
+        'tt0075314',  // 4. Taxi Driver (1976)
+        'tt13238346', // 5. Past Lives (2023)
+        'tt0058946',  // 6. The Battle of Algiers (1966)
+        'tt28479262', // 7. Sing Sing (2024)
+        'tt0088939',  // 8. The Color Purple (1985)
+        'tt1723811',  // 9. Shame (2011)
+        'tt7286456'   // 10. Joker (2019)
+    ],
+
+    badges: [
+        { label: 'Emotional Powerhouses', desc: 'Guaranteed to move you' },
+        { label: 'HBO Max Exclusive', desc: 'Prestige cinema streaming now' },
+        { label: 'Character Studies', desc: 'Deep psychological depth' }
+    ],
+
+    featured: {
+        hero: {
+            title: 'Moonlight',
+            subtitle: 'A Cinematic Poem',
+            description: 'Barry Jenkins\' Oscar-winning masterpiece chronicles the life of a young black man across three defining chapters of his life. Visually stunning and emotionally raw.',
+            poster: 'https://image.tmdb.org/t/p/w500/4911d5MNM0e32pP79s0f33K3X5.jpg',
+            backdrop: 'https://image.tmdb.org/t/p/w1280/t7sF2m9K9E5Q2yQ2yQ2yQ2yQ2.jpg', // Placeholder pattern or generic
+            emotionalIntensity: 98
+        }
+    },
+
+    relatedCollections: [
+        'best-movies-on-hbo-max',
+        'best-romance-movies-on-hbo-max',
+        'best-drama-movies-on-hulu'
+    ],
+
+    seo: {
+        title: '10 Best Drama Movies on HBO Max (2026) | Ranked by Emotion',
+        description: 'The definitive ranking of the best drama movies on HBO Max. From the masterpiece Moonlight to the gritty Taxi Driver.',
+        keywords: 'drama movies hbo max, best drama films streaming, moonlight, paris texas, the brutalist, joker, past lives, sad movies hbo max',
+        canonicalUrl: 'https://filmiway.com/collection/best-drama-movies-on-hbo-max',
+        ogImage: 'https://filmiway.com/images/hbo-drama-collection-og.jpg',
+        structuredData: {
+            '@context': 'https://schema.org',
+            '@type': 'ItemList',
+            name: 'Best Drama Movies on HBO Max',
+            description: 'Expert-curated list of the best drama movies available on HBO Max ranked by emotional intensity and cinematic quality',
+            numberOfItems: 10
+        }
+    }
+},
+
+// 😂 BEST COMEDY MOVIES ON HBO MAX COLLECTION
+'best-comedy-movies-on-hbo-max': {
+    slug: 'best-comedy-movies-on-hbo-max',
+    title: 'Best Comedy Movies on HBO Max',
+    subtitle: 'Satire, Slapstick & Cinematic Masterpieces',
+    description: 'The definitive ranking of the funniest movies on HBO Max. From the satire of The Great Dictator to the chaos of The LEGO Batman Movie.',
+    longDescription: 'Prepare for laughter that spans a century. This collection ranks the absolute best comedy movies on HBO Max, focusing on influence, wit, and cinematic brilliance. From the silent genius of Chaplin to the meta-humor of Barbie, these films prove that comedy is a serious art form.',
+
+    emoji: '😂',
+    theme: 'yellow',
+    primaryColor: '#facc15', // Yellow 400
+    secondaryColor: '#eab308', // Yellow 500
+    accentColor: '#ca8a04', // Yellow 600
+    gradientFrom: 'from-yellow-500',
+    gradientTo: 'to-amber-500',
+
+    category: 'comedy',
+    tags: ['comedy', 'hbo max', 'streaming', 'satire', 'classic', 'parody', 'slapstick'],
+
+    metaTitle: '10 Best Comedy Movies on HBO Max ((2026)) | Ranked by Laughter | Filmiway',
+    metaDescription: 'Discover the top 10 comedy movies on HBO Max—from City Lights to Barbie. Expert-curated ranking of satirical masterpieces and hilarious classics.',
+    metaKeywords: 'best comedy movies on hbo max, hbo max comedy films, city lights, blazing saddles, barbie, this is spinal tap, funny movies streaming',
+
+    stats: {
+        totalMovies: 10,
+        averageRating: 8.2,
+        totalWatchtime: '16 hours 10 minutes',
+        averageLaughterScore: 91.5,
+        mostHilarious: 'Blazing Saddles (96/100)',
+        newestMovie: 'Barbie (2023)',
+        oldestMovie: 'City Lights (1931)'
+    },
+
+    movies: [
+        'tt0021749', // 1. City Lights
+        'tt0032553', // 2. The Great Dictator
+        'tt0045152', // 3. Singin' in the Rain
+        'tt0088258', // 4. This Is Spinal Tap
+        'tt0098635', // 5. When Harry Met Sally...
+        'tt0116282', // 6. Fargo
+        'tt0071230', // 7. Blazing Saddles
+        'tt0058182', // 8. A Hard Day's Night
+        'tt1517268', // 9. Barbie
+        'tt4116284'  // 10. The LEGO Batman Movie
+    ],
+
+    badges: [
+        { label: 'Satirical Genius', desc: 'Sharp social commentary' },
+        { label: 'HBO Max Exclusive', desc: 'Premium comedy streaming now' },
+        { label: 'Timeless Classics', desc: 'Funny in 1931, funny today' }
+    ],
+
+    featured: {
+        hero: {
+            title: 'City Lights',
+            subtitle: 'The Greatest Romantic Comedy',
+            description: 'Charlie Chaplin\'s silent masterpiece about a Tramp who falls in love with a blind flower girl. The perfect blend of slapstick, romance, and tragedy.',
+            poster: 'https://image.tmdb.org/t/p/w500/bXNvzjULc9jrOVhGfjcc64uKZmZ.jpg',
+            backdrop: 'https://image.tmdb.org/t/p/w1280/2lO3h5d26a27346765727376.jpg', // Placeholder - use valid path
+            laughterScore: 92
+        }
+    },
+
+    relatedCollections: [
+        'best-movies-on-hbo-max',
+        'best-comedy-movies-on-hulu',
+        'best-romance-movies-on-hbo-max'
+    ],
+
+    seo: {
+        title: '10 Best Comedy Movies on HBO Max (2026)',
+        description: 'The definitive ranking of the best comedy movies on HBO Max. From the timeless City Lights to the modern satire of Barbie.',
+        keywords: 'comedy movies hbo max, best comedy films streaming, city lights, the great dictator, blazing saddles, spinal tap, barbie, funny movies hbo max',
+        canonicalUrl: 'https://filmiway.com/collection/best-comedy-movies-on-hbo-max',
+        ogImage: 'https://filmiway.com/images/hbo-comedy-collection-og.jpg',
+        structuredData: {
+            '@context': 'https://schema.org',
+            '@type': 'ItemList',
+            name: 'Best Comedy Movies on HBO Max',
+            description: 'Expert-curated list of the best comedy movies available on HBO Max ranked by laughter index and cinematic influence',
+            numberOfItems: 10
+        }
+    }
+},
 
 
 // 🦢 MOVIES LIKE BLACK SWAN COLLECTION
@@ -1208,7 +1727,7 @@ export const COLLECTIONS = {
   category: 'black-swan',
   tags: ['psychological horror', 'artistic obsession', 'identity crisis', 'descent into madness', 'performance art', 'body horror'],
   
-  metaTitle: '10 Movies Like Black Swan (2025) | Psychological Descent Cinema | Filmiway',
+  metaTitle: '10 Movies Like Black Swan ((2026)) | Psychological Descent Cinema | Filmiway',
   metaDescription: 'Discover 10 haunting films like Black Swan exploring artistic obsession and psychological breakdown—from Perfect Blue to The Piano Teacher. Masterpieces of identity horror ranked by intensity.',
   metaKeywords: 'movies like black swan, psychological horror films, artistic obsession movies, darren aronofsky, perfect blue, whiplash, suspiria, the red shoes, mulholland drive, the piano teacher',
   
@@ -1259,7 +1778,7 @@ export const COLLECTIONS = {
   ],
   
   seo: {
-    title: '10 Movies Like Black Swan (2025) | Psychological Descent Cinema | Filmiway',
+    title: '10 Movies Like Black Swan ((2026)) | Psychological Descent Cinema | Filmiway',
     description: 'Explore the definitive ranking of films like Black Swan—from Perfect Blue to The Piano Teacher. Experience cinema\'s most haunting explorations of artistic obsession and psychological breakdown.',
     keywords: 'movies like black swan, psychological horror, artistic obsession films, darren aronofsky movies, perfect blue, whiplash, suspiria, mulholland drive, the piano teacher, birdman, requiem for a dream',
     canonicalUrl: 'https://filmiway.com/collection/movies-like-black-swan',
@@ -1297,7 +1816,7 @@ export const COLLECTIONS = {
   category: 'oldboy',
   tags: ['revenge', 'vengeance', 'korean cinema', 'psychological thriller', 'shocking twists', 'brutal violence'],
 
-  metaTitle: '10 Movies Like Oldboy (2025) | Ultimate Revenge Thrillers | Filmiway',
+  metaTitle: '10 Movies Like Oldboy ((2026)) | Ultimate Revenge Thrillers | Filmiway',
   metaDescription: 'Discover 10 brutal revenge movies like Oldboy ranked by vengeance intensity—from I Saw the Devil to Lady Vengeance. Twisted tales of betrayal and retribution.',
   metaKeywords: 'movies like oldboy, revenge thrillers, korean revenge movies, i saw the devil, lady vengeance, park chan wook, vengeance films',
 
@@ -1348,7 +1867,7 @@ export const COLLECTIONS = {
   ],
 
   seo: {
-    title: '10 Movies Like Oldboy (2025) | Ultimate Revenge Thrillers | Filmiway',
+    title: '10 Movies Like Oldboy ((2026)) | Ultimate Revenge Thrillers | Filmiway',
     description: 'The definitive Oldboy-inspired collection—brutal revenge films with shocking twists and unrelenting vengeance. From I Saw the Devil to Lady Vengeance.',
     keywords: 'movies like oldboy, revenge movies, korean thrillers, i saw the devil, lady vengeance, sympathy for mr vengeance, park chan wook films',
     canonicalUrl: 'https://filmiway.com/collection/movies-like-oldboy',
@@ -1382,7 +1901,7 @@ export const COLLECTIONS = {
   category: 'parasite',
   tags: ['class warfare', 'social inequality', 'dark comedy', 'satire', 'korean cinema', 'wealth divide'],
 
-  metaTitle: '10 Movies Like Parasite (2025) | Class Warfare Cinema | Filmiway',
+  metaTitle: '10 Movies Like Parasite ((2026)) | Class Warfare Cinema | Filmiway',
   metaDescription: 'Discover 10 films like Parasite exploring class divide and social inequality—from The Handmaiden to Snowpiercer. Dark, satirical masterpieces ranked by intensity.',
   metaKeywords: 'movies like parasite, class warfare films, social inequality movies, bong joon-ho films, korean cinema, snowpiercer, burning, shoplifters, the platform',
 
@@ -1434,7 +1953,7 @@ export const COLLECTIONS = {
   ],
 
   seo: {
-    title: '10 Movies Like Parasite (2025) | Class Warfare Cinema | Filmiway',
+    title: '10 Movies Like Parasite ((2026)) | Class Warfare Cinema | Filmiway',
     description: 'Explore the definitive ranking of films like Parasite—from The Handmaiden to Snowpiercer. Experience cinema\'s most brutal examinations of class divide and social inequality.',
     keywords: 'movies like parasite, class warfare cinema, social inequality films, bong joon-ho movies, korean films, the handmaiden, burning, snowpiercer, the platform, shoplifters',
     canonicalUrl: 'https://filmiway.com/collection/movies-like-parasite',
@@ -1469,7 +1988,7 @@ export const COLLECTIONS = {
   category: 'eyes-wide-shut',
   tags: ['secret societies', 'occult', 'paranoia', 'surrealism', 'erotic thriller', 'cults', 'wealth'],
 
-  metaTitle: '10 Movies Like Eyes Wide Shut (2025) | Occult Paranoia Films | Filmiway',
+  metaTitle: '10 Movies Like Eyes Wide Shut ((2026)) | Occult Paranoia Films | Filmiway',
   metaDescription: 'Discover 10 paranoid thrillers like Eyes Wide Shut—from Mulholland Drive to The Ninth Gate. Films about secret societies, rituals, and the dark elite.',
   metaKeywords: 'movies like eyes wide shut, secret society movies, occult thrillers, mulholland drive, the ninth gate, rosemarys baby, illuminati movies, paranoia films',
 
@@ -1555,7 +2074,7 @@ export const COLLECTIONS = {
   category: 'donnie-darko',
   tags: ['reality warping', 'time travel', 'butterfly effect', 'psychological sci-fi', 'cult classics', 'temporal paradoxes'],
 
-  metaTitle: '10 Movies Like Donnie Darko (2025) | Reality-Warping Cinema | Filmiway',
+  metaTitle: '10 Movies Like Donnie Darko ((2026)) | Reality-Warping Cinema | Filmiway',
   metaDescription: 'Discover 10 films like Donnie Darko exploring time paradoxes and reality distortion—from The Butterfly Effect to Enemy. Mind-bending masterpieces ranked by reality warp intensity.',
   metaKeywords: 'movies like donnie darko, reality warping films, time travel movies, butterfly effect films, psychological sci-fi, the butterfly effect, 12 monkeys, coherence, mulholland drive, eternal sunshine',
 
@@ -1606,7 +2125,7 @@ export const COLLECTIONS = {
   ],
 
   seo: {
-    title: '10 Movies Like Donnie Darko (2025) | Reality-Warping Cinema | Filmiway',
+    title: '10 Movies Like Donnie Darko ((2026)) | Reality-Warping Cinema | Filmiway',
     description: 'Explore the definitive ranking of films like Donnie Darko—from The Butterfly Effect to Enemy. Experience cinema\'s most disorienting reality-warping masterpieces.',
     keywords: 'movies like donnie darko, reality warping cinema, time travel paradoxes, butterfly effect movies, psychological sci-fi films, the butterfly effect, 12 monkeys, coherence, mulholland drive, enemy, jacob\'s ladder',
     canonicalUrl: 'https://filmiway.com/collection/movies-like-donnie-darko',
@@ -1656,9 +2175,9 @@ export const COLLECTIONS = {
     ],
 
     metaTitle:
-      '10 Best War Films Ever Made (2025) | Expert War Movies Ranking',
+      '10 Best War Films Ever Made ((2026)) | Expert War Movies Ranking',
     metaDescription:
-      'Explore 10 essential war films—from Saving Private Ryan and Apocalypse Now to Das Boot and Paths of Glory. A definitive, expert-curated ranking of the greatest war movies ever made, updated for 2025.',
+      'Explore 10 essential war films—from Saving Private Ryan and Apocalypse Now to Das Boot and Paths of Glory. A definitive, expert-curated ranking of the greatest war movies ever made, updated for (2026).',
     metaKeywords:
       'best war films, best war movies, world war 2 films, vietnam war movies, saving private ryan, apocalypse now, schindlers list, full metal jacket, das boot, platoon, paths of glory, 1917',
 
@@ -1759,7 +2278,7 @@ export const COLLECTIONS = {
     category: 'revenge',
     tags: ['revenge', 'vengeance', 'retribution', 'action', 'thriller', 'brutal', 'justice'],
 
-    metaTitle: 'Best Revenge Movies: 10 Brutal Films (2025) | Expert Rankings',
+    metaTitle: 'Best Revenge Movies: 10 Brutal Films ((2026)) | Expert Rankings',
     metaDescription: 'Discover the 10 greatest revenge movies ranked by intensity—from Oldboy and Gladiator to John Wick. Experience visceral vengeance and moral complexity.',
     metaKeywords: 'best revenge movies, revenge films, vengeance movies, oldboy, gladiator, john wick, kill bill, count of monte cristo, brutal revenge films',
 
@@ -1810,7 +2329,7 @@ export const COLLECTIONS = {
     ],
 
     seo: {
-      title: '10 Best Revenge Movies of All Time (2025) | Expert Rankings | Filmiway',
+      title: '10 Best Revenge Movies of All Time ((2026)) | Expert Rankings | Filmiway',
       description: 'Explore the definitive ranking of revenge movies—from Oldboy to John Wick. Expert-curated collection of cinema\'s most brutal vengeance tales.',
       keywords: 'best revenge movies, revenge films, vengeance cinema, oldboy, gladiator, john wick, kill bill, the revenant, brutal revenge, retribution movies',
       canonicalUrl: 'https://filmiway.com/collection/best-revenge-movies',
@@ -1843,7 +2362,7 @@ export const COLLECTIONS = {
     gradientTo: 'to-gray-900',
     category: 'crime-thriller',
     tags: ['crime', 'psychological thriller', 'serial killer', 'detective', 'noir'],
-    metaTitle: '10 Movies Like Se7en (2025) - Best Dark Crime Thrillers | Filmiway',
+    metaTitle: '10 Movies Like Se7en ((2026)) - Best Dark Crime Thrillers | Filmiway',
     metaDescription: 'Craving the grit of Se7en? Discover 10 dark crime thrillers like Zodiac, Prisoners, and Silence of the Lambs. Ranked by atmospheric tension and plot twists.',
     metaKeywords: 'movies like se7en, best crime thrillers, zodiac, prisoners, silence of the lambs, dark detective movies, psychological noir, serial killer movies',
     stats: {
@@ -1889,7 +2408,7 @@ export const COLLECTIONS = {
       'best-detective-thriller-movies'
     ],
     seo: {
-      title: '10 Movies Like Se7en (2025) - Best Dark Crime Thrillers | Filmiway',
+      title: '10 Movies Like Se7en ((2026)) - Best Dark Crime Thrillers | Filmiway',
       description: 'Craving the grit of Se7en? Discover 10 dark crime thrillers like Zodiac, Prisoners, and Silence of the Lambs. Ranked by atmospheric tension and plot twists.',
       keywords: 'movies like se7en, dark thriller movies, zodiac movie, prisoners movie, silence of the lambs, best serial killer movies, psychological noir',
       canonicalUrl: 'https://filmiway.com/collection/movies-like-se7en',
@@ -1921,7 +2440,7 @@ export const COLLECTIONS = {
   category: 'matrix',
   tags: ['matrix', 'cyberpunk', 'simulation', 'reality-bending', 'sci-fi', 'digital-consciousness', 'awakening'],
 
-  metaTitle: 'Top 10 Movies Like The Matrix (2025) | Reality-Bending Films',
+  metaTitle: 'Top 10 Movies Like The Matrix ((2026)) | Reality-Bending Films',
   metaDescription: 'Discover the best movies like The Matrix ranked by simulation complexity—from cyberpunk classics to digital awakening masterpieces.',
   metaKeywords: 'movies like the matrix, cyberpunk movies, simulation theory films, dark city, inception, thirteenth floor, existenz',
 
@@ -1972,7 +2491,7 @@ export const COLLECTIONS = {
   ],
 
   seo: {
-    title: 'Top 10 Movies Like The Matrix (2025) | Cyberpunk Reality Films | Filmiway',
+    title: 'Top 10 Movies Like The Matrix ((2026)) | Cyberpunk Reality Films | Filmiway',
     description: 'The definitive collection of movies like The Matrix—cyberpunk films with simulation theory, digital consciousness, and reality-bending awakenings.',
     keywords: 'movies like matrix, cyberpunk films, simulation movies, dark city, inception, thirteenth floor, existenz, source code',
     canonicalUrl: 'https://filmiway.com/collection/movies-like-the-matrix',
@@ -2007,7 +2526,7 @@ export const COLLECTIONS = {
   category: 'sci-fi',
   tags: ['sci-fi', 'science fiction', 'space', 'AI', 'future', 'dystopian', 'mind-bending'],
 
-  metaTitle: 'Top 10 Sci-Fi Movies of All Time (2025) | Definitive Rankings',
+  metaTitle: 'Top 10 Sci-Fi Movies of All Time ((2026)) | Definitive Rankings',
   metaDescription: 'Discover the top 10 science fiction movies ranked by experts—from 2001: A Space Odyssey to Blade Runner 2049. The ultimate sci-fi film collection.',
   metaKeywords: 'best sci-fi movies, science fiction films, 2001 space odyssey, blade runner, the matrix, interstellar, inception, arrival, star wars',
 
@@ -2058,7 +2577,7 @@ export const COLLECTIONS = {
   ],
 
   seo: {
-    title: 'Top 10 Sci-Fi Movies of All Time (2025) | Expert Rankings | Filmiway',
+    title: 'Top 10 Sci-Fi Movies of All Time ((2026)) | Expert Rankings | Filmiway',
     description: 'Explore the definitive ranking of the greatest science fiction movies—from 2001: A Space Odyssey to Blade Runner 2049. Expert-curated collection of sci-fi cinema.',
     keywords: 'best sci-fi movies, science fiction films, top sci-fi ranking, 2001 space odyssey, blade runner, the matrix, interstellar, arrival, star wars, inception',
     canonicalUrl: 'https://filmiway.com/collection/top-10-sci-fi-movies',
@@ -2095,7 +2614,7 @@ export const COLLECTIONS = {
     'time travel', 'paradox', 'sci-fi', 'intensity', 'classic', 'mind-bending'
   ],
 
-  metaTitle: '10 Best Time Travel Movies of All Time (2025) | Filmiway Ranking',
+  metaTitle: '10 Best Time Travel Movies of All Time ((2026)) | Filmiway Ranking',
   metaDescription: 'Discover the top 10 time travel movies—ranked by intensity, complexity and storytelling. From Back to the Future to Interstellar.',
   metaKeywords: 'best time travel movies, time travel films, sci-fi movies, paradox movies, back to the future, interstellar, predestination, primer',
 
@@ -2146,7 +2665,7 @@ export const COLLECTIONS = {
   ],
 
   seo: {
-    title: '10 Best Time Travel Movies of All Time (2025) | Filmiway',
+    title: '10 Best Time Travel Movies of All Time ((2026)) | Filmiway',
     description: 'Discover the experts’ definitive ranking—10 greatest time travel movies, from Back to the Future and Interstellar to indie gems like Primer.',
     keywords: 'best time travel movies, time travel film ranking, thriller time travel, paradox movies, genre classics, sci-fi, iconic time travel cinema',
     canonicalUrl: 'https://filmiway.com/collection/best-time-travel-movies',
@@ -2182,7 +2701,7 @@ export const COLLECTIONS = {
     category: 'interstellar',
     tags: ['sci-fi', 'space', 'time-travel', 'hard-sci-fi', 'space-exploration', 'mind-bending', 'emotional'],
 
-    metaTitle: '10 Movies Like Interstellar (2025) | Space Epics Ranked | Filmiway',
+    metaTitle: '10 Movies Like Interstellar ((2026)) | Space Epics Ranked | Filmiway',
     metaDescription: 'Discover the 10 best movies like Interstellar—from Arrival to 2001: A Space Odyssey. Expert-curated ranking of cosmic sci-fi with emotional depth.',
     metaKeywords: 'movies like interstellar, space movies, sci-fi epics, arrival, contact, 2001 space odyssey, the martian, gravity, ad astra, sunshine',
 
@@ -2233,7 +2752,7 @@ export const COLLECTIONS = {
     ],
 
     seo: {
-      title: '10 Movies Like Interstellar (2025) | Space Epics Ranked | Filmiway',
+      title: '10 Movies Like Interstellar ((2026)) | Space Epics Ranked | Filmiway',
       description: 'Explore the definitive ranking of films like Interstellar. Expert-curated collection of cerebral space epics and emotional sci-fi.',
       keywords: 'movies like interstellar, space exploration films, hard sci-fi, christopher nolan style, arrival, contact, the martian, gravity, solaris',
       canonicalUrl: 'https://filmiway.com/collection/movies-like-interstellar',
@@ -2267,7 +2786,7 @@ export const COLLECTIONS = {
   category: 'heist-thriller',
   tags: ['heist', 'thriller', 'robbery', 'caper', 'crime', 'mastermind'],
 
-  metaTitle: '10 Best Heist Thriller Movies Ever Made (2025) | Expert Rankings',
+  metaTitle: '10 Best Heist Thriller Movies Ever Made ((2026)) | Expert Rankings',
   metaDescription: 'Discover the top 10 heist thriller movies ranked by experts—from Heat to Ocean\'s Eleven. Experience the ultimate in heist cinema.',
   metaKeywords: 'best heist thriller movies, heist films, robbery movies, caper films, heat, oceans eleven, inside man, the italian job, bank heist movies',
 
@@ -2318,7 +2837,7 @@ export const COLLECTIONS = {
   ],
 
   seo: {
-    title: '10 Best Heist Thriller Movies of All Time (2025) | Filmiway',
+    title: '10 Best Heist Thriller Movies of All Time ((2026)) | Filmiway',
     description: 'Explore the definitive ranking of heist thriller movies—from Heat to Ocean\'s Eleven. Expert-curated collection of the greatest heist films ever made.',
     keywords: 'best heist thriller movies, heist films, bank robbery movies, caper films, oceans eleven, heat, inside man, the italian job, reservoir dogs',
     canonicalUrl: 'https://filmiway.com/collection/best-heist-thriller-movies',
@@ -2354,7 +2873,7 @@ export const COLLECTIONS = {
   category: 'crime-thriller',
   tags: ['crime', 'thriller', 'heist', 'detective', 'noir', 'police'],
   
-  metaTitle: '10 Best Crime Thriller Movies Ever Made (2025) | Expert Rankings',
+  metaTitle: '10 Best Crime Thriller Movies Ever Made ((2026)) | Expert Rankings',
   metaDescription: 'Discover the top 10 crime thriller movies ranked by experts—from Heat to Memories of Murder. Experience the ultimate in crime cinema.',
   metaKeywords: 'best crime thriller movies, crime films, heist movies, detective thrillers, noir, heat, the departed, prisoners, zodiac',
   
@@ -2405,7 +2924,7 @@ export const COLLECTIONS = {
   ],
   
   seo: {
-    title: '10 Best Crime Thriller Movies of All Time (2025) | Filmiway',
+    title: '10 Best Crime Thriller Movies of All Time ((2026)) | Filmiway',
     description: 'Explore the definitive ranking of crime thriller movies—from Heat to The Departed. Expert-curated collection of the greatest crime films ever made.',
     keywords: 'best crime thriller movies, crime films, heist movies, detective thrillers, noir cinema, heat movie, the departed, prisoners, zodiac, memories of murder',
     canonicalUrl: 'https://filmiway.com/collection/best-crime-thriller-movies',
@@ -2444,7 +2963,7 @@ export const COLLECTIONS = {
       { label: 'Cult Classics', desc: 'Timeless and influential films' }
     ],
     metaTitle: '10 Best Psychological Thriller Movies of All Time - Filmiway',
-    metaDescription: 'Explore the best psychological thriller movies known for their mind-bending plots, intense suspense, and complex characters. Curated by Filmiway for 2025.',
+    metaDescription: 'Explore the best psychological thriller movies known for their mind-bending plots, intense suspense, and complex characters. Curated by Filmiway for (2026).',
     metaKeywords: 'psychological thriller movies, best thriller films, mind-bending movies, suspense movies, top psychological thrillers',
     theme: 'purple',
     primaryColor: '#7c3aed',
@@ -2455,7 +2974,7 @@ export const COLLECTIONS = {
     canonicalUrl: 'https://filmiway.com/collection/best-psychological-thriller-movies',
     seo: {
       title: '10 Best Psychological Thriller Movies of All Time | Filmiway',
-      description: 'Dive into a curated list of the top psychological thrillers filled with suspense, mystery, and mind games. Updated for 2025.',
+      description: 'Dive into a curated list of the top psychological thrillers filled with suspense, mystery, and mind games. Updated for (2026).',
       keywords: 'psychological thrillers, suspense films, mind-bending movies, best thriller collection',
       canonicalUrl: 'https://filmiway.com/collection/best-psychological-thriller-movies',
       ogImage: 'https://filmiway.com/images/psychological-thriller-collection-og.jpg'
@@ -2525,7 +3044,7 @@ export const COLLECTIONS = {
     { label: 'Unpredictable', desc: 'Keeps you guessing till the end' },
     { label: 'Mind-Bending', desc: 'Reality-questioning narratives' }
   ],
-  metaTitle: '10 Best Mystery Thriller Movies Ever Made - Filmiway Ranking (2025)',
+  metaTitle: '10 Best Mystery Thriller Movies Ever Made - Filmiway Ranking ((2026))',
   metaDescription: 'Unlock the most suspenseful, mysterious, and mind-warping thrillers in cinema. The definitive top 10, curated and ranked by expert cinephiles.',
   metaKeywords: 'best mystery thriller movies, twists, detective films, best mystery movies, plot twist thrillers, psychological mysteries',
   theme: 'purple',
@@ -2568,9 +3087,9 @@ export const COLLECTIONS = {
       { label: 'Critically Acclaimed', desc: 'Highly ranked thrillers' },
       { label: 'Masterful Storytelling', desc: 'Suspense and tension' }
     ],
-    metaTitle: 'Best Thriller Movies of All Time (2025) | Intensity Ranked',
+    metaTitle: 'Best Thriller Movies of All Time ((2026)) | Intensity Ranked',
     metaDescription: 'Explore the top 10 thriller movies as ranked by intensity and cinematic mastery. Experience psychological nightmares, emotional brutality, and cerebral manipulation.',
-    metaKeywords: 'best thriller movies, psychological thrillers, suspense movies, top thriller films, best intense thrillers, 2025 thriller rankings',
+    metaKeywords: 'best thriller movies, psychological thrillers, suspense movies, top thriller films, best intense thrillers, (2026) thriller rankings',
     theme: 'red',
     primaryColor: '#b91c1c',
     secondaryColor: '#dc2626',

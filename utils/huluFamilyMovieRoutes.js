@@ -24,7 +24,7 @@ export const HULU_FAMILY_MOVIE_SLUGS = {
     'tt12412888': 'sonic-the-hedgehog-2',
     
     // Rank 4: Steven Universe: The Movie
-    'tt10515866': 'steven-universe-the-movie',
+    'tt10515852': 'steven-universe-the-movie',
     
     // Rank 5: Hotel Transylvania
     'tt0837562': 'hotel-transylvania',

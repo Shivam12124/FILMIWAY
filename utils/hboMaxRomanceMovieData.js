@@ -16,7 +16,7 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 398818, "imdbID": "tt5726616", "Title": "Call Me by Your Name", "year": 2017, "genre": "Romance", "runtime": 132, "rank": 5 },
     { "tmdbId": 770, "imdbID": "tt0031381", "Title": "Gone with the Wind", "year": 1939, "genre": "Romance", "runtime": 238, "rank": 6 },
     { "tmdbId": 14769, "imdbID": "tt0115940", "Title": "A Summer's Tale", "year": 1996, "genre": "Romance", "runtime": 113, "rank": 7 },
-    { "tmdbId": 29013, "imdbID": "tt0071141", "Title": "Ali: Fear Eats the Soul", "year": 1974, "genre": "Drama", "runtime": 93, "rank": 8 },
+    { "tmdbId": 216, "imdbID": "tt0071141", "Title": "Ali: Fear Eats the Soul", "year": 1974, "genre": "Drama", "runtime": 93, "rank": 8 },
     { "tmdbId": 15195, "imdbID": "tt0113824", "Title": "Whisper of the Heart", "year": 1995, "genre": "Romance", "runtime": 111, "rank": 9 },
     { "tmdbId": 84892, "imdbID": "tt1659337", "Title": "The Perks of Being a Wallflower", "year": 2012, "genre": "Drama", "runtime": 103, "rank": 10 }
 ];
@@ -58,7 +58,7 @@ export const SENSITIVE_TIMELINES = {
     14769: { scenes: [] },
     
     // 8. Ali: Fear Eats the Soul
-    29013: { scenes: [] },
+    216: { scenes: [] },
     
     // 9. Whisper of the Heart
     15195: { scenes: [] },
@@ -79,7 +79,7 @@ export const FALLBACK_POSTERS = {
     398818: "https://image.tmdb.org/t/p/w500/m878987.jpg",
     770: "https://image.tmdb.org/t/p/w500/l8789.jpg",
     14769: "https://image.tmdb.org/t/p/w500/k89898.jpg",
-    29013: "https://image.tmdb.org/t/p/w500/j8789.jpg",
+    216: "https://image.tmdb.org/t/p/w500/j8789.jpg",
     15195: "https://image.tmdb.org/t/p/w500/58989.jpg",
     84892: "https://image.tmdb.org/t/p/w500/a8789.jpg"
 };
@@ -243,7 +243,7 @@ export const COMPLETE_MOVIE_DATA = {
 
     // 8. Ali: Fear Eats the Soul
     // STATUS: LOCKED 🔒
-    29013: createMovieData({ 
+    216: createMovieData({ 
         emotionalIntensity: 88, 
         chemistryScore: 85, 
         complexityLevel: "POIGNANT", 

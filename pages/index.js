@@ -504,9 +504,7 @@ const FilmiwayHomepage = ({ trendingMovies, popularMovies, topRatedMovies }) => 
                         {/* Footer Bottom Section */}
                         <div className="text-center">
                             <div className="flex items-center justify-center mb-4 xs:mb-6">
-                                <div className="w-28 xs:w-32 sm:w-40 h-12 xs:h-14 sm:h-20 flex items-center justify-center">
-                                    <Image src="/filmiway-logo.svg" alt="Filmiway" width={160} height={80} className="w-full h-full object-contain" draggable={false} />
-                                </div>
+                                
                             </div>
                             <p className="text-gray-400 mb-4 xs:mb-6 max-w-md mx-auto text-xs xs:text-sm">Your complete movie discovery platform for amazing films.</p>
                             <div className="flex items-center justify-center gap-4 xs:gap-6 mb-6 xs:mb-8">
@@ -529,7 +527,7 @@ const FilmiwayHomepage = ({ trendingMovies, popularMovies, topRatedMovies }) => 
                                 </div>
                             </div>
                             <div className="flex flex-wrap items-center justify-center gap-2 xs:gap-4 text-gray-500 text-xs mb-3 xs:mb-4">
-                                <span>&copy; 2025 Filmiway</span><span>&bull;</span>
+                                <span>&copy; (2026) Filmiway</span><span>&bull;</span>
                                 <Link href="/about-us" className="hover:text-yellow-400 transition-colors">About</Link><span>&bull;</span>
                                 <Link href="/privacy" className="hover:text-yellow-400 transition-colors">Privacy</Link><span>&bull;</span>
                                 <Link href="/terms" className="hover:text-yellow-400 transition-colors">Terms</Link><span>&bull;</span>

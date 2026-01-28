@@ -24,7 +24,7 @@ import {
 const COLORS = {
   accent: '#f59e0b', // Amber for Heist (Gold)
   bgPrimary: '#0B0B0C', 
-  bgCard: 'rgba(55, 65, 81, 0.3)', 
+  bgCard: 'rgba(10, 10, 10, 0.3)', 
   textPrimary: '#FFFFFF', 
   textMuted: '#9CA3AF', 
   borderLight: 'rgba(107, 114, 128, 0.3)',
@@ -358,7 +358,7 @@ const HeistThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
 
             <SubtleFilmGrain />
             <div className="absolute inset-0"><CinematicBackground /></div>
-            <SmartBackButton />
+            
 
             <div className="relative z-10 pt-0 md:pt-16">
                 {/* ✅ HIDDEN H1 FOR SEO PARITY */}

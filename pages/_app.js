@@ -1,8 +1,21 @@
-// pages/_app.js - 🔥 SEO + CLARITY (Script Method - Next.js Safe) - CANONICAL REMOVED
+// pages/_app.js - 🔥 SEO + CLARITY + PREMIUM FONTS (Bebas & Montserrat)
 import '../styles/globals.css'
 import { useEffect, useState } from 'react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
+import { Bebas_Neue, Montserrat } from 'next/font/google'
+
+// ✅ 1. Configure Premium Fonts
+const bebas = Bebas_Neue({
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--font-bebas',
+});
+
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  variable: '--font-montserrat',
+});
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
@@ -65,7 +78,10 @@ export default function App({ Component, pageProps }) {
         <link rel="manifest" href="/manifest.json" />
       </Head>
 
-      <Component {...pageProps} />
+      {/* ✅ Wrap Component in Main with Font Variables */}
+      <main className={`${bebas.variable} ${montserrat.variable} font-sans`}>
+        <Component {...pageProps} />
+      </main>
     </>
   )
 }

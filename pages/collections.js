@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Head from 'next/head';
 import Link from 'next/link';
-import { Search, Brain, Mountain, Film, ChevronDown, Sparkles, Plus, ArrowRight, Star, Clock, Eye, Scale, DollarSign, Shield, Zap,Heart,Ghost,Smile,Crown  } from 'lucide-react';
+import { Search, Brain, Mountain, Film, ChevronDown, Sparkles, Plus, ArrowRight, Star, Clock, Eye, Scale, DollarSign, Shield, Zap,Heart,Ghost,Smile,Crown,Rocket  } from 'lucide-react';
 import Image from 'next/image';
 const CollectionsHub = () => {
     const [searchQuery, setSearchQuery] = useState('');
@@ -204,6 +204,80 @@ const CollectionsHub = () => {
     movieCount: '10',
     rating: '7.8',
     directLink: '/collection/best-thriller-movies-on-hbo-max',
+    hasSubCollections: false
+},
+
+{
+    id: 'hbo-max-family',
+    title: 'Best Family Movies on HBO Max',
+    description: 'Magical journeys, Ghibli masterpieces, and wholesome classics for the whole family',
+    icon: Sparkles, 
+    gradient: 'from-yellow-500 to-amber-600',
+    movieCount: '10',
+    rating: '8.0',
+    directLink: '/collection/best-family-movies-on-hbo-max',
+    hasSubCollections: false
+},
+
+
+{
+    id: 'hbo-scifi',
+    title: 'Best Sci-Fi Movies on HBO Max',
+    description: 'Spectacular cosmic epics and mind-bending masterpieces streaming now',
+    icon: Rocket, // Ensure 'Rocket' is imported from 'lucide-react'
+    gradient: 'from-cyan-600 to-blue-800',
+    movieCount: '10',
+    rating: '8.2',
+    directLink: '/collection/best-sci-fi-movies-on-hbo-max',
+    hasSubCollections: false
+},
+
+{
+    id: 'hbo-max-best',
+    title: 'Top 10 Best Movies on HBO Max',
+    description: 'The definitive ranking of the highest-rated films streaming on HBO Max right now. From Seven Samurai to Dune: Part Two.',
+    icon: Crown, // Ensure 'Crown' is imported from 'lucide-react'
+    gradient: 'from-yellow-500 to-amber-600',
+    movieCount: '10',
+    rating: '8.6',
+    directLink: '/collection/best-movies-on-hbo-max',
+    hasSubCollections: false
+},
+
+{
+    id: 'hbo-max-horror',
+    title: 'Best Horror Movies on HBO Max',
+    description: 'The definitive ranking of the scariest movies on HBO Max. From The Conjuring to Evil Dead Rise.',
+    icon: Ghost, // Ensure 'Ghost' is imported from 'lucide-react'
+    gradient: 'from-red-800 to-slate-950',
+    movieCount: '10',
+    rating: '8.0',
+    directLink: '/collection/best-horror-movies-on-hbo-max',
+    hasSubCollections: false
+},
+
+
+{
+    id: 'hbo-max-drama',
+    title: 'Best Drama Movies on HBO Max',
+    description: 'The most emotionally resonant dramas ranked by character depth and impact',
+    icon: Film, // Ensure 'Film' is imported from 'lucide-react'
+    gradient: 'from-indigo-600 to-violet-800',
+    movieCount: '10',
+    rating: '8.1',
+    directLink: '/collection/best-drama-movies-on-hbo-max',
+    hasSubCollections: false
+},
+
+{
+    id: 'hbo-max-comedy',
+    title: 'Best Comedy Movies on HBO Max',
+    description: 'Satirical masterpieces and cinematic comedy classics ranked by laughter',
+    icon: Smile, // Ensure 'Smile' is imported from 'lucide-react'
+    gradient: 'from-yellow-500 to-amber-500',
+    movieCount: '10',
+    rating: '8.2',
+    directLink: '/collection/best-comedy-movies-on-hbo-max',
     hasSubCollections: false
 },
 

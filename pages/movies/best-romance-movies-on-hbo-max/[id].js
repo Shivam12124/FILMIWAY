@@ -22,7 +22,7 @@ import {
 } from '../../../utils/hboMaxRomanceMovieData';
 
 const COLORS = {
-  accent: '#EC4899', accentLight: '#FBCFE8', bgPrimary: '#0f172a', bgCard: 'rgba(23, 23, 30, 0.8)', // Pink/Rose for Romance Base
+  accent: '#EC4899', accentLight: '#FBCFE8',bgPrimary: '#000000ff', bgCard: 'rgba(11, 11, 11, 0.8)', // Pink/Rose for Romance Base
   textPrimary: '#FFFFFF', textSecondary: '#FCE7F3', textMuted: '#DB2777', textDisabled: '#9D174D',
   borderAccent: 'rgba(236, 72, 153, 0.25)', borderLight: 'rgba(80, 7, 36, 0.5)',
 };
@@ -374,7 +374,7 @@ const HboMaxRomanceMoviePage = ({ movie, tmdbData: movieData }) => {
 
             <SubtleFilmGrain />
             <div className="absolute inset-0"><CinematicBackground /></div>
-            <SmartBackButton />
+            
             
             <div className="relative z-10 pt-10 sm:pt-12 lg:pt-16">
                 

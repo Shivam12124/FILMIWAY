@@ -22,7 +22,7 @@ import {
 } from '../../../utils/hboActionMovieData';
 
 const COLORS = {
-  accent: '#EF4444', accentLight: '#FCA5A5', bgPrimary: '#0f172a', bgCard: 'rgba(15, 23, 42, 0.8)', // Red/Slate for HBO Action
+  accent: '#EF4444', accentLight: '#FCA5A5', bgPrimary: '#000000ff', bgCard: 'rgba(11, 11, 11, 0.8)', // Red/Slate for HBO Action
   textPrimary: '#FFFFFF', textSecondary: '#E5E7EB', textMuted: '#9CA3AF', textDisabled: '#6B7280',
   borderAccent: 'rgba(239, 68, 68, 0.25)', borderLight: 'rgba(55, 65, 81, 0.5)',
 };
@@ -378,7 +378,7 @@ const HboActionMoviePage = ({ movie, tmdbData: movieData }) => {
 
             <SubtleFilmGrain />
             <div className="absolute inset-0"><CinematicBackground /></div>
-            <SmartBackButton />
+            
             
             <div className="relative z-10 pt-10 sm:pt-12 lg:pt-16">
                 

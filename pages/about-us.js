@@ -105,7 +105,7 @@ export default function AboutUs() {
             >
               <div className="inline-flex items-center gap-2 border border-yellow-500/30 bg-yellow-500/10 rounded-full px-3 py-1 text-yellow-400 text-[10px] sm:text-xs font-semibold tracking-wide uppercase mb-6">
                 <Sparkles className="w-3 h-3" />
-                <span>Established 2025</span>
+                <span>Established (2026)</span>
               </div>
               
               <h1 className="text-4xl sm:text-6xl font-extralight tracking-tight text-white mb-4 leading-[1.1]">

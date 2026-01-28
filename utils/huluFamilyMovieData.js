@@ -37,7 +37,7 @@ export const SENSITIVE_TIMELINES = {
     675353: { scenes: [] },
     
     // 4. Steven Universe
-    612043: { scenes: [] },
+    537061: { scenes: [] },
     
     // 5. Hotel Transylvania
     76492: { scenes: [] }, // Funny monsters only
@@ -74,7 +74,7 @@ export const FALLBACK_POSTERS = {
     1012201: "https://image.tmdb.org/t/p/w500/vB8o2p4ETnrfiWEgVxHmHWP9yRl.jpg",
     1593: "https://image.tmdb.org/t/p/w500/h6W7rX697fK1790iY3l590.jpg",
     675353: "https://image.tmdb.org/t/p/w500/6DrHO1jr3qVrViUO8MQO0p.jpg",
-    612043: "https://image.tmdb.org/t/p/w500/8mRgpubxHqnqvEN44ManL.jpg",
+    537061: "https://image.tmdb.org/t/p/w500/8mRgpubxHqnqvEN44ManL.jpg",
     76492: "https://image.tmdb.org/t/p/w500/2yQUnpc1BXQuT8ImVR.jpg",
     260513: "https://image.tmdb.org/t/p/w500/5aGhaIHYuKepojCZ7Q.jpg",
     791334: "https://image.tmdb.org/t/p/w500/ydhZuC15.jpg",
@@ -93,203 +93,203 @@ const createMovieData = (data) => ({
 });
 
 export const COMPLETE_MOVIE_DATA = {
-    // 1. Robot Dreams
+    // 1. Robot Dreams (Collection Anchor - Emotional Peak)
     1012201: createMovieData({ 
         wholesomeScore: 98, 
         funFactor: 80, 
         complexityLevel: "MASTERPIECE", 
-        dominantColor: "#f59e0b", // Warm Orange
+        dominantColor: "#f59e0b",
         rating: 8.1, criticsScore: 98, audienceScore: 90, director: "Pablo Berger", 
-        cast: ["Ivan Labanda (Sound Designer)"], boxOffice: "$3.5 million", budget: "$6 million", 
-        dna: { "Animation": 60, "Drama": 20, "Music": 20 }, 
+        cast: ["Ivan Labanda", "Dog", "Robot"], boxOffice: "$3.5 million", budget: "$6 million", 
+        dna: { "Drama": 40, "Family": 30, "Music": 20, "Romance": 10 }, 
         scenes: [
-            { time: 10, intensity: 30, label: "Building Robot", color: "#fbbf24" },
-            { time: 30, intensity: 50, label: "Beach Day", color: "#f59e0b" },
-            { time: 60, intensity: 70, label: "Dream Sequence", color: "#d97706" },
-            { time: 90, intensity: 85, label: "New Beginnings", color: "#b45309" },
-            { time: 100, intensity: 95, label: "September", color: "#fbbf24" }
+            { time: 10, intensity: 25, label: "Building Robot", color: "#fbbf24" },
+            { time: 30, intensity: 45, label: "Beach Day", color: "#f59e0b" },
+            { time: 60, intensity: 65, label: "Dream Sequence", color: "#d97706" },
+            { time: 90, intensity: 78, label: "New Beginnings", color: "#b45309" },
+            { time: 100, intensity: 83, label: "September", color: "#fbbf24" }
         ],
-        synopsis: "Dog lives in Manhattan and he's tired of being alone. He decides to build himself a robot, a companion. Their friendship blossoms, until they become inseparable, to the rhythm of 80's NYC.",
+        synopsis: "Set in a vibrant, musically-charged 1980s Manhattan, this dialogue-free masterpiece tells the story of Dog, a lonely resident of the East Village who decides to build himself a robot companion to escape his isolation. As their friendship blossoms under the neon lights and sun-soaked beaches of New York, an unfortunate separation at Coney Island sets them on parallel journeys of longing, memory, and growth. It is a profound meditation on the transient nature of connection and the quiet courage required to eventually move forward with your life.",
         themes: ["Friendship", "Loss", "Moving On"]
     }),
 
-    // 2. Night at the Museum
+    // 2. Night at the Museum (Adventure Mid-Tier)
     1593: createMovieData({ 
         wholesomeScore: 90, 
         funFactor: 95, 
         complexityLevel: "FUN", 
-        dominantColor: "#3b82f6", // Museum Blue
+        dominantColor: "#3b82f6",
         rating: 6.5, criticsScore: 43, audienceScore: 67, director: "Shawn Levy", 
         cast: ["Ben Stiller", "Robin Williams", "Owen Wilson"], boxOffice: "$574 million", budget: "$110 million", 
         dna: { "Comedy": 50, "Adventure": 30, "Fantasy": 20 }, 
         scenes: [
             { time: 15, intensity: 30, label: "First Shift", color: "#60a5fa" },
-            { time: 40, intensity: 60, label: "Rexy Chase", color: "#3b82f6" },
-            { time: 70, intensity: 75, label: "Civil War", color: "#2563eb" },
-            { time: 90, intensity: 90, label: "Saving the Tablet", color: "#1d4ed8" },
-            { time: 100, intensity: 50, label: "Party Time", color: "#1e40af" }
+            { time: 40, intensity: 55, label: "Rexy Chase", color: "#3b82f6" },
+            { time: 70, intensity: 65, label: "Civil War", color: "#2563eb" },
+            { time: 90, intensity: 75, label: "Saving the Tablet", color: "#1d4ed8" },
+            { time: 100, intensity: 65, label: "Party Time", color: "#1e40af" }
         ],
-        synopsis: "A newly recruited night security guard at the Museum of Natural History discovers that an ancient curse causes the animals and exhibits on display to come to life and wreak havoc.",
+        synopsis: "Larry Daley is a kind-hearted dreamer who frequently struggles with bad luck, but he accepts a low-level position as a night security guard at the American Museum of Natural History to prove his stability to his young son. However, his first shift reveals a world-altering secret: an ancient Egyptian artifact, the Tablet of Ahkmenrah, brings every exhibit in the building to life after dark. Larry must navigate the chaos of a prehistoric T-Rex, miniature Roman armies, and Teddy Roosevelt himself, all while preventing a sinister plot that threatens to extinguish the museum's magic forever.",
         themes: ["Responsibility", "Fatherhood", "History"]
     }),
 
-    // 3. Sonic the Hedgehog 2
+    // 3. Sonic the Hedgehog 2 (High-Energy Adventure)
     675353: createMovieData({ 
         wholesomeScore: 88, 
         funFactor: 98, 
         complexityLevel: "HIGH-ENERGY", 
-        dominantColor: "#0ea5e9", // Sonic Blue
+        dominantColor: "#0ea5e9",
         rating: 6.5, criticsScore: 69, audienceScore: 96, director: "Jeff Fowler", 
         cast: ["Ben Schwartz", "Jim Carrey", "Idris Elba"], boxOffice: "$405 million", budget: "$110 million", 
         dna: { "Action": 40, "Comedy": 40, "Sci-Fi": 20 }, 
         scenes: [
-            { time: 10, intensity: 40, label: "Blue Justice", color: "#38bdf8" },
-            { time: 45, intensity: 70, label: "Siberian Dance", color: "#0ea5e9" },
-            { time: 80, intensity: 85, label: "Temple Fight", color: "#0284c7" },
-            { time: 110, intensity: 95, label: "Super Sonic", color: "#eab308" }, // Yellow for Super Sonic
-            { time: 120, intensity: 60, label: "Baseball", color: "#0c4a6e" }
+            { time: 10, intensity: 35, label: "Blue Justice", color: "#38bdf8" },
+            { time: 45, intensity: 60, label: "Siberian Dance", color: "#0ea5e9" },
+            { time: 80, intensity: 72, label: "Temple Fight", color: "#0284c7" },
+            { time: 110, intensity: 78, label: "Super Sonic", color: "#eab308" },
+            { time: 120, intensity: 70, label: "Baseball", color: "#0c4a6e" }
         ],
-        synopsis: "When the manic Dr. Robotnik returns to Earth with a new ally, Knuckles the Echidna, Sonic and his new friend Tails is all that stands in their way.",
+        synopsis: "After settling into the quiet town of Green Hills, Sonic is desperate to prove he has the maturity of a true hero, despite his chaotic impulses. His life is upended when the maniacal Dr. Robotnik returns from the Mushroom Planet with a powerful new ally: Knuckles the Echidna, a warrior seeking a legendary emerald with the power to build and destroy civilizations. Sonic teams up with a brilliant young fox named Tails to embark on a globe-trotting journey, racing to find the mystical gem before it falls into the wrong hands and alters the fate of the world.",
         themes: ["Family", "Friendship", "Responsibility"]
     }),
 
-    // 4. Steven Universe: The Movie
-    612043: createMovieData({ 
+    // 4. Steven Universe: The Movie (Musical Resonance)
+    537061: createMovieData({ 
         wholesomeScore: 95, 
         funFactor: 90, 
         complexityLevel: "EMOTIONAL", 
-        dominantColor: "#ec4899", // Spinel Pink
+        dominantColor: "#ec4899",
         rating: 7.8, criticsScore: 100, audienceScore: 92, director: "Rebecca Sugar", 
         cast: ["Zach Callison", "Estelle", "Sarah Stiles"], boxOffice: "N/A", budget: "N/A", 
-        dna: { "Animation": 40, "Musical": 40, "Sci-Fi": 20 }, 
+        dna: { "Musical": 40, "Drama": 30, "Sci-Fi": 20, "Family": 10 }, 
         scenes: [
             { time: 10, intensity: 30, label: "Happily Ever After", color: "#fbcfe8" },
-            { time: 30, intensity: 60, label: "Spinel Arrives", color: "#ec4899" },
-            { time: 60, intensity: 80, label: "Drift Away", color: "#db2777" },
-            { time: 75, intensity: 90, label: "True Kinda Love", color: "#be185d" },
-            { time: 80, intensity: 60, label: "Change", color: "#f472b6" }
+            { time: 30, intensity: 55, label: "Spinel Arrives", color: "#ec4899" },
+            { time: 60, intensity: 72, label: "Drift Away", color: "#db2777" },
+            { time: 75, intensity: 80, label: "True Kinda Love", color: "#be185d" },
+            { time: 80, intensity: 68, label: "Change", color: "#f472b6" }
         ],
-        synopsis: "Steven believes his time defending the Earth is over, but when a new threat comes to Beach City, Steven faces his biggest challenge yet.",
+        synopsis: "Two years have passed since Steven Universe brought peace to the galaxy, and he believes his work as a defender of Earth is finally finished, allowing him to enjoy his 'happily ever after' with his friends and family. This peace is shattered when a mysterious and vengeful Gem named Spinel arrives in Beach City, wielding a weapon that begins draining the life from the planet and resetting the powers of the Crystal Gems. Steven must delve into the forgotten history of his mother and find the inner strength to restore his friends' memories before the Earth becomes a lifeless wasteland.",
         themes: ["Growth", "Change", "Trauma"]
     }),
 
-    // 5. Hotel Transylvania
+    // 5. Hotel Transylvania (Comedy Mid-Tier)
     76492: createMovieData({ 
         wholesomeScore: 92, 
         funFactor: 90, 
         complexityLevel: "FUN", 
-        dominantColor: "#7c3aed", // Dracula Purple
+        dominantColor: "#7c3aed",
         rating: 7.0, criticsScore: 45, audienceScore: 72, director: "Genndy Tartakovsky", 
         cast: ["Adam Sandler", "Selena Gomez", "Andy Samberg"], boxOffice: "$358 million", budget: "$85 million", 
-        dna: { "Animation": 50, "Comedy": 40, "Fantasy": 10 }, 
+        dna: { "Comedy": 45, "Fantasy": 35, "Family": 20 }, 
         scenes: [
             { time: 15, intensity: 30, label: "Hotel Check-In", color: "#a78bfa" },
-            { time: 40, intensity: 60, label: "Zing", color: "#7c3aed" },
-            { time: 70, intensity: 75, label: "The Party", color: "#6d28d9" },
-            { time: 85, intensity: 90, label: "Chase to Airport", color: "#5b21b6" },
-            { time: 90, intensity: 60, label: "Happy Birthday", color: "#4c1d95" }
+            { time: 40, intensity: 50, label: "Zing", color: "#7c3aed" },
+            { time: 70, intensity: 65, label: "The Party", color: "#6d28d9" },
+            { time: 85, intensity: 73, label: "Chase to Airport", color: "#5b21b6" },
+            { time: 90, intensity: 65, label: "Happy Birthday", color: "#4c1d95" }
         ],
-        synopsis: "Dracula, who operates a high-end resort away from the human world, goes into overprotective mode when a boy discovers the resort and falls for the count's teenaged daughter.",
+        synopsis: "Count Dracula operates a lavish, five-stake resort where monsters like Frankenstein, the Mummy, and the Invisible Man can vacation in safety, far away from the 'terrible' world of humans. The Count is also a fiercely overprotective father to his teenage daughter, Mavis, and has fabricated elaborate stories to keep her from leaving the hotel. His carefully constructed world begins to crumble when an ordinary human backpacker accidentally stumbles into the resort, forcing Dracula to go into high-gear damage control while Mavis begins to experience her first 'Zing.'",
         themes: ["Acceptance", "Fatherhood", "Prejudice"]
     }),
 
-    // 6. Hotel Transylvania 2
+    // 6. Hotel Transylvania 2 (Comedy Mid-Tier)
     260513: createMovieData({ 
         wholesomeScore: 90, 
         funFactor: 92, 
         complexityLevel: "FUN", 
-        dominantColor: "#16a34a", // Dennis Green
+        dominantColor: "#16a34a",
         rating: 6.6, criticsScore: 56, audienceScore: 64, director: "Genndy Tartakovsky", 
         cast: ["Adam Sandler", "Selena Gomez", "Mel Brooks"], boxOffice: "$474 million", budget: "$80 million", 
-        dna: { "Animation": 50, "Comedy": 40, "Family": 10 }, 
+        dna: { "Comedy": 45, "Fantasy": 35, "Family": 20 }, 
         scenes: [
             { time: 20, intensity: 30, label: "Dennis is Born", color: "#86efac" },
-            { time: 50, intensity: 60, label: "Vampire Camp", color: "#16a34a" },
-            { time: 75, intensity: 80, label: "Vlad Arrives", color: "#15803d" },
-            { time: 85, intensity: 90, label: "Bela Attack", color: "#166534" },
-            { time: 88, intensity: 60, label: "Dennis Fangs", color: "#22c55e" }
+            { time: 50, intensity: 55, label: "Vampire Camp", color: "#16a34a" },
+            { time: 75, intensity: 68, label: "Vlad Arrives", color: "#15803d" },
+            { time: 85, intensity: 75, label: "Bela Attack", color: "#166534" },
+            { time: 88, intensity: 70, label: "Dennis Fangs", color: "#22c55e" }
         ],
-        synopsis: "Dracula and his friends try to bring out the monster in his half-human, half-vampire grandson in order to keep Mavis from leaving the hotel.",
+        synopsis: "The rigid policies of Dracula’s monster-only resort have finally relaxed, opening its doors to human guests and celebrating the marriage of Mavis and Johnny. However, Dracula is secretly consumed by anxiety that his young grandson, Dennis, isn't showing any signs of being a vampire. While Mavis is away visiting her human in-laws, 'Vampa' Drac enlists his best friends to put Dennis through a 'monster-in-training' boot camp to jumpstart his transformation. The stakes rise further when Dracula’s old-school father, Vlad, pays an unexpected visit.",
         themes: ["Identity", "Grandparenting", "Acceptance"]
     }),
 
-    // 7. The Amazing Maurice
+    // 7. The Amazing Maurice (Clever Adventure)
     791334: createMovieData({ 
         wholesomeScore: 85, 
         funFactor: 88, 
         complexityLevel: "CLEVER", 
-        dominantColor: "#f97316", // Cat Orange
+        dominantColor: "#f97316",
         rating: 6.3, criticsScore: 74, audienceScore: 70, director: "Toby Genkel", 
         cast: ["Hugh Laurie", "Emilia Clarke", "David Thewlis"], boxOffice: "$23 million", budget: "$17 million", 
-        dna: { "Animation": 40, "Fantasy": 40, "Comedy": 20 }, 
+        dna: { "Fantasy": 40, "Comedy": 30, "Adventure": 30 }, 
         scenes: [
             { time: 10, intensity: 20, label: "The Scam", color: "#fdba74" },
-            { time: 40, intensity: 50, label: "Piper's Truth", color: "#f97316" },
-            { time: 70, intensity: 80, label: "The Rat King", color: "#c2410c" },
-            { time: 85, intensity: 90, label: "Maurice's Sacrifice", color: "#ea580c" },
-            { time: 90, intensity: 50, label: "New Deal", color: "#9a3412" }
+            { time: 40, intensity: 45, label: "Piper's Truth", color: "#f97316" },
+            { time: 70, intensity: 65, label: "The Rat King", color: "#c2410c" },
+            { time: 85, intensity: 77, label: "Maurice's Sacrifice", color: "#ea580c" },
+            { time: 90, intensity: 65, label: "New Deal", color: "#9a3412" }
         ],
-        synopsis: "Maurice is a streetwise ginger cat who comes up with a money-making scam by befriending a group of self-taught talking rats.",
+        synopsis: "Based on Terry Pratchett’s beloved novel, this clever subversion of the Pied Piper legend follows Maurice, a streetwise ginger cat with a brilliant money-making scheme. Maurice travels from town to town with a band of unusually intelligent, talking rats and a dim-witted piper, staging 'rat plagues' and then charging the locals for a heroic removal. Their profitable scam hits a major roadblock when they arrive in the mysterious town of Bad Blintz, where a dark, malevolent force lurking in the sewers threatens to expose their deception.",
         themes: ["Deception", "Redemption", "Teamwork"]
     }),
 
-    // 8. My Friend the Penguin
+    // 8. My Friend the Penguin (Gentle True Story)
     1007535: createMovieData({ 
         wholesomeScore: 100, 
         funFactor: 75, 
         complexityLevel: "HEARTWARMING", 
-        dominantColor: "#0f172a", // Penguin Black/White
+        dominantColor: "#0f172a",
         rating: 7.0, criticsScore: 85, audienceScore: 97, director: "David Schurmann", 
         cast: ["Jean Reno", "Adriana Barraza"], boxOffice: "$5 million", budget: "N/A", 
         dna: { "Drama": 60, "Family": 40 }, 
         scenes: [
             { time: 10, intensity: 20, label: "The Rescue", color: "#64748b" },
-            { time: 40, intensity: 50, label: "Dindim Returns", color: "#0f172a" },
-            { time: 70, intensity: 60, label: "The Village", color: "#334155" },
-            { time: 90, intensity: 80, label: "The Reunion", color: "#1e293b" },
-            { time: 95, intensity: 90, label: "Viral Fame", color: "#94a3b8" }
+            { time: 40, intensity: 40, label: "Dindim Returns", color: "#0f172a" },
+            { time: 70, intensity: 55, label: "The Village", color: "#334155" },
+            { time: 90, intensity: 73, label: "The Reunion", color: "#1e293b" },
+            { time: 95, intensity: 65, label: "Viral Fame", color: "#94a3b8" }
         ],
-        synopsis: "A grieving fisherman finds a lost penguin soaked in oil and nurses him back to health, creating a bond that transcends the ocean.",
+        synopsis: "Based on an incredible true story, this film follows João, a humble Brazilian fisherman struggling with personal grief and isolation. His life takes an unexpected turn when he discovers a tiny Magellanic penguin, soaked in oil and near death, washed up on his local beach. After nursing the bird back to health and naming him Dindim, an unbreakable bond is forged. Even when Dindim returns to the wild, he begins an annual, 5,000-mile odyssey across the ocean to return to the same beach, proving that some connections transcend nature itself.",
         themes: ["Grief", "Nature", "Healing"]
     }),
 
-    // 9. Fireheart
+    // 9. Fireheart (Inspiring Adventure)
     778810: createMovieData({ 
         wholesomeScore: 90, 
         funFactor: 85, 
         complexityLevel: "INSPIRING", 
-        dominantColor: "#ef4444", // Fire Red
+        dominantColor: "#ef4444",
         rating: 6.2, criticsScore: 44, audienceScore: 68, director: "Theodore Ty", 
         cast: ["Olivia Cooke", "Kenneth Branagh", "William Shatner"], boxOffice: "$27 million", budget: "$38 million", 
-        dna: { "Animation": 50, "Adventure": 30, "Comedy": 20 }, 
+        dna: { "Adventure": 40, "Comedy": 30, "Family": 30 }, 
         scenes: [
             { time: 15, intensity: 30, label: "The Dream", color: "#fca5a5" },
-            { time: 45, intensity: 60, label: "Disguise", color: "#ef4444" },
-            { time: 75, intensity: 80, label: "The Fire", color: "#b91c1c" },
-            { time: 88, intensity: 90, label: "Saving Dad", color: "#dc2626" },
-            { time: 92, intensity: 50, label: "First Firefighter", color: "#f87171" }
+            { time: 45, intensity: 55, label: "Disguise", color: "#ef4444" },
+            { time: 75, intensity: 68, label: "The Fire", color: "#b91c1c" },
+            { time: 88, intensity: 77, label: "Saving Dad", color: "#dc2626" },
+            { time: 92, intensity: 70, label: "First Firefighter", color: "#f87171" }
         ],
-        synopsis: "Sixteen-year-old Georgia Nolan dreams of being the world's first-ever female firefighter. When a mysterious arsonist starts burning down Broadway, she disguises herself as a young man called 'Joe' to join a team of misfit firefighters.",
+        synopsis: "In the high-stakes environment of 1920s New York City, sixteen-year-old Georgia Nolan harbors a forbidden dream: she wants to be a firefighter just like her father. In an era where women are barred from the profession, Georgia’s ambitions seem impossible until a mysterious arsonist begins burning down the theaters of Broadway. Seizing her chance, Georgia disguises herself as a young man named 'Joe' and joins a ragtag team of misfit firefighters to hunt down the arsonist while trying to keep her true identity hidden from her suspicious father.",
         themes: ["Ambition", "Equality", "Father-Daughter"]
     }),
 
-    // 10. Oz the Great and Powerful
+    // 10. Oz the Great and Powerful (Visual Spectacle)
     68728: createMovieData({ 
         wholesomeScore: 80, 
         funFactor: 85, 
         complexityLevel: "SPECTACLE", 
-        dominantColor: "#10b981", // Emerald Green
+        dominantColor: "#10b981",
         rating: 6.3, criticsScore: 57, audienceScore: 56, director: "Sam Raimi", 
         cast: ["James Franco", "Mila Kunis", "Rachel Weisz"], boxOffice: "$493 million", budget: "$215 million", 
         dna: { "Fantasy": 60, "Adventure": 40 }, 
         scenes: [
-            { time: 10, intensity: 30, label: "Kansas Tornado", color: "#d1d5db" }, // Black & White
-            { time: 30, intensity: 60, label: "Arrival in Oz", color: "#34d399" },
-            { time: 70, intensity: 75, label: "The Wicked Witch", color: "#065f46" },
-            { time: 110, intensity: 90, label: "The Great Illusion", color: "#10b981" },
-            { time: 125, intensity: 50, label: "King of Oz", color: "#6ee7b7" }
+            { time: 10, intensity: 30, label: "Kansas Tornado", color: "#d1d5db" },
+            { time: 30, intensity: 55, label: "Arrival in Oz", color: "#34d399" },
+            { time: 70, intensity: 68, label: "The Wicked Witch", color: "#065f46" },
+            { time: 110, intensity: 79, label: "The Great Illusion", color: "#10b981" },
+            { time: 125, intensity: 70, label: "King of Oz", color: "#6ee7b7" }
         ],
-        synopsis: "A small-time magician arrives in an enchanted land and is forced to decide if he will be a good man or a great one.",
+        synopsis: "Oscar Diggs is a small-time circus magician with a questionable moral compass working the Kansas fairgrounds. When a massive tornado whisks his hot air balloon away to the vibrant Land of Oz, Oscar believes he has finally hit the jackpot—until he meets three powerful witches unconviced he is the great wizard the prophecies foretold. Forced to use his wits and theatrical illusions to distinguish between good and evil, Oscar must decide if he has the character to become a truly great man in a world of genuine magic.",
         themes: ["Belief", "Redemption", "Magic"]
     })
 };
@@ -297,64 +297,144 @@ export const COMPLETE_MOVIE_DATA = {
 // ✅ EXTENDED FAQs (Detailed & Engaging)
 export const HULU_FAMILY_MOVIE_FAQS = {
     'Robot Dreams': [
-        { question: "Is there any dialogue?", answer: "No, the entire film is dialogue-free. It uses animation, music, and sound effects to tell its story, making it universally understandable for all ages and languages." },
-        { question: "Is it sad?", answer: "It is bittersweet. While it deals with separation and loss in a very poignant way, the ending is ultimately about growth, acceptance, and the beauty of memories." },
-        { question: "What is the music used?", answer: "The song 'September' by Earth, Wind & Fire plays a central role in the film, symbolizing the happy times Dog and Robot shared together." },
-        { question: "Is it suitable for young kids?", answer: "Yes, it is rated PG and is very gentle. However, the themes of friendship and drifting apart may resonate more deeply with older children and adults." }
+        { 
+            question: "How does the film tell a story without any dialogue?", 
+            answer: "Robot Dreams relies entirely on visual storytelling, expressive character animation, and a sophisticated soundscape. By removing spoken language, the film uses body language, facial expressions, and its central musical motif—'September' by Earth, Wind & Fire—to communicate complex emotions. This makes the narrative universally accessible, allowing viewers of all ages and languages to connect with the story on a deeply personal level." 
+        },
+        { 
+            question: "Is the ending of Robot Dreams considered sad for a family movie?", 
+            answer: "The ending is best described as bittersweet rather than purely sad. It challenges the standard 'happily ever after' trope by exploring the realistic theme of drifting apart. While it may pull at the heartstrings of both children and adults, it delivers a powerful message about growth, the impact people have on our lives, and how to cherish beautiful memories while moving forward into new phases of life." 
+        },
+        { 
+            question: "What is the significance of the 1980s New York City setting?", 
+            answer: "The 1980s NYC setting provides a vibrant and nostalgic backdrop that enhances the film's atmosphere. From the Twin Towers on the skyline to the boomboxes and roller skates in Central Park, the setting acts as a character itself. This era was chosen to evoke a specific sense of time and place where connection felt more tangible, grounding the fantastical premise of a robot companion in a recognizable, gritty, yet magical reality." 
+        }
     ],
     'Night at the Museum': [
-        { question: "Is the museum real?", answer: "The exterior shots are of the actual American Museum of Natural History in New York City, but the interiors were built on a massive soundstage in Vancouver." },
-        { question: "Did Robin Williams improvise?", answer: "Yes, Robin Williams (Teddy Roosevelt) improvised many of his lines. Director Shawn Levy often let him riff to add his signature humor to the character." },
-        { question: "Is the tablet real history?", answer: "No, the Tablet of Ahkmenrah is a fictional artifact created for the movie. However, the Pharaoh Ahkmenrah is loosely inspired by real Egyptian history." },
-        { question: "Are the animals real?", answer: "Most of the animals, including the T-Rex and the lions, are CGI. However, the monkey Dexter was played by a real capuchin monkey named Crystal." }
+        { 
+            question: "Which parts of the American Museum of Natural History are real in the film?", 
+            answer: "While the exterior shots and the grand entrance hall are filmed at the actual American Museum of Natural History in New York City, the vast majority of the museum's interior was a massive, detailed set built on soundstages in Vancouver. The production team painstakingly recreated many of the famous dioramas and halls to allow for the complex stunts and CGI interactions that wouldn't be possible in a real, fragile museum environment." 
+        },
+        { 
+            question: "How much of Robin Williams' performance as Teddy Roosevelt was improvised?", 
+            answer: "A significant portion of Robin Williams' performance was improvised. Known for his lightning-fast wit, Williams frequently riffed during takes, adding layers of humor and warmth to the character of Teddy Roosevelt. Director Shawn Levy often kept the cameras rolling just to capture these spontaneous moments, many of which became the most memorable and heart-touching lines in the final cut of the film." 
+        },
+        { 
+            question: "Is the Pharaoh Ahkmenrah based on a real historical figure?", 
+            answer: "The character of Ahkmenrah and his golden tablet are entirely fictional creations for the movie's mythology. However, his design and backstory draw inspiration from various young Egyptian Pharaohs, most notably King Tutankhamun. The filmmakers used real Egyptian aesthetic details to lend a sense of authenticity to the character, even though his specific lineage and the magical properties of the tablet are purely cinematic inventions." 
+        }
     ],
     'Sonic the Hedgehog 2': [
-        { question: "Who voices Knuckles?", answer: "Knuckles is voiced by Idris Elba. He brought a serious, warrior-like tone to the character that contrasts hilariously with Sonic's goofy energy." },
-        { question: "Is Jim Carrey really retiring?", answer: "Jim Carrey stated during the promotion of this film that he was 'fairly serious' about retiring from acting, making his performance as Dr. Robotnik potentially his final major role." },
-        { question: "Is Tails a girl or boy?", answer: "Tails is a male fox. He is voiced by Colleen O'Shaughnessey, the same voice actress who has voiced him in the video games since 2014." },
-        { question: "What is the chaos emerald?", answer: "The Master Emerald is a powerful gem that controls the other Chaos Emeralds. In the movie, it grants the user god-like powers to bend reality." }
+        { 
+            question: "How did Idris Elba approach the voice acting for Knuckles?", 
+            answer: "Idris Elba intentionally avoided making Knuckles sound 'sexy' or 'cool,' instead focusing on a deadpan, warrior-like seriousness. By playing the character as a literal-minded soldier with no sense of humor, Elba created a brilliant comedic dynamic with Sonic's wisecracking personality. This interpretation helped establish Knuckles as a formidable threat who eventually learns the value of friendship and 'Earth' culture." 
+        },
+        { 
+            question: "Is this really Jim Carrey's final performance before retirement?", 
+            answer: "During the press tour for Sonic 2, Jim Carrey announced that he was 'fairly serious' about retiring from acting, stating that he has 'done enough.' While actors often return for the right project, Carrey expressed a desire to live a quiet life and focus on his painting. If this remains his final major role, his high-energy, physical performance as Dr. Robotnik serves as a fitting tribute to the legendary comedy style he pioneered in the 90s." 
+        },
+        { 
+            question: "Who provides the voice for Tails, and what is her history with the franchise?", 
+            answer: "Tails is voiced by Colleen O'Shaughnessey, who is a veteran voice actress in the industry. Notably, she is the only voice actor from the SEGA video game franchise to reprise her role for the live-action films. Having voiced the character since 2014 across games and animated series, her casting was widely praised by fans for maintaining the character's authentic, youthful, and genius-level persona." 
+        }
     ],
     'Steven Universe: The Movie': [
-        { question: "Do I need to watch the show first?", answer: "It helps, but the movie does a great job of recapping the story in the opening musical number. You can enjoy the standalone plot without knowing all the lore." },
-        { question: "Who is the villain?", answer: "The villain is Spinel, a rubber-hose animation style gem who was abandoned by Steven's mother, Pink Diamond, for 6,000 years." },
-        { question: "Why is it a musical?", answer: "Series creator Rebecca Sugar wanted to celebrate the show's musical roots. The film features collaborations with artists like Chance the Rapper, Estelle, and Aimee Mann." },
-        { question: "Is there a time skip?", answer: "Yes, the movie takes place two years after the end of the original series. Steven is now 16 years old and has a neck!" }
+        { 
+            question: "Can I watch the movie if I haven't finished the original TV series?", 
+            answer: "Yes, the movie is surprisingly accessible to newcomers. The opening sequence is a Broadway-style musical number that cleverly recaps the entire five-season history of the show, explaining the Gems, the war for Earth, and Steven's heritage. While long-time fans will catch more subtle references and emotional payoffs, the core story about Steven facing a new threat is designed to stand on its own as a complete cinematic experience." 
+        },
+        { 
+            question: "What inspired the unique 'rubber-hose' animation style of the villain Spinel?", 
+            answer: "The villain Spinel was inspired by the 'rubber-hose' animation style of the 1920s and 30s, reminiscent of early Mickey Mouse or Popeye cartoons. Creator Rebecca Sugar chose this style to emphasize Spinel's erratic, bouncy, and 'outdated' nature compared to the modern designs of the other characters. Her fluid movement and exaggerated expressions serve as a visual metaphor for her unstable emotional state and her abandonment in the past." 
+        },
+        { 
+            question: "How did the production team handle the two-year time skip for Steven?", 
+            answer: "The two-year time skip allowed the creators to evolve Steven's design into a more mature 16-year-old version, famously giving him a visible neck for the first time. This physical change mirrors his internal growth; he is no longer just a kid looking for answers, but a leader who has found peace. The time jump also allowed the world of Beach City to progress, showing the integration of Gems and humans living together in a new era of harmony." 
+        }
     ],
     'Hotel Transylvania': [
-        { question: "Who voices Dracula?", answer: "Dracula is voiced by Adam Sandler. He used a exaggerated accent inspired by classic Bela Lugosi movies but added his own comedic spin." },
-        { question: "Is it scary?", answer: "Not at all. The monsters are designed to be goofy and lovable rather than frightening. It's a comedy about a father learning to let go of his daughter." },
-        { question: "What is 'Zing'?", answer: "In the movie's lore, a 'Zing' is a love-at-first-sight moment that only happens once in a monster's life. It signifies true, eternal soulmates." },
-        { question: "Is the Invisible Man wearing glasses?", answer: "Yes, Griffin the Invisible Man wears glasses so people know where his face is. They basically float in mid-air." }
+        { 
+            question: "How does Hotel Transylvania subvert classic horror movie tropes?", 
+            answer: "The film completely flips the horror genre by making the monsters the ones who are terrified of humans. Instead of being predators, characters like Dracula, Frankenstein, and the Werewolf are portrayed as sensitive, misunderstood individuals who just want a safe place to vacation. Humans are depicted as the 'scary' ones due to their history of torches and pitchforks, creating a humorous and heartfelt allegory for prejudice and the fear of the unknown." 
+        },
+        { 
+            question: "What was the inspiration behind Adam Sandler's version of Dracula?", 
+            answer: "Adam Sandler's Dracula is a comedic homage to the legendary Bela Lugosi, adopting the classic thick Transylvanian accent and dramatic cape-swishing. However, Sandler infused the character with his signature 'overprotective dad' energy, making him more relatable to modern audiences. The focus shifted from a spooky vampire to a stressed-out hotel manager trying to balance a business with his daughter's growing independence." 
+        },
+        { 
+            question: "What exactly is a 'Zing' in the context of the movie's lore?", 
+            answer: "A 'Zing' is the monster equivalent of finding a true soulmate. It is described as a magical, instantaneous spark that occurs the moment two people destined for each other lock eyes. According to monster lore, a Zing only happens once in a lifetime, making it an eternal and unbreakable bond. This concept drives the emotional stakes of the film, as Dracula must decide whether to respect his daughter's Zing or maintain his overprotective control." 
+        }
     ],
     'Hotel Transylvania 2': [
-        { question: "Is Mel Brooks in this?", answer: "Yes, legendary comedian Mel Brooks voices Vlad, Dracula's old-school, human-hating father. His character adds a generational conflict to the story." },
-        { question: "Does Dennis become a vampire?", answer: "Spoiler: Yes. Near the end of the movie, Dennis's fangs finally come out when his friend Winnie is threatened, proving he is a late bloomer." },
-        { question: "Is the hotel real?", answer: "The hotel is fictional, but its design is inspired by Bran Castle in Romania, which is commonly associated with the Dracula legend." },
-        { question: "Who sings the ending song?", answer: "The ending song 'I'm in Love with a Monster' is performed by the girl group Fifth Harmony. It was written specifically for the film." }
+        { 
+            question: "How does the addition of Mel Brooks change the dynamic of the sequel?", 
+            answer: "Legendary filmmaker Mel Brooks voices Vlad, Dracula's father, bringing an 'old-school' monster perspective to the story. His inclusion adds a layer of generational conflict; while Dracula has learned to accept humans, Vlad represents the ancient, human-hating traditions of the past. Brooks' iconic comedic timing provides a perfect foil to Sandler's Dracula, highlighting how much the main characters have grown since the first film." 
+        },
+        { 
+            question: "Is there a deeper meaning behind Dennis being a 'late bloomer'?", 
+            answer: "Dennis's struggle to grow his vampire fangs serves as a metaphor for parental and societal pressure. The film explores the anxiety of 'fitting in' and the expectations families often place on children to follow in their footsteps. His eventual transformation is triggered not by training, but by his desire to protect his friend Winnie, teaching the lesson that everyone develops at their own pace and that true strength comes from love and bravery." 
+        },
+        { 
+            question: "Which real-world locations influenced the architecture of the Hotel?", 
+            answer: "While the Hotel is a fantasy location, its architecture is heavily inspired by Gothic and Romanian styles. The production designers looked at Bran Castle in Transylvania—often called 'Dracula's Castle'—for its imposing silhouette and mountain-top placement. They combined this with exaggerated, 'stretched' geometry typical of Genndy Tartakovsky's animation style to give the hotel its unique, simultaneously cozy and slightly spooky personality." 
+        }
     ],
     'The Amazing Maurice': [
-        { question: "Is it based on a book?", answer: "Yes, it is based on the book 'The Amazing Maurice and His Educated Rodents' by Sir Terry Pratchett. It is part of his famous Discworld series." },
-        { question: "Who is the narrator?", answer: "The story is framed by Malicia, a girl obsessed with fairy tales, who constantly breaks the fourth wall to discuss narrative tropes and plot structures." },
-        { question: "Is it scary for kids?", answer: "It has a darker tone than most animated films, particularly the villain 'The Rat King', which is a hive-mind of rats. It might be intense for very young children." },
-        { question: "Why can the rats talk?", answer: "The rats gained intelligence and speech after eating magical waste from the Unseen University's garbage dump. They named themselves after words they read on cans." }
+        { 
+            question: "How does this film capture the unique tone of Terry Pratchett's writing?", 
+            answer: "The film stays true to Pratchett's Discworld spirit by being both hilariously satirical and surprisingly dark. It uses the character Malicia to constantly critique fairy tale tropes and narrative structures, offering a 'meta' commentary on storytelling itself. Like the source material, the film doesn't shy away from complex themes like morality, identity, and the corruptive nature of power, making it a thinking person's animated feature." 
+        },
+        { 
+            question: "What makes the 'Rat King' different from a standard movie villain?", 
+            answer: "The Rat King is a particularly creepy and creative villain because it is not a single entity, but a hive-mind created by the tangled tails of many rats. This 'multitude as one' concept draws on real-world urban legends but gives it a magical, malevolent twist. Its presence introduces a higher level of suspense and mild horror elements to the film, challenging the protagonists to use their collective intelligence rather than just physical force." 
+        },
+        { 
+            question: "Why do the rats in Maurice’s crew have such unusual names?", 
+            answer: "In a charming detail from the book, the rats gained intelligence by eating magical waste and subsequently taught themselves to read using discarded trash from the Unseen University. As a result, they named themselves after the first words they could read on food cans and signs. This leads to characters with names like 'Ham-and-Pork,' 'Peaches,' and 'Sardines,' giving the rats a distinct, quirky culture that reflects their resourcefulness." 
+        }
     ],
     'My Friend the Penguin': [
-        { question: "Is it a true story?", answer: "Yes, it is based on the true story of Joao Pereira de Souza, a Brazilian bricklayer who rescued a Magellanic penguin in 2011. The penguin, named Dindim, returns to visit him every year." },
-        { question: "Did they use a real penguin?", answer: "The film uses a mix of real rescue penguins (for close-ups and walking) and CGI (for dangerous or complex scenes) to ensure animal safety." },
-        { question: "How far does the penguin swim?", answer: "In real life, Dindim swims approximately 5,000 miles (8,000 km) each year from the coasts of Argentina/Chile to Brazil to reunite with Joao." },
-        { question: "Where was it filmed?", answer: "The movie was filmed on location in Brazil and Argentina to capture the authentic landscapes of the true story." }
+        { 
+            question: "How accurate is the film to the real-life story of João and Dindim?", 
+            answer: "The film is remarkably accurate to the core events of the true story. In 2011, João Pereira de Souza did find a starving Magellanic penguin covered in oil on a beach near Rio de Janeiro. He spent weeks cleaning the bird's feathers and feeding it a diet of fish to regain its strength. The most incredible part—Dindim returning every year and traveling over 5,000 miles to spend time with João—is a documented scientific phenomenon that has amazed biologists worldwide." 
+        },
+        { 
+            question: "What techniques were used to film the penguin scenes safely?", 
+            answer: "To prioritize animal welfare, the production used a 'penguin-first' approach. Most of the intimate interactions featured real rescue penguins that were comfortable around humans, while more complex or physically demanding action sequences utilized state-of-the-art CGI. By blending the two, the director was able to capture the authentic, clumsy charm of a real penguin while ensuring that no animals were stressed or harmed during the making of the movie." 
+        },
+        { 
+            question: "What are the environmental themes explored in the movie?", 
+            answer: "Beyond the central friendship, the film serves as a poignant reminder of the impact of human negligence on marine life. The penguin's initial state—soaked in oil—highlights the devastating effects of offshore drilling and spills on local ecosystems. By focusing on the rescue and the penguin's natural migration patterns, the film encourages a deeper respect for wildlife and underscores the responsibility humans have to protect the oceans." 
+        }
     ],
     'Fireheart': [
-        { question: "Is it historically accurate?", answer: "The setting of 1930s New York is historical, but the story is fictional. However, it is inspired by real women who fought to become firefighters despite gender bans." },
-        { question: "Who voices Georgia?", answer: "Georgia is voiced by Olivia Cooke (Ready Player One, House of the Dragon). She brings a spirited, determined energy to the character." },
-        { question: "Why does she disguise herself?", answer: "In the 1930s, women were not allowed to be firefighters in New York. Georgia disguises herself as a man named 'Joe' to join the team and prove her worth." },
-        { question: "Is the dog real?", answer: "The dalmatian Ember is an animated character, but dalmatians have historically been firehouse dogs because they got along well with the horses that used to pull fire engines." }
+        { 
+            question: "What historical reality inspired Georgia's struggle to become a firefighter?", 
+            answer: "While Georgia is a fictional character, her story is rooted in the very real gender barriers of early 20th-century New York. Women were not officially allowed to join the FDNY until much later in history (the first female firefighters weren't sworn in until 1982). The film uses the 1930s setting to dramatize the 'pioneer' spirit of women who had to resort to extraordinary measures and disguises to prove they were physically and mentally capable of doing the same jobs as men." 
+        },
+        { 
+            question: "Who is the creative team behind the film's distinct visual style?", 
+            answer: "Fireheart was co-directed by Theodore Ty and Laurent Zeitoun, the same creative minds behind the hit film 'Ballerina' (Leap!). They utilized a warm, saturated color palette to evoke the 'Golden Age' of New York City, blending historical architecture with stylized character designs. The animation focuses heavily on the fluidity of fire and the tactical details of vintage firefighting equipment, creating a visually rich and immersive period piece." 
+        },
+        { 
+            question: "What message does the film send about the father-daughter relationship?", 
+            answer: "The film explores the complex tension between a father's desire to protect his child and a daughter's need for independence. Georgia's father, a retired captain, fears for her safety in a dangerous profession, not just because of her gender, but because he knows the true risks of the job. Their journey is one of mutual respect, where the father must learn to see his daughter as a capable adult, and Georgia must learn to value her father's experience and legacy." 
+        }
     ],
     'Oz the Great and Powerful': [
-        { question: "Is it a prequel?", answer: "Yes, it serves as a spiritual prequel to the 1939 classic 'The Wizard of Oz', explaining how the Wizard arrived in Oz and became the ruler." },
-        { question: "Why is it in black and white?", answer: "The beginning of the film, set in Kansas, is in black and white and a 4:3 aspect ratio. When Oz arrives in the magical land, it expands to color and widescreen, honoring the 1939 film's transition." },
-        { question: "Who is the Wicked Witch?", answer: "Mila Kunis plays Theodora, who transforms into the Wicked Witch of the West after her heart is broken by Oz's deceit." },
-        { question: "Is Dorothy in it?", answer: "No, Dorothy is not in this film as it takes place many years before her arrival. However, Annie (Michelle Williams) is hinted to be Dorothy's future mother." }
+        { 
+            question: "How does the film pay homage to the 1939 classic 'The Wizard of Oz'?", 
+            answer: "The film is packed with tributes to the original. Most notably, it replicates the iconic transition from a sepia-toned, narrow 4:3 aspect ratio for the Kansas scenes to a vivid, wide-screen Technicolor world once the protagonist reaches Oz. The production design also mirrors the 'fairytale' look of the 1939 sets, and the characters of the Munchkins, the Quadlings, and the Winkies are all designed to feel like they exist in the same cinematic universe." 
+        },
+        { 
+            question: "What is the 'origin story' of the Wicked Witch in this version?", 
+            answer: "The film provides a tragic backstory for the Wicked Witch of the West. It introduces her as Theodora, a naive and hopeful witch who initially believes in Oz’s goodness. Her transformation into the iconic green-skinned villain is triggered by a combination of her sister's manipulation and a broken heart caused by Oz’s selfishness. This adds a layer of psychological depth to the villain, showing that her 'wickedness' was born out of pain rather than pure malice." 
+        },
+        { 
+            question: "Why was Sam Raimi chosen to direct this fantasy epic?", 
+            answer: "Sam Raimi, known for the original Spider-Man trilogy and the Evil Dead films, was chosen for his ability to blend large-scale spectacle with a slightly quirky, energetic directorial style. Raimi brought his expertise in practical effects and camera movement to Oz, creating a world that felt both grand and intimate. His background in horror also allowed him to make the darker elements of the film—like the flying baboons and the dark forest—genuinely eerie and effective." 
+        }
     ]
 };
 

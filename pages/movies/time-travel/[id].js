@@ -25,7 +25,7 @@ const COLORS = {
   accent: '#06b6d4', // Cyan for Time Travel
   accentLight: '#67e8f9', 
   bgPrimary: '#0B0B0C', 
-  bgCard: 'rgba(55, 65, 81, 0.3)', 
+  bgCard: 'rgba(21, 22, 23, 0.3)', 
   textPrimary: '#FFFFFF', 
   textSecondary: '#D1D5DB', 
   textMuted: '#9CA3AF', 
@@ -379,7 +379,7 @@ const TimeTravelMoviePage = ({ movie, tmdbData: movieData }) => {
 
             <SubtleFilmGrain />
             <div className="absolute inset-0"><CinematicBackground /></div>
-            <SmartBackButton />
+            
             
             <div className="relative z-10 pt-10 sm:pt-12 lg:pt-16">
                 

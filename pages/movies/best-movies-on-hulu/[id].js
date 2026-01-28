@@ -22,7 +22,7 @@ import {
 } from '../../../utils/huluBestMoviesData';
 
 const COLORS = {
-  accent: '#f59e0b', accentLight: '#fcd34d', bgPrimary: '#0f172a', bgCard: 'rgba(15, 23, 42, 0.8)', // Gold/Slate for Prestige
+  accent: '#f59e0b', accentLight: '#fcd34d', bgPrimary: '#000000ff', bgCard: 'rgba(11, 11, 11, 0.8)', // Gold/Slate for Prestige
   textPrimary: '#FFFFFF', textSecondary: '#E5E7EB', textMuted: '#9CA3AF', textDisabled: '#6B7280',
   borderAccent: 'rgba(245, 158, 11, 0.25)', borderLight: 'rgba(55, 65, 81, 0.5)',
 };
@@ -374,7 +374,7 @@ const HuluBestMoviePage = ({ movie, tmdbData: movieData }) => {
 
             <SubtleFilmGrain />
             <div className="absolute inset-0"><CinematicBackground /></div>
-            <SmartBackButton />
+            
             
             <div className="relative z-10 pt-10 sm:pt-12 lg:pt-16">
                 <h1 className="sr-only">{cleanSEOTitle}</h1>

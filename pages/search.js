@@ -242,7 +242,7 @@ const SearchPage = () => {
         <meta name="generator" content="Filmiway" />
         <meta name="author" content="Filmiway Team" />
         <meta name="publisher" content="Filmiway" />
-        <meta name="copyright" content="Filmiway 2025" />
+        <meta name="copyright" content="Filmiway (2026)" />
         {/* OVERRIDE NEXT.JS BRANDING */}
         <meta name="framework" content="Filmiway Platform" />
         <meta name="powered-by" content="Filmiway" />
@@ -556,7 +556,7 @@ const SearchPage = () => {
               </motion.div>
 
               <div className="flex items-center justify-center space-x-8 text-gray-500 text-sm">
-                <span>© 2025 Filmiway</span>
+                <span>© (2026) Filmiway</span>
                 <span>•</span>
                 <span>All Rights Reserved</span>
                 <span>•</span>

@@ -191,7 +191,7 @@ export default function Contact() {
 
         {/* Footer */}
         <footer className="border-t border-gray-800 py-8 text-center text-gray-500 text-sm">
-          <p>&copy; 2025 Filmiway. All rights reserved.</p>
+          <p>&copy; (2026) Filmiway. All rights reserved.</p>
         </footer>
       </div>
     </>

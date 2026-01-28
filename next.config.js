@@ -8,16 +8,22 @@ const nextConfig = {
   reactStrictMode: false,
 
   // ✅ IMAGE OPTIMIZATION (Enabled for SEO & Speed)
-  images: {
-    // We allow Next.js to optimize images from these sources
+ images: {
     remotePatterns: [
       {
         protocol: 'https',
         hostname: 'image.tmdb.org',
+        pathname: '/**', // ✅ Allows all TMDB images
       },
       {
         protocol: 'https',
         hostname: 'm.media-amazon.com',
+        pathname: '/**', // ✅ Allows all Amazon/IMDb images
+      },
+      {
+        protocol: 'https',
+        hostname: 'via.placeholder.com',
+        pathname: '/**', // ✅ Keep this until you remove placeholders
       },
     ],
   },

@@ -23,7 +23,7 @@ import {
 } from '../../../utils/huluThrillerMovieData';
 
 const COLORS = {
-  accent: '#ef4444', accentLight: '#fca5a5', bgPrimary: '#0f172a', bgCard: 'rgba(30, 41, 59, 0.8)', // Crimson/Dark Slate for Thriller
+  accent: '#ef4444', accentLight: '#fca5a5', bgPrimary: '#000000ff', bgCard: 'rgba(11, 11, 11, 0.8)', // Crimson/Dark Slate for Thriller
   textPrimary: '#FFFFFF', textSecondary: '#e2e8f0', textMuted: '#94a3b8', textDisabled: '#475569',
   borderAccent: 'rgba(239, 68, 68, 0.25)', borderLight: 'rgba(148, 163, 184, 0.2)',
 };
@@ -373,7 +373,7 @@ const HuluThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
 
             <SubtleFilmGrain />
             <div className="absolute inset-0"><CinematicBackground /></div>
-            <SmartBackButton />
+            
             
             <div className="relative z-10 pt-10 sm:pt-12 lg:pt-16">
                 
