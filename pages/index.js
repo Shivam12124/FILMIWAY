@@ -55,8 +55,7 @@ const CollectionCard = memo(({ collection, index, isMobile, onClick }) => {
                         <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 animate-pulse" />
                     )}
                     <Image
-                      // Changed w500 to w342 (approx 30-40% smaller file size)
-src={collection.poster_path ? `${IMAGE_BASE_URL}/w342${collection.poster_path}` : "..."}
+                        src={collection.poster_path ? `${IMAGE_BASE_URL}/w500${collection.poster_path}` : "https://via.placeholder.com/500x750/1f2937/6b7280?text=No+Poster"}
                         alt={collection.title}
                         fill
                         sizes="(max-width: 640px) 180px, (max-width: 1024px) 280px, 350px"
@@ -67,7 +66,7 @@ src={collection.poster_path ? `${IMAGE_BASE_URL}/w342${collection.poster_path}` 
                         }`}
                         loading="lazy"
                         draggable={false}
-                       
+                        unoptimized={true}
                         onLoad={() => setImageLoaded(true)}
                     />
                 </div>
@@ -312,8 +311,8 @@ const ProfessionalCarousel = memo(({ collections, sectionRef }) => {
         const clientX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
         dragRef.current.offset = dragRef.current.startX - clientX;
         
-        // Mark as dragged if moved more than 5px
-        if (Math.abs(dragRef.current.offset) > 5) {
+        // Mark as dragged if moved more than 3px (more sensitive for mobile)
+        if (Math.abs(dragRef.current.offset) > 3) {
             dragRef.current.hasDragged = true;
         }
     }, []);
@@ -322,8 +321,10 @@ const ProfessionalCarousel = memo(({ collections, sectionRef }) => {
         if (!dragRef.current.isDragging) return;
         const diff = dragRef.current.offset;
         
-        // Improved swipe threshold - 50px
-        if (Math.abs(diff) > 50) {
+        // ✅ IMPROVED: Better mobile swipe - 30px threshold for smoother experience
+        const swipeThreshold = isMobile ? 30 : 50;
+        
+        if (Math.abs(diff) > swipeThreshold) {
             if (diff > 0 && currentIndex < maxIndex) {
                 nextSlide();
             } else if (diff < 0 && currentIndex > 0) {
@@ -337,7 +338,7 @@ const ProfessionalCarousel = memo(({ collections, sectionRef }) => {
             dragRef.current.hasDragged = false;
             dragRef.current.offset = 0;
         }, 100);
-    }, [currentIndex, maxIndex, nextSlide, prevSlide]);
+    }, [currentIndex, maxIndex, nextSlide, prevSlide, isMobile]);
 
     const handleCardClick = (id) => {
         // Only navigate if we didn't drag
@@ -387,7 +388,10 @@ const ProfessionalCarousel = memo(({ collections, sectionRef }) => {
                 onPointerMove={handlePointerMove} 
                 onPointerUp={handlePointerUp} 
                 onPointerLeave={handlePointerUp}
-                style={{ touchAction: 'pan-y' }}
+                onTouchStart={handlePointerDown}
+                onTouchMove={handlePointerMove}
+                onTouchEnd={handlePointerUp}
+                style={{ touchAction: 'pan-y', WebkitOverflowScrolling: 'touch' }}
             >
                 <motion.div 
                     className="flex gap-4 sm:gap-6" 
@@ -396,8 +400,8 @@ const ProfessionalCarousel = memo(({ collections, sectionRef }) => {
                     }}
                     transition={{ 
                         type: "spring",
-                        stiffness: 300,
-                        damping: 30,
+                        stiffness: isMobile ? 400 : 300,
+                        damping: isMobile ? 35 : 30,
                         mass: 0.8
                     }}
                 >
@@ -617,21 +621,20 @@ const FilmiwayHomepage = ({ huluCollections, mindBendingCollections, thrillerCol
                                     <li><Link href="/collection/best-revenge-movies" className="hover:text-white transition-colors">Revenge</Link></li>
                                 </ul>
                             </div>
-                           <div>
-    <h3 className="text-gray-500 font-bold mb-4 uppercase text-[10px] tracking-widest">Legal</h3>
-    <ul className="space-y-2 text-xs text-gray-400">
-        <li><Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
-        <li><Link href="/terms" className="hover:text-white transition-colors">Terms of Use</Link></li>
-        <li><Link href="/about-us" className="hover:text-white transition-colors">About Us</Link></li>
-        <li><Link href="/faq" className="hover:text-white transition-colors">FAQ</Link></li>
-    </ul>
-</div>
+                            <div>
+                                <h3 className="text-gray-500 font-bold mb-4 uppercase text-[10px] tracking-widest">Legal</h3>
+                                <ul className="space-y-2 text-xs text-gray-400">
+                                    <li><Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
+                                    <li><Link href="/terms" className="hover:text-white transition-colors">Terms of Use</Link></li>
+                                    <li><Link href="/about-us" className="hover:text-white transition-colors">About Us</Link></li>
+                                </ul>
+                            </div>
                         </div>
                         
                         <div className="text-center">
                             <div className="flex items-center justify-center mb-6">
                                 <div className="w-20 h-10 flex items-center justify-center opacity-80">
-                                   
+                                    <Image src="/filmiway-logo.svg" alt="Filmiway" width={100} height={50} className="w-full h-full object-contain" draggable={false} />
                                 </div>
                             </div>
                             <p className="text-gray-500 mb-6 text-xs">Where Every Film Finds Its Way.</p>
@@ -715,11 +718,25 @@ export async function getStaticProps() {
         hbo: new Set()
     };
 
+    // 🔥 POSTER OVERRIDES: Manual poster assignments for specific collections
+    const posterOverrides = {
+        'movies-like-black-swan': '/w185Y7RLfI6d9NMqbElfkE21MHZ.jpg' // Black Swan (2010) official poster
+    };
+
     // Helper: Finds a UNIQUE valid poster from the collection's movies
-    const fetchUniquePosterForCollection = async (movieIds, sectionName) => {
+    const fetchUniquePosterForCollection = async (movieIds, sectionName, collectionSlug) => {
         if (!movieIds || movieIds.length === 0) return null;
 
         const usedPosters = usedPostersPerSection[sectionName];
+
+        // ✅ CHECK FOR MANUAL OVERRIDE FIRST
+        if (posterOverrides[collectionSlug]) {
+            const overridePoster = posterOverrides[collectionSlug];
+            if (!usedPosters.has(overridePoster)) {
+                usedPosters.add(overridePoster);
+                return overridePoster;
+            }
+        }
 
         // Try up to 10 movies to find a unique poster
         for (let i = 0; i < Math.min(movieIds.length, 10); i++) {
@@ -760,7 +777,7 @@ export async function getStaticProps() {
             const collection = COLLECTIONS[key];
             if (!collection) return null;
 
-            const posterPath = await fetchUniquePosterForCollection(collection.movies, sectionName);
+            const posterPath = await fetchUniquePosterForCollection(collection.movies, sectionName, collection.slug);
 
             // 🔥 If no unique poster found, exclude this collection
             if (!posterPath) return null;
