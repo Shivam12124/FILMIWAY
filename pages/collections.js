@@ -243,6 +243,42 @@ const CollectionsHub = () => {
             directLink: '/collection/best-family-movies-on-hbo-max',
             hasSubCollections: false
         },
+
+        {
+            id: 'paramount-action',
+            title: 'Best Action Movies on Paramount+',
+            description: 'High-octane action films ranked by adrenaline score, stunts, and aerial combat',
+            icon: Zap,
+            gradient: 'from-red-600 to-orange-700',
+            movieCount: '10',
+            rating: '8.5',
+            directLink: '/collection/best-action-movies-on-paramount-plus',
+            hasSubCollections: false
+        },
+{
+            id: 'paramount-scifi',
+            title: 'Best Sci-Fi Movies on Paramount+',
+            description: 'Visionary science fiction films exploring cosmic scope, advanced technology, and alien contact',
+            icon: Rocket,
+            gradient: 'from-cyan-600 to-blue-700',
+            movieCount: '10',
+            rating: '8.4',
+            directLink: '/collection/best-sci-fi-movies-on-paramount-plus',
+            hasSubCollections: false
+        },
+
+
+        {
+            id: 'paramount-romance',
+            title: 'Best Romance Movies on Paramount+',
+            description: 'The top 10 romance movies streaming on Paramount+. From Titanic to About Time—ranked by emotional impact.',
+            icon: Heart,
+            gradient: 'from-pink-500 to-rose-700',
+            movieCount: '10',
+            rating: '7.8',
+            directLink: '/collection/best-romance-movies-on-paramount-plus',
+            hasSubCollections: false
+        },
         {
             id: 'oldboy',
             title: 'Movies Like Oldboy',
@@ -441,17 +477,7 @@ const CollectionsHub = () => {
             directLink: '/collection/best-mystery-thriller-movies',
             hasSubCollections: false
         },
-        {
-            id: 'drama-netflix',
-            title: 'Best Drama Movies on Netflix',
-            description: 'Critically acclaimed drama films streaming on Netflix',
-            icon: Film,
-            gradient: 'from-red-600 to-pink-600',
-            movieCount: '10',
-            rating: '8.0',
-            directLink: '/collection/best-drama-movies-on-netflix',
-            hasSubCollections: false
-        }
+
     ];
 
     const filteredCollections = collections.filter(collection =>

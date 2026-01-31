@@ -1,4 +1,4 @@
-// components/MovieDetailsSection.js - AUTO-FETCH ALL DATA (Cast, Crew, Budget, Ratings) ✅
+// components/MovieDetailsSection.js - AUTO-FETCH ALL DATA INCLUDING SYNOPSIS ✅
 
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
@@ -85,7 +85,6 @@ import {
   COMPLETE_MOVIE_DATA as HBO_MAX_DRAMA_MOVIE_DATA, 
   SENSITIVE_TIMELINES as HBO_MAX_DRAMA_SENSITIVE_TIMELINES 
 } from '../utils/hboMaxDramaMovieData';
-// ✅ NEW: HBO Max Comedy Import
 import { 
   COMPLETE_MOVIE_DATA as HBO_MAX_COMEDY_MOVIE_DATA, 
   SENSITIVE_TIMELINES as HBO_MAX_COMEDY_SENSITIVE_TIMELINES 
@@ -135,6 +134,23 @@ import {
 } from '../utils/huluFamilyMovieData';
 
 import { 
+  COMPLETE_MOVIE_DATA as PARAMOUNT_ACTION_MOVIE_DATA, 
+  SENSITIVE_TIMELINES as PARAMOUNT_ACTION_SENSITIVE_TIMELINES 
+} from '../utils/paramountActionMovieData';
+
+// ✅ Paramount Sci-Fi Import
+import { 
+  COMPLETE_MOVIE_DATA as PARAMOUNT_SCIFI_MOVIE_DATA, 
+  SENSITIVE_TIMELINES as PARAMOUNT_SCIFI_SENSITIVE_TIMELINES 
+} from '../utils/paramountSciFiMovieData';
+
+// ✅ NEW: Paramount Romance Import
+import { 
+  COMPLETE_MOVIE_DATA as PARAMOUNT_ROMANCE_MOVIE_DATA, 
+  SENSITIVE_TIMELINES as PARAMOUNT_ROMANCE_SENSITIVE_TIMELINES 
+} from '../utils/paramountRomanceMovieData';
+
+import { 
   COMPLETE_MOVIE_DATA as CRIME_THRILLER_MOVIE_DATA,
   SENSITIVE_TIMELINES as CRIME_THRILLER_SENSITIVE_TIMELINES 
 } from '../utils/crimeThrillerMovieData';
@@ -159,18 +175,14 @@ import {
   COMPLETE_MOVIE_DATA as THRILLER_MOVIE_DATA,
   SENSITIVE_TIMELINES as THRILLER_SENSITIVE_TIMELINES 
 } from '../utils/thrillerMovieData';
-// ✅ Fix for the current error (Mystery)
 import { 
   COMPLETE_MOVIE_DATA as MYSTERY_THRILLER_MOVIE_DATA,
   SENSITIVE_TIMELINES as MYSTERY_THRILLER_SENSITIVE_TIMELINES 
 } from '../utils/mysteryThrillerMovieData';
-
-// ✅ Proactive fix for potential next errors
 import { 
   COMPLETE_MOVIE_DATA as DETECTIVE_THRILLER_MOVIE_DATA,
   SENSITIVE_TIMELINES as DETECTIVE_THRILLER_SENSITIVE_TIMELINES 
 } from '../utils/detectiveThrillerMovieData';
-
 import { 
   COMPLETE_MOVIE_DATA as PSYCH_THRILLER_MOVIE_DATA,
   SENSITIVE_TIMELINES as PSYCH_THRILLER_SENSITIVE_TIMELINES 
@@ -214,7 +226,6 @@ import HboMaxSciFiSEOFAQSection from './HboMaxSciFiSEOFAQSection';
 import HboMaxHorrorSEOFAQSection from './HboMaxHorrorSEOFAQSection'; 
 import HboMaxBestSEOFAQSection from './HboMaxBestSEOFAQSection';
 import HboMaxDramaSEOFAQSection from './HboMaxDramaSEOFAQSection';
-// ✅ NEW: HBO Max Comedy FAQ Import
 import HboMaxComedySEOFAQSection from './HboMaxComedySEOFAQSection';
 
 import HuluActionSEOFAQSection from './HuluActionSEOFAQSection';
@@ -226,6 +237,11 @@ import HuluThrillerSEOFAQSection from './HuluThrillerSEOFAQSection';
 import HuluBestSEOFAQSection from './HuluBestSEOFAQSection';
 import HuluDramaSEOFAQSection from './HuluDramaSEOFAQSection';
 import HuluFamilySEOFAQSection from './HuluFamilySEOFAQSection';
+
+import ParamountActionSEOFAQSection from './ParamountActionSEOFAQSection';
+import ParamountSciFiSEOFAQSection from './ParamountSciFiSEOFAQSection';
+// ✅ NEW: Paramount Romance FAQ Import
+import ParamountRomanceSEOFAQSection from './ParamountRomanceSEOFAQSection';
 
 const MovieDetailsSection = React.memo(({
   movie,
@@ -260,7 +276,7 @@ const MovieDetailsSection = React.memo(({
   fromHboMaxHorrorCollection,
   fromHboMaxBestCollection,
   fromHboMaxDramaCollection,
-  fromHboMaxComedyCollection, // ✅ NEW: HBO Max Comedy Prop
+  fromHboMaxComedyCollection,
   fromHuluActionCollection,
   fromHuluRomanceCollection,
   fromHuluHorrorCollection,
@@ -269,7 +285,10 @@ const MovieDetailsSection = React.memo(({
   fromHuluThrillerCollection,
   fromHuluBestCollection,
   fromHuluDramaCollection,
-  fromHuluFamilyCollection
+  fromHuluFamilyCollection,
+  fromParamountActionCollection,
+  fromParamountSciFiCollection,
+  fromParamountRomanceCollection // ✅ NEW PROP
 }) => {
 
  if (!movie) return null;
@@ -285,7 +304,7 @@ const MovieDetailsSection = React.memo(({
   : fromHboMaxHorrorCollection ? safeLookup(HBO_MAX_HORROR_MOVIE_DATA, movie.tmdbId)
   : fromHboMaxBestCollection ? safeLookup(HBO_MAX_BEST_MOVIE_DATA, movie.tmdbId)
   : fromHboMaxDramaCollection ? safeLookup(HBO_MAX_DRAMA_MOVIE_DATA, movie.tmdbId)
-  : fromHboMaxComedyCollection ? safeLookup(HBO_MAX_COMEDY_MOVIE_DATA, movie.tmdbId) // ✅ HBO Comedy Added
+  : fromHboMaxComedyCollection ? safeLookup(HBO_MAX_COMEDY_MOVIE_DATA, movie.tmdbId)
   : fromHuluFamilyCollection ? safeLookup(HULU_FAMILY_MOVIE_DATA, movie.tmdbId)
   : fromHuluDramaCollection ? safeLookup(HULU_DRAMA_MOVIE_DATA, movie.tmdbId)
   : fromHuluBestCollection ? safeLookup(HULU_BEST_MOVIE_DATA, movie.tmdbId)
@@ -295,6 +314,9 @@ const MovieDetailsSection = React.memo(({
   : fromHuluHorrorCollection ? safeLookup(HULU_HORROR_MOVIE_DATA, movie.tmdbId)
   : fromHuluRomanceCollection ? safeLookup(HULU_ROMANCE_MOVIE_DATA, movie.tmdbId)
   : fromHuluActionCollection ? safeLookup(HULU_ACTION_MOVIE_DATA, movie.tmdbId)
+  : fromParamountActionCollection ? safeLookup(PARAMOUNT_ACTION_MOVIE_DATA, movie.tmdbId)
+  : fromParamountSciFiCollection ? safeLookup(PARAMOUNT_SCIFI_MOVIE_DATA, movie.tmdbId)
+  : fromParamountRomanceCollection ? safeLookup(PARAMOUNT_ROMANCE_MOVIE_DATA, movie.tmdbId) // ✅ ADDED
   : fromDonnieDarkoCollection ? safeLookup(DONNIE_DARKO_MOVIE_DATA, movie.tmdbId)
   : fromParasiteCollection ? safeLookup(PARASITE_MOVIE_DATA, movie.tmdbId)
   : fromMatrixCollection ? safeLookup(MATRIX_MOVIE_DATA, movie.tmdbId)
@@ -335,17 +357,29 @@ const MovieDetailsSection = React.memo(({
  const title = movie.Title || (movieInfo && movieInfo.title) || 'Unknown Title';
  const safeMovieInfo = movieInfo || getMovieSpecificData(title);
 
+ // Helper for initial synopsis
+ const getUniqueDescription = () => {
+   if (safeMovieInfo?.synopsis) return safeMovieInfo.synopsis;
+   const t = title.toLowerCase();
+   
+   if (t.includes('oldboy')) return "After 15 years of mysterious imprisonment, Oh Dae-su is released and seeks vengeance against his unknown captor.";
+   if (t.includes('parasite')) return "Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan.";
+   
+   return "A compelling exploration of cinema.";
+ };
+
  const year = movie.Year || movie.year || '20XX';
  const runtime = safeMovieInfo.runtime || movie.Runtime || '120 min';
  const rating = safeMovieInfo.rating || movie.imdbRating || 7.5;
 
- // 🔥🔥🔥 AUTO-FETCH LOGIC FOR ALL MOVIE DATA 🔥🔥🔥
+ // 🔥🔥🔥 AUTO-FETCH LOGIC FOR ALL MOVIE DATA INCLUDING SYNOPSIS 🔥🔥🔥
  const [dynamicMovieData, setDynamicMovieData] = useState({
    director: safeMovieInfo.director || movie.Director || 'Unknown Director',
    cast: safeMovieInfo.cast?.join(', ') || '',
    budget: safeMovieInfo.budget || 'N/A',
    boxOffice: safeMovieInfo.boxOffice || 'N/A',
-   ageRating: safeMovieInfo.ageRating || 'Rated'
+   ageRating: safeMovieInfo.ageRating || 'Rated',
+   synopsis: safeMovieInfo.synopsis || movie.Plot || getUniqueDescription() // ✅ Added synopsis to state
  });
 
  useEffect(() => {
@@ -387,12 +421,16 @@ const MovieDetailsSection = React.memo(({
                if (cert) newRating = cert;
            }
 
+           // ✅ Fetch Synopsis from TMDB
+           const newSynopsis = details.overview ? details.overview : dynamicMovieData.synopsis;
+
            setDynamicMovieData({
                director: newDirector,
                cast: topCast,
                budget: newBudget,
                boxOffice: newRevenue,
-               ageRating: newRating
+               ageRating: newRating,
+               synopsis: newSynopsis // ✅ Update state with TMDB synopsis
            });
 
        } catch (error) {
@@ -413,7 +451,7 @@ const MovieDetailsSection = React.memo(({
    || HBO_MAX_HORROR_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
    || HBO_MAX_BEST_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || HBO_MAX_DRAMA_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-   || HBO_MAX_COMEDY_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes // ✅ HBO Comedy Added
+   || HBO_MAX_COMEDY_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || HULU_FAMILY_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
    || HULU_DRAMA_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
    || HULU_BEST_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
@@ -423,6 +461,9 @@ const MovieDetailsSection = React.memo(({
    || HULU_HORROR_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
    || HULU_ROMANCE_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || HULU_ACTION_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
+   || PARAMOUNT_ACTION_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
+   || PARAMOUNT_SCIFI_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
+   || PARAMOUNT_ROMANCE_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes // ✅ ADDED
    || DONNIE_DARKO_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || PARASITE_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || BLACK_SWAN_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
@@ -450,7 +491,7 @@ const MovieDetailsSection = React.memo(({
    : fromHboMaxHorrorCollection ? movie.scariness ?? safeMovieInfo.scariness ?? 0
    : fromHboMaxBestCollection ? movie.cinematicMastery ?? safeMovieInfo.cinematicMastery ?? 0
    : fromHboMaxDramaCollection ? movie.emotionalIntensity ?? safeMovieInfo.emotionalIntensity ?? 0
-   : fromHboMaxComedyCollection ? movie.laughterIndex ?? safeMovieInfo.laughterIndex ?? 0 // ✅ HBO Comedy Added
+   : fromHboMaxComedyCollection ? movie.laughterIndex ?? safeMovieInfo.laughterIndex ?? 0
    : fromHuluFamilyCollection ? movie.wholesomeScore ?? safeMovieInfo.wholesomeScore ?? 0
    : fromHuluDramaCollection ? movie.emotionalIntensity ?? safeMovieInfo.emotionalIntensity ?? 0
    : fromHuluBestCollection ? movie.adrenalineScore ?? safeMovieInfo.adrenalineScore ?? 0 
@@ -460,6 +501,9 @@ const MovieDetailsSection = React.memo(({
    : fromHuluHorrorCollection ? movie.scariness ?? safeMovieInfo.scariness ?? 0 
    : fromHuluRomanceCollection ? movie.romanticIntensity ?? safeMovieInfo.romanticIntensity ?? 0 
    : fromHuluActionCollection ? movie.adrenalineScore ?? safeMovieInfo.adrenalineScore ?? 0
+   : fromParamountActionCollection ? movie.adrenalineScore ?? safeMovieInfo.adrenalineScore ?? 0
+   : fromParamountSciFiCollection ? movie.sciFiComplexity ?? safeMovieInfo.sciFiComplexity ?? 0
+   : fromParamountRomanceCollection ? movie.emotionalIntensity ?? safeMovieInfo.emotionalIntensity ?? 0 // ✅ ADDED
    : fromDonnieDarkoCollection ? movie.realityWarpIndex ?? safeMovieInfo.realityWarpIndex ?? 0
    : fromParasiteCollection ? movie.classWarfareIndex ?? safeMovieInfo.classWarfareIndex ?? 0
    : fromMatrixCollection ? movie.cyberComplexity ?? safeMovieInfo.cyberComplexity ?? 0
@@ -488,145 +532,170 @@ const MovieDetailsSection = React.memo(({
  const getComplexityColor = (level) => {
    if (fromHboActionCollection) {
         switch (level) {
-            case 'LEGENDARY': return '#ef4444'; 
-            case 'MASTERPIECE': return '#b91c1c'; 
-            case 'DIRECT': return '#f87171'; 
-            default: return '#fbbf24'; 
+     case 'EXTREME': return '#ea0808ff';
+     case 'HIGH': return '#eb7a09ff';
+     case 'MEDIUM': return '#8d7708ff';
+     default: return '#6b7280';
         }
    }
    if (fromHboRomanceCollection) { 
         switch (level) {
-            case 'LEGENDARY': return '#ec4899'; 
-            case 'MASTERPIECE': return '#be123c'; 
-            case 'ICONIC': return '#f43f5e'; 
-            default: return '#fbbf24'; 
+     case 'EXTREME': return '#ea0808ff';
+     case 'HIGH': return '#eb7a09ff';
+     case 'MEDIUM': return '#8d7708ff';
+     default: return '#6b7280';
         }
    }
    if (fromHboMaxThrillerCollection) { 
         switch (level) {
-            case 'MASTERPIECE': return '#ef4444'; 
-            case 'DISTURBING': return '#7f1d1d'; 
-            case 'SURREAL': return '#b91c1c'; 
-            default: return '#f87171'; 
+     case 'EXTREME': return '#ea0808ff';
+     case 'HIGH': return '#eb7a09ff';
+     case 'MEDIUM': return '#8d7708ff';
+     default: return '#6b7280';
         }
    }
    if (fromHboMaxFamilyCollection || fromHuluFamilyCollection) { 
         switch (level) {
-            case 'MASTERPIECE': return '#f59e0b'; // Amber 500
-            case 'HEARTWARMING': return '#fbbf24'; // Amber 400
-            case 'FUN': return '#fcd34d'; // Amber 300
-            default: return '#fde047'; // Yellow 300
+     case 'EXTREME': return '#ea0808ff';
+     case 'HIGH': return '#eb7a09ff';
+     case 'MEDIUM': return '#8d7708ff';
+     default: return '#6b7280';
         }
    }
    if (fromHboMaxSciFiCollection) { 
         switch (level) {
-            case 'GOD-TIER': return '#0891b2'; 
-            case 'EPIC': return '#0ea5e9'; 
-            case 'VISCERAL': return '#f97316'; 
-            default: return '#22d3ee'; 
+     case 'EXTREME': return '#ea0808ff';
+     case 'HIGH': return '#eb7a09ff';
+     case 'MEDIUM': return '#8d7708ff';
+     default: return '#6b7280';
         }
    }
    if (fromHboMaxHorrorCollection) { 
         switch (level) {
-            case 'NIGHTMARE': return '#7f1d1d'; // Red 900
-            case 'TERRIFYING': return '#991b1b'; // Red 800
-            case 'SCARY': return '#b91c1c'; // Red 700
-            default: return '#dc2626'; // Red 600
+     case 'EXTREME': return '#ea0808ff';
+     case 'HIGH': return '#eb7a09ff';
+     case 'MEDIUM': return '#8d7708ff';
+     default: return '#6b7280';
         }
    }
    if (fromHboMaxBestCollection) { 
         switch (level) {
-            case 'MASTERPIECE': return '#eab308'; // Yellow 500
-            case 'LEGENDARY': return '#ca8a04'; // Yellow 600
-            case 'ICONIC': return '#f59e0b'; // Amber 500
-            default: return '#fbbf24'; // Amber 400
+     case 'EXTREME': return '#ea0808ff';
+     case 'HIGH': return '#eb7a09ff';
+     case 'MEDIUM': return '#8d7708ff';
+     default: return '#6b7280';
         }
    }
    if (fromHboMaxDramaCollection) { 
         switch (level) {
-            case 'MASTERPIECE': return '#6366f1'; // Indigo 500
-            case 'EPIC': return '#4f46e5'; // Indigo 600
-            case 'TIMELESS': return '#312e81'; // Indigo 900
-            default: return '#818cf8'; // Indigo 400
+     case 'EXTREME': return '#ea0808ff';
+     case 'HIGH': return '#eb7a09ff';
+     case 'MEDIUM': return '#8d7708ff';
+     default: return '#6b7280';
         }
    }
-   if (fromHboMaxComedyCollection) { // ✅ HBO Comedy Theme
+   if (fromHboMaxComedyCollection) {
         switch (level) {
-            case 'MASTERPIECE': return '#ca8a04'; // Dark Yellow
-            case 'SATIRE': return '#d97706'; // Amber
-            case 'CLASSIC': return '#eab308'; // Yellow
-            default: return '#facc15'; // Light Yellow
+     case 'EXTREME': return '#ea0808ff';
+     case 'HIGH': return '#eb7a09ff';
+     case 'MEDIUM': return '#8d7708ff';
+     default: return '#6b7280';
         }
    }
    if (fromHuluDramaCollection) { 
         switch (level) {
-            case 'MASTERPIECE': return '#3b82f6';
-            case 'DEVASTATING': return '#7e22ce';
-            case 'HEALING': return '#4f46e5';
-            default: return '#60a5fa';
+     case 'EXTREME': return '#ea0808ff';
+     case 'HIGH': return '#eb7a09ff';
+     case 'MEDIUM': return '#8d7708ff';
+     default: return '#6b7280';
         }
    }
    if (fromHuluBestCollection) { 
         switch (level) {
-            case 'ESSENTIAL': return '#f59e0b';
-            case 'LEGENDARY': return '#d97706';
-            case 'MASTERPIECE': return '#b45309';
-            default: return '#fbbf24';
+     case 'EXTREME': return '#ea0808ff';
+     case 'HIGH': return '#eb7a09ff';
+     case 'MEDIUM': return '#8d7708ff';
+     default: return '#6b7280';
         }
    }
    if (fromHuluThrillerCollection) {
         switch (level) {
-            case 'MASTERPIECE': return '#ef4444'; 
-            case 'VISCERAL': return '#b91c1c'; 
-            case 'CEREBRAL': return '#991b1b'; 
-            default: return '#f87171'; 
+     case 'EXTREME': return '#ea0808ff';
+     case 'HIGH': return '#eb7a09ff';
+     case 'MEDIUM': return '#8d7708ff';
+     default: return '#6b7280';
         }
    }
    if (fromHuluSciFiCollection) { 
         switch (level) {
-            case 'LEGENDARY': return '#0ea5e9'; 
-            case 'PUZZLE': return '#a855f7'; 
-            case 'MASTERPIECE': return '#22d3ee'; 
-            default: return '#38bdf8'; 
+     case 'EXTREME': return '#ea0808ff';
+     case 'HIGH': return '#eb7a09ff';
+     case 'MEDIUM': return '#8d7708ff';
+     default: return '#6b7280';
         }
    }
    if (fromHuluComedyCollection) {
         switch (level) {
-            case 'LEGENDARY': return '#ca8a04'; 
-            case 'CHAOTIC': return '#ea580c'; 
-            case 'MASTERPIECE': return '#eab308'; 
-            default: return '#facc15'; 
+     case 'EXTREME': return '#ea0808ff';
+     case 'HIGH': return '#eb7a09ff';
+     case 'MEDIUM': return '#8d7708ff';
+     default: return '#6b7280';
         }
    }
    if (fromHuluHorrorCollection) {
         switch (level) {
-            case 'TRAUMA': return '#7f1d1d'; 
-            case 'DREAD': return '#dc2626'; 
-            case 'DISTURBING': return '#ea580c'; 
-            default: return '#b91c1c';
+     case 'EXTREME': return '#ea0808ff';
+     case 'HIGH': return '#eb7a09ff';
+     case 'MEDIUM': return '#8d7708ff';
+     default: return '#6b7280';
         }
    }
    if (fromHuluRomanceCollection) {
         switch (level) {
-            case 'MASTERPIECE': return '#8b5cf6'; 
-            case "PALME D'OR": return '#ec4899'; 
-            case 'NOSTALGIC': return '#facc15'; 
-            default: return '#fbbf24'; 
+     case 'EXTREME': return '#ea0808ff';
+     case 'HIGH': return '#eb7a09ff';
+     case 'MEDIUM': return '#8d7708ff';
+     default: return '#6b7280';
         }
    }
-   if (fromHuluActionCollection) {
+   if (fromHuluActionCollection || fromParamountActionCollection) {
         switch (level) {
-            case 'LEGENDARY': return '#ef4444'; 
-            case 'DIRECT': return '#f97316'; 
-            default: return '#fbbf24'; 
+     case 'EXTREME': return '#ea0808ff';
+     case 'HIGH': return '#eb7a09ff';
+     case 'MEDIUM': return '#8d7708ff';
+     default: return '#6b7280';
+        }
+   }
+   if (fromParamountSciFiCollection) {
+        switch (level) {
+     case 'EXTREME': return '#ea0808ff';
+     case 'HIGH': return '#eb7a09ff';
+     case 'MEDIUM': return '#8d7708ff';
+     default: return '#6b7280';
+        }
+   }
+   if (fromParamountRomanceCollection) { // ✅ ADDED PARAMOUNT ROMANCE LOGIC
+        switch (level) {
+     case 'EXTREME': return '#ea0808ff';
+     case 'HIGH': return '#eb7a09ff';
+     case 'MEDIUM': return '#8d7708ff';
+     default: return '#6b7280'; 400
+        }
+   }
+   if (fromMatrixCollection) {
+        switch (level) {
+     case 'EXTREME': return '#ea0808ff';
+     case 'HIGH': return '#eb7a09ff';
+     case 'MEDIUM': return '#8d7708ff';
+     default: return '#6b7280';
         }
    }
    if (fromRevengeCollection || fromWarFilmsCollection || fromDramaCollection) {
      switch (level) {
-       case 'EXTREME': return '#991b1b';
-       case 'HIGH': return '#dc2626';
-       case 'MEDIUM': return '#f87171';
-       default: return '#6b7280';
+     case 'EXTREME': return '#ea0808ff';
+     case 'HIGH': return '#eb7a09ff';
+     case 'MEDIUM': return '#8d7708ff';
+     default: return '#6b7280';
      }
    }
    switch (level) {
@@ -649,16 +718,6 @@ const MovieDetailsSection = React.memo(({
    }
  };
 
- const getUniqueDescription = () => {
-   if (safeMovieInfo?.synopsis) return safeMovieInfo.synopsis;
-   const t = title.toLowerCase();
-   
-   if (t.includes('oldboy')) return "After 15 years of mysterious imprisonment, Oh Dae-su is released and seeks vengeance against his unknown captor.";
-   if (t.includes('parasite')) return "Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan.";
-   
-   return "A compelling exploration of truth, identity, and the limits of human understanding.";
- };
-
  const getComplexityScoreTitle = () => {
    if (fromHboActionCollection) return 'ACTION INTENSITY';
    if (fromHboRomanceCollection) return 'EMOTIONAL INTENSITY'; 
@@ -668,7 +727,7 @@ const MovieDetailsSection = React.memo(({
    if (fromHboMaxHorrorCollection) return 'SCARINESS SCORE';
    if (fromHboMaxBestCollection) return 'CINEMATIC MASTERY';
    if (fromHboMaxDramaCollection) return 'EMOTIONAL INTENSITY';
-   if (fromHboMaxComedyCollection) return 'LAUGHTER INDEX'; // ✅ HBO Comedy Added
+   if (fromHboMaxComedyCollection) return 'LAUGHTER INDEX';
    if (fromHuluDramaCollection) return 'EMOTIONAL INTENSITY';
    if (fromHuluBestCollection) return 'INTENSITY SCORE'; 
    if (fromHuluThrillerCollection) return 'SUSPENSE SCORE';
@@ -676,7 +735,9 @@ const MovieDetailsSection = React.memo(({
    if (fromHuluComedyCollection) return 'LAUGHTER SCORE'; 
    if (fromHuluHorrorCollection) return 'DREAD SCORE'; 
    if (fromHuluRomanceCollection) return 'EMOTIONAL RESONANCE';
-   if (fromHuluActionCollection) return 'ADRENALINE SCORE';
+   if (fromHuluActionCollection || fromParamountActionCollection) return 'ADRENALINE SCORE';
+   if (fromParamountSciFiCollection) return 'SCI-FI COMPLEXITY';
+   if (fromParamountRomanceCollection) return 'EMOTIONAL INTENSITY'; // ✅ ADDED
    if (fromMatrixCollection) return 'SCI-FI COMPLEXITY SCORE';
    if (fromSe7enCollection) return 'SE7EN DNA SCORE';
    if (fromRevengeCollection) return 'REVENGE INTENSITY SCORE';
@@ -706,7 +767,7 @@ const MovieDetailsSection = React.memo(({
    if (fromHboMaxHorrorCollection) return 'TRAUMA INDEX';
    if (fromHboMaxBestCollection) return 'MASTERY INDEX';
    if (fromHboMaxDramaCollection) return 'EMOTIONAL IMPACT INDEX';
-   if (fromHboMaxComedyCollection) return 'LAUGHTER INDEX'; // ✅ HBO Comedy Added
+   if (fromHboMaxComedyCollection) return 'LAUGHTER INDEX';
    if (fromHuluDramaCollection) return 'EMOTIONAL IMPACT INDEX';
    if (fromHuluBestCollection) return 'ACCLAIM INDEX'; 
    if (fromHuluThrillerCollection) return 'TENSION INDEX';
@@ -714,7 +775,9 @@ const MovieDetailsSection = React.memo(({
    if (fromHuluComedyCollection) return 'LAUGHTER INDEX'; 
    if (fromHuluHorrorCollection) return 'DREAD INDEX'; 
    if (fromHuluRomanceCollection) return 'EMOTION INDEX';
-   if (fromHuluActionCollection) return 'ADRENALINE INDEX';
+   if (fromHuluActionCollection || fromParamountActionCollection) return 'ADRENALINE INDEX'; 
+   if (fromParamountSciFiCollection) return 'HARD SCI-FI INDEX';
+   if (fromParamountRomanceCollection) return 'EMOTION INDEX'; // ✅ ADDED
    if (fromMatrixCollection) return 'MIND BENDING SCORE';
    if (fromSe7enCollection) return 'NOIR DARKNESS INDEX';
    if (fromRevengeCollection) return 'REVENGE INTENSITY INDEX';
@@ -744,7 +807,7 @@ const MovieDetailsSection = React.memo(({
    if (fromHboMaxHorrorCollection) return 'NIGHTMARE LEVEL';
    if (fromHboMaxBestCollection) return 'LEGACY LEVEL';
    if (fromHboMaxDramaCollection) return 'DEPTH LEVEL';
-   if (fromHboMaxComedyCollection) return 'COMEDY TIER'; // ✅ HBO Comedy Added
+   if (fromHboMaxComedyCollection) return 'COMEDY TIER';
    if (fromHuluDramaCollection) return 'RESONANCE LEVEL';
    if (fromHuluBestCollection) return 'PRESTIGE LEVEL'; 
    if (fromHuluThrillerCollection) return 'THRILL LEVEL';
@@ -752,7 +815,9 @@ const MovieDetailsSection = React.memo(({
    if (fromHuluComedyCollection) return 'CHAOS LEVEL';
    if (fromHuluHorrorCollection) return 'SCARINESS LEVEL'; 
    if (fromHuluRomanceCollection) return 'ROMANCE TIER';
-   if (fromHuluActionCollection) return 'ACTION INTENSITY LEVEL';
+   if (fromHuluActionCollection || fromParamountActionCollection) return 'ACTION INTENSITY LEVEL'; 
+   if (fromParamountSciFiCollection) return 'COSMIC SCALE LEVEL';
+   if (fromParamountRomanceCollection) return 'ROMANCE TIER LEVEL'; // ✅ ADDED
    if (fromMatrixCollection) return 'SCI-FI COMPLEXITY LEVEL';
    if (fromSe7enCollection) return 'PSYCHOLOGICAL GRIT LEVEL';
    if (fromRevengeCollection) return 'VENGEANCE BRUTALITY LEVEL';
@@ -814,7 +879,7 @@ const MovieDetailsSection = React.memo(({
         if (scoreValue >= 80) return 'A deeply moving film with powerful performances and rich storytelling.';
         return 'A compelling drama with genuine emotional stakes and solid acting.';
    }
-   if (fromHboMaxComedyCollection) { // ✅ HBO Comedy Description
+   if (fromHboMaxComedyCollection) {
         if (scoreValue >= 90) return 'A satirical masterpiece that defines the genre. Brilliant, witty, and timeless.';
         if (scoreValue >= 80) return 'Extremely funny with sharp writing and memorable performances.';
         return 'A solid comedy that delivers consistent laughs and good entertainment.';
@@ -854,10 +919,20 @@ const MovieDetailsSection = React.memo(({
         if (scoreValue >= 80) return 'A beautiful, resonant film with undeniable chemistry and heart.';
         return 'A solid romance with sweet moments and genuine connection.';
    }
-   if (fromHuluActionCollection) {
+   if (fromHuluActionCollection || fromParamountActionCollection) {
         if (scoreValue >= 90) return 'A relentless, high-octane adrenaline rush with masterclass choreography.';
         if (scoreValue >= 80) return 'Intense, fast-paced action with thrilling set pieces.';
         return 'Solid action entertainment with satisfying combat and stunts.';
+   }
+   if (fromParamountSciFiCollection) {
+        if (scoreValue >= 90) return 'A visionary masterpiece that pushes the boundaries of human imagination and science.';
+        if (scoreValue >= 80) return 'Intellectually stimulating with complex concepts and stunning cosmic visuals.';
+        return 'A solid sci-fi film with engaging ideas and impressive world-building.';
+   }
+   if (fromParamountRomanceCollection) { // ✅ ADDED PARAMOUNT ROMANCE LOGIC
+        if (scoreValue >= 90) return 'A transcendent, epic romance that defines the genre. Prepare to be emotionally devastated.';
+        if (scoreValue >= 80) return 'A deeply moving film with incredible chemistry and a heartwarming message.';
+        return 'A charming and memorable romance that delivers all the right feelings.';
    }
    if (fromMatrixCollection) {
         if (scoreValue >= 90) return 'A groundbreaking sci-fi masterpiece exploring deep philosophical questions about reality and consciousness.';
@@ -885,7 +960,7 @@ const MovieDetailsSection = React.memo(({
    if (fromHboMaxHorrorCollection) return 'border-red-700/40';
    if (fromHboMaxBestCollection) return 'border-amber-500/40';
    if (fromHboMaxDramaCollection) return 'border-indigo-500/40';
-   if (fromHboMaxComedyCollection) return 'border-yellow-500/40'; // ✅ HBO Comedy Theme
+   if (fromHboMaxComedyCollection) return 'border-yellow-500/40';
    if (fromHuluDramaCollection) return 'border-blue-500/40';
    if (fromHuluBestCollection) return 'border-amber-500/40'; 
    if (fromHuluThrillerCollection) return 'border-red-500/40';
@@ -893,7 +968,9 @@ const MovieDetailsSection = React.memo(({
    if (fromHuluComedyCollection) return 'border-yellow-400/40';
    if (fromHuluHorrorCollection) return 'border-red-600/40';
    if (fromHuluRomanceCollection) return 'border-pink-500/40';
-   if (fromHuluActionCollection) return 'border-red-500/40';
+   if (fromHuluActionCollection || fromParamountActionCollection) return 'border-red-500/40'; 
+   if (fromParamountSciFiCollection) return 'border-cyan-500/40'; 
+   if (fromParamountRomanceCollection) return 'border-pink-500/40'; // ✅ ADDED (Pink Theme)
    if (fromMatrixCollection) return 'border-emerald-400/40'; 
    if (fromSe7enCollection) return 'border-amber-700/40';
    if (fromRevengeCollection || fromWarFilmsCollection || fromDramaCollection) return 'border-red-400/40';
@@ -912,7 +989,7 @@ const MovieDetailsSection = React.memo(({
    if (fromHboMaxHorrorCollection) return 'text-red-600';
    if (fromHboMaxBestCollection) return 'text-amber-500';
    if (fromHboMaxDramaCollection) return 'text-indigo-500';
-   if (fromHboMaxComedyCollection) return 'text-yellow-500'; // ✅ HBO Comedy Theme
+   if (fromHboMaxComedyCollection) return 'text-yellow-500';
    if (fromHuluDramaCollection) return 'text-blue-500';
    if (fromHuluBestCollection) return 'text-amber-500'; 
    if (fromHuluThrillerCollection) return 'text-red-500';
@@ -920,7 +997,9 @@ const MovieDetailsSection = React.memo(({
    if (fromHuluComedyCollection) return 'text-yellow-400';
    if (fromHuluHorrorCollection) return 'text-red-600'; 
    if (fromHuluRomanceCollection) return 'text-pink-500'; 
-   if (fromHuluActionCollection) return 'text-red-500';
+   if (fromHuluActionCollection || fromParamountActionCollection) return 'text-red-500'; 
+   if (fromParamountSciFiCollection) return 'text-cyan-500';
+   if (fromParamountRomanceCollection) return 'text-pink-500'; // ✅ ADDED (Pink Theme)
    if (fromMatrixCollection) return 'text-emerald-400'; 
    if (fromSe7enCollection) return 'text-amber-600';
    if (fromRevengeCollection || fromWarFilmsCollection || fromDramaCollection) return 'text-red-400';
@@ -984,7 +1063,8 @@ const MovieDetailsSection = React.memo(({
             <BookOpen className="w-5 h-5 sm:w-6 sm:h-6 text-yellow-400" />
             <h3 className="text-lg sm:text-xl md:text-2xl font-light text-yellow-300">The Experience</h3>
           </div>
-          <p className="text-gray-200 leading-relaxed text-sm sm:text-base md:text-lg">{getUniqueDescription()}</p>
+          {/* ✅ UPDATED TO USE DYNAMIC SYNOPSIS */}
+          <p className="text-gray-200 leading-relaxed text-sm sm:text-base md:text-lg">{dynamicMovieData.synopsis}</p>
         </div>
       </motion.div>
 
@@ -1041,7 +1121,7 @@ const MovieDetailsSection = React.memo(({
        !fromHuluBestCollection && 
        !fromHuluFamilyCollection && 
        !fromHboMaxFamilyCollection && 
-       !fromHboMaxBestCollection &&  // Added
+       !fromHboMaxBestCollection && 
        (
         <motion.div
           className="mb-6 sm:mb-8 md:mb-12 bg-gradient-to-br from-gray-800/40 to-gray-900/60 rounded-lg sm:rounded-xl border border-gray-700/50 p-3 sm:p-4 md:p-8 shadow-2xl backdrop-blur-sm relative overflow-hidden"
@@ -1150,7 +1230,7 @@ const MovieDetailsSection = React.memo(({
         : fromHboMaxHorrorCollection ? <HboMaxHorrorSEOFAQSection movie={movie} />
         : fromHboMaxBestCollection ? <HboMaxBestSEOFAQSection movie={movie} />
         : fromHboMaxDramaCollection ? <HboMaxDramaSEOFAQSection movie={movie} />
-        : fromHboMaxComedyCollection ? <HboMaxComedySEOFAQSection movie={movie} /> // ✅ HBO Comedy FAQ
+        : fromHboMaxComedyCollection ? <HboMaxComedySEOFAQSection movie={movie} />
         : fromHuluFamilyCollection ? <HuluFamilySEOFAQSection movie={movie} />
         : fromHuluDramaCollection ? <HuluDramaSEOFAQSection movie={movie} />
         : fromHuluBestCollection ? <HuluBestSEOFAQSection movie={movie} />
@@ -1160,6 +1240,9 @@ const MovieDetailsSection = React.memo(({
         : fromHuluHorrorCollection ? <HuluHorrorSEOFAQSection movie={movie} /> 
         : fromHuluRomanceCollection ? <HuluRomanceSEOFAQSection movie={movie} /> 
         : fromHuluActionCollection ? <HuluActionSEOFAQSection movie={movie} />
+        : fromParamountActionCollection ? <ParamountActionSEOFAQSection movie={movie} />
+        : fromParamountSciFiCollection ? <ParamountSciFiSEOFAQSection movie={movie} /> 
+        : fromParamountRomanceCollection ? <ParamountRomanceSEOFAQSection movie={movie} /> // ✅ ADDED
         : fromDonnieDarkoCollection ? <DonnieDarkoSEOFAQSection movie={movie} />
         : fromParasiteCollection ? <ParasiteSEOFAQSection movie={movie} />
         : fromMatrixCollection ? <MatrixSEOFAQSection movie={movie} />

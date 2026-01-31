@@ -307,7 +307,7 @@ export const COMPLETE_MOVIE_DATA = {
     // Curve: Extraction -> Recruitment -> Dream 1 -> Dream 2 -> Limbo.
     // Peak: 92 (The Kick Sequence - Multi-Layer Tension).
     27205: createMovieData({ 
-        suspenseIntensity: 90, 
+        suspenseIntensity: 86, 
         psychologicalPressure: 85, 
         complexityLevel: "MIND-BENDING", 
         dominantColor: "#64748b", // Steel Blue

@@ -90,7 +90,7 @@ export const COLLECTIONS = {
   gradientTo: 'to-yellow-500',
   category: 'survival',
   tags: ['survival', 'extreme', 'endurance', 'true stories', 'human resilience'],
-  metaTitle: '10 Best Survival Movies Ever Made ((2026)) - Expert Rankings | Filmiway',
+  metaTitle: '10 Best Survival Movies Ever Made (2026) - Expert Rankings | Filmiway',
   metaDescription: 'Discover 10 heart-pounding survival movies ranked by intensity. From 127 Hours to The Revenant, explore films that push human endurance to the limit. Updated (2026).',
   metaKeywords: 'best survival movies, survival films (2026), extreme survival, 127 hours, the revenant, cast away, true story survival movies, survival thriller movies',
   stats: {
@@ -130,10 +130,10 @@ export const COLLECTIONS = {
     }
   },
 // ✅ FIX: Renamed from 'internalLinks' to 'relatedCollections' to match component logic
-  relatedCollections: [
-    'best-war-films',              // Thematic Sibling (High Stakes)
-    'movies-like-interstellar',    // Thematic Sibling (Survival in Space)
-    'best-drama-movies-on-netflix' // Cross-Link
+ relatedCollections: [
+    'best-war-films',              // Thematic Sibling
+    'movies-like-interstellar',    // Survival in Space
+    'best-drama-movies-on-hulu'    // FIXED: Changed from Netflix to Hulu
   ],
   seo: {
     title: '10 Best Survival Movies Ever Made (2026) - Expert Rankings | Filmiway',
@@ -191,7 +191,7 @@ export const COLLECTIONS = {
       'tt0093773',  // 1. Predator (1987)
       'tt1220719',  // 2. Ip Man (2008)
       'tt2103281',  // 3. Dawn of the Planet of the Apes (2014)
-      'tt36463894', // 4. Predator: Killer of Killers ((2026))
+      'tt36463894', // 4. Predator: Killer of Killers (2024)
       'tt0455944',  // 5. The Equalizer (2014)
       'tt2802144',  // 6. Kingsman: The Secret Service (2014)
       'tt0477080',  // 7. Unstoppable (2010) - Replaces Taken
@@ -783,7 +783,7 @@ export const COLLECTIONS = {
     category: 'drama',
     tags: ['drama', 'hulu', 'streaming', 'emotional', 'indie', 'award-winning', 'tearjerker'],
 
-    metaTitle: '10 Best Drama Movies on Hulu ((2026)) | Ranked by Emotion | Filmiway',
+    metaTitle: '10 Best Drama Movies on Hulu (2026) | Ranked by Emotion | Filmiway',
     metaDescription: 'Discover the top 10 drama movies on Hulu—from Boyhood to Perfect Days. Expert-curated ranking of emotionally powerful films and critical darlings.',
     metaKeywords: 'best drama movies on hulu, hulu drama films, boyhood, perfect days, all of us strangers, brooklyn, emotional movies hulu, drama streaming (2026)',
 
@@ -869,7 +869,7 @@ export const COLLECTIONS = {
     category: 'family',
     tags: ['family', 'hulu', 'kids', 'animation', 'adventure', 'wholesome', 'streaming'],
 
-    metaTitle: '10 Best Family Movies on Hulu ((2026)) | Wholesome & Fun | Filmiway',
+    metaTitle: '10 Best Family Movies on Hulu (2026) | Wholesome & Fun | Filmiway',
     metaDescription: 'Discover the top 10 family movies on Hulu—from Robot Dreams to Night at the Museum. Expert-curated ranking of wholesome films for all ages.',
     metaKeywords: 'best family movies on hulu, hulu kids movies, robot dreams, night at the museum, sonic 2, steven universe movie, wholesome movies streaming',
 
@@ -1648,7 +1648,7 @@ export const COLLECTIONS = {
     category: 'comedy',
     tags: ['comedy', 'hbo max', 'streaming', 'satire', 'classic', 'parody', 'slapstick'],
 
-    metaTitle: '10 Best Comedy Movies on HBO Max ((2026)) | Ranked by Laughter | Filmiway',
+    metaTitle: '10 Best Comedy Movies on HBO Max (2026) | Ranked by Laughter | Filmiway',
     metaDescription: 'Discover the top 10 comedy movies on HBO Max—from City Lights to Barbie. Expert-curated ranking of satirical masterpieces and hilarious classics.',
     metaKeywords: 'best comedy movies on hbo max, hbo max comedy films, city lights, blazing saddles, barbie, this is spinal tap, funny movies streaming',
 
@@ -1714,6 +1714,264 @@ export const COLLECTIONS = {
     }
 },
 
+// 🔥 BEST ACTION MOVIES ON PARAMOUNT+ COLLECTION
+'best-action-movies-on-paramount-plus': {
+    slug: 'best-action-movies-on-paramount-plus',
+    title: 'Top 10 High-Octane Action Movies on Paramount+',
+    subtitle: 'Ranked by Adrenaline & Intensity',
+    description: 'The best action movies streaming on Paramount+. From Mission: Impossible to Top Gun: Maverick—ranked by adrenaline.',
+    longDescription: 'Feel the need for speed? This collection ranks the absolute best action movies on Paramount+, focusing on practical stunts, aerial combat, and relentless pacing. From Tom Cruise hanging off the Burj Khalifa to the zombie swarms of World War Z, these are the films that define "high-octane."',
+
+    emoji: '🔥',
+    theme: 'red',
+    primaryColor: '#ef4444', // Red 500
+    secondaryColor: '#dc2626', // Red 600
+    accentColor: '#991b1b', // Red 800
+    gradientFrom: 'from-red-600',
+    gradientTo: 'to-orange-600',
+
+    category: 'action',
+    tags: ['action', 'paramount+', 'streaming', 'tom cruise', 'stunts', 'thriller', 'high octane'],
+
+    metaTitle: '10 Best Action Movies on Paramount+ (2026) | Adrenaline Ranked | Filmiway',
+    metaDescription: 'Discover the top 10 action movies on Paramount+—from Top Gun: Maverick to World War Z. Expert-curated ranking of high-octane films with practical stunts.',
+    metaKeywords: 'best action movies on paramount plus, paramount plus action films, top gun maverick, mission impossible fallout, world war z, baby driver, action movies streaming',
+
+    stats: {
+        totalMovies: 10,
+        averageRating: 7.9,
+        totalWatchtime: '21 hours 50 minutes',
+        averageAdrenalineScore: 89.6,
+        mostIntense: 'Mission: Impossible – Fallout (100/100)',
+        newestMovie: 'Top Gun: Maverick (2022)',
+        oldestMovie: 'Raiders of the Lost Ark (1981)'
+    },
+
+    movies: [
+        'tt7963665', // 1. Mission: Impossible – Fallout (2018)
+        'tt1745960', // 2. Top Gun: Maverick (2022)
+        'tt1229238', // 3. Mission: Impossible – Ghost Protocol (2011)
+        'tt3890160', // 4. Baby Driver (2017)
+        'tt0816711', // 5. World War Z (2013)
+        'tt0172495', // 6. Gladiator (2000)
+        'tt0418279', // 7. Transformers (2007)
+        'tt0119094', // 8. Face/Off (1997)
+        'tt0082971', // 9. Raiders of the Lost Ark (1981)
+        'tt1408101'  // 10. Star Trek Into Darkness (2013)
+    ],
+
+    badges: [
+        { label: 'Practical Stunts', desc: 'Real action, minimal CGI' },
+        { label: 'Paramount+ Exclusive', desc: 'Available to stream now' },
+        { label: 'Adrenaline Rush', desc: 'Non-stop intensity' }
+    ],
+
+    featured: {
+        hero: {
+            title: 'Mission: Impossible – Fallout',
+            subtitle: 'The Perfect Action Movie',
+            description: 'Tom Cruise performs the most dangerous stunts in cinema history, from a HALO jump to a helicopter chase, in this relentless masterpiece.',
+            poster: 'https://image.tmdb.org/t/p/w500/AkJQpZp9WoNdj7pLYSj1L0RcMMN.jpg',
+            backdrop: 'https://image.tmdb.org/t/p/w1280/aw4FOsWr2FY373nKSxbpNi3fz4F.jpg',
+            adrenalineScore: 100
+        }
+    },
+
+    relatedCollections: [
+        'best-action-movies-on-hbo-max',
+        'best-action-movies-on-hulu',
+        'best-sci-fi-movies',
+        'best-thriller-movies'
+    ],
+
+    seo: {
+        title: '10 Best Action Movies on Paramount+ (2026) | Adrenaline Ranked | Filmiway',
+        description: 'The definitive ranking of the best action movies on Paramount+. From Top Gun to Mission: Impossible, find your next high-octane watch here.',
+        keywords: 'action movies paramount plus, best action films streaming, mission impossible, top gun maverick, world war z, baby driver, face off, paramount plus thriller',
+        canonicalUrl: 'https://filmiway.com/collection/best-action-movies-on-paramount-plus',
+        ogImage: 'https://filmiway.com/images/paramount-action-collection-og.jpg',
+        structuredData: {
+            '@context': 'https://schema.org',
+            '@type': 'ItemList',
+            name: 'Best Action Movies on Paramount+',
+            description: 'Expert-curated list of the best action movies available on Paramount+ ranked by adrenaline and stunt authenticity',
+            numberOfItems: 10
+        }
+    }
+},
+
+
+// 🚀 BEST SCI-FI MOVIES ON PARAMOUNT+ COLLECTION
+'best-sci-fi-movies-on-paramount-plus': {
+    slug: 'best-sci-fi-movies-on-paramount-plus',
+    title: '10 Best Sci-Fi Movies on Paramount+',
+    subtitle: 'Cosmic Scale & Visionary Films',
+    description: 'The definitive ranking of the best sci-fi movies streaming on Paramount+. From Interstellar to Star Trek.',
+    longDescription: 'Explore the infinite on Paramount+. This collection ranks the absolute best science fiction films, focusing on scientific accuracy, cosmic scale, and visionary storytelling. From the hard sci-fi of Interstellar to the thrilling survival of The Martian.',
+
+    emoji: '🚀',
+    theme: 'cyan',
+    primaryColor: '#0ea5e9', // Sky 500
+    secondaryColor: '#0284c7', // Sky 600
+    accentColor: '#0369a1', // Sky 700
+    gradientFrom: 'from-sky-600',
+    gradientTo: 'to-blue-900',
+
+    category: 'sci-fi',
+    tags: ['sci-fi', 'paramount+', 'space', 'aliens', 'time travel', 'hard sci-fi', 'streaming'],
+
+    metaTitle: '10 Best Sci-Fi Movies on Paramount+ (2026) | Ranked by Complexity | Filmiway',
+    metaDescription: 'Discover the top 10 sci-fi movies on Paramount+—from Interstellar to Arrival. Expert-curated ranking of visionary films with cosmic scale.',
+    metaKeywords: 'best sci-fi movies on paramount plus, paramount plus sci-fi films, interstellar, arrival, the martian, star trek wrath of khan, minority report, sci-fi streaming',
+
+    stats: {
+        totalMovies: 10,
+        averageRating: 7.9,
+        totalWatchtime: '22 hours 10 minutes',
+        averageComplexity: 89.5,
+        mostComplex: 'Interstellar (98/100)',
+        newestMovie: 'Annihilation (2018)',
+        oldestMovie: 'Star Trek II: The Wrath of Khan (1982)'
+    },
+
+    movies: [
+        'tt0816692', // 1. Interstellar
+        'tt2543164', // 2. Arrival
+        'tt3659388', // 3. The Martian
+        'tt0181689', // 4. Minority Report
+        'tt2798920', // 5. Annihilation
+        'tt6644200', // 6. A Quiet Place
+        'tt0084726', // 7. Star Trek II: The Wrath of Khan
+        'tt1179933', // 8. 10 Cloverfield Lane
+        'tt0212720', // 9. A.I. Artificial Intelligence
+        'tt0407304'  // 10. War of the Worlds
+    ],
+
+    badges: [
+        { label: 'Hard Sci-Fi', desc: 'Grounded in real science' },
+        { label: 'Paramount+ Exclusive', desc: 'Premium sci-fi streaming now' },
+        { label: 'Visionary Directors', desc: 'Nolan, Villeneuve, Spielberg' }
+    ],
+
+    featured: {
+        hero: {
+            title: 'Interstellar',
+            subtitle: 'The Ultimate Space Epic',
+            description: 'Christopher Nolan’s masterpiece about a team of explorers who travel through a wormhole in search of a new home for humanity.',
+            poster: 'https://image.tmdb.org/t/p/w500/gEU2QniL6E77NI6lCU6MxlNBvIx.jpg',
+            backdrop: 'https://image.tmdb.org/t/p/w1280/rAiYTfKGqDCRIIqo664sY9XZIvQ.jpg',
+            complexity: 98
+        }
+    },
+
+    relatedCollections: [
+        'best-sci-fi-movies',
+        'movies-like-interstellar',
+        'best-action-movies-on-paramount-plus'
+    ],
+
+    seo: {
+        title: '10 Best Sci-Fi Movies on Paramount+ (2026) | Ranked by Complexity',
+        description: 'The definitive ranking of the best sci-fi movies on Paramount+. From Interstellar to The Martian, find your next cosmic watch here.',
+        keywords: 'sci-fi movies paramount plus, best sci-fi films streaming, interstellar, arrival, the martian, star trek, minority report, paramount plus sci-fi',
+        canonicalUrl: 'https://filmiway.com/collection/best-sci-fi-movies-on-paramount-plus',
+        ogImage: 'https://filmiway.com/images/paramount-scifi-collection-og.jpg',
+        structuredData: {
+            '@context': 'https://schema.org',
+            '@type': 'ItemList',
+            name: 'Best Sci-Fi Movies on Paramount+',
+            description: 'Expert-curated list of the best sci-fi movies available on Paramount+ ranked by complexity and visual spectacle',
+            numberOfItems: 10
+        }
+    }
+},
+
+
+
+// 💖 BEST ROMANCE MOVIES ON PARAMOUNT+ COLLECTION
+  'best-romance-movies-on-paramount-plus': {
+    slug: 'best-romance-movies-on-paramount-plus',
+    title: 'Best Romance Movies on Paramount+',
+    subtitle: 'Prestige Love Stories & Emotional Masterpieces',
+    description: 'The top 10 romance movies streaming on Paramount+ right now. From the epic tragedy of Titanic to the quiet devotion of About Time.',
+    longDescription: 'Discover the most powerful love stories on Paramount+. This collection moves beyond standard rom-coms to feature prestige cinema, critical darlings, and emotionally complex narratives. From the sinking ship of Titanic to the time-traveling warmth of About Time, these are films that define the genre.',
+
+    emoji: '💖',
+    theme: 'pink',
+    primaryColor: '#ec4899',
+    secondaryColor: '#db2777',
+    accentColor: '#be123c',
+    gradientFrom: 'from-pink-600',
+    gradientTo: 'to-rose-900',
+
+    category: 'romance',
+    tags: ['romance', 'paramount+', 'streaming', 'drama', 'classic', 'emotional', 'love'],
+
+    metaTitle: '10 Best Romance Movies on Paramount+ (2026) | Ranked by Emotion',
+    metaDescription: 'Discover the top 10 romance movies on Paramount+—from Titanic to About Time. Expert-curated ranking of emotionally resonant films with electric chemistry.',
+    metaKeywords: 'best romance movies on paramount plus, paramount plus romance films, titanic, about time, its a wonderful life, ghost, romantic movies streaming',
+
+    stats: {
+      totalMovies: 10,
+      averageRating: 7.8,
+      totalWatchtime: '21 hours 43 minutes',
+      averageEmotionalIntensity: 91.5,
+      mostIntense: 'Titanic (100/100)',
+      newestMovie: 'About Time (2013)',
+      oldestMovie: 'It\'s a Wonderful Life (1946)'
+    },
+
+    movies: [
+      'tt0120338', // 1. Titanic
+      'tt2194499', // 2. About Time
+      'tt0038650', // 3. It's a Wonderful Life
+      'tt0116209', // 4. The English Patient
+      'tt0421715', // 5. The Curious Case of Benjamin Button
+      'tt0099653', // 6. Ghost
+      'tt0054698', // 7. Breakfast at Tiffany's
+      'tt1758692', // 8. Like Crazy
+      'tt0343660', // 9. 50 First Dates
+      'tt0112697'  // 10. Clueless
+    ],
+
+    badges: [
+      { label: 'Epic Romances', desc: 'Grand scale love stories' },
+      { label: 'Paramount+ Exclusive', desc: 'Available to stream now' },
+      { label: 'Tearjerkers', desc: 'Guaranteed emotional impact' }
+    ],
+
+    featured: {
+      hero: {
+        title: 'Titanic',
+        subtitle: 'The Romance That Defined a Generation',
+        description: 'James Cameron\'s epic masterpiece about a forbidden love that blooms on the ill-fated ship. The ultimate test of love against destiny.',
+        poster: 'https://image.tmdb.org/t/p/w500/9xjZS2rlVxm8SFx8kPC3aIGCOYQ.jpg',
+        backdrop: 'https://image.tmdb.org/t/p/w1280/6VinXcAZznEVUt8D9ru5cq836dE.jpg',
+        emotionalIntensity: 100
+      }
+    },
+
+    relatedCollections: [
+      'best-romance-movies-on-hbo-max',
+      'best-romance-movies-on-hulu',
+      'best-drama-movies-on-hbo-max'
+    ],
+
+    seo: {
+      title: '10 Best Romance Movies on Paramount+ (2026) | Emotion Ranked',
+      description: 'The definitive ranking of the best romance movies on Paramount+. From Titanic to About Time, find your next emotional watch here.',
+      keywords: 'romance movies paramount plus, best romance films streaming, titanic, about time, ghost, benjamin button, love stories',
+      canonicalUrl: 'https://filmiway.com/collection/best-romance-movies-on-paramount-plus',
+      ogImage: 'https://filmiway.com/images/paramount-romance-collection-og.jpg',
+      structuredData: {
+        '@context': 'https://schema.org',
+        '@type': 'ItemList',
+        name: 'Best Romance Movies on Paramount+',
+        description: 'Expert-curated list of the best romance movies available on Paramount+ ranked by emotional resonance and cinematic legacy',
+        numberOfItems: 10
+      }
+    }
+  },
 
 // 🦢 MOVIES LIKE BLACK SWAN COLLECTION
 'movies-like-black-swan': {
@@ -1733,7 +1991,7 @@ export const COLLECTIONS = {
   category: 'black-swan',
   tags: ['psychological horror', 'artistic obsession', 'identity crisis', 'descent into madness', 'performance art', 'body horror'],
   
-  metaTitle: '10 Movies Like Black Swan ((2026)) | Psychological Descent Cinema | Filmiway',
+  metaTitle: '10 Movies Like Black Swan (2026) | Psychological Descent Cinema | Filmiway',
   metaDescription: 'Discover 10 haunting films like Black Swan exploring artistic obsession and psychological breakdown—from Perfect Blue to The Piano Teacher. Masterpieces of identity horror ranked by intensity.',
   metaKeywords: 'movies like black swan, psychological horror films, artistic obsession movies, darren aronofsky, perfect blue, whiplash, suspiria, the red shoes, mulholland drive, the piano teacher',
   
@@ -1784,7 +2042,7 @@ export const COLLECTIONS = {
   ],
   
   seo: {
-    title: '10 Movies Like Black Swan ((2026)) | Psychological Descent Cinema | Filmiway',
+    title: '10 Movies Like Black Swan (2026) | Psychological Descent Cinema | Filmiway',
     description: 'Explore the definitive ranking of films like Black Swan—from Perfect Blue to The Piano Teacher. Experience cinema\'s most haunting explorations of artistic obsession and psychological breakdown.',
     keywords: 'movies like black swan, psychological horror, artistic obsession films, darren aronofsky movies, perfect blue, whiplash, suspiria, mulholland drive, the piano teacher, birdman, requiem for a dream',
     canonicalUrl: 'https://filmiway.com/collection/movies-like-black-swan',
@@ -1822,7 +2080,7 @@ export const COLLECTIONS = {
   category: 'oldboy',
   tags: ['revenge', 'vengeance', 'korean cinema', 'psychological thriller', 'shocking twists', 'brutal violence'],
 
-  metaTitle: '10 Movies Like Oldboy ((2026)) | Ultimate Revenge Thrillers | Filmiway',
+  metaTitle: '10 Movies Like Oldboy (2026) | Ultimate Revenge Thrillers | Filmiway',
   metaDescription: 'Discover 10 brutal revenge movies like Oldboy ranked by vengeance intensity—from I Saw the Devil to Lady Vengeance. Twisted tales of betrayal and retribution.',
   metaKeywords: 'movies like oldboy, revenge thrillers, korean revenge movies, i saw the devil, lady vengeance, park chan wook, vengeance films',
 
@@ -1873,7 +2131,7 @@ export const COLLECTIONS = {
   ],
 
   seo: {
-    title: '10 Movies Like Oldboy ((2026)) | Ultimate Revenge Thrillers | Filmiway',
+    title: '10 Movies Like Oldboy (2026) | Ultimate Revenge Thrillers | Filmiway',
     description: 'The definitive Oldboy-inspired collection—brutal revenge films with shocking twists and unrelenting vengeance. From I Saw the Devil to Lady Vengeance.',
     keywords: 'movies like oldboy, revenge movies, korean thrillers, i saw the devil, lady vengeance, sympathy for mr vengeance, park chan wook films',
     canonicalUrl: 'https://filmiway.com/collection/movies-like-oldboy',
@@ -1907,7 +2165,7 @@ export const COLLECTIONS = {
   category: 'parasite',
   tags: ['class warfare', 'social inequality', 'dark comedy', 'satire', 'korean cinema', 'wealth divide'],
 
-  metaTitle: '10 Movies Like Parasite ((2026)) | Class Warfare Cinema | Filmiway',
+  metaTitle: '10 Movies Like Parasite (2026) | Class Warfare Cinema | Filmiway',
   metaDescription: 'Discover 10 films like Parasite exploring class divide and social inequality—from The Handmaiden to Snowpiercer. Dark, satirical masterpieces ranked by intensity.',
   metaKeywords: 'movies like parasite, class warfare films, social inequality movies, bong joon-ho films, korean cinema, snowpiercer, burning, shoplifters, the platform',
 
@@ -1959,7 +2217,7 @@ export const COLLECTIONS = {
   ],
 
   seo: {
-    title: '10 Movies Like Parasite ((2026)) | Class Warfare Cinema | Filmiway',
+    title: '10 Movies Like Parasite (2026) | Class Warfare Cinema | Filmiway',
     description: 'Explore the definitive ranking of films like Parasite—from The Handmaiden to Snowpiercer. Experience cinema\'s most brutal examinations of class divide and social inequality.',
     keywords: 'movies like parasite, class warfare cinema, social inequality films, bong joon-ho movies, korean films, the handmaiden, burning, snowpiercer, the platform, shoplifters',
     canonicalUrl: 'https://filmiway.com/collection/movies-like-parasite',
@@ -1994,7 +2252,7 @@ export const COLLECTIONS = {
   category: 'eyes-wide-shut',
   tags: ['secret societies', 'occult', 'paranoia', 'surrealism', 'erotic thriller', 'cults', 'wealth'],
 
-  metaTitle: '10 Movies Like Eyes Wide Shut ((2026)) | Occult Paranoia Films | Filmiway',
+  metaTitle: '10 Movies Like Eyes Wide Shut (2026) | Occult Paranoia Films | Filmiway',
   metaDescription: 'Discover 10 paranoid thrillers like Eyes Wide Shut—from Mulholland Drive to The Ninth Gate. Films about secret societies, rituals, and the dark elite.',
   metaKeywords: 'movies like eyes wide shut, secret society movies, occult thrillers, mulholland drive, the ninth gate, rosemarys baby, illuminati movies, paranoia films',
 
@@ -2038,8 +2296,8 @@ export const COLLECTIONS = {
     }
   },
 
-  relatedCollections: [
-    'movies-like-mulholland-drive',
+relatedCollections: [
+    'movies-like-black-swan',      // FIXED: Similar psychological descent
     'best-psychological-thriller-movies',
     'best-mystery-thriller-movies'
   ],
@@ -2080,7 +2338,7 @@ export const COLLECTIONS = {
   category: 'donnie-darko',
   tags: ['reality warping', 'time travel', 'butterfly effect', 'psychological sci-fi', 'cult classics', 'temporal paradoxes'],
 
-  metaTitle: '10 Movies Like Donnie Darko ((2026)) | Reality-Warping Cinema | Filmiway',
+  metaTitle: '10 Movies Like Donnie Darko (2026) | Reality-Warping Cinema | Filmiway',
   metaDescription: 'Discover 10 films like Donnie Darko exploring time paradoxes and reality distortion—from The Butterfly Effect to Enemy. Mind-bending masterpieces ranked by reality warp intensity.',
   metaKeywords: 'movies like donnie darko, reality warping films, time travel movies, butterfly effect films, psychological sci-fi, the butterfly effect, 12 monkeys, coherence, mulholland drive, eternal sunshine',
 
@@ -2124,14 +2382,14 @@ export const COLLECTIONS = {
     }
   },
 
-  relatedCollections: [
+relatedCollections: [
     'best-time-travel-movies',
-    'best-sci-fi-movies',
-    'best-psychological-thriller-movies'
+    'movies-like-the-matrix',    // NEW: Pointing to your new collection
+    'movies-like-inception'
   ],
 
   seo: {
-    title: '10 Movies Like Donnie Darko ((2026)) | Reality-Warping Cinema | Filmiway',
+    title: '10 Movies Like Donnie Darko (2026) | Reality-Warping Cinema | Filmiway',
     description: 'Explore the definitive ranking of films like Donnie Darko—from The Butterfly Effect to Enemy. Experience cinema\'s most disorienting reality-warping masterpieces.',
     keywords: 'movies like donnie darko, reality warping cinema, time travel paradoxes, butterfly effect movies, psychological sci-fi films, the butterfly effect, 12 monkeys, coherence, mulholland drive, enemy, jacob\'s ladder',
     canonicalUrl: 'https://filmiway.com/collection/movies-like-donnie-darko',
@@ -2181,7 +2439,7 @@ export const COLLECTIONS = {
     ],
 
     metaTitle:
-      '10 Best War Films Ever Made ((2026)) | Expert War Movies Ranking',
+      '10 Best War Films Ever Made (2026) | Expert War Movies Ranking',
     metaDescription:
       'Explore 10 essential war films—from Saving Private Ryan and Apocalypse Now to Das Boot and Paths of Glory. A definitive, expert-curated ranking of the greatest war movies ever made, updated for (2026).',
     metaKeywords:
@@ -2284,7 +2542,7 @@ export const COLLECTIONS = {
     category: 'revenge',
     tags: ['revenge', 'vengeance', 'retribution', 'action', 'thriller', 'brutal', 'justice'],
 
-    metaTitle: 'Best Revenge Movies: 10 Brutal Films ((2026)) | Expert Rankings',
+    metaTitle: 'Best Revenge Movies: 10 Brutal Films (2026) | Expert Rankings',
     metaDescription: 'Discover the 10 greatest revenge movies ranked by intensity—from Oldboy and Gladiator to John Wick. Experience visceral vengeance and moral complexity.',
     metaKeywords: 'best revenge movies, revenge films, vengeance movies, oldboy, gladiator, john wick, kill bill, count of monte cristo, brutal revenge films',
 
@@ -2335,7 +2593,7 @@ export const COLLECTIONS = {
     ],
 
     seo: {
-      title: '10 Best Revenge Movies of All Time ((2026)) | Expert Rankings | Filmiway',
+      title: '10 Best Revenge Movies of All Time (2026) | Expert Rankings | Filmiway',
       description: 'Explore the definitive ranking of revenge movies—from Oldboy to John Wick. Expert-curated collection of cinema\'s most brutal vengeance tales.',
       keywords: 'best revenge movies, revenge films, vengeance cinema, oldboy, gladiator, john wick, kill bill, the revenant, brutal revenge, retribution movies',
       canonicalUrl: 'https://filmiway.com/collection/best-revenge-movies',
@@ -2368,7 +2626,7 @@ export const COLLECTIONS = {
     gradientTo: 'to-gray-900',
     category: 'crime-thriller',
     tags: ['crime', 'psychological thriller', 'serial killer', 'detective', 'noir'],
-    metaTitle: '10 Movies Like Se7en ((2026)) - Best Dark Crime Thrillers | Filmiway',
+    metaTitle: '10 Movies Like Se7en (2026) - Best Dark Crime Thrillers | Filmiway',
     metaDescription: 'Craving the grit of Se7en? Discover 10 dark crime thrillers like Zodiac, Prisoners, and Silence of the Lambs. Ranked by atmospheric tension and plot twists.',
     metaKeywords: 'movies like se7en, best crime thrillers, zodiac, prisoners, silence of the lambs, dark detective movies, psychological noir, serial killer movies',
     stats: {
@@ -2414,7 +2672,7 @@ export const COLLECTIONS = {
       'best-detective-thriller-movies'
     ],
     seo: {
-      title: '10 Movies Like Se7en ((2026)) - Best Dark Crime Thrillers | Filmiway',
+      title: '10 Movies Like Se7en (2026) - Best Dark Crime Thrillers | Filmiway',
       description: 'Craving the grit of Se7en? Discover 10 dark crime thrillers like Zodiac, Prisoners, and Silence of the Lambs. Ranked by atmospheric tension and plot twists.',
       keywords: 'movies like se7en, dark thriller movies, zodiac movie, prisoners movie, silence of the lambs, best serial killer movies, psychological noir',
       canonicalUrl: 'https://filmiway.com/collection/movies-like-se7en',
@@ -2446,7 +2704,7 @@ export const COLLECTIONS = {
   category: 'matrix',
   tags: ['matrix', 'cyberpunk', 'simulation', 'reality-bending', 'sci-fi', 'digital-consciousness', 'awakening'],
 
-  metaTitle: 'Top 10 Movies Like The Matrix ((2026)) | Reality-Bending Films',
+  metaTitle: 'Top 10 Movies Like The Matrix (2026) | Reality-Bending Films',
   metaDescription: 'Discover the best movies like The Matrix ranked by simulation complexity—from cyberpunk classics to digital awakening masterpieces.',
   metaKeywords: 'movies like the matrix, cyberpunk movies, simulation theory films, dark city, inception, thirteenth floor, existenz',
 
@@ -2497,7 +2755,7 @@ export const COLLECTIONS = {
   ],
 
   seo: {
-    title: 'Top 10 Movies Like The Matrix ((2026)) | Cyberpunk Reality Films | Filmiway',
+    title: 'Top 10 Movies Like The Matrix (2026) | Cyberpunk Reality Films | Filmiway',
     description: 'The definitive collection of movies like The Matrix—cyberpunk films with simulation theory, digital consciousness, and reality-bending awakenings.',
     keywords: 'movies like matrix, cyberpunk films, simulation movies, dark city, inception, thirteenth floor, existenz, source code',
     canonicalUrl: 'https://filmiway.com/collection/movies-like-the-matrix',
@@ -2532,7 +2790,7 @@ export const COLLECTIONS = {
   category: 'sci-fi',
   tags: ['sci-fi', 'science fiction', 'space', 'AI', 'future', 'dystopian', 'mind-bending'],
 
-  metaTitle: 'Top 10 Sci-Fi Movies of All Time ((2026)) | Definitive Rankings',
+  metaTitle: 'Top 10 Sci-Fi Movies of All Time (2026) | Definitive Rankings',
   metaDescription: 'Discover the top 10 science fiction movies ranked by experts—from 2001: A Space Odyssey to Blade Runner 2049. The ultimate sci-fi film collection.',
   metaKeywords: 'best sci-fi movies, science fiction films, 2001 space odyssey, blade runner, the matrix, interstellar, inception, arrival, star wars',
 
@@ -2583,7 +2841,7 @@ export const COLLECTIONS = {
   ],
 
   seo: {
-    title: 'Top 10 Sci-Fi Movies of All Time ((2026)) | Expert Rankings | Filmiway',
+    title: 'Top 10 Sci-Fi Movies of All Time (2026) | Expert Rankings | Filmiway',
     description: 'Explore the definitive ranking of the greatest science fiction movies—from 2001: A Space Odyssey to Blade Runner 2049. Expert-curated collection of sci-fi cinema.',
     keywords: 'best sci-fi movies, science fiction films, top sci-fi ranking, 2001 space odyssey, blade runner, the matrix, interstellar, arrival, star wars, inception',
     canonicalUrl: 'https://filmiway.com/collection/top-10-sci-fi-movies',
@@ -2620,7 +2878,7 @@ export const COLLECTIONS = {
     'time travel', 'paradox', 'sci-fi', 'intensity', 'classic', 'mind-bending'
   ],
 
-  metaTitle: '10 Best Time Travel Movies of All Time ((2026)) | Filmiway Ranking',
+  metaTitle: '10 Best Time Travel Movies of All Time (2026) | Filmiway Ranking',
   metaDescription: 'Discover the top 10 time travel movies—ranked by intensity, complexity and storytelling. From Back to the Future to Interstellar.',
   metaKeywords: 'best time travel movies, time travel films, sci-fi movies, paradox movies, back to the future, interstellar, predestination, primer',
 
@@ -2671,7 +2929,7 @@ export const COLLECTIONS = {
   ],
 
   seo: {
-    title: '10 Best Time Travel Movies of All Time ((2026)) | Filmiway',
+    title: '10 Best Time Travel Movies of All Time (2026) | Filmiway',
     description: 'Discover the experts’ definitive ranking—10 greatest time travel movies, from Back to the Future and Interstellar to indie gems like Primer.',
     keywords: 'best time travel movies, time travel film ranking, thriller time travel, paradox movies, genre classics, sci-fi, iconic time travel cinema',
     canonicalUrl: 'https://filmiway.com/collection/best-time-travel-movies',
@@ -2707,7 +2965,7 @@ export const COLLECTIONS = {
     category: 'interstellar',
     tags: ['sci-fi', 'space', 'time-travel', 'hard-sci-fi', 'space-exploration', 'mind-bending', 'emotional'],
 
-    metaTitle: '10 Movies Like Interstellar ((2026)) | Space Epics Ranked | Filmiway',
+    metaTitle: '10 Movies Like Interstellar (2026) | Space Epics Ranked | Filmiway',
     metaDescription: 'Discover the 10 best movies like Interstellar—from Arrival to 2001: A Space Odyssey. Expert-curated ranking of cosmic sci-fi with emotional depth.',
     metaKeywords: 'movies like interstellar, space movies, sci-fi epics, arrival, contact, 2001 space odyssey, the martian, gravity, ad astra, sunshine',
 
@@ -2758,7 +3016,7 @@ export const COLLECTIONS = {
     ],
 
     seo: {
-      title: '10 Movies Like Interstellar ((2026)) | Space Epics Ranked | Filmiway',
+      title: '10 Movies Like Interstellar (2026) | Space Epics Ranked | Filmiway',
       description: 'Explore the definitive ranking of films like Interstellar. Expert-curated collection of cerebral space epics and emotional sci-fi.',
       keywords: 'movies like interstellar, space exploration films, hard sci-fi, christopher nolan style, arrival, contact, the martian, gravity, solaris',
       canonicalUrl: 'https://filmiway.com/collection/movies-like-interstellar',
@@ -2792,7 +3050,7 @@ export const COLLECTIONS = {
   category: 'heist-thriller',
   tags: ['heist', 'thriller', 'robbery', 'caper', 'crime', 'mastermind'],
 
-  metaTitle: '10 Best Heist Thriller Movies Ever Made ((2026)) | Expert Rankings',
+  metaTitle: '10 Best Heist Thriller Movies Ever Made (2026) | Expert Rankings',
   metaDescription: 'Discover the top 10 heist thriller movies ranked by experts—from Heat to Ocean\'s Eleven. Experience the ultimate in heist cinema.',
   metaKeywords: 'best heist thriller movies, heist films, robbery movies, caper films, heat, oceans eleven, inside man, the italian job, bank heist movies',
 
@@ -2843,7 +3101,7 @@ export const COLLECTIONS = {
   ],
 
   seo: {
-    title: '10 Best Heist Thriller Movies of All Time ((2026)) | Filmiway',
+    title: '10 Best Heist Thriller Movies of All Time (2026) | Filmiway',
     description: 'Explore the definitive ranking of heist thriller movies—from Heat to Ocean\'s Eleven. Expert-curated collection of the greatest heist films ever made.',
     keywords: 'best heist thriller movies, heist films, bank robbery movies, caper films, oceans eleven, heat, inside man, the italian job, reservoir dogs',
     canonicalUrl: 'https://filmiway.com/collection/best-heist-thriller-movies',
@@ -2879,7 +3137,7 @@ export const COLLECTIONS = {
   category: 'crime-thriller',
   tags: ['crime', 'thriller', 'heist', 'detective', 'noir', 'police'],
   
-  metaTitle: '10 Best Crime Thriller Movies Ever Made ((2026)) | Expert Rankings',
+  metaTitle: '10 Best Crime Thriller Movies Ever Made (2026) | Expert Rankings',
   metaDescription: 'Discover the top 10 crime thriller movies ranked by experts—from Heat to Memories of Murder. Experience the ultimate in crime cinema.',
   metaKeywords: 'best crime thriller movies, crime films, heist movies, detective thrillers, noir, heat, the departed, prisoners, zodiac',
   
@@ -2930,7 +3188,7 @@ export const COLLECTIONS = {
   ],
   
   seo: {
-    title: '10 Best Crime Thriller Movies of All Time ((2026)) | Filmiway',
+    title: '10 Best Crime Thriller Movies of All Time (2026) | Filmiway',
     description: 'Explore the definitive ranking of crime thriller movies—from Heat to The Departed. Expert-curated collection of the greatest crime films ever made.',
     keywords: 'best crime thriller movies, crime films, heist movies, detective thrillers, noir cinema, heat movie, the departed, prisoners, zodiac, memories of murder',
     canonicalUrl: 'https://filmiway.com/collection/best-crime-thriller-movies',
@@ -3050,7 +3308,7 @@ export const COLLECTIONS = {
     { label: 'Unpredictable', desc: 'Keeps you guessing till the end' },
     { label: 'Mind-Bending', desc: 'Reality-questioning narratives' }
   ],
-  metaTitle: '10 Best Mystery Thriller Movies Ever Made - Filmiway Ranking ((2026))',
+  metaTitle: '10 Best Mystery Thriller Movies Ever Made - Filmiway Ranking (2026)',
   metaDescription: 'Unlock the most suspenseful, mysterious, and mind-warping thrillers in cinema. The definitive top 10, curated and ranked by expert cinephiles.',
   metaKeywords: 'best mystery thriller movies, twists, detective films, best mystery movies, plot twist thrillers, psychological mysteries',
   theme: 'purple',
@@ -3093,7 +3351,7 @@ export const COLLECTIONS = {
       { label: 'Critically Acclaimed', desc: 'Highly ranked thrillers' },
       { label: 'Masterful Storytelling', desc: 'Suspense and tension' }
     ],
-    metaTitle: 'Best Thriller Movies of All Time ((2026)) | Intensity Ranked',
+    metaTitle: 'Best Thriller Movies of All Time (2026) | Intensity Ranked',
     metaDescription: 'Explore the top 10 thriller movies as ranked by intensity and cinematic mastery. Experience psychological nightmares, emotional brutality, and cerebral manipulation.',
     metaKeywords: 'best thriller movies, psychological thrillers, suspense movies, top thriller films, best intense thrillers, (2026) thriller rankings',
     theme: 'red',

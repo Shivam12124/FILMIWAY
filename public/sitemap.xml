@@ -12,6 +12,50 @@
         <priority>1.0</priority>
     </url>
 
+<url>
+        <loc>https://filmiway.com/streaming/hulu</loc>
+        <lastmod>2026-01-30T12:00:00+05:30</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <url>
+        <loc>https://filmiway.com/streaming/hbo-max</loc>
+        <lastmod>2026-01-30T12:00:00+05:30</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <url>
+        <loc>https://filmiway.com/streaming/paramount-plus</loc>
+        <lastmod>2026-01-30T12:00:00+05:30</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <url>
+        <loc>https://filmiway.com/genre/mind-bending</loc>
+        <lastmod>2026-01-30T12:00:00+05:30</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <url>
+        <loc>https://filmiway.com/genre/thriller</loc>
+        <lastmod>2026-01-30T12:00:00+05:30</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <url>
+        <loc>https://filmiway.com/genre/crime</loc>
+        <lastmod>2026-01-30T12:00:00+05:30</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+
+
     <url>
         <loc>https://filmiway.com/collections</loc>
         <lastmod>2025-11-15T18:40:00+05:30</lastmod>
@@ -372,6 +416,29 @@
 <url>
     <loc>https://filmiway.com/collection/best-drama-movies-on-hbo-max</loc>
     <lastmod>2026-01-28T12:00:00+05:30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+</url>
+
+
+<url>
+    <loc>https://filmiway.com/collection/best-sci-fi-movies-on-paramount-plus</loc>
+    <lastmod>2026-01-31T12:00:00+05:30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+</url>
+
+
+<url>
+    <loc>https://filmiway.com/collection/best-action-movies-on-paramount-plus</loc>
+    <lastmod>2026-01-31T12:00:00+05:30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/collection/best-romance-movies-on-paramount-plus</loc>
+    <lastmod>2026-01-31T10:00:00+05:30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 </url>
@@ -1829,6 +1896,219 @@
     <priority>0.8</priority>
 </url>
 
+
+
+<url>
+    <loc>https://filmiway.com/movies/best-sci-fi-movies-on-paramount-plus/tt0816692</loc>
+    <lastmod>2026-01-31T12:00:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-sci-fi-movies-on-paramount-plus/tt2543164</loc>
+    <lastmod>2026-01-31T12:00:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-sci-fi-movies-on-paramount-plus/tt3659388</loc>
+    <lastmod>2026-01-31T12:00:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-sci-fi-movies-on-paramount-plus/tt0181689</loc>
+    <lastmod>2026-01-31T12:00:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-sci-fi-movies-on-paramount-plus/tt2798920</loc>
+    <lastmod>2026-01-31T12:00:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-sci-fi-movies-on-paramount-plus/tt6644200</loc>
+    <lastmod>2026-01-31T12:00:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-sci-fi-movies-on-paramount-plus/tt0084726</loc>
+    <lastmod>2026-01-31T12:00:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-sci-fi-movies-on-paramount-plus/tt1179933</loc>
+    <lastmod>2026-01-31T12:00:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-sci-fi-movies-on-paramount-plus/tt0212720</loc>
+    <lastmod>2026-01-31T12:00:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-sci-fi-movies-on-paramount-plus/tt0407304</loc>
+    <lastmod>2026-01-31T12:00:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+
+<url>
+    <loc>https://filmiway.com/movies/best-action-movies-on-paramount-plus/tt7963665</loc>
+    <lastmod>2026-01-31T12:00:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-action-movies-on-paramount-plus/tt1745960</loc>
+    <lastmod>2026-01-31T12:00:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-action-movies-on-paramount-plus/tt1229238</loc>
+    <lastmod>2026-01-31T12:00:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-action-movies-on-paramount-plus/tt3890160</loc>
+    <lastmod>2026-01-31T12:00:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-action-movies-on-paramount-plus/tt0816711</loc>
+    <lastmod>2026-01-31T12:00:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-action-movies-on-paramount-plus/tt0172495</loc>
+    <lastmod>2026-01-31T12:00:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-action-movies-on-paramount-plus/tt0418279</loc>
+    <lastmod>2026-01-31T12:00:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-action-movies-on-paramount-plus/tt0119094</loc>
+    <lastmod>2026-01-31T12:00:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-action-movies-on-paramount-plus/tt0082971</loc>
+    <lastmod>2026-01-31T12:00:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-action-movies-on-paramount-plus/tt1408101</loc>
+    <lastmod>2026-01-31T12:00:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+
+<url>
+    <loc>https://filmiway.com/movies/best-romance-movies-on-paramount-plus/tt0120338</loc>
+    <lastmod>2026-01-31T10:00:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-romance-movies-on-paramount-plus/tt2194499</loc>
+    <lastmod>2026-01-31T10:00:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-romance-movies-on-paramount-plus/tt0038650</loc>
+    <lastmod>2026-01-31T10:00:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-romance-movies-on-paramount-plus/tt0116209</loc>
+    <lastmod>2026-01-31T10:00:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-romance-movies-on-paramount-plus/tt0421715</loc>
+    <lastmod>2026-01-31T10:00:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-romance-movies-on-paramount-plus/tt0099653</loc>
+    <lastmod>2026-01-31T10:00:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-romance-movies-on-paramount-plus/tt0054698</loc>
+    <lastmod>2026-01-31T10:00:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-romance-movies-on-paramount-plus/tt1758692</loc>
+    <lastmod>2026-01-31T10:00:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-romance-movies-on-paramount-plus/tt0343660</loc>
+    <lastmod>2026-01-31T10:00:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-romance-movies-on-paramount-plus/tt0112697</loc>
+    <lastmod>2026-01-31T10:00:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
 
     <url>
         <loc>https://filmiway.com/movies/eyes-wide-shut/tt0090756</loc>

@@ -29,7 +29,10 @@ import { COMPLETE_MOVIE_DATABASE, COMPLETE_MOVIE_DATA } from '../../utils/movieD
 import { COMPLETE_MOVIE_DATABASE as HULU_BEST_DATABASE, COMPLETE_MOVIE_DATA as HULU_BEST_DATA } from '../../utils/huluBestMoviesData';
 import { COMPLETE_MOVIE_DATABASE as HULU_DRAMA_DATABASE, COMPLETE_MOVIE_DATA as HULU_DRAMA_DATA } from '../../utils/huluDramaMovieData';
 import { COMPLETE_MOVIE_DATABASE as HBO_MAX_COMEDY_DATABASE, COMPLETE_MOVIE_DATA as HBO_MAX_COMEDY_DATA } from '../../utils/hboMaxComedyMovieData';
-// Add this line to the top of pages/collection/[slug].js
+import { COMPLETE_MOVIE_DATABASE as PARAMOUNT_ACTION_DATABASE, COMPLETE_MOVIE_DATA as PARAMOUNT_ACTION_DATA } from '../../utils/paramountActionMovieData';
+import { COMPLETE_MOVIE_DATABASE as PARAMOUNT_SCIFI_DATABASE, COMPLETE_MOVIE_DATA as PARAMOUNT_SCIFI_DATA } from '../../utils/paramountSciFiMovieData';
+import { COMPLETE_MOVIE_DATABASE as PARAMOUNT_ROMANCE_DATABASE, COMPLETE_MOVIE_DATA as PARAMOUNT_ROMANCE_DATA } from '../../utils/paramountRomanceMovieData';
+
 import { COMPLETE_MOVIE_DATABASE as HULU_FAMILY_DATABASE, COMPLETE_MOVIE_DATA as HULU_FAMILY_DATA } from '../../utils/huluFamilyMovieData';
 import { COMPLETE_MOVIE_DATABASE as HBO_ACTION_DATABASE, COMPLETE_MOVIE_DATA as HBO_ACTION_DATA } from '../../utils/hboActionMovieData';
 import { COMPLETE_MOVIE_DATABASE as HBO_MAX_ROMANCE_DATABASE, COMPLETE_MOVIE_DATA as HBO_MAX_ROMANCE_DATA } from '../../utils/hboMaxRomanceMovieData';
@@ -54,6 +57,7 @@ import { COMPLETE_MOVIE_DATABASE as REVENGE_MOVIES } from '../../utils/revengeMo
 import CinematicBackground from '../../components/CinematicBackground';
 import StrategicControls from '../../components/StrategicControls';
 import CinematicMovieCard from '../../components/CinematicMovieCard';
+import RelatedCollections from '../../components/RelatedCollections';
 
 // Data
 import { COLLECTIONS, getAllCollectionSlugs, getCollectionBySlug } from '../../data/collections';
@@ -676,6 +680,81 @@ const getCollectionContent = () => {
         experience: {
             text1: "Whether you're seeking a classic like 'Singin' in the Rain' or a modern favorite like 'Fargo', this collection delivers cinema's most effective dopamine hits.",
             text2: "Each film has been selected for its ability to improve your mood instantly—offering laughs that range from intellectual satire to pure, joyful absurdity."
+        }
+    };
+
+
+} else if (collection.slug === 'best-action-movies-on-paramount-plus') {
+    return {
+        badge: "High-Octane Action",
+        title: "Best Action Movies on Paramount+",
+        description: "The definitive ranking of adrenaline-fueled cinema on Paramount+. From Mach 10 aerial combat to the Burj Khalifa climb.",
+        selection: {
+            text1: "From the practical stunt mastery of 'Mission: Impossible – Fallout' to the G-force intensity of 'Top Gun: Maverick'—these films represent the gold standard of modern action cinema.",
+            text2: "Each selection prioritizes practical effects over CGI, featuring actors risking their lives for the shot and set pieces that have redefined the limits of what's possible on camera."
+        },
+        ranking: {
+            text: "Our adrenaline index evaluates stunt authenticity, pacing intensity, and the visceral impact of the action choreography throughout each film.",
+            points: [
+                "Practical stunt authenticity",
+                "Aerial & vehicle combat scale",
+                "Pacing & momentum intensity",
+                "Visceral impact score"
+            ]
+        },
+        experience: {
+            text1: "Whether you're seeking espionage thrills or aerial dogfights, this collection delivers cinema's most heart-pounding experiences.",
+            text2: "Each film has been selected for its refusal to compromise on realism—offering spectacle that feels dangerous, tangible, and exhilaratingly real."
+        }
+    };
+
+
+} else if (collection.slug === 'best-sci-fi-movies-on-paramount-plus') {
+    return {
+        badge: "Cosmic Sci-Fi Cinema",
+        title: "Best Sci-Fi Movies on Paramount+",
+        description: "Visionary science fiction films exploring cosmic scope, advanced technology, and alien contact. From Interstellar to Star Trek.",
+        selection: {
+            text1: "From the theoretical physics of 'Interstellar' to the linguistic mysteries of 'Arrival'—these films represent the pinnacle of science fiction available on Paramount+.",
+            text2: "Each selection features high-concept storytelling, groundbreaking visuals, and narratives that challenge our understanding of space, time, and humanity's future."
+        },
+        ranking: {
+            text: "Our sci-fi complexity index evaluates scientific depth, visual spectacle, and the conceptual audacity of the themes explored throughout each film.",
+            points: [
+                "Sci-Fi complexity score",
+                "Visual spectacle intensity",
+                "Conceptual depth",
+                "Cinematic scale"
+            ]
+        },
+        experience: {
+            text1: "Whether you're seeking hard sci-fi realism or thrilling space opera, this collection delivers cinema's most ambitious visions of the cosmos.",
+            text2: "Each film has been selected for its ability to inspire wonder—offering moments of pure cinematic grandeur that demand the biggest screen possible."
+        }
+    };
+
+
+} else if (collection.slug === 'best-romance-movies-on-paramount-plus') {
+    return {
+        badge: "Prestige Romance Cinema",
+        title: "Romance Movies on Paramount+",
+        description: "The most emotionally resonant romance films streaming on Paramount+. From the epic tragedy of Titanic to the heartwarming devotion of 50 First Dates.",
+        selection: {
+            text1: "From the timeless devotion of 'It's a Wonderful Life' to the heartbreaking reality of 'Like Crazy'—these films represent the pinnacle of romantic cinema available on Paramount+.",
+            text2: "Each selection features profound emotional stakes, electric chemistry, and narratives that explore the beautiful, messy, and enduring power of love across time and circumstance."
+        },
+        ranking: {
+            text: "Our emotional intensity index evaluates chemistry, narrative depth, and the lasting impact of the film's romantic arc.",
+            points: [
+                "Emotional intensity score",
+                "Chemistry saturation level",
+                "Narrative emotional weight",
+                "Romantic legacy impact"
+            ]
+        },
+        experience: {
+            text1: "Whether you're seeking a sweeping epic or an intimate character study, this collection delivers cinema's most powerful explorations of the human heart.",
+            text2: "Each film has been selected for its ability to linger with you—offering moments of joy, heartbreak, and connection that feel universally, authentically real."
         }
     };
 
@@ -1312,6 +1391,21 @@ const getHeaderContent = () => {
         subtitle: "From City Lights to Barbie—ranked by influence, wit & cinematic brilliance"
     };
 
+
+} else if (collection.slug === 'best-action-movies-on-paramount-plus') {
+    return {
+        title: "Best Action Movies on Paramount+: 10 High-Octane Films",
+        subtitle: "Adrenaline-fueled cinema with practical stunts, aerial combat & relentless intensity"
+    };
+
+} else if (collection.slug === 'best-sci-fi-movies-on-paramount-plus') {
+    return {
+        title: "Best Sci-Fi Movies on Paramount+: 10 Visionary Films",
+        subtitle: "From Interstellar to Star Trek—cosmic epics, hard sci-fi & mind-bending thrillers"
+    };
+
+    
+
 } else if (collection.slug === 'movies-like-donnie-darko') {
     return {
         title: "Movies Like Donnie Darko: 10 Reality-Warping Films",
@@ -1564,6 +1658,27 @@ const getLoaderContent = () => {
     return {
         title: "Loading Best Comedy Movies on HBO Max",
         description: "Curating satirical masterpieces and cinematic classics with community reviews and ratings"
+    };
+
+
+} else if (collection?.slug === 'best-action-movies-on-paramount-plus') {
+    return {
+        title: "Loading Best Action Movies on Paramount+",
+        description: "Curating high-octane action films with practical stunts and community reviews"
+    };
+
+
+    } else if (collection?.slug === 'best-sci-fi-movies-on-paramount-plus') {
+    return {
+        title: "Loading Best Sci-Fi Movies on Paramount+",
+        description: "Curating visionary science fiction films with cosmic scope and community reviews"
+    };
+
+
+} else if (collection?.slug === 'best-romance-movies-on-paramount-plus') {
+    return {
+        title: "Loading Best Romance Movies on Paramount+",
+        description: "Curating emotionally resonant romance films with community reviews and ratings"
     };
 
 
@@ -1899,6 +2014,37 @@ const getStaticMetaContent = () => {
         progressText: `of Top ${movies.length} Comedy Movies on HBO Max`
     };
 
+} else if (collection.slug === 'best-action-movies-on-paramount-plus') {
+    return {
+        title: "Top 10 High-Octane Action Movies on Paramount+",
+        description: "10 best action movies on Paramount+ ranked by adrenaline score. Featuring Top Gun: Maverick, Mission: Impossible & World War Z. Includes sensitive content timestamps.",
+        keywords: "best action movies on paramount plus, high octane movies, top gun maverick, mission impossible, action movies streaming, sensitive content timestamps",
+        ogTitle: "10 Best Action Movies on Paramount+: High-Octane & Adrenaline-Fueled 🔥",
+        twitterTitle: "🔥 10 High-Octane Action Movies on Paramount+ You Must Watch",
+        progressText: `of Top ${movies.length} Action Movies on Paramount+`
+    };
+
+
+    } else if (collection.slug === 'best-sci-fi-movies-on-paramount-plus') {
+    return {
+        title: "10 Best Sci-Fi Movies on Paramount+ (2026) | Visionary Films",
+        description: "10 best sci-fi movies on Paramount+. From Interstellar to Star Trek. Ranked by sci-fi complexity and visual spectacle. Includes sensitive content timestamps.",
+        keywords: "best sci-fi movies on paramount plus, paramount plus sci-fi, interstellar, arrival, the martian, star trek, sci-fi streaming",
+        ogTitle: "10 Best Sci-Fi Movies on Paramount+: Cosmic & Mind-Bending 🚀",
+        twitterTitle: "🚀 10 Visionary Sci-Fi Movies on Paramount+ You Must Watch",
+        progressText: `of Top ${movies.length} Sci-Fi Movies on Paramount+`
+    };
+
+
+} else if (collection.slug === 'best-romance-movies-on-paramount-plus') {
+    return {
+        title: "10 Best Romance Movies on Paramount+ (2026) | Ranked by Emotion",
+        description: "10 best romance movies on Paramount+. Featuring Titanic, About Time & It's a Wonderful Life. Ranked by emotional intensity & chemistry. Includes sensitive content timestamps.",
+        keywords: "best romance movies on paramount plus, paramount plus romance films, titanic, about time, its a wonderful life, ghost, romantic movies streaming, sensitive content timestamps",
+        ogTitle: "10 Best Romance Movies on Paramount+: Prestige & Heartbreak 💖",
+        twitterTitle: "💖 10 Best Romance Movies on Paramount+ (Titanic, About Time)",
+        progressText: `of Top ${movies.length} Romance Movies on Paramount+`
+    };
 
     } else if (collection.slug === 'movies-like-black-swan') {
         return {
@@ -2141,6 +2287,9 @@ const getStaticMetaContent = () => {
             sessionStorage.removeItem('fromHboMaxDramaCollection');
             sessionStorage.removeItem('fromHboMaxComedyCollection');
             sessionStorage.removeItem('fromHboMaxComedyCollection');
+            sessionStorage.removeItem('fromParamountActionCollection');
+            sessionStorage.removeItem('fromParamountSciFiCollection');
+            sessionStorage.removeItem('fromParamountRomanceCollection');
             sessionStorage.removeItem('fromEyesWideShutCollection');
             sessionStorage.removeItem('fromDonnieDarkoCollection');
             sessionStorage.removeItem('fromBlackSwanCollection');
@@ -2205,6 +2354,14 @@ const getStaticMetaContent = () => {
     sessionStorage.setItem('fromHboMaxDramaCollection', 'true');
     } else if (collection.slug === 'best-comedy-movies-on-hbo-max') {
     sessionStorage.setItem('fromHboMaxComedyCollection', 'true');
+    } else if (collection.slug === 'best-action-movies-on-paramount-plus') {
+    sessionStorage.setItem('fromParamountActionCollection', 'true');
+    } else if (collection.slug === 'best-sci-fi-movies-on-paramount-plus') {
+    sessionStorage.setItem('fromParamountSciFiCollection', 'true');
+    } else if (collection.slug === 'best-romance-movies-on-paramount-plus') {
+    sessionStorage.setItem('fromParamountRomanceCollection', 'true');
+
+
             } else if (collection.slug === 'movies-like-parasite') { 
                 sessionStorage.setItem('fromParasiteCollection', 'true');
          } else if (collection.slug === 'movies-like-oldboy') {
@@ -2705,6 +2862,14 @@ return (
 ? 'movies/best-drama-movies-on-hbo-max/'
 : collection?.slug === 'best-comedy-movies-on-hbo-max'
 ? 'movies/best-comedy-movies-on-hbo-max/'
+: collection?.slug === 'best-action-movies-on-paramount-plus'
+? 'movies/best-action-movies-on-paramount-plus/'
+: collection?.slug === 'best-sci-fi-movies-on-paramount-plus'
+? 'movies/best-sci-fi-movies-on-paramount-plus/'
+
+: collection?.slug === 'best-romance-movies-on-paramount-plus'
+? 'movies/best-romance-movies-on-paramount-plus/'
+
                                     : collection?.slug === 'movies-like-interstellar'
                                     ? 'movies/interstellar/'
                                     : collection?.slug === 'movies-like-memento'
@@ -2889,6 +3054,12 @@ return (
 ? `/movies/best-drama-movies-on-hbo-max/${currentMovie.imdbID}`
 : collection.slug === 'best-comedy-movies-on-hbo-max'
 ? `/movies/best-comedy-movies-on-hbo-max/${currentMovie.imdbID}`
+: collection.slug === 'best-action-movies-on-paramount-plus'
+? `/movies/best-action-movies-on-paramount-plus/${currentMovie.imdbID}`
+: collection.slug === 'best-sci-fi-movies-on-paramount-plus'
+? `/movies/best-sci-fi-movies-on-paramount-plus/${currentMovie.imdbID}`
+: collection.slug === 'best-romance-movies-on-paramount-plus'
+? `/movies/best-romance-movies-on-paramount-plus/${currentMovie.imdbID}`
       : collection.slug === 'movies-like-interstellar'
       ? `/movies/interstellar/${currentMovie.imdbID}`
       : collection.slug === 'movies-like-memento'
@@ -3009,6 +3180,14 @@ return (
     detailPageUrl = `/movies/best-drama-movies-on-hbo-max/${currentMovie.imdbID}`;
     } else if (collection.slug === 'best-comedy-movies-on-hbo-max') {
     detailPageUrl = `/movies/best-comedy-movies-on-hbo-max/${currentMovie.imdbID}`;
+    } else if (collection.slug === 'best-action-movies-on-paramount-plus') {
+    detailPageUrl = `/movies/best-action-movies-on-paramount-plus/${currentMovie.imdbID}`;
+    } else if (collection.slug === 'best-sci-fi-movies-on-paramount-plus') {
+    detailPageUrl = `/movies/best-sci-fi-movies-on-paramount-plus/${currentMovie.imdbID}`;
+    } else if (collection.slug === 'best-romance-movies-on-paramount-plus') {
+    detailPageUrl = `/movies/best-romance-movies-on-paramount-plus/${currentMovie.imdbID}`;
+
+    
                                         } else if (collection.slug === 'movies-like-interstellar') {
                                             detailPageUrl = `/movies/interstellar/${currentMovie.imdbID}`;
                                         } else if (collection.slug === 'movies-like-memento') {
@@ -3089,6 +3268,8 @@ return (
                             </div>
                         </motion.div>
                     </div>
+
+                    <RelatedCollections collectionIds={collection.relatedCollections} />
 
                     {/* ✅ FOOTER MOVED OUTSIDE CONTAINER - FIXES SIDE GAPS */}
                     <motion.footer
@@ -3290,6 +3471,17 @@ case 'best-movies-on-hbo-max':
     case 'best-comedy-movies-on-hbo-max':
     movieDatabase = HBO_MAX_COMEDY_DATABASE;
     break;
+
+    case 'best-action-movies-on-paramount-plus':
+            movieDatabase = PARAMOUNT_ACTION_DATABASE;
+            break;
+
+            case 'best-sci-fi-movies-on-paramount-plus':
+        movieDatabase = PARAMOUNT_SCIFI_DATABASE;
+        break;
+        case 'best-romance-movies-on-paramount-plus':
+        movieDatabase = PARAMOUNT_ROMANCE_DATABASE;
+        break;
 
         case 'movies-like-interstellar':
             movieDatabase = INTERSTELLAR_DATABASE;
