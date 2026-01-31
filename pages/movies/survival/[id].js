@@ -264,7 +264,7 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
   return { movieSchema, faqSchema };
 };
 
-const SurvivalMoviePage = ({ movie, tmdbData: movieData }) => {
+const SurvivalMoviePage = ({ movie, tmdbData: movieData, sensitiveData }) => {
     const richData = COMPLETE_MOVIE_DATA[movie.tmdbId]; 
     const [isMobile, setIsMobile] = useState(false);
 
@@ -333,7 +333,10 @@ const SurvivalMoviePage = ({ movie, tmdbData: movieData }) => {
                         transition={{ duration: 0.5 }} // Faster, no massive delay
                         className="space-y-8 sm:space-y-12 px-3 sm:px-4 lg:px-6"
                     >
-                        <MovieDetailsSection movie={movie} fromSurvivalCollection={true} />
+                       <MovieDetailsSection 
+                            movie={movie} 
+                            fromSurvivalCollection={true} 
+                            sensitiveData={sensitiveData} />
                     </motion.div>
                     
                     <div className="px-3 sm:px-4 lg:px-6">
@@ -358,12 +361,16 @@ export async function getStaticProps({ params }) {
         const movie = COMPLETE_MOVIE_DATABASE.find((m) => m.imdbID === params.id);
         if (!movie) return { notFound: true };
 
-        const tmdbResponse = await fetch(`https://api.themoviedb.org/3/movie/${movie.tmdbId}?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&append_to_response=videos`);
+        const tmdbResponse = await fetch(`https://api.themoviedb.org/3/movie/${movie.tmdbId}?api_key=${process.env.TMDB_API_KEY || 'a07e22bc18f5cb106bfe4cc1f83ad8ed'}&append_to_response=videos`);
         const tmdbData = tmdbResponse.ok ? await tmdbResponse.json() : null;
 
-        return { props: { movie, tmdbData } };
+        // ✅ FIX: Explicitly fetch sensitive data using TMDB ID
+        const rawSensitive = SENSITIVE_TIMELINES[movie.tmdbId];
+        const sensitiveData = rawSensitive ? { scenes: rawSensitive.scenes } : null;
+
+        return { props: { movie, tmdbData, sensitiveData } };
     } catch (error) {
-        return { props: { movie: COMPLETE_MOVIE_DATABASE.find((m) => m.imdbID === params.id), tmdbData: null } };
+        return { props: { movie: COMPLETE_MOVIE_DATABASE.find((m) => m.imdbID === params.id), tmdbData: null, sensitiveData: null } };
     }
 }
 

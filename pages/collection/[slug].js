@@ -3537,6 +3537,7 @@ case 'best-movies-on-hbo-max':
         : (movieDatabase ? Object.values(movieDatabase) : []);
 
     // ✅ FIND MOVIES - search by imdbID
+ // ... inside getStaticProps ...
     const movies = collection.movies
         .map(imdbId => {
             const movie = movieArray.find(m => m.imdbID === imdbId);
@@ -3549,7 +3550,15 @@ case 'best-movies-on-hbo-max':
                 Year: movie.Year || movie.year || '2024',
                 Genre: movie.Genre || movie.genre || 'Thriller',
                 Runtime: movie.Runtime || movie.runtime || 120,
-                Poster: movie.Poster || movie.poster || '',
+                
+                // ✅ FIX 1: Pass the raw path so the component can use different sizes
+                poster_path: movie.poster_path || null,
+
+                // ✅ FIX 2: Force 'Poster' to use High-Res TMDB URL if available (w780 is crisp)
+                Poster: movie.poster_path 
+                    ? `https://image.tmdb.org/t/p/w780${movie.poster_path}` 
+                    : (movie.Poster || movie.poster || ''),
+
                 Plot: movie.Plot || movie.plot || movie.synopsis || '',
                 rating: movie.rating || 0
             };

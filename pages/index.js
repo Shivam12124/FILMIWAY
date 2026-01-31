@@ -1,9 +1,10 @@
-// pages/index.js - LINKS FIXED & MOBILE VIEW ALL ADDED 🚀
+// pages/index.js - SENIOR ENGINEER STANDARD (Performance + Security + UX) 🚀
 import React, { useState, useEffect, useRef, useCallback, memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router'; // 🔥 FIX: Import Next.js Router
 import { 
     Play, Menu, X, ArrowRight, 
     ChevronLeft, ChevronRight, Construction, Sparkles, 
@@ -13,7 +14,6 @@ import {
 import { COLLECTIONS } from '../data/collections';
 import PlatformSelector from '../components/PlatformSelector';
 
-const TMDB_BASE_URL = 'https://api.themoviedb.org/3';
 const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p';
 
 const ICON_SIZES = {
@@ -22,43 +22,83 @@ const ICON_SIZES = {
     md: 'w-5 h-5',
 };
 
-// ⚡ OPTIMIZED CARD
-const CollectionCard = memo(({ collection, index, isMobile, onClick }) => {
-    const [isHovered, setIsHovered] = useState(false);
+// ⚡ HELPER FUNCTIONS (Hoisted)
+const fetchUniquePosterForCollection = async (movieIds, sectionName, collectionSlug, usedPosters, TMDB_BASE_URL, TMDB_API_KEY) => {
+    if (!movieIds || movieIds.length === 0) return null;
+
+    const posterOverrides = {
+        'movies-like-black-swan': '/w185Y7RLfI6d9NMqbElfkE21MHZ.jpg'
+    };
+
+    if (posterOverrides[collectionSlug]) {
+        const overridePoster = posterOverrides[collectionSlug];
+        if (!usedPosters.has(overridePoster)) {
+            usedPosters.add(overridePoster);
+            return overridePoster;
+        }
+    }
+
+    for (let i = 0; i < Math.min(movieIds.length, 8); i++) {
+        const movieId = movieIds[i];
+        try {
+            let posterPath = null;
+            if (movieId.toString().startsWith('tt')) {
+                const url = `${TMDB_BASE_URL}/find/${movieId}?api_key=${TMDB_API_KEY}&external_source=imdb_id`;
+                const res = await fetch(url);
+                const data = await res.json();
+                if (data.movie_results?.[0]?.poster_path) posterPath = data.movie_results[0].poster_path;
+            } else {
+                const url = `${TMDB_BASE_URL}/movie/${movieId}?api_key=${TMDB_API_KEY}`;
+                const res = await fetch(url);
+                const data = await res.json();
+                if (data.poster_path) posterPath = data.poster_path;
+            }
+
+            if (posterPath && !usedPosters.has(posterPath)) {
+                usedPosters.add(posterPath);
+                return posterPath;
+            }
+        } catch (e) {
+            console.error(`Error fetching poster for ${movieId}:`, e);
+        }
+    }
+    return null;
+};
+
+// ⚡ OPTIMIZED CARD (Strictly Controlled Animations)
+const CollectionCard = memo(({ collection, index, isMobile, onClick, isPrioritySection }) => {
     const [imageLoaded, setImageLoaded] = useState(false);
+    const shouldPrioritize = isPrioritySection && index < 4;
+
+    // 🔥 FIX: Completely remove Framer Motion props on mobile to save GPU
+    const Wrapper = isMobile ? 'div' : motion.div;
+    const motionProps = isMobile ? {} : {
+        initial: { opacity: 0, y: 20 },
+        whileInView: { opacity: 1, y: 0 },
+        viewport: { once: true },
+        transition: { delay: index * 0.05, duration: 0.5, ease: "easeOut" }
+    };
 
     return (
-        <motion.div
+        <Wrapper
             className="group cursor-pointer select-none h-full relative"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.05, duration: 0.5, ease: "easeOut" }}
+            {...motionProps}
             onClick={onClick}
-            onMouseEnter={() => !isMobile && setIsHovered(true)}
-            onMouseLeave={() => !isMobile && setIsHovered(false)}
         >
             <div className="relative aspect-[2/3] rounded-xl sm:rounded-2xl overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-black border border-gray-700/50 group-hover:border-yellow-400/30 transition-all duration-500 shadow-xl group-hover:shadow-yellow-400/10">
-                
                 <div className="relative w-full h-full">
-                    {!imageLoaded && (
-                        <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 animate-pulse" />
-                    )}
                     <Image
                         src={collection.poster_path ? `${IMAGE_BASE_URL}/w342${collection.poster_path}` : "https://via.placeholder.com/342x513/111827/4b5563?text=No+Image"}
                         alt={collection.title}
                         fill
-                        unoptimized={true} 
-                        sizes="(max-width: 640px) 33vw, (max-width: 1024px) 25vw, 20vw"
+                        priority={shouldPrioritize}
+                        {...(shouldPrioritize ? { fetchPriority: "high" } : {})}
+                        sizes="(max-width: 640px) 45vw, (max-width: 1024px) 25vw, 15vw"
                         className={`object-cover transition-all duration-700 ease-out ${
-                            imageLoaded ? 'opacity-100' : 'opacity-0'
-                        } ${
-                            isHovered ? 'scale-110 opacity-80' : 'scale-100 opacity-95'
+                            imageLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-105'
                         }`}
-                        priority={index < 3}
-                        loading={index < 3 ? "eager" : "lazy"}
-                        draggable={false}
                         onLoad={() => setImageLoaded(true)}
+                        draggable={false}
                     />
                 </div>
                 
@@ -74,10 +114,9 @@ const CollectionCard = memo(({ collection, index, isMobile, onClick }) => {
                 </div>
 
                 <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-5 z-20">
-                    <h3 className="text-white font-semibold text-xs sm:text-base md:text-lg leading-tight mb-1 sm:mb-2 line-clamp-2 group-hover:text-yellow-300 transition-colors duration-300 drop-shadow-lg">
+                    <h3 className="text-white font-semibold text-xs sm:text-base md:text-lg leading-tight mb-1 sm:mb-2 line-clamp-2 group-hover:text-yellow-300 transition-colors duration-300">
                         {collection.title}
                     </h3>
-                    
                     <div className="flex items-center gap-2 text-[10px] sm:text-xs text-gray-300 mb-1 sm:mb-3">
                         <span className="flex items-center gap-1 bg-white/5 backdrop-blur-sm px-1.5 py-0.5 rounded">
                             <Layers className="w-2.5 h-2.5 text-yellow-400" />
@@ -86,78 +125,90 @@ const CollectionCard = memo(({ collection, index, isMobile, onClick }) => {
                     </div>
                 </div>
             </div>
-        </motion.div>
+        </Wrapper>
     );
 });
 
 CollectionCard.displayName = 'CollectionCard';
 
-const HeroSection = memo(() => (
-    <section className="relative min-h-[85vh] sm:min-h-screen flex items-center justify-center bg-black overflow-hidden select-none pt-16 sm:pt-20">
-        <div className="absolute inset-0 opacity-5">
-            <div className="absolute inset-0" style={{
-                backgroundImage: `radial-gradient(circle at 2px 2px, white 1px, transparent 0)`,
-                backgroundSize: '50px 50px'
-            }} />
-        </div>
+// ⚡ HERO SECTION (Gated + No Blobs on Mobile)
+const HeroSection = memo(() => {
+    const [mounted, setMounted] = useState(false);
 
-        <div className="absolute top-20 left-5 w-48 h-48 sm:w-96 sm:h-96 bg-yellow-400/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-5 w-40 h-40 sm:w-80 sm:h-80 bg-yellow-400/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
-        <div className="relative z-10 container mx-auto px-4 text-center">
-            <motion.div className="max-w-6xl mx-auto" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-                
-                <motion.div className="mb-4" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.6 }}>
-                    <div className="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-400/10 via-amber-400/10 to-yellow-400/10 border border-yellow-400/20 rounded-full px-4 py-1.5 text-yellow-400 text-[10px] sm:text-sm font-medium">
-                        <Globe className={ICON_SIZES.xs} />
-                        <span>Global Cinema Discovery</span>
-                        <Sparkles className={ICON_SIZES.xs} />
+    return (
+        <section className="relative min-h-[85vh] sm:min-h-screen flex items-center justify-center bg-black overflow-hidden select-none pt-16 sm:pt-20">
+            <div className="absolute inset-0 opacity-5">
+                <div className="absolute inset-0" style={{
+                    backgroundImage: `radial-gradient(circle at 2px 2px, white 1px, transparent 0)`,
+                    backgroundSize: '50px 50px'
+                }} />
+            </div>
+
+            {/* Hidden blobs on mobile */}
+            <div className="hidden sm:block absolute top-20 left-5 w-48 h-48 sm:w-96 sm:h-96 bg-yellow-400/10 rounded-full blur-3xl animate-pulse"></div>
+            <div className="hidden sm:block absolute bottom-20 right-5 w-40 h-40 sm:w-80 sm:h-80 bg-yellow-400/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+
+            <div className="relative z-10 container mx-auto px-4 text-center">
+                <motion.div 
+                    className="max-w-6xl mx-auto" 
+                    initial={mounted ? { opacity: 0, y: 30 } : false} 
+                    animate={mounted ? { opacity: 1, y: 0 } : false} 
+                    transition={{ duration: 0.8 }}
+                >
+                    <div className="mb-4">
+                        <div className="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-400/10 via-amber-400/10 to-yellow-400/10 border border-yellow-400/20 rounded-full px-4 py-1.5 text-yellow-400 text-[10px] sm:text-sm font-medium">
+                            <Globe className={ICON_SIZES.xs} />
+                            <span>Global Cinema Discovery</span>
+                            <Sparkles className={ICON_SIZES.xs} />
+                        </div>
+                    </div>
+
+                    <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extralight text-white mb-4 leading-tight">
+                        Explore the Best of
+                        <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-amber-300 to-yellow-400 font-light mt-1">
+                            Global Cinema
+                        </span>
+                    </h1>
+
+                    <p className="text-sm sm:text-xl text-gray-400 mb-8 font-light leading-relaxed max-w-2xl mx-auto px-4">
+                        Expertly curated collections. 
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-amber-300 font-normal"> Where every film finds its way.</span>
+                    </p>
+
+                    <div className="flex justify-center mb-10">
+                        <Link href="/collections">
+                            <motion.button 
+                                className="bg-gradient-to-r from-yellow-400 to-amber-400 text-black px-6 py-3 rounded-xl font-bold flex items-center gap-2 hover:from-yellow-300 hover:to-amber-300 transition-all shadow-lg shadow-yellow-400/20 text-sm sm:text-base" 
+                                whileTap={{ scale: 0.95 }}
+                            >
+                                <Compass className={ICON_SIZES.sm} />
+                                Explore Collections
+                            </motion.button>
+                        </Link>
+                    </div>
+
+                    <div className="mb-8">
+                        <PlatformSelector />
                     </div>
                 </motion.div>
-
-                <motion.h1 className="text-3xl sm:text-5xl lg:text-6xl font-extralight text-white mb-4 leading-tight" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.6 }}>
-                    Explore the Best of
-                    <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-amber-300 to-yellow-400 font-light mt-1">
-                        Global Cinema
-                    </span>
-                </motion.h1>
-
-                <motion.p className="text-sm sm:text-xl text-gray-400 mb-8 font-light leading-relaxed max-w-2xl mx-auto px-4" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5, duration: 0.6 }}>
-                    Expertly curated collections. 
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-amber-300 font-normal"> Where every film finds its way.</span>
-                </motion.p>
-
-                <motion.div className="flex justify-center mb-10" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7, duration: 0.6 }}>
-                    <Link href="/collections">
-                        <motion.button className="bg-gradient-to-r from-yellow-400 to-amber-400 text-black px-6 py-3 rounded-xl font-bold flex items-center gap-2 hover:from-yellow-300 hover:to-amber-300 transition-all shadow-lg shadow-yellow-400/20 text-sm sm:text-base" whileTap={{ scale: 0.95 }}>
-                            <Compass className={ICON_SIZES.sm} />
-                            Explore Collections
-                        </motion.button>
-                    </Link>
-                </motion.div>
-
-                <motion.div 
-                    initial={{ opacity: 0, y: 20 }} 
-                    animate={{ opacity: 1, y: 0 }} 
-                    transition={{ delay: 0.9, duration: 0.6 }}
-                    className="mb-8"
-                >
-                    <PlatformSelector />
-                </motion.div>
-
-            </motion.div>
-        </div>
-    </section>
-));
+            </div>
+        </section>
+    );
+});
 
 HeroSection.displayName = 'HeroSection';
 
-const ProfessionalCarousel = memo(({ collections, sectionRef }) => {
+const ProfessionalCarousel = memo(({ collections, sectionRef, isPrioritySection }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [itemsPerView, setItemsPerView] = useState(2.3); 
     const dragRef = useRef({ isDragging: false, startX: 0, offset: 0, hasDragged: false });
     const containerRef = useRef(null);
     const [isMobile, setIsMobile] = useState(true);
+    const router = useRouter(); // 🔥 FIX: Initialize Router
 
     useEffect(() => {
         const handleResize = () => {
@@ -180,6 +231,7 @@ const ProfessionalCarousel = memo(({ collections, sectionRef }) => {
     const nextSlide = useCallback(() => setCurrentIndex(prev => Math.min(prev + 1, maxIndex)), [maxIndex]);
     const prevSlide = useCallback(() => setCurrentIndex(prev => Math.max(prev - 1, 0)), []);
 
+    // Drag Logic (Desktop Only)
     const handlePointerDown = useCallback((e) => {
         if (isMobile) return; 
         dragRef.current.isDragging = true;
@@ -211,7 +263,8 @@ const ProfessionalCarousel = memo(({ collections, sectionRef }) => {
 
     const handleCardClick = (id) => {
         if (!dragRef.current.hasDragged && Math.abs(dragRef.current.offset) < 10) {
-            window.location.href = `/collection/${id}`;
+            // 🔥 FIX: Use Router Push instead of window.location for Instant SPA Navigation
+            router.push(`/collection/${id}`);
         }
     };
 
@@ -241,9 +294,15 @@ const ProfessionalCarousel = memo(({ collections, sectionRef }) => {
                                 key={collection.id} 
                                 className="flex-shrink-0 snap-center snap-always"
                                 style={{ width: `calc(${100 / itemsPerView}% - 8px)` }}
-                                onClick={() => window.location.href = `/collection/${collection.id}`}
+                                onClick={() => router.push(`/collection/${collection.id}`)} // 🔥 FIX: Fast Router Push
                             >
-                                <CollectionCard collection={collection} index={index} isMobile={isMobile} onClick={() => {}} />
+                                <CollectionCard 
+                                    collection={collection} 
+                                    index={index} 
+                                    isMobile={isMobile} 
+                                    onClick={() => {}} 
+                                    isPrioritySection={isPrioritySection} 
+                                />
                             </div>
                         ))}
                     </div>
@@ -265,7 +324,13 @@ const ProfessionalCarousel = memo(({ collections, sectionRef }) => {
                                 className="flex-shrink-0" 
                                 style={{ width: `calc(${100 / itemsPerView}% - 20px)` }}
                             >
-                                <CollectionCard collection={collection} index={index} isMobile={isMobile} onClick={() => handleCardClick(collection.id)} />
+                                <CollectionCard 
+                                    collection={collection} 
+                                    index={index} 
+                                    isMobile={isMobile} 
+                                    onClick={() => handleCardClick(collection.id)} 
+                                    isPrioritySection={isPrioritySection} 
+                                />
                             </div>
                         ))}
                     </motion.div>
@@ -278,81 +343,59 @@ const ProfessionalCarousel = memo(({ collections, sectionRef }) => {
 
 ProfessionalCarousel.displayName = 'ProfessionalCarousel';
 
-// ⚡ UPDATED MOVIE SECTION: Supports 'viewAllLink' & Mobile Button
-const MovieSection = memo(({ title, movies, icon: Icon, description, sectionRef, viewAllLink }) => (
-    <section className="mb-10 sm:mb-20 select-none border-b border-gray-800/30 pb-10 sm:pb-16 last:border-0">
-        <motion.div className="flex flex-col sm:flex-row sm:items-end justify-between mb-4 sm:mb-8 px-1" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-            <div className="flex-1">
-                <div className="flex items-center gap-2 sm:gap-3 mb-2">
-                    <div className="p-2 bg-gradient-to-br from-yellow-400/20 to-amber-400/20 rounded-lg sm:rounded-xl border border-yellow-400/30">
-                        <Icon className="w-4 h-4 sm:w-6 sm:h-6 text-yellow-400" />
-                    </div>
-                    <h2 className="text-lg sm:text-2xl md:text-3xl font-semibold text-white tracking-tight">{title}</h2>
-                </div>
-                <p className="text-gray-400 text-xs sm:text-base max-w-2xl font-light leading-relaxed pl-1 line-clamp-1 sm:line-clamp-none">{description}</p>
-                
-                {/* 📱 MOBILE ONLY VIEW ALL BUTTON */}
-                <Link href={viewAllLink || "/collections"} className="flex sm:hidden items-center gap-1 text-xs text-yellow-400 font-medium mt-3 mb-1 w-fit hover:opacity-80 active:scale-95 transition-all">
-                    <span>View All</span>
-                    <ArrowRight className="w-3 h-3" />
-                </Link>
-            </div>
+// ⚡ UPDATED MOVIE SECTION (Gated Header Animations)
+const MovieSection = memo(({ title, movies, icon: Icon, description, sectionRef, viewAllLink, isPrioritySection }) => {
+    // 🔥 FIX: Determine animation capability safely
+    const [shouldAnimate, setShouldAnimate] = useState(false);
+    useEffect(() => {
+        setShouldAnimate(window.innerWidth >= 768);
+    }, []);
 
-            {/* 🖥️ DESKTOP VIEW ALL BUTTON */}
-            <Link href={viewAllLink || "/collections"} className="hidden sm:flex items-center gap-2 text-sm text-yellow-400 hover:text-yellow-300 transition-colors font-medium group mt-4 sm:mt-0">
-                <span>View All</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
-        </motion.div>
-        <ProfessionalCarousel collections={movies} sectionRef={sectionRef} />
-    </section>
-));
+    const Wrapper = shouldAnimate ? motion.div : 'div';
+    const motionProps = shouldAnimate ? {
+        initial: { opacity: 0, y: 20 },
+        whileInView: { opacity: 1, y: 0 },
+        viewport: { once: true },
+        transition: { duration: 0.6 }
+    } : { className: "mb-4 sm:mb-8" }; // Default class for static
+
+    return (
+        <section className="mb-10 sm:mb-20 select-none border-b border-gray-800/30 pb-10 sm:pb-16 last:border-0">
+            <Wrapper className="flex flex-col sm:flex-row sm:items-end justify-between mb-4 sm:mb-8 px-1" {...motionProps}>
+                <div className="flex-1">
+                    <div className="flex items-center gap-2 sm:gap-3 mb-2">
+                        <div className="p-2 bg-gradient-to-br from-yellow-400/20 to-amber-400/20 rounded-lg sm:rounded-xl border border-yellow-400/30">
+                            <Icon className="w-4 h-4 sm:w-6 sm:h-6 text-yellow-400" />
+                        </div>
+                        <h2 className="text-lg sm:text-2xl md:text-3xl font-semibold text-white tracking-tight">{title}</h2>
+                    </div>
+                    <p className="text-gray-400 text-xs sm:text-base max-w-2xl font-light leading-relaxed pl-1 line-clamp-1 sm:line-clamp-none">{description}</p>
+                    
+                    <Link href={viewAllLink || "/collections"} className="flex sm:hidden items-center gap-1 text-xs text-yellow-400 font-medium mt-3 mb-1 w-fit hover:opacity-80 active:scale-95 transition-all">
+                        <span>View All</span>
+                        <ArrowRight className="w-3 h-3" />
+                    </Link>
+                </div>
+                <Link href={viewAllLink || "/collections"} className="hidden sm:flex items-center gap-2 text-sm text-yellow-400 hover:text-yellow-300 transition-colors font-medium group mt-4 sm:mt-0">
+                    <span>View All</span>
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+            </Wrapper>
+            <ProfessionalCarousel collections={movies} sectionRef={sectionRef} isPrioritySection={isPrioritySection} />
+        </section>
+    );
+});
 
 MovieSection.displayName = 'MovieSection';
 
 const FilmiwayHomepage = ({ huluCollections, mindBendingCollections, thrillerCollections, hboCollections }) => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-    const huluRef = useRef(null);
     const mindRef = useRef(null);
     const thrillerRef = useRef(null);
+    const huluRef = useRef(null);
     const hboRef = useRef(null);
 
     const scrollToSection = (ref) => ref.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-    const Navigation = () => (
-        <motion.nav className="fixed top-0 w-full z-50 bg-black/95 backdrop-blur-md select-none border-b border-gray-800/50" initial={{ y: -100 }} animate={{ y: 0 }} transition={{ duration: 0.6 }}>
-            <div className="container mx-auto px-4">
-                <div className="flex items-center justify-between h-14 sm:h-20">
-                    <Link href="/" className="flex items-center">
-                        <div className="w-20 sm:w-32 h-full flex items-center">
-                            <Image src="/filmiway-logo.svg" alt="Filmiway" width={160} height={60} className="w-full h-full object-contain" priority />
-                        </div>
-                    </Link>
-                    <div className="hidden md:flex items-center space-x-8">
-                        <Link href="/" className="text-yellow-400 font-medium text-sm">Home</Link>
-                        <button onClick={() => scrollToSection(huluRef)} className="text-gray-300 hover:text-white transition-colors text-sm">Hulu</button>
-                        <button onClick={() => scrollToSection(mindRef)} className="text-gray-300 hover:text-white transition-colors text-sm">Mind-Bending</button>
-                        <button onClick={() => scrollToSection(thrillerRef)} className="text-gray-300 hover:text-white transition-colors text-sm">Thrillers</button>
-                    </div>
-                    <button className="md:hidden text-gray-300" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-                        {mobileMenuOpen ? <X className={ICON_SIZES.md} /> : <Menu className={ICON_SIZES.md} />}
-                    </button>
-                </div>
-                <AnimatePresence>
-                    {mobileMenuOpen && (
-                        <motion.div className="md:hidden bg-black/98 border-t border-gray-800" initial={{ height: 0 }} animate={{ height: "auto" }} exit={{ height: 0 }}>
-                            <div className="px-4 py-4 space-y-3">
-                                <Link href="/" onClick={() => setMobileMenuOpen(false)} className="block text-yellow-400 font-medium py-2 text-sm">Home</Link>
-                                <button onClick={() => { scrollToSection(huluRef); setMobileMenuOpen(false); }} className="block text-gray-300 py-2 w-full text-left text-sm">Hulu</button>
-                                <button onClick={() => { scrollToSection(mindRef); setMobileMenuOpen(false); }} className="block text-gray-300 py-2 w-full text-left text-sm">Mind-Bending</button>
-                                <button onClick={() => { scrollToSection(thrillerRef); setMobileMenuOpen(false); }} className="block text-gray-300 py-2 w-full text-left text-sm">Thrillers</button>
-                            </div>
-                        </motion.div>
-                    )}
-                </AnimatePresence>
-            </div>
-        </motion.nav>
-    );
 
     return (
         <>
@@ -362,29 +405,52 @@ const FilmiwayHomepage = ({ huluCollections, mindBendingCollections, thrillerCol
                 <link rel="canonical" href="https://filmiway.com/" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
                 <link rel="preconnect" href="https://image.tmdb.org" crossOrigin="anonymous" />
-                <link rel="dns-prefetch" href="https://image.tmdb.org" />
             </Head>
             <div className="min-h-screen bg-black text-white font-sans overflow-x-hidden">
-                <Navigation />
+                <motion.nav className="fixed top-0 w-full z-50 bg-black/95 backdrop-blur-md select-none border-b border-gray-800/50" initial={false} animate={false}>
+                    <div className="container mx-auto px-4">
+                        <div className="flex items-center justify-between h-14 sm:h-20">
+                            <Link href="/" className="flex items-center">
+                                <div className="w-20 sm:w-32 h-full flex items-center">
+                                    <Image src="/filmiway-logo.svg" alt="Filmiway" width={160} height={60} className="w-full h-full object-contain" priority />
+                                </div>
+                            </Link>
+                            <div className="hidden md:flex items-center space-x-8">
+                                <Link href="/" className="text-yellow-400 font-medium text-sm">Home</Link>
+                                <button onClick={() => scrollToSection(mindRef)} className="text-gray-300 hover:text-white transition-colors text-sm">Mind-Bending</button>
+                                <button onClick={() => scrollToSection(thrillerRef)} className="text-gray-300 hover:text-white transition-colors text-sm">Thrillers</button>
+                                <button onClick={() => scrollToSection(huluRef)} className="text-gray-300 hover:text-white transition-colors text-sm">Hulu</button>
+                            </div>
+                            <button className="md:hidden text-gray-300" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+                                {mobileMenuOpen ? <X className={ICON_SIZES.md} /> : <Menu className={ICON_SIZES.md} />}
+                            </button>
+                        </div>
+                        <AnimatePresence>
+                            {mobileMenuOpen && (
+                                <motion.div className="md:hidden bg-black/98 border-t border-gray-800" initial={{ height: 0 }} animate={{ height: "auto" }} exit={{ height: 0 }}>
+                                    <div className="px-4 py-4 space-y-3">
+                                        <Link href="/" onClick={() => setMobileMenuOpen(false)} className="block text-yellow-400 font-medium py-2 text-sm">Home</Link>
+                                        <button onClick={() => { scrollToSection(mindRef); setMobileMenuOpen(false); }} className="block text-gray-300 py-2 w-full text-left text-sm">Mind-Bending</button>
+                                        <button onClick={() => { scrollToSection(thrillerRef); setMobileMenuOpen(false); }} className="block text-gray-300 py-2 w-full text-left text-sm">Thrillers</button>
+                                        <button onClick={() => { scrollToSection(huluRef); setMobileMenuOpen(false); }} className="block text-gray-300 py-2 w-full text-left text-sm">Hulu</button>
+                                    </div>
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+                    </div>
+                </motion.nav>
+
                 <HeroSection />
                 
-                {/* 🚀 COMPACT MAIN CONTENT WITH NEW LINKS */}
                 <main className="container mx-auto px-4 sm:px-6 py-8 sm:py-16 space-y-4 sm:space-y-8">
-                    <MovieSection 
-                        title="Best of Hulu" 
-                        description="The absolute best movies streaming on Hulu right now." 
-                        movies={huluCollections} 
-                        icon={Tv} 
-                        sectionRef={huluRef} 
-                        viewAllLink="/streaming/hulu" // ✅ LINK 1
-                    />
                     <MovieSection 
                         title="Mind-Bending & Sci-Fi" 
                         description="Films that question reality: Inception, Matrix, Interstellar." 
                         movies={mindBendingCollections} 
                         icon={Brain} 
                         sectionRef={mindRef} 
-                        viewAllLink="/genre/mind-bending" // ✅ LINK 2
+                        viewAllLink="/genre/mind-bending" 
+                        isPrioritySection={true}
                     />
                     <MovieSection 
                         title="The Thriller Gang" 
@@ -392,7 +458,15 @@ const FilmiwayHomepage = ({ huluCollections, mindBendingCollections, thrillerCol
                         movies={thrillerCollections} 
                         icon={Skull} 
                         sectionRef={thrillerRef} 
-                        viewAllLink="/genre/thriller" // ✅ LINK 3
+                        viewAllLink="/genre/thriller" 
+                    />
+                    <MovieSection 
+                        title="Best of Hulu" 
+                        description="The absolute best movies streaming on Hulu right now." 
+                        movies={huluCollections} 
+                        icon={Tv} 
+                        sectionRef={huluRef} 
+                        viewAllLink="/streaming/hulu" 
                     />
                     <MovieSection 
                         title="HBO Max Essentials" 
@@ -400,11 +474,12 @@ const FilmiwayHomepage = ({ huluCollections, mindBendingCollections, thrillerCol
                         movies={hboCollections} 
                         icon={Star} 
                         sectionRef={hboRef} 
-                        viewAllLink="/streaming/hbo-max" // ✅ LINK 4
+                        viewAllLink="/streaming/hbo-max" 
                     />
                 </main>
 
-                <motion.section className="container mx-auto px-4 sm:px-6 py-8 sm:py-12 bg-gray-900/30 rounded-xl border border-gray-800 mb-8 sm:mb-12" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
+                {/* 🔥 FIX: Static div instead of motion.section to stop CPU drain on footer */}
+                <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12 bg-gray-900/30 rounded-xl border border-gray-800 mb-8 sm:mb-12">
                     <div className="text-center px-4">
                         <div className="flex items-center justify-center gap-2 mb-3">
                             <Construction className="w-5 h-5 text-orange-400" />
@@ -412,9 +487,9 @@ const FilmiwayHomepage = ({ huluCollections, mindBendingCollections, thrillerCol
                         </div>
                         <p className="text-gray-400 text-xs sm:text-sm max-w-lg mx-auto">We are building new features to help you discover movies even faster. Stay tuned.</p>
                     </div>
-                </motion.section>
+                </div>
 
-<footer className="bg-black py-8 sm:py-12 border-t border-gray-800">
+                <footer className="bg-black py-8 sm:py-12 border-t border-gray-800">
                     <div className="container mx-auto px-4 sm:px-6">
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 mb-8 sm:mb-12 border-b border-gray-800 pb-8 sm:pb-12">
                             <div>
@@ -452,30 +527,15 @@ const FilmiwayHomepage = ({ huluCollections, mindBendingCollections, thrillerCol
                             </div>
                         </div>
                         
-                        {/* Footer Bottom Section */}
                         <div className="flex flex-col items-center justify-center space-y-4">
                             <p className="text-gray-500 text-[10px] sm:text-xs">Where Every Film Finds Its Way.</p>
-                            
                             <div className="flex items-center gap-4 text-gray-600 text-[10px]">
                                 <span>&copy; 2026 Filmiway</span>
                             </div>
-
-                            {/* TMDB Attribution */}
                             <div className="flex items-center gap-2 opacity-50 hover:opacity-80 transition-opacity">
-                                <a 
-                                    href="https://www.themoviedb.org/" 
-                                    target="_blank" 
-                                    rel="noopener noreferrer"
-                                    className="flex items-center gap-2"
-                                >
-                                    <img 
-                                        src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg" 
-                                        alt="TMDB Logo" 
-                                        className="h-3 w-auto"
-                                    />
-                                    <span className="text-[9px] text-gray-500">
-                                        This product uses the TMDB API but is not endorsed or certified by TMDB.
-                                    </span>
+                                <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                                    <img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg" alt="TMDB Logo" className="h-3 w-auto" />
+                                    <span className="text-[9px] text-gray-500">This product uses the TMDB API but is not endorsed or certified by TMDB.</span>
                                 </a>
                             </div>
                         </div>
@@ -488,11 +548,18 @@ const FilmiwayHomepage = ({ huluCollections, mindBendingCollections, thrillerCol
 
 export default FilmiwayHomepage;
 
-// ⚡ SSG Function (Unchanged)
+// ⚡ SSG Function (Security Fix: process.env + Error Throw)
 export async function getStaticProps() {
-    const TMDB_API_KEY = '6054e5498fb2619274454959c38bbdfa'; 
+    // 🔥 FIX: Strict Security Check.
+    // Ensure you have .env.local with TMDB_API_KEY defined.
+    const TMDB_API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
+    if (!TMDB_API_KEY) {
+        throw new Error("❌ TMDB_API_KEY is missing in environment variables. Build failed to prevent security leak.");
+    }
+    
     const TMDB_BASE_URL = 'https://api.themoviedb.org/3';
 
+    // Grouping keys
     const huluKeys = ['best-movies-on-hulu', 'best-action-movies-on-hulu', 'best-romance-movies-on-hulu', 'best-comedy-movies-on-hulu', 'best-sci-fi-movies-on-hulu', 'best-thriller-movies-hulu', 'best-horror-movies-on-hulu', 'best-drama-movies-on-hulu', 'best-family-movies-on-hulu'];
     const mindBendingKeys = ['movies-like-inception', 'movies-like-the-matrix', 'movies-like-interstellar', 'best-sci-fi-movies', 'best-time-travel-movies', 'movies-like-donnie-darko', 'movies-like-memento', 'movies-like-eyes-wide-shut'];
     const thrillerKeys = ['best-thriller-movies', 'best-crime-thriller-movies', 'best-heist-thriller-movies', 'best-psychological-thriller-movies', 'best-detective-thriller-movies', 'best-mystery-thriller-movies', 'movies-like-se7en', 'movies-like-shutter-island', 'movies-like-parasite', 'movies-like-oldboy', 'movies-like-black-swan', 'best-revenge-movies'];
@@ -500,55 +567,12 @@ export async function getStaticProps() {
 
     const usedPostersPerSection = { hulu: new Set(), mind: new Set(), thriller: new Set(), hbo: new Set() };
 
-    const posterOverrides = {
-        'movies-like-black-swan': '/w185Y7RLfI6d9NMqbElfkE21MHZ.jpg'
-    };
-
-    const fetchUniquePosterForCollection = async (movieIds, sectionName, collectionSlug) => {
-        if (!movieIds || movieIds.length === 0) return null;
-        const usedPosters = usedPostersPerSection[sectionName];
-
-        if (posterOverrides[collectionSlug]) {
-            const overridePoster = posterOverrides[collectionSlug];
-            if (!usedPosters.has(overridePoster)) {
-                usedPosters.add(overridePoster);
-                return overridePoster;
-            }
-        }
-
-        for (let i = 0; i < Math.min(movieIds.length, 8); i++) {
-            const movieId = movieIds[i];
-            try {
-                let posterPath = null;
-                if (movieId.toString().startsWith('tt')) {
-                    const url = `${TMDB_BASE_URL}/find/${movieId}?api_key=${TMDB_API_KEY}&external_source=imdb_id`;
-                    const res = await fetch(url);
-                    const data = await res.json();
-                    if (data.movie_results?.[0]?.poster_path) posterPath = data.movie_results[0].poster_path;
-                } else {
-                    const url = `${TMDB_BASE_URL}/movie/${movieId}?api_key=${TMDB_API_KEY}`;
-                    const res = await fetch(url);
-                    const data = await res.json();
-                    if (data.poster_path) posterPath = data.poster_path;
-                }
-
-                if (posterPath && !usedPosters.has(posterPath)) {
-                    usedPosters.add(posterPath);
-                    return posterPath;
-                }
-            } catch (e) {
-                console.error(`Error fetching poster for ${movieId}:`, e);
-            }
-        }
-        return null;
-    };
-
     const fetchCollectionData = async (keys, sectionName) => {
         const results = await Promise.all(keys.map(async (key) => {
             const collection = COLLECTIONS[key];
             if (!collection) return null;
 
-            const posterPath = await fetchUniquePosterForCollection(collection.movies, sectionName, collection.slug);
+            const posterPath = await fetchUniquePosterForCollection(collection.movies, sectionName, collection.slug, usedPostersPerSection[sectionName], TMDB_BASE_URL, TMDB_API_KEY);
             if (!posterPath) return null;
 
             return {
@@ -579,7 +603,7 @@ export async function getStaticProps() {
                 thrillerCollections: thrillerData,
                 hboCollections: hboData
             },
-            revalidate: 86400,
+            revalidate: 604800, 
         };
     } catch (error) {
         console.error('SSG Error:', error);

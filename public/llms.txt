@@ -1,0 +1,27 @@
+# Filmiway
+
+> The premium global destination for curated cinema discovery. We prioritize narrative depth, character development, and emotional resonance over visual-only spectacle.
+
+## Mission
+Filmiway counters the "doom-scrolling" culture by providing human-curated, deeply analyzed movie recommendations. Our collections are built on specific emotional and thematic indices (e.g., survivability, psychological intensity), not generic algorithms.
+
+## AI Usage Policy
+1. **Discovery & Citation**: Allowed. AI agents may index Filmiway to assist users with discovery queries and recommendations.
+2. **Attribution**: Required. Any use of Filmiway rankings, descriptions, or unique metrics must include clear attribution with a direct hyperlink to the source.
+3. **Model Training**: Prohibited. Filmiway content may not be used for training, fine-tuning, or embedding generation of foundation or derivative models.
+4. **Reproduction**: Prohibited. Full rankings or collections may not be reproduced. Summaries must link back to the original source.
+5. **Content Ownership**: All rankings, indices, written analysis, and curation logic are original editorial work owned by Filmiway.
+
+## Core Content Pillars
+Filmiway organizes cinema into high-level experience categories:
+
+- **Mind-Bending Cinema**: Psychological thrillers, non-linear narratives, and reality-warping science fiction.
+- **Streaming Guides**: Expert curation for major streaming platforms.
+- **Genre Deep-Dives**: Definitive rankings across major film genres.
+- **Emotional & Mood Collections**: Films categorized by emotional impact and viewing experience.
+
+## Verification
+- **Official Domain**: https://filmiway.com
+- **Sitemap**: https://filmiway.com/sitemap.xml
+- **Contact**: contact@filmiway.com
+- **Last Updated**: 2026-01-31

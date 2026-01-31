@@ -1,68 +1,58 @@
-# Filmiway - Optimized robots.txt
-# Goal: Maximum Visibility for SEO, AI & Social Media
 
-# Default rules for all bots
-User-agent: *
-Allow: /
-Disallow: /api/
-Disallow: /admin/
-Disallow: /private/
 
-# Googlebot - Ensure it can render JS/CSS
+# ==================================================
+# Filmiway Robots.txt — Growth & AI Discovery (Final)
+# ==================================================
+
+# 1. Google & Bing (Full SEO Access)
 User-agent: Googlebot
 Allow: /
 Allow: /_next/static/
 Allow: /_next/image/
 Disallow: /api/
 Disallow: /admin/
+Disallow: /private/
 
-# Bingbot - Explicitly Allowed
 User-agent: Bingbot
 Allow: /
+Allow: /_next/static/
+Allow: /_next/image/
+Disallow: /api/
+Disallow: /admin/
+Disallow: /private/
+
+# 2. AI & Discovery (Discovery ON, Training Noise OFF)
+# Rendering assets allowed for proper citation; technical paths blocked.
+User-agent: GPTBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: PerplexityBot
+User-agent: Google-Extended
+User-agent: Applebot
+User-agent: CCBot
+User-agent: Amazonbot
+User-agent: Meta-ExternalAgent
+Allow: /
+Allow: /_next/static/
+Allow: /_next/image/
+Disallow: /_next/data/
 Disallow: /api/
 Disallow: /admin/
 
-# Social Media Bots (Visual Previews)
+# 3. Social Media (Rich Previews)
+User-agent: Twitterbot
+User-agent: facebookexternalhit
 User-agent: Pinterestbot
 Allow: /
+Allow: /_next/image/
 
-User-agent: facebookexternalhit
+# 4. Default Fallback (Render-Friendly for New Bots)
+User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /private/
+# NOTE: We do NOT block /_next/ here to allow future bots to render correctly.
 
-User-agent: Twitterbot
-Allow: /
-
-# AI Crawlers - Explicitly ALLOWED for Discovery
-User-agent: GPTBot
-Allow: /
-
-User-agent: ChatGPT-User
-Allow: /
-
-User-agent: ClaudeBot
-Allow: /
-
-User-agent: PerplexityBot
-Allow: /
-
-User-agent: Google-Extended
-Allow: /
-
-User-agent: GoogleBot-External
-Allow: /
-
-User-agent: Applebot
-Allow: /
-
-# SEO Tools - Allowed for Backlink Tracking
-User-agent: AhrefsBot
-Allow: /
-
-User-agent: SemrushBot
-Allow: /
-
-User-agent: MJ12bot
-Allow: /
-
-# Sitemap
+# 5. Sitemap
 Sitemap: https://filmiway.com/sitemap.xml
