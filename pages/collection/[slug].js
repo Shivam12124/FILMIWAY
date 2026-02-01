@@ -1766,434 +1766,407 @@ const getLoaderContent = () => {
 };
 
 
-// 🔥 STATIC META CONTENT
+// 🔥 STATIC META CONTENT - SEO OPTIMIZED (EVERGREEN & HIGH CTR)
 const getStaticMetaContent = () => {
     if (collection.slug === 'movies-like-memento') {
         return {
-            title: "Movies Like Memento: 10 Mind-Bending Films",
-            description: "Obsessed with Memento? Discover 10 psychological thrillers with memory loss & non-linear plots. Includes exact timestamps for sensitive content.", 
-            keywords: "movies like memento, memory loss movies, psychological thrillers, sensitive content timestamps",
-            ogTitle: "Movies Like Memento: 10 Mind-Bending Psychological Thrillers 🧠",
-            twitterTitle: "🧠 Obsessed with Memento? Watch These 10 Mind-Bending Films",
+            title: "10 Mind-Bending Movies Like Memento",
+            description: "Obsessed with Memento? Discover 10 psychological thrillers with memory loss and non-linear plots. Includes sensitive content timestamps.", 
+            keywords: "movies like memento, memory loss movies, psychological thrillers, christopher nolan style",
+            ogTitle: "10 Mind-Bending Movies Like Memento 🧠",
+            twitterTitle: "🧠 Obsessed with Memento? Watch These 10 Films Next",
             progressText: `of Top ${movies.length} Movies Like Memento`
         };
     } else if (collection.slug === 'movies-like-inception') {
         return {
-            title: "Movies Like Inception: 10 Reality-Bending Films",
-            description: "Loved Inception? Explore 10 mind-bending thrillers with layered dreams & reality distortion. Includes exact timestamps for sensitive content.", 
-            keywords: "movies like inception, mind bending movies, reality bending films, sensitive content timestamps",
-            ogTitle: "Movies Like Inception: 10 Reality-Bending Masterpieces 🧠",
+            title: "10 Movies Like Inception: Reality-Bending Thrillers",
+            description: "Loved Inception? Watch these 10 mind-bending sci-fi thrillers featuring dream layers and reality distortion. Includes sensitive content timestamps.", 
+            keywords: "movies like inception, mind bending movies, reality bending films, dream thrillers",
+            ogTitle: "10 Movies Like Inception: Reality-Bending Masterpieces 🧠",
             twitterTitle: "🧠 Loved Inception? These 10 Films Will Blow Your Mind",
             progressText: `of Top ${movies.length} Movies Like Inception`
         };
     } else if (collection.slug === 'movies-like-the-matrix') {
         return {
-            title: "Movies Like The Matrix: 10 Cyberpunk Films",
-            description: "Loved The Matrix? Explore 10 cyberpunk thrillers with digital consciousness & simulated realities. Includes exact timestamps for sensitive content.", 
-            keywords: "movies like the matrix, cyberpunk movies, sci-fi reality films, sensitive content timestamps",
-            ogTitle: "Movies Like The Matrix: 10 Cyberpunk Reality-Bending Films 🔴",
-            twitterTitle: "🔴 Loved The Matrix? These 10 Cyberpunk Films Will Break Your Brain",
+            title: "10 Movies Like The Matrix: Cyberpunk & Sci-Fi",
+            description: "Loved The Matrix? Discover the 10 best cyberpunk thrillers about simulated realities and digital awakening. Includes sensitive content timestamps.", 
+            keywords: "movies like the matrix, cyberpunk movies, sci-fi reality films, simulation theory movies",
+            ogTitle: "10 Movies Like The Matrix: Cyberpunk & Reality-Bending 🔴",
+            twitterTitle: "🔴 Loved The Matrix? These 10 Cyberpunk Films Are Essential",
             progressText: `of Top ${movies.length} Movies Like The Matrix`
         };
     } else if (collection.slug === 'movies-like-se7en') {
         return {
-            title: "Movies Like Se7en: 10 Dark Noir Thrillers",
-            description: "Loved Se7en? Discover 10 gritty noir thrillers with obsessive detectives & shocking twists. Includes exact timestamps for sensitive content.", 
-            keywords: "movies like se7en, noir thrillers, dark detective movies, sensitive content timestamps",
-            ogTitle: "Movies Like Se7en: 10 Gritty Noir Masterpieces 🌧️",
+            title: "10 Dark Thrillers Like Se7en: Gritty & Twisted",
+            description: "Loved Se7en? Discover the 10 grittiest noir thrillers with obsessive detectives and shocking twists. Includes sensitive content timestamps.", 
+            keywords: "movies like se7en, noir thrillers, dark detective movies, serial killer movies",
+            ogTitle: "10 Dark Thrillers Like Se7en: Gritty Noir Masterpieces 🌧️",
             twitterTitle: "🌧️ Loved Se7en? These 10 Dark Thrillers Will Haunt You",
             progressText: `of Top ${movies.length} Movies Like Se7en`
         };
     } else if (collection.slug === 'movies-like-oldboy') {
         return {
-            title: "Movies Like Oldboy: 10 Brutal Revenge Films",
-            description: "Loved Oldboy? Discover 10 twisted revenge thrillers with shocking twists & moral devastation. Includes exact timestamps for sensitive content.", 
-            keywords: "movies like oldboy, revenge thrillers, korean revenge movies, sensitive content timestamps",
-            ogTitle: "Movies Like Oldboy: 10 Brutal Revenge Masterpieces 🔪",
+            title: "10 Movies Like Oldboy: Brutal Revenge Thrillers",
+            description: "Loved Oldboy? Here are 10 twisted revenge films with shocking plot twists and visceral violence. Includes sensitive content timestamps.", 
+            keywords: "movies like oldboy, revenge thrillers, korean revenge movies, brutal action films",
+            ogTitle: "10 Movies Like Oldboy: Brutal Revenge Masterpieces 🔪",
             twitterTitle: "🔪 Loved Oldboy? These 10 Revenge Films Are Just as Twisted",
             progressText: `of Top ${movies.length} Movies Like Oldboy`
         };
     } else if (collection.slug === 'movies-like-eyes-wide-shut') {
         return {
-            title: "Movies Like Eyes Wide Shut: 10 Paranoid Thrillers",
-            description: "Loved Eyes Wide Shut? Discover 10 paranoid thrillers about secret societies & occult rituals. Includes exact timestamps for sensitive content.", 
-            keywords: "movies like eyes wide shut, secret society movies, occult thrillers, sensitive content timestamps",
-            ogTitle: "Movies Like Eyes Wide Shut: 10 Paranoid Occult Thrillers 👁️",
+            title: "10 Movies Like Eyes Wide Shut: Occult & Paranoid",
+            description: "Loved Eyes Wide Shut? Explore 10 paranoid thrillers about secret societies and the occult elite. Includes sensitive content timestamps.", 
+            keywords: "movies like eyes wide shut, secret society movies, occult thrillers, psychological mystery",
+            ogTitle: "10 Movies Like Eyes Wide Shut: Paranoid Occult Thrillers 👁️",
             twitterTitle: "👁️ Loved Eyes Wide Shut? These 10 Paranoid Films Are Terrifying",
             progressText: `of Top ${movies.length} Movies Like Eyes Wide Shut`
         };
-
-
-} else if (collection.slug === 'best-romance-movies-on-hulu') {
+    } else if (collection.slug === 'best-romance-movies-on-hulu') {
         return {
-            title: "Best Romance Movies on Hulu: 10 Prestige Films",
-            description: "10 best romance movies streaming on Hulu. Featuring Anora, All of Us Strangers & Brooklyn. Ranked by emotional resonance & chemistry. Includes sensitive content timestamps.",
-            keywords: "best romance movies on hulu, hulu romance films, anora, all of us strangers, romantic movies streaming, sensitive content timestamps",
+            title: "10 Best Romance Movies on Hulu: Ranked by Emotion",
+            description: "The top 10 romance movies streaming on Hulu. Featuring Anora, All of Us Strangers, and more. Includes sensitive content timestamps.", 
+            keywords: "best romance movies on hulu, hulu romance films, romantic movies streaming, sad romance movies",
             ogTitle: "10 Best Romance Movies on Hulu: Prestige & Heartbreak 💖",
             twitterTitle: "💖 10 Best Romance Movies on Hulu (Anora, All of Us Strangers)",
             progressText: `of Top ${movies.length} Romance Movies on Hulu`
         };
-
-
-} else if (collection.slug === 'best-action-movies-on-hulu') {
+    } else if (collection.slug === 'best-action-movies-on-hulu') {
         return {
-            title: "Best Action Movies on Hulu: 10 High-Octane Films",
-            description: "10 high-octane action movies streaming on Hulu. Featuring Predator, Taken & Prey. Ranked by adrenaline score & fight choreography. Includes sensitive content timestamps.",
-            keywords: "best action movies on hulu, hulu action films, high octane movies, predator hulu, sensitive content timestamps",
+            title: "10 Best Action Movies on Hulu: High-Octane List",
+            description: "The 10 most adrenaline-fueled action movies on Hulu. Featuring Prey, John Wick, and more. Includes sensitive content timestamps.", 
+            keywords: "best action movies on hulu, hulu action films, high octane movies, predator hulu",
             ogTitle: "10 Best Action Movies on Hulu: High-Octane & Adrenaline-Fueled 🔥",
             twitterTitle: "🔥 10 Best Action Movies on Hulu You Need to Stream Now",
             progressText: `of Top ${movies.length} Action Movies on Hulu`
         };
-
-} else if (collection.slug === 'best-horror-movies-on-hulu') {
+    } else if (collection.slug === 'best-horror-movies-on-hulu') {
         return {
-            title: "10 Best Horror Movies on Hulu: Ranked by Scariness",
-            description: "10 scariest movies on Hulu. Featuring When Evil Lurks, Longlegs & The First Omen. Ranked by visceral dread & psychological trauma. Includes sensitive content timestamps.",
-            keywords: "best horror movies on hulu, hulu horror films, scariest movies streaming, when evil lurks, longlegs, horror rankings, sensitive content timestamps",
+            title: "10 Best Horror Movies on Hulu: Truly Terrifying Picks",
+            description: "The 10 scariest horror movies on Hulu. From Longlegs to When Evil Lurks. Ranked by nightmare fuel. Includes sensitive content timestamps.", 
+            keywords: "best horror movies on hulu, hulu horror films, scariest movies streaming, when evil lurks",
             ogTitle: "10 Best Horror Movies on Hulu: Pure Nightmare Fuel 🩸",
             twitterTitle: "🩸 10 Scariest Movies on Hulu (When Evil Lurks, Longlegs)",
             progressText: `of Top ${movies.length} Horror Movies on Hulu`
         };
-
-} else if (collection.slug === 'best-comedy-movies-on-hulu') {
+    } else if (collection.slug === 'best-comedy-movies-on-hulu') {
         return {
-            title: "10 Best Comedy Movies on Hulu: Ranked by Laughter",
-            description: "10 funniest movies on Hulu. Featuring Superbad, Borat & Palm Springs. Ranked by laughter frequency & chaotic energy. Includes sensitive content timestamps.",
-            keywords: "best comedy movies on hulu, hulu comedy films, funniest movies streaming, superbad, borat, comedy rankings, sensitive content timestamps",
+            title: "10 Best Comedy Movies on Hulu: Funniest Picks",
+            description: "The 10 funniest movies on Hulu right now. Featuring Superbad, Borat, and Palm Springs. Includes sensitive content timestamps.", 
+            keywords: "best comedy movies on hulu, hulu comedy films, funniest movies streaming, superbad",
             ogTitle: "10 Best Comedy Movies on Hulu: Side-Splitting & Chaotic 😂",
             twitterTitle: "😂 10 Funniest Movies on Hulu (Superbad, Borat)",
             progressText: `of Top ${movies.length} Comedy Movies on Hulu`
         };
-
-
-} else if (collection.slug === 'best-sci-fi-movies-on-hulu') {
-    return {
-        title: "Best Sci-Fi Movies on Hulu: 10 Visionary Films",
-        description: "10 best sci-fi movies streaming on Hulu. Featuring Donnie Darko, Prey & The Abyss. Ranked by mind-bend score & visual spectacle. Includes sensitive content timestamps.",
-        keywords: "best sci-fi movies on hulu, hulu sci-fi films, donnie darko, predator, sci-fi streaming, sensitive content timestamps",
-        ogTitle: "10 Best Sci-Fi Movies on Hulu: Visionary & Mind-Bending 🛸",
-        twitterTitle: "🛸 10 Best Sci-Fi Movies on Hulu (Donnie Darko, Prey)",
-        progressText: `of Top ${movies.length} Sci-Fi Movies on Hulu`
-    };
-
-} else if (collection.slug === 'best-thriller-movies-hulu') {
-    return {
-        title: "10 Best Thriller Movies on Hulu: Ranked by Suspense",
-        description: "10 best thriller movies streaming on Hulu. Featuring Heat, Black Swan & Anatomy of a Fall. Ranked by suspense intensity & psychological impact. Includes sensitive content timestamps.",
-        keywords: "best thriller movies on hulu, hulu thrillers, suspense films, heat, black swan, anatomy of a fall, thriller streaming, sensitive content timestamps",
-        ogTitle: "10 Best Thriller Movies on Hulu: Suspense & Tension 🔴",
-        twitterTitle: "🔴 10 Best Thriller Movies on Hulu (Heat, Black Swan)",
-        progressText: `of Top ${movies.length} Thriller Movies on Hulu`
-    };
-
-
-    } else if (collection.slug === 'best-movies-on-hulu') {
-    return {
-        title: "10 Best Movies on Hulu: The Ultimate Ranking",
-        description: "10 highest-rated movies on Hulu right now. From Heat to Superbad. Ranked by critical acclaim & cinematic legacy. Includes sensitive content timestamps.",
-        keywords: "best movies on hulu, hulu top rated films, heat, hacksaw ridge, perfect days, best hulu movies ranking, sensitive content timestamps",
-        ogTitle: "10 Best Movies on Hulu: The Definitive Ranking 🏆",
-        twitterTitle: "🏆 10 Highest-Rated Movies Streaming on Hulu Right Now",
-        progressText: `of Top ${movies.length} Best Movies on Hulu`
-    };
-
-
-} else if (collection.slug === 'best-drama-movies-on-hulu') {
-    return {
-        title: "10 Best Drama Movies on Hulu: Emotional Masterpieces",
-        description: "10 best drama movies streaming on Hulu. Featuring Boyhood, Perfect Days & All of Us Strangers. Ranked by emotional impact & character depth. Includes sensitive content timestamps.",
-        keywords: "best drama movies on hulu, hulu emotional films, boyhood, perfect days, all of us strangers, drama rankings, sensitive content timestamps",
-        ogTitle: "10 Best Drama Movies on Hulu: Deeply Emotional Cinema 🎭",
-        twitterTitle: "🎭 10 Emotional Masterpieces Streaming on Hulu Right Now",
-        progressText: `of Top ${movies.length} Drama Movies on Hulu`
-    };
-
-
-} else if (collection.slug === 'best-family-movies-on-hulu') {
-    return {
-        title: "10 Best Family Movies on Hulu: Wholesome & Fun",
-        description: "10 best family movies streaming on Hulu. Featuring Robot Dreams, Night at the Museum & Sonic 2. Ranked by wholesomeness & fun factor. Includes sensitive content timestamps.",
-        keywords: "best family movies on hulu, hulu kids movies, robot dreams, night at the museum, sonic 2, wholesome movies, sensitive content timestamps",
-        ogTitle: "10 Best Family Movies on Hulu: Wholesome Fun 🍿",
-        twitterTitle: "🍿 10 Best Family Movies on Hulu (Robot Dreams, Sonic 2)",
-        progressText: `of Top ${movies.length} Family Movies on Hulu`
-    };
-
-    } else if (collection.slug === 'best-action-movies-on-hbo-max') {
-    return {
-        title: "Top 10 Epic Action Movies on HBO Max",
-        description: "10 greatest action movies streaming on HBO Max. Featuring Seven Samurai, Dune: Part Two & The Dark Knight. Ranked by epic scale & intensity. Includes sensitive content timestamps.",
-        keywords: "best action movies on hbo max, hbo max epic films, seven samurai, dark knight, dune part two, john wick hbo max, zack snyder justice league, sensitive content timestamps",
-        ogTitle: "10 Epic Action Movies on HBO Max: Mythic Heroes & Scale ⚔️",
-        twitterTitle: "⚔️ 10 Greatest Action Epics on HBO Max (Seven Samurai, Dune 2)",
-        progressText: `of Top ${movies.length} Action Movies on HBO Max`
-    };
-
-} else if (collection.slug === 'best-romance-movies-on-hbo-max') {
+    } else if (collection.slug === 'best-sci-fi-movies-on-hulu') {
         return {
-            title: "Best Romance Movies on HBO Max: 10 Prestige Films",
-            description: "10 best romance movies streaming on HBO Max. Featuring Casablanca, In the Mood for Love & Past Lives. Ranked by emotional intensity & chemistry. Includes sensitive content timestamps.",
-            keywords: "best romance movies on hbo max, hbo max romance films, casablanca, in the mood for love, past lives, romantic movies streaming, sensitive content timestamps",
+            title: "10 Best Sci-Fi Movies on Hulu: Visionary Films",
+            description: "The top 10 sci-fi movies on Hulu. From time-travel in Donnie Darko to the alien hunts of Prey. Includes sensitive content timestamps.", 
+            keywords: "best sci-fi movies on hulu, hulu sci-fi films, donnie darko, sci-fi streaming",
+            ogTitle: "10 Best Sci-Fi Movies on Hulu: Visionary & Mind-Bending 🛸",
+            twitterTitle: "🛸 10 Best Sci-Fi Movies on Hulu (Donnie Darko, Prey)",
+            progressText: `of Top ${movies.length} Sci-Fi Movies on Hulu`
+        };
+    } else if (collection.slug === 'best-thriller-movies-hulu') {
+        return {
+            title: "10 Best Thriller Movies on Hulu: Suspense Ranked",
+            description: "The 10 most suspenseful thrillers on Hulu. Featuring Heat and Black Swan. Ranked by tension. Includes sensitive content timestamps.", 
+            keywords: "best thriller movies on hulu, hulu thrillers, suspense films, heat movie",
+            ogTitle: "10 Best Thriller Movies on Hulu: Suspense & Tension 🔴",
+            twitterTitle: "🔴 10 Best Thriller Movies on Hulu (Heat, Black Swan)",
+            progressText: `of Top ${movies.length} Thriller Movies on Hulu`
+        };
+    } else if (collection.slug === 'best-movies-on-hulu') {
+        return {
+            title: "10 Best Movies on Hulu: The Ultimate Ranking",
+            description: "The definitive list of the 10 highest-rated movies on Hulu. From Oscar winners to cult classics. Includes sensitive content timestamps.", 
+            keywords: "best movies on hulu, hulu top rated films, best hulu movies ranking, essential movies",
+            ogTitle: "10 Best Movies on Hulu: The Definitive Ranking 🏆",
+            twitterTitle: "🏆 10 Highest-Rated Movies Streaming on Hulu Right Now",
+            progressText: `of Top ${movies.length} Best Movies on Hulu`
+        };
+    } else if (collection.slug === 'best-drama-movies-on-hulu') {
+        return {
+            title: "10 Best Drama Movies on Hulu: Emotional Masterpieces",
+            description: "The 10 most powerful drama movies on Hulu. Featuring Boyhood and Perfect Days. Ranked by impact. Includes sensitive content timestamps.", 
+            keywords: "best drama movies on hulu, hulu emotional films, boyhood, tearjerkers on hulu",
+            ogTitle: "10 Best Drama Movies on Hulu: Deeply Emotional Cinema 🎭",
+            twitterTitle: "🎭 10 Emotional Masterpieces Streaming on Hulu Right Now",
+            progressText: `of Top ${movies.length} Drama Movies on Hulu`
+        };
+    } else if (collection.slug === 'best-family-movies-on-hulu') {
+        return {
+            title: "10 Best Family Movies on Hulu: Wholesome & Fun",
+            description: "The top 10 family-friendly movies on Hulu. Featuring Sonic 2 and Night at the Museum. Includes sensitive content timestamps.", 
+            keywords: "best family movies on hulu, hulu kids movies, wholesome movies, family movie night",
+            ogTitle: "10 Best Family Movies on Hulu: Wholesome Fun 🍿",
+            twitterTitle: "🍿 10 Best Family Movies on Hulu (Robot Dreams, Sonic 2)",
+            progressText: `of Top ${movies.length} Family Movies on Hulu`
+        };
+    } else if (collection.slug === 'best-action-movies-on-hbo-max') {
+        return {
+            title: "10 Best Action Movies on HBO Max: Epic Scale",
+            description: "The 10 greatest action movies on HBO Max. Including Dune: Part Two and The Dark Knight. Includes sensitive content timestamps.", 
+            keywords: "best action movies on hbo max, hbo max epic films, seven samurai, dark knight, dune part two",
+            ogTitle: "10 Epic Action Movies on HBO Max: Mythic Heroes & Scale ⚔️",
+            twitterTitle: "⚔️ 10 Greatest Action Epics on HBO Max (Seven Samurai, Dune 2)",
+            progressText: `of Top ${movies.length} Action Movies on HBO Max`
+        };
+    } else if (collection.slug === 'best-romance-movies-on-hbo-max') {
+        return {
+            title: "10 Best Romance Movies on HBO Max: Prestige Films",
+            description: "The top 10 romance movies on HBO Max. Featuring Casablanca, Past Lives, and In the Mood for Love. Includes sensitive content timestamps.", 
+            keywords: "best romance movies on hbo max, hbo max romance films, casablanca, past lives, romantic movies",
             ogTitle: "10 Best Romance Movies on HBO Max: Prestige & Heartbreak 💖",
             twitterTitle: "💖 10 Best Romance Movies on HBO Max (Casablanca, Past Lives)",
             progressText: `of Top ${movies.length} Romance Movies on HBO Max`
         };
-
-} else if (collection.slug === 'best-thriller-movies-on-hbo-max') {
-    return {
-        title: "10 Best Thriller Movies on HBO Max: Ranked by Suspense",
-        description: "10 most suspenseful thrillers on HBO Max. Featuring Funny Games, Get Out & The Dark Knight. Ranked by psychological tension & twists. Includes sensitive content timestamps.",
-        keywords: "best thriller movies on hbo max, hbo max suspense films, funny games, get out, ex machina, psychological thrillers streaming, sensitive content timestamps",
-        ogTitle: "10 Best Thriller Movies on HBO Max: Suspense & Mind Games 🔴",
-        twitterTitle: "🔴 10 Most Suspenseful Thrillers on HBO Max (Funny Games, Get Out)",
-        progressText: `of Top ${movies.length} Thriller Movies on HBO Max`
-    };
-
-
+    } else if (collection.slug === 'best-thriller-movies-on-hbo-max') {
+        return {
+            title: "10 Best Thriller Movies on HBO Max: Suspense Ranked",
+            description: "The 10 most suspenseful thrillers on HBO Max. Featuring Funny Games, Get Out, and The Dark Knight. Includes sensitive content timestamps.", 
+            keywords: "best thriller movies on hbo max, hbo max suspense films, funny games, get out, psychological thrillers",
+            ogTitle: "10 Best Thriller Movies on HBO Max: Suspense & Mind Games 🔴",
+            twitterTitle: "🔴 10 Most Suspenseful Thrillers on HBO Max (Funny Games, Get Out)",
+            progressText: `of Top ${movies.length} Thriller Movies on HBO Max`
+        };
     } else if (collection.slug === 'best-family-movies-on-hbo-max') {
-    return {
-        title: "10 Best Family Movies on HBO Max: Wholesome & Magical",
-        description: "10 best family movies streaming on HBO Max. Featuring The Wizard of Oz, Harry Potter & Flow. Ranked by wholesomeness & fun factor. Includes sensitive content timestamps.",
-        keywords: "best family movies on hbo max, hbo max kids movies, wizard of oz, harry potter, flow movie, wholesome movies, sensitive content timestamps",
-        ogTitle: "10 Best Family Movies on HBO Max: Magical & Wholesome 🪄",
-        twitterTitle: "🪄 10 Magical Family Movies on HBO Max (Wizard of Oz, Harry Potter)",
-        progressText: `of Top ${movies.length} Family Movies on HBO Max`
-    };
-
+        return {
+            title: "10 Best Family Movies on HBO Max: Wholesome Picks",
+            description: "The top 10 family movies on HBO Max. From Harry Potter to The Wizard of Oz. Includes sensitive content timestamps.", 
+            keywords: "best family movies on hbo max, hbo max kids movies, harry potter, flow movie, wholesome movies",
+            ogTitle: "10 Best Family Movies on HBO Max: Magical & Wholesome 🪄",
+            twitterTitle: "🪄 10 Magical Family Movies on HBO Max (Wizard of Oz, Harry Potter)",
+            progressText: `of Top ${movies.length} Family Movies on HBO Max`
+        };
     } else if (collection.slug === 'best-sci-fi-movies-on-hbo-max') {
-    return {
-        title: "10 Best Sci-Fi Movies on HBO Max: Ranked by Scale",
-        description: "10 best sci-fi movies on HBO Max. Featuring Dune, Inception & 2001: A Space Odyssey. Ranked by spectacular level & conceptual depth. Includes sensitive content timestamps.",
-        keywords: "best sci-fi movies on hbo max, hbo max sci-fi, dune, inception, 2001 space odyssey, sensitive content timestamps",
-        ogTitle: "10 Best Sci-Fi Movies on HBO Max: Spectacular & Mind-Bending 🚀",
-        twitterTitle: "🚀 10 Spectacular Sci-Fi Movies on HBO Max (Dune, Inception)",
-        progressText: `of Top ${movies.length} Sci-Fi Movies on HBO Max`
-    };
-
+        return {
+            title: "10 Best Sci-Fi Movies on HBO Max: Visual Masterpieces",
+            description: "The definitive ranking of the top 10 sci-fi movies on HBO Max. From Dune to 2001: A Space Odyssey. Includes sensitive content timestamps.", 
+            keywords: "best sci-fi movies on hbo max, hbo max sci-fi, dune, inception, 2001 space odyssey",
+            ogTitle: "10 Best Sci-Fi Movies on HBO Max: Spectacular & Mind-Bending 🚀",
+            twitterTitle: "🚀 10 Spectacular Sci-Fi Movies on HBO Max (Dune, Inception)",
+            progressText: `of Top ${movies.length} Sci-Fi Movies on HBO Max`
+        };
     } else if (collection.slug === 'best-horror-movies-on-hbo-max') {
-    return {
-        title: "10 Best Horror Movies on HBO Max: Ranked by Scariness",
-        description: "10 best horror movies on HBO Max. Featuring The Conjuring, Evil Dead Rise & The Witch. Ranked by scariness & trauma. Includes sensitive content timestamps.",
-        keywords: "best horror movies on hbo max, hbo max horror films, the conjuring, insidious, evil dead rise, horror streaming, sensitive content timestamps",
-        ogTitle: "10 Best Horror Movies on HBO Max: Pure Nightmare Fuel 🩸",
-        twitterTitle: "🩸 10 Scariest Movies on HBO Max (The Conjuring, Evil Dead Rise)",
-        progressText: `of Top ${movies.length} Horror Movies on HBO Max`
-    };
-
-
-} else if (collection.slug === 'best-movies-on-hbo-max') {
-    return {
-        title: "Top 10 Best Movies on HBO Max: The Essential List",
-        description: "10 cinematic masterpieces streaming on HBO Max. Featuring Seven Samurai, The Dark Knight & Spirited Away. Ranked by cinematic mastery & legacy. Includes sensitive content timestamps.",
-        keywords: "best movies on hbo max, top rated hbo max films, seven samurai, dark knight, spirited away, dune part two, cinematic masterpieces, sensitive content timestamps",
-        ogTitle: "10 Best Movies on HBO Max: The Essential Watchlist 🏆",
-        twitterTitle: "🏆 10 Cinematic Masterpieces on HBO Max You Must See",
-        progressText: `of Top ${movies.length} Best Movies on HBO Max`
-    };
-
-
-
+        return {
+            title: "10 Best Horror Movies on HBO Max: Scariest Ranked",
+            description: "The 10 scariest movies on HBO Max. From The Conjuring to Evil Dead Rise. Ranked by dread. Includes sensitive content timestamps.", 
+            keywords: "best horror movies on hbo max, hbo max horror films, the conjuring, evil dead rise, horror streaming",
+            ogTitle: "10 Best Horror Movies on HBO Max: Pure Nightmare Fuel 🩸",
+            twitterTitle: "🩸 10 Scariest Movies on HBO Max (The Conjuring, Evil Dead Rise)",
+            progressText: `of Top ${movies.length} Horror Movies on HBO Max`
+        };
+    } else if (collection.slug === 'best-movies-on-hbo-max') {
+        return {
+            title: "10 Best Movies on HBO Max: The Essential List",
+            description: "The 10 absolute best movies on HBO Max. Featuring Seven Samurai, The Dark Knight, and more. Includes sensitive content timestamps.", 
+            keywords: "best movies on hbo max, top rated hbo max films, seven samurai, dark knight, cinematic masterpieces",
+            ogTitle: "10 Best Movies on HBO Max: The Essential Watchlist 🏆",
+            twitterTitle: "🏆 10 Cinematic Masterpieces on HBO Max You Must See",
+            progressText: `of Top ${movies.length} Best Movies on HBO Max`
+        };
     } else if (collection.slug === 'best-drama-movies-on-hbo-max') {
-    return {
-        title: "10 Best Drama Movies on HBO Max: Emotional Masterpieces",
-        description: "10 best drama movies on HBO Max. Featuring Moonlight, Taxi Driver & Paris, Texas. Ranked by emotional impact & character depth. Includes sensitive content timestamps.",
-        keywords: "best drama movies on hbo max, hbo max emotional films, moonlight, taxi driver, paris texas, drama rankings, sensitive content timestamps",
-        ogTitle: "10 Best Drama Movies on HBO Max: Deeply Emotional Cinema 🎭",
-        twitterTitle: "🎭 10 Emotional Masterpieces Streaming on HBO Max Right Now",
-        progressText: `of Top ${movies.length} Drama Movies on HBO Max`
-    };
-
-
+        return {
+            title: "10 Best Drama Movies on HBO Max: Emotional Films",
+            description: "The 10 best drama movies on HBO Max. Featuring Moonlight, Taxi Driver, and Paris, Texas. Includes sensitive content timestamps.", 
+            keywords: "best drama movies on hbo max, hbo max emotional films, moonlight, taxi driver, drama rankings",
+            ogTitle: "10 Best Drama Movies on HBO Max: Deeply Emotional Cinema 🎭",
+            twitterTitle: "🎭 10 Emotional Masterpieces Streaming on HBO Max Right Now",
+            progressText: `of Top ${movies.length} Drama Movies on HBO Max`
+        };
     } else if (collection.slug === 'best-comedy-movies-on-hbo-max') {
-    return {
-        title: "Best Comedy Movies on HBO Max: 10 Satirical Masterpieces",
-        description: "10 funniest movies on HBO Max. Featuring City Lights, The Great Dictator & Barbie. Ranked by influence, wit & cinematic brilliance. Includes sensitive content timestamps.",
-        keywords: "best comedy movies on hbo max, hbo max comedy films, city lights, the great dictator, barbie, comedy rankings, sensitive content timestamps",
-        ogTitle: "10 Best Comedy Movies on HBO Max: Satire & Slapstick 😂",
-        twitterTitle: "😂 10 Funniest Movies on HBO Max (City Lights, Barbie)",
-        progressText: `of Top ${movies.length} Comedy Movies on HBO Max`
-    };
-
-} else if (collection.slug === 'best-action-movies-on-paramount-plus') {
-    return {
-        title: "Top 10 High-Octane Action Movies on Paramount+",
-        description: "10 best action movies on Paramount+ ranked by adrenaline score. Featuring Top Gun: Maverick, Mission: Impossible & World War Z. Includes sensitive content timestamps.",
-        keywords: "best action movies on paramount plus, high octane movies, top gun maverick, mission impossible, action movies streaming, sensitive content timestamps",
-        ogTitle: "10 Best Action Movies on Paramount+: High-Octane & Adrenaline-Fueled 🔥",
-        twitterTitle: "🔥 10 High-Octane Action Movies on Paramount+ You Must Watch",
-        progressText: `of Top ${movies.length} Action Movies on Paramount+`
-    };
-
-
+        return {
+            title: "10 Best Comedy Movies on HBO Max: Satire & Laughs",
+            description: "The 10 funniest movies on HBO Max. From Barbie to City Lights. Ranked by comedic brilliance. Includes sensitive content timestamps.", 
+            keywords: "best comedy movies on hbo max, hbo max comedy films, city lights, barbie, comedy rankings",
+            ogTitle: "10 Best Comedy Movies on HBO Max: Satire & Slapstick 😂",
+            twitterTitle: "😂 10 Funniest Movies on HBO Max (City Lights, Barbie)",
+            progressText: `of Top ${movies.length} Comedy Movies on HBO Max`
+        };
+    } else if (collection.slug === 'best-action-movies-on-paramount-plus') {
+        return {
+            title: "10 Best Action Movies on Paramount+: High-Octane",
+            description: "The 10 best action movies on Paramount+. Featuring Top Gun: Maverick and Mission: Impossible. Includes sensitive content timestamps.", 
+            keywords: "best action movies on paramount plus, high octane movies, top gun maverick, mission impossible",
+            ogTitle: "10 Best Action Movies on Paramount+: High-Octane & Adrenaline-Fueled 🔥",
+            twitterTitle: "🔥 10 High-Octane Action Movies on Paramount+ You Must Watch",
+            progressText: `of Top ${movies.length} Action Movies on Paramount+`
+        };
     } else if (collection.slug === 'best-sci-fi-movies-on-paramount-plus') {
-    return {
-        title: "10 Best Sci-Fi Movies on Paramount+ (2026) | Visionary Films",
-        description: "10 best sci-fi movies on Paramount+. From Interstellar to Star Trek. Ranked by sci-fi complexity and visual spectacle. Includes sensitive content timestamps.",
-        keywords: "best sci-fi movies on paramount plus, paramount plus sci-fi, interstellar, arrival, the martian, star trek, sci-fi streaming",
-        ogTitle: "10 Best Sci-Fi Movies on Paramount+: Cosmic & Mind-Bending 🚀",
-        twitterTitle: "🚀 10 Visionary Sci-Fi Movies on Paramount+ You Must Watch",
-        progressText: `of Top ${movies.length} Sci-Fi Movies on Paramount+`
-    };
-
-
-} else if (collection.slug === 'best-romance-movies-on-paramount-plus') {
-    return {
-        title: "10 Best Romance Movies on Paramount+ (2026) | Ranked by Emotion",
-        description: "10 best romance movies on Paramount+. Featuring Titanic, About Time & It's a Wonderful Life. Ranked by emotional intensity & chemistry. Includes sensitive content timestamps.",
-        keywords: "best romance movies on paramount plus, paramount plus romance films, titanic, about time, its a wonderful life, ghost, romantic movies streaming, sensitive content timestamps",
-        ogTitle: "10 Best Romance Movies on Paramount+: Prestige & Heartbreak 💖",
-        twitterTitle: "💖 10 Best Romance Movies on Paramount+ (Titanic, About Time)",
-        progressText: `of Top ${movies.length} Romance Movies on Paramount+`
-    };
-
+        return {
+            title: "10 Best Sci-Fi Movies on Paramount+: Visionary Films",
+            description: "The 10 best sci-fi movies on Paramount+. From Interstellar to Star Trek. Ranked by spectacle. Includes sensitive content timestamps.", 
+            keywords: "best sci-fi movies on paramount plus, paramount plus sci-fi, interstellar, arrival, star trek",
+            ogTitle: "10 Best Sci-Fi Movies on Paramount+: Cosmic & Mind-Bending 🚀",
+            twitterTitle: "🚀 10 Visionary Sci-Fi Movies on Paramount+ You Must Watch",
+            progressText: `of Top ${movies.length} Sci-Fi Movies on Paramount+`
+        };
+    } else if (collection.slug === 'best-romance-movies-on-paramount-plus') {
+        return {
+            title: "10 Best Romance Movies on Paramount+: Prestige Films",
+            description: "The 10 best romance movies on Paramount+. Featuring Titanic and About Time. Ranked by emotion. Includes sensitive content timestamps.", 
+            keywords: "best romance movies on paramount plus, paramount plus romance films, titanic, about time, romantic movies",
+            ogTitle: "10 Best Romance Movies on Paramount+: Prestige & Heartbreak 💖",
+            twitterTitle: "💖 10 Best Romance Movies on Paramount+ (Titanic, About Time)",
+            progressText: `of Top ${movies.length} Romance Movies on Paramount+`
+        };
     } else if (collection.slug === 'movies-like-black-swan') {
         return {
-            title: "Movies Like Black Swan: 10 Psychological Obsession Films",
-            description: "Loved Black Swan? Discover 10 films about obsession, performance pressure & identity collapse. Includes exact timestamps for sensitive content.", 
-            keywords: "movies like black swan, psychological obsession films, sensitive content timestamps",
-            ogTitle: "Movies Like Black Swan: 10 Psychological Obsession Films 🩰",
+            title: "10 Movies Like Black Swan: Psychological Obsession",
+            description: "Loved Black Swan? Watch these 10 intense films about perfectionism, obsession, and identity collapse. Includes sensitive content timestamps.", 
+            keywords: "movies like black swan, psychological obsession films, perfectionism movies, darren aronofsky style",
+            ogTitle: "10 Movies Like Black Swan: Psychological Obsession Films 🩰",
             twitterTitle: "🩰 Loved Black Swan? These 10 Films Are Just as Intense",
             progressText: `of Top ${movies.length} Movies Like Black Swan`
         };
     } else if (collection.slug === 'movies-like-donnie-darko') {
         return {
-            title: "Movies Like Donnie Darko: 10 Reality-Warping Films",
-            description: "Loved Donnie Darko? Discover 10 mind-bending films with time travel & paradoxes. Includes exact timestamps for sensitive content.", 
-            keywords: "movies like donnie darko, time travel movies, reality warping films, sensitive content timestamps",
-            ogTitle: "Movies Like Donnie Darko: 10 Reality-Warping Masterpieces 🌌",
+            title: "10 Movies Like Donnie Darko: Reality-Warping Films",
+            description: "Loved Donnie Darko? Discover 10 mind-bending films featuring time travel, paradoxes, and dark atmosphere. Includes sensitive content timestamps.", 
+            keywords: "movies like donnie darko, time travel movies, reality warping films, cult classics",
+            ogTitle: "10 Movies Like Donnie Darko: Reality-Warping Masterpieces 🌌",
             twitterTitle: "🌌 Loved Donnie Darko? These 10 Films Will Break Reality",
             progressText: `of Top ${movies.length} Movies Like Donnie Darko`
         };
     } else if (collection.slug === 'movies-like-parasite') { 
         return {
-            title: "Movies Like Parasite: 10 Class Warfare Films",
-            description: "Loved Parasite? Discover 10 class warfare films with social inequality & thriller tension. Includes exact timestamps for sensitive content.", 
-            keywords: "movies like parasite, class warfare movies, social thriller, sensitive content timestamps",
-            ogTitle: "Movies Like Parasite: 10 Brutal Class Warfare Films 🏢",
+            title: "10 Movies Like Parasite: Class Warfare Thrillers",
+            description: "Loved Parasite? Explore 10 gripping films about social inequality, class struggle, and economic suspense. Includes sensitive content timestamps.", 
+            keywords: "movies like parasite, class warfare movies, social thriller, bong joon ho style",
+            ogTitle: "10 Movies Like Parasite: Brutal Class Warfare Films 🏢",
             twitterTitle: "🏢 Loved Parasite? These 10 Class War Films Are Just as Brutal",
             progressText: `of Top ${movies.length} Movies Like Parasite`
         };
     } else if (collection.slug === 'movies-like-interstellar') {
         return {
-            title: "Movies Like Interstellar: 10 Cerebral Space Films",
-            description: "Loved Interstellar? Explore 10 philosophical space films with scientific depth & cosmic wonder. Includes exact timestamps for sensitive content.", 
-            keywords: "movies like interstellar, cerebral sci fi, space exploration movies, sensitive content timestamps",
-            ogTitle: "Movies Like Interstellar: 10 Cerebral Space Exploration Films 🚀",
+            title: "10 Movies Like Interstellar: Cerebral Space Epics",
+            description: "Loved Interstellar? Watch these 10 visually stunning space films exploring time, relativity, and human survival. Includes sensitive content timestamps.", 
+            keywords: "movies like interstellar, cerebral sci fi, space exploration movies, christopher nolan style",
+            ogTitle: "10 Movies Like Interstellar: Cerebral Space Exploration Films 🚀",
             twitterTitle: "🚀 Loved Interstellar? These 10 Space Films Are Just as Deep",
             progressText: `of Top ${movies.length} Movies Like Interstellar`
         };
     } else if (collection.slug === 'movies-like-shutter-island') {
         return {
-            title: "Movies Like Shutter Island: 10 Twisted Films",
-            description: "Can't stop thinking about Shutter Island? Watch 10 psychological thrillers with shocking twists. Includes exact timestamps for sensitive content.", 
-            keywords: "movies like shutter island, plot twist movies, psychological thrillers, sensitive content timestamps",
-            ogTitle: "Movies Like Shutter Island: 10 Twisted Psychological Thrillers",
+            title: "10 Movies Like Shutter Island: Twisted Thrillers",
+            description: "Can't stop thinking about Shutter Island? Watch these 10 psychological thrillers with shocking twists. Includes sensitive content timestamps.", 
+            keywords: "movies like shutter island, plot twist movies, psychological thrillers, leonardo dicaprio movies",
+            ogTitle: "10 Movies Like Shutter Island: Twisted Psychological Thrillers",
             twitterTitle: "🎬 Can't Forget Shutter Island? Watch These 10 Twisted Films",
             progressText: `of Top ${movies.length} Movies Like Shutter Island`
         };
     } else if (collection.slug === 'best-crime-thriller-movies') {
         return {
-            title: "Best Crime Thrillers: 10 Ruthless Films",
-            description: "From Heat to The Departed—10 gritty crime thrillers with heists & investigations. Includes exact timestamps for sensitive content.", 
-            keywords: "best crime thriller movies, gritty crime films, sensitive content timestamps",
+            title: "10 Best Crime Thrillers: Ruthless & Gritty",
+            description: "From Heat to The Departed. The 10 grittiest crime thrillers featuring heists, investigations, and moral gray areas. Includes sensitive content timestamps.", 
+            keywords: "best crime thriller movies, gritty crime films, heat movie, the departed",
             ogTitle: "10 Best Crime Thrillers: Heat to The Departed 🔫",
             twitterTitle: "🔫 10 Ruthless Crime Thrillers You Can't Miss (Heat, Departed)",
             progressText: `of Top ${movies.length} Crime Thriller Movies`
         };
     } else if (collection.slug === 'best-heist-thriller-movies') {
         return {
-            title: "Best Heist Movies: 10 Master Robberies",
-            description: "From Ocean's Eleven to Heat—10 genius heist thrillers with elaborate plans & high stakes. Includes exact timestamps for sensitive content.", 
-            keywords: "best heist movies, smart robbery films, sensitive content timestamps",
+            title: "10 Best Heist Movies: Genius Robberies Ranked",
+            description: "From Ocean's Eleven to Heat. The 10 best heist thrillers with elaborate plans and high stakes. Includes sensitive content timestamps.", 
+            keywords: "best heist movies, smart robbery films, heist thrillers, bank robbery movies",
             ogTitle: "10 Best Heist Movies: Ocean's Eleven to Heat 💰",
             twitterTitle: "💰 10 Genius Heist Movies (Ocean's, Heat, Inside Man)",
             progressText: `of Top ${movies.length} Heist Thriller Movies`
         };
     } else if (collection.slug === 'best-time-travel-movies') {
         return {
-            title: "Best Time Travel Movies: 10 Paradox Films",
-            description: "From Primer to Back to the Future—10 mind-bending time travel films with paradoxes & loops. Includes exact timestamps for sensitive content.", 
-            keywords: "best time travel movies, time loop films, sensitive content timestamps",
+            title: "10 Best Time Travel Movies: Paradoxes & Loops",
+            description: "From Primer to Back to the Future. The 10 most mind-bending time travel films ever made. Ranked by complexity. Includes sensitive content timestamps.", 
+            keywords: "best time travel movies, time loop films, sci-fi paradox movies, primer movie",
             ogTitle: "10 Best Time Travel Movies: Primer to Back to the Future ⏰",
             twitterTitle: "⏰ 10 Mind-Bending Time Travel Movies (Primer, Interstellar)",
             progressText: `of Top ${movies.length} Time Travel Movies`
         };
     } else if (collection.slug === 'best-sci-fi-movies') {
         return {
-            title: "Best Sci-Fi Movies: 10 Visionary Films",
-            description: "From Blade Runner to Interstellar—10 groundbreaking sci-fi films with visionary concepts. Includes exact timestamps for sensitive content.", 
-            keywords: "best sci fi movies, visionary science fiction, sensitive content timestamps",
+            title: "10 Best Sci-Fi Movies of All Time: Visionary List",
+            description: "From Blade Runner to Interstellar. The definitive ranking of the 10 greatest sci-fi films with visionary concepts. Includes sensitive content timestamps.", 
+            keywords: "best sci fi movies, visionary science fiction, blade runner, sci-fi classics",
             ogTitle: "10 Best Sci-Fi Movies: Blade Runner to Interstellar 🚀",
             twitterTitle: "🚀 10 Visionary Sci-Fi Movies (Blade Runner, Interstellar)",
             progressText: `of Top ${movies.length} Sci-Fi Movies`
         };
     } else if (collection.slug === 'best-psychological-thriller-movies') {
         return {
-            title: "Best Psychological Thrillers: 10 Twisted Films",
-            description: "10 mind-bending psychological thrillers with intricate plots & shocking twists. Includes exact timestamps for sensitive content.", 
-            keywords: "best psychological thriller movies, mind games movies, sensitive content timestamps",
+            title: "10 Best Psychological Thrillers: Twisted & Dark",
+            description: "The 10 best psychological thrillers with intricate plots and shocking twists. Ranked by how much they mess with your mind. Includes sensitive content timestamps.", 
+            keywords: "best psychological thriller movies, mind games movies, twisted movies, suspense films",
             ogTitle: "10 Best Psychological Thrillers That'll Mess With Your Mind 🧠",
             twitterTitle: "🧠 10 Twisted Psychological Thrillers That'll Haunt You",
             progressText: `of Top ${movies.length} Psychological Thriller Movies`
         };
     } else if (collection.slug === 'best-thriller-movies') {
         return {
-            title: "Best Thriller Movies: 10 Edge-of-Seat Films",
-            description: "10 edge-of-your-seat suspense thrillers with relentless pacing & plot twists. Includes exact timestamps for sensitive content.", 
-            keywords: "best thriller movies, high suspense movies, sensitive content timestamps",
+            title: "10 Best Thriller Movies: Edge-of-Your-Seat List",
+            description: "The 10 most intense thriller movies ever made. Relentless pacing, high stakes, and plot twists you won't see coming. Includes sensitive content timestamps.", 
+            keywords: "best thriller movies, high suspense movies, edge of seat thrillers, suspense classics",
             ogTitle: "10 Best Thriller Movies: You Won't Pause 🔥",
             twitterTitle: "🔥 10 Edge-of-Your-Seat Thrillers You Can't Pause",
             progressText: `of Top ${movies.length} Thriller Movies`
         };
     } else if (collection.slug === 'best-mystery-thriller-movies') {
         return {
-            title: "Best Mystery Thrillers: 10 Unsolvable Films",
-            description: "10 detective mystery thrillers with clever investigations & impossible puzzles. Includes exact timestamps for sensitive content.", 
-            keywords: "best mystery thriller movies, whodunit movies, sensitive content timestamps",
+            title: "10 Best Mystery Thrillers: Unsolvable Films",
+            description: "The 10 cleverest mystery thrillers with impossible puzzles. Ranked by how hard it is to guess the ending. Includes sensitive content timestamps.", 
+            keywords: "best mystery thriller movies, whodunit movies, detective mysteries, plot twist films",
             ogTitle: "10 Best Mystery Thrillers: Unsolvable Until the End 🔍",
             twitterTitle: "🔍 10 Detective Mystery Thrillers That'll Stump You",
             progressText: `of Top ${movies.length} Mystery Thriller Movies`
         };
     } else if (collection.slug === 'best-survival-movies') {
         return {
-            title: "Best Survival Movies: 10 Against-All-Odds Films",
-            description: "10 intense survival films with human resilience against brutal nature. Includes exact timestamps for sensitive content.", 
-            keywords: "best survival movies, realistic survival films, sensitive content timestamps",
+            title: "10 Best Survival Movies: Against All Odds",
+            description: "The 10 most intense survival films featuring human resilience against brutal nature. Wilderness, mountains, and desert survival. Includes sensitive content timestamps.", 
+            keywords: "best survival movies, realistic survival films, man vs nature movies, cast away",
             ogTitle: "10 Best Survival Movies: Against All Odds ⛰️",
             twitterTitle: "⛰️ 10 Survival Movies Where Nature Doesn't Care",
             progressText: `of Top ${movies.length} Survival Movies`
         };
-
     } else if (collection.slug === 'best-detective-thriller-movies') {
         return {
-            title: "Best Detective Thrillers: 10 Brilliant Films",
-            description: "From Zodiac to Prisoners—10 masterful detective thrillers with intricate mysteries. Includes exact timestamps for sensitive content.", 
-            keywords: "best detective thriller movies, smart detective films, sensitive content timestamps",
+            title: "10 Best Detective Thrillers: Brilliant Cases",
+            description: "From Zodiac to Prisoners. The 10 best films featuring brilliant detective work, intricate mysteries, and shocking reveals. Includes sensitive content timestamps.", 
+            keywords: "best detective thriller movies, smart detective films, zodiac movie, prisoners movie",
             ogTitle: "10 Best Detective Thrillers: Zodiac to Prisoners 🔍",
             twitterTitle: "🔍 10 Brilliant Detective Thrillers (Zodiac, Prisoners, Se7en)",
             progressText: `of Top ${movies.length} Detective Thriller Movies`
         };
     } else if (collection.slug === 'best-revenge-movies') {
         return {
-            title: "Best Revenge Movies: 10 Brutal Films",
-            description: "From Oldboy to John Wick—10 brutal revenge films with systematic vengeance. Includes exact timestamps for sensitive content.", 
-            keywords: "best revenge movies, satisfying revenge films, sensitive content timestamps",
+            title: "10 Best Revenge Movies: Brutal & Satisfying",
+            description: "From Oldboy to John Wick. The 10 most brutal revenge films with systematic vengeance and visceral satisfaction. Includes sensitive content timestamps.", 
+            keywords: "best revenge movies, satisfying revenge films, john wick, oldboy, revenge thrillers",
             ogTitle: "10 Best Revenge Movies: Oldboy to John Wick 🗡️",
             twitterTitle: "🗡️ 10 Brutal Revenge Movies (Oldboy, Gladiator, John Wick)",
             progressText: `of Top ${movies.length} Revenge Movies`
         };
     } else if (collection.slug === 'best-war-films') {
         return {
-            title: "Best War Films: 10 Unflinching Masterpieces",
-            description: "10 unflinching war masterpieces with visceral battle scenes & anti-war themes. Includes exact timestamps for sensitive content.", 
-            keywords: "best war films, realistic war movies, sensitive content timestamps",
+            title: "10 Best War Films: Unflinching Masterpieces",
+            description: "The 10 greatest war films ever made. Visceral battle scenes, anti-war themes, and moral reckoning. Ranked by realism. Includes sensitive content timestamps.", 
+            keywords: "best war films, realistic war movies, d-day movies, anti-war films",
             ogTitle: "10 Best War Films: Unflinching D-Day to Jungle Combat ⚔️",
             twitterTitle: "⚔️ 10 Unflinching War Films That Show War's True Cost",
             progressText: `of Top ${movies.length} War Films`
         };
+    } else if (collection.slug === 'best-drama-movies-on-netflix') {
+        return {
+            title: "10 Best Drama Movies on Netflix: Award Winners",
+            description: "The 10 highest-rated drama movies on Netflix right now. Oscar winners, emotional powerhouses, and must-watch films. Includes sensitive content timestamps.", 
+            keywords: "best drama movies on netflix, netflix dramas, emotional movies netflix, award winning films",
+            ogTitle: "10 Best Drama Movies on Netflix: Award Winners 🏆",
+            twitterTitle: "🏆 10 Award-Winning Dramas Streaming on Netflix Now",
+            progressText: `of Top ${movies.length} Netflix Dramas`
+        };
     } else {
         return {
-            title: `Best ${collection.title}: Top 10 Films (2026)`,
+            title: `Best ${collection.title}: Top 10 Films`,
             description: `10 curated ${collection.title.toLowerCase()} films ranked by quality & impact. Includes exact timestamps for sensitive content.`,
             keywords: `best ${collection.title.toLowerCase()}, curated films, sensitive content timestamps`,
             ogTitle: `Best ${collection.title}: 10 Must-Watch Films`,
@@ -2202,6 +2175,7 @@ const getStaticMetaContent = () => {
         };
     }
 };
+   
 
 
     const nextMovie = useCallback(() => {
@@ -2580,42 +2554,41 @@ const getStaticMetaContent = () => {
     };
 
 // 🔥 MOBILE-OPTIMIZED CINEMATIC HEADER
-   // 🔥 MOBILE-OPTIMIZED CINEMATIC HEADER - REMOVED EXTRA PADDING ✅
+// 🔥 MOBILE-OPTIMIZED CINEMATIC HEADER - SEO FIXED ✅
+// 🔥 MOBILE-OPTIMIZED CINEMATIC HEADER - SEO FIXED ✅
 const CinematicHeader = React.memo(() => {
     return (
-        // ✅ CHANGED: Removed 'pt-32' classes. Now relies on container only.
         <header className="text-center mb-8 sm:mb-16 lg:mb-20 px-4 sm:px-6 w-full relative">
+            
+            {/* ✅ SEO FIX: Static H1 explicitly visible to bots (outside motion.div) */}
+            <h1 className="sr-only">{headerContent.title}</h1>
+
             <motion.div 
                 initial={{ opacity: 0, y: -40 }} 
                 animate={{ opacity: 1, y: 0 }} 
                 transition={{ duration: 1.2, ease: "easeOut" }} 
                 className="space-y-2 sm:space-y-6 lg:space-y-8 xl:space-y-12 relative z-10"
             >
-                <motion.div className="relative">
+                <div className="relative">
                     <motion.div
                         initial={{ opacity: 0, y: -40 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1.2, ease: "easeOut" }}
                     >
-                    <h1 className="sr-only">
-                        {headerContent.title}
-                    </h1>
-
-                    <div 
-                        className="text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-extralight tracking-[0.05em] sm:tracking-[0.1em] text-transparent bg-clip-text bg-gradient-to-r from-yellow-100 via-yellow-300 to-amber-300" 
-                        style={{ 
-                            fontFamily: "'Playfair Display', serif", 
-                            textShadow: '0 0 80px rgba(234, 179, 8, 0.15)',
-                            lineHeight: '1.1'
-                        }}
-                        role="heading"
-                        aria-level="1"
-                    >
-                        <span className="block leading-tight" style={{ letterSpacing: '0.02em' }}>
-                            {`${headerContent.title}`}
-                        </span>
-                    </div>
-
+                        {/* Visual Title */}
+                        <div 
+                            className="text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-extralight tracking-[0.05em] sm:tracking-[0.1em] text-transparent bg-clip-text bg-gradient-to-r from-yellow-100 via-yellow-300 to-amber-300" 
+                            style={{ 
+                                fontFamily: "'Playfair Display', serif", 
+                                textShadow: '0 0 80px rgba(234, 179, 8, 0.15)',
+                                lineHeight: '1.1'
+                            }}
+                            aria-hidden="true"
+                        >
+                            <span className="block leading-tight" style={{ letterSpacing: '0.02em' }}>
+                                {`${headerContent.title}`}
+                            </span>
+                        </div>
                     </motion.div>
                     
                     <motion.p 
@@ -2633,7 +2606,7 @@ const CinematicHeader = React.memo(() => {
                         transition={{ delay: 1.2, duration: 2, ease: "easeInOut" }} 
                         className="absolute -bottom-3 sm:-bottom-6 left-1/2 transform -translate-x-1/2 w-24 sm:w-32 lg:w-64 xl:w-96 h-px bg-gradient-to-r from-transparent via-yellow-400/50 to-transparent"
                     />
-                </motion.div>
+                </div>
                 
                 <motion.div 
                     className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 lg:gap-6 mt-8 sm:mt-16 lg:mt-20 max-w-4xl mx-auto" 
@@ -2652,18 +2625,18 @@ const CinematicHeader = React.memo(() => {
                                 <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/5 via-transparent to-amber-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                                 
                                 <div className="flex flex-col items-center space-y-3 sm:space-y-4 relative z-10">
-                                        <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-yellow-400/20 to-amber-400/20 rounded-xl flex items-center justify-center border border-yellow-400/30">
-                                            {index === 0 && <Brain className="w-6 h-6 sm:w-7 sm:h-7 text-yellow-400" />}
-                                            {index === 1 && <Star className="w-6 h-6 sm:w-7 sm:h-7 text-yellow-400" />}
-                                            {index === 2 && <Award className="w-6 h-6 sm:w-7 sm:h-7 text-yellow-400" />}
-                                        </div>
-                                        
-                                        <h3 className="text-yellow-200 text-sm sm:text-base lg:text-lg font-medium tracking-wider uppercase text-center leading-tight">
-                                            {badge.label}
-                                        </h3>
-                                        <p className="text-gray-400 text-xs sm:text-sm text-center leading-relaxed">
-                                            {badge.desc}
-                                        </p>
+                                    <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-yellow-400/20 to-amber-400/20 rounded-xl flex items-center justify-center border border-yellow-400/30">
+                                        {index === 0 && <Brain className="w-6 h-6 sm:w-7 sm:h-7 text-yellow-400" />}
+                                        {index === 1 && <Star className="w-6 h-6 sm:w-7 sm:h-7 text-yellow-400" />}
+                                        {index === 2 && <Award className="w-6 h-6 sm:w-7 sm:h-7 text-yellow-400" />}
+                                    </div>
+                                    
+                                    <h3 className="text-yellow-200 text-sm sm:text-base lg:text-lg font-medium tracking-wider uppercase text-center leading-tight">
+                                        {badge.label}
+                                    </h3>
+                                    <p className="text-gray-400 text-xs sm:text-sm text-center leading-relaxed">
+                                        {badge.desc}
+                                    </p>
                                 </div>
                             </div>
                         </motion.div>

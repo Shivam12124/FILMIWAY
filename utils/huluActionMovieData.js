@@ -31,7 +31,7 @@ export const SENSITIVE_TIMELINES = {
     14756: { 
         scenes: [
             { start: "12:21", end: "12:24", type: "Partial Nudity (Non-Sexual)", severity: "Low" },
-            { start: "0:58:00", end: "1:02:00", type: "Violence", severity: "High" } // 1 vs 10 bone breaking
+         
         ] 
     },
     // 3. Dawn of the Planet of the Apes

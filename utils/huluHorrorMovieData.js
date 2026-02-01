@@ -54,8 +54,8 @@ export const SENSITIVE_TIMELINES = {
     // 7. The Empty Man
     516632: { 
         scenes: [
-            { start: "1:24:10", end: "1:25:10", type: "Nudity", severity: "High" },
-            { start: "1:38:10", end: "1:39:05", type: "Nudity", severity: "High" }
+            { start: "54:10", end: "56:00", type: "Nudity", severity: "High" },
+            { start: "2:08:00", end: "2:08:05", type: "Nudity", severity: "High" }
         ] 
     },
 

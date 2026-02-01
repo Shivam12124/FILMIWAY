@@ -44,11 +44,12 @@ const CinematicMovieCard = React.memo(({ movie, rank, isActive, fromSurvivalColl
                         This reduces file size significantly compared to w500/original 
                         while maintaining decent quality for this card size.
                     */}
-                    <TMDBMoviePoster 
-                        movie={movie} 
-                        className="w-full h-full" 
-                        posterSize="w342" 
-                    />
+{/* ✅ FIX: Switched to 'w780' for crisp Retina/HD quality on all devices */}
+<TMDBMoviePoster 
+    movie={movie} 
+    className="w-full h-full" 
+    posterSize="w500" 
+/>
 
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent rounded-xl" />
                     

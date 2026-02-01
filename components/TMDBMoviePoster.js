@@ -1,4 +1,4 @@
-// components/TMDBMoviePoster.js - HIGH SPEED VERSION ⚡
+// components/TMDBMoviePoster.js - FIXED QUALITY (HD) ⚡
 import React, { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import { COMPLETE_MOVIE_DATA } from '../utils/movieData';
@@ -7,9 +7,8 @@ const TMDB_API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
 const TMDB_BASE_URL = 'https://api.themoviedb.org/3';
 const TMDB_IMAGE_BASE_URL = 'https://image.tmdb.org/t/p';
 
-// ✅ OPTIMIZATION: Default size changed to 'w185' (approx 15KB) vs 'w342' (approx 40KB)
-// Use 'w185' for lists/grids. Use 'w342' or 'w500' only for Hero/Detail pages.
-const TMDBMoviePoster = React.memo(({ movie, className = "", alt, posterSize = "w185" }) => {
+// ✅ FIX: Changed default to 'w500' for HD Quality (No more blur)
+const TMDBMoviePoster = React.memo(({ movie, className = "", alt, posterSize = "w500" }) => {
     const [posterUrl, setPosterUrl] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [hasError, setHasError] = useState(false);
@@ -62,7 +61,7 @@ const TMDBMoviePoster = React.memo(({ movie, className = "", alt, posterSize = "
             }
             
             if (data && data.poster_path) {
-                // ✅ SPEED: Construct URL using the requested small size
+                // ✅ SPEED: Construct URL using the requested size (w500 now default)
                 const fullPosterUrl = `${TMDB_IMAGE_BASE_URL}/${posterSize}${data.poster_path}`;
                 
                 setPosterUrl(fullPosterUrl);

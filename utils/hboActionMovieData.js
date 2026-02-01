@@ -23,15 +23,42 @@ export const COMPLETE_MOVIE_DATABASE = [
 
 // ✅ SENSITIVE TIMELINES (Focusing on Violence, Intensity & Gore)
 export const SENSITIVE_TIMELINES = {
+    // 1. Seven Samurai (Example ID)
     346: { scenes: [] }, 
-    155: { scenes: [{ start: "0:56:00", end: "0:57:00", type: "Violence", severity: "Moderate" }] },
+
+    // 2. The Dark Knight (Example ID)
+    155: { scenes: [] },
+
+    // 3. The Lord of the Rings (Example ID)
     122: { scenes: [] }, 
-    245891: { scenes: [{ start: "0:14:00", end: "0:16:00", type: "Animal Death", severity: "High" }] },
+
+    // 4. John Wick (Correct ID: 245891)
+    245891: { 
+        scenes: [
+            { start: "45:00", end: "45:30", type: "Suggestive Clothing (Women in Bikinis)", severity: "Low" }
+        ] 
+    },
+
+    // 5. Dune: Part Two (Example ID)
     693134: { scenes: [] }, 
+
+    // 6. Poor Things (Example ID)
     791373: { scenes: [] },
+
+    // 7. The Batman (Example ID)
     414906: { scenes: [] },
-    149191: { scenes: [{ start: "1:10:00", end: "1:15:00", type: "Gore (Animated)", severity: "High" }] },
-    263115: { scenes: [{ start: "0:03:00", end: "0:05:00", type: "Graphic Violence", severity: "High" }] },
+
+    // 8. Previous ID (Cleared)
+    149191: { scenes: [] },
+
+    // 9. Logan (Correct ID: 263115)
+    263115: { 
+        scenes: [
+            { start: "20:20", end: "20:30", type: "Nudity", severity: "Moderate" }
+        ] 
+    },
+
+    // 10. Oppenheimer (Example ID)
     438631: { scenes: [] }
 };
 
