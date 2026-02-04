@@ -1973,6 +1973,606 @@ export const COLLECTIONS = {
     }
   },
 
+// 🎭 BEST CORE DRAMA MOVIES ON PARAMOUNT+ COLLECTION
+'best-core-drama-movies-on-paramount-plus': {
+    slug: 'best-core-drama-movies-on-paramount-plus',
+    title: '10 Best Core Drama Movies on Paramount+',
+    subtitle: 'Ranked by Emotional Impact & Character Depth',
+    description: 'The definitive ranking of the most powerful dramas streaming on Paramount+. From the ruthless ambition of There Will Be Blood to the timeless journey of Forrest Gump.',
+    longDescription: 'Prepare for cinema that touches the soul. This collection ranks the absolute best drama movies on Paramount+, focusing on emotional authenticity, deep character studies, and masterful storytelling. From the oil-soaked madness of There Will Be Blood to the quiet devastation of The English Patient, these are the films that define the human experience.',
+
+    emoji: '🎭',
+    theme: 'indigo',
+    primaryColor: '#6366f1', // Indigo 500
+    secondaryColor: '#4f46e5', // Indigo 600
+    accentColor: '#312e81', // Indigo 900
+    gradientFrom: 'from-indigo-600',
+    gradientTo: 'to-violet-900',
+
+    category: 'drama',
+    tags: ['drama', 'paramount+', 'streaming', 'emotional', 'prestige', 'award-winning', 'tearjerker', 'character-study'],
+
+    metaTitle: '10 Best Core Drama Movies on Paramount+ (2026) | Ranked by Emotion | Filmiway',
+    metaDescription: 'Discover the top 10 core drama movies on Paramount+—from There Will Be Blood to Forrest Gump. Expert-curated ranking of emotionally powerful films and cinematic masterpieces.',
+    metaKeywords: 'best drama movies on paramount plus, paramount plus drama films, there will be blood, forrest gump, the english patient, fences, dead man walking, emotional movies paramount plus',
+
+    stats: {
+        totalMovies: 10,
+        averageRating: 8.2,
+        totalWatchtime: '23 hours 45 minutes',
+        averageEmotionalIntensity: 94.0,
+        mostEmotional: 'The English Patient (98/100)',
+        newestMovie: 'One Life (2024)',
+        oldestMovie: 'Forrest Gump (1994)'
+    },
+
+    movies: [
+        'tt0469494',  // 1. There Will Be Blood (2007)
+        'tt0116209',  // 2. The English Patient (1996)
+        'tt2671706',  // 3. Fences (2016)
+        'tt0112818',  // 4. Dead Man Walking (1995)
+        'tt1020072',  // 5. Selma (2014)
+        'tt0490215',  // 6. Silence (2016)
+        'tt13004880', // 7. One Life (2024)
+        'tt5168192',  // 8. I, Daniel Blake (2016)
+        'tt0421715', // 9. The Curious Case of Benjamin Button (2008)
+        'tt0109830'   // 10. Forrest Gump (1994)
+    ],
+
+    badges: [
+        { label: 'Emotional Powerhouses', desc: 'Guaranteed to move you' },
+        { label: 'Paramount+ Exclusive', desc: 'Prestige cinema streaming now' },
+        { label: 'Character Studies', desc: 'Deep psychological depth' }
+    ],
+
+    featured: {
+        hero: {
+            title: 'There Will Be Blood',
+            subtitle: 'A Masterpiece of Ambition',
+            description: 'Paul Thomas Anderson\'s epic exploration of family, religion, and madness during the California oil boom. Daniel Day-Lewis delivers one of the greatest performances in cinema history.',
+            poster: 'https://image.tmdb.org/t/p/w500/faL4e95X3kM7c7TfE41tA7t1v.jpg',
+            backdrop: 'https://image.tmdb.org/t/p/w1280/xJHokMmasHbqiKyFEKEGL9isukK.jpg', // Placeholder or generic
+            emotionalIntensity: 98
+        }
+    },
+
+    relatedCollections: [
+        'best-romance-movies-on-paramount-plus',
+        'best-drama-movies-on-hbo-max',
+        'best-movies-on-hbo-max'
+    ],
+
+    seo: {
+        title: '10 Best Core Drama Movies on Paramount+ (2026) | Ranked by Emotion',
+        description: 'The definitive ranking of the best drama movies on Paramount+. From the masterpiece There Will Be Blood to the heartbreaking The English Patient.',
+        keywords: 'drama movies paramount plus, best drama films streaming, there will be blood, fences, forrest gump, one life, silence, sad movies paramount plus',
+        canonicalUrl: 'https://filmiway.com/collection/best-core-drama-movies-on-paramount-plus',
+        ogImage: 'https://filmiway.com/images/paramount-drama-collection-og.jpg',
+        structuredData: {
+            '@context': 'https://schema.org',
+            '@type': 'ItemList',
+            name: 'Best Core Drama Movies on Paramount+',
+            description: 'Expert-curated list of the best drama movies available on Paramount+ ranked by emotional intensity and cinematic quality',
+            numberOfItems: 10
+        }
+    }
+},
+
+// 🎭 BEST CORE DRAMA MOVIES ON PARAMOUNT+ COLLECTION
+'best-core-drama-movies-on-paramount-plus': {
+    slug: 'best-core-drama-movies-on-paramount-plus',
+    title: '10 Best Core Drama Movies on Paramount+',
+    subtitle: 'Ranked by Emotional Impact & Character Depth',
+    description: 'The definitive ranking of the most powerful dramas streaming on Paramount+. From the ruthless ambition of There Will Be Blood to the timeless journey of Forrest Gump.',
+    longDescription: 'Prepare for cinema that touches the soul. This collection ranks the absolute best drama movies on Paramount+, focusing on emotional authenticity, deep character studies, and masterful storytelling. From the oil-soaked madness of There Will Be Blood to the quiet devastation of The English Patient, these are the films that define the human experience.',
+
+    emoji: '🎭',
+    theme: 'indigo',
+    primaryColor: '#6366f1', // Indigo 500
+    secondaryColor: '#4f46e5', // Indigo 600
+    accentColor: '#312e81', // Indigo 900
+    gradientFrom: 'from-indigo-600',
+    gradientTo: 'to-violet-900',
+
+    category: 'drama',
+    tags: ['drama', 'paramount+', 'streaming', 'emotional', 'prestige', 'award-winning', 'tearjerker', 'character-study'],
+
+    metaTitle: '10 Best Core Drama Movies on Paramount+ (2026) | Ranked by Emotion | Filmiway',
+    metaDescription: 'Discover the top 10 core drama movies on Paramount+—from There Will Be Blood to Forrest Gump. Expert-curated ranking of emotionally powerful films and cinematic masterpieces.',
+    metaKeywords: 'best drama movies on paramount plus, paramount plus drama films, there will be blood, forrest gump, the english patient, fences, dead man walking, emotional movies paramount plus',
+
+    stats: {
+        totalMovies: 10,
+        averageRating: 8.2,
+        totalWatchtime: '23 hours 45 minutes',
+        averageEmotionalIntensity: 94.0,
+        mostEmotional: 'The English Patient (98/100)',
+        newestMovie: 'One Life (2024)',
+        oldestMovie: 'Forrest Gump (1994)'
+    },
+
+    movies: [
+        'tt0469494',  // 1. There Will Be Blood (2007)
+        'tt0116209',  // 2. The English Patient (1996)
+        'tt2671706',  // 3. Fences (2016)
+        'tt0112818',  // 4. Dead Man Walking (1995)
+        'tt1020072',  // 5. Selma (2014)
+        'tt0490215',  // 6. Silence (2016)
+        'tt13004880', // 7. One Life (2024)
+        'tt5168192',  // 8. I, Daniel Blake (2016)
+        'tt0421715',  // 9. The Curious Case of Benjamin Button (2008)
+        'tt0109830'   // 10. Forrest Gump (1994)
+    ],
+
+    badges: [
+        { label: 'Emotional Powerhouses', desc: 'Guaranteed to move you' },
+        { label: 'Paramount+ Exclusive', desc: 'Prestige cinema streaming now' },
+        { label: 'Character Studies', desc: 'Deep psychological depth' }
+    ],
+
+    featured: {
+        hero: {
+            title: 'There Will Be Blood',
+            subtitle: 'A Masterpiece of Ambition',
+            description: 'Paul Thomas Anderson\'s epic exploration of family, religion, and madness during the California oil boom. Daniel Day-Lewis delivers one of the greatest performances in cinema history.',
+            poster: 'https://image.tmdb.org/t/p/w500/faL4e95X3kM7c7TfE41tA7t1v.jpg',
+            backdrop: 'https://image.tmdb.org/t/p/w1280/xJHokMmasHbqiKyFEKEGL9isukK.jpg',
+            emotionalIntensity: 98
+        }
+    },
+
+    relatedCollections: [
+        'best-romance-movies-on-paramount-plus',
+        'best-drama-movies-on-hbo-max',
+        'best-movies-on-hbo-max'
+    ],
+
+    seo: {
+        title: '10 Best Core Drama Movies on Paramount+ (2026) | Ranked by Emotion',
+        description: 'The definitive ranking of the best drama movies on Paramount+. From the masterpiece There Will Be Blood to the heartbreaking The English Patient.',
+        keywords: 'drama movies paramount plus, best drama films streaming, there will be blood, fences, forrest gump, one life, silence, sad movies paramount plus',
+        canonicalUrl: 'https://filmiway.com/collection/best-core-drama-movies-on-paramount-plus',
+        ogImage: 'https://filmiway.com/images/paramount-drama-collection-og.jpg',
+        structuredData: {
+            '@context': 'https://schema.org',
+            '@type': 'ItemList',
+            name: 'Best Core Drama Movies on Paramount+',
+            description: 'Expert-curated list of the best drama movies available on Paramount+ ranked by emotional intensity and cinematic quality',
+            numberOfItems: 10
+        }
+    }
+},
+
+
+// 🔴 BEST THRILLER MOVIES ON PARAMOUNT+ COLLECTION
+'best-thriller-movies-on-paramount-plus': {
+    slug: 'best-thriller-movies-on-paramount-plus',
+    title: '10 Best Thriller Movies on Paramount+',
+    subtitle: 'Ranked by Suspense & Psychological Dread',
+    description: 'The definitive ranking of the most intense thrillers on Paramount+. From the relentless dread of No Country for Old Men to the edge-of-your-seat panic of Strange Darling.',
+    longDescription: 'Prepare for heart-pounding tension. This collection ranks the absolute best thriller movies streaming on Paramount+, focusing on psychological pressure, relentless pursuit, and visceral suspense. From the nihilistic landscape of No Country for Old Men to the claustrophobic nightmare of 10 Cloverfield Lane and the modern mastery of Strange Darling, these films demand your full attention.',
+
+    emoji: '🔴',
+    theme: 'red',
+    primaryColor: '#b91c1c', // Dark Red
+    secondaryColor: '#ef4444', // Bright Red
+    accentColor: '#991b1b', // Blood Red
+    gradientFrom: 'from-red-800',
+    gradientTo: 'to-slate-900',
+
+    category: 'thriller',
+    tags: ['thriller', 'paramount+', 'suspense', 'psychological', 'crime', 'horror', 'action'],
+
+    metaTitle: '10 Best Thriller Movies on Paramount+ (2026) | Ranked by Suspense',
+    metaDescription: 'Discover the top 10 thriller movies on Paramount+—from No Country for Old Men to Strange Darling. Expert-curated ranking of high-tension films.',
+    metaKeywords: 'best thriller movies on paramount plus, paramount plus thrillers, no country for old men, strange darling, zodiac, 10 cloverfield lane, suspense movies streaming',
+
+    stats: {
+        totalMovies: 10,
+        averageRating: 7.6,
+        totalWatchtime: '18 hours 45 minutes',
+        averageSuspenseIntensity: 91.5,
+        mostIntense: 'No Country for Old Men (98/100)',
+        newestMovie: 'Strange Darling (2024)',
+        oldestMovie: 'Collateral (2004)'
+    },
+
+    movies: [
+        'tt0477348', // 1. No Country for Old Men
+        'tt0443706', // 2. Zodiac
+        'tt1179933', // 3. 10 Cloverfield Lane
+        'tt22375054', // 4. Strange Darling
+        'tt0371746', // 5. Collateral
+        'tt6644200', // 6. A Quiet Place
+        'tt0452623', // 7. Gone Baby Gone
+        'tt3289956', // 8. The Autopsy of Jane Doe
+        'tt0790724', // 9. Jack Reacher
+        'tt0361862'  // 10. The Machinist
+    ],
+
+    badges: [
+        { label: 'High Tension', desc: 'Nail-biting suspense' },
+        { label: 'Paramount+ Exclusive', desc: 'Available to stream now' },
+        { label: 'Psychological Dread', desc: 'Mind-bending stress & fear' }
+    ],
+
+    featured: {
+        hero: {
+            title: 'No Country for Old Men',
+            subtitle: 'The King of Dread',
+            description: 'The Coen Brothers\' masterpiece of nihilistic suspense. A hunter stumbles upon a drug deal gone wrong and is pursued by an unstoppable hitman who leaves fate to a coin toss.',
+            poster: 'https://image.tmdb.org/t/p/w500/bj1v6YKF8yiMrFfD77J9X1T9FjL.jpg',
+            backdrop: 'https://image.tmdb.org/t/p/w1280/uBQfBVpKOjTvyVa8qbZjiqYpVHH.jpg',
+            suspenseIntensity: 98
+        }
+    },
+
+    relatedCollections: [
+        'best-thriller-movies-on-hbo-max',
+        'best-thriller-movies-hulu',
+        'best-psychological-thriller-movies'
+    ],
+
+    seo: {
+        title: '10 Best Thriller Movies on Paramount+ (2026) | Ranked by Suspense',
+        description: 'The definitive ranking of the best thriller movies on Paramount+. From the relentless dread of No Country for Old Men to the modern shock of Strange Darling.',
+        keywords: 'thriller movies paramount plus, best suspense films streaming, no country for old men, strange darling, zodiac, 10 cloverfield lane, paramount plus suspense',
+        canonicalUrl: 'https://filmiway.com/collection/best-thriller-movies-on-paramount-plus',
+        ogImage: 'https://filmiway.com/images/paramount-thriller-collection-og.jpg',
+        structuredData: {
+            '@context': 'https://schema.org',
+            '@type': 'ItemList',
+            name: 'Best Thriller Movies on Paramount+',
+            description: 'Expert-curated list of the best thriller movies available on Paramount+ ranked by suspense intensity and psychological pressure',
+            numberOfItems: 10
+        }
+    }
+},
+
+
+// 🍿 BEST FAMILY MOVIES ON PARAMOUNT+ COLLECTION
+'best-family-movies-on-paramount-plus': {
+    slug: 'best-family-movies-on-paramount-plus',
+    title: '10 Best Family Movies on Paramount+',
+    subtitle: 'Wholesome & Entertaining Cinema',
+    description: 'The top 10 family movies streaming on Paramount+ right now. From Rango to Sonic the Hedgehog 3—ranked by fun factor.',
+    longDescription: 'Discover the most entertaining and heartwarming family movies on Paramount+. This collection features films that are perfect for movie night, ranging from the surreal western Rango to the high-energy fun of Sonic the Hedgehog 3. Wholesome entertainment guaranteed.',
+
+    emoji: '🍿',
+    theme: 'yellow',
+    primaryColor: '#facc15', // Bright Yellow
+    secondaryColor: '#eab308', // Darker Yellow
+    accentColor: '#ca8a04', // Deep Gold
+    gradientFrom: 'from-yellow-500',
+    gradientTo: 'to-amber-500',
+
+    category: 'family',
+    tags: ['family', 'paramount+', 'kids', 'animation', 'adventure', 'wholesome', 'streaming'],
+
+    metaTitle: '10 Best Family Movies on Paramount+ (2026) | Wholesome & Fun | Filmiway',
+    metaDescription: 'Discover the top 10 family movies on Paramount+—from Rango to Sonic 3. Expert-curated ranking of wholesome films for all ages.',
+    metaKeywords: 'best family movies on paramount plus, paramount plus kids movies, sonic 3, rango, paw patrol movie, wholesome movies streaming',
+
+    stats: {
+        totalMovies: 10,
+        averageRating: 7.5,
+        totalWatchtime: '16 hours 30 minutes',
+        averageFunFactor: 90.0,
+        mostFun: 'The SpongeBob SquarePants Movie (98/100)',
+        newestMovie: 'Sonic the Hedgehog 3 (2025)',
+        oldestMovie: 'The SpongeBob SquarePants Movie (2004)'
+    },
+
+    movies: [
+        'tt1192628', // 1. Rango
+        'tt10651810', // 2. TMNT: Mutant Mayhem
+        'tt0345950', // 3. The SpongeBob SquarePants Movie
+        'tt18259086', // 4. Sonic the Hedgehog 3
+        'tt7547410', // 5. Dora and the Lost City of Gold
+        'tt12412888', // 6. Sonic the Hedgehog 2
+        'tt5257726', // 7. Hey Arnold! The Jungle Movie
+        'tt3794354', // 8. Sonic the Hedgehog
+        'tt11832046', // 9. PAW Patrol: The Movie
+        'tt15714772'  // 10. PAW Patrol: The Mighty Movie
+    ],
+
+    badges: [
+        { label: 'Wholesome Fun', desc: 'Positive & uplifting content' },
+        { label: 'Paramount+ Exclusive', desc: 'Available to stream now' },
+        { label: 'All Ages', desc: 'Perfect for the whole family' }
+    ],
+
+    featured: {
+        hero: {
+            title: 'Rango',
+            subtitle: 'A Modern Animated Classic',
+            description: 'A sheltered chameleon becomes an unlikely sheriff in a lawless town. Visually stunning and hilariously unique.',
+            poster: 'https://image.tmdb.org/t/p/w500/8d83vJ08K90v7f075q5j758d8.jpg',
+            backdrop: 'https://image.tmdb.org/t/p/w1280/cI7oDO77xZCeL529cbAF8hOlcoL.jpg',
+            funFactor: 92
+        }
+    },
+
+    relatedCollections: [
+        'best-family-movies-on-hulu',
+        'best-family-movies-on-hbo-max',
+        'best-movies-on-hulu'
+    ],
+
+    seo: {
+        title: '10 Best Family Movies on Paramount+ (2026) | Wholesome & Fun',
+        description: 'The definitive ranking of the best family movies on Paramount+. From the masterpiece Rango to the blockbuster Sonic 3.',
+        keywords: 'family movies paramount plus, best kids films streaming, rango, sonic 3, tmnt mutant mayhem, paw patrol, wholesome movies',
+        canonicalUrl: 'https://filmiway.com/collection/best-family-movies-on-paramount-plus',
+        ogImage: 'https://filmiway.com/images/paramount-family-collection-og.jpg',
+        structuredData: {
+            '@context': 'https://schema.org',
+            '@type': 'ItemList',
+            name: 'Best Family Movies on Paramount+',
+            description: 'Expert-curated list of the best family movies available on Paramount+ ranked by wholesomeness and entertainment value',
+            numberOfItems: 10
+        }
+    }
+},
+
+// 🩸 BEST HORROR MOVIES ON PARAMOUNT+ COLLECTION
+'best-horror-movies-on-paramount-plus': {
+    slug: 'best-horror-movies-on-paramount-plus',
+    title: '10 Best Horror Movies on Paramount+',
+    subtitle: 'Ranked by Scariness & Dread',
+    description: 'The definitive ranking of the scariest movies on Paramount+. From the science-backed terror of Sinister to the psychological dread of Smile.',
+    longDescription: 'Prepare for sleepless nights. This collection ranks the absolute best horror movies streaming on Paramount+, focusing on visceral fear, psychological trauma, and unrelenting dread. From the found-footage nightmare of Sinister to the claustrophobic terror of The Autopsy of Jane Doe, these films represent the darkest corner of the platform.',
+
+    emoji: '🩸',
+    theme: 'red',
+    primaryColor: '#b91c1c', // Dark Red
+    secondaryColor: '#ef4444', // Bright Red
+    accentColor: '#7f1d1d', // Blood Red
+    gradientFrom: 'from-red-900',
+    gradientTo: 'to-black',
+
+    category: 'horror',
+    tags: ['horror', 'paramount+', 'scary', 'supernatural', 'gore', 'psychological', 'streaming'],
+
+    metaTitle: '10 Best Horror Movies on Paramount+ (2026) | Ranked by Scariness',
+    metaDescription: 'Discover the 10 scariest movies on Paramount+—from Sinister to Smile 2. Expert-curated ranking of nightmare-inducing horror films.',
+    metaKeywords: 'best horror movies on paramount plus, paramount plus horror films, sinister, smile, a quiet place, rosemarys baby, scary movies streaming',
+
+    stats: {
+        totalMovies: 10,
+        averageRating: 7.2,
+        totalWatchtime: '18 hours 15 minutes',
+        averageScariness: 92.5,
+        mostTerrifying: 'Sinister (100/100)',
+        newestMovie: 'Smile 2 (2024)',
+        oldestMovie: 'Rosemary\'s Baby (1968)'
+    },
+
+    movies: [
+        'tt1922777',  // 1. Sinister
+        'tt3289956',  // 2. The Autopsy of Jane Doe
+        'tt29268110', // 3. Smile 2
+        'tt15474916', // 4. Smile
+        'tt0119081',  // 5. Event Horizon
+        'tt6644200',  // 6. A Quiet Place
+        'tt0063522',  // 7. Rosemary's Baby
+        'tt22375054', // 8. Strange Darling
+        'tt22357594', // 9. A Quiet Place: Day One
+        'tt11851548'  // 10. Orphan: First Kill
+    ],
+
+    badges: [
+        { label: 'Science-Backed Terror', desc: 'Contains the scariest movie ever made' },
+        { label: 'Paramount+ Exclusive', desc: 'Top-tier horror streaming now' },
+        { label: 'Psychological Dread', desc: 'Nightmare fuel guaranteed' }
+    ],
+
+    featured: {
+        hero: {
+            title: 'Sinister',
+            subtitle: 'The Scariest Movie Ever Made',
+            description: 'Science backs it up. A true-crime writer discovers a cache of Super-8 home movies that suggest the murder he is currently researching is the work of a serial killer dating back to the 1960s.',
+            poster: 'https://image.tmdb.org/t/p/w500/h6j5sE3vXh6j5s.jpg',
+            backdrop: 'https://image.tmdb.org/t/p/w1280/uBQfBVpKOjTvyVa8qbZjiqYpVHH.jpg',
+            scariness: 100
+        }
+    },
+
+    relatedCollections: [
+        'best-thriller-movies-on-paramount-plus',
+        'best-horror-movies-on-hbo-max',
+        'best-horror-movies-on-hulu'
+    ],
+
+    seo: {
+        title: '10 Best Horror Movies on Paramount+ (2026) | Ranked by Scariness',
+        description: 'The definitive ranking of the scariest movies on Paramount+. From the science-backed terror of Sinister to the psychological dread of Smile.',
+        keywords: 'horror movies paramount plus, best horror films streaming, sinister, smile, a quiet place, rosemarys baby, event horizon, scary movies paramount',
+        canonicalUrl: 'https://filmiway.com/collection/best-horror-movies-on-paramount-plus',
+        ogImage: 'https://filmiway.com/images/paramount-horror-collection-og.jpg',
+        structuredData: {
+            '@context': 'https://schema.org',
+            '@type': 'ItemList',
+            name: 'Best Horror Movies on Paramount+',
+            description: 'Expert-curated list of the scariest horror movies available on Paramount+ ranked by scariness and visceral impact',
+            numberOfItems: 10
+        }
+    }
+},
+
+// 😂 BEST COMEDY MOVIES ON PARAMOUNT+ COLLECTION
+'best-comedy-movies-on-paramount-plus': {
+    slug: 'best-comedy-movies-on-paramount-plus',
+    title: '10 Best Comedy Movies on Paramount+',
+    subtitle: 'Ranked by Laughter & Quotability',
+    description: 'The definitive ranking of the funniest movies on Paramount+. From the satire of Tropic Thunder to the absurdity of Anchorman.',
+    longDescription: 'Prepare for non-stop laughter. This collection ranks the absolute best comedy movies on Paramount+, focusing on quotable lines, satirical brilliance, and comedic chemistry. From the meta-humor of Tropic Thunder to the slapstick genius of The Naked Gun and the holiday heart of Planes, Trains and Automobiles.',
+
+    emoji: '😂',
+    theme: 'yellow',
+    primaryColor: '#facc15', // Bright Yellow
+    secondaryColor: '#eab308', // Darker Yellow
+    accentColor: '#ca8a04', // Deep Gold
+    gradientFrom: 'from-yellow-500',
+    gradientTo: 'to-orange-500',
+
+    category: 'comedy',
+    tags: ['comedy', 'paramount+', 'satire', 'slapstick', 'streaming', 'classic', 'parody'],
+
+    metaTitle: '10 Best Comedy Movies on Paramount+ (2026) | Ranked by Laughter',
+    metaDescription: 'Discover the 10 funniest movies on Paramount+—from Tropic Thunder to Anchorman. Expert-curated ranking of side-splitting comedies and cult classics.',
+    metaKeywords: 'best comedy movies on paramount plus, paramount plus comedy films, tropic thunder, anchorman, naked gun, school of rock, comedy movies streaming',
+
+    stats: {
+        totalMovies: 10,
+        averageRating: 7.3,
+        totalWatchtime: '17 hours 30 minutes',
+        averageLaughterScore: 90.5,
+        mostHilarious: 'Tropic Thunder (98/100)',
+        newestMovie: 'The Wolf of Wall Street (2013)',
+        oldestMovie: 'Trading Places (1983)'
+    },
+
+    movies: [
+        'tt0942385', // 1. Tropic Thunder
+        'tt0357413', // 2. Anchorman: The Legend of Ron Burgundy
+        'tt0095705', // 3. The Naked Gun
+        'tt0175142', // 4. Scary Movie
+        'tt1386588', // 5. The Other Guys
+        'tt0332379', // 6. School of Rock
+        'tt0993846', // 7. The Wolf of Wall Street
+        'tt0105793', // 8. Wayne's World
+        'tt0093748', // 9. Planes, Trains and Automobiles
+        'tt0086465'  // 10. Trading Places
+    ],
+
+    badges: [
+        { label: 'Satirical Genius', desc: 'Sharp social commentary' },
+        { label: 'Paramount+ Exclusive', desc: 'Premium comedy streaming now' },
+        { label: 'Cult Classics', desc: 'Quotable and timeless' }
+    ],
+
+    featured: {
+        hero: {
+            title: 'Tropic Thunder',
+            subtitle: 'The Ultimate Hollywood Satire',
+            description: 'Through a series of freak occurrences, a group of pampered actors shooting a big-budget war movie are forced to become the soldiers they are portraying.',
+            poster: 'https://image.tmdb.org/t/p/w500/shqLeIkqPAXSMLk2ap1dD0cI9rR.jpg',
+            backdrop: 'https://image.tmdb.org/t/p/w1280/5iV4e3zC8P8b7a9i8f7a9i8f7a.jpg', // Placeholder hash
+            laughterScore: 98
+        }
+    },
+
+    relatedCollections: [
+        'best-comedy-movies-on-hulu',
+        'best-comedy-movies-on-hbo-max',
+        'best-action-movies-on-paramount-plus'
+    ],
+
+    seo: {
+        title: '10 Best Comedy Movies on Paramount+ (2026) | Ranked by Laughter',
+        description: 'The definitive ranking of the best comedy movies on Paramount+. From Tropic Thunder to School of Rock, find your next hilarious watch here.',
+        keywords: 'comedy movies paramount plus, best comedy films streaming, tropic thunder, anchorman, naked gun, school of rock, funny movies paramount',
+        canonicalUrl: 'https://filmiway.com/collection/best-comedy-movies-on-paramount-plus',
+        ogImage: 'https://filmiway.com/images/paramount-comedy-collection-og.jpg',
+        structuredData: {
+            '@context': 'https://schema.org',
+            '@type': 'ItemList',
+            name: 'Best Comedy Movies on Paramount+',
+            description: 'Expert-curated list of the funniest comedy movies available on Paramount+ ranked by laughter index and cinematic influence',
+            numberOfItems: 10
+        }
+    }
+},
+
+// 🏆 BEST MOVIES ON PARAMOUNT+ COLLECTION
+'best-movies-on-paramount-plus': {
+    slug: 'best-movies-on-paramount-plus',
+    title: 'Top 10 Best Movies on Paramount+',
+    subtitle: 'The Definitive Ranking',
+    description: 'The highest-rated films streaming on Paramount+ right now. From Pulp Fiction to Top Gun: Maverick, covering all genres.',
+    longDescription: 'Looking for the absolute best movies on Paramount+? This definitive ranking cuts through the noise to bring you the highest-rated, most critically acclaimed films available on the platform right now. Spanning epic action, sci-fi masterpieces, crime sagas, and timeless classics.',
+
+    emoji: '🏆',
+    theme: 'gold',
+    primaryColor: '#eab308', // Yellow 500
+    secondaryColor: '#ca8a04', // Yellow 600
+    accentColor: '#854d0e', // Yellow 800
+    gradientFrom: 'from-yellow-600',
+    gradientTo: 'to-amber-800',
+
+    category: 'best-of-paramount',
+    tags: ['paramount+', 'streaming', 'best movies', 'top rated', 'critically acclaimed', 'masterpiece', 'ranking'],
+
+    metaTitle: '10 Best Movies on Paramount+ (2026) | The Ultimate Ranking | Filmiway',
+    metaDescription: 'The definitive top 10 movies on Paramount+ right now. From Pulp Fiction to Interstellar, discover the highest-rated films across all genres. Expert curated.',
+    metaKeywords: 'best movies on paramount plus, top rated paramount plus films, pulp fiction, forrest gump, interstellar, gladiator, top gun maverick, best streaming movies 2026',
+
+    stats: {
+        totalMovies: 10,
+        averageRating: 8.4,
+        totalWatchtime: '24 hours 15 minutes',
+        averageCriticScore: 94,
+        mostAcclaimed: 'Pulp Fiction (92% Critic Score)',
+        newestMovie: 'Top Gun: Maverick (2022)',
+        oldestMovie: 'Sunset Boulevard (1950)'
+    },
+
+    movies: [
+        'tt0110912', // 1. Pulp Fiction
+        'tt0109830', // 2. Forrest Gump
+        'tt0816692', // 3. Interstellar
+        'tt0172495', // 4. Gladiator
+        'tt0043014', // 5. Sunset Boulevard
+        'tt0993846', // 6. The Wolf of Wall Street
+        'tt0477348', // 7. No Country for Old Men
+        'tt0469494', // 8. There Will Be Blood
+        'tt1745960', // 9. Top Gun: Maverick
+        'tt0264464'  // 10. Catch Me If You Can
+    ],
+
+    badges: [
+        { label: 'Cinematic Masterpieces', desc: 'The greatest films ever made' },
+        { label: 'Genre Defining', desc: 'The gold standard of their categories' },
+        { label: 'Critically Acclaimed', desc: 'Top-tier filmmaking' }
+    ],
+
+    featured: {
+        hero: {
+            title: 'Pulp Fiction',
+            subtitle: 'The Ultimate Cult Classic',
+            description: 'Quentin Tarantino\'s masterpiece intertwines the lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits.',
+            poster: 'https://image.tmdb.org/t/p/w500/d5iIlFn5s0ImszYzBPb8JPIfbXD.jpg',
+            backdrop: 'https://image.tmdb.org/t/p/w1280/suaEOtk1916gvraGYgxvnTbVM1u.jpg',
+            rating: 8.9
+        }
+    },
+
+    relatedCollections: [
+        'best-action-movies-on-paramount-plus',
+        'best-sci-fi-movies-on-paramount-plus',
+        'best-romance-movies-on-paramount-plus',
+        'best-thriller-movies-on-paramount-plus',
+        'best-family-movies-on-paramount-plus',
+        'best-movies-on-hbo-max'
+    ],
+
+    seo: {
+        title: '10 Best Movies on Paramount+ (2026) | The Ultimate Ranking | Filmiway',
+        description: 'Discover the 10 best movies streaming on Paramount+ right now. From Pulp Fiction to Interstellar, explore our expert-curated list of top-rated films.',
+        keywords: 'best movies on paramount plus, top rated paramount plus movies, what to watch on paramount plus, best films streaming, pulp fiction, forrest gump, gladiator',
+        canonicalUrl: 'https://filmiway.com/collection/best-movies-on-paramount-plus',
+        ogImage: 'https://filmiway.com/images/paramount-best-movies-collection-og.jpg',
+        structuredData: {
+            '@context': 'https://schema.org',
+            '@type': 'ItemList',
+            name: 'Best Movies on Paramount+',
+            description: 'Expert-curated list of the absolute best movies available on Paramount+ ranked by critical acclaim and cinematic legacy',
+            numberOfItems: 10
+        }
+    }
+},
+
 // 🦢 MOVIES LIKE BLACK SWAN COLLECTION
 'movies-like-black-swan': {
   slug: 'movies-like-black-swan',

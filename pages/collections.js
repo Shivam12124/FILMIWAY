@@ -279,6 +279,67 @@ const CollectionsHub = () => {
             directLink: '/collection/best-romance-movies-on-paramount-plus',
             hasSubCollections: false
         },
+
+{
+            id: 'paramount-thriller',
+            title: 'Best Thriller Movies on Paramount+',
+            description: 'Intense psychological thrillers and suspense masterpieces streaming now',
+            icon: Eye,
+            gradient: 'from-red-700 to-slate-900',
+            movieCount: '10',
+            rating: '7.6',
+            directLink: '/collection/best-thriller-movies-on-paramount-plus',
+            hasSubCollections: false
+        },
+
+{
+            id: 'paramount-family',
+            title: 'Best Family Movies on Paramount+',
+            description: 'Wholesome entertainment, animated adventures & fun for all ages streaming now',
+            icon: Sparkles,
+            gradient: 'from-yellow-500 to-amber-600',
+            movieCount: '10',
+            rating: '7.5',
+            directLink: '/collection/best-family-movies-on-paramount-plus',
+            hasSubCollections: false
+        },
+
+{
+            id: 'paramount-comedy',
+            title: 'Best Comedy Movies on Paramount+',
+            description: 'Laugh-out-loud classics and satirical masterpieces. From Tropic Thunder to The Naked Gun.',
+            icon: Smile,
+            gradient: 'from-yellow-400 to-amber-500',
+            movieCount: '10',
+            rating: '7.3',
+            directLink: '/collection/best-comedy-movies-on-paramount-plus',
+            hasSubCollections: false
+        },
+
+        {
+            id: 'paramount-horror',
+            title: 'Best Horror Movies on Paramount+',
+            description: 'The definitive ranking of the scariest movies on Paramount+. From Sinister to Smile.',
+            icon: Ghost,
+            gradient: 'from-red-800 to-slate-950',
+            movieCount: '10',
+            rating: '7.2',
+            directLink: '/collection/best-horror-movies-on-paramount-plus',
+            hasSubCollections: false
+        },
+
+        {
+            id: 'paramount-best',
+            title: 'Top 10 Best Movies on Paramount+',
+            description: 'The definitive ranking of the highest-rated films streaming on Paramount+. From The Godfather to Top Gun: Maverick',
+            icon: Crown,
+            gradient: 'from-yellow-500 to-amber-600',
+            movieCount: '10',
+            rating: '9.0',
+            directLink: '/collection/best-movies-on-paramount-plus',
+            hasSubCollections: false
+        },
+
         {
             id: 'oldboy',
             title: 'Movies Like Oldboy',

@@ -32,6 +32,12 @@ import { COMPLETE_MOVIE_DATABASE as HBO_MAX_COMEDY_DATABASE, COMPLETE_MOVIE_DATA
 import { COMPLETE_MOVIE_DATABASE as PARAMOUNT_ACTION_DATABASE, COMPLETE_MOVIE_DATA as PARAMOUNT_ACTION_DATA } from '../../utils/paramountActionMovieData';
 import { COMPLETE_MOVIE_DATABASE as PARAMOUNT_SCIFI_DATABASE, COMPLETE_MOVIE_DATA as PARAMOUNT_SCIFI_DATA } from '../../utils/paramountSciFiMovieData';
 import { COMPLETE_MOVIE_DATABASE as PARAMOUNT_ROMANCE_DATABASE, COMPLETE_MOVIE_DATA as PARAMOUNT_ROMANCE_DATA } from '../../utils/paramountRomanceMovieData';
+import { COMPLETE_MOVIE_DATABASE as PARAMOUNT_DRAMA_DATABASE, COMPLETE_MOVIE_DATA as PARAMOUNT_DRAMA_DATA } from '../../utils/paramountDramaMovieData';
+import { COMPLETE_MOVIE_DATABASE as PARAMOUNT_THRILLER_DATABASE, COMPLETE_MOVIE_DATA as PARAMOUNT_THRILLER_DATA } from '../../utils/paramountThrillerMovieData';
+import { COMPLETE_MOVIE_DATABASE as PARAMOUNT_FAMILY_DATABASE, COMPLETE_MOVIE_DATA as PARAMOUNT_FAMILY_DATA } from '../../utils/paramountFamilyMovieData';
+import { COMPLETE_MOVIE_DATABASE as PARAMOUNT_HORROR_DATABASE, COMPLETE_MOVIE_DATA as PARAMOUNT_HORROR_DATA } from '../../utils/paramountHorrorMovieData';
+import { COMPLETE_MOVIE_DATABASE as PARAMOUNT_COMEDY_DATABASE, COMPLETE_MOVIE_DATA as PARAMOUNT_COMEDY_DATA } from '../../utils/paramountComedyMovieData';
+import { COMPLETE_MOVIE_DATABASE as PARAMOUNT_BEST_DATABASE, COMPLETE_MOVIE_DATA as PARAMOUNT_BEST_DATA } from '../../utils/paramountBestMoviesData';
 
 import { COMPLETE_MOVIE_DATABASE as HULU_FAMILY_DATABASE, COMPLETE_MOVIE_DATA as HULU_FAMILY_DATA } from '../../utils/huluFamilyMovieData';
 import { COMPLETE_MOVIE_DATABASE as HBO_ACTION_DATABASE, COMPLETE_MOVIE_DATA as HBO_ACTION_DATA } from '../../utils/hboActionMovieData';
@@ -72,21 +78,62 @@ const getMovieGenre = (movie) => {
 const getMovieRuntime = (movie) => movie?.Runtime || movie?.runtime || '120 min';
 
 
-// LOGO COMPONENT
-const TopLeftLogo = () => (
+// PC HEADER
+const SiteHeader = () => (
+    <header className="hidden md:block absolute top-0 left-0 right-0 z-50 pointer-events-none">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-28 md:h-36">
+            <motion.div 
+                className="pointer-events-auto"
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+            >
+                <Link href="/" className="flex items-center justify-start">
+                    <div className="w-36 h-16 sm:w-44 sm:h-20 md:w-56 md:h-24 flex items-center justify-start hover:scale-105 transition-transform duration-300">
+                      <Image
+                        src="/filmiway-logo.svg"
+                        alt="Filmiway"
+                        width={220}
+                        height={110}
+                        priority={true}
+                        className="w-full h-full object-contain object-left"
+                      />
+                    </div>
+                </Link>
+            </motion.div>
+            <motion.div 
+                className="pointer-events-auto"
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+            >
+                <Link 
+                    href="/" 
+                    className="flex items-center gap-2 px-4 py-2 bg-gray-900/80 backdrop-blur-sm border border-gray-700/50 rounded-lg hover:bg-gray-800/90 hover:border-yellow-400/50 transition-all duration-300 shadow-lg group"
+                >
+                    <Home className="w-4 h-4 text-yellow-400 group-hover:scale-110 transition-transform" />
+                    <span className="text-yellow-400 text-sm font-medium">Home</span>
+                </Link>
+            </motion.div>
+        </div>
+    </header>
+);
+
+// MOBILE-ONLY LOGO COMPONENT
+const MobileLogo = () => (
     <motion.div 
-        className="absolute top-6 left-6 z-50 pointer-events-auto"
+        className="md:hidden absolute top-6 left-6 z-50 pointer-events-auto"
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8 }}
     >
         <Link href="/" className="flex items-center justify-start">
-            <div className="w-36 h-16 sm:w-44 sm:h-20 md:w-56 md:h-24 flex items-center justify-start hover:scale-105 transition-transform duration-300">
+            <div className="w-36 h-16 flex items-center justify-start">
               <Image
                 src="/filmiway-logo.svg"
                 alt="Filmiway"
-                width={220}
-                height={110}
+                width={144}
+                height={72}
                 priority={true}
                 className="w-full h-full object-contain object-left"
               />
@@ -95,20 +142,19 @@ const TopLeftLogo = () => (
     </motion.div>
 );
 
-// HOMEPAGE BUTTON
-const HomepageButton = () => (
+// MOBILE-ONLY HOMEPAGE BUTTON
+const MobileHomepageButton = () => (
     <motion.div 
-        className="absolute top-9 right-6 z-50 pointer-events-auto"
+        className="md:hidden absolute top-9 right-6 z-50 pointer-events-auto"
         initial={{ opacity: 0, x: 50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8, delay: 0.3 }}
     >
         <Link 
             href="/" 
-            className="flex items-center gap-2 px-4 py-2 bg-gray-900/80 backdrop-blur-sm border border-gray-700/50 rounded-lg hover:bg-gray-800/90 hover:border-yellow-400/50 transition-all duration-300 shadow-lg group"
+            className="flex items-center gap-2 px-3 py-1.5 bg-gray-900/80 backdrop-blur-sm border border-gray-700/50 rounded-lg"
         >
-            <Home className="w-4 h-4 text-yellow-400 group-hover:scale-110 transition-transform" />
-            <span className="text-yellow-400 text-sm font-medium">Home</span>
+            <Home className="w-4 h-4 text-yellow-400" />
         </Link>
     </motion.div>
 );
@@ -759,6 +805,150 @@ const getCollectionContent = () => {
     };
 
 
+} else if (collection.slug === 'best-core-drama-movies-on-paramount-plus') {
+    return {
+        badge: "Core Drama Masterpieces",
+        title: "Best Core Drama Movies on Paramount+",
+        description: "The definitive ranking of the most emotionally powerful dramas on Paramount+. From the ruthless ambition of There Will Be Blood to the timeless journey of Forrest Gump.",
+        selection: {
+            text1: "From the oil-soaked madness of 'There Will Be Blood' to the quiet devastation of 'The English Patient'—these films represent the absolute pinnacle of dramatic storytelling available on Paramount+.",
+            text2: "Each selection features profound character depth, authentic human connection, and narratives that explore the beautiful, painful complexity of being alive."
+        },
+        ranking: {
+            text: "Our emotional intensity index evaluates character depth, narrative authenticity, and the lasting emotional impact of the film's themes.",
+            points: [
+                "Emotional resonance depth",
+                "Character development complexity",
+                "Narrative authenticity score",
+                "Thematic impact weight"
+            ]
+        },
+        experience: {
+            text1: "Whether you're seeking cathartic tears or quiet reflection, this collection delivers cinema's most powerful explorations of the human condition.",
+            text2: "Each film has been selected for its ability to touch the soul—offering moments of grace, grief, and connection that feel universally, heartbreakingly real."
+        }
+    };
+
+
+    } else if (collection.slug === 'best-thriller-movies-on-paramount-plus') {
+    return {
+        badge: "Psychological Tension",
+        title: "Best Thriller Movies on Paramount+",
+        description: "The most suspenseful thrillers on Paramount+. From the relentless dread of No Country for Old Men to the claustrophobia of 10 Cloverfield Lane.",
+        selection: {
+            text1: "From the coin-toss tension of 'No Country for Old Men' to the obsessive hunt of 'Zodiac'—these films represent the pinnacle of suspense available on Paramount+.",
+            text2: "Each selection features masterclass direction, unbearable psychological pressure, and narratives that tighten the screws until the very last frame."
+        },
+        ranking: {
+            text: "Our suspense intensity index evaluates pacing, psychological pressure, and the visceral impact of tension throughout each film.",
+            points: [
+                "Suspense intensity score",
+                "Psychological pressure depth",
+                "Narrative twist sophistication",
+                "Visceral impact factor"
+            ]
+        },
+        experience: {
+            text1: "Whether you're seeking cerebral puzzles or heart-pounding dread, this collection delivers cinema's most gripping experiences.",
+            text2: "Each film has been selected for its ability to keep you on the edge of your seat—offering twists and tension that demand your full attention."
+        }
+    };
+
+
+} else if (collection.slug === 'best-family-movies-on-paramount-plus') {
+    return {
+        badge: "Wholesome Family Fun",
+        title: "Best Family Movies on Paramount+",
+        description: "The top 10 family movies streaming on Paramount+ right now. From Rango to Sonic the Hedgehog 3—ranked by fun factor and wholesomeness.",
+        selection: {
+            text1: "From the animated masterpiece 'Rango' to the high-speed adventure of 'Sonic the Hedgehog 3'—these films represent the best family entertainment available on Paramount+.",
+            text2: "Each selection features positive messages, engaging stories for all ages, and moments of genuine fun that bring families together."
+        },
+        ranking: {
+            text: "Our fun factor index evaluates entertainment value, humor, and age-appropriateness throughout each film.",
+            points: [
+                "Fun factor intensity",
+                "Wholesome score",
+                "Family-friendly themes",
+                "Animation quality & humor"
+            ]
+        },
+        experience: {
+            text1: "Whether you're seeking a laugh-out-loud comedy or an exciting adventure, this collection delivers cinema's most memorable family experiences.",
+            text2: "Each film has been selected for its ability to entertain both kids and adults—offering laughter, action, and valuable life lessons."
+        }
+    };
+} else if (collection.slug === 'best-horror-movies-on-paramount-plus') {
+    return {
+        badge: "Pure Nightmare Fuel",
+        title: "Best Horror Movies on Paramount+",
+        description: "The definitive ranking of the scariest movies on Paramount+. From the jump scares of Insidious to the dread of The Witch.",
+        selection: {
+            text1: "From the supernatural terror of 'The Conjuring' to the relentless gore of 'Evil Dead Rise'—these films represent the darkest, most intense horror available on Paramount+.",
+            text2: "Each selection features visceral scares, psychological trauma, and atmospheres so oppressive they feel cursed. Not for the faint of heart."
+        },
+        ranking: {
+            text: "Our scariness index evaluates atmospheric dread, visceral shock value, and the lingering psychological trauma left by the film.",
+            points: [
+                "Atmospheric dread level",
+                "Visceral shock & gore",
+                "Psychological trauma depth",
+                "Unpredictable terror factor"
+            ]
+        },
+        experience: {
+            text1: "Whether you're seeking cosmic nihilism or supernatural brutality, this collection delivers cinema's most traumatizing experiences.",
+            text2: "Each film has been selected for its ability to ruin your sleep—offering nightmares that stick with you long after the credits roll."
+        }
+    };
+} else if (collection.slug === 'best-comedy-movies-on-paramount-plus') {
+    return {
+        badge: "Satirical Masterpieces",
+        title: "Best Comedy Movies on Paramount+",
+        description: "The definitive ranking of the funniest movies on Paramount+. From the satire of The Great Dictator to the chaos of The LEGO Batman Movie.",
+        selection: {
+            text1: "From the timeless slapstick of 'City Lights' to the sharp modern satire of 'Barbie'—these films represent the absolute best comedy available on Paramount+.",
+            text2: "Each selection features brilliant writing, unforgettable performances, and a unique comedic voice that has stood the test of time."
+        },
+        ranking: {
+            text: "Our laughter index evaluates the frequency of laughs, the chaos factor of the plot, and the enduring quotability of the script.",
+            points: [
+                "Laughter frequency & intensity",
+                "Chaos factor & unpredictability",
+                "Script quotability score",
+                "Satirical depth impact"
+            ]
+        },
+        experience: {
+            text1: "Whether you're seeking a classic like 'Singin' in the Rain' or a modern favorite like 'Fargo', this collection delivers cinema's most effective dopamine hits.",
+            text2: "Each film has been selected for its ability to improve your mood instantly—offering laughs that range from intellectual satire to pure, joyful absurdity."
+        }
+    };
+} else if (collection.slug === 'best-movies-on-paramount-plus') {
+    return {
+        badge: "Cinematic Masterpieces",
+        title: "Best Movies on Paramount+",
+        description: "The definitive ranking of the highest-rated films streaming on Paramount+ right now. From The Godfather to Top Gun: Maverick.",
+        selection: {
+            text1: "From the timeless brilliance of 'The Godfather' to the modern spectacle of 'Top Gun: Maverick'—these films represent the absolute best cinema available on the platform.",
+            text2: "Each selection is a genre-defining masterpiece, chosen for its critical acclaim, cultural impact, and cinematic mastery across action, sci-fi, romance, and drama."
+        },
+        ranking: {
+            text: "Our definitive ranking evaluates cinematic mastery, critical reception, and legacy to determine the essential watchlist for any serious film lover.",
+            points: [
+                "Cinematic mastery score",
+                "Critical acclaim level",
+                "Cultural legacy impact",
+                "Visual & narrative innovation"
+            ]
+        },
+        experience: {
+            text1: "Whether you're seeking a classic like 'The Godfather' or a modern epic like 'Mission: Impossible', this collection delivers the most essential viewing experiences on Paramount+.",
+            text2: "Each film has been selected as a 'must-watch'—guaranteeing that no matter what you pick, you are watching a top-tier example of filmmaking craft."
+        }
+    };
+
+
     } else if (collection.slug === 'movies-like-black-swan') {
         return {
             badge: "Psychological Obsession Cinema",
@@ -1404,7 +1594,39 @@ const getHeaderContent = () => {
         subtitle: "From Interstellar to Star Trek—cosmic epics, hard sci-fi & mind-bending thrillers"
     };
 
-    
+    } else if (collection.slug === 'best-core-drama-movies-on-paramount-plus') {
+    return {
+        title: "Best Core Drama Movies on Paramount+: 10 Emotional Films",
+        subtitle: "Emotionally powerful cinema—from There Will Be Blood to Forrest Gump"
+    };
+
+    } else if (collection.slug === 'best-thriller-movies-on-paramount-plus') {
+    return {
+        title: "Best Thriller Movies on Paramount+: 10 Intense Films",
+        subtitle: "Edge-of-your-seat suspense—from No Country for Old Men to Strange Darling"
+    };
+
+} else if (collection.slug === 'best-family-movies-on-paramount-plus') {
+    return {
+        title: "10 Best Family Movies on Paramount+: Wholesome Picks",
+        subtitle: "Wholesome entertainment, animated adventures & fun for all ages—from Rango to Sonic 3"
+    };
+} else if (collection.slug === 'best-horror-movies-on-paramount-plus') {
+    return {
+        title: "10 Best Horror Movies on Paramount+: Ranked by Scariness",
+        subtitle: "From The Conjuring to Evil Dead Rise—ranked by dread, gore & psychological trauma"
+    };
+} else if (collection.slug === 'best-comedy-movies-on-paramount-plus') {
+    return {
+        title: "Best Comedy Movies on Paramount+: 10 Satirical Masterpieces",
+        subtitle: "From City Lights to Barbie—ranked by influence, wit & cinematic brilliance"
+    };
+
+} else if (collection.slug === 'best-movies-on-paramount-plus') {
+    return {
+        title: "Best Movies on Paramount+: 10 Essential Films",
+        subtitle: "The definitive ranking of the highest-rated films streaming now—from The Godfather to Top Gun: Maverick"
+    };
 
 } else if (collection.slug === 'movies-like-donnie-darko') {
     return {
@@ -1681,6 +1903,39 @@ const getLoaderContent = () => {
         description: "Curating emotionally resonant romance films with community reviews and ratings"
     };
 
+
+    } else if (collection?.slug === 'best-core-drama-movies-on-paramount-plus') {
+    return {
+        title: "Loading Best Core Drama Movies on Paramount+",
+        description: "Curating emotionally powerful dramas and deep character studies with community reviews"
+    };
+
+    } else if (collection?.slug === 'best-thriller-movies-on-paramount-plus') {
+    return {
+        title: "Loading Best Thriller Movies on Paramount+",
+        description: "Curating intense psychological thrillers and suspense masterpieces with community reviews"
+    };
+
+    } else if (collection?.slug === 'best-family-movies-on-paramount-plus') {
+    return {
+        title: "Loading Best Family Movies on Paramount+",
+        description: "Curating wholesome family entertainment and animated adventures with community reviews"
+    };
+} else if (collection?.slug === 'best-horror-movies-on-paramount-plus') {
+    return {
+        title: "Loading Best Horror Movies on Paramount+",
+        description: "Curating terrifying horror masterpieces and nightmare fuel with community reviews"
+    };
+} else if (collection?.slug === 'best-comedy-movies-on-paramount-plus') {
+    return {
+        title: "Loading Best Comedy Movies on Paramount+",
+        description: "Curating satirical masterpieces and cinematic classics with community reviews and ratings"
+    };
+} else if (collection?.slug === 'best-movies-on-paramount-plus') {
+    return {
+        title: "Loading Best Movies on Paramount+",
+        description: "Curating cinematic masterpieces and definitive classics with community reviews and ratings"
+    };
 
     } else if (collection?.slug === 'movies-like-parasite') { 
         return {
@@ -2011,7 +2266,66 @@ const getStaticMetaContent = () => {
             twitterTitle: "💖 10 Best Romance Movies on Paramount+ (Titanic, About Time)",
             progressText: `of Top ${movies.length} Romance Movies on Paramount+`
         };
-    } else if (collection.slug === 'movies-like-black-swan') {
+
+
+} else if (collection.slug === 'best-core-drama-movies-on-paramount-plus') {
+    return {
+        title: "10 Best Core Drama Movies on Paramount+: Emotional Picks",
+        description: "The 10 most powerful dramas on Paramount+. Featuring There Will Be Blood, Forrest Gump, and Fences. Ranked by emotion. Includes sensitive content timestamps.", 
+        keywords: "best drama movies on paramount plus, paramount plus emotional films, there will be blood, forrest gump, fences",
+        ogTitle: "10 Best Core Drama Movies on Paramount+: Emotional Masterpieces 🎭",
+        twitterTitle: "🎭 10 Emotional Dramas on Paramount+ (There Will Be Blood, Fences)",
+        progressText: `of Top ${movies.length} Drama Movies on Paramount+`
+    };
+
+
+    } else if (collection.slug === 'best-thriller-movies-on-paramount-plus') {
+    return {
+        title: "10 Best Thriller Movies on Paramount+: Intense Picks",
+        description: "The 10 most suspenseful thrillers on Paramount+. Featuring No Country for Old Men, Strange Darling, and 10 Cloverfield Lane. Includes sensitive content timestamps.", 
+        keywords: "best thriller movies on paramount plus, paramount plus suspense films, no country for old men, strange darling, 10 cloverfield lane",
+        ogTitle: "10 Best Thriller Movies on Paramount+: Suspense & Dread 🔴",
+        twitterTitle: "🔴 10 Intense Thrillers on Paramount+ (No Country for Old Men, Strange Darling)",
+        progressText: `of Top ${movies.length} Thriller Movies on Paramount+`
+    };
+
+
+    } else if (collection.slug === 'best-family-movies-on-paramount-plus') {
+        return {
+            title: "10 Best Family Movies on Paramount+: Wholesome Picks",
+            description: "The top 10 family movies on Paramount+. From Rango to Sonic the Hedgehog 3. Ranked by fun factor. Includes sensitive content timestamps.",
+            keywords: "best family movies on paramount plus, paramount plus kids movies, sonic 3, paw patrol movie, rango, tmnt mutant mayhem, wholesome movies",
+            ogTitle: "10 Best Family Movies on Paramount+: Magical & Wholesome 🪄",
+            twitterTitle: "🪄 10 Magical Family Movies on Paramount+ (Rango, Sonic 3)",
+            progressText: `of Top ${movies.length} Family Movies on Paramount+`
+        };
+    } else if (collection.slug === 'best-horror-movies-on-paramount-plus') {
+        return {
+            title: "10 Best Horror Movies on Paramount+: Truly Terrifying Picks",
+            description: "The 10 scariest horror movies on Paramount+. From Longlegs to When Evil Lurks. Ranked by nightmare fuel. Includes sensitive content timestamps.",
+            keywords: "best horror movies on paramount plus, paramount plus horror films, scariest movies streaming, when evil lurks",
+            ogTitle: "10 Best Horror Movies on Paramount+: Pure Nightmare Fuel 🩸",
+            twitterTitle: "🩸 10 Scariest Movies on Paramount+ (When Evil Lurks, Longlegs)",
+            progressText: `of Top ${movies.length} Horror Movies on Paramount+`
+        };
+    } else if (collection.slug === 'best-comedy-movies-on-paramount-plus') {
+        return {
+            title: "10 Best Comedy Movies on Paramount+: Funniest Picks",
+            description: "The 10 funniest movies on Paramount+ right now. Featuring Superbad, Borat, and Palm Springs. Includes sensitive content timestamps.",
+            keywords: "best comedy movies on paramount plus, paramount plus comedy films, funniest movies streaming, superbad",
+            ogTitle: "10 Best Comedy Movies on Paramount+: Side-Splitting & Chaotic 😂",
+            twitterTitle: "😂 10 Funniest Movies on Paramount+ (Superbad, Borat)",
+            progressText: `of Top ${movies.length} Comedy Movies on Paramount+`
+        };
+    } else if (collection.slug === 'best-movies-on-paramount-plus') {
+        return {
+            title: "Best Movies on Paramount+: 10 Essential Films to Watch",
+            description: "The definitive list of the best movies to watch on Paramount+, from The Godfather to Top Gun: Maverick—ranked by cinematic mastery and cultural impact.",
+            keywords: "best movies on paramount plus, top movies on paramount plus, what to watch on paramount plus, paramount plus movies",
+            ogTitle: "Best Movies on Paramount+: 10 Essential Films to Watch 🎬",
+            twitterTitle: "🎬 The Definitive Ranking of the Best Movies on Paramount+ You Have to Watch",
+            progressText: `of Top ${movies.length} Paramount+ Movies`
+        };    } else if (collection.slug === 'movies-like-black-swan') {
         return {
             title: "10 Movies Like Black Swan: Psychological Obsession",
             description: "Loved Black Swan? Watch these 10 intense films about perfectionism, obsession, and identity collapse. Includes sensitive content timestamps.", 
@@ -2155,15 +2469,7 @@ const getStaticMetaContent = () => {
             twitterTitle: "⚔️ 10 Unflinching War Films That Show War's True Cost",
             progressText: `of Top ${movies.length} War Films`
         };
-    } else if (collection.slug === 'best-drama-movies-on-netflix') {
-        return {
-            title: "10 Best Drama Movies on Netflix: Award Winners",
-            description: "The 10 highest-rated drama movies on Netflix right now. Oscar winners, emotional powerhouses, and must-watch films. Includes sensitive content timestamps.", 
-            keywords: "best drama movies on netflix, netflix dramas, emotional movies netflix, award winning films",
-            ogTitle: "10 Best Drama Movies on Netflix: Award Winners 🏆",
-            twitterTitle: "🏆 10 Award-Winning Dramas Streaming on Netflix Now",
-            progressText: `of Top ${movies.length} Netflix Dramas`
-        };
+ 
     } else {
         return {
             title: `Best ${collection.title}: Top 10 Films`,
@@ -2264,6 +2570,12 @@ const getStaticMetaContent = () => {
             sessionStorage.removeItem('fromParamountActionCollection');
             sessionStorage.removeItem('fromParamountSciFiCollection');
             sessionStorage.removeItem('fromParamountRomanceCollection');
+            sessionStorage.removeItem('fromParamountDramaCollection');
+            sessionStorage.removeItem('fromParamountThrillerCollection');
+            sessionStorage.removeItem('fromParamountFamilyCollection');
+        sessionStorage.removeItem('fromParamountHorrorCollection');
+        sessionStorage.removeItem('fromParamountComedyCollection');
+        sessionStorage.removeItem('fromParamountBestCollection');
             sessionStorage.removeItem('fromEyesWideShutCollection');
             sessionStorage.removeItem('fromDonnieDarkoCollection');
             sessionStorage.removeItem('fromBlackSwanCollection');
@@ -2334,9 +2646,19 @@ const getStaticMetaContent = () => {
     sessionStorage.setItem('fromParamountSciFiCollection', 'true');
     } else if (collection.slug === 'best-romance-movies-on-paramount-plus') {
     sessionStorage.setItem('fromParamountRomanceCollection', 'true');
-
-
-            } else if (collection.slug === 'movies-like-parasite') { 
+} else if (collection.slug === 'best-core-drama-movies-on-paramount-plus') {
+    sessionStorage.setItem('fromParamountDramaCollection', 'true');
+} else if (collection.slug === 'best-thriller-movies-on-paramount-plus') {
+    sessionStorage.setItem('fromParamountThrillerCollection', 'true');
+    if (collection.slug === 'best-family-movies-on-paramount-plus') {
+            sessionStorage.setItem('fromParamountFamilyCollection', 'true');
+        } else if (collection.slug === 'best-horror-movies-on-paramount-plus') {
+                sessionStorage.setItem('fromParamountHorrorCollection', 'true');
+            } else if (collection.slug === 'best-comedy-movies-on-paramount-plus') {
+                sessionStorage.setItem('fromParamountComedyCollection', 'true');
+                } else if (collection.slug === 'best-movies-on-paramount-plus') {
+    sessionStorage.setItem('fromParamountBestCollection', 'true');
+            }            } else if (collection.slug === 'movies-like-parasite') { 
                 sessionStorage.setItem('fromParasiteCollection', 'true');
          } else if (collection.slug === 'movies-like-oldboy') {
           sessionStorage.setItem('fromOldboyCollection', 'true');
@@ -2416,7 +2738,7 @@ const getStaticMetaContent = () => {
                 <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
                     {/* Title Section */}
                     <motion.div 
-                        className="text-center mb-16 sm:mb-20"
+                        className="text-center mb-10 sm:mb-16"
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 1.8, duration: 1 }}
@@ -2427,7 +2749,7 @@ const getStaticMetaContent = () => {
                             <icons.icon3 className="w-5 h-5 text-yellow-400" />
                         </div>
                         
-                        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extralight text-white mb-6 leading-tight">
+                        <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extralight text-white mb-4 sm:mb-6 leading-tight">
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-yellow-200 to-white">
                                 Explore {collectionContent.title}
                             </span>
@@ -2437,13 +2759,13 @@ const getStaticMetaContent = () => {
                             </span>
                         </h2>
                         
-                        <p className="text-lg sm:text-xl text-gray-300/90 max-w-4xl mx-auto leading-relaxed font-light">
+                        <p className="text-base sm:text-xl text-gray-300/90 max-w-4xl mx-auto leading-relaxed font-light">
                             {collectionContent.description}
                         </p>
                     </motion.div>
 
                     {/* Three-Column Grid */}
-                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-6 mb-16 sm:mb-20">
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-6 mb-10 sm:mb-16">
                         {/* Column 1 - The Selection */}
                         <motion.div 
                             className="space-y-6"
@@ -2455,7 +2777,7 @@ const getStaticMetaContent = () => {
                                 <div className="w-12 h-12 rounded-lg flex items-center justify-center border bg-gradient-to-br from-yellow-400/20 to-amber-400/20 border-yellow-400/20">
                                     <icons.icon2 className="w-6 h-6 text-yellow-400" />
                                 </div>
-                                <h3 className="text-2xl font-light text-white">The Selection</h3>
+                                <h3 className="text-xl sm:text-2xl font-light text-white">The Selection</h3>
                             </div>
                             
                             <p className="text-gray-300 leading-relaxed">
@@ -2478,21 +2800,21 @@ const getStaticMetaContent = () => {
                                 <div className="w-12 h-12 rounded-lg flex items-center justify-center border bg-gradient-to-br from-yellow-400/20 to-amber-400/20 border-yellow-400/20">
                                     <TrendingUp className="w-6 h-6 text-yellow-400" />
                                 </div>
-                                <h3 className="text-2xl font-light text-white">The Ranking</h3>
+                                <h3 className="text-xl sm:text-2xl font-light text-white">The Ranking</h3>
                             </div>
                             
                             <p className="text-gray-300 leading-relaxed">
                                 {collectionContent.ranking.text}
                             </p>
                             
-                            <div className="space-y-3">
+                            <ul className="space-y-3">
                                 {collectionContent.ranking.points.map((point, index) => (
-                                    <div key={index} className="flex items-center gap-3 text-sm">
+                                    <li key={index} className="flex items-center gap-3 text-sm">
                                         <div className="w-2 h-2 rounded-full bg-yellow-400"></div>
                                         <span className="text-gray-400">{point}</span>
-                                    </div>
+                                    </li>
                                 ))}
-                            </div>
+                            </ul>
                         </motion.div>
 
                         {/* Column 3 - The Experience */}
@@ -2506,7 +2828,7 @@ const getStaticMetaContent = () => {
                                 <div className="w-12 h-12 rounded-lg flex items-center justify-center border bg-gradient-to-br from-yellow-400/20 to-amber-400/20 border-yellow-400/20">
                                     <icons.icon3 className="w-6 h-6 text-yellow-400" />
                                 </div>
-                                <h3 className="text-2xl font-light text-white">The Experience</h3>
+                                <h3 className="text-xl sm:text-2xl font-light text-white">The Experience</h3>
                             </div>
                             
                             <p className="text-gray-300 leading-relaxed">
@@ -2530,7 +2852,7 @@ const getStaticMetaContent = () => {
 
                     {/* Cinematic Divider */}
                     <motion.div 
-                        className="flex items-center justify-center mb-16 sm:mb-20"
+                        className="flex items-center justify-center mb-10 sm:mb-16"
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: 3, duration: 1 }}
@@ -2559,10 +2881,6 @@ const getStaticMetaContent = () => {
 const CinematicHeader = React.memo(() => {
     return (
         <header className="text-center mb-8 sm:mb-16 lg:mb-20 px-4 sm:px-6 w-full relative">
-            
-            {/* ✅ SEO FIX: Static H1 explicitly visible to bots (outside motion.div) */}
-            <h1 className="sr-only">{headerContent.title}</h1>
-
             <motion.div 
                 initial={{ opacity: 0, y: -40 }} 
                 animate={{ opacity: 1, y: 0 }} 
@@ -2576,19 +2894,18 @@ const CinematicHeader = React.memo(() => {
                         transition={{ duration: 1.2, ease: "easeOut" }}
                     >
                         {/* Visual Title */}
-                        <div 
-                            className="text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-extralight tracking-[0.05em] sm:tracking-[0.1em] text-transparent bg-clip-text bg-gradient-to-r from-yellow-100 via-yellow-300 to-amber-300" 
+                        <h1 
+                            className="text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-extralight tracking-tight sm:tracking-[0.1em] text-transparent bg-clip-text bg-gradient-to-r from-yellow-100 via-yellow-300 to-amber-300" 
                             style={{ 
                                 fontFamily: "'Playfair Display', serif", 
                                 textShadow: '0 0 80px rgba(234, 179, 8, 0.15)',
                                 lineHeight: '1.1'
                             }}
-                            aria-hidden="true"
                         >
                             <span className="block leading-tight" style={{ letterSpacing: '0.02em' }}>
                                 {`${headerContent.title}`}
                             </span>
-                        </div>
+                        </h1>
                     </motion.div>
                     
                     <motion.p 
@@ -2609,7 +2926,7 @@ const CinematicHeader = React.memo(() => {
                 </div>
                 
                 <motion.div 
-                    className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 lg:gap-6 mt-8 sm:mt-16 lg:mt-20 max-w-4xl mx-auto" 
+                    className="grid grid-cols-3 sm:grid-cols-3 gap-2 sm:gap-4 lg:gap-6 mt-8 sm:mt-16 lg:mt-20 max-w-4xl mx-auto" 
                     initial={{ opacity: 0, y: 40 }} 
                     animate={{ opacity: 1, y: 0 }} 
                     transition={{ delay: 2, duration: 0.8 }}
@@ -2621,20 +2938,20 @@ const CinematicHeader = React.memo(() => {
                             whileHover={{ y: -8, scale: 1.03 }} 
                             transition={{ duration: 0.4 }}
                         >
-                            <div className="p-4 sm:p-6 lg:p-8 bg-gradient-to-br from-gray-800/40 via-gray-900/30 to-black/40 border border-yellow-500/20 rounded-2xl backdrop-blur-xl relative overflow-hidden">
+                            <div className="h-full p-2 sm:p-6 lg:p-8 bg-gradient-to-br from-gray-800/40 via-gray-900/30 to-black/40 border border-yellow-500/20 rounded-2xl backdrop-blur-xl relative overflow-hidden">
                                 <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/5 via-transparent to-amber-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                                 
-                                <div className="flex flex-col items-center space-y-3 sm:space-y-4 relative z-10">
-                                    <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-yellow-400/20 to-amber-400/20 rounded-xl flex items-center justify-center border border-yellow-400/30">
-                                        {index === 0 && <Brain className="w-6 h-6 sm:w-7 sm:h-7 text-yellow-400" />}
-                                        {index === 1 && <Star className="w-6 h-6 sm:w-7 sm:h-7 text-yellow-400" />}
-                                        {index === 2 && <Award className="w-6 h-6 sm:w-7 sm:h-7 text-yellow-400" />}
+                                <div className="flex flex-col items-center space-y-2 sm:space-y-4 relative z-10">
+                                    <div className="w-10 h-10 sm:w-14 sm:h-14 bg-gradient-to-br from-yellow-400/20 to-amber-400/20 rounded-xl flex items-center justify-center border border-yellow-400/30">
+                                        {index === 0 && <Brain className="w-5 h-5 sm:w-7 sm:h-7 text-yellow-400" />}
+                                        {index === 1 && <Star className="w-5 h-5 sm:w-7 sm:h-7 text-yellow-400" />}
+                                        {index === 2 && <Award className="w-5 h-5 sm:w-7 sm:h-7 text-yellow-400" />}
                                     </div>
                                     
-                                    <h3 className="text-yellow-200 text-sm sm:text-base lg:text-lg font-medium tracking-wider uppercase text-center leading-tight">
+                                    <h3 className="text-yellow-200 text-xs sm:text-base lg:text-lg font-medium tracking-wider uppercase text-center leading-tight">
                                         {badge.label}
                                     </h3>
-                                    <p className="text-gray-400 text-xs sm:text-sm text-center leading-relaxed">
+                                    <p className="hidden sm:block text-gray-400 text-xs sm:text-sm text-center leading-relaxed">
                                         {badge.desc}
                                     </p>
                                 </div>
@@ -2842,7 +3159,18 @@ return (
 
 : collection?.slug === 'best-romance-movies-on-paramount-plus'
 ? 'movies/best-romance-movies-on-paramount-plus/'
-
+: collection?.slug === 'best-core-drama-movies-on-paramount-plus'
+? 'movies/best-core-drama-movies-on-paramount-plus/'
+: collection?.slug === 'best-thriller-movies-on-paramount-plus'
+? 'movies/best-thriller-movies-on-paramount-plus/'
+: collection?.slug === 'best-family-movies-on-paramount-plus'
+? 'movies/best-family-movies-on-paramount-plus/'
+: collection?.slug === 'best-horror-movies-on-paramount-plus'
+? 'movies/best-horror-movies-on-paramount-plus/'
+: collection?.slug === 'best-comedy-movies-on-paramount-plus'
+? 'movies/best-comedy-movies-on-paramount-plus/'
+: collection?.slug === 'best-movies-on-paramount-plus' // ✅ ADDED THIS LINE
+        ? 'movies/best-movies-on-paramount-plus/'
                                     : collection?.slug === 'movies-like-interstellar'
                                     ? 'movies/interstellar/'
                                     : collection?.slug === 'movies-like-memento'
@@ -2917,8 +3245,9 @@ return (
             playSound={playSound}
         />
         
-        <TopLeftLogo />
-        <HomepageButton />
+        <SiteHeader />
+        <MobileLogo />
+        <MobileHomepageButton />
         
        <AnimatePresence mode="wait">
             {isLoading ? (
@@ -2941,7 +3270,7 @@ return (
                 >
                     {/* ✅ Main Content - Pushes footer down */}
                 {/* ✅ Main Content - Pushes footer down. Changed pt-32 to pt-24 */}
-<div className="container mx-auto px-3 sm:px-6 pt-24 sm:pt-40 lg:pt-16 pb-12 flex-grow">
+<main className="container mx-auto px-3 sm:px-6 pt-24 sm:pt-40 lg:pt-16 pb-12 flex-grow">
                         <CinematicHeader />
                         
                         <CinematicExplorerSection currentRank={currentRank} />
@@ -3033,6 +3362,18 @@ return (
 ? `/movies/best-sci-fi-movies-on-paramount-plus/${currentMovie.imdbID}`
 : collection.slug === 'best-romance-movies-on-paramount-plus'
 ? `/movies/best-romance-movies-on-paramount-plus/${currentMovie.imdbID}`
+: collection.slug === 'best-core-drama-movies-on-paramount-plus'
+? `/movies/best-core-drama-movies-on-paramount-plus/${currentMovie.imdbID}`
+: collection.slug === 'best-thriller-movies-on-paramount-plus'
+? `/movies/best-thriller-movies-on-paramount-plus/${currentMovie.imdbID}`
+: collection.slug === 'best-family-movies-on-paramount-plus'
+? `/movies/best-family-movies-on-paramount-plus/${currentMovie.imdbID}`
+: collection.slug === 'best-horror-movies-on-paramount-plus'
+? `/movies/best-horror-movies-on-paramount-plus/${currentMovie.imdbID}`
+: collection.slug === 'best-comedy-movies-on-paramount-plus'
+? `/movies/best-comedy-movies-on-paramount-plus/${currentMovie.imdbID}`
+: collection.slug === 'best-movies-on-paramount-plus'
+? `/movies/best-movies-on-paramount-plus/${currentMovie.imdbID}`
       : collection.slug === 'movies-like-interstellar'
       ? `/movies/interstellar/${currentMovie.imdbID}`
       : collection.slug === 'movies-like-memento'
@@ -3159,9 +3500,19 @@ return (
     detailPageUrl = `/movies/best-sci-fi-movies-on-paramount-plus/${currentMovie.imdbID}`;
     } else if (collection.slug === 'best-romance-movies-on-paramount-plus') {
     detailPageUrl = `/movies/best-romance-movies-on-paramount-plus/${currentMovie.imdbID}`;
-
-    
-                                        } else if (collection.slug === 'movies-like-interstellar') {
+    } else if (collection.slug === 'best-core-drama-movies-on-paramount-plus') {
+    detailPageUrl = `/movies/best-core-drama-movies-on-paramount-plus/${currentMovie.imdbID}`;
+} else if (collection.slug === 'best-thriller-movies-on-paramount-plus') {
+    detailPageUrl = `/movies/best-thriller-movies-on-paramount-plus/${currentMovie.imdbID}`;
+    } else if (collection.slug === 'best-family-movies-on-paramount-plus') {
+        detailPageUrl = `/movies/best-family-movies-on-paramount-plus/${currentMovie.imdbID}`;
+    } else if (collection.slug === 'best-horror-movies-on-paramount-plus') {
+        detailPageUrl = `/movies/best-horror-movies-on-paramount-plus/${currentMovie.imdbID}`;
+    } else if (collection.slug === 'best-comedy-movies-on-paramount-plus') {
+        detailPageUrl = `/movies/best-comedy-movies-on-paramount-plus/${currentMovie.imdbID}`;
+        } else if (collection.slug === 'best-movies-on-paramount-plus') {
+    detailPageUrl = `/movies/best-movies-on-paramount-plus/${currentMovie.imdbID}`;
+    } else if (collection.slug === 'movies-like-interstellar') {
                                             detailPageUrl = `/movies/interstellar/${currentMovie.imdbID}`;
                                         } else if (collection.slug === 'movies-like-memento') {
                                             detailPageUrl = `/movies/like-memento/${currentMovie.imdbID}`;
@@ -3240,7 +3591,7 @@ return (
                                 </span>
                             </div>
                         </motion.div>
-                    </div>
+                    </main>
 
                     <RelatedCollections collectionIds={collection.relatedCollections} />
 
@@ -3456,7 +3807,27 @@ case 'best-movies-on-hbo-max':
         movieDatabase = PARAMOUNT_ROMANCE_DATABASE;
         break;
 
-        case 'movies-like-interstellar':
+case 'best-core-drama-movies-on-paramount-plus':
+            movieDatabase = PARAMOUNT_DRAMA_DATABASE;
+            break;
+
+            case 'best-thriller-movies-on-paramount-plus':
+            movieDatabase = PARAMOUNT_THRILLER_DATABASE;
+            break;
+case 'best-family-movies-on-paramount-plus':
+                movieDatabase = PARAMOUNT_FAMILY_DATABASE;
+                break;
+            case 'best-horror-movies-on-paramount-plus':
+                movieDatabase = PARAMOUNT_HORROR_DATABASE;
+                break;
+            case 'best-comedy-movies-on-paramount-plus':
+                movieDatabase = PARAMOUNT_COMEDY_DATABASE;
+                break;
+            case 'best-movies-on-paramount-plus':
+                movieDatabase = PARAMOUNT_BEST_DATABASE;
+
+                
+                break;        case 'movies-like-interstellar':
             movieDatabase = INTERSTELLAR_DATABASE;
             break;
         case 'movies-like-inception':

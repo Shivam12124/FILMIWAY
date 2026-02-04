@@ -1,4 +1,4 @@
-// pages/contact.js
+// pages/contact-us.js
 import React, { useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { Mail, Send, User, MessageSquare, CheckCircle } from "lucide-react";
 import Image from "next/image";
 
-export default function Contact() {
+export default function ContactUs() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -20,9 +20,13 @@ export default function Contact() {
     // Compose email with proper formatting
     const subject = encodeURIComponent(`Contact from ${formData.name}`);
     const body = encodeURIComponent(
-      `Name: ${formData.name}\n` +
-      `Email: ${formData.email}\n\n` +
-      `Message:\n${formData.message}`
+      `Name: ${formData.name}
+` +
+      `Email: ${formData.email}
+
+` +
+      `Message:
+${formData.message}`
     );
     
     // Open user's email client with pre-filled data
@@ -50,7 +54,7 @@ export default function Contact() {
       <Head>
         <title>Contact Us – Filmiway</title>
         <meta name="description" content="Get in touch with Filmiway. Contact us for inquiries, partnerships, feedback, or support." />
-        <link rel="canonical" href="https://filmiway.com/contact" />
+        <link rel="canonical" href="https://filmiway.com/contact-us" />
       </Head>
 
       <div className="min-h-screen bg-black text-white font-sans select-none">
@@ -70,7 +74,7 @@ export default function Contact() {
 </Link>
 
     <Link 
-      href="/" 
+      href="/"
       className="px-8 py-3 rounded-full bg-yellow-400 text-black font-semibold hover:bg-yellow-500 transition shadow-lg"
     >
       Home
@@ -83,7 +87,7 @@ export default function Contact() {
         <main className="max-w-4xl mx-auto px-6 py-32 pt-40">
           <motion.div 
             initial={{ opacity: 0, y: 30 }} 
-            animate={{ opacity: 1, y: 0 }} 
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
           >
             {/* Header */}
@@ -100,8 +104,8 @@ export default function Contact() {
             {/* Success Message */}
             {submitted ? (
               <motion.div 
-                initial={{ opacity: 0, scale: 0.9 }} 
-                animate={{ opacity: 1, scale: 1 }} 
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
                 className="bg-gradient-to-br from-green-900/30 to-green-800/30 border border-green-500/50 rounded-2xl p-12 text-center"
               >
                 <CheckCircle className="w-16 h-16 text-green-400 mx-auto mb-4" />

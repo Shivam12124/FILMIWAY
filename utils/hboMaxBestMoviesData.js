@@ -25,25 +25,25 @@ export const COMPLETE_MOVIE_DATABASE = [
 // ✅ SENSITIVE TIMELINES (Minimal for these classics, but accurate)
 export const SENSITIVE_TIMELINES = {
     // 1. Seven Samurai
-    346: { scenes: [{ start: "3:00:00", end: "3:15:00", type: "Battle Violence", severity: "Moderate" }] },
+    346: { scenes: [] },
     // 2. Return of the King
-    122: { scenes: [{ start: "1:45:00", end: "1:50:00", type: "Fantasy Horror (Shelob)", severity: "High" }] },
+    122: { scenes: [] },
     // 3. The Dark Knight
-    155: { scenes: [{ start: "0:30:00", end: "0:31:00", type: "Violence (Pencil Trick)", severity: "Moderate" }] },
+    155: { scenes: [] },
     // 4. Spirited Away
-    129: { scenes: [{ start: "0:15:00", end: "0:20:00", type: "Scary Imagery (Pigs)", severity: "Mild" }] },
+    129: { scenes: [] },
     // 5. Stalker
     1398: { scenes: [] },
     // 6. Paris, Texas
     655: { scenes: [] },
     // 7. Dune: Part Two
-    693134: { scenes: [{ start: "2:10:00", end: "2:20:00", type: "War Violence", severity: "Moderate" }] },
+    693134: { scenes: [] },
     // 8. City Lights
     901: { scenes: [] },
     // 9. Casablanca
     289: { scenes: [] },
     // 10. 2001: A Space Odyssey
-    62: { scenes: [{ start: "1:30:00", end: "1:40:00", type: "Psychological Distress", severity: "Moderate" }] }
+    62: { scenes: [] }
 };
 
 export const FALLBACK_POSTERS = {

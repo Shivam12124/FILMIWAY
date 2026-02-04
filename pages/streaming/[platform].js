@@ -187,7 +187,7 @@ const StreamingHub = ({ platform, collections }) => {
 // 🔥 GENERATE PATHS (Define which hubs exist)
 export async function getStaticPaths() {
   // Define the platforms you want to build pages for
-  const platforms = ['hulu', 'hbo-max', 'paramount-plus', 'netflix', 'prime-video'];
+  const platforms = ['hulu', 'hbo-max', 'paramount-plus',  'prime-video'];
 
   const paths = platforms.map((platform) => ({
     params: { platform }

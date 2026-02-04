@@ -39,6 +39,17 @@ const nextConfig = {
   poweredByHeader: false,
   compress: true,
 
+  // ✅ REDIRECTS FOR SEO & MIGRATION
+  async redirects() {
+    return [
+      {
+        source: '/contact',
+        destination: '/contact-us',
+        permanent: true,
+      },
+    ]
+  },
+
   // ✅ BUILD CACHE (Kept your settings)
   onDemandEntries: {
     maxInactiveAge: 60 * 1000,

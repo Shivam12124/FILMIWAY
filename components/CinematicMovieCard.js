@@ -20,7 +20,7 @@ const CinematicMovieCard = React.memo(({ movie, rank, isActive, fromSurvivalColl
         : (STRATEGIC_QUOTES?.[movie.tmdbId] || null);
 
     return (
-        <motion.div 
+        <motion.article 
             initial={{ opacity: 0, y: 40 }} 
             animate={{ opacity: 1, y: 0 }} 
             exit={{ opacity: 0, y: -40 }} 
@@ -117,7 +117,7 @@ const CinematicMovieCard = React.memo(({ movie, rank, isActive, fromSurvivalColl
                     </motion.p>
                 )}
             </div>
-        </motion.div>
+        </motion.article>
     );
 });
 

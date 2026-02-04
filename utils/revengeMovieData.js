@@ -36,7 +36,7 @@ export const SENSITIVE_TIMELINES = {
     33: { scenes: [] },
     197: { scenes: [{ start: '2:40:00', end: '2:50:00', type: 'Torture', severity: 'High' }] },
     1124: { scenes: [] },
-    281957: { scenes: [{ start: '0:25:00', end: '0:30:00', type: 'Bear Attack', severity: 'Extreme' }] },
+     281957: { scenes: [{ start: "0:06:44", end: "0:06:48", type: "Nudity", severity: "Moderate", description: "Male buttocks" }, { start: "1:44:00", end: "1:44:23", type: "Sex scene", severity: "Moderate" }] },
     393: { scenes: [] },
     245891: { scenes: [{ start: '0:12:00', end: '0:15:00', type: 'Animal Death', severity: 'High' }] },
     49797: { scenes: [{ start: '0:05:00', end: '0:10:00', type: 'Gore/Violence', severity: 'Extreme' }, { start: '1:10:00', end: '1:15:00', type: 'Sexual Violence', severity: 'Extreme' }] },
