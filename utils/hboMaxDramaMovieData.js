@@ -22,76 +22,63 @@ export const COMPLETE_MOVIE_DATABASE = [
 ];
 
 // ✅ SENSITIVE TIMELINES (Focusing on Trauma, Violence, and Addiction)
+// ✅ SENSITIVE TIMELINES (Focusing on Trauma, Violence, and Addiction)
 export const SENSITIVE_TIMELINES = {
     // 1. Moonlight
     376867: { 
         scenes: [
-            { start: "0:35:00", end: "0:40:00", type: "Bullying/Assault", severity: "High" },
-            { start: "0:50:00", end: "0:55:00", type: "Parental Drug Abuse", severity: "High" }
+            { start: "0:23:04", end: "0:23:24", type: "Sex (No Nudity)", severity: "Moderate" }
         ] 
     },
+
     // 2. The Brutalist
     1064213: { 
         scenes: [
-            { start: "0:15:00", end: "0:20:00", type: "Immigration Hardship", severity: "Moderate" },
-            { start: "1:45:00", end: "1:50:00", type: "Drug Use/Addiction", severity: "High" }
+            { start: "1:01:57", end: "1:02:30", type: "Sex & Nudity", severity: "High" }
         ] 
     },
+
     // 3. Paris, Texas
-    655: { 
-        scenes: [
-            { start: "2:00:00", end: "2:10:00", type: "Discussion of Domestic Violence", severity: "High" } // The peep show monologue
-        ] 
-    },
+    655: { scenes: [] },
+
     // 4. Taxi Driver
     103: { 
         scenes: [
-            { start: "1:35:00", end: "1:40:00", type: "Extreme Violence/Gore", severity: "Extreme" },
-            { start: "0:50:00", end: "1:00:00", type: "Child Prostitution Themes", severity: "High" }
+            { start: "0:35:34", end: "0:35:45", type: "Sexual Content", severity: "Moderate" },
+            { start: "0:58:52", end: "0:59:05", type: "Sexual Content", severity: "Moderate" }
         ] 
     },
+
     // 5. Past Lives
-    666277: { 
-        scenes: [
-            { start: "1:35:00", end: "1:40:00", type: "Intense Emotional Grief", severity: "Moderate" }
-        ] 
-    },
+    666277: { scenes: [] },
+
     // 6. The Battle of Algiers
-    17295: { 
-        scenes: [
-            { start: "0:45:00", end: "0:50:00", type: "Torture Depiction", severity: "High" },
-            { start: "1:10:00", end: "1:15:00", type: "Terrorist Bombings", severity: "High" }
-        ] 
-    },
+    17295: { scenes: [] },
+
     // 7. Sing Sing
-    1155828: { 
-        scenes: [
-            { start: "0:10:00", end: "0:15:00", type: "Prison Environment Stress", severity: "Moderate" }
-        ] 
-    },
+    1155828: { scenes: [] },
+
     // 8. The Color Purple (1985)
-    873: { 
-        scenes: [
-            { start: "0:10:00", end: "0:15:00", type: "Domestic Abuse/Assault", severity: "High" },
-            { start: "0:40:00", end: "0:45:00", type: "Separation Trauma", severity: "High" }
-        ] 
-    },
+    873: { scenes: [] },
+
     // 9. Shame
     76025: { 
         scenes: [
-            { start: "0:05:00", end: "1:40:00", type: "Graphic Sexual Content", severity: "Extreme" },
-            { start: "1:30:00", end: "1:35:00", type: "Self-Harm/Suicide Attempt", severity: "Extreme" }
+            { start: "0:04:12", end: "0:06:10", type: "Nudity & Sexual Content", severity: "High" },
+            { start: "0:18:15", end: "0:18:40", type: "Sex (No Nudity)", severity: "Moderate" },
+            { start: "0:19:49", end: "0:20:49", type: "Nudity", severity: "High" },
+            { start: "0:57:25", end: "0:58:12", type: "Sexual Content & Nudity", severity: "High" },
+            { start: "0:58:45", end: "0:59:15", type: "Nudity & Sexual Content", severity: "High" },
+            { start: "1:04:20", end: "1:06:10", type: "Nudity & Sex", severity: "Explicit" },
+            { start: "1:08:00", end: "1:09:05", type: "Nudity & Sex", severity: "Explicit" },
+            { start: "1:21:25", end: "1:22:50", type: "Nudity & Sex", severity: "Explicit" },
+            { start: "1:23:40", end: "1:26:40", type: "Nudity & Sex", severity: "Explicit" }
         ] 
     },
-    // 10. Joker
-    475557: { 
-        scenes: [
-            { start: "1:25:00", end: "1:30:00", type: "Brutal Violence", severity: "High" },
-            { start: "1:50:00", end: "1:55:00", type: "Public Execution", severity: "High" }
-        ] 
-    }
-};
 
+    // 10. Joker
+    475557: { scenes: [] }
+};
 export const FALLBACK_POSTERS = {
     376867: "https://image.tmdb.org/t/p/w500/4911d5MNM0e32pP79s0f33K3X5.jpg",
     1064213: "https://image.tmdb.org/t/p/w500/l91FadJqg7qYm8f9Y3q8J9j8.jpg", // Placeholder if new

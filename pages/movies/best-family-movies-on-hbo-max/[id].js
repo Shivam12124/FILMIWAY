@@ -397,7 +397,7 @@ const HboFamilyMoviePage = ({ movie, tmdbData: movieData }) => {
                         className="space-y-8 sm:space-y-12 px-3 sm:px-4 lg:px-6"
                     >
                         {/* ✅ Passing HBO Family Context */}
-                        <MovieDetailsSection movie={movie} fromHboFamilyCollection={true} /> 
+                        <MovieDetailsSection movie={movie} fromHboMaxFamilyCollection={true} /> 
                     </motion.div>
                     
                     <div className="px-3 sm:px-4 lg:px-6">

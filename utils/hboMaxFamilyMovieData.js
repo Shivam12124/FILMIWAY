@@ -11,7 +11,7 @@ export const TMDB_CONFIG = {
 export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 630, "imdbID": "tt0032138", "Title": "The Wizard of Oz", "year": 1939, "genre": "Fantasy", "runtime": 102, "rank": 1 },
     { "tmdbId": 673, "imdbID": "tt0304141", "Title": "Harry Potter and the Prisoner of Azkaban", "year": 2004, "genre": "Fantasy", "runtime": 141, "rank": 2 },
-    { "tmdbId": 1110437, "imdbID": "tt28238129", "Title": "Flow", "year": 2024, "genre": "Animation", "runtime": 85, "rank": 3 },
+    { "tmdbId": 823219, "imdbID": "tt4772188", "Title": "Flow", "year": 2024, "genre": "Animation", "runtime": 85, "rank": 3 },
     { "tmdbId": 850, "imdbID": "tt0085334", "Title": "A Christmas Story", "year": 1983, "genre": "Comedy", "runtime": 93, "rank": 4 },
     { "tmdbId": 315162, "imdbID": "tt3915174", "Title": "Puss in Boots: The Last Wish", "year": 2022, "genre": "Animation", "runtime": 102, "rank": 5 },
     { "tmdbId": 16859, "imdbID": "tt0097814", "Title": "Kiki's Delivery Service", "year": 1989, "genre": "Animation", "runtime": 103, "rank": 6 },
@@ -40,7 +40,7 @@ export const SENSITIVE_TIMELINES = {
     },
     
     // 3. Flow
-    1110437: { scenes: [] }, // Mostly survival tension, low scares
+    823219: { scenes: [] }, // Mostly survival tension, low scares
     
     // 4. A Christmas Story
     850: { 
@@ -89,7 +89,7 @@ export const SENSITIVE_TIMELINES = {
 export const FALLBACK_POSTERS = {
     630: "https://image.tmdb.org/t/p/w500/b9O2dF2gYy6B3p1y3c2p3.jpg",
     673: "https://image.tmdb.org/t/p/w500/aWxwnYoe8p2d2fcxOqtvAtJ72Rw.jpg",
-    1110437: "https://image.tmdb.org/t/p/w500/flow_poster_url.jpg", 
+    823219: "https://image.tmdb.org/t/p/w500/flow_poster_url.jpg", 
     850: "https://image.tmdb.org/t/p/w500/g4bT9XlqZ9G.jpg",
     315162: "https://image.tmdb.org/t/p/w500/kuf6dutpsT0vSVeh958uD2bO.jpg",
     16859: "https://image.tmdb.org/t/p/w500/7nO5DUMnGUugrCdIBTjHR6D9.jpg",
@@ -143,7 +143,7 @@ export const COMPLETE_MOVIE_DATA = {
     }),
 
     // 3. Flow (2024)
-    1110437: createMovieData({ 
+    823219: createMovieData({ 
         funFactor: 85, 
         complexityLevel: "VISUAL", 
         dominantColor: "#38bdf8", 

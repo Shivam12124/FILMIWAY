@@ -96,21 +96,20 @@ export const SENSITIVE_TIMELINES = {
     },
 
     // 7. Enemy
-    181886: { 
+      181886: { 
         scenes: [
-            { start: "0:01:46", end: "0:01:50", type: "Partial Nudity", severity: "Mild" },
+            { start: "0:01:46", end: "0:01:50", type: "Nudity", severity: "High" },
             { start: "0:02:50", end: "0:04:58", type: "Nudity", severity: "High" },
-            { start: "0:07:23", end: "0:07:29", type: "Kissing", severity: "Mild" },
-            { start: "0:07:50", end: "0:08:05", type: "Sexual Content", severity: "High" },
-            { start: "0:08:37", end: "0:08:42", type: "Sexual Content", severity: "High" },
-            { start: "0:09:10", end: "0:09:15", type: "Sexual Content", severity: "High" },
-            { start: "0:14:38", end: "0:15:10", type: "Sexual Content", severity: "High" },
+            { start: "0:07:50", end: "0:08:05", type: "Sex", severity: "Moderate" },
+            { start: "0:08:33", end: "0:08:42", type: "Sex", severity: "Moderate" },
+            { start: "0:09:10", end: "0:09:15", type: "Sex", severity: "Moderate" },
+            { start: "0:14:38", end: "0:15:10", type: "Sexu", severity: "Moderate" },
             { start: "0:45:20", end: "0:45:52", type: "Nudity", severity: "High" },
-            { start: "1:14:25", end: "1:14:41", type: "Partial Nudity", severity: "Moderate" },
-            { start: "1:19:30", end: "1:20:35", type: "Sexual Content", severity: "High" },
-            { start: "1:22:20", end: "1:22:42", type: "Kissing/Nudity", severity: "High" },
+            { start: "1:14:25", end: "1:14:41", type: "Nudity", severity: "High" },
+            { start: "1:19:30", end: "1:20:35", type: "Sex", severity: "Moderate" },
+            { start: "1:22:20", end: "1:22:42", type: "Nudity", severity: "High" },
             { start: "1:23:55", end: "1:24:08", type: "Nudity", severity: "High" }
-        ]
+        ] 
     },
 
 

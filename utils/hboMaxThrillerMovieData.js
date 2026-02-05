@@ -13,7 +13,7 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 419430, "imdbID": "tt5052448", "Title": "Get Out", "year": 2017, "genre": "Horror", "runtime": 104, "rank": 2 },
     { "tmdbId": 399057, "imdbID": "tt5715874", "Title": "The Killing of a Sacred Deer", "year": 2017, "genre": "Thriller", "runtime": 121, "rank": 3 },
     { "tmdbId": 381288, "imdbID": "tt4972582", "Title": "Split", "year": 2016, "genre": "Thriller", "runtime": 117, "rank": 4 },
-    { "tmdbId": 152601, "imdbID": "tt2316411", "Title": "Enemy", "year": 2013, "genre": "Mystery", "runtime": 91, "rank": 5 },
+    { "tmdbId":   181886, "imdbID": "tt2316411", "Title": "Enemy", "year": 2013, "genre": "Mystery", "runtime": 91, "rank": 5 },
     { "tmdbId": 264660, "imdbID": "tt0470752", "Title": "Ex Machina", "year": 2014, "genre": "Sci-Fi", "runtime": 108, "rank": 6 },
     { "tmdbId": 275, "imdbID": "tt0116282", "Title": "Fargo", "year": 1996, "genre": "Crime", "runtime": 98, "rank": 7 },
     { "tmdbId": 23168, "imdbID": "tt0844708", "Title": "The Town", "year": 2010, "genre": "Crime", "runtime": 125, "rank": 8 },
@@ -24,60 +24,65 @@ export const COMPLETE_MOVIE_DATABASE = [
 // ✅ SENSITIVE TIMELINES (Focusing on Psychological Tension & Violence)
 export const SENSITIVE_TIMELINES = {
     // 1. Funny Games (2007)
-    8461: { 
-        scenes: [
-            { start: "0:25:00", end: "0:30:00", type: "Home Invasion", severity: "High" }, // The leg break
-            { start: "1:15:00", end: "1:20:00", type: "Psychological Torture", severity: "Extreme" }, // The knife game
-            { start: "1:35:00", end: "1:40:00", type: "Murder", severity: "High" } // The boat scene
-        ] 
-    },
+    8461: { scenes: [] },
+
     // 2. Get Out
-    419430: { 
-        scenes: [
-            { start: "1:25:00", end: "1:35:00", type: "Violence/Gore", severity: "High" }, // The surgery/escape
-            { start: "0:45:00", end: "0:50:00", type: "Hypnosis/Mind Control", severity: "Moderate" }
-        ] 
-    },
+    419430: { scenes: [] },
+
     // 3. The Killing of a Sacred Deer
     399057: { 
         scenes: [
-            { start: "1:40:00", end: "1:50:00", type: "Russian Roulette", severity: "Extreme" }, // The final choice
-            { start: "0:55:00", end: "1:00:00", type: "Self-Harm", severity: "High" } // Biting flesh
+            { start: "0:09:20", end: "0:11:01", type: "Sexual Content & Nudity", severity: "High" }
         ] 
     },
+
     // 4. Split
-    381288: { 
+    381288: { scenes: [] },
+
+    // 5. Enemy
+      181886: { 
         scenes: [
-            { start: "1:30:00", end: "1:40:00", type: "Cannibalism/Violence", severity: "High" } // The Beast emerges
+            { start: "0:01:46", end: "0:01:50", type: "Nudity", severity: "High" },
+            { start: "0:02:50", end: "0:04:58", type: "Nudity", severity: "High" },
+            { start: "0:07:50", end: "0:08:05", type: "Sex", severity: "Moderate" },
+            { start: "0:08:33", end: "0:08:42", type: "Sex", severity: "Moderate" },
+            { start: "0:09:10", end: "0:09:15", type: "Sex", severity: "Moderate" },
+            { start: "0:14:38", end: "0:15:10", type: "Sexu", severity: "Moderate" },
+            { start: "0:45:20", end: "0:45:52", type: "Nudity", severity: "High" },
+            { start: "1:14:25", end: "1:14:41", type: "Nudity", severity: "High" },
+            { start: "1:19:30", end: "1:20:35", type: "Sex", severity: "Moderate" },
+            { start: "1:22:20", end: "1:22:42", type: "Nudity", severity: "High" },
+            { start: "1:23:55", end: "1:24:08", type: "Nudity", severity: "High" }
         ] 
     },
-    // 5. Enemy
-    152601: { scenes: [] }, // Mostly psychological tension
-    
+
     // 6. Ex Machina
     264660: { 
         scenes: [
-            { start: "1:35:00", end: "1:40:00", type: "Stabbing/Violence", severity: "High" } // Ava's escape
+            { start: "1:10:00", end: "1:13:00", type: "Nudity (Women)", severity: "High" },
+            { start: "1:34:15", end: "1:37:40", type: "Nudity (Women)", severity: "High" }
         ] 
     },
+
     // 7. Fargo
     275: { 
         scenes: [
-            { start: "1:25:00", end: "1:30:00", type: "Gore", severity: "High" } // Woodchipper scene
+            { start: "0:11:45", end: "0:12:07", type: "Sex", severity: "Moderate" },
+            { start: "1:06:48", end: "1:07:42", type: "Sex", severity: "Moderate" }
         ] 
     },
+
     // 8. The Town
     23168: { 
         scenes: [
-            { start: "1:45:00", end: "1:55:00", type: "Gun Violence", severity: "High" } // Fenway shootout
+            { start: "0:21:08", end: "0:21:26", type: "Sex", severity: "Moderate" },
+            { start: "1:05:15", end: "1:06:30", type: "Sex", severity: "Moderate" }
         ] 
     },
+
     // 9. The Dark Knight
-    155: { 
-        scenes: [
-            { start: "0:56:00", end: "0:57:00", type: "Violence", severity: "Moderate" } // Pencil trick
-        ] 
-    },
+    155: { scenes: [] },
+
     // 10. Inception
     27205: { scenes: [] }
 };
@@ -87,7 +92,7 @@ export const FALLBACK_POSTERS = {
     419430: "https://image.tmdb.org/t/p/w500/tFXcEccSQMF3lfhfXKSUK958bcc.jpg",
     399057: "https://image.tmdb.org/t/p/w500/glJ9D910.jpg",
     381288: "https://image.tmdb.org/t/p/w500/f8D285.jpg",
-    152601: "https://image.tmdb.org/t/p/w500/coG.jpg",
+      181886: "https://image.tmdb.org/t/p/w500/coG.jpg",
     264660: "https://image.tmdb.org/t/p/w500/9X.jpg",
     275: "https://image.tmdb.org/t/p/w500/rt.jpg",
     23168: "https://image.tmdb.org/t/p/w500/l8.jpg",
@@ -196,7 +201,7 @@ export const COMPLETE_MOVIE_DATA = {
     // 5. Enemy (IDENTITY PARANOIA)
     // Curve: Discovery -> Obsession -> Stalking -> Swap -> Spider.
     // Peak: 92 (The Final Spider - Surreal Shock).
-    152601: createMovieData({ 
+      181886: createMovieData({ 
         suspenseIntensity: 85, 
         psychologicalPressure: 95, 
         complexityLevel: "PUZZLE", 

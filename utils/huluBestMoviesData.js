@@ -14,7 +14,7 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 14756, "imdbID": "tt1220719", "Title": "Ip Man", "year": 2008, "genre": "Action", "runtime": 106, "rank": 3 },
     { "tmdbId": 141, "imdbID": "tt0246578", "Title": "Donnie Darko", "year": 2001, "genre": "Sci-Fi", "runtime": 113, "rank": 4 },
     { "tmdbId": 44214, "imdbID": "tt0947798", "Title": "Black Swan", "year": 2010, "genre": "Thriller", "runtime": 108, "rank": 5 },
-    { "tmdbId": 937249, "imdbID": "tt27503384", "Title": "Perfect Days", "year": 2023, "genre": "Drama", "runtime": 124, "rank": 6 },
+    { "tmdbId": 976893, "imdbID": "tt27503384", "Title": "Perfect Days", "year": 2023, "genre": "Drama", "runtime": 124, "rank": 6 },
     { "tmdbId": 106, "imdbID": "tt0093773", "Title": "Predator", "year": 1987, "genre": "Sci-Fi", "runtime": 107, "rank": 7 },
     { "tmdbId": 134, "imdbID": "tt0190590", "Title": "O Brother, Where Art Thou?", "year": 2000, "genre": "Comedy", "runtime": 107, "rank": 8 },
     { "tmdbId": 994108, "imdbID": "tt21192142", "Title": "All of Us Strangers", "year": 2023, "genre": "Romance", "runtime": 105, "rank": 9 },
@@ -27,7 +27,7 @@ export const SENSITIVE_TIMELINES = {
     14756: { scenes: [{ start: "0:55:00", end: "1:00:00", type: "Violence", severity: "High" }] },
     141: { scenes: [] },
     44214: { scenes: [{ start: "1:30:00", end: "1:40:00", type: "Body Horror", severity: "High" }] }, 
-    937249: { scenes: [] },
+    976893: { scenes: [] },
     106: { scenes: [{ start: "0:46:00", end: "0:47:00", type: "Gore", severity: "High" }] }, 
     134: { scenes: [] },
     994108: { scenes: [] },
@@ -40,7 +40,7 @@ export const FALLBACK_POSTERS = {
     14756: "https://image.tmdb.org/t/p/w500/ggTTuxwxV76P10J9a9YtV529E7Q.jpg",
     141: "https://image.tmdb.org/t/p/w500/fhQoQoeNR72JXYgyqgzTzJluSF1.jpg",
     44214: "https://image.tmdb.org/t/p/w500/2TeJfUZMGolE6jI4mc7EBWkWhqL.jpg",
-    937249: "https://image.tmdb.org/t/p/w500/cc5d7J554833F90059333c59.jpg",
+    976893: "https://image.tmdb.org/t/p/w500/cc5d7J554833F90059333c59.jpg",
     106: "https://image.tmdb.org/t/p/w500/k3mW4qfJo6SKqe6laRyNGnbB9n5.jpg",
     134: "https://image.tmdb.org/t/p/w500/9cj5X3Q6a6z9f6q6q6q6q6q6.jpg",
     994108: "https://image.tmdb.org/t/p/w500/5p21y7H57x7X57x57x57x57x.jpg",
@@ -144,7 +144,7 @@ export const COMPLETE_MOVIE_DATA = {
     }),
 
     // 6. Perfect Days (Sky Blue - Peaceful Routine)
-    937249: createMovieData({
+    976893: createMovieData({
         rating: 7.9, criticsScore: 96, audienceScore: 91, director: "Wim Wenders",
         cast: ["Kōji Yakusho", "Tokio Emoto", "Arisa Nakano"], boxOffice: "$24 million", budget: "N/A",
         dominantColor: "#0ea5e9", // Sky Blue

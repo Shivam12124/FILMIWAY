@@ -5,19 +5,35 @@ import { BarChart3, HelpCircle } from 'lucide-react';
 
 // 🎨 OPTIMIZED STANDARDIZED GENRE COLORS - EVERY GENRE IS UNIQUE
 const STANDARDIZED_COLORS = {
-  "Drama": "#dc2626",
-  "Thriller": "#0f172a",
-  "Action": "#f59e0b",
-  "Adventure": "#059669",
-  "Sci-Fi": "#3b82f6",
-  "Romance": "#ec4899",
-  "Comedy": "#eab308",
-  "Fantasy": "#8b5cf6",
-  "Neo-Noir": "#0f172a",
-  "Mystery": "#6b21a8",
-  "Horror": "#991b1b",
-  "Crime": "#1d1fb9ff",
-  "Psychological": "#9333ea",
+  // High-Energy & Action
+  "Action": "#F97316",      // Vibrant Orange (Explosions, Energy)
+  "Adventure": "#10B981",    // Emerald Green (Jungle, Exploration)
+  "Thriller": "#0D9488",    // Dark Teal (Suspense, Tension)
+
+  // Imaginative & Creative
+  "Sci-Fi": "#06B6D4",      // Cyan (Technology, Aliens)
+  "Fantasy": "#A855F7",     // Amethyst Purple (Magic, Other-worldly)
+  "Animation": "#38BDF8",    // Sky Blue (Creativity, Youth)
+  "Musical": "#14B8A6",     // Bright Teal (Vibrancy, Rhythm)
+
+  // Emotional & Human-Centric
+  "Drama": "#6366F1",        // Indigo (Emotional Depth)
+  "Romance": "#F43F5E",      // Rose Red (Passion, Love)
+  "Family": "#84CC16",       // Lime Green (Wholesome, Nature)
+  "Comedy": "#FACC15",       // Sunny Yellow (Laughter, Fun)
+  "Music": "#EC4899",        // Hot Pink (Artistic, Pop)
+
+  // Dark & Intense
+  "Horror": "#BE123C",       // Crimson Red (Blood, Danger)
+  "Mystery": "#1E3A8A",      // Deep Navy Blue (Unknown, Night)
+  "Crime": "#475569",        // Slate Gray (Concrete, Grim)
+  "Neo-Noir": "#18181B",     // Near Black (Shadows, Morality)
+  "Psychological": "#581C87",// Dark Violet (Mind, Corruption)
+
+  // Period & Realism
+  "History": "#A16207",      // Golden Brown (Archives, Sepia)
+  "War": "#57534E",          // Olive Drab (Military, Somber)
+  "Western": "#B45309",      // Rust Brown (Desert, Grit)
 };
 
 const StrategicDNAHelix = React.memo(({ dna, dominantColor, className = "" }) => {

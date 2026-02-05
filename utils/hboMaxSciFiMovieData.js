@@ -16,35 +16,36 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 1398, "imdbID": "tt0079944", "Title": "Stalker", "year": 1979, "genre": "Sci-Fi", "runtime": 162, "rank": 4 },
     { "tmdbId": 438631, "imdbID": "tt1160419", "Title": "Dune", "year": 2021, "genre": "Sci-Fi", "runtime": 155, "rank": 5 },
     { "tmdbId": 264660, "imdbID": "tt3708280", "Title": "Ex Machina", "year": 2014, "genre": "Sci-Fi", "runtime": 108, "rank": 6 },
-    { "tmdbId": 786892, "imdbID": "tt12037194", "Title": "Mad Max: Fury Road", "year": 2015, "genre": "Sci-Fi", "runtime": 120, "rank": 7 },
+    { "tmdbId": 786892, "imdbID": "tt12037194", "Title": "Furiosa: A Mad Max Saga", "year": 2024, "genre": "Sci-Fi", "runtime": 150, "rank": 7 },
     { "tmdbId": 696506, "imdbID": "tt11858890", "Title": "Mickey 17", "year": 2025, "genre": "Sci-Fi", "runtime": 139, "rank": 8 },
     { "tmdbId": 653346, "imdbID": "tt11389872", "Title": "Kingdom of the Planet of the Apes", "year": 2024, "genre": "Sci-Fi", "runtime": 145, "rank": 9 },
     { "tmdbId": 254320, "imdbID": "tt3464902", "Title": "The Lobster", "year": 2015, "genre": "Sci-Fi", "runtime": 119, "rank": 10 }
 ];
 
 export const SENSITIVE_TIMELINES = {
-    62: { scenes: [] },
-    27205: { scenes: [] },
-    693134: { scenes: [] },
-    1398: { scenes: [] },
-    438631: { scenes: [] },
-    284052: { 
+    62: { scenes: [] },      // 2001: A Space Odyssey
+    27205: { scenes: [] },   // Inception
+    693134: { scenes: [] },  // Dune: Part Two
+    1398: { scenes: [] },    // Stalker
+    438631: { scenes: [] },  // Dune
+    264660: {                // Ex Machina
         scenes: [
-            { start: "1:22:15", end: "1:24:45", type: "Nudity", severity: "Moderate" },
-            { start: "1:41:00", end: "1:44:30", type: "Violence", severity: "Moderate" }
-        ] 
+            { start: "1:10:00", end: "1:13:00", type: "Nudity (Women)", severity: "High" },
+            { start: "1:34:15", end: "1:37:40", type: "Nudity (Women)", severity: "High" }
+        ]
     },
-    786892: { scenes: [] },
-    696506: { 
+    786892: { scenes: [] },  // Mad Max: Fury Road
+    696506: {                // Mickey 17
         scenes: [
-            { start: "0:42:00", end: "0:43:30", type: "Violence", severity: "Moderate" }
-        ] 
+            { start: "0:27:55", end: "0:28:00", type: "Partial Nudity", severity: "Low" }
+        ]
     },
-    653346: { scenes: [] },
-    254320: { 
+    653346: { scenes: [] },  // Kingdom of the Planet of the Apes
+    254320: {                // The Lobster
         scenes: [
-            { start: "0:56:20", end: "0:58:10", type: "Sexual Content", severity: "Moderate" }
-        ] 
+            { start: "0:27:30", end: "0:27:40", type: "Sexual Content", severity: "Moderate" },
+            { start: "0:49:30", end: "0:50:30", type: "Sex", severity: "Moderate" }
+        ]
     }
 };
 

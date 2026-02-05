@@ -171,7 +171,7 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
 
 const SmartBackButton = () => {
     // ✅ Updated Path for HBO Max Collection
-    const handleBackClick = () => { if (typeof window !== 'undefined') window.location.href = '/best-romance-movies-on-hbo-max'; };
+    const handleBackClick = () => { if (typeof window !== 'undefined') window.location.href = '/collection/best-romance-movies-on-hbo-max'; };
     return (
         <motion.button onClick={handleBackClick} className="fixed top-4 left-4 sm:top-6 sm:left-6 z-50 flex items-center gap-2 px-3 sm:px-4 py-2 backdrop-blur-md rounded-lg transition-all duration-300 shadow-xl text-xs sm:text-sm" style={{ backgroundColor: `${COLORS.bgPrimary}F2`, border: `1px solid ${COLORS.borderLight}` }} whileHover={{ scale: 1.02, x: -2 }} whileTap={{ scale: 0.98 }} initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} onMouseEnter={(e) => e.currentTarget.style.borderColor = COLORS.borderAccent} onMouseLeave={(e) => e.currentTarget.style.borderColor = COLORS.borderLight}>
             <ChevronLeft className="w-3 h-3 sm:w-4 sm:h-4" style={{ color: COLORS.accent }} /><span className="font-medium" style={{ color: COLORS.accent }}>Back to Collection</span>

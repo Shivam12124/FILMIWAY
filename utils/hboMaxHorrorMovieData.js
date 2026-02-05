@@ -25,30 +25,37 @@ export const COMPLETE_MOVIE_DATABASE = [
 export const SENSITIVE_TIMELINES = {
     // 1. The Conjuring
     138843: { scenes: [] },
+    
     // 2. Insidious
     49018: { scenes: [] },
+    
     // 3. The Conjuring 2
     259693: { scenes: [] },
+    
     // 4. Annabelle: Creation
     396422: { scenes: [] },
+    
     // 5. The Witch
     310131: { 
         scenes: [
-            { start: "1:22:00", end: "1:23:00", type: "Nudity", severity: "Moderate" } // Final witch sabbath
+            { start: "0:08:30", end: "0:09:15", type: "Nudity (Woman, non-sexual)", severity: "Moderate" },
+            { start: "1:13:58", end: "1:14:05", type: "Nudity (Woman, non-sexual)", severity: "Moderate" },
+            { start: "1:25:30", end: "1:27:45", type: "Nudity (Women, non-sexual)", severity: "Moderate" }
         ] 
     },
+    
     // 6. Evil Dead Rise
-    713704: { 
-        scenes: [
-            { start: "0:00:00", end: "1:36:00", type: "Extreme Gore", severity: "High" } // Constant gore
-        ] 
-    },
+    713704: { scenes: [] }, // Cleared (Gore removed)
+    
     // 7. It
     346364: { scenes: [] },
+    
     // 8. The Nun
     439079: { scenes: [] },
+    
     // 9. Annabelle Comes Home
     521029: { scenes: [] },
+    
     // 10. Insidious: Chapter 2
     91586: { scenes: [] }
 };

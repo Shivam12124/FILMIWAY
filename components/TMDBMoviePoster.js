@@ -108,7 +108,6 @@ const TMDBMoviePoster = React.memo(({ movie, className = "", alt, posterSize = "
                 sizes="(max-width: 768px) 33vw, (max-width: 1200px) 20vw, 15vw" // Responsive sizes hint
                 className={`object-cover transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
                 loading="lazy"
-                unoptimized={true} // 🔥 BYPASS NEXT.JS OPTIMIZATION FOR RAW SPEED
                 onLoadingComplete={() => setIsLoading(false)}
                 onError={() => {
                     setHasError(true);

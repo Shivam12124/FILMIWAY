@@ -21,7 +21,7 @@ export const HBO_MAX_FAMILY_MOVIE_SLUGS = {
     'tt0304141': 'harry-potter-and-the-prisoner-of-azkaban',
     
     // Rank 3: Flow
-    'tt28238129': 'flow',
+    'tt4772188': 'flow',
     
     // Rank 4: A Christmas Story
     'tt0085334': 'a-christmas-story',

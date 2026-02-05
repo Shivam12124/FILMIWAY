@@ -15,13 +15,12 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 639, "imdbID": "tt0098635", "Title": "When Harry Met Sally...", "year": 1989, "genre": "Romance", "runtime": 96, "rank": 4 },
     { "tmdbId": 398818, "imdbID": "tt5726616", "Title": "Call Me by Your Name", "year": 2017, "genre": "Romance", "runtime": 132, "rank": 5 },
     { "tmdbId": 770, "imdbID": "tt0031381", "Title": "Gone with the Wind", "year": 1939, "genre": "Romance", "runtime": 238, "rank": 6 },
-    { "tmdbId": 14769, "imdbID": "tt0115940", "Title": "A Summer's Tale", "year": 1996, "genre": "Romance", "runtime": 113, "rank": 7 },
+    { "tmdbId": 37563, "imdbID": "tt0115940", "Title": "A Summer's Tale", "year": 1996, "genre": "Romance", "runtime": 113, "rank": 7 },
     { "tmdbId": 216, "imdbID": "tt0071141", "Title": "Ali: Fear Eats the Soul", "year": 1974, "genre": "Drama", "runtime": 93, "rank": 8 },
     { "tmdbId": 15195, "imdbID": "tt0113824", "Title": "Whisper of the Heart", "year": 1995, "genre": "Romance", "runtime": 111, "rank": 9 },
     { "tmdbId": 84892, "imdbID": "tt1659337", "Title": "The Perks of Being a Wallflower", "year": 2012, "genre": "Drama", "runtime": 103, "rank": 10 }
 ];
 
-// ✅ SENSITIVE TIMELINES (Focusing on Heartbreak, Intimacy & Trauma)
 export const SENSITIVE_TIMELINES = {
     // 1. Casablanca
     289: { scenes: [] }, 
@@ -33,42 +32,37 @@ export const SENSITIVE_TIMELINES = {
     666277: { scenes: [] },
     
     // 4. When Harry Met Sally
-    639: { 
-        scenes: [
-            { start: "0:45:00", end: "0:47:00", type: "Sexual References", severity: "Moderate" } // Diner scene
-        ] 
-    },
+    639: { scenes: [] },
     
     // 5. Call Me by Your Name
     398818: { 
         scenes: [
-            { start: "1:35:00", end: "1:38:00", type: "Sexual Content", severity: "High" } // Peach scene
+            { start: "1:16:15", end: "1:16:52", type: "Nudity", severity: "High" },
+            { start: "1:25:20", end: "1:26:40", type: "Nudity & Sex", severity: "High" },
+            { start: "1:31:00", end: "1:31:10", type: "Sex (No Nudity)", severity: "Moderate" },
+            { start: "1:37:10", end: "1:37:40", type: "Sexual Content", severity: "Moderate" }
         ] 
     },
     
     // 6. Gone with the Wind
-    770: { 
-        scenes: [
-            { start: "1:10:00", end: "1:20:00", type: "War Violence", severity: "Moderate" },
-            { start: "3:30:00", end: "3:35:00", type: "Domestic Abuse/Assault", severity: "High" } // Rhett/Scarlett staircase
-        ] 
-    },
+    770: { scenes: [] },
     
     // 7. A Summer's Tale
-    14769: { scenes: [] },
+    37563: { scenes: [] },
     
     // 8. Ali: Fear Eats the Soul
-    216: { scenes: [] },
+    216: { 
+        scenes: [
+            { start: "0:51:50", end: "0:52:20", type: "Nudity (Male)", severity: "High" },
+            { start: "1:22:12", end: "1:22:50", type: "Nudity (Male & Female)", severity: "High" }
+        ] 
+    },
     
     // 9. Whisper of the Heart
     15195: { scenes: [] },
     
     // 10. The Perks of Being a Wallflower
-    84892: { 
-        scenes: [
-            { start: "1:25:00", end: "1:35:00", type: "Sexual Trauma Flashbacks", severity: "High" } // Charlie's breakdown
-        ] 
-    }
+    84892: { scenes: [] }
 };
 
 export const FALLBACK_POSTERS = {
@@ -78,7 +72,7 @@ export const FALLBACK_POSTERS = {
     639: "https://image.tmdb.org/t/p/w500/dDJ787890.jpg",
     398818: "https://image.tmdb.org/t/p/w500/m878987.jpg",
     770: "https://image.tmdb.org/t/p/w500/l8789.jpg",
-    14769: "https://image.tmdb.org/t/p/w500/k89898.jpg",
+    37563: "https://image.tmdb.org/t/p/w500/k89898.jpg",
     216: "https://image.tmdb.org/t/p/w500/j8789.jpg",
     15195: "https://image.tmdb.org/t/p/w500/58989.jpg",
     84892: "https://image.tmdb.org/t/p/w500/a8789.jpg"
@@ -222,7 +216,7 @@ export const COMPLETE_MOVIE_DATA = {
 
     // 7. A Summer's Tale
     // STATUS: LOCKED 🔒 (Peak Lowered)
-    14769: createMovieData({ 
+    37563: createMovieData({ 
         emotionalIntensity: 75, 
         chemistryScore: 80, 
         complexityLevel: "NUANCED", 
