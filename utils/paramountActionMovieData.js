@@ -24,61 +24,38 @@ export const COMPLETE_MOVIE_DATABASE = [
 // ✅ SENSITIVE TIMELINES (Focusing on Intensity, Violence & Gore)
 export const SENSITIVE_TIMELINES = {
     // 1. Mission: Impossible – Fallout
-    353081: { scenes: [] }, // Generally Clean Action
+    353081: { scenes: [] }, 
     
     // 2. Top Gun: Maverick
-    361743: { scenes: [] }, // Clean Action
+    361743: { scenes: [] }, 
     
     // 3. Mission: Impossible – Ghost Protocol
-    56292: { scenes: [] }, // Clean Action
+    56292: { scenes: [] }, 
     
     // 4. Baby Driver
-    339403: { 
-        scenes: [
-            { start: "1:35:00", end: "1:38:00", type: "Violence", severity: "Moderate" } // Warehouse fight
-        ] 
-    },
+    339403: { scenes: [] }, 
     
     // 5. World War Z
-    72190: { 
-        scenes: [
-            { start: "0:25:00", end: "0:27:00", type: "Transformation", severity: "High" }, // Disturbing turning
-            { start: "1:05:00", end: "1:06:00", type: "Dismemberment", severity: "Moderate" } // Hand chop
-        ] 
-    },
+    72190: { scenes: [] }, 
     
     // 6. Gladiator
     98: { 
         scenes: [
-            { start: "0:08:00", end: "0:12:00", type: "Gore/War", severity: "High" }, // Opening battle, decapitations
-            { start: "1:20:00", end: "1:25:00", type: "Graphic Violence", severity: "High" } // Arena deaths
+            { start: "50:40", end: "50:55", type: "Partial Nudity (Man)", severity: "Low" }
         ] 
     },
     
     // 7. Transformers
-    1858: { scenes: [] }, // Robot violence (safe for most)
+    1858: { scenes: [] }, 
     
     // 8. Face/Off
-    754: { 
-        scenes: [
-            { start: "0:05:00", end: "0:07:00", type: "Child Endangerment", severity: "Moderate" },
-            { start: "0:35:00", end: "0:40:00", type: "Medical Gore", severity: "High" } // Face removal surgery
-        ] 
-    },
+    754: { scenes: [] }, 
     
     // 9. Raiders of the Lost Ark
-    85: { 
-        scenes: [
-            { start: "1:48:00", end: "1:50:00", type: "Supernatural Gore", severity: "High" } // Face melting
-        ] 
-    },
+    85: { scenes: [] }, 
     
     // 10. Star Trek Into Darkness
-    54138: { 
-        scenes: [
-            { start: "0:45:00", end: "0:46:00", type: "Violence", severity: "Moderate" } // Head crushing (off screen but crunch)
-        ] 
-    }
+    54138: { scenes: [] } 
 };
 
 export const FALLBACK_POSTERS = {

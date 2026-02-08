@@ -33,6 +33,14 @@
         <priority>0.9</priority>
     </url>
 
+
+        <url>
+        <loc>https://filmiway.com/streaming/peacock</loc>
+        <lastmod>2026-01-30T12:00:00+05:30</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.9</priority>
+    </url>
+
     <url>
         <loc>https://filmiway.com/genre/mind-bending</loc>
         <lastmod>2026-01-30T12:00:00+05:30</lastmod>
@@ -125,12 +133,7 @@
         <priority>0.9</priority>
     </url>
 
-    <url>
-        <loc>https://filmiway.com/collection/best-drama-movies-on-netflix</loc>
-        <lastmod>2025-11-15T18:40:00+05:30</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
+
 
     <url>
         <loc>https://filmiway.com/collection/best-psychological-thriller-movies</loc>
@@ -478,6 +481,51 @@
     <priority>0.9</priority>
 </url>
 
+
+<url>
+    <loc>https://filmiway.com/collection/best-action-adventure-movies-on-peacock</loc>
+    <lastmod>2026-02-06T10:30:00+05:30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/collection/best-sci-fi-movies-on-peacock</loc>
+    <lastmod>2026-02-06T11:00:00+05:30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/collection/best-romance-movies-on-peacock</loc>
+    <lastmod>2026-02-06T11:30:00+05:30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+</url>
+
+
+<url>
+    <loc>https://filmiway.com/collection/best-family-movies-on-peacock</loc>
+    <lastmod>2026-02-06T11:30:00+05:30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+</url>
+
+
+<url>
+    <loc>https://filmiway.com/collection/best-drama-movies-on-peacock</loc>
+    <lastmod>2026-02-08T14:40:00+05:30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+</url>
+
+
+<url>
+    <loc>https://filmiway.com/collection/best-thriller-movies-on-peacock</loc>
+    <lastmod>2026-02-08T15:00:00+05:30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+</url>
 <!-- 🧠 MOVIES LIKE INCEPTION (10 MOVIES - CORRECTED) -->
 <url>
     <loc>https://filmiway.com/movies/like-inception/tt0390384</loc>
@@ -2490,9 +2538,436 @@
     <priority>0.8</priority>
 </url>
 
+
 <url>
     <loc>https://filmiway.com/movies/best-movies-on-paramount-plus/tt0264472</loc>
     <lastmod>2026-02-04T12:00:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+
+<url>
+    <loc>https://filmiway.com/movies/best-action-adventure-movies-on-peacock/tt1663202</loc>
+    <lastmod>2026-02-06T10:30:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-action-adventure-movies-on-peacock/tt0328107</loc>
+    <lastmod>2026-02-06T10:30:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-action-adventure-movies-on-peacock/tt0091203</loc>
+    <lastmod>2026-02-06T10:30:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-action-adventure-movies-on-peacock/tt1197624</loc>
+    <lastmod>2026-02-06T10:30:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-action-adventure-movies-on-peacock/tt0472043</loc>
+    <lastmod>2026-02-06T10:30:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-action-adventure-movies-on-peacock/tt0144117</loc>
+    <lastmod>2026-02-06T10:30:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-action-adventure-movies-on-peacock/tt0102685</loc>
+    <lastmod>2026-02-06T10:30:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-action-adventure-movies-on-peacock/tt1684562</loc>
+    <lastmod>2026-02-06T10:30:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-action-adventure-movies-on-peacock/tt1959490</loc>
+    <lastmod>2026-02-06T10:30:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-action-adventure-movies-on-peacock/tt3915174</loc>
+    <lastmod>2026-02-06T10:30:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+
+<url>
+    <loc>https://filmiway.com/movies/best-sci-fi-movies-on-peacock/tt2866360</loc>
+    <lastmod>2026-02-06T11:00:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-sci-fi-movies-on-peacock/tt30321200</loc>
+    <lastmod>2026-02-06T11:00:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-sci-fi-movies-on-peacock/tt10954984</loc>
+    <lastmod>2026-02-06T11:00:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-sci-fi-movies-on-peacock/tt3986820</loc>
+    <lastmod>2026-02-06T11:00:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-sci-fi-movies-on-peacock/tt1959490</loc>
+    <lastmod>2026-02-06T11:00:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-sci-fi-movies-on-peacock/tt2194499</loc>
+    <lastmod>2026-02-06T11:00:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-sci-fi-movies-on-peacock/tt0134847</loc>
+    <lastmod>2026-02-06T11:00:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-sci-fi-movies-on-peacock/tt8781414</loc>
+    <lastmod>2026-02-06T11:00:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-sci-fi-movies-on-peacock/tt8760708</loc>
+    <lastmod>2026-02-06T11:00:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-sci-fi-movies-on-peacock/tt18389166</loc>
+    <lastmod>2026-02-06T11:00:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+
+<url>
+    <loc>https://filmiway.com/movies/best-romance-movies-on-peacock/tt2194499</loc>
+    <lastmod>2026-02-06T11:30:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-romance-movies-on-peacock/tt0414387</loc>
+    <lastmod>2026-02-06T11:30:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-romance-movies-on-peacock/tt0125439</loc>
+    <lastmod>2026-02-06T11:30:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-romance-movies-on-peacock/tt0099653</loc>
+    <lastmod>2026-02-06T11:30:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-romance-movies-on-peacock/tt0138097</loc>
+    <lastmod>2026-02-06T11:30:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-romance-movies-on-peacock/tt1563738</loc>
+    <lastmod>2026-02-06T11:30:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-romance-movies-on-peacock/tt16426418</loc>
+    <lastmod>2026-02-06T11:30:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-romance-movies-on-peacock/tt1655441</loc>
+    <lastmod>2026-02-06T11:30:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-romance-movies-on-peacock/tt0251127</loc>
+    <lastmod>2026-02-06T11:30:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-romance-movies-on-peacock/tt5083738</loc>
+    <lastmod>2026-02-06T11:30:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+
+<url>
+    <loc>https://filmiway.com/movies/best-family-movies-on-peacock/tt0892791</loc>
+    <lastmod>2026-02-06T11:30:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-family-movies-on-peacock/tt0304141</loc>
+    <lastmod>2026-02-06T11:30:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-family-movies-on-peacock/tt3915174</loc>
+    <lastmod>2026-02-06T11:30:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-family-movies-on-peacock/tt0126029</loc>
+    <lastmod>2026-02-06T11:30:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-family-movies-on-peacock/tt1646971</loc>
+    <lastmod>2026-02-06T11:30:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-family-movies-on-peacock/tt1323594</loc>
+    <lastmod>2026-02-06T11:30:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-family-movies-on-peacock/tt0241527</loc>
+    <lastmod>2026-02-06T11:30:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-family-movies-on-peacock/tt6324278</loc>
+    <lastmod>2026-02-06T11:30:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-family-movies-on-peacock/tt2386490</loc>
+    <lastmod>2026-02-06T11:30:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/movies/best-family-movies-on-peacock/tt0298148</loc>
+    <lastmod>2026-02-06T11:30:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+
+<url>
+    <loc>https://filmiway.com/collection/best-drama-movies-on-peacock/tt0180093</loc>
+    <lastmod>2026-02-08T14:40:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/collection/best-drama-movies-on-peacock/tt0084707</loc>
+    <lastmod>2026-02-08T14:40:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/collection/best-drama-movies-on-peacock/tt14208870</loc>
+    <lastmod>2026-02-08T14:40:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/collection/best-drama-movies-on-peacock/tt13423600</loc>
+    <lastmod>2026-02-08T14:40:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/collection/best-drama-movies-on-peacock/tt28323620</loc>
+    <lastmod>2026-02-08T14:40:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/collection/best-drama-movies-on-peacock/tt14807308</loc>
+    <lastmod>2026-02-08T14:40:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/collection/best-drama-movies-on-peacock/tt1306980</loc>
+    <lastmod>2026-02-08T14:40:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/collection/best-drama-movies-on-peacock/tt0082846</loc>
+    <lastmod>2026-02-08T14:40:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/collection/best-drama-movies-on-peacock/tt13374522</loc>
+    <lastmod>2026-02-08T14:40:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/collection/best-drama-movies-on-peacock/tt7798646</loc>
+    <lastmod>2026-02-08T14:40:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+
+<url>
+    <loc>https://filmiway.com/collection/best-thriller-movies-on-peacock/tt0209144</loc>
+    <lastmod>2026-02-08T15:00:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/collection/best-thriller-movies-on-peacock/tt0119174</loc>
+    <lastmod>2026-02-08T15:00:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/collection/best-thriller-movies-on-peacock/tt3397884</loc>
+    <lastmod>2026-02-08T15:00:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/collection/best-thriller-movies-on-peacock/tt2866360</loc>
+    <lastmod>2026-02-08T15:00:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/collection/best-thriller-movies-on-peacock/tt0454848</loc>
+    <lastmod>2026-02-08T15:00:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/collection/best-thriller-movies-on-peacock/tt1197624</loc>
+    <lastmod>2026-02-08T15:00:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/collection/best-thriller-movies-on-peacock/tt7144666</loc>
+    <lastmod>2026-02-08T15:00:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/collection/best-thriller-movies-on-peacock/tt1187064</loc>
+    <lastmod>2026-02-08T15:00:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/collection/best-thriller-movies-on-peacock/tt1219289</loc>
+    <lastmod>2026-02-08T15:00:00+05:30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://filmiway.com/collection/best-thriller-movies-on-peacock/tt6689876</loc>
+    <lastmod>2026-02-08T15:00:00+05:30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
 </url>

@@ -34,7 +34,7 @@ export const SENSITIVE_TIMELINES = {
             { start: "1:34:15", end: "1:37:40", type: "Nudity (Women)", severity: "High" }
         ]
     },
-    786892: { scenes: [] },  // Mad Max: Fury Road
+    786892: { scenes: [] },  // Furiosa
     696506: {                // Mickey 17
         scenes: [
             { start: "0:27:55", end: "0:28:00", type: "Partial Nudity", severity: "Low" }

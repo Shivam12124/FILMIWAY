@@ -360,6 +360,10 @@ export const HULU_ACTION_MOVIE_FAQS = {
             answer: "Yes, Yip Man was a real Wing Chun grandmaster and the actual teacher of Bruce Lee. However, the film dramatizes his life significantly—there is no record of him fighting a Japanese General or taking on ten black belts at once." 
         },
         { 
+            question: "Does Ip Man have any nudity or sensitive scenes?",
+            answer: "Yes, Ip Man contains a brief scene of non-sexual partial nudity at approximately 12:21-12:24."
+        },
+        { 
             question: "Did Donnie Yen know Wing Chun?", 
             answer: "Donnie Yen is a martial arts expert but had to learn Wing Chun specifically for this film. He spent months training to master the style's unique 'chain punching' and close-quarters blocking techniques." 
         },
@@ -414,6 +418,10 @@ export const HULU_ACTION_MOVIE_FAQS = {
             answer: "Yes, it is a reimagining of the 1980s TV series starring Edward Woodward. Denzel Washington's version adds a layer of obsessive-compulsive disorder (OCD) to the character, turning his need for order and routine into a tactical advantage during combat." 
         },
         { 
+            question: "Does The Equalizer have nudity or sex scenes?",
+            answer: "Yes, The Equalizer contains a scene with non-sexual nudity at approximately 2:04:35-2:04:55."
+        },
+        { 
             question: "How long is the final fight?", 
             answer: "The climax is unique because it takes place in a home improvement store (Home Mart). Rather than a standard shootout, McCall uses the environment to hunt the Russian mobsters, weaponizing power drills, barbed wire, and mirrors in a slasher-movie style sequence." 
         },
@@ -430,6 +438,10 @@ export const HULU_ACTION_MOVIE_FAQS = {
         { 
             question: "How was the Church Fight filmed?", 
             answer: "The legendary 'Free Bird' church massacre looks like a single continuous shot, but it is actually a series of cleverly stitched takes. It took a week to film and features Colin Firth performing legitimate stunts, with the camera speed ramped up and down to create the visceral, chaotic rhythm." 
+        },
+        {
+            question: "Does Kingsman: The Secret Service contain nudity?",
+            answer: "Yes, Kingsman: The Secret Service includes a scene with partial nudity at approximately 1:59:22-1:59:29."
         },
         { 
             question: "Is it a parody of Bond?", 

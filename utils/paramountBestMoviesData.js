@@ -25,50 +25,63 @@ export const SENSITIVE_TIMELINES = {
     // Pulp Fiction
     680: { 
         scenes: [
-            { start: "0:50:00", end: "0:55:00", type: "Drug Overdose", severity: "High" }, // Adrenaline shot
-            { start: "1:40:00", end: "1:50:00", type: "Sexual Violence", severity: "Extreme" } // Pawn Shop scene
+            { start: "1:12:00", end: "1:12:15", type: "Sexual Content", severity: "High" },
+            { start: "1:21:03", end: "1:22:00", type: "Nudity (Man)", severity: "High" }
         ] 
     }, 
+    
     // Forrest Gump
-    13: { scenes: [] }, 
+    13: { 
+        scenes: [
+            { start: "35:50", end: "35:55", type: "Nudity (Woman)", severity: "High" },
+            { start: "37:15", end: "38:02", type: "Partial Nudity (Woman)", severity: "Moderate" }
+        ] 
+    }, 
+    
     // Interstellar
     157336: { scenes: [] },
+
     // Gladiator
     98: { 
         scenes: [
-            { start: "0:05:00", end: "0:15:00", type: "War Violence", severity: "High" },
-            { start: "0:35:00", end: "0:36:00", type: "Execution (Offscreen but implied)", severity: "High" } // Family death
+            { start: "50:40", end: "50:55", type: "Partial Nudity (Man)", severity: "Low" }
         ] 
     },
+
     // Sunset Boulevard
     599: { scenes: [] },
+
     // The Wolf of Wall Street
     106646: { 
         scenes: [
-            { start: "0:10:00", end: "0:20:00", type: "Drug Use", severity: "High" },
-            { start: "0:25:00", end: "0:40:00", type: "Nudity & Sex", severity: "Extreme" },
-            { start: "2:00:00", end: "2:10:00", type: "Drug Overdose", severity: "High" }
+            { start: "2:02", end: "3:05", type: "Sexual Content & Nudity (Woman)", severity: "High" },
+            { start: "13:55", end: "14:15", type: "Nudity (Woman)", severity: "High" },
+            { start: "38:55", end: "39:47", type: "Nudity (Women)", severity: "High" },
+            { start: "54:45", end: "55:10", type: "Nudity (Man)", severity: "High" },
+            { start: "58:25", end: "59:30", type: "Nudity (Woman) & Sex", severity: "Extreme" },
+            { start: "1:02:25", end: "1:02:45", type: "Nudity (Men), Partial Nudity (Man) & Sex", severity: "Extreme" },
+            { start: "1:07:30", end: "1:08:30", type: "Nudity (Women) & Sex", severity: "Extreme" },
+            { start: "1:12:05", end: "1:12:15", type: "Partial Nudity (Man)", severity: "Moderate" },
+            { start: "1:16:55", end: "1:17:22", type: "Nudity (Woman)", severity: "High" },
+            { start: "1:48:20", end: "1:48:38", type: "Sex & Nudity (Woman)", severity: "Extreme" },
+            { start: "2:17:30", end: "2:18:10", type: "Nudity (Women)", severity: "High" },
+            { start: "2:31:20", end: "2:31:40", type: "Nudity (Woman)", severity: "High" },
+            { start: "2:38:30", end: "2:40:00", type: "Sex", severity: "High" }
         ] 
     },
+
     // No Country for Old Men
-    6977: { 
-        scenes: [
-            { start: "0:05:00", end: "0:06:00", type: "Strangulation", severity: "High" },
-            { start: "0:15:00", end: "1:50:00", type: "Gun Violence", severity: "High" }
-        ] 
-    },
+    6977: { scenes: [] },
+
     // There Will Be Blood
-    7345: { 
-        scenes: [
-            { start: "2:30:00", end: "2:35:00", type: "Brutal Violence", severity: "High" } // Bowling alley ending
-        ] 
-    },
+    7345: { scenes: [] },
+
     // Top Gun: Maverick
     361743: { scenes: [] },
+
     // Catch Me If You Can
     640: { scenes: [] }
 };
-
 export const FALLBACK_POSTERS = {
     680: "https://image.tmdb.org/t/p/w500/d5iIlFn5s0ImszYzBPb8JPIfbXD.jpg",
     13: "https://image.tmdb.org/t/p/w500/arw2vcBveWOVZr6pxd9XTd1TdQa.jpg",

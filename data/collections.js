@@ -2058,90 +2058,6 @@ export const COLLECTIONS = {
     }
 },
 
-// 🎭 BEST CORE DRAMA MOVIES ON PARAMOUNT+ COLLECTION
-'best-core-drama-movies-on-paramount-plus': {
-    slug: 'best-core-drama-movies-on-paramount-plus',
-    title: '10 Best Core Drama Movies on Paramount+',
-    subtitle: 'Ranked by Emotional Impact & Character Depth',
-    description: 'The definitive ranking of the most powerful dramas streaming on Paramount+. From the ruthless ambition of There Will Be Blood to the timeless journey of Forrest Gump.',
-    longDescription: 'Prepare for cinema that touches the soul. This collection ranks the absolute best drama movies on Paramount+, focusing on emotional authenticity, deep character studies, and masterful storytelling. From the oil-soaked madness of There Will Be Blood to the quiet devastation of The English Patient, these are the films that define the human experience.',
-
-    emoji: '🎭',
-    theme: 'indigo',
-    primaryColor: '#6366f1', // Indigo 500
-    secondaryColor: '#4f46e5', // Indigo 600
-    accentColor: '#312e81', // Indigo 900
-    gradientFrom: 'from-indigo-600',
-    gradientTo: 'to-violet-900',
-
-    category: 'drama',
-    tags: ['drama', 'paramount+', 'streaming', 'emotional', 'prestige', 'award-winning', 'tearjerker', 'character-study'],
-
-    metaTitle: '10 Best Core Drama Movies on Paramount+ (2026) | Ranked by Emotion | Filmiway',
-    metaDescription: 'Discover the top 10 core drama movies on Paramount+—from There Will Be Blood to Forrest Gump. Expert-curated ranking of emotionally powerful films and cinematic masterpieces.',
-    metaKeywords: 'best drama movies on paramount plus, paramount plus drama films, there will be blood, forrest gump, the english patient, fences, dead man walking, emotional movies paramount plus',
-
-    stats: {
-        totalMovies: 10,
-        averageRating: 8.2,
-        totalWatchtime: '23 hours 45 minutes',
-        averageEmotionalIntensity: 94.0,
-        mostEmotional: 'The English Patient (98/100)',
-        newestMovie: 'One Life (2024)',
-        oldestMovie: 'Forrest Gump (1994)'
-    },
-
-    movies: [
-        'tt0469494',  // 1. There Will Be Blood (2007)
-        'tt0116209',  // 2. The English Patient (1996)
-        'tt2671706',  // 3. Fences (2016)
-        'tt0112818',  // 4. Dead Man Walking (1995)
-        'tt1020072',  // 5. Selma (2014)
-        'tt0490215',  // 6. Silence (2016)
-        'tt13004880', // 7. One Life (2024)
-        'tt5168192',  // 8. I, Daniel Blake (2016)
-        'tt0421715',  // 9. The Curious Case of Benjamin Button (2008)
-        'tt0109830'   // 10. Forrest Gump (1994)
-    ],
-
-    badges: [
-        { label: 'Emotional Powerhouses', desc: 'Guaranteed to move you' },
-        { label: 'Paramount+ Exclusive', desc: 'Prestige cinema streaming now' },
-        { label: 'Character Studies', desc: 'Deep psychological depth' }
-    ],
-
-    featured: {
-        hero: {
-            title: 'There Will Be Blood',
-            subtitle: 'A Masterpiece of Ambition',
-            description: 'Paul Thomas Anderson\'s epic exploration of family, religion, and madness during the California oil boom. Daniel Day-Lewis delivers one of the greatest performances in cinema history.',
-            poster: 'https://image.tmdb.org/t/p/w500/faL4e95X3kM7c7TfE41tA7t1v.jpg',
-            backdrop: 'https://image.tmdb.org/t/p/w1280/xJHokMmasHbqiKyFEKEGL9isukK.jpg',
-            emotionalIntensity: 98
-        }
-    },
-
-    relatedCollections: [
-        'best-romance-movies-on-paramount-plus',
-        'best-drama-movies-on-hbo-max',
-        'best-movies-on-hbo-max'
-    ],
-
-    seo: {
-        title: '10 Best Core Drama Movies on Paramount+ (2026) | Ranked by Emotion',
-        description: 'The definitive ranking of the best drama movies on Paramount+. From the masterpiece There Will Be Blood to the heartbreaking The English Patient.',
-        keywords: 'drama movies paramount plus, best drama films streaming, there will be blood, fences, forrest gump, one life, silence, sad movies paramount plus',
-        canonicalUrl: 'https://filmiway.com/collection/best-core-drama-movies-on-paramount-plus',
-        ogImage: 'https://filmiway.com/images/paramount-drama-collection-og.jpg',
-        structuredData: {
-            '@context': 'https://schema.org',
-            '@type': 'ItemList',
-            name: 'Best Core Drama Movies on Paramount+',
-            description: 'Expert-curated list of the best drama movies available on Paramount+ ranked by emotional intensity and cinematic quality',
-            numberOfItems: 10
-        }
-    }
-},
 
 
 // 🔴 BEST THRILLER MOVIES ON PARAMOUNT+ COLLECTION
@@ -2568,6 +2484,519 @@ export const COLLECTIONS = {
             '@type': 'ItemList',
             name: 'Best Movies on Paramount+',
             description: 'Expert-curated list of the absolute best movies available on Paramount+ ranked by critical acclaim and cinematic legacy',
+            numberOfItems: 10
+        }
+    }
+},
+
+// 🦚 BEST ACTION & ADVENTURE MOVIES ON PEACOCK COLLECTION
+'best-action-adventure-movies-on-peacock': {
+    slug: 'best-action-adventure-movies-on-peacock',
+    title: '10 Best Action & Adventure Movies on Peacock',
+    subtitle: 'Visceral Survival & High-Octane Thrills',
+    description: 'The definitive ranking of action and adventure movies on Peacock. From the survival epic The Revenant to the relentless Man on Fire.',
+    longDescription: 'Dive into the most visceral action and adventure films streaming on Peacock. This collection ranks movies that push the limits of human endurance and adrenaline. From the frozen wilderness of The Revenant to the chaotic streets of Mexico City in Man on Fire, these are films where survival is the only option.',
+
+    emoji: '🦚',
+    theme: 'teal',
+    primaryColor: '#14b8a6', // Teal 500
+    secondaryColor: '#0d9488', // Teal 600
+    accentColor: '#0f766e', // Teal 700
+    gradientFrom: 'from-teal-600',
+    gradientTo: 'to-emerald-900',
+
+    category: 'action',
+    tags: ['action', 'adventure', 'peacock', 'survival', 'thriller', 'streaming', 'high-octane'],
+
+    metaTitle: '10 Best Action & Adventure Movies on Peacock (2026) | Filmiway',
+    metaDescription: 'Discover the top 10 action and adventure movies on Peacock—from The Revenant to Man on Fire. Expert-curated ranking of high-octane films.',
+    metaKeywords: 'best action movies on peacock, peacock adventure films, the revenant, man on fire, the fall guy, apocalypto, action movies streaming',
+
+    stats: {
+        totalMovies: 10,
+        averageRating: 7.6,
+        totalWatchtime: '20 hours 30 minutes',
+        averageAdrenalineScore: 91.5,
+        mostIntense: 'The Revenant (98/100)',
+        newestMovie: 'The Fall Guy (2024)',
+        oldestMovie: 'Highlander (1986)'
+    },
+
+    movies: [
+        'tt1663202', // 1. The Revenant
+        'tt0328107', // 2. Man on Fire
+        'tt0091203', // 3. Highlander
+        'tt1197624', // 4. Law Abiding Citizen
+        'tt0472043', // 5. Apocalypto
+        'tt0144117', // 6. The Boondock Saints
+        'tt0102685', // 7. Point Break
+        'tt1684562', // 8. The Fall Guy
+        'tt1959490', // 9. The Hunger Games: Catching Fire
+        'tt3915174'  // 10. Puss in Boots: The Last Wish
+    ],
+
+    badges: [
+        { label: 'Survival Epics', desc: 'Man vs. Nature & Man vs. Man' },
+        { label: 'Peacock Exclusive', desc: 'Available to stream now' },
+        { label: 'High Octane', desc: 'Non-stop adrenaline' }
+    ],
+
+    featured: {
+        hero: {
+            title: 'The Revenant',
+            subtitle: 'The Ultimate Survival Epic',
+            description: 'Leonardo DiCaprio gives a visceral, Oscar-winning performance in this brutal tale of survival and revenge in the American wilderness.',
+            poster: 'https://image.tmdb.org/t/p/w500/ji3ecJphATlguPMMrTDDAYof088.jpg',
+            backdrop: 'https://image.tmdb.org/t/p/w1280/9l1eZiJHmxtgOjlPTz8V3jtGAs7.jpg',
+            adrenalineScore: 98
+        }
+    },
+
+    relatedCollections: [
+        'best-survival-movies',
+        'best-action-movies-on-hulu',
+        'best-thriller-movies'
+    ],
+
+    seo: {
+        title: '10 Best Action & Adventure Movies on Peacock (2026) | Filmiway',
+        description: 'The definitive ranking of the best action and adventure movies on Peacock. From The Revenant to The Fall Guy, find your next adrenaline rush.',
+        keywords: 'action movies peacock, adventure films peacock, the revenant, man on fire, the fall guy, peacock streaming, high octane movies',
+        canonicalUrl: 'https://filmiway.com/collection/best-action-adventure-movies-on-peacock',
+        ogImage: 'https://filmiway.com/images/peacock-action-collection-og.jpg',
+        structuredData: {
+            '@context': 'https://schema.org',
+            '@type': 'ItemList',
+            name: 'Best Action & Adventure Movies on Peacock',
+            description: 'Expert-curated list of the best action and adventure movies available on Peacock ranked by adrenaline and survival intensity',
+            numberOfItems: 10
+        }
+    }
+},
+
+// 🛸 BEST SCI-FI MOVIES ON PEACOCK COLLECTION
+'best-sci-fi-movies-on-peacock': {
+    slug: 'best-sci-fi-movies-on-peacock',
+    title: '10 Best Sci-Fi Movies on Peacock',
+    subtitle: 'Ranked by Mind-Bend & Spectacle',
+    description: 'The most visionary sci-fi films streaming on Peacock. From the quantum chaos of Coherence to the cosmic horror of Nope.',
+    longDescription: 'Explore the outer limits of imagination with the best science fiction movies on Peacock. This collection features mind-bending alternate realities, terrifying alien encounters, and dystopian warnings. Whether you want the intellectual puzzle of Coherence or the visceral spectacle of Nope, these films represent the pinnacle of the genre.',
+
+    emoji: '🛸',
+    theme: 'cyan',
+    primaryColor: '#0891b2',
+    secondaryColor: '#06b6d4',
+    accentColor: '#0e7490',
+    gradientFrom: 'from-cyan-600',
+    gradientTo: 'to-blue-600',
+
+    category: 'sci-fi',
+    tags: ['sci-fi', 'peacock', 'streaming', 'aliens', 'time travel', 'dystopia', 'mind-bending'],
+
+    metaTitle: '10 Best Sci-Fi Movies on Peacock (2026) | Ranked by Mind-Bend | Filmiway',
+    metaDescription: 'Discover the 10 best sci-fi movies on Peacock—from Coherence to Nope. Expert-curated ranking of visionary films with mind-bending concepts.',
+    metaKeywords: 'best sci-fi movies on peacock, peacock sci-fi films, coherence, nope, bugonia, the endless, pitch black, m3gan, sci-fi streaming',
+
+    stats: {
+        totalMovies: 10,
+        averageRating: 7.0,
+        totalWatchtime: '18 hours 30 minutes',
+        averageMindBendScore: 85.0,
+        mostMindBending: 'Coherence (100/100)',
+        newestMovie: 'Bugonia (2025)',
+        oldestMovie: 'Pitch Black (2000)'
+    },
+
+    movies: [
+        'tt2866360', // 1. Coherence
+        'tt30321200', // 2. Bugonia
+        'tt10954984', // 3. Nope
+        'tt3986820', // 4. The Endless
+        'tt1959490', // 5. The Hunger Games: Catching Fire
+        'tt2194499', // 6. About Time
+        'tt0134847', // 7. Pitch Black
+        'tt8781414', // 8. Freaks
+        'tt8760708', // 9. M3GAN
+        'tt18389166'  // 10. If You Were the Last
+    ],
+
+    badges: [
+        { label: 'Mind-Bending', desc: 'Complex, intellectual sci-fi' },
+        { label: 'Peacock Exclusive', desc: 'Available to stream now' },
+        { label: 'Visual Spectacle', desc: 'Stunning CGI & world-building' }
+    ],
+
+    featured: {
+        hero: {
+            title: 'Coherence',
+            subtitle: 'The Ultimate Mind-Bender',
+            description: 'A dinner party unravels into quantum chaos when a comet passes overhead. The gold standard for micro-budget, high-concept sci-fi.',
+            poster: 'https://image.tmdb.org/t/p/w500/pp2iJ0Y05Y977k6j632t7J6v6W3.jpg',
+            backdrop: 'https://image.tmdb.org/t/p/w1280/pp2iJ0Y05Y977k6j632t7J6v6W3.jpg', // Placeholder backdrop path needed
+            mindBendScore: 100
+        }
+    },
+
+    relatedCollections: [
+        'best-sci-fi-movies-on-hulu',
+        'best-sci-fi-movies-on-hbo-max',
+        'best-sci-fi-movies-on-paramount-plus',
+        'best-time-travel-movies'
+    ],
+
+    seo: {
+        title: '10 Best Sci-Fi Movies on Peacock (2026) | Ranked by Mind-Bend',
+        description: 'The definitive ranking of the best sci-fi movies on Peacock. From the quantum puzzle of Coherence to the spectacle of Nope.',
+        keywords: 'sci-fi movies peacock, best sci-fi films streaming, coherence, bugonia, nope, the endless, pitch black, m3gan, mind bending movies peacock',
+        canonicalUrl: 'https://filmiway.com/collection/best-sci-fi-movies-on-peacock',
+        ogImage: 'https://filmiway.com/images/peacock-scifi-collection-og.jpg',
+        structuredData: {
+            '@context': 'https://schema.org',
+            '@type': 'ItemList',
+            name: 'Best Sci-Fi Movies on Peacock',
+            description: 'Expert-curated list of the best sci-fi movies available on Peacock ranked by mind-bending complexity and visual spectacle',
+            numberOfItems: 10
+        }
+    }
+},
+
+
+// 💖 BEST ROMANCE MOVIES ON PEACOCK COLLECTION
+'best-romance-movies-on-peacock': {
+    slug: 'best-romance-movies-on-peacock',
+    title: '10 Best Romance Movies on Peacock',
+    subtitle: 'Prestige Love Stories & Emotional Masterpieces',
+    description: 'The top 10 romance movies streaming on Peacock right now. From About Time to Pride & Prejudice—ranked by emotional resonance.',
+    longDescription: 'Discover the most powerful love stories on Peacock. This collection moves beyond standard rom-coms to feature prestige cinema, critical darlings, and emotionally complex narratives. From the timeless charm of Pride & Prejudice to the quiet devastation of One Day, these are films that define the genre.',
+
+    emoji: '💖',
+    theme: 'pink',
+    primaryColor: '#ec4899', // Pink 500
+    secondaryColor: '#db2777', // Pink 600
+    accentColor: '#be123c', // Pink 700
+    gradientFrom: 'from-pink-600',
+    gradientTo: 'to-rose-900',
+
+    category: 'romance',
+    tags: ['romance', 'peacock', 'streaming', 'drama', 'classic', 'emotional', 'love'],
+
+    metaTitle: '10 Best Romance Movies on Peacock (2026) | Ranked by Emotion',
+    metaDescription: 'Discover the top 10 romance movies on Peacock—from About Time to Pride & Prejudice. Expert-curated ranking of emotionally resonant films with electric chemistry.',
+    metaKeywords: 'best romance movies on peacock, peacock romance films, about time, pride and prejudice, notting hill, ghost, romantic movies streaming',
+
+    stats: {
+        totalMovies: 10,
+        averageRating: 7.5,
+        totalWatchtime: '19 hours 50 minutes',
+        averageEmotionalIntensity: 85.0,
+        mostIntense: 'One Day (96/100)',
+        newestMovie: 'Challengers (2024)',
+        oldestMovie: 'Ghost (1990)'
+    },
+
+    movies: [
+        'tt2194499', // 1. About Time
+        'tt0414387', // 2. Pride & Prejudice
+        'tt0125439', // 3. Notting Hill
+        'tt0099653', // 4. Ghost
+        'tt0138097', // 5. Shakespeare in Love
+        'tt1563738', // 6. One Day
+        'tt16426418', // 7. Challengers
+        'tt1655441', // 8. The Age of Adaline
+        'tt0251127', // 9. How to Lose a Guy in 10 Days
+        'tt5083738'  // 10. The Favourite
+    ],
+
+    badges: [
+        { label: 'Epic Romances', desc: 'Grand scale love stories' },
+        { label: 'Peacock Exclusive', desc: 'Available to stream now' },
+        { label: 'High Chemistry', desc: 'Electric on-screen pairings' }
+    ],
+
+    featured: {
+        hero: {
+            title: 'About Time',
+            subtitle: 'A Masterpiece of Love & Time',
+            description: 'A young man discovers he can travel in time and uses his ability to win the woman of his dreams. A profound meditation on the beauty of the ordinary.',
+            poster: 'https://image.tmdb.org/t/p/w500/iL1c1e40wA47P3a522t3N92W08L.jpg',
+            backdrop: 'https://image.tmdb.org/t/p/w1280/rAiYTfKGqDCRIIqo664sY9XZIvQ.jpg', // Placeholder backdrop path needed
+            emotionalIntensity: 95
+        }
+    },
+
+    relatedCollections: [
+        'best-romance-movies-on-hulu',
+        'best-romance-movies-on-hbo-max',
+        'best-romance-movies-on-paramount-plus'
+    ],
+
+    seo: {
+        title: '10 Best Romance Movies on Peacock (2026) | Emotion Ranked',
+        description: 'The definitive ranking of the best romance movies on Peacock. From About Time to Pride & Prejudice, find your next emotional watch here.',
+        keywords: 'romance movies peacock, best romance films streaming, about time, pride and prejudice, notting hill, ghost, challengers, love stories',
+        canonicalUrl: 'https://filmiway.com/collection/best-romance-movies-on-peacock',
+        ogImage: 'https://filmiway.com/images/peacock-romance-collection-og.jpg',
+        structuredData: {
+            '@context': 'https://schema.org',
+            '@type': 'ItemList',
+            name: 'Best Romance Movies on Peacock',
+            description: 'Expert-curated list of the best romance movies available on Peacock ranked by emotional resonance and cinematic legacy',
+            numberOfItems: 10
+        }
+    }
+},
+
+
+// 🍿 BEST FAMILY MOVIES ON PEACOCK COLLECTION
+'best-family-movies-on-peacock': {
+    slug: 'best-family-movies-on-peacock',
+    title: '10 Best Family Movies on Peacock',
+    subtitle: 'Wholesome & Entertaining Cinema',
+    description: 'The top 10 family movies streaming on Peacock right now. From How to Train Your Dragon to Harry Potter—ranked by wholesomeness.',
+    longDescription: 'Discover the most entertaining and heartwarming family movies on Peacock. This collection features films that are perfect for movie night, ranging from the soaring adventure of How to Train Your Dragon to the magical world of Harry Potter. Wholesome entertainment guaranteed.',
+
+    emoji: '🍿',
+    theme: 'yellow',
+    primaryColor: '#facc15', // Bright Yellow
+    secondaryColor: '#eab308', // Darker Yellow
+    accentColor: '#ca8a04', // Deep Gold
+    gradientFrom: 'from-yellow-500',
+    gradientTo: 'to-amber-500',
+
+    category: 'family',
+    tags: ['family', 'peacock', 'kids', 'animation', 'adventure', 'wholesome', 'streaming'],
+
+    metaTitle: '10 Best Family Movies on Peacock (2026) | Wholesome & Fun | Filmiway',
+    metaDescription: 'Discover the top 10 family movies on Peacock—from How to Train Your Dragon to Harry Potter. Expert-curated ranking of wholesome films for all ages.',
+    metaKeywords: 'best family movies on peacock, peacock kids movies, how to train your dragon, harry potter, shrek, despicable me, wholesome movies streaming',
+
+    stats: {
+        totalMovies: 10,
+        averageRating: 7.7,
+        totalWatchtime: '18 hours 15 minutes',
+        averageWholesomeScore: 92.5,
+        mostWholesome: 'How to Train Your Dragon (98/100)',
+        newestMovie: 'Puss in Boots: The Last Wish (2022)',
+        oldestMovie: 'Shrek (2001)'
+    },
+
+    movies: [
+        'tt0892791', // 1. How to Train Your Dragon
+        'tt0304141', // 2. Harry Potter and the Prisoner of Azkaban
+        'tt3915174', // 3. Puss in Boots: The Last Wish
+        'tt0126029', // 4. Shrek
+        'tt1646971', // 5. How to Train Your Dragon 2
+        'tt1323594', // 6. Despicable Me
+        'tt0241527', // 7. Harry Potter and the Sorcerer's Stone
+        'tt6324278', // 8. Abominable
+        'tt2386490', // 9. How to Train Your Dragon: The Hidden World
+        'tt0298148'  // 10. Shrek 2
+    ],
+
+    badges: [
+        { label: 'Wholesome Fun', desc: 'Positive & uplifting content' },
+        { label: 'Peacock Exclusive', desc: 'Available to stream now' },
+        { label: 'All Ages', desc: 'Perfect for the whole family' }
+    ],
+
+    featured: {
+        hero: {
+            title: 'How to Train Your Dragon',
+            subtitle: 'A Modern Animated Masterpiece',
+            description: 'A hapless young Viking who aspires to hunt dragons becomes the unlikely friend of a young dragon himself, and learns there may be more to the creatures than he assumed.',
+            poster: 'https://image.tmdb.org/t/p/w500/ygGmAO60t8GyqU69zkAM99c67c6.jpg',
+            backdrop: 'https://image.tmdb.org/t/p/w1280/lFfhXjsBA7Uh3k4g7H7g2X5X00i.jpg', // Placeholder backdrop path needed
+            wholesomeScore: 98
+        }
+    },
+
+    relatedCollections: [
+        'best-family-movies-on-hulu',
+        'best-family-movies-on-hbo-max',
+        'best-family-movies-on-paramount-plus'
+    ],
+
+    seo: {
+        title: '10 Best Family Movies on Peacock (2026) | Wholesome & Fun | Filmiway',
+        description: 'The definitive ranking of the best family movies on Peacock. From the masterpiece How to Train Your Dragon to the magical Harry Potter.',
+        keywords: 'family movies peacock, best kids films streaming, how to train your dragon, harry potter, shrek, puss in boots, wholesome movies',
+        canonicalUrl: 'https://filmiway.com/collection/best-family-movies-on-peacock',
+        ogImage: 'https://filmiway.com/images/peacock-family-collection-og.jpg',
+        structuredData: {
+            '@context': 'https://schema.org',
+            '@type': 'ItemList',
+            name: 'Best Family Movies on Peacock',
+            description: 'Expert-curated list of the best family movies available on Peacock ranked by wholesomeness and entertainment value',
+            numberOfItems: 10
+        }
+    }
+},
+
+// 🎭 BEST DRAMA MOVIES ON PEACOCK COLLECTION
+'best-drama-movies-on-peacock': {
+    slug: 'best-drama-movies-on-peacock',
+    title: '10 Best Drama Movies on Peacock',
+    subtitle: 'Ranked by Emotional Impact',
+    description: 'The most emotionally resonant dramas streaming on Peacock right now. From the haunting Requiem for a Dream to the personal The Fabelmans.',
+    longDescription: 'Prepare for cinema that touches the soul. This collection ranks the most powerful drama films currently streaming on Peacock. We prioritize emotional authenticity, deep character studies, and auteur-driven storytelling. From the shattering addiction of Requiem for a Dream to the quiet devastation of Sophie\'s Choice, these are the films that define the human condition.',
+
+    emoji: '🎭',
+    theme: 'indigo',
+    primaryColor: '#6366f1', // Indigo 500
+    secondaryColor: '#4f46e5', // Indigo 600
+    accentColor: '#312e81', // Indigo 900
+    gradientFrom: 'from-indigo-600',
+    gradientTo: 'to-violet-900',
+
+    category: 'drama',
+    tags: ['drama', 'peacock', 'streaming', 'emotional', 'prestige', 'award-winning', 'tearjerker', 'character-study'],
+
+    metaTitle: '10 Best Drama Movies on Peacock (2026) | Ranked by Emotion | Filmiway',
+    metaDescription: 'Discover the top 10 drama movies on Peacock—from Requiem for a Dream to The Fabelmans. Expert-curated ranking of emotionally powerful films and cinematic masterpieces.',
+    metaKeywords: 'best drama movies on peacock, peacock drama films, requiem for a dream, sophies choice, the fabelmans, a thousand and one, emotional movies peacock',
+
+    stats: {
+        totalMovies: 10,
+        averageRating: 8.1,
+        totalWatchtime: '20 hours 30 minutes',
+        averageEmotionalIntensity: 94.0,
+        mostEmotional: 'Requiem for a Dream (99/100)',
+        newestMovie: 'Dìdi (2024)',
+        oldestMovie: 'On Golden Pond (1981)'
+    },
+
+    movies: [
+        'tt0180093', // 1. Requiem for a Dream
+        'tt0084707', // 2. Sophie's Choice
+        'tt14208870', // 3. The Fabelmans
+        'tt13423600', // 4. A Thousand and One
+        'tt28323620', // 5. Dìdi
+        'tt14807308', // 6. She Said
+        'tt1306980', // 7. 50/50
+        'tt0082846', // 8. On Golden Pond
+        'tt13374522', // 9. Mrs. Harris Goes to Paris
+        'tt7798646'  // 10. The Photograph
+    ],
+
+    badges: [
+        { label: 'Emotional Powerhouses', desc: 'Guaranteed to move you' },
+        { label: 'Peacock Exclusive', desc: 'Prestige cinema streaming now' },
+        { label: 'Character Studies', desc: 'Deep psychological depth' }
+    ],
+
+    featured: {
+        hero: {
+            title: 'Requiem for a Dream',
+            subtitle: 'A Nightmare of Addiction',
+            description: 'Darren Aronofsky\'s terrifying, stylized masterpiece about four individuals whose lives are shattered by their addictions. A film you will never forget.',
+            poster: 'https://image.tmdb.org/t/p/w500/nOd6vjEmzCT0k4VYqsA2hwyi87C.jpg',
+            backdrop: 'https://image.tmdb.org/t/p/w1280/l4itY5aB1W9Fm4P8jXW6s4Wk8c.jpg', // Placeholder pattern or generic
+            emotionalIntensity: 99
+        }
+    },
+
+    relatedCollections: [
+        'best-drama-movies-on-hbo-max',
+        'best-drama-movies-on-hulu',
+        'best-romance-movies-on-peacock'
+    ],
+
+    seo: {
+        title: '10 Best Drama Movies on Peacock (2026) | Ranked by Emotion',
+        description: 'The definitive ranking of the best drama movies on Peacock. From the masterpiece Requiem for a Dream to the personal The Fabelmans.',
+        keywords: 'drama movies peacock, best drama films streaming, requiem for a dream, sophies choice, the fabelmans, a thousand and one, sad movies peacock',
+        canonicalUrl: 'https://filmiway.com/collection/best-drama-movies-on-peacock',
+        ogImage: 'https://filmiway.com/images/peacock-drama-collection-og.jpg',
+        structuredData: {
+            '@context': 'https://schema.org',
+            '@type': 'ItemList',
+            name: 'Best Drama Movies on Peacock',
+            description: 'Expert-curated list of the best drama movies available on Peacock ranked by emotional intensity and cinematic quality',
+            numberOfItems: 10
+        }
+    }
+},
+
+// 🔴 BEST THRILLER MOVIES ON PEACOCK COLLECTION
+'best-thriller-movies-on-peacock': {
+    slug: 'best-thriller-movies-on-peacock',
+    title: '10 Best Thriller Movies on Peacock',
+    subtitle: 'Ranked by Suspense & Tension',
+    description: 'The definitive ranking of the best thriller movies on Peacock. From Memento to Sicario, experience cinema\'s most intense moments.',
+    longDescription: 'Prepare for heart-pounding tension. This collection ranks the absolute best thriller movies streaming on Peacock, focusing on psychological pressure, relentless pursuit, and visceral suspense. From the mind-bending puzzle of Memento to the suffocating dread of Sicario, these films demand your full attention.',
+
+    emoji: '🔴',
+    theme: 'red',
+    primaryColor: '#b91c1c', // Dark Red
+    secondaryColor: '#ef4444', // Bright Red
+    accentColor: '#991b1b', // Blood Red
+    gradientFrom: 'from-red-800',
+    gradientTo: 'to-slate-900',
+
+    category: 'thriller',
+    tags: ['thriller', 'peacock', 'suspense', 'psychological', 'crime', 'horror', 'action'],
+
+    metaTitle: '10 Best Thriller Movies on Peacock (2026) | Ranked by Suspense',
+    metaDescription: 'Discover the top 10 thriller movies on Peacock—from Memento to Sicario. Expert-curated ranking of high-tension films.',
+    metaKeywords: 'best thriller movies on peacock, peacock thrillers, memento, sicario, coherence, inside man, suspense movies streaming',
+
+    stats: {
+        totalMovies: 10,
+        averageRating: 7.6,
+        totalWatchtime: '19 hours 30 minutes',
+        averageSuspenseIntensity: 90.0,
+        mostIntense: 'Memento (98/100)',
+        newestMovie: 'Twisters (2024)',
+        oldestMovie: 'The Game (1997)'
+    },
+
+    movies: [
+        'tt0209144', // 1. Memento
+        'tt0119174', // 2. The Game
+        'tt3397884', // 3. Sicario
+        'tt2866360', // 4. Coherence
+        'tt0454848', // 5. Inside Man
+        'tt1197624', // 6. Law Abiding Citizen
+        'tt7144666', // 7. The Black Phone
+        'tt1187064', // 8. Triangle
+        'tt1219289', // 9. Limitless
+        'tt6689876'  // 10. Twisters
+    ],
+
+    badges: [
+        { label: 'High Tension', desc: 'Nail-biting suspense' },
+        { label: 'Peacock Exclusive', desc: 'Available to stream now' },
+        { label: 'Psychological Dread', desc: 'Mind-bending stress & fear' }
+    ],
+
+    featured: {
+        hero: {
+            title: 'Memento',
+            subtitle: 'The Ultimate Mind-Bender',
+            description: 'Christopher Nolan\'s reverse-chronological masterpiece puts you directly inside the mind of a man with short-term memory loss hunting his wife\'s killer.',
+            poster: 'https://image.tmdb.org/t/p/w500/yuNs09hvpHVU1cBTCAk9zxsL2oW.jpg',
+            backdrop: 'https://image.tmdb.org/t/p/w1280/q2CTMbbfG6tXcaW7sm7R3b7Vz2E.jpg', // Placeholder backdrop path needed
+            suspenseIntensity: 98
+        }
+    },
+
+    relatedCollections: [
+        'best-thriller-movies-on-hbo-max',
+        'best-thriller-movies-hulu',
+        'best-psychological-thriller-movies'
+    ],
+
+    seo: {
+        title: '10 Best Thriller Movies on Peacock (2026) | Ranked by Suspense',
+        description: 'The definitive ranking of the best thriller movies on Peacock. From the mind-bending puzzle of Memento to the intense action of Sicario.',
+        keywords: 'thriller movies peacock, best suspense films streaming, memento, sicario, coherence, inside man, the black phone, peacock suspense',
+        canonicalUrl: 'https://filmiway.com/collection/best-thriller-movies-on-peacock',
+        ogImage: 'https://filmiway.com/images/peacock-thriller-collection-og.jpg',
+        structuredData: {
+            '@context': 'https://schema.org',
+            '@type': 'ItemList',
+            name: 'Best Thriller Movies on Peacock',
+            description: 'Expert-curated list of the best thriller movies available on Peacock ranked by suspense intensity and psychological pressure',
             numberOfItems: 10
         }
     }

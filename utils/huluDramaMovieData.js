@@ -326,7 +326,8 @@ export const HULU_DRAMA_MOVIE_FAQS = {
     'Perfect Days': [
         { question: "Why does he clean toilets?", answer: "Hirayama's job represents his commitment to humility, service, and discipline. The film elevates a 'lowly' profession to an art form, suggesting that dignity comes from how you do your work, not what the work is." },
         { question: "Does Hirayama have a dark past?", answer: "The film hints at a wealthy, perhaps traumatic upbringing through the visit of his sister and his tears. However, it never explicitly explains it, focusing instead on the peace he has built for himself in the present." },
-        { question: "What is the song at the end?", answer: "The final song is 'Feeling Good' by Nina Simone. The long close-up of Hirayama's face, mixing joy and sorrow, perfectly captures the bittersweet beauty of being alive." }
+        { question: "What is the song at the end?", answer: "The final song is 'Feeling Good' by Nina Simone. The long close-up of Hirayama's face, mixing joy and sorrow, perfectly captures the bittersweet beauty of being alive." },
+        { question: "Does Perfect Days have nudity or sex scenes?", answer: "Perfect Days contains a brief scene with non-sexual partial nudity at approximately 0:23:05. The film is generally meditative and not explicit." }
     ],
     'Brooklyn': [
         { question: "Why does Eilis go back to Ireland?", answer: "She returns due to a family tragedy. While there, she falls into a comfortable life that represents the 'path not taken.' Her eventual return to Brooklyn is a choice to embrace her future over the comfort of her past." },
@@ -334,12 +335,14 @@ export const HULU_DRAMA_MOVIE_FAQS = {
     ],
     'Small Things Like These': [
         { question: "What are the Magdalene Laundries?", answer: "They were institutions in Ireland run by the Catholic Church where 'fallen women' (unmarried mothers, etc.) were confined and forced to work in harsh conditions. The film exposes the community's silent complicity in this system." },
-        { question: "Why is the movie so quiet?", answer: "The silence reflects the culture of fear and repression in the town. Everyone knows what is happening at the convent, but speaking up would risk their livelihood and social standing." }
+        { question: "Why is the movie so quiet?", answer: "The silence reflects the culture of fear and repression in the town. Everyone knows what is happening at the convent, but speaking up would risk their livelihood and social standing." },
+        { question: "Does Small Things Like These have nudity or sex scenes?", answer: "Yes, Small Things Like These includes a scene with sex from approximately 1:10:00 to 1:15:00. Our content timeline provides more specific details for viewers." }
     ],
     'All of Us Strangers': [
         { question: "Are the parents ghosts?", answer: "The film leaves this ambiguous. They could be ghosts, or they could be manifestations of Adam's grief and longing—a way for his mind to finally have the conversations he never got to have before they died." },
         { question: "What happens to Harry?", answer: "The ending reveals a devastating truth about Harry (Paul Mescal) that recontextualizes their entire relationship. It suggests that Adam's journey was not just about his parents, but about acknowledging the loneliness of his present." },
-        { question: "Is it a horror movie?", answer: "No, but it uses the visual language of a ghost story (empty buildings, shadows, apparitions) to explore the horror of grief and isolation rather than fear." }
+        { question: "Is it a horror movie?", answer: "No, but it uses the visual language of a ghost story (empty buildings, shadows, apparitions) to explore the horror of grief and isolation rather than fear." },
+        { question: "Does All of Us Strangers have nudity or sex scenes?", answer: "Yes, All of Us Strangers features an intimate scene with sexual content but no explicit nudity, occurring from approximately 0:26:30 to 0:28:47. The film's focus is on emotional connection and grief." }
     ],
     'BlackBerry': [
         { question: "Is the BlackBerry movie accurate?", answer: "It is a dramatization. While the major beats (the rise, the keyboard obsession, the iPhone killing it) are true, many character interactions and specific timelines were condensed or exaggerated for dramatic effect." },

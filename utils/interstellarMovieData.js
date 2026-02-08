@@ -360,7 +360,7 @@ export const generateMovieSchema = (movie) => {
         "genre": movie.genre, "datePublished": movie.year.toString(),
         "director": { "@type": "Person", "name": movieInfo?.director || "Director" },
         "duration": `PT${movie.runtime}M`, "image": FALLBACK_POSTERS[movie.tmdbId] || '',
-        "aggregateRating": { "@type": "AggregateRating", "ratingValue": movieInfo?.rating || 7.5 }
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": movieInfo?.rating || 7.5, "ratingCount": movieInfo?.audienceScore || 100 }
     };
 };
 

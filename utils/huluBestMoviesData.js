@@ -22,16 +22,57 @@ export const COMPLETE_MOVIE_DATABASE = [
 ];
 
 export const SENSITIVE_TIMELINES = {
-    949: { scenes: [{ start: "1:45:00", end: "1:55:00", type: "Violence", severity: "High" }] }, 
-    324786: { scenes: [{ start: "0:50:00", end: "1:30:00", type: "War Gore", severity: "Extreme" }] }, 
-    14756: { scenes: [{ start: "0:55:00", end: "1:00:00", type: "Violence", severity: "High" }] },
+    // 1. Heat
+    949: { scenes: [] }, 
+
+    // 2. Hacksaw Ridge
+    324786: { 
+        scenes: [
+            { start: "0:28:00", end: "0:33:00", type: "Partial Nudity", severity: "Moderate" }
+        ] 
+    }, 
+
+    // 3. Ip Man
+    14756: { 
+        scenes: [
+            { start: "0:12:21", end: "0:12:24", type: "Partial Nudity (Non-Sexual)", severity: "Low" }
+        ] 
+    },
+
+    // 4. Donnie Darko
     141: { scenes: [] },
-    44214: { scenes: [{ start: "1:30:00", end: "1:40:00", type: "Body Horror", severity: "High" }] }, 
-    976893: { scenes: [] },
-    106: { scenes: [{ start: "0:46:00", end: "0:47:00", type: "Gore", severity: "High" }] }, 
+
+    // 5. Black Swan
+    44214: { scenes: [] }, 
+
+    // 6. Perfect Days
+    976893: { 
+        scenes: [
+            { start: "0:23:05", end: "0:23:25", type: "Partial Nudity (Non-Sexual)", severity: "Low" }
+        ] 
+    }, 
+
+    // 7. Predator
+    106: { scenes: [] }, 
+
+    // 8. O Brother, Where Art Thou?
     134: { scenes: [] },
-    994108: { scenes: [] },
-    8363: { scenes: [] }
+
+    // 9. All of Us Strangers
+    994108: { 
+        scenes: [
+            { start: "0:26:30", end: "0:28:47", type: "Sex (No Nudity)", severity: "Moderate" }
+        ] 
+    },
+
+    // 10. Superbad
+    8363: { 
+        scenes: [
+            { start: "0:04:45", end: "0:04:55", type: "Nudity", severity: "High" },
+            { start: "0:09:38", end: "0:09:45", type: "Nudity", severity: "High" },
+            { start: "0:18:15", end: "0:20:30", type: "Sexual Content", severity: "Mild" }
+        ] 
+    }
 };
 
 export const FALLBACK_POSTERS = {

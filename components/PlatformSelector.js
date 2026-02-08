@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { Play, Film, Mountain } from 'lucide-react';
+import { Play, Film, Mountain, Feather } from 'lucide-react'; // 1. Import Feather
 
 const platforms = [
   {
@@ -23,6 +23,13 @@ const platforms = [
     icon: Mountain,
     color: 'from-blue-600 to-sky-500',
     description: 'Action & Sci-Fi Universes'
+  },
+  {
+    id: 'peacock', // 2. Added Peacock
+    name: 'Peacock',
+    icon: Feather,
+    color: 'from-yellow-400 to-teal-500', // Unique vibrant gradient
+    description: 'The Office & Universal Hits'
   }
 ];
 
@@ -38,8 +45,8 @@ const PlatformSelector = () => {
           <div className="h-1 w-16 sm:w-24 bg-yellow-500 mx-auto rounded-full" />
         </div>
 
-        {/* ✅ CHANGED: grid-cols-3 to fit 3 items perfectly */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        {/* 3. UPDATED GRID: grid-cols-2 (tablet) to lg:grid-cols-4 (desktop) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {platforms.map((platform) => (
             <Link 
               key={platform.id} 

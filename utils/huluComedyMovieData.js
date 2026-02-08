@@ -28,9 +28,9 @@ export const SENSITIVE_TIMELINES = {
     // 1. Superbad
     8363: { 
         scenes: [
-            { start: "4:45", end: "4:55", type: "Nudity", severity: "High" },
+            { start: "4:45", end: "4:55", type: "Nudity", severity: "Moderate" },
             { start: "9:38", end: "9:45", type: "Nudity", severity: "High" },
-            { start: "18:15", end: "20:30", type: "Nudity", severity: "High" }
+            { start: "18:15", end: "20:30", type: "Sexual Content", severity: "Mild" }
         ] 
     },
 
@@ -349,6 +349,10 @@ export const HULU_COMEDY_MOVIE_FAQS = {
         { 
             question: "Who played the cops?", 
             answer: "Seth Rogen and Bill Hader played Officers Michaels and Slater. They created one of the funniest subplots in movie history by subverting the 'scary cop' trope, portraying them instead as irresponsible, lonely man-children who just want to be cool and hang out with the high schooler McLovin." 
+        },
+        {
+            question: "Does Superbad have nudity or sex scenes?",
+            answer: "Yes, Superbad contains multiple scenes with nudity, primarily in a comedic context. The sensitive scenes occur at approximately 4:45, 9:38, and a longer sequence from 18:15 to 20:30. Our content timeline provides exact timestamps."
         }
     ],
     'O Brother, Where Art Thou?': [
@@ -385,6 +389,10 @@ export const HULU_COMEDY_MOVIE_FAQS = {
         { 
             question: "Why did he wear the green mankini?", 
             answer: "The neon green mankini was designed specifically to be the most unflattering piece of swimwear imaginable. The goal was to maximize the discomfort of the conservative hotel guests and beachgoers he interacted with, creating immediate visual comedy through sheer awkwardness." 
+        },
+        {
+            question: "Does Borat have nudity or sex scenes?",
+            answer: "Yes, Borat is famous for its graphic and shocking humor, which includes scenes with nudity and sexual content. There is a scene with partial nudity at 3:36 and a very graphic scene involving sexual content and nudity from 55:15 to 58:20. Viewer discretion is strongly advised."
         }
     ],
     'Bullet Train': [
@@ -421,6 +429,10 @@ export const HULU_COMEDY_MOVIE_FAQS = {
         { 
             question: "Who is Roy?", 
             answer: "J.K. Simmons plays Roy, a family man who Nyles accidentally dragged into the loop years prior. Roy serves as a dark mirror to Nyles, initially hunting him for sport out of vengeance before finding a sense of peace and acceptance within the infinite day." 
+        },
+        {
+            question: "Does Palm Springs have nudity or sex scenes?",
+            answer: "Yes, Palm Springs features some sexual content and brief nudity. These scenes include sexual content at 1:12 and 31:20, a scene with no nudity at 39:20, and a brief instance of partial nudity at 29:53. The scenes are generally comedic in tone."
         }
     ],
     'Super Troopers': [
@@ -439,6 +451,10 @@ export const HULU_COMEDY_MOVIE_FAQS = {
         { 
             question: "What is the 'Meow' game?", 
             answer: "The 'Meow Game' is the film's most iconic prank, where a trooper tries to replace the word 'now' with 'meow' ten times during a traffic stop without the driver noticing. It became a viral phenomenon and is frequently quoted or imitated by fans (and occasionally real police officers)." 
+        },
+        {
+            question: "Does Super Troopers have nudity or sex scenes?",
+            answer: "Yes, Super Troopers includes scenes with nudity. There is a scene at 44:10, a non-sexual nudity scene from 58:10 to 1:00:10, and a brief moment of partial nudity at 1:07:27. These scenes are presented in a comedic context."
         }
     ],
     'Twinless': [
@@ -457,6 +473,10 @@ export const HULU_COMEDY_MOVIE_FAQS = {
         { 
             question: "Is it streaming only?", 
             answer: "As a Hulu Original film, it bypassed a wide theatrical release to debut directly on the platform, part of Hulu's strategy to bolster its exclusive comedy library with star-driven vehicles." 
+        },
+        {
+            question: "Does Twinless have nudity or sex scenes?",
+            answer: "Yes, Twinless contains scenes with sex and nudity. These occur at approximately 23:45 to 25:15 and again from 1:04:25 to 1:06:10. Our content timeline provides precise details for viewer guidance."
         }
     ],
     'Big': [

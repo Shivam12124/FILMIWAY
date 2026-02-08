@@ -15,7 +15,9 @@ import {
   Smile, 
   Rocket, 
   Home, 
-  ChevronRight 
+  ChevronRight,
+  Mountain,
+  Feather // 1. IMPORTED FEATHER ICON
 } from 'lucide-react';
 
 // Import your data
@@ -48,10 +50,19 @@ const getPlatformConfig = (platform) => {
       textColor: 'text-blue-400',
       borderColor: 'border-blue-500/20',
       bgGlow: 'bg-blue-500/10',
-      icon: Mountain, // Make sure to import Mountain if using it, or fallback to Film
+      icon: Mountain, 
       description: "High-octane action, Tom Cruise blockbusters, and sprawling sci-fi universes."
     },
-
+    // 2. ADDED PEACOCK CONFIGURATION
+    'peacock': {
+      name: 'Peacock',
+      color: 'from-yellow-400 to-teal-500', // Unique vibrant gradient
+      textColor: 'text-yellow-400',
+      borderColor: 'border-yellow-500/20',
+      bgGlow: 'bg-yellow-500/10',
+      icon: Feather, 
+      description: "The streaming home of NBCUniversal. Must-watch reality TV, The Office, and massive Universal blockbusters."
+    },
   };
 
   return configs[platform] || {
@@ -64,9 +75,6 @@ const getPlatformConfig = (platform) => {
     description: "Explore the best movies streaming on this platform."
   };
 };
-
-// 🏔️ Icon Helper
-import { Mountain } from 'lucide-react'; 
 
 const StreamingHub = ({ platform, collections }) => {
   const config = getPlatformConfig(platform);
@@ -186,8 +194,8 @@ const StreamingHub = ({ platform, collections }) => {
 
 // 🔥 GENERATE PATHS (Define which hubs exist)
 export async function getStaticPaths() {
-  // Define the platforms you want to build pages for
-  const platforms = ['hulu', 'hbo-max', 'paramount-plus',  'prime-video'];
+  // 3. ADDED PEACOCK TO PLATFORMS ARRAY
+  const platforms = ['hulu', 'hbo-max', 'paramount-plus', 'prime-video', 'peacock'];
 
   const paths = platforms.map((platform) => ({
     params: { platform }

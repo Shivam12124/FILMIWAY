@@ -340,6 +340,81 @@ const CollectionsHub = () => {
             hasSubCollections: false
         },
 
+{
+            id: 'peacock-action-adventure',
+            title: 'Best Action & Adventure Movies on Peacock',
+            description: 'Visceral survival epics and high-octane thrills ranked by adrenaline. From The Revenant to Man on Fire',
+            icon: Mountain, // Using Mountain icon for adventure/survival theme
+            gradient: 'from-teal-600 to-emerald-800',
+            movieCount: '10',
+            rating: '7.6',
+            directLink: '/collection/best-action-adventure-movies-on-peacock',
+            hasSubCollections: false
+        },
+
+
+        {
+            id: 'peacock-scifi',
+            title: 'Best Sci-Fi Movies on Peacock',
+            description: 'Mind-bending realities and alien encounters ranked by complexity. From Coherence to Nope',
+            icon: Rocket, 
+            gradient: 'from-cyan-500 to-blue-700',
+            movieCount: '10',
+            rating: '7.6',
+            directLink: '/collection/best-sci-fi-movies-on-peacock',
+            hasSubCollections: false
+        },
+
+        {
+            id: 'peacock-romance',
+            title: 'Best Romance Movies on Peacock',
+            description: 'Emotional masterpieces and heartwarming love stories ranked by chemistry. From About Time to Pride & Prejudice',
+            icon: Heart, 
+            gradient: 'from-pink-500 to-rose-700',
+            movieCount: '10',
+            rating: '7.8',
+            directLink: '/collection/best-romance-movies-on-peacock',
+            hasSubCollections: false
+        },
+
+
+{
+            id: 'peacock-family',
+            title: 'Best Family Movies on Peacock',
+            description: 'Wholesome entertainment and magical adventures ranked by fun factor. From How to Train Your Dragon to Harry Potter',
+            icon: Sparkles, 
+            gradient: 'from-yellow-500 to-amber-600',
+            movieCount: '10',
+            rating: '7.7',
+            directLink: '/collection/best-family-movies-on-peacock',
+            hasSubCollections: false
+        },
+
+        {
+            id: 'peacock-drama',
+            title: 'Best Drama Movies on Peacock',
+            description: 'The most emotionally resonant dramas ranked by character depth and impact. From Requiem for a Dream to The Fabelmans',
+            icon: Film,
+            gradient: 'from-indigo-600 to-violet-800',
+            movieCount: '10',
+            rating: '8.1',
+            directLink: '/collection/best-drama-movies-on-peacock',
+            hasSubCollections: false
+        },
+
+
+        {
+            id: 'peacock-thriller',
+            title: 'Best Thriller Movies on Peacock',
+            description: 'Ranked by suspense and psychological dread. From Memento to Sicario.',
+            icon: Eye,
+            gradient: 'from-red-800 to-slate-900',
+            movieCount: '10',
+            rating: '7.6',
+            directLink: '/collection/best-thriller-movies-on-peacock',
+            hasSubCollections: false
+        },
+
         {
             id: 'oldboy',
             title: 'Movies Like Oldboy',

@@ -1,4 +1,4 @@
-// pages/collection/best-drama-movies-on-hbo-max/[id].js - HBO MAX DRAMA MOVIES
+// pages/best-drama-movies-on-hbo-max/[id].js - HBO MAX DRAMA MOVIES
 // VISUALS: Prestige & Emotional Theme (Indigo/Gold Accents)
 // SCHEMA: Maximalist (Hidden Emotional Intensity, Sensitive Timelines, and FAQs for Bots)
 

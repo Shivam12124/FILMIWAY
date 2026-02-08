@@ -1,3 +1,4 @@
+
 // pages/best-comedy-movies-on-hulu/[id].js - HULU COMEDY MOVIES
 // VISUALS: Comedy/Fun Theme (Yellow/Gold/Bright)
 // SCHEMA: Maximalist (Hidden Laughter Index and FAQs for Bots)

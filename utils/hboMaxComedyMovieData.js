@@ -25,66 +25,39 @@ export const COMPLETE_MOVIE_DATABASE = [
 // ✅ SENSITIVE TIMELINES (Focusing on Satire, Language, and Dark Humor)
 export const SENSITIVE_TIMELINES = {
     // 1. City Lights
-    901: { scenes: [] }, // Very clean, mild slapstick violence
+    901: { scenes: [] },
 
     // 2. The Great Dictator
-    914: { 
-        scenes: [
-            { start: "0:15:00", end: "0:20:00", type: "War Violence (Comedic)", severity: "Low" },
-            { start: "1:00:00", end: "1:05:00", type: "Depiction of Ghetto/Persecution", severity: "Moderate" }
-        ] 
-    },
+    914: { scenes: [] },
 
     // 3. Singin' in the Rain
-    872: { scenes: [] }, // Clean
+    872: { scenes: [] },
 
     // 4. This Is Spinal Tap
-    11031: { 
-        scenes: [
-            { start: "0:45:00", end: "0:48:00", type: "Sexual Innuendo (Armadillo)", severity: "Moderate" },
-            { start: "1:10:00", end: "1:15:00", type: "Strong Language", severity: "Moderate" }
-        ] 
-    },
+    11031: { scenes: [] },
 
     // 5. When Harry Met Sally...
-    639: { 
-        scenes: [
-            { start: "0:45:00", end: "0:48:00", type: "Fake Orgasm Scene", severity: "Moderate" },
-            { start: "0:00:00", end: "1:36:00", type: "Frequent Sexual Dialogue", severity: "Moderate" }
-        ] 
-    },
+    639: { scenes: [] },
 
     // 6. Fargo
     275: { 
         scenes: [
-            { start: "0:25:00", end: "0:30:00", type: "Kidnapping Violence", severity: "High" },
-            { start: "1:25:00", end: "1:30:00", type: "Graphic Violence (Woodchipper)", severity: "Extreme" },
-            { start: "0:50:00", end: "0:55:00", type: "Sexual Content", severity: "High" }
+            { start: "11:45", end: "12:07", type: "Sex", severity: "Moderate" },
+            { start: "1:06:48", end: "1:07:42", type: "Sex", severity: "Moderate" }
         ] 
     },
 
     // 7. Blazing Saddles
-    11072: { 
-        scenes: [
-            { start: "0:00:00", end: "1:33:00", type: "Frequent Racial Slurs (Satirical)", severity: "High" },
-            { start: "0:25:00", end: "0:28:00", type: "Sexual Innuendo (Lili Von Shtupp)", severity: "Moderate" },
-            { start: "0:15:00", end: "0:18:00", type: "Crude Humor (Beans Scene)", severity: "Moderate" }
-        ] 
-    },
+    11072: { scenes: [] },
 
     // 8. A Hard Day's Night
-    702: { scenes: [] }, // Clean
+    702: { scenes: [] },
 
     // 9. Barbie
-    346698: { 
-        scenes: [
-            { start: "0:20:00", end: "0:25:00", type: "Sexual Innuendo (Beach Off)", severity: "Low" },
-            { start: "0:45:00", end: "0:50:00", type: "Harassment Themes", severity: "Moderate" }
-        ] 
-    },
+    346698: { scenes: [] },
 
     // 10. The LEGO Batman Movie
-    324849: { scenes: [] } // Clean
+    324849: { scenes: [] }
 };
 
 export const FALLBACK_POSTERS = {
