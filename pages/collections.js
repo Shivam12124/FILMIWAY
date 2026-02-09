@@ -415,6 +415,18 @@ const CollectionsHub = () => {
             hasSubCollections: false
         },
 
+{
+            id: 'peacock-best',
+            title: 'Top 10 Best Movies on Peacock',
+            description: 'The definitive ranking of the highest-rated films streaming on Peacock right now. From Memento to Sicario',
+            icon: Crown,
+            gradient: 'from-yellow-500 to-amber-600',
+            movieCount: '10',
+            rating: '8.1',
+            directLink: '/collection/best-movies-on-peacock',
+            hasSubCollections: false
+        },
+
         {
             id: 'oldboy',
             title: 'Movies Like Oldboy',

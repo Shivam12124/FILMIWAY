@@ -209,6 +209,11 @@ import {
   SENSITIVE_TIMELINES as PEACOCK_THRILLER_SENSITIVE_TIMELINES
 } from '../utils/peacockThrillerMovieData';
 
+import {
+  COMPLETE_MOVIE_DATA as PEACOCK_BEST_MOVIE_DATA,
+  SENSITIVE_TIMELINES as PEACOCK_BEST_SENSITIVE_TIMELINES
+} from '../utils/peacockBestMoviesData';
+
 import { 
   COMPLETE_MOVIE_DATA as CRIME_THRILLER_MOVIE_DATA,
   SENSITIVE_TIMELINES as CRIME_THRILLER_SENSITIVE_TIMELINES 
@@ -313,6 +318,7 @@ import PeacockRomanceSEOFAQSection from './PeacockRomanceSEOFAQSection';
 import PeacockFamilySEOFAQSection from './PeacockFamilySEOFAQSection';
 import PeacockDramaSEOFAQSection from './PeacockDramaSEOFAQSection';
 import PeacockThrillerSEOFAQSection from './PeacockThrillerSEOFAQSection';
+import PeacockBestSEOFAQSection from './PeacockBestSEOFAQSection';
 
 const MovieDetailsSection = React.memo(({
   movie,
@@ -412,6 +418,7 @@ const MovieDetailsSection = React.memo(({
   : fromPeacockFamilyCollection ? safeLookup(PEACOCK_FAMILY_MOVIE_DATA, movie.tmdbId)
   : fromPeacockDramaCollection ? safeLookup(PEACOCK_DRAMA_MOVIE_DATA, movie.tmdbId)
   : fromPeacockThrillerCollection ? safeLookup(PEACOCK_THRILLER_MOVIE_DATA, movie.tmdbId)
+  : fromPeacockBestCollection ? safeLookup(PEACOCK_BEST_MOVIE_DATA, movie.tmdbId)
   : fromDonnieDarkoCollection ? safeLookup(DONNIE_DARKO_MOVIE_DATA, movie.tmdbId)
   : fromParasiteCollection ? safeLookup(PARASITE_MOVIE_DATA, movie.tmdbId)
   : fromMatrixCollection ? safeLookup(MATRIX_MOVIE_DATA, movie.tmdbId)
@@ -571,6 +578,7 @@ const MovieDetailsSection = React.memo(({
    || PEACOCK_FAMILY_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || PEACOCK_DRAMA_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || PEACOCK_THRILLER_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
+   || PEACOCK_BEST_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || DONNIE_DARKO_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || PARASITE_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || BLACK_SWAN_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
@@ -623,6 +631,7 @@ const MovieDetailsSection = React.memo(({
    : fromPeacockFamilyCollection ? movie.wholesomeScore ?? safeMovieInfo.wholesomeScore ?? 0
    : fromPeacockDramaCollection ? movie.emotionalIntensity ?? safeMovieInfo.emotionalIntensity ?? 0
    : fromPeacockThrillerCollection ? movie.suspenseIntensity ?? safeMovieInfo.suspenseIntensity ?? 0
+   : fromPeacockBestCollection ? movie.cinematicMastery ?? safeMovieInfo.cinematicMastery ?? 0
    : fromDonnieDarkoCollection ? movie.realityWarpIndex ?? safeMovieInfo.realityWarpIndex ?? 0
    : fromParasiteCollection ? movie.classWarfareIndex ?? safeMovieInfo.classWarfareIndex ?? 0
    : fromMatrixCollection ? movie.cyberComplexity ?? safeMovieInfo.cyberComplexity ?? 0
@@ -696,7 +705,7 @@ const MovieDetailsSection = React.memo(({
      default: return '#6b7280';
         }
    }
-   if (fromHboMaxBestCollection || fromParamountBestCollection) { // ✅ ADDED PARAMOUNT BEST
+   if (fromHboMaxBestCollection || fromParamountBestCollection || fromPeacockBestCollection) { // ✅ ADDED
         switch (level) {
      case 'EXTREME': return '#ea0808ff';
      case 'HIGH': return '#eb7a09ff';
@@ -844,7 +853,7 @@ const MovieDetailsSection = React.memo(({
    if (fromHboMaxSciFiCollection) return 'SPECTACULAR LEVEL'; 
    if (fromHboMaxHorrorCollection) return 'SCARINESS SCORE';
    if (fromParamountHorrorCollection) return 'SCARINESS SCORE';
-   if (fromHboMaxBestCollection || fromParamountBestCollection) return 'CINEMATIC MASTERY'; // ✅ ADDED
+   if (fromHboMaxBestCollection || fromParamountBestCollection || fromPeacockBestCollection) return 'CINEMATIC MASTERY'; // ✅ ADDED
    if (fromHboMaxDramaCollection || fromParamountDramaCollection) return 'EMOTIONAL INTENSITY'; 
    if (fromHboMaxComedyCollection) return 'LAUGHTER INDEX';
    if (fromParamountComedyCollection) return 'LAUGHTER INDEX';
@@ -889,7 +898,7 @@ const MovieDetailsSection = React.memo(({
    if (fromHboMaxSciFiCollection) return 'COSMIC SCALE INDEX'; 
    if (fromHboMaxHorrorCollection) return 'TRAUMA INDEX';
    if (fromParamountHorrorCollection) return 'TRAUMA INDEX';
-   if (fromHboMaxBestCollection || fromParamountBestCollection) return 'MASTERY INDEX'; // ✅ ADDED
+   if (fromHboMaxBestCollection || fromParamountBestCollection || fromPeacockBestCollection) return 'MASTERY INDEX'; // ✅ ADDED
    if (fromHboMaxDramaCollection || fromParamountDramaCollection) return 'EMOTIONAL IMPACT INDEX'; 
    if (fromHboMaxComedyCollection || fromParamountComedyCollection) return 'LAUGHTER INDEX';
    if (fromHuluDramaCollection || fromPeacockDramaCollection) return 'EMOTIONAL IMPACT INDEX';
@@ -933,7 +942,7 @@ const MovieDetailsSection = React.memo(({
    if (fromHboMaxSciFiCollection) return 'SPECTACLE TIER LEVEL'; 
    if (fromHboMaxHorrorCollection) return 'NIGHTMARE LEVEL';
    if (fromParamountHorrorCollection) return 'NIGHTMARE LEVEL';
-   if (fromHboMaxBestCollection || fromParamountBestCollection) return 'LEGACY LEVEL'; // ✅ ADDED
+   if (fromHboMaxBestCollection || fromParamountBestCollection || fromPeacockBestCollection) return 'LEGACY LEVEL'; // ✅ ADDED
    if (fromHboMaxDramaCollection || fromParamountDramaCollection) return 'DEPTH LEVEL'; 
    if (fromHboMaxComedyCollection || fromParamountComedyCollection) return 'COMEDY TIER';
    if (fromHuluDramaCollection || fromPeacockDramaCollection) return 'RESONANCE LEVEL';
@@ -1000,7 +1009,7 @@ const MovieDetailsSection = React.memo(({
         if (scoreValue >= 80) return 'Extremely scary with intense dread and jump scares. Not for the faint of heart.';
         return 'A solid horror movie with effective scares and a creepy atmosphere.';
    }
-   if (fromHboMaxBestCollection || fromParamountBestCollection) { // ✅ ADDED PARAMOUNT BEST
+   if (fromHboMaxBestCollection || fromParamountBestCollection || fromPeacockBestCollection) { // ✅ ADDED PARAMOUNT BEST
         if (scoreValue >= 90) return 'A cinematic masterpiece that defines its genre. Essential viewing for any serious film lover.';
         if (scoreValue >= 80) return 'A critically acclaimed classic with immense cultural impact and rewatchability.';
         return 'A highly rated, top-tier film that delivers an exceptional viewing experience.';
@@ -1089,7 +1098,7 @@ const MovieDetailsSection = React.memo(({
    if (fromHboMaxFamilyCollection || fromHuluFamilyCollection || fromParamountFamilyCollection || fromPeacockFamilyCollection) return 'border-yellow-400/40';
    if (fromHboMaxSciFiCollection) return 'border-cyan-500/40'; 
    if (fromHboMaxHorrorCollection || fromParamountHorrorCollection) return 'border-red-700/40';
-   if (fromHboMaxBestCollection || fromParamountBestCollection) return 'border-amber-500/40'; // ✅ ADDED
+   if (fromHboMaxBestCollection || fromParamountBestCollection || fromPeacockBestCollection) return 'border-amber-500/40'; // ✅ ADDED
    if (fromHboMaxDramaCollection || fromParamountDramaCollection) return 'border-indigo-500/40'; 
    if (fromHboMaxComedyCollection || fromParamountComedyCollection) return 'border-yellow-500/40';
    if (fromHuluDramaCollection || fromPeacockDramaCollection) return 'border-blue-500/40';
@@ -1118,7 +1127,7 @@ const MovieDetailsSection = React.memo(({
    if (fromHboMaxFamilyCollection || fromHuluFamilyCollection || fromParamountFamilyCollection || fromPeacockFamilyCollection) return 'text-yellow-400';
    if (fromHboMaxSciFiCollection) return 'text-cyan-500'; 
    if (fromHboMaxHorrorCollection || fromParamountHorrorCollection) return 'text-red-600';
-   if (fromHboMaxBestCollection || fromParamountBestCollection) return 'text-amber-500'; // ✅ ADDED
+   if (fromHboMaxBestCollection || fromParamountBestCollection || fromPeacockBestCollection) return 'text-amber-500'; // ✅ ADDED
    if (fromHboMaxDramaCollection || fromParamountDramaCollection) return 'text-indigo-500'; 
    if (fromHboMaxComedyCollection || fromParamountComedyCollection) return 'text-yellow-500';
    if (fromHuluDramaCollection || fromPeacockDramaCollection) return 'text-blue-500';
@@ -1257,6 +1266,7 @@ const MovieDetailsSection = React.memo(({
        !fromParamountHorrorCollection &&
        !fromParamountComedyCollection &&
        !fromParamountBestCollection && // ✅ ADDED
+       !fromPeacockBestCollection &&
        (
         <motion.div
           className="mb-6 sm:mb-8 md:mb-12 bg-gradient-to-br from-gray-800/40 to-gray-900/60 rounded-lg sm:rounded-xl border border-gray-700/50 p-3 sm:p-4 md:p-8 shadow-2xl backdrop-blur-sm relative overflow-hidden"
@@ -1384,6 +1394,7 @@ const MovieDetailsSection = React.memo(({
         : fromParamountHorrorCollection ? <ParamountHorrorSEOFAQSection movie={movie} />
         : fromParamountComedyCollection ? <ParamountComedySEOFAQSection movie={movie} />
         : fromParamountBestCollection ? <ParamountBestSEOFAQSection movie={movie} /> // ✅ ADDED
+        : fromPeacockBestCollection ? <PeacockBestSEOFAQSection movie={movie} />
         : fromPeacockActionAdventureCollection ? <PeacockActionAdventureSEOFAQSection movie={movie} />
         : fromPeacockSciFiCollection ? <PeacockSciFiSEOFAQSection movie={movie} />
         : fromPeacockRomanceCollection ? <PeacockRomanceSEOFAQSection movie={movie} />

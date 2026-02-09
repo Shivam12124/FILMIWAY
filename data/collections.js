@@ -3002,6 +3002,94 @@ export const COLLECTIONS = {
     }
 },
 
+// 🏆 BEST MOVIES ON PEACOCK COLLECTION
+  'best-movies-on-peacock': {
+    slug: 'best-movies-on-peacock',
+    title: 'Top 10 Best Movies on Peacock',
+    subtitle: 'The Definitive Ranking',
+    description: 'The highest-rated films streaming on Peacock right now. From Memento to Sicario, covering all genres.',
+    longDescription: 'Looking for the absolute best movies on Peacock? This definitive ranking cuts through the noise to bring you the highest-rated, most critically acclaimed films available on the platform right now. Spanning mind-bending thrillers, visceral survival epics, and timeless comedies, these are the essential watches that define quality streaming.',
+
+    emoji: '🏆',
+    theme: 'teal',
+    primaryColor: '#14b8a6', // Teal 500
+    secondaryColor: '#0d9488', // Teal 600
+    accentColor: '#0f766e', // Teal 700
+    gradientFrom: 'from-teal-600',
+    gradientTo: 'to-emerald-900',
+
+    category: 'best-of-peacock',
+    tags: ['peacock', 'streaming', 'best movies', 'top rated', 'critically acclaimed', 'masterpiece', 'ranking'],
+
+    metaTitle: '10 Best Movies on Peacock (2026) | The Ultimate Ranking | Filmiway',
+    metaDescription: 'The definitive top 10 movies on Peacock right now. From Memento to Sicario, discover the highest-rated films across all genres. Expert curated.',
+    metaKeywords: 'best movies on peacock, top rated peacock films, memento peacock, sicario peacock, the revenant streaming, best streaming movies 2026',
+
+    stats: {
+      totalMovies: 10,
+      averageRating: 8.1,
+      totalWatchtime: '21 hours 10 minutes',
+      averageCriticScore: 92,
+      mostAcclaimed: 'Monty Python and the Holy Grail (97% Critic Score)',
+      newestMovie: 'The Revenant (2015)',
+      oldestMovie: 'Monty Python and the Holy Grail (1975)'
+    },
+
+    movies: [
+      'tt0209144', // 1. Memento
+      'tt3397884', // 2. Sicario
+      'tt1663202', // 3. The Revenant
+      'tt0180093', // 4. Requiem for a Dream
+      'tt0328107', // 5. Man on Fire
+      'tt0472043', // 6. Apocalypto
+      'tt2194499', // 7. About Time
+      'tt2866360', // 8. Coherence
+      'tt0304141', // 9. Harry Potter and the Prisoner of Azkaban
+      'tt0071853'  // 10. Monty Python and the Holy Grail
+    ],
+
+    badges: [
+      { label: 'Cinematic Masterpieces', desc: 'The greatest films ever made' },
+      { label: 'Genre Defining', desc: 'The gold standard of their categories' },
+      { label: 'Critically Acclaimed', desc: 'Top-tier filmmaking' }
+    ],
+
+    featured: {
+      hero: {
+        title: 'Memento',
+        subtitle: 'The Ultimate Mind-Bender',
+        description: 'Christopher Nolan\'s structural masterpiece. A man with short-term memory loss attempts to track down his wife\'s killer, but the story is told in reverse.',
+        poster: 'https://image.tmdb.org/t/p/w500/yuNs09hvpHVU1cBTCAk9zxsL2oW.jpg',
+        backdrop: 'https://image.tmdb.org/t/p/w1280/q2CTMbbfG6tXcaW7sm7R3b7Vz2E.jpg',
+        rating: 8.4
+      }
+    },
+
+    relatedCollections: [
+      'best-action-adventure-movies-on-peacock',
+      'best-sci-fi-movies-on-peacock',
+      'best-romance-movies-on-peacock',
+      'best-thriller-movies-on-peacock',
+      'best-family-movies-on-peacock',
+      'best-movies-on-hulu'
+    ],
+
+    seo: {
+      title: '10 Best Movies on Peacock (2026) | The Ultimate Ranking | Filmiway',
+      description: 'Discover the 10 best movies streaming on Peacock right now. From Memento to The Revenant, explore our expert-curated list of top-rated films.',
+      keywords: 'best movies on peacock, top rated peacock movies, what to watch on peacock, best films streaming, memento, sicario, monty python',
+      canonicalUrl: 'https://filmiway.com/collection/best-movies-on-peacock',
+      ogImage: 'https://filmiway.com/images/peacock-best-movies-collection-og.jpg',
+      structuredData: {
+        '@context': 'https://schema.org',
+        '@type': 'ItemList',
+        name: 'Best Movies on Peacock',
+        description: 'Expert-curated list of the absolute best movies available on Peacock ranked by critical acclaim and cinematic legacy',
+        numberOfItems: 10
+      }
+    }
+  },
+
 // 🦢 MOVIES LIKE BLACK SWAN COLLECTION
 'movies-like-black-swan': {
   slug: 'movies-like-black-swan',

@@ -44,6 +44,7 @@ import { COMPLETE_MOVIE_DATABASE as PEACOCK_ROMANCE_DATABASE, COMPLETE_MOVIE_DAT
 import { COMPLETE_MOVIE_DATABASE as PEACOCK_FAMILY_DATABASE, COMPLETE_MOVIE_DATA as PEACOCK_FAMILY_DATA } from '../../utils/peacockFamilyMovieData';
 import { COMPLETE_MOVIE_DATABASE as PEACOCK_DRAMA_DATABASE, COMPLETE_MOVIE_DATA as PEACOCK_DRAMA_DATA } from '../../utils/peacockDramaMovieData';
 import { COMPLETE_MOVIE_DATABASE as PEACOCK_THRILLER_DATABASE, COMPLETE_MOVIE_DATA as PEACOCK_THRILLER_DATA } from '../../utils/peacockThrillerMovieData';
+import { COMPLETE_MOVIE_DATABASE as PEACOCK_BEST_DATABASE, COMPLETE_MOVIE_DATA as PEACOCK_BEST_DATA } from '../../utils/peacockBestMoviesData';
 
 import { COMPLETE_MOVIE_DATABASE as HULU_FAMILY_DATABASE, COMPLETE_MOVIE_DATA as HULU_FAMILY_DATA } from '../../utils/huluFamilyMovieData';
 import { COMPLETE_MOVIE_DATABASE as HBO_ACTION_DATABASE, COMPLETE_MOVIE_DATA as HBO_ACTION_DATA } from '../../utils/hboActionMovieData';
@@ -1091,6 +1092,29 @@ const getCollectionContent = () => {
             text2: "Each film has been selected for its ability to keep you on the edge of your seat—offering twists and tension that demand your full attention."
         }
     };
+    } else if (collection.slug === 'best-movies-on-peacock') {
+    return {
+        badge: "Cinematic Masterpieces",
+        title: "Best Movies on Peacock",
+        description: "The definitive ranking of the highest-rated films streaming on Peacock right now. From cinematic classics to modern blockbusters.",
+        selection: {
+            text1: "From timeless masterpieces to modern marvels—these films represent the absolute best cinema available on the platform.",
+            text2: "Each selection is a genre-defining masterpiece, chosen for its critical acclaim, cultural impact, and cinematic mastery across all genres."
+        },
+        ranking: {
+            text: "Our definitive ranking evaluates cinematic mastery, critical reception, and legacy to determine the essential watchlist for any serious film lover.",
+            points: [
+                "Cinematic mastery score",
+                "Critical acclaim level",
+                "Cultural legacy impact",
+                "Visual & narrative innovation"
+            ]
+        },
+        experience: {
+            text1: "Whether you're seeking a timeless classic or a modern epic, this collection delivers the most essential viewing experiences on Peacock.",
+            text2: "Each film has been selected as a 'must-watch'—guaranteeing that no matter what you pick, you are watching a top-tier example of filmmaking craft."
+        }
+    };
     } else if (collection.slug === 'movies-like-black-swan') {
                 return {
                     badge: "Psychological Obsession Cinema",
@@ -1800,6 +1824,11 @@ const getHeaderContent = () => {
         title: "10 Best Thriller Movies on Peacock",
         subtitle: "Ranked by Suspense, Tension & Psychological Impact"
     };
+    } else if (collection.slug === 'best-movies-on-peacock') {
+    return {
+        title: "Best Movies on Peacock: 10 Essential Films",
+        subtitle: "The definitive ranking of the highest-rated films streaming now—from classics to modern blockbusters"
+    };
     } else if (collection.slug === 'movies-like-donnie-darko') {
     return {
         title: "Movies Like Donnie Darko: 10 Reality-Warping Films",
@@ -1995,6 +2024,11 @@ const getLoaderContent = () => {
     return {
         title: "Loading Best Family Movies on Hulu",
         description: "Curating wholesome entertainment and animated adventures with community reviews"
+    };
+} else if (collection?.slug === 'best-movies-on-peacock') {
+    return {
+        title: "Loading Best Movies on Peacock",
+        description: "Curating the definitive list of top-rated films across all genres with community reviews"
     };
 
 
@@ -2586,6 +2620,15 @@ const getStaticMetaContent = () => {
         twitterTitle: "🔴 10 Best Thriller Movies on Peacock",
         progressText: `of Top 10 Thriller Movies on Peacock`
     };
+    } else if (collection.slug === 'best-movies-on-peacock') {
+        return {
+            title: "Best Movies on Peacock: 10 Essential Films to Watch",
+            description: "The definitive list of the best movies to watch on Peacock, from The Godfather to Top Gun: Maverick—ranked by cinematic mastery and cultural impact.",
+            keywords: "best movies on peacock, top movies on peacock, what to watch on peacock, peacock movies",
+            ogTitle: "Best Movies on Peacock: 10 Essential Films to Watch 🎬",
+            twitterTitle: "🎬 The Definitive Ranking of the Best Movies on Peacock You Have to Watch",
+            progressText: `of Top ${movies.length} Peacock Movies`
+        };
     } else if (collection.slug === 'movies-like-black-swan') {
         return {
             title: "10 Movies Like Black Swan: Psychological Obsession",
@@ -2841,6 +2884,7 @@ const getStaticMetaContent = () => {
         sessionStorage.removeItem('fromPeacockSciFiCollection');
         sessionStorage.removeItem('fromPeacockRomanceCollection');
         sessionStorage.removeItem('fromPeacockThrillerCollection');
+        sessionStorage.removeItem('fromPeacockBestCollection');
             sessionStorage.removeItem('fromPeacockFamilyCollection');
             sessionStorage.removeItem('fromPeacockDramaCollection');
             sessionStorage.removeItem('fromEyesWideShutCollection');
@@ -2937,6 +2981,8 @@ const getStaticMetaContent = () => {
     sessionStorage.setItem('fromPeacockDramaCollection', 'true');
 } else if (collection.slug === 'best-thriller-movies-on-peacock') {
     sessionStorage.setItem('fromPeacockThrillerCollection', 'true');
+} else if (collection.slug === 'best-movies-on-peacock') {
+    sessionStorage.setItem('fromPeacockBestCollection', 'true');
 } else if (collection.slug === 'movies-like-parasite') { 
                 sessionStorage.setItem('fromParasiteCollection', 'true');
          } else if (collection.slug === 'movies-like-oldboy') {
@@ -3447,6 +3493,8 @@ return (
 ? 'movies/best-drama-movies-on-peacock/'
 : collection?.slug === 'best-thriller-movies-on-peacock'
 ? 'movies/best-thriller-movies-on-peacock/'
+: collection?.slug === 'best-movies-on-peacock'
+? 'movies/best-movies-on-peacock/'
 : collection?.slug === 'best-romance-movies-on-paramount-plus'
 ? 'movies/best-romance-movies-on-paramount-plus/'
 : collection?.slug === 'best-core-drama-movies-on-paramount-plus'
@@ -3679,6 +3727,8 @@ return (
       ? `/movies/best-drama-movies-on-peacock/${currentMovie.imdbID}`
       : collection.slug === 'best-thriller-movies-on-peacock'
       ? `/movies/best-thriller-movies-on-peacock/${currentMovie.imdbID}`
+      : collection.slug === 'best-movies-on-peacock'
+      ? `/movies/best-movies-on-peacock/${currentMovie.imdbID}`
       : collection.slug === 'movies-like-interstellar'
       ? `/movies/interstellar/${currentMovie.imdbID}`
       : collection.slug === 'movies-like-memento'
@@ -3829,6 +3879,8 @@ return (
         detailPageUrl = `/movies/best-drama-movies-on-peacock/${currentMovie.imdbID}`;
     } else if (collection.slug === 'best-thriller-movies-on-peacock') {
         detailPageUrl = `/movies/best-thriller-movies-on-peacock/${currentMovie.imdbID}`;
+    } else if (collection.slug === 'best-movies-on-peacock') {
+        detailPageUrl = `/movies/best-movies-on-peacock/${currentMovie.imdbID}`;
     
     } else if (collection.slug === 'movies-like-interstellar') {
                                             detailPageUrl = `/movies/interstellar/${currentMovie.imdbID}`;
@@ -4210,6 +4262,9 @@ case 'best-family-movies-on-paramount-plus':
             break;
         case 'best-thriller-movies-on-peacock':
             movieDatabase = PEACOCK_THRILLER_DATABASE;
+            break;
+        case 'best-movies-on-peacock':
+            movieDatabase = PEACOCK_BEST_DATABASE;
             break;
         default:
             movieDatabase = COMPLETE_MOVIE_DATABASE;
