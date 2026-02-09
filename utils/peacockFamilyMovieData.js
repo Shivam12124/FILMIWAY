@@ -182,7 +182,7 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Mike Myers", "Eddie Murphy", "Cameron Diaz"],
         dna: { "Comedy": 50, "Fantasy": 30, "Satire": 20 }, 
         scenes: [
-            { time: 5, intensity: 40, label: "All Star Opening", color: "#bef264" },
+            { time: 5, intensity: 40, label: "All Star Opening", color: "#4d740aff" },
             { time: 35, intensity: 60, label: "Saving Donkey", color: "#84cc16" },
             { time: 60, intensity: 75, label: "Rescuing Fiona", color: "#65a30d" },
             { time: 75, intensity: 50, label: "Campfire Confession", color: "#4d7c0f" },
