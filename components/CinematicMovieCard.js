@@ -6,7 +6,7 @@ import { Crown, Star } from 'lucide-react';
 import TMDBMoviePoster from './TMDBMoviePoster';
 import { COMPLETE_MOVIE_DATA, STRATEGIC_QUOTES } from '../utils/movieData';
 import { COMPLETE_MOVIE_DATA as SURVIVAL_DATA, STRATEGIC_QUOTES as SURVIVAL_QUOTES } from '../utils/survivalMovieData';
-
+import TMDBMoviePoster from './TMDBMoviePoster';
 const CinematicMovieCard = React.memo(({ movie, rank, isActive, fromSurvivalCollection }) => {
     const [isHovered, setIsHovered] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
