@@ -74,78 +74,121 @@ export const COLLECTIONS = {
 
  
 // 🔥 SEO-OPTIMIZED SURVIVAL COLLECTION
+// 🏔️ BEST SURVIVAL MOVIES — FINAL, TRUSTED & CTR-OPTIMIZED
 'best-survival-movies': {
   slug: 'best-survival-movies',
-  title: 'Best Survival Movies',
-  subtitle: 'Ultimate Tests of Human Endurance',
-  description: 'Experience the most brutal and intense survival stories ever captured on film. Ranked by survivability index - from impossible escapes to ultimate human resilience.',
-  longDescription: 'Dive into cinema\'s most extreme survival stories, where ordinary people face extraordinary circumstances. These films showcase the depths of human endurance, from being trapped under boulders to surviving plane crashes in remote mountains. Each movie demonstrates what it truly means to fight for survival against impossible odds.',
+
+  // 🎯 H1 / Page Title
+  title: '10 Best Survival Movies (True Stories & Realism)',
+  subtitle: 'When Nature Decides Who Lives',
+
+  // 🧠 Above-the-fold hook (CTR without clickbait)
+  description:
+    'The best survival movies ranked by realism and human endurance. From 127 Hours to Society of the Snow, these films portray true survival against impossible odds.',
+
+  // 📖 Long-form editorial copy (authority-focused)
+  longDescription:
+    'Survival cinema strips humanity down to its rawest instincts. This collection features the most intense and realistic survival films ever made—stories of isolation, injury, starvation, and impossible choices. From climbers trapped beneath boulders to survivors stranded in frozen mountains and open oceans, these films explore how far the human spirit can be pushed before breaking.',
+
   icon: '🏔️',
   emoji: '🏔️',
   theme: 'yellow',
+
   primaryColor: '#facc15',
   secondaryColor: '#eab308',
   accentColor: '#ca8a04',
+
   gradientFrom: 'from-yellow-600',
   gradientTo: 'to-yellow-500',
+
   category: 'survival',
-  tags: ['survival', 'extreme', 'endurance', 'true stories', 'human resilience'],
-  metaTitle: '10 Best Survival Movies Ever Made (2026) - Expert Rankings | Filmiway',
-  metaDescription: 'Discover 10 heart-pounding survival movies ranked by intensity. From 127 Hours to The Revenant, explore films that push human endurance to the limit. Updated (2026).',
-  metaKeywords: 'best survival movies, survival films (2026), extreme survival, 127 hours, the revenant, cast away, true story survival movies, survival thriller movies',
+
+  // 🔍 Natural, non-spammy tags
+  tags: [
+    'survival',
+    'true survival stories',
+    'human endurance',
+    'wilderness',
+    'man vs nature'
+  ],
+
+  // 🔥 SEO — aligned with H1 (very important)
+  metaTitle:
+    '10 Best Survival Movies (True Stories & Ranked by Realism) | Filmiway',
+
+  metaDescription:
+    'Discover the best survival movies ranked by realism and intensity. From 127 Hours to The Revenant and Society of the Snow, these films showcase true human endurance.',
+
+  metaKeywords:
+    'best survival movies, true survival stories, realistic survival films, 127 hours, the revenant, cast away, society of the snow',
+
   stats: {
     totalMovies: 10,
     averageRating: 7.7,
-    totalWatchtime: '21 hours 33 minutes',
-    averageSurvivabilityIndex: 89.0,
+    totalWatchtime: '21h 33m',
+    averageSurvivabilityIndex: 89,
     mostExtreme: '127 Hours (98/100)',
     newestMovie: 'Society of the Snow (2023)',
     oldestMovie: 'Cast Away (2000)'
   },
+
   movies: [
-    'tt1542344',   // 127 Hours (2010)
-    'tt16277242',  // Society of the Snow (2023)
-    'tt0162222',   // Cast Away (2000)
-    'tt1663202',   // The Revenant (2015)
-    'tt3659388',   // The Martian (2015)
-    'tt1649419',   // The Impossible (2012)
-    'tt3758172',   // Jungle (2017)
-    'tt0472043',   // Apocalypto (2006)
-    'tt12262116',  // 13 Lives (2022)
-    'tt1809398'    // Unbroken (2014)
+    'tt1542344',   // 127 Hours
+    'tt16277242',  // Society of the Snow
+    'tt0162222',   // Cast Away
+    'tt1663202',   // The Revenant
+    'tt3659388',   // The Martian
+    'tt1649419',   // The Impossible
+    'tt3758172',   // Jungle
+    'tt0472043',   // Apocalypto
+    'tt12262116',  // 13 Lives
+    'tt1809398'    // Unbroken
   ],
+
+  // 🏅 On-page persuasion (safe place for emotion)
   badges: [
-    { label: 'Extreme Survival', desc: 'Ultimate tests of human endurance' },
-    { label: 'Survivability Indexed', desc: 'Ranked by survival difficulty' },
-    { label: 'True Stories', desc: 'Many based on real events' }
+    { label: 'True Stories', desc: 'Inspired by real survival events' },
+    { label: 'Extreme Conditions', desc: 'Nature at its most unforgiving' },
+    { label: 'Human Resilience', desc: 'Unbreakable will to survive' }
   ],
+
   featured: {
     hero: {
       title: '127 Hours',
-      subtitle: 'The Ultimate Test of Human Will',
-      description: 'Danny Boyle\'s masterpiece showcases the most extreme survival scenario ever captured on film.',
-      poster: 'https://image.tmdb.org/t/p/w500/2fWl4WGEzfr3VbrqhZftLNdlL6Q.jpg',
-      backdrop: 'https://image.tmdb.org/t/p/w1280/path-to-backdrop.jpg',
+      subtitle: 'The Ultimate Survival Test',
+      description:
+        'A harrowing true story of isolation, injury, and an impossible decision made in order to survive.',
+     
+
       survivabilityIndex: 98
     }
   },
-// ✅ FIX: Renamed from 'internalLinks' to 'relatedCollections' to match component logic
- relatedCollections: [
-    'best-war-films',              // Thematic Sibling
-    'movies-like-interstellar',    // Survival in Space
-    'best-drama-movies-on-hulu'    // FIXED: Changed from Netflix to Hulu
+
+  relatedCollections: [
+    'best-war-films',
+    'movies-like-interstellar',
+    'best-thriller-movies'
   ],
+
   seo: {
-    title: '10 Best Survival Movies Ever Made (2026) - Expert Rankings | Filmiway',
-    description: 'Discover 10 heart-pounding survival movies ranked by intensity. From 127 Hours to The Revenant, explore films that push human endurance to the limit. Updated (2026).',
-    keywords: 'best survival movies, survival films, extreme survival, survivability index, brutal survival stories, human endurance movies, true survival stories, 127 hours, the revenant, cast away',
-    canonicalUrl: 'https://filmiway.com/collection/best-survival-movies',
-    ogImage: 'https://filmiway.com/images/survival-movies-collection-og.jpg',
+    title:
+      '10 Best Survival Movies (True Stories & Ranked by Realism) | Filmiway',
+
+    description:
+      'Expert-curated list of the best survival movies based on true stories and realism. Ranked by human endurance and survival intensity.',
+
+    keywords:
+      'best survival movies, survival films, true survival stories, extreme survival, human endurance movies',
+
+    canonicalUrl:
+      'https://filmiway.com/collection/best-survival-movies',
+
     structuredData: {
       '@context': 'https://schema.org',
       '@type': 'ItemList',
-      name: 'Best Survival Movies',
-      description: 'Expert-curated list of the best survival movies ranked by intensity and realism',
+      name: '10 Best Survival Movies',
+      description:
+        'Expert-curated list of survival movies ranked by realism and human endurance',
       numberOfItems: 10
     }
   }
@@ -3351,85 +3394,113 @@ export const COLLECTIONS = {
 
 
 
-// 👁️ MOVIES LIKE EYES WIDE SHUT COLLECTION
+// 👁️ MOVIES LIKE EYES WIDE SHUT COLLECTION (FINAL – CTR + SEO SAFE)
+
 'movies-like-eyes-wide-shut': {
   slug: 'movies-like-eyes-wide-shut',
-  title: 'Movies Like Eyes Wide Shut',
-  subtitle: 'Secret Societies & Occult Paranoia',
-  description: 'Surreal thrillers about the hidden elite, secret rituals, and the terrifying paranoia of discovering what happens behind closed doors.',
-  longDescription: 'Step into the forbidden world of the elite. Inspired by Stanley Kubrick’s final masterpiece, this collection explores films where wealthy power brokers hide dark secrets, reality feels like a dream, and curiosity can get you killed. From occult rituals to psychological fugue states, these are cinema’s most paranoid nightmares.',
+
+  title: '10 Movies Like Eyes Wide Shut: Secret Societies & Cults',
+  subtitle: 'The Forbidden World of the Elite',
+
+  description:
+    'Crave the mystery of the forbidden? We ranked the top 10 psychological thrillers about secret societies, elite cults, and the unsettling paranoia of the wealthy.',
+
+  longDescription:
+    'Stanley Kubrick’s Eyes Wide Shut introduced us to a world where the wealthy hide dark, ritualistic secrets behind closed doors. This collection goes deeper. We have curated cinema’s most unsettling films about secret societies, occult conspiracies, and the paranoia of discovering truths you were never meant to see. From The Ninth Gate to Mulholland Drive, these are the movies that make you question reality.',
 
   emoji: '👁️',
   theme: 'violet',
-  primaryColor: '#7c3aed',
-  secondaryColor: '#6d28d9',
-  accentColor: '#5b21b6',
-  gradientFrom: 'from-violet-900',
-  gradientTo: 'to-slate-900',
-  category: 'eyes-wide-shut',
-  tags: ['secret societies', 'occult', 'paranoia', 'surrealism', 'erotic thriller', 'cults', 'wealth'],
 
-  metaTitle: '10 Movies Like Eyes Wide Shut (2026) | Occult Paranoia Films | Filmiway',
-  metaDescription: 'Discover 10 paranoid thrillers like Eyes Wide Shut—from Mulholland Drive to The Ninth Gate. Films about secret societies, rituals, and the dark elite.',
-  metaKeywords: 'movies like eyes wide shut, secret society movies, occult thrillers, mulholland drive, the ninth gate, rosemarys baby, illuminati movies, paranoia films',
+  primaryColor: '#7c3aed',
+  secondaryColor: '#4c1d95',
+  accentColor: '#c4b5fd',
+
+  gradientFrom: 'from-slate-900',
+  gradientTo: 'to-violet-900',
+
+  // 🔒 Keep collection-specific category for internal logic
+  category: 'eyes-wide-shut',
+
+  tags: [
+    'secret societies',
+    'elite rituals',
+    'cults',
+    'psychological thriller',
+    'erotic thriller',
+    'dark academia',
+    'paranoia',
+    'forbidden knowledge'
+  ],
+
+  // 🔍 SEO (safe for Google + Bing + LLMs)
+  metaTitle: '10 Unsettling Movies Like Eyes Wide Shut (Ranked) | Filmiway',
+  metaDescription:
+    'Looking for movies like Eyes Wide Shut? Discover 10 dark thrillers about secret societies, elite cults, and psychological spirals — ranked by intensity.',
+  metaKeywords:
+    'movies like eyes wide shut, secret society movies, movies about cults, elite ritual films, the ninth gate, similar to eyes wide shut, dark psychological thrillers',
 
   stats: {
     totalMovies: 10,
-    averageRating: 7.6,
-    totalWatchtime: '21 hours 10 minutes',
-    averageParanoiaLevel: 91.5,
-    mostParanoid: 'Rosemary\'s Baby (100/100)',
-    newestMovie: 'Get Out (2017)',
-    oldestMovie: 'Rosemary\'s Baby (1968)'
+    averageRating: 8.1,              // number (format in UI)
+    totalWatchtime: '21h 10m',
+    averageParanoiaLevel: 94,        // number (format in UI)
+    mostParanoid: "Rosemary's Baby",
+    newestMovie: 'The Killing of a Sacred Deer (2017)',
+    oldestMovie: "Rosemary's Baby (1968)"
   },
 
   movies: [
-    'tt0166924',  // ✅ Rank 1: Mulholland Drive (2001)
-    'tt0142688',  // ✅ Rank 2: The Ninth Gate (1999)
-    'tt0090756',  // ✅ Rank 3: Blue Velvet (1986)
-    'tt0063522',  // ✅ Rank 4: Rosemary's Baby (1968)
-    'tt0119174',  // ✅ Rank 5: The Game (1997)
-    'tt0116922',  // ✅ Rank 6: Lost Highway (1997)
-    'tt0098354',  // ✅ Rank 7: Society (1989)
-    'tt0134273',  // ✅ Rank 8: 8mm (1999)
-    'tt5052448',  // ✅ Rank 9: Get Out (2017)
-    'tt5715874'   // ✅ Rank 10: The Killing of a Sacred Deer (2017)
+    'tt0166924',  // 1. Mulholland Drive
+    'tt0142688',  // 2. The Ninth Gate
+    'tt0090756',  // 3. Blue Velvet
+    'tt0063522',  // 4. Rosemary's Baby
+    'tt0119174',  // 5. The Game
+    'tt0116922',  // 6. Lost Highway
+    'tt0098354',  // 7. Society
+    'tt0134273',  // 8. 8mm
+    'tt5052448',  // 9. Get Out
+    'tt5715874'   // 10. The Killing of a Sacred Deer
   ],
 
   badges: [
-    { label: 'Secret Societies', desc: 'Hidden worlds of the elite' },
-    { label: 'Occult Atmosphere', desc: 'Dark rituals and mystery' },
-    { label: 'Dream Logic', desc: 'Surreal, nightmarish storytelling' }
+    { label: 'Secret Societies', desc: 'Hidden cults & elite rituals' },
+    { label: 'Mind-Bending', desc: 'Blurring reality and nightmare' },
+    { label: 'High Anxiety', desc: 'Relentless psychological tension' }
   ],
 
   featured: {
     hero: {
       title: 'Eyes Wide Shut',
-      subtitle: 'The Ultimate Occult Nightmare',
-      description: 'Stanley Kubrick’s final masterpiece exposes the terrifying, masked underbelly of the wealthy elite in a dream-like odyssey of paranoia.',
-      poster: 'https://image.tmdb.org/t/p/w500/knHT4niVCN0d5d5vR5c50lY8Wz.jpg',
-      backdrop: 'https://image.tmdb.org/t/p/w1280/8rIoyM6zYXJNjzGseco3AaSSlnK.jpg',
+      subtitle: 'The Ultimate Paranoia Masterpiece',
+      description:
+        'Tom Cruise and Nicole Kidman star in Stanley Kubrick’s final film — a hypnotic journey into the sexual and occult underworld of New York’s elite.',
+
+
       paranoiaLevel: 98
     }
   },
 
-relatedCollections: [
-    'movies-like-black-swan',      // FIXED: Similar psychological descent
+  relatedCollections: [
     'best-psychological-thriller-movies',
+    'movies-like-black-swan',
     'best-mystery-thriller-movies'
   ],
 
   seo: {
-    title: '10 Movies Like Eyes Wide Shut (2026) | Occult Paranoia Films | Filmiway',
-    description: 'Explore the definitive ranking of films like Eyes Wide Shut. Expert-curated thrillers about secret societies, the occult, and elite paranoia.',
-    keywords: 'movies like eyes wide shut, secret society films, occult movies, mulholland drive, the ninth gate, blue velvet, cult movies, stanley kubrick style',
-    canonicalUrl: 'https://filmiway.com/collection/movies-like-eyes-wide-shut',
-    ogImage: 'https://filmiway.com/images/eyes-wide-shut-movies-collection-og.jpg',
+    title: '10 Unsettling Movies Like Eyes Wide Shut (Ranked) | Filmiway',
+    description:
+      'Craving the forbidden? Explore the best movies about secret societies, elite cults, and paranoia similar to Eyes Wide Shut.',
+    keywords:
+      'movies like eyes wide shut, secret society films, occult thrillers, mulholland drive, the ninth gate, blue velvet, cult movies, stanley kubrick style',
+    canonicalUrl:
+      'https://filmiway.com/collection/movies-like-eyes-wide-shut',
+
     structuredData: {
       '@context': 'https://schema.org',
       '@type': 'ItemList',
-      name: 'Movies Like Eyes Wide Shut',
-      description: 'Expert-curated list of the best films about secret societies and paranoia ranked by intensity',
+      name: '10 Movies Like Eyes Wide Shut: Secret Societies Ranked',
+      description:
+        'Expert-curated list of the most unsettling films about secret societies, elite rituals, and paranoia',
       numberOfItems: 10
     }
   }

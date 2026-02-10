@@ -1,6 +1,6 @@
-// components/CinematicMovieCard.js - FINAL OPTIMIZED & FEATURE RICH ⚡
+// components/CinematicMovieCard.js - FIXED "UNDEFINED" BUG ⚡
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { Crown, Star } from 'lucide-react';
 import TMDBMoviePoster from './TMDBMoviePoster';
@@ -9,131 +9,149 @@ import { COMPLETE_MOVIE_DATA as SURVIVAL_DATA, STRATEGIC_QUOTES as SURVIVAL_QUOT
 
 const CinematicMovieCard = React.memo(({ movie, rank, isActive, fromSurvivalCollection }) => {
     const [isHovered, setIsHovered] = useState(false);
-    
-    // ⚡ STATE: Manage platform-specific settings safely
-    const [posterSize, setPosterSize] = useState('w500'); // Default safe size
     const [isMobile, setIsMobile] = useState(false);
 
-    // ⚡ EFFECT: Check screen size only on the client to prevent hydration mismatch
+    // ⚡ OPTIMIZATION: Check mobile state once on mount
     useEffect(() => {
-        const checkMobile = () => {
-            const mobile = window.innerWidth < 640;
-            setIsMobile(mobile);
-            // Use smaller images on mobile to kill lag
-            setPosterSize(mobile ? 'w342' : 'w780');
-        };
-        
-        checkMobile();
-        // Optional: Add resize listener if you want it to react to window resizing
-        // window.addEventListener('resize', checkMobile);
-        // return () => window.removeEventListener('resize', checkMobile);
+        setIsMobile(window.innerWidth < 768);
     }, []);
 
-    // Safety checks for data access
-    const movieInfo = fromSurvivalCollection 
-        ? (SURVIVAL_DATA?.[movie.tmdbId] || {})
-        : (COMPLETE_MOVIE_DATA?.[movie.tmdbId] || {});
-    
-    const quote = fromSurvivalCollection
-        ? (SURVIVAL_QUOTES?.[movie.tmdbId] || null)
-        : (STRATEGIC_QUOTES?.[movie.tmdbId] || null);
+    // ⚡ PERFORMANCE: Memoize data lookups
+    const movieInfo = useMemo(() => {
+        return fromSurvivalCollection 
+            ? (SURVIVAL_DATA?.[movie.tmdbId] || {})
+            : (COMPLETE_MOVIE_DATA?.[movie.tmdbId] || {});
+    }, [movie.tmdbId, fromSurvivalCollection]);
+
+    const quote = useMemo(() => {
+        return fromSurvivalCollection
+            ? (SURVIVAL_QUOTES?.[movie.tmdbId] || null)
+            : (STRATEGIC_QUOTES?.[movie.tmdbId] || null);
+    }, [movie.tmdbId, fromSurvivalCollection]);
+
+    // Determines poster quality
+    const posterQuality = isMobile ? "w342" : "w780"; 
+
+    // ✅ FIXED LOGIC: Determines text to show on hover without "undefined" errors
+    const hoverText = useMemo(() => {
+        if (quote) return quote;
+        if (movieInfo.synopsis) return movieInfo.synopsis.substring(0, 80) + '...';
+        return 'A cinematic masterpiece.';
+    }, [quote, movieInfo.synopsis]);
 
     return (
         <motion.article 
-            initial={{ opacity: 0, y: 30 }} 
+            initial={{ opacity: 0, y: 40 }} 
             whileInView={{ opacity: 1, y: 0 }} 
-            viewport={{ once: true, margin: "50px" }} // Lazy load animations
-            transition={{ duration: 0.5, ease: "easeOut" }} 
-            className="relative w-full h-full group flex flex-col items-center px-2 sm:px-4 cursor-pointer" 
-            onMouseEnter={() => setIsHovered(true)} 
-            onMouseLeave={() => setIsHovered(false)}
+            viewport={{ once: true, margin: "100px" }} 
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }} 
+            className="relative w-full h-full group flex flex-col items-center px-2 sm:px-4 cursor-pointer touch-manipulation"
+            onMouseEnter={() => !isMobile && setIsHovered(true)} 
+            onMouseLeave={() => !isMobile && setIsHovered(false)}
+            onClick={() => isMobile && setIsHovered(!isHovered)} 
         >
-            <div className="rounded-xl mb-3 sm:mb-6 lg:mb-8" style={{ perspective: '1000px' }}>
+            {/* 3D Container */}
+            <div className="rounded-2xl mb-4 sm:mb-6 lg:mb-8 w-full flex justify-center" style={{ perspective: '1200px' }}>
                 <motion.div 
-                    className="relative w-48 h-72 sm:w-64 sm:h-96 md:w-80 md:h-[480px] lg:w-96 lg:h-[576px] overflow-hidden rounded-xl shadow-2xl bg-gray-900 border border-gray-700/50" 
-                    // ⚡ OPTIMIZATION: Disable complex 3D tilt on mobile
-                    whileHover={{ 
-                        scale: 1.02, 
-                        rotateY: isMobile ? 0 : 4, 
-                        boxShadow: `0 20px 40px rgba(0,0,0,0.6), 0 0 30px ${movieInfo.dominantColor || '#ca8a04'}20` 
-                    }} 
-                    whileTap={{ scale: 0.98 }}
+                    className="relative w-48 h-72 sm:w-64 sm:h-96 md:w-80 md:h-[480px] lg:w-96 lg:h-[576px] overflow-hidden rounded-2xl shadow-2xl bg-gray-900 border border-gray-800"
+                    
+                    whileHover={!isMobile ? { 
+                        scale: 1.03, 
+                        rotateY: 5, 
+                        rotateX: 2,
+                        boxShadow: `0 25px 50px -12px rgba(0,0,0,0.7), 0 0 40px ${movieInfo.dominantColor || '#ca8a04'}30` 
+                    } : {}}
+                    whileTap={{ scale: 0.96 }}
+                    
                     style={{ 
                         transformStyle: 'preserve-3d',
-                        willChange: 'transform' // Forces GPU rendering
+                        willChange: 'transform, box-shadow' 
                     }}
                 >
-                    <TMDBMoviePoster 
-                        movie={movie} 
-                        className="w-full h-full object-cover bg-gray-800" 
-                        posterSize="w500" 
-                    />
+                    {/* Poster Image */}
+                    <div className="w-full h-full bg-gray-800">
+                        <TMDBMoviePoster 
+                            movie={movie} 
+                            className="w-full h-full object-cover" 
+                            posterSize={posterQuality} 
+                        />
+                    </div>
 
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+                    {/* Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent pointer-events-none" />
                     
-                    {/* Rank Badge */}
-                    <div className="absolute top-2 left-2 sm:top-3 sm:left-3 z-10">
+                    {/* 🏆 RANK BADGE */}
+                    <div className="absolute top-3 left-3 sm:top-4 sm:left-4 z-20">
                         <motion.div 
-                            className={`w-8 h-8 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-xl backdrop-blur-xl border flex items-center justify-center text-xs sm:text-sm font-light ${
-                                rank === 1 ? 'bg-gradient-to-br from-yellow-500/30 to-yellow-600/20 text-yellow-200 border-yellow-400/50 shadow-lg shadow-yellow-500/30' : 'bg-gray-800/90 text-gray-200 border-gray-700/50'
-                            }`} 
-                            whileHover={{ scale: 1.1 }} 
-                            whileTap={{ scale: 0.9 }}
+                            className={`w-10 h-10 sm:w-14 sm:h-14 rounded-2xl backdrop-blur-md border flex items-center justify-center shadow-lg ${
+                                rank === 1 
+                                ? 'bg-gradient-to-br from-yellow-400/90 to-amber-600/90 border-yellow-300/50 text-white shadow-yellow-500/20' 
+                                : 'bg-black/60 border-white/10 text-white/90'
+                            }`}
+                            whileHover={{ scale: 1.1 }}
                         >
-                            {rank === 1 ? <Crown size={12} className="sm:w-4 sm:h-4 lg:w-5 lg:h-5" /> : rank}
+                            {rank === 1 ? (
+                                <Crown size={20} className="sm:w-6 sm:h-6 drop-shadow-md" />
+                            ) : (
+                                <span className="text-sm sm:text-lg font-medium" style={{ fontFamily: "'Playfair Display', serif" }}>{rank}</span>
+                            )}
                         </motion.div>
                     </div>
                     
-                    {/* Complexity Badge */}
-                    <div className="absolute top-2 right-2 sm:top-3 sm:right-3 z-10">
-                        <motion.div 
-                            className="px-2 py-1 sm:px-3 sm:py-1 bg-gray-800/90 backdrop-blur-xl border border-gray-700/50 rounded-lg text-xs font-light tracking-wider uppercase" 
-                            style={{ 
-                                color: movieInfo.dominantColor || '#ca8a04', 
-                                borderColor: `${movieInfo.dominantColor || '#ca8a04'}40` 
-                            }} 
-                            initial={{ opacity: 0, scale: 0.8 }} 
-                            animate={{ opacity: isHovered ? 1 : 0, scale: isHovered ? 1 : 0.8 }}
-                        >
-                            {movieInfo.complexityLevel || 'HIGH'}
-                        </motion.div>
+                    {/* 🧠 COMPLEXITY BADGE */}
+                    <div className="absolute top-3 right-3 sm:top-4 sm:right-4 z-20">
+                        {movieInfo.complexityLevel && (
+                            <motion.div 
+                                className="px-3 py-1.5 bg-black/60 backdrop-blur-md border border-white/10 rounded-lg text-[10px] sm:text-xs font-medium tracking-widest uppercase text-white/90 shadow-lg"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                            >
+                                {movieInfo.complexityLevel}
+                            </motion.div>
+                        )}
                     </div>
                     
-                    {/* Rating Badge */}
-                    <motion.div 
-                        initial={{ opacity: 0, x: -20 }} 
-                        animate={{ opacity: isHovered ? 1 : 0, x: isHovered ? 0 : -20 }} 
-                        className="absolute bottom-2 left-2 sm:bottom-3 sm:left-3 flex items-center gap-1 sm:gap-2 px-2 py-1 sm:px-3 sm:py-2 bg-gray-800/90 backdrop-blur-xl border border-gray-700/50 rounded-lg z-10"
-                    >
-                        <Star size={10} className="sm:w-3 sm:h-3 lg:w-4 lg:h-4 text-yellow-400 fill-current" />
-                        <span className="text-gray-200 text-xs sm:text-sm font-light">{movieInfo.rating || 7.0}</span>
-                    </motion.div>
+                    {/* ⭐ RATING BADGE */}
+                    <div className="absolute bottom-3 left-3 sm:bottom-4 sm:left-4 z-20">
+                        <div className="flex items-center gap-1.5 px-3 py-1.5 bg-black/60 backdrop-blur-md border border-white/10 rounded-lg">
+                            <Star size={12} className="sm:w-4 sm:h-4 text-yellow-400 fill-yellow-400" />
+                            <span className="text-xs sm:text-sm font-medium text-white/90">{movieInfo.rating || 7.5}</span>
+                        </div>
+                    </div>
                 </motion.div>
             </div>
             
-            <div className="text-center space-y-2 sm:space-y-3 lg:space-y-4 z-10 max-w-sm px-2 sm:px-4">
+            {/* Movie Details */}
+            <div className="text-center space-y-2 sm:space-y-3 lg:space-y-4 z-10 max-w-[200px] sm:max-w-xs md:max-w-sm px-1">
                 <motion.h2 
-                    className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-light tracking-wide text-gray-100 leading-tight" 
+                    className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-normal text-white leading-tight" 
                     style={{ fontFamily: "'Playfair Display', serif" }}
-                    whileHover={{ scale: 1.02 }}
+                    whileHover={{ scale: 1.02, color: "#facc15" }}
+                    transition={{ duration: 0.2 }}
                 >
-                    {movie.Title?.replace(/\*/g, '') || movie.title || 'Unknown Movie'}
+                    {movie.Title?.replace(/\*/g, '') || movie.title || 'Unknown'}
                 </motion.h2>
                 
-                <div className="text-gray-400 text-xs sm:text-sm font-light uppercase tracking-widest">
-                    {movie.year || movie.Year || '2024'} • {movie.genre?.split(',')[0].trim() || movie.Genre?.split(',')[0].trim() || 'Drama'} • {movie.runtime ? `${movie.runtime}` : (movie.Runtime || '120')} MIN
+                <div className="flex items-center justify-center gap-2 sm:gap-3 text-xs sm:text-sm text-gray-400 font-medium tracking-widest uppercase">
+                    <span>{movie.year || movie.Year || '2024'}</span>
+                    <span className="text-gray-600">•</span>
+                    <span>{movie.runtime ? `${movie.runtime}` : (movie.Runtime || '120')}m</span>
                 </div>
                 
-                {isHovered && (quote || movieInfo.synopsis) && (
-                    <motion.p 
-                        className="text-gray-300/80 text-xs sm:text-sm leading-relaxed font-light tracking-wide"
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                    >
-                        {quote || (movieInfo.synopsis?.substring(0, 100) + '...') || ''}
-                    </motion.p>
-                )}
+                {/* Quote / Synopsis Reveal (Fixed) */}
+                <motion.div
+                    initial={false}
+                    animate={{ 
+                        height: isHovered ? 'auto' : 0,
+                        opacity: isHovered ? 1 : 0
+                    }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    className="overflow-hidden"
+                >
+                    <p className="pt-2 text-gray-400 text-xs sm:text-sm leading-relaxed font-light italic max-w-xs mx-auto">
+                        "{hoverText}"
+                    </p>
+                </motion.div>
             </div>
         </motion.article>
     );

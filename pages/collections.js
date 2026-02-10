@@ -456,7 +456,7 @@ const CollectionsHub = () => {
             icon: Eye,
             gradient: 'from-violet-700 to-slate-900',
             movieCount: '10',
-            rating: '7.6',
+            rating: '8.1',
             directLink: '/collection/movies-like-eyes-wide-shut',
             hasSubCollections: false
         },

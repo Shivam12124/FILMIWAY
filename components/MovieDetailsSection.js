@@ -378,6 +378,7 @@ const MovieDetailsSection = React.memo(({
   fromPeacockFamilyCollection,
   fromPeacockDramaCollection,
   fromPeacockThrillerCollection,
+  fromPeacockBestCollection,
 }) => {
 
  if (!movie) return null;

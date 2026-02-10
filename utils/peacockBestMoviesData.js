@@ -137,7 +137,7 @@ export const COMPLETE_MOVIE_DATA = {
 
     // 2. Sicario (Dust Yellow - Border Tension)
     273481: createMovieData({
-        rating: 7.6, criticsScore: 92, audienceScore: 85, director: "Denis Villeneuve",
+        rating: 7.7, criticsScore: 92, audienceScore: 85, director: "Denis Villeneuve",
         cast: ["Emily Blunt", "Benicio Del Toro", "Josh Brolin"], boxOffice: "$85 million", budget: "$30 million",
         dominantColor: "#eab308", // Dust Yellow
         dna: { "Crime": 50, "Thriller": 40, "Drama": 10 },

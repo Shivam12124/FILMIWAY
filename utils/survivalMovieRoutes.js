@@ -127,16 +127,24 @@ export const getRelatedSurvivalMovies = (currentMovie, limit = 3) => {
 
 // ✅ SURVIVAL COLLECTION METADATA - FIXED WITH REAL DATA
 export const SURVIVAL_COLLECTION_META = {
-    title: 'Top 10 Best Survival Movies',
-    description: 'Discover the most brutal and intense survival movies ranked by survivability index. From 127 Hours to Society of the Snow.',
-    keywords: 'best survival movies, survival films ranking, survivability index, brutal survival cinema, extreme survival stories',
+    // ✅ MATCHES H1: Builds authority with "True Stories" label
+  title: '10 Best Survival Movies (True Stories & Ranked by Realism) | Filmiway',
+    
+    // ✅ MATCHES HOOK: Uses the "Nature Decides" branding + specific movie names
+    description: 'When nature decides who lives. The most intense survival movies ranked by realism and human endurance. From "127 Hours" to "Society of the Snow".',
+    
+    // ✅ MATCHES BING INTENT: Targets users looking for "True" and "Realistic" films
+    keywords: 'best survival movies, true survival stories, realistic survival films, survivability index, 127 hours, society of the snow, extreme survival',
+    
     canonicalUrl: 'https://filmiway.com/collection/best-survival-movies',
-    ogImage: 'https://filmiway.com/images/survival-movies-collection.jpg',
+   
+    
     totalMovies: COMPLETE_MOVIE_DATABASE.length,
-    // ✅ FIXED - NOW USES REAL SURVIVABILITY INDEX DATA
+    
+    // ✅ LOGIC KEPT (Added safety check || 0 to prevent NaN errors)
     averageSurvivabilityIndex: Math.round(
         COMPLETE_MOVIE_DATABASE.reduce((sum, movie) => {
-            return sum + movie.survivabilityIndex; // NOW USES REAL DATA
+            return sum + (movie.survivabilityIndex || 0); 
         }, 0) / COMPLETE_MOVIE_DATABASE.length
     )
 };

@@ -174,6 +174,7 @@ const CollectionPage = ({ collection, movies }) => {
     const [isAutoPlay, setIsAutoPlay] = useState(false);
 
     // Handle return from movie detail page + position tracking
+// Handle return from movie detail page + position tracking
     useEffect(() => {
         if (typeof window !== 'undefined') {
             const returningFromMovie = sessionStorage.getItem('returningFromMovie');
@@ -186,7 +187,11 @@ const CollectionPage = ({ collection, movies }) => {
             }
         }
         
-        const timer = setTimeout(() => setIsLoading(false), 2500);
+        // ✅ SMART LOADER: Instant load for Bots (SEO), Animation for Humans (UX)
+        const isBot = /bot|googlebot|crawler|spider|robot|crawling/i.test(navigator.userAgent);
+        const delayTime = isBot ? 0 : 2500; 
+
+        const timer = setTimeout(() => setIsLoading(false), delayTime);
         return () => clearTimeout(timer);
     }, []);
 
@@ -1493,29 +1498,75 @@ const getCollectionContent = () => {
                 text2: "Each film has been selected for its ability to maintain constant tension while developing compelling characters and narratives that demand your complete attention."
             }
         };
-    } else if (collection.slug === 'best-survival-movies') {
-        return {
-            badge: "Survival Cinema",
-            title: "Survival",
-            description: "Intense survival films where nature doesn't care. Human resilience against brutal wilderness, mountains & deserts—ranked by how desperate the struggle becomes.",
-            selection: {
-                text1: "From wilderness perils to environmental catastrophes—these films capture the raw essence of human determination against nature's unforgiving and merciless forces.",
-                text2: "Each survival masterpiece features protagonists battling brutal elements, hostile wildlife, and their own physical and psychological limits in the desperate pursuit of survival."
-            },
-            ranking: {
-                text: "Our survival intensity index evaluates environmental brutality, human resilience authenticity, and the realism of survival scenarios throughout each film.",
-                points: [
-                    "Environmental intensity",
-                    "Physical challenge realism",
-                    "Psychological endurance depth",
-                    "Survival ingenuity display"
-                ]
-            },
-            experience: {
-                text1: "Whether you're seeking intense physical action or psychological exploration of human limits, this collection delivers cinema's most gripping survival experiences that test the human spirit.",
-                text2: "Each film has been selected for its raw, unflinching portrayal of human resilience and the primal struggle for survival against overwhelming odds that seem impossible to overcome."
-            }
-        };
+} else if (collection.slug === 'best-survival-movies') {
+
+    return {
+
+        badge: "Survival Cinema",
+
+
+
+        title: "Survival Movies That Push Humans to the Edge (Real Stories)",
+
+
+
+        description:
+
+          "Brutal survival films where nature doesn’t care if you live or die. Ranked by realism, desperation, and human endurance.",
+
+
+
+        selection: {
+
+            text1:
+
+              "These films strip survival down to its rawest form—where isolation, injury, hunger, and impossible decisions define the fight to stay alive.",
+
+            text2:
+
+              "From frozen mountains to unforgiving deserts, each story captures the terrifying reality of survival when rescue is uncertain or impossible."
+
+        },
+
+
+
+        ranking: {
+
+            text:
+
+              "Our survival intensity index ranks each film based on realism, environmental brutality, and the physical and psychological toll on its characters.",
+
+            points: [
+
+                "Environmental brutality",
+
+                "Physical survival realism",
+
+                "Psychological endurance",
+
+                "Ingenuity under pressure"
+
+            ]
+
+        },
+
+
+
+        experience: {
+
+            text1:
+
+              "This collection is for viewers who want survival stories that feel real—where every injury matters and every decision has consequences.",
+
+            text2:
+
+              "Each film delivers an unflinching portrayal of human resilience against nature, isolation, and overwhelming odds."
+
+        }
+
+    };
+
+
     } else if (collection.slug === 'best-drama-movies-on-netflix') {
         return {
             badge: "Award-Winning Drama",
@@ -1835,11 +1886,12 @@ const getHeaderContent = () => {
         subtitle: "Time travel paradoxes, dying dreams & doppelgängers that shatter reality itself"
     };
 
-    } else if (collection.slug === 'movies-like-eyes-wide-shut') {
-        return {
-            title: "Movies Like Eyes Wide Shut: 10 Paranoid Thrillers",
-            subtitle: "Secret societies, occult rituals & elite conspiracies hidden in plain sight"
-        };
+   } else if (collection.slug === 'movies-like-eyes-wide-shut') {
+    return {
+        title: "10 Movies Like Eyes Wide Shut: Secret Societies & Cults",
+        subtitle: "The forbidden world of elite rituals and psychological paranoia"
+    };
+
 
 
     } else if (collection.slug === 'movies-like-interstellar') {
@@ -1887,11 +1939,13 @@ const getHeaderContent = () => {
             title: "Best Mystery Thrillers: 10 Unsolvable Films",
             subtitle: "Clever detective work, impossible puzzles & shocking revelations"
         };
-    } else if (collection.slug === 'best-survival-movies') {
-        return {
-            title: "Best Survival Movies: 10 Against-All-Odds Films",
-            subtitle: "Human resilience vs brutal nature—wilderness, mountains & desert survival"
-        };
+} else if (collection.slug === 'best-survival-movies') {
+    return {
+        title: "Survival Movies That Push Humans to the Edge (True Stories)",
+        subtitle: "True endurance stories against nature’s most unforgiving extremes"
+    };
+
+
     } else if (collection.slug === 'best-drama-movies-on-netflix') {
         return {
             title: "Best Netflix Dramas: 10 Award-Winning Films",
@@ -2737,15 +2791,22 @@ const getStaticMetaContent = () => {
             twitterTitle: "🔍 10 Detective Mystery Thrillers That'll Stump You",
             progressText: `of Top ${movies.length} Mystery Thriller Movies`
         };
-    } else if (collection.slug === 'best-survival-movies') {
-        return {
-            title: "10 Best Survival Movies: Against All Odds",
-            description: "The 10 most intense survival films featuring human resilience against brutal nature. Wilderness, mountains, and desert survival. Includes sensitive content timestamps.", 
-            keywords: "best survival movies, realistic survival films, man vs nature movies, cast away",
-            ogTitle: "10 Best Survival Movies: Against All Odds ⛰️",
-            twitterTitle: "⛰️ 10 Survival Movies Where Nature Doesn't Care",
-            progressText: `of Top ${movies.length} Survival Movies`
-        };
+} else if (collection.slug === 'best-survival-movies') {
+    return {
+        title: "Survival Movies That Push Humans to the Edge (Real Stories)",
+
+        description: "A curated collection of the most intense survival films ever made—stories of human endurance against unforgiving nature. Wilderness, isolation, and real survival stakes, with detailed sensitive content timelines.",
+
+        keywords: "best survival movies, realistic survival films, survival movies based on true stories, man vs nature films",
+
+        ogTitle: "Survival Movies That Push Humans to the Edge | Filmiway",
+
+        twitterTitle: "Survival Movies That Push Humans to the Edge",
+
+        progressText: `Exploring ${movies.length} Survival Films`
+    };
+
+
     } else if (collection.slug === 'best-detective-thriller-movies') {
         return {
             title: "10 Best Detective Thrillers: Brilliant Cases",
@@ -3289,58 +3350,49 @@ const CinematicHeader = React.memo(() => {
     );
 });
     // 🔥 CINEMATIC LOADER
-    const CinematicLoader = React.memo(() => {
-        return (
-            <div className="flex flex-col items-center justify-center h-full space-y-8 sm:space-y-16 px-4 sm:px-8">
-                <div className="relative">
-                    <motion.div 
-                        animate={{ rotate: 360 }} 
-                        transition={{ duration: 4, repeat: Infinity, ease: "linear" }} 
-                        className="w-16 h-16 sm:w-24 sm:h-24 border-4 border-gray-800/60 rounded-full relative"
-                    >
-                        <div className="absolute inset-2 sm:inset-3 border-2 border-yellow-500/40 rounded-full">
-                            <div className="absolute inset-1 sm:inset-2 border border-yellow-400/30 rounded-full">
-                                <div className="absolute inset-1 bg-yellow-500/10 rounded-full" />
-                            </div>
-                        </div>
-                        {[0, 45, 90, 135, 180, 225, 270, 315].map((rotation, index) => (
-                            <div 
-                                key={index} 
-                                className="absolute w-1.5 h-1.5 sm:w-2 sm:h-2 bg-yellow-400/40 rounded-full" 
-                                style={{ 
-                                    top: '6px', 
-                                    left: '50%', 
-                                    transformOrigin: '0 26px', 
-                                    transform: `translateX(-50%) rotate(${rotation}deg)` 
-                                }} 
-                            />
-                        ))}
-                    </motion.div>
-                </div>
+  // 🔥 CINEMATIC LOADER (SEO FIXED)
+const CinematicLoader = React.memo(() => {
+    return (
+        <div className="flex flex-col items-center justify-center h-full space-y-8 sm:space-y-16 px-4 sm:px-8">
+            <div className="relative">
+                {/* ... existing spinner animation code ... */}
                 <motion.div 
-                    initial={{ opacity: 0, y: 30 }} 
-                    animate={{ opacity: 1, y: 0 }} 
-                    transition={{ delay: 0.8 }} 
-                    className="text-center space-y-4 sm:space-y-6 max-w-xs sm:max-w-md"
+                    animate={{ rotate: 360 }} 
+                    transition={{ duration: 4, repeat: Infinity, ease: "linear" }} 
+                    className="w-16 h-16 sm:w-24 sm:h-24 border-4 border-gray-800/60 rounded-full relative"
                 >
-                    <h2 className="text-xl sm:text-2xl font-light text-gray-200 tracking-[0.2em] uppercase">
-                        {loaderContent.title}
-                    </h2>
-                    <p className="text-gray-400 text-xs sm:text-sm font-light leading-relaxed tracking-wide">
-                        {loaderContent.description}
-                    </p>
-                    <div className="w-48 h-1 sm:w-64 bg-gray-800 rounded-full overflow-hidden mx-auto">
-                        <motion.div 
-                            className="h-full bg-gradient-to-r from-yellow-500 to-amber-500 rounded-full" 
-                            animate={{ x: ['-100%', '100%'] }} 
-                            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }} 
-                        />
+                    <div className="absolute inset-2 sm:inset-3 border-2 border-yellow-500/40 rounded-full">
+                        <div className="absolute inset-1 sm:inset-2 border border-yellow-400/30 rounded-full">
+                            <div className="absolute inset-1 bg-yellow-500/10 rounded-full" />
+                        </div>
                     </div>
+                    {[0, 45, 90, 135, 180, 225, 270, 315].map((rotation, index) => (
+                        <div key={index} className="absolute w-1.5 h-1.5 sm:w-2 sm:h-2 bg-yellow-400/40 rounded-full" style={{ top: '6px', left: '50%', transformOrigin: '0 26px', transform: `translateX(-50%) rotate(${rotation}deg)` }} />
+                    ))}
                 </motion.div>
             </div>
-        );
-    });
-
+            
+            <motion.div 
+                initial={{ opacity: 0, y: 30 }} 
+                animate={{ opacity: 1, y: 0 }} 
+                transition={{ delay: 0.8 }} 
+                className="text-center space-y-4 sm:space-y-6 max-w-xs sm:max-w-md"
+            >
+                {/* ✅ THE FIX: Changed h2 to h1 */}
+                <h1 className="text-xl sm:text-2xl font-light text-gray-200 tracking-[0.2em] uppercase">
+                    {loaderContent.title}
+                </h1>
+                
+                <p className="text-gray-400 text-xs sm:text-sm font-light leading-relaxed tracking-wide">
+                    {loaderContent.description}
+                </p>
+                <div className="w-48 h-1 sm:w-64 bg-gray-800 rounded-full overflow-hidden mx-auto">
+                    <motion.div className="h-full bg-gradient-to-r from-yellow-500 to-amber-500 rounded-full" animate={{ x: ['-100%', '100%'] }} transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }} />
+                </div>
+            </motion.div>
+        </div>
+    );
+});
    // NAVIGATION DOTS COMPONENT
 const NavigationDots = ({ movies, currentMovieIndex, goToMovie }) => (
     <motion.div 

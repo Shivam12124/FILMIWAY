@@ -125,14 +125,25 @@ export const getRelatedEyesWideShutMovies = (currentMovie, limit = 3) => {
         }));
 };
 
-// ✅ EYES WIDE SHUT COLLECTION METADATA - FIXED WITH REAL DATA
+// 👁️ EYES WIDE SHUT COLLECTION METADATA (FINAL – CTR + SEO SAFE)
+
 export const EYES_WIDE_SHUT_COLLECTION_META = {
-    title: 'Top 10 Movies Like Eyes Wide Shut',
-    description: 'A curated list of films exploring secret societies, occult elites, and paranoia. Featuring Mulholland Drive, The Ninth Gate, and more.',
-    keywords: 'movies like eyes wide shut, secret society movies, occult thrillers, illuminati movies, paranoia cinema',
-    canonicalUrl: 'https://filmiway.com/collection/movies-like-eyes-wide-shut',
-    ogImage: 'https://filmiway.com/images/eyes-wide-shut-movies-collection.jpg',
-    totalMovies: COMPLETE_MOVIE_DATABASE.length,
+    title: '10 Movies Like Eyes Wide Shut: Secret Societies & Cults',
+    
+    description:
+      'Looking for movies like Eyes Wide Shut? Explore 10 unsettling, ranked thrillers about secret societies, elite cults, and psychological paranoia.',
+    
+    keywords:
+      'movies like eyes wide shut, secret society movies, movies about cults, elite ritual films, dark psychological thrillers',
+    
+    canonicalUrl:
+      'https://filmiway.com/collection/movies-like-eyes-wide-shut',
+    
+   
+    
+    totalMovies: 10,
+
+
     // ✅ FIXED - USES PSYCHOLOGICAL INTENSITY (Mapped as Paranoia Level)
     averageParanoiaIndex: Math.round(
         COMPLETE_MOVIE_DATABASE.reduce((sum, movie) => {
