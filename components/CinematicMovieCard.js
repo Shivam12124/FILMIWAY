@@ -1,12 +1,16 @@
-// components/CinematicMovieCard.js - FIXED "UNDEFINED" BUG ⚡
+// components/CinematicMovieCard.js - FINAL FIXED VERSION (No Duplicates + Safe Import) ⚡
 
 import React, { useState, useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { Crown, Star } from 'lucide-react';
-import TMDBMoviePoster from './TMDBMoviePoster';
+
+// ✅ SAFE IMPORT: Handles both Default and Named exports to prevent build crashes
+import TMDBMoviePosterDefault, { TMDBMoviePoster as TMDBMoviePosterNamed } from './TMDBMoviePoster';
+const TMDBMoviePoster = TMDBMoviePosterDefault || TMDBMoviePosterNamed;
+
 import { COMPLETE_MOVIE_DATA, STRATEGIC_QUOTES } from '../utils/movieData';
 import { COMPLETE_MOVIE_DATA as SURVIVAL_DATA, STRATEGIC_QUOTES as SURVIVAL_QUOTES } from '../utils/survivalMovieData';
-import TMDBMoviePoster from './TMDBMoviePoster';
+
 const CinematicMovieCard = React.memo(({ movie, rank, isActive, fromSurvivalCollection }) => {
     const [isHovered, setIsHovered] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
