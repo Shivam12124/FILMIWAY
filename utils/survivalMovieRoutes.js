@@ -125,30 +125,6 @@ export const getRelatedSurvivalMovies = (currentMovie, limit = 3) => {
         }));
 };
 
-// ✅ SURVIVAL COLLECTION METADATA - FIXED WITH REAL DATA
-export const SURVIVAL_COLLECTION_META = {
-    // ✅ MATCHES H1: Builds authority with "True Stories" label
-  title: '10 Best Survival Movies (True Stories & Ranked by Realism) | Filmiway',
-    
-    // ✅ MATCHES HOOK: Uses the "Nature Decides" branding + specific movie names
-    description: 'When nature decides who lives. The most intense survival movies ranked by realism and human endurance. From "127 Hours" to "Society of the Snow".',
-    
-    // ✅ MATCHES BING INTENT: Targets users looking for "True" and "Realistic" films
-    keywords: 'best survival movies, true survival stories, realistic survival films, survivability index, 127 hours, society of the snow, extreme survival',
-    
-    canonicalUrl: 'https://filmiway.com/collection/best-survival-movies',
-   
-    
-    totalMovies: COMPLETE_MOVIE_DATABASE.length,
-    
-    // ✅ LOGIC KEPT (Added safety check || 0 to prevent NaN errors)
-    averageSurvivabilityIndex: Math.round(
-        COMPLETE_MOVIE_DATABASE.reduce((sum, movie) => {
-            return sum + (movie.survivabilityIndex || 0); 
-        }, 0) / COMPLETE_MOVIE_DATABASE.length
-    )
-};
-
 // ✅ GENERATE SURVIVAL MOVIE SITEMAP URLS
 export const generateSurvivalMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
     const urls = [
@@ -267,7 +243,6 @@ export default {
     getSurvivalMovieBreadcrumbs,
     getSurvivalMovieNavigation,
     getRelatedSurvivalMovies,
-    SURVIVAL_COLLECTION_META,
     generateSurvivalMovieSitemapUrls,
     isValidSurvivalMovieSlug,
     searchSurvivalMovies,

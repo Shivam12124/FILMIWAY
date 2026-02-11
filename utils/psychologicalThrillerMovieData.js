@@ -65,17 +65,17 @@ export const SENSITIVE_TIMELINES = {
         { start: '1:16:10', end: '1:16:15', type: 'Kissing', severity: 'Mild' }
     ]},
     670: { scenes: [
-        { start: '11:20', end: '11:40', type: 'Masturbating', severity: 'Moderate' },
-        { start: '57:37', end: '1:01:10', type: 'Partial nudity (woman)', severity: 'Moderate' },
+        { start: '11:20', end: '11:40', type: 'Sexual Content', severity: 'Moderate' },
+        { start: '57:37', end: '1:01:10', type: 'Nudity (Woman)', severity: 'Moderate' },
         { start: '1:03:35', end: '1:05:10', type: 'Sex', severity: 'High' },
-        { start: '1:22:20', end: '1:22:36', type: 'Sexually Suggestive Scene', severity: 'Moderate' },
-        { start: '1:30:30', end: '1:30:38', type: 'Partial nudity (man)', severity: 'Mild' }
+        { start: '1:22:20', end: '1:22:36', type: 'Sexual Content', severity: 'Moderate' },
+        { start: '1:30:30', end: '1:30:38', type: 'Partial Nudity (man)', severity: 'Mild' }
     ]},
     103: { scenes: [
 
-        { start: '35:34', end: '35:45', type: 'Sexually Content', severity: 'Moderate' },
+        { start: '35:34', end: '35:45', type: 'Sexual Content', severity: 'Moderate' },
 
-        { start: '58:52', end: '59:05', type: 'Sexually Content', severity: 'Moderate' }
+        { start: '58:52', end: '59:05', type: 'Sexual Content', severity: 'Moderate' }
 
     ]},
     694: { scenes: [

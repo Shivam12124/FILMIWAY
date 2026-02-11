@@ -127,31 +127,6 @@ export const getRelatedEyesWideShutMovies = (currentMovie, limit = 3) => {
 
 // 👁️ EYES WIDE SHUT COLLECTION METADATA (FINAL – CTR + SEO SAFE)
 
-export const EYES_WIDE_SHUT_COLLECTION_META = {
-    title: '10 Movies Like Eyes Wide Shut: Secret Societies & Cults',
-    
-    description:
-      'Looking for movies like Eyes Wide Shut? Explore 10 unsettling, ranked thrillers about secret societies, elite cults, and psychological paranoia.',
-    
-    keywords:
-      'movies like eyes wide shut, secret society movies, movies about cults, elite ritual films, dark psychological thrillers',
-    
-    canonicalUrl:
-      'https://filmiway.com/collection/movies-like-eyes-wide-shut',
-    
-   
-    
-    totalMovies: 10,
-
-
-    // ✅ FIXED - USES PSYCHOLOGICAL INTENSITY (Mapped as Paranoia Level)
-    averageParanoiaIndex: Math.round(
-        COMPLETE_MOVIE_DATABASE.reduce((sum, movie) => {
-            const data = COMPLETE_MOVIE_DATA[movie.tmdbId];
-            return sum + (data?.psychologicalIntensity || 0); 
-        }, 0) / COMPLETE_MOVIE_DATABASE.length
-    )
-};
 
 // ✅ GENERATE EYES WIDE SHUT MOVIE SITEMAP URLS
 export const generateEyesWideShutMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {

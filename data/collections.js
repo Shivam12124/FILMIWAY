@@ -4046,90 +4046,119 @@ relatedCollections: [
 
 
 
-// 🕰️ Best Time Travel Movies Collection
+// 🕰️ BEST TIME TRAVEL MOVIES — FINAL "BREAK YOUR BRAIN" EDITION
 'best-time-travel-movies': {
   slug: 'best-time-travel-movies',
-  title: '10 Best Time Travel Movies Ever',
-  subtitle: 'The Ultimate Time Travel Film List',
-  description: 'Filmiway’s definitive ranking of the most iconic, mind-bending time travel movies of all time.',
-  longDescription: 'Explore the greatest time travel adventures in cinematic history. From crowd-pleasing blockbusters to cerebral indie gems, these films reinvent the genre with daring paradoxes, inventive storytelling, and powerful emotional stakes.',
 
+  // 🎯 H1 / Page Title (The "Break Your Brain" Hook)
+  title: '10 Time Travel Movies That Break Your Brain (Ranked by Paradox)',
+  subtitle: 'Time Loops, Paradoxes & Impossible Choices',
+
+  // 🧠 Above-the-fold hook (Matches your Meta Description strategy)
+  description:
+    'Time loops, paradoxes, and impossible choices. These 10 time travel movies don’t just entertain — they trap your mind long after the credits roll.',
+
+  // 📖 Editorial Copy (Reinforces the "Brain Breaking" theme)
+  longDescription:
+    'Some movies you watch; others you have to solve. This collection ranks the most mentally demanding time travel films ever made—stories that twist reality, defy logic, and force you to question fate itself. From the engineering complexity of *Primer* to the emotional devastation of *Predestination*, these are the films that refuse to let your brain rest.',
+
+  icon: '⏳',
   emoji: '⏳',
   theme: 'blue',
+  
   primaryColor: '#3b82f6',
   secondaryColor: '#60a5fa',
   accentColor: '#0891b2',
-  gradientFrom: 'from-blue-600',
-  gradientTo: 'to-blue-500',
+  gradientFrom: 'from-blue-700',
+  gradientTo: 'to-cyan-500',
+  
   category: 'time-travel',
+
+  // 🔍 Natural Tags (High-Intent)
   tags: [
-    'time travel', 'paradox', 'sci-fi', 'intensity', 'classic', 'mind-bending'
+    'time travel',
+    'mind bending',
+    'paradox',
+    'time loops',
+    'psychological',
+    'cult classics'
   ],
 
-  metaTitle: '10 Best Time Travel Movies of All Time (2026) | Filmiway Ranking',
-  metaDescription: 'Discover the top 10 time travel movies—ranked by intensity, complexity and storytelling. From Back to the Future to Interstellar.',
-  metaKeywords: 'best time travel movies, time travel films, sci-fi movies, paradox movies, back to the future, interstellar, predestination, primer',
+  // 🔥 SEO — The "Single Source of Truth" (Matches your Winning Combo)
+  seo: {
+    // ✅ WINNING TITLE: Emotional + Authoritative
+    title: '10 Time Travel Movies That Break Your Brain (Ranked by Paradox)',
+    
+    // ✅ WINNING DESCRIPTION: Psychological Pull
+    description: 
+      'Time loops, paradoxes, and impossible choices. These 10 time travel movies don’t just entertain — they trap your mind long after the credits roll.',
+    
+    // ✅ High-Intent Keywords
+    keywords: 
+      'time travel movies, paradox movies, movies that break your brain, primer, predestination, interstellar, best sci-fi movies, mind bending films',
+    
+    canonicalUrl: 'https://filmiway.com/collection/best-time-travel-movies',
+    
+    // Social Titles (Optimized for clicks)
+    ogTitle: '10 Time Travel Movies That Break Your Brain (Ranked by Paradox)',
+    twitterTitle: '10 Time Travel Movies That Break Your Brain 🤯',
+
+    structuredData: {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      name: '10 Time Travel Movies That Break Your Brain',
+      description: 'A definitive ranking of the most complex and paradoxical time travel movies ever made.',
+      numberOfItems: 10
+    }
+  },
 
   stats: {
     totalMovies: 10,
-    averageRating: 8.1,
-    totalWatchtime: '15 hours 13 minutes',
-    averageTimeTravelIntensity: 93,
-    mostIntense: 'Primer (98/100)',
+    averageRating: 8.2,
+    totalWatchtime: '19h 15m',
+    averageComplexityScore: 94, // Custom stat for this genre
+    mostComplex: 'Primer (100/100)',
     newestMovie: 'Predestination (2014)',
-    oldestMovie: 'Back to the Future (1985)'
+    oldestMovie: 'The Terminator (1984)'
   },
 
-  movies: [
-    'tt0088763', // Back to the Future
-    'tt0103064', // Terminator 2: Judgment Day
-    'tt0088247', // The Terminator
-    'tt0816692', // Interstellar
-    'tt2397535', // Predestination
-    'tt0390384', // Primer
-    'tt0114746', // 12 Monkeys
-    'tt0246578', // Donnie Darko
-    'tt0107048', // Groundhog Day
-    'tt0480669'  // Timecrimes
+  
+movies: [
+    'tt0390384', // Primer (Rank 1: The Engineer's Nightmare)
+    'tt2397535', // Predestination (Rank 2: The Ultimate Bootstrap Paradox)
+    'tt0480669', // Timecrimes (Rank 3: The Tightest Causal Loop)
+    'tt0246578', // Donnie Darko (Rank 4: Tangent Universe Theory)
+    'tt0816692', // Interstellar (Rank 5: Relativistic Physics)
+    'tt0114746', // 12 Monkeys (Rank 6: The Fixed Timeline)
+    'tt0103064', // Terminator 2 (Rank 7: Changing the Future)
+    'tt0088247', // The Terminator (Rank 8: The Origin Loop)
+    'tt0088763', // Back to the Future (Rank 9: Linear Branching)
+    'tt0107048'  // Groundhog Day (Rank 10: Simple Time Reset)
   ],
 
+  // 🏅 Badges (Why watch these?)
   badges: [
-    { label: 'Time Travel Classics', desc: 'Iconic, inventive genre-defining films' },
-    { label: 'Complex Paradoxes', desc: 'Cerebral, challenging narratives' },
-    { label: 'Intensity Ranked', desc: 'Ranked by time travel impact' }
+    { label: 'Brain Breaking', desc: 'Narratives that trap your mind' },
+    { label: 'Paradox Ranked', desc: 'Rated by logical complexity' },
+    { label: 'Cult Status', desc: 'Films that define the genre' }
   ],
 
   featured: {
     hero: {
       title: 'Primer',
-      subtitle: 'The Mind-Bending Indie Masterpiece',
-      description: 'Shane Carruth\'s legendary cult film: ultra-complex, paradox-driven, and the most intense time travel experience in cinema.',
-      poster: 'https://image.tmdb.org/t/p/w500/6A12eReb26D1jY7ZfXr5Ekbptxx.jpg',
-      backdrop: 'https://image.tmdb.org/t/p/w1280/2xdUu7lbivzxw2wGxLZM1jI1E0J.jpg',
-      timeTravelIntensity: 98
+      subtitle: 'The Ultimate Brain-Breaker',
+      description:
+        'Shane Carruth’s low-budget masterpiece is widely considered the most realistic and difficult-to-solve time travel film in history. It doesn’t hold your hand—it demands you keep up.',
+     
+      complexityIndex: 99
     }
   },
 
   relatedCollections: [
     'movies-like-inception',
     'movies-like-memento',
-    'best-thriller-movies'
-  ],
-
-  seo: {
-    title: '10 Best Time Travel Movies of All Time (2026) | Filmiway',
-    description: 'Discover the experts’ definitive ranking—10 greatest time travel movies, from Back to the Future and Interstellar to indie gems like Primer.',
-    keywords: 'best time travel movies, time travel film ranking, thriller time travel, paradox movies, genre classics, sci-fi, iconic time travel cinema',
-    canonicalUrl: 'https://filmiway.com/collection/best-time-travel-movies',
-    ogImage: 'https://filmiway.com/images/time-travel-movies-collection-og.jpg',
-    structuredData: {
-      '@context': 'https://schema.org',
-      '@type': 'ItemList',
-      name: 'Best Time Travel Movies',
-      description: 'Expert-curated ranking of the best time travel movies of all time, with intensity index and genre-defining impact.',
-      numberOfItems: 10
-    }
-  }
+    'best-sci-fi-movies'
+  ]
 },
 
 
@@ -4433,46 +4462,121 @@ relatedCollections: [
     }
   },
 
-    // 🕵️‍♂️ 10 BEST DETECTIVE THRILLER MOVIES COLLECTION
-  'best-detective-thriller-movies': {
-    slug: 'best-detective-thriller-movies',
-    title: '10 Best Detective Thriller Movies',
-    description: 'Top detective & investigation thriller movies featuring gripping crime-solving and suspense.',
-    movies: [
-      'tt0114369', // Se7en (1995)
-      'tt0443706', // Zodiac (2007)
-      'tt1392214', // Prisoners (2013)
-      'tt1305806', // The Secret in Their Eyes (2009)
-      'tt0353969', // Memories of Murder (2003)
-      'tt1190539', // The Chaser (2008)
-      'tt0327056', // Mystic River (2003)
-      'tt3253930', // Marshland (2014)
-      'tt0116282', // Fargo (1996)
-      'tt0106977'  // The Fugitive (1993)
-    ],
-    badges: [
-      { label: 'Detective Thrillers', desc: 'Crime-solving and intense investigations' },
-      { label: 'Expert Picks', desc: 'Curated by film experts and enthusiasts' },
-      { label: 'High Suspense', desc: 'Gripping narratives with twists' }
-    ],
-    metaTitle: '10 Best Detective Thriller Movies - Expert Ranking | Filmiway',
-    metaDescription: 'Discover the top 10 detective thriller movies that combine mystery, crime, and suspense for the ultimate investigative experience.',
-    metaKeywords: 'best detective thriller movies, crime thrillers, mystery movies, detective movies, top thriller films',
-    theme: 'blue',
-    primaryColor: '#2563eb',
-    secondaryColor: '#3b82f6',
-    accentColor: '#60a5fa',
-    emoji: '🕵️‍♂️',
-    category: 'detective-thriller',
+   // 🕵️‍♂️ BEST DETECTIVE THRILLER MOVIES — RANKED BY OBSESSION
+'best-detective-thriller-movies': {
+  slug: 'best-detective-thriller-movies',
+
+  // 🎯 H1 / Page Title (High Impact Hook)
+  title: '10 Best Detective Thrillers (Ranked by Obsession & Twists)',
+  subtitle: 'The Hunt. The Mystery. The Cost.',
+
+  // 🧠 Above-the-fold hook
+  description:
+    'It’s not just about catching the killer. It’s about the chase that destroys you. The 10 most atmospheric and obsessive detective thrillers ever made.',
+
+  // 📖 Editorial Copy (Authority & Emotion)
+  longDescription:
+    'True detective cinema isn’t about a clean resolution; it’s about the psychological toll of the hunt. This collection ranks the darkest, most meticulous manhunts in film history. From the rain-soaked despair of *Se7en* to the unending obsession of *Zodiac* and the rural nightmares of *Memories of Murder*, these are films where the mystery matters more than the answer.',
+
+  icon: '🕵️‍♂️',
+  emoji: '🕵️‍♂️',
+  theme: 'zinc', // Noir / Gritty vibe
+
+  primaryColor: '#52525b', // Zinc 600
+  secondaryColor: '#71717a', // Zinc 500
+  accentColor: '#27272a', // Zinc 800
+
+  gradientFrom: 'from-gray-700',
+  gradientTo: 'to-gray-900',
+
+  category: 'detective',
+
+  // 🔍 Natural Tags
+  tags: [
+    'detective',
+    'serial killer',
+    'noir',
+    'manhunt',
+    'cold case',
+    'psychological thriller',
+    'obsession'
+  ],
+
+  // 🔥 SEO — Single Source of Truth
+  seo: {
+    // ✅ Title: Promises Quality + Specificity
+    title: '10 Best Detective Thrillers (Ranked by Obsession) | Filmiway',
+    
+    // ✅ Description: High Click-Through Rate
+    description: 
+      'Discover the best detective movies of all time. From Se7en to Zodiac and Memories of Murder—dark, obsessive manhunts ranked by suspense and plot twists.',
+    
+    // ✅ High-Intent Keywords
+    keywords: 
+      'best detective movies, crime thrillers, zodiac movie, se7en, memories of murder, prisoners, noir detective films, serial killer manhunt movies',
+    
     canonicalUrl: 'https://filmiway.com/collection/best-detective-thriller-movies',
-    seo: {
-      title: '10 Best Detective Thriller Movies - Expert Ranking | Filmiway',
-      description: 'Discover the top 10 detective thriller movies that combine mystery, crime, and suspense for the ultimate investigative experience.',
-      keywords: 'best detective thriller movies, crime thrillers, mystery movies, detective movies, top thriller films',
-      canonicalUrl: 'https://filmiway.com/collection/best-detective-thriller-movies',
-      ogImage: 'https://filmiway.com/images/detective-thriller-collection-og.jpg'
+    
+    ogTitle: 'The 10 Most Obsessive Detective Thrillers Ever Made',
+    twitterTitle: 'Detective Movies That Will haunt You 🕵️‍♂️',
+
+    structuredData: {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      name: 'Best Detective Thriller Movies',
+      description: 'Expert-curated ranking of the most atmospheric and obsessive detective thrillers.',
+      numberOfItems: 10
     }
   },
+
+  stats: {
+    totalMovies: 10,
+    averageRating: 8.3,
+    totalWatchtime: '22h 15m',
+    averageObsessionScore: 96, // Custom stat: How consumed is the detective?
+    mostObsessive: 'Zodiac (100/100)',
+    newestMovie: 'Marshland (2014)',
+    oldestMovie: 'The Fugitive (1993)'
+  },
+
+  // ✅ MATCHING YOUR ROUTES FILE EXACTLY
+  movies: [
+    'tt0114369', // Se7en (Rank 1: The Gold Standard)
+    'tt0443706', // Zodiac (Rank 2: The Infinite Hunt)
+    'tt0353969', // Memories of Murder (Rank 3: The Masterpiece)
+    'tt1392214', // Prisoners (Rank 4: The Moral Descent)
+    'tt1305806', // The Secret in Their Eyes (Rank 5: The Cold Case)
+    'tt1190539', // The Chaser (Rank 6: The Race Against Time)
+    'tt0327056', // Mystic River (Rank 7: The Tragedy)
+    'tt0116282', // Fargo (Rank 8: The Noir Comedy)
+    'tt3253930', // Marshland (Rank 9: The Atmospheric Gem)
+    'tt0106977'  // The Fugitive (Rank 10: The Perfect Chase)
+  ],
+
+  // 🏅 Persuasion Badges
+  badges: [
+    { label: 'Obsessive Hunts', desc: 'Detectives pushed to the brink' },
+    { label: 'Neo-Noir', desc: 'Dark, atmospheric storytelling' },
+    { label: 'Masterpieces', desc: 'Cinema’s highest-rated mysteries' }
+  ],
+
+  featured: {
+    hero: {
+      title: 'Se7en',
+      subtitle: 'The Darkest Detective Movie Ever Made',
+      description:
+        'David Fincher’s rainy, gritty masterpiece redefined the genre. Two detectives hunt a serial killer who uses the Seven Deadly Sins as his modus operandi. A film about apathy, evil, and the ultimate cost of caring.',
+
+      obsessionScore: 98
+    }
+  },
+
+  relatedCollections: [
+    'movies-like-se7en', // Direct link to sub-collection
+    'best-crime-thriller-movies',
+    'best-psychological-thriller-movies'
+  ]
+},
 
 // 🕵️‍♂️ BEST MYSTERY THRILLERS COLLECTION
 'best-mystery-thriller-movies': {

@@ -77,10 +77,16 @@ export const FALLBACK_POSTERS = {
     14139: "https://image.tmdb.org/t/p/w500/4.jpg"
 };
 
+
+
 export const COMPLETE_MOVIE_DATA = {
     // 1. Back to the Future
     105: createMovieData({ 
-        timeTravelIntensity: 92, sciFiConcept: 85, emotionalImpact: 95, complexityLevel: "MEDIUM", 
+        // 🗑️ REMOVED: timeTravelIntensity, sciFiConcept, emotionalImpact
+        // ✅ ADDED: Pure Complexity Metrics
+        complexityLevel: "MEDIUM", 
+        complexityScore: 45, // Linear branching, easy to follow
+
         dominantColor: "#f59e0b", rating: 8.5, criticsScore: 97, audienceScore: 94, 
         director: "Robert Zemeckis", cast: ["Michael J. Fox", "Christopher Lloyd", "Lea Thompson"], 
         boxOffice: "$388.8 million", budget: "$19 million", 
@@ -99,7 +105,9 @@ export const COMPLETE_MOVIE_DATA = {
 
     // 2. Terminator 2: Judgment Day
     280: createMovieData({ 
-        timeTravelIntensity: 96, sciFiConcept: 90, emotionalImpact: 92, complexityLevel: "HIGH", 
+        complexityLevel: "MEDIUM", 
+        complexityScore: 55, // Simple causal loop, action focused
+
         dominantColor: "#1e3a8a", rating: 8.6, criticsScore: 93, audienceScore: 95, 
         director: "James Cameron", cast: ["Arnold Schwarzenegger", "Linda Hamilton", "Edward Furlong"], 
         boxOffice: "$520.9 million", budget: "$102 million", 
@@ -118,7 +126,9 @@ export const COMPLETE_MOVIE_DATA = {
 
     // 3. The Terminator (1984)
     218: createMovieData({ 
-        timeTravelIntensity: 94, sciFiConcept: 88, emotionalImpact: 85, complexityLevel: "HIGH", 
+        complexityLevel: "MEDIUM", 
+        complexityScore: 50, // Standard Grandfather Paradox
+
         dominantColor: "#ef4444", rating: 8.1, criticsScore: 100, audienceScore: 89, 
         director: "James Cameron", cast: ["Arnold Schwarzenegger", "Linda Hamilton", "Michael Biehn"], 
         boxOffice: "$78.4 million", budget: "$6.4 million", 
@@ -137,7 +147,9 @@ export const COMPLETE_MOVIE_DATA = {
 
     // 4. Interstellar
     157336: createMovieData({ 
-        timeTravelIntensity: 95, sciFiConcept: 98, emotionalImpact: 100, complexityLevel: "EXTREME", 
+        complexityLevel: "HIGH", 
+        complexityScore: 85, // Physics are extreme, narrative is straightforward
+
         dominantColor: "#0c4a6e", rating: 8.7, criticsScore: 73, audienceScore: 86, 
         director: "Christopher Nolan", cast: ["Matthew McConaughey", "Anne Hathaway", "Jessica Chastain"], 
         boxOffice: "$677.5 million", budget: "$165 million", 
@@ -156,7 +168,9 @@ export const COMPLETE_MOVIE_DATA = {
 
     // 5. Predestination
     206487: createMovieData({ 
-        timeTravelIntensity: 97, sciFiConcept: 98, emotionalImpact: 85, complexityLevel: "EXTREME", 
+        complexityLevel: "EXTREME", 
+        complexityScore: 98, // The perfect, confusing closed loop
+
         dominantColor: "#78350f", rating: 7.4, criticsScore: 84, audienceScore: 75, 
         director: "The Spierig Brothers", cast: ["Ethan Hawke", "Sarah Snook", "Noah Taylor"], 
         boxOffice: "$5.6 million", budget: "$5 million", 
@@ -175,7 +189,9 @@ export const COMPLETE_MOVIE_DATA = {
 
     // 6. Primer
     14337: createMovieData({ 
-        timeTravelIntensity: 98, sciFiConcept: 100, emotionalImpact: 60, complexityLevel: "EXTREME", 
+        complexityLevel: "EXTREME", 
+        complexityScore: 100, // Requires a spreadsheet to understand
+
         dominantColor: "#94a3b8", rating: 6.7, criticsScore: 73, audienceScore: 79, 
         director: "Shane Carruth", cast: ["Shane Carruth", "David Sullivan", "Casey Gooden"], 
         boxOffice: "$841,926", budget: "$7,000", 
@@ -194,7 +210,9 @@ export const COMPLETE_MOVIE_DATA = {
 
     // 7. 12 Monkeys
     63: createMovieData({ 
-        timeTravelIntensity: 93, sciFiConcept: 90, emotionalImpact: 88, complexityLevel: "HIGH", 
+        complexityLevel: "HIGH", 
+        complexityScore: 82, // Fixed timeline theory, conceptually heavy
+
         dominantColor: "#dc2626", rating: 8.0, criticsScore: 88, audienceScore: 88, 
         director: "Terry Gilliam", cast: ["Bruce Willis", "Madeleine Stowe", "Brad Pitt"], 
         boxOffice: "$168.8 million", budget: "$29.5 million", 
@@ -213,7 +231,9 @@ export const COMPLETE_MOVIE_DATA = {
 
     // 8. Donnie Darko
     141: createMovieData({ 
-        timeTravelIntensity: 91, sciFiConcept: 88, emotionalImpact: 90, complexityLevel: "HIGH", 
+        complexityLevel: "HIGH", 
+        complexityScore: 88, // Tangent Universe is confusing on first watch
+
         dominantColor: "#312e81", rating: 8.0, criticsScore: 87, audienceScore: 80, 
         director: "Richard Kelly", cast: ["Jake Gyllenhaal", "Jena Malone", "Mary McDonnell"], 
         boxOffice: "$7.6 million", budget: "$4.5 million", 
@@ -232,7 +252,9 @@ export const COMPLETE_MOVIE_DATA = {
 
     // 9. Groundhog Day
     137: createMovieData({ 
-        timeTravelIntensity: 89, sciFiConcept: 85, emotionalImpact: 92, complexityLevel: "MEDIUM", 
+        complexityLevel: "LOW", 
+        complexityScore: 40, // Simple Time Loop
+
         dominantColor: "#0ea5e9", rating: 8.0, criticsScore: 97, audienceScore: 88, 
         director: "Harold Ramis", cast: ["Bill Murray", "Andie MacDowell", "Chris Elliott"], 
         boxOffice: "$105 million", budget: "$14.6 million", 
@@ -251,7 +273,9 @@ export const COMPLETE_MOVIE_DATA = {
 
     // 10. Timecrimes
     14139: createMovieData({ 
-        timeTravelIntensity: 90, sciFiConcept: 85, emotionalImpact: 70, complexityLevel: "HIGH", 
+        complexityLevel: "HIGH", 
+        complexityScore: 92, // Tight causal loops, visually confusing
+
         dominantColor: "#be185d", rating: 7.1, criticsScore: 89, audienceScore: 73, 
         director: "Nacho Vigalondo", cast: ["Karra Elejalde", "Candela Fernández", "Bárbara Goenaga"], 
         boxOffice: "$574,188", budget: "$2.6 million", 
@@ -284,66 +308,195 @@ export const RATING_OPTIONS = [
 ];
 
 // 8️⃣ TIME_TRAVEL_FAQS
-export const TIME_TRAVEL_MOVIE_FAQS = { // Renamed correctly to match imports
+export const TIME_TRAVEL_MOVIE_FAQS = {
     'Back to the Future': [
-        { question: "Does the time travel follow scientific rules?", answer: "It follows the 'Single Mutable Timeline' theory. Changes in the past ripple forward and alter the present (like the photo fading). It prioritizes fun logic over hard physics." },
-        { question: "Why doesn't Marty's dad recognize him?", answer: "He only knew 'Calvin Klein' for a week 30 years ago. Memories fade, and he likely just sees a vague resemblance to a kid who helped him once, not realizing it's his son." },
-        { question: "What is the flux capacitor?", answer: "It is the fictional core component that makes time travel possible. Doc Brown envisioned it after hitting his head. It requires 1.21 gigawatts of power to operate." },
-        { question: "Is the DeLorean iconic?", answer: "Yes, it is one of the most recognizable cars in cinema history. The stainless steel body and gull-wing doors were chosen to make it look like an alien spaceship to people in 1955." }
+        { 
+            question: "Does the time travel follow scientific rules?", 
+            answer: "It follows the 'Single Mutable Timeline' theory, often called the Ripple Effect. Unlike multiverse theories where changes create new branches, here there is only one reality that gets overwritten. When Marty changes the past, the consequences slowly catch up to the present—visually represented by his siblings fading from the photo. The film prioritizes narrative tension and comedy over strict quantum mechanics." 
+        },
+        { 
+            question: "Why doesn't Marty's dad recognize him in 1985?", 
+            answer: "This is a common point of debate. The logical explanation is that George only knew 'Calvin Klein' for about one week, 30 years ago. Human memory is fallible; over three decades, the face of a high school acquaintance would fade into a vague blur. George likely sees a resemblance but would never jump to the impossible conclusion that his son is the same person." 
+        },
+        { 
+            question: "What actually is the Flux Capacitor?", 
+            answer: "The Flux Capacitor is the fictional core component that makes time travel possible by essentially 'fluxing' time. Doc Brown envisioned the Y-shaped device after hitting his head on a sink in 1955. While the film never explains the physics, it establishes a hard rule: the device requires exactly 1.21 gigawatts of electricity and a speed of 88 mph to rip a hole in the space-time continuum." 
+        },
+        { 
+            question: "Does the ending create a parallel universe?", 
+            answer: "Technically, yes. When Marty returns to 1985, he doesn't return to his original timeline (where his dad was a wimp). He enters a rewrite where his family is successful and happy. The 'original' reality is effectively erased. The sequel complicates this further, but in the first film, it treats time as a single stream that has been permanently altered for the better." 
+        }
     ],
     'Terminator 2: Judgment Day': [
-        { question: "How does the T-1000 work?", answer: "It is made of mimetic polyalloy (liquid metal). It can mimic any object of equal size and sample textures by touch. It cannot form complex machines with moving parts (like guns)." },
-        { question: "Can the future really be changed?", answer: "The film's core message is 'No Fate But What We Make.' It argues that Judgment Day is not inevitable and that human choices can alter the course of history." },
-        { question: "Why does the T-800 lower himself into the steel?", answer: "He must be destroyed to prevent his chip from being used to reverse-engineer Skynet. Since he cannot self-terminate, Sarah lowers him. It is his final act of humanity." },
-        { question: "Is this the best sequel ever?", answer: "Many critics and fans consider it superior to the original. It revolutionized CGI visual effects and successfully transformed a terrifying villain into a beloved hero." }
+        { 
+            question: "How does the T-1000's liquid metal work?", 
+            answer: "The T-1000 is composed of a mimetic polyalloy—a 'nanomorph' swarm that functions like liquid metal. It can simulate any object of equal size and texture by physical contact, allowing it to become floor tiles, prison guards, or blades. However, it cannot mimic complex machines like guns or bombs because those require moving parts, chemicals, and internal mechanisms that a solid metal mass cannot replicate." 
+        },
+        { 
+            question: "Can the future really be changed?", 
+            answer: "This is the central philosophical shift from the first movie. The original Terminator argued that fate was a closed loop (Reese was always John's father). T2 flips this with the mantra 'No Fate But What We Make.' By destroying Cyberdyne Systems and the original chip, Sarah and John effectively break the loop, proving that the future is not written and Judgment Day is not inevitable." 
+        },
+        { 
+            question: "Why does the T-800 have to destroy himself?", 
+            answer: "The T-800 realizes that his own CPU contains future technology that could be salvaged to reverse-engineer Skynet, starting the war all over again. Since his programming prevents self-termination, he asks Sarah to lower him into the steel. It is his final act of humanity—sacrificing his existence to ensure the safety of the boy he was built to protect." 
+        },
+        { 
+            question: "Why is T2 considered better than the original?", 
+            answer: "It is one of the rare sequels that transcends the original by deepening the lore and emotional stakes. While the first film was a gritty sci-fi slasher, T2 became an emotional action epic. It revolutionized CGI with the liquid metal effects and subverted expectations by turning cinema's most terrifying villain (Arnold) into a surrogate father figure." 
+        }
     ],
     'The Terminator': [
-        { question: "Who sent the Terminator?", answer: "Skynet, the AI defense network of the future, sent the Terminator back to 1984 to kill Sarah Connor before she could give birth to John, the leader of the Resistance." },
-        { question: "Is it a horror movie?", answer: "It is essentially a sci-fi slasher film. The Terminator acts like Michael Myers—unstoppable, silent, and relentless. It is much darker and grittier than its action-packed sequel." },
-        { question: "What is the grandfather paradox here?", answer: "The film is a 'Predestination Paradox.' Reese is sent back to save Sarah, but in doing so, he becomes John's father. If Skynet hadn't sent the Terminator, John would never have been born." },
-        { question: "Why 'I'll be back'?", answer: "It was a throwaway line that Schwarzenegger delivered with such menace it became iconic. It encapsulates the machine's cold, inevitable nature." }
+        { 
+            question: "What is the Predestination Paradox in this film?", 
+            answer: "The entire movie is a classic 'Bootstrap Paradox' (or causal loop). Skynet sends the Terminator back to kill John Connor, which forces the Resistance to send Kyle Reese back to protect her. However, Kyle Reese ends up fathering John Connor. If Skynet had never attacked, John would never have been born. Skynet inadvertently created its own enemy." 
+        },
+        { 
+            question: "Is this a horror movie or action movie?", 
+            answer: "It is essentially a sci-fi horror film, structured like a slasher. The Terminator functions exactly like Michael Myers or Jason Voorhees—he is silent, emotionless, unstoppable, and pursues the 'final girl' (Sarah). The tone is dark, gritty, and oppressive, creating a sense of dread that is very different from the explosive action of the sequel." 
+        },
+        { 
+            question: "How does the photo of Sarah exist?", 
+            answer: "This is another layer of the paradox. The photo taken of Sarah at the end of the film is the exact same photo given to Kyle Reese in the future, which makes him fall in love with her. He travels back in time to meet the woman in the photo, ensuring the photo gets taken. The object has no origin; it exists eternally within the time loop." 
+        },
+        { 
+            question: "Why is the Terminator so terrifying?", 
+            answer: "Unlike human villains, the Terminator cannot be reasoned with, bargained with, or intimidated. It feels no pity, remorse, or fear. The terror comes from its relentless nature—it will literally tear itself apart to get to you. Arnold Schwarzenegger's robotic, cold performance perfectly captured the idea of a machine that looks human but lacks a soul." 
+        }
     ],
     'Interstellar': [
-        { question: "Is the science accurate?", answer: "Yes, much of it is. Theoretical physicist Kip Thorne consulted on the film. The depiction of the black hole (Gargantua) and time dilation on Miller's planet are based on real general relativity equations." },
-        { question: "What is the Tesseract?", answer: "It is a five-dimensional space constructed by future humans ('They') to allow Cooper to communicate across time with gravity. It visualizes time as a physical dimension he can navigate." },
-        { question: "Did Cooper die?", answer: "No. He survived the black hole and was ejected near Saturn, where he was rescued. The film ends with him setting out to find Brand, implying a continuation of his journey." },
-        { question: "What is the message of the film?", answer: "Love is the one thing that transcends time and space. It is not just a biological drive but a force that can guide us through dimensions we cannot scientifically understand." }
+        { 
+            question: "Is the science in Interstellar accurate?", 
+            answer: "Surprisingly, yes. Nobel Prize-winning physicist Kip Thorne consulted on the film to ensure the black hole (Gargantua) and wormhole were depicted according to general relativity equations. The time dilation on Miller's Planet—where one hour equals seven years on Earth—is theoretically possible near a supermassive black hole due to intense gravity warping space-time." 
+        },
+        { 
+            question: "What exactly is the Tesseract at the end?", 
+            answer: "The Tesseract is a five-dimensional construct placed inside the black hole by future humans ('They'). Since Cooper cannot perceive 5 dimensions, the Tesseract represents time as a physical spatial dimension—an infinite hallway of moments. This allows him to physically interact with specific moments in his daughter's room using gravity as a communicator." 
+        },
+        { 
+            question: "What is the 'Love' theory regarding gravity?", 
+            answer: "The film posits that love isn't just a biological emotion but a form of connection that transcends dimensions, similar to gravity. While science can explain the how, Cooper argues that his connection to Murph is what allows him to navigate the infinite Tesseract to find the specific moment needed to save humanity. Love acts as the navigational constant in the chaos of time." 
+        },
+        { 
+            question: "Did Cooper travel to the future?", 
+            answer: "Technically, yes. By surviving the intense gravity of the black hole, he experienced massive time dilation. When he is ejected near Saturn, decades have passed on Earth, but he has barely aged. He arrives in a future where humanity has been saved by the data he sent back, making him a man out of time, younger than his own dying daughter." 
+        }
     ],
     'Predestination': [
-        { question: "Are they all the same person?", answer: "Yes. Jane, John, the Bartender, and the Fizzle Bomber are all the same person at different stages of life. It is the ultimate predestination paradox: a person who creates, recruits, and destroys themselves." },
-        { question: "Who are the parents of the baby?", answer: "Jane and John are the parents. Since they are the same person (pre- and post-gender reassignment), the baby is their own child. The baby is then taken back in time to become Jane." },
-        { question: "Why does he become the Bomber?", answer: "The intense time travel causes psychosis ('the fizzle'). The Bartender, trying to stop the Bomber, eventually goes insane and *becomes* the Bomber, perpetuating the cycle he tried to end." },
-        { question: "What is the message?", answer: "It explores narcissism, identity, and the inescapability of fate. The snake eating its own tail (Ouroboros) is the central metaphor. The character is trapped in an infinite loop of self-creation and self-destruction." }
+     
+        { 
+            question: "How can someone be their own mother and father?", 
+            answer: "This is the biological impossibility the film embraces. Jane is born with both male and female reproductive organs. After giving birth to a baby (with John), she undergoes surgery to become John. That baby is stolen and taken back in time to become Jane. Because they are the same genetic being, they are literally their own ancestors and descendants." 
+        },
+        { 
+            question: "Why does the Bartender become the Bomber?", 
+            answer: "The film suggests that prolonged time travel causes 'the fizzle'—a form of psychosis and dementia. The Bartender spends his life trying to stop the Bomber, but the trauma and brain damage eventually warp his mind until he *becomes* the Bomber, convincing himself that the bombings are necessary to save lives. It is a tragic cycle of self-destruction." 
+        },
+
+
+   { 
+            question: "Is everyone the same person?", 
+            answer: "Yes. The shocking twist is that Jane, John, the Bartender, and the Fizzle Bomber are all the exact same person at different points in their timeline. It is the ultimate solipsistic paradox: a single individual who births themselves, recruits themselves, fights themselves, and eventually kills themselves. The entire universe of the film revolves around one lonely soul." 
+        },
+
+        { 
+            question: "What is the meaning of the Snake/Ouroboros?", 
+            answer: "The Ouroboros (a snake eating its own tail) is the central metaphor. It represents infinity and the inescapability of fate. The protagonist is trapped in an eternal loop of creation and destruction, never able to break free because every action they take to fix the past is exactly what caused the future. It is a study of inevitable tragedy." 
+        }
+
+
+
+
+        
     ],
     'Primer': [
-        { question: "Why is Primer so hard to understand?", answer: "It was written by an engineer (Shane Carruth) who refused to 'dumb down' the science or dialogue. It lacks exposition, forcing the audience to keep up with the characters' complex jargon and overlapping timelines." },
-        { question: "How many timelines are there?", answer: "Fans have mapped at least 9 different timelines. The characters use 'failsafe' machines to reset days repeatedly, creating a tangled web of alternate realities and doubles." },
-        { question: "What happens to the 'doubles'?", answer: "The film implies there are multiple versions of Aaron and Abe running around. One Aaron is drugged and locked in the attic so the time-traveling Aaron can take his place. It explores the dark ethics of replacing yourself." },
-        { question: "What is the ending?", answer: "Aaron leaves the country to build a larger time machine (possibly to build a timeline where he controls everything). Abe stays behind to try and sabotage their work to prevent the chaos." }
+        { 
+            question: "Why is Primer considered the hardest movie to understand?", 
+            answer: "Primer refuses to 'dumb down' its content. Written by a mathematician/engineer, it features realistic, overlapping dialogue filled with technical jargon and lacks any exposition to explain the plot to the audience. The timeline splits and folds onto itself dozens of times, and the characters eventually lose track of which timeline they are in, leaving the audience just as disoriented." 
+        },
+        { 
+            question: "How do the time machines actually work?", 
+            answer: "The 'Box' creates a gravity loop A-to-B. To travel back 6 hours, you must turn the machine on, wait 6 hours, climb inside, and wait *another* 6 hours inside the box while time flows backwards. This realism adds a physical toll—dehydration, fatigue, and bleeding ears—making time travel a grueling endurance test rather than a magical instant jump." 
+        },
+        { 
+            question: "What happens to the 'original' characters?", 
+            answer: "The film implies a dark reality: to take over a timeline, you have to get rid of your double. There are scenes implying that the time-traveling versions of Aaron and Abe have drugged or locked away their original timeline selves in the attic. The protagonists we watch at the end are actually 'copies' who have stolen the lives of their unsuspecting originals." 
+        },
+        { 
+            question: "What is Aaron doing in the final scene?", 
+            answer: "In the final shot, Aaron is seen in a large hangar directing construction workers. It is implied he is building a massive, room-sized time machine. Having lost trust in Abe and control of the timeline, he likely plans to travel much further back to create a 'perfect' timeline where he controls everything, essentially playing god." 
+        }
     ],
     '12 Monkeys': [
-        { question: "Is the future changeable?", answer: "The film presents a fatalistic view: the past cannot be changed. Cole's attempts to stop the virus only lead to the events happening exactly as history recorded. He unknowingly causes his own death." },
-        { question: "Is Cole insane?", answer: "The film plays with this ambiguity. Cole begins to doubt his own sanity, wondering if he is just delusional. However, the ending confirms his time travel is real, making his tragedy even more poignant." },
-        { question: "What is the Army of the 12 Monkeys?", answer: "It is a red herring. They are just a group of animal rights activists who released zoo animals. The real culprit is Dr. Peters, a solitary extremist who releases the virus." },
-        { question: "What is the final scene?", answer: "Young Cole witnesses his own adult death at the airport. The woman (Dr. Railly) makes eye contact with young Cole, smiling sadly. It closes the time loop perfectly." }
+        { 
+            question: "Is the future actually changeable?", 
+            answer: "The film presents a fatalistic view of time travel, known as the 'Novikov Self-Consistency Principle.' Every attempt Cole makes to stop the virus only leads to the events happening exactly as history recorded. He isn't changing the past; he is fulfilling it. The tragedy is that his struggle was always part of the history he tried to erase." 
+        },
+        { 
+            question: "Was James Cole insane?", 
+            answer: "The film brilliantly plays with ambiguity. For a large section, the audience acts as the jury, wondering if Cole is truly from the future or just a schizophrenic constructing a delusion. However, the ending confirms his sanity: the bullet in his leg is antique, and the events line up perfectly. He was telling the truth, which makes his death even more tragic." 
+        },
+        { 
+            question: "What does the ending at the airport mean?", 
+            answer: "The ending closes the loop. The little boy who witnesses the shooting at the airport is actually young James Cole. He watches his own future self die. This explains his recurring dream throughout the movie—it wasn't a dream, but a traumatic memory of his own death. He lived his entire life destined to die in that specific moment." 
+        },
+        { 
+            question: "Who are the Army of the 12 Monkeys?", 
+            answer: "The 'Army' is a massive red herring. Cole spends the movie hunting them, assuming they released the virus. In reality, they are just a group of harmless animal rights activists led by Brad Pitt's character who released zoo animals. The actual apocalypse was caused by a quiet, overlooked scientist acting alone, highlighting the chaos and unpredictability of reality." 
+        }
     ],
     'Donnie Darko': [
-        { question: "What is the Tangent Universe?", answer: "It is an unstable parallel reality created when the jet engine falls. Donnie is the 'Living Receiver' chosen to return the artifact (engine) to the Primary Universe to prevent a black hole collapse." },
-        { question: "Who is Frank?", answer: "Frank is a 'Manipulated Dead.' He is the ghost of the boy Donnie shoots in the future. He travels back in time to guide Donnie toward his destiny of sacrificing himself to save the world." },
-        { question: "Does Donnie have to die?", answer: "Yes. To close the loop and save the universe (and his girlfriend Gretchen), Donnie must choose to stay in his bed and be crushed by the engine. His death resets the timeline." },
-        { question: "Why is he laughing at the end?", answer: "He laughs because he remembers the Tangent Universe journey (like a dream) and realizes he has succeeded. He accepts his fate with joy because he knows he is saving everyone he loves." }
+        { 
+            question: "What is the Tangent Universe?", 
+            answer: "According to the fictional book 'The Philosophy of Time Travel,' a Tangent Universe is a highly unstable parallel reality that forms when the Fourth Dimension is corrupted (the jet engine falling). This universe is doomed to collapse in 28 days, creating a black hole that will destroy the primary universe unless the 'Artifact' (the engine) is returned to its proper time." 
+        },
+        { 
+            question: "Who exactly is Frank the Rabbit?", 
+            answer: "Frank is a 'Manipulated Dead.' In the future of the Tangent Universe, Donnie shoots and kills Frank. Frank's ghost then travels back in time to guide Donnie. His scary bunny appearance is simply the Halloween costume he was wearing when he died. His job is to ensure Donnie survives long enough to sacrifice himself at the end." 
+        },
+        { 
+            question: "Why does Donnie have to die at the end?", 
+            answer: "Donnie is the 'Living Receiver,' the superhero of this reality. To close the loop and save the universe (and his girlfriend Gretchen, who died in the Tangent world), he must use his telekinetic powers to send the jet engine back in time. He chooses to stay in bed and be crushed by it, accepting his death to reset the timeline and save everyone he loves." 
+        },
+        { 
+            question: "Why is Donnie laughing as he dies?", 
+            answer: "It is a moment of pure clarity and joy. He remembers the journey of the Tangent Universe like a dream. He realizes that there is a God or a higher purpose, and that his life—though short—had immense meaning. He laughs because he has accepted his destiny and knows that by dying, he has successfully saved the world." 
+        }
     ],
     'Groundhog Day': [
-        { question: "How long was Phil trapped?", answer: "Estimates vary from 10 years to 10,000 years. Director Harold Ramis suggested it was about 30-40 years—enough time to become a master pianist, ice sculptor, and speak French fluently." },
-        { question: "Why did the loop stop?", answer: "The loop stopped because Phil changed internally. He moved from selfishness to genuine altruism. He stopped trying to manipulate Rita and started loving her and the townspeople selflessly." },
-        { question: "Is there an explanation for the loop?", answer: "In early scripts, a voodoo curse by an ex-girlfriend explained it. Ramis wisely removed this to make the film more spiritual and philosophical. The lack of explanation makes the redemption arc more powerful." },
-        { question: "What is the film really about?", answer: "It is a Buddhist parable about enlightenment. Phil goes through stages of denial, hedonism, despair (suicide), and finally acceptance and compassion (Bodhisattva), freeing himself from the cycle of samsara." }
+        { 
+            question: "How long was Phil actually trapped in the loop?", 
+            answer: "While the movie shows us only a few weeks, estimates based on his skills suggest he was trapped for decades. He learns to play piano at a master level, ice sculpt, and speak French fluently. Director Harold Ramis estimated it was about 30 to 40 years, while early drafts suggested 10,000 years. It was essentially an entire lifetime lived in a single day." 
+        },
+        { 
+            question: "Why did the time loop finally stop?", 
+            answer: "The loop wasn't broken by a specific action, but by a spiritual transformation. Phil had to move through the stages of grief—denial, anger, bargaining (hedonism), depression (suicide)—to reach acceptance. Only when he stopped trying to manipulate the day for his own gain and genuinely served others without expecting a reward did he break the cycle." 
+        },
+        { 
+            question: "Is there a scientific explanation?", 
+            answer: "No, and that is deliberate. Early scripts included a vengeful ex-girlfriend casting a voodoo curse, but Ramis removed it to make the story more universal and philosophical. By leaving the cause a mystery, the film becomes a pure parable about human growth and enlightenment, similar to the Buddhist concept of escaping the wheel of Samsara." 
+        },
+        { 
+            question: "What is the deeper meaning of the film?", 
+            answer: "Groundhog Day is widely considered a spiritual masterpiece. It argues that we are all 'trapped' in repetitive days, sleepwalking through life. Phil's journey shows that happiness doesn't come from changing your external circumstances (which he can't), but from changing your internal attitude—finding joy in small acts of kindness and creative mastery." 
+        }
     ],
     'Timecrimes': [
-        { question: "Who is the bandaged man?", answer: "The bandaged man is Hector (the protagonist) from the future. He attacks his past self to force him into the time machine, ensuring the loop is closed. It is a classic causal loop." },
-        { question: "Why does Hector do terrible things?", answer: "He realizes that for the timeline to remain consistent (and for him to survive), he *must* perform the actions that led him there, even the violent ones. He becomes a slave to causality." },
-        { question: "Is it a comedy?", answer: "It has dark comedic elements because of Hector's clumsiness and the absurdity of his situation, but it is primarily a tense sci-fi thriller about the horrifying inevitability of fate." },
-        { question: "What is the ending?", answer: "Hector 3 (the final version) sits in his lawn chair, exhausted, waiting for the rain. He has successfully manipulated events so his wife survives, but he is traumatized and trapped in a life he manipulated." }
+        { 
+            question: "Who is the mysterious bandaged man?", 
+            answer: "The terrifying bandaged man is actually Hector (the protagonist) himself from about an hour in the future. After traveling back in time, Hector realizes he must disguise himself with bandages (to cover an accidental injury) and attack his past self to ensure that past-Hector runs to the time machine. He becomes the monster he was originally running from." 
+        },
+        { 
+            question: "Why does Hector do such terrible things?", 
+            answer: "Hector is not evil, but he becomes a slave to causality. He realizes that if he doesn't perform the exact actions he remembers seeing (attacking himself, scaring the girl), the timeline might unravel or he might cease to exist. He is forced to commit violent acts just to maintain the consistency of the time loop he is trapped in." 
+        },
+        { 
+            question: "Is the time travel logic consistent?", 
+            answer: "Yes, Timecrimes is praised for being one of the most logically airtight time travel movies ever. It follows a strict 'Fixed Timeline' rule. There are no alternate universes; everything that happens has already happened. We just see the events from three different perspectives (Hector 1, 2, and 3) as they layer on top of each other perfectly." 
+        },
+        { 
+            question: "What is the meaning of the ending?", 
+            answer: "The ending is dark and cynical. Hector 3 successfully manipulates events so that his wife survives, but an innocent girl dies in her place. He sits in his lawn chair, exhausted, waiting for the rain. He has 'won,' but at the cost of his morality. He is now a man who knows he is capable of murder to preserve his own comfortable life." 
+        }
     ]
 };
 

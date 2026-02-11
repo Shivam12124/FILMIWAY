@@ -31,15 +31,29 @@ const timeToSeconds = (timeStr) => {
 
 // 2. SENSITIVE TIMELINES
 export const SENSITIVE_TIMELINES = {
-    670: { scenes: [{ start: '1:24:00', end: '1:28:00', type: 'Explicit Violence', severity: 'Extreme' }, { start: '1:45:00', end: '1:48:00', type: 'Sexual Content', severity: 'High' }] },
-    98: { scenes: [{ start: '0:10:00', end: '0:15:00', type: 'Violence', severity: 'High' }] },
+    670: { scenes: [
+        { start: '11:20', end: '11:40', type: 'Sexual Content', severity: 'Moderate' },
+        { start: '57:37', end: '1:01:10', type: 'Partial nudity (Woman)', severity: 'Moderate' },
+        { start: '1:03:35', end: '1:05:10', type: 'Sex', severity: 'High' },
+        { start: '1:22:20', end: '1:22:36', type: 'Sexual Content', severity: 'Moderate' },
+        { start: '1:30:30', end: '1:30:38', type: 'Partial nudity (Man)', severity: 'Mild' }
+    ]},
+   98: { 
+        scenes: [
+            { start: "50:40", end: "50:55", type: "Partial Nudity (Man)", severity: "Low" }
+        ] 
+    },
     33: { scenes: [] },
-    197: { scenes: [{ start: '2:40:00', end: '2:50:00', type: 'Torture', severity: 'High' }] },
+    197: { scenes: [{ start: '38:23', end: '39:20', type: 'Nudity', severity: 'Moderate' }] },
     1124: { scenes: [] },
      281957: { scenes: [{ start: "0:06:44", end: "0:06:48", type: "Nudity", severity: "Moderate", description: "Male buttocks" }, { start: "1:44:00", end: "1:44:23", type: "Sex scene", severity: "Moderate" }] },
     393: { scenes: [] },
-    245891: { scenes: [{ start: '0:12:00', end: '0:15:00', type: 'Animal Death', severity: 'High' }] },
-    49797: { scenes: [{ start: '0:05:00', end: '0:10:00', type: 'Gore/Violence', severity: 'Extreme' }, { start: '1:10:00', end: '1:15:00', type: 'Sexual Violence', severity: 'Extreme' }] },
+      245891: { 
+        scenes: [
+            { start: "45:00", end: "45:30", type: "Suggestive Clothing (Women in Bikinis)", severity: "Low" }
+        ] 
+    },
+    49797: { scenes: [{ start: '9:53', end: '10:25 ', type: 'Nudity', severity: 'Moderate"' }, { start: '26:40', end: '27:40', type: 'Sex & Nudity', severity: 'Moderate"' }] },
     11362: { scenes: [] }
 };
 

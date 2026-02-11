@@ -22,8 +22,8 @@ import {
 } from '../../../utils/timeTravelMovieData';
 
 const COLORS = {
-  accent: '#06b6d4', // Cyan for Time Travel
-  accentLight: '#67e8f9', 
+  accent: '#d2e40ddd', // Cyan for Time Travel
+  accentLight: '#cdd002', 
   bgPrimary: '#0B0B0C', 
   bgCard: 'rgba(21, 22, 23, 0.3)', 
   textPrimary: '#FFFFFF', 
@@ -76,7 +76,7 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
   const posterImage = posterPath ? getTMDBImage(posterPath, 'w500') : null;
 
   const insight = getTimeInsight(movie?.Title);
-  const timeIndex = richData?.timeTravelIntensity || 90;
+  const timeIndex = richData?.complexityScore || 90;
 
   const mobileHeroCSS = `
   @media (max-width: 767px) {
@@ -156,7 +156,7 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
                 <div className="absolute top-0 left-0 right-0 h-0.5 sm:h-1" style={{ background: `linear-gradient(90deg, transparent, ${COLORS.accent}, transparent)` }} />
                 <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5">
                   <motion.div className="p-2 sm:p-2.5 rounded-lg sm:rounded-xl flex-shrink-0" style={{ background: `linear-gradient(135deg, ${COLORS.accent}20, ${COLORS.accent}10)`, border: `1px solid ${COLORS.accent}40` }} whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}><Clock className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" style={{ color: COLORS.accent }} /></motion.div>
-                  <div className="min-w-0 flex-1"><h2 className="text-sm sm:text-base lg:text-xl xl:text-2xl font-bold leading-tight" style={{ color: COLORS.accent }}>Temporal Complexity Analysis</h2><p className="text-xs sm:text-sm hidden sm:block" style={{ color: COLORS.textMuted }}>Time Travel Intensity: {timeIndex}/100</p></div>
+                  <div className="min-w-0 flex-1"><h2 className="text-sm sm:text-base lg:text-xl xl:text-2xl font-bold leading-tight" style={{ color: COLORS.accent }}>Complexity Score</h2><p className="text-xs sm:text-sm hidden sm:block" style={{ color: COLORS.textMuted }}>complexityScore: {timeIndex}/100</p></div>
                 </div>
                 <div className="relative pl-4 sm:pl-6 border-l-2" style={{ borderColor: `${COLORS.accent}40` }}>
                   <motion.div className="absolute -left-1.5 sm:-left-2 top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full" style={{ backgroundColor: COLORS.accent }} animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 2, repeat: Infinity }} />
@@ -221,9 +221,8 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
   // 2. METRICS (Metrics Changed for Time Travel)
   const intensityStats = `
     [FILMIWAY METRICS]
-    - Time Travel Intensity: ${data?.timeTravelIntensity || 0}/100
-    - Sci-Fi Concept: ${data?.sciFiConcept || 0}/100
-    - Emotional Impact: ${data?.emotionalImpact || 0}/100
+    - Complexity Score: ${data?.complexityScore || 0}/100
+   
   `;
 
   const dnaStats = data?.dna 
