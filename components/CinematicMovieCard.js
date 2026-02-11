@@ -5,8 +5,7 @@ import { motion } from 'framer-motion';
 import { Crown, Star } from 'lucide-react';
 
 // ✅ SAFE IMPORT: Handles both Default and Named exports to prevent build crashes
-import TMDBMoviePosterDefault, { TMDBMoviePoster as TMDBMoviePosterNamed } from './TMDBMoviePoster';
-const TMDBMoviePoster = TMDBMoviePosterDefault || TMDBMoviePosterNamed;
+import TMDBMoviePoster from './TMDBMoviePoster';
 
 import { COMPLETE_MOVIE_DATA, STRATEGIC_QUOTES } from '../utils/movieData';
 import { COMPLETE_MOVIE_DATA as SURVIVAL_DATA, STRATEGIC_QUOTES as SURVIVAL_QUOTES } from '../utils/survivalMovieData';
