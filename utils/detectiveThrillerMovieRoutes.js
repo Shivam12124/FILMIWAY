@@ -1,85 +1,85 @@
-// utils/detectiveThrillerMovieRoutes.js - 10 BEST DETECTIVE THRILLER MOVIE ROUTES MAPPING
+// utils/interstellarMovieRoutes.js - MOVIES LIKE INTERSTELLAR ROUTES MAPPING 🌌
 
-import COMPLETE_DETECTIVE_THRILLER_DATABASE, { DETECTIVE_THRILLER_MOVIES } from './detectiveThrillerMovieData';
+import COMPLETE_INTERSTELLAR_DATABASE, { INTERSTELLAR_MOVIES } from './interstellarMovieData';
 
-// ✅ DETECTIVE THRILLER MOVIE SLUGS MAPPING (IMDB ID TO SLUG)
-export const DETECTIVE_THRILLER_MOVIE_SLUGS = {
-  'tt0114369': 'se7en',
-  'tt0443706': 'zodiac',
-  'tt1392214': 'prisoners',
-  'tt1305806': 'the-secret-in-their-eyes',
-  'tt0353969': 'memories-of-murder',
-  'tt1190539': 'the-chaser',
-  'tt0327056': 'mystic-river',
-  'tt3253930': 'marshland',
-  'tt0116282': 'fargo',
-  'tt0106977': 'the-fugitive'
+// ✅ INTERSTELLAR MOVIE SLUGS MAPPING (IMDB ID TO SLUG)
+export const INTERSTELLAR_MOVIE_SLUGS = {
+  'tt0062622': '2001-a-space-odyssey',
+  'tt2543164': 'arrival',
+  'tt0118884': 'contact',
+  'tt0069293': 'solaris',
+  'tt1213641': 'first-man',
+  'tt3659388': 'the-martian',
+  'tt1454468': 'gravity',
+  'tt0448134': 'sunshine',
+  'tt1182345': 'moon',
+  'tt2935510': 'ad-astra'
 };
 
 // ✅ REVERSE SLUG MAPPING (SLUG TO IMDB ID)
 export const SLUG_TO_IMDB = Object.fromEntries(
-  Object.entries(DETECTIVE_THRILLER_MOVIE_SLUGS).map(([imdbId, slug]) => [slug, imdbId])
+  Object.entries(INTERSTELLAR_MOVIE_SLUGS).map(([imdbId, slug]) => [slug, imdbId])
 );
 
 // ✅ GET MOVIE BY IMDB ID
 export const getMovieByImdbId = (imdbId) => {
-  return DETECTIVE_THRILLER_MOVIES.find(movie => movie.imdbID === imdbId);
+  return INTERSTELLAR_MOVIES.find(movie => movie.imdbID === imdbId);
 };
 
 // ✅ GET MOVIE BY SLUG
 export const getMovieBySlug = (slug) => {
   const imdbId = SLUG_TO_IMDB[slug];
   if (!imdbId) return null;
-  return DETECTIVE_THRILLER_MOVIES.find(movie => movie.imdbID === imdbId);
+  return INTERSTELLAR_MOVIES.find(movie => movie.imdbID === imdbId);
 };
 
 // ✅ GET MOVIE SLUG BY IMDB ID
 export const getMovieSlug = (imdbId) => {
-  return DETECTIVE_THRILLER_MOVIE_SLUGS[imdbId] || null;
+  return INTERSTELLAR_MOVIE_SLUGS[imdbId] || null;
 };
 
-// ✅ GENERATE ALL STATIC PATHS FOR DETECTIVE THRILLER MOVIES
-export const generateDetectiveThrillerMoviePaths = () => {
-  return DETECTIVE_THRILLER_MOVIES.map(movie => ({
+// ✅ GENERATE ALL STATIC PATHS FOR INTERSTELLAR MOVIES
+export const generateInterstellarMoviePaths = () => {
+  return INTERSTELLAR_MOVIES.map(movie => ({
     params: {
       imdbId: movie.imdbID
     }
   }));
 };
 
-// ✅ GET NEXT/PREVIOUS DETECTIVE THRILLER MOVIE
-export const getDetectiveThrillerMovieNavigation = (currentMovie) => {
-  const currentIndex = DETECTIVE_THRILLER_MOVIES.findIndex(m => m.imdbID === currentMovie.imdbID);
+// ✅ GET NEXT/PREVIOUS INTERSTELLAR MOVIE
+export const getInterstellarMovieNavigation = (currentMovie) => {
+  const currentIndex = INTERSTELLAR_MOVIES.findIndex(m => m.imdbID === currentMovie.imdbID);
 
   const previousMovie = currentIndex > 0
-    ? DETECTIVE_THRILLER_MOVIES[currentIndex - 1]
+    ? INTERSTELLAR_MOVIES[currentIndex - 1]
     : null;
 
-  const nextMovie = currentIndex < DETECTIVE_THRILLER_MOVIES.length - 1
-    ? DETECTIVE_THRILLER_MOVIES[currentIndex + 1]
+  const nextMovie = currentIndex < INTERSTELLAR_MOVIES.length - 1
+    ? INTERSTELLAR_MOVIES[currentIndex + 1]
     : null;
 
   return {
     previous: previousMovie ? {
       ...previousMovie,
-      slug: DETECTIVE_THRILLER_MOVIE_SLUGS[previousMovie.imdbID]
+      slug: INTERSTELLAR_MOVIE_SLUGS[previousMovie.imdbID]
     } : null,
     next: nextMovie ? {
       ...nextMovie,
-      slug: DETECTIVE_THRILLER_MOVIE_SLUGS[nextMovie.imdbID]
+      slug: INTERSTELLAR_MOVIE_SLUGS[nextMovie.imdbID]
     } : null
   };
 };
 
 // Optionally, export everything for easier imports
 export default {
-  COMPLETE_DETECTIVE_THRILLER_DATABASE,
-  DETECTIVE_THRILLER_MOVIES,
-  DETECTIVE_THRILLER_MOVIE_SLUGS,
+  COMPLETE_INTERSTELLAR_DATABASE,
+  INTERSTELLAR_MOVIES,
+  INTERSTELLAR_MOVIE_SLUGS,
   SLUG_TO_IMDB,
   getMovieByImdbId,
   getMovieBySlug,
   getMovieSlug,
-  generateDetectiveThrillerMoviePaths,
-  getDetectiveThrillerMovieNavigation
+  generateInterstellarMoviePaths,
+  getInterstellarMovieNavigation
 };

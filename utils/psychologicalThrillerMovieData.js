@@ -20,11 +20,9 @@ export const COMPLETE_MOVIE_DATABASE = [
     { tmdbId: 694, imdbID: 'tt0081505', Title: 'The Shining', year: 1980, genre: 'Horror', runtime: 146, rank: 10 }
 ];
 
-// Helper to ensure default values
+// Helper to ensure default values with the new KILLER metric
 const createMovieData = (data) => ({
-    psychologicalIntensity: 90,
-    mindBendScore: 85,
-    emotionalImpact: 80,
+    sanityErosion: 90, // The new "Brain-Melt" Metric 🧠
     complexityLevel: "HIGH",
     dominantColor: "#000000",
     ...data,
@@ -48,17 +46,11 @@ export const SENSITIVE_TIMELINES = {
         { start: '1:59:03', end: '1:59:06', type: 'Casual Kissing', severity: 'Mild' }
     ]},
     44214: { scenes: [
-
         { start: '39:40', end: '40:40', type: 'Sexual Content', severity: 'High' },
-
         { start: '48:52', end: '49:10', type: 'Sexual Content', severity: 'Moderate' },
-
         { start: '51:20', end: '51:40', type: 'Sexual Content', severity: 'High' },
-
         { start: '1:08:20', end: '1:11:01', type: 'Sex', severity: 'High' },
-
         { start: '1:20:20', end: '1:20:40', type: 'Sex', severity: 'High' }
-
     ]},
     4553: { scenes: [
         { start: '17:00', end: '18:25', type: 'Sex', severity: 'High' },
@@ -72,11 +64,8 @@ export const SENSITIVE_TIMELINES = {
         { start: '1:30:30', end: '1:30:38', type: 'Partial Nudity (man)', severity: 'Mild' }
     ]},
     103: { scenes: [
-
         { start: '35:34', end: '35:45', type: 'Sexual Content', severity: 'Moderate' },
-
         { start: '58:52', end: '59:05', type: 'Sexual Content', severity: 'Moderate' }
-
     ]},
     694: { scenes: [
         { start: '1:10:40', end: '1:11:00', type: 'Nudity (Painting)', severity: 'Mild' },
@@ -91,16 +80,17 @@ export const FALLBACK_POSTERS = {
     807: "https://image.tmdb.org/t/p/w500/6yoghtyTpznpBik8EngEmJskVUO.jpg",
     11324: "https://image.tmdb.org/t/p/w500/unyHKrkQ6UPUxyBevzMpTpF6hOL.jpg",
     44214: "https://image.tmdb.org/t/p/w500/ppad3tK7S2pX6Y6B0U5B5F37a5s.jpg",
-    4553: "https://image.tmdb.org/t/p/w500/wM2oJ5s4E5c0t9c2c2f2f2f2.jpg", // Placeholder
+    4553: "https://image.tmdb.org/t/p/w500/wM2oJ5s4E5c0t9c2c2f2f2f2.jpg",
     670: "https://image.tmdb.org/t/p/w500/pWDtjs568ZfOTMbURQBYuT4Qxka.jpg",
-    103: "https://image.tmdb.org/t/p/w500/ekstpHby5fsBliVqgJ6kL.jpg", // Placeholder
-    694: "https://image.tmdb.org/t/p/w500/9w0Vkq1e5c3bWp6b1c1c1.jpg" // Placeholder
+    103: "https://image.tmdb.org/t/p/w500/ekstpHby5fsBliVqgJ6kL.jpg",
+    694: "https://image.tmdb.org/t/p/w500/9w0Vkq1e5c3bWp6b1c1c1.jpg"
 };
 
 export const COMPLETE_MOVIE_DATA = {
     // 1. The Silence of the Lambs
     274: createMovieData({ 
-        psychologicalIntensity: 94, mindBendScore: 85, emotionalImpact: 90, complexityLevel: "HIGH", 
+        sanityErosion: 95, // The Lecter Effect
+        complexityLevel: "HIGH", 
         dominantColor: "#4a5568", rating: 8.6, criticsScore: 95, audienceScore: 95, 
         director: "Jonathan Demme", cast: ["Jodie Foster", "Anthony Hopkins", "Scott Glenn"], 
         boxOffice: "$272.7 million", budget: "$19 million", 
@@ -119,7 +109,8 @@ export const COMPLETE_MOVIE_DATA = {
 
     // 2. Fight Club
     550: createMovieData({ 
-        psychologicalIntensity: 98, mindBendScore: 95, emotionalImpact: 85, complexityLevel: "EXTREME", 
+        sanityErosion: 98, // Total Dissociation
+        complexityLevel: "EXTREME", 
         dominantColor: "#3f6212", rating: 8.8, criticsScore: 79, audienceScore: 96, 
         director: "David Fincher", cast: ["Edward Norton", "Brad Pitt", "Helena Bonham Carter"], 
         boxOffice: "$101.2 million", budget: "$63 million", 
@@ -138,7 +129,8 @@ export const COMPLETE_MOVIE_DATA = {
 
     // 3. Memento
     77: createMovieData({ 
-        psychologicalIntensity: 90, mindBendScore: 98, emotionalImpact: 88, complexityLevel: "EXTREME", 
+        sanityErosion: 92, // Memory Fragmentation
+        complexityLevel: "EXTREME", 
         dominantColor: "#d6c8b2", rating: 8.4, criticsScore: 93, audienceScore: 94, 
         director: "Christopher Nolan", cast: ["Guy Pearce", "Carrie-Anne Moss", "Joe Pantoliano"], 
         boxOffice: "$39.7 million", budget: "$9 million", 
@@ -157,7 +149,8 @@ export const COMPLETE_MOVIE_DATA = {
 
     // 4. Se7en
     807: createMovieData({ 
-        psychologicalIntensity: 98, mindBendScore: 85, emotionalImpact: 95, complexityLevel: "HIGH", 
+        sanityErosion: 96, // Moral Decay
+        complexityLevel: "HIGH", 
         dominantColor: "#1c1917", rating: 8.6, criticsScore: 83, audienceScore: 95, 
         director: "David Fincher", cast: ["Brad Pitt", "Morgan Freeman", "Kevin Spacey"], 
         boxOffice: "$327.3 million", budget: "$33 million", 
@@ -176,7 +169,8 @@ export const COMPLETE_MOVIE_DATA = {
 
     // 5. Shutter Island
     11324: createMovieData({ 
-        psychologicalIntensity: 90, mindBendScore: 92, emotionalImpact: 85, complexityLevel: "HIGH", 
+        sanityErosion: 94, // Denial Fracture
+        complexityLevel: "HIGH", 
         dominantColor: "#334155", rating: 8.2, criticsScore: 68, audienceScore: 77, 
         director: "Martin Scorsese", cast: ["Leonardo DiCaprio", "Mark Ruffalo", "Ben Kingsley"], 
         boxOffice: "$294 million", budget: "$80 million", 
@@ -195,7 +189,8 @@ export const COMPLETE_MOVIE_DATA = {
 
     // 6. Black Swan
     44214: createMovieData({ 
-        psychologicalIntensity: 95, mindBendScore: 90, emotionalImpact: 92, complexityLevel: "HIGH", 
+        sanityErosion: 97, // Perfectionist Breakdown
+        complexityLevel: "HIGH", 
         dominantColor: "#18181b", rating: 8.0, criticsScore: 85, audienceScore: 84, 
         director: "Darren Aronofsky", cast: ["Natalie Portman", "Mila Kunis", "Vincent Cassel"], 
         boxOffice: "$106.9 million", budget: "$13 million", 
@@ -214,7 +209,8 @@ export const COMPLETE_MOVIE_DATA = {
 
     // 7. The Machinist
     4553: createMovieData({ 
-        psychologicalIntensity: 92, mindBendScore: 88, emotionalImpact: 80, complexityLevel: "HIGH", 
+        sanityErosion: 99, // Insomnia Decay
+        complexityLevel: "HIGH", 
         dominantColor: "#94a3b8", rating: 7.7, criticsScore: 77, audienceScore: 83, 
         director: "Brad Anderson", cast: ["Christian Bale", "Jennifer Jason Leigh", "Aitana Sánchez-Gijón"], 
         boxOffice: "$8.6 million", budget: "$5 million", 
@@ -233,7 +229,8 @@ export const COMPLETE_MOVIE_DATA = {
 
     // 8. Oldboy
     670: createMovieData({ 
-        psychologicalIntensity: 90, mindBendScore: 94, emotionalImpact: 98, complexityLevel: "EXTREME", 
+        sanityErosion: 100, // Total Vengeance
+        complexityLevel: "EXTREME", 
         dominantColor: "#365314", rating: 8.4, criticsScore: 82, audienceScore: 94, 
         director: "Park Chan-wook", cast: ["Choi Min-sik", "Yoo Ji-tae", "Kang Hye-jung"], 
         boxOffice: "$15.5 million", budget: "$3 million", 
@@ -252,7 +249,8 @@ export const COMPLETE_MOVIE_DATA = {
 
     // 9. Taxi Driver
     103: createMovieData({ 
-        psychologicalIntensity: 90, mindBendScore: 75, emotionalImpact: 88, complexityLevel: "HIGH", 
+        sanityErosion: 93, // Urban Isolation
+        complexityLevel: "HIGH", 
         dominantColor: "#eab308", rating: 8.3, criticsScore: 96, audienceScore: 93, 
         director: "Martin Scorsese", cast: ["Robert De Niro", "Jodie Foster", "Harvey Keitel"], 
         boxOffice: "$28.6 million", budget: "$12 million", 
@@ -271,7 +269,8 @@ export const COMPLETE_MOVIE_DATA = {
 
     // 10. The Shining
     694: createMovieData({ 
-        psychologicalIntensity: 93, mindBendScore: 88, emotionalImpact: 90, complexityLevel: "HIGH", 
+        sanityErosion: 97, // Cabin Fever
+        complexityLevel: "HIGH", 
         dominantColor: "#ea580c", rating: 8.4, criticsScore: 83, audienceScore: 93, 
         director: "Stanley Kubrick", cast: ["Jack Nicholson", "Shelley Duvall", "Danny Lloyd"], 
         boxOffice: "$44 million", budget: "$19 million", 

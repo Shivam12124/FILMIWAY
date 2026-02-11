@@ -3,74 +3,320 @@
 import { COMPLETE_MOVIE_DATABASE } from '../utils/movieData';
 
 export const COLLECTIONS = {
-  'movies-like-inception': {
-    slug: 'movies-like-inception',
-    title: 'Movies Like Inception',
-    description: 'Mind-bending sci-fi thrillers with complex narratives and reality-questioning elements',
-    movies: [
-      'tt0390384', // Primer (2004)
-      'tt0383028', // Synecdoche, New York (2008)
-      'tt0166924', // Mulholland Drive (2001)
-      'tt2397535', // Predestination (2014)
-      'tt2866360', // Coherence (2013)
-      'tt0246578', // Donnie Darko (2001)
-      'tt2316411', // Enemy (2013)
-      'tt0414993', // The Fountain (2006)
-      'tt0485947', // Mr. Nobody (2009)
-      'tt1130884'  // Shutter Island (2010)
-    ],
-    badges: [
-      { label: 'Mind-Bending', desc: 'Reality-questioning narratives' },
-      { label: 'Community Curated', desc: 'Reviewed by film enthusiasts' },
-      { label: 'Expert Analysis', desc: 'Detailed breakdowns & ratings' }
-    ]
+// 🌀 MOVIES LIKE INCEPTION — THE "BRAIN-MELT" EDITION
+'movies-like-inception': {
+  slug: 'movies-like-inception',
+
+  // 🎯 H1 / Title: The "Dare"
+  title: '10 Reality-Shattering Movies Like Inception (Ranked by Brain-Melt)',
+  subtitle: 'Existential Puzzles, Infinite Loops & The Death of Logic',
+
+  // 🧠 Description: The "Warning"
+  description:
+    'Warning: These aren’t just movies. They are cognitive hazards. We ranked 10 masterpieces that will dismantle your perception of reality, piece by piece.',
+
+  // 📖 Editorial Copy: The "Challenge"
+  longDescription:
+    'Christopher Nolan’s *Inception* was just the warm-up. This collection is for those who found the dream levels "too easy." We have curated cinema’s most punishing narrative puzzles—films that don’t just twist the plot, they break the medium itself. From the engineering nightmare of *Primer* to the subconscious labyrinth of *Enemy*, these films demand more than your attention. They demand your sanity.',
+
+  emoji: '🌀',
+  theme: 'cyan',
+
+  primaryColor: '#0891b2',
+  secondaryColor: '#155e75',
+  accentColor: '#22d3ee',
+
+  gradientFrom: 'from-slate-900',
+  gradientTo: 'to-cyan-900',
+
+  category: 'inception',
+
+  tags: [
+    'mind-bending',
+    'reality-shattering',
+    'cognitive hazard',
+    'puzzle movies',
+    'existential horror',
+    'hard sci-fi'
+  ],
+
+  // 🔥 SEO: Aggressive & High-Intent
+  seo: {
+    title: '10 Movies That Will Break Your Brain (Like Inception) | Filmiway',
+    description: 
+      'Don’t watch these if you want an easy night. We ranked 10 reality-shattering films like Inception, Primer, and Coherence that force you to question your own existence.',
+    keywords: 
+      'movies that break your brain, most complex movies ever, primer explained, enemy ending, synecdoche new york, mind bending thrillers, movies like inception',
+    
+    canonicalUrl: 'https://filmiway.com/collection/movies-like-inception',
+    
+    ogTitle: '10 Movies That Are Literal Puzzles (The Inception List)',
+    twitterTitle: 'Can You Survive These 10 Brain-Melting Movies? 🤯',
+
+    structuredData: {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      name: '10 Most Complex Reality-Shattering Movies',
+      description: 'Expert-curated ranking of cinema\'s most difficult and rewarding narrative puzzles.',
+      numberOfItems: 10
+    }
   },
 
-  'movies-like-memento': {
-    slug: 'movies-like-memento',
-    title: 'Movies Like Memento',
-    description: 'Memory-twisting psychological thrillers with fragmented narratives and identity confusion',
-    movies: [
-      'tt0390384', // Primer (2004)
-      'tt0383028', // Synecdoche, New York (2008)
-      'tt0166924', // Mulholland Drive (2001)
-      'tt2397535', // Predestination (2014)
-      'tt2866360', // Coherence (2013)
-      'tt0246578', // Donnie Darko (2001)
-      'tt2316411', // Enemy (2013)
-      'tt0414993', // The Fountain (2006)
-      'tt0485947', // Mr. Nobody (2009)
-      'tt1130884'  // Shutter Island (2010)
-    ],
-    badges: [
-      { label: 'Memory-Twisting', desc: 'Fragmented narrative structures' },
-      { label: 'Community Curated', desc: 'Reviewed by film enthusiasts' },
-      { label: 'Expert Analysis', desc: 'Detailed breakdowns & ratings' }
-    ]
+  stats: {
+    totalMovies: 10,
+    averageRating: 8.1,
+    totalWatchtime: '21h 40m',
+    averageBrainMeltScore: 98, // The new "Killer" Metric
+    mostDestructive: 'Primer (100/100)',
+    newestMovie: 'Predestination (2014)',
+    oldestMovie: 'Mulholland Drive (2001)'
   },
 
-  'movies-like-shutter-island': {
-    slug: 'movies-like-shutter-island',
-    title: 'Movies Like Shutter Island',
-    description: 'Psychological thrillers with unreliable narrators, identity crises, and shocking revelations',
-    movies: [
-      'tt0390384', // Primer (2004)
-      'tt0383028', // Synecdoche, New York (2008)
-      'tt0166924', // Mulholland Drive (2001)
-      'tt2397535', // Predestination (2014)
-      'tt2866360', // Coherence (2013)
-      'tt0246578', // Donnie Darko (2001)
-      'tt2316411', // Enemy (2013)
-      'tt0414993', // The Fountain (2006)
-      'tt0485947', // Mr. Nobody (2009)
-      'tt0114814'  // The Usual Suspects (1995)
-    ],
-    badges: [
-      { label: 'Psychological Horror', desc: 'Unreliable narrator thrillers' },
-      { label: 'Community Curated', desc: 'Reviewed by film enthusiasts' },
-      { label: 'Expert Analysis', desc: 'Detailed breakdowns & ratings' }
-    ]
+  movies: [
+    'tt0390384', // 1. Primer (The Engineering Nightmare)
+    'tt0383028', // 2. Synecdoche, New York (The Existential Trap)
+    'tt0166924', // 3. Mulholland Drive (The Dream Logic)
+    'tt2397535', // 4. Predestination (The Perfect Paradox)
+    'tt2866360', // 5. Coherence (The Quantum Collapse)
+    'tt0246578', // 6. Donnie Darko (The Tangent Universe)
+    'tt2316411', // 7. Enemy (The Subconscious Enemy)
+    'tt0414993', // 8. The Fountain (The Death of Time)
+    'tt0485947', // 9. Mr. Nobody (The Infinite Choice)
+    'tt1130884'  // 10. Shutter Island (The Broken Mind)
+  ],
+
+  badges: [
+    { label: 'Brain Melt', desc: 'Narratives designed to confuse and destroy' },
+    { label: 'Requires Notes', desc: 'Impossible to solve on first watch' },
+    { label: 'Cognitive Hazard', desc: 'Ranked by sheer psychological impact' }
+  ],
+
+  featured: {
+    hero: {
+      title: 'Inception',
+      subtitle: 'The Gateway Drug',
+      description:
+        'The film that taught us to question our own wakefulness. It remains the gold standard for high-concept blockbusters, but in this list... it is only the beginning.',
+      brainMeltScore: 92
+    }
   },
+
+  relatedCollections: [
+    'best-time-travel-movies',
+    'movies-like-the-matrix',
+    'best-psychological-thriller-movies'
+  ]
+},
+
+// 🧩 MOVIES LIKE MEMENTO — THE "FRAGMENTED REALITY" EDITION
+'movies-like-memento': {
+  slug: 'movies-like-memento',
+
+  // 🎯 H1 / Title: The "Puzzle" Hook
+  title: '10 Movies Like Memento (Ranked by Narrative Fragmentation)',
+  subtitle: 'Reverse Chronology, Amnesia & The Puzzle of Identity',
+
+  // 🧠 Above-the-fold hook
+  description:
+    'Don’t trust your memory. We ranked 10 non-linear masterpieces that shatter time, identity, and narrative structure into a thousand pieces.',
+
+  // 📖 Editorial Copy: The "Challenge"
+  longDescription:
+    'Christopher Nolan’s *Memento* didn’t just tell a story; it forced you to solve it. This collection is for the viewer who hates being spoon-fed. We have curated cinema’s most structurally broken films—stories told backwards, sideways, and in loops. From the engineering complexity of *Primer* to the identity collapse of *Enemy*, these are films where the timeline is a weapon used against you.',
+
+  emoji: '🧩',
+  theme: 'amber',
+
+  primaryColor: '#d97706', // Amber 600
+  secondaryColor: '#78350f', // Amber 900
+  accentColor: '#fbbf24', // Amber 400
+
+  gradientFrom: 'from-stone-900',
+  gradientTo: 'to-amber-900',
+
+  category: 'memento',
+
+  tags: [
+    'non-linear narrative',
+    'amnesia',
+    'fragmented storytelling',
+    'puzzle movies',
+    'reverse chronology',
+    'psychological mystery'
+  ],
+
+  // 🔥 SEO: High-Intent & Curiosity
+  seo: {
+    title: '10 Fragmented Movies Like Memento (Ranked) | Filmiway',
+    description: 
+      'Looking for puzzle movies like Memento? Explore 10 non-linear thrillers with fragmented narratives and reverse chronology—ranked by complexity.',
+    keywords: 
+      'movies like memento, non-linear movies, fragmented narrative films, primer, mulholland drive, enemy, puzzle movies, reverse chronology',
+    
+    canonicalUrl: 'https://filmiway.com/collection/movies-like-memento',
+    
+    ogTitle: '10 Movies You Have To Solve (Like Memento)',
+    twitterTitle: 'Can You Piece These 10 Movies Together? 🧩',
+
+    structuredData: {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      name: '10 Best Non-Linear Puzzle Movies',
+      description: 'Expert-curated ranking of cinema\'s most fragmented and difficult-to-solve narratives.',
+      numberOfItems: 10
+    }
+  },
+
+  stats: {
+    totalMovies: 10,
+    averageRating: 8.1,
+    totalWatchtime: '21h 15m',
+    averageFragmentationScore: 97, // The "Killer" Metric
+    mostBroken: 'Mulholland Drive (100/100)',
+    newestMovie: 'Predestination (2014)',
+    oldestMovie: 'The Usual Suspects (1995)' // Based on your list
+  },
+
+  movies: [
+    'tt0390384', // 1. Primer (The Timeline Puzzle)
+    'tt0383028', // 2. Synecdoche, New York (The Life Fragment)
+    'tt0166924', // 3. Mulholland Drive (The Dream Fragment)
+    'tt2397535', // 4. Predestination (The Loop Fragment)
+    'tt2866360', // 5. Coherence (The Reality Fracture)
+    'tt0246578', // 6. Donnie Darko (The Time Fracture)
+    'tt2316411', // 7. Enemy (The Self Fracture)
+    'tt0414993', // 8. The Fountain (The Eternal Fragment)
+    'tt0485947', // 9. Mr. Nobody (The Choice Fragment)
+    'tt1130884'  // 10. Shutter Island (The Memory Fracture)
+  ],
+
+  badges: [
+    { label: 'Non-Linear', desc: 'Stories told out of order' },
+    { label: 'Memory Trap', desc: 'Protagonists who can\'t trust themselves' },
+    { label: 'Puzzle Box', desc: 'Ranked by narrative difficulty' }
+  ],
+
+  featured: {
+    hero: {
+      title: 'Memento',
+      subtitle: 'The Ultimate Puzzle',
+      description:
+        'A man with no short-term memory tries to solve his wife’s murder. The catch? The story is told backwards. You know the end, but you have to figure out the beginning.',
+      fragmentationScore: 99
+    }
+  },
+
+  relatedCollections: [
+    'movies-like-inception',
+    'best-psychological-thriller-movies',
+    'movies-like-shutter-island'
+  ]
+},
+
+// 🏥 MOVIES LIKE SHUTTER ISLAND — THE "SHATTERED REALITY" EDITION
+'movies-like-shutter-island': {
+  slug: 'movies-like-shutter-island',
+
+  // 🎯 H1 / Title: The "Perception" Hook
+  title: '10 Movies Like Shutter Island (Ranked by Reality Distortion)',
+  subtitle: 'Unreliable Narrators, Psychological Gaslighting & Total Identity Collapse',
+
+  // 🧠 Above-the-fold hook
+  description:
+    'Don’t trust the protagonist. Don’t trust the frame. We ranked 10 psychological masterclasses that weaponize your own perception against you.',
+
+  // 📖 Editorial Copy: The "Paranoia" Hook
+  longDescription:
+    'Martin Scorsese’s *Shutter Island* is the definitive study of the broken mind. This collection is for those who crave that feeling of the floor falling out from under them. We have curated cinema’s most dangerous examinations of identity—films where the "truth" is a moving target. From the multi-layered deception of *The Usual Suspects* to the subconscious spider-web of *Enemy*, these are movies that gaslight the audience as much as the characters.',
+
+  emoji: '🏥',
+  theme: 'slate',
+
+  primaryColor: '#475569', // Slate 600
+  secondaryColor: '#1e293b', // Slate 800
+  accentColor: '#94a3b8', // Slate 400
+
+  gradientFrom: 'from-gray-900',
+  gradientTo: 'to-slate-900',
+
+  category: 'shutter-island',
+
+  tags: [
+    'unreliable narrator',
+    'identity crisis',
+    'gaslighting',
+    'psychological thriller',
+    'asylum noir',
+    'shattered reality'
+  ],
+
+  // 🔥 SEO: High-Aggression CTR
+  seo: {
+    title: '10 Twisted Movies Like Shutter Island (Ranked) | Filmiway',
+    description: 
+      'Searching for movies like Shutter Island? Discover 10 psychological thrillers with unreliable narrators and shocking twists that challenge your sanity.',
+    keywords: 
+      'movies like shutter island, psychological thrillers with twists, unreliable narrator movies, enemy movie explained, memento, the usual suspects, mind bending thrillers',
+    
+    canonicalUrl: 'https://filmiway.com/collection/movies-like-shutter-island',
+    
+    ogTitle: 'Can You Spot The Lie? (10 Movies Like Shutter Island)',
+    twitterTitle: '10 Movies That Will Gaslight You 🏥',
+
+    structuredData: {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      name: '10 Psychological Thrillers Like Shutter Island',
+      description: 'Expert-curated ranking of movies featuring unreliable narrators and reality-shattering revelations.',
+      numberOfItems: 10
+    }
+  },
+
+  stats: {
+    totalMovies: 10,
+    averageRating: 8.2,
+    totalWatchtime: '20h 50m',
+    averageParanoiaIndex: 96, 
+    mostDeceptive: 'The Usual Suspects (99/100)',
+    newestMovie: 'Enemy (2013)',
+    oldestMovie: 'The Usual Suspects (1995)'
+  },
+
+  movies: [
+    'tt0114814', // 1. The Usual Suspects (The Ultimate Deception)
+    'tt2316411', // 2. Enemy (The Identity Spiral)
+    'tt0166924', // 3. Mulholland Drive (The Dream Fracture)
+    'tt0383028', // 4. Synecdoche, New York (The Mental Sprawl)
+    'tt0246578', // 5. Donnie Darko (The Tangent Reality)
+    'tt2397535', // 6. Predestination (The Biological Paradox)
+    'tt0390384', // 7. Primer (The Logical Collapse)
+    'tt2866360', // 8. Coherence (The Social Paranoia)
+    'tt0414993', // 9. The Fountain (The Eternal Cycle)
+    'tt0485947'  // 10. Mr. Nobody (The Fractured Choice)
+  ],
+
+  badges: [
+    { label: 'Unreliable Narrator', desc: 'The lead is lying to you (and themselves)' },
+    { label: 'Identity Collapse', desc: 'Characters who no longer know who they are' },
+    { label: 'Reality Distortion', desc: 'Ranked by how much the film gaslights the viewer' }
+  ],
+
+  featured: {
+    hero: {
+      title: 'Shutter Island',
+      subtitle: 'The Anatomy of Denial',
+      description:
+        'Scorsese’s haunting descent into the fog of a broken psyche. A masterpiece of atmosphere that hides the truth in plain sight until it’s too late.',
+      paranoiaIndex: 98
+    }
+  },
+
+  relatedCollections: [
+    'best-psychological-thriller-movies',
+    'movies-like-inception',
+    'movies-like-se7en'
+  ]
+},
 
  
 // 🔥 SEO-OPTIMIZED SURVIVAL COLLECTION
@@ -4162,93 +4408,110 @@ movies: [
 },
 
 
+// 🌌 MOVIES LIKE INTERSTELLAR — THE "COSMIC SCALE" EDITION
+'movies-like-interstellar': {
+  slug: 'movies-like-interstellar',
 
-// 🚀 MOVIES LIKE INTERSTELLAR COLLECTION
-  'movies-like-interstellar': {
-    slug: 'movies-like-interstellar',
-    title: 'Movies Like Interstellar',
-    subtitle: 'Space Epics & Time Dilated Emotions',
-    description: 'Epic sci-fi films with cosmic scope, time dilation, and emotional depth—ranked by complexity and visual spectacle.',
-    longDescription: 'Journey beyond the stars with this collection of films that match the ambition, scientific grounding, and emotional core of Christopher Nolan\'s masterpiece. From the hard sci-fi of 2001: A Space Odyssey to the intimate linguistics of Arrival, these movies explore what it means to be human against the infinite backdrop of space.',
+  // 🎯 H1 / Title: The "Scale" Hook
+  title: '10 Cosmic Masterpieces Like Interstellar (Ranked by Scale)',
+  subtitle: 'Time Dilation, Higher Dimensions & The Infinite Void',
 
-    emoji: '🌌',
-    theme: 'cyan',
-    primaryColor: '#0891b2',
-    secondaryColor: '#06b6d4',
-    accentColor: '#0e7490',
-    gradientFrom: 'from-cyan-600',
-    gradientTo: 'to-blue-600',
+  // 🧠 Above-the-fold hook
+  description:
+    'Feeling small? Good. We ranked 10 cinematic experiences that capture the terrifying beauty and crushing weight of the infinite universe.',
 
-    category: 'interstellar',
-    tags: ['sci-fi', 'space', 'time-travel', 'hard-sci-fi', 'space-exploration', 'mind-bending', 'emotional'],
+  // 📖 Editorial Copy: The "Existential" Hook
+  longDescription:
+    'Christopher Nolan’s *Interstellar* didn’t just show us space; it made us feel the weight of time itself. This collection is for the dreamer who looks up. We have curated cinema’s most ambitious voyages—films that blend hard theoretical physics with deep existential spirituality. From the monolithic silence of *2001: A Space Odyssey* to the linguistic puzzle of *Arrival*, these aren’t just movies; they are windows into the great unknown.',
 
-    metaTitle: '10 Movies Like Interstellar (2026) | Space Epics Ranked | Filmiway',
-    metaDescription: 'Discover the 10 best movies like Interstellar—from Arrival to 2001: A Space Odyssey. Expert-curated ranking of cosmic sci-fi with emotional depth.',
-    metaKeywords: 'movies like interstellar, space movies, sci-fi epics, arrival, contact, 2001 space odyssey, the martian, gravity, ad astra, sunshine',
+  emoji: '🌌',
+  theme: 'cyan',
 
-    stats: {
-      totalMovies: 10,
-      averageRating: 7.8,
-      totalWatchtime: '21 hours 15 minutes',
-      averageSpaceComplexity: 88,
-      mostComplex: '2001: A Space Odyssey (98/100)',
-      newestMovie: 'Ad Astra (2019)',
-      oldestMovie: '2001: A Space Odyssey (1968)'
-    },
+  primaryColor: '#0891b2', // Cyan 600
+  secondaryColor: '#164e63', // Cyan 900
+  accentColor: '#67e8f9', // Cyan 300
 
-    movies: [
-      'tt0062622',  // 1. 2001: A Space Odyssey
-      'tt2543164',  // 2. Arrival
-      'tt0118884',  // 3. Contact
-      'tt0069293',  // 4. Solaris
-      'tt1213641',  // 5. First Man
-      'tt3659388',  // 6. The Martian
-      'tt1454468',  // 7. Gravity
-      'tt0448134',  // 8. Sunshine
-      'tt1182345',  // 9. Moon
-      'tt2935510'   // 10. Ad Astra
-    ],
+  gradientFrom: 'from-slate-900',
+  gradientTo: 'to-cyan-950',
 
-    badges: [
-      { label: 'Cosmic Scope', desc: 'Epic space exploration narratives' },
-      { label: 'Hard Sci-Fi', desc: 'Grounded in scientific theory' },
-      { label: 'Emotional Depth', desc: 'Human stories in the void' }
-    ],
+  category: 'interstellar',
 
-    featured: {
-      hero: {
-        title: '2001: A Space Odyssey',
-        subtitle: 'The Ultimate Sci-Fi Masterpiece',
-        description: 'Stanley Kubrick\'s visionary journey from the dawn of man to the stars. The definitive precursor to Interstellar.',
-        poster: 'https://image.tmdb.org/t/p/w500/ve72VxNqjGM69Uky4WTo2bK6rfq.jpg',
-        backdrop: 'https://image.tmdb.org/t/p/w1280/1Tvm5he5uG6JYTy1POjYRUeIBpf.jpg',
-        spaceComplexity: 98
-      }
-    },
+  tags: [
+    'hard sci-fi',
+    'cosmic horror',
+    'time dilation',
+    'space exploration',
+    'existential dread',
+    'astrophysics'
+  ],
 
-    relatedCollections: [
-      'best-sci-fi-movies',
-      'best-time-travel-movies',
-      'movies-like-inception'
-    ],
+  // 🔥 SEO: High-Intent for "Smart" Sci-Fi
+  seo: {
+    title: '10 Movies Like Interstellar That Will Expand Your Mind | Filmiway',
+    description: 
+      'Craving more space epics? We ranked 10 masterpieces like Interstellar, Arrival, and 2001: A Space Odyssey that explore time, gravity, and human existence.',
+    keywords: 
+      'movies like interstellar, best space movies, hard sci-fi films, arrival explained, 2001 space odyssey meaning, ad astra, time dilation movies',
+    
+    canonicalUrl: 'https://filmiway.com/collection/movies-like-interstellar',
+    
+    ogTitle: '10 Movies That capture The Infinite Void (Like Interstellar)',
+    twitterTitle: 'Can Your Mind Handle These 10 Cosmic Epics? 🌌',
 
-    seo: {
-      title: '10 Movies Like Interstellar (2026) | Space Epics Ranked | Filmiway',
-      description: 'Explore the definitive ranking of films like Interstellar. Expert-curated collection of cerebral space epics and emotional sci-fi.',
-      keywords: 'movies like interstellar, space exploration films, hard sci-fi, christopher nolan style, arrival, contact, the martian, gravity, solaris',
-      canonicalUrl: 'https://filmiway.com/collection/movies-like-interstellar',
-      ogImage: 'https://filmiway.com/images/interstellar-movies-collection-og.jpg',
-      structuredData: {
-        '@context': 'https://schema.org',
-        '@type': 'ItemList',
-        name: 'Movies Like Interstellar',
-        description: 'Expert-curated list of the best space sci-fi films like Interstellar ranked by complexity and emotional impact',
-        numberOfItems: 10
-      }
+    structuredData: {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      name: '10 Best Deep Space Sci-Fi Movies',
+      description: 'Expert-curated ranking of cinema\'s most scientifically and philosophically ambitious space films.',
+      numberOfItems: 10
     }
   },
 
+  stats: {
+    totalMovies: 10,
+    averageRating: 8.1,
+    totalWatchtime: '21h 15m',
+    averageCosmicScale: 96, // The "Killer" Metric
+    mostExpansive: '2001: A Space Odyssey (100/100)',
+    newestMovie: 'Ad Astra (2019)',
+    oldestMovie: '2001: A Space Odyssey (1968)'
+  },
 
+  movies: [
+    'tt0062622',  // 1. 2001: A Space Odyssey (The Monolith)
+    'tt2543164',  // 2. Arrival (The Language)
+    'tt0118884',  // 3. Contact (The Signal)
+    'tt0069293',  // 4. Solaris (The Ocean)
+    'tt1213641',  // 5. First Man (The Isolation)
+    'tt3659388',  // 6. The Martian (The Survival)
+    'tt1454468',  // 7. Gravity (The Void)
+    'tt0448134',  // 8. Sunshine (The Sun)
+    'tt1182345',  // 9. Moon (The Identity)
+    'tt2935510'   // 10. Ad Astra (The Father)
+  ],
+
+  badges: [
+    { label: 'Cosmic Scale', desc: 'Films that make you feel tiny' },
+    { label: 'Hard Science', desc: 'Grounded in real physics & theory' },
+    { label: 'Existential Awe', desc: 'Ranked by philosophical depth' }
+  ],
+
+  featured: {
+    hero: {
+      title: 'Interstellar',
+      subtitle: 'Love Transcends Dimensions',
+      description:
+        'A desperate mission through a wormhole to save humanity. It is the ultimate fusion of theoretical physics and raw human emotion, proving that love is the only thing we can perceive that transcends time and space.',
+      cosmicScale: 99
+    }
+  },
+
+  relatedCollections: [
+    'best-sci-fi-movies',
+    'movies-like-inception',
+    'best-time-travel-movies'
+  ]
+},
 
 'best-heist-thriller-movies': {
   slug: 'best-heist-thriller-movies',
@@ -4422,45 +4685,110 @@ movies: [
 
 
 
- 'best-psychological-thriller-movies': {
-    slug: 'best-psychological-thriller-movies',
-    title: '10 Best Psychological Thriller Movies of All Time',
-    description: 'Top psychological thrillers with intense mind games, complex characters, and riveting suspense.',
-    movies: [
-      'tt0102926', // The Silence of the Lambs (1991)
-      'tt0137523', // Fight Club (1999)
-      'tt0209144', // Memento (2000)
-      'tt0114369', // Se7en (1995)
-      'tt1130884', // Shutter Island (2010)
-      'tt0947798', // Black Swan (2010)
-      'tt0361862', // The Machinist (2004)
-      'tt0364569', // Oldboy (2003)
-      'tt0075314', // Taxi Driver (1976)
-      'tt0081505'  // The Shining (1980)
-    ],
-    badges: [
-      { label: 'Psychological Thrillers', desc: 'Intense mind games & suspense' },
-      { label: 'Highly Rated', desc: 'Critically acclaimed masterpieces' },
-      { label: 'Cult Classics', desc: 'Timeless and influential films' }
-    ],
-    metaTitle: '10 Best Psychological Thriller Movies of All Time - Filmiway',
-    metaDescription: 'Explore the best psychological thriller movies known for their mind-bending plots, intense suspense, and complex characters. Curated by Filmiway for (2026).',
-    metaKeywords: 'psychological thriller movies, best thriller films, mind-bending movies, suspense movies, top psychological thrillers',
-    theme: 'purple',
-    primaryColor: '#7c3aed',
-    secondaryColor: '#a78bfa',
-    accentColor: '#fbbf24',
-    emoji: '🧠',
-    category: 'psychological-thriller',
+// 🧠 BEST PSYCHOLOGICAL THRILLERS — THE "SANITY EROSION" EDITION
+'best-psychological-thriller-movies': {
+  slug: 'best-psychological-thriller-movies',
+
+  // 🎯 H1 / Title: The "Breakdown" Hook
+  title: '10 Best Psychological Thrillers (Ranked by Sanity Erosion)',
+  subtitle: 'Obsession, Isolation & The Total Collapse of the Human Mind',
+
+  // 🧠 Above-the-fold hook
+  description:
+    'Watch the human mind snap. We ranked 10 masterpieces where the true villain isn’t a monster—it’s the protagonist’s own psyche.',
+
+  // 📖 Editorial Copy: The "Darkness" Hook
+  longDescription:
+    'A jump scare fades in seconds. A psychological fracture lasts forever. This collection is dedicated to the cinema of mental decay—films that meticulously document the unraveling of the human soul. From the insomnia-fueled nightmare of *The Machinist* to the perfectionist self-destruction of *Black Swan*, these are stories about the demons that live inside us. You don’t just watch these movies; you survive them.',
+
+  emoji: '🧠',
+  theme: 'violet',
+
+  primaryColor: '#5b21b6', // Violet 800
+  secondaryColor: '#2e1065', // Violet 950
+  accentColor: '#8b5cf6', // Violet 500
+
+  gradientFrom: 'from-gray-900',
+  gradientTo: 'to-violet-950',
+
+  category: 'psychological',
+
+  tags: [
+    'psychological thriller',
+    'mental breakdown',
+    'unreliable narrator',
+    'descent into madness',
+    'cult classic',
+    'disturbing cinema'
+  ],
+
+  // 🔥 SEO: High-Intent for "Disturbing/Deep" Movies
+  seo: {
+    title: '10 Psychological Thrillers That Will Break You (Ranked) | Filmiway',
+    description: 
+      'Looking for the best psychological thrillers? We ranked 10 intense films about mental collapse, including Fight Club, Black Swan, and Oldboy.',
+    keywords: 
+      'best psychological thrillers, movies about mental breakdown, fight club, black swan, oldboy, taxi driver, silence of the lambs, dark psychological movies',
+    
     canonicalUrl: 'https://filmiway.com/collection/best-psychological-thriller-movies',
-    seo: {
-      title: '10 Best Psychological Thriller Movies of All Time | Filmiway',
-      description: 'Dive into a curated list of the top psychological thrillers filled with suspense, mystery, and mind games. Updated for (2026).',
-      keywords: 'psychological thrillers, suspense films, mind-bending movies, best thriller collection',
-      canonicalUrl: 'https://filmiway.com/collection/best-psychological-thriller-movies',
-      ogImage: 'https://filmiway.com/images/psychological-thriller-collection-og.jpg'
+    
+    ogTitle: '10 Movies Where The Mind Snaps (Ranked)',
+    twitterTitle: 'Can You Handle These 10 Psychological Breakdowns? 🧠',
+
+    structuredData: {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      name: '10 Best Psychological Thrillers of All Time',
+      description: 'Expert-curated ranking of cinema\'s most intense character studies and mental breakdowns.',
+      numberOfItems: 10
     }
   },
+
+  stats: {
+    totalMovies: 10,
+    averageRating: 8.6,
+    totalWatchtime: '22h 15m',
+    averageSanityErosion: 98, // The "Killer" Metric
+    mostDisturbing: 'Oldboy (100/100)',
+    newestMovie: 'Shutter Island (2010)', // Based on your list
+    oldestMovie: 'Taxi Driver (1976)'
+  },
+
+  movies: [
+    'tt0102926', // 1. The Silence of the Lambs (The Manipulation)
+    'tt0137523', // 2. Fight Club (The Dissociation)
+    'tt0209144', // 3. Memento (The Fragmentation)
+    'tt0114369', // 4. Se7en (The Despair)
+    'tt1130884', // 5. Shutter Island (The Denial)
+    'tt0947798', // 6. Black Swan (The Obsession)
+    'tt0361862', // 7. The Machinist (The Guilt)
+    'tt0364569', // 8. Oldboy (The Vengeance)
+    'tt0075314', // 9. Taxi Driver (The Isolation)
+    'tt0081505'  // 10. The Shining (The Cabin Fever)
+  ],
+
+  badges: [
+    { label: 'Sanity Hazard', desc: 'Films that document a total mental collapse' },
+    { label: 'Masterpiece', desc: 'Critically acclaimed genre-defining cinema' },
+    { label: 'High Intensity', desc: 'Ranked by emotional and psychological weight' }
+  ],
+
+  featured: {
+    hero: {
+      title: 'The Silence of the Lambs',
+      subtitle: 'The Art of Manipulation',
+      description:
+        'A rookie FBI agent must trust a cannibal to catch a killer. The ultimate psychological chess match where every conversation is a battle for control.',
+      sanityErosion: 95
+    }
+  },
+
+  relatedCollections: [
+    'movies-like-se7en',
+    'movies-like-shutter-island',
+    'best-detective-thriller-movies'
+  ]
+},
 
    // 🕵️‍♂️ BEST DETECTIVE THRILLER MOVIES — RANKED BY OBSESSION
 'best-detective-thriller-movies': {

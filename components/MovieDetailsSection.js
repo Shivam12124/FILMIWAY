@@ -643,13 +643,14 @@ const MovieDetailsSection = React.memo(({
    : fromRevengeCollection ? movie.revengeIntensity ?? safeMovieInfo.revengeIntensity ?? 0
    : fromWarFilmsCollection ? movie.warIntensity ?? safeMovieInfo.warIntensity ?? 0
    : fromSciFiCollection ? movie.sciFiComplexity ?? safeMovieInfo.sciFiComplexity ?? 0
-   : fromInterstellarCollection ? movie.spaceComplexity ?? safeMovieInfo.spaceComplexity ?? 0
+   : fromInterstellarCollection ? movie. cosmicScale ?? safeMovieInfo. cosmicScale ?? 0
    : fromTimeTravelCollection ? movie.complexityScore ?? safeMovieInfo.complexityScore ?? 0
    : fromHeistThrillerCollection ? movie.heistComplexity ?? safeMovieInfo.heistComplexity ?? 0
    : fromCrimeThrillerCollection ? movie. crimeIntensity ?? safeMovieInfo. crimeIntensity ?? 0
    : fromMysteryThrillerCollection ? movie.psychologicalTension ?? safeMovieInfo.psychologicalTension ?? 0
    : fromDetectiveThrillerCollection ? movie.psychologicalTension?? safeMovieInfo.psychologicalTension?? 0
-   : fromPsychologicalThrillerCollection ? movie.suspenseIntensity ?? safeMovieInfo.suspenseIntensity ?? 0
+   : fromPsychologicalThrillerCollection 
+  ? movie.sanityErosion ?? safeMovieInfo.sanityErosion ?? 0
    : fromDramaCollection ? movie.emotionalIntensity ?? safeMovieInfo.emotionalIntensity ?? 0
    : fromThrillerCollection ? movie.suspenseIntensity ?? safeMovieInfo.suspenseIntensity ?? 0
    : fromSurvivalCollection ? movie.survivabilityIndex ?? safeMovieInfo.survivabilityIndex ?? 0
@@ -818,6 +819,24 @@ const MovieDetailsSection = React.memo(({
      default: return '#6b7280';
         }
    }
+if (fromPsychologicalThrillerCollection) {
+      switch (level) {
+        case 'EXTREME': return '#7f1d1d'; // Deep Blood Red for total sanity loss
+        case 'HIGH': return '#b91c1c';    // Intense Red
+        case 'MEDIUM': return '#c2410c';  // Orange-Red
+        default: return '#6b7280';
+      }
+    }
+
+    if (fromInterstellarCollection) {
+      switch (level) {
+        case 'EXTREME': return '#7f1d1d'; // Deep Blood Red for total sanity loss
+        case 'HIGH': return '#b91c1c';    // Intense Red
+        case 'MEDIUM': return '#c2410c';  // Orange-Red
+        default: return '#6b7280';
+      }
+    }
+
    if (fromRevengeCollection || fromWarFilmsCollection || fromDramaCollection) {
      switch (level) {
      case 'EXTREME': return '#ea0808ff';
@@ -876,12 +895,12 @@ const MovieDetailsSection = React.memo(({
    if (fromRevengeCollection) return 'REVENGE INTENSITY SCORE';
    if (fromWarFilmsCollection) return 'WAR INTENSITY SCORE';
    if (fromSciFiCollection) return 'SCI-FI COMPLEXITY SCORE';
-   if (fromInterstellarCollection) return 'SPACE COMPLEXITY SCORE';
+   if (fromInterstellarCollection) return 'COSMIC SCALE SCORE';
    if (fromTimeTravelCollection) return 'TIME TRAVEL COMPLEXITY SCORE';
    if (fromHeistThrillerCollection) return 'HEIST COMPLEXITY SCORE';
    if (fromCrimeThrillerCollection) return 'CRIME INTENSITY SCORE';
    if (fromDetectiveThrillerCollection || fromMysteryThrillerCollection) return 'MYSTERY COMPLEXITY SCORE';
-   if (fromPsychologicalThrillerCollection) return 'PSYCHOLOGICAL COMPLEXITY SCORE';
+   if (fromPsychologicalThrillerCollection) return 'SANITY EROSION SCORE'; // 🔥 UPDATED
    if (fromDramaCollection) return 'EMOTIONAL INTENSITY SCORE';
    if (fromThrillerCollection) return 'SUSPENSE INTENSITY SCORE';
    if (fromSurvivalCollection) return 'SURVIVAL INTENSITY SCORE';
@@ -920,12 +939,12 @@ const MovieDetailsSection = React.memo(({
    if (fromRevengeCollection) return 'REVENGE INTENSITY INDEX';
    if (fromWarFilmsCollection) return 'WAR INTENSITY INDEX';
    if (fromSciFiCollection) return 'SCI-FI COMPLEXITY INDEX';
-   if (fromInterstellarCollection) return 'COSMIC REALISM INDEX';
+   if (fromInterstellarCollection) return 'AWE INDEX';
    if (fromTimeTravelCollection) return 'COMPLEXITY INDEX';
    if (fromHeistThrillerCollection) return 'HEIST COMPLEXITY INDEX';
    if (fromCrimeThrillerCollection) return 'CRIME INTENSITY INDEX';
    if (fromDetectiveThrillerCollection || fromMysteryThrillerCollection) return 'MYSTERY INDEX';
-   if (fromPsychologicalThrillerCollection) return 'PSYCHOLOGICAL INDEX';
+   if (fromPsychologicalThrillerCollection) return 'SANITY EROSION INDEX'; // 🔥 UPDATED
    if (fromDramaCollection) return 'EMOTIONAL INTENSITY';
    if (fromThrillerCollection) return 'SUSPENSE INDEX';
    if (fromSurvivalCollection) return 'SURVIVABILITY INDEX';
@@ -964,12 +983,12 @@ const MovieDetailsSection = React.memo(({
    if (fromRevengeCollection) return 'VENGEANCE BRUTALITY LEVEL';
    if (fromWarFilmsCollection) return 'COMBAT REALISM LEVEL';
    if (fromSciFiCollection) return 'SCI-FI COMPLEXITY LEVEL';
-   if (fromInterstellarCollection) return 'COSMIC SCALE LEVEL';
+   if (fromInterstellarCollection) return 'EXISTENTIAL LEVEL';
    if (fromTimeTravelCollection) return 'COMPLEXITY LEVEL';
    if (fromHeistThrillerCollection) return 'HEIST COMPLEXITY LEVEL';
    if (fromCrimeThrillerCollection) return 'CRIME COMPLEXITY LEVEL';
    if (fromDetectiveThrillerCollection || fromMysteryThrillerCollection) return 'MYSTERY COMPLEXITY LEVEL';
-   if (fromPsychologicalThrillerCollection) return 'PSYCHOLOGICAL DISTORTION LEVEL';
+   if (fromPsychologicalThrillerCollection) return 'MENTAL COLLAPSE LEVEL'; //
    if (fromDramaCollection) return 'EMOTIONAL RESONANCE LEVEL';
    if (fromThrillerCollection) return 'SUSPENSE INTENSITY LEVEL';
    if (fromSurvivalCollection) return 'SURVIVAL INTENSITY LEVEL';

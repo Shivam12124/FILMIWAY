@@ -199,49 +199,51 @@ const CollectionPage = ({ collection, movies }) => {
 const getCollectionContent = () => {
     if (collection.slug === 'movies-like-memento') {
         return {
-            badge: "Memory-Twisting Cinema",
-            title: "Memento",
-            description: "Memory loss thrillers that mess with your mind. Non-linear narratives, identity crises & shocking twists that'll leave you questioning everything you just watched.",
+            badge: "🧩 Narrative Jigsaw",
+            title: "10 Fragmented Movies (Ranked by Confusion)",
+            description: "Don't trust the timeline. Don't trust the narrator. We ranked 10 masterpieces that shatter storytelling into a thousand pieces.",
             selection: {
-                text1: "From reverse chronology to fragmented memories—these films challenge you to piece together narratives just like the protagonists struggling to understand their own shattered identities.",
-                text2: "Each memory-twisting masterpiece features characters battling amnesia, false memories, and temporal confusion. You'll experience the same disorienting confusion they do."
+                text1: "Linear storytelling is for people who want to be comfortable. We selected films that force you to work—stories told backwards, sideways, and in recursive loops.",
+                text2: "From the memory loss of Memento to the identity fracturing of Enemy, this collection is a test of your ability to reconstruct the truth."
             },
             ranking: {
-                text: "Our memory complexity index evaluates narrative structure, identity confusion depth, and the sophistication of memory manipulation techniques used throughout each film.",
+                text: "Our 'Fragmentation Index' measures how broken a film's narrative structure is. We analyze timeline jumps, unreliable narrators, and the difficulty of the final assembly.",
                 points: [
-                    "Non-linear narrative complexity",
-                    "Identity confusion intensity", 
-                    "Memory manipulation sophistication",
-                    "Psychological impact power"
+                    "Non-Linear Density",
+                    "Timeline Distortion",
+                    "Unreliable Narration",
+                    "Puzzle Difficulty"
                 ]
             },
             experience: {
-                text1: "Whether you're seeking intricate plot structures or deep psychological exploration, this collection delivers cinema's most sophisticated memory-bending experiences.",
-                text2: "Each film creates genuine confusion and revelation—mirroring what it's like to struggle with fractured memories and uncertain identity. Perfect for fans who love being mentally challenged."
-            }
+                text1: "You will need to pay attention to every cut, every prop, and every line of dialogue. The clue you missed in minute 5 might solve the mystery in minute 90.",
+                text2: "Warning: These films do not hold your hand. You are the detective now."
+            },
+
         };
-    } else if (collection.slug === 'movies-like-inception') {
+     } else if (collection.slug === 'movies-like-inception') {
         return {
-            badge: "Mind-Bending Cinema",
-            title: "Inception", 
-            description: "Reality-bending thrillers that'll blow your mind. Layered dreams, parallel realities & Christopher Nolan-level genius storytelling that demands multiple viewings.",
+            badge: "⚠️ Cognitive Hazard",
+            title: "10 Reality-Shattering Movies (Ranked by Brain-Melt)",
+            description: "Warning: These aren't just movies. They are cognitive hazards. We ranked 10 masterpieces that will dismantle your perception of reality, piece by piece.",
             selection: {
-                text1: "From multi-layered dreamscapes to parallel realities—these films push the boundaries of narrative structure while maintaining emotional depth and philosophical weight that'll haunt you.",
-                text2: "Each mind-bending masterpiece features complex protagonists navigating impossible scenarios, time paradoxes, and reality distortions that challenge everything you think you know about cinema."
+                text1: "We didn't pick these for fun. We picked them to hurt. These are the films that force you to pause, rewind, and question your own sanity.",
+                text2: "From the engineering nightmare of Primer to the infinite loops of Predestination, this collection is a challenge: Can you keep up?"
             },
             ranking: {
-                text: "Our mind-bending complexity index evaluates narrative innovation, reality distortion intensity, and the sophistication of conceptual storytelling techniques throughout each film.",
+                text: "Our 'Brain-Melt Index' measures the structural damage a film does to your logic. We analyze recursion, paradox density, and the 'WTF' factor of the ending.",
                 points: [
-                    "Conceptual complexity depth",
-                    "Reality distortion intensity",
-                    "Narrative structure innovation", 
-                    "Philosophical impact weight"
+                    "Narrative Recursion Depth",
+                    "Paradox Density",
+                    "Structural Complexity",
+                    "Post-Credit Existential Dread"
                 ]
             },
             experience: {
-                text1: "Whether you're seeking intricate plot mechanics or philosophical depth, this collection delivers cinema's most ambitious reality-bending experiences that reward careful attention.",
-                text2: "Each film has been selected for its ability to create lasting impact—with concepts that continue revealing new layers upon repeated viewings. Your brain will thank you."
-            }
+                text1: "Put your phone away. Get a notepad. These films demand 100% of your processing power.",
+                text2: "If you finish this list and you still understand who you are... you didn't watch closely enough."
+            },
+          
         };
     } else if (collection.slug === 'movies-like-the-matrix') {
         return {
@@ -1245,51 +1247,53 @@ const getCollectionContent = () => {
                 text2: "Each film has been selected for its refusal to romanticize poverty or demonize wealth—instead revealing how systemic inequality corrupts everyone trapped within its architecture."
             }
         };
-    } else if (collection.slug === 'movies-like-interstellar') {
+} else if (collection.slug === 'movies-like-interstellar') {
         return {
-            badge: "Space Exploration Cinema",
-            title: "Interstellar",
-            description: "Cerebral space films that explore humanity's cosmic destiny. Philosophical depth, scientific accuracy & mind-expanding journeys beyond Earth that redefine sci-fi.",
+            badge: "🌌 Cosmic Scale",
+            title: "10 Cosmic Masterpieces Like Interstellar (Ranked by Scale)",
+            description: "Feeling small? Good. We ranked 10 cinematic experiences that capture the terrifying beauty and crushing weight of the infinite universe.",
             selection: {
-                text1: "From Kubrick's cosmic odyssey to Villeneuve's linguistic mysteries—these films use space exploration as a canvas for profound questions about consciousness, time, and humanity's place in the universe.",
-                text2: "Each space masterpiece features visionary directors tackling complex scientific concepts while maintaining emotional authenticity and philosophical depth that transcends typical sci-fi spectacle."
+                text1: "We didn't just pick space movies with lasers. We picked voyages. These are films that respect the silence of the void and the terrifying distances between stars.",
+                text2: "From the claustrophobia of 'First Man' to the higher dimensions of '2001', this collection is a tribute to human curiosity."
             },
             ranking: {
-                text: "Our space complexity index evaluates philosophical depth, scientific rigor, emotional resonance, and the sophistication of cerebral storytelling techniques throughout each film.",
+                text: "Our 'Cosmic Scale Index' measures the sheer scope of the film. We analyze scientific accuracy, visual grandeur, and the depth of the existential questions asked.",
                 points: [
-                    "Space complexity sophistication",
-                    "Philosophical depth weight",
-                    "Scientific accuracy level",
-                    "Emotional-intellectual balance"
+                    "Visual Grandeur",
+                    "Scientific Grounding",
+                    "Existential Depth",
+                    "The 'Awe' Factor"
                 ]
             },
             experience: {
-                text1: "Whether you're seeking hard science or existential exploration, this collection delivers cinema's most ambitious space films that treat audiences like intelligent adults capable of grappling with big ideas.",
-                text2: "Each film has been selected for its ability to inspire wonder and contemplation—with concepts about time, space, and consciousness that'll haunt you long after the final frame."
-            }
+                text1: "Turn off the lights. Turn up the sound. These films demand total immersion.",
+                text2: "You aren't just watching a movie; you are staring into the abyss. And sometimes, it stares back."
+            },
+            progressText: `Calculating ${movies.length} Trajectories`
         };
-    } else if (collection.slug === 'movies-like-shutter-island') {
+} else if (collection.slug === 'movies-like-shutter-island') {
         return {
-            badge: "Psychological Thriller Cinema",
-            title: "Shutter Island",
-            description: "Twisted psychological thrillers with unreliable narrators, shocking revelations & reality-shattering endings that redefine everything you thought you knew.",
+            badge: "👁️ Perception Warning",
+            title: "10 Shattered-Reality Movies (Ranked by Paranoia)",
+            description: "Don’t trust the protagonist. Don’t trust the frame. We ranked 10 psychological masterclasses that weaponize your own perception against you.",
             selection: {
-                text1: "From unreliable narrators to devastating plot twists—these films master psychological manipulation while maintaining gripping thriller tension and emotional authenticity that cuts deep.",
-                text2: "Each psychological masterpiece features protagonists whose grip on reality becomes increasingly questionable, leading you down paths of doubt, paranoia, and ultimate shocking revelation."
+                text1: "These are the films that live in the 'unreliable' space. We selected masterpieces where the narrator's mind is a maze, and the audience is trapped inside with them.",
+                text2: "From asylum noir to identity-warping sci-fi, this list is for those who want to feel the ground shift beneath their feet."
             },
             ranking: {
-                text: "Our psychological complexity index evaluates narrative deception mastery, identity questioning depth, and the sophistication of psychological thriller techniques throughout each film.",
+                text: "Our 'Paranoia Index' evaluates a film based on narrative deception, the complexity of the identity crisis, and the impact of the final revelation.",
                 points: [
-                    "Unreliable narrator mastery",
-                    "Identity crisis complexity",
-                    "Plot twist sophistication",
-                    "Psychological manipulation depth"
+                    "Narrative Deception Level",
+                    "Identity Fracture Intensity",
+                    "Atmospheric Dread",
+                    "Final Revelation Impact"
                 ]
             },
             experience: {
-                text1: "Whether you're seeking shocking revelations or psychological depth, this collection delivers cinema's most masterful explorations of fractured identity and reality distortion.",
-                text2: "Each film has been selected for its ability to completely reframe the entire viewing experience—with revelations that transform every previous scene into something entirely different."
-            }
+                text1: "Pay attention to the background. Pay attention to the mirrors. In these films, the details you ignore are the ones that destroy the 'truth.'",
+                text2: "If you think you know what’s happening by the second act, you’re already being gaslit."
+            },
+           
         };
    } else if (collection.slug === 'best-time-travel-movies') {
         return {
@@ -1567,29 +1571,6 @@ const getCollectionContent = () => {
     };
 
 
-    } else if (collection.slug === 'best-drama-movies-on-netflix') {
-        return {
-            badge: "Award-Winning Drama",
-            title: "Drama",
-            description: "Award-winning dramas streaming on Netflix now. Oscar-level performances, emotionally devastating stories & deeply moving cinema that'll stay with you forever.",
-            selection: {
-                text1: "From intimate character studies to epic family sagas—these films showcase cinema's ability to capture the full spectrum of human emotion with devastating authenticity.",
-                text2: "Each drama masterpiece features complex characters you'll care about, authentic relationships that feel real, and narratives that resonate deeply with the human experience."
-            },
-            ranking: {
-                text: "Our drama quality index evaluates emotional authenticity, character development depth, and the sophistication of dramatic storytelling throughout each film.",
-                points: [
-                    "Emotional authenticity",
-                    "Character development depth",
-                    "Narrative emotional impact",
-                    "Performance caliber"
-                ]
-            },
-            experience: {
-                text1: "Whether you're seeking emotional catharsis or character exploration, this collection delivers cinema's most powerful dramatic experiences that'll move you to tears.",
-                text2: "Each film has been selected for its ability to move audiences through authentic human stories and unforgettable performances that define what great acting looks like."
-            }
-        };
     } else if (collection.slug === 'best-war-films') {
         return {
             badge: "War & Conflict Cinema",
@@ -1641,15 +1622,15 @@ const getCollectionContent = () => {
 
 // 🔥 HEADER CONTENT 
 const getHeaderContent = () => {
-    if (collection.slug === 'movies-like-memento') {
+if (collection.slug === 'movies-like-memento') {
         return {
-            title: "Movies Like Memento: 10 Mind-Bending Films",
-            subtitle: "Memory loss thrillers with shocking twists, non-linear storytelling & identity crisis"
+            title: "10 Fragmented Movies Like Memento (Ranked by Confusion)",
+            subtitle: "Don't trust the timeline. Reverse chronology, amnesia & narrative puzzles that demand to be solved."
         };
     } else if (collection.slug === 'movies-like-inception') {
         return {
-            title: "Movies Like Inception: 10 Reality-Bending Films",
-            subtitle: "Layered dreams, reality distortion & Christopher Nolan-level genius storytelling"
+            title: "10 Reality-Shattering Movies Like Inception (Ranked by Brain-Melt)",
+            subtitle: "Warning: Cognitive Hazards. Existential puzzles, infinite loops & the death of linear logic."
         };
 
     } else if (collection.slug === 'movies-like-black-swan') {
@@ -1899,11 +1880,11 @@ const getHeaderContent = () => {
             title: "Movies Like Interstellar: 10 Cerebral Space Films",
             subtitle: "Philosophical space exploration with scientific depth, emotional resonance & cosmic wonder"
         };
-    } else if (collection.slug === 'movies-like-shutter-island') {
+  } else if (collection.slug === 'movies-like-shutter-island') {
         return {
-            title: "Movies Like Shutter Island: 10 Twisted Films",
-            subtitle: "Unreliable narrators, shocking twists & reality-shattering psychological thrillers"
-        };
+            title: "10 Shattered-Reality Movies Like Shutter Island (Ranked by Paranoia)",
+            subtitle: "Don’t trust the frame. Gaslighting, identity collapse & the anatomy of psychological denial."
+        };  
     } else if (collection.slug === 'best-crime-thriller-movies') {
         return {
             title: "Best Crime Thrillers: 10 Ruthless Films",

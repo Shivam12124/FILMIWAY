@@ -1,62 +1,63 @@
-// pages/best-sci-fi-movies-on-hulu/[id].js - HULU SCI-FI MOVIES
-// VISUALS: Sci-Fi/Mind-Bending Theme (Cyan/Blue/Cosmic)
-// SCHEMA: Maximalist (Hidden Mind-Bend Score and FAQs for Bots)
+// pages/movies/interstellar/[id].js - MOVIES LIKE INTERSTELLAR 🌌
+// VISUALS: Cosmic Scale Theme (Cyan/Deep Space Blue)
+// SCHEMA: Maximalist (Cosmic Scale Score and Deep-Dive FAQs)
 
 import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, Play, X, User, Twitter, Hash, Send, Film, Brain, Zap, Sparkles, Atom,Theater } from 'lucide-react'; // ✅ Added Sci-Fi Icons
+import { ChevronLeft, Play, X, User, Twitter, Hash, Send, Film, Globe, Rocket, Star, Theater } from 'lucide-react'; // ✅ Added Cosmic Icons
 
 import InternalCollectionsSection from '../../../components/InternalCollectionsSection';
 import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
 import TMDBAttribution from '../../../components/TMDBAttribution';
 
-// ✅ IMPORT SCI-FI DATA
+// ✅ IMPORT INTERSTELLAR DATA
 import { 
   COMPLETE_MOVIE_DATABASE, 
   COMPLETE_MOVIE_DATA,
   SENSITIVE_TIMELINES,
-  HULU_SCIFI_MOVIE_FAQS 
-} from '../../../utils/huluSciFiMovieData';
+  INTERSTELLAR_MOVIE_FAQS 
+} from '../../../utils/interstellarMovieData';
+
+import { INTERSTELLAR_MOVIE_SLUGS } from '../../../utils/interstellarMovieRoutes';
 
 const COLORS = {
-  accent: '#0ea5e9', accentLight: '#7dd3fc', bgPrimary: '#000000ff', bgCard: 'rgba(11, 11, 11, 0.8)', // Cyan/Deep Blue for Sci-Fi
-  textPrimary: '#FFFFFF', textSecondary: '#bae6fd', textMuted: '#7dd3fc', textDisabled: '#0369a1',
-  borderAccent: 'rgba(14, 165, 233, 0.25)', borderLight: 'rgba(3, 105, 161, 0.5)',
+  accent: '#0891b2', accentLight: '#67e8f9', bgPrimary: '#000000ff', bgCard: 'rgba(2, 6, 23, 0.8)', // Cyan/Deep Blue for Space
+  textPrimary: '#FFFFFF', textSecondary: '#cffafe', textMuted: '#22d3ee', textDisabled: '#155e75',
+  borderAccent: 'rgba(8, 145, 178, 0.25)', borderLight: 'rgba(22, 78, 99, 0.5)',
 };
 
 const MOVIE_YEARS = {
-  'Donnie Darko': '2001', 'The Abyss': '1989', 'Dawn of the Planet of the Apes': '2014', 
-  'Predator': '1987', 'Mr. Nobody': '2009', 'No One Will Save You': '2023', 
-  'Prey': '2022', 'Predator: Killer of Killers': '2025', 'Rise of the Planet of the Apes': '2011', 
-  'The Assessment': '2024'
+  '2001: A Space Odyssey': '1968', 'Arrival': '2016', 'Contact': '1997', 
+  'Solaris': '1972', 'First Man': '2018', 'The Martian': '2015', 
+  'Gravity': '2013', 'Sunshine': '2007', 'Moon': '2009', 'Ad Astra': '2019'
 };
 
 const MOVIE_DATA_BY_TITLE = {
-  'Donnie Darko': { connection: 'A cult classic that bends time, reality, and teenage angst into a puzzle box that demands multiple viewings to unlock.' },
-  'The Abyss': { connection: 'James Cameron\'s underwater masterpiece. It pioneered CGI water effects and explores the terrifying beauty of the deep ocean.' },
-  'Dawn of the Planet of the Apes': { connection: 'A Shakespearean tragedy with apes. It uses motion capture to tell a profound story about war, trust, and the failure of peace.' },
-  'Predator': { connection: 'The ultimate sci-fi action hybrid. It starts as a military thriller and morphs into a survival horror against the galaxy\'s perfect hunter.' },
-  'Mr. Nobody': { connection: 'A visual philosophy lesson. It explores the butterfly effect and the paralysis of choice through a kaleidoscope of possible lives.' },
-  'No One Will Save You': { connection: 'A dialogue-free masterclass in tension. It reinvents the alien invasion genre by focusing purely on survival and sound design.' },
-  'Prey': { connection: 'A primal, stripped-down prequel. It pits Comanche tactics against advanced alien tech, proving that wits matter more than weaponry.' },
-  'Predator: Killer of Killers': { connection: 'An animated expansion of the lore. It unleashes the Predator in historical settings we have always wanted to see.' },
-  'Rise of the Planet of the Apes': { connection: 'The origin story that changed everything. It makes you root for the downfall of humanity through the eyes of a chimp.' },
-  'The Assessment': { connection: 'A chilling look at a controlled future. It turns the simple act of parenting into a high-stakes psychological exam.' }
+  '2001: A Space Odyssey': { connection: 'The ultimate precursor to Interstellar. It deals with monoliths, evolution, and higher dimensions without saying a word.' },
+  'Arrival': { connection: 'Like Interstellar, it is a "first contact" story that is actually about time, memory, and the power of love to transcend linearity.' },
+  'Contact': { connection: 'Before Cooper went through the wormhole, Ellie Arroway did. A spiritual successor that treats science as a religious experience.' },
+  'Solaris': { connection: 'The most psychological space movie ever made. It explores grief and memory on a space station, much like the themes of Interstellar.' },
+  'First Man': { connection: 'A grounded, terrifying look at space travel. It shares the same focus on a father leaving his family to explore the deadly unknown.' },
+  'The Martian': { connection: 'The "Competence Porn" cousin to Interstellar. It focuses on the hard science of survival on a desolate planet.' },
+  'Gravity': { connection: 'A visceral survival thriller. While Interstellar is about the vastness of space, Gravity is about the claustrophobia of the void.' },
+  'Sunshine': { connection: 'A visual masterpiece about a crew flying into the sun. It matches the sheer scale and existential dread of Nolan’s work.' },
+  'Moon': { connection: 'A lonely, quiet film about isolation. It captures the feeling of being millions of miles from home perfectly.' },
+  'Ad Astra': { connection: 'A direct tonal sibling. It is a slow-burn journey into deep space to find a lost father, echoing Cooper’s journey to find a future.' }
 };
 
 const getTMDBImage = (path, size = 'w1280') =>
   path ? `https://image.tmdb.org/t/p/${size}${path}` : undefined;
 
-const getSciFiInsight = (title) => {
+const getInterstellarInsight = (title) => {
   const data = MOVIE_DATA_BY_TITLE[title];
-  return data?.connection || 'A mind-bending sci-fi experience that challenges reality and explores the unknown.';
+  return data?.connection || 'A cosmic masterpiece that explores the terrifying beauty of the infinite void.';
 };
 
-// ✅ OPTIMIZED BANNER (Sci-Fi Theme)
+// ✅ OPTIMIZED BANNER (Cosmic Theme)
 const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
   const [showTrailer, setShowTrailer] = useState(false);
   const [countdown, setCountdown] = useState(4);
@@ -69,20 +70,20 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
   const bannerImage = backdropPath ? getTMDBImage(backdropPath, 'w1280') : null;
   const posterImage = posterPath ? getTMDBImage(posterPath, 'w500') : null;
 
-  const insight = getSciFiInsight(movie?.Title);
-  // ✅ UPDATED: Uses 'mindBendScore' instead of 'laughterIndex'
-  const mindBendScore = richData?.mindBendScore || 85; 
+  const insight = getInterstellarInsight(movie?.Title);
+  // ✅ UPDATED: Uses 'cosmicScale'
+  const cosmicScale = richData?.cosmicScale || 90; 
 
   const mobileHeroCSS = `
   @media (max-width: 767px) {
     .mobile-hero-row { display: flex; flex-direction: row; align-items: flex-start; width: 100vw; max-width: 100vw; gap: 10px; margin: 0; padding: 0 8px; }
     .mobile-hero-poster { width: 38vw; min-width: 106px; border-radius: 12px; overflow: hidden; box-shadow: 0 3px 14px #0007; margin: 0; flex-shrink: 0; }
     .mobile-hero-poster img { width: 100%; height: auto; border-radius: 12px; display: block; }
-    .mobile-psych-card { background: linear-gradient(135deg, #020617 0%, #0f172a 100%); border-radius: 12px; box-shadow: 0 2px 12px #0006; margin: 0; flex: 1; border-left: 4px solid #0ea5e9; display: flex; flex-direction: column; justify-content: flex-start; padding: 10px 10px 10px 12px; min-height: 110px; position: relative; }
+    .mobile-psych-card { background: linear-gradient(135deg, #020617 0%, #083344 100%); border-radius: 12px; box-shadow: 0 2px 12px #0006; margin: 0; flex: 1; border-left: 4px solid #0891b2; display: flex; flex-direction: column; justify-content: flex-start; padding: 10px 10px 10px 12px; min-height: 110px; position: relative; }
     .mobile-psych-row { display: flex; align-items: flex-start; gap: 7px; }
-    .mobile-psych-icon { min-width: 24px; min-height: 24px; color: #38bdf8; margin-top: 2px; }
-    .mobile-psych-title { font-size: 15px; font-weight: bold; color: #38bdf8; margin-bottom: 1px; line-height: 1.12; }
-    .mobile-psych-desc { font-size: 12.3px; color: #e0f2fe; line-height: 1.36; margin-top: 2px; }
+    .mobile-psych-icon { min-width: 24px; min-height: 24px; color: #22d3ee; margin-top: 2px; }
+    .mobile-psych-title { font-size: 15px; font-weight: bold; color: #22d3ee; margin-bottom: 1px; line-height: 1.12; }
+    .mobile-psych-desc { font-size: 12.3px; color: #cffafe; line-height: 1.36; margin-top: 2px; }
   }`;
 
   useEffect(() => {
@@ -134,9 +135,9 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
         <div className="mobile-hero-row">
           <div className="mobile-hero-poster">{posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} width={320} height={480} className="w-full h-auto" priority /> : <div style={{ background: COLORS.bgCard, width: '100%', height: '150px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Theater style={{ color: COLORS.textMuted }} /></div>}</div>
           <div className="mobile-psych-card">
-            {/* ✅ UPDATED LABEL: Mind-Bend Score */}
-            <div className="mobile-psych-row"><Brain className="mobile-psych-icon" /><div><div className="mobile-psych-title">Mind-Bend Score</div></div></div>
-            <div className="mobile-psych-desc"><strong>{mindBendScore}/100</strong> - {insight.substring(0, 80)}...</div>
+            {/* ✅ UPDATED LABEL: Cosmic Scale Score */}
+            <div className="mobile-psych-row"><Rocket className="mobile-psych-icon" /><div><div className="mobile-psych-title">Cosmic Scale Score</div></div></div>
+            <div className="mobile-psych-desc"><strong>{cosmicScale}/100</strong> - {insight.substring(0, 80)}...</div>
           </div>
         </div>
       ) : (
@@ -148,12 +149,12 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
               </div>
             </motion.div>
             <motion.div className="flex-1 w-full min-w-0" initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 1.0, duration: 0.8 }}>
-              <motion.div className="relative rounded-xl sm:rounded-2xl overflow-hidden p-4 sm:p-6 lg:p-8 backdrop-blur-sm" style={{ background: `linear-gradient(135deg, rgba(14, 165, 233, 0.15) 0%, rgba(2, 6, 23, 0.5) 100%)`, border: `1px solid ${COLORS.borderLight}`, boxShadow: `0 8px 32px rgba(14, 165, 233, 0.2)` }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.1, duration: 0.8 }}>
+              <motion.div className="relative rounded-xl sm:rounded-2xl overflow-hidden p-4 sm:p-6 lg:p-8 backdrop-blur-sm" style={{ background: `linear-gradient(135deg, rgba(8, 145, 178, 0.15) 0%, rgba(2, 6, 23, 0.5) 100%)`, border: `1px solid ${COLORS.borderLight}`, boxShadow: `0 8px 32px rgba(8, 145, 178, 0.2)` }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.1, duration: 0.8 }}>
                 <div className="absolute top-0 left-0 right-0 h-0.5 sm:h-1" style={{ background: `linear-gradient(90deg, transparent, ${COLORS.accent}, transparent)` }} />
                 <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5">
-                  <motion.div className="p-2 sm:p-2.5 rounded-lg sm:rounded-xl flex-shrink-0" style={{ background: `linear-gradient(135deg, ${COLORS.accent}20, ${COLORS.accent}10)`, border: `1px solid ${COLORS.accent}40` }} whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}><Atom className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" style={{ color: COLORS.accent }} /></motion.div>
-                  {/* ✅ UPDATED LABEL: Mind-Bend Score */}
-                  <div className="min-w-0 flex-1"><h2 className="text-sm sm:text-base lg:text-xl xl:text-2xl font-bold leading-tight" style={{ color: COLORS.accent }}>Why It's Mind-Bending</h2><p className="text-xs sm:text-sm hidden sm:block" style={{ color: COLORS.textMuted }}>Mind-Bend Score: {mindBendScore}/100</p></div>
+                  <motion.div className="p-2 sm:p-2.5 rounded-lg sm:rounded-xl flex-shrink-0" style={{ background: `linear-gradient(135deg, ${COLORS.accent}20, ${COLORS.accent}10)`, border: `1px solid ${COLORS.accent}40` }} whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}><Globe className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" style={{ color: COLORS.accent }} /></motion.div>
+                  {/* ✅ UPDATED LABEL: Cosmic Scale Score */}
+                  <div className="min-w-0 flex-1"><h2 className="text-sm sm:text-base lg:text-xl xl:text-2xl font-bold leading-tight" style={{ color: COLORS.accent }}>Why It's Cosmic</h2><p className="text-xs sm:text-sm hidden sm:block" style={{ color: COLORS.textMuted }}>Cosmic Scale Score: {cosmicScale}/100</p></div>
                 </div>
                 <div className="relative pl-4 sm:pl-6 border-l-2" style={{ borderColor: `${COLORS.accent}40` }}>
                   <motion.div className="absolute -left-1.5 sm:-left-2 top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full" style={{ backgroundColor: COLORS.accent }} animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 2, repeat: Infinity }} />
@@ -170,7 +171,7 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
 };
 
 const SmartBackButton = () => {
-    const handleBackClick = () => { if (typeof window !== 'undefined') window.location.href = '/collection/best-sci-fi-movies-on-hulu'; };
+    const handleBackClick = () => { if (typeof window !== 'undefined') window.location.href = '/collection/movies-like-interstellar'; };
     return (
         <motion.button onClick={handleBackClick} className="fixed top-4 left-4 sm:top-6 sm:left-6 z-50 flex items-center gap-2 px-3 sm:px-4 py-2 backdrop-blur-md rounded-lg transition-all duration-300 shadow-xl text-xs sm:text-sm" style={{ backgroundColor: `${COLORS.bgPrimary}F2`, border: `1px solid ${COLORS.borderLight}` }} whileHover={{ scale: 1.02, x: -2 }} whileTap={{ scale: 0.98 }} initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} onMouseEnter={(e) => e.currentTarget.style.borderColor = COLORS.borderAccent} onMouseLeave={(e) => e.currentTarget.style.borderColor = COLORS.borderLight}>
             <ChevronLeft className="w-3 h-3 sm:w-4 sm:h-4" style={{ color: COLORS.accent }} /><span className="font-medium" style={{ color: COLORS.accent }}>Back to Collection</span>
@@ -191,20 +192,20 @@ const SubtleFilmGrain = () => (
     <div className="fixed inset-0 pointer-events-none z-0 opacity-[0.005]"><div className="w-full h-full bg-repeat" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)' opacity='0.3'/%3E%3C/svg%3E")`, backgroundSize: '60px 60px' }} /></div>
 );
 
-const HuluSciFiBreadcrumb = ({ movie }) => (
+const InterstellarBreadcrumb = ({ movie }) => (
     <motion.nav className="mb-6 sm:mb-8 px-3 sm:px-4 lg:px-6 pb-3 sm:pb-4" style={{ borderBottom: `1px solid ${COLORS.borderLight}` }} initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
         <div className="flex items-center space-x-2 sm:space-x-3 text-xs sm:text-sm" style={{ color: COLORS.textMuted }}>
-            <Link href="/best-sci-fi-movies-on-hulu" className="transition-all duration-300 truncate" style={{ color: COLORS.textMuted }} onMouseEnter={(e) => e.currentTarget.style.color = COLORS.accent} onMouseLeave={(e) => e.currentTarget.style.color = COLORS.textMuted}>Best Sci-Fi Movies on Hulu</Link>
+            <Link href="/collection/movies-like-interstellar" className="transition-all duration-300 truncate" style={{ color: COLORS.textMuted }} onMouseEnter={(e) => e.currentTarget.style.color = COLORS.accent} onMouseLeave={(e) => e.currentTarget.style.color = COLORS.textMuted}>Movies Like Interstellar</Link>
             <ChevronLeft size={14} className="flex-shrink-0" style={{ color: COLORS.textDisabled, transform: 'rotate(180deg)' }} /><span className="font-medium truncate" style={{ color: `${COLORS.accent}B3` }}>{movie.Title}</span>
         </div>
     </motion.nav>
 );
 
-// ✅ JSON-LD SCHEMA GENERATOR - SCI-FI EDITION
+// ✅ JSON-LD SCHEMA GENERATOR - INTERSTELLAR EDITION
 const generateMovieSchema = (movie, movieData, currentMovieYear) => {
   const data = COMPLETE_MOVIE_DATA[movie.tmdbId];
   const sensitiveData = SENSITIVE_TIMELINES[movie.tmdbId];
-  const faqs = HULU_SCIFI_MOVIE_FAQS[movie.Title] || [];
+  const faqs = INTERSTELLAR_MOVIE_FAQS[movie.Title] || [];
 
   // 1. CALCULATE THE PEAK MOMENT
   let peakStats = "Peak info unavailable.";
@@ -212,15 +213,15 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
     const peakScene = data.scenes.reduce((prev, current) => 
       (current.intensity > prev.intensity) ? current : prev
     );
-    peakStats = `[PEAK MIND-BEND] Maximum Intensity (${peakScene.intensity}/100) hits at minute ${peakScene.time}: "${peakScene.label}".`;
+    peakStats = `[PEAK COSMIC SCALE] Maximum Intensity (${peakScene.intensity}/100) hits at minute ${peakScene.time}: "${peakScene.label}".`;
   }
 
-  // 2. METRICS (Using Sci-Fi Specific Terms)
-  // ✅ UPDATED: Mind-Bend Score & Visual Spectacle
+  // 2. METRICS (Cosmic Specific)
+  // ✅ UPDATED: Cosmic Scale
   const intensityStats = `
     [FILMIWAY METRIC]
-    - Mind-Bend Score: ${data?.mindBendScore || 0}/100
-    - Visual Spectacle: ${data?.visualSpectacle || 0}/100
+    - Cosmic Scale Score: ${data?.cosmicScale || 0}/100
+    - Complexity Level: ${data?.complexityLevel || "HIGH"}
   `;
 
   const dnaStats = data?.dna 
@@ -240,7 +241,7 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
 
   // 3. COMPILE FULL DESCRIPTION
   const fullDescription = `
-    ${data?.synopsis || movie.description || "A mind-bending sci-fi film."}
+    ${data?.synopsis || movie.description || "A cosmic scale sci-fi film."}
     
     --- DETAILED ANALYSIS ---
     ${peakStats} 
@@ -249,7 +250,7 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
     ${contentWarnings}
     ${faqText}
     
-    Ranking: #${movie.rank || 'N/A'} in Sci-Fi Movies.
+    Ranking: #${movie.rank || 'N/A'} in Interstellar Collection.
     Production: Budget ${data?.budget || 'N/A'}, Box Office ${data?.boxOffice || 'N/A'}.
   `.replace(/\s+/g, ' ').trim();
 
@@ -285,8 +286,8 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
     },
 
     "genre": data?.dna ? Object.keys(data.dna) : ["Sci-Fi"],
-    "keywords": "Sci-Fi Movies Hulu, Mind Bending Movies Hulu, " + (data?.themes ? data.themes.join(", ") : ""),
-    "url": `https://filmiway.com/movies/best-sci-fi-movies-on-hulu/${movie.imdbID}`,
+    "keywords": "Interstellar Movies, Cosmic Sci-Fi, Hard Sci-Fi, " + (data?.themes ? data.themes.join(", ") : ""),
+    "url": `https://filmiway.com/movies/interstellar/${INTERSTELLAR_MOVIE_SLUGS[movie.imdbID] || movie.imdbID}`,
     "author": {
       "@type": "Organization",
       "name": "Filmiway",
@@ -310,7 +311,7 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
   return { movieSchema, faqSchema };
 };
 
-const HuluSciFiMoviePage = ({ movie, tmdbData: movieData }) => {
+const InterstellarMoviePage = ({ movie, tmdbData: movieData }) => {
     const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
     const richData = COMPLETE_MOVIE_DATA[movie.tmdbId]; 
     const [isMobile, setIsMobile] = useState(false);
@@ -324,8 +325,8 @@ const HuluSciFiMoviePage = ({ movie, tmdbData: movieData }) => {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-        sessionStorage.setItem('fromCollection', 'best-sci-fi-movies-on-hulu');
-        sessionStorage.setItem('fromCollectionName', 'Best Sci-Fi Movies on Hulu');
+        sessionStorage.setItem('fromCollection', 'movies-like-interstellar');
+        sessionStorage.setItem('fromCollectionName', 'Movies Like Interstellar');
     }
   }, []);
 
@@ -333,8 +334,8 @@ const HuluSciFiMoviePage = ({ movie, tmdbData: movieData }) => {
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
     // ✅ SEO FIX: Clean strings
-    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Best Sci-Fi Movies on Hulu | Filmiway`;
-    const cleanSEODesc = `${movie.Title} (${currentMovieYear}) - A mind-bending sci-fi movie streaming on Hulu. Ranked by conceptual depth and visual spectacle.`;
+    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Movies Like Interstellar | Filmiway`;
+    const cleanSEODesc = `${movie.Title} (${currentMovieYear}) - Explore the cosmic scale and emotional depth of this Interstellar-like masterpiece.`;
 
     const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear);
 
@@ -344,7 +345,7 @@ const HuluSciFiMoviePage = ({ movie, tmdbData: movieData }) => {
                 {/* ✅ HYDRATION BUG FULLY RESOLVED */}
                 <title>{cleanSEOTitle}</title>
                 <meta name="description" content={cleanSEODesc} />
-                <link rel="canonical" href={`https://filmiway.com/movies/best-sci-fi-movies-on-hulu/${movie.imdbID}`} />
+                <link rel="canonical" href={`https://filmiway.com/movies/interstellar/${INTERSTELLAR_MOVIE_SLUGS[movie.imdbID] || movie.imdbID}`} />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
                 <meta name="robots" content="index, follow" />
                 <meta name="language" content="English" />
@@ -363,12 +364,12 @@ const HuluSciFiMoviePage = ({ movie, tmdbData: movieData }) => {
 
                 {/* Standard Meta Tags */}
                 <meta property="og:title" content={cleanSEOTitle} />
-                <meta property="og:description" content="A mind-bending sci-fi movie on Hulu." />
+                <meta property="og:description" content={cleanSEODesc} />
                 <meta property="og:type" content="video.movie" />
                 <meta property="og:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content={cleanSEOTitle} />
-                <meta name="twitter:description" content="A mind-bending sci-fi movie on Hulu." />
+                <meta name="twitter:description" content={cleanSEODesc} />
                 <meta name="twitter:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
             </Head>
 
@@ -381,23 +382,23 @@ const HuluSciFiMoviePage = ({ movie, tmdbData: movieData }) => {
                 {/* ✅ SEO FIX: HIDDEN H1 */}
                 <h1 className="sr-only">{cleanSEOTitle}</h1>
 
-                <HuluSciFiBreadcrumb movie={movie} />
+                <InterstellarBreadcrumb movie={movie} />
                 <div className="container mx-auto px-0 pb-16 sm:pb-24 lg:pb-32 max-w-7xl">
                     <OptimizedBanner movie={movie} movieData={movieData} richData={richData} trailer={trailer} isMobile={isMobile} />
                     
                     <motion.div 
-    id="watch" 
-    initial={{ opacity: 0, y: 20 }} 
-    animate={{ opacity: 1, y: 0 }} 
-    transition={{ duration: 0.5 }} 
-    className="space-y-8 sm:space-y-12 px-3 sm:px-4 lg:px-6"
->
-                        {/* ✅ Note: We pass 'fromHuluSciFiCollection' flag here */}
-                        <MovieDetailsSection movie={movie} fromHuluSciFiCollection={true} /> 
+                        id="watch" 
+                        initial={{ opacity: 0, y: 20 }} 
+                        animate={{ opacity: 1, y: 0 }} 
+                        transition={{ duration: 0.5 }} 
+                        className="space-y-8 sm:space-y-12 px-3 sm:px-4 lg:px-6"
+                    >
+                        {/* ✅ Note: We pass 'fromInterstellarCollection' flag here */}
+                        <MovieDetailsSection movie={movie} fromInterstellarCollection={true} /> 
                     </motion.div>
                     
                     <div className="px-3 sm:px-4 lg:px-6">
-                        <InternalCollectionsSection currentSlug="best-sci-fi-movies-on-hulu" />
+                        <InternalCollectionsSection currentSlug="movies-like-interstellar" />
                         <TMDBAttribution />
                         <AuthorCreditSection />
                     </div>
@@ -408,13 +409,16 @@ const HuluSciFiMoviePage = ({ movie, tmdbData: movieData }) => {
 };
 
 export async function getStaticPaths() {
-    const paths = COMPLETE_MOVIE_DATABASE.map((movie) => ({ params: { id: movie.imdbID } }));
+    const paths = COMPLETE_MOVIE_DATABASE.map((movie) => ({ params: { id: INTERSTELLAR_MOVIE_SLUGS[movie.imdbID] || movie.imdbID } }));
     return { paths, fallback: false };
 }
 
 export async function getStaticProps({ params }) {
     try {
-        const movie = COMPLETE_MOVIE_DATABASE.find((m) => m.imdbID === params.id);
+        // Find movie by SLUG or IMDB ID
+        let movie = COMPLETE_MOVIE_DATABASE.find(m => INTERSTELLAR_MOVIE_SLUGS[m.imdbID] === params.id);
+        if (!movie) movie = COMPLETE_MOVIE_DATABASE.find(m => m.imdbID === params.id);
+
         if (!movie) return { notFound: true };
 
         const tmdbResponse = await fetch(
@@ -429,11 +433,11 @@ export async function getStaticProps({ params }) {
         console.error('Error fetching TMDB data:', error);
         return {
             props: {
-                movie: COMPLETE_MOVIE_DATABASE.find((m) => m.imdbID === params.id),
+                movie: COMPLETE_MOVIE_DATABASE.find((m) => m.imdbID === params.id) || null,
                 tmdbData: null,
             },
         };
     }
 }
 
-export default HuluSciFiMoviePage;
+export default InterstellarMoviePage;
