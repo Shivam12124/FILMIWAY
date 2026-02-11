@@ -1,10 +1,11 @@
-// components/CinematicMovieCard.js - FINAL FIXED VERSION (No Duplicates + Safe Import) ⚡
+// components/CinematicMovieCard.js - FINAL CLEAN VERSION
 
 import React, { useState, useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { Crown, Star } from 'lucide-react';
 
-// ✅ SAFE IMPORT: Handles both Default and Named exports to prevent build crashes
+// ✅ CORRECT IMPORT: Standard default import. 
+// Your logs confirmed TMDBMoviePoster exports 'default', so we strictly use this.
 import TMDBMoviePoster from './TMDBMoviePoster';
 
 import { COMPLETE_MOVIE_DATA, STRATEGIC_QUOTES } from '../utils/movieData';
@@ -16,21 +17,22 @@ const CinematicMovieCard = React.memo(({ movie, rank, isActive, fromSurvivalColl
 
     // ⚡ OPTIMIZATION: Check mobile state once on mount
     useEffect(() => {
-        setIsMobile(window.innerWidth < 768);
+        // Safe check for window existence
+        if (typeof window !== 'undefined') {
+            setIsMobile(window.innerWidth < 768);
+        }
     }, []);
 
     // ⚡ PERFORMANCE: Memoize data lookups
     const movieInfo = useMemo(() => {
-        return fromSurvivalCollection 
-            ? (SURVIVAL_DATA?.[movie.tmdbId] || {})
-            : (COMPLETE_MOVIE_DATA?.[movie.tmdbId] || {});
-    }, [movie.tmdbId, fromSurvivalCollection]);
+        const sourceData = fromSurvivalCollection ? SURVIVAL_DATA : COMPLETE_MOVIE_DATA;
+        return (sourceData && movie?.tmdbId && sourceData[movie.tmdbId]) || {};
+    }, [movie?.tmdbId, fromSurvivalCollection]);
 
     const quote = useMemo(() => {
-        return fromSurvivalCollection
-            ? (SURVIVAL_QUOTES?.[movie.tmdbId] || null)
-            : (STRATEGIC_QUOTES?.[movie.tmdbId] || null);
-    }, [movie.tmdbId, fromSurvivalCollection]);
+        const sourceQuotes = fromSurvivalCollection ? SURVIVAL_QUOTES : STRATEGIC_QUOTES;
+        return (sourceQuotes && movie?.tmdbId && sourceQuotes[movie.tmdbId]) || null;
+    }, [movie?.tmdbId, fromSurvivalCollection]);
 
     // Determines poster quality
     const posterQuality = isMobile ? "w342" : "w780"; 
@@ -73,11 +75,16 @@ const CinematicMovieCard = React.memo(({ movie, rank, isActive, fromSurvivalColl
                 >
                     {/* Poster Image */}
                     <div className="w-full h-full bg-gray-800">
-                        <TMDBMoviePoster 
-                            movie={movie} 
-                            className="w-full h-full object-cover" 
-                            posterSize={posterQuality} 
-                        />
+                        {/* ✅ SAFETY CHECK: Only render if component exists */}
+                        {TMDBMoviePoster ? (
+                            <TMDBMoviePoster 
+                                movie={movie} 
+                                className="w-full h-full object-cover" 
+                                posterSize={posterQuality} 
+                            />
+                        ) : (
+                            <div className="w-full h-full bg-gray-800 animate-pulse" /> 
+                        )}
                     </div>
 
                     {/* Gradient Overlay */}
@@ -141,7 +148,7 @@ const CinematicMovieCard = React.memo(({ movie, rank, isActive, fromSurvivalColl
                     <span>{movie.runtime ? `${movie.runtime}` : (movie.Runtime || '120')}m</span>
                 </div>
                 
-                {/* Quote / Synopsis Reveal (Fixed) */}
+                {/* Quote / Synopsis Reveal */}
                 <motion.div
                     initial={false}
                     animate={{ 
