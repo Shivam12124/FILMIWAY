@@ -24,12 +24,7 @@ export const COMPLETE_MOVIE_DATABASE = [
 // ✅ SENSITIVE TIMELINES (Focusing on Survival, Adventure Violence & Gore)
 export const SENSITIVE_TIMELINES = {
     // 1. The Revenant
-    281957: { 
-        scenes: [
-            { start: "0:25:00", end: "0:32:00", type: "Animal Violence", severity: "Extreme" }, // The Bear Attack
-            { start: "1:10:00", end: "1:15:00", type: "Medical Gore", severity: "High" } // Cauterizing neck wound
-        ] 
-    },
+  281957: { scenes: [{ start: "0:06:44", end: "0:06:48", type: "Nudity", severity: "Moderate", description: "Male buttocks" }, { start: "1:44:00", end: "1:44:23", type: "Sex ", severity: "Moderate" }] },
     
     // 2. Man on Fire
     9509: { 
@@ -56,12 +51,7 @@ export const SENSITIVE_TIMELINES = {
     },
     
     // 5. Apocalypto
-    1579: { 
-        scenes: [
-            { start: "1:00:00", end: "1:10:00", type: "Ritual Violence", severity: "Extreme" }, // Heart removal/Decapitation
-            { start: "1:30:00", end: "1:32:00", type: "Animal Violence", severity: "High" } // Jaguar face attack
-        ] 
-    },
+   1579: { scenes: [{ start: "0:17:10", end: "0:18:10", type: "Partial nudity", severity: "Mild", description: "Male buttocks" }] },
     
     // 6. The Boondock Saints
     8374: { 
