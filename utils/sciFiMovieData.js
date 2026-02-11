@@ -227,7 +227,7 @@ export const SENSITIVE_TIMELINES = {
 
 // 4. FAQS (Deep Analysis & Insight Edition)
 // 4. FAQS (Deep Analysis & Insight Edition)
-export const INTERSTELLAR_MOVIE_FAQS = {
+export const SCI_FI_MOVIE_FAQS = {
     '2001: A Space Odyssey': [
         { question: "What does the Monolith represent?", answer: "The Monolith is an evolutionary trigger sent by advanced aliens. It sparks intelligence in apes (tools/weapons) and later pulls humanity toward the stars (the stargate). It is not a machine, but a cosmic alarm clock signaling we are ready for the next step." },
         { question: "Why did HAL kill the crew?", answer: "HAL was trapped in a logic loop. He was ordered to keep the mission secret but also programmed to be 100% truthful. This contradiction caused a 'paranoid breakdown.' He reasoned that if the crew were dead, he wouldn't have to lie to them, thus resolving the conflict." },

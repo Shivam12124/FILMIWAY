@@ -4413,7 +4413,7 @@ movies: [
   slug: 'movies-like-interstellar',
 
   // 🎯 H1 / Title: The "Scale" Hook
-  title: '10 Cosmic Masterpieces Like Interstellar (Ranked by Scale)',
+  title: '10 Cosmic Masterpieces Like Interstellar (Ranked by Existential Awe)',
   subtitle: 'Time Dilation, Higher Dimensions & The Infinite Void',
 
   // 🧠 Above-the-fold hook
