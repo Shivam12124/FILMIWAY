@@ -226,8 +226,8 @@ import {
   COMPLETE_MOVIE_DATA as TIME_TRAVEL_MOVIE_DATA,
   SENSITIVE_TIMELINES as TIME_TRAVEL_SENSITIVE_TIMELINES 
 } from '../utils/timeTravelMovieData';
-import  { 
-  COMPLETE_MOVIE_DATA as SCI_FI_MOVIE_DATA, 
+import { 
+  COMPLETE_SCI_FI_DETAILS as SCI_FI_MOVIE_DATA, // ✅ FIXED: Changed COMPLETE_MOVIE_DATA to COMPLETE_SCI_FI_DETAILS
   SENSITIVE_TIMELINES as SCI_FI_SENSITIVE_TIMELINES 
 } from '../utils/sciFiMovieData';
 import { 
@@ -642,7 +642,7 @@ const MovieDetailsSection = React.memo(({
    : fromSe7enCollection ? movie.se7enDNAScore ?? safeMovieInfo.se7enDNAScore ?? 0
    : fromRevengeCollection ? movie.revengeIntensity ?? safeMovieInfo.revengeIntensity ?? 0
    : fromWarFilmsCollection ? movie.warIntensity ?? safeMovieInfo.warIntensity ?? 0
-   : fromSciFiCollection ? movie.sciFiComplexity ?? safeMovieInfo.sciFiComplexity ?? 0
+   : fromSciFiCollection ? movie.cosmicScale ?? safeMovieInfo.cosmicScale ?? 0
    : fromInterstellarCollection ? movie. cosmicScale ?? safeMovieInfo. cosmicScale ?? 0
    : fromTimeTravelCollection ? movie.complexityScore ?? safeMovieInfo.complexityScore ?? 0
    : fromHeistThrillerCollection ? movie.heistComplexity ?? safeMovieInfo.heistComplexity ?? 0
@@ -894,7 +894,7 @@ if (fromPsychologicalThrillerCollection) {
    if (fromSe7enCollection) return 'SE7EN DNA SCORE';
    if (fromRevengeCollection) return 'REVENGE INTENSITY SCORE';
    if (fromWarFilmsCollection) return 'WAR INTENSITY SCORE';
-   if (fromSciFiCollection) return 'SCI-FI COMPLEXITY SCORE';
+   if (fromSciFiCollection) return 'COSMIC SCALE SCORE';
    if (fromInterstellarCollection) return 'COSMIC SCALE SCORE';
    if (fromTimeTravelCollection) return 'TIME TRAVEL COMPLEXITY SCORE';
    if (fromHeistThrillerCollection) return 'HEIST COMPLEXITY SCORE';
@@ -938,7 +938,7 @@ if (fromPsychologicalThrillerCollection) {
    if (fromSe7enCollection) return 'NOIR DARKNESS INDEX';
    if (fromRevengeCollection) return 'REVENGE INTENSITY INDEX';
    if (fromWarFilmsCollection) return 'WAR INTENSITY INDEX';
-   if (fromSciFiCollection) return 'SCI-FI COMPLEXITY INDEX';
+   if (fromSciFiCollection) return 'COSMIC SCALE SCORE';
    if (fromInterstellarCollection) return 'AWE INDEX';
    if (fromTimeTravelCollection) return 'COMPLEXITY INDEX';
    if (fromHeistThrillerCollection) return 'HEIST COMPLEXITY INDEX';
@@ -982,7 +982,7 @@ if (fromPsychologicalThrillerCollection) {
    if (fromSe7enCollection) return 'PSYCHOLOGICAL GRIT LEVEL';
    if (fromRevengeCollection) return 'VENGEANCE BRUTALITY LEVEL';
    if (fromWarFilmsCollection) return 'COMBAT REALISM LEVEL';
-   if (fromSciFiCollection) return 'SCI-FI COMPLEXITY LEVEL';
+   if (fromSciFiCollection) return 'COSMIC SCALE LEVEL';
    if (fromInterstellarCollection) return 'EXISTENTIAL LEVEL';
    if (fromTimeTravelCollection) return 'COMPLEXITY LEVEL';
    if (fromHeistThrillerCollection) return 'HEIST COMPLEXITY LEVEL';

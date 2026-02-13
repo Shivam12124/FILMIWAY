@@ -1,8 +1,10 @@
-
-
 # ==================================================
 # Filmiway Robots.txt — Growth & AI Discovery (Final)
 # ==================================================
+
+# 0. BLOCKED BOTS (Meta)
+User-agent: Meta-ExternalAgent
+Disallow: /
 
 # 1. Google & Bing (Full SEO Access)
 User-agent: Googlebot
@@ -24,7 +26,7 @@ Disallow: /_next/data/
 Disallow: /api/
 Disallow: /admin/
 
-# 3. AI & Discovery (All your other crawlers preserved)
+# 3. AI & Discovery (Meta removed from here)
 User-agent: GPTBot
 User-agent: ChatGPT-User
 User-agent: ClaudeBot
@@ -32,7 +34,6 @@ User-agent: Google-Extended
 User-agent: Applebot
 User-agent: CCBot
 User-agent: Amazonbot
-User-agent: Meta-ExternalAgent
 Allow: /
 Allow: /_next/static/
 Disallow: /_next/image/

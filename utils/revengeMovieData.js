@@ -84,174 +84,88 @@ const createRevengeData = (data) => ({
 // 4. DETAILED MOVIE DATA (Object)
 // 4. DETAILED MOVIE DATA (Object)
 export const COMPLETE_MOVIE_DATA = {
-    // 1. Oldboy
+    // 1. Oldboy (2003) - STATUS: EXISTENTIAL MASTERY
     670: createRevengeData({ 
-        revengeIntensity: 99, moralComplexity: 95, visceralImpact: 98, complexityLevel: "EXTREME", 
+        revengeIntensity: 100, moralComplexity: 98, visceralImpact: 100, complexityLevel: "EXTREME", 
         dominantColor: "#0f172a", rating: 8.4, director: "Park Chan-wook", 
-        cast: ['Choi Min-sik', 'Yoo Ji-tae', 'Kang Hye-jung'], boxOffice: '$15 million', budget: '$3 million', 
+        cast: ['Choi Min-sik', 'Yoo Ji-tae', 'Kang Hye-jung'], 
         dna: { "Mystery": 40, "Thriller": 35, "Action": 25 }, 
         scenes: [
-            { time: 10, intensity: 45, label: 'The Abduction', color: '#0f172a' },
-            { time: 25, intensity: 60, label: '15 Years Later', color: '#334155' },
-            { time: 68, intensity: 89, label: 'Corridor Fight', color: '#dc2626' },
-            { time: 90, intensity: 75, label: 'The Penthouse', color: '#475569' },
-            { time: 115, intensity: 99, label: 'The Tongue', color: '#991b1b' }
+            { time: 10, intensity: 42, label: 'The Abduction', color: '#0f172a' },
+            { time: 25, intensity: 58, label: '15 Years Later', color: '#334155' },
+            { time: 68, intensity: 88, label: 'Corridor Fight', color: '#dc2626' },
+            { time: 90, intensity: 72, label: 'The Penthouse', color: '#475569' },
+            { time: 115, intensity: 100, label: 'The Tongue', color: '#991b1b' } // PEAK: Existential Rupture
         ], 
-        synopsis: "After 15 years of mysterious imprisonment, Oh Dae-su is released and seeks vengeance against his unknown captor. A masterpiece of psychological revenge cinema presenting a deeply disturbing mystery wrapped in relentless brutality.", 
+        synopsis: "A genre-shattering masterpiece where the revenge is not a victory, but a trap. Oh Dae-su's 15-year imprisonment leads to a revelation so devastating it redefines the limits of psychological trauma.", 
         themes: ["Incest", "Memory", "Karma", "Despair"]
     }),
 
-    // 2. Gladiator
+    // 2. Gladiator (2000) - STATUS: HEROIC TRAGEDY
     98: createRevengeData({ 
-        revengeIntensity: 96, moralComplexity: 60, visceralImpact: 90, complexityLevel: "MEDIUM", 
+        revengeIntensity: 92, moralComplexity: 60, visceralImpact: 88, complexityLevel: "MEDIUM", 
         dominantColor: "#f59e0b", rating: 8.5, director: "Ridley Scott", 
-        cast: ['Russell Crowe', 'Joaquin Phoenix', 'Connie Nielsen'], boxOffice: '$465.4 million', budget: '$103 million', 
-        dna: { "Action": 45, "Drama": 35, "Adventure": 20 }, 
         scenes: [
-            { time: 25, intensity: 85, label: 'Family Murdered', color: '#7c2d12' },
+            { time: 25, intensity: 78, label: 'Family Murdered', color: '#7c2d12' },
             { time: 60, intensity: 65, label: 'Zucchabar Arena', color: '#d97706' },
-            { time: 95, intensity: 90, label: 'Are You Not Entertained?', color: '#b45309' },
-            { time: 125, intensity: 88, label: 'Reveal to Commodus', color: '#ea580c' },
-            { time: 145, intensity: 96, label: 'Final Duel', color: '#f59e0b' }
+            { time: 95, intensity: 82, label: 'Are You Not Entertained?', color: '#b45309' },
+            { time: 125, intensity: 80, label: 'Reveal to Commodus', color: '#ea580c' },
+            { time: 145, intensity: 92, label: 'Final Duel', color: '#f59e0b' } // PEAK: Heroic Catharsis
         ], 
-        synopsis: "An epic tale of a fallen general who transforms from slave to arena champion. The film captures the grandeur of ancient Rome while delivering an intensely personal, satisfying arc of vengeance against imperial tyranny.", 
+        synopsis: "An epic tale of a fallen general seeking justice in the arena. While visceral and grand, its power lies in its classical emotional arc and mythic satisfaction.", 
         themes: ["Honor", "Legacy", "Tyranny", "Freedom"]
     }),
 
-    // 3. Unforgiven
+    // 3. Unforgiven (1992) - STATUS: MORAL DEVASTATION
     33: createRevengeData({ 
-        revengeIntensity: 94, moralComplexity: 90, visceralImpact: 85, complexityLevel: "HIGH", 
+        revengeIntensity: 94, moralComplexity: 98, visceralImpact: 82, complexityLevel: "HIGH", 
         dominantColor: "#dc2626", rating: 8.2, director: "Clint Eastwood", 
-        cast: ['Clint Eastwood', 'Gene Hackman', 'Morgan Freeman'], boxOffice: '$159.2 million', budget: '$14.4 million', 
-        dna: { "Drama": 65, "Action": 25, "Thriller": 10 }, 
         scenes: [
-            { time: 20, intensity: 30, label: 'The Pig Farm', color: '#7f1d1d' },
-            { time: 60, intensity: 55, label: 'Little Bill\'s Beating', color: '#991b1b' },
-            { time: 108, intensity: 82, label: "Ned's Death", color: '#b91c1c' },
-            { time: 115, intensity: 88, label: 'Whiskey Bottle', color: '#ef4444' },
-            { time: 124, intensity: 96, label: 'Saloon Showdown', color: '#0f172a' }
-        ], 
-        synopsis: "A deconstructive Western masterpiece that strips away Hollywood myths to reveal the true, unglamorous cost of violence. This is a meditation on aging, mortality, and the haunting psychological toll of revenge.", 
-        themes: ["Violence", "Aging", "Myth vs Reality", "Justice"]
+            { time: 20, intensity: 28, label: 'The Pig Farm', color: '#7f1d1d' },
+            { time: 60, intensity: 52, label: "Little Bill's Beating", color: '#991b1b' },
+            { time: 108, intensity: 80, label: "Ned's Death", color: '#b91c1c' },
+            { time: 115, intensity: 86, label: 'Whiskey Bottle', color: '#ef4444' },
+            { time: 124, intensity: 94, label: 'Saloon Showdown', color: '#0f172a' } // PEAK: Cold Justice
+        ]
     }),
 
-    // 4. Braveheart
-    197: createRevengeData({ 
-        revengeIntensity: 95, moralComplexity: 75, visceralImpact: 95, complexityLevel: "MEDIUM", 
-        dominantColor: "#f59e0b", rating: 8.3, director: "Mel Gibson", 
-        cast: ['Mel Gibson', 'Sophie Marceau', 'Patrick McGoohan'], boxOffice: '$213.2 million', budget: '$72 million', 
-        dna: { "Action": 45, "Drama": 35, "Romance": 20 }, 
-        scenes: [
-            { time: 35, intensity: 80, label: 'Murron\'s Death', color: '#991b1b' },
-            { time: 85, intensity: 90, label: 'Stirling Bridge', color: '#ea580c' },
-            { time: 130, intensity: 75, label: 'Betrayal', color: '#7c2d12' },
-            { time: 160, intensity: 85, label: 'Falkirk Defeat', color: '#b45309' },
-            { time: 175, intensity: 98, label: 'Freedom!', color: '#f59e0b' }
-        ], 
-        synopsis: "After his secret wife is murdered by English soldiers, William Wallace leads a Scottish rebellion against the tyranny of King Edward I. His personal quest for revenge transforms into a nationwide war for freedom.", 
-        themes: ["Freedom", "Martyrdom", "Nationalism"]
-    }),
-
-    // 5. The Prestige
+    // 5. The Prestige (2006) - STATUS: PSYCHOLOGICAL COLLAPSE
     1124: createRevengeData({ 
-        revengeIntensity: 90, moralComplexity: 95, visceralImpact: 80, complexityLevel: "EXTREME", 
+        revengeIntensity: 96, moralComplexity: 95, visceralImpact: 80, complexityLevel: "EXTREME", 
         dominantColor: "#6b21a8", rating: 8.5, director: "Christopher Nolan", 
-        cast: ['Christian Bale', 'Hugh Jackman', 'Scarlett Johansson'], boxOffice: '$109.7 million', budget: '$40 million', 
-        dna: { "Mystery": 50, "Drama": 40, "Sci-Fi": 10 }, 
         scenes: [
-            { time: 12, intensity: 58, label: 'The Drowning', color: '#581c87' },
-            { time: 45, intensity: 65, label: 'The Bullet Catch', color: '#6b21a8' },
-            { time: 80, intensity: 78, label: 'Tesla\'s Lab', color: '#7e22ce' },
-            { time: 100, intensity: 85, label: 'Angier\'s Return', color: '#9333ea' },
-            { time: 125, intensity: 97, label: 'The Final Prestige', color: '#3b0764' }
-        ], 
-        synopsis: "Two rival magicians engage in a bitter, lifelong feud after a tragedy during a performance. Their obsession with creating the ultimate illusion leads them to sacrifice everything, blurring the lines between science, magic, and madness.", 
-        themes: ["Obsession", "Duality", "Sacrifice"]
+            { time: 12, intensity: 55, label: 'The Drowning', color: '#581c87' },
+            { time: 45, intensity: 62, label: 'The Bullet Catch', color: '#6b21a8' },
+            { time: 80, intensity: 74, label: "Tesla's Lab", color: '#7e22ce' },
+            { time: 100, intensity: 83, label: "Angier's Return", color: '#9333ea' },
+            { time: 125, intensity: 96, label: 'The Final Prestige', color: '#3b0764' } // PEAK: Mind-Bending Rupture
+        ]
     }),
 
-    // 6. The Revenant
-    281957: createRevengeData({ 
-        revengeIntensity: 88, moralComplexity: 65, visceralImpact: 100, complexityLevel: "HIGH", 
-        dominantColor: "#059669", rating: 8.0, director: "Alejandro G. Iñárritu", 
-        cast: ['Leonardo DiCaprio', 'Tom Hardy', 'Domhnall Gleeson'], boxOffice: '$533.0 million', budget: '$135 million', 
-        dna: { "Drama": 40, "Adventure": 35, "Action": 25 }, 
-        scenes: [
-            { time: 18, intensity: 72, label: 'Bear Attack', color: '#047857' },
-            { time: 42, intensity: 81, label: 'Son Murdered', color: '#dc2626' },
-            { time: 80, intensity: 65, label: 'Wilderness Survival', color: '#059669' },
-            { time: 110, intensity: 70, label: 'The Horse', color: '#065f46' },
-            { time: 148, intensity: 94, label: 'Final Confrontation', color: '#0f172a' }
-        ], 
-        synopsis: "Mauled by a bear and left for dead by members of his own hunting team, Hugh Glass fights through the brutal winter wilderness to survive and exact vengeance on the man who betrayed him and killed his son.", 
-        themes: ["Survival", "Nature vs Man", "Fatherhood"]
-    }),
-
-    // 7. Kill Bill: Vol. 2
-    393: createRevengeData({ 
-        revengeIntensity: 92, moralComplexity: 70, visceralImpact: 85, complexityLevel: "MEDIUM", 
-        dominantColor: "#f59e0b", rating: 8.0, director: "Quentin Tarantino", 
-        cast: ['Uma Thurman', 'David Carradine', 'Michael Madsen'], boxOffice: '$152.2 million', budget: '$30 million', 
-        dna: { "Action": 45, "Drama": 35, "Thriller": 20 }, 
-        scenes: [
-            { time: 15, intensity: 45, label: 'Chapel Massacre', color: '#f59e0b' },
-            { time: 48, intensity: 78, label: 'Buried Alive', color: '#b45309' },
-            { time: 80, intensity: 70, label: 'Pai Mei Training', color: '#d97706' },
-            { time: 110, intensity: 85, label: 'Elle Driver Fight', color: '#dc2626' },
-            { time: 129, intensity: 95, label: 'Bill Confrontation', color: '#0f172a' }
-        ], 
-        synopsis: "The Bride concludes her roaring rampage of revenge. After dispatching her former squad mates, she tracks down Bill for a final, surprisingly emotional confrontation that explores the cost of vengeance and the bond of motherhood.", 
-        themes: ["Motherhood", "Betrayal", "Closure"]
-    }),
-
-    // 8. John Wick
-    245891: createRevengeData({ 
-        revengeIntensity: 95, moralComplexity: 40, visceralImpact: 92, complexityLevel: "MEDIUM", 
-        dominantColor: "#f59e0b", rating: 7.4, director: "Chad Stahelski", 
-        cast: ['Keanu Reeves', 'Michael Nyqvist', 'Alfie Allen'], boxOffice: '$86.1 million', budget: '$20 million', 
-        dna: { "Action": 70, "Thriller": 20, "Crime": 10 }, 
-        scenes: [
-            { time: 15, intensity: 68, label: 'Puppy Death', color: '#dc2626' },
-            { time: 30, intensity: 55, label: 'The Sledgehammer', color: '#475569' },
-            { time: 50, intensity: 75, label: 'Home Invasion', color: '#f59e0b' },
-            { time: 78, intensity: 88, label: 'Red Circle Club', color: '#9333ea' },
-            { time: 95, intensity: 90, label: 'Dock Showdown', color: '#0f172a' }
-        ], 
-        synopsis: "A retired hitman returns to the criminal underworld after mobsters kill the puppy left to him by his late wife. It is a stylish, brutal masterclass in action choreography where one man dismantles an entire syndicate over a dog.", 
-        themes: ["Grief", "Consequences", "Legend"]
-    }),
-
-    // 9. I Saw the Devil
+    // 9. I Saw the Devil (2010) - STATUS: PURE MONSTROSITY
     49797: createRevengeData({ 
-        revengeIntensity: 100, moralComplexity: 90, visceralImpact: 100, complexityLevel: "HIGH", 
+        revengeIntensity: 99, moralComplexity: 92, visceralImpact: 100, complexityLevel: "HIGH", 
         dominantColor: "#991b1b", rating: 7.8, director: "Kim Jee-woon", 
-        cast: ['Lee Byung-hun', 'Choi Min-sik'], boxOffice: '$13.0 million', budget: '$6 million', 
-        dna: { "Thriller": 45, "Horror": 35, "Action": 20 }, 
         scenes: [
-            { time: 8, intensity: 68, label: 'The Murder', color: '#991b1b' },
-            { time: 40, intensity: 75, label: 'Catch & Release 1', color: '#b91c1c' },
-            { time: 85, intensity: 85, label: 'The Greenhouse', color: '#7f1d1d' },
+            { time: 8, intensity: 70, label: 'The Murder', color: '#991b1b' },
+            { time: 40, intensity: 78, label: 'Catch & Release 1', color: '#b91c1c' },
+            { time: 85, intensity: 86, label: 'The Greenhouse', color: '#7f1d1d' },
             { time: 110, intensity: 92, label: 'Turning Tables', color: '#0f172a' },
-            { time: 138, intensity: 98, label: 'The Guillotine', color: '#000000' }
-        ], 
-        synopsis: "A secret agent decides to hunt down the serial killer who murdered his fiancée—but instead of arresting him, he catches and releases him repeatedly to inflict maximum pain. It explores how the pursuit of a monster can turn a good man into one.", 
-        themes: ["Monstrosity", "Corruption of Good", "Sadism"]
+            { time: 138, intensity: 96, label: 'The Final Gift', color: '#000000' } // PEAK: Soul Trauma
+        ]
     }),
 
-    // 10. The Count of Monte Cristo
-    11362: createRevengeData({ 
-        revengeIntensity: 95, moralComplexity: 60, visceralImpact: 60, complexityLevel: "MEDIUM", 
-        dominantColor: "#059669", rating: 7.7, director: "Kevin Reynolds", 
-        cast: ['Jim Caviezel', 'Guy Pearce', 'Richard Harris'], boxOffice: '$75.4 million', budget: '$35 million', 
-        dna: { "Adventure": 40, "Drama": 35, "Action": 25 }, 
+    // 8. John Wick (2014) - STATUS: ADRENALINE SURGE
+    245891: createRevengeData({ 
+        revengeIntensity: 89, moralComplexity: 40, visceralImpact: 92, complexityLevel: "MEDIUM", 
+        dominantColor: "#f59e0b", rating: 7.4, director: "Chad Stahelski", 
         scenes: [
-            { time: 15, intensity: 48, label: 'The Betrayal', color: '#0f172a' },
-            { time: 40, intensity: 55, label: 'Chateau d\'If', color: '#334155' },
-            { time: 75, intensity: 65, label: 'The Escape', color: '#059669' },
-            { time: 100, intensity: 80, label: 'The Count Arrives', color: '#f59e0b' },
-            { time: 125, intensity: 94, label: 'Final Confrontation', color: '#dc2626' }
-        ], 
-        synopsis: "After being wrongfully imprisoned for 13 years, a sailor escapes, finds a hidden fortune, and reinvents himself as a wealthy count to systematically destroy the lives of the men who betrayed him. The ultimate tale of patience and calculated payback.", 
-        themes: ["Patience", "Betrayal", "Justice vs Revenge"]
+            { time: 15, intensity: 72, label: 'Puppy Death', color: '#dc2626' },
+            { time: 30, intensity: 55, label: 'The Sledgehammer', color: '#475569' },
+            { time: 50, intensity: 78, label: 'Home Invasion', color: '#f59e0b' },
+            { time: 78, intensity: 88, label: 'Red Circle Club', color: '#9333ea' },
+            { time: 95, intensity: 89, label: 'Dock Showdown', color: '#0f172a' } 
+        ]
     })
 };
 // 5. CUSTOM FAQs

@@ -55,6 +55,10 @@ import { COMPLETE_MOVIE_DATABASE as HBO_MAX_SCIFI_DATABASE, COMPLETE_MOVIE_DATA 
 import { COMPLETE_MOVIE_DATABASE as HBO_MAX_HORROR_DATABASE, COMPLETE_MOVIE_DATA as HBO_MAX_HORROR_DATA } from '../../utils/hboMaxHorrorMovieData';
 import { COMPLETE_MOVIE_DATABASE as HBO_MAX_BEST_DATABASE, COMPLETE_MOVIE_DATA as HBO_MAX_BEST_DATA } from '../../utils/hboMaxBestMoviesData';
 import { COMPLETE_MOVIE_DATABASE as HBO_MAX_DRAMA_DATABASE, COMPLETE_MOVIE_DATA as HBO_MAX_DRAMA_DATA } from '../../utils/hboMaxDramaMovieData';
+import { 
+  COMPLETE_SCI_FI_DATABASE as SCI_FI_DATABASE, 
+  COMPLETE_SCI_FI_DETAILS as SCI_FI_DATA 
+} from '../../utils/sciFiMovieData';
 
 
 import { COMPLETE_MOVIE_DATABASE as THRILLER_MOVIES } from '../../utils/thrillerMovieData';
@@ -63,7 +67,7 @@ import { COMPLETE_MOVIE_DATABASE as DETECTIVE_THRILLER_MOVIES } from '../../util
 import { COMPLETE_MOVIE_DATABASE as PSYCH_THRILLER_MOVIES } from '../../utils/psychologicalThrillerMovieData'; 
 import { COMPLETE_MOVIE_DATABASE as HEIST_THRILLER_MOVIES } from '../../utils/heistThrillerMovieData';
 import { COMPLETE_MOVIE_DATABASE as TIME_TRAVEL_MOVIES } from '../../utils/timeTravelMovieData';
-import { COMPLETE_MOVIE_DATABASE as SCI_FI_MOVIES } from '../../utils/sciFiMovieData';
+
 import { COMPLETE_MOVIE_DATABASE as REVENGE_MOVIES } from '../../utils/revengeMovieData';
 
 // Components
@@ -3759,8 +3763,8 @@ case 'best-family-movies-on-paramount-plus':
         case 'best-time-travel-movies':
             movieDatabase = TIME_TRAVEL_MOVIES;
             break;
-        case 'best-sci-fi-movies':
-            movieDatabase = SCI_FI_MOVIES;
+case 'best-sci-fi-movies':
+            movieDatabase = SCI_FI_DATABASE; // ✅ FIXED: Use the correct imported variable name
             break;
         case 'best-revenge-movies':
             movieDatabase = REVENGE_MOVIES;

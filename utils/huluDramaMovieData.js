@@ -15,10 +15,10 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 1152378, "imdbID": "tt27209383", "Title": "Small Things Like These", "year": 2024, "genre": "Drama", "runtime": 98, "rank": 4 },
     { "tmdbId": 994108, "imdbID": "tt21192142", "Title": "All of Us Strangers", "year": 2023, "genre": "Fantasy", "runtime": 105, "rank": 5 },
     { "tmdbId": 1016084, "imdbID": "tt21867434", "Title": "BlackBerry", "year": 2023, "genre": "Comedy", "runtime": 120, "rank": 6 },
-    { "tmdbId": 1013850, "imdbID": "tt28769062", "Title": "A Real Pain", "year": 2024, "genre": "Comedy", "runtime": 90, "rank": 7 },
-    { "tmdbId": 1214469, "imdbID": "tt30048492", "Title": "Ghostlight", "year": 2024, "genre": "Drama", "runtime": 115, "rank": 8 },
+    { "tmdbId": 1013850, "imdbID": "tt21823606", "Title": "A Real Pain", "year": 2024, "genre": "Comedy", "runtime": 90, "rank": 7 },
+    { "tmdbId": 1214469, "imdbID": "tt30321095", "Title": "Ghostlight", "year": 2024, "genre": "Drama", "runtime": 115, "rank": 8 },
     { "tmdbId": 773, "imdbID": "tt0449059", "Title": "Little Miss Sunshine", "year": 2006, "genre": "Comedy", "runtime": 101, "rank": 9 },
-    { "tmdbId": 919570, "imdbID": "tt19861552", "Title": "R.M.N.", "year": 2022, "genre": "Drama", "runtime": 125, "rank": 10 }
+    { "tmdbId": 919570, "imdbID": "tt18550182", "Title": "R.M.N.", "year": 2022, "genre": "Drama", "runtime": 125, "rank": 10 }
 ];
 
 // ✅ SENSITIVE TIMELINES (Focusing on Grief, Language, and Emotional Trauma)

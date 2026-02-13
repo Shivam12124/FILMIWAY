@@ -1,86 +1,98 @@
-// pages/movies/sci-fi/[id].js - H1 SEO FIX + HYDRATION FIX ✅
-// VISUALS: Minimalist (Banner + Details Only)
-// SCHEMA: Maximalist (Hidden Complexity, Spectacle, and FAQs for Bots)
+// pages/best-comedy-movies-on-peacock/[id].js - PEACOCK COMEDY MOVIES
+// VISUALS: Comedy/Fun Theme (Yellow/Gold/Bright)
+// SCHEMA: Maximalist (Hidden Laughter Index and FAQs for Bots)
 
 import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Play, X, User, Twitter, Hash, Send, Film, Sparkles } from 'lucide-react';
+import { ChevronLeft, Play, X, User, Twitter, Hash, Send, Film, Smile, Zap, Theater, PartyPopper } from 'lucide-react'; // ✅ Added Comedy Icons
+
 import InternalCollectionsSection from '../../../components/InternalCollectionsSection';
 import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
 import TMDBAttribution from '../../../components/TMDBAttribution';
 
-// ✅ IMPORT SCI-FI DATA
-// ✅ IMPORT SCI-FI DATA (Fixed Imports)
-// ✅ IMPORT SCI-FI DATA (Fixed Imports)
+// ✅ IMPORT DATA INCLUDING FAQs (Updated for Peacock)
 import { 
-  SCI_FI_MOVIES as COMPLETE_MOVIE_DATABASE, // ✅ FIXED: Import the Array (SCI_FI_MOVIES), not the Object
-  COMPLETE_SCI_FI_DETAILS as COMPLETE_MOVIE_DATA, 
+  COMPLETE_MOVIE_DATABASE, 
+  COMPLETE_MOVIE_DATA,
   SENSITIVE_TIMELINES,
-  SCI_FI_FAQS as SCI_FI_MOVIE_FAQS 
-} from '../../../utils/sciFiMovieData';
+  PEACOCK_COMEDY_MOVIE_FAQS 
+} from '../../../utils/peacockComedyMovieData';
+
 const COLORS = {
-  accent: '#0ea5e9', accentLight: '#38bdf8', bgPrimary: '#050509', bgCard: 'rgba(15, 23, 42, 0.6)',
-  textPrimary: '#FFFFFF', textSecondary: '#E5E7EB', textMuted: '#9CA3AF', textDisabled: '#6B7280',
-  borderAccent: 'rgba(14, 165, 233, 0.25)', borderLight: 'rgba(55, 65, 81, 0.5)',
+  accent: '#FACC15', accentLight: '#FEF08A', bgPrimary: '#000000ff', bgCard: 'rgba(11, 11, 11, 0.8)', // Yellow/Dark Gold for Comedy
+  textPrimary: '#FFFFFF', textSecondary: '#FEF3C7', textMuted: '#FDE047', textDisabled: '#CA8A04',
+  borderAccent: 'rgba(250, 204, 21, 0.25)', borderLight: 'rgba(133, 77, 14, 0.5)',
+};
+
+const MOVIE_YEARS = {
+  'Monty Python and the Holy Grail': '1975', 
+  'Anchorman: The Legend of Ron Burgundy': '2004', 
+  'My Cousin Vinny': '1992', 
+  'Zoolander': '2001', 
+  'Happy Gilmore': '1996', 
+  "The 'Burbs": '1989', 
+  'Along Came Polly': '2004', 
+  'The Fall Guy': '2024', 
+  'American Fiction': '2023', 
+  'Deliver Us from Eva': '2003'
 };
 
 const MOVIE_DATA_BY_TITLE = {
-  '2001: A Space Odyssey': { connection: 'The monolith of the genre. It moved sci-fi from B-movie pulp to high art, establishing a visual language for space that remains the gold standard.' },
-  'Blade Runner': { connection: 'The definitive cyberpunk noir. Its rain-soaked aesthetic and questions about artificial consciousness defined how we visualize the future city.' },
-  'The Matrix': { connection: 'A philosophical action masterpiece that merged cyberpunk literature with Hong Kong cinema, questioning the very fabric of our perceived reality.' },
-  'Alien': { connection: 'The perfect organism of sci-fi horror. It stripped away the glamour of space travel to reveal a gritty, industrial survival nightmare.' },
-  'Interstellar': { connection: 'A hard sci-fi epic that dares to ground complex relativity physics in the simplest human emotion: the bond between a father and daughter.' },
-  'Terminator 2: Judgment Day': { connection: 'The rare sequel that transcends its original. It turned a horror slasher premise into a philosophical action epic about fate and free will.' },
-  'Inception': { connection: 'A cerebral heist thriller that treats the architecture of the human mind with the rigorous logic of hard science fiction.' },
-  'Arrival': { connection: 'A profound first-contact film that bypasses explosions for linguistics, suggesting that understanding—not weaponry—is humanity\'s greatest tool.' },
-  'Star Wars: Episode V - The Empire Strikes Back': { connection: 'The film that matured the space opera. By introducing failure and complex lineage, it proved blockbusters could have dark, emotional souls.' },
-  'Blade Runner 2049': { connection: 'A miraculous successor that expands the philosophical inquiries of the original, asking if an artificial soul is any less real than a born one.' }
+  'Monty Python and the Holy Grail': { connection: 'The Holy Grail of surrealist comedy. It remains the gold standard for absurdity, infinitely quotable and timelessly bizarre.' },
+  'Anchorman: The Legend of Ron Burgundy': { connection: 'The most quotable movie of the 21st century. Will Ferrell’s improvisation creates a chaotic masterpiece of ego and stupidity.' },
+  'My Cousin Vinny': { connection: 'A courtroom comedy that is actually legally accurate. Joe Pesci and Marisa Tomei deliver a culture-clash masterclass.' },
+  'Zoolander': { connection: 'A hilarious satire of vanity. Ben Stiller creates a character so stupid he becomes lovable, wrapped in a surprisingly tight spy thriller plot.' },
+  'Happy Gilmore': { connection: 'Adam Sandler at his angriest and funniest. It turned golf into a contact sport and gave us the greatest fight scene in comedy history.' },
+  "The 'Burbs": { connection: 'A cult classic of suburban paranoia. Tom Hanks anchors a dark comedy about the quiet terror of wondering who your neighbors really are.' },
+  'Along Came Polly': { connection: 'Ben Stiller in peak cringe mode. Philip Seymour Hoffman steals the show in a rom-com that revels in awkwardness.' },
+  'The Fall Guy': { connection: 'A love letter to stunt performers. It mixes high-octane practical effects with genuine romantic chemistry and meta-humor.' },
+  'American Fiction': { connection: 'A biting satire of the publishing industry. It balances sharp social commentary with a warm, grounded family drama.' },
+  'Deliver Us from Eva': { connection: 'A modern Shakespeare adaptation. Gabrielle Union dominates as the shrew who needs taming in this underrated ensemble rom-com.' }
 };
 
 const getTMDBImage = (path, size = 'w1280') =>
   path ? `https://image.tmdb.org/t/p/${size}${path}` : undefined;
 
-const getSciFiInsight = (title) => {
+const getComedyInsight = (title) => {
   const data = MOVIE_DATA_BY_TITLE[title];
-  return data?.connection || 'A transcendent masterpiece exploring the boundaries of technology, reality, and human evolution.';
+  return data?.connection || 'A hilarious cinematic experience that delivers non-stop laughs and memorable moments.';
 };
 
+// ✅ OPTIMIZED BANNER (Comedy Theme)
 const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
   const [showTrailer, setShowTrailer] = useState(false);
   const [countdown, setCountdown] = useState(4);
   const [hasClosedTrailer, setHasClosedTrailer] = useState(false);
-  const [mounted, setMounted] = useState(false);
   const timerRef = useRef(null);
 
-  const backdropPath = richData?.backdrop_path || movieData?.backdrop_path || movie?.backdrop_path;
-  const posterPath = richData?.poster_path || movieData?.poster_path || movie?.poster_path;
+  const backdropPath = movieData?.backdrop_path || richData?.backdrop_path || movie?.backdrop_path;
+  const posterPath = movieData?.poster_path || richData?.poster_path || movie?.poster_path;
 
   const bannerImage = backdropPath ? getTMDBImage(backdropPath, 'w1280') : null;
   const posterImage = posterPath ? getTMDBImage(posterPath, 'w500') : null;
 
-  const insight = getSciFiInsight(movie?.Title);
-  const complexityIndex = richData?.sciFiComplexity || 90;
-
-  useEffect(() => { setMounted(true); }, []);
+  const insight = getComedyInsight(movie?.Title);
+  // ✅ UPDATED: Uses 'laughterIndex' instead of 'psychologicalIntensity'
+  const laughterScore = richData?.laughterIndex || 85; 
 
   const mobileHeroCSS = `
   @media (max-width: 767px) {
     .mobile-hero-row { display: flex; flex-direction: row; align-items: flex-start; width: 100vw; max-width: 100vw; gap: 10px; margin: 0; padding: 0 8px; }
     .mobile-hero-poster { width: 38vw; min-width: 106px; border-radius: 12px; overflow: hidden; box-shadow: 0 3px 14px #0007; margin: 0; flex-shrink: 0; }
     .mobile-hero-poster img { width: 100%; height: auto; border-radius: 12px; display: block; }
-    .mobile-psych-card { background: linear-gradient(135deg, #0f172a 0%, #000000 100%); border-radius: 12px; box-shadow: 0 2px 12px #0006; margin: 0; flex: 1; border-left: 4px solid #0ea5e9; display: flex; flex-direction: column; justify-content: flex-start; padding: 10px 10px 10px 12px; min-height: 110px; position: relative; }
+    .mobile-psych-card { background: linear-gradient(135deg, #2e2000 0%, #1a1400 100%); border-radius: 12px; box-shadow: 0 2px 12px #0006; margin: 0; flex: 1; border-left: 4px solid #FACC15; display: flex; flex-direction: column; justify-content: flex-start; padding: 10px 10px 10px 12px; min-height: 110px; position: relative; }
     .mobile-psych-row { display: flex; align-items: flex-start; gap: 7px; }
-    .mobile-psych-icon { min-width: 24px; min-height: 24px; color: #38bdf8; margin-top: 2px; }
-    .mobile-psych-title { font-size: 15px; font-weight: bold; color: #38bdf8; margin-bottom: 1px; line-height: 1.12; }
+    .mobile-psych-icon { min-width: 24px; min-height: 24px; color: #FDE047; margin-top: 2px; }
+    .mobile-psych-title { font-size: 15px; font-weight: bold; color: #FDE047; margin-bottom: 1px; line-height: 1.12; }
     .mobile-psych-desc { font-size: 12.3px; color: #ededed; line-height: 1.36; margin-top: 2px; }
   }`;
 
   useEffect(() => {
-    if (mounted && !isMobile && trailer && !showTrailer && !hasClosedTrailer) {
+    if (!isMobile && trailer && !showTrailer && !hasClosedTrailer) {
       timerRef.current = setInterval(() => {
         setCountdown((prev) => {
           if (prev <= 1) { clearInterval(timerRef.current); setShowTrailer(true); return 0; }
@@ -89,12 +101,10 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
       }, 1000);
     }
     return () => { if (timerRef.current) clearInterval(timerRef.current); };
-  }, [mounted, isMobile, trailer, showTrailer, hasClosedTrailer]);
+  }, [isMobile, trailer, showTrailer, hasClosedTrailer]);
 
   const handleCloseTrailer = () => { setShowTrailer(false); setHasClosedTrailer(true); if (timerRef.current) clearInterval(timerRef.current); };
   const handlePlayClick = () => { setShowTrailer(true); setHasClosedTrailer(false); };
-
-  if (!mounted) return <div className="h-[300px] w-full bg-black/50" />;
 
   return (
     <motion.div className="relative w-full overflow-hidden mb-6 sm:mb-8 mx-0 sm:mx-4 lg:mx-6 rounded-none sm:rounded-3xl" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8 }}>
@@ -109,7 +119,7 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
           ) : (
             <motion.div key="image" className="absolute inset-0 rounded-none sm:rounded-3xl overflow-hidden" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
               <div className="relative w-full h-full">
-                {bannerImage ? <Image src={bannerImage} alt={`${movie?.Title} banner`} fill priority sizes="100vw" quality={90} className="object-cover" /> : <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: COLORS.bgCard }}><Sparkles className="w-16 h-16 sm:w-24 sm:h-24" style={{ color: COLORS.textMuted }} /></div>}
+                {bannerImage ? <Image src={bannerImage} alt={`${movie?.Title} banner`} fill priority sizes="100vw" quality={90} className="object-cover" /> : <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: COLORS.bgCard }}><Film className="w-16 h-16 sm:w-24 sm:h-24" style={{ color: COLORS.textMuted }} /></div>}
                 <div className="absolute inset-0 z-10" style={{ background: `linear-gradient(to bottom, transparent 0%, transparent 60%, ${COLORS.bgPrimary}80 85%, ${COLORS.bgPrimary} 100%)` }} />
               </div>
               {trailer && (
@@ -128,10 +138,11 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
       </div>
       {isMobile ? (
         <div className="mobile-hero-row">
-          <div className="mobile-hero-poster">{posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} width={320} height={480} className="w-full h-auto" priority /> : <div style={{ background: COLORS.bgCard, width: '100%', height: '150px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Sparkles style={{ color: COLORS.textMuted }} /></div>}</div>
+          <div className="mobile-hero-poster">{posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} width={320} height={480} className="w-full h-auto" priority /> : <div style={{ background: COLORS.bgCard, width: '100%', height: '150px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Theater style={{ color: COLORS.textMuted }} /></div>}</div>
           <div className="mobile-psych-card">
-            <div className="mobile-psych-row"><Sparkles className="mobile-psych-icon" /><div><div className="mobile-psych-title">Sci-Fi Complexity</div></div></div>
-            <div className="mobile-psych-desc"><strong>{complexityIndex}</strong> - {insight.substring(0, 80)}...</div>
+            {/* ✅ UPDATED LABEL: Laughter Index */}
+            <div className="mobile-psych-row"><Smile className="mobile-psych-icon" /><div><div className="mobile-psych-title">Laughter Index</div></div></div>
+            <div className="mobile-psych-desc"><strong>{laughterScore}/100</strong> - {insight.substring(0, 80)}...</div>
           </div>
         </div>
       ) : (
@@ -139,15 +150,16 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 lg:gap-8 items-start">
             <motion.div className="flex-shrink-0 relative w-24 sm:w-48 md:w-56 lg:w-80 mx-auto sm:mx-0" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8, duration: 0.8 }}>
               <div className="relative" style={{ aspectRatio: '2/3' }}>
-                {posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} fill sizes="(max-width: 640px) 96px, (max-width: 768px) 192px, (max-width: 1024px) 224px, 320px" quality={85} className="object-cover rounded-lg sm:rounded-xl shadow-2xl" /> : <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: COLORS.bgCard, borderRadius: '12px' }}><Sparkles style={{ color: COLORS.textMuted }} /></div>}
+                {posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} fill sizes="(max-width: 640px) 96px, (max-width: 768px) 192px, (max-width: 1024px) 224px, 320px" quality={85} className="object-cover rounded-lg sm:rounded-xl shadow-2xl" /> : <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: COLORS.bgCard, borderRadius: '12px' }}><Theater style={{ color: COLORS.textMuted }} /></div>}
               </div>
             </motion.div>
             <motion.div className="flex-1 w-full min-w-0" initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 1.0, duration: 0.8 }}>
-              <motion.div className="relative rounded-xl sm:rounded-2xl overflow-hidden p-4 sm:p-6 lg:p-8 backdrop-blur-sm" style={{ background: `linear-gradient(135deg, rgba(14, 165, 233, 0.15) 0%, rgba(15, 15, 20, 0.5) 100%)`, border: `1px solid ${COLORS.borderLight}`, boxShadow: `0 8px 32px rgba(14, 165, 233, 0.2)` }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.1, duration: 0.8 }}>
+              <motion.div className="relative rounded-xl sm:rounded-2xl overflow-hidden p-4 sm:p-6 lg:p-8 backdrop-blur-sm" style={{ background: `linear-gradient(135deg, rgba(250, 204, 21, 0.15) 0%, rgba(26, 20, 0, 0.5) 100%)`, border: `1px solid ${COLORS.borderLight}`, boxShadow: `0 8px 32px rgba(250, 204, 21, 0.2)` }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.1, duration: 0.8 }}>
                 <div className="absolute top-0 left-0 right-0 h-0.5 sm:h-1" style={{ background: `linear-gradient(90deg, transparent, ${COLORS.accent}, transparent)` }} />
                 <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5">
-                  <motion.div className="p-2 sm:p-2.5 rounded-lg sm:rounded-xl flex-shrink-0" style={{ background: `linear-gradient(135deg, ${COLORS.accent}20, ${COLORS.accent}10)`, border: `1px solid ${COLORS.accent}40` }} whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}><Sparkles className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" style={{ color: COLORS.accent }} /></motion.div>
-                  <div className="min-w-0 flex-1"><h2 className="text-sm sm:text-base lg:text-xl xl:text-2xl font-bold leading-tight" style={{ color: COLORS.accent }}>The Future is Now</h2><p className="text-xs sm:text-sm hidden sm:block" style={{ color: COLORS.textMuted }}>Sci-Fi Complexity: {complexityIndex}/100</p></div>
+                  <motion.div className="p-2 sm:p-2.5 rounded-lg sm:rounded-xl flex-shrink-0" style={{ background: `linear-gradient(135deg, ${COLORS.accent}20, ${COLORS.accent}10)`, border: `1px solid ${COLORS.accent}40` }} whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}><PartyPopper className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" style={{ color: COLORS.accent }} /></motion.div>
+                  {/* ✅ UPDATED LABEL: Laughter Index */}
+                  <div className="min-w-0 flex-1"><h2 className="text-sm sm:text-base lg:text-xl xl:text-2xl font-bold leading-tight" style={{ color: COLORS.accent }}>Why It's Hilarious</h2><p className="text-xs sm:text-sm hidden sm:block" style={{ color: COLORS.textMuted }}>Laughter Index: {laughterScore}/100</p></div>
                 </div>
                 <div className="relative pl-4 sm:pl-6 border-l-2" style={{ borderColor: `${COLORS.accent}40` }}>
                   <motion.div className="absolute -left-1.5 sm:-left-2 top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full" style={{ backgroundColor: COLORS.accent }} animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 2, repeat: Infinity }} />
@@ -164,10 +176,10 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
 };
 
 const SmartBackButton = () => {
-    const handleBackClick = () => { if (typeof window !== 'undefined') window.location.href = '/collection/best-sci-fi-movies'; };
+    const handleBackClick = () => { if (typeof window !== 'undefined') window.location.href = '/collection/best-comedy-movies-on-peacock'; };
     return (
         <motion.button onClick={handleBackClick} className="fixed top-4 left-4 sm:top-6 sm:left-6 z-50 flex items-center gap-2 px-3 sm:px-4 py-2 backdrop-blur-md rounded-lg transition-all duration-300 shadow-xl text-xs sm:text-sm" style={{ backgroundColor: `${COLORS.bgPrimary}F2`, border: `1px solid ${COLORS.borderLight}` }} whileHover={{ scale: 1.02, x: -2 }} whileTap={{ scale: 0.98 }} initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} onMouseEnter={(e) => e.currentTarget.style.borderColor = COLORS.borderAccent} onMouseLeave={(e) => e.currentTarget.style.borderColor = COLORS.borderLight}>
-            <ChevronLeft className="w-3 h-3 sm:w-4 sm:h-4" style={{ color: COLORS.accent }} /><span className="font-medium" style={{ color: COLORS.accent }}>Back to Sci-Fi</span>
+            <ChevronLeft className="w-3 h-3 sm:w-4 sm:h-4" style={{ color: COLORS.accent }} /><span className="font-medium" style={{ color: COLORS.accent }}>Back to Collection</span>
         </motion.button>
     );
 };
@@ -175,7 +187,7 @@ const SmartBackButton = () => {
 const AuthorCreditSection = () => (
     <motion.section className="pt-6 sm:pt-8 mt-12 sm:mt-16" style={{ borderTop: `1px solid ${COLORS.borderLight}` }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2.0, duration: 0.8 }}>
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
-            <div className="flex items-center gap-3"><User className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: COLORS.textDisabled }} /><div><p className="text-xs sm:text-sm" style={{ color: COLORS.textMuted }}>Curated by <span className="font-medium" style={{ color: COLORS.textSecondary }}>Filmiway Editorial Team</span></p><p className="text-xs" style={{ color: COLORS.textDisabled }}>Expert analysis of futuristic cinema</p></div></div>
+            <div className="flex items-center gap-3"><User className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: COLORS.textDisabled }} /><div><p className="text-xs sm:text-sm" style={{ color: COLORS.textMuted }}>Curated by <span className="font-medium" style={{ color: COLORS.textSecondary }}>Filmiway Editorial Team</span></p><p className="text-xs" style={{ color: COLORS.textDisabled }}>Expert analysis of comedy cinema</p></div></div>
             <div className="flex items-center gap-3 sm:gap-4"><span className="text-xs sm:text-sm" style={{ color: COLORS.textDisabled }}>Share:</span><div className="flex gap-2 sm:gap-3">{[Twitter, Hash, Send].map((Icon, i) => (<button key={i} className="p-1.5 sm:p-2 rounded-full transition-colors" style={{ color: COLORS.textDisabled }} onMouseEnter={(e) => { e.currentTarget.style.color = COLORS.textSecondary; e.currentTarget.style.backgroundColor = COLORS.bgCard; }} onMouseLeave={(e) => { e.currentTarget.style.color = COLORS.textDisabled; e.currentTarget.style.backgroundColor = 'transparent'; }}><Icon className="w-3 h-3 sm:w-4 sm:h-4" /></button>))}</div></div>
         </div>
     </motion.section>
@@ -185,65 +197,68 @@ const SubtleFilmGrain = () => (
     <div className="fixed inset-0 pointer-events-none z-0 opacity-[0.005]"><div className="w-full h-full bg-repeat" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)' opacity='0.3'/%3E%3C/svg%3E")`, backgroundSize: '60px 60px' }} /></div>
 );
 
-const SciFiBreadcrumb = ({ movie }) => (
+const PeacockComedyBreadcrumb = ({ movie }) => (
     <motion.nav className="mb-6 sm:mb-8 px-3 sm:px-4 lg:px-6 pb-3 sm:pb-4" style={{ borderBottom: `1px solid ${COLORS.borderLight}` }} initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
         <div className="flex items-center space-x-2 sm:space-x-3 text-xs sm:text-sm" style={{ color: COLORS.textMuted }}>
-            <Link href="/collection/best-sci-fi-movies" className="transition-all duration-300 truncate" style={{ color: COLORS.textMuted }} onMouseEnter={(e) => e.currentTarget.style.color = COLORS.accent} onMouseLeave={(e) => e.currentTarget.style.color = COLORS.textMuted}>Best Sci-Fi Movies</Link>
-            <ChevronRight size={14} className="flex-shrink-0" style={{ color: COLORS.textDisabled }} /><span className="font-medium truncate" style={{ color: `${COLORS.accent}B3` }}>{movie.Title}</span>
+            <Link href="/collection/best-comedy-movies-on-peacock" className="transition-all duration-300 truncate" style={{ color: COLORS.textMuted }} onMouseEnter={(e) => e.currentTarget.style.color = COLORS.accent} onMouseLeave={(e) => e.currentTarget.style.color = COLORS.textMuted}>Best Comedy Movies on Peacock</Link>
+            <ChevronLeft size={14} className="flex-shrink-0" style={{ color: COLORS.textDisabled, transform: 'rotate(180deg)' }} /><span className="font-medium truncate" style={{ color: `${COLORS.accent}B3` }}>{movie.Title}</span>
         </div>
     </motion.nav>
 );
 
-// ✅ SCHEMA GENERATOR (SCI-FI EDITION)
+// ✅ JSON-LD SCHEMA GENERATOR - COMEDY EDITION
 const generateMovieSchema = (movie, movieData, currentMovieYear) => {
   const data = COMPLETE_MOVIE_DATA[movie.tmdbId];
   const sensitiveData = SENSITIVE_TIMELINES[movie.tmdbId];
-  const faqs = SCI_FI_MOVIE_FAQS[movie.Title] || [];
+  const faqs = PEACOCK_COMEDY_MOVIE_FAQS[movie.Title] || [];
 
+  // 1. CALCULATE THE PEAK MOMENT
   let peakStats = "Peak info unavailable.";
   if (data?.scenes && data.scenes.length > 0) {
     const peakScene = data.scenes.reduce((prev, current) => 
       (current.intensity > prev.intensity) ? current : prev
     );
-    peakStats = `[PEAK MOMENT] Maximum Intensity (${peakScene.intensity}/100) hits at minute ${peakScene.time}: "${peakScene.label}".`;
+    peakStats = `[PEAK LAUGHTER] Maximum Hilarity (${peakScene.intensity}/100) hits at minute ${peakScene.time}: "${peakScene.label}".`;
   }
 
+  // 2. METRICS (Using Comedy Specific Terms for Bots)
+  // ✅ UPDATED: ONLY Laughter Index
   const intensityStats = `
-    [FILMIWAY METRICS]
-    - Sci-Fi Complexity: ${data?.sciFiComplexity || 0}/100
-    - Visual Spectacle: ${data?.visualSpectacle || 0}/100
-    - Philosophical Depth: ${data?.philosophicalDepth || 0}/100
+    [FILMIWAY METRIC]
+    - Laughter Index: ${data?.laughterIndex || 0}/100
   `;
 
   const dnaStats = data?.dna 
     ? `[GENRE DNA] ${Object.entries(data.dna).map(([genre, val]) => `${genre}: ${val}%`).join(', ')}`
-    : 'Sci-Fi Thriller';
+    : 'Comedy';
 
   const contentWarnings = sensitiveData?.scenes 
     ? `[CONTENT ADVISORY] ${sensitiveData.scenes.map(s => 
         (s.start && s.end) 
           ? `${s.type}: ${s.start}-${s.end} (${s.severity})` 
-          : `${s.type} (${s.severity})`
+          : `${s.type} (${s.severity})` 
       ).join(' | ')}.`
-    : 'No specific content warnings listed.';
-
+    : 'Standard comedy content.';
   const faqText = faqs.length > 0
     ? `[COMMON QUESTIONS] ${faqs.map(f => `Q: ${f.question} A: ${f.answer}`).join(' | ')}`
     : '';
 
+  // 3. COMPILE FULL DESCRIPTION
   const fullDescription = `
-    ${data?.synopsis || movie.description || "A masterpiece of science fiction."}
-    Includes exact timestamps for sensitive content, sci-fi complexity scores, and philosophical analysis.
+    ${data?.synopsis || movie.description || "A hilarious comedy film."}
+    
     --- DETAILED ANALYSIS ---
-    ${peakStats}
+    ${peakStats} 
     ${intensityStats}
     ${dnaStats}
     ${contentWarnings}
     ${faqText}
-    Ranking: #${movie.rank || 'N/A'} in Best Sci-Fi Movies.
+    
+    Ranking: #${movie.rank || 'N/A'} in Comedy Movies.
     Production: Budget ${data?.budget || 'N/A'}, Box Office ${data?.boxOffice || 'N/A'}.
   `.replace(/\s+/g, ' ').trim();
 
+  // 4. MAIN MOVIE SCHEMA
   const movieSchema = {
     "@context": "https://schema.org",
     "@type": "Movie",
@@ -251,20 +266,37 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
     "description": fullDescription, 
     "datePublished": currentMovieYear,
     "image": movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : undefined,
-    "director": { "@type": "Person", "name": data?.director || "Unknown" },
-    "actor": data?.cast?.map(actor => ({ "@type": "Person", "name": actor })) || [],
+    "director": {
+      "@type": "Person",
+      "name": data?.director || "Unknown"
+    },
+    "actor": data?.cast?.map(actor => ({
+      "@type": "Person",
+      "name": actor
+    })) || [],
+    
     "review": {
       "@type": "Review",
-      "author": { "@type": "Organization", "name": "Filmiway" },
+      "author": {
+        "@type": "Organization",
+        "name": "Filmiway"
+      },
       "reviewRating": {
         "@type": "Rating",
-        "ratingValue": data?.rating || 8.0, "bestRating": "10", "worstRating": "1"
+        "ratingValue": data?.rating || 7.0, 
+        "bestRating": "10",
+        "worstRating": "1"
       }
     },
-    "genre": data?.dna ? Object.keys(data.dna) : ["Sci-Fi", "Thriller"],
-    "keywords": "Sci-Fi Movie, Artificial Intelligence, Space, " + (data?.themes ? data.themes.join(", ") : ""),
-    "url": `https://filmiway.com/movies/sci-fi/${movie.imdbID}`,
-    "author": { "@type": "Organization", "name": "Filmiway", "url": "https://filmiway.com" }
+
+    "genre": data?.dna ? Object.keys(data.dna) : ["Comedy"],
+    "keywords": "Comedy Movies Peacock, Funniest Movies on Peacock, " + (data?.themes ? data.themes.join(", ") : ""),
+    "url": `https://filmiway.com/best-comedy-movies-on-peacock/${movie.imdbID}`,
+    "author": {
+      "@type": "Organization",
+      "name": "Filmiway",
+      "url": "https://filmiway.com"
+    }
   };
 
   const faqSchema = faqs.length > 0 ? {
@@ -273,15 +305,19 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
     "mainEntity": faqs.map(f => ({
       "@type": "Question",
       "name": f.question,
-      "acceptedAnswer": { "@type": "Answer", "text": f.answer }
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": f.answer
+      }
     }))
   } : null;
 
   return { movieSchema, faqSchema };
 };
 
-const SciFiMoviePage = ({ movie, tmdbData: movieData }) => {
-    const richData = COMPLETE_MOVIE_DATA[movie?.tmdbId] || {}; 
+const PeacockComedyMoviePage = ({ movie, tmdbData: movieData }) => {
+    const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
+    const richData = COMPLETE_MOVIE_DATA[movie.tmdbId]; 
     const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -293,39 +329,52 @@ const SciFiMoviePage = ({ movie, tmdbData: movieData }) => {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-        sessionStorage.setItem('fromCollection', 'sci-fi');
-        sessionStorage.setItem('fromCollectionName', 'Best Sci-Fi Movies');
+        sessionStorage.setItem('fromCollection', 'best-comedy-movies-on-peacock');
+        sessionStorage.setItem('fromCollectionName', 'Best Comedy Movies on Peacock');
     }
   }, []);
 
-    const currentMovieYear = movie.year || 'Unknown';
+    const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
-    // ✅ SEO FIX: Join title into a single string variable to prevent hydration markers ()
-    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Sci-Fi Analysis & Timestamps | Filmiway`;
-    const cleanSEODesc = `${movie.Title} - ${richData.synopsis ? richData.synopsis.substring(0, 100) : 'Sci-Fi Masterpiece'}... Includes exact timestamps for sensitive content.`;
+    // ✅ SEO FIX: Clean strings to prevent hydration errors
+    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Best Comedy Movies on Peacock | Filmiway`;
+    const cleanSEODesc = `${movie.Title} (${currentMovieYear}) - A hilarious comedy movie streaming on Peacock. Ranked by laughter and quotability.`;
 
     const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear);
 
     return (
         <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
             <Head>
-                {/* ✅ HYDRATION BUG RESOLVED: No more split variables inside title tag */}
+                {/* ✅ HYDRATION BUG FULLY RESOLVED */}
                 <title>{cleanSEOTitle}</title>
                 <meta name="description" content={cleanSEODesc} />
-                <link rel="canonical" href={`https://filmiway.com/movies/sci-fi/${movie.imdbID}`} />
-                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <link rel="canonical" href={`https://filmiway.com/best-comedy-movies-on-peacock/${movie.imdbID}`} />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
                 <meta name="robots" content="index, follow" />
-                
-                {/* Social Meta Tags */}
-                <meta property="og:title" content={cleanSEOTitle} />
-                <meta property="og:description" content={cleanSEODesc} />
-                <meta property="og:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
-                <meta name="twitter:title" content={cleanSEOTitle} />
-                <meta name="twitter:description" content={cleanSEODesc} />
+                <meta name="language" content="English" />
 
-                <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }} />
-                {faqSchema && (<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />)}
+                {/* ✅ BARRIER #3 DEFEATED: JSON-LD Schema */}
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }}
+                />
+                {faqSchema && (
+                    <script
+                        type="application/ld+json"
+                        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+                    />
+                )}
+
+                {/* Standard Meta Tags */}
+                <meta property="og:title" content={cleanSEOTitle} />
+                <meta property="og:description" content="A hilarious comedy movie on Peacock." />
+                <meta property="og:type" content="video.movie" />
+                <meta property="og:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content={cleanSEOTitle} />
+                <meta name="twitter:description" content="A hilarious comedy movie on Peacock." />
+                <meta name="twitter:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
             </Head>
 
             <SubtleFilmGrain />
@@ -334,25 +383,26 @@ const SciFiMoviePage = ({ movie, tmdbData: movieData }) => {
             
             <div className="relative z-10 pt-10 sm:pt-12 lg:pt-16">
                 
-                {/* ✅ SEO FIX: HIDDEN H1 ADDED HERE FOR GOOGLE & BING */}
+                {/* ✅ SEO FIX: HIDDEN H1 */}
                 <h1 className="sr-only">{cleanSEOTitle}</h1>
 
-                <SciFiBreadcrumb movie={movie} />
+                <PeacockComedyBreadcrumb movie={movie} />
                 <div className="container mx-auto px-0 pb-16 sm:pb-24 lg:pb-32 max-w-7xl">
                     <OptimizedBanner movie={movie} movieData={movieData} richData={richData} trailer={trailer} isMobile={isMobile} />
                     
                     <motion.div 
-    id="watch" 
-    initial={{ opacity: 0, y: 20 }} 
-    animate={{ opacity: 1, y: 0 }} 
-    transition={{ duration: 0.5 }} // Faster, no massive delay
-    className="space-y-8 sm:space-y-12 px-3 sm:px-4 lg:px-6"
->
-                        <MovieDetailsSection movie={movie} fromSciFiCollection={true} />
+                        id="watch" 
+                        initial={{ opacity: 0, y: 20 }} 
+                        animate={{ opacity: 1, y: 0 }} 
+                        transition={{ duration: 0.5 }} 
+                        className="space-y-8 sm:space-y-12 px-3 sm:px-4 lg:px-6"
+                    >
+                        {/* Note: Ensure MovieDetailsSection supports the new 'fromPeacockComedyCollection' prop */}
+                        <MovieDetailsSection movie={movie} fromPeacockComedyCollection={true} /> 
                     </motion.div>
                     
                     <div className="px-3 sm:px-4 lg:px-6">
-                        <InternalCollectionsSection currentSlug="best-sci-fi-movies" />
+                        <InternalCollectionsSection currentSlug="best-comedy-movies-on-peacock" />
                         <TMDBAttribution />
                         <AuthorCreditSection />
                     </div>
@@ -372,13 +422,23 @@ export async function getStaticProps({ params }) {
         const movie = COMPLETE_MOVIE_DATABASE.find((m) => m.imdbID === params.id);
         if (!movie) return { notFound: true };
 
-        const tmdbResponse = await fetch(`https://api.themoviedb.org/3/movie/${movie.tmdbId}?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&append_to_response=videos`);
+        const tmdbResponse = await fetch(
+            `https://api.themoviedb.org/3/movie/${movie.tmdbId}?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&append_to_response=videos`
+        );
         const tmdbData = tmdbResponse.ok ? await tmdbResponse.json() : null;
 
-        return { props: { movie, tmdbData } };
+        return {
+            props: { movie, tmdbData },
+        };
     } catch (error) {
-        return { props: { movie: COMPLETE_MOVIE_DATABASE.find((m) => m.imdbID === params.id), tmdbData: null } };
+        console.error('Error fetching TMDB data:', error);
+        return {
+            props: {
+                movie: COMPLETE_MOVIE_DATABASE.find((m) => m.imdbID === params.id),
+                tmdbData: null,
+            },
+        };
     }
 }
 
-export default SciFiMoviePage;
+export default PeacockComedyMoviePage;

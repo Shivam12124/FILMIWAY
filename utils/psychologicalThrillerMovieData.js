@@ -87,207 +87,119 @@ export const FALLBACK_POSTERS = {
 };
 
 export const COMPLETE_MOVIE_DATA = {
-    // 1. The Silence of the Lambs
+    // 1. The Silence of the Lambs (1991) - STATUS: PSYCHOLOGICAL DOMINATION
     274: createMovieData({ 
-        sanityErosion: 95, // The Lecter Effect
-        complexityLevel: "HIGH", 
-        dominantColor: "#4a5568", rating: 8.6, criticsScore: 95, audienceScore: 95, 
-        director: "Jonathan Demme", cast: ["Jodie Foster", "Anthony Hopkins", "Scott Glenn"], 
-        boxOffice: "$272.7 million", budget: "$19 million", 
+        sanityErosion: 90, complexityLevel: "HIGH", 
+        dominantColor: "#4a5568", rating: 8.6,
         dna: { Thriller: 55, Crime: 30, Horror: 15 }, 
         scenes: [
-            { time: 10, intensity: 35, label: 'First Interview', color: '#b91c1c' },
-            { time: 46, intensity: 67, label: 'Lecter Escapes', color: '#f87171' },
-            { time: 82, intensity: 79, label: 'Night Vision Stalk', color: '#fbbf24' },
-            { time: 102, intensity: 89, label: 'Buffalo Bill', color: '#fde68a' },
-            { time: 113, intensity: 94, label: 'Ending', color: '#dc2626' }
-        ], 
-        synopsis: "Clarice Starling, a young and ambitious FBI trainee, is thrown into the deep end to catch 'Buffalo Bill,' a serial killer who skins his female victims. To save the next girl, she must enter the high-security dungeon of Dr. Hannibal Lecter—a brilliant psychiatrist turned cannibalistic monster. What begins as an interrogation evolves into a chilling, psychological waltz where Clarice must trade her own traumatic memories for Lecter's insights, risking her sanity to stop a slaughter.", 
-        themes: ["Transformation", "Manipulation", "Identity", "Fear"], 
-        awards: ["Big Five Oscars", "Golden Globe"] 
+            { time: 10, intensity: 32, label: "First Interview", color: "#b91c1c" },
+            { time: 46, intensity: 68, label: "Lecter Escapes", color: "#f87171" },
+            { time: 82, intensity: 78, label: "Night Vision Stalk", color: "#fbbf24" },
+            { time: 102, intensity: 90, label: "Buffalo Bill Basement", color: "#fde68a" },
+            { time: 113, intensity: 93, label: "Lecter Walks Free", color: "#dc2626" } // PEAK: Lingering Unease
+        ],
+        synopsis: "A young FBI trainee must seek the help of an incarcerated cannibal to catch another serial killer. A perfect psychological dance that exerts pressure through manipulation rather than shock."
     }),
 
-    // 2. Fight Club
+    // 2. Fight Club (1999) - STATUS: IDENTITY COLLAPSE
     550: createMovieData({ 
-        sanityErosion: 98, // Total Dissociation
-        complexityLevel: "EXTREME", 
-        dominantColor: "#3f6212", rating: 8.8, criticsScore: 79, audienceScore: 96, 
-        director: "David Fincher", cast: ["Edward Norton", "Brad Pitt", "Helena Bonham Carter"], 
-        boxOffice: "$101.2 million", budget: "$63 million", 
-        dna: { Drama: 70, Psychological: 20, Thriller: 10 }, 
+        sanityErosion: 96, complexityLevel: "EXTREME", 
+        dominantColor: "#3f6212", rating: 8.8,
+        dna: { Drama: 50, Psychological: 30, Thriller: 20 }, 
         scenes: [
-            { time: 5, intensity: 40, label: 'Meeting Tyler Durden', color: '#b91c1c' },
-            { time: 50, intensity: 70, label: 'Fight Club Formation', color: '#f87171' },
-            { time: 100, intensity: 90, label: 'Fight to the End', color: '#fbbf24' },
-            { time: 115, intensity: 95, label: 'Chaos Unleashed', color: '#fde68a' },
-            { time: 125, intensity: 98, label: 'Final Twist', color: '#dc2626' }
-        ], 
-        synopsis: "A ticking time bomb of an insomniac, suffocated by his IKEA-catalog life, finds a strange release in the company of Tyler Durden—a charismatic soap salesman who believes self-destruction is the answer to everything. Together, they create an underground fight club that evolves into something far more dangerous: a cult-like army targeting the foundations of society itself. But as the chaos spreads, the narrator realizes that Tyler Durden is not who he seems.", 
-        themes: ["Consumerism", "Identity", "Masculinity", "Anarchy"], 
-        awards: ["Oscar Nomination", "Cult Classic Status"] 
+            { time: 5, intensity: 35, label: "Meeting Tyler Durden", color: "#b91c1c" },
+            { time: 50, intensity: 70, label: "Fight Club Formation", color: "#f87171" },
+            { time: 100, intensity: 85, label: "Self-Inflicted Gunshot", color: "#fbbf24" },
+            { time: 115, intensity: 90, label: "Project Mayhem Realized", color: "#fde68a" },
+            { time: 125, intensity: 96, label: "You Met Me at a Very Strange Time", color: "#dc2626" } // PEAK: Genre-Defining
+        ]
     }),
 
-    // 3. Memento
-    77: createMovieData({ 
-        sanityErosion: 92, // Memory Fragmentation
-        complexityLevel: "EXTREME", 
-        dominantColor: "#d6c8b2", rating: 8.4, criticsScore: 93, audienceScore: 94, 
-        director: "Christopher Nolan", cast: ["Guy Pearce", "Carrie-Anne Moss", "Joe Pantoliano"], 
-        boxOffice: "$39.7 million", budget: "$9 million", 
-        dna: { Mystery: 50, Thriller: 30, Drama: 20 }, 
-        scenes: [
-            { time: 5, intensity: 40, label: 'Opening Black & White', color: '#b91c1c' },
-            { time: 50, intensity: 60, label: 'Tattoos Explanation', color: '#f87171' },
-            { time: 80, intensity: 75, label: 'Car Scene', color: '#fbbf24' },
-            { time: 105, intensity: 85, label: 'Final Reveal', color: '#fde68a' },
-            { time: 110, intensity: 92, label: 'The Beginning/End', color: '#dc2626' }
-        ], 
-        synopsis: "Leonard Shelby is a man living in a fractured reality. Unable to form new memories since the attack that killed his wife, he hunts her murderer using a complex system of Polaroid photos, handwritten notes, and tattoos on his own skin. Told in reverse chronological order, the film forces you to experience Leonard's disorientation firsthand, slowly revealing a devastating truth: when you can't trust your own mind, everyone is a suspect, including yourself.", 
-        themes: ["Memory", "Truth", "Identity", "Revenge"], 
-        awards: ["Oscar Nomination", "Sundance Winner"] 
-    }),
-
-    // 4. Se7en
+    // 4. Se7en (1995) - STATUS: NIHILISTIC SINGULARITY
     807: createMovieData({ 
-        sanityErosion: 96, // Moral Decay
-        complexityLevel: "HIGH", 
-        dominantColor: "#1c1917", rating: 8.6, criticsScore: 83, audienceScore: 95, 
-        director: "David Fincher", cast: ["Brad Pitt", "Morgan Freeman", "Kevin Spacey"], 
-        boxOffice: "$327.3 million", budget: "$33 million", 
-        dna: { Mystery: 50, Thriller: 40, Crime: 10 }, 
+        sanityErosion: 97, complexityLevel: "HIGH", 
+        dominantColor: "#1c1917", rating: 8.6,
+        dna: { Mystery: 45, Thriller: 45, Crime: 10 }, 
         scenes: [
-            { time: 8, intensity: 45, label: 'Sin 1: Gluttony', color: '#b91c1c' },
-            { time: 38, intensity: 65, label: 'Sin 3: Greed', color: '#f87171' },
-            { time: 77, intensity: 85, label: 'Sin 5: Lust', color: '#fbbf24' },
-            { time: 102, intensity: 92, label: 'Desert Confrontation', color: '#fde68a' },
-            { time: 120, intensity: 98, label: "What's in the Box?", color: '#dc2626' }
-        ], 
-        synopsis: "In a city drowning in constant rain and moral decay, two detectives—one a weary veteran, the other a brash rookie—hunt a serial killer who turns the Seven Deadly Sins into gruesome tableaus of torture. As they move from one horrific crime scene to the next, they realize they aren't just catching a criminal; they are pawns in his masterwork. It is a descent into pure nihilism, ending in a desert showdown that will leave you scarred.", 
-        themes: ["Sin", "Moral Decay", "Apathy", "Justice"], 
-        awards: ["MTV Movie Award", "Oscar Nomination"] 
+            { time: 8, intensity: 45, label: "Gluttony", color: "#b91c1c" },
+            { time: 38, intensity: 65, label: "Greed", color: "#f87171" },
+            { time: 77, intensity: 80, label: "Lust", color: "#fbbf24" },
+            { time: 102, intensity: 90, label: "Desert Confrontation", color: "#fde68a" },
+            { time: 120, intensity: 98, label: "What's in the Box?", color: "#dc2626" } // PEAK: Moral Annihilation
+        ]
     }),
 
-    // 5. Shutter Island
+    // 5. Shutter Island (2010) - STATUS: PSYCHOLOGICAL TRAGEDY
     11324: createMovieData({ 
-        sanityErosion: 94, // Denial Fracture
-        complexityLevel: "HIGH", 
-        dominantColor: "#334155", rating: 8.2, criticsScore: 68, audienceScore: 77, 
-        director: "Martin Scorsese", cast: ["Leonardo DiCaprio", "Mark Ruffalo", "Ben Kingsley"], 
-        boxOffice: "$294 million", budget: "$80 million", 
+        sanityErosion: 90, complexityLevel: "HIGH", 
+        dominantColor: "#334155", rating: 8.2,
         dna: { Mystery: 50, Thriller: 35, Drama: 15 }, 
         scenes: [
-            { time: 15, intensity: 40, label: 'Arrival', color: '#b91c1c' },
-            { time: 60, intensity: 68, label: 'Interrogation Room', color: '#f87171' },
-            { time: 95, intensity: 80, label: 'Storm Breaks', color: '#fbbf24' },
-            { time: 110, intensity: 88, label: 'Hospital Secrets', color: '#fde68a' },
-            { time: 130, intensity: 93, label: 'Truth Revealed', color: '#dc2626' }
-        ], 
-        synopsis: "U.S. Marshal Teddy Daniels arrives at Shutter Island, a fortress-like asylum for the criminally insane, to find a missing patient who vanished from a locked room. But as a hurricane rips through the island, cutting off all escape, Teddy discovers that the doctors are hiding something terrible. Haunted by his own tragic past and plagued by migraines and hallucinations, he begins to suspect that he was never meant to leave the island alive.", 
-        themes: ["Sanity", "Trauma", "Denial", "Reality"], 
-        awards: ["Teen Choice Award", "National Board of Review"] 
+            { time: 15, intensity: 38, label: "Arrival", color: "#b91c1c" },
+            { time: 60, intensity: 65, label: "Interrogation Room", color: "#f87171" },
+            { time: 95, intensity: 78, label: "Storm Breaks", color: "#fbbf24" },
+            { time: 110, intensity: 89, label: "Hospital Truth", color: "#fde68a" },
+            { time: 130, intensity: 96, label: "Which Would Be Worse?", color: "#dc2626" } // PEAK: Tragic Acceptance
+        ]
     }),
 
-    // 6. Black Swan
+    // 6. Black Swan (2010) - STATUS: SELF-DESTRUCTION
     44214: createMovieData({ 
-        sanityErosion: 97, // Perfectionist Breakdown
-        complexityLevel: "HIGH", 
-        dominantColor: "#18181b", rating: 8.0, criticsScore: 85, audienceScore: 84, 
-        director: "Darren Aronofsky", cast: ["Natalie Portman", "Mila Kunis", "Vincent Cassel"], 
-        boxOffice: "$106.9 million", budget: "$13 million", 
-        dna: { Drama: 55, Thriller: 40, Psychological: 5 }, 
+        sanityErosion: 95, complexityLevel: "HIGH", 
+        dominantColor: "#18181b", rating: 8.0,
+        dna: { Drama: 50, Thriller: 45, Horror: 5 }, 
         scenes: [
-            { time: 12, intensity: 38, label: 'Audition', color: '#b91c1c' },
-            { time: 40, intensity: 62, label: 'Rehearsal Tension', color: '#f87171' },
-            { time: 75, intensity: 80, label: 'Performance Panic', color: '#fbbf24' },
-            { time: 95, intensity: 85, label: 'Psychological Breakdown', color: '#fde68a' },
-            { time: 105, intensity: 95, label: 'Final Performance', color: '#dc2626' }
-        ], 
-        synopsis: "Nina is a ballerina whose life is consumed by dance. When she wins the lead role in 'Swan Lake,' she easily embodies the innocent White Swan but struggles to find the seductive darkness required for the Black Swan. As a rival dancer threatens to replace her, Nina's desperation triggers a terrifying metamorphosis. The pressure fractures her reality, leading to a hallucinatory nightmare where perfection demands the ultimate sacrifice.", 
-        themes: ["Perfectionism", "Duality", "Obsession", "Sacrifice"], 
-        awards: ["Oscar Best Actress", "Golden Globe"] 
+            { time: 12, intensity: 35, label: "Audition", color: "#b91c1c" },
+            { time: 40, intensity: 60, label: "Rehearsal Tension", color: "#f87171" },
+            { time: 75, intensity: 78, label: "Performance Panic", color: "#fbbf24" },
+            { time: 95, intensity: 88, label: "Mirror Breakdown", color: "#fde68a" },
+            { time: 105, intensity: 95, label: "I Was Perfect", color: "#dc2626" } // PEAK: Identity Annihilation
+        ]
     }),
 
-    // 7. The Machinist
-    4553: createMovieData({ 
-        sanityErosion: 99, // Insomnia Decay
-        complexityLevel: "HIGH", 
-        dominantColor: "#94a3b8", rating: 7.7, criticsScore: 77, audienceScore: 83, 
-        director: "Brad Anderson", cast: ["Christian Bale", "Jennifer Jason Leigh", "Aitana Sánchez-Gijón"], 
-        boxOffice: "$8.6 million", budget: "$5 million", 
-        dna: { Drama: 40, Thriller: 40, Psychological: 20 }, 
-        scenes: [
-            { time: 7, intensity: 30, label: 'Sleeplessness', color: '#b91c1c' },
-            { time: 35, intensity: 55, label: 'Paranoia', color: '#f87171' },
-            { time: 65, intensity: 70, label: 'Conspiracy Reveal', color: '#fbbf24' },
-            { time: 90, intensity: 80, label: 'Mental Breakdown', color: '#fde68a' },
-            { time: 100, intensity: 85, label: 'Final Revelation', color: '#dc2626' }
-        ], 
-        synopsis: "Trevor Reznik is a skeletal shadow of a man who hasn't slept in a year. His insomnia has eroded his mind, leaving him prone to vivid hallucinations and paranoia. When a workplace accident he causes costs a coworker his arm, Trevor becomes convinced that an enigmatic figure named Ivan is orchestrating a plot to destroy him. But as he connects the clues, he finds that the conspiracy is far more personal—and horrifying—than he imagined.", 
-        themes: ["Guilt", "Insomnia", "Memory", "Atonement"], 
-        awards: ["Sitges Award", "Goya Nomination"] 
-    }),
-
-    // 8. Oldboy
+    // 8. Oldboy (2003) - STATUS: EXISTENTIAL CRUELTY
     670: createMovieData({ 
-        sanityErosion: 100, // Total Vengeance
-        complexityLevel: "EXTREME", 
-        dominantColor: "#365314", rating: 8.4, criticsScore: 82, audienceScore: 94, 
-        director: "Park Chan-wook", cast: ["Choi Min-sik", "Yoo Ji-tae", "Kang Hye-jung"], 
-        boxOffice: "$15.5 million", budget: "$3 million", 
+        sanityErosion: 98, complexityLevel: "EXTREME", 
+        dominantColor: "#365314", rating: 8.4,
         dna: { Drama: 40, Mystery: 30, Thriller: 30 }, 
         scenes: [
-            { time: 10, intensity: 40, label: 'Imprisonment', color: '#b91c1c' },
-            { time: 60, intensity: 75, label: 'Revenge Planning', color: '#f87171' },
-            { time: 95, intensity: 82, label: 'Escape and Hunt', color: '#fbbf24' },
-            { time: 115, intensity: 90, label: 'Showdown', color: '#fde68a' },
-            { time: 120, intensity: 93, label: 'Revelation', color: '#dc2626' }
-        ], 
-        synopsis: "On a rainy night, an ordinary businessman is kidnapped and locked in a cheap hotel room for 15 years without explanation. His only connection to the world is a TV set. Then, suddenly, he is released. Armed with a hammer and a thirst for vengeance, he has five days to find his captor and discover the reason for his imprisonment. But the truth is part of a twisted game that is far more violent and tragic than his confinement ever was.", 
-        themes: ["Revenge", "Incest", "Fate", "Memory"], 
-        awards: ["Grand Prix Cannes", "Blue Dragon Winner"] 
+            { time: 10, intensity: 40, label: "Imprisonment", color: "#b91c1c" },
+            { time: 60, intensity: 72, label: "Revenge Path", color: "#f87171" },
+            { time: 95, intensity: 82, label: "Hammer Corridor Aftermath", color: "#fbbf24" },
+            { time: 115, intensity: 90, label: "Hypnosis Game", color: "#fde68a" },
+            { time: 120, intensity: 100, label: "The Truth", color: "#dc2626" } // PEAK: Soul-Destroying
+        ]
     }),
 
-    // 9. Taxi Driver
+    // 9. Taxi Driver (1976) - STATUS: PSYCHOLOGICAL IMPLOSION
     103: createMovieData({ 
-        sanityErosion: 93, // Urban Isolation
-        complexityLevel: "HIGH", 
-        dominantColor: "#eab308", rating: 8.3, criticsScore: 96, audienceScore: 93, 
-        director: "Martin Scorsese", cast: ["Robert De Niro", "Jodie Foster", "Harvey Keitel"], 
-        boxOffice: "$28.6 million", budget: "$12 million", 
+        sanityErosion: 92, complexityLevel: "HIGH", 
+        dominantColor: "#eab308", rating: 8.3,
         dna: { Drama: 50, Crime: 30, Thriller: 20 }, 
         scenes: [
-            { time: 15, intensity: 40, label: 'Night Driving', color: '#b91c1c' },
-            { time: 48, intensity: 65, label: 'Violent Version', color: '#f87171' },
-            { time: 90, intensity: 80, label: 'Rampage', color: '#fbbf24' },
-            { time: 110, intensity: 95, label: 'Final Shootout', color: '#fde68a' },
-            { time: 113, intensity: 98, label: 'Ending', color: '#dc2626' }
-        ], 
-        synopsis: "Travis Bickle is God's lonely man—a Vietnam vet driving a cab through the neon-soaked squalor of 1970s New York. Disgusted by the 'filth' he sees on the streets at night, his isolation festers into a dangerous obsession. He buys a gun, shaves his head into a Mohawk, and prepares for a self-appointed mission to wash the scum off the streets. It is a terrifying portrait of a man slowly becoming a loaded gun.", 
-        themes: ["Isolation", "Vigilantism", "Urban Decay", "Insanity"], 
-        awards: ["Palme d'Or Winner", "4 Oscar Nominations"] 
+            { time: 15, intensity: 38, label: "Night Driving", color: "#b91c1c" },
+            { time: 48, intensity: 62, label: "Violent Fantasies", color: "#f87171" },
+            { time: 90, intensity: 78, label: "Preparation", color: "#fbbf24" },
+            { time: 110, intensity: 92, label: "Brothel Shootout", color: "#fde68a" },
+            { time: 113, intensity: 85, label: "Media Mythology", color: "#dc2626" } // Descent after the spike
+        ]
     }),
 
-    // 10. The Shining
+    // 10. The Shining (1980) - STATUS: SLOW-BURN MADNESS
     694: createMovieData({ 
-        sanityErosion: 97, // Cabin Fever
-        complexityLevel: "HIGH", 
-        dominantColor: "#ea580c", rating: 8.4, criticsScore: 83, audienceScore: 93, 
-        director: "Stanley Kubrick", cast: ["Jack Nicholson", "Shelley Duvall", "Danny Lloyd"], 
-        boxOffice: "$44 million", budget: "$19 million", 
-        dna: { Drama: 50, Horror: 30, Thriller: 20 }, 
+        sanityErosion: 95, complexityLevel: "HIGH", 
+        dominantColor: "#ea580c", rating: 8.4,
+        dna: { Drama: 40, Horror: 40, Thriller: 20 }, 
         scenes: [
-            { time: 12, intensity: 38, label: 'First Snow', color: '#b91c1c' },
-            { time: 50, intensity: 70, label: 'Meeting Grady', color: '#f87171' },
-            { time: 95, intensity: 85, label: 'Maze Scenes', color: '#fbbf24' },
-            { time: 130, intensity: 90, label: 'Blood Elevator', color: '#fde68a' },
-            { time: 140, intensity: 95, label: 'The Finale', color: '#dc2626' }
-        ], 
-        synopsis: "Jack Torrance hopes that a winter caretaking job at the isolated Overlook Hotel will cure his writer's block. But the hotel is not as empty as it seems. As the snow piles up outside, cutting the family off from the world, the hotel's dark history begins to bleed into the present. Jack's sanity crumbles under the weight of cabin fever and supernatural influence, turning him against his wife and son in a terrifying crescendo of madness.", 
-        themes: ["Isolation", "Madness", "Supernatural", "Family"], 
-        awards: ["Saturn Award", "National Film Registry"] 
+            { time: 12, intensity: 35, label: "First Snow", color: "#b91c1c" },
+            { time: 50, intensity: 68, label: "Grady Conversation", color: "#f87171" },
+            { time: 85, intensity: 80, label: "Blood Elevator Vision", color: "#fbbf24" },
+            { time: 120, intensity: 90, label: "Here's Johnny", color: "#fde68a" },
+            { time: 140, intensity: 95, label: "Frozen in the Maze", color: "#dc2626" } // PEAK: Haunting Climax
+        ]
     })
 };
-
 // 6️⃣ CINEMATIC_COLORS
 export const CINEMATIC_COLORS = {
     Thriller: '#1e293b', Drama: '#dc2626', Mystery: '#dc2626', 'Sci-Fi': '#0f172a',

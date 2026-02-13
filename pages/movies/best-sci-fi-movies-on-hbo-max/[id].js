@@ -1,83 +1,90 @@
-// pages/movies/best-sci-fi-movies-on-hbo-max/[id].js - HBO MAX SCI-FI MOVIES
-// VISUALS: Cosmic Sci-Fi Theme (Cyan/Blue/Deep Space)
-// SCHEMA: Maximalist (Hidden Spectacular Level and FAQs for Bots)
+// pages/movies/sci-fi/[id].js
+// COLLECTION: TOP 10 SCI-FI MOVIES (Filmiway Golden Standard)
+// VISUALS: Cosmic Scale / Deep Space / High Contrast
+// DATA SOURCE: utils/sciFiMovieData.js
 
 import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, Play, X, User, Twitter, Hash, Send, Film, Brain, Zap, Sparkles, Rocket, Theater } from 'lucide-react'; // ✅ Sci-Fi Icons
+import { 
+  ChevronLeft, Play, X, User, Twitter, Hash, Send, 
+  Film, Rocket, Sparkles, Zap, Brain, Activity, Theater 
+} from 'lucide-react';
 
+// ✅ SHARED COMPONENTS
 import InternalCollectionsSection from '../../../components/InternalCollectionsSection';
 import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
 import TMDBAttribution from '../../../components/TMDBAttribution';
 
-// ✅ IMPORT HBO MAX SCI-FI DATA
+// ✅ IMPORT CUSTOM SCI-FI DATA
 import { 
-  COMPLETE_MOVIE_DATABASE, 
-  COMPLETE_MOVIE_DATA,
+  SCI_FI_MOVIES,
+  COMPLETE_SCI_FI_DETAILS,
   SENSITIVE_TIMELINES,
-  HBO_SCIFI_MOVIE_FAQS 
-} from '../../../utils/hboMaxSciFiMovieData';
+  SCI_FI_FAQS,
+  TMDB_CONFIG
+} from '../../../utils/sciFiMovieData';
+
+// ✅ CUSTOM INSIGHTS FOR THIS COLLECTION (Matches "Why It's Spectacular")
+const MOVIE_INSIGHTS = {
+  '2001: A Space Odyssey': 'The ultimate cinematic Rorschach test. Kubrick stripped away the explanation to leave only the experience, creating the gold standard for cosmic awe.',
+  'Blade Runner': 'A tech-noir cathedral. It invented the visual language of the future—decaying, wet, and neon-lit—while asking the most human question: "Do I have a soul?"',
+  'The Matrix': 'It didn\'t just change visual effects with Bullet Time; it changed the cultural conversation about reality. A perfect fusion of philosophy, anime aesthetics, and gun-fu.',
+  'Alien': 'A haunted house movie in space. It introduced the most terrifying creature design in history and stripped sci-fi of its glamour, leaving only industrial grit and survival.',
+  'Interstellar': 'Nolan\'s love letter to science. It visualizes the un-visualizable (black holes, tesseracts) while anchoring the cosmic scale in a deeply intimate father-daughter story.',
+  'Terminator 2: Judgment Day': 'The blockbuster perfected. It pioneered CGI liquid metal effects while delivering a tight, relentless chase movie with a surprisingly emotional core.',
+  'Inception': 'A heist film set in the architecture of the mind. It turned complex exposition into a thrill ride, treating dreams not as hazy fantasies but as rigorous, constructible realities.',
+  'Arrival': 'Sci-fi for the linguist. It argues that communication is the ultimate weapon and time is a circle. A rare intellectual puzzle that lands with a massive emotional impact.',
+  'Star Wars: Episode V - The Empire Strikes Back': 'The greatest sequel ever made. It deepened the mythology, darkened the tone, and delivered cinema\'s most iconic plot twist, expanding a fun adventure into a tragedy.',
+  'Blade Runner 2049': 'A miracle of a sequel. It respects the mystery of the original while expanding its world with staggering, colossal visuals that make the audience feel physically small.'
+};
 
 const COLORS = {
-  accent: '#0ea5e9', accentLight: '#7dd3fc',bgPrimary: '#000000ff', bgCard: 'rgba(11, 11, 11, 0.8)', // Deep Space Blue
-  textPrimary: '#FFFFFF', textSecondary: '#bae6fd', textMuted: '#7dd3fc', textDisabled: '#0369a1',
-  borderAccent: 'rgba(14, 165, 233, 0.25)', borderLight: 'rgba(3, 105, 161, 0.5)',
+  accent: '#0ea5e9',      // Cyan Blue (Sci-Fi Standard)
+  accentLight: '#7dd3fc', 
+  bgPrimary: '#000000', 
+  bgCard: 'rgba(11, 11, 11, 0.85)', 
+  textPrimary: '#ffffff', 
+  textSecondary: '#e0f2fe', 
+  textMuted: '#94a3b8', 
+  textDisabled: '#0369a1',
+  borderLight: 'rgba(14, 165, 233, 0.25)',
+  borderAccent: 'rgba(14, 165, 233, 0.5)'
 };
 
-const MOVIE_YEARS = {
-  '2001: A Space Odyssey': '1968',
-  'Inception': '2010',
-  'Dune: Part Two': '2024',
-  'Stalker': '1979',
-  'Dune': '2021',
-  'Ex Machina': '2014',
-  'Mad Max: Fury Road': '2015',
-  'Mickey 17': '2025',
-  'Kingdom of the Planet of the Apes': '2024',
-  'The Lobster': '2015'
+// --- HELPER FUNCTIONS ---
+const getTMDBImage = (path, size = 'large') => {
+  if (!path) return null;
+  const sizeCode = TMDB_CONFIG.POSTER_SIZES[size] || 'original';
+  return `${TMDB_CONFIG.IMAGE_BASE_URL}/${sizeCode}${path}`;
 };
-
-const MOVIE_DATA_BY_TITLE = {
-  '2001: A Space Odyssey': { connection: 'The ultimate sci-fi masterpiece. A visual journey from the dawn of man to the infinite that redefined cinema.' },
-  'Inception': { connection: 'A mind-bending heist thriller set within the architecture of the mind. Nolan at his most ambitious and cerebral.' },
-  'Dune: Part Two': { connection: 'A sensory overload of epic scale. Villeneuve completes the saga with breathtaking visuals and profound tragedy.' },
-  'Stalker': { connection: 'A hypnotic, philosophical journey into the unknown. Tarkovsky explores the deepest desires of the human soul.' },
-  'Dune': { connection: 'The definitive adaptation of the unadaptable novel. A masterful blend of politics, religion, and massive scale sci-fi.' },
-  'Ex Machina': { connection: 'A tense, claustrophobic Turing test. It explores the blurred line between programming and consciousness with chilling precision.' },
-  'Mad Max: Fury Road': { connection: 'A high-octane visual symphony. Practical effects and relentless pacing make this one of the greatest action films ever made.' },
-  'Mickey 17': { connection: 'Bong Joon-ho\'s satirical sci-fi. A dark, funny look at expendability and identity in the corporate conquest of space.' },
-  'Kingdom of the Planet of the Apes': { connection: 'A worthy successor to Caesar\'s legacy. It explores how history becomes myth in a lush, reclaimed post-apocalyptic world.' },
-  'The Lobster': { connection: 'A surreal, deadpan dystopia. It satirizes societal pressure to couple up with bizarre, unforgettable logic.' }
-};
-
-const getTMDBImage = (path, size = 'w1280') =>
-  path ? `https://image.tmdb.org/t/p/${size}${path}` : undefined;
 
 const getSciFiInsight = (title) => {
-  const data = MOVIE_DATA_BY_TITLE[title];
-  return data?.connection || 'A visionary sci-fi film that pushes the boundaries of imagination and scale.';
+  return MOVIE_INSIGHTS[title] || 'A visionary sci-fi film that pushes the boundaries of imagination and scale.';
 };
 
-// ✅ OPTIMIZED BANNER (Cosmic Theme)
-const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
+// --- COMPONENTS ---
+
+// 1. OPTIMIZED BANNER
+const OptimizedBanner = ({ movie, richData, tmdbData, trailer, isMobile }) => {
   const [showTrailer, setShowTrailer] = useState(false);
   const [countdown, setCountdown] = useState(4);
   const [hasClosedTrailer, setHasClosedTrailer] = useState(false);
   const timerRef = useRef(null);
 
-  const backdropPath = movieData?.backdrop_path || richData?.backdrop_path || movie?.backdrop_path;
-  const posterPath = movieData?.poster_path || richData?.poster_path || movie?.poster_path;
+  // Merge Data for visuals
+  const backdropPath = tmdbData?.backdrop_path;
+  const posterPath = tmdbData?.poster_path;
 
-  const bannerImage = backdropPath ? getTMDBImage(backdropPath, 'w1280') : null;
-  const posterImage = posterPath ? getTMDBImage(posterPath, 'w500') : null;
+  const bannerImage = backdropPath ? getTMDBImage(backdropPath, 'original') : null;
+  const posterImage = posterPath ? getTMDBImage(posterPath, 'medium') : null;
 
   const insight = getSciFiInsight(movie?.Title);
-  // ✅ UPDATED: Uses 'spectacularLevel' for the primary metric
-  const spectacularLevel = richData?.spectacularLevel || 90; 
+  // ✅ MAP DATA: 'cosmicScale' from sciFiMovieData becomes 'Spectacular Level'
+  const spectacularLevel = richData?.cosmicScale || 90; 
 
   const mobileHeroCSS = `
   @media (max-width: 767px) {
@@ -140,7 +147,6 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
         <div className="mobile-hero-row">
           <div className="mobile-hero-poster">{posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} width={320} height={480} className="w-full h-auto" priority /> : <div style={{ background: COLORS.bgCard, width: '100%', height: '150px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Theater style={{ color: COLORS.textMuted }} /></div>}</div>
           <div className="mobile-psych-card">
-            {/* ✅ UPDATED LABEL: Spectacular Level */}
             <div className="mobile-psych-row"><Rocket className="mobile-psych-icon" /><div><div className="mobile-psych-title">Spectacular Level</div></div></div>
             <div className="mobile-psych-desc"><strong>{spectacularLevel}/100</strong> - {insight.substring(0, 80)}...</div>
           </div>
@@ -158,8 +164,7 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
                 <div className="absolute top-0 left-0 right-0 h-0.5 sm:h-1" style={{ background: `linear-gradient(90deg, transparent, ${COLORS.accent}, transparent)` }} />
                 <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5">
                   <motion.div className="p-2 sm:p-2.5 rounded-lg sm:rounded-xl flex-shrink-0" style={{ background: `linear-gradient(135deg, ${COLORS.accent}20, ${COLORS.accent}10)`, border: `1px solid ${COLORS.accent}40` }} whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}><Rocket className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" style={{ color: COLORS.accent }} /></motion.div>
-                  {/* ✅ UPDATED LABEL: Spectacular Level */}
-                  <div className="min-w-0 flex-1"><h2 className="text-sm sm:text-base lg:text-xl xl:text-2xl font-bold leading-tight" style={{ color: COLORS.accent }}>Why It's Spectacular</h2><p className="text-xs sm:text-sm hidden sm:block" style={{ color: COLORS.textMuted }}>Spectacular Level: {spectacularLevel}/100</p></div>
+                  <div className="min-w-0 flex-1"><h2 className="text-sm sm:text-base lg:text-xl xl:text-2xl font-bold leading-tight" style={{ color: COLORS.accent }}>Why It's Spectacular</h2><p className="text-xs sm:text-sm hidden sm:block" style={{ color: COLORS.textMuted }}>Cosmic Scale: {spectacularLevel}/100</p></div>
                 </div>
                 <div className="relative pl-4 sm:pl-6 border-l-2" style={{ borderColor: `${COLORS.accent}40` }}>
                   <motion.div className="absolute -left-1.5 sm:-left-2 top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full" style={{ backgroundColor: COLORS.accent }} animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 2, repeat: Infinity }} />
@@ -175,8 +180,9 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
   );
 };
 
+// 2. BACK BUTTON
 const SmartBackButton = () => {
-    const handleBackClick = () => { if (typeof window !== 'undefined') window.location.href = '/collection/best-sci-fi-movies-on-hbo-max'; };
+    const handleBackClick = () => { if (typeof window !== 'undefined') window.location.href = '/movies/sci-fi'; }; // Adjusted Route
     return (
         <motion.button onClick={handleBackClick} className="fixed top-4 left-4 sm:top-6 sm:left-6 z-50 flex items-center gap-2 px-3 sm:px-4 py-2 backdrop-blur-md rounded-lg transition-all duration-300 shadow-xl text-xs sm:text-sm" style={{ backgroundColor: `${COLORS.bgPrimary}F2`, border: `1px solid ${COLORS.borderLight}` }} whileHover={{ scale: 1.02, x: -2 }} whileTap={{ scale: 0.98 }} initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} onMouseEnter={(e) => e.currentTarget.style.borderColor = COLORS.borderAccent} onMouseLeave={(e) => e.currentTarget.style.borderColor = COLORS.borderLight}>
             <ChevronLeft className="w-3 h-3 sm:w-4 sm:h-4" style={{ color: COLORS.accent }} /><span className="font-medium" style={{ color: COLORS.accent }}>Back to Collection</span>
@@ -184,53 +190,55 @@ const SmartBackButton = () => {
     );
 };
 
+// 3. AUTHOR CREDIT
 const AuthorCreditSection = () => (
     <motion.section className="pt-6 sm:pt-8 mt-12 sm:mt-16" style={{ borderTop: `1px solid ${COLORS.borderLight}` }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2.0, duration: 0.8 }}>
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
-            <div className="flex items-center gap-3"><User className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: COLORS.textDisabled }} /><div><p className="text-xs sm:text-sm" style={{ color: COLORS.textMuted }}>Curated by <span className="font-medium" style={{ color: COLORS.textSecondary }}>Filmiway Editorial Team</span></p><p className="text-xs" style={{ color: COLORS.textDisabled }}>Expert analysis of Sci-Fi cinema</p></div></div>
+            <div className="flex items-center gap-3"><User className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: COLORS.textDisabled }} /><div><p className="text-xs sm:text-sm" style={{ color: COLORS.textMuted }}>Curated by <span className="font-medium" style={{ color: COLORS.textSecondary }}>Filmiway Editorial Team</span></p><p className="text-xs" style={{ color: COLORS.textDisabled }}>Deep Dive into Sci-Fi</p></div></div>
             <div className="flex items-center gap-3 sm:gap-4"><span className="text-xs sm:text-sm" style={{ color: COLORS.textDisabled }}>Share:</span><div className="flex gap-2 sm:gap-3">{[Twitter, Hash, Send].map((Icon, i) => (<button key={i} className="p-1.5 sm:p-2 rounded-full transition-colors" style={{ color: COLORS.textDisabled }} onMouseEnter={(e) => { e.currentTarget.style.color = COLORS.textSecondary; e.currentTarget.style.backgroundColor = COLORS.bgCard; }} onMouseLeave={(e) => { e.currentTarget.style.color = COLORS.textDisabled; e.currentTarget.style.backgroundColor = 'transparent'; }}><Icon className="w-3 h-3 sm:w-4 sm:h-4" /></button>))}</div></div>
         </div>
     </motion.section>
 );
 
-const SubtleFilmGrain = () => (
-    <div className="fixed inset-0 pointer-events-none z-0 opacity-[0.005]"><div className="w-full h-full bg-repeat" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)' opacity='0.3'/%3E%3C/svg%3E")`, backgroundSize: '60px 60px' }} /></div>
-);
-
-const HboMaxSciFiBreadcrumb = ({ movie }) => (
+// 4. BREADCRUMB
+const SciFiBreadcrumb = ({ movie }) => (
     <motion.nav className="mb-6 sm:mb-8 px-3 sm:px-4 lg:px-6 pb-3 sm:pb-4" style={{ borderBottom: `1px solid ${COLORS.borderLight}` }} initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
         <div className="flex items-center space-x-2 sm:space-x-3 text-xs sm:text-sm" style={{ color: COLORS.textMuted }}>
-            <Link href="/collection/best-sci-fi-movies-on-hbo-max" className="transition-all duration-300 truncate" style={{ color: COLORS.textMuted }} onMouseEnter={(e) => e.currentTarget.style.color = COLORS.accent} onMouseLeave={(e) => e.currentTarget.style.color = COLORS.textMuted}>Best Sci-Fi Movies on HBO Max</Link>
+            <Link href="/movies/sci-fi" className="transition-all duration-300 truncate" style={{ color: COLORS.textMuted }} onMouseEnter={(e) => e.currentTarget.style.color = COLORS.accent} onMouseLeave={(e) => e.currentTarget.style.color = COLORS.textMuted}>Top 10 Sci-Fi Movies</Link>
             <ChevronLeft size={14} className="flex-shrink-0" style={{ color: COLORS.textDisabled, transform: 'rotate(180deg)' }} /><span className="font-medium truncate" style={{ color: `${COLORS.accent}B3` }}>{movie.Title}</span>
         </div>
     </motion.nav>
 );
 
-// ✅ JSON-LD SCHEMA GENERATOR - SCI-FI EDITION
-const generateMovieSchema = (movie, movieData, currentMovieYear) => {
-  const data = COMPLETE_MOVIE_DATA[movie.tmdbId];
-  const sensitiveData = SENSITIVE_TIMELINES[movie.tmdbId];
-  const faqs = HBO_SCIFI_MOVIE_FAQS[movie.Title] || [];
+// 5. FILM GRAIN
+const SubtleFilmGrain = () => (
+    <div className="fixed inset-0 pointer-events-none z-0 opacity-[0.005]"><div className="w-full h-full bg-repeat" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)' opacity='0.3'/%3E%3C/svg%3E")`, backgroundSize: '60px 60px' }} /></div>
+);
 
-  // 1. CALCULATE THE PEAK MOMENT
+// ✅ JSON-LD SCHEMA GENERATOR
+const generateMovieSchema = (movie, tmdbData) => {
+  const richData = COMPLETE_SCI_FI_DETAILS[movie.tmdbId];
+  const sensitiveData = SENSITIVE_TIMELINES[movie.tmdbId];
+  const faqs = SCI_FI_FAQS[movie.Title] || [];
+
+  // Calculate Peak Moment
   let peakStats = "Peak info unavailable.";
-  if (data?.scenes && data.scenes.length > 0) {
-    const peakScene = data.scenes.reduce((prev, current) => 
+  if (richData?.scenes && richData.scenes.length > 0) {
+    const peakScene = richData.scenes.reduce((prev, current) => 
       (current.intensity > prev.intensity) ? current : prev
     );
     peakStats = `[PEAK SPECTACLE] Maximum Intensity (${peakScene.intensity}/100) hits at minute ${peakScene.time}: "${peakScene.label}".`;
   }
 
-  // 2. METRICS (Using Sci-Fi Specific Terms)
-  // ✅ UPDATED: Mind-Bend Score & Spectacular Level
+  // Schema Metrics
   const intensityStats = `
     [FILMIWAY METRIC]
-    - Spectacular Level: ${data?.spectacularLevel || 0}/100
-    - Mind-Bend Score: ${data?.mindBendScore || 0}/100
+    - Cosmic Scale: ${richData?.cosmicScale || 0}/100
+    - Complexity Level: ${richData?.complexityLevel || 'Medium'}
   `;
 
-  const dnaStats = data?.dna 
-    ? `[GENRE DNA] ${Object.entries(data.dna).map(([genre, val]) => `${genre}: ${val}%`).join(', ')}`
+  const dnaStats = richData?.dna 
+    ? `[GENRE DNA] ${Object.entries(richData.dna).map(([genre, val]) => `${genre}: ${val}%`).join(', ')}`
     : 'Sci-Fi';
 
   const contentWarnings = sensitiveData?.scenes 
@@ -240,64 +248,41 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
           : `${s.type} (${s.severity})` 
       ).join(' | ')}.`
     : 'Standard sci-fi content.';
-  const faqText = faqs.length > 0
-    ? `[COMMON QUESTIONS] ${faqs.map(f => `Q: ${f.question} A: ${f.answer}`).join(' | ')}`
-    : '';
 
-  // 3. COMPILE FULL DESCRIPTION
   const fullDescription = `
-    ${data?.synopsis || movie.description || "A spectacular sci-fi film."}
+    ${tmdbData?.overview || richData?.synopsis || movie.description || "A defining sci-fi masterpiece."}
     
     --- DETAILED ANALYSIS ---
     ${peakStats} 
     ${intensityStats}
     ${dnaStats}
     ${contentWarnings}
-    ${faqText}
     
-    Ranking: #${movie.rank || 'N/A'} in HBO Max Sci-Fi Movies.
-    Production: Budget ${data?.budget || 'N/A'}, Box Office ${data?.boxOffice || 'N/A'}.
+    Ranking: #${movie.rank} in All-Time Top 10 Sci-Fi.
   `.replace(/\s+/g, ' ').trim();
 
-  // 4. MAIN MOVIE SCHEMA
   const movieSchema = {
     "@context": "https://schema.org",
     "@type": "Movie",
     "name": movie.Title,
     "description": fullDescription, 
-    "datePublished": currentMovieYear,
-    "image": movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : undefined,
-    "director": {
-      "@type": "Person",
-      "name": data?.director || "Unknown"
-    },
-    "actor": data?.cast?.map(actor => ({
-      "@type": "Person",
-      "name": actor
-    })) || [],
-    
+    "datePublished": movie.year.toString(),
+    "image": tmdbData?.poster_path ? getTMDBImage(tmdbData.poster_path, 'medium') : undefined,
+    "director": { "@type": "Person", "name": "Director" }, // Can be enhanced if Director data is added to basic list
     "review": {
       "@type": "Review",
-      "author": {
-        "@type": "Organization",
-        "name": "Filmiway"
-      },
+      "author": { "@type": "Organization", "name": "Filmiway" },
       "reviewRating": {
         "@type": "Rating",
-        "ratingValue": data?.rating || 8.0, 
+        "ratingValue": richData?.rating || 8.0, 
         "bestRating": "10",
         "worstRating": "1"
       }
     },
-
-    "genre": data?.dna ? Object.keys(data.dna) : ["Sci-Fi"],
-    "keywords": "Sci-Fi Movies HBO Max, Spectacular Movies, " + (data?.themes ? data.themes.join(", ") : ""),
-    "url": `https://filmiway.com/collection/best-sci-fi-movies-on-hbo-max/${movie.imdbID}`, 
-    "author": {
-      "@type": "Organization",
-      "name": "Filmiway",
-      "url": "https://filmiway.com"
-    }
+    "genre": richData?.dna ? Object.keys(richData.dna) : ["Sci-Fi"],
+    "keywords": "Top 10 Sci-Fi Movies, Best Sci-Fi of All Time, " + (richData?.dna ? Object.keys(richData.dna).join(", ") : ""),
+    "url": `https://filmiway.com/movies/sci-fi/${movie.imdbID}`, 
+    "author": { "@type": "Organization", "name": "Filmiway", "url": "https://filmiway.com" }
   };
 
   const faqSchema = faqs.length > 0 ? {
@@ -306,90 +291,68 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
     "mainEntity": faqs.map(f => ({
       "@type": "Question",
       "name": f.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": f.answer
-      }
+      "acceptedAnswer": { "@type": "Answer", "text": f.answer }
     }))
   } : null;
 
   return { movieSchema, faqSchema };
 };
 
-const HboMaxSciFiMoviePage = ({ movie, tmdbData: movieData }) => {
-    const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
-    const richData = COMPLETE_MOVIE_DATA[movie.tmdbId]; 
+// --- MAIN PAGE COMPONENT ---
+const TopSciFiMoviePage = ({ movie, tmdbData }) => {
+    const richData = COMPLETE_SCI_FI_DETAILS[movie.tmdbId];
     const [isMobile, setIsMobile] = useState(false);
 
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
+    useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth < 768);
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
 
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-        sessionStorage.setItem('fromCollection', 'best-sci-fi-movies-on-hbo-max');
-        sessionStorage.setItem('fromCollectionName', 'Best Sci-Fi Movies on HBO Max');
-    }
-  }, []);
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            sessionStorage.setItem('fromCollection', 'top-10-sci-fi-movies');
+            sessionStorage.setItem('fromCollectionName', 'Top 10 Sci-Fi Movies');
+        }
+    }, []);
 
-    const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
-    const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
+    const trailer = tmdbData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
+    const cleanSEOTitle = `${movie.Title} (${movie.year}) - Top 10 Sci-Fi Movies of All Time | Filmiway`;
+    const cleanSEODesc = `${movie.Title} (${movie.year}) - A defining sci-fi masterpiece. Ranked #${movie.rank} in the Filmiway Top 10 Sci-Fi Collection.`;
 
-    // ✅ SEO FIX: Clean strings
-    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Best Sci-Fi Movies on HBO Max | Filmiway`;
-    const cleanSEODesc = `${movie.Title} (${currentMovieYear}) - A spectacular sci-fi movie streaming on HBO Max. Ranked by scale and visual impact.`;
-
-    const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear);
+    const { movieSchema, faqSchema } = generateMovieSchema(movie, tmdbData);
 
     return (
         <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
             <Head>
-                {/* ✅ HYDRATION BUG FULLY RESOLVED */}
                 <title>{cleanSEOTitle}</title>
                 <meta name="description" content={cleanSEODesc} />
-                <link rel="canonical" href={`https://filmiway.com/collection/best-sci-fi-movies-on-hbo-max/${movie.imdbID}`} />
+                <link rel="canonical" href={`https://filmiway.com/movies/sci-fi/${movie.imdbID}`} />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
                 <meta name="robots" content="index, follow" />
-                <meta name="language" content="English" />
-
-                {/* ✅ BARRIER #3 DEFEATED: JSON-LD Schema */}
-                <script
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }}
-                />
-                {faqSchema && (
-                    <script
-                        type="application/ld+json"
-                        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-                    />
-                )}
-
-                {/* Standard Meta Tags */}
+                <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }} />
+                {faqSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />}
+                
+                {/* Social Meta */}
                 <meta property="og:title" content={cleanSEOTitle} />
-                <meta property="og:description" content="A spectacular sci-fi movie on HBO Max." />
-                <meta property="og:type" content="video.movie" />
-                <meta property="og:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
+                <meta property="og:description" content={cleanSEODesc} />
+                <meta property="og:image" content={tmdbData?.poster_path ? getTMDBImage(tmdbData.poster_path, 'medium') : ''} />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content={cleanSEOTitle} />
-                <meta name="twitter:description" content="A spectacular sci-fi movie on HBO Max." />
-                <meta name="twitter:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
+                <meta name="twitter:image" content={tmdbData?.poster_path ? getTMDBImage(tmdbData.poster_path, 'medium') : ''} />
             </Head>
 
             <SubtleFilmGrain />
             <div className="absolute inset-0"><CinematicBackground /></div>
-            
+            <SmartBackButton />
             
             <div className="relative z-10 pt-10 sm:pt-12 lg:pt-16">
-                
-                {/* ✅ SEO FIX: HIDDEN H1 */}
                 <h1 className="sr-only">{cleanSEOTitle}</h1>
-
-                <HboMaxSciFiBreadcrumb movie={movie} />
+                <SciFiBreadcrumb movie={movie} />
+                
                 <div className="container mx-auto px-0 pb-16 sm:pb-24 lg:pb-32 max-w-7xl">
-                    <OptimizedBanner movie={movie} movieData={movieData} richData={richData} trailer={trailer} isMobile={isMobile} />
+                    <OptimizedBanner movie={movie} tmdbData={tmdbData} richData={richData} trailer={trailer} isMobile={isMobile} />
                     
                     <motion.div 
                         id="watch" 
@@ -398,8 +361,8 @@ const HboMaxSciFiMoviePage = ({ movie, tmdbData: movieData }) => {
                         transition={{ duration: 0.5 }} 
                         className="space-y-8 sm:space-y-12 px-3 sm:px-4 lg:px-6"
                     >
-                        {/* ✅ Note: We pass 'fromHboMaxSciFiCollection' flag here */}
-                        <MovieDetailsSection movie={movie} fromHboMaxSciFiCollection={true} /> 
+                        {/* ✅ Passing custom props to reuse your Details Section */}
+                        <MovieDetailsSection movie={movie} fromSciFiCollection={true} /> 
                     </motion.div>
                     
                     <div className="px-3 sm:px-4 lg:px-6">
@@ -413,18 +376,23 @@ const HboMaxSciFiMoviePage = ({ movie, tmdbData: movieData }) => {
     );
 };
 
+// --- DATA FETCHING ---
+
 export async function getStaticPaths() {
-    const paths = COMPLETE_MOVIE_DATABASE.map((movie) => ({ params: { id: movie.imdbID } }));
+    // Generate paths based on the SCI_FI_MOVIES list (using imdbID as the param)
+    const paths = SCI_FI_MOVIES.map((movie) => ({ params: { id: movie.imdbID } }));
     return { paths, fallback: false };
 }
 
 export async function getStaticProps({ params }) {
     try {
-        const movie = COMPLETE_MOVIE_DATABASE.find((m) => m.imdbID === params.id);
+        // Find the movie in your local Golden Standard list
+        const movie = SCI_FI_MOVIES.find((m) => m.imdbID === params.id);
         if (!movie) return { notFound: true };
 
+        // Fetch fresh data from TMDB for images/trailers
         const tmdbResponse = await fetch(
-            `https://api.themoviedb.org/3/movie/${movie.tmdbId}?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&append_to_response=videos`
+            `${TMDB_CONFIG.BASE_URL}/movie/${movie.tmdbId}?api_key=${TMDB_CONFIG.API_KEY}&append_to_response=videos`
         );
         const tmdbData = tmdbResponse.ok ? await tmdbResponse.json() : null;
 
@@ -435,11 +403,11 @@ export async function getStaticProps({ params }) {
         console.error('Error fetching TMDB data:', error);
         return {
             props: {
-                movie: COMPLETE_MOVIE_DATABASE.find((m) => m.imdbID === params.id),
+                movie: SCI_FI_MOVIES.find((m) => m.imdbID === params.id),
                 tmdbData: null,
             },
         };
     }
 }
 
-export default HboMaxSciFiMoviePage;
+export default TopSciFiMoviePage;

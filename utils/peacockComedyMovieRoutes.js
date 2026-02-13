@@ -1,6 +1,6 @@
-// utils/hboMaxRomanceMovieRoutes.js - COMPLETELY FIXED SSG ROUTE MAPPING FOR HBO MAX ROMANCE COLLECTION
+// utils/peacockComedyMovieRoutes.js - COMPLETELY FIXED SSG ROUTE MAPPING FOR PEACOCK COMEDY COLLECTION
 
-import { COMPLETE_MOVIE_DATABASE, COMPLETE_MOVIE_DATA } from './hboMaxRomanceMovieData';
+import { COMPLETE_MOVIE_DATABASE, COMPLETE_MOVIE_DATA } from './peacockComedyMovieData';
 
 // ✅ GENERATE URL SLUG FROM MOVIE TITLE
 export const generateMovieSlug = (title) => {
@@ -12,44 +12,42 @@ export const generateMovieSlug = (title) => {
         .trim();
 };
 
-// ✅ COMPLETE HBO MAX ROMANCE MOVIE SLUG MAPPING
-// Maps IMDb IDs to clean SEO-friendly URL slugs
-export const HBO_MAX_ROMANCE_MOVIE_SLUGS = {
+// ✅ COMPLETE PEACOCK COMEDY MOVIE SLUG MAPPING
+export const PEACOCK_COMEDY_MOVIE_SLUGS = {
+    // Rank 1: Monty Python and the Holy Grail
+    'tt0071853': 'monty-python-and-the-holy-grail',
     
-    // Rank 1: Casablanca
-    'tt0034583': 'casablanca',
+    // Rank 2: Anchorman: The Legend of Ron Burgundy
+    'tt0357413': 'anchorman-the-legend-of-ron-burgundy',
     
-    // Rank 2: In the Mood for Love
-    'tt0118694': 'in-the-mood-for-love',
+    // Rank 3: My Cousin Vinny
+    'tt0104952': 'my-cousin-vinny',
     
-    // Rank 3: Past Lives
-    'tt13238346': 'past-lives',
+    // Rank 4: Zoolander
+    'tt0190138': 'zoolander',
     
-    // Rank 4: When Harry Met Sally...
-    'tt0098635': 'when-harry-met-sally',
+    // Rank 5: Happy Gilmore
+    'tt0116483': 'happy-gilmore',
     
-    // Rank 5: Call Me by Your Name
-    'tt5726616': 'call-me-by-your-name',
+    // Rank 6: The 'Burbs
+    'tt0096997': 'the-burbs',
     
-    // Rank 6: Gone with the Wind
-    'tt0031381': 'gone-with-the-wind',
+    // Rank 7: Along Came Polly
+    'tt0343135': 'along-came-polly',
     
-    // Rank 7: A Summer's Tale
-    'tt0115940': 'a-summers-tale',
+    // Rank 8: The Fall Guy
+    'tt1684562': 'the-fall-guy',
     
-    // Rank 8: Ali: Fear Eats the Soul
-    'tt0071141': 'ali-fear-eats-the-soul',
+    // Rank 9: American Fiction
+    'tt23561236': 'american-fiction',
     
-    // Rank 9: Whisper of the Heart
-    'tt0113824': 'whisper-of-the-heart',
-    
-    // Rank 10: The Perks of Being a Wallflower
-    'tt1659337': 'the-perks-of-being-a-wallflower'
+    // Rank 10: Deliver Us from Eva
+    'tt0306805': 'deliver-us-from-eva'
 };
 
 // ✅ REVERSE SLUG MAPPING (SLUG TO IMDB ID)
 export const SLUG_TO_IMDB = Object.fromEntries(
-    Object.entries(HBO_MAX_ROMANCE_MOVIE_SLUGS).map(([imdbId, slug]) => [slug, imdbId])
+    Object.entries(PEACOCK_COMEDY_MOVIE_SLUGS).map(([imdbId, slug]) => [slug, imdbId])
 );
 
 // ✅ GET MOVIE BY SLUG - FIXED
@@ -62,30 +60,30 @@ export const getMovieBySlug = (slug) => {
 
 // ✅ GET MOVIE SLUG BY IMDB ID
 export const getMovieSlug = (imdbId) => {
-    return HBO_MAX_ROMANCE_MOVIE_SLUGS[imdbId] || null;
+    return PEACOCK_COMEDY_MOVIE_SLUGS[imdbId] || null;
 };
 
-// ✅ GENERATE ALL STATIC PATHS FOR HBO MAX ROMANCE MOVIES
-export const generateHboMaxRomanceMoviePaths = () => {
+// ✅ GENERATE ALL STATIC PATHS FOR PEACOCK COMEDY MOVIES
+export const generatePeacockComedyMoviePaths = () => {
     return COMPLETE_MOVIE_DATABASE.map(movie => ({
         params: {
-            slug: HBO_MAX_ROMANCE_MOVIE_SLUGS[movie.imdbID]
+            slug: PEACOCK_COMEDY_MOVIE_SLUGS[movie.imdbID]
         }
     }));
 };
 
-// ✅ HBO MAX ROMANCE MOVIE NAVIGATION BREADCRUMBS
-export const getHboMaxRomanceMovieBreadcrumbs = (movie) => {
+// ✅ PEACOCK COMEDY MOVIE NAVIGATION BREADCRUMBS
+export const getPeacockComedyMovieBreadcrumbs = (movie) => {
     return [
         { label: 'Home', href: '/' },
         { label: 'Collections', href: '/collection' },
-        { label: 'Best Romance Movies on HBO Max', href: '/best-romance-movies-on-hbo-max' },
-        { label: movie.Title, href: `/best-romance-movies-on-hbo-max/${HBO_MAX_ROMANCE_MOVIE_SLUGS[movie.imdbID]}` }
+        { label: 'Best Comedy Movies on Peacock', href: '/collection/best-comedy-movies-on-peacock' },
+        { label: movie.Title, href: `/best-comedy-movies-on-peacock/${PEACOCK_COMEDY_MOVIE_SLUGS[movie.imdbID]}` }
     ];
 };
 
-// ✅ GET NEXT/PREVIOUS HBO MAX ROMANCE MOVIE
-export const getHboMaxRomanceMovieNavigation = (currentMovie) => {
+// ✅ GET NEXT/PREVIOUS PEACOCK COMEDY MOVIE
+export const getPeacockComedyMovieNavigation = (currentMovie) => {
     const currentIndex = COMPLETE_MOVIE_DATABASE.findIndex(m => m.imdbID === currentMovie.imdbID);
     
     const previousMovie = currentIndex > 0 
@@ -99,17 +97,17 @@ export const getHboMaxRomanceMovieNavigation = (currentMovie) => {
     return {
         previous: previousMovie ? {
             ...previousMovie,
-            slug: HBO_MAX_ROMANCE_MOVIE_SLUGS[previousMovie.imdbID]
+            slug: PEACOCK_COMEDY_MOVIE_SLUGS[previousMovie.imdbID]
         } : null,
         next: nextMovie ? {
             ...nextMovie,
-            slug: HBO_MAX_ROMANCE_MOVIE_SLUGS[nextMovie.imdbID]
+            slug: PEACOCK_COMEDY_MOVIE_SLUGS[nextMovie.imdbID]
         } : null
     };
 };
 
-// ✅ GET RELATED HBO MAX ROMANCE MOVIES (SAME GENRE/DECADE)
-export const getRelatedHboMaxRomanceMovies = (currentMovie, limit = 3) => {
+// ✅ GET RELATED PEACOCK COMEDY MOVIES (SAME GENRE/DECADE)
+export const getRelatedPeacockComedyMovies = (currentMovie, limit = 3) => {
     const currentDecade = Math.floor(currentMovie.year / 10) * 10;
     const currentGenre = currentMovie.genre;
     
@@ -123,32 +121,32 @@ export const getRelatedHboMaxRomanceMovies = (currentMovie, limit = 3) => {
         .slice(0, limit)
         .map(movie => ({
             ...movie,
-            slug: HBO_MAX_ROMANCE_MOVIE_SLUGS[movie.imdbID]
+            slug: PEACOCK_COMEDY_MOVIE_SLUGS[movie.imdbID]
         }));
 };
 
-// ✅ HBO MAX ROMANCE COLLECTION METADATA
-export const HBO_MAX_ROMANCE_COLLECTION_META = {
-    title: '10 Best Romance Movies on HBO Max (Ranked 2026)',
-    description: 'The definitive ranking of romance movies on HBO Max. From the wartime sacrifice of Casablanca to the restrained longing of In the Mood for Love. Ranked by emotional intensity.',
-    keywords: 'best romance movies hbo max, hbo max romance films, casablanca streaming, in the mood for love hbo, past lives streaming, romantic movies hbo max',
-    canonicalUrl: 'https://filmiway.com/best-romance-movies-on-hbo-max',
-    ogImage: 'https://filmiway.com/images/hbo-max-romance-collection-og.jpg',
+// ✅ PEACOCK COMEDY COLLECTION METADATA
+export const PEACOCK_COMEDY_COLLECTION_META = {
+    title: '10 Best Comedy Movies on Peacock (Ranked by Laughter)',
+    description: 'The definitive ranking of the funniest movies on Peacock. From the surrealism of Monty Python to the chaos of Anchorman.',
+    keywords: 'best comedy movies on peacock, peacock comedy films, monty python, anchorman, happy gilmore, funniest movies streaming, comedy rankings 2026',
+    canonicalUrl: 'https://filmiway.com/collection/best-comedy-movies-on-peacock',
+    ogImage: 'https://filmiway.com/images/peacock-comedy-collection-og.jpg',
     totalMovies: COMPLETE_MOVIE_DATABASE.length,
-    // ✅ FIXED - CALCULATES AVERAGE EMOTIONAL RESONANCE (emotionalIntensity)
-    averageEmotionalScore: Math.round(
+    // ✅ FIXED - CALCULATES AVERAGE LAUGHTER SCORE
+    averageLaughterScore: Math.round(
         COMPLETE_MOVIE_DATABASE.reduce((sum, movie) => {
             const data = COMPLETE_MOVIE_DATA[movie.tmdbId];
-            return sum + (data?.emotionalIntensity || 85); 
+            return sum + (data?.laughterIndex || 85); 
         }, 0) / COMPLETE_MOVIE_DATABASE.length
     )
 };
 
-// ✅ GENERATE HBO MAX ROMANCE MOVIE SITEMAP URLS
-export const generateHboMaxRomanceMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+// ✅ GENERATE PEACOCK COMEDY MOVIE SITEMAP URLS
+export const generatePeacockComedyMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
     const urls = [
         {
-            url: `${baseUrl}/best-romance-movies-on-hbo-max`,
+            url: `${baseUrl}/collection/best-comedy-movies-on-peacock`,
             lastmod: new Date().toISOString(),
             priority: '0.8',
             changefreq: 'weekly'
@@ -157,7 +155,7 @@ export const generateHboMaxRomanceMovieSitemapUrls = (baseUrl = 'https://filmiwa
     
     COMPLETE_MOVIE_DATABASE.forEach(movie => {
         urls.push({
-            url: `${baseUrl}/best-romance-movies-on-hbo-max/${HBO_MAX_ROMANCE_MOVIE_SLUGS[movie.imdbID]}`,
+            url: `${baseUrl}/best-comedy-movies-on-peacock/${PEACOCK_COMEDY_MOVIE_SLUGS[movie.imdbID]}`,
             lastmod: new Date().toISOString(),
             priority: '0.7',
             changefreq: 'monthly'
@@ -167,13 +165,13 @@ export const generateHboMaxRomanceMovieSitemapUrls = (baseUrl = 'https://filmiwa
     return urls;
 };
 
-// ✅ VALIDATE HBO MAX ROMANCE MOVIE SLUG
-export const isValidHboMaxRomanceMovieSlug = (slug) => {
-    return Object.values(HBO_MAX_ROMANCE_MOVIE_SLUGS).includes(slug);
+// ✅ VALIDATE PEACOCK COMEDY MOVIE SLUG
+export const isValidPeacockComedyMovieSlug = (slug) => {
+    return Object.values(PEACOCK_COMEDY_MOVIE_SLUGS).includes(slug);
 };
 
-// ✅ HBO MAX ROMANCE MOVIE SEARCH/FILTER UTILITIES
-export const searchHboMaxRomanceMovies = (query) => {
+// ✅ PEACOCK COMEDY MOVIE SEARCH/FILTER UTILITIES
+export const searchPeacockComedyMovies = (query) => {
     const lowercaseQuery = query.toLowerCase();
     
     return COMPLETE_MOVIE_DATABASE
@@ -185,23 +183,23 @@ export const searchHboMaxRomanceMovies = (query) => {
         )
         .map(movie => ({
             ...movie,
-            slug: HBO_MAX_ROMANCE_MOVIE_SLUGS[movie.imdbID]
+            slug: PEACOCK_COMEDY_MOVIE_SLUGS[movie.imdbID]
         }));
 };
 
-export const filterHboMaxRomanceMoviesByGenre = (genre) => {
+export const filterPeacockComedyMoviesByGenre = (genre) => {
     if (genre === 'All') return COMPLETE_MOVIE_DATABASE;
     
     return COMPLETE_MOVIE_DATABASE
         .filter(movie => movie.genre === genre)
         .map(movie => ({
             ...movie,
-            slug: HBO_MAX_ROMANCE_MOVIE_SLUGS[movie.imdbID]
+            slug: PEACOCK_COMEDY_MOVIE_SLUGS[movie.imdbID]
         }));
 };
 
 // ✅ FIXED SORTING - NOW USES REAL DATA
-export const sortHboMaxRomanceMovies = (movies, sortBy) => {
+export const sortPeacockComedyMovies = (movies, sortBy) => {
     const sortedMovies = [...movies];
     
     switch (sortBy) {
@@ -213,10 +211,10 @@ export const sortHboMaxRomanceMovies = (movies, sortBy) => {
             });
         case 'year':
             return sortedMovies.sort((a, b) => b.year - a.year);
-        case 'emotion': // Sorts by emotionalIntensity
+        case 'laughter': 
             return sortedMovies.sort((a, b) => {
-                const scoreA = COMPLETE_MOVIE_DATA[a.tmdbId]?.emotionalIntensity || 0;
-                const scoreB = COMPLETE_MOVIE_DATA[b.tmdbId]?.emotionalIntensity || 0;
+                const scoreA = COMPLETE_MOVIE_DATA[a.tmdbId]?.laughterIndex || 0;
+                const scoreB = COMPLETE_MOVIE_DATA[b.tmdbId]?.laughterIndex || 0;
                 return scoreB - scoreA;
             });
         case 'runtime':
@@ -226,8 +224,8 @@ export const sortHboMaxRomanceMovies = (movies, sortBy) => {
     }
 };
 
-// ✅ GET HBO MAX ROMANCE MOVIE COLLECTION STATS
-export const getHboMaxRomanceCollectionStats = () => {
+// ✅ GET PEACOCK COMEDY MOVIE COLLECTION STATS
+export const getPeacockComedyCollectionStats = () => {
     const genres = [...new Set(COMPLETE_MOVIE_DATABASE.map(m => m.genre))];
     const decades = [...new Set(COMPLETE_MOVIE_DATABASE.map(m => Math.floor(m.year / 10) * 10))];
     const yearRange = {
@@ -247,16 +245,16 @@ export const getHboMaxRomanceCollectionStats = () => {
         averageRuntime: Math.round(
             COMPLETE_MOVIE_DATABASE.reduce((sum, m) => sum + m.runtime, 0) / COMPLETE_MOVIE_DATABASE.length
         ),
-        // ✅ ADDED - AVERAGE EMOTIONAL SCORE
-        averageEmotionalScore: Math.round(
+        // ✅ ADDED - AVERAGE LAUGHTER SCORE
+        averageLaughterScore: Math.round(
             COMPLETE_MOVIE_DATABASE.reduce((sum, m) => {
-                return sum + (COMPLETE_MOVIE_DATA[m.tmdbId]?.emotionalIntensity || 85);
+                return sum + (COMPLETE_MOVIE_DATA[m.tmdbId]?.laughterIndex || 85);
             }, 0) / COMPLETE_MOVIE_DATABASE.length
         ),
         // ✅ ADDED - AVERAGE RATING
         averageRating: (
             COMPLETE_MOVIE_DATABASE.reduce((sum, m) => {
-                return sum + (COMPLETE_MOVIE_DATA[m.tmdbId]?.rating || 7.5);
+                return sum + (COMPLETE_MOVIE_DATA[m.tmdbId]?.rating || 7.0);
             }, 0) / COMPLETE_MOVIE_DATABASE.length
         ).toFixed(1)
     };
@@ -265,19 +263,19 @@ export const getHboMaxRomanceCollectionStats = () => {
 // ✅ EXPORT ALL UTILITIES
 export default {
     generateMovieSlug,
-    HBO_MAX_ROMANCE_MOVIE_SLUGS,
+    PEACOCK_COMEDY_MOVIE_SLUGS,
     SLUG_TO_IMDB,
     getMovieBySlug,
     getMovieSlug,
-    generateHboMaxRomanceMoviePaths,
-    getHboMaxRomanceMovieBreadcrumbs,
-    getHboMaxRomanceMovieNavigation,
-    getRelatedHboMaxRomanceMovies,
-    HBO_MAX_ROMANCE_COLLECTION_META,
-    generateHboMaxRomanceMovieSitemapUrls,
-    isValidHboMaxRomanceMovieSlug,
-    searchHboMaxRomanceMovies,
-    filterHboMaxRomanceMoviesByGenre,
-    sortHboMaxRomanceMovies,
-    getHboMaxRomanceCollectionStats
+    generatePeacockComedyMoviePaths,
+    getPeacockComedyMovieBreadcrumbs,
+    getPeacockComedyMovieNavigation,
+    getRelatedPeacockComedyMovies,
+    PEACOCK_COMEDY_COLLECTION_META,
+    generatePeacockComedyMovieSitemapUrls,
+    isValidPeacockComedyMovieSlug,
+    searchPeacockComedyMovies,
+    filterPeacockComedyMoviesByGenre,
+    sortPeacockComedyMovies,
+    getPeacockComedyCollectionStats
 };

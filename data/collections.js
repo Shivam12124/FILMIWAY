@@ -1093,10 +1093,10 @@ export const COLLECTIONS = {
         'tt27209383', // 4. Small Things Like These (2024)
         'tt21192142', // 5. All of Us Strangers (2023)
         'tt21867434', // 6. BlackBerry (2023)
-        'tt28769062', // 7. A Real Pain (2024)
-        'tt30048492', // 8. Ghostlight (2024)
+        'tt21823606', // 7. A Real Pain (2024)
+        'tt30321095', // 8. Ghostlight (2024)
         'tt0449059',  // 9. Little Miss Sunshine (2006)
-        'tt19861552'  // 10. R.M.N. (2022)
+        'tt18550182'  // 10. R.M.N. (2022)
     ],
 
     badges: [
@@ -2470,7 +2470,7 @@ export const COLLECTIONS = {
 
     movies: [
         'tt1192628', // 1. Rango
-        'tt10651810', // 2. TMNT: Mutant Mayhem
+        'tt8589698', // 2. TMNT: Mutant Mayhem
         'tt0345950', // 3. The SpongeBob SquarePants Movie
         'tt18259086', // 4. Sonic the Hedgehog 3
         'tt7547410', // 5. Dora and the Lost City of Gold
@@ -2478,7 +2478,7 @@ export const COLLECTIONS = {
         'tt5257726', // 7. Hey Arnold! The Jungle Movie
         'tt3794354', // 8. Sonic the Hedgehog
         'tt11832046', // 9. PAW Patrol: The Movie
-        'tt15714772'  // 10. PAW Patrol: The Mighty Movie
+        'tt15837338'  // 10. PAW Patrol: The Mighty Movie
     ],
 
     badges: [
@@ -3378,6 +3378,113 @@ export const COLLECTIONS = {
       }
     }
   },
+
+
+// 😂 BEST COMEDY MOVIES ON PEACOCK — THE "HILARITY & CHAOS" EDITION
+'best-comedy-movies-on-peacock': {
+  slug: 'best-comedy-movies-on-peacock',
+
+  // 🎯 H1 / Title: The "Vibe" Hook
+  title: '10 Best Comedy Movies on Peacock (Ranked by Laughter Index)',
+  subtitle: 'Surreal Satire, Slapstick Classics & High-Octane Chaos',
+
+  // 🧠 Above-the-fold hook
+  description:
+    'Need a genuine laugh? We ranked 10 comedy masterpieces on Peacock—from the absurdist genius of Monty Python to the unhinged chaos of Ron Burgundy.',
+
+  // 📖 Editorial Copy: The "Prestige" Hook
+  longDescription:
+    'Comedy is subjective, but timing is universal. This collection brings together the absolute peaks of cinematic humor available on Peacock. We have curated a mix of surrealist legends like *Monty Python and the Holy Grail*, legendary newsroom satire in *Anchorman*, and the modern action-comedy spectacle of *The Fall Guy*. Whether you want dry wit or total slapstick destruction, these films are the gold standard of the genre.',
+
+  emoji: '😂',
+  theme: 'amber',
+
+  primaryColor: '#f59e0b', // Amber 500
+  secondaryColor: '#b45309', // Amber 900
+  accentColor: '#fcd34d', // Amber 300
+
+  gradientFrom: 'from-stone-900',
+  gradientTo: 'to-amber-900',
+
+  category: 'comedy',
+
+  tags: [
+    'comedy',
+    'satire',
+    'slapstick',
+    'surrealist',
+    'cult classic',
+    'streaming on peacock'
+  ],
+
+  // 🔥 SEO: Aggressive & High-Intent
+  seo: {
+    title: '10 Best Comedy Movies on Peacock (2026) | Ranked by Laughter',
+    description: 
+      'Discover the funniest movies on Peacock. Expert-curated ranking of 10 comedy classics including Monty Python, Anchorman, and Zoolander. Guaranteed laughs.',
+    keywords: 
+      'best comedy movies on peacock, funniest movies streaming, monty python holy grail, anchorman ron burgundy, zoolander, happy gilmore, peacock originals',
+    
+    canonicalUrl: 'https://filmiway.com/collection/best-comedy-movies-on-peacock',
+    
+    ogTitle: '10 Movies on Peacock That Will Make You Cry Laughing',
+    twitterTitle: 'The Definitive Peacock Comedy Power-Ranking 😂',
+
+    structuredData: {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      name: '10 Best Comedy Movies on Peacock',
+      description: 'Expert-curated ranking of the most influential and hilarious comedy films available to stream on Peacock.',
+      numberOfItems: 10
+    }
+  },
+
+  stats: {
+    totalMovies: 10,
+    averageRating: 7.2,
+    totalWatchtime: '16h 40m',
+    averageLaughterIndex: 92, // The "Killer" Metric
+    mostHilarious: 'Monty Python and the Holy Grail (99/100)',
+    newestMovie: 'The Fall Guy (2024)',
+    oldestMovie: 'Monty Python and the Holy Grail (1975)'
+  },
+
+  movies: [
+    'tt0071853', // 1. Monty Python and the Holy Grail (The Surrealist King)
+    'tt0357413', // 2. Anchorman: The Legend of Ron Burgundy (The Quotable King)
+    'tt0104952', // 3. My Cousin Vinny (The Courtroom Classic)
+    'tt0190138', // 4. Zoolander (The Fashion Satire)
+    'tt0116483', // 5. Happy Gilmore (The Rage Comedy)
+    'tt0096997', // 6. The 'Burbs (The Suburban Paranoia)
+    'tt0343135', // 7. Along Came Polly (The Cringe Masterclass)
+    'tt1684562', // 8. The Fall Guy (The Action Comedy)
+    'tt23561236',// 9. American Fiction (The Sharp Satire)
+    'tt0306805'  // 10. Deliver Us from Eva (The Modern Shrew)
+  ],
+
+  badges: [
+    { label: 'Laughter Index', desc: 'Ranked by jokes-per-minute and cultural impact' },
+    { label: 'Must Watch', desc: 'Essential comedy history' },
+    { label: 'Peacock Picks', desc: 'The best of the Peacock library' }
+  ],
+
+  featured: {
+    hero: {
+      title: 'Monty Python and the Holy Grail',
+      subtitle: 'The Absolute Peak of Absurdity',
+      description:
+        'A film so funny it didn’t even need a budget for horses. It remains the most influential piece of surrealist comedy ever put to film, proving that a killer rabbit and a black knight are all you need for immortality.',
+      laughterIndex: 99
+    }
+  },
+
+  relatedCollections: [
+    'best-comedy-movies-on-hulu',
+    'best-movies-on-peacock',
+    'best-action-adventure-movies-on-peacock'
+  ]
+},
+
 
 // 🦢 MOVIES LIKE BLACK SWAN COLLECTION
 'movies-like-black-swan': {

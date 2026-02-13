@@ -78,194 +78,117 @@ export const FALLBACK_POSTERS = {
 };
 
 export const COMPLETE_MOVIE_DATA = {
-    // 1. Se7en
+    // 1. Se7en (1995) - STATUS: NIHILISTIC BENCHMARK
     807: createMovieData({ 
-        mysteryComplexity: 98, psychologicalTension: 95, complexityLevel: "EXTREME", 
-        dominantColor: "#8b1e3f", rating: 8.6, criticsScore: 83, audienceScore: 95, 
-        director: "David Fincher", cast: ["Brad Pitt", "Morgan Freeman", "Kevin Spacey"], 
-        boxOffice: "$327.3 million", budget: "$33 million", 
-        dna: { Mystery: 50, Thriller: 40, Crime: 10 }, 
+        mysteryComplexity: 98, psychologicalTension: 97, complexityLevel: "EXTREME", 
+        dominantColor: "#1c1917", rating: 8.6,
+        dna: { Mystery: 45, Thriller: 45, Crime: 10 }, 
         scenes: [
-            { time: 8, intensity: 45, label: 'Sin 1: Gluttony', color: '#b91c1c' },
-            { time: 38, intensity: 65, label: 'Sin 3: Greed', color: '#f87171' },
-            { time: 77, intensity: 85, label: 'Sin 5: Lust', color: '#fbbf24' },
-            { time: 102, intensity: 92, label: 'Desert Confrontation', color: '#fde68a' },
-            { time: 120, intensity: 98, label: "What's in the Box?", color: "#dc2626" }
-        ], 
-        synopsis: "Two detectives—a weary, retiring veteran and an intense, young newcomer—are dropped into a perpetually rain-soaked, morally rotting city to hunt a chillingly methodical serial killer. This killer uses the seven deadly sins as the disturbing inspiration for his gruesome, symbolic murders. It’s a relentless, psychological nightmare that challenges the limits of justice and human endurance.", 
-        themes: ["Sin", "Moral Decay", "Apathy", "Justice"], 
-        awards: ["MTV Movie Award", "Oscar Nomination"] 
+            { time: 8, intensity: 42, label: 'Gluttony Crime Scene', color: '#b91c1c' },
+            { time: 38, intensity: 62, label: 'Greed Murder', color: '#f87171' },
+            { time: 77, intensity: 82, label: 'Lust Revelation', color: '#fbbf24' },
+            { time: 102, intensity: 88, label: 'John Doe Surrenders', color: '#fde68a' },
+            { time: 120, intensity: 97, label: "What's in the Box?", color: "#dc2626" } // PEAK: Genre Singularity
+        ],
+        synopsis: "Two detectives hunt a killer who turns the Seven Deadly Sins into gruesome tableaus. A descent into nihilism that culminates in the most devastating revelation in thriller history."
     }),
 
-    // 2. Zodiac
+    // 2. Zodiac (2007) - STATUS: ATMOSPHERIC OBSESSION
     1949: createMovieData({ 
         mysteryComplexity: 94, psychologicalTension: 90, complexityLevel: "EXTREME", 
-        dominantColor: "#237e86", rating: 7.7, criticsScore: 90, audienceScore: 89, 
-        director: "David Fincher", cast: ["Jake Gyllenhaal", "Mark Ruffalo", "Robert Downey Jr."], 
-        boxOffice: "$84.8 million", budget: "$65 million", 
+        dominantColor: "#237e86", rating: 7.7,
         dna: { Mystery: 60, Thriller: 25, Crime: 15 }, 
         scenes: [
-            { time: 14, intensity: 30, label: 'Lake Berryessa', color: '#7285a5' },
-            { time: 67, intensity: 58, label: 'Paul Stine', color: '#9a8e3f' },
-            { time: 102, intensity: 71, label: 'Basement', color: '#bcafab' },
-            { time: 134, intensity: 87, label: 'Confrontation', color: '#ebc634' },
-            { time: 148, intensity: 94, label: "Graysmith's Realization", color: '#b23c65' }
-        ], 
-        synopsis: "A meticulous, atmospheric recreation of the true story of the infamous Zodiac Killer. The film follows four men—a reporter, two police inspectors, and a cartoonist—as they become utterly obsessed with deciphering the killer’s cryptic ciphers. It's a gripping, years-long investigation that expertly captures the maddening frustration of an unsolvable mystery.", 
-        themes: ["Obsession", "Truth", "Media Influence", "Time"], 
-        awards: ["Saturn Award", "Cannes Selection"] 
+            { time: 14, intensity: 28, label: 'Lake Berryessa Attack', color: '#7285a5' },
+            { time: 67, intensity: 55, label: 'Paul Stine Murder', color: '#9a8e3f' },
+            { time: 102, intensity: 72, label: 'Basement Interview', color: '#bcafab' },
+            { time: 134, intensity: 82, label: 'Hardware Store Confrontation', color: '#ebc634' },
+            { time: 148, intensity: 92, label: 'Graysmith Identifies Allen', color: '#b23c65' } // PEAK: Ambiguous Closure
+        ]
     }),
 
-    // 3. Prisoners
+    // 3. Prisoners (2013) - STATUS: MORAL AGONY
     146233: createMovieData({ 
         mysteryComplexity: 95, psychologicalTension: 98, complexityLevel: "HIGH", 
-        dominantColor: "#052c74", rating: 8.1, criticsScore: 81, audienceScore: 87, 
-        director: "Denis Villeneuve", cast: ["Hugh Jackman", "Jake Gyllenhaal", "Paul Dano"], 
-        boxOffice: "$122.1 million", budget: "$46 million", 
+        dominantColor: "#052c74", rating: 8.1,
         dna: { Crime: 45, Thriller: 40, Mystery: 15 }, 
         scenes: [
-            { time: 20, intensity: 58, label: 'Abduction', color: '#a11515' },
-            { time: 49, intensity: 75, label: 'First Search', color: '#f87171' },
-            { time: 93, intensity: 82, label: 'Torture', color: '#fbbf24' },
-            { time: 120, intensity: 90, label: 'Maze Hints', color: '#fde68a' },
-            { time: 145, intensity: 96, label: 'Buried Alive', color: "#dc2626" }
-        ], 
-        synopsis: "When his six-year-old daughter and her friend vanish on Thanksgiving, a desperate father refuses to wait for the police. Convinced that the strange, frightened man initially arrested holds the key, he makes the morally agonizing decision to take justice into his own hands. This deeply tense and complex thriller forces a detective to race against the clock.", 
-        themes: ["Vigilantism", "Faith", "Desperation", "Morality"], 
-        awards: ["Oscar Nomination", "NBR Top Film"] 
+            { time: 20, intensity: 55, label: 'Girls Disappear', color: '#a11515' },
+            { time: 49, intensity: 72, label: 'Keller Takes Control', color: '#f87171' },
+            { time: 93, intensity: 82, label: 'Torture of Alex Jones', color: '#fbbf24' },
+            { time: 120, intensity: 88, label: 'Holly Jones Revealed', color: '#fde68a' },
+            { time: 145, intensity: 94, label: 'The Whistle Underground', color: "#dc2626" } // PEAK: Visceral Relief/Horror
+        ]
     }),
 
-    // 4. The Secret in Their Eyes
+    // 4. The Secret in Their Eyes (2009) - STATUS: MORAL HORROR
     25376: createMovieData({ 
-        mysteryComplexity: 99, psychologicalTension: 85, complexityLevel: "HIGH", 
-        dominantColor: "#4276ef", rating: 8.2, criticsScore: 89, audienceScore: 93, 
-        director: "Juan José Campanella", cast: ["Ricardo Darín", "Soledad Villamil", "Pablo Rago"], 
-        boxOffice: "$34.2 million", budget: "$2 million", 
+        mysteryComplexity: 99, psychologicalTension: 88, complexityLevel: "HIGH", 
+        dominantColor: "#4276ef", rating: 8.2,
         dna: { Mystery: 50, Thriller: 30, Drama: 20 }, 
         scenes: [
-            { time: 19, intensity: 41, label: 'Crime Scene', color: '#b91c76' },
-            { time: 54, intensity: 62, label: 'Soccer Chase', color: '#5681ae' },
-            { time: 80, intensity: 76, label: 'Confrontation', color: '#fbbf24' },
-            { time: 112, intensity: 83, label: 'Courtroom', color: '#fde68a' },
-            { time: 126, intensity: 93, label: 'Shocking Finale', color: "#dc2626" }
-        ], 
-        synopsis: "A retired Argentinian federal justice agent decides to write a novel about a brutal, unsolved rape and murder case that has haunted him for twenty-five years. As he revisits the investigation, the story unfolds across time, revealing a passionate lost love, the enduring pain of trauma, and a deeply shocking secret about justice.", 
-        themes: ["Memory", "Love", "Justice", "Time"], 
-        awards: ["Academy Award Winner (Foreign Language)", "Goya Award"] 
+            { time: 19, intensity: 38, label: 'Liliana Coloto Murder Scene', color: '#b91c76' },
+            { time: 54, intensity: 60, label: 'Stadium Chase', color: '#5681ae' },
+            { time: 80, intensity: 72, label: 'Morales Identified', color: '#fbbf24' },
+            { time: 112, intensity: 80, label: 'Case Reopened Years Later', color: '#fde68a' },
+            { time: 126, intensity: 90, label: 'Life Sentence in the Shed', color: "#dc2626" } // PEAK: The Weight of Justice
+        ]
     }),
 
-    // 5. Memories of Murder
+    // 5. Memories of Murder (2003) - STATUS: SOCIETAL RUPTURE
     11423: createMovieData({ 
         mysteryComplexity: 97, psychologicalTension: 90, complexityLevel: "HIGH", 
-        dominantColor: "#214f36", rating: 8.1, criticsScore: 95, audienceScore: 94, 
-        director: "Bong Joon Ho", cast: ["Song Kang-ho", "Kim Sang-kyung", "Kim Roi-ha"], 
-        boxOffice: "$20.1 million", budget: "$2.8 million", 
+        dominantColor: "#214f36", rating: 8.1,
         dna: { Mystery: 55, Crime: 25, Thriller: 20 }, 
         scenes: [
-            { time: 18, intensity: 39, label: 'First Crime Scene', color: '#b91c1c' },
-            { time: 50, intensity: 59, label: 'Railroad Interrogation', color: '#f87171' },
-            { time: 87, intensity: 70, label: 'Suspect Hunt', color: '#fbbf24' },
-            { time: 110, intensity: 85, label: 'The Confrontation', color: '#fde68a' },
-            { time: 128, intensity: 93, label: 'Haunting End', color: "#dc2626" }
-        ], 
-        synopsis: "Set in 1980s South Korea, this slow-burning procedural follows two local detectives with vastly different approaches to investigation—one brutal and instinctual, the other sharp and clinical—as they chase the country's first confirmed serial killer. Against a politically unstable backdrop, the film captures the frustration of hunting a ghost.", 
-        themes: ["Incompetence", "Truth", "Politics", "Failure"], 
-        awards: ["San Sebastian Winner", "Asian Film Award"] 
+            { time: 18, intensity: 36, label: 'First Body in the Field', color: '#b91c1c' },
+            { time: 50, intensity: 56, label: 'Railroad Interrogation', color: '#f87171' },
+            { time: 87, intensity: 68, label: 'False Confession', color: '#fbbf24' },
+            { time: 110, intensity: 82, label: 'DNA Hope Fails', color: '#fde68a' },
+            { time: 128, intensity: 90, label: 'LOOKING AT THE CAMERA', color: "#dc2626" } // PEAK: Existential Failure
+        ]
     }),
 
-    // 6. The Chaser
+    // 6. The Chaser (2008) - STATUS: PURE CRUELTY
     13855: createMovieData({ 
         mysteryComplexity: 88, psychologicalTension: 96, complexityLevel: "EXTREME", 
-        dominantColor: "#352e21", rating: 7.8, criticsScore: 82, audienceScore: 91, 
-        director: "Na Hong-jin", cast: ["Kim Yoon-seok", "Ha Jung-woo", "Seo Young-hee"], 
-        boxOffice: "$35.8 million", budget: "$2.5 million", 
+        dominantColor: "#352e21", rating: 7.8,
         dna: { Crime: 50, Thriller: 40, Mystery: 10 }, 
         scenes: [
-            { time: 12, intensity: 35, label: 'First Escape', color: '#82416d' },
-            { time: 29, intensity: 57, label: 'Chase Begins', color: '#e1a41c' },
-            { time: 61, intensity: 69, label: 'Brutal Confrontation', color: '#418f6d' },
-            { time: 92, intensity: 88, label: 'Detective Cornered', color: '#dc8841' },
-            { time: 121, intensity: 97, label: 'Final Scene', color: "#dc2626" }
-        ], 
-        synopsis: "A disgraced former detective, now running a small-time prostitution ring, realizes that the girls disappearing from his operation are all being taken by the same client. This launches him into a desperate, frantic, and extremely gritty street chase against a sadistic killer he has already apprehended and then accidentally let go.", 
-        themes: ["Corruption", "Redemption", "Urban Decay", "Bureaucracy"], 
-        awards: ["Grand Bell Award", "Asian Film Award"] 
+            { time: 12, intensity: 38, label: 'Girl Escapes the House', color: '#82416d' },
+            { time: 29, intensity: 58, label: 'Street Chase Begins', color: '#e1a41c' },
+            { time: 61, intensity: 72, label: 'Hammer Murder Revealed', color: '#418f6d' },
+            { time: 92, intensity: 85, label: 'Police Delay the Rescue', color: '#dc8841' },
+            { time: 121, intensity: 96, label: 'Too Late to Save', color: "#dc2626" } // PEAK: Unbearable Pressure
+        ]
     }),
 
-    // 7. Mystic River
-    322: createMovieData({ 
-        mysteryComplexity: 88, psychologicalTension: 90, complexityLevel: "HIGH", 
-        dominantColor: "#4e6c82", rating: 7.9, criticsScore: 88, audienceScore: 89, 
-        director: "Clint Eastwood", cast: ["Sean Penn", "Tim Robbins", "Kevin Bacon"], 
-        boxOffice: "$156.6 million", budget: "$30 million", 
-        dna: { Mystery: 42, Crime: 38, Drama: 20 }, 
-        scenes: [
-            { time: 16, intensity: 34, label: 'Disappearance', color: '#2f375b' },
-            { time: 44, intensity: 59, label: 'Family Grief', color: '#4e6c82' },
-            { time: 70, intensity: 74, label: 'Detective Doubt', color: '#e8c56a' },
-            { time: 112, intensity: 85, label: 'The Reveal', color: '#bd5e42' },
-            { time: 134, intensity: 88, label: 'Tragic Ending', color: "#dc2626" }
-        ], 
-        synopsis: "Three childhood friends from a working-class Boston neighborhood are bound by a terrible, shared trauma from twenty-five years ago. When the daughter of one friend is brutally murdered, another is assigned to the case as a detective, while the third becomes a prime, tragic suspect. The investigation peels back layers of guilt and suspicion.", 
-        themes: ["Trauma", "Friendship", "Destiny", "Grief"], 
-        awards: ["2 Oscars", "Cannes Golden Coach"] 
-    }),
-
-    // 8. Marshland
-    236735: createMovieData({ 
-        mysteryComplexity: 92, psychologicalTension: 85, complexityLevel: "HIGH", 
-        dominantColor: "#a38b70", rating: 7.3, criticsScore: 92, audienceScore: 80, 
-        director: "Alberto Rodríguez", cast: ["Raúl Arévalo", "Javier Gutiérrez", "Antonio de la Torre"], 
-        boxOffice: "$8.7 million", budget: "$4.5 million", 
-        dna: { Crime: 45, Thriller: 30, Drama: 25 }, 
-        scenes: [
-            { time: 11, intensity: 33, label: 'First Discovery', color: '#a6bb16' },
-            { time: 32, intensity: 61, label: 'Chase', color: '#438ecc' },
-            { time: 56, intensity: 76, label: 'Swamp Standoff', color: '#cac06c' },
-            { time: 83, intensity: 88, label: 'True Motive', color: '#b01934' },
-            { time: 104, intensity: 94, label: 'Catch', color: "#dc2626" }
-        ], 
-        synopsis: "In the isolated, brooding marshlands of southern Spain in 1980, two homicide detectives from Madrid are sent to investigate the gruesome disappearance of two teenage sisters. Forced to work together despite their radically opposed political beliefs, they uncover a dark network of secrets, corruption, and old prejudices.", 
-        themes: ["History", "Politics", "Nature", "Duality"], 
-        awards: ["10 Goya Awards", "San Sebastian Winner"] 
-    }),
-
-    // 9. Fargo
+    // 9. Fargo (1996) - STATUS: ABSURDIST CRIME
     275: createMovieData({ 
-        mysteryComplexity: 85, psychologicalTension: 80, complexityLevel: "MEDIUM", 
-        dominantColor: "#f8c626", rating: 8.1, criticsScore: 94, audienceScore: 93, 
-        director: "Joel Coen", cast: ["Frances McDormand", "William H. Macy", "Steve Buscemi"], 
-        boxOffice: "$60.6 million", budget: "$7 million", 
+        mysteryComplexity: 85, psychologicalTension: 82, complexityLevel: "MEDIUM", 
+        dominantColor: "#f8c626", rating: 8.1,
         dna: { Crime: 55, Thriller: 35, Drama: 10 }, 
         scenes: [
-            { time: 15, intensity: 30, label: 'Initial Crime', color: '#ab191c' },
-            { time: 39, intensity: 46, label: 'Clue Discovery', color: '#e2c36f' },
-            { time: 61, intensity: 70, label: 'Shootout', color: '#4959a9' },
-            { time: 74, intensity: 88, label: 'Woodchipper', color: '#f94144' },
-            { time: 95, intensity: 95, label: 'Final Arrest', color: "#dc2626" }
-        ], 
-        synopsis: "In snowy, unassuming Minnesota, a desperate car salesman hires two truly inept criminals to kidnap his own wife in a bizarre attempt to swindle his wealthy father-in-law. The plan immediately unravels, leaving a trail of violence. Enter Marge Gunderson, a highly capable and very pregnant local police chief, who calmly pieces together the absurd and bloody mess.", 
-        themes: ["Greed", "Incompetence", "Morality", "Absurdism"], 
-        awards: ["2 Oscars", "Cannes Best Director"] 
+            { time: 15, intensity: 28, label: 'Roadside Triple Murder', color: '#ab191c' },
+            { time: 39, intensity: 45, label: 'Jerry Loses Control', color: '#e2c36f' },
+            { time: 61, intensity: 68, label: 'Parking Lot Shootout', color: '#4959a9' },
+            { time: 74, intensity: 86, label: 'Woodchipper Execution', color: '#f94144' },
+            { time: 95, intensity: 71, label: 'Ordinary Life Continues', color: "#dc2626" } // Descent into normalcy
+        ]
     }),
 
-    // 10. The Fugitive
+    // 10. The Fugitive (1993) - STATUS: ICONIC PURSUIT
     5503: createMovieData({ 
-        mysteryComplexity: 82, psychologicalTension: 90, complexityLevel: "MEDIUM", 
-        dominantColor: "#c8c8c8", rating: 7.8, criticsScore: 96, audienceScore: 89, 
-        director: "Andrew Davis", cast: ["Harrison Ford", "Tommy Lee Jones", "Sela Ward"], 
-        boxOffice: "$368.9 million", budget: "$44 million", 
+        mysteryComplexity: 82, psychologicalTension: 85, complexityLevel: "MEDIUM", 
+        dominantColor: "#c8c8c8", rating: 7.8,
         dna: { Crime: 45, Thriller: 40, Action: 15 }, 
         scenes: [
-            { time: 5, intensity: 31, label: 'Train Escape', color: '#a1a1a1' },
-            { time: 44, intensity: 59, label: 'Dam Jump', color: '#6dc9a6' },
-            { time: 72, intensity: 74, label: 'Police Hunt', color: '#c97c6d' },
-            { time: 111, intensity: 88, label: 'Reveal', color: '#bd7e5e' },
-            { time: 128, intensity: 95, label: 'Justice', color: "#dc2626" }
-        ], 
-        synopsis: "Dr. Richard Kimble, a respected vascular surgeon, is wrongly convicted of murdering his wife. After a spectacular prison transport accident, he escapes. Now a fugitive, Kimble must simultaneously evade the relentless pursuit of a U.S. Marshal while conducting his own dangerous investigation to find the one-armed man who truly committed the crime.", 
-        themes: ["Injustice", "Pursuit", "Truth", "Resilience"], 
-        awards: ["1 Oscar", "Golden Globe Winner"] 
+            { time: 5, intensity: 48, label: 'Train Crash Escape', color: '#a1a1a1' },
+            { time: 44, intensity: 62, label: 'Dam Jump', color: '#6dc9a6' },
+            { time: 72, intensity: 74, label: 'I Didn’t Kill My Wife', color: '#c97c6d' },
+            { time: 111, intensity: 87, label: 'One-Armed Man Revealed', color: '#bd7e5e' },
+            { time: 128, intensity: 70, label: 'You Found Him', color: "#dc2626" }
+        ]
     })
 };
 

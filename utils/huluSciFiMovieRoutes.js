@@ -72,15 +72,7 @@ export const generateHuluSciFiMoviePaths = () => {
     }));
 };
 
-// ✅ HULU SCI-FI MOVIE NAVIGATION BREADCRUMBS
-export const getHuluSciFiMovieBreadcrumbs = (movie) => {
-    return [
-        { label: 'Home', href: '/' },
-        { label: 'Collections', href: '/collection' },
-        { label: 'Best Sci-Fi Movies on Hulu', href: '/best-sci-fi-movies-on-hulu' },
-        { label: movie.Title, href: `/best-sci-fi-movies-on-hulu/${HULU_SCIFI_MOVIE_SLUGS[movie.imdbID]}` }
-    ];
-};
+
 
 // ✅ GET NEXT/PREVIOUS HULU SCI-FI MOVIE
 export const getHuluSciFiMovieNavigation = (currentMovie) => {
@@ -125,21 +117,7 @@ export const getRelatedHuluSciFiMovies = (currentMovie, limit = 3) => {
 };
 
 // ✅ HULU SCI-FI COLLECTION METADATA
-export const HULU_SCIFI_COLLECTION_META = {
-    title: '10 Best Sci-Fi Movies on Hulu (Ranked by Mind-Bend)',
-    description: 'The definitive ranking of the best Sci-Fi movies on Hulu. From the time travel of Donnie Darko to the alien survival of Prey.',
-    keywords: 'best sci-fi movies on hulu, hulu sci-fi films, donnie darko, predator, the abyss, no one will save you, sci-fi streaming',
-    canonicalUrl: 'https://filmiway.com/best-sci-fi-movies-on-hulu',
-    ogImage: 'https://filmiway.com/images/hulu-scifi-collection-og.jpg',
-    totalMovies: COMPLETE_MOVIE_DATABASE.length,
-    // ✅ FIXED - CALCULATES AVERAGE MIND-BEND SCORE
-    averageMindBendScore: Math.round(
-        COMPLETE_MOVIE_DATABASE.reduce((sum, movie) => {
-            const data = COMPLETE_MOVIE_DATA[movie.tmdbId];
-            return sum + (data?.mindBendScore || 70); 
-        }, 0) / COMPLETE_MOVIE_DATABASE.length
-    )
-};
+
 
 // ✅ GENERATE HULU SCI-FI MOVIE SITEMAP URLS
 export const generateHuluSciFiMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {

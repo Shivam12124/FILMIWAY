@@ -34,177 +34,118 @@ const createMovieData = (data) => ({
 
 // 2️⃣ COMPLETE_MOVIE_DATA (The Details)
 export const COMPLETE_MOVIE_DATA = {
-    // 1. 2001: A Space Odyssey
+    // 1. 2001: A Space Odyssey (1968) - STATUS: GENRE ANCHOR
     62: createMovieData({ 
         cosmicScale: 100, complexityLevel: "EXTREME", 
-        dominantColor: "#ffffff", rating: 8.3, criticsScore: 92, audienceScore: 89, director: "Stanley Kubrick", 
-        cast: ["Keir Dullea", "Gary Lockwood"], boxOffice: "$146.2M", budget: "$10.5M", 
+        dominantColor: "#ffffff", rating: 8.3,
         dna: { "Sci-Fi": 60, "Philosophy": 30, "Mystery": 10 }, 
         scenes: [
-            { time: 5, intensity: 35, label: "Dawn of Man", color: "#000000" }, 
-            { time: 55, intensity: 48, label: "TMA-1 Monolith", color: "#e8e8e8" }, 
-            { time: 90, intensity: 65, label: "HAL Disconnect", color: "#ff0000" }, 
-            { time: 125, intensity: 88, label: "The Stargate", color: "#7c3aed" }, 
-            { time: 140, intensity: 100, label: "THE STAR CHILD", color: "#ffffff" } 
-        ], 
-        synopsis: "Stanley Kubrick’s absolute masterpiece spans the entirety of human history, from the first prehistoric tools to a future among the stars. When a mysterious black monolith is discovered buried on the lunar surface, it sends a signal toward Jupiter. The crew of the Discovery One, led by Dr. Dave Bowman, embarks on a mission that turns into a fight for survival against the ship’s sentient AI, HAL 9000. It is a visual and philosophical odyssey that ultimately leads to the next step in human evolution.", 
-        themes: ["Evolution", "AI Supremacy", "Cosmic Loneliness", "Destiny"]
+            { time: 5, intensity: 28, label: "Dawn of Man", color: "#78350f" },
+            { time: 55, intensity: 45, label: "TMA-1 Monolith", color: "#e8e8e8" }, 
+            { time: 90, intensity: 72, label: "HAL Disconnect", color: "#ff0000" }, 
+            { time: 125, intensity: 95, label: "The Stargate", color: "#7c3aed" }, 
+            { time: 140, intensity: 100, label: "THE STAR CHILD", color: "#ffffff" } // ✅ Anchor point 100
+        ]
     }),
 
-    // 2. Arrival
+    // 2. Arrival (2016) - STATUS: EXISTENTIAL GRIEF
     329865: createMovieData({ 
         cosmicScale: 92, complexityLevel: "HIGH", 
-        dominantColor: "#164e63", rating: 7.9, criticsScore: 94, audienceScore: 82, director: "Denis Villeneuve", 
-        cast: ["Amy Adams", "Jeremy Renner"], boxOffice: "$203.2M", budget: "$47M", 
+        dominantColor: "#164e63", rating: 7.9,
         dna: { "Sci-Fi": 50, "Drama": 40, "Thriller": 10 }, 
         scenes: [
-            { time: 14, intensity: 45, label: "First Entry", color: "#083344" }, 
-            { time: 48, intensity: 62, label: "Logogram", color: "#ffffff" }, 
-            { time: 82, intensity: 75, label: "Abbott Dies", color: "#164e63" }, 
+            { time: 14, intensity: 42, label: "First Entry", color: "#083344" },
+            { time: 48, intensity: 60, label: "Logogram", color: "#ffffff" }, 
+            { time: 82, intensity: 74, label: "Abbott Dies", color: "#164e63" }, 
             { time: 108, intensity: 96, label: "NON-LINEAR TIME", color: "#ffffff" }, 
-            { time: 114, intensity: 85, label: "The Choice", color: "#ec4899" }
-        ], 
-        synopsis: "Twelve giant, egg-shaped spacecraft land at various locations around the globe, throwing humanity into a state of panic and paranoia. Linguistic expert Louise Banks is recruited by the military to find a way to communicate with the 'Heptapods' inside. As she begins to decode their non-linear language, her own perception of time and memory begins to warp. She discovers that the aliens' gift is a tool that allows her to see the future, forcing her to make a heart-wrenching choice about her own life.", 
-        themes: ["Communication", "Determinism", "Grief", "Unity"]
+            { time: 114, intensity: 88, label: "The Choice", color: "#ec4899" }
+        ]
     }),
 
-    // 3. Contact
+    // 3. Contact (1997) - STATUS: THE WHISPER
     686: createMovieData({ 
         cosmicScale: 95, complexityLevel: "HIGH", 
-        dominantColor: "#1e3a8a", rating: 7.5, criticsScore: 68, audienceScore: 78, director: "Robert Zemeckis", 
-        cast: ["Jodie Foster", "Matthew McConaughey"], boxOffice: "$171.1M", budget: "$90M", 
+        dominantColor: "#1e3a8a", rating: 7.5,
         dna: { "Sci-Fi": 50, "Drama": 30, "Mystery": 20 }, 
         scenes: [
-            { time: 10, intensity: 30, label: "The Signal", color: "#3b82f6" }, 
-            { time: 60, intensity: 65, label: "The Machine", color: "#93c5fd" }, 
-            { time: 110, intensity: 85, label: "Launch", color: "#2563eb" }, 
-            { time: 125, intensity: 95, label: "Wormhole Journey", color: "#60a5fa" }, 
-            { time: 140, intensity: 90, label: "The Beach", color: "#ffffff" }
-        ], 
-        synopsis: "Dr. Ellie Arroway has spent her life listening to static, searching for proof that we are not alone. When she finally receives a coded message from the Vega star system containing blueprints for a mysterious machine, she must fight religious fanatics, government bureaucrats, and her own skepticism to be the first human to make contact. It is a profound exploration of the intersection between science and faith.", 
-        themes: ["Faith vs Science", "First Contact", "Isolation", "Politics"]
+            { time: 10, intensity: 32, label: "The Signal", color: "#3b82f6" }, 
+            { time: 60, intensity: 62, label: "The Machine", color: "#93c5fd" }, 
+            { time: 110, intensity: 80, label: "Launch", color: "#2563eb" }, 
+            { time: 125, intensity: 88, label: "Wormhole Journey", color: "#60a5fa" }, 
+            { time: 140, intensity: 82, label: "The Beach", color: "#ffffff" }
+        ]
     }),
 
-    // 4. Solaris (1972)
-    593: createMovieData({ 
-        cosmicScale: 90, complexityLevel: "EXTREME", 
-        dominantColor: "#7c3aed", rating: 8.0, criticsScore: 92, audienceScore: 88, director: "Andrei Tarkovsky", 
-        cast: ["Natalya Bondarchuk", "Donatas Banionis"], boxOffice: "N/A", budget: "$1M", 
-        dna: { "Sci-Fi": 40, "Drama": 40, "Philosophy": 20 }, 
-        scenes: [
-            { time: 15, intensity: 20, label: "Earth", color: "#166534" }, 
-            { time: 45, intensity: 50, label: "Arrival at Station", color: "#581c87" }, 
-            { time: 80, intensity: 75, label: "The Visitors", color: "#a855f7" }, 
-            { time: 120, intensity: 85, label: "The Ocean", color: "#7c3aed" }, 
-            { time: 160, intensity: 95, label: "Final Island", color: "#c084fc" }
-        ], 
-        synopsis: "A psychologist is sent to a space station orbiting the mysterious planet Solaris to investigate the crew's mental breakdowns. He discovers that the planet's sentient ocean is capable of materializing the crew's deepest memories and regrets. When his deceased wife appears on the station, he is forced to confront his own grief and the terrifying possibility that the ocean is trying to communicate through his pain.", 
-        themes: ["Memory", "Grief", "Consciousness", "Love"]
-    }),
-
-    // 5. First Man
+    // 5. First Man (2018) - STATUS: RESTRAINED TRANSCENDENCE
     369972: createMovieData({ 
         cosmicScale: 88, complexityLevel: "HIGH", 
-        dominantColor: "#0f172a", rating: 7.3, criticsScore: 87, audienceScore: 67, director: "Damien Chazelle", 
-        cast: ["Ryan Gosling", "Claire Foy"], boxOffice: "$105.7M", budget: "$59M", 
+        dominantColor: "#0f172a", rating: 7.3,
         dna: { "Biography": 40, "Drama": 40, "Sci-Fi": 20 }, 
         scenes: [
-            { time: 5, intensity: 60, label: "X-15 Flight", color: "#334155" }, 
-            { time: 45, intensity: 75, label: "Gemini 8 Spin", color: "#475569" }, 
-            { time: 90, intensity: 50, label: "Apollo 1 Fire", color: "#ef4444" }, 
-            { time: 115, intensity: 85, label: "The Launch", color: "#f97316" }, 
-            { time: 135, intensity: 100, label: "SILENT STEP", color: "#ffffff" }
-        ], 
-        synopsis: "A visceral, intimate look at the life of Neil Armstrong and the legendary space mission that led him to become the first man to walk on the Moon. Unlike heroic blockbusters, this film focuses on the terrifying danger of early space travel and the immense personal cost Armstrong paid—grieving the loss of his daughter while carrying the hopes of a nation into the void.", 
-        themes: ["Grief", "Sacrifice", "Legacy", "Isolation"]
+            { time: 5, intensity: 65, label: "X-15 Flight", color: "#334155" },
+            { time: 45, intensity: 75, label: "Gemini 8 Spin", color: "#475569" },
+            { time: 90, intensity: 68, label: "Apollo 1 Fire", color: "#ef4444" },
+            { time: 115, intensity: 85, label: "The Launch", color: "#f97316" },
+            { time: 135, intensity: 92, label: "SILENT STEP", color: "#ffffff" } // ✅ Calibrated to 92
+        ]
     }),
 
-    // 6. The Martian
+    // 6. The Martian (2015) - STATUS: OPTIMISTIC SURVIVAL
     286217: createMovieData({ 
         cosmicScale: 85, complexityLevel: "MEDIUM", 
-        dominantColor: "#c2410c", rating: 8.0, criticsScore: 91, audienceScore: 91, director: "Ridley Scott", 
-        cast: ["Matt Damon", "Jessica Chastain"], boxOffice: "$630.2M", budget: "$108M", 
+        dominantColor: "#c2410c", rating: 8.0,
         dna: { "Sci-Fi": 50, "Adventure": 30, "Comedy": 20 }, 
         scenes: [
-            { time: 10, intensity: 70, label: "The Storm", color: "#7f1d1d" }, 
+            { time: 10, intensity: 72, label: "The Storm", color: "#7f1d1d" }, 
             { time: 40, intensity: 50, label: "Botany", color: "#16a34a" }, 
             { time: 80, intensity: 65, label: "Explosion", color: "#ef4444" }, 
-            { time: 110, intensity: 75, label: "Rover Journey", color: "#ea580c" }, 
-            { time: 135, intensity: 95, label: "Iron Man", color: "#f97316" }
-        ], 
-        synopsis: "During a manned mission to Mars, Astronaut Mark Watney is presumed dead after a fierce storm and left behind by his crew. But Watney has survived and finds himself stranded and alone on the hostile planet. With only meager supplies, he must draw upon his ingenuity, wit, and spirit to subsist and find a way to signal to Earth that he is alive.", 
-        themes: ["Resilience", "Science", "Isolation", "Teamwork"]
+            { time: 110, intensity: 70, label: "Rover Journey", color: "#ea580c" }, 
+            { time: 135, intensity: 85, label: "Iron Man", color: "#f97316" } // ✅ No 90+ needed
+        ]
     }),
 
-    // 7. Gravity
+    // 7. Gravity (2013) - STATUS: VISCERAL TERROR
     49047: createMovieData({ 
         cosmicScale: 90, complexityLevel: "MEDIUM", 
-        dominantColor: "#000000", rating: 7.7, criticsScore: 96, audienceScore: 79, director: "Alfonso Cuarón", 
-        cast: ["Sandra Bullock", "George Clooney"], boxOffice: "$723.2M", budget: "$100M", 
+        dominantColor: "#000000", rating: 7.7,
         dna: { "Sci-Fi": 40, "Thriller": 40, "Drama": 20 }, 
         scenes: [
-            { time: 10, intensity: 85, label: "Debris Strike", color: "#ef4444" }, 
-            { time: 35, intensity: 70, label: "The Tether", color: "#ffffff" }, 
-            { time: 55, intensity: 60, label: "ISS Fire", color: "#f97316" }, 
-            { time: 75, intensity: 50, label: "Rebirth", color: "#3b82f6" }, 
-            { time: 88, intensity: 95, label: "Re-entry", color: "#f59e0b" }
-        ], 
-        synopsis: "Dr. Ryan Stone, a brilliant medical engineer on her first shuttle mission, is stranded in space when debris destroys their shuttle. Untethered and spiraling into the blackness, she must find a way to survive the terrifying vacuum of space. It is a heart-pounding thriller that strips survival down to its most primal elements: breath, gravity, and the will to live.", 
-        themes: ["Rebirth", "Survival", "Grief", "Isolation"]
+            { time: 10, intensity: 88, label: "Debris Strike", color: "#ef4444" }, 
+            { time: 35, intensity: 72, label: "The Tether", color: "#ffffff" }, 
+            { time: 55, intensity: 68, label: "ISS Fire", color: "#f97316" }, 
+            { time: 75, intensity: 62, label: "Rebirth", color: "#3b82f6" }, 
+            { time: 88, intensity: 90, label: "Re-entry", color: "#f59e0b" }
+        ]
     }),
 
-    // 8. Sunshine
+    // 8. Sunshine (2007) - STATUS: OPERATIC SACRIFICE
     1272: createMovieData({ 
         cosmicScale: 94, complexityLevel: "HIGH", 
-        dominantColor: "#facc15", rating: 7.2, criticsScore: 76, audienceScore: 73, director: "Danny Boyle", 
-        cast: ["Cillian Murphy", "Rose Byrne"], boxOffice: "$32M", budget: "$40M", 
+        dominantColor: "#facc15", rating: 7.2,
         dna: { "Sci-Fi": 40, "Thriller": 40, "Horror": 20 }, 
         scenes: [
-            { time: 15, intensity: 40, label: "Mercury Transit", color: "#fde047" }, 
+            { time: 15, intensity: 38, label: "Mercury Transit", color: "#fde047" }, 
             { time: 45, intensity: 65, label: "Shield Repair", color: "#eab308" }, 
             { time: 75, intensity: 80, label: "Icarus I", color: "#854d0e" }, 
-            { time: 95, intensity: 90, label: "Pinbacker", color: "#ca8a04" }, 
-            { time: 105, intensity: 100, label: "TOUCHING THE SUN", color: "#fef08a" }
-        ], 
-        synopsis: "50 years in the future, the Sun is dying, and Earth is freezing. A crew of eight astronauts is sent on a desperate mission to reignite the star with a massive nuclear payload. As they approach the sun, their sanity unravels under the immense pressure and the hypnotic allure of the solar fire. What starts as a scientific mission descends into a terrifying psychological and physical battle for the future of mankind.", 
-        themes: ["Sacrifice", "Religion vs Science", "Madness", "Nature's Power"]
+            { time: 95, intensity: 88, label: "Pinbacker", color: "#ca8a04" }, 
+            { time: 105, intensity: 93, label: "TOUCHING THE SUN", color: "#fef08a" } // ✅ Calibrated to 93
+        ]
     }),
 
-    // 9. Moon
-    17431: createMovieData({ 
-        cosmicScale: 80, complexityLevel: "HIGH", 
-        dominantColor: "#e5e7eb", rating: 7.8, criticsScore: 90, audienceScore: 89, director: "Duncan Jones", 
-        cast: ["Sam Rockwell", "Kevin Spacey"], boxOffice: "$9.8M", budget: "$5M", 
-        dna: { "Sci-Fi": 60, "Drama": 30, "Mystery": 10 }, 
-        scenes: [
-            { time: 10, intensity: 20, label: "Routine", color: "#d1d5db" }, 
-            { time: 30, intensity: 60, label: "The Crash", color: "#9ca3af" }, 
-            { time: 50, intensity: 85, label: "The Discovery", color: "#4b5563" }, 
-            { time: 75, intensity: 70, label: "The Jammer", color: "#1f2937" }, 
-            { time: 90, intensity: 90, label: "Escape", color: "#f3f4f6" }
-        ], 
-        synopsis: "Sam Bell is nearing the end of his three-year contract mining Helium-3 on the far side of the Moon. His only companion is GERTY, an AI computer. The isolation has begun to take its toll, but just weeks before he is due to return home, Sam begins seeing things that shouldn't be there. After a routine accident, he wakes up to find that he is not alone—and his entire existence is a lie.", 
-        themes: ["Identity", "Corporate Exploitation", "Loneliness", "Humanity"]
-    }),
-
-    // 10. Ad Astra
+    // 10. Ad Astra (2019) - STATUS: INTERNAL JOURNEY
     419704: createMovieData({ 
         cosmicScale: 93, complexityLevel: "HIGH", 
-        dominantColor: "#1e1b4b", rating: 6.5, criticsScore: 83, audienceScore: 40, director: "James Gray", 
-        cast: ["Brad Pitt", "Tommy Lee Jones"], boxOffice: "$127.5M", budget: "$90M", 
+        dominantColor: "#1e1b4b", rating: 6.5,
         dna: { "Sci-Fi": 50, "Drama": 40, "Adventure": 10 }, 
         scenes: [
-            { time: 10, intensity: 80, label: "Antenna Fall", color: "#4338ca" }, 
-            { time: 40, intensity: 70, label: "Moon Buggy", color: "#6366f1" }, 
+            { time: 10, intensity: 72, label: "Antenna Fall", color: "#4338ca" }, 
+            { time: 40, intensity: 68, label: "Moon Buggy", color: "#6366f1" }, 
             { time: 75, intensity: 60, label: "Mars Room", color: "#dc2626" }, 
-            { time: 100, intensity: 50, label: "Neptune Approach", color: "#1e3a8a" }, 
-            { time: 115, intensity: 95, label: "LETTING GO", color: "#ffffff" }
-        ], 
-        synopsis: "Astronaut Roy McBride undertakes a mission across an unforgiving solar system to uncover the truth about his missing father and his doomed expedition that now threatens the universe. It is a solitary journey into the heart of darkness, where the further he travels into the void, the deeper he must look into his own soul to resolve his daddy issues.", 
-        themes: ["Fatherhood", "Toxic Masculinity", "Isolation", "Forgiveness"]
+            { time: 100, intensity: 55, label: "Neptune Approach", color: "#1e3a8a" }, 
+            { time: 115, intensity: 88, label: "LETTING GO", color: "#ffffff" }
+        ]
     })
 };
-
 // 3. SENSITIVE TIMELINES (Schema Data)
 export const SENSITIVE_TIMELINES = {
     62: { scenes: [] }, // 2001
