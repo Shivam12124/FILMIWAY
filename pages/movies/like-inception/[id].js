@@ -6,6 +6,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, Play, X, User, Twitter, Hash, Send, Film, Brain } from 'lucide-react'; 
 import InternalCollectionsSection from '../../../components/InternalCollectionsSection';
@@ -276,7 +277,7 @@ const InceptionBreadcrumb = ({ movie }) => (
 );
 
 // ✅ JSON-LD SCHEMA GENERATOR
-const generateMovieSchema = (movie, movieData, currentMovieYear) => {
+const generateMovieSchema = (movie, movieData, currentMovieYear, collectionSlug) => {
   const data = COMPLETE_MOVIE_DATA?.[movie.tmdbId] || {};
   const sensitiveData = SENSITIVE_TIMELINES?.[movie.tmdbId] || {};
   const faqs = INCEPTION_COLLECTION_FAQS?.[movie.Title] || [];
@@ -362,7 +363,7 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
 
     "genre": data?.dna ? Object.keys(data.dna) : ["Sci-Fi", "Thriller"],
     "keywords": "Inception, Mind-Bending, Dream Logic, Reality, " + (data?.themes ? data.themes.join(", ") : ""),
-    "url": `https://filmiway.com/movies/like-inception/${movie.imdbID}`,
+    "url": `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`,
     "author": {
       "@type": "Organization",
       "name": "Filmiway",
@@ -387,6 +388,7 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
 };
 
 const InceptionMoviePage = ({ movie, tmdbData }) => {
+    const router = useRouter();
     // Note: Inception collection uses the generic movieData file.
     const movieInfo = COMPLETE_MOVIE_DATA?.[movie.tmdbId] || {};
     const [movieData, setMovieData] = useState(tmdbData); // Initialize with SS data
@@ -413,8 +415,11 @@ const InceptionMoviePage = ({ movie, tmdbData }) => {
     const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Movies Like Inception | Filmiway`;
     const cleanSEODesc = `${movie.Title} (${currentMovieYear}) - A mind-bending masterpiece like Inception. Analysis, ratings & where to stream.`;
 
+    const collectionSlug = router.pathname.split('/')[2];
+    const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
+
     // Generate schema
-    const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear);
+    const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear, collectionSlug);
 
     return (
         <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
@@ -422,7 +427,7 @@ const InceptionMoviePage = ({ movie, tmdbData }) => {
                 {/* 🔥 HYDRATION BUG FIXED */}
                 <title>{cleanSEOTitle}</title>
                 <meta name="description" content={cleanSEODesc} />
-                <link rel="canonical" href={`https://filmiway.com/movies/like-inception/${movie.imdbID}`} />
+                <link rel="canonical" href={canonicalUrl} />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
                 <meta name="robots" content="index, follow" />
                 <meta name="language" content="English" />

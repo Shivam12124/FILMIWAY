@@ -6,6 +6,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, Play, X, User, Twitter, Hash, Send, Film, Smile, Zap, Theater, PartyPopper } from 'lucide-react'; // ✅ Comedy Icons
 
@@ -216,7 +217,7 @@ const ParamountComedyBreadcrumb = ({ movie }) => (
 );
 
 // ✅ JSON-LD SCHEMA GENERATOR - COMEDY EDITION
-const generateMovieSchema = (movie, movieData, currentMovieYear) => {
+const generateMovieSchema = (movie, movieData, currentMovieYear, collectionSlug) => {
   const data = COMPLETE_MOVIE_DATA[movie.tmdbId];
   const sensitiveData = SENSITIVE_TIMELINES[movie.tmdbId];
   const faqs = PARAMOUNT_COMEDY_MOVIE_FAQS[movie.Title] || [];
@@ -300,7 +301,7 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
 
     "genre": data?.dna ? Object.keys(data.dna) : ["Comedy"],
     "keywords": "Comedy Movies Paramount+, Funniest Movies on Paramount+, " + (data?.themes ? data.themes.join(", ") : ""),
-    "url": `https://filmiway.com/collection/best-comedy-movies-on-paramount-plus/${movie.imdbID}`,
+    "url": `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`,
     "author": {
       "@type": "Organization",
       "name": "Filmiway",
@@ -325,6 +326,7 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
 };
 
 const ParamountComedyMoviePage = ({ movie, tmdbData: movieData }) => {
+    const router = useRouter();
     const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
     const richData = COMPLETE_MOVIE_DATA[movie.tmdbId]; 
     const [isMobile, setIsMobile] = useState(false);
@@ -350,14 +352,17 @@ const ParamountComedyMoviePage = ({ movie, tmdbData: movieData }) => {
     const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Best Comedy Movies on Paramount+ | Filmiway`;
     const cleanSEODesc = `${movie.Title} (${currentMovieYear}) - A hilarious comedy movie streaming on Paramount+. Ranked by laughter and quotability.`;
 
-    const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear);
+    const collectionSlug = router.pathname.split('/')[2];
+    const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
+
+    const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear, collectionSlug);
 
     return (
         <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
             <Head>
                 <title>{cleanSEOTitle}</title>
                 <meta name="description" content={cleanSEODesc} />
-                <link rel="canonical" href={`https://filmiway.com/collection/best-comedy-movies-on-paramount-plus/${movie.imdbID}`} />
+                <link rel="canonical" href={canonicalUrl} />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
                 <meta name="robots" content="index, follow" />
                 <meta name="language" content="English" />

@@ -6,6 +6,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, Play, X, User, Twitter, Hash, Send, Film, Clock } from 'lucide-react'; 
 import InternalCollectionsSection from '../../../components/InternalCollectionsSection';
@@ -204,7 +205,7 @@ const TimeTravelBreadcrumb = ({ movie }) => (
 );
 
 // ✅ JSON-LD SCHEMA GENERATOR - TIME TRAVEL EDITION
-const generateMovieSchema = (movie, movieData, currentMovieYear) => {
+const generateMovieSchema = (movie, movieData, currentMovieYear, collectionSlug) => {
   const data = COMPLETE_MOVIE_DATA[movie.tmdbId];
   const sensitiveData = SENSITIVE_TIMELINES[movie.tmdbId];
   const faqs = TIME_TRAVEL_MOVIE_FAQS[movie.Title] || [];
@@ -289,7 +290,7 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
 
     "genre": data?.dna ? Object.keys(data.dna) : ["Sci-Fi", "Thriller", "Adventure"],
     "keywords": "Time Travel, Paradox, Sci-Fi, Future, " + (data?.themes ? data.themes.join(", ") : ""),
-    "url": `https://filmiway.com/movies/time-travel/${movie.imdbID}`,
+    "url": `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`,
     "author": {
       "@type": "Organization",
       "name": "Filmiway",
@@ -314,6 +315,7 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
 };
 
 const TimeTravelMoviePage = ({ movie, tmdbData: movieData }) => {
+    const router = useRouter();
     const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
     const richData = COMPLETE_MOVIE_DATA[movie.tmdbId]; 
     const [isMobile, setIsMobile] = useState(false);
@@ -339,8 +341,11 @@ const TimeTravelMoviePage = ({ movie, tmdbData: movieData }) => {
     const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Best Time Travel Movies | Filmiway`;
     const cleanSEODesc = `${movie.Title} (${currentMovieYear}) - A mind-bending time travel masterpiece. Analysis, complexity ratings & where to stream.`;
 
+    const collectionSlug = router.pathname.split('/')[2];
+    const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
+
     // Generate schema
-    const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear);
+    const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear, collectionSlug);
 
     return (
         <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
@@ -348,7 +353,7 @@ const TimeTravelMoviePage = ({ movie, tmdbData: movieData }) => {
                 {/* ✅ HYDRATION BUG FULLY RESOLVED: Now using flat string variables */}
                 <title>{cleanSEOTitle}</title>
                 <meta name="description" content={cleanSEODesc} />
-                <link rel="canonical" href={`https://filmiway.com/movies/time-travel/${movie.imdbID}`} />
+                <link rel="canonical" href={canonicalUrl} />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
                 <meta name="robots" content="index, follow" />
                 <meta name="language" content="English" />

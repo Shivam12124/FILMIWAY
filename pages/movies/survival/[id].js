@@ -5,6 +5,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Play, X, User, Twitter, Hash, Send, Film, Mountain } from 'lucide-react';
 import InternalCollectionsSection from '../../../components/InternalCollectionsSection';
@@ -182,7 +183,7 @@ const SurvivalBreadcrumb = ({ movie }) => (
 );
 
 // ✅ SCHEMA GENERATOR (SURVIVAL EDITION)
-const generateMovieSchema = (movie, movieData, currentMovieYear) => {
+const generateMovieSchema = (movie, movieData, currentMovieYear, collectionSlug) => {
   const data = COMPLETE_MOVIE_DATA[movie.tmdbId];
   const sensitiveData = SENSITIVE_TIMELINES[movie.tmdbId];
   const faqs = SURVIVAL_MOVIE_FAQS[movie.Title] || [];
@@ -265,6 +266,7 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
 };
 
 const SurvivalMoviePage = ({ movie, tmdbData: movieData, sensitiveData }) => {
+    const router = useRouter();
     const richData = COMPLETE_MOVIE_DATA[movie.tmdbId]; 
     const [isMobile, setIsMobile] = useState(false);
 
@@ -289,7 +291,10 @@ const SurvivalMoviePage = ({ movie, tmdbData: movieData, sensitiveData }) => {
     const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Best Survival Film | Filmiway`;
     const cleanSEODesc = `${movie.Title} - A compelling survival film. Analysis & where to stream.`;
 
-    const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear);
+    const collectionSlug = router.pathname.split('/')[2];
+    const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
+
+    const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear, collectionSlug);
 
     return (
         <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
@@ -297,7 +302,7 @@ const SurvivalMoviePage = ({ movie, tmdbData: movieData, sensitiveData }) => {
                 {/* ✅ HYDRATION BUG RESOLVED: No more split variables inside title tag */}
                 <title>{cleanSEOTitle}</title>
                 <meta name="description" content={cleanSEODesc} />
-                <link rel="canonical" href={`https://filmiway.com/movies/survival/${movie.imdbID}`} />
+                <link rel="canonical" href={canonicalUrl} />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                 <meta name="robots" content="index, follow" />
                 
