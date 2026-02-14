@@ -6,6 +6,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, Play, X, User, Twitter, Hash, Send, Film, Award } from 'lucide-react'; 
 import InternalCollectionsSection from '../../../components/InternalCollectionsSection';
@@ -203,7 +204,7 @@ const ThrillerBreadcrumb = ({ movie }) => (
 );
 
 // ✅ JSON-LD SCHEMA GENERATOR - THRILLER EDITION
-const generateMovieSchema = (movie, movieData, currentMovieYear) => {
+const generateMovieSchema = (movie, movieData, currentMovieYear, collectionSlug) => {
   const data = COMPLETE_MOVIE_DATA[movie.tmdbId];
   const sensitiveData = SENSITIVE_TIMELINES[movie.tmdbId];
   const faqs = THRILLER_FAQS[movie.Title] || [];
@@ -303,6 +304,7 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
 };
 
 const ThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
+    const router = useRouter();
     const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
     const richData = COMPLETE_MOVIE_DATA[movie.tmdbId]; 
     const [isMobile, setIsMobile] = useState(false);
@@ -328,7 +330,10 @@ const ThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
     const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Best Thriller Movies | Filmiway`;
     const cleanSEODesc = `${movie.Title} (${currentMovieYear}) - A gripping suspense thriller. Analysis, intensity ratings & where to stream.`;
 
-    const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear);
+    const collectionSlug = router.pathname.split('/')[2];
+    const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
+
+    const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear, collectionSlug);
 
     return (
         <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
@@ -336,7 +341,7 @@ const ThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
                 {/* ✅ HYDRATION BUG REMOVED: Now using a flat string for the title tag */}
                 <title>{cleanSEOTitle}</title>
                 <meta name="description" content={cleanSEODesc} />
-                <link rel="canonical" href={`https://filmiway.com/movies/thriller/${movie.imdbID}`} />
+                <link rel="canonical" href={canonicalUrl} />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
                 <meta name="robots" content="index, follow" />
                 <meta name="language" content="English" />

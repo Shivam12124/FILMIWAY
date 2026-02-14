@@ -15,7 +15,7 @@ export const generateMovieSlug = (title) => {
 // ✅ COMPLETE PEACOCK FAMILY MOVIE SLUG MAPPING
 export const PEACOCK_FAMILY_MOVIE_SLUGS = {
     // Rank 1: How to Train Your Dragon
-    'tt0892791': 'how-to-train-your-dragon',
+    'tt0892769': 'how-to-train-your-dragon',
     
     // Rank 2: Harry Potter and the Prisoner of Azkaban
     'tt0304141': 'harry-potter-and-the-prisoner-of-azkaban',

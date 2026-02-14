@@ -6,6 +6,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, Play, X, User, Twitter, Hash, Send, Film, Smile, Zap, Theater, PartyPopper } from 'lucide-react'; // ✅ Added Comedy Icons
 
@@ -175,14 +176,7 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
   );
 };
 
-const SmartBackButton = () => {
-    const handleBackClick = () => { if (typeof window !== 'undefined') window.location.href = '/collection/best-comedy-movies-on-peacock'; };
-    return (
-        <motion.button onClick={handleBackClick} className="fixed top-4 left-4 sm:top-6 sm:left-6 z-50 flex items-center gap-2 px-3 sm:px-4 py-2 backdrop-blur-md rounded-lg transition-all duration-300 shadow-xl text-xs sm:text-sm" style={{ backgroundColor: `${COLORS.bgPrimary}F2`, border: `1px solid ${COLORS.borderLight}` }} whileHover={{ scale: 1.02, x: -2 }} whileTap={{ scale: 0.98 }} initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} onMouseEnter={(e) => e.currentTarget.style.borderColor = COLORS.borderAccent} onMouseLeave={(e) => e.currentTarget.style.borderColor = COLORS.borderLight}>
-            <ChevronLeft className="w-3 h-3 sm:w-4 sm:h-4" style={{ color: COLORS.accent }} /><span className="font-medium" style={{ color: COLORS.accent }}>Back to Collection</span>
-        </motion.button>
-    );
-};
+
 
 const AuthorCreditSection = () => (
     <motion.section className="pt-6 sm:pt-8 mt-12 sm:mt-16" style={{ borderTop: `1px solid ${COLORS.borderLight}` }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2.0, duration: 0.8 }}>
@@ -207,7 +201,7 @@ const PeacockComedyBreadcrumb = ({ movie }) => (
 );
 
 // ✅ JSON-LD SCHEMA GENERATOR - COMEDY EDITION
-const generateMovieSchema = (movie, movieData, currentMovieYear) => {
+const generateMovieSchema = (movie, movieData, currentMovieYear, collectionSlug) => {
   const data = COMPLETE_MOVIE_DATA[movie.tmdbId];
   const sensitiveData = SENSITIVE_TIMELINES[movie.tmdbId];
   const faqs = PEACOCK_COMEDY_MOVIE_FAQS[movie.Title] || [];
@@ -291,7 +285,7 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
 
     "genre": data?.dna ? Object.keys(data.dna) : ["Comedy"],
     "keywords": "Comedy Movies Peacock, Funniest Movies on Peacock, " + (data?.themes ? data.themes.join(", ") : ""),
-    "url": `https://filmiway.com/best-comedy-movies-on-peacock/${movie.imdbID}`,
+    "url": `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`,
     "author": {
       "@type": "Organization",
       "name": "Filmiway",
@@ -316,6 +310,7 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
 };
 
 const PeacockComedyMoviePage = ({ movie, tmdbData: movieData }) => {
+    const router = useRouter();
     const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
     const richData = COMPLETE_MOVIE_DATA[movie.tmdbId]; 
     const [isMobile, setIsMobile] = useState(false);
@@ -341,7 +336,10 @@ const PeacockComedyMoviePage = ({ movie, tmdbData: movieData }) => {
     const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Best Comedy Movies on Peacock | Filmiway`;
     const cleanSEODesc = `${movie.Title} (${currentMovieYear}) - A hilarious comedy movie streaming on Peacock. Ranked by laughter and quotability.`;
 
-    const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear);
+    const collectionSlug = router.pathname.split('/')[2];
+    const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
+
+    const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear, collectionSlug);
 
     return (
         <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
@@ -349,7 +347,7 @@ const PeacockComedyMoviePage = ({ movie, tmdbData: movieData }) => {
                 {/* ✅ HYDRATION BUG FULLY RESOLVED */}
                 <title>{cleanSEOTitle}</title>
                 <meta name="description" content={cleanSEODesc} />
-                <link rel="canonical" href={`https://filmiway.com/best-comedy-movies-on-peacock/${movie.imdbID}`} />
+                <link rel="canonical" href={canonicalUrl} />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
                 <meta name="robots" content="index, follow" />
                 <meta name="language" content="English" />

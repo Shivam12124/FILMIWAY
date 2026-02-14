@@ -30,16 +30,16 @@ export const HBO_MAX_SCIFI_MOVIE_SLUGS = {
     'tt1160419': 'dune',
     
     // Rank 6: Ex Machina
-    'tt3708280': 'ex-machina',
+    'tt0470752': 'ex-machina',
     
     // Rank 7: Mad Max: Fury Road
     'tt12037194': 'furiosa',
     
     // Rank 8: Mickey 17
-    'tt11858890': 'mickey-17',
+    'tt12299608': 'mickey-17',
     
     // Rank 9: Kingdom of the Planet of the Apes
-    'tt11389872': 'kingdom-of-the-planet-of-the-apes',
+    'tt3450958': 'kingdom-of-the-planet-of-the-apes',
     
     // Rank 10: The Lobster
     'tt3464902': 'the-lobster'

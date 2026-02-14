@@ -6,6 +6,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Play, X, User, Twitter, Hash, Send, Film, Sparkles } from 'lucide-react';
 import InternalCollectionsSection from '../../../components/InternalCollectionsSection';
@@ -195,7 +196,7 @@ const SciFiBreadcrumb = ({ movie }) => (
 );
 
 // ✅ SCHEMA GENERATOR (SCI-FI EDITION)
-const generateMovieSchema = (movie, movieData, currentMovieYear) => {
+const generateMovieSchema = (movie, movieData, currentMovieYear, collectionSlug) => {
   const data = COMPLETE_MOVIE_DATA[movie.tmdbId];
   const sensitiveData = SENSITIVE_TIMELINES[movie.tmdbId];
   const faqs = SCI_FI_MOVIE_FAQS[movie.Title] || [];
@@ -263,7 +264,7 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
     },
     "genre": data?.dna ? Object.keys(data.dna) : ["Sci-Fi", "Thriller"],
     "keywords": "Sci-Fi Movie, Artificial Intelligence, Space, " + (data?.themes ? data.themes.join(", ") : ""),
-    "url": `https://filmiway.com/movies/sci-fi/${movie.imdbID}`,
+    "url": `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`,
     "author": { "@type": "Organization", "name": "Filmiway", "url": "https://filmiway.com" }
   };
 
@@ -281,6 +282,7 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
 };
 
 const SciFiMoviePage = ({ movie, tmdbData: movieData }) => {
+    const router = useRouter();
     const richData = COMPLETE_MOVIE_DATA[movie?.tmdbId] || {}; 
     const [isMobile, setIsMobile] = useState(false);
 
@@ -305,7 +307,10 @@ const SciFiMoviePage = ({ movie, tmdbData: movieData }) => {
     const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Sci-Fi Analysis & Timestamps | Filmiway`;
     const cleanSEODesc = `${movie.Title} - ${richData.synopsis ? richData.synopsis.substring(0, 100) : 'Sci-Fi Masterpiece'}... Includes exact timestamps for sensitive content.`;
 
-    const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear);
+    const collectionSlug = router.pathname.split('/')[2];
+    const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
+
+    const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear, collectionSlug);
 
     return (
         <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
@@ -313,7 +318,7 @@ const SciFiMoviePage = ({ movie, tmdbData: movieData }) => {
                 {/* ✅ HYDRATION BUG RESOLVED: No more split variables inside title tag */}
                 <title>{cleanSEOTitle}</title>
                 <meta name="description" content={cleanSEODesc} />
-                <link rel="canonical" href={`https://filmiway.com/movies/sci-fi/${movie.imdbID}`} />
+                <link rel="canonical" href={canonicalUrl} />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                 <meta name="robots" content="index, follow" />
                 

@@ -45,6 +45,7 @@ import { COMPLETE_MOVIE_DATABASE as PEACOCK_FAMILY_DATABASE, COMPLETE_MOVIE_DATA
 import { COMPLETE_MOVIE_DATABASE as PEACOCK_DRAMA_DATABASE, COMPLETE_MOVIE_DATA as PEACOCK_DRAMA_DATA } from '../../utils/peacockDramaMovieData';
 import { COMPLETE_MOVIE_DATABASE as PEACOCK_THRILLER_DATABASE, COMPLETE_MOVIE_DATA as PEACOCK_THRILLER_DATA } from '../../utils/peacockThrillerMovieData';
 import { COMPLETE_MOVIE_DATABASE as PEACOCK_BEST_DATABASE, COMPLETE_MOVIE_DATA as PEACOCK_BEST_DATA } from '../../utils/peacockBestMoviesData';
+import { COMPLETE_MOVIE_DATABASE as PEACOCK_COMEDY_DATABASE, COMPLETE_MOVIE_DATA as PEACOCK_COMEDY_DATA } from '../../utils/peacockComedyMovieData';
 
 import { COMPLETE_MOVIE_DATABASE as HULU_FAMILY_DATABASE, COMPLETE_MOVIE_DATA as HULU_FAMILY_DATA } from '../../utils/huluFamilyMovieData';
 import { COMPLETE_MOVIE_DATABASE as HBO_ACTION_DATABASE, COMPLETE_MOVIE_DATA as HBO_ACTION_DATA } from '../../utils/hboActionMovieData';
@@ -470,6 +471,29 @@ const getCollectionContent = () => {
             text2: "Each film has been selected as a 'must-watch'—guaranteeing that no matter what you pick, you are watching a top-tier example of filmmaking craft."
         }
     };
+    } else if (collection.slug === 'best-comedy-movies-on-peacock') {
+        return {
+            badge: "Side-Splitting Cinema",
+            title: "Best Comedy Movies on Peacock",
+            description: "The funniest films streaming on Peacock. From surreal satire to slapstick classics & high-octane chaos.",
+            selection: {
+                text1: "From the absurdist genius of 'Monty Python' to the unhinged chaos of 'Anchorman'—these films represent the absolute peaks of cinematic humor available on Peacock.",
+                text2: "Each selection features unforgettable quotes, chaotic energy, and performances that range from slapstick genius to biting social satire."
+            },
+            ranking: {
+                text: "Our laughter index evaluates the frequency of laughs, the chaos factor of the plot, and the enduring quotability of the script.",
+                points: [
+                    "Laughter frequency & intensity",
+                    "Chaos factor & unpredictability",
+                    "Script quotability score",
+                    "Comedic performance impact"
+                ]
+            },
+            experience: {
+                text1: "Whether you're seeking nostalgic comfort or shocking satire, this collection delivers cinema's most effective dopamine hits.",
+                text2: "Each film has been selected for its ability to improve your mood instantly—offering laughs that have stood the test of time and culture."
+            }
+        };
 
 
 } else if (collection.slug === 'best-drama-movies-on-hulu') {
@@ -1865,6 +1889,11 @@ if (collection.slug === 'movies-like-memento') {
         title: "Best Movies on Peacock: 10 Essential Films",
         subtitle: "The definitive ranking of the highest-rated films streaming now—from classics to modern blockbusters"
     };
+    } else if (collection.slug === 'best-comedy-movies-on-peacock') {
+    return {
+        title: "10 Best Comedy Movies on Peacock",
+        subtitle: "Ranked by Laughter & Chaos"
+    };
     } else if (collection.slug === 'movies-like-donnie-darko') {
     return {
         title: "Movies Like Donnie Darko: 10 Reality-Warping Films",
@@ -2068,6 +2097,11 @@ const getLoaderContent = () => {
     return {
         title: "Loading Best Movies on Peacock",
         description: "Curating the definitive list of top-rated films across all genres with community reviews"
+        };
+    } else if (collection?.slug === 'best-comedy-movies-on-peacock') {
+        return {
+            title: "Loading Best Comedy Movies on Peacock",
+            description: "Curating hilarious comedy films with laughter scores and community reviews"
     };
 
 
@@ -2424,6 +2458,7 @@ const getStaticMetaContent = () => {
         sessionStorage.removeItem('fromPeacockRomanceCollection');
         sessionStorage.removeItem('fromPeacockThrillerCollection');
         sessionStorage.removeItem('fromPeacockBestCollection');
+        sessionStorage.removeItem('fromPeacockComedyCollection');
             sessionStorage.removeItem('fromPeacockFamilyCollection');
             sessionStorage.removeItem('fromPeacockDramaCollection');
             sessionStorage.removeItem('fromEyesWideShutCollection');
@@ -2522,6 +2557,8 @@ const getStaticMetaContent = () => {
     sessionStorage.setItem('fromPeacockThrillerCollection', 'true');
 } else if (collection.slug === 'best-movies-on-peacock') {
     sessionStorage.setItem('fromPeacockBestCollection', 'true');
+} else if (collection.slug === 'best-comedy-movies-on-peacock') {
+    sessionStorage.setItem('fromPeacockComedyCollection', 'true');
 } else if (collection.slug === 'movies-like-parasite') { 
                 sessionStorage.setItem('fromParasiteCollection', 'true');
          } else if (collection.slug === 'movies-like-oldboy') {
@@ -3412,6 +3449,8 @@ return (
     } else if (collection.slug === 'best-movies-on-peacock') {
         detailPageUrl = `/movies/best-movies-on-peacock/${currentMovie.imdbID}`;
     
+    } else if (collection.slug === 'best-comedy-movies-on-peacock') {
+        detailPageUrl = `/movies/best-comedy-movies-on-peacock/${currentMovie.imdbID}`;
     } else if (collection.slug === 'movies-like-interstellar') {
                                             detailPageUrl = `/movies/interstellar/${currentMovie.imdbID}`;
                                         } else if (collection.slug === 'movies-like-memento') {
@@ -3795,6 +3834,9 @@ case 'best-sci-fi-movies':
             break;
         case 'best-movies-on-peacock':
             movieDatabase = PEACOCK_BEST_DATABASE;
+            break;
+        case 'best-comedy-movies-on-peacock':
+            movieDatabase = PEACOCK_COMEDY_DATABASE;
             break;
         default:
             movieDatabase = COMPLETE_MOVIE_DATABASE;

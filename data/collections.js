@@ -1090,7 +1090,7 @@ export const COLLECTIONS = {
         'tt1065073',  // 1. Boyhood (2014)
         'tt27503384', // 2. Perfect Days (2023)
         'tt2381111',  // 3. Brooklyn (2015)
-        'tt27209383', // 4. Small Things Like These (2024)
+        'tt27196021', // 4. Small Things Like These (2024)
         'tt21192142', // 5. All of Us Strangers (2023)
         'tt21867434', // 6. BlackBerry (2023)
         'tt21823606', // 7. A Real Pain (2024)
@@ -1607,11 +1607,11 @@ export const COLLECTIONS = {
     'tt15239678', // 3. Dune: Part Two
     'tt0079944',  // 4. Stalker
     'tt1160419',  // 5. Dune
-    'tt3708280',  // 6. Ex Machina
-    'tt12037194',  // 7. Mad Max: Fury Road
-    'tt11858890', // 8. Mickey 17
-    'tt11389872', // 9. Kingdom of the Planet of the Apes
-    'tt3464902'   // 10. The Lobster
+     'tt3450958', // 6. Kingdom of the Planet of the Apes
+    'tt0470752',  // 7. Ex Machina
+    'tt3464902',  // 8. The Lobster
+     'tt12299608', // 9. Mickey 17
+     'tt12037194'  // 10. Furiosa
   ],
 
   badges: [
@@ -3070,7 +3070,7 @@ export const COLLECTIONS = {
     },
 
     movies: [
-        'tt0892791', // 1. How to Train Your Dragon
+        'tt0892769', // 1. How to Train Your Dragon
         'tt0304141', // 2. Harry Potter and the Prisoner of Azkaban
         'tt3915174', // 3. Puss in Boots: The Last Wish
         'tt0126029', // 4. Shrek

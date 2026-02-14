@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, X, Swords, Film, ChevronLeft } from 'lucide-react';
 
@@ -452,6 +453,7 @@ const WarFilmBackButton = () => {
 };
 
 const WarFilmMoviePage = ({ movie }) => {
+  const router = useRouter();
   const [scrollY, setScrollY] = useState(0);
   const [movieData, setMovieData] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
@@ -512,6 +514,9 @@ const WarFilmMoviePage = ({ movie }) => {
     (video) => video.type === 'Trailer' && video.site === 'YouTube'
   );
 
+  const collectionSlug = router.pathname.split('/')[2];
+  const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
+
   if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: COLORS.bgPrimary }}>
@@ -528,10 +533,10 @@ const WarFilmMoviePage = ({ movie }) => {
       <Head>
         <title>{movie.title} ({movie.year}) - Best War Films | Filmiway</title>
         <meta name="description" content={`${movie.title} (${movie.year}) - ${movie.synopsis?.substring(0, 150) || 'War film'}...`} />
-        <link rel="canonical" href={`https://filmiway.com/movies/war-films/${movie.imdbID}`} />
+        <link rel="canonical" href={canonicalUrl} />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
         <meta name="robots" content="index, follow" />
-        <meta property="og:url" content={`https://filmiway.com/movies/war-films/${movie.imdbID}`} />
+        <meta property="og:url" content={canonicalUrl} />
         <meta property="og:type" content="video.movie" />
       </Head>
 

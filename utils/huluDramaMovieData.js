@@ -12,7 +12,7 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 85350, "imdbID": "tt1065073", "Title": "Boyhood", "year": 2014, "genre": "Drama", "runtime": 165, "rank": 1 },
     { "tmdbId": 976893, "imdbID": "tt27503384", "Title": "Perfect Days", "year": 2023, "genre": "Drama", "runtime": 124, "rank": 2 },
     { "tmdbId": 167073, "imdbID": "tt2381111", "Title": "Brooklyn", "year": 2015, "genre": "Romance", "runtime": 111, "rank": 3 },
-    { "tmdbId": 1152378, "imdbID": "tt27209383", "Title": "Small Things Like These", "year": 2024, "genre": "Drama", "runtime": 98, "rank": 4 },
+    { "tmdbId": 1102493, "imdbID": "tt27196021", "Title": "Small Things Like These", "year": 2024, "genre": "Drama", "runtime": 98, "rank": 4 },
     { "tmdbId": 994108, "imdbID": "tt21192142", "Title": "All of Us Strangers", "year": 2023, "genre": "Fantasy", "runtime": 105, "rank": 5 },
     { "tmdbId": 1016084, "imdbID": "tt21867434", "Title": "BlackBerry", "year": 2023, "genre": "Comedy", "runtime": 120, "rank": 6 },
     { "tmdbId": 1013850, "imdbID": "tt21823606", "Title": "A Real Pain", "year": 2024, "genre": "Comedy", "runtime": 90, "rank": 7 },
@@ -41,7 +41,7 @@ export const SENSITIVE_TIMELINES = {
     },
 
     // 4. Small Things Like These
-    1152378: { 
+    1102493: { 
         scenes: [
             { start: "1:10:00", end: "1:15:00", type: "Sex", severity: "Moderate" }
         ] 
@@ -84,7 +84,7 @@ export const FALLBACK_POSTERS = {
     85350: "https://image.tmdb.org/t/p/w500/1QNO36V0qEf04d9bY58557053.jpg",
     976893: "https://image.tmdb.org/t/p/w500/hcQED2d3y28Wp3r37sL9s6576.jpg",
     167073: "https://image.tmdb.org/t/p/w500/9J473557530663.jpg",
-    1152378: "https://image.tmdb.org/t/p/w500/22374774.jpg",
+    1102493: "https://image.tmdb.org/t/p/w500/22374774.jpg",
     994108: "https://image.tmdb.org/t/p/w500/2938475.jpg",
     1016084: "https://image.tmdb.org/t/p/w500/9837475.jpg",
     1013850: "https://image.tmdb.org/t/p/w500/1123884.jpg",
@@ -164,10 +164,10 @@ export const COMPLETE_MOVIE_DATA = {
         themes: ["Immigration", "Home", "Identity"]
     }),
 
-    // 4. Small Things Like These (2024) [ID: 1152378]
+    // 4. Small Things Like These (2024) [ID: 1102493]
     // Curve: Routine -> Discovery -> Silence -> Confrontation -> Act.
     // Peak: 85 (The Walk Home - Moral Crisis).
-    1152378: createMovieData({ 
+    1102493: createMovieData({ 
         emotionalIntensity: 85, 
         complexityLevel: "SUBTLE", 
         dominantColor: "#475569", rating: 7.6, criticsScore: 92, audienceScore: 80, director: "Tim Mielants", 
@@ -308,7 +308,7 @@ export const STRATEGIC_QUOTES = {
     85350: "The moment seizes us.",
     976893: "Next time is next time. Now is now.",
     167073: "You'll feel so homesick that you'll want to die, and there's nothing you can do about it apart from endure it.",
-    1152378: "If you look at the small things, the big things take care of themselves.",
+    1102493: "If you look at the small things, the big things take care of themselves.",
     994108: "I've always been lonely. That's just the way it is.",
     1016084: "I'm from Waterloo! Where the vampires hang out!",
     1013850: "My pain is real, David.",

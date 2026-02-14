@@ -9,7 +9,7 @@ import {
   Play, Menu, X, ArrowRight, 
   ChevronLeft, ChevronRight, Construction, Sparkles, 
   Compass, Globe, Layers, Film, Tv, Brain, Skull, Star,
-  Feather // 🔥 NEW: Imported Feather for Peacock
+  Feather,Mountain // 🔥 NEW: Imported Feather for Peacock
 } from 'lucide-react';
 
 import { COLLECTIONS } from '../data/collections';
@@ -385,12 +385,13 @@ const MovieSection = memo(({ title, movies, icon: Icon, description, sectionRef,
 MovieSection.displayName = 'MovieSection';
 
 // 🔥 ADDED PEACOCK COLLECTIONS PROP HERE
-const FilmiwayHomepage = ({ huluCollections, mindBendingCollections, thrillerCollections, hboCollections, peacockCollections }) => {
+const FilmiwayHomepage = ({ huluCollections, mindBendingCollections, thrillerCollections, hboCollections, peacockCollections, paramountCollections }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const mindRef = useRef(null);
   const thrillerRef = useRef(null);
   const huluRef = useRef(null);
   const hboRef = useRef(null);
+  const paramountRef = useRef(null);
   const peacockRef = useRef(null); // 🔥 NEW REF
 
   const scrollToSection = (ref) => ref.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -418,6 +419,7 @@ const FilmiwayHomepage = ({ huluCollections, mindBendingCollections, thrillerCol
                 <button onClick={() => scrollToSection(mindRef)} className="text-gray-300 hover:text-white transition-colors text-sm">Mind-Bending</button>
                 <button onClick={() => scrollToSection(thrillerRef)} className="text-gray-300 hover:text-white transition-colors text-sm">Thrillers</button>
                 <button onClick={() => scrollToSection(huluRef)} className="text-gray-300 hover:text-white transition-colors text-sm">Hulu</button>
+                <button onClick={() => scrollToSection(paramountRef)} className="text-gray-300 hover:text-white transition-colors text-sm">Paramount+</button>
                 {/* Optional: Add Peacock to nav if you have space */}
                 {/* <button onClick={() => scrollToSection(peacockRef)} className="text-gray-300 hover:text-white transition-colors text-sm">Peacock</button> */}
               </div>
@@ -433,6 +435,7 @@ const FilmiwayHomepage = ({ huluCollections, mindBendingCollections, thrillerCol
                     <button onClick={() => { scrollToSection(mindRef); setMobileMenuOpen(false); }} className="block text-gray-300 py-2 w-full text-left text-sm">Mind-Bending</button>
                     <button onClick={() => { scrollToSection(thrillerRef); setMobileMenuOpen(false); }} className="block text-gray-300 py-2 w-full text-left text-sm">Thrillers</button>
                     <button onClick={() => { scrollToSection(huluRef); setMobileMenuOpen(false); }} className="block text-gray-300 py-2 w-full text-left text-sm">Hulu</button>
+                    <button onClick={() => { scrollToSection(paramountRef); setMobileMenuOpen(false); }} className="block text-gray-300 py-2 w-full text-left text-sm">Paramount+</button>
                     <button onClick={() => { scrollToSection(peacockRef); setMobileMenuOpen(false); }} className="block text-gray-300 py-2 w-full text-left text-sm">Peacock</button>
                   </div>
                 </motion.div>
@@ -476,6 +479,14 @@ const FilmiwayHomepage = ({ huluCollections, mindBendingCollections, thrillerCol
             icon={Star} 
             sectionRef={hboRef} 
             viewAllLink="/streaming/hbo-max" 
+          />
+          <MovieSection 
+            title="Paramount+ Mountain" 
+            description="The peak of entertainment: Top Gun, Interstellar, and more." 
+            movies={paramountCollections} 
+            icon={Mountain} 
+            sectionRef={paramountRef} 
+            viewAllLink="/streaming/paramount-plus" 
           />
           {/* 🔥 NEW PEACOCK SECTION */}
           <MovieSection 
@@ -572,11 +583,23 @@ export async function getStaticProps() {
   const thrillerKeys = ['best-thriller-movies', 'best-crime-thriller-movies', 'best-heist-thriller-movies', 'best-psychological-thriller-movies', 'best-detective-thriller-movies', 'best-mystery-thriller-movies', 'movies-like-se7en', 'movies-like-shutter-island', 'movies-like-parasite', 'movies-like-oldboy', 'movies-like-black-swan', 'best-revenge-movies'];
   const hboKeys = ['best-movies-on-hbo-max', 'best-action-movies-on-hbo-max', 'best-sci-fi-movies-on-hbo-max', 'best-horror-movies-on-hbo-max', 'best-romance-movies-on-hbo-max', 'best-drama-movies-on-hbo-max', 'best-comedy-movies-on-hbo-max', 'best-family-movies-on-hbo-max', 'best-thriller-movies-on-hbo-max'];
   
+  const paramountKeys = [
+    'best-movies-on-paramount-plus',
+    'best-action-movies-on-paramount-plus',
+    'best-sci-fi-movies-on-paramount-plus',
+    'best-romance-movies-on-paramount-plus',
+    'best-core-drama-movies-on-paramount-plus',
+    'best-thriller-movies-on-paramount-plus',
+    'best-family-movies-on-paramount-plus',
+    'best-horror-movies-on-paramount-plus',
+    'best-comedy-movies-on-paramount-plus'
+  ];
+
   // 🔥 NEW PEACOCK KEYS (Make sure these match your collections.js slugs exactly!)
-  const peacockKeys = ['best-movies-on-peacock', 'best-action-movies-on-peacock', 'best-sci-fi-movies-on-peacock', 'best-horror-movies-on-peacock', 'best-comedy-movies-on-peacock'];
+  const peacockKeys = ['best-movies-on-peacock', 'best-action-adventure-movies-on-peacock', 'best-sci-fi-movies-on-peacock', 'best-romance-movies-on-peacock', 'best-drama-movies-on-peacock', 'best-thriller-movies-on-peacock', 'best-family-movies-on-peacock', 'best-comedy-movies-on-peacock'];
 
   // 🔥 Added 'peacock' to usedPostersPerSection
-  const usedPostersPerSection = { hulu: new Set(), mind: new Set(), thriller: new Set(), hbo: new Set(), peacock: new Set() };
+  const usedPostersPerSection = { hulu: new Set(), mind: new Set(), thriller: new Set(), hbo: new Set(), peacock: new Set(), paramount: new Set() };
 
   const fetchCollectionData = async (keys, sectionName) => {
     const results = await Promise.all(keys.map(async (key) => {
@@ -600,12 +623,13 @@ export async function getStaticProps() {
   };
 
   try {
-    const [huluData, mindData, thrillerData, hboData, peacockData] = await Promise.all([
+    const [huluData, mindData, thrillerData, hboData, peacockData, paramountData] = await Promise.all([
       fetchCollectionData(huluKeys, 'hulu'),
       fetchCollectionData(mindBendingKeys, 'mind'),
       fetchCollectionData(thrillerKeys, 'thriller'),
       fetchCollectionData(hboKeys, 'hbo'),
-      fetchCollectionData(peacockKeys, 'peacock') // 🔥 Fetching Peacock
+      fetchCollectionData(peacockKeys, 'peacock'), // 🔥 Fetching Peacock
+      fetchCollectionData(paramountKeys, 'paramount') // 🔥 Fetching Paramount
     ]);
 
     return {
@@ -614,7 +638,8 @@ export async function getStaticProps() {
         mindBendingCollections: mindData,
         thrillerCollections: thrillerData,
         hboCollections: hboData,
-        peacockCollections: peacockData // 🔥 Passing to component
+        peacockCollections: peacockData, // 🔥 Passing to component
+        paramountCollections: paramountData // 🔥 Passing to component
       },
       revalidate: 604800, 
     };
@@ -627,6 +652,7 @@ export async function getStaticProps() {
         thrillerCollections: [],
         hboCollections: [],
         peacockCollections: [],
+        paramountCollections: [],
       },
     };
   }

@@ -9,7 +9,7 @@ export const TMDB_CONFIG = {
 };
 
 export const COMPLETE_MOVIE_DATABASE = [
-    { "tmdbId": 10191, "imdbID": "tt0892791", "Title": "How to Train Your Dragon", "year": 2010, "genre": "Animation", "runtime": 98, "rank": 1 },
+    { "tmdbId": 10191, "imdbID": "tt0892769", "Title": "How to Train Your Dragon", "year": 2010, "genre": "Animation", "runtime": 98, "rank": 1 },
     { "tmdbId": 673, "imdbID": "tt0304141", "Title": "Harry Potter and the Prisoner of Azkaban", "year": 2004, "genre": "Fantasy", "runtime": 142, "rank": 2 },
     { "tmdbId": 315162, "imdbID": "tt3915174", "Title": "Puss in Boots: The Last Wish", "year": 2022, "genre": "Animation", "runtime": 102, "rank": 3 },
     { "tmdbId": 808, "imdbID": "tt0126029", "Title": "Shrek", "year": 2001, "genre": "Animation", "runtime": 90, "rank": 4 },

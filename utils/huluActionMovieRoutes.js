@@ -32,7 +32,7 @@ export const HULU_ACTION_MOVIE_SLUGS = {
     'tt2802144': 'kingsman-the-secret-service',
     
     // Rank 7: Unstoppable (Replaces Taken)
-    'tt1596346': 'unstoppable',
+    'tt0477080': 'unstoppable',
     
     // Rank 8: Prey
     'tt11866324': 'prey',

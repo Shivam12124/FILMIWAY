@@ -1,4 +1,4 @@
- // utils/hboMaxSciFiMovieData.js - HBO MAX SCI-FI COLLECTION DATA (v2026.3) ✅
+// utils/hboMaxSciFiMovieData.js - HBO MAX SCI-FI COLLECTION DATA (v2026.3) ✅
 // Primary Metric: Spectacular Level | 5 Intensity Points | 4 Expanded FAQs Per Film
 // ENHANCED: Deep Cinematic Synopses & Expert-Level FAQ Analysis
 
@@ -15,10 +15,10 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 693134, "imdbID": "tt15239678", "Title": "Dune: Part Two", "year": 2024, "genre": "Sci-Fi", "runtime": 166, "rank": 3 },
     { "tmdbId": 1398, "imdbID": "tt0079944", "Title": "Stalker", "year": 1979, "genre": "Sci-Fi", "runtime": 162, "rank": 4 },
     { "tmdbId": 438631, "imdbID": "tt1160419", "Title": "Dune", "year": 2021, "genre": "Sci-Fi", "runtime": 155, "rank": 5 },
-    { "tmdbId": 264660, "imdbID": "tt3708280", "Title": "Ex Machina", "year": 2014, "genre": "Sci-Fi", "runtime": 108, "rank": 6 },
+    { "tmdbId": 264660, "imdbID": "tt0470752", "Title": "Ex Machina", "year": 2014, "genre": "Sci-Fi", "runtime": 108, "rank": 6 },
     { "tmdbId": 786892, "imdbID": "tt12037194", "Title": "Furiosa: A Mad Max Saga", "year": 2024, "genre": "Sci-Fi", "runtime": 150, "rank": 7 },
-    { "tmdbId": 696506, "imdbID": "tt11858890", "Title": "Mickey 17", "year": 2025, "genre": "Sci-Fi", "runtime": 139, "rank": 8 },
-    { "tmdbId": 653346, "imdbID": "tt11389872", "Title": "Kingdom of the Planet of the Apes", "year": 2024, "genre": "Sci-Fi", "runtime": 145, "rank": 9 },
+    { "tmdbId": 696506, "imdbID": "tt12299608", "Title": "Mickey 17", "year": 2025, "genre": "Sci-Fi", "runtime": 139, "rank": 8 },
+    { "tmdbId": 281338, "imdbID": "tt3450958", "Title": "War for the Planet of the Apes", "year": 2017, "genre": "Sci-Fi", "runtime": 140, "rank": 9 }, // ✅ REPLACED
     { "tmdbId": 254320, "imdbID": "tt3464902", "Title": "The Lobster", "year": 2015, "genre": "Sci-Fi", "runtime": 119, "rank": 10 }
 ];
 
@@ -40,7 +40,7 @@ export const SENSITIVE_TIMELINES = {
             { start: "0:27:55", end: "0:28:00", type: "Partial Nudity", severity: "Low" }
         ]
     },
-    653346: { scenes: [] },  // Kingdom of the Planet of the Apes
+    281338: { scenes: [] },  // War for the Planet of the Apes (Generally clean, mostly violence)
     254320: {                // The Lobster
         scenes: [
             { start: "0:27:30", end: "0:27:40", type: "Sexual Content", severity: "Moderate" },
@@ -58,7 +58,7 @@ export const FALLBACK_POSTERS = {
     284052: "https://image.tmdb.org/t/p/w500/btvNueS96Bv51C9.jpg",
     786892: "https://image.tmdb.org/t/p/w500/h6f_FuryRoad.jpg",
     696506: "https://image.tmdb.org/t/p/w500/Mickey17_Full.jpg",
-    653346: "https://image.tmdb.org/t/p/w500/KingdomApes.jpg",
+    281338: "https://image.tmdb.org/t/p/w500/3vYhLLxrQwJLTyxpZWIGDlYnaQm.jpg", // War Apes Poster
     254320: "https://image.tmdb.org/t/p/w500/LobsterPoster.jpg"
 };
 
@@ -207,21 +207,21 @@ export const COMPLETE_MOVIE_DATA = {
         themes: ["Identity", "Labor", "Immortality"]
     }),
 
-    // 9. Kingdom of the Planet of the Apes (The New Legacy)
-    653346: createMovieData({
-        spectacularLevel: 92, mindBendScore: 68, complexityLevel: "HIGH", 
-        dominantColor: "#166534", rating: 7.0, criticsScore: 80, audienceScore: 78, director: "Wes Ball", 
-        cast: ["Owen Teague", "Freya Allan", "Kevin Durand"],
-        dna: { "Sci-Fi": 40, "Adventure": 40, "Drama": 20 },
+    // 9. War for the Planet of the Apes (The Emotional Climax)
+    281338: createMovieData({
+        spectacularLevel: 94, mindBendScore: 50, complexityLevel: "EMOTIONAL", 
+        dominantColor: "#52525b", rating: 7.4, criticsScore: 94, audienceScore: 84, director: "Matt Reeves", 
+        cast: ["Andy Serkis", "Woody Harrelson", "Steve Zahn"],
+        dna: { "Sci-Fi": 40, "War": 40, "Drama": 20 },
         scenes: [
-            { time: 15, intensity: 40, label: "Eagle Clan Hunt", color: "#166534" },
-            { time: 45, intensity: 65, label: "Proximus Raid", color: "#9a3412" },
-            { time: 80, intensity: 50, label: "Ape History", color: "#3f3f46" },
-            { time: 115, intensity: 85, label: "Breaching the Vault", color: "#0ea5e9" },
-            { time: 135, intensity: 90, label: "The Flood Escape", color: "#2563eb" }
+            { time: 10, intensity: 70, label: "Forest Ambush", color: "#166534" },
+            { time: 40, intensity: 85, label: "Caesar's Loss", color: "#7f1d1d" },
+            { time: 80, intensity: 60, label: "The Prison Camp", color: "#52525b" },
+            { time: 120, intensity: 90, label: "The Avalanche", color: "#ffffff" },
+            { time: 135, intensity: 95, label: "Caesar's Rest", color: "#facc15" }
         ],
-        synopsis: "Many years after the reign of Caesar, a young ape goes on a journey that will lead him to question everything he's been taught about the past and make choices that will define a future for apes and humans alike.",
-        themes: ["Legacy", "Power", "Truth"]
+        synopsis: "Caesar and his apes are forced into a deadly conflict with an army of humans led by a ruthless Colonel. After the apes suffer unimaginable losses, Caesar wrestles with his darker instincts and begins his own mythic quest to avenge his kind. A stunning, Shakespearean conclusion to the trilogy.",
+        themes: ["War", "Revenge", "Mercy"]
     }),
 
     // 10. The Lobster (The Dystopian Satire)
@@ -251,7 +251,7 @@ export const STRATEGIC_QUOTES = {
     284052: "To survive is to find a way to live in the world.",
     786892: "Witness me!",
     696506: "I'm just an iteration.",
-    653346: "What a wonderful day!",
+    281338: "Apes Together Strong.",
     254320: "A lobster is an excellent choice."
 };
 
@@ -315,11 +315,11 @@ export const HBO_SCIFI_MOVIE_FAQS = {
         { question: "Is Niflheim a real planet?", answer: "In the context of the movie, Niflheim is a fictional ice world named after the realm of mist and ice in Norse mythology. The harsh environment serves as a metaphor for the isolation and extreme conditions of human colonization." },
         { question: "How does he remember dying?", answer: "Mickey's consciousness is uploaded to a central server daily. However, there is often data loss, meaning the new Mickey might miss the final, painful moments of death—or sometimes remember them vividly, adding to his trauma." }
     ],
-    'Kingdom of the Planet of the Apes': [
-        { question: "When does this movie take place?", answer: "It is set roughly 300 years ('many generations') after the death of Caesar in 'War for the Planet of the Apes.' Caesar has become a legend, almost a myth, and his original teachings have been lost or distorted by different ape clans." },
-        { question: "Who is Proximus Caesar?", answer: "He is a tyrannical bonobo warlord who has perverted Caesar's legacy. He uses the slogan 'Apes Together Strong' not for unity, but to enslave other clans and force them to open human vaults to access ancient weapons and technology." },
-        { question: "Why can't humans speak anymore?", answer: "The Simian Flu virus mutated (as seen at the end of the previous film), attacking the speech centers of the human brain. Over 300 years, this has caused humanity to regress into a mute, feral state, while apes have continued to evolve." },
-        { question: "What is Noa's clan?", answer: "Noa belongs to the Eagle Clan, a peaceful tribe that raises eagles for fishing and hunting. They have been isolated for so long that they have forgotten the true history of Caesar and believe 'Apes Together Strong' is a new, dangerous idea." }
+    'War for the Planet of the Apes': [
+        { question: "Did Caesar die at the end?", answer: "Yes. After leading his people to the promised land across the desert, Caesar succumbs to his wounds from the battle. He dies peacefully, knowing he secured a future for the apes, completing his journey from revolutionary to legend." },
+        { question: "Who is the Colonel?", answer: "The Colonel (Woody Harrelson) is a desperate, fanatical human leader who believes he is fighting a 'Holy War' to save humanity from extinction. He represents the darkest side of survival, willing to sacrifice his own humanity to preserve his species." },
+        { question: "Why can't Nova speak?", answer: "Nova, the little human girl Maurice adopts, has been affected by the mutated Simian Flu virus. This mutation robs humans of their speech and higher cognitive functions, signaling the end of human dominance and the rise of the apes." },
+        { question: "What is the meaning of 'Apes Together Strong'?", answer: "It is the core philosophy of Caesar's society. It emphasizes unity and collective strength over individual power. In this film, it is tested to its breaking point as the apes are enslaved, proving that their spirit cannot be broken as long as they stand together." }
     ],
     'The Lobster': [
         { question: "Why do single people turn into animals?", answer: "It is a strict societal law in this dystopia. Being single is seen as a crime or a failure. Citizens are given 45 days at The Hotel to find a compatible mate; failure results in being surgically transformed into an animal of their choosing." },

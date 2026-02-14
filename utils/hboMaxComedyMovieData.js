@@ -17,7 +17,7 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 639, "imdbID": "tt0098635", "Title": "When Harry Met Sally...", "year": 1989, "genre": "Romance", "runtime": 96, "rank": 5 },
     { "tmdbId": 275, "imdbID": "tt0116282", "Title": "Fargo", "year": 1996, "genre": "Crime", "runtime": 98, "rank": 6 },
     { "tmdbId": 11072, "imdbID": "tt0071230", "Title": "Blazing Saddles", "year": 1974, "genre": "Western", "runtime": 93, "rank": 7 },
-    { "tmdbId": 702, "imdbID": "tt0058182", "Title": "A Hard Day's Night", "year": 1964, "genre": "Music", "runtime": 87, "rank": 8 },
+    { "tmdbId": 704, "imdbID": "tt0058182", "Title": "A Hard Day's Night", "year": 1964, "genre": "Music", "runtime": 87, "rank": 8 },
     { "tmdbId": 346698, "imdbID": "tt1517268", "Title": "Barbie", "year": 2023, "genre": "Comedy", "runtime": 114, "rank": 9 },
     { "tmdbId": 324849, "imdbID": "tt4116284", "Title": "The LEGO Batman Movie", "year": 2017, "genre": "Animation", "runtime": 104, "rank": 10 }
 ];
@@ -51,7 +51,7 @@ export const SENSITIVE_TIMELINES = {
     11072: { scenes: [] },
 
     // 8. A Hard Day's Night
-    702: { scenes: [] },
+    704: { scenes: [] },
 
     // 9. Barbie
     346698: { scenes: [] },
@@ -68,7 +68,7 @@ export const FALLBACK_POSTERS = {
     639: "https://image.tmdb.org/t/p/w500/7124885.jpg",
     275: "https://image.tmdb.org/t/p/w500/rt7aENu.jpg",
     11072: "https://image.tmdb.org/t/p/w500/f37288.jpg",
-    702: "https://image.tmdb.org/t/p/w500/m222884.jpg",
+    704: "https://image.tmdb.org/t/p/w500/m222884.jpg",
     346698: "https://image.tmdb.org/t/p/w500/iuFNMS8U5cb6xfzi51Db4hOKO25.jpg",
     324849: "https://image.tmdb.org/t/p/w500/snGwr2gag4FCGx27yHC31.jpg"
 };
@@ -229,7 +229,7 @@ export const COMPLETE_MOVIE_DATA = {
     // 8. A Hard Day's Night (1964)
     // Curve: Running -> Press -> Rehearsal -> Escape -> Concert.
     // Peak: 85 (Can't Buy Me Love - Field Romp).
-    702: createMovieData({ 
+    704: createMovieData({ 
         laughterIndex: 75, 
         complexityLevel: "INNOVATIVE", 
         dominantColor: "#18181b", rating: 7.6, criticsScore: 98, audienceScore: 89, director: "Richard Lester", 
@@ -295,7 +295,7 @@ export const STRATEGIC_QUOTES = {
     639: "I'll have what she's having.",
     275: "I'm not sure I agree with you a hundred percent on your police work, there, Lou.",
     11072: "Excuse me while I whip this out.",
-    702: "I'm a mocker.",
+    704: "I'm a mocker.",
     346698: "I am Kenough.",
     324849: "Batman doesn't do 'ships."
 };

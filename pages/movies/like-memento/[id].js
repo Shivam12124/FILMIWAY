@@ -6,6 +6,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Play, X, Zap, User, Twitter, Hash, Send, Brain } from 'lucide-react';
 import InternalCollectionsSection from '../../../components/InternalCollectionsSection';
@@ -209,7 +210,7 @@ const MementoBreadcrumb = ({ movie }) => (
 );
 
 // ✅ GENERATE SCHEMA (Added for SEO)
-const generateMovieSchema = (movie, movieData, currentMovieYear) => {
+const generateMovieSchema = (movie, movieData, currentMovieYear, collectionSlug) => {
   const data = COMPLETE_MOVIE_DATA?.[movie.tmdbId] || {};
   const sensitiveData = SENSITIVE_TIMELINES?.[movie.tmdbId] || {};
   const faqs = MEMENTO_COLLECTION_FAQS?.[movie.Title] || [];
@@ -230,6 +231,7 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
     "datePublished": currentMovieYear,
     "image": movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : undefined,
     "director": { "@type": "Person", "name": MOVIE_DATA_BY_TITLE[movie.Title]?.director || "Unknown" },
+    "url": `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`,
     "author": { "@type": "Organization", "name": "Filmiway", "url": "https://filmiway.com" }
   };
 
@@ -242,6 +244,7 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
 };
 
 const MementoMoviePage = ({ movie }) => {
+    const router = useRouter();
     const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
     const correctData = MOVIE_DATA_BY_TITLE[movie.Title];
     const [movieData, setMovieData] = useState(null);
@@ -269,7 +272,10 @@ const MementoMoviePage = ({ movie }) => {
 
     const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.Year || 'Unknown';
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
-    const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear);
+    
+    const collectionSlug = router.pathname.split('/')[2];
+    const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
+    const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear, collectionSlug);
 
     // ✅ SEO FIX: Const Strings
     const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Movies Like Memento | Filmiway`;
@@ -283,7 +289,7 @@ const MementoMoviePage = ({ movie }) => {
                 {/* ✅ HYDRATION BUG RESOLVED */}
                 <title>{cleanSEOTitle}</title>
                 <meta name="description" content={cleanSEODesc} />
-                <link rel="canonical" href={`https://filmiway.com/movies/like-memento/${movie.imdbID}`} />
+                <link rel="canonical" href={canonicalUrl} />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
                 <meta name="robots" content="index, follow" />
                 <meta name="language" content="English" />

@@ -214,6 +214,11 @@ import {
   SENSITIVE_TIMELINES as PEACOCK_BEST_SENSITIVE_TIMELINES
 } from '../utils/peacockBestMoviesData';
 
+import {
+  COMPLETE_MOVIE_DATA as PEACOCK_COMEDY_MOVIE_DATA,
+  SENSITIVE_TIMELINES as PEACOCK_COMEDY_SENSITIVE_TIMELINES
+} from '../utils/peacockComedyMovieData';
+
 import { 
   COMPLETE_MOVIE_DATA as CRIME_THRILLER_MOVIE_DATA,
   SENSITIVE_TIMELINES as CRIME_THRILLER_SENSITIVE_TIMELINES 
@@ -319,6 +324,7 @@ import PeacockFamilySEOFAQSection from './PeacockFamilySEOFAQSection';
 import PeacockDramaSEOFAQSection from './PeacockDramaSEOFAQSection';
 import PeacockThrillerSEOFAQSection from './PeacockThrillerSEOFAQSection';
 import PeacockBestSEOFAQSection from './PeacockBestSEOFAQSection';
+import PeacockComedySEOFAQSection from './PeacockComedySEOFAQSection';
 
 const MovieDetailsSection = React.memo(({
   movie,
@@ -379,6 +385,7 @@ const MovieDetailsSection = React.memo(({
   fromPeacockDramaCollection,
   fromPeacockThrillerCollection,
   fromPeacockBestCollection,
+  fromPeacockComedyCollection,
 }) => {
 
  if (!movie) return null;
@@ -420,6 +427,7 @@ const MovieDetailsSection = React.memo(({
   : fromPeacockDramaCollection ? safeLookup(PEACOCK_DRAMA_MOVIE_DATA, movie.tmdbId)
   : fromPeacockThrillerCollection ? safeLookup(PEACOCK_THRILLER_MOVIE_DATA, movie.tmdbId)
   : fromPeacockBestCollection ? safeLookup(PEACOCK_BEST_MOVIE_DATA, movie.tmdbId)
+  : fromPeacockComedyCollection ? safeLookup(PEACOCK_COMEDY_MOVIE_DATA, movie.tmdbId)
   : fromDonnieDarkoCollection ? safeLookup(DONNIE_DARKO_MOVIE_DATA, movie.tmdbId)
   : fromParasiteCollection ? safeLookup(PARASITE_MOVIE_DATA, movie.tmdbId)
   : fromMatrixCollection ? safeLookup(MATRIX_MOVIE_DATA, movie.tmdbId)
@@ -580,6 +588,7 @@ const MovieDetailsSection = React.memo(({
    || PEACOCK_DRAMA_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || PEACOCK_THRILLER_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || PEACOCK_BEST_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
+   || PEACOCK_COMEDY_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || DONNIE_DARKO_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || PARASITE_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || BLACK_SWAN_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
@@ -633,6 +642,7 @@ const MovieDetailsSection = React.memo(({
    : fromPeacockDramaCollection ? movie.emotionalIntensity ?? safeMovieInfo.emotionalIntensity ?? 0
    : fromPeacockThrillerCollection ? movie.suspenseIntensity ?? safeMovieInfo.suspenseIntensity ?? 0
    : fromPeacockBestCollection ? movie.cinematicMastery ?? safeMovieInfo.cinematicMastery ?? 0
+   : fromPeacockComedyCollection ? movie.laughterIndex ?? safeMovieInfo.laughterIndex ?? 0
    : fromDonnieDarkoCollection ? movie.realityWarpIndex ?? safeMovieInfo.realityWarpIndex ?? 0
    : fromParasiteCollection ? movie.classWarfareIndex ?? safeMovieInfo.classWarfareIndex ?? 0
    : fromMatrixCollection ? movie.cyberComplexity ?? safeMovieInfo.cyberComplexity ?? 0
@@ -723,7 +733,7 @@ const MovieDetailsSection = React.memo(({
      default: return '#6b7280';
         }
    }
-   if (fromHboMaxComedyCollection || fromParamountComedyCollection) {
+   if (fromHboMaxComedyCollection || fromParamountComedyCollection || fromPeacockComedyCollection) {
         switch (level) {
      case 'EXTREME': return '#ea0808ff';
      case 'HIGH': return '#eb7a09ff';
@@ -877,6 +887,7 @@ if (fromPsychologicalThrillerCollection) {
    if (fromHboMaxDramaCollection || fromParamountDramaCollection) return 'EMOTIONAL INTENSITY'; 
    if (fromHboMaxComedyCollection) return 'LAUGHTER INDEX';
    if (fromParamountComedyCollection) return 'LAUGHTER INDEX';
+   if (fromPeacockComedyCollection) return 'LAUGHTER INDEX';
    if (fromHuluDramaCollection || fromPeacockDramaCollection) return 'EMOTIONAL INTENSITY';
    if (fromHuluBestCollection) return 'INTENSITY SCORE'; 
    if (fromHuluThrillerCollection || fromParamountThrillerCollection || fromPeacockThrillerCollection) return 'SUSPENSE SCORE'; 
@@ -920,7 +931,7 @@ if (fromPsychologicalThrillerCollection) {
    if (fromParamountHorrorCollection) return 'TRAUMA INDEX';
    if (fromHboMaxBestCollection || fromParamountBestCollection || fromPeacockBestCollection) return 'MASTERY INDEX'; // ✅ ADDED
    if (fromHboMaxDramaCollection || fromParamountDramaCollection) return 'EMOTIONAL IMPACT INDEX'; 
-   if (fromHboMaxComedyCollection || fromParamountComedyCollection) return 'LAUGHTER INDEX';
+   if (fromHboMaxComedyCollection || fromParamountComedyCollection || fromPeacockComedyCollection) return 'LAUGHTER INDEX';
    if (fromHuluDramaCollection || fromPeacockDramaCollection) return 'EMOTIONAL IMPACT INDEX';
    if (fromHuluBestCollection) return 'ACCLAIM INDEX'; 
    if (fromHuluThrillerCollection || fromParamountThrillerCollection || fromPeacockThrillerCollection) return 'TENSION INDEX'; 
@@ -964,7 +975,7 @@ if (fromPsychologicalThrillerCollection) {
    if (fromParamountHorrorCollection) return 'NIGHTMARE LEVEL';
    if (fromHboMaxBestCollection || fromParamountBestCollection || fromPeacockBestCollection) return 'LEGACY LEVEL'; // ✅ ADDED
    if (fromHboMaxDramaCollection || fromParamountDramaCollection) return 'DEPTH LEVEL'; 
-   if (fromHboMaxComedyCollection || fromParamountComedyCollection) return 'COMEDY TIER';
+   if (fromHboMaxComedyCollection || fromParamountComedyCollection || fromPeacockComedyCollection) return 'COMEDY TIER';
    if (fromHuluDramaCollection || fromPeacockDramaCollection) return 'RESONANCE LEVEL';
    if (fromHuluBestCollection) return 'PRESTIGE LEVEL'; 
    if (fromHuluThrillerCollection || fromParamountThrillerCollection || fromPeacockThrillerCollection) return 'THRILL LEVEL'; 
@@ -1039,7 +1050,7 @@ if (fromPsychologicalThrillerCollection) {
         if (scoreValue >= 80) return 'A deeply moving film with powerful performances and rich storytelling.';
         return 'A compelling drama with genuine emotional stakes and solid acting.';
    }
-   if (fromHboMaxComedyCollection || fromParamountComedyCollection) {
+   if (fromHboMaxComedyCollection || fromParamountComedyCollection || fromPeacockComedyCollection) {
         if (scoreValue >= 90) return 'A satirical masterpiece that defines the genre. Brilliant, witty, and timeless.';
         if (scoreValue >= 80) return 'Extremely funny with sharp writing and memorable performances.';
         return 'A solid comedy that delivers consistent laughs and good entertainment.';
@@ -1120,7 +1131,7 @@ if (fromPsychologicalThrillerCollection) {
    if (fromHboMaxHorrorCollection || fromParamountHorrorCollection) return 'border-red-700/40';
    if (fromHboMaxBestCollection || fromParamountBestCollection || fromPeacockBestCollection) return 'border-amber-500/40'; // ✅ ADDED
    if (fromHboMaxDramaCollection || fromParamountDramaCollection) return 'border-indigo-500/40'; 
-   if (fromHboMaxComedyCollection || fromParamountComedyCollection) return 'border-yellow-500/40';
+   if (fromHboMaxComedyCollection || fromParamountComedyCollection || fromPeacockComedyCollection) return 'border-yellow-500/40';
    if (fromHuluDramaCollection || fromPeacockDramaCollection) return 'border-blue-500/40';
    if (fromHuluBestCollection) return 'border-amber-500/40'; 
    if (fromHuluThrillerCollection || fromParamountThrillerCollection || fromPeacockThrillerCollection) return 'border-red-500/40'; 
@@ -1149,7 +1160,7 @@ if (fromPsychologicalThrillerCollection) {
    if (fromHboMaxHorrorCollection || fromParamountHorrorCollection) return 'text-red-600';
    if (fromHboMaxBestCollection || fromParamountBestCollection || fromPeacockBestCollection) return 'text-amber-500'; // ✅ ADDED
    if (fromHboMaxDramaCollection || fromParamountDramaCollection) return 'text-indigo-500'; 
-   if (fromHboMaxComedyCollection || fromParamountComedyCollection) return 'text-yellow-500';
+   if (fromHboMaxComedyCollection || fromParamountComedyCollection || fromPeacockComedyCollection) return 'text-yellow-500';
    if (fromHuluDramaCollection || fromPeacockDramaCollection) return 'text-blue-500';
    if (fromHuluBestCollection) return 'text-amber-500'; 
    if (fromHuluThrillerCollection || fromParamountThrillerCollection || fromPeacockThrillerCollection) return 'text-red-500'; 
@@ -1415,6 +1426,7 @@ if (fromPsychologicalThrillerCollection) {
         : fromParamountComedyCollection ? <ParamountComedySEOFAQSection movie={movie} />
         : fromParamountBestCollection ? <ParamountBestSEOFAQSection movie={movie} /> // ✅ ADDED
         : fromPeacockBestCollection ? <PeacockBestSEOFAQSection movie={movie} />
+        : fromPeacockComedyCollection ? <PeacockComedySEOFAQSection movie={movie} />
         : fromPeacockActionAdventureCollection ? <PeacockActionAdventureSEOFAQSection movie={movie} />
         : fromPeacockSciFiCollection ? <PeacockSciFiSEOFAQSection movie={movie} />
         : fromPeacockRomanceCollection ? <PeacockRomanceSEOFAQSection movie={movie} />
