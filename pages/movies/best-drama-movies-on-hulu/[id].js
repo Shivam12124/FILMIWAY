@@ -338,8 +338,8 @@ const HuluDramaMoviePage = ({ movie, tmdbData: movieData }) => {
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
     // ✅ SEO FIX
-    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Best Drama Movies on Hulu | Filmiway`;
-    const cleanSEODesc = `${movie.Title} (${currentMovieYear}) - A powerful drama streaming on Hulu. Analysis of emotional impact, themes, and character depth.`;
+    const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Best Drama Movies on Hulu | Filmiway'].join('');
+    const cleanSEODesc = [movie.Title, ' (', currentMovieYear, ') - A powerful drama streaming on Hulu. Analysis of emotional impact, themes, and character depth.'].join('');
 
     const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear);
 

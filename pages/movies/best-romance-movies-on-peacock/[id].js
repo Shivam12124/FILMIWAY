@@ -320,8 +320,8 @@ const PeacockRomanceMoviePage = ({ movie, tmdbData: movieData }) => {
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
     // ✅ SEO FIX: Clean strings to prevent hydration errors & Updated Title
-    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Best Romance Movies on Peacock | Filmiway`;
-    const cleanSEODesc = `${movie.Title} (${currentMovieYear}) - A deeply emotional romance movie streaming on Peacock. Ranked by emotional intensity.`;
+    const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Best Romance Movies on Peacock | Filmiway'].join('');
+    const cleanSEODesc = [movie.Title, ' (', currentMovieYear, ') - A deeply emotional romance movie streaming on Peacock. Ranked by emotional intensity.'].join('');
 
     const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear);
 

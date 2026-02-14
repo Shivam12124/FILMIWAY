@@ -342,8 +342,8 @@ const PeacockThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
     // ✅ SEO FIX
-    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Best Thriller Movies on Peacock | Filmiway`;
-    const cleanSEODesc = `${movie.Title} (${currentMovieYear}) - A gripping thriller streaming on Peacock. Ranked by suspense intensity and psychological impact.`;
+    const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Best Thriller Movies on Peacock | Filmiway'].join('');
+    const cleanSEODesc = [movie.Title, ' (', currentMovieYear, ') - A gripping thriller streaming on Peacock. Ranked by suspense intensity and psychological impact.'].join('');
 
     const collectionSlug = router.pathname.split('/')[2];
     const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;

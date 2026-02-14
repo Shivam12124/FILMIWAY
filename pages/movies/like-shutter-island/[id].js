@@ -243,33 +243,22 @@ const generateMovieSchema = (movie, movieData, currentMovieYear, collectionSlug)
   return { movieSchema, faqSchema };
 };
 
-const ShutterIslandMoviePage = ({ movie }) => {
+const ShutterIslandMoviePage = ({ movie, tmdbData }) => {
     const router = useRouter();
     const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
     const correctData = MOVIE_DATA_BY_TITLE[movie.Title];
-    const [movieData, setMovieData] = useState(null);
     const [isMobile, setIsMobile] = useState(false);
-    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         const checkMobile = () => setIsMobile(window.innerWidth < 768);
         checkMobile();
         window.addEventListener('resize', checkMobile);
-        const fetchMovieData = async () => {
-            try {
-                setIsLoading(true);
-                const response = await fetch(`https://api.themoviedb.org/3/movie/${movie.tmdbId}?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&append_to_response=videos`);
-                const data = await response.json();
-                setMovieData(data);
-            } catch (error) { console.error('Failed to fetch movie data:', error); }
-            finally { setIsLoading(false); }
-        };
-        fetchMovieData();
         return () => window.removeEventListener('resize', checkMobile);
-    }, [movie.tmdbId]);
+    }, []);
 
     useEffect(() => { if (typeof window !== 'undefined') { sessionStorage.setItem('fromShutterIslandCollection', 'true'); } }, []);
 
+    const movieData = tmdbData;
     const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.Year || 'Unknown';
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
     
@@ -278,11 +267,10 @@ const ShutterIslandMoviePage = ({ movie }) => {
 
     const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear, collectionSlug);
 
-    // ✅ SEO FIX
-    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Movies Like Shutter Island | Filmiway`;
-    const cleanSEODesc = `${movie.Title} (${currentMovieYear}) - A compelling psychological thriller like Shutter Island.`;
-
-    if (isLoading) return (<div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: COLORS.bgPrimary }}><div className="text-center"><div className="w-12 h-12 sm:w-16 sm:h-16 border-4 rounded-full animate-spin mx-auto mb-4" style={{ borderColor: COLORS.borderLight, borderTopColor: COLORS.accent }}></div><p className="text-sm sm:text-base" style={{ color: COLORS.textMuted }}>Loading...</p></div></div>);
+    // ✅ SEO FIX: Robust Strings
+    const movieTitle = movie?.Title || 'Untitled Movie';
+    const cleanSEOTitle = `${movieTitle} (${currentMovieYear}) - Movies Like Shutter Island | Filmiway`;
+    const cleanSEODesc = `${movieTitle} (${currentMovieYear}) - A compelling psychological thriller like Shutter Island.`;
 
     return (
         <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
@@ -344,7 +332,18 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
     const movie = COMPLETE_MOVIE_DATABASE.find(m => m.imdbID === params.id);
     if (!movie) return { notFound: true };
-    return { props: { movie } };
+
+    try {
+        const tmdbResponse = await fetch(
+            `https://api.themoviedb.org/3/movie/${movie.tmdbId}?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&append_to_response=videos`
+        );
+        const tmdbData = tmdbResponse.ok ? await tmdbResponse.json() : null;
+
+        return { props: { movie, tmdbData } };
+    } catch (error) {
+        console.error('Error fetching TMDB data:', error);
+        return { props: { movie, tmdbData: null } };
+    }
 }
 
 export default ShutterIslandMoviePage;

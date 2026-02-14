@@ -335,12 +335,14 @@ const Se7enMoviePage = ({ movie, tmdbData: movieData }) => {
     }
   }, []);
 
-    const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
+      const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
-    // ✅ SEO FIX: Combine variables into single string FIRST to prevent React hydration anchors ()
-    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Movies Like Se7en | Filmiway`;
-    const cleanSEODesc = `${movie.Title} (${currentMovieYear}) - A dark, procedural noir like Se7en. Analysis, intensity ratings & where to stream.`;
+
+    // ✅ FIXED: Use Array.join() to prevent React HTML comment injection
+    const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Movies Like Se7en | Filmiway'].join('');
+    const cleanSEODesc = [movie.Title, ' (', currentMovieYear, ') - A dark, procedural noir like Se7en. Analysis, intensity ratings & where to stream.'].join('');
+
 
     // Generate schema
     const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear);

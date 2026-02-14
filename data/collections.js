@@ -4552,27 +4552,30 @@ movies: [
     'astrophysics'
   ],
 
-  // 🔥 SEO: High-Intent for "Smart" Sci-Fi
-  seo: {
-    title: '10 Movies Like Interstellar That Will Expand Your Mind | Filmiway',
-    description: 
-      'Craving more space epics? We ranked 10 masterpieces like Interstellar, Arrival, and 2001: A Space Odyssey that explore time, gravity, and human existence.',
-    keywords: 
-      'movies like interstellar, best space movies, hard sci-fi films, arrival explained, 2001 space odyssey meaning, ad astra, time dilation movies',
-    
-    canonicalUrl: 'https://filmiway.com/collection/movies-like-interstellar',
-    
-    ogTitle: '10 Movies That capture The Infinite Void (Like Interstellar)',
-    twitterTitle: 'Can Your Mind Handle These 10 Cosmic Epics? 🌌',
+// 🔥 SEO: High-Intent for "Smart" Sci-Fi
+seo: {
+  title: '10 Movies Like Interstellar That Will Expand Your Mind | Filmiway',
+  description: 
+    'Craving more space epics? We ranked 10 masterpieces like Interstellar, Arrival, and 2001: A Space Odyssey that explore time, gravity, and human existence.',
+  keywords: 
+    'movies like interstellar, best space movies, hard sci-fi films, arrival explained, 2001 space odyssey meaning, ad astra, time dilation movies',
+  
+  canonicalUrl: 'https://filmiway.com/collection/movies-like-interstellar',
+  
+  // ✅ FIXED: Now matches the main title
+  ogTitle: '10 Movies Like Interstellar That Will Expand Your Mind | Filmiway',
+  twitterTitle: '10 Movies Like Interstellar That Will Expand Your Mind | Filmiway',
 
-    structuredData: {
-      '@context': 'https://schema.org',
-      '@type': 'ItemList',
-      name: '10 Best Deep Space Sci-Fi Movies',
-      description: 'Expert-curated ranking of cinema\'s most scientifically and philosophically ambitious space films.',
-      numberOfItems: 10
-    }
-  },
+  structuredData: {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    // ✅ FIXED: Now matches the main title (without | Filmiway for cleaner structured data)
+    name: '10 Movies Like Interstellar That Will Expand Your Mind',
+    description: 'Expert-curated ranking of cinema\'s most scientifically and philosophically ambitious space films.',
+    numberOfItems: 10
+  }
+},
+
 
   stats: {
     totalMovies: 10,

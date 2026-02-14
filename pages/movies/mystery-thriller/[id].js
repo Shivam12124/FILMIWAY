@@ -316,7 +316,7 @@ const MysteryThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
     // ✅ SEO FIX: Construct clean title and description strings FIRST to prevent hydration comments ()
-    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Best Mystery Thriller Movies | Filmiway`;
+    const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Best Mystery Thriller Movies | Filmiway'].join('');
     const cleanSEODesc = richData?.synopsis || `Watch ${movie.Title}, a gripping mystery thriller. Detailed analysis, intensity ratings & where to stream.`;
 
     const collectionSlug = router.pathname.split('/')[2];

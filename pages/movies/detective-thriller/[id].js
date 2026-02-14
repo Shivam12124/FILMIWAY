@@ -319,8 +319,8 @@ const DetectiveThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
     // ✅ SEO FIX: Join title into a single string variable to prevent hydration markers ()
-    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Best Detective Thrillers | Filmiway`;
-    const cleanSEODesc = `${movie.Title} (${currentMovieYear}) - A masterful detective thriller. Analysis, mystery ratings & where to stream.`;
+    const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Best Detective Thrillers | Filmiway'].join('');
+    const cleanSEODesc = [movie.Title, ' (', currentMovieYear, ') - A masterful detective thriller. Analysis, mystery ratings & where to stream.'].join('');
 
     const collectionSlug = router.pathname.split('/')[2];
     const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;

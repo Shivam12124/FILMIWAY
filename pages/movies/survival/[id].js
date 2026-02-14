@@ -288,7 +288,7 @@ const SurvivalMoviePage = ({ movie, tmdbData: movieData, sensitiveData }) => {
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
     // ✅ SEO FIX: Join title and description strings FIRST to prevent hydration markers ()
-    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Best Survival Film | Filmiway`;
+    const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Best Survival Film | Filmiway'].join('');
     const cleanSEODesc = `${movie.Title} - A compelling survival film. Analysis & where to stream.`;
 
     const collectionSlug = router.pathname.split('/')[2];

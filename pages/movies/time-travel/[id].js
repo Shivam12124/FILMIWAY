@@ -338,8 +338,8 @@ const TimeTravelMoviePage = ({ movie, tmdbData: movieData }) => {
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
     // ✅ SEO FIX: Pre-construct clean strings to prevent hydration markers () in search snippets
-    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Best Time Travel Movies | Filmiway`;
-    const cleanSEODesc = `${movie.Title} (${currentMovieYear}) - A mind-bending time travel masterpiece. Analysis, complexity ratings & where to stream.`;
+    const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Best Time Travel Movies | Filmiway'].join('');
+    const cleanSEODesc = [movie.Title, ' (', currentMovieYear, ') - A mind-bending time travel masterpiece. Analysis, complexity ratings & where to stream.'].join('');
 
     const collectionSlug = router.pathname.split('/')[2];
     const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;

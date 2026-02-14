@@ -335,8 +335,8 @@ const HboMaxRomanceMoviePage = ({ movie, tmdbData: movieData }) => {
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
     // ✅ SEO FIX: Clean strings to prevent hydration errors
-    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Best Romance Movies on HBO Max | Filmiway`;
-    const cleanSEODesc = `${movie.Title} (${currentMovieYear}) - A top romance movie streaming on HBO Max. Ranked by emotional intensity and chemistry.`;
+    const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Best Romance Movies on HBO Max | Filmiway'].join('');
+    const cleanSEODesc = [movie.Title, ' (', currentMovieYear, ') - A top romance movie streaming on HBO Max. Ranked by emotional intensity and chemistry.'].join('');
 
     const collectionSlug = router.pathname.split('/')[2];
     const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;

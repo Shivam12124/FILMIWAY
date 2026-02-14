@@ -337,8 +337,8 @@ const CrimeThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
     // ✅ SEO FIX: Pre-construct clean strings to prevent hydration markers () in search snippets
-    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Best Crime Thriller | Filmiway`;
-    const cleanSEODesc = `${movie.Title} (${currentMovieYear}) - A gripping crime thriller. Analysis, ratings & where to stream.`;
+    const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Best Crime Thriller | Filmiway'].join('');
+    const cleanSEODesc = [movie.Title, ' (', currentMovieYear, ') - A gripping crime thriller. Analysis, ratings & where to stream.'].join('');
 
     const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear);
 

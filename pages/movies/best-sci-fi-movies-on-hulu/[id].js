@@ -322,8 +322,8 @@ const HuluSciFiMoviePage = ({ movie, tmdbData: movieData }) => {
     const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
-    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Best Sci-Fi Movies on Hulu | Filmiway`;
-    const cleanSEODesc = `${movie.Title} (${currentMovieYear}) - A mind-bending sci-fi masterpiece streaming on Hulu. Ranked by intellectual complexity and visual spectacle.`;
+    const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Best Sci-Fi Movies on Hulu | Filmiway'].join('');
+    const cleanSEODesc = [movie.Title, ' (', currentMovieYear, ') - A mind-bending sci-fi masterpiece streaming on Hulu. Ranked by intellectual complexity and visual spectacle.'].join('');
 
     const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear);
 

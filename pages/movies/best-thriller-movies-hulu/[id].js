@@ -334,8 +334,8 @@ const HuluThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
     // ✅ SEO FIX: Clean strings
-    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Best Thriller Movies on Hulu | Filmiway`;
-    const cleanSEODesc = `${movie.Title} (${currentMovieYear}) - A gripping thriller streaming on Hulu. Ranked by suspense intensity and psychological impact.`;
+    const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Best Thriller Movies on Hulu | Filmiway'].join('');
+    const cleanSEODesc = [movie.Title, ' (', currentMovieYear, ') - A gripping thriller streaming on Hulu. Ranked by suspense intensity and psychological impact.'].join('');
 
     const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear);
 

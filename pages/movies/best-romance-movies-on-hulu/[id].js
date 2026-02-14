@@ -335,8 +335,8 @@ const HuluRomanceMoviePage = ({ movie, tmdbData: movieData }) => {
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
     // ✅ SEO FIX: Clean strings to prevent hydration errors
-    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Best Romance Movies on Hulu | Filmiway`;
-    const cleanSEODesc = `${movie.Title} (${currentMovieYear}) - A top romance movie streaming on Hulu. Ranked by emotional resonance and chemistry.`;
+    const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Best Romance Movies on Hulu | Filmiway'].join('');
+    const cleanSEODesc = [movie.Title, ' (', currentMovieYear, ') - A top romance movie streaming on Hulu. Ranked by emotional resonance and chemistry.'].join('');
 
     const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear);
 

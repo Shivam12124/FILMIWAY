@@ -255,7 +255,7 @@ const HboActionMoviePage = ({ movie, tmdbData: movieData, sensitiveData }) => {
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
     // ✅ VISIBLE H1 for SEO
-    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Best Action Movies on HBO Max | Filmiway`;
+    const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Best Action Movies on HBO Max | Filmiway'].join('');
     const cleanSEODesc = `${movie.Title} (${currentMovieYear}) is one of the best action movies on HBO Max, ranked by Filmiway for epic scale, action intensity, and cinematic impact.`;
 
     const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear);

@@ -313,9 +313,11 @@ const EyesWideShutMoviePage = ({ movie, tmdbData: movieData }) => {
     const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
-    // ✅ SEO STRINGS (HYDRATION FIX)
-    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Movies Like Eyes Wide Shut | Filmiway`;
-    const cleanSEODesc = `${movie.Title} (${currentMovieYear}) - A paranoid thriller like Eyes Wide Shut. Analysis, ratings & where to stream.`;
+
+    // ✅ FIXED: Use Array.join() to prevent React HTML comment injection
+    const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Movies Like Eyes Wide Shut | Filmiway'].join('');
+    const cleanSEODesc = [movie.Title, ' (', currentMovieYear, ') - A paranoid thriller like Eyes Wide Shut. Analysis, ratings & where to stream.'].join('');
+
 
     const collectionSlug = router.pathname.split('/')[2];
     const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;

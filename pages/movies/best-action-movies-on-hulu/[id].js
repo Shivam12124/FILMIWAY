@@ -340,8 +340,8 @@ const HuluActionMoviePage = ({ movie, tmdbData: movieData }) => {
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
     // ✅ SEO FIX: Clean strings to prevent hydration errors
-    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Best Action Movies on Hulu | Filmiway`;
-    const cleanSEODesc = `${movie.Title} (${currentMovieYear}) - A high-octane action movie streaming on Hulu. Ranked by adrenaline and violence level.`;
+    const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Best Action Movies on Hulu | Filmiway'].join('');
+    const cleanSEODesc = [movie.Title, ' (', currentMovieYear, ') - A high-octane action movie streaming on Hulu. Ranked by adrenaline and violence level.'].join('');
 
     const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear);
 

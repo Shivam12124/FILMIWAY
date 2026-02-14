@@ -339,8 +339,8 @@ const HboMaxThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
     // ✅ SEO FIX: Clean strings to prevent hydration errors
-    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Best Thriller Movies on HBO Max | Filmiway`;
-    const cleanSEODesc = `${movie.Title} (${currentMovieYear}) - A suspenseful thriller streaming on HBO Max. Ranked by tension and psychological pressure.`;
+    const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Best Thriller Movies on HBO Max | Filmiway'].join('');
+    const cleanSEODesc = [movie.Title, ' (', currentMovieYear, ') - A suspenseful thriller streaming on HBO Max. Ranked by tension and psychological pressure.'].join('');
 
     const collectionSlug = router.pathname.split('/')[2];
     const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;

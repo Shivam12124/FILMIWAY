@@ -347,8 +347,8 @@ const ParamountFamilyMoviePage = ({ movie, tmdbData: movieData }) => {
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
     // ✅ SEO FIX
-    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Best Family Movies on Paramount+ | Filmiway`;
-    const cleanSEODesc = `${movie.Title} (${currentMovieYear}) - A magical family movie streaming on Paramount+. Ranked by wholesomeness and fun factor.`;
+    const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Best Family Movies on Paramount+ | Filmiway'].join('');
+    const cleanSEODesc = [movie.Title, ' (', currentMovieYear, ') - A magical family movie streaming on Paramount+. Ranked by wholesomeness and fun factor.'].join('');
 
     const collectionSlug = router.pathname.split('/')[2];
     const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;

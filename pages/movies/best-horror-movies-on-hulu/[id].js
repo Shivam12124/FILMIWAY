@@ -331,8 +331,8 @@ const HuluHorrorMoviePage = ({ movie, tmdbData: movieData }) => {
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
     // ✅ SEO FIX: Clean strings to prevent hydration errors
-    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Best Horror Movies on Hulu | Filmiway`;
-    const cleanSEODesc = `${movie.Title} (${currentMovieYear}) - A terrifying horror movie streaming on Hulu. Ranked by dread and gore levels.`;
+    const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Best Horror Movies on Hulu | Filmiway'].join('');
+    const cleanSEODesc = [movie.Title, ' (', currentMovieYear, ') - A terrifying horror movie streaming on Hulu. Ranked by dread and gore levels.'].join('');
 
     const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear);
 

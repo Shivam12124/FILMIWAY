@@ -326,7 +326,7 @@ const HeistThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
     // ✅ SEO FIX: Join title into a single string variable to prevent hydration markers ()
-    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Best Heist Thriller Movies | Filmiway`;
+    const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Best Heist Thriller Movies | Filmiway'].join('');
     const cleanSEODesc = richData?.synopsis || `Watch ${movie.Title}, a high-stakes heist thriller. Detailed analysis, intensity ratings & where to stream.`;
 
     const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear);

@@ -304,7 +304,7 @@ const SciFiMoviePage = ({ movie, tmdbData: movieData }) => {
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
     // ✅ SEO FIX: Join title into a single string variable to prevent hydration markers ()
-    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Sci-Fi Analysis & Timestamps | Filmiway`;
+    const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Sci-Fi Analysis & Timestamps | Filmiway'].join('');
     const cleanSEODesc = `${movie.Title} - ${richData.synopsis ? richData.synopsis.substring(0, 100) : 'Sci-Fi Masterpiece'}... Includes exact timestamps for sensitive content.`;
 
     const collectionSlug = router.pathname.split('/')[2];

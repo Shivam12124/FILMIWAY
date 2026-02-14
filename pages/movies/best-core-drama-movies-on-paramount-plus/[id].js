@@ -346,8 +346,8 @@ const ParamountDramaMoviePage = ({ movie, tmdbData: movieData }) => {
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
     // ✅ SEO FIX
-    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Best Core Drama Movies on Paramount+ | Filmiway`;
-    const cleanSEODesc = `${movie.Title} (${currentMovieYear}) - A powerful drama streaming on Paramount+. Analysis of emotional impact, themes, and character depth.`;
+    const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Best Core Drama Movies on Paramount+ | Filmiway'].join('');
+    const cleanSEODesc = [movie.Title, ' (', currentMovieYear, ') - A powerful drama streaming on Paramount+. Analysis of emotional impact, themes, and character depth.'].join('');
 
     const collectionSlug = router.pathname.split('/')[2];
     const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;

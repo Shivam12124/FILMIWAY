@@ -452,37 +452,19 @@ const WarFilmBackButton = () => {
   );
 };
 
-const WarFilmMoviePage = ({ movie }) => {
+const WarFilmMoviePage = ({ movie, tmdbData }) => {
   const router = useRouter();
   const [scrollY, setScrollY] = useState(0);
-  const [movieData, setMovieData] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
     checkMobile();
     window.addEventListener('resize', checkMobile);
-
-    const fetchMovieData = async () => {
-      try {
-        setIsLoading(true);
-        const response = await fetch(
-          `https://api.themoviedb.org/3/movie/${movie.tmdbId}?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&append_to_response=videos`
-        );
-        const data = await response.json();
-        setMovieData(data);
-      } catch (error) {
-        console.error('Failed to fetch movie data:', error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchMovieData();
-
     return () => window.removeEventListener('resize', checkMobile);
-  }, [movie.tmdbId]);
+  }, []);
+
+  const movieData = tmdbData;
 
   const mergedMovieData = {
     ...movieData,
@@ -517,22 +499,17 @@ const WarFilmMoviePage = ({ movie }) => {
   const collectionSlug = router.pathname.split('/')[2];
   const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
 
-  if (isLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: COLORS.bgPrimary }}>
-        <div className="text-center">
-          <div className="w-12 h-12 sm:w-16 sm:h-16 border-4 rounded-full animate-spin mx-auto mb-4" style={{ borderColor: COLORS.borderLight, borderTopColor: COLORS.accent }}></div>
-          <p className="text-sm sm:text-base" style={{ color: COLORS.textMuted }}>Loading...</p>
-        </div>
-      </div>
-    );
-  }
+  // ✅ SEO FIX: Robust strings
+  const movieTitle = movie?.title || movie?.Title || 'Untitled Movie';
+  const movieYear = movie?.year || 'Unknown';
+  const cleanSEOTitle = `${movieTitle} (${movieYear}) - Best War Films | Filmiway`;
+  const cleanSEODesc = `${movieTitle} (${movieYear}) - ${movie.synopsis?.substring(0, 150) || 'War film'}...`;
 
   return (
     <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
       <Head>
-        <title>{movie.title} ({movie.year}) - Best War Films | Filmiway</title>
-        <meta name="description" content={`${movie.title} (${movie.year}) - ${movie.synopsis?.substring(0, 150) || 'War film'}...`} />
+        <title>{cleanSEOTitle}</title>
+        <meta name="description" content={cleanSEODesc} />
         <link rel="canonical" href={canonicalUrl} />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
         <meta name="robots" content="index, follow" />
@@ -545,6 +522,9 @@ const WarFilmMoviePage = ({ movie }) => {
       </div>
       <WarFilmBackButton />
       <div className="relative z-10 pt-10 sm:pt-12 lg:pt-16">
+        {/* ✅ HIDDEN H1 FOR SEO */}
+        <h1 className="sr-only">{cleanSEOTitle}</h1>
+
         <OptimizedBanner movie={movie} movieData={mergedMovieData} trailer={trailer} isMobile={isMobile} />
                <div className="container mx-auto px-0 pb-16 sm:pb-24 lg:pb-32 max-w-7xl">
           <motion.div id="watch" initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.2, duration: 0.8 }} className="space-y-8 sm:space-y-12 px-3 sm:px-4 lg:px-6">
@@ -628,7 +608,18 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const movie = WAR_FILMS.find((m) => m.imdbID === params.id);
   if (!movie) return { notFound: true };
-  return { props: { movie } };
+
+  try {
+    const tmdbResponse = await fetch(
+      `https://api.themoviedb.org/3/movie/${movie.tmdbId}?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&append_to_response=videos`
+    );
+    const tmdbData = tmdbResponse.ok ? await tmdbResponse.json() : null;
+
+    return { props: { movie, tmdbData } };
+  } catch (error) {
+    console.error('Error fetching TMDB data:', error);
+    return { props: { movie, tmdbData: null } };
+  }
 }
 
 export default WarFilmMoviePage;

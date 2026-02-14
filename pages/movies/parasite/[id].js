@@ -324,8 +324,8 @@ const ParasiteMoviePage = ({ movie, tmdbData: movieData }) => {
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
     // ✅ SEO FIX: Join title into a single string variable to prevent hydration markers ()
-    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Movies Like Parasite | Filmiway`;
-    const cleanSEODesc = `${movie.Title} (${currentMovieYear}) - A brilliant class warfare film like Parasite. Analysis, ratings & where to stream.`;
+    const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Movies Like Parasite | Filmiway'].join('');
+    const cleanSEODesc = [movie.Title, ' (', currentMovieYear, ') - A brilliant class warfare film like Parasite. Analysis, ratings & where to stream.'].join('');
 
     const collectionSlug = router.pathname.split('/')[2];
     const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;

@@ -338,8 +338,8 @@ const PeacockBestMoviePage = ({ movie, tmdbData: movieData }) => {
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
     // ✅ SEO TITLE
-    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Best Movies on Peacock | Filmiway`;
-    const cleanSEODesc = `${movie.Title} (${currentMovieYear}) - One of the highest-rated movies streaming on Peacock right now. Read our analysis, intensity score, and review.`;
+    const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Best Movies on Peacock | Filmiway'].join('');
+    const cleanSEODesc = [movie.Title, ' (', currentMovieYear, ') - One of the highest-rated movies streaming on Peacock right now. Read our analysis, intensity score, and review.'].join('');
 
     const collectionSlug = router.pathname.split('/')[2];
     const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;

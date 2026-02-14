@@ -339,8 +339,8 @@ const PeacockDramaMoviePage = ({ movie, tmdbData: movieData }) => {
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
     // ✅ SEO FIX
-    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Best Drama Movies on Peacock | Filmiway`;
-    const cleanSEODesc = `${movie.Title} (${currentMovieYear}) - A powerful drama streaming on Peacock. Analysis of emotional impact, themes, and character depth.`;
+    const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Best Drama Movies on Peacock | Filmiway'].join('');
+    const cleanSEODesc = [movie.Title, ' (', currentMovieYear, ') - A powerful drama streaming on Peacock. Analysis of emotional impact, themes, and character depth.'].join('');
 
     const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear);
 

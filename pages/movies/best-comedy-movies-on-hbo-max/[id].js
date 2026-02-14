@@ -340,8 +340,8 @@ const HboComedyMoviePage = ({ movie, tmdbData: movieData }) => {
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
     // ✅ SEO FIX
-    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Best Comedy Movies on HBO Max | Filmiway`;
-    const cleanSEODesc = `${movie.Title} (${currentMovieYear}) - A hilarious comedy movie streaming on HBO Max. Ranked by laughter and quotability.`;
+    const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Best Comedy Movies on HBO Max | Filmiway'].join('');
+    const cleanSEODesc = [movie.Title, ' (', currentMovieYear, ') - A hilarious comedy movie streaming on HBO Max. Ranked by laughter and quotability.'].join('');
 
     const collectionSlug = router.pathname.split('/')[2];
     const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;

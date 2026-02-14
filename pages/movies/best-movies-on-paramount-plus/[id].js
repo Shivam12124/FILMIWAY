@@ -346,8 +346,8 @@ const ParamountBestMoviePage = ({ movie, tmdbData: movieData }) => {
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
     // ✅ SEO TITLE
-    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Best Movies on Paramount+ | Filmiway`;
-    const cleanSEODesc = `${movie.Title} (${currentMovieYear}) - One of the highest-rated movies streaming on Paramount+ right now. Read our analysis, cinematic mastery score, and review.`;
+    const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Best Movies on Paramount+ | Filmiway'].join('');
+    const cleanSEODesc = [movie.Title, ' (', currentMovieYear, ') - One of the highest-rated movies streaming on Paramount+ right now. Read our analysis, cinematic mastery score, and review.'].join('');
 
     const collectionSlug = router.pathname.split('/')[2];
     const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;

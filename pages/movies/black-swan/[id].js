@@ -329,9 +329,9 @@ const BlackSwanMoviePage = ({ movie, tmdbData: movieData }) => {
     const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
-    // ✅ SEO FIX: Construct clean title and description strings FIRST
-    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Movies Like Black Swan | Filmiway`;
-    const cleanSEODesc = `${movie.Title} (${currentMovieYear}) - A psychologically intense film like Black Swan. Analysis, ratings & where to stream.`;
+    // ✅ FIX: Use Array.join() instead of template literals
+    const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Movies Like Black Swan | Filmiway'].join('');
+    const cleanSEODesc = [movie.Title, ' (', currentMovieYear, ') - A psychologically intense film like Black Swan. Analysis, ratings & where to stream.'].join('');
 
     const collectionSlug = router.pathname.split('/')[2];
     const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
@@ -341,7 +341,6 @@ const BlackSwanMoviePage = ({ movie, tmdbData: movieData }) => {
     return (
         <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
             <Head>
-                {/* ✅ HYDRATION BUG FULLY RESOLVED: Added unique KEY prop to title */}
                 <title key="title">{cleanSEOTitle}</title>
                 <meta key="desc" name="description" content={cleanSEODesc} />
                 <link rel="canonical" href={canonicalUrl} />

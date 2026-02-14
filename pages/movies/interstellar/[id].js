@@ -335,12 +335,14 @@ const InterstellarMoviePage = ({ movie, tmdbData: movieData }) => {
     const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
-    // ✅ SEO FIX: Clean strings
-    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Movies Like Interstellar | Filmiway`;
-    const cleanSEODesc = `${movie.Title} (${currentMovieYear}) - Explore the cosmic scale and emotional depth of this Interstellar-like masterpiece.`;
+
+    // ✅ FIXED: Use Array.join() to prevent React HTML comment injection
+    const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Movies Like Interstellar | Filmiway'].join('');
+    const cleanSEODesc = [movie.Title, ' (', currentMovieYear, ') - Explore the cosmic scale and emotional depth of this Interstellar-like masterpiece.'].join('');
+
 
     const collectionSlug = router.pathname.split('/')[2];
-    const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${INTERSTELLAR_MOVIE_SLUGS[movie.imdbID] || movie.imdbID}`;
+    const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
 
     const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear, collectionSlug);
 

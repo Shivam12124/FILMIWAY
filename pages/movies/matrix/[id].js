@@ -325,17 +325,21 @@ const MatrixMoviePage = ({ movie, tmdbData: movieData }) => {
     }
   }, []);
 
-    const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
+       const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
-    // ✅ SEO FIX: Construct clean title and description strings FIRST to prevent hydration comments ()
-    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Movies Like The Matrix | Filmiway`;
-    const cleanSEODesc = `${movie.Title} (${currentMovieYear}) - A mind-bending cyberpunk thriller. Analysis, metrics & where to stream.`;
+
+    // ✅ FIXED: Use Array.join() to prevent React HTML comment injection
+    const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Movies Like The Matrix | Filmiway'].join('');
+    const cleanSEODesc = [movie.Title, ' (', currentMovieYear, ') - A mind-bending cyberpunk thriller. Analysis, metrics & where to stream.'].join('');
+
 
     const collectionSlug = router.pathname.split('/')[2];
     const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
 
+
     const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear, collectionSlug);
+
 
     return (
         <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>

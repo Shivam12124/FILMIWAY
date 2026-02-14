@@ -349,8 +349,8 @@ const ParamountHorrorMoviePage = ({ movie, tmdbData: movieData }) => {
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
     // ✅ SEO FIX
-    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Best Horror Movies on Paramount+ | Filmiway`;
-    const cleanSEODesc = `${movie.Title} (${currentMovieYear}) - A terrifying horror movie streaming on Paramount+. Ranked by dread and gore levels.`;
+    const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Best Horror Movies on Paramount+ | Filmiway'].join('');
+    const cleanSEODesc = [movie.Title, ' (', currentMovieYear, ') - A terrifying horror movie streaming on Paramount+. Ranked by dread and gore levels.'].join('');
 
     const collectionSlug = router.pathname.split('/')[2];
     const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;

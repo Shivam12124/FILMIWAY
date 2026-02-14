@@ -339,8 +339,8 @@ const HuluFamilyMoviePage = ({ movie, tmdbData: movieData }) => {
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
     // ✅ SEO FIX: Clean strings to prevent hydration errors
-    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Best Family Movies on Hulu | Filmiway`;
-    const cleanSEODesc = `${movie.Title} (${currentMovieYear}) - A wonderful family movie streaming on Hulu. Ranked by wholesomeness and fun factor.`;
+    const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Best Family Movies on Hulu | Filmiway'].join('');
+    const cleanSEODesc = [movie.Title, ' (', currentMovieYear, ') - A wonderful family movie streaming on Hulu. Ranked by wholesomeness and fun factor.'].join('');
 
     const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear);
 

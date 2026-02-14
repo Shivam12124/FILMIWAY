@@ -332,8 +332,8 @@ const RevengeMoviePage = ({ movie, tmdbData: movieData }) => {
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
     // ✅ SEO FIX: Pre-construct clean strings to prevent hydration placeholders in snippets
-    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Best Revenge Movies | Filmiway`;
-    const cleanSEODesc = `${movie.Title} (${currentMovieYear}) - A brutal revenge masterpiece. Analysis, intensity ratings & where to stream.`;
+    const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Best Revenge Movies | Filmiway'].join('');
+    const cleanSEODesc = [movie.Title, ' (', currentMovieYear, ') - A brutal revenge masterpiece. Analysis, intensity ratings & where to stream.'].join('');
 
     const collectionSlug = router.pathname.split('/')[2];
     const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;

@@ -339,8 +339,8 @@ const ParamountActionMoviePage = ({ movie, tmdbData: movieData }) => {
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
     // ✅ SEO FIX: Clean strings to prevent hydration errors
-    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Best Action Movies on Paramount+ | Filmiway`;
-    const cleanSEODesc = `${movie.Title} (${currentMovieYear}) - A high-octane action movie streaming on Paramount+. Ranked by adrenaline and violence level.`;
+    const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Best Action Movies on Paramount+ | Filmiway'].join('');
+    const cleanSEODesc = [movie.Title, ' (', currentMovieYear, ') - A high-octane action movie streaming on Paramount+. Ranked by adrenaline and violence level.'].join('');
 
     const collectionSlug = router.pathname.split('/')[2];
     const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;

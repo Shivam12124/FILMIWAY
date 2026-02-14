@@ -319,8 +319,8 @@ const PeacockSciFiMoviePage = ({ movie, tmdbData: movieData }) => {
     const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
-    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Best Sci-Fi Movies on Peacock | Filmiway`;
-    const cleanSEODesc = `${movie.Title} (${currentMovieYear}) - A visionary sci-fi masterpiece streaming on Peacock. Ranked by complexity and visual scale.`;
+    const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Best Sci-Fi Movies on Peacock | Filmiway'].join('');
+    const cleanSEODesc = [movie.Title, ' (', currentMovieYear, ') - A visionary sci-fi masterpiece streaming on Peacock. Ranked by complexity and visual scale.'].join('');
 
     const collectionSlug = router.pathname.split('/')[2];
     const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;

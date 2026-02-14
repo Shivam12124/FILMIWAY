@@ -336,8 +336,8 @@ const HuluBestMoviePage = ({ movie, tmdbData: movieData }) => {
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
     // ✅ SEO TITLE
-    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Best Movies on Hulu | Filmiway`;
-    const cleanSEODesc = `${movie.Title} (${currentMovieYear}) - One of the highest-rated movies streaming on Hulu right now. Read our analysis, intensity score, and review.`;
+    const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Best Movies on Hulu | Filmiway'].join('');
+    const cleanSEODesc = [movie.Title, ' (', currentMovieYear, ') - One of the highest-rated movies streaming on Hulu right now. Read our analysis, intensity score, and review.'].join('');
 
     const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear);
 

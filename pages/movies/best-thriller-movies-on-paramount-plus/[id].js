@@ -347,8 +347,8 @@ const ParamountThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
     // ✅ SEO FIX
-    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Best Thriller Movies on Paramount+ | Filmiway`;
-    const cleanSEODesc = `${movie.Title} (${currentMovieYear}) - A suspenseful thriller streaming on Paramount+. Ranked by tension and psychological pressure.`;
+    const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Best Thriller Movies on Paramount+ | Filmiway'].join('');
+    const cleanSEODesc = [movie.Title, ' (', currentMovieYear, ') - A suspenseful thriller streaming on Paramount+. Ranked by tension and psychological pressure.'].join('');
 
     const collectionSlug = router.pathname.split('/')[2];
     const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;

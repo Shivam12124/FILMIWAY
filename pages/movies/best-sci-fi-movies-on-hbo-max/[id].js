@@ -330,8 +330,8 @@ const HboMaxSciFiMoviePage = ({ movie, tmdbData: movieData }) => {
     const collectionSlug = router.pathname.split('/')[2];
     const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
 
-    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Best Sci-Fi Movies on HBO Max | Filmiway`;
-    const cleanSEODesc = `${movie.Title} (${currentMovieYear}) - A spectacular sci-fi masterpiece streaming on HBO Max. Ranked by scale and mind-bending complexity.`;
+    const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Best Sci-Fi Movies on HBO Max | Filmiway'].join('');
+    const cleanSEODesc = [movie.Title, ' (', currentMovieYear, ') - A spectacular sci-fi masterpiece streaming on HBO Max. Ranked by scale and mind-bending complexity.'].join('');
 
     const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear);
 

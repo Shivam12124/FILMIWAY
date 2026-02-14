@@ -319,8 +319,8 @@ const ParamountRomanceMoviePage = ({ movie, tmdbData: movieData }) => {
     const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
-    const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) - Best Romance Movies on Paramount+ | Filmiway`;
-    const cleanSEODesc = `${movie.Title} (${currentMovieYear}) - A deeply emotional romance movie streaming on Paramount+. Ranked by emotional intensity.`;
+    const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Best Romance Movies on Paramount+ | Filmiway'].join('');
+    const cleanSEODesc = [movie.Title, ' (', currentMovieYear, ') - A deeply emotional romance movie streaming on Paramount+. Ranked by emotional intensity.'].join('');
 
     const collectionSlug = router.pathname.split('/')[2];
     const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
