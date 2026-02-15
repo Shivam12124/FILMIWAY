@@ -279,7 +279,7 @@ const generateMovieSchema = (movie, movieData, currentMovieYear, collectionSlug)
         },
         "genre": data?.dna ? Object.keys(data.dna) : ["Sci-Fi", "Drama"],
         "keywords": "Sci-Fi Movies Paramount Plus, Visionary Science Fiction, " + (data?.themes ? data.themes.join(", ") : ""),
-        "url": `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`,
+        "url": `https://filmiway.com/movies/best-sci-fi-movies-on-paramount-plus/${movie.imdbID}`,
         "author": { "@type": "Organization", "name": "Filmiway", "url": "https://filmiway.com" }
     };
 

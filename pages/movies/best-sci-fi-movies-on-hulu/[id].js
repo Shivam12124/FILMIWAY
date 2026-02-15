@@ -282,7 +282,7 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
         },
         "genre": data?.dna ? Object.keys(data.dna) : ["Sci-Fi", "Drama"],
         "keywords": "Sci-Fi Movies Hulu, Mind-Bending Movies, " + (data?.themes ? data.themes.join(", ") : ""),
-        "url": `https://filmiway.com/collection/best-sci-fi-movies-on-hulu/${movie.imdbID}`, 
+        "url": `https://filmiway.com/movies/best-sci-fi-movies-on-hulu/${movie.imdbID}`, 
         "author": { "@type": "Organization", "name": "Filmiway", "url": "https://filmiway.com" }
     };
 

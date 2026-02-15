@@ -1,14 +1,14 @@
 // pages/collection/movies-like-se7en/[id].js - H1 SEO FIX + HYDRATION FIX ✅
-// VISUALS: Minimalist Noir (Banner + Details Only)
+// VISUALS: Minimalist (Banner + Details Only)
 // SCHEMA: Maximalist (Hidden Intensity, DNA, and FAQs for Bots)
 
 import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Play, X, User, Twitter, Hash, Send, Fingerprint, Film, Search } from 'lucide-react';
-import { ChevronLeft, ChevronRight, Play, X, User, Twitter, Hash, Send, Fingerprint, Film, Search, FileText, Siren, Activity, HelpCircle } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Play, X, User, Twitter, Hash, Send, Fingerprint, Film } from 'lucide-react';
 import InternalCollectionsSection from '../../../components/InternalCollectionsSection';
 import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
@@ -25,14 +25,10 @@ import {
 
 // ✅ DARK NOIR COLOR PALETTE
 const COLORS = {
-  accent: '#ca8a04', // Dark Gold/Amber (Se7en's desert box/gluttony scene vibe)
-  accentLight: '#facc15', 
-  bgPrimary: '#050505', // Pitch black
-  bgCard: 'rgba(20, 20, 20, 0.6)',
-  textPrimary: '#FFFFFF', 
-  textSecondary: '#d4d4d4', 
-  textMuted: '#737373', 
-  textDisabled: '#404040',
+  accent: '#ca8a04', accentLight: '#facc15', 
+  bgPrimary: '#050505', bgCard: 'rgba(20, 20, 20, 0.6)',
+  textPrimary: '#FFFFFF', textSecondary: '#d4d4d4', 
+  textMuted: '#737373', textDisabled: '#404040',
   borderAccent: 'rgba(202, 138, 4, 0.25)', 
   borderLight: 'rgba(50, 50, 50, 0.5)',
 };
@@ -46,13 +42,13 @@ const MOVIE_YEARS = {
 const MOVIE_DATA_BY_TITLE = {
   'Zodiac': { connection: 'Zodiac is the spiritual successor to Se7en, trading the seven deadly sins for an unsolvable cipher. It captures the same crushing weight of obsession.' },
   'Memories of Murder': { connection: 'Often called the "Korean Se7en," this masterpiece shares the DNA of desperate detectives hunting an elusive killer in the rain.' },
-  'Prisoners': { connection: 'Prisoners mirrors Se7en’s exploration of how far a good man will go when pushed by evil. Like Mills, Keller Dover is consumed by rage.' },
+  'Prisoners': { connection: 'Prisoners mirrors Se7en\'s exploration of how far a good man will go when pushed by evil. Like Mills, Keller Dover is consumed by rage.' },
   'The Silence of the Lambs': { connection: 'The definitive psychological thriller that paved the way for Se7en. It elevates the genre by making the monster the smartest person in the room.' },
   'The Girl with the Dragon Tattoo': { connection: 'Fincher returns to the serial killer genre with the same cold, clinical eye as Se7en, uncovering a history of biblical violence.' },
-  'The Chaser': { connection: 'The Chaser matches Se7en’s grit, rain-soaked streets, and nihilistic view of the justice system, where catching the killer is only the start of the horror.' },
+  'The Chaser': { connection: 'The Chaser matches Se7en\'s grit, rain-soaked streets, and nihilistic view of the justice system, where catching the killer is only the start of the horror.' },
   'The Batman': { connection: 'Matt Reeves explicitly cited Se7en as a primary influence. The Riddler is modeled after John Doe, utilizing elaborate traps to expose corruption.' },
-  'Cure': { connection: 'Cure is the spiritual ancestor to Se7en’s philosophy of contagion. It explores how evil spreads like a virus through suggestion and atmosphere.' },
-  'The Vanishing': { connection: 'The Vanishing shares Se7en’s uncompromising ending and obsession with the banality of evil. A terrifying study of curiosity and fate.' },
+  'Cure': { connection: 'Cure is the spiritual ancestor to Se7en\'s philosophy of contagion. It explores how evil spreads like a virus through suggestion and atmosphere.' },
+  'The Vanishing': { connection: 'The Vanishing shares Se7en\'s uncompromising ending and obsession with the banality of evil. A terrifying study of curiosity and fate.' },
   'Mystic River': { connection: 'Like Se7en, Mystic River is about how a single act of violence poisons an entire community and warps good people into doing terrible things.' }
 };
 
@@ -142,7 +138,7 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
           <div className="mobile-hero-poster">{posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} width={320} height={480} className="w-full h-auto" priority /> : <div style={{ background: COLORS.bgCard, width: '100%', height: '150px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Fingerprint style={{ color: COLORS.textMuted }} /></div>}</div>
           <div className="mobile-noir-card">
             <div className="mobile-noir-row"><Fingerprint className="mobile-noir-icon" /><div><div className="mobile-noir-title">Se7en DNA Score</div></div></div>
-            <div className="mobile-noir-desc"><strong>{noirIntensity}</strong> - {insight.substring(0, 80)}...</div>
+            <div className="mobile-noir-desc"><strong>{noirIntensity}/100</strong> - {insight.substring(0, 80)}...</div>
           </div>
         </div>
       ) : (
@@ -211,7 +207,6 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
   const sensitiveData = SENSITIVE_TIMELINES[movie.tmdbId];
   const faqs = SE7EN_MOVIE_FAQS?.[movie.Title] || []; 
 
-  // 1. CALCULATE THE PEAK MOMENT
   let peakStats = "Peak info unavailable.";
   if (data?.scenes && data.scenes.length > 0) {
     const peakScene = data.scenes.reduce((prev, current) => 
@@ -220,7 +215,6 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
     peakStats = `[PEAK MOMENT] Maximum Tension (${peakScene.intensity}/100) hits at minute ${peakScene.time}: "${peakScene.label}".`;
   }
 
-  // 2. METRICS
   const intensityStats = `
     [FILMIWAY METRICS]
     - Se7en DNA Score: ${data?.se7enDNAScore || 0}/100
@@ -243,22 +237,18 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
     ? `[COMMON QUESTIONS] ${faqs.map(f => `Q: ${f.question} A: ${f.answer}`).join(' | ')}`
     : '';
 
-  // 3. COMPILE FULL DESCRIPTION
   const fullDescription = `
     ${data?.synopsis || movie.description || "A gritty procedural thriller."}
-    
     --- DETAILED ANALYSIS ---
     ${peakStats} 
     ${intensityStats}
     ${dnaStats}
     ${contentWarnings}
     ${faqText}
-    
     Ranking: #${movie.rank || 'N/A'} in Noir Thrillers.
     Production: Budget ${data?.budget || 'N/A'}, Box Office ${data?.boxOffice || 'N/A'}.
   `.replace(/\s+/g, ' ').trim();
 
-  // 4. MAIN MOVIE SCHEMA
   const movieSchema = {
     "@context": "https://schema.org",
     "@type": "Movie",
@@ -274,7 +264,6 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
       "@type": "Person",
       "name": actor
     })) || [],
-    
     "review": {
       "@type": "Review",
       "author": {
@@ -288,10 +277,9 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
         "worstRating": "1"
       }
     },
-
     "genre": data?.dna ? Object.keys(data.dna) : ["Thriller", "Crime", "Mystery"],
     "keywords": "Se7en, Serial Killer, Detective, Noir, " + (data?.themes ? data.themes.join(", ") : ""),
-    "url": `https://filmiway.com/collection/movies-like-se7en/${movie.imdbID}`,
+    "url": `https://filmiway.com/movies/like-se7en/${movie.imdbID}`,
     "author": {
       "@type": "Organization",
       "name": "Filmiway",
@@ -315,80 +303,10 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
   return { movieSchema, faqSchema };
 };
 
-// ✅ NEW COMPONENT: VISUALIZES THE PREVIOUSLY HIDDEN SCHEMA DATA (NOIR STYLE)
-const NoirAnalysisSection = ({ movie, data, sensitiveData, faqs }) => {
-  if (!data) return null;
-
-  // Calculate Peak Scene
-  let peakScene = null;
-  if (data.scenes && data.scenes.length > 0) {
-    peakScene = data.scenes.reduce((prev, current) => (current.intensity > prev.intensity) ? current : prev);
-  }
-
-  return (
-    <section className="mt-10 sm:mt-16 mb-12 border-t pt-8" style={{ borderColor: COLORS.borderLight }}>
-      <h3 className="text-xl sm:text-2xl font-bold mb-8 flex items-center gap-3 uppercase tracking-widest" style={{ color: COLORS.textSecondary }}>
-        <FileText className="w-5 h-5" style={{ color: COLORS.accent }} /> Case File: Analysis
-      </h3>
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
-        {/* DNA CARD */}
-        <div className="p-6 rounded-sm border-l-2 bg-neutral-900/50" style={{ borderColor: COLORS.accent }}>
-          <h4 className="text-sm font-bold uppercase tracking-wider mb-6 flex items-center gap-2" style={{ color: COLORS.textMuted }}><Fingerprint className="w-4 h-4" /> Forensic Genre Match</h4>
-          <div className="space-y-4">
-            {data.dna && Object.entries(data.dna).map(([genre, val]) => (
-              <div key={genre} className="relative">
-                <div className="flex justify-between text-xs font-mono mb-1" style={{ color: COLORS.textSecondary }}><span>{genre.toUpperCase()}</span><span>{val}% MATCH</span></div>
-                <div className="h-1 w-full bg-neutral-800"><div className="h-full" style={{ width: `${val}%`, backgroundColor: COLORS.accent }}></div></div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* PEAK TENSION CARD */}
-        {peakScene && (
-          <div className="p-6 rounded-sm border-l-2 bg-neutral-900/50" style={{ borderColor: COLORS.textDisabled }}>
-            <h4 className="text-sm font-bold uppercase tracking-wider mb-6 flex items-center gap-2" style={{ color: COLORS.textMuted }}><Siren className="w-4 h-4" /> Critical Tension Point</h4>
-            <div className="flex flex-col gap-2">
-              <div className="text-5xl font-black" style={{ color: COLORS.textPrimary }}>{peakScene.intensity}</div>
-              <div className="text-xs font-mono uppercase tracking-widest mb-2" style={{ color: COLORS.accent }}>Tension Index (0-100)</div>
-              <p className="text-sm font-medium italic" style={{ color: COLORS.textSecondary }}>"{peakScene.label}"</p>
-              <p className="text-xs font-mono mt-2" style={{ color: COLORS.textDisabled }}>TIMESTAMP: {peakScene.time} MIN</p>
-            </div>
-          </div>
-        )}
-      </div>
-
-      {/* VISIBLE FAQs */}
-      {faqs && faqs.length > 0 && (
-        <div className="space-y-6">
-          <h4 className="text-sm font-bold uppercase tracking-wider mb-4 flex items-center gap-2" style={{ color: COLORS.textMuted }}>
-            <HelpCircle className="w-4 h-4" /> Investigation Notes (FAQ)
-          </h4>
-          <div className="grid gap-px bg-neutral-800 border border-neutral-800">
-            {faqs.map((faq, i) => (
-              <div key={i} className="p-5 bg-black hover:bg-neutral-900/80 transition-colors">
-                <p className="font-bold text-sm sm:text-base mb-2" style={{ color: COLORS.textSecondary }}>Q: {faq.question}</p>
-                <p className="text-sm leading-relaxed font-mono" style={{ color: COLORS.textMuted }}>A: {faq.answer}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-    </section>
-  );
-};
-
 const Se7enMoviePage = ({ movie, tmdbData: movieData }) => {
-    // Note: Use optional chaining to safely access data
+    const router = useRouter();
     const movieInfo = COMPLETE_MOVIE_DATA?.[movie.tmdbId] || {};
     const richData = COMPLETE_MOVIE_DATA?.[movie.tmdbId] || {}; 
-    const correctData = MOVIE_DATA_BY_TITLE?.[movie.Title] || {};
-    
-    // Prepare data for visual render
-    const faqs = SE7EN_MOVIE_FAQS?.[movie.Title] || [];
-    const sensitiveData = SENSITIVE_TIMELINES[movie.tmdbId];
-
     const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -405,25 +323,25 @@ const Se7enMoviePage = ({ movie, tmdbData: movieData }) => {
     }
   }, []);
 
-      const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
+    const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
-
-    // ✅ FIXED: Use Array.join() to prevent React HTML comment injection
+    // ✅ SEO FIX: Clean strings to prevent hydration errors
     const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Movies Like Se7en | Filmiway'].join('');
     const cleanSEODesc = [movie.Title, ' (', currentMovieYear, ') - A dark, procedural noir like Se7en. Analysis, intensity ratings & where to stream.'].join('');
 
-
-    // Generate schema
     const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear);
+
+    const collectionSlug = router.pathname.split('/')[2];
+    const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
 
     return (
         <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
             <Head>
-                {/* ✅ HYDRATION BUG REMOVED: Now using a flat string for the title tag */}
+                {/* ✅ HYDRATION BUG FULLY RESOLVED */}
                 <title>{cleanSEOTitle}</title>
                 <meta name="description" content={cleanSEODesc} />
-                <link rel="canonical" href={`https://filmiway.com/collection/movies-like-se7en/${movie.imdbID}`} />
+                <link rel="canonical" href={canonicalUrl} />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
                 <meta name="robots" content="index, follow" />
                 <meta name="language" content="English" />
@@ -454,27 +372,21 @@ const Se7enMoviePage = ({ movie, tmdbData: movieData }) => {
             <SubtleFilmGrain />
             <div className="absolute inset-0"><CinematicBackground /></div>
             
-            
             <div className="relative z-10 pt-10 sm:pt-12 lg:pt-16">
-                
-                {/* ✅ HIDDEN H1 FOR GOOGLE/BING SEO PARITY */}
+                {/* ✅ HIDDEN H1 FOR SEO */}
                 <h1 className="sr-only">{cleanSEOTitle}</h1>
-                <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-6 px-4 tracking-tight" style={{ color: COLORS.textSecondary }}>{movie.Title} <span className="text-lg sm:text-xl font-normal" style={{ color: COLORS.textDisabled }}>{currentMovieYear}</span></h1>
 
                 <Se7enBreadcrumb movie={movie} />
                 <div className="container mx-auto px-0 pb-16 sm:pb-24 lg:pb-32 max-w-7xl">
                     <OptimizedBanner movie={movie} movieData={movieData} richData={richData} trailer={trailer} isMobile={isMobile} />
                     
-                    {/* ✅ RENDER THE ANALYSIS SECTION */}
-                    <div className="px-3 sm:px-4 lg:px-6"><NoirAnalysisSection movie={movie} data={richData} sensitiveData={sensitiveData} faqs={faqs} /></div>
-                    
                     <motion.div 
-    id="watch" 
-    initial={{ opacity: 0, y: 20 }} 
-    animate={{ opacity: 1, y: 0 }} 
-    transition={{ duration: 0.5 }} // Faster, no massive delay
-    className="space-y-8 sm:space-y-12 px-3 sm:px-4 lg:px-6"
->
+                        id="watch" 
+                        initial={{ opacity: 0, y: 20 }} 
+                        animate={{ opacity: 1, y: 0 }} 
+                        transition={{ duration: 0.5 }}
+                        className="space-y-8 sm:space-y-12 px-3 sm:px-4 lg:px-6"
+                    >
                         <MovieDetailsSection movie={movie} fromSe7enCollection={true} />
                     </motion.div>
                     
