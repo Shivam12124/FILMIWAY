@@ -409,11 +409,19 @@ const FilmiwayHomepage = ({ huluCollections, mindBendingCollections, thrillerCol
         <motion.nav className="fixed top-0 w-full z-50 bg-black/95 backdrop-blur-md select-none border-b border-gray-800/50" initial={false} animate={false}>
           <div className="container mx-auto px-4">
             <div className="flex items-center justify-between h-14 sm:h-20">
-              <Link href="/" className="flex items-center">
-                <div className="w-20 sm:w-32 h-full flex items-center">
-                  <Image src="/filmiway-logo.svg" alt="Filmiway" width={160} height={60} className="w-full h-full object-contain" priority />
-                </div>
-              </Link>
+  <Link href="/" className="flex items-center">
+  <div className="w-20 sm:w-32 h-full flex items-center">
+    <Image 
+      src="/filmiway-logo.svg" 
+      alt="Filmiway" 
+      width={160} 
+      height={60} 
+      className="w-full h-full object-contain" 
+      loading="lazy"
+    />
+  </div>
+</Link>
+
               <div className="hidden md:flex items-center space-x-8">
                 <Link href="/" className="text-yellow-400 font-medium text-sm">Home</Link>
                 <button onClick={() => scrollToSection(mindRef)} className="text-gray-300 hover:text-white transition-colors text-sm">Mind-Bending</button>

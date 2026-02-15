@@ -125,22 +125,7 @@ export const getRelatedParamountComedyMovies = (currentMovie, limit = 3) => {
         }));
 };
 
-// ✅ COLLECTION METADATA
-export const PARAMOUNT_COMEDY_COLLECTION_META = {
-    title: '10 Best Comedy Movies on Paramount+ (Ranked by Laughter)',
-    description: 'The definitive ranking of the funniest movies on Paramount+. From the satire of Tropic Thunder to the absurdity of Anchorman.',
-    keywords: 'best comedy movies on paramount plus, paramount plus comedy films, tropic thunder, anchorman, naked gun, school of rock, comedy rankings 2026',
-    canonicalUrl: 'https://filmiway.com/collection/best-comedy-movies-on-paramount-plus',
-    ogImage: 'https://filmiway.com/images/paramount-comedy-collection-og.jpg',
-    totalMovies: COMPLETE_MOVIE_DATABASE.length,
-    // ✅ Uses "Laughter Index" for the main stat
-    averageLaughterScore: Math.round(
-        COMPLETE_MOVIE_DATABASE.reduce((sum, movie) => {
-            const data = COMPLETE_MOVIE_DATA[movie.tmdbId];
-            return sum + (data?.laughterIndex || 85); 
-        }, 0) / COMPLETE_MOVIE_DATABASE.length
-    )
-};
+
 
 // ✅ SITEMAP URL GENERATOR
 export const generateParamountComedyMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
