@@ -1,4 +1,3 @@
-// components/StrategicDNAHelix.js - WITH TOOLTIP ✅
 import React from 'react';
 import { motion } from 'framer-motion';
 import { BarChart3, HelpCircle } from 'lucide-react';
@@ -51,7 +50,8 @@ const StrategicDNAHelix = React.memo(({ dna, dominantColor, className = "" }) =>
     return (
         <motion.div 
             className={`mb-8 sm:mb-12 ${className}`}
-            initial={{ opacity: 0, y: 20 }}
+            // ✅ SEO FIX: Content visible immediately
+            initial={{ opacity: 1, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
         >
@@ -155,7 +155,8 @@ const StrategicDNAHelix = React.memo(({ dna, dominantColor, className = "" }) =>
                 <div className="flex-1 space-y-6 sm:space-y-8 w-full">
                     <motion.div 
                         className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-0" 
-                        initial={{ opacity: 0, x: -40 }} 
+                        // ✅ SEO FIX: Visible immediately
+                        initial={{ opacity: 1, x: -40 }} 
                         animate={{ opacity: 1, x: 0 }} 
                         transition={{ delay: 0.8 }}
                     >
@@ -208,7 +209,8 @@ const StrategicDNAHelix = React.memo(({ dna, dominantColor, className = "" }) =>
                         {genreData.map(({ genre, percentage, color }, index) => (
                             <motion.div 
                                 key={genre} 
-                                initial={{ opacity: 0, x: -50 }} 
+                                // ✅ SEO FIX: Text visible immediately
+                                initial={{ opacity: 1, x: -50 }} 
                                 animate={{ opacity: 1, x: 0 }} 
                                 transition={{ delay: 1.4 + index * 0.15, duration: 0.6 }} 
                                 className="group flex items-center justify-between p-3 sm:p-5 hover:bg-gray-800/30 rounded-xl transition-all duration-400 border border-transparent hover:border-gray-700/40"

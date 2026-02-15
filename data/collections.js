@@ -5016,46 +5016,124 @@ seo: {
   ]
 },
 
-// 🕵️‍♂️ BEST MYSTERY THRILLERS COLLECTION
+// 🕵️‍♂️ BEST MYSTERY THRILLER MOVIES — RANKED BY TWIST FACTOR
 'best-mystery-thriller-movies': {
   slug: 'best-mystery-thriller-movies',
-  title: 'The 10 Best Mystery Thriller Movies of All Time',
-  description: 'The most gripping, mind-bending, and unpredictable mystery thrillers—ranked for suspense, complexity, and twist factor.',
-  movies: [
-    'tt0114369',  // Se7en (1995)
-    'tt1130884',  // Shutter Island (2010)
-    'tt1392214',  // Prisoners (2013)
-    'tt0443706',  // Zodiac (2007)
-    'tt2267998',  // Gone Girl (2014)
-    'tt0353969',  // Memories of Murder (2003)
-    'tt4857264',  // The Invisible Guest (2016)
-    'tt7282468',  // Burning (2018)
-    'tt0119174',  // The Game (1997)
-    'tt0119177'   // Identity (2003)
+
+  // 🎯 H1 / Page Title (High Impact Hook)
+  title: '10 Best Mystery Thrillers (Ranked by Twist Factor & Suspense)',
+  subtitle: 'The Truth Is Never What It Seems',
+
+  // 🧠 Above-the-fold hook
+  description:
+    'The best mystery thrillers ranked by unpredictability and narrative complexity. From Se7en to Gone Girl—films where every clue matters and every twist changes everything.',
+
+  // 📖 Editorial Copy (Authority & Emotion)
+  longDescription:
+    'True mystery cinema is an architecture of deception. This collection ranks the most intricately plotted and twist-heavy thrillers in film history. From the serial killer puzzles of Se7en to the psychological labyrinths of Shutter Island and the devastating revelations of Gone Girl, these are films that demand your full attention and reward it with unforgettable revelations.',
+
+  icon: '🕵️‍♂️',
+  emoji: '🕵️‍♂️',
+  theme: 'purple', // Mystery / Intrigue vibe
+
+  primaryColor: '#7c3aed', // Purple 600
+  secondaryColor: '#a78bfa', // Purple 400
+  accentColor: '#5b21b6', // Purple 800
+
+  gradientFrom: 'from-purple-900',
+  gradientTo: 'to-indigo-900',
+
+  category: 'mystery-thriller',
+
+  // 🔍 Natural Tags
+  tags: [
+    'mystery',
+    'thriller',
+    'plot twist',
+    'suspense',
+    'detective',
+    'whodunit',
+    'mind-bending'
   ],
+
+  // 🔥 SEO — Single Source of Truth
+  seo: {
+    // ✅ Title: Promises Quality + Specificity
+    title: '10 Best Mystery Thriller Movies (Ranked by Twist Factor) | Filmiway',
+    
+    // ✅ Description: High Click-Through Rate
+    description: 
+      'Discover the best mystery thriller movies of all time. From Se7en to Gone Girl and The Invisible Guest—complex plots and shocking twists ranked by suspense.',
+    
+    // ✅ High-Intent Keywords
+    keywords: 
+      'best mystery thriller movies, plot twist movies, se7en, gone girl, shutter island, prisoners, zodiac, best mystery films, suspense movies',
+    
+    canonicalUrl: 'https://filmiway.com/collection/best-mystery-thriller-movies',
+    
+    ogTitle: 'The 10 Most Mind-Bending Mystery Thrillers Ever Made',
+    twitterTitle: 'Mystery Movies That Will Keep You Guessing 🕵️‍♂️',
+
+    structuredData: {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      name: 'Best Mystery Thriller Movies',
+      description: 'Expert-curated ranking of the most suspenseful and twist-filled mystery thrillers in cinema.',
+      numberOfItems: 10
+    }
+  },
+
+  stats: {
+    totalMovies: 10,
+    averageRating: 8.2,
+    totalWatchtime: '22h 45m',
+    averageTwistFactor: 94, // Custom stat: How unpredictable is the plot?
+    mostUnpredictable: 'The Invisible Guest (98/100)',
+    newestMovie: 'Burning (2018)',
+    oldestMovie: 'Se7en (1995)'
+  },
+
+  // ✅ Movie List
+  movies: [
+    'tt0114369',  // 1. Se7en (1995)
+    'tt1130884',  // 2. Shutter Island (2010)
+    'tt1392214',  // 3. Prisoners (2013)
+    'tt0443706',  // 4. Zodiac (2007)
+    'tt2267998',  // 5. Gone Girl (2014)
+    'tt0353969',  // 6. Memories of Murder (2003)
+    'tt4857264',  // 7. The Invisible Guest (2016)
+    'tt7282468',  // 8. Burning (2018)
+    'tt0119174' , // 9. The Game (1997)
+      'tt0119177'  // 10. Identity (2003)
+  ],
+
+  // 🏅 Persuasion Badges
   badges: [
-    { label: 'Mysterious', desc: 'Complex, twist-filled plots' },
-    { label: 'Unpredictable', desc: 'Keeps you guessing till the end' },
+    { label: 'Twist Mastery', desc: 'Endings you will never see coming' },
+    { label: 'Complex Plots', desc: 'Every detail matters' },
     { label: 'Mind-Bending', desc: 'Reality-questioning narratives' }
   ],
-  metaTitle: '10 Best Mystery Thriller Movies Ever Made - Filmiway Ranking (2026)',
-  metaDescription: 'Unlock the most suspenseful, mysterious, and mind-warping thrillers in cinema. The definitive top 10, curated and ranked by expert cinephiles.',
-  metaKeywords: 'best mystery thriller movies, twists, detective films, best mystery movies, plot twist thrillers, psychological mysteries',
-  theme: 'purple',
-  primaryColor: '#7c3aed',
-  secondaryColor: '#a78bfa',
-  accentColor: '#fbbf24',
-  emoji: '🕵️‍♂️',
-  category: 'mystery-thriller',
-  canonicalUrl: 'https://filmiway.com/collection/best-mystery-thriller-movies',
-  seo: {
-    title: 'Best Mystery Thriller Movies | Filmiway Ranking',
-    description: 'Top 10 mystery thriller movies ranked for mind games and suspense, curated by Filmiway. Experience the pinnacle of cinematic suspense and mystery.',
-    keywords: 'mystery thriller movies, best thrillers, suspense films, plot twists, must watch mysteries',
-    canonicalUrl: 'https://filmiway.com/collection/best-mystery-thriller-movies',
-    ogImage: 'https://filmiway.com/images/mystery-thriller-movies-collection-og.jpg'
-  }
+
+  featured: {
+    hero: {
+      title: 'Se7en',
+      subtitle: 'The Mystery That Defined a Generation',
+      description:
+        'David Fincher\'s masterpiece of serial killer investigation. Two detectives hunt a killer using the Seven Deadly Sins as his blueprint. A film about darkness, obsession, and the most devastating twist in cinema history.',
+
+      twistFactor: 97
+    }
+  },
+
+  relatedCollections: [
+    'best-detective-thriller-movies',
+    'best-psychological-thriller-movies',
+    'best-crime-thriller-movies',
+    'movies-like-se7en'
+  ]
 },
+
+
 
 
 

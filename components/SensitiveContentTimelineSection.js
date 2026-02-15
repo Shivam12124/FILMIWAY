@@ -1,4 +1,3 @@
-// components/SensitiveContentTimelineSection.js - SEO PERFECTED (ALL H2s) 🏆
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Shield, CheckCircle, AlertTriangle, Clock, AlertOctagon } from 'lucide-react';
@@ -51,7 +50,8 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
         return (
             <motion.section 
                 className="mb-8"
-                initial={{ opacity: 0, y: 10 }}
+                // ✅ SEO FIX: Visible immediately
+                initial={{ opacity: 1, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
             >
@@ -81,7 +81,8 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
     return (
         <motion.section 
             className="mb-12"
-            initial={{ opacity: 0, y: 20 }}
+            // ✅ SEO FIX: Visible immediately
+            initial={{ opacity: 1, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
         >

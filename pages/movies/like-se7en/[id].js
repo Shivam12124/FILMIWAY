@@ -8,6 +8,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Play, X, User, Twitter, Hash, Send, Fingerprint, Film, Search } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Play, X, User, Twitter, Hash, Send, Fingerprint, Film, Search, FileText, Siren, Activity, HelpCircle } from 'lucide-react';
 import InternalCollectionsSection from '../../../components/InternalCollectionsSection';
 import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
@@ -314,11 +315,80 @@ const generateMovieSchema = (movie, movieData, currentMovieYear) => {
   return { movieSchema, faqSchema };
 };
 
+// ✅ NEW COMPONENT: VISUALIZES THE PREVIOUSLY HIDDEN SCHEMA DATA (NOIR STYLE)
+const NoirAnalysisSection = ({ movie, data, sensitiveData, faqs }) => {
+  if (!data) return null;
+
+  // Calculate Peak Scene
+  let peakScene = null;
+  if (data.scenes && data.scenes.length > 0) {
+    peakScene = data.scenes.reduce((prev, current) => (current.intensity > prev.intensity) ? current : prev);
+  }
+
+  return (
+    <section className="mt-10 sm:mt-16 mb-12 border-t pt-8" style={{ borderColor: COLORS.borderLight }}>
+      <h3 className="text-xl sm:text-2xl font-bold mb-8 flex items-center gap-3 uppercase tracking-widest" style={{ color: COLORS.textSecondary }}>
+        <FileText className="w-5 h-5" style={{ color: COLORS.accent }} /> Case File: Analysis
+      </h3>
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+        {/* DNA CARD */}
+        <div className="p-6 rounded-sm border-l-2 bg-neutral-900/50" style={{ borderColor: COLORS.accent }}>
+          <h4 className="text-sm font-bold uppercase tracking-wider mb-6 flex items-center gap-2" style={{ color: COLORS.textMuted }}><Fingerprint className="w-4 h-4" /> Forensic Genre Match</h4>
+          <div className="space-y-4">
+            {data.dna && Object.entries(data.dna).map(([genre, val]) => (
+              <div key={genre} className="relative">
+                <div className="flex justify-between text-xs font-mono mb-1" style={{ color: COLORS.textSecondary }}><span>{genre.toUpperCase()}</span><span>{val}% MATCH</span></div>
+                <div className="h-1 w-full bg-neutral-800"><div className="h-full" style={{ width: `${val}%`, backgroundColor: COLORS.accent }}></div></div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* PEAK TENSION CARD */}
+        {peakScene && (
+          <div className="p-6 rounded-sm border-l-2 bg-neutral-900/50" style={{ borderColor: COLORS.textDisabled }}>
+            <h4 className="text-sm font-bold uppercase tracking-wider mb-6 flex items-center gap-2" style={{ color: COLORS.textMuted }}><Siren className="w-4 h-4" /> Critical Tension Point</h4>
+            <div className="flex flex-col gap-2">
+              <div className="text-5xl font-black" style={{ color: COLORS.textPrimary }}>{peakScene.intensity}</div>
+              <div className="text-xs font-mono uppercase tracking-widest mb-2" style={{ color: COLORS.accent }}>Tension Index (0-100)</div>
+              <p className="text-sm font-medium italic" style={{ color: COLORS.textSecondary }}>"{peakScene.label}"</p>
+              <p className="text-xs font-mono mt-2" style={{ color: COLORS.textDisabled }}>TIMESTAMP: {peakScene.time} MIN</p>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* VISIBLE FAQs */}
+      {faqs && faqs.length > 0 && (
+        <div className="space-y-6">
+          <h4 className="text-sm font-bold uppercase tracking-wider mb-4 flex items-center gap-2" style={{ color: COLORS.textMuted }}>
+            <HelpCircle className="w-4 h-4" /> Investigation Notes (FAQ)
+          </h4>
+          <div className="grid gap-px bg-neutral-800 border border-neutral-800">
+            {faqs.map((faq, i) => (
+              <div key={i} className="p-5 bg-black hover:bg-neutral-900/80 transition-colors">
+                <p className="font-bold text-sm sm:text-base mb-2" style={{ color: COLORS.textSecondary }}>Q: {faq.question}</p>
+                <p className="text-sm leading-relaxed font-mono" style={{ color: COLORS.textMuted }}>A: {faq.answer}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+    </section>
+  );
+};
+
 const Se7enMoviePage = ({ movie, tmdbData: movieData }) => {
     // Note: Use optional chaining to safely access data
     const movieInfo = COMPLETE_MOVIE_DATA?.[movie.tmdbId] || {};
     const richData = COMPLETE_MOVIE_DATA?.[movie.tmdbId] || {}; 
     const correctData = MOVIE_DATA_BY_TITLE?.[movie.Title] || {};
+    
+    // Prepare data for visual render
+    const faqs = SE7EN_MOVIE_FAQS?.[movie.Title] || [];
+    const sensitiveData = SENSITIVE_TIMELINES[movie.tmdbId];
+
     const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -389,10 +459,14 @@ const Se7enMoviePage = ({ movie, tmdbData: movieData }) => {
                 
                 {/* ✅ HIDDEN H1 FOR GOOGLE/BING SEO PARITY */}
                 <h1 className="sr-only">{cleanSEOTitle}</h1>
+                <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-6 px-4 tracking-tight" style={{ color: COLORS.textSecondary }}>{movie.Title} <span className="text-lg sm:text-xl font-normal" style={{ color: COLORS.textDisabled }}>{currentMovieYear}</span></h1>
 
                 <Se7enBreadcrumb movie={movie} />
                 <div className="container mx-auto px-0 pb-16 sm:pb-24 lg:pb-32 max-w-7xl">
                     <OptimizedBanner movie={movie} movieData={movieData} richData={richData} trailer={trailer} isMobile={isMobile} />
+                    
+                    {/* ✅ RENDER THE ANALYSIS SECTION */}
+                    <div className="px-3 sm:px-4 lg:px-6"><NoirAnalysisSection movie={movie} data={richData} sensitiveData={sensitiveData} faqs={faqs} /></div>
                     
                     <motion.div 
     id="watch" 

@@ -940,7 +940,7 @@ if (fromPsychologicalThrillerCollection) {
    if (fromHuluHorrorCollection) return 'DREAD INDEX'; 
    if (fromHuluRomanceCollection) return 'EMOTION INDEX';
    if (fromHuluActionCollection || fromParamountActionCollection) return 'ADRENALINE INDEX'; 
-   if (fromParamountSciFiCollection) return 'HARD SCI-FI INDEX';
+   if (fromParamountSciFiCollection) return 'SCI-FI INDEX';
    if (fromParamountRomanceCollection) return 'EMOTION INDEX'; 
    if (fromPeacockActionAdventureCollection) return 'ADRENALINE INDEX';
    if (fromPeacockSciFiCollection) return 'HARD SCI-FI INDEX';
@@ -1181,17 +1181,17 @@ if (fromPsychologicalThrillerCollection) {
  };
 
   return (
-    <motion.div
-      className="space-y-12 mt-16"
-      initial={{ opacity: 0, y: 40 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-    >
+<motion.div
+  className="space-y-12 mt-16"
+  initial={{ opacity: 1, y: 40 }} // WAS: opacity: 0
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8 }}
+>
       <div className="text-center space-y-6">
         <motion.h2
           className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-extralight tracking-tight sm:tracking-wider text-white"
           style={{ fontFamily: "'Playfair Display', serif" }}
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 1, y: 0 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 0.2 }}
         >
@@ -1200,7 +1200,7 @@ if (fromPsychologicalThrillerCollection) {
 
         <motion.div
           className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 sm:space-x-6 text-gray-400 text-xs sm:text-sm tracking-normal sm:tracking-wider uppercase"
-          initial={{ opacity: 0 }}
+          initial={{ opacity: 1 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8 }}
         >
@@ -1225,7 +1225,7 @@ if (fromPsychologicalThrillerCollection) {
 
       <motion.div
         className="max-w-4xl mx-auto"
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 1, y: 0 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.2 }}
       >
