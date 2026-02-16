@@ -1,4 +1,4 @@
-// pages/collection/[slug].js - FIXED BOTTOM GAP ✅
+// pages/collection/[slug].js - FIXED BOTTOM GAP âœ…
 
 import React, { useState, useEffect, useCallback } from 'react';
 import Head from 'next/head';
@@ -7,7 +7,7 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Crown, Star, MessageSquare, Volume2, VolumeX, Play, Pause, Menu, X, Home, Eye, MousePointer, TrendingUp, Users, Search, Brain, Zap, Film, Award, Mountain, Shield } from 'lucide-react';
 
-// ✅ NEW SURVIVAL FORMAT IMPORTS (MATRIX, SE7EN & PARASITE ADDED)
+// âœ… NEW SURVIVAL FORMAT IMPORTS (MATRIX, SE7EN & PARASITE ADDED)
 import { COMPLETE_MOVIE_DATABASE as SURVIVAL_DATABASE, COMPLETE_MOVIE_DATA as SURVIVAL_DATA } from '../../utils/survivalMovieData';
 import { COMPLETE_MOVIE_DATABASE as MATRIX_DATABASE } from '../../utils/matrixMovieData';
 import { COMPLETE_MOVIE_DATABASE as SE7EN_DATABASE, COMPLETE_MOVIE_DATA as SE7EN_DATA } from '../../utils/se7enMovieData';
@@ -107,7 +107,7 @@ const SiteHeader = () => (
   alt="Filmiway"
   width={220}
   height={110}
-  loading="lazy"  // ✅ ADD THIS
+  loading="lazy"  // âœ… ADD THIS
   className="w-full h-full object-contain object-left"
 />
 
@@ -147,7 +147,7 @@ const MobileLogo = () => (
   alt="Filmiway"
   width={144}
   height={72}
-  loading="lazy"  // ✅ ADD THIS
+  loading="lazy"  // âœ… ADD THIS
   className="w-full h-full object-contain object-left"
 />
 
@@ -173,7 +173,7 @@ const MobileHomepageButton = () => (
     </motion.div>
 );
 
-// 🔥 COLLECTION PAGE COMPONENT
+// ðŸ”¥ COLLECTION PAGE COMPONENT
 const CollectionPage = ({ collection, movies }) => {
     const [currentMovieIndex, setCurrentMovieIndex] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
@@ -194,23 +194,20 @@ const CollectionPage = ({ collection, movies }) => {
             }
         }
         
-        // ✅ SMART LOADER: Instant load for Bots (SEO), Animation for Humans (UX)
-        const isBot = /bot|googlebot|crawler|spider|robot|crawling/i.test(navigator.userAgent);
-        const delayTime = isBot ? 0 : 2500; 
-
-        const timer = setTimeout(() => setIsLoading(false), delayTime);
+        // âœ… LOADER: Animation for Humans (Content is already rendered behind it for SEO)
+        const timer = setTimeout(() => setIsLoading(false), 2500);
         return () => clearTimeout(timer);
     }, []);
 
-// 🔥 SEO-OPTIMIZED COLLECTION CONTENT
+// ðŸ”¥ SEO-OPTIMIZED COLLECTION CONTENT
 const getCollectionContent = () => {
     if (collection.slug === 'movies-like-memento') {
         return {
-            badge: "🧩 Narrative Jigsaw",
+            badge: "ðŸ§© Narrative Jigsaw",
             title: "10 Fragmented Movies (Ranked by Confusion)",
             description: "Don't trust the timeline. Don't trust the narrator. We ranked 10 masterpieces that shatter storytelling into a thousand pieces.",
             selection: {
-                text1: "Linear storytelling is for people who want to be comfortable. We selected films that force you to work—stories told backwards, sideways, and in recursive loops.",
+                text1: "Linear storytelling is for people who want to be comfortable. We selected films that force you to workâ€”stories told backwards, sideways, and in recursive loops.",
                 text2: "From the memory loss of Memento to the identity fracturing of Enemy, this collection is a test of your ability to reconstruct the truth."
             },
             ranking: {
@@ -230,11 +227,11 @@ const getCollectionContent = () => {
         };
     } else if (collection.slug === 'movies-like-inception') {
     return {
-        badge: "⚠️ Cognitive Hazard",
+        badge: "âš ï¸ Cognitive Hazard",
         title: "Reality-Shattering Cinema",
         description: "Inception had rules. Totems. Levels you could count. These films have none of that. Just recursive nightmares where logic collapses and you're left holding a notebook full of questions.",
         selection: {
-            text1: "Primer's nine overlapping timelines. Synecdoche's infinite recursion. Mulholland Drive's dream-reality inversion. These aren't puzzles with solutions—they're labyrinths with no center.",
+            text1: "Primer's nine overlapping timelines. Synecdoche's infinite recursion. Mulholland Drive's dream-reality inversion. These aren't puzzles with solutionsâ€”they're labyrinths with no center.",
             text2: "Nolan held your hand. These directors cut it off. No exposition dumps. No convenient explanations. JustStructural complexity that makes Inception look like a children's book about dreams."
         },
         ranking: {
@@ -259,7 +256,7 @@ const getCollectionContent = () => {
             title: "The Matrix",
             description: "Mind-bending cyberpunk films exploring simulated realities. Digital consciousness, reality distortion & protagonist awakening that redefine what we think about existence itself.",
             selection: {
-                text1: "From dystopian AIs to consciousness transfers—these films explore the boundary between digital and human consciousness, asking profound questions about the nature of reality and free will.",
+                text1: "From dystopian AIs to consciousness transfersâ€”these films explore the boundary between digital and human consciousness, asking profound questions about the nature of reality and free will.",
                 text2: "Each cyberpunk masterpiece features protagonists discovering their world is artificial, leading them through layers of deception toward uncomfortable truths about existence and control."
             },
             ranking: {
@@ -273,7 +270,7 @@ const getCollectionContent = () => {
             },
             experience: {
                 text1: "Whether you're seeking technological thrills or existential questioning, this collection delivers cinema's most ambitious cyberpunk experiences that blur the line between real and artificial.",
-                text2: "Each film has been selected for its ability to create lasting philosophical impact—exploring themes of free will, consciousness, and artificial reality that continue fascinating viewers long after credits roll."
+                text2: "Each film has been selected for its ability to create lasting philosophical impactâ€”exploring themes of free will, consciousness, and artificial reality that continue fascinating viewers long after credits roll."
             }
         };
     } else if (collection.slug === 'movies-like-se7en') {
@@ -282,7 +279,7 @@ const getCollectionContent = () => {
             title: "Se7en",
             description: "Gritty, rain-soaked noir thrillers hunting pure evil. Obsessive detectives, sadistic killers & nihilistic atmospheres that explore the seven deadly sins of humanity.",
             selection: {
-                text1: "From the rain-slicked streets of Fincher's city to the rural darkness of South Korea—these films track the obsessive, often self-destructive hunt for monsters who hide in plain sight.",
+                text1: "From the rain-slicked streets of Fincher's city to the rural darkness of South Koreaâ€”these films track the obsessive, often self-destructive hunt for monsters who hide in plain sight.",
                 text2: "Each noir gem features weary detectives pushed to their breaking points, atmospheric tension you can feel, and endings that refuse to compromise with a traditional happy resolution."
             },
             ranking: {
@@ -307,7 +304,7 @@ const getCollectionContent = () => {
             title: "Best Horror Movies on Hulu",
             description: "The most brutally terrifying films streaming on Hulu. From trauma-inducing gore to slow-burn dread & cosmic horror.",
             selection: {
-                text1: "From the rule-breaking chaos of 'When Evil Lurks' to the suffocating dread of 'Longlegs'—these films represent the darkest corners of the Hulu library.",
+                text1: "From the rule-breaking chaos of 'When Evil Lurks' to the suffocating dread of 'Longlegs'â€”these films represent the darkest corners of the Hulu library.",
                 text2: "Each selection features visceral scares, psychological trauma, and atmospheres so oppressive they feel cursed. Not for the faint of heart."
             },
             ranking: {
@@ -321,7 +318,7 @@ const getCollectionContent = () => {
             },
             experience: {
                 text1: "Whether you're seeking cosmic nihilism or slasher brutality, this collection delivers cinema's most traumatizing experiences.",
-                text2: "Each film has been selected for its ability to ruin your sleep—offering nightmares that stick with you long after the credits roll."
+                text2: "Each film has been selected for its ability to ruin your sleepâ€”offering nightmares that stick with you long after the credits roll."
             }
         };
 
@@ -332,8 +329,8 @@ const getCollectionContent = () => {
             title: "Romance Movies on Hulu",
             description: "The most emotionally resonant romance films streaming on Hulu. From Palme d'Or winners to devastating ghost stories & nostalgic first loves.",
             selection: {
-                text1: "From the chaotic energy of 'Anora' to the quiet devastation of 'All of Us Strangers'—these films represent the pinnacle of modern romantic cinema available on Hulu.",
-                text2: "Each selection features electric chemistry, profound emotional stakes, and narratives that move beyond clichés to explore the messy, beautiful reality of connection."
+                text1: "From the chaotic energy of 'Anora' to the quiet devastation of 'All of Us Strangers'â€”these films represent the pinnacle of modern romantic cinema available on Hulu.",
+                text2: "Each selection features electric chemistry, profound emotional stakes, and narratives that move beyond clichÃ©s to explore the messy, beautiful reality of connection."
             },
             ranking: {
                 text: "Our emotional resonance index evaluates on-screen chemistry, narrative emotional weight, and the lasting impact of the film's romantic arc.",
@@ -346,7 +343,7 @@ const getCollectionContent = () => {
             },
             experience: {
                 text1: "Whether you're seeking a good cry or a rush of joy, this collection delivers cinema's most powerful explorations of the human heart.",
-                text2: "Each film has been selected for its ability to linger with you—offering moments of intimacy and heartbreak that feel deeply, authentically real."
+                text2: "Each film has been selected for its ability to linger with youâ€”offering moments of intimacy and heartbreak that feel deeply, authentically real."
             }
         };
 
@@ -357,7 +354,7 @@ const getCollectionContent = () => {
             title: "Action Movies on Hulu",
             description: "High-octane action movies streaming on Hulu. Brutal fight choreography, relentless pacing & adrenaline-fueled plots that redefine the genre.",
             selection: {
-                text1: "From the primal hunt of 'Prey' to the stylized violence of 'Kingsman'—these films represent the pinnacle of modern action cinema available on Hulu.",
+                text1: "From the primal hunt of 'Prey' to the stylized violence of 'Kingsman'â€”these films represent the pinnacle of modern action cinema available on Hulu.",
                 text2: "Each selection features innovative fight choreography, memorable heroes, and set pieces that have become legendary in the action genre."
             },
             ranking: {
@@ -371,7 +368,7 @@ const getCollectionContent = () => {
             },
             experience: {
                 text1: "Whether you're seeking martial arts mastery or sci-fi warfare, this collection delivers cinema's most thrilling adrenaline rushes.",
-                text2: "Each film has been selected for its ability to keep your heart racing—with action sequences that demand to be rewatched and analyzed."
+                text2: "Each film has been selected for its ability to keep your heart racingâ€”with action sequences that demand to be rewatched and analyzed."
             }
         };
 
@@ -381,7 +378,7 @@ const getCollectionContent = () => {
             title: "Best Comedy Movies on Hulu",
             description: "The funniest films streaming on Hulu. From teen chaos and mockumentaries to biting satire & action-packed laughs.",
             selection: {
-                text1: "From the legendary teen awkwardness of 'Superbad' to the unscripted chaos of 'Borat'—these films represent the gold standard of modern comedy.",
+                text1: "From the legendary teen awkwardness of 'Superbad' to the unscripted chaos of 'Borat'â€”these films represent the gold standard of modern comedy.",
                 text2: "Each selection features unforgettable quotes, chaotic energy, and performances that range from slapstick genius to biting social satire."
             },
             ranking: {
@@ -395,7 +392,7 @@ const getCollectionContent = () => {
             },
             experience: {
                 text1: "Whether you're seeking nostalgic comfort or shocking satire, this collection delivers cinema's most effective dopamine hits.",
-                text2: "Each film has been selected for its ability to improve your mood instantly—offering laughs that have stood the test of time and culture."
+                text2: "Each film has been selected for its ability to improve your mood instantlyâ€”offering laughs that have stood the test of time and culture."
             }
         };
 
@@ -406,7 +403,7 @@ const getCollectionContent = () => {
         title: "Best Sci-Fi Movies on Hulu",
         description: "The most visionary sci-fi films streaming on Hulu. From time-travel paradoxes to alien invasions & dystopian futures that challenge reality.",
         selection: {
-            text1: "From the mind-bending loops of 'Donnie Darko' to the primal survival of 'Prey'—these films represent the most ambitious and visually stunning science fiction available on Hulu.",
+            text1: "From the mind-bending loops of 'Donnie Darko' to the primal survival of 'Prey'â€”these films represent the most ambitious and visually stunning science fiction available on Hulu.",
             text2: "Each selection features high-concept storytelling, groundbreaking visuals, and philosophical questions about humanity's future, technology, and place in the universe."
         },
         ranking: {
@@ -420,7 +417,7 @@ const getCollectionContent = () => {
         },
         experience: {
             text1: "Whether you're seeking intellectual challenges or breathtaking alien worlds, this collection delivers cinema's most imaginative visions of the future.",
-            text2: "Each film has been selected for its ability to provoke thought and wonder—offering glimpses into realities that feel both impossible and terrifyingly plausible."
+            text2: "Each film has been selected for its ability to provoke thought and wonderâ€”offering glimpses into realities that feel both impossible and terrifyingly plausible."
         }
     };
 
@@ -431,7 +428,7 @@ const getCollectionContent = () => {
         title: "Best Thriller Movies on Hulu",
         description: "The most suspenseful thrillers streaming on Hulu. From high-stakes heists to psychological nightmares & courtroom tension.",
         selection: {
-            text1: "From the tactical perfection of 'Heat' to the psychological descent of 'Black Swan'—these films represent the pinnacle of tension and suspense available on Hulu.",
+            text1: "From the tactical perfection of 'Heat' to the psychological descent of 'Black Swan'â€”these films represent the pinnacle of tension and suspense available on Hulu.",
             text2: "Each selection features masterclass direction, unforgettable performances, and plots that tighten the screws until the very last frame."
         },
         ranking: {
@@ -445,7 +442,7 @@ const getCollectionContent = () => {
         },
         experience: {
             text1: "Whether you're seeking intellectual puzzles or heart-pounding action, this collection delivers cinema's most gripping experiences.",
-            text2: "Each film has been selected for its ability to keep you on the edge of your seat—offering twists and tension that demand your full attention."
+            text2: "Each film has been selected for its ability to keep you on the edge of your seatâ€”offering twists and tension that demand your full attention."
         }
     };
 
@@ -457,7 +454,7 @@ const getCollectionContent = () => {
         title: "Best Movies on Hulu",
         description: "The definitive ranking of the highest-rated films streaming on Hulu right now. From Heat to Superbad, covering all genres.",
         selection: {
-            text1: "From the tactical perfection of 'Heat' to the quiet mastery of 'Perfect Days'—these films represent the absolute best cinema available on the platform right now.",
+            text1: "From the tactical perfection of 'Heat' to the quiet mastery of 'Perfect Days'â€”these films represent the absolute best cinema available on the platform right now.",
             text2: "Each selection is a genre-defining masterpiece, chosen for its critical acclaim, cultural impact, and rewatchability across action, drama, sci-fi, and romance."
         },
         ranking: {
@@ -471,7 +468,7 @@ const getCollectionContent = () => {
         },
         experience: {
             text1: "Whether you're seeking high-octane thrills or profound emotional depth, this collection delivers the most essential viewing experiences on Hulu.",
-            text2: "Each film has been selected as a 'must-watch'—guaranteeing that no matter what you pick, you are watching a top-tier example of filmmaking craft."
+            text2: "Each film has been selected as a 'must-watch'â€”guaranteeing that no matter what you pick, you are watching a top-tier example of filmmaking craft."
         }
     };
     } else if (collection.slug === 'best-comedy-movies-on-peacock') {
@@ -480,7 +477,7 @@ const getCollectionContent = () => {
             title: "Best Comedy Movies on Peacock",
             description: "The funniest films streaming on Peacock. From surreal satire to slapstick classics & high-octane chaos.",
             selection: {
-                text1: "From the absurdist genius of 'Monty Python' to the unhinged chaos of 'Anchorman'—these films represent the absolute peaks of cinematic humor available on Peacock.",
+                text1: "From the absurdist genius of 'Monty Python' to the unhinged chaos of 'Anchorman'â€”these films represent the absolute peaks of cinematic humor available on Peacock.",
                 text2: "Each selection features unforgettable quotes, chaotic energy, and performances that range from slapstick genius to biting social satire."
             },
             ranking: {
@@ -494,7 +491,7 @@ const getCollectionContent = () => {
             },
             experience: {
                 text1: "Whether you're seeking nostalgic comfort or shocking satire, this collection delivers cinema's most effective dopamine hits.",
-                text2: "Each film has been selected for its ability to improve your mood instantly—offering laughs that have stood the test of time and culture."
+                text2: "Each film has been selected for its ability to improve your mood instantlyâ€”offering laughs that have stood the test of time and culture."
             }
         };
 
@@ -505,7 +502,7 @@ const getCollectionContent = () => {
             title: "Best Drama Movies on Hulu",
             description: "The most emotionally resonant dramas streaming on Hulu. Deep character studies, heartbreaking performances & human stories that stay with you forever.",
             selection: {
-                text1: "From the 12-year journey of 'Boyhood' to the quiet devastation of 'All of Us Strangers'—these films represent the pinnacle of emotional storytelling available on Hulu.",
+                text1: "From the 12-year journey of 'Boyhood' to the quiet devastation of 'All of Us Strangers'â€”these films represent the pinnacle of emotional storytelling available on Hulu.",
                 text2: "Each selection features profound character depth, authentic human connection, and narratives that explore the beautiful, painful complexity of being alive."
             },
             ranking: {
@@ -519,7 +516,7 @@ const getCollectionContent = () => {
             },
             experience: {
                 text1: "Whether you're seeking cathartic tears or quiet reflection, this collection delivers cinema's most powerful explorations of the human condition.",
-                text2: "Each film has been selected for its ability to touch the soul—offering moments of grace, grief, and connection that feel universally, heartbreakingly real."
+                text2: "Each film has been selected for its ability to touch the soulâ€”offering moments of grace, grief, and connection that feel universally, heartbreakingly real."
             }
         };
 
@@ -529,9 +526,9 @@ const getCollectionContent = () => {
     return {
         badge: "Wholesome Family Cinema",
         title: "Best Family Movies on Hulu",
-        description: "The top 10 family movies streaming on Hulu right now. From Robot Dreams to Night at the Museum—ranked by wholesomeness and entertainment value.",
+        description: "The top 10 family movies streaming on Hulu right now. From Robot Dreams to Night at the Museumâ€”ranked by wholesomeness and entertainment value.",
         selection: {
-            text1: "From the silent emotional journey of 'Robot Dreams' to the high-energy fun of 'Sonic the Hedgehog 2'—these films represent the best family entertainment available on Hulu.",
+            text1: "From the silent emotional journey of 'Robot Dreams' to the high-energy fun of 'Sonic the Hedgehog 2'â€”these films represent the best family entertainment available on Hulu.",
             text2: "Each selection features positive messages, engaging stories for all ages, and moments of genuine warmth that bring families together."
         },
         ranking: {
@@ -545,7 +542,7 @@ const getCollectionContent = () => {
         },
         experience: {
             text1: "Whether you're seeking a fun adventure or a heartwarming story, this collection delivers cinema's most memorable family experiences.",
-            text2: "Each film has been selected for its ability to entertain both kids and adults—offering laughter, tears, and valuable life lessons."
+            text2: "Each film has been selected for its ability to entertain both kids and adultsâ€”offering laughter, tears, and valuable life lessons."
         }
     };
 
@@ -557,7 +554,7 @@ const getCollectionContent = () => {
         title: "Action Movies on HBO Max",
         description: "Grand-scale action epics streaming on HBO Max. Mythic heroes, visceral combat & cinematic spectacles that define the blockbuster genre.",
         selection: {
-            text1: "From the tactical gun-fu of 'John Wick' to the mythic scale of 'Dune: Part Two'—these films represent the absolute peak of action filmmaking available on HBO Max.",
+            text1: "From the tactical gun-fu of 'John Wick' to the mythic scale of 'Dune: Part Two'â€”these films represent the absolute peak of action filmmaking available on HBO Max.",
             text2: "Each selection features legendary set pieces, groundbreaking stunts, and narratives that balance massive spectacle with intimate, character-driven stakes."
         },
         ranking: {
@@ -571,7 +568,7 @@ const getCollectionContent = () => {
         },
         experience: {
             text1: "Whether you're seeking gritty crime sagas or fantasy warfare, this collection delivers cinema's most ambitious and adrenaline-fueled experiences.",
-            text2: "Each film has been selected for its ability to awe—offering moments of pure cinematic grandeur that demand the biggest screen possible."
+            text2: "Each film has been selected for its ability to aweâ€”offering moments of pure cinematic grandeur that demand the biggest screen possible."
         }
     };
 
@@ -581,8 +578,8 @@ const getCollectionContent = () => {
             title: "Best Romance Movies on HBO Max",
             description: "The definitive ranking of romance movies on HBO Max. From the wartime sacrifice of Casablanca to the restrained longing of In the Mood for Love. Ranked by emotional intensity.",
             selection: {
-                text1: "From the eternal gold standard of 'Casablanca' to the quiet devastation of 'Past Lives'—these films represent the absolute pinnacle of romantic cinema available on HBO Max.",
-                text2: "Each selection features electric chemistry, profound emotional stakes, and narratives that move beyond clichés to explore the messy, beautiful, and heartbreaking reality of connection."
+                text1: "From the eternal gold standard of 'Casablanca' to the quiet devastation of 'Past Lives'â€”these films represent the absolute pinnacle of romantic cinema available on HBO Max.",
+                text2: "Each selection features electric chemistry, profound emotional stakes, and narratives that move beyond clichÃ©s to explore the messy, beautiful, and heartbreaking reality of connection."
             },
             ranking: {
                 text: "Our emotional intensity index evaluates on-screen chemistry, narrative emotional weight, and the lasting impact of the film's romantic arc.",
@@ -595,7 +592,7 @@ const getCollectionContent = () => {
             },
             experience: {
                 text1: "Whether you're seeking the wit of a perfect rom-com or the ache of forbidden love, this collection delivers cinema's most powerful explorations of the human heart.",
-                text2: "Each film has been selected for its ability to linger with you—offering moments of intimacy and heartbreak that feel universally, heartbreakingly real."
+                text2: "Each film has been selected for its ability to linger with youâ€”offering moments of intimacy and heartbreak that feel universally, heartbreakingly real."
             }
         };
 
@@ -606,7 +603,7 @@ const getCollectionContent = () => {
         title: "Best Thriller Movies on HBO Max",
         description: "The most suspenseful thrillers streaming on HBO Max. From psychological nightmares like Funny Games to cerebral sci-fi like Ex Machina.",
         selection: {
-            text1: "From the nihilistic home invasion of 'Funny Games' to the social horror of 'Get Out'—these films represent the pinnacle of tension and suspense available on HBO Max.",
+            text1: "From the nihilistic home invasion of 'Funny Games' to the social horror of 'Get Out'â€”these films represent the pinnacle of tension and suspense available on HBO Max.",
             text2: "Each selection features masterclass direction, unbearable psychological pressure, and narratives that tighten the screws until the very last frame."
         },
         ranking: {
@@ -620,7 +617,7 @@ const getCollectionContent = () => {
         },
         experience: {
             text1: "Whether you're seeking cerebral puzzles or heart-pounding dread, this collection delivers cinema's most gripping experiences.",
-            text2: "Each film has been selected for its ability to keep you on the edge of your seat—offering twists and tension that demand your full attention."
+            text2: "Each film has been selected for its ability to keep you on the edge of your seatâ€”offering twists and tension that demand your full attention."
         }
     };
 
@@ -629,9 +626,9 @@ const getCollectionContent = () => {
     return {
         badge: "Magical Family Cinema",
         title: "Best Family Movies on HBO Max",
-        description: "The top 10 family movies streaming on HBO Max right now. From The Wizard of Oz to Harry Potter—ranked by wholesomeness and fun factor.",
+        description: "The top 10 family movies streaming on HBO Max right now. From The Wizard of Oz to Harry Potterâ€”ranked by wholesomeness and fun factor.",
         selection: {
-            text1: "From the timeless magic of 'The Wizard of Oz' to the visual poetry of 'Flow'—these films represent the absolute best family entertainment available on HBO Max.",
+            text1: "From the timeless magic of 'The Wizard of Oz' to the visual poetry of 'Flow'â€”these films represent the absolute best family entertainment available on HBO Max.",
             text2: "Each selection features positive messages, engaging stories for all ages, and moments of genuine wonder that bring families together for a perfect movie night."
         },
         ranking: {
@@ -645,7 +642,7 @@ const getCollectionContent = () => {
         },
         experience: {
             text1: "Whether you're seeking a nostalgic classic or a modern animated masterpiece, this collection delivers cinema's most memorable family experiences.",
-            text2: "Each film has been selected for its ability to entertain both kids and adults—offering laughter, tears, and valuable life lessons that resonate across generations."
+            text2: "Each film has been selected for its ability to entertain both kids and adultsâ€”offering laughter, tears, and valuable life lessons that resonate across generations."
         }
     };
 
@@ -656,7 +653,7 @@ const getCollectionContent = () => {
         title: "Best Sci-Fi Movies on HBO Max",
         description: "The definitive ranking of the best Sci-Fi movies on HBO Max. From the cosmic scale of 2001 to the visceral action of Mad Max.",
         selection: {
-            text1: "From the philosophical odyssey of '2001' to the mind-bending architecture of 'Inception'—these films represent the absolute pinnacle of science fiction available on HBO Max.",
+            text1: "From the philosophical odyssey of '2001' to the mind-bending architecture of 'Inception'â€”these films represent the absolute pinnacle of science fiction available on HBO Max.",
             text2: "Each selection features visionary direction, groundbreaking visuals, and narratives that challenge our understanding of reality, time, and human existence."
         },
         ranking: {
@@ -670,7 +667,7 @@ const getCollectionContent = () => {
         },
         experience: {
             text1: "Whether you're seeking intellectual challenges or breathtaking spectacle, this collection delivers cinema's most ambitious visions of the future.",
-            text2: "Each film has been selected for its ability to awe—offering moments of pure cinematic grandeur that demand the biggest screen possible."
+            text2: "Each film has been selected for its ability to aweâ€”offering moments of pure cinematic grandeur that demand the biggest screen possible."
         }
     };
 
@@ -680,7 +677,7 @@ const getCollectionContent = () => {
         title: "Best Horror Movies on HBO Max",
         description: "The definitive ranking of the scariest movies on HBO Max. From the jump scares of Insidious to the dread of The Witch.",
         selection: {
-            text1: "From the supernatural terror of 'The Conjuring' to the relentless gore of 'Evil Dead Rise'—these films represent the darkest, most intense horror available on HBO Max.",
+            text1: "From the supernatural terror of 'The Conjuring' to the relentless gore of 'Evil Dead Rise'â€”these films represent the darkest, most intense horror available on HBO Max.",
             text2: "Each selection features visceral scares, psychological trauma, and atmospheres so oppressive they feel cursed. Not for the faint of heart."
         },
         ranking: {
@@ -694,7 +691,7 @@ const getCollectionContent = () => {
         },
         experience: {
             text1: "Whether you're seeking cosmic nihilism or supernatural brutality, this collection delivers cinema's most traumatizing experiences.",
-            text2: "Each film has been selected for its ability to ruin your sleep—offering nightmares that stick with you long after the credits roll."
+            text2: "Each film has been selected for its ability to ruin your sleepâ€”offering nightmares that stick with you long after the credits roll."
         }
     };
 
@@ -706,7 +703,7 @@ const getCollectionContent = () => {
         title: "Best Movies on HBO Max",
         description: "The definitive ranking of the highest-rated films streaming on HBO Max right now. From Seven Samurai to Dune: Part Two.",
         selection: {
-            text1: "From the timeless philosophy of 'Stalker' to the modern sci-fi epic 'Dune: Part Two'—these films represent the absolute best cinema available on the platform.",
+            text1: "From the timeless philosophy of 'Stalker' to the modern sci-fi epic 'Dune: Part Two'â€”these films represent the absolute best cinema available on the platform.",
             text2: "Each selection is a genre-defining masterpiece, chosen for its critical acclaim, cultural impact, and cinematic mastery across action, sci-fi, romance, and drama."
         },
         ranking: {
@@ -720,7 +717,7 @@ const getCollectionContent = () => {
         },
         experience: {
             text1: "Whether you're seeking a classic like 'Casablanca' or a modern epic like 'The Dark Knight', this collection delivers the most essential viewing experiences on HBO Max.",
-            text2: "Each film has been selected as a 'must-watch'—guaranteeing that no matter what you pick, you are watching a top-tier example of filmmaking craft."
+            text2: "Each film has been selected as a 'must-watch'â€”guaranteeing that no matter what you pick, you are watching a top-tier example of filmmaking craft."
         }
     };
 
@@ -731,7 +728,7 @@ const getCollectionContent = () => {
         title: "Best Drama Movies on HBO Max",
         description: "The most emotionally resonant dramas streaming on HBO Max. Deep character studies, heartbreaking performances & human stories that stay with you forever.",
         selection: {
-            text1: "From the visually stunning 'Moonlight' to the raw intensity of 'Taxi Driver'—these films represent the pinnacle of dramatic storytelling available on HBO Max.",
+            text1: "From the visually stunning 'Moonlight' to the raw intensity of 'Taxi Driver'â€”these films represent the pinnacle of dramatic storytelling available on HBO Max.",
             text2: "Each selection features profound character depth, authentic human connection, and narratives that explore the beautiful, painful complexity of being alive."
         },
         ranking: {
@@ -745,7 +742,7 @@ const getCollectionContent = () => {
         },
         experience: {
             text1: "Whether you're seeking cathartic tears or quiet reflection, this collection delivers cinema's most powerful explorations of the human condition.",
-            text2: "Each film has been selected for its ability to touch the soul—offering moments of grace, grief, and connection that feel universally, heartbreakingly real."
+            text2: "Each film has been selected for its ability to touch the soulâ€”offering moments of grace, grief, and connection that feel universally, heartbreakingly real."
         }
     };
 
@@ -756,7 +753,7 @@ const getCollectionContent = () => {
         title: "Best Comedy Movies on HBO Max",
         description: "The definitive ranking of the funniest movies on HBO Max. From the satire of The Great Dictator to the chaos of The LEGO Batman Movie.",
         selection: {
-            text1: "From the timeless slapstick of 'City Lights' to the sharp modern satire of 'Barbie'—these films represent the absolute best comedy available on HBO Max.",
+            text1: "From the timeless slapstick of 'City Lights' to the sharp modern satire of 'Barbie'â€”these films represent the absolute best comedy available on HBO Max.",
             text2: "Each selection features brilliant writing, unforgettable performances, and a unique comedic voice that has stood the test of time."
         },
         ranking: {
@@ -770,7 +767,7 @@ const getCollectionContent = () => {
         },
         experience: {
             text1: "Whether you're seeking a classic like 'Singin' in the Rain' or a modern favorite like 'Fargo', this collection delivers cinema's most effective dopamine hits.",
-            text2: "Each film has been selected for its ability to improve your mood instantly—offering laughs that range from intellectual satire to pure, joyful absurdity."
+            text2: "Each film has been selected for its ability to improve your mood instantlyâ€”offering laughs that range from intellectual satire to pure, joyful absurdity."
         }
     };
 
@@ -781,7 +778,7 @@ const getCollectionContent = () => {
         title: "Best Action Movies on Paramount+",
         description: "The definitive ranking of adrenaline-fueled cinema on Paramount+. From Mach 10 aerial combat to the Burj Khalifa climb.",
         selection: {
-            text1: "From the practical stunt mastery of 'Mission: Impossible – Fallout' to the G-force intensity of 'Top Gun: Maverick'—these films represent the gold standard of modern action cinema.",
+            text1: "From the practical stunt mastery of 'Mission: Impossible â€“ Fallout' to the G-force intensity of 'Top Gun: Maverick'â€”these films represent the gold standard of modern action cinema.",
             text2: "Each selection prioritizes practical effects over CGI, featuring actors risking their lives for the shot and set pieces that have redefined the limits of what's possible on camera."
         },
         ranking: {
@@ -795,7 +792,7 @@ const getCollectionContent = () => {
         },
         experience: {
             text1: "Whether you're seeking espionage thrills or aerial dogfights, this collection delivers cinema's most heart-pounding experiences.",
-            text2: "Each film has been selected for its refusal to compromise on realism—offering spectacle that feels dangerous, tangible, and exhilaratingly real."
+            text2: "Each film has been selected for its refusal to compromise on realismâ€”offering spectacle that feels dangerous, tangible, and exhilaratingly real."
         }
     };
 
@@ -806,7 +803,7 @@ const getCollectionContent = () => {
         title: "Best Sci-Fi Movies on Paramount+",
         description: "Visionary science fiction films exploring cosmic scope, advanced technology, and alien contact. From Interstellar to Star Trek.",
         selection: {
-            text1: "From the theoretical physics of 'Interstellar' to the linguistic mysteries of 'Arrival'—these films represent the pinnacle of science fiction available on Paramount+.",
+            text1: "From the theoretical physics of 'Interstellar' to the linguistic mysteries of 'Arrival'â€”these films represent the pinnacle of science fiction available on Paramount+.",
             text2: "Each selection features high-concept storytelling, groundbreaking visuals, and narratives that challenge our understanding of space, time, and humanity's future."
         },
         ranking: {
@@ -820,7 +817,7 @@ const getCollectionContent = () => {
         },
         experience: {
             text1: "Whether you're seeking hard sci-fi realism or thrilling space opera, this collection delivers cinema's most ambitious visions of the cosmos.",
-            text2: "Each film has been selected for its ability to inspire wonder—offering moments of pure cinematic grandeur that demand the biggest screen possible."
+            text2: "Each film has been selected for its ability to inspire wonderâ€”offering moments of pure cinematic grandeur that demand the biggest screen possible."
         }
     };
 
@@ -831,7 +828,7 @@ const getCollectionContent = () => {
         title: "Romance Movies on Paramount+",
         description: "The most emotionally resonant romance films streaming on Paramount+. From the epic tragedy of Titanic to the heartwarming devotion of 50 First Dates.",
         selection: {
-            text1: "From the timeless devotion of 'It's a Wonderful Life' to the heartbreaking reality of 'Like Crazy'—these films represent the pinnacle of romantic cinema available on Paramount+.",
+            text1: "From the timeless devotion of 'It's a Wonderful Life' to the heartbreaking reality of 'Like Crazy'â€”these films represent the pinnacle of romantic cinema available on Paramount+.",
             text2: "Each selection features profound emotional stakes, electric chemistry, and narratives that explore the beautiful, messy, and enduring power of love across time and circumstance."
         },
         ranking: {
@@ -845,7 +842,7 @@ const getCollectionContent = () => {
         },
         experience: {
             text1: "Whether you're seeking a sweeping epic or an intimate character study, this collection delivers cinema's most powerful explorations of the human heart.",
-            text2: "Each film has been selected for its ability to linger with you—offering moments of joy, heartbreak, and connection that feel universally, authentically real."
+            text2: "Each film has been selected for its ability to linger with youâ€”offering moments of joy, heartbreak, and connection that feel universally, authentically real."
         }
     };
 
@@ -856,7 +853,7 @@ const getCollectionContent = () => {
         title: "Best Core Drama Movies on Paramount+",
         description: "The definitive ranking of the most emotionally powerful dramas on Paramount+. From the ruthless ambition of There Will Be Blood to the timeless journey of Forrest Gump.",
         selection: {
-            text1: "From the oil-soaked madness of 'There Will Be Blood' to the quiet devastation of 'The English Patient'—these films represent the absolute pinnacle of dramatic storytelling available on Paramount+.",
+            text1: "From the oil-soaked madness of 'There Will Be Blood' to the quiet devastation of 'The English Patient'â€”these films represent the absolute pinnacle of dramatic storytelling available on Paramount+.",
             text2: "Each selection features profound character depth, authentic human connection, and narratives that explore the beautiful, painful complexity of being alive."
         },
         ranking: {
@@ -870,7 +867,7 @@ const getCollectionContent = () => {
         },
         experience: {
             text1: "Whether you're seeking cathartic tears or quiet reflection, this collection delivers cinema's most powerful explorations of the human condition.",
-            text2: "Each film has been selected for its ability to touch the soul—offering moments of grace, grief, and connection that feel universally, heartbreakingly real."
+            text2: "Each film has been selected for its ability to touch the soulâ€”offering moments of grace, grief, and connection that feel universally, heartbreakingly real."
         }
     };
 
@@ -881,7 +878,7 @@ const getCollectionContent = () => {
         title: "Best Thriller Movies on Paramount+",
         description: "The most suspenseful thrillers on Paramount+. From the relentless dread of No Country for Old Men to the claustrophobia of 10 Cloverfield Lane.",
         selection: {
-            text1: "From the coin-toss tension of 'No Country for Old Men' to the obsessive hunt of 'Zodiac'—these films represent the pinnacle of suspense available on Paramount+.",
+            text1: "From the coin-toss tension of 'No Country for Old Men' to the obsessive hunt of 'Zodiac'â€”these films represent the pinnacle of suspense available on Paramount+.",
             text2: "Each selection features masterclass direction, unbearable psychological pressure, and narratives that tighten the screws until the very last frame."
         },
         ranking: {
@@ -895,7 +892,7 @@ const getCollectionContent = () => {
         },
         experience: {
             text1: "Whether you're seeking cerebral puzzles or heart-pounding dread, this collection delivers cinema's most gripping experiences.",
-            text2: "Each film has been selected for its ability to keep you on the edge of your seat—offering twists and tension that demand your full attention."
+            text2: "Each film has been selected for its ability to keep you on the edge of your seatâ€”offering twists and tension that demand your full attention."
         }
     };
 
@@ -904,9 +901,9 @@ const getCollectionContent = () => {
     return {
         badge: "Wholesome Family Fun",
         title: "Best Family Movies on Paramount+",
-        description: "The top 10 family movies streaming on Paramount+ right now. From Rango to Sonic the Hedgehog 3—ranked by fun factor and wholesomeness.",
+        description: "The top 10 family movies streaming on Paramount+ right now. From Rango to Sonic the Hedgehog 3â€”ranked by fun factor and wholesomeness.",
         selection: {
-            text1: "From the animated masterpiece 'Rango' to the high-speed adventure of 'Sonic the Hedgehog 3'—these films represent the best family entertainment available on Paramount+.",
+            text1: "From the animated masterpiece 'Rango' to the high-speed adventure of 'Sonic the Hedgehog 3'â€”these films represent the best family entertainment available on Paramount+.",
             text2: "Each selection features positive messages, engaging stories for all ages, and moments of genuine fun that bring families together."
         },
         ranking: {
@@ -920,7 +917,7 @@ const getCollectionContent = () => {
         },
         experience: {
             text1: "Whether you're seeking a laugh-out-loud comedy or an exciting adventure, this collection delivers cinema's most memorable family experiences.",
-            text2: "Each film has been selected for its ability to entertain both kids and adults—offering laughter, action, and valuable life lessons."
+            text2: "Each film has been selected for its ability to entertain both kids and adultsâ€”offering laughter, action, and valuable life lessons."
         }
     };
 } else if (collection.slug === 'best-horror-movies-on-paramount-plus') {
@@ -929,7 +926,7 @@ const getCollectionContent = () => {
         title: "Best Horror Movies on Paramount+",
         description: "The definitive ranking of the scariest movies on Paramount+. From the jump scares of Insidious to the dread of The Witch.",
         selection: {
-            text1: "From the supernatural terror of 'The Conjuring' to the relentless gore of 'Evil Dead Rise'—these films represent the darkest, most intense horror available on Paramount+.",
+            text1: "From the supernatural terror of 'The Conjuring' to the relentless gore of 'Evil Dead Rise'â€”these films represent the darkest, most intense horror available on Paramount+.",
             text2: "Each selection features visceral scares, psychological trauma, and atmospheres so oppressive they feel cursed. Not for the faint of heart."
         },
         ranking: {
@@ -943,17 +940,17 @@ const getCollectionContent = () => {
         },
         experience: {
             text1: "Whether you're seeking cosmic nihilism or supernatural brutality, this collection delivers cinema's most traumatizing experiences.",
-            text2: "Each film has been selected for its ability to ruin your sleep—offering nightmares that stick with you long after the credits roll."
+            text2: "Each film has been selected for its ability to ruin your sleepâ€”offering nightmares that stick with you long after the credits roll."
         }
     };
 } else if (collection.slug === 'best-comedy-movies-on-paramount-plus') {
     return {
         badge: "Hidden Comedy Vault",
         title: "Best Comedy Movies on Paramount+",
-        description: "Everyone's scrolling Netflix for comedies while Paramount+ has Tropic Thunder, Anchorman, and The Naked Gun collecting dust. These are the classics you actually rewatch—not algorithm bait.",
+        description: "Everyone's scrolling Netflix for comedies while Paramount+ has Tropic Thunder, Anchorman, and The Naked Gun collecting dust. These are the classics you actually rewatchâ€”not algorithm bait.",
         selection: {
             text1: "No Netflix originals that disappear in six months. No algorithm-approved mediocrity. Just endlessly quotable comedies that defined their eras: Tropic Thunder's Hollywood satire, Anchorman's absurdism, The Naked Gun's slapstick perfection.",
-            text2: "These films survived because they're actually funny—not because they tested well with focus groups. Rewatchable. Quotable. Still hilarious decades later. The kind of comedies streaming services forgot how to make."
+            text2: "These films survived because they're actually funnyâ€”not because they tested well with focus groups. Rewatchable. Quotable. Still hilarious decades later. The kind of comedies streaming services forgot how to make."
         },
         ranking: {
             text: "Ranked by rewatchability: How many times have you quoted this movie? How often do you put it on in the background? Does it get funnier or worse over time?",
@@ -976,7 +973,7 @@ const getCollectionContent = () => {
         title: "Best Movies on Paramount+",
         description: "The definitive ranking of the highest-rated films streaming on Paramount+ right now. From The Godfather to Top Gun: Maverick.",
         selection: {
-            text1: "From the timeless brilliance of 'The Godfather' to the modern spectacle of 'Top Gun: Maverick'—these films represent the absolute best cinema available on the platform.",
+            text1: "From the timeless brilliance of 'The Godfather' to the modern spectacle of 'Top Gun: Maverick'â€”these films represent the absolute best cinema available on the platform.",
             text2: "Each selection is a genre-defining masterpiece, chosen for its critical acclaim, cultural impact, and cinematic mastery across action, sci-fi, romance, and drama."
         },
         ranking: {
@@ -990,7 +987,7 @@ const getCollectionContent = () => {
         },
         experience: {
             text1: "Whether you're seeking a classic like 'The Godfather' or a modern epic like 'Mission: Impossible', this collection delivers the most essential viewing experiences on Paramount+.",
-            text2: "Each film has been selected as a 'must-watch'—guaranteeing that no matter what you pick, you are watching a top-tier example of filmmaking craft."
+            text2: "Each film has been selected as a 'must-watch'â€”guaranteeing that no matter what you pick, you are watching a top-tier example of filmmaking craft."
         }
     };
 } else if (collection.slug === 'best-action-adventure-movies-on-peacock') {
@@ -1013,7 +1010,7 @@ const getCollectionContent = () => {
         },
         experience: {
             text1: "Whether you're looking for a classic action hero or a modern, gritty thriller, this collection has something to get your pulse racing.",
-            text2: "Each film has been selected for its ability to keep your heart racing—with action sequences that demand to be rewatched and analyzed."
+            text2: "Each film has been selected for its ability to keep your heart racingâ€”with action sequences that demand to be rewatched and analyzed."
                 }
             };
         } else if (collection.slug === 'best-sci-fi-movies-on-peacock') {
@@ -1022,7 +1019,7 @@ const getCollectionContent = () => {
                 title: "Best Sci-Fi Movies on Peacock",
                 description: "The most visionary sci-fi films streaming on Peacock. From time-travel paradoxes to alien invasions & dystopian futures that challenge reality.",
                 selection: {
-                    text1: "From the quantum chaos of 'Coherence' to the cosmic horror of 'Nope'—these films represent the most ambitious and visually stunning science fiction available on Peacock.",
+                    text1: "From the quantum chaos of 'Coherence' to the cosmic horror of 'Nope'â€”these films represent the most ambitious and visually stunning science fiction available on Peacock.",
                     text2: "Each selection features high-concept storytelling, groundbreaking visuals, and philosophical questions about humanity's future, technology, and place in the universe."
                 },
                 ranking: {
@@ -1036,7 +1033,7 @@ const getCollectionContent = () => {
                 },
                 experience: {
                     text1: "Whether you're seeking intellectual challenges or breathtaking alien worlds, this collection delivers cinema's most imaginative visions of the future.",
-                    text2: "Each film has been selected for its ability to provoke thought and wonder—offering glimpses into realities that feel both impossible and terrifyingly plausible."
+                    text2: "Each film has been selected for its ability to provoke thought and wonderâ€”offering glimpses into realities that feel both impossible and terrifyingly plausible."
                 }
             };
             } else if (collection.slug === 'best-romance-movies-on-peacock') {
@@ -1059,16 +1056,16 @@ const getCollectionContent = () => {
                     },
                     experience: {
                         text1: "Whether you're seeking a sweeping epic or an intimate character study, this collection delivers cinema's most powerful explorations of the human heart.",
-                        text2: "Each film has been selected for its ability to linger with you—offering moments of joy, heartbreak, and connection that feel universally, authentically real."
+                        text2: "Each film has been selected for its ability to linger with youâ€”offering moments of joy, heartbreak, and connection that feel universally, authentically real."
                     }
                 };
             } else if (collection.slug === 'best-family-movies-on-peacock') {
                 return {
                     badge: "Wholesome Family Cinema",
                     title: "Best Family Movies on Peacock",
-                    description: "The top 10 family movies streaming on Peacock right now. From How to Train Your Dragon to Harry Potter—ranked by wholesomeness and entertainment value.",
+                    description: "The top 10 family movies streaming on Peacock right now. From How to Train Your Dragon to Harry Potterâ€”ranked by wholesomeness and entertainment value.",
                     selection: {
-                        text1: "From the animated masterpiece 'How to Train Your Dragon' to the magical world of 'Harry Potter'—these films represent the best family entertainment available on Peacock.",
+                        text1: "From the animated masterpiece 'How to Train Your Dragon' to the magical world of 'Harry Potter'â€”these films represent the best family entertainment available on Peacock.",
                         text2: "Each selection features positive messages, engaging stories for all ages, and moments of genuine warmth that bring families together."
                     },
                     ranking: {
@@ -1082,7 +1079,7 @@ const getCollectionContent = () => {
                     },
                     experience: {
                         text1: "Whether you're seeking a fun adventure or a heartwarming story, this collection delivers cinema's most memorable family experiences.",
-                        text2: "Each film has been selected for its ability to entertain both kids and adults—offering laughter, tears, and valuable life lessons."
+                        text2: "Each film has been selected for its ability to entertain both kids and adultsâ€”offering laughter, tears, and valuable life lessons."
                     }
                 };
             } else if (collection.slug === 'best-drama-movies-on-peacock') {
@@ -1105,7 +1102,7 @@ const getCollectionContent = () => {
             },
             experience: {
                 text1: "Whether you're seeking cathartic tears or quiet reflection, this collection delivers cinema's most powerful explorations of the human condition.",
-                text2: "Each film has been selected for its ability to touch the soul—offering moments of grace, grief, and connection that feel universally, heartbreakingly real."
+                text2: "Each film has been selected for its ability to touch the soulâ€”offering moments of grace, grief, and connection that feel universally, heartbreakingly real."
                 }
                 };
     } else if (collection.slug === 'best-thriller-movies-on-peacock') {
@@ -1114,7 +1111,7 @@ const getCollectionContent = () => {
         title: "Best Thriller Movies on Peacock",
         description: "The most suspenseful thrillers streaming on Peacock. From high-stakes heists to psychological nightmares & courtroom tension.",
         selection: {
-            text1: "From the tactical perfection of 'The Killer' to the psychological descent of 'The Black Phone'—these films represent the pinnacle of tension and suspense available on Peacock.",
+            text1: "From the tactical perfection of 'The Killer' to the psychological descent of 'The Black Phone'â€”these films represent the pinnacle of tension and suspense available on Peacock.",
             text2: "Each selection features masterclass direction, unforgettable performances, and plots that tighten the screws until the very last frame."
         },
         ranking: {
@@ -1128,7 +1125,7 @@ const getCollectionContent = () => {
         },
         experience: {
             text1: "Whether you're seeking intellectual puzzles or heart-pounding action, this collection delivers cinema's most gripping experiences.",
-            text2: "Each film has been selected for its ability to keep you on the edge of your seat—offering twists and tension that demand your full attention."
+            text2: "Each film has been selected for its ability to keep you on the edge of your seatâ€”offering twists and tension that demand your full attention."
         }
     };
     } else if (collection.slug === 'best-movies-on-peacock') {
@@ -1137,7 +1134,7 @@ const getCollectionContent = () => {
         title: "Best Movies on Peacock",
         description: "The definitive ranking of the highest-rated films streaming on Peacock right now. From cinematic classics to modern blockbusters.",
         selection: {
-            text1: "From timeless masterpieces to modern marvels—these films represent the absolute best cinema available on the platform.",
+            text1: "From timeless masterpieces to modern marvelsâ€”these films represent the absolute best cinema available on the platform.",
             text2: "Each selection is a genre-defining masterpiece, chosen for its critical acclaim, cultural impact, and cinematic mastery across all genres."
         },
         ranking: {
@@ -1151,7 +1148,7 @@ const getCollectionContent = () => {
         },
         experience: {
             text1: "Whether you're seeking a timeless classic or a modern epic, this collection delivers the most essential viewing experiences on Peacock.",
-            text2: "Each film has been selected as a 'must-watch'—guaranteeing that no matter what you pick, you are watching a top-tier example of filmmaking craft."
+            text2: "Each film has been selected as a 'must-watch'â€”guaranteeing that no matter what you pick, you are watching a top-tier example of filmmaking craft."
         }
     };
     } else if (collection.slug === 'movies-like-black-swan') {
@@ -1160,7 +1157,7 @@ const getCollectionContent = () => {
                     title: "Black Swan",
                     description: "Intense psychological thrillers about performance pressure and identity collapse. Ballet obsession, perfectionism spirals & psychological breakdowns that blur reality and nightmare.",
                     selection: {
-                text1: "From ballet studios to music conservatories—these films explore how artistic perfection demands total sacrifice, pushing protagonists into identity crises where they can no longer distinguish their performance from their true self.",
+                text1: "From ballet studios to music conservatoriesâ€”these films explore how artistic perfection demands total sacrifice, pushing protagonists into identity crises where they can no longer distinguish their performance from their true self.",
                 text2: "Each psychological masterpiece features characters consumed by their craft, facing mentors who demand the impossible, and spiraling into madness as the line between dedication and self-destruction disappears completely."
             },
             ranking: {
@@ -1174,7 +1171,7 @@ const getCollectionContent = () => {
             },
             experience: {
                 text1: "Whether you're seeking psychological depth or disturbing character studies, this collection delivers cinema's most intense explorations of obsession and identity collapse.",
-                text2: "Each film has been selected for its unflinching portrayal of artistic sacrifice—creating unforgettable narratives where ambition becomes indistinguishable from madness, leaving viewers questioning where dedication ends and self-destruction begins."
+                text2: "Each film has been selected for its unflinching portrayal of artistic sacrificeâ€”creating unforgettable narratives where ambition becomes indistinguishable from madness, leaving viewers questioning where dedication ends and self-destruction begins."
             }
         };
 
@@ -1185,7 +1182,7 @@ const getCollectionContent = () => {
         title: "Eyes Wide Shut",
         description: "Films about secret societies, occult rituals, and the hidden world of the ultra-rich. Paranoid descents into forbidden territory where curiosity gets you killed.",
         selection: {
-            text1: "Masked rituals. Satanic cults. Shadow hierarchies. These films reveal what happens when outsiders stumble into the elite's secret playgrounds—and realize they were never supposed to leave.",
+            text1: "Masked rituals. Satanic cults. Shadow hierarchies. These films reveal what happens when outsiders stumble into the elite's secret playgroundsâ€”and realize they were never supposed to leave.",
             text2: "Each film follows protagonists who breach the invisible wall between ordinary life and the ruling class's hidden ceremonies. Dream logic. Surveillance paranoia. No one will believe what they saw."
         },
         ranking: {
@@ -1198,7 +1195,7 @@ const getCollectionContent = () => {
             ]
         },
         experience: {
-            text1: "From Kubrick's final warning to modern exposés of wealth and ritual, these films create suffocating dread—the sense of being watched by forces you cannot comprehend.",
+            text1: "From Kubrick's final warning to modern exposÃ©s of wealth and ritual, these films create suffocating dreadâ€”the sense of being watched by forces you cannot comprehend.",
             text2: "You'll question every gala, every private club, every unexplained death of a whistleblower. Welcome to cinema's most unsettling rabbit holes."
         }
     };
@@ -1209,9 +1206,9 @@ const getCollectionContent = () => {
     return {
         badge: "Reality-Warping Cinema",
         title: "Donnie Darko",
-        description: "Mind-bending time travel & reality-warping films. Butterfly effects, temporal loops, dying dreams & doppelgängers that shatter your perception of reality itself.",
+        description: "Mind-bending time travel & reality-warping films. Butterfly effects, temporal loops, dying dreams & doppelgÃ¤ngers that shatter your perception of reality itself.",
         selection: {
-            text1: "From time-traveling journals to quantum multiverses—these films explore fractured realities, temporal paradoxes, and consciousness unraveling where nothing is as it seems.",
+            text1: "From time-traveling journals to quantum multiversesâ€”these films explore fractured realities, temporal paradoxes, and consciousness unraveling where nothing is as it seems.",
             text2: "Each reality-warping masterpiece features protagonists trapped between timelines, alternate selves, and existential nightmares that question the very fabric of existence."
         },
         ranking: {
@@ -1225,7 +1222,7 @@ const getCollectionContent = () => {
         },
         experience: {
             text1: "Whether you're seeking temporal paradoxes or psychological disintegration, this collection delivers cinema's most disorienting reality-warping experiences.",
-            text2: "Each film creates genuine existential confusion—mirroring protagonists' descent into temporal madness where linear reality ceases to exist. Your perception will never recover."
+            text2: "Each film creates genuine existential confusionâ€”mirroring protagonists' descent into temporal madness where linear reality ceases to exist. Your perception will never recover."
         }
     };
     
@@ -1237,7 +1234,7 @@ const getCollectionContent = () => {
             title: "Oldboy",
             description: "Brutal revenge thrillers with shocking twists that'll haunt you. Twisted vengeance, moral devastation & cathartic violence where justice becomes personal destruction.",
             selection: {
-                text1: "From 15 years of mysterious imprisonment to endless revenge cycles—these films explore vengeance's primal satisfaction while revealing its psychological devastation and moral complexity.",
+                text1: "From 15 years of mysterious imprisonment to endless revenge cyclesâ€”these films explore vengeance's primal satisfaction while revealing its psychological devastation and moral complexity.",
                 text2: "Each revenge masterpiece features protagonists pushed beyond human limits, discovering betrayals that shatter their world, and unleashing calculated destruction that consumes everything."
             },
             ranking: {
@@ -1251,7 +1248,7 @@ const getCollectionContent = () => {
             },
             experience: {
                 text1: "Whether you're seeking visceral catharsis or profound moral reckoning, this collection delivers cinema's most devastating revenge experiences that redefine justice itself.",
-                text2: "Each film has been selected for its unflinching portrayal of vengeance's seductive power and ultimate tragedy—creating unforgettable narratives where revenge destroys both hunter and hunted."
+                text2: "Each film has been selected for its unflinching portrayal of vengeance's seductive power and ultimate tragedyâ€”creating unforgettable narratives where revenge destroys both hunter and hunted."
             }
         };
 
@@ -1262,7 +1259,7 @@ const getCollectionContent = () => {
             title: "Parasite",
             description: "Brutal class war films exposing capitalism's cruelty. Social inequality, economic desperation & systemic injustice where the poor and rich wage psychological warfare.",
             selection: {
-                text1: "From Bong Joon-ho's architectural metaphors to desperate families infiltrating the wealthy—these films dissect how capitalism creates parasites on both ends of the economic spectrum.",
+                text1: "From Bong Joon-ho's architectural metaphors to desperate families infiltrating the wealthyâ€”these films dissect how capitalism creates parasites on both ends of the economic spectrum.",
                 text2: "Each class warfare masterpiece exposes the uncomfortable truth that survival under late-stage capitalism requires deception, exploitation, and moral compromise from everyone involved."
             },
             ranking: {
@@ -1276,12 +1273,12 @@ const getCollectionContent = () => {
             },
             experience: {
                 text1: "Whether you're seeking sharp political allegory or visceral human drama, this collection delivers cinema's most unflinching explorations of class conflict and economic inequality.",
-                text2: "Each film has been selected for its refusal to romanticize poverty or demonize wealth—instead revealing how systemic inequality corrupts everyone trapped within its architecture."
+                text2: "Each film has been selected for its refusal to romanticize poverty or demonize wealthâ€”instead revealing how systemic inequality corrupts everyone trapped within its architecture."
             }
         };
 } else if (collection.slug === 'movies-like-interstellar') {
         return {
-            badge: "🌌 Cosmic Scale",
+            badge: "ðŸŒŒ Cosmic Scale",
             title: "10 Cosmic Masterpieces Like Interstellar (Ranked by Scale)",
             description: "Feeling small? Good. We ranked 10 cinematic experiences that capture the terrifying beauty and crushing weight of the infinite universe.",
             selection: {
@@ -1305,9 +1302,9 @@ const getCollectionContent = () => {
         };
 } else if (collection.slug === 'movies-like-shutter-island') {
         return {
-            badge: "👁️ Perception Warning",
+            badge: "ðŸ‘ï¸ Perception Warning",
             title: "10 Shattered-Reality Movies (Ranked by Paranoia)",
-            description: "Don’t trust the protagonist. Don’t trust the frame. We ranked 10 psychological masterclasses that weaponize your own perception against you.",
+            description: "Donâ€™t trust the protagonist. Donâ€™t trust the frame. We ranked 10 psychological masterclasses that weaponize your own perception against you.",
             selection: {
                 text1: "These are the films that live in the 'unreliable' space. We selected masterpieces where the narrator's mind is a maze, and the audience is trapped inside with them.",
                 text2: "From asylum noir to identity-warping sci-fi, this list is for those who want to feel the ground shift beneath their feet."
@@ -1323,7 +1320,7 @@ const getCollectionContent = () => {
             },
             experience: {
                 text1: "Pay attention to the background. Pay attention to the mirrors. In these films, the details you ignore are the ones that destroy the 'truth.'",
-                text2: "If you think you know what’s happening by the second act, you’re already being gaslit."
+                text2: "If you think you know whatâ€™s happening by the second act, youâ€™re already being gaslit."
             },
            
         };
@@ -1333,7 +1330,7 @@ const getCollectionContent = () => {
         title: "Time Travel Movies That Break Your Brain",
         description: "No hand-holding. No plot armor. Just brutal temporal logic that treats time travel like engineering, not magic. Paradoxes have consequences here.",
         selection: {
-            text1: "Primer's chalkboard equations. Predestination's impossible loop. Timecrimes' recursive nightmare. These films treat causality like a physics problem—and watching them feels like homework.",
+            text1: "Primer's chalkboard equations. Predestination's impossible loop. Timecrimes' recursive nightmare. These films treat causality like a physics problemâ€”and watching them feels like homework.",
             text2: "No lazy blockbuster resets. Every timeline branch matters. Every action creates consequences that ripple backward and forward. You'll need diagrams. You'll need rewatches. You might need therapy."
         },
         ranking: {
@@ -1357,7 +1354,7 @@ const getCollectionContent = () => {
             title: "Sci-Fi Cinema",
             description: "Groundbreaking sci-fi that expands your imagination. Visionary concepts, philosophical depth & stunning visuals that redefine what science fiction can achieve.",
             selection: {
-                text1: "From dystopian nightmares to cosmic adventures—these films push the boundaries of imagination while exploring profound questions about humanity, consciousness, and existence itself.",
+                text1: "From dystopian nightmares to cosmic adventuresâ€”these films push the boundaries of imagination while exploring profound questions about humanity, consciousness, and existence itself.",
                 text2: "Each sci-fi masterpiece features visionary worldbuilding, innovative concepts, and complex characters navigating extraordinary scenarios that challenge our understanding of reality and possibility."
             },
             ranking: {
@@ -1371,7 +1368,7 @@ const getCollectionContent = () => {
             },
             experience: {
                 text1: "Whether you're seeking innovative concepts or philosophical depth, this collection delivers cinema's most visionary science fiction experiences that'll stay with you for years.",
-                text2: "Each film has been selected for its ability to expand imagination and challenge perspective—with concepts that continue inspiring new ways of thinking about science, technology, and humanity's future."
+                text2: "Each film has been selected for its ability to expand imagination and challenge perspectiveâ€”with concepts that continue inspiring new ways of thinking about science, technology, and humanity's future."
             }
         };
   } else if (collection.slug === 'best-psychological-thriller-movies') {
@@ -1380,8 +1377,8 @@ const getCollectionContent = () => {
         title: "Psychological Thriller",
         description: "Films that weaponize paranoia, shatter identity, and make you question what's real. Unreliable narrators. Fractured minds. No safe exit.",
         selection: {
-            text1: "These films don't just scare you—they make you doubt your own perception. From Fight Club's split personality to Black Swan's obsessive descent, reality becomes optional.",
-            text2: "Each protagonist spirals deeper into psychological collapse while you watch. Gaslighting. Memory manipulation. Dissociative breaks. By the end, you won't trust anything—including yourself."
+            text1: "These films don't just scare youâ€”they make you doubt your own perception. From Fight Club's split personality to Black Swan's obsessive descent, reality becomes optional.",
+            text2: "Each protagonist spirals deeper into psychological collapse while you watch. Gaslighting. Memory manipulation. Dissociative breaks. By the end, you won't trust anythingâ€”including yourself."
         },
         ranking: {
             text: "Ranked by how effectively each film destroys your sense of reality, from subtle mind games to full psychological breakdown.",
@@ -1394,7 +1391,7 @@ const getCollectionContent = () => {
         },
         experience: {
             text1: "From Memento's fractured memory to Shutter Island's institutional gaslighting, these films create lasting unease. You'll second-guess conversations. Question memories. See patterns everywhere.",
-            text2: "Warning: Multiple viewings don't make these films less disturbing—they reveal how much you missed the first time. The clues were always there. You just weren't ready to see them."
+            text2: "Warning: Multiple viewings don't make these films less disturbingâ€”they reveal how much you missed the first time. The clues were always there. You just weren't ready to see them."
         }
     };
 
@@ -1404,7 +1401,7 @@ const getCollectionContent = () => {
             title: "Heist Thriller",
             description: "Brilliant heist thrillers with genius criminal plans. Elaborate schemes, high-stakes robberies & masterminds who make the impossible look easy.",
             selection: {
-                text1: "From Ocean's Eleven to Heat—these films showcase the perfect blend of meticulous planning, flawless execution, and unexpected twists that keep you on the edge of your seat.",
+                text1: "From Ocean's Eleven to Heatâ€”these films showcase the perfect blend of meticulous planning, flawless execution, and unexpected twists that keep you on the edge of your seat.",
                 text2: "Each heist masterpiece features genius-level planning, brilliant execution under pressure, and the constant tension of potential failure or betrayal that could unravel everything."
             },
             ranking: {
@@ -1418,16 +1415,16 @@ const getCollectionContent = () => {
             },
             experience: {
                 text1: "Whether you're seeking intricate planning sequences or adrenaline-pumping action, this collection delivers cinema's most thrilling heist experiences that celebrate criminal genius.",
-                text2: "Each film has been selected for its ability to maintain relentless tension throughout—while showcasing brilliantly crafted schemes and unforgettable criminal masterminds you'll root for."
+                text2: "Each film has been selected for its ability to maintain relentless tension throughoutâ€”while showcasing brilliantly crafted schemes and unforgettable criminal masterminds you'll root for."
             }
         };
     } else if (collection.slug === 'best-crime-thriller-movies') {
         return {
             badge: "Crime Thriller Cinema",
             title: "Crime Thriller",
-            description: "Intense crime thrillers with ruthless investigations. From Heat to The Departed—ranked by suspense intensity, moral complexity & psychological depth.",
+            description: "Intense crime thrillers with ruthless investigations. From Heat to The Departedâ€”ranked by suspense intensity, moral complexity & psychological depth.",
             selection: {
-                text1: "From cat-and-mouse detective games to criminal underworlds—these films expose the dark psychology of crime while maintaining relentless tension and complex moral questions.",
+                text1: "From cat-and-mouse detective games to criminal underworldsâ€”these films expose the dark psychology of crime while maintaining relentless tension and complex moral questions.",
                 text2: "Each crime thriller features brilliant investigations, morally gray protagonists, and the psychological warfare between cops and criminals that defines masterful crime cinema."
             },
             ranking: {
@@ -1441,14 +1438,14 @@ const getCollectionContent = () => {
             },
             experience: {
                 text1: "Whether you're seeking intense investigations or profound moral exploration, this collection delivers cinema's most gripping crime thriller experiences that'll challenge your sense of justice.",
-                text2: "Each film has been selected for its ability to maintain relentless tension throughout—while exploring the psychology of crime and creating unforgettable criminal masterminds."
+                text2: "Each film has been selected for its ability to maintain relentless tension throughoutâ€”while exploring the psychology of crime and creating unforgettable criminal masterminds."
             }
         };
   } else if (collection.slug === 'best-detective-thriller-movies') {
     return {
         badge: "Obsessive Noir Cinema",
         title: "Detective Thrillers Ranked by Obsession",
-        description: "The cases that never close in your mind. From Se7en's seven-day descent to Zodiac's decade-long spiral. These detectives sacrifice everything—and still lose.",
+        description: "The cases that never close in your mind. From Se7en's seven-day descent to Zodiac's decade-long spiral. These detectives sacrifice everythingâ€”and still lose.",
         selection: {
             text1: "No clean endings. No triumphant reveals. Se7en ends in a box. Zodiac ends without answers. Memories of Murder ends with eye contact across decades. The hunt destroys everyone it touches.",
             text2: "Each film follows detectives who cross the line between solving a case and becoming consumed by it. Sleep deprivation. Broken families. Moral compromise. The killer wins even when caught."
@@ -1471,10 +1468,10 @@ const getCollectionContent = () => {
     return {
         badge: "Annihilation Cinema",
         title: "Revenge",
-        description: "When forgiveness dies, systematic destruction begins. From Oldboy's 15-year trap to I Saw the Devil's mutual damnation. These protagonists didn't want justice—they wanted blood.",
+        description: "When forgiveness dies, systematic destruction begins. From Oldboy's 15-year trap to I Saw the Devil's mutual damnation. These protagonists didn't want justiceâ€”they wanted blood.",
         selection: {
-            text1: "Gladiator's arena slaughter. John Wick's continental body count. The Count of Monte Cristo's 20-year orchestration. These aren't crimes of passion—they're masterclasses in patient, methodical annihilation.",
-            text2: "Each protagonist crosses the line permanently. Torture becomes strategy. Murder becomes art. The question isn't whether they'll get revenge—it's whether they'll recognize themselves when it's over."
+            text1: "Gladiator's arena slaughter. John Wick's continental body count. The Count of Monte Cristo's 20-year orchestration. These aren't crimes of passionâ€”they're masterclasses in patient, methodical annihilation.",
+            text2: "Each protagonist crosses the line permanently. Torture becomes strategy. Murder becomes art. The question isn't whether they'll get revengeâ€”it's whether they'll recognize themselves when it's over."
         },
         ranking: {
             text: "Ranked by commitment to total destruction: How far will they go? How much will they sacrifice? Is there anything left when the blood dries?",
@@ -1487,7 +1484,7 @@ const getCollectionContent = () => {
         },
         experience: {
             text1: "From The Revenant's frozen crawl to Oldboy's hammer rampage, these films understand the dark satisfaction of watching bad people suffer. No apologies. No hesitation. Just consequences.",
-            text2: "Warning: These protagonists aren't heroes. They're monsters justified by trauma. You'll root for them anyway. That's what makes these films dangerous—and unforgettable."
+            text2: "Warning: These protagonists aren't heroes. They're monsters justified by trauma. You'll root for them anyway. That's what makes these films dangerousâ€”and unforgettable."
         }
     };
 
@@ -1497,7 +1494,7 @@ const getCollectionContent = () => {
             title: "Mystery Thriller",
             description: "Clever mystery thrillers with impossible puzzles. Intricate clues, shocking revelations & mysteries where every detail matters in the final mind-blowing twist.",
             selection: {
-                text1: "These films masterfully weave mysteries that challenge you to piece together clues and anticipate shocking revelations—testing your detective skills with every scene.",
+                text1: "These films masterfully weave mysteries that challenge you to piece together clues and anticipate shocking revelationsâ€”testing your detective skills with every scene.",
                 text2: "Each mystery thriller features intricate plots where nothing is as it seems, every clue matters, and the final revelation transforms everything that came before."
             },
             ranking: {
@@ -1520,7 +1517,7 @@ const getCollectionContent = () => {
             title: "Thriller",
             description: "Edge-of-your-seat suspense thrillers you can't pause. Relentless pacing, shocking twists & psychological depth that maintains constant tension throughout.",
             selection: {
-                text1: "From relentless pacing to psychological tension—these films deliver the ultimate adrenaline rush while exploring complex characters and moral dilemmas that'll haunt you.",
+                text1: "From relentless pacing to psychological tensionâ€”these films deliver the ultimate adrenaline rush while exploring complex characters and moral dilemmas that'll haunt you.",
                 text2: "Each thriller masterpiece features high-stakes scenarios, unexpected twists you won't see coming, and the constant threat of danger that keeps you glued to the screen."
             },
             ranking: {
@@ -1551,7 +1548,7 @@ const getCollectionContent = () => {
 
         description:
 
-          "Brutal survival films where nature doesn’t care if you live or die. Ranked by realism, desperation, and human endurance.",
+          "Brutal survival films where nature doesnâ€™t care if you live or die. Ranked by realism, desperation, and human endurance.",
 
 
 
@@ -1559,7 +1556,7 @@ const getCollectionContent = () => {
 
             text1:
 
-              "These films strip survival down to its rawest form—where isolation, injury, hunger, and impossible decisions define the fight to stay alive.",
+              "These films strip survival down to its rawest formâ€”where isolation, injury, hunger, and impossible decisions define the fight to stay alive.",
 
             text2:
 
@@ -1595,7 +1592,7 @@ const getCollectionContent = () => {
 
             text1:
 
-              "This collection is for viewers who want survival stories that feel real—where every injury matters and every decision has consequences.",
+              "This collection is for viewers who want survival stories that feel realâ€”where every injury matters and every decision has consequences.",
 
             text2:
 
@@ -1612,7 +1609,7 @@ const getCollectionContent = () => {
             title: "War Films",
             description: "Unflinching war films that show war's true cost. Visceral D-Day combat, jungle firefights & moral reckoning that challenge war's glorification.",
             selection: {
-                text1: "From D-Day beaches to jungle firefights and submarine claustrophobia—these films go beyond tactics and heroism to confront trauma, moral collapse, and war's devastating human cost.",
+                text1: "From D-Day beaches to jungle firefights and submarine claustrophobiaâ€”these films go beyond tactics and heroism to confront trauma, moral collapse, and war's devastating human cost.",
                 text2: "Each war masterpiece features visceral combat that doesn't look away, complex protagonists wrestling with survival and conscience, and narratives that challenge the glorification of warfare."
             },
             ranking: {
@@ -1635,7 +1632,7 @@ const getCollectionContent = () => {
             title: collection.title,
             description: collection.description || "Curated collection of exceptional cinema that defines the genre.",
             selection: {
-                text1: "Expertly selected films from our comprehensive database—each chosen for quality, impact and unforgettable storytelling.",
+                text1: "Expertly selected films from our comprehensive databaseâ€”each chosen for quality, impact and unforgettable storytelling.",
                 text2: "Each selection represents the finest in cinematic storytelling and artistic achievement that'll stay with you long after the credits roll."
             },
             ranking: {
@@ -1655,7 +1652,7 @@ const getCollectionContent = () => {
     }
 };
 
-// 🔥 HEADER CONTENT 
+// ðŸ”¥ HEADER CONTENT 
 const getHeaderContent = () => {
 if (collection.slug === 'movies-like-memento') {
         return {
@@ -1714,7 +1711,7 @@ subtitle: "Nolan gave you a map. These films burn it. No totems. No exit"
         } else if (collection.slug === 'best-horror-movies-on-hulu') {
         return {
             title: "Best Horror Movies on Hulu: 10 Terrifying Films",
-            subtitle: "From trauma-inducing gore to slow-burn dread—ranked by visceral fear & psychological impact"
+            subtitle: "From trauma-inducing gore to slow-burn dreadâ€”ranked by visceral fear & psychological impact"
         };
 
 } else if (collection.slug === 'best-comedy-movies-on-hulu') {
@@ -1739,7 +1736,7 @@ subtitle: "Nolan gave you a map. These films burn it. No totems. No exit"
 } else if (collection.slug === 'best-movies-on-hulu') {
     return {
         title: "Best Movies on Hulu: 10 Essential Films",
-        subtitle: "The definitive ranking of the highest-rated films streaming now—from Heat to Superbad"
+        subtitle: "The definitive ranking of the highest-rated films streaming nowâ€”from Heat to Superbad"
     };
 
 
@@ -1785,20 +1782,20 @@ subtitle: "Nolan gave you a map. These films burn it. No totems. No exit"
     } else if (collection.slug === 'best-sci-fi-movies-on-hbo-max') {
     return {
         title: "10 Best Sci-Fi Movies on HBO Max",
-        subtitle: "From 2001 to Dune—ranked by spectacular scale, visual mastery & conceptual depth"
+        subtitle: "From 2001 to Duneâ€”ranked by spectacular scale, visual mastery & conceptual depth"
     };
 
     } else if (collection.slug === 'best-horror-movies-on-hbo-max') {
     return {
         title: "10 Best Horror Movies on HBO Max: Ranked by Scariness",
-        subtitle: "From The Conjuring to Evil Dead Rise—ranked by dread, gore & psychological trauma"
+        subtitle: "From The Conjuring to Evil Dead Riseâ€”ranked by dread, gore & psychological trauma"
     };
 
 
     } else if (collection.slug === 'best-movies-on-hbo-max') {
     return {
         title: "Best Movies on HBO Max: 10 Essential Films",
-        subtitle: "The definitive ranking of the highest-rated films streaming now—from Seven Samurai to Dune: Part Two"
+        subtitle: "The definitive ranking of the highest-rated films streaming nowâ€”from Seven Samurai to Dune: Part Two"
     };
 
 
@@ -1812,7 +1809,7 @@ subtitle: "Nolan gave you a map. These films burn it. No totems. No exit"
     } else if (collection.slug === 'best-comedy-movies-on-hbo-max') {
     return {
         title: "Best Comedy Movies on HBO Max: 10 Satirical Masterpieces",
-        subtitle: "From City Lights to Barbie—ranked by influence, wit & cinematic brilliance"
+        subtitle: "From City Lights to Barbieâ€”ranked by influence, wit & cinematic brilliance"
     };
 
 
@@ -1825,30 +1822,30 @@ subtitle: "Nolan gave you a map. These films burn it. No totems. No exit"
 } else if (collection.slug === 'best-sci-fi-movies-on-paramount-plus') {
     return {
         title: "Best Sci-Fi Movies on Paramount+: 10 Visionary Films",
-        subtitle: "From Interstellar to Star Trek—cosmic epics, hard sci-fi & mind-bending thrillers"
+        subtitle: "From Interstellar to Star Trekâ€”cosmic epics, hard sci-fi & mind-bending thrillers"
     };
 
     } else if (collection.slug === 'best-core-drama-movies-on-paramount-plus') {
     return {
         title: "Best Core Drama Movies on Paramount+: 10 Emotional Films",
-        subtitle: "Emotionally powerful cinema—from There Will Be Blood to Forrest Gump"
+        subtitle: "Emotionally powerful cinemaâ€”from There Will Be Blood to Forrest Gump"
     };
 
     } else if (collection.slug === 'best-thriller-movies-on-paramount-plus') {
     return {
         title: "Best Thriller Movies on Paramount+: 10 Intense Films",
-        subtitle: "Edge-of-your-seat suspense—from No Country for Old Men to Strange Darling"
+        subtitle: "Edge-of-your-seat suspenseâ€”from No Country for Old Men to Strange Darling"
     };
 
 } else if (collection.slug === 'best-family-movies-on-paramount-plus') {
     return {
         title: "10 Best Family Movies on Paramount+: Wholesome Picks",
-        subtitle: "Wholesome entertainment, animated adventures & fun for all ages—from Rango to Sonic 3"
+        subtitle: "Wholesome entertainment, animated adventures & fun for all agesâ€”from Rango to Sonic 3"
     };
 } else if (collection.slug === 'best-horror-movies-on-paramount-plus') {
     return {
         title: "10 Best Horror Movies on Paramount+: Ranked by Scariness",
-        subtitle: "From The Conjuring to Evil Dead Rise—ranked by dread, gore & psychological trauma"
+        subtitle: "From The Conjuring to Evil Dead Riseâ€”ranked by dread, gore & psychological trauma"
     };
 } else if (collection.slug === 'best-comedy-movies-on-paramount-plus') {
     return {
@@ -1860,7 +1857,7 @@ subtitle: "While everyone searches Netflix, these classics hide in plain sight. 
 } else if (collection.slug === 'best-movies-on-paramount-plus') {
     return {
         title: "Best Movies on Paramount+: 10 Essential Films",
-        subtitle: "The definitive ranking of the highest-rated films streaming now—from The Godfather to Top Gun: Maverick"
+        subtitle: "The definitive ranking of the highest-rated films streaming nowâ€”from The Godfather to Top Gun: Maverick"
     };
 } else if (collection.slug === 'best-action-adventure-movies-on-peacock') {
     return {
@@ -1896,7 +1893,7 @@ subtitle: "While everyone searches Netflix, these classics hide in plain sight. 
     } else if (collection.slug === 'best-movies-on-peacock') {
     return {
         title: "Best Movies on Peacock: 10 Essential Films",
-        subtitle: "The definitive ranking of the highest-rated films streaming now—from classics to modern blockbusters"
+        subtitle: "The definitive ranking of the highest-rated films streaming nowâ€”from classics to modern blockbusters"
     };
     } else if (collection.slug === 'best-comedy-movies-on-peacock') {
     return {
@@ -1906,7 +1903,7 @@ subtitle: "While everyone searches Netflix, these classics hide in plain sight. 
     } else if (collection.slug === 'movies-like-donnie-darko') {
     return {
         title: "Movies Like Donnie Darko: 10 Reality-Warping Films",
-        subtitle: "Time travel paradoxes, dying dreams & doppelgängers that shatter reality itself"
+        subtitle: "Time travel paradoxes, dying dreams & doppelgÃ¤ngers that shatter reality itself"
     };
 
  } else if (collection.slug === 'movies-like-eyes-wide-shut') {
@@ -1925,17 +1922,17 @@ subtitle: "While everyone searches Netflix, these classics hide in plain sight. 
   } else if (collection.slug === 'movies-like-shutter-island') {
         return {
             title: "10 Shattered-Reality Movies Like Shutter Island (Ranked by Paranoia)",
-            subtitle: "Don’t trust the frame. Gaslighting, identity collapse & the anatomy of psychological denial."
+            subtitle: "Donâ€™t trust the frame. Gaslighting, identity collapse & the anatomy of psychological denial."
         };  
     } else if (collection.slug === 'best-crime-thriller-movies') {
         return {
             title: "Best Crime Thrillers: 10 Ruthless Films",
-            subtitle: "From Heat to The Departed—heists, investigations & moral complexity"
+            subtitle: "From Heat to The Departedâ€”heists, investigations & moral complexity"
         };
     } else if (collection.slug === 'best-heist-thriller-movies') {
         return {
             title: "Best Heist Movies: 10 Master Robberies",
-            subtitle: "From Ocean's Eleven to Heat—elaborate plans & high-stakes criminal masterminds"
+            subtitle: "From Ocean's Eleven to Heatâ€”elaborate plans & high-stakes criminal masterminds"
         };
     } else if (collection.slug === 'best-time-travel-movies') {
         return {
@@ -1946,7 +1943,7 @@ subtitle: "Logic won't save you. Bootstrap paradoxes. Causality collapse. Bring 
     } else if (collection.slug === 'best-sci-fi-movies') {
         return {
             title: "Best Sci-Fi Movies: 10 Visionary Films",
-            subtitle: "From Blade Runner to Interstellar—groundbreaking concepts & philosophical depth"
+            subtitle: "From Blade Runner to Interstellarâ€”groundbreaking concepts & philosophical depth"
         };
     } else if (collection.slug === 'best-psychological-thriller-movies') {
         return {
@@ -1967,7 +1964,7 @@ subtitle: "Not all minds recover. Identity collapse. Reality distortion. Permane
 } else if (collection.slug === 'best-survival-movies') {
     return {
         title: "Survival Movies That Push Humans to the Edge (True Stories)",
-        subtitle: "True endurance stories against nature’s most unforgiving extremes"
+        subtitle: "True endurance stories against natureâ€™s most unforgiving extremes"
     };
 
 
@@ -1991,7 +1988,7 @@ subtitle: "They chose annihilation over peace. No forgiveness. No redemption. Ju
     } else if (collection.slug === 'best-war-films') {
         return {
             title: "Best War Films: 10 Unflinching Masterpieces",
-            subtitle: "From D-Day to jungle combat—visceral battle scenes & anti-war moral reckoning"
+            subtitle: "From D-Day to jungle combatâ€”visceral battle scenes & anti-war moral reckoning"
         };
     } else {
         return {
@@ -2002,7 +1999,7 @@ subtitle: "They chose annihilation over peace. No forgiveness. No redemption. Ju
 };
 
 
-// 🔥 LOADER CONTENT
+// ðŸ”¥ LOADER CONTENT
 const getLoaderContent = () => {
     if (collection?.slug === 'movies-like-memento') {
         return {
@@ -2347,16 +2344,16 @@ const getLoaderContent = () => {
 };
 
 
-// 🔥 STATIC META CONTENT - SEO OPTIMIZED (EVERGREEN & HIGH CTR)
-// 🔥 STATIC META CONTENT - SEO OPTIMIZED (EVERGREEN & HIGH CTR)
+// ðŸ”¥ STATIC META CONTENT - SEO OPTIMIZED (EVERGREEN & HIGH CTR)
+// ðŸ”¥ STATIC META CONTENT - SEO OPTIMIZED (EVERGREEN & HIGH CTR)
 const getStaticMetaContent = () => {
     if (collection.slug === 'movies-like-memento') {
         return {
             title: "10 Mind-Bending Movies Like Memento",
             description: "Obsessed with Memento? Discover 10 psychological thrillers with memory loss and non-linear plots. Includes sensitive content timestamps.", 
             keywords: "movies like memento, memory loss movies, psychological thrillers, christopher nolan style",
-            ogTitle: "10 Mind-Bending Movies Like Memento 🧠",
-            twitterTitle: "🧠 Obsessed with Memento? Watch These 10 Films Next",
+            ogTitle: "10 Mind-Bending Movies Like Memento ðŸ§ ",
+            twitterTitle: "ðŸ§  Obsessed with Memento? Watch These 10 Films Next",
             progressText: `of Top ${movies.length} Movies Like Memento`
         };
   } else if (collection.slug === 'movies-like-inception') {
@@ -2365,7 +2362,7 @@ const getStaticMetaContent = () => {
         description: "Nolan gave you a map. These films burn it. From the engineering homework of Primer to the waking nightmare of Mulholland Drive. No totems. No exit.",
         keywords: "movies like inception, primer explained, hard sci-fi movies, synecdoche new york, complex mind benders, reality distortion films, predestination paradox",
         ogTitle: "10 Films That Make Inception Look Like A Kids' Movie",
-        twitterTitle: "🌀 Inception was easy. These 10 films will actually break your brain.",
+        twitterTitle: "ðŸŒ€ Inception was easy. These 10 films will actually break your brain.",
         progressText: `of 10 Reality-Shattering Films`
     };
     } else if (collection.slug === 'movies-like-the-matrix') {
@@ -2373,8 +2370,8 @@ const getStaticMetaContent = () => {
             title: "10 Movies Like The Matrix: Cyberpunk & Sci-Fi",
             description: "Loved The Matrix? Discover the 10 best cyberpunk thrillers about simulated realities and digital awakening. Includes sensitive content timestamps.", 
             keywords: "movies like the matrix, cyberpunk movies, sci-fi reality films, simulation theory movies",
-            ogTitle: "10 Movies Like The Matrix: Cyberpunk & Reality-Bending 🔴",
-            twitterTitle: "🔴 Loved The Matrix? These 10 Cyberpunk Films Are Essential",
+            ogTitle: "10 Movies Like The Matrix: Cyberpunk & Reality-Bending ðŸ”´",
+            twitterTitle: "ðŸ”´ Loved The Matrix? These 10 Cyberpunk Films Are Essential",
             progressText: `of Top ${movies.length} Movies Like The Matrix`
         };
     } else if (collection.slug === 'movies-like-se7en') {
@@ -2382,8 +2379,8 @@ const getStaticMetaContent = () => {
             title: "10 Dark Thrillers Like Se7en: Gritty & Twisted",
             description: "Loved Se7en? Discover the 10 grittiest noir thrillers with obsessive detectives and shocking twists. Includes sensitive content timestamps.", 
             keywords: "movies like se7en, noir thrillers, dark detective movies, serial killer movies",
-            ogTitle: "10 Dark Thrillers Like Se7en: Gritty Noir Masterpieces 🌧️",
-            twitterTitle: "🌧️ Loved Se7en? These 10 Dark Thrillers Will Haunt You",
+            ogTitle: "10 Dark Thrillers Like Se7en: Gritty Noir Masterpieces ðŸŒ§ï¸",
+            twitterTitle: "ðŸŒ§ï¸ Loved Se7en? These 10 Dark Thrillers Will Haunt You",
             progressText: `of Top ${movies.length} Movies Like Se7en`
         };
     } else if (collection.slug === 'movies-like-oldboy') {
@@ -2391,8 +2388,8 @@ const getStaticMetaContent = () => {
             title: "10 Movies Like Oldboy: Brutal Revenge Thrillers",
             description: "Loved Oldboy? Here are 10 twisted revenge films with shocking plot twists and visceral violence. Includes sensitive content timestamps.", 
             keywords: "movies like oldboy, revenge thrillers, korean revenge movies, brutal action films",
-            ogTitle: "10 Movies Like Oldboy: Brutal Revenge Masterpieces 🔪",
-            twitterTitle: "🔪 Loved Oldboy? These 10 Revenge Films Are Just as Twisted",
+            ogTitle: "10 Movies Like Oldboy: Brutal Revenge Masterpieces ðŸ”ª",
+            twitterTitle: "ðŸ”ª Loved Oldboy? These 10 Revenge Films Are Just as Twisted",
             progressText: `of Top ${movies.length} Movies Like Oldboy`
         };
  } else if (collection.slug === 'movies-like-eyes-wide-shut') {
@@ -2401,7 +2398,7 @@ const getStaticMetaContent = () => {
         description: "Stanley Kubrick died 6 days after screening his final cut. These 10 films explore the same secret societies and elite rituals he warned us about.",
         keywords: "movies like eyes wide shut, secret society movies, illuminati films, kubrick conspiracy, occult thrillers, elite ritual movies",
         ogTitle: "The Films Kubrick Wanted You To See (Before He Died)",
-        twitterTitle: "👁️ Kubrick's final warning: 10 films about elite secret societies",
+        twitterTitle: "ðŸ‘ï¸ Kubrick's final warning: 10 films about elite secret societies",
         progressText: `of 10 Films Exposing the Elite`
     };
 
@@ -2410,8 +2407,8 @@ const getStaticMetaContent = () => {
             title: "10 Best Romance Movies on Hulu: Ranked by Emotion",
             description: "The top 10 romance movies streaming on Hulu. Featuring Anora, All of Us Strangers, and more. Includes sensitive content timestamps.", 
             keywords: "best romance movies on hulu, hulu romance films, romantic movies streaming, sad romance movies",
-            ogTitle: "10 Best Romance Movies on Hulu: Prestige & Heartbreak 💖",
-            twitterTitle: "💖 10 Best Romance Movies on Hulu (Anora, All of Us Strangers)",
+            ogTitle: "10 Best Romance Movies on Hulu: Prestige & Heartbreak ðŸ’–",
+            twitterTitle: "ðŸ’– 10 Best Romance Movies on Hulu (Anora, All of Us Strangers)",
             progressText: `of Top ${movies.length} Romance Movies on Hulu`
         };
     } else if (collection.slug === 'best-action-movies-on-hulu') {
@@ -2419,8 +2416,8 @@ const getStaticMetaContent = () => {
             title: "10 Best Action Movies on Hulu: High-Octane List",
             description: "The 10 most adrenaline-fueled action movies on Hulu. Featuring Prey, John Wick, and more. Includes sensitive content timestamps.", 
             keywords: "best action movies on hulu, hulu action films, high octane movies, predator hulu",
-            ogTitle: "10 Best Action Movies on Hulu: High-Octane & Adrenaline-Fueled 🔥",
-            twitterTitle: "🔥 10 Best Action Movies on Hulu You Need to Stream Now",
+            ogTitle: "10 Best Action Movies on Hulu: High-Octane & Adrenaline-Fueled ðŸ”¥",
+            twitterTitle: "ðŸ”¥ 10 Best Action Movies on Hulu You Need to Stream Now",
             progressText: `of Top ${movies.length} Action Movies on Hulu`
         };
     } else if (collection.slug === 'best-horror-movies-on-hulu') {
@@ -2428,8 +2425,8 @@ const getStaticMetaContent = () => {
             title: "10 Best Horror Movies on Hulu: Truly Terrifying Picks",
             description: "The 10 scariest horror movies on Hulu. From Longlegs to When Evil Lurks. Ranked by nightmare fuel. Includes sensitive content timestamps.", 
             keywords: "best horror movies on hulu, hulu horror films, scariest movies streaming, when evil lurks",
-            ogTitle: "10 Best Horror Movies on Hulu: Pure Nightmare Fuel 🩸",
-            twitterTitle: "🩸 10 Scariest Movies on Hulu (When Evil Lurks, Longlegs)",
+            ogTitle: "10 Best Horror Movies on Hulu: Pure Nightmare Fuel ðŸ©¸",
+            twitterTitle: "ðŸ©¸ 10 Scariest Movies on Hulu (When Evil Lurks, Longlegs)",
             progressText: `of Top ${movies.length} Horror Movies on Hulu`
         };
     } else if (collection.slug === 'best-comedy-movies-on-hulu') {
@@ -2437,8 +2434,8 @@ const getStaticMetaContent = () => {
             title: "10 Best Comedy Movies on Hulu: Funniest Picks",
             description: "The 10 funniest movies on Hulu right now. Featuring Superbad, Borat, and Palm Springs. Includes sensitive content timestamps.", 
             keywords: "best comedy movies on hulu, hulu comedy films, funniest movies streaming, superbad",
-            ogTitle: "10 Best Comedy Movies on Hulu: Side-Splitting & Chaotic 😂",
-            twitterTitle: "😂 10 Funniest Movies on Hulu (Superbad, Borat)",
+            ogTitle: "10 Best Comedy Movies on Hulu: Side-Splitting & Chaotic ðŸ˜‚",
+            twitterTitle: "ðŸ˜‚ 10 Funniest Movies on Hulu (Superbad, Borat)",
             progressText: `of Top ${movies.length} Comedy Movies on Hulu`
         };
     } else if (collection.slug === 'best-sci-fi-movies-on-hulu') {
@@ -2446,8 +2443,8 @@ const getStaticMetaContent = () => {
             title: "10 Best Sci-Fi Movies on Hulu: Visionary Films",
             description: "The top 10 sci-fi movies on Hulu. From time-travel in Donnie Darko to the alien hunts of Prey. Includes sensitive content timestamps.", 
             keywords: "best sci-fi movies on hulu, hulu sci-fi films, donnie darko, sci-fi streaming",
-            ogTitle: "10 Best Sci-Fi Movies on Hulu: Visionary & Mind-Bending 🛸",
-            twitterTitle: "🛸 10 Best Sci-Fi Movies on Hulu (Donnie Darko, Prey)",
+            ogTitle: "10 Best Sci-Fi Movies on Hulu: Visionary & Mind-Bending ðŸ›¸",
+            twitterTitle: "ðŸ›¸ 10 Best Sci-Fi Movies on Hulu (Donnie Darko, Prey)",
             progressText: `of Top ${movies.length} Sci-Fi Movies on Hulu`
         };
     } else if (collection.slug === 'best-thriller-movies-hulu') {
@@ -2455,8 +2452,8 @@ const getStaticMetaContent = () => {
             title: "10 Best Thriller Movies on Hulu: Suspense Ranked",
             description: "The 10 most suspenseful thrillers on Hulu. Featuring Heat and Black Swan. Ranked by tension. Includes sensitive content timestamps.", 
             keywords: "best thriller movies on hulu, hulu thrillers, suspense films, heat movie",
-            ogTitle: "10 Best Thriller Movies on Hulu: Suspense & Tension 🔴",
-            twitterTitle: "🔴 10 Best Thriller Movies on Hulu (Heat, Black Swan)",
+            ogTitle: "10 Best Thriller Movies on Hulu: Suspense & Tension ðŸ”´",
+            twitterTitle: "ðŸ”´ 10 Best Thriller Movies on Hulu (Heat, Black Swan)",
             progressText: `of Top ${movies.length} Thriller Movies on Hulu`
         };
     } else if (collection.slug === 'best-movies-on-hulu') {
@@ -2464,8 +2461,8 @@ const getStaticMetaContent = () => {
             title: "10 Best Movies on Hulu: The Ultimate Ranking",
             description: "The definitive list of the 10 highest-rated movies on Hulu. From Oscar winners to cult classics. Includes sensitive content timestamps.", 
             keywords: "best movies on hulu, hulu top rated films, best hulu movies ranking, essential movies",
-            ogTitle: "10 Best Movies on Hulu: The Definitive Ranking 🏆",
-            twitterTitle: "🏆 10 Highest-Rated Movies Streaming on Hulu Right Now",
+            ogTitle: "10 Best Movies on Hulu: The Definitive Ranking ðŸ†",
+            twitterTitle: "ðŸ† 10 Highest-Rated Movies Streaming on Hulu Right Now",
             progressText: `of Top ${movies.length} Best Movies on Hulu`
         };
     } else if (collection.slug === 'best-drama-movies-on-hulu') {
@@ -2473,8 +2470,8 @@ const getStaticMetaContent = () => {
             title: "10 Best Drama Movies on Hulu: Emotional Masterpieces",
             description: "The 10 most powerful drama movies on Hulu. Featuring Boyhood and Perfect Days. Ranked by impact. Includes sensitive content timestamps.", 
             keywords: "best drama movies on hulu, hulu emotional films, boyhood, tearjerkers on hulu",
-            ogTitle: "10 Best Drama Movies on Hulu: Deeply Emotional Cinema 🎭",
-            twitterTitle: "🎭 10 Emotional Masterpieces Streaming on Hulu Right Now",
+            ogTitle: "10 Best Drama Movies on Hulu: Deeply Emotional Cinema ðŸŽ­",
+            twitterTitle: "ðŸŽ­ 10 Emotional Masterpieces Streaming on Hulu Right Now",
             progressText: `of Top ${movies.length} Drama Movies on Hulu`
         };
     } else if (collection.slug === 'best-family-movies-on-hulu') {
@@ -2482,8 +2479,8 @@ const getStaticMetaContent = () => {
             title: "10 Best Family Movies on Hulu: Wholesome & Fun",
             description: "The top 10 family-friendly movies on Hulu. Featuring Sonic 2 and Night at the Museum. Includes sensitive content timestamps.", 
             keywords: "best family movies on hulu, hulu kids movies, wholesome movies, family movie night",
-            ogTitle: "10 Best Family Movies on Hulu: Wholesome Fun 🍿",
-            twitterTitle: "🍿 10 Best Family Movies on Hulu (Robot Dreams, Sonic 2)",
+            ogTitle: "10 Best Family Movies on Hulu: Wholesome Fun ðŸ¿",
+            twitterTitle: "ðŸ¿ 10 Best Family Movies on Hulu (Robot Dreams, Sonic 2)",
             progressText: `of Top ${movies.length} Family Movies on Hulu`
         };
     } else if (collection.slug === 'best-action-movies-on-hbo-max') {
@@ -2491,8 +2488,8 @@ const getStaticMetaContent = () => {
             title: "10 Best Action Movies on HBO Max: Epic Scale",
             description: "The 10 greatest action movies on HBO Max. Including Dune: Part Two and The Dark Knight. Includes sensitive content timestamps.", 
             keywords: "best action movies on hbo max, hbo max epic films, seven samurai, dark knight, dune part two",
-            ogTitle: "10 Epic Action Movies on HBO Max: Mythic Heroes & Scale ⚔️",
-            twitterTitle: "⚔️ 10 Greatest Action Epics on HBO Max (Seven Samurai, Dune 2)",
+            ogTitle: "10 Epic Action Movies on HBO Max: Mythic Heroes & Scale âš”ï¸",
+            twitterTitle: "âš”ï¸ 10 Greatest Action Epics on HBO Max (Seven Samurai, Dune 2)",
             progressText: `of Top ${movies.length} Action Movies on HBO Max`
         };
     } else if (collection.slug === 'best-romance-movies-on-hbo-max') {
@@ -2500,8 +2497,8 @@ const getStaticMetaContent = () => {
             title: "10 Best Romance Movies on HBO Max: Prestige Films",
             description: "The top 10 romance movies on HBO Max. Featuring Casablanca, Past Lives, and In the Mood for Love. Includes sensitive content timestamps.", 
             keywords: "best romance movies on hbo max, hbo max romance films, casablanca, past lives, romantic movies",
-            ogTitle: "10 Best Romance Movies on HBO Max: Prestige & Heartbreak 💖",
-            twitterTitle: "💖 10 Best Romance Movies on HBO Max (Casablanca, Past Lives)",
+            ogTitle: "10 Best Romance Movies on HBO Max: Prestige & Heartbreak ðŸ’–",
+            twitterTitle: "ðŸ’– 10 Best Romance Movies on HBO Max (Casablanca, Past Lives)",
             progressText: `of Top ${movies.length} Romance Movies on HBO Max`
         };
     } else if (collection.slug === 'best-thriller-movies-on-hbo-max') {
@@ -2509,8 +2506,8 @@ const getStaticMetaContent = () => {
             title: "10 Best Thriller Movies on HBO Max: Suspense Ranked",
             description: "The 10 most suspenseful thrillers on HBO Max. Featuring Funny Games, Get Out, and The Dark Knight. Includes sensitive content timestamps.", 
             keywords: "best thriller movies on hbo max, hbo max suspense films, funny games, get out, psychological thrillers",
-            ogTitle: "10 Best Thriller Movies on HBO Max: Suspense & Mind Games 🔴",
-            twitterTitle: "🔴 10 Most Suspenseful Thrillers on HBO Max (Funny Games, Get Out)",
+            ogTitle: "10 Best Thriller Movies on HBO Max: Suspense & Mind Games ðŸ”´",
+            twitterTitle: "ðŸ”´ 10 Most Suspenseful Thrillers on HBO Max (Funny Games, Get Out)",
             progressText: `of Top ${movies.length} Thriller Movies on HBO Max`
         };
     } else if (collection.slug === 'best-family-movies-on-hbo-max') {
@@ -2518,8 +2515,8 @@ const getStaticMetaContent = () => {
             title: "10 Best Family Movies on HBO Max: Wholesome Picks",
             description: "The top 10 family movies on HBO Max. From Harry Potter to The Wizard of Oz. Includes sensitive content timestamps.", 
             keywords: "best family movies on hbo max, hbo max kids movies, harry potter, flow movie, wholesome movies",
-            ogTitle: "10 Best Family Movies on HBO Max: Magical & Wholesome 🪄",
-            twitterTitle: "🪄 10 Magical Family Movies on HBO Max (Wizard of Oz, Harry Potter)",
+            ogTitle: "10 Best Family Movies on HBO Max: Magical & Wholesome ðŸª„",
+            twitterTitle: "ðŸª„ 10 Magical Family Movies on HBO Max (Wizard of Oz, Harry Potter)",
             progressText: `of Top ${movies.length} Family Movies on HBO Max`
         };
     } else if (collection.slug === 'best-sci-fi-movies-on-hbo-max') {
@@ -2527,8 +2524,8 @@ const getStaticMetaContent = () => {
             title: "10 Best Sci-Fi Movies on HBO Max: Visual Masterpieces",
             description: "The definitive ranking of the top 10 sci-fi movies on HBO Max. From Dune to 2001: A Space Odyssey. Includes sensitive content timestamps.", 
             keywords: "best sci-fi movies on hbo max, hbo max sci-fi, dune, inception, 2001 space odyssey",
-            ogTitle: "10 Best Sci-Fi Movies on HBO Max: Spectacular & Mind-Bending 🚀",
-            twitterTitle: "🚀 10 Spectacular Sci-Fi Movies on HBO Max (Dune, Inception)",
+            ogTitle: "10 Best Sci-Fi Movies on HBO Max: Spectacular & Mind-Bending ðŸš€",
+            twitterTitle: "ðŸš€ 10 Spectacular Sci-Fi Movies on HBO Max (Dune, Inception)",
             progressText: `of Top ${movies.length} Sci-Fi Movies on HBO Max`
         };
     } else if (collection.slug === 'best-horror-movies-on-hbo-max') {
@@ -2536,8 +2533,8 @@ const getStaticMetaContent = () => {
             title: "10 Best Horror Movies on HBO Max: Scariest Ranked",
             description: "The 10 scariest movies on HBO Max. From The Conjuring to Evil Dead Rise. Ranked by dread. Includes sensitive content timestamps.", 
             keywords: "best horror movies on hbo max, hbo max horror films, the conjuring, evil dead rise, horror streaming",
-            ogTitle: "10 Best Horror Movies on HBO Max: Pure Nightmare Fuel 🩸",
-            twitterTitle: "🩸 10 Scariest Movies on HBO Max (The Conjuring, Evil Dead Rise)",
+            ogTitle: "10 Best Horror Movies on HBO Max: Pure Nightmare Fuel ðŸ©¸",
+            twitterTitle: "ðŸ©¸ 10 Scariest Movies on HBO Max (The Conjuring, Evil Dead Rise)",
             progressText: `of Top ${movies.length} Horror Movies on HBO Max`
         };
     } else if (collection.slug === 'best-movies-on-hbo-max') {
@@ -2545,8 +2542,8 @@ const getStaticMetaContent = () => {
             title: "10 Best Movies on HBO Max: The Essential List",
             description: "The 10 absolute best movies on HBO Max. Featuring Seven Samurai, The Dark Knight, and more. Includes sensitive content timestamps.", 
             keywords: "best movies on hbo max, top rated hbo max films, seven samurai, dark knight, cinematic masterpieces",
-            ogTitle: "10 Best Movies on HBO Max: The Essential Watchlist 🏆",
-            twitterTitle: "🏆 10 Cinematic Masterpieces on HBO Max You Must See",
+            ogTitle: "10 Best Movies on HBO Max: The Essential Watchlist ðŸ†",
+            twitterTitle: "ðŸ† 10 Cinematic Masterpieces on HBO Max You Must See",
             progressText: `of Top ${movies.length} Best Movies on HBO Max`
         };
     } else if (collection.slug === 'best-drama-movies-on-hbo-max') {
@@ -2554,8 +2551,8 @@ const getStaticMetaContent = () => {
             title: "10 Best Drama Movies on HBO Max: Emotional Films",
             description: "The 10 best drama movies on HBO Max. Featuring Moonlight, Taxi Driver, and Paris, Texas. Includes sensitive content timestamps.", 
             keywords: "best drama movies on hbo max, hbo max emotional films, moonlight, taxi driver, drama rankings",
-            ogTitle: "10 Best Drama Movies on HBO Max: Deeply Emotional Cinema 🎭",
-            twitterTitle: "🎭 10 Emotional Masterpieces Streaming on HBO Max Right Now",
+            ogTitle: "10 Best Drama Movies on HBO Max: Deeply Emotional Cinema ðŸŽ­",
+            twitterTitle: "ðŸŽ­ 10 Emotional Masterpieces Streaming on HBO Max Right Now",
             progressText: `of Top ${movies.length} Drama Movies on HBO Max`
         };
     } else if (collection.slug === 'best-comedy-movies-on-hbo-max') {
@@ -2563,8 +2560,8 @@ const getStaticMetaContent = () => {
             title: "10 Best Comedy Movies on HBO Max: Satire & Laughs",
             description: "The 10 funniest movies on HBO Max. From Barbie to City Lights. Ranked by comedic brilliance. Includes sensitive content timestamps.", 
             keywords: "best comedy movies on hbo max, hbo max comedy films, city lights, barbie, comedy rankings",
-            ogTitle: "10 Best Comedy Movies on HBO Max: Satire & Slapstick 😂",
-            twitterTitle: "😂 10 Funniest Movies on HBO Max (City Lights, Barbie)",
+            ogTitle: "10 Best Comedy Movies on HBO Max: Satire & Slapstick ðŸ˜‚",
+            twitterTitle: "ðŸ˜‚ 10 Funniest Movies on HBO Max (City Lights, Barbie)",
             progressText: `of Top ${movies.length} Comedy Movies on HBO Max`
         };
     } else if (collection.slug === 'best-action-movies-on-paramount-plus') {
@@ -2572,8 +2569,8 @@ const getStaticMetaContent = () => {
             title: "10 Best Action Movies on Paramount+: High-Octane",
             description: "The 10 best action movies on Paramount+. Featuring Top Gun: Maverick and Mission: Impossible. Includes sensitive content timestamps.", 
             keywords: "best action movies on paramount plus, high octane movies, top gun maverick, mission impossible",
-            ogTitle: "10 Best Action Movies on Paramount+: High-Octane & Adrenaline-Fueled 🔥",
-            twitterTitle: "🔥 10 High-Octane Action Movies on Paramount+ You Must Watch",
+            ogTitle: "10 Best Action Movies on Paramount+: High-Octane & Adrenaline-Fueled ðŸ”¥",
+            twitterTitle: "ðŸ”¥ 10 High-Octane Action Movies on Paramount+ You Must Watch",
             progressText: `of Top ${movies.length} Action Movies on Paramount+`
         };
     } else if (collection.slug === 'best-sci-fi-movies-on-paramount-plus') {
@@ -2581,8 +2578,8 @@ const getStaticMetaContent = () => {
             title: "10 Best Sci-Fi Movies on Paramount+: Visionary Films",
             description: "The 10 best sci-fi movies on Paramount+. From Interstellar to Star Trek. Ranked by spectacle. Includes sensitive content timestamps.", 
             keywords: "best sci-fi movies on paramount plus, paramount plus sci-fi, interstellar, arrival, star trek",
-            ogTitle: "10 Best Sci-Fi Movies on Paramount+: Cosmic & Mind-Bending 🚀",
-            twitterTitle: "🚀 10 Visionary Sci-Fi Movies on Paramount+ You Must Watch",
+            ogTitle: "10 Best Sci-Fi Movies on Paramount+: Cosmic & Mind-Bending ðŸš€",
+            twitterTitle: "ðŸš€ 10 Visionary Sci-Fi Movies on Paramount+ You Must Watch",
             progressText: `of Top ${movies.length} Sci-Fi Movies on Paramount+`
         };
     } else if (collection.slug === 'best-romance-movies-on-paramount-plus') {
@@ -2590,8 +2587,8 @@ const getStaticMetaContent = () => {
             title: "10 Best Romance Movies on Paramount+: Prestige Films",
             description: "The 10 best romance movies on Paramount+. Featuring Titanic and About Time. Ranked by emotion. Includes sensitive content timestamps.", 
             keywords: "best romance movies on paramount plus, paramount plus romance films, titanic, about time, romantic movies",
-            ogTitle: "10 Best Romance Movies on Paramount+: Prestige & Heartbreak 💖",
-            twitterTitle: "💖 10 Best Romance Movies on Paramount+ (Titanic, About Time)",
+            ogTitle: "10 Best Romance Movies on Paramount+: Prestige & Heartbreak ðŸ’–",
+            twitterTitle: "ðŸ’– 10 Best Romance Movies on Paramount+ (Titanic, About Time)",
             progressText: `of Top ${movies.length} Romance Movies on Paramount+`
         };
 
@@ -2601,8 +2598,8 @@ const getStaticMetaContent = () => {
         title: "10 Best Core Drama Movies on Paramount+: Emotional Picks",
         description: "The 10 most powerful dramas on Paramount+. Featuring There Will Be Blood, Forrest Gump, and Fences. Ranked by emotion. Includes sensitive content timestamps.", 
         keywords: "best drama movies on paramount plus, paramount plus emotional films, there will be blood, forrest gump, fences",
-        ogTitle: "10 Best Core Drama Movies on Paramount+: Emotional Masterpieces 🎭",
-        twitterTitle: "🎭 10 Emotional Dramas on Paramount+ (There Will Be Blood, Fences)",
+        ogTitle: "10 Best Core Drama Movies on Paramount+: Emotional Masterpieces ðŸŽ­",
+        twitterTitle: "ðŸŽ­ 10 Emotional Dramas on Paramount+ (There Will Be Blood, Fences)",
         progressText: `of Top ${movies.length} Drama Movies on Paramount+`
     };
 
@@ -2612,8 +2609,8 @@ const getStaticMetaContent = () => {
         title: "10 Best Thriller Movies on Paramount+: Intense Picks",
         description: "The 10 most suspenseful thrillers on Paramount+. Featuring No Country for Old Men, Strange Darling, and 10 Cloverfield Lane. Includes sensitive content timestamps.", 
         keywords: "best thriller movies on paramount plus, paramount plus suspense films, no country for old men, strange darling, 10 cloverfield lane",
-        ogTitle: "10 Best Thriller Movies on Paramount+: Suspense & Dread 🔴",
-        twitterTitle: "🔴 10 Intense Thrillers on Paramount+ (No Country for Old Men, Strange Darling)",
+        ogTitle: "10 Best Thriller Movies on Paramount+: Suspense & Dread ðŸ”´",
+        twitterTitle: "ðŸ”´ 10 Intense Thrillers on Paramount+ (No Country for Old Men, Strange Darling)",
         progressText: `of Top ${movies.length} Thriller Movies on Paramount+`
     };
 
@@ -2623,8 +2620,8 @@ const getStaticMetaContent = () => {
             title: "10 Best Family Movies on Paramount+: Wholesome Picks",
             description: "The top 10 family movies on Paramount+. From Rango to Sonic the Hedgehog 3. Ranked by fun factor. Includes sensitive content timestamps.",
             keywords: "best family movies on paramount plus, paramount plus kids movies, sonic 3, paw patrol movie, rango, tmnt mutant mayhem, wholesome movies",
-            ogTitle: "10 Best Family Movies on Paramount+: Magical & Wholesome 🪄",
-            twitterTitle: "🪄 10 Magical Family Movies on Paramount+ (Rango, Sonic 3)",
+            ogTitle: "10 Best Family Movies on Paramount+: Magical & Wholesome ðŸª„",
+            twitterTitle: "ðŸª„ 10 Magical Family Movies on Paramount+ (Rango, Sonic 3)",
             progressText: `of Top ${movies.length} Family Movies on Paramount+`
         };
     } else if (collection.slug === 'best-horror-movies-on-paramount-plus') {
@@ -2632,27 +2629,27 @@ const getStaticMetaContent = () => {
             title: "10 Best Horror Movies on Paramount+: Truly Terrifying Picks",
             description: "The 10 scariest horror movies on Paramount+. From Longlegs to When Evil Lurks. Ranked by nightmare fuel. Includes sensitive content timestamps.",
             keywords: "best horror movies on paramount plus, paramount plus horror films, scariest movies streaming, when evil lurks",
-            ogTitle: "10 Best Horror Movies on Paramount+: Pure Nightmare Fuel 🩸",
-            twitterTitle: "🩸 10 Scariest Movies on Paramount+ (When Evil Lurks, Longlegs)",
+            ogTitle: "10 Best Horror Movies on Paramount+: Pure Nightmare Fuel ðŸ©¸",
+            twitterTitle: "ðŸ©¸ 10 Scariest Movies on Paramount+ (When Evil Lurks, Longlegs)",
             progressText: `of Top ${movies.length} Horror Movies on Paramount+`
         };
 } else if (collection.slug === 'best-comedy-movies-on-paramount-plus') {
     return {
         title: "10 Paramount+ Comedies Everyone Forgets (Ranked by Laughter)",
-        description: "While everyone searches Netflix, Paramount+ has Tropic Thunder, Anchorman, and The Naked Gun—classics you actually rewatch. No algorithms. Just funny.",
+        description: "While everyone searches Netflix, Paramount+ has Tropic Thunder, Anchorman, and The Naked Gunâ€”classics you actually rewatch. No algorithms. Just funny.",
         keywords: "best paramount plus comedies, tropic thunder where to watch, anchorman streaming, hidden comedy gems paramount plus, funniest movies paramount plus",
         ogTitle: "10 Paramount+ Comedies Hiding in Plain Sight",
-        twitterTitle: "🎬 The 10 Paramount+ comedies you forgot existed",
+        twitterTitle: "ðŸŽ¬ The 10 Paramount+ comedies you forgot existed",
         progressText: `of 10 Hidden Comedy Gems on Paramount+`
     };
 
     } else if (collection.slug === 'best-movies-on-paramount-plus') {
         return {
             title: "Best Movies on Paramount+: 10 Essential Films to Watch",
-            description: "The definitive list of the best movies to watch on Paramount+, from The Godfather to Top Gun: Maverick—ranked by cinematic mastery and cultural impact.",
+            description: "The definitive list of the best movies to watch on Paramount+, from The Godfather to Top Gun: Maverickâ€”ranked by cinematic mastery and cultural impact.",
             keywords: "best movies on paramount plus, top movies on paramount plus, what to watch on paramount plus, paramount plus movies",
-            ogTitle: "Best Movies on Paramount+: 10 Essential Films to Watch 🎬",
-            twitterTitle: "🎬 The Definitive Ranking of the Best Movies on Paramount+ You Have to Watch",
+            ogTitle: "Best Movies on Paramount+: 10 Essential Films to Watch ðŸŽ¬",
+            twitterTitle: "ðŸŽ¬ The Definitive Ranking of the Best Movies on Paramount+ You Have to Watch",
             progressText: `of Top ${movies.length} Paramount+ Movies`
         };
     } else if (collection.slug === 'best-action-adventure-movies-on-peacock') {
@@ -2660,8 +2657,8 @@ const getStaticMetaContent = () => {
             title: "10 Best Action & Adventure Movies on Peacock: High-Octane",
             description: "The 10 most adrenaline-fueled action movies on Peacock. Featuring The Revenant, and more. Includes sensitive content timestamps.",
             keywords: "best action movies on peacock, peacock action films, high octane movies, the revenant peacock",
-            ogTitle: "10 Best Action Movies on Peacock: High-Octane & Adrenaline-Fueled 🔥",
-            twitterTitle: "🔥 10 Best Action Movies on Peacock You Need to Stream Now",
+            ogTitle: "10 Best Action Movies on Peacock: High-Octane & Adrenaline-Fueled ðŸ”¥",
+            twitterTitle: "ðŸ”¥ 10 Best Action Movies on Peacock You Need to Stream Now",
             progressText: `of Top ${movies.length} Action Movies on Peacock`
         };
     } else if (collection.slug === 'best-sci-fi-movies-on-peacock') {
@@ -2669,8 +2666,8 @@ const getStaticMetaContent = () => {
             title: "10 Best Sci-Fi Movies on Peacock: Visionary Films",
             description: "The 10 best sci-fi movies on Peacock. From mind-bending realities to alien encounters. Includes sensitive content timestamps.",
             keywords: "best sci-fi movies on peacock, peacock sci-fi films, mind-bending movies, sci-fi streaming",
-            ogTitle: "10 Best Sci-Fi Movies on Peacock: Visionary & Mind-Bending 🛸",
-            twitterTitle: "🛸 10 Best Sci-Fi Movies on Peacock You Need to Stream Now",
+            ogTitle: "10 Best Sci-Fi Movies on Peacock: Visionary & Mind-Bending ðŸ›¸",
+            twitterTitle: "ðŸ›¸ 10 Best Sci-Fi Movies on Peacock You Need to Stream Now",
             progressText: `of Top ${movies.length} Sci-Fi Movies on Peacock`
         };
     } else if (collection.slug === 'best-romance-movies-on-peacock') {
@@ -2678,8 +2675,8 @@ const getStaticMetaContent = () => {
             title: "10 Best Romance Movies on Peacock: Emotional Films",
             description: "The 10 best romance movies on Peacock. From classic love stories to modern romantic comedies. Includes sensitive content timestamps.",
             keywords: "best romance movies on peacock, peacock romance films, romantic movies streaming, love stories",
-            ogTitle: "10 Best Romance Movies on Peacock: Prestige & Heartbreak 💖",
-            twitterTitle: "💖 10 Best Romance Movies on Peacock You Need to Stream Now",
+            ogTitle: "10 Best Romance Movies on Peacock: Prestige & Heartbreak ðŸ’–",
+            twitterTitle: "ðŸ’– 10 Best Romance Movies on Peacock You Need to Stream Now",
             progressText: `of Top ${movies.length} Romance Movies on Peacock`
         };
     } else if (collection.slug === 'best-family-movies-on-peacock') {
@@ -2687,8 +2684,8 @@ const getStaticMetaContent = () => {
             title: "10 Best Family Movies on Peacock: Wholesome Picks",
             description: "The top 10 family-friendly movies on Peacock. Featuring How to Train Your Dragon and Harry Potter. Includes sensitive content timestamps.",
             keywords: "best family movies on peacock, peacock kids movies, wholesome movies, family movie night",
-            ogTitle: "10 Best Family Movies on Peacock: Wholesome Fun 🍿",
-            twitterTitle: "🍿 10 Best Family Movies on Peacock (How to Train Your Dragon, Harry Potter)",
+            ogTitle: "10 Best Family Movies on Peacock: Wholesome Fun ðŸ¿",
+            twitterTitle: "ðŸ¿ 10 Best Family Movies on Peacock (How to Train Your Dragon, Harry Potter)",
             progressText: `of Top ${movies.length} Family Movies on Peacock`
         };
     } else if (collection.slug === 'best-drama-movies-on-peacock') {
@@ -2696,8 +2693,8 @@ const getStaticMetaContent = () => {
             title: "10 Best Drama Movies on Peacock: Emotional Films",
             description: "The 10 best drama movies on Peacock. Ranked by emotional impact. Includes sensitive content timestamps.",
             keywords: "best drama movies on peacock, peacock emotional films, drama rankings",
-            ogTitle: "10 Best Drama Movies on Peacock: Deeply Emotional Cinema 🎭",
-            twitterTitle: "🎭 10 Emotional Masterpieces Streaming on Peacock Right Now",
+            ogTitle: "10 Best Drama Movies on Peacock: Deeply Emotional Cinema ðŸŽ­",
+            twitterTitle: "ðŸŽ­ 10 Emotional Masterpieces Streaming on Peacock Right Now",
             progressText: `of Top 10 Drama Movies on Peacock`
         };
     } else if (collection.slug === 'best-thriller-movies-on-peacock') {
@@ -2705,17 +2702,17 @@ const getStaticMetaContent = () => {
         title: "10 Best Thriller Movies on Peacock: Suspense Ranked",
         description: "The 10 most suspenseful thrillers on Peacock. Ranked by tension. Includes sensitive content timestamps.", 
         keywords: "best thriller movies on peacock, peacock thrillers, suspense films",
-        ogTitle: "10 Best Thriller Movies on Peacock: Suspense & Tension 🔴",
-        twitterTitle: "🔴 10 Best Thriller Movies on Peacock",
+        ogTitle: "10 Best Thriller Movies on Peacock: Suspense & Tension ðŸ”´",
+        twitterTitle: "ðŸ”´ 10 Best Thriller Movies on Peacock",
         progressText: `of Top 10 Thriller Movies on Peacock`
     };
     } else if (collection.slug === 'best-movies-on-peacock') {
         return {
             title: "Best Movies on Peacock: 10 Essential Films to Watch",
-            description: "The definitive list of the best movies to watch on Peacock, from The Godfather to Top Gun: Maverick—ranked by cinematic mastery and cultural impact.",
+            description: "The definitive list of the best movies to watch on Peacock, from The Godfather to Top Gun: Maverickâ€”ranked by cinematic mastery and cultural impact.",
             keywords: "best movies on peacock, top movies on peacock, what to watch on peacock, peacock movies",
-            ogTitle: "Best Movies on Peacock: 10 Essential Films to Watch 🎬",
-            twitterTitle: "🎬 The Definitive Ranking of the Best Movies on Peacock You Have to Watch",
+            ogTitle: "Best Movies on Peacock: 10 Essential Films to Watch ðŸŽ¬",
+            twitterTitle: "ðŸŽ¬ The Definitive Ranking of the Best Movies on Peacock You Have to Watch",
             progressText: `of Top ${movies.length} Peacock Movies`
         };
     } else if (collection.slug === 'movies-like-black-swan') {
@@ -2723,8 +2720,8 @@ const getStaticMetaContent = () => {
             title: "10 Movies Like Black Swan: Psychological Obsession",
             description: "Loved Black Swan? Watch these 10 intense films about perfectionism, obsession, and identity collapse. Includes sensitive content timestamps.", 
             keywords: "movies like black swan, psychological obsession films, perfectionism movies, darren aronofsky style",
-            ogTitle: "10 Movies Like Black Swan: Psychological Obsession Films 🩰",
-            twitterTitle: "🩰 Loved Black Swan? These 10 Films Are Just as Intense",
+            ogTitle: "10 Movies Like Black Swan: Psychological Obsession Films ðŸ©°",
+            twitterTitle: "ðŸ©° Loved Black Swan? These 10 Films Are Just as Intense",
             progressText: `of Top ${movies.length} Movies Like Black Swan`
         };
     } else if (collection.slug === 'movies-like-donnie-darko') {
@@ -2732,8 +2729,8 @@ const getStaticMetaContent = () => {
             title: "10 Movies Like Donnie Darko: Reality-Warping Films",
             description: "Loved Donnie Darko? Discover 10 mind-bending films featuring time travel, paradoxes, and dark atmosphere. Includes sensitive content timestamps.", 
             keywords: "movies like donnie darko, time travel movies, reality warping films, cult classics",
-            ogTitle: "10 Movies Like Donnie Darko: Reality-Warping Masterpieces 🌌",
-            twitterTitle: "🌌 Loved Donnie Darko? These 10 Films Will Break Reality",
+            ogTitle: "10 Movies Like Donnie Darko: Reality-Warping Masterpieces ðŸŒŒ",
+            twitterTitle: "ðŸŒŒ Loved Donnie Darko? These 10 Films Will Break Reality",
             progressText: `of Top ${movies.length} Movies Like Donnie Darko`
         };
     } else if (collection.slug === 'movies-like-parasite') { 
@@ -2741,8 +2738,8 @@ const getStaticMetaContent = () => {
             title: "10 Movies Like Parasite: Class Warfare Thrillers",
             description: "Loved Parasite? Explore 10 gripping films about social inequality, class struggle, and economic suspense. Includes sensitive content timestamps.", 
             keywords: "movies like parasite, class warfare movies, social thriller, bong joon ho style",
-            ogTitle: "10 Movies Like Parasite: Brutal Class Warfare Films 🏢",
-            twitterTitle: "🏢 Loved Parasite? These 10 Class War Films Are Just as Brutal",
+            ogTitle: "10 Movies Like Parasite: Brutal Class Warfare Films ðŸ¢",
+            twitterTitle: "ðŸ¢ Loved Parasite? These 10 Class War Films Are Just as Brutal",
             progressText: `of Top ${movies.length} Movies Like Parasite`
         };
     } else if (collection.slug === 'movies-like-interstellar') {
@@ -2750,8 +2747,8 @@ const getStaticMetaContent = () => {
             title: "10 Movies Like Interstellar: Cerebral Space Epics",
             description: "Loved Interstellar? Watch these 10 visually stunning space films exploring time, relativity, and human survival. Includes sensitive content timestamps.", 
             keywords: "movies like interstellar, cerebral sci fi, space exploration movies, christopher nolan style",
-            ogTitle: "10 Movies Like Interstellar: Cerebral Space Exploration Films 🚀",
-            twitterTitle: "🚀 Loved Interstellar? These 10 Space Films Are Just as Deep",
+            ogTitle: "10 Movies Like Interstellar: Cerebral Space Exploration Films ðŸš€",
+            twitterTitle: "ðŸš€ Loved Interstellar? These 10 Space Films Are Just as Deep",
             progressText: `of Top ${movies.length} Movies Like Interstellar`
         };
     } else if (collection.slug === 'movies-like-shutter-island') {
@@ -2760,7 +2757,7 @@ const getStaticMetaContent = () => {
             description: "Can't stop thinking about Shutter Island? Watch these 10 psychological thrillers with shocking twists. Includes sensitive content timestamps.", 
             keywords: "movies like shutter island, plot twist movies, psychological thrillers, leonardo dicaprio movies",
             ogTitle: "10 Movies Like Shutter Island: Twisted Psychological Thrillers",
-            twitterTitle: "🎬 Can't Forget Shutter Island? Watch These 10 Twisted Films",
+            twitterTitle: "ðŸŽ¬ Can't Forget Shutter Island? Watch These 10 Twisted Films",
             progressText: `of Top ${movies.length} Movies Like Shutter Island`
         };
     } else if (collection.slug === 'best-crime-thriller-movies') {
@@ -2768,8 +2765,8 @@ const getStaticMetaContent = () => {
             title: "10 Best Crime Thrillers: Ruthless & Gritty",
             description: "From Heat to The Departed. The 10 grittiest crime thrillers featuring heists, investigations, and moral gray areas. Includes sensitive content timestamps.", 
             keywords: "best crime thriller movies, gritty crime films, heat movie, the departed",
-            ogTitle: "10 Best Crime Thrillers: Heat to The Departed 🔫",
-            twitterTitle: "🔫 10 Ruthless Crime Thrillers You Can't Miss (Heat, Departed)",
+            ogTitle: "10 Best Crime Thrillers: Heat to The Departed ðŸ”«",
+            twitterTitle: "ðŸ”« 10 Ruthless Crime Thrillers You Can't Miss (Heat, Departed)",
             progressText: `of Top ${movies.length} Crime Thriller Movies`
         };
     } else if (collection.slug === 'best-heist-thriller-movies') {
@@ -2777,8 +2774,8 @@ const getStaticMetaContent = () => {
             title: "10 Best Heist Movies: Genius Robberies Ranked",
             description: "From Ocean's Eleven to Heat. The 10 best heist thrillers with elaborate plans and high stakes. Includes sensitive content timestamps.", 
             keywords: "best heist movies, smart robbery films, heist thrillers, bank robbery movies",
-            ogTitle: "10 Best Heist Movies: Ocean's Eleven to Heat 💰",
-            twitterTitle: "💰 10 Genius Heist Movies (Ocean's, Heat, Inside Man)",
+            ogTitle: "10 Best Heist Movies: Ocean's Eleven to Heat ðŸ’°",
+            twitterTitle: "ðŸ’° 10 Genius Heist Movies (Ocean's, Heat, Inside Man)",
             progressText: `of Top ${movies.length} Heist Thriller Movies`
         };
 } else if (collection.slug === 'best-time-travel-movies') {
@@ -2787,7 +2784,7 @@ const getStaticMetaContent = () => {
         description: "Logic won't save you. These films break causality itself. From Primer's chalkboard math to Predestination's impossible loop. Bring a notebook.",
         keywords: "best time travel movies, primer explained, predestination paradox, hard sci-fi movies, bootstrap paradox films, timecrimes, complex sci-fi",
         ogTitle: "10 Time Travel Movies You Will Need To Watch Twice",
-        twitterTitle: "⏰ 10 time travel films that actually destroy your linear thinking",
+        twitterTitle: "â° 10 time travel films that actually destroy your linear thinking",
         progressText: `of 10 Causality-Breaking Films`
     };
 
@@ -2796,8 +2793,8 @@ const getStaticMetaContent = () => {
             title: "10 Best Sci-Fi Movies of All Time: Visionary List",
             description: "From Blade Runner to Interstellar. The definitive ranking of the 10 greatest sci-fi films with visionary concepts. Includes sensitive content timestamps.", 
             keywords: "best sci fi movies, visionary science fiction, blade runner, sci-fi classics",
-            ogTitle: "10 Best Sci-Fi Movies: Blade Runner to Interstellar 🚀",
-            twitterTitle: "🚀 10 Visionary Sci-Fi Movies (Blade Runner, Interstellar)",
+            ogTitle: "10 Best Sci-Fi Movies: Blade Runner to Interstellar ðŸš€",
+            twitterTitle: "ðŸš€ 10 Visionary Sci-Fi Movies (Blade Runner, Interstellar)",
             progressText: `of Top ${movies.length} Sci-Fi Movies`
         };
 } else if (collection.slug === 'best-psychological-thriller-movies') {
@@ -2806,7 +2803,7 @@ const getStaticMetaContent = () => {
         description: "Not all minds recover. These 10 films weaponize paranoia, identity collapse, and reality distortion. From Fight Club's dissociation to Black Swan's obsession.",
         keywords: "best psychological thriller movies, mind bending movies, disturbing psychological films, fight club, black swan, memento, shutter island",
         ogTitle: "10 Psychological Thrillers You Can't Unsee (Watch Carefully)",
-        twitterTitle: "🧠 10 psychological thrillers that permanently alter your brain",
+        twitterTitle: "ðŸ§  10 psychological thrillers that permanently alter your brain",
         progressText: `of 10 Mind-Destroying Thrillers`
     };
 
@@ -2815,8 +2812,8 @@ const getStaticMetaContent = () => {
             title: "10 Best Thriller Movies: Edge-of-Your-Seat List",
             description: "The 10 most intense thriller movies ever made. Relentless pacing, high stakes, and plot twists you won't see coming. Includes sensitive content timestamps.", 
             keywords: "best thriller movies, high suspense movies, edge of seat thrillers, suspense classics",
-            ogTitle: "10 Best Thriller Movies: You Won't Pause 🔥",
-            twitterTitle: "🔥 10 Edge-of-Your-Seat Thrillers You Can't Pause",
+            ogTitle: "10 Best Thriller Movies: You Won't Pause ðŸ”¥",
+            twitterTitle: "ðŸ”¥ 10 Edge-of-Your-Seat Thrillers You Can't Pause",
             progressText: `of Top ${movies.length} Thriller Movies`
         };
     } else if (collection.slug === 'best-mystery-thriller-movies') {
@@ -2824,15 +2821,15 @@ const getStaticMetaContent = () => {
             title: "10 Best Mystery Thrillers: Unsolvable Films",
             description: "The 10 cleverest mystery thrillers with impossible puzzles. Ranked by how hard it is to guess the ending. Includes sensitive content timestamps.", 
             keywords: "best mystery thriller movies, whodunit movies, detective mysteries, plot twist films",
-            ogTitle: "10 Best Mystery Thrillers: Unsolvable Until the End 🔍",
-            twitterTitle: "🔍 10 Detective Mystery Thrillers That'll Stump You",
+            ogTitle: "10 Best Mystery Thrillers: Unsolvable Until the End ðŸ”",
+            twitterTitle: "ðŸ” 10 Detective Mystery Thrillers That'll Stump You",
             progressText: `of Top ${movies.length} Mystery Thriller Movies`
         };
 } else if (collection.slug === 'best-survival-movies') {
     return {
         title: "Survival Movies That Push Humans to the Edge (Real Stories)",
 
-        description: "A curated collection of the most intense survival films ever made—stories of human endurance against unforgiving nature. Wilderness, isolation, and real survival stakes, with detailed sensitive content timelines.",
+        description: "A curated collection of the most intense survival films ever madeâ€”stories of human endurance against unforgiving nature. Wilderness, isolation, and real survival stakes, with detailed sensitive content timelines.",
 
         keywords: "best survival movies, realistic survival films, survival movies based on true stories, man vs nature films",
 
@@ -2847,10 +2844,10 @@ const getStaticMetaContent = () => {
 } else if (collection.slug === 'best-detective-thriller-movies') {
     return {
         title: "10 Detective Masterpieces That Define Obsession (Ranked)",
-      description: "These detectives can't let go. From Se7en's seven-day nightmare to Zodiac's decade-long spiral. Not all cases close—but they always leave scars.",
+      description: "These detectives can't let go. From Se7en's seven-day nightmare to Zodiac's decade-long spiral. Not all cases closeâ€”but they always leave scars.",
         keywords: "best detective thriller movies, movies like se7en, zodiac killer films, memories of murder, dark police procedurals, prisoners movie, noir thrillers",
         ogTitle: "10 Darkest Manhunts in Cinema History (Ranked)",
-        twitterTitle: "🔍 10 detective films where the mystery matters more than the solution",
+        twitterTitle: "ðŸ” 10 detective films where the mystery matters more than the solution",
         progressText: `of 10 Masterpiece Detective Films`
     };
 
@@ -2860,7 +2857,7 @@ const getStaticMetaContent = () => {
         description: "They chose annihilation over peace. From Oldboy's 15-year trap to Gladiator's blood-soaked arena. No forgiveness. No redemption. Just systematic destruction.",
         keywords: "best revenge movies, oldboy explained, i saw the devil, john wick, gladiator vengeance, brutal revenge films, monte cristo, revenge thrillers",
         ogTitle: "10 Films Where The Hero Becomes The Monster",
-        twitterTitle: "⚔️ 10 revenge movies where mercy died first (Ranked)",
+        twitterTitle: "âš”ï¸ 10 revenge movies where mercy died first (Ranked)",
         progressText: `of 10 Tales of Total Vengeance`
     };
 
@@ -2869,8 +2866,8 @@ const getStaticMetaContent = () => {
             title: "10 Best War Films: Unflinching Masterpieces",
             description: "The 10 greatest war films ever made. Visceral battle scenes, anti-war themes, and moral reckoning. Ranked by realism. Includes sensitive content timestamps.", 
             keywords: "best war films, realistic war movies, d-day movies, anti-war films",
-            ogTitle: "10 Best War Films: Unflinching D-Day to Jungle Combat ⚔️",
-            twitterTitle: "⚔️ 10 Unflinching War Films That Show War's True Cost",
+            ogTitle: "10 Best War Films: Unflinching D-Day to Jungle Combat âš”ï¸",
+            twitterTitle: "âš”ï¸ 10 Unflinching War Films That Show War's True Cost",
             progressText: `of Top ${movies.length} War Films`
         };
  
@@ -2880,7 +2877,7 @@ const getStaticMetaContent = () => {
             description: `10 curated ${collection.title.toLowerCase()} films ranked by quality & impact. Includes exact timestamps for sensitive content.`,
             keywords: `best ${collection.title.toLowerCase()}, curated films, sensitive content timestamps`,
             ogTitle: `Best ${collection.title}: 10 Must-Watch Films`,
-            twitterTitle: `🎬 Best ${collection.title}: 10 Films You Can't Miss`,
+            twitterTitle: `ðŸŽ¬ Best ${collection.title}: 10 Films You Can't Miss`,
             progressText: `of Top ${movies.length} ${collection.title}`
         };
     }
@@ -2912,11 +2909,11 @@ const getStaticMetaContent = () => {
         return () => window.removeEventListener('keydown', handleKeyPress);
     }, [nextMovie, prevMovie]);
 
-    // 🔥 GET CURRENT MOVIE AND CALCULATE RANK CORRECTLY
+    // ðŸ”¥ GET CURRENT MOVIE AND CALCULATE RANK CORRECTLY
     const currentMovie = movies[currentMovieIndex];
     const currentRank = movies.length - currentMovieIndex;
 
-    // 🔥 SMART NAVIGATION LOGIC
+    // ðŸ”¥ SMART NAVIGATION LOGIC
     const isFirstMovie = currentMovieIndex === 0;
     const isLastMovie = currentMovieIndex === movies.length - 1;
 
@@ -2946,7 +2943,7 @@ const getStaticMetaContent = () => {
             sessionStorage.setItem('collectionTitle', collection.title);
             sessionStorage.setItem('fromCollection', 'true');
 
-            // Clear all collection flags first ✅
+            // Clear all collection flags first âœ…
             sessionStorage.removeItem('fromInceptionCollection');
             sessionStorage.removeItem('fromMementoCollection');
             sessionStorage.removeItem('fromMatrixCollection');
@@ -3007,7 +3004,7 @@ const getStaticMetaContent = () => {
             sessionStorage.removeItem('fromRevengeCollection');
             sessionStorage.removeItem('fromWarFilmsCollection');
 
-            // Set appropriate collection flag ✅
+            // Set appropriate collection flag âœ…
             if (collection.slug === 'movies-like-inception') {
                 sessionStorage.setItem('fromInceptionCollection', 'true');
             } else if (collection.slug === 'movies-like-memento') {
@@ -3138,7 +3135,7 @@ const getStaticMetaContent = () => {
     const loaderContent = getLoaderContent();
     const metaContent = getStaticMetaContent();
 
-    // 🔥 ENHANCED CINEMATIC EXPLORER SECTION WITH DNA HELIX - SHOWS ON POSITION #10
+    // ðŸ”¥ ENHANCED CINEMATIC EXPLORER SECTION WITH DNA HELIX - SHOWS ON POSITION #10
     const CinematicExplorerSection = ({ currentRank }) => {
         // Only render when currentRank === 10 (Position #10)
         if (currentRank !== 10) {
@@ -3303,9 +3300,9 @@ const getStaticMetaContent = () => {
         );
     };
 
-// 🔥 MOBILE-OPTIMIZED CINEMATIC HEADER
-// 🔥 MOBILE-OPTIMIZED CINEMATIC HEADER - SEO FIXED ✅
-// 🔥 MOBILE-OPTIMIZED CINEMATIC HEADER - SEO FIXED ✅
+// ðŸ”¥ MOBILE-OPTIMIZED CINEMATIC HEADER
+// ðŸ”¥ MOBILE-OPTIMIZED CINEMATIC HEADER - SEO FIXED âœ…
+// ðŸ”¥ MOBILE-OPTIMIZED CINEMATIC HEADER - SEO FIXED âœ…
 const CinematicHeader = React.memo(() => {
     return (
         <header className="text-center mb-8 sm:mb-16 lg:mb-20 px-4 sm:px-6 w-full relative">
@@ -3395,8 +3392,8 @@ const CinematicHeader = React.memo(() => {
         </header>
     );
 });
-    // 🔥 CINEMATIC LOADER
-  // 🔥 CINEMATIC LOADER (SEO FIXED)
+    // ðŸ”¥ CINEMATIC LOADER
+  // ðŸ”¥ CINEMATIC LOADER (SEO FIXED)
 const CinematicLoader = React.memo(() => {
     return (
         <div className="flex flex-col items-center justify-center h-full space-y-8 sm:space-y-16 px-4 sm:px-8">
@@ -3424,7 +3421,7 @@ const CinematicLoader = React.memo(() => {
                 transition={{ delay: 0.8 }} 
                 className="text-center space-y-4 sm:space-y-6 max-w-xs sm:max-w-md"
             >
-                {/* ✅ THE FIX: Changed h2 to h1 */}
+                {/* âœ… THE FIX: Changed h2 to h1 */}
                 <h1 className="text-xl sm:text-2xl font-light text-gray-200 tracking-[0.2em] uppercase">
                     {loaderContent.title}
                 </h1>
@@ -3473,10 +3470,10 @@ const NavigationDots = ({ movies, currentMovieIndex, goToMovie }) => (
 );
 
 return (
-    // ✅ REMOVED EXCESSIVE BOTTOM PADDING (pb-24) TO FIX THE GAP
+    // âœ… REMOVED EXCESSIVE BOTTOM PADDING (pb-24) TO FIX THE GAP
     <div className="min-h-screen bg-black text-white relative overflow-hidden">
         <Head>
-    {/* ✅ FIXED: Template literal prevents hydration comments in Google Search results */}
+    {/* âœ… FIXED: Template literal prevents hydration comments in Google Search results */}
     <title key={`collection-title-${collection.slug}`}>
         {`${metaContent.title || collection.title || "Filmiway - Movie Collection"}`}
     </title>
@@ -3605,7 +3602,7 @@ return (
 ? 'movies/best-horror-movies-on-paramount-plus/'
 : collection?.slug === 'best-comedy-movies-on-paramount-plus'
 ? 'movies/best-comedy-movies-on-paramount-plus/'
-: collection?.slug === 'best-movies-on-paramount-plus' // ✅ ADDED THIS LINE
+: collection?.slug === 'best-movies-on-paramount-plus' // âœ… ADDED THIS LINE
         ? 'movies/best-movies-on-paramount-plus/'
                                     
                                     
@@ -3688,301 +3685,302 @@ return (
         <MobileLogo />
         <MobileHomepageButton />
         
-       <AnimatePresence mode="wait">
-            {isLoading ? (
-                <motion.div
-                    key="loader"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="min-h-screen flex items-center justify-center"
-                >
-                    <CinematicLoader />
-                </motion.div>
-            ) : (
-                <motion.div
-                    key="collection"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="relative z-10 flex flex-col min-h-screen" // ✅ Fixes layout height
-                >
-                    {/* ✅ Main Content - Pushes footer down */}
-                {/* ✅ Main Content - Pushes footer down. Changed pt-32 to pt-24 */}
-<main className="container mx-auto px-3 sm:px-6 pt-24 sm:pt-40 lg:pt-16 pb-12 flex-grow">
-                        <CinematicHeader />
-                        
-                        <CinematicExplorerSection currentRank={currentRank} />
-                        
-                        <div className="relative flex items-center justify-center min-h-[70vh] sm:min-h-[80vh]">
-                            {!isFirstMovie && (
-                                <motion.button
-                                    onClick={prevMovie}
-                                    className="absolute left-2 sm:left-8 z-20 w-14 h-14 sm:w-18 sm:h-18 bg-gradient-to-r from-gray-800/90 to-gray-900/90 backdrop-blur-xl rounded-2xl border border-yellow-400/20 hover:border-yellow-400/40 transition-all duration-300 flex items-center justify-center group"
-                                    whileHover={{ scale: 1.1, x: -8 }}
-                                    whileTap={{ scale: 0.95 }}
-                                >
-                                    <ChevronLeft size={24} className="sm:w-7 sm:h-7 text-gray-300 group-hover:text-yellow-400 transition-colors" />
-                                    <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/10 to-amber-400/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                                </motion.button>
-                            )}
+        {/* âœ… FIX: Render Loader as Overlay so Content is always in DOM for SEO */}
+<AnimatePresence>
+    {isLoading && (
+        <motion.div
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            className="fixed inset-0 z-50 bg-black flex items-center justify-center"
+        >
+            <CinematicLoader />
+        </motion.div>
+    )}
+</AnimatePresence>
 
-                            {!isLastMovie && (
-                                <motion.button
-                                    onClick={nextMovie}
-                                    className="absolute right-2 sm:right-8 z-20 w-14 h-14 sm:w-18 sm:h-18 bg-gradient-to-l from-gray-800/90 to-gray-900/90 backdrop-blur-xl rounded-2xl border border-yellow-400/20 hover:border-yellow-400/40 transition-all duration-300 flex items-center justify-center group"
-                                    whileHover={{ scale: 1.1, x: 8 }}
-                                    whileTap={{ scale: 0.95 }}
-                                >
-                                    <ChevronRight size={24} className="sm:w-7 sm:h-7 text-gray-300 group-hover:text-yellow-400 transition-colors" />
-                                    <div className="absolute inset-0 bg-gradient-to-l from-yellow-400/10 to-amber-400/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                                </motion.button>
-                            )}
-                            
-                            <AnimatePresence mode="wait">
-                                {currentMovie && (
-<Link
-  href={
-    collection.slug === 'movies-like-inception'
-      ? `/movies/like-inception/${currentMovie.imdbID}`
-      : collection.slug === 'movies-like-the-matrix'
-      ? `/movies/matrix/${currentMovie.imdbID}`
-      : collection.slug === 'movies-like-se7en'
-      ? `/movies/like-se7en/${currentMovie.imdbID}`
-      : collection.slug === 'movies-like-parasite'
-      ? `/movies/parasite/${currentMovie.imdbID}`
-      : collection.slug === 'movies-like-oldboy'
-      ? `/movies/oldboy/${currentMovie.imdbID}`
-      : collection.slug === 'movies-like-donnie-darko'
-      ? `/movies/donnie-darko/${currentMovie.imdbID}`
-      : collection.slug === 'movies-like-black-swan'
-      ? `/movies/black-swan/${currentMovie.imdbID}`
-: collection.slug === 'movies-like-eyes-wide-shut'
-? `/movies/eyes-wide-shut/${currentMovie.imdbID}`
-: collection.slug === 'best-action-movies-on-hulu'
-      ? `/movies/best-action-movies-on-hulu/${currentMovie.imdbID}`
-: collection.slug === 'best-romance-movies-on-hulu'
-       ? `/movies/best-romance-movies-on-hulu/${currentMovie.imdbID}`
-: collection.slug === 'best-horror-movies-on-hulu'
-      ? `/movies/best-horror-movies-on-hulu/${currentMovie.imdbID}`
-      : collection.slug === 'best-comedy-movies-on-hulu'
-      ? `/movies/best-comedy-movies-on-hulu/${currentMovie.imdbID}`
-      : collection.slug === 'best-sci-fi-movies-on-hulu'
-? `/movies/best-sci-fi-movies-on-hulu/${currentMovie.imdbID}`
-: collection.slug === 'best-thriller-movies-hulu'
-? `/movies/best-thriller-movies-hulu/${currentMovie.imdbID}`
-: collection.slug === 'best-movies-on-hulu'
-? `/movies/best-movies-on-hulu/${currentMovie.imdbID}`
-: collection.slug === 'best-drama-movies-on-hulu'
-? `/movies/best-drama-movies-on-hulu/${currentMovie.imdbID}`
-: collection.slug === 'best-family-movies-on-hulu'
-? `/movies/best-family-movies-on-hulu/${currentMovie.imdbID}`
-: collection.slug === 'best-action-movies-on-hbo-max'
-? `/movies/best-action-movies-on-hbo-max/${currentMovie.imdbID}`
-: collection.slug === 'best-romance-movies-on-hbo-max'
-? `/movies/best-romance-movies-on-hbo-max/${currentMovie.imdbID}`
-: collection.slug === 'best-thriller-movies-on-hbo-max'
-? `/movies/best-thriller-movies-on-hbo-max/${currentMovie.imdbID}`
-: collection.slug === 'best-family-movies-on-hbo-max'
-? `/movies/best-family-movies-on-hbo-max/${currentMovie.imdbID}`
-: collection.slug === 'best-sci-fi-movies-on-hbo-max'
-? `/movies/best-sci-fi-movies-on-hbo-max/${currentMovie.imdbID}`
-: collection.slug === 'best-horror-movies-on-hbo-max'
-? `/movies/best-horror-movies-on-hbo-max/${currentMovie.imdbID}`
-: collection.slug === 'best-movies-on-hbo-max'
-? `/movies/best-movies-on-hbo-max/${currentMovie.imdbID}`
-: collection.slug === 'best-drama-movies-on-hbo-max'
-? `/movies/best-drama-movies-on-hbo-max/${currentMovie.imdbID}`
-: collection.slug === 'best-comedy-movies-on-hbo-max'
-? `/movies/best-comedy-movies-on-hbo-max/${currentMovie.imdbID}`
-: collection.slug === 'best-action-movies-on-paramount-plus'
-? `/movies/best-action-movies-on-paramount-plus/${currentMovie.imdbID}`
-: collection.slug === 'best-sci-fi-movies-on-paramount-plus'
-? `/movies/best-sci-fi-movies-on-paramount-plus/${currentMovie.imdbID}`
-: collection.slug === 'best-romance-movies-on-paramount-plus'
-? `/movies/best-romance-movies-on-paramount-plus/${currentMovie.imdbID}`
-: collection.slug === 'best-core-drama-movies-on-paramount-plus'
-? `/movies/best-core-drama-movies-on-paramount-plus/${currentMovie.imdbID}`
-: collection.slug === 'best-thriller-movies-on-paramount-plus'
-? `/movies/best-thriller-movies-on-paramount-plus/${currentMovie.imdbID}`
-: collection.slug === 'best-family-movies-on-paramount-plus'
-? `/movies/best-family-movies-on-paramount-plus/${currentMovie.imdbID}`
-: collection.slug === 'best-horror-movies-on-paramount-plus'
-? `/movies/best-horror-movies-on-paramount-plus/${currentMovie.imdbID}`
-: collection.slug === 'best-comedy-movies-on-paramount-plus'
-? `/movies/best-comedy-movies-on-paramount-plus/${currentMovie.imdbID}`
-: collection.slug === 'best-movies-on-paramount-plus'
-? `/movies/best-movies-on-paramount-plus/${currentMovie.imdbID}`
-      : collection.slug === 'best-action-adventure-movies-on-peacock'
-      ? `/movies/best-action-adventure-movies-on-peacock/${currentMovie.imdbID}`
-      : collection.slug === 'best-sci-fi-movies-on-peacock'
-      ? `/movies/best-sci-fi-movies-on-peacock/${currentMovie.imdbID}`
-      : collection.slug === 'best-romance-movies-on-peacock'
-      ? `/movies/best-romance-movies-on-peacock/${currentMovie.imdbID}`
-      : collection.slug === 'best-family-movies-on-peacock'
-      ? `/movies/best-family-movies-on-peacock/${currentMovie.imdbID}`
-      : collection.slug === 'best-drama-movies-on-peacock'
-      ? `/movies/best-drama-movies-on-peacock/${currentMovie.imdbID}`
-      : collection.slug === 'best-thriller-movies-on-peacock'
-      ? `/movies/best-thriller-movies-on-peacock/${currentMovie.imdbID}`
-      : collection.slug === 'best-movies-on-peacock'
-      ? `/movies/best-movies-on-peacock/${currentMovie.imdbID}`
-      : collection.slug === 'movies-like-interstellar'
-      ? `/movies/interstellar/${currentMovie.imdbID}`
-      : collection.slug === 'movies-like-memento'
-      ? `/movies/like-memento/${currentMovie.imdbID}`
-      : collection.slug === 'movies-like-shutter-island'
-      ? `/movies/like-shutter-island/${currentMovie.imdbID}`
-      : collection.slug === 'best-survival-movies'
-      ? `/movies/survival/${currentMovie.imdbID}`
-      : collection.slug === 'best-thriller-movies'
-      ? `/movies/thriller/${currentMovie.imdbID}`
-      : collection.slug === 'best-mystery-thriller-movies'
-      ? `/movies/mystery-thriller/${currentMovie.imdbID}`
-      : collection.slug === 'best-detective-thriller-movies'
-      ? `/movies/detective-thriller/${currentMovie.imdbID}`
-      : collection.slug === 'best-drama-movies-on-netflix'
-      ? `/movies/netflix/${currentMovie.imdbID}`
-      : collection.slug === 'best-psychological-thriller-movies'
-      ? `/movies/psych-thriller/${currentMovie.imdbID}`
-      : collection.slug === 'best-crime-thriller-movies'
-      ? `/movies/crime-thriller/${currentMovie.imdbID}`
-      : collection.slug === 'best-heist-thriller-movies'
-      ? `/movies/heist-thriller/${currentMovie.imdbID}`
-      : collection.slug === 'best-time-travel-movies'
-      ? `/movies/time-travel/${currentMovie.imdbID}`
-      : collection.slug === 'best-sci-fi-movies'
-      ? `/movies/sci-fi/${currentMovie.imdbID}`
-      : collection.slug === 'best-revenge-movies'
-      ? `/movies/revenge/${currentMovie.imdbID}`
-      : collection.slug === 'best-war-films'
-      ? `/movies/war-films/${currentMovie.imdbID}`
-      : `/movies/${currentMovie.imdbID}`
-                                    }
-
-                                    key={currentMovieIndex}
-                                    onClick={handleMovieClick}
-                                >
-                                    <CinematicMovieCard
-                                        movie={currentMovie}
-                                        rank={currentRank}
-                                        isActive={true}
-                                    />
-                                </Link>
-                                )}
-                            </AnimatePresence>
-
-                        </div>
-
-                        {/* Enhanced Movie Info */}
-                        <motion.div 
-                            className="text-center mt-12 sm:mt-16"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 0.5, duration: 0.8 }}
+        <motion.div
+            key="collection"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="relative z-10 flex flex-col min-h-screen" // âœ… Fixes layout height
+        >
+            {/* âœ… Main Content - Pushes footer down */}
+            {/* âœ… Main Content - Pushes footer down. Changed pt-32 to pt-24 */}
+            <main className="container mx-auto px-3 sm:px-6 pt-24 sm:pt-40 lg:pt-16 pb-12 flex-grow">
+                <CinematicHeader />
+                
+                <CinematicExplorerSection currentRank={currentRank} />
+                
+                <div className="relative flex items-center justify-center min-h-[70vh] sm:min-h-[80vh]">
+                    {!isFirstMovie && (
+                        <motion.button
+                            onClick={prevMovie}
+                            className="absolute left-2 sm:left-8 z-20 w-14 h-14 sm:w-18 sm:h-18 bg-gradient-to-r from-gray-800/90 to-gray-900/90 backdrop-blur-xl rounded-2xl border border-yellow-400/20 hover:border-yellow-400/40 transition-all duration-300 flex items-center justify-center group"
+                            whileHover={{ scale: 1.1, x: -8 }}
+                            whileTap={{ scale: 0.95 }}
                         >
-                            <div className="flex flex-col items-center space-y-6">
-                                <div className="flex items-center justify-center space-x-4 text-sm text-gray-500">
-                                    <span className="px-3 py-1 bg-gray-800/50 rounded-full">#{currentRank} of {movies.length}</span>
-                                    <span>•</span>
-                                    <span>Click poster above for full analysis</span>
-                                </div>
-                                
-                                <motion.div 
-                                    className="flex items-center space-x-4 bg-gradient-to-r from-yellow-400/10 via-amber-400/10 to-yellow-400/10 border border-yellow-400/30 rounded-2xl px-8 py-4 hover:from-yellow-400/20 hover:via-amber-400/20 hover:to-yellow-400/20 hover:border-yellow-400/50 transition-all duration-300 cursor-pointer group"
-                                    whileHover={{ scale: 1.05, y: -2 }}
-                                    whileTap={{ scale: 0.98 }}
-                                    onClick={() => {
-                                        handleMovieClick();
-                                        let detailPageUrl;
-                                        if (collection.slug === 'movies-like-inception') {
-                                            detailPageUrl = `/movies/like-inception/${currentMovie.imdbID}`;
-                                        } else if (collection.slug === 'movies-like-the-matrix') {
-                                            detailPageUrl = `/movies/matrix/${currentMovie.imdbID}`;
-                                        } else if (collection.slug === 'movies-like-se7en') {
-                                            detailPageUrl = `/movies/like-se7en/${currentMovie.imdbID}`;
-                                        } else if (collection.slug === 'movies-like-parasite') { 
-                                            detailPageUrl = `/movies/parasite/${currentMovie.imdbID}`;
-                                        } else if (collection.slug === 'movies-like-oldboy') {
-                                            detailPageUrl = `/movies/oldboy/${currentMovie.imdbID}`;
-                                        } else if (collection.slug === 'movies-like-donnie-darko') {
-                                            detailPageUrl = `/movies/donnie-darko/${currentMovie.imdbID}`;
-                                        } else if (collection.slug === 'movies-like-black-swan') {
-                                            detailPageUrl = `/movies/black-swan/${currentMovie.imdbID}`;
-                                        } else if (collection.slug === 'movies-like-eyes-wide-shut') {
-                                            detailPageUrl = `/movies/eyes-wide-shut/${currentMovie.imdbID}`;
-                                        } else if (collection.slug === 'best-action-movies-on-hulu') {
-                                            detailPageUrl = `/movies/best-action-movies-on-hulu/${currentMovie.imdbID}`;
-                                        } else if (collection.slug === 'best-romance-movies-on-hulu') {
-                                            detailPageUrl = `/movies/best-romance-movies-on-hulu/${currentMovie.imdbID}`;
-                                        } else if (collection.slug === 'best-horror-movies-on-hulu') {
-                                            detailPageUrl = `/movies/best-horror-movies-on-hulu/${currentMovie.imdbID}`;
-                                        } else if (collection.slug === 'best-comedy-movies-on-hulu') {
-                                            detailPageUrl = `/movies/best-comedy-movies-on-hulu/${currentMovie.imdbID}`;
-                                            } else if (collection.slug === 'best-sci-fi-movies-on-hulu') {
-    detailPageUrl = `/movies/best-sci-fi-movies-on-hulu/${currentMovie.imdbID}`;
-    } else if (collection.slug === 'best-thriller-movies-hulu') {
-    detailPageUrl = `/movies/best-thriller-movies-hulu/${currentMovie.imdbID}`;
-    } else if (collection.slug === 'best-movies-on-hulu') {
-    detailPageUrl = `/movies/best-movies-on-hulu/${currentMovie.imdbID}`;
-    } else if (collection.slug === 'best-drama-movies-on-hulu') {
-    detailPageUrl = `/movies/best-drama-movies-on-hulu/${currentMovie.imdbID}`;
-    } else if (collection.slug === 'best-family-movies-on-hulu') {
-    detailPageUrl = `/movies/best-family-movies-on-hulu/${currentMovie.imdbID}`;
-    } else if (collection.slug === 'best-action-movies-on-hbo-max') {
-    detailPageUrl = `/movies/best-action-movies-on-hbo-max/${currentMovie.imdbID}`;
-    } else if (collection.slug === 'best-romance-movies-on-hbo-max') {
-    detailPageUrl = `/movies/best-romance-movies-on-hbo-max/${currentMovie.imdbID}`;
-    } else if (collection.slug === 'best-thriller-movies-on-hbo-max') {
-    detailPageUrl = `/movies/best-thriller-movies-on-hbo-max/${currentMovie.imdbID}`;
-    } else if (collection.slug === 'best-family-movies-on-hbo-max') {
-    detailPageUrl = `/movies/best-family-movies-on-hbo-max/${currentMovie.imdbID}`;
-    } else if (collection.slug === 'best-sci-fi-movies-on-hbo-max') {
-    detailPageUrl = `/movies/best-sci-fi-movies-on-hbo-max/${currentMovie.imdbID}`;
-    } else if (collection.slug === 'best-horror-movies-on-hbo-max') {
-    detailPageUrl = `/movies/best-horror-movies-on-hbo-max/${currentMovie.imdbID}`;
-    } else if (collection.slug === 'best-movies-on-hbo-max') {
-    detailPageUrl = `/movies/best-movies-on-hbo-max/${currentMovie.imdbID}`;
-    } else if (collection.slug === 'best-drama-movies-on-hbo-max') {
-    detailPageUrl = `/movies/best-drama-movies-on-hbo-max/${currentMovie.imdbID}`;
-    } else if (collection.slug === 'best-comedy-movies-on-hbo-max') {
-    detailPageUrl = `/movies/best-comedy-movies-on-hbo-max/${currentMovie.imdbID}`;
-    } else if (collection.slug === 'best-action-movies-on-paramount-plus') {
-    detailPageUrl = `/movies/best-action-movies-on-paramount-plus/${currentMovie.imdbID}`;
-    } else if (collection.slug === 'best-sci-fi-movies-on-paramount-plus') {
-    detailPageUrl = `/movies/best-sci-fi-movies-on-paramount-plus/${currentMovie.imdbID}`;
-    } else if (collection.slug === 'best-romance-movies-on-paramount-plus') {
-    detailPageUrl = `/movies/best-romance-movies-on-paramount-plus/${currentMovie.imdbID}`;
-    } else if (collection.slug === 'best-core-drama-movies-on-paramount-plus') {
-    detailPageUrl = `/movies/best-core-drama-movies-on-paramount-plus/${currentMovie.imdbID}`;
-} else if (collection.slug === 'best-thriller-movies-on-paramount-plus') {
-    detailPageUrl = `/movies/best-thriller-movies-on-paramount-plus/${currentMovie.imdbID}`;
-    } else if (collection.slug === 'best-family-movies-on-paramount-plus') {
-        detailPageUrl = `/movies/best-family-movies-on-paramount-plus/${currentMovie.imdbID}`;
-    } else if (collection.slug === 'best-horror-movies-on-paramount-plus') {
-        detailPageUrl = `/movies/best-horror-movies-on-paramount-plus/${currentMovie.imdbID}`;
-    } else if (collection.slug === 'best-comedy-movies-on-paramount-plus') {
-        detailPageUrl = `/movies/best-comedy-movies-on-paramount-plus/${currentMovie.imdbID}`;
-        } else if (collection.slug === 'best-movies-on-paramount-plus') {
-    detailPageUrl = `/movies/best-movies-on-paramount-plus/${currentMovie.imdbID}`;
-} else if (collection.slug === 'best-action-adventure-movies-on-peacock') {
-        detailPageUrl = `/movies/best-action-adventure-movies-on-peacock/${currentMovie.imdbID}`;
-    } else if (collection.slug === 'best-sci-fi-movies-on-peacock') {
-        detailPageUrl = `/movies/best-sci-fi-movies-on-peacock/${currentMovie.imdbID}`;
-    } else if (collection.slug === 'best-romance-movies-on-peacock') {
-        detailPageUrl = `/movies/best-romance-movies-on-peacock/${currentMovie.imdbID}`;
-    } else if (collection.slug === 'best-family-movies-on-peacock') {
-        detailPageUrl = `/movies/best-family-movies-on-peacock/${currentMovie.imdbID}`;
-    } else if (collection.slug === 'best-drama-movies-on-peacock') {
-        detailPageUrl = `/movies/best-drama-movies-on-peacock/${currentMovie.imdbID}`;
-    } else if (collection.slug === 'best-thriller-movies-on-peacock') {
-        detailPageUrl = `/movies/best-thriller-movies-on-peacock/${currentMovie.imdbID}`;
-    } else if (collection.slug === 'best-movies-on-peacock') {
-        detailPageUrl = `/movies/best-movies-on-peacock/${currentMovie.imdbID}`;
-    
-    } else if (collection.slug === 'best-comedy-movies-on-peacock') {
-        detailPageUrl = `/movies/best-comedy-movies-on-peacock/${currentMovie.imdbID}`;
-    } else if (collection.slug === 'movies-like-interstellar') {
+                            <ChevronLeft size={24} className="sm:w-7 sm:h-7 text-gray-300 group-hover:text-yellow-400 transition-colors" />
+                            <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/10 to-amber-400/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        </motion.button>
+                    )}
+
+                    {!isLastMovie && (
+                        <motion.button
+                            onClick={nextMovie}
+                            className="absolute right-2 sm:right-8 z-20 w-14 h-14 sm:w-18 sm:h-18 bg-gradient-to-l from-gray-800/90 to-gray-900/90 backdrop-blur-xl rounded-2xl border border-yellow-400/20 hover:border-yellow-400/40 transition-all duration-300 flex items-center justify-center group"
+                            whileHover={{ scale: 1.1, x: 8 }}
+                            whileTap={{ scale: 0.95 }}
+                        >
+                            <ChevronRight size={24} className="sm:w-7 sm:h-7 text-gray-300 group-hover:text-yellow-400 transition-colors" />
+                            <div className="absolute inset-0 bg-gradient-to-l from-yellow-400/10 to-amber-400/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        </motion.button>
+                    )}
+                    
+                    <AnimatePresence mode="wait">
+                        {currentMovie && (
+                            <Link
+                                href={
+                                    collection.slug === 'movies-like-inception'
+                                    ? `/movies/like-inception/${currentMovie.imdbID}`
+                                    : collection.slug === 'movies-like-the-matrix'
+                                    ? `/movies/matrix/${currentMovie.imdbID}`
+                                    : collection.slug === 'movies-like-se7en'
+                                    ? `/movies/like-se7en/${currentMovie.imdbID}`
+                                    : collection.slug === 'movies-like-parasite'
+                                    ? `/movies/parasite/${currentMovie.imdbID}`
+                                    : collection.slug === 'movies-like-oldboy'
+                                    ? `/movies/oldboy/${currentMovie.imdbID}`
+                                    : collection.slug === 'movies-like-donnie-darko'
+                                    ? `/movies/donnie-darko/${currentMovie.imdbID}`
+                                    : collection.slug === 'movies-like-black-swan'
+                                    ? `/movies/black-swan/${currentMovie.imdbID}`
+                                    : collection.slug === 'movies-like-eyes-wide-shut'
+                                    ? `/movies/eyes-wide-shut/${currentMovie.imdbID}`
+                                    : collection.slug === 'best-action-movies-on-hulu'
+                                    ? `/movies/best-action-movies-on-hulu/${currentMovie.imdbID}`
+                                    : collection.slug === 'best-romance-movies-on-hulu'
+                                    ? `/movies/best-romance-movies-on-hulu/${currentMovie.imdbID}`
+                                    : collection.slug === 'best-horror-movies-on-hulu'
+                                    ? `/movies/best-horror-movies-on-hulu/${currentMovie.imdbID}`
+                                    : collection.slug === 'best-comedy-movies-on-hulu'
+                                    ? `/movies/best-comedy-movies-on-hulu/${currentMovie.imdbID}`
+                                    : collection.slug === 'best-sci-fi-movies-on-hulu'
+                                    ? `/movies/best-sci-fi-movies-on-hulu/${currentMovie.imdbID}`
+                                    : collection.slug === 'best-thriller-movies-hulu'
+                                    ? `/movies/best-thriller-movies-hulu/${currentMovie.imdbID}`
+                                    : collection.slug === 'best-movies-on-hulu'
+                                    ? `/movies/best-movies-on-hulu/${currentMovie.imdbID}`
+                                    : collection.slug === 'best-drama-movies-on-hulu'
+                                    ? `/movies/best-drama-movies-on-hulu/${currentMovie.imdbID}`
+                                    : collection.slug === 'best-family-movies-on-hulu'
+                                    ? `/movies/best-family-movies-on-hulu/${currentMovie.imdbID}`
+                                    : collection.slug === 'best-action-movies-on-hbo-max'
+                                    ? `/movies/best-action-movies-on-hbo-max/${currentMovie.imdbID}`
+                                    : collection.slug === 'best-romance-movies-on-hbo-max'
+                                    ? `/movies/best-romance-movies-on-hbo-max/${currentMovie.imdbID}`
+                                    : collection.slug === 'best-thriller-movies-on-hbo-max'
+                                    ? `/movies/best-thriller-movies-on-hbo-max/${currentMovie.imdbID}`
+                                    : collection.slug === 'best-family-movies-on-hbo-max'
+                                    ? `/movies/best-family-movies-on-hbo-max/${currentMovie.imdbID}`
+                                    : collection.slug === 'best-sci-fi-movies-on-hbo-max'
+                                    ? `/movies/best-sci-fi-movies-on-hbo-max/${currentMovie.imdbID}`
+                                    : collection.slug === 'best-horror-movies-on-hbo-max'
+                                    ? `/movies/best-horror-movies-on-hbo-max/${currentMovie.imdbID}`
+                                    : collection.slug === 'best-movies-on-hbo-max'
+                                    ? `/movies/best-movies-on-hbo-max/${currentMovie.imdbID}`
+                                    : collection.slug === 'best-drama-movies-on-hbo-max'
+                                    ? `/movies/best-drama-movies-on-hbo-max/${currentMovie.imdbID}`
+                                    : collection.slug === 'best-comedy-movies-on-hbo-max'
+                                    ? `/movies/best-comedy-movies-on-hbo-max/${currentMovie.imdbID}`
+                                    : collection.slug === 'best-action-movies-on-paramount-plus'
+                                    ? `/movies/best-action-movies-on-paramount-plus/${currentMovie.imdbID}`
+                                    : collection.slug === 'best-sci-fi-movies-on-paramount-plus'
+                                    ? `/movies/best-sci-fi-movies-on-paramount-plus/${currentMovie.imdbID}`
+                                    : collection.slug === 'best-romance-movies-on-paramount-plus'
+                                    ? `/movies/best-romance-movies-on-paramount-plus/${currentMovie.imdbID}`
+                                    : collection.slug === 'best-core-drama-movies-on-paramount-plus'
+                                    ? `/movies/best-core-drama-movies-on-paramount-plus/${currentMovie.imdbID}`
+                                    : collection.slug === 'best-thriller-movies-on-paramount-plus'
+                                    ? `/movies/best-thriller-movies-on-paramount-plus/${currentMovie.imdbID}`
+                                    : collection.slug === 'best-family-movies-on-paramount-plus'
+                                    ? `/movies/best-family-movies-on-paramount-plus/${currentMovie.imdbID}`
+                                    : collection.slug === 'best-horror-movies-on-paramount-plus'
+                                    ? `/movies/best-horror-movies-on-paramount-plus/${currentMovie.imdbID}`
+                                    : collection.slug === 'best-comedy-movies-on-paramount-plus'
+                                    ? `/movies/best-comedy-movies-on-paramount-plus/${currentMovie.imdbID}`
+                                    : collection.slug === 'best-movies-on-paramount-plus'
+                                    ? `/movies/best-movies-on-paramount-plus/${currentMovie.imdbID}`
+                                    : collection.slug === 'best-action-adventure-movies-on-peacock'
+                                    ? `/movies/best-action-adventure-movies-on-peacock/${currentMovie.imdbID}`
+                                    : collection.slug === 'best-sci-fi-movies-on-peacock'
+                                    ? `/movies/best-sci-fi-movies-on-peacock/${currentMovie.imdbID}`
+                                    : collection.slug === 'best-romance-movies-on-peacock'
+                                    ? `/movies/best-romance-movies-on-peacock/${currentMovie.imdbID}`
+                                    : collection.slug === 'best-family-movies-on-peacock'
+                                    ? `/movies/best-family-movies-on-peacock/${currentMovie.imdbID}`
+                                    : collection.slug === 'best-drama-movies-on-peacock'
+                                    ? `/movies/best-drama-movies-on-peacock/${currentMovie.imdbID}`
+                                    : collection.slug === 'best-thriller-movies-on-peacock'
+                                    ? `/movies/best-thriller-movies-on-peacock/${currentMovie.imdbID}`
+                                    : collection.slug === 'best-movies-on-peacock'
+                                    ? `/movies/best-movies-on-peacock/${currentMovie.imdbID}`
+                                    : collection.slug === 'movies-like-interstellar'
+                                    ? `/movies/interstellar/${currentMovie.imdbID}`
+                                    : collection.slug === 'movies-like-memento'
+                                    ? `/movies/like-memento/${currentMovie.imdbID}`
+                                    : collection.slug === 'movies-like-shutter-island'
+                                    ? `/movies/like-shutter-island/${currentMovie.imdbID}`
+                                    : collection.slug === 'best-survival-movies'
+                                    ? `/movies/survival/${currentMovie.imdbID}`
+                                    : collection.slug === 'best-thriller-movies'
+                                    ? `/movies/thriller/${currentMovie.imdbID}`
+                                    : collection.slug === 'best-mystery-thriller-movies'
+                                    ? `/movies/mystery-thriller/${currentMovie.imdbID}`
+                                    : collection.slug === 'best-detective-thriller-movies'
+                                    ? `/movies/detective-thriller/${currentMovie.imdbID}`
+                                    : collection.slug === 'best-drama-movies-on-netflix'
+                                    ? `/movies/netflix/${currentMovie.imdbID}`
+                                    : collection.slug === 'best-psychological-thriller-movies'
+                                    ? `/movies/psych-thriller/${currentMovie.imdbID}`
+                                    : collection.slug === 'best-crime-thriller-movies'
+                                    ? `/movies/crime-thriller/${currentMovie.imdbID}`
+                                    : collection.slug === 'best-heist-thriller-movies'
+                                    ? `/movies/heist-thriller/${currentMovie.imdbID}`
+                                    : collection.slug === 'best-time-travel-movies'
+                                    ? `/movies/time-travel/${currentMovie.imdbID}`
+                                    : collection.slug === 'best-sci-fi-movies'
+                                    ? `/movies/sci-fi/${currentMovie.imdbID}`
+                                    : collection.slug === 'best-revenge-movies'
+                                    ? `/movies/revenge/${currentMovie.imdbID}`
+                                    : collection.slug === 'best-war-films'
+                                    ? `/movies/war-films/${currentMovie.imdbID}`
+                                    : `/movies/${currentMovie.imdbID}`
+                                }
+
+                                key={currentMovieIndex}
+                                onClick={handleMovieClick}
+                            >
+                                <CinematicMovieCard
+                                    movie={currentMovie}
+                                    rank={currentRank}
+                                    isActive={true}
+                                />
+                            </Link>
+                        )}
+                    </AnimatePresence>
+
+                </div>
+
+                {/* Enhanced Movie Info */}
+                <motion.div 
+                    className="text-center mt-12 sm:mt-16"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.5, duration: 0.8 }}
+                >
+                    <div className="flex flex-col items-center space-y-6">
+                        <div className="flex items-center justify-center space-x-4 text-sm text-gray-500">
+                            <span className="px-3 py-1 bg-gray-800/50 rounded-full">#{currentRank} of {movies.length}</span>
+                            <span>â€¢</span>
+                            <span>Click poster above for full analysis</span>
+                        </div>
+                        
+                        <motion.div 
+                            className="flex items-center space-x-4 bg-gradient-to-r from-yellow-400/10 via-amber-400/10 to-yellow-400/10 border border-yellow-400/30 rounded-2xl px-8 py-4 hover:from-yellow-400/20 hover:via-amber-400/20 hover:to-yellow-400/20 hover:border-yellow-400/50 transition-all duration-300 cursor-pointer group"
+                            whileHover={{ scale: 1.05, y: -2 }}
+                            whileTap={{ scale: 0.98 }}
+                            onClick={() => {
+                                handleMovieClick();
+                                let detailPageUrl;
+                                if (collection.slug === 'movies-like-inception') {
+                                    detailPageUrl = `/movies/like-inception/${currentMovie.imdbID}`;
+                                } else if (collection.slug === 'movies-like-the-matrix') {
+                                    detailPageUrl = `/movies/matrix/${currentMovie.imdbID}`;
+                                } else if (collection.slug === 'movies-like-se7en') {
+                                    detailPageUrl = `/movies/like-se7en/${currentMovie.imdbID}`;
+                                } else if (collection.slug === 'movies-like-parasite') { 
+                                    detailPageUrl = `/movies/parasite/${currentMovie.imdbID}`;
+                                } else if (collection.slug === 'movies-like-oldboy') {
+                                    detailPageUrl = `/movies/oldboy/${currentMovie.imdbID}`;
+                                } else if (collection.slug === 'movies-like-donnie-darko') {
+                                    detailPageUrl = `/movies/donnie-darko/${currentMovie.imdbID}`;
+                                } else if (collection.slug === 'movies-like-black-swan') {
+                                    detailPageUrl = `/movies/black-swan/${currentMovie.imdbID}`;
+                                } else if (collection.slug === 'movies-like-eyes-wide-shut') {
+                                    detailPageUrl = `/movies/eyes-wide-shut/${currentMovie.imdbID}`;
+                                } else if (collection.slug === 'best-action-movies-on-hulu') {
+                                    detailPageUrl = `/movies/best-action-movies-on-hulu/${currentMovie.imdbID}`;
+                                } else if (collection.slug === 'best-romance-movies-on-hulu') {
+                                    detailPageUrl = `/movies/best-romance-movies-on-hulu/${currentMovie.imdbID}`;
+                                } else if (collection.slug === 'best-horror-movies-on-hulu') {
+                                    detailPageUrl = `/movies/best-horror-movies-on-hulu/${currentMovie.imdbID}`;
+                                } else if (collection.slug === 'best-comedy-movies-on-hulu') {
+                                    detailPageUrl = `/movies/best-comedy-movies-on-hulu/${currentMovie.imdbID}`;
+                                    } else if (collection.slug === 'best-sci-fi-movies-on-hulu') {
+                                    detailPageUrl = `/movies/best-sci-fi-movies-on-hulu/${currentMovie.imdbID}`;
+                                    } else if (collection.slug === 'best-thriller-movies-hulu') {
+                                    detailPageUrl = `/movies/best-thriller-movies-hulu/${currentMovie.imdbID}`;
+                                    } else if (collection.slug === 'best-movies-on-hulu') {
+                                    detailPageUrl = `/movies/best-movies-on-hulu/${currentMovie.imdbID}`;
+                                    } else if (collection.slug === 'best-drama-movies-on-hulu') {
+                                    detailPageUrl = `/movies/best-drama-movies-on-hulu/${currentMovie.imdbID}`;
+                                    } else if (collection.slug === 'best-family-movies-on-hulu') {
+                                    detailPageUrl = `/movies/best-family-movies-on-hulu/${currentMovie.imdbID}`;
+                                    } else if (collection.slug === 'best-action-movies-on-hbo-max') {
+                                    detailPageUrl = `/movies/best-action-movies-on-hbo-max/${currentMovie.imdbID}`;
+                                    } else if (collection.slug === 'best-romance-movies-on-hbo-max') {
+                                    detailPageUrl = `/movies/best-romance-movies-on-hbo-max/${currentMovie.imdbID}`;
+                                    } else if (collection.slug === 'best-thriller-movies-on-hbo-max') {
+                                    detailPageUrl = `/movies/best-thriller-movies-on-hbo-max/${currentMovie.imdbID}`;
+                                    } else if (collection.slug === 'best-family-movies-on-hbo-max') {
+                                    detailPageUrl = `/movies/best-family-movies-on-hbo-max/${currentMovie.imdbID}`;
+                                    } else if (collection.slug === 'best-sci-fi-movies-on-hbo-max') {
+                                    detailPageUrl = `/movies/best-sci-fi-movies-on-hbo-max/${currentMovie.imdbID}`;
+                                    } else if (collection.slug === 'best-horror-movies-on-hbo-max') {
+                                    detailPageUrl = `/movies/best-horror-movies-on-hbo-max/${currentMovie.imdbID}`;
+                                    } else if (collection.slug === 'best-movies-on-hbo-max') {
+                                    detailPageUrl = `/movies/best-movies-on-hbo-max/${currentMovie.imdbID}`;
+                                    } else if (collection.slug === 'best-drama-movies-on-hbo-max') {
+                                    detailPageUrl = `/movies/best-drama-movies-on-hbo-max/${currentMovie.imdbID}`;
+                                    } else if (collection.slug === 'best-comedy-movies-on-hbo-max') {
+                                    detailPageUrl = `/movies/best-comedy-movies-on-hbo-max/${currentMovie.imdbID}`;
+                                    } else if (collection.slug === 'best-action-movies-on-paramount-plus') {
+                                    detailPageUrl = `/movies/best-action-movies-on-paramount-plus/${currentMovie.imdbID}`;
+                                    } else if (collection.slug === 'best-sci-fi-movies-on-paramount-plus') {
+                                    detailPageUrl = `/movies/best-sci-fi-movies-on-paramount-plus/${currentMovie.imdbID}`;
+                                    } else if (collection.slug === 'best-romance-movies-on-paramount-plus') {
+                                    detailPageUrl = `/movies/best-romance-movies-on-paramount-plus/${currentMovie.imdbID}`;
+                                    } else if (collection.slug === 'best-core-drama-movies-on-paramount-plus') {
+                                    detailPageUrl = `/movies/best-core-drama-movies-on-paramount-plus/${currentMovie.imdbID}`;
+                                } else if (collection.slug === 'best-thriller-movies-on-paramount-plus') {
+                                    detailPageUrl = `/movies/best-thriller-movies-on-paramount-plus/${currentMovie.imdbID}`;
+                                    } else if (collection.slug === 'best-family-movies-on-paramount-plus') {
+                                        detailPageUrl = `/movies/best-family-movies-on-paramount-plus/${currentMovie.imdbID}`;
+                                    } else if (collection.slug === 'best-horror-movies-on-paramount-plus') {
+                                        detailPageUrl = `/movies/best-horror-movies-on-paramount-plus/${currentMovie.imdbID}`;
+                                    } else if (collection.slug === 'best-comedy-movies-on-paramount-plus') {
+                                        detailPageUrl = `/movies/best-comedy-movies-on-paramount-plus/${currentMovie.imdbID}`;
+                                        } else if (collection.slug === 'best-movies-on-paramount-plus') {
+                                    detailPageUrl = `/movies/best-movies-on-paramount-plus/${currentMovie.imdbID}`;
+                                } else if (collection.slug === 'best-action-adventure-movies-on-peacock') {
+                                        detailPageUrl = `/movies/best-action-adventure-movies-on-peacock/${currentMovie.imdbID}`;
+                                    } else if (collection.slug === 'best-sci-fi-movies-on-peacock') {
+                                        detailPageUrl = `/movies/best-sci-fi-movies-on-peacock/${currentMovie.imdbID}`;
+                                    } else if (collection.slug === 'best-romance-movies-on-peacock') {
+                                        detailPageUrl = `/movies/best-romance-movies-on-peacock/${currentMovie.imdbID}`;
+                                    } else if (collection.slug === 'best-family-movies-on-peacock') {
+                                        detailPageUrl = `/movies/best-family-movies-on-peacock/${currentMovie.imdbID}`;
+                                    } else if (collection.slug === 'best-drama-movies-on-peacock') {
+                                        detailPageUrl = `/movies/best-drama-movies-on-peacock/${currentMovie.imdbID}`;
+                                    } else if (collection.slug === 'best-thriller-movies-on-peacock') {
+                                        detailPageUrl = `/movies/best-thriller-movies-on-peacock/${currentMovie.imdbID}`;
+                                    } else if (collection.slug === 'best-movies-on-peacock') {
+                                        detailPageUrl = `/movies/best-movies-on-peacock/${currentMovie.imdbID}`;
+                                    
+                                    } else if (collection.slug === 'best-comedy-movies-on-peacock') {
+                                        detailPageUrl = `/movies/best-comedy-movies-on-peacock/${currentMovie.imdbID}`;
+                                    } else if (collection.slug === 'movies-like-interstellar') {
                                             detailPageUrl = `/movies/interstellar/${currentMovie.imdbID}`;
                                         } else if (collection.slug === 'movies-like-memento') {
                                             detailPageUrl = `/movies/like-memento/${currentMovie.imdbID}`;
@@ -4065,7 +4063,7 @@ return (
 
                     <RelatedCollections collectionIds={collection.relatedCollections} />
 
-                    {/* ✅ FOOTER MOVED OUTSIDE CONTAINER - FIXES SIDE GAPS */}
+                    {/* âœ… FOOTER MOVED OUTSIDE CONTAINER - FIXES SIDE GAPS */}
                     <motion.footer
                         className="w-full bg-gradient-to-t from-gray-900 to-black pt-12 border-t border-gray-800/30 text-center relative z-20 mt-auto"
                         initial={{ opacity: 0 }}
@@ -4074,7 +4072,7 @@ return (
                     >
                         <div className="container mx-auto px-6 pb-12">
                             <p className="text-gray-500 text-sm sm:text-base font-light tracking-wide mb-8">
-                                Curated cinema for discerning viewers • Expert analysis and community insights
+                                Curated cinema for discerning viewers â€¢ Expert analysis and community insights
                             </p>
                             
                             <div className="flex justify-center items-center gap-8 sm:gap-12 mb-8">
@@ -4120,23 +4118,21 @@ return (
                             </motion.div>
 
                             <div className="flex items-center justify-center space-x-8 text-gray-500 text-sm pb-10">
-                                <span>© 2026 Filmiway</span>
-                                <span>•</span>
+                                <span>Â© 2026 Filmiway</span>
+                                <span>â€¢</span>
                                 <span>All Rights Reserved</span>
-                                <span>•</span>
+                                <span>â€¢</span>
                                 <span>Where Every Film Finds Its Way</span>
                             </div>
                         </div>
                     </motion.footer>
                 </motion.div>
-            )}
-        </AnimatePresence>
     </div>
 );
 };
 
-// 🔥 SSG FUNCTIONS WITH MATRIX COLLECTION ADDED 🔴
-// ✅ CORRECT getStaticPaths() - generates all collections
+// ðŸ”¥ SSG FUNCTIONS WITH MATRIX COLLECTION ADDED ðŸ”´
+// âœ… CORRECT getStaticPaths() - generates all collections
 export async function getStaticPaths() {
     const slugs = getAllCollectionSlugs();
 
@@ -4144,15 +4140,15 @@ export async function getStaticPaths() {
         params: { slug }
     }));
 
-    console.log('✅ Building paths for:', paths.map(p => p.params.slug));
+    console.log('âœ… Building paths for:', paths.map(p => p.params.slug));
 
     return {
         paths,
-        fallback: false  // ✅ CRITICAL: Must be false for SSG/export
+        fallback: false  // âœ… CRITICAL: Must be false for SSG/export
     };
 }
 
-// ✅ CORRECT getStaticProps() - maps correct database to each collection WITH MATRIX, SE7EN & PARASITE
+// âœ… CORRECT getStaticProps() - maps correct database to each collection WITH MATRIX, SE7EN & PARASITE
 export async function getStaticProps({ params }) {
     const slug = params.slug;
     const collection = getCollectionBySlug(slug);
@@ -4161,7 +4157,7 @@ export async function getStaticProps({ params }) {
         return { notFound: true };
     }
 
-    // ✅ SELECT DATABASE FOR EACH COLLECTION
+    // âœ… SELECT DATABASE FOR EACH COLLECTION
     let movieDatabase;
     
     switch(collection.slug) {
@@ -4334,7 +4330,7 @@ case 'best-family-movies-on-paramount-plus':
             movieDatabase = TIME_TRAVEL_MOVIES;
             break;
 case 'best-sci-fi-movies':
-            movieDatabase = SCI_FI_DATABASE; // ✅ FIXED: Use the correct imported variable name
+            movieDatabase = SCI_FI_DATABASE; // âœ… FIXED: Use the correct imported variable name
             break;
         case 'best-revenge-movies':
             movieDatabase = REVENGE_MOVIES;
@@ -4377,7 +4373,7 @@ case 'best-sci-fi-movies':
         ? movieDatabase
         : (movieDatabase ? Object.values(movieDatabase) : []);
 
-    // ✅ FIND MOVIES - search by imdbID
+    // âœ… FIND MOVIES - search by imdbID
  // ... inside getStaticProps ...
     const movies = collection.movies
         .map(imdbId => {
@@ -4392,10 +4388,10 @@ case 'best-sci-fi-movies':
                 Genre: movie.Genre || movie.genre || 'Thriller',
                 Runtime: movie.Runtime || movie.runtime || 120,
                 
-                // ✅ FIX 1: Pass the raw path so the component can use different sizes
+                // âœ… FIX 1: Pass the raw path so the component can use different sizes
                 poster_path: movie.poster_path || null,
 
-                // ✅ FIX 2: Force 'Poster' to use High-Res TMDB URL if available (w780 is crisp)
+                // âœ… FIX 2: Force 'Poster' to use High-Res TMDB URL if available (w780 is crisp)
                 Poster: movie.poster_path 
                     ? `https://image.tmdb.org/t/p/w780${movie.poster_path}` 
                     : (movie.Poster || movie.poster || ''),
