@@ -16,7 +16,8 @@ import MovieDetailsSection from '../../../components/MovieDetailsSection';
 import TMDBAttribution from '../../../components/TMDBAttribution';
 
 // ✅ IMPORT DATA INCLUDING FAQs
-import { 
+import { generateCleanMovieSchema } from '../../../utils/cleanMovieSchema';
+import {
   COMPLETE_MOVIE_DATABASE, 
   COMPLETE_MOVIE_DATA,
   SENSITIVE_TIMELINES,
@@ -201,115 +202,6 @@ const HuluThrillerBreadcrumb = ({ movie }) => (
     </motion.nav>
 );
 
-// ✅ JSON-LD SCHEMA GENERATOR - THRILLER EDITION
-const generateMovieSchema = (movie, movieData, currentMovieYear) => {
-  const data = COMPLETE_MOVIE_DATA[movie.tmdbId];
-  const sensitiveData = SENSITIVE_TIMELINES[movie.tmdbId];
-  const faqs = HULU_THRILLER_MOVIE_FAQS[movie.Title] || [];
-
-  // 1. CALCULATE THE PEAK MOMENT
-  let peakStats = "Peak info unavailable.";
-  if (data?.scenes && data.scenes.length > 0) {
-    const peakScene = data.scenes.reduce((prev, current) => 
-      (current.intensity > prev.intensity) ? current : prev
-    );
-    peakStats = `[PEAK TENSION] Maximum Suspense (${peakScene.intensity}/100) hits at minute ${peakScene.time}: "${peakScene.label}".`;
-  }
-
-  // 2. METRICS (Using Thriller Specific Terms)
-  // ✅ UPDATED: Suspense Intensity
-  const intensityStats = `
-    [FILMIWAY METRIC]
-    - Suspense Intensity: ${data?.suspenseIntensity || 0}/100
-  `;
-
-  const dnaStats = data?.dna 
-    ? `[GENRE DNA] ${Object.entries(data.dna).map(([genre, val]) => `${genre}: ${val}%`).join(', ')}`
-    : 'Thriller';
-
-  const contentWarnings = sensitiveData?.scenes 
-    ? `[CONTENT ADVISORY] ${sensitiveData.scenes.map(s => 
-        (s.start && s.end) 
-          ? `${s.type}: ${s.start}-${s.end} (${s.severity})` 
-          : `${s.type} (${s.severity})` 
-      ).join(' | ')}.`
-    : 'Standard thriller content.';
-  const faqText = faqs.length > 0
-    ? `[COMMON QUESTIONS] ${faqs.map(f => `Q: ${f.question} A: ${f.answer}`).join(' | ')}`
-    : '';
-
-  // 3. COMPILE FULL DESCRIPTION
-  const fullDescription = `
-    ${data?.synopsis || movie.description || "A gripping thriller film."}
-    
-    --- DETAILED ANALYSIS ---
-    ${peakStats} 
-    ${intensityStats}
-    ${dnaStats}
-    ${contentWarnings}
-    ${faqText}
-    
-    Ranking: #${movie.rank || 'N/A'} in Thriller Movies.
-    Production: Budget ${data?.budget || 'N/A'}, Box Office ${data?.boxOffice || 'N/A'}.
-  `.replace(/\s+/g, ' ').trim();
-
-  // 4. MAIN MOVIE SCHEMA
-  const movieSchema = {
-    "@context": "https://schema.org",
-    "@type": "Movie",
-    "name": movie.Title,
-    "description": fullDescription, 
-    "datePublished": currentMovieYear,
-    "image": movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : undefined,
-    "director": {
-      "@type": "Person",
-      "name": data?.director || "Unknown"
-    },
-    "actor": data?.cast?.map(actor => ({
-      "@type": "Person",
-      "name": actor
-    })) || [],
-    
-    "review": {
-      "@type": "Review",
-      "author": {
-        "@type": "Organization",
-        "name": "Filmiway"
-      },
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": data?.rating || 7.0, 
-        "bestRating": "10",
-        "worstRating": "1"
-      }
-    },
-
-    "genre": data?.dna ? Object.keys(data.dna) : ["Thriller"],
-    "keywords": "Thriller Movies Hulu, Suspense Movies Hulu, " + (data?.themes ? data.themes.join(", ") : ""),
-    "url": `https://filmiway.com/movies/best-thriller-movies-hulu/${movie.imdbID}`,
-    "author": {
-      "@type": "Organization",
-      "name": "Filmiway",
-      "url": "https://filmiway.com"
-    }
-  };
-
-  const faqSchema = faqs.length > 0 ? {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqs.map(f => ({
-      "@type": "Question",
-      "name": f.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": f.answer
-      }
-    }))
-  } : null;
-
-  return { movieSchema, faqSchema };
-};
-
 const HuluThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
     const router = useRouter();
     const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
@@ -337,10 +229,17 @@ const HuluThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
     const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Best Thriller Movies on Hulu | Filmiway'].join('');
     const cleanSEODesc = [movie.Title, ' (', currentMovieYear, ') - A gripping thriller streaming on Hulu. Ranked by suspense intensity and psychological impact.'].join('');
 
-    const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear);
-
     const collectionSlug = router.pathname.split('/')[2];
     const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
+
+    const { movieSchema, faqSchema } = generateCleanMovieSchema(
+        movie, 
+        movieData, 
+        currentMovieYear, 
+        collectionSlug, 
+        'Hulu',
+        COMPLETE_MOVIE_DATA[movie.tmdbId]
+    );
 
     return (
         <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
@@ -378,8 +277,7 @@ const HuluThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
 
             <SubtleFilmGrain />
             <div className="absolute inset-0"><CinematicBackground /></div>
-            
-            
+
             <div className="relative z-10 pt-10 sm:pt-12 lg:pt-16">
                 
                 {/* ✅ SEO FIX: HIDDEN H1 */}

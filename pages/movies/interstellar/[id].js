@@ -24,6 +24,7 @@ import {
 } from '../../../utils/interstellarMovieData';
 
 import { INTERSTELLAR_MOVIE_SLUGS } from '../../../utils/interstellarMovieRoutes';
+import { generateCleanMovieSchema } from '../../../utils/cleanMovieSchema';
 
 const COLORS = {
   accent: '#0891b2', accentLight: '#67e8f9', bgPrimary: '#000000ff', bgCard: 'rgba(2, 6, 23, 0.8)', // Cyan/Deep Blue for Space
@@ -202,115 +203,7 @@ const InterstellarBreadcrumb = ({ movie }) => (
     </motion.nav>
 );
 
-// ✅ JSON-LD SCHEMA GENERATOR - INTERSTELLAR EDITION
-const generateMovieSchema = (movie, movieData, currentMovieYear, collectionSlug) => {
-  const data = COMPLETE_MOVIE_DATA[movie.tmdbId];
-  const sensitiveData = SENSITIVE_TIMELINES[movie.tmdbId];
-  const faqs = INTERSTELLAR_MOVIE_FAQS[movie.Title] || [];
 
-  // 1. CALCULATE THE PEAK MOMENT
-  let peakStats = "Peak info unavailable.";
-  if (data?.scenes && data.scenes.length > 0) {
-    const peakScene = data.scenes.reduce((prev, current) => 
-      (current.intensity > prev.intensity) ? current : prev
-    );
-    peakStats = `[PEAK COSMIC SCALE] Maximum Intensity (${peakScene.intensity}/100) hits at minute ${peakScene.time}: "${peakScene.label}".`;
-  }
-
-  // 2. METRICS (Cosmic Specific)
-  // ✅ UPDATED: Cosmic Scale
-  const intensityStats = `
-    [FILMIWAY METRIC]
-    - Cosmic Scale Score: ${data?.cosmicScale || 0}/100
-    - Complexity Level: ${data?.complexityLevel || "HIGH"}
-  `;
-
-  const dnaStats = data?.dna 
-    ? `[GENRE DNA] ${Object.entries(data.dna).map(([genre, val]) => `${genre}: ${val}%`).join(', ')}`
-    : 'Sci-Fi';
-
-  const contentWarnings = sensitiveData?.scenes 
-    ? `[CONTENT ADVISORY] ${sensitiveData.scenes.map(s => 
-        (s.start && s.end) 
-          ? `${s.type}: ${s.start}-${s.end} (${s.severity})` 
-          : `${s.type} (${s.severity})` 
-      ).join(' | ')}.`
-    : 'Standard sci-fi content.';
-  const faqText = faqs.length > 0
-    ? `[COMMON QUESTIONS] ${faqs.map(f => `Q: ${f.question} A: ${f.answer}`).join(' | ')}`
-    : '';
-
-  // 3. COMPILE FULL DESCRIPTION
-  const fullDescription = `
-    ${data?.synopsis || movie.description || "A cosmic scale sci-fi film."}
-    
-    --- DETAILED ANALYSIS ---
-    ${peakStats} 
-    ${intensityStats}
-    ${dnaStats}
-    ${contentWarnings}
-    ${faqText}
-    
-    Ranking: #${movie.rank || 'N/A'} in Interstellar Collection.
-    Production: Budget ${data?.budget || 'N/A'}, Box Office ${data?.boxOffice || 'N/A'}.
-  `.replace(/\s+/g, ' ').trim();
-
-  // 4. MAIN MOVIE SCHEMA
-  const movieSchema = {
-    "@context": "https://schema.org",
-    "@type": "Movie",
-    "name": movie.Title,
-    "description": fullDescription, 
-    "datePublished": currentMovieYear,
-    "image": movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : undefined,
-    "director": {
-      "@type": "Person",
-      "name": data?.director || "Unknown"
-    },
-    "actor": data?.cast?.map(actor => ({
-      "@type": "Person",
-      "name": actor
-    })) || [],
-    
-    "review": {
-      "@type": "Review",
-      "author": {
-        "@type": "Organization",
-        "name": "Filmiway"
-      },
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": data?.rating || 7.0, 
-        "bestRating": "10",
-        "worstRating": "1"
-      }
-    },
-
-    "genre": data?.dna ? Object.keys(data.dna) : ["Sci-Fi"],
-    "keywords": "Interstellar Movies, Cosmic Sci-Fi, Hard Sci-Fi, " + (data?.themes ? data.themes.join(", ") : ""),
-    "url": `https://filmiway.com/movies/${collectionSlug}/${INTERSTELLAR_MOVIE_SLUGS[movie.imdbID] || movie.imdbID}`,
-    "author": {
-      "@type": "Organization",
-      "name": "Filmiway",
-      "url": "https://filmiway.com"
-    }
-  };
-
-  const faqSchema = faqs.length > 0 ? {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqs.map(f => ({
-      "@type": "Question",
-      "name": f.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": f.answer
-      }
-    }))
-  } : null;
-
-  return { movieSchema, faqSchema };
-};
 
 const InterstellarMoviePage = ({ movie, tmdbData: movieData }) => {
     const router = useRouter();
@@ -344,7 +237,14 @@ const InterstellarMoviePage = ({ movie, tmdbData: movieData }) => {
     const collectionSlug = router.pathname.split('/')[2];
     const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
 
-    const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear, collectionSlug);
+    const { movieSchema, faqSchema } = generateCleanMovieSchema(
+        movie, 
+        movieData, 
+        currentMovieYear, 
+        collectionSlug, 
+        null,
+        COMPLETE_MOVIE_DATA[movie.tmdbId]
+    );
 
     return (
         <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
@@ -438,13 +338,9 @@ export async function getStaticProps({ params }) {
         };
     } catch (error) {
         console.error('Error fetching TMDB data:', error);
-        return {
-            props: {
-                movie: COMPLETE_MOVIE_DATABASE.find((m) => m.imdbID === params.id) || null,
-                tmdbData: null,
-            },
-        };
+        return { notFound: true };  // ✅ FIXED
     }
 }
+
 
 export default InterstellarMoviePage;

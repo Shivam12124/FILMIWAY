@@ -15,7 +15,8 @@ import MovieDetailsSection from '../../../components/MovieDetailsSection';
 import TMDBAttribution from '../../../components/TMDBAttribution';
 
 // ✅ IMPORT DATA INCLUDING FAQs
-import { 
+import { generateCleanMovieSchema } from '../../../utils/cleanMovieSchema';
+import {
   COMPLETE_MOVIE_DATABASE, 
   COMPLETE_MOVIE_DATA,
   SENSITIVE_TIMELINES,
@@ -196,98 +197,7 @@ const EyesWideShutBreadcrumb = ({ movie }) => (
     </motion.nav>
 );
 
-// ✅ JSON-LD SCHEMA GENERATOR - SECRET WEAPON (Data hidden from UI, Visible to Bots)
-const generateMovieSchema = (movie, movieData, currentMovieYear, collectionSlug) => {
-  const data = COMPLETE_MOVIE_DATA[movie.tmdbId];
-  const sensitiveData = SENSITIVE_TIMELINES[movie.tmdbId];
-  const faqs = EYES_WIDE_SHUT_MOVIE_FAQS[movie.Title] || [];
 
-  const intensityStats = `
-    [FILMIWAY METRICS]
-    - Paranoia Level: ${data?.psychologicalIntensity || 0}/100
-    - Complexity Level: ${data?.complexityLevel || 'High'}
-  `;
-
-  const dnaStats = data?.dna 
-    ? `[GENRE DNA] ${Object.entries(data.dna).map(([genre, val]) => `${genre}: ${val}%`).join(', ')}`
-    : 'Psychological Thriller';
-
-  const contentWarnings = sensitiveData?.scenes 
-    ? `[CONTENT ADVISORY] Contains: ${sensitiveData.scenes.map(s => `${s.type} (${s.severity})`).join(', ')}.`
-    : 'No specific content warnings listed.';
-
-  const faqText = faqs.length > 0
-    ? `[COMMON QUESTIONS] ${faqs.map(f => `Q: ${f.question} A: ${f.answer}`).join(' | ')}`
-    : '';
-
-  const fullDescription = `
-    ${data?.synopsis || movie.description || "A psychologically intense film about secret societies."}
-    
-    --- DETAILED ANALYSIS ---
-    ${intensityStats}
-    ${dnaStats}
-    ${contentWarnings}
-    ${faqText}
-    
-    Ranking: #${movie.rank || 'N/A'} in Psychological Thrillers.
-    Production: Budget ${data?.budget || 'N/A'}, Box Office ${data?.boxOffice || 'N/A'}.
-  `.replace(/\s+/g, ' ').trim();
-
-  const movieSchema = {
-    "@context": "https://schema.org",
-    "@type": "Movie",
-    "name": movie.Title,
-    "description": fullDescription, 
-    "datePublished": currentMovieYear,
-    "image": movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : undefined,
-    "director": {
-      "@type": "Person",
-      "name": data?.director || "Unknown"
-    },
-    "actor": data?.cast?.map(actor => ({
-      "@type": "Person",
-      "name": actor
-    })) || [],
-    
-    "review": {
-      "@type": "Review",
-      "author": {
-        "@type": "Organization",
-        "name": "Filmiway"
-      },
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": data?.rating || 8.0, 
-        "bestRating": "10",
-        "worstRating": "1"
-      }
-    },
-
-    "genre": data?.dna ? Object.keys(data.dna) : ["Psychological Thriller", "Mystery"],
-    "keywords": "Eyes Wide Shut, Secret Society, Cults, Occult, Paranoia, " + (data?.themes ? data.themes.join(", ") : ""),
-    "url": `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`,
-    "author": {
-      "@type": "Organization",
-      "name": "Filmiway",
-      "url": "https://filmiway.com"
-    }
-  };
-
-  const faqSchema = faqs.length > 0 ? {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqs.map(f => ({
-      "@type": "Question",
-      "name": f.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": f.answer
-      }
-    }))
-  } : null;
-
-  return { movieSchema, faqSchema };
-};
 
 const EyesWideShutMoviePage = ({ movie, tmdbData: movieData }) => {
     const router = useRouter();
@@ -322,7 +232,14 @@ const EyesWideShutMoviePage = ({ movie, tmdbData: movieData }) => {
     const collectionSlug = router.pathname.split('/')[2];
     const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
 
-    const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear, collectionSlug);
+    const { movieSchema, faqSchema } = generateCleanMovieSchema(
+        movie, 
+        movieData, 
+        currentMovieYear, 
+        collectionSlug, 
+        null,
+        COMPLETE_MOVIE_DATA[movie.tmdbId]
+    );
 
     return (
         <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>

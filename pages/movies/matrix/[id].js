@@ -15,7 +15,8 @@ import MovieDetailsSection from '../../../components/MovieDetailsSection';
 import TMDBAttribution from '../../../components/TMDBAttribution';
 
 // ✅ IMPORT DATA INCLUDING FAQs
-import { 
+import { generateCleanMovieSchema } from '../../../utils/cleanMovieSchema';
+import {
   COMPLETE_MOVIE_DATABASE, 
   COMPLETE_MOVIE_DATA,
   SENSITIVE_TIMELINES,
@@ -203,107 +204,7 @@ const MatrixBreadcrumb = ({ movie }) => (
     </motion.nav>
 );
 
-// ✅ JSON-LD SCHEMA GENERATOR - MATRIX EDITION
-const generateMovieSchema = (movie, movieData, currentMovieYear, collectionSlug) => {
-  const data = COMPLETE_MOVIE_DATA[movie.tmdbId];
-  const sensitiveData = SENSITIVE_TIMELINES[movie.tmdbId];
-  const faqs = MATRIX_MOVIE_FAQS[movie.Title] || [];
 
-  let peakStats = "Peak info unavailable.";
-  if (data?.scenes && data.scenes.length > 0) {
-    const peakScene = data.scenes.reduce((prev, current) => 
-      (current.intensity > prev.intensity) ? current : prev
-    );
-    peakStats = `[PEAK MOMENT] Maximum Intensity (${peakScene.intensity}/100) hits at minute ${peakScene.time}: "${peakScene.label}".`;
-  }
-
-  const intensityStats = `
-    [FILMIWAY METRICS]
-    - Sci-Fi Complexity: ${data?.cyberComplexity || 0}/100
-    - Mind Bending Score: ${data?.philosophicalDepth || 0}/100
-  `;
-
-  const dnaStats = data?.dna 
-    ? `[GENRE DNA] ${Object.entries(data.dna).map(([genre, val]) => `${genre}: ${val}%`).join(', ')}`
-    : 'Cyberpunk Sci-Fi';
-
-  const contentWarnings = sensitiveData?.scenes 
-    ? `[CONTENT ADVISORY] ${sensitiveData.scenes.map(s => 
-        (s.start && s.end) 
-          ? `${s.type}: ${s.start}-${s.end} (${s.severity})` 
-          : `${s.type} (${s.severity})` 
-      ).join(' | ')}.`
-    : 'No specific content warnings listed.';
-    
-  const faqText = faqs.length > 0
-    ? `[COMMON QUESTIONS] ${faqs.map(f => `Q: ${f.question} A: ${f.answer}`).join(' | ')}`
-    : '';
-
-  const fullDescription = `
-    ${data?.synopsis || movie.description || "A groundbreaking sci-fi film."}
-    --- DETAILED ANALYSIS ---
-    ${peakStats} 
-    ${intensityStats}
-    ${dnaStats}
-    ${contentWarnings}
-    ${faqText}
-    Ranking: #${movie.rank || 'N/A'} in Cyberpunk Cinema.
-    Production: Budget ${data?.budget || 'N/A'}, Box Office ${data?.boxOffice || 'N/A'}.
-  `.replace(/\s+/g, ' ').trim();
-
-  const movieSchema = {
-    "@context": "https://schema.org",
-    "@type": "Movie",
-    "name": movie.Title,
-    "description": fullDescription, 
-    "datePublished": currentMovieYear,
-    "image": movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : undefined,
-    "director": {
-      "@type": "Person",
-      "name": data?.director || "Unknown"
-    },
-    "actor": data?.cast?.map(actor => ({
-      "@type": "Person",
-      "name": actor
-    })) || [],
-    "review": {
-      "@type": "Review",
-      "author": {
-        "@type": "Organization",
-        "name": "Filmiway"
-      },
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": data?.rating || 8.0, 
-        "bestRating": "10",
-        "worstRating": "1"
-      }
-    },
-    "genre": data?.dna ? Object.keys(data.dna) : ["Sci-Fi", "Action", "Thriller"],
-    "keywords": "Matrix, Cyberpunk, AI, Simulation, " + (data?.themes ? data.themes.join(", ") : ""),
-    "url": `https://filmiway.com/movies/matrix/${movie.imdbID}`,
-    "author": {
-      "@type": "Organization",
-      "name": "Filmiway",
-      "url": "https://filmiway.com"
-    }
-  };
-
-  const faqSchema = faqs.length > 0 ? {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqs.map(f => ({
-      "@type": "Question",
-      "name": f.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": f.answer
-      }
-    }))
-  } : null;
-
-  return { movieSchema, faqSchema };
-};
 
 const MatrixMoviePage = ({ movie, tmdbData: movieData }) => {
     const router = useRouter();
@@ -338,7 +239,14 @@ const MatrixMoviePage = ({ movie, tmdbData: movieData }) => {
     const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
 
 
-    const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear, collectionSlug);
+    const { movieSchema, faqSchema } = generateCleanMovieSchema(
+        movie, 
+        movieData, 
+        currentMovieYear, 
+        collectionSlug, 
+        null,
+        COMPLETE_MOVIE_DATA[movie.tmdbId]
+    );
 
 
     return (

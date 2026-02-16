@@ -17,7 +17,8 @@ import TMDBAttribution from '../../../components/TMDBAttribution';
 // ✅ IMPORT SCI-FI DATA
 // ✅ IMPORT SCI-FI DATA (Fixed Imports)
 // ✅ IMPORT SCI-FI DATA (Fixed Imports)
-import { 
+import { generateCleanMovieSchema } from '../../../utils/cleanMovieSchema';
+import {
   SCI_FI_MOVIES as COMPLETE_MOVIE_DATABASE, // ✅ FIXED: Import the Array (SCI_FI_MOVIES), not the Object
   COMPLETE_SCI_FI_DETAILS as COMPLETE_MOVIE_DATA, 
   SENSITIVE_TIMELINES,
@@ -195,91 +196,7 @@ const SciFiBreadcrumb = ({ movie }) => (
     </motion.nav>
 );
 
-// ✅ SCHEMA GENERATOR (SCI-FI EDITION)
-const generateMovieSchema = (movie, movieData, currentMovieYear, collectionSlug) => {
-  const data = COMPLETE_MOVIE_DATA[movie.tmdbId];
-  const sensitiveData = SENSITIVE_TIMELINES[movie.tmdbId];
-  const faqs = SCI_FI_MOVIE_FAQS[movie.Title] || [];
 
-  let peakStats = "Peak info unavailable.";
-  if (data?.scenes && data.scenes.length > 0) {
-    const peakScene = data.scenes.reduce((prev, current) => 
-      (current.intensity > prev.intensity) ? current : prev
-    );
-    peakStats = `[PEAK MOMENT] Maximum Intensity (${peakScene.intensity}/100) hits at minute ${peakScene.time}: "${peakScene.label}".`;
-  }
-
-  const intensityStats = `
-    [FILMIWAY METRICS]
-    - Sci-Fi Complexity: ${data?.sciFiComplexity || 0}/100
-    - Visual Spectacle: ${data?.visualSpectacle || 0}/100
-    - Philosophical Depth: ${data?.philosophicalDepth || 0}/100
-  `;
-
-  const dnaStats = data?.dna 
-    ? `[GENRE DNA] ${Object.entries(data.dna).map(([genre, val]) => `${genre}: ${val}%`).join(', ')}`
-    : 'Sci-Fi Thriller';
-
-  const contentWarnings = sensitiveData?.scenes 
-    ? `[CONTENT ADVISORY] ${sensitiveData.scenes.map(s => 
-        (s.start && s.end) 
-          ? `${s.type}: ${s.start}-${s.end} (${s.severity})` 
-          : `${s.type} (${s.severity})`
-      ).join(' | ')}.`
-    : 'No specific content warnings listed.';
-
-  const faqText = faqs.length > 0
-    ? `[COMMON QUESTIONS] ${faqs.map(f => `Q: ${f.question} A: ${f.answer}`).join(' | ')}`
-    : '';
-
-  const fullDescription = `
-    ${data?.synopsis || movie.description || "A masterpiece of science fiction."}
-    Includes exact timestamps for sensitive content, sci-fi complexity scores, and philosophical analysis.
-    --- DETAILED ANALYSIS ---
-    ${peakStats}
-    ${intensityStats}
-    ${dnaStats}
-    ${contentWarnings}
-    ${faqText}
-    Ranking: #${movie.rank || 'N/A'} in Best Sci-Fi Movies.
-    Production: Budget ${data?.budget || 'N/A'}, Box Office ${data?.boxOffice || 'N/A'}.
-  `.replace(/\s+/g, ' ').trim();
-
-  const movieSchema = {
-    "@context": "https://schema.org",
-    "@type": "Movie",
-    "name": movie.Title,
-    "description": fullDescription, 
-    "datePublished": currentMovieYear,
-    "image": movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : undefined,
-    "director": { "@type": "Person", "name": data?.director || "Unknown" },
-    "actor": data?.cast?.map(actor => ({ "@type": "Person", "name": actor })) || [],
-    "review": {
-      "@type": "Review",
-      "author": { "@type": "Organization", "name": "Filmiway" },
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": data?.rating || 8.0, "bestRating": "10", "worstRating": "1"
-      }
-    },
-    "genre": data?.dna ? Object.keys(data.dna) : ["Sci-Fi", "Thriller"],
-    "keywords": "Sci-Fi Movie, Artificial Intelligence, Space, " + (data?.themes ? data.themes.join(", ") : ""),
-    "url": `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`,
-    "author": { "@type": "Organization", "name": "Filmiway", "url": "https://filmiway.com" }
-  };
-
-  const faqSchema = faqs.length > 0 ? {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqs.map(f => ({
-      "@type": "Question",
-      "name": f.question,
-      "acceptedAnswer": { "@type": "Answer", "text": f.answer }
-    }))
-  } : null;
-
-  return { movieSchema, faqSchema };
-};
 
 const SciFiMoviePage = ({ movie, tmdbData: movieData }) => {
     const router = useRouter();
@@ -310,7 +227,14 @@ const SciFiMoviePage = ({ movie, tmdbData: movieData }) => {
     const collectionSlug = router.pathname.split('/')[2];
     const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
 
-    const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear, collectionSlug);
+    const { movieSchema, faqSchema } = generateCleanMovieSchema(
+        movie, 
+        movieData, 
+        currentMovieYear, 
+        collectionSlug, 
+        null,
+        COMPLETE_MOVIE_DATA[movie.tmdbId]
+    );
 
     return (
         <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>

@@ -15,7 +15,8 @@ import MovieDetailsSection from '../../../components/MovieDetailsSection';
 import TMDBAttribution from '../../../components/TMDBAttribution';
 
 // ✅ IMPORT DATA
-import { 
+import { generateCleanMovieSchema } from '../../../utils/cleanMovieSchema';
+import {
   COMPLETE_MOVIE_DATABASE, 
   COMPLETE_MOVIE_DATA,
   SENSITIVE_TIMELINES 
@@ -209,39 +210,7 @@ const ShutterIslandBreadcrumb = ({ movie }) => (
     </motion.nav>
 );
 
-// ✅ GENERATE SCHEMA
-const generateMovieSchema = (movie, movieData, currentMovieYear, collectionSlug) => {
-  const data = COMPLETE_MOVIE_DATA?.[movie.tmdbId] || {};
-  const sensitiveData = SENSITIVE_TIMELINES?.[movie.tmdbId] || {};
-  const faqs = SHUTTER_ISLAND_COLLECTION_FAQS?.[movie.Title] || [];
 
-  const fullDescription = `
-    ${data?.synopsis || movie.description || "A compelling psychological thriller."}
-    
-    --- ANALYSIS ---
-    [FILMIWAY METRICS] Mind-Bending Intensity: ${data?.mindBendingIndex || 88}/100.
-    [CONTENT ADVISORY] ${sensitiveData?.scenes ? sensitiveData.scenes.map(s => `${s.type} (${s.severity})`).join(', ') : 'None listed'}.
-  `.replace(/\s+/g, ' ').trim();
-
-  const movieSchema = {
-    "@context": "https://schema.org",
-    "@type": "Movie",
-    "name": movie.Title,
-    "description": fullDescription, 
-    "datePublished": currentMovieYear,
-    "image": movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : undefined,
-    "director": { "@type": "Person", "name": MOVIE_DATA_BY_TITLE[movie.Title]?.director || "Unknown" },
-    "url": `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`,
-    "author": { "@type": "Organization", "name": "Filmiway", "url": "https://filmiway.com" }
-  };
-
-  const faqSchema = faqs.length > 0 ? {
-    "@context": "https://schema.org", "@type": "FAQPage",
-    "mainEntity": faqs.map(f => ({ "@type": "Question", "name": f.question, "acceptedAnswer": { "@type": "Answer", "text": f.answer } }))
-  } : null;
-
-  return { movieSchema, faqSchema };
-};
 
 const ShutterIslandMoviePage = ({ movie, tmdbData }) => {
     const router = useRouter();
@@ -265,7 +234,14 @@ const ShutterIslandMoviePage = ({ movie, tmdbData }) => {
     const collectionSlug = router.pathname.split('/')[2];
     const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
 
-    const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear, collectionSlug);
+    const { movieSchema, faqSchema } = generateCleanMovieSchema(
+        movie, 
+        movieData, 
+        currentMovieYear, 
+        collectionSlug, 
+        null,
+        COMPLETE_MOVIE_DATA[movie.tmdbId]
+    );
 
     // ✅ SEO FIX: Robust Strings
     const movieTitle = movie?.Title || 'Untitled Movie';

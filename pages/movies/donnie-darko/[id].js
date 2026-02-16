@@ -7,6 +7,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Play, X, User, Twitter, Hash, Send, Film, Brain } from 'lucide-react';
 import InternalCollectionsSection from '../../../components/InternalCollectionsSection';
@@ -16,7 +17,8 @@ import TMDBAttribution from '../../../components/TMDBAttribution';
 
 
 // ✅ IMPORT DONNIE DARKO DATA
-import { 
+import { generateCleanMovieSchema } from '../../../utils/cleanMovieSchema';
+import {
   COMPLETE_MOVIE_DATABASE, 
   COMPLETE_MOVIE_DATA,
   SENSITIVE_TIMELINES,
@@ -195,98 +197,11 @@ const MindbendBreadcrumb = ({ movie }) => (
 );
 
 
-// ✅ SCHEMA GENERATOR (DONNIE DARKO EDITION)
-const generateMovieSchema = (movie, movieData, currentMovieYear) => {
-  const data = COMPLETE_MOVIE_DATA[movie.tmdbId];
-  const sensitiveData = SENSITIVE_TIMELINES[movie.tmdbId];
-  const faqs = DONNIE_DARKO_MOVIE_FAQS[movie.Title] || [];
 
-
-  let peakStats = "Peak info unavailable.";
-  if (data?.scenes && data.scenes.length > 0) {
-    const peakScene = data.scenes.reduce((prev, current) => 
-      (current.intensity > prev.intensity) ? current : prev
-    );
-    peakStats = `[PEAK MOMENT] Maximum Intensity (${peakScene.intensity}/100) hits at minute ${peakScene.time}: "${peakScene.label}".`;
-  }
-
-
-  const intensityStats = `
-    [FILMIWAY METRICS]
-    - Mind-Bend Score: ${data?.mindBendScore || 0}/100
-    - Psychological Intensity: ${data?.psychologicalIntensity || 0}/100
-  `;
-
-
-  const dnaStats = data?.dna 
-    ? `[GENRE DNA] ${Object.entries(data.dna).map(([genre, val]) => `${genre}: ${val}%`).join(', ')}`
-    : 'Psychological Thriller';
-
-
-  const contentWarnings = sensitiveData?.scenes 
-    ? `[CONTENT ADVISORY] ${sensitiveData.scenes.map(s => 
-        (s.start && s.end) 
-          ? `${s.type}: ${s.start}-${s.end} (${s.severity})` 
-          : `${s.type} (${s.severity})`
-      ).join(' | ')}.`
-    : 'No specific content warnings listed.';
-
-
-  const faqText = faqs.length > 0
-    ? `[COMMON QUESTIONS] ${faqs.map(f => `Q: ${f.question} A: ${f.answer}`).join(' | ')}`
-    : '';
-
-
-  const fullDescription = `
-    ${data?.synopsis || movie.description || "A mind-bending psychological thriller."}
-    --- DETAILED ANALYSIS ---
-    ${peakStats}
-    ${intensityStats}
-    ${dnaStats}
-    ${contentWarnings}
-    ${faqText}
-    Ranking: #${movie.rank || 'N/A'} in Movies Like Donnie Darko.
-    Production: Budget ${data?.budget || 'N/A'}, Box Office ${data?.boxOffice || 'N/A'}.
-  `.replace(/\s+/g, ' ').trim();
-
-
-  const movieSchema = {
-    "@context": "https://schema.org",
-    "@type": "Movie",
-    "name": movie.Title,
-    "description": fullDescription, 
-    "datePublished": currentMovieYear,
-    "image": movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : undefined,
-    "director": { "@type": "Person", "name": data?.director || "Unknown" },
-    "actor": data?.cast?.map(actor => ({ "@type": "Person", "name": actor })) || [],
-    "review": {
-      "@type": "Review",
-      "author": { "@type": "Organization", "name": "Filmiway" },
-      "reviewRating": { "@type": "Rating", "ratingValue": data?.rating || 8.0, "bestRating": "10", "worstRating": "1" }
-    },
-    "genre": data?.dna ? Object.keys(data.dna) : ["Sci-Fi", "Thriller"],
-    "keywords": "Donnie Darko, Time Travel, Alternate Reality, " + (data?.themes ? data.themes.join(", ") : ""),
-    "url": `https://filmiway.com/movies/donnie-darko/${movie.imdbID}`,
-    "author": { "@type": "Organization", "name": "Filmiway", "url": "https://filmiway.com" }
-  };
-
-
-  const faqSchema = faqs.length > 0 ? {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqs.map(f => ({
-      "@type": "Question",
-      "name": f.question,
-      "acceptedAnswer": { "@type": "Answer", "text": f.answer }
-    }))
-  } : null;
-
-
-  return { movieSchema, faqSchema };
-};
 
 
 const DonnieDarkoMoviePage = ({ movie, tmdbData: movieData }) => {
+    const router = useRouter();
     const richData = COMPLETE_MOVIE_DATA[movie.tmdbId]; 
     const [isMobile, setIsMobile] = useState(false);
 
@@ -315,8 +230,17 @@ const DonnieDarkoMoviePage = ({ movie, tmdbData: movieData }) => {
     const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Mind-Bending Film | Filmiway'].join('');
     const cleanSEODesc = [movie.Title, ' - A mind-bending thriller. Analysis & where to stream.'].join('');
 
+    const collectionSlug = router.pathname.split('/')[2];
+    const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
 
-    const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear);
+    const { movieSchema, faqSchema } = generateCleanMovieSchema(
+        movie, 
+        movieData, 
+        currentMovieYear, 
+        collectionSlug, 
+        null,
+        COMPLETE_MOVIE_DATA[movie.tmdbId]
+    );
 
 
     return (
@@ -325,7 +249,7 @@ const DonnieDarkoMoviePage = ({ movie, tmdbData: movieData }) => {
                 {/* ✅ HYDRATION BUG RESOLVED: No more HTML comments in title */}
                 <title>{cleanSEOTitle}</title>
                 <meta name="description" content={cleanSEODesc} />
-                <link rel="canonical" href={`https://filmiway.com/movies/donnie-darko/${movie.imdbID}`} />
+                <link rel="canonical" href={canonicalUrl} />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                 <meta name="robots" content="index, follow" />
                 

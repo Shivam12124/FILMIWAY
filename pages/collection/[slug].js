@@ -1,4 +1,4 @@
-// pages/collection/[slug].js - FIXED BOTTOM GAP âœ…
+// pages/collection/[slug].js - FIXED BOTTOM GAP 
 
 import React, { useState, useEffect, useCallback } from 'react';
 import Head from 'next/head';

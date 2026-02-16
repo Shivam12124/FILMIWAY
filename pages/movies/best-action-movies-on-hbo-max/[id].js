@@ -6,6 +6,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, Play, X, User, Twitter, Hash, Send, Film, Zap, Flame, Theater } from 'lucide-react';
 import InternalCollectionsSection from '../../../components/InternalCollectionsSection';
@@ -14,7 +15,8 @@ import MovieDetailsSection from '../../../components/MovieDetailsSection';
 import TMDBAttribution from '../../../components/TMDBAttribution';
 
 // ✅ IMPORT DATA
-import { 
+import { generateCleanMovieSchema } from '../../../utils/cleanMovieSchema';
+import {
   COMPLETE_MOVIE_DATABASE, 
   COMPLETE_MOVIE_DATA,
   SENSITIVE_TIMELINES,
@@ -187,52 +189,10 @@ const HboActionBreadcrumb = ({ movie }) => (
     </motion.nav>
 );
 
-// ✅ JSON-LD SCHEMA GENERATOR - FIXED & OPTIMIZED
-const generateMovieSchema = (movie, movieData, currentMovieYear) => {
-  const data = COMPLETE_MOVIE_DATA[movie.tmdbId];
-  const faqs = HBO_ACTION_MOVIE_FAQS[movie.Title] || [];
 
-  // ✅ FIX: Higher resolution image for Schema (w780)
-  const schemaImage = movieData?.poster_path 
-    ? `https://image.tmdb.org/t/p/w780${movieData.poster_path}` 
-    : undefined;
-
-  const fullDescription = `${data?.synopsis || movie.description || "An epic action film."} Ranked #${movie.rank || 'N/A'} in Best Action Movies on HBO Max. Featuring epic scale and high-intensity combat.`;
-
-  const movieSchema = {
-    "@context": "https://schema.org",
-    "@type": "Movie",
-    "name": movie.Title,
-    "description": fullDescription, 
-    "datePublished": currentMovieYear,
-    "image": schemaImage, // ✅ High Res Image
-    "director": { "@type": "Person", "name": data?.director || "Unknown" },
-    "actor": data?.cast?.map(actor => ({ "@type": "Person", "name": actor })) || [],
-    "review": {
-      "@type": "Review",
-      "author": { "@type": "Organization", "name": "Filmiway" },
-      "reviewRating": { "@type": "Rating", "ratingValue": data?.rating || 7.5, "bestRating": "10", "worstRating": "1" }
-    },
-    "genre": data?.dna ? Object.keys(data.dna) : ["Action", "Epic"],
-    // ✅ URL MATCHES FOLDER STRUCTURE
-    "url": `https://filmiway.com/movies/best-action-movies-on-hbo-max/${movie.imdbID}`, 
-    "author": { "@type": "Organization", "name": "Filmiway", "url": "https://filmiway.com" }
-  };
-
-  const faqSchema = faqs.length > 0 ? {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqs.map(f => ({
-      "@type": "Question",
-      "name": f.question,
-      "acceptedAnswer": { "@type": "Answer", "text": f.answer }
-    }))
-  } : null;
-
-  return { movieSchema, faqSchema };
-};
 
 const HboActionMoviePage = ({ movie, tmdbData: movieData, sensitiveData }) => {
+    const router = useRouter();
     const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
     const richData = COMPLETE_MOVIE_DATA[movie.tmdbId]; 
     const [isMobile, setIsMobile] = useState(false);
@@ -258,7 +218,17 @@ const HboActionMoviePage = ({ movie, tmdbData: movieData, sensitiveData }) => {
     const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Best Action Movies on HBO Max | Filmiway'].join('');
     const cleanSEODesc = `${movie.Title} (${currentMovieYear}) is one of the best action movies on HBO Max, ranked by Filmiway for epic scale, action intensity, and cinematic impact.`;
 
-    const { movieSchema, faqSchema } = generateMovieSchema(movie, movieData, currentMovieYear);
+    const collectionSlug = router.pathname.split('/')[2];
+    const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
+
+    const { movieSchema, faqSchema } = generateCleanMovieSchema(
+        movie, 
+        movieData, 
+        currentMovieYear, 
+        collectionSlug, 
+        'HBO Max',
+        COMPLETE_MOVIE_DATA[movie.tmdbId]
+    );
 
     return (
         <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
