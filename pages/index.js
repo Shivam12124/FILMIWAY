@@ -1,19 +1,21 @@
-// pages/index.js - PERFORMANCE OPTIMIZED FOR MOBILE 🚀
-import React, { useState, useEffect, useRef, useCallback, memo } from 'react';
+// pages/index.js - MOBILE PERFORMANCE FIX 🚀
+import React, { useState, useEffect, useRef, useCallback, memo, lazy, Suspense } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { 
-  Play, Menu, X, ArrowRight, 
+  Menu, X, ArrowRight, 
   ChevronLeft, ChevronRight, Construction, Sparkles, 
   Compass, Globe, Layers, Film, Tv, Brain, Skull, Star,
   Feather, Mountain
 } from 'lucide-react';
 
 import { COLLECTIONS } from '../data/collections';
-import PlatformSelector from '../components/PlatformSelector';
+
+// ⚡ LAZY LOAD PlatformSelector - Not needed for LCP
+const PlatformSelector = lazy(() => import('../components/PlatformSelector'));
 
 const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p';
 
@@ -66,10 +68,10 @@ const fetchUniquePosterForCollection = async (movieIds, sectionName, collectionS
   return null;
 };
 
-// ⚡ OPTIMIZED CARD - Reduced animation complexity for mobile
+// ⚡ OPTIMIZED CARD
 const CollectionCard = memo(({ collection, index, isMobile, onClick, isPrioritySection }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
-  const shouldPrioritize = isPrioritySection && index < 4;
+  const shouldPrioritize = isPrioritySection && index < 3; // Reduced to 3
 
   const Wrapper = isMobile ? 'div' : motion.div;
   const motionProps = isMobile ? {} : {
@@ -93,19 +95,20 @@ const CollectionCard = memo(({ collection, index, isMobile, onClick, isPriorityS
             fill
             priority={shouldPrioritize}
             {...(shouldPrioritize ? { fetchPriority: "high" } : {})}
-            sizes="(max-width: 640px) 150px, (max-width: 1024px) 200px, 150px"
-            className={`object-cover transition-opacity duration-500 ${
+            sizes="(max-width: 640px) 140px, (max-width: 1024px) 200px, 150px"
+            className={`object-cover transition-opacity duration-300 ${
               imageLoaded ? 'opacity-100' : 'opacity-0'
             }`}
             onLoad={() => setImageLoaded(true)}
             draggable={false}
+            quality={85}
           />
         </div>
         
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent opacity-90 z-10" />
 
-        <div className="absolute top-2 right-2 z-20 flex flex-col gap-2">
-          <div className="bg-black/70 backdrop-blur-xl px-2 py-1 rounded-md border border-yellow-400/20 shadow-lg">
+        <div className="absolute top-2 right-2 z-20">
+          <div className="bg-black/70 backdrop-blur-xl px-2 py-1 rounded-md border border-yellow-400/20">
             <div className="flex items-center gap-1">
               <Film className="w-3 h-3 text-yellow-400" />
               <span className="text-[10px] font-bold text-white">{collection.item_count}</span>
@@ -117,7 +120,7 @@ const CollectionCard = memo(({ collection, index, isMobile, onClick, isPriorityS
           <h3 className="text-white font-semibold text-xs sm:text-base md:text-lg leading-tight mb-1 sm:mb-2 line-clamp-2 group-hover:text-yellow-300 transition-colors duration-300">
             {collection.title}
           </h3>
-          <div className="flex items-center gap-2 text-[10px] sm:text-xs text-gray-300 mb-1 sm:mb-3">
+          <div className="flex items-center gap-2 text-[10px] sm:text-xs text-gray-300">
             <span className="flex items-center gap-1 bg-white/5 backdrop-blur-sm px-1.5 py-0.5 rounded">
               <Layers className="w-2.5 h-2.5 text-yellow-400" />
               <span className="font-medium">Collection</span>
@@ -131,16 +134,19 @@ const CollectionCard = memo(({ collection, index, isMobile, onClick, isPriorityS
 
 CollectionCard.displayName = 'CollectionCard';
 
-// ⚡ HERO SECTION - Simplified for LCP
+// ⚡ ULTRA SIMPLIFIED HERO - LCP OPTIMIZED
 const HeroSection = memo(() => {
-  const [mounted, setMounted] = useState(false);
+  const [showPlatformSelector, setShowPlatformSelector] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    // Delay platform selector load
+    const timer = setTimeout(() => setShowPlatformSelector(true), 1000);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
     <section className="relative min-h-[85vh] sm:min-h-screen flex items-center justify-center bg-black overflow-hidden select-none pt-16 sm:pt-20">
+      {/* Simplified background - no animations on mobile */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
           backgroundImage: `radial-gradient(circle at 2px 2px, white 1px, transparent 0)`,
@@ -148,11 +154,8 @@ const HeroSection = memo(() => {
         }} />
       </div>
 
-      <div className="hidden sm:block absolute top-20 left-5 w-48 h-48 sm:w-96 sm:h-96 bg-yellow-400/10 rounded-full blur-3xl animate-pulse"></div>
-      <div className="hidden sm:block absolute bottom-20 right-5 w-40 h-40 sm:w-80 sm:h-80 bg-yellow-400/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-
       <div className="relative z-10 container mx-auto px-4 text-center">
-        <div className={`max-w-6xl mx-auto transition-opacity duration-800 ${mounted ? 'opacity-100' : 'opacity-0'}`}>
+        <div className="max-w-6xl mx-auto">
           <div className="mb-4">
             <div className="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-400/10 via-amber-400/10 to-yellow-400/10 border border-yellow-400/20 rounded-full px-4 py-1.5 text-yellow-400 text-[10px] sm:text-sm font-medium">
               <Globe className={ICON_SIZES.xs} />
@@ -169,8 +172,7 @@ const HeroSection = memo(() => {
           </h1>
 
           <p className="text-sm sm:text-xl text-gray-400 mb-8 font-light leading-relaxed max-w-2xl mx-auto px-4">
-            Expertly curated collections. 
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-amber-300 font-normal"> Where every film finds its way.</span>
+            Expertly curated collections
           </p>
 
           <div className="flex justify-center mb-10">
@@ -182,9 +184,14 @@ const HeroSection = memo(() => {
             </Link>
           </div>
 
-          <div className="mb-8">
-            <PlatformSelector />
-          </div>
+          {/* ⚡ LAZY LOADED */}
+          {showPlatformSelector && (
+            <Suspense fallback={<div className="h-12" />}>
+              <div className="mb-8">
+                <PlatformSelector />
+              </div>
+            </Suspense>
+          )}
         </div>
       </div>
     </section>
@@ -225,7 +232,7 @@ const ProfessionalCarousel = memo(({ collections, sectionRef, isPrioritySection 
   const handlePointerDown = useCallback((e) => {
     if (isMobile) return; 
     dragRef.current.isDragging = true;
-    dragRef.current.haDragged = false;
+    dragRef.current.hasDragged = false;
     dragRef.current.startX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
     dragRef.current.offset = 0;
   }, [isMobile]);
@@ -344,7 +351,7 @@ const MovieSection = memo(({ title, movies, icon: Icon, description, sectionRef,
     whileInView: { opacity: 1, y: 0 },
     viewport: { once: true },
     transition: { duration: 0.6 }
-  } : { className: "mb-4 sm:mb-8" };
+  } : {};
 
   return (
     <section className="mb-10 sm:mb-20 select-none border-b border-gray-800/30 pb-10 sm:pb-16 last:border-0">
@@ -404,30 +411,13 @@ const FilmiwayHomepage = ({ huluCollections, mindBendingCollections, thrillerCol
         <link rel="canonical" href="https://filmiway.com/" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
         
-        {/* ⚡ CRITICAL PERFORMANCE OPTIMIZATION */}
+        {/* ⚡ PERFORMANCE - Preconnect only */}
         <link rel="preconnect" href="https://image.tmdb.org" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://www.themoviedb.org" />
-        
-        {/* ⚡ INLINE CRITICAL FONT - Eliminates render blocking */}
-        <link 
-          rel="preload" 
-          href="https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7.woff2" 
-          as="font" 
-          type="font/woff2" 
-          crossOrigin="anonymous" 
-        />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link 
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" 
-          rel="stylesheet"
-          media="print"
-          onLoad="this.media='all'"
-        />
       </Head>
       
       <div className="min-h-screen bg-black text-white font-sans overflow-x-hidden">
-        <motion.nav className="fixed top-0 w-full z-50 bg-black/95 backdrop-blur-md select-none border-b border-gray-800/50" initial={false} animate={false}>
+        <nav className="fixed top-0 w-full z-50 bg-black/95 backdrop-blur-md select-none border-b border-gray-800/50">
           <div className="container mx-auto px-4">
             <div className="flex items-center justify-between h-14 sm:h-20">
               <Link href="/" className="flex items-center">
@@ -476,7 +466,7 @@ const FilmiwayHomepage = ({ huluCollections, mindBendingCollections, thrillerCol
               )}
             </AnimatePresence>
           </div>
-        </motion.nav>
+        </nav>
 
         <HeroSection />
         
@@ -515,7 +505,7 @@ const FilmiwayHomepage = ({ huluCollections, mindBendingCollections, thrillerCol
             viewAllLink="/streaming/hbo-max"
           />
           <MovieSection 
-            title=" Best of Paramount+" 
+            title="Best of Paramount+" 
             description="The peak of entertainment: Top Gun, Interstellar, and more." 
             movies={paramountCollections} 
             icon={Mountain}
@@ -523,7 +513,7 @@ const FilmiwayHomepage = ({ huluCollections, mindBendingCollections, thrillerCol
             viewAllLink="/streaming/paramount-plus"
           />
           <MovieSection 
-            title=" Best of Peacock" 
+            title="Best of Peacock" 
             description="NBCUniversal's finest: The Office, horrors, and blockbusters." 
             movies={peacockCollections} 
             icon={Feather}
