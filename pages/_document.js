@@ -1,15 +1,27 @@
-import { Html, Head, Main, NextScript } from 'next/document'
+import { Html, Head, Main, NextScript } from 'next/document';
 
 export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        {/* Preload Critical Resources */}
-        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-        <link rel="dns-prefetch" href="//fonts.gstatic.com" />
-        <link rel="dns-prefetch" href="//m.media-amazon.com" />
+        {/* ⚡ OPTIMIZED: Preconnect */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://image.tmdb.org" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://m.media-amazon.com" />
 
-        {/* Global CSS - moved out of styled-jsx */}
+        {/* ⚡ OPTIMIZED: Non-blocking fonts */}
+        <link 
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" 
+          rel="stylesheet" 
+          media="print" 
+          onLoad="this.media='all'"
+        />
+        <noscript>
+          <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+        </noscript>
+
+        {/* Global CSS */}
         <style>{`
           body {
             margin: 0;
@@ -32,7 +44,7 @@ export default function Document() {
           }
         `}</style>
 
-        {/* Structured Data JSON-LD */}
+        {/* ✅ SIMPLIFIED: Just site-level schema */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -41,7 +53,7 @@ export default function Document() {
               '@type': 'WebSite',
               name: 'Filmiway',
               url: 'https://filmiway.com',
-              description: 'Discover curated movie collections with expert analysis and community reviews',
+              description: 'Discover curated movie collections with expert analysis and streaming guides',
               potentialAction: {
                 '@type': 'SearchAction',
                 target: {
@@ -49,27 +61,7 @@ export default function Document() {
                   urlTemplate: 'https://filmiway.com/search?q={search_term_string}'
                 },
                 'query-input': 'required name=search_term_string'
-              },
-              hasPart: [
-                {
-                  '@type': 'WebPage',
-                  name: 'Movies Like Memento',
-                  url: 'https://filmiway.com/collection/movies-like-memento',
-                  description: 'Best Movies Like Memento – 10 Best Mind-Bending Memory Loss Thrillers You Must Watch'
-                },
-                {
-                  '@type': 'WebPage',
-                  name: 'Movies Like Inception',
-                  url: 'https://filmiway.com/collection/movies-like-inception',
-                  description: 'Best Movies Like Inception – 10 Best Mind-Bending Thrillers You Must Watch'
-                },
-                {
-                  '@type': 'WebPage',
-                  name: 'Movies Like Shutter Island',
-                  url: 'https://filmiway.com/collection/movies-like-shutter-island',
-                  description: 'Best Movies Like Shutter Island – 10 Best Mind-Bending Psychological Thrillers You Must Watch'
-                }
-              ]
+              }
             })
           }}
         />
@@ -79,5 +71,5 @@ export default function Document() {
         <NextScript />
       </body>
     </Html>
-  )
+  );
 }

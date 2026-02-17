@@ -125,21 +125,7 @@ export const getRelatedBlackSwanMovies = (currentMovie, limit = 3) => {
         }));
 };
 
-// ✅ BLACK SWAN COLLECTION METADATA - FIXED WITH REAL DATA
-export const BLACK_SWAN_COLLECTION_META = {
-    title: 'Top 10 Movies Like Black Swan',
-    description: 'Discover the most intense psychological thrillers about obsession, perfectionism, and identity collapse. From Perfect Blue to Whiplash.',
-    keywords: 'movies like black swan, psychological thrillers, obsession films, perfectionism movies, identity crisis cinema',
-    canonicalUrl: 'https://filmiway.com/collection/movies-like-black-swan',
-    ogImage: 'https://filmiway.com/images/black-swan-movies-collection.jpg',
-    totalMovies: COMPLETE_MOVIE_DATABASE.length,
-    // ✅ FIXED - NOW USES REAL CLASS WARFARE INDEX DATA
-    averageClassWarfareIndex: Math.round(
-        COMPLETE_MOVIE_DATABASE.reduce((sum, movie) => {
-            return sum + movie.classWarfareIndex; // NOW USES REAL DATA
-        }, 0) / COMPLETE_MOVIE_DATABASE.length
-    )
-};
+
 
 // ✅ GENERATE BLACK SWAN MOVIE SITEMAP URLS
 export const generateBlackSwanMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {

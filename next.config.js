@@ -1,31 +1,41 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // ❌ REMOVED: output: 'export' 
-  // (Deleting this line unlocks ISR, revalidate, and Image Optimization)
-
   // ✅ CORE SETTINGS
   trailingSlash: false,
   reactStrictMode: false,
 
-  // ✅ IMAGE OPTIMIZATION (Enabled for SEO & Speed)
- images: {
+  // ⚡ OPTIMIZED: Image settings with modern formats
+  images: {
     remotePatterns: [
       {
         protocol: 'https',
         hostname: 'image.tmdb.org',
-        pathname: '/**', // ✅ Allows all TMDB images
+        pathname: '/**',
       },
       {
         protocol: 'https',
         hostname: 'm.media-amazon.com',
-        pathname: '/**', // ✅ Allows all Amazon/IMDb images
+        pathname: '/**',
       },
       {
         protocol: 'https',
         hostname: 'via.placeholder.com',
-        pathname: '/**', // ✅ Keep this until you remove placeholders
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.themoviedb.org',
+        pathname: '/**',
       },
     ],
+    // ⚡ NEW: Modern image formats (AVIF/WebP save 50%+ bandwidth)
+    formats: ['image/avif', 'image/webp'],
+    // ⚡ NEW: Cache images for 30 days (faster repeat visits)
+    minimumCacheTTL: 60 * 60 * 24 * 30,
+    // ⚡ NEW: Optimized device sizes
+    deviceSizes: [640, 768, 1024, 1280, 1536],
+    // ⚡ NEW: Optimized image sizes (matches your actual usage)
+    imageSizes: [150, 185, 200, 250, 300],
   },
 
   // ✅ ENVIRONMENT VARIABLES
@@ -34,12 +44,12 @@ const nextConfig = {
   },
 
   // ✅ PERFORMANCE SETTINGS
-  // generateEtags: true is better for ISR caching
   generateEtags: true, 
   poweredByHeader: false,
   compress: true,
+  swcMinify: true, // ⚡ NEW: Faster minification
 
-  // ✅ REDIRECTS FOR SEO & MIGRATION
+  // ✅ REDIRECTS
   async redirects() {
     return [
       {
@@ -47,14 +57,14 @@ const nextConfig = {
         destination: '/contact-us',
         permanent: true,
       },
-    ]
+    ];
   },
 
-  // ✅ BUILD CACHE (Kept your settings)
+  // ✅ BUILD CACHE
   onDemandEntries: {
     maxInactiveAge: 60 * 1000,
     pagesBufferLength: 5,
   },
-}
+};
 
 module.exports = nextConfig;

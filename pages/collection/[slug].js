@@ -227,7 +227,7 @@ const getCollectionContent = () => {
         };
     } else if (collection.slug === 'movies-like-inception') {
     return {
-        badge: "âš ï¸ Cognitive Hazard",
+        badge: "Cognitive Hazard",
         title: "Reality-Shattering Cinema",
         description: "Inception had rules. Totems. Levels you could count. These films have none of that. Just recursive nightmares where logic collapses and you're left holding a notebook full of questions.",
         selection: {

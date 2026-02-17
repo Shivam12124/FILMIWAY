@@ -1,23 +1,26 @@
-// scripts/indexnow-submit.js - FIXED ENDPOINT
+// scripts/indexnow-submit.js - COMPLETE VERSION
 const https = require('https');
-const http = require('http');
 
 const config = {
   host: 'filmiway.com',
   key: '9587b3f8b4524cec912619a0db76edcd',
   keyLocation: 'https://filmiway.com/9587b3f8b4524cec912619a0db76edcd.txt',
-urls: [
-    // 🔥 21 COLLECTION PAGES (ALREADY SUBMITTED)
+  urls: [
+    // 🎬 MOVIES LIKE... (11 collections)
     'https://filmiway.com/collection/movies-like-inception',
     'https://filmiway.com/collection/movies-like-memento',
     'https://filmiway.com/collection/movies-like-shutter-island',
-    'https://filmiway.com/collection/best-survival-movies',
     'https://filmiway.com/collection/movies-like-oldboy',
     'https://filmiway.com/collection/movies-like-donnie-darko',
     'https://filmiway.com/collection/movies-like-interstellar',
     'https://filmiway.com/collection/movies-like-se7en',
     'https://filmiway.com/collection/movies-like-parasite',
     'https://filmiway.com/collection/movies-like-the-matrix',
+    'https://filmiway.com/collection/movies-like-black-swan',
+    'https://filmiway.com/collection/movies-like-eyes-wide-shut',
+
+    // 🎯 BEST GENRE COLLECTIONS (10 collections)
+    'https://filmiway.com/collection/best-survival-movies',
     'https://filmiway.com/collection/best-war-films',
     'https://filmiway.com/collection/best-revenge-movies',
     'https://filmiway.com/collection/best-crime-thriller-movies',
@@ -28,9 +31,49 @@ urls: [
     'https://filmiway.com/collection/best-thriller-movies',
     'https://filmiway.com/collection/best-detective-thriller-movies',
     'https://filmiway.com/collection/best-mystery-thriller-movies',
-    'https://filmiway.com/collection/best-drama-movies-on-netflix',
 
-    
+    // 📺 HULU COLLECTIONS (10 collections)
+    'https://filmiway.com/collection/best-action-movies-on-hulu',
+    'https://filmiway.com/collection/best-romance-movies-on-hulu',
+    'https://filmiway.com/collection/best-comedy-movies-on-hulu',
+    'https://filmiway.com/collection/best-horror-movies-on-hulu',
+    'https://filmiway.com/collection/best-thriller-movies-hulu',
+    'https://filmiway.com/collection/best-sci-fi-movies-on-hulu',
+    'https://filmiway.com/collection/best-movies-on-hulu',
+    'https://filmiway.com/collection/best-drama-movies-on-hulu',
+    'https://filmiway.com/collection/best-family-movies-on-hulu',
+
+    // 📺 HBO MAX COLLECTIONS (10 collections)
+    'https://filmiway.com/collection/best-horror-movies-on-hbo-max',
+    'https://filmiway.com/collection/best-family-movies-on-hbo-max',
+    'https://filmiway.com/collection/best-movies-on-hbo-max',
+    'https://filmiway.com/collection/best-comedy-movies-on-hbo-max',
+    'https://filmiway.com/collection/best-action-movies-on-hbo-max',
+    'https://filmiway.com/collection/best-sci-fi-movies-on-hbo-max',
+    'https://filmiway.com/collection/best-thriller-movies-on-hbo-max',
+    'https://filmiway.com/collection/best-romance-movies-on-hbo-max',
+    'https://filmiway.com/collection/best-drama-movies-on-hbo-max',
+
+    // 📺 PARAMOUNT+ COLLECTIONS (8 collections)
+    'https://filmiway.com/collection/best-sci-fi-movies-on-paramount-plus',
+    'https://filmiway.com/collection/best-action-movies-on-paramount-plus',
+    'https://filmiway.com/collection/best-romance-movies-on-paramount-plus',
+    'https://filmiway.com/collection/best-horror-movies-on-paramount-plus',
+    'https://filmiway.com/collection/best-thriller-movies-on-paramount-plus',
+    'https://filmiway.com/collection/best-movies-on-paramount-plus',
+    'https://filmiway.com/collection/best-comedy-movies-on-paramount-plus',
+    'https://filmiway.com/collection/best-family-movies-on-paramount-plus',
+    'https://filmiway.com/collection/best-core-drama-movies-on-paramount-plus',
+
+    // 📺 PEACOCK COLLECTIONS (8 collections)
+    'https://filmiway.com/collection/best-action-adventure-movies-on-peacock',
+    'https://filmiway.com/collection/best-sci-fi-movies-on-peacock',
+    'https://filmiway.com/collection/best-romance-movies-on-peacock',
+    'https://filmiway.com/collection/best-family-movies-on-peacock',
+    'https://filmiway.com/collection/best-drama-movies-on-peacock',
+    'https://filmiway.com/collection/best-thriller-movies-on-peacock',
+    'https://filmiway.com/collection/best-movies-on-peacock',
+    'https://filmiway.com/collection/best-comedy-movies-on-peacock',
   ]
 };
 
@@ -42,7 +85,6 @@ const submitToIndexNow = () => {
     urlList: config.urls
   });
 
-  // 🔥 FIXED: Use bing.com + IndexNow endpoint
   const options = {
     hostname: 'www.bing.com',
     port: 443,
@@ -59,18 +101,23 @@ const submitToIndexNow = () => {
     let data = '';
     res.on('data', (chunk) => data += chunk);
     res.on('end', () => {
-      console.log(`✅ HTTP ${res.statusCode}: ${data}`);
-      console.log(`🎉 SUBMITTED ${config.urls.length} PAGES TO BING:`);
-      config.urls.forEach((url, i) => console.log(`   ${i+1}. ${url}`));
+      console.log(`✅ HTTP ${res.statusCode}`);
+      if (res.statusCode === 200) {
+        console.log(`🎉 SUCCESS! Submitted ${config.urls.length} URLs to Bing IndexNow`);
+      } else if (res.statusCode === 202) {
+        console.log(`✅ ACCEPTED! Bing received ${config.urls.length} URLs`);
+      } else {
+        console.log(`⚠️ Response: ${data}`);
+      }
       process.exit(0);
     });
   });
 
   req.on('error', (e) => {
-    console.error('❌ Error:', e.message);
+    console.error('❌ Primary endpoint failed:', e.message);
     
-    // 🔥 TRY ALTERNATIVE ENDPOINT
-    console.log('🔄 Trying alternative endpoint...');
+    // Try alternative endpoint
+    console.log('🔄 Trying api.indexnow.org...');
     const altOptions = {
       hostname: 'api.indexnow.org',
       port: 443,
@@ -86,7 +133,10 @@ const submitToIndexNow = () => {
       let altData = '';
       altRes.on('data', (chunk) => altData += chunk);
       altRes.on('end', () => {
-        console.log(`🔄 ALT HTTP ${altRes.statusCode}: ${altData}`);
+        console.log(`✅ ALT HTTP ${altRes.statusCode}`);
+        if (altRes.statusCode === 200 || altRes.statusCode === 202) {
+          console.log(`🎉 SUCCESS via alternative endpoint!`);
+        }
         process.exit(0);
       });
     });
@@ -104,5 +154,5 @@ const submitToIndexNow = () => {
   req.end();
 };
 
-console.log('🚀 Submitting to Bing IndexNow...');
+console.log('🚀 Submitting 57 collection pages to Bing IndexNow...');
 submitToIndexNow();
