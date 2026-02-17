@@ -1,4 +1,4 @@
-// pages/index.js - FULLY OPTIMIZED (Performance + Accessibility) 🚀
+// pages/index.js - PERFORMANCE OPTIMIZED FOR MOBILE 🚀
 import React, { useState, useEffect, useRef, useCallback, memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Head from 'next/head';
@@ -15,7 +15,6 @@ import {
 import { COLLECTIONS } from '../data/collections';
 import PlatformSelector from '../components/PlatformSelector';
 
-// ⚡ OPTIMIZED: Using w185 instead of w342 for smaller images
 const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p';
 
 const ICON_SIZES = {
@@ -67,7 +66,7 @@ const fetchUniquePosterForCollection = async (movieIds, sectionName, collectionS
   return null;
 };
 
-// ⚡ OPTIMIZED CARD
+// ⚡ OPTIMIZED CARD - Reduced animation complexity for mobile
 const CollectionCard = memo(({ collection, index, isMobile, onClick, isPrioritySection }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
   const shouldPrioritize = isPrioritySection && index < 4;
@@ -95,8 +94,8 @@ const CollectionCard = memo(({ collection, index, isMobile, onClick, isPriorityS
             priority={shouldPrioritize}
             {...(shouldPrioritize ? { fetchPriority: "high" } : {})}
             sizes="(max-width: 640px) 150px, (max-width: 1024px) 200px, 150px"
-            className={`object-cover transition-all duration-700 ease-out ${
-              imageLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-105'
+            className={`object-cover transition-opacity duration-500 ${
+              imageLoaded ? 'opacity-100' : 'opacity-0'
             }`}
             onLoad={() => setImageLoaded(true)}
             draggable={false}
@@ -132,7 +131,7 @@ const CollectionCard = memo(({ collection, index, isMobile, onClick, isPriorityS
 
 CollectionCard.displayName = 'CollectionCard';
 
-// ⚡ HERO SECTION
+// ⚡ HERO SECTION - Simplified for LCP
 const HeroSection = memo(() => {
   const [mounted, setMounted] = useState(false);
 
@@ -153,12 +152,7 @@ const HeroSection = memo(() => {
       <div className="hidden sm:block absolute bottom-20 right-5 w-40 h-40 sm:w-80 sm:h-80 bg-yellow-400/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
 
       <div className="relative z-10 container mx-auto px-4 text-center">
-        <motion.div 
-          className="max-w-6xl mx-auto" 
-          initial={mounted ? { opacity: 0, y: 30 } : false} 
-          animate={mounted ? { opacity: 1, y: 0 } : false} 
-          transition={{ duration: 0.8 }}
-        >
+        <div className={`max-w-6xl mx-auto transition-opacity duration-800 ${mounted ? 'opacity-100' : 'opacity-0'}`}>
           <div className="mb-4">
             <div className="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-400/10 via-amber-400/10 to-yellow-400/10 border border-yellow-400/20 rounded-full px-4 py-1.5 text-yellow-400 text-[10px] sm:text-sm font-medium">
               <Globe className={ICON_SIZES.xs} />
@@ -181,20 +175,17 @@ const HeroSection = memo(() => {
 
           <div className="flex justify-center mb-10">
             <Link href="/collections">
-              <motion.button 
-                className="bg-gradient-to-r from-yellow-400 to-amber-400 text-black px-6 py-3 rounded-xl font-bold flex items-center gap-2 hover:from-yellow-300 hover:to-amber-300 transition-all shadow-lg shadow-yellow-400/20 text-sm sm:text-base" 
-                whileTap={{ scale: 0.95 }}
-              >
+              <button className="bg-gradient-to-r from-yellow-400 to-amber-400 text-black px-6 py-3 rounded-xl font-bold flex items-center gap-2 hover:from-yellow-300 hover:to-amber-300 transition-all shadow-lg shadow-yellow-400/20 text-sm sm:text-base active:scale-95">
                 <Compass className={ICON_SIZES.sm} />
                 Explore Collections
-              </motion.button>
+              </button>
             </Link>
           </div>
 
           <div className="mb-8">
             <PlatformSelector />
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
@@ -234,7 +225,7 @@ const ProfessionalCarousel = memo(({ collections, sectionRef, isPrioritySection 
   const handlePointerDown = useCallback((e) => {
     if (isMobile) return; 
     dragRef.current.isDragging = true;
-    dragRef.current.hasDragged = false;
+    dragRef.current.haDragged = false;
     dragRef.current.startX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
     dragRef.current.offset = 0;
   }, [isMobile]);
@@ -341,7 +332,7 @@ const ProfessionalCarousel = memo(({ collections, sectionRef, isPrioritySection 
 
 ProfessionalCarousel.displayName = 'ProfessionalCarousel';
 
-const MovieSection = memo(({ title, movies, icon: Icon, description, sectionRef, viewAllLink, isPrioritySection, platformLogo }) => {
+const MovieSection = memo(({ title, movies, icon: Icon, description, sectionRef, viewAllLink, isPrioritySection }) => {
   const [shouldAnimate, setShouldAnimate] = useState(false);
   useEffect(() => {
     setShouldAnimate(window.innerWidth >= 768);
@@ -360,28 +351,12 @@ const MovieSection = memo(({ title, movies, icon: Icon, description, sectionRef,
       <Wrapper className="flex flex-col sm:flex-row sm:items-end justify-between mb-4 sm:mb-8 px-1" {...motionProps}>
         <div className="flex-1">
           <div className="flex items-center gap-2 sm:gap-3 mb-2">
-            {platformLogo ? (
-              <>
-                <img 
-                  src={platformLogo.url} 
-                  alt={platformLogo.name}
-                  className={`h-6 sm:h-8 object-contain ${platformLogo.invert ? 'invert' : ''}`}
-                  loading="lazy"
-                />
-                <h2 className="text-lg sm:text-2xl md:text-3xl font-semibold text-white tracking-tight">
-                  Best on {platformLogo.name}
-                </h2>
-              </>
-            ) : (
-              <>
-                <div className="p-2 bg-gradient-to-br from-yellow-400/20 to-amber-400/20 rounded-lg sm:rounded-xl border border-yellow-400/30">
-                  <Icon className="w-4 h-4 sm:w-6 sm:h-6 text-yellow-400" />
-                </div>
-                <h2 className="text-lg sm:text-2xl md:text-3xl font-semibold text-white tracking-tight">
-                  {title}
-                </h2>
-              </>
-            )}
+            <div className="p-2 bg-gradient-to-br from-yellow-400/20 to-amber-400/20 rounded-lg sm:rounded-xl border border-yellow-400/30">
+              <Icon className="w-4 h-4 sm:w-6 sm:h-6 text-yellow-400" />
+            </div>
+            <h2 className="text-lg sm:text-2xl md:text-3xl font-semibold text-white tracking-tight">
+              {title}
+            </h2>
           </div>
           <p className="text-gray-400 text-xs sm:text-base max-w-2xl font-light leading-relaxed pl-1 line-clamp-1 sm:line-clamp-none">{description}</p>
           
@@ -408,8 +383,6 @@ const MovieSection = memo(({ title, movies, icon: Icon, description, sectionRef,
   );
 });
 
-
-
 MovieSection.displayName = 'MovieSection';
 
 const FilmiwayHomepage = ({ huluCollections, mindBendingCollections, thrillerCollections, hboCollections, peacockCollections, paramountCollections }) => {
@@ -431,9 +404,26 @@ const FilmiwayHomepage = ({ huluCollections, mindBendingCollections, thrillerCol
         <link rel="canonical" href="https://filmiway.com/" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
         
-        {/* ⚡ OPTIMIZED: Preconnect */}
+        {/* ⚡ CRITICAL PERFORMANCE OPTIMIZATION */}
         <link rel="preconnect" href="https://image.tmdb.org" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://www.themoviedb.org" />
+        
+        {/* ⚡ INLINE CRITICAL FONT - Eliminates render blocking */}
+        <link 
+          rel="preload" 
+          href="https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7.woff2" 
+          as="font" 
+          type="font/woff2" 
+          crossOrigin="anonymous" 
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link 
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" 
+          rel="stylesheet"
+          media="print"
+          onLoad="this.media='all'"
+        />
       </Head>
       
       <div className="min-h-screen bg-black text-white font-sans overflow-x-hidden">
@@ -461,7 +451,6 @@ const FilmiwayHomepage = ({ huluCollections, mindBendingCollections, thrillerCol
                 <button onClick={() => scrollToSection(paramountRef)} className="text-gray-300 hover:text-white transition-colors text-sm">Paramount+</button>
               </div>
               
-              {/* ♿ FIXED: Added aria-label */}
               <button 
                 className="md:hidden text-gray-300" 
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -513,33 +502,33 @@ const FilmiwayHomepage = ({ huluCollections, mindBendingCollections, thrillerCol
             title="Best of Hulu" 
             description="The absolute best movies streaming on Hulu right now." 
             movies={huluCollections} 
-            icon={Tv} 
+            icon={Tv}
             sectionRef={huluRef} 
-            viewAllLink="/streaming/hulu" 
+            viewAllLink="/streaming/hulu"
           />
           <MovieSection 
-            title="HBO Max Essentials" 
+            title="Best of HBO Max" 
             description="Epic blockbusters and prestige drama on HBO Max." 
             movies={hboCollections} 
-            icon={Star} 
+            icon={Star}
             sectionRef={hboRef} 
-            viewAllLink="/streaming/hbo-max" 
+            viewAllLink="/streaming/hbo-max"
           />
           <MovieSection 
-            title="Paramount+ Mountain" 
+            title=" Best of Paramount+" 
             description="The peak of entertainment: Top Gun, Interstellar, and more." 
             movies={paramountCollections} 
-            icon={Mountain} 
+            icon={Mountain}
             sectionRef={paramountRef} 
-            viewAllLink="/streaming/paramount-plus" 
+            viewAllLink="/streaming/paramount-plus"
           />
           <MovieSection 
-            title="Peacock Picks" 
+            title=" Best of Peacock" 
             description="NBCUniversal's finest: The Office, horrors, and blockbusters." 
             movies={peacockCollections} 
-            icon={Feather} 
+            icon={Feather}
             sectionRef={peacockRef} 
-            viewAllLink="/streaming/peacock" 
+            viewAllLink="/streaming/peacock"
           />
         </main>
 
@@ -553,7 +542,6 @@ const FilmiwayHomepage = ({ huluCollections, mindBendingCollections, thrillerCol
           </div>
         </div>
 
-        {/* ♿ FIXED: Footer with better contrast + touch targets */}
         <footer className="bg-black py-8 sm:py-12 border-t border-gray-800">
           <div className="container mx-auto px-4 sm:px-6">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 mb-8 sm:mb-12 border-b border-gray-800 pb-8 sm:pb-12">
