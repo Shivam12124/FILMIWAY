@@ -634,6 +634,7 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
     const faqSchema = {
         '@context': 'https://schema.org',
         '@type': 'FAQPage',
+        'name': `Parents Guide and FAQ for ${movie.Title}`, // 🔥 ADD THIS ONE LINE!
         'mainEntity': schemaFaqs
     };
 
