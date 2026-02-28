@@ -294,7 +294,7 @@ export const COLLECTIONS = {
     slug: 'best-sci-fi-movies-on-peacock',
     title: '10 Best Sci-Fi Movies on Peacock',
     stats: { averageRating: 7.0 },
-    movies: ['tt2866360', 'tt30321200', 'tt10954984', 'tt3986820', 'tt1959490', 'tt2194499', 'tt0134847', 'tt8781414', 'tt8760708', 'tt18389166'],
+    movies: ['tt2866360', 'tt12300742', 'tt10954984', 'tt3986820', 'tt1959490', 'tt2194499', 'tt0134847', 'tt8781414', 'tt8760708', 'tt18389166'],
     relatedCollections: ['best-sci-fi-movies-on-hulu', 'best-sci-fi-movies-on-hbo-max', 'best-sci-fi-movies-on-paramount-plus', 'best-time-travel-movies']
   },
 

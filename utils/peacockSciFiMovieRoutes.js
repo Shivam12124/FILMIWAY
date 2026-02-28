@@ -18,7 +18,7 @@ export const PEACOCK_SCIFI_MOVIE_SLUGS = {
     'tt2866360': 'coherence',
     
     // Rank 2: Bugonia
-    'tt30321200': 'bugonia',
+    'tt12300742': 'bugonia',
     
     // Rank 3: Nope
     'tt10954984': 'nope',

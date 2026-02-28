@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Shield, CheckCircle, AlertTriangle, Clock, AlertOctagon } from 'lucide-react';
+import { Shield, CheckCircle, AlertTriangle, Clock, AlertOctagon,Eye } from 'lucide-react';
 
 // Import formatting functions from BOTH data sources
 import { formatSensitiveTimeline as formatInceptionTimeline, getSensitiveContentTypes as getInceptionContentTypes } from '../utils/movieData';
@@ -119,7 +119,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
 
                         const getSceneIcon = (type) => {
                             const lowerType = type.toLowerCase();
-                            if (lowerType.includes('nudity') || lowerType.includes('sex')) return '🔞';
+                            if (lowerType.includes('nudity') || lowerType.includes('sex')) return '👁️';
                             if (lowerType.includes('kissing')) return '💋';
                             if (lowerType.includes('violence') || lowerType.includes('blood')) return '⚔️';
                             if (lowerType.includes('language')) return '🤬';

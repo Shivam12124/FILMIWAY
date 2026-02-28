@@ -195,7 +195,7 @@ const CollectionPage = ({ collection, movies }) => {
         }
         
         // âœ… LOADER: Animation for Humans (Content is already rendered behind it for SEO)
-        const timer = setTimeout(() => setIsLoading(false), 2500);
+        const timer = setTimeout(() => setIsLoading(false), 300);
         return () => clearTimeout(timer);
     }, []);
 
@@ -1180,6 +1180,28 @@ const getCollectionContent = () => {
     return {
         badge: "Elite Conspiracy Thrillers",
         title: "Eyes Wide Shut",
+        description: "Stanley Kubrick's final masterpiece left audiences with more questions than answers. This curated list explores films about secret societies, occult rituals, and the hidden world of the ultra-rich. Prepare for paranoid descents into forbidden territory where curiosity gets you killed, and the truth is buried behind masquerade masks.",
+        selection: {
+            text1: "Masked rituals, esoteric cults, and shadow hierarchies. We specifically selected films that capture that distinct 'Kubrickian' dread. These aren't standard horror movies; they are deep psychological thrillers that reveal what happens when ordinary outsiders stumble into the elite's secret playgrounds—and quickly realize they were never supposed to leave.",
+            text2: "Whether it's the neon-lit streets of a surreal metropolis or the quiet corridors of old-money estates, each film follows protagonists breaching the invisible wall between everyday life and the ruling class's hidden ceremonies. We focused on cinema that utilizes dream logic, surveillance paranoia, and unreliable narrators to make you doubt everything you see."
+        },
+        ranking: {
+            text: "To rank these conspiracy thrillers, we developed a strict cinematic methodology. We don't just look at standard ratings; we evaluate the depth of the conspiracy, the suffocating nature of the occult atmosphere, and how effectively the director builds tension to make you genuinely question who really runs the world behind closed doors.",
+            points: [
+                "Secret society authenticity & lore",
+                "Paranoia & surveillance dread",
+                "Occult ritual atmosphere",
+                "Elite power commentary & social critique"
+            ]
+        },
+        experience: {
+            text1: "From Kubrick's final cinematic warning to modern, unflinching exposés of wealth and ritualistic power, these films are designed to create lasting, suffocating dread. They cultivate a profound sense of being watched by institutional forces you cannot comprehend or fight.",
+            text2: "After watching this collection, you will question every high-society gala, every private country club, and every unexplained coincidence in the news. Welcome to cinema's most unsettling, reality-bending rabbit holes."
+        }
+    };
+    return {
+        badge: "Elite Conspiracy Thrillers",
+        title: "Eyes Wide Shut",
         description: "Films about secret societies, occult rituals, and the hidden world of the ultra-rich. Paranoid descents into forbidden territory where curiosity gets you killed.",
         selection: {
             text1: "Masked rituals. Satanic cults. Shadow hierarchies. These films reveal what happens when outsiders stumble into the elite's secret playgroundsâ€”and realize they were never supposed to leave.",
@@ -1906,13 +1928,11 @@ subtitle: "While everyone searches Netflix, these classics hide in plain sight. 
         subtitle: "Time travel paradoxes, dying dreams & doppelgÃ¤ngers that shatter reality itself"
     };
 
- } else if (collection.slug === 'movies-like-eyes-wide-shut') {
-    return {
-        title: "10 Movies That Expose The Elite (Like Eyes Wide Shut)",
-        subtitle: "Secret societies. Occult rituals. The world the rich don't want you to see."
-    };
-
-
+         } else if (collection.slug === 'movies-like-eyes-wide-shut') {
+         return {
+             title: "10 Movies Like Eyes Wide Shut That Expose Elite Secrets",
+             subtitle: "A ranked list of films that delve into secret societies, occult rituals, and paranoid descents into the world of the ultra-rich. Discover the cinematic rabbit holes that prove Kubrick's final film was a warning."
+         };
 
     } else if (collection.slug === 'movies-like-interstellar') {
         return {
@@ -1922,7 +1942,7 @@ subtitle: "While everyone searches Netflix, these classics hide in plain sight. 
   } else if (collection.slug === 'movies-like-shutter-island') {
         return {
             title: "10 Shattered-Reality Movies Like Shutter Island (Ranked by Paranoia)",
-            subtitle: "Donâ€™t trust the frame. Gaslighting, identity collapse & the anatomy of psychological denial."
+            subtitle: "trust the frame. Gaslighting, identity collapse & the anatomy of psychological denial."
         };  
     } else if (collection.slug === 'best-crime-thriller-movies') {
         return {
@@ -1968,11 +1988,7 @@ subtitle: "Not all minds recover. Identity collapse. Reality distortion. Permane
     };
 
 
-    } else if (collection.slug === 'best-drama-movies-on-netflix') {
-        return {
-            title: "Best Netflix Dramas: 10 Award-Winning Films",
-            subtitle: "Oscar-winning performances & emotionally devastating stories streaming now"
-        };
+
     } else if (collection.slug === 'best-detective-thriller-movies') {
         return {
        title: "10 Detective Masterpieces That Define Obsession (Ranked)",
@@ -2320,11 +2336,7 @@ const getLoaderContent = () => {
             title: "Loading Best Survival Movies",
             description: "Curating the greatest survival films with community reviews and ratings"
         };
-    } else if (collection?.slug === 'best-drama-movies-on-netflix') {
-        return {
-            title: "Loading Best Netflix Dramas",
-            description: "Curating award-winning dramatic films with community reviews and ratings"
-        };
+
     } else if (collection?.slug === 'best-revenge-movies') {
         return {
             title: "Loading Best Revenge Movies",
@@ -3699,20 +3711,31 @@ return (
     )}
 </AnimatePresence>
 
-        <motion.div
-            key="collection"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="relative z-10 flex flex-col min-h-screen" // âœ… Fixes layout height
-        >
+<motion.div
+    key="collection"
+    initial={{ opacity: 1 }} // ⬅️ CHANGE THIS TO 1
+    animate={{ opacity: 1 }}
+    className="relative z-10 flex flex-col min-h-screen" // ✅ Fixes layout height
+>
             {/* âœ… Main Content - Pushes footer down */}
             {/* âœ… Main Content - Pushes footer down. Changed pt-32 to pt-24 */}
-            <main className="container mx-auto px-3 sm:px-6 pt-24 sm:pt-40 lg:pt-16 pb-12 flex-grow">
-                <CinematicHeader />
-                
-                <CinematicExplorerSection currentRank={currentRank} />
-                
-                <div className="relative flex items-center justify-center min-h-[70vh] sm:min-h-[80vh]">
+            <main className="container mx-auto px-3 sm:px-6 pt-24 sm:pt-40 lg:pt-16 pb-12 flex-grow flex flex-col">
+                    
+                    {/* 1. HEADER: Always at the top */}
+                    <div className="order-1 w-full">
+                        <CinematicHeader />
+                    </div>
+                    
+                    {/* 2. SEO TEXT: Shows below header on PC (order-2), but drops to the bottom on Mobile (order-3) */}
+                    <div className="order-3 lg:order-2 w-full mt-10 lg:mt-0">
+                        <CinematicExplorerSection currentRank={currentRank} />
+                    </div>
+                    
+                    {/* 3. MOVIE POSTER & CONTROLS: Shows at top on Mobile (order-2), bottom on PC (order-3) */}
+                    <div className="order-2 lg:order-3 w-full flex flex-col">
+                        
+                        {/* 🎬 Your existing poster code starts here */}
+                        <div className="relative flex items-center justify-center min-h-[70vh] sm:min-h-[80vh]">
                     {!isFirstMovie && (
                         <motion.button
                             onClick={prevMovie}
@@ -3882,7 +3905,7 @@ return (
                     <div className="flex flex-col items-center space-y-6">
                         <div className="flex items-center justify-center space-x-4 text-sm text-gray-500">
                             <span className="px-3 py-1 bg-gray-800/50 rounded-full">#{currentRank} of {movies.length}</span>
-                            <span>â€¢</span>
+                            <span></span>
                             <span>Click poster above for full analysis</span>
                         </div>
                         
@@ -4059,6 +4082,7 @@ return (
                                 </span>
                             </div>
                         </motion.div>
+                    </div>
                     </main>
 
                     <RelatedCollections collectionIds={collection.relatedCollections} />
@@ -4072,7 +4096,7 @@ return (
                     >
                         <div className="container mx-auto px-6 pb-12">
                             <p className="text-gray-500 text-sm sm:text-base font-light tracking-wide mb-8">
-                                Curated cinema for discerning viewers â€¢ Expert analysis and community insights
+                                Curated cinema for discerning viewers  Expert analysis and community insights
                             </p>
                             
                             <div className="flex justify-center items-center gap-8 sm:gap-12 mb-8">
@@ -4118,10 +4142,10 @@ return (
                             </motion.div>
 
                             <div className="flex items-center justify-center space-x-8 text-gray-500 text-sm pb-10">
-                                <span>Â© 2026 Filmiway</span>
-                                <span>â€¢</span>
+                                <span>© 2026 Filmiway</span>
+                                <span></span>
                                 <span>All Rights Reserved</span>
-                                <span>â€¢</span>
+                                <span></span>
                                 <span>Where Every Film Finds Its Way</span>
                             </div>
                         </div>
@@ -4140,7 +4164,7 @@ export async function getStaticPaths() {
         params: { slug }
     }));
 
-    console.log('âœ… Building paths for:', paths.map(p => p.params.slug));
+    console.log(' Building paths for:', paths.map(p => p.params.slug));
 
     return {
         paths,
@@ -4157,7 +4181,7 @@ export async function getStaticProps({ params }) {
         return { notFound: true };
     }
 
-    // âœ… SELECT DATABASE FOR EACH COLLECTION
+    //  SELECT DATABASE FOR EACH COLLECTION
     let movieDatabase;
     
     switch(collection.slug) {

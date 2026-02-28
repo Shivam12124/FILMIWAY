@@ -185,7 +185,7 @@ export const searchPeacockThrillerMovies = (query) => {
         }));
 };
 
-export const FQy4HArVdBbZ87AHrbfdhSXRgyE5NUbrh6GaL8enMUeh = (genre) => {
+export const filterPeacockThrillerMovies = (genre) => {
     if (genre === 'All') return COMPLETE_MOVIE_DATABASE;
     
     return COMPLETE_MOVIE_DATABASE
@@ -223,7 +223,7 @@ export const sortPeacockThrillerMovies = (movies, sortBy) => {
 };
 
 // ✅ GET PEACOCK THRILLER MOVIE COLLECTION STATS
-export const FQy4HArVdBbZ87AHrbfdhSXRgyE5NUbrh6GaL8enMUeh = () => {
+export const getPeacockThrillerMovieCollectionStats = () => {
     const genres = [...new Set(COMPLETE_MOVIE_DATABASE.map(m => m.genre))];
     const decades = [...new Set(COMPLETE_MOVIE_DATABASE.map(m => Math.floor(m.year / 10) * 10))];
     const yearRange = {
@@ -265,15 +265,15 @@ export default {
     SLUG_TO_IMDB,
     getMovieBySlug,
     getMovieSlug,
-    FQy4HArVdBbZ87AHrbfdhSXRgyE5NUbrh6GaL8enMUeh,
-    FQy4HArVdBbZ87AHrbfdhSXRgyE5NUbrh6GaL8enMUeh,
-    FQy4HArVdBbZ87AHrbfdhSXRgyE5NUbrh6GaL8enMUeh,
+    generatePeacockThrillerMovieStaticPaths,
+    getPeacockThrillerMovieBreadcrumbs,
+    getNextPrevPeacockThrillerMovie,
     getRelatedPeacockThrillerMovies,
     PEACOCK_THRILLER_COLLECTION_META,
-    FQy4HArVdBbZ87AHrbfdhSXRgyE5NUbrh6GaL8enMUeh,
+    generatePeacockThrillerMovieSitemap,
     isValidPeacockThrillerMovieSlug,
     searchPeacockThrillerMovies,
-    FQy4HArVdBbZ87AHrbfdhSXRgyE5NUbrh6GaL8enMUeh,
+    filterPeacockThrillerMovies,
     sortPeacockThrillerMovies,
-    FQy4HArVdBbZ87AHrbfdhSXRgyE5NUbrh6GaL8enMUeh
+    getPeacockThrillerMovieCollectionStats
 };

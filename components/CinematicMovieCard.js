@@ -46,10 +46,10 @@ const CinematicMovieCard = React.memo(({ movie, rank, isActive, fromSurvivalColl
 
     return (
         <motion.article 
-            initial={{ opacity: 0, y: 40 }} 
-            whileInView={{ opacity: 1, y: 0 }} 
-            viewport={{ once: true, margin: "100px" }} 
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }} 
+            initial={{ opacity: 0, y: 15, scale: 0.96 }} 
+            whileInView={{ opacity: 1, y: 0, scale: 1 }} 
+            viewport={{ once: true, margin: "300px" }} 
+            transition={{ duration: 0.15, ease: "easeOut" }} 
             className="relative w-full h-full group flex flex-col items-center px-2 sm:px-4 cursor-pointer touch-manipulation"
             onMouseEnter={() => !isMobile && setIsHovered(true)} 
             onMouseLeave={() => !isMobile && setIsHovered(false)}

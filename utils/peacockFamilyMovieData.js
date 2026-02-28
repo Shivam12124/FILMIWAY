@@ -24,66 +24,31 @@ export const COMPLETE_MOVIE_DATABASE = [
 // ✅ SENSITIVE TIMELINES (Focusing on Scary Moments for Kids)
 export const SENSITIVE_TIMELINES = {
     // 1. How to Train Your Dragon
-    10191: { 
-        scenes: [
-            { start: "1:20:00", end: "1:25:00", type: "Scary Monster", severity: "Moderate" }, // The Red Death battle
-            { start: "1:28:00", end: "1:30:00", type: "Injury/Loss of Limb", severity: "Mild" } // Hiccup loses leg
-        ] 
-    },
+    10191: { scenes: [] },
     
     // 2. Harry Potter & Prisoner of Azkaban
-    673: { 
-        scenes: [
-            { start: "0:20:00", end: "0:23:00", type: "Scary Creature", severity: "High" }, // Dementor on train
-            { start: "1:45:00", end: "1:50:00", type: "Transformation", severity: "Moderate" } // Werewolf
-        ] 
-    },
+    673: { scenes: [] },
     
     // 3. Puss in Boots: The Last Wish
-    315162: { 
-        scenes: [
-            { start: "0:10:00", end: "0:12:00", type: "Blood/Injury", severity: "Mild" }, // Wolf scratches Puss
-            { start: "1:30:00", end: "1:35:00", type: "Death Theme", severity: "Moderate" } // Confronting Death
-        ] 
-    },
+    315162: { scenes: [] },
     
     // 4. Shrek
-    808: { 
-        scenes: [
-            { start: "1:05:00", end: "1:08:00", type: "Dragon Chase", severity: "Mild" }
-        ] 
-    },
+    808: { scenes: [] },
     
     // 5. How to Train Your Dragon 2
-    82702: { 
-        scenes: [
-            { start: "1:10:00", end: "1:15:00", type: "Character Death", severity: "High" } // Stoick's death
-        ] 
-    },
+    82702: { scenes: [] },
     
     // 6. Despicable Me
-    20352: { 
-        scenes: [
-            { start: "0:50:00", end: "0:53:00", type: "Peril", severity: "Mild" } // Iron Maiden spike trap
-        ] 
-    },
+    20352: { scenes: [] },
     
     // 7. Harry Potter & Sorcerer's Stone
-    671: { 
-        scenes: [
-            { start: "1:50:00", end: "1:55:00", type: "Scary Face", severity: "Moderate" } // Voldemort on Quirrell's head
-        ] 
-    },
+    671: { scenes: [] },
     
     // 8. Abominable
     431580: { scenes: [] },
     
     // 9. How to Train Your Dragon: Hidden World
-    166428: { 
-        scenes: [
-            { start: "1:30:00", end: "1:35:00", type: "Emotional Goodbye", severity: "Mild" }
-        ] 
-    },
+    166428: { scenes: [] },
     
     // 10. Shrek 2
     809: { scenes: [] }

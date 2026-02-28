@@ -224,10 +224,41 @@ const EyesWideShutMoviePage = ({ movie, tmdbData: movieData }) => {
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
 
-    // ✅ FIXED: Use Array.join() to prevent React HTML comment injection
-    const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Movies Like Eyes Wide Shut | Filmiway'].join('');
-    const cleanSEODesc = [movie.Title, ' (', currentMovieYear, ') - A paranoid thriller like Eyes Wide Shut. Analysis, ratings & where to stream.'].join('');
+// ✅ MASTERSTROKE: Dynamically add sensitive scene timestamps to meta description
+const scenes = SENSITIVE_TIMELINES?.[movie.tmdbId]?.scenes || [];
 
+// Default if the movie has NO sensitive scenes
+let sceneNotice = 'Detailed Parents Guide: No nudity, sex, or explicit scenes.';
+
+if (scenes.length > 0) {
+    // Get first 2 timestamps only (best for SEO length)
+const firstTimestamps = scenes
+  .slice(0, 2)
+  .map(s => s.end ? `${s.start}–${s.end}` : s.start)
+  .join(', ');
+
+    const andMore = scenes.length > 2 ? '...' : '';
+
+    // Final optimized format (Version 3 – Recommended)
+    sceneNotice = `Detailed Parents Guide with exact timestamps for nudity, sex & mature scenes (e.g., ${firstTimestamps}${andMore}).`;
+}
+
+// ✅ Clean standalone SEO title (no collection wording)
+const cleanSEOTitle = [
+    movie.Title,
+    ' (',
+    currentMovieYear,
+    ') | Filmiway'
+].join('');
+
+// ✅ Final standalone meta description
+const cleanSEODesc = [
+    movie.Title,
+    ' (',
+    currentMovieYear,
+    ') – ',
+    sceneNotice
+].join('');
 
     const collectionSlug = router.pathname.split('/')[2];
     const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;

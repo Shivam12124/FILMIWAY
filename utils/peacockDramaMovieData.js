@@ -24,51 +24,33 @@ export const COMPLETE_MOVIE_DATABASE = [
 // ✅ SENSITIVE TIMELINES (Focusing on Trauma, Addiction, and Historical Grief)
 export const SENSITIVE_TIMELINES = {
     // 1. Requiem for a Dream
-    641: { 
+       641: { 
         scenes: [
-            { start: "1:30:00", end: "1:40:00", type: "Sexual Degradation", severity: "Extreme" }, // The "Ass to Ass" scene
-            { start: "1:25:00", end: "1:28:00", type: "Medical Gore", severity: "High" }, // Infected arm/Amputation
-            { start: "1:35:00", end: "1:38:00", type: "Electroshock Therapy", severity: "High" }
+            { start: "0:20:00", end: "0:20:30", type: "Nudity", severity: "Moderate" },
+            { start: "0:33:00", end: "0:34:25", type: "Nudity", severity: "Moderate" },
+            { start: "0:37:00", end: "0:37:25", type: "Nudity", severity: "Moderate" },
+            // 🔥 NEW SCENE ADDED
+            { start: "1:30:30", end: "1:33:50", type: "Sex & Nudity", severity: "Extreme" }
         ] 
     },
 
     // 2. Sophie's Choice
-    1603: { 
-        scenes: [
-            { start: "2:10:00", end: "2:15:00", type: "The Choice (Psychological Trauma)", severity: "Extreme" } // The camp selection scene
-        ] 
-    },
+    1603: { scenes: [] },
 
     // 3. The Fabelmans
-    804095: { 
-        scenes: [
-            { start: "1:15:00", end: "1:20:00", type: "Bullying/Antisemitism", severity: "Moderate" }
-        ] 
-    },
+    804095: { scenes: [] },
 
     // 4. A Thousand and One
     855263: { scenes: [] },
 
     // 5. Dìdi
-    1158915: { 
-        scenes: [
-            { start: "0:45:00", end: "0:48:00", type: "Teen Drinking/Vomit", severity: "Mild" }
-        ] 
-    },
+    1158915: { scenes: [] },
 
     // 6. She Said
-    837881: { 
-        scenes: [
-            { start: "0:00:00", end: "2:00:00", type: "Discussions of Sexual Assault", severity: "Moderate" } // No graphic visuals, heavy themes
-        ] 
-    },
+    837881: { scenes: [] },
 
     // 7. 50/50
-    40807: { 
-        scenes: [
-            { start: "1:10:00", end: "1:15:00", type: "Medical Procedure", severity: "Moderate" } // Surgery prep
-        ] 
-    },
+    40807: { scenes: [] },
 
     // 8. On Golden Pond
     11816: { scenes: [] },
@@ -77,11 +59,7 @@ export const SENSITIVE_TIMELINES = {
     754609: { scenes: [] },
 
     // 10. The Photograph
-    589049: { 
-        scenes: [
-            { start: "0:40:00", end: "0:43:00", type: "Sex", severity: "Moderate" }
-        ] 
-    }
+    589049: { scenes: [] }
 };
 
 export const FALLBACK_POSTERS = {

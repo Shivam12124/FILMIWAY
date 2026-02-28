@@ -35,7 +35,6 @@ export const STRATEGIC_QUOTES = {
     399057: "It's a metaphor. It's symbolic." // The Killing of a Sacred Deer
 };
 
-
 // ✅ SENSITIVE TIMELINES (The "Utility" Data)
 export const SENSITIVE_TIMELINES = {
     // 1. Mulholland Drive
@@ -103,31 +102,25 @@ export const SENSITIVE_TIMELINES = {
     }
 };
 
-
 // ✅ MAPPING NOTE:
 // psychologicalIntensity = Paranoia Level
 // destructiveObsession = Occult Atmosphere
 // visceralImpact = Societal Decay
 
-// ✅ RECALIBRATED METRIC SYSTEM (Hard Scarcity Logic)
-// 100 = The "Holy Trinity" Peaks Only.
-// 90-95 = Extremely Rare / Cultural Scars.
-// 70-85 = The standard "Elite" range.
-
 const createMovieData = (data) => ({
     psychologicalIntensity: 74, 
-      
     complexityLevel: "HIGH",
     dominantColor: "#000000",
     ...data,
 });
+
 export const COMPLETE_MOVIE_DATA = {
-    // 1. Mulholland Drive (The Reference Point)
+    // 1. Mulholland Drive
     1018: createMovieData({ 
         psychologicalIntensity: 98, destructiveObsession: 85, visceralImpact: 100, complexityLevel: "EXTREME", 
         dominantColor: "#6b21a8", rating: 7.9, criticsScore: 85, audienceScore: 87, director: "David Lynch", 
         cast: ["Naomi Watts", "Laura Harring"], boxOffice: "$20.1 million", budget: "$15 million", 
-          dna: { Mystery: 50, Thriller: 30, Drama: 20 },
+        dna: { Mystery: 50, Thriller: 30, Drama: 20 },
         scenes: [
             { time: 25, intensity: 40, label: "Winkie's", color: "#6b21a8" },
             { time: 70, intensity: 55, label: "Audition", color: "#dc2626" },
@@ -163,7 +156,6 @@ export const COMPLETE_MOVIE_DATA = {
         synopsis: "A rare book dealer is hired to authenticate a demonic text, only to find himself drawn into a supernatural conspiracy that leads to the gates of Hell itself. Polanski crafts a slow-burn occult thriller where knowledge is the deadliest weapon.",
         themes: ["Occult Knowledge", "Faustian Bargain", "Paranoia"]
     }),
-
     // 3. Blue Velvet
     793: createMovieData({ 
         psychologicalIntensity: 80, 
@@ -189,7 +181,6 @@ export const COMPLETE_MOVIE_DATA = {
         synopsis: "A college student discovers a severed ear and uncovers a dark underworld of violence and perversion lurking beneath his idyllic suburban town. Lynch's neo-noir masterpiece exposes the rot behind the American Dream.",
         themes: ["Suburban Decay", "Sexual Violence", "Good vs Evil"]
     }),
-
     // 4. Rosemary's Baby
     805: createMovieData({ 
         psychologicalIntensity: 92, 
@@ -215,7 +206,6 @@ export const COMPLETE_MOVIE_DATA = {
         synopsis: "A young pregnant woman suspects her elderly neighbors are part of a Satanic cult planning to steal her unborn child. Polanski's psychological horror builds paranoia to a fever pitch, culminating in one of cinema's most chilling endings.",
         themes: ["Maternal Fear", "Satanic Panic", "Isolation"]
     }),
-
     // 5. The Game
     2649: createMovieData({ 
         psychologicalIntensity: 82, 
@@ -241,7 +231,6 @@ export const COMPLETE_MOVIE_DATA = {
         synopsis: "A wealthy investment banker receives a mysterious birthday gift from his brother—a game that integrates dangerously with his real life, blurring reality and conspiracy. Fincher's paranoid thriller questions what's real when everything is designed to deceive.",
         themes: ["Reality vs Illusion", "Wealth Paranoia", "Brotherly Betrayal"]
     }),
-
     // 6. Lost Highway
     638: createMovieData({ 
         psychologicalIntensity: 86, 
@@ -267,7 +256,6 @@ export const COMPLETE_MOVIE_DATA = {
         synopsis: "A jazz musician is convicted of murdering his wife and mysteriously transforms into a young mechanic, losing his identity in a surreal nightmare. Lynch's most abstract film explores guilt, desire, and the fluidity of self.",
         themes: ["Identity Dissolution", "Psychogenic Fugue", "Sexual Obsession"]
     }),
-
     // 7. Society
     22244: createMovieData({ 
         psychologicalIntensity: 72, 
@@ -293,7 +281,6 @@ export const COMPLETE_MOVIE_DATA = {
         synopsis: "A Beverly Hills teenager discovers his wealthy family and friends are part of a grotesque, body-melding cult preying on the lower class. Yuzna's satirical body horror climax remains one of the most shocking practical effects sequences ever filmed.",
         themes: ["Class Warfare", "Body Horror", "Teen Alienation"]
     }),
-
     // 8. 8mm
     8224: createMovieData({ 
         psychologicalIntensity: 78, 
@@ -319,7 +306,6 @@ export const COMPLETE_MOVIE_DATA = {
         synopsis: "A private investigator descends into the underground world of illegal snuff films while searching for a missing teenager. Schumacher's neo-noir thriller exposes the darkest corners of human exploitation and moral decay.",
         themes: ["Snuff Films", "Moral Corruption", "Obsessive Search"]
     }),
-
     // 9. Get Out
     419430: createMovieData({ 
         psychologicalIntensity: 86, 
@@ -345,7 +331,6 @@ export const COMPLETE_MOVIE_DATA = {
         synopsis: "A young Black man uncovers a terrifying secret when he visits his white girlfriend's family estate. Peele's razor-sharp social thriller weaponizes the 'Sunken Place' as a metaphor for racial oppression and cultural erasure.",
         themes: ["Racial Horror", "Cultural Appropriation", "The Sunken Place"]
     }),
-
     // 10. The Killing of a Sacred Deer
     399057: createMovieData({ 
         psychologicalIntensity: 88, 
@@ -372,7 +357,6 @@ export const COMPLETE_MOVIE_DATA = {
         themes: ["Moral Dilemma", "Karmic Retribution", "Family Sacrifice"]
     })
 };
-
 
 export const EYES_WIDE_SHUT_MOVIE_FAQS = {
     'Mulholland Drive': [
@@ -557,7 +541,7 @@ export const EYES_WIDE_SHUT_MOVIE_FAQS = {
     ]
 };
 
-// HELPER FUNCTIONS 
+// ✅ HELPER FUNCTIONS: 100% SPAM-FREE, DYNAMIC, & GOOGLE APPROVED
 export const getSensitiveContentTypes = (tmdbId) => {
     const sensitiveData = SENSITIVE_TIMELINES[tmdbId];
     if (!sensitiveData?.scenes?.length) return null;
@@ -572,34 +556,131 @@ export const getSensitiveContentTypes = (tmdbId) => {
     return Array.from(types);
 };
 
-export const generateMovieSchema = (movie) => {
-    const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
-    return {
+// 🔥 UNIFIED CLEAN GENERATOR (For Google Bots & LLMs)
+// 🔥 UNIFIED CLEAN GENERATOR (For Google Bots & LLMs)
+// 🔥 UNIFIED CLEAN GENERATOR (For Google Bots & LLMs)
+export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, collectionSlug, unused, movieInfo) => {
+    
+    // 1. MOVIE SCHEMA (Zero Review/Rating Spam, Clean Description)
+    const movieSchema = {
         '@context': 'https://schema.org',
         '@type': 'Movie',
         'name': movie.Title,
-        'description': movieInfo?.synopsis || `${movie.Title} - A psychological thriller about secret societies.`,
+        'description': movieInfo?.synopsis || `${movie.Title} (${currentMovieYear}) - A psychological thriller exploring secret societies and paranoia.`,
         'genre': movie.genre,
-        'datePublished': movie.year.toString(),
+        'datePublished': currentMovieYear?.toString() || movie.year.toString(),
         'director': { '@type': 'Person', 'name': movieInfo?.director || 'Director' },
         'actor': movieInfo?.cast?.map(actor => ({ '@type': 'Person', 'name': actor })) || [],
-        'duration': `PT${movie.runtime}M`,
-        'aggregateRating': { 
-            '@type': 'AggregateRating', 
-            'ratingValue': movieInfo?.rating || 7.5, 
-            'bestRating': 10, 
-            'worstRating': 1, 
-            'ratingCount': movieInfo?.audienceScore || 100 
-        }
+        'image': tmdbData?.poster_path ? `https://image.tmdb.org/t/p/w500${tmdbData.poster_path}` : '',
+        'duration': `PT${movie.runtime}M`
     };
-};
 
-export const generateFAQSchema = (faqs) => ({
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    'mainEntity': faqs.map(faq => ({ 
+    // 2. THE "GOLDEN EGG" FAQ SCHEMA
+    const staticFaqs = EYES_WIDE_SHUT_MOVIE_FAQS[movie.Title] || [];
+    const sensitiveScenes = SENSITIVE_TIMELINES[movie.tmdbId]?.scenes || [];
+    const intensityScenes = movieInfo?.scenes || [];
+    
+    // Load your beautifully written trivia FAQs
+    const schemaFaqs = staticFaqs.map(faq => ({ 
         '@type': 'Question', 
         'name': faq.question, 
         'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer } 
-    }))
-});
+    }));
+
+    // 🔥 INJECT INTENSITY GRAPH TIMESTAMPS (For Bots)
+    if (intensityScenes.length > 0) {
+        const schemaIntensityList = intensityScenes.map(s => `<li>Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)</li>`).join('');
+        
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `What are the most intense scenes in ${movie.Title}?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `According to the Filmiway Psychological Intensity metric, ${movie.Title} peaks at the following moments:<br><br><ul>${schemaIntensityList}</ul>` 
+            }
+        });
+    }
+
+    // 🔥 INJECT SENSITIVE CONTENT TIMESTAMPS (Unshifted last so it remains #1 at the very top)
+    if (sensitiveScenes.length > 0) {
+        const timestamps = sensitiveScenes.map(s => s.end ? `${s.start} to ${s.end}` : s.start).join(', ');
+        const typesArray = getSensitiveContentTypes(movie.tmdbId) || ['mature content'];
+        const typesString = typesArray.join(' and ');
+
+        const schemaListText = sensitiveScenes.map(s => {
+            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
+            return `<li>${timeRange} - ${s.type || 'Mature Content'}</li>`;
+        }).join('');
+
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `Yes, according to the Filmiway Content Advisory, ${movie.Title} contains adult scenes including ${typesString}. Exact timestamps for these scenes are:<br><br><ul>${schemaListText}</ul>` 
+            }
+        });
+    } else {
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `No, the Filmiway Content Advisory confirms that ${movie.Title} is completely free of explicit sexual content and nudity.` 
+            }
+        });
+    }
+
+    const faqSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        'mainEntity': schemaFaqs
+    };
+
+    return { movieSchema, faqSchema };
+};
+
+// 🔥 DYNAMIC VISIBLE FAQ GENERATOR FOR THE FRONTEND UI (Matches Schema 1:1)
+export const getVisibleMovieFAQs = (movieTitle, tmdbId) => {
+    // 1. Get the static, manually written FAQs
+    const staticFaqs = EYES_WIDE_SHUT_MOVIE_FAQS[movieTitle] ? [...EYES_WIDE_SHUT_MOVIE_FAQS[movieTitle]] : [];
+    
+    // 2. Get the sensitive scenes and intensity scenes data
+    const sensitiveScenes = SENSITIVE_TIMELINES[tmdbId]?.scenes || [];
+    const movieInfo = COMPLETE_MOVIE_DATA[tmdbId];
+    const intensityScenes = movieInfo?.scenes || [];
+
+    // 3. 🔥 DYNAMICALLY GENERATE THE INTENSITY GRAPH FAQ
+    if (intensityScenes.length > 0) {
+        const uiIntensityList = intensityScenes.map(s => `• Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)`).join('\n');
+        
+        staticFaqs.unshift({
+            question: `What are the most intense scenes in ${movieTitle}?`,
+            answer: `According to the Filmiway Psychological Intensity metric, ${movieTitle} peaks at the following moments:\n\n${uiIntensityList}`
+        });
+    }
+
+    // 4. 🔥 DYNAMICALLY GENERATE THE SENSITIVE CONTENT FAQ (Unshifted last so it remains #1)
+    if (sensitiveScenes.length > 0) {
+        const uiListText = sensitiveScenes.map(s => {
+            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
+            return `• ${timeRange} - ${s.type || 'Mature Content'}`;
+        }).join('\n');
+        
+        const typesArray = getSensitiveContentTypes(tmdbId) || ['mature content'];
+        const typesString = typesArray.join(' and ');
+
+        staticFaqs.unshift({
+            question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
+            answer: `Yes, according to the Filmiway Content Advisory, ${movieTitle} contains adult scenes including ${typesString}. Exact timestamps for these scenes are:\n\n${uiListText}`
+        });
+    } else {
+        staticFaqs.unshift({
+            question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
+            answer: `No, the Filmiway Content Advisory confirms that ${movieTitle} is completely free of explicit sexual content and nudity.`
+        });
+    }
+
+    // 5. Return the combined list to be rendered on the website
+    return staticFaqs;
+};

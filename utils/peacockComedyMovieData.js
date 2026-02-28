@@ -25,54 +25,28 @@ export const COMPLETE_MOVIE_DATABASE = [
 // ✅ SENSITIVE TIMELINES (Peacock Comedy)
 export const SENSITIVE_TIMELINES = {
     // 1. Monty Python
-    762: { 
-        scenes: [
-            { start: "45:10", end: "48:30", type: "Nudity", severity: "Moderate" }, // Castle Anthrax
-            { start: "82:00", end: "83:30", type: "Gore", severity: "High" } // Killer Rabbit
-        ] 
-    },
+    762: { scenes: [] },
 
     // 2. Anchorman
-    8699: { 
-        scenes: [
-            { start: "38:20", end: "39:10", type: "Sexual Content", severity: "Mild" },
-            { start: "55:00", end: "56:00", type: "Language", severity: "Moderate" }
-        ] 
-    },
+    8699: { scenes: [] },
 
     // 3. My Cousin Vinny
-    10377: { scenes: [] }, // Mostly language
+    10377: { scenes: [] },
 
     // 4. Zoolander
-    9398: { 
-        scenes: [
-            { start: "65:30", end: "67:00", type: "Sexual Content", severity: "Moderate" } // Orgy reference
-        ] 
-    },
+    9398: { scenes: [] },
 
     // 5. Happy Gilmore
-    9614: { 
-        scenes: [
-            { start: "35:10", end: "37:00", type: "Violence", severity: "Moderate" } // Bob Barker Fight
-        ] 
-    },
+    9614: { scenes: [] },
 
     // 6. The 'Burbs
     11974: { scenes: [] },
 
     // 7. Along Came Polly
-    5966: { 
-        scenes: [
-            { start: "12:15", end: "12:30", type: "Nudity", severity: "High" } // The butt cheek scene
-        ] 
-    },
+    5966: { scenes: [] },
 
     // 8. The Fall Guy
-    746036: { 
-        scenes: [
-            { start: "15:20", end: "18:00", type: "Violence", severity: "Moderate" }
-        ] 
-    },
+    746036: { scenes: [] },
 
     // 9. American Fiction
     1056360: { scenes: [] },
