@@ -15,12 +15,13 @@ import MovieDetailsSection from '../../../components/MovieDetailsSection';
 import TMDBAttribution from '../../../components/TMDBAttribution';
 
 // ✅ IMPORT DATA INCLUDING FAQs
-import { generateCleanMovieSchema } from '../../../utils/cleanMovieSchema';
+
 import {
   COMPLETE_MOVIE_DATABASE, 
   COMPLETE_MOVIE_DATA,
   SENSITIVE_TIMELINES,
-  EYES_WIDE_SHUT_MOVIE_FAQS 
+  EYES_WIDE_SHUT_MOVIE_FAQS,
+  generateCleanMovieSchema // ✅ WE ADDED THIS HERE!
 } from '../../../utils/eyesWideShutMovieData';
 
 const COLORS = {
