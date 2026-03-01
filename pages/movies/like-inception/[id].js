@@ -14,83 +14,13 @@ import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
 import TMDBAttribution from '../../../components/TMDBAttribution';
 
-// ✅ IMPORT DATA
-import { generateCleanMovieSchema } from '../../../utils/cleanMovieSchema';
+// ✅ IMPORT DATA & NEW SCHEMA GENERATOR
 import {
   COMPLETE_MOVIE_DATABASE, 
   COMPLETE_MOVIE_DATA,
-  SENSITIVE_TIMELINES 
+  SENSITIVE_TIMELINES,
+  generateCleanMovieSchema // ✅ Pulled directly from your updated data file!
 } from '../../../utils/movieData';
-
-// ✅ INTEGRATED FAQS (4 per film)
-const INCEPTION_COLLECTION_FAQS = {
-    'Primer': [
-        { question: "Is the timeline in Primer solvable?", answer: "Yes, but it is incredibly difficult. Fans have created elaborate flowcharts to track the 9+ timelines created by the recursive use of the box." },
-        { question: "What happens to the doubles?", answer: "The film implies that multiple versions of Aaron and Abe exist simultaneously, some locked away or drugged by their future selves." },
-        { question: "Why do their ears bleed?", answer: "Ear bleeding is a symptom of physical degradation caused by long-term time travel, suggesting the human body cannot handle repeated causal loops." },
-        { question: "How long were they in the box?", answer: "To travel back multiple days, they had to sit in the box for that exact duration (e.g., sit for 24 hours to go back 24 hours), requiring immense patience." }
-    ],
-    'Synecdoche, New York': [
-        { question: "Is Caden dead the whole time?", answer: "Many theories suggest Caden is dying throughout the film, and the play is his brain processing his final moments. The fading sets and time jumps support this." },
-        { question: "What does the burning house symbolize?", answer: "It represents Hazel's choice to live authentically even while being consumed by mortality. She buys a house that is on fire and lives in it until she dies." },
-        { question: "Why does the set keep growing?", answer: "The set represents Caden's mind. As he tries to capture the full complexity of life, the simulation becomes as large and unmanageable as reality itself." },
-        { question: "Who is the cleaning lady?", answer: "The cleaning lady who gives Caden his final instructions represents death or God, guiding him to his final rest and release from his artistic obsession." }
-    ],
-    'Mulholland Drive': [
-        { question: "Who is the cowboy?", answer: "The Cowboy represents Hollywood's gatekeepers—a surreal enforcer of the rules who appears when the dream (Betty's life) starts to deviate from the script." },
-        { question: "Is the first half a dream?", answer: "Yes. The consensus is that the first 2/3 of the film is Diane's dream of being 'Betty,' a successful actress, before reality crashes in." },
-        { question: "What does the blue box mean?", answer: "The blue box is the portal between the dream world and reality. Opening it signifies the dreamer waking up and the fantasy collapsing." },
-        { question: "Who is the homeless figure?", answer: "The figure behind Winkie's diner represents the ugly, terrifying truth of Diane's guilt and failure, hidden behind the shiny facade of her Hollywood dream." }
-    ],
-    'Coherence': [
-        { question: "Which Em survives?", answer: "The Em we follow at the end is not the original Em. She murdered a version of herself in a 'better' timeline to take her place, but the final phone call reveals she wasn't successful." },
-        { question: "How much was improvised?", answer: "Almost all of it. The actors were given index cards with motivations for each scene but no script, creating genuine confusion and paranoia." },
-        { question: "What do the glow sticks mean?", answer: "The glow sticks (red vs blue) are markers of different realities. The characters realize they have crossed into a different timeline when the glow stick colors don't match." },
-        { question: "Is the ending happy?", answer: "No. It is a chilling subversion. Em thinks she has stolen a perfect life, but the existence of two Ems in one timeline means her chaos is just beginning." }
-    ],
-    'Donnie Darko': [
-        { question: "What is the Tangent Universe?", answer: "It is an unstable parallel reality created when the jet engine falls. Donnie is the 'Living Receiver' chosen to return the artifact to the Primary Universe to prevent a black hole collapse." },
-        { question: "Does Donnie have to die?", answer: "Yes. To close the loop and save the universe (and his girlfriend Gretchen), Donnie must choose to stay in his bed and be crushed by the engine." },
-        { question: "Who is Grandma Death?", answer: "Roberta Sparrow is a former 'Living Receiver' who wrote the book on time travel. She wanders aimlessly, waiting for Donnie to fulfill the prophecy she wrote." },
-        { question: "Why is Frank a rabbit?", answer: "Frank is a 'Manipulated Dead'—someone who died in the Tangent Universe. His scary costume is simply what he was wearing when he was shot, appearing to Donnie as a ghost." }
-    ],
-    'Enemy': [
-        { question: "What does the spider mean?", answer: "The spider represents women, entrapment, and the fear of commitment/motherhood in the protagonist's subconscious. The final giant spider is his wife, symbolizing his total entrapment." },
-        { question: "Are they the same person?", answer: "Yes. Adam and Anthony are two sides of the same man's personality—the bored husband and the adulterous actor—battling for control." },
-        { question: "What is the car crash scene?", answer: "The crash kills the 'Anthony' personality and his mistress, leaving 'Adam' as the surviving persona who tries to return to his wife, only to fall back into old habits." },
-        { question: "Why does he sigh at the end?", answer: "The sigh indicates resignation. When he sees the giant spider (his wife), he accepts that he is trapped in his life and must likely cheat/escape again to cope." }
-    ],
-    'The Fountain': [
-        { question: "Are there three time periods?", answer: "Director Darren Aronofsky suggests there is only one reality: the present-day scientist Tom. The Conquistador story is the book his wife wrote, and the space future is his internal meditation on grief." },
-        { question: "What does Xibalba symbolize?", answer: "Xibalba is the Maya underworld, a place of death and rebirth. For Tom, reaching Xibalba means accepting that death is not a disease to be cured, but a part of creation." },
-        { question: "Did he find the cure?", answer: "No, he failed to save his wife's body. However, he succeeded in saving himself by finally finishing her book and accepting her death, finding spiritual peace." },
-        { question: "Why does he eat the tree bark?", answer: "In the Conquistador story, his greed for immortality makes him consume the tree, which turns him into flora. It warns that the selfish desire to live forever destroys humanity." }
-    ],
-    'Mr. Nobody': [
-        { question: "Which life is real?", answer: "None of them and all of them. The entire film takes place in the mind of the 9-year-old boy at the train station, paralyzingly envisioning every possible future before making a choice." },
-        { question: "What is the Big Crunch?", answer: "It is the theory that the universe will stop expanding and reverse. In the film, time starts moving backward at the moment of the Big Crunch, allowing Nemo to undo his choices." },
-        { question: "Who is the old Nemo?", answer: "Old Nemo is the consciousness of the boy projecting himself to the end of time. He is the observer checking which path leads to the least regret." },
-        { question: "What does 'checkmate' mean?", answer: "It refers to a state where any move is a bad move (zugzwang). Nemo realizes the only way to avoid pain is not to choose, which is why he remains at the station." }
-    ],
-    'Shutter Island': [
-        { question: "Is he insane or being gaslit?", answer: "He is Andrew Laeddis, a patient at the asylum. The 'investigation' is an elaborate role-play designed by his doctors to help him break his delusion." },
-        { question: "Does he accept reality at the end?", answer: "Yes. His final line ('To live as a monster or to die as a good man?') implies he is sane but chooses lobotomy over living with the guilt of killing his wife." },
-        { question: "Who is the 'partner' Chuck?", answer: "Chuck is actually Dr. Sheehan, his primary psychiatrist. He plays along with the delusion to monitor Andrew and keep him safe during the experiment." },
-        { question: "What is the Law of 4?", answer: "The 'Law of 4' is the clue that reveals the anagrams in names (Edward Daniels = Andrew Laeddis). It proves his entire persona is a constructed fiction." }
-    ],
-    'The Usual Suspects': [
-        { question: "Is Verbal Kint really Keyser Söze?", answer: "Yes. The limp, the weakness, and the story were all a fabrication. He used details from the bulletin board in the office to construct the narrative." },
-        { question: "Did the heist actually happen?", answer: "The core event (the boat massacre) happened, but the details involving the other criminals were likely manipulated or invented by Kint to frame Keaton." },
-        { question: "Why did he kill his own family?", answer: "To prove to his enemies that he had no weaknesses. By destroying what he loved, he removed their leverage, establishing his terrifying mythos." },
-        { question: "What gave him away?", answer: "The detective realizes too late that the names and places in Kint's story (Redfoot, Kobayashi) were pulled from random objects in the interrogation room." }
-    ],
-    'Predestination': [
-        { question: "Who are the parents?", answer: "Jane and John are the parents of themselves. It is a closed loop where the same person is the mother, father, and child." },
-        { question: "Does the loop ever end?", answer: "No. The movie implies a fatalistic universe where the loop is infinite. The main character must become the Fizzle Bomber to ensure his own creation." },
-        { question: "Who is the Fizzle Bomber?", answer: "The Fizzle Bomber is the future version of the protagonist (John/Jane). The psychosis from excessive time travel turned him into the villain he spent his life hunting." },
-        { question: "What is the snake metaphor?", answer: "The 'Ouroboros' (snake eating its tail) is referenced constantly. It symbolizes the character's life: a self-contained cycle of creation and destruction with no beginning or end." }
-    ]
-};
 
 const COLORS = {
   accent: '#EAB308', // Yellow/Amber for Inception
@@ -277,13 +207,10 @@ const InceptionBreadcrumb = ({ movie }) => (
     </motion.nav>
 );
 
-
-
 const InceptionMoviePage = ({ movie, tmdbData }) => {
     const router = useRouter();
-    // Note: Inception collection uses the generic movieData file.
     const movieInfo = COMPLETE_MOVIE_DATA?.[movie.tmdbId] || {};
-    const [movieData, setMovieData] = useState(tmdbData); // Initialize with SS data
+    const [movieData, setMovieData] = useState(tmdbData);
     const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -303,9 +230,44 @@ const InceptionMoviePage = ({ movie, tmdbData }) => {
     const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
-    // ✅ SEO FIX: Join title into a single string variable to prevent hydration markers ()
-    const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Movies Like Inception | Filmiway'].join('');
-    const cleanSEODesc = [movie.Title, ' (', currentMovieYear, ') - A mind-bending masterpiece like Inception. Analysis, ratings & where to stream.'].join('');
+    // ✅ MASTERSTROKE: Dynamically add sensitive scene timestamps to meta description
+    const rawScenes = SENSITIVE_TIMELINES?.[movie.tmdbId]?.scenes || [];
+    
+    // Filter out kissing for the meta description to keep it heavy-hitting
+    const heavyScenes = rawScenes.filter(s => {
+        const t = s.type.toLowerCase();
+        return t.includes('sex') || t.includes('nudity');
+    });
+
+    let sceneNotice = 'Detailed Parents Guide: No explicit sexual content or nudity.';
+
+    if (heavyScenes.length > 0) {
+        // Get first 2 heavy timestamps only (best for SEO length)
+        const firstTimestamps = heavyScenes
+          .slice(0, 2)
+          .map(s => s.end ? `${s.start}–${s.end}` : s.start)
+          .join(', ');
+
+        const andMore = heavyScenes.length > 2 ? '...' : '';
+        sceneNotice = `Detailed Parents Guide with exact timestamps for nudity & sexual content (e.g., ${firstTimestamps}${andMore}).`;
+    }
+
+    // ✅ Clean standalone SEO title
+    const cleanSEOTitle = [
+        movie.Title,
+        ' (',
+        currentMovieYear,
+        ') | Filmiway'
+    ].join('');
+
+    // ✅ Final standalone meta description
+    const cleanSEODesc = [
+        movie.Title,
+        ' (',
+        currentMovieYear,
+        ') – ',
+        sceneNotice
+    ].join('');
 
     const collectionSlug = router.pathname.split('/')[2];
     const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
@@ -333,12 +295,12 @@ const InceptionMoviePage = ({ movie, tmdbData }) => {
 
                 {/* Meta Tags */}
                 <meta property="og:title" content={cleanSEOTitle} />
-                <meta property="og:description" content="A mind-bending journey into perception and reality." />
+                <meta property="og:description" content={cleanSEODesc} />
                 <meta property="og:type" content="video.movie" />
                 <meta property="og:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content={cleanSEOTitle} />
-                <meta name="twitter:description" content="A mind-bending journey into perception and reality." />
+                <meta name="twitter:description" content={cleanSEODesc} />
                 <meta name="twitter:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
 
                 {/* ✅ SCHEMA INJECTION */}
@@ -357,7 +319,6 @@ const InceptionMoviePage = ({ movie, tmdbData }) => {
             <SubtleFilmGrain />
             <div className="absolute inset-0"><CinematicBackground /></div>
             
-            
             <div className="relative z-10 pt-10 sm:pt-12 lg:pt-16">
                 
                 {/* ✅ HIDDEN H1 FOR SEO PARITY */}
@@ -368,12 +329,12 @@ const InceptionMoviePage = ({ movie, tmdbData }) => {
                     <OptimizedBanner movie={movie} movieData={movieData} richData={movieInfo} trailer={trailer} isMobile={isMobile} />
                     
                     <motion.div 
-    id="watch" 
-    initial={{ opacity: 0, y: 20 }} 
-    animate={{ opacity: 1, y: 0 }} 
-    transition={{ duration: 0.5 }} // Faster, no massive delay
-    className="space-y-8 sm:space-y-12 px-3 sm:px-4 lg:px-6"
->
+                        id="watch" 
+                        initial={{ opacity: 0, y: 20 }} 
+                        animate={{ opacity: 1, y: 0 }} 
+                        transition={{ duration: 0.5 }} 
+                        className="space-y-8 sm:space-y-12 px-3 sm:px-4 lg:px-6"
+                    >
                         <MovieDetailsSection movie={movie} fromInceptionCollection={true} />
                     </motion.div>
                     

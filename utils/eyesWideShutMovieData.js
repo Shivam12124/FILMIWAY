@@ -97,7 +97,7 @@ export const SENSITIVE_TIMELINES = {
     // 10. The Killing of a Sacred Deer
     399057: {
         scenes: [
-            { start: "0:09:20", end: "0:11:01", type: "Intimate Scene & Nudity", severity: "High" }
+            { start: "0:09:20", end: "0:11:01", type: "Sexual Content & Nudity", severity: "High" }
         ]
     }
 };
@@ -548,16 +548,13 @@ export const getSensitiveContentTypes = (tmdbId) => {
     const types = new Set();
     sensitiveData.scenes.forEach(scene => {
         const lowerType = scene.type.toLowerCase();
-        if (lowerType.includes('sex') || lowerType.includes('intimate')) types.add('intimate scenes');
+        // 🔥 FIX: Replaced 'intimate' with your preferred 'sexual content'
+        if (lowerType.includes('sex')) types.add('sexual content');
         if (lowerType.includes('nudity')) types.add('nudity');
-        if (lowerType.includes('violence') || lowerType.includes('gore')) types.add('graphic violence');
-        if (lowerType.includes('self-harm') || lowerType.includes('disturbing')) types.add('disturbing content');
     });
     return Array.from(types);
 };
 
-// 🔥 UNIFIED CLEAN GENERATOR (For Google Bots & LLMs)
-// 🔥 UNIFIED CLEAN GENERATOR (For Google Bots & LLMs)
 // 🔥 UNIFIED CLEAN GENERATOR (For Google Bots & LLMs)
 export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, collectionSlug, unused, movieInfo) => {
     
@@ -587,7 +584,7 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
         'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer } 
     }));
 
-    // 🔥 INJECT INTENSITY GRAPH TIMESTAMPS (For Bots)
+    // 🔥 INJECT INTENSITY GRAPH TIMESTAMPS (Universal Naming)
     if (intensityScenes.length > 0) {
         const schemaIntensityList = intensityScenes.map(s => `<li>Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)</li>`).join('');
         
@@ -596,14 +593,13 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
             'name': `What are the most intense scenes in ${movie.Title}?`,
             'acceptedAnswer': { 
                 '@type': 'Answer', 
-                'text': `According to the Filmiway Psychological Intensity metric, ${movie.Title} peaks at the following moments:<br><br><ul>${schemaIntensityList}</ul>` 
+                'text': `According to the Filmiway Intensity metric, ${movie.Title} peaks at the following moments:<br><br><ul>${schemaIntensityList}</ul>` 
             }
         });
     }
 
     // 🔥 INJECT SENSITIVE CONTENT TIMESTAMPS (Unshifted last so it remains #1 at the very top)
     if (sensitiveScenes.length > 0) {
-        const timestamps = sensitiveScenes.map(s => s.end ? `${s.start} to ${s.end}` : s.start).join(', ');
         const typesArray = getSensitiveContentTypes(movie.tmdbId) || ['mature content'];
         const typesString = typesArray.join(' and ');
 
@@ -634,7 +630,7 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
     const faqSchema = {
         '@context': 'https://schema.org',
         '@type': 'FAQPage',
-        'name': `Parents Guide and FAQ for ${movie.Title}`, // 🔥 ADD THIS ONE LINE!
+        'name': `Parents Guide and FAQ for ${movie.Title}`,
         'mainEntity': schemaFaqs
     };
 
@@ -657,19 +653,19 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId) => {
         
         staticFaqs.unshift({
             question: `What are the most intense scenes in ${movieTitle}?`,
-            answer: `According to the Filmiway Psychological Intensity metric, ${movieTitle} peaks at the following moments:\n\n${uiIntensityList}`
+            answer: `According to the Filmiway Intensity metric, ${movieTitle} peaks at the following moments:\n\n${uiIntensityList}`
         });
     }
 
     // 4. 🔥 DYNAMICALLY GENERATE THE SENSITIVE CONTENT FAQ (Unshifted last so it remains #1)
     if (sensitiveScenes.length > 0) {
+        const typesArray = getSensitiveContentTypes(tmdbId) || ['mature content'];
+        const typesString = typesArray.join(' and ');
+
         const uiListText = sensitiveScenes.map(s => {
             const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
             return `• ${timeRange} - ${s.type || 'Mature Content'}`;
         }).join('\n');
-        
-        const typesArray = getSensitiveContentTypes(tmdbId) || ['mature content'];
-        const typesString = typesArray.join(' and ');
 
         staticFaqs.unshift({
             question: `Does ${movieTitle} contain adult or inappropriate scenes?`,

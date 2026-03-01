@@ -1199,28 +1199,8 @@ const getCollectionContent = () => {
             text2: "After watching this collection, you will question every high-society gala, every private country club, and every unexplained coincidence in the news. Welcome to cinema's most unsettling, reality-bending rabbit holes."
         }
     };
-    return {
-        badge: "Elite Conspiracy Thrillers",
-        title: "Eyes Wide Shut",
-        description: "Films about secret societies, occult rituals, and the hidden world of the ultra-rich. Paranoid descents into forbidden territory where curiosity gets you killed.",
-        selection: {
-            text1: "Masked rituals. Satanic cults. Shadow hierarchies. These films reveal what happens when outsiders stumble into the elite's secret playgroundsâ€”and realize they were never supposed to leave.",
-            text2: "Each film follows protagonists who breach the invisible wall between ordinary life and the ruling class's hidden ceremonies. Dream logic. Surveillance paranoia. No one will believe what they saw."
-        },
-        ranking: {
-            text: "Ranked by conspiracy depth, occult atmosphere, and how effectively each film makes you question who really runs the world.",
-            points: [
-                "Secret society authenticity",
-                "Paranoia & surveillance dread",
-                "Occult ritual atmosphere",
-                "Elite power commentary"
-            ]
-        },
-        experience: {
-            text1: "From Kubrick's final warning to modern exposÃ©s of wealth and ritual, these films create suffocating dreadâ€”the sense of being watched by forces you cannot comprehend.",
-            text2: "You'll question every gala, every private club, every unexplained death of a whistleblower. Welcome to cinema's most unsettling rabbit holes."
-        }
-    };
+    
+        
 
 
 
@@ -1440,27 +1420,27 @@ const getCollectionContent = () => {
                 text2: "Each film has been selected for its ability to maintain relentless tension throughoutâ€”while showcasing brilliantly crafted schemes and unforgettable criminal masterminds you'll root for."
             }
         };
-    } else if (collection.slug === 'best-crime-thriller-movies') {
+} else if (collection.slug === 'best-crime-thriller-movies') {
         return {
             badge: "Crime Thriller Cinema",
-            title: "Crime Thriller",
-            description: "Intense crime thrillers with ruthless investigations. From Heat to The Departedâ€”ranked by suspense intensity, moral complexity & psychological depth.",
+            title: "Ruthless Crime Thrillers",
+            description: "Intense crime thrillers with ruthless investigations. Explore a definitive ranking defined by suspense intensity, moral complexity, and psychological depth.",
             selection: {
-                text1: "From cat-and-mouse detective games to criminal underworldsâ€”these films expose the dark psychology of crime while maintaining relentless tension and complex moral questions.",
-                text2: "Each crime thriller features brilliant investigations, morally gray protagonists, and the psychological warfare between cops and criminals that defines masterful crime cinema."
+                text1: "From high-stakes cat-and-mouse detective games to the grit of the criminal underworld—these films expose the dark psychology of crime while maintaining relentless tension and complex moral questions.",
+                text2: "Each selection features brilliant investigations, morally gray protagonists, and the high-level psychological warfare between cops and criminals that defines masterful crime cinema."
             },
             ranking: {
-                text: "Our suspense intensity index evaluates investigative complexity, moral ambiguity depth, and the sophistication of crime storytelling techniques used throughout each film.",
+                text: "Our Suspense Intensity Index evaluates investigative complexity, the depth of moral ambiguity, and the sophisticated crime storytelling techniques used throughout each film.",
                 points: [
-                    "Suspense intensity level",
+                    "Filmiway Intensity level",
                     "Investigative complexity",
                     "Moral ambiguity depth",
                     "Criminal psychology insight"
                 ]
             },
             experience: {
-                text1: "Whether you're seeking intense investigations or profound moral exploration, this collection delivers cinema's most gripping crime thriller experiences that'll challenge your sense of justice.",
-                text2: "Each film has been selected for its ability to maintain relentless tension throughoutâ€”while exploring the psychology of crime and creating unforgettable criminal masterminds."
+                text1: "Whether you're seeking intense investigations or profound moral exploration, this collection delivers cinema's most gripping crime thriller experiences that will challenge your sense of justice.",
+                text2: "Every film is selected for its ability to maintain relentless tension—while stripping back the psychology of crime and introducing unforgettable criminal masterminds."
             }
         };
   } else if (collection.slug === 'best-detective-thriller-movies') {
@@ -1944,11 +1924,12 @@ subtitle: "While everyone searches Netflix, these classics hide in plain sight. 
             title: "10 Shattered-Reality Movies Like Shutter Island (Ranked by Paranoia)",
             subtitle: "trust the frame. Gaslighting, identity collapse & the anatomy of psychological denial."
         };  
-    } else if (collection.slug === 'best-crime-thriller-movies') {
-        return {
-            title: "Best Crime Thrillers: 10 Ruthless Films",
-            subtitle: "From Heat to The Departedâ€”heists, investigations & moral complexity"
-        };
+} else if (collection.slug === 'best-crime-thriller-movies') {
+    return {
+        title: "Top 10 Crime Thrillers That Feel Dangerously Real",
+        subtitle: "The definitive ranking of the 10 grittiest crime thrillers ever made. Discover ruthless heists, dark investigations, and exact parents guide timestamps."
+    };
+
     } else if (collection.slug === 'best-heist-thriller-movies') {
         return {
             title: "Best Heist Movies: 10 Master Robberies",
@@ -2772,14 +2753,14 @@ const getStaticMetaContent = () => {
             twitterTitle: "Can't Forget Shutter Island? Watch These 10 Twisted Films",
             progressText: `of Top ${movies.length} Movies Like Shutter Island`
         };
-    } else if (collection.slug === 'best-crime-thriller-movies') {
-        return {
-            title: "10 Best Crime Thrillers: Ruthless & Gritty",
-            description: "From Heat to The Departed. The 10 grittiest crime thrillers featuring heists, investigations, and moral gray areas. Includes sensitive content timestamps.", 
-            keywords: "best crime thriller movies, gritty crime films, heat movie, the departed",
-            ogTitle: "10 Best Crime Thrillers: Heat to The Departed",
-            twitterTitle: "10 Ruthless Crime Thrillers You Can't Miss (Heat, Departed)",
-            progressText: `of Top ${movies.length} Crime Thriller Movies`
+} else if (collection.slug === 'best-crime-thriller-movies') {
+    return {
+        title: "Top 10 Crime Thrillers That Feel Dangerously Real",
+        description: "The definitive ranking of the 10 grittiest crime thrillers ever made. Discover ruthless heists, dark investigations, and exact parents guide timestamps.",
+        keywords: "best crime thriller movies, top crime thrillers ranked, intense crime films, heat 1995, the departed, gritty thrillers",
+        ogTitle: "10 Crime Thrillers That Feel Dangerously Real (Ranked)",
+        twitterTitle: "10 Crime Thrillers So Intense They Feel Real 🎬",
+        progressText: `of Top ${movies.length} Crime Thrillers`
         };
     } else if (collection.slug === 'best-heist-thriller-movies') {
         return {

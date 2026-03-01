@@ -31,18 +31,13 @@ const createMovieData = (data) => ({
 });
 
 export const SENSITIVE_TIMELINES = {
-    949: { scenes: [
-        { start: "4:23", end: "5:13", type: "Kissing", severity: "Mild" },
-        { start: "22:00", end: "22:07", type: "Kissing", severity: "Mild" },
-        { start: "30:50", end: "31:17", type: "Kissing", severity: "Mild" },
-        { start: "1:07:35", end: "1:07:38", type: "Kissing", severity: "Mild" }
-    ]},
+    949: { scenes: [] },
     2118: { scenes: [
-        { start: "12:02", end: "12:10", type: "Partial nudity", severity: "Mild" },
-        { start: "35:00", end: "35:08", type: "Partial nudity", severity: "Mild" },
-        { start: "57:28", end: "57:34", type: "Partial nudity", severity: "Mild" },
-        { start: "1:04:05", end: "1:04:10", type: "Partial nudity", severity: "Mild", description: "Photographs" },
-        { start: "1:07:35", end: "1:07:43", type: "Kissing", severity: "Mild" }
+        { start: "12:02", end: "12:10", type: "Nudity", severity: "Mild" },
+        { start: "35:00", end: "35:08", type: "Nudity", severity: "Mild" },
+        { start: "57:28", end: "57:34", type: "Nudity", severity: "Mild" },
+        { start: "1:04:05", end: "1:04:10", type: "Nudity", severity: "Mild", description: "Photographs" },
+        
     ]},
     6977: { scenes: [] },
     1949: { scenes: [] },
@@ -50,23 +45,19 @@ export const SENSITIVE_TIMELINES = {
     629: { scenes: [
         { start: "1:00:15", end: "1:00:47", type: "Sexual content", severity: "Moderate" }
     ]},
-    322: { scenes: [
-        { start: "11:45", end: "12:16", type: "Kissing", severity: "Mild" },
-        { start: "2:09:45", end: "2:10:16", type: "Kissing", severity: "Mild", description: "Passionate" }
-    ]},
+    322: { scenes: [] },
     11423: { scenes: [
         { start: "9:58", end: "10:10", type: "Sex", severity: "Moderate" },
         { start: "54:34", end: "54:55", type: "Nudity", severity: "Mild", description: "Men" },
         { start: "1:01:12", end: "1:02:40", type: "Sexual content", severity: "Moderate", description: "Man" },
-        { start: "1:25:12", end: "1:25:47", type: "Partial nudity", severity: "Mild", description: "Woman" }
+        { start: "1:25:12", end: "1:25:47", type: "Nudity", severity: "Mild", description: "Woman" }
     ]},
     1422: { scenes: [
-        { start: "1:13:18", end: "1:13:22", type: "Kissing", severity: "Mild" },
-        { start: "1:21:50", end: "1:22:20", type: "Kissing", severity: "Mild", description: "Passionate + Undressing" },
-        { start: "1:24:40", end: "1:24:47", type: "Sexual gesture", severity: "Mild" }
+        
+        { start: "1:24:40", end: "1:24:47", type: "Sexual content", severity: "Mild" }
     ]},
     2034: { scenes: [
-        { start: "52:00", end: "52:13", type: "Kissing", severity: "Mild" },
+        
         { start: "1:37:55", end: "1:39:45", type: "Nudity", severity: "Moderate" }
     ]}
 };
@@ -361,45 +352,12 @@ export const CRIME_THRILLER_FAQS = {
     ]
 };
 
-// 9️⃣ UTILITY FUNCTIONS
+// 9️⃣ UTILITY FUNCTIONS: 100% SPAM-FREE, DYNAMIC, & GOOGLE APPROVED
 export const getTMDBPosterUrl = (posterPath, size = 'medium') => {
     if (!posterPath) return null;
     const posterSize = TMDB_CONFIG.POSTER_SIZES[size] || TMDB_CONFIG.POSTER_SIZES.medium;
     return `${TMDB_CONFIG.IMAGE_BASE_URL}/${posterSize}${posterPath}`;
 };
-
-export const getSensitiveContentTypes = (tmdbId) => {
-    const sensitiveData = SENSITIVE_TIMELINES[tmdbId];
-    if (!sensitiveData?.scenes?.length) return null;
-    const types = new Set();
-    sensitiveData.scenes.forEach(scene => {
-        const lowerType = scene.type.toLowerCase();
-        if (lowerType.includes('sex')) types.add('intimate scenes');
-        if (lowerType.includes('nudity')) types.add('nudity');
-        if (lowerType.includes('kissing')) types.add('kissing scenes');
-    });
-    return Array.from(types);
-};
-
-export const generateFAQData = (movie) => {
-    return CRIME_THRILLER_FAQS[movie.Title] || [];
-};
-
-export const generateMovieSchema = (movie) => {
-    const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
-    const posterUrl = FALLBACK_POSTERS[movie.tmdbId] || '';
-    return {
-        "@context": "https://schema.org", "@type": "Movie", "name": movie.Title, "description": movieInfo?.synopsis || `${movie.Title} - A gripping crime thriller`,
-        "genre": movie.genre, "datePublished": movie.year.toString(), "director": { "@type": "Person", "name": movieInfo?.director || "Acclaimed Director" },
-        "actor": movieInfo?.cast?.map(actor => ({ "@type": "Person", "name": actor })) || [], "duration": `PT${movie.runtime}M`, "image": posterUrl,
-        "aggregateRating": { "@type": "AggregateRating", "ratingValue": movieInfo?.rating || 7.0, "bestRating": 10, "worstRating": 1, "ratingCount": movieInfo?.audienceScore || 100 }
-    };
-};
-
-export const generateFAQSchema = (faqs) => ({
-    "@context": "https://schema.org", "@type": "FAQPage",
-    "mainEntity": faqs.map(faq => ({ "@type": "Question", "name": faq.question, "acceptedAnswer": { "@type": "Answer", "text": faq.answer } }))
-});
 
 export const fetchMovieFromTMDB = async (tmdbId) => ({ poster_path: null, title: COMPLETE_MOVIE_DATABASE.find(m => m.tmdbId === tmdbId)?.Title || 'Unknown Movie' });
 export const fetchWatchProviders = async (tmdbId, region = 'US') => null;
@@ -416,4 +374,148 @@ export const formatSensitiveTimeline = (tmdbId) => {
             description: scene.description || ''
         }))
     };
+};
+
+// 🔥 PARSER FIX: Kept clean to focus only on high-value dealbreakers
+export const getSensitiveContentTypes = (tmdbId) => {
+    const sensitiveData = SENSITIVE_TIMELINES[tmdbId];
+    if (!sensitiveData?.scenes?.length) return null;
+    const types = new Set();
+    sensitiveData.scenes.forEach(scene => {
+        const lowerType = scene.type.toLowerCase();
+        // 🔥 FIX: Replaced 'intimate' with your preferred 'sexual content'
+        if (lowerType.includes('sex')) types.add('sexual content');
+        if (lowerType.includes('nudity')) types.add('nudity');
+    });
+    return Array.from(types);
+};
+
+// 🔥 UNIFIED CLEAN GENERATOR (For Google Bots & LLMs)
+export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, collectionSlug, unused, movieInfo) => {
+    
+    // 1. MOVIE SCHEMA (Zero Review/Rating Spam, Clean Description)
+    const movieSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'Movie',
+        'name': movie.Title,
+        'description': movieInfo?.synopsis || `${movie.Title} (${currentMovieYear}) - A gripping crime thriller.`,
+        'genre': movie.genre,
+        'datePublished': currentMovieYear?.toString() || movie.year.toString(),
+        'director': { '@type': 'Person', 'name': movieInfo?.director || 'Director' },
+        'actor': movieInfo?.cast?.map(actor => ({ '@type': 'Person', 'name': actor })) || [],
+        'image': tmdbData?.poster_path ? `https://image.tmdb.org/t/p/w500${tmdbData.poster_path}` : (FALLBACK_POSTERS[movie.tmdbId] || ''),
+        'duration': `PT${movie.runtime}M`
+        // 🚫 NO 'aggregateRating' or 'review' object here!
+    };
+
+    // 2. THE "GOLDEN EGG" FAQ SCHEMA
+    const staticFaqs = CRIME_THRILLER_FAQS[movie.Title] || [];
+    const sensitiveScenes = SENSITIVE_TIMELINES[movie.tmdbId]?.scenes || [];
+    const intensityScenes = movieInfo?.scenes || [];
+    
+    // Load your beautifully written trivia FAQs
+    const schemaFaqs = staticFaqs.map(faq => ({ 
+        '@type': 'Question', 
+        'name': faq.question, 
+        'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer } 
+    }));
+
+    // 🔥 INJECT INTENSITY GRAPH TIMESTAMPS (Universal Naming)
+    if (intensityScenes.length > 0) {
+        const schemaIntensityList = intensityScenes.map(s => `<li>Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)</li>`).join('');
+        
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `What are the most intense scenes in ${movie.Title}?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `According to the Filmiway Intensity metric, ${movie.Title} peaks at the following moments:<br><br><ul>${schemaIntensityList}</ul>` 
+            }
+        });
+    }
+
+    // 🔥 INJECT SENSITIVE CONTENT TIMESTAMPS (Unshifted last so it remains #1 at the very top)
+    if (sensitiveScenes.length > 0) {
+        const typesArray = getSensitiveContentTypes(movie.tmdbId) || ['mature content'];
+        const typesString = typesArray.join(' and ');
+
+        const schemaListText = sensitiveScenes.map(s => {
+            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
+            const fullType = s.severity ? `${s.type} (${s.severity})` : (s.type || 'Mature Content');
+            return `<li>${timeRange} - ${fullType}</li>`;
+        }).join('');
+
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `Yes, according to the Filmiway Content Advisory, ${movie.Title} contains adult scenes including ${typesString}. Exact timestamps for these scenes are:<br><br><ul>${schemaListText}</ul>` 
+            }
+        });
+    } else {
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `No, the Filmiway Content Advisory confirms that ${movie.Title} is completely free of explicit sexual content and nudity.` 
+            }
+        });
+    }
+
+    const faqSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        'name': `Parents Guide and FAQ for ${movie.Title}`,
+        'mainEntity': schemaFaqs
+    };
+
+    return { movieSchema, faqSchema };
+};
+
+// 🔥 DYNAMIC VISIBLE FAQ GENERATOR FOR THE FRONTEND UI (Matches Schema 1:1)
+export const getVisibleMovieFAQs = (movieTitle, tmdbId) => {
+    // 1. Get the static, manually written FAQs
+    const staticFaqs = CRIME_THRILLER_FAQS[movieTitle] ? [...CRIME_THRILLER_FAQS[movieTitle]] : [];
+    
+    // 2. Get the sensitive scenes and intensity scenes data
+    const sensitiveScenes = SENSITIVE_TIMELINES[tmdbId]?.scenes || [];
+    const movieInfo = COMPLETE_MOVIE_DATA[tmdbId];
+    const intensityScenes = movieInfo?.scenes || [];
+
+    // 3. 🔥 DYNAMICALLY GENERATE THE INTENSITY GRAPH FAQ (Universal Naming)
+    if (intensityScenes.length > 0) {
+        const uiIntensityList = intensityScenes.map(s => `• Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)`).join('\n');
+        
+        staticFaqs.unshift({
+            question: `What are the most intense scenes in ${movieTitle}?`,
+            answer: `According to the Filmiway Intensity metric, ${movieTitle} peaks at the following moments:\n\n${uiIntensityList}`
+        });
+    }
+
+    // 4. 🔥 DYNAMICALLY GENERATE THE SENSITIVE CONTENT FAQ (Unshifted last so it remains #1)
+    if (sensitiveScenes.length > 0) {
+        const typesArray = getSensitiveContentTypes(tmdbId) || ['mature content'];
+        const typesString = typesArray.join(' and ');
+
+        const uiListText = sensitiveScenes.map(s => {
+            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
+            const fullType = s.severity ? `${s.type} (${s.severity})` : (s.type || 'Mature Content');
+            return `• ${timeRange} - ${fullType}`;
+        }).join('\n');
+
+        staticFaqs.unshift({
+            question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
+            answer: `Yes, according to the Filmiway Content Advisory, ${movieTitle} contains adult scenes including ${typesString}. Exact timestamps for these scenes are:\n\n${uiListText}`
+        });
+    } else {
+        staticFaqs.unshift({
+            question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
+            answer: `No, the Filmiway Content Advisory confirms that ${movieTitle} is completely free of explicit sexual content and nudity.`
+        });
+    }
+
+    // 5. Return the combined list to be rendered on the website
+    return staticFaqs;
 };

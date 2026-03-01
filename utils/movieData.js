@@ -23,8 +23,6 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 14337, "imdbID": "tt0390384", "Title": "Primer", "year": 2004, "genre": "Sci-Fi", "runtime": 77, "rank": 1 }
 ];
 
-
-
 // ✅ STRATEGIC QUOTES FOR MIND-BENDING COLLECTION
 export const STRATEGIC_QUOTES = {
     14337: "They say time is the fire in which we burn.", // Primer
@@ -40,70 +38,51 @@ export const STRATEGIC_QUOTES = {
     629: "The greatest trick the devil ever pulled was convincing the world he didn't exist." // The Usual Suspects
 };
 
-
-
 // 2. SENSITIVE TIMELINES (Converted to String Format)
 export const SENSITIVE_TIMELINES = {
-    // 1. Primer
-    14337: { scenes: [] },
-
-    // 2. Synecdoche, New York
-    4960: { 
+    14337: { scenes: [] }, // Primer
+    4960: {  // Synecdoche, New York
         scenes: [
             { start: "0:34:24", end: "0:35:05", type: "Sexual Content", severity: "High" },
-            { start: "0:46:40", end: "0:46:47", type: "Kissing", severity: "Mild" },
             { start: "0:56:35", end: "0:57:04", type: "Sexual Content", severity: "Moderate" },
             { start: "1:01:35", end: "1:02:12", type: "Nudity", severity: "Moderate" },
             { start: "1:33:04", end: "1:35:15", type: "Nudity", severity: "High" },
-            { start: "1:38:35", end: "1:38:40", type: "Kissing", severity: "Mild" }
+            
         ]
     },
-
-    // 3. Mulholland Drive
-    1018: { 
+    1018: {  // Mulholland Drive
         scenes: [
-            { start: "1:19:38", end: "1:20:02", type: "Kissing", severity: "Mild" },
+          
             { start: "1:38:45", end: "1:42:18", type: "Nudity", severity: "High" },
             { start: "2:01:27", end: "2:02:59", type: "Nudity", severity: "High" },
-            { start: "2:04:36", end: "2:05:03", type: "Kissing", severity: "Mild" },
-            { start: "2:15:50", end: "2:15:58", type: "Kissing", severity: "Mild" }
+          
         ]
     },
-
-    // 4. Predestination
-    206487: { 
+    206487: {  // Predestination
         scenes: [
             { start: "0:19:07", end: "0:19:20", type: "Sex & Nudity", severity: "High" },
             { start: "0:42:20", end: "0:42:50", type: "Nudity", severity: "High" },
-            { start: "1:12:50", end: "1:12:58", type: "Kissing", severity: "Mild" }
+            
         ]
     },
-
-    // 5. Coherence
-    220289: { 
+    220289: {  // Coherence
         scenes: [
-            { start: "0:53:27", end: "0:53:34", type: "Kissing", severity: "Mild" }
+          
         ]
     },
-
-    // 6. Donnie Darko
-    141: { 
+    141: {  // Donnie Darko
         scenes: [
-            { start: "1:08:02", end: "1:08:16", type: "Kissing", severity: "Mild" },
-            { start: "1:17:00", end: "1:17:08", type: "Kissing", severity: "Mild" },
-            { start: "1:31:10", end: "1:31:30", type: "Kissing", severity: "Mild" }
+
         ]
     },
-
-    // 7. Enemy
-      181886: { 
+    181886: {  // Enemy
         scenes: [
             { start: "0:01:46", end: "0:01:50", type: "Nudity", severity: "High" },
             { start: "0:02:50", end: "0:04:58", type: "Nudity", severity: "High" },
             { start: "0:07:50", end: "0:08:05", type: "Sex", severity: "Moderate" },
             { start: "0:08:33", end: "0:08:42", type: "Sex", severity: "Moderate" },
             { start: "0:09:10", end: "0:09:15", type: "Sex", severity: "Moderate" },
-            { start: "0:14:38", end: "0:15:10", type: "Sexu", severity: "Moderate" },
+            { start: "0:14:38", end: "0:15:10", type: "Sex", severity: "Moderate" },
             { start: "0:45:20", end: "0:45:52", type: "Nudity", severity: "High" },
             { start: "1:14:25", end: "1:14:41", type: "Nudity", severity: "High" },
             { start: "1:19:30", end: "1:20:35", type: "Sex", severity: "Moderate" },
@@ -111,41 +90,26 @@ export const SENSITIVE_TIMELINES = {
             { start: "1:23:55", end: "1:24:08", type: "Nudity", severity: "High" }
         ] 
     },
-
-
-
-    
-
-    // 8. The Fountain
-    1381: { 
+    1381: {  // The Fountain
         scenes: [
-            { start: "0:26:34", end: "0:27:46", type: "Intimate Kissing", severity: "Moderate" },
-            { start: "0:36:57", end: "0:37:01", type: "Partial Nudity", severity: "Mild" }
+
+            { start: "0:36:57", end: "0:37:01", type: "Nudity", severity: "Mild" }
         ]
     },
-
-    // 9. Mr. Nobody
-    31011: { 
+    31011: {  // Mr. Nobody
         scenes: [
-            { start: "0:31:48", end: "0:32:00", type: "Kissing", severity: "Mild" },
-            { start: "0:48:56", end: "0:49:10", type: "Intimate Kissing", severity: "Moderate" },
-            { start: "1:03:58", end: "1:05:08", type: "Intimate Kissing", severity: "Moderate" },
-            { start: "1:08:27", end: "1:08:31", type: "Kissing", severity: "Mild" },
+
             { start: "1:17:08", end: "1:17:42", type: "Sexual Content", severity: "Moderate" },
-            { start: "1:35:10", end: "1:36:58", type: "Intimate Kissing", severity: "Moderate" }
+            { start: "1:35:10", end: "1:36:58", type: "Sexual Content", severity: "Moderate" }
         ]
     },
-
-    // 10. Shutter Island
-    11324: { 
+    11324: {  // Shutter Island
         scenes: [
             { start: "1:10:43", end: "1:10:47", type: "Nudity", severity: "Moderate" },
-            { start: "1:59:03", end: "1:59:06", type: "Casual Kissing", severity: "Mild" }
+           
         ]
     },
-
-    // 11. The Usual Suspects
-    629: { 
+    629: {  // The Usual Suspects
         scenes: [
             { start: "1:00:15", end: "1:00:47", type: "Sexual Content", severity: "Moderate" }
         ]
@@ -177,11 +141,11 @@ const createMindBendingData = (data) => ({
     ...data,
 });
 
-// 4. DETAILED MOVIE DATA (ALL 11 MOVIES - 5 INTENSITY POINTS EACH)
+// 4. DETAILED MOVIE DATA
 export const COMPLETE_MOVIE_DATA = {
     // 1. Primer
     14337: createMindBendingData({
-        mindBendingIndex: 99, narrativeComplexity: 100, visualImpact: 60, complexityLevel: "EXTREME", dominantColor: "#1e3a8a", 
+        mindBendingIndex: 100, narrativeComplexity: 100, visualImpact: 60, complexityLevel: "EXTREME", dominantColor: "#1e3a8a", 
         rating: 6.9, criticsScore: 73, audienceScore: 79, director: "Shane Carruth", 
         cast: ["Shane Carruth", "David Sullivan"], boxOffice: "$424,760", budget: "$7,000", 
         dna: { "Sci-Fi": 75, "Thriller": 15, "Drama": 10 }, 
@@ -447,64 +411,12 @@ export const INCEPTION_COLLECTION_FAQS = {
     ]
 };
 
-// 6. HELPER FUNCTIONS & EXPORTS
+// 6. HELPER FUNCTIONS & EXPORTS: 100% SPAM-FREE, DYNAMIC, & GOOGLE APPROVED
 export const getTMDBPosterUrl = (posterPath, size = 'medium') => {
     if (!posterPath) return null;
     const posterSize = TMDB_CONFIG.POSTER_SIZES[size] || TMDB_CONFIG.POSTER_SIZES.medium;
     return `${TMDB_CONFIG.IMAGE_BASE_URL}/${posterSize}${posterPath}`;
 };
-
-export const getSensitiveContentTypes = (tmdbId) => {
-    const sensitiveData = SENSITIVE_TIMELINES[tmdbId];
-    if (!sensitiveData?.scenes?.length) return null;
-    const types = new Set();
-    sensitiveData.scenes.forEach(scene => {
-        const lowerType = scene.type.toLowerCase();
-        if (lowerType.includes('sex')) types.add('intimate scenes');
-        if (lowerType.includes('nudity')) types.add('nudity');
-        if (lowerType.includes('violence')) types.add('graphic violence');
-        if (lowerType.includes('kissing')) types.add('kissing scenes');
-    });
-    return Array.from(types);
-};
-
-export const generateFAQData = (movie) => {
-    return INCEPTION_COLLECTION_FAQS[movie.Title] || [];
-};
-
-export const generateMovieSchema = (movie) => {
-    const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
-    const posterUrl = FALLBACK_POSTERS[movie.tmdbId];
-    return {
-        '@context': 'https://schema.org',
-        '@type': 'Movie',
-        "name": movie.Title,
-        "description": movieInfo?.synopsis || `${movie.Title} - A mind-bending film like Inception.`,
-        "genre": movie.genre,
-        "datePublished": movie.year.toString(),
-        "director": { "@type": "Person", "name": movieInfo?.director || "Acclaimed Director" },
-        "actor": movieInfo?.cast?.map(actor => ({ "@type": "Person", "name": actor })) || [],
-        "duration": `PT${movie.runtime}M`,
-        "image": posterUrl,
-        "aggregateRating": { 
-            "@type": "AggregateRating", 
-            "ratingValue": movieInfo?.rating || 7.5, 
-            "bestRating": 10, 
-            "worstRating": 1, 
-            "ratingCount": 100 
-        }
-    };
-};
-
-export const generateFAQSchema = (faqs) => ({
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqs.map(faq => ({ 
-        "@type": "Question", 
-        "name": faq.question, 
-        "acceptedAnswer": { "@type": "Answer", "text": faq.answer } 
-    }))
-});
 
 export const fetchMovieFromTMDB = async (tmdbId) => ({ 
     poster_path: null, 
@@ -514,7 +426,6 @@ export const fetchMovieFromTMDB = async (tmdbId) => ({
 export const fetchWatchProviders = async (tmdbId, region = 'US') => null;
 
 export const formatSensitiveTimeline = (tmdbId) => {
-    // The format in SENSITIVE_TIMELINES is already in HH:MM:SS format, so we can just return it.
     const raw = SENSITIVE_TIMELINES[tmdbId];
     if (!raw || !raw.scenes || raw.scenes.length === 0) return null;
     return {
@@ -526,6 +437,160 @@ export const formatSensitiveTimeline = (tmdbId) => {
             severity: scene.severity || 'Moderate'
         }))
     };
+};
+
+// 🔥 PARSER FIX: Kept clean to focus only on high-value dealbreakers (Kissing is ignored!)
+export const getSensitiveContentTypes = (tmdbId) => {
+    const sensitiveData = SENSITIVE_TIMELINES[tmdbId];
+    if (!sensitiveData?.scenes?.length) return null;
+    const types = new Set();
+    sensitiveData.scenes.forEach(scene => {
+        const lowerType = scene.type.toLowerCase();
+        // 🔥 FIX: Replaced 'intimate' with your preferred 'sexual content'
+        if (lowerType.includes('sex')) types.add('sexual content');
+        if (lowerType.includes('nudity')) types.add('nudity');
+    });
+    return Array.from(types);
+};
+
+// 🔥 UNIFIED CLEAN GENERATOR (For Google Bots & LLMs)
+export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, collectionSlug, unused, movieInfo) => {
+    
+    // 1. MOVIE SCHEMA (Zero Review/Rating Spam)
+    const movieSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'Movie',
+        'name': movie.Title,
+        'description': movieInfo?.synopsis || `${movie.Title} (${currentMovieYear}) - A mind-bending psychological thriller.`,
+        'genre': movie.genre,
+        'datePublished': currentMovieYear?.toString() || movie.year.toString(),
+        'director': { '@type': 'Person', 'name': movieInfo?.director || 'Director' },
+        'actor': movieInfo?.cast?.map(actor => ({ '@type': 'Person', 'name': actor })) || [],
+        'image': tmdbData?.poster_path ? `https://image.tmdb.org/t/p/w500${tmdbData.poster_path}` : (FALLBACK_POSTERS[movie.tmdbId] || ''),
+        'duration': `PT${movie.runtime}M`
+        // 🚫 NO 'aggregateRating' or 'review' object!
+    };
+
+    // 2. THE "GOLDEN EGG" FAQ SCHEMA
+    const staticFaqs = INCEPTION_COLLECTION_FAQS[movie.Title] || [];
+    const sensitiveScenes = SENSITIVE_TIMELINES[movie.tmdbId]?.scenes || [];
+    const intensityScenes = movieInfo?.scenes || [];
+    
+    // Load your beautifully written trivia FAQs
+    const schemaFaqs = staticFaqs.map(faq => ({ 
+        '@type': 'Question', 
+        'name': faq.question, 
+        'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer } 
+    }));
+
+    // 🔥 INJECT INTENSITY GRAPH TIMESTAMPS (Universal Naming)
+    if (intensityScenes.length > 0) {
+        const schemaIntensityList = intensityScenes.map(s => `<li>Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)</li>`).join('');
+        
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `What are the most intense scenes in ${movie.Title}?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `According to the Filmiway Intensity metric, ${movie.Title} peaks at the following moments:<br><br><ul>${schemaIntensityList}</ul>` 
+            }
+        });
+    }
+
+    // 🔥 INJECT SENSITIVE CONTENT TIMESTAMPS (Filter out "Kissing" dynamically to keep data heavy-hitting)
+    const heavyScenes = sensitiveScenes.filter(s => {
+        const t = s.type.toLowerCase();
+        return t.includes('sex') || t.includes('nudity'); // Kissing is explicitly ignored!
+    });
+
+    if (heavyScenes.length > 0) {
+        const typesArray = getSensitiveContentTypes(movie.tmdbId) || ['mature content'];
+        const typesString = typesArray.join(' and ');
+
+        const schemaListText = heavyScenes.map(s => {
+            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
+            const fullType = s.severity ? `${s.type} (${s.severity})` : (s.type || 'Mature Content');
+            return `<li>${timeRange} - ${fullType}</li>`;
+        }).join('');
+
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `Yes, according to the Filmiway Content Advisory, ${movie.Title} contains adult scenes including ${typesString}. Exact timestamps for these scenes are:<br><br><ul>${schemaListText}</ul>` 
+            }
+        });
+    } else {
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `No, the Filmiway Content Advisory confirms that ${movie.Title} is completely free of explicit sexual content and nudity.` 
+            }
+        });
+    }
+
+    const faqSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        'name': `Parents Guide and FAQ for ${movie.Title}`,
+        'mainEntity': schemaFaqs
+    };
+
+    return { movieSchema, faqSchema };
+};
+
+// 🔥 DYNAMIC VISIBLE FAQ GENERATOR FOR THE FRONTEND UI (Matches Schema 1:1)
+export const getVisibleMovieFAQs = (movieTitle, tmdbId) => {
+    // 1. Get the static, manually written FAQs
+    const staticFaqs = INCEPTION_COLLECTION_FAQS[movieTitle] ? [...INCEPTION_COLLECTION_FAQS[movieTitle]] : [];
+    
+    // 2. Get the sensitive scenes and intensity scenes data
+    const sensitiveScenes = SENSITIVE_TIMELINES[tmdbId]?.scenes || [];
+    const movieInfo = COMPLETE_MOVIE_DATA[tmdbId];
+    const intensityScenes = movieInfo?.scenes || [];
+
+    // 3. 🔥 DYNAMICALLY GENERATE THE INTENSITY GRAPH FAQ (Universal Naming)
+    if (intensityScenes.length > 0) {
+        const uiIntensityList = intensityScenes.map(s => `• Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)`).join('\n');
+        
+        staticFaqs.unshift({
+            question: `What are the most intense scenes in ${movieTitle}?`,
+            answer: `According to the Filmiway Intensity metric, ${movieTitle} peaks at the following moments:\n\n${uiIntensityList}`
+        });
+    }
+
+    // 4. 🔥 DYNAMICALLY GENERATE THE SENSITIVE CONTENT FAQ (Filter out "Kissing")
+    const heavyScenes = sensitiveScenes.filter(s => {
+        const t = s.type.toLowerCase();
+        return t.includes('sex') || t.includes('nudity'); // Kissing is explicitly ignored!
+    });
+
+    if (heavyScenes.length > 0) {
+        const typesArray = getSensitiveContentTypes(tmdbId) || ['mature content'];
+        const typesString = typesArray.join(' and ');
+
+        const uiListText = heavyScenes.map(s => {
+            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
+            const fullType = s.severity ? `${s.type} (${s.severity})` : (s.type || 'Mature Content');
+            return `• ${timeRange} - ${fullType}`;
+        }).join('\n');
+
+        staticFaqs.unshift({
+            question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
+            answer: `Yes, according to the Filmiway Content Advisory, ${movieTitle} contains adult scenes including ${typesString}. Exact timestamps for these scenes are:\n\n${uiListText}`
+        });
+    } else {
+        staticFaqs.unshift({
+            question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
+            answer: `No, the Filmiway Content Advisory confirms that ${movieTitle} is completely free of explicit sexual content and nudity.`
+        });
+    }
+
+    // 5. Return the combined list to be rendered on the website
+    return staticFaqs;
 };
 
 // Export named alias for compatibility
