@@ -2,16 +2,17 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Brain, AlertTriangle } from 'lucide-react'; // Brain for psychology, Alert for spoilers
-import { PSYCH_THRILLER_FAQS } from '../utils/psychologicalThrillerMovieData';
+// 🔥 IMPORT THE NEW DYNAMIC FAQ GENERATOR
+import { getVisibleMovieFAQs } from '../utils/psychologicalThrillerMovieData';
 
 const PsychThrillerSEOFAQSection = ({ movie }) => {
-    // 🔥 Get FAQs from PSYCH_THRILLER_FAQS data
-    const faqsFromData = movie?.Title && PSYCH_THRILLER_FAQS?.[movie.Title] 
-        ? PSYCH_THRILLER_FAQS[movie.Title] 
-        : [];
+    // 🔥 AUTOMATICALLY GENERATE THE FAQS FOR HUMANS (Includes the Dynamic Timestamp FAQ)
+    // This calls the template engine we built, so the UI matches the Bot Schema exactly!
+    const faqsFromData = getVisibleMovieFAQs(movie?.Title, movie?.tmdbId);
 
     // 🔥 Safety check - return null if no FAQs
     if (!faqsFromData || faqsFromData.length === 0) {
+        console.log('⚠️ No Psych Thriller FAQs found for:', movie?.Title);
         return null;
     }
     
@@ -50,7 +51,8 @@ const PsychThrillerSEOFAQSection = ({ movie }) => {
                                 <h3 className="text-base sm:text-lg font-medium text-violet-200 mb-2 sm:mb-3">
                                     {faq.question}
                                 </h3>
-                                <p className="text-gray-300 leading-relaxed text-sm sm:text-base">
+                                {/* 🔥 Added whitespace-pre-line to correctly render the \n\n bullet points from our engine! */}
+                                <p className="text-gray-300 leading-relaxed text-sm sm:text-base whitespace-pre-line">
                                     {faq.answer}
                                 </p>
                             </div>

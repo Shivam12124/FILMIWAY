@@ -226,41 +226,39 @@ const EyesWideShutMoviePage = ({ movie, tmdbData: movieData }) => {
 
 
 // ✅ MASTERSTROKE: Dynamically add sensitive scene timestamps to meta description
-const scenes = SENSITIVE_TIMELINES?.[movie.tmdbId]?.scenes || [];
+// =========================================================================
+  // ✅ THE UNIVERSAL SEO BLOCK (Blind Copy-Paste Ready)
+  // =========================================================================
 
-// Default if the movie has NO sensitive scenes
-let sceneNotice = 'Detailed Parents Guide: No nudity, sex, or explicit scenes.';
+  // 1. AUTO-GENERATE COLLECTION NAME FROM THE URL FOLDER
+  const currentSlug = router.pathname.split('/')[2] || 'Movies';
+  const dynamicCollectionName = currentSlug
+    .split('-')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' '); // Turns "mind-bending-thrillers" into "Mind Bending Thrillers"
 
-if (scenes.length > 0) {
-    // Get first 2 timestamps only (best for SEO length)
-const firstTimestamps = scenes
-  .slice(0, 2)
-  .map(s => s.end ? `${s.start}–${s.end}` : s.start)
-  .join(', ');
+  // 2. AUTO-GRAB PLOT TEXT (No matter what you named the variable in your data file)
+  const dynamicInsight = correctData?.connection || correctData?.insight || correctData?.description || Object.values(correctData || {}).find(val => typeof val === 'string') || '';
 
+  // 3. THE MASTERSTROKE: Dynamic sensitive scene logic
+  const scenes = SENSITIVE_TIMELINES?.[movie.tmdbId]?.scenes || [];
+  
+  // DEFAULT FOR CLEAN FILMS: Uses the auto-grabbed text
+  let sceneNotice = `Detailed Parents Guide: No nudity or explicit scenes. ${dynamicInsight.substring(0, 110)}...`;
+  
+  if (scenes.length > 0) {
+    const firstTimestamps = scenes
+      .slice(0, 2)
+      .map(s => s.end ? `${s.start}–${s.end}` : s.start)
+      .join(', ');
     const andMore = scenes.length > 2 ? '...' : '';
+    // ✅ Data-Heavy Description for CTR Hack
+    sceneNotice = `Parents guide with exact scene timestamps: ${firstTimestamps}${andMore}. Viewer discretion advised.`;
+  }
 
-    // Final optimized format (Version 3 – Recommended)
-    sceneNotice = `Detailed Parents Guide with exact timestamps for nudity, sex & mature scenes (e.g., ${firstTimestamps}${andMore}).`;
-}
-
-// ✅ Clean standalone SEO title (no collection wording)
-const cleanSEOTitle = [
-    movie.Title,
-    ' (',
-    currentMovieYear,
-    ') | Filmiway'
-].join('');
-
-// ✅ Final standalone meta description
-const cleanSEODesc = [
-    movie.Title,
-    ' (',
-    currentMovieYear,
-    ') – ',
-    sceneNotice
-].join('');
-
+  // 4. UNIFIED TITLE & META
+  const cleanSEOTitle = `${movie.Title} (${currentMovieYear}) Parents Guide | ${dynamicCollectionName}`;
+  const cleanSEODesc = `${movie.Title} (${currentMovieYear}) – ${sceneNotice}`;
     const collectionSlug = router.pathname.split('/')[2];
     const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
 

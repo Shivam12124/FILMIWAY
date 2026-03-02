@@ -82,7 +82,6 @@ const createRevengeData = (data) => ({
 });
 
 // 4. DETAILED MOVIE DATA (Object)
-// 4. DETAILED MOVIE DATA (Object)
 export const COMPLETE_MOVIE_DATA = {
     // 1. Oldboy (2003) - STATUS: EXISTENTIAL MASTERY
     670: createRevengeData({ 
@@ -95,7 +94,7 @@ export const COMPLETE_MOVIE_DATA = {
             { time: 25, intensity: 58, label: '15 Years Later', color: '#334155' },
             { time: 68, intensity: 88, label: 'Corridor Fight', color: '#dc2626' },
             { time: 90, intensity: 72, label: 'The Penthouse', color: '#475569' },
-            { time: 115, intensity: 100, label: 'The Tongue', color: '#991b1b' } // PEAK: Existential Rupture
+            { time: 115, intensity: 100, label: 'The Tongue', color: '#991b1b' } 
         ], 
         synopsis: "A genre-shattering masterpiece where the revenge is not a victory, but a trap. Oh Dae-su's 15-year imprisonment leads to a revelation so devastating it redefines the limits of psychological trauma.", 
         themes: ["Incest", "Memory", "Karma", "Despair"]
@@ -105,12 +104,14 @@ export const COMPLETE_MOVIE_DATA = {
     98: createRevengeData({ 
         revengeIntensity: 92, moralComplexity: 60, visceralImpact: 88, complexityLevel: "MEDIUM", 
         dominantColor: "#f59e0b", rating: 8.5, director: "Ridley Scott", 
+        cast: ["Russell Crowe", "Joaquin Phoenix"],
+        dna: { "Action": 50, "Drama": 40, "History": 10 },
         scenes: [
             { time: 25, intensity: 78, label: 'Family Murdered', color: '#7c2d12' },
             { time: 60, intensity: 65, label: 'Zucchabar Arena', color: '#d97706' },
             { time: 95, intensity: 82, label: 'Are You Not Entertained?', color: '#b45309' },
             { time: 125, intensity: 80, label: 'Reveal to Commodus', color: '#ea580c' },
-            { time: 145, intensity: 92, label: 'Final Duel', color: '#f59e0b' } // PEAK: Heroic Catharsis
+            { time: 145, intensity: 92, label: 'Final Duel', color: '#f59e0b' }
         ], 
         synopsis: "An epic tale of a fallen general seeking justice in the arena. While visceral and grand, its power lies in its classical emotional arc and mythic satisfaction.", 
         themes: ["Honor", "Legacy", "Tyranny", "Freedom"]
@@ -120,52 +121,136 @@ export const COMPLETE_MOVIE_DATA = {
     33: createRevengeData({ 
         revengeIntensity: 94, moralComplexity: 98, visceralImpact: 82, complexityLevel: "HIGH", 
         dominantColor: "#dc2626", rating: 8.2, director: "Clint Eastwood", 
+        cast: ["Clint Eastwood", "Gene Hackman", "Morgan Freeman"],
+        dna: { "Western": 50, "Drama": 30, "Action": 20 },
         scenes: [
             { time: 20, intensity: 28, label: 'The Pig Farm', color: '#7f1d1d' },
             { time: 60, intensity: 52, label: "Little Bill's Beating", color: '#991b1b' },
             { time: 108, intensity: 80, label: "Ned's Death", color: '#b91c1c' },
             { time: 115, intensity: 86, label: 'Whiskey Bottle', color: '#ef4444' },
-            { time: 124, intensity: 94, label: 'Saloon Showdown', color: '#0f172a' } // PEAK: Cold Justice
-        ]
+            { time: 124, intensity: 94, label: 'Saloon Showdown', color: '#0f172a' }
+        ],
+        synopsis: "A deconstructive masterpiece that strips away Western myths. William Munny's return to violence is a somber reflection on the permanent stains of a killer's soul.",
+        themes: ["Legacy", "Violence", "Justice", "Redemption"]
+    }),
+
+    // 4. Braveheart (1995) - STATUS: NATIONALIST VENDETTA
+    197: createRevengeData({ 
+        revengeIntensity: 95, moralComplexity: 50, visceralImpact: 90, complexityLevel: "MEDIUM", 
+        dominantColor: "#1d4ed8", rating: 8.4, director: "Mel Gibson", 
+        cast: ["Mel Gibson", "Sophie Marceau"],
+        dna: { "History": 40, "Action": 40, "Drama": 20 },
+        scenes: [
+            { time: 38, intensity: 95, label: "Murron's Execution", color: '#b91c1c' },
+            { time: 85, intensity: 88, label: 'Stirling Bridge', color: '#1d4ed8' },
+            { time: 130, intensity: 82, label: 'Battle of Falkirk', color: '#1e40af' },
+            { time: 155, intensity: 70, label: 'The Betrayal', color: '#1e3a8a' },
+            { time: 175, intensity: 100, label: 'Freedom!', color: '#0f172a' }
+        ],
+        synopsis: "A sweeping historical epic where personal loss ignites a revolution. William Wallace’s quest to avenge his wife becomes the rallying cry for a nation's independence.",
+        themes: ["Freedom", "Betrayal", "Patriotism", "Sacrifice"]
     }),
 
     // 5. The Prestige (2006) - STATUS: PSYCHOLOGICAL COLLAPSE
     1124: createRevengeData({ 
         revengeIntensity: 96, moralComplexity: 95, visceralImpact: 80, complexityLevel: "EXTREME", 
         dominantColor: "#6b21a8", rating: 8.5, director: "Christopher Nolan", 
+        cast: ['Hugh Jackman', 'Christian Bale', 'Scarlett Johansson'],
+        dna: { "Mystery": 45, "Thriller": 35, "Sci-Fi": 20 },
         scenes: [
             { time: 12, intensity: 55, label: 'The Drowning', color: '#581c87' },
             { time: 45, intensity: 62, label: 'The Bullet Catch', color: '#6b21a8' },
             { time: 80, intensity: 74, label: "Tesla's Lab", color: '#7e22ce' },
             { time: 100, intensity: 83, label: "Angier's Return", color: '#9333ea' },
-            { time: 125, intensity: 96, label: 'The Final Prestige', color: '#3b0764' } // PEAK: Mind-Bending Rupture
-        ]
+            { time: 125, intensity: 96, label: 'The Final Prestige', color: '#3b0764' }
+        ],
+        synopsis: "A brilliant, non-linear descent into an escalating rivalry. Nolan explores how the obsession with destroying a rival can clone a man's darkness until nothing else remains.",
+        themes: ["Obsession", "Identity", "Secrets", "Sacrifice"]
     }),
 
-    // 9. I Saw the Devil (2010) - STATUS: PURE MONSTROSITY
-    49797: createRevengeData({ 
-        revengeIntensity: 99, moralComplexity: 92, visceralImpact: 100, complexityLevel: "HIGH", 
-        dominantColor: "#991b1b", rating: 7.8, director: "Kim Jee-woon", 
+    // 6. The Revenant (2015) - STATUS: PRIMAL RETRIBUTION
+    281957: createRevengeData({ 
+        revengeIntensity: 90, moralComplexity: 72, visceralImpact: 100, complexityLevel: "HIGH", 
+        dominantColor: "#475569", rating: 8.0, director: "Alejandro Iñárritu", 
+        cast: ["Leonardo DiCaprio", "Tom Hardy"],
+        dna: { "Adventure": 50, "Drama": 30, "Action": 20 },
         scenes: [
-            { time: 8, intensity: 70, label: 'The Murder', color: '#991b1b' },
-            { time: 40, intensity: 78, label: 'Catch & Release 1', color: '#b91c1c' },
-            { time: 85, intensity: 86, label: 'The Greenhouse', color: '#7f1d1d' },
-            { time: 110, intensity: 92, label: 'Turning Tables', color: '#0f172a' },
-            { time: 138, intensity: 96, label: 'The Final Gift', color: '#000000' } // PEAK: Soul Trauma
-        ]
+            { time: 5, intensity: 85, label: 'Pawnee Attack', color: '#475569' },
+            { time: 25, intensity: 100, label: 'The Bear', color: '#1e293b' },
+            { time: 35, intensity: 95, label: "Hawk's Murder", color: '#0f172a' },
+            { time: 110, intensity: 80, label: 'Mountain Fall', color: '#64748b' },
+            { time: 148, intensity: 96, label: 'Final Duel', color: '#000000' }
+        ],
+        synopsis: "A brutal, visually immersive survival epic. Hugh Glass’s journey through the frozen wilderness is fueled entirely by the primal need to confront the man who left him for dead.",
+        themes: ["Survival", "Nature", "Betrayal", "Spirituality"]
+    }),
+
+    // 7. Kill Bill: Vol. 2 (2004) - STATUS: MATERNAL FURY
+    393: createRevengeData({ 
+        revengeIntensity: 94, moralComplexity: 80, visceralImpact: 85, complexityLevel: "MEDIUM", 
+        dominantColor: "#facc15", rating: 8.0, director: "Quentin Tarantino", 
+        cast: ["Uma Thurman", "David Carradine"],
+        dna: { "Action": 45, "Crime": 35, "Drama": 20 },
+        scenes: [
+            { time: 45, intensity: 92, label: 'Buried Alive', color: '#854d0e' },
+            { time: 60, intensity: 70, label: 'Pai Mei Training', color: '#ca8a04' },
+            { time: 95, intensity: 88, label: 'Elle Driver Fight', color: '#eab308' },
+            { time: 110, intensity: 65, label: 'Meeting B.B.', color: '#fde047' },
+            { time: 130, intensity: 94, label: 'The Final Step', color: '#000000' }
+        ],
+        synopsis: "Tarantino’s operatic conclusion to the Bride's journey. Vol. 2 shifts from the sword to the soul, revealing the complex love and hate that exists between the killer and her creator.",
+        themes: ["Motherhood", "Redemption", "Honor", "Closure"]
     }),
 
     // 8. John Wick (2014) - STATUS: ADRENALINE SURGE
     245891: createRevengeData({ 
         revengeIntensity: 89, moralComplexity: 40, visceralImpact: 92, complexityLevel: "MEDIUM", 
         dominantColor: "#f59e0b", rating: 7.4, director: "Chad Stahelski", 
+        cast: ["Keanu Reeves", "Michael Nyqvist"],
+        dna: { "Action": 60, "Thriller": 30, "Crime": 10 },
         scenes: [
             { time: 15, intensity: 72, label: 'Puppy Death', color: '#dc2626' },
             { time: 30, intensity: 55, label: 'The Sledgehammer', color: '#475569' },
             { time: 50, intensity: 78, label: 'Home Invasion', color: '#f59e0b' },
             { time: 78, intensity: 88, label: 'Red Circle Club', color: '#9333ea' },
             { time: 95, intensity: 89, label: 'Dock Showdown', color: '#0f172a' } 
-        ]
+        ],
+        synopsis: "A sleek, stylized explosion of neon-noir action. When a retired assassin loses his only connection to his late wife, he dismantles a criminal empire with surgical precision.",
+        themes: ["Legacy", "Fate", "Underworld Codes", "Grief"]
+    }),
+
+    // 9. I Saw the Devil (2010) - STATUS: PURE MONSTROSITY
+    49797: createRevengeData({ 
+        revengeIntensity: 99, moralComplexity: 92, visceralImpact: 100, complexityLevel: "HIGH", 
+        dominantColor: "#991b1b", rating: 7.8, director: "Kim Jee-woon", 
+        cast: ["Lee Byung-hun", "Choi Min-sik"],
+        dna: { "Thriller": 45, "Crime": 35, "Horror": 20 },
+        scenes: [
+            { time: 8, intensity: 70, label: 'The Murder', color: '#991b1b' },
+            { time: 40, intensity: 78, label: 'Catch & Release 1', color: '#b91c1c' },
+            { time: 85, intensity: 86, label: 'The Greenhouse', color: '#7f1d1d' },
+            { time: 110, intensity: 92, label: 'Turning Tables', color: '#0f172a' },
+            { time: 138, intensity: 96, label: 'The Final Gift', color: '#000000' }
+        ],
+        synopsis: "A horrifyingly intense game of cat-and-mouse. Soo-hyun's hunt for a serial killer becomes so brutal that the boundary between the hero and the monster completely evaporates.",
+        themes: ["Moral Decay", "Cruelty", "Vengeance", "Grief"]
+    }),
+
+    // 10. The Count of Monte Cristo (2002) - STATUS: CLASSIC TRIUMPH
+    11362: createRevengeData({ 
+        revengeIntensity: 88, moralComplexity: 70, visceralImpact: 78, complexityLevel: "MEDIUM", 
+        dominantColor: "#1e3a8a", rating: 7.7, director: "Kevin Reynolds", 
+        cast: ["Jim Caviezel", "Guy Pearce"],
+        dna: { "Adventure": 45, "Action": 35, "Drama": 20 },
+        scenes: [
+            { time: 12, intensity: 60, label: 'Wrongful Arrest', color: '#1e3a8a' },
+            { time: 55, intensity: 82, label: 'Escape from d’If', color: '#1d4ed8' },
+            { time: 85, intensity: 75, label: "The Count's Reveal", color: '#1e40af' },
+            { time: 105, intensity: 80, label: "Albert's Abduction", color: '#1e3a8a' },
+            { time: 125, intensity: 90, label: 'The Final Duel', color: '#0f172a' }
+        ],
+        synopsis: "The ultimate tale of transformation and patience. Edmond Dantès' journey from betrayed prisoner to wealthy nobleman is a masterclass in slow-burn, strategic justice.",
+        themes: ["Justice", "Patience", "Class Struggle", "Betrayal"]
     })
 };
 // 5. CUSTOM FAQs
@@ -232,68 +317,12 @@ export const REVENGE_MOVIE_FAQS = {
     ]
 };
 
-
-
-
-
-// 6. HELPER FUNCTIONS
+// 6. HELPER FUNCTIONS (🔥 UPGRADED FOR UNIVERSAL SEO)
 export const getTMDBPosterUrl = (posterPath, size = 'medium') => {
     if (!posterPath) return null;
     const posterSize = TMDB_CONFIG.POSTER_SIZES[size] || TMDB_CONFIG.POSTER_SIZES.medium;
     return `${TMDB_CONFIG.IMAGE_BASE_URL}/${posterSize}${posterPath}`;
 };
-
-export const getSensitiveContentTypes = (tmdbId) => {
-    const sensitiveData = SENSITIVE_TIMELINES[tmdbId];
-    if (!sensitiveData?.scenes?.length) return null;
-    const types = new Set();
-    sensitiveData.scenes.forEach(scene => {
-        const lowerType = scene.type.toLowerCase();
-        if (lowerType.includes('sex')) types.add('intimate scenes');
-        if (lowerType.includes('nudity')) types.add('nudity');
-        if (lowerType.includes('violence')) types.add('graphic violence');
-        if (lowerType.includes('self-harm') || lowerType.includes('drug')) types.add('disturbing content');
-    });
-    return Array.from(types);
-};
-
-export const generateFAQData = (movie) => {
-    return REVENGE_MOVIE_FAQS[movie.Title] || [];
-};
-
-export const generateMovieSchema = (movie) => {
-    const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
-    const posterUrl = FALLBACK_POSTERS[movie.tmdbId];
-    return {
-        '@context': 'https://schema.org',
-        '@type': 'Movie',
-        'name': movie.Title,
-        'description': movieInfo?.synopsis || `${movie.Title} - A compelling revenge thriller.`,
-        'genre': movie.genre,
-        'datePublished': movie.year.toString(),
-        'director': { '@type': 'Person', 'name': movieInfo?.director || 'Director' },
-        'actor': movieInfo?.cast?.map(actor => ({ '@type': 'Person', 'name': actor })) || [],
-        'duration': `PT${movie.runtime}M`,
-        'image': posterUrl,
-        'aggregateRating': { 
-            '@type': 'AggregateRating', 
-            'ratingValue': movieInfo?.rating || 7.5, 
-            'bestRating': 10, 
-            'worstRating': 1, 
-            'ratingCount': 100 
-        }
-    };
-};
-
-export const generateFAQSchema = (faqs) => ({
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    'mainEntity': faqs.map(faq => ({ 
-        '@type': 'Question', 
-        'name': faq.question, 
-        'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer } 
-    }))
-});
 
 export const fetchMovieFromTMDB = async (tmdbId) => ({ 
     poster_path: null, 
@@ -314,6 +343,138 @@ export const formatSensitiveTimeline = (tmdbId) => {
             displayLabel: `${scene.type} (${scene.severity})` 
         }))
     };
+};
+
+// 🔥 1. THE KEYWORD BRIDGE (SEO-Optimized)
+export const getSensitiveContentTypes = (tmdbId) => {
+    const sensitiveData = SENSITIVE_TIMELINES[tmdbId];
+    if (!sensitiveData?.scenes?.length) return null;
+    const types = new Set();
+    sensitiveData.scenes.forEach(scene => {
+        const lowerType = scene.type.toLowerCase();
+        // SEO power-words conversion
+        if (lowerType.includes('sex') || lowerType.includes('explicit')) types.add('sexual content');
+        if (lowerType.includes('nudity')) types.add('nudity');
+        if (lowerType.includes('violence')) types.add('graphic violence');
+        if (lowerType.includes('self-harm') || lowerType.includes('drug')) types.add('disturbing content');
+    });
+    return Array.from(types);
+};
+
+// 🔥 2. THE "GOLDEN EGG" SCHEMA GENERATOR (Universal Version)
+export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, collectionSlug, unused, movieInfo) => {
+    // Standard Movie Schema
+    const movieSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'Movie',
+        'name': movie.Title,
+        'description': movieInfo?.synopsis || `${movie.Title} (${currentMovieYear}) - A compelling revenge thriller.`,
+        'genre': movie.genre,
+        'datePublished': currentMovieYear?.toString() || movie.year.toString(),
+        'director': { '@type': 'Person', 'name': movieInfo?.director || 'Director' },
+        'actor': movieInfo?.cast?.map(actor => ({ '@type': 'Person', 'name': actor })) || [],
+        'image': tmdbData?.poster_path ? `https://image.tmdb.org/t/p/w500${tmdbData.poster_path}` : (FALLBACK_POSTERS[movie.tmdbId] || ''),
+        'duration': `PT${movie.runtime}M`
+    };
+
+    const staticFaqs = REVENGE_MOVIE_FAQS[movie.Title] || [];
+    const sensitiveScenes = SENSITIVE_TIMELINES[movie.tmdbId]?.scenes || [];
+    const intensityScenes = movieInfo?.scenes || [];
+    
+    const schemaFaqs = staticFaqs.map(faq => ({ 
+        '@type': 'Question', 
+        'name': faq.question, 
+        'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer } 
+    }));
+
+    // Inject Intensity Graph Timestamps into Schema
+    if (intensityScenes.length > 0) {
+        const schemaIntensityList = intensityScenes.map(s => `<li>Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)</li>`).join('');
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `What are the most intense scenes in ${movie.Title}?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `According to the Filmiway Intensity metric, ${movie.Title} peaks at the following moments:<br><br><ul>${schemaIntensityList}</ul>` 
+            }
+        });
+    }
+
+    // Inject Sensitive Content Timestamps into Schema (Top Priority)
+    if (sensitiveScenes.length > 0) {
+        const typesArray = getSensitiveContentTypes(movie.tmdbId) || ['mature content'];
+        const typesString = typesArray.join(' and ');
+
+        const schemaListText = sensitiveScenes.map(s => {
+            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
+            return `<li>${timeRange} - ${s.type || 'Mature Content'}</li>`;
+        }).join('');
+
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `Yes, according to the Filmiway Content Advisory, ${movie.Title} contains adult scenes including ${typesString}. Exact timestamps for these scenes are:<br><br><ul>${schemaListText}</ul>` 
+            }
+        });
+    } else {
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `No, the Filmiway Content Advisory confirms that ${movie.Title} is completely free of explicit sexual content and nudity.` 
+            }
+        });
+    }
+
+    const faqSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        'name': `Parents Guide and FAQ for ${movie.Title}`,
+        'mainEntity': schemaFaqs
+    };
+
+    return { movieSchema, faqSchema };
+};
+
+// 🔥 3. FRONTEND UI SYNC (Displays the timestamps on your Next.js page)
+export const getVisibleMovieFAQs = (movieTitle, tmdbId) => {
+    const staticFaqs = REVENGE_MOVIE_FAQS[movieTitle] ? [...REVENGE_MOVIE_FAQS[movieTitle]] : [];
+    const sensitiveScenes = SENSITIVE_TIMELINES[tmdbId]?.scenes || [];
+    const movieInfo = COMPLETE_MOVIE_DATA[tmdbId];
+    const intensityScenes = movieInfo?.scenes || [];
+
+    if (intensityScenes.length > 0) {
+        const uiIntensityList = intensityScenes.map(s => `• Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)`).join('\n');
+        staticFaqs.unshift({
+            question: `What are the most intense scenes in ${movieTitle}?`,
+            answer: `According to the Filmiway Intensity metric, ${movieTitle} peaks at the following moments:\n\n${uiIntensityList}`
+        });
+    }
+
+    if (sensitiveScenes.length > 0) {
+        const typesArray = getSensitiveContentTypes(tmdbId) || ['mature content'];
+        const typesString = typesArray.join(' and ');
+
+        const uiListText = sensitiveScenes.map(s => {
+            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
+            return `• ${timeRange} - ${s.type || 'Mature Content'}`;
+        }).join('\n');
+
+        staticFaqs.unshift({
+            question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
+            answer: `Yes, according to the Filmiway Content Advisory, ${movieTitle} contains adult scenes including ${typesString}. Exact timestamps for these scenes are:\n\n${uiListText}`
+        });
+    } else {
+        staticFaqs.unshift({
+            question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
+            answer: `No, the Filmiway Content Advisory confirms that ${movieTitle} is completely free of explicit sexual content and nudity.`
+        });
+    }
+
+    return staticFaqs;
 };
 
 // EXPORT NAMED ALIAS FOR COMPATIBILITY

@@ -2,7 +2,6 @@
 // VISUALS: Minimalist (Banner + Details Only)
 // SCHEMA: Maximalist (Hidden Mind-Bend Metrics, Peak Moments, and FAQs)
 
-
 import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
@@ -15,16 +14,14 @@ import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
 import TMDBAttribution from '../../../components/TMDBAttribution';
 
-
-// ✅ IMPORT DONNIE DARKO DATA
-import { generateCleanMovieSchema } from '../../../utils/cleanMovieSchema';
+// ✅ IMPORT DONNIE DARKO DATA (Using the upgraded Universal Schema Generator)
 import {
   COMPLETE_MOVIE_DATABASE, 
   COMPLETE_MOVIE_DATA,
   SENSITIVE_TIMELINES,
-  DONNIE_DARKO_MOVIE_FAQS 
+  DONNIE_DARKO_MOVIE_FAQS,
+  generateCleanMovieSchema 
 } from '../../../utils/donnieDarkoMovieData';
-
 
 const COLORS = {
   accent: '#9333EA', accentLight: '#C084FC', bgPrimary: '#000000ff', bgCard: 'rgba(11, 11, 11, 0.8)',
@@ -32,10 +29,8 @@ const COLORS = {
   borderAccent: 'rgba(147, 51, 234, 0.25)', borderLight: 'rgba(55, 65, 81, 0.5)',
 };
 
-
 const getTMDBImage = (path, size = 'w1280') =>
   path ? `https://image.tmdb.org/t/p/${size}${path}` : undefined;
-
 
 // ✅ OPTIMIZED BANNER (Hydration Fixed + Mind-Bend Metrics)
 const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
@@ -45,21 +40,16 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
   const [mounted, setMounted] = useState(false);
   const timerRef = useRef(null);
 
-
   const backdropPath = richData?.backdrop_path || movieData?.backdrop_path || movie?.backdrop_path;
   const posterPath = richData?.poster_path || movieData?.poster_path || movie?.poster_path;
-
 
   const bannerImage = backdropPath ? getTMDBImage(backdropPath, 'w1280') : null;
   const posterImage = posterPath ? getTMDBImage(posterPath, 'w500') : null;
 
-
   const insight = richData?.synopsis || "An extraordinary exploration of reality, time, and the fragile nature of consciousness.";
   const mindBendScore = richData?.mindBendScore || 90;
 
-
   useEffect(() => { setMounted(true); }, []);
-
 
   const mobileHeroCSS = `
   @media (max-width: 767px) {
@@ -73,7 +63,6 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
     .mobile-psych-desc { font-size: 12.3px; color: #ededed; line-height: 1.36; margin-top: 2px; }
   }`;
 
-
   useEffect(() => {
     if (mounted && !isMobile && trailer && !showTrailer && !hasClosedTrailer) {
       timerRef.current = setInterval(() => {
@@ -86,13 +75,10 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
     return () => { if (timerRef.current) clearInterval(timerRef.current); };
   }, [mounted, isMobile, trailer, showTrailer, hasClosedTrailer]);
 
-
   const handleCloseTrailer = () => { setShowTrailer(false); setHasClosedTrailer(true); if (timerRef.current) clearInterval(timerRef.current); };
   const handlePlayClick = () => { setShowTrailer(true); setHasClosedTrailer(false); };
 
-
   if (!mounted) return <div className="h-[300px] w-full bg-black/50" />;
-
 
   return (
     <motion.div className="relative w-full overflow-hidden mb-6 sm:mb-8 mx-0 sm:mx-4 lg:mx-6 rounded-none sm:rounded-3xl" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8 }}>
@@ -161,50 +147,32 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
   );
 };
 
-
-const SmartBackButton = () => {
-    const handleBackClick = () => { if (typeof window !== 'undefined') window.location.href = '/collection/movies-like-donnie-darko'; };
-    return (
-        <motion.button onClick={handleBackClick} className="fixed top-4 left-4 sm:top-6 sm:left-6 z-50 flex items-center gap-2 px-3 sm:px-4 py-2 backdrop-blur-md rounded-lg transition-all duration-300 shadow-xl text-xs sm:text-sm" style={{ backgroundColor: `${COLORS.bgPrimary}F2`, border: `1px solid ${COLORS.borderLight}` }} whileHover={{ scale: 1.02, x: -2 }} whileTap={{ scale: 0.98 }} initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} onMouseEnter={(e) => e.currentTarget.style.borderColor = COLORS.borderAccent} onMouseLeave={(e) => e.currentTarget.style.borderColor = COLORS.borderLight}>
-            <ChevronLeft className="w-3 h-3 sm:w-4 sm:h-4" style={{ color: COLORS.accent }} /><span className="font-medium" style={{ color: COLORS.accent }}>Back to Collection</span>
-        </motion.button>
-    );
-};
-
-
 const AuthorCreditSection = () => (
-    <motion.section className="pt-6 sm:pt-8 mt-12 sm:mt-16" style={{ borderTop: `1px solid ${COLORS.borderLight}` }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2.0, duration: 0.8 }}>
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
-            <div className="flex items-center gap-3"><User className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: COLORS.textDisabled }} /><div><p className="text-xs sm:text-sm" style={{ color: COLORS.textMuted }}>Curated by <span className="font-medium" style={{ color: COLORS.textSecondary }}>Filmiway Editorial Team</span></p><p className="text-xs" style={{ color: COLORS.textDisabled }}>Expert analysis of mind-bending cinema</p></div></div>
-            <div className="flex items-center gap-3 sm:gap-4"><span className="text-xs sm:text-sm" style={{ color: COLORS.textDisabled }}>Share:</span><div className="flex gap-2 sm:gap-3">{[Twitter, Hash, Send].map((Icon, i) => (<button key={i} className="p-1.5 sm:p-2 rounded-full transition-colors" style={{ color: COLORS.textDisabled }} onMouseEnter={(e) => { e.currentTarget.style.color = COLORS.textSecondary; e.currentTarget.style.backgroundColor = COLORS.bgCard; }} onMouseLeave={(e) => { e.currentTarget.style.color = COLORS.textDisabled; e.currentTarget.style.backgroundColor = 'transparent'; }}><Icon className="w-3 h-3 sm:w-4 sm:h-4" /></button>))}</div></div>
-        </div>
-    </motion.section>
+  <motion.section className="pt-6 sm:pt-8 mt-12 sm:mt-16" style={{ borderTop: `1px solid ${COLORS.borderLight}` }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2.0, duration: 0.8 }}>
+    <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
+      <div className="flex items-center gap-3"><User className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: COLORS.textDisabled }} /><div><p className="text-xs sm:text-sm" style={{ color: COLORS.textMuted }}>Curated by <span className="font-medium" style={{ color: COLORS.textSecondary }}>Filmiway Editorial Team</span></p><p className="text-xs" style={{ color: COLORS.textDisabled }}>Expert analysis of mind-bending cinema</p></div></div>
+      <div className="flex items-center gap-3 sm:gap-4"><span className="text-xs sm:text-sm" style={{ color: COLORS.textDisabled }}>Share:</span><div className="flex gap-2 sm:gap-3">{[Twitter, Hash, Send].map((Icon, i) => (<button key={i} className="p-1.5 sm:p-2 rounded-full transition-colors" style={{ color: COLORS.textDisabled }} onMouseEnter={(e) => { e.currentTarget.style.color = COLORS.textSecondary; e.currentTarget.style.backgroundColor = COLORS.bgCard; }} onMouseLeave={(e) => { e.currentTarget.style.color = COLORS.textDisabled; e.currentTarget.style.backgroundColor = 'transparent'; }}><Icon className="w-3 h-3 sm:w-4 sm:h-4" /></button>))}</div></div>
+    </div>
+  </motion.section>
 );
-
 
 const SubtleFilmGrain = () => (
-    <div className="fixed inset-0 pointer-events-none z-0 opacity-[0.005]"><div className="w-full h-full bg-repeat" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)' opacity='0.3'/%3E%3C/svg%3E")`, backgroundSize: '60px 60px' }} /></div>
+  <div className="fixed inset-0 pointer-events-none z-0 opacity-[0.005]"><div className="w-full h-full bg-repeat" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)' opacity='0.3'/%3E%3C/svg%3E")`, backgroundSize: '60px 60px' }} /></div>
 );
-
 
 const MindbendBreadcrumb = ({ movie }) => (
-    <motion.nav className="mb-6 sm:mb-8 px-3 sm:px-4 lg:px-6 pb-3 sm:pb-4" style={{ borderBottom: `1px solid ${COLORS.borderLight}` }} initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-        <div className="flex items-center space-x-2 sm:space-x-3 text-xs sm:text-sm" style={{ color: COLORS.textMuted }}>
-            <Link href="/collection/movies-like-donnie-darko" className="transition-all duration-300 truncate" style={{ color: COLORS.textMuted }} onMouseEnter={(e) => e.currentTarget.style.color = COLORS.accent} onMouseLeave={(e) => e.currentTarget.style.color = COLORS.textMuted}>Movies Like Donnie Darko</Link>
-            <ChevronRight size={14} className="flex-shrink-0" style={{ color: COLORS.textDisabled }} /><span className="font-medium truncate" style={{ color: `${COLORS.accent}B3` }}>{movie.Title}</span>
-        </div>
-    </motion.nav>
+  <motion.nav className="mb-6 sm:mb-8 px-3 sm:px-4 lg:px-6 pb-3 sm:pb-4" style={{ borderBottom: `1px solid ${COLORS.borderLight}` }} initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+    <div className="flex items-center space-x-2 sm:space-x-3 text-xs sm:text-sm" style={{ color: COLORS.textMuted }}>
+      <Link href="/collection/movies-like-donnie-darko" className="transition-all duration-300 truncate" style={{ color: COLORS.textMuted }} onMouseEnter={(e) => e.currentTarget.style.color = COLORS.accent} onMouseLeave={(e) => e.currentTarget.style.color = COLORS.textMuted}>Movies Like Donnie Darko</Link>
+      <ChevronRight size={14} className="flex-shrink-0" style={{ color: COLORS.textDisabled }} /><span className="font-medium truncate" style={{ color: `${COLORS.accent}B3` }}>{movie.Title}</span>
+    </div>
+  </motion.nav>
 );
 
-
-
-
-
 const DonnieDarkoMoviePage = ({ movie, tmdbData: movieData }) => {
-    const router = useRouter();
-    const richData = COMPLETE_MOVIE_DATA[movie.tmdbId]; 
-    const [isMobile, setIsMobile] = useState(false);
-
+  const router = useRouter();
+  const richData = COMPLETE_MOVIE_DATA[movie.tmdbId]; 
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -213,7 +181,6 @@ const DonnieDarkoMoviePage = ({ movie, tmdbData: movieData }) => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-
   useEffect(() => {
     if (typeof window !== 'undefined') {
         sessionStorage.setItem('fromCollection', 'donnie-darko');
@@ -221,109 +188,125 @@ const DonnieDarkoMoviePage = ({ movie, tmdbData: movieData }) => {
     }
   }, []);
 
+  const currentMovieYear = movie.year || 'Unknown';
+  const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
-    const currentMovieYear = movie.year || 'Unknown';
-    const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
+  // =========================================================================
+  // ✅ THE UNIVERSAL SEO BLOCK (Blind Copy-Paste Ready)
+  // =========================================================================
 
+  const currentSlug = router.pathname.split('/')[2] || 'Movies';
+  const dynamicCollectionName = currentSlug
+    .split('-')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' '); 
 
-    // ✅ FIXED: Use Array.join() to prevent React HTML comment injection
-    const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Mind-Bending Film | Filmiway'].join('');
-    const cleanSEODesc = [movie.Title, ' - A mind-bending thriller. Analysis & where to stream.'].join('');
+  const dynamicInsight = richData?.synopsis || richData?.description || Object.values(richData || {}).find(val => typeof val === 'string') || '';
 
-    const collectionSlug = router.pathname.split('/')[2];
-    const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
+  const scenes = SENSITIVE_TIMELINES?.[movie.tmdbId]?.scenes || [];
+  
+  let sceneNotice = `Detailed Parents Guide: No nudity or explicit scenes. ${dynamicInsight.substring(0, 110)}...`;
+  
+  if (scenes.length > 0) {
+    const firstTimestamps = scenes
+      .slice(0, 2)
+      .map(s => s.end ? `${s.start}–${s.end}` : s.start)
+      .join(', ');
+    const andMore = scenes.length > 2 ? '...' : '';
+    sceneNotice = `Parents guide with exact scene timestamps: ${firstTimestamps}${andMore}. Viewer discretion advised.`;
+  }
 
-    const { movieSchema, faqSchema } = generateCleanMovieSchema(
-        movie, 
-        movieData, 
-        currentMovieYear, 
-        collectionSlug, 
-        null,
-        COMPLETE_MOVIE_DATA[movie.tmdbId]
-    );
+  const cleanSEOTitle = scenes.length > 0
+    ? `${movie.Title} (${currentMovieYear}) Parents Guide & Timestamps | Filmiway`
+    : `${movie.Title} (${currentMovieYear}) Parents Guide | ${dynamicCollectionName}`;
 
+  const cleanSEODesc = `${movie.Title} (${currentMovieYear}) – ${sceneNotice}`;
 
-    return (
-        <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
-            <Head>
-                {/* ✅ HYDRATION BUG RESOLVED: No more HTML comments in title */}
-                <title>{cleanSEOTitle}</title>
-                <meta name="description" content={cleanSEODesc} />
-                <link rel="canonical" href={canonicalUrl} />
-                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <meta name="robots" content="index, follow" />
-                
-                {/* JSON-LD Schema */}
-                <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }} />
-                {faqSchema && (<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />)}
+  // =========================================================================
 
+  const collectionSlug = router.pathname.split('/')[2];
+  const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
 
-                {/* Social Meta Tags */}
-                <meta property="og:title" content={cleanSEOTitle} />
-                <meta property="og:description" content={cleanSEODesc} />
-                <meta property="og:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
-                <meta name="twitter:title" content={cleanSEOTitle} />
-                <meta name="twitter:description" content={cleanSEODesc} />
-            </Head>
+  const { movieSchema, faqSchema } = generateCleanMovieSchema(
+      movie, 
+      movieData, 
+      currentMovieYear, 
+      collectionSlug, 
+      null,
+      COMPLETE_MOVIE_DATA[movie.tmdbId]
+  );
 
+  return (
+      <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
+          <Head>
+              <title>{cleanSEOTitle}</title>
+              <meta name="description" content={cleanSEODesc} />
+              <link rel="canonical" href={canonicalUrl} />
+              <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+              <meta name="robots" content="index, follow" />
+              
+              <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }} />
+              {faqSchema && (<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />)}
 
-            <SubtleFilmGrain />
-            <div className="absolute inset-0"><CinematicBackground /></div>
-            
-            
-            <div className="relative z-10 pt-10 sm:pt-12 lg:pt-16">
-                
-                {/* ✅ HIDDEN H1 ADDED HERE FOR GOOGLE & BING SEO PARITY */}
-                <h1 className="sr-only">{cleanSEOTitle}</h1>
+              <meta property="og:title" content={cleanSEOTitle} />
+              <meta property="og:description" content={cleanSEODesc} />
+              <meta property="og:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
+              <meta name="twitter:title" content={cleanSEOTitle} />
+              <meta name="twitter:description" content={cleanSEODesc} />
+          </Head>
 
+          <SubtleFilmGrain />
+          <div className="absolute inset-0"><CinematicBackground /></div>
+          
+          <div className="relative z-10 pt-10 sm:pt-12 lg:pt-16">
+              
+              {/* ✅ HIDDEN H1 ADDED HERE FOR GOOGLE & BING SEO PARITY */}
+              <h1 className="sr-only">{cleanSEOTitle}</h1>
 
-                <MindbendBreadcrumb movie={movie} />
-                <div className="container mx-auto px-0 pb-16 sm:pb-24 lg:pb-32 max-w-7xl">
-                    <OptimizedBanner movie={movie} movieData={movieData} richData={richData} trailer={trailer} isMobile={isMobile} />
-                    
-                    <motion.div 
-                        id="watch" 
-                        initial={{ opacity: 0, y: 20 }} 
-                        animate={{ opacity: 1, y: 0 }} 
-                        transition={{ duration: 0.5 }}
-                        className="space-y-8 sm:space-y-12 px-3 sm:px-4 lg:px-6"
-                    >
-                        <MovieDetailsSection movie={movie} fromDonnieDarkoCollection={true} />
-                    </motion.div>
-                    
-                    <div className="px-3 sm:px-4 lg:px-6">
-                        <InternalCollectionsSection currentSlug="movies-like-donnie-darko" />
-                        <TMDBAttribution />
-                        <AuthorCreditSection />
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
+              {/* ❌ THE UGLY VISIBLE BANNER HAS BEEN PERMANENTLY REMOVED ❌ */}
+
+              <MindbendBreadcrumb movie={movie} />
+              <div className="container mx-auto px-0 pb-16 sm:pb-24 lg:pb-32 max-w-7xl">
+                  <OptimizedBanner movie={movie} movieData={movieData} richData={richData} trailer={trailer} isMobile={isMobile} />
+                  
+                  <motion.div 
+                      id="watch" 
+                      initial={{ opacity: 0, y: 20 }} 
+                      animate={{ opacity: 1, y: 0 }} 
+                      transition={{ duration: 0.5 }}
+                      className="space-y-8 sm:space-y-12 px-3 sm:px-4 lg:px-6"
+                  >
+                      <MovieDetailsSection movie={movie} fromDonnieDarkoCollection={true} />
+                  </motion.div>
+                  
+                  <div className="px-3 sm:px-4 lg:px-6">
+                      <InternalCollectionsSection currentSlug="movies-like-donnie-darko" />
+                      <TMDBAttribution />
+                      <AuthorCreditSection />
+                  </div>
+              </div>
+          </div>
+      </div>
+  );
 };
 
-
 export async function getStaticPaths() {
-    const paths = COMPLETE_MOVIE_DATABASE.map((movie) => ({ params: { id: movie.imdbID } }));
-    return { paths, fallback: false };
+  const paths = COMPLETE_MOVIE_DATABASE.map((movie) => ({ params: { id: movie.imdbID } }));
+  return { paths, fallback: false };
 }
-
 
 export async function getStaticProps({ params }) {
-    try {
-        const movie = COMPLETE_MOVIE_DATABASE.find((m) => m.imdbID === params.id);
-        if (!movie) return { notFound: true };
+  try {
+      const movie = COMPLETE_MOVIE_DATABASE.find((m) => m.imdbID === params.id);
+      if (!movie) return { notFound: true };
 
+      const tmdbResponse = await fetch(`https://api.themoviedb.org/3/movie/${movie.tmdbId}?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&append_to_response=videos`);
+      const tmdbData = tmdbResponse.ok ? await tmdbResponse.json() : null;
 
-        const tmdbResponse = await fetch(`https://api.themoviedb.org/3/movie/${movie.tmdbId}?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&append_to_response=videos`);
-        const tmdbData = tmdbResponse.ok ? await tmdbResponse.json() : null;
-
-
-        return { props: { movie, tmdbData } };
-    } catch (error) {
-        return { props: { movie: COMPLETE_MOVIE_DATABASE.find((m) => m.imdbID === params.id), tmdbData: null } };
-    }
+      return { props: { movie, tmdbData } };
+  } catch (error) {
+      return { props: { movie: COMPLETE_MOVIE_DATABASE.find((m) => m.imdbID === params.id), tmdbData: null } };
+  }
 }
-
 
 export default DonnieDarkoMoviePage;

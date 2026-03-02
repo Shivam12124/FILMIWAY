@@ -24,9 +24,7 @@ export const COMPLETE_MOVIE_DATABASE = [
 // ✅ SENSITIVE TIMELINES (Focusing on Grief, Language, and Emotional Trauma)
 export const SENSITIVE_TIMELINES = {
     // 1. Boyhood
-    85350: { 
-        scenes: [] // No sexual content found
-    },
+    85350: { scenes: [] }, // No sexual content found
 
     // 2. Perfect Days
     976893: { 
@@ -36,9 +34,7 @@ export const SENSITIVE_TIMELINES = {
     }, 
     
     // 3. Brooklyn
-    167073: { 
-        scenes: [] // No sexual content found
-    },
+    167073: { scenes: [] }, // No sexual content found
 
     // 4. Small Things Like These
     1102493: { 
@@ -55,29 +51,19 @@ export const SENSITIVE_TIMELINES = {
     },
 
     // 6. BlackBerry
-    1016084: { 
-        scenes: [] // No sexual content found
-    },
+    1016084: { scenes: [] }, // No sexual content found
 
     // 7. A Real Pain
-    1013850: { 
-        scenes: [] // No sexual content found
-    },
+    1013850: { scenes: [] }, // No sexual content found
 
     // 8. Ghostlight
-    1214469: { 
-        scenes: [] // No sexual content found
-    },
+    1214469: { scenes: [] }, // No sexual content found
 
     // 9. Little Miss Sunshine
-    773: { 
-        scenes: [] // No sexual content found
-    },
+    773: { scenes: [] }, // No sexual content found
 
     // 10. R.M.N.
-    919570: { 
-        scenes: [] // No sexual content found
-    }
+    919570: { scenes: [] } // No sexual content found
 };
 
 export const FALLBACK_POSTERS = {
@@ -93,8 +79,6 @@ export const FALLBACK_POSTERS = {
     919570: "https://image.tmdb.org/t/p/w500/1928374.jpg"
 };
 
-
-
 // ✅ HELPER: Updated for Emotional Impact
 const createMovieData = (data) => ({
     emotionalIntensity: 85,    // Default High Emotion
@@ -105,8 +89,6 @@ const createMovieData = (data) => ({
 
 export const COMPLETE_MOVIE_DATA = {
     // 1. Boyhood (2014) [ID: 85350]
-    // Curve: Wonder -> Conflict -> Angst -> Breakdown (Peak) -> Acceptance.
-    // Peak: 96 (Mom's Breakdown - Existential Rupture).
     85350: createMovieData({ 
         emotionalIntensity: 98, 
         complexityLevel: "MASTERPIECE", 
@@ -125,8 +107,6 @@ export const COMPLETE_MOVIE_DATA = {
     }),
 
     // 2. Perfect Days (2023) [ID: 976893]
-    // Curve: Routine -> Disturbance -> Connection -> Reflection -> Catharsis.
-    // Peak: 92 (Final Drive - Emotional Overflow).
     976893: createMovieData({ 
         emotionalIntensity: 88, 
         complexityLevel: "MEDITATIVE", 
@@ -145,8 +125,6 @@ export const COMPLETE_MOVIE_DATA = {
     }),
 
     // 3. Brooklyn (2015) [ID: 167073]
-    // Curve: Departure -> Loss -> Love -> Dilemma -> Choice.
-    // Peak: 88 (The Return - Identity Crisis).
     167073: createMovieData({ 
         emotionalIntensity: 90, 
         complexityLevel: "HEARTFELT", 
@@ -165,8 +143,6 @@ export const COMPLETE_MOVIE_DATA = {
     }),
 
     // 4. Small Things Like These (2024) [ID: 1102493]
-    // Curve: Routine -> Discovery -> Silence -> Confrontation -> Act.
-    // Peak: 85 (The Walk Home - Moral Crisis).
     1102493: createMovieData({ 
         emotionalIntensity: 85, 
         complexityLevel: "SUBTLE", 
@@ -185,8 +161,6 @@ export const COMPLETE_MOVIE_DATA = {
     }),
 
     // 5. All of Us Strangers (2023) [ID: 994108]
-    // Curve: Isolation -> Connection -> Memory -> Trauma -> Devastation.
-    // Peak: 98 (The Diner - Grief Rupture).
     994108: createMovieData({ 
         emotionalIntensity: 99, 
         complexityLevel: "DEVASTATING", 
@@ -205,8 +179,6 @@ export const COMPLETE_MOVIE_DATA = {
     }),
 
     // 6. BlackBerry (2023) [ID: 1016084]
-    // Curve: Idea -> Success -> Pressure -> Crack -> Collapse.
-    // Peak: 88 (Hostile Takeover - Corporate Violence).
     1016084: createMovieData({ 
         emotionalIntensity: 82, 
         complexityLevel: "KINETIC", 
@@ -225,8 +197,6 @@ export const COMPLETE_MOVIE_DATA = {
     }),
 
     // 7. A Real Pain (2024) [ID: 1013850]
-    // Curve: Reunion -> Friction -> Bonding -> Explosion -> Departure.
-    // Peak: 85 (The Argument - Sibling Crisis).
     1013850: createMovieData({ 
         emotionalIntensity: 87, 
         complexityLevel: "INTIMATE", 
@@ -245,8 +215,6 @@ export const COMPLETE_MOVIE_DATA = {
     }),
 
     // 8. Ghostlight (2024) [ID: 1214469]
-    // Curve: Repression -> Expression -> Connection -> Catharsis -> Peace.
-    // Peak: 92 (The Performance - Emotional Release).
     1214469: createMovieData({ 
         emotionalIntensity: 92, 
         complexityLevel: "HEALING", 
@@ -265,8 +233,6 @@ export const COMPLETE_MOVIE_DATA = {
     }),
 
     // 9. Little Miss Sunshine (2006) [ID: 773]
-    // Curve: Hope -> Disaster -> Grief -> Unity -> Joy.
-    // Peak: 88 (Super Freak Dance - Joyful Rebellion).
     773: createMovieData({ 
         emotionalIntensity: 85, 
         complexityLevel: "CLASSIC", 
@@ -285,8 +251,6 @@ export const COMPLETE_MOVIE_DATA = {
     }),
 
     // 10. R.M.N. (2022) [ID: 919570]
-    // Curve: Return -> Unease -> Conflict -> Explosion -> Ambiguity.
-    // Peak: 90 (Town Hall Meeting - Social Rupture).
     919570: createMovieData({ 
         emotionalIntensity: 88, 
         complexityLevel: "COMPLEX", 
@@ -304,6 +268,7 @@ export const COMPLETE_MOVIE_DATA = {
         themes: ["Xenophobia", "Globalism", "Tradition"]
     })
 };
+
 export const STRATEGIC_QUOTES = {
     85350: "The moment seizes us.",
     976893: "Next time is next time. Now is now.",
@@ -326,8 +291,7 @@ export const HULU_DRAMA_MOVIE_FAQS = {
     'Perfect Days': [
         { question: "Why does he clean toilets?", answer: "Hirayama's job represents his commitment to humility, service, and discipline. The film elevates a 'lowly' profession to an art form, suggesting that dignity comes from how you do your work, not what the work is." },
         { question: "Does Hirayama have a dark past?", answer: "The film hints at a wealthy, perhaps traumatic upbringing through the visit of his sister and his tears. However, it never explicitly explains it, focusing instead on the peace he has built for himself in the present." },
-        { question: "What is the song at the end?", answer: "The final song is 'Feeling Good' by Nina Simone. The long close-up of Hirayama's face, mixing joy and sorrow, perfectly captures the bittersweet beauty of being alive." },
-        { question: "Does Perfect Days have nudity or sex scenes?", answer: "Perfect Days contains a brief scene with non-sexual partial nudity at approximately 0:23:05. The film is generally meditative and not explicit." }
+        { question: "What is the song at the end?", answer: "The final song is 'Feeling Good' by Nina Simone. The long close-up of Hirayama's face, mixing joy and sorrow, perfectly captures the bittersweet beauty of being alive." }
     ],
     'Brooklyn': [
         { question: "Why does Eilis go back to Ireland?", answer: "She returns due to a family tragedy. While there, she falls into a comfortable life that represents the 'path not taken.' Her eventual return to Brooklyn is a choice to embrace her future over the comfort of her past." },
@@ -335,14 +299,12 @@ export const HULU_DRAMA_MOVIE_FAQS = {
     ],
     'Small Things Like These': [
         { question: "What are the Magdalene Laundries?", answer: "They were institutions in Ireland run by the Catholic Church where 'fallen women' (unmarried mothers, etc.) were confined and forced to work in harsh conditions. The film exposes the community's silent complicity in this system." },
-        { question: "Why is the movie so quiet?", answer: "The silence reflects the culture of fear and repression in the town. Everyone knows what is happening at the convent, but speaking up would risk their livelihood and social standing." },
-        { question: "Does Small Things Like These have nudity or sex scenes?", answer: "Yes, Small Things Like These includes a scene with sex from approximately 1:10:00 to 1:15:00. Our content timeline provides more specific details for viewers." }
+        { question: "Why is the movie so quiet?", answer: "The silence reflects the culture of fear and repression in the town. Everyone knows what is happening at the convent, but speaking up would risk their livelihood and social standing." }
     ],
     'All of Us Strangers': [
         { question: "Are the parents ghosts?", answer: "The film leaves this ambiguous. They could be ghosts, or they could be manifestations of Adam's grief and longing—a way for his mind to finally have the conversations he never got to have before they died." },
         { question: "What happens to Harry?", answer: "The ending reveals a devastating truth about Harry (Paul Mescal) that recontextualizes their entire relationship. It suggests that Adam's journey was not just about his parents, but about acknowledging the loneliness of his present." },
-        { question: "Is it a horror movie?", answer: "No, but it uses the visual language of a ghost story (empty buildings, shadows, apparitions) to explore the horror of grief and isolation rather than fear." },
-        { question: "Does All of Us Strangers have nudity or sex scenes?", answer: "Yes, All of Us Strangers features an intimate scene with sexual content but no explicit nudity, occurring from approximately 0:26:30 to 0:28:47. The film's focus is on emotional connection and grief." }
+        { question: "Is it a horror movie?", answer: "No, but it uses the visual language of a ghost story (empty buildings, shadows, apparitions) to explore the horror of grief and isolation rather than fear." }
     ],
     'BlackBerry': [
         { question: "Is the BlackBerry movie accurate?", answer: "It is a dramatization. While the major beats (the rise, the keyboard obsession, the iPhone killing it) are true, many character interactions and specific timelines were condensed or exaggerated for dramatic effect." },
@@ -366,38 +328,166 @@ export const HULU_DRAMA_MOVIE_FAQS = {
     ]
 };
 
+// 8️⃣ UTILITY FUNCTIONS & UNIVERSAL SEO ENGINE 🔥
 export const getTMDBPosterUrl = (posterPath, size = 'medium') => {
     if (!posterPath) return null;
-    return `${TMDB_CONFIG.IMAGE_BASE_URL}/${TMDB_CONFIG.POSTER_SIZES[size] || 'w500'}${posterPath}`;
+    const posterSize = TMDB_CONFIG.POSTER_SIZES[size] || TMDB_CONFIG.POSTER_SIZES.medium;
+    return `${TMDB_CONFIG.IMAGE_BASE_URL}/${posterSize}${posterPath}`;
 };
 
-export const generateMovieSchema = (movie) => {
-    const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
+export const fetchMovieFromTMDB = async (tmdbId) => ({ 
+    poster_path: null, 
+    title: COMPLETE_MOVIE_DATABASE.find(m => m.tmdbId === tmdbId)?.Title || 'Unknown Movie' 
+});
+
+export const fetchWatchProviders = async (tmdbId, region = 'US') => null;
+
+export const formatSensitiveTimeline = (tmdbId) => {
+    const raw = SENSITIVE_TIMELINES[tmdbId];
+    if (!raw || !raw.scenes || raw.scenes.length === 0) return null;
     return {
-        '@context': 'https://schema.org',
-        '@type': 'Movie',
-        'name': movie.Title,
-        'description': movieInfo?.synopsis,
-        'genre': movie.genre,
-        'datePublished': movie.year.toString(),
-        'director': { '@type': 'Person', 'name': movieInfo?.director || 'Director' },
-        'duration': `PT${movie.runtime}M`,
-        'image': FALLBACK_POSTERS[movie.tmdbId] || '',
-        'aggregateRating': { 
-            '@type': 'AggregateRating', 
-            'ratingValue': movieInfo?.rating || 7.5, 
-            'bestRating': 10, 
-            'worstRating': 1 
-        }
+        scenes: raw.scenes.map(scene => ({
+            start: scene.start, end: scene.end, type: scene.type, description: scene.description || ''
+        }))
     };
 };
 
-export const generateFAQSchema = (faqs) => ({
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    'mainEntity': faqs.map(faq => ({ 
+// 🔥 1. THE KEYWORD BRIDGE (SEO-Optimized)
+export const getSensitiveContentTypes = (tmdbId) => {
+    const sensitiveData = SENSITIVE_TIMELINES[tmdbId];
+    if (!sensitiveData?.scenes?.length) return null;
+    const types = new Set();
+    sensitiveData.scenes.forEach(scene => {
+        const lowerType = scene.type.toLowerCase();
+        if (lowerType.includes('sex') || lowerType.includes('explicit')) types.add('sexual content');
+        if (lowerType.includes('nudity')) types.add('nudity');
+        if (lowerType.includes('kissing') || lowerType.includes('romantic')) types.add('romantic content');
+    });
+    return Array.from(types);
+};
+
+// 🔥 2. THE "GOLDEN EGG" SCHEMA GENERATOR (Universal Version)
+export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, collectionSlug, unused, movieInfo) => {
+    const movieSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'Movie',
+        'name': movie.Title,
+        'description': movieInfo?.synopsis || `${movie.Title} (${currentMovieYear}) - A highly acclaimed drama streaming on Hulu.`,
+        'genre': movie.genre,
+        'datePublished': currentMovieYear?.toString() || movie.year.toString(),
+        'director': { '@type': 'Person', 'name': movieInfo?.director || 'Director' },
+        'actor': movieInfo?.cast?.map(actor => ({ '@type': 'Person', 'name': actor })) || [],
+        'image': tmdbData?.poster_path ? `https://image.tmdb.org/t/p/w500${tmdbData.poster_path}` : (FALLBACK_POSTERS[movie.tmdbId] || ''),
+        'duration': `PT${movie.runtime}M`
+    };
+
+    const staticFaqs = HULU_DRAMA_MOVIE_FAQS[movie.Title] ? [...HULU_DRAMA_MOVIE_FAQS[movie.Title]] : [];
+    const sensitiveScenes = SENSITIVE_TIMELINES[movie.tmdbId]?.scenes || [];
+    const intensityScenes = movieInfo?.scenes || [];
+    
+    const schemaFaqs = staticFaqs.map(faq => ({ 
         '@type': 'Question', 
         'name': faq.question, 
         'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer } 
-    }))
-});
+    }));
+
+    if (intensityScenes.length > 0) {
+        const schemaIntensityList = intensityScenes.map(s => `<li>Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)</li>`).join('');
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `What are the most intense scenes in ${movie.Title}?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `According to the Filmiway Intensity metric, ${movie.Title} peaks at the following moments:<br><br><ul>${schemaIntensityList}</ul>` 
+            }
+        });
+    }
+
+    if (sensitiveScenes.length > 0) {
+        const typesArray = getSensitiveContentTypes(movie.tmdbId) || ['mature content'];
+        const typesString = typesArray.join(' and ');
+
+        const schemaListText = sensitiveScenes.map(s => {
+            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
+            return `<li>${timeRange} - ${s.type || 'Mature Content'}</li>`;
+        }).join('');
+
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `Yes, according to the Filmiway Content Advisory, ${movie.Title} contains scenes including ${typesString}. Exact timestamps for these scenes are:<br><br><ul>${schemaListText}</ul>` 
+            }
+        });
+    } else {
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `No, the Filmiway Content Advisory confirms that ${movie.Title} is completely free of explicit sexual content and nudity.` 
+            }
+        });
+    }
+
+    const faqSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        'name': `Parents Guide and FAQ for ${movie.Title}`,
+        'mainEntity': schemaFaqs
+    };
+
+    return { movieSchema, faqSchema };
+};
+
+// 🔥 3. FRONTEND UI SYNC (Displays the timestamps on your Next.js page)
+export const getVisibleMovieFAQs = (movieTitle, tmdbId) => {
+    const staticFaqs = HULU_DRAMA_MOVIE_FAQS[movieTitle] ? [...HULU_DRAMA_MOVIE_FAQS[movieTitle]] : [];
+    const sensitiveScenes = SENSITIVE_TIMELINES[tmdbId]?.scenes || [];
+    const movieInfo = COMPLETE_MOVIE_DATA[tmdbId];
+    const intensityScenes = movieInfo?.scenes || [];
+
+    if (intensityScenes.length > 0) {
+        const uiIntensityList = intensityScenes.map(s => `• Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)`).join('\n');
+        staticFaqs.unshift({
+            question: `What are the most intense scenes in ${movieTitle}?`,
+            answer: `According to the Filmiway Intensity metric, ${movieTitle} peaks at the following moments:\n\n${uiIntensityList}`
+        });
+    }
+
+    if (sensitiveScenes.length > 0) {
+        const typesArray = getSensitiveContentTypes(tmdbId) || ['mature content'];
+        const typesString = typesArray.join(' and ');
+
+        const uiListText = sensitiveScenes.map(s => {
+            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
+            return `• ${timeRange} - ${s.type || 'Mature Content'}`;
+        }).join('\n');
+
+        staticFaqs.unshift({
+            question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
+            answer: `Yes, according to the Filmiway Content Advisory, ${movieTitle} contains scenes including ${typesString}. Exact timestamps for these scenes are:\n\n${uiListText}`
+        });
+    } else {
+        staticFaqs.unshift({
+            question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
+            answer: `No, the Filmiway Content Advisory confirms that ${movieTitle} is completely free of explicit sexual content and nudity.`
+        });
+    }
+
+    return staticFaqs;
+};
+
+// Build object map by tmdbId
+export const COMPLETE_HULU_DRAMA_DATABASE = Object.fromEntries(
+    COMPLETE_MOVIE_DATABASE.map(m => [m.tmdbId, m])
+);
+
+export default {
+    COMPLETE_MOVIE_DATABASE,
+    COMPLETE_MOVIE_DATA,
+    SENSITIVE_TIMELINES,
+    HULU_DRAMA_MOVIE_FAQS,
+    COMPLETE_HULU_DRAMA_DATABASE
+};

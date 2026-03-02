@@ -2,13 +2,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Info } from 'lucide-react';
-import { HULU_DRAMA_MOVIE_FAQS } from '../utils/huluDramaMovieData';
+// 🔥 IMPORT THE NEW DYNAMIC FAQ GENERATOR
+import { getVisibleMovieFAQs } from '../utils/huluDramaMovieData';
 
 const HuluDramaSEOFAQSection = ({ movie }) => {
-    // 🔥 Get FAQs from HULU_DRAMA_MOVIE_FAQS data
-    const faqsFromData = movie?.Title && HULU_DRAMA_MOVIE_FAQS?.[movie.Title] 
-        ? HULU_DRAMA_MOVIE_FAQS[movie.Title] 
-        : [];
+    // 🔥 AUTOMATICALLY GENERATE THE FAQS FOR HUMANS (Includes the Dynamic Timestamp FAQ)
+    // This calls the template engine we built, so the UI matches the Bot Schema exactly!
+    const faqsFromData = getVisibleMovieFAQs(movie?.Title, movie?.tmdbId);
 
     // 🔥 Safety check - return null if no FAQs
     if (!faqsFromData || faqsFromData.length === 0) {
@@ -41,7 +41,8 @@ const HuluDramaSEOFAQSection = ({ movie }) => {
                         transition={{ duration: 0.6, delay: index * 0.1 }}
                     >
                         <h3 className="text-base sm:text-lg font-medium text-sky-200 mb-2 sm:mb-3">{faq.question}</h3>
-                        <p className="text-gray-300 leading-relaxed text-sm sm:text-base">{faq.answer}</p>
+                        {/* 🔥 Added whitespace-pre-line to correctly render the \n\n bullet points from our engine! */}
+                        <p className="text-gray-300 leading-relaxed text-sm sm:text-base whitespace-pre-line">{faq.answer}</p>
                     </motion.div>
                 ))}
             </div>

@@ -23,7 +23,6 @@ export const COMPLETE_MOVIE_DATABASE = [
 ];
 
 // 2. SENSITIVE TIMELINES (Sexual Content & Nudity Only)
-// 2. SENSITIVE TIMELINES (Sexual Content & Nudity Only)
 export const SENSITIVE_TIMELINES = {
     // 1. The Butterfly Effect
     1954: { 
@@ -88,7 +87,6 @@ export const SENSITIVE_TIMELINES = {
         scenes: [
             { start: "0:01:46", end: "0:01:50", type: "Partial Nudity", severity: "Mild" },
             { start: "0:02:50", end: "0:04:58", type: "Nudity", severity: "High" },
-            { start: "0:07:23", end: "0:07:29", type: "Kissing", severity: "Mild" },
             { start: "0:07:50", end: "0:08:05", type: "Sexual Content", severity: "High" },
             { start: "0:08:37", end: "0:08:42", type: "Sexual Content", severity: "High" },
             { start: "0:09:10", end: "0:09:15", type: "Sexual Content", severity: "High" },
@@ -96,11 +94,12 @@ export const SENSITIVE_TIMELINES = {
             { start: "0:45:20", end: "0:45:52", type: "Nudity", severity: "High" },
             { start: "1:14:25", end: "1:14:41", type: "Partial Nudity", severity: "Moderate" },
             { start: "1:19:30", end: "1:20:35", type: "Sexual Content", severity: "High" },
-            { start: "1:22:20", end: "1:22:42", type: "Kissing/Nudity", severity: "High" },
+            { start: "1:22:20", end: "1:22:42", type: "Nudity", severity: "High" },
             { start: "1:23:55", end: "1:24:08", type: "Nudity", severity: "High" }
         ]
     }
 };
+
 // 3. FALLBACK POSTERS
 export const FALLBACK_POSTERS = {
     1954: "https://image.tmdb.org/t/p/w500/vHof7S85J9vAnYyE6UscGfE6V5X.jpg",
@@ -123,11 +122,7 @@ const createMovieData = (data) => ({
     ...data,
 });
 
-// utils/donnieDarkoMovieData.js - COMPLETE MIND-BENDING COLLECTION
-// Focused on psychological intensity, time travel, and reality-bending narratives.
-
-// HELPER: Create Data with Mind-Bending Metrics
-
+// 4. DETAILED MOVIE DATA (Object)
 export const COMPLETE_MOVIE_DATA = {
     // 1. The Butterfly Effect
     1954: createMovieData({
@@ -410,51 +405,19 @@ export const RATING_OPTIONS = [
     { value: 4, label: "Masterpiece", color: "#eab308", symbol: "🐇", bgColor: "bg-yellow-900/30", description: "Donnie Darko level" }
 ];
 
-// 8. UTILITY FUNCTIONS
+// 8. UTILITY FUNCTIONS (🔥 UPGRADED FOR UNIVERSAL SEO)
 export const getTMDBPosterUrl = (posterPath, size = 'medium') => {
     if (!posterPath) return null;
     const posterSize = TMDB_CONFIG.POSTER_SIZES[size] || TMDB_CONFIG.POSTER_SIZES.medium;
     return `${TMDB_CONFIG.IMAGE_BASE_URL}/${posterSize}${posterPath}`;
 };
 
-export const getSensitiveContentTypes = (tmdbId) => {
-    const sensitiveData = SENSITIVE_TIMELINES[tmdbId];
-    if (!sensitiveData?.scenes?.length) return null;
-    const types = new Set();
-    sensitiveData.scenes.forEach(scene => {
-        const lowerType = scene.type.toLowerCase();
-        if (lowerType.includes('sex')) types.add('intimate scenes');
-        if (lowerType.includes('nudity')) types.add('nudity');
-    });
-    return Array.from(types);
-};
-
-export const generateFAQData = (movie) => {
-    return DONNIE_DARKO_MOVIE_FAQS[movie.Title] || [];
-};
-
-export const generateMovieSchema = (movie) => {
-    const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
-    return {
-        '@context': 'https://schema.org',
-        '@type': 'Movie',
-        'name': movie.Title,
-        'description': movieInfo?.synopsis || `${movie.Title} - A mind-bending thriller.`,
-        'datePublished': movie.year.toString(),
-        'director': { '@type': 'Person', 'name': movieInfo?.director || 'Director' },
-        'aggregateRating': { '@type': 'AggregateRating', 'ratingValue': movieInfo?.rating || 7.5, 'bestRating': 10, 'worstRating': 1, 'ratingCount': 100 }
-    };
-};
-
-export const generateFAQSchema = (faqs) => ({
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    'mainEntity': faqs.map(faq => ({ 
-        '@type': 'Question', 
-        'name': faq.question, 
-        'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer } 
-    }))
+export const fetchMovieFromTMDB = async (tmdbId) => ({ 
+    poster_path: null, 
+    title: COMPLETE_MOVIE_DATABASE.find(m => m.tmdbId === tmdbId)?.Title || 'Unknown Movie' 
 });
+
+export const fetchWatchProviders = async (tmdbId, region = 'US') => null;
 
 export const formatSensitiveTimeline = (tmdbId) => {
     const raw = SENSITIVE_TIMELINES[tmdbId];
@@ -464,4 +427,149 @@ export const formatSensitiveTimeline = (tmdbId) => {
             start: scene.start, end: scene.end, type: scene.type, description: scene.description || ''
         }))
     };
+};
+
+// 🔥 1. THE KEYWORD BRIDGE (SEO-Optimized)
+export const getSensitiveContentTypes = (tmdbId) => {
+    const sensitiveData = SENSITIVE_TIMELINES[tmdbId];
+    if (!sensitiveData?.scenes?.length) return null;
+    const types = new Set();
+    sensitiveData.scenes.forEach(scene => {
+        const lowerType = scene.type.toLowerCase();
+        // SEO power-words conversion
+        if (lowerType.includes('sex') || lowerType.includes('explicit')) types.add('sexual content');
+        if (lowerType.includes('nudity')) types.add('nudity');
+        if (lowerType.includes('kissing') || lowerType.includes('romantic')) types.add('romantic content');
+    });
+    return Array.from(types);
+};
+
+// 🔥 2. THE "GOLDEN EGG" SCHEMA GENERATOR (Universal Version)
+export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, collectionSlug, unused, movieInfo) => {
+    // Standard Movie Schema
+    const movieSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'Movie',
+        'name': movie.Title,
+        'description': movieInfo?.synopsis || `${movie.Title} (${currentMovieYear}) - A mind-bending thriller exploring reality and existence.`,
+        'genre': movie.genre,
+        'datePublished': currentMovieYear?.toString() || movie.year.toString(),
+        'director': { '@type': 'Person', 'name': movieInfo?.director || 'Director' },
+        'actor': movieInfo?.cast?.map(actor => ({ '@type': 'Person', 'name': actor })) || [],
+        'image': tmdbData?.poster_path ? `https://image.tmdb.org/t/p/w500${tmdbData.poster_path}` : (FALLBACK_POSTERS[movie.tmdbId] || ''),
+        'duration': `PT${movie.runtime}M`
+    };
+
+    const staticFaqs = DONNIE_DARKO_MOVIE_FAQS[movie.Title] || [];
+    const sensitiveScenes = SENSITIVE_TIMELINES[movie.tmdbId]?.scenes || [];
+    const intensityScenes = movieInfo?.scenes || [];
+    
+    const schemaFaqs = staticFaqs.map(faq => ({ 
+        '@type': 'Question', 
+        'name': faq.question, 
+        'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer } 
+    }));
+
+    // Inject Intensity Graph Timestamps into Schema
+    if (intensityScenes.length > 0) {
+        const schemaIntensityList = intensityScenes.map(s => `<li>Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)</li>`).join('');
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `What are the most intense scenes in ${movie.Title}?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `According to the Filmiway Intensity metric, ${movie.Title} peaks at the following moments:<br><br><ul>${schemaIntensityList}</ul>` 
+            }
+        });
+    }
+
+    // Inject Sensitive Content Timestamps into Schema (Top Priority)
+    if (sensitiveScenes.length > 0) {
+        const typesArray = getSensitiveContentTypes(movie.tmdbId) || ['mature content'];
+        const typesString = typesArray.join(' and ');
+
+        const schemaListText = sensitiveScenes.map(s => {
+            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
+            return `<li>${timeRange} - ${s.type || 'Mature Content'}</li>`;
+        }).join('');
+
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `Yes, according to the Filmiway Content Advisory, ${movie.Title} contains scenes including ${typesString}. Exact timestamps for these scenes are:<br><br><ul>${schemaListText}</ul>` 
+            }
+        });
+    } else {
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `No, the Filmiway Content Advisory confirms that ${movie.Title} is completely free of explicit sexual content and nudity.` 
+            }
+        });
+    }
+
+    const faqSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        'name': `Parents Guide and FAQ for ${movie.Title}`,
+        'mainEntity': schemaFaqs
+    };
+
+    return { movieSchema, faqSchema };
+};
+
+// 🔥 3. FRONTEND UI SYNC (Displays the timestamps on your Next.js page)
+export const getVisibleMovieFAQs = (movieTitle, tmdbId) => {
+    const staticFaqs = DONNIE_DARKO_MOVIE_FAQS[movieTitle] ? [...DONNIE_DARKO_MOVIE_FAQS[movieTitle]] : [];
+    const sensitiveScenes = SENSITIVE_TIMELINES[tmdbId]?.scenes || [];
+    const movieInfo = COMPLETE_MOVIE_DATA[tmdbId];
+    const intensityScenes = movieInfo?.scenes || [];
+
+    if (intensityScenes.length > 0) {
+        const uiIntensityList = intensityScenes.map(s => `• Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)`).join('\n');
+        staticFaqs.unshift({
+            question: `What are the most intense scenes in ${movieTitle}?`,
+            answer: `According to the Filmiway Intensity metric, ${movieTitle} peaks at the following moments:\n\n${uiIntensityList}`
+        });
+    }
+
+    if (sensitiveScenes.length > 0) {
+        const typesArray = getSensitiveContentTypes(tmdbId) || ['mature content'];
+        const typesString = typesArray.join(' and ');
+
+        const uiListText = sensitiveScenes.map(s => {
+            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
+            return `• ${timeRange} - ${s.type || 'Mature Content'}`;
+        }).join('\n');
+
+        staticFaqs.unshift({
+            question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
+            answer: `Yes, according to the Filmiway Content Advisory, ${movieTitle} contains scenes including ${typesString}. Exact timestamps for these scenes are:\n\n${uiListText}`
+        });
+    } else {
+        staticFaqs.unshift({
+            question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
+            answer: `No, the Filmiway Content Advisory confirms that ${movieTitle} is completely free of explicit sexual content and nudity.`
+        });
+    }
+
+    return staticFaqs;
+};
+
+// Build object map by tmdbId (Export named variable)
+export const COMPLETE_DONNIE_DARKO_DATABASE = Object.fromEntries(
+    COMPLETE_MOVIE_DATABASE.map(m => [m.tmdbId, m])
+);
+
+// ✅ EXPORT DEFAULT (Containing all exports for compatibility)
+export default {
+    COMPLETE_MOVIE_DATABASE,
+    COMPLETE_MOVIE_DATA,
+    SENSITIVE_TIMELINES,
+    DONNIE_DARKO_MOVIE_FAQS,
+    COMPLETE_DONNIE_DARKO_DATABASE
 };

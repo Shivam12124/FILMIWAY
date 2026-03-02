@@ -32,14 +32,14 @@ const createMovieData = (data) => ({
 
 export const SENSITIVE_TIMELINES = {
     105: { scenes: [ // Back to the Future
-        { start: '1:19:30', end: '1:19:40', type: 'Kissing', severity: 'Mild' },
+       
         { start: '1:21:49', end: '1:22:13', type: 'Sexual Content', severity: 'Moderate' }
     ]},
     280: { scenes: [ // T2
-        { start: '6:10', end: '6:20', type: 'Partial Nudity (', severity: 'Mild' }
+        { start: '6:10', end: '6:20', type: 'Partial Nudity', severity: 'Mild' }
     ]},
     218: { scenes: [ // The Terminator
-        { start: '5:00', end: '7:30', type: 'Nudity ', severity: 'Mild' },
+        { start: '5:00', end: '7:30', type: ' Nudity', severity: 'Mild' },
         { start: '1:21:50', end: '1:23:00', type: 'Sex', severity: 'High' }
     ]},
     157336: { scenes: [] }, // Interstellar
@@ -52,15 +52,15 @@ export const SENSITIVE_TIMELINES = {
         { start: '16:00', end: '16:10', type: 'Partial Nudity', severity: 'Mild' }
     ]},
     141: { scenes: [ // Donnie Darko
-        { start: '1:18:18', end: '1:18:35', type: 'Kissing', severity: 'Mild' }
+  
     ]},
     137: { scenes: [ // Groundhog Day
-        { start: '55:00', end: '56:00', type: 'Kissing', severity: 'Mild' },
-        { start: '1:25:00', end: '1:26:16', type: 'Kissing', severity: 'Mild' }
+
+  
     ]},
     14139: { scenes: [ // Timecrimes
-        { start: '7:07', end: '7:14', type: 'Partial nudity ', severity: 'Moderate' },
-        { start: '10:20', end: '11:34', type: 'Nudity ', severity: 'High' }
+        { start: '7:07', end: '7:14', type: ' Nudity', severity: 'Moderate' },
+        { start: '10:20', end: '11:34', type: 'Nudity', severity: 'High' }
     ]}
 };
 
@@ -77,16 +77,11 @@ export const FALLBACK_POSTERS = {
     14139: "https://image.tmdb.org/t/p/w500/4.jpg"
 };
 
-
-
 export const COMPLETE_MOVIE_DATA = {
     // 1. Back to the Future
     105: createMovieData({ 
-        // 🗑️ REMOVED: timeTravelIntensity, sciFiConcept, emotionalImpact
-        // ✅ ADDED: Pure Complexity Metrics
         complexityLevel: "MEDIUM", 
         complexityScore: 45, // Linear branching, easy to follow
-
         dominantColor: "#f59e0b", rating: 8.5, criticsScore: 97, audienceScore: 94, 
         director: "Robert Zemeckis", cast: ["Michael J. Fox", "Christopher Lloyd", "Lea Thompson"], 
         boxOffice: "$388.8 million", budget: "$19 million", 
@@ -107,7 +102,6 @@ export const COMPLETE_MOVIE_DATA = {
     280: createMovieData({ 
         complexityLevel: "MEDIUM", 
         complexityScore: 55, // Simple causal loop, action focused
-
         dominantColor: "#1e3a8a", rating: 8.6, criticsScore: 93, audienceScore: 95, 
         director: "James Cameron", cast: ["Arnold Schwarzenegger", "Linda Hamilton", "Edward Furlong"], 
         boxOffice: "$520.9 million", budget: "$102 million", 
@@ -128,7 +122,6 @@ export const COMPLETE_MOVIE_DATA = {
     218: createMovieData({ 
         complexityLevel: "MEDIUM", 
         complexityScore: 50, // Standard Grandfather Paradox
-
         dominantColor: "#ef4444", rating: 8.1, criticsScore: 100, audienceScore: 89, 
         director: "James Cameron", cast: ["Arnold Schwarzenegger", "Linda Hamilton", "Michael Biehn"], 
         boxOffice: "$78.4 million", budget: "$6.4 million", 
@@ -149,7 +142,6 @@ export const COMPLETE_MOVIE_DATA = {
     157336: createMovieData({ 
         complexityLevel: "HIGH", 
         complexityScore: 85, // Physics are extreme, narrative is straightforward
-
         dominantColor: "#0c4a6e", rating: 8.7, criticsScore: 73, audienceScore: 86, 
         director: "Christopher Nolan", cast: ["Matthew McConaughey", "Anne Hathaway", "Jessica Chastain"], 
         boxOffice: "$677.5 million", budget: "$165 million", 
@@ -170,7 +162,6 @@ export const COMPLETE_MOVIE_DATA = {
     206487: createMovieData({ 
         complexityLevel: "EXTREME", 
         complexityScore: 98, // The perfect, confusing closed loop
-
         dominantColor: "#78350f", rating: 7.4, criticsScore: 84, audienceScore: 75, 
         director: "The Spierig Brothers", cast: ["Ethan Hawke", "Sarah Snook", "Noah Taylor"], 
         boxOffice: "$5.6 million", budget: "$5 million", 
@@ -191,7 +182,6 @@ export const COMPLETE_MOVIE_DATA = {
     14337: createMovieData({ 
         complexityLevel: "EXTREME", 
         complexityScore: 100, // Requires a spreadsheet to understand
-
         dominantColor: "#94a3b8", rating: 6.7, criticsScore: 73, audienceScore: 79, 
         director: "Shane Carruth", cast: ["Shane Carruth", "David Sullivan", "Casey Gooden"], 
         boxOffice: "$841,926", budget: "$7,000", 
@@ -212,7 +202,6 @@ export const COMPLETE_MOVIE_DATA = {
     63: createMovieData({ 
         complexityLevel: "HIGH", 
         complexityScore: 82, // Fixed timeline theory, conceptually heavy
-
         dominantColor: "#dc2626", rating: 8.0, criticsScore: 88, audienceScore: 88, 
         director: "Terry Gilliam", cast: ["Bruce Willis", "Madeleine Stowe", "Brad Pitt"], 
         boxOffice: "$168.8 million", budget: "$29.5 million", 
@@ -233,7 +222,6 @@ export const COMPLETE_MOVIE_DATA = {
     141: createMovieData({ 
         complexityLevel: "HIGH", 
         complexityScore: 88, // Tangent Universe is confusing on first watch
-
         dominantColor: "#312e81", rating: 8.0, criticsScore: 87, audienceScore: 80, 
         director: "Richard Kelly", cast: ["Jake Gyllenhaal", "Jena Malone", "Mary McDonnell"], 
         boxOffice: "$7.6 million", budget: "$4.5 million", 
@@ -254,7 +242,6 @@ export const COMPLETE_MOVIE_DATA = {
     137: createMovieData({ 
         complexityLevel: "LOW", 
         complexityScore: 40, // Simple Time Loop
-
         dominantColor: "#0ea5e9", rating: 8.0, criticsScore: 97, audienceScore: 88, 
         director: "Harold Ramis", cast: ["Bill Murray", "Andie MacDowell", "Chris Elliott"], 
         boxOffice: "$105 million", budget: "$14.6 million", 
@@ -275,7 +262,6 @@ export const COMPLETE_MOVIE_DATA = {
     14139: createMovieData({ 
         complexityLevel: "HIGH", 
         complexityScore: 92, // Tight causal loops, visually confusing
-
         dominantColor: "#be185d", rating: 7.1, criticsScore: 89, audienceScore: 73, 
         director: "Nacho Vigalondo", cast: ["Karra Elejalde", "Candela Fernández", "Bárbara Goenaga"], 
         boxOffice: "$574,188", budget: "$2.6 million", 
@@ -382,7 +368,6 @@ export const TIME_TRAVEL_MOVIE_FAQS = {
         }
     ],
     'Predestination': [
-     
         { 
             question: "How can someone be their own mother and father?", 
             answer: "This is the biological impossibility the film embraces. Jane is born with both male and female reproductive organs. After giving birth to a baby (with John), she undergoes surgery to become John. That baby is stolen and taken back in time to become Jane. Because they are the same genetic being, they are literally their own ancestors and descendants." 
@@ -391,22 +376,14 @@ export const TIME_TRAVEL_MOVIE_FAQS = {
             question: "Why does the Bartender become the Bomber?", 
             answer: "The film suggests that prolonged time travel causes 'the fizzle'—a form of psychosis and dementia. The Bartender spends his life trying to stop the Bomber, but the trauma and brain damage eventually warp his mind until he *becomes* the Bomber, convincing himself that the bombings are necessary to save lives. It is a tragic cycle of self-destruction." 
         },
-
-
-   { 
+        { 
             question: "Is everyone the same person?", 
             answer: "Yes. The shocking twist is that Jane, John, the Bartender, and the Fizzle Bomber are all the exact same person at different points in their timeline. It is the ultimate solipsistic paradox: a single individual who births themselves, recruits themselves, fights themselves, and eventually kills themselves. The entire universe of the film revolves around one lonely soul." 
         },
-
         { 
             question: "What is the meaning of the Snake/Ouroboros?", 
             answer: "The Ouroboros (a snake eating its own tail) is the central metaphor. It represents infinity and the inescapability of fate. The protagonist is trapped in an eternal loop of creation and destruction, never able to break free because every action they take to fix the past is exactly what caused the future. It is a study of inevitable tragedy." 
         }
-
-
-
-
-        
     ],
     'Primer': [
         { 
@@ -500,63 +477,12 @@ export const TIME_TRAVEL_MOVIE_FAQS = {
     ]
 };
 
-// 9️⃣ HELPER FUNCTIONS & EXPORTS
+// 9️⃣ HELPER FUNCTIONS & EXPORTS (🔥 UPGRADED FOR UNIVERSAL SEO)
 export const getTMDBPosterUrl = (posterPath, size = 'medium') => {
     if (!posterPath) return null;
     const posterSize = TMDB_CONFIG.POSTER_SIZES[size] || TMDB_CONFIG.POSTER_SIZES.medium;
     return `${TMDB_CONFIG.IMAGE_BASE_URL}/${posterSize}${posterPath}`;
 };
-
-export const getSensitiveContentTypes = (tmdbId) => {
-    const sensitiveData = SENSITIVE_TIMELINES[tmdbId];
-    if (!sensitiveData?.scenes?.length) return null;
-    const types = new Set();
-    sensitiveData.scenes.forEach(scene => {
-        const lowerType = scene.type.toLowerCase();
-        if (lowerType.includes('sex')) types.add('intimate scenes');
-        if (lowerType.includes('nudity')) types.add('nudity');
-        if (lowerType.includes('kissing')) types.add('kissing scenes');
-    });
-    return Array.from(types);
-};
-
-export const generateFAQData = (movie) => {
-    return TIME_TRAVEL_MOVIE_FAQS[movie.Title] || [];
-};
-
-export const generateMovieSchema = (movie) => {
-    const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
-    const posterUrl = FALLBACK_POSTERS[movie.tmdbId] || '';
-    return {
-        '@context': 'https://schema.org',
-        '@type': 'Movie',
-        "name": movie.Title,
-        "description": movieInfo?.synopsis || `${movie.Title} - A mind-bending time travel film`,
-        "genre": movie.genre,
-        "datePublished": movie.year.toString(),
-        "director": { "@type": "Person", "name": movieInfo?.director || "Acclaimed Director" },
-        "actor": movieInfo?.cast?.map(actor => ({ "@type": "Person", "name": actor })) || [],
-        "duration": `PT${movie.runtime}M`,
-        "image": posterUrl,
-        "aggregateRating": { 
-            "@type": "AggregateRating", 
-            "ratingValue": movieInfo?.rating || 7.5, 
-            "bestRating": 10, 
-            "worstRating": 1, 
-            "ratingCount": 100 
-        }
-    };
-};
-
-export const generateFAQSchema = (faqs) => ({
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqs.map(faq => ({ 
-        "@type": "Question", 
-        "name": faq.question, 
-        "acceptedAnswer": { "@type": "Answer", "text": faq.answer } 
-    }))
-});
 
 export const fetchMovieFromTMDB = async (tmdbId) => ({ 
     poster_path: null, 
@@ -576,6 +502,137 @@ export const formatSensitiveTimeline = (tmdbId) => {
             description: scene.description || ''
         }))
     };
+};
+
+// 🔥 1. THE KEYWORD BRIDGE (SEO-Optimized)
+export const getSensitiveContentTypes = (tmdbId) => {
+    const sensitiveData = SENSITIVE_TIMELINES[tmdbId];
+    if (!sensitiveData?.scenes?.length) return null;
+    const types = new Set();
+    sensitiveData.scenes.forEach(scene => {
+        const lowerType = scene.type.toLowerCase();
+        // SEO power-words conversion
+        if (lowerType.includes('sex') || lowerType.includes('explicit')) types.add('sexual content');
+        if (lowerType.includes('nudity')) types.add('nudity');
+        
+    });
+    return Array.from(types);
+};
+
+// 🔥 2. THE "GOLDEN EGG" SCHEMA GENERATOR (Universal Version)
+export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, collectionSlug, unused, movieInfo) => {
+    // Standard Movie Schema
+    const movieSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'Movie',
+        'name': movie.Title,
+        'description': movieInfo?.synopsis || `${movie.Title} (${currentMovieYear}) - A mind-bending time travel film.`,
+        'genre': movie.genre,
+        'datePublished': currentMovieYear?.toString() || movie.year.toString(),
+        'director': { '@type': 'Person', 'name': movieInfo?.director || 'Director' },
+        'actor': movieInfo?.cast?.map(actor => ({ '@type': 'Person', 'name': actor })) || [],
+        'image': tmdbData?.poster_path ? `https://image.tmdb.org/t/p/w500${tmdbData.poster_path}` : (FALLBACK_POSTERS[movie.tmdbId] || ''),
+        'duration': `PT${movie.runtime}M`
+    };
+
+    const staticFaqs = TIME_TRAVEL_MOVIE_FAQS[movie.Title] || [];
+    const sensitiveScenes = SENSITIVE_TIMELINES[movie.tmdbId]?.scenes || [];
+    const intensityScenes = movieInfo?.scenes || [];
+    
+    const schemaFaqs = staticFaqs.map(faq => ({ 
+        '@type': 'Question', 
+        'name': faq.question, 
+        'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer } 
+    }));
+
+    // Inject Intensity Graph Timestamps into Schema
+    if (intensityScenes.length > 0) {
+        const schemaIntensityList = intensityScenes.map(s => `<li>Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)</li>`).join('');
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `What are the most intense scenes in ${movie.Title}?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `According to the Filmiway Intensity metric, ${movie.Title} peaks at the following moments:<br><br><ul>${schemaIntensityList}</ul>` 
+            }
+        });
+    }
+
+    // Inject Sensitive Content Timestamps into Schema (Top Priority)
+    if (sensitiveScenes.length > 0) {
+        const typesArray = getSensitiveContentTypes(movie.tmdbId) || ['mature content'];
+        const typesString = typesArray.join(' and ');
+
+        const schemaListText = sensitiveScenes.map(s => {
+            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
+            return `<li>${timeRange} - ${s.type || 'Mature Content'}</li>`;
+        }).join('');
+
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `Yes, according to the Filmiway Content Advisory, ${movie.Title} contains scenes including ${typesString}. Exact timestamps for these scenes are:<br><br><ul>${schemaListText}</ul>` 
+            }
+        });
+    } else {
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `No, the Filmiway Content Advisory confirms that ${movie.Title} is completely free of explicit sexual content and nudity.` 
+            }
+        });
+    }
+
+    const faqSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        'name': `Parents Guide and FAQ for ${movie.Title}`,
+        'mainEntity': schemaFaqs
+    };
+
+    return { movieSchema, faqSchema };
+};
+
+// 🔥 3. FRONTEND UI SYNC (Displays the timestamps on your Next.js page)
+export const getVisibleMovieFAQs = (movieTitle, tmdbId) => {
+    const staticFaqs = TIME_TRAVEL_MOVIE_FAQS[movieTitle] ? [...TIME_TRAVEL_MOVIE_FAQS[movieTitle]] : [];
+    const sensitiveScenes = SENSITIVE_TIMELINES[tmdbId]?.scenes || [];
+    const movieInfo = COMPLETE_MOVIE_DATA[tmdbId];
+    const intensityScenes = movieInfo?.scenes || [];
+
+    if (intensityScenes.length > 0) {
+        const uiIntensityList = intensityScenes.map(s => `• Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)`).join('\n');
+        staticFaqs.unshift({
+            question: `What are the most intense scenes in ${movieTitle}?`,
+            answer: `According to the Filmiway Intensity metric, ${movieTitle} peaks at the following moments:\n\n${uiIntensityList}`
+        });
+    }
+
+    if (sensitiveScenes.length > 0) {
+        const typesArray = getSensitiveContentTypes(tmdbId) || ['mature content'];
+        const typesString = typesArray.join(' and ');
+
+        const uiListText = sensitiveScenes.map(s => {
+            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
+            return `• ${timeRange} - ${s.type || 'Mature Content'}`;
+        }).join('\n');
+
+        staticFaqs.unshift({
+            question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
+            answer: `Yes, according to the Filmiway Content Advisory, ${movieTitle} contains scenes including ${typesString}. Exact timestamps for these scenes are:\n\n${uiListText}`
+        });
+    } else {
+        staticFaqs.unshift({
+            question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
+            answer: `No, the Filmiway Content Advisory confirms that ${movieTitle} is completely free of explicit sexual content and nudity.`
+        });
+    }
+
+    return staticFaqs;
 };
 
 // Build object map by tmdbId (Export named variable)

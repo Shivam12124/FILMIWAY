@@ -2,14 +2,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Info, HelpCircle } from 'lucide-react';
-// ✅ Import the Time Travel specific FAQ data
-import { TIME_TRAVEL_MOVIE_FAQS } from '../utils/timeTravelMovieData';
+// 🔥 IMPORT THE NEW DYNAMIC FAQ GENERATOR
+import { getVisibleMovieFAQs } from '../utils/timeTravelMovieData';
 
 const TimeTravelSEOFAQSection = ({ movie }) => {
-    // 🔥 Get FAQs from TIME_TRAVEL_MOVIE_FAQS data
-    const faqsFromData = movie?.Title && TIME_TRAVEL_MOVIE_FAQS?.[movie.Title] 
-        ? TIME_TRAVEL_MOVIE_FAQS[movie.Title] 
-        : [];
+    // 🔥 AUTOMATICALLY GENERATE THE FAQS FOR HUMANS (Includes the Dynamic Timestamp FAQ)
+    // This calls the template engine we built, so the UI matches the Bot Schema exactly!
+    const faqsFromData = getVisibleMovieFAQs(movie?.Title, movie?.tmdbId);
 
     // 🔥 Safety check - return null if no FAQs
     if (!faqsFromData || faqsFromData.length === 0) {
@@ -46,7 +45,8 @@ const TimeTravelSEOFAQSection = ({ movie }) => {
                         <h3 className="text-base sm:text-lg font-medium text-blue-200 mb-2 sm:mb-3">
                             {faq.question}
                         </h3>
-                        <p className="text-gray-400 leading-relaxed text-sm sm:text-base group-hover:text-gray-300 transition-colors">
+                        {/* 🔥 Added whitespace-pre-line to correctly render the \n\n bullet points from our engine! */}
+                        <p className="text-gray-400 leading-relaxed text-sm sm:text-base group-hover:text-gray-300 transition-colors whitespace-pre-line">
                             {faq.answer}
                         </p>
                     </motion.div>

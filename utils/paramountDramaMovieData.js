@@ -24,74 +24,49 @@ export const COMPLETE_MOVIE_DATABASE = [
 // ✅ SENSITIVE TIMELINES (Focusing on Trauma, Violence, and Addiction)
 export const SENSITIVE_TIMELINES = {
     // 1. There Will Be Blood
-    7345: { 
-        scenes: [
-            { start: "0:15:00", end: "0:20:00", type: "Industrial Accident", severity: "High" },
-            { start: "2:30:00", end: "2:38:00", type: "Brutal Bludgeoning", severity: "Extreme" }
-        ] 
-    },
+    7345: { scenes: [] },
+
     // 2. The English Patient
     409: { 
         scenes: [
-            { start: "0:01:00", end: "0:05:00", type: "Severe Burns/Plane Crash", severity: "High" },
-            { start: "1:50:00", end: "1:55:00", type: "Torture/Amputation", severity: "High" }
-        ] 
+            { start: "1:14:30", end: "1:16:05", type: "Nudity", severity: "High" },
+            { start: "1:21:05", end: "1:21:25", type: "Sex (No Nudity)", severity: "Moderate" },
+            { start: "1:28:00", end: "1:29:30", type: "Nudity", severity: "High" },
+            { start: "1:54:30", end: "1:54:37", type: "Nudity", severity: "High" }
+        ]
     },
+
     // 3. Fences
-    393457: { 
-        scenes: [
-            { start: "1:15:00", end: "1:25:00", type: "Verbal/Emotional Abuse", severity: "High" },
-            { start: "1:40:00", end: "1:45:00", type: "Family Confrontation", severity: "Moderate" }
-        ] 
-    },
+    393457: { scenes: [] },
+
     // 4. Dead Man Walking
-    687: { 
-        scenes: [
-            { start: "0:05:00", end: "0:10:00", type: "Discussion of Rape/Murder", severity: "High" },
-            { start: "1:50:00", end: "1:58:00", type: "Execution Scene", severity: "High" }
-        ] 
-    },
+    687: { scenes: [] },
+
     // 5. Selma
-    273896: { 
-        scenes: [
-            { start: "0:05:00", end: "0:10:00", type: "Church Bombing", severity: "Extreme" },
-            { start: "0:50:00", end: "0:55:00", type: "Police Brutality (Bridge)", severity: "High" }
-        ] 
-    },
+    273896: { scenes: [] },
+
     // 6. Silence
-    259693: { 
-        scenes: [
-            { start: "0:20:00", end: "0:25:00", type: "Crucifixion/Drowning", severity: "High" },
-            { start: "1:10:00", end: "1:15:00", type: "Scalding Water Torture", severity: "Extreme" }
-        ] 
-    },
+    259693: { scenes: [] },
+
     // 7. One Life
-    995746: { 
-        scenes: [
-            { start: "0:40:00", end: "0:45:00", type: "Child Separation Trauma", severity: "High" },
-            { start: "1:00:00", end: "1:05:00", type: "Holocaust Imagery", severity: "Moderate" }
-        ] 
-    },
+    995746: { scenes: [] },
+
     // 8. I, Daniel Blake
-    374473: { 
-        scenes: [
-            { start: "0:45:00", end: "0:50:00", type: "Food Bank Desperation", severity: "High" },
-            { start: "1:30:00", end: "1:35:00", type: "Medical Emergency", severity: "Moderate" }
-        ] 
-    },
+    374473: { scenes: [] },
+
     // 9. The Curious Case of Benjamin Button
     4922: { 
         scenes: [
-            { start: "0:35:00", end: "0:40:00", type: "War Violence", severity: "Moderate" },
-            { start: "2:20:00", end: "2:30:00", type: "Death and Grief", severity: "Moderate" }
-        ] 
+            { start: "0:20:50", end: "0:20:57", type: "Partial Nudity (Man)", severity: "Mild" }
+        ]
     },
+
     // 10. Forrest Gump
     13: { 
         scenes: [
-            { start: "0:45:00", end: "0:55:00", type: "War/Combat Wounds", severity: "High" },
-            { start: "1:10:00", end: "1:15:00", type: "Drug Abuse/Domestic Violence", severity: "Moderate" }
-        ] 
+            { start: "0:35:50", end: "0:35:55", type: "Nudity (Woman)", severity: "Moderate" },
+            { start: "0:37:15", end: "0:38:02", type: "Partial Nudity (Woman)", severity: "Mild" }
+        ]
     }
 };
 

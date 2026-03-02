@@ -52,7 +52,7 @@ export const SENSITIVE_TIMELINES = {
     },
     1018: {  // Mulholland Drive
         scenes: [
-          
+             { start: "0:23:32", end: "0:24:30", type: "Nudity (Blurred)", severity: "Moderate" },
             { start: "1:38:45", end: "1:42:18", type: "Nudity", severity: "High" },
             { start: "2:01:27", end: "2:02:59", type: "Nudity", severity: "High" },
           

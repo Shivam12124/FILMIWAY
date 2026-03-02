@@ -24,34 +24,26 @@ export const COMPLETE_MOVIE_DATABASE = [
 
 // ✅ SENSITIVE TIMELINES (Paramount+ Comedy Collection)
 export const SENSITIVE_TIMELINES = {
+
     // 1. Tropic Thunder
     7446: { 
         scenes: [
-            { start: "0:05:00", end: "0:08:00", type: "Gore (Fake/Comedic)", severity: "High" }, // Opening war scene
-            { start: "1:05:00", end: "1:10:00", type: "Language (Offensive)", severity: "High" } // "Full Retard" speech
+            { start: "0:19:45", end: "0:19:50", type: "Nudity (Woman)", severity: "Mild" }
         ] 
     },
 
     // 2. Anchorman
-    8699: { 
-        scenes: [
-            { start: "0:45:00", end: "0:50:00", type: "Sexual Innuendo", severity: "Moderate" }, // Jazz Flute scene
-            { start: "0:55:00", end: "1:00:00", type: "Violence (Comedic)", severity: "Moderate" } // News Team Fight
-        ] 
-    },
+    8699: { scenes: [] },
 
     // 3. The Naked Gun
-    37136: { 
-        scenes: [
-            { start: "0:15:00", end: "0:20:00", type: "Sexual Innuendo", severity: "Low" } // Safe sex scene
-        ] 
-    },
+    37136: { scenes: [] },
 
     // 4. Scary Movie
     4247: { 
         scenes: [
-            { start: "0:20:00", end: "0:25:00", type: "Sexual Content", severity: "High" }, // Locker room
-            { start: "0:50:00", end: "0:55:00", type: "Drug Use", severity: "Moderate" } // Shorty scenes
+            { start: "0:27:36", end: "0:27:39", type: "Nudity (Man)", severity: "High" },
+            { start: "0:47:15", end: "0:47:20", type: "Nudity (Man)", severity: "High" },
+            { start: "1:05:25", end: "1:06:45", type: "Sexual Content", severity: "High" }
         ] 
     },
 
@@ -59,14 +51,24 @@ export const SENSITIVE_TIMELINES = {
     27581: { scenes: [] },
 
     // 6. School of Rock
-    1584: { scenes: [] }, // Wholesome
+    1584: { scenes: [] },
 
     // 7. The Wolf of Wall Street
     106646: { 
         scenes: [
-            { start: "0:10:00", end: "0:15:00", type: "Drug Use (Cocaine)", severity: "Extreme" },
-            { start: "0:25:00", end: "0:35:00", type: "Nudity & Sex", severity: "Extreme" },
-            { start: "1:40:00", end: "1:50:00", type: "Drug Overdose", severity: "High" } // Lemmon scene
+            { start: "0:02:02", end: "0:03:05", type: "Sexual Content & Nudity (Woman)", severity: "High" },
+            { start: "0:13:55", end: "0:14:15", type: "Nudity (Woman)", severity: "High" },
+            { start: "0:38:55", end: "0:39:47", type: "Nudity (Women)", severity: "High" },
+            { start: "0:54:45", end: "0:55:10", type: "Nudity (Man)", severity: "High" },
+            { start: "0:58:25", end: "0:59:30", type: "Nudity (Woman) & Sex", severity: "High" },
+            { start: "1:02:25", end: "1:02:45", type: "Nudity (Men), Partial Nudity (Man) & Sex", severity: "High" },
+            { start: "1:07:30", end: "1:08:30", type: "Nudity (Women) & Sex", severity: "High" },
+            { start: "1:12:05", end: "1:12:15", type: "Partial Nudity (Man)", severity: "Moderate" },
+            { start: "1:16:55", end: "1:17:22", type: "Nudity (Woman)", severity: "High" },
+            { start: "1:48:20", end: "1:48:38", type: "Sex & Nudity (Woman)", severity: "High" },
+            { start: "2:17:30", end: "2:18:10", type: "Nudity (Women)", severity: "High" },
+            { start: "2:31:20", end: "2:31:40", type: "Nudity (Woman)", severity: "High" },
+            { start: "2:38:30", end: "2:40:00", type: "Sex", severity: "High" }
         ] 
     },
 
@@ -76,14 +78,17 @@ export const SENSITIVE_TIMELINES = {
     // 9. Planes, Trains and Automobiles
     2609: { 
         scenes: [
-            { start: "0:55:00", end: "0:58:00", type: "Strong Language", severity: "High" } // The F-Bomb car rental rant
+            { start: "0:15:15", end: "0:15:17", type: "Nudity", severity: "Moderate" }
         ] 
     },
 
     // 10. Trading Places
     1621: { 
         scenes: [
-            { start: "0:45:00", end: "0:48:00", type: "Nudity", severity: "High" } // Jamie Lee Curtis scene
+            { start: "0:22:20", end: "0:23:10", type: "Lingerie", severity: "Mild" },
+            { start: "0:43:00", end: "0:44:00", type: "Nudity", severity: "High" },
+            { start: "1:00:40", end: "1:00:50", type: "Nudity", severity: "High" },
+            { start: "1:10:30", end: "1:10:40", type: "Nudity", severity: "High" }
         ] 
     }
 };

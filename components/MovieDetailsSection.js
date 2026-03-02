@@ -1377,23 +1377,20 @@ if (fromPsychologicalThrillerCollection) {
         <SensitiveContentTimelineSection movie={movie} sensitiveScenes={sensitiveScenes} />
       )}
 
-      <EnhancedIntensityGraph scenes={safeMovieInfo.scenes} dominantColor={safeMovieInfo.dominantColor} />
-      <StrategicDNAHelix dna={safeMovieInfo.dna} dominantColor={safeMovieInfo.dominantColor} />
+      {/* ✅ SEO FIX: Passing the data into ARIA labels instead of hiding it in a sr-only div */}
+      <EnhancedIntensityGraph 
+          scenes={safeMovieInfo.scenes} 
+          dominantColor={safeMovieInfo.dominantColor} 
+          aria-label={`Intensity graph showing narrative peaks for ${movie.Title}.`}
+      />
+      
+      <StrategicDNAHelix 
+          dna={safeMovieInfo.dna} 
+          dominantColor={safeMovieInfo.dominantColor} 
+          aria-label={`Genre DNA breakdown for ${movie.Title}: ${Object.entries(safeMovieInfo.dna || {}).map(([k, v]) => `${k} ${v}%`).join(', ')}.`}
+      />
 
-      <div className="sr-only">
-        <h3>Genre DNA Distribution</h3>
-        <ul>
-          {Object.entries(safeMovieInfo.dna || {}).map(([key, value]) => (
-            <li key={key}>{key}: {value}%</li>
-          ))}
-        </ul>
-        <h3>Movie Intensity Arc</h3>
-        <ul>
-          {safeMovieInfo.scenes?.map((scene, idx) => (
-            <li key={idx}>Minute {scene.time}: {scene.label} ({scene.intensity}/100 Intensity)</li>
-          ))}
-        </ul>
-      </div>
+      {/* ❌ REMOVED THE DANGEROUS SR-ONLY BLOCK HERE ❌ */}
 
       <RealCommentsRatingSection movie={movie} />
 

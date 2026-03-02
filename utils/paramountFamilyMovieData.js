@@ -24,66 +24,34 @@ export const COMPLETE_MOVIE_DATABASE = [
 // ✅ SENSITIVE TIMELINES (Focusing on Mild Scares/Action for Kids)
 export const SENSITIVE_TIMELINES = {
     // 1. Rango
-    44896: { 
-        scenes: [
-            { start: "0:30:00", end: "0:35:00", type: "Hawk Attack", severity: "Moderate" },
-            { start: "1:20:00", end: "1:25:00", type: "Rattlesnake Jake", severity: "High" } // Intense for young kids
-        ] 
-    },
+    44896: { scenes: [] },
+
     // 2. TMNT: Mutant Mayhem
-    614930: { 
-        scenes: [
-            { start: "1:10:00", end: "1:15:00", type: "Superfly Mutation", severity: "Moderate" } // Body horror/gross-out
-        ] 
-    },
+    614930: { scenes: [] },
+
     // 3. The SpongeBob SquarePants Movie
-    11836: { 
-        scenes: [
-            { start: "1:00:00", end: "1:05:00", type: "Dried Out Scene", severity: "High" } // Emotional/Scary for very young
-        ] 
-    },
+    11836: { scenes: [] },
+
     // 4. Sonic the Hedgehog 3
-    939243: { 
-        scenes: [
-            { start: "0:50:00", end: "0:55:00", type: "Shadow's Backstory", severity: "Moderate" } // Sad themes
-        ] 
-    },
+    939243: { scenes: [] },
+
     // 5. Dora and the Lost City of Gold
-    499701: { 
-        scenes: [
-            { start: "0:45:00", end: "0:50:00", type: "Quicksand", severity: "Mild" }
-        ] 
-    },
+    499701: { scenes: [] },
+
     // 6. Sonic the Hedgehog 2
-    675353: { 
-        scenes: [
-            { start: "1:30:00", end: "1:40:00", type: "Giant Robot Fight", severity: "Moderate" }
-        ] 
-    },
+    675353: { scenes: [] },
+
     // 7. Hey Arnold! The Jungle Movie
-    439058: { 
-        scenes: [
-            { start: "0:55:00", end: "1:00:00", type: "La Sombra's Trap", severity: "Mild" }
-        ] 
-    },
+    439058: { scenes: [] },
+
     // 8. Sonic the Hedgehog
-    454626: { 
-        scenes: [
-            { start: "0:05:00", end: "0:08:00", type: "Owl Injury", severity: "Moderate" } // Longclaw gets hurt
-        ] 
-    },
+    454626: { scenes: [] },
+
     // 9. PAW Patrol: The Movie
-    675445: { 
-        scenes: [
-            { start: "0:30:00", end: "0:35:00", type: "Chase's Fear", severity: "Mild" } // Emotional distress
-        ] 
-    },
+    675445: { scenes: [] },
+
     // 10. PAW Patrol: The Mighty Movie
-    893723: { 
-        scenes: [
-            { start: "0:10:00", end: "0:15:00", type: "Meteor Crash", severity: "Mild" }
-        ] 
-    }
+    893723: { scenes: [] }
 };
 
 export const FALLBACK_POSTERS = {
