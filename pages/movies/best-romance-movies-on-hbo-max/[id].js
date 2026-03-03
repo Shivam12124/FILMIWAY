@@ -22,7 +22,7 @@ import {
   SENSITIVE_TIMELINES,
   HBO_ROMANCE_MOVIE_FAQS,
   generateCleanMovieSchema 
-} from '../../../utils/hboRomanceMovieData';
+} from '../../../utils/hboMaxRomanceMovieData';
 
 const COLORS = {
   accent: '#F43F5E', accentLight: '#FDA4AF', bgPrimary: '#0a0508', bgCard: 'rgba(20, 5, 10, 0.8)', // Deep Rose/Black
