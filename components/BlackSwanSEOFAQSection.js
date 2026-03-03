@@ -2,15 +2,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Info } from 'lucide-react';
-import { COMPLETE_MOVIE_DATA as BLACK_SWAN_MOVIE_DATA, BLACK_SWAN_MOVIE_FAQS } from '../utils/blackSwanMovieData';
+// ✅ Pull in the unified UI generator instead of the raw static arrays
+import { getVisibleMovieFAQs } from '../utils/blackSwanMovieData';
 
 const BlackSwanSEOFAQSection = ({ movie }) => {
-    const movieInfo = BLACK_SWAN_MOVIE_DATA[movie.tmdbId];
     
-    // 🔥 Get FAQs from BLACK_SWAN_MOVIE_FAQS data
-    const faqsFromData = movie?.Title && BLACK_SWAN_MOVIE_FAQS?.[movie.Title] 
-        ? BLACK_SWAN_MOVIE_FAQS[movie.Title] 
-        : [];
+    // 🔥 Get the dynamically generated FAQs (Includes Timestamps, Intensity, and Static FAQs)
+    const faqsFromData = getVisibleMovieFAQs(movie.Title, movie.tmdbId);
 
     // 🔥 Safety check - return null if no FAQs
     if (!faqsFromData || faqsFromData.length === 0) {
@@ -43,7 +41,10 @@ const BlackSwanSEOFAQSection = ({ movie }) => {
                         transition={{ duration: 0.6, delay: index * 0.1 }}
                     >
                         <h3 className="text-base sm:text-lg font-medium text-purple-200 mb-2 sm:mb-3">{faq.question}</h3>
-                        <p className="text-gray-300 leading-relaxed text-sm sm:text-base">{faq.answer}</p>
+                        {/* ✅ Added 'whitespace-pre-line' so dynamic bullet points render perfectly */}
+                        <p className="text-gray-300 leading-relaxed text-sm sm:text-base whitespace-pre-line">
+                            {faq.answer}
+                        </p>
                     </motion.div>
                 ))}
             </div>

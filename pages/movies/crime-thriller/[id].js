@@ -14,13 +14,13 @@ import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
 import TMDBAttribution from '../../../components/TMDBAttribution';
 
-// ✅ IMPORT DATA INCLUDING FAQs & NEW SCHEMA GENERATOR
+// ✅ IMPORT DATA INCLUDING FAQs & NEW SCHEMA GENERATOR (Kept exactly as requested)
 import {
   COMPLETE_MOVIE_DATABASE, 
   COMPLETE_MOVIE_DATA,
   SENSITIVE_TIMELINES,
   CRIME_THRILLER_FAQS,
-  generateCleanMovieSchema // ✅ Pulled directly from your updated data file!
+  generateCleanMovieSchema
 } from '../../../utils/crimeThrillerMovieData';
 
 const COLORS = {
@@ -141,7 +141,7 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
           <div className="mobile-hero-poster">{posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} width={320} height={480} className="w-full h-auto" priority /> : <div style={{ background: COLORS.bgCard, width: '100%', height: '150px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Shield style={{ color: COLORS.textMuted }} /></div>}</div>
           <div className="mobile-crime-card">
             <div className="mobile-crime-row"><Shield className="mobile-crime-icon" /><div><div className="mobile-crime-title">Crime Intensity</div></div></div>
-            <div className="mobile-crime-desc"><strong>{crimeIntensity}</strong> - {insight.substring(0, 80)}...</div>
+            <div className="mobile-crime-desc"><strong>{crimeIntensity}/100</strong> - {insight.substring(0, 80)}...</div>
           </div>
         </div>
       ) : (
@@ -219,44 +219,39 @@ const CrimeThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
   const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
   const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
-  // ✅ MASTERSTROKE: Dynamically add sensitive scene timestamps to meta description
+  // =========================================================================
+  // ✅ THE UNIVERSAL ELITE SEO BLOCK (Standardized Logic)
+  // =========================================================================
+
+  const collectionSlug = 'best-crime-thriller-movies';
+  const dynamicCollectionName = 'Best Crime Thriller Movies';
+  const routeSlug = 'crime-thriller'; // Exact Next.js folder name
+
   const scenes = SENSITIVE_TIMELINES?.[movie.tmdbId]?.scenes || [];
+  
+  // 1. UNIQUE META TITLE
+  const cleanSEOTitle = scenes.length > 0
+    ? `${movie.Title} (${currentMovieYear}) Parents Guide & Timestamps | ${dynamicCollectionName}`
+    : `${movie.Title} (${currentMovieYear}) Parents Guide | ${dynamicCollectionName}`;
 
-  // Default if the movie has NO sensitive scenes
-  let sceneNotice = 'Detailed Parents Guide: No nudity, sex, or explicit scenes.';
-
+  // 2. STANDARDIZED ELITE META DESCRIPTION
+  let cleanSEODesc = '';
+  
   if (scenes.length > 0) {
-    // Get first 2 timestamps only (best for SEO length)
-    const firstTimestamps = scenes
-      .slice(0, 2)
-      .map(s => s.end ? `${s.start}–${s.end}` : s.start)
-      .join(', ');
+    const rawTimes = scenes.slice(0, 3).map(s => s.end ? `${s.start}–${s.end}` : s.start);
+    const formattedTimes = rawTimes.length > 1 
+      ? `${rawTimes.slice(0, -1).join(', ')} and ${rawTimes.slice(-1)}` 
+      : rawTimes[0];
 
-    const andMore = scenes.length > 2 ? '...' : '';
-
-    // Final optimized format (Version 3 – Recommended)
-    sceneNotice = `Detailed Parents Guide with exact timestamps for nudity, sex & mature scenes (e.g., ${firstTimestamps}${andMore}).`;
+    cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Viewer discretion advised. Includes exact scene timestamps: ${formattedTimes}.`;
+  } else {
+    cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Filmiway Content Advisory: No nudity or explicit sexual content identified. Suitable for general viewing.`;
   }
 
-  // ✅ Clean standalone SEO title (no collection wording)
-  const cleanSEOTitle = [
-    movie.Title,
-    ' (',
-    currentMovieYear,
-    ') | Filmiway'
-  ].join('');
+  // =========================================================================
 
-  // ✅ Final standalone meta description
-  const cleanSEODesc = [
-    movie.Title,
-    ' (',
-    currentMovieYear,
-    ') – ',
-    sceneNotice
-  ].join('');
-
-  const collectionSlug = router.pathname.split('/')[2];
-  const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
+  // BUG FIX: Canonical URL is perfectly hardcoded to the exact route to prevent Hydration mismatches
+  const canonicalUrl = `https://filmiway.com/movies/${routeSlug}/${movie.imdbID}`;
 
   const { movieSchema, faqSchema } = generateCleanMovieSchema(
     movie, 
@@ -270,7 +265,7 @@ const CrimeThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
   return (
     <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
       <Head>
-        {/* ✅ HYDRATION BUG REMOVED: Now using a flat string variable for SEO tags */}
+        {/* ✅ HYDRATION BUG REMOVED: Flat string variables only */}
         <title>{cleanSEOTitle}</title>
         <meta name="description" content={cleanSEODesc} />
         <link rel="canonical" href={canonicalUrl} />
@@ -281,6 +276,7 @@ const CrimeThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
         {/* Open Graph / Social */}
         <meta property="og:title" content={cleanSEOTitle} />
         <meta property="og:description" content={cleanSEODesc} />
+        <meta property="og:url" content={canonicalUrl} />
         <meta property="og:type" content="video.movie" />
         <meta property="og:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
         <meta name="twitter:card" content="summary_large_image" />

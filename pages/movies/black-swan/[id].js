@@ -14,13 +14,13 @@ import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
 import TMDBAttribution from '../../../components/TMDBAttribution';
 
-// ✅ IMPORT DATA INCLUDING FAQs
-import { generateCleanMovieSchema } from '../../../utils/cleanMovieSchema';
+// ✅ CORRECTED IMPORT: Pulled directly from your updated data file
 import {
   COMPLETE_MOVIE_DATABASE,
   COMPLETE_MOVIE_DATA,
   SENSITIVE_TIMELINES,
-  BLACK_SWAN_MOVIE_FAQS
+  BLACK_SWAN_MOVIE_FAQS,
+  generateCleanMovieSchema // 🔥 Now correctly imported from here
 } from '../../../utils/blackSwanMovieData';
 
 const COLORS = {
@@ -197,8 +197,6 @@ const BlackSwanBreadcrumb = ({ movie }) => (
     </motion.nav>
 );
 
-
-
 const BlackSwanMoviePage = ({ movie, tmdbData: movieData }) => {
     const router = useRouter();
     const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
@@ -222,12 +220,39 @@ const BlackSwanMoviePage = ({ movie, tmdbData: movieData }) => {
     const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
-    // ✅ FIX: Use Array.join() instead of template literals
-    const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Movies Like Black Swan | Filmiway'].join('');
-    const cleanSEODesc = [movie.Title, ' (', currentMovieYear, ') - A psychologically intense film like Black Swan. Analysis, ratings & where to stream.'].join('');
+  // =========================================================================
+  // ✅ THE UNIVERSAL ELITE SEO BLOCK (Hardcoded Fix & Standardized Description)
+  // =========================================================================
 
-    const collectionSlug = router.pathname.split('/')[2];
-    const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
+  const collectionSlug = 'movies-like-black-swan';
+  const dynamicCollectionName = 'Movies Like Black Swan';
+  const routeSlug = 'black-swan'; // The actual folder name in Next.js
+
+  const scenes = SENSITIVE_TIMELINES?.[movie.tmdbId]?.scenes || [];
+  
+  // 1. UNIQUE META TITLE (Prevents Duplicate Cannibalization)
+  const cleanSEOTitle = scenes.length > 0
+    ? `${movie.Title} (${currentMovieYear}) Parents Guide & Timestamps | ${dynamicCollectionName}`
+    : `${movie.Title} (${currentMovieYear}) Parents Guide | ${dynamicCollectionName}`;
+
+  // 2. STANDARDIZED ELITE META DESCRIPTION
+  let cleanSEODesc = '';
+  
+  if (scenes.length > 0) {
+    const rawTimes = scenes.slice(0, 3).map(s => s.end ? `${s.start}–${s.end}` : s.start);
+    const formattedTimes = rawTimes.length > 1 
+      ? `${rawTimes.slice(0, -1).join(', ')} and ${rawTimes.slice(-1)}` 
+      : rawTimes[0];
+
+    cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Viewer discretion advised. Includes exact scene timestamps: ${formattedTimes}.`;
+  } else {
+    cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Filmiway Content Advisory: No nudity or explicit sexual content identified. Suitable for general viewing.`;
+  }
+
+  // =========================================================================
+
+    // BUG FIX: Canonical URL hardcoded to the exact file route for perfect Next.js parity
+    const canonicalUrl = `https://filmiway.com/movies/${routeSlug}/${movie.imdbID}`;
 
     const { movieSchema, faqSchema } = generateCleanMovieSchema(
         movie, 
@@ -241,8 +266,9 @@ const BlackSwanMoviePage = ({ movie, tmdbData: movieData }) => {
     return (
         <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
             <Head>
-                <title key="title">{cleanSEOTitle}</title>
-                <meta key="desc" name="description" content={cleanSEODesc} />
+                {/* 🔥 HYDRATION BUG FIXED: Standardized, dynamic plain string variables */}
+                <title>{cleanSEOTitle}</title>
+                <meta name="description" content={cleanSEODesc} />
                 <link rel="canonical" href={canonicalUrl} />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
                 <meta name="robots" content="index, follow" />
@@ -262,12 +288,13 @@ const BlackSwanMoviePage = ({ movie, tmdbData: movieData }) => {
 
                 {/* Standard Meta Tags */}
                 <meta property="og:title" content={cleanSEOTitle} />
-                <meta property="og:description" content="A gripping psychological film about obsession and identity." />
+                <meta property="og:description" content={cleanSEODesc} />
+                <meta property="og:url" content={canonicalUrl} />
                 <meta property="og:type" content="video.movie" />
                 <meta property="og:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content={cleanSEOTitle} />
-                <meta name="twitter:description" content="A psychologically intense film about performance and identity." />
+                <meta name="twitter:description" content={cleanSEODesc} />
                 <meta name="twitter:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
             </Head>
 

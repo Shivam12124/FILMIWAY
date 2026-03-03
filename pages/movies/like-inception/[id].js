@@ -14,12 +14,12 @@ import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
 import TMDBAttribution from '../../../components/TMDBAttribution';
 
-// ✅ IMPORT DATA & NEW SCHEMA GENERATOR
+// ✅ RESTORED CORRECT IMPORT: Pulled directly from your data file
 import {
   COMPLETE_MOVIE_DATABASE, 
   COMPLETE_MOVIE_DATA,
   SENSITIVE_TIMELINES,
-  generateCleanMovieSchema // ✅ Pulled directly from your updated data file!
+  generateCleanMovieSchema 
 } from '../../../utils/movieData';
 
 const COLORS = {
@@ -230,47 +230,39 @@ const InceptionMoviePage = ({ movie, tmdbData }) => {
     const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
-    // ✅ MASTERSTROKE: Dynamically add sensitive scene timestamps to meta description
-    const rawScenes = SENSITIVE_TIMELINES?.[movie.tmdbId]?.scenes || [];
-    
-    // Filter out kissing for the meta description to keep it heavy-hitting
-    const heavyScenes = rawScenes.filter(s => {
-        const t = s.type.toLowerCase();
-        return t.includes('sex') || t.includes('nudity');
-    });
+  // =========================================================================
+  // ✅ THE UNIVERSAL ELITE SEO BLOCK (Hardcoded Fix & Standardized Description)
+  // =========================================================================
 
-    let sceneNotice = 'Detailed Parents Guide: No explicit sexual content or nudity.';
+  const collectionSlug = 'movies-like-inception';
+  const dynamicCollectionName = 'Movies Like Inception';
+  const routeSlug = 'like-inception'; // The actual folder name in Next.js
 
-    if (heavyScenes.length > 0) {
-        // Get first 2 heavy timestamps only (best for SEO length)
-        const firstTimestamps = heavyScenes
-          .slice(0, 2)
-          .map(s => s.end ? `${s.start}–${s.end}` : s.start)
-          .join(', ');
+  const scenes = SENSITIVE_TIMELINES?.[movie.tmdbId]?.scenes || [];
+  
+  // 1. UNIQUE META TITLE (Prevents Duplicate Cannibalization)
+  const cleanSEOTitle = scenes.length > 0
+    ? `${movie.Title} (${currentMovieYear}) Parents Guide & Timestamps | ${dynamicCollectionName}`
+    : `${movie.Title} (${currentMovieYear}) Parents Guide | ${dynamicCollectionName}`;
 
-        const andMore = heavyScenes.length > 2 ? '...' : '';
-        sceneNotice = `Detailed Parents Guide with exact timestamps for nudity & sexual content (e.g., ${firstTimestamps}${andMore}).`;
-    }
+  // 2. STANDARDIZED ELITE META DESCRIPTION
+  let cleanSEODesc = '';
+  
+  if (scenes.length > 0) {
+    const rawTimes = scenes.slice(0, 3).map(s => s.end ? `${s.start}–${s.end}` : s.start);
+    const formattedTimes = rawTimes.length > 1 
+      ? `${rawTimes.slice(0, -1).join(', ')} and ${rawTimes.slice(-1)}` 
+      : rawTimes[0];
 
-    // ✅ Clean standalone SEO title
-    const cleanSEOTitle = [
-        movie.Title,
-        ' (',
-        currentMovieYear,
-        ') | Filmiway'
-    ].join('');
+    cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Viewer discretion advised. Includes exact scene timestamps: ${formattedTimes}.`;
+  } else {
+    cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Filmiway Content Advisory: No nudity or explicit sexual content identified. Suitable for general viewing.`;
+  }
 
-    // ✅ Final standalone meta description
-    const cleanSEODesc = [
-        movie.Title,
-        ' (',
-        currentMovieYear,
-        ') – ',
-        sceneNotice
-    ].join('');
+  // =========================================================================
 
-    const collectionSlug = router.pathname.split('/')[2];
-    const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
+    // BUG FIX: Canonical URL hardcoded to the exact file route for perfect Next.js parity
+    const canonicalUrl = `https://filmiway.com/movies/${routeSlug}/${movie.imdbID}`;
 
     // Generate schema
     const { movieSchema, faqSchema } = generateCleanMovieSchema(
@@ -296,6 +288,7 @@ const InceptionMoviePage = ({ movie, tmdbData }) => {
                 {/* Meta Tags */}
                 <meta property="og:title" content={cleanSEOTitle} />
                 <meta property="og:description" content={cleanSEODesc} />
+                <meta property="og:url" content={canonicalUrl} />
                 <meta property="og:type" content="video.movie" />
                 <meta property="og:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
                 <meta name="twitter:card" content="summary_large_image" />

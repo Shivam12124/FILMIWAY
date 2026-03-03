@@ -14,13 +14,13 @@ import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
 import TMDBAttribution from '../../../components/TMDBAttribution';
 
-// ✅ IMPORT DATA INCLUDING FAQs
+// ✅ CORRECTED IMPORT: Pulling schema generator from its dedicated file
+import { generateCleanMovieSchema } from '../../../utils/cleanMovieSchema';
 import {
   COMPLETE_MOVIE_DATABASE, 
   COMPLETE_MOVIE_DATA,
   SENSITIVE_TIMELINES,
-  PSYCH_THRILLER_FAQS,
-  generateCleanMovieSchema // 🔥 Imported the upgraded Universal Schema Generator
+  PSYCH_THRILLER_FAQS
 } from '../../../utils/psychologicalThrillerMovieData';
 
 const COLORS = {
@@ -189,7 +189,7 @@ const PsychThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
   const router = useRouter();
   const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
   const richData = COMPLETE_MOVIE_DATA[movie.tmdbId]; 
-  const correctData = MOVIE_DATA_BY_TITLE[movie.Title]; // ✅ Ensure this is pulled correctly
+  const correctData = MOVIE_DATA_BY_TITLE[movie.Title]; 
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -210,51 +210,43 @@ const PsychThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
   const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
   // =========================================================================
-  // ✅ THE UNIVERSAL SEO BLOCK (Blind Copy-Paste Ready)
+  // ✅ THE UNIVERSAL ELITE SEO BLOCK (Hardcoded Fix & Standardized Description)
   // =========================================================================
 
-  // 1. AUTO-GENERATE COLLECTION NAME FROM THE URL FOLDER
-  const currentSlug = router.pathname.split('/')[2] || 'Movies';
-  const dynamicCollectionName = currentSlug
-    .split('-')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' '); // Turns "psych-thriller" into "Psych Thriller"
+  const collectionSlug = 'best-psychological-thriller-movies';
+  const dynamicCollectionName = 'Best Psychological Thriller Movies';
 
-  // 2. AUTO-GRAB PLOT TEXT (No matter what you named the variable in your data file)
-  const dynamicInsight = correctData?.connection || correctData?.insight || correctData?.description || Object.values(correctData || {}).find(val => typeof val === 'string') || '';
-
-  // 3. THE MASTERSTROKE: Dynamic sensitive scene logic
   const scenes = SENSITIVE_TIMELINES?.[movie.tmdbId]?.scenes || [];
   
-  // DEFAULT FOR CLEAN FILMS: Uses the auto-grabbed text
-  let sceneNotice = `Detailed Parents Guide: No nudity or explicit scenes. ${dynamicInsight.substring(0, 110)}...`;
-  
-  if (scenes.length > 0) {
-    const firstTimestamps = scenes
-      .slice(0, 2)
-      .map(s => s.end ? `${s.start}–${s.end}` : s.start)
-      .join(', ');
-    const andMore = scenes.length > 2 ? '...' : '';
-    // ✅ Data-Heavy Description for CTR Hack
-    sceneNotice = `Parents guide with exact scene timestamps: ${firstTimestamps}${andMore}. Viewer discretion advised.`;
-  }
-
-  // 4. UNIFIED TITLE & META
+  // 1. UNIQUE META TITLE (Prevents Duplicate Cannibalization)
   const cleanSEOTitle = scenes.length > 0
-    ? `${movie.Title} (${currentMovieYear}) Parents Guide & Timestamps | Filmiway`
+    ? `${movie.Title} (${currentMovieYear}) Parents Guide & Timestamps | ${dynamicCollectionName}`
     : `${movie.Title} (${currentMovieYear}) Parents Guide | ${dynamicCollectionName}`;
 
-  const cleanSEODesc = `${movie.Title} (${currentMovieYear}) – ${sceneNotice}`;
+  // 2. STANDARDIZED ELITE META DESCRIPTION
+  let cleanSEODesc = '';
+  
+  if (scenes.length > 0) {
+    const rawTimes = scenes.slice(0, 3).map(s => s.end ? `${s.start}–${s.end}` : s.start);
+    const formattedTimes = rawTimes.length > 1 
+      ? `${rawTimes.slice(0, -1).join(', ')} and ${rawTimes.slice(-1)}` 
+      : rawTimes[0];
+
+    cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Viewer discretion advised. Includes exact scene timestamps: ${formattedTimes}.`;
+  } else {
+    cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Filmiway Content Advisory: No nudity or explicit sexual content identified. Suitable for general viewing.`;
+  }
 
   // =========================================================================
 
-  const canonicalUrl = `https://filmiway.com/movies/${currentSlug}/${movie.imdbID}`;
+  // BUG FIX: Canonical URL hardcoded to file route for perfect Next.js parity
+  const canonicalUrl = `https://filmiway.com/movies/psych-thriller/${movie.imdbID}`;
 
   const { movieSchema, faqSchema } = generateCleanMovieSchema(
       movie, 
       movieData, 
       currentMovieYear, 
-      currentSlug, 
+      collectionSlug, 
       null,
       COMPLETE_MOVIE_DATA[movie.tmdbId]
   );

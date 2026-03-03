@@ -14,13 +14,13 @@ import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
 import TMDBAttribution from '../../../components/TMDBAttribution';
 
-// ✅ IMPORT TIME TRAVEL DATA
+// ✅ CORRECTED IMPORT: Pulling schema generator from its dedicated file
+import { generateCleanMovieSchema } from '../../../utils/cleanMovieSchema';
 import {
   COMPLETE_MOVIE_DATABASE, 
   COMPLETE_MOVIE_DATA, 
   SENSITIVE_TIMELINES,
-  TIME_TRAVEL_MOVIE_FAQS,
-  generateCleanMovieSchema // 🔥 Imported the upgraded Universal Schema Generator
+  TIME_TRAVEL_MOVIE_FAQS
 } from '../../../utils/timeTravelMovieData';
 
 const COLORS = {
@@ -211,46 +211,38 @@ const TimeTravelMoviePage = ({ movie, tmdbData: movieData }) => {
   const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
   // =========================================================================
-  // ✅ THE UNIVERSAL SEO BLOCK (Blind Copy-Paste Ready)
+  // ✅ THE UNIVERSAL ELITE SEO BLOCK (Hardcoded Fix & Standardized Description)
   // =========================================================================
 
-  // 1. AUTO-GENERATE COLLECTION NAME FROM THE URL FOLDER
-  const currentSlug = router.pathname.split('/')[2] || 'Movies';
-  const dynamicCollectionName = currentSlug
-    .split('-')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' '); // Turns "best-time-travel-movies" into "Best Time Travel Movies"
+  const collectionSlug = 'best-time-travel-movies';
+  const dynamicCollectionName = 'Best Time Travel Movies';
+  const routeSlug = 'time-travel'; // The actual folder name in Next.js
 
-  // 2. AUTO-GRAB PLOT TEXT (No matter what you named the variable in your data file)
-  const dynamicInsight = correctData?.connection || correctData?.insight || correctData?.description || Object.values(correctData || {}).find(val => typeof val === 'string') || '';
-
-  // 3. THE MASTERSTROKE: Dynamic sensitive scene logic
   const scenes = SENSITIVE_TIMELINES?.[movie.tmdbId]?.scenes || [];
   
-  // DEFAULT FOR CLEAN FILMS: Uses the auto-grabbed text
-  let sceneNotice = `Detailed Parents Guide: No nudity or explicit scenes. ${dynamicInsight.substring(0, 110)}...`;
-  
-  if (scenes.length > 0) {
-    const firstTimestamps = scenes
-      .slice(0, 2)
-      .map(s => s.end ? `${s.start}–${s.end}` : s.start)
-      .join(', ');
-    const andMore = scenes.length > 2 ? '...' : '';
-    // ✅ Data-Heavy Description for CTR Hack
-    sceneNotice = `Parents guide with exact scene timestamps: ${firstTimestamps}${andMore}. Viewer discretion advised.`;
-  }
-
-  // 4. UNIFIED TITLE & META
+  // 1. UNIQUE META TITLE (Prevents Duplicate Cannibalization)
   const cleanSEOTitle = scenes.length > 0
-    ? `${movie.Title} (${currentMovieYear}) Parents Guide & Timestamps | Filmiway`
+    ? `${movie.Title} (${currentMovieYear}) Parents Guide & Timestamps | ${dynamicCollectionName}`
     : `${movie.Title} (${currentMovieYear}) Parents Guide | ${dynamicCollectionName}`;
 
-  const cleanSEODesc = `${movie.Title} (${currentMovieYear}) – ${sceneNotice}`;
+  // 2. STANDARDIZED ELITE META DESCRIPTION
+  let cleanSEODesc = '';
+  
+  if (scenes.length > 0) {
+    const rawTimes = scenes.slice(0, 3).map(s => s.end ? `${s.start}–${s.end}` : s.start);
+    const formattedTimes = rawTimes.length > 1 
+      ? `${rawTimes.slice(0, -1).join(', ')} and ${rawTimes.slice(-1)}` 
+      : rawTimes[0];
+
+    cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Viewer discretion advised. Includes exact scene timestamps: ${formattedTimes}.`;
+  } else {
+    cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Filmiway Content Advisory: No nudity or explicit sexual content identified. Suitable for general viewing.`;
+  }
 
   // =========================================================================
 
-  const collectionSlug = router.pathname.split('/')[2];
-  const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
+  // BUG FIX: Canonical URL hardcoded to the exact file route for perfect Next.js parity
+  const canonicalUrl = `https://filmiway.com/movies/${routeSlug}/${movie.imdbID}`;
 
   // Generate schema
   const { movieSchema, faqSchema } = generateCleanMovieSchema(
@@ -306,16 +298,7 @@ const TimeTravelMoviePage = ({ movie, tmdbData: movieData }) => {
               {/* ✅ SEO FIX: HIDDEN H1 ADDED HERE FOR GOOGLE & BING PARITY */}
               <h1 className="sr-only">{cleanSEOTitle}</h1>
 
-              {/* ✅ VISIBLE SNIPPET BAIT: Forces Google to read the timestamps immediately */}
-              {scenes.length > 0 && (
-                <div className="container mx-auto px-3 sm:px-4 lg:px-6 pt-2 max-w-7xl">
-                  <p className="text-xs sm:text-sm font-medium px-3 py-2 rounded-md mb-2 inline-block border shadow-lg flex items-center gap-2" 
-                     style={{ backgroundColor: `${COLORS.bgCard}`, color: COLORS.accentLight, borderColor: COLORS.borderLight }}>
-                     <AlertTriangle size={14} className="text-red-400" />
-                     <strong>Content Advisory:</strong> {sceneNotice}
-                  </p>
-                </div>
-              )}
+              {/* ❌ NO VISIBLE SNIPPET BAIT (UI Kept Clean) */}
 
               <TimeTravelBreadcrumb movie={movie} />
               

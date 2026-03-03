@@ -14,13 +14,13 @@ import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
 import TMDBAttribution from '../../../components/TMDBAttribution';
 
-// ✅ IMPORT DRAMA DATA (Using Universal Schema Generator)
+// ✅ CORRECTED IMPORT: Pulling schema generator from its dedicated file
+import { generateCleanMovieSchema } from '../../../utils/cleanMovieSchema';
 import {
   COMPLETE_MOVIE_DATABASE, 
   COMPLETE_MOVIE_DATA,
   SENSITIVE_TIMELINES,
-  HULU_DRAMA_MOVIE_FAQS,
-  generateCleanMovieSchema // 🔥 CORRECTED IMPORT
+  HULU_DRAMA_MOVIE_FAQS
 } from '../../../utils/huluDramaMovieData';
 
 const COLORS = {
@@ -231,46 +231,44 @@ const HuluDramaMoviePage = ({ movie, tmdbData: movieData }) => {
   const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
   // =========================================================================
-  // ✅ THE UNIVERSAL SEO BLOCK (Blind Copy-Paste Ready)
+  // ✅ THE UNIVERSAL ELITE SEO BLOCK (Hardcoded Fix & Standardized Description)
   // =========================================================================
 
-  const currentPath = router.pathname;
-  const currentSlug = currentPath.includes('/collection/') ? currentPath.split('/')[2] : currentPath.split('/')[1];
-  const dynamicCollectionName = (currentSlug || 'best-drama-movies-on-hulu')
-    .split('-')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' '); 
-
-  const dynamicInsight = correctData?.connection || richData?.synopsis || richData?.description || '';
+  // BUG FIX: Hardcoded to prevent Next.js routing bugs in meta tags
+  const collectionSlug = 'best-drama-movies-on-hulu';
+  const dynamicCollectionName = 'Best Drama Movies on Hulu';
 
   const scenes = SENSITIVE_TIMELINES?.[movie.tmdbId]?.scenes || [];
   
-  let sceneNotice = `Detailed Parents Guide: No nudity or explicit scenes. ${dynamicInsight.substring(0, 110)}...`;
-  
-  if (scenes.length > 0) {
-    const firstTimestamps = scenes
-      .slice(0, 2)
-      .map(s => s.end ? `${s.start}–${s.end}` : s.start)
-      .join(', ');
-    const andMore = scenes.length > 2 ? '...' : '';
-    sceneNotice = `Parents guide with exact scene timestamps: ${firstTimestamps}${andMore}. Viewer discretion advised.`;
-  }
-
+  // 1. UNIQUE META TITLE (Prevents Duplicate Cannibalization)
   const cleanSEOTitle = scenes.length > 0
-    ? `${movie.Title} (${currentMovieYear}) Parents Guide & Timestamps | Filmiway`
+    ? `${movie.Title} (${currentMovieYear}) Parents Guide & Timestamps | ${dynamicCollectionName}`
     : `${movie.Title} (${currentMovieYear}) Parents Guide | ${dynamicCollectionName}`;
 
-  const cleanSEODesc = `${movie.Title} (${currentMovieYear}) – ${sceneNotice}`;
+  // 2. STANDARDIZED ELITE META DESCRIPTION
+  let cleanSEODesc = '';
+  
+  if (scenes.length > 0) {
+    const rawTimes = scenes.slice(0, 3).map(s => s.end ? `${s.start}–${s.end}` : s.start);
+    const formattedTimes = rawTimes.length > 1 
+      ? `${rawTimes.slice(0, -1).join(', ')} and ${rawTimes.slice(-1)}` 
+      : rawTimes[0];
+
+    cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Viewer discretion advised. Includes exact scene timestamps: ${formattedTimes}.`;
+  } else {
+    cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Filmiway Content Advisory: No nudity or explicit sexual content identified. Suitable for general viewing.`;
+  }
 
   // =========================================================================
 
-  const canonicalUrl = `https://filmiway.com/movies/${currentSlug || 'best-drama-movies-on-hulu'}/${movie.imdbID}`;
+  // BUG FIX: Canonical URL hardcoded to file route for perfect Next.js parity
+  const canonicalUrl = `https://filmiway.com/movies/best-drama-movies-on-hulu/${movie.imdbID}`;
 
   const { movieSchema, faqSchema } = generateCleanMovieSchema(
       movie, 
       movieData, 
       currentMovieYear, 
-      currentSlug || 'best-drama-movies-on-hulu', 
+      collectionSlug, 
       'Hulu',
       COMPLETE_MOVIE_DATA[movie.tmdbId]
   );
@@ -290,6 +288,7 @@ const HuluDramaMoviePage = ({ movie, tmdbData: movieData }) => {
 
               <meta property="og:title" content={cleanSEOTitle} />
               <meta property="og:description" content={cleanSEODesc} />
+              <meta property="og:url" content={canonicalUrl} />
               <meta property="og:type" content="video.movie" />
               <meta property="og:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
               <meta name="twitter:card" content="summary_large_image" />

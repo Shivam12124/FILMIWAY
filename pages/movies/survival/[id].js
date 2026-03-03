@@ -13,13 +13,13 @@ import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
 import TMDBAttribution from '../../../components/TMDBAttribution';
 
-// ✅ IMPORT SURVIVAL DATA
-import { generateCleanMovieSchema } from '../../../utils/cleanMovieSchema';
+// ✅ CORRECTED IMPORT: Pulled directly from your updated data file
 import {
   COMPLETE_MOVIE_DATABASE, 
   COMPLETE_MOVIE_DATA,
   SENSITIVE_TIMELINES,
-  SURVIVAL_MOVIE_FAQS 
+  SURVIVAL_MOVIE_FAQS,
+  generateCleanMovieSchema // 🔥 Now correctly imported from here
 } from '../../../utils/survivalMovieData';
 
 const COLORS = {
@@ -183,8 +183,6 @@ const SurvivalBreadcrumb = ({ movie }) => (
     </motion.nav>
 );
 
-
-
 const SurvivalMoviePage = ({ movie, tmdbData: movieData, sensitiveData }) => {
     const router = useRouter();
     const richData = COMPLETE_MOVIE_DATA[movie.tmdbId]; 
@@ -199,7 +197,7 @@ const SurvivalMoviePage = ({ movie, tmdbData: movieData, sensitiveData }) => {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-        sessionStorage.setItem('fromCollection', 'survival');
+        sessionStorage.setItem('fromCollection', 'best-survival-movies');
         sessionStorage.setItem('fromCollectionName', 'Best Survival Movies');
     }
   }, []);
@@ -207,12 +205,39 @@ const SurvivalMoviePage = ({ movie, tmdbData: movieData, sensitiveData }) => {
     const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
-    // ✅ SEO FIX: Join title and description strings FIRST to prevent hydration markers ()
-    const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Best Survival Film | Filmiway'].join('');
-    const cleanSEODesc = `${movie.Title} - A compelling survival film. Analysis & where to stream.`;
+  // =========================================================================
+  // ✅ THE UNIVERSAL ELITE SEO BLOCK (Hardcoded Fix & Standardized Description)
+  // =========================================================================
 
-    const collectionSlug = router.pathname.split('/')[2];
-    const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
+  const collectionSlug = 'best-survival-movies';
+  const dynamicCollectionName = 'Best Survival Movies';
+  const routeSlug = 'survival'; // The actual folder name in Next.js
+
+  const scenes = SENSITIVE_TIMELINES?.[movie.tmdbId]?.scenes || [];
+  
+  // 1. UNIQUE META TITLE (Prevents Duplicate Cannibalization)
+  const cleanSEOTitle = scenes.length > 0
+    ? `${movie.Title} (${currentMovieYear}) Parents Guide & Timestamps | ${dynamicCollectionName}`
+    : `${movie.Title} (${currentMovieYear}) Parents Guide | ${dynamicCollectionName}`;
+
+  // 2. STANDARDIZED ELITE META DESCRIPTION
+  let cleanSEODesc = '';
+  
+  if (scenes.length > 0) {
+    const rawTimes = scenes.slice(0, 3).map(s => s.end ? `${s.start}–${s.end}` : s.start);
+    const formattedTimes = rawTimes.length > 1 
+      ? `${rawTimes.slice(0, -1).join(', ')} and ${rawTimes.slice(-1)}` 
+      : rawTimes[0];
+
+    cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Viewer discretion advised. Includes exact scene timestamps: ${formattedTimes}.`;
+  } else {
+    cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Filmiway Content Advisory: No nudity or explicit sexual content identified. Suitable for general viewing.`;
+  }
+
+  // =========================================================================
+
+    // BUG FIX: Canonical URL hardcoded to the exact file route for perfect Next.js parity
+    const canonicalUrl = `https://filmiway.com/movies/${routeSlug}/${movie.imdbID}`;
 
     const { movieSchema, faqSchema } = generateCleanMovieSchema(
         movie, 
@@ -226,14 +251,14 @@ const SurvivalMoviePage = ({ movie, tmdbData: movieData, sensitiveData }) => {
     return (
         <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
             <Head>
-                {/* ✅ HYDRATION BUG RESOLVED: No more split variables inside title tag */}
+                {/* ✅ HYDRATION BUG RESOLVED: Clean strings only */}
                 <title>{cleanSEOTitle}</title>
                 <meta name="description" content={cleanSEODesc} />
                 <link rel="canonical" href={canonicalUrl} />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                 <meta name="robots" content="index, follow" />
                 
-                {/* JSON-LD Schema */}
+                {/* ✅ SCHEMA INJECTION */}
                 <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }} />
                 {faqSchema && (<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />)}
 
@@ -241,6 +266,7 @@ const SurvivalMoviePage = ({ movie, tmdbData: movieData, sensitiveData }) => {
                 <meta property="og:title" content={cleanSEOTitle} />
                 <meta property="og:description" content={cleanSEODesc} />
                 <meta property="og:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
+                <meta property="og:url" content={canonicalUrl} />
                 <meta name="twitter:title" content={cleanSEOTitle} />
                 <meta name="twitter:description" content={cleanSEODesc} />
             </Head>

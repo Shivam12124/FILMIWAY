@@ -14,13 +14,13 @@ import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
 import TMDBAttribution from '../../../components/TMDBAttribution';
 
-// ✅ IMPORT DONNIE DARKO DATA (Using the upgraded Universal Schema Generator)
+// ✅ CORRECTED IMPORT: Schema generator comes from its dedicated file
+import { generateCleanMovieSchema } from '../../../utils/cleanMovieSchema';
 import {
   COMPLETE_MOVIE_DATABASE, 
   COMPLETE_MOVIE_DATA,
   SENSITIVE_TIMELINES,
-  DONNIE_DARKO_MOVIE_FAQS,
-  generateCleanMovieSchema 
+  DONNIE_DARKO_MOVIE_FAQS
 } from '../../../utils/donnieDarkoMovieData';
 
 const COLORS = {
@@ -147,19 +147,6 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
   );
 };
 
-const AuthorCreditSection = () => (
-  <motion.section className="pt-6 sm:pt-8 mt-12 sm:mt-16" style={{ borderTop: `1px solid ${COLORS.borderLight}` }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2.0, duration: 0.8 }}>
-    <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
-      <div className="flex items-center gap-3"><User className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: COLORS.textDisabled }} /><div><p className="text-xs sm:text-sm" style={{ color: COLORS.textMuted }}>Curated by <span className="font-medium" style={{ color: COLORS.textSecondary }}>Filmiway Editorial Team</span></p><p className="text-xs" style={{ color: COLORS.textDisabled }}>Expert analysis of mind-bending cinema</p></div></div>
-      <div className="flex items-center gap-3 sm:gap-4"><span className="text-xs sm:text-sm" style={{ color: COLORS.textDisabled }}>Share:</span><div className="flex gap-2 sm:gap-3">{[Twitter, Hash, Send].map((Icon, i) => (<button key={i} className="p-1.5 sm:p-2 rounded-full transition-colors" style={{ color: COLORS.textDisabled }} onMouseEnter={(e) => { e.currentTarget.style.color = COLORS.textSecondary; e.currentTarget.style.backgroundColor = COLORS.bgCard; }} onMouseLeave={(e) => { e.currentTarget.style.color = COLORS.textDisabled; e.currentTarget.style.backgroundColor = 'transparent'; }}><Icon className="w-3 h-3 sm:w-4 sm:h-4" /></button>))}</div></div>
-    </div>
-  </motion.section>
-);
-
-const SubtleFilmGrain = () => (
-  <div className="fixed inset-0 pointer-events-none z-0 opacity-[0.005]"><div className="w-full h-full bg-repeat" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)' opacity='0.3'/%3E%3C/svg%3E")`, backgroundSize: '60px 60px' }} /></div>
-);
-
 const MindbendBreadcrumb = ({ movie }) => (
   <motion.nav className="mb-6 sm:mb-8 px-3 sm:px-4 lg:px-6 pb-3 sm:pb-4" style={{ borderBottom: `1px solid ${COLORS.borderLight}` }} initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
     <div className="flex items-center space-x-2 sm:space-x-3 text-xs sm:text-sm" style={{ color: COLORS.textMuted }}>
@@ -183,7 +170,7 @@ const DonnieDarkoMoviePage = ({ movie, tmdbData: movieData }) => {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-        sessionStorage.setItem('fromCollection', 'donnie-darko');
+        sessionStorage.setItem('fromCollection', 'movies-like-donnie-darko');
         sessionStorage.setItem('fromCollectionName', 'Movies Like Donnie Darko');
     }
   }, []);
@@ -192,40 +179,37 @@ const DonnieDarkoMoviePage = ({ movie, tmdbData: movieData }) => {
   const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
   // =========================================================================
-  // ✅ THE UNIVERSAL SEO BLOCK (Blind Copy-Paste Ready)
+  // ✅ THE UNIVERSAL ELITE SEO BLOCK (Hardcoded Fix & Standardized Description)
   // =========================================================================
 
-  const currentSlug = router.pathname.split('/')[2] || 'Movies';
-  const dynamicCollectionName = currentSlug
-    .split('-')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' '); 
-
-  const dynamicInsight = richData?.synopsis || richData?.description || Object.values(richData || {}).find(val => typeof val === 'string') || '';
+  const collectionSlug = 'movies-like-donnie-darko';
+  const dynamicCollectionName = 'Movies Like Donnie Darko';
 
   const scenes = SENSITIVE_TIMELINES?.[movie.tmdbId]?.scenes || [];
   
-  let sceneNotice = `Detailed Parents Guide: No nudity or explicit scenes. ${dynamicInsight.substring(0, 110)}...`;
-  
-  if (scenes.length > 0) {
-    const firstTimestamps = scenes
-      .slice(0, 2)
-      .map(s => s.end ? `${s.start}–${s.end}` : s.start)
-      .join(', ');
-    const andMore = scenes.length > 2 ? '...' : '';
-    sceneNotice = `Parents guide with exact scene timestamps: ${firstTimestamps}${andMore}. Viewer discretion advised.`;
-  }
-
+  // 1. UNIQUE META TITLE (Prevents Duplicate Cannibalization)
   const cleanSEOTitle = scenes.length > 0
-    ? `${movie.Title} (${currentMovieYear}) Parents Guide & Timestamps | Filmiway`
+    ? `${movie.Title} (${currentMovieYear}) Parents Guide & Timestamps | ${dynamicCollectionName}`
     : `${movie.Title} (${currentMovieYear}) Parents Guide | ${dynamicCollectionName}`;
 
-  const cleanSEODesc = `${movie.Title} (${currentMovieYear}) – ${sceneNotice}`;
+  // 2. STANDARDIZED ELITE META DESCRIPTION
+  let cleanSEODesc = '';
+  
+  if (scenes.length > 0) {
+    const rawTimes = scenes.slice(0, 3).map(s => s.end ? `${s.start}–${s.end}` : s.start);
+    const formattedTimes = rawTimes.length > 1 
+      ? `${rawTimes.slice(0, -1).join(', ')} and ${rawTimes.slice(-1)}` 
+      : rawTimes[0];
+
+    cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Viewer discretion advised. Includes exact scene timestamps: ${formattedTimes}.`;
+  } else {
+    cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Filmiway Content Advisory: No nudity or explicit sexual content identified. Suitable for general viewing.`;
+  }
 
   // =========================================================================
 
-  const collectionSlug = router.pathname.split('/')[2];
-  const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
+  // BUG FIX: Canonical URL hardcoded to file route for perfect Next.js parity
+  const canonicalUrl = `https://filmiway.com/movies/donnie-darko/${movie.imdbID}`;
 
   const { movieSchema, faqSchema } = generateCleanMovieSchema(
       movie, 
@@ -250,6 +234,7 @@ const DonnieDarkoMoviePage = ({ movie, tmdbData: movieData }) => {
 
               <meta property="og:title" content={cleanSEOTitle} />
               <meta property="og:description" content={cleanSEODesc} />
+              <meta property="og:url" content={canonicalUrl} />
               <meta property="og:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
               <meta name="twitter:title" content={cleanSEOTitle} />
               <meta name="twitter:description" content={cleanSEODesc} />
@@ -262,8 +247,6 @@ const DonnieDarkoMoviePage = ({ movie, tmdbData: movieData }) => {
               
               {/* ✅ HIDDEN H1 ADDED HERE FOR GOOGLE & BING SEO PARITY */}
               <h1 className="sr-only">{cleanSEOTitle}</h1>
-
-              {/* ❌ THE UGLY VISIBLE BANNER HAS BEEN PERMANENTLY REMOVED ❌ */}
 
               <MindbendBreadcrumb movie={movie} />
               <div className="container mx-auto px-0 pb-16 sm:pb-24 lg:pb-32 max-w-7xl">
@@ -282,7 +265,13 @@ const DonnieDarkoMoviePage = ({ movie, tmdbData: movieData }) => {
                   <div className="px-3 sm:px-4 lg:px-6">
                       <InternalCollectionsSection currentSlug="movies-like-donnie-darko" />
                       <TMDBAttribution />
-                      <AuthorCreditSection />
+                      {/* AuthorCreditSection added here for consistency */}
+                      <div className="pt-6 sm:pt-8 mt-12 sm:mt-16" style={{ borderTop: `1px solid ${COLORS.borderLight}` }}>
+                        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
+                            <div className="flex items-center gap-3"><User className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: COLORS.textDisabled }} /><div><p className="text-xs sm:text-sm" style={{ color: COLORS.textMuted }}>Curated by <span className="font-medium" style={{ color: COLORS.textSecondary }}>Filmiway Editorial Team</span></p><p className="text-xs" style={{ color: COLORS.textDisabled }}>Expert analysis of mind-bending cinema</p></div></div>
+                            <div className="flex items-center gap-3 sm:gap-4"><span className="text-xs sm:text-sm" style={{ color: COLORS.textDisabled }}>Share:</span><div className="flex gap-2 sm:gap-3">{[Twitter, Hash, Send].map((Icon, i) => (<button key={i} className="p-1.5 sm:p-2 rounded-full transition-colors" style={{ color: COLORS.textDisabled }}><Icon className="w-3 h-3 sm:w-4 sm:h-4" /></button>))}</div></div>
+                        </div>
+                      </div>
                   </div>
               </div>
           </div>

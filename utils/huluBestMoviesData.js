@@ -616,17 +616,3 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId) => {
 
     return staticFaqs;
 };
-
-// Build object map by tmdbId (Export named variable)
-export const COMPLETE_HULU_BEST_DATABASE = Object.fromEntries(
-    COMPLETE_MOVIE_DATABASE.map(m => [m.tmdbId, m])
-);
-
-// ✅ EXPORT DEFAULT (Containing all exports for compatibility)
-export default {
-    COMPLETE_MOVIE_DATABASE,
-    COMPLETE_MOVIE_DATA,
-    SENSITIVE_TIMELINES,
-    HULU_BEST_MOVIE_FAQS,
-    COMPLETE_HULU_BEST_DATABASE
-};

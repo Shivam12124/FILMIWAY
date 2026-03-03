@@ -409,9 +409,3 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId) => {
     return staticFaqs;
 };
 
-// Build object map by tmdbId
-export const COMPLETE_DETECTIVE_THRILLER_DATABASE = Object.fromEntries(
-    COMPLETE_MOVIE_DATABASE.map(m => [m.tmdbId, m])
-);
-
-export default COMPLETE_DETECTIVE_THRILLER_DATABASE;
