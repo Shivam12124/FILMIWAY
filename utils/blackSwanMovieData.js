@@ -1,4 +1,4 @@
-// utils/blackSwanMovieData.js - BLACK SWAN COLLECTION DATA
+// utils/blackSwanMovieData.js - BLACK SWAN COLLECTION DATA ✅
 // Movies exploring artistic obsession, psychological descent, and identity horror
 
 export const TMDB_CONFIG = {
@@ -28,14 +28,14 @@ const timeToSeconds = (timeStr) => {
     return 0;
 };
 
-// ✅ UPDATED SENSITIVE TIMELINES (Sexual Content & Nudity ONLY - No Descriptions)
+// ✅ UPDATED SENSITIVE TIMELINES (Sexual Content & Nudity ONLY)
 export const SENSITIVE_TIMELINES = {
     // 1. Perfect Blue
     10494: { 
         scenes: [
             { start: "0:33:20", end: "0:35:10", type: "Sexual Content", severity: "Extreme" },
             { start: "0:45:40", end: "0:48:00", type: "Nudity", severity: "High" },
-            { start: "0:57:05", end: "0:57:32", type: "Nudityt", severity: "Extreme" },
+            { start: "0:57:05", end: "0:57:32", type: "Nudity", severity: "Extreme" }, // Fixed typo "Nudityt"
             { start: "1:04:20", end: "1:06:55", type: "Nudity", severity: "High" }
         ] 
     },
@@ -64,9 +64,10 @@ export const SENSITIVE_TIMELINES = {
 
     // 6. Mulholland Drive
     1018: { 
-scenes: [       { start: "0:23:32", end: "0:24:30", type: "Nudity(Blurred)", severity: "Moderate" },
+        scenes: [       
+            { start: "0:23:32", end: "0:24:30", type: "Nudity (Blurred)", severity: "Moderate" },
             { start: "1:38:45", end: "1:42:55", type: "Nudity", severity: "High" },
-            { start: "2:01:27", end: "2:02:59", type: "Nudity", severity: "High" },
+            { start: "2:01:27", end: "2:02:59", type: "Nudity", severity: "High" }
         ]
     },
 
@@ -89,16 +90,16 @@ scenes: [       { start: "0:23:32", end: "0:24:30", type: "Nudity(Blurred)", sev
         ] 
     },
 
-// 9. Requiem for a Dream
+    // 9. Requiem for a Dream
     641: { 
         scenes: [
             { start: "0:20:00", end: "0:20:30", type: "Nudity", severity: "Moderate" },
             { start: "0:33:00", end: "0:34:25", type: "Nudity", severity: "Moderate" },
             { start: "0:37:00", end: "0:37:25", type: "Nudity", severity: "Moderate" },
-            // 🔥 NEW SCENE ADDED
             { start: "1:30:30", end: "1:33:50", type: "Sex & Nudity", severity: "Extreme" }
         ] 
     },
+    
     // 10. Nightcrawler (Clean)
     242582: { scenes: [] }
 };
@@ -115,8 +116,6 @@ export const FALLBACK_POSTERS = {
     641: "https://m.media-amazon.com/images/M/MV5BOTdiNzJlOWUtN2VlZS00MjE1LTkxN2QtN2Y3YjY3MDI5YmM4XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX500.jpg",
     242582: "https://m.media-amazon.com/images/M/MV5BNjkyMDQ1NTEwMl5BMl5BanBnXkFtZTgwNzQ4NDE5NTM@._V1_SX500.jpg"
 };
-
-
 
 // ✅ Helper function to ensure defaults
 const createMovieData = (data) => ({
@@ -278,7 +277,7 @@ export const COMPLETE_MOVIE_DATA = {
             { time: 98, intensity: 100, label: "The Crescendo", color: "#991b1b" }, 
             { time: 102, intensity: 85, label: "Fetal Position", color: "#0f172a" } 
         ],
-        synopsis: "Four individuals on the edge of Coney Island chase dreams of a better life, only to be consumed by the very addictions they used to escape. Using frenetic, hypnotic editing, Aronofsky delivers a devastating warning on the price of obsession. This is not just a film; it is a sensory journey into a psychological void that peaks with one of the most intense, heart-shattering finales ever committed to screen.",
+        synopsis: "Four individuals on the edge of Coney Island chase dreams of a better life, only to be consumed by the very addictions they used to escape. Using frenetic, hypnotic editing, Aronofsky delivers a devastating warning on the price of obsession.",
         themes: ["Addiction", "Self-Destruction", "Hallucination"]
     }),
 
@@ -507,69 +506,14 @@ export const BLACK_SWAN_MOVIE_FAQS = {
     ]
 };
 
+// 5. UTILITY FUNCTIONS & THE KEYWORD BRIDGE
 export const getTMDBPosterUrl = (posterPath, size = 'medium') => {
     if (!posterPath) return null;
     const posterSize = TMDB_CONFIG.POSTER_SIZES[size] || TMDB_CONFIG.POSTER_SIZES.medium;
     return `${TMDB_CONFIG.IMAGE_BASE_URL}/${posterSize}${posterPath}`;
 };
 
-export const getSensitiveContentTypes = (tmdbId) => {
-    const sensitiveData = SENSITIVE_TIMELINES[tmdbId];
-    if (!sensitiveData?.scenes?.length) return null;
-    const types = new Set();
-    sensitiveData.scenes.forEach(scene => {
-        const lowerType = scene.type.toLowerCase();
-        if (lowerType.includes('sex')) types.add('intimate scenes');
-        if (lowerType.includes('nudity')) types.add('nudity');
-        if (lowerType.includes('violence')) types.add('graphic violence');
-        if (lowerType.includes('self-harm') || lowerType.includes('drug')) types.add('disturbing content');
-    });
-    return Array.from(types);
-};
-
-export const generateFAQData = (movie) => {
-    return BLACK_SWAN_MOVIE_FAQS[movie.Title] || [];
-};
-
-export const generateMovieSchema = (movie) => {
-    const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
-    const posterUrl = FALLBACK_POSTERS[movie.tmdbId] || '';
-    return {
-        '@context': 'https://schema.org',
-        '@type': 'Movie',
-        'name': movie.Title,
-        'description': movieInfo?.synopsis || `${movie.Title} - A psychological thriller about obsession.`,
-        'genre': movie.genre,
-        'datePublished': movie.year.toString(),
-        'director': { '@type': 'Person', 'name': movieInfo?.director || 'Director' },
-        'actor': movieInfo?.cast?.map(actor => ({ '@type': 'Person', 'name': actor })) || [],
-        'duration': `PT${movie.runtime}M`,
-        'image': posterUrl,
-        'aggregateRating': { 
-            '@type': 'AggregateRating', 
-            'ratingValue': movieInfo?.rating || 7.5, 
-            'bestRating': 10, 
-            'worstRating': 1, 
-            'ratingCount': movieInfo?.audienceScore || 100 
-        }
-    };
-};
-
-export const generateFAQSchema = (faqs) => ({
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    'mainEntity': faqs.map(faq => ({ 
-        '@type': 'Question', 
-        'name': faq.question, 
-        'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer } 
-    }))
-});
-
-export const fetchMovieFromTMDB = async (tmdbId) => ({ 
-    poster_path: null, 
-    title: COMPLETE_MOVIE_DATABASE.find(m => m.tmdbId === tmdbId)?.Title || 'Unknown Movie' 
-});
-
+export const fetchMovieFromTMDB = async (tmdbId) => ({ poster_path: null, title: COMPLETE_MOVIE_DATABASE.find(m => m.tmdbId === tmdbId)?.Title || 'Unknown Movie' });
 export const fetchWatchProviders = async (tmdbId, region = 'US') => null;
 
 export const formatSensitiveTimeline = (tmdbId) => {
@@ -583,4 +527,137 @@ export const formatSensitiveTimeline = (tmdbId) => {
             description: scene.description || ''
         }))
     };
+};
+
+// 🔥 6. THE KEYWORD BRIDGE (Upgraded for maximum SEO power)
+export const getSensitiveContentTypes = (tmdbId) => {
+    const sensitiveData = SENSITIVE_TIMELINES[tmdbId];
+    if (!sensitiveData?.scenes?.length) return null;
+    const types = new Set();
+    sensitiveData.scenes.forEach(scene => {
+        const lowerType = scene.type.toLowerCase();
+        
+        // Converts soft words into hard, high-volume SEO keywords
+        if (lowerType.includes('sex') || lowerType.includes('explicit')) types.add('sexual content');
+        if (lowerType.includes('nudity') || lowerType.includes('undressing') || lowerType.includes('bikini')) types.add('nudity');
+        if (lowerType.includes('violence')) types.add('graphic violence');
+        if (lowerType.includes('self-harm') || lowerType.includes('drug')) types.add('disturbing content');
+    });
+    return Array.from(types);
+};
+
+// 🔥 7. THE "GOLDEN EGG" SCHEMA GENERATOR (Universal Version)
+export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, collectionSlug, unused, movieInfo) => {
+    // Standard Movie Schema
+    const movieSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'Movie',
+        'name': movie.Title,
+        'description': movieInfo?.synopsis || `${movie.Title} (${currentMovieYear}) - A psychological thriller exploring obsession and identity.`,
+        'genre': movie.genre,
+        'datePublished': currentMovieYear?.toString() || movie.year.toString(),
+        'director': { '@type': 'Person', 'name': movieInfo?.director || 'Director' },
+        'actor': movieInfo?.cast?.map(actor => ({ '@type': 'Person', 'name': actor })) || [],
+        'image': tmdbData?.poster_path ? `https://image.tmdb.org/t/p/w500${tmdbData.poster_path}` : (FALLBACK_POSTERS[movie.tmdbId] || ''),
+        'duration': `PT${movie.runtime}M`
+    };
+
+    const staticFaqs = BLACK_SWAN_MOVIE_FAQS[movie.Title] || [];
+    const sensitiveScenes = SENSITIVE_TIMELINES[movie.tmdbId]?.scenes || [];
+    const intensityScenes = movieInfo?.scenes || [];
+    
+    const schemaFaqs = staticFaqs.map(faq => ({ 
+        '@type': 'Question', 
+        'name': faq.question, 
+        'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer } 
+    }));
+
+    // Inject Intensity Graph Timestamps into Schema
+    if (intensityScenes.length > 0) {
+        const schemaIntensityList = intensityScenes.map(s => `<li>Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)</li>`).join('');
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `What are the most intense scenes in ${movie.Title}?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `According to the Filmiway Intensity metric, ${movie.Title} peaks at the following moments:<br><br><ul>${schemaIntensityList}</ul>` 
+            }
+        });
+    }
+
+    // Inject Sensitive Content Timestamps into Schema (Top Priority)
+    if (sensitiveScenes.length > 0) {
+        const typesArray = getSensitiveContentTypes(movie.tmdbId) || ['mature content'];
+        const typesString = typesArray.join(' and ');
+
+        const schemaListText = sensitiveScenes.map(s => {
+            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
+            return `<li>${timeRange} - ${s.type || 'Mature Content'}</li>`;
+        }).join('');
+
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `Yes, according to the Filmiway Content Advisory, ${movie.Title} contains adult scenes including ${typesString}. Exact timestamps for these scenes are:<br><br><ul>${schemaListText}</ul>` 
+            }
+        });
+    } else {
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `No, the Filmiway Content Advisory confirms that ${movie.Title} is completely free of explicit sexual content and nudity.` 
+            }
+        });
+    }
+
+    const faqSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        'name': `Parents Guide and FAQ for ${movie.Title}`,
+        'mainEntity': schemaFaqs
+    };
+
+    return { movieSchema, faqSchema };
+};
+
+// 🔥 8. FRONTEND UI SYNC (Displays the timestamps dynamically on the Next.js page)
+export const getVisibleMovieFAQs = (movieTitle, tmdbId) => {
+    const staticFaqs = BLACK_SWAN_MOVIE_FAQS[movieTitle] ? [...BLACK_SWAN_MOVIE_FAQS[movieTitle]] : [];
+    const sensitiveScenes = SENSITIVE_TIMELINES[tmdbId]?.scenes || [];
+    const movieInfo = COMPLETE_MOVIE_DATA[tmdbId];
+    const intensityScenes = movieInfo?.scenes || [];
+
+    if (intensityScenes.length > 0) {
+        const uiIntensityList = intensityScenes.map(s => `• Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)`).join('\n');
+        staticFaqs.unshift({
+            question: `What are the most intense scenes in ${movieTitle}?`,
+            answer: `According to the Filmiway Intensity metric, ${movieTitle} peaks at the following moments:\n\n${uiIntensityList}`
+        });
+    }
+
+    if (sensitiveScenes.length > 0) {
+        const typesArray = getSensitiveContentTypes(tmdbId) || ['mature content'];
+        const typesString = typesArray.join(' and ');
+
+        const uiListText = sensitiveScenes.map(s => {
+            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
+            return `• ${timeRange} - ${s.type || 'Mature Content'}`;
+        }).join('\n');
+
+        staticFaqs.unshift({
+            question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
+            answer: `Yes, according to the Filmiway Content Advisory, ${movieTitle} contains adult scenes including ${typesString}. Exact timestamps for these scenes are:\n\n${uiListText}`
+        });
+    } else {
+        staticFaqs.unshift({
+            question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
+            answer: `No, the Filmiway Content Advisory confirms that ${movieTitle} is completely free of explicit sexual content and nudity.`
+        });
+    }
+
+    return staticFaqs;
 };
