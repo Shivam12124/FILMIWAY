@@ -1,4 +1,4 @@
-// utils/hboMaxHorrorMovieData.js - HBO MAX HORROR COLLECTION DATA
+// utils/hboMaxHorrorMovieData.js - HBO MAX HORROR COLLECTION DATA ✅
 // Ranked by Scariness: Dread, Gore, and Psychological Trauma
 
 export const TMDB_CONFIG = {
@@ -38,9 +38,9 @@ export const SENSITIVE_TIMELINES = {
     // 5. The Witch
     310131: { 
         scenes: [
-            { start: "0:08:30", end: "0:09:15", type: "Nudity (Woman, non-sexual)", severity: "Moderate" },
-            { start: "1:13:58", end: "1:14:05", type: "Nudity (Woman, non-sexual)", severity: "Moderate" },
-            { start: "1:25:30", end: "1:27:45", type: "Nudity (Women, non-sexual)", severity: "Moderate" }
+            { start: "0:08:30", end: "0:09:15", type: "Nudity", severity: "Moderate" },
+            { start: "1:13:58", end: "1:14:05", type: "Nudity", severity: "Moderate" },
+            { start: "1:25:30", end: "1:27:45", type: "Nudity", severity: "Moderate" }
         ] 
     },
     
@@ -69,8 +69,8 @@ export const FALLBACK_POSTERS = {
     713704: "https://image.tmdb.org/t/p/w500/mIBCtPvKZQlxubxKMeViO2UrP3q.jpg",
     346364: "https://image.tmdb.org/t/p/w500/9E2y5Q7WlCVNEhP5GiVTJhEhQX1.jpg",
     439079: "https://image.tmdb.org/t/p/w500/sFC1ElvoKgmWg5E2c6l4dFLx7s5.jpg",
-    521029: "https://image.tmdb.org/t/p/w500/q3m1eGk5Z5X5V5.jpg", // Annabelle Comes Home placeholder hash
-    91586: "https://image.tmdb.org/t/p/w500/f3X5X5X5X5X5X5X5X5X5X5.jpg" // Placeholder hash
+    521029: "https://image.tmdb.org/t/p/w500/q3m1eGk5Z5X5V5.jpg", 
+    91586: "https://image.tmdb.org/t/p/w500/f3X5X5X5X5X5X5X5X5X5X5.jpg" 
 };
 
 // ✅ HELPER: Horror Specific Metrics
@@ -94,7 +94,7 @@ export const COMPLETE_MOVIE_DATA = {
             { time: 95, intensity: 95, label: "Exorcism", color: "#dc2626" }, 
             { time: 105, intensity: 60, label: "The Music Box", color: "#0f172a" } 
         ],
-        synopsis: "Based on the terrifying true case files of paranormal investigators Ed and Lorraine Warren. In 1971, they are summoned to a secluded farmhouse in Rhode Island to help the Perron family, who are being terrorized by a dark, malevolent presence. What starts as a standard haunting quickly escalates into the most horrifying case of their lives, involving a witch's curse, demonic possession, and a battle for the souls of an innocent family.",
+        synopsis: "Based on the terrifying true case files of paranormal investigators Ed and Lorraine Warren. In 1971, they are summoned to a secluded farmhouse in Rhode Island to help the Perron family, who are being terrorized by a dark, malevolent presence. What starts as a standard haunting quickly escalates into the most horrifying case of their lives.",
         themes: ["Haunting", "Faith", "Family"]
     }),
 
@@ -111,7 +111,7 @@ export const COMPLETE_MOVIE_DATA = {
             { time: 85, intensity: 90, label: "Lipstick Demon", color: "#b91c1c" }, 
             { time: 98, intensity: 95, label: "The Twist", color: "#991b1b" } 
         ],
-        synopsis: "A family looks to prevent evil spirits from trapping their comatose child in a realm called The Further. They initially believe their house is haunted, but after moving, they realize the terrifying truth: it's not the house that's haunted, it's their son. Featuring one of the most iconic and terrifying jump scares in modern horror history involving a red-faced demon.",
+        synopsis: "A family looks to prevent evil spirits from trapping their comatose child in a realm called The Further. They initially believe their house is haunted, but after moving, they realize the terrifying truth: it's not the house that's haunted, it's their son. Featuring one of the most iconic and terrifying jump scares in modern horror history.",
         themes: ["Astral Projection", "Demons", "Parenting"]
     }),
 
@@ -128,7 +128,7 @@ export const COMPLETE_MOVIE_DATA = {
             { time: 110, intensity: 90, label: "Valak Revealed", color: "#1e3a8a" }, 
             { time: 125, intensity: 88, label: "Lightning Strike", color: "#2563eb" } 
         ],
-        synopsis: "Ed and Lorraine Warren travel to North London to help a single mother raising four children alone in a house plagued by a malicious spirit. As the youngest daughter shows signs of demonic possession, the Warrens must determine if it is a hoax or a true haunting. This sequel introduces the terrifying demon nun Valak and is widely considered one of the best horror sequels ever made.",
+        synopsis: "Ed and Lorraine Warren travel to North London to help a single mother raising four children alone in a house plagued by a malicious spirit. As the youngest daughter shows signs of demonic possession, the Warrens must determine if it is a hoax or a true haunting. This sequel introduces the terrifying demon nun Valak.",
         themes: ["Possession", "Skepticism", "Love"]
     }),
 
@@ -145,7 +145,7 @@ export const COMPLETE_MOVIE_DATA = {
             { time: 95, intensity: 90, label: "The Well", color: "#451a03" }, 
             { time: 105, intensity: 80, label: "Origin Revealed", color: "#713f12" } 
         ],
-        synopsis: "Twelve years after the tragic death of their little girl, a dollmaker and his wife welcome a nun and several girls from a shuttered orphanage into their home. They soon become the target of the dollmaker's possessed creation, Annabelle. This prequel effectively builds tension through atmosphere and delivers relentless scares, establishing the terrifying origin of the Conjuring universe's most famous doll.",
+        synopsis: "Twelve years after the tragic death of their little girl, a dollmaker and his wife welcome a nun and several girls from a shuttered orphanage into their home. They soon become the target of the dollmaker's possessed creation, Annabelle. This prequel establishes the terrifying origin of the Conjuring universe's most famous doll.",
         themes: ["Dolls", "Orphans", "Grief"]
     }),
 
@@ -162,7 +162,7 @@ export const COMPLETE_MOVIE_DATA = {
             { time: 80, intensity: 85, label: "Possession", color: "#18181b" }, 
             { time: 90, intensity: 95, label: "The Sabbath", color: "#000000" } 
         ],
-        synopsis: "New England, 1630. A devout Christian family, banished from their settlement, attempts to survive on the edge of a vast, ominous wilderness. But when their infant son disappears, paranoia and religious hysteria tear the family apart as they suspect a witch is living in the woods. A slow-burning masterpiece of atmospheric dread that culminates in one of the most chilling endings in modern horror.",
+        synopsis: "New England, 1630. A devout Christian family, banished from their settlement, attempts to survive on the edge of a vast, ominous wilderness. But when their infant son disappears, paranoia and religious hysteria tear the family apart as they suspect a witch is living in the woods. A slow-burning masterpiece of atmospheric dread.",
         themes: ["Folklore", "Religion", "Isolation"]
     }),
 
@@ -179,7 +179,7 @@ export const COMPLETE_MOVIE_DATA = {
             { time: 85, intensity: 95, label: "Cheese Grater", color: "#991b1b" }, 
             { time: 95, intensity: 100, label: "Wood Chipper", color: "#7f1d1d" } 
         ],
-        synopsis: "A twisted tale of two estranged sisters whose reunion is cut short by the rise of flesh-possessing demons, thrusting them into a primal battle for survival as they face the most nightmarish version of family imaginable. Moving the action from a cabin in the woods to a claustrophobic Los Angeles apartment building, this installment delivers relentless gore, including an infamous scene involving a cheese grater.",
+        synopsis: "A twisted tale of two estranged sisters whose reunion is cut short by the rise of flesh-possessing demons, thrusting them into a primal battle for survival as they face the most nightmarish version of family imaginable. Moving the action to a claustrophobic Los Angeles apartment building, this installment delivers relentless horror.",
         themes: ["Motherhood", "Demons", "Urban Horror"]
     }),
 
@@ -196,7 +196,7 @@ export const COMPLETE_MOVIE_DATA = {
             { time: 100, intensity: 65, label: "Rock Fight", color: "#f87171" }, 
             { time: 125, intensity: 90, label: "Pennywise Defeated", color: "#991b1b" } 
         ],
-        synopsis: "In the summer of 1989, a group of bullied kids bands together to destroy a shape-shifting monster, which disguises itself as a clown and preys on the children of Derry, their small Maine town. Blending coming-of-age nostalgia with terrifying horror, Pennywise exploits the deepest phobias of his victims in this blockbuster adaptation of Stephen King's novel.",
+        synopsis: "In the summer of 1989, a group of bullied kids bands together to destroy a shape-shifting monster, which disguises itself as a clown and preys on the children of Derry. Blending coming-of-age nostalgia with terrifying horror, Pennywise exploits the deepest phobias of his victims in this blockbuster adaptation of Stephen King's novel.",
         themes: ["Childhood Trauma", "Fear", "Friendship"]
     }),
 
@@ -230,7 +230,7 @@ export const COMPLETE_MOVIE_DATA = {
             { time: 90, intensity: 85, label: "Hellhound", color: "#78350f" }, 
             { time: 100, intensity: 80, label: "Future Vision", color: "#fff7ed" } 
         ],
-        synopsis: "Determined to keep Annabelle from wreaking more havoc, demonologists Ed and Lorraine Warren bring the possessed doll to the locked artifacts room in their home, placing her 'safely' behind sacred glass. But an unholy night of horror awaits when the doll awakens the evil spirits in the room, who all set their sights on a new target—the Warrens' ten-year-old daughter, Judy, and her friends.",
+        synopsis: "Determined to keep Annabelle from wreaking more havoc, demonologists Ed and Lorraine Warren bring the possessed doll to the locked artifacts room in their home. But an unholy night of horror awaits when the doll awakens the evil spirits in the room, who all set their sights on a new target—the Warrens' ten-year-old daughter, Judy, and her friends.",
         themes: ["Cursed Objects", "Teen Horror", "Legacy"]
     }),
 
@@ -247,7 +247,7 @@ export const COMPLETE_MOVIE_DATA = {
             { time: 95, intensity: 90, label: "The Further Returns", color: "#0f172a" }, 
             { time: 105, intensity: 80, label: "Possession Ends", color: "#64748b" } 
         ],
-        synopsis: "The haunted Lambert family seeks to uncover the mysterious childhood secret that has left them dangerously connected to the spirit world. As Josh Lambert's behavior becomes increasingly erratic, his wife Renai and mother Lorraine realize that although they saved their son, something evil may have followed Josh back from The Further. A direct continuation that dives deeper into the mythology of the Bride in Black.",
+        synopsis: "The haunted Lambert family seeks to uncover the mysterious childhood secret that has left them dangerously connected to the spirit world. As Josh Lambert's behavior becomes increasingly erratic, his wife Renai and mother Lorraine realize that although they saved their son, something evil may have followed Josh back from The Further.",
         themes: ["Possession", "Past Trauma", "Family Secrets"]
     })
 };
@@ -345,63 +345,7 @@ export const getTMDBPosterUrl = (posterPath, size = 'medium') => {
     return `${TMDB_CONFIG.IMAGE_BASE_URL}/${posterSize}${posterPath}`;
 };
 
-export const getSensitiveContentTypes = (tmdbId) => {
-    const sensitiveData = SENSITIVE_TIMELINES[tmdbId];
-    if (!sensitiveData?.scenes?.length) return null;
-    const types = new Set();
-    sensitiveData.scenes.forEach(scene => {
-        const lowerType = scene.type.toLowerCase();
-        if (lowerType.includes('gore') || lowerType.includes('mutilation')) types.add('extreme gore');
-        if (lowerType.includes('animal')) types.add('animal harm');
-        if (lowerType.includes('sexual') || lowerType.includes('assault')) types.add('sexual violence');
-        if (lowerType.includes('suicide') || lowerType.includes('self-harm')) types.add('self-harm');
-    });
-    return Array.from(types);
-};
-
-export const generateFAQData = (movie) => {
-    return HBO_HORROR_MOVIE_FAQS[movie.Title] || [];
-};
-
-export const generateMovieSchema = (movie) => {
-    const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
-    const posterUrl = FALLBACK_POSTERS[movie.tmdbId] || '';
-    return {
-        '@context': 'https://schema.org',
-        '@type': 'Movie',
-        'name': movie.Title,
-        'description': movieInfo?.synopsis || `${movie.Title} - A terrifying horror movie on HBO Max.`,
-        'genre': movie.genre,
-        'datePublished': movie.year.toString(),
-        'director': { '@type': 'Person', 'name': movieInfo?.director || 'Director' },
-        'actor': movieInfo?.cast?.map(actor => ({ '@type': 'Person', 'name': actor })) || [],
-        'duration': `PT${movie.runtime}M`,
-        'image': posterUrl,
-        'aggregateRating': { 
-            '@type': 'AggregateRating', 
-            'ratingValue': movieInfo?.rating || 7.0, 
-            'bestRating': 10, 
-            'worstRating': 1, 
-            'ratingCount': movieInfo?.audienceScore || 100 
-        }
-    };
-};
-
-export const generateFAQSchema = (faqs) => ({
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    'mainEntity': faqs.map(faq => ({ 
-        '@type': 'Question', 
-        'name': faq.question, 
-        'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer } 
-    }))
-});
-
-export const fetchMovieFromTMDB = async (tmdbId) => ({ 
-    poster_path: null, 
-    title: COMPLETE_MOVIE_DATABASE.find(m => m.tmdbId === tmdbId)?.Title || 'Unknown Movie' 
-});
-
+export const fetchMovieFromTMDB = async (tmdbId) => ({ poster_path: null, title: COMPLETE_MOVIE_DATABASE.find(m => m.tmdbId === tmdbId)?.Title || 'Unknown Movie' });
 export const fetchWatchProviders = async (tmdbId, region = 'US') => null;
 
 export const formatSensitiveTimeline = (tmdbId) => {
@@ -415,4 +359,138 @@ export const formatSensitiveTimeline = (tmdbId) => {
             description: scene.description || ''
         }))
     };
+};
+
+// 🔥 THE KEYWORD BRIDGE (Upgraded for Horror SEO power)
+export const getSensitiveContentTypes = (tmdbId) => {
+    const sensitiveData = SENSITIVE_TIMELINES[tmdbId];
+    if (!sensitiveData?.scenes?.length) return null;
+    const types = new Set();
+    sensitiveData.scenes.forEach(scene => {
+        const lowerType = scene.type.toLowerCase();
+        
+        // Converts soft words into hard, high-volume SEO keywords
+        if (lowerType.includes('sex') || lowerType.includes('explicit')) types.add('sexual content');
+        if (lowerType.includes('nudity') || lowerType.includes('undressing') || lowerType.includes('bikini')) types.add('nudity');
+        if (lowerType.includes('gore') || lowerType.includes('mutilation')) types.add('extreme gore');
+        if (lowerType.includes('animal')) types.add('animal harm');
+        if (lowerType.includes('suicide') || lowerType.includes('self-harm')) types.add('self-harm');
+    });
+    return Array.from(types);
+};
+
+// 🔥 THE "GOLDEN EGG" SCHEMA GENERATOR (Universal Version)
+export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, collectionSlug, unused, movieInfo) => {
+    // Standard Movie Schema
+    const movieSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'Movie',
+        'name': movie.Title,
+        'description': movieInfo?.synopsis || `${movie.Title} (${currentMovieYear}) - A terrifying horror film.`,
+        'genre': movie.genre,
+        'datePublished': currentMovieYear?.toString() || movie.year.toString(),
+        'director': { '@type': 'Person', 'name': movieInfo?.director || 'Director' },
+        'actor': movieInfo?.cast?.map(actor => ({ '@type': 'Person', 'name': actor })) || [],
+        'image': tmdbData?.poster_path ? `https://image.tmdb.org/t/p/w500${tmdbData.poster_path}` : (FALLBACK_POSTERS[movie.tmdbId] || ''),
+        'duration': `PT${movie.runtime}M`
+    };
+
+    const staticFaqs = HBO_HORROR_MOVIE_FAQS[movie.Title] || [];
+    const sensitiveScenes = SENSITIVE_TIMELINES[movie.tmdbId]?.scenes || [];
+    const intensityScenes = movieInfo?.scenes || [];
+    
+    const schemaFaqs = staticFaqs.map(faq => ({ 
+        '@type': 'Question', 
+        'name': faq.question, 
+        'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer } 
+    }));
+
+    // Inject Intensity Graph Timestamps into Schema
+    if (intensityScenes.length > 0) {
+        const schemaIntensityList = intensityScenes.map(s => `<li>Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)</li>`).join('');
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `What are the scariest scenes in ${movie.Title}?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `According to the Filmiway Fear metric, ${movie.Title} peaks at the following terrifying moments:<br><br><ul>${schemaIntensityList}</ul>` 
+            }
+        });
+    }
+
+    // Inject Sensitive Content Timestamps into Schema (Top Priority)
+    if (sensitiveScenes.length > 0) {
+        const typesArray = getSensitiveContentTypes(movie.tmdbId) || ['mature content'];
+        const typesString = typesArray.join(' and ');
+
+        const schemaListText = sensitiveScenes.map(s => {
+            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
+            return `<li>${timeRange} - ${s.type || 'Mature Content'}</li>`;
+        }).join('');
+
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `Yes, according to the Filmiway Content Advisory, ${movie.Title} contains adult scenes including ${typesString}. Exact timestamps for these scenes are:<br><br><ul>${schemaListText}</ul>` 
+            }
+        });
+    } else {
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `No, the Filmiway Content Advisory confirms that ${movie.Title} is completely free of explicit sexual content and nudity. However, as a horror film, viewer discretion is still advised for terrifying sequences.` 
+            }
+        });
+    }
+
+    const faqSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        'name': `Parents Guide and FAQ for ${movie.Title}`,
+        'mainEntity': schemaFaqs
+    };
+
+    return { movieSchema, faqSchema };
+};
+
+// 🔥 FRONTEND UI SYNC (Displays the timestamps dynamically on the Next.js page)
+export const getVisibleMovieFAQs = (movieTitle, tmdbId) => {
+    const staticFaqs = HBO_HORROR_MOVIE_FAQS[movieTitle] ? [...HBO_HORROR_MOVIE_FAQS[movieTitle]] : [];
+    const sensitiveScenes = SENSITIVE_TIMELINES[tmdbId]?.scenes || [];
+    const movieInfo = COMPLETE_MOVIE_DATA[tmdbId];
+    const intensityScenes = movieInfo?.scenes || [];
+
+    if (intensityScenes.length > 0) {
+        const uiIntensityList = intensityScenes.map(s => `• Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)`).join('\n');
+        staticFaqs.unshift({
+            question: `What are the scariest scenes in ${movieTitle}?`,
+            answer: `According to the Filmiway Fear metric, ${movieTitle} peaks at the following terrifying moments:\n\n${uiIntensityList}`
+        });
+    }
+
+    if (sensitiveScenes.length > 0) {
+        const typesArray = getSensitiveContentTypes(tmdbId) || ['mature content'];
+        const typesString = typesArray.join(' and ');
+
+        const uiListText = sensitiveScenes.map(s => {
+            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
+            return `• ${timeRange} - ${s.type || 'Mature Content'}`;
+        }).join('\n');
+
+        staticFaqs.unshift({
+            question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
+            answer: `Yes, according to the Filmiway Content Advisory, ${movieTitle} contains adult scenes including ${typesString}. Exact timestamps for these scenes are:\n\n${uiListText}`
+        });
+    } else {
+        staticFaqs.unshift({
+            question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
+            answer: `No, the Filmiway Content Advisory confirms that ${movieTitle} is completely free of explicit sexual content and nudity. However, as a horror film, viewer discretion is still advised for terrifying sequences.`
+        });
+    }
+
+    return staticFaqs;
 };

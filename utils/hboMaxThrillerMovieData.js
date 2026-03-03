@@ -1,4 +1,4 @@
-// utils/hboMaxThrillerMovieData.js - HBO MAX THRILLER COLLECTION DATA
+// utils/hboMaxThrillerMovieData.js - HBO MAX THRILLER COLLECTION DATA ✅
 // Ranked by Suspense, Psychological Tension, and Narrative Twists
 
 export const TMDB_CONFIG = {
@@ -13,7 +13,7 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 419430, "imdbID": "tt5052448", "Title": "Get Out", "year": 2017, "genre": "Horror", "runtime": 104, "rank": 2 },
     { "tmdbId": 399057, "imdbID": "tt5715874", "Title": "The Killing of a Sacred Deer", "year": 2017, "genre": "Thriller", "runtime": 121, "rank": 3 },
     { "tmdbId": 381288, "imdbID": "tt4972582", "Title": "Split", "year": 2016, "genre": "Thriller", "runtime": 117, "rank": 4 },
-    { "tmdbId":   181886, "imdbID": "tt2316411", "Title": "Enemy", "year": 2013, "genre": "Mystery", "runtime": 91, "rank": 5 },
+    { "tmdbId": 181886, "imdbID": "tt2316411", "Title": "Enemy", "year": 2013, "genre": "Mystery", "runtime": 91, "rank": 5 },
     { "tmdbId": 264660, "imdbID": "tt0470752", "Title": "Ex Machina", "year": 2014, "genre": "Sci-Fi", "runtime": 108, "rank": 6 },
     { "tmdbId": 275, "imdbID": "tt0116282", "Title": "Fargo", "year": 1996, "genre": "Crime", "runtime": 98, "rank": 7 },
     { "tmdbId": 23168, "imdbID": "tt0844708", "Title": "The Town", "year": 2010, "genre": "Crime", "runtime": 125, "rank": 8 },
@@ -32,7 +32,7 @@ export const SENSITIVE_TIMELINES = {
     // 3. The Killing of a Sacred Deer
     399057: { 
         scenes: [
-            { start: "0:09:20", end: "0:11:01", type: "Sexual Content & Nudity", severity: "High" }
+            { start: "0:09:20", end: "0:11:01", type: "Sexual Content & Nudity", severity: "Moderate" }
         ] 
     },
 
@@ -40,7 +40,7 @@ export const SENSITIVE_TIMELINES = {
     381288: { scenes: [] },
 
     // 5. Enemy
-      181886: { 
+    181886: { 
         scenes: [
             { start: "0:01:46", end: "0:01:50", type: "Nudity", severity: "High" },
             { start: "0:02:50", end: "0:04:58", type: "Nudity", severity: "High" },
@@ -92,7 +92,7 @@ export const FALLBACK_POSTERS = {
     419430: "https://image.tmdb.org/t/p/w500/tFXcEccSQMF3lfhfXKSUK958bcc.jpg",
     399057: "https://image.tmdb.org/t/p/w500/glJ9D910.jpg",
     381288: "https://image.tmdb.org/t/p/w500/f8D285.jpg",
-      181886: "https://image.tmdb.org/t/p/w500/coG.jpg",
+    181886: "https://image.tmdb.org/t/p/w500/coG.jpg",
     264660: "https://image.tmdb.org/t/p/w500/9X.jpg",
     275: "https://image.tmdb.org/t/p/w500/rt.jpg",
     23168: "https://image.tmdb.org/t/p/w500/l8.jpg",
@@ -201,7 +201,7 @@ export const COMPLETE_MOVIE_DATA = {
     // 5. Enemy (IDENTITY PARANOIA)
     // Curve: Discovery -> Obsession -> Stalking -> Swap -> Spider.
     // Peak: 92 (The Final Spider - Surreal Shock).
-      181886: createMovieData({ 
+    181886: createMovieData({ 
         suspenseIntensity: 85, 
         psychologicalPressure: 95, 
         complexityLevel: "PUZZLE", 
@@ -515,65 +515,14 @@ export const HBO_THRILLER_MOVIE_FAQS = {
     ]
 };
 
+// 5. UTILITY FUNCTIONS & THE KEYWORD BRIDGE
 export const getTMDBPosterUrl = (posterPath, size = 'medium') => {
     if (!posterPath) return null;
     const posterSize = TMDB_CONFIG.POSTER_SIZES[size] || TMDB_CONFIG.POSTER_SIZES.medium;
     return `${TMDB_CONFIG.IMAGE_BASE_URL}/${posterSize}${posterPath}`;
 };
 
-export const getSensitiveContentTypes = (tmdbId) => {
-    const sensitiveData = SENSITIVE_TIMELINES[tmdbId];
-    if (!sensitiveData?.scenes?.length) return null;
-    const types = new Set();
-    sensitiveData.scenes.forEach(scene => {
-        types.add(scene.type);
-    });
-    return Array.from(types);
-};
-
-export const generateFAQData = (movie) => {
-    return HBO_THRILLER_MOVIE_FAQS[movie.Title] || [];
-};
-
-export const generateMovieSchema = (movie) => {
-    const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
-    const posterUrl = FALLBACK_POSTERS[movie.tmdbId] || '';
-    return {
-        '@context': 'https://schema.org',
-        '@type': 'Movie',
-        'name': movie.Title,
-        'description': movieInfo?.synopsis || `${movie.Title} - A suspenseful thriller on HBO Max.`,
-        'genre': movie.genre,
-        'datePublished': movie.year.toString(),
-        'director': { '@type': 'Person', 'name': movieInfo?.director || 'Director' },
-        'actor': movieInfo?.cast?.map(actor => ({ '@type': 'Person', 'name': actor })) || [],
-        'duration': `PT${movie.runtime}M`,
-        'image': posterUrl,
-        'aggregateRating': { 
-            '@type': 'AggregateRating', 
-            'ratingValue': movieInfo?.rating || 7.5, 
-            'bestRating': 10, 
-            'worstRating': 1, 
-            'ratingCount': movieInfo?.audienceScore || 100 
-        }
-    };
-};
-
-export const generateFAQSchema = (faqs) => ({
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    'mainEntity': faqs.map(faq => ({ 
-        '@type': 'Question', 
-        'name': faq.question, 
-        'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer } 
-    }))
-});
-
-export const fetchMovieFromTMDB = async (tmdbId) => ({ 
-    poster_path: null, 
-    title: COMPLETE_MOVIE_DATABASE.find(m => m.tmdbId === tmdbId)?.Title || 'Unknown Movie' 
-});
-
+export const fetchMovieFromTMDB = async (tmdbId) => ({ poster_path: null, title: COMPLETE_MOVIE_DATABASE.find(m => m.tmdbId === tmdbId)?.Title || 'Unknown Movie' });
 export const fetchWatchProviders = async (tmdbId, region = 'US') => null;
 
 export const formatSensitiveTimeline = (tmdbId) => {
@@ -587,4 +536,136 @@ export const formatSensitiveTimeline = (tmdbId) => {
             description: scene.description || ''
         }))
     };
+};
+
+// 🔥 6. THE KEYWORD BRIDGE (Upgraded for Thriller SEO power)
+export const getSensitiveContentTypes = (tmdbId) => {
+    const sensitiveData = SENSITIVE_TIMELINES[tmdbId];
+    if (!sensitiveData?.scenes?.length) return null;
+    const types = new Set();
+    sensitiveData.scenes.forEach(scene => {
+        const lowerType = scene.type.toLowerCase();
+        
+        // Converts soft words into hard, high-volume SEO keywords
+        if (lowerType.includes('sex') || lowerType.includes('sexu') || lowerType.includes('explicit')) types.add('sexual content');
+        if (lowerType.includes('nudity') || lowerType.includes('undressing') || lowerType.includes('female') || lowerType.includes('male')) types.add('nudity');
+        if (lowerType.includes('violence') || lowerType.includes('gore') || lowerType.includes('torture')) types.add('graphic violence');
+    });
+    return Array.from(types);
+};
+
+// 🔥 7. THE "GOLDEN EGG" SCHEMA GENERATOR (Universal Version)
+export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, collectionSlug, unused, movieInfo) => {
+    // Standard Movie Schema
+    const movieSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'Movie',
+        'name': movie.Title,
+        'description': movieInfo?.synopsis || `${movie.Title} (${currentMovieYear}) - A masterful thriller.`,
+        'genre': movie.genre,
+        'datePublished': currentMovieYear?.toString() || movie.year.toString(),
+        'director': { '@type': 'Person', 'name': movieInfo?.director || 'Director' },
+        'actor': movieInfo?.cast?.map(actor => ({ '@type': 'Person', 'name': actor })) || [],
+        'image': tmdbData?.poster_path ? `https://image.tmdb.org/t/p/w500${tmdbData.poster_path}` : (FALLBACK_POSTERS[movie.tmdbId] || ''),
+        'duration': `PT${movie.runtime}M`
+    };
+
+    const staticFaqs = HBO_THRILLER_MOVIE_FAQS[movie.Title] || [];
+    const sensitiveScenes = SENSITIVE_TIMELINES[movie.tmdbId]?.scenes || [];
+    const intensityScenes = movieInfo?.scenes || [];
+    
+    const schemaFaqs = staticFaqs.map(faq => ({ 
+        '@type': 'Question', 
+        'name': faq.question, 
+        'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer } 
+    }));
+
+    // Inject Intensity Graph Timestamps into Schema
+    if (intensityScenes.length > 0) {
+        const schemaIntensityList = intensityScenes.map(s => `<li>Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)</li>`).join('');
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `What are the most suspenseful scenes in ${movie.Title}?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `According to the Filmiway Suspense metric, ${movie.Title} peaks at the following moments:<br><br><ul>${schemaIntensityList}</ul>` 
+            }
+        });
+    }
+
+    // Inject Sensitive Content Timestamps into Schema (Top Priority)
+    if (sensitiveScenes.length > 0) {
+        const typesArray = getSensitiveContentTypes(movie.tmdbId) || ['mature content'];
+        const typesString = typesArray.join(' and ');
+
+        const schemaListText = sensitiveScenes.map(s => {
+            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
+            return `<li>${timeRange} - ${s.type || 'Mature Content'}</li>`;
+        }).join('');
+
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `Yes, according to the Filmiway Content Advisory, ${movie.Title} contains adult scenes including ${typesString}. Exact timestamps for these scenes are:<br><br><ul>${schemaListText}</ul>` 
+            }
+        });
+    } else {
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `No, the Filmiway Content Advisory confirms that ${movie.Title} is completely free of explicit sexual content and nudity. However, viewer discretion is still advised due to intense psychological themes.` 
+            }
+        });
+    }
+
+    const faqSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        'name': `Parents Guide and FAQ for ${movie.Title}`,
+        'mainEntity': schemaFaqs
+    };
+
+    return { movieSchema, faqSchema };
+};
+
+// 🔥 8. FRONTEND UI SYNC (Displays the timestamps dynamically on the Next.js page)
+export const getVisibleMovieFAQs = (movieTitle, tmdbId) => {
+    const staticFaqs = HBO_THRILLER_MOVIE_FAQS[movieTitle] ? [...HBO_THRILLER_MOVIE_FAQS[movieTitle]] : [];
+    const sensitiveScenes = SENSITIVE_TIMELINES[tmdbId]?.scenes || [];
+    const movieInfo = COMPLETE_MOVIE_DATA[tmdbId];
+    const intensityScenes = movieInfo?.scenes || [];
+
+    if (intensityScenes.length > 0) {
+        const uiIntensityList = intensityScenes.map(s => `• Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)`).join('\n');
+        staticFaqs.unshift({
+            question: `What are the most suspenseful scenes in ${movieTitle}?`,
+            answer: `According to the Filmiway Suspense metric, ${movieTitle} peaks at the following moments:\n\n${uiIntensityList}`
+        });
+    }
+
+    if (sensitiveScenes.length > 0) {
+        const typesArray = getSensitiveContentTypes(tmdbId) || ['mature content'];
+        const typesString = typesArray.join(' and ');
+
+        const uiListText = sensitiveScenes.map(s => {
+            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
+            return `• ${timeRange} - ${s.type || 'Mature Content'}`;
+        }).join('\n');
+
+        staticFaqs.unshift({
+            question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
+            answer: `Yes, according to the Filmiway Content Advisory, ${movieTitle} contains adult scenes including ${typesString}. Exact timestamps for these scenes are:\n\n${uiListText}`
+        });
+    } else {
+        staticFaqs.unshift({
+            question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
+            answer: `No, the Filmiway Content Advisory confirms that ${movieTitle} is completely free of explicit sexual content and nudity. However, viewer discretion is still advised due to intense psychological themes.`
+        });
+    }
+
+    return staticFaqs;
 };

@@ -1,4 +1,4 @@
-// pages/best-drama-movies-on-hbo-max/[id].js - HBO MAX DRAMA MOVIES
+// pages/movies/best-drama-movies-on-hbo-max/[id].js - HBO MAX DRAMA MOVIES
 // VISUALS: Prestige & Emotional Theme (Indigo/Gold Accents)
 // SCHEMA: Maximalist (Hidden Emotional Intensity, Sensitive Timelines, and FAQs for Bots)
 
@@ -14,13 +14,13 @@ import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
 import TMDBAttribution from '../../../components/TMDBAttribution';
 
-// ✅ IMPORT DRAMA DATA
-import { generateCleanMovieSchema } from '../../../utils/cleanMovieSchema';
+// ✅ CORRECTED IMPORT: Schema generator pulled directly from your data file
 import {
   COMPLETE_MOVIE_DATABASE, 
   COMPLETE_MOVIE_DATA,
   SENSITIVE_TIMELINES,
-  HBO_DRAMA_MOVIE_FAQS 
+  HBO_DRAMA_MOVIE_FAQS,
+  generateCleanMovieSchema 
 } from '../../../utils/hboMaxDramaMovieData';
 
 const COLORS = {
@@ -29,7 +29,6 @@ const COLORS = {
   borderAccent: 'rgba(234, 179, 8, 0.25)', borderLight: 'rgba(55, 65, 81, 0.5)',
 };
 
-// ✅ UPDATED MOVIE YEARS
 const MOVIE_YEARS = {
   'Moonlight': '2016',
   'The Brutalist': '2024',
@@ -43,7 +42,6 @@ const MOVIE_YEARS = {
   'Joker': '2019'
 };
 
-// ✅ UPDATED MOVIE INSIGHTS
 const MOVIE_DATA_BY_TITLE = {
   'Moonlight': { connection: 'A poetic masterpiece about identity, sexuality, and the vulnerability of black masculinity.' },
   'The Brutalist': { connection: 'A monumental epic about the immigrant experience, artistic ambition, and the literal weight of history.' },
@@ -206,8 +204,6 @@ const HboDramaBreadcrumb = ({ movie }) => (
     </motion.nav>
 );
 
-
-
 const HboDramaMoviePage = ({ movie, tmdbData: movieData }) => {
     const router = useRouter();
     const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
@@ -231,11 +227,37 @@ const HboDramaMoviePage = ({ movie, tmdbData: movieData }) => {
     const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
-    // ✅ SEO FIX
-    const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Best Drama Movies on HBO Max | Filmiway'].join('');
-    const cleanSEODesc = [movie.Title, ' (', currentMovieYear, ') - A powerful drama streaming on HBO Max. Analysis of emotional impact, themes, and character depth.'].join('');
+  // =========================================================================
+  // ✅ THE UNIVERSAL ELITE SEO BLOCK (Standardized Logic)
+  // =========================================================================
 
-    const collectionSlug = router.pathname.split('/')[2];
+  const collectionSlug = 'best-drama-movies-on-hbo-max';
+  const dynamicCollectionName = 'Best Drama Movies on HBO Max';
+
+  const scenes = SENSITIVE_TIMELINES?.[movie.tmdbId]?.scenes || [];
+  
+  // 1. UNIQUE META TITLE
+  const cleanSEOTitle = scenes.length > 0
+    ? `${movie.Title} (${currentMovieYear}) Parents Guide & Timestamps | ${dynamicCollectionName}`
+    : `${movie.Title} (${currentMovieYear}) Parents Guide | ${dynamicCollectionName}`;
+
+  // 2. STANDARDIZED ELITE META DESCRIPTION
+  let cleanSEODesc = '';
+  
+  if (scenes.length > 0) {
+    const rawTimes = scenes.slice(0, 3).map(s => s.end ? `${s.start}–${s.end}` : s.start);
+    const formattedTimes = rawTimes.length > 1 
+      ? `${rawTimes.slice(0, -1).join(', ')} and ${rawTimes.slice(-1)}` 
+      : rawTimes[0];
+
+    cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Viewer discretion advised. Includes exact scene timestamps: ${formattedTimes}.`;
+  } else {
+    cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Filmiway Content Advisory: No nudity or explicit sexual content identified. Suitable for general viewing.`;
+  }
+
+  // =========================================================================
+
+    // BUG FIX: Canonical URL hardcoded to the exact file route for perfect Next.js parity
     const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
 
     const { movieSchema, faqSchema } = generateCleanMovieSchema(
@@ -250,6 +272,7 @@ const HboDramaMoviePage = ({ movie, tmdbData: movieData }) => {
     return (
         <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
             <Head>
+                {/* ✅ HYDRATION BUG REMOVED: Flat string variables only */}
                 <title>{cleanSEOTitle}</title>
                 <meta name="description" content={cleanSEODesc} />
                 <link rel="canonical" href={canonicalUrl} />
@@ -269,12 +292,13 @@ const HboDramaMoviePage = ({ movie, tmdbData: movieData }) => {
                 )}
 
                 <meta property="og:title" content={cleanSEOTitle} />
-                <meta property="og:description" content="A powerful drama streaming on HBO Max." />
+                <meta property="og:description" content={cleanSEODesc} />
+                <meta property="og:url" content={canonicalUrl} />
                 <meta property="og:type" content="video.movie" />
                 <meta property="og:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content={cleanSEOTitle} />
-                <meta name="twitter:description" content="A powerful drama streaming on HBO Max." />
+                <meta name="twitter:description" content={cleanSEODesc} />
                 <meta name="twitter:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
             </Head>
 

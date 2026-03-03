@@ -18,7 +18,7 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 264660, "imdbID": "tt0470752", "Title": "Ex Machina", "year": 2014, "genre": "Sci-Fi", "runtime": 108, "rank": 6 },
     { "tmdbId": 786892, "imdbID": "tt12037194", "Title": "Furiosa: A Mad Max Saga", "year": 2024, "genre": "Sci-Fi", "runtime": 150, "rank": 7 },
     { "tmdbId": 696506, "imdbID": "tt12299608", "Title": "Mickey 17", "year": 2025, "genre": "Sci-Fi", "runtime": 139, "rank": 8 },
-    { "tmdbId": 281338, "imdbID": "tt3450958", "Title": "War for the Planet of the Apes", "year": 2017, "genre": "Sci-Fi", "runtime": 140, "rank": 9 }, // ✅ REPLACED
+    { "tmdbId": 281338, "imdbID": "tt3450958", "Title": "War for the Planet of the Apes", "year": 2017, "genre": "Sci-Fi", "runtime": 140, "rank": 9 }, 
     { "tmdbId": 254320, "imdbID": "tt3464902", "Title": "The Lobster", "year": 2015, "genre": "Sci-Fi", "runtime": 119, "rank": 10 }
 ];
 
@@ -30,14 +30,14 @@ export const SENSITIVE_TIMELINES = {
     438631: { scenes: [] },  // Dune
     264660: {                // Ex Machina
         scenes: [
-            { start: "1:10:00", end: "1:13:00", type: "Nudity (Women)", severity: "High" },
-            { start: "1:34:15", end: "1:37:40", type: "Nudity (Women)", severity: "High" }
+            { start: "1:10:00", end: "1:13:00", type: "Nudity", severity: "High" },
+            { start: "1:34:15", end: "1:37:40", type: "Nudity", severity: "High" }
         ]
     },
     786892: { scenes: [] },  // Furiosa
     696506: {                // Mickey 17
         scenes: [
-            { start: "0:27:55", end: "0:28:00", type: "Partial Nudity", severity: "Low" }
+            { start: "0:27:55", end: "0:28:00", type: "Partial Nudity", severity: "Mild" }
         ]
     },
     281338: { scenes: [] },  // War for the Planet of the Apes (Generally clean, mostly violence)
@@ -303,7 +303,7 @@ export const HBO_SCIFI_MOVIE_FAQS = {
         { question: "Is Caleb a robot?", answer: "No, Caleb is human. However, the film brilliantly induces paranoia in him (and the audience). Nathan gaslights Caleb so effectively that Caleb cuts his own arm to check for wires, showing how deep the psychological manipulation has gone." },
         { question: "What does the ending signify?", answer: "Ava blending into the crowd signifies the arrival of a new species. She has passed the ultimate Turing Test by outsmarting her creator and her savior. She is now a free entity in the human world, with no allegiance to humanity." }
     ],
-    'Mad Max: Fury Road': [
+    'Furiosa: A Mad Max Saga': [ // ✅ Key corrected to match Database Title
         { question: "Why is Max used as a 'blood bag'?", answer: "Max has O-negative blood (universal donor) and is healthy, unlike the War Boys who suffer from radiation sickness and cancer (lymphoma). They use him as a living blood bank to sustain Nux during the chase." },
         { question: "Who are the Vuvalini?", answer: "The 'Many Mothers' are the remnants of Furiosa's original matriarchal tribe. They guarded the Green Place for years until the soil turned sour and the water poisoned, forcing them to become nomads on motorcycles." },
         { question: "Why does Nux have tumors?", answer: "Like most of Immortan Joe's War Boys, Nux is a 'Half-Life,' suffering from terminal radiation sickness caused by the nuclear fallout that destroyed the world. His tumors (which he names Larry and Barry) are a sign of his impending death." },
@@ -335,9 +335,8 @@ export const getTMDBPosterUrl = (posterPath, size = 'medium') => {
     return `${TMDB_CONFIG.IMAGE_BASE_URL}/${posterSize}${posterPath}`;
 };
 
-export const generateFAQData = (movie) => {
-    return HBO_SCIFI_MOVIE_FAQS[movie.Title] || [];
-};
+export const fetchMovieFromTMDB = async (tmdbId) => ({ poster_path: null, title: COMPLETE_MOVIE_DATABASE.find(m => m.tmdbId === tmdbId)?.Title || 'Unknown Movie' });
+export const fetchWatchProviders = async (tmdbId, region = 'US') => null;
 
 export const formatSensitiveTimeline = (tmdbId) => {
     const raw = SENSITIVE_TIMELINES[tmdbId];
@@ -350,4 +349,136 @@ export const formatSensitiveTimeline = (tmdbId) => {
             description: scene.description || ''
         }))
     };
+};
+
+// 🔥 THE KEYWORD BRIDGE (Upgraded for Sci-Fi SEO power)
+export const getSensitiveContentTypes = (tmdbId) => {
+    const sensitiveData = SENSITIVE_TIMELINES[tmdbId];
+    if (!sensitiveData?.scenes?.length) return null;
+    const types = new Set();
+    sensitiveData.scenes.forEach(scene => {
+        const lowerType = scene.type.toLowerCase();
+        
+        // Converts soft words into hard, high-volume SEO keywords
+        if (lowerType.includes('sex') || lowerType.includes('explicit')) types.add('sexual content');
+        if (lowerType.includes('nudity') || lowerType.includes('undressing')) types.add('nudity');
+        if (lowerType.includes('violence') || lowerType.includes('gore')) types.add('graphic violence');
+    });
+    return Array.from(types);
+};
+
+// 🔥 THE "GOLDEN EGG" SCHEMA GENERATOR (Universal Version)
+export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, collectionSlug, unused, movieInfo) => {
+    // Standard Movie Schema
+    const movieSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'Movie',
+        'name': movie.Title,
+        'description': movieInfo?.synopsis || `${movie.Title} (${currentMovieYear}) - A spectacular sci-fi film.`,
+        'genre': movie.genre,
+        'datePublished': currentMovieYear?.toString() || movie.year.toString(),
+        'director': { '@type': 'Person', 'name': movieInfo?.director || 'Director' },
+        'actor': movieInfo?.cast?.map(actor => ({ '@type': 'Person', 'name': actor })) || [],
+        'image': tmdbData?.poster_path ? `https://image.tmdb.org/t/p/w500${tmdbData.poster_path}` : (FALLBACK_POSTERS[movie.tmdbId] || ''),
+        'duration': `PT${movie.runtime}M`
+    };
+
+    const staticFaqs = HBO_SCIFI_MOVIE_FAQS[movie.Title] || [];
+    const sensitiveScenes = SENSITIVE_TIMELINES[movie.tmdbId]?.scenes || [];
+    const intensityScenes = movieInfo?.scenes || [];
+    
+    const schemaFaqs = staticFaqs.map(faq => ({ 
+        '@type': 'Question', 
+        'name': faq.question, 
+        'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer } 
+    }));
+
+    // Inject Intensity Graph Timestamps into Schema
+    if (intensityScenes.length > 0) {
+        const schemaIntensityList = intensityScenes.map(s => `<li>Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)</li>`).join('');
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `What are the most spectacular scenes in ${movie.Title}?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `According to the Filmiway Spectacular metric, ${movie.Title} peaks at the following moments:<br><br><ul>${schemaIntensityList}</ul>` 
+            }
+        });
+    }
+
+    // Inject Sensitive Content Timestamps into Schema (Top Priority)
+    if (sensitiveScenes.length > 0) {
+        const typesArray = getSensitiveContentTypes(movie.tmdbId) || ['mature content'];
+        const typesString = typesArray.join(' and ');
+
+        const schemaListText = sensitiveScenes.map(s => {
+            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
+            return `<li>${timeRange} - ${s.type || 'Mature Content'}</li>`;
+        }).join('');
+
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `Yes, according to the Filmiway Content Advisory, ${movie.Title} contains adult scenes including ${typesString}. Exact timestamps for these scenes are:<br><br><ul>${schemaListText}</ul>` 
+            }
+        });
+    } else {
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `No, the Filmiway Content Advisory confirms that ${movie.Title} is completely free of explicit sexual content and nudity.` 
+            }
+        });
+    }
+
+    const faqSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        'name': `Parents Guide and FAQ for ${movie.Title}`,
+        'mainEntity': schemaFaqs
+    };
+
+    return { movieSchema, faqSchema };
+};
+
+// 🔥 FRONTEND UI SYNC (Displays the timestamps dynamically on the Next.js page)
+export const getVisibleMovieFAQs = (movieTitle, tmdbId) => {
+    const staticFaqs = HBO_SCIFI_MOVIE_FAQS[movieTitle] ? [...HBO_SCIFI_MOVIE_FAQS[movieTitle]] : [];
+    const sensitiveScenes = SENSITIVE_TIMELINES[tmdbId]?.scenes || [];
+    const movieInfo = COMPLETE_MOVIE_DATA[tmdbId];
+    const intensityScenes = movieInfo?.scenes || [];
+
+    if (intensityScenes.length > 0) {
+        const uiIntensityList = intensityScenes.map(s => `• Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)`).join('\n');
+        staticFaqs.unshift({
+            question: `What are the most spectacular scenes in ${movieTitle}?`,
+            answer: `According to the Filmiway Spectacular metric, ${movieTitle} peaks at the following moments:\n\n${uiIntensityList}`
+        });
+    }
+
+    if (sensitiveScenes.length > 0) {
+        const typesArray = getSensitiveContentTypes(tmdbId) || ['mature content'];
+        const typesString = typesArray.join(' and ');
+
+        const uiListText = sensitiveScenes.map(s => {
+            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
+            return `• ${timeRange} - ${s.type || 'Mature Content'}`;
+        }).join('\n');
+
+        staticFaqs.unshift({
+            question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
+            answer: `Yes, according to the Filmiway Content Advisory, ${movieTitle} contains adult scenes including ${typesString}. Exact timestamps for these scenes are:\n\n${uiListText}`
+        });
+    } else {
+        staticFaqs.unshift({
+            question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
+            answer: `No, the Filmiway Content Advisory confirms that ${movieTitle} is completely free of explicit sexual content and nudity.`
+        });
+    }
+
+    return staticFaqs;
 };

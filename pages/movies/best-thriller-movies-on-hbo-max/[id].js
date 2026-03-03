@@ -1,4 +1,4 @@
-// pages/best-thriller-movies-on-hbo-max/[id].js - HBO MAX THRILLER MOVIES
+// pages/movies/best-thriller-movies-on-hbo-max/[id].js - HBO MAX THRILLER MOVIES
 // VISUALS: Psychological Tension Theme (Red/Slate Accents)
 // SCHEMA: Maximalist (Hidden Suspense, Pressure, and FAQs for Bots)
 
@@ -14,166 +14,166 @@ import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
 import TMDBAttribution from '../../../components/TMDBAttribution';
 
-// ✅ IMPORT DATA
-import { generateCleanMovieSchema } from '../../../utils/cleanMovieSchema';
+// ✅ CORRECTED IMPORT: Schema generator pulled directly from your localized data file
 import {
-  COMPLETE_MOVIE_DATABASE, 
-  COMPLETE_MOVIE_DATA,
-  SENSITIVE_TIMELINES,
-  HBO_THRILLER_MOVIE_FAQS 
+    COMPLETE_MOVIE_DATABASE, 
+    COMPLETE_MOVIE_DATA,
+    SENSITIVE_TIMELINES,
+    HBO_THRILLER_MOVIE_FAQS,
+    generateCleanMovieSchema 
 } from '../../../utils/hboMaxThrillerMovieData';
 
 const COLORS = {
-  accent: '#EF4444', accentLight: '#F87171', bgPrimary: '#000000ff', bgCard: 'rgba(11, 11, 11, 0.8)', // Red/Slate
-  textPrimary: '#FFFFFF', textSecondary: '#E5E7EB', textMuted: '#9CA3AF', textDisabled: '#6B7280',
-  borderAccent: 'rgba(239, 68, 68, 0.25)', borderLight: 'rgba(55, 65, 81, 0.5)',
+    accent: '#EF4444', accentLight: '#F87171', bgPrimary: '#000000ff', bgCard: 'rgba(11, 11, 11, 0.8)', // Red/Slate
+    textPrimary: '#FFFFFF', textSecondary: '#E5E7EB', textMuted: '#9CA3AF', textDisabled: '#6B7280',
+    borderAccent: 'rgba(239, 68, 68, 0.25)', borderLight: 'rgba(55, 65, 81, 0.5)',
 };
 
 // ✅ UPDATED MOVIE YEARS
 const MOVIE_YEARS = {
-  'Funny Games': '2007',
-  'Get Out': '2017',
-  'The Killing of a Sacred Deer': '2017',
-  'Split': '2016',
-  'Enemy': '2013',
-  'Ex Machina': '2014',
-  'Fargo': '1996',
-  'The Town': '2010',
-  'The Dark Knight': '2008',
-  'Inception': '2010'
+    'Funny Games': '2007',
+    'Get Out': '2017',
+    'The Killing of a Sacred Deer': '2017',
+    'Split': '2016',
+    'Enemy': '2013',
+    'Ex Machina': '2014',
+    'Fargo': '1996',
+    'The Town': '2010',
+    'The Dark Knight': '2008',
+    'Inception': '2010'
 };
 
 // ✅ UPDATED MOVIE DATA & INSIGHTS
 const MOVIE_DATA_BY_TITLE = {
-  'Funny Games': { connection: 'A brutal deconstruction of violence where the killers break the fourth wall to make you complicit.' },
-  'Get Out': { connection: 'Social anxiety turns into visceral horror in this modern masterpiece of tension and race relations.' },
-  'The Killing of a Sacred Deer': { connection: 'A surreal, monotone nightmare where a surgeon must make an impossible, biblical sacrifice.' },
-  'Split': { connection: 'A masterclass in acting and tension as a man with 23 personalities prepares for the 24th.' },
-  'Enemy': { connection: 'A teacher discovers his exact double, spiraling into a yellow-tinted web of paranoia and identity crisis.' },
-  'Ex Machina': { connection: 'A claustrophobic Turing test where intellect and manipulation are the only weapons available.' },
-  'Fargo': { connection: 'A desperate crime goes wrong in the polite, snowy Midwest. High tension meets dark comedy.' },
-  'The Town': { connection: 'A gritty Boston heist thriller balancing romance with high-stakes tactical robberies.' },
-  'The Dark Knight': { connection: 'A crime thriller disguised as a superhero movie, driven by the anarchy of the Joker.' },
-  'Inception': { connection: 'A heist movie set within the architecture of the mind. Layers of tension collapsing on each other.' }
+    'Funny Games': { connection: 'A brutal deconstruction of violence where the killers break the fourth wall to make you complicit.' },
+    'Get Out': { connection: 'Social anxiety turns into visceral horror in this modern masterpiece of tension and race relations.' },
+    'The Killing of a Sacred Deer': { connection: 'A surreal, monotone nightmare where a surgeon must make an impossible, biblical sacrifice.' },
+    'Split': { connection: 'A masterclass in acting and tension as a man with 23 personalities prepares for the 24th.' },
+    'Enemy': { connection: 'A teacher discovers his exact double, spiraling into a yellow-tinted web of paranoia and identity crisis.' },
+    'Ex Machina': { connection: 'A claustrophobic Turing test where intellect and manipulation are the only weapons available.' },
+    'Fargo': { connection: 'A desperate crime goes wrong in the polite, snowy Midwest. High tension meets dark comedy.' },
+    'The Town': { connection: 'A gritty Boston heist thriller balancing romance with high-stakes tactical robberies.' },
+    'The Dark Knight': { connection: 'A crime thriller disguised as a superhero movie, driven by the anarchy of the Joker.' },
+    'Inception': { connection: 'A heist movie set within the architecture of the mind. Layers of tension collapsing on each other.' }
 };
 
 const getTMDBImage = (path, size = 'w1280') =>
-  path ? `https://image.tmdb.org/t/p/${size}${path}` : undefined;
+    path ? `https://image.tmdb.org/t/p/${size}${path}` : undefined;
 
 const getSuspenseInsight = (title) => {
-  const data = MOVIE_DATA_BY_TITLE[title];
-  return data?.connection || 'A masterfully crafted thriller that keeps you on the edge of your seat.';
+    const data = MOVIE_DATA_BY_TITLE[title];
+    return data?.connection || 'A masterfully crafted thriller that keeps you on the edge of your seat.';
 };
 
 // ✅ OPTIMIZED BANNER (Thriller Theme)
 const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
-  const [showTrailer, setShowTrailer] = useState(false);
-  const [countdown, setCountdown] = useState(4);
-  const [hasClosedTrailer, setHasClosedTrailer] = useState(false);
-  const timerRef = useRef(null);
+    const [showTrailer, setShowTrailer] = useState(false);
+    const [countdown, setCountdown] = useState(4);
+    const [hasClosedTrailer, setHasClosedTrailer] = useState(false);
+    const timerRef = useRef(null);
 
-  const backdropPath = movieData?.backdrop_path || richData?.backdrop_path || movie?.backdrop_path;
-  const posterPath = movieData?.poster_path || richData?.poster_path || movie?.poster_path;
+    const backdropPath = movieData?.backdrop_path || richData?.backdrop_path || movie?.backdrop_path;
+    const posterPath = movieData?.poster_path || richData?.poster_path || movie?.poster_path;
 
-  const bannerImage = backdropPath ? getTMDBImage(backdropPath, 'w1280') : null;
-  const posterImage = posterPath ? getTMDBImage(posterPath, 'w500') : null;
+    const bannerImage = backdropPath ? getTMDBImage(backdropPath, 'w1280') : null;
+    const posterImage = posterPath ? getTMDBImage(posterPath, 'w500') : null;
 
-  const insight = getSuspenseInsight(movie?.Title);
-  // ✅ UPDATED: Using 'suspenseIntensity' directly
-  const suspenseScore = richData?.suspenseIntensity || 85; 
+    const insight = getSuspenseInsight(movie?.Title);
+    // ✅ UPDATED: Using 'suspenseIntensity' directly
+    const suspenseScore = richData?.suspenseIntensity || 85; 
 
-  const mobileHeroCSS = `
-  @media (max-width: 767px) {
-    .mobile-hero-row { display: flex; flex-direction: row; align-items: flex-start; width: 100vw; max-width: 100vw; gap: 10px; margin: 0; padding: 0 8px; }
-    .mobile-hero-poster { width: 38vw; min-width: 106px; border-radius: 12px; overflow: hidden; box-shadow: 0 3px 14px #0007; margin: 0; flex-shrink: 0; }
-    .mobile-hero-poster img { width: 100%; height: auto; border-radius: 12px; display: block; }
-    .mobile-psych-card { background: linear-gradient(135deg, #1a0505 0%, #0f172a 100%); border-radius: 12px; box-shadow: 0 2px 12px #0006; margin: 0; flex: 1; border-left: 4px solid #EF4444; display: flex; flex-direction: column; justify-content: flex-start; padding: 10px 10px 10px 12px; min-height: 110px; position: relative; }
-    .mobile-psych-row { display: flex; align-items: flex-start; gap: 7px; }
-    .mobile-psych-icon { min-width: 24px; min-height: 24px; color: #F87171; margin-top: 2px; }
-    .mobile-psych-title { font-size: 15px; font-weight: bold; color: #F87171; margin-bottom: 1px; line-height: 1.12; }
-    .mobile-psych-desc { font-size: 12.3px; color: #ededed; line-height: 1.36; margin-top: 2px; }
-  }`;
+    const mobileHeroCSS = `
+    @media (max-width: 767px) {
+        .mobile-hero-row { display: flex; flex-direction: row; align-items: flex-start; width: 100vw; max-width: 100vw; gap: 10px; margin: 0; padding: 0 8px; }
+        .mobile-hero-poster { width: 38vw; min-width: 106px; border-radius: 12px; overflow: hidden; box-shadow: 0 3px 14px #0007; margin: 0; flex-shrink: 0; }
+        .mobile-hero-poster img { width: 100%; height: auto; border-radius: 12px; display: block; }
+        .mobile-psych-card { background: linear-gradient(135deg, #1a0505 0%, #0f172a 100%); border-radius: 12px; box-shadow: 0 2px 12px #0006; margin: 0; flex: 1; border-left: 4px solid #EF4444; display: flex; flex-direction: column; justify-content: flex-start; padding: 10px 10px 10px 12px; min-height: 110px; position: relative; }
+        .mobile-psych-row { display: flex; align-items: flex-start; gap: 7px; }
+        .mobile-psych-icon { min-width: 24px; min-height: 24px; color: #F87171; margin-top: 2px; }
+        .mobile-psych-title { font-size: 15px; font-weight: bold; color: #F87171; margin-bottom: 1px; line-height: 1.12; }
+        .mobile-psych-desc { font-size: 12.3px; color: #ededed; line-height: 1.36; margin-top: 2px; }
+    }`;
 
-  useEffect(() => {
-    if (!isMobile && trailer && !showTrailer && !hasClosedTrailer) {
-      timerRef.current = setInterval(() => {
-        setCountdown((prev) => {
-          if (prev <= 1) { clearInterval(timerRef.current); setShowTrailer(true); return 0; }
-          return prev - 1;
-        });
-      }, 1000);
-    }
-    return () => { if (timerRef.current) clearInterval(timerRef.current); };
-  }, [isMobile, trailer, showTrailer, hasClosedTrailer]);
+    useEffect(() => {
+        if (!isMobile && trailer && !showTrailer && !hasClosedTrailer) {
+            timerRef.current = setInterval(() => {
+                setCountdown((prev) => {
+                    if (prev <= 1) { clearInterval(timerRef.current); setShowTrailer(true); return 0; }
+                    return prev - 1;
+                });
+            }, 1000);
+        }
+        return () => { if (timerRef.current) clearInterval(timerRef.current); };
+    }, [isMobile, trailer, showTrailer, hasClosedTrailer]);
 
-  const handleCloseTrailer = () => { setShowTrailer(false); setHasClosedTrailer(true); if (timerRef.current) clearInterval(timerRef.current); };
-  const handlePlayClick = () => { setShowTrailer(true); setHasClosedTrailer(false); };
+    const handleCloseTrailer = () => { setShowTrailer(false); setHasClosedTrailer(true); if (timerRef.current) clearInterval(timerRef.current); };
+    const handlePlayClick = () => { setShowTrailer(true); setHasClosedTrailer(false); };
 
-  return (
-    <motion.div className="relative w-full overflow-hidden mb-6 sm:mb-8 mx-0 sm:mx-4 lg:mx-6 rounded-none sm:rounded-3xl" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8 }}>
-      <style>{mobileHeroCSS}</style>
-      <div className="relative h-[300px] sm:h-[400px] lg:h-[600px]">
-        <AnimatePresence mode="wait">
-          {showTrailer && trailer ? (
-            <motion.div key="trailer" className="absolute inset-0 rounded-none sm:rounded-3xl overflow-hidden" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
-              <iframe width="100%" height="100%" src={`https://www.youtube.com/embed/${trailer.key}?autoplay=1&mute=1&controls=1`} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen className="w-full h-full" />
-              <button onClick={handleCloseTrailer} className="absolute top-4 right-4 sm:top-6 sm:right-6 p-2 sm:p-3 rounded-full backdrop-blur-md shadow-xl transition-all duration-300 hover:scale-110 z-50" style={{ backgroundColor: `${COLORS.bgPrimary}DD`, color: COLORS.textPrimary }}><X className="w-4 h-4 sm:w-5 sm:h-5" /></button>
-            </motion.div>
-          ) : (
-            <motion.div key="image" className="absolute inset-0 rounded-none sm:rounded-3xl overflow-hidden" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
-              <div className="relative w-full h-full">
-                {bannerImage ? <Image src={bannerImage} alt={`${movie?.Title} banner`} fill priority sizes="100vw" quality={90} className="object-cover" /> : <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: COLORS.bgCard }}><Film className="w-16 h-16 sm:w-24 sm:h-24" style={{ color: COLORS.textMuted }} /></div>}
-                <div className="absolute inset-0 z-10" style={{ background: `linear-gradient(to bottom, transparent 0%, transparent 60%, ${COLORS.bgPrimary}80 85%, ${COLORS.bgPrimary} 100%)` }} />
-              </div>
-              {trailer && (
-                <motion.div className="absolute inset-0 flex items-center justify-center z-20" initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 1, duration: 0.8 }}>
-                  <motion.button onClick={handlePlayClick} className="p-4 sm:p-6 rounded-full backdrop-blur-lg shadow-2xl transition-all duration-300" style={{ backgroundColor: `${COLORS.bgPrimary}BB`, border: `2px solid ${COLORS.textPrimary}`, color: COLORS.textPrimary }} whileHover={{ scale: 1.15, backgroundColor: `${COLORS.accent}DD`, borderColor: COLORS.accent }} whileTap={{ scale: 0.95 }}><Play className="w-6 h-6 sm:w-8 sm:h-8 ml-1" /></motion.button>
-                </motion.div>
-              )}
-              {!isMobile && trailer && !showTrailer && !hasClosedTrailer && countdown > 0 && (
-                <motion.div className="absolute top-6 sm:top-8 right-6 sm:right-8 backdrop-blur-md rounded-full px-3 sm:px-4 py-1.5 sm:py-2 border z-30" style={{ backgroundColor: `${COLORS.bgPrimary}CC`, borderColor: `${COLORS.accent}66`, color: COLORS.accent }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>
-                  <div className="flex items-center gap-2 text-xs sm:text-sm font-medium"><div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full animate-pulse" style={{ backgroundColor: COLORS.accent }}></div>Trailer in {countdown}s</div>
-                </motion.div>
-              )}
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-      {isMobile ? (
-        <div className="mobile-hero-row">
-          <div className="mobile-hero-poster">{posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} width={320} height={480} className="w-full h-auto" priority /> : <div style={{ background: COLORS.bgCard, width: '100%', height: '150px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Theater style={{ color: COLORS.textMuted }} /></div>}</div>
-          <div className="mobile-psych-card">
-            <div className="mobile-psych-row"><Eye className="mobile-psych-icon" /><div><div className="mobile-psych-title">Suspense Score</div></div></div>
-            <div className="mobile-psych-desc"><strong>{suspenseScore}/100</strong> - {insight.substring(0, 80)}...</div>
-          </div>
-        </div>
-      ) : (
-        <div className="relative px-3 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8 z-20" style={{ backgroundColor: COLORS.bgPrimary }}>
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 lg:gap-8 items-start">
-            <motion.div className="flex-shrink-0 relative w-24 sm:w-48 md:w-56 lg:w-80 mx-auto sm:mx-0" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8, duration: 0.8 }}>
-              <div className="relative" style={{ aspectRatio: '2/3' }}>
-                {posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} fill sizes="(max-width: 640px) 96px, (max-width: 768px) 192px, (max-width: 1024px) 224px, 320px" quality={85} className="object-cover rounded-lg sm:rounded-xl shadow-2xl" /> : <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: COLORS.bgCard, borderRadius: '12px' }}><Theater style={{ color: COLORS.textMuted }} /></div>}
-              </div>
-            </motion.div>
-            <motion.div className="flex-1 w-full min-w-0" initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 1.0, duration: 0.8 }}>
-              <motion.div className="relative rounded-xl sm:rounded-2xl overflow-hidden p-4 sm:p-6 lg:p-8 backdrop-blur-sm" style={{ background: `linear-gradient(135deg, rgba(239, 68, 68, 0.15) 0%, rgba(15, 23, 42, 0.5) 100%)`, border: `1px solid ${COLORS.borderLight}`, boxShadow: `0 8px 32px rgba(239, 68, 68, 0.2)` }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.1, duration: 0.8 }}>
-                <div className="absolute top-0 left-0 right-0 h-0.5 sm:h-1" style={{ background: `linear-gradient(90deg, transparent, ${COLORS.accent}, transparent)` }} />
-                <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5">
-                  <motion.div className="p-2 sm:p-2.5 rounded-lg sm:rounded-xl flex-shrink-0" style={{ background: `linear-gradient(135deg, ${COLORS.accent}20, ${COLORS.accent}10)`, border: `1px solid ${COLORS.accent}40` }} whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}><Zap className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" style={{ color: COLORS.accent }} /></motion.div>
-                  <div className="min-w-0 flex-1"><h2 className="text-sm sm:text-base lg:text-xl xl:text-2xl font-bold leading-tight" style={{ color: COLORS.accent }}>Why This Thriller Hits Hard</h2><p className="text-xs sm:text-sm hidden sm:block" style={{ color: COLORS.textMuted }}>Suspense Score: {suspenseScore}/100</p></div>
+    return (
+        <motion.div className="relative w-full overflow-hidden mb-6 sm:mb-8 mx-0 sm:mx-4 lg:mx-6 rounded-none sm:rounded-3xl" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8 }}>
+            <style>{mobileHeroCSS}</style>
+            <div className="relative h-[300px] sm:h-[400px] lg:h-[600px]">
+                <AnimatePresence mode="wait">
+                    {showTrailer && trailer ? (
+                        <motion.div key="trailer" className="absolute inset-0 rounded-none sm:rounded-3xl overflow-hidden" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
+                            <iframe width="100%" height="100%" src={`https://www.youtube.com/embed/${trailer.key}?autoplay=1&mute=1&controls=1`} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen className="w-full h-full" />
+                            <button onClick={handleCloseTrailer} className="absolute top-4 right-4 sm:top-6 sm:right-6 p-2 sm:p-3 rounded-full backdrop-blur-md shadow-xl transition-all duration-300 hover:scale-110 z-50" style={{ backgroundColor: `${COLORS.bgPrimary}DD`, color: COLORS.textPrimary }}><X className="w-4 h-4 sm:w-5 sm:h-5" /></button>
+                        </motion.div>
+                    ) : (
+                        <motion.div key="image" className="absolute inset-0 rounded-none sm:rounded-3xl overflow-hidden" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
+                            <div className="relative w-full h-full">
+                                {bannerImage ? <Image src={bannerImage} alt={`${movie?.Title} banner`} fill priority sizes="100vw" quality={90} className="object-cover" /> : <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: COLORS.bgCard }}><Film className="w-16 h-16 sm:w-24 sm:h-24" style={{ color: COLORS.textMuted }} /></div>}
+                                <div className="absolute inset-0 z-10" style={{ background: `linear-gradient(to bottom, transparent 0%, transparent 60%, ${COLORS.bgPrimary}80 85%, ${COLORS.bgPrimary} 100%)` }} />
+                            </div>
+                            {trailer && (
+                                <motion.div className="absolute inset-0 flex items-center justify-center z-20" initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 1, duration: 0.8 }}>
+                                    <motion.button onClick={handlePlayClick} className="p-4 sm:p-6 rounded-full backdrop-blur-lg shadow-2xl transition-all duration-300" style={{ backgroundColor: `${COLORS.bgPrimary}BB`, border: `2px solid ${COLORS.textPrimary}`, color: COLORS.textPrimary }} whileHover={{ scale: 1.15, backgroundColor: `${COLORS.accent}DD`, borderColor: COLORS.accent }} whileTap={{ scale: 0.95 }}><Play className="w-6 h-6 sm:w-8 sm:h-8 ml-1" /></motion.button>
+                                </motion.div>
+                            )}
+                            {!isMobile && trailer && !showTrailer && !hasClosedTrailer && countdown > 0 && (
+                                <motion.div className="absolute top-6 sm:top-8 right-6 sm:right-8 backdrop-blur-md rounded-full px-3 sm:px-4 py-1.5 sm:py-2 border z-30" style={{ backgroundColor: `${COLORS.bgPrimary}CC`, borderColor: `${COLORS.accent}66`, color: COLORS.accent }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>
+                                    <div className="flex items-center gap-2 text-xs sm:text-sm font-medium"><div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full animate-pulse" style={{ backgroundColor: COLORS.accent }}></div>Trailer in {countdown}s</div>
+                                </motion.div>
+                            )}
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+            </div>
+            {isMobile ? (
+                <div className="mobile-hero-row">
+                    <div className="mobile-hero-poster">{posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} width={320} height={480} className="w-full h-auto" priority /> : <div style={{ background: COLORS.bgCard, width: '100%', height: '150px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Theater style={{ color: COLORS.textMuted }} /></div>}</div>
+                    <div className="mobile-psych-card">
+                        <div className="mobile-psych-row"><Eye className="mobile-psych-icon" /><div><div className="mobile-psych-title">Suspense Score</div></div></div>
+                        <div className="mobile-psych-desc"><strong>{suspenseScore}/100</strong> - {insight.substring(0, 80)}...</div>
+                    </div>
                 </div>
-                <div className="relative pl-4 sm:pl-6 border-l-2" style={{ borderColor: `${COLORS.accent}40` }}>
-                  <motion.div className="absolute -left-1.5 sm:-left-2 top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full" style={{ backgroundColor: COLORS.accent }} animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 2, repeat: Infinity }} />
-                  <p className="text-xs sm:text-sm lg:text-base xl:text-lg leading-relaxed font-normal break-words" style={{ color: COLORS.textSecondary, lineHeight: '1.8' }}>{insight}</p>
+            ) : (
+                <div className="relative px-3 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8 z-20" style={{ backgroundColor: COLORS.bgPrimary }}>
+                    <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 lg:gap-8 items-start">
+                        <motion.div className="flex-shrink-0 relative w-24 sm:w-48 md:w-56 lg:w-80 mx-auto sm:mx-0" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8, duration: 0.8 }}>
+                            <div className="relative" style={{ aspectRatio: '2/3' }}>
+                                {posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} fill sizes="(max-width: 640px) 96px, (max-width: 768px) 192px, (max-width: 1024px) 224px, 320px" quality={85} className="object-cover rounded-lg sm:rounded-xl shadow-2xl" /> : <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: COLORS.bgCard, borderRadius: '12px' }}><Theater style={{ color: COLORS.textMuted }} /></div>}
+                            </div>
+                        </motion.div>
+                        <motion.div className="flex-1 w-full min-w-0" initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 1.0, duration: 0.8 }}>
+                            <motion.div className="relative rounded-xl sm:rounded-2xl overflow-hidden p-4 sm:p-6 lg:p-8 backdrop-blur-sm" style={{ background: `linear-gradient(135deg, rgba(239, 68, 68, 0.15) 0%, rgba(15, 23, 42, 0.5) 100%)`, border: `1px solid ${COLORS.borderLight}`, boxShadow: `0 8px 32px rgba(239, 68, 68, 0.2)` }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.1, duration: 0.8 }}>
+                                <div className="absolute top-0 left-0 right-0 h-0.5 sm:h-1" style={{ background: `linear-gradient(90deg, transparent, ${COLORS.accent}, transparent)` }} />
+                                <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5">
+                                    <motion.div className="p-2 sm:p-2.5 rounded-lg sm:rounded-xl flex-shrink-0" style={{ background: `linear-gradient(135deg, ${COLORS.accent}20, ${COLORS.accent}10)`, border: `1px solid ${COLORS.accent}40` }} whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}><Zap className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" style={{ color: COLORS.accent }} /></motion.div>
+                                    <div className="min-w-0 flex-1"><h2 className="text-sm sm:text-base lg:text-xl xl:text-2xl font-bold leading-tight" style={{ color: COLORS.accent }}>Why This Thriller Hits Hard</h2><p className="text-xs sm:text-sm hidden sm:block" style={{ color: COLORS.textMuted }}>Suspense Score: {suspenseScore}/100</p></div>
+                                </div>
+                                <div className="relative pl-4 sm:pl-6 border-l-2" style={{ borderColor: `${COLORS.accent}40` }}>
+                                    <motion.div className="absolute -left-1.5 sm:-left-2 top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full" style={{ backgroundColor: COLORS.accent }} animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 2, repeat: Infinity }} />
+                                    <p className="text-xs sm:text-sm lg:text-base xl:text-lg leading-relaxed font-normal break-words" style={{ color: COLORS.textSecondary, lineHeight: '1.8' }}>{insight}</p>
+                                </div>
+                                <motion.div className="mt-4 sm:mt-6 h-0.5 sm:h-1 rounded-full" style={{ background: `linear-gradient(90deg, ${COLORS.accent}60, transparent)`, width: '40%' }} initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 1.5, duration: 0.8 }} />
+                            </motion.div>
+                        </motion.div>
+                    </div>
                 </div>
-                <motion.div className="mt-4 sm:mt-6 h-0.5 sm:h-1 rounded-full" style={{ background: `linear-gradient(90deg, ${COLORS.accent}60, transparent)`, width: '40%' }} initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 1.5, duration: 0.8 }} />
-              </motion.div>
-            </motion.div>
-          </div>
-        </div>
-      )}
-    </motion.div>
-  );
+            )}
+        </motion.div>
+    );
 };
 
 const SmartBackButton = () => {
@@ -207,8 +207,6 @@ const HboMaxThrillerBreadcrumb = ({ movie }) => (
     </motion.nav>
 );
 
-
-
 const HboMaxThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
     const router = useRouter();
     const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
@@ -232,11 +230,36 @@ const HboMaxThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
     const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
-    // ✅ SEO FIX: Clean strings to prevent hydration errors
-    const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Best Thriller Movies on HBO Max | Filmiway'].join('');
-    const cleanSEODesc = [movie.Title, ' (', currentMovieYear, ') - A suspenseful thriller streaming on HBO Max. Ranked by tension and psychological pressure.'].join('');
+  // =========================================================================
+  // ✅ THE UNIVERSAL ELITE SEO BLOCK
+  // =========================================================================
 
-    const collectionSlug = router.pathname.split('/')[2];
+  const collectionSlug = 'best-thriller-movies-on-hbo-max';
+  const dynamicCollectionName = 'Best Thriller Movies on HBO Max';
+
+  const scenes = SENSITIVE_TIMELINES?.[movie.tmdbId]?.scenes || [];
+  
+  // 1. UNIQUE META TITLE
+  const cleanSEOTitle = scenes.length > 0
+    ? `${movie.Title} (${currentMovieYear}) Parents Guide & Timestamps | ${dynamicCollectionName}`
+    : `${movie.Title} (${currentMovieYear}) Parents Guide | ${dynamicCollectionName}`;
+
+  // 2. STANDARDIZED ELITE META DESCRIPTION
+  let cleanSEODesc = '';
+  
+  if (scenes.length > 0) {
+    const rawTimes = scenes.slice(0, 3).map(s => s.end ? `${s.start}–${s.end}` : s.start);
+    const formattedTimes = rawTimes.length > 1 
+      ? `${rawTimes.slice(0, -1).join(', ')} and ${rawTimes.slice(-1)}` 
+      : rawTimes[0];
+
+    cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Viewer discretion advised. Includes exact scene timestamps: ${formattedTimes}.`;
+  } else {
+    cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Filmiway Content Advisory: No nudity or explicit sexual content identified. Suitable for general viewing.`;
+  }
+
+  // =========================================================================
+
     const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
 
     const { movieSchema, faqSchema } = generateCleanMovieSchema(
@@ -252,8 +275,8 @@ const HboMaxThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
         <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
             <Head>
                 {/* ✅ HYDRATION BUG FULLY RESOLVED */}
-                <title key="title">{cleanSEOTitle}</title>
-                <meta key="desc" name="description" content={cleanSEODesc} />
+                <title>{cleanSEOTitle}</title>
+                <meta name="description" content={cleanSEODesc} />
                 <link rel="canonical" href={canonicalUrl} />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
                 <meta name="robots" content="index, follow" />
@@ -273,12 +296,13 @@ const HboMaxThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
 
                 {/* Standard Meta Tags */}
                 <meta property="og:title" content={cleanSEOTitle} />
-                <meta property="og:description" content="A suspenseful thriller on HBO Max." />
+                <meta property="og:description" content={cleanSEODesc} />
                 <meta property="og:type" content="video.movie" />
+                <meta property="og:url" content={canonicalUrl} />
                 <meta property="og:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content={cleanSEOTitle} />
-                <meta name="twitter:description" content="A suspenseful thriller on HBO Max." />
+                <meta name="twitter:description" content={cleanSEODesc} />
                 <meta name="twitter:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
             </Head>
 

@@ -2,13 +2,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Info, Sparkles } from 'lucide-react';
-import { HBO_SCIFI_MOVIE_FAQS } from '../utils/hboMaxSciFiMovieData';
+// ✅ Pull in the unified UI generator instead of the raw static array
+import { getVisibleMovieFAQs } from '../utils/hboMaxSciFiMovieData';
 
 const HboMaxSciFiSEOFAQSection = ({ movie }) => {
-    // 🔥 Get FAQs from HBO_SCIFI_MOVIE_FAQS data
-    const faqsFromData = movie?.Title && HBO_SCIFI_MOVIE_FAQS?.[movie.Title] 
-        ? HBO_SCIFI_MOVIE_FAQS[movie.Title] 
-        : [];
+    
+    // 🔥 Get the dynamically generated FAQs (Includes Timestamps, Intensity, and Static FAQs)
+    const faqsFromData = getVisibleMovieFAQs(movie.Title, movie.tmdbId);
 
     // 🔥 Safety check - return null if no FAQs
     if (!faqsFromData || faqsFromData.length === 0) {
@@ -43,7 +43,8 @@ const HboMaxSciFiSEOFAQSection = ({ movie }) => {
                         <h3 className="text-base sm:text-lg font-medium text-cyan-200 mb-2 sm:mb-3">
                             {faq.question}
                         </h3>
-                        <p className="text-gray-400 leading-relaxed text-sm sm:text-base group-hover:text-gray-300 transition-colors">
+                        {/* ✅ Added 'whitespace-pre-line' so dynamic bullet points render perfectly */}
+                        <p className="text-gray-400 leading-relaxed text-sm sm:text-base group-hover:text-gray-300 transition-colors whitespace-pre-line">
                             {faq.answer}
                         </p>
                     </motion.div>

@@ -15,13 +15,13 @@ import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
 import TMDBAttribution from '../../../components/TMDBAttribution';
 
-// ✅ IMPORT DATA
-import { generateCleanMovieSchema } from '../../../utils/cleanMovieSchema';
+// ✅ CORRECTED IMPORT: Pulling schema directly from localized data
 import {
     COMPLETE_MOVIE_DATABASE, 
     COMPLETE_MOVIE_DATA,
     SENSITIVE_TIMELINES,
-    HBO_SCIFI_MOVIE_FAQS 
+    HBO_SCIFI_MOVIE_FAQS,
+    generateCleanMovieSchema 
 } from '../../../utils/hboMaxSciFiMovieData';
 
 const COLORS = {
@@ -47,7 +47,7 @@ const MOVIE_YEARS = {
     'Ex Machina': '2014',
     'Furiosa: A Mad Max Saga': '2024',
     'Mickey 17': '2025',
-    'Kingdom of the Planet of the Apes': '2024',
+    'War for the Planet of the Apes': '2017', // ✅ Fixed from Kingdom
     'The Lobster': '2015'
 };
 
@@ -61,7 +61,7 @@ const MOVIE_DATA_BY_TITLE = {
     'Ex Machina': { connection: 'A tense, claustrophobic Turing test. It explores the terrifying moment when artificial intelligence surpasses its creators in manipulation.' },
     'Furiosa: A Mad Max Saga': { connection: 'A sprawling, mythic odyssey through the Wasteland. It expands the lore of Fury Road with a grittier, more epic scope.' },
     'Mickey 17': { connection: 'A dark comedy about the gig economy of the future. It asks uncomfortable questions about identity and the value of a disposable human life.' },
-    'Kingdom of the Planet of the Apes': { connection: 'A legacy sequel done right. It explores how myths are formed and twisted over centuries in a world reclaimed by nature.' },
+    'War for the Planet of the Apes': { connection: 'A Shakespearean tragedy wrapped in blockbuster VFX. It forces Caesar to wrestle with his darkest instincts.' }, // ✅ Fixed
     'The Lobster': { connection: 'A surreal, deadpan dystopia. It satirizes societal pressure to couple up by turning single people into actual animals.' }
 };
 
@@ -217,8 +217,6 @@ const HboMaxSciFiBreadcrumb = ({ movie }) => (
     </motion.nav>
 );
 
-
-
 const HboMaxSciFiMoviePage = ({ movie, tmdbData: movieData }) => {
     const router = useRouter();
     const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
@@ -242,12 +240,37 @@ const HboMaxSciFiMoviePage = ({ movie, tmdbData: movieData }) => {
     const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
-    // ✅ SEO FIX: Dynamic Canonical & Title
-    const collectionSlug = router.pathname.split('/')[2];
-    const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
+  // =========================================================================
+  // ✅ THE UNIVERSAL ELITE SEO BLOCK
+  // =========================================================================
 
-    const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Best Sci-Fi Movies on HBO Max | Filmiway'].join('');
-    const cleanSEODesc = [movie.Title, ' (', currentMovieYear, ') - A spectacular sci-fi masterpiece streaming on HBO Max. Ranked by scale and mind-bending complexity.'].join('');
+  const collectionSlug = 'best-sci-fi-movies-on-hbo-max';
+  const dynamicCollectionName = 'Best Sci-Fi Movies on HBO Max';
+
+  const scenes = SENSITIVE_TIMELINES?.[movie.tmdbId]?.scenes || [];
+  
+  // 1. UNIQUE META TITLE
+  const cleanSEOTitle = scenes.length > 0
+    ? `${movie.Title} (${currentMovieYear}) Parents Guide & Timestamps | ${dynamicCollectionName}`
+    : `${movie.Title} (${currentMovieYear}) Parents Guide | ${dynamicCollectionName}`;
+
+  // 2. STANDARDIZED ELITE META DESCRIPTION
+  let cleanSEODesc = '';
+  
+  if (scenes.length > 0) {
+    const rawTimes = scenes.slice(0, 3).map(s => s.end ? `${s.start}–${s.end}` : s.start);
+    const formattedTimes = rawTimes.length > 1 
+      ? `${rawTimes.slice(0, -1).join(', ')} and ${rawTimes.slice(-1)}` 
+      : rawTimes[0];
+
+    cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Viewer discretion advised. Includes exact scene timestamps: ${formattedTimes}.`;
+  } else {
+    cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Filmiway Content Advisory: No nudity or explicit sexual content identified. Suitable for general viewing.`;
+  }
+
+  // =========================================================================
+
+    const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
 
     const { movieSchema, faqSchema } = generateCleanMovieSchema(
         movie, 
@@ -274,12 +297,13 @@ const HboMaxSciFiMoviePage = ({ movie, tmdbData: movieData }) => {
                 
                 {/* Social Meta Tags */}
                 <meta property="og:title" content={cleanSEOTitle} />
-                <meta property="og:description" content="A top-tier science fiction movie on HBO Max." />
+                <meta property="og:description" content={cleanSEODesc} />
                 <meta property="og:type" content="video.movie" />
+                <meta property="og:url" content={canonicalUrl} />
                 <meta property="og:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content={cleanSEOTitle} />
-                <meta name="twitter:description" content="A top-tier science fiction movie on HBO Max." />
+                <meta name="twitter:description" content={cleanSEODesc} />
                 <meta name="twitter:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
             </Head>
 

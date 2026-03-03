@@ -1,4 +1,4 @@
-// utils/hboRomanceMovieData.js - HBO MAX ROMANCE COLLECTION DATA
+// utils/hboRomanceMovieData.js - HBO MAX ROMANCE COLLECTION DATA ✅
 // Emotional Resonance, Chemistry, and Heartbreak
 
 export const TMDB_CONFIG = {
@@ -124,7 +124,7 @@ export const COMPLETE_MOVIE_DATA = {
             { time: 45, intensity: 60, label: "The Steak Dinner", color: "#7f1d1d" },
             { time: 75, intensity: 85, label: "Rehearsal Goodbye", color: "#991b1b" },
             { time: 90, intensity: 92, label: "Angkor Wat", color: "#b91c1c" },
-            { time: 98, intensity: 70, label: "Years Later", color: "#ef4444" } // Adjusted 60 -> 70
+            { time: 98, intensity: 70, label: "Years Later", color: "#ef4444" } 
         ],
         synopsis: "Two neighbors form a strong bond after both suspect their spouses of extramarital activities. However, they agree to keep their bond platonic so as not to commit similar wrongs.",
         themes: ["Longing", "Time", "Secret Love"]
@@ -186,7 +186,7 @@ export const COMPLETE_MOVIE_DATA = {
             { time: 20, intensity: 40, label: "Volleyball", color: "#fef08a" },
             { time: 60, intensity: 75, label: "Midnight", color: "#eab308" },
             { time: 90, intensity: 85, label: "Bergamo Trip", color: "#ca8a04" },
-            { time: 120, intensity: 91, label: "Father's Speech", color: "#a16207" }, // Adjusted 90 -> 91
+            { time: 120, intensity: 91, label: "Father's Speech", color: "#a16207" },
             { time: 130, intensity: 93, label: "Fireplace", color: "#854d0e" }
         ],
         synopsis: "In 1980s Italy, romance blossoms between a seventeen-year-old student and the older man hired as his father's research assistant.",
@@ -228,7 +228,7 @@ export const COMPLETE_MOVIE_DATA = {
             { time: 15, intensity: 20, label: "Waiting", color: "#e0f2fe" },
             { time: 45, intensity: 50, label: "Margot Walks", color: "#bae6fd" },
             { time: 80, intensity: 65, label: "Song for Solene", color: "#7dd3fc" },
-            { time: 100, intensity: 80, label: "The Choice", color: "#38bdf8" }, // Adjusted 85 -> 80
+            { time: 100, intensity: 80, label: "The Choice", color: "#38bdf8" },
             { time: 110, intensity: 40, label: "Ferry Ride", color: "#0ea5e9" }
         ],
         synopsis: "A shy math graduate takes a holiday in Dinard before starting his first job. He hopes his sort-of girlfriend will join him, but soon strikes up a friendship with another girl.",
@@ -270,7 +270,7 @@ export const COMPLETE_MOVIE_DATA = {
             { time: 20, intensity: 25, label: "Country Road", color: "#fff7ed" },
             { time: 50, intensity: 50, label: "The Shop", color: "#ffedd5" },
             { time: 80, intensity: 70, label: "Writing the Story", color: "#fde68a" },
-            { time: 105, intensity: 86, label: "Sunrise", color: "#fcd34d" }, // Adjusted 88 -> 86
+            { time: 105, intensity: 86, label: "Sunrise", color: "#fcd34d" },
             { time: 110, intensity: 60, label: "Promise", color: "#fbbf24" }
         ],
         synopsis: "A love story between a girl who loves reading books, and a boy who has previously checked out all of the library books she chooses.",
@@ -292,7 +292,7 @@ export const COMPLETE_MOVIE_DATA = {
             { time: 50, intensity: 60, label: "The Kiss", color: "#34d399" },
             { time: 80, intensity: 75, label: "Sam Leaves", color: "#10b981" },
             { time: 95, intensity: 92, label: "The Breakdown", color: "#059669" },
-            { time: 100, intensity: 84, label: "We Are Infinite", color: "#047857" } // Adjusted 80 -> 84
+            { time: 100, intensity: 84, label: "We Are Infinite", color: "#047857" } 
         ],
         synopsis: "An introvert freshman is taken under the wings of two seniors who welcome him to the real world.",
         themes: ["Trauma", "Friendship", "Healing"]
@@ -483,65 +483,14 @@ export const HBO_ROMANCE_MOVIE_FAQS = {
     ]
 };
 
+// 5. UTILITY FUNCTIONS & THE KEYWORD BRIDGE
 export const getTMDBPosterUrl = (posterPath, size = 'medium') => {
     if (!posterPath) return null;
     const posterSize = TMDB_CONFIG.POSTER_SIZES[size] || TMDB_CONFIG.POSTER_SIZES.medium;
     return `${TMDB_CONFIG.IMAGE_BASE_URL}/${posterSize}${posterPath}`;
 };
 
-export const getSensitiveContentTypes = (tmdbId) => {
-    const sensitiveData = SENSITIVE_TIMELINES[tmdbId];
-    if (!sensitiveData?.scenes?.length) return null;
-    const types = new Set();
-    sensitiveData.scenes.forEach(scene => {
-        types.add(scene.type);
-    });
-    return Array.from(types);
-};
-
-export const generateFAQData = (movie) => {
-    return HBO_ROMANCE_MOVIE_FAQS[movie.Title] || [];
-};
-
-export const generateMovieSchema = (movie) => {
-    const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
-    const posterUrl = FALLBACK_POSTERS[movie.tmdbId] || '';
-    return {
-        '@context': 'https://schema.org',
-        '@type': 'Movie',
-        'name': movie.Title,
-        'description': movieInfo?.synopsis || `${movie.Title} - A classic romance movie on HBO Max.`,
-        'genre': movie.genre,
-        'datePublished': movie.year.toString(),
-        'director': { '@type': 'Person', 'name': movieInfo?.director || 'Director' },
-        'actor': movieInfo?.cast?.map(actor => ({ '@type': 'Person', 'name': actor })) || [],
-        'duration': `PT${movie.runtime}M`,
-        'image': posterUrl,
-        'aggregateRating': { 
-            '@type': 'AggregateRating', 
-            'ratingValue': movieInfo?.rating || 7.5, 
-            'bestRating': 10, 
-            'worstRating': 1, 
-            'ratingCount': movieInfo?.audienceScore || 100 
-        }
-    };
-};
-
-export const generateFAQSchema = (faqs) => ({
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    'mainEntity': faqs.map(faq => ({ 
-        '@type': 'Question', 
-        'name': faq.question, 
-        'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer } 
-    }))
-});
-
-export const fetchMovieFromTMDB = async (tmdbId) => ({ 
-    poster_path: null, 
-    title: COMPLETE_MOVIE_DATABASE.find(m => m.tmdbId === tmdbId)?.Title || 'Unknown Movie' 
-});
-
+export const fetchMovieFromTMDB = async (tmdbId) => ({ poster_path: null, title: COMPLETE_MOVIE_DATABASE.find(m => m.tmdbId === tmdbId)?.Title || 'Unknown Movie' });
 export const fetchWatchProviders = async (tmdbId, region = 'US') => null;
 
 export const formatSensitiveTimeline = (tmdbId) => {
@@ -555,4 +504,136 @@ export const formatSensitiveTimeline = (tmdbId) => {
             description: scene.description || ''
         }))
     };
+};
+
+// 🔥 6. THE KEYWORD BRIDGE (Upgraded for Romance SEO power)
+export const getSensitiveContentTypes = (tmdbId) => {
+    const sensitiveData = SENSITIVE_TIMELINES[tmdbId];
+    if (!sensitiveData?.scenes?.length) return null;
+    const types = new Set();
+    sensitiveData.scenes.forEach(scene => {
+        const lowerType = scene.type.toLowerCase();
+        
+        // Converts soft words into hard, high-volume SEO keywords
+        if (lowerType.includes('sex') || lowerType.includes('explicit')) types.add('sexual content');
+        if (lowerType.includes('nudity') || lowerType.includes('undressing') || lowerType.includes('bikini')) types.add('nudity');
+        if (lowerType.includes('kissing') || lowerType.includes('intimacy')) types.add('mature scenes');
+    });
+    return Array.from(types);
+};
+
+// 🔥 7. THE "GOLDEN EGG" SCHEMA GENERATOR (Universal Version)
+export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, collectionSlug, unused, movieInfo) => {
+    // Standard Movie Schema
+    const movieSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'Movie',
+        'name': movie.Title,
+        'description': movieInfo?.synopsis || `${movie.Title} (${currentMovieYear}) - A captivating romance film.`,
+        'genre': movie.genre,
+        'datePublished': currentMovieYear?.toString() || movie.year.toString(),
+        'director': { '@type': 'Person', 'name': movieInfo?.director || 'Director' },
+        'actor': movieInfo?.cast?.map(actor => ({ '@type': 'Person', 'name': actor })) || [],
+        'image': tmdbData?.poster_path ? `https://image.tmdb.org/t/p/w500${tmdbData.poster_path}` : (FALLBACK_POSTERS[movie.tmdbId] || ''),
+        'duration': `PT${movie.runtime}M`
+    };
+
+    const staticFaqs = HBO_ROMANCE_MOVIE_FAQS[movie.Title] || [];
+    const sensitiveScenes = SENSITIVE_TIMELINES[movie.tmdbId]?.scenes || [];
+    const intensityScenes = movieInfo?.scenes || [];
+    
+    const schemaFaqs = staticFaqs.map(faq => ({ 
+        '@type': 'Question', 
+        'name': faq.question, 
+        'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer } 
+    }));
+
+    // Inject Intensity Graph Timestamps into Schema
+    if (intensityScenes.length > 0) {
+        const schemaIntensityList = intensityScenes.map(s => `<li>Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)</li>`).join('');
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `What are the most emotional scenes in ${movie.Title}?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `According to the Filmiway Emotional Intensity metric, ${movie.Title} peaks at the following moments:<br><br><ul>${schemaIntensityList}</ul>` 
+            }
+        });
+    }
+
+    // Inject Sensitive Content Timestamps into Schema (Top Priority)
+    if (sensitiveScenes.length > 0) {
+        const typesArray = getSensitiveContentTypes(movie.tmdbId) || ['mature content'];
+        const typesString = typesArray.join(' and ');
+
+        const schemaListText = sensitiveScenes.map(s => {
+            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
+            return `<li>${timeRange} - ${s.type || 'Mature Content'}</li>`;
+        }).join('');
+
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `Yes, according to the Filmiway Content Advisory, ${movie.Title} contains adult scenes including ${typesString}. Exact timestamps for these scenes are:<br><br><ul>${schemaListText}</ul>` 
+            }
+        });
+    } else {
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `No, the Filmiway Content Advisory confirms that ${movie.Title} is completely free of explicit sexual content and nudity.` 
+            }
+        });
+    }
+
+    const faqSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        'name': `Parents Guide and FAQ for ${movie.Title}`,
+        'mainEntity': schemaFaqs
+    };
+
+    return { movieSchema, faqSchema };
+};
+
+// 🔥 8. FRONTEND UI SYNC (Displays the timestamps dynamically on the Next.js page)
+export const getVisibleMovieFAQs = (movieTitle, tmdbId) => {
+    const staticFaqs = HBO_ROMANCE_MOVIE_FAQS[movieTitle] ? [...HBO_ROMANCE_MOVIE_FAQS[movieTitle]] : [];
+    const sensitiveScenes = SENSITIVE_TIMELINES[tmdbId]?.scenes || [];
+    const movieInfo = COMPLETE_MOVIE_DATA[tmdbId];
+    const intensityScenes = movieInfo?.scenes || [];
+
+    if (intensityScenes.length > 0) {
+        const uiIntensityList = intensityScenes.map(s => `• Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)`).join('\n');
+        staticFaqs.unshift({
+            question: `What are the most emotional scenes in ${movieTitle}?`,
+            answer: `According to the Filmiway Emotional Intensity metric, ${movieTitle} peaks at the following moments:\n\n${uiIntensityList}`
+        });
+    }
+
+    if (sensitiveScenes.length > 0) {
+        const typesArray = getSensitiveContentTypes(tmdbId) || ['mature content'];
+        const typesString = typesArray.join(' and ');
+
+        const uiListText = sensitiveScenes.map(s => {
+            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
+            return `• ${timeRange} - ${s.type || 'Mature Content'}`;
+        }).join('\n');
+
+        staticFaqs.unshift({
+            question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
+            answer: `Yes, according to the Filmiway Content Advisory, ${movieTitle} contains adult scenes including ${typesString}. Exact timestamps for these scenes are:\n\n${uiListText}`
+        });
+    } else {
+        staticFaqs.unshift({
+            question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
+            answer: `No, the Filmiway Content Advisory confirms that ${movieTitle} is completely free of explicit sexual content and nudity.`
+        });
+    }
+
+    return staticFaqs;
 };
