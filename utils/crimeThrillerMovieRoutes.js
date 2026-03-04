@@ -157,7 +157,7 @@ export const generateCrimeThrillerMovieSitemapUrls = (baseUrl = 'https://filmiwa
             url: `${baseUrl}/collection/best-crime-thrillers/${CRIME_THRILLER_MOVIE_SLUGS[movie.imdbID]}`,
             lastmod: new Date().toISOString(),
             priority: '0.7',
-            changefreq: 'monthly'
+            changefreq: 'weekly'
         });
     });
     

@@ -158,7 +158,7 @@ export const generatePeacockActionAdventureSitemapUrls = (baseUrl = 'https://fil
             url: `${baseUrl}/collection/best-action-movies-on-peacock/${PEACOCK_ACTION_ADVENTURE_SLUGS[movie.imdbID]}`,
             lastmod: new Date().toISOString(),
             priority: '0.7',
-            changefreq: 'monthly'
+            changefreq: 'weekly'
         });
     });
     

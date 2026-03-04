@@ -160,7 +160,7 @@ export const generateMatrixMovieSitemapUrls = (baseUrl = 'https://filmiway.com')
             url: `${baseUrl}/collection/movies-like-the-matrix/${MATRIX_MOVIE_SLUGS[movie.imdbID]}`,
             lastmod: new Date().toISOString(),
             priority: '0.7',
-            changefreq: 'monthly'
+            changefreq: 'weekly'
         });
     });
     

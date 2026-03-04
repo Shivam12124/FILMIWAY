@@ -158,7 +158,7 @@ export const generateParamountThrillerMovieSitemapUrls = (baseUrl = 'https://fil
             url: `${baseUrl}/collection/best-thriller-movies-on-paramount-plus/${PARAMOUNT_THRILLER_MOVIE_SLUGS[movie.tmdbId]}`,
             lastmod: new Date().toISOString(),
             priority: '0.7',
-            changefreq: 'monthly'
+            changefreq: 'weekly'
         });
     });
     

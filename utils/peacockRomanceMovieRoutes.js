@@ -158,7 +158,7 @@ export const generatePeacockRomanceMovieSitemapUrls = (baseUrl = 'https://filmiw
             url: `${baseUrl}/collection/best-romance-movies-on-peacock/${PEACOCK_ROMANCE_MOVIE_SLUGS[movie.imdbID]}`,
             lastmod: new Date().toISOString(),
             priority: '0.7',
-            changefreq: 'monthly'
+            changefreq: 'weekly'
         });
     });
     

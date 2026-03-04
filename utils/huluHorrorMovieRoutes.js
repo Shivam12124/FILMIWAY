@@ -158,7 +158,7 @@ export const generateHuluHorrorMovieSitemapUrls = (baseUrl = 'https://filmiway.c
             url: `${baseUrl}/best-horror-movies-on-hulu/${HULU_HORROR_MOVIE_SLUGS[movie.imdbID]}`,
             lastmod: new Date().toISOString(),
             priority: '0.7',
-            changefreq: 'monthly'
+            changefreq: 'weekly'
         });
     });
     

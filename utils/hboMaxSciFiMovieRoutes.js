@@ -157,7 +157,7 @@ export const generateHboMaxSciFiMovieSitemapUrls = (baseUrl = 'https://filmiway.
             url: `${baseUrl}/collection/best-sci-fi-movies-on-hbo-max/${HBO_MAX_SCIFI_MOVIE_SLUGS[movie.imdbID]}`,
             lastmod: new Date().toISOString(),
             priority: '0.7',
-            changefreq: 'monthly'
+            changefreq: 'weekly'
         });
     });
     

@@ -160,7 +160,7 @@ export const generateDetectiveThrillerMovieSitemapUrls = (baseUrl = 'https://fil
             url: `${baseUrl}/collection/best-detective-thriller-movies/${DETECTIVE_THRILLER_MOVIE_SLUGS[movie.imdbID]}`,
             lastmod: new Date().toISOString(),
             priority: '0.8',
-            changefreq: 'monthly'
+            changefreq: 'weekly'
         });
     });
     

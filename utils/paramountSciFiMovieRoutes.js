@@ -157,7 +157,7 @@ export const generateParamountSciFiMovieSitemapUrls = (baseUrl = 'https://filmiw
             url: `${baseUrl}/collection/best-sci-fi-movies-on-paramount-plus/${PARAMOUNT_SCIFI_MOVIE_SLUGS[movie.imdbID]}`,
             lastmod: new Date().toISOString(),
             priority: '0.7',
-            changefreq: 'monthly'
+            changefreq: 'weekly'
         });
     });
     

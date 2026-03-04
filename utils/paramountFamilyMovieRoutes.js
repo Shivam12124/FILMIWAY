@@ -158,7 +158,7 @@ export const generateParamountFamilyMovieSitemapUrls = (baseUrl = 'https://filmi
             url: `${baseUrl}/collection/best-family-movies-on-paramount-plus/${PARAMOUNT_FAMILY_MOVIE_SLUGS[movie.tmdbId]}`,
             lastmod: new Date().toISOString(),
             priority: '0.7',
-            changefreq: 'monthly'
+            changefreq: 'weekly'
         });
     });
     

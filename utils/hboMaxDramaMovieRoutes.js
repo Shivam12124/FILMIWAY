@@ -155,7 +155,7 @@ export const generateHboMaxDramaMovieSitemapUrls = (baseUrl = 'https://filmiway.
             url: `${baseUrl}/collection/best-drama-movies-on-hbo-max/${HBO_DRAMA_MOVIE_SLUGS[movie.tmdbId]}`,
             lastmod: new Date().toISOString(),
             priority: '0.7',
-            changefreq: 'monthly'
+            changefreq: 'weekly'
         });
     });
     

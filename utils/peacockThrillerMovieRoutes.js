@@ -156,7 +156,7 @@ export const generatePeacockThrillerMovieSitemap = (baseUrl = 'https://filmiway.
             url: `${baseUrl}/collection/best-thriller-movies-on-peacock/${PEACOCK_THRILLER_MOVIE_SLUGS[movie.imdbID]}`,
             lastmod: new Date().toISOString(),
             priority: '0.7',
-            changefreq: 'monthly'
+            changefreq: 'weekly'
         });
     });
     

@@ -157,7 +157,7 @@ export const generateHuluThrillerMovieSitemapUrls = (baseUrl = 'https://filmiway
             url: `${baseUrl}/best-thriller-movies-hulu/${HULU_THRILLER_MOVIE_SLUGS[movie.imdbID]}`,
             lastmod: new Date().toISOString(),
             priority: '0.7',
-            changefreq: 'monthly'
+            changefreq: 'weekly'
         });
     });
     

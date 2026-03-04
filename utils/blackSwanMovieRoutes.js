@@ -143,7 +143,7 @@ export const generateBlackSwanMovieSitemapUrls = (baseUrl = 'https://filmiway.co
             url: `${baseUrl}/collection/movies-like-black-swan/${BLACK_SWAN_MOVIE_SLUGS[movie.imdbID]}`,
             lastmod: new Date().toISOString(),
             priority: '0.7',
-            changefreq: 'monthly'
+            changefreq: 'weekly'
         });
     });
     

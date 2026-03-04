@@ -157,7 +157,7 @@ export const generatePeacockFamilySitemapUrls = (baseUrl = 'https://filmiway.com
             url: `${baseUrl}/collection/best-family-movies-on-peacock/${PEACOCK_FAMILY_MOVIE_SLUGS[movie.imdbID]}`,
             lastmod: new Date().toISOString(),
             priority: '0.7',
-            changefreq: 'monthly'
+            changefreq: 'weekly'
         });
     });
     

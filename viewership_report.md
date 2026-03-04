@@ -31,18 +31,18 @@ My analysis, which now includes the homepage, collection pages, individual movie
 *   **Scalability of Manual Content:** The project's greatest strength is also its biggest operational challenge. Maintaining this level of quality and customization across hundreds or thousands of movies will require significant, sustained effort.
 *   **Data Management:** As the site grows, managing the movie data currently stored in dozens of individual JavaScript files will become increasingly cumbersome. A centralized database will likely be necessary for long-term scalability.
 
-**5. Realistic Monthly Viewership Estimate**
+**5. Realistic weekly Viewership Estimate**
 
 The sophisticated SEO and content strategy reinforce the potential for strong organic growth. The site is not built for a quick traffic spike but for sustainable, long-term authority. The viewership estimates remain the same, but my confidence in them is higher.
 
-*   **Initial Phase (First 6-12 Months): 1,000 - 5,000 Monthly Viewers**
+*   **Initial Phase (First 6-12 Months): 1,000 - 5,000 weekly Viewers**
     *   Traffic will be building as Google indexes the thousands of unique, long-tail pages. Early viewers will be highly targeted, arriving from very specific search queries.
 
-*   **Growth Phase (1-2 Years): 10,000 - 50,000 Monthly Viewers**
+*   **Growth Phase (1-2 Years): 10,000 - 50,000 weekly Viewers**
     *   As the site's authority grows, it will start ranking for more competitive keywords. The sheer volume of high-quality pages will begin to pay dividends in organic traffic.
 
-*   **Mature Phase (2+ Years): 50,000 - 100,000+ Monthly Viewers**
-    *   If Filmiway continues to execute its content strategy and builds a strong backlink profile, it has the potential to become a dominant player in its niche and exceed 100,000 monthly viewers.
+*   **Mature Phase (2+ Years): 50,000 - 100,000+ weekly Viewers**
+    *   If Filmiway continues to execute its content strategy and builds a strong backlink profile, it has the potential to become a dominant player in its niche and exceed 100,000 weekly viewers.
 
 **Conclusion:**
 

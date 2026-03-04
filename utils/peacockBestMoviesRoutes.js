@@ -158,7 +158,7 @@ export const generatePeacockSitemapUrls = (baseUrl = 'https://filmiway.com') => 
             url: `${baseUrl}/collection/best-movies-on-peacock/${PEACOCK_BEST_MOVIE_SLUGS[movie.imdbID]}`,
             lastmod: new Date().toISOString(),
             priority: '0.8',
-            changefreq: 'monthly'
+            changefreq: 'weekly'
         });
     });
     

@@ -157,7 +157,7 @@ export const generateHuluBestMovieSitemapUrls = (baseUrl = 'https://filmiway.com
             url: `${baseUrl}/collection/best-movies-on-hulu/${HULU_BEST_MOVIE_SLUGS[movie.imdbID]}`,
             lastmod: new Date().toISOString(),
             priority: '0.8',
-            changefreq: 'monthly'
+            changefreq: 'weekly'
         });
     });
     

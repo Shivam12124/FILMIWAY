@@ -135,7 +135,7 @@ export const generateHuluSciFiMovieSitemapUrls = (baseUrl = 'https://filmiway.co
             url: `${baseUrl}/best-sci-fi-movies-on-hulu/${HULU_SCIFI_MOVIE_SLUGS[movie.imdbID]}`,
             lastmod: new Date().toISOString(),
             priority: '0.7',
-            changefreq: 'monthly'
+            changefreq: 'weekly'
         });
     });
     

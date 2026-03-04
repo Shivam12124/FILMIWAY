@@ -158,7 +158,7 @@ export const generateParasiteMovieSitemapUrls = (baseUrl = 'https://filmiway.com
             url: `${baseUrl}/collection/movies-like-parasite/${PARASITE_MOVIE_SLUGS[movie.imdbID]}`,
             lastmod: new Date().toISOString(),
             priority: '0.7',
-            changefreq: 'monthly'
+            changefreq: 'weekly'
         });
     });
     

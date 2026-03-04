@@ -158,7 +158,7 @@ export const generateParamountRomanceMovieSitemapUrls = (baseUrl = 'https://film
             url: `${baseUrl}/collection/best-romance-movies-on-paramount-plus/${PARAMOUNT_ROMANCE_MOVIE_SLUGS[movie.imdbID]}`,
             lastmod: new Date().toISOString(),
             priority: '0.7',
-            changefreq: 'monthly'
+            changefreq: 'weekly'
         });
     });
     

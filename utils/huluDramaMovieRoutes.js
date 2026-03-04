@@ -158,7 +158,7 @@ export const generateHuluDramaMovieSitemapUrls = (baseUrl = 'https://filmiway.co
             url: `${baseUrl}/collection/best-drama-movies-on-hulu/${HULU_DRAMA_MOVIE_SLUGS[movie.tmdbId]}`,
             lastmod: new Date().toISOString(),
             priority: '0.7',
-            changefreq: 'monthly'
+            changefreq: 'weekly'
         });
     });
     

@@ -158,7 +158,7 @@ export const generateParamountHorrorMovieSitemapUrls = (baseUrl = 'https://filmi
             url: `${baseUrl}/collection/best-horror-movies-on-paramount-plus/${PARAMOUNT_HORROR_MOVIE_SLUGS[movie.tmdbId]}`,
             lastmod: new Date().toISOString(),
             priority: '0.7',
-            changefreq: 'monthly'
+            changefreq: 'weekly'
         });
     });
     

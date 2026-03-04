@@ -141,7 +141,7 @@ export const generateSurvivalMovieSitemapUrls = (baseUrl = 'https://filmiway.com
             url: `${baseUrl}/collection/best-survival-movies/${SURVIVAL_MOVIE_SLUGS[movie.imdbID]}`,
             lastmod: new Date().toISOString(),
             priority: '0.7',
-            changefreq: 'monthly'
+            changefreq: 'weekly'
         });
     });
     

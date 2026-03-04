@@ -158,7 +158,7 @@ export const generateParamountBestMovieSitemapUrls = (baseUrl = 'https://filmiwa
             url: `${baseUrl}/collection/best-movies-on-paramount-plus/${PARAMOUNT_BEST_MOVIE_SLUGS[movie.tmdbId]}`,
             lastmod: new Date().toISOString(),
             priority: '0.8',
-            changefreq: 'monthly'
+            changefreq: 'weekly'
         });
     });
     

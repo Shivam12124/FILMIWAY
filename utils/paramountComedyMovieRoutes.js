@@ -143,7 +143,7 @@ export const generateParamountComedyMovieSitemapUrls = (baseUrl = 'https://filmi
             url: `${baseUrl}/collection/best-comedy-movies-on-paramount-plus/${PARAMOUNT_COMEDY_MOVIE_SLUGS[movie.tmdbId]}`,
             lastmod: new Date().toISOString(),
             priority: '0.7',
-            changefreq: 'monthly'
+            changefreq: 'weekly'
         });
     });
     

@@ -161,7 +161,7 @@ export const generateHuluRomanceMovieSitemapUrls = (baseUrl = 'https://filmiway.
             url: `${baseUrl}/best-romance-movies-on-hulu/${HULU_ROMANCE_MOVIE_SLUGS[movie.imdbID]}`,
             lastmod: new Date().toISOString(),
             priority: '0.7',
-            changefreq: 'monthly'
+            changefreq: 'weekly'
         });
     });
     

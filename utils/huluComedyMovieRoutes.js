@@ -158,7 +158,7 @@ export const generateHuluComedyMovieSitemapUrls = (baseUrl = 'https://filmiway.c
             url: `${baseUrl}/best-comedy-movies-on-hulu/${HULU_COMEDY_MOVIE_SLUGS[movie.imdbID]}`,
             lastmod: new Date().toISOString(),
             priority: '0.7',
-            changefreq: 'monthly'
+            changefreq: 'weekly'
         });
     });
     

@@ -156,7 +156,7 @@ export const generateHuluActionMovieSitemapUrls = (baseUrl = 'https://filmiway.c
             url: `${baseUrl}/collection/best-action-movies-on-hulu/${HULU_ACTION_MOVIE_SLUGS[movie.imdbID]}`,
             lastmod: new Date().toISOString(),
             priority: '0.7',
-            changefreq: 'monthly'
+            changefreq: 'weekly'
         });
     });
     

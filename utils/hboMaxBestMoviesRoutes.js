@@ -157,7 +157,7 @@ export const generateHboMaxBestMovieSitemapUrls = (baseUrl = 'https://filmiway.c
             url: `${baseUrl}/collection/best-movies-on-hbo-max/${HBO_MAX_BEST_MOVIE_SLUGS[movie.imdbID]}`,
             lastmod: new Date().toISOString(),
             priority: '0.8',
-            changefreq: 'monthly'
+            changefreq: 'weekly'
         });
     });
     

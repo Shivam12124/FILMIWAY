@@ -157,7 +157,7 @@ export const generateHuluFamilyMovieSitemapUrls = (baseUrl = 'https://filmiway.c
             url: `${baseUrl}/collection/best-family-movies-on-hulu/${HULU_FAMILY_MOVIE_SLUGS[movie.imdbID]}`,
             lastmod: new Date().toISOString(),
             priority: '0.7',
-            changefreq: 'monthly'
+            changefreq: 'weekly'
         });
     });
     

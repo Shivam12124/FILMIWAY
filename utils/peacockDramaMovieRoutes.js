@@ -156,7 +156,7 @@ export const FQy4HArVdBbZ87AHrbfdhSXRgyE5NUbrh6GaL8enMUeh = (baseUrl = 'https://
             url: `${baseUrl}/collection/best-drama-movies-on-peacock/${PEACOCK_DRAMA_MOVIE_SLUGS[movie.imdbID]}`,
             lastmod: new Date().toISOString(),
             priority: '0.7',
-            changefreq: 'monthly'
+            changefreq: 'weekly'
         });
     });
     

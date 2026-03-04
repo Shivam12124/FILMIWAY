@@ -158,7 +158,7 @@ export const generateHboActionMovieSitemapUrls = (baseUrl = 'https://filmiway.co
             url: `${baseUrl}/collection/best-action-movies-on-hbo-max/${HBO_ACTION_MOVIE_SLUGS[movie.imdbID]}`,
             lastmod: new Date().toISOString(),
             priority: '0.7',
-            changefreq: 'monthly'
+            changefreq: 'weekly'
         });
     });
     
