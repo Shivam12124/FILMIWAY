@@ -21,7 +21,6 @@ import {
   COMPLETE_MOVIE_DATA,
   SENSITIVE_TIMELINES,
   HULU_ACTION_MOVIE_FAQS, 
-   generateCleanMovieSchema
 } from '../../../utils/huluActionMovieData';
 
 const COLORS = {
