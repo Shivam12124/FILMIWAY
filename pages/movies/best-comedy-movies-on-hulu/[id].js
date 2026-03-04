@@ -23,7 +23,7 @@ import {
   COMPLETE_MOVIE_DATA,
   SENSITIVE_TIMELINES,
   HULU_COMEDY_MOVIE_FAQS,
-  generateCleanMovieSchema // 🔥 Added here!
+
 } from '../../../utils/huluComedyMovieData';
 const COLORS = {
   accent: '#FACC15', accentLight: '#FEF08A', bgPrimary: '#000000ff', bgCard: 'rgba(11, 11, 11, 0.8)', // Yellow/Dark Gold for Comedy
