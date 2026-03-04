@@ -17,14 +17,14 @@ import MovieDetailsSection from '../../../components/MovieDetailsSection';
 import TMDBAttribution from '../../../components/TMDBAttribution';
 
 // ✅ IMPORT DATA INCLUDING FAQs
-// ✅ TRULY CORRECTED IMPORT: Pulling everything from the local data file!
+import { generateCleanMovieSchema } from '../../../utils/cleanMovieSchema';
 import {
   COMPLETE_MOVIE_DATABASE, 
   COMPLETE_MOVIE_DATA,
   SENSITIVE_TIMELINES,
-  HULU_COMEDY_MOVIE_FAQS,
-
+  HULU_COMEDY_MOVIE_FAQS 
 } from '../../../utils/huluComedyMovieData';
+
 const COLORS = {
   accent: '#FACC15', accentLight: '#FEF08A', bgPrimary: '#000000ff', bgCard: 'rgba(11, 11, 11, 0.8)', // Yellow/Dark Gold for Comedy
   textPrimary: '#FFFFFF', textSecondary: '#FEF3C7', textMuted: '#FDE047', textDisabled: '#CA8A04',
