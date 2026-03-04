@@ -15,14 +15,14 @@ import MovieDetailsSection from '../../../components/MovieDetailsSection';
 import TMDBAttribution from '../../../components/TMDBAttribution';
 
 // ✅ CORRECTED IMPORT: Pulling schema generator from its dedicated file
-import { generateCleanMovieSchema } from '../../../utils/cleanMovieSchema';
+// ✅ TRULY CORRECTED IMPORT: Pulling everything from the local data file!
 import {
   COMPLETE_MOVIE_DATABASE, 
   COMPLETE_MOVIE_DATA, 
   SENSITIVE_TIMELINES,
-  TIME_TRAVEL_MOVIE_FAQS
+  TIME_TRAVEL_MOVIE_FAQS,
+  generateCleanMovieSchema // 🔥 Added here!
 } from '../../../utils/timeTravelMovieData';
-
 const COLORS = {
   accent: '#d2e40ddd', // Cyan for Time Travel
   accentLight: '#cdd002', 

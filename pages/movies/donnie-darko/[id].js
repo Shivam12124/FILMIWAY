@@ -15,12 +15,12 @@ import MovieDetailsSection from '../../../components/MovieDetailsSection';
 import TMDBAttribution from '../../../components/TMDBAttribution';
 
 // ✅ CORRECTED IMPORT: Schema generator comes from its dedicated file
-import { generateCleanMovieSchema } from '../../../utils/cleanMovieSchema';
 import {
   COMPLETE_MOVIE_DATABASE, 
   COMPLETE_MOVIE_DATA,
   SENSITIVE_TIMELINES,
-  DONNIE_DARKO_MOVIE_FAQS
+  DONNIE_DARKO_MOVIE_FAQS,
+  generateCleanMovieSchema // 🔥 Added here!
 } from '../../../utils/donnieDarkoMovieData';
 
 const COLORS = {

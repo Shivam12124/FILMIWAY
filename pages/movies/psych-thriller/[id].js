@@ -15,12 +15,12 @@ import MovieDetailsSection from '../../../components/MovieDetailsSection';
 import TMDBAttribution from '../../../components/TMDBAttribution';
 
 // ✅ CORRECTED IMPORT: Pulling schema generator from its dedicated file
-import { generateCleanMovieSchema } from '../../../utils/cleanMovieSchema';
 import {
   COMPLETE_MOVIE_DATABASE, 
   COMPLETE_MOVIE_DATA,
   SENSITIVE_TIMELINES,
-  PSYCH_THRILLER_FAQS
+  PSYCH_THRILLER_FAQS,
+  generateCleanMovieSchema // 🔥 Added here!
 } from '../../../utils/psychologicalThrillerMovieData';
 
 const COLORS = {

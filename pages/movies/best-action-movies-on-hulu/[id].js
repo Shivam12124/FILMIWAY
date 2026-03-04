@@ -15,12 +15,13 @@ import MovieDetailsSection from '../../../components/MovieDetailsSection';
 import TMDBAttribution from '../../../components/TMDBAttribution';
 
 // ✅ IMPORT DATA INCLUDING FAQs
-import { generateCleanMovieSchema } from '../../../utils/cleanMovieSchema';
+
 import { 
   COMPLETE_MOVIE_DATABASE, 
   COMPLETE_MOVIE_DATA,
   SENSITIVE_TIMELINES,
-  HULU_ACTION_MOVIE_FAQS 
+  HULU_ACTION_MOVIE_FAQS, 
+   generateCleanMovieSchema
 } from '../../../utils/huluActionMovieData';
 
 const COLORS = {
