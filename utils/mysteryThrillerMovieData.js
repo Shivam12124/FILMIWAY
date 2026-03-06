@@ -50,16 +50,16 @@ export const SENSITIVE_TIMELINES = {
     11423: { scenes: [
         { start: "9:58", end: "10:10", type: "Sex", severity: "Moderate" },
         { start: "54:34", end: "54:55", type: "Nudity (men)", severity: "Mild" },
-        { start: "1:01:12", end: "1:02:40", type: "Sexual Content (man)", severity: "Moderate" },
-        { start: "1:25:12", end: "1:25:47", type: "Partial nudity (woman)", severity: "Mild" }
+        { start: "1:01:12", end: "1:02:40", type: "Sexual Content ", severity: "Moderate" },
+        { start: "1:25:12", end: "1:25:47", type: "Partial nudity ", severity: "Mild" }
     ]},
     411088: { scenes: [] }, // The Invisible Guest
     491584: { scenes: [
-        { start: "15:00", end: "18:20", type: "Passionate kissing + sex", severity: "High" },
-        { start: "29:30", end: "30:00", type: "Masturbation not graphic (man)", severity: "Moderate" },
-        { start: "35:10", end: "35:39", type: "Masturbation not graphic (man)", severity: "Moderate" },
+        { start: "15:00", end: "18:20", type: "Sex", severity: "High" },
+        { start: "29:30", end: "30:00", type: "Sexual Content (man)", severity: "Moderate" },
+        { start: "35:10", end: "35:39", type: "Sexual Content (man)", severity: "Moderate" },
         { start: "1:08:35", end: "1:11:25", type: "Partial nudity (woman)", severity: "Mild" },
-        { start: "2:13:30", end: "2:14:07", type: "Masturbation not graphic (man)", severity: "Moderate" }
+        { start: "2:13:30", end: "2:14:07", type: "Sexual Content (man)", severity: "Moderate" }
     ]},
     2649: { scenes: [
         { start: "57:52", end: "59:30", type: "Sexual Content", severity: "Moderate" }
