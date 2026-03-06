@@ -1,3 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
         <loc>https://filmiway.com/movies/eyes-wide-shut/tt0166924</loc>
@@ -806,7 +808,7 @@
         <priority>0.8</priority>
     </url>
 
-</urlset>
+
 <url>
     <loc>https://filmiway.com/movies/crime-thriller/tt0113277</loc>
     <lastmod>2025-11-25T10:21:00+05:30</lastmod>
@@ -1018,3 +1020,5 @@
   <changefreq>weekly</changefreq>
     <priority>0.8</priority>
 </url>
+
+</urlset>
