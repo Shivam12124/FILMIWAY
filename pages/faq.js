@@ -9,7 +9,8 @@ import {
   Globe, 
   MonitorPlay,
   XCircle,
-  Tv 
+  Tv,
+  Clock // ✅ Added Clock icon for the Parents Guide FAQ
 } from "lucide-react";
 import Image from "next/image";
 
@@ -19,6 +20,12 @@ const faqs = [
     question: "Is Filmiway a movie download or piracy site?",
     answer: "No. Filmiway is strictly a legal movie discovery platform. We do not host, upload, or provide links to pirated content. We help you find movies available to stream legally on every major streaming platform (including Netflix, Prime Video, HBO Max, Hulu, Disney+, and more).",
     icon: <XCircle className="w-5 h-5 text-red-500" />
+  },
+  {
+// 🔥 NEW POLISHED SEO QUESTION 
+    question: "Do you provide a Parents Guide or timestamps to skip awkward scenes with family?",
+    answer: "Yes! We know how uncomfortable it can be to watch a movie with your family when a mature scene suddenly appears. Filmiway provides a precise Parents Guide for our curated movies, featuring exact minute-by-minute timestamps for sensitive content (like nudity or explicit scenes) so you can safely skip them.",
+    icon: <Clock className="w-5 h-5 text-purple-400" />
   },
   {
     question: "Which streaming services do you cover?",
@@ -77,7 +84,7 @@ export default function FAQ() {
     <>
       <Head>
         <title>Frequently Asked Questions | Filmiway Help</title>
-        <meta name="description" content="Common questions about Filmiway. Learn about our legal streaming focus, supported regions, and cinematic coverage." />
+        <meta name="description" content="Common questions about Filmiway. Learn about our legal streaming focus, Parents Guide timestamps, and cinematic coverage." />
         <link rel="canonical" href="https://filmiway.com/faq" />
         
         {/* ✅ GOOGLE FAQ SCHEMA */}

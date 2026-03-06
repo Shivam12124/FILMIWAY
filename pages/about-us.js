@@ -8,7 +8,7 @@ import {
   ShieldCheck,
   Users,
   Sparkles,
-  CheckCircle,
+  Clock, // ✅ Added Clock for Parents Guide
 } from "lucide-react";
 import Image from "next/image";
 
@@ -30,7 +30,7 @@ const FilmReel = () => (
   </motion.div>
 );
 
-// ✅ REFINED FEATURES
+// ✅ REFINED FEATURES (Now with 4 Items)
 const features = [
   {
     icon: <Globe className="w-6 h-6 text-yellow-400" />,
@@ -38,14 +38,19 @@ const features = [
     description: "Beyond Hollywood. We curate masterpieces from Korea, Europe, and independent studios worldwide.",
   },
   {
-    icon: <ShieldCheck className="w-6 h-6 text-green-400" />,
-    title: "100% Legal Streaming",
-    description: "We only recommend movies available on official platforms like Hulu, HBO Max, Netflix, and Prime Video.",
+    icon: <Clock className="w-6 h-6 text-purple-400" />, // ✅ NEW SEO UTILITY FEATURE
+    title: "Precise Parents Guide",
+    description: "Never sit through an awkward scene with family again. We provide exact minute-by-minute timestamps to safely skip mature content.",
   },
   {
     icon: <Users className="w-6 h-6 text-blue-400" />,
     title: "Human Curation",
     description: "No algorithms. Our collections are hand-picked by cinephiles who understand the nuance of storytelling.",
+  },
+  {
+    icon: <ShieldCheck className="w-6 h-6 text-green-400" />,
+    title: "100% Legal Streaming",
+    description: "We only recommend movies available on official platforms like Hulu, HBO Max, Netflix, and Prime Video.",
   },
 ];
 
@@ -56,7 +61,7 @@ export default function AboutUs() {
         <title>About Filmiway | The Premium Movie Discovery Platform</title>
         <meta
           name="description"
-          content="Filmiway is a premium guide for discovering movies on Netflix, Hulu, HBO Max, and Prime Video. We curate the best of global cinema."
+          content="Filmiway is a premium guide for discovering movies on Netflix, Hulu, HBO Max, and Prime Video. We offer curated collections and exact Parents Guide timestamps."
         />
         <link rel="canonical" href="https://filmiway.com/about-us" />
         <meta name="robots" content="index, follow" />
@@ -79,7 +84,6 @@ export default function AboutUs() {
                 alt="Filmiway Logo"
                 width={110} 
                 height={38}
-                // Custom CSS width to get that perfect 5% reduction (w-[5.5rem] is 88px, sm:w-[7rem] is 112px)
                 className="w-[5.5rem] sm:w-[7rem] h-auto object-contain group-hover:opacity-80 transition-opacity" 
                 priority
               />
@@ -123,10 +127,10 @@ export default function AboutUs() {
             </motion.div>
           </section>
 
-          {/* ✅ "WHAT WE DO" */}
+          {/* ✅ "WHAT WE DO" - FIXED GRID FOR 4 ITEMS */}
           <section className="mb-24">
             <motion.div 
-              className="grid grid-cols-1 md:grid-cols-3 gap-6"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -167,7 +171,8 @@ export default function AboutUs() {
                 <div className="flex-shrink-0 w-full md:w-auto grid grid-cols-2 gap-3">
                   <div className="bg-black/40 p-5 rounded-xl border border-white/5 text-center">
                     <div className="text-2xl font-bold text-yellow-400 mb-1">50+</div>
-                    <div className="text-[10px] text-gray-400 uppercase tracking-wider">Genres</div>
+                    {/* ✅ CHANGED TO COLLECTIONS */}
+                    <div className="text-[10px] text-gray-400 uppercase tracking-wider">Collections</div>
                   </div>
                   <div className="bg-black/40 p-5 rounded-xl border border-white/5 text-center">
                     <div className="text-2xl font-bold text-yellow-400 mb-1">100%</div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Shield, CheckCircle, AlertTriangle, Clock, AlertOctagon,Eye } from 'lucide-react';
+import { Shield, CheckCircle, AlertTriangle, Clock, AlertOctagon, Eye } from 'lucide-react';
 
 // Import formatting functions from BOTH data sources
 import { formatSensitiveTimeline as formatInceptionTimeline, getSensitiveContentTypes as getInceptionContentTypes } from '../utils/movieData';
@@ -66,10 +66,10 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                         <CheckCircle size={24} />
                     </div>
                     <div>
-                        {/* ✅ SEO FIX: Changed H3 to H2 for correct hierarchy */}
-                        <h2 className="text-emerald-300 font-medium text-lg">Clean Content Record</h2>
+                        {/* ✅ SEO FIX: Targeting the "Parents Guide" keyword directly */}
+                        <h2 className="text-emerald-300 font-medium text-lg">Parents Guide: Clean Content</h2>
                         <p className="text-emerald-400/70 text-sm font-light">
-                            <strong>{movie.Title}</strong>: Content is free of sexual content and explicit scenes.
+                            <strong>{movie.Title}</strong>: Filmiway Parents Guide confirms this film is free of explicit sexual content and nudity. Safe for family viewing.
                         </p>
                     </div>
                 </div>
@@ -88,13 +88,14 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
         >
             <div className="flex items-end justify-between mb-6 border-b border-white/5 pb-4">
                 <div>
-                    {/* ✅ SEO CONFIRMED: This is H2 */}
+                    {/* ✅ SEO CONFIRMED: H2 exactly matches our high-volume keyword */}
                     <h2 className="text-2xl font-light text-red-200 flex items-center gap-3 tracking-wide">
                         <Shield className="text-red-500 w-6 h-6" />
-                        Content Advisory
+                        Parents Guide & Timestamps
                     </h2>
+                    {/* ✅ SEO FIX: Targeting the "Scenes to skip" long-tail keyword */}
                     <p className="text-sm text-gray-500 mt-1.5 ml-1">
-                        Contains: <span className="text-gray-400 font-medium">{contentTypes.length > 0 ? contentTypes.join(', ') : 'Mature Themes'}</span>
+                        Scenes to skip: <span className="text-gray-400 font-medium">{contentTypes.length > 0 ? contentTypes.join(', ') : 'Mature Themes'}</span>
                     </p>
                 </div>
             </div>
@@ -181,7 +182,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                 {/* Footer Warning */}
                 <div className="bg-black/30 p-3 flex items-center justify-center gap-2 text-[10px] text-gray-600 uppercase tracking-[0.2em]">
                     <AlertOctagon size={10} />
-                    <span>Viewer Discretion Advised</span>
+                    <span>Parents Guide • Viewer Discretion Advised</span>
                 </div>
             </div>
         </motion.section>
