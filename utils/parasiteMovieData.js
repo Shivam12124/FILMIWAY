@@ -30,16 +30,66 @@ const createMovieData = (data) => ({
 });
 
 export const SENSITIVE_TIMELINES = {
-    290098: { scenes: [{ start: '0:35:20', end: '0:36:45', type: 'Sex scene', severity: 'Strong', description: 'Explicit lesbian scene' }, { start: '1:42:10', end: '1:43:30', type: 'Sex scene', severity: 'Strong' }, { start: '2:04:15', end: '2:05:20', type: 'Nudity', severity: 'Strong' }] },
-    491584: { scenes: [{ start: '1:58:40', end: '1:59:15', type: 'Nudity', severity: 'Moderate', description: 'Female topless' }] },
+    // ID 290098
+    290098: { 
+        scenes: [
+            { start: '00:21:45', end: '00:21:55', type: 'Nudity (woman)', severity: 'Moderate' },
+            { start: '00:51:10', end: '00:54:45', type: 'Nudity & Sexual Content', severity: 'Strong' },
+            { start: '01:47:10', end: '01:49:10', type: 'Nudity (women)', severity: 'Strong' },
+            { start: '01:58:45', end: '02:03:45', type: 'Sex & Nudity (women)', severity: 'Extreme' },
+            { start: '02:21:10', end: '02:23:15', type: 'Sexual Content', severity: 'Moderate' },
+            { start: '02:32:10', end: '02:32:20', type: 'Partial nudity (woman)', severity: 'Low' },
+            { start: '02:40:10', end: '02:42:20', type: 'Sexual Content & Nudity (women)', severity: 'Strong' }
+        ] 
+    },
+    
+    // ID 491584
+    491584: { 
+        scenes: [
+            { start: '00:15:00', end: '00:18:20', type: 'Sex & Nudity', severity: 'High' },
+            { start: '00:29:30', end: '00:30:00', type: 'Sexual Content (man)', severity: 'Moderate' },
+            { start: '00:35:10', end: '00:35:39', type: 'Sexual Content (man)', severity: 'Moderate' },
+            { start: '01:08:35', end: '01:11:25', type: 'Nudity (woman)', severity: 'Moderate' },
+            { start: '02:13:30', end: '02:14:07', type: 'Sexual Content (man)', severity: 'Moderate' }
+        ] 
+    },
+    
     110415: { scenes: [] },
+    
     11423: { scenes: [] },
-    505192: { scenes: [{ start: '0:42:10', end: '0:42:25', type: 'Partial nudity', severity: 'Mild' }, { start: '1:23:50', end: '1:24:10', type: 'Nudity', severity: 'Mild', description: 'Non-sexual bathing scene' }] },
+    
+    // Parasite
+    505192: { 
+        scenes: [
+            { start: '00:42:10', end: '00:42:25', type: 'Partial nudity', severity: 'Mild' }, 
+            { start: '01:23:50', end: '01:24:10', type: 'Nudity', severity: 'Mild' }
+        ] 
+    },
+    
     619264: { scenes: [] },
+    
     44865: { scenes: [] },
-    326359: { scenes: [{ start: '0:14:20', end: '0:14:40', type: 'Nudity', severity: 'Moderate', description: 'Male full-frontal nudity' }] },
-    42506: { scenes: [{ start: '0:48:15', end: '0:49:30', type: 'Sex scene', severity: 'Strong' }, { start: '1:22:40', end: '1:23:50', type: 'Sex scene', severity: 'Strong', description: 'Explicit scene' }] },
-    1213: { scenes: [{ start: '0:52:30', end: '0:53:10', type: 'Nudity', severity: 'Moderate', description: 'Male buttocks' }, { start: '1:44:15', end: '1:45:20', type: 'Kissing', severity: 'Mild' }] }
+    
+    326359: { 
+        scenes: [
+            { start: '00:14:20', end: '00:14:40', type: 'Nudity', severity: 'Moderate' }
+        ] 
+    },
+    
+    42506: { 
+        scenes: [
+            { start: '00:48:15', end: '00:49:30', type: 'Sex', severity: 'Strong' }, 
+            { start: '01:22:40', end: '01:23:50', type: 'Sex', severity: 'Strong' }
+        ] 
+    },
+    
+    // The Talented Mr. Ripley
+    1213: { 
+        scenes: [
+            { start: '00:52:30', end: '00:53:10', type: 'Nudity', severity: 'Moderate' }, 
+       
+        ] 
+    }
 };
 
 export const FALLBACK_POSTERS = {

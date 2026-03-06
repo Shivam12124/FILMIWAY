@@ -29,13 +29,15 @@ const createMovieData = (data) => ({
 });
 
 export const SENSITIVE_TIMELINES = {
-    274: { scenes: [
-        { start: '18:50', end: '18:57', type: 'Explicit Scene', severity: 'High' },
-        { start: '1:36:30', end: '1:36:37', type: 'Nudity (man)', severity: 'Moderate' }
-    ]},
+    274: { 
+        scenes: [
+            { start: '18:50', end: '18:57', type: 'Sexual Content', severity: 'Mild' },
+            { start: '1:36:30', end: '1:36:37', type: 'Nudity (Man)', severity: 'Moderate' }
+        ]
+    },
     550: { scenes: [
         { start: '48:40', end: '48:55', type: 'Sex', severity: 'High' },
-        { start: '1:06:55', end: '1:07:35', type: 'Partial nudity + kissing', severity: 'Moderate' }
+        { start: '1:06:55', end: '1:07:35', type: 'Partial nudity', severity: 'Moderate' }
     ]},
     77: { scenes: [
         { start: '31:08', end: '31:13', type: 'Casual Kissing', severity: 'Mild' }

@@ -31,19 +31,52 @@ const createMovieData = (data) => ({
 });
 
 export const SENSITIVE_TIMELINES = {
-  2666: { scenes: [{ start: '0:15:20', end: '0:16:00', type: 'Violence', severity: 'Moderate', description: 'Detective violence' }] },
-  27205: { scenes: [{ start: '1:20:00', end: '1:25:00', type: 'Action Sequences', severity: 'Moderate', description: 'Dream world combat' }] },
+  // Dark City
+  2666: { 
+    scenes: [
+      { start: '2:38', end: '3:00', type: 'Partial Nudity', severity: 'Mild', description: 'Partial nudity (man)' },
+      { start: '18:00', end: '19:00', type: 'Nudity', severity: 'Moderate', description: 'Nudity (woman)' }
+    ] 
+  },
+  
+  // Inception
+  27205: { scenes: [] },
+  
+  // The Thirteenth Floor
   1090: { scenes: [] },
-  1946: { scenes: [{ start: '0:45:30', end: '0:46:15', type: 'Violence', severity: 'Low', description: 'Mild action scenes' }] },
+  
+  // eXistenZ
+  1946: { scenes: [] },
+  
+  // Source Code
   45612: { scenes: [] },
-  180: { scenes: [{ start: '0:30:00', end: '0:32:00', type: 'Action Violence', severity: 'Moderate', description: 'Chase and combat' }] },
-  500664: { scenes: [{ start: '1:20:00', end: '1:25:00', type: 'Violence/Gore', severity: 'High', description: 'Intense AI-assisted combat' }] },
-  861: { scenes: [{ start: '1:20:00', end: '1:23:00', type: 'Action Violence', severity: 'Moderate', description: 'Mars action scenes' }] },
-  335984: { scenes: [
-      { start: '38:10', end: '42:45', type: 'Nudity', severity: 'Moderate', description: 'Holographic nudity (Woman)' },
-      { start: '1:30:50', end: '1:31:00', type: 'Nudity', severity: 'Moderate', description: 'Glimpse nudity (Woman)' },
-      { start: '2:17:00', end: '2:18:05', type: 'Nudity', severity: 'Moderate', description: 'Full nudity (Woman)' }
-  ]},
+  
+  // Minority Report
+  180: { scenes: [] },
+  
+  // Upgrade
+  500664: { scenes: [] },
+  
+  // Total Recall
+  861: { 
+    scenes: [
+      { start: '55:50', end: '56:00', type: 'Nudity', severity: 'Moderate', description: 'Nudity (Woman)' },
+      { start: '59:50', end: '59:59', type: 'Nudity', severity: 'Moderate', description: 'Nudity (Woman)' },
+      { start: '1:13:00', end: '1:13:05', type: 'Nudity', severity: 'Moderate', description: 'Nudity (Woman)' }
+    ] 
+  },
+  
+  // Blade Runner 2049
+  335984: { 
+    scenes: [
+      { start: '38:10', end: '42:45', type: 'Nudity', severity: 'Moderate', description: 'Nudity (Woman)' },
+      { start: '1:30:50', end: '1:31:00', type: 'Nudity', severity: 'Mild', description: 'Nudity (Woman)' },
+      { start: '2:02:58', end: '2:03:03', type: 'Partial Nudity', severity: 'Mild', description: 'Partial Nudity (Woman)' },
+      { start: '2:17:00', end: '2:18:05', type: 'Nudity', severity: 'Moderate', description: 'Nudity (Woman)' }
+    ] 
+  },
+  
+  // Edge of Tomorrow
   137113: { scenes: [] }
 };
 
@@ -361,61 +394,133 @@ export const getSensitiveContentTypes = (tmdbId) => {
   const types = new Set();
   sensitiveData.scenes.forEach(scene => {
     const lowerType = scene.type.toLowerCase();
-    if (lowerType.includes('sex')) types.add('intimate scenes');
+    if (lowerType.includes('sex')) types.add('sexual content');
     if (lowerType.includes('nudity')) types.add('nudity');
-    if (lowerType.includes('kissing')) types.add('kissing scenes');
-    if (lowerType.includes('violence')) types.add('violence');
+    if (lowerType.includes('viol')) types.add('violence');
   });
   return Array.from(types);
 };
 
-export const generateFAQData = (movie) => {
-  return MATRIX_MOVIE_FAQS[movie.Title] || [];
+// 🔥 UNIFIED CLEAN GENERATOR (For Google Bots & LLMs)
+export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, collectionSlug, unused, movieInfo) => {
+    
+    // 1. MOVIE SCHEMA (Zero Review/Rating Spam, Clean Description)
+    const movieSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'Movie',
+        'name': movie.Title,
+        'description': movieInfo?.synopsis || `${movie.Title} (${currentMovieYear}) - A mind-bending Sci-Fi thriller.`,
+        'genre': movie.genre,
+        'datePublished': currentMovieYear?.toString() || movie.year.toString(),
+        'director': { '@type': 'Person', 'name': movieInfo?.director || 'Director' },
+        'actor': movieInfo?.cast?.map(actor => ({ '@type': 'Person', 'name': actor })) || [],
+        'image': tmdbData?.poster_path ? `https://image.tmdb.org/t/p/w500${tmdbData.poster_path}` : '',
+        'duration': `PT${movie.runtime}M`
+    };
+
+    // 2. THE "GOLDEN EGG" FAQ SCHEMA
+    const staticFaqs = MATRIX_MOVIE_FAQS[movie.Title] || [];
+    const sensitiveScenes = SENSITIVE_TIMELINES[movie.tmdbId]?.scenes || [];
+    const intensityScenes = movieInfo?.scenes || [];
+    
+    // Load your beautifully written trivia FAQs
+    const schemaFaqs = staticFaqs.map(faq => ({ 
+        '@type': 'Question', 
+        'name': faq.question, 
+        'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer } 
+    }));
+
+    // 🔥 INJECT INTENSITY GRAPH TIMESTAMPS
+    if (intensityScenes.length > 0) {
+        const schemaIntensityList = intensityScenes.map(s => `<li>Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)</li>`).join('');
+        
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `What are the most intense scenes in ${movie.Title}?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `According to the Filmiway Intensity metric, ${movie.Title} peaks at the following moments:<br><br><ul>${schemaIntensityList}</ul>` 
+            }
+        });
+    }
+
+    // 🔥 INJECT SENSITIVE CONTENT TIMESTAMPS
+    if (sensitiveScenes.length > 0) {
+        const typesArray = getSensitiveContentTypes(movie.tmdbId) || ['mature content'];
+        const typesString = typesArray.join(' and ');
+
+        const schemaListText = sensitiveScenes.map(s => {
+            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
+            return `<li>${timeRange} - ${s.type || 'Mature Content'}</li>`;
+        }).join('');
+
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `Yes, according to the Filmiway Parents Guide, ${movie.Title} contains adult scenes including ${typesString}. Exact timestamps for these scenes to skip are:<br><br><ul>${schemaListText}</ul>` 
+            }
+        });
+    } else {
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `No, the Filmiway Parents Guide confirms that ${movie.Title} is free of explicit sexual content and nudity.` 
+            }
+        });
+    }
+
+    const faqSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        'name': `Parents Guide and FAQ for ${movie.Title}`,
+        'mainEntity': schemaFaqs
+    };
+
+    return { movieSchema, faqSchema };
 };
 
-export const generateMovieSchema = (movie) => {
-  const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
-  const posterUrl = FALLBACK_POSTERS[movie.tmdbId];
-  
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'Movie',
-    'name': movie.Title,
-    'description': movieInfo?.synopsis || `${movie.Title} - A compelling sci-fi film`,
-    'genre': movie.genre,
-    'datePublished': movie.year.toString(),
-    'director': {
-      '@type': 'Person',
-      'name': movieInfo?.director || 'Acclaimed Director'
-    },
-    'actor': movieInfo?.cast?.map(actor => ({
-      '@type': 'Person',
-      'name': actor
-    })) || [],
-    'duration': `PT${movie.runtime}M`,
-    'image': posterUrl || '',
-    'aggregateRating': {
-      '@type': 'AggregateRating',
-      'ratingValue': movieInfo?.rating || 7.0,
-      'bestRating': '10',
-      'worstRating': '1',
-      'ratingCount': movieInfo?.audienceScore || 100
-    }
-  };
-};
+// 🔥 DYNAMIC VISIBLE FAQ GENERATOR FOR THE FRONTEND UI
+export const getVisibleMovieFAQs = (movieTitle, tmdbId) => {
+    const staticFaqs = MATRIX_MOVIE_FAQS[movieTitle] ? [...MATRIX_MOVIE_FAQS[movieTitle]] : [];
+    const sensitiveScenes = SENSITIVE_TIMELINES[tmdbId]?.scenes || [];
+    const movieInfo = COMPLETE_MOVIE_DATA[tmdbId];
+    const intensityScenes = movieInfo?.scenes || [];
 
-export const generateFAQSchema = (faqs) => ({
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  'mainEntity': faqs.map(faq => ({
-    '@type': 'Question',
-    'name': faq.question,
-    'acceptedAnswer': {
-      '@type': 'Answer',
-      'text': faq.answer
+    if (intensityScenes.length > 0) {
+        const uiIntensityList = intensityScenes.map(s => `• Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)`).join('\n');
+        
+        staticFaqs.unshift({
+            question: `What are the most intense scenes in ${movieTitle}?`,
+            answer: `According to the Filmiway Intensity metric, ${movieTitle} peaks at the following moments:\n\n${uiIntensityList}`
+        });
     }
-  }))
-});
+
+    if (sensitiveScenes.length > 0) {
+        const typesArray = getSensitiveContentTypes(tmdbId) || ['mature content'];
+        const typesString = typesArray.join(' and ');
+
+        const uiListText = sensitiveScenes.map(s => {
+            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
+            return `• ${timeRange} - ${s.type || 'Mature Content'}`;
+        }).join('\n');
+
+        staticFaqs.unshift({
+            question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
+            answer: `Yes, according to the Filmiway Parents Guide, ${movieTitle} contains adult scenes including ${typesString}. Exact timestamps for these scenes to skip are:\n\n${uiListText}`
+        });
+    } else {
+        staticFaqs.unshift({
+            question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
+            answer: `No, the Filmiway Parents Guide confirms that ${movieTitle} is free of explicit sexual content and nudity.`
+        });
+    }
+
+    return staticFaqs;
+};
 
 export const fetchMovieFromTMDB = async (tmdbId) => ({
   poster_path: null,

@@ -1,4 +1,5 @@
 // utils/mysteryThrillerMovieData.js - COMPLETE MYSTERY THRILLER COLLECTION 🔥
+// Clever mystery thrillers with impossible puzzles, shocking twists & psychological depth.
 
 export const TMDB_CONFIG = {
     API_KEY: 'a07e22bc18f5cb106bfe4cc1f83ad8ed',
@@ -20,6 +21,20 @@ export const COMPLETE_MOVIE_DATABASE = [
     { tmdbId: 2832, imdbID: 'tt0119177', Title: 'Identity', year: 2003, genre: 'Mystery', runtime: 90, rank: 10 }
 ];
 
+// ✅ STRATEGIC QUOTES (100% Clean & SEO Safe)
+export const STRATEGIC_QUOTES = {
+    807: "What's in the box?", // Se7en
+    11324: "Which would be worse - to live as a monster, or to die as a good man?", // Shutter Island
+    146233: "Pray for the best, prepare for the worst.", // Prisoners
+    1949: "I need to know who he is. I need to stand there, I need to look him in the eye.", // Zodiac
+    210577: "What have we done to each other? What will we do?", // Gone Girl
+    11423: "Look at my eyes. Tell me the truth.", // Memories of Murder
+    411088: "Your testimony has holes, Adrián. And I need the truth.", // The Invisible Guest
+    491584: "To me, the world is a mystery.", // Burning
+    2649: "I'm pulling back the curtain.", // The Game
+    2832: "As I was going up the stair, I met a man who wasn't there." // Identity
+};
+
 // Helper to ensure default values
 const createMovieData = (data) => ({
     mysteryComplexity: 90,
@@ -32,33 +47,37 @@ const createMovieData = (data) => ({
 
 export const SENSITIVE_TIMELINES = {
     807: { scenes: [] }, // Se7en
-    11324: { scenes: [
-        { start: "1:10:43", end: "1:10:47", type: "Nudity (men)", severity: "Moderate" },
-        { start: "1:59:03", end: "1:59:06", type: "Casual kissing", severity: "Mild" }
-    ]},
+    11324: {  // Shutter Island
+        scenes: [
+            { start: "1:10:43", end: "1:10:47", type: "Nudity (men)", severity: "Moderate" }
+        ]
+    },
     146233: { scenes: [] }, // Prisoners
     1949: { scenes: [] }, // Zodiac
-    210577: { scenes: [
-        { start: "6:41", end: "6:59", type: "Sex", severity: "High" },
-        { start: "20:57", end: "21:04", type: "Sex", severity: "High" },
-        { start: "43:20", end: "44:54", type: "Passionate kissing and partial nudity", severity: "High" },
-        { start: "45:00", end: "45:10", type: "Sex", severity: "High" },
-        { start: "2:00:10", end: "2:00:15", type: "Kissing", severity: "Mild" },
-        { start: "2:03:50", end: "2:04:55", type: "Sex", severity: "High" },
-        { start: "2:12:30", end: "2:13:45", type: "Nudity", severity: "High" }
-    ]},
-    11423: { scenes: [
-        { start: "9:58", end: "10:10", type: "Sex", severity: "Moderate" },
-        { start: "54:34", end: "54:55", type: "Nudity (men)", severity: "Mild" },
-        { start: "1:01:12", end: "1:02:40", type: "Sexual Content ", severity: "Moderate" },
-        { start: "1:25:12", end: "1:25:47", type: "Partial nudity ", severity: "Mild" }
-    ]},
+    210577: { 
+        scenes: [
+            { start: "6:41", end: "6:59", type: "Sex", severity: "High" },
+            { start: "20:57", end: "21:04", type: "Sex", severity: "High" },
+            { start: "43:20", end: "44:54", type: "Nudity", severity: "High" },
+            { start: "45:00", end: "45:10", type: "Sex", severity: "High" },
+            { start: "2:03:50", end: "2:04:55", type: "Sex", severity: "High" },
+            { start: "2:12:30", end: "2:13:45", type: "Nudity", severity: "High" }
+        ]
+    },
+    11423: { 
+        scenes: [
+            { start: "9:58", end: "10:10", type: "Sex", severity: "Moderate" },
+            { start: "54:34", end: "54:55", type: "Nudity", severity: "Mild" },
+            { start: "1:01:12", end: "1:02:40", type: "Sexual content", severity: "Moderate" },
+            { start: "1:25:12", end: "1:25:47", type: "Sexual content", severity: "Mild" }
+        ]
+    },
     411088: { scenes: [] }, // The Invisible Guest
     491584: { scenes: [
-        { start: "15:00", end: "18:20", type: "Sex", severity: "High" },
+        { start: "15:00", end: "18:20", type: "Sex & Nudity", severity: "High" },
         { start: "29:30", end: "30:00", type: "Sexual Content (man)", severity: "Moderate" },
         { start: "35:10", end: "35:39", type: "Sexual Content (man)", severity: "Moderate" },
-        { start: "1:08:35", end: "1:11:25", type: "Partial nudity (woman)", severity: "Mild" },
+        { start: "1:08:35", end: "1:11:25", type: "Nudity (woman)", severity: "Moderate" },
         { start: "2:13:30", end: "2:14:07", type: "Sexual Content (man)", severity: "Moderate" }
     ]},
     2649: { scenes: [
@@ -247,7 +266,7 @@ export const COMPLETE_MOVIE_DATA = {
             { time: 109, intensity: 80, label: 'Rooftop', color: '#dc8841' },
             { time: 129, intensity: 90, label: 'The End', color: '#d84315' }
         ], 
-        synopsis: "Nicholas Van Orton (Michael Douglas), a cold, immensely wealthy investment banker, receives a strange birthday gift from his estranged brother: participation in a mysterious, real-life \"Game.\" As the line between the scripted game and his actual life begins to dangerously dissolve, Nicholas is plunged into a terrifying, paranoia-soaked world where he loses control of everything. This is a spectacular, mind-bending thriller that constantly shifts the stakes until the surprising final moment.", 
+        synopsis: "Nicholas Van Orton (Michael Douglas), a cold, immensely wealthy investment banker, receives a strange birthday gift from his estranged brother: participation in a mysterious, real-life 'Game.' As the line between the scripted game and his actual life begins to dangerously dissolve, Nicholas is plunged into a terrifying, paranoia-soaked world where he loses control of everything. This is a spectacular, mind-bending thriller that constantly shifts the stakes until the surprising final moment.", 
         themes: ["Reality vs Illusion", "Control", "Wealth", "Brotherhood"], 
         awards: ["Saturn Award Nomination"] 
     }),
@@ -271,20 +290,6 @@ export const COMPLETE_MOVIE_DATA = {
         awards: ["Saturn Award Nomination"] 
     })
 };
-
-// 6️⃣ CINEMATIC_COLORS
-export const CINEMATIC_COLORS = {
-    Thriller: '#1e293b', Drama: '#dc2626', Mystery: '#dc2626', 'Sci-Fi': '#0f172a',
-    Crime: '#422006', Romance: '#be185d', Action: '#991b1b', Psychological: '#7c3aed', Horror: '#0f172a'
-};
-
-// 7️⃣ RATING_OPTIONS
-export const RATING_OPTIONS = [
-    { value: 1, label: "A Disappointment", color: "#dc2626", symbol: "🎫", bgColor: "bg-red-900/30", description: "Torn ticket - Total disappointment" },
-    { value: 2, label: "Flawed", color: "#ea580c", symbol: "🎟️", bgColor: "bg-orange-900/30", description: "Faded ticket - Has major flaws" },
-    { value: 3, label: "Worth the Ride", color: "#16a34a", symbol: "🎟️", bgColor: "bg-green-900/30", description: "Clean ticket - Solid entertainment" },
-    { value: 4, label: "Exceptional", color: "#eab308", symbol: "🎫", bgColor: "bg-yellow-900/30", description: "Golden ticket - Cinematic masterpiece" }
-];
 
 // 8️⃣ MYSTERY_THRILLER_FAQS
 export const MYSTERY_THRILLER_FAQS = {
@@ -350,82 +355,140 @@ export const MYSTERY_THRILLER_FAQS = {
     ]
 };
 
-// 9️⃣ HELPER FUNCTIONS & EXPORTS
-export const getTMDBPosterUrl = (posterPath, size = 'medium') => {
-    if (!posterPath) return null;
-    const posterSize = TMDB_CONFIG.POSTER_SIZES[size] || TMDB_CONFIG.POSTER_SIZES.medium;
-    return `${TMDB_CONFIG.IMAGE_BASE_URL}/${posterSize}${posterPath}`;
-};
-
+// ✅ HELPER FUNCTIONS: 100% SPAM-FREE, DYNAMIC, & GOOGLE APPROVED
 export const getSensitiveContentTypes = (tmdbId) => {
     const sensitiveData = SENSITIVE_TIMELINES[tmdbId];
     if (!sensitiveData?.scenes?.length) return null;
     const types = new Set();
     sensitiveData.scenes.forEach(scene => {
         const lowerType = scene.type.toLowerCase();
-        if (lowerType.includes('sex')) types.add('intimate scenes');
+        if (lowerType.includes('sex')) types.add('sexual content');
         if (lowerType.includes('nudity')) types.add('nudity');
-        if (lowerType.includes('kissing')) types.add('kissing scenes');
+        if (lowerType.includes('viol')) types.add('violence');
+        if (lowerType.includes('kiss')) types.add('kissing');
     });
     return Array.from(types);
 };
 
-export const generateFAQData = (movie) => {
-    return MYSTERY_THRILLER_FAQS[movie.Title] || [];
-};
-
-export const generateMovieSchema = (movie) => {
-    const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
-    const posterUrl = FALLBACK_POSTERS[movie.tmdbId] || '';
-    return {
+// 🔥 UNIFIED CLEAN GENERATOR (For Google Bots & LLMs)
+export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, collectionSlug, unused, movieInfo) => {
+    
+    // 1. MOVIE SCHEMA (Zero Review/Rating Spam, Clean Description)
+    const movieSchema = {
         '@context': 'https://schema.org',
         '@type': 'Movie',
         'name': movie.Title,
-        'description': movieInfo?.synopsis || `${movie.Title} - A masterful mystery thriller.`,
+        'description': movieInfo?.synopsis || `${movie.Title} (${currentMovieYear}) - A masterful mystery thriller.`,
         'genre': movie.genre,
-        'datePublished': movie.year.toString(),
-        'director': { '@type': 'Person', 'name': movieInfo?.director || 'Acclaimed Director' },
+        'datePublished': currentMovieYear?.toString() || movie.year.toString(),
+        'director': { '@type': 'Person', 'name': movieInfo?.director || 'Director' },
         'actor': movieInfo?.cast?.map(actor => ({ '@type': 'Person', 'name': actor })) || [],
-        'duration': `PT${movie.runtime}M`,
-        'image': posterUrl,
-        'aggregateRating': { 
-            '@type': 'AggregateRating', 
-            'ratingValue': movieInfo?.rating || 7.5, 
-            'bestRating': 10, 
-            'worstRating': 1, 
-            'ratingCount': movieInfo?.audienceScore || 100 
-        }
+        'image': tmdbData?.poster_path ? `https://image.tmdb.org/t/p/w500${tmdbData.poster_path}` : '',
+        'duration': `PT${movie.runtime}M`
     };
-};
 
-export const generateFAQSchema = (faqs) => ({
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    'mainEntity': faqs.map(faq => ({ 
+    // 2. THE "GOLDEN EGG" FAQ SCHEMA
+    const staticFaqs = MYSTERY_THRILLER_FAQS[movie.Title] || [];
+    const sensitiveScenes = SENSITIVE_TIMELINES[movie.tmdbId]?.scenes || [];
+    const intensityScenes = movieInfo?.scenes || [];
+    
+    // Load your beautifully written trivia FAQs
+    const schemaFaqs = staticFaqs.map(faq => ({ 
         '@type': 'Question', 
         'name': faq.question, 
         'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer } 
-    }))
-});
+    }));
 
-export const fetchMovieFromTMDB = async (tmdbId) => ({ 
-    poster_path: null, 
-    title: COMPLETE_MOVIE_DATABASE.find(m => m.tmdbId === tmdbId)?.Title || 'Unknown Movie' 
-});
+    // 🔥 INJECT INTENSITY GRAPH TIMESTAMPS
+    if (intensityScenes.length > 0) {
+        const schemaIntensityList = intensityScenes.map(s => `<li>Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)</li>`).join('');
+        
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `What are the most intense scenes in ${movie.Title}?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `According to the Filmiway Intensity metric, ${movie.Title} peaks at the following moments:<br><br><ul>${schemaIntensityList}</ul>` 
+            }
+        });
+    }
 
-export const fetchWatchProviders = async (tmdbId, region = 'US') => null;
+    // 🔥 INJECT SENSITIVE CONTENT TIMESTAMPS
+    if (sensitiveScenes.length > 0) {
+        const typesArray = getSensitiveContentTypes(movie.tmdbId) || ['mature content'];
+        const typesString = typesArray.join(' and ');
 
-export const formatSensitiveTimeline = (tmdbId) => {
-    const raw = SENSITIVE_TIMELINES[tmdbId];
-    if (!raw || !raw.scenes || raw.scenes.length === 0) return null;
-    return {
-        scenes: raw.scenes.map(scene => ({
-            start: scene.start,
-            end: scene.end,
-            type: scene.type,
-            description: scene.description || ''
-        }))
+        const schemaListText = sensitiveScenes.map(s => {
+            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
+            return `<li>${timeRange} - ${s.type || 'Mature Content'}</li>`;
+        }).join('');
+
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `Yes, according to the Filmiway Parents Guide, ${movie.Title} contains adult scenes including ${typesString}. Exact timestamps for these scenes to skip are:<br><br><ul>${schemaListText}</ul>` 
+            }
+        });
+    } else {
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `No, the Filmiway Parents Guide confirms that ${movie.Title} is free of explicit sexual content and nudity.` 
+            }
+        });
+    }
+
+    const faqSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        'name': `Parents Guide and FAQ for ${movie.Title}`,
+        'mainEntity': schemaFaqs
     };
+
+    return { movieSchema, faqSchema };
+};
+
+// 🔥 DYNAMIC VISIBLE FAQ GENERATOR FOR THE FRONTEND UI
+export const getVisibleMovieFAQs = (movieTitle, tmdbId) => {
+    const staticFaqs = MYSTERY_THRILLER_FAQS[movieTitle] ? [...MYSTERY_THRILLER_FAQS[movieTitle]] : [];
+    const sensitiveScenes = SENSITIVE_TIMELINES[tmdbId]?.scenes || [];
+    const movieInfo = COMPLETE_MOVIE_DATA[tmdbId];
+    const intensityScenes = movieInfo?.scenes || [];
+
+    if (intensityScenes.length > 0) {
+        const uiIntensityList = intensityScenes.map(s => `• Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)`).join('\n');
+        
+        staticFaqs.unshift({
+            question: `What are the most intense scenes in ${movieTitle}?`,
+            answer: `According to the Filmiway Intensity metric, ${movieTitle} peaks at the following moments:\n\n${uiIntensityList}`
+        });
+    }
+
+    if (sensitiveScenes.length > 0) {
+        const typesArray = getSensitiveContentTypes(tmdbId) || ['mature content'];
+        const typesString = typesArray.join(' and ');
+
+        const uiListText = sensitiveScenes.map(s => {
+            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
+            return `• ${timeRange} - ${s.type || 'Mature Content'}`;
+        }).join('\n');
+
+        staticFaqs.unshift({
+            question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
+            answer: `Yes, according to the Filmiway Parents Guide, ${movieTitle} contains adult scenes including ${typesString}. Exact timestamps for these scenes to skip are:\n\n${uiListText}`
+        });
+    } else {
+        staticFaqs.unshift({
+            question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
+            answer: `No, the Filmiway Parents Guide confirms that ${movieTitle} is free of explicit sexual content and nudity.`
+        });
+    }
+
+    return staticFaqs;
 };
 
 // Build object map by tmdbId

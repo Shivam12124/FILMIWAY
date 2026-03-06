@@ -1,4 +1,5 @@
-// utils/se7enMovieData.js - FINAL VERSION WITH ATMOSPHERIC DREAD METRICS
+// utils/se7enMovieData.js - COMPLETE DARK NOIR THRILLERS COLLECTION 🔥
+// Gritty, rain-soaked noir thrillers hunting pure evil.
 
 export const TMDB_CONFIG = {
     API_KEY: 'a07e22bc18f5cb106bfe4cc1f83ad8ed',
@@ -20,41 +21,50 @@ export const COMPLETE_MOVIE_DATABASE = [
     { tmdbId: 322, imdbID: 'tt0327056', Title: 'Mystic River', year: 2003, genre: 'Crime Drama', runtime: 138, rank: 10 }
 ];
 
+// ✅ STRATEGIC QUOTES (100% Clean & SEO Safe)
+export const STRATEGIC_QUOTES = {
+    1949: "I need to know who he is. I need to stand there, I need to look him in the eye.", // Zodiac
+    11423: "Look at my eyes. Tell me the truth.", // Memories of Murder
+    146233: "Pray for the best, prepare for the worst.", // Prisoners
+    274: "Quid pro quo. I tell you things, you tell me things.", // Silence of the Lambs
+    65754: "I want you to help me catch a killer of women.", // Dragon Tattoo
+    13855: "Where are the girls?", // The Chaser
+    414906: "They think I am hiding in the shadows. But I am the shadows.", // The Batman
+    36095: "Who are you?", // Cure
+    8740: "I have to know. Even if it kills me.", // The Vanishing
+    322: "We bury our sins here, Dave. We wash them clean." // Mystic River
+};
+
 // ✅ SENSITIVE TIMELINES (Strictly Sex & Nudity Only)
 export const SENSITIVE_TIMELINES = {
     1949: { scenes: [] }, // Zodiac
-    11423: { scenes: [
-        { start: '00:09:58', end: '00:10:10', type: 'Sex', severity: 'Extreme', description: 'Explicit scene' },
-        { start: '00:54:34', end: '00:54:55', type: 'Nudity', severity: 'Extreme', description: 'Full nudity' },
-        { start: '01:01:12', end: '01:02:40', type: 'Sexual Content', severity: 'High', description: 'Sexual sequence' },
-        { start: '01:25:12', end: '01:25:47', type: 'Partial Nudity', severity: 'High', description: 'Partial nudity' }
-    ]}, 
+    11423: { // Memories of Murder
+        scenes: [
+            { start: "9:58", end: "10:10", type: "Sex", severity: "Moderate" },
+            { start: "54:34", end: "54:55", type: "Nudity", severity: "Mild" },
+            { start: "1:01:12", end: "1:02:40", type: "Sexual content", severity: "Moderate" },
+            { start: "1:25:12", end: "1:25:47", type: "Sexual content", severity: "Mild" }
+        ]
+    },
     146233: { scenes: [] }, // Prisoners
-    274: { scenes: [
-        { start: '01:38:00', end: '01:40:00', type: 'Nudity', severity: 'High', description: 'Buffalo Bill dance scene' }
-    ]},
-    65754: { scenes: [
-        { start: '01:05:00', end: '01:10:00', type: 'Sexual Violence', severity: 'Extreme', description: 'Graphic assault scene' },
-        { start: '01:45:00', end: '01:48:00', type: 'Nudity', severity: 'High', description: 'Consensual love scene' }
-    ]},
+    274: { // The Silence of the Lambs
+        scenes: [
+            { start: '18:50', end: '18:57', type: 'Sexual Content', severity: 'Mild' },
+            { start: '1:36:30', end: '1:36:37', type: 'Nudity (Man)', severity: 'Moderate' }
+        ]
+    },
+    65754: { // The Girl with the Dragon Tattoo
+        scenes: [
+            { start: '00:54:00', end: '00:55:00', type: 'Sex', severity: 'High' },
+            { start: '00:57:15', end: '00:57:30', type: 'Nudity', severity: 'High' },
+            { start: '01:38:40', end: '01:40:00', type: 'Sex & Nudity', severity: 'Extreme' }
+        ]
+    },
     13855: { scenes: [] }, // The Chaser
     414906: { scenes: [] }, // The Batman
     36095: { scenes: [] }, // Cure
     8740: { scenes: [] }, // The Vanishing
     322: { scenes: [] } // Mystic River
-};
-
-export const FALLBACK_POSTERS = {
-    1949: 'https://image.tmdb.org/t/p/w500/qZ8jV3b8g1.jpg',
-    11423: 'https://image.tmdb.org/t/p/w500/6yIsi26BNO99144Q9.jpg',
-    146233: 'https://image.tmdb.org/t/p/w500/tuRcCnSj.jpg',
-    274: 'https://image.tmdb.org/t/p/w500/rplLJ2hPcOQ.jpg',
-    65754: 'https://image.tmdb.org/t/p/w500/mq14.jpg',
-    13855: 'https://image.tmdb.org/t/p/w500/7I5b.jpg',
-    414906: 'https://image.tmdb.org/t/p/w500/74xTEgt7R36Fpo.jpg',
-    36095: 'https://image.tmdb.org/t/p/w500/py0f.jpg',
-    8740: 'https://image.tmdb.org/t/p/w500/2j4h.jpg',
-    322: 'https://image.tmdb.org/t/p/w500/3p6g.jpg'
 };
 
 const createMovieData = (data) => data;
@@ -66,7 +76,7 @@ export const COMPLETE_MOVIE_DATA = {
         imdbID: 'tt0443706',
         Title: 'Zodiac',
         se7enDNAScore: 98,
-        atmosphericDread: 95, // ADDED
+        atmosphericDread: 95, 
         complexityLevel: "EXTREME",
         dominantColor: "#1e293b",
         rating: 7.7,
@@ -93,7 +103,7 @@ export const COMPLETE_MOVIE_DATA = {
         imdbID: 'tt0353969',
         Title: 'Memories of Murder',
         se7enDNAScore: 96,
-        atmosphericDread: 90, // ADDED
+        atmosphericDread: 90, 
         complexityLevel: "HIGH",
         dominantColor: "#3f3f46",
         rating: 8.1,
@@ -120,7 +130,7 @@ export const COMPLETE_MOVIE_DATA = {
         imdbID: 'tt1392214',
         Title: 'Prisoners',
         se7enDNAScore: 95,
-        atmosphericDread: 92, // ADDED
+        atmosphericDread: 92, 
         complexityLevel: "HIGH",
         dominantColor: "#374151",
         rating: 8.1,
@@ -147,7 +157,7 @@ export const COMPLETE_MOVIE_DATA = {
         imdbID: 'tt0102926',
         Title: 'The Silence of the Lambs',
         se7enDNAScore: 94,
-        atmosphericDread: 94, // ADDED
+        atmosphericDread: 94, 
         complexityLevel: "HIGH",
         dominantColor: "#57534e",
         rating: 8.6,
@@ -174,7 +184,7 @@ export const COMPLETE_MOVIE_DATA = {
         imdbID: 'tt1568346',
         Title: 'The Girl with the Dragon Tattoo',
         se7enDNAScore: 92,
-        atmosphericDread: 88, // ADDED
+        atmosphericDread: 88, 
         complexityLevel: "HIGH",
         dominantColor: "#0f172a",
         rating: 7.8,
@@ -201,7 +211,7 @@ export const COMPLETE_MOVIE_DATA = {
         imdbID: 'tt1190539',
         Title: 'The Chaser',
         se7enDNAScore: 90,
-        atmosphericDread: 85, // ADDED
+        atmosphericDread: 85, 
         complexityLevel: "EXTREME",
         dominantColor: "#7f1d1d",
         rating: 7.8,
@@ -228,7 +238,7 @@ export const COMPLETE_MOVIE_DATA = {
         imdbID: 'tt1877830',
         Title: 'The Batman',
         se7enDNAScore: 89,
-        atmosphericDread: 91, // ADDED
+        atmosphericDread: 91, 
         complexityLevel: "HIGH",
         dominantColor: "#c2410c",
         rating: 7.8,
@@ -255,7 +265,7 @@ export const COMPLETE_MOVIE_DATA = {
         imdbID: 'tt0123948',
         Title: 'Cure',
         se7enDNAScore: 88,
-        atmosphericDread: 98, // ADDED
+        atmosphericDread: 98, 
         complexityLevel: "EXTREME",
         dominantColor: "#171717",
         rating: 7.5,
@@ -282,7 +292,7 @@ export const COMPLETE_MOVIE_DATA = {
         imdbID: 'tt0096163',
         Title: 'The Vanishing',
         se7enDNAScore: 87,
-        atmosphericDread: 90, // ADDED
+        atmosphericDread: 90, 
         complexityLevel: "HIGH",
         dominantColor: "#ca8a04",
         rating: 7.7,
@@ -309,7 +319,7 @@ export const COMPLETE_MOVIE_DATA = {
         imdbID: 'tt0327056',
         Title: 'Mystic River',
         se7enDNAScore: 86,
-        atmosphericDread: 85, // ADDED
+        atmosphericDread: 85, 
         complexityLevel: "HIGH",
         dominantColor: "#1c1917",
         rating: 7.9,
@@ -368,7 +378,7 @@ export const SE7EN_MOVIE_FAQS = {
     'The Chaser': [
         { question: "Is The Chaser based on a true story?", answer: "Yes, it is loosely based on the serial killer Yoo Young-chul, who targeted prostitutes and wealthy elderly people in Seoul in the early 2000s." },
         { question: "Why is the killer caught so early?", answer: "The tension comes from the 'ticking clock' of finding the victim alive, not finding the killer's identity, subverting the typical whodunit formula." },
-        { question: "Is it very violent?", answer: 'Yes, it contains brutal scenes of violence involving hammers and chisels, emphasizing the gritty, realistic horror of the situation.' },
+        { question: "Is it very violent?", answer: "Yes, it contains brutal scenes of violence involving hammers and chisels, emphasizing the gritty, realistic horror of the situation." },
         { question: "What is the main theme?", answer: "The failure of the system to protect the vulnerable due to bureaucracy and incompetence, leaving individuals to fend for themselves against monsters." }
     ],
     'The Batman': [
@@ -397,95 +407,150 @@ export const SE7EN_MOVIE_FAQS = {
     ]
 };
 
-export const getTMDBPosterUrl = (posterPath, size = 'medium') => {
-    if (!posterPath) return null;
-    const posterSize = TMDB_CONFIG.POSTER_SIZES[size] || TMDB_CONFIG.POSTER_SIZES.medium;
-    return `${TMDB_CONFIG.IMAGE_BASE_URL}/${posterSize}${posterPath}`;
-};
-
+// ✅ HELPER FUNCTIONS: 100% SPAM-FREE, DYNAMIC, & GOOGLE APPROVED
 export const getSensitiveContentTypes = (tmdbId) => {
     const sensitiveData = SENSITIVE_TIMELINES[tmdbId];
     if (!sensitiveData?.scenes?.length) return null;
     const types = new Set();
     sensitiveData.scenes.forEach(scene => {
         const lowerType = scene.type.toLowerCase();
-        if (lowerType.includes('sex')) types.add('intimate scenes');
+        if (lowerType.includes('sex')) types.add('sexual content');
         if (lowerType.includes('nudity')) types.add('nudity');
-        if (lowerType.includes('violence')) types.add('violence');
+        if (lowerType.includes('viol')) types.add('violence');
     });
     return Array.from(types);
 };
 
-export const generateFAQData = (movie) => {
-    return SE7EN_MOVIE_FAQS[movie.Title] || [];
-};
-
-export const generateMovieSchema = (movie) => {
-    const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
-    const posterUrl = FALLBACK_POSTERS[movie.tmdbId];
-    return {
-        "@context": "https://schema.org",
-        "@type": "Movie",
-        "name": movie.Title,
-        "description": movieInfo?.synopsis || `${movie.Title} - A compelling crime thriller.`,
-        "genre": movie.genre,
-        "datePublished": movie.year.toString(),
-        "director": {
-            "@type": "Person",
-            "name": movieInfo?.director || "Acclaimed Director"
-        },
-        "actor": movieInfo?.cast?.map(actor => ({
-            "@type": "Person",
-            "name": actor
-        })) || [],
-        "duration": `PT${movie.runtime}M`,
-        "image": posterUrl,
-        "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": movieInfo?.rating || 7.0,
-            "bestRating": 10,
-            "worstRating": 1,
-            "ratingCount": movieInfo?.audienceScore || 100
-        }
-    };
-};
-
-export const generateFAQSchema = (faqs) => {
-    return {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": faqs.map(faq => ({
-            "@type": "Question",
-            "name": faq.question,
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": faq.answer
-            }
-        }))
-    };
-};
-
-export const fetchMovieFromTMDB = async (tmdbId) => {
-    return {
-        poster_path: null,
-        title: COMPLETE_MOVIE_DATABASE.find(m => m.tmdbId === tmdbId)?.Title || 'Unknown Movie'
-    };
-};
-
-export const fetchWatchProviders = async (tmdbId, region = 'US') => {
-    return null; 
-};
-
-export const formatSensitiveTimeline = (tmdbId) => {
-    const raw = SENSITIVE_TIMELINES[tmdbId];
-    if (!raw || !raw.scenes || raw.scenes.length === 0) return null;
+// 🔥 UNIFIED CLEAN GENERATOR (For Google Bots & LLMs - No Spam)
+export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, collectionSlug, unused, movieInfo) => {
     
-    return {
-        scenes: raw.scenes.map(scene => ({
-            start: scene.start,
-            end: scene.end,
-            type: scene.type,
-            description: scene.description
-        }))
+    // 1. MOVIE SCHEMA (Zero Review/Rating Spam, Clean Description)
+    const movieSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'Movie',
+        'name': movie.Title,
+        'description': movieInfo?.synopsis || `${movie.Title} (${currentMovieYear}) - A dark, gritty noir thriller.`,
+        'genre': movie.genre,
+        'datePublished': currentMovieYear?.toString() || movie.year.toString(),
+        'director': { '@type': 'Person', 'name': movieInfo?.director || 'Director' },
+        'actor': movieInfo?.cast?.map(actor => ({ '@type': 'Person', 'name': actor })) || [],
+        'image': tmdbData?.poster_path ? `https://image.tmdb.org/t/p/w500${tmdbData.poster_path}` : '',
+        'duration': `PT${movie.runtime}M`
     };
+
+    // 2. THE "GOLDEN EGG" FAQ SCHEMA
+    const staticFaqs = SE7EN_MOVIE_FAQS[movie.Title] || [];
+    const sensitiveScenes = SENSITIVE_TIMELINES[movie.tmdbId]?.scenes || [];
+    const intensityScenes = movieInfo?.scenes || [];
+    
+    // Load your beautifully written trivia FAQs
+    const schemaFaqs = staticFaqs.map(faq => ({ 
+        '@type': 'Question', 
+        'name': faq.question, 
+        'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer } 
+    }));
+
+    // 🔥 INJECT INTENSITY GRAPH TIMESTAMPS
+    if (intensityScenes.length > 0) {
+        const schemaIntensityList = intensityScenes.map(s => `<li>Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)</li>`).join('');
+        
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `What are the most intense scenes in ${movie.Title}?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `According to the Filmiway Intensity metric, ${movie.Title} peaks at the following moments:<br><br><ul>${schemaIntensityList}</ul>` 
+            }
+        });
+    }
+
+    // 🔥 INJECT SENSITIVE CONTENT TIMESTAMPS (Unshifted last so it remains #1 at the very top)
+    if (sensitiveScenes.length > 0) {
+        const typesArray = getSensitiveContentTypes(movie.tmdbId) || ['mature content'];
+        const typesString = typesArray.join(' and ');
+
+        const schemaListText = sensitiveScenes.map(s => {
+            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
+            return `<li>${timeRange} - ${s.type || 'Mature Content'}</li>`;
+        }).join('');
+
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `Yes, according to the Filmiway Parents Guide, ${movie.Title} contains adult scenes including ${typesString}. Exact timestamps for these scenes to skip are:<br><br><ul>${schemaListText}</ul>` 
+            }
+        });
+    } else {
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `No, the Filmiway Parents Guide confirms that ${movie.Title} is free of explicit sexual content and nudity.` 
+            }
+        });
+    }
+
+    const faqSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        'name': `Parents Guide and FAQ for ${movie.Title}`,
+        'mainEntity': schemaFaqs
+    };
+
+    return { movieSchema, faqSchema };
 };
+
+// 🔥 DYNAMIC VISIBLE FAQ GENERATOR FOR THE FRONTEND UI
+export const getVisibleMovieFAQs = (movieTitle, tmdbId) => {
+    // 1. Get the static, manually written FAQs
+    const staticFaqs = SE7EN_MOVIE_FAQS[movieTitle] ? [...SE7EN_MOVIE_FAQS[movieTitle]] : [];
+    
+    // 2. Get the sensitive scenes and intensity scenes data
+    const sensitiveScenes = SENSITIVE_TIMELINES[tmdbId]?.scenes || [];
+    const movieInfo = COMPLETE_MOVIE_DATA[tmdbId];
+    const intensityScenes = movieInfo?.scenes || [];
+
+    // 3. 🔥 DYNAMICALLY GENERATE THE INTENSITY GRAPH FAQ
+    if (intensityScenes.length > 0) {
+        const uiIntensityList = intensityScenes.map(s => `• Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)`).join('\n');
+        
+        staticFaqs.unshift({
+            question: `What are the most intense scenes in ${movieTitle}?`,
+            answer: `According to the Filmiway Intensity metric, ${movieTitle} peaks at the following moments:\n\n${uiIntensityList}`
+        });
+    }
+
+    // 4. 🔥 DYNAMICALLY GENERATE THE SENSITIVE CONTENT FAQ
+    if (sensitiveScenes.length > 0) {
+        const typesArray = getSensitiveContentTypes(tmdbId) || ['mature content'];
+        const typesString = typesArray.join(' and ');
+
+        const uiListText = sensitiveScenes.map(s => {
+            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
+            return `• ${timeRange} - ${s.type || 'Mature Content'}`;
+        }).join('\n');
+
+        staticFaqs.unshift({
+            question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
+            answer: `Yes, according to the Filmiway Parents Guide, ${movieTitle} contains adult scenes including ${typesString}. Exact timestamps for these scenes to skip are:\n\n${uiListText}`
+        });
+    } else {
+        staticFaqs.unshift({
+            question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
+            answer: `No, the Filmiway Parents Guide confirms that ${movieTitle} is free of explicit sexual content and nudity.`
+        });
+    }
+
+    // 5. Return the combined list
+    return staticFaqs;
+};
+
+// Build object map by tmdbId
+export const COMPLETE_SE7EN_DATABASE = Object.fromEntries(
+    COMPLETE_MOVIE_DATABASE.map(m => [m.tmdbId, m])
+);
+
+export default COMPLETE_SE7EN_DATABASE;

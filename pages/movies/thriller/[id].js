@@ -1,4 +1,4 @@
-// pages/movies/thriller/[id].js - H1 SEO FIX + HYDRATION FIX ✅
+// pages/movies/thriller/[id].js - H1 SEO FIX + HYDRATION FIX + SCHEMA FIX ✅
 // VISUALS: Minimalist (Banner + Details Only)
 // SCHEMA: Maximalist (Hidden Intensity, DNA, and FAQs for Bots)
 
@@ -14,13 +14,13 @@ import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
 import TMDBAttribution from '../../../components/TMDBAttribution';
 
-// ✅ IMPORT DATA INCLUDING FAQs
-import { generateCleanMovieSchema } from '../../../utils/cleanMovieSchema';
+// ✅ CORRECTED IMPORT: Pulling schema generator directly from its dedicated data file
 import {
   COMPLETE_MOVIE_DATABASE, 
   COMPLETE_MOVIE_DATA,
   SENSITIVE_TIMELINES,
-  THRILLER_FAQS 
+  THRILLER_MOVIE_FAQS,
+  generateCleanMovieSchema
 } from '../../../utils/thrillerMovieData';
 
 const COLORS = {
@@ -138,7 +138,7 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
       </div>
       {isMobile ? (
         <div className="mobile-hero-row">
-          <div className="mobile-hero-poster">{posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} width={320} height={480} className="w-full h-auto" priority /> : <div style={{ background: COLORS.bgCard, width: '100%', height: '150px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Film style={{ color: COLORS.textMuted }} /></div>}</div>
+          <div className="mobile-hero-poster">{posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} width={320} height={480} className="w-full h-auto" priority /> : <div style={{ background: COLORS.bgCard, width: '100%', height: '150px', display: 'flex', itemsCenter: 'center', justifyContent: 'center' }}><Film style={{ color: COLORS.textMuted }} /></div>}</div>
           <div className="mobile-thriller-card">
             <div className="mobile-thriller-row"><Award className="mobile-thriller-icon" /><div><div className="mobile-thriller-title">Suspense Index</div></div></div>
             <div className="mobile-thriller-desc"><strong>{suspenseIntensity}</strong> - {insight.substring(0, 80)}...</div>
@@ -204,8 +204,6 @@ const ThrillerBreadcrumb = ({ movie }) => (
     </motion.nav>
 );
 
-
-
 const ThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
     const router = useRouter();
     const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
@@ -229,11 +227,36 @@ const ThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
     const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
-    // ✅ SEO FIX: Pre-construct clean strings to prevent hydration placeholders in snippets
-    const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Best Thriller Movies | Filmiway'].join('');
-    const cleanSEODesc = [movie.Title, ' (', currentMovieYear, ') - A gripping suspense thriller. Analysis, intensity ratings & where to stream.'].join('');
+  // =========================================================================
+  // ✅ THE STANDARDIZED ELITE SEO BLOCK
+  // =========================================================================
 
-    const collectionSlug = router.pathname.split('/')[2];
+  const collectionSlug = 'best-thriller-movies';
+  const dynamicCollectionName = 'Best Thriller Movies';
+
+  const scenes = SENSITIVE_TIMELINES?.[movie.tmdbId]?.scenes || [];
+  
+  // 1. UNIQUE META TITLE (Targets "Parents Guide & Timestamps")
+  const cleanSEOTitle = scenes.length > 0
+    ? `${movie.Title} (${currentMovieYear}) Parents Guide & Timestamps | ${dynamicCollectionName}`
+    : `${movie.Title} (${currentMovieYear}) Parents Guide | ${dynamicCollectionName}`;
+
+  // 2. STANDARDIZED ELITE META DESCRIPTION
+  let cleanSEODesc = '';
+  
+  if (scenes.length > 0) {
+    const rawTimes = scenes.slice(0, 3).map(s => s.end ? `${s.start}–${s.end}` : s.start);
+    const formattedTimes = rawTimes.length > 1 
+      ? `${rawTimes.slice(0, -1).join(', ')} and ${rawTimes.slice(-1)}` 
+      : rawTimes[0];
+
+    cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Viewer discretion advised. Includes exact scene timestamps: ${formattedTimes}.`;
+  } else {
+    cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Filmiway Content Advisory: No nudity or explicit sexual content identified. Suitable for general viewing.`;
+  }
+
+  // =========================================================================
+
     const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
 
     const { movieSchema, faqSchema } = generateCleanMovieSchema(
@@ -248,7 +271,7 @@ const ThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
     return (
         <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
             <Head>
-                {/* ✅ HYDRATION BUG REMOVED: Now using a flat string for the title tag */}
+                {/* ✅ HYDRATION BUG REMOVED */}
                 <title>{cleanSEOTitle}</title>
                 <meta name="description" content={cleanSEODesc} />
                 <link rel="canonical" href={canonicalUrl} />
@@ -256,13 +279,15 @@ const ThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
                 <meta name="robots" content="index, follow" />
                 <meta name="language" content="English" />
 
-                {/* ✅ SCHEMA INJECTION */}
+                {/* ✅ SCHEMA INJECTION WITH UNIQUE KEYS TO PREVENT NEXT.JS DELETION */}
                 <script
+                    key="schema-movie"
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }}
                 />
                 {faqSchema && (
                     <script
+                        key="schema-faq"
                         type="application/ld+json"
                         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
                     />
@@ -270,18 +295,17 @@ const ThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
 
                 {/* Social Meta Tags */}
                 <meta property="og:title" content={cleanSEOTitle} />
-                <meta property="og:description" content="A gripping suspense thriller." />
+                <meta property="og:description" content={cleanSEODesc} />
                 <meta property="og:type" content="video.movie" />
                 <meta property="og:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content={cleanSEOTitle} />
-                <meta name="twitter:description" content="A gripping suspense thriller." />
+                <meta name="twitter:description" content={cleanSEODesc} />
                 <meta name="twitter:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
             </Head>
 
             <SubtleFilmGrain />
             <div className="absolute inset-0"><CinematicBackground /></div>
-            
             
             <div className="relative z-10 pt-10 sm:pt-12 lg:pt-16">
                 
@@ -293,12 +317,12 @@ const ThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
                     <OptimizedBanner movie={movie} movieData={movieData} richData={richData} trailer={trailer} isMobile={isMobile} />
                     
                     <motion.div 
-    id="watch" 
-    initial={{ opacity: 0, y: 20 }} 
-    animate={{ opacity: 1, y: 0 }} 
-    transition={{ duration: 0.5 }} // Faster, no massive delay
-    className="space-y-8 sm:space-y-12 px-3 sm:px-4 lg:px-6"
->
+                        id="watch" 
+                        initial={{ opacity: 0, y: 20 }} 
+                        animate={{ opacity: 1, y: 0 }} 
+                        transition={{ duration: 0.5 }}
+                        className="space-y-8 sm:space-y-12 px-3 sm:px-4 lg:px-6"
+                    >
                         <MovieDetailsSection movie={movie} fromThrillerCollection={true} />
                     </motion.div>
                     

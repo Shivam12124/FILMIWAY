@@ -1,4 +1,4 @@
-// pages/collection/movies-like-se7en/[id].js - H1 SEO FIX + HYDRATION FIX ✅
+// pages/collection/movies-like-se7en/[id].js - H1 SEO FIX + HYDRATION FIX + SCHEMA FIX ✅
 // VISUALS: Minimalist (Banner + Details Only)
 // SCHEMA: Maximalist (Hidden Intensity, DNA, and FAQs for Bots)
 
@@ -14,14 +14,12 @@ import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
 import TMDBAttribution from '../../../components/TMDBAttribution';
 
-// ✅ IMPORT DATA INCLUDING FAQs
-import { generateCleanMovieSchema } from '../../../utils/cleanMovieSchema';
+// ✅ IMPORT DATA
 import {
   COMPLETE_MOVIE_DATABASE, 
   COMPLETE_MOVIE_DATA,
   SENSITIVE_TIMELINES,
-  SE7EN_MOVIE_FAQS, 
-  FALLBACK_POSTERS
+  generateCleanMovieSchema // ✅ Pulling the unified schema engine
 } from '../../../utils/se7enMovieData';
 
 // ✅ DARK NOIR COLOR PALETTE
@@ -225,11 +223,36 @@ const Se7enMoviePage = ({ movie, tmdbData: movieData }) => {
     const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
-    // ✅ SEO FIX: Clean strings to prevent hydration errors
-    const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Movies Like Se7en | Filmiway'].join('');
-    const cleanSEODesc = [movie.Title, ' (', currentMovieYear, ') - A dark, procedural noir like Se7en. Analysis, intensity ratings & where to stream.'].join('');
+    // =========================================================================
+    // ✅ THE STANDARDIZED ELITE SEO BLOCK
+    // =========================================================================
 
-    const collectionSlug = router.pathname.split('/')[2];
+    const collectionSlug = 'movies-like-se7en';
+    const dynamicCollectionName = 'Movies Like Se7en';
+
+    const scenes = SENSITIVE_TIMELINES?.[movie.tmdbId]?.scenes || [];
+    
+    // 1. UNIQUE META TITLE (Targets "Parents Guide & Timestamps")
+    const cleanSEOTitle = scenes.length > 0
+        ? `${movie.Title} (${currentMovieYear}) Parents Guide & Timestamps | ${dynamicCollectionName}`
+        : `${movie.Title} (${currentMovieYear}) Parents Guide | ${dynamicCollectionName}`;
+
+    // 2. STANDARDIZED ELITE META DESCRIPTION
+    let cleanSEODesc = '';
+    
+    if (scenes.length > 0) {
+        const rawTimes = scenes.slice(0, 3).map(s => s.end ? `${s.start}–${s.end}` : s.start);
+        const formattedTimes = rawTimes.length > 1 
+        ? `${rawTimes.slice(0, -1).join(', ')} and ${rawTimes.slice(-1)}` 
+        : rawTimes[0];
+
+        cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Viewer discretion advised. Includes exact scene timestamps: ${formattedTimes}.`;
+    } else {
+        cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Filmiway Content Advisory: No nudity or explicit sexual content identified. Suitable for general viewing.`;
+    }
+
+    // =========================================================================
+
     const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
 
     const { movieSchema, faqSchema } = generateCleanMovieSchema(
@@ -252,13 +275,15 @@ const Se7enMoviePage = ({ movie, tmdbData: movieData }) => {
                 <meta name="robots" content="index, follow" />
                 <meta name="language" content="English" />
 
-                {/* ✅ SCHEMA INJECTION */}
+                {/* ✅ SCHEMA INJECTION WITH UNIQUE KEYS TO PREVENT NEXT.JS DELETION */}
                 <script
+                    key="schema-movie"
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }}
                 />
                 {faqSchema && (
                     <script
+                        key="schema-faq"
                         type="application/ld+json"
                         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
                     />
@@ -266,12 +291,12 @@ const Se7enMoviePage = ({ movie, tmdbData: movieData }) => {
 
                 {/* Social Meta Tags */}
                 <meta property="og:title" content={cleanSEOTitle} />
-                <meta property="og:description" content="A dark film about obsession and crime." />
+                <meta property="og:description" content={cleanSEODesc} />
                 <meta property="og:type" content="video.movie" />
                 <meta property="og:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content={cleanSEOTitle} />
-                <meta name="twitter:description" content="A dark procedural film." />
+                <meta name="twitter:description" content={cleanSEODesc} />
                 <meta name="twitter:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
             </Head>
 

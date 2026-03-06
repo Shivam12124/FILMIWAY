@@ -1,4 +1,4 @@
-// pages/movies/mystery-thriller/[id].js - FINAL FIXED VERSION ✅
+// pages/movies/mystery-thriller/[id].js - H1 SEO FIX + HYDRATION FIX ✅
 // VISUALS: Indigo/Violet Theme (Mystery), Minimalist Banner
 // SCHEMA: Maximalist (Hidden Intensity, DNA, and FAQs for Bots)
 
@@ -15,12 +15,12 @@ import MovieDetailsSection from '../../../components/MovieDetailsSection';
 import TMDBAttribution from '../../../components/TMDBAttribution';
 
 // ✅ IMPORT DATA (CORRECT NAME MATCHING UTILS)
-import { generateCleanMovieSchema } from '../../../utils/cleanMovieSchema';
 import {
   COMPLETE_MOVIE_DATABASE, 
   COMPLETE_MOVIE_DATA,
   SENSITIVE_TIMELINES,
-  MYSTERY_THRILLER_FAQS 
+  MYSTERY_THRILLER_FAQS,
+  generateCleanMovieSchema // ✅ Pulled directly from the data file
 } from '../../../utils/mysteryThrillerMovieData';
 
 const COLORS = {
@@ -236,11 +236,36 @@ const MysteryThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
     const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
-    // ✅ SEO FIX: Construct clean title and description strings FIRST to prevent hydration comments ()
-    const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Best Mystery Thriller Movies | Filmiway'].join('');
-    const cleanSEODesc = richData?.synopsis || `Watch ${movie.Title}, a gripping mystery thriller. Detailed analysis, intensity ratings & where to stream.`;
+    // =========================================================================
+    // ✅ THE STANDARDIZED ELITE SEO BLOCK
+    // =========================================================================
 
-    const collectionSlug = router.pathname.split('/')[2];
+    const collectionSlug = 'best-mystery-thriller-movies';
+    const dynamicCollectionName = 'Best Mystery Thriller Movies';
+
+    const scenes = SENSITIVE_TIMELINES?.[movie.tmdbId]?.scenes || [];
+    
+    // 1. UNIQUE META TITLE (Targets "Parents Guide & Timestamps")
+    const cleanSEOTitle = scenes.length > 0
+        ? `${movie.Title} (${currentMovieYear}) Parents Guide & Timestamps | ${dynamicCollectionName}`
+        : `${movie.Title} (${currentMovieYear}) Parents Guide | ${dynamicCollectionName}`;
+
+    // 2. STANDARDIZED ELITE META DESCRIPTION
+    let cleanSEODesc = '';
+    
+    if (scenes.length > 0) {
+        const rawTimes = scenes.slice(0, 3).map(s => s.end ? `${s.start}–${s.end}` : s.start);
+        const formattedTimes = rawTimes.length > 1 
+        ? `${rawTimes.slice(0, -1).join(', ')} and ${rawTimes.slice(-1)}` 
+        : rawTimes[0];
+
+        cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Viewer discretion advised. Includes exact scene timestamps: ${formattedTimes}.`;
+    } else {
+        cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Filmiway Content Advisory: No nudity or explicit sexual content identified. Suitable for general viewing.`;
+    }
+
+    // =========================================================================
+
     const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
 
     const { movieSchema, faqSchema } = generateCleanMovieSchema(
@@ -255,7 +280,7 @@ const MysteryThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
     return (
         <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
             <Head>
-                {/* ✅ HYDRATION BUG FULLY RESOLVED: Titles now use pre-joined strings */}
+                {/* ✅ HYDRATION BUG FULLY RESOLVED */}
                 <title>{cleanSEOTitle}</title>
                 <meta name="description" content={cleanSEODesc} />
                 <link rel="canonical" href={canonicalUrl} />
@@ -271,9 +296,19 @@ const MysteryThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
                 <meta name="twitter:title" content={cleanSEOTitle} />
                 <meta name="twitter:description" content={cleanSEODesc} />
 
-                {/* ✅ SCHEMA INJECTION */}
-                <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }} />
-                {faqSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />}
+                {/* ✅ SCHEMA INJECTION WITH UNIQUE KEYS */}
+                <script 
+                    key="schema-movie" 
+                    type="application/ld+json" 
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }} 
+                />
+                {faqSchema && (
+                    <script 
+                        key="schema-faq" 
+                        type="application/ld+json" 
+                        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} 
+                    />
+                )}
             </Head>
 
             <SubtleFilmGrain />
