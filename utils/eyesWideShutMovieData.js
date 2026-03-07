@@ -307,7 +307,7 @@ export const COMPLETE_MOVIE_DATA = {
         themes: ["Snuff Films", "Moral Corruption", "Obsessive Search"]
     }),
     // 9. Get Out
-    419430: createMovieData({ 
+   419430: createMovieData({ 
         psychologicalIntensity: 86, 
         destructiveObsession: 55, 
         visceralImpact: 82, 
@@ -598,6 +598,9 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
         });
     }
 
+    // Extract runtime for the schema calibration tag
+    const currentRuntime = movie.Runtime || movie.runtime || "Official";
+
     // 🔥 INJECT SENSITIVE CONTENT TIMESTAMPS (Unshifted last so it remains #1 at the very top)
     if (sensitiveScenes.length > 0) {
         const typesArray = getSensitiveContentTypes(movie.tmdbId) || ['mature content'];
@@ -613,7 +616,7 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
             'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
             'acceptedAnswer': { 
                 '@type': 'Answer', 
-                'text': `Yes, according to the Filmiway Content Advisory, ${movie.Title} contains adult scenes including ${typesString}. Exact timestamps for these scenes are:<br><br><ul>${schemaListText}</ul>` 
+                'text': `Yes, according to the Filmiway Timestamps & Parents Guide, ${movie.Title} contains adult scenes including ${typesString}. These timestamps are accurate for the ${currentRuntime} runtime. Exact timestamps for these scenes are:<br><br><ul>${schemaListText}</ul>` 
             }
         });
     } else {
@@ -622,7 +625,7 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
             'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
             'acceptedAnswer': { 
                 '@type': 'Answer', 
-                'text': `No, the Filmiway Content Advisory confirms that ${movie.Title} is completely free of explicit sexual content and nudity.` 
+                'text': `No, the Filmiway Timestamps & Parents Guide confirms that ${movie.Title} is completely free of explicit sexual content and nudity. This assessment is accurate for the ${currentRuntime} runtime.` 
             }
         });
     }
@@ -638,7 +641,8 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
 };
 
 // 🔥 DYNAMIC VISIBLE FAQ GENERATOR FOR THE FRONTEND UI (Matches Schema 1:1)
-export const getVisibleMovieFAQs = (movieTitle, tmdbId) => {
+// 🔥 DYNAMIC VISIBLE FAQ GENERATOR FOR THE FRONTEND UI (Matches Schema Text without HTML)
+export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Official") => {
     // 1. Get the static, manually written FAQs
     const staticFaqs = EYES_WIDE_SHUT_MOVIE_FAQS[movieTitle] ? [...EYES_WIDE_SHUT_MOVIE_FAQS[movieTitle]] : [];
     
@@ -647,7 +651,11 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId) => {
     const movieInfo = COMPLETE_MOVIE_DATA[tmdbId];
     const intensityScenes = movieInfo?.scenes || [];
 
-    // 3. 🔥 DYNAMICALLY GENERATE THE INTENSITY GRAPH FAQ
+    // 🔥 FIX 1: Automatically fetch the exact runtime from the database if missing
+    const dbMovie = COMPLETE_MOVIE_DATABASE.find(m => m.tmdbId === tmdbId);
+    const finalRuntime = currentRuntime !== "Official" ? currentRuntime : (dbMovie?.runtime ? `${dbMovie.runtime} min` : "Official");
+
+    // 3. 🔥 DYNAMICALLY GENERATE THE INTENSITY GRAPH FAQ (Using \n instead of <br> for React)
     if (intensityScenes.length > 0) {
         const uiIntensityList = intensityScenes.map(s => `• Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)`).join('\n');
         
@@ -662,6 +670,7 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId) => {
         const typesArray = getSensitiveContentTypes(tmdbId) || ['mature content'];
         const typesString = typesArray.join(' and ');
 
+        // Using \n for clean UI line breaks
         const uiListText = sensitiveScenes.map(s => {
             const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
             return `• ${timeRange} - ${s.type || 'Mature Content'}`;
@@ -669,12 +678,12 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId) => {
 
         staticFaqs.unshift({
             question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
-            answer: `Yes, according to the Filmiway Content Advisory, ${movieTitle} contains adult scenes including ${typesString}. Exact timestamps for these scenes are:\n\n${uiListText}`
+            answer: `Yes, according to the Filmiway Timestamps & Parents Guide, ${movieTitle} contains adult scenes including ${typesString}. These timestamps are accurate for the ${finalRuntime} runtime. Exact timestamps for these scenes are:\n\n${uiListText}`
         });
     } else {
         staticFaqs.unshift({
             question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
-            answer: `No, the Filmiway Content Advisory confirms that ${movieTitle} is completely free of explicit sexual content and nudity.`
+            answer: `No, the Filmiway Timestamps & Parents Guide confirms that ${movieTitle} is completely free of explicit sexual content and nudity. This assessment is accurate for the ${finalRuntime} runtime.`
         });
     }
 

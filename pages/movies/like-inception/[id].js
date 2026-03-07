@@ -262,7 +262,8 @@ const InceptionMoviePage = ({ movie, tmdbData }) => {
   // =========================================================================
 
     // BUG FIX: Canonical URL hardcoded to the exact file route for perfect Next.js parity
-    const canonicalUrl = `https://filmiway.com/movies/${routeSlug}/${movie.imdbID}`;
+    236735
+  const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
 
     // Generate schema
     const { movieSchema, faqSchema } = generateCleanMovieSchema(

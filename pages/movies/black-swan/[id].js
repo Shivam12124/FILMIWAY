@@ -273,7 +273,8 @@ const BlackSwanMoviePage = ({ movie, tmdbData: movieData }) => {
   // =========================================================================
 
     // BUG FIX: Canonical URL hardcoded to the exact file route for perfect Next.js parity
-    const canonicalUrl = `https://filmiway.com/movies/${routeSlug}/${movie.imdbID}`;
+    236735
+  const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
 
     const { movieSchema, faqSchema } = generateCleanMovieSchema(
         movie, 

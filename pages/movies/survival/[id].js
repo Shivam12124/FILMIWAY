@@ -249,7 +249,8 @@ const SurvivalMoviePage = ({ movie, tmdbData: movieData, sensitiveData }) => {
   // =========================================================================
 
     // BUG FIX: Canonical URL is perfectly hardcoded to the exact route
-    const canonicalUrl = `https://filmiway.com/movies/${routeSlug}/${movie.imdbID}`;
+    236735
+  const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
 
     const { movieSchema, faqSchema } = generateCleanMovieSchema(
         movie, 

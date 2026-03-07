@@ -30,7 +30,7 @@ const createMovieData = (data) => ({
 });
 
 export const SENSITIVE_TIMELINES = {
-    807: { scenes: [] }, // Se7en
+    807: { scenes: [] }, // Add your Se7en scenes here to remove the "Clean" tag
     1949: { scenes: [] }, // Zodiac
     146233: { scenes: [] }, // Prisoners
     25376: { scenes: [
@@ -156,6 +156,34 @@ export const COMPLETE_MOVIE_DATA = {
             { time: 61, intensity: 72, label: 'Hammer Murder Revealed', color: '#418f6d' },
             { time: 92, intensity: 85, label: 'Police Delay the Rescue', color: '#dc8841' },
             { time: 121, intensity: 96, label: 'Too Late to Save', color: "#dc2626" } // PEAK: Unbearable Pressure
+        ]
+    }),
+
+    // 7. Mystic River (2003) - STATUS: TRAGIC INEVITABILITY
+    3202: createMovieData({
+        mysteryComplexity: 92, psychologicalTension: 95, complexityLevel: "HIGH",
+        dominantColor: "#2b3948", rating: 7.9,
+        dna: { Drama: 45, Crime: 35, Mystery: 20 },
+        scenes: [
+            { time: 10, intensity: 50, label: 'Dave is Taken', color: '#1f2937' },
+            { time: 38, intensity: 75, label: 'Katie Found in the Park', color: '#b91c1c' },
+            { time: 85, intensity: 82, label: 'Dave Confesses to Celeste', color: '#d97706' },
+            { time: 115, intensity: 95, label: 'Justice at the River', color: '#dc2626' }, // PEAK: Misguided Vengeance
+            { time: 130, intensity: 88, label: 'The Parade Passes By', color: '#9ca3af' }
+        ]
+    }),
+
+    // 8. Marshland (2014) - STATUS: OPPRESSIVE ATMOSPHERE
+     236735: createMovieData({
+        mysteryComplexity: 90, psychologicalTension: 88, complexityLevel: "HIGH",
+        dominantColor: "#8c7e5a", rating: 7.2,
+        dna: { Thriller: 45, Mystery: 35, Crime: 20 },
+        scenes: [
+            { time: 15, intensity: 40, label: 'Arrival in the Wetlands', color: '#78716c' },
+            { time: 35, intensity: 65, label: 'Discovering the Bodies', color: '#991b1b' },
+            { time: 60, intensity: 75, label: 'The Secret Network Revealed', color: '#ca8a04' },
+            { time: 85, intensity: 85, label: 'Night Chase Through the Reeds', color: '#451a03' },
+            { time: 100, intensity: 92, label: 'The Rainstorm Climax', color: '#dc2626' } // PEAK: Washed Away Sins
         ]
     }),
 
@@ -295,6 +323,9 @@ export const getSensitiveContentTypes = (tmdbId) => {
 
 // 🔥 2. THE "GOLDEN EGG" SCHEMA GENERATOR (Universal Version)
 export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, collectionSlug, unused, movieInfo) => {
+    // Extract runtime for the schema calibration tag
+    const currentRuntime = movie.Runtime || movie.runtime || "Official";
+
     // Standard Movie Schema
     const movieSchema = {
         '@context': 'https://schema.org',
@@ -347,7 +378,7 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
             'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
             'acceptedAnswer': { 
                 '@type': 'Answer', 
-                'text': `Yes, according to the Filmiway Content Advisory, ${movie.Title} contains adult scenes including ${typesString}. Exact timestamps for these scenes are:<br><br><ul>${schemaListText}</ul>` 
+                'text': `Yes, according to the Filmiway Timestamps & Parents Guide, ${movie.Title} contains adult scenes including ${typesString}. These timestamps are accurate for the ${currentRuntime} runtime. Exact timestamps for these scenes are:<br><br><ul>${schemaListText}</ul>` 
             }
         });
     } else {
@@ -356,7 +387,7 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
             'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
             'acceptedAnswer': { 
                 '@type': 'Answer', 
-                'text': `No, the Filmiway Content Advisory confirms that ${movie.Title} is completely free of explicit sexual content and nudity.` 
+                'text': `No, the Filmiway Timestamps & Parents Guide confirms that ${movie.Title} is completely free of explicit sexual content and nudity. This assessment is accurate for the ${currentRuntime} runtime.` 
             }
         });
     }
@@ -372,11 +403,15 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
 };
 
 // 🔥 3. FRONTEND UI SYNC (Displays the timestamps on your Next.js page)
-export const getVisibleMovieFAQs = (movieTitle, tmdbId) => {
+export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Official") => {
     const staticFaqs = DETECTIVE_THRILLER_FAQS[movieTitle] ? [...DETECTIVE_THRILLER_FAQS[movieTitle]] : [];
     const sensitiveScenes = SENSITIVE_TIMELINES[tmdbId]?.scenes || [];
     const movieInfo = COMPLETE_MOVIE_DATA[tmdbId];
     const intensityScenes = movieInfo?.scenes || [];
+
+    // Extract runtime from database
+    const dbMovie = COMPLETE_MOVIE_DATABASE.find(m => m.tmdbId === tmdbId);
+    const finalRuntime = currentRuntime !== "Official" ? currentRuntime : (dbMovie?.runtime ? `${dbMovie.runtime} min` : "Official");
 
     if (intensityScenes.length > 0) {
         const uiIntensityList = intensityScenes.map(s => `• Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)`).join('\n');
@@ -397,15 +432,14 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId) => {
 
         staticFaqs.unshift({
             question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
-            answer: `Yes, according to the Filmiway Content Advisory, ${movieTitle} contains adult scenes including ${typesString}. Exact timestamps for these scenes are:\n\n${uiListText}`
+            answer: `Yes, according to the Filmiway Timestamps & Parents Guide, ${movieTitle} contains adult scenes including ${typesString}. These timestamps are accurate for the ${finalRuntime} runtime. Exact timestamps for these scenes are:\n\n${uiListText}`
         });
     } else {
         staticFaqs.unshift({
             question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
-            answer: `No, the Filmiway Content Advisory confirms that ${movieTitle} is completely free of explicit sexual content and nudity.`
+            answer: `No, the Filmiway Timestamps & Parents Guide confirms that ${movieTitle} is completely free of explicit sexual content and nudity. This assessment is accurate for the ${finalRuntime} runtime.`
         });
     }
 
     return staticFaqs;
 };
-
