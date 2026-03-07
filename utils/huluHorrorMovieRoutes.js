@@ -39,7 +39,7 @@ export const HULU_HORROR_MOVIE_SLUGS = {
     'tt15791034': 'barbarian',
     
     // Rank 9: The First Omen
-    'tt5676368': 'the-first-omen',
+    'tt5672290': 'the-first-omen',
     
     // Rank 10: Late Night with the Devil (Replaces Fresh)
     'tt14966898': 'late-night-with-the-devil'

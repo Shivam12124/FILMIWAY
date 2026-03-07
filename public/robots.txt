@@ -2,8 +2,11 @@
 # Filmiway Robots.txt — Growth & AI Discovery (Final)
 # ==================================================
 
-# 0. BLOCKED BOTS (Meta)
+# 0. BLOCKED BOTS (Meta & ByteDance)
 User-agent: Meta-ExternalAgent
+User-agent: Bytespider
+User-agent: ByteDance
+User-agent: Tiktokbot
 Disallow: /
 
 # 1. Google & Bing (Full SEO Access)
@@ -26,7 +29,7 @@ Disallow: /_next/data/
 Disallow: /api/
 Disallow: /admin/
 
-# 3. AI & Discovery (Meta removed from here)
+# 3. AI & Discovery (Meta & ByteDance removed from here)
 User-agent: GPTBot
 User-agent: ChatGPT-User
 User-agent: ClaudeBot
@@ -55,6 +58,6 @@ Disallow: /api/
 Disallow: /admin/
 Disallow: /private/
 
-# 6. Sitemap (Fixed: No Markdown Brackets)
+# 6. Sitemap
 Sitemap: https://filmiway.com/sitemap.xml
 Sitemap-Movies: https://filmiway.com/sitemap-movies.xml

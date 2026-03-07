@@ -24,68 +24,43 @@ export const COMPLETE_MOVIE_DATABASE = [
 // ✅ SENSITIVE TIMELINES (Focusing on Survival, Adventure Violence & Gore)
 export const SENSITIVE_TIMELINES = {
     // 1. The Revenant
-  281957: { scenes: [{ start: "0:06:44", end: "0:06:48", type: "Nudity", severity: "Moderate", description: "Male buttocks" }, { start: "1:44:00", end: "1:44:23", type: "Sex ", severity: "Moderate" }] },
+    281957: { 
+        scenes: [
+            { start: "0:06:44", end: "0:06:48", type: "Nudity", severity: "Moderate", description: "Male buttocks" }, 
+            { start: "1:44:00", end: "1:44:23", type: "Sex ", severity: "Moderate" }
+        ] 
+    },
     
     // 2. Man on Fire
-    9509: { 
-        scenes: [
-            { start: "1:15:00", end: "1:20:00", type: "Torture", severity: "High" }, // Cutting off fingers
-            { start: "1:45:00", end: "1:48:00", type: "Explosive Violence", severity: "Moderate" } // Rectal bomb
-        ] 
-    },
+    9509: { scenes: [] },
     
     // 3. Highlander
-    8009: { 
-        scenes: [
-            { start: "0:05:00", end: "0:08:00", type: "Decapitation", severity: "Moderate" }, // Garage fight
-            { start: "1:30:00", end: "1:35:00", type: "Violence", severity: "Moderate" } // Final Quickening
-        ] 
-    },
+    8009: { scenes: [] },
     
     // 4. Law Abiding Citizen
-    22803: { 
-        scenes: [
-            { start: "0:02:00", end: "0:05:00", type: "Sexual Violence/Murder", severity: "High" }, // Home invasion
-            { start: "0:35:00", end: "0:40:00", type: "Gore/Dismemberment", severity: "Extreme" } // Cellmate death
-        ] 
-    },
+    22803: { scenes: [] },
     
     // 5. Apocalypto
-   1579: { scenes: [{ start: "0:17:10", end: "0:18:10", type: "Partial nudity", severity: "Mild", description: "Male buttocks" }] },
+    1579: { 
+        scenes: [
+            { start: "0:17:10", end: "0:18:10", type: "Partial nudity", severity: "Mild" }
+        ] 
+    },
     
     // 6. The Boondock Saints
-    8374: { 
-        scenes: [
-            { start: "0:15:00", end: "0:18:00", type: "Graphic Violence", severity: "High" }, // Toilet drop/Russian mob
-            { start: "1:20:00", end: "1:22:00", type: "Execution", severity: "Moderate" } // Courtroom scene
-        ] 
-    },
+    8374: { scenes: [] },
     
     // 7. Point Break (1991)
-    1089: { 
-        scenes: [
-            { start: "1:10:00", end: "1:15:00", type: "Gun Violence", severity: "Moderate" }, // House raid
-            { start: "1:40:00", end: "1:42:00", type: "Self Harm", severity: "Low" } // Suicide by wave
-        ] 
-    },
+    1089: { scenes: [] },
     
     // 8. The Fall Guy
-    746036: { scenes: [] }, // Stunt violence (Safe/Fun)
+    746036: { scenes: [] },
     
     // 9. The Hunger Games: Catching Fire
-    101299: { 
-        scenes: [
-            { start: "0:10:00", end: "0:12:00", type: "Whipping", severity: "Moderate" }, // Public punishment
-            { start: "1:35:00", end: "1:40:00", type: "Attack", severity: "Moderate" } // Baboon attack
-        ] 
-    },
+    101299: { scenes: [] },
     
     // 10. Puss in Boots: The Last Wish
-    315162: { 
-        scenes: [
-            { start: "0:15:00", end: "0:18:00", type: "Blood", severity: "Low" } // Wolf draws blood (shocking for kids)
-        ] 
-    }
+    315162: { scenes: [] }
 };
 
 export const FALLBACK_POSTERS = {

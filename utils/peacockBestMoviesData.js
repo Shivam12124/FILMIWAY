@@ -23,52 +23,36 @@ export const COMPLETE_MOVIE_DATABASE = [
 
 export const SENSITIVE_TIMELINES = {
     // 1. Memento
-    77: { 
-        scenes: [
-            { start: "1:40:00", end: "1:45:00", type: "Violence/Disturbing", severity: "High" }
-        ] 
-    },
+    77: { scenes: [] },
 
     // 2. Sicario
-    273481: { 
-        scenes: [
-            { start: "0:02:00", end: "0:06:00", type: "Gore/Graphic", severity: "High" },
-            { start: "0:25:00", end: "0:30:00", type: "Gun Violence", severity: "High" },
-            { start: "1:35:00", end: "1:40:00", type: "Violence", severity: "High" }
-        ] 
-    },
+    273481: { scenes: [] },
 
     // 3. The Revenant
     281957: { 
         scenes: [
-            { start: "0:20:00", end: "0:25:00", type: "Animal Violence (Bear Attack)", severity: "Extreme" },
-            { start: "1:15:00", end: "1:18:00", type: "Gore/Self-Surgery", severity: "High" },
-            { start: "2:05:00", end: "2:10:00", type: "Sexual Violence (Implied)", severity: "High" }
+            { start: "0:06:44", end: "0:06:48", type: "Nudity", severity: "Moderate", description: "Male buttocks" }, 
+            { start: "1:44:00", end: "1:44:23", type: "Sex ", severity: "Moderate" }
         ] 
     },
 
     // 4. Requiem for a Dream
     641: { 
         scenes: [
-            { start: "1:25:00", end: "1:40:00", type: "Disturbing Content (Montage)", severity: "Extreme" },
-            { start: "1:30:00", end: "1:35:00", type: "Sexual Degradation", severity: "High" },
-            { start: "1:35:00", end: "1:38:00", type: "Graphic Infection", severity: "High" }
+            { start: "0:20:00", end: "0:20:30", type: "Nudity", severity: "Moderate" },
+            { start: "0:33:00", end: "0:34:25", type: "Nudity", severity: "Moderate" },
+            { start: "0:37:00", end: "0:37:25", type: "Nudity", severity: "Moderate" },
+            { start: "1:30:30", end: "1:33:50", type: "Sex+Nudity", severity: "High" }
         ] 
     },
 
     // 5. Man on Fire
-    9509: { 
-        scenes: [
-            { start: "0:45:00", end: "0:50:00", type: "Kidnapping/Violence", severity: "High" },
-            { start: "1:10:00", end: "1:15:00", type: "Torture", severity: "High" }
-        ] 
-    },
+    9509: { scenes: [] },
 
     // 6. Apocalypto
     1579: { 
         scenes: [
-            { start: "0:50:00", end: "1:10:00", type: "Graphic Violence/Sacrifice", severity: "Extreme" },
-            { start: "1:20:00", end: "1:25:00", type: "Gore", severity: "High" }
+            { start: "0:17:10", end: "0:18:10", type: "Partial nudity", severity: "Mild" }
         ] 
     },
 
@@ -76,22 +60,13 @@ export const SENSITIVE_TIMELINES = {
     122906: { scenes: [] },
 
     // 8. Coherence
-    220289: { 
-        scenes: [
-             { start: "1:10:00", end: "1:15:00", type: "Violence", severity: "Moderate" }
-        ] 
-    },
+    220289: { scenes: [] },
 
     // 9. Harry Potter and the Prisoner of Azkaban
     673: { scenes: [] },
 
     // 10. Monty Python and the Holy Grail
-    762: { 
-        scenes: [
-            { start: "0:45:00", end: "0:48:00", type: "Comic Violence (Rabbit)", severity: "Moderate" },
-            { start: "0:15:00", end: "0:18:00", type: "Comic Gore (Black Knight)", severity: "Low" }
-        ] 
-    }
+    762: { scenes: [] }
 };
 
 export const FALLBACK_POSTERS = {
@@ -472,58 +447,16 @@ export const PEACOCK_BEST_MOVIE_FAQS = {
     ]
 };
 
-// Required exports
+// 5. UTILITY FUNCTIONS & THE KEYWORD BRIDGE
 export const getTMDBPosterUrl = (posterPath, size = 'medium') => {
     if (!posterPath) return null;
     const posterSize = TMDB_CONFIG.POSTER_SIZES[size] || TMDB_CONFIG.POSTER_SIZES.medium;
     return `${TMDB_CONFIG.IMAGE_BASE_URL}/${posterSize}${posterPath}`;
 };
 
-export const generateFAQData = (movie) => {
-    return PEACOCK_BEST_MOVIE_FAQS[movie.Title] || [];
-};
-
-export const generateMovieSchema = (movie) => {
-    const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
-    const posterUrl = FALLBACK_POSTERS[movie.tmdbId] || '';
-    return {
-        '@context': 'https://schema.org',
-        '@type': 'Movie',
-        'name': movie.Title,
-        'description': movieInfo?.synopsis || `${movie.Title} - Best movie on Peacock.`,
-        'genre': movie.genre,
-        'datePublished': movie.year.toString(),
-        'director': { '@type': 'Person', 'name': movieInfo?.director || 'Director' },
-        'actor': movieInfo?.cast?.map(actor => ({ '@type': 'Person', 'name': actor })) || [],
-        'duration': `PT${movie.runtime}M`,
-        'image': posterUrl,
-        'aggregateRating': { 
-            '@type': 'AggregateRating', 
-            'ratingValue': movieInfo?.rating || 7.5, 
-            'bestRating': 10, 
-            'worstRating': 1, 
-            'ratingCount': movieInfo?.audienceScore || 100 
-        }
-    };
-};
-
-export const generateFAQSchema = (faqs) => ({
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    'mainEntity': faqs.map(faq => ({ 
-        '@type': 'Question', 
-        'name': faq.question, 
-        'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer } 
-    }))
-});
-
-export const fetchMovieFromTMDB = async (tmdbId) => ({ 
-    poster_path: null, 
-    title: COMPLETE_MOVIE_DATABASE.find(m => m.tmdbId === tmdbId)?.Title || 'Unknown Movie' 
-});
-
-export const getSensitiveContentTypes = (tmdbId) => [];
+export const fetchMovieFromTMDB = async (tmdbId) => ({ poster_path: null, title: COMPLETE_MOVIE_DATABASE.find(m => m.tmdbId === tmdbId)?.Title || 'Unknown Movie' });
 export const fetchWatchProviders = async (tmdbId, region = 'US') => null;
+
 export const formatSensitiveTimeline = (tmdbId) => {
     const raw = SENSITIVE_TIMELINES[tmdbId];
     if (!raw || !raw.scenes || raw.scenes.length === 0) return null;
@@ -535,4 +468,144 @@ export const formatSensitiveTimeline = (tmdbId) => {
             description: scene.description || ''
         }))
     };
+};
+
+// 🔥 6. THE KEYWORD BRIDGE (Upgraded for maximum SEO power)
+export const getSensitiveContentTypes = (tmdbId) => {
+    const sensitiveData = SENSITIVE_TIMELINES[tmdbId];
+    if (!sensitiveData?.scenes?.length) return null;
+    const types = new Set();
+    sensitiveData.scenes.forEach(scene => {
+        const lowerType = scene.type.toLowerCase();
+        // Converts soft words into hard, high-volume SEO keywords
+        if (lowerType.includes('sex') || lowerType.includes('explicit')) types.add('sexual content');
+        if (lowerType.includes('nudity') || lowerType.includes('undressing') || lowerType.includes('bikini')) types.add('nudity');
+        if (lowerType.includes('violence')) types.add('graphic violence');
+        if (lowerType.includes('self-harm') || lowerType.includes('drug')) types.add('disturbing content');
+    });
+    return Array.from(types);
+};
+
+// 🔥 7. THE "GOLDEN EGG" SCHEMA GENERATOR (Universal Version)
+export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, collectionSlug, unused, movieInfo) => {
+    // Extract runtime for the schema calibration tag
+    const currentRuntime = movie.Runtime || movie.runtime || "Official";
+
+    // Standard Movie Schema - ✅ FIXED THE CANONICAL URL LOGIC TO USE collectionSlug
+    const movieSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'Movie',
+        'name': movie.Title,
+        'description': movieInfo?.synopsis || `${movie.Title} (${currentMovieYear}) - A masterful cinematic experience streaming on Peacock.`,
+        'genre': movie.genre,
+        'url': `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`, // 🔥 THE SEO SILO FIX
+        'datePublished': currentMovieYear?.toString() || movie.year.toString(),
+        'director': { '@type': 'Person', 'name': movieInfo?.director || 'Director' },
+        'actor': movieInfo?.cast?.map(actor => ({ '@type': 'Person', 'name': actor })) || [],
+        'image': tmdbData?.poster_path ? `https://image.tmdb.org/t/p/w500${tmdbData.poster_path}` : (FALLBACK_POSTERS[movie.tmdbId] || ''),
+        'duration': `PT${movie.runtime}M`
+    };
+
+    const staticFaqs = PEACOCK_BEST_MOVIE_FAQS[movie.Title] || [];
+    const sensitiveScenes = SENSITIVE_TIMELINES[movie.tmdbId]?.scenes || [];
+    const intensityScenes = movieInfo?.scenes || [];
+    
+    const schemaFaqs = staticFaqs.map(faq => ({ 
+        '@type': 'Question', 
+        'name': faq.question, 
+        'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer } 
+    }));
+
+    // Inject Intensity Graph Timestamps into Schema
+    if (intensityScenes.length > 0) {
+        const schemaIntensityList = intensityScenes.map(s => `<li>Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)</li>`).join('');
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `What are the most intense scenes in ${movie.Title}?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `According to the Filmiway Intensity metric, ${movie.Title} peaks at the following moments:<br><br><ul>${schemaIntensityList}</ul>` 
+            }
+        });
+    }
+
+    // Inject Sensitive Content Timestamps into Schema (Top Priority)
+    if (sensitiveScenes.length > 0) {
+        const typesArray = getSensitiveContentTypes(movie.tmdbId) || ['mature content'];
+        const typesString = typesArray.join(' and ');
+
+        const schemaListText = sensitiveScenes.map(s => {
+            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
+            return `<li>${timeRange} - ${s.type || 'Mature Content'}</li>`;
+        }).join('');
+
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `Yes, according to the Filmiway Timestamps & Parents Guide, ${movie.Title} contains adult scenes including ${typesString}. These timestamps are accurate for the ${currentRuntime} runtime. Exact timestamps for these scenes are:<br><br><ul>${schemaListText}</ul>` 
+            }
+        });
+    } else {
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `No, the Filmiway Timestamps & Parents Guide confirms that ${movie.Title} is completely free of explicit sexual content and nudity. This assessment is accurate for the ${currentRuntime} runtime.` 
+            }
+        });
+    }
+
+    const faqSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        'name': `Parents Guide and FAQ for ${movie.Title}`,
+        'mainEntity': schemaFaqs
+    };
+
+    return { movieSchema, faqSchema };
+};
+
+// 🔥 8. FRONTEND UI SYNC (Displays the timestamps dynamically on the Next.js page)
+export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Official") => {
+    const staticFaqs = PEACOCK_BEST_MOVIE_FAQS[movieTitle] ? [...PEACOCK_BEST_MOVIE_FAQS[movieTitle]] : [];
+    const sensitiveScenes = SENSITIVE_TIMELINES[tmdbId]?.scenes || [];
+    const movieInfo = COMPLETE_MOVIE_DATA[tmdbId];
+    const intensityScenes = movieInfo?.scenes || [];
+
+    // Extract runtime from database
+    const dbMovie = COMPLETE_MOVIE_DATABASE.find(m => m.tmdbId === tmdbId);
+    const finalRuntime = currentRuntime !== "Official" ? currentRuntime : (dbMovie?.runtime ? `${dbMovie.runtime} min` : "Official");
+
+    if (intensityScenes.length > 0) {
+        const uiIntensityList = intensityScenes.map(s => `• Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)`).join('\n');
+        staticFaqs.unshift({
+            question: `What are the most intense scenes in ${movieTitle}?`,
+            answer: `According to the Filmiway Intensity metric, ${movieTitle} peaks at the following moments:\n\n${uiIntensityList}`
+        });
+    }
+
+    if (sensitiveScenes.length > 0) {
+        const typesArray = getSensitiveContentTypes(tmdbId) || ['mature content'];
+        const typesString = typesArray.join(' and ');
+
+        const uiListText = sensitiveScenes.map(s => {
+            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
+            return `• ${timeRange} - ${s.type || 'Mature Content'}`;
+        }).join('\n');
+
+        staticFaqs.unshift({
+            question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
+            answer: `Yes, according to the Filmiway Timestamps & Parents Guide, ${movieTitle} contains adult scenes including ${typesString}. These timestamps are accurate for the ${finalRuntime} runtime. Exact timestamps for these scenes are:\n\n${uiListText}`
+        });
+    } else {
+        staticFaqs.unshift({
+            question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
+            answer: `No, the Filmiway Timestamps & Parents Guide confirms that ${movieTitle} is completely free of explicit sexual content and nudity. This assessment is accurate for the ${finalRuntime} runtime.`
+        });
+    }
+
+    return staticFaqs;
 };

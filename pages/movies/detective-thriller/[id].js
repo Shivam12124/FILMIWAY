@@ -265,7 +265,7 @@ const DetectiveThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
   // =========================================================================
 
     // BUG FIX: Canonical URL is perfectly hardcoded to the exact route to prevent Hydration mismatches
-    236735
+    
   const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
 
     const { movieSchema, faqSchema } = generateCleanMovieSchema(

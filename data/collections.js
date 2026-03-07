@@ -60,7 +60,7 @@ export const COLLECTIONS = {
     slug: 'best-horror-movies-on-hulu',
     title: '10 Best Horror Movies on Hulu',
     stats: { averageRating: 7.0 },
-    movies: ['tt16300962', 'tt23468450', 'tt4003440', 'tt26466146', 'tt4160708', 'tt2321549', 'tt5867314', 'tt15791034', 'tt5676368', 'tt14966898'],
+    movies: ['tt16300962', 'tt23468450', 'tt4003440', 'tt26466146', 'tt4160708', 'tt2321549', 'tt5867314', 'tt15791034', 'tt5672290', 'tt14966898'],
     relatedCollections: ['best-psychological-thriller-movies', 'movies-like-se7en', 'best-mystery-thriller-movies']
   },
 

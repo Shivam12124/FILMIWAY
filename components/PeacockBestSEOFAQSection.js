@@ -2,13 +2,18 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Info, Award } from 'lucide-react';
-import { PEACOCK_BEST_MOVIE_FAQS } from '../utils/peacockBestMoviesData';
+// 🔥 IMPORT THE NEW DYNAMIC FAQ GENERATOR
+import { COMPLETE_MOVIE_DATA as PEACOCK_BEST_MOVIE_DATA, getVisibleMovieFAQs } from '../utils/peacockBestMoviesData';
 
 const PeacockBestSEOFAQSection = ({ movie }) => {
-    // 🔥 Get FAQs from PEACOCK_BEST_MOVIE_FAQS data
-    const faqsFromData = movie?.Title && PEACOCK_BEST_MOVIE_FAQS?.[movie.Title] 
-        ? PEACOCK_BEST_MOVIE_FAQS[movie.Title] 
-        : [];
+    const movieInfo = PEACOCK_BEST_MOVIE_DATA[movie?.tmdbId];
+    
+    // ✅ DYNAMIC RUNTIME SYNC: Grab the runtime so we can pass it to the FAQ generator
+    const currentRuntime = movie?.Runtime || movie?.runtime || "Official";
+    
+    // 🔥 AUTOMATICALLY GENERATE THE FAQS FOR HUMANS
+    // Passing currentRuntime as the 3rd parameter so the UI matches the Schema exactly!
+    const faqsFromData = getVisibleMovieFAQs(movie?.Title, movie?.tmdbId, currentRuntime);
 
     // 🔥 Safety check - return null if no FAQs
     if (!faqsFromData || faqsFromData.length === 0) {
@@ -25,27 +30,30 @@ const PeacockBestSEOFAQSection = ({ movie }) => {
         >
             <h2 className="text-xl sm:text-2xl font-light text-amber-400 mb-6 sm:mb-8 flex items-center gap-2 sm:gap-3">
                 <Award size={20} className="sm:w-6 sm:h-6 text-amber-500" />
-                <span className="hidden sm:inline">Frequently Asked Questions About {movie.Title}</span>
-                <span className="sm:hidden">FAQ About {movie.Title}</span>
+                <span className="hidden sm:inline">Frequently Asked Questions About {movie?.Title}</span>
+                <span className="sm:hidden">FAQ About {movie?.Title}</span>
             </h2>
             <p className="text-gray-300 mb-4 sm:mb-6 text-sm sm:text-base">
-                Dive deeper into the legacy, production secrets, and cinematic impact of {movie.Title}.
+                Dive deeper into the legacy, production secrets, and cinematic impact of {movie?.Title}.
             </p>
             <div className="space-y-4 sm:space-y-6">
                 {faqsFromData.map((faq, index) => (
                     <motion.div 
                         key={index}
-                        className="bg-gray-800/30 rounded-xl p-4 sm:p-6 border border-gray-700/50 hover:border-amber-500/30 transition-all duration-300"
+                        className="bg-gray-800/30 rounded-xl p-4 sm:p-6 border border-gray-700/50 hover:border-amber-500/30 transition-all duration-300 group"
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.6, delay: index * 0.1 }}
                     >
                         <h3 className="text-base sm:text-lg font-medium text-amber-200 mb-2 sm:mb-3">
-                            {faq.question}
+                            {faq.question || faq.q}
                         </h3>
-                        <p className="text-gray-400 leading-relaxed text-sm sm:text-base group-hover:text-gray-300 transition-colors">
-                            {faq.answer}
-                        </p>
+                        
+                        {/* ✅ SEO & UI FIX: Using dangerouslySetInnerHTML to render our dynamic line breaks and bullet points perfectly */}
+                        <div 
+                            className="text-gray-400 leading-relaxed text-sm sm:text-base group-hover:text-gray-300 transition-colors whitespace-pre-line"
+                            dangerouslySetInnerHTML={{ __html: faq.answer || faq.a }}
+                        />
                     </motion.div>
                 ))}
             </div>

@@ -17,7 +17,7 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 242224, "imdbID": "tt2321549", "Title": "The Babadook", "year": 2014, "genre": "Horror", "runtime": 94, "rank": 6 },
     { "tmdbId": 516632, "imdbID": "tt5867314", "Title": "The Empty Man", "year": 2020, "genre": "Horror", "runtime": 137, "rank": 7 },
     { "tmdbId": 913290, "imdbID": "tt15791034", "Title": "Barbarian", "year": 2022, "genre": "Horror", "runtime": 102, "rank": 8 },
-    { "tmdbId": 824372, "imdbID": "tt5676368", "Title": "The First Omen", "year": 2024, "genre": "Horror", "runtime": 119, "rank": 9 },
+    { "tmdbId": 437342, "imdbID": "tt5672290", "Title": "The First Omen", "year": 2024, "genre": "Horror", "runtime": 119, "rank": 9 },
     { "tmdbId": 938614, "imdbID": "tt14966898", "Title": "Late Night with the Devil", "year": 2023, "genre": "Horror", "runtime": 93, "rank": 10 }
 ];
 
@@ -67,7 +67,7 @@ export const SENSITIVE_TIMELINES = {
     },
 
     // 9. The First Omen
-    824372: { 
+    437342: { 
         scenes: [
             { start: "4:20", end: "4:50", type: "Nudity", severity: "High" },
             { start: "1:17:15", end: "1:17:45", type: "Nudity", severity: "High" } 
@@ -86,7 +86,7 @@ export const FALLBACK_POSTERS = {
     242224: "https://image.tmdb.org/t/p/w500/k5WCg7in2F3xX7aX7aX7aX7aX7a.jpg",
     516632: "https://image.tmdb.org/t/p/w500/4PAqJ9l8J9l8J9l8J9l8J9l8J9l.jpg",
     913290: "https://image.tmdb.org/t/p/w500/y2Ca1neKke2mGPMaZvXdMjFvqCN.jpg",
-    824372: "https://image.tmdb.org/t/p/w500/uGyGdD8f1Z8f1Z8f1Z8f1Z8f1Z8.jpg",
+    437342: "https://image.tmdb.org/t/p/w500/uGyGdD8f1Z8f1Z8f1Z8f1Z8f1Z8.jpg",
     1014590: "https://image.tmdb.org/t/p/w500/j9j9j9j9j9j9j9j9j9j9j9j9j9j.jpg"
 };
 
@@ -260,7 +260,7 @@ export const COMPLETE_MOVIE_DATA = {
     // 9. The First Omen
     // Curve: Faith -> Conspiracy -> Body Horror -> Ritual -> Birth.
     // Peak: 94 (The Birth Scene - Visceral Horror).
-    824372: createMovieData({ 
+    437342: createMovieData({ 
         scariness: 85, 
         dominantColor: "#991b1b", rating: 6.5, criticsScore: 81, audienceScore: 70, director: "Arkasha Stevenson", 
         cast: ["Nell Tiger Free", "Ralph Ineson", "Sonia Braga"], boxOffice: "$53 million", budget: "$30 million", 
@@ -305,7 +305,7 @@ export const STRATEGIC_QUOTES = {
     516632: "The Empty Man made me do it.",
     1014590: "Don't turn that dial.",
     913290: "This is perfectly natural.",
-    824372: "It's all for you."
+    437342: "It's all for you."
 };
 
 export const CINEMATIC_COLORS = {
