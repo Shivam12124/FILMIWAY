@@ -210,37 +210,59 @@ const PsychThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
   const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
   // =========================================================================
-  // ✅ THE UNIVERSAL ELITE SEO BLOCK (Hardcoded Fix & Standardized Description)
+  // ✅ THE STANDARDIZED ELITE SEO BLOCK (Feature First + Tag Protection)
   // =========================================================================
 
   const collectionSlug = 'best-psychological-thriller-movies';
-  const dynamicCollectionName = 'Best Psychological Thriller Movies';
+  const routeSlug = 'psych-thriller'; // Exact Next.js folder name
+  const collectionShortTag = 'Psych'; // Short, unique tag for this collection
 
   const scenes = SENSITIVE_TIMELINES?.[movie.tmdbId]?.scenes || [];
   
-  // 1. UNIQUE META TITLE (Prevents Duplicate Cannibalization)
-  const cleanSEOTitle = scenes.length > 0
-    ? `${movie.Title} (${currentMovieYear}) Parents Guide & Timestamps | ${dynamicCollectionName}`
-    : `${movie.Title} (${currentMovieYear}) Parents Guide | ${dynamicCollectionName}`;
+  // 1. UNIQUE META TITLE LOGIC
+  let cleanSEOTitle = '';
+  const coreUSP = "Timestamps & Parents Guide:";
+
+  if (scenes.length > 0) {
+    // Ideal: Timestamps & Parents Guide: Fight Club (1999) - Psych
+    const idealTitle = `${coreUSP} ${movie.Title} (${currentMovieYear}) - ${collectionShortTag}`;
+    
+    if (idealTitle.length <= 62) {
+      cleanSEOTitle = idealTitle; // Fits perfectly
+    } else {
+      // Backup: Drop the year to save the USP and the unique Tag
+      cleanSEOTitle = `${coreUSP} ${movie.Title} - ${collectionShortTag}`;
+    }
+  } else {
+    // For completely clean movies (no timestamps needed)
+    const idealCleanTitle = `Parents Guide: ${movie.Title} (${currentMovieYear}) - Clean`;
+    
+    if (idealCleanTitle.length <= 62) {
+      cleanSEOTitle = idealCleanTitle;
+    } else {
+      // Drop year if too long, but strictly keep the "Clean" tag
+      cleanSEOTitle = `Parents Guide: ${movie.Title} - Clean`;
+    }
+  }
 
   // 2. STANDARDIZED ELITE META DESCRIPTION
   let cleanSEODesc = '';
   
   if (scenes.length > 0) {
-    const rawTimes = scenes.slice(0, 3).map(s => s.end ? `${s.start}–${s.end}` : s.start);
-    const formattedTimes = rawTimes.length > 1 
-      ? `${rawTimes.slice(0, -1).join(', ')} and ${rawTimes.slice(-1)}` 
-      : rawTimes[0];
+    // 🔥 Strictly grab only the first 2 timestamps so it's clean and readable
+    const rawTimes = scenes.slice(0, 2).map(s => s.end ? `${s.start}–${s.end}` : s.start);
+    const formattedTimes = rawTimes.join(' and ');
 
     cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Viewer discretion advised. Includes exact scene timestamps: ${formattedTimes}.`;
   } else {
-    cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Filmiway Content Advisory: No nudity or explicit sexual content identified. Suitable for general viewing.`;
+    // 🔥 Zero-liability runtime focus
+    cleanSEODesc = `Timestamps & Parents Guide for ${movie.Title} (${currentMovieYear}). Filmiway has identified zero explicit nudity or sexual content throughout the film's entire runtime.`;
   }
 
   // =========================================================================
 
-  // BUG FIX: Canonical URL hardcoded to file route for perfect Next.js parity
-  const canonicalUrl = `https://filmiway.com/movies/psych-thriller/${movie.imdbID}`;
+  // BUG FIX: Canonical URL perfectly hardcoded to routeSlug to prevent Hydration mismatches
+  const canonicalUrl = `https://filmiway.com/movies/${routeSlug}/${movie.imdbID}`;
 
   const { movieSchema, faqSchema } = generateCleanMovieSchema(
       movie, 
@@ -293,8 +315,6 @@ const PsychThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
               {/* ✅ SEO FIX: HIDDEN H1 ADDED HERE FOR GOOGLE & BING */}
               <h1 className="sr-only">{cleanSEOTitle}</h1>
 
-              {/* ❌ VISIBLE SNIPPET BAIT REMOVED AS REQUESTED */}
-
               <PsychBreadcrumb movie={movie} />
               
               <div className="container mx-auto px-0 pb-16 sm:pb-24 lg:pb-32 max-w-7xl">
@@ -304,7 +324,7 @@ const PsychThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
                       id="watch" 
                       initial={{ opacity: 0, y: 20 }} 
                       animate={{ opacity: 1, y: 0 }} 
-                      transition={{ duration: 0.5 }} // Faster, no massive delay
+                      transition={{ duration: 0.5 }} 
                       className="space-y-8 sm:space-y-12 px-3 sm:px-4 lg:px-6"
                   >
                       <MovieDetailsSection movie={movie} fromPsychologicalThrillerCollection={true} />

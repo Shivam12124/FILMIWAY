@@ -229,46 +229,65 @@ const RevengeMoviePage = ({ movie, tmdbData: movieData }) => {
   const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
   // =========================================================================
-  // ✅ THE UNIVERSAL SEO BLOCK (Blind Copy-Paste Ready)
+  // ✅ THE STANDARDIZED ELITE SEO BLOCK (Feature First + Tag Protection)
   // =========================================================================
 
-  const currentPath = router.pathname;
-  const currentSlug = currentPath.includes('/collection/') ? currentPath.split('/')[2] : currentPath.split('/')[1];
-  const dynamicCollectionName = (currentSlug || 'best-revenge-movies')
-    .split('-')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' '); 
-
-  const dynamicInsight = correctData?.connection || richData?.synopsis || richData?.description || '';
+  const collectionSlug = 'best-revenge-movies';
+  const routeSlug = 'revenge'; // Exact Next.js folder name
+  const collectionShortTag = 'Revenge'; // Short, unique tag for this collection
 
   const scenes = SENSITIVE_TIMELINES?.[movie.tmdbId]?.scenes || [];
   
-  let sceneNotice = `Detailed Parents Guide: No nudity or explicit scenes. ${dynamicInsight.substring(0, 110)}...`;
-  
+  // 1. UNIQUE META TITLE LOGIC
+  let cleanSEOTitle = '';
+  const coreUSP = "Timestamps & Parents Guide:";
+
   if (scenes.length > 0) {
-    const firstTimestamps = scenes
-      .slice(0, 2)
-      .map(s => s.end ? `${s.start}–${s.end}` : s.start)
-      .join(', ');
-    const andMore = scenes.length > 2 ? '...' : '';
-    sceneNotice = `Parents guide with exact scene timestamps: ${firstTimestamps}${andMore}. Viewer discretion advised.`;
+    // Ideal: Timestamps & Parents Guide: Oldboy (2003) - Revenge
+    const idealTitle = `${coreUSP} ${movie.Title} (${currentMovieYear}) - ${collectionShortTag}`;
+    
+    if (idealTitle.length <= 62) {
+      cleanSEOTitle = idealTitle; // Fits perfectly
+    } else {
+      // Backup: Drop the year to save the USP and the unique Tag
+      cleanSEOTitle = `${coreUSP} ${movie.Title} - ${collectionShortTag}`;
+    }
+  } else {
+    // For completely clean movies (no timestamps needed)
+    const idealCleanTitle = `Parents Guide: ${movie.Title} (${currentMovieYear}) - Clean`;
+    
+    if (idealCleanTitle.length <= 62) {
+      cleanSEOTitle = idealCleanTitle;
+    } else {
+      // Drop year if too long, but strictly keep the "Clean" tag
+      cleanSEOTitle = `Parents Guide: ${movie.Title} - Clean`;
+    }
   }
 
-  const cleanSEOTitle = scenes.length > 0
-    ? `${movie.Title} (${currentMovieYear}) Parents Guide & Timestamps | Filmiway`
-    : `${movie.Title} (${currentMovieYear}) Parents Guide | ${dynamicCollectionName}`;
+  // 2. STANDARDIZED ELITE META DESCRIPTION
+  let cleanSEODesc = '';
+  
+  if (scenes.length > 0) {
+    // 🔥 Strictly grab only the first 2 timestamps so it's clean and readable
+    const rawTimes = scenes.slice(0, 2).map(s => s.end ? `${s.start}–${s.end}` : s.start);
+    const formattedTimes = rawTimes.join(' and ');
 
-  const cleanSEODesc = `${movie.Title} (${currentMovieYear}) – ${sceneNotice}`;
+    cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Viewer discretion advised. Includes exact scene timestamps: ${formattedTimes}.`;
+  } else {
+    // 🔥 Zero-liability runtime focus
+    cleanSEODesc = `Timestamps & Parents Guide for ${movie.Title} (${currentMovieYear}). Filmiway has identified zero explicit nudity or sexual content throughout the film's entire runtime.`;
+  }
 
   // =========================================================================
 
-  const canonicalUrl = `https://filmiway.com/movies/${currentSlug || 'best-revenge-movies'}/${movie.imdbID}`;
+  // BUG FIX: Canonical URL is perfectly hardcoded to the exact route to prevent Hydration mismatches
+  const canonicalUrl = `https://filmiway.com/movies/${routeSlug}/${movie.imdbID}`;
 
   const { movieSchema, faqSchema } = generateCleanMovieSchema(
       movie, 
       movieData, 
       currentMovieYear, 
-      currentSlug || 'best-revenge-movies', 
+      collectionSlug, 
       null,
       COMPLETE_MOVIE_DATA[movie.tmdbId]
   );
@@ -289,6 +308,7 @@ const RevengeMoviePage = ({ movie, tmdbData: movieData }) => {
               <meta property="og:title" content={cleanSEOTitle} />
               <meta property="og:description" content={cleanSEODesc} />
               <meta property="og:type" content="video.movie" />
+              <meta property="og:url" content={canonicalUrl} />
               <meta property="og:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
               <meta name="twitter:card" content="summary_large_image" />
               <meta name="twitter:title" content={cleanSEOTitle} />
@@ -303,8 +323,6 @@ const RevengeMoviePage = ({ movie, tmdbData: movieData }) => {
               
               {/* ✅ HIDDEN H1 ADDED HERE FOR GOOGLE & BING SEO PARITY */}
               <h1 className="sr-only">{cleanSEOTitle}</h1>
-
-              {/* ❌ NO VISIBLE SNIPPET BAIT (UI Kept Clean) */}
 
               <RevengeBreadcrumb movie={movie} />
               <div className="container mx-auto px-0 pb-16 sm:pb-24 lg:pb-32 max-w-7xl">

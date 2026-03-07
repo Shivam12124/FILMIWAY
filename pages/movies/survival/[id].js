@@ -152,15 +152,6 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
   );
 };
 
-const SmartBackButton = () => {
-    const handleBackClick = () => { if (typeof window !== 'undefined') window.location.href = '/collection/best-survival-movies'; };
-    return (
-        <motion.button onClick={handleBackClick} className="fixed top-4 left-4 sm:top-6 sm:left-6 z-50 flex items-center gap-2 px-3 sm:px-4 py-2 backdrop-blur-md rounded-lg transition-all duration-300 shadow-xl text-xs sm:text-sm" style={{ backgroundColor: `${COLORS.bgPrimary}F2`, border: `1px solid ${COLORS.borderLight}` }} whileHover={{ scale: 1.02, x: -2 }} whileTap={{ scale: 0.98 }} initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} onMouseEnter={(e) => e.currentTarget.style.borderColor = COLORS.borderAccent} onMouseLeave={(e) => e.currentTarget.style.borderColor = COLORS.borderLight}>
-            <ChevronLeft className="w-3 h-3 sm:w-4 sm:h-4" style={{ color: COLORS.accent }} /><span className="font-medium" style={{ color: COLORS.accent }}>Back to Collection</span>
-        </motion.button>
-    );
-};
-
 const AuthorCreditSection = () => (
     <motion.section className="pt-6 sm:pt-8 mt-12 sm:mt-16" style={{ borderTop: `1px solid ${COLORS.borderLight}` }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2.0, duration: 0.8 }}>
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
@@ -206,37 +197,58 @@ const SurvivalMoviePage = ({ movie, tmdbData: movieData, sensitiveData }) => {
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
   // =========================================================================
-  // ✅ THE UNIVERSAL ELITE SEO BLOCK (Hardcoded Fix & Standardized Description)
+  // ✅ THE STANDARDIZED ELITE SEO BLOCK (Feature First + Tag Protection)
   // =========================================================================
 
   const collectionSlug = 'best-survival-movies';
-  const dynamicCollectionName = 'Best Survival Movies';
-  const routeSlug = 'survival'; // The actual folder name in Next.js
+  const routeSlug = 'survival'; // Exact Next.js folder name
+  const collectionShortTag = 'Survival'; // Short, unique tag for this collection
 
   const scenes = SENSITIVE_TIMELINES?.[movie.tmdbId]?.scenes || [];
   
-  // 1. UNIQUE META TITLE (Prevents Duplicate Cannibalization)
-  const cleanSEOTitle = scenes.length > 0
-    ? `${movie.Title} (${currentMovieYear}) Parents Guide & Timestamps | ${dynamicCollectionName}`
-    : `${movie.Title} (${currentMovieYear}) Parents Guide | ${dynamicCollectionName}`;
+  // 1. UNIQUE META TITLE LOGIC
+  let cleanSEOTitle = '';
+  const coreUSP = "Timestamps & Parents Guide:";
+
+  if (scenes.length > 0) {
+    // Ideal: Timestamps & Parents Guide: 127 Hours (2010) - Survival
+    const idealTitle = `${coreUSP} ${movie.Title} (${currentMovieYear}) - ${collectionShortTag}`;
+    
+    if (idealTitle.length <= 62) {
+      cleanSEOTitle = idealTitle; // Fits perfectly
+    } else {
+      // Backup: Drop the year to save the USP and the unique Tag
+      cleanSEOTitle = `${coreUSP} ${movie.Title} - ${collectionShortTag}`;
+    }
+  } else {
+    // For completely clean movies (no timestamps needed)
+    const idealCleanTitle = `Parents Guide: ${movie.Title} (${currentMovieYear}) - Clean`;
+    
+    if (idealCleanTitle.length <= 62) {
+      cleanSEOTitle = idealCleanTitle;
+    } else {
+      // Drop year if too long, but strictly keep the "Clean" tag
+      cleanSEOTitle = `Parents Guide: ${movie.Title} - Clean`;
+    }
+  }
 
   // 2. STANDARDIZED ELITE META DESCRIPTION
   let cleanSEODesc = '';
   
   if (scenes.length > 0) {
-    const rawTimes = scenes.slice(0, 3).map(s => s.end ? `${s.start}–${s.end}` : s.start);
-    const formattedTimes = rawTimes.length > 1 
-      ? `${rawTimes.slice(0, -1).join(', ')} and ${rawTimes.slice(-1)}` 
-      : rawTimes[0];
+    // 🔥 Strictly grab only the first 2 timestamps so it's clean and readable
+    const rawTimes = scenes.slice(0, 2).map(s => s.end ? `${s.start}–${s.end}` : s.start);
+    const formattedTimes = rawTimes.join(' and ');
 
     cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Viewer discretion advised. Includes exact scene timestamps: ${formattedTimes}.`;
   } else {
-    cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Filmiway Content Advisory: No nudity or explicit sexual content identified. Suitable for general viewing.`;
+    // 🔥 Zero-liability runtime focus
+    cleanSEODesc = `Timestamps & Parents Guide for ${movie.Title} (${currentMovieYear}). Filmiway has identified zero explicit nudity or sexual content throughout the film's entire runtime.`;
   }
 
   // =========================================================================
 
-    // BUG FIX: Canonical URL hardcoded to the exact file route for perfect Next.js parity
+    // BUG FIX: Canonical URL is perfectly hardcoded to the exact route
     const canonicalUrl = `https://filmiway.com/movies/${routeSlug}/${movie.imdbID}`;
 
     const { movieSchema, faqSchema } = generateCleanMovieSchema(
@@ -258,22 +270,23 @@ const SurvivalMoviePage = ({ movie, tmdbData: movieData, sensitiveData }) => {
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                 <meta name="robots" content="index, follow" />
                 
-                {/* ✅ SCHEMA INJECTION */}
-                <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }} />
-                {faqSchema && (<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />)}
+                {/* ✅ SCHEMA INJECTION WITH UNIQUE KEYS */}
+                <script key="schema-movie" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }} />
+                {faqSchema && (<script key="schema-faq" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />)}
 
                 {/* Social Meta Tags */}
                 <meta property="og:title" content={cleanSEOTitle} />
                 <meta property="og:description" content={cleanSEODesc} />
-                <meta property="og:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
                 <meta property="og:url" content={canonicalUrl} />
+                <meta property="og:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
+                <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content={cleanSEOTitle} />
                 <meta name="twitter:description" content={cleanSEODesc} />
+                <meta name="twitter:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
             </Head>
 
             <SubtleFilmGrain />
             <div className="absolute inset-0"><CinematicBackground /></div>
-            
             
             <div className="relative z-10 pt-10 sm:pt-12 lg:pt-16">
                 
@@ -288,7 +301,7 @@ const SurvivalMoviePage = ({ movie, tmdbData: movieData, sensitiveData }) => {
                         id="watch" 
                         initial={{ opacity: 0, y: 20 }} 
                         animate={{ opacity: 1, y: 0 }} 
-                        transition={{ duration: 0.5 }} // Faster, no massive delay
+                        transition={{ duration: 0.5 }}
                         className="space-y-8 sm:space-y-12 px-3 sm:px-4 lg:px-6"
                     >
                        <MovieDetailsSection 
@@ -298,7 +311,7 @@ const SurvivalMoviePage = ({ movie, tmdbData: movieData, sensitiveData }) => {
                     </motion.div>
                     
                     <div className="px-3 sm:px-4 lg:px-6">
-                        {/* ✅ THIS IS THE FIX: Explicitly passing currentSlug="best-survival-movies" */}
+                        {/* ✅ Explicitly passing currentSlug to fix missing prop */}
                         <InternalCollectionsSection currentSlug="best-survival-movies" />
                         <TMDBAttribution />
                         <AuthorCreditSection />

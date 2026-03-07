@@ -8,7 +8,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, Play, X, User, Twitter, Hash, Send, Film, Cpu } from 'lucide-react'; 
+import { ChevronLeft, ChevronRight, Play, X, User, Twitter, Hash, Send, Film, Cpu } from 'lucide-react'; 
 import InternalCollectionsSection from '../../../components/InternalCollectionsSection';
 import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
@@ -63,11 +63,12 @@ const getMatrixInsight = (title) => {
   return data?.connection || 'An extraordinary cyberpunk film exploring digital reality and consciousness like The Matrix.';
 };
 
-// ✅ OPTIMIZED BANNER
+// ✅ OPTIMIZED BANNER (Hydration Fix Applied)
 const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
   const [showTrailer, setShowTrailer] = useState(false);
   const [countdown, setCountdown] = useState(4);
   const [hasClosedTrailer, setHasClosedTrailer] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const timerRef = useRef(null);
 
   const backdropPath = movieData?.backdrop_path || richData?.backdrop_path || movie?.backdrop_path;
@@ -78,6 +79,8 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
 
   const insight = getMatrixInsight(movie?.Title);
   const complexityScore = richData?.cyberComplexity || 90;
+
+  useEffect(() => { setMounted(true); }, []);
 
   const mobileHeroCSS = `
   @media (max-width: 767px) {
@@ -92,7 +95,7 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
   }`;
 
   useEffect(() => {
-    if (!isMobile && trailer && !showTrailer && !hasClosedTrailer) {
+    if (mounted && !isMobile && trailer && !showTrailer && !hasClosedTrailer) {
       timerRef.current = setInterval(() => {
         setCountdown((prev) => {
           if (prev <= 1) { clearInterval(timerRef.current); setShowTrailer(true); return 0; }
@@ -101,10 +104,12 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
       }, 1000);
     }
     return () => { if (timerRef.current) clearInterval(timerRef.current); };
-  }, [isMobile, trailer, showTrailer, hasClosedTrailer]);
+  }, [mounted, isMobile, trailer, showTrailer, hasClosedTrailer]);
 
   const handleCloseTrailer = () => { setShowTrailer(false); setHasClosedTrailer(true); if (timerRef.current) clearInterval(timerRef.current); };
   const handlePlayClick = () => { setShowTrailer(true); setHasClosedTrailer(false); };
+
+  if (!mounted) return <div className="h-[300px] w-full bg-black/50" />;
 
   return (
     <motion.div className="relative w-full overflow-hidden mb-6 sm:mb-8 mx-0 sm:mx-4 lg:mx-6 rounded-none sm:rounded-3xl" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8 }}>
@@ -199,7 +204,7 @@ const MatrixBreadcrumb = ({ movie }) => (
     <motion.nav className="mb-6 sm:mb-8 px-3 sm:px-4 lg:px-6 pb-3 sm:pb-4" style={{ borderBottom: `1px solid ${COLORS.borderLight}` }} initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
         <div className="flex items-center space-x-2 sm:space-x-3 text-xs sm:text-sm" style={{ color: COLORS.textMuted }}>
             <Link href="/collection/movies-like-the-matrix" className="transition-all duration-300 truncate" style={{ color: COLORS.textMuted }} onMouseEnter={(e) => e.currentTarget.style.color = COLORS.accent} onMouseLeave={(e) => e.currentTarget.style.color = COLORS.textMuted}>Movies Like The Matrix</Link>
-            <ChevronLeft size={14} className="flex-shrink-0" style={{ color: COLORS.textDisabled, transform: 'rotate(180deg)' }} /><span className="font-medium truncate" style={{ color: `${COLORS.accent}B3` }}>{movie.Title}</span>
+            <ChevronRight size={14} className="flex-shrink-0" style={{ color: COLORS.textDisabled }} /><span className="font-medium truncate" style={{ color: `${COLORS.accent}B3` }}>{movie.Title}</span>
         </div>
     </motion.nav>
 );
@@ -229,36 +234,59 @@ const MatrixMoviePage = ({ movie, tmdbData: movieData }) => {
 
 
     // =========================================================================
-    // ✅ THE STANDARDIZED ELITE SEO BLOCK
+    // ✅ THE STANDARDIZED ELITE SEO BLOCK (Feature First + Tag Protection)
     // =========================================================================
 
     const collectionSlug = 'movies-like-the-matrix';
-    const dynamicCollectionName = 'Movies Like The Matrix';
+    const routeSlug = 'matrix'; // Exact Next.js folder name
+    const collectionShortTag = 'Cyber'; // Short, unique tag for this collection
 
     const scenes = SENSITIVE_TIMELINES?.[movie.tmdbId]?.scenes || [];
     
-    // 1. UNIQUE META TITLE (Targets "Parents Guide & Timestamps")
-    const cleanSEOTitle = scenes.length > 0
-        ? `${movie.Title} (${currentMovieYear}) Parents Guide & Timestamps | ${dynamicCollectionName}`
-        : `${movie.Title} (${currentMovieYear}) Parents Guide | ${dynamicCollectionName}`;
+    // 1. UNIQUE META TITLE LOGIC
+    let cleanSEOTitle = '';
+    const coreUSP = "Timestamps & Parents Guide:";
+
+    if (scenes.length > 0) {
+      // Ideal: Timestamps & Parents Guide: Inception (2010) - Cyber
+      const idealTitle = `${coreUSP} ${movie.Title} (${currentMovieYear}) - ${collectionShortTag}`;
+      
+      if (idealTitle.length <= 62) {
+        cleanSEOTitle = idealTitle; // Fits perfectly
+      } else {
+        // Backup: Drop the year to save the USP and the unique Tag
+        cleanSEOTitle = `${coreUSP} ${movie.Title} - ${collectionShortTag}`;
+      }
+    } else {
+      // For completely clean movies (no timestamps needed)
+      const idealCleanTitle = `Parents Guide: ${movie.Title} (${currentMovieYear}) - Clean`;
+      
+      if (idealCleanTitle.length <= 62) {
+        cleanSEOTitle = idealCleanTitle;
+      } else {
+        // Drop year if too long, but strictly keep the "Clean" tag
+        cleanSEOTitle = `Parents Guide: ${movie.Title} - Clean`;
+      }
+    }
 
     // 2. STANDARDIZED ELITE META DESCRIPTION
     let cleanSEODesc = '';
     
     if (scenes.length > 0) {
-        const rawTimes = scenes.slice(0, 3).map(s => s.end ? `${s.start}–${s.end}` : s.start);
-        const formattedTimes = rawTimes.length > 1 
-        ? `${rawTimes.slice(0, -1).join(', ')} and ${rawTimes.slice(-1)}` 
-        : rawTimes[0];
+      // 🔥 Strictly grab only the first 2 timestamps so it's clean and readable
+      const rawTimes = scenes.slice(0, 2).map(s => s.end ? `${s.start}–${s.end}` : s.start);
+      const formattedTimes = rawTimes.join(' and ');
 
-        cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Viewer discretion advised. Includes exact scene timestamps: ${formattedTimes}.`;
+      cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Viewer discretion advised. Includes exact scene timestamps: ${formattedTimes}.`;
     } else {
-        cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Filmiway Content Advisory: No nudity or explicit sexual content identified. Suitable for general viewing.`;
+      // 🔥 Zero-liability runtime focus
+      cleanSEODesc = `Timestamps & Parents Guide for ${movie.Title} (${currentMovieYear}). Filmiway has identified zero explicit nudity or sexual content throughout the film's entire runtime.`;
     }
 
     // =========================================================================
 
-    const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
+    // BUG FIX: Canonical URL is perfectly hardcoded to the exact route to prevent Hydration mismatches
+    const canonicalUrl = `https://filmiway.com/movies/${routeSlug}/${movie.imdbID}`;
 
     const { movieSchema, faqSchema } = generateCleanMovieSchema(
         movie, 

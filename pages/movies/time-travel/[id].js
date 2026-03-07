@@ -14,7 +14,6 @@ import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
 import TMDBAttribution from '../../../components/TMDBAttribution';
 
-// ✅ CORRECTED IMPORT: Pulling schema generator from its dedicated file
 // ✅ TRULY CORRECTED IMPORT: Pulling everything from the local data file!
 import {
   COMPLETE_MOVIE_DATABASE, 
@@ -23,9 +22,10 @@ import {
   TIME_TRAVEL_MOVIE_FAQS,
   generateCleanMovieSchema // 🔥 Added here!
 } from '../../../utils/timeTravelMovieData';
+
 const COLORS = {
-  accent: '#d2e40ddd', // Cyan for Time Travel
-  accentLight: '#cdd002', 
+  accent: '#06b6d4', // Cyan for Time Travel
+  accentLight: '#67e8f9', 
   bgPrimary: '#0B0B0C', 
   bgCard: 'rgba(21, 22, 23, 0.3)', 
   textPrimary: '#FFFFFF', 
@@ -64,10 +64,13 @@ const getTimeInsight = (title) => {
   return data?.connection || 'A mind-bending exploration of temporal paradoxes, causality, and the human condition.';
 };
 
-// ✅ OPTIMIZED BANNER
+// ✅ OPTIMIZED BANNER (Hydration Fix Applied)
 const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
   const [showTrailer, setShowTrailer] = useState(false);
+  const [countdown, setCountdown] = useState(4);
   const [hasClosedTrailer, setHasClosedTrailer] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const timerRef = useRef(null);
 
   const backdropPath = movieData?.backdrop_path || richData?.backdrop_path || movie?.backdrop_path;
   const posterPath = movieData?.poster_path || richData?.poster_path || movie?.poster_path;
@@ -77,6 +80,8 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
 
   const insight = getTimeInsight(movie?.Title);
   const timeIndex = richData?.complexityScore || 90;
+
+  useEffect(() => { setMounted(true); }, []);
 
   const mobileHeroCSS = `
   @media (max-width: 767px) {
@@ -90,8 +95,22 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
     .mobile-time-desc { font-size: 12.3px; color: #ededed; line-height: 1.36; margin-top: 2px; }
   }`;
 
-  const handleCloseTrailer = () => { setShowTrailer(false); setHasClosedTrailer(true); };
+  useEffect(() => {
+    if (mounted && !isMobile && trailer && !showTrailer && !hasClosedTrailer) {
+      timerRef.current = setInterval(() => {
+        setCountdown((prev) => {
+          if (prev <= 1) { clearInterval(timerRef.current); setShowTrailer(true); return 0; }
+          return prev - 1;
+        });
+      }, 1000);
+    }
+    return () => { if (timerRef.current) clearInterval(timerRef.current); };
+  }, [mounted, isMobile, trailer, showTrailer, hasClosedTrailer]);
+
+  const handleCloseTrailer = () => { setShowTrailer(false); setHasClosedTrailer(true); if (timerRef.current) clearInterval(timerRef.current); };
   const handlePlayClick = () => { setShowTrailer(true); setHasClosedTrailer(false); };
+
+  if (!mounted) return <div className="h-[300px] w-full bg-black/50" />;
 
   return (
     <motion.div className="relative w-full overflow-hidden mb-6 sm:mb-8 mx-0 sm:mx-4 lg:mx-6 rounded-none sm:rounded-3xl" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8 }}>
@@ -112,6 +131,11 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
               {trailer && (
                 <motion.div className="absolute inset-0 flex items-center justify-center z-20" initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.5, duration: 0.8 }}>
                   <motion.button onClick={handlePlayClick} className="p-4 sm:p-6 rounded-full backdrop-blur-lg shadow-2xl transition-all duration-300" style={{ backgroundColor: `${COLORS.bgPrimary}BB`, border: `2px solid ${COLORS.textPrimary}`, color: COLORS.textPrimary }} whileHover={{ scale: 1.15, backgroundColor: `${COLORS.accent}DD`, borderColor: COLORS.accent }} whileTap={{ scale: 0.95 }}><Play className="w-6 h-6 sm:w-8 sm:h-8 ml-1" /></motion.button>
+                </motion.div>
+              )}
+              {!isMobile && trailer && !showTrailer && !hasClosedTrailer && countdown > 0 && (
+                <motion.div className="absolute top-6 sm:top-8 right-6 sm:right-8 backdrop-blur-md rounded-full px-3 sm:px-4 py-1.5 sm:py-2 border z-30" style={{ backgroundColor: `${COLORS.bgPrimary}CC`, borderColor: `${COLORS.accent}66`, color: COLORS.accent }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>
+                  <div className="flex items-center gap-2 text-xs sm:text-sm font-medium"><div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full animate-pulse" style={{ backgroundColor: COLORS.accent }}></div>Trailer in {countdown}s</div>
                 </motion.div>
               )}
             </motion.div>
@@ -211,37 +235,58 @@ const TimeTravelMoviePage = ({ movie, tmdbData: movieData }) => {
   const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
   // =========================================================================
-  // ✅ THE UNIVERSAL ELITE SEO BLOCK (Hardcoded Fix & Standardized Description)
+  // ✅ THE STANDARDIZED ELITE SEO BLOCK (Feature First + Tag Protection)
   // =========================================================================
 
   const collectionSlug = 'best-time-travel-movies';
-  const dynamicCollectionName = 'Best Time Travel Movies';
-  const routeSlug = 'time-travel'; // The actual folder name in Next.js
+  const routeSlug = 'time-travel'; // Exact Next.js folder name
+  const collectionShortTag = 'Paradox'; // 🔥 Unique, genre-specific tag!
 
   const scenes = SENSITIVE_TIMELINES?.[movie.tmdbId]?.scenes || [];
   
-  // 1. UNIQUE META TITLE (Prevents Duplicate Cannibalization)
-  const cleanSEOTitle = scenes.length > 0
-    ? `${movie.Title} (${currentMovieYear}) Parents Guide & Timestamps | ${dynamicCollectionName}`
-    : `${movie.Title} (${currentMovieYear}) Parents Guide | ${dynamicCollectionName}`;
+  // 1. UNIQUE META TITLE LOGIC
+  let cleanSEOTitle = '';
+  const coreUSP = "Timestamps & Parents Guide:";
+
+  if (scenes.length > 0) {
+    // Ideal: Timestamps & Parents Guide: Predestination (2014) - Paradox
+    const idealTitle = `${coreUSP} ${movie.Title} (${currentMovieYear}) - ${collectionShortTag}`;
+    
+    if (idealTitle.length <= 62) {
+      cleanSEOTitle = idealTitle; // Fits perfectly
+    } else {
+      // Backup: Drop the year to save the USP and the unique Tag
+      cleanSEOTitle = `${coreUSP} ${movie.Title} - ${collectionShortTag}`;
+    }
+  } else {
+    // For completely clean movies (no timestamps needed)
+    const idealCleanTitle = `Parents Guide: ${movie.Title} (${currentMovieYear}) - Clean`;
+    
+    if (idealCleanTitle.length <= 62) {
+      cleanSEOTitle = idealCleanTitle;
+    } else {
+      // Drop year if too long, but strictly keep the "Clean" tag
+      cleanSEOTitle = `Parents Guide: ${movie.Title} - Clean`;
+    }
+  }
 
   // 2. STANDARDIZED ELITE META DESCRIPTION
   let cleanSEODesc = '';
   
   if (scenes.length > 0) {
-    const rawTimes = scenes.slice(0, 3).map(s => s.end ? `${s.start}–${s.end}` : s.start);
-    const formattedTimes = rawTimes.length > 1 
-      ? `${rawTimes.slice(0, -1).join(', ')} and ${rawTimes.slice(-1)}` 
-      : rawTimes[0];
+    // 🔥 Strictly grab only the first 2 timestamps so it's clean and readable
+    const rawTimes = scenes.slice(0, 2).map(s => s.end ? `${s.start}–${s.end}` : s.start);
+    const formattedTimes = rawTimes.join(' and ');
 
     cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Viewer discretion advised. Includes exact scene timestamps: ${formattedTimes}.`;
   } else {
-    cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Filmiway Content Advisory: No nudity or explicit sexual content identified. Suitable for general viewing.`;
+    // 🔥 Zero-liability runtime focus
+    cleanSEODesc = `Timestamps & Parents Guide for ${movie.Title} (${currentMovieYear}). Filmiway has identified zero explicit nudity or sexual content throughout the film's entire runtime.`;
   }
 
   // =========================================================================
 
-  // BUG FIX: Canonical URL hardcoded to the exact file route for perfect Next.js parity
+  // BUG FIX: Canonical URL is perfectly hardcoded to the exact route
   const canonicalUrl = `https://filmiway.com/movies/${routeSlug}/${movie.imdbID}`;
 
   // Generate schema
@@ -267,17 +312,9 @@ const TimeTravelMoviePage = ({ movie, tmdbData: movieData }) => {
               <meta name="robots" content="index, follow" />
               <meta name="language" content="English" />
 
-              {/* ✅ SCHEMA INJECTION */}
-              <script
-                  type="application/ld+json"
-                  dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }}
-              />
-              {faqSchema && (
-                  <script
-                      type="application/ld+json"
-                      dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-                  />
-              )}
+              {/* ✅ ADDED UNIQUE KEYS FOR SCHEMA INJECTION */}
+              <script key="schema-movie" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }} />
+              {faqSchema && (<script key="schema-faq" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />)}
 
               {/* Social Meta Tags */}
               <meta property="og:title" content={cleanSEOTitle} />

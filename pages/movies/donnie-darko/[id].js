@@ -182,41 +182,63 @@ const DonnieDarkoMoviePage = ({ movie, tmdbData: movieData }) => {
     }
   }, []);
 
-  const currentMovieYear = movie.year || 'Unknown';
+  const currentMovieYear = movie.Year || movie.year || 'Unknown';
   const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
   // =========================================================================
-  // ✅ THE UNIVERSAL ELITE SEO BLOCK (Hardcoded Fix & Standardized Description)
+  // ✅ THE STANDARDIZED ELITE SEO BLOCK (Feature First + Tag Protection)
   // =========================================================================
 
   const collectionSlug = 'movies-like-donnie-darko';
-  const dynamicCollectionName = 'Movies Like Donnie Darko';
+  const routeSlug = 'donnie-darko'; // Exact Next.js folder name
+  const collectionShortTag = 'Trippy'; // 🔥 Fixed! Unique tag for this collection
 
   const scenes = SENSITIVE_TIMELINES?.[movie.tmdbId]?.scenes || [];
   
-  // 1. UNIQUE META TITLE (Prevents Duplicate Cannibalization)
-  const cleanSEOTitle = scenes.length > 0
-    ? `${movie.Title} (${currentMovieYear}) Parents Guide & Timestamps | ${dynamicCollectionName}`
-    : `${movie.Title} (${currentMovieYear}) Parents Guide | ${dynamicCollectionName}`;
+  // 1. UNIQUE META TITLE LOGIC
+  let cleanSEOTitle = '';
+  const coreUSP = "Timestamps & Parents Guide:";
+
+  if (scenes.length > 0) {
+    // Ideal: Timestamps & Parents Guide: Donnie Darko (2001) - Trippy
+    const idealTitle = `${coreUSP} ${movie.Title} (${currentMovieYear}) - ${collectionShortTag}`;
+    
+    if (idealTitle.length <= 62) {
+      cleanSEOTitle = idealTitle; // Fits perfectly
+    } else {
+      // Backup: Drop the year to save the USP and the unique Tag
+      cleanSEOTitle = `${coreUSP} ${movie.Title} - ${collectionShortTag}`;
+    }
+  } else {
+    // For completely clean movies (no timestamps needed)
+    const idealCleanTitle = `Parents Guide: ${movie.Title} (${currentMovieYear}) - Clean`;
+    
+    if (idealCleanTitle.length <= 62) {
+      cleanSEOTitle = idealCleanTitle;
+    } else {
+      // Drop year if too long, but strictly keep the "Clean" tag
+      cleanSEOTitle = `Parents Guide: ${movie.Title} - Clean`;
+    }
+  }
 
   // 2. STANDARDIZED ELITE META DESCRIPTION
   let cleanSEODesc = '';
   
   if (scenes.length > 0) {
-    const rawTimes = scenes.slice(0, 3).map(s => s.end ? `${s.start}–${s.end}` : s.start);
-    const formattedTimes = rawTimes.length > 1 
-      ? `${rawTimes.slice(0, -1).join(', ')} and ${rawTimes.slice(-1)}` 
-      : rawTimes[0];
+    // 🔥 Strictly grab only the first 2 timestamps so it's clean and readable
+    const rawTimes = scenes.slice(0, 2).map(s => s.end ? `${s.start}–${s.end}` : s.start);
+    const formattedTimes = rawTimes.join(' and ');
 
     cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Viewer discretion advised. Includes exact scene timestamps: ${formattedTimes}.`;
   } else {
-    cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Filmiway Content Advisory: No nudity or explicit sexual content identified. Suitable for general viewing.`;
+    // 🔥 Zero-liability runtime focus
+    cleanSEODesc = `Timestamps & Parents Guide for ${movie.Title} (${currentMovieYear}). Filmiway has identified zero explicit nudity or sexual content throughout the film's entire runtime.`;
   }
 
   // =========================================================================
 
-  // BUG FIX: Canonical URL hardcoded to file route for perfect Next.js parity
-  const canonicalUrl = `https://filmiway.com/movies/donnie-darko/${movie.imdbID}`;
+  // BUG FIX: Canonical URL perfectly hardcoded to the exact route
+  const canonicalUrl = `https://filmiway.com/movies/${routeSlug}/${movie.imdbID}`;
 
   const { movieSchema, faqSchema } = generateCleanMovieSchema(
       movie, 
@@ -236,8 +258,9 @@ const DonnieDarkoMoviePage = ({ movie, tmdbData: movieData }) => {
               <meta name="viewport" content="width=device-width, initial-scale=1.0" />
               <meta name="robots" content="index, follow" />
               
-              <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }} />
-              {faqSchema && (<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />)}
+              {/* ✅ ADDED UNIQUE KEYS FOR SCHEMA INJECTION */}
+              <script key="schema-movie" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }} />
+              {faqSchema && (<script key="schema-faq" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />)}
 
               <meta property="og:title" content={cleanSEOTitle} />
               <meta property="og:description" content={cleanSEODesc} />

@@ -1,6 +1,5 @@
 // pages/index.js - MAXIMUM PERFORMANCE OPTIMIZED 🚀
 import React, { useState, useEffect, useRef, memo } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -74,7 +73,7 @@ const fetchUniquePosterForCollection = async (movieIds, sectionName, collectionS
   return null;
 };
 
-// ⚡ PURE CSS CARD - Removed framer-motion for instant rendering
+// ⚡ PURE CSS CARD - Optimized Next/Image for LCP
 const CollectionCard = memo(({ collection, index, onClick, isPrioritySection }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
   const shouldPrioritize = isPrioritySection && index < 4;
@@ -91,6 +90,7 @@ const CollectionCard = memo(({ collection, index, onClick, isPrioritySection }) 
             alt={collection.title}
             fill
             priority={shouldPrioritize}
+            quality={60} // ⚡ DRASTICALLY REDUCES IMAGE PAYLOAD
             sizes="(max-width: 640px) 150px, (max-width: 1024px) 200px, 150px"
             className={`object-cover transition-opacity duration-500 ${
               shouldPrioritize || imageLoaded ? 'opacity-100' : 'opacity-0'
@@ -129,7 +129,7 @@ const CollectionCard = memo(({ collection, index, onClick, isPrioritySection }) 
 
 CollectionCard.displayName = 'CollectionCard';
 
-// ⚡ HERO SECTION - Removed heavy animate-pulse for GPU performance
+// ⚡ HERO SECTION - Fast initial load
 const HeroSection = memo(() => {
   return (
     <section className="relative min-h-[85vh] sm:min-h-screen flex items-center justify-center bg-black overflow-hidden select-none pt-16 sm:pt-20">
@@ -140,7 +140,6 @@ const HeroSection = memo(() => {
         }} />
       </div>
 
-      {/* Replaced heavy animations with static glowing orbs for LCP speed */}
       <div className="hidden sm:block absolute top-20 left-5 w-48 h-48 sm:w-96 sm:h-96 bg-yellow-400/10 rounded-full blur-3xl"></div>
       <div className="hidden sm:block absolute bottom-20 right-5 w-40 h-40 sm:w-80 sm:h-80 bg-yellow-400/5 rounded-full blur-3xl"></div>
 
@@ -186,7 +185,7 @@ const HeroSection = memo(() => {
 
 HeroSection.displayName = 'HeroSection';
 
-// ⚡ NATIVE CAROUSEL - 100% CSS driven for massive performance gain
+// ⚡ NATIVE CAROUSEL
 const ProfessionalCarousel = memo(({ collections, sectionRef, isPrioritySection }) => {
   const scrollContainerRef = useRef(null);
   const router = useRouter();
@@ -204,7 +203,6 @@ const ProfessionalCarousel = memo(({ collections, sectionRef, isPrioritySection 
 
   return (
     <div ref={sectionRef} className="relative group/carousel">
-      {/* Desktop Navigation Buttons */}
       <button 
         onClick={() => scroll('left')} 
         className="hidden md:flex absolute -left-6 top-1/2 -translate-y-1/2 z-30 w-12 h-12 bg-black/80 backdrop-blur-xl rounded-full border border-gray-700 items-center justify-center opacity-0 group-hover/carousel:opacity-100 transition-all duration-300 hover:border-yellow-400/50 hover:-translate-x-1" 
@@ -221,7 +219,6 @@ const ProfessionalCarousel = memo(({ collections, sectionRef, isPrioritySection 
         <ChevronRight className="w-5 h-5 text-white group-hover:text-yellow-400 transition-colors" />
       </button>
 
-      {/* Pure CSS Native Scrolling Container */}
       <div 
         ref={scrollContainerRef}
         className="flex overflow-x-auto gap-3 sm:gap-5 pb-4 pt-2 px-1 snap-x snap-mandatory hide-scrollbar scroll-smooth"
@@ -248,9 +245,13 @@ const ProfessionalCarousel = memo(({ collections, sectionRef, isPrioritySection 
 
 ProfessionalCarousel.displayName = 'ProfessionalCarousel';
 
+// ⚡ MOVIE SECTION - Added content-visibility to reduce DOM size calculation
 const MovieSection = memo(({ title, movies, icon: Icon, description, sectionRef, viewAllLink, isPrioritySection }) => {
   return (
-    <section className="mb-10 sm:mb-20 select-none border-b border-gray-800/30 pb-10 sm:pb-16 last:border-0">
+    <section 
+      className="mb-10 sm:mb-20 select-none border-b border-gray-800/30 pb-10 sm:pb-16 last:border-0"
+      style={!isPrioritySection ? { contentVisibility: 'auto', containIntrinsicSize: '400px' } : {}}
+    >
       <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-4 sm:mb-8 px-1">
         <div className="flex-1">
           <div className="flex items-center gap-2 sm:gap-3 mb-2">
@@ -310,7 +311,6 @@ const FilmiwayHomepage = ({ huluCollections, mindBendingCollections, thrillerCol
         {/* ⚡ CRITICAL PERFORMANCE OPTIMIZATION */}
         <link rel="preconnect" href="https://image.tmdb.org" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://www.themoviedb.org" />
-        {/* Next/Font handles the font optimization natively now! */}
       </Head>
       
       <div className="min-h-screen bg-black text-white overflow-x-hidden">
@@ -348,20 +348,21 @@ const FilmiwayHomepage = ({ huluCollections, mindBendingCollections, thrillerCol
               </button>
             </div>
             
-            <AnimatePresence>
-              {mobileMenuOpen && (
-                <motion.div className="md:hidden bg-black/98 border-t border-gray-800" initial={{ height: 0 }} animate={{ height: "auto" }} exit={{ height: 0 }}>
-                  <div className="px-4 py-4 space-y-3">
-                    <Link href="/" onClick={() => setMobileMenuOpen(false)} className="block text-yellow-400 font-medium py-2 text-sm">Home</Link>
-                    <button onClick={() => { scrollToSection(mindRef); setMobileMenuOpen(false); }} className="block text-gray-300 py-2 w-full text-left text-sm">Mind-Bending</button>
-                    <button onClick={() => { scrollToSection(thrillerRef); setMobileMenuOpen(false); }} className="block text-gray-300 py-2 w-full text-left text-sm">Thrillers</button>
-                    <button onClick={() => { scrollToSection(huluRef); setMobileMenuOpen(false); }} className="block text-gray-300 py-2 w-full text-left text-sm">Hulu</button>
-                    <button onClick={() => { scrollToSection(paramountRef); setMobileMenuOpen(false); }} className="block text-gray-300 py-2 w-full text-left text-sm">Paramount+</button>
-                    <button onClick={() => { scrollToSection(peacockRef); setMobileMenuOpen(false); }} className="block text-gray-300 py-2 w-full text-left text-sm">Peacock</button>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
+            {/* ⚡ PURE CSS MOBILE MENU - Replaced Framer Motion */}
+            <div 
+              className={`md:hidden bg-black/98 border-t border-gray-800 transition-all duration-300 ease-in-out overflow-hidden ${
+                mobileMenuOpen ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0'
+              }`}
+            >
+              <div className="px-4 py-4 space-y-3">
+                <Link href="/" onClick={() => setMobileMenuOpen(false)} className="block text-yellow-400 font-medium py-2 text-sm">Home</Link>
+                <button onClick={() => { scrollToSection(mindRef); setMobileMenuOpen(false); }} className="block text-gray-300 py-2 w-full text-left text-sm">Mind-Bending</button>
+                <button onClick={() => { scrollToSection(thrillerRef); setMobileMenuOpen(false); }} className="block text-gray-300 py-2 w-full text-left text-sm">Thrillers</button>
+                <button onClick={() => { scrollToSection(huluRef); setMobileMenuOpen(false); }} className="block text-gray-300 py-2 w-full text-left text-sm">Hulu</button>
+                <button onClick={() => { scrollToSection(paramountRef); setMobileMenuOpen(false); }} className="block text-gray-300 py-2 w-full text-left text-sm">Paramount+</button>
+                <button onClick={() => { scrollToSection(peacockRef); setMobileMenuOpen(false); }} className="block text-gray-300 py-2 w-full text-left text-sm">Peacock</button>
+              </div>
+            </div>
           </div>
         </nav>
 

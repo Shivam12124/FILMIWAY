@@ -224,36 +224,59 @@ const Se7enMoviePage = ({ movie, tmdbData: movieData }) => {
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
     // =========================================================================
-    // ✅ THE STANDARDIZED ELITE SEO BLOCK
+    // ✅ THE STANDARDIZED ELITE SEO BLOCK (Feature First + Tag Protection)
     // =========================================================================
 
     const collectionSlug = 'movies-like-se7en';
-    const dynamicCollectionName = 'Movies Like Se7en';
+    const routeSlug = 'movies-like-se7en'; // Exact Next.js folder name (in pages/collection/)
+    const collectionShortTag = 'Noir'; // Short, unique tag for this collection
 
     const scenes = SENSITIVE_TIMELINES?.[movie.tmdbId]?.scenes || [];
     
-    // 1. UNIQUE META TITLE (Targets "Parents Guide & Timestamps")
-    const cleanSEOTitle = scenes.length > 0
-        ? `${movie.Title} (${currentMovieYear}) Parents Guide & Timestamps | ${dynamicCollectionName}`
-        : `${movie.Title} (${currentMovieYear}) Parents Guide | ${dynamicCollectionName}`;
+    // 1. UNIQUE META TITLE LOGIC
+    let cleanSEOTitle = '';
+    const coreUSP = "Timestamps & Parents Guide:";
+
+    if (scenes.length > 0) {
+      // Ideal: Timestamps & Parents Guide: Zodiac (2007) - Noir
+      const idealTitle = `${coreUSP} ${movie.Title} (${currentMovieYear}) - ${collectionShortTag}`;
+      
+      if (idealTitle.length <= 62) {
+        cleanSEOTitle = idealTitle; // Fits perfectly
+      } else {
+        // Backup: Drop the year to save the USP and the unique Tag
+        cleanSEOTitle = `${coreUSP} ${movie.Title} - ${collectionShortTag}`;
+      }
+    } else {
+      // For completely clean movies (no timestamps needed)
+      const idealCleanTitle = `Parents Guide: ${movie.Title} (${currentMovieYear}) - Clean`;
+      
+      if (idealCleanTitle.length <= 62) {
+        cleanSEOTitle = idealCleanTitle;
+      } else {
+        // Drop year if too long, but strictly keep the "Clean" tag
+        cleanSEOTitle = `Parents Guide: ${movie.Title} - Clean`;
+      }
+    }
 
     // 2. STANDARDIZED ELITE META DESCRIPTION
     let cleanSEODesc = '';
     
     if (scenes.length > 0) {
-        const rawTimes = scenes.slice(0, 3).map(s => s.end ? `${s.start}–${s.end}` : s.start);
-        const formattedTimes = rawTimes.length > 1 
-        ? `${rawTimes.slice(0, -1).join(', ')} and ${rawTimes.slice(-1)}` 
-        : rawTimes[0];
+      // 🔥 Strictly grab only the first 2 timestamps so it's clean and readable
+      const rawTimes = scenes.slice(0, 2).map(s => s.end ? `${s.start}–${s.end}` : s.start);
+      const formattedTimes = rawTimes.join(' and ');
 
-        cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Viewer discretion advised. Includes exact scene timestamps: ${formattedTimes}.`;
+      cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Viewer discretion advised. Includes exact scene timestamps: ${formattedTimes}.`;
     } else {
-        cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Filmiway Content Advisory: No nudity or explicit sexual content identified. Suitable for general viewing.`;
+      // 🔥 Zero-liability runtime focus
+      cleanSEODesc = `Timestamps & Parents Guide for ${movie.Title} (${currentMovieYear}). Filmiway has identified zero explicit nudity or sexual content throughout the film's entire runtime.`;
     }
 
     // =========================================================================
 
-    const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
+    // BUG FIX: Canonical URL perfectly hardcoded to the exact route (accounting for /collection/ folder)
+    const canonicalUrl = `https://filmiway.com/collection/${routeSlug}/${movie.imdbID}`;
 
     const { movieSchema, faqSchema } = generateCleanMovieSchema(
         movie, 
@@ -275,7 +298,7 @@ const Se7enMoviePage = ({ movie, tmdbData: movieData }) => {
                 <meta name="robots" content="index, follow" />
                 <meta name="language" content="English" />
 
-                {/* ✅ SCHEMA INJECTION WITH UNIQUE KEYS TO PREVENT NEXT.JS DELETION */}
+                {/* ✅ SCHEMA INJECTION WITH UNIQUE KEYS */}
                 <script
                     key="schema-movie"
                     type="application/ld+json"
@@ -293,6 +316,7 @@ const Se7enMoviePage = ({ movie, tmdbData: movieData }) => {
                 <meta property="og:title" content={cleanSEOTitle} />
                 <meta property="og:description" content={cleanSEODesc} />
                 <meta property="og:type" content="video.movie" />
+                <meta property="og:url" content={canonicalUrl} />
                 <meta property="og:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content={cleanSEOTitle} />
