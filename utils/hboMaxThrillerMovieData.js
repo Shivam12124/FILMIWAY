@@ -40,14 +40,14 @@ export const SENSITIVE_TIMELINES = {
     381288: { scenes: [] },
 
     // 5. Enemy
-    181886: { 
+    181886: {  // Enemy
         scenes: [
             { start: "0:01:46", end: "0:01:50", type: "Nudity", severity: "High" },
             { start: "0:02:50", end: "0:04:58", type: "Nudity", severity: "High" },
             { start: "0:07:50", end: "0:08:05", type: "Sex", severity: "Moderate" },
             { start: "0:08:33", end: "0:08:42", type: "Sex", severity: "Moderate" },
             { start: "0:09:10", end: "0:09:15", type: "Sex", severity: "Moderate" },
-            { start: "0:14:38", end: "0:15:10", type: "Sexu", severity: "Moderate" },
+            { start: "0:14:38", end: "0:15:10", type: "Sex", severity: "Moderate" },
             { start: "0:45:20", end: "0:45:52", type: "Nudity", severity: "High" },
             { start: "1:14:25", end: "1:14:41", type: "Nudity", severity: "High" },
             { start: "1:19:30", end: "1:20:35", type: "Sex", severity: "Moderate" },
@@ -55,7 +55,6 @@ export const SENSITIVE_TIMELINES = {
             { start: "1:23:55", end: "1:24:08", type: "Nudity", severity: "High" }
         ] 
     },
-
     // 6. Ex Machina
     264660: { 
         scenes: [
@@ -555,14 +554,19 @@ export const getSensitiveContentTypes = (tmdbId) => {
 };
 
 // 🔥 7. THE "GOLDEN EGG" SCHEMA GENERATOR (Universal Version)
+// 🔥 7. THE "GOLDEN EGG" SCHEMA GENERATOR (Universal Version)
 export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, collectionSlug, unused, movieInfo) => {
-    // Standard Movie Schema
+    // Extract runtime for the schema calibration tag
+    const currentRuntime = movie.Runtime || movie.runtime || "Official";
+
+    // Standard Movie Schema - ✅ ADDED URL SILO
     const movieSchema = {
         '@context': 'https://schema.org',
         '@type': 'Movie',
         'name': movie.Title,
         'description': movieInfo?.synopsis || `${movie.Title} (${currentMovieYear}) - A masterful thriller.`,
         'genre': movie.genre,
+        'url': `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`,
         'datePublished': currentMovieYear?.toString() || movie.year.toString(),
         'director': { '@type': 'Person', 'name': movieInfo?.director || 'Director' },
         'actor': movieInfo?.cast?.map(actor => ({ '@type': 'Person', 'name': actor })) || [],
@@ -608,7 +612,8 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
             'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
             'acceptedAnswer': { 
                 '@type': 'Answer', 
-                'text': `Yes, according to the Filmiway Content Advisory, ${movie.Title} contains adult scenes including ${typesString}. Exact timestamps for these scenes are:<br><br><ul>${schemaListText}</ul>` 
+                // ✅ Changed to match Master pipeline exactly
+                'text': `Yes, according to the Filmiway Timestamps & Parents Guide, ${movie.Title} contains adult scenes including ${typesString}. These timestamps are accurate for the ${currentRuntime} runtime. Exact timestamps for these scenes are:<br><br><ul>${schemaListText}</ul>` 
             }
         });
     } else {
@@ -617,7 +622,8 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
             'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
             'acceptedAnswer': { 
                 '@type': 'Answer', 
-                'text': `No, the Filmiway Content Advisory confirms that ${movie.Title} is completely free of explicit sexual content and nudity. However, viewer discretion is still advised due to intense psychological themes.` 
+                // ✅ Changed to match Master pipeline exactly
+                'text': `No, the Filmiway Timestamps & Parents Guide confirms that ${movie.Title} is completely free of explicit sexual content and nudity. This assessment is accurate for the ${currentRuntime} runtime.` 
             }
         });
     }
