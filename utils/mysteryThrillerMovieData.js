@@ -453,7 +453,7 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
 };
 
 // 🔥 DYNAMIC VISIBLE FAQ GENERATOR FOR THE FRONTEND UI
-export const getVisibleMovieFAQs = (movieTitle, tmdbId) => {
+export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Official") => {
     const staticFaqs = MYSTERY_THRILLER_FAQS[movieTitle] ? [...MYSTERY_THRILLER_FAQS[movieTitle]] : [];
     const sensitiveScenes = SENSITIVE_TIMELINES[tmdbId]?.scenes || [];
     const movieInfo = COMPLETE_MOVIE_DATA[tmdbId];

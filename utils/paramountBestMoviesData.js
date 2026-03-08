@@ -431,7 +431,7 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
 };
 
 // 🔥 8. FRONTEND UI SYNC
-export const getVisibleMovieFAQs = (movieTitle, tmdbId) => {
+export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Official") => {
     const staticFaqs = PARAMOUNT_BEST_MOVIE_FAQS[movieTitle] ? [...PARAMOUNT_BEST_MOVIE_FAQS[movieTitle]] : [];
     const sensitiveScenes = SENSITIVE_TIMELINES[tmdbId]?.scenes || [];
     const movieInfo = COMPLETE_MOVIE_DATA[tmdbId];

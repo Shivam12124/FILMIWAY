@@ -504,7 +504,7 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
 };
 
 // 🔥 DYNAMIC VISIBLE FAQ GENERATOR FOR THE FRONTEND UI
-export const getVisibleMovieFAQs = (movieTitle, tmdbId) => {
+export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Official") => {
     // 1. Get the static, manually written FAQs
     const staticFaqs = SE7EN_MOVIE_FAQS[movieTitle] ? [...SE7EN_MOVIE_FAQS[movieTitle]] : [];
     
