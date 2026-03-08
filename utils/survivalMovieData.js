@@ -190,19 +190,70 @@ export const COMPLETE_MOVIE_DATA = {
 };
 
 // 2. SENSITIVE TIMELINES (Schema Data)
+// 2. SENSITIVE TIMELINES (Schema Data)
 export const SENSITIVE_TIMELINES = {
-    44115: { scenes: [{ start: "1:04:35", end: "1:04:50", type: "Bikini scene", severity: "Mild" }, { start: "1:33:41", end: "1:35:10", type: "Partial undressing", severity: "Mild" }] },
-    906126: { scenes: [{ start: "0:03:07", end: "0:03:10", type: "Nudity", severity: "Moderate", description: "Nude man in background" }] },
-    8358: { scenes: [{ start: "0:13:15", end: "0:13:45", type: "Kissing", severity: "Mild", description: "Romantic kissing scene before departure" }, { start: "2:05:53", end: "2:06:47", type: "Kissing", severity: "Mild", description: "Emotional reunion kissing scene" }] },
-    281957: { scenes: [{ start: "0:06:44", end: "0:06:48", type: "Nudity", severity: "Moderate", description: "Male buttocks" }, { start: "1:44:00", end: "1:44:23", type: "Sex scene", severity: "Moderate" }] },
-    286217: { scenes: [{ start: "1:44:55", end: "1:45:08", type: "Partial nudity", severity: "Mild", description: "Male buttocks" }] },
-    80278: { scenes: [{ start: "0:05:45", end: "0:05:52", type: "Partial nudity", severity: "Mild", description: "Non-sexual" }, { start: "0:22:10", end: "0:22:22", type: "Partial nudity", severity: "Mild", description: "Non-sexual" }, { start: "0:37:37", end: "0:37:45", type: "Nudity", severity: "Mild", description: "Not sexualized" }, { start: "0:37:52", end: "0:37:57", type: "Nudity", severity: "Mild", description: "Not sexualized" }, { start: "0:41:28", end: "0:41:32", type: "Partial nudity", severity: "Mild", description: "Non-sexual" }] },
-    390062: { scenes: [{ start: "0:06:38", end: "0:06:43", type: "Kissing", severity: "Mild" }, { start: "0:12:04", end: "0:12:06", type: "Partial nudity", severity: "Mild", description: "Male buttocks" }, { start: "1:19:10", end: "1:19:20", type: "Partial undressing", severity: "Mild" }] },
-    1579: { scenes: [{ start: "0:17:10", end: "0:18:10", type: "Partial nudity", severity: "Mild", description: "Male buttocks" }] },
-    698948: { scenes: [] },
-    227306: { scenes: [{ start: "0:13:40", end: "0:13:45", type: "Partial nudity", severity: "Mild", description: "Female buttocks" }, { start: "1:07:45", end: "1:08:37", type: "Partial nudity", severity: "Mild", description: "Male buttocks" }] }
-};
+    // 127 Hours
+    44115: { 
+        scenes: [
+            { start: "1:04:35", end: "1:04:50", type: "Suggestive clothing(Women in Bikini)", severity: "Mild" }, 
+            { start: "1:33:41", end: "1:35:10", type: "Sexual content", severity: "Mild" }
+        ] 
+    },
 
+    906126: { scenes: [] },
+    
+    8358: { scenes: [] },
+
+    // The Revenant
+    281957: { 
+        scenes: [
+            { start: "0:06:44", end: "0:06:48", type: "Nudity", severity: "Moderate" }, 
+            { start: "1:44:00", end: "1:44:23", type: "Sex", severity: "Moderate" }
+        ] 
+    },
+
+    // The Martian
+    286217: { 
+        scenes: [
+            { start: "1:44:55", end: "1:45:08", type: "Partial Nudity (Man)", severity: "Mild" }
+        ] 
+    },
+
+    // The Impossible
+    80278: { 
+        scenes: [
+            { start: "0:05:45", end: "0:05:52", type: "Nudity", severity: "Mild" }, 
+            { start: "0:22:10", end: "0:22:22", type: "Nudity", severity: "Mild" }, 
+            { start: "0:37:37", end: "0:37:57", type: "Nudity", severity: "Mild" }, 
+            { start: "0:41:28", end: "0:41:32", type: "Partial Nudity", severity: "Mild" }
+        ] 
+    },
+
+    // Jungle
+    390062: { 
+        scenes: [
+            { start: "0:12:04", end: "0:12:06", type: "Partial Nudity (Men)", severity: "Mild" }, 
+            { start: "1:19:10", end: "1:19:20", type: "Sexual Content", severity: "Mild" }
+        ] 
+    },
+
+    // Apocalypto
+    1579: { 
+        scenes: [
+            { start: "0:17:10", end: "0:18:10", type: "Partial nudity", severity: "Mild" }
+        ] 
+    },
+
+    698948: { scenes: [] },
+
+    // Unbroken
+    227306: { 
+        scenes: [
+            { start: "0:13:40", end: "0:13:45", type: "Partial nudity", severity: "Mild" }, 
+            { start: "1:07:45", end: "1:08:37", type: "Partial nudity", severity: "Mild" }
+        ] 
+    }
+};
 export const FALLBACK_POSTERS = {
     44115: "https://m.media-amazon.com/images/M/MV5BMTc2NjMzOTE3Ml5BMl5BanBnXkFtZTcwMDE4ODM3Mw@@._V1_SX500.jpg",
     906126: "https://m.media-amazon.com/images/M/MV5BYzJkZjlmMmQtMGVmYS00OGY3LTlhOTAtNzJjNzQxYWJiNDVkXkEyXkFqcGdeQXVyMTUzMTg2ODkz._V1_SX500.jpg",
@@ -581,12 +632,12 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId) => {
 
         staticFaqs.unshift({
             question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
-            answer: `Yes, according to the Filmiway Content Advisory, ${movieTitle} contains adult scenes including ${typesString}. Exact timestamps for these scenes are:\n\n${uiListText}`
+           answer: `Yes, according to the Filmiway Timestamps & Parents Guide, ${movieTitle} contains adult scenes including ${typesString}. These timestamps are accurate for the ${finalRuntime} runtime. Exact timestamps for these scenes are:\n\n${uiListText}`
         });
     } else {
         staticFaqs.unshift({
             question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
-            answer: `No, the Filmiway Content Advisory confirms that ${movieTitle} is completely free of explicit sexual content and nudity.`
+                       answer: `No, the Filmiway Timestamps & Parents Guide confirms that ${movieTitle} is completely free of explicit sexual content and nudity. This assessment is accurate for the ${finalRuntime} runtime.`
         });
     }
 

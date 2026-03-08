@@ -426,12 +426,12 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId) => {
 
         staticFaqs.unshift({
             question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
-            answer: `Yes, according to the Filmiway Content Advisory, ${movieTitle} contains adult scenes including ${typesString}. Exact timestamps for these scenes are:\n\n${uiListText}`
+           answer: `Yes, according to the Filmiway Timestamps & Parents Guide, ${movieTitle} contains adult scenes including ${typesString}. These timestamps are accurate for the ${finalRuntime} runtime. Exact timestamps for these scenes are:\n\n${uiListText}`
         });
     } else {
         staticFaqs.unshift({
             question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
-            answer: `No, the Filmiway Content Advisory confirms that ${movieTitle} is completely free of explicit sexual content and nudity.`
+                       answer: `No, the Filmiway Timestamps & Parents Guide confirms that ${movieTitle} is completely free of explicit sexual content and nudity. This assessment is accurate for the ${finalRuntime} runtime.`
         });
     }
 

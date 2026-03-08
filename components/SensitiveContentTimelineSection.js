@@ -84,7 +84,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                     <div>
                         <h2 className="text-emerald-300 font-medium text-lg">Timestamps & Parents Guide: Clean Content</h2>
                         <p className="text-emerald-400/70 text-sm font-light">
-                            <strong>{movie.Title}</strong>: Filmiway Parents Guide confirms this film is free of explicit sexual content and nudity. Safe for family viewing.
+                            <strong>{movie.Title}</strong>: Filmiway Parents Guide confirms this film is free of explicit sexual content and nudity.
                         </p>
                     </div>
                 </div>

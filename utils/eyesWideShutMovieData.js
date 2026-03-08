@@ -51,12 +51,14 @@ export const SENSITIVE_TIMELINES = {
             { start: "2:04:42", end: "2:05:20", type: "Nudity & Sex", severity: "High" }
         ]
     },
-    // 3. Blue Velvet
+// 3. Blue Velvet
     793: {
         scenes: [
+            { start: "0:35:20", end: "0:37:37", type: "Lingerie & Partial Nudity", severity: "Moderate" },
             { start: "0:40:10", end: "0:42:10", type: "Nudity", severity: "High" },
-            { start: "0:45:50", end: "0:46:25", type: "Nudity", severity: "High" },
-            { start: "1:08:52", end: "1:09:00", type: "Nudity", severity: "High" },
+            { start: "0:43:25", end: "0:46:50", type: "Nudity", severity: "High" },
+            { start: "0:49:45", end: "0:50:45", type: "Nudity", severity: "High" },
+            { start: "1:08:52", end: "1:09:27", type: "Nudity", severity: "High" },
             { start: "1:41:15", end: "1:44:15", type: "Nudity", severity: "High" }
         ]
     },

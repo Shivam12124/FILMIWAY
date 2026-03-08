@@ -174,30 +174,30 @@ export const COMPLETE_SCI_FI_DETAILS = {
 };
 
 // 3. SENSITIVE TIMELINES (Schema Data - "Clean" Filter)
+// 3. SENSITIVE TIMELINES (Schema Data - "Clean" Filter)
 export const SENSITIVE_TIMELINES = {
   62: { scenes: [] }, // 2001
-  78: { scenes: [
-      { start: '55:00', end: '58:00', type: 'Violence', severity: 'Moderate', description: 'Pris fights Deckard' },
-      { start: '1:20:00', end: '1:25:00', type: 'Violence', severity: 'High', description: 'Eye gouging scene' }
-  ]}, // Blade Runner
+  78: { 
+      scenes: [
+          { start: '53:50', end: '55:00', type: 'Nudity', severity: 'Moderate' }
+      ]
+  }, // Blade Runner
   603: { scenes: [] }, // Matrix
-  348: { scenes: [
-      { start: '55:00', end: '57:00', type: 'Gore', severity: 'High', description: 'Chestburster scene' }
-  ]}, // Alien
+  348: { scenes: [] }, // Alien
   157336: { scenes: [] }, // Interstellar
-  280: { scenes: [
-      { start: '05:00', end: '06:00', type: 'Nudity', severity: 'Medium', description: 'Terminator arrival (buttocks)' }
-  ]}, // T2
+  280: { scenes: [] }, // T2
   27205: { scenes: [] }, // Inception
   329865: { scenes: [] }, // Arrival
-  11: { scenes: [
-      { start: '1:40:00', end: '1:41:00', type: 'Violence', severity: 'Moderate', description: 'Hand severed' }
-  ]}, // Empire
-  335984: { scenes: [
-      { start: '1:10:00', end: '1:15:00', type: 'Nudity', severity: 'High', description: 'Holographic synchronization scene' }
-  ]} // BR 2049
+  11: { scenes: [] }, // Empire
+  335984: { 
+      scenes: [
+          { start: '38:10', end: '42:45', type: 'Nudity(Woman)', severity: 'High' },
+          { start: '1:30:50', end: '1:31:00', type: 'Nudity(Woman)', severity: 'Moderate' },
+          { start: '2:02:58', end: '2:03:03', type: 'Partial Nudity(Woman)', severity: 'Mild' },
+          { start: '2:17:00', end: '2:18:05', type: 'Nudity(Woman)', severity: 'High' }
+      ]
+  } // BR 2049
 };
-
 // 4. FAQS (Deep Analysis)
 export const SCI_FI_FAQS = {
   '2001: A Space Odyssey': [

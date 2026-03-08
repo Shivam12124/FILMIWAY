@@ -207,7 +207,7 @@ const getCollectionContent = () => {
             title: "10 Fragmented Movies (Ranked by Confusion)",
             description: "Don't trust the timeline. Don't trust the narrator. We ranked 10 masterpieces that shatter storytelling into a thousand pieces.",
             selection: {
-                text1: "Linear storytelling is for people who want to be comfortable. We selected films that force you to workâ€”stories told backwards, sideways, and in recursive loops.",
+                text1: "Linear storytelling is for people who want to be comfortable. We selected films that force you to workstories told backwards, sideways, and in recursive loops.",
                 text2: "From the memory loss of Memento to the identity fracturing of Enemy, this collection is a test of your ability to reconstruct the truth."
             },
             ranking: {
@@ -231,7 +231,7 @@ const getCollectionContent = () => {
         title: "Reality-Shattering Cinema",
         description: "Inception had rules. Totems. Levels you could count. These films have none of that. Just recursive nightmares where logic collapses and you're left holding a notebook full of questions.",
         selection: {
-            text1: "Primer's nine overlapping timelines. Synecdoche's infinite recursion. Mulholland Drive's dream-reality inversion. These aren't puzzles with solutionsâ€”they're labyrinths with no center.",
+            text1: "Primer's nine overlapping timelines. Synecdoche's infinite recursion. Mulholland Drive's dream-reality inversion. These aren't puzzles with solutionsthey're labyrinths with no center.",
             text2: "Nolan held your hand. These directors cut it off. No exposition dumps. No convenient explanations. JustStructural complexity that makes Inception look like a children's book about dreams."
         },
         ranking: {
@@ -256,7 +256,7 @@ const getCollectionContent = () => {
             title: "The Matrix",
             description: "Mind-bending cyberpunk films exploring simulated realities. Digital consciousness, reality distortion & protagonist awakening that redefine what we think about existence itself.",
             selection: {
-                text1: "From dystopian AIs to consciousness transfersâ€”these films explore the boundary between digital and human consciousness, asking profound questions about the nature of reality and free will.",
+                text1: "From dystopian AIs to consciousness transfersthese films explore the boundary between digital and human consciousness, asking profound questions about the nature of reality and free will.",
                 text2: "Each cyberpunk masterpiece features protagonists discovering their world is artificial, leading them through layers of deception toward uncomfortable truths about existence and control."
             },
             ranking: {
@@ -270,7 +270,7 @@ const getCollectionContent = () => {
             },
             experience: {
                 text1: "Whether you're seeking technological thrills or existential questioning, this collection delivers cinema's most ambitious cyberpunk experiences that blur the line between real and artificial.",
-                text2: "Each film has been selected for its ability to create lasting philosophical impactâ€”exploring themes of free will, consciousness, and artificial reality that continue fascinating viewers long after credits roll."
+                text2: "Each film has been selected for its ability to create lasting philosophical impactexploring themes of free will, consciousness, and artificial reality that continue fascinating viewers long after credits roll."
             }
         };
     } else if (collection.slug === 'movies-like-se7en') {
@@ -279,7 +279,7 @@ const getCollectionContent = () => {
             title: "Se7en",
             description: "Gritty, rain-soaked noir thrillers hunting pure evil. Obsessive detectives, sadistic killers & nihilistic atmospheres that explore the seven deadly sins of humanity.",
             selection: {
-                text1: "From the rain-slicked streets of Fincher's city to the rural darkness of South Koreaâ€”these films track the obsessive, often self-destructive hunt for monsters who hide in plain sight.",
+                text1: "From the rain-slicked streets of Fincher's city to the rural darkness of South Koreathese films track the obsessive, often self-destructive hunt for monsters who hide in plain sight.",
                 text2: "Each noir gem features weary detectives pushed to their breaking points, atmospheric tension you can feel, and endings that refuse to compromise with a traditional happy resolution."
             },
             ranking: {
@@ -304,7 +304,7 @@ const getCollectionContent = () => {
             title: "Best Horror Movies on Hulu",
             description: "The most brutally terrifying films streaming on Hulu. From trauma-inducing gore to slow-burn dread & cosmic horror.",
             selection: {
-                text1: "From the rule-breaking chaos of 'When Evil Lurks' to the suffocating dread of 'Longlegs'â€”these films represent the darkest corners of the Hulu library.",
+                text1: "From the rule-breaking chaos of 'When Evil Lurks' to the suffocating dread of 'Longlegs'these films represent the darkest corners of the Hulu library.",
                 text2: "Each selection features visceral scares, psychological trauma, and atmospheres so oppressive they feel cursed. Not for the faint of heart."
             },
             ranking: {
@@ -318,7 +318,7 @@ const getCollectionContent = () => {
             },
             experience: {
                 text1: "Whether you're seeking cosmic nihilism or slasher brutality, this collection delivers cinema's most traumatizing experiences.",
-                text2: "Each film has been selected for its ability to ruin your sleepâ€”offering nightmares that stick with you long after the credits roll."
+                text2: "Each film has been selected for its ability to ruin your sleepoffering nightmares that stick with you long after the credits roll."
             }
         };
 
@@ -329,7 +329,7 @@ const getCollectionContent = () => {
             title: "Romance Movies on Hulu",
             description: "The most emotionally resonant romance films streaming on Hulu. From Palme d'Or winners to devastating ghost stories & nostalgic first loves.",
             selection: {
-                text1: "From the chaotic energy of 'Anora' to the quiet devastation of 'All of Us Strangers'â€”these films represent the pinnacle of modern romantic cinema available on Hulu.",
+                text1: "From the chaotic energy of 'Anora' to the quiet devastation of 'All of Us Strangers'these films represent the pinnacle of modern romantic cinema available on Hulu.",
                 text2: "Each selection features electric chemistry, profound emotional stakes, and narratives that move beyond clichÃ©s to explore the messy, beautiful reality of connection."
             },
             ranking: {
@@ -343,7 +343,7 @@ const getCollectionContent = () => {
             },
             experience: {
                 text1: "Whether you're seeking a good cry or a rush of joy, this collection delivers cinema's most powerful explorations of the human heart.",
-                text2: "Each film has been selected for its ability to linger with youâ€”offering moments of intimacy and heartbreak that feel deeply, authentically real."
+                text2: "Each film has been selected for its ability to linger with youoffering moments of intimacy and heartbreak that feel deeply, authentically real."
             }
         };
 
@@ -354,7 +354,7 @@ const getCollectionContent = () => {
             title: "Action Movies on Hulu",
             description: "High-octane action movies streaming on Hulu. Brutal fight choreography, relentless pacing & adrenaline-fueled plots that redefine the genre.",
             selection: {
-                text1: "From the primal hunt of 'Prey' to the stylized violence of 'Kingsman'â€”these films represent the pinnacle of modern action cinema available on Hulu.",
+                text1: "From the primal hunt of 'Prey' to the stylized violence of 'Kingsman'these films represent the pinnacle of modern action cinema available on Hulu.",
                 text2: "Each selection features innovative fight choreography, memorable heroes, and set pieces that have become legendary in the action genre."
             },
             ranking: {
@@ -368,7 +368,7 @@ const getCollectionContent = () => {
             },
             experience: {
                 text1: "Whether you're seeking martial arts mastery or sci-fi warfare, this collection delivers cinema's most thrilling adrenaline rushes.",
-                text2: "Each film has been selected for its ability to keep your heart racingâ€”with action sequences that demand to be rewatched and analyzed."
+                text2: "Each film has been selected for its ability to keep your heart racingwith action sequences that demand to be rewatched and analyzed."
             }
         };
 
@@ -378,7 +378,7 @@ const getCollectionContent = () => {
             title: "Best Comedy Movies on Hulu",
             description: "The funniest films streaming on Hulu. From teen chaos and mockumentaries to biting satire & action-packed laughs.",
             selection: {
-                text1: "From the legendary teen awkwardness of 'Superbad' to the unscripted chaos of 'Borat'â€”these films represent the gold standard of modern comedy.",
+                text1: "From the legendary teen awkwardness of 'Superbad' to the unscripted chaos of 'Borat'these films represent the gold standard of modern comedy.",
                 text2: "Each selection features unforgettable quotes, chaotic energy, and performances that range from slapstick genius to biting social satire."
             },
             ranking: {
@@ -392,7 +392,7 @@ const getCollectionContent = () => {
             },
             experience: {
                 text1: "Whether you're seeking nostalgic comfort or shocking satire, this collection delivers cinema's most effective dopamine hits.",
-                text2: "Each film has been selected for its ability to improve your mood instantlyâ€”offering laughs that have stood the test of time and culture."
+                text2: "Each film has been selected for its ability to improve your mood instantlyoffering laughs that have stood the test of time and culture."
             }
         };
 
@@ -403,7 +403,7 @@ const getCollectionContent = () => {
         title: "Best Sci-Fi Movies on Hulu",
         description: "The most visionary sci-fi films streaming on Hulu. From time-travel paradoxes to alien invasions & dystopian futures that challenge reality.",
         selection: {
-            text1: "From the mind-bending loops of 'Donnie Darko' to the primal survival of 'Prey'â€”these films represent the most ambitious and visually stunning science fiction available on Hulu.",
+            text1: "From the mind-bending loops of 'Donnie Darko' to the primal survival of 'Prey'these films represent the most ambitious and visually stunning science fiction available on Hulu.",
             text2: "Each selection features high-concept storytelling, groundbreaking visuals, and philosophical questions about humanity's future, technology, and place in the universe."
         },
         ranking: {
@@ -417,7 +417,7 @@ const getCollectionContent = () => {
         },
         experience: {
             text1: "Whether you're seeking intellectual challenges or breathtaking alien worlds, this collection delivers cinema's most imaginative visions of the future.",
-            text2: "Each film has been selected for its ability to provoke thought and wonderâ€”offering glimpses into realities that feel both impossible and terrifyingly plausible."
+            text2: "Each film has been selected for its ability to provoke thought and wonderoffering glimpses into realities that feel both impossible and terrifyingly plausible."
         }
     };
 
@@ -428,7 +428,7 @@ const getCollectionContent = () => {
         title: "Best Thriller Movies on Hulu",
         description: "The most suspenseful thrillers streaming on Hulu. From high-stakes heists to psychological nightmares & courtroom tension.",
         selection: {
-            text1: "From the tactical perfection of 'Heat' to the psychological descent of 'Black Swan'â€”these films represent the pinnacle of tension and suspense available on Hulu.",
+            text1: "From the tactical perfection of 'Heat' to the psychological descent of 'Black Swan'these films represent the pinnacle of tension and suspense available on Hulu.",
             text2: "Each selection features masterclass direction, unforgettable performances, and plots that tighten the screws until the very last frame."
         },
         ranking: {
@@ -442,7 +442,7 @@ const getCollectionContent = () => {
         },
         experience: {
             text1: "Whether you're seeking intellectual puzzles or heart-pounding action, this collection delivers cinema's most gripping experiences.",
-            text2: "Each film has been selected for its ability to keep you on the edge of your seatâ€”offering twists and tension that demand your full attention."
+            text2: "Each film has been selected for its ability to keep you on the edge of your seatoffering twists and tension that demand your full attention."
         }
     };
 
@@ -454,7 +454,7 @@ const getCollectionContent = () => {
         title: "Best Movies on Hulu",
         description: "The definitive ranking of the highest-rated films streaming on Hulu right now. From Heat to Superbad, covering all genres.",
         selection: {
-            text1: "From the tactical perfection of 'Heat' to the quiet mastery of 'Perfect Days'â€”these films represent the absolute best cinema available on the platform right now.",
+            text1: "From the tactical perfection of 'Heat' to the quiet mastery of 'Perfect Days'these films represent the absolute best cinema available on the platform right now.",
             text2: "Each selection is a genre-defining masterpiece, chosen for its critical acclaim, cultural impact, and rewatchability across action, drama, sci-fi, and romance."
         },
         ranking: {
@@ -468,7 +468,7 @@ const getCollectionContent = () => {
         },
         experience: {
             text1: "Whether you're seeking high-octane thrills or profound emotional depth, this collection delivers the most essential viewing experiences on Hulu.",
-            text2: "Each film has been selected as a 'must-watch'â€”guaranteeing that no matter what you pick, you are watching a top-tier example of filmmaking craft."
+            text2: "Each film has been selected as a 'must-watch'guaranteeing that no matter what you pick, you are watching a top-tier example of filmmaking craft."
         }
     };
     } else if (collection.slug === 'best-comedy-movies-on-peacock') {
@@ -477,7 +477,7 @@ const getCollectionContent = () => {
             title: "Best Comedy Movies on Peacock",
             description: "The funniest films streaming on Peacock. From surreal satire to slapstick classics & high-octane chaos.",
             selection: {
-                text1: "From the absurdist genius of 'Monty Python' to the unhinged chaos of 'Anchorman'â€”these films represent the absolute peaks of cinematic humor available on Peacock.",
+                text1: "From the absurdist genius of 'Monty Python' to the unhinged chaos of 'Anchorman'these films represent the absolute peaks of cinematic humor available on Peacock.",
                 text2: "Each selection features unforgettable quotes, chaotic energy, and performances that range from slapstick genius to biting social satire."
             },
             ranking: {
@@ -491,7 +491,7 @@ const getCollectionContent = () => {
             },
             experience: {
                 text1: "Whether you're seeking nostalgic comfort or shocking satire, this collection delivers cinema's most effective dopamine hits.",
-                text2: "Each film has been selected for its ability to improve your mood instantlyâ€”offering laughs that have stood the test of time and culture."
+                text2: "Each film has been selected for its ability to improve your mood instantlyoffering laughs that have stood the test of time and culture."
             }
         };
 
@@ -502,7 +502,7 @@ const getCollectionContent = () => {
             title: "Best Drama Movies on Hulu",
             description: "The most emotionally resonant dramas streaming on Hulu. Deep character studies, heartbreaking performances & human stories that stay with you forever.",
             selection: {
-                text1: "From the 12-year journey of 'Boyhood' to the quiet devastation of 'All of Us Strangers'â€”these films represent the pinnacle of emotional storytelling available on Hulu.",
+                text1: "From the 12-year journey of 'Boyhood' to the quiet devastation of 'All of Us Strangers'these films represent the pinnacle of emotional storytelling available on Hulu.",
                 text2: "Each selection features profound character depth, authentic human connection, and narratives that explore the beautiful, painful complexity of being alive."
             },
             ranking: {
@@ -516,7 +516,7 @@ const getCollectionContent = () => {
             },
             experience: {
                 text1: "Whether you're seeking cathartic tears or quiet reflection, this collection delivers cinema's most powerful explorations of the human condition.",
-                text2: "Each film has been selected for its ability to touch the soulâ€”offering moments of grace, grief, and connection that feel universally, heartbreakingly real."
+                text2: "Each film has been selected for its ability to touch the souloffering moments of grace, grief, and connection that feel universally, heartbreakingly real."
             }
         };
 
@@ -526,9 +526,9 @@ const getCollectionContent = () => {
     return {
         badge: "Wholesome Family Cinema",
         title: "Best Family Movies on Hulu",
-        description: "The top 10 family movies streaming on Hulu right now. From Robot Dreams to Night at the Museumâ€”ranked by wholesomeness and entertainment value.",
+        description: "The top 10 family movies streaming on Hulu right now. From Robot Dreams to Night at the Museumranked by wholesomeness and entertainment value.",
         selection: {
-            text1: "From the silent emotional journey of 'Robot Dreams' to the high-energy fun of 'Sonic the Hedgehog 2'â€”these films represent the best family entertainment available on Hulu.",
+            text1: "From the silent emotional journey of 'Robot Dreams' to the high-energy fun of 'Sonic the Hedgehog 2'these films represent the best family entertainment available on Hulu.",
             text2: "Each selection features positive messages, engaging stories for all ages, and moments of genuine warmth that bring families together."
         },
         ranking: {
@@ -542,7 +542,7 @@ const getCollectionContent = () => {
         },
         experience: {
             text1: "Whether you're seeking a fun adventure or a heartwarming story, this collection delivers cinema's most memorable family experiences.",
-            text2: "Each film has been selected for its ability to entertain both kids and adultsâ€”offering laughter, tears, and valuable life lessons."
+            text2: "Each film has been selected for its ability to entertain both kids and adults offering laughter, tears, and valuable life lessons."
         }
     };
 
@@ -554,7 +554,7 @@ const getCollectionContent = () => {
         title: "Action Movies on HBO Max",
         description: "Grand-scale action epics streaming on HBO Max. Mythic heroes, visceral combat & cinematic spectacles that define the blockbuster genre.",
         selection: {
-            text1: "From the tactical gun-fu of 'John Wick' to the mythic scale of 'Dune: Part Two'â€”these films represent the absolute peak of action filmmaking available on HBO Max.",
+            text1: "From the tactical gun-fu of 'John Wick' to the mythic scale of 'Dune: Part Two'these films represent the absolute peak of action filmmaking available on HBO Max.",
             text2: "Each selection features legendary set pieces, groundbreaking stunts, and narratives that balance massive spectacle with intimate, character-driven stakes."
         },
         ranking: {
@@ -568,7 +568,7 @@ const getCollectionContent = () => {
         },
         experience: {
             text1: "Whether you're seeking gritty crime sagas or fantasy warfare, this collection delivers cinema's most ambitious and adrenaline-fueled experiences.",
-            text2: "Each film has been selected for its ability to aweâ€”offering moments of pure cinematic grandeur that demand the biggest screen possible."
+            text2: "Each film has been selected for its ability to aweoffering moments of pure cinematic grandeur that demand the biggest screen possible."
         }
     };
 
@@ -578,7 +578,7 @@ const getCollectionContent = () => {
             title: "Best Romance Movies on HBO Max",
             description: "The definitive ranking of romance movies on HBO Max. From the wartime sacrifice of Casablanca to the restrained longing of In the Mood for Love. Ranked by emotional intensity.",
             selection: {
-                text1: "From the eternal gold standard of 'Casablanca' to the quiet devastation of 'Past Lives'â€”these films represent the absolute pinnacle of romantic cinema available on HBO Max.",
+                text1: "From the eternal gold standard of 'Casablanca' to the quiet devastation of 'Past Lives'these films represent the absolute pinnacle of romantic cinema available on HBO Max.",
                 text2: "Each selection features electric chemistry, profound emotional stakes, and narratives that move beyond clichÃ©s to explore the messy, beautiful, and heartbreaking reality of connection."
             },
             ranking: {
@@ -592,7 +592,7 @@ const getCollectionContent = () => {
             },
             experience: {
                 text1: "Whether you're seeking the wit of a perfect rom-com or the ache of forbidden love, this collection delivers cinema's most powerful explorations of the human heart.",
-                text2: "Each film has been selected for its ability to linger with youâ€”offering moments of intimacy and heartbreak that feel universally, heartbreakingly real."
+                text2: "Each film has been selected for its ability to linger with youoffering moments of intimacy and heartbreak that feel universally, heartbreakingly real."
             }
         };
 
@@ -603,7 +603,7 @@ const getCollectionContent = () => {
         title: "Best Thriller Movies on HBO Max",
         description: "The most suspenseful thrillers streaming on HBO Max. From psychological nightmares like Funny Games to cerebral sci-fi like Ex Machina.",
         selection: {
-            text1: "From the nihilistic home invasion of 'Funny Games' to the social horror of 'Get Out'â€”these films represent the pinnacle of tension and suspense available on HBO Max.",
+            text1: "From the nihilistic home invasion of 'Funny Games' to the social horror of 'Get Out'these films represent the pinnacle of tension and suspense available on HBO Max.",
             text2: "Each selection features masterclass direction, unbearable psychological pressure, and narratives that tighten the screws until the very last frame."
         },
         ranking: {
@@ -617,7 +617,7 @@ const getCollectionContent = () => {
         },
         experience: {
             text1: "Whether you're seeking cerebral puzzles or heart-pounding dread, this collection delivers cinema's most gripping experiences.",
-            text2: "Each film has been selected for its ability to keep you on the edge of your seatâ€”offering twists and tension that demand your full attention."
+            text2: "Each film has been selected for its ability to keep you on the edge of your seatoffering twists and tension that demand your full attention."
         }
     };
 
@@ -626,9 +626,9 @@ const getCollectionContent = () => {
     return {
         badge: "Magical Family Cinema",
         title: "Best Family Movies on HBO Max",
-        description: "The top 10 family movies streaming on HBO Max right now. From The Wizard of Oz to Harry Potterâ€”ranked by wholesomeness and fun factor.",
+        description: "The top 10 family movies streaming on HBO Max right now. From The Wizard of Oz to Harry Potterranked by wholesomeness and fun factor.",
         selection: {
-            text1: "From the timeless magic of 'The Wizard of Oz' to the visual poetry of 'Flow'â€”these films represent the absolute best family entertainment available on HBO Max.",
+            text1: "From the timeless magic of 'The Wizard of Oz' to the visual poetry of 'Flow'these films represent the absolute best family entertainment available on HBO Max.",
             text2: "Each selection features positive messages, engaging stories for all ages, and moments of genuine wonder that bring families together for a perfect movie night."
         },
         ranking: {
@@ -642,7 +642,7 @@ const getCollectionContent = () => {
         },
         experience: {
             text1: "Whether you're seeking a nostalgic classic or a modern animated masterpiece, this collection delivers cinema's most memorable family experiences.",
-            text2: "Each film has been selected for its ability to entertain both kids and adultsâ€”offering laughter, tears, and valuable life lessons that resonate across generations."
+            text2: "Each film has been selected for its ability to entertain both kids and adultsoffering laughter, tears, and valuable life lessons that resonate across generations."
         }
     };
 
@@ -653,7 +653,7 @@ const getCollectionContent = () => {
         title: "Best Sci-Fi Movies on HBO Max",
         description: "The definitive ranking of the best Sci-Fi movies on HBO Max. From the cosmic scale of 2001 to the visceral action of Mad Max.",
         selection: {
-            text1: "From the philosophical odyssey of '2001' to the mind-bending architecture of 'Inception'â€”these films represent the absolute pinnacle of science fiction available on HBO Max.",
+            text1: "From the philosophical odyssey of '2001' to the mind-bending architecture of 'Inception'these films represent the absolute pinnacle of science fiction available on HBO Max.",
             text2: "Each selection features visionary direction, groundbreaking visuals, and narratives that challenge our understanding of reality, time, and human existence."
         },
         ranking: {
@@ -667,7 +667,7 @@ const getCollectionContent = () => {
         },
         experience: {
             text1: "Whether you're seeking intellectual challenges or breathtaking spectacle, this collection delivers cinema's most ambitious visions of the future.",
-            text2: "Each film has been selected for its ability to aweâ€”offering moments of pure cinematic grandeur that demand the biggest screen possible."
+            text2: "Each film has been selected for its ability to aweoffering moments of pure cinematic grandeur that demand the biggest screen possible."
         }
     };
 
@@ -677,7 +677,7 @@ const getCollectionContent = () => {
         title: "Best Horror Movies on HBO Max",
         description: "The definitive ranking of the scariest movies on HBO Max. From the jump scares of Insidious to the dread of The Witch.",
         selection: {
-            text1: "From the supernatural terror of 'The Conjuring' to the relentless gore of 'Evil Dead Rise'â€”these films represent the darkest, most intense horror available on HBO Max.",
+            text1: "From the supernatural terror of 'The Conjuring' to the relentless gore of 'Evil Dead Rise'these films represent the darkest, most intense horror available on HBO Max.",
             text2: "Each selection features visceral scares, psychological trauma, and atmospheres so oppressive they feel cursed. Not for the faint of heart."
         },
         ranking: {
@@ -691,7 +691,7 @@ const getCollectionContent = () => {
         },
         experience: {
             text1: "Whether you're seeking cosmic nihilism or supernatural brutality, this collection delivers cinema's most traumatizing experiences.",
-            text2: "Each film has been selected for its ability to ruin your sleepâ€”offering nightmares that stick with you long after the credits roll."
+            text2: "Each film has been selected for its ability to ruin your sleepoffering nightmares that stick with you long after the credits roll."
         }
     };
 
@@ -703,7 +703,7 @@ const getCollectionContent = () => {
         title: "Best Movies on HBO Max",
         description: "The definitive ranking of the highest-rated films streaming on HBO Max right now. From Seven Samurai to Dune: Part Two.",
         selection: {
-            text1: "From the timeless philosophy of 'Stalker' to the modern sci-fi epic 'Dune: Part Two'â€”these films represent the absolute best cinema available on the platform.",
+            text1: "From the timeless philosophy of 'Stalker' to the modern sci-fi epic 'Dune: Part Two'these films represent the absolute best cinema available on the platform.",
             text2: "Each selection is a genre-defining masterpiece, chosen for its critical acclaim, cultural impact, and cinematic mastery across action, sci-fi, romance, and drama."
         },
         ranking: {
@@ -717,7 +717,7 @@ const getCollectionContent = () => {
         },
         experience: {
             text1: "Whether you're seeking a classic like 'Casablanca' or a modern epic like 'The Dark Knight', this collection delivers the most essential viewing experiences on HBO Max.",
-            text2: "Each film has been selected as a 'must-watch'â€”guaranteeing that no matter what you pick, you are watching a top-tier example of filmmaking craft."
+            text2: "Each film has been selected as a 'must-watch'guaranteeing that no matter what you pick, you are watching a top-tier example of filmmaking craft."
         }
     };
 
@@ -728,7 +728,7 @@ const getCollectionContent = () => {
         title: "Best Drama Movies on HBO Max",
         description: "The most emotionally resonant dramas streaming on HBO Max. Deep character studies, heartbreaking performances & human stories that stay with you forever.",
         selection: {
-            text1: "From the visually stunning 'Moonlight' to the raw intensity of 'Taxi Driver'â€”these films represent the pinnacle of dramatic storytelling available on HBO Max.",
+            text1: "From the visually stunning 'Moonlight' to the raw intensity of 'Taxi Driver'these films represent the pinnacle of dramatic storytelling available on HBO Max.",
             text2: "Each selection features profound character depth, authentic human connection, and narratives that explore the beautiful, painful complexity of being alive."
         },
         ranking: {
@@ -742,7 +742,7 @@ const getCollectionContent = () => {
         },
         experience: {
             text1: "Whether you're seeking cathartic tears or quiet reflection, this collection delivers cinema's most powerful explorations of the human condition.",
-            text2: "Each film has been selected for its ability to touch the soulâ€”offering moments of grace, grief, and connection that feel universally, heartbreakingly real."
+            text2: "Each film has been selected for its ability to touch the souloffering moments of grace, grief, and connection that feel universally, heartbreakingly real."
         }
     };
 
@@ -753,7 +753,7 @@ const getCollectionContent = () => {
         title: "Best Comedy Movies on HBO Max",
         description: "The definitive ranking of the funniest movies on HBO Max. From the satire of The Great Dictator to the chaos of The LEGO Batman Movie.",
         selection: {
-            text1: "From the timeless slapstick of 'City Lights' to the sharp modern satire of 'Barbie'â€”these films represent the absolute best comedy available on HBO Max.",
+            text1: "From the timeless slapstick of 'City Lights' to the sharp modern satire of 'Barbie'these films represent the absolute best comedy available on HBO Max.",
             text2: "Each selection features brilliant writing, unforgettable performances, and a unique comedic voice that has stood the test of time."
         },
         ranking: {
@@ -767,7 +767,7 @@ const getCollectionContent = () => {
         },
         experience: {
             text1: "Whether you're seeking a classic like 'Singin' in the Rain' or a modern favorite like 'Fargo', this collection delivers cinema's most effective dopamine hits.",
-            text2: "Each film has been selected for its ability to improve your mood instantlyâ€”offering laughs that range from intellectual satire to pure, joyful absurdity."
+            text2: "Each film has been selected for its ability to improve your mood instantlyoffering laughs that range from intellectual satire to pure, joyful absurdity."
         }
     };
 
@@ -778,7 +778,7 @@ const getCollectionContent = () => {
         title: "Best Action Movies on Paramount+",
         description: "The definitive ranking of adrenaline-fueled cinema on Paramount+. From Mach 10 aerial combat to the Burj Khalifa climb.",
         selection: {
-            text1: "From the practical stunt mastery of 'Mission: Impossible â€“ Fallout' to the G-force intensity of 'Top Gun: Maverick'â€”these films represent the gold standard of modern action cinema.",
+            text1: "From the practical stunt mastery of 'Mission: Impossible â€“ Fallout' to the G-force intensity of 'Top Gun: Maverick'these films represent the gold standard of modern action cinema.",
             text2: "Each selection prioritizes practical effects over CGI, featuring actors risking their lives for the shot and set pieces that have redefined the limits of what's possible on camera."
         },
         ranking: {
@@ -792,7 +792,7 @@ const getCollectionContent = () => {
         },
         experience: {
             text1: "Whether you're seeking espionage thrills or aerial dogfights, this collection delivers cinema's most heart-pounding experiences.",
-            text2: "Each film has been selected for its refusal to compromise on realismâ€”offering spectacle that feels dangerous, tangible, and exhilaratingly real."
+            text2: "Each film has been selected for its refusal to compromise on realismoffering spectacle that feels dangerous, tangible, and exhilaratingly real."
         }
     };
 
@@ -803,7 +803,7 @@ const getCollectionContent = () => {
         title: "Best Sci-Fi Movies on Paramount+",
         description: "Visionary science fiction films exploring cosmic scope, advanced technology, and alien contact. From Interstellar to Star Trek.",
         selection: {
-            text1: "From the theoretical physics of 'Interstellar' to the linguistic mysteries of 'Arrival'â€”these films represent the pinnacle of science fiction available on Paramount+.",
+            text1: "From the theoretical physics of 'Interstellar' to the linguistic mysteries of 'Arrival'these films represent the pinnacle of science fiction available on Paramount+.",
             text2: "Each selection features high-concept storytelling, groundbreaking visuals, and narratives that challenge our understanding of space, time, and humanity's future."
         },
         ranking: {
@@ -817,7 +817,7 @@ const getCollectionContent = () => {
         },
         experience: {
             text1: "Whether you're seeking hard sci-fi realism or thrilling space opera, this collection delivers cinema's most ambitious visions of the cosmos.",
-            text2: "Each film has been selected for its ability to inspire wonderâ€”offering moments of pure cinematic grandeur that demand the biggest screen possible."
+            text2: "Each film has been selected for its ability to inspire wonderoffering moments of pure cinematic grandeur that demand the biggest screen possible."
         }
     };
 
@@ -828,7 +828,7 @@ const getCollectionContent = () => {
         title: "Romance Movies on Paramount+",
         description: "The most emotionally resonant romance films streaming on Paramount+. From the epic tragedy of Titanic to the heartwarming devotion of 50 First Dates.",
         selection: {
-            text1: "From the timeless devotion of 'It's a Wonderful Life' to the heartbreaking reality of 'Like Crazy'â€”these films represent the pinnacle of romantic cinema available on Paramount+.",
+            text1: "From the timeless devotion of 'It's a Wonderful Life' to the heartbreaking reality of 'Like Crazy'these films represent the pinnacle of romantic cinema available on Paramount+.",
             text2: "Each selection features profound emotional stakes, electric chemistry, and narratives that explore the beautiful, messy, and enduring power of love across time and circumstance."
         },
         ranking: {
@@ -842,7 +842,7 @@ const getCollectionContent = () => {
         },
         experience: {
             text1: "Whether you're seeking a sweeping epic or an intimate character study, this collection delivers cinema's most powerful explorations of the human heart.",
-            text2: "Each film has been selected for its ability to linger with youâ€”offering moments of joy, heartbreak, and connection that feel universally, authentically real."
+            text2: "Each film has been selected for its ability to linger with youoffering moments of joy, heartbreak, and connection that feel universally, authentically real."
         }
     };
 
@@ -853,7 +853,7 @@ const getCollectionContent = () => {
         title: "Best Core Drama Movies on Paramount+",
         description: "The definitive ranking of the most emotionally powerful dramas on Paramount+. From the ruthless ambition of There Will Be Blood to the timeless journey of Forrest Gump.",
         selection: {
-            text1: "From the oil-soaked madness of 'There Will Be Blood' to the quiet devastation of 'The English Patient'â€”these films represent the absolute pinnacle of dramatic storytelling available on Paramount+.",
+            text1: "From the oil-soaked madness of 'There Will Be Blood' to the quiet devastation of 'The English Patient'these films represent the absolute pinnacle of dramatic storytelling available on Paramount+.",
             text2: "Each selection features profound character depth, authentic human connection, and narratives that explore the beautiful, painful complexity of being alive."
         },
         ranking: {
@@ -867,7 +867,7 @@ const getCollectionContent = () => {
         },
         experience: {
             text1: "Whether you're seeking cathartic tears or quiet reflection, this collection delivers cinema's most powerful explorations of the human condition.",
-            text2: "Each film has been selected for its ability to touch the soulâ€”offering moments of grace, grief, and connection that feel universally, heartbreakingly real."
+            text2: "Each film has been selected for its ability to touch the souloffering moments of grace, grief, and connection that feel universally, heartbreakingly real."
         }
     };
 
@@ -878,7 +878,7 @@ const getCollectionContent = () => {
         title: "Best Thriller Movies on Paramount+",
         description: "The most suspenseful thrillers on Paramount+. From the relentless dread of No Country for Old Men to the claustrophobia of 10 Cloverfield Lane.",
         selection: {
-            text1: "From the coin-toss tension of 'No Country for Old Men' to the obsessive hunt of 'Zodiac'â€”these films represent the pinnacle of suspense available on Paramount+.",
+            text1: "From the coin-toss tension of 'No Country for Old Men' to the obsessive hunt of 'Zodiac'these films represent the pinnacle of suspense available on Paramount+.",
             text2: "Each selection features masterclass direction, unbearable psychological pressure, and narratives that tighten the screws until the very last frame."
         },
         ranking: {
@@ -892,7 +892,7 @@ const getCollectionContent = () => {
         },
         experience: {
             text1: "Whether you're seeking cerebral puzzles or heart-pounding dread, this collection delivers cinema's most gripping experiences.",
-            text2: "Each film has been selected for its ability to keep you on the edge of your seatâ€”offering twists and tension that demand your full attention."
+            text2: "Each film has been selected for its ability to keep you on the edge of your seatoffering twists and tension that demand your full attention."
         }
     };
 
@@ -901,9 +901,9 @@ const getCollectionContent = () => {
     return {
         badge: "Wholesome Family Fun",
         title: "Best Family Movies on Paramount+",
-        description: "The top 10 family movies streaming on Paramount+ right now. From Rango to Sonic the Hedgehog 3â€”ranked by fun factor and wholesomeness.",
+        description: "The top 10 family movies streaming on Paramount+ right now. From Rango to Sonic the Hedgehog 3ranked by fun factor and wholesomeness.",
         selection: {
-            text1: "From the animated masterpiece 'Rango' to the high-speed adventure of 'Sonic the Hedgehog 3'â€”these films represent the best family entertainment available on Paramount+.",
+            text1: "From the animated masterpiece 'Rango' to the high-speed adventure of 'Sonic the Hedgehog 3'these films represent the best family entertainment available on Paramount+.",
             text2: "Each selection features positive messages, engaging stories for all ages, and moments of genuine fun that bring families together."
         },
         ranking: {
@@ -917,7 +917,7 @@ const getCollectionContent = () => {
         },
         experience: {
             text1: "Whether you're seeking a laugh-out-loud comedy or an exciting adventure, this collection delivers cinema's most memorable family experiences.",
-            text2: "Each film has been selected for its ability to entertain both kids and adultsâ€”offering laughter, action, and valuable life lessons."
+            text2: "Each film has been selected for its ability to entertain both kids and adultsoffering laughter, action, and valuable life lessons."
         }
     };
 } else if (collection.slug === 'best-horror-movies-on-paramount-plus') {
@@ -926,7 +926,7 @@ const getCollectionContent = () => {
         title: "Best Horror Movies on Paramount+",
         description: "The definitive ranking of the scariest movies on Paramount+. From the jump scares of Insidious to the dread of The Witch.",
         selection: {
-            text1: "From the supernatural terror of 'The Conjuring' to the relentless gore of 'Evil Dead Rise'â€”these films represent the darkest, most intense horror available on Paramount+.",
+            text1: "From the supernatural terror of 'The Conjuring' to the relentless gore of 'Evil Dead Rise'these films represent the darkest, most intense horror available on Paramount+.",
             text2: "Each selection features visceral scares, psychological trauma, and atmospheres so oppressive they feel cursed. Not for the faint of heart."
         },
         ranking: {
@@ -940,17 +940,17 @@ const getCollectionContent = () => {
         },
         experience: {
             text1: "Whether you're seeking cosmic nihilism or supernatural brutality, this collection delivers cinema's most traumatizing experiences.",
-            text2: "Each film has been selected for its ability to ruin your sleepâ€”offering nightmares that stick with you long after the credits roll."
+            text2: "Each film has been selected for its ability to ruin your sleepoffering nightmares that stick with you long after the credits roll."
         }
     };
 } else if (collection.slug === 'best-comedy-movies-on-paramount-plus') {
     return {
         badge: "Hidden Comedy Vault",
         title: "Best Comedy Movies on Paramount+",
-        description: "Everyone's scrolling Netflix for comedies while Paramount+ has Tropic Thunder, Anchorman, and The Naked Gun collecting dust. These are the classics you actually rewatchâ€”not algorithm bait.",
+        description: "Everyone's scrolling Netflix for comedies while Paramount+ has Tropic Thunder, Anchorman, and The Naked Gun collecting dust. These are the classics you actually rewatchnot algorithm bait.",
         selection: {
             text1: "No Netflix originals that disappear in six months. No algorithm-approved mediocrity. Just endlessly quotable comedies that defined their eras: Tropic Thunder's Hollywood satire, Anchorman's absurdism, The Naked Gun's slapstick perfection.",
-            text2: "These films survived because they're actually funnyâ€”not because they tested well with focus groups. Rewatchable. Quotable. Still hilarious decades later. The kind of comedies streaming services forgot how to make."
+            text2: "These films survived because they're actually funnynot because they tested well with focus groups. Rewatchable. Quotable. Still hilarious decades later. The kind of comedies streaming services forgot how to make."
         },
         ranking: {
             text: "Ranked by rewatchability: How many times have you quoted this movie? How often do you put it on in the background? Does it get funnier or worse over time?",
@@ -973,7 +973,7 @@ const getCollectionContent = () => {
         title: "Best Movies on Paramount+",
         description: "The definitive ranking of the highest-rated films streaming on Paramount+ right now. From The Godfather to Top Gun: Maverick.",
         selection: {
-            text1: "From the timeless brilliance of 'The Godfather' to the modern spectacle of 'Top Gun: Maverick'â€”these films represent the absolute best cinema available on the platform.",
+            text1: "From the timeless brilliance of 'The Godfather' to the modern spectacle of 'Top Gun: Maverick'these films represent the absolute best cinema available on the platform.",
             text2: "Each selection is a genre-defining masterpiece, chosen for its critical acclaim, cultural impact, and cinematic mastery across action, sci-fi, romance, and drama."
         },
         ranking: {
@@ -987,7 +987,7 @@ const getCollectionContent = () => {
         },
         experience: {
             text1: "Whether you're seeking a classic like 'The Godfather' or a modern epic like 'Mission: Impossible', this collection delivers the most essential viewing experiences on Paramount+.",
-            text2: "Each film has been selected as a 'must-watch'â€”guaranteeing that no matter what you pick, you are watching a top-tier example of filmmaking craft."
+            text2: "Each film has been selected as a 'must-watch'guaranteeing that no matter what you pick, you are watching a top-tier example of filmmaking craft."
         }
     };
 } else if (collection.slug === 'best-action-adventure-movies-on-peacock') {
@@ -1010,7 +1010,7 @@ const getCollectionContent = () => {
         },
         experience: {
             text1: "Whether you're looking for a classic action hero or a modern, gritty thriller, this collection has something to get your pulse racing.",
-            text2: "Each film has been selected for its ability to keep your heart racingâ€”with action sequences that demand to be rewatched and analyzed."
+            text2: "Each film has been selected for its ability to keep your heart racingwith action sequences that demand to be rewatched and analyzed."
                 }
             };
         } else if (collection.slug === 'best-sci-fi-movies-on-peacock') {
@@ -1019,7 +1019,7 @@ const getCollectionContent = () => {
                 title: "Best Sci-Fi Movies on Peacock",
                 description: "The most visionary sci-fi films streaming on Peacock. From time-travel paradoxes to alien invasions & dystopian futures that challenge reality.",
                 selection: {
-                    text1: "From the quantum chaos of 'Coherence' to the cosmic horror of 'Nope'â€”these films represent the most ambitious and visually stunning science fiction available on Peacock.",
+                    text1: "From the quantum chaos of 'Coherence' to the cosmic horror of 'Nope'these films represent the most ambitious and visually stunning science fiction available on Peacock.",
                     text2: "Each selection features high-concept storytelling, groundbreaking visuals, and philosophical questions about humanity's future, technology, and place in the universe."
                 },
                 ranking: {
@@ -1033,7 +1033,7 @@ const getCollectionContent = () => {
                 },
                 experience: {
                     text1: "Whether you're seeking intellectual challenges or breathtaking alien worlds, this collection delivers cinema's most imaginative visions of the future.",
-                    text2: "Each film has been selected for its ability to provoke thought and wonderâ€”offering glimpses into realities that feel both impossible and terrifyingly plausible."
+                    text2: "Each film has been selected for its ability to provoke thought and wonderoffering glimpses into realities that feel both impossible and terrifyingly plausible."
                 }
             };
             } else if (collection.slug === 'best-romance-movies-on-peacock') {
@@ -1056,16 +1056,16 @@ const getCollectionContent = () => {
                     },
                     experience: {
                         text1: "Whether you're seeking a sweeping epic or an intimate character study, this collection delivers cinema's most powerful explorations of the human heart.",
-                        text2: "Each film has been selected for its ability to linger with youâ€”offering moments of joy, heartbreak, and connection that feel universally, authentically real."
+                        text2: "Each film has been selected for its ability to linger with youoffering moments of joy, heartbreak, and connection that feel universally, authentically real."
                     }
                 };
             } else if (collection.slug === 'best-family-movies-on-peacock') {
                 return {
                     badge: "Wholesome Family Cinema",
                     title: "Best Family Movies on Peacock",
-                    description: "The top 10 family movies streaming on Peacock right now. From How to Train Your Dragon to Harry Potterâ€”ranked by wholesomeness and entertainment value.",
+                    description: "The top 10 family movies streaming on Peacock right now. From How to Train Your Dragon to Harry Potterranked by wholesomeness and entertainment value.",
                     selection: {
-                        text1: "From the animated masterpiece 'How to Train Your Dragon' to the magical world of 'Harry Potter'â€”these films represent the best family entertainment available on Peacock.",
+                        text1: "From the animated masterpiece 'How to Train Your Dragon' to the magical world of 'Harry Potter'these films represent the best family entertainment available on Peacock.",
                         text2: "Each selection features positive messages, engaging stories for all ages, and moments of genuine warmth that bring families together."
                     },
                     ranking: {
@@ -1079,7 +1079,7 @@ const getCollectionContent = () => {
                     },
                     experience: {
                         text1: "Whether you're seeking a fun adventure or a heartwarming story, this collection delivers cinema's most memorable family experiences.",
-                        text2: "Each film has been selected for its ability to entertain both kids and adultsâ€”offering laughter, tears, and valuable life lessons."
+                        text2: "Each film has been selected for its ability to entertain both kids and adultsoffering laughter, tears, and valuable life lessons."
                     }
                 };
             } else if (collection.slug === 'best-drama-movies-on-peacock') {
@@ -1102,7 +1102,7 @@ const getCollectionContent = () => {
             },
             experience: {
                 text1: "Whether you're seeking cathartic tears or quiet reflection, this collection delivers cinema's most powerful explorations of the human condition.",
-                text2: "Each film has been selected for its ability to touch the soulâ€”offering moments of grace, grief, and connection that feel universally, heartbreakingly real."
+                text2: "Each film has been selected for its ability to touch the souloffering moments of grace, grief, and connection that feel universally, heartbreakingly real."
                 }
                 };
     } else if (collection.slug === 'best-thriller-movies-on-peacock') {
@@ -1111,7 +1111,7 @@ const getCollectionContent = () => {
         title: "Best Thriller Movies on Peacock",
         description: "The most suspenseful thrillers streaming on Peacock. From high-stakes heists to psychological nightmares & courtroom tension.",
         selection: {
-            text1: "From the tactical perfection of 'The Killer' to the psychological descent of 'The Black Phone'â€”these films represent the pinnacle of tension and suspense available on Peacock.",
+            text1: "From the tactical perfection of 'The Killer' to the psychological descent of 'The Black Phone'these films represent the pinnacle of tension and suspense available on Peacock.",
             text2: "Each selection features masterclass direction, unforgettable performances, and plots that tighten the screws until the very last frame."
         },
         ranking: {
@@ -1125,7 +1125,7 @@ const getCollectionContent = () => {
         },
         experience: {
             text1: "Whether you're seeking intellectual puzzles or heart-pounding action, this collection delivers cinema's most gripping experiences.",
-            text2: "Each film has been selected for its ability to keep you on the edge of your seatâ€”offering twists and tension that demand your full attention."
+            text2: "Each film has been selected for its ability to keep you on the edge of your seatoffering twists and tension that demand your full attention."
         }
     };
     } else if (collection.slug === 'best-movies-on-peacock') {
@@ -1134,7 +1134,7 @@ const getCollectionContent = () => {
         title: "Best Movies on Peacock",
         description: "The definitive ranking of the highest-rated films streaming on Peacock right now. From cinematic classics to modern blockbusters.",
         selection: {
-            text1: "From timeless masterpieces to modern marvelsâ€”these films represent the absolute best cinema available on the platform.",
+            text1: "From timeless masterpieces to modern marvelsthese films represent the absolute best cinema available on the platform.",
             text2: "Each selection is a genre-defining masterpiece, chosen for its critical acclaim, cultural impact, and cinematic mastery across all genres."
         },
         ranking: {
@@ -1148,7 +1148,7 @@ const getCollectionContent = () => {
         },
         experience: {
             text1: "Whether you're seeking a timeless classic or a modern epic, this collection delivers the most essential viewing experiences on Peacock.",
-            text2: "Each film has been selected as a 'must-watch'â€”guaranteeing that no matter what you pick, you are watching a top-tier example of filmmaking craft."
+            text2: "Each film has been selected as a 'must-watch'guaranteeing that no matter what you pick, you are watching a top-tier example of filmmaking craft."
         }
     };
     } else if (collection.slug === 'movies-like-black-swan') {
@@ -1157,7 +1157,7 @@ const getCollectionContent = () => {
                     title: "Black Swan",
                     description: "Intense psychological thrillers about performance pressure and identity collapse. Ballet obsession, perfectionism spirals & psychological breakdowns that blur reality and nightmare.",
                     selection: {
-                text1: "From ballet studios to music conservatoriesâ€”these films explore how artistic perfection demands total sacrifice, pushing protagonists into identity crises where they can no longer distinguish their performance from their true self.",
+                text1: "From ballet studios to music conservatoriesthese films explore how artistic perfection demands total sacrifice, pushing protagonists into identity crises where they can no longer distinguish their performance from their true self.",
                 text2: "Each psychological masterpiece features characters consumed by their craft, facing mentors who demand the impossible, and spiraling into madness as the line between dedication and self-destruction disappears completely."
             },
             ranking: {
@@ -1171,7 +1171,7 @@ const getCollectionContent = () => {
             },
             experience: {
                 text1: "Whether you're seeking psychological depth or disturbing character studies, this collection delivers cinema's most intense explorations of obsession and identity collapse.",
-                text2: "Each film has been selected for its unflinching portrayal of artistic sacrificeâ€”creating unforgettable narratives where ambition becomes indistinguishable from madness, leaving viewers questioning where dedication ends and self-destruction begins."
+                text2: "Each film has been selected for its unflinching portrayal of artistic sacrificecreating unforgettable narratives where ambition becomes indistinguishable from madness, leaving viewers questioning where dedication ends and self-destruction begins."
             }
         };
 
@@ -1210,7 +1210,7 @@ const getCollectionContent = () => {
         title: "Donnie Darko",
         description: "Mind-bending time travel & reality-warping films. Butterfly effects, temporal loops, dying dreams & doppelgÃ¤ngers that shatter your perception of reality itself.",
         selection: {
-            text1: "From time-traveling journals to quantum multiversesâ€”these films explore fractured realities, temporal paradoxes, and consciousness unraveling where nothing is as it seems.",
+            text1: "From time-traveling journals to quantum multiversesthese films explore fractured realities, temporal paradoxes, and consciousness unraveling where nothing is as it seems.",
             text2: "Each reality-warping masterpiece features protagonists trapped between timelines, alternate selves, and existential nightmares that question the very fabric of existence."
         },
         ranking: {
@@ -1224,7 +1224,7 @@ const getCollectionContent = () => {
         },
         experience: {
             text1: "Whether you're seeking temporal paradoxes or psychological disintegration, this collection delivers cinema's most disorienting reality-warping experiences.",
-            text2: "Each film creates genuine existential confusionâ€”mirroring protagonists' descent into temporal madness where linear reality ceases to exist. Your perception will never recover."
+            text2: "Each film creates genuine existential confusionmirroring protagonists' descent into temporal madness where linear reality ceases to exist. Your perception will never recover."
         }
     };
     
@@ -1236,7 +1236,7 @@ const getCollectionContent = () => {
             title: "Oldboy",
             description: "Brutal revenge thrillers with shocking twists that'll haunt you. Twisted vengeance, moral devastation & cathartic violence where justice becomes personal destruction.",
             selection: {
-                text1: "From 15 years of mysterious imprisonment to endless revenge cyclesâ€”these films explore vengeance's primal satisfaction while revealing its psychological devastation and moral complexity.",
+                text1: "From 15 years of mysterious imprisonment to endless revenge cyclesthese films explore vengeance's primal satisfaction while revealing its psychological devastation and moral complexity.",
                 text2: "Each revenge masterpiece features protagonists pushed beyond human limits, discovering betrayals that shatter their world, and unleashing calculated destruction that consumes everything."
             },
             ranking: {
@@ -1250,7 +1250,7 @@ const getCollectionContent = () => {
             },
             experience: {
                 text1: "Whether you're seeking visceral catharsis or profound moral reckoning, this collection delivers cinema's most devastating revenge experiences that redefine justice itself.",
-                text2: "Each film has been selected for its unflinching portrayal of vengeance's seductive power and ultimate tragedyâ€”creating unforgettable narratives where revenge destroys both hunter and hunted."
+                text2: "Each film has been selected for its unflinching portrayal of vengeance's seductive power and ultimate tragedycreating unforgettable narratives where revenge destroys both hunter and hunted."
             }
         };
 
@@ -1261,7 +1261,7 @@ const getCollectionContent = () => {
             title: "Parasite",
             description: "Brutal class war films exposing capitalism's cruelty. Social inequality, economic desperation & systemic injustice where the poor and rich wage psychological warfare.",
             selection: {
-                text1: "From Bong Joon-ho's architectural metaphors to desperate families infiltrating the wealthyâ€”these films dissect how capitalism creates parasites on both ends of the economic spectrum.",
+                text1: "From Bong Joon-ho's architectural metaphors to desperate families infiltrating the wealthythese films dissect how capitalism creates parasites on both ends of the economic spectrum.",
                 text2: "Each class warfare masterpiece exposes the uncomfortable truth that survival under late-stage capitalism requires deception, exploitation, and moral compromise from everyone involved."
             },
             ranking: {
@@ -1275,7 +1275,7 @@ const getCollectionContent = () => {
             },
             experience: {
                 text1: "Whether you're seeking sharp political allegory or visceral human drama, this collection delivers cinema's most unflinching explorations of class conflict and economic inequality.",
-                text2: "Each film has been selected for its refusal to romanticize poverty or demonize wealthâ€”instead revealing how systemic inequality corrupts everyone trapped within its architecture."
+                text2: "Each film has been selected for its refusal to romanticize poverty or demonize wealthinstead revealing how systemic inequality corrupts everyone trapped within its architecture."
             }
         };
 } else if (collection.slug === 'movies-like-interstellar') {
@@ -1332,7 +1332,7 @@ const getCollectionContent = () => {
         title: "Time Travel Movies That Break Your Brain",
         description: "No hand-holding. No plot armor. Just brutal temporal logic that treats time travel like engineering, not magic. Paradoxes have consequences here.",
         selection: {
-            text1: "Primer's chalkboard equations. Predestination's impossible loop. Timecrimes' recursive nightmare. These films treat causality like a physics problemâ€”and watching them feels like homework.",
+            text1: "Primer's chalkboard equations. Predestination's impossible loop. Timecrimes' recursive nightmare. These films treat causality like a physics problemand watching them feels like homework.",
             text2: "No lazy blockbuster resets. Every timeline branch matters. Every action creates consequences that ripple backward and forward. You'll need diagrams. You'll need rewatches. You might need therapy."
         },
         ranking: {
@@ -1356,7 +1356,7 @@ const getCollectionContent = () => {
             title: "Sci-Fi Cinema",
             description: "Groundbreaking sci-fi that expands your imagination. Visionary concepts, philosophical depth & stunning visuals that redefine what science fiction can achieve.",
             selection: {
-                text1: "From dystopian nightmares to cosmic adventuresâ€”these films push the boundaries of imagination while exploring profound questions about humanity, consciousness, and existence itself.",
+                text1: "From dystopian nightmares to cosmic adventuresthese films push the boundaries of imagination while exploring profound questions about humanity, consciousness, and existence itself.",
                 text2: "Each sci-fi masterpiece features visionary worldbuilding, innovative concepts, and complex characters navigating extraordinary scenarios that challenge our understanding of reality and possibility."
             },
             ranking: {
@@ -1370,7 +1370,7 @@ const getCollectionContent = () => {
             },
             experience: {
                 text1: "Whether you're seeking innovative concepts or philosophical depth, this collection delivers cinema's most visionary science fiction experiences that'll stay with you for years.",
-                text2: "Each film has been selected for its ability to expand imagination and challenge perspectiveâ€”with concepts that continue inspiring new ways of thinking about science, technology, and humanity's future."
+                text2: "Each film has been selected for its ability to expand imagination and challenge perspectivewith concepts that continue inspiring new ways of thinking about science, technology, and humanity's future."
             }
         };
   } else if (collection.slug === 'best-psychological-thriller-movies') {
@@ -1379,8 +1379,8 @@ const getCollectionContent = () => {
         title: "Psychological Thriller",
         description: "Films that weaponize paranoia, shatter identity, and make you question what's real. Unreliable narrators. Fractured minds. No safe exit.",
         selection: {
-            text1: "These films don't just scare youâ€”they make you doubt your own perception. From Fight Club's split personality to Black Swan's obsessive descent, reality becomes optional.",
-            text2: "Each protagonist spirals deeper into psychological collapse while you watch. Gaslighting. Memory manipulation. Dissociative breaks. By the end, you won't trust anythingâ€”including yourself."
+            text1: "These films don't just scare youthey make you doubt your own perception. From Fight Club's split personality to Black Swan's obsessive descent, reality becomes optional.",
+            text2: "Each protagonist spirals deeper into psychological collapse while you watch. Gaslighting. Memory manipulation. Dissociative breaks. By the end, you won't trust anythingincluding yourself."
         },
         ranking: {
             text: "Ranked by how effectively each film destroys your sense of reality, from subtle mind games to full psychological breakdown.",
@@ -1393,7 +1393,7 @@ const getCollectionContent = () => {
         },
         experience: {
             text1: "From Memento's fractured memory to Shutter Island's institutional gaslighting, these films create lasting unease. You'll second-guess conversations. Question memories. See patterns everywhere.",
-            text2: "Warning: Multiple viewings don't make these films less disturbingâ€”they reveal how much you missed the first time. The clues were always there. You just weren't ready to see them."
+            text2: "Warning: Multiple viewings don't make these films less disturbingthey reveal how much you missed the first time. The clues were always there. You just weren't ready to see them."
         }
     };
 
@@ -1403,7 +1403,7 @@ const getCollectionContent = () => {
             title: "Heist Thriller",
             description: "Brilliant heist thrillers with genius criminal plans. Elaborate schemes, high-stakes robberies & masterminds who make the impossible look easy.",
             selection: {
-                text1: "From Ocean's Eleven to Heatâ€”these films showcase the perfect blend of meticulous planning, flawless execution, and unexpected twists that keep you on the edge of your seat.",
+                text1: "From Ocean's Eleven to Heatthese films showcase the perfect blend of meticulous planning, flawless execution, and unexpected twists that keep you on the edge of your seat.",
                 text2: "Each heist masterpiece features genius-level planning, brilliant execution under pressure, and the constant tension of potential failure or betrayal that could unravel everything."
             },
             ranking: {
@@ -1417,7 +1417,7 @@ const getCollectionContent = () => {
             },
             experience: {
                 text1: "Whether you're seeking intricate planning sequences or adrenaline-pumping action, this collection delivers cinema's most thrilling heist experiences that celebrate criminal genius.",
-                text2: "Each film has been selected for its ability to maintain relentless tension throughoutâ€”while showcasing brilliantly crafted schemes and unforgettable criminal masterminds you'll root for."
+                text2: "Each film has been selected for its ability to maintain relentless tension throughoutwhile showcasing brilliantly crafted schemes and unforgettable criminal masterminds you'll root for."
             }
         };
 } else if (collection.slug === 'best-crime-thriller-movies') {
@@ -1447,7 +1447,7 @@ const getCollectionContent = () => {
     return {
         badge: "Obsessive Noir Cinema",
         title: "Detective Thrillers Ranked by Obsession",
-        description: "The cases that never close in your mind. From Se7en's seven-day descent to Zodiac's decade-long spiral. These detectives sacrifice everythingâ€”and still lose.",
+        description: "The cases that never close in your mind. From Se7en's seven-day descent to Zodiac's decade-long spiral. These detectives sacrifice everythingand still lose.",
         selection: {
             text1: "No clean endings. No triumphant reveals. Se7en ends in a box. Zodiac ends without answers. Memories of Murder ends with eye contact across decades. The hunt destroys everyone it touches.",
             text2: "Each film follows detectives who cross the line between solving a case and becoming consumed by it. Sleep deprivation. Broken families. Moral compromise. The killer wins even when caught."
@@ -1470,10 +1470,10 @@ const getCollectionContent = () => {
     return {
         badge: "Annihilation Cinema",
         title: "Revenge",
-        description: "When forgiveness dies, systematic destruction begins. From Oldboy's 15-year trap to I Saw the Devil's mutual damnation. These protagonists didn't want justiceâ€”they wanted blood.",
+        description: "When forgiveness dies, systematic destruction begins. From Oldboy's 15-year trap to I Saw the Devil's mutual damnation. These protagonists didn't want justicethey wanted blood.",
         selection: {
-            text1: "Gladiator's arena slaughter. John Wick's continental body count. The Count of Monte Cristo's 20-year orchestration. These aren't crimes of passionâ€”they're masterclasses in patient, methodical annihilation.",
-            text2: "Each protagonist crosses the line permanently. Torture becomes strategy. Murder becomes art. The question isn't whether they'll get revengeâ€”it's whether they'll recognize themselves when it's over."
+            text1: "Gladiator's arena slaughter. John Wick's continental body count. The Count of Monte Cristo's 20-year orchestration. These aren't crimes of passionthey're masterclasses in patient, methodical annihilation.",
+            text2: "Each protagonist crosses the line permanently. Torture becomes strategy. Murder becomes art. The question isn't whether they'll get revengeit's whether they'll recognize themselves when it's over."
         },
         ranking: {
             text: "Ranked by commitment to total destruction: How far will they go? How much will they sacrifice? Is there anything left when the blood dries?",
@@ -1486,7 +1486,7 @@ const getCollectionContent = () => {
         },
         experience: {
             text1: "From The Revenant's frozen crawl to Oldboy's hammer rampage, these films understand the dark satisfaction of watching bad people suffer. No apologies. No hesitation. Just consequences.",
-            text2: "Warning: These protagonists aren't heroes. They're monsters justified by trauma. You'll root for them anyway. That's what makes these films dangerousâ€”and unforgettable."
+            text2: "Warning: These protagonists aren't heroes. They're monsters justified by trauma. You'll root for them anyway. That's what makes these films dangerousand unforgettable."
         }
     };
 
@@ -1496,7 +1496,7 @@ const getCollectionContent = () => {
             title: "Mystery Thriller",
             description: "Clever mystery thrillers with impossible puzzles. Intricate clues, shocking revelations & mysteries where every detail matters in the final mind-blowing twist.",
             selection: {
-                text1: "These films masterfully weave mysteries that challenge you to piece together clues and anticipate shocking revelationsâ€”testing your detective skills with every scene.",
+                text1: "These films masterfully weave mysteries that challenge you to piece together clues and anticipate shocking revelationstesting your detective skills with every scene.",
                 text2: "Each mystery thriller features intricate plots where nothing is as it seems, every clue matters, and the final revelation transforms everything that came before."
             },
             ranking: {
@@ -1519,7 +1519,7 @@ const getCollectionContent = () => {
             title: "Thriller",
             description: "Edge-of-your-seat suspense thrillers you can't pause. Relentless pacing, shocking twists & psychological depth that maintains constant tension throughout.",
             selection: {
-                text1: "From relentless pacing to psychological tensionâ€”these films deliver the ultimate adrenaline rush while exploring complex characters and moral dilemmas that'll haunt you.",
+                text1: "From relentless pacing to psychological tensionthese films deliver the ultimate adrenaline rush while exploring complex characters and moral dilemmas that'll haunt you.",
                 text2: "Each thriller masterpiece features high-stakes scenarios, unexpected twists you won't see coming, and the constant threat of danger that keeps you glued to the screen."
             },
             ranking: {
@@ -1558,7 +1558,7 @@ const getCollectionContent = () => {
 
             text1:
 
-              "These films strip survival down to its rawest formâ€”where isolation, injury, hunger, and impossible decisions define the fight to stay alive.",
+              "These films strip survival down to its rawest formwhere isolation, injury, hunger, and impossible decisions define the fight to stay alive.",
 
             text2:
 
@@ -1594,7 +1594,7 @@ const getCollectionContent = () => {
 
             text1:
 
-              "This collection is for viewers who want survival stories that feel realâ€”where every injury matters and every decision has consequences.",
+              "This collection is for viewers who want survival stories that feel realwhere every injury matters and every decision has consequences.",
 
             text2:
 
@@ -1611,7 +1611,7 @@ const getCollectionContent = () => {
             title: "War Films",
             description: "Unflinching war films that show war's true cost. Visceral D-Day combat, jungle firefights & moral reckoning that challenge war's glorification.",
             selection: {
-                text1: "From D-Day beaches to jungle firefights and submarine claustrophobiaâ€”these films go beyond tactics and heroism to confront trauma, moral collapse, and war's devastating human cost.",
+                text1: "From D-Day beaches to jungle firefights and submarine claustrophobiathese films go beyond tactics and heroism to confront trauma, moral collapse, and war's devastating human cost.",
                 text2: "Each war masterpiece features visceral combat that doesn't look away, complex protagonists wrestling with survival and conscience, and narratives that challenge the glorification of warfare."
             },
             ranking: {
@@ -1634,7 +1634,7 @@ const getCollectionContent = () => {
             title: collection.title,
             description: collection.description || "Curated collection of exceptional cinema that defines the genre.",
             selection: {
-                text1: "Expertly selected films from our comprehensive databaseâ€”each chosen for quality, impact and unforgettable storytelling.",
+                text1: "Expertly selected films from our comprehensive databaseeach chosen for quality, impact and unforgettable storytelling.",
                 text2: "Each selection represents the finest in cinematic storytelling and artistic achievement that'll stay with you long after the credits roll."
             },
             ranking: {
@@ -1713,7 +1713,7 @@ subtitle: "Nolan gave you a map. These films burn it. No totems. No exit"
         } else if (collection.slug === 'best-horror-movies-on-hulu') {
         return {
             title: "Best Horror Movies on Hulu: 10 Terrifying Films",
-            subtitle: "From trauma-inducing gore to slow-burn dreadâ€”ranked by visceral fear & psychological impact"
+            subtitle: "From trauma-inducing gore to slow-burn dreadranked by visceral fear & psychological impact"
         };
 
 } else if (collection.slug === 'best-comedy-movies-on-hulu') {
@@ -1738,7 +1738,7 @@ subtitle: "Nolan gave you a map. These films burn it. No totems. No exit"
 } else if (collection.slug === 'best-movies-on-hulu') {
     return {
         title: "Best Movies on Hulu: 10 Essential Films",
-        subtitle: "The definitive ranking of the highest-rated films streaming nowâ€”from Heat to Superbad"
+        subtitle: "The definitive ranking of the highest-rated films streaming nowfrom Heat to Superbad"
     };
 
 
@@ -1784,20 +1784,20 @@ subtitle: "Nolan gave you a map. These films burn it. No totems. No exit"
     } else if (collection.slug === 'best-sci-fi-movies-on-hbo-max') {
     return {
         title: "10 Best Sci-Fi Movies on HBO Max",
-        subtitle: "From 2001 to Duneâ€”ranked by spectacular scale, visual mastery & conceptual depth"
+        subtitle: "From 2001 to Duneranked by spectacular scale, visual mastery & conceptual depth"
     };
 
     } else if (collection.slug === 'best-horror-movies-on-hbo-max') {
     return {
         title: "10 Best Horror Movies on HBO Max: Ranked by Scariness",
-        subtitle: "From The Conjuring to Evil Dead Riseâ€”ranked by dread, gore & psychological trauma"
+        subtitle: "From The Conjuring to Evil Dead Riseranked by dread, gore & psychological trauma"
     };
 
 
     } else if (collection.slug === 'best-movies-on-hbo-max') {
     return {
         title: "Best Movies on HBO Max: 10 Essential Films",
-        subtitle: "The definitive ranking of the highest-rated films streaming nowâ€”from Seven Samurai to Dune: Part Two"
+        subtitle: "The definitive ranking of the highest-rated films streaming nowfrom Seven Samurai to Dune: Part Two"
     };
 
 
@@ -1811,7 +1811,7 @@ subtitle: "Nolan gave you a map. These films burn it. No totems. No exit"
     } else if (collection.slug === 'best-comedy-movies-on-hbo-max') {
     return {
         title: "Best Comedy Movies on HBO Max: 10 Satirical Masterpieces",
-        subtitle: "From City Lights to Barbieâ€”ranked by influence, wit & cinematic brilliance"
+        subtitle: "From City Lights to Barbieranked by influence, wit & cinematic brilliance"
     };
 
 
@@ -1824,30 +1824,30 @@ subtitle: "Nolan gave you a map. These films burn it. No totems. No exit"
 } else if (collection.slug === 'best-sci-fi-movies-on-paramount-plus') {
     return {
         title: "Best Sci-Fi Movies on Paramount+: 10 Visionary Films",
-        subtitle: "From Interstellar to Star Trekâ€”cosmic epics, hard sci-fi & mind-bending thrillers"
+        subtitle: "From Interstellar to Star Trekcosmic epics, hard sci-fi & mind-bending thrillers"
     };
 
     } else if (collection.slug === 'best-core-drama-movies-on-paramount-plus') {
     return {
         title: "Best Core Drama Movies on Paramount+: 10 Emotional Films",
-        subtitle: "Emotionally powerful cinemaâ€”from There Will Be Blood to Forrest Gump"
+        subtitle: "Emotionally powerful cinemafrom There Will Be Blood to Forrest Gump"
     };
 
     } else if (collection.slug === 'best-thriller-movies-on-paramount-plus') {
     return {
         title: "Best Thriller Movies on Paramount+: 10 Intense Films",
-        subtitle: "Edge-of-your-seat suspenseâ€”from No Country for Old Men to Strange Darling"
+        subtitle: "Edge-of-your-seat suspensefrom No Country for Old Men to Strange Darling"
     };
 
 } else if (collection.slug === 'best-family-movies-on-paramount-plus') {
     return {
         title: "10 Best Family Movies on Paramount+: Wholesome Picks",
-        subtitle: "Wholesome entertainment, animated adventures & fun for all agesâ€”from Rango to Sonic 3"
+        subtitle: "Wholesome entertainment, animated adventures & fun for all agesfrom Rango to Sonic 3"
     };
 } else if (collection.slug === 'best-horror-movies-on-paramount-plus') {
     return {
         title: "10 Best Horror Movies on Paramount+: Ranked by Scariness",
-        subtitle: "From The Conjuring to Evil Dead Riseâ€”ranked by dread, gore & psychological trauma"
+        subtitle: "From The Conjuring to Evil Dead Riseranked by dread, gore & psychological trauma"
     };
 } else if (collection.slug === 'best-comedy-movies-on-paramount-plus') {
     return {
@@ -1859,7 +1859,7 @@ subtitle: "While everyone searches Netflix, these classics hide in plain sight. 
 } else if (collection.slug === 'best-movies-on-paramount-plus') {
     return {
         title: "Best Movies on Paramount+: 10 Essential Films",
-        subtitle: "The definitive ranking of the highest-rated films streaming nowâ€”from The Godfather to Top Gun: Maverick"
+        subtitle: "The definitive ranking of the highest-rated films streaming nowfrom The Godfather to Top Gun: Maverick"
     };
 } else if (collection.slug === 'best-action-adventure-movies-on-peacock') {
     return {
@@ -1895,7 +1895,7 @@ subtitle: "While everyone searches Netflix, these classics hide in plain sight. 
     } else if (collection.slug === 'best-movies-on-peacock') {
     return {
         title: "Best Movies on Peacock: 10 Essential Films",
-        subtitle: "The definitive ranking of the highest-rated films streaming nowâ€”from classics to modern blockbusters"
+        subtitle: "The definitive ranking of the highest-rated films streaming nowfrom classics to modern blockbusters"
     };
     } else if (collection.slug === 'best-comedy-movies-on-peacock') {
     return {
@@ -1933,7 +1933,7 @@ subtitle: "While everyone searches Netflix, these classics hide in plain sight. 
     } else if (collection.slug === 'best-heist-thriller-movies') {
         return {
             title: "Best Heist Movies: 10 Master Robberies",
-            subtitle: "From Ocean's Eleven to Heatâ€”elaborate plans & high-stakes criminal masterminds"
+            subtitle: "From Ocean's Eleven to Heatelaborate plans & high-stakes criminal masterminds"
         };
     } else if (collection.slug === 'best-time-travel-movies') {
         return {
@@ -1944,7 +1944,7 @@ subtitle: "Logic won't save you. Bootstrap paradoxes. Causality collapse. Bring 
     } else if (collection.slug === 'best-sci-fi-movies') {
         return {
             title: "Best Sci-Fi Movies: 10 Visionary Films",
-            subtitle: "From Blade Runner to Interstellarâ€”groundbreaking concepts & philosophical depth"
+            subtitle: "From Blade Runner to Interstellargroundbreaking concepts & philosophical depth"
         };
     } else if (collection.slug === 'best-psychological-thriller-movies') {
         return {
@@ -1985,7 +1985,7 @@ subtitle: "They chose annihilation over peace. No forgiveness. No redemption. Ju
     } else if (collection.slug === 'best-war-films') {
         return {
             title: "Best War Films: 10 Unflinching Masterpieces",
-            subtitle: "From D-Day to jungle combatâ€”visceral battle scenes & anti-war moral reckoning"
+            subtitle: "From D-Day to jungle combatvisceral battle scenes & anti-war moral reckoning"
         };
     } else {
         return {
