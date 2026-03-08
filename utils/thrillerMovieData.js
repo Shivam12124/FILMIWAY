@@ -440,8 +440,12 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
     
     // 2. Get the sensitive scenes and intensity scenes data
     const sensitiveScenes = SENSITIVE_TIMELINES[tmdbId]?.scenes || [];
-    const movieInfo = COMPLETE_MOVIE_DATA[tmdbId];
-    const intensityScenes = movieInfo?.scenes || [];
+const movieInfo = COMPLETE_MOVIE_DATA[tmdbId];
+    const intensityScenes = movieInfo?.scenes || [];
+
+    // ✅ ADD THESE TWO LINES TO FIX THE CRASH
+    const dbMovie = COMPLETE_MOVIE_DATABASE.find(m => m.tmdbId === tmdbId);
+    const finalRuntime = currentRuntime !== "Official" ? currentRuntime : (dbMovie?.runtime ? `${dbMovie.runtime} min` : "Official");
 
     // 3. 🔥 DYNAMICALLY GENERATE THE INTENSITY GRAPH FAQ
     if (intensityScenes.length > 0) {

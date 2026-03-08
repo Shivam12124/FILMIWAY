@@ -526,8 +526,12 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
 export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Official") => {
     const staticFaqs = DONNIE_DARKO_MOVIE_FAQS[movieTitle] ? [...DONNIE_DARKO_MOVIE_FAQS[movieTitle]] : [];
     const sensitiveScenes = SENSITIVE_TIMELINES[tmdbId]?.scenes || [];
-    const movieInfo = COMPLETE_MOVIE_DATA[tmdbId];
-    const intensityScenes = movieInfo?.scenes || [];
+const movieInfo = COMPLETE_MOVIE_DATA[tmdbId];
+    const intensityScenes = movieInfo?.scenes || [];
+
+    // ✅ ADD THESE TWO LINES TO FIX THE CRASH
+    const dbMovie = COMPLETE_MOVIE_DATABASE.find(m => m.tmdbId === tmdbId);
+    const finalRuntime = currentRuntime !== "Official" ? currentRuntime : (dbMovie?.runtime ? `${dbMovie.runtime} min` : "Official");
 
     if (intensityScenes.length > 0) {
         const uiIntensityList = intensityScenes.map(s => `• Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)`).join('\n');
