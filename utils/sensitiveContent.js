@@ -105,10 +105,10 @@ export const SENSITIVE_TIMELINES = {
     // 🔥 NEW: Inception - Clean film (tmdbId: 27205)
     27205: { scenes: [] },
     
-    11324: { // Shutter Island - 2 scenes (keeping for reference if needed)
+    11324: { // Shutter Island - 1 scenes (keeping for reference if needed)
         scenes: [
             { start: timeToSeconds("1:10:43"), end: timeToSeconds("1:10:47"), type: "Nudity" },
-            { start: timeToSeconds("1:59:03"), end: timeToSeconds("1:59:06"), type: "Casual Kissing" }
+           
         ]
     }
 };

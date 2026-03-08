@@ -35,17 +35,22 @@ export const SENSITIVE_TIMELINES = {
             { start: '1:36:30', end: '1:36:37', type: 'Nudity (Man)', severity: 'Moderate' }
         ]
     },
-    550: { scenes: [
-        { start: '48:40', end: '48:55', type: 'Sex', severity: 'High' },
-        { start: '1:06:55', end: '1:07:35', type: 'Partial nudity', severity: 'Moderate' }
-    ]},
-    77: { scenes: [
-        { start: '31:08', end: '31:13', type: 'Casual Kissing', severity: 'Mild' }
-    ]},
+  // Fight Club
+    550: { 
+        scenes: [
+            { start: "0:32:27", end: "0:32:37", type: "Nudity", severity: "Moderate" },
+               { start: '48:40', end: '48:55', type: 'Nudity', severity: 'High' },
+            { start: "0:53:45", end: "0:55:58", type: "Sexual content(Sexual sounds)", severity: "Moderate" },
+            { start: "0:58:45", end: "0:59:00", type: "Sexual content", severity: "Moderate" },
+            { start: "1:06:55", end: "1:07:35", type: "Partial nudity", severity: "Moderate" },
+            { start: "1:54:29", end: "1:54:32", type: "Sex(Glimpse)", severity: "Mild" }
+        ]
+    },
+    77: { scenes: [] },
     807: { scenes: [] }, // Se7en
     11324: { scenes: [
         { start: '1:10:43', end: '1:10:47', type: 'Nudity', severity: 'Moderate' },
-        { start: '1:59:03', end: '1:59:06', type: 'Casual Kissing', severity: 'Mild' }
+    
     ]},
     44214: { scenes: [
         { start: '39:40', end: '40:40', type: 'Sexual Content', severity: 'High' },
@@ -56,22 +61,22 @@ export const SENSITIVE_TIMELINES = {
     ]},
     4553: { scenes: [
         { start: '17:00', end: '18:25', type: 'Sex', severity: 'High' },
-        { start: '1:16:10', end: '1:16:15', type: 'Kissing', severity: 'Mild' }
+       
     ]},
     670: { scenes: [
         { start: '11:20', end: '11:40', type: 'Sexual Content', severity: 'Moderate' },
         { start: '57:37', end: '1:01:10', type: 'Nudity (Woman)', severity: 'Moderate' },
         { start: '1:03:35', end: '1:05:10', type: 'Sex', severity: 'High' },
         { start: '1:22:20', end: '1:22:36', type: 'Sexual Content', severity: 'Moderate' },
-        { start: '1:30:30', end: '1:30:38', type: 'Partial Nudity (man)', severity: 'Mild' }
+        { start: '1:30:30', end: '1:30:38', type: 'Partial Nudity (Man)', severity: 'Mild' }
     ]},
     103: { scenes: [
         { start: '35:34', end: '35:45', type: 'Sexual Content', severity: 'Moderate' },
         { start: '58:52', end: '59:05', type: 'Sexual Content', severity: 'Moderate' }
     ]},
     694: { scenes: [
-        { start: '1:10:40', end: '1:11:00', type: 'Nudity (Painting)', severity: 'Mild' },
-        { start: '1:13:10', end: '1:16:00', type: 'Nudity + Kissing', severity: 'High' }
+        { start: '1:10:40', end: '1:11:00', type: 'Nudity (Posters)', severity: 'Mild' },
+        { start: '1:13:10', end: '1:16:00', type: 'Nudity', severity: 'High' }
     ]}
 };
 
