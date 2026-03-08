@@ -369,6 +369,9 @@ export const getSensitiveContentTypes = (tmdbId) => {
 
 // 🔥 THE "GOLDEN EGG" SCHEMA GENERATOR (Universal Version)
 export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, collectionSlug, unused, movieInfo) => {
+    // Extract runtime for the schema calibration tag
+    const currentRuntime = movie.Runtime || movie.runtime || "Official";
+
     // Standard Movie Schema
     const movieSchema = {
         '@context': 'https://schema.org',
@@ -376,6 +379,7 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
         'name': movie.Title,
         'description': movieInfo?.synopsis || `${movie.Title} (${currentMovieYear}) - A spectacular sci-fi film.`,
         'genre': movie.genre,
+        'url': `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`,
         'datePublished': currentMovieYear?.toString() || movie.year.toString(),
         'director': { '@type': 'Person', 'name': movieInfo?.director || 'Director' },
         'actor': movieInfo?.cast?.map(actor => ({ '@type': 'Person', 'name': actor })) || [],
@@ -446,11 +450,15 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
 };
 
 // 🔥 FRONTEND UI SYNC (Displays the timestamps dynamically on the Next.js page)
-export const getVisibleMovieFAQs = (movieTitle, tmdbId) => {
+export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Official") => {
     const staticFaqs = HBO_SCIFI_MOVIE_FAQS[movieTitle] ? [...HBO_SCIFI_MOVIE_FAQS[movieTitle]] : [];
     const sensitiveScenes = SENSITIVE_TIMELINES[tmdbId]?.scenes || [];
     const movieInfo = COMPLETE_MOVIE_DATA[tmdbId];
     const intensityScenes = movieInfo?.scenes || [];
+
+    // Extract runtime from database
+    const dbMovie = COMPLETE_MOVIE_DATABASE.find(m => m.tmdbId === tmdbId);
+    const finalRuntime = currentRuntime !== "Official" ? currentRuntime : (dbMovie?.runtime ? `${dbMovie.runtime} min` : "Official");
 
     if (intensityScenes.length > 0) {
         const uiIntensityList = intensityScenes.map(s => `• Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)`).join('\n');
