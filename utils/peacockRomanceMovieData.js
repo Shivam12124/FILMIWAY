@@ -1,4 +1,4 @@
-// utils/peacockRomanceMovieData.js - PEACOCK ROMANCE COLLECTION DATA
+// utils/peacockRomanceMovieData.js - PEACOCK ROMANCE COLLECTION DATA ✅
 // Emotional Resonance, Chemistry, and Cinematic Legacy
 
 export const TMDB_CONFIG = {
@@ -23,55 +23,44 @@ export const COMPLETE_MOVIE_DATABASE = [
 
 // ✅ SENSITIVE TIMELINES (Focusing on Heartbreak, Intimacy & Trauma)
 export const SENSITIVE_TIMELINES = {
-    // 1. About Time
-    122906: { scenes: [] }, 
-
-    // 2. Pride & Prejudice
-    4348: { scenes: [] }, 
-
-    // 3. Notting Hill
-    509: { scenes: [] }, 
-
-    // 4. Ghost
-    251: { 
+    122906: { scenes: [] }, // About Time
+    4348: { scenes: [] }, // Pride & Prejudice
+    509: { scenes: [] }, // Notting Hill
+    251: { scenes: [] }, // Ghost
+    1934: { // Shakespeare in Love
         scenes: [
-            { start: "0:15:00", end: "0:18:00", type: "Mugging/Murder", severity: "High" },
-            { start: "1:45:00", end: "1:50:00", type: "Violent Death", severity: "Moderate" } 
+            { start: "0:47:35", end: "0:47:45", type: "Nudity", severity: "Moderate" },
+            { start: "0:48:50", end: "0:49:25", type: "Nudity", severity: "Moderate" },
+            { start: "0:54:00", end: "0:55:25", type: "Nudity", severity: "Moderate" },
+            { start: "1:04:35", end: "1:05:02", type: "Sex", severity: "Mild" }
+        ] 
+    }, 
+    51828: { // One Day
+        scenes: [
+            { start: "0:11:50", end: "0:12:20", type: "Partial Nudity (Woman)", severity: "Moderate" },
+            { start: "0:24:00", end: "0:24:10", type: "Nudity(Woman)", severity: "Mild" },
         ] 
     },
-
-    // 5. Shakespeare in Love
-    1934: { scenes: [] }, 
-
-    // 6. One Day
-    51828: { 
+    937287: { // Challengers
         scenes: [
-            { start: "1:35:00", end: "1:38:00", type: "Accident/Death", severity: "High" } 
+            { start: "0:04:20", end: "0:04:42", type: "Lingerie", severity: "Mild" },
+            { start: "0:47:45", end: "0:48:10", type: "Nudity(Men, non sexual)", severity: "High" },
+            { start: "1:02:30", end: "1:04:55", type: "Sexual Content & Lingerie", severity: "Moderate" },
+            { start: "1:29:20", end: "1:29:55", type: "Partial Nudity (Man, non sexual)", severity: "Mild" }
         ] 
     },
-
-    // 7. Challengers
-    937287: { 
+    293863: { scenes: [] }, // The Age of Adaline
+    9919: { scenes: [] }, // How to Lose a Guy in 10 Days
+    375262: { // The Favourite
         scenes: [
-            { start: "0:45:00", end: "0:50:00", type: "Sexual Content", severity: "Moderate" } 
-        ] 
-    },
-
-    // 8. The Age of Adaline
-    293863: { 
-        scenes: [
-            { start: "0:10:00", end: "0:12:00", type: "Car Accident", severity: "Moderate" } 
-        ] 
-    },
-
-    // 9. How to Lose a Guy in 10 Days
-    9919: { scenes: [] }, 
-
-    // 10. The Favourite
-    375262: { 
-        scenes: [
-            { start: "0:30:00", end: "0:35:00", type: "Psychological Manipulation", severity: "Moderate" },
-            { start: "1:10:00", end: "1:15:00", type: "Sexual Content", severity: "Moderate" }
+            { start: "0:08:20", end: "0:08:25", type: "Nudity(Women)", severity: "High" },
+            { start: "1:00:30", end: "1:00:57", type: "Sex", severity: "Moderate" },
+            { start: "1:02:00", end: "1:02:20", type: "Nudity (Woman)", severity: "Moderate" },
+            { start: "1:12:20", end: "1:12:55", type: "Nudity (Man)", severity: "Moderate" },
+            { start: "1:15:00", end: "1:15:12", type: "Sex", severity: "Moderate" },
+            { start: "1:21:50", end: "1:22:40", type: "Sex", severity: "Moderate" },
+            { start: "1:23:10", end: "1:23:27", type: "Nudity (Women)", severity: "Moderate" },
+            { start: "1:50:00", end: "1:53:00", type: "Sex", severity: "Moderate" }
         ] 
     }
 };
@@ -301,198 +290,78 @@ export const COMPLETE_MOVIE_DATA = {
 };
 
 export const STRATEGIC_QUOTES = {
-    122906: "We're all traveling through time together, every day of our lives.",
-    4348: "You have bewitched me, body and soul.",
-    509: "I'm also just a girl, standing in front of a boy, asking him to love her.",
-    251: "Ditto.",
-    1934: "I will have poetry in my life. And adventure. And love.",
-    51828: "Whatever happens tomorrow, we had today.",
-    937287: "I'm playing for both of us.",
-    293863: "Tell me something I can hold on to forever and never let go.",
-    9919: "Our love fern! You let it die!",
-    375262: "Love turns us into monsters."
+    122906: "We're all traveling through time together, every day of our lives.", // About Time
+    4348: "You have bewitched me, body and soul.", // Pride & Prejudice
+    509: "I'm also just a girl, standing in front of a boy, asking him to love her.", // Notting Hill
+    251: "Ditto.", // Ghost
+    1934: "I will have poetry in my life. And adventure. And love.", // Shakespeare in Love
+    51828: "Whatever happens tomorrow, we had today.", // One Day
+    937287: "I'm playing for both of us.", // Challengers
+    293863: "Tell me something I can hold on to forever and never let go.", // Age of Adaline
+    9919: "Our love fern! You let it die!", // How to Lose a Guy
+    375262: "Love turns us into monsters." // The Favourite
 };
 
 export const PEACOCK_ROMANCE_MOVIE_FAQS = {
   'About Time': [
-    { 
-      question: "Why can't Tim travel back to before his daughter was born?", 
-      answer: "The film establishes that traveling back to a time before a child's birth changes the exact moment of conception (the butterfly effect), meaning a different child would be born. This rule forces Tim to finally accept the passage of time and move forward." 
-    },
-    { 
-      question: "Is the movie based on a book?", 
-      answer: "No, it is an original screenplay by Richard Curtis, who also directed 'Love Actually'. He wanted to write a film about what he considered the 'real' secret to happiness: appreciating the ordinary." 
-    },
-    { 
-      question: "What is the message of the ending?", 
-      answer: "The ending suggests that Tim no longer needs time travel. By living every day twice in his mind—first with the stress of the unknown, and second with the appreciation of the details—he learns to simply live life once, perfectly." 
-    },
-    { 
-      question: "Where was the beach scene filmed?", 
-      answer: "The iconic family beach scenes were filmed at Porthpean House in St. Austell, Cornwall, England. It remains a popular location for fans of the film's aesthetic." 
-    }
+    { question: "Why can't Tim travel back to before his daughter was born?", answer: "The film establishes that traveling back to a time before a child's birth changes the exact moment of conception (the butterfly effect), meaning a different child would be born. This rule forces Tim to finally accept the passage of time and move forward." },
+    { question: "Is the movie based on a book?", answer: "No, it is an original screenplay by Richard Curtis, who also directed 'Love Actually'. He wanted to write a film about what he considered the 'real' secret to happiness: appreciating the ordinary." },
+    { question: "What is the message of the ending?", answer: "The ending suggests that Tim no longer needs time travel. By living every day twice in his mind—first with the stress of the unknown, and second with the appreciation of the details—he learns to simply live life once, perfectly." },
+    { question: "Where was the beach scene filmed?", answer: "The iconic family beach scenes were filmed at Porthpean House in St. Austell, Cornwall, England. It remains a popular location for fans of the film's aesthetic." }
   ],
   'Pride & Prejudice': [
-    { 
-      question: "Is the rain scene in the book?", 
-      answer: "No. The famous proposal scene in the rain was created for the 2005 movie to heighten the dramatic tension. In the book, the proposal happens indoors at Hunsford Parsonage." 
-    },
-    { 
-      question: "Did they film two endings?", 
-      answer: "Yes. The UK release ends with Mr. Bennet saying 'I am quite at my leisure.' The US release includes the 'Mrs. Darcy' kissing scene, which was considered too sentimental for British audiences." 
-    },
-    { 
-      question: "Is the music original?", 
-      answer: "Yes, the score was composed by Dario Marianelli. The piano pieces were designed to sound like something Elizabeth Bennet herself could have played, adding to the film's intimacy." 
-    },
-    { 
-      question: "Where was it filmed?", 
-      answer: "It was filmed entirely on location in England, using real estates like Chatsworth House (Pemberley) and Groombridge Place (Longbourn), giving it a grounded, realistic look." 
-    }
+    { question: "Is the rain scene in the book?", answer: "No. The famous proposal scene in the rain was created for the 2005 movie to heighten the dramatic tension. In the book, the proposal happens indoors at Hunsford Parsonage." },
+    { question: "Did they film two endings?", answer: "Yes. The UK release ends with Mr. Bennet saying 'I am quite at my leisure.' The US release includes the 'Mrs. Darcy' kissing scene, which was considered too sentimental for British audiences." },
+    { question: "Is the music original?", answer: "Yes, the score was composed by Dario Marianelli. The piano pieces were designed to sound like something Elizabeth Bennet herself could have played, adding to the film's intimacy." },
+    { question: "Where was it filmed?", answer: "It was filmed entirely on location in England, using real estates like Chatsworth House (Pemberley) and Groombridge Place (Longbourn), giving it a grounded, realistic look." }
   ],
   'Notting Hill': [
-    { 
-      question: "Is the travel bookshop real?", 
-      answer: "Yes, it was inspired by a real travel bookshop in Notting Hill, though the store in the movie was a set. The real shop (The Travel Bookshop) unfortunately closed in 2011 but the location remains a tourist spot." 
-    },
-    { 
-      question: "How much did Julia Roberts get paid?", 
-      answer: "Julia Roberts reportedly received $15 million for the role, mirroring her character's status as the world's biggest movie star." 
-    },
-    { 
-      question: "Did Hugh Grant really walk through the seasons?", 
-      answer: "Yes, the famous 'Ain't No Sunshine' scene where Hugh Grant walks through four seasons in one take was achieved using computer-controlled motion control cameras and practical weather effects." 
-    },
-    { 
-      question: "Who wrote the script?", 
-      answer: "Richard Curtis, the king of British rom-coms (Love Actually, Four Weddings and a Funeral). He claimed he wrote it imagining what would happen if he turned up to a dinner party with Madonna." 
-    }
+    { question: "Is the travel bookshop real?", answer: "Yes, it was inspired by a real travel bookshop in Notting Hill, though the store in the movie was a set. The real shop (The Travel Bookshop) unfortunately closed in 2011 but the location remains a tourist spot." },
+    { question: "How much did Julia Roberts get paid?", answer: "Julia Roberts reportedly received $15 million for the role, mirroring her character's status as the world's biggest movie star." },
+    { question: "Did Hugh Grant really walk through the seasons?", answer: "Yes, the famous 'Ain't No Sunshine' scene where Hugh Grant walks through four seasons in one take was achieved using computer-controlled motion control cameras and practical weather effects." },
+    { question: "Who wrote the script?", answer: "Richard Curtis, the king of British rom-coms (Love Actually, Four Weddings and a Funeral). He claimed he wrote it imagining what would happen if he turned up to a dinner party with Madonna." }
   ],
   'Ghost': [
-    { 
-      question: "What does 'Ditto' mean?", 
-      answer: "It is Sam's way of saying 'I love you too' without being vulnerable. By the end, it becomes a powerful callback representing their unique bond and continuity beyond death." 
-    },
-    { 
-      question: "Is the pottery scene iconic?", 
-      answer: "Absolutely. It is widely considered one of the most romantic and parodied scenes in film history, symbolizing intimacy and creation." 
-    },
-    { 
-      question: "Was the scary shadow effect CGI?", 
-      answer: "Mostly practical. The dark shadows that drag bad spirits away were created using dancers in black bodysuits and rotoscoping animation techniques, giving them a fluid, eerie movement." 
-    },
-    { 
-      question: "Why did Patrick Swayze get the role?", 
-      answer: "The writer saw an interview where Swayze cried talking about his father. He realized Swayze had the emotional vulnerability needed to play a ghost who could cry but not touch." 
-    }
+    { question: "What does 'Ditto' mean?", answer: "It is Sam's way of saying 'I love you too' without being vulnerable. By the end, it becomes a powerful callback representing their unique bond and continuity beyond death." },
+    { question: "Is the pottery scene iconic?", answer: "Absolutely. It is widely considered one of the most romantic and parodied scenes in film history, symbolizing intimacy and creation." },
+    { question: "Was the scary shadow effect CGI?", answer: "Mostly practical. The dark shadows that drag bad spirits away were created using dancers in black bodysuits and rotoscoping animation techniques, giving them a fluid, eerie movement." },
+    { question: "Why did Patrick Swayze get the role?", answer: "The writer saw an interview where Swayze cried talking about his father. He realized Swayze had the emotional vulnerability needed to play a ghost who could cry but not touch." }
   ],
   'Shakespeare in Love': [
-    { 
-      question: "Is it historically accurate?", 
-      answer: "Very little. It is a fictional romantic comedy that imagines how Shakespeare *might* have been inspired to write Romeo and Juliet. Most characters (except Shakespeare and Queen Elizabeth) are fictionalized." 
-    },
-    { 
-      question: "Did it really beat Saving Private Ryan?", 
-      answer: "Yes. In one of the biggest upsets in Oscar history, 'Shakespeare in Love' won Best Picture over Spielberg's war epic, largely credited to Harvey Weinstein's aggressive marketing campaign." 
-    },
-    { 
-      question: "Who is the little boy?", 
-      answer: "The boy who likes feeding mice to snakes is a young John Webster, who grew up to be a real playwright famous for gruesome tragedies like 'The Duchess of Malfi'. It's an inside joke." 
-    },
-    { 
-      question: "Was Gwyneth Paltrow British?", 
-      answer: "No, she is American. Her British accent in the film was so convincing that many viewers assumed she was actually from the UK." 
-    }
+    { question: "Is it historically accurate?", answer: "Very little. It is a fictional romantic comedy that imagines how Shakespeare *might* have been inspired to write Romeo and Juliet. Most characters (except Shakespeare and Queen Elizabeth) are fictionalized." },
+    { question: "Did it really beat Saving Private Ryan?", answer: "Yes. In one of the biggest upsets in Oscar history, 'Shakespeare in Love' won Best Picture over Spielberg's war epic, largely credited to Harvey Weinstein's aggressive marketing campaign." },
+    { question: "Who is the little boy?", answer: "The boy who likes feeding mice to snakes is a young John Webster, who grew up to be a real playwright famous for gruesome tragedies like 'The Duchess of Malfi'. It's an inside joke." },
+    { question: "Was Gwyneth Paltrow British?", answer: "No, she is American. Her British accent in the film was so convincing that many viewers assumed she was actually from the UK." }
   ],
   'One Day': [
-    { 
-      question: "Why July 15th?", 
-      answer: "July 15th is St. Swithin's Day. The folklore says the weather on this day predicts the weather for the next 40 days. In the film, it serves as a narrative anchor to check in on the characters annually." 
-    },
-    { 
-      question: "Why is the ending so controversial?", 
-      answer: "The sudden death of Emma is a major tonal shift. Some fans hate it for the heartbreak, while others believe it's necessary to show that life's most important moments are often realized too late." 
-    },
-    { 
-      question: "Is the Netflix series better?", 
-      answer: "Many fans prefer the 2024 Netflix series because the 14-episode format allows for much deeper character development than the 107-minute movie could provide." 
-    },
-    { 
-      question: "Did they age the actors?", 
-      answer: "Yes, subtle makeup and hair changes were used to age Anne Hathaway and Jim Sturgess over the 20-year span of the story, reflecting the passage of time and maturity." 
-    }
+    { question: "Why July 15th?", answer: "July 15th is St. Swithin's Day. The folklore says the weather on this day predicts the weather for the next 40 days. In the film, it serves as a narrative anchor to check in on the characters annually." },
+    { question: "Why is the ending so controversial?", answer: "The sudden death of Emma is a major tonal shift. Some fans hate it for the heartbreak, while others believe it's necessary to show that life's most important moments are often realized too late." },
+    { question: "Is the Netflix series better?", answer: "Many fans prefer the 2024 Netflix series because the 14-episode format allows for much deeper character development than the 107-minute movie could provide." },
+    { question: "Did they age the actors?", answer: "Yes, subtle makeup and hair changes were used to age Anne Hathaway and Jim Sturgess over the 20-year span of the story, reflecting the passage of time and maturity." }
   ],
   'Challengers': [
-    { 
-      question: "Is it a true story?", 
-      answer: "No, Challengers is a fictional drama written by Justin Kuritzkes. However, the tennis dynamics and intense rivalries are inspired by real professional tennis circuits." 
-    },
-    { 
-      question: "Did Zendaya play the tennis?", 
-      answer: "Zendaya trained for three months to play Tashi. While a body double was used for complex shots, she performed many of the swings herself to ensure authenticity." 
-    },
-    { 
-      question: "What does the ending mean?", 
-      answer: "The final embrace at the net implies that Art and Patrick have reconnected through their shared love of the game, finally giving Tashi the 'real match' she has been craving for years." 
-    },
-    { 
-      question: "Why is the music techno?", 
-      answer: "Trent Reznor and Atticus Ross composed a driving, high-energy techno score to mimic the pulse of a tennis match and the sexual tension between the characters." 
-    }
+    { question: "Is it a true story?", answer: "No, Challengers is a fictional drama written by Justin Kuritzkes. However, the tennis dynamics and intense rivalries are inspired by real professional tennis circuits." },
+    { question: "Did Zendaya play the tennis?", answer: "Zendaya trained for three months to play Tashi. While a body double was used for complex shots, she performed many of the swings herself to ensure authenticity." },
+    { question: "What does the ending mean?", answer: "The final embrace at the net implies that Art and Patrick have reconnected through their shared love of the game, finally giving Tashi the 'real match' she has been craving for years." },
+    { question: "Why is the music techno?", answer: "Trent Reznor and Atticus Ross composed a driving, high-energy techno score to mimic the pulse of a tennis match and the sexual tension between the characters." }
   ],
   'The Age of Adaline': [
-    { 
-      question: "Is the science real?", 
-      answer: "No. The explanation involving lightning and telomere compression is pseudoscientific fantasy designed to serve the romantic plot." 
-    },
-    { 
-      question: "Who plays young William?", 
-      answer: "Anthony Ingruber plays the young version of Harrison Ford's character. He was cast because of his uncanny resemblance to a young Harrison Ford, largely due to viral YouTube impressions." 
-    },
-    { 
-      question: "Why does she run away?", 
-      answer: "Adaline runs to protect her secret and her daughter. She fears becoming a government experiment and believes she can never have a normal life, so isolation is her only safety." 
-    },
-    { 
-      question: "What restarts her aging?", 
-      answer: "A second accident involving a car crash and a defibrillator (lightning equivalent) reverses the condition, allowing her to age naturally again and finally commit to a relationship." 
-    }
+    { question: "Is the science real?", answer: "No. The explanation involving lightning and telomere compression is pseudoscientific fantasy designed to serve the romantic plot." },
+    { question: "Who plays young William?", answer: "Anthony Ingruber plays the young version of Harrison Ford's character. He was cast because of his uncanny resemblance to a young Harrison Ford, largely due to viral YouTube impressions." },
+    { question: "Why does she run away?", answer: "Adaline runs to protect her secret and her daughter. She fears becoming a government experiment and believes she can never have a normal life, so isolation is her only safety." },
+    { question: "What restarts her aging?", answer: "A second accident involving a car crash and a defibrillator (lightning equivalent) reverses the condition, allowing her to age naturally again and finally commit to a relationship." }
   ],
   'How to Lose a Guy in 10 Days': [
-    { 
-      question: "Was the jewelry real?", 
-      answer: "The 'Isadora' diamond necklace worn by Kate Hudson in the gala scene was real and worth approximately $5 million at the time, making it one of the most expensive pieces of jewelry ever created for a film." 
-    },
-    { 
-      question: "Did they improvise?", 
-      answer: "Yes, many scenes, including the 'family album' photoshop scene and the dog scene, involved improvisation to capture the genuine chemistry and chaos between the leads." 
-    },
-    { 
-      question: "Is the Love Fern real?", 
-      answer: "The 'Love Fern' became a cultural phenomenon, symbolizing clingy relationships. The plant itself was a real asparagus fern, which is notoriously hard to keep alive." 
-    },
-    { 
-      question: "Why 10 days?", 
-      answer: "The timeline was set by the magazine assignment. It creates a ticking clock that forces the relationship to accelerate through all the stages of dating in an absurdly short time." 
-    }
+    { question: "Was the jewelry real?", answer: "The 'Isadora' diamond necklace worn by Kate Hudson in the gala scene was real and worth approximately $5 million at the time, making it one of the most expensive pieces of jewelry ever created for a film." },
+    { question: "Did they improvise?", answer: "Yes, many scenes, including the 'family album' photoshop scene and the dog scene, involved improvisation to capture the genuine chemistry and chaos between the leads." },
+    { question: "Is the Love Fern real?", answer: "The 'Love Fern' became a cultural phenomenon, symbolizing clingy relationships. The plant itself was a real asparagus fern, which is notoriously hard to keep alive." },
+    { question: "Why 10 days?", answer: "The timeline was set by the magazine assignment. It creates a ticking clock that forces the relationship to accelerate through all the stages of dating in an absurdly short time." }
   ],
   'The Favourite': [
-    { 
-      question: "Is it a true story?", 
-      answer: "It is loosely based on historical figures: Queen Anne, Sarah Churchill, and Abigail Masham. While the political rivalry is real, the film takes creative liberties with the modern dialogue and sexual relationships." 
-    },
-    { 
-      question: "Why the fish-eye lens?", 
-      answer: "Director Yorgos Lanthimos used wide-angle and fish-eye lenses to distort the palace, making it feel claustrophobic and isolating, reflecting the warped reality of the court." 
-    },
-    { 
-      question: "Did Queen Anne have rabbits?", 
-      answer: "No, historical records do not mention pet rabbits. The rabbits in the film symbolize her 17 lost children, representing her grief and the void she tries to fill." 
-    },
-    { 
-      question: "Who is the villain?", 
-      answer: "The film presents no clear hero or villain. All three women—Anne, Sarah, and Abigail—are victims of their circumstances and perpetrators of manipulation in a survival game." 
-    }
+    { question: "Is it a true story?", answer: "It is loosely based on historical figures: Queen Anne, Sarah Churchill, and Abigail Masham. While the political rivalry is real, the film takes creative liberties with the modern dialogue and sexual relationships." },
+    { question: "Why the fish-eye lens?", answer: "Director Yorgos Lanthimos used wide-angle and fish-eye lenses to distort the palace, making it feel claustrophobic and isolating, reflecting the warped reality of the court." },
+    { question: "Did Queen Anne have rabbits?", answer: "No, historical records do not mention pet rabbits. The rabbits in the film symbolize her 17 lost children, representing her grief and the void she tries to fill." },
+    { question: "Who is the villain?", answer: "The film presents no clear hero or villain. All three women—Anne, Sarah, and Abigail—are victims of their circumstances and perpetrators of manipulation in a survival game." }
   ]
 };
 
@@ -502,43 +371,153 @@ export const getTMDBPosterUrl = (posterPath, size = 'medium') => {
     return `${TMDB_CONFIG.IMAGE_BASE_URL}/${posterSize}${posterPath}`;
 };
 
-export const generateFAQData = (movie) => {
-    return PEACOCK_ROMANCE_MOVIE_FAQS[movie.Title] || [];
+// ✅ HELPER: Outputs clean SEO-friendly terms specifically tuned for Romance datasets
+export const getSensitiveContentTypes = (tmdbId) => {
+    const sensitiveData = SENSITIVE_TIMELINES[tmdbId];
+    if (!sensitiveData?.scenes?.length) return null;
+    const types = new Set();
+    sensitiveData.scenes.forEach(scene => {
+        const lowerType = scene.type.toLowerCase();
+        if (lowerType.includes('sex')) types.add('sexual content');
+        if (lowerType.includes('nudity')) types.add('nudity');
+        if (lowerType.includes('lingerie') || lowerType.includes('partial')) types.add('suggestive content');
+    });
+    return Array.from(types);
 };
 
-export const generateMovieSchema = (movie) => {
-    const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
-    const posterUrl = FALLBACK_POSTERS[movie.tmdbId] || '';
-    return {
+// 🔥 UNIFIED CLEAN GENERATOR (For Google Bots & LLMs)
+export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, collectionSlug, unused, movieInfo) => {
+    
+    // 1. MOVIE SCHEMA (Zero Review/Rating Spam, Clean Description)
+    const movieSchema = {
         '@context': 'https://schema.org',
         '@type': 'Movie',
         'name': movie.Title,
-        'description': movieInfo?.synopsis || `${movie.Title} - A top romance movie on Peacock.`,
+        'description': movieInfo?.synopsis || `${movie.Title} (${currentMovieYear}) - A top romance movie on Peacock.`,
         'genre': movie.genre,
-        'datePublished': movie.year.toString(),
+        'datePublished': currentMovieYear?.toString() || movie.year.toString(),
         'director': { '@type': 'Person', 'name': movieInfo?.director || 'Director' },
         'actor': movieInfo?.cast?.map(actor => ({ '@type': 'Person', 'name': actor })) || [],
-        'duration': `PT${movie.runtime}M`,
-        'image': posterUrl,
-        'aggregateRating': { 
-            '@type': 'AggregateRating', 
-            'ratingValue': movieInfo?.rating || 7.5, 
-            'bestRating': 10, 
-            'worstRating': 1, 
-            'ratingCount': movieInfo?.audienceScore || 100 
-        }
+        'image': tmdbData?.poster_path ? `https://image.tmdb.org/t/p/w500${tmdbData.poster_path}` : '',
+        'duration': `PT${movie.runtime}M`
     };
-};
 
-export const generateFAQSchema = (faqs) => ({
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    'mainEntity': faqs.map(faq => ({ 
+    // 2. THE "GOLDEN EGG" FAQ SCHEMA
+    const staticFaqs = PEACOCK_ROMANCE_MOVIE_FAQS[movie.Title] || [];
+    const sensitiveScenes = SENSITIVE_TIMELINES[movie.tmdbId]?.scenes || [];
+    const intensityScenes = movieInfo?.scenes || [];
+    
+    // Load your beautifully written trivia FAQs
+    const schemaFaqs = staticFaqs.map(faq => ({ 
         '@type': 'Question', 
         'name': faq.question, 
         'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer } 
-    }))
-});
+    }));
+
+    // 🔥 INJECT INTENSITY GRAPH TIMESTAMPS
+    if (intensityScenes.length > 0) {
+        const schemaIntensityList = intensityScenes.map(s => `<li>Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)</li>`).join('');
+        
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `What are the most intense scenes in ${movie.Title}?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `According to the Filmiway Intensity metric, ${movie.Title} peaks at the following moments:<br><br><ul>${schemaIntensityList}</ul>` 
+            }
+        });
+    }
+
+    // Extract runtime for the schema calibration tag
+    const currentRuntime = movie.Runtime || movie.runtime || "Official";
+
+    // 🔥 INJECT SENSITIVE CONTENT TIMESTAMPS (Unshifted last so it remains #1 at the very top)
+    if (sensitiveScenes.length > 0) {
+        const typesArray = getSensitiveContentTypes(movie.tmdbId) || ['mature content'];
+        const typesString = typesArray.join(' and ');
+
+        const schemaListText = sensitiveScenes.map(s => {
+            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
+            return `<li>${timeRange} - ${s.type || 'Mature Content'}</li>`;
+        }).join('');
+
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `Yes, according to the Filmiway Timestamps & Parents Guide, ${movie.Title} contains adult scenes including ${typesString}. These timestamps are accurate for the ${currentRuntime} runtime. Exact timestamps for these scenes are:<br><br><ul>${schemaListText}</ul>` 
+            }
+        });
+    } else {
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `No, the Filmiway Timestamps & Parents Guide confirms that ${movie.Title} is completely free of explicit sexual content and nudity. This assessment is accurate for the ${currentRuntime} runtime.` 
+            }
+        });
+    }
+
+    const faqSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        'name': `Parents Guide and FAQ for ${movie.Title}`,
+        'mainEntity': schemaFaqs
+    };
+
+    return { movieSchema, faqSchema };
+};
+
+// 🔥 DYNAMIC VISIBLE FAQ GENERATOR FOR THE FRONTEND UI
+export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Official") => {
+    // 1. Get the static, manually written FAQs
+    const staticFaqs = PEACOCK_ROMANCE_MOVIE_FAQS[movieTitle] ? [...PEACOCK_ROMANCE_MOVIE_FAQS[movieTitle]] : [];
+    
+    // 2. Get the sensitive scenes and intensity scenes data
+    const sensitiveScenes = SENSITIVE_TIMELINES[tmdbId]?.scenes || [];
+    const movieInfo = COMPLETE_MOVIE_DATA[tmdbId];
+    const intensityScenes = movieInfo?.scenes || [];
+
+    // 🔥 Automatically fetch the exact runtime from the database if missing
+    const dbMovie = COMPLETE_MOVIE_DATABASE.find(m => m.tmdbId === tmdbId);
+    const finalRuntime = currentRuntime !== "Official" ? currentRuntime : (dbMovie?.runtime ? `${dbMovie.runtime} min` : "Official");
+
+    // 3. 🔥 DYNAMICALLY GENERATE THE INTENSITY GRAPH FAQ
+    if (intensityScenes.length > 0) {
+        const uiIntensityList = intensityScenes.map(s => `• Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)`).join('\n');
+        
+        staticFaqs.unshift({
+            question: `What are the most intense scenes in ${movieTitle}?`,
+            answer: `According to the Filmiway Intensity metric, ${movieTitle} peaks at the following moments:\n\n${uiIntensityList}`
+        });
+    }
+
+    // 4. 🔥 DYNAMICALLY GENERATE THE SENSITIVE CONTENT FAQ
+    if (sensitiveScenes.length > 0) {
+        const typesArray = getSensitiveContentTypes(tmdbId) || ['mature content'];
+        const typesString = typesArray.join(' and ');
+
+        const uiListText = sensitiveScenes.map(s => {
+            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
+            return `• ${timeRange} - ${s.type || 'Mature Content'}`;
+        }).join('\n');
+
+        staticFaqs.unshift({
+            question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
+            answer: `Yes, according to the Filmiway Timestamps & Parents Guide, ${movieTitle} contains adult scenes including ${typesString}. These timestamps are accurate for the ${finalRuntime} runtime. Exact timestamps for these scenes are:\n\n${uiListText}`
+        });
+    } else {
+        staticFaqs.unshift({
+            question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
+            answer: `No, the Filmiway Timestamps & Parents Guide confirms that ${movieTitle} is completely free of explicit sexual content and nudity. This assessment is accurate for the ${finalRuntime} runtime.`
+        });
+    }
+
+    // 5. Return the combined list
+    return staticFaqs;
+};
 
 export const fetchMovieFromTMDB = async (tmdbId) => ({ 
     poster_path: null, 
@@ -558,17 +537,4 @@ export const formatSensitiveTimeline = (tmdbId) => {
             description: scene.description || ''
         }))
     };
-};
-
-export const getSensitiveContentTypes = (tmdbId) => {
-    const sensitiveData = SENSITIVE_TIMELINES[tmdbId];
-    if (!sensitiveData?.scenes?.length) return null;
-    const types = new Set();
-    sensitiveData.scenes.forEach(scene => {
-        const lowerType = scene.type.toLowerCase();
-        if (lowerType.includes('suicide') || lowerType.includes('death')) types.add('heavy themes');
-        if (lowerType.includes('violence') || lowerType.includes('assault')) types.add('violence');
-        if (lowerType.includes('sexual')) types.add('sexual content');
-    });
-    return Array.from(types);
 };

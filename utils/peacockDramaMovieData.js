@@ -1,4 +1,4 @@
-// utils/peacockDramaMovieData.js - PEACOCK DRAMA COLLECTION DATA
+// utils/peacockDramaMovieData.js - PEACOCK DRAMA COLLECTION DATA ✅
 // Emotional Impact, Character Depth, and Human Connection
 
 export const TMDB_CONFIG = {
@@ -21,45 +21,40 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 589049, "imdbID": "tt7798646", "Title": "The Photograph", "year": 2020, "genre": "Romance", "runtime": 106, "rank": 10 }
 ];
 
+// ✅ STRATEGIC QUOTES (100% Clean & SEO Safe)
+export const STRATEGIC_QUOTES = {
+    641: "I'm somebody now, Harry. Everybody likes me.", // Requiem for a Dream
+    1603: "The truth is a terrible thing.", // Sophie's Choice
+    804095: "Movies are dreams that you never forget.", // The Fabelmans
+    855263: "I'm the only one who's gonna look out for you.", // A Thousand and One
+    1158915: "I don't know how to be normal.", // Dìdi
+    837881: "I can't change what happened to you, but we can protect other people.", // She Said
+    40807: "You can't change your situation. The only thing you can change is how you choose to deal with it.", // 50/50
+    11816: "Listen to the loons.", // On Golden Pond
+    754609: "It's not just a dress. It's a dream.", // Mrs. Harris Goes to Paris
+    589049: "I wish I had more time." // The Photograph
+};
+
 // ✅ SENSITIVE TIMELINES (Focusing on Trauma, Addiction, and Historical Grief)
 export const SENSITIVE_TIMELINES = {
     // 1. Requiem for a Dream
-       641: { 
+    641: { 
         scenes: [
             { start: "0:20:00", end: "0:20:30", type: "Nudity", severity: "Moderate" },
             { start: "0:33:00", end: "0:34:25", type: "Nudity", severity: "Moderate" },
             { start: "0:37:00", end: "0:37:25", type: "Nudity", severity: "Moderate" },
-            // 🔥 NEW SCENE ADDED
             { start: "1:30:30", end: "1:33:50", type: "Sex & Nudity", severity: "Extreme" }
         ] 
     },
-
-    // 2. Sophie's Choice
-    1603: { scenes: [] },
-
-    // 3. The Fabelmans
-    804095: { scenes: [] },
-
-    // 4. A Thousand and One
-    855263: { scenes: [] },
-
-    // 5. Dìdi
-    1158915: { scenes: [] },
-
-    // 6. She Said
-    837881: { scenes: [] },
-
-    // 7. 50/50
-    40807: { scenes: [] },
-
-    // 8. On Golden Pond
-    11816: { scenes: [] },
-
-    // 9. Mrs. Harris Goes to Paris
-    754609: { scenes: [] },
-
-    // 10. The Photograph
-    589049: { scenes: [] }
+    1603: { scenes: [] }, // Sophie's Choice
+    804095: { scenes: [] }, // The Fabelmans
+    855263: { scenes: [] }, // A Thousand and One
+    1158915: { scenes: [] }, // Dìdi
+    837881: { scenes: [] }, // She Said
+    40807: { scenes: [] }, // 50/50
+    11816: { scenes: [] }, // On Golden Pond
+    754609: { scenes: [] }, // Mrs. Harris Goes to Paris
+    589049: { scenes: [] } // The Photograph
 };
 
 export const FALLBACK_POSTERS = {
@@ -85,8 +80,6 @@ const createMovieData = (data) => ({
 
 export const COMPLETE_MOVIE_DATA = {
     // 1. Requiem for a Dream (2000)
-    // Curve: Hope -> Addiction -> Desperation -> Nightmare -> Void.
-    // Peak: 99 (The Winter Montage - Total Collapse).
     641: createMovieData({ 
         emotionalIntensity: 99, 
         complexityLevel: "TRAUMATIC", 
@@ -105,8 +98,6 @@ export const COMPLETE_MOVIE_DATA = {
     }),
 
     // 2. Sophie's Choice (1982)
-    // Curve: Mystery -> Friendship -> Flashback -> Revelation -> Tragedy.
-    // Peak: 98 (The Choice - Unspeakable Grief).
     1603: createMovieData({ 
         emotionalIntensity: 98, 
         complexityLevel: "MASTERPIECE", 
@@ -125,8 +116,6 @@ export const COMPLETE_MOVIE_DATA = {
     }),
 
     // 3. The Fabelmans (2022)
-    // Curve: Wonder -> Discovery -> Divorce -> Art -> Acceptance.
-    // Peak: 88 (The Camping Trip Footage - Loss of Innocence).
     804095: createMovieData({ 
         emotionalIntensity: 88, 
         complexityLevel: "PERSONAL", 
@@ -145,8 +134,6 @@ export const COMPLETE_MOVIE_DATA = {
     }),
 
     // 4. A Thousand and One (2023)
-    // Curve: Kidnapping -> Hiding -> Growth -> System -> Truth.
-    // Peak: 92 (The Truth Revealed - Identity Crisis).
     855263: createMovieData({ 
         emotionalIntensity: 92, 
         complexityLevel: "GRITTY", 
@@ -165,8 +152,6 @@ export const COMPLETE_MOVIE_DATA = {
     }),
 
     // 5. Dìdi (2024)
-    // Curve: Awkwardness -> Acting Out -> Friction -> Blowout -> Growth.
-    // Peak: 85 (The Fight with Mom - Teen Rage).
     1158915: createMovieData({ 
         emotionalIntensity: 85, 
         complexityLevel: "RELATABLE", 
@@ -185,8 +170,6 @@ export const COMPLETE_MOVIE_DATA = {
     }),
 
     // 6. She Said (2022)
-    // Curve: Investigation -> Dead Ends -> Courage -> Breakthrough -> Publication.
-    // Peak: 88 (The Confrontation - Journalistic Tension).
     837881: createMovieData({ 
         emotionalIntensity: 88, 
         complexityLevel: "PROCEDURAL", 
@@ -205,8 +188,6 @@ export const COMPLETE_MOVIE_DATA = {
     }),
 
     // 7. 50/50 (2011)
-    // Curve: Diagnosis -> Denial -> Anger -> Surgery -> Survival.
-    // Peak: 90 (Pre-Surgery Breakdown - Vulnerability).
     40807: createMovieData({ 
         emotionalIntensity: 85, 
         complexityLevel: "BALANCED", 
@@ -225,8 +206,6 @@ export const COMPLETE_MOVIE_DATA = {
     }),
 
     // 8. On Golden Pond (1981)
-    // Curve: Arrival -> Friction -> Connection -> Accident -> Reconciliation.
-    // Peak: 80 (The Boat Crash - Fear of Loss).
     11816: createMovieData({ 
         emotionalIntensity: 80, 
         complexityLevel: "CLASSIC", 
@@ -245,8 +224,6 @@ export const COMPLETE_MOVIE_DATA = {
     }),
 
     // 9. Mrs. Harris Goes to Paris (2022)
-    // Curve: Dream -> Obstacle -> Arrival -> Loss -> Triumph.
-    // Peak: 75 (The Dress Disaster - Hopes Dashed).
     754609: createMovieData({ 
         emotionalIntensity: 75, 
         complexityLevel: "WHOLESOME", 
@@ -265,8 +242,6 @@ export const COMPLETE_MOVIE_DATA = {
     }),
 
     // 10. The Photograph (2020)
-    // Curve: Discovery -> Attraction -> History -> Conflict -> Future.
-    // Peak: 82 (The Hurricane - Past Revealed).
     589049: createMovieData({ 
         emotionalIntensity: 82, 
         complexityLevel: "ROMANTIC", 
@@ -353,51 +328,160 @@ export const getTMDBPosterUrl = (posterPath, size = 'medium') => {
     return `${TMDB_CONFIG.IMAGE_BASE_URL}/${TMDB_CONFIG.POSTER_SIZES[size] || 'w500'}${posterPath}`;
 };
 
+// ✅ HELPER: Outputs clean SEO-friendly terms like "sexual content" and "nudity"
 export const getSensitiveContentTypes = (tmdbId) => {
     const sensitiveData = SENSITIVE_TIMELINES[tmdbId];
     if (!sensitiveData?.scenes?.length) return null;
     const types = new Set();
     sensitiveData.scenes.forEach(scene => {
-        types.add(scene.type);
+        const lowerType = scene.type.toLowerCase();
+        if (lowerType.includes('sex')) types.add('sexual content');
+        if (lowerType.includes('nudity')) types.add('nudity');
+        if (lowerType.includes('viol') || lowerType.includes('blood')) types.add('violence');
     });
     return Array.from(types);
 };
 
-export const generateFAQData = (movie) => {
-    return PEACOCK_DRAMA_MOVIE_FAQS[movie.Title] || [];
-};
-
-export const generateMovieSchema = (movie) => {
-    const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
-    const posterUrl = FALLBACK_POSTERS[movie.tmdbId] || '';
-    return {
+// 🔥 UNIFIED CLEAN GENERATOR (For Google Bots & LLMs)
+export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, collectionSlug, unused, movieInfo) => {
+    
+    // 1. MOVIE SCHEMA (Zero Review/Rating Spam, Clean Description)
+    const movieSchema = {
         '@context': 'https://schema.org',
         '@type': 'Movie',
         'name': movie.Title,
-        'description': movieInfo?.synopsis || `${movie.Title} - A compelling drama on Peacock.`,
+        'description': movieInfo?.synopsis || `${movie.Title} (${currentMovieYear}) - A compelling drama on Peacock.`,
         'genre': movie.genre,
-        'datePublished': movie.year.toString(),
+        'datePublished': currentMovieYear?.toString() || movie.year.toString(),
         'director': { '@type': 'Person', 'name': movieInfo?.director || 'Director' },
-        'duration': `PT${movie.runtime}M`,
-        'image': posterUrl,
-        'aggregateRating': { 
-            '@type': 'AggregateRating', 
-            'ratingValue': movieInfo?.rating || 7.5, 
-            'bestRating': 10, 
-            'worstRating': 1 
-        }
+        'actor': movieInfo?.cast?.map(actor => ({ '@type': 'Person', 'name': actor })) || [],
+        'image': tmdbData?.poster_path ? `https://image.tmdb.org/t/p/w500${tmdbData.poster_path}` : '',
+        'duration': `PT${movie.runtime}M`
     };
-};
 
-export const generateFAQSchema = (faqs) => ({
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    'mainEntity': faqs.map(faq => ({ 
+    // 2. THE "GOLDEN EGG" FAQ SCHEMA
+    const staticFaqs = PEACOCK_DRAMA_MOVIE_FAQS[movie.Title] || [];
+    const sensitiveScenes = SENSITIVE_TIMELINES[movie.tmdbId]?.scenes || [];
+    const intensityScenes = movieInfo?.scenes || [];
+    
+    // Load your beautifully written trivia FAQs
+    const schemaFaqs = staticFaqs.map(faq => ({ 
         '@type': 'Question', 
         'name': faq.question, 
         'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer } 
-    }))
+    }));
+
+    // 🔥 INJECT INTENSITY GRAPH TIMESTAMPS
+    if (intensityScenes.length > 0) {
+        const schemaIntensityList = intensityScenes.map(s => `<li>Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)</li>`).join('');
+        
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `What are the most intense scenes in ${movie.Title}?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `According to the Filmiway Intensity metric, ${movie.Title} peaks at the following moments:<br><br><ul>${schemaIntensityList}</ul>` 
+            }
+        });
+    }
+
+    // Extract runtime for the schema calibration tag
+    const currentRuntime = movie.Runtime || movie.runtime || "Official";
+
+    // 🔥 INJECT SENSITIVE CONTENT TIMESTAMPS (Unshifted last so it remains #1 at the very top)
+    if (sensitiveScenes.length > 0) {
+        const typesArray = getSensitiveContentTypes(movie.tmdbId) || ['mature content'];
+        const typesString = typesArray.join(' and ');
+
+        const schemaListText = sensitiveScenes.map(s => {
+            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
+            return `<li>${timeRange} - ${s.type || 'Mature Content'}</li>`;
+        }).join('');
+
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `Yes, according to the Filmiway Timestamps & Parents Guide, ${movie.Title} contains adult scenes including ${typesString}. These timestamps are accurate for the ${currentRuntime} runtime. Exact timestamps for these scenes are:<br><br><ul>${schemaListText}</ul>` 
+            }
+        });
+    } else {
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `No, the Filmiway Timestamps & Parents Guide confirms that ${movie.Title} is completely free of explicit sexual content and nudity. This assessment is accurate for the ${currentRuntime} runtime.` 
+            }
+        });
+    }
+
+    const faqSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        'name': `Parents Guide and FAQ for ${movie.Title}`,
+        'mainEntity': schemaFaqs
+    };
+
+    return { movieSchema, faqSchema };
+};
+
+// 🔥 DYNAMIC VISIBLE FAQ GENERATOR FOR THE FRONTEND UI
+export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Official") => {
+    // 1. Get the static, manually written FAQs
+    const staticFaqs = PEACOCK_DRAMA_MOVIE_FAQS[movieTitle] ? [...PEACOCK_DRAMA_MOVIE_FAQS[movieTitle]] : [];
+    
+    // 2. Get the sensitive scenes and intensity scenes data
+    const sensitiveScenes = SENSITIVE_TIMELINES[tmdbId]?.scenes || [];
+    const movieInfo = COMPLETE_MOVIE_DATA[tmdbId];
+    const intensityScenes = movieInfo?.scenes || [];
+
+    // 🔥 Automatically fetch the exact runtime from the database if missing
+    const dbMovie = COMPLETE_MOVIE_DATABASE.find(m => m.tmdbId === tmdbId);
+    const finalRuntime = currentRuntime !== "Official" ? currentRuntime : (dbMovie?.runtime ? `${dbMovie.runtime} min` : "Official");
+
+    // 3. 🔥 DYNAMICALLY GENERATE THE INTENSITY GRAPH FAQ
+    if (intensityScenes.length > 0) {
+        const uiIntensityList = intensityScenes.map(s => `• Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)`).join('\n');
+        
+        staticFaqs.unshift({
+            question: `What are the most intense scenes in ${movieTitle}?`,
+            answer: `According to the Filmiway Intensity metric, ${movieTitle} peaks at the following moments:\n\n${uiIntensityList}`
+        });
+    }
+
+    // 4. 🔥 DYNAMICALLY GENERATE THE SENSITIVE CONTENT FAQ
+    if (sensitiveScenes.length > 0) {
+        const typesArray = getSensitiveContentTypes(tmdbId) || ['mature content'];
+        const typesString = typesArray.join(' and ');
+
+        const uiListText = sensitiveScenes.map(s => {
+            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
+            return `• ${timeRange} - ${s.type || 'Mature Content'}`;
+        }).join('\n');
+
+        staticFaqs.unshift({
+            question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
+            answer: `Yes, according to the Filmiway Timestamps & Parents Guide, ${movieTitle} contains adult scenes including ${typesString}. These timestamps are accurate for the ${finalRuntime} runtime. Exact timestamps for these scenes are:\n\n${uiListText}`
+        });
+    } else {
+        staticFaqs.unshift({
+            question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
+            answer: `No, the Filmiway Timestamps & Parents Guide confirms that ${movieTitle} is completely free of explicit sexual content and nudity. This assessment is accurate for the ${finalRuntime} runtime.`
+        });
+    }
+
+    // 5. Return the combined list
+    return staticFaqs;
+};
+
+export const fetchMovieFromTMDB = async (tmdbId) => ({ 
+    poster_path: null, 
+    title: COMPLETE_MOVIE_DATABASE.find(m => m.tmdbId === tmdbId)?.Title || 'Unknown Movie' 
 });
+
+export const fetchWatchProviders = async (tmdbId, region = 'US') => null;
 
 export const formatSensitiveTimeline = (tmdbId) => {
     const raw = SENSITIVE_TIMELINES[tmdbId];

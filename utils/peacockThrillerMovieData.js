@@ -1,4 +1,4 @@
-// utils/peacockThrillerMovieData.js - PEACOCK THRILLER COLLECTION DATA
+// utils/peacockThrillerMovieData.js - PEACOCK THRILLER COLLECTION DATA ✅
 // Ranked by Suspense, Tension, and Psychological Impact
 
 export const TMDB_CONFIG = {
@@ -21,75 +21,39 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 718821, "imdbID": "tt6689876", "Title": "Twisters", "year": 2024, "genre": "Action Thriller", "runtime": 117, "rank": 10 }
 ];
 
+// ✅ STRATEGIC QUOTES (100% Clean & SEO Safe)
+export const STRATEGIC_QUOTES = {
+    77: "We all need mirrors to remind ourselves who we are.", // Memento
+    2649: "I don't care about the money. I'm pulling back the curtain.", // The Game
+    273481: "You will not survive here. You are not a wolf.", // Sicario
+    220289: "There's a million different realities, and we're just in one of them.", // Coherence
+    388: "I've carefully planned every detail of this perfect crime.", // Inside Man
+    22803: "I'm gonna bring the whole diseased, corrupt temple down on your head.", // Law Abiding Citizen
+    756999: "Someday, you're gonna have to stand up for yourself.", // The Black Phone
+    26466: "You have to kill them. It's the only way to get home.", // Triangle
+    51876: "I don't have delusions of grandeur, I have an actual recipe for grandeur.", // Limitless
+    718821: "We don't face our fears. We ride 'em." // Twisters
+};
+
 // ✅ SENSITIVE TIMELINES (Thriller Edition)
 export const SENSITIVE_TIMELINES = {
-    // 1. Memento
-    77: { 
-        scenes: [
-            { start: "0:05:00", end: "0:08:00", type: "Violence/Murder", severity: "High" }, // Opening scene in reverse
-            { start: "1:45:00", end: "1:50:00", type: "Assault/Rape (Flashback)", severity: "Extreme" } // Wife attack scene
-        ] 
-    },
-
-    // 2. The Game
-    2649: { scenes: [] }, // Psychological intensity, minimal graphic content
-
-    // 3. Sicario
-    273481: { 
-        scenes: [
-            { start: "0:02:00", end: "0:05:00", type: "Gore/Bodies", severity: "High" }, // Walls scene
-            { start: "0:45:00", end: "0:50:00", type: "Gun Violence", severity: "High" }, // Border shootout
-            { start: "1:50:00", end: "1:55:00", type: "Execution", severity: "High" } // Dinner scene
-        ] 
-    },
-
-    // 4. Coherence
-    220289: { scenes: [] }, // Pure psychological tension
-
-    // 5. Inside Man
-    388: { 
-        scenes: [
-            { start: "0:40:00", end: "0:42:00", type: "Execution (Fake)", severity: "Moderate" }
-        ] 
-    },
-
-    // 6. Law Abiding Citizen
-    22803: { 
-        scenes: [
-            { start: "0:03:00", end: "0:06:00", type: "Home Invasion/Assault", severity: "Extreme" }, // Opening scene
-            { start: "0:25:00", end: "0:30:00", type: "Torture/Gore", severity: "Extreme" } // Warehouse saw scene
-        ] 
-    },
-
-    // 7. The Black Phone
-    756999: { 
-        scenes: [
-            { start: "0:15:00", end: "0:20:00", type: "Child Abduction", severity: "High" },
-            { start: "0:40:00", end: "0:45:00", type: "Violence against children", severity: "High" }
-        ] 
-    },
-
-    // 8. Triangle
-    26466: { 
-        scenes: [
-            { start: "0:50:00", end: "0:55:00", type: "Gun Violence", severity: "High" },
-            { start: "1:20:00", end: "1:25:00", type: "Car Crash/Death", severity: "High" }
-        ] 
-    },
-
-    // 9. Limitless
-    51876: { 
-        scenes: [
-            { start: "1:25:00", end: "1:28:00", type: "Blood drinking", severity: "High" }
-        ] 
-    },
-
-    // 10. Twisters
-    718821: { 
-        scenes: [
-            { start: "0:05:00", end: "0:10:00", type: "Disaster Death", severity: "Moderate" } // Opening tornado
-        ] 
-    }
+    77: { scenes: [] },
+    2649: { scenes: [
+        { start: "57:52", end: "59:30", type: "Sexual Content(Sexual Sounds)", severity: "Moderate" }
+    ]},
+    273481: { scenes: [
+        { start: "0:28:37", end: "0:28:47", type: "Nudity, non sexual", severity: "Moderate" }
+    ] },
+    220289: { scenes: [] },
+    388: { scenes: [] },
+    22803: { scenes: [] },
+    756999: { scenes: [] },
+    26466: { scenes: [] },
+    51876: { scenes: [
+        { start: "0:28:06", end: "0:28:13", type: "Sex", severity: "Mild" },
+        { start: "0:44:50", end: "0:45:02", type: "Nudity (Woman)", severity: "Moderate" }
+    ] },
+    718821: { scenes: [] }
 };
 
 export const FALLBACK_POSTERS = {
@@ -115,8 +79,6 @@ const createMovieData = (data) => ({
 
 export const COMPLETE_MOVIE_DATA = {
     // 1. Memento (2000)
-    // Curve: Confusion -> Curiosity -> Clarity -> Horror -> Nihilism.
-    // Peak: 100 (The Polaroid Revelation - Total Deconstruction).
     77: createMovieData({ 
         suspenseIntensity: 98, 
         complexityLevel: "MASTERPIECE", 
@@ -124,19 +86,17 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Guy Pearce", "Carrie-Anne Moss"], boxOffice: "$40 million", budget: "$9 million", 
         dna: { "Mystery": 60, "Thriller": 40 },
         scenes: [
-            { time: 5, intensity: 20, label: "The End is the Beginning", color: "#334155" }, // Setup
-            { time: 40, intensity: 50, label: "Finding Natalie", color: "#475569" }, // Intrigue
-            { time: 80, intensity: 75, label: "The Chase", color: "#64748b" }, // Action
-            { time: 105, intensity: 100, label: "The Polaroid", color: "#ef4444" }, // GENRE PEAK
-            { time: 110, intensity: 85, label: "I'm Chasing Him", color: "#b91c1c" } // Twist
+            { time: 5, intensity: 20, label: "The End is the Beginning", color: "#334155" }, 
+            { time: 40, intensity: 50, label: "Finding Natalie", color: "#475569" }, 
+            { time: 80, intensity: 75, label: "The Chase", color: "#64748b" }, 
+            { time: 105, intensity: 100, label: "The Polaroid", color: "#ef4444" }, 
+            { time: 110, intensity: 85, label: "I'm Chasing Him", color: "#b91c1c" } 
         ],
         synopsis: "Leonard Shelby is tracking down the man who raped and murdered his wife. The problem is, Leonard suffers from short-term memory loss and can't make new memories. Told in reverse chronological order, the audience is put directly into his fractured mind, creating a unique and terrifying puzzle that questions the nature of truth itself.",
         themes: ["Memory", "Identity", "Deception"]
     }),
 
     // 2. The Game (1997)
-    // Curve: Control -> Chaos -> Paranoia -> Desperation -> Release.
-    // Peak: 95 (The Roof Scene - Ultimate Test).
     2649: createMovieData({ 
         suspenseIntensity: 94, 
         complexityLevel: "PARANOID", 
@@ -144,19 +104,17 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Michael Douglas", "Sean Penn"], boxOffice: "$109 million", budget: "$50 million", 
         dna: { "Thriller": 70, "Mystery": 30 },
         scenes: [
-            { time: 15, intensity: 20, label: "The Gift", color: "#1e293b" }, // Setup
-            { time: 50, intensity: 60, label: "House Invasion", color: "#b91c1c" }, // Escalation
-            { time: 90, intensity: 85, label: "The Cemetery", color: "#7f1d1d" }, // Panic
-            { time: 120, intensity: 95, label: "The Roof", color: "#000000" }, // PEAK TENSION
-            { time: 128, intensity: 70, label: "The Party", color: "#facc15" } // Relief
+            { time: 15, intensity: 20, label: "The Gift", color: "#1e293b" }, 
+            { time: 50, intensity: 60, label: "House Invasion", color: "#b91c1c" }, 
+            { time: 90, intensity: 85, label: "The Cemetery", color: "#7f1d1d" }, 
+            { time: 120, intensity: 95, label: "The Roof", color: "#000000" }, 
+            { time: 128, intensity: 70, label: "The Party", color: "#facc15" } 
         ],
         synopsis: "Nicholas Van Orton is a wealthy investment banker who has everything but control over his lonely life. On his 48th birthday, his brother gives him a gift certificate for a unique game run by a mysterious company. As the game begins, the line between reality and simulation dissolves, stripping Nicholas of his fortune, his sanity, and perhaps his life.",
         themes: ["Control", "Reality", "Rebirth"]
     }),
 
     // 3. Sicario (2015)
-    // Curve: Dread -> Shock -> Helplessness -> Brutality.
-    // Peak: 98 (The Border Crossing - Unbearable Tension).
     273481: createMovieData({ 
         suspenseIntensity: 98, 
         complexityLevel: "VISCERAL", 
@@ -164,19 +122,17 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Emily Blunt", "Benicio Del Toro", "Josh Brolin"], boxOffice: "$85 million", budget: "$30 million", 
         dna: { "Crime": 50, "Action": 30, "Thriller": 20 },
         scenes: [
-            { time: 10, intensity: 60, label: "The Walls", color: "#b91c1c" }, // Horror
-            { time: 40, intensity: 98, label: "The Border", color: "#ef4444" }, // GENRE PEAK
-            { time: 75, intensity: 70, label: "The Tunnel", color: "#78350f" }, // Darkness
-            { time: 100, intensity: 90, label: "Dinner Time", color: "#000000" }, // Cold Violence
-            { time: 115, intensity: 60, label: "Land of Wolves", color: "#ca8a04" } // Theme
+            { time: 10, intensity: 60, label: "The Walls", color: "#b91c1c" }, 
+            { time: 40, intensity: 98, label: "The Border", color: "#ef4444" }, 
+            { time: 75, intensity: 70, label: "The Tunnel", color: "#78350f" }, 
+            { time: 100, intensity: 90, label: "Dinner Time", color: "#000000" }, 
+            { time: 115, intensity: 60, label: "Land of Wolves", color: "#ca8a04" } 
         ],
         synopsis: "An idealistic FBI agent is enlisted by a government task force to aid in the escalating war against drugs at the border area between the U.S. and Mexico. She quickly realizes that in this lawless land, legal and moral boundaries don't apply. Driven by Roger Deakins' cinematography and a menacing score, it is a masterclass in atmospheric dread.",
         themes: ["Morality", "War", "Lawlessness"]
     }),
 
     // 4. Coherence (2013)
-    // Curve: Normalcy -> Anomalies -> Confusion -> Paranoia -> Chaos.
-    // Peak: 92 (The Dark Zone - Reality Collapse).
     220289: createMovieData({ 
         suspenseIntensity: 90, 
         complexityLevel: "MIND-BENDING", 
@@ -184,19 +140,17 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Emily Foxler", "Maury Sterling"], boxOffice: "$100k", budget: "$50k", 
         dna: { "Sci-Fi": 60, "Thriller": 40 },
         scenes: [
-            { time: 15, intensity: 20, label: "The Comet", color: "#60a5fa" }, // Setup
-            { time: 35, intensity: 50, label: "The Knock", color: "#2563eb" }, // Intrigue
-            { time: 60, intensity: 75, label: "The Box", color: "#1d4ed8" }, // Mystery
-            { time: 80, intensity: 92, label: "Identity Crisis", color: "#1e3a8a" }, // PEAK CONFUSION
-            { time: 88, intensity: 85, label: "Morning After", color: "#172554" } // Ambiguity
+            { time: 15, intensity: 20, label: "The Comet", color: "#60a5fa" }, 
+            { time: 35, intensity: 50, label: "The Knock", color: "#2563eb" }, 
+            { time: 60, intensity: 75, label: "The Box", color: "#1d4ed8" }, 
+            { time: 80, intensity: 92, label: "Identity Crisis", color: "#1e3a8a" }, 
+            { time: 88, intensity: 85, label: "Morning After", color: "#172554" } 
         ],
         synopsis: "On the night of an astronomical anomaly, eight friends at a dinner party experience a troubling chain of events. Power goes out, strange artifacts appear, and they realize the house down the street is identical to theirs—occupied by identical versions of themselves. A brilliant, low-budget sci-fi thriller about quantum decoherence and the darker side of human nature.",
         themes: ["Quantum Physics", "Identity", "Paranoia"]
     }),
 
     // 5. Inside Man (2006)
-    // Curve: Plan -> Standoff -> Mystery -> Twist.
-    // Peak: 85 (The Walk Out - Clever Execution).
     388: createMovieData({ 
         suspenseIntensity: 85, 
         complexityLevel: "SMART", 
@@ -204,19 +158,17 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Denzel Washington", "Clive Owen", "Jodie Foster"], boxOffice: "$184 million", budget: "$45 million", 
         dna: { "Crime": 50, "Thriller": 50 },
         scenes: [
-            { time: 15, intensity: 40, label: "The Takeover", color: "#fcd34d" }, // Action
-            { time: 50, intensity: 60, label: "The Negotiations", color: "#f59e0b" }, // Dialogue
-            { time: 85, intensity: 70, label: "The Execution", color: "#b45309" }, // Tension
-            { time: 110, intensity: 85, label: "The Reveal", color: "#78350f" }, // PEAK TWIST
-            { time: 125, intensity: 50, label: "The Diamond", color: "#d97706" } // Satisfaction
+            { time: 15, intensity: 40, label: "The Takeover", color: "#fcd34d" }, 
+            { time: 50, intensity: 60, label: "The Negotiations", color: "#f59e0b" }, 
+            { time: 85, intensity: 70, label: "The Execution", color: "#b45309" }, 
+            { time: 110, intensity: 85, label: "The Reveal", color: "#78350f" }, 
+            { time: 125, intensity: 50, label: "The Diamond", color: "#d97706" } 
         ],
         synopsis: "A police detective, a bank robber, and a high-power broker enter high-stakes negotiations after the criminal's brilliant heist spirals into a hostage situation. But as the standoff continues, the detective realizes this is no ordinary bank robbery—and the robbers might be after something far more valuable than money.",
         themes: ["Power", "Deception", "Justice"]
     }),
 
     // 6. Law Abiding Citizen (2009)
-    // Curve: Tragedy -> Revenge -> Escalation -> Warfare.
-    // Peak: 88 (The Solitary Confinement Kill - Impossible Reach).
     22803: createMovieData({ 
         suspenseIntensity: 88, 
         complexityLevel: "BRUTAL", 
@@ -224,19 +176,17 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Gerard Butler", "Jamie Foxx"], boxOffice: "$127 million", budget: "$50 million", 
         dna: { "Thriller": 60, "Action": 40 },
         scenes: [
-            { time: 10, intensity: 80, label: "The Opening", color: "#991b1b" }, // Shock
-            { time: 40, intensity: 88, label: "The Cell Kill", color: "#ef4444" }, // PEAK IMPOSSIBLE
-            { time: 70, intensity: 75, label: "The Judge", color: "#b91c1c" }, // Escalation
-            { time: 95, intensity: 85, label: "The Bomb", color: "#7f1d1d" }, // Climax
-            { time: 105, intensity: 60, label: "Checkmate", color: "#450a0a" } // Ending
+            { time: 10, intensity: 80, label: "The Opening", color: "#991b1b" }, 
+            { time: 40, intensity: 88, label: "The Cell Kill", color: "#ef4444" }, 
+            { time: 70, intensity: 75, label: "The Judge", color: "#b91c1c" }, 
+            { time: 95, intensity: 85, label: "The Bomb", color: "#7f1d1d" }, 
+            { time: 105, intensity: 60, label: "Checkmate", color: "#450a0a" } 
         ],
         synopsis: "A frustrated man decides to take justice into his own hands after a plea bargain sets one of his family's killers free. He targets not only the killer but also the district attorney and others involved in the deal. Even from solitary confinement, he orchestrates a city-wide campaign of terror, proving that the system is broken and he is the one fixing it.",
         themes: ["Vengeance", "Justice System", "Genius"]
     }),
 
     // 7. The Black Phone (2021)
-    // Curve: Fear -> Abduction -> Supernatural Aid -> Escape.
-    // Peak: 90 (The Showdown - Fight for Life).
     756999: createMovieData({ 
         suspenseIntensity: 87, 
         complexityLevel: "SUPERNATURAL", 
@@ -244,19 +194,17 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Ethan Hawke", "Mason Thames"], boxOffice: "$161 million", budget: "$18 million", 
         dna: { "Horror": 60, "Thriller": 40 },
         scenes: [
-            { time: 15, intensity: 60, label: "The Grabber", color: "#44403c" }, // Fear
-            { time: 40, intensity: 50, label: "First Call", color: "#a8a29e" }, // Hope
-            { time: 75, intensity: 75, label: "The Axe", color: "#b91c1c" }, // Tension
-            { time: 95, intensity: 90, label: "The Trap", color: "#dc2626" }, // PEAK ACTION
-            { time: 100, intensity: 60, label: "Freedom", color: "#d6d3d1" } // Relief
+            { time: 15, intensity: 60, label: "The Grabber", color: "#44403c" }, 
+            { time: 40, intensity: 50, label: "First Call", color: "#a8a29e" }, 
+            { time: 75, intensity: 75, label: "The Axe", color: "#b91c1c" }, 
+            { time: 95, intensity: 90, label: "The Trap", color: "#dc2626" }, 
+            { time: 100, intensity: 60, label: "Freedom", color: "#d6d3d1" } 
         ],
         synopsis: "After being abducted by a child killer and locked in a soundproof basement, a 13-year-old boy starts receiving calls on a disconnected phone from the killer's previous victims. Guided by their voices, he attempts to escape before he suffers the same fate. A unique blend of true-crime aesthetics and supernatural horror.",
         themes: ["Survival", "Trauma", "Ghosts"]
     }),
 
     // 8. Triangle (2009)
-    // Curve: Confusion -> Déjà Vu -> Realization -> Loop.
-    // Peak: 92 (The Pile of Bodies - Horrifying Realization).
     26466: createMovieData({ 
         suspenseIntensity: 89, 
         complexityLevel: "LOOP", 
@@ -264,19 +212,17 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Melissa George", "Liam Hemsworth"], boxOffice: "$1.3 million", budget: "$12 million", 
         dna: { "Horror": 50, "Sci-Fi": 30, "Mystery": 20 },
         scenes: [
-            { time: 20, intensity: 40, label: "The Storm", color: "#0284c7" }, // Action
-            { time: 45, intensity: 65, label: "The Masked Killer", color: "#0369a1" }, // Slasher
-            { time: 70, intensity: 85, label: "The Mirror", color: "#075985" }, // Confusion
-            { time: 90, intensity: 92, label: "The Pile", color: "#dc2626" }, // PEAK HORROR
-            { time: 98, intensity: 80, label: "The Cycle", color: "#1e3a8a" } // Despair
+            { time: 20, intensity: 40, label: "The Storm", color: "#0284c7" }, 
+            { time: 45, intensity: 65, label: "The Masked Killer", color: "#0369a1" }, 
+            { time: 70, intensity: 85, label: "The Mirror", color: "#075985" }, 
+            { time: 90, intensity: 92, label: "The Pile", color: "#dc2626" }, 
+            { time: 98, intensity: 80, label: "The Cycle", color: "#1e3a8a" } 
         ],
         synopsis: "A group of friends on a yacht trip encounter mysterious weather conditions and jump to another ship, only to experience greater havoc on the open seas. Jess becomes convinced she's been on this ship before, and as the group is hunted by a masked assailant, she discovers a terrifying time loop that forces her to kill to return home.",
         themes: ["Guilt", "Time Loop", "Motherhood"]
     }),
 
     // 9. Limitless (2011)
-    // Curve: Discovery -> Power -> Addiction -> Danger.
-    // Peak: 82 (The Apartment Fight - Desperate Measures).
     51876: createMovieData({ 
         suspenseIntensity: 82, 
         complexityLevel: "STYLISH", 
@@ -284,19 +230,17 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Bradley Cooper", "Robert De Niro"], boxOffice: "$161 million", budget: "$27 million", 
         dna: { "Sci-Fi": 40, "Thriller": 60 },
         scenes: [
-            { time: 15, intensity: 30, label: "First Pill", color: "#fef08a" }, // Wonder
-            { time: 50, intensity: 60, label: "Wall Street", color: "#eab308" }, // Success
-            { time: 80, intensity: 75, label: "The Blackout", color: "#a16207" }, // Fear
-            { time: 95, intensity: 82, label: "Apartment Fight", color: "#b91c1c" }, // PEAK SURVIVAL
-            { time: 104, intensity: 70, label: "New Man", color: "#facc15" } // Evolution
+            { time: 15, intensity: 30, label: "First Pill", color: "#fef08a" }, 
+            { time: 50, intensity: 60, label: "Wall Street", color: "#eab308" }, 
+            { time: 80, intensity: 75, label: "The Blackout", color: "#a16207" }, 
+            { time: 95, intensity: 82, label: "Apartment Fight", color: "#b91c1c" }, 
+            { time: 104, intensity: 70, label: "New Man", color: "#facc15" } 
         ],
         synopsis: "With the help of a mysterious pill that enables the user to access 100 percent of his brain abilities, a struggling writer becomes a financial wizard, but it also puts him in a new world with lots of dangers. As his supply runs low and enemies close in, he must use his enhanced intellect to outmaneuver them all.",
         themes: ["Addiction", "Potential", "Power"]
     }),
 
     // 10. Twisters (2024)
-    // Curve: Wonder -> Danger -> Destruction -> Survival.
-    // Peak: 88 (The Refinery/Theater - Total Chaos).
     718821: createMovieData({ 
         suspenseIntensity: 85, 
         complexityLevel: "SPECTACLE", 
@@ -304,11 +248,11 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Daisy Edgar-Jones", "Glen Powell"], boxOffice: "$369 million", budget: "$155 million", 
         dna: { "Action": 60, "Thriller": 40 },
         scenes: [
-            { time: 10, intensity: 70, label: "The Opening", color: "#475569" }, // Trauma
-            { time: 50, intensity: 60, label: "The Rodeo", color: "#94a3b8" }, // Chaos
-            { time: 80, intensity: 75, label: "Fire Tornado", color: "#ea580c" }, // Visuals
-            { time: 100, intensity: 88, label: "Movie Theater", color: "#0f172a" }, // PEAK DANGER
-            { time: 110, intensity: 65, label: "The Solution", color: "#334155" } // Science
+            { time: 10, intensity: 70, label: "The Opening", color: "#475569" }, 
+            { time: 50, intensity: 60, label: "The Rodeo", color: "#94a3b8" }, 
+            { time: 80, intensity: 75, label: "Fire Tornado", color: "#ea580c" }, 
+            { time: 100, intensity: 88, label: "Movie Theater", color: "#0f172a" }, 
+            { time: 110, intensity: 65, label: "The Solution", color: "#334155" } 
         ],
         synopsis: "A standalone sequel to the 1996 blockbuster, capturing the awe and terror of severe weather. A retired tornado chaser is drawn back into the field to test a groundbreaking new tracking system, crossing paths with a reckless social-media superstar storm chaser. As multiple systems converge, they find themselves in the fight of their lives.",
         themes: ["Nature", "Trauma", "Science"]
@@ -384,53 +328,154 @@ export const getTMDBPosterUrl = (posterPath, size = 'medium') => {
     return `${TMDB_CONFIG.IMAGE_BASE_URL}/${posterSize}${posterPath}`;
 };
 
+// ✅ HELPER: Outputs clean SEO-friendly terms like "sexual content" and "nudity"
 export const getSensitiveContentTypes = (tmdbId) => {
     const sensitiveData = SENSITIVE_TIMELINES[tmdbId];
     if (!sensitiveData?.scenes?.length) return null;
     const types = new Set();
     sensitiveData.scenes.forEach(scene => {
-        types.add(scene.type);
+        const lowerType = scene.type.toLowerCase();
+        if (lowerType.includes('sex')) types.add('sexual content');
+        if (lowerType.includes('nudity')) types.add('nudity');
+        if (lowerType.includes('viol')) types.add('violence');
     });
     return Array.from(types);
 };
 
-export const generateFAQData = (movie) => {
-    return PEACOCK_THRILLER_MOVIE_FAQS[movie.Title] || [];
-};
-
-export const generateMovieSchema = (movie) => {
-    const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
-    const posterUrl = FALLBACK_POSTERS[movie.tmdbId] || '';
-    return {
+// 🔥 UNIFIED CLEAN GENERATOR (For Google Bots & LLMs - No Rating Spam)
+export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, collectionSlug, unused, movieInfo) => {
+    
+    // 1. MOVIE SCHEMA (Zero Review/Rating Spam, Clean Description)
+    const movieSchema = {
         '@context': 'https://schema.org',
         '@type': 'Movie',
         'name': movie.Title,
-        'description': movieInfo?.synopsis || `${movie.Title} - A top thriller movie on Peacock.`,
+        'description': movieInfo?.synopsis || `${movie.Title} (${currentMovieYear}) - A top thriller movie on Peacock.`,
         'genre': movie.genre,
-        'datePublished': movie.year.toString(),
+        'datePublished': currentMovieYear?.toString() || movie.year.toString(),
         'director': { '@type': 'Person', 'name': movieInfo?.director || 'Director' },
         'actor': movieInfo?.cast?.map(actor => ({ '@type': 'Person', 'name': actor })) || [],
-        'duration': `PT${movie.runtime}M`,
-        'image': posterUrl,
-        'aggregateRating': { 
-            '@type': 'AggregateRating', 
-            'ratingValue': movieInfo?.rating || 7.0, 
-            'bestRating': 10, 
-            'worstRating': 1, 
-            'ratingCount': movieInfo?.audienceScore || 100 
-        }
+        'image': tmdbData?.poster_path ? `https://image.tmdb.org/t/p/w500${tmdbData.poster_path}` : '',
+        'duration': `PT${movie.runtime}M`
     };
-};
 
-export const generateFAQSchema = (faqs) => ({
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    'mainEntity': faqs.map(faq => ({ 
+    // 2. THE "GOLDEN EGG" FAQ SCHEMA
+    const staticFaqs = PEACOCK_THRILLER_MOVIE_FAQS[movie.Title] || [];
+    const sensitiveScenes = SENSITIVE_TIMELINES[movie.tmdbId]?.scenes || [];
+    const intensityScenes = movieInfo?.scenes || [];
+    
+    // Load your beautifully written trivia FAQs
+    const schemaFaqs = staticFaqs.map(faq => ({ 
         '@type': 'Question', 
         'name': faq.question, 
         'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer } 
-    }))
-});
+    }));
+
+    // 🔥 INJECT INTENSITY GRAPH TIMESTAMPS
+    if (intensityScenes.length > 0) {
+        const schemaIntensityList = intensityScenes.map(s => `<li>Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)</li>`).join('');
+        
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `What are the most intense scenes in ${movie.Title}?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `According to the Filmiway Intensity metric, ${movie.Title} peaks at the following moments:<br><br><ul>${schemaIntensityList}</ul>` 
+            }
+        });
+    }
+
+    // Extract runtime for the schema calibration tag
+    const currentRuntime = movie.Runtime || movie.runtime || "Official";
+
+    // 🔥 INJECT SENSITIVE CONTENT TIMESTAMPS (Unshifted last so it remains #1 at the very top)
+    if (sensitiveScenes.length > 0) {
+        const typesArray = getSensitiveContentTypes(movie.tmdbId) || ['mature content'];
+        const typesString = typesArray.join(' and ');
+
+        const schemaListText = sensitiveScenes.map(s => {
+            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
+            return `<li>${timeRange} - ${s.type || 'Mature Content'}</li>`;
+        }).join('');
+
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `Yes, according to the Filmiway Timestamps & Parents Guide, ${movie.Title} contains adult scenes including ${typesString}. These timestamps are accurate for the ${currentRuntime} runtime. Exact timestamps for these scenes are:<br><br><ul>${schemaListText}</ul>` 
+            }
+        });
+    } else {
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `No, the Filmiway Timestamps & Parents Guide confirms that ${movie.Title} is completely free of explicit sexual content and nudity. This assessment is accurate for the ${currentRuntime} runtime.` 
+            }
+        });
+    }
+
+    const faqSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        'name': `Parents Guide and FAQ for ${movie.Title}`,
+        'mainEntity': schemaFaqs
+    };
+
+    return { movieSchema, faqSchema };
+};
+
+// 🔥 DYNAMIC VISIBLE FAQ GENERATOR FOR THE FRONTEND UI
+export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Official") => {
+    // 1. Get the static, manually written FAQs
+    const staticFaqs = PEACOCK_THRILLER_MOVIE_FAQS[movieTitle] ? [...PEACOCK_THRILLER_MOVIE_FAQS[movieTitle]] : [];
+    
+    // 2. Get the sensitive scenes and intensity scenes data
+    const sensitiveScenes = SENSITIVE_TIMELINES[tmdbId]?.scenes || [];
+    const movieInfo = COMPLETE_MOVIE_DATA[tmdbId];
+    const intensityScenes = movieInfo?.scenes || [];
+
+    // 🔥 FIX 1: Automatically fetch the exact runtime from the database if missing
+    const dbMovie = COMPLETE_MOVIE_DATABASE.find(m => m.tmdbId === tmdbId);
+    const finalRuntime = currentRuntime !== "Official" ? currentRuntime : (dbMovie?.runtime ? `${dbMovie.runtime} min` : "Official");
+
+
+    // 3. 🔥 DYNAMICALLY GENERATE THE INTENSITY GRAPH FAQ
+    if (intensityScenes.length > 0) {
+        const uiIntensityList = intensityScenes.map(s => `• Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)`).join('\n');
+        
+        staticFaqs.unshift({
+            question: `What are the most intense scenes in ${movieTitle}?`,
+            answer: `According to the Filmiway Intensity metric, ${movieTitle} peaks at the following moments:\n\n${uiIntensityList}`
+        });
+    }
+
+    // 4. 🔥 DYNAMICALLY GENERATE THE SENSITIVE CONTENT FAQ
+    if (sensitiveScenes.length > 0) {
+        const typesArray = getSensitiveContentTypes(tmdbId) || ['mature content'];
+        const typesString = typesArray.join(' and ');
+
+        const uiListText = sensitiveScenes.map(s => {
+            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
+            return `• ${timeRange} - ${s.type || 'Mature Content'}`;
+        }).join('\n');
+
+        staticFaqs.unshift({
+            question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
+            answer: `Yes, according to the Filmiway Timestamps & Parents Guide, ${movieTitle} contains adult scenes including ${typesString}. These timestamps are accurate for the ${finalRuntime} runtime. Exact timestamps for these scenes are:\n\n${uiListText}`
+        });
+    } else {
+        staticFaqs.unshift({
+            question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
+            answer: `No, the Filmiway Timestamps & Parents Guide confirms that ${movieTitle} is completely free of explicit sexual content and nudity. This assessment is accurate for the ${finalRuntime} runtime.`
+        });
+    }
+
+    // 5. Return the combined list
+    return staticFaqs;
+};
 
 export const fetchMovieFromTMDB = async (tmdbId) => ({ 
     poster_path: null, 

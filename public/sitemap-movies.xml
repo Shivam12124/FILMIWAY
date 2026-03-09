@@ -1,1024 +1,797 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-<url>
+    <url>
         <loc>https://filmiway.com/movies/eyes-wide-shut/tt0166924</loc>
-  <lastmod>2026-03-04T23:30:00+05:30</lastmod>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
-
     <url>
         <loc>https://filmiway.com/movies/eyes-wide-shut/tt0142688</loc>
-  <lastmod>2026-03-04T23:30:00+05:30</lastmod>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
-
-
-   <url>
+    <url>
         <loc>https://filmiway.com/movies/eyes-wide-shut/tt0090756</loc>
-  <lastmod>2026-03-04T23:30:00+05:30</lastmod>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
-
     <url>
         <loc>https://filmiway.com/movies/eyes-wide-shut/tt0063522</loc>
-  <lastmod>2026-03-04T23:30:00+05:30</lastmod>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
-
     <url>
         <loc>https://filmiway.com/movies/eyes-wide-shut/tt0119174</loc>
-  <lastmod>2026-03-04T23:30:00+05:30</lastmod>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
-
     <url>
         <loc>https://filmiway.com/movies/eyes-wide-shut/tt0116922</loc>
-  <lastmod>2026-03-04T23:30:00+05:30</lastmod>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
-
     <url>
         <loc>https://filmiway.com/movies/eyes-wide-shut/tt0098354</loc>
-  <lastmod>2026-03-04T23:30:00+05:30</lastmod>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
-
     <url>
         <loc>https://filmiway.com/movies/eyes-wide-shut/tt0134273</loc>
-  <lastmod>2026-03-04T23:30:00+05:30</lastmod>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
-
     <url>
         <loc>https://filmiway.com/movies/eyes-wide-shut/tt5052448</loc>
-  <lastmod>2026-03-04T23:30:00+05:30</lastmod>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
-
     <url>
         <loc>https://filmiway.com/movies/eyes-wide-shut/tt5715874</loc>
-  <lastmod>2026-03-04T23:30:00+05:30</lastmod>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
 
+    <url>
+        <loc>https://filmiway.com/movies/donnie-darko/tt0289879</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/donnie-darko/tt0114746</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/donnie-darko/tt0366627</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/donnie-darko/tt0125659</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/donnie-darko/tt2866360</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/donnie-darko/tt0099871</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/donnie-darko/tt0118929</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/donnie-darko/tt0166924</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/donnie-darko/tt0338013</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/donnie-darko/tt2316411</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://filmiway.com/movies/black-swan/tt0156887</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/black-swan/tt2582802</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/black-swan/tt1034415</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/black-swan/tt0040725</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/black-swan/tt1125849</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/black-swan/tt0166924</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/black-swan/tt0254686</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/black-swan/tt2562232</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/black-swan/tt0180093</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/black-swan/tt2872718</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://filmiway.com/movies/matrix/tt0118929</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/matrix/tt1375666</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/matrix/tt0139809</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/matrix/tt0120663</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/matrix/tt0945513</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/matrix/tt0181689</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/matrix/tt6499752</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/matrix/tt0100802</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/matrix/tt1856101</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/matrix/tt1631867</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://filmiway.com/movies/revenge/tt0364569</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/revenge/tt0172495</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/revenge/tt0105695</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/revenge/tt0112573</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/revenge/tt0482571</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/revenge/tt1663202</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/revenge/tt0378194</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/revenge/tt2911666</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/revenge/tt1588170</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/revenge/tt0245844</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://filmiway.com/movies/like-se7en/tt0443706</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/like-se7en/tt0353969</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/like-se7en/tt1392214</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/like-se7en/tt0102926</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/like-se7en/tt1568346</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/like-se7en/tt1190539</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/like-se7en/tt1877830</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/like-se7en/tt0123948</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/like-se7en/tt0096163</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/like-se7en/tt0327056</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://filmiway.com/movies/time-travel/tt0088763</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/time-travel/tt0103064</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/time-travel/tt0088247</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/time-travel/tt0816692</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/time-travel/tt2397535</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/time-travel/tt0390384</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/time-travel/tt0114746</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/time-travel/tt0246578</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/time-travel/tt0107048</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/time-travel/tt0480669</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
 
-<!-- 1. The Butterfly Effect (2004) -->
-<url>
-    <loc>https://filmiway.com/movies/donnie-darko/tt0289879</loc>
-<lastmod>2026-03-04T23:30:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<!-- 2. 12 Monkeys (1995) -->
-<url>
-    <loc>https://filmiway.com/movies/donnie-darko/tt0114746</loc>
-<lastmod>2026-03-04T23:30:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<!-- 3. The Jacket (2005) -->
-<url>
-    <loc>https://filmiway.com/movies/donnie-darko/tt0366627</loc>
-<lastmod>2026-03-04T23:30:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<!-- 4. Open Your Eyes (1997) -->
-<url>
-    <loc>https://filmiway.com/movies/donnie-darko/tt0125659</loc>
-<lastmod>2026-03-04T23:30:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<!-- 5. Coherence (2013) -->
-<url>
-    <loc>https://filmiway.com/movies/donnie-darko/tt2866360</loc>
-<lastmod>2026-03-04T23:30:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<!-- 6. Jacob's Ladder (1990) -->
-<url>
-    <loc>https://filmiway.com/movies/donnie-darko/tt0099871</loc>
-<lastmod>2026-03-04T23:30:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<!-- 7. Dark City (1998) -->
-<url>
-    <loc>https://filmiway.com/movies/donnie-darko/tt0118929</loc>
-<lastmod>2026-03-04T23:30:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<!-- 8. Mulholland Drive (2001) -->
-<url>
-    <loc>https://filmiway.com/movies/donnie-darko/tt0166924</loc>
-<lastmod>2026-03-04T23:30:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<!-- 9. Eternal Sunshine of the Spotless Mind (2004) -->
-<url>
-    <loc>https://filmiway.com/movies/donnie-darko/tt0338013</loc>
-<lastmod>2026-03-04T23:30:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<!-- 10. Enemy (2013) -->
-<url>
-    <loc>https://filmiway.com/movies/donnie-darko/tt2316411</loc>
-<lastmod>2026-03-04T23:30:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-
-
-
-<url>
-    <loc>https://filmiway.com/movies/black-swan/tt0156887</loc>
-    <lastmod>2026-01-06T11:58:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/black-swan/tt2582802</loc>
-    <lastmod>2026-01-06T11:58:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/black-swan/tt1034415</loc>
-    <lastmod>2026-01-06T11:58:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/black-swan/tt0040725</loc>
-    <lastmod>2026-01-06T11:58:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/black-swan/tt1125849</loc>
-    <lastmod>2026-01-06T11:58:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/black-swan/tt0166924</loc>
-    <lastmod>2026-01-06T11:58:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/black-swan/tt0254686</loc>
-    <lastmod>2026-01-06T11:58:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/black-swan/tt2562232</loc>
-    <lastmod>2026-01-06T11:58:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/black-swan/tt0180093</loc>
-    <lastmod>2026-01-06T11:58:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/black-swan/tt2872718</loc>
-    <lastmod>2026-01-06T11:58:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<!-- 🕶️ 10 MOVIES LIKE THE MATRIX -->
-<url>
-    <loc>https://filmiway.com/movies/matrix/tt0118929</loc>
-    <lastmod>2025-12-15T11:18:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/matrix/tt1375666</loc>
-    <lastmod>2025-12-15T11:18:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/matrix/tt0139809</loc>
-    <lastmod>2025-12-15T11:18:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/matrix/tt0120663</loc>
-    <lastmod>2025-12-15T11:18:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/matrix/tt0945513</loc>
-    <lastmod>2025-12-15T11:18:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/matrix/tt0181689</loc>
-    <lastmod>2025-12-15T11:18:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/matrix/tt6499752</loc>
-    <lastmod>2025-12-15T11:18:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/matrix/tt0100802</loc>
-    <lastmod>2025-12-15T11:18:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/matrix/tt1856101</loc>
-    <lastmod>2025-12-15T11:18:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/matrix/tt1631867</loc>
-    <lastmod>2025-12-15T11:18:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-
-
-<!-- ⚔️ 10 BEST REVENGE MOVIES -->
-<url>
-    <loc>https://filmiway.com/movies/revenge/tt0364569</loc>
-    <lastmod>2025-12-15T11:10:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/revenge/tt0172495</loc>
-    <lastmod>2025-12-15T11:10:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/revenge/tt0105695</loc>
-    <lastmod>2025-12-15T11:10:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/revenge/tt0112573</loc>
-    <lastmod>2025-12-15T11:10:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/revenge/tt0482571</loc>
-    <lastmod>2025-12-15T11:10:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/revenge/tt1663202</loc>
-    <lastmod>2025-12-15T11:10:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/revenge/tt0378194</loc>
-    <lastmod>2025-12-15T11:10:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/revenge/tt2911666</loc>
-    <lastmod>2025-12-15T11:10:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/revenge/tt1588170</loc>
-    <lastmod>2025-12-15T11:10:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/revenge/tt0245844</loc>
-    <lastmod>2025-12-15T11:10:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<!-- 🔍 MOVIES LIKE SE7EN (11 MOVIES) -->
-<url>
-    <loc>https://filmiway.com/movies/like-se7en/tt0443706</loc>
-    <lastmod>2025-12-15T10:51:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/like-se7en/tt0353969</loc>
-    <lastmod>2025-12-15T10:51:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/like-se7en/tt1392214</loc>
-    <lastmod>2025-12-15T10:51:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/like-se7en/tt0102926</loc>
-    <lastmod>2025-12-15T10:51:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/like-se7en/tt1568346</loc>
-    <lastmod>2025-12-15T10:51:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/like-se7en/tt1190539</loc>
-    <lastmod>2025-12-15T10:51:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/like-se7en/tt1877830</loc>
-    <lastmod>2025-12-15T10:51:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/like-se7en/tt0123948</loc>
-    <lastmod>2025-12-15T10:51:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/like-se7en/tt0096163</loc>
-    <lastmod>2025-12-15T10:51:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/like-se7en/tt0327056</loc>
-    <lastmod>2025-12-15T10:51:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/time-travel/tt0088763</loc>
- <lastmod>2026-03-04T23:30:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-
-<url>
-    <loc>https://filmiway.com/movies/time-travel/tt0103064</loc>
- <lastmod>2026-03-04T23:30:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-
-<url>
-    <loc>https://filmiway.com/movies/time-travel/tt0088247</loc>
- <lastmod>2026-03-04T23:30:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-
-<url>
-    <loc>https://filmiway.com/movies/time-travel/tt0816692</loc>
- <lastmod>2026-03-04T23:30:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-
-<url>
-    <loc>https://filmiway.com/movies/time-travel/tt2397535</loc>
- <lastmod>2026-03-04T23:30:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-
-<url>
-    <loc>https://filmiway.com/movies/time-travel/tt0390384</loc>
- <lastmod>2026-03-04T23:30:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-
-<url>
-    <loc>https://filmiway.com/movies/time-travel/tt0114746</loc>
- <lastmod>2026-03-04T23:30:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-
-<url>
-    <loc>https://filmiway.com/movies/time-travel/tt0246578</loc>
- <lastmod>2026-03-04T23:30:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-
-<url>
-    <loc>https://filmiway.com/movies/time-travel/tt0107048</loc>
- <lastmod>2026-03-04T23:30:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-
-<url>
-    <loc>https://filmiway.com/movies/time-travel/tt0480669</loc>
- <lastmod>2026-03-04T23:30:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-
-
-
-
-  <!-- 🕵️ DETECTIVE THRILLER MOVIES -->
     <url>
         <loc>https://filmiway.com/movies/detective-thriller/tt0114369</loc>
-  <lastmod>2026-03-04T23:30:00+05:30</lastmod>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
-
     <url>
         <loc>https://filmiway.com/movies/detective-thriller/tt0443706</loc>
-  <lastmod>2026-03-04T23:30:00+05:30</lastmod>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
-
     <url>
         <loc>https://filmiway.com/movies/detective-thriller/tt1392214</loc>
-  <lastmod>2026-03-04T23:30:00+05:30</lastmod>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
-
     <url>
         <loc>https://filmiway.com/movies/detective-thriller/tt1305806</loc>
-  <lastmod>2026-03-04T23:30:00+05:30</lastmod>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
-
     <url>
         <loc>https://filmiway.com/movies/detective-thriller/tt0353969</loc>
-  <lastmod>2026-03-04T23:30:00+05:30</lastmod>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
-
     <url>
         <loc>https://filmiway.com/movies/detective-thriller/tt1190539</loc>
-  <lastmod>2026-03-04T23:30:00+05:30</lastmod>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
-
     <url>
         <loc>https://filmiway.com/movies/detective-thriller/tt0327056</loc>
-  <lastmod>2026-03-04T23:30:00+05:30</lastmod>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
-
     <url>
         <loc>https://filmiway.com/movies/detective-thriller/tt3253930</loc>
-  <lastmod>2026-03-04T23:30:00+05:30</lastmod>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
-
     <url>
         <loc>https://filmiway.com/movies/detective-thriller/tt0116282</loc>
-  <lastmod>2026-03-04T23:30:00+05:30</lastmod>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
-
     <url>
         <loc>https://filmiway.com/movies/detective-thriller/tt0106977</loc>
-  <lastmod>2026-03-04T23:30:00+05:30</lastmod>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
 
-    <!-- 😨 PSYCHOLOGICAL THRILLER MOVIES -->
     <url>
         <loc>https://filmiway.com/movies/psych-thriller/tt0102926</loc>
-  <lastmod>2026-03-04T23:30:00+05:30</lastmod>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
-
     <url>
         <loc>https://filmiway.com/movies/psych-thriller/tt0137523</loc>
-  <lastmod>2026-03-04T23:30:00+05:30</lastmod>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
-
     <url>
         <loc>https://filmiway.com/movies/psych-thriller/tt0209144</loc>
-  <lastmod>2026-03-04T23:30:00+05:30</lastmod>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
-
     <url>
         <loc>https://filmiway.com/movies/psych-thriller/tt0114369</loc>
-  <lastmod>2026-03-04T23:30:00+05:30</lastmod>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
-
     <url>
         <loc>https://filmiway.com/movies/psych-thriller/tt1130884</loc>
-  <lastmod>2026-03-04T23:30:00+05:30</lastmod>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
-
     <url>
         <loc>https://filmiway.com/movies/psych-thriller/tt0947798</loc>
-  <lastmod>2026-03-04T23:30:00+05:30</lastmod>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
-
     <url>
         <loc>https://filmiway.com/movies/psych-thriller/tt0361862</loc>
-  <lastmod>2026-03-04T23:30:00+05:30</lastmod>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
-
     <url>
         <loc>https://filmiway.com/movies/psych-thriller/tt0364569</loc>
-  <lastmod>2026-03-04T23:30:00+05:30</lastmod>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
-
     <url>
         <loc>https://filmiway.com/movies/psych-thriller/tt0075314</loc>
-  <lastmod>2026-03-04T23:30:00+05:30</lastmod>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
-
     <url>
         <loc>https://filmiway.com/movies/psych-thriller/tt0081505</loc>
-  <lastmod>2026-03-04T23:30:00+05:30</lastmod>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
 
-    <!-- 🎪 MYSTERY THRILLER MOVIES -->
     <url>
         <loc>https://filmiway.com/movies/mystery-thriller/tt0114369</loc>
-  <lastmod>2026-03-04T23:30:00+05:30</lastmod>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
-
     <url>
         <loc>https://filmiway.com/movies/mystery-thriller/tt1392214</loc>
-  <lastmod>2026-03-04T23:30:00+05:30</lastmod>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
-
     <url>
         <loc>https://filmiway.com/movies/mystery-thriller/tt0443706</loc>
-  <lastmod>2026-03-04T23:30:00+05:30</lastmod>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
-
     <url>
         <loc>https://filmiway.com/movies/mystery-thriller/tt2267998</loc>
-  <lastmod>2026-03-04T23:30:00+05:30</lastmod>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
-
     <url>
         <loc>https://filmiway.com/movies/mystery-thriller/tt0353969</loc>
-  <lastmod>2026-03-04T23:30:00+05:30</lastmod>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
-
     <url>
         <loc>https://filmiway.com/movies/mystery-thriller/tt4857264</loc>
-  <lastmod>2026-03-04T23:30:00+05:30</lastmod>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
-
     <url>
         <loc>https://filmiway.com/movies/mystery-thriller/tt7282468</loc>
-  <lastmod>2026-03-04T23:30:00+05:30</lastmod>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
-
     <url>
         <loc>https://filmiway.com/movies/mystery-thriller/tt0119174</loc>
-  <lastmod>2026-03-04T23:30:00+05:30</lastmod>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
-
     <url>
         <loc>https://filmiway.com/movies/mystery-thriller/tt1130884</loc>
-  <lastmod>2026-03-04T23:30:00+05:30</lastmod>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
-
     <url>
         <loc>https://filmiway.com/movies/mystery-thriller/tt0119177</loc>
-  <lastmod>2026-03-04T23:30:00+05:30</lastmod>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
 
-    <!-- 🩸 BEST THRILLER MOVIES -->
     <url>
         <loc>https://filmiway.com/movies/thriller/tt0477348</loc>
-  <lastmod>2026-03-04T23:30:00+05:30</lastmod>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
-
     <url>
         <loc>https://filmiway.com/movies/thriller/tt0102926</loc>
-  <lastmod>2026-03-04T23:30:00+05:30</lastmod>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
-
     <url>
         <loc>https://filmiway.com/movies/thriller/tt0327056</loc>
-  <lastmod>2026-03-04T23:30:00+05:30</lastmod>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
-
     <url>
         <loc>https://filmiway.com/movies/thriller/tt0407887</loc>
-  <lastmod>2026-03-04T23:30:00+05:30</lastmod>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
-
     <url>
         <loc>https://filmiway.com/movies/thriller/tt5362988</loc>
-  <lastmod>2026-03-04T23:30:00+05:30</lastmod>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
-
     <url>
         <loc>https://filmiway.com/movies/thriller/tt0114369</loc>
-  <lastmod>2026-03-04T23:30:00+05:30</lastmod>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
-
     <url>
         <loc>https://filmiway.com/movies/thriller/tt1392214</loc>
-  <lastmod>2026-03-04T23:30:00+05:30</lastmod>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
-
     <url>
         <loc>https://filmiway.com/movies/thriller/tt0353969</loc>
-  <lastmod>2026-03-04T23:30:00+05:30</lastmod>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
-
     <url>
         <loc>https://filmiway.com/movies/thriller/tt2267998</loc>
-  <lastmod>2026-03-04T23:30:00+05:30</lastmod>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/thriller/tt0119174</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
 
     <url>
-        <loc>https://filmiway.com/movies/thriller/tt0119174</loc>
-  <lastmod>2026-03-04T23:30:00+05:30</lastmod>
+        <loc>https://filmiway.com/movies/crime-thriller/tt0113277</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/crime-thriller/tt0119488</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/crime-thriller/tt0477348</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/crime-thriller/tt0443706</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/crime-thriller/tt1392214</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/crime-thriller/tt0114369</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/crime-thriller/tt0327056</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/crime-thriller/tt0353969</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/crime-thriller/tt0407887</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/crime-thriller/tt0139654</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
 
-
-<url>
-    <loc>https://filmiway.com/movies/crime-thriller/tt0113277</loc>
-    <lastmod>2025-11-25T10:21:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/crime-thriller/tt0119488</loc>
-    <lastmod>2025-11-25T10:21:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/crime-thriller/tt0477348</loc>
-    <lastmod>2025-11-25T10:21:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/crime-thriller/tt0443706</loc>
-    <lastmod>2025-11-25T10:21:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/crime-thriller/tt1392214</loc>
-    <lastmod>2025-11-25T10:21:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/crime-thriller/tt0114369</loc>
-    <lastmod>2025-11-25T10:21:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/crime-thriller/tt0327056</loc>
-    <lastmod>2025-11-25T10:21:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/crime-thriller/tt0353969</loc>
-    <lastmod>2025-11-25T10:21:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/crime-thriller/tt0407887</loc>
-    <lastmod>2025-11-25T10:21:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/crime-thriller/tt0139654</loc>
-    <lastmod>2025-11-25T10:21:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-
-
-<!-- ⚔️ 10 BEST REVENGE MOVIES -->
-<url>
-    <loc>https://filmiway.com/movies/revenge/tt0364569</loc>
-    <lastmod>2025-12-15T11:10:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/revenge/tt0172495</loc>
-    <lastmod>2025-12-15T11:10:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/revenge/tt0105695</loc>
-    <lastmod>2025-12-15T11:10:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/revenge/tt0112573</loc>
-    <lastmod>2025-12-15T11:10:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/revenge/tt0482571</loc>
-    <lastmod>2025-12-15T11:10:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/revenge/tt1663202</loc>
-    <lastmod>2025-12-15T11:10:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/revenge/tt0378194</loc>
-    <lastmod>2025-12-15T11:10:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/revenge/tt2911666</loc>
-    <lastmod>2025-12-15T11:10:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/revenge/tt1588170</loc>
-    <lastmod>2025-12-15T11:10:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/revenge/tt0245844</loc>
-    <lastmod>2025-12-15T11:10:00+05:30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-<url>
-    <loc>https://filmiway.com/movies/like-inception/tt0390384</loc>
-<lastmod>2026-03-04T23:30:00+05:30</lastmod>
-  <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/like-inception/tt0383028</loc>
-<lastmod>2026-03-04T23:30:00+05:30</lastmod>
-  <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/like-inception/tt0166924</loc>
-<lastmod>2026-03-04T23:30:00+05:30</lastmod>
-  <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/like-inception/tt2397535</loc>
-<lastmod>2026-03-04T23:30:00+05:30</lastmod>
-  <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/like-inception/tt2866360</loc>
-<lastmod>2026-03-04T23:30:00+05:30</lastmod>
-  <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/like-inception/tt0246578</loc>
-<lastmod>2026-03-04T23:30:00+05:30</lastmod>
-  <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/like-inception/tt2316411</loc>
-<lastmod>2026-03-04T23:30:00+05:30</lastmod>
-  <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/like-inception/tt0414993</loc>
-<lastmod>2026-03-04T23:30:00+05:30</lastmod>
-  <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/like-inception/tt0485947</loc>
-<lastmod>2026-03-04T23:30:00+05:30</lastmod>
-  <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://filmiway.com/movies/like-inception/tt1130884</loc>
-<lastmod>2026-03-04T23:30:00+05:30</lastmod>
-  <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-</url>
+    <url>
+        <loc>https://filmiway.com/movies/like-inception/tt0390384</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/like-inception/tt0383028</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/like-inception/tt0166924</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/like-inception/tt2397535</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/like-inception/tt2866360</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/like-inception/tt0246578</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/like-inception/tt2316411</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/like-inception/tt0414993</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/like-inception/tt0485947</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://filmiway.com/movies/like-inception/tt1130884</loc>
+        <lastmod>2026-03-09T20:00:00+05:30</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
 
 </urlset>

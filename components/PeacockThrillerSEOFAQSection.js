@@ -1,18 +1,19 @@
-// components/PeacockThrillerSEOFAQSection.js - MATCHING PEACOCK THRILLER THEME (Red/Crimson) ✅
+// components/PeacockThrillerSEOFAQSection.js - DYNAMIC & SEO OPTIMIZED ✅
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Info, Zap } from 'lucide-react'; // Added Zap for high energy thriller vibe
-import { PEACOCK_THRILLER_MOVIE_FAQS } from '../utils/peacockThrillerMovieData';
+import { Zap } from 'lucide-react'; // Keeps the high-energy thriller vibe
+// 🔥 IMPORT THE DYNAMIC FAQ GENERATOR
+import { getVisibleMovieFAQs } from '../utils/peacockThrillerMovieData';
 
 const PeacockThrillerSEOFAQSection = ({ movie }) => {
-    // 🔥 Get FAQs from PEACOCK_THRILLER_MOVIE_FAQS data
-    const faqsFromData = movie?.Title && PEACOCK_THRILLER_MOVIE_FAQS?.[movie.Title] 
-        ? PEACOCK_THRILLER_MOVIE_FAQS[movie.Title] 
-        : [];
+    const title = movie?.Title || "this film";
+    
+    // 🔥 AUTOMATICALLY GENERATE THE FAQS (Includes the Dynamic Timestamp FAQ & Intensity Peaks)
+    // This ensures the UI perfectly matches the Bot Schema!
+    const faqsFromData = getVisibleMovieFAQs(movie?.Title, movie?.tmdbId);
 
-    // 🔥 Safety check - return null if no FAQs
+    // Safety check - return null if no FAQs are found
     if (!faqsFromData || faqsFromData.length === 0) {
-        console.log('⚠️ No Peacock Thriller FAQs found for:', movie?.Title);
         return null;
     }
     
@@ -23,14 +24,17 @@ const PeacockThrillerSEOFAQSection = ({ movie }) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
         >
+            {/* 🎨 Aggressive Crimson/Red Theme for the Thriller Collection */}
             <h2 className="text-xl sm:text-2xl font-light text-red-400 mb-6 sm:mb-8 flex items-center gap-2 sm:gap-3">
                 <Zap size={20} className="sm:w-6 sm:h-6 text-red-500" />
-                <span className="hidden sm:inline">Frequently Asked Questions About {movie.Title}</span>
-                <span className="sm:hidden">FAQ About {movie.Title}</span>
+                <span className="hidden sm:inline">Frequently Asked Questions About {title}</span>
+                <span className="sm:hidden">FAQ About {title}</span>
             </h2>
-            <p className="text-gray-300 mb-4 sm:mb-6 text-sm sm:text-base">
-                Common questions about {movie.Title}, its twists, and its psychological impact.
+            
+            <p className="text-gray-300 mb-4 sm:mb-6 text-sm sm:text-base leading-relaxed">
+                Explore our **Parents Guide** and expert analysis for {title}. We provide accurate timestamps for sensitive scenes to skip and map the intense suspense of this Peacock thriller.
             </p>
+
             <div className="space-y-4 sm:space-y-6">
                 {faqsFromData.map((faq, index) => (
                     <motion.div 
@@ -40,8 +44,15 @@ const PeacockThrillerSEOFAQSection = ({ movie }) => {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.6, delay: index * 0.1 }}
                     >
-                        <h3 className="text-base sm:text-lg font-medium text-red-200 mb-2 sm:mb-3">{faq.question}</h3>
-                        <p className="text-gray-300 leading-relaxed text-sm sm:text-base">{faq.answer}</p>
+                        {/* 🔥 The exact question (Static Trivia OR Dynamic Parents Guide) */}
+                        <h3 className="text-base sm:text-lg font-medium text-red-300 mb-2 sm:mb-3 leading-relaxed">
+                            {faq.question || faq.q}
+                        </h3>
+                        
+                        {/* 🔥 The exact answer (including the HTML-formatted timestamp lists) */}
+                        <p className="text-gray-300 leading-relaxed text-sm sm:text-base font-light whitespace-pre-line">
+                            {faq.answer || faq.a}
+                        </p>
                     </motion.div>
                 ))}
             </div>
