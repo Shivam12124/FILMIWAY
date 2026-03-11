@@ -14,13 +14,12 @@ import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
 import TMDBAttribution from '../../../components/TMDBAttribution';
 
-// ✅ IMPORT PARAMOUNT FAMILY DATA
-import { generateCleanMovieSchema } from '../../../utils/cleanMovieSchema';
+// ✅ IMPORT PARAMOUNT FAMILY DATA & SCHEMA GENERATOR
 import {
   COMPLETE_MOVIE_DATABASE, 
   COMPLETE_MOVIE_DATA,
   SENSITIVE_TIMELINES,
-  PARAMOUNT_FAMILY_MOVIE_FAQS 
+  generateCleanMovieSchema
 } from '../../../utils/paramountFamilyMovieData';
 
 // ✅ THEME: Bright Yellow & Paramount Blue
@@ -167,7 +166,7 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
               <motion.div className="relative rounded-xl sm:rounded-2xl overflow-hidden p-4 sm:p-6 lg:p-8 backdrop-blur-sm" style={{ background: `linear-gradient(135deg, rgba(250, 204, 21, 0.15) 0%, rgba(15, 23, 42, 0.5) 100%)`, border: `1px solid ${COLORS.borderLight}`, boxShadow: `0 8px 32px rgba(250, 204, 21, 0.2)` }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.1, duration: 0.8 }}>
                 <div className="absolute top-0 left-0 right-0 h-0.5 sm:h-1" style={{ background: `linear-gradient(90deg, transparent, ${COLORS.accent}, transparent)` }} />
                 <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5">
-                  <motion.div className="p-2 sm:p-2.5 rounded-lg sm:rounded-xl flex-shrink-0" style={{ background: `linear-gradient(135deg, ${COLORS.accent}20, ${COLORS.accent}10)`, border: `1px solid ${COLORS.accent}40` }} whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}><Smile className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" style={{ color: COLORS.accent }} /></motion.div>
+                  <motion.div className="p-2 sm:p-2.5 rounded-lg sm:rounded-xl flex-shrink-0" style={{ background: `linear-gradient(135deg, ${COLORS.accent}20, ${COLORS.accent}10)`, border: `1px solid ${COLORS.accent}40` }} whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}><Sparkles className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" style={{ color: COLORS.accent }} /></motion.div>
                   <div className="min-w-0 flex-1"><h2 className="text-sm sm:text-base lg:text-xl xl:text-2xl font-bold leading-tight" style={{ color: COLORS.accent }}>Why This Movie is Magic</h2><p className="text-xs sm:text-sm hidden sm:block" style={{ color: COLORS.textMuted }}>Fun Factor: {funFactor}/100</p></div>
                 </div>
                 <div className="relative pl-4 sm:pl-6 border-l-2" style={{ borderColor: `${COLORS.accent}40` }}>
@@ -215,8 +214,6 @@ const ParamountFamilyBreadcrumb = ({ movie }) => (
     </motion.nav>
 );
 
-
-
 const ParamountFamilyMoviePage = ({ movie, tmdbData: movieData }) => {
     const router = useRouter();
     const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
@@ -240,11 +237,36 @@ const ParamountFamilyMoviePage = ({ movie, tmdbData: movieData }) => {
     const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
-    // ✅ SEO FIX
-    const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Best Family Movies on Paramount+ | Filmiway'].join('');
-    const cleanSEODesc = [movie.Title, ' (', currentMovieYear, ') - A magical family movie streaming on Paramount+. Ranked by wholesomeness and fun factor.'].join('');
+    // =========================================================================
+    // ✅ THE STANDARDIZED ELITE SEO BLOCK
+    // =========================================================================
 
-    const collectionSlug = router.pathname.split('/')[2];
+    const collectionSlug = 'best-family-movies-on-paramount-plus';
+    const dynamicCollectionName = 'Best Family Movies on Paramount+';
+
+    const scenes = SENSITIVE_TIMELINES?.[movie.tmdbId]?.scenes || [];
+    
+    // 1. UNIQUE META TITLE (Targets "Parents Guide & Timestamps")
+    const cleanSEOTitle = scenes.length > 0
+        ? `${movie.Title} (${currentMovieYear}) Parents Guide & Timestamps | ${dynamicCollectionName}`
+        : `${movie.Title} (${currentMovieYear}) Parents Guide | ${dynamicCollectionName}`;
+
+    // 2. STANDARDIZED ELITE META DESCRIPTION
+    let cleanSEODesc = '';
+    
+    if (scenes.length > 0) {
+        const rawTimes = scenes.slice(0, 3).map(s => s.end ? `${s.start}–${s.end}` : s.start);
+        const formattedTimes = rawTimes.length > 1 
+        ? `${rawTimes.slice(0, -1).join(', ')} and ${rawTimes.slice(-1)}` 
+        : rawTimes[0];
+
+        cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Viewer discretion advised for younger viewers. Includes exact scene timestamps: ${formattedTimes}.`;
+    } else {
+        cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Filmiway Content Advisory: No explicit sexual content or severe violence identified. Suitable for general family viewing.`;
+    }
+
+    // =========================================================================
+
     const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
 
     const { movieSchema, faqSchema } = generateCleanMovieSchema(
@@ -259,31 +281,26 @@ const ParamountFamilyMoviePage = ({ movie, tmdbData: movieData }) => {
     return (
         <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
             <Head>
-                <title>{cleanSEOTitle}</title>
-                <meta name="description" content={cleanSEODesc} />
+                {/* ✅ HYDRATION BUG FULLY RESOLVED */}
+                <title key="title">{cleanSEOTitle}</title>
+                <meta key="desc" name="description" content={cleanSEODesc} />
                 <link rel="canonical" href={canonicalUrl} />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
                 <meta name="robots" content="index, follow" />
                 <meta name="language" content="English" />
 
-                <script
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }}
-                />
-                {faqSchema && (
-                    <script
-                        type="application/ld+json"
-                        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-                    />
-                )}
+                {/* ✅ ADDED KEYS TO PREVENT HYDRATION DELETION */}
+                <script key="schema-movie" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }} />
+                {faqSchema && (<script key="schema-faq" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />)}
 
+                {/* Standard Meta Tags */}
                 <meta property="og:title" content={cleanSEOTitle} />
-                <meta property="og:description" content="A great family movie on Paramount+." />
+                <meta property="og:description" content={cleanSEODesc} />
                 <meta property="og:type" content="video.movie" />
                 <meta property="og:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content={cleanSEOTitle} />
-                <meta name="twitter:description" content="A great family movie on Paramount+." />
+                <meta name="twitter:description" content={cleanSEODesc} />
                 <meta name="twitter:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
             </Head>
 
@@ -293,6 +310,7 @@ const ParamountFamilyMoviePage = ({ movie, tmdbData: movieData }) => {
             <SmartBackButton />
             
             <div className="relative z-10 pt-10 sm:pt-12 lg:pt-16">
+                {/* ✅ SEO FIX: HIDDEN H1 ADDED HERE */}
                 <h1 className="sr-only">{cleanSEOTitle}</h1>
 
                 <ParamountFamilyBreadcrumb movie={movie} />

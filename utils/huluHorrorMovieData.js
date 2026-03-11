@@ -1,4 +1,4 @@
-// utils/huluHorrorMovieData.js - HULU HORROR COLLECTION DATA
+// utils/huluHorrorMovieData.js - HULU HORROR COLLECTION DATA ✅
 // Ranked by Scariness: Dread, Gore, and Psychological Trauma
 
 export const TMDB_CONFIG = {
@@ -45,8 +45,13 @@ export const SENSITIVE_TIMELINES = {
     // 4. Oddity
     1094318: { scenes: [] },
 
-    // 5. Don't Breathe
-    300669: { scenes: [] },
+  // 5. Don't Breathe
+    300669: { 
+        scenes: [
+            { start: "0:03:14", end: "0:03:17", type: "Sexual Content", severity: "Moderate" },
+            { start: "1:09:50", end: "1:11:00", type: "Sexual content", severity: "High" }
+        ] 
+    },
 
     // 6. The Babadook
     242224: { scenes: [] }, 
@@ -77,6 +82,7 @@ export const SENSITIVE_TIMELINES = {
     // 10. Late Night with the Devil
     1014590: { scenes: [] }
 };
+
 export const FALLBACK_POSTERS = {
     1017409: "https://image.tmdb.org/t/p/w500/2yl2zC3tX7F2KyD62P8R92V7X9o.jpg",
     1079373: "https://image.tmdb.org/t/p/w500/5aj8vVGFvGVbXQmZhcs62060w23.jpg",
@@ -84,18 +90,11 @@ export const FALLBACK_POSTERS = {
     1094318: "https://image.tmdb.org/t/p/w500/uln9Efc2vzDOl0WTEhlqcedtJc.jpg",
     300669: "https://image.tmdb.org/t/p/w500/a7V9Xh5b32G2bB5g3g5g3g5g3g5.jpg", // Don't Breathe
     242224: "https://image.tmdb.org/t/p/w500/k5WCg7in2F3xX7aX7aX7aX7aX7a.jpg",
-    516632: "https://image.tmdb.org/t/p/w500/4PAqJ9l8J9l8J9l8J9l8J9l8J9l.jpg",
+    516632: "https://image.tmdb.org/t/p/w500/4PAqJ9l8J9l8J9l8J9l8J9l8J.jpg",
     913290: "https://image.tmdb.org/t/p/w500/y2Ca1neKke2mGPMaZvXdMjFvqCN.jpg",
     437342: "https://image.tmdb.org/t/p/w500/uGyGdD8f1Z8f1Z8f1Z8f1Z8f1Z8.jpg",
     1014590: "https://image.tmdb.org/t/p/w500/j9j9j9j9j9j9j9j9j9j9j9j9j9j.jpg"
 };
-
-
-
-
-
-
-
 
 // ✅ Helper to map "Horror" metrics to your existing code keys
 const createMovieData = (data) => ({
@@ -114,11 +113,11 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Ezequiel Rodríguez", "Demián Salomón", "Silvina Sabater"], boxOffice: "$0.6 million", budget: "$4 million", 
         dna: { "Horror": 80, "Thriller": 20 }, 
         scenes: [
-            { time: 10, intensity: 45, label: "The Rotten One", color: "#7f1d1d" }, // Initial shock
-            { time: 30, intensity: 75, label: "The Dog", color: "#991b1b" }, // Escalation
-            { time: 50, intensity: 88, label: "The Road", color: "#b91c1c" }, // Crisis
-            { time: 75, intensity: 82, label: "The School", color: "#dc2626" }, // Sustained dread
-            { time: 95, intensity: 100, label: "No Rules", color: "#ef4444" } // PEAK TRAUMA
+            { time: 10, intensity: 45, label: "The Rotten One", color: "#7f1d1d" }, 
+            { time: 30, intensity: 75, label: "The Dog", color: "#991b1b" }, 
+            { time: 50, intensity: 88, label: "The Road", color: "#b91c1c" }, 
+            { time: 75, intensity: 82, label: "The School", color: "#dc2626" }, 
+            { time: 95, intensity: 100, label: "No Rules", color: "#ef4444" } 
         ],
         synopsis: "In a remote village, two brothers discover a demon-infected man just days away from 'giving birth' to evil itself. Desperate to avoid a government protocol that would level their town, they attempt to dispose of the body themselves, but their actions inadvertently trigger a contagion of violence that spreads like a virus. It is a brutal, unforgiving film that disregards every safety rule of the genre—children, animals, and pregnant women are not safe here.",
         themes: ["Contagion", "Nihilism", "Family Trauma"]
@@ -133,11 +132,11 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Maika Monroe", "Nicolas Cage", "Alicia Witt"], boxOffice: "$100 million", budget: "$10 million", 
         dna: { "Horror": 60, "Crime": 40 }, 
         scenes: [
-            { time: 5, intensity: 25, label: "The Opening", color: "#fbbf24" }, // Setup
-            { time: 40, intensity: 55, label: "The Cipher", color: "#f59e0b" }, // Mystery
-            { time: 70, intensity: 80, label: "Interrogation", color: "#d97706" }, // Tension
-            { time: 90, intensity: 92, label: "Hail Satan", color: "#b45309" }, // PEAK DREAD
-            { time: 100, intensity: 85, label: "The Birthday", color: "#78350f" } // Lingering ending
+            { time: 5, intensity: 25, label: "The Opening", color: "#fbbf24" }, 
+            { time: 40, intensity: 55, label: "The Cipher", color: "#f59e0b" }, 
+            { time: 70, intensity: 80, label: "Interrogation", color: "#d97706" }, 
+            { time: 90, intensity: 92, label: "Hail Satan", color: "#b45309" }, 
+            { time: 100, intensity: 85, label: "The Birthday", color: "#78350f" } 
         ],
         synopsis: "FBI Agent Lee Harker, a gifted new recruit with psychic intuition, is assigned to an unsolved serial killer case that has baffled authorities for decades. As she uncovers evidence of the occult, she realizes a personal connection to the killer known only as 'Longlegs.' Drenched in a suffocating, satanic atmosphere, the film is a procedural nightmare that feels less like a movie and more like a curse captured on celluloid.",
         themes: ["Satanism", "Procedural", "Atmospheric Dread"]
@@ -152,11 +151,11 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Matt Dillon", "Bruno Ganz", "Uma Thurman"], boxOffice: "$5 million", budget: "$10 million", 
         dna: { "Horror": 50, "Drama": 30, "Crime": 20 }, 
         scenes: [
-            { time: 20, intensity: 50, label: "1st Incident", color: "#ef4444" }, // Start
-            { time: 50, intensity: 98, label: "The Picnic", color: "#b91c1c" }, // PEAK CRUELTY
-            { time: 80, intensity: 65, label: "Simple", color: "#991b1b" }, // Philosophical lull
-            { time: 110, intensity: 85, label: "Full Metal Jacket", color: "#7f1d1d" }, // Escalation
-            { time: 145, intensity: 90, label: "The Descent", color: "#450a0a" } // Metaphysical ending
+            { time: 20, intensity: 50, label: "1st Incident", color: "#ef4444" }, 
+            { time: 50, intensity: 98, label: "The Picnic", color: "#b91c1c" }, 
+            { time: 80, intensity: 65, label: "Simple", color: "#991b1b" }, 
+            { time: 110, intensity: 85, label: "Full Metal Jacket", color: "#7f1d1d" }, 
+            { time: 145, intensity: 90, label: "The Descent", color: "#450a0a" } 
         ],
         synopsis: "Set in the USA in the 1970s, the film follows Jack, a highly intelligent serial killer, over the course of 12 years. Through five 'incidents' that define his development, Jack views each murder as a work of art, engaging in a running dialogue with a mysterious figure named Verge about philosophy, history, and the nature of evil. It is a deeply disturbing, provocative examination of narcissism and psychopathy that refuses to look away.",
         themes: ["Narcissism", "Art vs Violence", "Psychopathy"]
@@ -171,11 +170,11 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Gwilym Lee", "Carolyn Bracken", "Tadhg Murphy"], boxOffice: "$1 million", budget: "N/A", 
         dna: { "Horror": 70, "Mystery": 30 }, 
         scenes: [
-            { time: 15, intensity: 40, label: "The Glass Eye", color: "#a16207" }, // Setup
-            { time: 45, intensity: 75, label: "The Tent", color: "#854d0e" }, // Unease
-            { time: 70, intensity: 92, label: "The Wooden Man", color: "#713f12" }, // PEAK TERROR
-            { time: 85, intensity: 80, label: "Trapdoor", color: "#451a03" }, // Action
-            { time: 95, intensity: 60, label: "The Bell", color: "#78350f" } // Chilling Resolve
+            { time: 15, intensity: 40, label: "The Glass Eye", color: "#a16207" }, 
+            { time: 45, intensity: 75, label: "The Tent", color: "#854d0e" }, 
+            { time: 70, intensity: 92, label: "The Wooden Man", color: "#713f12" }, 
+            { time: 85, intensity: 80, label: "Trapdoor", color: "#451a03" }, 
+            { time: 95, intensity: 60, label: "The Bell", color: "#78350f" } 
         ],
         synopsis: "After the brutal murder of her twin sister, a blind medium and curio shop owner visits the remote country house where the crime occurred. Armed with a terrifying life-sized wooden mannequin that acts as a conduit for the supernatural, she begins to peel back the layers of lies told by her brother-in-law. A masterclass in atmosphere and pacing, relying on dread rather than cheap jump scares to unsettle you.",
         themes: ["Cursed Objects", "Grief", "Revenge"]
@@ -190,11 +189,11 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Stephen Lang", "Jane Levy", "Dylan Minnette"], boxOffice: "$157 million", budget: "$9 million", 
         dna: { "Horror": 50, "Thriller": 50 }, 
         scenes: [
-            { time: 15, intensity: 20, label: "The Break In", color: "#404040" }, // Setup
-            { time: 45, intensity: 80, label: "Lights Out", color: "#171717" }, // Hunter mode
-            { time: 70, intensity: 88, label: "The Dog Chase", color: "#dc2626" }, // Action
-            { time: 85, intensity: 94, label: "The Basement", color: "#7f1d1d" }, // PEAK HORROR
-            { time: 95, intensity: 85, label: "The Escape", color: "#b91c1c" } // Climax
+            { time: 15, intensity: 20, label: "The Break In", color: "#404040" }, 
+            { time: 45, intensity: 80, label: "Lights Out", color: "#171717" }, 
+            { time: 70, intensity: 88, label: "The Dog Chase", color: "#dc2626" }, 
+            { time: 85, intensity: 94, label: "The Basement", color: "#7f1d1d" }, 
+            { time: 95, intensity: 85, label: "The Escape", color: "#b91c1c" } 
         ],
         synopsis: "Three young thieves break into the house of a wealthy blind veteran in Detroit, thinking it will be an easy score to fund their new lives in California. They are dead wrong. Trapped inside with a man who has heightened senses and lethal combat skills, the hunters become the hunted. But the true horror lies in the terrible secret he is hiding in the basement, turning a heist film into a nightmare.",
         themes: ["Home Invasion", "Disability", "Moral Ambiguity"]
@@ -209,11 +208,11 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Essie Davis", "Noah Wiseman", "Daniel Henshall"], boxOffice: "$10 million", budget: "$2 million", 
         dna: { "Horror": 60, "Drama": 40 }, 
         scenes: [
-            { time: 15, intensity: 30, label: "Bedtime Story", color: "#404040" }, // Unease
-            { time: 45, intensity: 70, label: "Baba-Dook-Dook", color: "#262626" }, // Fear
-            { time: 70, intensity: 85, label: "Possession", color: "#171717" }, // Crisis
-            { time: 85, intensity: 90, label: "The Basement", color: "#0a0a0a" }, // PEAK CONFRONTATION
-            { time: 92, intensity: 50, label: "Feeding Time", color: "#404040" } // Resolution
+            { time: 15, intensity: 30, label: "Bedtime Story", color: "#404040" }, 
+            { time: 45, intensity: 70, label: "Baba-Dook-Dook", color: "#262626" }, 
+            { time: 70, intensity: 85, label: "Possession", color: "#171717" }, 
+            { time: 85, intensity: 90, label: "The Basement", color: "#0a0a0a" }, 
+            { time: 92, intensity: 50, label: "Feeding Time", color: "#404040" } 
         ],
         synopsis: "Amelia, a single mother still plagued by the violent death of her husband, struggles to raise her difficult 6-year-old son, Samuel. When a disturbing storybook called 'Mister Babadook' turns up at their house, Samuel is convinced that the monster in the book is real. As Amelia's sleep deprivation grows, she begins to sense a sinister presence herself, leading to a terrifying battle for her sanity and her son's soul.",
         themes: ["Grief", "Motherhood", "Mental Illness"]
@@ -228,11 +227,11 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["James Badge Dale", "Marin Ireland", "Stephen Root"], boxOffice: "$4 million", budget: "$16 million", 
         dna: { "Horror": 60, "Mystery": 40 }, 
         scenes: [
-            { time: 20, intensity: 85, label: "The Cave Prologue", color: "#172554" }, // High Start
-            { time: 50, intensity: 50, label: "The Bridge", color: "#1e3a8a" }, // Investigation
-            { time: 85, intensity: 65, label: "The Campfire", color: "#1d4ed8" }, // Dread
-            { time: 110, intensity: 88, label: "The Cult", color: "#2563eb" }, // Crisis
-            { time: 130, intensity: 90, label: "The Signal", color: "#172554" } // PEAK EXISTENTIAL
+            { time: 20, intensity: 85, label: "The Cave Prologue", color: "#172554" }, 
+            { time: 50, intensity: 50, label: "The Bridge", color: "#1e3a8a" }, 
+            { time: 85, intensity: 65, label: "The Campfire", color: "#1d4ed8" }, 
+            { time: 110, intensity: 88, label: "The Cult", color: "#2563eb" }, 
+            { time: 130, intensity: 90, label: "The Signal", color: "#172554" } 
         ],
         synopsis: "On the trail of a missing girl, an ex-cop encounters a secretive group attempting to summon a terrifying supernatural entity known as 'The Empty Man.' What starts as an urban legend investigation spirals into a cosmic horror nightmare involving ancient cults, tulpa theory, and the nature of reality itself. Features a legendary 20-minute prologue that stands as its own mini-masterpiece of dread.",
         themes: ["Nihilism", "Cults", "Tulpa Theory"]
@@ -247,11 +246,11 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Georgina Campbell", "Bill Skarsgård", "Justin Long"], boxOffice: "$45 million", budget: "$4.5 million", 
         dna: { "Horror": 70, "Thriller": 30 }, 
         scenes: [
-            { time: 15, intensity: 40, label: "The Double Booking", color: "#1f2937" }, // Unease
-            { time: 40, intensity: 88, label: "The Tape Measure", color: "#111827" }, // PEAK DISCOVERY
-            { time: 60, intensity: 20, label: "The Cut (Flashback)", color: "#374151" }, // Reset
-            { time: 85, intensity: 75, label: "The Mother", color: "#1f2937" }, // Horror
-            { time: 95, intensity: 85, label: "Water Tower", color: "#111827" } // Action
+            { time: 15, intensity: 40, label: "The Double Booking", color: "#1f2937" }, 
+            { time: 40, intensity: 88, label: "The Tape Measure", color: "#111827" }, 
+            { time: 60, intensity: 20, label: "The Cut (Flashback)", color: "#374151" }, 
+            { time: 85, intensity: 75, label: "The Mother", color: "#1f2937" }, 
+            { time: 95, intensity: 85, label: "Water Tower", color: "#111827" } 
         ],
         synopsis: "A young woman traveling to Detroit for a job interview books a rental home, only to arrive late at night and discover that the house is double-booked and a strange man is already staying there. Against her better judgment, she decides to spend the evening. But she soon discovers that there is a lot more to fear than just an unexpected houseguest. A wild, unpredictable ride that completely shifts genres halfway through.",
         themes: ["Urban Decay", "Toxic Masculinity", "Secrets"]
@@ -266,11 +265,11 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Nell Tiger Free", "Ralph Ineson", "Sonia Braga"], boxOffice: "$53 million", budget: "$30 million", 
         dna: { "Horror": 80, "Mystery": 20 }, 
         scenes: [
-            { time: 15, intensity: 30, label: "The Convent", color: "#991b1b" }, // Atmosphere
-            { time: 55, intensity: 94, label: "The Birth Scene", color: "#7f1d1d" }, // PEAK BODY HORROR
-            { time: 80, intensity: 75, label: "The Discovery", color: "#b91c1c" }, // Plot Twist
-            { time: 100, intensity: 85, label: "The Ritual", color: "#991b1b" }, // Climax
-            { time: 115, intensity: 90, label: "It's All For You", color: "#7f1d1d" } // Iconic connection
+            { time: 15, intensity: 30, label: "The Convent", color: "#991b1b" }, 
+            { time: 55, intensity: 94, label: "The Birth Scene", color: "#7f1d1d" }, 
+            { time: 80, intensity: 75, label: "The Discovery", color: "#b91c1c" }, 
+            { time: 100, intensity: 85, label: "The Ritual", color: "#991b1b" }, 
+            { time: 115, intensity: 90, label: "It's All For You", color: "#7f1d1d" } 
         ],
         synopsis: "A young American woman is sent to Rome to begin a life of service to the church. However, she encounters a darkness that causes her to question her own faith and uncovers a terrifying conspiracy within the church to bring about the birth of the Antichrist. A stunningly shot, visceral prequel that honors the original classic while delivering some of the most intense body horror in recent memory.",
         themes: ["Religious Conspiracy", "Bodily Autonomy", "Antichrist"]
@@ -285,16 +284,17 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["David Dastmalchian", "Laura Gordon", "Ian Bliss"], boxOffice: "$12 million", budget: "$2 million", 
         dna: { "Horror": 70, "Thriller": 30 }, 
         scenes: [
-            { time: 20, intensity: 30, label: "The Setup", color: "#c2410c" }, // Tv vibes
-            { time: 50, intensity: 60, label: "The Hypnosis", color: "#ea580c" }, // Creepy
-            { time: 70, intensity: 75, label: "The Manifestation", color: "#f97316" }, // Escalation
-            { time: 85, intensity: 88, label: "Live TV Chaos", color: "#c2410c" }, // Panic
-            { time: 90, intensity: 92, label: "Static", color: "#9a3412" } // PEAK SURREALISM
+            { time: 20, intensity: 30, label: "The Setup", color: "#c2410c" }, 
+            { time: 50, intensity: 60, label: "The Hypnosis", color: "#ea580c" }, 
+            { time: 70, intensity: 75, label: "The Manifestation", color: "#f97316" }, 
+            { time: 85, intensity: 88, label: "Live TV Chaos", color: "#c2410c" }, 
+            { time: 90, intensity: 92, label: "Static", color: "#9a3412" } 
         ],
         synopsis: "Jack Delroy is the host of a syndicated talk show 'Night Owls' that has long been a trusted companion to insomniacs around the country. But with ratings plummeting, Jack plans a Halloween special in 1977 like no other—unaware he is about to unleash evil into the living rooms of America. Presented as 'found footage' of the broadcast, it captures the 70s aesthetic perfectly while descending into absolute madness.",
         themes: ["Fame", "Occult", "Media Manipulation"]
     })
 };
+
 export const STRATEGIC_QUOTES = {
     1017409: "Evil doesn't wait.",
     1079373: "Hail Satan!",
@@ -501,21 +501,27 @@ export const HULU_HORROR_MOVIE_FAQS = {
         }
     ]
 };
+
 export const getTMDBPosterUrl = (posterPath, size = 'medium') => {
     if (!posterPath) return null;
     const posterSize = TMDB_CONFIG.POSTER_SIZES[size] || TMDB_CONFIG.POSTER_SIZES.medium;
     return `${TMDB_CONFIG.IMAGE_BASE_URL}/${posterSize}${posterPath}`;
 };
 
+// 🔥 1. THE KEYWORD BRIDGE (SEO-Optimized for Horror Content)
 export const getSensitiveContentTypes = (tmdbId) => {
     const sensitiveData = SENSITIVE_TIMELINES[tmdbId];
     if (!sensitiveData?.scenes?.length) return null;
     const types = new Set();
     sensitiveData.scenes.forEach(scene => {
-        const lowerType = scene.type.toLowerCase();
+        const lowerType = scene.type?.toLowerCase() || '';
+        
+        // Mapped to specific SEO terminology for mature/horror content
+        if (lowerType.includes('nudity')) types.add('nudity');
+        if (lowerType.includes('sex')) types.add('sexual content');
         if (lowerType.includes('gore') || lowerType.includes('mutilation')) types.add('extreme gore');
         if (lowerType.includes('animal')) types.add('animal harm');
-        if (lowerType.includes('sexual') || lowerType.includes('assault')) types.add('sexual violence');
+        if (lowerType.includes('assault')) types.add('sexual violence');
         if (lowerType.includes('suicide') || lowerType.includes('self-harm')) types.add('self-harm');
     });
     return Array.from(types);
@@ -525,39 +531,130 @@ export const generateFAQData = (movie) => {
     return HULU_HORROR_MOVIE_FAQS[movie.Title] || [];
 };
 
-export const generateMovieSchema = (movie) => {
-    const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
-    const posterUrl = FALLBACK_POSTERS[movie.tmdbId] || '';
-    return {
+// 🔥 2. THE "GOLDEN EGG" SCHEMA GENERATOR (Universal Version)
+export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, collectionSlug, unused, movieInfo) => {
+    
+    const movieSchema = {
         '@context': 'https://schema.org',
         '@type': 'Movie',
         'name': movie.Title,
-        'description': movieInfo?.synopsis || `${movie.Title} - A terrifying horror movie on Hulu.`,
+        'description': movieInfo?.synopsis || `${movie.Title} (${currentMovieYear}) - A terrifying horror movie on Hulu.`,
         'genre': movie.genre,
-        'datePublished': movie.year.toString(),
+        'datePublished': currentMovieYear?.toString() || movie.year.toString(),
         'director': { '@type': 'Person', 'name': movieInfo?.director || 'Director' },
         'actor': movieInfo?.cast?.map(actor => ({ '@type': 'Person', 'name': actor })) || [],
-        'duration': `PT${movie.runtime}M`,
-        'image': posterUrl,
-        'aggregateRating': { 
-            '@type': 'AggregateRating', 
-            'ratingValue': movieInfo?.rating || 7.0, 
-            'bestRating': 10, 
-            'worstRating': 1, 
-            'ratingCount': movieInfo?.audienceScore || 100 
-        }
+        'image': tmdbData?.poster_path ? `https://image.tmdb.org/t/p/w500${tmdbData.poster_path}` : (FALLBACK_POSTERS[movie.tmdbId] || ''),
+        'duration': `PT${movie.runtime}M`
     };
-};
 
-export const generateFAQSchema = (faqs) => ({
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    'mainEntity': faqs.map(faq => ({ 
+    const staticFaqs = HULU_HORROR_MOVIE_FAQS[movie.Title] || [];
+    const sensitiveScenes = SENSITIVE_TIMELINES[movie.tmdbId]?.scenes || [];
+    const intensityScenes = movieInfo?.scenes || [];
+    
+    const schemaFaqs = staticFaqs.map(faq => ({ 
         '@type': 'Question', 
         'name': faq.question, 
         'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer } 
-    }))
-});
+    }));
+
+    // Inject Intensity Graph Timestamps into Schema (Mapped to Scariness)
+    if (intensityScenes.length > 0) {
+        const schemaIntensityList = intensityScenes.map(s => `<li>Minute ${s.time} - ${s.label} (Trauma Index: ${s.intensity}/100)</li>`).join('');
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `What are the scariest scenes in ${movie.Title}?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `According to the Filmiway Trauma Index, ${movie.Title} peaks at the following terrifying moments:<br><br><ul>${schemaIntensityList}</ul>` 
+            }
+        });
+    }
+
+    // Extract runtime safely
+    let currentRuntime = movie.Runtime || movie.runtime || "Official";
+    if (typeof currentRuntime === 'number') currentRuntime = `${currentRuntime} min`;
+
+    // Inject Sensitive Content Timestamps into Schema (Top Priority)
+    if (sensitiveScenes.length > 0) {
+        const typesArray = getSensitiveContentTypes(movie.tmdbId) || ['mature content'];
+        const typesString = typesArray.join(' and ');
+
+        const schemaListText = sensitiveScenes.map(s => {
+            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
+            return `<li>${timeRange} - ${s.type || 'Mature Content'}</li>`;
+        }).join('');
+
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `Yes, according to the Filmiway Timestamps & Parents Guide, ${movie.Title} contains highly sensitive material including ${typesString}. These timestamps are accurate for the ${currentRuntime} runtime. Exact timestamps for these scenes are:<br><br><ul>${schemaListText}</ul>` 
+            }
+        });
+    } else {
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `The Filmiway Timestamps & Parents Guide confirms that ${movie.Title} is free of explicit sexual content and nudity, though viewer discretion is heavily advised due to intense horror elements. This assessment is accurate for the ${currentRuntime} runtime.` 
+            }
+        });
+    }
+
+    const faqSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        'name': `Parents Guide and FAQ for ${movie.Title}`,
+        'mainEntity': schemaFaqs
+    };
+
+    return { movieSchema, faqSchema };
+};
+
+// 🔥 3. FRONTEND UI SYNC (Displays the timestamps on your Next.js page)
+export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Official") => {
+    const staticFaqs = HULU_HORROR_MOVIE_FAQS[movieTitle] ? [...HULU_HORROR_MOVIE_FAQS[movieTitle]] : [];
+    const sensitiveScenes = SENSITIVE_TIMELINES[tmdbId]?.scenes || [];
+    const movieInfo = COMPLETE_MOVIE_DATA[tmdbId];
+    const intensityScenes = movieInfo?.scenes || [];
+
+    // ✅ Safely parsing runtime to a string
+    const dbMovie = COMPLETE_MOVIE_DATABASE.find(m => m.tmdbId === tmdbId);
+    let finalRuntime = currentRuntime !== "Official" ? currentRuntime : (dbMovie?.runtime ? `${dbMovie.runtime} min` : "Official");
+    if (typeof finalRuntime === 'number') finalRuntime = `${finalRuntime} min`;
+
+    if (intensityScenes.length > 0) {
+        const uiIntensityList = intensityScenes.map(s => `• Minute ${s.time} - ${s.label} (Trauma Index: ${s.intensity}/100)`).join('\n');
+        staticFaqs.unshift({
+            question: `What are the scariest scenes in ${movieTitle}?`,
+            answer: `According to the Filmiway Trauma Index, ${movieTitle} peaks at the following terrifying moments:\n\n${uiIntensityList}`
+        });
+    }
+
+    if (sensitiveScenes.length > 0) {
+        const typesArray = getSensitiveContentTypes(tmdbId) || ['mature content'];
+        const typesString = typesArray.join(' and ');
+
+        const uiListText = sensitiveScenes.map(s => {
+            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
+            return `• ${timeRange} - ${s.type || 'Mature Content'}`;
+        }).join('\n');
+
+        staticFaqs.unshift({
+            question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
+            answer: `Yes, according to the Filmiway Timestamps & Parents Guide, ${movieTitle} contains highly sensitive material including ${typesString}. These timestamps are accurate for the ${finalRuntime} runtime. Exact timestamps for these scenes are:\n\n${uiListText}`
+        });
+    } else {
+        staticFaqs.unshift({
+            question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
+            answer: `The Filmiway Timestamps & Parents Guide confirms that ${movieTitle} is free of explicit sexual content and nudity, though viewer discretion is heavily advised due to intense horror elements. This assessment is accurate for the ${finalRuntime} runtime.`
+        });
+    }
+
+    return staticFaqs;
+};
 
 export const fetchMovieFromTMDB = async (tmdbId) => ({ 
     poster_path: null, 

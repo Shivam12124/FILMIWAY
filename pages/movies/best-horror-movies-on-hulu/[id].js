@@ -1,4 +1,4 @@
-// pages/best-horror-movies-on-hulu/[id].js - HULU HORROR MOVIES
+// pages/best-horror-movies-on-hulu/[id].js - HULU HORROR MOVIES ✅
 // VISUALS: Horror/Dread Theme (Blood Red/Darkness)
 // SCHEMA: Maximalist (Hidden Dread, Gore, and FAQs for Bots)
 
@@ -8,19 +8,18 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, Play, X, User, Twitter, Hash, Send, Film, Skull, Ghost, Theater, Flame } from 'lucide-react'; // ✅ Added Horror Icons
+import { ChevronLeft, Play, X, User, Twitter, Hash, Send, Film, Skull, Ghost, Theater, Flame } from 'lucide-react';
 import InternalCollectionsSection from '../../../components/InternalCollectionsSection';
 import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
 import TMDBAttribution from '../../../components/TMDBAttribution';
 
-// ✅ IMPORT DATA INCLUDING FAQs
-import { generateCleanMovieSchema } from '../../../utils/cleanMovieSchema';
+// ✅ IMPORT DATA & SCHEMA GENERATOR
 import {
   COMPLETE_MOVIE_DATABASE, 
   COMPLETE_MOVIE_DATA,
   SENSITIVE_TIMELINES,
-  HULU_HORROR_MOVIE_FAQS 
+  generateCleanMovieSchema 
 } from '../../../utils/huluHorrorMovieData';
 
 const COLORS = {
@@ -71,7 +70,7 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
   const posterImage = posterPath ? getTMDBImage(posterPath, 'w500') : null;
 
   const insight = getHorrorInsight(movie?.Title);
-  const dreadScore = richData?.psychologicalIntensity || 85; // Mapping 'psychologicalIntensity' to Dread Score
+  const dreadScore = richData?.scariness || 85; 
 
   const mobileHeroCSS = `
   @media (max-width: 767px) {
@@ -134,7 +133,7 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
         <div className="mobile-hero-row">
           <div className="mobile-hero-poster">{posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} width={320} height={480} className="w-full h-auto" priority /> : <div style={{ background: COLORS.bgCard, width: '100%', height: '150px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Theater style={{ color: COLORS.textMuted }} /></div>}</div>
           <div className="mobile-psych-card">
-            <div className="mobile-psych-row"><Ghost className="mobile-psych-icon" /><div><div className="mobile-psych-title">Dread Score</div></div></div>
+            <div className="mobile-psych-row"><Ghost className="mobile-psych-icon" /><div><div className="mobile-psych-title">Trauma Score</div></div></div>
             <div className="mobile-psych-desc"><strong>{dreadScore}/100</strong> - {insight.substring(0, 80)}...</div>
           </div>
         </div>
@@ -151,7 +150,7 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
                 <div className="absolute top-0 left-0 right-0 h-0.5 sm:h-1" style={{ background: `linear-gradient(90deg, transparent, ${COLORS.accent}, transparent)` }} />
                 <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5">
                   <motion.div className="p-2 sm:p-2.5 rounded-lg sm:rounded-xl flex-shrink-0" style={{ background: `linear-gradient(135deg, ${COLORS.accent}20, ${COLORS.accent}10)`, border: `1px solid ${COLORS.accent}40` }} whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}><Skull className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" style={{ color: COLORS.accent }} /></motion.div>
-                  <div className="min-w-0 flex-1"><h2 className="text-sm sm:text-base lg:text-xl xl:text-2xl font-bold leading-tight" style={{ color: COLORS.accent }}>Why It's Terrifying</h2><p className="text-xs sm:text-sm hidden sm:block" style={{ color: COLORS.textMuted }}>Dread Score: {dreadScore}/100</p></div>
+                  <div className="min-w-0 flex-1"><h2 className="text-sm sm:text-base lg:text-xl xl:text-2xl font-bold leading-tight" style={{ color: COLORS.accent }}>Why It's Terrifying</h2><p className="text-xs sm:text-sm hidden sm:block" style={{ color: COLORS.textMuted }}>Trauma Score: {dreadScore}/100</p></div>
                 </div>
                 <div className="relative pl-4 sm:pl-6 border-l-2" style={{ borderColor: `${COLORS.accent}40` }}>
                   <motion.div className="absolute -left-1.5 sm:-left-2 top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full" style={{ backgroundColor: COLORS.accent }} animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 2, repeat: Infinity }} />
@@ -198,7 +197,7 @@ const HuluHorrorBreadcrumb = ({ movie }) => (
     </motion.nav>
 );
 
-const HuluHorrorMoviePage = ({ movie, tmdbData: movieData }) => {
+const HuluHorrorMoviePage = ({ movie, tmdbData: movieData, sensitiveData }) => {
     const router = useRouter();
     const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
     const richData = COMPLETE_MOVIE_DATA[movie.tmdbId]; 
@@ -221,11 +220,36 @@ const HuluHorrorMoviePage = ({ movie, tmdbData: movieData }) => {
     const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
-    // ✅ SEO FIX: Clean strings to prevent hydration errors
-    const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Best Horror Movies on Hulu | Filmiway'].join('');
-    const cleanSEODesc = [movie.Title, ' (', currentMovieYear, ') - A terrifying horror movie streaming on Hulu. Ranked by dread and gore levels.'].join('');
+    // =========================================================================
+    // ✅ THE STANDARDIZED ELITE SEO BLOCK
+    // =========================================================================
 
-    const collectionSlug = router.pathname.split('/')[2];
+    const collectionSlug = 'best-horror-movies-on-hulu';
+    const dynamicCollectionName = 'Best Horror Movies on Hulu';
+
+    const scenes = SENSITIVE_TIMELINES?.[movie.tmdbId]?.scenes || [];
+    
+    // 1. UNIQUE META TITLE (Targets "Parents Guide & Timestamps")
+    const cleanSEOTitle = scenes.length > 0
+        ? `${movie.Title} (${currentMovieYear}) Parents Guide & Timestamps | ${dynamicCollectionName}`
+        : `${movie.Title} (${currentMovieYear}) Parents Guide | ${dynamicCollectionName}`;
+
+    // 2. STANDARDIZED ELITE META DESCRIPTION
+    let cleanSEODesc = '';
+    
+    if (scenes.length > 0) {
+        const rawTimes = scenes.slice(0, 3).map(s => s.end ? `${s.start}–${s.end}` : s.start);
+        const formattedTimes = rawTimes.length > 1 
+        ? `${rawTimes.slice(0, -1).join(', ')} and ${rawTimes.slice(-1)}` 
+        : rawTimes[0];
+
+        cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Viewer discretion advised. Includes exact scene timestamps: ${formattedTimes}.`;
+    } else {
+        cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Filmiway Content Advisory: No explicit sexual content or severe nudity identified. Suitable for general viewing.`;
+    }
+
+    // =========================================================================
+
     const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
 
     const { movieSchema, faqSchema } = generateCleanMovieSchema(
@@ -248,31 +272,27 @@ const HuluHorrorMoviePage = ({ movie, tmdbData: movieData }) => {
                 <meta name="robots" content="index, follow" />
                 <meta name="language" content="English" />
 
-                {/* ✅ BARRIER #3 DEFEATED: JSON-LD Schema */}
-                <script
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }}
-                />
-                {faqSchema && (
-                    <script
-                        type="application/ld+json"
-                        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-                    />
-                )}
+                {/* ✅ SCHEMA INJECTION WITH UNIQUE KEYS TO PREVENT NEXT.JS DELETION */}
+                <script key="schema-movie" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }} />
+                {faqSchema && (<script key="schema-faq" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />)}
 
                 {/* Standard Meta Tags */}
                 <meta property="og:title" content={cleanSEOTitle} />
-                <meta property="og:description" content="A terrifying horror movie on Hulu." />
+                <meta property="og:description" content={cleanSEODesc} />
                 <meta property="og:type" content="video.movie" />
+                <meta property="og:url" content={canonicalUrl} />
                 <meta property="og:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content={cleanSEOTitle} />
-                <meta name="twitter:description" content="A terrifying horror movie on Hulu." />
+                <meta name="twitter:description" content={cleanSEODesc} />
                 <meta name="twitter:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
             </Head>
 
             <SubtleFilmGrain />
             <div className="absolute inset-0"><CinematicBackground /></div>
+            
+            {/* ✅ RESTORED BACK BUTTON IN THE DOM */}
+            <SmartBackButton />
 
             <div className="relative z-10 pt-10 sm:pt-12 lg:pt-16">
                 
@@ -284,14 +304,18 @@ const HuluHorrorMoviePage = ({ movie, tmdbData: movieData }) => {
                     <OptimizedBanner movie={movie} movieData={movieData} richData={richData} trailer={trailer} isMobile={isMobile} />
                     
                     <motion.div 
-    id="watch" 
-    initial={{ opacity: 0, y: 20 }} 
-    animate={{ opacity: 1, y: 0 }} 
-    transition={{ duration: 0.5 }} // Faster, no massive delay
-    className="space-y-8 sm:space-y-12 px-3 sm:px-4 lg:px-6"
->
-                        {/* Note: Ensure MovieDetailsSection can handle the 'horror' context, or pass a flag to use specific colors */}
-                        <MovieDetailsSection movie={movie} fromHuluHorrorCollection={true} /> 
+                        id="watch" 
+                        initial={{ opacity: 0, y: 20 }} 
+                        animate={{ opacity: 1, y: 0 }} 
+                        transition={{ duration: 0.5 }} 
+                        className="space-y-8 sm:space-y-12 px-3 sm:px-4 lg:px-6"
+                    >
+                        {/* ✅ FIX: Safely inside the motion.div wrapper with sensitiveData passed down */}
+                        <MovieDetailsSection 
+                            movie={movie} 
+                            fromHuluHorrorCollection={true} 
+                            sensitiveData={sensitiveData} 
+                        />
                     </motion.div>
                     
                     <div className="px-3 sm:px-4 lg:px-6">
@@ -315,13 +339,19 @@ export async function getStaticProps({ params }) {
         const movie = COMPLETE_MOVIE_DATABASE.find((m) => m.imdbID === params.id);
         if (!movie) return { notFound: true };
 
+        const apiKey = process.env.TMDB_API_KEY || 'a07e22bc18f5cb106bfe4cc1f83ad8ed';
+
         const tmdbResponse = await fetch(
-            `https://api.themoviedb.org/3/movie/${movie.tmdbId}?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&append_to_response=videos`
+            `https://api.themoviedb.org/3/movie/${movie.tmdbId}?api_key=${apiKey}&append_to_response=videos`
         );
         const tmdbData = tmdbResponse.ok ? await tmdbResponse.json() : null;
 
+        // ✅ FIX: Fetch and pass the real sensitive data down to the components
+        const rawSensitive = SENSITIVE_TIMELINES[movie.tmdbId];
+        const sensitiveData = rawSensitive ? { scenes: rawSensitive.scenes } : null;
+
         return {
-            props: { movie, tmdbData },
+            props: { movie, tmdbData, sensitiveData },
         };
     } catch (error) {
         console.error('Error fetching TMDB data:', error);
@@ -329,6 +359,7 @@ export async function getStaticProps({ params }) {
             props: {
                 movie: COMPLETE_MOVIE_DATABASE.find((m) => m.imdbID === params.id),
                 tmdbData: null,
+                sensitiveData: null
             },
         };
     }

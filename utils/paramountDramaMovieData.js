@@ -1,4 +1,4 @@
-// utils/paramountDramaMovieData.js - PARAMOUNT+ CORE DRAMA COLLECTION DATA
+// utils/paramountDramaMovieData.js - PARAMOUNT+ CORE DRAMA COLLECTION DATA ✅
 // Emotional Impact, Character Depth, and Human Connection
 
 export const TMDB_CONFIG = {
@@ -39,8 +39,13 @@ export const SENSITIVE_TIMELINES = {
     // 3. Fences
     393457: { scenes: [] },
 
-    // 4. Dead Man Walking
-    687: { scenes: [] },
+// 4. Dead Man Walking
+    687: { 
+        scenes: [
+            { start: "1:01:45", end: "1:01:50", type: "Nudity(Woman)", severity: "Mild" },
+            { start: "1:51:32", end: "1:51:43", type: "Partial Nudity(Woman)", severity: "Mild" }
+        ] 
+    },
 
     // 5. Selma
     273896: { scenes: [] },
@@ -395,33 +400,167 @@ export const getTMDBPosterUrl = (posterPath, size = 'medium') => {
     return `${TMDB_CONFIG.IMAGE_BASE_URL}/${TMDB_CONFIG.POSTER_SIZES[size] || 'w500'}${posterPath}`;
 };
 
-export const generateMovieSchema = (movie) => {
-    const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
-    return {
+// 🔥 1. THE KEYWORD BRIDGE (SEO-Optimized for Drama Content)
+export const getSensitiveContentTypes = (tmdbId) => {
+    const sensitiveData = SENSITIVE_TIMELINES[tmdbId];
+    if (!sensitiveData?.scenes?.length) return null;
+    const types = new Set();
+    sensitiveData.scenes.forEach(scene => {
+        const lowerType = scene.type?.toLowerCase() || '';
+        
+        // Mapped to specific SEO terminology
+        if (lowerType.includes('sex')) types.add('sexual content');
+        if (lowerType.includes('nudity')) types.add('nudity');
+        if (lowerType.includes('suggestive') || lowerType.includes('lingerie')) types.add('suggestive content');
+    });
+    return Array.from(types);
+};
+
+export const generateFAQData = (movie) => {
+    return PARAMOUNT_DRAMA_MOVIE_FAQS[movie.Title] || [];
+};
+
+// 🔥 2. THE "GOLDEN EGG" SCHEMA GENERATOR (Universal Version)
+export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, collectionSlug, unused, movieInfo) => {
+    
+    const movieSchema = {
         '@context': 'https://schema.org',
         '@type': 'Movie',
         'name': movie.Title,
-        'description': movieInfo?.synopsis,
+        'description': movieInfo?.synopsis || `${movie.Title} (${currentMovieYear}) - An emotionally intense drama on Paramount+.`,
         'genre': movie.genre,
-        'datePublished': movie.year.toString(),
+        'datePublished': currentMovieYear?.toString() || movie.year.toString(),
         'director': { '@type': 'Person', 'name': movieInfo?.director || 'Director' },
-        'duration': `PT${movie.runtime}M`,
-        'image': FALLBACK_POSTERS[movie.tmdbId] || '',
-        'aggregateRating': { 
-            '@type': 'AggregateRating', 
-            'ratingValue': movieInfo?.rating || 7.5, 
-            'bestRating': 10, 
-            'worstRating': 1 
-        }
+        'actor': movieInfo?.cast?.map(actor => ({ '@type': 'Person', 'name': actor })) || [],
+        'image': tmdbData?.poster_path ? `https://image.tmdb.org/t/p/w500${tmdbData.poster_path}` : (FALLBACK_POSTERS[movie.tmdbId] || ''),
+        'duration': `PT${movie.runtime}M`
     };
-};
 
-export const generateFAQSchema = (faqs) => ({
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    'mainEntity': faqs.map(faq => ({ 
+    const staticFaqs = PARAMOUNT_DRAMA_MOVIE_FAQS[movie.Title] || [];
+    const sensitiveScenes = SENSITIVE_TIMELINES[movie.tmdbId]?.scenes || [];
+    const intensityScenes = movieInfo?.scenes || [];
+    
+    const schemaFaqs = staticFaqs.map(faq => ({ 
         '@type': 'Question', 
         'name': faq.question, 
         'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer } 
-    }))
+    }));
+
+    // Inject Intensity Graph Timestamps into Schema (Mapped to Emotional Intensity)
+    if (intensityScenes.length > 0) {
+        const schemaIntensityList = intensityScenes.map(s => `<li>Minute ${s.time} - ${s.label} (Emotional Impact: ${s.intensity}/100)</li>`).join('');
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `What are the most emotional scenes in ${movie.Title}?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `According to the Filmiway Emotional Intensity index, ${movie.Title} peaks at the following moments:<br><br><ul>${schemaIntensityList}</ul>` 
+            }
+        });
+    }
+
+    // Extract runtime safely
+    let currentRuntime = movie.Runtime || movie.runtime || "Official";
+    if (typeof currentRuntime === 'number') currentRuntime = `${currentRuntime} min`;
+
+    // Inject Sensitive Content Timestamps into Schema (Top Priority)
+    if (sensitiveScenes.length > 0) {
+        const typesArray = getSensitiveContentTypes(movie.tmdbId) || ['mature content'];
+        const typesString = typesArray.join(' and ');
+
+        const schemaListText = sensitiveScenes.map(s => {
+            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
+            return `<li>${timeRange} - ${s.type || 'Mature Content'}</li>`;
+        }).join('');
+
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `Yes, according to the Filmiway Timestamps & Parents Guide, ${movie.Title} contains adult scenes including ${typesString}. These timestamps are accurate for the ${currentRuntime} runtime. Exact timestamps for these scenes are:<br><br><ul>${schemaListText}</ul>` 
+            }
+        });
+    } else {
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `No, the Filmiway Timestamps & Parents Guide confirms that ${movie.Title} is completely free of explicit sexual content and nudity. This assessment is accurate for the ${currentRuntime} runtime.` 
+            }
+        });
+    }
+
+    const faqSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        'name': `Parents Guide and FAQ for ${movie.Title}`,
+        'mainEntity': schemaFaqs
+    };
+
+    return { movieSchema, faqSchema };
+};
+
+// 🔥 3. FRONTEND UI SYNC (Displays the timestamps on your Next.js page)
+export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Official") => {
+    const staticFaqs = PARAMOUNT_DRAMA_MOVIE_FAQS[movieTitle] ? [...PARAMOUNT_DRAMA_MOVIE_FAQS[movieTitle]] : [];
+    const sensitiveScenes = SENSITIVE_TIMELINES[tmdbId]?.scenes || [];
+    const movieInfo = COMPLETE_MOVIE_DATA[tmdbId];
+    const intensityScenes = movieInfo?.scenes || [];
+
+    // ✅ Safely parsing runtime to a string
+    const dbMovie = COMPLETE_MOVIE_DATABASE.find(m => m.tmdbId === tmdbId);
+    let finalRuntime = currentRuntime !== "Official" ? currentRuntime : (dbMovie?.runtime ? `${dbMovie.runtime} min` : "Official");
+    if (typeof finalRuntime === 'number') finalRuntime = `${finalRuntime} min`;
+
+    if (intensityScenes.length > 0) {
+        const uiIntensityList = intensityScenes.map(s => `• Minute ${s.time} - ${s.label} (Emotional Impact: ${s.intensity}/100)`).join('\n');
+        staticFaqs.unshift({
+            question: `What are the most emotional scenes in ${movieTitle}?`,
+            answer: `According to the Filmiway Emotional Intensity index, ${movieTitle} peaks at the following moments:\n\n${uiIntensityList}`
+        });
+    }
+
+    if (sensitiveScenes.length > 0) {
+        const typesArray = getSensitiveContentTypes(tmdbId) || ['mature content'];
+        const typesString = typesArray.join(' and ');
+
+        const uiListText = sensitiveScenes.map(s => {
+            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
+            return `• ${timeRange} - ${s.type || 'Mature Content'}`;
+        }).join('\n');
+
+        staticFaqs.unshift({
+            question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
+            answer: `Yes, according to the Filmiway Timestamps & Parents Guide, ${movieTitle} contains adult scenes including ${typesString}. These timestamps are accurate for the ${finalRuntime} runtime. Exact timestamps for these scenes are:\n\n${uiListText}`
+        });
+    } else {
+        staticFaqs.unshift({
+            question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
+            answer: `No, the Filmiway Timestamps & Parents Guide confirms that ${movieTitle} is completely free of explicit sexual content and nudity. This assessment is accurate for the ${finalRuntime} runtime.`
+        });
+    }
+
+    return staticFaqs;
+};
+
+export const fetchMovieFromTMDB = async (tmdbId) => ({ 
+    poster_path: null, 
+    title: COMPLETE_MOVIE_DATABASE.find(m => m.tmdbId === tmdbId)?.Title || 'Unknown Movie' 
 });
+
+export const fetchWatchProviders = async (tmdbId, region = 'US') => null;
+
+export const formatSensitiveTimeline = (tmdbId) => {
+    const raw = SENSITIVE_TIMELINES[tmdbId];
+    if (!raw || !raw.scenes || raw.scenes.length === 0) return null;
+    return {
+        scenes: raw.scenes.map(scene => ({
+            start: scene.start,
+            end: scene.end,
+            type: scene.type,
+            description: scene.description || ''
+        }))
+    };
+};

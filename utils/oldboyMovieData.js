@@ -16,7 +16,7 @@ export const COMPLETE_MOVIE_DATABASE = [
     { tmdbId: 11344, imdbID: "tt0456912", Title: "A Bittersweet Life", year: 2005, genre: "Action", runtime: 117, rank: 6 },
     { tmdbId: 46738, imdbID: "tt1255953", Title: "Incendies", year: 2010, genre: "Drama", runtime: 130, rank: 7 },
     { tmdbId: 290098, imdbID: "tt4016934", Title: "The Handmaiden", year: 2016, genre: "Thriller", runtime: 145, rank: 8 },
-    { tmdbId: 50475, imdbID: "tt1540399", Title: "No Mercy", year: 2010, genre: "Thriller", runtime: 113, rank: 9 },
+    { tmdbId: 54186, imdbID: "tt1590089", Title: "Confessions", year: 2010, genre: "Thriller", runtime: 106, rank: 9 },
     { tmdbId: 146233, imdbID: "tt1392214", Title: "Prisoners", year: 2013, genre: "Thriller", runtime: 153, rank: 10 }
 ];
 
@@ -31,15 +31,70 @@ const createMovieData = (data) => ({
 });
 
 export const SENSITIVE_TIMELINES = {
-    49797: { scenes: [{ start: "0:12:05", end: "0:12:45", type: "Nudity", severity: "Severe" }, { start: "1:22:10", end: "1:24:30", type: "Sexual Violence", severity: "Severe" }] },
-    4689: { scenes: [{ start: "0:25:30", end: "0:27:15", type: "Sex scene", severity: "Strong" }] },
-    4550: { scenes: [{ start: "0:55:10", end: "0:56:45", type: "Nudity", severity: "Moderate" }, { start: "1:10:20", end: "1:11:30", type: "Sex scene", severity: "Strong" }] },
-    51608: { scenes: [{ start: "0:25:00", end: "0:26:00", type: "Drug Use", severity: "Strong" }] },
-    13855: { scenes: [{ start: "0:15:30", end: "0:16:10", type: "Sexual references", severity: "Moderate" }] },
+    // ID: 49797
+    49797: { 
+        scenes: [
+            { start: "0:09:53", end: "0:10:25", type: "Nudity", severity: "Moderate" },
+            { start: "0:26:40", end: "0:27:40", type: "Nudity & Sex", severity: "High" }
+        ] 
+    },
+
+    // ID: 4689
+    4689: { 
+        scenes: [
+            { start: "0:09:55", end: "0:10:30", type: "Sexual Content & Nudity", severity: "High" },
+            { start: "0:19:25", end: "0:20:20", type: "Partial Nudity(Man)", severity: "Moderate" },
+            { start: "1:11:30", end: "1:13:00", type: "Sex & Nudity", severity: "High" },
+            { start: "1:26:25", end: "1:27:27", type: "Nudity (Man)", severity: "Moderate" }
+        ] 
+    },
+
+    // ID: 4550
+    4550: { 
+        scenes: [
+            { start: "0:24:03", end: "0:24:42", type: "Sex", severity: "Moderate" },
+            { start: "0:52:40", end: "0:53:40", type: "Sex", severity: "Moderate" }
+        ] 
+    },
+
+    // ID: 51608
+    51608: { 
+        scenes: [
+            { start: "0:19:45", end: "0:20:38", type: "Suggestive Clothing (Bikini)", severity: "Mild" },
+            { start: "0:30:55", end: "0:40:12", type: "Nudity(Woman)", severity: "High" }
+        ] 
+    },
+
+// ID: 13855
+    13855: { 
+        scenes: [
+            { start: "0:04:12", end: "0:04:30", type: "Nudity", severity: "Moderate" },
+            { start: "0:06:25", end: "0:07:30", type: "Lingerie", severity: "Mild" }
+        ] 
+    },
+    // ID: 11344
     11344: { scenes: [] },
-    46738: { scenes: [{ start: "1:35:10", end: "1:37:00", type: "Sexual Violence", severity: "Severe" }] },
-    290098: { scenes: [{ start: "0:45:10", end: "0:48:30", type: "Sex scene", severity: "Strong" }, { start: "1:25:40", end: "1:29:15", type: "Sex scene", severity: "Strong" }] },
-    50475: { scenes: [{ start: "0:05:10", end: "0:06:20", type: "Nudity", severity: "Moderate" }] },
+
+    // ID: 46738
+    46738: { scenes: [] },
+
+    // ID: 290098
+    290098: { 
+        scenes: [
+            { start: "0:21:45", end: "0:21:55", type: "Nudity (woman)", severity: "Moderate" },
+            { start: "0:51:10", end: "0:54:45", type: "Nudity & Sexual Content", severity: "High" },
+            { start: "1:47:10", end: "1:49:10", type: "Nudity (women)", severity: "Moderate" },
+            { start: "1:58:45", end: "2:03:45", type: "Sex & Nudity(women)", severity: "High" },
+            { start: "2:21:10", end: "2:23:15", type: "Sexual Content", severity: "Moderate" },
+            { start: "2:32:10", end: "2:32:20", type: "Partial nudity (woman)", severity: "Mild" },
+            { start: "2:40:10", end: "2:42:20", type: "Sexual Content & Nudity(women)", severity: "High" }
+        ] 
+    },
+
+    // ID: 54186
+    54186: { scenes: [] },
+
+    // ID: 146233
     146233: { scenes: [] }
 };
 
@@ -52,7 +107,7 @@ export const FALLBACK_POSTERS = {
     11344: "https://image.tmdb.org/t/p/original/9k2KOrs1p3dz9Q1KmQr4vHu9Pzw.jpg",
     46738: "https://image.tmdb.org/t/p/original/sZNe2cey8FVy78f5sHv2xF4noYR.jpg",
     290098: "https://image.tmdb.org/t/p/original/oBLJ1a9KvCs0Ai9u9vVO2O9gHdT.jpg",
-    50475: "https://image.tmdb.org/t/p/original/h9p7nhUT3yWOiI9e1C7I9r8qf3k.jpg",
+    54186: "https://image.tmdb.org/t/p/original/m9Oa3Uv6T1kHqD1P7BqXWfW7z9X.jpg",
     146233: "https://image.tmdb.org/t/p/original/A1XHZ1nZrAvzf6ZQHDxTu5GYGvN.jpg"
 };
 
@@ -209,23 +264,23 @@ export const COMPLETE_MOVIE_DATA = {
         awards: ['BAFTA Winner']
     }),
 
-    // 9. No Mercy (2010)
-    50475: createMovieData({
-        revengeIntensity: 88, visceralImpact: 82, moralComplexity: 90, complexityLevel: "HIGH", dominantColor: '#312e81',
-        rating: 7.4, criticsScore: 72, audienceScore: 74,
-        director: 'Kim Hyeong-jun', cast: ['Sol Kyung-gu', 'Ryoo Seung-bum'],
-        boxOffice: '$7 million', budget: '$3 million',
-        dna: { "Crime": 50, "Thriller": 35, "Mystery": 15 },
+    // 9. Confessions (2010)
+    54186: createMovieData({
+        revengeIntensity: 98, visceralImpact: 85, moralComplexity: 100, complexityLevel: "EXTREME", dominantColor: '#1e293b',
+        rating: 7.7, criticsScore: 81, audienceScore: 85,
+        director: 'Tetsuya Nakashima', cast: ['Takako Matsu', 'Yoshino Kimura'],
+        boxOffice: '$45 million', budget: '$6 million',
+        dna: { "Psychological": 50, "Drama": 30, "Thriller": 20 },
         scenes: [
-            { time: 15, intensity: 55, label: 'The Body', color: '#1d1fb9ff' },
-            { time: 45, intensity: 75, label: 'Blackmail', color: '#0f172a' },
-            { time: 80, intensity: 85, label: 'Tampering', color: '#1d1fb9ff' },
-            { time: 100, intensity: 80, label: 'The Deal', color: '#6b21a8' },
-            { time: 115, intensity: 100, label: 'Devastation', color: '#dc2626' }
+            { time: 10, intensity: 60, label: 'The HIV Announcement', color: '#1d1fb9ff' },
+            { time: 45, intensity: 75, label: 'The Bullying Cycle', color: '#0f172a' },
+            { time: 70, intensity: 88, label: 'A Mothers Descent', color: '#dc2626' },
+            { time: 90, intensity: 95, label: 'The Clock Ticks', color: '#f59e0b' },
+            { time: 105, intensity: 100, label: 'Total Retribution', color: '#1d1fb9ff' }
         ],
-        synopsis: "A brilliant forensic pathologist is forced to tamper with evidence in a murder case to save his kidnapped daughter. As the police close in, he must navigate a web of blackmail and moral compromise that leads to a soul-crushing sacrifice.",
-        themes: ['Coercion', 'Ethics', 'Paternal Love'],
-        awards: []
+        synopsis: "A grieving secondary school teacher, Yuko Moriguchi, delivers her final lesson to a classroom of students she believes are responsible for her daughter's death. She doesn't call the police; instead, she reveals she has contaminated their milk with HIV-tainted blood. What follows is a cold, multi-layered revenge plot that deconstructs the lives of everyone involved. It is a haunting exploration of youth, grief, and the dark side of maternal love.",
+        themes: ['Grief', 'Cold Revenge', 'Social Failure'],
+        awards: ['Japan Academy Prize Winner']
     }),
 
     // 10. Prisoners (2013)
@@ -257,7 +312,7 @@ export const STRATEGIC_QUOTES = {
     11344: "You can't do this to me.",
     46738: "One plus one does not equal two.",
     290098: "My savior who came to tear my life apart.",
-    50475: "Death is not the end of pain.",
+    54186: "Just kidding.",
     146233: "Pray for the best, prepare for the worst."
 };
 
@@ -426,22 +481,18 @@ export const OLDBOY_MOVIE_FAQS = {
     }
   ],
 
-  'No Mercy': [
+  'Confessions': [
     { 
-      question: "Why remains Korean cinema's most underrated revenge gem?", 
-      answer: "Detective's personal vendetta corrupts institutional justice completely. Badge weaponized for revenge blurs cop/criminal boundary irreversibly. Restrained direction maximizes moral descent impact. Solitary protagonist carries moral complexity without ensemble distraction. Perfect thematic companion to flashier Vengeance Trilogy entries." 
+      question: "Is this a typical high-school drama?", 
+      answer: "Absolutely not. It uses the school setting as a backdrop for a clinical, slow-burn psychological war. It rejects all 'coming-of-age' tropes in favor of a dark, stylized look at the capacity for cruelty in children. It is closer to 'Oldboy' in spirit than any teen movie." 
     },
     { 
-      question: "How effectively blends forensic investigation with revenge thriller?", 
-      answer: "DNA evidence drives plot while personal vendetta destroys protagonist's soul. Serial killer hunt transforms detective into prey's mirror image. Forensic realism grounds supernatural-level moral horror. Procedural authenticity elevates personal tragedy beyond typical vigilante revenge fantasy narratives." 
+      question: "Why is the visual style so unique?", 
+      answer: "Director Tetsuya Nakashima uses a signature hyper-stylized, desaturated look. The slow-motion sequences paired with an operatic soundtrack (including Radiohead) create a feeling of 'beautiful dread' that makes the violence feel more impactful because it is so aesthetically controlled." 
     },
     { 
-      question: "Does solo lead performance overcome ensemble expectations?", 
-      answer: "Won Bin dominates completely through minimalist intensity. Single intense stare conveys entire emotional spectrum required. No supporting cast distraction allows total character immersion. Restrained physicality sells transformation from professional to monster more effectively than theatrical ensemble performances." 
-    },
-    { 
-      question: "What establishes superior moral complexity?", 
-      answer: "Justice system weaponization for personal revenge destroys detective's soul irreversibly. Institutional betrayal forces individual monstrosity mirroring Oldboy's personal betrayal response. Perfect thematic companion proving vengeance corrupts absolutely regardless of social position or institutional backing." 
+      question: "How does the revenge differ from the Vengeance Trilogy?", 
+      answer: "While Park Chan-wook focuses on physical and operatic destruction, Confessions focuses on social and psychological erasure. It’s about making the targets live through a hell of their own making. It is arguably more 'cruel' than Oldboy because it is so patient." 
     }
   ],
 
@@ -467,52 +518,52 @@ export const OLDBOY_MOVIE_FAQS = {
 
 // HELPER FUNCTIONS (Schema & Posters)
 export const getTMDBPosterUrl = (posterPath, size = 'medium') => {
-    if (!posterPath) return null;
-    const posterSize = TMDB_CONFIG.POSTER_SIZES[size] || TMDB_CONFIG.POSTER_SIZES.medium;
-    return `${TMDB_CONFIG.IMAGE_BASE_URL}/${posterSize}${posterPath}`;
+    if (!posterPath) return null;
+    const posterSize = TMDB_CONFIG.POSTER_SIZES[size] || TMDB_CONFIG.POSTER_SIZES.medium;
+    return `${TMDB_CONFIG.IMAGE_BASE_URL}/${posterSize}${posterPath}`;
 };
 
 export const getSensitiveContentTypes = (tmdbId) => {
-    const sensitiveData = SENSITIVE_TIMELINES[tmdbId];
-    if (!sensitiveData?.scenes?.length) return null;
-    const types = new Set();
-    sensitiveData.scenes.forEach(scene => {
-        const lowerType = scene.type.toLowerCase();
-        if (lowerType.includes('sex')) types.add('intimate scenes');
-        if (lowerType.includes('nudity')) types.add('nudity');
-        if (lowerType.includes('violence')) types.add('graphic violence');
-    });
-    return Array.from(types);
+    const sensitiveData = SENSITIVE_TIMELINES[tmdbId];
+    if (!sensitiveData?.scenes?.length) return null;
+    const types = new Set();
+    sensitiveData.scenes.forEach(scene => {
+        const lowerType = scene.type.toLowerCase();
+        if (lowerType.includes('sex')) types.add('intimate scenes');
+        if (lowerType.includes('nudity')) types.add('nudity');
+        if (lowerType.includes('violence')) types.add('graphic violence');
+    });
+    return Array.from(types);
 };
 
 export const generateFAQData = (movie) => OLDBOY_MOVIE_FAQS[movie.Title] || [];
 
 export const generateMovieSchema = (movie) => {
-    const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
-    const posterUrl = FALLBACK_POSTERS[movie.tmdbId] || '';
-    return {
-        '@context': 'https://schema.org',
-        '@type': 'Movie',
-        'name': movie.Title,
-        'description': movieInfo?.synopsis || `${movie.Title} - A intense cinematic experience.`,
-        'genre': movie.genre,
-        'datePublished': movie.year.toString(),
-        'director': { '@type': 'Person', 'name': movieInfo?.director || 'Director' },
-        'actor': movieInfo?.cast?.map(actor => ({ '@type': 'Person', 'name': actor })) || [],
-        'duration': `PT${movie.runtime}M`,
-        'image': posterUrl,
-        'aggregateRating': { '@type': 'AggregateRating', 'ratingValue': movieInfo?.rating || 7.5, 'bestRating': 10, 'worstRating': 1, 'ratingCount': movieInfo?.audienceScore || 100 }
-    };
+    const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
+    const posterUrl = FALLBACK_POSTERS[movie.tmdbId] || '';
+    return {
+        '@context': 'https://schema.org',
+        '@type': 'Movie',
+        'name': movie.Title,
+        'description': movieInfo?.synopsis || `${movie.Title} - A intense cinematic experience.`,
+        'genre': movie.genre,
+        'datePublished': movie.year.toString(),
+        'director': { '@type': 'Person', 'name': movieInfo?.director || 'Director' },
+        'actor': movieInfo?.cast?.map(actor => ({ '@type': 'Person', 'name': actor })) || [],
+        'duration': `PT${movie.runtime}M`,
+        'image': posterUrl,
+        'aggregateRating': { '@type': 'AggregateRating', 'ratingValue': movieInfo?.rating || 7.5, 'bestRating': 10, 'worstRating': 1, 'ratingCount': movieInfo?.audienceScore || 100 }
+    };
 };
 
 export const generateFAQSchema = (faqs) => ({
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    'mainEntity': faqs.map(faq => ({ 
-        '@type': 'Question', 
-        'name': faq.question, 
-        'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer } 
-    }))
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    'mainEntity': faqs.map(faq => ({ 
+        '@type': 'Question', 
+        'name': faq.question, 
+        'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer } 
+    }))
 });
 
 export const fetchMovieFromTMDB = async (tmdbId) => ({ poster_path: null, title: COMPLETE_MOVIE_DATABASE.find(m => m.tmdbId === tmdbId)?.Title || 'Unknown Movie' });
@@ -520,16 +571,16 @@ export const fetchMovieFromTMDB = async (tmdbId) => ({ poster_path: null, title:
 export const fetchWatchProviders = async (tmdbId, region = 'US') => null;
 
 export const formatSensitiveTimeline = (tmdbId) => {
-    const raw = SENSITIVE_TIMELINES[tmdbId];
-    if (!raw || !raw.scenes || raw.scenes.length === 0) return null;
-    return {
-        scenes: raw.scenes.map(scene => ({
-            start: scene.start,
-            end: scene.end,
-            type: scene.type,
-            description: scene.description || ''
-        }))
-    };
+    const raw = SENSITIVE_TIMELINES[tmdbId];
+    if (!raw || !raw.scenes || raw.scenes.length === 0) return null;
+    return {
+        scenes: raw.scenes.map(scene => ({
+            start: scene.start,
+            end: scene.end,
+            type: scene.type,
+            description: scene.description || ''
+        }))
+    };
 };
 
 export default {

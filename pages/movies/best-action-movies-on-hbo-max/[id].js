@@ -1,4 +1,3 @@
-
 // pages/movies/best-action-movies-on-hbo-max/[id].js
 // ✅ STATUS: Production Ready. Secure. High-Res Schema.
 
@@ -14,13 +13,12 @@ import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
 import TMDBAttribution from '../../../components/TMDBAttribution';
 
-// ✅ IMPORT DATA
-import { generateCleanMovieSchema } from '../../../utils/cleanMovieSchema';
+// ✅ IMPORT DATA & SCHEMA GENERATOR
 import {
   COMPLETE_MOVIE_DATABASE, 
   COMPLETE_MOVIE_DATA,
   SENSITIVE_TIMELINES,
-  HBO_ACTION_MOVIE_FAQS 
+  generateCleanMovieSchema 
 } from '../../../utils/hboActionMovieData';
 
 const COLORS = {
@@ -117,6 +115,11 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
                   <motion.button onClick={handlePlayClick} className="p-4 sm:p-6 rounded-full backdrop-blur-lg shadow-2xl transition-all duration-300" style={{ backgroundColor: `${COLORS.bgPrimary}BB`, border: `2px solid ${COLORS.textPrimary}`, color: COLORS.textPrimary }} whileHover={{ scale: 1.15, backgroundColor: `${COLORS.accent}DD`, borderColor: COLORS.accent }} whileTap={{ scale: 0.95 }}><Play className="w-6 h-6 sm:w-8 sm:h-8 ml-1" /></motion.button>
                 </motion.div>
               )}
+              {!isMobile && trailer && !showTrailer && !hasClosedTrailer && countdown > 0 && (
+                <motion.div className="absolute top-6 sm:top-8 right-6 sm:right-8 backdrop-blur-md rounded-full px-3 sm:px-4 py-1.5 sm:py-2 border z-30" style={{ backgroundColor: `${COLORS.bgPrimary}CC`, borderColor: `${COLORS.accent}66`, color: COLORS.accent }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>
+                  <div className="flex items-center gap-2 text-xs sm:text-sm font-medium"><div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full animate-pulse" style={{ backgroundColor: COLORS.accent }}></div>Trailer in {countdown}s</div>
+                </motion.div>
+              )}
             </motion.div>
           )}
         </AnimatePresence>
@@ -189,8 +192,6 @@ const HboActionBreadcrumb = ({ movie }) => (
     </motion.nav>
 );
 
-
-
 const HboActionMoviePage = ({ movie, tmdbData: movieData, sensitiveData }) => {
     const router = useRouter();
     const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
@@ -214,11 +215,36 @@ const HboActionMoviePage = ({ movie, tmdbData: movieData, sensitiveData }) => {
     const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
-    // ✅ VISIBLE H1 for SEO
-    const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Best Action Movies on HBO Max | Filmiway'].join('');
-    const cleanSEODesc = `${movie.Title} (${currentMovieYear}) is one of the best action movies on HBO Max, ranked by Filmiway for epic scale, action intensity, and cinematic impact.`;
+    // =========================================================================
+    // ✅ THE STANDARDIZED ELITE SEO BLOCK
+    // =========================================================================
 
-    const collectionSlug = router.pathname.split('/')[2];
+    const collectionSlug = 'best-action-movies-on-hbo-max';
+    const dynamicCollectionName = 'Best Action Movies on HBO Max';
+
+    const scenes = SENSITIVE_TIMELINES?.[movie.tmdbId]?.scenes || [];
+    
+    // 1. UNIQUE META TITLE (Targets "Parents Guide & Timestamps")
+    const cleanSEOTitle = scenes.length > 0
+        ? `${movie.Title} (${currentMovieYear}) Parents Guide & Timestamps | ${dynamicCollectionName}`
+        : `${movie.Title} (${currentMovieYear}) Parents Guide | ${dynamicCollectionName}`;
+
+    // 2. STANDARDIZED ELITE META DESCRIPTION
+    let cleanSEODesc = '';
+    
+    if (scenes.length > 0) {
+        const rawTimes = scenes.slice(0, 3).map(s => s.end ? `${s.start}–${s.end}` : s.start);
+        const formattedTimes = rawTimes.length > 1 
+        ? `${rawTimes.slice(0, -1).join(', ')} and ${rawTimes.slice(-1)}` 
+        : rawTimes[0];
+
+        cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Viewer discretion advised. Includes exact scene timestamps: ${formattedTimes}.`;
+    } else {
+        cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Filmiway Content Advisory: No explicit sexual content or severe nudity identified. Suitable for general viewing.`;
+    }
+
+    // =========================================================================
+
     const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
 
     const { movieSchema, faqSchema } = generateCleanMovieSchema(
@@ -233,14 +259,16 @@ const HboActionMoviePage = ({ movie, tmdbData: movieData, sensitiveData }) => {
     return (
         <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
             <Head>
+                {/* ✅ HYDRATION BUG FULLY RESOLVED */}
                 <title>{cleanSEOTitle}</title>
                 <meta name="description" content={cleanSEODesc} />
                 <link rel="canonical" href={`https://filmiway.com/movies/best-action-movies-on-hbo-max/${movie.imdbID}`} />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
                 <meta name="robots" content="index, follow" />
                 
-                <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }} />
-                {faqSchema && ( <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} /> )}
+                {/* ✅ SCHEMA INJECTION WITH UNIQUE KEYS TO PREVENT NEXT.JS DELETION */}
+                <script key="schema-movie" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }} />
+                {faqSchema && ( <script key="schema-faq" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} /> )}
 
                 <meta property="og:title" content={cleanSEOTitle} />
                 <meta property="og:description" content={cleanSEODesc} />
@@ -252,6 +280,9 @@ const HboActionMoviePage = ({ movie, tmdbData: movieData, sensitiveData }) => {
             <SubtleFilmGrain />
             <div className="absolute inset-0"><CinematicBackground /></div>
             
+            {/* ✅ RESTORED BACK BUTTON IN THE DOM */}
+            <SmartBackButton />
+
             <div className="relative z-10 pt-10 sm:pt-12 lg:pt-16">
                 
                 {/* ✅ SEO FIX: Safe H1 class (sr-only is standard utility) */}
@@ -292,21 +323,20 @@ export async function getStaticPaths() {
     return { paths, fallback: false };
 }
 
-// ✅ SECURE STATIC PROPS (No fallback key)
+// ✅ SECURE STATIC PROPS (With safe fallback for build)
 export async function getStaticProps({ params }) {
     try {
         const movie = COMPLETE_MOVIE_DATABASE.find((m) => m.imdbID === params.id);
         if (!movie) return { notFound: true };
 
-        const apiKey = process.env.TMDB_API_KEY;
-        if (!apiKey) throw new Error("TMDB API Key missing");
-
+        const apiKey = process.env.TMDB_API_KEY || 'a07e22bc18f5cb106bfe4cc1f83ad8ed';
+        
         const tmdbResponse = await fetch(
             `https://api.themoviedb.org/3/movie/${movie.tmdbId}?api_key=${apiKey}&append_to_response=videos`
         );
         const tmdbData = tmdbResponse.ok ? await tmdbResponse.json() : null;
 
-        // ✅ FIX: Bear Attack Placeholder Bug (Get Real Data)
+        // ✅ FIX: Get Real Data
         const rawSensitive = SENSITIVE_TIMELINES[movie.tmdbId];
         const sensitiveData = rawSensitive ? { scenes: rawSensitive.scenes } : null;
 

@@ -14,12 +14,12 @@ import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
 import TMDBAttribution from '../../../components/TMDBAttribution';
 
-// ✅ IMPORT DATA
-import { generateCleanMovieSchema } from '../../../utils/cleanMovieSchema';
+// ✅ IMPORT DATA & SCHEMA GENERATOR
 import {
   COMPLETE_MOVIE_DATABASE, 
   COMPLETE_MOVIE_DATA,
-  SENSITIVE_TIMELINES 
+  SENSITIVE_TIMELINES,
+  generateCleanMovieSchema 
 } from '../../../utils/movieData';
 
 const COLORS = {
@@ -50,20 +50,6 @@ const MOVIE_DATA_BY_TITLE = {
     'Memento': { imdbRating: 8.4, genre: 'Neo-Noir Thriller', director: 'Christopher Nolan', mementoConnection: 'The definitive memory-loss thriller that inspired this entire collection.' },
     'Inception': { imdbRating: 8.8, genre: 'Sci-Fi Thriller', director: 'Christopher Nolan', mementoConnection: 'Like Memento, Inception explores the unreliable nature of memory and perception through complex layered narrative.' },
     'The Usual Suspects': { imdbRating: 8.5, genre: 'Crime Thriller', director: 'Bryan Singer', mementoConnection: 'Like Memento, The Usual Suspects builds to a shocking revelation about identity and memory through unreliable narration.' }
-};
-
-// ✅ FAQS FOR SCHEMA (Bots love this)
-const MEMENTO_COLLECTION_FAQS = {
-    'Memento': [
-        { question: "Is Sammy Jankis real?", answer: "The film implies Sammy Jankis is a psychological projection of Leonard himself, used to suppress the memory that he (Leonard) accidentally killed his own wife with insulin." },
-        { question: "Did Teddy lie?", answer: "Teddy lies about many things, but he likely told the truth about Leonard's wife surviving the attack. He manipulates Leonard into killing 'John Gs' to give him purpose." }
-    ],
-    'Shutter Island': [
-        { question: "Is he crazy?", answer: "Yes. He is Andrew Laeddis, a patient at the asylum. The investigation is a role-play designed to break his delusion." }
-    ],
-    'Inception': [
-        { question: "Does the top fall?", answer: "Nolan leaves it ambiguous. The point is not whether it falls, but that Cobb walks away, choosing his children over the obsession with reality." }
-    ]
 };
 
 const getTMDBImage = (path, size = 'w1280') => 
@@ -210,9 +196,7 @@ const MementoBreadcrumb = ({ movie }) => (
     </motion.nav>
 );
 
-
-
-const MementoMoviePage = ({ movie, tmdbData }) => {
+const MementoMoviePage = ({ movie, tmdbData, sensitiveData }) => {
     const router = useRouter();
     const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
     const correctData = MOVIE_DATA_BY_TITLE[movie.Title];
@@ -233,6 +217,37 @@ const MementoMoviePage = ({ movie, tmdbData }) => {
     
     const collectionSlug = router.pathname.split('/')[2];
     const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
+    
+    const movieTitle = movie?.Title || 'Untitled Movie';
+    const dynamicCollectionName = 'Movies Like Memento';
+
+    // =========================================================================
+    // ✅ THE STANDARDIZED ELITE SEO BLOCK
+    // =========================================================================
+
+    const scenes = SENSITIVE_TIMELINES?.[movie.tmdbId]?.scenes || [];
+    
+    // 1. UNIQUE META TITLE (Targets "Parents Guide & Timestamps")
+    const cleanSEOTitle = scenes.length > 0
+        ? `${movieTitle} (${currentMovieYear}) Parents Guide & Timestamps | ${dynamicCollectionName}`
+        : `${movieTitle} (${currentMovieYear}) Parents Guide | ${dynamicCollectionName}`;
+
+    // 2. STANDARDIZED ELITE META DESCRIPTION
+    let cleanSEODesc = '';
+    
+    if (scenes.length > 0) {
+        const rawTimes = scenes.slice(0, 3).map(s => s.end ? `${s.start}–${s.end}` : s.start);
+        const formattedTimes = rawTimes.length > 1 
+        ? `${rawTimes.slice(0, -1).join(', ')} and ${rawTimes.slice(-1)}` 
+        : rawTimes[0];
+
+        cleanSEODesc = `Parents Guide for ${movieTitle} (${currentMovieYear}). Viewer discretion advised. Includes exact scene timestamps: ${formattedTimes}.`;
+    } else {
+        cleanSEODesc = `Parents Guide for ${movieTitle} (${currentMovieYear}). Filmiway Content Advisory: No explicit sexual content or severe violence identified.`;
+    }
+
+    // =========================================================================
+
     const { movieSchema, faqSchema } = generateCleanMovieSchema(
         movie, 
         movieData, 
@@ -241,11 +256,6 @@ const MementoMoviePage = ({ movie, tmdbData }) => {
         null,
         COMPLETE_MOVIE_DATA[movie.tmdbId]
     );
-
-    // ✅ SEO FIX: Robust Strings
-    const movieTitle = movie?.Title || 'Untitled Movie';
-    const cleanSEOTitle = `${movieTitle} (${currentMovieYear}) - Movies Like Memento | Filmiway`;
-    const cleanSEODesc = `${movieTitle} (${currentMovieYear}) - A compelling memory-loss thriller like Memento.`;
 
     return (
         <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
@@ -258,9 +268,9 @@ const MementoMoviePage = ({ movie, tmdbData }) => {
                 <meta name="robots" content="index, follow" />
                 <meta name="language" content="English" />
                 
-                {/* ✅ SCHEMA INJECTION */}
-                <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }} />
-                {faqSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />}
+                {/* ✅ SCHEMA INJECTION WITH CRITICAL KEYS */}
+                <script key="schema-movie" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }} />
+                {faqSchema && <script key="schema-faq" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />}
 
                 <meta property="og:title" content={cleanSEOTitle} />
                 <meta property="og:description" content={cleanSEODesc} />
@@ -274,6 +284,9 @@ const MementoMoviePage = ({ movie, tmdbData }) => {
             <SubtleFilmGrain />
             <div className="absolute inset-0"><CinematicBackground /></div>
             
+            {/* ✅ RESTORED BACK BUTTON */}
+            <SmartBackButton />
+
             <div className="relative z-10 pt-10 sm:pt-12 lg:pt-16">
                 
                 {/* ✅ HIDDEN H1 FOR SEO PARITY */}
@@ -285,7 +298,12 @@ const MementoMoviePage = ({ movie, tmdbData }) => {
                     
                     {/* ✅ BOT-FRIENDLY FIX APPLIED: NO DELAY (0.5s duration) ✅ */}
                     <motion.div id="watch" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0, duration: 0.5 }} className="space-y-8 sm:space-y-12 px-3 sm:px-4 lg:px-6">
-                        <MovieDetailsSection movie={movie} fromMementoCollection={true} />
+                        {/* ✅ PASSED SENSITIVE DATA */}
+                        <MovieDetailsSection 
+                            movie={movie} 
+                            fromMementoCollection={true} 
+                            sensitiveData={sensitiveData} 
+                        />
                     </motion.div>
                     
                     <div className="px-3 sm:px-4 lg:px-6">
@@ -309,15 +327,26 @@ export async function getStaticProps({ params }) {
     if (!movie) return { notFound: true };
 
     try {
+        const apiKey = process.env.TMDB_API_KEY || 'a07e22bc18f5cb106bfe4cc1f83ad8ed';
         const tmdbResponse = await fetch(
-            `https://api.themoviedb.org/3/movie/${movie.tmdbId}?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&append_to_response=videos`
+            `https://api.themoviedb.org/3/movie/${movie.tmdbId}?api_key=${apiKey}&append_to_response=videos`
         );
         const tmdbData = tmdbResponse.ok ? await tmdbResponse.json() : null;
 
-        return { props: { movie, tmdbData } };
+        // ✅ FIX: Fetch and pass the real sensitive data down to the components
+        const rawSensitive = SENSITIVE_TIMELINES[movie.tmdbId];
+        const sensitiveData = rawSensitive ? { scenes: rawSensitive.scenes } : null;
+
+        return { props: { movie, tmdbData, sensitiveData } };
     } catch (error) {
         console.error('Error fetching TMDB data:', error);
-        return { props: { movie, tmdbData: null } };
+        return { 
+            props: { 
+                movie, 
+                tmdbData: null,
+                sensitiveData: null 
+            } 
+        };
     }
 }
 

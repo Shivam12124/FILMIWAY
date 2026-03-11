@@ -1,4 +1,4 @@
-// utils/hboMaxFamilyMovieData.js - HBO MAX FAMILY COLLECTION DATA
+// utils/hboMaxFamilyMovieData.js - HBO MAX FAMILY COLLECTION DATA ✅
 // Magic, Nostalgia, and Visual Masterpieces
 
 export const TMDB_CONFIG = {
@@ -24,63 +24,30 @@ export const COMPLETE_MOVIE_DATABASE = [
 // ✅ SENSITIVE TIMELINES (Focusing on Scary Moments for Kids)
 export const SENSITIVE_TIMELINES = {
     // 1. The Wizard of Oz
-    630: { 
-        scenes: [
-            { start: "0:45:00", end: "0:48:00", type: "Scary Imagery", severity: "Moderate" }, // Wicked Witch appearances
-            { start: "1:15:00", end: "1:18:00", type: "Flying Monkeys", severity: "High" } // The capture scene
-        ] 
-    },
+    630:{ scenes: [] },
     
     // 2. Harry Potter and the Prisoner of Azkaban
-    673: { 
-        scenes: [
-            { start: "0:15:00", end: "0:18:00", type: "Dementors", severity: "High" }, // Train sequence
-            { start: "1:45:00", end: "1:50:00", type: "Transformation", severity: "Moderate" } // Werewolf transformation
-        ] 
-    },
+    673: { scenes: [] },
     
     // 3. Flow
     823219: { scenes: [] }, // Mostly survival tension, low scares
     
     // 4. A Christmas Story
-    850: { 
-        scenes: [
-            { start: "1:05:00", end: "1:07:00", type: "Bullying", severity: "Mild" } // Scut Farkus fight
-        ] 
-    },
-    
+    850: { scenes: [] },
     // 5. Puss in Boots: The Last Wish
-    315162: { 
-        scenes: [
-            { start: "0:10:00", end: "0:13:00", type: "Scary Wolf", severity: "High" }, // The Wolf's first appearance
-            { start: "1:25:00", end: "1:30:00", type: "Final Duel", severity: "Moderate" }
-        ] 
-    },
+    315162: { scenes: [] },
     
     // 6. Kiki's Delivery Service
     16859: { scenes: [] }, // Very gentle
     
     // 7. Batman: Mask of the Phantasm
-    14919: { 
-        scenes: [
-            { start: "0:55:00", end: "1:00:00", type: "Violence", severity: "Moderate" }, // Joker confrontation
-            { start: "1:10:00", end: "1:15:00", type: "Dark Imagery", severity: "Moderate" }
-        ] 
-    },
+    14919: { scenes: [] },
     
     // 8. When Marnie Was There
-    242828: { 
-        scenes: [
-            { start: "1:10:00", end: "1:15:00", type: "Ghostly Themes", severity: "Mild" } // The Silo scene
-        ] 
-    },
+    242828: { scenes: [] },
     
     // 9. Kung Fu Panda
-    9502: { 
-        scenes: [
-            { start: "0:50:00", end: "0:55:00", type: "Villain Fight", severity: "Mild" } // Tai Lung escape
-        ] 
-    },
+    9502: { scenes: [] },
     
     // 10. The Lego Batman Movie
     324849: { scenes: [] } // Comic violence only
@@ -278,7 +245,32 @@ export const COMPLETE_MOVIE_DATA = {
         ]
     })
 };
-// ✅ EXTENDED FAQs (Detailed & Engaging - 4 per movie)
+
+// ✅ STRATEGIC QUOTES (Universal Component Safety)
+export const STRATEGIC_QUOTES = {
+    630: "There's no place like home.",
+    673: "I solemnly swear that I am up to no good.",
+    823219: "...", // Silent film
+    850: "You'll shoot your eye out, kid!",
+    315162: "Fear me, if you dare!",
+    16859: "We each need to find our own inspiration.",
+    14919: "I didn't count on being happy.",
+    242828: "I will remain your secret forever.",
+    9502: "There is no secret ingredient.",
+    324849: "I'm Batman."
+};
+
+export const CINEMATIC_COLORS = {
+    "Fantasy": "#10b981", "Animation": "#3b82f6", "Comedy": "#facc15", "Action": "#ef4444"
+};
+
+export const RATING_OPTIONS = [
+    { value: 1, label: "Boring", color: "#dc2626", symbol: "🥱", bgColor: "bg-red-900/30", description: "Put me to sleep" },
+    { value: 2, label: "Cute", color: "#facc15", symbol: "😊", bgColor: "bg-yellow-900/30", description: "Good for kids" },
+    { value: 3, label: "Magical", color: "#3b82f6", symbol: "✨", bgColor: "bg-blue-900/30", description: 'Fun for all ages' },
+    { value: 4, label: "Timeless Classic", color: "#10b981", symbol: "🌟", bgColor: "bg-green-900/30", description: "Absolute Masterpiece" }
+];
+
 export const HBO_MAX_FAMILY_MOVIE_FAQS = {
     'The Wizard of Oz': [
         { 
@@ -422,59 +414,12 @@ export const HBO_MAX_FAMILY_MOVIE_FAQS = {
     ]
 };
 
+// 9️⃣ HELPER FUNCTIONS & EXPORTS (🔥 UPGRADED FOR UNIVERSAL SEO)
 export const getTMDBPosterUrl = (posterPath, size = 'medium') => {
     if (!posterPath) return null;
     const posterSize = TMDB_CONFIG.POSTER_SIZES[size] || TMDB_CONFIG.POSTER_SIZES.medium;
     return `${TMDB_CONFIG.IMAGE_BASE_URL}/${posterSize}${posterPath}`;
 };
-
-export const getSensitiveContentTypes = (tmdbId) => {
-    const sensitiveData = SENSITIVE_TIMELINES[tmdbId];
-    if (!sensitiveData?.scenes?.length) return null;
-    const types = new Set();
-    sensitiveData.scenes.forEach(scene => {
-        types.add(scene.type);
-    });
-    return Array.from(types);
-};
-
-export const generateFAQData = (movie) => {
-    return HBO_MAX_FAMILY_MOVIE_FAQS[movie.Title] || [];
-};
-
-export const generateMovieSchema = (movie) => {
-    const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
-    const posterUrl = FALLBACK_POSTERS[movie.tmdbId] || '';
-    return {
-        '@context': 'https://schema.org',
-        '@type': 'Movie',
-        'name': movie.Title,
-        'description': movieInfo?.synopsis || `${movie.Title} - A great family movie on HBO Max.`,
-        'genre': movie.genre,
-        'datePublished': movie.year.toString(),
-        'director': { '@type': 'Person', 'name': movieInfo?.director || 'Director' },
-        'actor': movieInfo?.cast?.map(actor => ({ '@type': 'Person', 'name': actor })) || [],
-        'duration': `PT${movie.runtime}M`,
-        'image': posterUrl,
-        'aggregateRating': { 
-            '@type': 'AggregateRating', 
-            'ratingValue': movieInfo?.rating || 7.5, 
-            'bestRating': 10, 
-            'worstRating': 1, 
-            'ratingCount': movieInfo?.audienceScore || 100 
-        }
-    };
-};
-
-export const generateFAQSchema = (faqs) => ({
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    'mainEntity': faqs.map(faq => ({ 
-        '@type': 'Question', 
-        'name': faq.question, 
-        'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer } 
-    }))
-});
 
 export const fetchMovieFromTMDB = async (tmdbId) => ({ 
     poster_path: null, 
@@ -494,4 +439,146 @@ export const formatSensitiveTimeline = (tmdbId) => {
             description: scene.description || ''
         }))
     };
+};
+
+// 🔥 1. THE KEYWORD BRIDGE (SEO-Optimized for Family Content)
+export const getSensitiveContentTypes = (tmdbId) => {
+    const sensitiveData = SENSITIVE_TIMELINES[tmdbId];
+    if (!sensitiveData?.scenes?.length) return null;
+    const types = new Set();
+    sensitiveData.scenes.forEach(scene => {
+        const lowerType = scene.type.toLowerCase();
+        // Specifically mapped for Kids/Family safety search terms
+        if (lowerType.includes('scar') || lowerType.includes('dementor') || lowerType.includes('ghost')) types.add('frightening scenes');
+        if (lowerType.includes('violenc') || lowerType.includes('fight') || lowerType.includes('bull')) types.add('mild violence');
+        if (lowerType.includes('dark')) types.add('dark thematic elements');
+    });
+    
+    if (types.size === 0) types.add('mild peril');
+    return Array.from(types);
+};
+
+// 🔥 2. THE "GOLDEN EGG" SCHEMA GENERATOR (Universal Version)
+export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, collectionSlug, unused, movieInfo) => {
+    // Standard Movie Schema
+    const movieSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'Movie',
+        'name': movie.Title,
+        'description': movieInfo?.synopsis || `${movie.Title} (${currentMovieYear}) - A magical family movie on HBO Max.`,
+        'genre': movie.genre,
+        'datePublished': currentMovieYear?.toString() || movie.year.toString(),
+        'director': { '@type': 'Person', 'name': movieInfo?.director || 'Director' },
+        'actor': movieInfo?.cast?.map(actor => ({ '@type': 'Person', 'name': actor })) || [],
+        'image': tmdbData?.poster_path ? `https://image.tmdb.org/t/p/w500${tmdbData.poster_path}` : (FALLBACK_POSTERS[movie.tmdbId] || ''),
+        'duration': `PT${movie.runtime}M`
+    };
+
+    const staticFaqs = HBO_MAX_FAMILY_MOVIE_FAQS[movie.Title] || [];
+    const sensitiveScenes = SENSITIVE_TIMELINES[movie.tmdbId]?.scenes || [];
+    const intensityScenes = movieInfo?.scenes || [];
+    
+    const schemaFaqs = staticFaqs.map(faq => ({ 
+        '@type': 'Question', 
+        'name': faq.question, 
+        'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer } 
+    }));
+
+    // Inject Intensity Graph Timestamps into Schema (Adapted for Family/Fun Factor)
+    if (intensityScenes.length > 0) {
+        const schemaIntensityList = intensityScenes.map(s => `<li>Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)</li>`).join('');
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `What are the most exciting scenes in ${movie.Title}?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `According to the Filmiway Fun Factor, ${movie.Title} peaks at the following moments:<br><br><ul>${schemaIntensityList}</ul>` 
+            }
+        });
+    }
+
+    // Extract runtime for the schema calibration tag safely
+    let currentRuntime = movie.Runtime || movie.runtime || "Official";
+    if (typeof currentRuntime === 'number') currentRuntime = `${currentRuntime} min`;
+
+    // Inject Sensitive Content Timestamps into Schema (Top Priority)
+    if (sensitiveScenes.length > 0) {
+        const typesArray = getSensitiveContentTypes(movie.tmdbId) || ['mild peril'];
+        const typesString = typesArray.join(' and ');
+
+        const schemaListText = sensitiveScenes.map(s => {
+            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
+            return `<li>${timeRange} - ${s.type || 'Frightening Content'}</li>`;
+        }).join('');
+
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `According to the Filmiway Timestamps & Parents Guide, ${movie.Title} contains sensitive scenes for younger viewers including ${typesString}. Exact timestamps for these scenes are:<br><br><ul>${schemaListText}</ul>` 
+            }
+        });
+    } else {
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `No, the Filmiway Timestamps & Parents Guide confirms that ${movie.Title} is completely free of explicit sexual content, severe violence, and nudity. It is suitable for general viewing.` 
+            }
+        });
+    }
+
+    const faqSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        'name': `Parents Guide and FAQ for ${movie.Title}`,
+        'mainEntity': schemaFaqs
+    };
+
+    return { movieSchema, faqSchema };
+};
+
+// 🔥 3. FRONTEND UI SYNC (Displays the timestamps on your Next.js page)
+export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Official") => {
+    const staticFaqs = HBO_MAX_FAMILY_MOVIE_FAQS[movieTitle] ? [...HBO_MAX_FAMILY_MOVIE_FAQS[movieTitle]] : [];
+    const sensitiveScenes = SENSITIVE_TIMELINES[tmdbId]?.scenes || [];
+    const movieInfo = COMPLETE_MOVIE_DATA[tmdbId];
+    const intensityScenes = movieInfo?.scenes || [];
+
+    // ✅ Safely parsing runtime to a string
+    const dbMovie = COMPLETE_MOVIE_DATABASE.find(m => m.tmdbId === tmdbId);
+    let finalRuntime = currentRuntime !== "Official" ? currentRuntime : (dbMovie?.runtime ? `${dbMovie.runtime} min` : "Official");
+    if (typeof finalRuntime === 'number') finalRuntime = `${finalRuntime} min`;
+
+    if (intensityScenes.length > 0) {
+        const uiIntensityList = intensityScenes.map(s => `• Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)`).join('\n');
+        staticFaqs.unshift({
+            question: `What are the most exciting scenes in ${movieTitle}?`,
+            answer: `According to the Filmiway Fun Factor, ${movieTitle} peaks at the following moments:\n\n${uiIntensityList}`
+        });
+    }
+
+    if (sensitiveScenes.length > 0) {
+        const typesArray = getSensitiveContentTypes(tmdbId) || ['mild peril'];
+        const typesString = typesArray.join(' and ');
+
+        const uiListText = sensitiveScenes.map(s => {
+            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
+            return `• ${timeRange} - ${s.type || 'Frightening Content'}`;
+        }).join('\n');
+
+        staticFaqs.unshift({
+            question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
+            answer: `According to the Filmiway Timestamps & Parents Guide, ${movieTitle} contains sensitive scenes for younger viewers including ${typesString}. These timestamps are accurate for the ${finalRuntime} runtime. Exact timestamps for these scenes are:\n\n${uiListText}`
+        });
+    } else {
+        staticFaqs.unshift({
+            question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
+            answer: `No, the Filmiway Timestamps & Parents Guide confirms that ${movieTitle} is completely free of explicit sexual content, severe violence, and nudity. This assessment is accurate for the ${finalRuntime} runtime.`
+        });
+    }
+
+    return staticFaqs;
 };

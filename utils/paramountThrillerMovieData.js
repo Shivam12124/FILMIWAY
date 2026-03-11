@@ -24,73 +24,40 @@ export const COMPLETE_MOVIE_DATABASE = [
 // ✅ SENSITIVE TIMELINES (Focusing on Tension, Violence, and Jumpscares)
 export const SENSITIVE_TIMELINES = {
     // 1. No Country for Old Men
-    6977: { 
-        scenes: [
-            { start: "0:05:00", end: "0:08:00", type: "Strangulation/Murder", severity: "High" },
-            { start: "0:45:00", end: "0:50:00", type: "Hotel Shootout", severity: "High" }
-        ] 
-    },
+    6977: { scenes: [] },
+
     // 2. Zodiac
-    1949: { 
-        scenes: [
-            { start: "0:05:00", end: "0:10:00", type: "Lovers' Lane Murder", severity: "High" },
-            { start: "0:55:00", end: "1:00:00", type: "Lake Berryessa Stabbing", severity: "Extreme" }
-        ] 
-    },
+    1949: { scenes: [] },
+
     // 3. 10 Cloverfield Lane
-    333371: { 
-        scenes: [
-            { start: "0:45:00", end: "0:50:00", type: "Acid Attack/Face Melt", severity: "High" },
-            { start: "1:30:00", end: "1:40:00", type: "Bunker Escape/Alien Fight", severity: "Moderate" }
-        ] 
-    },
+    333371: { scenes: [] },
+
     // 4. Strange Darling
-    1029281: { 
-        scenes: [
-            { start: "0:20:00", end: "0:25:00", type: "Graphic Stabbing", severity: "High" },
-            { start: "1:10:00", end: "1:15:00", type: "Torture Scene", severity: "Extreme" }
-        ] 
-    },
+    1029281: { scenes: [] },
+
     // 5. Collateral
-    1538: { 
-        scenes: [
-            { start: "0:25:00", end: "0:30:00", type: "Alleyway Shooting", severity: "Moderate" },
-            { start: "1:45:00", end: "1:55:00", type: "Subway Stalking", severity: "High" }
-        ] 
-    },
+    1538: { scenes: [] },
+
     // 6. A Quiet Place
-    447332: { 
-        scenes: [
-            { start: "0:08:00", end: "0:10:00", type: "Child Death", severity: "High" },
-            { start: "1:00:00", end: "1:05:00", type: "Bathtub Birth/Nail", severity: "High" }
-        ] 
-    },
+    447332: { scenes: [] },
+
     // 7. Gone Baby Gone
-    4771: { 
-        scenes: [
-            { start: "1:15:00", end: "1:20:00", type: "Child Abuse Discovery", severity: "High" },
-            { start: "1:30:00", end: "1:35:00", type: "Execution", severity: "Moderate" }
-        ] 
-    },
+    4771: { scenes: [] },
+
     // 8. The Autopsy of Jane Doe
     397243: { 
         scenes: [
-            { start: "0:30:00", end: "0:35:00", type: "Graphic Autopsy Detail", severity: "High" },
-            { start: "1:10:00", end: "1:15:00", type: "Reanimated Corpse Scare", severity: "High" }
+            { start: "0:19:15", end: "0:29:10", type: "Nudity(Woman)", severity: "High" }
         ] 
     },
+
     // 9. Jack Reacher
-    75780: { 
-        scenes: [
-            { start: "0:02:00", end: "0:06:00", type: "Public Sniper Shooting", severity: "High" },
-            { start: "1:40:00", end: "1:50:00", type: "Final Shootout/Combat", severity: "Moderate" }
-        ] 
-    },
+    75780: { scenes: [] },
+
     // 10. The Machinist
     4553: { 
         scenes: [
-            { start: "0:35:00", end: "0:40:00", type: "Factory Accident (Arm Loss)", severity: "High" },
-            { start: "1:30:00", end: "1:35:00", type: "Hit and Run Flashback", severity: "High" }
+            { start: "0:17:00", end: "0:18:25", type: "Sex", severity: "Moderate" }
         ] 
     }
 };

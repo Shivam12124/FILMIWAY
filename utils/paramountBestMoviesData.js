@@ -396,10 +396,18 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
         });
     }
 
+    // Extract runtime safely
+    let currentRuntime = movie.Runtime || movie.runtime || "Official";
+    if (typeof currentRuntime === 'number') currentRuntime = `${currentRuntime} min`;
+
     if (sensitiveScenes.length > 0) {
         const typesArray = getSensitiveContentTypes(movie.tmdbId) || ['mature content'];
         const typesString = typesArray.join(' and ');
-        const schemaListText = sensitiveScenes.map(s => `<li>${s.start} to ${s.end} - ${s.type}</li>`).join('');
+        
+        const schemaListText = sensitiveScenes.map(s => {
+            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
+            return `<li>${timeRange} - ${s.type || 'Mature Content'}</li>`;
+        }).join('');
 
         schemaFaqs.unshift({
             '@type': 'Question',
@@ -434,12 +442,13 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
 export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Official") => {
     const staticFaqs = PARAMOUNT_BEST_MOVIE_FAQS[movieTitle] ? [...PARAMOUNT_BEST_MOVIE_FAQS[movieTitle]] : [];
     const sensitiveScenes = SENSITIVE_TIMELINES[tmdbId]?.scenes || [];
-const movieInfo = COMPLETE_MOVIE_DATA[tmdbId];
-    const intensityScenes = movieInfo?.scenes || [];
+    const movieInfo = COMPLETE_MOVIE_DATA[tmdbId];
+    const intensityScenes = movieInfo?.scenes || [];
 
     // ✅ ADD THESE TWO LINES TO FIX THE CRASH
     const dbMovie = COMPLETE_MOVIE_DATABASE.find(m => m.tmdbId === tmdbId);
-    const finalRuntime = currentRuntime !== "Official" ? currentRuntime : (dbMovie?.runtime ? `${dbMovie.runtime} min` : "Official");
+    let finalRuntime = currentRuntime !== "Official" ? currentRuntime : (dbMovie?.runtime ? `${dbMovie.runtime} min` : "Official");
+    if (typeof finalRuntime === 'number') finalRuntime = `${finalRuntime} min`;
 
     if (intensityScenes.length > 0) {
         const uiIntensityList = intensityScenes.map(s => `• Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)`).join('\n');
@@ -452,16 +461,20 @@ const movieInfo = COMPLETE_MOVIE_DATA[tmdbId];
     if (sensitiveScenes.length > 0) {
         const typesArray = getSensitiveContentTypes(tmdbId) || ['mature content'];
         const typesString = typesArray.join(' and ');
-        const uiListText = sensitiveScenes.map(s => `• ${s.start} to ${s.end} - ${s.type}`).join('\n');
+        
+        const uiListText = sensitiveScenes.map(s => {
+            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
+            return `• ${timeRange} - ${s.type || 'Mature Content'}`;
+        }).join('\n');
 
         staticFaqs.unshift({
             question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
-           answer: `Yes, according to the Filmiway Timestamps & Parents Guide, ${movieTitle} contains adult scenes including ${typesString}. These timestamps are accurate for the ${finalRuntime} runtime. Exact timestamps for these scenes are:\n\n${uiListText}`
+            answer: `Yes, according to the Filmiway Timestamps & Parents Guide, ${movieTitle} contains adult scenes including ${typesString}. These timestamps are accurate for the ${finalRuntime} runtime. Exact timestamps for these scenes are:\n\n${uiListText}`
         });
     } else {
         staticFaqs.unshift({
             question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
-                       answer: `No, the Filmiway Timestamps & Parents Guide confirms that ${movieTitle} is completely free of explicit sexual content and nudity. This assessment is accurate for the ${finalRuntime} runtime.`
+            answer: `No, the Filmiway Timestamps & Parents Guide confirms that ${movieTitle} is completely free of explicit sexual content and nudity. This assessment is accurate for the ${finalRuntime} runtime.`
         });
     }
 

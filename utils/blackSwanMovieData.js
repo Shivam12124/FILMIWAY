@@ -74,7 +74,7 @@ export const SENSITIVE_TIMELINES = {
     // 7. The Piano Teacher
    1791: { 
         scenes: [
-            { start: "0:25:00", end: "0:27:50", type: "Nudity/Sexual Content", severity: "High" },
+            { start: "0:25:00", end: "0:27:50", type: "Nudity & Sexual Content", severity: "High" },
             { start: "0:52:00", end: "0:53:20", type: "Sexual Content", severity: "High" },
             { start: "1:06:50", end: "1:12:10", type: "Sexual Content", severity: "Extreme" },
             { start: "1:39:40", end: "1:41:40", type: "Sexual Content", severity: "High" }, 

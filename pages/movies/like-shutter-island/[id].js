@@ -14,7 +14,7 @@ import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
 import TMDBAttribution from '../../../components/TMDBAttribution';
 
-// ✅ IMPORT DATA
+// ✅ IMPORT DATA & SCHEMA GENERATOR
 import { generateCleanMovieSchema } from '../../../utils/cleanMovieSchema';
 import {
   COMPLETE_MOVIE_DATABASE, 
@@ -52,25 +52,11 @@ const MOVIE_DATA_BY_TITLE = {
     'Inception': { imdbRating: 8.8, genre: 'Sci-Fi Thriller', director: 'Christopher Nolan', shutterConnection: 'Like Shutter Island, Inception explores psychological complexity through reality questioning.' }
 };
 
-// ✅ FAQS FOR SCHEMA
-const SHUTTER_ISLAND_COLLECTION_FAQS = {
-    'Shutter Island': [
-        { question: "Is Teddy Daniels crazy?", answer: "Yes. He is actually Andrew Laeddis, a dangerous patient who created a fictional persona to escape the guilt of murdering his wife." },
-        { question: "Did the government experiment on them?", answer: "No. The lighthouse was empty. The 'experiments' were a delusion created by Andrew's mind to justify his conspiracy theories." }
-    ],
-    'Mulholland Drive': [
-        { question: "Who is the cowboy?", answer: "He represents the 'gatekeeper' of Hollywood, forcing reality back onto the protagonist's dream life." }
-    ],
-    'Donnie Darko': [
-        { question: "Is Frank real?", answer: "Frank is a 'Manipulated Dead'—a ghost from a tangent universe guiding Donnie to save the world." }
-    ]
-};
-
 const getTMDBImage = (path, size = 'w1280') => 
   path ? `https://image.tmdb.org/t/p/${size}${path}` : null;
 
 // ✅ OPTIMIZED BANNER (Fixed Metric: Mind-Bending Index)
-const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
+const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
     const [showTrailer, setShowTrailer] = useState(false);
     const [countdown, setCountdown] = useState(4);
     const [hasClosedTrailer, setHasClosedTrailer] = useState(false);
@@ -82,7 +68,7 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile }) => {
     const shutterConnection = correctData?.shutterConnection || `Like Shutter Island, ${movie.Title} explores themes of paranoia and identity.`;
     
     // ✅ CHANGED METRIC: Uses mindBendingIndex (Default 88)
-    const mindScore = COMPLETE_MOVIE_DATA[movie.tmdbId]?.mindBendingIndex || 88;
+    const mindScore = richData?.mindBendingIndex || 88;
 
     const mobileHeroCSS = `
     @media (max-width: 767px) {
@@ -210,12 +196,11 @@ const ShutterIslandBreadcrumb = ({ movie }) => (
     </motion.nav>
 );
 
-
-
-const ShutterIslandMoviePage = ({ movie, tmdbData }) => {
+const ShutterIslandMoviePage = ({ movie, tmdbData, sensitiveData }) => {
     const router = useRouter();
     const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
     const correctData = MOVIE_DATA_BY_TITLE[movie.Title];
+    const richData = COMPLETE_MOVIE_DATA[movie.tmdbId]; // Added for Banner
     const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
@@ -233,6 +218,35 @@ const ShutterIslandMoviePage = ({ movie, tmdbData }) => {
     
     const collectionSlug = router.pathname.split('/')[2];
     const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
+    const movieTitle = movie?.Title || 'Untitled Movie';
+    const dynamicCollectionName = 'Movies Like Shutter Island';
+
+    // =========================================================================
+    // ✅ THE STANDARDIZED ELITE SEO BLOCK
+    // =========================================================================
+
+    const scenes = SENSITIVE_TIMELINES?.[movie.tmdbId]?.scenes || [];
+    
+    // 1. UNIQUE META TITLE (Targets "Parents Guide & Timestamps")
+    const cleanSEOTitle = scenes.length > 0
+        ? `${movieTitle} (${currentMovieYear}) Parents Guide & Timestamps | ${dynamicCollectionName}`
+        : `${movieTitle} (${currentMovieYear}) Parents Guide | ${dynamicCollectionName}`;
+
+    // 2. STANDARDIZED ELITE META DESCRIPTION
+    let cleanSEODesc = '';
+    
+    if (scenes.length > 0) {
+        const rawTimes = scenes.slice(0, 3).map(s => s.end ? `${s.start}–${s.end}` : s.start);
+        const formattedTimes = rawTimes.length > 1 
+        ? `${rawTimes.slice(0, -1).join(', ')} and ${rawTimes.slice(-1)}` 
+        : rawTimes[0];
+
+        cleanSEODesc = `Parents Guide for ${movieTitle} (${currentMovieYear}). Viewer discretion advised. Includes exact scene timestamps: ${formattedTimes}.`;
+    } else {
+        cleanSEODesc = `Parents Guide for ${movieTitle} (${currentMovieYear}). Filmiway Content Advisory: No explicit sexual content or severe violence identified.`;
+    }
+
+    // =========================================================================
 
     const { movieSchema, faqSchema } = generateCleanMovieSchema(
         movie, 
@@ -242,11 +256,6 @@ const ShutterIslandMoviePage = ({ movie, tmdbData }) => {
         null,
         COMPLETE_MOVIE_DATA[movie.tmdbId]
     );
-
-    // ✅ SEO FIX: Robust Strings
-    const movieTitle = movie?.Title || 'Untitled Movie';
-    const cleanSEOTitle = `${movieTitle} (${currentMovieYear}) - Movies Like Shutter Island | Filmiway`;
-    const cleanSEODesc = `${movieTitle} (${currentMovieYear}) - A compelling psychological thriller like Shutter Island.`;
 
     return (
         <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
@@ -259,9 +268,9 @@ const ShutterIslandMoviePage = ({ movie, tmdbData }) => {
                 <meta name="robots" content="index, follow" />
                 <meta name="language" content="English" />
                 
-                {/* ✅ SCHEMA INJECTION */}
-                <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }} />
-                {faqSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />}
+                {/* ✅ SCHEMA INJECTION WITH CRITICAL KEYS */}
+                <script key="schema-movie" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }} />
+                {faqSchema && <script key="schema-faq" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />}
 
                 <meta property="og:title" content={cleanSEOTitle} />
                 <meta property="og:description" content={cleanSEODesc} />
@@ -275,6 +284,9 @@ const ShutterIslandMoviePage = ({ movie, tmdbData }) => {
             <SubtleFilmGrain />
             <div className="absolute inset-0"><CinematicBackground /></div>
             
+            {/* ✅ RESTORED BACK BUTTON */}
+            <SmartBackButton />
+            
             <div className="relative z-10 pt-10 sm:pt-12 lg:pt-16">
                 
                 {/* ✅ HIDDEN H1 FOR SEO PARITY */}
@@ -282,11 +294,16 @@ const ShutterIslandMoviePage = ({ movie, tmdbData }) => {
 
                 <ShutterIslandBreadcrumb movie={movie} />
                 <div className="container mx-auto px-0 pb-16 sm:pb-24 lg:pb-32 max-w-7xl">
-                    <OptimizedBanner movie={movie} movieData={movieData} trailer={trailer} isMobile={isMobile} />
+                    <OptimizedBanner movie={movie} movieData={movieData} richData={richData} trailer={trailer} isMobile={isMobile} />
                     
                     {/* ✅ BOT-FRIENDLY FIX APPLIED: NO DELAY (0.5s duration) ✅ */}
                     <motion.div id="watch" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0, duration: 0.5 }} className="space-y-8 sm:space-y-12 px-3 sm:px-4 lg:px-6">
-                        <MovieDetailsSection movie={movie} fromShutterIslandCollection={true} />
+                        {/* ✅ PASSED SENSITIVE DATA */}
+                        <MovieDetailsSection 
+                            movie={movie} 
+                            fromShutterIslandCollection={true} 
+                            sensitiveData={sensitiveData} 
+                        />
                     </motion.div>
                     
                     <div className="px-3 sm:px-4 lg:px-6">
@@ -310,15 +327,26 @@ export async function getStaticProps({ params }) {
     if (!movie) return { notFound: true };
 
     try {
+        const apiKey = process.env.TMDB_API_KEY || 'a07e22bc18f5cb106bfe4cc1f83ad8ed';
         const tmdbResponse = await fetch(
-            `https://api.themoviedb.org/3/movie/${movie.tmdbId}?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&append_to_response=videos`
+            `https://api.themoviedb.org/3/movie/${movie.tmdbId}?api_key=${apiKey}&append_to_response=videos`
         );
         const tmdbData = tmdbResponse.ok ? await tmdbResponse.json() : null;
 
-        return { props: { movie, tmdbData } };
+        // ✅ FIX: Fetch and pass the real sensitive data down to the components
+        const rawSensitive = SENSITIVE_TIMELINES[movie.tmdbId];
+        const sensitiveData = rawSensitive ? { scenes: rawSensitive.scenes } : null;
+
+        return { props: { movie, tmdbData, sensitiveData } };
     } catch (error) {
         console.error('Error fetching TMDB data:', error);
-        return { props: { movie, tmdbData: null } };
+        return { 
+            props: { 
+                movie, 
+                tmdbData: null,
+                sensitiveData: null 
+            } 
+        };
     }
 }
 

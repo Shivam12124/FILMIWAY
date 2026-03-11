@@ -1,4 +1,4 @@
-// utils/huluRomanceMovieData.js - HULU ROMANCE COLLECTION DATA
+// utils/huluRomanceMovieData.js - HULU ROMANCE COLLECTION DATA ✅
 // Optimized for Prestige, Emotional Resonance, and Chemistry
 
 export const TMDB_CONFIG = {
@@ -20,7 +20,6 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 758330, "imdbID": "tt13352968", "Title": "Good Luck to You, Leo Grande", "year": 2022, "genre": "Comedy", "runtime": 97, "rank": 9 },
     { "tmdbId": 10096, "imdbID": "tt0337563", "Title": "13 Going on 30", "year": 2004, "genre": "Comedy", "runtime": 98, "rank": 10 }
 ];
-
 
 // ✅ SENSITIVE TIMELINES (Detailed Sexual Content & Nudity Tracking)
 export const SENSITIVE_TIMELINES = {
@@ -74,7 +73,7 @@ export const SENSITIVE_TIMELINES = {
     },
 
     // 7. Rye Lane
-    866463: { 
+    1049638: { // Fixed TMDB ID
         scenes: [
             { start: "38:22", end: "38:35", type: "Sex (No Nudity)", severity: "Moderate" },
             { start: "1:11:30", end: "1:13:28", type: "Nudity", severity: "High" }
@@ -82,10 +81,10 @@ export const SENSITIVE_TIMELINES = {
     },
 
     // 8. Crazy Heart
-    24428: { scenes: [] }, // No sexual content found
+    25196: { scenes: [] }, // Fixed TMDB ID - No sexual content found
 
     // 9. Good Luck to You, Leo Grande
-    800366: { 
+    758330: { // Fixed TMDB ID
         scenes: [
             { start: "1:05:00", end: "1:06:00", type: "Sex & Nudity", severity: "High" },
             { start: "1:30:33", end: "1:33:30", type: "Sex & Nudity", severity: "High" },
@@ -102,16 +101,15 @@ export const FALLBACK_POSTERS = {
     994108: "https://image.tmdb.org/t/p/w500/b679b398679b98679b.jpg",
     572916: "https://image.tmdb.org/t/p/w500/3E37373737.jpg",
     167073: "https://image.tmdb.org/t/p/w500/9J9J9J9J9J.jpg",
-   16553: "https://image.tmdb.org/t/p/w500/5K5K5K5K5K.jpg",
+    16553: "https://image.tmdb.org/t/p/w500/5K5K5K5K5K.jpg",
     587792: "https://image.tmdb.org/t/p/w500/1G1G1G1G1G.jpg",
-    866463: "https://image.tmdb.org/t/p/w500/2H2H2H2H2H.jpg",
-    24428: "https://image.tmdb.org/t/p/w500/4F4F4F4F4F.jpg",
-    800366: "https://image.tmdb.org/t/p/w500/8L8L8L8L8L.jpg",
+    1049638: "https://image.tmdb.org/t/p/w500/2H2H2H2H2H.jpg",
+    25196: "https://image.tmdb.org/t/p/w500/4F4F4F4F4F.jpg",
+    758330: "https://image.tmdb.org/t/p/w500/8L8L8L8L8L.jpg",
     10096: "https://image.tmdb.org/t/p/w500/6M6M6M6M6M.jpg"
 };
 
-// ✅ Helper to map "Romance" metrics to your existing code keys
-// Replaces old metrics with ONLY 'romanticIntensity'
+// ✅ HELPER: Customized for Romance
 const createMovieData = (data) => ({
     romanticIntensity: 85,      // Default Romantic Intensity
     complexityLevel: "HIGH",
@@ -243,7 +241,7 @@ export const COMPLETE_MOVIE_DATA = {
     // 7. Rye Lane
     // Curve: Awkward -> Bonding -> Fun -> Misunderstanding -> Grand Gesture.
     // Peak: 85 (The Boat Scene - Emotional Reveal).
-    866463: createMovieData({ 
+    1049638: createMovieData({ 
         romanticIntensity: 82, 
         complexityLevel: "FRESH", 
         dominantColor: "#ec4899", rating: 7.2, criticsScore: 98, audienceScore: 85, director: "Raine Allen-Miller", 
@@ -263,7 +261,7 @@ export const COMPLETE_MOVIE_DATA = {
     // 8. Crazy Heart
     // Curve: Despair -> Hope -> Intimacy -> Relapse -> Redemption.
     // Peak: 90 (Rock Bottom - Emotional Collapse).
-    24428: createMovieData({ 
+    25196: createMovieData({ 
         romanticIntensity: 90, 
         complexityLevel: "OSCAR", 
         dominantColor: "#b45309", rating: 7.0, criticsScore: 90, audienceScore: 80, director: "Scott Cooper", 
@@ -283,7 +281,7 @@ export const COMPLETE_MOVIE_DATA = {
     // 9. Good Luck to You, Leo Grande
     // Curve: Nervousness -> Conversation -> Vulnerability -> Confrontation -> Self-Acceptance.
     // Peak: 88 (The Mirror - Self-Love Climax).
-    800366: createMovieData({ 
+    758330: createMovieData({ 
         romanticIntensity: 85, 
         complexityLevel: "INTIMATE", 
         dominantColor: "#f59e0b", rating: 7.2, criticsScore: 93, audienceScore: 85, director: "Sophie Hyde", 
@@ -320,6 +318,7 @@ export const COMPLETE_MOVIE_DATA = {
         themes: ["Nostalgia", "Growth", "Second Chances"]
     })
 };
+
 export const STRATEGIC_QUOTES = {
     1064213: "I'm not a hooker, I'm an escort.",
     994108: "I've always been lonely. That's why I'm here.",
@@ -327,9 +326,9 @@ export const STRATEGIC_QUOTES = {
     167073: "You'll feel so homesick that you'll want to die, and there's nothing you can do about it apart from endure it.",
    16553: "Love is an ugly, terrible business practiced by fools.",
     587792: "Today, tomorrow, it's all the same.",
-    866463: "You know when you see someone and you just know?",
-    24428: "I used to be somebody, but now I'm somebody else.",
-    800366: "I've never had an orgasm.",
+    1049638: "You know when you see someone and you just know?", // Fixed ID mapping
+    25196: "I used to be somebody, but now I'm somebody else.", // Fixed ID mapping
+    758330: "I've never had an orgasm.", // Fixed ID mapping
     10096: "I want to be thirty. Thirty and flirty and thriving."
 };
 
@@ -533,57 +532,154 @@ export const getTMDBPosterUrl = (posterPath, size = 'medium') => {
     return `${TMDB_CONFIG.IMAGE_BASE_URL}/${posterSize}${posterPath}`;
 };
 
+// ✅ HELPER: Outputs clean SEO-friendly terms like "sexual content", "nudity"
 export const getSensitiveContentTypes = (tmdbId) => {
     const sensitiveData = SENSITIVE_TIMELINES[tmdbId];
     if (!sensitiveData?.scenes?.length) return null;
     const types = new Set();
     sensitiveData.scenes.forEach(scene => {
         const lowerType = scene.type.toLowerCase();
-        if (lowerType.includes('sex') || lowerType.includes('intimacy')) types.add('sexual content');
+        if (lowerType.includes('sex')) types.add('sexual content');
         if (lowerType.includes('nudity')) types.add('nudity');
-        if (lowerType.includes('distress') || lowerType.includes('grief')) types.add('emotional distress');
-        if (lowerType.includes('alcohol')) types.add('substance use');
+        if (lowerType.includes('lingerie') || lowerType.includes('partial')) types.add('suggestive content');
     });
     return Array.from(types);
 };
 
-export const generateFAQData = (movie) => {
-    return HULU_ROMANCE_MOVIE_FAQS[movie.Title] || [];
-};
-
-export const generateMovieSchema = (movie) => {
-    const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
-    const posterUrl = FALLBACK_POSTERS[movie.tmdbId] || '';
-    return {
+// 🔥 UNIFIED CLEAN GENERATOR (For Google Bots & LLMs)
+export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, collectionSlug, unused, movieInfo) => {
+    
+    // 1. MOVIE SCHEMA (Zero Review/Rating Spam, Clean Description)
+    const movieSchema = {
         '@context': 'https://schema.org',
         '@type': 'Movie',
         'name': movie.Title,
-        'description': movieInfo?.synopsis || `${movie.Title} - A top romance movie on Hulu.`,
+        'description': movieInfo?.synopsis || `${movie.Title} (${currentMovieYear}) - A top romance movie on Hulu.`,
         'genre': movie.genre,
-        'datePublished': movie.year.toString(),
+        'datePublished': currentMovieYear?.toString() || movie.year.toString(),
         'director': { '@type': 'Person', 'name': movieInfo?.director || 'Director' },
         'actor': movieInfo?.cast?.map(actor => ({ '@type': 'Person', 'name': actor })) || [],
-        'duration': `PT${movie.runtime}M`,
-        'image': posterUrl,
-        'aggregateRating': { 
-            '@type': 'AggregateRating', 
-            'ratingValue': movieInfo?.rating || 7.5, 
-            'bestRating': 10, 
-            'worstRating': 1, 
-            'ratingCount': movieInfo?.audienceScore || 100 
-        }
+        'image': tmdbData?.poster_path ? `https://image.tmdb.org/t/p/w500${tmdbData.poster_path}` : '',
+        'duration': `PT${movie.runtime}M`
     };
-};
 
-export const generateFAQSchema = (faqs) => ({
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    'mainEntity': faqs.map(faq => ({ 
+    // 2. THE "GOLDEN EGG" FAQ SCHEMA
+    const staticFaqs = HULU_ROMANCE_MOVIE_FAQS[movie.Title] || [];
+    const sensitiveScenes = SENSITIVE_TIMELINES[movie.tmdbId]?.scenes || [];
+    const intensityScenes = movieInfo?.scenes || [];
+    
+    // Load your beautifully written trivia FAQs
+    const schemaFaqs = staticFaqs.map(faq => ({ 
         '@type': 'Question', 
         'name': faq.question, 
         'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer } 
-    }))
-});
+    }));
+
+    // 🔥 INJECT INTENSITY GRAPH TIMESTAMPS
+    if (intensityScenes.length > 0) {
+        const schemaIntensityList = intensityScenes.map(s => `<li>Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)</li>`).join('');
+        
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `What are the most intense scenes in ${movie.Title}?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `According to the Filmiway Intensity metric, ${movie.Title} peaks at the following moments:<br><br><ul>${schemaIntensityList}</ul>` 
+            }
+        });
+    }
+
+    // Extract runtime for the schema calibration tag
+    let currentRuntime = movie.Runtime || movie.runtime || "Official";
+    if (typeof currentRuntime === 'number') currentRuntime = `${currentRuntime} min`;
+
+    // 🔥 INJECT SENSITIVE CONTENT TIMESTAMPS (Unshifted last so it remains #1 at the very top)
+    if (sensitiveScenes.length > 0) {
+        const typesArray = getSensitiveContentTypes(movie.tmdbId) || ['mature content'];
+        const typesString = typesArray.join(' and ');
+
+        const schemaListText = sensitiveScenes.map(s => {
+            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
+            return `<li>${timeRange} - ${s.type || 'Mature Content'}</li>`;
+        }).join('');
+
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `Yes, according to the Filmiway Timestamps & Parents Guide, ${movie.Title} contains adult scenes including ${typesString}. These timestamps are accurate for the ${currentRuntime} runtime. Exact timestamps for these scenes are:<br><br><ul>${schemaListText}</ul>` 
+            }
+        });
+    } else {
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `No, the Filmiway Timestamps & Parents Guide confirms that ${movie.Title} is completely free of explicit sexual content and nudity. This assessment is accurate for the ${currentRuntime} runtime.` 
+            }
+        });
+    }
+
+    const faqSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        'name': `Parents Guide and FAQ for ${movie.Title}`,
+        'mainEntity': schemaFaqs
+    };
+
+    return { movieSchema, faqSchema };
+};
+
+// 🔥 DYNAMIC VISIBLE FAQ GENERATOR FOR THE FRONTEND UI
+export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Official") => {
+    // 1. Get the static, manually written FAQs
+    const staticFaqs = HULU_ROMANCE_MOVIE_FAQS[movieTitle] ? [...HULU_ROMANCE_MOVIE_FAQS[movieTitle]] : [];
+    
+    // 2. Get the sensitive scenes and intensity scenes data
+    const sensitiveScenes = SENSITIVE_TIMELINES[tmdbId]?.scenes || [];
+    const movieInfo = COMPLETE_MOVIE_DATA[tmdbId];
+    const intensityScenes = movieInfo?.scenes || [];
+
+    // 🔥 Automatically fetch the exact runtime from the database if missing
+    const dbMovie = COMPLETE_MOVIE_DATABASE.find(m => m.tmdbId === tmdbId);
+    let finalRuntime = currentRuntime !== "Official" ? currentRuntime : (dbMovie?.runtime ? `${dbMovie.runtime} min` : "Official");
+
+    // 3. 🔥 DYNAMICALLY GENERATE THE INTENSITY GRAPH FAQ
+    if (intensityScenes.length > 0) {
+        const uiIntensityList = intensityScenes.map(s => `• Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)`).join('\n');
+        
+        staticFaqs.unshift({
+            question: `What are the most intense scenes in ${movieTitle}?`,
+            answer: `According to the Filmiway Intensity metric, ${movieTitle} peaks at the following moments:\n\n${uiIntensityList}`
+        });
+    }
+
+    // 4. 🔥 DYNAMICALLY GENERATE THE SENSITIVE CONTENT FAQ
+    if (sensitiveScenes.length > 0) {
+        const typesArray = getSensitiveContentTypes(tmdbId) || ['mature content'];
+        const typesString = typesArray.join(' and ');
+
+        const uiListText = sensitiveScenes.map(s => {
+            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
+            return `• ${timeRange} - ${s.type || 'Mature Content'}`;
+        }).join('\n');
+
+        staticFaqs.unshift({
+            question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
+            answer: `Yes, according to the Filmiway Timestamps & Parents Guide, ${movieTitle} contains adult scenes including ${typesString}. These timestamps are accurate for the ${finalRuntime} runtime. Exact timestamps for these scenes are:\n\n${uiListText}`
+        });
+    } else {
+        staticFaqs.unshift({
+            question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
+            answer: `No, the Filmiway Timestamps & Parents Guide confirms that ${movieTitle} is completely free of explicit sexual content and nudity. This assessment is accurate for the ${finalRuntime} runtime.`
+        });
+    }
+
+    // 5. Return the combined list
+    return staticFaqs;
+};
 
 export const fetchMovieFromTMDB = async (tmdbId) => ({ 
     poster_path: null, 

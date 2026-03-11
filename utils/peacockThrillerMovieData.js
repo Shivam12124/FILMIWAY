@@ -337,7 +337,7 @@ export const getSensitiveContentTypes = (tmdbId) => {
         const lowerType = scene.type.toLowerCase();
         if (lowerType.includes('sex')) types.add('sexual content');
         if (lowerType.includes('nudity')) types.add('nudity');
-        if (lowerType.includes('viol')) types.add('violence');
+        if (lowerType.includes('viol') || lowerType.includes('gore') || lowerType.includes('blood')) types.add('violence');
     });
     return Array.from(types);
 };
@@ -386,7 +386,9 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
     }
 
     // Extract runtime for the schema calibration tag
-    const currentRuntime = movie.Runtime || movie.runtime || "Official";
+    let currentRuntime = movie.Runtime || movie.runtime || "Official";
+    if (typeof currentRuntime === 'number') currentRuntime = `${currentRuntime} min`;
+    if (movie.tmdbId === 51876) currentRuntime += " (Unrated Version)";
 
     // 🔥 INJECT SENSITIVE CONTENT TIMESTAMPS (Unshifted last so it remains #1 at the very top)
     if (sensitiveScenes.length > 0) {
@@ -437,10 +439,14 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
     const movieInfo = COMPLETE_MOVIE_DATA[tmdbId];
     const intensityScenes = movieInfo?.scenes || [];
 
-    // 🔥 FIX 1: Automatically fetch the exact runtime from the database if missing
+    // 🔥 Automatically fetch the exact runtime from the database if missing
     const dbMovie = COMPLETE_MOVIE_DATABASE.find(m => m.tmdbId === tmdbId);
-    const finalRuntime = currentRuntime !== "Official" ? currentRuntime : (dbMovie?.runtime ? `${dbMovie.runtime} min` : "Official");
+    let finalRuntime = currentRuntime !== "Official" ? currentRuntime : (dbMovie?.runtime ? `${dbMovie.runtime} min` : "Official");
 
+    // 🔥 LIMITLESS UNRATED EXCEPTION
+    if (tmdbId === 51876 && !finalRuntime.includes("Unrated")) {
+        finalRuntime += " (Unrated Version)";
+    }
 
     // 3. 🔥 DYNAMICALLY GENERATE THE INTENSITY GRAPH FAQ
     if (intensityScenes.length > 0) {

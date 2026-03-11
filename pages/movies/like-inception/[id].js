@@ -160,7 +160,7 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
                 <div className="absolute top-0 left-0 right-0 h-0.5 sm:h-1" style={{ background: `linear-gradient(90deg, transparent, ${COLORS.accent}, transparent)` }} />
                 <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5">
                   <motion.div className="p-2 sm:p-2.5 rounded-lg sm:rounded-xl flex-shrink-0" style={{ background: `linear-gradient(135deg, ${COLORS.accent}20, ${COLORS.accent}10)`, border: `1px solid ${COLORS.accent}40` }} whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}><Brain className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" style={{ color: COLORS.accent }} /></motion.div>
-                  <div className="min-w-0 flex-1"><h2 className="text-sm sm:text-base lg:text-xl xl:text-2xl font-bold leading-tight" style={{ color: COLORS.accent }}>Why This Movie Bends Reality</h2><p className="text-xs sm:text-sm hidden sm:block" style={{ color: COLORS.textMuted }}>Mind-Bending Score: {mindScore}/100</p></div>
+                  <div className="min-w-0 flex-1"><h2 className="text-sm sm:text-base lg:text-xl xl:text-2xl font-bold leading-tight" style={{ color: COLORS.accent }}>Why This Bends Reality</h2><p className="text-xs sm:text-sm hidden sm:block" style={{ color: COLORS.textMuted }}>Mind-Bending Score: {mindScore}/100</p></div>
                 </div>
                 <div className="relative pl-4 sm:pl-6 border-l-2" style={{ borderColor: `${COLORS.accent}40` }}>
                   <motion.div className="absolute -left-1.5 sm:-left-2 top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full" style={{ backgroundColor: COLORS.accent }} animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 2, repeat: Infinity }} />
@@ -186,32 +186,32 @@ const SmartBackButton = () => {
 };
 
 const AuthorCreditSection = () => (
-    <motion.section className="pt-6 sm:pt-8 mt-12 sm:mt-16" style={{ borderTop: `1px solid ${COLORS.borderLight}` }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2.0, duration: 0.8 }}>
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
-            <div className="flex items-center gap-3"><User className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: COLORS.textDisabled }} /><div><p className="text-xs sm:text-sm" style={{ color: COLORS.textMuted }}>Curated by <span className="font-medium" style={{ color: COLORS.textSecondary }}>Filmiway Editorial Team</span></p><p className="text-xs" style={{ color: COLORS.textDisabled }}>Expert analysis of complex cinema</p></div></div>
-            <div className="flex items-center gap-3 sm:gap-4"><span className="text-xs sm:text-sm" style={{ color: COLORS.textDisabled }}>Share:</span><div className="flex gap-2 sm:gap-3">{[Twitter, Hash, Send].map((Icon, i) => (<button key={i} className="p-1.5 sm:p-2 rounded-full transition-colors" style={{ color: COLORS.textDisabled }} onMouseEnter={(e) => { e.currentTarget.style.color = COLORS.textSecondary; e.currentTarget.style.backgroundColor = COLORS.bgCard; }} onMouseLeave={(e) => { e.currentTarget.style.color = COLORS.textDisabled; e.currentTarget.style.backgroundColor = 'transparent'; }}><Icon className="w-3 h-3 sm:w-4 sm:h-4" /></button>))}</div></div>
-        </div>
-    </motion.section>
+  <motion.section className="pt-6 sm:pt-8 mt-12 sm:mt-16" style={{ borderTop: `1px solid ${COLORS.borderLight}` }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2.0, duration: 0.8 }}>
+    <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
+      <div className="flex items-center gap-3"><User className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: COLORS.textDisabled }} /><div><p className="text-xs sm:text-sm" style={{ color: COLORS.textMuted }}>Curated by <span className="font-medium" style={{ color: COLORS.textSecondary }}>Filmiway Editorial Team</span></p><p className="text-xs" style={{ color: COLORS.textDisabled }}>Expert analysis of complex cinema</p></div></div>
+      <div className="flex items-center gap-3 sm:gap-4"><span className="text-xs sm:text-sm" style={{ color: COLORS.textDisabled }}>Share:</span><div className="flex gap-2 sm:gap-3">{[Twitter, Hash, Send].map((Icon, i) => (<button key={i} className="p-1.5 sm:p-2 rounded-full transition-colors" style={{ color: COLORS.textDisabled }} onMouseEnter={(e) => { e.currentTarget.style.color = COLORS.textSecondary; e.currentTarget.style.backgroundColor = COLORS.bgCard; }} onMouseLeave={(e) => { e.currentTarget.style.color = COLORS.textDisabled; e.currentTarget.style.backgroundColor = 'transparent'; }}><Icon className="w-3 h-3 sm:w-4 sm:h-4" /></button>))}</div></div>
+    </div>
+  </motion.section>
 );
 
 const SubtleFilmGrain = () => (
-    <div className="fixed inset-0 pointer-events-none z-0 opacity-[0.005]"><div className="w-full h-full bg-repeat" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)' opacity='0.3'/%3E%3C/svg%3E")`, backgroundSize: '60px 60px' }} /></div>
+  <div className="fixed inset-0 pointer-events-none z-0 opacity-[0.005]"><div className="w-full h-full bg-repeat" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)' opacity='0.3'/%3E%3C/svg%3E")`, backgroundSize: '60px 60px' }} /></div>
 );
 
 const InceptionBreadcrumb = ({ movie }) => (
-    <motion.nav className="mb-6 sm:mb-8 px-3 sm:px-4 lg:px-6 pb-3 sm:pb-4" style={{ borderBottom: `1px solid ${COLORS.borderLight}` }} initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-        <div className="flex items-center space-x-2 sm:space-x-3 text-xs sm:text-sm" style={{ color: COLORS.textMuted }}>
-            <Link href="/collection/movies-like-inception" className="transition-all duration-300 truncate" style={{ color: COLORS.textMuted }} onMouseEnter={(e) => e.currentTarget.style.color = COLORS.accent} onMouseLeave={(e) => e.currentTarget.style.color = COLORS.textMuted}>Movies Like Inception</Link>
-            <ChevronLeft size={14} className="flex-shrink-0" style={{ color: COLORS.textDisabled, transform: 'rotate(180deg)' }} /><span className="font-medium truncate" style={{ color: `${COLORS.accent}B3` }}>{movie.Title}</span>
-        </div>
-    </motion.nav>
+  <motion.nav className="mb-6 sm:mb-8 px-3 sm:px-4 lg:px-6 pb-3 sm:pb-4" style={{ borderBottom: `1px solid ${COLORS.borderLight}` }} initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+    <div className="flex items-center space-x-2 sm:space-x-3 text-xs sm:text-sm" style={{ color: COLORS.textMuted }}>
+      <Link href="/collection/movies-like-inception" className="transition-all duration-300 truncate" style={{ color: COLORS.textMuted }} onMouseEnter={(e) => e.currentTarget.style.color = COLORS.accent} onMouseLeave={(e) => e.currentTarget.style.color = COLORS.textMuted}>Movies Like Inception</Link>
+      <ChevronLeft size={14} className="flex-shrink-0" style={{ color: COLORS.textDisabled, transform: 'rotate(180deg)' }} /><span className="font-medium truncate" style={{ color: `${COLORS.accent}B3` }}>{movie.Title}</span>
+    </div>
+  </motion.nav>
 );
 
-const InceptionMoviePage = ({ movie, tmdbData }) => {
-    const router = useRouter();
-    const movieInfo = COMPLETE_MOVIE_DATA?.[movie.tmdbId] || {};
-    const [movieData, setMovieData] = useState(tmdbData);
-    const [isMobile, setIsMobile] = useState(false);
+const InceptionMoviePage = ({ movie, tmdbData, sensitiveData }) => {
+  const router = useRouter();
+  const movieInfo = COMPLETE_MOVIE_DATA?.[movie.tmdbId] || {};
+  const [movieData, setMovieData] = useState(tmdbData);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -227,16 +227,15 @@ const InceptionMoviePage = ({ movie, tmdbData }) => {
     }
   }, []);
 
-    const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
-    const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
+  const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
+  const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
   // =========================================================================
-  // ✅ THE UNIVERSAL ELITE SEO BLOCK (Hardcoded Fix & Standardized Description)
+  // ✅ THE UNIVERSAL ELITE SEO BLOCK 
   // =========================================================================
 
   const collectionSlug = 'movies-like-inception';
   const dynamicCollectionName = 'Movies Like Inception';
-  const routeSlug = 'like-inception'; // The actual folder name in Next.js
 
   const scenes = SENSITIVE_TIMELINES?.[movie.tmdbId]?.scenes || [];
   
@@ -261,115 +260,118 @@ const InceptionMoviePage = ({ movie, tmdbData }) => {
 
   // =========================================================================
 
-    // BUG FIX: Canonical URL hardcoded to the exact file route for perfect Next.js parity
-    236735
   const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
 
-    // Generate schema
-    const { movieSchema, faqSchema } = generateCleanMovieSchema(
-        movie, 
-        movieData, 
-        currentMovieYear, 
-        collectionSlug, 
-        null,
-        COMPLETE_MOVIE_DATA[movie.tmdbId]
-    );
+  // Generate schema
+  const { movieSchema, faqSchema } = generateCleanMovieSchema(
+      movie, 
+      movieData, 
+      currentMovieYear, 
+      collectionSlug, 
+      null,
+      COMPLETE_MOVIE_DATA[movie.tmdbId]
+  );
 
-    return (
-        <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
-            <Head>
-                {/* 🔥 HYDRATION BUG FIXED */}
-                <title>{cleanSEOTitle}</title>
-                <meta name="description" content={cleanSEODesc} />
-                <link rel="canonical" href={canonicalUrl} />
-                <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-                <meta name="robots" content="index, follow" />
-                <meta name="language" content="English" />
+  return (
+      <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
+          <Head>
+              {/* 🔥 HYDRATION BUG FIXED */}
+              <title>{cleanSEOTitle}</title>
+              <meta name="description" content={cleanSEODesc} />
+              <link rel="canonical" href={canonicalUrl} />
+              <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+              <meta name="robots" content="index, follow" />
+              <meta name="language" content="English" />
 
-                {/* Meta Tags */}
-                <meta property="og:title" content={cleanSEOTitle} />
-                <meta property="og:description" content={cleanSEODesc} />
-                <meta property="og:url" content={canonicalUrl} />
-                <meta property="og:type" content="video.movie" />
-                <meta property="og:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content={cleanSEOTitle} />
-                <meta name="twitter:description" content={cleanSEODesc} />
-                <meta name="twitter:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
+              {/* Meta Tags */}
+              <meta property="og:title" content={cleanSEOTitle} />
+              <meta property="og:description" content={cleanSEODesc} />
+              <meta property="og:url" content={canonicalUrl} />
+              <meta property="og:type" content="video.movie" />
+              <meta property="og:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
+              <meta name="twitter:card" content="summary_large_image" />
+              <meta name="twitter:title" content={cleanSEOTitle} />
+              <meta name="twitter:description" content={cleanSEODesc} />
+              <meta name="twitter:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
 
-                {/* ✅ SCHEMA INJECTION */}
-                <script
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }}
-                />
-                {faqSchema && (
-                    <script
-                        type="application/ld+json"
-                        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-                    />
-                )}
-            </Head>
+              {/* ✅ SCHEMA INJECTION */}
+              <script key="schema-movie" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }} />
+              {faqSchema && (<script key="schema-faq" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />)}
+          </Head>
 
-            <SubtleFilmGrain />
-            <div className="absolute inset-0"><CinematicBackground /></div>
-            
-            <div className="relative z-10 pt-10 sm:pt-12 lg:pt-16">
-                
-                {/* ✅ HIDDEN H1 FOR SEO PARITY */}
-                <h1 className="sr-only">{cleanSEOTitle}</h1>
+          <SubtleFilmGrain />
+          <div className="absolute inset-0"><CinematicBackground /></div>
+          
+          {/* ✅ RESTORED BACK BUTTON */}
+          <SmartBackButton />
 
-                <InceptionBreadcrumb movie={movie} />
-                <div className="container mx-auto px-0 pb-16 sm:pb-24 lg:pb-32 max-w-7xl">
-                    <OptimizedBanner movie={movie} movieData={movieData} richData={movieInfo} trailer={trailer} isMobile={isMobile} />
-                    
-                    <motion.div 
-                        id="watch" 
-                        initial={{ opacity: 0, y: 20 }} 
-                        animate={{ opacity: 1, y: 0 }} 
-                        transition={{ duration: 0.5 }} 
-                        className="space-y-8 sm:space-y-12 px-3 sm:px-4 lg:px-6"
-                    >
-                        <MovieDetailsSection movie={movie} fromInceptionCollection={true} />
-                    </motion.div>
-                    
-                    <div className="px-3 sm:px-4 lg:px-6">
-                        <InternalCollectionsSection currentSlug="movies-like-inception" />
-                        <TMDBAttribution />
-                        <AuthorCreditSection />
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
+          <div className="relative z-10 pt-10 sm:pt-12 lg:pt-16">
+              
+              {/* ✅ HIDDEN H1 FOR SEO PARITY */}
+              <h1 className="sr-only">{cleanSEOTitle}</h1>
+
+              <InceptionBreadcrumb movie={movie} />
+              <div className="container mx-auto px-0 pb-16 sm:pb-24 lg:pb-32 max-w-7xl">
+                  <OptimizedBanner movie={movie} movieData={movieData} richData={movieInfo} trailer={trailer} isMobile={isMobile} />
+                  
+                  <motion.div 
+                      id="watch" 
+                      initial={{ opacity: 0, y: 20 }} 
+                      animate={{ opacity: 1, y: 0 }} 
+                      transition={{ duration: 0.5 }} 
+                      className="space-y-8 sm:space-y-12 px-3 sm:px-4 lg:px-6"
+                  >
+                      {/* ✅ PASSED SENSITIVE DATA */}
+                      <MovieDetailsSection 
+                          movie={movie} 
+                          fromInceptionCollection={true} 
+                          sensitiveData={sensitiveData} 
+                      />
+                  </motion.div>
+                  
+                  <div className="px-3 sm:px-4 lg:px-6">
+                      <InternalCollectionsSection currentSlug="movies-like-inception" />
+                      <TMDBAttribution />
+                      <AuthorCreditSection />
+                  </div>
+              </div>
+          </div>
+      </div>
+  );
 };
 
 export async function getStaticPaths() {
-    const paths = COMPLETE_MOVIE_DATABASE.map((movie) => ({ params: { id: movie.imdbID } }));
-    return { paths, fallback: false };
+  const paths = COMPLETE_MOVIE_DATABASE.map((movie) => ({ params: { id: movie.imdbID } }));
+  return { paths, fallback: false };
 }
 
 export async function getStaticProps({ params }) {
-    try {
-        const movie = COMPLETE_MOVIE_DATABASE.find((m) => m.imdbID === params.id);
-        if (!movie) return { notFound: true };
+  try {
+      const movie = COMPLETE_MOVIE_DATABASE.find((m) => m.imdbID === params.id);
+      if (!movie) return { notFound: true };
 
-        const tmdbResponse = await fetch(
-            `https://api.themoviedb.org/3/movie/${movie.tmdbId}?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&append_to_response=videos`
-        );
-        const tmdbData = tmdbResponse.ok ? await tmdbResponse.json() : null;
+      const tmdbResponse = await fetch(
+          `https://api.themoviedb.org/3/movie/${movie.tmdbId}?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&append_to_response=videos`
+      );
+      const tmdbData = tmdbResponse.ok ? await tmdbResponse.json() : null;
 
-        return {
-            props: { movie, tmdbData },
-        };
-    } catch (error) {
-        console.error('Error fetching TMDB data:', error);
-        return {
-            props: {
-                movie: COMPLETE_MOVIE_DATABASE.find((m) => m.imdbID === params.id),
-                tmdbData: null,
-            },
-        };
-    }
+      // ✅ FIX: Fetch and pass the real sensitive data down to the components
+      const rawSensitive = SENSITIVE_TIMELINES[movie.tmdbId];
+      const sensitiveData = rawSensitive ? { scenes: rawSensitive.scenes } : null;
+
+      return {
+          props: { movie, tmdbData, sensitiveData },
+      };
+  } catch (error) {
+      console.error('Error fetching TMDB data:', error);
+      return {
+          props: {
+              movie: COMPLETE_MOVIE_DATABASE.find((m) => m.imdbID === params.id),
+              tmdbData: null,
+              sensitiveData: null
+          },
+      };
+  }
 }
 
 export default InceptionMoviePage;

@@ -43,16 +43,36 @@ const MOVIE_YEARS = {
 };
 
 const MOVIE_DATA_BY_TITLE = {
-  'I Saw the Devil': { connection: 'I Saw the Devil is the ultimate cat-and-mouse revenge masterpiece. A secret agent doesn\'t just hunt the killer of his fiancée - he captures, tortures, and releases him repeatedly.' },
-  'Sympathy for Mr. Vengeance': { connection: 'First film in Park Chan-wook\'s Vengeance Trilogy. A desperate kidney transplant gone wrong spirals into mutual destruction.' },
-  'Lady Vengeance': { connection: 'The poetic conclusion to Park Chan-wook\'s Vengeance Trilogy. After 13 years wrongfully imprisoned, a woman methodically dismantles her betrayer.' },
-  'The Man from Nowhere': { connection: 'Korean John Wick prototype. A quiet pawnshop owner becomes unstoppable when human traffickers kidnap his neighbor girl.' },
-  'The Chaser': { connection: 'A disgraced pimp becomes an unlikely hero hunting a serial killer. Documentary-style intensity captures the frustration of bureaucracy thwarting justice.' },
-  'A Bittersweet Life': { connection: 'Park Chan-wook\'s stylish mobster tragedy. One moment of mercy destroys a loyal enforcer\'s life. Blood-soaked vengeance unfolds in neon-lit beauty.' },
-  'Incendies': { connection: 'One of cinema\'s most devastating twists reveals revenge cycles across generations. A mother\'s dying wish uncovers war crimes that shatter identity.' },
-  'The Handmaiden': { connection: 'Park Chan-wook\'s most sensual revenge. A con transforms into genuine love across multiple timelines. Every betrayal becomes connection.' },
-  'No Mercy': { connection: 'A detective\'s personal vendetta corrupts justice itself. When the badge becomes a weapon of revenge, the line between cop and criminal vanishes.' },
-  'Prisoners': { connection: 'A desperate father tortures a suspect while police work legally. Denis Villeneuve examines how far good men go when daughters disappear.' }
+  'I Saw the Devil': { 
+    connection: 'Directly mirrors Oldboy\'s "monster-vs-monster" philosophy. It pushes the hallway fight intensity to its absolute limit, exploring the devastating truth that when you hunt a monster through pure vengeance, you become the very nightmare you seek to destroy.' 
+  },
+  'Sympathy for Mr. Vengeance': { 
+    connection: 'The raw, documentary-style foundation of the Vengeance Trilogy. It lacks Oldboy’s operatic style but doubles down on its tragic "eye for an eye" logic, proving that even good intentions can trigger a catastrophic chain of mutual destruction.' 
+  },
+  'Lady Vengeance': { 
+    connection: 'Where Oldboy is masculine rage, this is feminine calculation. It completes the trilogy by replacing Dae-su\'s hammer with a sophisticated, maternal pursuit of justice that challenges the very idea of redemption through blood.' 
+  },
+  'The Man from Nowhere': { 
+    connection: 'Captures the "unstoppable everyman" energy of Oldboy. It features the same bone-crunching, realistic choreography and explores a quiet loner discovering his capacity for extreme brutality when his only connection to humanity is threatened.' 
+  },
+  'The Chaser': { 
+    connection: 'Matches Oldboy’s gritty urban atmosphere and race-against-time tension. It swaps the mystery of the "15 years" for a frantic hunt, exposing how institutional failure forced an individual to take a dark, extralegal path to justice.' 
+  },
+  'A Bittersweet Life': { 
+    connection: 'A visual symphony of betrayal that echoes Oldboy’s neon-drenched noir aesthetic. It explores the high cost of a single humane decision in a world of monsters, leading to an operatic, retaliatory strike that burns down everything in its path.' 
+  },
+  'Incendies': { 
+    connection: 'The only film on this list with a structural revelation as world-shattering as the Oldboy twist. It moves the revenge cycle across generations, using a mathematical mystery to uncover a truth that reframes the characters\' entire existence.' 
+  },
+  'The Handmaiden': { 
+    connection: 'Director Park Chan-wook returns to his Oldboy roots with a story of extreme manipulation. It trades the hammer for a psychological chess match, using multiple perspectives to reveal a twisty game of liberation and deception.' 
+  },
+  'Confessions': { 
+    connection: 'The Japanese counterpart to Oldboy’s cold, calculated retribution. It rejects physical brawls for clinical, psychological erasure, showing that the most devastating form of revenge isn’t death, but making the target live through a hell of their own making.' 
+  },
+  'Prisoners': { 
+    connection: 'The Western spiritual successor to the Vengeance Trilogy. It forces an "Oldboy moment" on the audience, asking how far a civilized father will descend into moral monstrosity when the law fails to protect his child.' 
+  }
 };
 
 const getTMDBImage = (path, size = 'w1280') =>

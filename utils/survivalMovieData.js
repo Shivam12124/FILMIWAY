@@ -195,7 +195,7 @@ export const SENSITIVE_TIMELINES = {
     // 127 Hours
     44115: { 
         scenes: [
-            { start: "1:04:35", end: "1:04:50", type: "Suggestive clothing(Women in Bikini)", severity: "Mild" }, 
+            { start: "1:04:35", end: "1:04:50", type: "Suggestive Clothing (Bikini)", severity: "Mild" }, 
             { start: "1:33:41", end: "1:35:10", type: "Sexual content", severity: "Mild" }
         ] 
     },

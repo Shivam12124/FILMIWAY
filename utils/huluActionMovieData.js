@@ -1,4 +1,4 @@
-// utils/huluActionMovieData.js - HULU ACTION COLLECTION DATA
+// utils/huluActionMovieData.js - HULU ACTION COLLECTION DATA ✅
 // High-Octane Action, Fight Choreography, and Adrenaline-Fueled Cinema
 
 export const TMDB_CONFIG = {
@@ -22,51 +22,41 @@ export const COMPLETE_MOVIE_DATABASE = [
 ];
 
 // ✅ SENSITIVE TIMELINES (Focusing on Extreme Violence & Gore)
-// ✅ SENSITIVE TIMELINES (Action Collection - Updated)
 export const SENSITIVE_TIMELINES = {
     // 1. Predator
-    106: 
-{ scenes: [] },
+    106: { scenes: [] },
     // 2. Ip Man
     14756: { 
         scenes: [
-            { start: "12:21", end: "12:24", type: "Partial Nudity (Non-Sexual)", severity: "Low" },
-         
+            { start: "12:21", end: "12:24", type: "Partial Nudity (Non-Sexual)", severity: "Low" }
         ] 
     },
     // 3. Dawn of the Planet of the Apes
     119450: { scenes: [] }, // War violence, mostly guns
-    
     // 4. Predator: Killer of Killers
-    1376434:  
-      { scenes: [] },
+    1376434: { scenes: [] },
     // 5. The Equalizer
     156022: { 
         scenes: [
-           
             { start: "2:04:35", end: "2:04:55", type: "Nudity (Non-Sexual)", severity: "Moderate" }
         ] 
     },
     // 6. Kingsman: The Secret Service
     207703: { 
         scenes: [
-          
             { start: "1:59:22", end: "1:59:29", type: "Partial Nudity", severity: "Moderate" }
         ] 
     },
     // 7. Unstoppable
     44048: { scenes: [] }, // High tension, low violence
-    
     // 8. Prey
-    766507:  
-        { scenes: [] },
+    766507: { scenes: [] },
     // 9. Bullet Train
-    718930:  
-{ scenes: [] },
+    718930: { scenes: [] },
     // 10. Boss Level
-    513310: 
-{ scenes: [] },
+    513310: { scenes: [] }
 };
+
 export const FALLBACK_POSTERS = {
     106: "https://image.tmdb.org/t/p/w500/k3mW4qfJo6SKqe6laRyNGnbB9n5.jpg",
     14756: "https://image.tmdb.org/t/p/w500/ggTTuxwxV76P10J9a9YtV529E7Q.jpg",
@@ -311,6 +301,7 @@ export const COMPLETE_MOVIE_DATA = {
         themes: ["Time Loop", "Redemption", "Video Game Logic"]
     })
 };
+
 export const STRATEGIC_QUOTES = {
     106: "If it bleeds, we can kill it.",
     14756: "I want to fight ten people!",
@@ -541,7 +532,9 @@ export const getSensitiveContentTypes = (tmdbId) => {
     if (!sensitiveData?.scenes?.length) return null;
     const types = new Set();
     sensitiveData.scenes.forEach(scene => {
-        const lowerType = scene.type.toLowerCase();
+        const lowerType = scene.type?.toLowerCase() || '';
+        if (lowerType.includes('sex') || lowerType.includes('nudity')) types.add('sexual content');
+        if (lowerType.includes('nudity')) types.add('nudity');
         if (lowerType.includes('gore') || lowerType.includes('blood')) types.add('heavy gore');
         if (lowerType.includes('violence') || lowerType.includes('fight')) types.add('graphic violence');
         if (lowerType.includes('torture')) types.add('disturbing scenes');
@@ -553,39 +546,140 @@ export const generateFAQData = (movie) => {
     return HULU_ACTION_MOVIE_FAQS[movie.Title] || [];
 };
 
-export const generateMovieSchema = (movie) => {
-    const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
-    const posterUrl = FALLBACK_POSTERS[movie.tmdbId] || '';
-    return {
+// 🔥 UNIFIED CLEAN GENERATOR (For Google Bots & LLMs)
+export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, collectionSlug, unused, movieInfo) => {
+    
+    // 1. MOVIE SCHEMA (Zero Review/Rating Spam, Clean Description)
+    const movieSchema = {
         '@context': 'https://schema.org',
         '@type': 'Movie',
         'name': movie.Title,
-        'description': movieInfo?.synopsis || `${movie.Title} - High octane action movie on Hulu.`,
+        'description': movieInfo?.synopsis || `${movie.Title} (${currentMovieYear}) - High octane action movie on Hulu.`,
         'genre': movie.genre,
-        'datePublished': movie.year.toString(),
+        'datePublished': currentMovieYear?.toString() || movie.year.toString(),
         'director': { '@type': 'Person', 'name': movieInfo?.director || 'Director' },
         'actor': movieInfo?.cast?.map(actor => ({ '@type': 'Person', 'name': actor })) || [],
-        'duration': `PT${movie.runtime}M`,
-        'image': posterUrl,
-        'aggregateRating': { 
-            '@type': 'AggregateRating', 
-            'ratingValue': movieInfo?.rating || 7.5, 
-            'bestRating': 10, 
-            'worstRating': 1, 
-            'ratingCount': movieInfo?.audienceScore || 100 
-        }
+        'image': tmdbData?.poster_path ? `https://image.tmdb.org/t/p/w500${tmdbData.poster_path}` : '',
+        'duration': `PT${movie.runtime}M`
     };
-};
 
-export const generateFAQSchema = (faqs) => ({
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    'mainEntity': faqs.map(faq => ({ 
+    // 2. THE "GOLDEN EGG" FAQ SCHEMA
+    const staticFaqs = HULU_ACTION_MOVIE_FAQS[movie.Title] || [];
+    const sensitiveScenes = SENSITIVE_TIMELINES[movie.tmdbId]?.scenes || [];
+    const intensityScenes = movieInfo?.scenes || [];
+    
+    // Load your beautifully written trivia FAQs
+    const schemaFaqs = staticFaqs.map(faq => ({ 
         '@type': 'Question', 
         'name': faq.question, 
         'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer } 
-    }))
-});
+    }));
+
+    // 🔥 INJECT INTENSITY GRAPH TIMESTAMPS (Mapped to Adrenaline Score)
+    if (intensityScenes.length > 0) {
+        const schemaIntensityList = intensityScenes.map(s => `<li>Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)</li>`).join('');
+        
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `What are the most intense action scenes in ${movie.Title}?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `According to the Filmiway Adrenaline Score, ${movie.Title} peaks at the following moments:<br><br><ul>${schemaIntensityList}</ul>` 
+            }
+        });
+    }
+
+    // Extract runtime for the schema calibration tag
+    let currentRuntime = movie.Runtime || movie.runtime || "Official";
+    if (typeof currentRuntime === 'number') currentRuntime = `${currentRuntime} min`;
+
+    // 🔥 INJECT SENSITIVE CONTENT TIMESTAMPS (Unshifted last so it remains #1 at the very top)
+    if (sensitiveScenes.length > 0) {
+        const typesArray = getSensitiveContentTypes(movie.tmdbId) || ['mature content'];
+        const typesString = typesArray.join(' and ');
+
+        const schemaListText = sensitiveScenes.map(s => {
+            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
+            return `<li>${timeRange} - ${s.type || 'Mature Content'}</li>`;
+        }).join('');
+
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `Yes, according to the Filmiway Timestamps & Parents Guide, ${movie.Title} contains adult scenes including ${typesString}. These timestamps are accurate for the ${currentRuntime} runtime. Exact timestamps for these scenes are:<br><br><ul>${schemaListText}</ul>` 
+            }
+        });
+    } else {
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `No, the Filmiway Timestamps & Parents Guide confirms that ${movie.Title} is completely free of explicit sexual content and nudity. This assessment is accurate for the ${currentRuntime} runtime.` 
+            }
+        });
+    }
+
+    const faqSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        'name': `Parents Guide and FAQ for ${movie.Title}`,
+        'mainEntity': schemaFaqs
+    };
+
+    return { movieSchema, faqSchema };
+};
+
+// 🔥 DYNAMIC VISIBLE FAQ GENERATOR FOR THE FRONTEND UI
+export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Official") => {
+    // 1. Get the static, manually written FAQs
+    const staticFaqs = HULU_ACTION_MOVIE_FAQS[movieTitle] ? [...HULU_ACTION_MOVIE_FAQS[movieTitle]] : [];
+    
+    // 2. Get the sensitive scenes and intensity scenes data
+    const sensitiveScenes = SENSITIVE_TIMELINES[tmdbId]?.scenes || [];
+    const movieInfo = COMPLETE_MOVIE_DATA[tmdbId];
+    const intensityScenes = movieInfo?.scenes || [];
+
+    // 🔥 Automatically fetch the exact runtime from the database if missing
+    const dbMovie = COMPLETE_MOVIE_DATABASE.find(m => m.tmdbId === tmdbId);
+    let finalRuntime = currentRuntime !== "Official" ? currentRuntime : (dbMovie?.runtime ? `${dbMovie.runtime} min` : "Official");
+
+    // 3. 🔥 DYNAMICALLY GENERATE THE INTENSITY GRAPH FAQ (Adrenaline)
+    if (intensityScenes.length > 0) {
+        const uiIntensityList = intensityScenes.map(s => `• Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)`).join('\n');
+        
+        staticFaqs.unshift({
+            question: `What are the most intense action scenes in ${movieTitle}?`,
+            answer: `According to the Filmiway Adrenaline Score, ${movieTitle} peaks at the following moments:\n\n${uiIntensityList}`
+        });
+    }
+
+    // 4. 🔥 DYNAMICALLY GENERATE THE SENSITIVE CONTENT FAQ
+    if (sensitiveScenes.length > 0) {
+        const typesArray = getSensitiveContentTypes(tmdbId) || ['mature content'];
+        const typesString = typesArray.join(' and ');
+
+        const uiListText = sensitiveScenes.map(s => {
+            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
+            return `• ${timeRange} - ${s.type || 'Mature Content'}`;
+        }).join('\n');
+
+        staticFaqs.unshift({
+            question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
+            answer: `Yes, according to the Filmiway Timestamps & Parents Guide, ${movieTitle} contains adult scenes including ${typesString}. These timestamps are accurate for the ${finalRuntime} runtime. Exact timestamps for these scenes are:\n\n${uiListText}`
+        });
+    } else {
+        staticFaqs.unshift({
+            question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
+            answer: `No, the Filmiway Timestamps & Parents Guide confirms that ${movieTitle} is completely free of explicit sexual content and nudity. This assessment is accurate for the ${finalRuntime} runtime.`
+        });
+    }
+
+    // 5. Return the combined list
+    return staticFaqs;
+};
 
 export const fetchMovieFromTMDB = async (tmdbId) => ({ 
     poster_path: null, 

@@ -24,73 +24,40 @@ export const COMPLETE_MOVIE_DATABASE = [
 // ✅ SENSITIVE TIMELINES (Paramount+ Horror Collection)
 export const SENSITIVE_TIMELINES = {
     // 1. Sinister
-    82507: { 
-        scenes: [
-            { start: "0:00:00", end: "0:03:00", type: "Hanging", severity: "High" }, // Opening Super 8 footage
-            { start: "1:15:00", end: "1:18:00", type: "Lawnmower", severity: "High" } // Jump scare gore
-        ] 
-    },
+82507: { scenes: [] },
     // 2. The Autopsy of Jane Doe
-    397243: { 
+   397243: { 
         scenes: [
-            { start: "0:15:00", end: "0:45:00", type: "Graphic Autopsy", severity: "High" }, // Constant surgical gore
-            { start: "0:20:00", end: "0:25:00", type: "Nudity", severity: "High" } // Full frontal corpse
+            { start: "0:19:15", end: "0:29:10", type: "Nudity(Woman)", severity: "High" }
         ] 
     },
-    // 3. Smile 2
-    1058609: { 
-        scenes: [
-            { start: "0:30:00", end: "0:35:00", type: "Self-Harm", severity: "High" }, // Gym weight scene
-            { start: "1:50:00", end: "1:55:00", type: "Body Horror", severity: "High" }
-        ] 
-    },
-    // 4. Smile
-    882598: { 
-        scenes: [
-            { start: "0:10:00", end: "0:15:00", type: "Suicide", severity: "High" }, // Opening hospital scene
-            { start: "1:45:00", end: "1:50:00", type: "Skin Peeling", severity: "High" }
-        ] 
-    },
-    // 5. Event Horizon
-    8413: { 
-        scenes: [
-            { start: "0:55:00", end: "0:56:00", type: "Extreme Torture", severity: "Extreme" }, // The video log from Hell
-            { start: "1:10:00", end: "1:15:00", type: "Eye Trauma", severity: "High" }
-        ] 
-    },
-    // 6. A Quiet Place
-    447332: { 
-        scenes: [
-            { start: "1:05:00", end: "1:08:00", type: "Foot Injury", severity: "High" }, // The nail scene
-            { start: "0:05:00", end: "0:08:00", type: "Child Death", severity: "High" }
-        ] 
-    },
-    // 7. Rosemary's Baby
-    805: { 
-        scenes: [
-            { start: "0:40:00", end: "0:45:00", type: "Sexual Violence", severity: "High" } // The dream sequence
-        ] 
-    },
-    // 8. Strange Darling
-    1029281: { 
-        scenes: [
-            { start: "0:10:00", end: "1:30:00", type: "Violence", severity: "High" } // Pervasive slasher violence
-        ] 
-    },
-    // 9. A Quiet Place: Day One
-    762441: { 
-        scenes: [
-            { start: "0:15:00", end: "0:25:00", type: "Mass Panic", severity: "Moderate" }
-        ] 
-    },
-    // 10. Orphan: First Kill
-    760161: { 
-        scenes: [
-            { start: "0:05:00", end: "0:10:00", type: "Violence", severity: "High" }
-        ] 
-    }
-};
+  // 3. Smile 2
+    1058609: { scenes: [] },
 
+    // 4. Smile
+    882598: { scenes: [] },
+
+    // 5. Event Horizon
+    8413: { scenes: [] },
+
+    // 6. A Quiet Place
+    447332: { scenes: [] },
+    // 7. Rosemary's Baby
+   805: {
+        scenes: [
+            { start: "0:10:50", end: "0:11:50", type: "Nudity", severity: "Moderate" },
+            { start: "0:47:15", end: "0:49:38", type: "Nudity & Sex", severity: "High" }
+        ]
+    },
+ // 8. Strange Darling
+    1029281: { scenes: [] },
+
+    // 9. A Quiet Place: Day One
+    762441: { scenes: [] },
+
+    // 10. Orphan: First Kill
+    760161: { scenes: [] }
+};
 export const FALLBACK_POSTERS = {
     82507: "https://image.tmdb.org/t/p/w500/h6j5sE3vXh6j5s.jpg",
     397243: "https://image.tmdb.org/t/p/w500/e33dE6e6.jpg",

@@ -1,4 +1,4 @@
-// utils/huluBestMoviesData.js - TOP 10 BEST MOVIES ON HULU
+// utils/huluBestMoviesData.js - TOP 10 BEST MOVIES ON HULU ✅
 // The definitive ranking of the highest-rated films currently streaming on Hulu across all genres.
 
 export const TMDB_CONFIG = {
@@ -67,7 +67,7 @@ export const SENSITIVE_TIMELINES = {
     // 9. All of Us Strangers
     994108: { 
         scenes: [
-            { start: "0:26:30", end: "0:28:47", type: "Sex (No Nudity)", severity: "Moderate" }
+            { start: "0:26:30", end: "0:28:47", type: "Sex", severity: "Moderate" }
         ] 
     },
 
@@ -93,6 +93,32 @@ export const FALLBACK_POSTERS = {
     994108: "https://image.tmdb.org/t/p/w500/5p21y7H57x7X57x57x57x57x.jpg",
     8363: "https://image.tmdb.org/t/p/w500/ek8e8txUyUwd2BNqj6lFEerJnhq.jpg"
 };
+
+// ✅ STRATEGIC QUOTES (Universal Component Safety)
+export const STRATEGIC_QUOTES = {
+    949: "Action is the juice.",
+    324786: "Please Lord, help me get one more.",
+    14756: "I want to fight ten people!",
+    141: "Why are you wearing that stupid man suit?",
+    44214: "I felt it. Perfect. I was perfect.",
+    976893: "Next time is next time. Now is now.",
+    106: "If it bleeds, we can kill it.",
+    134: "I'm a Dapper Dan man!",
+    994108: "I've always been lonely. That's why I'm here.",
+    8363: "I am McLovin."
+};
+
+export const CINEMATIC_COLORS = {
+    "Crime": "#334155", "War": "#991b1b", "Action": "#ea580c", "Sci-Fi": "#3b82f6", 
+    "Thriller": "#000000", "Drama": "#0ea5e9", "Comedy": "#facc15", "Romance": "#4f46e5"
+};
+
+export const RATING_OPTIONS = [
+    { value: 1, label: "Skip It", color: "#dc2626", symbol: "🥱", bgColor: "bg-red-900/30", description: "Not worth the time" },
+    { value: 2, label: "Good", color: "#ea580c", symbol: "👍", bgColor: "bg-orange-900/30", description: "A solid watch" },
+    { value: 3, label: "Great", color: "#16a34a", symbol: "🔥", bgColor: "bg-green-900/30", description: 'Highly recommended' },
+    { value: 4, label: "Masterpiece", color: "#eab308", symbol: "🏆", bgColor: "bg-yellow-900/30", description: "Absolute Cinema" }
+];
 
 // ✅ HELPER: Standard Data Creator
 const createMovieData = (data) => ({
@@ -450,7 +476,7 @@ export const HULU_BEST_MOVIE_FAQS = {
         },
         { 
             question: "How much of the movie was improvised?", 
-            answer: "A significant amount. While the script was written over a decade, producer Judd Apatow encourages 'alt lines' where actors riff multiple versions of a joke during a scene. Jonah Hill and Seth Rogen are masters of this, leading to many of the film's most quotable, vulgar, and bizarre lines being made up on the spot during filming." 
+            answer: "A significant amount. While the script was written over a decade, producer Judd Apatow encourages 'alt lines' where actors riff multiple versions of a joke during a scene. Jonah Hill and Michael Cera had incredible natural chemistry and often deviated from the script to trade insults and awkward banter. The 'dick drawing' confession scene, however, was based on real drawings Seth Rogen made as a teenager." 
         },
         { 
             question: "Why is Superbad considered a defining teen comedy?", 
@@ -493,10 +519,10 @@ export const getSensitiveContentTypes = (tmdbId) => {
     const types = new Set();
     sensitiveData.scenes.forEach(scene => {
         const lowerType = scene.type.toLowerCase();
-        // Converted weak tags into strong, highly searched keywords
+        // Converted weak tags into strong, highly searched keywords across multiple genres
         if (lowerType.includes('sex') || lowerType.includes('explicit')) types.add('sexual content');
         if (lowerType.includes('nudity')) types.add('nudity');
-        if (lowerType.includes('kissing') || lowerType.includes('romantic')) types.add('romantic content');
+        if (lowerType.includes('viol') || lowerType.includes('blood') || lowerType.includes('gore')) types.add('violence');
     });
     return Array.from(types);
 };
@@ -539,6 +565,10 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
             }
         });
     }
+
+    // Extract runtime for the schema calibration tag safely
+    let currentRuntime = movie.Runtime || movie.runtime || "Official";
+    if (typeof currentRuntime === 'number') currentRuntime = `${currentRuntime} min`;
 
     // Inject Sensitive Content Timestamps into Schema (Top Priority)
     if (sensitiveScenes.length > 0) {
@@ -583,12 +613,13 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
 export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Official") => {
     const staticFaqs = HULU_BEST_MOVIE_FAQS[movieTitle] ? [...HULU_BEST_MOVIE_FAQS[movieTitle]] : [];
     const sensitiveScenes = SENSITIVE_TIMELINES[tmdbId]?.scenes || [];
-const movieInfo = COMPLETE_MOVIE_DATA[tmdbId];
-    const intensityScenes = movieInfo?.scenes || [];
+    const movieInfo = COMPLETE_MOVIE_DATA[tmdbId];
+    const intensityScenes = movieInfo?.scenes || [];
 
-    // ✅ ADD THESE TWO LINES TO FIX THE CRASH
+    // ✅ FIXED: Safely parsing runtime to a string
     const dbMovie = COMPLETE_MOVIE_DATABASE.find(m => m.tmdbId === tmdbId);
-    const finalRuntime = currentRuntime !== "Official" ? currentRuntime : (dbMovie?.runtime ? `${dbMovie.runtime} min` : "Official");
+    let finalRuntime = currentRuntime !== "Official" ? currentRuntime : (dbMovie?.runtime ? `${dbMovie.runtime} min` : "Official");
+    if (typeof finalRuntime === 'number') finalRuntime = `${finalRuntime} min`;
 
     if (intensityScenes.length > 0) {
         const uiIntensityList = intensityScenes.map(s => `• Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)`).join('\n');
@@ -609,12 +640,12 @@ const movieInfo = COMPLETE_MOVIE_DATA[tmdbId];
 
         staticFaqs.unshift({
             question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
-           answer: `Yes, according to the Filmiway Timestamps & Parents Guide, ${movieTitle} contains adult scenes including ${typesString}. These timestamps are accurate for the ${finalRuntime} runtime. Exact timestamps for these scenes are:\n\n${uiListText}`
+            answer: `Yes, according to the Filmiway Timestamps & Parents Guide, ${movieTitle} contains adult scenes including ${typesString}. These timestamps are accurate for the ${finalRuntime} runtime. Exact timestamps for these scenes are:\n\n${uiListText}`
         });
     } else {
         staticFaqs.unshift({
             question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
-                       answer: `No, the Filmiway Timestamps & Parents Guide confirms that ${movieTitle} is completely free of explicit sexual content and nudity. This assessment is accurate for the ${finalRuntime} runtime.`
+            answer: `No, the Filmiway Timestamps & Parents Guide confirms that ${movieTitle} is completely free of explicit sexual content and nudity. This assessment is accurate for the ${finalRuntime} runtime.`
         });
     }
 

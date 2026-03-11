@@ -1,60 +1,58 @@
-// components/InterstellarSEOFAQSection.js - COSMIC SCALE THEME (Cyan/Deep Space) 🌌
+// components/HboActionSEOFAQSection.js - DYNAMIC & SEO OPTIMIZED ✅
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Rocket, HelpCircle } from 'lucide-react'; // Rocket for space exploration vibe
-import { INTERSTELLAR_MOVIE_FAQS } from '../utils/interstellarMovieData';
+import { Flame } from 'lucide-react'; // Matches the High-Octane Action vibe
+// 🔥 IMPORT THE DYNAMIC FAQ GENERATOR
+import { getVisibleMovieFAQs } from '../utils/hboActionMovieData';
 
-const InterstellarSEOFAQSection = ({ movie }) => {
-    // 🔥 Get FAQs from INTERSTELLAR_MOVIE_FAQS data
-    const faqsFromData = movie?.Title && INTERSTELLAR_MOVIE_FAQS?.[movie.Title] 
-        ? INTERSTELLAR_MOVIE_FAQS[movie.Title] 
-        : [];
+const HboActionSEOFAQSection = ({ movie }) => {
+    const title = movie?.Title || "this film";
+    
+    // 🔥 AUTOMATICALLY GENERATE THE FAQS (Includes the Dynamic Timestamp FAQ & Intensity Peaks)
+    // This ensures the UI perfectly matches the Bot Schema!
+    const faqsFromData = getVisibleMovieFAQs(movie?.Title, movie?.tmdbId);
 
-    // 🔥 Safety check - return null if no FAQs
+    // Safety check - return null if no FAQs are found
     if (!faqsFromData || faqsFromData.length === 0) {
-        console.log('⚠️ No Interstellar FAQs found for:', movie?.Title);
         return null;
     }
     
     return (
         <motion.section 
-            className="mt-12 sm:mt-16 pt-6 sm:pt-8 border-t border-cyan-900/30"
+            className="mt-12 sm:mt-16 pt-6 sm:pt-8 border-t border-gray-700/50"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
         >
-            <h2 className="text-xl sm:text-2xl font-light text-cyan-400 mb-6 sm:mb-8 flex items-center gap-2 sm:gap-3">
-                <Rocket size={24} className="text-cyan-500" />
-                <span className="hidden sm:inline">Cosmic Inquiries: {movie.Title}</span>
-                <span className="sm:hidden">FAQ: {movie.Title}</span>
+            {/* 🎨 Aggressive Red/Orange Theme for the Action Collection */}
+            <h2 className="text-xl sm:text-2xl font-light text-red-400 mb-6 sm:mb-8 flex items-center gap-2 sm:gap-3">
+                <Flame size={20} className="sm:w-6 sm:h-6 text-red-500" />
+                <span className="hidden sm:inline">Frequently Asked Questions About {title}</span>
+                <span className="sm:hidden">FAQ About {title}</span>
             </h2>
             
-            <p className="text-gray-400 mb-6 sm:mb-8 text-sm sm:text-base italic border-l-2 border-cyan-500/30 pl-4">
-                "We explore the scientific accuracy, ending explanations, and existential themes of {movie.Title}."
+            <p className="text-gray-300 mb-4 sm:mb-6 text-sm sm:text-base leading-relaxed">
+                Explore our **Parents Guide** and expert analysis for {title}. We provide accurate timestamps for sensitive scenes to skip and map the biggest adrenaline peaks of this HBO Max action hit.
             </p>
 
             <div className="space-y-4 sm:space-y-6">
                 {faqsFromData.map((faq, index) => (
                     <motion.div 
                         key={index}
-                        className="bg-gray-900/60 rounded-xl p-4 sm:p-6 border border-cyan-500/20 hover:border-cyan-500/50 transition-colors duration-300 relative overflow-hidden"
+                        className="bg-gray-800/30 rounded-xl p-4 sm:p-6 border border-gray-700/50 hover:border-red-500/30 transition-colors duration-300 group"
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.6, delay: index * 0.1 }}
                     >
-                        {/* Subtle starry background effect could go here, but keeping it clean for now */}
+                        {/* 🔥 The exact question (Static Trivia OR Dynamic Parents Guide) */}
+                        <h3 className="text-base sm:text-lg font-medium text-red-300 mb-2 sm:mb-3 leading-relaxed">
+                            {faq.question || faq.q}
+                        </h3>
                         
-                        <div className="flex items-start gap-3">
-                            <HelpCircle className="w-5 h-5 text-cyan-600/70 mt-1 flex-shrink-0" />
-                            <div>
-                                <h3 className="text-base sm:text-lg font-medium text-cyan-200 mb-2 sm:mb-3">
-                                    {faq.question}
-                                </h3>
-                                <p className="text-gray-300 leading-relaxed text-sm sm:text-base">
-                                    {faq.answer}
-                                </p>
-                            </div>
-                        </div>
+                        {/* 🔥 The exact answer (including the HTML-formatted timestamp lists) */}
+                        <p className="text-gray-300 leading-relaxed text-sm sm:text-base font-light whitespace-pre-line group-hover:text-gray-200 transition-colors">
+                            {faq.answer || faq.a}
+                        </p>
                     </motion.div>
                 ))}
             </div>
@@ -62,4 +60,4 @@ const InterstellarSEOFAQSection = ({ movie }) => {
     );
 };
 
-export default InterstellarSEOFAQSection;
+export default HboActionSEOFAQSection;

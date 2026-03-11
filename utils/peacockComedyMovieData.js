@@ -1,4 +1,4 @@
-// utils/peacockComedyMovieData.js - PEACOCK COMEDY COLLECTION DATA
+// utils/peacockComedyMovieData.js - PEACOCK COMEDY COLLECTION DATA ✅
 // Ranked by Laughter, Quotability, and Chaos
 // CALIBRATION: 0-20 (Setup) | 20-40 (Light) | 40-60 (Funny) | 60-75 (Chaos) | 75-85 (Implosion) | 85-95 (Extreme) | 95-100 (Genre-Defining)
 
@@ -85,11 +85,11 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Graham Chapman", "John Cleese", "Eric Idle"], boxOffice: "$5 million", budget: "$400k", 
         dna: { "Satire": 50, "Absurdist": 50 },
         scenes: [
-            { time: 5, intensity: 40, label: "Coconuts", color: "#d4d4d4" }, // Setup
-            { time: 20, intensity: 90, label: "Black Knight", color: "#ef4444" }, // Iconic
-            { time: 45, intensity: 60, label: "Knights Who Say Ni", color: "#16a34a" }, // Absurd
-            { time: 80, intensity: 95, label: "Killer Rabbit", color: "#dc2626" }, // PEAK CHAOS
-            { time: 90, intensity: 100, label: "The Police", color: "#2563eb" } // Meta Ending
+            { time: 5, intensity: 40, label: "Coconuts", color: "#d4d4d4" }, 
+            { time: 20, intensity: 90, label: "Black Knight", color: "#ef4444" }, 
+            { time: 45, intensity: 60, label: "Knights Who Say Ni", color: "#16a34a" }, 
+            { time: 80, intensity: 95, label: "Killer Rabbit", color: "#dc2626" }, 
+            { time: 90, intensity: 100, label: "The Police", color: "#2563eb" } 
         ],
         synopsis: "King Arthur and his Knights of the Round Table embark on a surreal, low-budget search for the Holy Grail, encountering silly obstacles, invincible knights, and killer rabbits along the way.",
         themes: ["Absurdism", "Medieval", "Meta"]
@@ -104,7 +104,7 @@ export const COMPLETE_MOVIE_DATA = {
         dna: { "Satire": 60, "Slapstick": 40 },
         scenes: [
             { time: 15, intensity: 40, label: "Jazz Flute", color: "#f59e0b" }, 
-            { time: 45, intensity: 95, label: "News Team Fight", color: "#dc2626" }, // PEAK CHAOS
+            { time: 45, intensity: 95, label: "News Team Fight", color: "#dc2626" }, 
             { time: 60, intensity: 80, label: "Milk was a bad choice", color: "#ea580c" }, 
             { time: 75, intensity: 70, label: "Bear Pit", color: "#78350f" },
             { time: 90, intensity: 50, label: "Stay Classy", color: "#be123c" } 
@@ -124,7 +124,7 @@ export const COMPLETE_MOVIE_DATA = {
             { time: 20, intensity: 30, label: "Leather Jacket", color: "#4c1d95" },
             { time: 45, intensity: 60, label: "Two Yutes", color: "#6d28d9" },
             { time: 60, intensity: 50, label: "Biological Clock", color: "#db2777" },
-            { time: 85, intensity: 80, label: "Tire Expert", color: "#c026d3" }, // PEAK TRIUMPH
+            { time: 85, intensity: 80, label: "Tire Expert", color: "#c026d3" }, 
             { time: 110, intensity: 40, label: "Case Dismissed", color: "#8b5cf6" }
         ],
         synopsis: "Two New Yorkers traveling through Alabama are mistakenly arrested for murder. Their only hope is their cousin Vinny, a loudmouth lawyer with no trial experience who clashes hilariously with the conservative Southern judge.",
@@ -140,9 +140,9 @@ export const COMPLETE_MOVIE_DATA = {
         dna: { "Satire": 70, "Spy": 30 },
         scenes: [
             { time: 10, intensity: 30, label: "Eugoogly", color: "#38bdf8" },
-            { time: 25, intensity: 90, label: "Gasoline Fight", color: "#f97316" }, // PEAK STUPIDITY
+            { time: 25, intensity: 90, label: "Gasoline Fight", color: "#f97316" }, 
             { time: 50, intensity: 75, label: "Walk-Off", color: "#0284c7" },
-            { time: 70, intensity: 85, label: "The Files", color: "#dc2626" }, // Smash Computer
+            { time: 70, intensity: 85, label: "The Files", color: "#dc2626" }, 
             { time: 85, intensity: 80, label: "Magnum", color: "#6366f1" }
         ],
         synopsis: "Derek Zoolander is a dim-witted male model who has lost his spot as top dog. Brainwashed by a fashion mogul to assassinate the Prime Minister of Malaysia, he must team up with his rival Hansel to save the day.",
@@ -159,7 +159,7 @@ export const COMPLETE_MOVIE_DATA = {
         scenes: [
             { time: 15, intensity: 40, label: "Batting Cages", color: "#22c55e" },
             { time: 40, intensity: 60, label: "Mista Mista", color: "#ea580c" },
-            { time: 60, intensity: 95, label: "Bob Barker Fight", color: "#dc2626" }, // PEAK RAGE
+            { time: 60, intensity: 95, label: "Bob Barker Fight", color: "#dc2626" }, 
             { time: 75, intensity: 50, label: "Happy Place", color: "#fcd34d" },
             { time: 88, intensity: 80, label: "The Putt", color: "#15803d" }
         ],
@@ -178,7 +178,7 @@ export const COMPLETE_MOVIE_DATA = {
             { time: 10, intensity: 20, label: "The Klopeks", color: "#334155" },
             { time: 40, intensity: 50, label: "The Stakeout", color: "#475569" },
             { time: 60, intensity: 65, label: "Sardine?", color: "#94a3b8" },
-            { time: 85, intensity: 85, label: "Digging for Bones", color: "#dc2626" }, // PEAK MANIA
+            { time: 85, intensity: 85, label: "Digging for Bones", color: "#dc2626" }, 
             { time: 95, intensity: 90, label: "The Trunk Reveal", color: "#b91c1c" }
         ],
         synopsis: "An overstressed suburbanite and his nosy neighbors become convinced that the new family on the block are ritualistic murderers. Their paranoia escalates into a full-scale investigation that threatens to destroy the entire neighborhood.",
@@ -194,7 +194,7 @@ export const COMPLETE_MOVIE_DATA = {
         dna: { "Romance": 60, "Slapstick": 40 },
         scenes: [
             { time: 15, intensity: 30, label: "The Wedding", color: "#fbbf24" },
-            { time: 35, intensity: 85, label: "Basketball Game", color: "#ef4444" }, // RAIN DANCE
+            { time: 35, intensity: 85, label: "Basketball Game", color: "#ef4444" }, 
             { time: 55, intensity: 50, label: "Spicy Food", color: "#d97706" },
             { time: 70, intensity: 75, label: "Scuba Diving", color: "#0284c7" },
             { time: 85, intensity: 40, label: "Rooftop", color: "#f59e0b" }
@@ -214,7 +214,7 @@ export const COMPLETE_MOVIE_DATA = {
             { time: 15, intensity: 45, label: "Stunt Setup", color: "#ca8a04" },
             { time: 40, intensity: 70, label: "Drug Trip Fight", color: "#a855f7" },
             { time: 70, intensity: 60, label: "Karaoke", color: "#ec4899" },
-            { time: 95, intensity: 90, label: "The Helicopter Jump", color: "#ef4444" }, // PEAK STUNT
+            { time: 95, intensity: 90, label: "The Helicopter Jump", color: "#ef4444" }, 
             { time: 110, intensity: 80, label: "Movie Magic", color: "#facc15" }
         ],
         synopsis: "A battered and past-his-prime stuntman finds himself working on a movie directed by his ex-girlfriend. When the film's massive star goes missing, he is tasked with finding him, uncovering a conspiracy that forces him to use his stunt skills for real.",
@@ -231,7 +231,7 @@ export const COMPLETE_MOVIE_DATA = {
         scenes: [
             { time: 10, intensity: 20, label: "Book Festival", color: "#64748b" },
             { time: 35, intensity: 60, label: "Writing 'My Pafology'", color: "#0f172a" },
-            { time: 60, intensity: 85, label: "The Offer", color: "#16a34a" }, // PEAK IRONY
+            { time: 60, intensity: 85, label: "The Offer", color: "#16a34a" }, 
             { time: 85, intensity: 70, label: "Family Dinner", color: "#334155" },
             { time: 110, intensity: 90, label: "The Ending", color: "#000000" }
         ],
@@ -250,7 +250,7 @@ export const COMPLETE_MOVIE_DATA = {
             { time: 15, intensity: 30, label: "The Sisters", color: "#f43f5e" },
             { time: 30, intensity: 50, label: "The Bet", color: "#db2777" },
             { time: 60, intensity: 70, label: "Dinner Scene", color: "#be123c" },
-            { time: 80, intensity: 85, label: "The Breakup", color: "#881337" }, // PEAK DRAMA
+            { time: 80, intensity: 85, label: "The Breakup", color: "#881337" }, 
             { time: 95, intensity: 60, label: "Reunion", color: "#fda4af" }
         ],
         synopsis: "Eva is the matriarch of her family who constantly meddles in her sisters' lives. Their husbands hire a smooth-talking ladies' man to date her and distract her, but the plan backfires when he actually falls in love with her. A modern retelling of 'The Taming of the Shrew'.",
@@ -379,15 +379,19 @@ export const getTMDBPosterUrl = (posterPath, size = 'medium') => {
     return `${TMDB_CONFIG.IMAGE_BASE_URL}/${posterSize}${posterPath}`;
 };
 
+// 🔥 1. THE KEYWORD BRIDGE (SEO-Optimized for Comedy Content)
 export const getSensitiveContentTypes = (tmdbId) => {
     const sensitiveData = SENSITIVE_TIMELINES[tmdbId];
     if (!sensitiveData?.scenes?.length) return null;
     const types = new Set();
     sensitiveData.scenes.forEach(scene => {
-        const lowerType = scene.type.toLowerCase();
-        if (lowerType.includes('nudity') || lowerType.includes('sex')) types.add('crude content');
+        const lowerType = scene.type?.toLowerCase() || '';
+        
+        // Mapped to specific SEO terminology for mature/comedy content
+        if (lowerType.includes('nudity') || lowerType.includes('sex')) types.add('sexual content & nudity');
         if (lowerType.includes('drug') || lowerType.includes('alcohol')) types.add('substance use');
         if (lowerType.includes('violence') || lowerType.includes('blood') || lowerType.includes('gore')) types.add('violence');
+        if (lowerType.includes('crude') || lowerType.includes('language')) types.add('crude humor & language');
     });
     return Array.from(types);
 };
@@ -396,39 +400,130 @@ export const generateFAQData = (movie) => {
     return PEACOCK_COMEDY_MOVIE_FAQS[movie.Title] || [];
 };
 
-export const generateMovieSchema = (movie) => {
-    const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
-    const posterUrl = FALLBACK_POSTERS[movie.tmdbId] || '';
-    return {
+// 🔥 2. THE "GOLDEN EGG" SCHEMA GENERATOR (Universal Version)
+export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, collectionSlug, unused, movieInfo) => {
+    
+    const movieSchema = {
         '@context': 'https://schema.org',
         '@type': 'Movie',
         'name': movie.Title,
-        'description': movieInfo?.synopsis || `${movie.Title} - A hilarious comedy movie on Peacock.`,
+        'description': movieInfo?.synopsis || `${movie.Title} (${currentMovieYear}) - A hilarious comedy movie on Peacock.`,
         'genre': movie.genre,
-        'datePublished': movie.year.toString(),
+        'datePublished': currentMovieYear?.toString() || movie.year.toString(),
         'director': { '@type': 'Person', 'name': movieInfo?.director || 'Director' },
         'actor': movieInfo?.cast?.map(actor => ({ '@type': 'Person', 'name': actor })) || [],
-        'duration': `PT${movie.runtime}M`,
-        'image': posterUrl,
-        'aggregateRating': { 
-            '@type': 'AggregateRating', 
-            'ratingValue': movieInfo?.rating || 7.0, 
-            'bestRating': 10, 
-            'worstRating': 1, 
-            'ratingCount': movieInfo?.audienceScore || 100 
-        }
+        'image': tmdbData?.poster_path ? `https://image.tmdb.org/t/p/w500${tmdbData.poster_path}` : (FALLBACK_POSTERS[movie.tmdbId] || ''),
+        'duration': `PT${movie.runtime}M`
     };
-};
 
-export const generateFAQSchema = (faqs) => ({
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    'mainEntity': faqs.map(faq => ({ 
+    const staticFaqs = PEACOCK_COMEDY_MOVIE_FAQS[movie.Title] || [];
+    const sensitiveScenes = SENSITIVE_TIMELINES[movie.tmdbId]?.scenes || [];
+    const intensityScenes = movieInfo?.scenes || [];
+    
+    const schemaFaqs = staticFaqs.map(faq => ({ 
         '@type': 'Question', 
         'name': faq.question, 
         'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer } 
-    }))
-});
+    }));
+
+    // Inject Intensity Graph Timestamps into Schema (Mapped to Laughter Index)
+    if (intensityScenes.length > 0) {
+        const schemaIntensityList = intensityScenes.map(s => `<li>Minute ${s.time} - ${s.label} (Laughter Index: ${s.intensity}/100)</li>`).join('');
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `What are the funniest scenes in ${movie.Title}?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `According to the Filmiway Laughter Index, ${movie.Title} peaks at the following moments:<br><br><ul>${schemaIntensityList}</ul>` 
+            }
+        });
+    }
+
+    // Extract runtime safely
+    let currentRuntime = movie.Runtime || movie.runtime || "Official";
+    if (typeof currentRuntime === 'number') currentRuntime = `${currentRuntime} min`;
+
+    // Inject Sensitive Content Timestamps into Schema (Top Priority)
+    if (sensitiveScenes.length > 0) {
+        const typesArray = getSensitiveContentTypes(movie.tmdbId) || ['mature content'];
+        const typesString = typesArray.join(' and ');
+
+        const schemaListText = sensitiveScenes.map(s => {
+            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
+            return `<li>${timeRange} - ${s.type || 'Mature Content'}</li>`;
+        }).join('');
+
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `Yes, according to the Filmiway Timestamps & Parents Guide, ${movie.Title} contains adult scenes including ${typesString}. These timestamps are accurate for the ${currentRuntime} runtime. Exact timestamps for these scenes are:<br><br><ul>${schemaListText}</ul>` 
+            }
+        });
+    } else {
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `No, the Filmiway Timestamps & Parents Guide confirms that ${movie.Title} is free of explicit sexual content and severe violence. This assessment is accurate for the ${currentRuntime} runtime.` 
+            }
+        });
+    }
+
+    const faqSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        'name': `Parents Guide and FAQ for ${movie.Title}`,
+        'mainEntity': schemaFaqs
+    };
+
+    return { movieSchema, faqSchema };
+};
+
+// 🔥 3. FRONTEND UI SYNC (Displays the timestamps on your Next.js page)
+export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Official") => {
+    const staticFaqs = PEACOCK_COMEDY_MOVIE_FAQS[movieTitle] ? [...PEACOCK_COMEDY_MOVIE_FAQS[movieTitle]] : [];
+    const sensitiveScenes = SENSITIVE_TIMELINES[tmdbId]?.scenes || [];
+    const movieInfo = COMPLETE_MOVIE_DATA[tmdbId];
+    const intensityScenes = movieInfo?.scenes || [];
+
+    // ✅ Safely parsing runtime to a string
+    const dbMovie = COMPLETE_MOVIE_DATABASE.find(m => m.tmdbId === tmdbId);
+    let finalRuntime = currentRuntime !== "Official" ? currentRuntime : (dbMovie?.runtime ? `${dbMovie.runtime} min` : "Official");
+    if (typeof finalRuntime === 'number') finalRuntime = `${finalRuntime} min`;
+
+    if (intensityScenes.length > 0) {
+        const uiIntensityList = intensityScenes.map(s => `• Minute ${s.time} - ${s.label} (Laughter Index: ${s.intensity}/100)`).join('\n');
+        staticFaqs.unshift({
+            question: `What are the funniest scenes in ${movieTitle}?`,
+            answer: `According to the Filmiway Laughter Index, ${movieTitle} peaks at the following moments:\n\n${uiIntensityList}`
+        });
+    }
+
+    if (sensitiveScenes.length > 0) {
+        const typesArray = getSensitiveContentTypes(tmdbId) || ['mature content'];
+        const typesString = typesArray.join(' and ');
+
+        const uiListText = sensitiveScenes.map(s => {
+            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
+            return `• ${timeRange} - ${s.type || 'Mature Content'}`;
+        }).join('\n');
+
+        staticFaqs.unshift({
+            question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
+            answer: `Yes, according to the Filmiway Timestamps & Parents Guide, ${movieTitle} contains adult scenes including ${typesString}. These timestamps are accurate for the ${finalRuntime} runtime. Exact timestamps for these scenes are:\n\n${uiListText}`
+        });
+    } else {
+        staticFaqs.unshift({
+            question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
+            answer: `No, the Filmiway Timestamps & Parents Guide confirms that ${movieTitle} is free of explicit sexual content and severe violence. This assessment is accurate for the ${finalRuntime} runtime.`
+        });
+    }
+
+    return staticFaqs;
+};
 
 export const fetchMovieFromTMDB = async (tmdbId) => ({ 
     poster_path: null, 

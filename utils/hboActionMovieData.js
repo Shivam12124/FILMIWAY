@@ -1,4 +1,4 @@
-// utils/hboActionMovieData.js - HBO MAX ACTION & EPIC COLLECTION DATA
+// utils/hboActionMovieData.js - HBO MAX ACTION & EPIC COLLECTION DATA ✅
 // Grand Scale, Mythic Heroes, and Visceral Combat
 
 export const TMDB_CONFIG = {
@@ -23,42 +23,42 @@ export const COMPLETE_MOVIE_DATABASE = [
 
 // ✅ SENSITIVE TIMELINES (Focusing on Violence, Intensity & Gore)
 export const SENSITIVE_TIMELINES = {
-    // 1. Seven Samurai (Example ID)
+    // 1. Seven Samurai
     346: { scenes: [] }, 
 
-    // 2. The Dark Knight (Example ID)
+    // 2. The Dark Knight
     155: { scenes: [] },
 
-    // 3. The Lord of the Rings (Example ID)
+    // 3. The Lord of the Rings
     122: { scenes: [] }, 
 
-    // 4. John Wick (Correct ID: 245891)
+    // 4. John Wick
     245891: { 
         scenes: [
-            { start: "45:00", end: "45:30", type: "Suggestive Clothing (Women in Bikinis)", severity: "Low" }
+            { start: "45:00", end: "45:30", type: "Suggestive Clothing (Bikini)", severity: "Low" }
         ] 
     },
 
-    // 5. Dune: Part Two (Example ID)
+    // 5. Dune: Part Two
     693134: { scenes: [] }, 
 
-    // 6. Poor Things (Example ID)
+    // 6. Zack Snyder's Justice League
     791373: { scenes: [] },
 
-    // 7. The Batman (Example ID)
+    // 7. The Batman
     414906: { scenes: [] },
 
-    // 8. Previous ID (Cleared)
+    // 8. Justice League: The Flashpoint Paradox
     149191: { scenes: [] },
 
-    // 9. Logan (Correct ID: 263115)
+    // 9. Logan
     263115: { 
         scenes: [
             { start: "20:20", end: "20:30", type: "Nudity", severity: "Moderate" }
         ] 
     },
 
-    // 10.  (Example ID)
+    // 10. Dune
     438631: { scenes: [] }
 };
 
@@ -86,8 +86,6 @@ const createMovieData = (data) => ({
 
 export const COMPLETE_MOVIE_DATA = {
     // 1. Seven Samurai (THE BLUEPRINT)
-    // Curve: Start Low (Recruiting) -> Build (Training) -> Skirmish -> Peak (Rain Battle) -> Somber End.
-    // Peak: 97 (Rain Battle - Genre Definition).
     346: createMovieData({ 
         actionIntensity: 85, 
         epicScale: 92, 
@@ -96,19 +94,17 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Toshiro Mifune", "Takashi Shimura"], boxOffice: "N/A", budget: "$500k", 
         dna: { "Action": 50, "History": 30, "Drama": 20 }, 
         scenes: [
-            { time: 20, intensity: 20, label: "Recruiting Ronin", color: "#52525b" }, // Setup
-            { time: 80, intensity: 45, label: "Harvest & Training", color: "#71717a" }, // Build
-            { time: 140, intensity: 75, label: "First Raid", color: "#a16207" }, // Combat (Bumped from 70)
-            { time: 190, intensity: 97, label: "Rain Battle", color: "#171717" }, // PEAK ACTION
-            { time: 205, intensity: 60, label: "The Funeral", color: "#3f3f46" } // Melancholy
+            { time: 20, intensity: 20, label: "Recruiting Ronin", color: "#52525b" },
+            { time: 80, intensity: 45, label: "Harvest & Training", color: "#71717a" },
+            { time: 140, intensity: 75, label: "First Raid", color: "#a16207" },
+            { time: 190, intensity: 97, label: "Rain Battle", color: "#171717" },
+            { time: 205, intensity: 60, label: "The Funeral", color: "#3f3f46" }
         ],
         synopsis: "A poor village under attack by bandits recruits seven unemployed samurai to help them defend themselves. It is the grandfather of the modern action movie—inventing the 'team assembly' trope and defining how kinetic action is shot and edited.",
         themes: ["Honor", "Sacrifice", "Class Warfare"]
     }),
 
     // 2. The Dark Knight (CRIME EPIC)
-    // Curve: High Start (Heist) -> Tension -> Chase -> Peak (Interrogation) -> Tragedy.
-    // Peak: 93 (Interrogation/Chase - Psychological Peak).
     155: createMovieData({ 
         actionIntensity: 92, 
         epicScale: 90, 
@@ -117,19 +113,17 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Christian Bale", "Heath Ledger", "Aaron Eckhart"], boxOffice: "$1 billion", budget: "$185 million", 
         dna: { "Action": 40, "Crime": 40, "Thriller": 20 }, 
         scenes: [
-            { time: 5, intensity: 80, label: "Bank Heist", color: "#3b82f6" }, // Hook
-            { time: 60, intensity: 70, label: "Truck Flip", color: "#1d4ed8" }, // Spectacle
-            { time: 90, intensity: 93, label: "Interrogation", color: "#172554" }, // PEAK TENSION (Adjusted from 95)
-            { time: 120, intensity: 90, label: "Hospital Blows", color: "#ef4444" }, // Chaos (Adjusted from 85)
-            { time: 145, intensity: 88, label: "The Fall", color: "#000000" } // Tragedy
+            { time: 5, intensity: 80, label: "Bank Heist", color: "#3b82f6" },
+            { time: 60, intensity: 70, label: "Truck Flip", color: "#1d4ed8" },
+            { time: 90, intensity: 93, label: "Interrogation", color: "#172554" },
+            { time: 120, intensity: 90, label: "Hospital Blows", color: "#ef4444" },
+            { time: 145, intensity: 88, label: "The Fall", color: "#000000" }
         ],
         synopsis: "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
         themes: ["Chaos", "Order", "Corruption"]
     }),
 
     // 3. The Lord of the Rings: Return of the King (FANTASY SCALE)
-    // Curve: Quiet -> Buildup -> War -> Peak (Rohirrim) -> Farewell.
-    // Peak: 100 (Charge of the Rohirrim - Unmatched Scale).
     122: createMovieData({ 
         actionIntensity: 95, 
         epicScale: 100, 
@@ -138,19 +132,17 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Elijah Wood", "Viggo Mortensen", "Ian McKellen"], boxOffice: "$1.1 billion", budget: "$94 million", 
         dna: { "Fantasy": 60, "War": 30, "Adventure": 10 }, 
         scenes: [
-            { time: 30, intensity: 40, label: "The Beacons", color: "#fcd34d" }, // Hope
-            { time: 90, intensity: 85, label: "Siege of Gondor", color: "#78350f" }, // War
-            { time: 130, intensity: 100, label: "Ride of the Rohirrim", color: "#f59e0b" }, // PEAK EPIC
-            { time: 180, intensity: 92, label: "Mount Doom", color: "#dc2626" }, // Climax (Adjusted from 95)
-            { time: 195, intensity: 50, label: "Grey Havens", color: "#fbbf24" } // Emotion
+            { time: 30, intensity: 40, label: "The Beacons", color: "#fcd34d" },
+            { time: 90, intensity: 85, label: "Siege of Gondor", color: "#78350f" },
+            { time: 130, intensity: 100, label: "Ride of the Rohirrim", color: "#f59e0b" },
+            { time: 180, intensity: 92, label: "Mount Doom", color: "#dc2626" },
+            { time: 195, intensity: 50, label: "Grey Havens", color: "#fbbf24" }
         ],
         synopsis: "Gandalf and Aragorn lead the World of Men against Sauron's army to draw his gaze from Frodo and Sam as they approach Mount Doom with the One Ring. The culmination of the greatest film trilogy ever made.",
         themes: ["Friendship", "Destiny", "Courage"]
     }),
 
     // 4. John Wick (TACTICAL VIOLENCE)
-    // Curve: Grief (Low) -> Trigger -> The Club -> Peak (Gun-Fu) -> Finale.
-    // Peak: 95 (Red Circle Club - Kinetic Flow).
     245891: createMovieData({ 
         actionIntensity: 90, 
         epicScale: 60, 
@@ -159,19 +151,17 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Keanu Reeves", "Michael Nyqvist", "Willem Dafoe"], boxOffice: "$86 million", budget: "$20 million", 
         dna: { "Action": 70, "Thriller": 20, "Noir": 10 }, 
         scenes: [
-            { time: 15, intensity: 20, label: "The Puppy", color: "#ef4444" }, // Emotional Low
-            { time: 35, intensity: 65, label: "Home Defense", color: "#3b82f6" }, // Wake Up
-            { time: 60, intensity: 95, label: "Red Circle Club", color: "#8b5cf6" }, // PEAK FLOW (Adjusted from 92)
-            { time: 80, intensity: 75, label: "The Church", color: "#1e3a8a" }, // Tactical
-            { time: 95, intensity: 90, label: "Dock Fight", color: "#172554" } // Finale (Adjusted from 88)
+            { time: 15, intensity: 20, label: "The Puppy", color: "#ef4444" },
+            { time: 35, intensity: 65, label: "Home Defense", color: "#3b82f6" },
+            { time: 60, intensity: 95, label: "Red Circle Club", color: "#8b5cf6" },
+            { time: 80, intensity: 75, label: "The Church", color: "#1e3a8a" },
+            { time: 95, intensity: 90, label: "Dock Fight", color: "#172554" }
         ],
         synopsis: "An ex-hitman comes out of retirement to track down the gangsters that killed his dog and took everything from him. This film revitalized the American action genre by focusing on 'Gun-Fu' and clear choreography.",
         themes: ["Vengeance", "Consequences", "Mythology"]
     }),
 
     // 5. Dune: Part Two (VISUAL MAJESTY)
-    // Curve: Learning -> Riding -> Water -> Holy War -> Peak (Duel).
-    // Peak: 97 (Knife Duel - Emotional & Physical Apex).
     693134: createMovieData({ 
         actionIntensity: 90, 
         epicScale: 98, 
@@ -180,19 +170,17 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Timothée Chalamet", "Zendaya", "Austin Butler"], boxOffice: "$711 million", budget: "$190 million", 
         dna: { "Sci-Fi": 50, "War": 30, "Political": 20 }, 
         scenes: [
-            { time: 20, intensity: 45, label: "Desert Guerilla", color: "#fdba74" }, // Immersion
-            { time: 60, intensity: 85, label: "Riding the Worm", color: "#ea580c" }, // Awe
-            { time: 100, intensity: 70, label: "Water of Life", color: "#3b82f6" }, // Mysticism
-            { time: 140, intensity: 93, label: "The Holy War", color: "#c2410c" }, // Spectacle (Adjusted from 96)
-            { time: 160, intensity: 97, label: "Knife Duel", color: "#78350f" } // PEAK DUEL (Adjusted from 88)
+            { time: 20, intensity: 45, label: "Desert Guerilla", color: "#fdba74" },
+            { time: 60, intensity: 85, label: "Riding the Worm", color: "#ea580c" },
+            { time: 100, intensity: 70, label: "Water of Life", color: "#3b82f6" },
+            { time: 140, intensity: 93, label: "The Holy War", color: "#c2410c" },
+            { time: 160, intensity: 97, label: "Knife Duel", color: "#78350f" }
         ],
         synopsis: "Paul Atreides unites with Chani and the Fremen while on a warpath of revenge against the conspirators who destroyed his family. Facing a choice between the love of his life and the fate of the known universe.",
         themes: ["Prophecy", "Fanaticism", "Power"]
     }),
 
     // 6. Zack Snyder's Justice League (OPERATIC HEROISM)
-    // Curve: History -> Team Up -> Resurrection -> Peak (Speed Force) -> Epilogue.
-    // Peak: 93 (Flash Reverses Time - Cosmic Stakes).
     791373: createMovieData({ 
         actionIntensity: 85, 
         epicScale: 95, 
@@ -201,19 +189,17 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Ben Affleck", "Henry Cavill", "Gal Gadot"], boxOffice: "Streaming", budget: "$70 million (reshoots)", 
         dna: { "Action": 50, "Fantasy": 30, "Drama": 20 }, 
         scenes: [
-            { time: 30, intensity: 50, label: "Wonder Woman", color: "#facc15" }, // Introduction
-            { time: 120, intensity: 75, label: "Tunnel Battle", color: "#3f3f46" }, // Teamup
-            { time: 180, intensity: 85, label: "Superman Returns", color: "#1d4ed8" }, // Hope
-            { time: 220, intensity: 93, label: "Speed of Force", color: "#3b82f6" }, // PEAK TIME (Adjusted from 95)
-            { time: 235, intensity: 40, label: "Epilogue", color: "#18181b" } // Setup
+            { time: 30, intensity: 50, label: "Wonder Woman", color: "#facc15" },
+            { time: 120, intensity: 75, label: "Tunnel Battle", color: "#3f3f46" },
+            { time: 180, intensity: 85, label: "Superman Returns", color: "#1d4ed8" },
+            { time: 220, intensity: 93, label: "Speed of Force", color: "#3b82f6" },
+            { time: 235, intensity: 40, label: "Epilogue", color: "#18181b" }
         ],
         synopsis: "Determined to ensure Superman's ultimate sacrifice was not in vain, Bruce Wayne aligns forces with Diana Prince with plans to recruit a team of metahumans to protect the world from an approaching threat of catastrophic proportions.",
         themes: ["Redemption", "Unity", "Fatherhood"]
     }),
 
     // 7. The Batman (NOIR DETECTIVE)
-    // Curve: Fear -> Investigation -> Car Chase -> Peak (The Flood) -> Hope.
-    // Peak: 94 (The Flood - Disaster Climax).
     414906: createMovieData({ 
         actionIntensity: 85, 
         epicScale: 80, 
@@ -222,19 +208,17 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Robert Pattinson", "Zoë Kravitz", "Paul Dano"], boxOffice: "$772 million", budget: "$200 million", 
         dna: { "Crime": 50, "Noir": 30, "Action": 20 }, 
         scenes: [
-            { time: 10, intensity: 60, label: "I am Vengeance", color: "#7f1d1d" }, // Intro
-            { time: 60, intensity: 45, label: "The Riddles", color: "#1c1917" }, // Detective
-            { time: 90, intensity: 91, label: "Penguin Chase", color: "#ef4444" }, // Action (Adjusted from 92)
-            { time: 130, intensity: 75, label: "Interrogation", color: "#fecaca" }, // Tension
-            { time: 165, intensity: 94, label: "The Flood", color: "#b91c1c" } // PEAK CLIMAX (Adjusted from 88)
+            { time: 10, intensity: 60, label: "I am Vengeance", color: "#7f1d1d" },
+            { time: 60, intensity: 45, label: "The Riddles", color: "#1c1917" },
+            { time: 90, intensity: 91, label: "Penguin Chase", color: "#ef4444" },
+            { time: 130, intensity: 75, label: "Interrogation", color: "#fecaca" },
+            { time: 165, intensity: 94, label: "The Flood", color: "#b91c1c" }
         ],
         synopsis: "When a killer targets Gotham's elite with a series of sadistic machinations, a trail of cryptic clues sends the World's Greatest Detective on an investigation into the underworld. A grounded, gritty noir.",
         themes: ["Vengeance vs Hope", "Corruption", "Fear"]
     }),
 
     // 8. Justice League: The Flashpoint Paradox (ANIMATED BRUTALITY)
-    // Curve: Grief -> Confusion -> Horror -> Peak (Apocalypse War) -> Reset.
-    // Peak: 90 (Atlantean vs Amazon War - Global Carnage).
     149191: createMovieData({ 
         actionIntensity: 88, 
         epicScale: 85, 
@@ -243,19 +227,17 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Justin Chambers", "C. Thomas Howell"], boxOffice: "Direct-to-Video", budget: "$3.5 million", 
         dna: { "Animation": 40, "Action": 40, "Sci-Fi": 20 }, 
         scenes: [
-            { time: 10, intensity: 35, label: "Saving Mom", color: "#fef08a" }, // Catalyst
-            { time: 35, intensity: 65, label: "Batman vs Yo-Yo", color: "#52525b" }, // Dark Mirror
-            { time: 60, intensity: 75, label: "Superman Found", color: "#9ca3af" }, // Horror
-            { time: 75, intensity: 90, label: "World War III", color: "#ef4444" }, // PEAK CARNAGE
-            { time: 80, intensity: 85, label: "The Letter", color: "#eab308" } // Resolution
+            { time: 10, intensity: 35, label: "Saving Mom", color: "#fef08a" },
+            { time: 35, intensity: 65, label: "Batman vs Yo-Yo", color: "#52525b" },
+            { time: 60, intensity: 75, label: "Superman Found", color: "#9ca3af" },
+            { time: 75, intensity: 90, label: "World War III", color: "#ef4444" },
+            { time: 80, intensity: 85, label: "The Letter", color: "#eab308" }
         ],
         synopsis: "The Flash finds himself in a war-torn alternate timeline where he no longer has his powers, his mother is alive, Thomas Wayne is Batman, and Aquaman and Wonder Woman are destroying the world in a brutal war.",
         themes: ["Consequences", "Acceptance", "War"]
     }),
 
     // 9. Logan (WESTERN TRAGEDY)
-    // Curve: Decay -> Discovery -> Farmhouse -> Peak (Forest Rage) -> Cross.
-    // Peak: 98 (Forest Berserker Rage - Brutal Tragedy).
     263115: createMovieData({ 
         actionIntensity: 90, 
         epicScale: 50, 
@@ -264,19 +246,17 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Hugh Jackman", "Patrick Stewart", "Dafne Keen"], boxOffice: "$619 million", budget: "$97 million", 
         dna: { "Western": 40, "Drama": 40, "Action": 20 }, 
         scenes: [
-            { time: 5, intensity: 70, label: "Hubcaps Fight", color: "#ea580c" }, // Brutality (Bumped from 65)
-            { time: 45, intensity: 55, label: "Casino Escape", color: "#facc15" }, // Chase
-            { time: 90, intensity: 80, label: "Farmhouse Night", color: "#7f1d1d" }, // Horror
-            { time: 120, intensity: 98, label: "Forest Rage", color: "#991b1b" }, // PEAK TRAGEDY (Bumped from 95)
-            { time: 135, intensity: 50, label: "The Cross", color: "#78350f" } // Peace
+            { time: 5, intensity: 70, label: "Hubcaps Fight", color: "#ea580c" },
+            { time: 45, intensity: 55, label: "Casino Escape", color: "#facc15" },
+            { time: 90, intensity: 80, label: "Farmhouse Night", color: "#7f1d1d" },
+            { time: 120, intensity: 98, label: "Forest Rage", color: "#991b1b" },
+            { time: 135, intensity: 50, label: "The Cross", color: "#78350f" }
         ],
         synopsis: "In a near future where mutants are nearly extinct, an aging and weary Logan cares for an ailing Professor X in a hideout on the Mexican border. But Logan's attempts to hide from the world are up-ended when a young mutant arrives, being pursued by dark forces.",
         themes: ["Family", "Legacy", "Mortality"]
     }),
 
     // 10. Dune (WORLD BUILDING)
-    // Curve: Dreams -> Politics -> Arrakis -> Peak (Harkonnen Attack) -> Desert.
-    // Peak: 88 (Night Attack - Scale & Betrayal).
     438631: createMovieData({ 
         actionIntensity: 75, 
         epicScale: 95, 
@@ -285,11 +265,11 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Timothée Chalamet", "Rebecca Ferguson", "Oscar Isaac"], boxOffice: "$406 million", budget: "$165 million", 
         dna: { "Sci-Fi": 60, "Political": 20, "Adventure": 20 }, 
         scenes: [
-            { time: 20, intensity: 25, label: "Gom Jabbar", color: "#1c1917" }, // Tension
-            { time: 60, intensity: 50, label: "Spice Harvester", color: "#d97706" }, // Awe
-            { time: 90, intensity: 88, label: "Night Attack", color: "#ef4444" }, // PEAK SCALE
-            { time: 120, intensity: 70, label: "Thopter Escape", color: "#b45309" }, // Action
-            { time: 145, intensity: 60, label: "Desert Power", color: "#f59e0b" } // Setup
+            { time: 20, intensity: 25, label: "Gom Jabbar", color: "#1c1917" },
+            { time: 60, intensity: 50, label: "Spice Harvester", color: "#d97706" },
+            { time: 90, intensity: 88, label: "Night Attack", color: "#ef4444" },
+            { time: 120, intensity: 70, label: "Thopter Escape", color: "#b45309" },
+            { time: 145, intensity: 60, label: "Desert Power", color: "#f59e0b" }
         ],
         synopsis: "A mythic and emotionally charged hero's journey, Dune tells the story of Paul Atreides, a brilliant and gifted young man born into a great destiny beyond his understanding, who must travel to the most dangerous planet in the universe to ensure the future of his family and his people.",
         themes: ["Destiny", "Colonialism", "Ecology"]
@@ -509,12 +489,17 @@ export const getTMDBPosterUrl = (posterPath, size = 'medium') => {
     return `${TMDB_CONFIG.IMAGE_BASE_URL}/${posterSize}${posterPath}`;
 };
 
+// 🔥 1. THE KEYWORD BRIDGE (SEO-Optimized for Action Content)
 export const getSensitiveContentTypes = (tmdbId) => {
     const sensitiveData = SENSITIVE_TIMELINES[tmdbId];
     if (!sensitiveData?.scenes?.length) return null;
     const types = new Set();
     sensitiveData.scenes.forEach(scene => {
-        const lowerType = scene.type.toLowerCase();
+        const lowerType = scene.type?.toLowerCase() || '';
+        
+        // Mapped to specific SEO terminology
+        if (lowerType.includes('sex') || lowerType.includes('nudity')) types.add('sexual content & nudity');
+        if (lowerType.includes('suggestive')) types.add('suggestive content');
         if (lowerType.includes('gore') || lowerType.includes('blood')) types.add('heavy gore');
         if (lowerType.includes('violence') || lowerType.includes('fight')) types.add('graphic violence');
     });
@@ -525,39 +510,125 @@ export const generateFAQData = (movie) => {
     return HBO_ACTION_MOVIE_FAQS[movie.Title] || [];
 };
 
-export const generateMovieSchema = (movie) => {
-    const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
-    const posterUrl = FALLBACK_POSTERS[movie.tmdbId] || '';
-    return {
+// 🔥 2. THE "GOLDEN EGG" SCHEMA GENERATOR (Universal Version)
+export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, collectionSlug, unused, movieInfo) => {
+    const movieSchema = {
         '@context': 'https://schema.org',
         '@type': 'Movie',
         'name': movie.Title,
-        'description': movieInfo?.synopsis || `${movie.Title} - Epic action movie on HBO Max.`,
+        'description': movieInfo?.synopsis || `${movie.Title} (${currentMovieYear}) - Epic action movie on HBO Max.`,
         'genre': movie.genre,
-        'datePublished': movie.year.toString(),
+        'datePublished': currentMovieYear?.toString() || movie.year.toString(),
         'director': { '@type': 'Person', 'name': movieInfo?.director || 'Director' },
         'actor': movieInfo?.cast?.map(actor => ({ '@type': 'Person', 'name': actor })) || [],
-        'duration': `PT${movie.runtime}M`,
-        'image': posterUrl,
-        'aggregateRating': { 
-            '@type': 'AggregateRating', 
-            'ratingValue': movieInfo?.rating || 7.5, 
-            'bestRating': 10, 
-            'worstRating': 1, 
-            'ratingCount': movieInfo?.audienceScore || 100 
-        }
+        'image': tmdbData?.poster_path ? `https://image.tmdb.org/t/p/w500${tmdbData.poster_path}` : (FALLBACK_POSTERS[movie.tmdbId] || ''),
+        'duration': `PT${movie.runtime}M`
     };
-};
 
-export const generateFAQSchema = (faqs) => ({
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    'mainEntity': faqs.map(faq => ({ 
+    const staticFaqs = HBO_ACTION_MOVIE_FAQS[movie.Title] || [];
+    const sensitiveScenes = SENSITIVE_TIMELINES[movie.tmdbId]?.scenes || [];
+    const intensityScenes = movieInfo?.scenes || [];
+    
+    const schemaFaqs = staticFaqs.map(faq => ({ 
         '@type': 'Question', 
         'name': faq.question, 
         'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer } 
-    }))
-});
+    }));
+
+    if (intensityScenes.length > 0) {
+        const schemaIntensityList = intensityScenes.map(s => `<li>Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)</li>`).join('');
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `What are the most intense action scenes in ${movie.Title}?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `According to the Filmiway Action Intensity index, ${movie.Title} peaks at the following moments:<br><br><ul>${schemaIntensityList}</ul>` 
+            }
+        });
+    }
+
+    let currentRuntime = movie.Runtime || movie.runtime || "Official";
+    if (typeof currentRuntime === 'number') currentRuntime = `${currentRuntime} min`;
+
+    if (sensitiveScenes.length > 0) {
+        const typesArray = getSensitiveContentTypes(movie.tmdbId) || ['mature content'];
+        const typesString = typesArray.join(' and ');
+
+        const schemaListText = sensitiveScenes.map(s => {
+            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
+            return `<li>${timeRange} - ${s.type || 'Mature Content'}</li>`;
+        }).join('');
+
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `Yes, according to the Filmiway Timestamps & Parents Guide, ${movie.Title} contains adult scenes including ${typesString}. These timestamps are accurate for the ${currentRuntime} runtime. Exact timestamps for these scenes are:<br><br><ul>${schemaListText}</ul>` 
+            }
+        });
+    } else {
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `No, the Filmiway Timestamps & Parents Guide confirms that ${movie.Title} is completely free of explicit sexual content and nudity. This assessment is accurate for the ${currentRuntime} runtime.` 
+            }
+        });
+    }
+
+    const faqSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        'name': `Parents Guide and FAQ for ${movie.Title}`,
+        'mainEntity': schemaFaqs
+    };
+
+    return { movieSchema, faqSchema };
+};
+
+// 🔥 3. FRONTEND UI SYNC
+export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Official") => {
+    const staticFaqs = HBO_ACTION_MOVIE_FAQS[movieTitle] ? [...HBO_ACTION_MOVIE_FAQS[movieTitle]] : [];
+    const sensitiveScenes = SENSITIVE_TIMELINES[tmdbId]?.scenes || [];
+    const movieInfo = COMPLETE_MOVIE_DATA[tmdbId];
+    const intensityScenes = movieInfo?.scenes || [];
+
+    const dbMovie = COMPLETE_MOVIE_DATABASE.find(m => m.tmdbId === tmdbId);
+    let finalRuntime = currentRuntime !== "Official" ? currentRuntime : (dbMovie?.runtime ? `${dbMovie.runtime} min` : "Official");
+    if (typeof finalRuntime === 'number') finalRuntime = `${finalRuntime} min`;
+
+    if (intensityScenes.length > 0) {
+        const uiIntensityList = intensityScenes.map(s => `• Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)`).join('\n');
+        staticFaqs.unshift({
+            question: `What are the most intense action scenes in ${movieTitle}?`,
+            answer: `According to the Filmiway Action Intensity index, ${movieTitle} peaks at the following moments:\n\n${uiIntensityList}`
+        });
+    }
+
+    if (sensitiveScenes.length > 0) {
+        const typesArray = getSensitiveContentTypes(tmdbId) || ['mature content'];
+        const typesString = typesArray.join(' and ');
+
+        const uiListText = sensitiveScenes.map(s => {
+            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
+            return `• ${timeRange} - ${s.type || 'Mature Content'}`;
+        }).join('\n');
+
+        staticFaqs.unshift({
+            question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
+            answer: `Yes, according to the Filmiway Timestamps & Parents Guide, ${movieTitle} contains adult scenes including ${typesString}. These timestamps are accurate for the ${finalRuntime} runtime. Exact timestamps for these scenes are:\n\n${uiListText}`
+        });
+    } else {
+        staticFaqs.unshift({
+            question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
+            answer: `No, the Filmiway Timestamps & Parents Guide confirms that ${movieTitle} is completely free of explicit sexual content and nudity. This assessment is accurate for the ${finalRuntime} runtime.`
+        });
+    }
+
+    return staticFaqs;
+};
 
 export const fetchMovieFromTMDB = async (tmdbId) => ({ 
     poster_path: null, 

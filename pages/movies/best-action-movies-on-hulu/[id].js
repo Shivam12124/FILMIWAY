@@ -9,19 +9,19 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, Play, X, User, Twitter, Hash, Send, Film, Zap, Flame, Theater } from 'lucide-react';
-import InternalCollectionsSection from '../../../components/InternalCollectionsSection';
-import CinematicBackground from '../../../components/CinematicBackground';
-import MovieDetailsSection from '../../../components/MovieDetailsSection';
-import TMDBAttribution from '../../../components/TMDBAttribution';
 
-// ✅ IMPORT DATA INCLUDING FAQs
-import { generateCleanMovieSchema } from '../../../utils/cleanMovieSchema';
+import InternalCollectionsSection from '../../components/InternalCollectionsSection';
+import CinematicBackground from '../../components/CinematicBackground';
+import MovieDetailsSection from '../../components/MovieDetailsSection';
+import TMDBAttribution from '../../components/TMDBAttribution';
+
+// ✅ IMPORT DATA INCLUDING FAQs & SCHEMA GENERATOR
 import { 
   COMPLETE_MOVIE_DATABASE, 
   COMPLETE_MOVIE_DATA,
   SENSITIVE_TIMELINES,
-  HULU_ACTION_MOVIE_FAQS, 
-} from '../../../utils/huluActionMovieData';
+  generateCleanMovieSchema
+} from '../../utils/huluActionMovieData';
 
 const COLORS = {
   accent: '#EF4444', accentLight: '#FCA5A5',bgPrimary: '#000000ff', bgCard: 'rgba(11, 11, 11, 0.8)', // Red/Orange for Action
@@ -207,8 +207,6 @@ const HuluActionBreadcrumb = ({ movie }) => (
     </motion.nav>
 );
 
-
-
 const HuluActionMoviePage = ({ movie, tmdbData: movieData }) => {
     const router = useRouter();
     const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
@@ -232,11 +230,36 @@ const HuluActionMoviePage = ({ movie, tmdbData: movieData }) => {
     const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
-    // ✅ SEO FIX: Clean strings to prevent hydration errors
-    const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Best Action Movies on Hulu | Filmiway'].join('');
-    const cleanSEODesc = [movie.Title, ' (', currentMovieYear, ') - A high-octane action movie streaming on Hulu. Ranked by adrenaline and violence level.'].join('');
+    // =========================================================================
+    // ✅ THE STANDARDIZED ELITE SEO BLOCK
+    // =========================================================================
 
-    const collectionSlug = router.pathname.split('/')[2];
+    const collectionSlug = 'best-action-movies-on-hulu';
+    const dynamicCollectionName = 'Best Action Movies on Hulu';
+
+    const scenes = SENSITIVE_TIMELINES?.[movie.tmdbId]?.scenes || [];
+    
+    // 1. UNIQUE META TITLE (Targets "Parents Guide & Timestamps")
+    const cleanSEOTitle = scenes.length > 0
+        ? `${movie.Title} (${currentMovieYear}) Parents Guide & Timestamps | ${dynamicCollectionName}`
+        : `${movie.Title} (${currentMovieYear}) Parents Guide | ${dynamicCollectionName}`;
+
+    // 2. STANDARDIZED ELITE META DESCRIPTION
+    let cleanSEODesc = '';
+    
+    if (scenes.length > 0) {
+        const rawTimes = scenes.slice(0, 3).map(s => s.end ? `${s.start}–${s.end}` : s.start);
+        const formattedTimes = rawTimes.length > 1 
+        ? `${rawTimes.slice(0, -1).join(', ')} and ${rawTimes.slice(-1)}` 
+        : rawTimes[0];
+
+        cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Viewer discretion advised. Includes exact scene timestamps: ${formattedTimes}.`;
+    } else {
+        cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Filmiway Content Advisory: No explicit sexual content or severe nudity identified. Suitable for general viewing.`;
+    }
+
+    // =========================================================================
+
     const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
 
     const { movieSchema, faqSchema } = generateCleanMovieSchema(
@@ -259,13 +282,15 @@ const HuluActionMoviePage = ({ movie, tmdbData: movieData }) => {
                 <meta name="robots" content="index, follow" />
                 <meta name="language" content="English" />
 
-                {/* ✅ BARRIER #3 DEFEATED: JSON-LD Schema */}
+                {/* ✅ SCHEMA INJECTION WITH UNIQUE KEYS TO PREVENT NEXT.JS DELETION */}
                 <script
+                    key="schema-movie"
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }}
                 />
                 {faqSchema && (
                     <script
+                        key="schema-faq"
                         type="application/ld+json"
                         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
                     />
@@ -273,22 +298,21 @@ const HuluActionMoviePage = ({ movie, tmdbData: movieData }) => {
 
                 {/* Standard Meta Tags */}
                 <meta property="og:title" content={cleanSEOTitle} />
-                <meta property="og:description" content="A high-octane action movie on Hulu." />
+                <meta property="og:description" content={cleanSEODesc} />
                 <meta property="og:type" content="video.movie" />
                 <meta property="og:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content={cleanSEOTitle} />
-                <meta name="twitter:description" content="A high-octane action movie on Hulu." />
+                <meta name="twitter:description" content={cleanSEODesc} />
                 <meta name="twitter:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
             </Head>
 
             <SubtleFilmGrain />
             <div className="absolute inset-0"><CinematicBackground /></div>
             
-            
             <div className="relative z-10 pt-10 sm:pt-12 lg:pt-16">
                 
-                {/* ✅ SEO FIX: HIDDEN H1 */}
+                {/* ✅ SEO FIX: HIDDEN H1 ADDED HERE */}
                 <h1 className="sr-only">{cleanSEOTitle}</h1>
 
                 <HuluActionBreadcrumb movie={movie} />
@@ -296,12 +320,12 @@ const HuluActionMoviePage = ({ movie, tmdbData: movieData }) => {
                     <OptimizedBanner movie={movie} movieData={movieData} richData={richData} trailer={trailer} isMobile={isMobile} />
                     
                     <motion.div 
-    id="watch" 
-    initial={{ opacity: 0, y: 20 }} 
-    animate={{ opacity: 1, y: 0 }} 
-    transition={{ duration: 0.5 }} // Faster, no massive delay
-    className="space-y-8 sm:space-y-12 px-3 sm:px-4 lg:px-6"
->
+                        id="watch" 
+                        initial={{ opacity: 0, y: 20 }} 
+                        animate={{ opacity: 1, y: 0 }} 
+                        transition={{ duration: 0.5 }} // Faster, no massive delay
+                        className="space-y-8 sm:space-y-12 px-3 sm:px-4 lg:px-6"
+                    >
                         {/* Note: Ensure MovieDetailsSection can handle the 'action' context if it has specific logic */}
                         <MovieDetailsSection movie={movie} fromHuluActionCollection={true} /> 
                     </motion.div>

@@ -1,65 +1,26 @@
-// components/ShutterIslandSEOFAQSection.js - FAQ SECTION FOR SHUTTER ISLAND COLLECTION
-import React from 'react';
+// components/ShutterIslandSEOFAQSection.js - DYNAMIC & SEO OPTIMIZED ✅
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Info } from 'lucide-react';
-import { COMPLETE_MOVIE_DATA } from '../utils/movieData';
-import { SENSITIVE_TIMELINES, getSensitiveContentTypes } from '../utils/sensitiveContent';
+import { AlertTriangle, ChevronDown, ChevronUp, Info } from 'lucide-react'; // Matches the Mind-Bending vibe
+// 🔥 IMPORT THE DYNAMIC FAQ GENERATOR
+import { getVisibleMovieFAQs } from '../utils/movieData';
 
-// 🏝️ SHUTTER ISLAND FAQ SECTION - TOP 10 MOVIES LIKE SHUTTER ISLAND
 const ShutterIslandSEOFAQSection = ({ movie }) => {
-    const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
-    const sensitiveData = SENSITIVE_TIMELINES[movie.tmdbId];
-    const contentTypes = getSensitiveContentTypes(movie.tmdbId);
+    const [openIndex, setOpenIndex] = useState(null);
+    const title = movie?.Title || "this film";
     
-    // 🔥 SHUTTER ISLAND THEMED FAQs
-    const faqs = [
-        {
-            question: `What makes ${movie.Title} similar to Shutter Island?`,
-            answer: `${movie.Title} shares Shutter Island's core elements: unreliable narrators, psychological manipulation, identity crises, and shocking plot twists that make you question reality. Both films feature protagonists who may not be who they think they are, creating the same disorienting experience that makes Shutter Island so compelling.`
-        },
-        {
-            question: `How does ${movie.Title} compare to Shutter Island in terms of psychological complexity?`,
-            answer: `${movie.Title} delivers similar psychological depth through its ${movie.Genre?.toLowerCase() || 'thriller'} approach to reality distortion and identity themes. Like Shutter Island's Leonardo DiCaprio character, the protagonists in ${movie.Title} navigate unreliable memories and perceptions that challenge both character and audience understanding.`
-        },
-        {
-            question: `Who directed ${movie.Title} and what connects it to Shutter Island-style films?`,
-            answer: `${movie.Title} was directed by ${movieInfo?.director || 'acclaimed filmmaker'} in ${movie.Year}. Like Martin Scorsese's Shutter Island, it uses innovative storytelling techniques to explore themes of mental health, identity confusion, and psychological manipulation through atmospheric cinematography and narrative misdirection.`
-        },
-        {
-            question: `Does ${movie.Title} have plot twists like Shutter Island's shocking ending?`,
-            answer: movieInfo?.mindBendingIndex >= 85 
-                ? `Yes, ${movie.Title} delivers mind-bending revelations comparable to Shutter Island's legendary twist. With a psychological complexity rating of ${movieInfo.mindBendingIndex}/100, it features shocking plot turns that recontextualize everything viewers thought they understood about the story.`
-                : `${movie.Title} includes psychological twists and revelations that enhance its connection to Shutter Island's style of reality-questioning narrative, though it focuses more on ${movie.Genre?.toLowerCase() || 'psychological themes'} than shocking plot reversals.`
-        },
-        {
-            question: `Where can I watch ${movie.Title} online?`,
-            answer: `${movie.Title} streaming availability varies by region. Check Netflix, Amazon Prime Video, Apple TV+, Hulu, and other major streaming platforms for current availability in your area. The film is often available for rent or purchase on digital platforms like Amazon Video, iTunes, and Google Play Movies.`
-        },
-        {
-            question: `Does ${movie.Title} contain mature content like Shutter Island?`,
-            answer: sensitiveData?.scenes?.length > 0 
-                ? `Yes, ${movie.Title} contains mature content including ${contentTypes ? contentTypes.join(', ') : 'adult themes, psychological intensity, and complex subject matter'}. Like Shutter Island, it deals with heavy psychological themes and has ${sensitiveData.scenes.length} scenes with mature content that enhance its psychological thriller atmosphere.`
-                : `${movie.Title} focuses primarily on psychological complexity similar to Shutter Island, with minimal mature content. The film emphasizes mental health themes, identity confusion, and psychological manipulation through intellectual rather than explicit content.`
-        },
-        {
-            question: `What is the IMDb rating of ${movie.Title} and how does it compare to Shutter Island?`,
-            answer: `${movie.Title} has an IMDb rating of ${movieInfo?.rating || movie.imdbRating}/10. Shutter Island holds an 8.2/10 rating, and like that film, ${movie.Title} is highly rated for its psychological depth, innovative storytelling, and reality-twisting narrative that challenges conventional thriller expectations.`
-        },
-        {
-            question: `Is ${movie.Title} as mind-bending as Shutter Island?`,
-            answer: movieInfo?.complexityLevel === 'EXTREME' 
-                ? `${movie.Title} is considered equally or more mind-bending than Shutter Island, with an extreme complexity level that requires multiple viewings to fully appreciate. Like Shutter Island's layered narrative, it plants clues throughout that only make sense after knowing the truth.`
-                : `${movie.Title} offers substantial psychological complexity comparable to Shutter Island, though it approaches mind-bending elements through ${movie.Genre?.toLowerCase() || 'different techniques'}. Both films reward careful viewing and multiple watches to catch subtle details and foreshadowing.`
-        },
-        {
-            question: `What themes does ${movie.Title} share with Shutter Island?`,
-            answer: `${movie.Title} explores similar themes to Shutter Island including ${movieInfo?.themes?.slice(0,3).join(', ') || 'psychological manipulation, identity crisis, and reality distortion'}. Both films examine mental health, unreliable perception, and the thin line between sanity and delusion in atmospheric, psychological thriller settings.`
-        },
-        {
-            question: `Should I watch ${movie.Title} if I loved Shutter Island?`,
-            answer: `Absolutely! ${movie.Title} is specifically recommended for Shutter Island fans because it delivers the same psychological intensity, unreliable narrator elements, and reality-questioning experience. Both films feature complex protagonists navigating identity crises and shocking revelations that redefine the entire narrative.`
-        }
-    ];
+    // 🔥 AUTOMATICALLY GENERATE THE FAQS (Includes the Dynamic Timestamp FAQ & Intensity Peaks)
+    // This ensures the UI perfectly matches the Bot Schema!
+    const faqsFromData = getVisibleMovieFAQs(movie?.Title, movie?.tmdbId);
+
+    // Safety check - return null if no FAQs are found
+    if (!faqsFromData || faqsFromData.length === 0) {
+        return null;
+    }
+
+    const toggleFAQ = (index) => {
+        setOpenIndex(openIndex === index ? null : index);
+    };
     
     return (
         <motion.section 
@@ -68,34 +29,61 @@ const ShutterIslandSEOFAQSection = ({ movie }) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
         >
-            <h2 className="text-xl sm:text-2xl font-light text-yellow-300 mb-6 sm:mb-8 flex items-center gap-2 sm:gap-3">
-                <Info size={20} className="sm:w-6 sm:h-6" />
-                <span className="hidden sm:inline">Frequently Asked Questions About {movie.Title}</span>
-                <span className="sm:hidden">FAQ About {movie.Title}</span>
-            </h2>
-            <p className="text-gray-300 mb-4 sm:mb-6 text-sm sm:text-base">
-                Common questions about {movie.Title} and how it compares to other psychological thrillers like Shutter Island.
-            </p>
+            {/* 🎨 Yellow/Amber Theme for the Shutter Island Collection */}
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 sm:mb-10 gap-4">
+                <div>
+                    <h2 className="text-2xl sm:text-3xl font-light text-yellow-400 flex items-center gap-3">
+                        <AlertTriangle size={24} className="text-yellow-500" />
+                        <span>Frequently Asked Questions About <span className="font-semibold text-yellow-300">{title}</span></span>
+                    </h2>
+                    <p className="text-gray-400 mt-2 text-sm sm:text-base max-w-2xl leading-relaxed">
+                        Explore our **Parents Guide** and expert analysis for {title}. We provide accurate timestamps for sensitive scenes to skip and map the biggest mind-bending intensity peaks of this psychological thriller.
+                    </p>
+                </div>
+            </div>
+
             <div className="space-y-4 sm:space-y-6">
-                {faqs.map((faq, index) => (
+                {faqsFromData.map((faq, index) => (
                     <motion.div 
                         key={index}
-                        className="bg-gray-800/30 rounded-xl p-4 sm:p-6 border border-gray-700/50 hover:border-gray-600/50 transition-colors duration-300"
+                        className={`bg-gray-800/30 rounded-xl overflow-hidden border transition-all duration-300 group ${
+                            openIndex === index ? 'border-yellow-500/50 bg-gray-800/60' : 'border-gray-700/50 hover:border-yellow-500/30'
+                        }`}
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.6, delay: index * 0.1 }}
                     >
-                        <h3 className="text-base sm:text-lg font-medium text-yellow-200 mb-2 sm:mb-3">
-                            {faq.question}
-                        </h3>
-                        <p className="text-gray-300 leading-relaxed text-sm sm:text-base">
-                            {faq.answer}
-                        </p>
+                        <button
+                            onClick={() => toggleFAQ(index)}
+                            className="w-full flex items-center justify-between p-5 text-left focus:outline-none"
+                        >
+                            {/* 🔥 The exact question (Static Trivia OR Dynamic Parents Guide) */}
+                            <span className="text-base sm:text-lg font-medium text-yellow-200 pr-4">
+                                {faq.question || faq.q}
+                            </span>
+                            {openIndex === index ? (
+                                <ChevronUp className="w-5 h-5 text-yellow-400 flex-shrink-0" />
+                            ) : (
+                                <ChevronDown className="w-5 h-5 text-gray-500 flex-shrink-0" />
+                            )}
+                        </button>
+                        
+                        <motion.div
+                            initial={false}
+                            animate={{ height: openIndex === index ? 'auto' : 0, opacity: openIndex === index ? 1 : 0 }}
+                            transition={{ duration: 0.3 }}
+                            className="overflow-hidden"
+                        >
+                            {/* 🔥 The exact answer (including the HTML-formatted timestamp lists) */}
+                            <div className="p-5 pt-0 text-gray-300 leading-relaxed text-sm sm:text-base font-light border-t border-gray-700/30 mt-2 whitespace-pre-line group-hover:text-gray-200 transition-colors">
+                                {faq.answer || faq.a}
+                            </div>
+                        </motion.div>
                     </motion.div>
                 ))}
             </div>
-            
-            {/* 🔥 SHUTTER ISLAND COLLECTION CONTEXT */}
+
+            {/* 🔥 SHUTTER ISLAND COLLECTION CONTEXT (Retained for Internal Linking SEO) */}
             <motion.div 
                 className="mt-6 sm:mt-8 p-4 sm:p-6 bg-blue-900/20 border border-blue-600/30 rounded-xl"
                 initial={{ opacity: 0, y: 20 }}
@@ -107,7 +95,7 @@ const ShutterIslandSEOFAQSection = ({ movie }) => {
                     About This Collection
                 </h3>
                 <p className="text-blue-100 text-sm leading-relaxed">
-                    {movie.Title} is part of our curated "Top 10 Movies Like Shutter Island" collection, featuring films that excel in psychological complexity, unreliable narration, and reality-twisting narratives. Each movie shares Shutter Island's ability to blur the lines between truth and perception, making them perfect for viewers who enjoy mind-bending psychological thrillers.
+                    {title} is part of our curated "Top 10 Movies Like Shutter Island" collection, featuring films that excel in psychological complexity, unreliable narration, and reality-twisting narratives. Each movie shares Shutter Island's ability to blur the lines between truth and perception, making them perfect for viewers who enjoy mind-bending psychological thrillers.
                 </p>
             </motion.div>
         </motion.section>

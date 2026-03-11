@@ -1,50 +1,60 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
-import { Shield, CheckCircle, Clock, AlertOctagon } from 'lucide-react';
+import { Shield, CheckCircle, Clock, AlertOctagon, Info, Film, FastForward } from 'lucide-react';
 
 // Import formatting functions from BOTH data sources
 import { formatSensitiveTimeline as formatInceptionTimeline, getSensitiveContentTypes as getInceptionContentTypes } from '../utils/movieData';
 import { formatSensitiveTimeline as formatSurvivalTimeline, getSensitiveContentTypes as getSurvivalContentTypes } from '../utils/survivalMovieData';
 
 const COLORS = {
-  warningBg: 'rgba(127, 29, 29, 0.15)',
-  warningBorder: 'rgba(248, 113, 113, 0.2)',
-  textPrimary: '#FFFFFF',
-  textSecondary: '#D1D5DB',
-  accent: '#F87171',
-  safeBg: 'rgba(6, 95, 70, 0.2)',
-  safeBorder: 'rgba(52, 211, 153, 0.2)',
+    warningBg: 'rgba(127, 29, 29, 0.15)',
+    warningBorder: 'rgba(248, 113, 113, 0.2)',
+    textPrimary: '#FFFFFF',
+    textSecondary: '#D1D5DB',
+    accent: '#F87171',
+    safeBg: 'rgba(6, 95, 70, 0.2)',
+    safeBorder: 'rgba(52, 211, 153, 0.2)',
 };
 
 const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) => {
     
+    // ✅ HELPER: Extract EXACT types entered by the editor, removing duplicates
+    const extractExactTypes = (scenes) => {
+        if (!scenes) return [];
+        const types = scenes
+            .map(scene => scene.type) // Pulls the exact tag (e.g., "Lingerie", "Nudity")
+            .filter(Boolean); // Strips out empty values
+        return [...new Set(types)]; // Removes duplicates
+    };
+
     // 🔥 PRIORITY: Use passed sensitiveScenes first, then fallback
     let sensitiveData = null;
     let contentTypes = [];
 
     if (sensitiveScenes && sensitiveScenes.length > 0) {
         sensitiveData = { scenes: sensitiveScenes };
-        contentTypes = [...new Set(sensitiveScenes.map(scene => {
-            const lowerType = scene.description?.toLowerCase() || '';
-            if (lowerType.includes('nudity') || lowerType.includes('sex')) return 'Nudity/Sexual Content';
-            if (lowerType.includes('kissing')) return 'Kissing';
-            if (lowerType.includes('suggestive')) return 'Suggestive Content';
-            if (lowerType.includes('violence')) return 'Violence';
-            if (lowerType.includes('language')) return 'Strong Language';
-            return 'Mature Content';
-        }))];
+        contentTypes = extractExactTypes(sensitiveScenes);
     } else {
         const inceptionData = formatInceptionTimeline?.(movie.tmdbId);
         const survivalData = formatSurvivalTimeline?.(movie.tmdbId);
         sensitiveData = inceptionData || survivalData;
         
-        contentTypes = inceptionData 
+        let predefinedTypes = inceptionData 
             ? (getInceptionContentTypes?.(movie.tmdbId) || [])
             : (getSurvivalContentTypes?.(movie.tmdbId) || []);
+            
+        // Fallback to extracting exact types if predefined ones are missing
+        contentTypes = predefinedTypes.length > 0 
+            ? predefinedTypes 
+            : extractExactTypes(sensitiveData?.scenes);
     }
 
-    // ✅ DYNAMIC RUNTIME SYNC: Pulling exact runtime from TMDB state
-    const currentRuntime = movie.Runtime || movie.runtime || "Official";
+    // ✅ DYNAMIC RUNTIME SYNC: Formatting the runtime cleanly for the UI
+    let currentRuntime = movie.Runtime || movie.runtime || "Official";
+    if (typeof currentRuntime === 'number') currentRuntime = `${currentRuntime} min`;
+    if (movie.tmdbId === 51876 && !currentRuntime.includes("Unrated")) {
+        currentRuntime += " (Unrated Version)"; // Specifically catching Limitless
+    }
 
     // ✅ NEW HELPER: Color coding for all severity levels
     const getSeverityStyles = (severity) => {
@@ -62,9 +72,47 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
         if (s === 'mild') {
             return 'bg-emerald-500/10 text-emerald-400/80 border-emerald-500/20 shadow-emerald-900/10';
         }
-        // Fallback for any other custom text
         return 'bg-gray-500/10 text-gray-400 border-gray-500/20 shadow-gray-900/10';
     };
+
+    // ✅ NEW HELPER: Calculate total skip time from all scenes
+    const skipStats = useMemo(() => {
+        if (!sensitiveData?.scenes?.length) return { totalScenes: 0, formattedTime: "0 sec" };
+
+        let totalSeconds = 0;
+        
+        sensitiveData.scenes.forEach(scene => {
+            if (scene.start && scene.end) {
+                const parseTime = (t) => {
+                    const parts = t.split(':').map(Number);
+                    if (parts.length === 3) return (parts[0] * 3600) + (parts[1] * 60) + (parts[2] || 0);
+                    if (parts.length === 2) return (parts[0] * 60) + (parts[1] || 0);
+                    return 0;
+                };
+
+                const startSec = parseTime(scene.start);
+                const endSec = parseTime(scene.end);
+                
+                if (endSec > startSec) {
+                    totalSeconds += (endSec - startSec);
+                }
+            }
+        });
+
+        const mins = Math.floor(totalSeconds / 60);
+        const secs = totalSeconds % 60;
+        
+        let formattedTime = "";
+        if (totalSeconds === 0) formattedTime = "< 1 min"; 
+        else if (mins === 0) formattedTime = `${secs} sec`;
+        else formattedTime = secs > 0 ? `${mins} min ${secs} sec` : `${mins} min`;
+
+        return {
+            totalScenes: sensitiveData.scenes.length,
+            formattedTime
+        };
+    }, [sensitiveData]);
+
 
     if (!sensitiveData?.scenes?.length) {
         return (
@@ -82,9 +130,17 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                         <CheckCircle size={24} />
                     </div>
                     <div>
-                        <h2 className="text-emerald-300 font-medium text-lg">Timestamps & Parents Guide: Clean Content</h2>
-                        <p className="text-emerald-400/70 text-sm font-light">
-                            <strong>{movie.Title}</strong>: Filmiway Parents Guide confirms this film is free of explicit sexual content and nudity.
+                        <div className="flex items-center gap-2">
+                            <h2 className="text-emerald-300 font-medium text-lg">Timestamps & Parents Guide</h2>
+                            <div className="group relative flex items-center">
+                                <Info size={16} className="text-emerald-500/60 cursor-help hover:text-emerald-400 transition-colors" />
+                                <div className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 hidden group-hover:block w-72 p-3 bg-gray-900 border border-emerald-500/30 rounded-xl text-xs text-emerald-100 shadow-xl z-10 tracking-normal">
+                                    Filmiway timestamps are added manually by our editorial team by watching the entire film to ensure absolute accuracy.
+                                </div>
+                            </div>
+                        </div>
+                        <p className="text-emerald-400/70 text-sm font-light mt-1">
+                            <strong>{movie.Title}</strong>: Filmiway editors have manually verified this film is free of explicit sexual content and nudity. Accurate for the {currentRuntime} runtime.
                         </p>
                     </div>
                 </div>
@@ -100,20 +156,39 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
             transition={{ duration: 0.6 }}
         >
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 border-b border-white/5 pb-5 gap-4">
-                <div className="space-y-3">
+                <div className="space-y-3 w-full">
                     <h2 className="text-2xl font-light text-red-200 flex items-center gap-3 tracking-wide">
                         <Shield className="text-red-500 w-6 h-6" />
                         Timestamps & Parents Guide
+                        <div className="group relative flex items-center ml-1">
+                            <Info size={18} className="text-gray-500 hover:text-gray-300 cursor-help transition-colors" />
+                            <div className="absolute left-1/2 -translate-x-1/2 bottom-full mb-3 hidden group-hover:block w-72 p-3 bg-[#0a0a0c] border border-white/10 rounded-xl text-xs text-gray-300 shadow-2xl z-10 font-sans tracking-normal leading-relaxed">
+                                <strong className="text-white block mb-1">ⓘ How we verify timestamps</strong>
+                                Filmiway timestamps are added manually by our editorial team by watching the entire film to ensure absolute accuracy.
+                            </div>
+                        </div>
                     </h2>
                     
-                    <div className="ml-1 space-y-1.5">
-                        <p className="text-sm text-gray-500">
-                            Scenes to skip: <span className="text-gray-300 font-medium">{contentTypes.length > 0 ? contentTypes.join(', ') : 'Mature Themes'}</span>
+                    <div className="ml-1 space-y-2">
+                        {/* ✅ NOW DISPLAYS EXACT TYPES ENTERED BY EDITORS */}
+                        <p className="text-sm text-gray-500 flex items-center gap-1.5">
+                            <AlertOctagon size={14} className="text-red-500/80" />
+                            Scenes to skip: <span className="text-gray-300 font-medium">{contentTypes.length > 0 ? contentTypes.join(', ') : 'Explicit Content'}</span>
                         </p>
                         
                         <p className="text-sm text-gray-500 flex items-center gap-1.5">
                             <CheckCircle size={14} className="text-emerald-500/80" />
                             Timestamps are accurate for the <span className="text-gray-300 font-medium">{currentRuntime}</span> runtime
+                        </p>
+
+                        <p className="text-sm text-gray-500 flex items-center gap-1.5">
+                            <Film size={14} className="text-indigo-400/80" />
+                            Total scenes flagged: <span className="text-gray-300 font-medium">{skipStats.totalScenes}</span>
+                        </p>
+                        
+                        <p className="text-sm text-gray-500 flex items-center gap-1.5">
+                            <FastForward size={14} className="text-yellow-500/80" />
+                            Total time to skip: <span className="text-gray-300 font-medium">{skipStats.formattedTime}</span>
                         </p>
                     </div>
                 </div>
@@ -134,7 +209,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
 
                         const getSceneIcon = (type) => {
                             const lowerType = type.toLowerCase();
-                            if (lowerType.includes('nudity') || lowerType.includes('sex')) return '👁️';
+                            if (lowerType.includes('nudity') || lowerType.includes('sex') || lowerType.includes('lingerie') || lowerType.includes('suggestive')) return '👁️';
                             if (lowerType.includes('kissing')) return '💋';
                             if (lowerType.includes('violence') || lowerType.includes('blood')) return '⚔️';
                             if (lowerType.includes('language')) return '🤬';
@@ -170,7 +245,6 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                                             </div>
                                         </div>
 
-                                        {/* ✅ UPDATED: Dynamic Badge based on new getSeverityStyles function */}
                                         {scene.severity && (
                                             <span className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest border shadow-lg backdrop-blur-md ${getSeverityStyles(scene.severity)}`}>
                                                 {scene.severity}
@@ -183,9 +257,9 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                     })}
                 </div>
 
-                <div className="bg-black/30 p-3 flex items-center justify-center gap-2 text-[10px] text-gray-600 uppercase tracking-[0.2em]">
-                    <AlertOctagon size={10} />
-                    <span>Parents Guide • Verified Timestamp Accuracy</span>
+                <div className="bg-black/40 p-3.5 flex items-center justify-center gap-2.5 text-[10px] text-gray-400 uppercase tracking-[0.2em] border-t border-white/5">
+                    <Shield size={12} className="text-emerald-500/70" />
+                    <span>Parents Guide • Manually Verified by the Filmiway Editorial Team</span>
                 </div>
             </div>
         </motion.section>

@@ -60,7 +60,7 @@ export const SENSITIVE_TIMELINES = {
         { start: '1:20:20', end: '1:20:40', type: 'Sex', severity: 'High' }
     ]},
     4553: { scenes: [
-        { start: '17:00', end: '18:25', type: 'Sex', severity: 'High' },
+        { start: '17:00', end: '18:25', type: 'Sex', severity: 'Moderate' },
        
     ]},
     670: { scenes: [

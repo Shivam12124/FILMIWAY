@@ -366,7 +366,7 @@ export const COLLECTIONS = {
     slug: 'movies-like-oldboy',
     title: 'Movies Like Oldboy',
     stats: { averageRating: 7.8 },
-    movies: ['tt1588170', 'tt0310775', 'tt0451094', 'tt1527788', 'tt1190539', 'tt0456912', 'tt1255953', 'tt4016934', 'tt1540399', 'tt1392214'],
+    movies: ['tt1588170', 'tt0310775', 'tt0451094', 'tt1527788', 'tt1190539', 'tt0456912', 'tt1255953', 'tt4016934', 'tt1590089', 'tt1392214'],
     relatedCollections: ['best-revenge-movies', 'movies-like-se7en', 'best-psychological-thriller-movies']
   },
 

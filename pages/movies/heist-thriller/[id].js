@@ -8,19 +8,18 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/router';
-import { ChevronLeft, Play, X, User, Twitter, Hash, Send, Film, Lock, DollarSign } from 'lucide-react'; 
+import { ChevronLeft, Play, X, User, Twitter, Hash, Send, Film, Lock, DollarSign, Theater } from 'lucide-react'; 
 import InternalCollectionsSection from '../../../components/InternalCollectionsSection';
 import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
 import TMDBAttribution from '../../../components/TMDBAttribution';
 
-// ✅ IMPORT HEIST THRILLER DATA
-import { generateCleanMovieSchema } from '../../../utils/cleanMovieSchema';
+// ✅ IMPORT HEIST THRILLER DATA & SCHEMA GENERATOR
 import {
   COMPLETE_MOVIE_DATABASE, 
   COMPLETE_MOVIE_DATA, 
   SENSITIVE_TIMELINES,
-  HEIST_THRILLER_FAQS 
+  generateCleanMovieSchema 
 } from '../../../utils/heistThrillerMovieData';
 
 const COLORS = {
@@ -60,7 +59,7 @@ const getHeistInsight = (title) => {
 };
 
 // ✅ OPTIMIZED BANNER
-const OptimizedBanner = ({ movie, movieData, trailer, richData }) => {
+const OptimizedBanner = ({ movie, movieData, trailer, richData, isMobile }) => {
   const [showTrailer, setShowTrailer] = useState(false);
   const [countdown, setCountdown] = useState(4);
   const [hasClosedTrailer, setHasClosedTrailer] = useState(false);
@@ -75,7 +74,7 @@ const OptimizedBanner = ({ movie, movieData, trailer, richData }) => {
   const complexityIndex = richData?.heistComplexity || 90;
 
   useEffect(() => {
-    if (window.innerWidth > 768 && trailer && !showTrailer && !hasClosedTrailer) {
+    if (!isMobile && trailer && !showTrailer && !hasClosedTrailer) {
       timerRef.current = setInterval(() => {
         setCountdown((prev) => {
           if (prev <= 1) { clearInterval(timerRef.current); setShowTrailer(true); return 0; }
@@ -84,7 +83,7 @@ const OptimizedBanner = ({ movie, movieData, trailer, richData }) => {
       }, 1000);
     }
     return () => { if (timerRef.current) clearInterval(timerRef.current); };
-  }, [trailer, showTrailer, hasClosedTrailer]);
+  }, [isMobile, trailer, showTrailer, hasClosedTrailer]);
 
   const handlePlayClick = () => { setShowTrailer(true); setHasClosedTrailer(false); };
   const handleCloseTrailer = () => { setShowTrailer(false); setHasClosedTrailer(true); if (timerRef.current) clearInterval(timerRef.current); };
@@ -221,8 +220,6 @@ const HeistBreadcrumb = ({ movie }) => (
     </motion.nav>
 );
 
-
-
 const HeistThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
     const router = useRouter();
     const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
@@ -246,12 +243,37 @@ const HeistThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
     const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
-    // ✅ SEO FIX: Join title into a single string variable to prevent hydration markers ()
-    const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Best Heist Thriller Movies | Filmiway'].join('');
-    const cleanSEODesc = richData?.synopsis || `Watch ${movie.Title}, a high-stakes heist thriller. Detailed analysis, intensity ratings & where to stream.`;
+    // =========================================================================
+    // ✅ THE STANDARDIZED ELITE SEO BLOCK
+    // =========================================================================
 
-    const collectionSlug = router.pathname.split('/')[2];
-    const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
+    const collectionSlug = 'best-heist-thriller-movies';
+    const dynamicCollectionName = 'Best Heist Thriller Movies';
+
+    const scenes = SENSITIVE_TIMELINES?.[movie.tmdbId]?.scenes || [];
+    
+    // 1. UNIQUE META TITLE (Targets "Parents Guide & Timestamps")
+    const cleanSEOTitle = scenes.length > 0
+        ? `${movie.Title} (${currentMovieYear}) Parents Guide & Timestamps | ${dynamicCollectionName}`
+        : `${movie.Title} (${currentMovieYear}) Parents Guide | ${dynamicCollectionName}`;
+
+    // 2. STANDARDIZED ELITE META DESCRIPTION
+    let cleanSEODesc = '';
+    
+    if (scenes.length > 0) {
+        const rawTimes = scenes.slice(0, 3).map(s => s.end ? `${s.start}–${s.end}` : s.start);
+        const formattedTimes = rawTimes.length > 1 
+        ? `${rawTimes.slice(0, -1).join(', ')} and ${rawTimes.slice(-1)}` 
+        : rawTimes[0];
+
+        cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Viewer discretion advised. Includes exact scene timestamps: ${formattedTimes}.`;
+    } else {
+        cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Filmiway Content Advisory: No explicit sexual content or severe violence identified. Suitable for general viewing.`;
+    }
+
+    // =========================================================================
+
+    const canonicalUrl = `https://filmiway.com/movies/heist-thriller/${movie.imdbID}`;
 
     const { movieSchema, faqSchema } = generateCleanMovieSchema(
         movie, 
@@ -265,7 +287,7 @@ const HeistThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
     return (
         <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
             <Head>
-                {/* ✅ HYDRATION BUG REMOVED: Now using a flat string for the title tag */}
+                {/* ✅ HYDRATION BUG REMOVED */}
                 <title>{cleanSEOTitle}</title>
                 <meta name="description" content={cleanSEODesc} />
                 <link rel="canonical" href={canonicalUrl} />
@@ -282,23 +304,29 @@ const HeistThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
                 <meta name="twitter:description" content={cleanSEODesc} />
                 <meta name="twitter:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
 
-                {/* ✅ SCHEMA INJECTION */}
-                <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }} />
-                {faqSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />}
+                {/* ✅ SCHEMA INJECTION WITH UNIQUE KEYS */}
+                <script key="schema-movie" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }} />
+                {faqSchema && <script key="schema-faq" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />}
             </Head>
 
             <SubtleFilmGrain />
             <div className="absolute inset-0"><CinematicBackground /></div>
             
             <SmartBackButton />
-            
 
             <div className="relative z-10 pt-0 md:pt-16">
                 {/* ✅ HIDDEN H1 FOR SEO PARITY */}
                 <h1 className="sr-only">{cleanSEOTitle}</h1>
                 
                 <div className="container mx-auto px-0 pb-16 max-w-7xl">
-                    <OptimizedBanner movie={movie} movieData={movieData} richData={richData} trailer={trailer} />
+                    
+                    {/* ✅ RESTORED THE BREADCRUMB */}
+                    <div className="pt-16 md:pt-0">
+                       <HeistBreadcrumb movie={movie} />
+                    </div>
+
+                    {/* ✅ PASSED THE MISSING isMobile PROP */}
+                    <OptimizedBanner movie={movie} movieData={movieData} richData={richData} trailer={trailer} isMobile={isMobile} />
                     
                     <div className="px-4 lg:px-6 space-y-12 mt-8">
                          <MovieDetailsSection movie={movie} fromHeistThrillerCollection={true} />
@@ -328,7 +356,8 @@ export async function getStaticProps({ params }) {
     }
 
     try {
-        const res = await fetch(`https://api.themoviedb.org/3/movie/${movie.tmdbId}?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&append_to_response=videos`);
+        // ✅ REVERTED TO HARDCODED KEY FOR BUILD SAFETY
+        const res = await fetch(`https://api.themoviedb.org/3/movie/${movie.tmdbId}?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&append_to_response=videos`);
         const tmdbData = res.ok ? await res.json() : null;
 
         return { props: { movie, tmdbData } };

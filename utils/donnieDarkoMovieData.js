@@ -32,7 +32,7 @@ export const SENSITIVE_TIMELINES = {
     },
 
     // 2. 12 Monkeys
-    63: { scenes: [] }, // No sexual content
+    63: { scenes: [{ start: '16:00', end: '16:10', type: 'Partial Nudity', severity: 'Mild' }] }, // No sexual content
 
     // 3. The Jacket
     9667: { 
@@ -144,22 +144,23 @@ export const COMPLETE_MOVIE_DATA = {
     }),
 
     // 2. 12 Monkeys
-    63: createMovieData({
-        tmdbId: 63,
-        Title: "12 Monkeys",
-        psychologicalIntensity: 92, mindBendScore: 95, dominantColor: "#3b82f6", complexityLevel: "EXTREME",
-        rating: 8.0, criticsScore: 88, audienceScore: 90, director: "Terry Gilliam",
-        cast: ["Bruce Willis", "Brad Pitt"], boxOffice: "$168 million", budget: "$29 million",
-        dna: { "Sci-Fi": 50, "Thriller": 30, "Mystery": 20 },
+    63: createMovieData({ 
+        complexityLevel: "HIGH", 
+        complexityScore: 82, // Fixed timeline theory, conceptually heavy
+        dominantColor: "#dc2626", rating: 8.0, criticsScore: 88, audienceScore: 88, 
+        director: "Terry Gilliam", cast: ["Bruce Willis", "Madeleine Stowe", "Brad Pitt"], 
+        boxOffice: "$168.8 million", budget: "$29.5 million", 
+        dna: { SciFi: 45, Thriller: 35, Mystery: 20 }, 
         scenes: [
-            { time: 20, intensity: 50, label: "The Asylum", color: "#1e40af" },
-            { time: 50, intensity: 70, label: "WWI Trenches", color: "#3b82f6" },
-            { time: 85, intensity: 80, label: "The Airport Dream", color: "#60a5fa" },
-            { time: 110, intensity: 90, label: "Army of 12 Monkeys", color: "#2563eb" },
-            { time: 125, intensity: 95, label: "The Loop Closes", color: "#93c5fd" }
-        ],
-        synopsis: "A convict from a disease-devastated future is sent back in time to stop a virus. He becomes trapped in a fatalistic loop where he witnesses his own childhood trauma.",
-        themes: ["Time Loops", "Madness", "Cassandra Complex"]
+            { time: 18, intensity: 42, label: 'First Jump', color: '#065f46' },
+            { time: 52, intensity: 63, label: 'Psychiatrist', color: '#047857' },
+            { time: 85, intensity: 74, label: 'Army of 12', color: '#059669' },
+            { time: 108, intensity: 86, label: 'Airport', color: '#10b981' },
+            { time: 124, intensity: 93, label: 'Circle Closes', color: '#34d399' }
+        ], 
+        synopsis: "By 2035, humanity is forced to live underground after a deadly virus wipes out the population. James Cole, a convict, is volunteered to travel back to the 1990s to locate the virus's source: the Army of the Twelve Monkeys. But Cole is haunted by a recurring dream from his childhood and begins to question his own sanity. Is he a savior from the future, or just a madman lost in time?", 
+        themes: ["Madness", "Fate", "Memory", "Pandemic"], 
+        awards: ["Golden Globe (Pitt)", "Saturn Award"] 
     }),
 
     // 3. The Jacket

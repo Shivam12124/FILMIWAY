@@ -9,19 +9,18 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, Play, X, User, Twitter, Hash, Send, Film, Star, Award, Theater } from 'lucide-react';
-import InternalCollectionsSection from '../../../components/InternalCollectionsSection';
-import CinematicBackground from '../../../components/CinematicBackground';
-import MovieDetailsSection from '../../../components/MovieDetailsSection';
-import TMDBAttribution from '../../../components/TMDBAttribution';
+import InternalCollectionsSection from '../../components/InternalCollectionsSection';
+import CinematicBackground from '../../components/CinematicBackground';
+import MovieDetailsSection from '../../components/MovieDetailsSection';
+import TMDBAttribution from '../../components/TMDBAttribution';
 
-// ✅ CORRECTED IMPORT: Pulling schema generator from its dedicated file
-import { generateCleanMovieSchema } from '../../../utils/cleanMovieSchema';
+// ✅ IMPORT DATA INCLUDING FAQs & SCHEMA GENERATOR
 import {
   COMPLETE_MOVIE_DATABASE, 
   COMPLETE_MOVIE_DATA,
   SENSITIVE_TIMELINES,
-  HULU_BEST_MOVIE_FAQS
-} from '../../../utils/huluBestMoviesData';
+  generateCleanMovieSchema
+} from '../../utils/huluBestMoviesData';
 
 const COLORS = {
   accent: '#f59e0b', accentLight: '#fcd34d', bgPrimary: '#000000ff', bgCard: 'rgba(11, 11, 11, 0.8)', // Gold/Slate for Prestige
@@ -282,8 +281,9 @@ const HuluBestMoviePage = ({ movie, tmdbData: movieData }) => {
               <meta name="robots" content="index, follow" />
               <meta name="language" content="English" />
 
-              <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }} />
-              {faqSchema && (<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />)}
+              {/* ✅ ADDED KEYS TO PREVENT HYDRATION DELETION */}
+              <script key="schema-movie" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }} />
+              {faqSchema && (<script key="schema-faq" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />)}
 
               <meta property="og:title" content={cleanSEOTitle} />
               <meta property="og:description" content={cleanSEODesc} />

@@ -1,4 +1,4 @@
-// utils/paramountFamilyMovieData.js - PARAMOUNT+ FAMILY COLLECTION DATA
+// utils/paramountFamilyMovieData.js - PARAMOUNT+ FAMILY COLLECTION DATA ✅
 // Fun, Adventure, and Wholesome Entertainment
 
 export const TMDB_CONFIG = {
@@ -78,7 +78,6 @@ const createMovieData = (data) => ({
 export const COMPLETE_MOVIE_DATA = {
 
   // 1. Rango (2011)
-  // Corrected DNA: Western is key. Pacing: Slow build -> Surreal -> Action.
   44896: createMovieData({
     funFactor: 92,
     complexityLevel: "VISUAL",
@@ -100,7 +99,6 @@ export const COMPLETE_MOVIE_DATA = {
   }),
 
   // 2. TMNT: Mutant Mayhem (2023)
-  // Corrected DNA: Action/Adventure (Family removed). Pacing: High energy throughout.
   614930: createMovieData({
     funFactor: 95,
     complexityLevel: "STYLIZED",
@@ -122,7 +120,6 @@ export const COMPLETE_MOVIE_DATA = {
   }),
 
   // 3. The SpongeBob SquarePants Movie (2004)
-  // Corrected Pacing: Peak at 88 (Rock Concert), not 95.
   11836: createMovieData({
     funFactor: 98,
     complexityLevel: "GOOFY",
@@ -144,7 +141,6 @@ export const COMPLETE_MOVIE_DATA = {
   }),
 
   // 4. Sonic the Hedgehog 3 (2025)
-  // Corrected DNA: Action/Sci-Fi/Adventure. Pacing: Smoothed start.
   939243: createMovieData({
     funFactor: 90,
     complexityLevel: "EPIC",
@@ -166,7 +162,6 @@ export const COMPLETE_MOVIE_DATA = {
   }),
 
   // 5. Dora and the Lost City of Gold (2019)
-  // Corrected DNA: Adventure lead. Pacing: Classic adventure curve.
   499701: createMovieData({
     funFactor: 85,
     complexityLevel: "ADVENTURE",
@@ -188,7 +183,6 @@ export const COMPLETE_MOVIE_DATA = {
   }),
 
   // 6. Sonic the Hedgehog 2 (2022)
-  // Corrected DNA: Action/Adventure/Comedy.
   675353: createMovieData({
     funFactor: 91,
     complexityLevel: "ACTION",
@@ -210,7 +204,6 @@ export const COMPLETE_MOVIE_DATA = {
   }),
 
   // 7. Hey Arnold! The Jungle Movie (2017)
-  // Corrected DNA: Adventure/Mystery/Comedy.
   439058: createMovieData({
     funFactor: 88,
     complexityLevel: "NOSTALGIC",
@@ -232,7 +225,6 @@ export const COMPLETE_MOVIE_DATA = {
   }),
 
   // 8. Sonic the Hedgehog (2020)
-  // Corrected DNA: Comedy/Action/Adventure.
   454626: createMovieData({
     funFactor: 89,
     complexityLevel: "ORIGIN",
@@ -254,7 +246,6 @@ export const COMPLETE_MOVIE_DATA = {
   }),
 
   // 9. PAW Patrol: The Movie (2021)
-  // Corrected DNA: Adventure/Comedy.
   675445: createMovieData({
     funFactor: 84,
     complexityLevel: "PRESCHOOL",
@@ -276,7 +267,6 @@ export const COMPLETE_MOVIE_DATA = {
   }),
 
   // 10. PAW Patrol: The Mighty Movie (2023)
-  // Corrected DNA: Action/Adventure/Comedy (Not Fantasy).
   893723: createMovieData({
     funFactor: 86,
     complexityLevel: "SUPERHERO",
@@ -310,6 +300,17 @@ export const STRATEGIC_QUOTES = {
     675445: "No job is too big, no pup is too small!",
     893723: "Even the smallest pup can make the biggest difference."
 };
+
+export const CINEMATIC_COLORS = {
+    "Animation": "#facc15", "Family": "#3b82f6", "Adventure": "#ef4444", "Comedy": "#10b981", "Action": "#d946ef"
+};
+
+export const RATING_OPTIONS = [
+    { value: 1, label: "Boring", color: "#dc2626", symbol: "🥱", bgColor: "bg-red-900/30", description: "Put me to sleep" },
+    { value: 2, label: "Cute", color: "#facc15", symbol: "😊", bgColor: "bg-yellow-900/30", description: "Good for kids" },
+    { value: 3, label: "Magical", color: "#3b82f6", symbol: "✨", bgColor: "bg-blue-900/30", description: 'Fun for all ages' },
+    { value: 4, label: "Timeless Classic", color: "#10b981", symbol: "🌟", bgColor: "bg-green-900/30", description: "Absolute Masterpiece" }
+];
 
 export const PARAMOUNT_FAMILY_MOVIE_FAQS = {
     'Rango': [
@@ -369,33 +370,144 @@ export const getTMDBPosterUrl = (posterPath, size = 'medium') => {
     return `${TMDB_CONFIG.IMAGE_BASE_URL}/${TMDB_CONFIG.POSTER_SIZES[size] || 'w500'}${posterPath}`;
 };
 
-export const generateMovieSchema = (movie) => {
-    const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
-    return {
+// 🔥 1. THE KEYWORD BRIDGE (SEO-Optimized for Family Content)
+export const getSensitiveContentTypes = (tmdbId) => {
+    const sensitiveData = SENSITIVE_TIMELINES[tmdbId];
+    if (!sensitiveData?.scenes?.length) return null;
+    const types = new Set();
+    sensitiveData.scenes.forEach(scene => {
+        const lowerType = scene.type?.toLowerCase() || '';
+        // Specifically mapped for Kids/Family safety search terms
+        if (lowerType.includes('scar') || lowerType.includes('ghost')) types.add('frightening scenes');
+        if (lowerType.includes('violenc') || lowerType.includes('fight') || lowerType.includes('bull')) types.add('mild violence');
+        if (lowerType.includes('dark')) types.add('dark thematic elements');
+    });
+    
+    if (types.size === 0) types.add('mild peril');
+    return Array.from(types);
+};
+
+// 🔥 2. THE "GOLDEN EGG" SCHEMA GENERATOR (Universal Version)
+export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, collectionSlug, unused, movieInfo) => {
+    // Standard Movie Schema
+    const movieSchema = {
         '@context': 'https://schema.org',
         '@type': 'Movie',
         'name': movie.Title,
-        'description': movieInfo?.synopsis,
+        'description': movieInfo?.synopsis || `${movie.Title} (${currentMovieYear}) - A fun family movie streaming on Paramount+.`,
         'genre': movie.genre,
-        'datePublished': movie.year.toString(),
+        'datePublished': currentMovieYear?.toString() || movie.year.toString(),
         'director': { '@type': 'Person', 'name': movieInfo?.director || 'Director' },
-        'duration': `PT${movie.runtime}M`,
-        'image': FALLBACK_POSTERS[movie.tmdbId] || '',
-        'aggregateRating': { 
-            '@type': 'AggregateRating', 
-            'ratingValue': movieInfo?.rating || 7.5, 
-            'bestRating': 10, 
-            'worstRating': 1 
-        }
+        'actor': movieInfo?.cast?.map(actor => ({ '@type': 'Person', 'name': actor })) || [],
+        'image': tmdbData?.poster_path ? `https://image.tmdb.org/t/p/w500${tmdbData.poster_path}` : (FALLBACK_POSTERS[movie.tmdbId] || ''),
+        'duration': `PT${movie.runtime}M`
     };
-};
 
-export const generateFAQSchema = (faqs) => ({
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    'mainEntity': faqs.map(faq => ({ 
+    const staticFaqs = PARAMOUNT_FAMILY_MOVIE_FAQS[movie.Title] || [];
+    const sensitiveScenes = SENSITIVE_TIMELINES[movie.tmdbId]?.scenes || [];
+    const intensityScenes = movieInfo?.scenes || [];
+    
+    const schemaFaqs = staticFaqs.map(faq => ({ 
         '@type': 'Question', 
         'name': faq.question, 
         'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer } 
-    }))
-});
+    }));
+
+    // Inject Intensity Graph Timestamps into Schema (Adapted for Family/Fun Factor)
+    if (intensityScenes.length > 0) {
+        const schemaIntensityList = intensityScenes.map(s => `<li>Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)</li>`).join('');
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `What are the most exciting scenes in ${movie.Title}?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `According to the Filmiway Fun Factor, ${movie.Title} peaks at the following moments:<br><br><ul>${schemaIntensityList}</ul>` 
+            }
+        });
+    }
+
+    // Extract runtime safely
+    let currentRuntime = movie.Runtime || movie.runtime || "Official";
+    if (typeof currentRuntime === 'number') currentRuntime = `${currentRuntime} min`;
+
+    // Inject Sensitive Content Timestamps into Schema
+    if (sensitiveScenes.length > 0) {
+        const typesArray = getSensitiveContentTypes(movie.tmdbId) || ['mild peril'];
+        const typesString = typesArray.join(' and ');
+
+        const schemaListText = sensitiveScenes.map(s => {
+            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
+            return `<li>${timeRange} - ${s.type || 'Frightening Content'}</li>`;
+        }).join('');
+
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `Does ${movie.Title} contain scary or inappropriate scenes?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `According to the Filmiway Timestamps & Parents Guide, ${movie.Title} contains sensitive scenes for younger viewers including ${typesString}. Exact timestamps for these scenes are:<br><br><ul>${schemaListText}</ul>` 
+            }
+        });
+    } else {
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `Does ${movie.Title} contain scary or inappropriate scenes?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `No, the Filmiway Timestamps & Parents Guide confirms that ${movie.Title} is completely free of explicit sexual content, severe violence, and nudity. It is suitable for general family viewing.` 
+            }
+        });
+    }
+
+    const faqSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        'name': `Parents Guide and FAQ for ${movie.Title}`,
+        'mainEntity': schemaFaqs
+    };
+
+    return { movieSchema, faqSchema };
+};
+
+// 🔥 3. FRONTEND UI SYNC (Displays the timestamps on your Next.js page)
+export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Official") => {
+    const staticFaqs = PARAMOUNT_FAMILY_MOVIE_FAQS[movieTitle] ? [...PARAMOUNT_FAMILY_MOVIE_FAQS[movieTitle]] : [];
+    const sensitiveScenes = SENSITIVE_TIMELINES[tmdbId]?.scenes || [];
+    const movieInfo = COMPLETE_MOVIE_DATA[tmdbId];
+    const intensityScenes = movieInfo?.scenes || [];
+
+    // ✅ Safely parsing runtime to a string
+    const dbMovie = COMPLETE_MOVIE_DATABASE.find(m => m.tmdbId === tmdbId);
+    let finalRuntime = currentRuntime !== "Official" ? currentRuntime : (dbMovie?.runtime ? `${dbMovie.runtime} min` : "Official");
+    if (typeof finalRuntime === 'number') finalRuntime = `${finalRuntime} min`;
+
+    if (intensityScenes.length > 0) {
+        const uiIntensityList = intensityScenes.map(s => `• Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)`).join('\n');
+        staticFaqs.unshift({
+            question: `What are the most exciting scenes in ${movieTitle}?`,
+            answer: `According to the Filmiway Fun Factor, ${movieTitle} peaks at the following moments:\n\n${uiIntensityList}`
+        });
+    }
+
+    if (sensitiveScenes.length > 0) {
+        const typesArray = getSensitiveContentTypes(tmdbId) || ['mild peril'];
+        const typesString = typesArray.join(' and ');
+
+        const uiListText = sensitiveScenes.map(s => {
+            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
+            return `• ${timeRange} - ${s.type || 'Frightening Content'}`;
+        }).join('\n');
+
+        staticFaqs.unshift({
+            question: `Does ${movieTitle} contain scary or inappropriate scenes?`,
+            answer: `According to the Filmiway Timestamps & Parents Guide, ${movieTitle} contains sensitive scenes for younger viewers including ${typesString}. These timestamps are accurate for the ${finalRuntime} runtime. Exact timestamps for these scenes are:\n\n${uiListText}`
+        });
+    } else {
+        staticFaqs.unshift({
+            question: `Does ${movieTitle} contain scary or inappropriate scenes?`,
+            answer: `No, the Filmiway Timestamps & Parents Guide confirms that ${movieTitle} is completely free of explicit sexual content, severe violence, and nudity. This assessment is accurate for the ${finalRuntime} runtime.`
+        });
+    }
+
+    return staticFaqs;
+};

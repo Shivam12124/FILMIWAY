@@ -39,7 +39,7 @@ export const OLDBOY_MOVIE_SLUGS = {
     'tt4016934': 'the-handmaiden',
     
     // Rank 9: No Mercy
-    'tt1540399': 'no-mercy',
+    'tt1590089': 'confession',
     
     // Rank 10: Prisoners
     'tt1392214': 'prisoners'

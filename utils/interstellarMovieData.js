@@ -44,7 +44,7 @@ export const COMPLETE_MOVIE_DATA = {
             { time: 55, intensity: 45, label: "TMA-1 Monolith", color: "#e8e8e8" }, 
             { time: 90, intensity: 72, label: "HAL Disconnect", color: "#ff0000" }, 
             { time: 125, intensity: 95, label: "The Stargate", color: "#7c3aed" }, 
-            { time: 140, intensity: 100, label: "THE STAR CHILD", color: "#ffffff" } // ✅ Anchor point 100
+            { time: 140, intensity: 100, label: "THE STAR CHILD", color: "#ffffff" }
         ]
     }),
 
@@ -76,6 +76,20 @@ export const COMPLETE_MOVIE_DATA = {
         ]
     }),
 
+    // 4. Solaris (1972) - STATUS: PSYCHOLOGICAL MIRROR
+    593: createMovieData({ 
+        cosmicScale: 98, complexityLevel: "EXTREME", 
+        dominantColor: "#2d3a3a", rating: 7.9,
+        dna: { "Sci-Fi": 40, "Drama": 40, "Mystery": 20 }, 
+        scenes: [
+            { time: 15, intensity: 25, label: "The Lake", color: "#166534" },
+            { time: 65, intensity: 58, label: "Hari Returns", color: "#f9fafb" }, 
+            { time: 95, intensity: 82, label: "Weightlessness", color: "#0d9488" }, 
+            { time: 140, intensity: 94, label: "THE OCEAN", color: "#0f766e" }, 
+            { time: 160, intensity: 98, label: "THE HOUSE", color: "#78350f" }
+        ]
+    }),
+
     // 5. First Man (2018) - STATUS: RESTRAINED TRANSCENDENCE
     369972: createMovieData({ 
         cosmicScale: 88, complexityLevel: "HIGH", 
@@ -86,7 +100,7 @@ export const COMPLETE_MOVIE_DATA = {
             { time: 45, intensity: 75, label: "Gemini 8 Spin", color: "#475569" },
             { time: 90, intensity: 68, label: "Apollo 1 Fire", color: "#ef4444" },
             { time: 115, intensity: 85, label: "The Launch", color: "#f97316" },
-            { time: 135, intensity: 92, label: "SILENT STEP", color: "#ffffff" } // ✅ Calibrated to 92
+            { time: 135, intensity: 92, label: "SILENT STEP", color: "#ffffff" }
         ]
     }),
 
@@ -100,7 +114,7 @@ export const COMPLETE_MOVIE_DATA = {
             { time: 40, intensity: 50, label: "Botany", color: "#16a34a" }, 
             { time: 80, intensity: 65, label: "Explosion", color: "#ef4444" }, 
             { time: 110, intensity: 70, label: "Rover Journey", color: "#ea580c" }, 
-            { time: 135, intensity: 85, label: "Iron Man", color: "#f97316" } // ✅ No 90+ needed
+            { time: 135, intensity: 85, label: "Iron Man", color: "#f97316" }
         ]
     }),
 
@@ -128,7 +142,7 @@ export const COMPLETE_MOVIE_DATA = {
             { time: 45, intensity: 65, label: "Shield Repair", color: "#eab308" }, 
             { time: 75, intensity: 80, label: "Icarus I", color: "#854d0e" }, 
             { time: 95, intensity: 88, label: "Pinbacker", color: "#ca8a04" }, 
-            { time: 105, intensity: 93, label: "TOUCHING THE SUN", color: "#fef08a" } // ✅ Calibrated to 93
+            { time: 105, intensity: 93, label: "TOUCHING THE SUN", color: "#fef08a" }
         ]
     }),
 
