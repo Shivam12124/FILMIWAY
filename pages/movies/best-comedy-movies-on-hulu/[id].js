@@ -23,6 +23,7 @@ import {
   SENSITIVE_TIMELINES,
   generateCleanMovieSchema 
 } from '../../../utils/huluComedyMovieData';
+
 const COLORS = {
   accent: '#FACC15', accentLight: '#FEF08A', bgPrimary: '#000000ff', bgCard: 'rgba(11, 11, 11, 0.8)', // Yellow/Dark Gold for Comedy
   textPrimary: '#FFFFFF', textSecondary: '#FEF3C7', textMuted: '#FDE047', textDisabled: '#CA8A04',
@@ -71,7 +72,6 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
   const posterImage = posterPath ? getTMDBImage(posterPath, 'w500') : null;
 
   const insight = getComedyInsight(movie?.Title);
-  // ✅ UPDATED: Uses 'laughterIndex' instead of 'psychologicalIntensity'
   const laughterScore = richData?.laughterIndex || 85; 
 
   const mobileHeroCSS = `
@@ -135,7 +135,6 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
         <div className="mobile-hero-row">
           <div className="mobile-hero-poster">{posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} width={320} height={480} className="w-full h-auto" priority /> : <div style={{ background: COLORS.bgCard, width: '100%', height: '150px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Theater style={{ color: COLORS.textMuted }} /></div>}</div>
           <div className="mobile-psych-card">
-            {/* ✅ UPDATED LABEL: Laughter Index */}
             <div className="mobile-psych-row"><Smile className="mobile-psych-icon" /><div><div className="mobile-psych-title">Laughter Index</div></div></div>
             <div className="mobile-psych-desc"><strong>{laughterScore}/100</strong> - {insight.substring(0, 80)}...</div>
           </div>
@@ -153,7 +152,6 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
                 <div className="absolute top-0 left-0 right-0 h-0.5 sm:h-1" style={{ background: `linear-gradient(90deg, transparent, ${COLORS.accent}, transparent)` }} />
                 <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5">
                   <motion.div className="p-2 sm:p-2.5 rounded-lg sm:rounded-xl flex-shrink-0" style={{ background: `linear-gradient(135deg, ${COLORS.accent}20, ${COLORS.accent}10)`, border: `1px solid ${COLORS.accent}40` }} whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}><PartyPopper className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" style={{ color: COLORS.accent }} /></motion.div>
-                  {/* ✅ UPDATED LABEL: Laughter Index */}
                   <div className="min-w-0 flex-1"><h2 className="text-sm sm:text-base lg:text-xl xl:text-2xl font-bold leading-tight" style={{ color: COLORS.accent }}>Why It's Hilarious</h2><p className="text-xs sm:text-sm hidden sm:block" style={{ color: COLORS.textMuted }}>Laughter Index: {laughterScore}/100</p></div>
                 </div>
                 <div className="relative pl-4 sm:pl-6 border-l-2" style={{ borderColor: `${COLORS.accent}40` }}>
@@ -170,8 +168,9 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
   );
 };
 
+// ✅ ADDED SMART BACK BUTTON
 const SmartBackButton = () => {
-    const handleBackClick = () => { if (typeof window !== 'undefined') window.location.href = '/collection/best-comedy-movies-on-hulu'; };
+    const handleBackClick = () => { if (typeof window !== 'undefined') window.location.href = '/movies/best-comedy-movies-on-hulu'; };
     return (
         <motion.button onClick={handleBackClick} className="fixed top-4 left-4 sm:top-6 sm:left-6 z-50 flex items-center gap-2 px-3 sm:px-4 py-2 backdrop-blur-md rounded-lg transition-all duration-300 shadow-xl text-xs sm:text-sm" style={{ backgroundColor: `${COLORS.bgPrimary}F2`, border: `1px solid ${COLORS.borderLight}` }} whileHover={{ scale: 1.02, x: -2 }} whileTap={{ scale: 0.98 }} initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} onMouseEnter={(e) => e.currentTarget.style.borderColor = COLORS.borderAccent} onMouseLeave={(e) => e.currentTarget.style.borderColor = COLORS.borderLight}>
             <ChevronLeft className="w-3 h-3 sm:w-4 sm:h-4" style={{ color: COLORS.accent }} /><span className="font-medium" style={{ color: COLORS.accent }}>Back to Collection</span>
@@ -180,32 +179,34 @@ const SmartBackButton = () => {
 };
 
 const AuthorCreditSection = () => (
-    <motion.section className="pt-6 sm:pt-8 mt-12 sm:mt-16" style={{ borderTop: `1px solid ${COLORS.borderLight}` }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2.0, duration: 0.8 }}>
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
-            <div className="flex items-center gap-3"><User className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: COLORS.textDisabled }} /><div><p className="text-xs sm:text-sm" style={{ color: COLORS.textMuted }}>Curated by <span className="font-medium" style={{ color: COLORS.textSecondary }}>Filmiway Editorial Team</span></p><p className="text-xs" style={{ color: COLORS.textDisabled }}>Expert analysis of comedy cinema</p></div></div>
-            <div className="flex items-center gap-3 sm:gap-4"><span className="text-xs sm:text-sm" style={{ color: COLORS.textDisabled }}>Share:</span><div className="flex gap-2 sm:gap-3">{[Twitter, Hash, Send].map((Icon, i) => (<button key={i} className="p-1.5 sm:p-2 rounded-full transition-colors" style={{ color: COLORS.textDisabled }} onMouseEnter={(e) => { e.currentTarget.style.color = COLORS.textSecondary; e.currentTarget.style.backgroundColor = COLORS.bgCard; }} onMouseLeave={(e) => { e.currentTarget.style.color = COLORS.textDisabled; e.currentTarget.style.backgroundColor = 'transparent'; }}><Icon className="w-3 h-3 sm:w-4 sm:h-4" /></button>))}</div></div>
-        </div>
-    </motion.section>
+  <motion.section className="pt-6 sm:pt-8 mt-12 sm:mt-16" style={{ borderTop: `1px solid ${COLORS.borderLight}` }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2.0, duration: 0.8 }}>
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
+          <div className="flex items-center gap-3"><User className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: COLORS.textDisabled }} /><div><p className="text-xs sm:text-sm" style={{ color: COLORS.textMuted }}>Curated by <span className="font-medium" style={{ color: COLORS.textSecondary }}>Filmiway Editorial Team</span></p><p className="text-xs" style={{ color: COLORS.textDisabled }}>Expert analysis of comedy cinema</p></div></div>
+          <div className="flex items-center gap-3 sm:gap-4"><span className="text-xs sm:text-sm" style={{ color: COLORS.textDisabled }}>Share:</span><div className="flex gap-2 sm:gap-3">{[Twitter, Hash, Send].map((Icon, i) => (<button key={i} className="p-1.5 sm:p-2 rounded-full transition-colors" style={{ color: COLORS.textDisabled }} onMouseEnter={(e) => { e.currentTarget.style.color = COLORS.textSecondary; e.currentTarget.style.backgroundColor = COLORS.bgCard; }} onMouseLeave={(e) => { e.currentTarget.style.color = COLORS.textDisabled; e.currentTarget.style.backgroundColor = 'transparent'; }}><Icon className="w-3 h-3 sm:w-4 sm:h-4" /></button>))}</div></div>
+      </div>
+  </motion.section>
 );
 
 const SubtleFilmGrain = () => (
-    <div className="fixed inset-0 pointer-events-none z-0 opacity-[0.005]"><div className="w-full h-full bg-repeat" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)' opacity='0.3'/%3E%3C/svg%3E")`, backgroundSize: '60px 60px' }} /></div>
+  <div className="fixed inset-0 pointer-events-none z-0 opacity-[0.005]"><div className="w-full h-full bg-repeat" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)' opacity='0.3'/%3E%3C/svg%3E")`, backgroundSize: '60px 60px' }} /></div>
 );
 
 const HuluComedyBreadcrumb = ({ movie }) => (
-    <motion.nav className="mb-6 sm:mb-8 px-3 sm:px-4 lg:px-6 pb-3 sm:pb-4" style={{ borderBottom: `1px solid ${COLORS.borderLight}` }} initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-        <div className="flex items-center space-x-2 sm:space-x-3 text-xs sm:text-sm" style={{ color: COLORS.textMuted }}>
-            <Link href="/collection/best-comedy-movies-on-hulu" className="transition-all duration-300 truncate" style={{ color: COLORS.textMuted }} onMouseEnter={(e) => e.currentTarget.style.color = COLORS.accent} onMouseLeave={(e) => e.currentTarget.style.color = COLORS.textMuted}>Best Comedy Movies on Hulu</Link>
-            <ChevronLeft size={14} className="flex-shrink-0" style={{ color: COLORS.textDisabled, transform: 'rotate(180deg)' }} /><span className="font-medium truncate" style={{ color: `${COLORS.accent}B3` }}>{movie.Title}</span>
-        </div>
-    </motion.nav>
+  <motion.nav className="mb-6 sm:mb-8 px-3 sm:px-4 lg:px-6 pb-3 sm:pb-4" style={{ borderBottom: `1px solid ${COLORS.borderLight}` }} initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+      <div className="flex items-center space-x-2 sm:space-x-3 text-xs sm:text-sm" style={{ color: COLORS.textMuted }}>
+          {/* ✅ FIXED TO /movies PATH */}
+          <Link href="/movies/best-comedy-movies-on-hulu" className="transition-all duration-300 truncate" style={{ color: COLORS.textMuted }} onMouseEnter={(e) => e.currentTarget.style.color = COLORS.accent} onMouseLeave={(e) => e.currentTarget.style.color = COLORS.textMuted}>Best Comedy Movies on Hulu</Link>
+          <ChevronLeft size={14} className="flex-shrink-0" style={{ color: COLORS.textDisabled, transform: 'rotate(180deg)' }} /><span className="font-medium truncate" style={{ color: `${COLORS.accent}B3` }}>{movie.Title}</span>
+      </div>
+  </motion.nav>
 );
 
-const HuluComedyMoviePage = ({ movie, tmdbData: movieData }) => {
-    const router = useRouter();
-    const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
-    const richData = COMPLETE_MOVIE_DATA[movie.tmdbId]; 
-    const [isMobile, setIsMobile] = useState(false);
+// ✅ ADDED SENSITIVE DATA PROP
+const HuluComedyMoviePage = ({ movie, tmdbData: movieData, sensitiveData }) => {
+  const router = useRouter();
+  const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
+  const richData = COMPLETE_MOVIE_DATA[movie.tmdbId]; 
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -221,147 +222,159 @@ const HuluComedyMoviePage = ({ movie, tmdbData: movieData }) => {
     }
   }, []);
 
-    const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
-    const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
+  const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
+  const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
-    // =========================================================================
-    // ✅ THE STANDARDIZED ELITE SEO BLOCK
-    // =========================================================================
+  // =========================================================================
+  // ✅ THE STANDARDIZED ELITE SEO BLOCK
+  // =========================================================================
 
-    const collectionSlug = 'best-comedy-movies-on-hulu';
-    const dynamicCollectionName = 'Best Comedy Movies on Hulu';
+  const collectionSlug = 'best-comedy-movies-on-hulu';
+  const dynamicCollectionName = 'Best Comedy Movies on Hulu';
 
-    const scenes = SENSITIVE_TIMELINES?.[movie.tmdbId]?.scenes || [];
-    
-    // 1. UNIQUE META TITLE (Targets "Parents Guide & Timestamps")
-    const cleanSEOTitle = scenes.length > 0
-        ? `${movie.Title} (${currentMovieYear}) Parents Guide & Timestamps | ${dynamicCollectionName}`
-        : `${movie.Title} (${currentMovieYear}) Parents Guide | ${dynamicCollectionName}`;
+  const scenes = SENSITIVE_TIMELINES?.[movie.tmdbId]?.scenes || [];
+  
+  // 1. UNIQUE META TITLE (Targets "Parents Guide & Timestamps")
+  const cleanSEOTitle = scenes.length > 0
+      ? `${movie.Title} (${currentMovieYear}) Parents Guide & Timestamps | ${dynamicCollectionName}`
+      : `${movie.Title} (${currentMovieYear}) Parents Guide | ${dynamicCollectionName}`;
 
-    // 2. STANDARDIZED ELITE META DESCRIPTION
-    let cleanSEODesc = '';
-    
-    if (scenes.length > 0) {
-        const rawTimes = scenes.slice(0, 3).map(s => s.end ? `${s.start}–${s.end}` : s.start);
-        const formattedTimes = rawTimes.length > 1 
-        ? `${rawTimes.slice(0, -1).join(', ')} and ${rawTimes.slice(-1)}` 
-        : rawTimes[0];
+  // 2. STANDARDIZED ELITE META DESCRIPTION
+  let cleanSEODesc = '';
+  
+  if (scenes.length > 0) {
+      const rawTimes = scenes.slice(0, 3).map(s => s.end ? `${s.start}–${s.end}` : s.start);
+      const formattedTimes = rawTimes.length > 1 
+      ? `${rawTimes.slice(0, -1).join(', ')} and ${rawTimes.slice(-1)}` 
+      : rawTimes[0];
 
-        cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Viewer discretion advised. Includes exact scene timestamps: ${formattedTimes}.`;
-    } else {
-        cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Filmiway Content Advisory: No explicit sexual content or severe nudity identified. Suitable for general viewing.`;
-    }
+      cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Viewer discretion advised. Includes exact scene timestamps: ${formattedTimes}.`;
+  } else {
+      cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Filmiway Content Advisory: No explicit sexual content or severe nudity identified. Suitable for general viewing.`;
+  }
 
-    // =========================================================================
+  // =========================================================================
 
-    const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
+  const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
 
-    const { movieSchema, faqSchema } = generateCleanMovieSchema(
-        movie, 
-        movieData, 
-        currentMovieYear, 
-        collectionSlug, 
-        'Hulu',
-        COMPLETE_MOVIE_DATA[movie.tmdbId]
-    );
+  const { movieSchema, faqSchema } = generateCleanMovieSchema(
+      movie, 
+      movieData, 
+      currentMovieYear, 
+      collectionSlug, 
+      'Hulu',
+      COMPLETE_MOVIE_DATA[movie.tmdbId]
+  );
 
-    return (
-        <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
-            <Head>
-                {/* ✅ HYDRATION BUG FULLY RESOLVED */}
-                <title>{cleanSEOTitle}</title>
-                <meta name="description" content={cleanSEODesc} />
-                <link rel="canonical" href={canonicalUrl} />
-                <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-                <meta name="robots" content="index, follow" />
-                <meta name="language" content="English" />
+  return (
+      <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
+          <Head>
+              {/* ✅ HYDRATION BUG FULLY RESOLVED */}
+              <title>{cleanSEOTitle}</title>
+              <meta name="description" content={cleanSEODesc} />
+              <link rel="canonical" href={canonicalUrl} />
+              <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+              <meta name="robots" content="index, follow" />
+              <meta name="language" content="English" />
 
-                {/* ✅ SCHEMA INJECTION WITH UNIQUE KEYS TO PREVENT NEXT.JS DELETION */}
-                <script
-                    key="schema-movie"
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }}
-                />
-                {faqSchema && (
-                    <script
-                        key="schema-faq"
-                        type="application/ld+json"
-                        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-                    />
-                )}
+              {/* ✅ SCHEMA INJECTION WITH UNIQUE KEYS TO PREVENT NEXT.JS DELETION */}
+              <script
+                  key="schema-movie"
+                  type="application/ld+json"
+                  dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }}
+              />
+              {faqSchema && (
+                  <script
+                      key="schema-faq"
+                      type="application/ld+json"
+                      dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+                  />
+              )}
 
-                {/* Standard Meta Tags */}
-                <meta property="og:title" content={cleanSEOTitle} />
-                <meta property="og:description" content={cleanSEODesc} />
-                <meta property="og:type" content="video.movie" />
-                <meta property="og:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content={cleanSEOTitle} />
-                <meta name="twitter:description" content={cleanSEODesc} />
-                <meta name="twitter:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
-            </Head>
+              {/* Standard Meta Tags */}
+              <meta property="og:title" content={cleanSEOTitle} />
+              <meta property="og:description" content={cleanSEODesc} />
+              <meta property="og:type" content="video.movie" />
+              <meta property="og:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
+              <meta name="twitter:card" content="summary_large_image" />
+              <meta name="twitter:title" content={cleanSEOTitle} />
+              <meta name="twitter:description" content={cleanSEODesc} />
+              <meta name="twitter:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
+          </Head>
 
-            <SubtleFilmGrain />
-            <div className="absolute inset-0"><CinematicBackground /></div>
+          <SubtleFilmGrain />
+          <div className="absolute inset-0"><CinematicBackground /></div>
+          
+          {/* ✅ RESTORED BACK BUTTON IN THE DOM */}
+          <SmartBackButton />
 
-            <div className="relative z-10 pt-10 sm:pt-12 lg:pt-16">
-                
-                {/* ✅ SEO FIX: HIDDEN H1 */}
-                <h1 className="sr-only">{cleanSEOTitle}</h1>
+          <div className="relative z-10 pt-10 sm:pt-12 lg:pt-16">
+              
+              {/* ✅ SEO FIX: HIDDEN H1 */}
+              <h1 className="sr-only">{cleanSEOTitle}</h1>
 
-                <HuluComedyBreadcrumb movie={movie} />
-                <div className="container mx-auto px-0 pb-16 sm:pb-24 lg:pb-32 max-w-7xl">
-                    <OptimizedBanner movie={movie} movieData={movieData} richData={richData} trailer={trailer} isMobile={isMobile} />
-                    
-                    <motion.div 
-                        id="watch" 
-                        initial={{ opacity: 0, y: 20 }} 
-                        animate={{ opacity: 1, y: 0 }} 
-                        transition={{ duration: 0.5 }} // Faster, no massive delay
-                        className="space-y-8 sm:space-y-12 px-3 sm:px-4 lg:px-6"
-                    >
-                        {/* Note: Ensure MovieDetailsSection can handle the 'comedy' context */}
-                        <MovieDetailsSection movie={movie} fromHuluComedyCollection={true} /> 
-                    </motion.div>
-                    
-                    <div className="px-3 sm:px-4 lg:px-6">
-                        <InternalCollectionsSection currentSlug="best-comedy-movies-on-hulu" />
-                        <TMDBAttribution />
-                        <AuthorCreditSection />
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
+              <HuluComedyBreadcrumb movie={movie} />
+              <div className="container mx-auto px-0 pb-16 sm:pb-24 lg:pb-32 max-w-7xl">
+                  <OptimizedBanner movie={movie} movieData={movieData} richData={richData} trailer={trailer} isMobile={isMobile} />
+                  
+                  <motion.div 
+                      id="watch" 
+                      initial={{ opacity: 0, y: 20 }} 
+                      animate={{ opacity: 1, y: 0 }} 
+                      transition={{ duration: 0.5 }} // Faster, no massive delay
+                      className="space-y-8 sm:space-y-12 px-3 sm:px-4 lg:px-6"
+                  >
+                      {/* ✅ PASSED SENSITIVE DATA PROP */}
+                      <MovieDetailsSection 
+                          movie={movie} 
+                          fromHuluComedyCollection={true} 
+                          sensitiveData={sensitiveData}
+                      /> 
+                  </motion.div>
+                  
+                  <div className="px-3 sm:px-4 lg:px-6">
+                      <InternalCollectionsSection currentSlug="best-comedy-movies-on-hulu" />
+                      <TMDBAttribution />
+                      <AuthorCreditSection />
+                  </div>
+              </div>
+          </div>
+      </div>
+  );
 };
 
 export async function getStaticPaths() {
-    const paths = COMPLETE_MOVIE_DATABASE.map((movie) => ({ params: { id: movie.imdbID } }));
-    return { paths, fallback: false };
+  const paths = COMPLETE_MOVIE_DATABASE.map((movie) => ({ params: { id: movie.imdbID } }));
+  return { paths, fallback: false };
 }
 
 export async function getStaticProps({ params }) {
-    try {
-        const movie = COMPLETE_MOVIE_DATABASE.find((m) => m.imdbID === params.id);
-        if (!movie) return { notFound: true };
+  try {
+      const movie = COMPLETE_MOVIE_DATABASE.find((m) => m.imdbID === params.id);
+      if (!movie) return { notFound: true };
 
-        const tmdbResponse = await fetch(
-            `https://api.themoviedb.org/3/movie/${movie.tmdbId}?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&append_to_response=videos`
-        );
-        const tmdbData = tmdbResponse.ok ? await tmdbResponse.json() : null;
+      const tmdbResponse = await fetch(
+          `https://api.themoviedb.org/3/movie/${movie.tmdbId}?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&append_to_response=videos`
+      );
+      const tmdbData = tmdbResponse.ok ? await tmdbResponse.json() : null;
 
-        return {
-            props: { movie, tmdbData },
-        };
-    } catch (error) {
-        console.error('Error fetching TMDB data:', error);
-        return {
-            props: {
-                movie: COMPLETE_MOVIE_DATABASE.find((m) => m.imdbID === params.id),
-                tmdbData: null,
-            },
-        };
-    }
+      // ✅ FETCH SENSITIVE DATA SO FRONTEND CAN RENDER TIMESTAMPS
+      const rawSensitive = SENSITIVE_TIMELINES[movie.tmdbId];
+      const sensitiveData = rawSensitive ? { scenes: rawSensitive.scenes } : null;
+
+      return {
+          props: { movie, tmdbData, sensitiveData },
+      };
+  } catch (error) {
+      console.error('Error fetching TMDB data:', error);
+      return {
+          props: {
+              movie: COMPLETE_MOVIE_DATABASE.find((m) => m.imdbID === params.id),
+              tmdbData: null,
+              sensitiveData: null
+          },
+      };
+  }
 }
 
 export default HuluComedyMoviePage;
