@@ -8,21 +8,21 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, Play, X, User, Twitter, Hash, Send, Film, Zap, Eye, Skull, AlertTriangle,Theater } from 'lucide-react'; // ✅ Added Thriller Icons
+import { ChevronLeft, Play, X, User, Twitter, Hash, Send, Film, Zap, Eye, Skull, AlertTriangle, Theater } from 'lucide-react'; // ✅ Added Thriller Icons
 
-import InternalCollectionsSection from '../../components/InternalCollectionsSection';
-import CinematicBackground from '../../components/CinematicBackground';
-import MovieDetailsSection from '../../components/MovieDetailsSection';
-import TMDBAttribution from '../../components/TMDBAttribution';
+// ✅ FIX: ADDED EXTRA '../' TO ALL COMPONENT PATHS
+import InternalCollectionsSection from '../../../components/InternalCollectionsSection';
+import CinematicBackground from '../../../components/CinematicBackground';
+import MovieDetailsSection from '../../../components/MovieDetailsSection';
+import TMDBAttribution from '../../../components/TMDBAttribution';
 
-// ✅ IMPORT DATA INCLUDING FAQs
+// ✅ FIX: ADDED EXTRA '../' TO UTILS PATH
 import {
   COMPLETE_MOVIE_DATABASE, 
   COMPLETE_MOVIE_DATA,
   SENSITIVE_TIMELINES,
   generateCleanMovieSchema // ✅ Pulling the unified schema engine
-} from '../../utils/huluThrillerMovieData';
-
+} from '../../../utils/huluThrillerMovieData';
 const COLORS = {
   accent: '#ef4444', accentLight: '#fca5a5', bgPrimary: '#000000ff', bgCard: 'rgba(11, 11, 11, 0.8)', // Crimson/Dark Slate for Thriller
   textPrimary: '#FFFFFF', textSecondary: '#e2e8f0', textMuted: '#94a3b8', textDisabled: '#475569',

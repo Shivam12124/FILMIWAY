@@ -10,19 +10,19 @@ import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, Play, X, User, Twitter, Hash, Send, Film, Zap, Flame, Theater } from 'lucide-react';
 
-import InternalCollectionsSection from '../../components/InternalCollectionsSection';
-import CinematicBackground from '../../components/CinematicBackground';
-import MovieDetailsSection from '../../components/MovieDetailsSection';
-import TMDBAttribution from '../../components/TMDBAttribution';
+// ✅ FIX 1: ADDED AN EXTRA '../' TO ALL IMPORT PATHS
+import InternalCollectionsSection from '../../../components/InternalCollectionsSection';
+import CinematicBackground from '../../../components/CinematicBackground';
+import MovieDetailsSection from '../../../components/MovieDetailsSection';
+import TMDBAttribution from '../../../components/TMDBAttribution';
 
-// ✅ IMPORT DATA INCLUDING FAQs & SCHEMA GENERATOR
+// ✅ FIX 1: ADDED AN EXTRA '../' TO THE UTILS PATH
 import { 
   COMPLETE_MOVIE_DATABASE, 
   COMPLETE_MOVIE_DATA,
   SENSITIVE_TIMELINES,
   generateCleanMovieSchema
-} from '../../utils/huluActionMovieData';
-
+} from '../../../utils/huluActionMovieData';
 const COLORS = {
   accent: '#EF4444', accentLight: '#FCA5A5',bgPrimary: '#000000ff', bgCard: 'rgba(11, 11, 11, 0.8)', // Red/Orange for Action
   textPrimary: '#FFFFFF', textSecondary: '#E5E7EB', textMuted: '#9CA3AF', textDisabled: '#6B7280',

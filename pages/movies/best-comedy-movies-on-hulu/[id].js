@@ -1,4 +1,4 @@
-// pages/best-comedy-movies-on-hulu/[id].js - HULU COMEDY MOVIES
+// pages/movies/best-comedy-movies-on-hulu/[id].js - HULU COMEDY MOVIES ✅
 // VISUALS: Comedy/Fun Theme (Yellow/Gold/Bright)
 // SCHEMA: Maximalist (Hidden Laughter Index and FAQs for Bots)
 
@@ -8,21 +8,21 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, Play, X, User, Twitter, Hash, Send, Film, Smile, Zap, Theater, PartyPopper } from 'lucide-react'; // ✅ Added Comedy Icons
+import { ChevronLeft, Play, X, User, Twitter, Hash, Send, Film, Smile, Theater, PartyPopper } from 'lucide-react'; 
 
-import InternalCollectionsSection from '../../components/InternalCollectionsSection';
-import CinematicBackground from '../../components/CinematicBackground';
-import MovieDetailsSection from '../../components/MovieDetailsSection';
-import TMDBAttribution from '../../components/TMDBAttribution';
+// ✅ FIX: ADDED EXTRA '../' TO ALL COMPONENT PATHS
+import InternalCollectionsSection from '../../../components/InternalCollectionsSection';
+import CinematicBackground from '../../../components/CinematicBackground';
+import MovieDetailsSection from '../../../components/MovieDetailsSection';
+import TMDBAttribution from '../../../components/TMDBAttribution';
 
-// ✅ IMPORT DATA INCLUDING FAQs
+// ✅ FIX: ADDED EXTRA '../' TO UTILS PATH
 import {
   COMPLETE_MOVIE_DATABASE, 
   COMPLETE_MOVIE_DATA,
   SENSITIVE_TIMELINES,
-  generateCleanMovieSchema // ✅ Pulling the unified schema engine
-} from '../../utils/huluComedyMovieData';
-
+  generateCleanMovieSchema 
+} from '../../../utils/huluComedyMovieData';
 const COLORS = {
   accent: '#FACC15', accentLight: '#FEF08A', bgPrimary: '#000000ff', bgCard: 'rgba(11, 11, 11, 0.8)', // Yellow/Dark Gold for Comedy
   textPrimary: '#FFFFFF', textSecondary: '#FEF3C7', textMuted: '#FDE047', textDisabled: '#CA8A04',

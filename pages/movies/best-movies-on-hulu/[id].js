@@ -1,6 +1,8 @@
 // pages/best-movies-on-hulu/[id].js - TOP 10 BEST MOVIES ON HULU
 // VISUALS: Prestige Cinema Theme (Gold/Slate Accents)
 // SCHEMA: Maximalist (Hidden Metrics and FAQs for Bots)
+// VISUALS: Prestige Cinema Theme (Gold/Slate Accents)
+// SCHEMA: Maximalist (Hidden Metrics and FAQs for Bots)
 
 import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
@@ -9,19 +11,20 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, Play, X, User, Twitter, Hash, Send, Film, Star, Award, Theater } from 'lucide-react';
-import InternalCollectionsSection from '../../components/InternalCollectionsSection';
-import CinematicBackground from '../../components/CinematicBackground';
-import MovieDetailsSection from '../../components/MovieDetailsSection';
-import TMDBAttribution from '../../components/TMDBAttribution';
 
-// ✅ IMPORT DATA INCLUDING FAQs & SCHEMA GENERATOR
+// ✅ FIX: ADDED EXTRA '../' TO ALL COMPONENT PATHS
+import InternalCollectionsSection from '../../../components/InternalCollectionsSection';
+import CinematicBackground from '../../../components/CinematicBackground';
+import MovieDetailsSection from '../../../components/MovieDetailsSection';
+import TMDBAttribution from '../../../components/TMDBAttribution';
+
+// ✅ FIX: ADDED EXTRA '../' TO UTILS PATH
 import {
   COMPLETE_MOVIE_DATABASE, 
   COMPLETE_MOVIE_DATA,
   SENSITIVE_TIMELINES,
   generateCleanMovieSchema
-} from '../../utils/huluBestMoviesData';
-
+} from '../../../utils/huluBestMoviesData';
 const COLORS = {
   accent: '#f59e0b', accentLight: '#fcd34d', bgPrimary: '#000000ff', bgCard: 'rgba(11, 11, 11, 0.8)', // Gold/Slate for Prestige
   textPrimary: '#FFFFFF', textSecondary: '#E5E7EB', textMuted: '#9CA3AF', textDisabled: '#6B7280',
