@@ -9,19 +9,20 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, Play, X, User, Twitter, Hash, Send, Film, Heart, Sparkles, Theater } from 'lucide-react'; // ✅ Added Heart/Sparkles/Theater
-import InternalCollectionsSection from '../../components/InternalCollectionsSection';
-import CinematicBackground from '../../components/CinematicBackground';
-import MovieDetailsSection from '../../components/MovieDetailsSection';
-import TMDBAttribution from '../../components/TMDBAttribution';
 
-// ✅ IMPORT DATA INCLUDING FAQs
+// ✅ FIX: ADDED EXTRA '../' TO ALL COMPONENT PATHS
+import InternalCollectionsSection from '../../../components/InternalCollectionsSection';
+import CinematicBackground from '../../../components/CinematicBackground';
+import MovieDetailsSection from '../../../components/MovieDetailsSection';
+import TMDBAttribution from '../../../components/TMDBAttribution';
+
+// ✅ FIX: ADDED EXTRA '../' TO UTILS PATH
 import {
   COMPLETE_MOVIE_DATABASE, 
   COMPLETE_MOVIE_DATA,
   SENSITIVE_TIMELINES,
   generateCleanMovieSchema // ✅ Pulling the unified schema engine
-} from '../../utils/huluRomanceMovieData';
-
+} from '../../../utils/huluRomanceMovieData';
 const COLORS = {
   accent: '#EC4899', accentLight: '#FBCFE8', bgPrimary: '#000000ff', bgCard: 'rgba(11, 11, 11, 0.8)', // Pink/Rose for Romance
   textPrimary: '#FFFFFF', textSecondary: '#FCE7F3', textMuted: '#DB2777', textDisabled: '#9D174D',
