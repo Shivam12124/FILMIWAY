@@ -505,6 +505,24 @@ export const COLLECTIONS = {
     relatedCollections: ['best-detective-thriller-movies', 'best-psychological-thriller-movies', 'best-crime-thriller-movies', 'movies-like-se7en']
   },
 
+// 🎩 MOVIES LIKE THE PRESTIGE
+  'movies-like-the-prestige': {
+    slug: 'movies-like-the-prestige',
+    title: '10 Mind-Bending Movies Like The Prestige',
+    stats: { averageRating: 8.0 },
+    movies: ['tt0443543', 'tt0209144', 'tt1130884', 'tt0119174', 'tt0114814', 'tt0137523', 'tt0167404', 'tt0361862', 'tt0117381', 'tt1670345'],
+    relatedCollections: ['movies-like-inception', 'movies-like-memento', 'best-psychological-thriller-movies']
+  },
+
+// 💋 BEST EROTIC THRILLER MOVIES
+  'best-erotic-thriller-movies': {
+    slug: 'best-erotic-thriller-movies',
+    title: '10 Best Erotic Thriller Movies',
+    stats: { averageRating: 7.2 },
+    movies: ['tt0103772', 'tt0120663', 'tt4016934', 'tt0808357', 'tt0120890', 'tt0250797', 'tt0093010', 'tt0082089', 'tt0110308', 'tt0115736'],
+    relatedCollections: ['best-psychological-thriller-movies', 'movies-like-eyes-wide-shut', 'best-crime-thriller-movies']
+  },
+
   // 🩸 BEST THRILLER MOVIES
   'best-thriller-movies': {
     slug: 'best-thriller-movies',
@@ -514,6 +532,9 @@ export const COLLECTIONS = {
     relatedCollections: ['best-psychological-thriller-movies', 'best-crime-thriller-movies', 'best-mystery-thriller-movies']
   }
 };
+
+
+
 
 // 🔍 COLLECTION ACCESSORS
 export const getAllCollectionSlugs = () => Object.keys(COLLECTIONS);
@@ -528,6 +549,8 @@ export const getShutterIslandCollection = () => COLLECTIONS['movies-like-shutter
 export const getInterstellarCollection = () => COLLECTIONS['movies-like-interstellar'];
 export const getMatrixCollection = () => COLLECTIONS['movies-like-the-matrix'];
 export const getSe7enCollection = () => COLLECTIONS['movies-like-se7en'];
+export const getPrestigeCollection = () => COLLECTIONS['movies-like-the-prestige'];
+export const getEroticThrillerCollection = () => COLLECTIONS['best-erotic-thriller-movies'];
 export const getSurvivalCollection = () => COLLECTIONS['best-survival-movies'];
 export const getWarFilmsCollection = () => COLLECTIONS['best-war-films'];
 export const getRevengeMoviesCollection = () => COLLECTIONS['best-revenge-movies'];

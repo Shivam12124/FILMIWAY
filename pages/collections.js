@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Head from 'next/head';
 import Link from 'next/link';
-import { Search, Brain, Mountain, Film, ChevronDown, Sparkles, Plus, ArrowRight, Star, Clock, Eye, Scale, DollarSign, Shield, Zap, Heart, Ghost, Smile, Crown, Rocket } from 'lucide-react';
+import { Search, Brain, Mountain, Film, ChevronDown, Sparkles, Plus, ArrowRight, Star, Clock, Eye, Scale, DollarSign, Shield, Zap, Heart, Ghost, Smile, Crown,Flame, Rocket } from 'lucide-react';
 import Image from 'next/image';
 
 const CollectionsHub = () => {
@@ -502,6 +502,31 @@ const CollectionsHub = () => {
             movieCount: '10',
             rating: '8.2',
             directLink: '/collection/movies-like-black-swan',
+            hasSubCollections: false
+        },
+
+
+        {
+            id: 'prestige',
+            title: 'Movies Like The Prestige',
+            description: 'Mind-bending cinematic illusions, bitter rivalries, and psychological deception',
+            icon: Sparkles, 
+            gradient: 'from-amber-600 to-orange-900',
+            movieCount: '10',
+            rating: '8.0',
+            directLink: '/collection/movies-like-the-prestige',
+            hasSubCollections: false
+        },
+
+        {
+            id: 'erotic-thriller',
+            title: '10 Best Erotic Thriller Movies',
+            description: 'Where desire meets danger. Psychological manipulation, fatal attractions, and neo-noir tension.',
+            icon: Flame, 
+            gradient: 'from-rose-600 to-red-900',
+            movieCount: '10',
+            rating: '7.2',
+            directLink: '/collection/best-erotic-thriller-movies',
             hasSubCollections: false
         },
         {

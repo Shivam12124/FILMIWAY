@@ -52,6 +52,15 @@ import {
   SENSITIVE_TIMELINES as EYES_WIDE_SHUT_SENSITIVE_TIMELINES 
 } from '../utils/eyesWideShutMovieData';
 import { 
+  COMPLETE_MOVIE_DATA as PRESTIGE_MOVIE_DATA, 
+  STRATEGIC_QUOTES as PRESTIGE_QUOTES, 
+  SENSITIVE_TIMELINES as PRESTIGE_SENSITIVE_TIMELINES 
+} from '../utils/prestigeMovieData';
+import {
+  COMPLETE_MOVIE_DATA as EROTIC_THRILLER_MOVIE_DATA,
+  SENSITIVE_TIMELINES as EROTIC_THRILLER_SENSITIVE_TIMELINES
+} from '../utils/eroticThrillerMovieData';
+import { 
   COMPLETE_MOVIE_DATA as HBO_ACTION_MOVIE_DATA, 
   STRATEGIC_QUOTES as HBO_ACTION_QUOTES, 
   SENSITIVE_TIMELINES as HBO_ACTION_SENSITIVE_TIMELINES 
@@ -287,6 +296,8 @@ import OldboySEOFAQSection from './OldboySEOFAQSection';
 import DonnieDarkoSEOFAQSection from './DonnieDarkoSEOFAQSection';
 import BlackSwanSEOFAQSection from './BlackSwanSEOFAQSection';
 import EyesWideShutSEOFAQSection from './EyesWideShutSEOFAQSection';
+import EroticThrillerSEOFAQSection from './EroticThrillerSEOFAQSection';
+import PrestigeSEOFAQSection from './PrestigeSEOFAQSection';
 import HboActionSEOFAQSection from './HboActionSEOFAQSection';
 import HboMaxRomanceSEOFAQSection from './HboMaxRomanceSEOFAQSection';
 import HboMaxThrillerSEOFAQSection from './HboMaxThrillerSEOFAQSection';
@@ -334,6 +345,8 @@ const MovieDetailsSection = React.memo(({
   fromSurvivalCollection,
   fromMatrixCollection,
   fromBlackSwanCollection,
+  fromPrestigeCollection,
+  fromEroticThrillerCollection,
   fromSe7enCollection,
   fromParasiteCollection,
   fromDonnieDarkoCollection,
@@ -433,6 +446,8 @@ const MovieDetailsSection = React.memo(({
   : fromSe7enCollection ? safeLookup(SE7EN_MOVIE_DATA, movie.tmdbId)
   : fromOldboyCollection ? safeLookup(OLDBOY_MOVIE_DATA, movie.tmdbId)
   : fromBlackSwanCollection ? safeLookup(BLACK_SWAN_MOVIE_DATA, movie.tmdbId)
+  : fromPrestigeCollection ? safeLookup(PRESTIGE_MOVIE_DATA, movie.tmdbId)
+  : fromEroticThrillerCollection ? safeLookup(EROTIC_THRILLER_MOVIE_DATA, movie.tmdbId)
   : fromEyesWideShutCollection ? safeLookup(EYES_WIDE_SHUT_MOVIE_DATA, movie.tmdbId)
   : fromRevengeCollection ? safeLookup(REVENGE_MOVIE_DATA, movie.tmdbId)
   : fromWarFilmsCollection ? safeLookup(WAR_FILMS_MOVIE_DATA, movie.tmdbId)
@@ -596,6 +611,8 @@ const MovieDetailsSection = React.memo(({
    || MATRIX_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
    || OLDBOY_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || BLACK_SWAN_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
+   || PRESTIGE_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
+   || EROTIC_THRILLER_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || EYES_WIDE_SHUT_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || SE7EN_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || SCI_FI_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
@@ -652,6 +669,8 @@ const MovieDetailsSection = React.memo(({
    : fromMatrixCollection ? movie.cyberComplexity ?? safeMovieInfo.cyberComplexity ?? 0
    : fromOldboyCollection ? movie.revengeIntensity ?? safeMovieInfo.revengeIntensity ?? 0
    : fromBlackSwanCollection ? movie.psychologicalIntensity ?? safeMovieInfo.psychologicalIntensity ?? 0
+   : fromPrestigeCollection ? movie. deceptionScore ?? safeMovieInfo. deceptionScore ?? 0
+   : fromEroticThrillerCollection ? movie.eroticTension ?? safeMovieInfo.eroticTension ?? 0
    : fromEyesWideShutCollection ? movie.paranoiaIntensity ?? safeMovieInfo.paranoiaIntensity ?? 0
    : fromSe7enCollection ? movie.se7enDNAScore ?? safeMovieInfo.se7enDNAScore ?? 0
    : fromRevengeCollection ? movie.revengeIntensity ?? safeMovieInfo.revengeIntensity ?? 0
@@ -833,6 +852,14 @@ const MovieDetailsSection = React.memo(({
      default: return '#6b7280';
         }
    }
+   if (fromEroticThrillerCollection) {
+        switch (level) {
+     case 'EXTREME': return '#e11d48'; 
+     case 'HIGH': return '#be123c';    
+     case 'MEDIUM': return '#9f1239';  
+     default: return '#6b7280';
+        }
+   }
 if (fromPsychologicalThrillerCollection) {
       switch (level) {
         case 'EXTREME': return '#7f1d1d'; // Deep Blood Red for total sanity loss
@@ -906,6 +933,9 @@ if (fromPsychologicalThrillerCollection) {
    if (fromPeacockSciFiCollection) return 'SCI-FI COMPLEXITY';
    if (fromPeacockRomanceCollection) return 'EMOTIONAL INTENSITY';
    if (fromMatrixCollection) return 'SCI-FI COMPLEXITY SCORE';
+   if (fromEyesWideShutCollection) return 'PARANOIA INTENSITY';
+   if (fromPrestigeCollection) return 'RIVALRY INDEX';
+   if (fromEroticThrillerCollection) return 'EROTIC TENSION SCORE';
    if (fromSe7enCollection) return 'SE7EN DNA SCORE';
    if (fromRevengeCollection) return 'REVENGE INTENSITY SCORE';
    if (fromWarFilmsCollection) return 'WAR INTENSITY SCORE';
@@ -966,6 +996,8 @@ if (fromPsychologicalThrillerCollection) {
    if (fromInceptionCollection) return 'MIND-BENDING INDEX';
    if (fromShutterIslandCollection) return 'PSYCHOLOGICAL INDEX';
    if (fromMementoCollection) return 'MEMORY INDEX';
+   if (fromPrestigeCollection) return 'DECEPTION INDEX';
+   if (fromEroticThrillerCollection) return 'MANIPULATION INDEX';
    return 'MIND-BENDING INDEX';
  };
 
@@ -1010,6 +1042,8 @@ if (fromPsychologicalThrillerCollection) {
    if (fromInceptionCollection) return 'COGNITIVE COMPLEXITY LEVEL';
    if (fromShutterIslandCollection) return 'PSYCHOLOGICAL DISTORTION LEVEL';
    if (fromMementoCollection) return 'MEMORY DISTORTION LEVEL';
+   if (fromPrestigeCollection) return 'ILLUSION LEVEL';
+   if (fromEroticThrillerCollection) return 'PSYCHOLOGICAL TENSION LEVEL';
    return 'COGNITIVE DISTORTION LEVEL';
  };
 
@@ -1119,6 +1153,16 @@ if (fromPsychologicalThrillerCollection) {
      if (scoreValue >= 80) return 'A powerful revenge narrative with intense retribution, complex moral questions, and significant psychological impact.';
      return 'An engaging revenge story with satisfying payback and compelling character motivations.';
    }
+   if (fromPrestigeCollection) {
+     if (scoreValue >= 90) return 'A masterclass in narrative deception, where every scene is a piece of a larger, devastating puzzle.';
+     if (scoreValue >= 80) return 'A complex tale of rivalry and obsession with a shocking, game-changing twist.';
+     return 'An engaging story of competition and illusion that keeps you guessing until the end.';
+   }
+   if (fromEroticThrillerCollection) {
+     if (scoreValue >= 90) return 'A masterful blend of intense passion and fatal manipulation. Highly provocative and dangerous.';
+     if (scoreValue >= 80) return 'Highly charged with dark romance and dangerous stakes. A gripping psychological descent.';
+     return 'A suspenseful thriller balancing desire and danger perfectly.';
+   }
    // Generic fallback
    if (scoreValue >= 90) return 'A transcendent masterpiece redefining narrative complexity.';
    if (scoreValue >= 80) return 'Sophisticated cinematic storytelling with advanced non-linear elements.';
@@ -1151,7 +1195,9 @@ if (fromPsychologicalThrillerCollection) {
    if (fromRevengeCollection || fromWarFilmsCollection || fromDramaCollection) return 'border-red-400/40';
    if (fromInterstellarCollection || fromSciFiCollection || fromTimeTravelCollection) return 'border-cyan-400/40';
    if (fromHeistThrillerCollection) return 'border-amber-400/40';
-   if (fromCrimeThrillerCollection) return 'border-slate-400/40'; 
+   if (fromCrimeThrillerCollection) return 'border-slate-400/40';
+   if (fromPrestigeCollection) return 'border-blue-400/40'; 
+   if (fromEroticThrillerCollection) return 'border-rose-600/40';
    return 'border-yellow-400/40';
  };
 
@@ -1181,6 +1227,8 @@ if (fromPsychologicalThrillerCollection) {
    if (fromSciFiCollection || fromInterstellarCollection || fromTimeTravelCollection) return 'text-cyan-400';
    if (fromHeistThrillerCollection) return 'text-amber-400';
    if (fromCrimeThrillerCollection) return 'text-slate-400';
+   if (fromPrestigeCollection) return 'text-blue-400';
+   if (fromEroticThrillerCollection) return 'text-rose-500';
    return 'text-yellow-400';
  };
 
@@ -1440,6 +1488,8 @@ if (fromPsychologicalThrillerCollection) {
         : fromOldboyCollection ? <OldboySEOFAQSection movie={movie} />
         : fromBlackSwanCollection ? <BlackSwanSEOFAQSection movie={movie} />
         : fromEyesWideShutCollection ? <EyesWideShutSEOFAQSection movie={movie} />
+        : fromEroticThrillerCollection ? <EroticThrillerSEOFAQSection movie={movie} />
+        : fromPrestigeCollection ? <PrestigeSEOFAQSection movie={movie} />
         : fromSe7enCollection ? <Se7enSEOFAQSection movie={movie} />
         : fromRevengeCollection ? <RevengeMovieSEOFAQSection movie={movie} />
         : fromWarFilmsCollection ? <WarFilmsSEOFAQSection movie={movie} />

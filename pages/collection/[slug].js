@@ -16,6 +16,8 @@ import { COMPLETE_MOVIE_DATABASE as OLDBOY_DATABASE, COMPLETE_MOVIE_DATA as OLDB
 import { COMPLETE_MOVIE_DATABASE as DONNIE_DARKO_DATABASE, COMPLETE_MOVIE_DATA as DONNIE_DARKO_DATA } from '../../utils/donnieDarkoMovieData';
 import { COMPLETE_MOVIE_DATABASE as BLACK_SWAN_DATABASE, COMPLETE_MOVIE_DATA as BLACK_SWAN_DATA } from '../../utils/blackSwanMovieData';
 import { COMPLETE_MOVIE_DATABASE as EYES_WIDE_SHUT_DATABASE, COMPLETE_MOVIE_DATA as EYES_WIDE_SHUT_DATA } from '../../utils/eyesWideShutMovieData';
+import { COMPLETE_MOVIE_DATABASE as PRESTIGE_DATABASE, COMPLETE_MOVIE_DATA as PRESTIGE_DATA } from '../../utils/prestigeMovieData';
+import { COMPLETE_MOVIE_DATABASE as EROTIC_THRILLER_DATABASE, COMPLETE_MOVIE_DATA as EROTIC_THRILLER_DATA } from '../../utils/eroticThrillerMovieData';
 import { COMPLETE_MOVIE_DATABASE as INTERSTELLAR_DATABASE, COMPLETE_MOVIE_DATA as INTERSTELLAR_DATA } from '../../utils/interstellarMovieData';
 import { COMPLETE_MOVIE_DATABASE as CRIME_THRILLER_DATABASE, COMPLETE_MOVIE_DATA as CRIME_THRILLER_DATA } from '../../utils/crimeThrillerMovieData';
 import { COMPLETE_MOVIE_DATABASE as WAR_FILMS_DATABASE, COMPLETE_MOVIE_DATA as WAR_FILMS_DATA } from '../../utils/warFilmsMovieData';
@@ -1199,6 +1201,52 @@ const getCollectionContent = () => {
             text2: "After watching this collection, you will question every high-society gala, every private country club, and every unexplained coincidence in the news. Welcome to cinema's most unsettling, reality-bending rabbit holes."
         }
     };
+} else if (collection.slug === 'movies-like-the-prestige') {
+    return {
+        badge: "Obsessive Rivalry Cinema",
+        title: "The Prestige",
+        description: "A deep dive into films where rivalry transcends competition and becomes a destructive obsession. Explore cinematic masterpieces that dissect the cost of ambition, the nature of deception, and the sacrifices made in the pursuit of greatness. These are stories of two sides locked in a battle of wits, where every trick has a price, and the final revelation changes everything.",
+        selection: {
+            text1: "We selected films that mirror the intense, psychological warfare seen in 'The Prestige.' These are not just stories of competitors, but of enemies, doubles, and shadows, each trying to unravel the other's secrets while guarding their own. From the dueling magicians of the Victorian era to modern-day intellectual gladiators, the theme is constant: obsession is a cage.",
+            text2: "Each film in this collection features protagonists whose identities become dangerously intertwined with their rivals. The lines between admiration and envy, illusion and reality, and love and hate are perpetually blurred. We prioritized stories where the 'trick' is not just a plot device but a reflection of the characters' fractured selves."
+        },
+        ranking: {
+            text: "Our 'Rivalry Index' is a cinematic metric that evaluates the intensity of the central conflict. We don't just measure who wins or loses; we analyze the psychological depth of the rivalry, the complexity of the deceptions, and the ultimate, often tragic, cost of their ambition. These films are ranked by how completely the characters consume each other.",
+            points: [
+                "Psychological obsession depth",
+                "Complexity of deception",
+                "Moral compromise scale",
+                "Rivalry's destructive impact"
+            ]
+        },
+        experience: {
+            text1: "Prepare to be drawn into a world of secrets, misdirection, and intellectual combat. These films reward close attention, with clues hidden in plain sight and narratives that demand to be re-examined. You'll find yourself questioning loyalties and trying to see through the smoke and mirrors, just like the characters.",
+            text2: "This collection is a journey into the dark heart of ambition. You will witness the lengths to which individuals will go for their 'art' or their 'victory,' and the devastating fallout of a rivalry that has no limits. Are you watching closely?"
+        }
+    };
+} else if (collection.slug === 'best-erotic-thriller-movies') {
+    return {
+        badge: "Seductive Danger Cinema",
+        title: "Best Erotic Thriller Movies",
+        description: "A deep dive into the shadowy world of erotic thrillers, where desire and danger are inextricably linked. Explore films that masterfully blend suspense, passion, and psychological manipulation, leaving you questioning everyone's motives. These are stories of forbidden affairs, deadly obsessions, and the dark side of human intimacy.",
+        selection: {
+            text1: "We selected films that define the genre, from neo-noir classics to modern psychological tales. These are not just stories with sex and suspense; they are intricate character studies where intimacy is a weapon, and trust is a fatal flaw. Expect complex plots, morally ambiguous characters, and a palpable sense of tension.",
+            text2: "Each film in this collection explores the darker facets of love and desire. We focused on stories where the stakes are life and death, and the line between love and obsession is dangerously thin. These are films that are as intellectually stimulating as they are viscerally thrilling."
+        },
+        ranking: {
+            text: "Our 'Seduction & Suspense Index' evaluates the effectiveness of the erotic thriller elements. We analyze the chemistry between the leads, the complexity of the plot, the level of psychological tension, and the impact of the film's twists and turns. These films are ranked by their ability to seduce and shock in equal measure.",
+            points: [
+                "Psychological Manipulation Depth",
+                "Lead Chemistry & Tension",
+                "Narrative Complexity & Twists",
+                "Atmospheric Style & Tone"
+            ]
+        },
+        experience: {
+            text1: "Prepare to be drawn into a world of passion, betrayal, and suspense. These films are a masterclass in building tension, creating an atmosphere of paranoia and desire that is both alluring and unsettling. You'll find yourself caught in a web of intrigue, trying to piece together the truth.",
+            text2: "This collection is an exploration of the darker side of human nature. You will witness the destructive power of obsession and the deadly consequences of forbidden desires. In the world of the erotic thriller, no one is innocent."
+        }
+    };
     
         
 
@@ -1913,6 +1961,16 @@ subtitle: "While everyone searches Netflix, these classics hide in plain sight. 
              title: "10 Movies Like Eyes Wide Shut That Expose Elite Secrets",
              subtitle: "A ranked list of films that delve into secret societies, occult rituals, and paranoid descents into the world of the ultra-rich. Discover the cinematic rabbit holes that prove Kubrick's final film was a warning."
          };
+    } else if (collection.slug === 'movies-like-the-prestige') {
+        return {
+            title: "Movies Like The Prestige: 10 Films of Rivalry & Deception",
+            subtitle: "Obsessive rivalries, devastating sacrifices, and the shocking price of a perfect illusion."
+        };
+    } else if (collection.slug === 'best-erotic-thriller-movies') {
+        return {
+            title: "10 Best Erotic Thriller Movies: Where Desire Meets Danger",
+            subtitle: "A curated selection of films exploring passion, obsession, and the dark side of human intimacy"
+        };
 
     } else if (collection.slug === 'movies-like-interstellar') {
         return {
@@ -2031,6 +2089,17 @@ const getLoaderContent = () => {
             title: "Loading Movies Like Eyes Wide Shut",
             description: "Curating paranoid thrillers about secret societies and the occult elite with community reviews"
         };
+} else if (collection?.slug === 'movies-like-the-prestige') {
+    return {
+        title: "Loading Movies Like The Prestige",
+        description: "Curating films about obsessive rivalries, dark magic, and cinematic deception."
+    };
+
+} else if (collection?.slug === 'best-erotic-thriller-movies') {
+    return {
+        title: "Loading Best Erotic Thriller Movies",
+        description: "Curating sensual and suspenseful cinematic masterpieces with community reviews."
+    };
 
 } else if (collection?.slug === 'movies-like-donnie-darko') {
     return {
@@ -2397,6 +2466,26 @@ const getStaticMetaContent = () => {
             progressText: `of 10 Films Exposing the Elite`
         };
     
+} else if (collection.slug === 'movies-like-the-prestige') {
+    return {
+        title: "10 Movies Like The Prestige (Rivalry & Deception)",
+        description: "Are you watching closely? Discover 10 films about intense rivalries, dark obsessions, and the art of illusion. For fans of Christopher Nolan's masterpiece. Includes an exact Timestamps & Parents Guide.",
+        keywords: "movies like the prestige, rivalry movies, magician movies, films about deception, christopher nolan style",
+        ogTitle: "10 Movies Like The Prestige: Films of Rivalry & Deception",
+        twitterTitle: "10 Films of Rivalry & Deception for Fans of The Prestige",
+        progressText: `of Top 10 Movies Like The Prestige`
+    };
+    
+} else if (collection.slug === 'best-erotic-thriller-movies') {
+    return {
+        title: "10 Best Erotic Thriller Movies (Ranked)",
+        description: "Explore the best erotic thriller movies. Discover films that masterfully blend suspense, passion, and psychological manipulation. Includes an exact Timestamps & Parents Guide.",
+        keywords: "best erotic thriller movies, erotic thrillers, suspense and romance, sensual mystery films",
+        ogTitle: "10 Best Erotic Thriller Movies: Seductive Danger Cinema",
+        twitterTitle: "10 Best Erotic Thrillers Where Desire Meets Danger",
+        progressText: `of Top ${movies.length} Erotic Thriller Movies`
+    };
+
 
     } else if (collection.slug === 'best-romance-movies-on-hulu') {
         return {
@@ -2979,6 +3068,7 @@ const getStaticMetaContent = () => {
             sessionStorage.removeItem('fromEyesWideShutCollection');
             sessionStorage.removeItem('fromDonnieDarkoCollection');
             sessionStorage.removeItem('fromBlackSwanCollection');
+            sessionStorage.removeItem('fromPrestigeCollection');
             sessionStorage.removeItem('fromParasiteCollection'); 
             sessionStorage.removeItem('fromInterstellarCollection');
             sessionStorage.removeItem('fromShutterIslandCollection');
@@ -2994,6 +3084,7 @@ const getStaticMetaContent = () => {
             sessionStorage.removeItem('fromSciFiCollection');
             sessionStorage.removeItem('fromRevengeCollection');
             sessionStorage.removeItem('fromWarFilmsCollection');
+            sessionStorage.removeItem('fromEroticThrillerCollection');
 
             // Set appropriate collection flag âœ…
             if (collection.slug === 'movies-like-inception') {
@@ -3080,10 +3171,10 @@ const getStaticMetaContent = () => {
           sessionStorage.setItem('fromOldboyCollection', 'true');
 } else if (collection.slug === 'movies-like-eyes-wide-shut') {
                 sessionStorage.setItem('fromEyesWideShutCollection', 'true');
-
+          } else if (collection.slug === 'movies-like-the-prestige') {
+                sessionStorage.setItem('fromPrestigeCollection', 'true');
           } else if (collection.slug === 'movies-like-black-swan') {
     sessionStorage.setItem('fromBlackSwanCollection', 'true');
-
           } else if (collection.slug === 'movies-like-donnie-darko') {
     sessionStorage.setItem('fromDonnieDarkoCollection', 'true');
             } else if (collection.slug === 'movies-like-interstellar') {
@@ -3114,6 +3205,8 @@ const getStaticMetaContent = () => {
                 sessionStorage.setItem('fromRevengeCollection', 'true');
             } else if (collection.slug === 'best-war-films') {
                 sessionStorage.setItem('fromWarFilmsCollection', 'true');
+            } else if (collection.slug === 'best-erotic-thriller-movies') {
+                sessionStorage.setItem('fromEroticThrillerCollection', 'true');
             }
         }
     };
@@ -3526,6 +3619,10 @@ return (
 
 : collection?.slug === 'movies-like-eyes-wide-shut'
 ? 'movies/eyes-wide-shut/'
+: collection?.slug === 'movies-like-the-prestige'
+? 'movies/like-prestige/'
+: collection?.slug === 'best-erotic-thriller-movies'
+? 'movies/best-erotic-thriller-movies/'
 : collection?.slug === 'best-action-movies-on-hulu'
                                     ? 'movies/best-action-movies-on-hulu/'
 : collection?.slug === 'best-romance-movies-on-hulu'
@@ -3593,7 +3690,7 @@ return (
 ? 'movies/best-horror-movies-on-paramount-plus/'
 : collection?.slug === 'best-comedy-movies-on-paramount-plus'
 ? 'movies/best-comedy-movies-on-paramount-plus/'
-: collection?.slug === 'best-movies-on-paramount-plus' // âœ… ADDED THIS LINE
+: collection?.slug === 'best-movies-on-paramount-plus' // 
         ? 'movies/best-movies-on-paramount-plus/'
                                     
                                     
@@ -3759,6 +3856,10 @@ return (
                                     ? `/movies/black-swan/${currentMovie.imdbID}`
                                     : collection.slug === 'movies-like-eyes-wide-shut'
                                     ? `/movies/eyes-wide-shut/${currentMovie.imdbID}`
+                                    : collection.slug === 'movies-like-the-prestige'
+                                    ? `/movies/like-prestige/${currentMovie.imdbID}`
+                                    : collection.slug === 'best-erotic-thriller-movies'
+                                    ? `/movies/best-erotic-thriller-movies/${currentMovie.imdbID}`
                                     : collection.slug === 'best-action-movies-on-hulu'
                                     ? `/movies/best-action-movies-on-hulu/${currentMovie.imdbID}`
                                     : collection.slug === 'best-romance-movies-on-hulu'
@@ -3911,6 +4012,10 @@ return (
                                     detailPageUrl = `/movies/black-swan/${currentMovie.imdbID}`;
                                 } else if (collection.slug === 'movies-like-eyes-wide-shut') {
                                     detailPageUrl = `/movies/eyes-wide-shut/${currentMovie.imdbID}`;
+                                } else if (collection.slug === 'movies-like-the-prestige') {
+                                    detailPageUrl = `/movies/like-prestige/${currentMovie.imdbID}`;
+                                } else if (collection.slug === 'best-erotic-thriller-movies') {
+                                    detailPageUrl = `/movies/best-erotic-thriller-movies/${currentMovie.imdbID}`;
                                 } else if (collection.slug === 'best-action-movies-on-hulu') {
                                     detailPageUrl = `/movies/best-action-movies-on-hulu/${currentMovie.imdbID}`;
                                 } else if (collection.slug === 'best-romance-movies-on-hulu') {
@@ -4193,6 +4298,12 @@ case 'movies-like-donnie-darko':
     break;
 case 'movies-like-eyes-wide-shut':
             movieDatabase = EYES_WIDE_SHUT_DATABASE;
+            break;
+case 'movies-like-the-prestige':
+            movieDatabase = PRESTIGE_DATABASE;
+            break;
+case 'best-erotic-thriller-movies':
+            movieDatabase = EROTIC_THRILLER_DATABASE;
             break;
 
             case 'best-action-movies-on-hulu':
