@@ -1,4 +1,4 @@
-// data/collections.js - CLEANED & OPTIMIZED 🚀
+// data/collections.js - CLEANED, OPTIMIZED & CANONICAL-READY 🚀
 
 export const COLLECTIONS = {
   // 🌀 MOVIES LIKE INCEPTION
@@ -534,8 +534,6 @@ export const COLLECTIONS = {
 };
 
 
-
-
 // 🔍 COLLECTION ACCESSORS
 export const getAllCollectionSlugs = () => Object.keys(COLLECTIONS);
 export const getCollectionBySlug = (slug) => COLLECTIONS[slug];
@@ -562,5 +560,19 @@ export const getPsychologicalThillerCollection = () => COLLECTIONS['best-psychol
 export const getDetectiveThillerCollection = () => COLLECTIONS['best-detective-thriller-movies'];
 export const getMysteryThillerCollection = () => COLLECTIONS['best-mystery-thriller-movies'];
 export const getThrillerCollection = () => COLLECTIONS['best-thriller-movies'];
+
+// ============================================================================
+// 🧠 THE MASTER CANONICAL BRAIN
+// ============================================================================
+// Automatically finds the FIRST collection a movie appears in inside this file.
+// This ensures that no matter how many collections a movie is added to,
+// it will always use this primary URL for SEO, preventing cannibalization.
+export const getPrimaryCollectionForMovie = (imdbID) => {
+  const primarySlug = Object.keys(COLLECTIONS).find(slug => 
+    COLLECTIONS[slug].movies.includes(imdbID)
+  );
+  
+  return primarySlug || null; 
+};
 
 export default COLLECTIONS;
