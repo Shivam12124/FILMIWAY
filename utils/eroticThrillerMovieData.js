@@ -471,7 +471,7 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
         'duration': `PT${movie.runtime}M`
     };
 
-    const staticFaqs = GREED_MOVIE_FAQS[movie.Title] ? [...GREED_MOVIE_FAQS[movie.Title]] : [];
+   const staticFaqs = EROTIC_THRILLER_MOVIE_FAQS[movie.Title] ? [...EROTIC_THRILLER_MOVIE_FAQS[movie.Title]] : [];
     const sensitiveScenes = SENSITIVE_TIMELINES[movie.tmdbId]?.scenes || [];
     const intensityScenes = movieInfo?.scenes || [];
     
@@ -540,7 +540,7 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
 
 // 🔥 8. FRONTEND UI SYNC (Unrestricted Version)
 export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Official") => {
-    const staticFaqs = GREED_MOVIE_FAQS[movieTitle] ? [...GREED_MOVIE_FAQS[movieTitle]] : [];
+  const staticFaqs = EROTIC_THRILLER_MOVIE_FAQS[movieTitle] ? [...EROTIC_THRILLER_MOVIE_FAQS[movieTitle]] : [];
     const sensitiveScenes = SENSITIVE_TIMELINES[tmdbId]?.scenes || [];
     const movieInfo = COMPLETE_MOVIE_DATA[tmdbId];
     const intensityScenes = movieInfo?.scenes || [];
