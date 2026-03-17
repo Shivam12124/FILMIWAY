@@ -46,7 +46,7 @@ export const SENSITIVE_TIMELINES = {
     // 5. All of Us Strangers
     994108: { 
         scenes: [
-            { start: "0:26:30", end: "0:28:47", type: "Sex (No Nudity)", severity: "Moderate" }
+            { start: "0:26:30", end: "0:28:47", type: "Sex", severity: "Moderate" }
         ] 
     },
 

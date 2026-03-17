@@ -44,7 +44,7 @@ export const SENSITIVE_TIMELINES = {
     // 2. All of Us Strangers
     994108: { 
         scenes: [
-            { start: "26:30", end: "28:47", type: "Sex (No Nudity)", severity: "Moderate" }
+            { start: "26:30", end: "28:47", type: "Sex", severity: "Moderate" }
         ] 
     },
 
@@ -68,14 +68,14 @@ export const SENSITIVE_TIMELINES = {
             { start: "1:12", end: "1:55", type: "Sexual Content", severity: "Moderate" },
             { start: "29:53", end: "29:59", type: "Partial Nudity", severity: "Low" },
             { start: "31:20", end: "31:30", type: "Sexual Content", severity: "Moderate" },
-            { start: "39:20", end: "39:30", type: "Sex (No Nudity)", severity: "Moderate" }
+            { start: "39:20", end: "39:30", type: "Sex", severity: "Moderate" }
         ] 
     },
 
     // 7. Rye Lane
     1049638: { // Fixed TMDB ID
         scenes: [
-            { start: "38:22", end: "38:35", type: "Sex (No Nudity)", severity: "Moderate" },
+            { start: "38:22", end: "38:35", type: "Sex", severity: "Moderate" },
             { start: "1:11:30", end: "1:13:28", type: "Nudity", severity: "High" }
         ] 
     },

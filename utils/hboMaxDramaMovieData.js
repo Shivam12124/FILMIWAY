@@ -10,7 +10,7 @@ export const TMDB_CONFIG = {
 
 export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 376867, "imdbID": "tt4975722", "Title": "Moonlight", "year": 2016, "genre": "Drama", "runtime": 111, "rank": 1 },
-    { "tmdbId": 1064213, "imdbID": "tt8999762", "Title": "The Brutalist", "year": 2024, "genre": "Drama", "runtime": 215, "rank": 2 },
+    { "tmdbId": 549509, "imdbID": "tt8999762", "Title": "The Brutalist", "year": 2024, "genre": "Drama", "runtime": 215, "rank": 2 },
     { "tmdbId": 655, "imdbID": "tt0087884", "Title": "Paris, Texas", "year": 1984, "genre": "Drama", "runtime": 145, "rank": 3 },
     { "tmdbId": 103, "imdbID": "tt0075314", "Title": "Taxi Driver", "year": 1976, "genre": "Crime", "runtime": 114, "rank": 4 },
     { "tmdbId": 666277, "imdbID": "tt13238346", "Title": "Past Lives", "year": 2023, "genre": "Romance", "runtime": 105, "rank": 5 },
@@ -26,12 +26,12 @@ export const SENSITIVE_TIMELINES = {
     // 1. Moonlight
     376867: { 
         scenes: [
-            { start: "0:23:04", end: "0:23:24", type: "Sex (No Nudity)", severity: "Mild" }
+            { start: "0:23:04", end: "0:23:24", type: "Sex", severity: "Mild" }
         ] 
     },
 
     // 2. The Brutalist
-    1064213: { 
+    549509: { 
         scenes: [
             { start: "1:01:57", end: "1:02:30", type: "Sex & Nudity", severity: "High" }
         ] 
@@ -64,7 +64,7 @@ export const SENSITIVE_TIMELINES = {
     76025: { 
         scenes: [
             { start: "0:04:12", end: "0:06:10", type: "Nudity & Sexual Content", severity: "High" },
-            { start: "0:18:15", end: "0:18:40", type: "Sex (No Nudity)", severity: "Moderate" },
+            { start: "0:18:15", end: "0:18:40", type: "Sex", severity: "Moderate" },
             { start: "0:19:49", end: "0:20:49", type: "Nudity", severity: "High" },
             { start: "0:57:25", end: "0:58:12", type: "Sexual Content & Nudity", severity: "High" },
             { start: "0:58:45", end: "0:59:15", type: "Nudity & Sexual Content", severity: "High" },
@@ -81,7 +81,7 @@ export const SENSITIVE_TIMELINES = {
 
 export const FALLBACK_POSTERS = {
     376867: "https://image.tmdb.org/t/p/w500/4911d5MNM0e32pP79s0f33K3X5.jpg",
-    1064213: "https://image.tmdb.org/t/p/w500/l91FadJqg7qYm8f9Y3q8J9j8.jpg", // Placeholder if new
+    549509: "https://image.tmdb.org/t/p/w500/l91FadJqg7qYm8f9Y3q8J9j8.jpg", // Placeholder if new
     655: "https://image.tmdb.org/t/p/w500/v3QyboWRoA4O9RbcAq78Peobk.jpg",
     103: "https://image.tmdb.org/t/p/w500/ekstpH614fwDX8DUln1a2Opz0N8.jpg",
     666277: "https://image.tmdb.org/t/p/w500/k3waqVXSnvCZWfJYNtdamTgTtTA.jpg",
@@ -124,7 +124,7 @@ export const COMPLETE_MOVIE_DATA = {
   }),
 
   // 2. The Brutalist (2024)
-  1064213: createMovieData({
+  549509: createMovieData({
     emotionalIntensity: 94,
     complexityLevel: "EPIC",
     dominantColor: "#b45309",
@@ -315,7 +315,7 @@ export const COMPLETE_MOVIE_DATA = {
 
 export const STRATEGIC_QUOTES = {
     376867: "In moonlight, black boys look blue.",
-    1064213: "Architecture is an act of faith.",
+    549509: "Architecture is an act of faith.",
     655: "I knew these people... these two people... they were in love with each other.",
     103: "Loneliness has followed me my whole life.",
     666277: "If you leave something behind, you gain something too.",

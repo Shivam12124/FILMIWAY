@@ -651,6 +651,19 @@ const CollectionsHub = () => {
             hasSubCollections: false
         },
 
+
+{
+            id: 'movies-about-greed',
+            title: '10 Best Movies About Greed',
+            description: 'Explorations of extreme capitalism, corporate corruption, and the devastating pursuit of wealth.',
+            icon: DollarSign, 
+            gradient: 'from-emerald-600 to-green-900',
+            movieCount: '10',
+            rating: '7.7',
+            directLink: '/collection/best-movies-about-greed',
+            hasSubCollections: false
+        },
+
     ];
 
     const filteredCollections = collections.filter(collection =>

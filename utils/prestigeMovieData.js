@@ -113,13 +113,13 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Edward Norton", "Paul Giamatti", "Jessica Biel"], boxOffice: "$87.8 million", budget: "$16.5 million", 
         dna: { "Mystery": 50, "Romance": 30, "Drama": 20 },
         scenes: [
-            { time: 15, intensity: 45, label: "The Orange Tree Trick", color: "#78350f" },
-            { time: 45, intensity: 70, label: "The Ghost Conjuring", color: "#b45309" },
-            { time: 70, intensity: 85, label: "Arrest Attempt", color: "#d97706" },
-            { time: 95, intensity: 95, label: "The Disappearance", color: "#f59e0b" },
-            { time: 108, intensity: 100, label: "The Inspector Realizes", color: "#fcd34d" }
+            { time: 15, intensity: 35, label: "The Orange Tree Trick" }, // Mild tension/curiosity
+            { time: 45, intensity: 55, label: "The Ghost Conjuring" }, // Meaningful engagement
+            { time: 70, intensity: 72, label: "Arrest Attempt" }, // Strong tension
+            { time: 95, intensity: 84, label: "The Disappearance" }, // Crisis / Peak conflict
+            { time: 108, intensity: 88, label: "The Inspector Realizes" } // PRIMARY PEAK: Truth revelation
         ],
-        synopsis: "In turn-of-the-century Vienna, a brilliant stage magician uses his incredible abilities to secure the love of a woman far above his social standing, drawing the ire of the Crown Prince. Released the exact same year as The Prestige, it offers a more romantic, but equally deceptive, take on the art of illusion.",
+        synopsis: "In turn-of-the-century Vienna, a brilliant stage magician uses his incredible abilities to secure the love of a woman far above his social standing. It offers a romantic, but deceptive, take on the art of illusion.",
         themes: ["Class Warfare", "Misdirection", "Romantic Obsession"]
     }),
 
@@ -130,13 +130,13 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Guy Pearce", "Carrie-Anne Moss"], boxOffice: "$40 million", budget: "$9 million", 
         dna: { "Thriller": 60, "Mystery": 30, "Psychological": 10 },
         scenes: [
-            { time: 5, intensity: 85, label: "The Polaroid Murder", color: "#1e3a8a" },
-            { time: 40, intensity: 65, label: "Sammy Jankis", color: "#2563eb" },
-            { time: 75, intensity: 80, label: "Dodd's Chase", color: "#3b82f6" },
-            { time: 100, intensity: 95, label: "Natalie's Betrayal", color: "#60a5fa" },
-            { time: 110, intensity: 100, label: "The Lie We Tell Ourselves", color: "#93c5fd" }
+            { time: 5, intensity: 50, label: "The Polaroid Murder" }, // Starting high with disaster
+            { time: 40, intensity: 68, label: "Sammy Jankis" }, // Strong emotional pressure
+            { time: 75, intensity: 75, label: "Dodd's Chase" }, // Crisis
+            { time: 100, intensity: 88, label: "Natalie's Betrayal" }, // Devastating moral rupture
+            { time: 110, intensity: 97, label: "The Lie We Tell Ourselves" } // PRIMARY PEAK: Existential/Genre-defining climax
         ],
-        synopsis: "A man with short-term memory loss uses notes and tattoos to hunt for his wife's killer. Directed by Christopher Nolan (who also directed The Prestige), this masterclass in nonlinear storytelling places the audience inside the mind of an unreliable narrator who may be tricking himself.",
+        synopsis: "A man with short-term memory loss uses notes and tattoos to hunt for his wife's killer. This masterclass places the audience inside the mind of an unreliable narrator tricking himself.",
         themes: ["Memory", "Self-Deception", "Grief"]
     }),
 
@@ -147,13 +147,13 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Leonardo DiCaprio", "Mark Ruffalo"], boxOffice: "$294.8 million", budget: "$80 million", 
         dna: { "Thriller": 50, "Psychological": 35, "Mystery": 15 },
         scenes: [
-            { time: 15, intensity: 45, label: "Arrival at Ashecliffe", color: "#0c4a6e" },
-            { time: 60, intensity: 75, label: "The Cave Interrogation", color: "#0284c7" },
-            { time: 95, intensity: 88, label: "Ward C Break-In", color: "#38bdf8" },
-            { time: 120, intensity: 100, label: "The Lighthouse Reveal", color: "#7dd3fc" },
-            { time: 135, intensity: 90, label: "Live as a Monster", color: "#bae6fd" }
+            { time: 15, intensity: 30, label: "Arrival at Ashecliffe" },
+            { time: 60, intensity: 62, label: "The Cave Interrogation" },
+            { time: 95, intensity: 78, label: "Ward C Break-In" },
+            { time: 120, intensity: 94, label: "The Lighthouse Reveal" }, // PRIMARY PEAK: Overwhelming psychological collapse
+            { time: 135, intensity: 70, label: "Live as a Monster" } // Tragic/Open release
         ],
-        synopsis: "A U.S. Marshal investigates the disappearance of a patient from an island asylum, only to uncover a reality that makes him question his own sanity. Like The Prestige, the film builds an elaborate, immersive illusion designed entirely around one specific man.",
+        synopsis: "A U.S. Marshal investigates a disappearance from an island asylum, only to uncover a reality that makes him question his own sanity.",
         themes: ["Constructed Reality", "Trauma", "Roleplay"]
     }),
 
@@ -164,13 +164,13 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Michael Douglas", "Sean Penn"], boxOffice: "$109.4 million", budget: "$50 million", 
         dna: { "Thriller": 60, "Mystery": 30, "Action": 10 },
         scenes: [
-            { time: 20, intensity: 50, label: "CRS Testing", color: "#064e3b" },
-            { time: 60, intensity: 75, label: "Buried Alive", color: "#059669" },
-            { time: 90, intensity: 85, label: "Mexico Awakening", color: "#10b981" },
-            { time: 115, intensity: 100, label: "The Roof Jump", color: "#34d399" },
-            { time: 125, intensity: 90, label: "The Curtain Drops", color: "#6ee7b7" }
+            { time: 20, intensity: 35, label: "CRS Testing" },
+            { time: 60, intensity: 70, label: "Buried Alive" },
+            { time: 90, intensity: 82, label: "Mexico Awakening" },
+            { time: 115, intensity: 92, label: "The Roof Jump" }, // PRIMARY PEAK: Near-death/Overwhelming pressure
+            { time: 125, intensity: 58, label: "The Curtain Drops" } // Resolution release
         ],
-        synopsis: "A wealthy investment banker is given a mysterious gift by his brother: participation in a 'game' that integrates with his real life. As the game escalates into a life-or-death conspiracy, the boundaries between the illusion and reality completely disintegrate.",
+        synopsis: "A wealthy banker is given participation in a 'game' that integrates with his real life. The boundaries between illusion and reality completely disintegrate.",
         themes: ["Control", "Elaborate Hoaxes", "Paranoia"]
     }),
 
@@ -181,13 +181,13 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Kevin Spacey", "Gabriel Byrne"], boxOffice: "$23.3 million", budget: "$6 million", 
         dna: { "Crime": 60, "Mystery": 30, "Thriller": 10 },
         scenes: [
-            { time: 10, intensity: 40, label: "The Lineup", color: "#7f1d1d" },
-            { time: 45, intensity: 65, label: "The Emerald Job", color: "#b91c1c" },
-            { time: 70, intensity: 80, label: "Kobayashi Arrives", color: "#ef4444" },
-            { time: 95, intensity: 90, label: "The Boat Massacre", color: "#f87171" },
-            { time: 104, intensity: 100, label: "The Bulletin Board", color: "#fca5a5" }
+            { time: 10, intensity: 25, label: "The Lineup" },
+            { time: 45, intensity: 58, label: "The Emerald Job" },
+            { time: 70, intensity: 75, label: "Kobayashi Arrives" },
+            { time: 95, intensity: 86, label: "The Boat Massacre" },
+            { time: 104, intensity: 96, label: "The Bulletin Board" } // PRIMARY PEAK: Genre-defining narrative rupture
         ],
-        synopsis: "The sole survivor of a horrific gun battle on a ship tells police the convoluted story of how he and his criminal partners were blackmailed by a mythical crime lord. The film relies entirely on the art of the 'Pledge, Turn, and Prestige', hiding the truth in plain sight.",
+        synopsis: "A survivor of a horrific gun battle tells the story of how he was blackmailed by a mythical crime lord. The film hides the truth in plain sight.",
         themes: ["Unreliable Narrator", "Myth-building", "Misdirection"]
     }),
 
@@ -198,13 +198,13 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Brad Pitt", "Edward Norton"], boxOffice: "$101.2 million", budget: "$63 million", 
         dna: { "Drama": 50, "Psychological": 40, "Action": 10 },
         scenes: [
-            { time: 25, intensity: 60, label: "The First Rule", color: "#831843" },
-            { time: 60, intensity: 75, label: "Chemical Burn", color: "#be185d" },
-            { time: 90, intensity: 85, label: "Project Mayhem", color: "#db2777" },
-            { time: 115, intensity: 100, label: "The Hotel Realization", color: "#f43f5e" },
-            { time: 135, intensity: 95, label: "Where Is My Mind", color: "#fb7185" }
+            { time: 25, intensity: 48, label: "The First Rule" },
+            { time: 60, intensity: 65, label: "Chemical Burn" },
+            { time: 90, intensity: 82, label: "Project Mayhem" },
+            { time: 115, intensity: 95, label: "The Hotel Realization" }, // PRIMARY PEAK: Identity-shattering moment
+            { time: 135, intensity: 75, label: "Where Is My Mind" } // Cathartic release
         ],
-        synopsis: "An insomniac office worker and a devil-may-care soap maker form an underground fight club that evolves into a terrorist organization. Like The Prestige, it features a protagonist who goes to extreme, identity-fracturing lengths to achieve an ideological goal.",
+        synopsis: "An insomniac and a soap maker form an underground fight club. Like The Prestige, it features extreme, identity-fracturing lengths to achieve an ideological goal.",
         themes: ["Dual Identity", "Masculinity", "Anti-Consumerism"]
     }),
 
@@ -215,13 +215,13 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Bruce Willis", "Haley Joel Osment"], boxOffice: "$672.8 million", budget: "$40 million", 
         dna: { "Thriller": 50, "Supernatural": 30, "Drama": 20 },
         scenes: [
-            { time: 10, intensity: 50, label: "Vincent's Attack", color: "#172554" },
-            { time: 45, intensity: 75, label: "I See Dead People", color: "#1e3a8a" },
-            { time: 70, intensity: 85, label: "The Tent Ghost", color: "#2563eb" },
-            { time: 90, intensity: 90, label: "The Funeral Video", color: "#60a5fa" },
-            { time: 102, intensity: 100, label: "The Dropped Ring", color: "#bfdbfe" }
+            { time: 10, intensity: 52, label: "Vincent's Attack" },
+            { time: 45, intensity: 68, label: "I See Dead People" },
+            { time: 70, intensity: 75, label: "The Tent Ghost" },
+            { time: 90, intensity: 60, label: "The Funeral Video" },
+            { time: 102, intensity: 94, label: "The Dropped Ring" } // PRIMARY PEAK: Devastating truth revelation
         ],
-        synopsis: "A child psychologist attempts to cure a young boy who claims he can see and talk to the dead. The film is a masterclass in cinematic illusion, planting clues throughout the runtime that perfectly set up one of the most famous twist endings in history.",
+        synopsis: "A child psychologist attempts to cure a boy who claims he can see the dead. A masterclass in cinematic illusion planting clues throughout.",
         themes: ["Hidden Truths", "Grief", "Communication"]
     }),
 
@@ -232,13 +232,13 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Christian Bale", "Jennifer Jason Leigh"], boxOffice: "$8.2 million", budget: "$5 million", 
         dna: { "Psychological": 60, "Thriller": 30, "Drama": 10 },
         scenes: [
-            { time: 20, intensity: 60, label: "The Factory Accident", color: "#3f3f46" },
-            { time: 50, intensity: 75, label: "Ivan's Photo", color: "#52525b" },
-            { time: 75, intensity: 85, label: "The Funhouse", color: "#71717a" },
-            { time: 90, intensity: 95, label: "The Hit and Run", color: "#a1a1aa" },
-            { time: 98, intensity: 100, label: "I Want to Sleep", color: "#d4d4d8" }
+            { time: 20, intensity: 55, label: "The Factory Accident" },
+            { time: 50, intensity: 65, label: "Ivan's Photo" },
+            { time: 75, intensity: 80, label: "The Funhouse" },
+            { time: 90, intensity: 91, label: "The Hit and Run" }, // PRIMARY PEAK: Crisis/Emotional breaking point
+            { time: 98, intensity: 65, label: "I Want to Sleep" } // Resolution release
         ],
-        synopsis: "An industrial worker who hasn't slept in a year begins to doubt his own sanity when strange notes appear in his apartment and a mysterious co-worker causes a horrific accident. A grueling look at how guilt forces the mind to construct an elaborate, protective illusion.",
+        synopsis: "An insomniac industrial worker doubts his own sanity when strange notes appear. A grueling look at how guilt constructs a protective illusion.",
         themes: ["Guilt", "Paranoia", "Physical Deterioration"]
     }),
 
@@ -249,13 +249,13 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Richard Gere", "Edward Norton"], boxOffice: "$102.6 million", budget: "$30 million", 
         dna: { "Crime": 50, "Thriller": 30, "Drama": 20 },
         scenes: [
-            { time: 15, intensity: 60, label: "The Bishop's Murder", color: "#450a0a" },
-            { time: 55, intensity: 85, label: "The Video Tape", color: "#7f1d1d" },
-            { time: 80, intensity: 90, label: "Roy Appears", color: "#b91c1c" },
-            { time: 110, intensity: 95, label: "Courtroom Outburst", color: "#ef4444" },
-            { time: 125, intensity: 100, label: "The Slow Clap", color: "#fca5a5" }
+            { time: 15, intensity: 45, label: "The Bishop's Murder" },
+            { time: 55, intensity: 68, label: "The Video Tape" },
+            { time: 80, intensity: 75, label: "Roy Appears" },
+            { time: 110, intensity: 84, label: "Courtroom Outburst" },
+            { time: 125, intensity: 93, label: "The Slow Clap" } // PRIMARY PEAK: Devastating psychological reveal
         ],
-        synopsis: "A high-profile defense attorney takes on the case of a stuttering altar boy accused of murdering a beloved archbishop. The film hinges entirely on a psychological performance by the accused, forcing the audience to guess who is really pulling the strings.",
+        synopsis: "A defense attorney takes on the case of an altar boy accused of murdering an archbishop. The film forces the audience to guess who is pulling the strings.",
         themes: ["Manipulation", "Legal Theatrics", "Dual Persona"]
     }),
 
@@ -266,13 +266,13 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Jesse Eisenberg", "Mark Ruffalo", "Woody Harrelson"], boxOffice: "$351.7 million", budget: "$75 million", 
         dna: { "Heist": 50, "Thriller": 30, "Action": 20 },
         scenes: [
-            { time: 15, intensity: 50, label: "The Tarot Card", color: "#1e1b4b" },
-            { time: 35, intensity: 75, label: "Robbing the Paris Bank", color: "#312e81" },
-            { time: 65, intensity: 85, label: "The Tressler Heist", color: "#4338ca" },
-            { time: 95, intensity: 90, label: "The Car Chase", color: "#4f46e5" },
-            { time: 110, intensity: 100, label: "The Fifth Horseman", color: "#818cf8" }
+            { time: 15, intensity: 40, label: "The Tarot Card" },
+            { time: 35, intensity: 65, label: "Robbing the Paris Bank" },
+            { time: 65, intensity: 78, label: "The Tressler Heist" },
+            { time: 95, intensity: 85, label: "The Car Chase" }, // Physical action peak
+            { time: 110, intensity: 87, label: "The Fifth Horseman" } // PRIMARY PEAK: Narrative revelation
         ],
-        synopsis: "An FBI agent tracks a team of illusionists who pull off bank heists during their performances and reward their audiences with the money. A modern, flashy take on stage magic that explicitly uses the 'Pledge, Turn, Prestige' structure of misdirection.",
+        synopsis: "An FBI agent tracks illusionists who pull off bank heists during their performances. A flashy take on stage magic using misdirection.",
         themes: ["Stage Magic", "Heist Dynamics", "The Eye"]
     })
 };

@@ -18,6 +18,7 @@ import { COMPLETE_MOVIE_DATABASE as BLACK_SWAN_DATABASE, COMPLETE_MOVIE_DATA as 
 import { COMPLETE_MOVIE_DATABASE as EYES_WIDE_SHUT_DATABASE, COMPLETE_MOVIE_DATA as EYES_WIDE_SHUT_DATA } from '../../utils/eyesWideShutMovieData';
 import { COMPLETE_MOVIE_DATABASE as PRESTIGE_DATABASE, COMPLETE_MOVIE_DATA as PRESTIGE_DATA } from '../../utils/prestigeMovieData';
 import { COMPLETE_MOVIE_DATABASE as EROTIC_THRILLER_DATABASE, COMPLETE_MOVIE_DATA as EROTIC_THRILLER_DATA } from '../../utils/eroticThrillerMovieData';
+import { COMPLETE_MOVIE_DATABASE as GREED_DATABASE, COMPLETE_MOVIE_DATA as GREED_DATA } from '../../utils/greedMovieData';
 import { COMPLETE_MOVIE_DATABASE as INTERSTELLAR_DATABASE, COMPLETE_MOVIE_DATA as INTERSTELLAR_DATA } from '../../utils/interstellarMovieData';
 import { COMPLETE_MOVIE_DATABASE as CRIME_THRILLER_DATABASE, COMPLETE_MOVIE_DATA as CRIME_THRILLER_DATA } from '../../utils/crimeThrillerMovieData';
 import { COMPLETE_MOVIE_DATABASE as WAR_FILMS_DATABASE, COMPLETE_MOVIE_DATA as WAR_FILMS_DATA } from '../../utils/warFilmsMovieData';
@@ -1247,6 +1248,30 @@ const getCollectionContent = () => {
             text2: "This collection is an exploration of the darker side of human nature. You will witness the destructive power of obsession and the deadly consequences of forbidden desires. In the world of the erotic thriller, no one is innocent."
         }
     };
+} else if (collection.slug === 'best-movies-about-greed') {
+    return {
+        badge: "Greed & Capitalism Cinema",
+        title: "10 Best Movies About Greed",
+        description: "A thrilling cinematic exploration of extreme capitalism, moral decay, and the destructive pursuit of wealth.",
+        selection: {
+            text1: "From the oil-soaked ruthlessness of 'There Will Be Blood' to the manic hedonism of 'The Wolf of Wall Street'—these films represent the pinnacle of cinema exploring corporate greed.",
+            text2: "Each selection features characters consumed by ambition, moral compromise, and the intoxicating, often fatal, allure of money."
+        },
+        ranking: {
+            text: "Our Greed Index evaluates the destructive power of wealth, the depth of moral decay, and the psychological complexity of each protagonist's descent.",
+            points: [
+                "Moral decay depth",
+                "Greed Index intensity",
+                "Capitalist critique power",
+                "Character obsession scale"
+            ]
+        },
+        experience: {
+            text1: "Whether you're seeking corporate fraud thrillers or devastating character studies, this collection delivers the most unflinching portrayals of capitalism.",
+            text2: "Each film serves as a cautionary tale—proving that the ultimate cost of unchecked ambition is often one's own soul."
+        }
+    };
+
     
         
 
@@ -1971,6 +1996,11 @@ subtitle: "While everyone searches Netflix, these classics hide in plain sight. 
             title: "10 Best Erotic Thriller Movies: Where Desire Meets Danger",
             subtitle: "A curated selection of films exploring passion, obsession, and the dark side of human intimacy"
         };
+    } else if (collection.slug === 'best-movies-about-greed') {
+        return {
+            title: "10 Best Movies About Greed: Capitalism & Corruption",
+            subtitle: "Cinematic masterpieces exploring extreme wealth, moral decay, and the devastating cost of ambition"
+        };
 
     } else if (collection.slug === 'movies-like-interstellar') {
         return {
@@ -2099,6 +2129,11 @@ const getLoaderContent = () => {
     return {
         title: "Loading Best Erotic Thriller Movies",
         description: "Curating sensual and suspenseful cinematic masterpieces with community reviews."
+    };
+} else if (collection?.slug === 'best-movies-about-greed') {
+    return {
+        title: "Loading Best Movies About Greed",
+        description: "Curating cinematic explorations of capitalism, corruption, and moral decay with community reviews."
     };
 
 } else if (collection?.slug === 'movies-like-donnie-darko') {
@@ -2485,6 +2520,15 @@ const getStaticMetaContent = () => {
         twitterTitle: "10 Best Erotic Thrillers Where Desire Meets Danger",
         progressText: `of Top ${movies.length} Erotic Thriller Movies`
     };
+    } else if (collection.slug === 'best-movies-about-greed') {
+        return {
+            title: "10 Best Movies About Greed & Corporate Corruption (Ranked)",
+            description: "The definitive ranking of the 10 best movies about greed, capitalism, and moral decay. Featuring There Will Be Blood, Wall Street, and an exact Parents Guide.",
+            keywords: "best movies about greed, movies about capitalism, corporate corruption films, wall street movies, movies like the wolf of wall street",
+            ogTitle: "10 Best Movies About Greed & Capitalism",
+            twitterTitle: "The 10 Best Movies About Greed You Need to Watch",
+            progressText: `of Top ${movies.length} Movies About Greed`
+        };
 
 
     } else if (collection.slug === 'best-romance-movies-on-hulu') {
@@ -3085,6 +3129,7 @@ const getStaticMetaContent = () => {
             sessionStorage.removeItem('fromRevengeCollection');
             sessionStorage.removeItem('fromWarFilmsCollection');
             sessionStorage.removeItem('fromEroticThrillerCollection');
+            sessionStorage.removeItem('fromGreedCollection');
 
             // Set appropriate collection flag âœ…
             if (collection.slug === 'movies-like-inception') {
@@ -3207,6 +3252,8 @@ const getStaticMetaContent = () => {
                 sessionStorage.setItem('fromWarFilmsCollection', 'true');
             } else if (collection.slug === 'best-erotic-thriller-movies') {
                 sessionStorage.setItem('fromEroticThrillerCollection', 'true');
+            } else if (collection.slug === 'best-movies-about-greed') {
+                sessionStorage.setItem('fromGreedCollection', 'true');
             }
         }
     };
@@ -3623,6 +3670,8 @@ return (
 ? 'movies/like-prestige/'
 : collection?.slug === 'best-erotic-thriller-movies'
 ? 'movies/best-erotic-thriller-movies/'
+: collection?.slug === 'best-movies-about-greed'
+? 'movies/best-movies-about-greed/'
 : collection?.slug === 'best-action-movies-on-hulu'
                                     ? 'movies/best-action-movies-on-hulu/'
 : collection?.slug === 'best-romance-movies-on-hulu'
@@ -3860,6 +3909,8 @@ return (
                                     ? `/movies/like-prestige/${currentMovie.imdbID}`
                                     : collection.slug === 'best-erotic-thriller-movies'
                                     ? `/movies/best-erotic-thriller-movies/${currentMovie.imdbID}`
+                                    : collection.slug === 'best-movies-about-greed'
+                                    ? `/movies/best-movies-about-greed/${currentMovie.imdbID}`
                                     : collection.slug === 'best-action-movies-on-hulu'
                                     ? `/movies/best-action-movies-on-hulu/${currentMovie.imdbID}`
                                     : collection.slug === 'best-romance-movies-on-hulu'
@@ -4016,6 +4067,8 @@ return (
                                     detailPageUrl = `/movies/like-prestige/${currentMovie.imdbID}`;
                                 } else if (collection.slug === 'best-erotic-thriller-movies') {
                                     detailPageUrl = `/movies/best-erotic-thriller-movies/${currentMovie.imdbID}`;
+                                } else if (collection.slug === 'best-movies-about-greed') {
+                                    detailPageUrl = `/movies/best-movies-about-greed/${currentMovie.imdbID}`;
                                 } else if (collection.slug === 'best-action-movies-on-hulu') {
                                     detailPageUrl = `/movies/best-action-movies-on-hulu/${currentMovie.imdbID}`;
                                 } else if (collection.slug === 'best-romance-movies-on-hulu') {
@@ -4304,6 +4357,9 @@ case 'movies-like-the-prestige':
             break;
 case 'best-erotic-thriller-movies':
             movieDatabase = EROTIC_THRILLER_DATABASE;
+            break;
+case 'best-movies-about-greed':
+            movieDatabase = GREED_DATABASE;
             break;
 
             case 'best-action-movies-on-hulu':

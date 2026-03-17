@@ -202,11 +202,11 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Michael Douglas", "Sharon Stone"], boxOffice: "$352.9 million", budget: "$49 million", 
         dna: { "Neo-Noir": 45, "Thriller": 35, "Mystery": 20 },
         scenes: [
-            { time: 5, intensity: 90, label: "The Ice Pick", color: "#e11d48" },
-            { time: 52, intensity: 98, label: "The Interrogation", color: "#f43f5e" },
-            { time: 85, intensity: 70, label: "The Polygraph", color: "#9f1239" },
-            { time: 110, intensity: 85, label: "Car Chase", color: "#1e3a8a" },
-            { time: 125, intensity: 100, label: "Under the Bed", color: "#0f172a" }
+            { time: 5, intensity: 55, label: "The Ice Pick" }, // Meaningful engagement (Murder)
+            { time: 52, intensity: 75, label: "The Interrogation" }, // Crisis/Psychological Peak Conflict
+            { time: 85, intensity: 62, label: "The Polygraph" }, // Strong Tension
+            { time: 110, intensity: 70, label: "Car Chase" },
+            { time: 125, intensity: 92, label: "Under the Bed" } // PRIMARY PEAK: Devastating/Overwhelming Reveal
         ],
         synopsis: "A brilliant, manipulative novelist becomes the prime suspect in a brutal murder. As the investigating detective falls deeper under her spell, the film masters the neo-noir trope of the ultimate femme fatale holding all the psychological cards.",
         themes: ["Psychological Dominance", "Neo-Noir", "Fatal Attraction"]
@@ -217,11 +217,11 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Tom Cruise", "Nicole Kidman"], boxOffice: "$162 million", budget: "$65 million", 
         dna: { "Psychological": 50, "Drama": 30, "Mystery": 20 },
         scenes: [
-            { time: 30, intensity: 80, label: "The Confession", color: "#1e3a8a" },
-            { time: 65, intensity: 60, label: "The Costume Shop", color: "#3b82f6" },
-            { time: 95, intensity: 100, label: "The Mansion Ritual", color: "#dc2626" },
-            { time: 120, intensity: 90, label: "The Mask on the Pillow", color: "#1e3a8a" },
-            { time: 155, intensity: 75, label: "Awakening", color: "#0f172a" }
+            { time: 30, intensity: 58, label: "The Confession" }, // Meaningful emotional pull
+            { time: 65, intensity: 40, label: "The Costume Shop" }, // Light engagement
+            { time: 95, intensity: 88, label: "The Mansion Ritual" }, // PRIMARY PEAK: Overwhelming/Extreme dread
+            { time: 120, intensity: 75, label: "The Mask on the Pillow" }, // Crisis
+            { time: 155, intensity: 52, label: "Awakening" } // Resolution/Bittersweet release
         ],
         synopsis: "A doctor embarks on a night-long, surreal odyssey of moral discovery after his wife admits to suppressed desires. Kubrick’s final film is a hypnotic, dream-like exploration of jealousy, fidelity, and the hidden power structures of the elite.",
         themes: ["Secret Societies", "Marital Paranoia", "Class Voyeurism"]
@@ -232,11 +232,11 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Kim Min-hee", "Kim Tae-ri", "Ha Jung-woo"], boxOffice: "$38.6 million", budget: "$8.8 million", 
         dna: { "Thriller": 45, "Romance": 35, "Crime": 20 },
         scenes: [
-            { time: 25, intensity: 50, label: "The Thimble", color: "#065f46" },
-            { time: 65, intensity: 85, label: "The Betrayal", color: "#047857" },
-            { time: 95, intensity: 100, label: "Perspective Shift", color: "#b91c1c" },
-            { time: 120, intensity: 90, label: "The Library Destruction", color: "#7f1d1d" },
-            { time: 140, intensity: 85, label: "The Ferry", color: "#10b981" }
+            { time: 25, intensity: 35, label: "The Thimble" }, // Mild tension
+            { time: 65, intensity: 72, label: "The Betrayal" }, // Strong tension
+            { time: 95, intensity: 95, label: "Perspective Shift" }, // PRIMARY PEAK: Existential/Genre-defining narrative rupture
+            { time: 120, intensity: 82, label: "The Library Destruction" }, // Crisis
+            { time: 140, intensity: 65, label: "The Ferry" } // Bittersweet/Romantic release
         ],
         synopsis: "In 1930s Korea, a con man hires a pickpocket to become the maid of a Japanese heiress to steal her fortune. What follows is an intricate puzzle-box of shifting alliances, hidden motives, and visually stunning cinematic misdirection.",
         themes: ["Con Artistry", "Shifting Perspectives", "Class Subversion"]
@@ -247,11 +247,11 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Tony Leung", "Tang Wei"], boxOffice: "$67.2 million", budget: "$15 million", 
         dna: { "Espionage": 45, "Drama": 35, "Thriller": 20 },
         scenes: [
-            { time: 40, intensity: 50, label: "The Operation Begins", color: "#78350f" },
-            { time: 85, intensity: 80, label: "The First Encounter", color: "#991b1b" },
-            { time: 125, intensity: 95, label: "The Breaking Point", color: "#dc2626" },
-            { time: 145, intensity: 100, label: "The Jewelry Store", color: "#b45309" },
-            { time: 155, intensity: 85, label: "The Quarry", color: "#0f172a" }
+            { time: 40, intensity: 30, label: "The Operation Begins" },
+            { time: 85, intensity: 68, label: "The First Encounter" }, 
+            { time: 125, intensity: 84, label: "The Breaking Point" }, 
+            { time: 145, intensity: 90, label: "The Jewelry Store" }, // PRIMARY PEAK: Devastating/Irreversible life rupture
+            { time: 155, intensity: 78, label: "The Quarry" } // Tragic ending release
         ],
         synopsis: "During WWII in Shanghai, a young actress is recruited to seduce and assassinate a high-ranking political official. Ang Lee directs a tense, suffocating game of cat-and-mouse where the lines between espionage and true emotion blur fatally.",
         themes: ["Undercover Espionage", "Wartime Betrayal", "Dangerous Roles"]
@@ -262,13 +262,13 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Matt Dillon", "Neve Campbell", "Denise Richards"], boxOffice: "$67.2 million", budget: "$20 million", 
         dna: { "Neo-Noir": 45, "Crime": 35, "Mystery": 20 },
         scenes: [
-            { time: 20, intensity: 65, label: "The Accusation", color: "#0284c7" },
-            { time: 55, intensity: 85, label: "The Settlement", color: "#0369a1" },
-            { time: 75, intensity: 95, label: "The Motel Meeting", color: "#0f172a" },
-            { time: 95, intensity: 100, label: "The Swamp Scene", color: "#1e3a8a" },
-            { time: 105, intensity: 90, label: "The Final Twist", color: "#f59e0b" }
+            { time: 20, intensity: 35, label: "The Accusation" },
+            { time: 55, intensity: 50, label: "The Settlement" },
+            { time: 75, intensity: 72, label: "The Motel Meeting" },
+            { time: 95, intensity: 82, label: "The Swamp Scene" }, // Crisis
+            { time: 105, intensity: 86, label: "The Final Twist" } // PRIMARY PEAK: Narrative implosion
         ],
-        synopsis: "A high school guidance counselor is accused of a crime by two female students, unleashing a labyrinthine plot of blackmail and murder in the swamps of Florida. A masterclass in the 'trash-noir' genre built entirely on constant double-crossing.",
+        synopsis: "A high school guidance counselor is accused of a crime by two female students, unleashing a labyrinthine plot of blackmail and murder. A masterclass in 'trash-noir' built on constant double-crossing.",
         themes: ["Double Crosses", "Florida Noir", "Blackmail"]
     }),
     2251: createThrillerData({ // Unfaithful
@@ -277,13 +277,13 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Richard Gere", "Diane Lane", "Olivier Martinez"], boxOffice: "$119.1 million", budget: "$50 million", 
         dna: { "Drama": 60, "Thriller": 30, "Romance": 10 },
         scenes: [
-            { time: 15, intensity: 45, label: "The Windstorm", color: "#64748b" },
-            { time: 45, intensity: 85, label: "The Train Ride Home", color: "#94a3b8" },
-            { time: 80, intensity: 90, label: "The Husband Discovers", color: "#0f172a" },
-            { time: 95, intensity: 100, label: "The Snow Globe", color: "#b91c1c" },
-            { time: 118, intensity: 75, label: "The Traffic Light", color: "#0f172a" }
+            { time: 15, intensity: 22, label: "The Windstorm" },
+            { time: 45, intensity: 48, label: "The Train Ride Home" },
+            { time: 80, intensity: 75, label: "The Husband Discovers" },
+            { time: 95, intensity: 89, label: "The Snow Globe" }, // PRIMARY PEAK: Irreversible life rupture
+            { time: 118, intensity: 65, label: "The Traffic Light" } // Tragic/Unsettling release
         ],
-        synopsis: "A suburban housewife’s accidental encounter with a younger man leads to a passionate affair, setting off a chain reaction of guilt and violence. An elegant, slow-burn exploration of the devastating consequences of acting on impulse.",
+        synopsis: "A suburban housewife’s accidental encounter with a younger man leads to a passionate affair, setting off a chain reaction of guilt and violence.",
         themes: ["Guilt", "Marital Decay", "Crimes of Passion"]
     }),
     10998: createThrillerData({ // Fatal Attraction
@@ -292,13 +292,13 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Michael Douglas", "Glenn Close"], boxOffice: "$320.1 million", budget: "$14 million", 
         dna: { "Psychological": 50, "Thriller": 40, "Drama": 10 },
         scenes: [
-            { time: 20, intensity: 60, label: "The Weekend", color: "#1e3a8a" },
-            { time: 55, intensity: 80, label: "The Umbrella", color: "#0f172a" },
-            { time: 75, intensity: 95, label: "The Stove", color: "#b91c1c" },
-            { time: 90, intensity: 85, label: "The Tape Cassette", color: "#dc2626" },
-            { time: 110, intensity: 100, label: "The Bathroom", color: "#991b1b" }
+            { time: 20, intensity: 42, label: "The Weekend" },
+            { time: 55, intensity: 65, label: "The Umbrella" },
+            { time: 75, intensity: 82, label: "The Stove" }, // Crisis
+            { time: 90, intensity: 70, label: "The Tape Cassette" },
+            { time: 110, intensity: 91, label: "The Bathroom" } // PRIMARY PEAK: Devastating confrontation
         ],
-        synopsis: "A married man's brief indiscretion comes back to haunt him when his weekend companion refuses to let him go. The film defined the modern psychological stalker genre, elevating domestic anxiety into pure, terrifying suspense.",
+        synopsis: "A married man's brief indiscretion comes back to haunt him when his weekend companion refuses to let him go.",
         themes: ["Obsession", "Stalking", "Consequences"]
     }),
     14412: createThrillerData({ // Body Heat
@@ -307,28 +307,28 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["William Hurt", "Kathleen Turner"], boxOffice: "$24 million", budget: "$9 million", 
         dna: { "Neo-Noir": 60, "Crime": 30, "Thriller": 10 },
         scenes: [
-            { time: 15, intensity: 65, label: "Breaking the Window", color: "#d97706" },
-            { time: 45, intensity: 80, label: "Planning the Murder", color: "#b45309" },
-            { time: 75, intensity: 90, label: "The Alibi", color: "#92400e" },
-            { time: 95, intensity: 95, label: "The Setup", color: "#78350f" },
-            { time: 110, intensity: 100, label: "The Boathouse Reveal", color: "#0f172a" }
+            { time: 15, intensity: 45, label: "Breaking the Window" },
+            { time: 45, intensity: 62, label: "Planning the Murder" },
+            { time: 75, intensity: 75, label: "The Alibi" },
+            { time: 95, intensity: 84, label: "The Setup" },
+            { time: 110, intensity: 90, label: "The Boathouse Reveal" } // PRIMARY PEAK: Irreversible moral rupture
         ],
-        synopsis: "In the sweltering Florida heat, an inept lawyer is manipulated by a brilliant, ruthless woman into murdering her wealthy husband. A flawless modern update to classic film noir tropes, dripping with atmosphere and lethal calculation.",
+        synopsis: "In the sweltering Florida heat, an inept lawyer is manipulated by a brilliant, ruthless woman into murdering her wealthy husband.",
         themes: ["Classic Noir", "The Perfect Crime", "Femme Fatale"]
     }),
- 25284: createThrillerData({ // The Last Seduction
+    25284: createThrillerData({ // The Last Seduction
         eroticTension: 92, complexityLevel: "HIGH", 
         dominantColor: "#000000", rating: 7.0, criticsScore: 94, audienceScore: 73, director: "John Dahl", 
         cast: ["Linda Fiorentino", "Peter Berg"], boxOffice: "$5.8 million", budget: "$2.5 million", 
         dna: { "Neo-Noir": 50, "Crime": 35, "Thriller": 15 },
         scenes: [
-            { time: 10, intensity: 60, label: "The Cash Grab", color: "#000000" },
-            { time: 35, intensity: 75, label: "Small Town Hideout", color: "#1e3a8a" },
-            { time: 65, intensity: 85, label: "The Setup", color: "#0f172a" },
-            { time: 90, intensity: 95, label: "The Husband Arrives", color: "#b91c1c" },
-            { time: 105, intensity: 100, label: "The Perfect Frame", color: "#000000" }
+            { time: 10, intensity: 52, label: "The Cash Grab" },
+            { time: 35, intensity: 30, label: "Small Town Hideout" },
+            { time: 65, intensity: 75, label: "The Setup" },
+            { time: 90, intensity: 82, label: "The Husband Arrives" },
+            { time: 105, intensity: 89, label: "The Perfect Frame" } // PRIMARY PEAK: Near-death/Truth revelation
         ],
-        synopsis: "After stealing her husband's illegal drug money, a fiercely intelligent, utterly unrepentant woman hides in a small town and targets a naive local to serve as her perfect pawn. Features one of the greatest, most unapologetic villain protagonists in cinematic history.",
+        synopsis: "After stealing her husband's drug money, a fiercely intelligent woman targets a naive local to serve as her perfect pawn.",
         themes: ["Ruthless Ambition", "Small Town Traps", "Unapologetic Villainy"]
     }),
     9303: createThrillerData({ // Bound
@@ -337,13 +337,13 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Jennifer Tilly", "Gina Gershon", "Joe Pantoliano"], boxOffice: "$3.8 million", budget: "$4.5 million", 
         dna: { "Crime": 45, "Neo-Noir": 35, "Thriller": 20 },
         scenes: [
-            { time: 15, intensity: 55, label: "The Plumbing Fix", color: "#7f1d1d" },
-            { time: 40, intensity: 70, label: "The Heist Plan", color: "#991b1b" },
-            { time: 65, intensity: 85, label: "The Suitcase Switch", color: "#dc2626" },
-            { time: 85, intensity: 95, label: "Caesar Panics", color: "#0f172a" },
-            { time: 100, intensity: 100, label: "The Final Standoff", color: "#b91c1c" }
+            { time: 15, intensity: 38, label: "The Plumbing Fix" },
+            { time: 40, intensity: 65, label: "The Heist Plan" },
+            { time: 65, intensity: 80, label: "The Suitcase Switch" },
+            { time: 85, intensity: 86, label: "Caesar Panics" },
+            { time: 100, intensity: 87, label: "The Final Standoff" } // PRIMARY PEAK: Crisis/Peak conflict
         ],
-        synopsis: "An ex-con forms a dangerous alliance with a mafia money-launderer's girlfriend to steal millions in mob cash. The Wachowskis' directorial debut is a tightly wound, stylishly shot thriller that cleverly subverts traditional noir expectations.",
+        synopsis: "An ex-con forms a dangerous alliance with a mafia money-launderer's girlfriend to steal millions in mob cash.",
         themes: ["Mob Heists", "Claustrophobic Tension", "Trust and Deception"]
     })
 };
@@ -452,6 +452,7 @@ export const getSensitiveContentTypes = (tmdbId) => {
 };
 
 // 🔥 7. THE "GOLDEN EGG" SCHEMA GENERATOR (Universal Version)
+// 🔥 7. THE "GOLDEN EGG" SCHEMA GENERATOR (Unrestricted Version)
 export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, collectionSlug, unused, movieInfo) => {
     let currentRuntime = movie.Runtime || movie.runtime || "Official";
     if (typeof currentRuntime === 'number') currentRuntime = `${currentRuntime} min`;
@@ -460,7 +461,7 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
         '@context': 'https://schema.org',
         '@type': 'Movie',
         'name': movie.Title,
-        'description': movieInfo?.synopsis || `${movie.Title} (${currentMovieYear}) - A neo-noir thriller exploring betrayal, manipulation, and psychological tension.`,
+        'description': movieInfo?.synopsis || `${movie.Title} (${currentMovieYear}) - A thrilling cinematic exploration of extreme capitalism, moral decay, and the destructive pursuit of wealth.`,
         'genre': movie.genre,
         'url': `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`, 
         'datePublished': currentMovieYear?.toString() || movie.year.toString(),
@@ -470,7 +471,7 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
         'duration': `PT${movie.runtime}M`
     };
 
-    const staticFaqs = EROTIC_THRILLER_MOVIE_FAQS[movie.Title] ? [...EROTIC_THRILLER_MOVIE_FAQS[movie.Title]] : [];
+    const staticFaqs = GREED_MOVIE_FAQS[movie.Title] ? [...GREED_MOVIE_FAQS[movie.Title]] : [];
     const sensitiveScenes = SENSITIVE_TIMELINES[movie.tmdbId]?.scenes || [];
     const intensityScenes = movieInfo?.scenes || [];
     
@@ -484,23 +485,24 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
         const schemaIntensityList = intensityScenes.map(s => `<li>Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)</li>`).join('');
         schemaFaqs.unshift({
             '@type': 'Question',
-            'name': `What are the most intense psychological scenes in ${movie.Title}?`,
+            'name': `What are the most intense scenes in ${movie.Title}?`,
             'acceptedAnswer': { 
                 '@type': 'Answer', 
-                'text': `According to the Filmiway Intensity metric, ${movie.Title} peaks at the following moments of tension and betrayal:<br><br><ul>${schemaIntensityList}</ul>` 
+                'text': `According to the Filmiway Intensity metric, ${movie.Title} peaks at the following moments of tension and moral collapse:<br><br><ul>${schemaIntensityList}</ul>` 
             }
         });
     }
 
     const heavyScenes = sensitiveScenes.filter(s => {
         const t = s.type?.toLowerCase() || '';
-        return t.includes('sex') || t.includes('nudity') || t.includes('violence'); 
+        return t.includes('sex') || t.includes('nudity') || t.includes('violence') || t.includes('drug'); 
     });
 
     if (heavyScenes.length > 0) {
         const typesArray = getSensitiveContentTypes(movie.tmdbId) || ['mature content'];
         const typesString = typesArray.join(' and ');
 
+        // ✅ NO LIMITS - Map all scenes for maximum SEO coverage
         const schemaListText = heavyScenes.map(s => {
             const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
             const fullType = s.severity ? `${s.type} (${s.severity})` : (s.type || 'Mature Content');
@@ -536,9 +538,9 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
     return { movieSchema, faqSchema };
 };
 
-// 🔥 8. FRONTEND UI SYNC (Displays the timestamps dynamically on the Next.js page)
+// 🔥 8. FRONTEND UI SYNC (Unrestricted Version)
 export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Official") => {
-    const staticFaqs = EROTIC_THRILLER_MOVIE_FAQS[movieTitle] ? [...EROTIC_THRILLER_MOVIE_FAQS[movieTitle]] : [];
+    const staticFaqs = GREED_MOVIE_FAQS[movieTitle] ? [...GREED_MOVIE_FAQS[movieTitle]] : [];
     const sensitiveScenes = SENSITIVE_TIMELINES[tmdbId]?.scenes || [];
     const movieInfo = COMPLETE_MOVIE_DATA[tmdbId];
     const intensityScenes = movieInfo?.scenes || [];
@@ -557,13 +559,14 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
 
     const heavyScenes = sensitiveScenes.filter(s => {
         const t = s.type?.toLowerCase() || '';
-        return t.includes('sex') || t.includes('nudity') || t.includes('violence');
+        return t.includes('sex') || t.includes('nudity') || t.includes('violence') || t.includes('drug');
     });
 
     if (heavyScenes.length > 0) {
         const typesArray = getSensitiveContentTypes(tmdbId) || ['mature content'];
         const typesString = typesArray.join(' and ');
 
+        // ✅ NO LIMITS - Map all scenes for the UI
         const uiListText = heavyScenes.map(s => {
             const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
             const fullType = s.severity ? `${s.type} (${s.severity})` : (s.type || 'Mature Content');

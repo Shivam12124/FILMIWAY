@@ -237,12 +237,12 @@ export const COMPLETE_MOVIE_DATA = {
         dominantColor: "#eab308", rating: 8.2, criticsScore: 80, audienceScore: 83, director: "Martin Scorsese", 
         cast: ["Leonardo DiCaprio", "Jonah Hill", "Margot Robbie"], boxOffice: "$392 million", budget: "$100 million", 
         dna: { "Biography": 30, "Crime": 30, "Comedy": 20, "Drama": 20 },
-        scenes: [
-            { time: 20, intensity: 35, label: "Pink Sheets", color: "#facc15" }, 
-            { time: 60, intensity: 65, label: "Steve Madden", color: "#ca8a04" }, 
-            { time: 120, intensity: 95, label: "Lemmon 714s", color: "#854d0e" }, 
-            { time: 140, intensity: 82, label: "I'm Not Leaving", color: "#eab308" }, 
-            { time: 170, intensity: 60, label: "The FBI Raid", color: "#a16207" }
+       scenes: [
+            { time: 20, intensity: 55, label: "Pink Sheets Pitch", color: "#facc15" },
+            { time: 60, intensity: 70, label: "Steve Madden", color: "#eab308" },
+            { time: 120, intensity: 88, label: "Lemmon 714s Phase", color: "#ca8a04" },
+            { time: 150, intensity: 80, label: "I'm Not Leaving", color: "#a16207" },
+            { time: 170, intensity: 72, label: "The FBI Raid", color: "#854d0e" }
         ],
         synopsis: "Based on the true story of Jordan Belfort, from his rise to a wealthy stock-broker living the high life to his fall involving crime, corruption and the federal government. It is a three-hour adrenaline rush of excess, drugs, and greed that manages to be one of the funniest movies of the decade.",
         themes: ["Greed", "Excess", "Crime"]

@@ -522,6 +522,15 @@ export const COLLECTIONS = {
     movies: ['tt0103772', 'tt0120663', 'tt4016934', 'tt0808357', 'tt0120890', 'tt0250797', 'tt0093010', 'tt0082089', 'tt0110308', 'tt0115736'],
     relatedCollections: ['best-psychological-thriller-movies', 'movies-like-eyes-wide-shut', 'best-crime-thriller-movies']
   },
+// 💵 BEST MOVIES ABOUT GREED
+  'best-movies-about-greed': {
+    slug: 'best-movies-about-greed',
+    title: '10 Best Movies About Greed',
+    stats: { averageRating: 7.7 },
+    movies: ['tt0469494', 'tt0993846', 'tt0094291', 'tt0040897', 'tt0112641', 'tt1596363', 'tt5727208', 'tt0015881', 'tt0144084', 'tt0120324'],
+    relatedCollections: ['best-heist-thriller-movies', 'best-crime-thriller-movies', 'best-psychological-thriller-movies']
+  },
+
 
   // 🩸 BEST THRILLER MOVIES
   'best-thriller-movies': {
@@ -531,6 +540,8 @@ export const COLLECTIONS = {
     movies: ['tt0114369', 'tt1392214', 'tt0477348', 'tt0102926', 'tt0353969', 'tt0327056', 'tt0407887', 'tt5362988', 'tt2267998', 'tt0119174'],
     relatedCollections: ['best-psychological-thriller-movies', 'best-crime-thriller-movies', 'best-mystery-thriller-movies']
   }
+
+  
 };
 
 
@@ -559,6 +570,7 @@ export const getCrimeThillerCollection = () => COLLECTIONS['best-crime-thriller-
 export const getPsychologicalThillerCollection = () => COLLECTIONS['best-psychological-thriller-movies'];
 export const getDetectiveThillerCollection = () => COLLECTIONS['best-detective-thriller-movies'];
 export const getMysteryThillerCollection = () => COLLECTIONS['best-mystery-thriller-movies'];
+export const getGreedCollection = () => COLLECTIONS['best-movies-about-greed'];
 export const getThrillerCollection = () => COLLECTIONS['best-thriller-movies'];
 
 // ============================================================================

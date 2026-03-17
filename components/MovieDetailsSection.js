@@ -60,6 +60,10 @@ import {
   COMPLETE_MOVIE_DATA as EROTIC_THRILLER_MOVIE_DATA,
   SENSITIVE_TIMELINES as EROTIC_THRILLER_SENSITIVE_TIMELINES
 } from '../utils/eroticThrillerMovieData';
+import {
+  COMPLETE_MOVIE_DATA as GREED_MOVIE_DATA,
+  SENSITIVE_TIMELINES as GREED_SENSITIVE_TIMELINES
+} from '../utils/greedMovieData';
 import { 
   COMPLETE_MOVIE_DATA as HBO_ACTION_MOVIE_DATA, 
   STRATEGIC_QUOTES as HBO_ACTION_QUOTES, 
@@ -297,6 +301,7 @@ import DonnieDarkoSEOFAQSection from './DonnieDarkoSEOFAQSection';
 import BlackSwanSEOFAQSection from './BlackSwanSEOFAQSection';
 import EyesWideShutSEOFAQSection from './EyesWideShutSEOFAQSection';
 import EroticThrillerSEOFAQSection from './EroticThrillerSEOFAQSection';
+import GreedSEOFAQSection from './GreedSEOFAQSection';
 import PrestigeSEOFAQSection from './PrestigeSEOFAQSection';
 import HboActionSEOFAQSection from './HboActionSEOFAQSection';
 import HboMaxRomanceSEOFAQSection from './HboMaxRomanceSEOFAQSection';
@@ -347,6 +352,7 @@ const MovieDetailsSection = React.memo(({
   fromBlackSwanCollection,
   fromPrestigeCollection,
   fromEroticThrillerCollection,
+  fromGreedCollection,
   fromSe7enCollection,
   fromParasiteCollection,
   fromDonnieDarkoCollection,
@@ -448,6 +454,7 @@ const MovieDetailsSection = React.memo(({
   : fromBlackSwanCollection ? safeLookup(BLACK_SWAN_MOVIE_DATA, movie.tmdbId)
   : fromPrestigeCollection ? safeLookup(PRESTIGE_MOVIE_DATA, movie.tmdbId)
   : fromEroticThrillerCollection ? safeLookup(EROTIC_THRILLER_MOVIE_DATA, movie.tmdbId)
+  : fromGreedCollection ? safeLookup(GREED_MOVIE_DATA, movie.tmdbId)
   : fromEyesWideShutCollection ? safeLookup(EYES_WIDE_SHUT_MOVIE_DATA, movie.tmdbId)
   : fromRevengeCollection ? safeLookup(REVENGE_MOVIE_DATA, movie.tmdbId)
   : fromWarFilmsCollection ? safeLookup(WAR_FILMS_MOVIE_DATA, movie.tmdbId)
@@ -613,6 +620,7 @@ const MovieDetailsSection = React.memo(({
    || BLACK_SWAN_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || PRESTIGE_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || EROTIC_THRILLER_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
+   || GREED_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || EYES_WIDE_SHUT_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || SE7EN_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || SCI_FI_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
@@ -671,6 +679,7 @@ const MovieDetailsSection = React.memo(({
    : fromBlackSwanCollection ? movie.psychologicalIntensity ?? safeMovieInfo.psychologicalIntensity ?? 0
    : fromPrestigeCollection ? movie. deceptionScore ?? safeMovieInfo. deceptionScore ?? 0
    : fromEroticThrillerCollection ? movie.eroticTension ?? safeMovieInfo.eroticTension ?? 0
+   : fromGreedCollection ? movie.greedIndex ?? safeMovieInfo.greedIndex ?? 0
    : fromEyesWideShutCollection ? movie.paranoiaIntensity ?? safeMovieInfo.paranoiaIntensity ?? 0
    : fromSe7enCollection ? movie.se7enDNAScore ?? safeMovieInfo.se7enDNAScore ?? 0
    : fromRevengeCollection ? movie.revengeIntensity ?? safeMovieInfo.revengeIntensity ?? 0
@@ -860,6 +869,14 @@ const MovieDetailsSection = React.memo(({
      default: return '#6b7280';
         }
    }
+   if (fromGreedCollection) {
+        switch (level) {
+     case 'EXTREME': return '#064e3b'; 
+     case 'HIGH': return '#047857';    
+     case 'MEDIUM': return '#059669';  
+     default: return '#6b7280';
+        }
+   }
 if (fromPsychologicalThrillerCollection) {
       switch (level) {
         case 'EXTREME': return '#7f1d1d'; // Deep Blood Red for total sanity loss
@@ -936,6 +953,7 @@ if (fromPsychologicalThrillerCollection) {
    if (fromEyesWideShutCollection) return 'PARANOIA INTENSITY';
    if (fromPrestigeCollection) return 'RIVALRY INDEX';
    if (fromEroticThrillerCollection) return 'EROTIC TENSION SCORE';
+   if (fromGreedCollection) return 'GREED INDEX';
    if (fromSe7enCollection) return 'SE7EN DNA SCORE';
    if (fromRevengeCollection) return 'REVENGE INTENSITY SCORE';
    if (fromWarFilmsCollection) return 'WAR INTENSITY SCORE';
@@ -998,6 +1016,7 @@ if (fromPsychologicalThrillerCollection) {
    if (fromMementoCollection) return 'MEMORY INDEX';
    if (fromPrestigeCollection) return 'DECEPTION INDEX';
    if (fromEroticThrillerCollection) return 'MANIPULATION INDEX';
+   if (fromGreedCollection) return 'CORRUPTION INDEX';
    return 'MIND-BENDING INDEX';
  };
 
@@ -1044,6 +1063,7 @@ if (fromPsychologicalThrillerCollection) {
    if (fromMementoCollection) return 'MEMORY DISTORTION LEVEL';
    if (fromPrestigeCollection) return 'ILLUSION LEVEL';
    if (fromEroticThrillerCollection) return 'PSYCHOLOGICAL TENSION LEVEL';
+   if (fromGreedCollection) return 'MORAL DECAY LEVEL';
    return 'COGNITIVE DISTORTION LEVEL';
  };
 
@@ -1163,6 +1183,11 @@ if (fromPsychologicalThrillerCollection) {
      if (scoreValue >= 80) return 'Highly charged with dark romance and dangerous stakes. A gripping psychological descent.';
      return 'A suspenseful thriller balancing desire and danger perfectly.';
    }
+   if (fromGreedCollection) {
+     if (scoreValue >= 90) return 'A devastating portrait of extreme capitalism and total moral collapse.';
+     if (scoreValue >= 80) return 'A sharp, thrilling exploration of corporate greed and compromised morals.';
+     return 'An engaging look into the pursuit of wealth and its consequences.';
+   }
    // Generic fallback
    if (scoreValue >= 90) return 'A transcendent masterpiece redefining narrative complexity.';
    if (scoreValue >= 80) return 'Sophisticated cinematic storytelling with advanced non-linear elements.';
@@ -1198,6 +1223,7 @@ if (fromPsychologicalThrillerCollection) {
    if (fromCrimeThrillerCollection) return 'border-slate-400/40';
    if (fromPrestigeCollection) return 'border-blue-400/40'; 
    if (fromEroticThrillerCollection) return 'border-rose-600/40';
+   if (fromGreedCollection) return 'border-emerald-600/40';
    return 'border-yellow-400/40';
  };
 
@@ -1229,6 +1255,7 @@ if (fromPsychologicalThrillerCollection) {
    if (fromCrimeThrillerCollection) return 'text-slate-400';
    if (fromPrestigeCollection) return 'text-blue-400';
    if (fromEroticThrillerCollection) return 'text-rose-500';
+   if (fromGreedCollection) return 'text-emerald-500';
    return 'text-yellow-400';
  };
 
@@ -1489,6 +1516,7 @@ if (fromPsychologicalThrillerCollection) {
         : fromBlackSwanCollection ? <BlackSwanSEOFAQSection movie={movie} />
         : fromEyesWideShutCollection ? <EyesWideShutSEOFAQSection movie={movie} />
         : fromEroticThrillerCollection ? <EroticThrillerSEOFAQSection movie={movie} />
+        : fromGreedCollection ? <GreedSEOFAQSection movie={movie} />
         : fromPrestigeCollection ? <PrestigeSEOFAQSection movie={movie} />
         : fromSe7enCollection ? <Se7enSEOFAQSection movie={movie} />
         : fromRevengeCollection ? <RevengeMovieSEOFAQSection movie={movie} />
