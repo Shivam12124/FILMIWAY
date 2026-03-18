@@ -651,6 +651,17 @@ const CollectionsHub = () => {
             hasSubCollections: false
         },
 
+{
+            id: 'raunchy-comedy',
+            title: '10 Best Raunchy Comedy Movies',
+            description: 'Explorations of extreme R-rated humor, legendary teen chaos, and iconic gross-out gags.',
+            icon: Smile, 
+            gradient: 'from-pink-600 to-orange-500',
+            movieCount: '10',
+            rating: '7.0',
+            directLink: '/collection/best-raunchy-comedy-movies',
+            hasSubCollections: false
+        },
 
 {
             id: 'movies-about-greed',

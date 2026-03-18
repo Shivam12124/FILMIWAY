@@ -531,6 +531,15 @@ export const COLLECTIONS = {
     relatedCollections: ['best-heist-thriller-movies', 'best-crime-thriller-movies', 'best-psychological-thriller-movies']
   },
 
+// 🍻 BEST RAUNCHY COMEDY MOVIES
+  'best-raunchy-comedy-movies': {
+    slug: 'best-raunchy-comedy-movies',
+    title: '10 Best Raunchy Comedy Movies',
+    stats: { averageRating: 7.0 },
+    movies: ['tt0163651', 'tt0829482', 'tt1119646', 'tt0425061', 'tt0396269', 'tt0215129', 'tt0356150', 'tt1478338', 'tt0129387', 'tt0366551'],
+    relatedCollections: ['best-comedy-movies-on-hulu', 'best-comedy-movies-on-hbo-max', 'best-movies-about-greed']
+  },
+
 
   // 🩸 BEST THRILLER MOVIES
   'best-thriller-movies': {
@@ -571,6 +580,7 @@ export const getPsychologicalThillerCollection = () => COLLECTIONS['best-psychol
 export const getDetectiveThillerCollection = () => COLLECTIONS['best-detective-thriller-movies'];
 export const getMysteryThillerCollection = () => COLLECTIONS['best-mystery-thriller-movies'];
 export const getGreedCollection = () => COLLECTIONS['best-movies-about-greed'];
+export const getRaunchyComedyCollection = () => COLLECTIONS['best-raunchy-comedy-movies'];
 export const getThrillerCollection = () => COLLECTIONS['best-thriller-movies'];
 
 // ============================================================================

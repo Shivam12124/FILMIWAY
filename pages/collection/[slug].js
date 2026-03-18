@@ -49,6 +49,7 @@ import { COMPLETE_MOVIE_DATABASE as PEACOCK_DRAMA_DATABASE, COMPLETE_MOVIE_DATA 
 import { COMPLETE_MOVIE_DATABASE as PEACOCK_THRILLER_DATABASE, COMPLETE_MOVIE_DATA as PEACOCK_THRILLER_DATA } from '../../utils/peacockThrillerMovieData';
 import { COMPLETE_MOVIE_DATABASE as PEACOCK_BEST_DATABASE, COMPLETE_MOVIE_DATA as PEACOCK_BEST_DATA } from '../../utils/peacockBestMoviesData';
 import { COMPLETE_MOVIE_DATABASE as PEACOCK_COMEDY_DATABASE, COMPLETE_MOVIE_DATA as PEACOCK_COMEDY_DATA } from '../../utils/peacockComedyMovieData';
+import { COMPLETE_MOVIE_DATABASE as RAUNCHY_COMEDY_DATABASE, COMPLETE_MOVIE_DATA as RAUNCHY_COMEDY_DATA } from '../../utils/raunchyComedyMovieData';
 
 import { COMPLETE_MOVIE_DATABASE as HULU_FAMILY_DATABASE, COMPLETE_MOVIE_DATA as HULU_FAMILY_DATA } from '../../utils/huluFamilyMovieData';
 import { COMPLETE_MOVIE_DATABASE as HBO_ACTION_DATABASE, COMPLETE_MOVIE_DATA as HBO_ACTION_DATA } from '../../utils/hboActionMovieData';
@@ -1563,6 +1564,32 @@ const getCollectionContent = () => {
         }
     };
 
+    
+    } else if (collection.slug === 'best-raunchy-comedy-movies') {
+        return {
+            badge: "R-Rated Chaos",
+            title: "Best Raunchy Comedy Movies",
+            description: "Movies exploring the absolute limits of R-rated humor, teen chaos, and iconic gross-out gags.",
+            selection: {
+                text1: "From the foundational teen awkwardness of 'American Pie' to the unhinged perfection of 'Superbad'—these films represent the absolute peak of unapologetic comedy.",
+                text2: "Each selection features legendary gross-out gags, highly quotable dialogue, and chaotic energy that pushed the boundaries of R-rated cinema."
+            },
+            ranking: {
+                text: "Our chaos index evaluates laughter frequency, raunchiness level, and the enduring cultural impact of these unhinged comedic masterpieces.",
+                points: [
+                    "Raunchiness & shock value",
+                    "Laughter frequency & intensity",
+                    "Cringe factor depth",
+                    "Cultural staying power"
+                ]
+            },
+            experience: {
+                text1: "Whether you're seeking pure nostalgic comfort or jaw-dropping shock value, this collection delivers cinema's most effective and hilarious dopamine hits.",
+                text2: "Each film has been selected for its ability to generate uncontrollable laughter, offering unapologetic humor that defined a generation."
+            }
+        };
+
+
     } else if (collection.slug === 'best-mystery-thriller-movies') {
         return {
             badge: "Mystery Thriller Cinema",
@@ -2001,6 +2028,11 @@ subtitle: "While everyone searches Netflix, these classics hide in plain sight. 
             title: "10 Best Movies About Greed: Capitalism & Corruption",
             subtitle: "Cinematic masterpieces exploring extreme wealth, moral decay, and the devastating cost of ambition"
         };
+    } else if (collection.slug === 'best-raunchy-comedy-movies') {
+        return {
+            title: "10 Best Raunchy Comedy Movies",
+            subtitle: "Ranked by Laughter, Chaos & R-Rated Absurdity"
+        };
 
     } else if (collection.slug === 'movies-like-interstellar') {
         return {
@@ -2135,6 +2167,11 @@ const getLoaderContent = () => {
         title: "Loading Best Movies About Greed",
         description: "Curating cinematic explorations of capitalism, corruption, and moral decay with community reviews."
     };
+    } else if (collection?.slug === 'best-raunchy-comedy-movies') {
+        return {
+            title: "Loading Best Raunchy Comedy Movies",
+            description: "Curating the most chaotic and hilarious R-rated comedies with community reviews"
+        };
 
 } else if (collection?.slug === 'movies-like-donnie-darko') {
     return {
@@ -2528,6 +2565,15 @@ const getStaticMetaContent = () => {
             ogTitle: "10 Best Movies About Greed & Capitalism",
             twitterTitle: "The 10 Best Movies About Greed You Need to Watch",
             progressText: `of Top ${movies.length} Movies About Greed`
+        };
+    } else if (collection.slug === 'best-raunchy-comedy-movies') {
+        return {
+            title: "10 Best Raunchy Comedy Movies (Ranked by Chaos)",
+            description: "The definitive ranking of the funniest, most unhinged R-rated comedies. From Superbad to American Pie. Includes an exact Timestamps & Parents Guide.",
+            keywords: "best raunchy comedy movies, r rated comedies, teen sex comedies, superbad, american pie, gross out humor",
+            ogTitle: "10 Best Raunchy Comedy Movies: Pure R-Rated Chaos",
+            twitterTitle: "The 10 Funniest & Raunchiest Comedies You Need to Watch",
+            progressText: `of Top ${movies.length} Raunchy Comedies`
         };
 
 
@@ -3130,6 +3176,7 @@ const getStaticMetaContent = () => {
             sessionStorage.removeItem('fromWarFilmsCollection');
             sessionStorage.removeItem('fromEroticThrillerCollection');
             sessionStorage.removeItem('fromGreedCollection');
+            sessionStorage.removeItem('fromRaunchyComedyCollection');
 
             // Set appropriate collection flag âœ…
             if (collection.slug === 'movies-like-inception') {
@@ -3254,10 +3301,11 @@ const getStaticMetaContent = () => {
                 sessionStorage.setItem('fromEroticThrillerCollection', 'true');
             } else if (collection.slug === 'best-movies-about-greed') {
                 sessionStorage.setItem('fromGreedCollection', 'true');
+            } else if (collection.slug === 'best-raunchy-comedy-movies') {
+                sessionStorage.setItem('fromRaunchyComedyCollection', 'true');
             }
         }
     };
-
 
 
     // Get dynamic content
@@ -3672,6 +3720,8 @@ return (
 ? 'movies/best-erotic-thriller-movies/'
 : collection?.slug === 'best-movies-about-greed'
 ? 'movies/best-movies-about-greed/'
+: collection?.slug === 'best-raunchy-comedy-movies'
+? 'movies/best-raunchy-comedy-movies/'
 : collection?.slug === 'best-action-movies-on-hulu'
                                     ? 'movies/best-action-movies-on-hulu/'
 : collection?.slug === 'best-romance-movies-on-hulu'
@@ -3911,6 +3961,8 @@ return (
                                     ? `/movies/best-erotic-thriller-movies/${currentMovie.imdbID}`
                                     : collection.slug === 'best-movies-about-greed'
                                     ? `/movies/best-movies-about-greed/${currentMovie.imdbID}`
+                                    : collection.slug === 'best-raunchy-comedy-movies'
+                                    ? `/movies/best-raunchy-comedy-movies/${currentMovie.imdbID}`
                                     : collection.slug === 'best-action-movies-on-hulu'
                                     ? `/movies/best-action-movies-on-hulu/${currentMovie.imdbID}`
                                     : collection.slug === 'best-romance-movies-on-hulu'
@@ -4069,6 +4121,8 @@ return (
                                     detailPageUrl = `/movies/best-erotic-thriller-movies/${currentMovie.imdbID}`;
                                 } else if (collection.slug === 'best-movies-about-greed') {
                                     detailPageUrl = `/movies/best-movies-about-greed/${currentMovie.imdbID}`;
+                                } else if (collection.slug === 'best-raunchy-comedy-movies') {
+                                    detailPageUrl = `/movies/best-raunchy-comedy-movies/${currentMovie.imdbID}`;
                                 } else if (collection.slug === 'best-action-movies-on-hulu') {
                                     detailPageUrl = `/movies/best-action-movies-on-hulu/${currentMovie.imdbID}`;
                                 } else if (collection.slug === 'best-romance-movies-on-hulu') {
@@ -4360,6 +4414,9 @@ case 'best-erotic-thriller-movies':
             break;
 case 'best-movies-about-greed':
             movieDatabase = GREED_DATABASE;
+            break;
+case 'best-raunchy-comedy-movies':
+            movieDatabase = RAUNCHY_COMEDY_DATABASE;
             break;
 
             case 'best-action-movies-on-hulu':

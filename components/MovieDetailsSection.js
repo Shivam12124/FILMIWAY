@@ -231,6 +231,10 @@ import {
   COMPLETE_MOVIE_DATA as PEACOCK_COMEDY_MOVIE_DATA,
   SENSITIVE_TIMELINES as PEACOCK_COMEDY_SENSITIVE_TIMELINES
 } from '../utils/peacockComedyMovieData';
+import {
+  COMPLETE_MOVIE_DATA as RAUNCHY_COMEDY_MOVIE_DATA,
+  SENSITIVE_TIMELINES as RAUNCHY_COMEDY_SENSITIVE_TIMELINES
+} from '../utils/raunchyComedyMovieData';
 
 import { 
   COMPLETE_MOVIE_DATA as CRIME_THRILLER_MOVIE_DATA,
@@ -312,6 +316,7 @@ import HboMaxHorrorSEOFAQSection from './HboMaxHorrorSEOFAQSection';
 import HboMaxBestSEOFAQSection from './HboMaxBestSEOFAQSection';
 import HboMaxDramaSEOFAQSection from './HboMaxDramaSEOFAQSection';
 import HboMaxComedySEOFAQSection from './HboMaxComedySEOFAQSection';
+import RaunchyComedySEOFAQSection from './RaunchyComedySEOFAQSection';
 
 import HuluActionSEOFAQSection from './HuluActionSEOFAQSection';
 import HuluRomanceSEOFAQSection from './HuluRomanceSEOFAQSection';
@@ -354,6 +359,7 @@ const MovieDetailsSection = React.memo(({
   fromEroticThrillerCollection,
   fromGreedCollection,
   fromSe7enCollection,
+  fromRaunchyComedyCollection,
   fromParasiteCollection,
   fromDonnieDarkoCollection,
   fromOldboyCollection,
@@ -455,6 +461,7 @@ const MovieDetailsSection = React.memo(({
   : fromPrestigeCollection ? safeLookup(PRESTIGE_MOVIE_DATA, movie.tmdbId)
   : fromEroticThrillerCollection ? safeLookup(EROTIC_THRILLER_MOVIE_DATA, movie.tmdbId)
   : fromGreedCollection ? safeLookup(GREED_MOVIE_DATA, movie.tmdbId)
+  : fromRaunchyComedyCollection ? safeLookup(RAUNCHY_COMEDY_MOVIE_DATA, movie.tmdbId)
   : fromEyesWideShutCollection ? safeLookup(EYES_WIDE_SHUT_MOVIE_DATA, movie.tmdbId)
   : fromRevengeCollection ? safeLookup(REVENGE_MOVIE_DATA, movie.tmdbId)
   : fromWarFilmsCollection ? safeLookup(WAR_FILMS_MOVIE_DATA, movie.tmdbId)
@@ -621,6 +628,7 @@ const MovieDetailsSection = React.memo(({
    || PRESTIGE_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || EROTIC_THRILLER_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || GREED_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
+   || RAUNCHY_COMEDY_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || EYES_WIDE_SHUT_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || SE7EN_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || SCI_FI_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
@@ -680,6 +688,7 @@ const MovieDetailsSection = React.memo(({
    : fromPrestigeCollection ? movie. deceptionScore ?? safeMovieInfo. deceptionScore ?? 0
    : fromEroticThrillerCollection ? movie.eroticTension ?? safeMovieInfo.eroticTension ?? 0
    : fromGreedCollection ? movie.greedIndex ?? safeMovieInfo.greedIndex ?? 0
+   : fromRaunchyComedyCollection ? movie.raunchinessScore ?? safeMovieInfo.raunchinessScore ?? 0
    : fromEyesWideShutCollection ? movie.paranoiaIntensity ?? safeMovieInfo.paranoiaIntensity ?? 0
    : fromSe7enCollection ? movie.se7enDNAScore ?? safeMovieInfo.se7enDNAScore ?? 0
    : fromRevengeCollection ? movie.revengeIntensity ?? safeMovieInfo.revengeIntensity ?? 0
@@ -877,6 +886,14 @@ const MovieDetailsSection = React.memo(({
      default: return '#6b7280';
         }
    }
+   if (fromRaunchyComedyCollection) {
+        switch (level) {
+     case 'EXTREME': return '#9f1239'; 
+     case 'HIGH': return '#db2777';    
+     case 'MEDIUM': return '#f472b6';  
+     default: return '#6b7280';
+        }
+   }
 if (fromPsychologicalThrillerCollection) {
       switch (level) {
         case 'EXTREME': return '#7f1d1d'; // Deep Blood Red for total sanity loss
@@ -954,6 +971,7 @@ if (fromPsychologicalThrillerCollection) {
    if (fromPrestigeCollection) return 'RIVALRY INDEX';
    if (fromEroticThrillerCollection) return 'EROTIC TENSION SCORE';
    if (fromGreedCollection) return 'GREED INDEX';
+   if (fromRaunchyComedyCollection) return 'CHAOS SCORE';
    if (fromSe7enCollection) return 'SE7EN DNA SCORE';
    if (fromRevengeCollection) return 'REVENGE INTENSITY SCORE';
    if (fromWarFilmsCollection) return 'WAR INTENSITY SCORE';
@@ -1017,6 +1035,7 @@ if (fromPsychologicalThrillerCollection) {
    if (fromPrestigeCollection) return 'DECEPTION INDEX';
    if (fromEroticThrillerCollection) return 'MANIPULATION INDEX';
    if (fromGreedCollection) return 'CORRUPTION INDEX';
+   if (fromRaunchyComedyCollection) return 'RAUNCHINESS INDEX';
    return 'MIND-BENDING INDEX';
  };
 
@@ -1064,6 +1083,7 @@ if (fromPsychologicalThrillerCollection) {
    if (fromPrestigeCollection) return 'ILLUSION LEVEL';
    if (fromEroticThrillerCollection) return 'PSYCHOLOGICAL TENSION LEVEL';
    if (fromGreedCollection) return 'MORAL DECAY LEVEL';
+   if (fromRaunchyComedyCollection) return 'ABSURDITY LEVEL';
    return 'COGNITIVE DISTORTION LEVEL';
  };
 
@@ -1188,6 +1208,11 @@ if (fromPsychologicalThrillerCollection) {
      if (scoreValue >= 80) return 'A sharp, thrilling exploration of corporate greed and compromised morals.';
      return 'An engaging look into the pursuit of wealth and its consequences.';
    }
+   if (fromRaunchyComedyCollection) {
+     if (scoreValue >= 90) return 'Absolute R-rated chaos. A genre-defining comedy pushing all boundaries.';
+     if (scoreValue >= 80) return 'Highly raunchy and hilarious with legendary gross-out gags.';
+     return 'A solid comedy with plenty of mature, boundary-pushing humor.';
+   }
    // Generic fallback
    if (scoreValue >= 90) return 'A transcendent masterpiece redefining narrative complexity.';
    if (scoreValue >= 80) return 'Sophisticated cinematic storytelling with advanced non-linear elements.';
@@ -1224,6 +1249,7 @@ if (fromPsychologicalThrillerCollection) {
    if (fromPrestigeCollection) return 'border-blue-400/40'; 
    if (fromEroticThrillerCollection) return 'border-rose-600/40';
    if (fromGreedCollection) return 'border-emerald-600/40';
+   if (fromRaunchyComedyCollection) return 'border-pink-600/40';
    return 'border-yellow-400/40';
  };
 
@@ -1256,6 +1282,7 @@ if (fromPsychologicalThrillerCollection) {
    if (fromPrestigeCollection) return 'text-blue-400';
    if (fromEroticThrillerCollection) return 'text-rose-500';
    if (fromGreedCollection) return 'text-emerald-500';
+   if (fromRaunchyComedyCollection) return 'text-pink-500';
    return 'text-yellow-400';
  };
 
@@ -1377,6 +1404,7 @@ if (fromPsychologicalThrillerCollection) {
        !fromParamountComedyCollection &&
        !fromParamountBestCollection &&
        !fromPeacockBestCollection &&
+       !fromRaunchyComedyCollection &&
        (
         <motion.div
           className="mb-6 sm:mb-8 md:mb-12 bg-gradient-to-br from-gray-800/40 to-gray-900/60 rounded-lg sm:rounded-xl border border-gray-700/50 p-3 sm:p-4 md:p-8 shadow-2xl backdrop-blur-sm relative overflow-hidden"
@@ -1517,6 +1545,7 @@ if (fromPsychologicalThrillerCollection) {
         : fromEyesWideShutCollection ? <EyesWideShutSEOFAQSection movie={movie} />
         : fromEroticThrillerCollection ? <EroticThrillerSEOFAQSection movie={movie} />
         : fromGreedCollection ? <GreedSEOFAQSection movie={movie} />
+        : fromRaunchyComedyCollection ? <RaunchyComedySEOFAQSection movie={movie} />
         : fromPrestigeCollection ? <PrestigeSEOFAQSection movie={movie} />
         : fromSe7enCollection ? <Se7enSEOFAQSection movie={movie} />
         : fromRevengeCollection ? <RevengeMovieSEOFAQSection movie={movie} />
