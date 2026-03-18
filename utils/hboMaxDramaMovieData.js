@@ -74,9 +74,13 @@ export const SENSITIVE_TIMELINES = {
             { start: "1:23:40", end: "1:26:40", type: "Nudity & Sex", severity: "Extreme" }
         ] 
     },
-
-    // 10. Joker
-    475557: { scenes: [] }
+// 10. Joker
+    475557: { 
+        scenes: [
+            { start: "0:06:06", end: "0:06:17", type: "Nudity", severity: "Moderate" },
+            { start: "0:44:47", end: "0:44:51", type: "Nudity", severity: "Mild" }
+        ] 
+    }
 };
 
 export const FALLBACK_POSTERS = {
