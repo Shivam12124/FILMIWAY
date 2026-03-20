@@ -1,6 +1,6 @@
-// pages/movies/best-erotic-thriller-movies/[id].js - PSYCHOLOGICAL NOIR THEME ✅
-// 100% SEO SAFE: Framed around Neo-Noir, Tension, and Manipulation
-// SCHEMA: Maximalist (Hidden Erotic Tension Score and FAQs for Bots)
+// pages/movies/top-10-road-trip-movies/[id].js - WANDERLUST AMBER THEME ✅
+// 100% SEO SAFE: Framed around Emotional Transformation, Human Texture, and The Journey
+// SCHEMA: Maximalist (Hidden Wanderlust Score and FAQs for Bots)
 
 import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
@@ -8,56 +8,55 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, Play, X, User, Twitter, Hash, Send, Film, Eye, Flame } from 'lucide-react';
+import { ChevronLeft, Play, X, User, Twitter, Hash, Send, Film, Map } from 'lucide-react';
 
 import InternalCollectionsSection from '../../../components/InternalCollectionsSection';
 import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
 import TMDBAttribution from '../../../components/TMDBAttribution';
 
-// ✅ IMPORT DATA & SCHEMA GENERATOR (SEO Safe Data)
+// ✅ IMPORT DATA & SCHEMA GENERATOR
 import {
   COMPLETE_MOVIE_DATABASE, 
   COMPLETE_MOVIE_DATA,
   SENSITIVE_TIMELINES,
   generateCleanMovieSchema
-} from '../../../utils/eroticThrillerMovieData';
+} from '../../../utils/roadTripMovieData';
 
 const COLORS = {
-  accent: '#E11D48', // Crimson/Rose for Noir Tension
-  accentLight: '#FDA4AF', 
+  accent: '#D97706', // Amber/Ochre for the Open Road
+  accentLight: '#FBBF24', 
   bgPrimary: '#000000ff', 
   bgCard: 'rgba(11, 11, 11, 0.8)',
   textPrimary: '#FFFFFF', textSecondary: '#E5E7EB', textMuted: '#9CA3AF', textDisabled: '#6B7280',
-  borderAccent: 'rgba(225, 29, 72, 0.25)', borderLight: 'rgba(55, 65, 81, 0.5)',
+  borderAccent: 'rgba(217, 119, 6, 0.25)', borderLight: 'rgba(55, 65, 81, 0.5)',
 };
 
 const MOVIE_YEARS = {
-  'Basic Instinct': '1992', 'Eyes Wide Shut': '1999', 'The Handmaiden': '2016', 'Lust, Caution': '2007',
-  'Wild Things': '1998', 'Unfaithful': '2002', 'Fatal Attraction': '1987', 'Body Heat': '1981',
-  'The Last Seduction': '1994', 'Bound': '1996'
+  'Y Tu Mamá También': '2001', 'Thelma & Louise': '1991', 'Rain Man': '1988', 'Into the Wild': '2007',
+  'The Straight Story': '1999', 'Little Miss Sunshine': '2006', 'The Motorcycle Diaries': '2004',
+  'Sideways': '2004', 'Easy Rider': '1969', "National Lampoon's Vacation": '1983'
 };
 
-// 100% SEO-Safe Critical Analysis Descriptions
 const MOVIE_DATA_BY_TITLE = {
-  'Basic Instinct': { connection: 'A masterclass in psychological dominance and neo-noir manipulation.' },
-  'Eyes Wide Shut': { connection: 'A hypnotic exploration of jealousy, fidelity, and the hidden power structures of the elite.' },
-  'The Handmaiden': { connection: 'An intricate puzzle-box of shifting alliances, hidden motives, and stunning cinematic misdirection.' },
-  'Lust, Caution': { connection: 'A tense game of cat-and-mouse where the lines between espionage and true emotion blur fatally.' },
-  'Wild Things': { connection: 'A labyrinthine plot of blackmail and betrayal built entirely on constant double-crossing.' },
-  'Unfaithful': { connection: 'An elegant, slow-burn exploration of the devastating consequences of acting on impulse.' },
-  'Fatal Attraction': { connection: 'Elevates domestic anxiety into pure, terrifying suspense through psychological stalking.' },
-  'Body Heat': { connection: 'A flawless modern update to classic film noir tropes, dripping with atmosphere and lethal calculation.' },
-  'The Last Seduction': { connection: 'A darkly comedic thriller showcasing a ruthlessly intelligent antagonist playing without rules.' },
-  'Bound': { connection: 'A tightly wound, stylishly shot thriller that cleverly subverts traditional noir expectations.' }
+  'Y Tu Mamá También': { connection: 'Masterfully intertwines political backdrop, raw sexual awakening, and the inevitable fading of youth into a film dripping with profound human texture.' },
+  'Thelma & Louise': { connection: 'Transforms the American road trip into an unapologetic feminist manifesto about liberation, sisterhood, and taking back control.' },
+  'Rain Man': { connection: 'Proves that a road movie doesn\'t need car chases to be thrilling—the simple act of two brothers learning to tolerate each other is a profound journey.' },
+  'Into the Wild': { connection: 'A visceral, poetic exploration of radical freedom, the unforgiving reality of nature, and the realization that happiness is only real when shared.' },
+  'The Straight Story': { connection: 'David Lynch strips away his usual surrealism to deliver a profound, pure slice of Americana and emotional endurance on a 240-mile lawnmower ride.' },
+  'Little Miss Sunshine': { connection: 'A masterclass in balancing devastating family tragedy with laugh-out-loud indie comedy, using a broken-down VW bus to force unity.' },
+  'The Motorcycle Diaries': { connection: 'The grimy, real-world textures of poverty and injustice encountered on the road serve to radicalize and transform a privileged medical student.' },
+  'Sideways': { connection: 'A sophisticated adult drama steeped in mid-life crisis, Pinot Noir, and painful realism, using California wine country as a backdrop for healing.' },
+  'Easy Rider': { connection: 'The cultural blueprint for the modern road trip movie, capturing the psychedelic freedom and the violent, reactionary fear of the late 1960s.' },
+  "National Lampoon's Vacation": { connection: 'A legendary, darkly satirical takedown of the forced optimism and suburban desperation surrounding the American family vacation.' }
 };
 
 const getTMDBImage = (path, size = 'w1280') =>
   path ? `https://image.tmdb.org/t/p/${size}${path}` : undefined;
 
-const getNoirInsight = (title) => {
+const getJourneyInsight = (title) => {
   const data = MOVIE_DATA_BY_TITLE[title];
-  return data?.connection || 'A sophisticated neo-noir thriller exploring betrayal, manipulation, and psychological tension.';
+  return data?.connection || 'A cinematic journey that proves the road changes you forever.';
 };
 
 // ✅ OPTIMIZED BANNER
@@ -73,20 +72,20 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
   const bannerImage = backdropPath ? getTMDBImage(backdropPath, 'w1280') : null;
   const posterImage = posterPath ? getTMDBImage(posterPath, 'w500') : null;
 
-  const insight = getNoirInsight(movie?.Title);
-  // ✅ CUSTOM METRIC: Erotic Tension
-  const tensionScore = richData?.eroticTension || 85;
+  const insight = getJourneyInsight(movie?.Title);
+  // ✅ CUSTOM METRIC: Wanderlust Score
+  const wanderlustScore = richData?.wanderlustScore || 85;
 
   const mobileHeroCSS = `
   @media (max-width: 767px) {
     .mobile-hero-row { display: flex; flex-direction: row; align-items: flex-start; width: 100vw; max-width: 100vw; gap: 10px; margin: 0; padding: 0 8px; }
     .mobile-hero-poster { width: 38vw; min-width: 106px; border-radius: 12px; overflow: hidden; box-shadow: 0 3px 14px #0007; margin: 0; flex-shrink: 0; }
     .mobile-hero-poster img { width: 100%; height: auto; border-radius: 12px; display: block; }
-    .mobile-tension-card { background: linear-gradient(135deg, #1a050a 0%, #0f0f15 100%); border-radius: 12px; box-shadow: 0 2px 12px #0006; margin: 0; flex: 1; border-left: 4px solid #E11D48; display: flex; flex-direction: column; justify-content: flex-start; padding: 10px 10px 10px 12px; min-height: 110px; position: relative; }
-    .mobile-tension-row { display: flex; align-items: flex-start; gap: 7px; }
-    .mobile-tension-icon { min-width: 24px; min-height: 24px; color: #FDA4AF; margin-top: 2px; }
-    .mobile-tension-title { font-size: 15px; font-weight: bold; color: #FDA4AF; margin-bottom: 1px; line-height: 1.12; }
-    .mobile-tension-desc { font-size: 12.3px; color: #ededed; line-height: 1.36; margin-top: 2px; }
+    .mobile-journey-card { background: linear-gradient(135deg, #271400 0%, #0f0f15 100%); border-radius: 12px; box-shadow: 0 2px 12px #0006; margin: 0; flex: 1; border-left: 4px solid #D97706; display: flex; flex-direction: column; justify-content: flex-start; padding: 10px 10px 10px 12px; min-height: 110px; position: relative; }
+    .mobile-journey-row { display: flex; align-items: flex-start; gap: 7px; }
+    .mobile-journey-icon { min-width: 24px; min-height: 24px; color: #FBBF24; margin-top: 2px; }
+    .mobile-journey-title { font-size: 15px; font-weight: bold; color: #FBBF24; margin-bottom: 1px; line-height: 1.12; }
+    .mobile-journey-desc { font-size: 12.3px; color: #ededed; line-height: 1.36; margin-top: 2px; }
   }`;
 
   useEffect(() => {
@@ -136,10 +135,10 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
       </div>
       {isMobile ? (
         <div className="mobile-hero-row">
-          <div className="mobile-hero-poster">{posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} width={320} height={480} className="w-full h-auto" priority /> : <div style={{ background: COLORS.bgCard, width: '100%', height: '150px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Flame style={{ color: COLORS.textMuted }} /></div>}</div>
-          <div className="mobile-tension-card">
-            <div className="mobile-tension-row"><Flame className="mobile-tension-icon" /><div><div className="mobile-tension-title">Erotic Tension</div></div></div>
-            <div className="mobile-tension-desc"><strong>{tensionScore}/100</strong> - {insight.substring(0, 80)}...</div>
+          <div className="mobile-hero-poster">{posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} width={320} height={480} className="w-full h-auto" priority /> : <div style={{ background: COLORS.bgCard, width: '100%', height: '150px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Map style={{ color: COLORS.textMuted }} /></div>}</div>
+          <div className="mobile-journey-card">
+            <div className="mobile-journey-row"><Map className="mobile-journey-icon" /><div><div className="mobile-journey-title">Wanderlust Score</div></div></div>
+            <div className="mobile-journey-desc"><strong>{wanderlustScore}/100</strong> - {insight.substring(0, 80)}...</div>
           </div>
         </div>
       ) : (
@@ -147,15 +146,15 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 lg:gap-8 items-start">
             <motion.div className="flex-shrink-0 relative w-24 sm:w-48 md:w-56 lg:w-80 mx-auto sm:mx-0" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8, duration: 0.8 }}>
               <div className="relative" style={{ aspectRatio: '2/3' }}>
-                {posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} fill sizes="(max-width: 640px) 96px, (max-width: 768px) 192px, (max-width: 1024px) 224px, 320px" quality={85} className="object-cover rounded-lg sm:rounded-xl shadow-2xl" /> : <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: COLORS.bgCard, borderRadius: '12px' }}><Flame style={{ color: COLORS.textMuted }} /></div>}
+                {posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} fill sizes="(max-width: 640px) 96px, (max-width: 768px) 192px, (max-width: 1024px) 224px, 320px" quality={85} className="object-cover rounded-lg sm:rounded-xl shadow-2xl" /> : <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: COLORS.bgCard, borderRadius: '12px' }}><Map style={{ color: COLORS.textMuted }} /></div>}
               </div>
             </motion.div>
             <motion.div className="flex-1 w-full min-w-0" initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 1.0, duration: 0.8 }}>
-              <motion.div className="relative rounded-xl sm:rounded-2xl overflow-hidden p-4 sm:p-6 lg:p-8 backdrop-blur-sm" style={{ background: `linear-gradient(135deg, rgba(225, 29, 72, 0.15) 0%, rgba(15, 15, 20, 0.5) 100%)`, border: `1px solid ${COLORS.borderLight}`, boxShadow: `0 8px 32px rgba(225, 29, 72, 0.2)` }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.1, duration: 0.8 }}>
+              <motion.div className="relative rounded-xl sm:rounded-2xl overflow-hidden p-4 sm:p-6 lg:p-8 backdrop-blur-sm" style={{ background: `linear-gradient(135deg, rgba(217, 119, 6, 0.15) 0%, rgba(15, 15, 20, 0.5) 100%)`, border: `1px solid ${COLORS.borderLight}`, boxShadow: `0 8px 32px rgba(217, 119, 6, 0.2)` }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.1, duration: 0.8 }}>
                 <div className="absolute top-0 left-0 right-0 h-0.5 sm:h-1" style={{ background: `linear-gradient(90deg, transparent, ${COLORS.accent}, transparent)` }} />
                 <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5">
-                  <motion.div className="p-2 sm:p-2.5 rounded-lg sm:rounded-xl flex-shrink-0" style={{ background: `linear-gradient(135deg, ${COLORS.accent}20, ${COLORS.accent}10)`, border: `1px solid ${COLORS.accent}40` }} whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}><Flame className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" style={{ color: COLORS.accent }} /></motion.div>
-                  <div className="min-w-0 flex-1"><h2 className="text-sm sm:text-base lg:text-xl xl:text-2xl font-bold leading-tight" style={{ color: COLORS.accent }}>Why This Thriller Hits Deep</h2><p className="text-xs sm:text-sm hidden sm:block" style={{ color: COLORS.textMuted }}>Erotic Tension: {tensionScore}/100</p></div>
+                  <motion.div className="p-2 sm:p-2.5 rounded-lg sm:rounded-xl flex-shrink-0" style={{ background: `linear-gradient(135deg, ${COLORS.accent}20, ${COLORS.accent}10)`, border: `1px solid ${COLORS.accent}40` }} whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}><Map className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" style={{ color: COLORS.accent }} /></motion.div>
+                  <div className="min-w-0 flex-1"><h2 className="text-sm sm:text-base lg:text-xl xl:text-2xl font-bold leading-tight" style={{ color: COLORS.accent }}>The Transformative Journey</h2><p className="text-xs sm:text-sm hidden sm:block" style={{ color: COLORS.textMuted }}>Wanderlust Score: {wanderlustScore}/100</p></div>
                 </div>
                 <div className="relative pl-4 sm:pl-6 border-l-2" style={{ borderColor: `${COLORS.accent}40` }}>
                   <motion.div className="absolute -left-1.5 sm:-left-2 top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full" style={{ backgroundColor: COLORS.accent }} animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 2, repeat: Infinity }} />
@@ -171,13 +170,20 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
   );
 };
 
-// ✅ ADDED SMART BACK BUTTON
-
+// ✅ SMART BACK BUTTON
+const SmartBackButton = () => {
+  const handleBackClick = () => { if (typeof window !== 'undefined') window.location.href = '/collection/top-10-road-trip-movies'; };
+  return (
+    <motion.button onClick={handleBackClick} className="fixed top-4 left-4 sm:top-6 sm:left-6 z-50 flex items-center gap-2 px-3 sm:px-4 py-2 backdrop-blur-md rounded-lg transition-all duration-300 shadow-xl text-xs sm:text-sm" style={{ backgroundColor: `${COLORS.bgPrimary}F2`, border: `1px solid ${COLORS.borderLight}` }} whileHover={{ scale: 1.02, x: -2 }} whileTap={{ scale: 0.98 }} initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} onMouseEnter={(e) => e.currentTarget.style.borderColor = COLORS.borderAccent} onMouseLeave={(e) => e.currentTarget.style.borderColor = COLORS.borderLight}>
+      <ChevronLeft className="w-3 h-3 sm:w-4 sm:h-4" style={{ color: COLORS.accent }} /><span className="font-medium" style={{ color: COLORS.accent }}>Back to Collection</span>
+    </motion.button>
+  );
+};
 
 const AuthorCreditSection = () => (
   <motion.section className="pt-6 sm:pt-8 mt-12 sm:mt-16" style={{ borderTop: `1px solid ${COLORS.borderLight}` }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2.0, duration: 0.8 }}>
     <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
-      <div className="flex items-center gap-3"><User className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: COLORS.textDisabled }} /><div><p className="text-xs sm:text-sm" style={{ color: COLORS.textMuted }}>Curated by <span className="font-medium" style={{ color: COLORS.textSecondary }}>Filmiway Editorial Team</span></p><p className="text-xs" style={{ color: COLORS.textDisabled }}>Expert analysis of Neo-Noir Cinema</p></div></div>
+      <div className="flex items-center gap-3"><User className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: COLORS.textDisabled }} /><div><p className="text-xs sm:text-sm" style={{ color: COLORS.textMuted }}>Curated by <span className="font-medium" style={{ color: COLORS.textSecondary }}>Filmiway Editorial Team</span></p><p className="text-xs" style={{ color: COLORS.textDisabled }}>Expert analysis of road trip cinema</p></div></div>
       <div className="flex items-center gap-3 sm:gap-4"><span className="text-xs sm:text-sm" style={{ color: COLORS.textDisabled }}>Share:</span><div className="flex gap-2 sm:gap-3">{[Twitter, Hash, Send].map((Icon, i) => (<button key={i} className="p-1.5 sm:p-2 rounded-full transition-colors" style={{ color: COLORS.textDisabled }} onMouseEnter={(e) => { e.currentTarget.style.color = COLORS.textSecondary; e.currentTarget.style.backgroundColor = COLORS.bgCard; }} onMouseLeave={(e) => { e.currentTarget.style.color = COLORS.textDisabled; e.currentTarget.style.backgroundColor = 'transparent'; }}><Icon className="w-3 h-3 sm:w-4 sm:h-4" /></button>))}</div></div>
     </div>
   </motion.section>
@@ -187,16 +193,16 @@ const SubtleFilmGrain = () => (
   <div className="fixed inset-0 pointer-events-none z-0 opacity-[0.005]"><div className="w-full h-full bg-repeat" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)' opacity='0.3'/%3E%3C/svg%3E")`, backgroundSize: '60px 60px' }} /></div>
 );
 
-const EroticThrillerBreadcrumb = ({ movie }) => (
+const RoadTripBreadcrumb = ({ movie }) => (
   <motion.nav className="mb-6 sm:mb-8 px-3 sm:px-4 lg:px-6 pb-3 sm:pb-4" style={{ borderBottom: `1px solid ${COLORS.borderLight}` }} initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
     <div className="flex items-center space-x-2 sm:space-x-3 text-xs sm:text-sm" style={{ color: COLORS.textMuted }}>
-      <Link href="/collection/best-erotic-thriller-movies" className="transition-all duration-300 truncate" style={{ color: COLORS.textMuted }} onMouseEnter={(e) => e.currentTarget.style.color = COLORS.accent} onMouseLeave={(e) => e.currentTarget.style.color = COLORS.textMuted}>Best Erotic Thriller Movies</Link>
+      <Link href="/collection/top-10-road-trip-movies" className="transition-all duration-300 truncate" style={{ color: COLORS.textMuted }} onMouseEnter={(e) => e.currentTarget.style.color = COLORS.accent} onMouseLeave={(e) => e.currentTarget.style.color = COLORS.textMuted}>Top 10 Road Trip Movies</Link>
       <ChevronLeft size={14} className="flex-shrink-0" style={{ color: COLORS.textDisabled, transform: 'rotate(180deg)' }} /><span className="font-medium truncate" style={{ color: `${COLORS.accent}B3` }}>{movie.Title}</span>
     </div>
   </motion.nav>
 );
 
-const EroticThrillerMoviePage = ({ movie, tmdbData: movieData, sensitiveData }) => {
+const RoadTripMoviePage = ({ movie, tmdbData: movieData, sensitiveData }) => {
   const router = useRouter();
   const richData = COMPLETE_MOVIE_DATA[movie.tmdbId]; 
   const [isMobile, setIsMobile] = useState(false);
@@ -210,56 +216,51 @@ const EroticThrillerMoviePage = ({ movie, tmdbData: movieData, sensitiveData }) 
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-        sessionStorage.setItem('fromCollection', 'best-erotic-thriller-movies');
-        sessionStorage.setItem('fromCollectionName', 'Best Erotic Thriller Movies');
+        sessionStorage.setItem('fromCollection', 'top-10-road-trip-movies');
+        sessionStorage.setItem('fromCollectionName', 'Top 10 Road Trip Movies');
     }
   }, []);
 
   const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
   const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
 
- // =========================================================================
-  // ✅ THE STANDARDIZED ELITE SEO BLOCK (Clean, Direct Intent)
+  // =========================================================================
+  // ✅ THE STANDARDIZED ELITE SEO BLOCK
   // =========================================================================
 
-  const collectionSlug = 'best-erotic-thriller-movies';
+  const collectionSlug = 'top-10-road-trip-movies';
+  const collectionShortTag = 'Wanderlust'; 
 
   const scenes = SENSITIVE_TIMELINES?.[movie.tmdbId]?.scenes || [];
   
-  // 1. PURE META TITLE LOGIC (No extra tags or keywords)
   let cleanSEOTitle = '';
   const coreUSP = "Timestamps & Parents Guide:";
 
   if (scenes.length > 0) {
-    const idealTitle = `${coreUSP} ${movie.Title} (${currentMovieYear})`;
-    
+    const idealTitle = `${coreUSP} ${movie.Title} (${currentMovieYear}) - ${collectionShortTag}`;
     if (idealTitle.length <= 62) {
       cleanSEOTitle = idealTitle; 
     } else {
-      cleanSEOTitle = `${coreUSP} ${movie.Title}`;
+      cleanSEOTitle = `${coreUSP} ${movie.Title} - ${collectionShortTag}`;
     }
   } else {
-    const idealCleanTitle = `Parents Guide: ${movie.Title} (${currentMovieYear})`;
-    
+    const idealCleanTitle = `Parents Guide: ${movie.Title} (${currentMovieYear}) - Clean`;
     if (idealCleanTitle.length <= 62) {
       cleanSEOTitle = idealCleanTitle;
     } else {
-      cleanSEOTitle = `Parents Guide: ${movie.Title}`;
+      cleanSEOTitle = `Parents Guide: ${movie.Title} - Clean`;
     }
   }
-  // 2. STANDARDIZED ELITE META DESCRIPTION
+
   let cleanSEODesc = '';
   
   if (scenes.length > 0) {
     const rawTimes = scenes.slice(0, 2).map(s => s.end ? `${s.start}–${s.end}` : s.start);
     const formattedTimes = rawTimes.join(' and ');
-
     cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Viewer discretion advised. Includes exact scene timestamps: ${formattedTimes}.`;
   } else {
     cleanSEODesc = `Timestamps & Parents Guide for ${movie.Title} (${currentMovieYear}). Filmiway has identified zero explicit nudity or sexual content throughout the film's entire runtime.`;
   }
-
-  // =========================================================================
 
   const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
 
@@ -299,27 +300,26 @@ const EroticThrillerMoviePage = ({ movie, tmdbData: movieData, sensitiveData }) 
           <SubtleFilmGrain />
           <div className="absolute inset-0"><CinematicBackground /></div>
           
-          {/* ✅ SMART BACK BUTTON RESTORED */}
-         
+          <SmartBackButton />
           
           <div className="relative z-10 pt-10 sm:pt-12 lg:pt-16">
               <h1 className="sr-only">{cleanSEOTitle}</h1>
 
-              <EroticThrillerBreadcrumb movie={movie} />
+              <RoadTripBreadcrumb movie={movie} />
               <div className="container mx-auto px-0 pb-16 sm:pb-24 lg:pb-32 max-w-7xl">
                   <OptimizedBanner movie={movie} movieData={movieData} richData={richData} trailer={trailer} isMobile={isMobile} />
                   
                   <motion.div id="watch" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="space-y-8 sm:space-y-12 px-3 sm:px-4 lg:px-6">
-                      {/* ✅ PASSED sensitiveData PROP TO TRIGGER TIMELINE RENDER */}
+                      {/* ✅ REMINDER: Ensure you update your MovieDetailsSection to accept fromRoadTripCollection={true} */}
                       <MovieDetailsSection 
                           movie={movie} 
-                          fromEroticThrillerCollection={true} 
+                          fromRoadTripCollection={true} 
                           sensitiveData={sensitiveData} 
                       />
                   </motion.div>
                   
                   <div className="px-3 sm:px-4 lg:px-6">
-                      <InternalCollectionsSection currentSlug="best-erotic-thriller-movies" />
+                      <InternalCollectionsSection currentSlug="top-10-road-trip-movies" />
                       <TMDBAttribution />
                       <AuthorCreditSection />
                   </div>
@@ -361,4 +361,4 @@ export async function getStaticProps({ params }) {
   }
 }
 
-export default EroticThrillerMoviePage;
+export default RoadTripMoviePage;

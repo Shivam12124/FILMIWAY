@@ -12,7 +12,7 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 402, "imdbID": "tt0103772", "Title": "Basic Instinct", "year": 1992, "genre": "Thriller", "runtime": 127, "rank": 1 },
     { "tmdbId": 345, "imdbID": "tt0120663", "Title": "Eyes Wide Shut", "year": 1999, "genre": "Drama", "runtime": 159, "rank": 2 },
     { "tmdbId": 290098, "imdbID": "tt4016934", "Title": "The Handmaiden", "year": 2016, "genre": "Thriller", "runtime": 145, "rank": 3 },
-    { "tmdbId": 4594, "imdbID": "tt0808357", "Title": "Lust, Caution", "year": 2007, "genre": "Thriller", "runtime": 158, "rank": 4 },
+    { "tmdbId":   4588, "imdbID": "tt0808357", "Title": "Lust, Caution", "year": 2007, "genre": "Thriller", "runtime": 158, "rank": 4 },
     { "tmdbId": 617, "imdbID": "tt0120890", "Title": "Wild Things", "year": 1998, "genre": "Mystery", "runtime": 108, "rank": 5 },
     { "tmdbId": 2251, "imdbID": "tt0250797", "Title": "Unfaithful", "year": 2002, "genre": "Drama", "runtime": 124, "rank": 6 },
     { "tmdbId": 10998, "imdbID": "tt0093010", "Title": "Fatal Attraction", "year": 1987, "genre": "Thriller", "runtime": 119, "rank": 7 },
@@ -26,7 +26,7 @@ export const STRATEGIC_QUOTES = {
     402: "Killing isn't like smoking. You can stop.",
     345: "No dream is ever just a dream.",
     290098: "My life is a fake. But you are my reality.",
-    4594: "He knows better than anyone how to act the part.",
+      4588: "He knows better than anyone how to act the part.",
     617: "People aren't always what they appear to be.",
     2251: "There is no such thing as a mistake. There are things you do, and things you don't do.",
     10998: "I'm not going to be ignored.",
@@ -90,7 +90,7 @@ export const SENSITIVE_TIMELINES = {
     },
 
     // 4. Lust, Caution
-    4594: { 
+      4588: { 
         scenes: [
             { start: "1:00:15", end: "1:02:40", type: "Sex & Nudity", severity: "High" },
             { start: "1:32:35", end: "1:34:26", type: "Sex & Nudity", severity: "High" },
@@ -177,7 +177,7 @@ export const FALLBACK_POSTERS = {
     402: "https://m.media-amazon.com/images/M/MV5BMjA0NzM1NDc1NV5BMl5BanBnXkFtZTcwNDExMzEzMQ@@._V1_SX500.jpg",
     345: "https://m.media-amazon.com/images/M/MV5BMTMwMjk0Mjc1M15BMl5BanBnXkFtZTcwMjA3NDAyMQ@@._V1_SX500.jpg",
     290098: "https://m.media-amazon.com/images/M/MV5BNDJhYmNjNDAtMTU3OC00MmY1LWE4MmItYWJhZmZlMTZhMWY1XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX500.jpg",
-    4594: "https://m.media-amazon.com/images/M/MV5BMjA3NTU2NzYzN15BMl5BanBnXkFtZTcwMTUzMTMzMQ@@._V1_SX500.jpg",
+      4588: "https://m.media-amazon.com/images/M/MV5BMjA3NTU2NzYzN15BMl5BanBnXkFtZTcwMTUzMTMzMQ@@._V1_SX500.jpg",
     617: "https://m.media-amazon.com/images/M/MV5BOTBjYTE0ZTAtYmExMi00NDcwLWJiOWQtZWJhOWFlZWVmODg1XkEyXkFqcGdeQXVyMTA0MjU0Ng@@._V1_SX500.jpg",
     2251: "https://m.media-amazon.com/images/M/MV5BZTE0NjMyMjUtNWY4My00ODUyLTg0YjYtYWI5MGM2YzFlZDBkXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX500.jpg",
     10998: "https://m.media-amazon.com/images/M/MV5BMTkzNjgyNDg5MF5BMl5BanBnXkFtZTcwNDQ1MTAyMQ@@._V1_SX500.jpg",
@@ -241,7 +241,7 @@ export const COMPLETE_MOVIE_DATA = {
         synopsis: "In 1930s Korea, a con man hires a pickpocket to become the maid of a Japanese heiress to steal her fortune. What follows is an intricate puzzle-box of shifting alliances, hidden motives, and visually stunning cinematic misdirection.",
         themes: ["Con Artistry", "Shifting Perspectives", "Class Subversion"]
     }),
-    4594: createThrillerData({ // Lust, Caution
+      4588: createThrillerData({ // Lust, Caution
         eroticTension: 90, complexityLevel: "HIGH", 
         dominantColor: "#78350f", rating: 7.5, criticsScore: 72, audienceScore: 82, director: "Ang Lee", 
         cast: ["Tony Leung", "Tang Wei"], boxOffice: "$67.2 million", budget: "$15 million", 

@@ -50,6 +50,8 @@ import { COMPLETE_MOVIE_DATABASE as PEACOCK_THRILLER_DATABASE, COMPLETE_MOVIE_DA
 import { COMPLETE_MOVIE_DATABASE as PEACOCK_BEST_DATABASE, COMPLETE_MOVIE_DATA as PEACOCK_BEST_DATA } from '../../utils/peacockBestMoviesData';
 import { COMPLETE_MOVIE_DATABASE as PEACOCK_COMEDY_DATABASE, COMPLETE_MOVIE_DATA as PEACOCK_COMEDY_DATA } from '../../utils/peacockComedyMovieData';
 import { COMPLETE_MOVIE_DATABASE as RAUNCHY_COMEDY_DATABASE, COMPLETE_MOVIE_DATA as RAUNCHY_COMEDY_DATA } from '../../utils/raunchyComedyMovieData';
+import { COMPLETE_MOVIE_DATABASE as ROAD_TRIP_DATABASE, COMPLETE_MOVIE_DATA as ROAD_TRIP_DATA } from '../../utils/roadTripMovieData';
+import { COMPLETE_MOVIE_DATABASE as THOUGHT_PROVOKING_DATABASE, COMPLETE_MOVIE_DATA as THOUGHT_PROVOKING_DATA } from '../../utils/thoughtProvokingMovieData';
 
 import { COMPLETE_MOVIE_DATABASE as HULU_FAMILY_DATABASE, COMPLETE_MOVIE_DATA as HULU_FAMILY_DATA } from '../../utils/huluFamilyMovieData';
 import { COMPLETE_MOVIE_DATABASE as HBO_ACTION_DATABASE, COMPLETE_MOVIE_DATA as HBO_ACTION_DATA } from '../../utils/hboActionMovieData';
@@ -1471,6 +1473,52 @@ const getCollectionContent = () => {
         }
     };
 
+    } else if (collection.slug === 'top-10-road-trip-movies') {
+        return {
+            badge: "Transformative Journeys",
+            title: "Top 10 Road Trip Movies",
+            description: "Movies exploring human texture, emotional transformation, and the vast open road.",
+            selection: {
+                text1: "From the raw sexual awakening in 'Y Tu Mamá También' to the radical freedom of 'Into the Wild'.",
+                text2: "These films prove that a road movie doesn't need car chases to be thrilling—the simple act of travel is a profound journey."
+            },
+            ranking: {
+                text: "Ranked by wanderlust score, emotional texture, and how deeply the road changes the characters.",
+                points: [
+                    "Wanderlust intensity",
+                    "Emotional texture",
+                    "Transformation depth",
+                    "Human connection"
+                ]
+            },
+            experience: {
+                text1: "Whether you're seeking radical freedom or a slice of Americana, this collection delivers cinema's most transformative road trips.",
+                text2: "Each film serves as a reminder that the journey changes you forever."
+            }
+        };
+    } else if (collection.slug === 'best-thought-provoking-movies') {
+        return {
+            badge: "Philosophical Masterpieces",
+            title: "Best Thought-Provoking Movies",
+            description: "Movies exploring the depths of human existence, grief, hope, and the search for meaning.",
+            selection: {
+                text1: "From the existential crisis of 'Ikiru' to the profound humanity of 'Schindler's List'.",
+                text2: "These films challenge your perspective on life, morality, and the universe."
+            },
+            ranking: {
+                text: "Ranked by philosophical depth, emotional resonance, and their lasting impact on the viewer's worldview.",
+                points: [
+                    "Philosophical depth",
+                    "Emotional resonance",
+                    "Narrative complexity",
+                    "Enduring cultural impact"
+                ]
+            },
+            experience: {
+                text1: "Prepare to question everything you know about life and humanity.",
+                text2: "Each film serves as a profound meditation on the human condition."
+            }
+        };
     } else if (collection.slug === 'best-heist-thriller-movies') {
         return {
             badge: "Heist Master Cinema",
@@ -2033,6 +2081,16 @@ subtitle: "While everyone searches Netflix, these classics hide in plain sight. 
             title: "10 Best Raunchy Comedy Movies",
             subtitle: "Ranked by Laughter, Chaos & R-Rated Absurdity"
         };
+    } else if (collection.slug === 'top-10-road-trip-movies') {
+        return {
+            title: "Top 10 Road Trip Movies: The Transformative Journey",
+            subtitle: "Ranked by Wanderlust, Emotional Texture & Human Connection"
+        };
+    } else if (collection.slug === 'best-thought-provoking-movies') {
+        return {
+            title: "10 Best Thought-Provoking Movies",
+            subtitle: "Profound explorations of humanity, existence, and the search for meaning"
+        };
 
     } else if (collection.slug === 'movies-like-interstellar') {
         return {
@@ -2171,6 +2229,16 @@ const getLoaderContent = () => {
         return {
             title: "Loading Best Raunchy Comedy Movies",
             description: "Curating the most chaotic and hilarious R-rated comedies with community reviews"
+        };
+    } else if (collection?.slug === 'top-10-road-trip-movies') {
+        return {
+            title: "Loading Top 10 Road Trip Movies",
+            description: "Curating cinematic journeys of wanderlust and transformation with community reviews"
+        };
+    } else if (collection?.slug === 'best-thought-provoking-movies') {
+        return {
+            title: "Loading Thought-Provoking Movies",
+            description: "Curating profound cinematic meditations on existence with community reviews"
         };
 
 } else if (collection?.slug === 'movies-like-donnie-darko') {
@@ -2574,6 +2642,24 @@ const getStaticMetaContent = () => {
             ogTitle: "10 Best Raunchy Comedy Movies: Pure R-Rated Chaos",
             twitterTitle: "The 10 Funniest & Raunchiest Comedies You Need to Watch",
             progressText: `of Top ${movies.length} Raunchy Comedies`
+        };
+    } else if (collection.slug === 'top-10-road-trip-movies') {
+        return {
+            title: "Top 10 Road Trip Movies (Ranked by Wanderlust)",
+            description: "The definitive ranking of the best road trip movies. From Into the Wild to Thelma & Louise. Includes an exact Timestamps & Parents Guide.",
+            keywords: "best road trip movies, road trip films, movies about travel, wanderlust movies",
+            ogTitle: "10 Best Road Trip Movies: Transformative Cinema",
+            twitterTitle: "The 10 Best Road Trip Movies You Need to Watch",
+            progressText: `of Top ${movies.length} Road Trip Movies`
+        };
+    } else if (collection.slug === 'best-thought-provoking-movies') {
+        return {
+            title: "10 Best Thought-Provoking Movies (Ranked by Depth)",
+            description: "Explore the most profound, thought-provoking movies ever made. From Ikiru to The Shawshank Redemption. Includes an exact Timestamps & Parents Guide.",
+            keywords: "best thought provoking movies, philosophical movies, deep movies, existential films, movies about meaning of life",
+            ogTitle: "10 Best Thought-Provoking Movies: Philosophical Masterpieces",
+            twitterTitle: "The 10 Most Profound & Thought-Provoking Movies",
+            progressText: `of Top ${movies.length} Thought-Provoking Movies`
         };
 
 
@@ -3177,6 +3263,8 @@ const getStaticMetaContent = () => {
             sessionStorage.removeItem('fromEroticThrillerCollection');
             sessionStorage.removeItem('fromGreedCollection');
             sessionStorage.removeItem('fromRaunchyComedyCollection');
+            sessionStorage.removeItem('fromRoadTripCollection');
+            sessionStorage.removeItem('fromThoughtProvokingCollection');
 
             // Set appropriate collection flag âœ…
             if (collection.slug === 'movies-like-inception') {
@@ -3303,6 +3391,10 @@ const getStaticMetaContent = () => {
                 sessionStorage.setItem('fromGreedCollection', 'true');
             } else if (collection.slug === 'best-raunchy-comedy-movies') {
                 sessionStorage.setItem('fromRaunchyComedyCollection', 'true');
+            } else if (collection.slug === 'top-10-road-trip-movies') {
+                sessionStorage.setItem('fromRoadTripCollection', 'true');
+            } else if (collection.slug === 'best-thought-provoking-movies') {
+                sessionStorage.setItem('fromThoughtProvokingCollection', 'true');
             }
         }
     };
@@ -3722,6 +3814,10 @@ return (
 ? 'movies/best-movies-about-greed/'
 : collection?.slug === 'best-raunchy-comedy-movies'
 ? 'movies/best-raunchy-comedy-movies/'
+: collection?.slug === 'top-10-road-trip-movies'
+? 'movies/top-10-road-trip-movies/'
+: collection?.slug === 'best-thought-provoking-movies'
+? 'movies/best-thought-provoking-movies/'
 : collection?.slug === 'best-action-movies-on-hulu'
                                     ? 'movies/best-action-movies-on-hulu/'
 : collection?.slug === 'best-romance-movies-on-hulu'
@@ -3963,6 +4059,10 @@ return (
                                     ? `/movies/best-movies-about-greed/${currentMovie.imdbID}`
                                     : collection.slug === 'best-raunchy-comedy-movies'
                                     ? `/movies/best-raunchy-comedy-movies/${currentMovie.imdbID}`
+                                    : collection.slug === 'top-10-road-trip-movies'
+                                    ? `/movies/top-10-road-trip-movies/${currentMovie.imdbID}`
+                                    : collection.slug === 'best-thought-provoking-movies'
+                                    ? `/movies/best-thought-provoking-movies/${currentMovie.imdbID}`
                                     : collection.slug === 'best-action-movies-on-hulu'
                                     ? `/movies/best-action-movies-on-hulu/${currentMovie.imdbID}`
                                     : collection.slug === 'best-romance-movies-on-hulu'
@@ -4123,6 +4223,10 @@ return (
                                     detailPageUrl = `/movies/best-movies-about-greed/${currentMovie.imdbID}`;
                                 } else if (collection.slug === 'best-raunchy-comedy-movies') {
                                     detailPageUrl = `/movies/best-raunchy-comedy-movies/${currentMovie.imdbID}`;
+                                } else if (collection.slug === 'top-10-road-trip-movies') {
+                                    detailPageUrl = `/movies/top-10-road-trip-movies/${currentMovie.imdbID}`;
+                                } else if (collection.slug === 'best-thought-provoking-movies') {
+                                    detailPageUrl = `/movies/best-thought-provoking-movies/${currentMovie.imdbID}`;
                                 } else if (collection.slug === 'best-action-movies-on-hulu') {
                                     detailPageUrl = `/movies/best-action-movies-on-hulu/${currentMovie.imdbID}`;
                                 } else if (collection.slug === 'best-romance-movies-on-hulu') {
@@ -4417,6 +4521,12 @@ case 'best-movies-about-greed':
             break;
 case 'best-raunchy-comedy-movies':
             movieDatabase = RAUNCHY_COMEDY_DATABASE;
+            break;
+case 'top-10-road-trip-movies':
+            movieDatabase = ROAD_TRIP_DATABASE;
+            break;
+case 'best-thought-provoking-movies':
+            movieDatabase = THOUGHT_PROVOKING_DATABASE;
             break;
 
             case 'best-action-movies-on-hulu':

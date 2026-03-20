@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Head from 'next/head';
 import Link from 'next/link';
-import { Search, Brain, Mountain, Film, ChevronDown, Sparkles, Plus, ArrowRight, Star, Clock, Eye, Scale, DollarSign, Shield, Zap, Heart, Ghost, Smile, Crown,Flame, Rocket } from 'lucide-react';
+import { Search, Brain, Mountain, Film, ChevronDown, Sparkles, Plus, ArrowRight, Star, Clock, Eye, Scale, DollarSign, Shield, Zap, Heart, Ghost, Smile, Crown,Flame, Map, Rocket } from 'lucide-react';
 import Image from 'next/image';
 
 const CollectionsHub = () => {
@@ -660,6 +660,29 @@ const CollectionsHub = () => {
             movieCount: '10',
             rating: '7.0',
             directLink: '/collection/best-raunchy-comedy-movies',
+            hasSubCollections: false
+        },
+
+        {
+            id: 'top-10-road-trip-movies',
+            title: 'Top 10 Road Trip Movies',
+            description: 'Cinematic journeys exploring human texture, emotional transformation, and the vast open road.',
+            icon: Map, 
+            gradient: 'from-amber-600 to-orange-800',
+            movieCount: '10',
+            rating: '7.7',
+            directLink: '/collection/top-10-road-trip-movies',
+            hasSubCollections: false
+        },
+{
+            id: 'thought-provoking',
+            title: '10 Best Thought-Provoking Movies',
+            description: 'Profound cinematic masterpieces exploring the depths of human existence, grief, and the search for meaning.',
+            icon: Brain, 
+            gradient: 'from-indigo-600 to-blue-900',
+            movieCount: '10',
+            rating: '8.3',
+            directLink: '/collection/best-thought-provoking-movies',
             hasSubCollections: false
         },
 

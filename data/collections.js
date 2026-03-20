@@ -541,6 +541,23 @@ export const COLLECTIONS = {
   },
 
 
+  // 🗺️ TOP 10 ROAD TRIP MOVIES
+  'top-10-road-trip-movies': {
+    slug: 'top-10-road-trip-movies',
+    title: 'Top 10 Road Trip Movies',
+    stats: { averageRating: 7.7 },
+    movies: ['tt0245574', 'tt0103074', 'tt0095953', 'tt0758758', 'tt0166896', 'tt0449059', 'tt0318462', 'tt0375063', 'tt0064276', 'tt0085995'],
+    relatedCollections: ['best-comedy-movies-on-hulu', 'best-drama-movies-on-hbo-max', 'best-survival-movies']
+  },
+  // 🧠 10 BEST THOUGHT-PROVOKING MOVIES
+  'best-thought-provoking-movies': {
+    slug: 'best-thought-provoking-movies',
+    title: '10 Best Thought-Provoking Movies',
+    stats: { averageRating: 8.3 },
+    movies: ['tt0044741', 'tt0108052', 'tt0111161', 'tt0120689', 'tt4034228', 'tt0436659', 'tt0758758', 'tt0097165', 'tt0119217', 'tt2194499'],
+    relatedCollections: ['best-psychological-thriller-movies', 'movies-like-the-prestige', 'best-drama-movies-on-hbo-max']
+  },
+
   // 🩸 BEST THRILLER MOVIES
   'best-thriller-movies': {
     slug: 'best-thriller-movies',
@@ -581,6 +598,8 @@ export const getDetectiveThillerCollection = () => COLLECTIONS['best-detective-t
 export const getMysteryThillerCollection = () => COLLECTIONS['best-mystery-thriller-movies'];
 export const getGreedCollection = () => COLLECTIONS['best-movies-about-greed'];
 export const getRaunchyComedyCollection = () => COLLECTIONS['best-raunchy-comedy-movies'];
+export const getRoadTripCollection = () => COLLECTIONS['top-10-road-trip-movies'];
+export const getThoughtProvokingCollection = () => COLLECTIONS['best-thought-provoking-movies'];
 export const getThrillerCollection = () => COLLECTIONS['best-thriller-movies'];
 
 // ============================================================================

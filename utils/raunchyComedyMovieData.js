@@ -183,22 +183,21 @@ const createRaunchyData = (data) => ({
     dominantColor: "#db2777", // Vibrant Pink Default
     ...data,
 });
-
 export const COMPLETE_MOVIE_DATA = {
     // 1. American Pie
     2105: createRaunchyData({ 
         raunchinessScore: 95, laughterIndex: 92, cringeFactor: 88, complexityLevel: "HARD R", 
         dominantColor: "#be185d", rating: 7.0, criticsScore: 61, audienceScore: 61, director: "Paul Weitz", 
         cast: ["Jason Biggs", "Eugene Levy", "Alyson Hannigan"], boxOffice: "$235.5 million", budget: "$11 million", 
-        dna: { "Comedy": 70, "Romance": 20, "Teen": 10 },
+        dna: { "Comedy": 70, "Romance": 20, "Drama": 10 }, 
         scenes: [
-            { time: 10, intensity: 50, label: "The Pact" }, 
-            { time: 32, intensity: 98, label: "The Apple Pie" }, // PRIMARY PEAK
-            { time: 48, intensity: 85, label: "The Webcam Stream" }, 
-            { time: 70, intensity: 75, label: "Band Camp Revelation" }, 
-            { time: 85, intensity: 90, label: "The Prom Afterparty" } 
+            { time: 10, intensity: 25, label: "The Pact" }, // Just guys talking in a diner. Low tension.
+            { time: 32, intensity: 82, label: "The Apple Pie" }, // Huge physical cringe, dad walks in.
+            { time: 48, intensity: 88, label: "The Webcam Stream" }, // PRIMARY PEAK: Absolute social devastation. The whole school sees.
+            { time: 70, intensity: 75, label: "Band Camp Revelation" }, // Shocking twist, high comedic impact.
+            { time: 85, intensity: 45, label: "The Prom Afterparty" } // Sweet, awkward resolution. Tension is gone.
         ],
-        synopsis: "Four teenage boys enter a pact to lose their virginity by prom night. This is the foundational text of the modern teen sex comedy, mixing genuinely sweet coming-of-age moments with legendary gross-out gags that defined a generation.",
+        synopsis: "Four teenage boys enter a pact to lose their virginity by prom night. This is the foundational text of the modern teen sex comedy, mixing sweet coming-of-age moments with legendary gross-out gags.",
         themes: ["Coming of Age", "Teen Awkwardness", "Sexual Awakening"]
     }),
 
@@ -207,15 +206,15 @@ export const COMPLETE_MOVIE_DATA = {
         raunchinessScore: 88, laughterIndex: 98, cringeFactor: 75, complexityLevel: "HARD R", 
         dominantColor: "#0ea5e9", rating: 7.6, criticsScore: 88, audienceScore: 87, director: "Greg Mottola", 
         cast: ["Jonah Hill", "Michael Cera", "Christopher Mintz-Plasse"], boxOffice: "$170.8 million", budget: "$20 million", 
-        dna: { "Comedy": 80, "Teen": 15, "Bromance": 5 },
+        dna: { "Comedy": 75, "Crime": 15, "Drama": 10 },
         scenes: [
-            { time: 15, intensity: 60, label: "The Fake ID" }, 
-            { time: 40, intensity: 85, label: "The Liquor Store Robbery" }, 
-            { time: 70, intensity: 92, label: "The Cop Car Joyride" }, 
-            { time: 85, intensity: 98, label: "The Period Blood Incident" }, // PRIMARY PEAK
-            { time: 105, intensity: 50, label: "Sleeping Bags" } 
+            { time: 15, intensity: 40, label: "The Fake ID" }, // Mild anxiety over McLovin.
+            { time: 40, intensity: 78, label: "The Liquor Store Robbery" }, // Fogell gets punched. Real danger spikes.
+            { time: 70, intensity: 85, label: "The Cop Car Joyride" }, // Shooting stop signs. Insane escalation.
+            { time: 85, intensity: 90, label: "The Period Blood Incident" }, // PRIMARY PEAK: Social and physical chaos at the party. Fight breaks out.
+            { time: 105, intensity: 35, label: "Sleeping Bags" } // Pure emotional vulnerability. Zero tension.
         ],
-        synopsis: "Two co-dependent high school seniors are forced to deal with separation anxiety after their plan to stage a booze-soaked party goes hilariously awry. Driven by rapid-fire, insanely vulgar dialogue that perfectly captures how teenagers actually talk.",
+        synopsis: "Two co-dependent high school seniors deal with separation anxiety after their plan to stage a booze-soaked party goes awry. Driven by insanely vulgar dialogue that perfectly captures how teenagers actually talk.",
         themes: ["Bromance", "Separation Anxiety", "Underage Drinking"]
     }),
 
@@ -224,15 +223,15 @@ export const COMPLETE_MOVIE_DATA = {
         raunchinessScore: 92, laughterIndex: 96, cringeFactor: 80, complexityLevel: "HARD R", 
         dominantColor: "#d97706", rating: 7.7, criticsScore: 79, audienceScore: 84, director: "Todd Phillips", 
         cast: ["Bradley Cooper", "Ed Helms", "Zach Galifianakis"], boxOffice: "$469.3 million", budget: "$35 million", 
-        dna: { "Comedy": 60, "Mystery": 30, "Action": 10 },
+        dna: { "Comedy": 50, "Mystery": 35, "Crime": 15 },
         scenes: [
-            { time: 25, intensity: 65, label: "Waking Up to Chaos" }, 
-            { time: 42, intensity: 95, label: "Mr. Chow in the Trunk" }, 
-            { time: 60, intensity: 85, label: "Mike Tyson's Tiger" }, 
-            { time: 85, intensity: 90, label: "The Taser Demo" }, 
-            { time: 98, intensity: 100, label: "The Lost Photos" } // PRIMARY PEAK
+            { time: 25, intensity: 65, label: "Waking Up to Chaos" }, // High disorientation. Tiger in bathroom.
+            { time: 42, intensity: 85, label: "Mr. Chow in the Trunk" }, // Violent shock, crowbar attack.
+            { time: 60, intensity: 88, label: "Mike Tyson's Tiger" }, // Singing in the air, then a knockout punch.
+            { time: 85, intensity: 92, label: "The Roof Discovery" }, // PRIMARY PEAK: The mystery solves itself. Huge emotional relief + ticking clock.
+            { time: 98, intensity: 60, label: "The Lost Photos" } // Pure laughter, no stakes.
         ],
-        synopsis: "Three buddies wake up from a bachelor party in Las Vegas with no memory of the previous night and the bachelor missing. A brilliantly structured comedy that plays out like a high-stakes detective mystery masked by absurd, R-rated debauchery.",
+        synopsis: "Three buddies wake up from a bachelor party in Vegas with no memory of the night and the bachelor missing. A brilliantly structured comedy that plays out like a high-stakes detective mystery masked by R-rated debauchery.",
         themes: ["Lost Memories", "Vegas Excess", "Brotherhood"]
     }),
 
@@ -241,15 +240,15 @@ export const COMPLETE_MOVIE_DATA = {
         raunchinessScore: 85, laughterIndex: 94, cringeFactor: 85, complexityLevel: "R-RATED", 
         dominantColor: "#eab308", rating: 7.1, criticsScore: 85, audienceScore: 83, director: "Judd Apatow", 
         cast: ["Steve Carell", "Catherine Keener", "Paul Rudd"], boxOffice: "$177.4 million", budget: "$26 million", 
-        dna: { "Comedy": 70, "Romance": 30 },
+        dna: { "Comedy": 60, "Romance": 30, "Drama": 10 }, 
         scenes: [
-            { time: 15, intensity: 45, label: "The Secret is Out" }, 
-            { time: 35, intensity: 70, label: "Speed Dating" }, 
-            { time: 55, intensity: 98, label: "The Chest Waxing" }, // PRIMARY PEAK
-            { time: 80, intensity: 85, label: "The Drunk Drive" }, 
-            { time: 110, intensity: 90, label: "The Age of Aquarius" } 
+            { time: 15, intensity: 60, label: "The Secret is Out" }, // Poker game. Pure social embarrassment.
+            { time: 35, intensity: 55, label: "Speed Dating" }, // Awkward, but low stakes.
+            { time: 55, intensity: 88, label: "The Chest Waxing" }, // Physical agony. Real blood.
+            { time: 80, intensity: 75, label: "The Drunk Drive" }, // Crashing the bike into a billboard.
+            { time: 110, intensity: 40, label: "The Age of Aquarius" } // Completely joyful musical release.
         ],
-        synopsis: "Goaded by his buddies, a nerdy guy who's never 'done the deed' only finds the pressure mounting when he meets a single mother. This film kicked off the Judd Apatow era, proving that extreme raunchiness could coexist with genuine, heartfelt emotion.",
+        synopsis: "A nerdy guy who's never 'done the deed' finds the pressure mounting when he meets a single mother. This film kicked off the Apatow era, proving extreme raunchiness could coexist with genuine emotion.",
         themes: ["Late Bloomers", "Toxic Masculinity", "True Love"]
     }),
 
@@ -258,15 +257,15 @@ export const COMPLETE_MOVIE_DATA = {
         raunchinessScore: 80, laughterIndex: 90, cringeFactor: 70, complexityLevel: "R-RATED", 
         dominantColor: "#0891b2", rating: 7.0, criticsScore: 75, audienceScore: 70, director: "David Dobkin", 
         cast: ["Owen Wilson", "Vince Vaughn", "Rachel McAdams"], boxOffice: "$288.5 million", budget: "$40 million", 
-        dna: { "Comedy": 60, "Romance": 40 },
+        dna: { "Comedy": 55, "Romance": 35, "Drama": 10 }, 
         scenes: [
-            { time: 10, intensity: 75, label: "The Crashing Montage" }, 
-            { time: 45, intensity: 85, label: "Dinner Table Antics" }, 
-            { time: 60, intensity: 95, label: "Tied to the Bed" }, // PRIMARY PEAK
-            { time: 85, intensity: 70, label: "The Hunting Trip" }, 
-            { time: 105, intensity: 88, label: "Chazz Reinhold" } 
+            { time: 10, intensity: 50, label: "The Crashing Montage" }, // Breezy, fun, low tension.
+            { time: 45, intensity: 78, label: "Dinner Table Antics" }, // Under-the-table handjob. High risk of getting caught.
+            { time: 60, intensity: 85, label: "Tied to the Bed" }, // Isla Fisher goes psycho. Hilarious terror.
+            { time: 85, intensity: 82, label: "The Hunting Trip" }, // Getting shot in the ass.
+            { time: 105, intensity: 90, label: "The Wedding Interruption" } // PRIMARY PEAK: Public declaration, getting beaten up by Bradley Cooper.
         ],
-        synopsis: "John and Jeremy are a pair of committed womanizers who sneak into weddings to take advantage of the romantic tinge in the air. Their perfect system collapses when they crash the wedding of the Treasury Secretary's daughter and one of them actually falls in love.",
+        synopsis: "Two committed womanizers sneak into weddings to take advantage of the romantic tinge in the air. Their system collapses when they crash a high-society wedding and one falls in love.",
         themes: ["Commitment Phobia", "Rule Breaking", "Upper Class Satire"]
     }),
 
@@ -275,15 +274,15 @@ export const COMPLETE_MOVIE_DATA = {
         raunchinessScore: 90, laughterIndex: 85, cringeFactor: 80, complexityLevel: "HARD R", 
         dominantColor: "#ea580c", rating: 6.5, criticsScore: 57, audienceScore: 66, director: "Todd Phillips", 
         cast: ["Breckin Meyer", "Seann William Scott", "Tom Green"], boxOffice: "$119.8 million", budget: "$16 million", 
-        dna: { "Comedy": 70, "Adventure": 30 },
+        dna: { "Comedy": 65, "Adventure": 25, "Romance": 10 },
         scenes: [
-            { time: 12, intensity: 85, label: "The Accidental Tape" }, 
-            { time: 40, intensity: 70, label: "The Bridge Jump" }, 
-            { time: 65, intensity: 95, label: "The Sperm Bank" }, // PRIMARY PEAK
-            { time: 80, intensity: 88, label: "The Snake Feeding" }, 
-            { time: 90, intensity: 75, label: "Intercepting the Mail" } 
+            { time: 12, intensity: 65, label: "The Accidental Tape" }, // The inciting incident panic.
+            { time: 40, intensity: 80, label: "The Bridge Jump" }, // The car is destroyed. Massive plot setback.
+            { time: 65, intensity: 86, label: "The Sperm Bank" }, // PRIMARY PEAK: Pure gross-out climax.
+            { time: 80, intensity: 72, label: "The Snake Feeding" }, // Tense, dark comedy moment with the mouse.
+            { time: 90, intensity: 55, label: "Intercepting the Mail" } // The objective is complete.
         ],
-        synopsis: "Four college buddies embark on an 1800-mile road trip to retrieve an illicit tape mistakenly mailed to a lifelong girlfriend. A classic, chaotic journey filled with bizarre encounters, extreme gross-out humor, and ultimate early-2000s frat-boy energy.",
+        synopsis: "Four college buddies embark on an 1800-mile road trip to retrieve an illicit tape mistakenly mailed to a lifelong girlfriend. A classic, chaotic journey filled with extreme gross-out humor.",
         themes: ["College Chaos", "Road Trips", "Desperate Measures"]
     }),
 
@@ -292,15 +291,15 @@ export const COMPLETE_MOVIE_DATA = {
         raunchinessScore: 96, laughterIndex: 88, cringeFactor: 85, complexityLevel: "EXTREME", 
         dominantColor: "#16a34a", rating: 6.6, criticsScore: 47, audienceScore: 75, director: "Jeff Schaffer", 
         cast: ["Scott Mechlowicz", "Jacob Pitts", "Michelle Trachtenberg"], boxOffice: "$20.8 million", budget: "$25 million", 
-        dna: { "Comedy": 70, "Adventure": 30 },
+        dna: { "Comedy": 65, "Adventure": 25, "Romance": 10 },
         scenes: [
-            { time: 8, intensity: 85, label: "Scotty Doesn't Know" }, 
-            { time: 35, intensity: 98, label: "The Nude Beach" }, // PRIMARY PEAK
-            { time: 55, intensity: 90, label: "Madame Vandersexxx" }, 
-            { time: 70, intensity: 88, label: "The Green Fairy" }, 
-            { time: 82, intensity: 75, label: "Vatican Smoke" } 
+            { time: 8, intensity: 70, label: "Scotty Doesn't Know" }, // Public humiliation at graduation.
+            { time: 35, intensity: 75, label: "The Nude Beach" }, // Shock and cringe.
+            { time: 55, intensity: 90, label: "Madame Vandersexxx" }, // Ultimate physical/social terror in the dungeon.
+            { time: 70, intensity: 80, label: "The Green Fairy" }, // Absurd hallucination sequence.
+            { time: 82, intensity: 92, label: "Vatican Smoke" } // PRIMARY PEAK: Accidentally setting the Pope on fire. Massive narrative chaos.
         ],
-        synopsis: "Dumped by his girlfriend, a high school grad decides to embark on an overseas adventure in Europe with his friends to find his beautiful German pen pal. A cult classic that dials up the international stereotypes and raunch to absolute maximum levels.",
+        synopsis: "Dumped by his girlfriend, a high school grad embarks on an overseas adventure to find his German pen pal. A cult classic that dials up international stereotypes and raunch to maximum levels.",
         themes: ["Culture Clash", "Backpacking", "Teen Hormones"]
     }),
 
@@ -309,15 +308,15 @@ export const COMPLETE_MOVIE_DATA = {
         raunchinessScore: 82, laughterIndex: 95, cringeFactor: 88, complexityLevel: "R-RATED", 
         dominantColor: "#c026d3", rating: 6.8, criticsScore: 89, audienceScore: 76, director: "Paul Feig", 
         cast: ["Kristen Wiig", "Maya Rudolph", "Melissa McCarthy"], boxOffice: "$288.4 million", budget: "$32.5 million", 
-        dna: { "Comedy": 70, "Romance": 20, "Drama": 10 },
+        dna: { "Comedy": 65, "Drama": 25, "Romance": 10 }, 
         scenes: [
-            { time: 25, intensity: 70, label: "The Engagement Party" }, 
-            { time: 45, intensity: 100, label: "The Dress Fitting (Food Poisoning)" }, // PRIMARY PEAK
-            { time: 75, intensity: 92, label: "The Airplane Meltdown" }, 
-            { time: 95, intensity: 85, label: "The Bridal Shower Fight" }, 
-            { time: 115, intensity: 75, label: "The Wilson Phillips Finale" } 
+            { time: 25, intensity: 72, label: "The Engagement Party" }, // Passive-aggressive toast battle.
+            { time: 45, intensity: 92, label: "The Dress Fitting" }, // Food poisoning. Insane physical humiliation.
+            { time: 75, intensity: 88, label: "The Airplane Meltdown" }, // Kicked off the plane. Total social destruction.
+            { time: 95, intensity: 94, label: "The Bridal Shower Fight" }, // PRIMARY PEAK: Destroying the cookie. Real emotional implosion and friendship breakup.
+            { time: 115, intensity: 45, label: "The Wilson Phillips Finale" } // Joyful, healing resolution.
         ],
-        synopsis: "Competition between the maid of honor and a bridesmaid, over who is the bride's best friend, threatens to upend the life of an out-of-work pastry chef. This film shattered the glass ceiling for female-led comedies, proving women could execute gross-out humor better than the boys.",
+        synopsis: "Competition between the maid of honor and a bridesmaid threatens to upend the life of a pastry chef. This film shattered the glass ceiling, proving women could execute gross-out humor better than the boys.",
         themes: ["Female Friendship", "Jealousy", "Life Crises"]
     }),
 
@@ -326,15 +325,15 @@ export const COMPLETE_MOVIE_DATA = {
         raunchinessScore: 85, laughterIndex: 93, cringeFactor: 98, complexityLevel: "HARD R", 
         dominantColor: "#dc2626", rating: 7.1, criticsScore: 83, audienceScore: 61, director: "Peter Farrelly, Bobby Farrelly", 
         cast: ["Ben Stiller", "Cameron Diaz", "Matt Dillon"], boxOffice: "$369.9 million", budget: "$23 million", 
-        dna: { "Comedy": 70, "Romance": 30 },
+        dna: { "Comedy": 60, "Romance": 25, "Psychological": 15 }, 
         scenes: [
-            { time: 18, intensity: 100, label: "The Zipper Incident" }, // PRIMARY PEAK
-            { time: 42, intensity: 85, label: "The Hitchhiker" }, 
-            { time: 65, intensity: 80, label: "The Dog Revival" }, 
-            { time: 72, intensity: 95, label: "The Hair Gel" }, 
-            { time: 105, intensity: 75, label: "All The Stalkers Revealed" } 
+            { time: 18, intensity: 90, label: "The Zipper Incident" }, // Excruciating physical cringe. Set the bar for the movie early.
+            { time: 42, intensity: 75, label: "The Hitchhiker" }, // 7-minute abs. Absurd danger.
+            { time: 65, intensity: 85, label: "The Dog Revival" }, // Puffy catches fire and gets shocked.
+            { time: 72, intensity: 88, label: "The Hair Gel" }, // Extreme social cringe (mostly for the audience watching her).
+            { time: 105, intensity: 92, label: "All The Stalkers Revealed" } // PRIMARY PEAK: The narrative climax where everyone confronts Mary at once.
         ],
-        synopsis: "A man gets a chance to meet up with his dream girl from high school, even though his date with her back then was a complete disaster. The Farrelly Brothers crafted a sweet romantic comedy wrapped in some of the most shockingly wince-inducing physical gags in cinema history.",
+        synopsis: "A man gets a chance to meet up with his dream girl from high school, even though his date with her back then was a complete disaster. A sweet rom-com wrapped in shockingly wince-inducing physical gags.",
         themes: ["Obsession", "Stalking as Comedy", "Physical Comedy"]
     }),
 
@@ -343,15 +342,15 @@ export const COMPLETE_MOVIE_DATA = {
         raunchinessScore: 88, laughterIndex: 90, cringeFactor: 75, complexityLevel: "HARD R", 
         dominantColor: "#059669", rating: 7.0, criticsScore: 74, audienceScore: 73, director: "Danny Leiner", 
         cast: ["John Cho", "Kal Penn", "Neil Patrick Harris"], boxOffice: "$23.9 million", budget: "$9 million", 
-        dna: { "Comedy": 80, "Adventure": 20 },
+        dna: { "Comedy": 65, "Adventure": 25, "Crime": 10 }, 
         scenes: [
-            { time: 15, intensity: 65, label: "The Munchies Strike" }, 
-            { time: 38, intensity: 80, label: "The Raccoon Bite" }, 
-            { time: 55, intensity: 95, label: "Neil Patrick Harris Steals the Car" }, // PRIMARY PEAK
-            { time: 75, intensity: 88, label: "The Cheetah Ride" }, 
-            { time: 85, intensity: 70, label: "Finally, Burgers" } 
+            { time: 15, intensity: 30, label: "The Munchies Strike" }, // Just the desire phase. Very low stakes.
+            { time: 38, intensity: 65, label: "The Raccoon Bite" }, // Medical panic and physical comedy.
+            { time: 55, intensity: 82, label: "Neil Patrick Harris Steals the Car" }, // Complete loss of control and hope.
+            { time: 75, intensity: 86, label: "The Cheetah Ride" }, // PRIMARY PEAK: The most surreal, high-adrenaline moment of the night.
+            { time: 85, intensity: 40, label: "Finally, Burgers" } // Pure satisfaction and catharsis.
         ],
-        synopsis: "An Asian-American office worker and his Indian-American stoner friend embark on a quest to satisfy their desire for White Castle burgers. It brilliantly subverts racial stereotypes while delivering an absolutely unhinged, surreal, and hilarious midnight adventure.",
+        synopsis: "Two stoner friends embark on a quest to satisfy their desire for White Castle burgers. It brilliantly subverts racial stereotypes while delivering an unhinged, surreal midnight adventure.",
         themes: ["Munchies", "Subverting Stereotypes", "Surreal Road Trips"]
     })
 };

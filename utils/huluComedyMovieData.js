@@ -115,12 +115,12 @@ export const COMPLETE_MOVIE_DATA = {
         dominantColor: "#ef4444", rating: 7.6, criticsScore: 88, audienceScore: 87, director: "Greg Mottola", 
         cast: ["Jonah Hill", "Michael Cera", "Christopher Mintz-Plasse"], boxOffice: "$170 million", budget: "$20 million", 
         dna: { "Comedy": 70, "Coming of Age": 30 },
-        scenes: [
-            { time: 10, intensity: 20, label: "The Plan", color: "#facc15" }, // Setup
-            { time: 40, intensity: 55, label: "McLovin ID", color: "#ef4444" }, // Tension/Laughs
-            { time: 70, intensity: 75, label: "The Party", color: "#f97316" }, // Chaos building
-            { time: 90, intensity: 95, label: "Cop Car Ride", color: "#dc2626" }, // PEAK CHAOS
-            { time: 110, intensity: 50, label: "Escalator", color: "#eab308" } // Sweet resolution
+   scenes: [
+            { time: 15, intensity: 40, label: "The Fake ID" }, // Mild anxiety over McLovin.
+            { time: 40, intensity: 78, label: "The Liquor Store Robbery" }, // Fogell gets punched. Real danger spikes.
+            { time: 70, intensity: 85, label: "The Cop Car Joyride" }, // Shooting stop signs. Insane escalation.
+            { time: 85, intensity: 90, label: "The Period Blood Incident" }, // PRIMARY PEAK: Social and physical chaos at the party. Fight breaks out.
+            { time: 105, intensity: 35, label: "Sleeping Bags" } // Pure emotional vulnerability. Zero tension.
         ],
         synopsis: "Two co-dependent high school seniors, Seth and Evan, are forced to deal with separation anxiety as they prepare to go to different colleges. In a desperate bid to be cool and lose their virginity before graduation, they volunteer to supply alcohol for a massive party. Their quest goes hilariously wrong involving two bored cops, a fake ID named 'McLovin', and a night that spirals into absolute absurdity.",
         themes: ["Friendship", "Growing Up", "Partying"]

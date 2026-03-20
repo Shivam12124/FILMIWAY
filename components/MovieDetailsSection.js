@@ -235,6 +235,14 @@ import {
   COMPLETE_MOVIE_DATA as RAUNCHY_COMEDY_MOVIE_DATA,
   SENSITIVE_TIMELINES as RAUNCHY_COMEDY_SENSITIVE_TIMELINES
 } from '../utils/raunchyComedyMovieData';
+import {
+  COMPLETE_MOVIE_DATA as ROAD_TRIP_MOVIE_DATA,
+  SENSITIVE_TIMELINES as ROAD_TRIP_SENSITIVE_TIMELINES
+} from '../utils/roadTripMovieData';
+import {
+  COMPLETE_MOVIE_DATA as THOUGHT_PROVOKING_MOVIE_DATA,
+  SENSITIVE_TIMELINES as THOUGHT_PROVOKING_SENSITIVE_TIMELINES
+} from '../utils/thoughtProvokingMovieData';
 
 import { 
   COMPLETE_MOVIE_DATA as CRIME_THRILLER_MOVIE_DATA,
@@ -317,6 +325,8 @@ import HboMaxBestSEOFAQSection from './HboMaxBestSEOFAQSection';
 import HboMaxDramaSEOFAQSection from './HboMaxDramaSEOFAQSection';
 import HboMaxComedySEOFAQSection from './HboMaxComedySEOFAQSection';
 import RaunchyComedySEOFAQSection from './RaunchyComedySEOFAQSection';
+import RoadTripSEOFAQSection from './RoadTripSEOFAQSection';
+import ThoughtProvokingSEOFAQSection from './ThoughtProvokingSEOFAQSection';
 
 import HuluActionSEOFAQSection from './HuluActionSEOFAQSection';
 import HuluRomanceSEOFAQSection from './HuluRomanceSEOFAQSection';
@@ -360,6 +370,8 @@ const MovieDetailsSection = React.memo(({
   fromGreedCollection,
   fromSe7enCollection,
   fromRaunchyComedyCollection,
+  fromRoadTripCollection,
+  fromThoughtProvokingCollection,
   fromParasiteCollection,
   fromDonnieDarkoCollection,
   fromOldboyCollection,
@@ -462,6 +474,8 @@ const MovieDetailsSection = React.memo(({
   : fromEroticThrillerCollection ? safeLookup(EROTIC_THRILLER_MOVIE_DATA, movie.tmdbId)
   : fromGreedCollection ? safeLookup(GREED_MOVIE_DATA, movie.tmdbId)
   : fromRaunchyComedyCollection ? safeLookup(RAUNCHY_COMEDY_MOVIE_DATA, movie.tmdbId)
+  : fromRoadTripCollection ? safeLookup(ROAD_TRIP_MOVIE_DATA, movie.tmdbId)
+  : fromThoughtProvokingCollection ? safeLookup(THOUGHT_PROVOKING_MOVIE_DATA, movie.tmdbId)
   : fromEyesWideShutCollection ? safeLookup(EYES_WIDE_SHUT_MOVIE_DATA, movie.tmdbId)
   : fromRevengeCollection ? safeLookup(REVENGE_MOVIE_DATA, movie.tmdbId)
   : fromWarFilmsCollection ? safeLookup(WAR_FILMS_MOVIE_DATA, movie.tmdbId)
@@ -629,6 +643,8 @@ const MovieDetailsSection = React.memo(({
    || EROTIC_THRILLER_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || GREED_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || RAUNCHY_COMEDY_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
+   || ROAD_TRIP_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
+   || THOUGHT_PROVOKING_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || EYES_WIDE_SHUT_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || SE7EN_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || SCI_FI_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
@@ -689,6 +705,8 @@ const MovieDetailsSection = React.memo(({
    : fromEroticThrillerCollection ? movie.eroticTension ?? safeMovieInfo.eroticTension ?? 0
    : fromGreedCollection ? movie.greedIndex ?? safeMovieInfo.greedIndex ?? 0
    : fromRaunchyComedyCollection ? movie.raunchinessScore ?? safeMovieInfo.raunchinessScore ?? 0
+   : fromRoadTripCollection ? movie.wanderlustScore ?? safeMovieInfo.wanderlustScore ?? 0
+   : fromThoughtProvokingCollection ? movie.philosophicalDepth ?? safeMovieInfo.philosophicalDepth ?? 0
    : fromEyesWideShutCollection ? movie.paranoiaIntensity ?? safeMovieInfo.paranoiaIntensity ?? 0
    : fromSe7enCollection ? movie.se7enDNAScore ?? safeMovieInfo.se7enDNAScore ?? 0
    : fromRevengeCollection ? movie.revengeIntensity ?? safeMovieInfo.revengeIntensity ?? 0
@@ -894,6 +912,22 @@ const MovieDetailsSection = React.memo(({
      default: return '#6b7280';
         }
    }
+   if (fromRoadTripCollection) {
+        switch (level) {
+     case 'EXTREME': return '#9a3412'; 
+     case 'HIGH': return '#c2410c';    
+     case 'MEDIUM': return '#ea580c';  
+     default: return '#6b7280';
+        }
+   }
+   if (fromThoughtProvokingCollection) {
+        switch (level) {
+     case 'EXTREME': return '#312e81'; 
+     case 'HIGH': return '#3730a3';    
+     case 'MEDIUM': return '#4f46e5';  
+     default: return '#6b7280';
+        }
+   }
 if (fromPsychologicalThrillerCollection) {
       switch (level) {
         case 'EXTREME': return '#7f1d1d'; // Deep Blood Red for total sanity loss
@@ -972,6 +1006,8 @@ if (fromPsychologicalThrillerCollection) {
    if (fromEroticThrillerCollection) return 'EROTIC TENSION SCORE';
    if (fromGreedCollection) return 'GREED INDEX';
    if (fromRaunchyComedyCollection) return 'CHAOS SCORE';
+   if (fromRoadTripCollection) return 'WANDERLUST SCORE';
+   if (fromThoughtProvokingCollection) return 'PHILOSOPHICAL DEPTH SCORE';
    if (fromSe7enCollection) return 'SE7EN DNA SCORE';
    if (fromRevengeCollection) return 'REVENGE INTENSITY SCORE';
    if (fromWarFilmsCollection) return 'WAR INTENSITY SCORE';
@@ -1036,6 +1072,8 @@ if (fromPsychologicalThrillerCollection) {
    if (fromEroticThrillerCollection) return 'MANIPULATION INDEX';
    if (fromGreedCollection) return 'CORRUPTION INDEX';
    if (fromRaunchyComedyCollection) return 'RAUNCHINESS INDEX';
+   if (fromRoadTripCollection) return 'WANDERLUST INDEX';
+   if (fromThoughtProvokingCollection) return 'PROFOUNDNESS INDEX';
    return 'MIND-BENDING INDEX';
  };
 
@@ -1084,6 +1122,8 @@ if (fromPsychologicalThrillerCollection) {
    if (fromEroticThrillerCollection) return 'PSYCHOLOGICAL TENSION LEVEL';
    if (fromGreedCollection) return 'MORAL DECAY LEVEL';
    if (fromRaunchyComedyCollection) return 'ABSURDITY LEVEL';
+   if (fromRoadTripCollection) return 'TRANSFORMATION LEVEL';
+   if (fromThoughtProvokingCollection) return 'PHILOSOPHICAL IMPACT';
    return 'COGNITIVE DISTORTION LEVEL';
  };
 
@@ -1213,6 +1253,16 @@ if (fromPsychologicalThrillerCollection) {
      if (scoreValue >= 80) return 'Highly raunchy and hilarious with legendary gross-out gags.';
      return 'A solid comedy with plenty of mature, boundary-pushing humor.';
    }
+   if (fromRoadTripCollection) {
+     if (scoreValue >= 90) return 'A deeply moving, transformative journey that captures the essence of wanderlust.';
+     if (scoreValue >= 80) return 'A profound road trip experience filled with emotional textures and memorable characters.';
+     return 'An engaging road trip movie that makes you want to hit the open road.';
+   }
+   if (fromThoughtProvokingCollection) {
+     if (scoreValue >= 90) return 'A deeply profound, emotionally devastating masterpiece that challenges the human condition.';
+     if (scoreValue >= 80) return 'A highly thought-provoking and emotionally resonant cinematic journey.';
+     return 'An engaging philosophical movie that leaves you questioning reality and existence.';
+   }
    // Generic fallback
    if (scoreValue >= 90) return 'A transcendent masterpiece redefining narrative complexity.';
    if (scoreValue >= 80) return 'Sophisticated cinematic storytelling with advanced non-linear elements.';
@@ -1250,6 +1300,8 @@ if (fromPsychologicalThrillerCollection) {
    if (fromEroticThrillerCollection) return 'border-rose-600/40';
    if (fromGreedCollection) return 'border-emerald-600/40';
    if (fromRaunchyComedyCollection) return 'border-pink-600/40';
+   if (fromRoadTripCollection) return 'border-amber-600/40';
+   if (fromThoughtProvokingCollection) return 'border-indigo-600/40';
    return 'border-yellow-400/40';
  };
 
@@ -1283,6 +1335,8 @@ if (fromPsychologicalThrillerCollection) {
    if (fromEroticThrillerCollection) return 'text-rose-500';
    if (fromGreedCollection) return 'text-emerald-500';
    if (fromRaunchyComedyCollection) return 'text-pink-500';
+   if (fromRoadTripCollection) return 'text-amber-500';
+   if (fromThoughtProvokingCollection) return 'text-indigo-500';
    return 'text-yellow-400';
  };
 
@@ -1405,6 +1459,8 @@ if (fromPsychologicalThrillerCollection) {
        !fromParamountBestCollection &&
        !fromPeacockBestCollection &&
        !fromRaunchyComedyCollection &&
+       !fromRoadTripCollection &&
+       !fromThoughtProvokingCollection &&
        (
         <motion.div
           className="mb-6 sm:mb-8 md:mb-12 bg-gradient-to-br from-gray-800/40 to-gray-900/60 rounded-lg sm:rounded-xl border border-gray-700/50 p-3 sm:p-4 md:p-8 shadow-2xl backdrop-blur-sm relative overflow-hidden"
@@ -1546,6 +1602,8 @@ if (fromPsychologicalThrillerCollection) {
         : fromEroticThrillerCollection ? <EroticThrillerSEOFAQSection movie={movie} />
         : fromGreedCollection ? <GreedSEOFAQSection movie={movie} />
         : fromRaunchyComedyCollection ? <RaunchyComedySEOFAQSection movie={movie} />
+        : fromRoadTripCollection ? <RoadTripSEOFAQSection movie={movie} />
+        : fromThoughtProvokingCollection ? <ThoughtProvokingSEOFAQSection movie={movie} />
         : fromPrestigeCollection ? <PrestigeSEOFAQSection movie={movie} />
         : fromSe7enCollection ? <Se7enSEOFAQSection movie={movie} />
         : fromRevengeCollection ? <RevengeMovieSEOFAQSection movie={movie} />
