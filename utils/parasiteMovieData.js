@@ -307,7 +307,7 @@ export const COMPLETE_MOVIE_DATA = {
 };
 
 export const STRATEGIC_QUOTES = {
-    496243: 'You know what kind of plan never fails? No plan at all.',
+  
     290098: 'We\'re the same. You and I.',
     491584: 'There are so many Bens in Korea',
     110415: 'We go forward',

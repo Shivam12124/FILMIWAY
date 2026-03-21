@@ -224,7 +224,7 @@ const PrestigeMoviePage = ({ movie, tmdbData: movieData, sensitiveData }) => {
   // =========================================================================
 
   const collectionSlug = 'movies-like-the-prestige';
-  const collectionShortTag = 'Deception & Magic'; 
+  const collectionShortTag = 'Deception'; 
 
   const scenes = SENSITIVE_TIMELINES?.[movie.tmdbId]?.scenes || [];
   

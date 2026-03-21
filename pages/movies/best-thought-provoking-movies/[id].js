@@ -33,22 +33,23 @@ const COLORS = {
 };
 
 const MOVIE_YEARS = {
-  'Ikiru': '1952', 'Schindler\'s List': '1993', 'The Shawshank Redemption': '1994', 'The Green Mile': '1999',
-  'Manchester by the Sea': '2016', 'The Pursuit of Happyness': '2006', 'Into the Wild': '2007',
-  'Dead Poets Society': '1989', 'Good Will Hunting': '1997', 'About Time': '2013'
+  '12 Angry Men': '1957', 'Parasite': '2019', 'Incendies': '2010', 'Dead Poets Society': '1989',
+  'Taste of Cherry': '1997', 'The Father': '2020', 'Children of Men': '2006',
+  'The Truman Show': '1998', 'A Clockwork Orange': '1971', 'Requiem for a Dream': '2000'
 };
 
+// ✅ DEEP PHILOSOPHICAL INSIGHTS (Why these films provoke thought)
 const MOVIE_DATA_BY_TITLE = {
-  'Ikiru': { connection: 'The definitive masterclass in finding meaning in a brief existence, examining the legacy we leave behind in the minds of others.' },
-  'Schindler\'s List': { connection: 'A devastating, essential examination of humanity persisting in the face of absolute evil and moral awakening.' },
-  'The Shawshank Redemption': { connection: 'The global cinematic icon of hope, patience, and the unbreakable human spirit against systemic institutionalization.' },
-  'The Green Mile': { connection: 'A heavy, visceral journey challenging our understanding of justice, empathy, and innocence in a cruel world.' },
-  'Manchester by the Sea': { connection: 'Delivers the rawest, most truthful depiction of a grief so profound that a person can never fully recover.' },
-  'The Pursuit of Happyness': { connection: 'The ultimate testament to perseverance, paternal love, and protecting your dreams against overwhelming desperation.' },
-  'Into the Wild': { connection: 'A stunning, deeply philosophical warning about the beauty of absolute freedom versus the tragic necessity of human connection.' },
-  'Dead Poets Society': { connection: 'Cinema\'s greatest anthem for individuality, carrying a deeply tragic reminder of the cost of artistic rebellion against conformity.' },
-  'Good Will Hunting': { connection: 'A brilliantly written, profoundly emotional exploration of class, abuse, defense mechanisms, and ultimate healing.' },
-  'About Time': { connection: 'A profound, tear-jerking meditation on fatherhood, loss, and the realization that the best way to live is to cherish the ordinary.' }
+  '12 Angry Men': { connection: 'It is profoundly thought-provoking because it forces the audience to confront their own subconscious biases. It strips away the spectacle of a courtroom drama and turns the jury room into a mirror, proving that truth is fragile and our sense of "justice" is often just a reflection of our own personal trauma and prejudice.' },
+  'Parasite': { connection: 'It masterfully provokes thought on late-stage capitalism by refusing to create clear heroes or villains. It forces the viewer to realize that class warfare isn\'t simply the rich versus the poor; it is a terrifying, inescapable ecosystem where the lower class is forced to cannibalize each other just to survive in the shadows.' },
+  'Incendies': { connection: 'A devastating philosophical exploration of the cyclical nature of hatred. It forces the audience to ask an impossible question: How do you break a generational chain of violence when your oppressor and your own blood are the exact same person? It argues that radical, agonizing forgiveness is the only escape from war.' },
+  'Dead Poets Society': { connection: 'It forces the audience to confront the crushing weight of societal conformity. By illustrating the fatal consequences of suffocating a young person\'s artistic soul, the film demands we evaluate the true cost of traditional "success" versus the priceless, albeit dangerous, value of living a passionate, authentic life.' },
+  'Taste of Cherry': { connection: 'It is existentially thought-provoking because it focuses entirely on the value of life rather than the cause of despair. By never revealing why the protagonist wants to die, it turns the film into a universal canvas, asking the audience to question what simple, sensory experiences (like the taste of a cherry) bind them to the earth.' },
+  'The Father': { connection: 'It provokes thought by entirely destroying objective reality. By forcing the audience to experience dementia firsthand through a scrambled timeline and shifting actors, it asks a terrifying philosophical question: Who are we when our memories, our surroundings, and our understanding of time simply disintegrate?' },
+  'Children of Men': { connection: 'It is a haunting sociological thought experiment: How long does morality last when there is zero hope for the future? Without the promise of future generations, the film explores how quickly society devolves into tribalism, and questions what true, radical hope looks like when the world is burning.' },
+  'The Truman Show': { connection: 'A visionary film that was decades ahead of its time. It provokes deep thought regarding voyeurism, media consumption, and simulated reality. It forces the viewer to ask if an artificial, manufactured utopia is preferable to a painful, messy, but genuinely free reality.' },
+  'A Clockwork Orange': { connection: 'Kubrick delivers an aggressive, highly disturbing philosophical dilemma regarding free will and state control. It asks the audience to determine which is worse: a man who freely chooses to commit horrific, violent evil, or a government that chemically castrates him and strips away his ability to choose at all.' },
+  'Requiem for a Dream': { connection: 'It is profoundly thought-provoking because it deconstructs the illusion of the "American Dream" through the lens of addiction. It shows how the pursuit of external validation—whether through television, drugs, or money—inevitably leads to the complete, horrific regression of the human soul into absolute helplessness.' }
 };
 
 const getTMDBImage = (path, size = 'w1280') =>
@@ -154,7 +155,7 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
                 <div className="absolute top-0 left-0 right-0 h-0.5 sm:h-1" style={{ background: `linear-gradient(90deg, transparent, ${COLORS.accent}, transparent)` }} />
                 <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5">
                   <motion.div className="p-2 sm:p-2.5 rounded-lg sm:rounded-xl flex-shrink-0" style={{ background: `linear-gradient(135deg, ${COLORS.accent}20, ${COLORS.accent}10)`, border: `1px solid ${COLORS.accent}40` }} whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}><Brain className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" style={{ color: COLORS.accent }} /></motion.div>
-                  <div className="min-w-0 flex-1"><h2 className="text-sm sm:text-base lg:text-xl xl:text-2xl font-bold leading-tight" style={{ color: COLORS.accent }}>The Profound Experience</h2><p className="text-xs sm:text-sm hidden sm:block" style={{ color: COLORS.textMuted }}>Philosophical Depth: {philosophicalDepth}/100</p></div>
+                  <div className="min-w-0 flex-1"><h2 className="text-sm sm:text-base lg:text-xl xl:text-2xl font-bold leading-tight" style={{ color: COLORS.accent }}>Why This Film Provokes Thought</h2><p className="text-xs sm:text-sm hidden sm:block" style={{ color: COLORS.textMuted }}>Philosophical Depth: {philosophicalDepth}/100</p></div>
                 </div>
                 <div className="relative pl-4 sm:pl-6 border-l-2" style={{ borderColor: `${COLORS.accent}40` }}>
                   <motion.div className="absolute -left-1.5 sm:-left-2 top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full" style={{ backgroundColor: COLORS.accent }} animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 2, repeat: Infinity }} />
@@ -310,7 +311,6 @@ const ThoughtProvokingMoviePage = ({ movie, tmdbData: movieData, sensitiveData }
                   <OptimizedBanner movie={movie} movieData={movieData} richData={richData} trailer={trailer} isMobile={isMobile} />
                   
                   <motion.div id="watch" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="space-y-8 sm:space-y-12 px-3 sm:px-4 lg:px-6">
-                      {/* ✅ REMINDER: Update MovieDetailsSection to accept fromThoughtProvokingCollection={true} */}
                       <MovieDetailsSection 
                           movie={movie} 
                           fromThoughtProvokingCollection={true} 

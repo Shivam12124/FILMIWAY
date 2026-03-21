@@ -65,13 +65,14 @@ export const SENSITIVE_TIMELINES = {
     // 7. The Sixth Sense
     745: { scenes: [] },
 
-    // 8. The Machinist
+// 8. The Machinist
     4553: { 
         scenes: [
-            { start: "0:17:00", end: "0:18:25", type: "Sex", severity: "Moderate" }
+            { start: "0:17:06", end: "0:18:20", type: "Nudity (Woman)", severity: "High" },
+            { start: "0:18:21", end: "0:18:30", type: "Sex", severity: "Moderate" },
+            { start: "0:42:33", end: "0:42:36", type: "Sexual Content", severity: "Moderate" }
         ] 
     },
-
     // 9. Primal Fear
     1592: { 
         scenes: [

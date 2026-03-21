@@ -1496,27 +1496,27 @@ const getCollectionContent = () => {
                 text2: "Each film serves as a reminder that the journey changes you forever."
             }
         };
-    } else if (collection.slug === 'best-thought-provoking-movies') {
+   } else if (collection.slug === 'best-thought-provoking-movies') {
         return {
-            badge: "Philosophical Masterpieces",
-            title: "Best Thought-Provoking Movies",
-            description: "Movies exploring the depths of human existence, grief, hope, and the search for meaning.",
+            badge: "Existential Masterpieces",
+            title: "10 Thought-Provoking Movies That Shatter Your Worldview",
+            description: "A curation of cinema's most devastating and profound films, exploring societal collapse, subjective reality, and the darkest corners of the human condition.",
             selection: {
-                text1: "From the existential crisis of 'Ikiru' to the profound humanity of 'Schindler's List'.",
-                text2: "These films challenge your perspective on life, morality, and the universe."
+                text1: "From the suffocating moral tension of '12 Angry Men' to the devastating, inescapable revelations of 'Incendies'.",
+                text2: "These aren't just movies—they are terrifying, beautiful mirrors held up to society that will challenge everything you know."
             },
             ranking: {
-                text: "Ranked by philosophical depth, emotional resonance, and their lasting impact on the viewer's worldview.",
+                text: "Ranked by philosophical depth, psychological intensity, and their ability to leave you staring at a blank screen long after the credits roll.",
                 points: [
                     "Philosophical depth",
-                    "Emotional resonance",
-                    "Narrative complexity",
-                    "Enduring cultural impact"
+                    "Emotional devastation",
+                    "Psychological intensity",
+                    "Societal and cultural impact"
                 ]
             },
             experience: {
-                text1: "Prepare to question everything you know about life and humanity.",
-                text2: "Each film serves as a profound meditation on the human condition."
+                text1: "Prepare for heavy themes, moral ambiguity, and absolutely zero easy answers.",
+                text2: "Each film serves as a profound, uncompromising meditation on the human condition."
             }
         };
     } else if (collection.slug === 'best-heist-thriller-movies') {
@@ -2652,14 +2652,14 @@ const getStaticMetaContent = () => {
             twitterTitle: "The 10 Best Road Trip Movies You Need to Watch",
             progressText: `of Top ${movies.length} Road Trip Movies`
         };
-    } else if (collection.slug === 'best-thought-provoking-movies') {
+  } else if (collection.slug === 'best-thought-provoking-movies') {
         return {
-            title: "10 Best Thought-Provoking Movies (Ranked by Depth)",
-            description: "Explore the most profound, thought-provoking movies ever made. From Ikiru to The Shawshank Redemption. Includes an exact Timestamps & Parents Guide.",
-            keywords: "best thought provoking movies, philosophical movies, deep movies, existential films, movies about meaning of life",
-            ogTitle: "10 Best Thought-Provoking Movies: Philosophical Masterpieces",
+            title: "The 10 Most Profound & Thought-Provoking Movies", // 👈 UPDATED TITLE
+            description: "Explore the most profound, thought-provoking movies ever made. From 12 Angry Men to Parasite. Includes exact Trigger Warnings & Parents Guides.",
+            keywords: "best thought provoking movies, profound movies, philosophical movies, existential films, movies about society, psychological masterpieces",
+            ogTitle: "The 10 Most Profound & Thought-Provoking Movies",
             twitterTitle: "The 10 Most Profound & Thought-Provoking Movies",
-            progressText: `of Top ${movies.length} Thought-Provoking Movies`
+            progressText: `of Top ${movies.length} Profound Movies`
         };
 
 

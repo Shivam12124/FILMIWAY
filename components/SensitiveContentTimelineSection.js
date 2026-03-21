@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
-import { Shield, CheckCircle, Clock, AlertOctagon, Info, Film, FastForward } from 'lucide-react';
+import { Shield, CheckCircle, Clock, AlertOctagon, Info, Film, FastForward, Eye, Heart, Swords, MessageSquare, AlertTriangle } from 'lucide-react';
 
 // Import formatting functions from BOTH data sources
 import { formatSensitiveTimeline as formatInceptionTimeline, getSensitiveContentTypes as getInceptionContentTypes } from '../utils/movieData';
@@ -18,16 +18,14 @@ const COLORS = {
 
 const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) => {
     
-    // ✅ HELPER: Extract EXACT types entered by the editor, removing duplicates
     const extractExactTypes = (scenes) => {
         if (!scenes) return [];
         const types = scenes
-            .map(scene => scene.type) // Pulls the exact tag (e.g., "Lingerie", "Nudity")
-            .filter(Boolean); // Strips out empty values
-        return [...new Set(types)]; // Removes duplicates
+            .map(scene => scene.type) 
+            .filter(Boolean); 
+        return [...new Set(types)]; 
     };
 
-    // 🔥 PRIORITY: Use passed sensitiveScenes first, then fallback
     let sensitiveData = null;
     let contentTypes = [];
 
@@ -43,39 +41,28 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
             ? (getInceptionContentTypes?.(movie.tmdbId) || [])
             : (getSurvivalContentTypes?.(movie.tmdbId) || []);
             
-        // Fallback to extracting exact types if predefined ones are missing
         contentTypes = predefinedTypes.length > 0 
             ? predefinedTypes 
             : extractExactTypes(sensitiveData?.scenes);
     }
 
-    // ✅ DYNAMIC RUNTIME SYNC: Formatting the runtime cleanly for the UI
     let currentRuntime = movie.Runtime || movie.runtime || "Official";
     if (typeof currentRuntime === 'number') currentRuntime = `${currentRuntime} min`;
     if (movie.tmdbId === 51876 && !currentRuntime.includes("Unrated")) {
-        currentRuntime += " (Unrated Version)"; // Specifically catching Limitless
+        currentRuntime += " (Unrated Version)"; 
     }
 
-    // ✅ NEW HELPER: Color coding for all severity levels
-    const getSeverityStyles = (severity) => {
-        if (!severity) return '';
+    // 🔥 UPDATED: Replaced chunky background styles with a sleek neon indicator dot color
+    const getSeverityDotColor = (severity) => {
+        if (!severity) return 'bg-gray-500 shadow-gray-500/50';
         const s = severity.toLowerCase();
-        if (s === 'extreme' || s === 'severe') {
-            return 'bg-red-600/10 text-red-500 border-red-600/30 shadow-red-900/20';
-        }
-        if (s === 'high') {
-            return 'bg-red-500/10 text-red-400 border-red-500/20 shadow-red-900/10';
-        }
-        if (s === 'moderate') {
-            return 'bg-yellow-500/10 text-yellow-500/80 border-yellow-500/20 shadow-yellow-900/10';
-        }
-        if (s === 'mild') {
-            return 'bg-emerald-500/10 text-emerald-400/80 border-emerald-500/20 shadow-emerald-900/10';
-        }
-        return 'bg-gray-500/10 text-gray-400 border-gray-500/20 shadow-gray-900/10';
+        if (s === 'extreme' || s === 'severe') return 'bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.6)]';
+        if (s === 'high') return 'bg-orange-500 shadow-[0_0_8px_rgba(249,115,22,0.6)]';
+        if (s === 'moderate') return 'bg-yellow-500 shadow-[0_0_8px_rgba(234,179,8,0.6)]';
+        if (s === 'mild') return 'bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.6)]';
+        return 'bg-gray-500 shadow-gray-500/50';
     };
 
-    // ✅ NEW HELPER: Calculate total skip time from all scenes
     const skipStats = useMemo(() => {
         if (!sensitiveData?.scenes?.length) return { totalScenes: 0, formattedTime: "0 sec" };
 
@@ -113,7 +100,6 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
         };
     }, [sensitiveData]);
 
-
     if (!sensitiveData?.scenes?.length) {
         return (
             <motion.section 
@@ -123,23 +109,17 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                 transition={{ duration: 0.5 }}
             >
                 <div 
-                    className="w-full px-6 py-5 rounded-2xl border backdrop-blur-sm flex items-center gap-4"
+                    className="w-full px-4 sm:px-6 py-4 sm:py-5 rounded-2xl border backdrop-blur-sm flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4"
                     style={{ backgroundColor: COLORS.safeBg, borderColor: COLORS.safeBorder }}
                 >
-                    <div className="p-2 rounded-full bg-emerald-500/20 text-emerald-400">
+                    <div className="p-2 rounded-full bg-emerald-500/20 text-emerald-400 self-start sm:self-auto shrink-0">
                         <CheckCircle size={24} />
                     </div>
                     <div>
                         <div className="flex items-center gap-2">
-                            <h2 className="text-emerald-300 font-medium text-lg">Timestamps & Parents Guide</h2>
-                            <div className="group relative flex items-center">
-                                <Info size={16} className="text-emerald-500/60 cursor-help hover:text-emerald-400 transition-colors" />
-                                <div className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 hidden group-hover:block w-72 p-3 bg-gray-900 border border-emerald-500/30 rounded-xl text-xs text-emerald-100 shadow-xl z-10 tracking-normal">
-                                    Filmiway timestamps are added manually by our editorial team by watching the entire film to ensure absolute accuracy.
-                                </div>
-                            </div>
+                            <h2 className="text-emerald-300 font-medium text-base sm:text-lg">Timestamps & Parents Guide</h2>
                         </div>
-                        <p className="text-emerald-400/70 text-sm font-light mt-1">
+                        <p className="text-emerald-400/70 text-xs sm:text-sm font-light mt-1">
                             <strong>{movie.Title}</strong>: Filmiway editors have manually verified this film is free of explicit sexual content and nudity. Accurate for the {currentRuntime} runtime.
                         </p>
                     </div>
@@ -155,50 +135,49 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
         >
-            <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 border-b border-white/5 pb-5 gap-4">
+            <div className="flex flex-col mb-5 sm:mb-6 border-b border-white/5 pb-4 sm:pb-5 gap-3 sm:gap-4">
                 <div className="space-y-3 w-full">
-                    <h2 className="text-2xl font-light text-red-200 flex items-center gap-3 tracking-wide">
-                        <Shield className="text-red-500 w-6 h-6" />
-                        Timestamps & Parents Guide
-                        <div className="group relative flex items-center ml-1">
-                            <Info size={18} className="text-gray-500 hover:text-gray-300 cursor-help transition-colors" />
-                            <div className="absolute left-1/2 -translate-x-1/2 bottom-full mb-3 hidden group-hover:block w-72 p-3 bg-[#0a0a0c] border border-white/10 rounded-xl text-xs text-gray-300 shadow-2xl z-10 font-sans tracking-normal leading-relaxed">
+                    <h2 className="text-xl sm:text-2xl font-light text-red-200 flex items-center gap-2.5 sm:gap-3 tracking-wide">
+                        <Shield className="text-red-500 w-5 h-5 sm:w-6 sm:h-6 shrink-0" />
+                        <span className="truncate">Timestamps & Parents Guide</span>
+                        <div className="group relative flex items-center ml-1 shrink-0">
+                            <Info size={16} className="text-gray-500 hover:text-gray-300 cursor-help transition-colors sm:w-[18px] sm:h-[18px]" />
+                            <div className="absolute left-0 sm:left-1/2 sm:-translate-x-1/2 bottom-full mb-3 hidden group-hover:block w-64 sm:w-72 p-3 bg-[#0a0a0c] border border-white/10 rounded-xl text-xs text-gray-300 shadow-2xl z-20 font-sans tracking-normal leading-relaxed">
                                 <strong className="text-white block mb-1">ⓘ How we verify timestamps</strong>
                                 Filmiway timestamps are added manually by our editorial team by watching the entire film to ensure absolute accuracy.
                             </div>
                         </div>
                     </h2>
                     
-                    <div className="ml-1 space-y-2">
-                        {/* ✅ NOW DISPLAYS EXACT TYPES ENTERED BY EDITORS */}
-                        <p className="text-sm text-gray-500 flex items-center gap-1.5">
-                            <AlertOctagon size={14} className="text-red-500/80" />
-                            Scenes to skip: <span className="text-gray-300 font-medium">{contentTypes.length > 0 ? contentTypes.join(', ') : 'Explicit Content'}</span>
+                    <div className="ml-1 space-y-2.5 sm:space-y-2">
+                        <p className="text-[13px] sm:text-sm text-gray-500 flex items-start sm:items-center gap-2">
+                            <AlertOctagon size={14} className="text-red-500/80 shrink-0 mt-0.5 sm:mt-0" />
+                            <span className="leading-snug">Scenes to skip: <span className="text-gray-300 font-medium">{contentTypes.length > 0 ? contentTypes.join(', ') : 'Explicit Content'}</span></span>
                         </p>
                         
-                        <p className="text-sm text-gray-500 flex items-center gap-1.5">
-                            <CheckCircle size={14} className="text-emerald-500/80" />
-                            Timestamps are accurate for the <span className="text-gray-300 font-medium">{currentRuntime}</span> runtime
+                        <p className="text-[13px] sm:text-sm text-gray-500 flex items-start sm:items-center gap-2">
+                            <CheckCircle size={14} className="text-emerald-500/80 shrink-0 mt-0.5 sm:mt-0" />
+                            <span className="leading-snug">Timestamps are accurate for the <span className="text-gray-300 font-medium">{currentRuntime}</span> runtime</span>
                         </p>
 
-                        <p className="text-sm text-gray-500 flex items-center gap-1.5">
-                            <Film size={14} className="text-indigo-400/80" />
-                            Total scenes flagged: <span className="text-gray-300 font-medium">{skipStats.totalScenes}</span>
+                        <p className="text-[13px] sm:text-sm text-gray-500 flex items-center gap-2">
+                            <Film size={14} className="text-indigo-400/80 shrink-0" />
+                            <span>Total scenes flagged: <span className="text-gray-300 font-medium">{skipStats.totalScenes}</span></span>
                         </p>
                         
-                        <p className="text-sm text-gray-500 flex items-center gap-1.5">
-                            <FastForward size={14} className="text-yellow-500/80" />
-                            Total time to skip: <span className="text-gray-300 font-medium">{skipStats.formattedTime}</span>
+                        <p className="text-[13px] sm:text-sm text-gray-500 flex items-center gap-2">
+                            <FastForward size={14} className="text-yellow-500/80 shrink-0" />
+                            <span>Total time to skip: <span className="text-gray-300 font-medium">{skipStats.formattedTime}</span></span>
                         </p>
                     </div>
                 </div>
             </div>
 
             <div 
-                className="rounded-2xl overflow-hidden border backdrop-blur-md relative"
+                className="rounded-xl overflow-hidden border backdrop-blur-md relative"
                 style={{ backgroundColor: 'rgba(10, 10, 12, 0.4)', borderColor: 'rgba(255, 255, 255, 0.08)' }}
             >
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-600/50 via-orange-600/50 to-transparent opacity-50" />
+                <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-red-600/50 via-orange-600/50 to-transparent opacity-50" />
 
                 <div className="divide-y divide-white/5">
                     {sensitiveData.scenes.map((scene, index) => {
@@ -209,57 +188,70 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
 
                         const getSceneIcon = (type) => {
                             const lowerType = type.toLowerCase();
-                            if (lowerType.includes('nudity') || lowerType.includes('sex') || lowerType.includes('lingerie') || lowerType.includes('suggestive')) return '👁️';
-                            if (lowerType.includes('kissing')) return '💋';
-                            if (lowerType.includes('violence') || lowerType.includes('blood')) return '⚔️';
-                            if (lowerType.includes('language')) return '🤬';
-                            return '⚠️';
+                            if (lowerType.includes('nudity') || lowerType.includes('sex') || lowerType.includes('lingerie') || lowerType.includes('suggestive')) return <Eye size={14} />;
+                            if (lowerType.includes('kissing')) return <Heart size={14} />;
+                            if (lowerType.includes('violence') || lowerType.includes('blood') || lowerType.includes('gore')) return <Swords size={14} />;
+                            if (lowerType.includes('language') || lowerType.includes('profanity')) return <MessageSquare size={14} />;
+                            return <AlertTriangle size={14} />;
                         };
 
+                        // 🔥 NEW PREMIUM BADGE DESIGN
+                        // Hollow border, rounded-sm (studio style), indicator dot, heavily tracked text.
+                        const severityBadge = scene.severity ? (
+                            <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-sm border border-white/10 bg-white/[0.02] group-hover:border-white/20 transition-colors">
+                                <div className={`w-1.5 h-1.5 rounded-full ${getSeverityDotColor(scene.severity)}`} />
+                                <span className="text-[9px] sm:text-[10px] font-semibold tracking-[0.15em] uppercase text-gray-400 group-hover:text-gray-200 transition-colors">
+                                    {scene.severity}
+                                </span>
+                            </div>
+                        ) : null;
+
                         return (
-                            <div key={index} className="group flex flex-col sm:flex-row sm:items-start gap-4 p-5 hover:bg-white/[0.03] transition-colors duration-300">
-                                <div className="flex items-center gap-2 min-w-[140px] pt-1">
-                                    <div className="p-1.5 rounded-md bg-white/5 text-gray-400 group-hover:text-yellow-500 transition-colors">
-                                        <Clock size={14} />
+                            <div key={index} className="group p-3.5 sm:px-5 sm:py-3.5 hover:bg-white/[0.03] transition-colors duration-200 flex flex-col sm:flex-row sm:items-center gap-2.5 sm:gap-4">
+                                
+                                <div className="flex items-center justify-between sm:justify-start w-full sm:w-auto gap-3">
+                                    <div className="flex items-center gap-1.5 text-gray-400 group-hover:text-gray-200 transition-colors shrink-0">
+                                        <Clock size={13} className="opacity-50 shrink-0" />
+                                        <span className="font-mono text-[13px] sm:text-sm tracking-wide">
+                                            {sceneStart} {sceneEnd && <span className="opacity-40 text-xs mx-0.5 sm:mx-1">→</span>} {sceneEnd}
+                                        </span>
                                     </div>
-                                    <span className="font-mono text-gray-300 text-sm tracking-wider font-medium group-hover:text-yellow-400 transition-colors">
-                                        {sceneStart} {sceneEnd && <span className="opacity-50 mx-1">→</span>} {sceneEnd}
-                                    </span>
+                                    
+                                    <div className="sm:hidden shrink-0">
+                                        {severityBadge}
+                                    </div>
                                 </div>
                                 
-                                <div className="flex-1">
-                                    <div className="flex items-start justify-between gap-4">
-                                        <div className="flex items-start gap-3">
-                                            <span className="text-xl mt-[-2px] grayscale group-hover:grayscale-0 transition-all duration-300 transform group-hover:scale-110" role="img" aria-label="icon">
-                                                {getSceneIcon(sceneType)}
-                                            </span>
-                                            <div>
-                                                <span className="text-gray-200 text-base font-medium block leading-tight group-hover:text-white transition-colors">
-                                                    {sceneType}
-                                                </span>
-                                                {sceneDescription && sceneDescription !== sceneType && (
-                                                    <span className="text-xs text-gray-500 block mt-1.5 leading-relaxed max-w-xl">
-                                                        {sceneDescription}
-                                                    </span>
-                                                )}
-                                            </div>
-                                        </div>
+                                <div className="hidden sm:block w-px h-4 bg-white/10 shrink-0" />
 
-                                        {scene.severity && (
-                                            <span className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest border shadow-lg backdrop-blur-md ${getSeverityStyles(scene.severity)}`}>
-                                                {scene.severity}
+                                <div className="flex items-start sm:items-center gap-2 min-w-0 flex-1">
+                                    <span className="text-gray-500 group-hover:text-white transition-colors duration-300 mt-[3px] sm:mt-[1px] shrink-0">
+                                        {getSceneIcon(sceneType)}
+                                    </span>
+                                    
+                                    <div className="flex flex-col sm:flex-row sm:items-center min-w-0 gap-0.5 sm:gap-2">
+                                        <span className="text-gray-300 text-[13px] sm:text-sm font-medium truncate group-hover:text-white transition-colors">
+                                            {sceneType}
+                                        </span>
+                                        {sceneDescription && sceneDescription !== sceneType && (
+                                            <span className="text-[12px] text-gray-500 leading-snug sm:truncate">
+                                                <span className="hidden sm:inline">— </span>{sceneDescription}
                                             </span>
                                         )}
                                     </div>
+                                </div>
+
+                                <div className="hidden sm:block shrink-0 ml-auto">
+                                    {severityBadge}
                                 </div>
                             </div>
                         );
                     })}
                 </div>
 
-                <div className="bg-black/40 p-3.5 flex items-center justify-center gap-2.5 text-[10px] text-gray-400 uppercase tracking-[0.2em] border-t border-white/5">
-                    <Shield size={12} className="text-emerald-500/70" />
-                    <span>Parents Guide • Manually Verified by the Filmiway Editorial Team</span>
+                <div className="bg-black/40 p-2.5 sm:p-3 flex items-center justify-center gap-2 text-[9px] sm:text-[10px] text-gray-500 uppercase tracking-[0.2em] border-t border-white/5">
+                    <Shield size={12} className="text-emerald-500/50" />
+                    <span className="text-center">Manually Verified • {currentRuntime}</span>
                 </div>
             </div>
         </motion.section>

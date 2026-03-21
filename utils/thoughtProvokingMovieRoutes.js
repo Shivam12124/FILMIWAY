@@ -14,35 +14,35 @@ export const generateMovieSlug = (title) => {
 
 // ✅ COMPLETE THOUGHT-PROVOKING MOVIE SLUG MAPPING 
 export const THOUGHT_PROVOKING_MOVIE_SLUGS = {
-    // Rank 1: Ikiru
-    'tt0044741': 'ikiru',
+    // Rank 1: 12 Angry Men
+    'tt0050083': '12-angry-men',
     
-    // Rank 2: Schindler's List
-    'tt0108052': 'schindlers-list',
+    // Rank 2: Parasite
+    'tt6751668': 'parasite',
     
-    // Rank 3: The Shawshank Redemption
-    'tt0111161': 'the-shawshank-redemption',
+    // Rank 3: Incendies
+    'tt1255953': 'incendies',
     
-    // Rank 4: The Green Mile
-    'tt0120689': 'the-green-mile',
-    
-    // Rank 5: Manchester by the Sea
-    'tt4034228': 'manchester-by-the-sea',
-    
-    // Rank 6: The Pursuit of Happyness
-    'tt0436659': 'the-pursuit-of-happyness',
-    
-    // Rank 7: Into the Wild
-    'tt0758758': 'into-the-wild',
-    
-    // Rank 8: Dead Poets Society
+    // Rank 4: Dead Poets Society
     'tt0097165': 'dead-poets-society',
     
-    // Rank 9: Good Will Hunting
-    'tt0119217': 'good-will-hunting',
+    // Rank 5: Taste of Cherry
+    'tt0120265': 'taste-of-cherry',
     
-    // Rank 10: About Time
-    'tt2194499': 'about-time'
+    // Rank 6: The Father
+    'tt10272386': 'the-father',
+    
+    // Rank 7: Children of Men
+    'tt0206634': 'children-of-men',
+    
+    // Rank 8: The Truman Show
+    'tt0120382': 'the-truman-show',
+    
+    // Rank 9: A Clockwork Orange
+    'tt0066921': 'a-clockwork-orange',
+    
+    // Rank 10: Requiem for a Dream
+    'tt0180093': 'requiem-for-a-dream'
 };
 
 // ✅ REVERSE SLUG MAPPING (SLUG TO IMDB ID)
