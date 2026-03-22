@@ -2,10 +2,9 @@
 
 import React, { useState, useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
-import { Crown, Star } from 'lucide-react';
+import { Crown } from 'lucide-react';
 
 // ✅ CORRECT IMPORT: Standard default import. 
-// Your logs confirmed TMDBMoviePoster exports 'default', so we strictly use this.
 import TMDBMoviePoster from './TMDBMoviePoster';
 
 import { COMPLETE_MOVIE_DATA, STRATEGIC_QUOTES } from '../utils/movieData';
@@ -17,7 +16,6 @@ const CinematicMovieCard = React.memo(({ movie, rank, isActive, fromSurvivalColl
 
     // ⚡ OPTIMIZATION: Check mobile state once on mount
     useEffect(() => {
-        // Safe check for window existence
         if (typeof window !== 'undefined') {
             setIsMobile(window.innerWidth < 768);
         }
@@ -34,14 +32,12 @@ const CinematicMovieCard = React.memo(({ movie, rank, isActive, fromSurvivalColl
         return (sourceQuotes && movie?.tmdbId && sourceQuotes[movie.tmdbId]) || null;
     }, [movie?.tmdbId, fromSurvivalCollection]);
 
-    // Determines poster quality
     const posterQuality = isMobile ? "w342" : "w780"; 
 
-    // ✅ FIXED LOGIC: Determines text to show on hover without "undefined" errors
     const hoverText = useMemo(() => {
         if (quote) return quote;
         if (movieInfo.synopsis) return movieInfo.synopsis.substring(0, 80) + '...';
-        return 'A cinematic masterpiece.';
+        return null;
     }, [quote, movieInfo.synopsis]);
 
     return (
@@ -75,11 +71,10 @@ const CinematicMovieCard = React.memo(({ movie, rank, isActive, fromSurvivalColl
                 >
                     {/* Poster Image */}
                     <div className="w-full h-full bg-gray-800">
-                        {/* ✅ SAFETY CHECK: Only render if component exists */}
                         {TMDBMoviePoster ? (
                             <TMDBMoviePoster 
                                 movie={movie} 
-                                className="w-full h-full object-cover" 
+                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
                                 posterSize={posterQuality} 
                             />
                         ) : (
@@ -87,8 +82,8 @@ const CinematicMovieCard = React.memo(({ movie, rank, isActive, fromSurvivalColl
                         )}
                     </div>
 
-                    {/* Gradient Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent pointer-events-none" />
+                    {/* Gradient Overlay (Provides dark backing so text is readable) */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-transparent pointer-events-none" />
                     
                     {/* 🏆 RANK BADGE */}
                     <div className="absolute top-3 left-3 sm:top-4 sm:left-4 z-20">
@@ -113,20 +108,20 @@ const CinematicMovieCard = React.memo(({ movie, rank, isActive, fromSurvivalColl
                         {movieInfo.complexityLevel && (
                             <motion.div 
                                 className="px-3 py-1.5 bg-black/60 backdrop-blur-md border border-white/10 rounded-lg text-[10px] sm:text-xs font-medium tracking-widest uppercase text-white/90 shadow-lg"
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
                             >
                                 {movieInfo.complexityLevel}
                             </motion.div>
                         )}
                     </div>
-                    
-                    {/* ⭐ RATING BADGE */}
-                    <div className="absolute bottom-3 left-3 sm:bottom-4 sm:left-4 z-20">
-                        <div className="flex items-center gap-1.5 px-3 py-1.5 bg-black/60 backdrop-blur-md border border-white/10 rounded-lg">
-                            <Star size={12} className="sm:w-4 sm:h-4 text-yellow-400 fill-yellow-400" />
-                            <span className="text-xs sm:text-sm font-medium text-white/90">{movieInfo.rating || 7.5}</span>
-                        </div>
+
+                    {/* 👆 ALWAYS VISIBLE ELEGANT TEXT */}
+                    <div className="absolute bottom-4 sm:bottom-6 left-0 right-0 z-20 flex justify-center pointer-events-none">
+                        <span 
+                            className="text-[9px] sm:text-[10px] text-white/80 font-extralight tracking-[0.4em] uppercase opacity-90 transition-opacity duration-300 group-hover:opacity-100" 
+                            style={{ textShadow: '0 2px 8px rgba(0,0,0,0.8)' }}
+                        >
+                            {isMobile ? 'Tap to open details' : 'Click to open details'}
+                        </span>
                     </div>
                 </motion.div>
             </div>
@@ -152,15 +147,17 @@ const CinematicMovieCard = React.memo(({ movie, rank, isActive, fromSurvivalColl
                 <motion.div
                     initial={false}
                     animate={{ 
-                        height: isHovered ? 'auto' : 0,
-                        opacity: isHovered ? 1 : 0
+                        height: isHovered && hoverText ? 'auto' : 0,
+                        opacity: isHovered && hoverText ? 1 : 0
                     }}
-                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    transition={{ duration: 0.4, ease: "easeInOut" }}
                     className="overflow-hidden"
                 >
-                    <p className="pt-2 text-gray-400 text-xs sm:text-sm leading-relaxed font-light italic max-w-xs mx-auto">
-                        "{hoverText}"
-                    </p>
+                    {hoverText && (
+                        <p className="pt-3 text-gray-400 text-xs sm:text-sm leading-relaxed font-light italic max-w-xs mx-auto">
+                            "{hoverText}"
+                        </p>
+                    )}
                 </motion.div>
             </div>
         </motion.article>

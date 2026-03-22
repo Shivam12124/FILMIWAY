@@ -1,5 +1,5 @@
-import React, { useMemo } from 'react';
-import { motion } from 'framer-motion';
+import React, { useMemo, useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Shield, CheckCircle, Clock, AlertOctagon, Info, Film, FastForward, Eye, Heart, Swords, MessageSquare, AlertTriangle } from 'lucide-react';
 
 // Import formatting functions from BOTH data sources
@@ -17,7 +17,26 @@ const COLORS = {
 };
 
 const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) => {
-    
+    // --- MOBILE RESPONSIVE TOOLTIP STATE ---
+    const [showInfo, setShowInfo] = useState(false);
+    const infoRef = useRef(null);
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (infoRef.current && !infoRef.current.contains(event.target)) {
+                setShowInfo(false);
+            }
+        };
+        // Listen for both clicks and touches
+        document.addEventListener('mousedown', handleClickOutside);
+        document.addEventListener('touchstart', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+            document.removeEventListener('touchstart', handleClickOutside);
+        };
+    }, []);
+    // ------------------------------------------
+
     const extractExactTypes = (scenes) => {
         if (!scenes) return [];
         const types = scenes
@@ -52,7 +71,6 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
         currentRuntime += " (Unrated Version)"; 
     }
 
-    // 🔥 UPDATED: Replaced chunky background styles with a sleek neon indicator dot color
     const getSeverityDotColor = (severity) => {
         if (!severity) return 'bg-gray-500 shadow-gray-500/50';
         const s = severity.toLowerCase();
@@ -140,12 +158,40 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                     <h2 className="text-xl sm:text-2xl font-light text-red-200 flex items-center gap-2.5 sm:gap-3 tracking-wide">
                         <Shield className="text-red-500 w-5 h-5 sm:w-6 sm:h-6 shrink-0" />
                         <span className="truncate">Timestamps & Parents Guide</span>
-                        <div className="group relative flex items-center ml-1 shrink-0">
-                            <Info size={16} className="text-gray-500 hover:text-gray-300 cursor-help transition-colors sm:w-[18px] sm:h-[18px]" />
-                            <div className="absolute left-0 sm:left-1/2 sm:-translate-x-1/2 bottom-full mb-3 hidden group-hover:block w-64 sm:w-72 p-3 bg-[#0a0a0c] border border-white/10 rounded-xl text-xs text-gray-300 shadow-2xl z-20 font-sans tracking-normal leading-relaxed">
-                                <strong className="text-white block mb-1">ⓘ How we verify timestamps</strong>
-                                Filmiway timestamps are added manually by our editorial team by watching the entire film to ensure absolute accuracy.
-                            </div>
+                        
+                        {/* 🔥 UPDATED TOOLTIP CONTAINER 🔥 */}
+                        <div className="relative flex items-center ml-1 shrink-0" ref={infoRef}>
+                            <button
+                                type="button"
+                                className="focus:outline-none p-1 -m-1"
+                                onMouseEnter={() => setShowInfo(true)}
+                                onMouseLeave={() => setShowInfo(false)}
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    setShowInfo(!showInfo);
+                                }}
+                                aria-label="How we verify timestamps"
+                            >
+                                <Info 
+                                    size={16} 
+                                    className={`transition-colors sm:w-[18px] sm:h-[18px] ${showInfo ? 'text-gray-300' : 'text-gray-500 hover:text-gray-300'}`} 
+                                />
+                            </button>
+                            
+                            <AnimatePresence>
+                                {showInfo && (
+                                    <motion.div 
+                                        initial={{ opacity: 0, y: 5, scale: 0.95 }}
+                                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                                        exit={{ opacity: 0, y: 5, scale: 0.95 }}
+                                        transition={{ duration: 0.15 }}
+                                        className="absolute right-0 sm:right-auto sm:left-1/2 sm:-translate-x-1/2 bottom-[120%] mb-1 w-[280px] max-w-[90vw] sm:w-72 p-3.5 bg-[#0a0a0c] border border-white/10 rounded-xl text-xs text-gray-300 shadow-2xl z-50 font-sans tracking-normal leading-relaxed origin-bottom-right sm:origin-bottom"
+                                    >
+                                        <strong className="text-white block mb-1">ⓘ Exact Scene Timestamps</strong>
+                                        Our Parents Guide provides the exact timestamps for explicit and sexual scenes in the film, verified manually by our editorial team for absolute accuracy.
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
                         </div>
                     </h2>
                     
@@ -195,8 +241,6 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                             return <AlertTriangle size={14} />;
                         };
 
-                        // 🔥 NEW PREMIUM BADGE DESIGN
-                        // Hollow border, rounded-sm (studio style), indicator dot, heavily tracked text.
                         const severityBadge = scene.severity ? (
                             <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-sm border border-white/10 bg-white/[0.02] group-hover:border-white/20 transition-colors">
                                 <div className={`w-1.5 h-1.5 rounded-full ${getSeverityDotColor(scene.severity)}`} />
