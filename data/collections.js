@@ -81,7 +81,7 @@ export const COLLECTIONS = {
       { label: "HEARTBREAK", desc: "Emotional weight" },
       { label: "PRESTIGE", desc: "Acclaimed romance" }
     ],
-    movies: ['tt21192142', 'tt22359552', 'tt8966292', 'tt2381111', 'tt0412922', 'tt8385738', 'tt15893794', 'tt1263670', 'tt13352968', 'tt0337563'],
+    movies: ['tt21192142', 'tt22359552', 'tt8963708', 'tt2381111', 'tt0412922', 'tt8385738', 'tt15893794', 'tt1263670', 'tt13352968', 'tt0337563'],
     relatedCollections: ['movies-like-parasite', 'best-psychological-thriller-movies', 'best-movies-on-hulu']
   },
 
@@ -109,7 +109,7 @@ export const COLLECTIONS = {
       { label: "QUOTABLE", desc: "Iconic dialogue" },
       { label: "CHAOTIC", desc: "Absurd situations" }
     ],
-    movies: ['tt0829482', 'tt0190590', 'tt0443453', 'tt12593682', 'tt8385738', 'tt0247745', 'tt27995662', 'tt0094737', 'tt21376880', 'tt0387808'],
+    movies: ['tt0829482', 'tt0190590', 'tt0443453', 'tt12593682', 'tt8385738', 'tt0247745', 'tt31322753', 'tt0094737', 'tt21376880', 'tt0387808'],
     relatedCollections: ['best-romance-movies-on-hulu', 'best-action-movies-on-hulu', 'best-sci-fi-movies', 'best-movies-on-hulu']
   },
 

@@ -24,7 +24,7 @@ export const HULU_ROMANCE_MOVIE_SLUGS = {
  
     
     // Rank 3: And Then We Danced
-    'tt8966292': 'and-then-we-danced',
+    'tt8963708': 'and-then-we-danced',
     
     // Rank 4: Brooklyn
     'tt2381111': 'brooklyn',

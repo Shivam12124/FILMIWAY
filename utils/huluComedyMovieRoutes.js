@@ -33,7 +33,7 @@ export const HULU_COMEDY_MOVIE_SLUGS = {
     'tt0247745': 'super-troopers',
     
     // Rank 7: Twinless
-    'tt27995662': 'twinless',
+    'tt31322753': 'twinless',
     
     // Rank 8: Big
     'tt0094737': 'big',
