@@ -12,7 +12,7 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 402, "imdbID": "tt0103772", "Title": "Basic Instinct", "year": 1992, "genre": "Thriller", "runtime": 127, "rank": 1 },
     { "tmdbId": 345, "imdbID": "tt0120663", "Title": "Eyes Wide Shut", "year": 1999, "genre": "Drama", "runtime": 159, "rank": 2 },
     { "tmdbId": 290098, "imdbID": "tt4016934", "Title": "The Handmaiden", "year": 2016, "genre": "Thriller", "runtime": 145, "rank": 3 },
-    { "tmdbId":   4588, "imdbID": "tt0808357", "Title": "Lust, Caution", "year": 2007, "genre": "Thriller", "runtime": 158, "rank": 4 },
+    { "tmdbId": 4588, "imdbID": "tt0808357", "Title": "Lust, Caution", "year": 2007, "genre": "Thriller", "runtime": 158, "rank": 4 },
     { "tmdbId": 617, "imdbID": "tt0120890", "Title": "Wild Things", "year": 1998, "genre": "Mystery", "runtime": 108, "rank": 5 },
     { "tmdbId": 2251, "imdbID": "tt0250797", "Title": "Unfaithful", "year": 2002, "genre": "Drama", "runtime": 124, "rank": 6 },
     { "tmdbId": 10998, "imdbID": "tt0093010", "Title": "Fatal Attraction", "year": 1987, "genre": "Thriller", "runtime": 119, "rank": 7 },
@@ -26,12 +26,12 @@ export const STRATEGIC_QUOTES = {
     402: "Killing isn't like smoking. You can stop.",
     345: "No dream is ever just a dream.",
     290098: "My life is a fake. But you are my reality.",
-      4588: "He knows better than anyone how to act the part.",
+    4588: "He knows better than anyone how to act the part.",
     617: "People aren't always what they appear to be.",
     2251: "There is no such thing as a mistake. There are things you do, and things you don't do.",
     10998: "I'm not going to be ignored.",
     14412: "You aren't too smart, are you? I like that in a man.",
- 25284: "Anyone can be bought.",
+    25284: "Anyone can be bought.",
     9303: "I had this image of you. And it was completely wrong."
 };
 
@@ -52,7 +52,6 @@ export const SENSITIVE_TIMELINES = {
             { start: "2:00:50", end: "2:03:25", type: "Sex & Nudity", severity: "High" }
         ]
     },
-
     // 2. Eyes Wide Shut
     345: { 
         scenes: [
@@ -75,7 +74,6 @@ export const SENSITIVE_TIMELINES = {
             { start: "2:08:17", end: "2:10:12", type: "Nudity", severity: "Moderate" }
         ]
     },
-
     // 3. The Handmaiden
     290098: { 
         scenes: [
@@ -88,9 +86,8 @@ export const SENSITIVE_TIMELINES = {
             { start: "2:40:10", end: "2:42:20", type: "Sexual Content & Nudity (Woman)", severity: "High" }
         ]
     },
-
     // 4. Lust, Caution
-      4588: { 
+    4588: { 
         scenes: [
             { start: "1:00:15", end: "1:02:40", type: "Sex & Nudity", severity: "High" },
             { start: "1:32:35", end: "1:34:26", type: "Sex & Nudity", severity: "High" },
@@ -98,7 +95,6 @@ export const SENSITIVE_TIMELINES = {
             { start: "1:52:50", end: "1:55:32", type: "Sex & Nudity", severity: "High" }
         ]
     },
-
     // 5. Wild Things
     617: { 
         scenes: [
@@ -113,7 +109,6 @@ export const SENSITIVE_TIMELINES = {
             { start: "1:32:00", end: "1:33:20", type: "Nudity (Man)", severity: "High" }
         ]
     },
-
     // 6. Unfaithful
     2251: { 
         scenes: [
@@ -128,7 +123,6 @@ export const SENSITIVE_TIMELINES = {
             { start: "1:08:45", end: "1:09:04", type: "Sex", severity: "High" }
         ]
     },
-
     // 7. Fatal Attraction
     10998: { 
         scenes: [
@@ -138,7 +132,6 @@ export const SENSITIVE_TIMELINES = {
             { start: "0:32:50", end: "0:34:25", type: "Nudity (Woman)", severity: "Moderate" }
         ]
     },
-
     // 8. Body Heat
     14412: { 
         scenes: [
@@ -152,7 +145,6 @@ export const SENSITIVE_TIMELINES = {
             { start: "1:15:00", end: "1:17:17", type: "Partial Nudity", severity: "Mild" }
         ]
     },
-
     // 9. The Last Seduction
     25284: { 
         scenes: [
@@ -163,7 +155,6 @@ export const SENSITIVE_TIMELINES = {
             { start: "1:42:00", end: "1:43:00", type: "Sex & Nudity", severity: "High" }
         ]
     },
-
     // 10. Bound
     9303: { 
         scenes: [
@@ -177,12 +168,12 @@ export const FALLBACK_POSTERS = {
     402: "https://m.media-amazon.com/images/M/MV5BMjA0NzM1NDc1NV5BMl5BanBnXkFtZTcwNDExMzEzMQ@@._V1_SX500.jpg",
     345: "https://m.media-amazon.com/images/M/MV5BMTMwMjk0Mjc1M15BMl5BanBnXkFtZTcwMjA3NDAyMQ@@._V1_SX500.jpg",
     290098: "https://m.media-amazon.com/images/M/MV5BNDJhYmNjNDAtMTU3OC00MmY1LWE4MmItYWJhZmZlMTZhMWY1XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX500.jpg",
-      4588: "https://m.media-amazon.com/images/M/MV5BMjA3NTU2NzYzN15BMl5BanBnXkFtZTcwMTUzMTMzMQ@@._V1_SX500.jpg",
+    4588: "https://m.media-amazon.com/images/M/MV5BMjA3NTU2NzYzN15BMl5BanBnXkFtZTcwMTUzMTMzMQ@@._V1_SX500.jpg",
     617: "https://m.media-amazon.com/images/M/MV5BOTBjYTE0ZTAtYmExMi00NDcwLWJiOWQtZWJhOWFlZWVmODg1XkEyXkFqcGdeQXVyMTA0MjU0Ng@@._V1_SX500.jpg",
     2251: "https://m.media-amazon.com/images/M/MV5BZTE0NjMyMjUtNWY4My00ODUyLTg0YjYtYWI5MGM2YzFlZDBkXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX500.jpg",
     10998: "https://m.media-amazon.com/images/M/MV5BMTkzNjgyNDg5MF5BMl5BanBnXkFtZTcwNDQ1MTAyMQ@@._V1_SX500.jpg",
     14412: "https://m.media-amazon.com/images/M/MV5BZDdjNWEzOGEtOGI2Yi00YmNmLWJlNGEtMjhkMzIyMWI0NDZkXkEyXkFqcGdeQXVyNzc5MjA3OA@@._V1_SX500.jpg",
- 25284: "https://m.media-amazon.com/images/M/MV5BMTU3MTU2MTU1Ml5BMl5BanBnXkFtZTcwODk0Mjc2MQ@@._V1_SX500.jpg",
+    25284: "https://m.media-amazon.com/images/M/MV5BMTU3MTU2MTU1Ml5BMl5BanBnXkFtZTcwODk0Mjc2MQ@@._V1_SX500.jpg",
     9303: "https://m.media-amazon.com/images/M/MV5BMjA5OTg2MTg1Ml5BMl5BanBnXkFtZTcwNjYyMTMzMQ@@._V1_SX500.jpg"
 };
 
@@ -202,11 +193,11 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Michael Douglas", "Sharon Stone"], boxOffice: "$352.9 million", budget: "$49 million", 
         dna: { "Neo-Noir": 45, "Thriller": 35, "Mystery": 20 },
         scenes: [
-            { time: 5, intensity: 55, label: "The Ice Pick" }, // Meaningful engagement (Murder)
-            { time: 52, intensity: 75, label: "The Interrogation" }, // Crisis/Psychological Peak Conflict
-            { time: 85, intensity: 62, label: "The Polygraph" }, // Strong Tension
+            { time: 5, intensity: 55, label: "The Ice Pick" }, 
+            { time: 52, intensity: 75, label: "The Interrogation" }, 
+            { time: 85, intensity: 62, label: "The Polygraph" }, 
             { time: 110, intensity: 70, label: "Car Chase" },
-            { time: 125, intensity: 92, label: "Under the Bed" } // PRIMARY PEAK: Devastating/Overwhelming Reveal
+            { time: 125, intensity: 92, label: "Under the Bed" } 
         ],
         synopsis: "A brilliant, manipulative novelist becomes the prime suspect in a brutal murder. As the investigating detective falls deeper under her spell, the film masters the neo-noir trope of the ultimate femme fatale holding all the psychological cards.",
         themes: ["Psychological Dominance", "Neo-Noir", "Fatal Attraction"]
@@ -217,11 +208,11 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Tom Cruise", "Nicole Kidman"], boxOffice: "$162 million", budget: "$65 million", 
         dna: { "Psychological": 50, "Drama": 30, "Mystery": 20 },
         scenes: [
-            { time: 30, intensity: 58, label: "The Confession" }, // Meaningful emotional pull
-            { time: 65, intensity: 40, label: "The Costume Shop" }, // Light engagement
-            { time: 95, intensity: 88, label: "The Mansion Ritual" }, // PRIMARY PEAK: Overwhelming/Extreme dread
-            { time: 120, intensity: 75, label: "The Mask on the Pillow" }, // Crisis
-            { time: 155, intensity: 52, label: "Awakening" } // Resolution/Bittersweet release
+            { time: 30, intensity: 58, label: "The Confession" }, 
+            { time: 65, intensity: 40, label: "The Costume Shop" }, 
+            { time: 95, intensity: 88, label: "The Mansion Ritual" }, 
+            { time: 120, intensity: 75, label: "The Mask on the Pillow" }, 
+            { time: 155, intensity: 52, label: "Awakening" } 
         ],
         synopsis: "A doctor embarks on a night-long, surreal odyssey of moral discovery after his wife admits to suppressed desires. Kubrick’s final film is a hypnotic, dream-like exploration of jealousy, fidelity, and the hidden power structures of the elite.",
         themes: ["Secret Societies", "Marital Paranoia", "Class Voyeurism"]
@@ -232,11 +223,11 @@ export const COMPLETE_MOVIE_DATA = {
         cast: ["Kim Min-hee", "Kim Tae-ri", "Ha Jung-woo"], boxOffice: "$38.6 million", budget: "$8.8 million", 
         dna: { "Thriller": 45, "Romance": 35, "Crime": 20 },
         scenes: [
-            { time: 25, intensity: 35, label: "The Thimble" }, // Mild tension
-            { time: 65, intensity: 72, label: "The Betrayal" }, // Strong tension
-            { time: 95, intensity: 95, label: "Perspective Shift" }, // PRIMARY PEAK: Existential/Genre-defining narrative rupture
-            { time: 120, intensity: 82, label: "The Library Destruction" }, // Crisis
-            { time: 140, intensity: 65, label: "The Ferry" } // Bittersweet/Romantic release
+            { time: 25, intensity: 35, label: "The Thimble" }, 
+            { time: 65, intensity: 72, label: "The Betrayal" }, 
+            { time: 95, intensity: 95, label: "Perspective Shift" }, 
+            { time: 120, intensity: 82, label: "The Library Destruction" }, 
+            { time: 140, intensity: 65, label: "The Ferry" } 
         ],
         synopsis: "In 1930s Korea, a con man hires a pickpocket to become the maid of a Japanese heiress to steal her fortune. What follows is an intricate puzzle-box of shifting alliances, hidden motives, and visually stunning cinematic misdirection.",
         themes: ["Con Artistry", "Shifting Perspectives", "Class Subversion"]
@@ -250,8 +241,8 @@ export const COMPLETE_MOVIE_DATA = {
             { time: 40, intensity: 30, label: "The Operation Begins" },
             { time: 85, intensity: 68, label: "The First Encounter" }, 
             { time: 125, intensity: 84, label: "The Breaking Point" }, 
-            { time: 145, intensity: 90, label: "The Jewelry Store" }, // PRIMARY PEAK: Devastating/Irreversible life rupture
-            { time: 155, intensity: 78, label: "The Quarry" } // Tragic ending release
+            { time: 145, intensity: 90, label: "The Jewelry Store" }, 
+            { time: 155, intensity: 78, label: "The Quarry" } 
         ],
         synopsis: "During WWII in Shanghai, a young actress is recruited to seduce and assassinate a high-ranking political official. Ang Lee directs a tense, suffocating game of cat-and-mouse where the lines between espionage and true emotion blur fatally.",
         themes: ["Undercover Espionage", "Wartime Betrayal", "Dangerous Roles"]
@@ -265,8 +256,8 @@ export const COMPLETE_MOVIE_DATA = {
             { time: 20, intensity: 35, label: "The Accusation" },
             { time: 55, intensity: 50, label: "The Settlement" },
             { time: 75, intensity: 72, label: "The Motel Meeting" },
-            { time: 95, intensity: 82, label: "The Swamp Scene" }, // Crisis
-            { time: 105, intensity: 86, label: "The Final Twist" } // PRIMARY PEAK: Narrative implosion
+            { time: 95, intensity: 82, label: "The Swamp Scene" }, 
+            { time: 105, intensity: 86, label: "The Final Twist" } 
         ],
         synopsis: "A high school guidance counselor is accused of a crime by two female students, unleashing a labyrinthine plot of blackmail and murder. A masterclass in 'trash-noir' built on constant double-crossing.",
         themes: ["Double Crosses", "Florida Noir", "Blackmail"]
@@ -280,8 +271,8 @@ export const COMPLETE_MOVIE_DATA = {
             { time: 15, intensity: 22, label: "The Windstorm" },
             { time: 45, intensity: 48, label: "The Train Ride Home" },
             { time: 80, intensity: 75, label: "The Husband Discovers" },
-            { time: 95, intensity: 89, label: "The Snow Globe" }, // PRIMARY PEAK: Irreversible life rupture
-            { time: 118, intensity: 65, label: "The Traffic Light" } // Tragic/Unsettling release
+            { time: 95, intensity: 89, label: "The Snow Globe" }, 
+            { time: 118, intensity: 65, label: "The Traffic Light" } 
         ],
         synopsis: "A suburban housewife’s accidental encounter with a younger man leads to a passionate affair, setting off a chain reaction of guilt and violence.",
         themes: ["Guilt", "Marital Decay", "Crimes of Passion"]
@@ -294,9 +285,9 @@ export const COMPLETE_MOVIE_DATA = {
         scenes: [
             { time: 20, intensity: 42, label: "The Weekend" },
             { time: 55, intensity: 65, label: "The Umbrella" },
-            { time: 75, intensity: 82, label: "The Stove" }, // Crisis
+            { time: 75, intensity: 82, label: "The Stove" }, 
             { time: 90, intensity: 70, label: "The Tape Cassette" },
-            { time: 110, intensity: 91, label: "The Bathroom" } // PRIMARY PEAK: Devastating confrontation
+            { time: 110, intensity: 91, label: "The Bathroom" } 
         ],
         synopsis: "A married man's brief indiscretion comes back to haunt him when his weekend companion refuses to let him go.",
         themes: ["Obsession", "Stalking", "Consequences"]
@@ -311,7 +302,7 @@ export const COMPLETE_MOVIE_DATA = {
             { time: 45, intensity: 62, label: "Planning the Murder" },
             { time: 75, intensity: 75, label: "The Alibi" },
             { time: 95, intensity: 84, label: "The Setup" },
-            { time: 110, intensity: 90, label: "The Boathouse Reveal" } // PRIMARY PEAK: Irreversible moral rupture
+            { time: 110, intensity: 90, label: "The Boathouse Reveal" } 
         ],
         synopsis: "In the sweltering Florida heat, an inept lawyer is manipulated by a brilliant, ruthless woman into murdering her wealthy husband.",
         themes: ["Classic Noir", "The Perfect Crime", "Femme Fatale"]
@@ -326,7 +317,7 @@ export const COMPLETE_MOVIE_DATA = {
             { time: 35, intensity: 30, label: "Small Town Hideout" },
             { time: 65, intensity: 75, label: "The Setup" },
             { time: 90, intensity: 82, label: "The Husband Arrives" },
-            { time: 105, intensity: 89, label: "The Perfect Frame" } // PRIMARY PEAK: Near-death/Truth revelation
+            { time: 105, intensity: 89, label: "The Perfect Frame" } 
         ],
         synopsis: "After stealing her husband's drug money, a fiercely intelligent woman targets a naive local to serve as her perfect pawn.",
         themes: ["Ruthless Ambition", "Small Town Traps", "Unapologetic Villainy"]
@@ -341,7 +332,7 @@ export const COMPLETE_MOVIE_DATA = {
             { time: 40, intensity: 65, label: "The Heist Plan" },
             { time: 65, intensity: 80, label: "The Suitcase Switch" },
             { time: 85, intensity: 86, label: "Caesar Panics" },
-            { time: 100, intensity: 87, label: "The Final Standoff" } // PRIMARY PEAK: Crisis/Peak conflict
+            { time: 100, intensity: 87, label: "The Final Standoff" } 
         ],
         synopsis: "An ex-con forms a dangerous alliance with a mafia money-launderer's girlfriend to steal millions in mob cash.",
         themes: ["Mob Heists", "Claustrophobic Tension", "Trust and Deception"]
@@ -436,7 +427,30 @@ export const formatSensitiveTimeline = (tmdbId) => {
     };
 };
 
-// 🔥 6. THE KEYWORD BRIDGE (Bulletproofed with optional chaining and clean keywords)
+// 🔥 HELPER: Calculates total skip time in minutes and seconds
+const calculateSkipStats = (scenes) => {
+    let totalSeconds = 0;
+    scenes.forEach(scene => {
+        if (scene.start && scene.end) {
+            const parseTime = (t) => {
+                const parts = t.split(':').map(Number);
+                if (parts.length === 3) return (parts[0] * 3600) + (parts[1] * 60) + (parts[2] || 0);
+                if (parts.length === 2) return (parts[0] * 60) + (parts[1] || 0);
+                return 0;
+            };
+            const startSec = parseTime(scene.start);
+            const endSec = parseTime(scene.end);
+            if (endSec > startSec) totalSeconds += (endSec - startSec);
+        }
+    });
+    const mins = Math.floor(totalSeconds / 60);
+    const secs = totalSeconds % 60;
+    if (totalSeconds === 0) return "< 1 min"; 
+    if (mins === 0) return `${secs} sec`;
+    return secs > 0 ? `${mins} min ${secs} sec` : `${mins} min`;
+};
+
+// 🔥 6. THE KEYWORD BRIDGE
 export const getSensitiveContentTypes = (tmdbId) => {
     const sensitiveData = SENSITIVE_TIMELINES[tmdbId];
     if (!sensitiveData?.scenes?.length) return null;
@@ -451,17 +465,43 @@ export const getSensitiveContentTypes = (tmdbId) => {
     return Array.from(types);
 };
 
-// 🔥 7. THE "GOLDEN EGG" SCHEMA GENERATOR (Universal Version)
-// 🔥 7. THE "GOLDEN EGG" SCHEMA GENERATOR (Unrestricted Version)
+// 🔥 NEW: HELPER TO CALCULATE SEVERITY METRICS WITH 2+ EXTREME LOGIC
+const getHighestSeverityInfo = (scenes) => {
+    const severities = scenes.map(s => (s.severity || 'Moderate').toLowerCase());
+    const extremeCount = severities.filter(s => s === 'extreme').length;
+    
+    // User's flawless logic: 2+ Extreme means the whole movie is Extreme. 
+    // Otherwise, we cap the warning at High.
+    if (extremeCount >= 2) return 'Extreme';
+    if (severities.includes('high') || extremeCount === 1) return 'High';
+    if (severities.includes('moderate')) return 'Moderate';
+    return 'Mild';
+};
+
+// 🔥 7. THE "GOLDEN EGG" SCHEMA GENERATOR
 export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, collectionSlug, unused, movieInfo) => {
     let currentRuntime = movie.Runtime || movie.runtime || "Official";
     if (typeof currentRuntime === 'number') currentRuntime = `${currentRuntime} min`;
+
+    const sensitiveScenes = SENSITIVE_TIMELINES[movie.tmdbId]?.scenes || [];
+    const heavyScenes = sensitiveScenes.filter(s => {
+        const t = s.type?.toLowerCase() || '';
+        return t.includes('sex') || t.includes('nudity') || t.includes('explicit') || t.includes('suggestive') || t.includes('lingerie') || t.includes('bikini'); 
+    });
+
+    const sceneCount = heavyScenes.length;
+    let schemaDesc = '';
+    if (sceneCount > 0) {
+        schemaDesc = `${movie.Title} Parents Guide with exact sex & nudity timestamps. ${sceneCount} scenes manually verified frame by frame by Filmiway editors for the ${currentRuntime} runtime.`;
+    } else {
+        schemaDesc = `${movie.Title} Parents Guide. Filmiway editors have manually verified zero sex scenes or nudity in the full ${currentRuntime} runtime.`;
+    }
 
     const movieSchema = {
         '@context': 'https://schema.org',
         '@type': 'Movie',
         'name': movie.Title,
-        'description': movieInfo?.synopsis || `${movie.Title} (${currentMovieYear}) - Explore exact timestamps and parents guide information on Filmiway.`,
+        'description': schemaDesc,
         'genre': movie.genre,
         'url': `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`, 
         'datePublished': currentMovieYear?.toString() || movie.year.toString(),
@@ -472,7 +512,6 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
     };
 
     const staticFaqs = EROTIC_THRILLER_MOVIE_FAQS[movie.Title] ? [...EROTIC_THRILLER_MOVIE_FAQS[movie.Title]] : [];
-    const sensitiveScenes = SENSITIVE_TIMELINES[movie.tmdbId]?.scenes || [];
     const intensityScenes = movieInfo?.scenes || [];
     
     const schemaFaqs = staticFaqs.map(faq => ({ 
@@ -493,14 +532,13 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
         });
     }
 
-    const heavyScenes = sensitiveScenes.filter(s => {
-        const t = s.type?.toLowerCase() || '';
-        return t.includes('sex') || t.includes('nudity') || t.includes('explicit') || t.includes('suggestive') || t.includes('lingerie') || t.includes('bikini'); 
-    });
-
     if (heavyScenes.length > 0) {
         const typesArray = getSensitiveContentTypes(movie.tmdbId) || ['mature content'];
-        const typesString = typesArray.join(', ');
+        const typesString = typesArray.join(' and ');
+        const totalSkipTime = calculateSkipStats(heavyScenes);
+        const firstTimestamp = heavyScenes[0].start;
+        const firstSeverity = heavyScenes[0].severity || 'Moderate';
+        const overallSeverity = getHighestSeverityInfo(heavyScenes);
 
         const schemaListText = heavyScenes.map(s => {
             const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
@@ -508,33 +546,53 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
             return `<li>${timeRange} - ${fullType}</li>`;
         }).join('');
 
+        const startTimesList = heavyScenes.map(s => s.start).join(', ');
+
         schemaFaqs.unshift(
             {
                 '@type': 'Question',
-                'name': `Parents Guide & Scene Timestamps: Does ${movie.Title} contain sex, nudity, or adult scenes?`,
+                'name': `Does ${movie.Title} have sex scenes or nudity?`,
                 'acceptedAnswer': { 
                     '@type': 'Answer', 
-                    'text': `According to the Filmiway Timestamps & Parents Guide, ${movie.Title} contains scenes involving ${typesString}. These timestamps are accurate for the ${currentRuntime} version of the film. Exact timestamps to skip these scenes:<br><br><ul>${schemaListText}</ul>` 
+                    'text': `Yes. ${movie.Title} contains ${sceneCount} scenes of ${typesString}. Exact timestamps:<br><br><ul>${schemaListText}</ul><br>Manually verified frame by frame by Filmiway editors for the ${currentRuntime} runtime.` 
                 }
             },
             {
                 '@type': 'Question',
-                'name': `How can I skip sex and adult scenes in ${movie.Title}?`,
+                'name': `What time does nudity appear in ${movie.Title} and how do I skip it?`,
                 'acceptedAnswer': {
                     '@type': 'Answer',
-                    'text': `You can skip all sex, nudity, and adult scenes in ${movie.Title} using Filmiway's exact scene timestamps. These timestamps show precisely when each scene starts and ends, so you can skip them easily while watching.`
+                    'text': `Explicit content first appears at ${firstTimestamp} (${firstSeverity}). Total time to skip: ${totalSkipTime} across ${sceneCount} scenes. Skip timestamps: ${startTimesList}. Verified for the ${currentRuntime} version.`
+                }
+            },
+            {
+                '@type': 'Question',
+                'name': `Is ${movie.Title} safe to watch with family?`,
+                'acceptedAnswer': {
+                    '@type': 'Answer',
+                    'text': `No. ${movie.Title} contains ${overallSeverity} severity scenes and is not recommended for children. Adults can use Filmiway's timestamps to skip all ${sceneCount} scenes.`
                 }
             }
         );
     } else {
-        schemaFaqs.unshift({
-            '@type': 'Question',
-            'name': `Parents Guide: Does ${movie.Title} contain explicit content?`,
-            'acceptedAnswer': { 
-                '@type': 'Answer', 
-                'text': `The Filmiway Timestamps & Parents Guide confirms that ${movie.Title} is free of explicit sexual content or extreme nudity. There are no scenes to skip. This assessment is accurate for the ${currentRuntime} version of the film.` 
+        schemaFaqs.unshift(
+            {
+                '@type': 'Question',
+                'name': `Does ${movie.Title} have sex scenes or nudity?`,
+                'acceptedAnswer': { 
+                    '@type': 'Answer', 
+                    'text': `No. Filmiway editors have manually verified that ${movie.Title} is free of explicit sex scenes and nudity.` 
+                }
+            },
+            {
+                '@type': 'Question',
+                'name': `Is ${movie.Title} safe to watch with family?`,
+                'acceptedAnswer': { 
+                    '@type': 'Answer', 
+                    'text': `Yes, regarding explicit sexual content. Filmiway has confirmed 0 scenes of nudity, sexual content, or explicit scenes in the ${currentRuntime} runtime.` 
+                }
             }
-        });
+        );
     }
 
     const faqSchema = {
@@ -547,7 +605,7 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
     return { movieSchema, faqSchema };
 };
 
-// 🔥 8. FRONTEND UI SYNC (Unrestricted Version)
+// 🔥 8. FRONTEND UI SYNC
 export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Official") => {
     const staticFaqs = EROTIC_THRILLER_MOVIE_FAQS[movieTitle] ? [...EROTIC_THRILLER_MOVIE_FAQS[movieTitle]] : [];
     const sensitiveScenes = SENSITIVE_TIMELINES[tmdbId]?.scenes || [];
@@ -575,31 +633,50 @@ ${uiIntensityList}`
 
     if (heavyScenes.length > 0) {
         const typesArray = getSensitiveContentTypes(tmdbId) || ['mature content'];
-        const typesString = typesArray.join(', ');
+        const typesString = typesArray.join(' and ');
+        const sceneCount = heavyScenes.length;
+        const totalSkipTime = calculateSkipStats(heavyScenes);
+        const firstTimestamp = heavyScenes[0].start;
+        const firstSeverity = heavyScenes[0].severity || 'Moderate';
+        const overallSeverity = getHighestSeverityInfo(heavyScenes);
 
-        const uiListText = heavyScenes.map(s => {
-            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
-            const fullType = s.severity ? `${s.type} (${s.severity})` : (s.type || 'Mature Content');
-            return `• ${timeRange} - ${fullType}`;
+        const uiDetailedList = heavyScenes.map(s => {
+            const timeRange = s.end ? `${s.start}–${s.end}` : s.start;
+            const fullType = s.severity ? `${s.type || 'Mature Content'}, ${s.severity}` : (s.type || 'Mature Content');
+            return `• ${timeRange} (${fullType})`;
         }).join('\n');
+        
+        const startTimesList = heavyScenes.map(s => s.start).join(', ');
 
         staticFaqs.unshift(
             {
-                question: `Parents Guide & Scene Timestamps: Does ${movieTitle} contain sex, nudity, or adult scenes?`,
-                answer: `According to the Filmiway Timestamps & Parents Guide, ${movieTitle} contains scenes involving ${typesString}. These timestamps are accurate for the ${finalRuntime} version of the film. Exact timestamps to skip these scenes:
+                question: `Does ${movieTitle} have sex scenes or nudity?`,
+                answer: `Yes. ${movieTitle} contains ${sceneCount} scenes of ${typesString}. Exact timestamps:
 
-${uiListText}`
+${uiDetailedList}
+
+Manually verified frame by frame by Filmiway editors for the ${finalRuntime} runtime.`
             },
             {
-                question: `How can I skip sex and adult scenes in ${movieTitle}?`,
-                answer: `You can skip all sex, nudity, and adult scenes in ${movieTitle} using Filmiway's exact scene timestamps. These timestamps show precisely when each scene starts and ends, so you can skip them easily while watching.`
+                question: `What time does nudity appear in ${movieTitle} and how do I skip it?`,
+                answer: `Explicit content first appears at ${firstTimestamp} (${firstSeverity}). Total time to skip: ${totalSkipTime} across ${sceneCount} scenes. Skip timestamps: ${startTimesList}. Verified for the ${finalRuntime} version.`
+            },
+            {
+                question: `Is ${movieTitle} safe to watch with family?`,
+                answer: `No. ${movieTitle} contains ${overallSeverity} severity scenes and is not recommended for children. Adults can use Filmiway's timestamps to skip all ${sceneCount} scenes.`
             }
         );
     } else {
-        staticFaqs.unshift({
-            question: `Parents Guide: Does ${movieTitle} contain explicit content?`,
-            answer: `The Filmiway Timestamps & Parents Guide confirms that ${movieTitle} is completely free of explicit sexual content and nudity. There are no scenes to skip. This assessment is accurate for the ${finalRuntime} version of the film.`
-        });
+        staticFaqs.unshift(
+            {
+                question: `Does ${movieTitle} have sex scenes or nudity?`,
+                answer: `No. Filmiway editors have manually verified that ${movieTitle} is free of explicit sex scenes and nudity.`
+            },
+            {
+                question: `Is ${movieTitle} safe to watch with family?`,
+                answer: `Yes, regarding explicit sexual content. Filmiway has confirmed 0 scenes of nudity, sexual content, or explicit scenes in the ${finalRuntime} runtime.`
+            }
+        );
     }
 
     return staticFaqs;

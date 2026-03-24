@@ -2,7 +2,7 @@
 // High Tension, Psychological Dread, and Edge-of-Seat Suspense
 
 export const TMDB_CONFIG = {
-    API_KEY: 'a07e22bc18f5cb106bfe4cc1f83ad8ed',
+      API_KEY: 'process.env.NEXT_PUBLIC_TMDB_API_KEY',
     BASE_URL: 'https://api.themoviedb.org/3',
     IMAGE_BASE_URL: 'https://image.tmdb.org/t/p',
     POSTER_SIZES: { small: 'w300', medium: 'w500', large: 'w780', original: 'original' }

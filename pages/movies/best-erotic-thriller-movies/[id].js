@@ -171,8 +171,15 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
   );
 };
 
-// ✅ ADDED SMART BACK BUTTON
-
+// ✅ ADDED SMART BACK BUTTON RESTORED
+const SmartBackButton = () => {
+  const handleBackClick = () => { if (typeof window !== 'undefined') window.location.href = '/collection/best-erotic-thriller-movies'; };
+  return (
+    <motion.button onClick={handleBackClick} className="fixed top-4 left-4 sm:top-6 sm:left-6 z-50 flex items-center gap-2 px-3 sm:px-4 py-2 backdrop-blur-md rounded-lg transition-all duration-300 shadow-xl text-xs sm:text-sm" style={{ backgroundColor: `${COLORS.bgPrimary}F2`, border: `1px solid ${COLORS.borderLight}` }} whileHover={{ scale: 1.02, x: -2 }} whileTap={{ scale: 0.98 }} initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} onMouseEnter={(e) => e.currentTarget.style.borderColor = COLORS.borderAccent} onMouseLeave={(e) => e.currentTarget.style.borderColor = COLORS.borderLight}>
+      <ChevronLeft className="w-3 h-3 sm:w-4 sm:h-4" style={{ color: COLORS.accent }} /><span className="font-medium" style={{ color: COLORS.accent }}>Back to Collection</span>
+    </motion.button>
+  );
+};
 
 const AuthorCreditSection = () => (
   <motion.section className="pt-6 sm:pt-8 mt-12 sm:mt-16" style={{ borderTop: `1px solid ${COLORS.borderLight}` }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2.0, duration: 0.8 }}>
@@ -247,16 +254,20 @@ const EroticThrillerMoviePage = ({ movie, tmdbData: movieData, sensitiveData }) 
       cleanSEOTitle = `Parents Guide: ${movie.Title}`;
     }
   }
-  // 2. STANDARDIZED ELITE META DESCRIPTION
-  let cleanSEODesc = '';
-  
-  if (scenes.length > 0) {
-    const rawTimes = scenes.slice(0, 2).map(s => s.end ? `${s.start}–${s.end}` : s.start);
-    const formattedTimes = rawTimes.join(', ') + ' and ' + rawTimes.slice(-1);
 
-    cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Viewer discretion advised. Includes exact scene timestamps: ${formattedTimes}.`;
+  // 2. STANDARDIZED ELITE META DESCRIPTION (Mature Scenes & Top Ranges)
+  let currentRuntime = movie.Runtime || movie.runtime || "Official";
+  if (typeof currentRuntime === 'number') currentRuntime = `${currentRuntime} min`;
+
+  let cleanSEODesc = '';
+  if (scenes.length > 0) {
+    const sceneCount = scenes.length;
+    // Show the full range (Start-End) for the first 2 scenes only to save space
+    const topScenes = scenes.slice(0, 2).map(s => `${s.start}–${s.end}`).join(', ');
+    
+    cleanSEODesc = `${movie.Title} Parents Guide: ${sceneCount} mature scenes (sex, nudity) manually verified. Skip: ${topScenes}... Full ${currentRuntime} list inside.`;
   } else {
-    cleanSEODesc = `Timestamps & Parents Guide for ${movie.Title} (${currentMovieYear}). Filmiway has identified zero explicit nudity or sexual content throughout the film's entire runtime.`;
+    cleanSEODesc = `${movie.Title} Parents Guide. Filmiway editors have manually verified zero sex scenes or nudity in the full ${currentRuntime} runtime.`;
   }
 
   // =========================================================================
@@ -299,8 +310,7 @@ const EroticThrillerMoviePage = ({ movie, tmdbData: movieData, sensitiveData }) 
           <SubtleFilmGrain />
           <div className="absolute inset-0"><CinematicBackground /></div>
           
-          {/* ✅ SMART BACK BUTTON RESTORED */}
-         
+          <SmartBackButton />
           
           <div className="relative z-10 pt-10 sm:pt-12 lg:pt-16">
               <h1 className="sr-only">{cleanSEOTitle}</h1>
