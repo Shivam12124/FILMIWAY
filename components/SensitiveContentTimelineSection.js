@@ -65,10 +65,18 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
             : extractExactTypes(sensitiveData?.scenes);
     }
 
+    // ✅ DYNAMIC RUNTIME VERIFICATION (Including Sin City Override)
     let currentRuntime = movie.Runtime || movie.runtime || "Official";
     if (typeof currentRuntime === 'number') currentRuntime = `${currentRuntime} min`;
+    
+    // Explicit Override for Limitless
     if (movie.tmdbId === 51876 && !currentRuntime.includes("Unrated")) {
         currentRuntime += " (Unrated Version)"; 
+    }
+    
+    // Explicit Override for Sin City
+    if (movie.tmdbId === 187) {
+        currentRuntime = "2 hours 21 min (Unrated Extended Version)"; 
     }
 
     const getSeverityDotColor = (severity) => {

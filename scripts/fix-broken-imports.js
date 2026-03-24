@@ -28,7 +28,7 @@ function fixFile(filePath) {
         return true;
     });
     
-    content = newLines.join('\n');
+    content = newLines.join('\n')\n');
 
     if (content !== originalContent) {
         fs.writeFileSync(filePath, content, 'utf8');

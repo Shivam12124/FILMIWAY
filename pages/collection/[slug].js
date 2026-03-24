@@ -52,6 +52,7 @@ import { COMPLETE_MOVIE_DATABASE as PEACOCK_COMEDY_DATABASE, COMPLETE_MOVIE_DATA
 import { COMPLETE_MOVIE_DATABASE as RAUNCHY_COMEDY_DATABASE, COMPLETE_MOVIE_DATA as RAUNCHY_COMEDY_DATA } from '../../utils/raunchyComedyMovieData';
 import { COMPLETE_MOVIE_DATABASE as ROAD_TRIP_DATABASE, COMPLETE_MOVIE_DATA as ROAD_TRIP_DATA } from '../../utils/roadTripMovieData';
 import { COMPLETE_MOVIE_DATABASE as THOUGHT_PROVOKING_DATABASE, COMPLETE_MOVIE_DATA as THOUGHT_PROVOKING_DATA } from '../../utils/thoughtProvokingMovieData';
+import { COMPLETE_MOVIE_DATABASE as NEO_NOIR_DATABASE, COMPLETE_MOVIE_DATA as NEO_NOIR_DATA } from '../../utils/neoNoirMovieData';
 
 import { COMPLETE_MOVIE_DATABASE as HULU_FAMILY_DATABASE, COMPLETE_MOVIE_DATA as HULU_FAMILY_DATA } from '../../utils/huluFamilyMovieData';
 import { COMPLETE_MOVIE_DATABASE as HBO_ACTION_DATABASE, COMPLETE_MOVIE_DATA as HBO_ACTION_DATA } from '../../utils/hboActionMovieData';
@@ -1519,6 +1520,29 @@ const getCollectionContent = () => {
                 text2: "Each film serves as a profound, uncompromising meditation on the human condition."
             }
         };
+    } else if (collection.slug === 'best-neo-noir-movies') {
+        return {
+            badge: "Neon & Shadows",
+            title: "Best Neo-Noir Movies",
+            description: "Gritty, morally ambiguous cinematic experiences exploring the dark underbelly of society through atmospheric dread and stylized violence.",
+            selection: {
+                text1: "From the sun-drenched corruption of 'Chinatown' to the neon-lit isolation of 'Drive'—these films redefine the classic noir genre for the modern era.",
+                text2: "Each selection features flawed anti-heroes, femme fatales, and complex narratives where the line between right and wrong is irrevocably blurred."
+            },
+            ranking: {
+                text: "Our moral ambiguity index evaluates the depth of character corruption, atmospheric dread, and the lasting impact of each film's cynical worldview.",
+                points: [
+                    "Moral ambiguity depth",
+                    "Atmospheric dread & style",
+                    "Narrative complexity",
+                    "Subversion of traditional tropes"
+                ]
+            },
+            experience: {
+                text1: "Prepare for investigations that reveal uncomfortable truths and protagonists who lose pieces of their soul with every discovery.",
+                text2: "Each film serves as a stylish, thought-provoking descent into the darkest corners of human nature."
+            }
+        };
     } else if (collection.slug === 'best-heist-thriller-movies') {
         return {
             badge: "Heist Master Cinema",
@@ -2091,6 +2115,11 @@ subtitle: "While everyone searches Netflix, these classics hide in plain sight. 
             title: "10 Best Thought-Provoking Movies",
             subtitle: "Profound explorations of humanity, existence, and the search for meaning"
         };
+    } else if (collection.slug === 'best-neo-noir-movies') {
+        return {
+            title: "10 Best Neo-Noir Movies",
+            subtitle: "Gritty investigations, moral ambiguity & atmospheric dread in the modern city"
+        };
 
     } else if (collection.slug === 'movies-like-interstellar') {
         return {
@@ -2239,6 +2268,11 @@ const getLoaderContent = () => {
         return {
             title: "Loading Thought-Provoking Movies",
             description: "Curating profound cinematic meditations on existence with community reviews"
+        };
+    } else if (collection?.slug === 'best-neo-noir-movies') {
+        return {
+            title: "Loading Neo-Noir Movies",
+            description: "Curating atmospheric, morally complex mysteries with community reviews"
         };
 
 } else if (collection?.slug === 'movies-like-donnie-darko') {
@@ -2660,6 +2694,15 @@ const getStaticMetaContent = () => {
             ogTitle: "The 10 Most Profound & Thought-Provoking Movies",
             twitterTitle: "The 10 Most Profound & Thought-Provoking Movies",
             progressText: `of Top ${movies.length} Profound Movies`
+        };
+    } else if (collection.slug === 'best-neo-noir-movies') {
+        return {
+            title: "10 Best Neo-Noir Movies (Ranked by Ambiguity)",
+            description: "Explore the best neo-noir movies. From Chinatown to Drive, discover gritty, atmospheric films exploring moral decay. Includes exact Timestamps & Parents Guide.",
+            keywords: "best neo noir movies, neo noir films, modern noir, gritty detective movies, atmospheric crime thrillers",
+            ogTitle: "10 Best Neo-Noir Movies: Neon & Shadows",
+            twitterTitle: "The 10 Best Neo-Noir Movies You Need to Watch",
+            progressText: `of Top ${movies.length} Neo-Noir Movies`
         };
 
 
@@ -3265,6 +3308,7 @@ const getStaticMetaContent = () => {
             sessionStorage.removeItem('fromRaunchyComedyCollection');
             sessionStorage.removeItem('fromRoadTripCollection');
             sessionStorage.removeItem('fromThoughtProvokingCollection');
+            sessionStorage.removeItem('fromNeoNoirCollection');
 
             // Set appropriate collection flag âœ…
             if (collection.slug === 'movies-like-inception') {
@@ -3395,6 +3439,8 @@ const getStaticMetaContent = () => {
                 sessionStorage.setItem('fromRoadTripCollection', 'true');
             } else if (collection.slug === 'best-thought-provoking-movies') {
                 sessionStorage.setItem('fromThoughtProvokingCollection', 'true');
+            } else if (collection.slug === 'best-neo-noir-movies') {
+                sessionStorage.setItem('fromNeoNoirCollection', 'true');
             }
         }
     };
@@ -3818,6 +3864,8 @@ return (
 ? 'movies/top-10-road-trip-movies/'
 : collection?.slug === 'best-thought-provoking-movies'
 ? 'movies/best-thought-provoking-movies/'
+: collection?.slug === 'best-neo-noir-movies'
+? 'movies/best-neo-noir-movies/'
 : collection?.slug === 'best-action-movies-on-hulu'
                                     ? 'movies/best-action-movies-on-hulu/'
 : collection?.slug === 'best-romance-movies-on-hulu'
@@ -4063,6 +4111,8 @@ return (
                                     ? `/movies/top-10-road-trip-movies/${currentMovie.imdbID}`
                                     : collection.slug === 'best-thought-provoking-movies'
                                     ? `/movies/best-thought-provoking-movies/${currentMovie.imdbID}`
+                                    : collection.slug === 'best-neo-noir-movies'
+                                    ? `/movies/best-neo-noir-movies/${currentMovie.imdbID}`
                                     : collection.slug === 'best-action-movies-on-hulu'
                                     ? `/movies/best-action-movies-on-hulu/${currentMovie.imdbID}`
                                     : collection.slug === 'best-romance-movies-on-hulu'
@@ -4360,6 +4410,9 @@ case 'top-10-road-trip-movies':
             break;
 case 'best-thought-provoking-movies':
             movieDatabase = THOUGHT_PROVOKING_DATABASE;
+            break;
+case 'best-neo-noir-movies':
+            movieDatabase = NEO_NOIR_DATABASE;
             break;
 
             case 'best-action-movies-on-hulu':

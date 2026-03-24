@@ -338,11 +338,11 @@ export const getSensitiveContentTypes = (tmdbId) => {
     if (!sensitiveData?.scenes?.length) return null;
     const types = new Set();
     sensitiveData.scenes.forEach(scene => {
-        const lowerType = scene.type.toLowerCase();
-        if (lowerType.includes('gore') || lowerType.includes('mutilation')) types.add('extreme gore');
-        if (lowerType.includes('animal')) types.add('animal harm');
-        if (lowerType.includes('sexual') || lowerType.includes('assault')) types.add('sexual violence');
-        if (lowerType.includes('suicide') || lowerType.includes('self-harm')) types.add('self-harm');
+        const lowerType = scene.type?.toLowerCase() || '';
+        if (lowerType.includes('sex') || lowerType.includes('explicit')) types.add('sexual content');
+        if (lowerType.includes('partial nudity')) types.add('partial nudity');
+        else if (lowerType.includes('nudity')) types.add('nudity');
+        if (lowerType.includes('suggestive') || lowerType.includes('lingerie') || lowerType.includes('bikini')) types.add('suggestive clothing');
     });
     return Array.from(types);
 };

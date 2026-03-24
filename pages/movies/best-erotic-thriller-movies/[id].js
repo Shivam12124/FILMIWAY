@@ -252,7 +252,7 @@ const EroticThrillerMoviePage = ({ movie, tmdbData: movieData, sensitiveData }) 
   
   if (scenes.length > 0) {
     const rawTimes = scenes.slice(0, 2).map(s => s.end ? `${s.start}–${s.end}` : s.start);
-    const formattedTimes = rawTimes.join(' and ');
+    const formattedTimes = rawTimes.join(', ') + ' and ' + rawTimes.slice(-1);
 
     cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Viewer discretion advised. Includes exact scene timestamps: ${formattedTimes}.`;
   } else {

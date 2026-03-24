@@ -363,48 +363,46 @@ export const getSensitiveContentTypes = (tmdbId) => {
     if (!sensitiveData?.scenes?.length) return null;
     const types = new Set();
     sensitiveData.scenes.forEach(scene => {
-        const lowerType = scene.type.toLowerCase();
-        if (lowerType.includes('sex')) types.add('sexual content');
-        if (lowerType.includes('nudity')) types.add('nudity');
-        if (lowerType.includes('viol') || lowerType.includes('gore') || lowerType.includes('blood')) types.add('violence');
-        if (lowerType.includes('flash') || lowerType.includes('strobe')) types.add('flashing lights');
+        const lowerType = scene.type?.toLowerCase() || '';
+        if (lowerType.includes('sex') || lowerType.includes('explicit')) types.add('sexual content');
+        if (lowerType.includes('partial nudity')) types.add('partial nudity');
+        else if (lowerType.includes('nudity')) types.add('nudity');
+        if (lowerType.includes('suggestive') || lowerType.includes('lingerie') || lowerType.includes('bikini')) types.add('suggestive clothing');
     });
     return Array.from(types);
 };
 
 // 🔥 UNIFIED CLEAN GENERATOR (For Google Bots & LLMs - No Rating Spam)
 export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, collectionSlug, unused, movieInfo) => {
-    
-    // 1. MOVIE SCHEMA (Zero Review/Rating Spam, Clean Description)
+    let currentRuntime = movie.Runtime || movie.runtime || "Official";
+    if (typeof currentRuntime === 'number') currentRuntime = `${currentRuntime} min`;
+
     const movieSchema = {
         '@context': 'https://schema.org',
         '@type': 'Movie',
         'name': movie.Title,
-        'description': movieInfo?.synopsis || `${movie.Title} (${currentMovieYear}) - A top Sci-Fi movie on Hulu.`,
+        'description': movieInfo?.synopsis || `${movie.Title} (${currentMovieYear}) - Explore exact timestamps and parents guide information on Filmiway.`,
         'genre': movie.genre,
+        'url': `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`, 
         'datePublished': currentMovieYear?.toString() || movie.year.toString(),
         'director': { '@type': 'Person', 'name': movieInfo?.director || 'Director' },
         'actor': movieInfo?.cast?.map(actor => ({ '@type': 'Person', 'name': actor })) || [],
-        'image': tmdbData?.poster_path ? `https://image.tmdb.org/t/p/w500${tmdbData.poster_path}` : '',
+        'image': tmdbData?.poster_path ? `https://image.tmdb.org/t/p/w500${tmdbData.poster_path}` : (FALLBACK_POSTERS[movie.tmdbId] || ''),
         'duration': `PT${movie.runtime}M`
     };
 
-    // 2. THE "GOLDEN EGG" FAQ SCHEMA
-    const staticFaqs = HULU_SCIFI_MOVIE_FAQS[movie.Title] || [];
+    const staticFaqs = HULU_SCIFI_MOVIE_FAQS[movie.Title] ? [...HULU_SCIFI_MOVIE_FAQS[movie.Title]] : [];
     const sensitiveScenes = SENSITIVE_TIMELINES[movie.tmdbId]?.scenes || [];
     const intensityScenes = movieInfo?.scenes || [];
     
-    // Load your beautifully written trivia FAQs
     const schemaFaqs = staticFaqs.map(faq => ({ 
         '@type': 'Question', 
         'name': faq.question, 
         'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer } 
     }));
 
-    // 🔥 INJECT INTENSITY GRAPH TIMESTAMPS
     if (intensityScenes.length > 0) {
         const schemaIntensityList = intensityScenes.map(s => `<li>Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)</li>`).join('');
-        
         schemaFaqs.unshift({
             '@type': 'Question',
             'name': `What are the most intense scenes in ${movie.Title}?`,
@@ -415,35 +413,46 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
         });
     }
 
-    // Extract runtime for the schema calibration tag
-    let currentRuntime = movie.Runtime || movie.runtime || "Official";
-    if (typeof currentRuntime === 'number') currentRuntime = `${currentRuntime} min`;
+    const heavyScenes = sensitiveScenes.filter(s => {
+        const t = s.type?.toLowerCase() || '';
+        return t.includes('sex') || t.includes('nudity') || t.includes('explicit') || t.includes('suggestive') || t.includes('lingerie') || t.includes('bikini'); 
+    });
 
-    // 🔥 INJECT SENSITIVE CONTENT TIMESTAMPS (Unshifted last so it remains #1 at the very top)
-    if (sensitiveScenes.length > 0) {
+    if (heavyScenes.length > 0) {
         const typesArray = getSensitiveContentTypes(movie.tmdbId) || ['mature content'];
-        const typesString = typesArray.join(' and ');
+        const typesString = typesArray.join(', ');
 
-        const schemaListText = sensitiveScenes.map(s => {
+        const schemaListText = heavyScenes.map(s => {
             const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
-            return `<li>${timeRange} - ${s.type || 'Mature Content'}</li>`;
+            const fullType = s.severity ? `${s.type} (${s.severity})` : (s.type || 'Mature Content');
+            return `<li>${timeRange} - ${fullType}</li>`;
         }).join('');
 
-        schemaFaqs.unshift({
-            '@type': 'Question',
-            'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
-            'acceptedAnswer': { 
-                '@type': 'Answer', 
-                'text': `Yes, according to the Filmiway Timestamps & Parents Guide, ${movie.Title} contains adult scenes including ${typesString}. These timestamps are accurate for the ${currentRuntime} runtime. Exact timestamps for these scenes are:<br><br><ul>${schemaListText}</ul>` 
+        schemaFaqs.unshift(
+            {
+                '@type': 'Question',
+                'name': `Parents Guide & Scene Timestamps: Does ${movie.Title} contain sex, nudity, or adult scenes?`,
+                'acceptedAnswer': { 
+                    '@type': 'Answer', 
+                    'text': `According to the Filmiway Timestamps & Parents Guide, ${movie.Title} contains scenes involving ${typesString}. These timestamps are accurate for the ${currentRuntime} version of the film. Exact timestamps to skip these scenes:<br><br><ul>${schemaListText}</ul>` 
+                }
+            },
+            {
+                '@type': 'Question',
+                'name': `How can I skip sex and adult scenes in ${movie.Title}?`,
+                'acceptedAnswer': {
+                    '@type': 'Answer',
+                    'text': `You can skip all sex, nudity, and adult scenes in ${movie.Title} using Filmiway's exact scene timestamps. These timestamps show precisely when each scene starts and ends, so you can skip them easily while watching.`
+                }
             }
-        });
+        );
     } else {
         schemaFaqs.unshift({
             '@type': 'Question',
-            'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
+            'name': `Parents Guide: Does ${movie.Title} contain explicit content?`,
             'acceptedAnswer': { 
                 '@type': 'Answer', 
-                'text': `No, the Filmiway Timestamps & Parents Guide confirms that ${movie.Title} is completely free of explicit sexual content and nudity. This assessment is accurate for the ${currentRuntime} runtime.` 
+                'text': `The Filmiway Timestamps & Parents Guide confirms that ${movie.Title} is free of explicit sexual content or extreme nudity. There are no scenes to skip. This assessment is accurate for the ${currentRuntime} version of the film.` 
             }
         });
     }
@@ -460,50 +469,59 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
 
 // 🔥 DYNAMIC VISIBLE FAQ GENERATOR FOR THE FRONTEND UI
 export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Official") => {
-    // 1. Get the static, manually written FAQs
     const staticFaqs = HULU_SCIFI_MOVIE_FAQS[movieTitle] ? [...HULU_SCIFI_MOVIE_FAQS[movieTitle]] : [];
-    
-    // 2. Get the sensitive scenes and intensity scenes data
     const sensitiveScenes = SENSITIVE_TIMELINES[tmdbId]?.scenes || [];
     const movieInfo = COMPLETE_MOVIE_DATA[tmdbId];
     const intensityScenes = movieInfo?.scenes || [];
 
-    // 🔥 Automatically fetch the exact runtime from the database if missing
     const dbMovie = COMPLETE_MOVIE_DATABASE.find(m => m.tmdbId === tmdbId);
     let finalRuntime = currentRuntime !== "Official" ? currentRuntime : (dbMovie?.runtime ? `${dbMovie.runtime} min` : "Official");
+    if (typeof finalRuntime === 'number') finalRuntime = `${finalRuntime} min`;
 
-    // 3. 🔥 DYNAMICALLY GENERATE THE INTENSITY GRAPH FAQ
     if (intensityScenes.length > 0) {
         const uiIntensityList = intensityScenes.map(s => `• Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)`).join('\n');
-        
         staticFaqs.unshift({
             question: `What are the most intense scenes in ${movieTitle}?`,
-            answer: `According to the Filmiway Intensity metric, ${movieTitle} peaks at the following moments:\n\n${uiIntensityList}`
+            answer: `According to the Filmiway Intensity metric, ${movieTitle} peaks at the following moments:
+
+${uiIntensityList}`
         });
     }
 
-    // 4. 🔥 DYNAMICALLY GENERATE THE SENSITIVE CONTENT FAQ
-    if (sensitiveScenes.length > 0) {
-        const typesArray = getSensitiveContentTypes(tmdbId) || ['mature content'];
-        const typesString = typesArray.join(' and ');
+    const heavyScenes = sensitiveScenes.filter(s => {
+        const t = s.type?.toLowerCase() || '';
+        return t.includes('sex') || t.includes('nudity') || t.includes('explicit') || t.includes('suggestive') || t.includes('lingerie') || t.includes('bikini');
+    });
 
-        const uiListText = sensitiveScenes.map(s => {
+    if (heavyScenes.length > 0) {
+        const typesArray = getSensitiveContentTypes(tmdbId) || ['mature content'];
+        const typesString = typesArray.join(', ');
+
+        const uiListText = heavyScenes.map(s => {
             const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
-            return `• ${timeRange} - ${s.type || 'Mature Content'}`;
+            const fullType = s.severity ? `${s.type} (${s.severity})` : (s.type || 'Mature Content');
+            return `• ${timeRange} - ${fullType}`;
         }).join('\n');
 
-        staticFaqs.unshift({
-            question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
-            answer: `Yes, according to the Filmiway Timestamps & Parents Guide, ${movieTitle} contains adult scenes including ${typesString}. These timestamps are accurate for the ${finalRuntime} runtime. Exact timestamps for these scenes are:\n\n${uiListText}`
-        });
+        staticFaqs.unshift(
+            {
+                question: `Parents Guide & Scene Timestamps: Does ${movieTitle} contain sex, nudity, or adult scenes?`,
+                answer: `According to the Filmiway Timestamps & Parents Guide, ${movieTitle} contains scenes involving ${typesString}. These timestamps are accurate for the ${finalRuntime} version of the film. Exact timestamps to skip these scenes:
+
+${uiListText}`
+            },
+            {
+                question: `How can I skip sex and adult scenes in ${movieTitle}?`,
+                answer: `You can skip all sex, nudity, and adult scenes in ${movieTitle} using Filmiway's exact scene timestamps. These timestamps show precisely when each scene starts and ends, so you can skip them easily while watching.`
+            }
+        );
     } else {
         staticFaqs.unshift({
-            question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
-            answer: `No, the Filmiway Timestamps & Parents Guide confirms that ${movieTitle} is completely free of explicit sexual content and nudity. This assessment is accurate for the ${finalRuntime} runtime.`
+            question: `Parents Guide: Does ${movieTitle} contain explicit content?`,
+            answer: `The Filmiway Timestamps & Parents Guide confirms that ${movieTitle} is completely free of explicit sexual content and nudity. There are no scenes to skip. This assessment is accurate for the ${finalRuntime} version of the film.`
         });
     }
 
-    // 5. Return the combined list
     return staticFaqs;
 };
 

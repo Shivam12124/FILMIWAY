@@ -258,7 +258,7 @@ const PeacockThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
 
         cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Viewer discretion advised. Includes exact scene timestamps: ${formattedTimes}.`;
     } else {
-        cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Filmiway Content Advisory: No nudity or explicit sexual content identified. Suitable for general viewing.`;
+        cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Filmiway Timestamps & Parents Guide: No nudity or explicit sexual content identified. Suitable for general viewing.`;
     }
 
     // =========================================================================

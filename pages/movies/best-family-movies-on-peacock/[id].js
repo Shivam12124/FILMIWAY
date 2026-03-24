@@ -255,7 +255,7 @@ const PeacockFamilyMoviePage = ({ movie, tmdbData: movieData, sensitiveData }) =
 
       cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Viewer discretion advised for younger kids. Includes exact scene timestamps: ${formattedTimes}.`;
   } else {
-      cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Filmiway Content Advisory: No explicit sexual content, crude humor, or severe violence identified. Safe for family viewing.`;
+      cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Filmiway Timestamps & Parents Guide: No explicit sexual content, crude humor, or severe violence identified. Safe for family viewing.`;
   }
 
   // =========================================================================

@@ -15,6 +15,21 @@ export const COLLECTIONS = {
     relatedCollections: ['best-time-travel-movies', 'movies-like-the-matrix', 'best-psychological-thriller-movies']
   },
 
+  // 💵 BEST MOVIES ABOUT GREED
+  'best-movies-about-greed': {
+    slug: 'best-movies-about-greed',
+    title: '10 Best Movies About Greed',
+    stats: { averageRating: 7.7 },
+    badges: [
+      { label: "CORRUPTION", desc: "Moral decay" },
+      { label: "WEALTH", desc: "Excessive capitalism" },
+      { label: "DOWNFALL", desc: "Tragic arcs" }
+    ],
+    movies: ['tt0469494', 'tt0993846', 'tt0094291', 'tt0040897', 'tt0112641', 'tt1596363', 'tt5727208', 'tt0015881', 'tt0144084', 'tt0120324'],
+    relatedCollections: ['best-heist-thriller-movies', 'best-crime-thriller-movies', 'best-psychological-thriller-movies']
+  },
+
+
   // 🧩 MOVIES LIKE MEMENTO
   'movies-like-memento': {
     slug: 'movies-like-memento',
@@ -813,19 +828,7 @@ export const COLLECTIONS = {
     relatedCollections: ['best-psychological-thriller-movies', 'movies-like-eyes-wide-shut', 'best-crime-thriller-movies']
   },
 
-  // 💵 BEST MOVIES ABOUT GREED
-  'best-movies-about-greed': {
-    slug: 'best-movies-about-greed',
-    title: '10 Best Movies About Greed',
-    stats: { averageRating: 7.7 },
-    badges: [
-      { label: "CORRUPTION", desc: "Moral decay" },
-      { label: "WEALTH", desc: "Excessive capitalism" },
-      { label: "DOWNFALL", desc: "Tragic arcs" }
-    ],
-    movies: ['tt0469494', 'tt0993846', 'tt0094291', 'tt0040897', 'tt0112641', 'tt1596363', 'tt5727208', 'tt0015881', 'tt0144084', 'tt0120324'],
-    relatedCollections: ['best-heist-thriller-movies', 'best-crime-thriller-movies', 'best-psychological-thriller-movies']
-  },
+
 
   // 🍻 BEST RAUNCHY COMEDY MOVIES
   'best-raunchy-comedy-movies': {
@@ -868,6 +871,22 @@ export const COLLECTIONS = {
     // ✅ Correct IMDb IDs for: 12 Angry Men, Parasite, Incendies,  Dead Poets Society, Taste of Cherry, The Father, Children of Men, Truman Show, Clockwork Orange, Requiem for a Dream
     movies: ['tt0050083', 'tt6751668', 'tt1255953', 'tt0120265', 'tt0097165', 'tt10272386', 'tt0206634', 'tt0120382', 'tt0066921', 'tt0180093'],
     relatedCollections: ['best-psychological-thriller-movies', 'movies-like-the-prestige', 'best-drama-movies-on-hbo-max']
+  },
+
+
+  // 🌑 10 BEST NEO-NOIR MOVIES
+  'best-neo-noir-movies': {
+    slug: 'best-neo-noir-movies',
+    title: 'The 10 Best Neo-Noir Movies of All Time',
+    stats: { averageRating: 7.8 },
+    badges: [
+      { label: "GRITTY", desc: "Dark atmosphere" },
+      { label: "AMBIGUOUS", desc: "Moral decay" },
+      { label: "STYLIZED", desc: "Neon & shadows" }
+    ],
+    // ✅ Correct IMDb IDs for: Chinatown, Le Samouraï, Drive, Sin City, Good Time, Decision to Leave, Manhunter, To Live and Die in L.A., The Long Goodbye, After Hours
+    movies: ['tt0071315', 'tt0062229', 'tt0780504', 'tt0401792', 'tt4846232', 'tt12477480', 'tt0091474', 'tt0090180', 'tt0070334', 'tt0088680'],
+    relatedCollections: ['movies-like-se7en', 'best-psychological-thriller-movies', 'best-crime-thriller-movies']
   },
 
   // 🩸 BEST THRILLER MOVIES
@@ -915,6 +934,7 @@ export const getRaunchyComedyCollection = () => COLLECTIONS['best-raunchy-comedy
 export const getRoadTripCollection = () => COLLECTIONS['top-10-road-trip-movies'];
 export const getThoughtProvokingCollection = () => COLLECTIONS['best-thought-provoking-movies'];
 export const getThrillerCollection = () => COLLECTIONS['best-thriller-movies'];
+export const getNeoNoirCollection = () => COLLECTIONS['best-neo-noir-movies'];
 
 // ============================================================================
 // 🧠 THE MASTER CANONICAL BRAIN

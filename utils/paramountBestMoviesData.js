@@ -350,23 +350,27 @@ export const getSensitiveContentTypes = (tmdbId) => {
     if (!sensitiveData?.scenes?.length) return null;
     const types = new Set();
     sensitiveData.scenes.forEach(scene => {
-        const lowerType = scene.type.toLowerCase();
-        
+        const lowerType = scene.type?.toLowerCase() || '';
         if (lowerType.includes('sex') || lowerType.includes('explicit')) types.add('sexual content');
-        if (lowerType.includes('nudity') || lowerType.includes('woman') || lowerType.includes('men')) types.add('nudity');
-        if (lowerType.includes('violence') || lowerType.includes('gore')) types.add('graphic violence');
+        if (lowerType.includes('partial nudity')) types.add('partial nudity');
+        else if (lowerType.includes('nudity')) types.add('nudity');
+        if (lowerType.includes('suggestive') || lowerType.includes('lingerie') || lowerType.includes('bikini')) types.add('suggestive clothing');
     });
     return Array.from(types);
 };
 
 // 🔥 7. THE "GOLDEN EGG" SCHEMA GENERATOR
 export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, collectionSlug, unused, movieInfo) => {
+    let currentRuntime = movie.Runtime || movie.runtime || "Official";
+    if (typeof currentRuntime === 'number') currentRuntime = `${currentRuntime} min`;
+
     const movieSchema = {
         '@context': 'https://schema.org',
         '@type': 'Movie',
         'name': movie.Title,
-        'description': movieInfo?.synopsis || `${movie.Title} (${currentMovieYear}) - One of the best movies on Paramount+.`,
+        'description': movieInfo?.synopsis || `${movie.Title} (${currentMovieYear}) - Explore exact timestamps and parents guide information on Filmiway.`,
         'genre': movie.genre,
+        'url': `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`, 
         'datePublished': currentMovieYear?.toString() || movie.year.toString(),
         'director': { '@type': 'Person', 'name': movieInfo?.director || 'Director' },
         'actor': movieInfo?.cast?.map(actor => ({ '@type': 'Person', 'name': actor })) || [],
@@ -374,7 +378,7 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
         'duration': `PT${movie.runtime}M`
     };
 
-    const staticFaqs = PARAMOUNT_BEST_MOVIE_FAQS[movie.Title] || [];
+    const staticFaqs = PARAMOUNT_BEST_MOVIE_FAQS[movie.Title] ? [...PARAMOUNT_BEST_MOVIE_FAQS[movie.Title]] : [];
     const sensitiveScenes = SENSITIVE_TIMELINES[movie.tmdbId]?.scenes || [];
     const intensityScenes = movieInfo?.scenes || [];
     
@@ -388,42 +392,54 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
         const schemaIntensityList = intensityScenes.map(s => `<li>Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)</li>`).join('');
         schemaFaqs.unshift({
             '@type': 'Question',
-            'name': `What are the most iconic scenes in ${movie.Title}?`,
+            'name': `What are the most intense scenes in ${movie.Title}?`,
             'acceptedAnswer': { 
                 '@type': 'Answer', 
-                'text': `According to the Filmiway Cinematic Mastery index, ${movie.Title} peaks at the following moments:<br><br><ul>${schemaIntensityList}</ul>` 
+                'text': `According to the Filmiway Intensity metric, ${movie.Title} peaks at the following moments:<br><br><ul>${schemaIntensityList}</ul>` 
             }
         });
     }
 
-    // Extract runtime safely
-    let currentRuntime = movie.Runtime || movie.runtime || "Official";
-    if (typeof currentRuntime === 'number') currentRuntime = `${currentRuntime} min`;
+    const heavyScenes = sensitiveScenes.filter(s => {
+        const t = s.type?.toLowerCase() || '';
+        return t.includes('sex') || t.includes('nudity') || t.includes('explicit') || t.includes('suggestive') || t.includes('lingerie') || t.includes('bikini'); 
+    });
 
-    if (sensitiveScenes.length > 0) {
+    if (heavyScenes.length > 0) {
         const typesArray = getSensitiveContentTypes(movie.tmdbId) || ['mature content'];
-        const typesString = typesArray.join(' and ');
-        
-        const schemaListText = sensitiveScenes.map(s => {
+        const typesString = typesArray.join(', ');
+
+        const schemaListText = heavyScenes.map(s => {
             const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
-            return `<li>${timeRange} - ${s.type || 'Mature Content'}</li>`;
+            const fullType = s.severity ? `${s.type} (${s.severity})` : (s.type || 'Mature Content');
+            return `<li>${timeRange} - ${fullType}</li>`;
         }).join('');
 
-        schemaFaqs.unshift({
-            '@type': 'Question',
-            'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
-            'acceptedAnswer': { 
-                '@type': 'Answer', 
-                'text': `Yes, according to the Filmiway Content Advisory, ${movie.Title} contains adult scenes including ${typesString}. Exact timestamps for these scenes are:<br><br><ul>${schemaListText}</ul>` 
+        schemaFaqs.unshift(
+            {
+                '@type': 'Question',
+                'name': `Parents Guide & Scene Timestamps: Does ${movie.Title} contain sex, nudity, or adult scenes?`,
+                'acceptedAnswer': { 
+                    '@type': 'Answer', 
+                    'text': `According to the Filmiway Timestamps & Parents Guide, ${movie.Title} contains scenes involving ${typesString}. These timestamps are accurate for the ${currentRuntime} version of the film. Exact timestamps to skip these scenes:<br><br><ul>${schemaListText}</ul>` 
+                }
+            },
+            {
+                '@type': 'Question',
+                'name': `How can I skip sex and adult scenes in ${movie.Title}?`,
+                'acceptedAnswer': {
+                    '@type': 'Answer',
+                    'text': `You can skip all sex, nudity, and adult scenes in ${movie.Title} using Filmiway's exact scene timestamps. These timestamps show precisely when each scene starts and ends, so you can skip them easily while watching.`
+                }
             }
-        });
+        );
     } else {
         schemaFaqs.unshift({
             '@type': 'Question',
-            'name': `Does ${movie.Title} contain adult or inappropriate scenes?`,
+            'name': `Parents Guide: Does ${movie.Title} contain explicit content?`,
             'acceptedAnswer': { 
                 '@type': 'Answer', 
-                'text': `No, the Filmiway Content Advisory confirms that ${movie.Title} is completely free of explicit sexual content and nudity.` 
+                'text': `The Filmiway Timestamps & Parents Guide confirms that ${movie.Title} is free of explicit sexual content or extreme nudity. There are no scenes to skip. This assessment is accurate for the ${currentRuntime} version of the film.` 
             }
         });
     }
@@ -445,7 +461,6 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
     const movieInfo = COMPLETE_MOVIE_DATA[tmdbId];
     const intensityScenes = movieInfo?.scenes || [];
 
-    // ✅ ADD THESE TWO LINES TO FIX THE CRASH
     const dbMovie = COMPLETE_MOVIE_DATABASE.find(m => m.tmdbId === tmdbId);
     let finalRuntime = currentRuntime !== "Official" ? currentRuntime : (dbMovie?.runtime ? `${dbMovie.runtime} min` : "Official");
     if (typeof finalRuntime === 'number') finalRuntime = `${finalRuntime} min`;
@@ -453,28 +468,44 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
     if (intensityScenes.length > 0) {
         const uiIntensityList = intensityScenes.map(s => `• Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)`).join('\n');
         staticFaqs.unshift({
-            question: `What are the most iconic scenes in ${movieTitle}?`,
-            answer: `According to the Filmiway Cinematic Mastery index, ${movieTitle} peaks at the following moments:\n\n${uiIntensityList}`
+            question: `What are the most intense scenes in ${movieTitle}?`,
+            answer: `According to the Filmiway Intensity metric, ${movieTitle} peaks at the following moments:
+
+${uiIntensityList}`
         });
     }
 
-    if (sensitiveScenes.length > 0) {
+    const heavyScenes = sensitiveScenes.filter(s => {
+        const t = s.type?.toLowerCase() || '';
+        return t.includes('sex') || t.includes('nudity') || t.includes('explicit') || t.includes('suggestive') || t.includes('lingerie') || t.includes('bikini');
+    });
+
+    if (heavyScenes.length > 0) {
         const typesArray = getSensitiveContentTypes(tmdbId) || ['mature content'];
-        const typesString = typesArray.join(' and ');
-        
-        const uiListText = sensitiveScenes.map(s => {
+        const typesString = typesArray.join(', ');
+
+        const uiListText = heavyScenes.map(s => {
             const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
-            return `• ${timeRange} - ${s.type || 'Mature Content'}`;
+            const fullType = s.severity ? `${s.type} (${s.severity})` : (s.type || 'Mature Content');
+            return `• ${timeRange} - ${fullType}`;
         }).join('\n');
 
-        staticFaqs.unshift({
-            question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
-            answer: `Yes, according to the Filmiway Timestamps & Parents Guide, ${movieTitle} contains adult scenes including ${typesString}. These timestamps are accurate for the ${finalRuntime} runtime. Exact timestamps for these scenes are:\n\n${uiListText}`
-        });
+        staticFaqs.unshift(
+            {
+                question: `Parents Guide & Scene Timestamps: Does ${movieTitle} contain sex, nudity, or adult scenes?`,
+                answer: `According to the Filmiway Timestamps & Parents Guide, ${movieTitle} contains scenes involving ${typesString}. These timestamps are accurate for the ${finalRuntime} version of the film. Exact timestamps to skip these scenes:
+
+${uiListText}`
+            },
+            {
+                question: `How can I skip sex and adult scenes in ${movieTitle}?`,
+                answer: `You can skip all sex, nudity, and adult scenes in ${movieTitle} using Filmiway's exact scene timestamps. These timestamps show precisely when each scene starts and ends, so you can skip them easily while watching.`
+            }
+        );
     } else {
         staticFaqs.unshift({
-            question: `Does ${movieTitle} contain adult or inappropriate scenes?`,
-            answer: `No, the Filmiway Timestamps & Parents Guide confirms that ${movieTitle} is completely free of explicit sexual content and nudity. This assessment is accurate for the ${finalRuntime} runtime.`
+            question: `Parents Guide: Does ${movieTitle} contain explicit content?`,
+            answer: `The Filmiway Timestamps & Parents Guide confirms that ${movieTitle} is completely free of explicit sexual content and nudity. There are no scenes to skip. This assessment is accurate for the ${finalRuntime} version of the film.`
         });
     }
 

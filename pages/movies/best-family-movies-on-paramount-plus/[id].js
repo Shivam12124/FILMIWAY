@@ -262,7 +262,7 @@ const ParamountFamilyMoviePage = ({ movie, tmdbData: movieData }) => {
 
         cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Viewer discretion advised for younger viewers. Includes exact scene timestamps: ${formattedTimes}.`;
     } else {
-        cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Filmiway Content Advisory: No explicit sexual content or severe violence identified. Suitable for general family viewing.`;
+        cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Filmiway Timestamps & Parents Guide: No explicit sexual content or severe violence identified. Suitable for general family viewing.`;
     }
 
     // =========================================================================

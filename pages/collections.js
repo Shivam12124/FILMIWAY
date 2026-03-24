@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Head from 'next/head';
 import Link from 'next/link';
-import { Search, Brain, Mountain, Film, ChevronDown, Sparkles, Plus, ArrowRight, Star, Clock, Eye, Scale, DollarSign, Shield, Zap, Heart, Ghost, Smile, Crown,Flame, Map, Rocket } from 'lucide-react';
+import { Search, Brain, Mountain, Film, ChevronDown, Sparkles, Plus, ArrowRight, Star, Clock, Eye, Scale, DollarSign, Shield, Zap, Heart, Moon, Ghost, Smile, Crown,Flame, Map, Rocket } from 'lucide-react';
 import Image from 'next/image';
 
 const CollectionsHub = () => {
@@ -683,6 +683,19 @@ const CollectionsHub = () => {
             movieCount: '10',
             rating: '8.3',
             directLink: '/collection/best-thought-provoking-movies',
+            hasSubCollections: false
+        },
+
+
+{
+            id: 'neo-noir',
+            title: '10 Best Neo-Noir Movies',
+            description: 'A curation of cinema\'s most stylized, morally ambiguous, and neon-drenched urban nightmares.',
+            icon: Moon, 
+            gradient: 'from-pink-800 to-slate-950',
+            movieCount: '10',
+            rating: '7.8',
+            directLink: '/collection/best-neo-noir-movies',
             hasSubCollections: false
         },
 

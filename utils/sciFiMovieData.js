@@ -297,17 +297,17 @@ export const getTMDBPosterUrl = (posterPath, size = 'medium') => {
 };
 
 export const getSensitiveContentTypes = (tmdbId) => {
-  const sensitiveData = SENSITIVE_TIMELINES[tmdbId];
-  if (!sensitiveData?.scenes?.length) return [];
-  const types = new Set();
-  sensitiveData.scenes.forEach(scene => {
-      const lowerType = scene.type.toLowerCase();
-      if (lowerType.includes('sex') || lowerType.includes('kiss')) types.add('Intimate Scenes');
-      if (lowerType.includes('nudity')) types.add('Nudity');
-      if (lowerType.includes('violence') || lowerType.includes('gore')) types.add('Graphic Violence');
-      if (lowerType.includes('flash') || lowerType.includes('strobe')) types.add('Flashing Lights');
-  });
-  return Array.from(types);
+    const sensitiveData = SENSITIVE_TIMELINES[tmdbId];
+    if (!sensitiveData?.scenes?.length) return null;
+    const types = new Set();
+    sensitiveData.scenes.forEach(scene => {
+        const lowerType = scene.type?.toLowerCase() || '';
+        if (lowerType.includes('sex') || lowerType.includes('explicit')) types.add('sexual content');
+        if (lowerType.includes('partial nudity')) types.add('partial nudity');
+        else if (lowerType.includes('nudity')) types.add('nudity');
+        if (lowerType.includes('suggestive') || lowerType.includes('lingerie') || lowerType.includes('bikini')) types.add('suggestive clothing');
+    });
+    return Array.from(types);
 };
 
 export const generateFAQData = (movie) => {

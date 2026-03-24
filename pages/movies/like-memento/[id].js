@@ -243,7 +243,7 @@ const MementoMoviePage = ({ movie, tmdbData, sensitiveData }) => {
 
         cleanSEODesc = `Parents Guide for ${movieTitle} (${currentMovieYear}). Viewer discretion advised. Includes exact scene timestamps: ${formattedTimes}.`;
     } else {
-        cleanSEODesc = `Parents Guide for ${movieTitle} (${currentMovieYear}). Filmiway Content Advisory: No explicit sexual content or severe violence identified.`;
+        cleanSEODesc = `Parents Guide for ${movieTitle} (${currentMovieYear}). Filmiway Timestamps & Parents Guide: No explicit sexual content or severe violence identified.`;
     }
 
     // =========================================================================

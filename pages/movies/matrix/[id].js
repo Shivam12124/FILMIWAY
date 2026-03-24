@@ -275,7 +275,7 @@ const MatrixMoviePage = ({ movie, tmdbData: movieData }) => {
     if (scenes.length > 0) {
       // 🔥 Strictly grab only the first 2 timestamps so it's clean and readable
       const rawTimes = scenes.slice(0, 2).map(s => s.end ? `${s.start}–${s.end}` : s.start);
-      const formattedTimes = rawTimes.join(' and ');
+      const formattedTimes = rawTimes.join(', ') + ' and ' + rawTimes.slice(-1);
 
       cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Viewer discretion advised. Includes exact scene timestamps: ${formattedTimes}.`;
     } else {

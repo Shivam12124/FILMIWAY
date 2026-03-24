@@ -69,7 +69,7 @@ function fixFile(filePath) {
             lines.splice(schemaLineIndex, 0, ...linesToMove, '');
             
             // Join and save
-            const newContent = lines.join('\n');
+            const newContent = lines.join('\n')\n');
             fs.writeFileSync(filePath, newContent, 'utf8');
             fixedCount++;
             return true;

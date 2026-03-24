@@ -268,7 +268,7 @@ const HeistThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
 
         cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Viewer discretion advised. Includes exact scene timestamps: ${formattedTimes}.`;
     } else {
-        cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Filmiway Content Advisory: No explicit sexual content or severe violence identified. Suitable for general viewing.`;
+        cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Filmiway Timestamps & Parents Guide: No explicit sexual content or severe violence identified. Suitable for general viewing.`;
     }
 
     // =========================================================================
