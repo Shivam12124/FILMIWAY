@@ -31,8 +31,17 @@ export const SENSITIVE_TIMELINES = {
     // 3. Past Lives
     666277: { scenes: [] },
     
-    // 4. When Harry Met Sally
-    639: { scenes: [] },
+// 4. When Harry Met Sally
+    639: { 
+        scenes: [
+            { 
+                start: "0:46:13", 
+                end: "0:47:22", 
+                type: "Sexual Content (Moaning / Fake Orgasm)", 
+                severity: "Moderate" 
+            }
+        ] 
+    },
     
     // 5. Call Me by Your Name
     398818: { 
