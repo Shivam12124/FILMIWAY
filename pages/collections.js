@@ -245,6 +245,17 @@ const CollectionsHub = () => {
         },
 
         {
+            id: 'peacock-comedy',
+            title: 'Best Comedy Movies on Peacock',
+            description: 'From absurdist British classics to legendary mockumentaries and modern satire—the funniest films on Peacock ranked.',
+            icon: Smile,
+            gradient: 'from-yellow-400 to-amber-600',
+            movieCount: '10',
+            rating: '8.0',
+            directLink: '/collection/best-comedy-movies-on-peacock',
+            hasSubCollections: false
+        },
+        {
             id: 'paramount-action',
             title: 'Best Action Movies on Paramount+',
             description: 'High-octane action films ranked by adrenaline score, stunts, and aerial combat',

@@ -17,6 +17,7 @@ import InternalCollectionsSection from '../../../components/InternalCollectionsS
 import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
 import TMDBAttribution from '../../../components/TMDBAttribution';
+import { getPrimaryCollectionForMovie } from '../../../data/collections';
 
 // ✅ FIX: ADDED EXTRA '../' TO UTILS PATH
 import {
@@ -263,13 +264,14 @@ const HuluBestMoviePage = ({ movie, tmdbData: movieData }) => {
   // =========================================================================
 
   // BUG FIX: Canonical URL hardcoded to file route for perfect Next.js parity
-  const canonicalUrl = `https://filmiway.com/movies/best-movies-on-hulu/${movie.imdbID}`;
+  const masterCollectionSlug = getPrimaryCollectionForMovie(movie.imdbID) || collectionSlug;
+    const canonicalUrl = `https://filmiway.com/movies/${masterCollectionSlug}/${movie.imdbID}`;
 
-  const { movieSchema, faqSchema } = generateCleanMovieSchema(
-      movie, 
-      movieData, 
-      currentMovieYear, 
-      collectionSlug, 
+    const { movieSchema, faqSchema } = generateCleanMovieSchema(
+        movie, 
+        movieData, 
+        currentMovieYear, 
+        masterCollectionSlug, 
       'Hulu',
       COMPLETE_MOVIE_DATA[movie.tmdbId]
   );

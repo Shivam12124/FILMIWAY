@@ -3921,6 +3921,8 @@ return (
 ? 'movies/best-thriller-movies-on-peacock/'
 : collection?.slug === 'best-movies-on-peacock'
 ? 'movies/best-movies-on-peacock/'
+: collection?.slug === 'best-comedy-movies-on-peacock'
+? 'movies/best-comedy-movies-on-peacock/'
 : collection?.slug === 'best-romance-movies-on-paramount-plus'
 ? 'movies/best-romance-movies-on-paramount-plus/'
 : collection?.slug === 'best-core-drama-movies-on-paramount-plus'
@@ -4181,6 +4183,8 @@ return (
                                     ? `/movies/best-thriller-movies-on-peacock/${currentMovie.imdbID}`
                                     : collection.slug === 'best-movies-on-peacock'
                                     ? `/movies/best-movies-on-peacock/${currentMovie.imdbID}`
+                                    : collection.slug === 'best-comedy-movies-on-peacock'
+                                    ? `/movies/best-comedy-movies-on-peacock/${currentMovie.imdbID}`
                                     : collection.slug === 'movies-like-interstellar'
                                     ? `/movies/interstellar/${currentMovie.imdbID}`
                                     : collection.slug === 'movies-like-memento'

@@ -13,6 +13,7 @@ import InternalCollectionsSection from '../../../components/InternalCollectionsS
 import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
 import TMDBAttribution from '../../../components/TMDBAttribution';
+import { getPrimaryCollectionForMovie } from '../../../data/collections';
 
 // ✅ CORRECTED IMPORT: Schema generator pulled directly from your data file
 import {
@@ -258,13 +259,14 @@ const HboDramaMoviePage = ({ movie, tmdbData: movieData }) => {
   // =========================================================================
 
     // BUG FIX: Canonical URL hardcoded to the exact file route for perfect Next.js parity
-    const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
+    const masterCollectionSlug = getPrimaryCollectionForMovie(movie.imdbID) || collectionSlug;
+    const canonicalUrl = `https://filmiway.com/movies/${masterCollectionSlug}/${movie.imdbID}`;
 
     const { movieSchema, faqSchema } = generateCleanMovieSchema(
         movie, 
         movieData, 
         currentMovieYear, 
-        collectionSlug, 
+        masterCollectionSlug, 
         'HBO Max',
         COMPLETE_MOVIE_DATA[movie.tmdbId]
     );

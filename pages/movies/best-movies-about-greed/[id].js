@@ -14,6 +14,7 @@ import InternalCollectionsSection from '../../../components/InternalCollectionsS
 import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
 import TMDBAttribution from '../../../components/TMDBAttribution';
+import { getPrimaryCollectionForMovie } from '../../../data/collections';
 
 // ✅ IMPORT DATA & SCHEMA GENERATOR
 import {
@@ -254,13 +255,14 @@ const GreedMoviePage = ({ movie, tmdbData: movieData, sensitiveData }) => {
     cleanSEODesc = `Timestamps & Parents Guide for ${movie.Title} (${currentMovieYear}). Filmiway has identified zero explicit nudity or sexual content throughout the film's entire runtime.`;
   }
 
-  const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
+  const masterCollectionSlug = getPrimaryCollectionForMovie(movie.imdbID) || collectionSlug;
+    const canonicalUrl = `https://filmiway.com/movies/${masterCollectionSlug}/${movie.imdbID}`;
 
-  const { movieSchema, faqSchema } = generateCleanMovieSchema(
-      movie, 
-      movieData, 
-      currentMovieYear, 
-      collectionSlug, 
+    const { movieSchema, faqSchema } = generateCleanMovieSchema(
+        movie, 
+        movieData, 
+        currentMovieYear, 
+        masterCollectionSlug, 
       null,
       COMPLETE_MOVIE_DATA[movie.tmdbId]
   );

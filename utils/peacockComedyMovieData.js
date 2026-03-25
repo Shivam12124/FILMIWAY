@@ -3,7 +3,7 @@
 // CALIBRATION: 0-20 (Setup) | 20-40 (Light) | 40-60 (Funny) | 60-75 (Chaos) | 75-85 (Implosion) | 85-95 (Extreme) | 95-100 (Genre-Defining)
 
 export const TMDB_CONFIG = {
-      API_KEY: 'process.env.NEXT_PUBLIC_TMDB_API_KEY',
+    API_KEY: 'process.env.NEXT_PUBLIC_TMDB_API_KEY',
     BASE_URL: 'https://api.themoviedb.org/3',
     IMAGE_BASE_URL: 'https://image.tmdb.org/t/p',
     POSTER_SIZES: { small: 'w300', medium: 'w500', large: 'w780', original: 'original' }
@@ -22,242 +22,7 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 26454, "imdbID": "tt0306805", "Title": "Deliver Us from Eva", "year": 2003, "genre": "Comedy", "runtime": 105, "rank": 10 }
 ];
 
-// ✅ SENSITIVE TIMELINES (Peacock Comedy)
-export const SENSITIVE_TIMELINES = {
-    // 1. Monty Python
-    762: { scenes: [] },
-
-    // 2. Anchorman
-    8699: { scenes: [] },
-
-    // 3. My Cousin Vinny
-    10377: { scenes: [] },
-
-    // 4. Zoolander
-    9398: { scenes: [] },
-
-    // 5. Happy Gilmore
-    9614: { scenes: [] },
-
-    // 6. The 'Burbs
-    11974: { scenes: [] },
-
-    // 7. Along Came Polly
-    5966: { scenes: [] },
-
-    // 8. The Fall Guy
-    746036: { scenes: [] },
-
-    // 9. American Fiction
-    1056360: { scenes: [] },
-
-    // 10. Deliver Us from Eva
-    26454: { scenes: [] }
-};
-
-export const FALLBACK_POSTERS = {
-    762: "https://image.tmdb.org/t/p/w500/8d83vJ08K90v7f075q5j758d8.jpg",
-    8699: "https://image.tmdb.org/t/p/w500/Rjjm284ct8d999.jpg",
-    10377: "https://image.tmdb.org/t/p/w500/vB8o2p4ETnrfiWEgVxHmHWP9yRl.jpg",
-    9398: "https://image.tmdb.org/t/p/w500/7B8k7X.jpg",
-    9614: "https://image.tmdb.org/t/p/w500/4q2rV9wE9sUuliM90V82LOrH.jpg",
-    11974: "https://image.tmdb.org/t/p/w500/pWDtjs568ZfOTMbURQBYuT4Qb7P.jpg",
-    5966: "https://image.tmdb.org/t/p/w500/1QNO36V0qEf04d9bY58557053.jpg",
-    746036: "https://image.tmdb.org/t/p/w500/tVxDe01Zy3kZqaPETYiXe2FOUVy.jpg",
-    1056360: "https://image.tmdb.org/t/p/w500/uUD28aiP0IsJl5vRrPmuB8prY2g.jpg",
-    26454: "https://image.tmdb.org/t/p/w500/2lO3h5d26a27346765727376.jpg"
-};
-
-// ✅ HELPER: Single Metric "Laughter Index"
-const createMovieData = (data) => ({
-    laughterIndex: 85,          // Default
-    complexityLevel: "HIGH",
-    dominantColor: "#FACC15",   // Comedy Yellow
-    ...data,
-});
-
-export const COMPLETE_MOVIE_DATA = {
-    // 1. Monty Python and the Holy Grail (SURREALIST PEAK)
-    762: createMovieData({ 
-        laughterIndex: 99, 
-        complexityLevel: "SURREALIST", 
-        dominantColor: "#a3a3a3", rating: 8.2, criticsScore: 97, audienceScore: 95, director: "Terry Gilliam & Terry Jones", 
-        cast: ["Graham Chapman", "John Cleese", "Eric Idle"], boxOffice: "$5 million", budget: "$400k", 
-        dna: { "Satire": 50, "Absurdist": 50 },
-        scenes: [
-            { time: 5, intensity: 40, label: "Coconuts", color: "#d4d4d4" }, 
-            { time: 20, intensity: 90, label: "Black Knight", color: "#ef4444" }, 
-            { time: 45, intensity: 60, label: "Knights Who Say Ni", color: "#16a34a" }, 
-            { time: 80, intensity: 95, label: "Killer Rabbit", color: "#dc2626" }, 
-            { time: 90, intensity: 100, label: "The Police", color: "#2563eb" } 
-        ],
-        synopsis: "King Arthur and his Knights of the Round Table embark on a surreal, low-budget search for the Holy Grail, encountering silly obstacles, invincible knights, and killer rabbits along the way.",
-        themes: ["Absurdism", "Medieval", "Meta"]
-    }),
-
-    // 2. Anchorman (QUOTABLE PEAK)
-    8699: createMovieData({ 
-        laughterIndex: 95, 
-        complexityLevel: "LEGENDARY", 
-        dominantColor: "#b91c1c", rating: 7.2, criticsScore: 66, audienceScore: 86, director: "Adam McKay", 
-        cast: ["Will Ferrell", "Christina Applegate", "Steve Carell"], boxOffice: "$90 million", budget: "$26 million", 
-        dna: { "Satire": 60, "Slapstick": 40 },
-        scenes: [
-            { time: 15, intensity: 40, label: "Jazz Flute", color: "#f59e0b" }, 
-            { time: 45, intensity: 95, label: "News Team Fight", color: "#dc2626" }, 
-            { time: 60, intensity: 80, label: "Milk was a bad choice", color: "#ea580c" }, 
-            { time: 75, intensity: 70, label: "Bear Pit", color: "#78350f" },
-            { time: 90, intensity: 50, label: "Stay Classy", color: "#be123c" } 
-        ],
-        synopsis: "In 1970s San Diego, Ron Burgundy is the top-rated newsman in a male-dominated industry. His world is upended when an ambitious female reporter arrives, sparking a bitter feud that escalates into total absurdity.",
-        themes: ["Ego", "Sexism", "70s Style"]
-    }),
-
-    // 3. My Cousin Vinny (LEGAL COMEDY PEAK)
-    10377: createMovieData({ 
-        laughterIndex: 88, 
-        complexityLevel: "SMART", 
-        dominantColor: "#7c3aed", rating: 7.6, criticsScore: 87, audienceScore: 87, director: "Jonathan Lynn", 
-        cast: ["Joe Pesci", "Marisa Tomei", "Ralph Macchio"], boxOffice: "$64 million", budget: "$11 million", 
-        dna: { "Courtroom": 50, "Culture Clash": 50 },
-        scenes: [
-            { time: 20, intensity: 30, label: "Leather Jacket", color: "#4c1d95" },
-            { time: 45, intensity: 60, label: "Two Yutes", color: "#6d28d9" },
-            { time: 60, intensity: 50, label: "Biological Clock", color: "#db2777" },
-            { time: 85, intensity: 80, label: "Tire Expert", color: "#c026d3" }, 
-            { time: 110, intensity: 40, label: "Case Dismissed", color: "#8b5cf6" }
-        ],
-        synopsis: "Two New Yorkers traveling through Alabama are mistakenly arrested for murder. Their only hope is their cousin Vinny, a loudmouth lawyer with no trial experience who clashes hilariously with the conservative Southern judge.",
-        themes: ["Justice", "Underdog", "Culture Clash"]
-    }),
-
-    // 4. Zoolander (FASHION SATIRE)
-    9398: createMovieData({ 
-        laughterIndex: 90, 
-        complexityLevel: "STYLISH", 
-        dominantColor: "#0ea5e9", rating: 6.5, criticsScore: 64, audienceScore: 80, director: "Ben Stiller", 
-        cast: ["Ben Stiller", "Owen Wilson", "Will Ferrell"], boxOffice: "$60 million", budget: "$28 million", 
-        dna: { "Satire": 70, "Spy": 30 },
-        scenes: [
-            { time: 10, intensity: 30, label: "Eugoogly", color: "#38bdf8" },
-            { time: 25, intensity: 90, label: "Gasoline Fight", color: "#f97316" }, 
-            { time: 50, intensity: 75, label: "Walk-Off", color: "#0284c7" },
-            { time: 70, intensity: 85, label: "The Files", color: "#dc2626" }, 
-            { time: 85, intensity: 80, label: "Magnum", color: "#6366f1" }
-        ],
-        synopsis: "Derek Zoolander is a dim-witted male model who has lost his spot as top dog. Brainwashed by a fashion mogul to assassinate the Prime Minister of Malaysia, he must team up with his rival Hansel to save the day.",
-        themes: ["Vanity", "Fashion", "Conspiracy"]
-    }),
-
-    // 5. Happy Gilmore (RAGE COMEDY)
-    9614: createMovieData({ 
-        laughterIndex: 87, 
-        complexityLevel: "CLASSIC SANDLER", 
-        dominantColor: "#16a34a", rating: 7.0, criticsScore: 61, audienceScore: 85, director: "Dennis Dugan", 
-        cast: ["Adam Sandler", "Christopher McDonald", "Julie Bowen"], boxOffice: "$41 million", budget: "$12 million", 
-        dna: { "Sports": 50, "Slapstick": 50 },
-        scenes: [
-            { time: 15, intensity: 40, label: "Batting Cages", color: "#22c55e" },
-            { time: 40, intensity: 60, label: "Mista Mista", color: "#ea580c" },
-            { time: 60, intensity: 95, label: "Bob Barker Fight", color: "#dc2626" }, 
-            { time: 75, intensity: 50, label: "Happy Place", color: "#fcd34d" },
-            { time: 88, intensity: 80, label: "The Putt", color: "#15803d" }
-        ],
-        synopsis: "A rejected hockey player puts his skills to the golf course to save his grandmother's house. His aggressive style and foul mouth make him an anti-hero on the pro tour, drawing the ire of the arrogant Shooter McGavin.",
-        themes: ["Anger Management", "Golf", "Grandma"]
-    }),
-
-    // 6. The 'Burbs (CULT PARANOIA)
-    11974: createMovieData({ 
-        laughterIndex: 82, 
-        complexityLevel: "CULT", 
-        dominantColor: "#1e293b", rating: 6.9, criticsScore: 53, audienceScore: 78, director: "Joe Dante", 
-        cast: ["Tom Hanks", "Bruce Dern", "Carrie Fisher"], boxOffice: "$49 million", budget: "$18 million", 
-        dna: { "Dark Comedy": 60, "Mystery": 40 },
-        scenes: [
-            { time: 10, intensity: 20, label: "The Klopeks", color: "#334155" },
-            { time: 40, intensity: 50, label: "The Stakeout", color: "#475569" },
-            { time: 60, intensity: 65, label: "Sardine?", color: "#94a3b8" },
-            { time: 85, intensity: 85, label: "Digging for Bones", color: "#dc2626" }, 
-            { time: 95, intensity: 90, label: "The Trunk Reveal", color: "#b91c1c" }
-        ],
-        synopsis: "An overstressed suburbanite and his nosy neighbors become convinced that the new family on the block are ritualistic murderers. Their paranoia escalates into a full-scale investigation that threatens to destroy the entire neighborhood.",
-        themes: ["Paranoia", "Suburbia", "Neighbors"]
-    }),
-
-    // 7. Along Came Polly (CRINGE COMEDY)
-    5966: createMovieData({ 
-        laughterIndex: 78, 
-        complexityLevel: "ROM-COM", 
-        dominantColor: "#f59e0b", rating: 6.0, criticsScore: 27, audienceScore: 47, director: "John Hamburg", 
-        cast: ["Ben Stiller", "Jennifer Aniston", "Philip Seymour Hoffman"], boxOffice: "$178 million", budget: "$42 million", 
-        dna: { "Romance": 60, "Slapstick": 40 },
-        scenes: [
-            { time: 15, intensity: 30, label: "The Wedding", color: "#fbbf24" },
-            { time: 35, intensity: 85, label: "Basketball Game", color: "#ef4444" }, 
-            { time: 55, intensity: 50, label: "Spicy Food", color: "#d97706" },
-            { time: 70, intensity: 75, label: "Scuba Diving", color: "#0284c7" },
-            { time: 85, intensity: 40, label: "Rooftop", color: "#f59e0b" }
-        ],
-        synopsis: "A risk-averse risk analyst finds his life in chaos after his wife cheats on him. He rebounds with an old classmate, a free-spirited woman who drags him into a world of spicy food, underground salsa clubs, and pet ferrets.",
-        themes: ["Risk", "Opposites Attract", "Freedom"]
-    }),
-
-    // 8. The Fall Guy (ACTION COMEDY)
-    746036: createMovieData({ 
-        laughterIndex: 85, 
-        complexityLevel: "SPECTACLE", 
-        dominantColor: "#eab308", rating: 7.2, criticsScore: 87, audienceScore: 93, director: "David Leitch", 
-        cast: ["Ryan Gosling", "Emily Blunt", "Aaron Taylor-Johnson"], boxOffice: "$173 million", budget: "$130 million", 
-        dna: { "Action": 60, "Comedy": 40 },
-        scenes: [
-            { time: 15, intensity: 45, label: "Stunt Setup", color: "#ca8a04" },
-            { time: 40, intensity: 70, label: "Drug Trip Fight", color: "#a855f7" },
-            { time: 70, intensity: 60, label: "Karaoke", color: "#ec4899" },
-            { time: 95, intensity: 90, label: "The Helicopter Jump", color: "#ef4444" }, 
-            { time: 110, intensity: 80, label: "Movie Magic", color: "#facc15" }
-        ],
-        synopsis: "A battered and past-his-prime stuntman finds himself working on a movie directed by his ex-girlfriend. When the film's massive star goes missing, he is tasked with finding him, uncovering a conspiracy that forces him to use his stunt skills for real.",
-        themes: ["Stunts", "Movie Making", "Redemption"]
-    }),
-
-    // 9. American Fiction (SATIRE PEAK)
-    1056360: createMovieData({ 
-        laughterIndex: 89, 
-        complexityLevel: "INTELLECTUAL", 
-        dominantColor: "#475569", rating: 7.5, criticsScore: 93, audienceScore: 96, director: "Cord Jefferson", 
-        cast: ["Jeffrey Wright", "Tracee Ellis Ross", "Sterling K. Brown"], boxOffice: "$22 million", budget: "$10 million", 
-        dna: { "Satire": 70, "Drama": 30 },
-        scenes: [
-            { time: 10, intensity: 20, label: "Book Festival", color: "#64748b" },
-            { time: 35, intensity: 60, label: "Writing 'My Pafology'", color: "#0f172a" },
-            { time: 60, intensity: 85, label: "The Offer", color: "#16a34a" }, 
-            { time: 85, intensity: 70, label: "Family Dinner", color: "#334155" },
-            { time: 110, intensity: 90, label: "The Ending", color: "#000000" }
-        ],
-        synopsis: "A frustrated novelist who is tired of the establishment profiting from 'Black' entertainment that relies on offensive tropes uses a pen name to write an outlandish 'Black' book of his own. To his horror, the book becomes a massive critical and commercial success.",
-        themes: ["Race", "Media", "Integrity"]
-    }),
-
-    // 10. Deliver Us from Eva (ROM-COM)
-    26454: createMovieData({ 
-        laughterIndex: 76, 
-        complexityLevel: "SHAKESPEAREAN", 
-        dominantColor: "#be123c", rating: 6.2, criticsScore: 44, audienceScore: 82, director: "Gary Hardwick", 
-        cast: ["Gabrielle Union", "LL Cool J", "Duane Martin"], boxOffice: "$17 million", budget: "$11 million", 
-        dna: { "Romance": 50, "Comedy": 50 },
-        scenes: [
-            { time: 15, intensity: 30, label: "The Sisters", color: "#f43f5e" },
-            { time: 30, intensity: 50, label: "The Bet", color: "#db2777" },
-            { time: 60, intensity: 70, label: "Dinner Scene", color: "#be123c" },
-            { time: 80, intensity: 85, label: "The Breakup", color: "#881337" }, 
-            { time: 95, intensity: 60, label: "Reunion", color: "#fda4af" }
-        ],
-        synopsis: "Eva is the matriarch of her family who constantly meddles in her sisters' lives. Their husbands hire a smooth-talking ladies' man to date her and distract her, but the plan backfires when he actually falls in love with her. A modern retelling of 'The Taming of the Shrew'.",
-        themes: ["Family", "Deception", "Control"]
-    })
-};
-
+// ✅ STRATEGIC QUOTES (100% Clean & SEO Safe)
 export const STRATEGIC_QUOTES = {
     762: "Your mother was a hamster and your father smelt of elderberries!",
     8699: "I'm in a glass case of emotion!",
@@ -271,17 +36,263 @@ export const STRATEGIC_QUOTES = {
     26454: "I am the man!"
 };
 
-export const CINEMATIC_COLORS = {
-    "Comedy": "#facc15", "Action": "#ef4444", "Satire": "#475569", "Surrealist": "#a3a3a3"
+// ✅ SENSITIVE TIMELINES (Peacock Comedy)
+export const SENSITIVE_TIMELINES = {
+    // 762
+    762: { scenes: [] },
+
+    // 8699
+    8699: { 
+        scenes: [
+            { start: "0:27:30", end: "0:28:00", type: "Sexual Content (Ejaculation)", severity: "Moderate" }
+        ] 
+    },
+
+    // 10377
+    10377: { scenes: [] },
+
+    // 9398
+    9398: { 
+        scenes: [
+            { start: "0:32:12", end: "0:32:42", type: "Sexual Content", severity: "Moderate" },
+            { start: "0:49:15", end: "0:49:30", type: "Nudity (Sculpture)", severity: "Moderate" },
+            { start: "1:02:22", end: "1:02:57", type: "Sexual Content", severity: "Moderate" }
+        ] 
+    },
+
+    // 9614
+    9614: { 
+        scenes: [
+            { start: "0:45:53", end: "0:46:02", type: "Suggestive Clothing", severity: "Mild" },
+            { start: "1:06:19", end: "1:06:38", type: "Suggestive Clothing (Lingerie)", severity: "Mild" },
+            { start: "1:18:16", end: "1:18:22", type: "Suggestive Clothing (Lingerie)", severity: "Mild" }
+        ] 
+    },
+
+    // 11974
+    11974: { scenes: [] },
+
+    // 5966
+    5966: { 
+        scenes: [
+            { start: "0:06:33", end: "0:07:31", type: "Partial Nudity", severity: "Moderate" },
+            { start: "0:09:43", end: "0:09:51", type: "Sex", severity: "Mild" }
+        ] 
+    },
+
+    // 746036
+    746036: { scenes: [] },
+
+    // 1056360
+    1056360: { scenes: [] },
+
+    // 26454
+    26454: { scenes: [] }
+};
+export const FALLBACK_POSTERS = {
+    762: "https://image.tmdb.org/t/p/w500/8d83vJ08K90v7f075q5j758d8.jpg",
+    8699: "https://image.tmdb.org/t/p/w500/Rjjm284ct8d999.jpg",
+    10377: "https://image.tmdb.org/t/p/w500/vB8o2p4ETnrfiWEgVxHmHWP9yRl.jpg",
+    9398: "https://image.tmdb.org/t/p/w500/7B8k7X.jpg",
+    9614: "https://image.tmdb.org/t/p/w500/4q2rV9wE9sUuliM90V82LOrH.jpg",
+    11974: "https://image.tmdb.org/t/p/w500/pWDtjs568ZfOTMbURQBYuT4Qb7P.jpg",
+    5966: "https://image.tmdb.org/t/p/w500/1QNO36V0qEf04d9bY58557053.jpg",
+    746036: "https://image.tmdb.org/t/p/w500/tVxDe01Zy3kZqaPETYiXe2FOUVy.jpg",
+    1056360: "https://image.tmdb.org/t/p/w500/uUD28aiP0IsJl5vRrPmuB8prY2g.jpg",
+    26454: "https://image.tmdb.org/t/p/w500/2lO3h5d26a27346765727376.jpg"
 };
 
-export const RATING_OPTIONS = [
-    { value: 1, label: "Weak", color: "#fca5a5", symbol: "🥱", bgColor: "bg-red-200/30", description: "Not funny" },
-    { value: 2, label: "Amusing", color: "#fcd34d", symbol: "🙂", bgColor: "bg-yellow-500/30", description: "Some laughs" },
-    { value: 3, label: "Hilarious", color: "#16a34a", symbol: "😂", bgColor: "bg-green-600/30", description: 'Laugh out loud' },
-    { value: 4, label: "Legendary", color: "#ca8a04", symbol: "🤣", bgColor: "bg-yellow-700/30", description: "Comedy gold" }
-];
+// ✅ Custom metric for this collection: 'laughterIndex'
+const createComedyData = (data) => ({
+    laughterIndex: 85,          // Default
+    complexityLevel: "HIGH",
+    dominantColor: "#FACC15",   // Comedy Yellow
+    ...data,
+});
 
+export const COMPLETE_MOVIE_DATA = {
+    // 1. Monty Python and the Holy Grail
+    762: createComedyData({ 
+        laughterIndex: 99, 
+        complexityLevel: "SURREALIST", 
+        dominantColor: "#a3a3a3", rating: 8.2, criticsScore: 97, audienceScore: 95, director: "Terry Gilliam & Terry Jones", 
+        cast: ["Graham Chapman", "John Cleese", "Eric Idle"], boxOffice: "$5 million", budget: "$400k", 
+        dna: { "Comedy": 60, "Adventure": 25, "Fantasy": 15 },
+        scenes: [
+            { time: 5, intensity: 40, label: "Coconuts", color: "#d4d4d4" }, 
+            { time: 20, intensity: 90, label: "Black Knight", color: "#ef4444" }, 
+            { time: 45, intensity: 60, label: "Knights Who Say Ni", color: "#16a34a" }, 
+            { time: 80, intensity: 95, label: "Killer Rabbit", color: "#dc2626" }, 
+            { time: 90, intensity: 100, label: "The Police", color: "#2563eb" } 
+        ],
+        synopsis: "King Arthur and his Knights of the Round Table embark on a surreal, low-budget search for the Holy Grail, encountering silly obstacles, invincible knights, and killer rabbits along the way.",
+        themes: ["Absurdism", "Medieval", "Meta"]
+    }),
+
+    // 2. Anchorman: The Legend of Ron Burgundy
+    8699: createComedyData({ 
+        laughterIndex: 95, 
+        complexityLevel: "LEGENDARY", 
+        dominantColor: "#b91c1c", rating: 7.2, criticsScore: 66, audienceScore: 86, director: "Adam McKay", 
+        cast: ["Will Ferrell", "Christina Applegate", "Steve Carell"], boxOffice: "$90 million", budget: "$26 million", 
+        dna: { "Comedy": 100 },
+        scenes: [
+            { time: 15, intensity: 40, label: "Jazz Flute", color: "#f59e0b" }, 
+            { time: 45, intensity: 95, label: "News Team Fight", color: "#dc2626" }, 
+            { time: 60, intensity: 80, label: "Milk was a bad choice", color: "#ea580c" }, 
+            { time: 75, intensity: 70, label: "Bear Pit", color: "#78350f" },
+            { time: 90, intensity: 50, label: "Stay Classy", color: "#be123c" } 
+        ],
+        synopsis: "In 1970s San Diego, Ron Burgundy is the top-rated newsman in a male-dominated industry. His world is upended when an ambitious female reporter arrives, sparking a bitter feud that escalates into total absurdity.",
+        themes: ["Ego", "Sexism", "70s Style"]
+    }),
+
+    // 3. My Cousin Vinny
+    10377: createComedyData({ 
+        laughterIndex: 88, 
+        complexityLevel: "SMART", 
+        dominantColor: "#7c3aed", rating: 7.6, criticsScore: 87, audienceScore: 87, director: "Jonathan Lynn", 
+        cast: ["Joe Pesci", "Marisa Tomei", "Ralph Macchio"], boxOffice: "$64 million", budget: "$11 million", 
+        dna: { "Comedy": 70, "Crime": 30 },
+        scenes: [
+            { time: 20, intensity: 30, label: "Leather Jacket", color: "#4c1d95" },
+            { time: 45, intensity: 60, label: "Two Yutes", color: "#6d28d9" },
+            { time: 60, intensity: 50, label: "Biological Clock", color: "#db2777" },
+            { time: 85, intensity: 80, label: "Tire Expert", color: "#c026d3" }, 
+            { time: 110, intensity: 40, label: "Case Dismissed", color: "#8b5cf6" }
+        ],
+        synopsis: "Two New Yorkers traveling through Alabama are mistakenly arrested for murder. Their only hope is their cousin Vinny, a loudmouth lawyer with no trial experience who clashes hilariously with the conservative Southern judge.",
+        themes: ["Justice", "Underdog", "Culture Clash"]
+    }),
+
+    // 4. Zoolander
+    9398: createComedyData({ 
+        laughterIndex: 90, 
+        complexityLevel: "STYLISH", 
+        dominantColor: "#0ea5e9", rating: 6.5, criticsScore: 64, audienceScore: 80, director: "Ben Stiller", 
+        cast: ["Ben Stiller", "Owen Wilson", "Will Ferrell"], boxOffice: "$60 million", budget: "$28 million", 
+        dna: { "Comedy": 100 },
+        scenes: [
+            { time: 10, intensity: 30, label: "Eugoogly", color: "#38bdf8" },
+            { time: 25, intensity: 90, label: "Gasoline Fight", color: "#f97316" }, 
+            { time: 50, intensity: 75, label: "Walk-Off", color: "#0284c7" },
+            { time: 70, intensity: 85, label: "The Files", color: "#dc2626" }, 
+            { time: 85, intensity: 80, label: "Magnum", color: "#6366f1" }
+        ],
+        synopsis: "Derek Zoolander is a dim-witted male model who has lost his spot as top dog. Brainwashed by a fashion mogul to assassinate the Prime Minister of Malaysia, he must team up with his rival Hansel to save the day.",
+        themes: ["Vanity", "Fashion", "Conspiracy"]
+    }),
+
+    // 5. Happy Gilmore
+    9614: createComedyData({ 
+        laughterIndex: 87, 
+        complexityLevel: "CLASSIC SANDLER", 
+        dominantColor: "#16a34a", rating: 7.0, criticsScore: 61, audienceScore: 85, director: "Dennis Dugan", 
+        cast: ["Adam Sandler", "Christopher McDonald", "Julie Bowen"], boxOffice: "$41 million", budget: "$12 million", 
+        dna: { "Comedy": 70, "Sport": 30 },
+        scenes: [
+            { time: 15, intensity: 40, label: "Batting Cages", color: "#22c55e" },
+            { time: 40, intensity: 60, label: "Mista Mista", color: "#ea580c" },
+            { time: 60, intensity: 95, label: "Bob Barker Fight", color: "#dc2626" }, 
+            { time: 75, intensity: 50, label: "Happy Place", color: "#fcd34d" },
+            { time: 88, intensity: 80, label: "The Putt", color: "#15803d" }
+        ],
+        synopsis: "A rejected hockey player puts his skills to the golf course to save his grandmother's house. His aggressive style and foul mouth make him an anti-hero on the pro tour, drawing the ire of the arrogant Shooter McGavin.",
+        themes: ["Anger Management", "Golf", "Grandma"]
+    }),
+
+    // 6. The 'Burbs
+    11974: createComedyData({ 
+        laughterIndex: 82, 
+        complexityLevel: "CULT", 
+        dominantColor: "#1e293b", rating: 6.9, criticsScore: 53, audienceScore: 78, director: "Joe Dante", 
+        cast: ["Tom Hanks", "Bruce Dern", "Carrie Fisher"], boxOffice: "$49 million", budget: "$18 million", 
+        dna: { "Comedy": 40, "Mystery": 30, "Thriller": 30 },
+        scenes: [
+            { time: 10, intensity: 20, label: "The Klopeks", color: "#334155" },
+            { time: 40, intensity: 50, label: "The Stakeout", color: "#475569" },
+            { time: 60, intensity: 65, label: "Sardine?", color: "#94a3b8" },
+            { time: 85, intensity: 85, label: "Digging for Bones", color: "#dc2626" }, 
+            { time: 95, intensity: 90, label: "The Trunk Reveal", color: "#b91c1c" }
+        ],
+        synopsis: "An overstressed suburbanite and his nosy neighbors become convinced that the new family on the block are ritualistic murderers. Their paranoia escalates into a full-scale investigation that threatens to destroy the entire neighborhood.",
+        themes: ["Paranoia", "Suburbia", "Neighbors"]
+    }),
+
+    // 7. Along Came Polly
+    5966: createComedyData({ 
+        laughterIndex: 78, 
+        complexityLevel: "ROM-COM", 
+        dominantColor: "#f59e0b", rating: 6.0, criticsScore: 27, audienceScore: 47, director: "John Hamburg", 
+        cast: ["Ben Stiller", "Jennifer Aniston", "Philip Seymour Hoffman"], boxOffice: "$178 million", budget: "$42 million", 
+        dna: { "Comedy": 60, "Romance": 40 },
+        scenes: [
+            { time: 15, intensity: 30, label: "The Wedding", color: "#fbbf24" },
+            { time: 35, intensity: 85, label: "Basketball Game", color: "#ef4444" }, 
+            { time: 55, intensity: 50, label: "Spicy Food", color: "#d97706" },
+            { time: 70, intensity: 75, label: "Scuba Diving", color: "#0284c7" },
+            { time: 85, intensity: 40, label: "Rooftop", color: "#f59e0b" }
+        ],
+        synopsis: "A risk-averse risk analyst finds his life in chaos after his wife cheats on him. He rebounds with an old classmate, a free-spirited woman who drags him into a world of spicy food, underground salsa clubs, and pet ferrets.",
+        themes: ["Risk", "Opposites Attract", "Freedom"]
+    }),
+
+    // 8. The Fall Guy (2024)
+    746036: createComedyData({ 
+        laughterIndex: 85, 
+        complexityLevel: "SPECTACLE", 
+        dominantColor: "#eab308", rating: 7.2, criticsScore: 87, audienceScore: 93, director: "David Leitch", 
+        cast: ["Ryan Gosling", "Emily Blunt", "Aaron Taylor-Johnson"], boxOffice: "$173 million", budget: "$130 million", 
+        dna: { "Action": 50, "Comedy": 30, "Drama": 20 },
+        scenes: [
+            { time: 15, intensity: 45, label: "Stunt Setup", color: "#ca8a04" },
+            { time: 40, intensity: 70, label: "Drug Trip Fight", color: "#a855f7" },
+            { time: 70, intensity: 60, label: "Karaoke", color: "#ec4899" },
+            { time: 95, intensity: 90, label: "The Helicopter Jump", color: "#ef4444" }, 
+            { time: 110, intensity: 80, label: "Movie Magic", color: "#facc15" }
+        ],
+        synopsis: "A battered and past-his-prime stuntman finds himself working on a movie directed by his ex-girlfriend. When the film's massive star goes missing, he is tasked with finding him, uncovering a conspiracy that forces him to use his stunt skills for real.",
+        themes: ["Stunts", "Movie Making", "Redemption"]
+    }),
+
+    // 9. American Fiction
+    1056360: createComedyData({ 
+        laughterIndex: 89, 
+        complexityLevel: "INTELLECTUAL", 
+        dominantColor: "#475569", rating: 7.5, criticsScore: 93, audienceScore: 96, director: "Cord Jefferson", 
+        cast: ["Jeffrey Wright", "Tracee Ellis Ross", "Sterling K. Brown"], boxOffice: "$22 million", budget: "$10 million", 
+        dna: { "Comedy": 50, "Drama": 50 },
+        scenes: [
+            { time: 10, intensity: 20, label: "Book Festival", color: "#64748b" },
+            { time: 35, intensity: 60, label: "Writing 'My Pafology'", color: "#0f172a" },
+            { time: 60, intensity: 85, label: "The Offer", color: "#16a34a" }, 
+            { time: 85, intensity: 70, label: "Family Dinner", color: "#334155" },
+            { time: 110, intensity: 90, label: "The Ending", color: "#000000" }
+        ],
+        synopsis: "A frustrated novelist who is tired of the establishment profiting from 'Black' entertainment that relies on offensive tropes uses a pen name to write an outlandish 'Black' book of his own. To his horror, the book becomes a massive critical and commercial success.",
+        themes: ["Race", "Media", "Integrity"]
+    }),
+
+    // 10. Deliver Us from Eva
+    26454: createComedyData({ 
+        laughterIndex: 76, 
+        complexityLevel: "SHAKESPEAREAN", 
+        dominantColor: "#be123c", rating: 6.2, criticsScore: 44, audienceScore: 82, director: "Gary Hardwick", 
+        cast: ["Gabrielle Union", "LL Cool J", "Duane Martin"], boxOffice: "$17 million", budget: "$11 million", 
+        dna: { "Comedy": 50, "Romance": 50 },
+        scenes: [
+            { time: 15, intensity: 30, label: "The Sisters", color: "#f43f5e" },
+            { time: 30, intensity: 50, label: "The Bet", color: "#db2777" },
+            { time: 60, intensity: 70, label: "Dinner Scene", color: "#be123c" },
+            { time: 80, intensity: 85, label: "The Breakup", color: "#881337" }, 
+            { time: 95, intensity: 60, label: "Reunion", color: "#fda4af" }
+        ],
+        synopsis: "Eva is the matriarch of her family who constantly meddles in her sisters' lives. Their husbands hire a smooth-talking ladies' man to date her and distract her, but the plan backfires when he actually falls in love with her. A modern retelling of 'The Taming of the Shrew'.",
+        themes: ["Family", "Deception", "Control"]
+    })
+};
+
+// 🎬 PEACOCK COMEDY FAQS - (100% SEO SAFE, CRITICAL ANALYSIS ONLY)
 export const PEACOCK_COMEDY_MOVIE_FAQS = {
     'Monty Python and the Holy Grail': [
         { 
@@ -373,32 +384,46 @@ export const PEACOCK_COMEDY_MOVIE_FAQS = {
     ]
 };
 
+// Collection Specific Export
+export const CINEMATIC_COLORS = {
+    "Comedy": "#facc15", "Action": "#ef4444", "Satire": "#475569", "Surrealist": "#a3a3a3"
+};
+
+export const RATING_OPTIONS = [
+    { value: 1, label: "Weak", color: "#fca5a5", symbol: "🥱", bgColor: "bg-red-200/30", description: "Not funny" },
+    { value: 2, label: "Amusing", color: "#fcd34d", symbol: "🙂", bgColor: "bg-yellow-500/30", description: "Some laughs" },
+    { value: 3, label: "Hilarious", color: "#16a34a", symbol: "😂", bgColor: "bg-green-600/30", description: 'Laugh out loud' },
+    { value: 4, label: "Legendary", color: "#ca8a04", symbol: "🤣", bgColor: "bg-yellow-700/30", description: "Comedy gold" }
+];
+
+// 5. UTILITY FUNCTIONS & THE KEYWORD BRIDGE
 export const getTMDBPosterUrl = (posterPath, size = 'medium') => {
     if (!posterPath) return null;
     const posterSize = TMDB_CONFIG.POSTER_SIZES[size] || TMDB_CONFIG.POSTER_SIZES.medium;
     return `${TMDB_CONFIG.IMAGE_BASE_URL}/${posterSize}${posterPath}`;
 };
 
-// 🔥 1. THE KEYWORD BRIDGE (SEO-Optimized for Comedy Content)
-export const getSensitiveContentTypes = (tmdbId) => {
-    const sensitiveData = SENSITIVE_TIMELINES[tmdbId];
-    if (!sensitiveData?.scenes?.length) return null;
-    const types = new Set();
-    sensitiveData.scenes.forEach(scene => {
-        const lowerType = scene.type?.toLowerCase() || '';
-        if (lowerType.includes('sex') || lowerType.includes('explicit')) types.add('sexual content');
-        if (lowerType.includes('partial nudity')) types.add('partial nudity');
-        else if (lowerType.includes('nudity')) types.add('nudity');
-        if (lowerType.includes('suggestive') || lowerType.includes('lingerie') || lowerType.includes('bikini')) types.add('suggestive clothing');
-    });
-    return Array.from(types);
+export const fetchMovieFromTMDB = async (tmdbId) => ({ 
+    poster_path: null, 
+    title: COMPLETE_MOVIE_DATABASE.find(m => m.tmdbId === tmdbId)?.Title || 'Unknown Movie' 
+});
+
+export const fetchWatchProviders = async (tmdbId, region = 'US') => null;
+
+export const formatSensitiveTimeline = (tmdbId) => {
+    const raw = SENSITIVE_TIMELINES[tmdbId];
+    if (!raw || !raw.scenes || raw.scenes.length === 0) return null;
+    return {
+        scenes: raw.scenes.map(scene => ({
+            start: scene.start,
+            end: scene.end,
+            type: scene.type,
+            description: scene.description || '',
+            severity: scene.severity || 'Moderate'
+        }))
+    };
 };
 
-export const generateFAQData = (movie) => {
-    return PEACOCK_COMEDY_MOVIE_FAQS[movie.Title] || [];
-};
-
-// 🔥 2. THE "GOLDEN EGG" SCHEMA GENERATOR (Universal Version)
 // 🔥 HELPER: Calculates total skip time in minutes and seconds
 const calculateSkipStats = (scenes) => {
     let totalSeconds = 0;
@@ -422,10 +447,28 @@ const calculateSkipStats = (scenes) => {
     return secs > 0 ? `${mins} min ${secs} sec` : `${mins} min`;
 };
 
+// 🔥 6. THE KEYWORD BRIDGE
+export const getSensitiveContentTypes = (tmdbId) => {
+    const sensitiveData = SENSITIVE_TIMELINES[tmdbId];
+    if (!sensitiveData?.scenes?.length) return null;
+    const types = new Set();
+    sensitiveData.scenes.forEach(scene => {
+        const lowerType = scene.type?.toLowerCase() || '';
+        if (lowerType.includes('sex') || lowerType.includes('explicit')) types.add('sexual content');
+        if (lowerType.includes('partial nudity')) types.add('partial nudity');
+        else if (lowerType.includes('nudity')) types.add('nudity');
+        if (lowerType.includes('suggestive') || lowerType.includes('lingerie') || lowerType.includes('bikini')) types.add('suggestive clothing');
+    });
+    return Array.from(types);
+};
+
 // 🔥 NEW: HELPER TO CALCULATE SEVERITY METRICS WITH 2+ EXTREME LOGIC
 const getHighestSeverityInfo = (scenes) => {
     const severities = scenes.map(s => (s.severity || 'Moderate').toLowerCase());
     const extremeCount = severities.filter(s => s === 'extreme').length;
+    
+    // User's flawless logic: 2+ Extreme means the whole movie is Extreme. 
+    // Otherwise, we cap the warning at High.
     if (extremeCount >= 2) return 'Extreme';
     if (severities.includes('high') || extremeCount === 1) return 'High';
     if (severities.includes('moderate')) return 'Moderate';
@@ -574,9 +617,7 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
         const uiIntensityList = intensityScenes.map(s => `• Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)`).join('\n');
         staticFaqs.unshift({
             question: `What are the most intense scenes in ${movieTitle}?`,
-            answer: `According to the Filmiway Intensity metric, ${movieTitle} peaks at the following moments:
-
-${uiIntensityList}`
+            answer: `According to the Filmiway Intensity metric, ${movieTitle} peaks at the following moments:\n\n${uiIntensityList}`
         });
     }
 
@@ -605,11 +646,7 @@ ${uiIntensityList}`
         staticFaqs.unshift(
             {
                 question: `Does ${movieTitle} have sex scenes or nudity?`,
-                answer: `Yes. ${movieTitle} contains ${sceneCount} scenes of ${typesString}. Exact timestamps:
-
-${uiDetailedList}
-
-Manually verified frame by frame by Filmiway editors for the ${finalRuntime} runtime.`
+                answer: `Yes. ${movieTitle} contains ${sceneCount} scenes of ${typesString}. Exact timestamps:\n\n${uiDetailedList}\n\nManually verified frame by frame by Filmiway editors for the ${finalRuntime} runtime.`
             },
             {
                 question: `What time does nudity appear in ${movieTitle} and how do I skip it?`,
@@ -634,24 +671,4 @@ Manually verified frame by frame by Filmiway editors for the ${finalRuntime} run
     }
 
     return staticFaqs;
-};
-
-export const fetchMovieFromTMDB = async (tmdbId) => ({ 
-    poster_path: null, 
-    title: COMPLETE_MOVIE_DATABASE.find(m => m.tmdbId === tmdbId)?.Title || 'Unknown Movie' 
-});
-
-export const fetchWatchProviders = async (tmdbId, region = 'US') => null;
-
-export const formatSensitiveTimeline = (tmdbId) => {
-    const raw = SENSITIVE_TIMELINES[tmdbId];
-    if (!raw || !raw.scenes || raw.scenes.length === 0) return null;
-    return {
-        scenes: raw.scenes.map(scene => ({
-            start: scene.start,
-            end: scene.end,
-            type: scene.type,
-            description: scene.description || ''
-        }))
-    };
 };

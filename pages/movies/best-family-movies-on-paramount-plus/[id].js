@@ -13,6 +13,7 @@ import InternalCollectionsSection from '../../../components/InternalCollectionsS
 import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
 import TMDBAttribution from '../../../components/TMDBAttribution';
+import { getPrimaryCollectionForMovie } from '../../../data/collections';
 
 // ✅ IMPORT PARAMOUNT FAMILY DATA & SCHEMA GENERATOR
 import {
@@ -267,13 +268,14 @@ const ParamountFamilyMoviePage = ({ movie, tmdbData: movieData }) => {
 
     // =========================================================================
 
-    const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
+    const masterCollectionSlug = getPrimaryCollectionForMovie(movie.imdbID) || collectionSlug;
+    const canonicalUrl = `https://filmiway.com/movies/${masterCollectionSlug}/${movie.imdbID}`;
 
     const { movieSchema, faqSchema } = generateCleanMovieSchema(
         movie, 
         movieData, 
         currentMovieYear, 
-        collectionSlug, 
+        masterCollectionSlug, 
         'Paramount+',
         COMPLETE_MOVIE_DATA[movie.tmdbId]
     );

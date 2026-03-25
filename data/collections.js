@@ -1,7 +1,7 @@
 // data/collections.js - CLEANED, OPTIMIZED & CANONICAL-READY 🚀
 
 export const COLLECTIONS = {
-  // 🌀 MOVIES LIKE INCEPTION
+  // � MOVIES LIKE INCEPTION
   'movies-like-inception': {
     slug: 'movies-like-inception',
     title: '10 Reality-Shattering Movies Like Inception',
@@ -71,6 +71,235 @@ export const COLLECTIONS = {
     movies: ['tt1542344', 'tt16277242', 'tt0162222', 'tt1663202', 'tt3659388', 'tt1649419', 'tt3758172', 'tt0472043', 'tt12262116', 'tt1809398'],
     relatedCollections: ['best-war-films', 'movies-like-interstellar', 'best-thriller-movies']
   },
+
+
+
+  // 🎬 BEST CRIME THRILLER MOVIES
+  'best-crime-thriller-movies': {
+    slug: 'best-crime-thriller-movies',
+    title: 'The 10 Best Crime Thriller Movies of All Time',
+    stats: { averageRating: 8.1 },
+    badges: [
+      { label: "UNDERWORLD", desc: "Gritty crime" },
+      { label: "MORAL GRAY", desc: "Blurred lines" },
+      { label: "CAT & MOUSE", desc: "Tense pursuit" }
+    ],
+    movies: ['tt0113277', 'tt0119488', 'tt0477348', 'tt0443706', 'tt1392214', 'tt0114369', 'tt0327056', 'tt0353969', 'tt0407887', 'tt0139654'],
+    relatedCollections: ['best-thriller-movies', 'best-detective-thriller-movies', 'best-mystery-thriller-movies']
+  },
+
+  // 🧠 BEST PSYCHOLOGICAL THRILLER MOVIES
+  'best-psychological-thriller-movies': {
+    slug: 'best-psychological-thriller-movies',
+    title: '10 Best Psychological Thrillers',
+    stats: { averageRating: 8.6 },
+    badges: [
+      { label: "MIND GAMES", desc: "Mental warfare" },
+      { label: "UNRELIABLE", desc: "Doubt reality" },
+      { label: "DREAD", desc: "Creeping tension" }
+    ],
+    movies: ['tt0102926', 'tt0137523', 'tt0209144', 'tt0114369', 'tt1130884', 'tt0947798', 'tt0361862', 'tt0364569', 'tt0075314', 'tt0081505'],
+    relatedCollections: ['movies-like-se7en', 'movies-like-shutter-island', 'best-detective-thriller-movies']
+  },
+
+  // 🕵️‍♂️ BEST DETECTIVE THRILLER MOVIES
+  'best-detective-thriller-movies': {
+    slug: 'best-detective-thriller-movies',
+    title: '10 Best Detective Thrillers',
+    stats: { averageRating: 8.3 },
+    badges: [
+      { label: "OBSESSION", desc: "Consumed minds" },
+      { label: "MYSTERY", desc: "Complex cases" },
+      { label: "NOIR", desc: "Dark tone" }
+    ],
+    movies: ['tt0114369', 'tt0443706', 'tt0353969', 'tt1392214', 'tt1305806', 'tt1190539', 'tt0327056', 'tt0116282', 'tt3253930', 'tt0106977'],
+    relatedCollections: ['movies-like-se7en', 'best-crime-thriller-movies', 'best-psychological-thriller-movies']
+  },
+
+  // 🕵️‍♂️ BEST MYSTERY THRILLER MOVIES
+  'best-mystery-thriller-movies': {
+    slug: 'best-mystery-thriller-movies',
+    title: '10 Best Mystery Thrillers',
+    stats: { averageRating: 8.2 },
+    badges: [
+      { label: "PUZZLE", desc: "Clue solving" },
+      { label: "TWISTS", desc: "Shocking turns" },
+      { label: "SUSPENSE", desc: "High tension" }
+    ],
+    movies: ['tt0114369', 'tt1130884', 'tt1392214', 'tt0443706', 'tt2267998', 'tt0353969', 'tt4857264', 'tt7282468', 'tt0119174', 'tt0119177'],
+    relatedCollections: ['best-detective-thriller-movies', 'best-psychological-thriller-movies', 'best-crime-thriller-movies', 'movies-like-se7en']
+  },
+
+
+// 🦢 MOVIES LIKE BLACK SWAN
+  'movies-like-black-swan': {
+    slug: 'movies-like-black-swan',
+    title: 'Movies Like Black Swan',
+    stats: { averageRating: 8.0 },
+    badges: [
+      { label: "OBSESSION", desc: "Dangerous ambition" },
+      { label: "PERFECTION", desc: "Artistic toll" },
+      { label: "FRACTURED", desc: "Identity collapse" }
+    ],
+    movies: ['tt0156887', 'tt2582802', 'tt1034415', 'tt0040725', 'tt1125849', 'tt0166924', 'tt0254686', 'tt2562232', 'tt0180093', 'tt2872718'],
+    relatedCollections: ['best-psychological-thriller-movies', 'movies-like-shutter-island', 'best-crime-thriller-movies']
+  },
+
+  // 🔪 MOVIES LIKE OLDBOY
+  'movies-like-oldboy': {
+    slug: 'movies-like-oldboy',
+    title: 'Movies Like Oldboy',
+    stats: { averageRating: 7.8 },
+    badges: [
+      { label: "VENGEANCE", desc: "Brutal revenge" },
+      { label: "TWISTED", desc: "Shocking reveals" },
+      { label: "CATHARSIS", desc: "Violent justice" }
+    ],
+    movies: ['tt1588170', 'tt0310775', 'tt0451094', 'tt1527788', 'tt1190539', 'tt0456912', 'tt1255953', 'tt4016934', 'tt1590089', 'tt1392214'],
+    relatedCollections: ['best-revenge-movies', 'movies-like-se7en', 'best-psychological-thriller-movies']
+  },
+
+  // 🏠 MOVIES LIKE PARASITE
+  'movies-like-parasite': {
+    slug: 'movies-like-parasite',
+    title: 'Movies Like Parasite',
+    stats: { averageRating: 8.1 },
+    badges: [
+      { label: "CLASS WAR", desc: "Social divide" },
+      { label: "DECEPTION", desc: "Con schemes" },
+      { label: "SYSTEMIC", desc: "Capitalist critique" }
+    ],
+    movies: ['tt4016934', 'tt7282468', 'tt1706620', 'tt0353969', 'tt8075192', 'tt8228288', 'tt1216496', 'tt5715874', 'tt0150980', 'tt0134119'],
+    relatedCollections: ['movies-like-se7en', 'best-thriller-movies', 'best-mystery-thriller-movies']
+  },
+
+  // 👁️ MOVIES LIKE EYES WIDE SHUT
+  'movies-like-eyes-wide-shut': {
+    slug: 'movies-like-eyes-wide-shut',
+    title: '10 Movies Like Eyes Wide Shut: Secret Societies & Cults',
+    stats: { averageRating: 8.1 },
+    badges: [
+      { label: "SECRET SOCIETIES", desc: "Hidden elites" },
+      { label: "OCCULT", desc: "Dark rituals" },
+      { label: "PARANOIA", desc: "Conspiracy" }
+    ],
+    movies: ['tt0166924', 'tt0142688', 'tt0090756', 'tt0063522', 'tt0119174', 'tt0116922', 'tt0098354', 'tt0134273', 'tt5052448', 'tt5715874'],
+    relatedCollections: ['best-psychological-thriller-movies', 'movies-like-black-swan', 'best-mystery-thriller-movies']
+  },
+
+  // 🌀 MOVIES LIKE DONNIE DARKO
+  'movies-like-donnie-darko': {
+    slug: 'movies-like-donnie-darko',
+    title: 'Movies Like Donnie Darko',
+    stats: { averageRating: 7.9 },
+    badges: [
+      { label: "TIMELINE", desc: "Temporal loops" },
+      { label: "EXISTENTIAL", desc: "Teen angst" },
+      { label: "SURREAL", desc: "Dream logic" }
+    ],
+    movies: ['tt0289879', 'tt0114746', 'tt0366627', 'tt0125659', 'tt2866360', 'tt0099871', 'tt0118929', 'tt0166924', 'tt0338013', 'tt2316411'],
+    relatedCollections: ['best-time-travel-movies', 'movies-like-the-matrix', 'movies-like-inception']
+  },
+
+
+  // 🗡️ BEST REVENGE MOVIES
+  'best-revenge-movies': {
+    slug: 'best-revenge-movies',
+    title: 'Best Revenge Movies',
+    stats: { averageRating: 8.0 },
+    badges: [
+      { label: "BLOOD LUST", desc: "Violent payback" },
+      { label: "METHODICAL", desc: "Patient planning" },
+      { label: "DAMNATION", desc: "Moral descent" }
+    ],
+    movies: ['tt0364569', 'tt0172495', 'tt0105695', 'tt0112573', 'tt0482571', 'tt1663202', 'tt0378194', 'tt2911666', 'tt1588170', 'tt0245844'],
+    relatedCollections: ['best-thriller-movies', 'best-crime-thriller-movies', 'best-psychological-thriller-movies']
+  },
+
+  // 📦 MOVIES LIKE SE7EN
+  'movies-like-se7en': {
+    slug: 'movies-like-se7en',
+    title: 'Movies Like Se7en',
+    stats: { averageRating: 8.1 },
+    badges: [
+      { label: "GRITTY NOIR", desc: "Dark atmosphere" },
+      { label: "MACABRE", desc: "Twisted crimes" },
+      { label: "NIHILISM", desc: "Bleak endings" }
+    ],
+    movies: ['tt0443706', 'tt0353969', 'tt1392214', 'tt0102926', 'tt1568346', 'tt1190539', 'tt1877830', 'tt0123948', 'tt0096163', 'tt0327056'],
+    relatedCollections: ['movies-like-shutter-island', 'best-psychological-thriller-movies', 'best-detective-thriller-movies']
+  },
+
+  // 🚀 MOVIES LIKE THE MATRIX
+  'movies-like-the-matrix': {
+    slug: 'movies-like-the-matrix',
+    title: 'Movies Like The Matrix',
+    stats: { averageRating: 8.4 },
+    badges: [
+      { label: "CYBERPUNK", desc: "Tech dystopia" },
+      { label: "AWAKENING", desc: "Reality shift" },
+      { label: "PHILOSOPHY", desc: "Free will" }
+    ],
+    movies: ['tt0118929', 'tt1375666', 'tt0139809', 'tt0120663', 'tt0945513', 'tt0181689', 'tt6499752', 'tt0100802', 'tt1856101', 'tt1631867'],
+    relatedCollections: ['best-sci-fi-movies', 'movies-like-inception', 'best-time-travel-movies']
+  },
+
+  // 🚀 BEST SCI-FI MOVIES
+  'best-sci-fi-movies': {
+    slug: 'best-sci-fi-movies',
+    title: 'Best Sci-Fi Movies',
+    stats: { averageRating: 8.2 },
+    badges: [
+      { label: "VISIONARY", desc: "Groundbreaking" },
+      { label: "CEREBRAL", desc: "Deep thought" },
+      { label: "SPECTACLE", desc: "Visual wonder" }
+    ],
+    movies: ['tt0062622', 'tt0082869', 'tt0133093', 'tt0078748', 'tt0816692', 'tt0103064', 'tt1375666', 'tt2543164', 'tt0080684', 'tt1856101'],
+    relatedCollections: ['best-time-travel-movies', 'movies-like-inception', 'best-thriller-movies']
+  },
+
+  // 🕰️ BEST TIME TRAVEL MOVIES
+  'best-time-travel-movies': {
+    slug: 'best-time-travel-movies',
+    title: '10 Time Travel Movies That Break Your Brain',
+    stats: { averageRating: 8.2 },
+    badges: [
+      { label: "PARADOX", desc: "Logic loops" },
+      { label: "CAUSALITY", desc: "Timeline changes" },
+      { label: "COMPLEX", desc: "Requires thought" }
+    ],
+    movies: ['tt0390384', 'tt2397535', 'tt0480669', 'tt0246578', 'tt0816692', 'tt0114746', 'tt0103064', 'tt0088247', 'tt0088763', 'tt0107048'],
+    relatedCollections: ['movies-like-inception', 'movies-like-memento', 'best-sci-fi-movies']
+  },
+
+  // 🌌 MOVIES LIKE INTERSTELLAR
+  'movies-like-interstellar': {
+    slug: 'movies-like-interstellar',
+    title: '10 Cosmic Masterpieces Like Interstellar',
+    stats: { averageRating: 8.1 },
+    badges: [
+      { label: "COSMIC SCALE", desc: "Vast space" },
+      { label: "RELATIVITY", desc: "Time mechanics" },
+      { label: "EMOTIONAL", desc: "Human connection" }
+    ],
+    movies: ['tt0062622', 'tt2543164', 'tt0118884', 'tt0069293', 'tt1213641', 'tt3659388', 'tt1454468', 'tt0448134', 'tt1182345', 'tt2935510'],
+    relatedCollections: ['best-sci-fi-movies', 'movies-like-inception', 'best-time-travel-movies']
+  },
+
+  // 💰 BEST HEIST THRILLER MOVIES
+  'best-heist-thriller-movies': {
+    slug: 'best-heist-thriller-movies',
+    title: 'The 10 Best Heist Thriller Movies of All Time',
+    stats: { averageRating: 7.7 },
+    badges: [
+      { label: "MASTERMIND", desc: "Genius plans" },
+      { label: "EXECUTION", desc: "Tense action" },
+      { label: "DECEPTION", desc: "Sleight of hand" }
+    ],
+    movies: ['tt0113277', 'tt0105236', 'tt0844708', 'tt0475304', 'tt0305224', 'tt0454848', 'tt0083190', 'tt0073195', 'tt0317740', 'tt0240772'],
+    relatedCollections: ['best-crime-thriller-movies', 'best-thriller-movies', 'best-mystery-thriller-movies']
+  },
+
 
   // 💥 BEST ACTION MOVIES ON HULU
   'best-action-movies-on-hulu': {
@@ -562,76 +791,7 @@ export const COLLECTIONS = {
     relatedCollections: ['best-comedy-movies-on-hulu', 'best-movies-on-peacock', 'best-action-adventure-movies-on-peacock']
   },
 
-  // 🦢 MOVIES LIKE BLACK SWAN
-  'movies-like-black-swan': {
-    slug: 'movies-like-black-swan',
-    title: 'Movies Like Black Swan',
-    stats: { averageRating: 8.0 },
-    badges: [
-      { label: "OBSESSION", desc: "Dangerous ambition" },
-      { label: "PERFECTION", desc: "Artistic toll" },
-      { label: "FRACTURED", desc: "Identity collapse" }
-    ],
-    movies: ['tt0156887', 'tt2582802', 'tt1034415', 'tt0040725', 'tt1125849', 'tt0166924', 'tt0254686', 'tt2562232', 'tt0180093', 'tt2872718'],
-    relatedCollections: ['best-psychological-thriller-movies', 'movies-like-shutter-island', 'best-crime-thriller-movies']
-  },
-
-  // 🔪 MOVIES LIKE OLDBOY
-  'movies-like-oldboy': {
-    slug: 'movies-like-oldboy',
-    title: 'Movies Like Oldboy',
-    stats: { averageRating: 7.8 },
-    badges: [
-      { label: "VENGEANCE", desc: "Brutal revenge" },
-      { label: "TWISTED", desc: "Shocking reveals" },
-      { label: "CATHARSIS", desc: "Violent justice" }
-    ],
-    movies: ['tt1588170', 'tt0310775', 'tt0451094', 'tt1527788', 'tt1190539', 'tt0456912', 'tt1255953', 'tt4016934', 'tt1590089', 'tt1392214'],
-    relatedCollections: ['best-revenge-movies', 'movies-like-se7en', 'best-psychological-thriller-movies']
-  },
-
-  // 🏠 MOVIES LIKE PARASITE
-  'movies-like-parasite': {
-    slug: 'movies-like-parasite',
-    title: 'Movies Like Parasite',
-    stats: { averageRating: 8.1 },
-    badges: [
-      { label: "CLASS WAR", desc: "Social divide" },
-      { label: "DECEPTION", desc: "Con schemes" },
-      { label: "SYSTEMIC", desc: "Capitalist critique" }
-    ],
-    movies: ['tt4016934', 'tt7282468', 'tt1706620', 'tt0353969', 'tt8075192', 'tt8228288', 'tt1216496', 'tt5715874', 'tt0150980', 'tt0134119'],
-    relatedCollections: ['movies-like-se7en', 'best-thriller-movies', 'best-mystery-thriller-movies']
-  },
-
-  // 👁️ MOVIES LIKE EYES WIDE SHUT
-  'movies-like-eyes-wide-shut': {
-    slug: 'movies-like-eyes-wide-shut',
-    title: '10 Movies Like Eyes Wide Shut: Secret Societies & Cults',
-    stats: { averageRating: 8.1 },
-    badges: [
-      { label: "SECRET SOCIETIES", desc: "Hidden elites" },
-      { label: "OCCULT", desc: "Dark rituals" },
-      { label: "PARANOIA", desc: "Conspiracy" }
-    ],
-    movies: ['tt0166924', 'tt0142688', 'tt0090756', 'tt0063522', 'tt0119174', 'tt0116922', 'tt0098354', 'tt0134273', 'tt5052448', 'tt5715874'],
-    relatedCollections: ['best-psychological-thriller-movies', 'movies-like-black-swan', 'best-mystery-thriller-movies']
-  },
-
-  // 🌀 MOVIES LIKE DONNIE DARKO
-  'movies-like-donnie-darko': {
-    slug: 'movies-like-donnie-darko',
-    title: 'Movies Like Donnie Darko',
-    stats: { averageRating: 7.9 },
-    badges: [
-      { label: "TIMELINE", desc: "Temporal loops" },
-      { label: "EXISTENTIAL", desc: "Teen angst" },
-      { label: "SURREAL", desc: "Dream logic" }
-    ],
-    movies: ['tt0289879', 'tt0114746', 'tt0366627', 'tt0125659', 'tt2866360', 'tt0099871', 'tt0118929', 'tt0166924', 'tt0338013', 'tt2316411'],
-    relatedCollections: ['best-time-travel-movies', 'movies-like-the-matrix', 'movies-like-inception']
-  },
-
+  
   // ⚔️ BEST WAR FILMS
   'best-war-films': {
     slug: 'best-war-films',
@@ -646,159 +806,6 @@ export const COLLECTIONS = {
     relatedCollections: ['best-survival-movies', 'best-crime-thriller-movies']
   },
 
-  // 🗡️ BEST REVENGE MOVIES
-  'best-revenge-movies': {
-    slug: 'best-revenge-movies',
-    title: 'Best Revenge Movies',
-    stats: { averageRating: 8.0 },
-    badges: [
-      { label: "BLOOD LUST", desc: "Violent payback" },
-      { label: "METHODICAL", desc: "Patient planning" },
-      { label: "DAMNATION", desc: "Moral descent" }
-    ],
-    movies: ['tt0364569', 'tt0172495', 'tt0105695', 'tt0112573', 'tt0482571', 'tt1663202', 'tt0378194', 'tt2911666', 'tt1588170', 'tt0245844'],
-    relatedCollections: ['best-thriller-movies', 'best-crime-thriller-movies', 'best-psychological-thriller-movies']
-  },
-
-  // 📦 MOVIES LIKE SE7EN
-  'movies-like-se7en': {
-    slug: 'movies-like-se7en',
-    title: 'Movies Like Se7en',
-    stats: { averageRating: 8.1 },
-    badges: [
-      { label: "GRITTY NOIR", desc: "Dark atmosphere" },
-      { label: "MACABRE", desc: "Twisted crimes" },
-      { label: "NIHILISM", desc: "Bleak endings" }
-    ],
-    movies: ['tt0443706', 'tt0353969', 'tt1392214', 'tt0102926', 'tt1568346', 'tt1190539', 'tt1877830', 'tt0123948', 'tt0096163', 'tt0327056'],
-    relatedCollections: ['movies-like-shutter-island', 'best-psychological-thriller-movies', 'best-detective-thriller-movies']
-  },
-
-  // 🚀 MOVIES LIKE THE MATRIX
-  'movies-like-the-matrix': {
-    slug: 'movies-like-the-matrix',
-    title: 'Movies Like The Matrix',
-    stats: { averageRating: 8.4 },
-    badges: [
-      { label: "CYBERPUNK", desc: "Tech dystopia" },
-      { label: "AWAKENING", desc: "Reality shift" },
-      { label: "PHILOSOPHY", desc: "Free will" }
-    ],
-    movies: ['tt0118929', 'tt1375666', 'tt0139809', 'tt0120663', 'tt0945513', 'tt0181689', 'tt6499752', 'tt0100802', 'tt1856101', 'tt1631867'],
-    relatedCollections: ['best-sci-fi-movies', 'movies-like-inception', 'best-time-travel-movies']
-  },
-
-  // 🚀 BEST SCI-FI MOVIES
-  'best-sci-fi-movies': {
-    slug: 'best-sci-fi-movies',
-    title: 'Best Sci-Fi Movies',
-    stats: { averageRating: 8.2 },
-    badges: [
-      { label: "VISIONARY", desc: "Groundbreaking" },
-      { label: "CEREBRAL", desc: "Deep thought" },
-      { label: "SPECTACLE", desc: "Visual wonder" }
-    ],
-    movies: ['tt0062622', 'tt0082869', 'tt0133093', 'tt0078748', 'tt0816692', 'tt0103064', 'tt1375666', 'tt2543164', 'tt0080684', 'tt1856101'],
-    relatedCollections: ['best-time-travel-movies', 'movies-like-inception', 'best-thriller-movies']
-  },
-
-  // 🕰️ BEST TIME TRAVEL MOVIES
-  'best-time-travel-movies': {
-    slug: 'best-time-travel-movies',
-    title: '10 Time Travel Movies That Break Your Brain',
-    stats: { averageRating: 8.2 },
-    badges: [
-      { label: "PARADOX", desc: "Logic loops" },
-      { label: "CAUSALITY", desc: "Timeline changes" },
-      { label: "COMPLEX", desc: "Requires thought" }
-    ],
-    movies: ['tt0390384', 'tt2397535', 'tt0480669', 'tt0246578', 'tt0816692', 'tt0114746', 'tt0103064', 'tt0088247', 'tt0088763', 'tt0107048'],
-    relatedCollections: ['movies-like-inception', 'movies-like-memento', 'best-sci-fi-movies']
-  },
-
-  // 🌌 MOVIES LIKE INTERSTELLAR
-  'movies-like-interstellar': {
-    slug: 'movies-like-interstellar',
-    title: '10 Cosmic Masterpieces Like Interstellar',
-    stats: { averageRating: 8.1 },
-    badges: [
-      { label: "COSMIC SCALE", desc: "Vast space" },
-      { label: "RELATIVITY", desc: "Time mechanics" },
-      { label: "EMOTIONAL", desc: "Human connection" }
-    ],
-    movies: ['tt0062622', 'tt2543164', 'tt0118884', 'tt0069293', 'tt1213641', 'tt3659388', 'tt1454468', 'tt0448134', 'tt1182345', 'tt2935510'],
-    relatedCollections: ['best-sci-fi-movies', 'movies-like-inception', 'best-time-travel-movies']
-  },
-
-  // 💰 BEST HEIST THRILLER MOVIES
-  'best-heist-thriller-movies': {
-    slug: 'best-heist-thriller-movies',
-    title: 'The 10 Best Heist Thriller Movies of All Time',
-    stats: { averageRating: 7.7 },
-    badges: [
-      { label: "MASTERMIND", desc: "Genius plans" },
-      { label: "EXECUTION", desc: "Tense action" },
-      { label: "DECEPTION", desc: "Sleight of hand" }
-    ],
-    movies: ['tt0113277', 'tt0105236', 'tt0844708', 'tt0475304', 'tt0305224', 'tt0454848', 'tt0083190', 'tt0073195', 'tt0317740', 'tt0240772'],
-    relatedCollections: ['best-crime-thriller-movies', 'best-thriller-movies', 'best-mystery-thriller-movies']
-  },
-
-  // 🎬 BEST CRIME THRILLER MOVIES
-  'best-crime-thriller-movies': {
-    slug: 'best-crime-thriller-movies',
-    title: 'The 10 Best Crime Thriller Movies of All Time',
-    stats: { averageRating: 8.1 },
-    badges: [
-      { label: "UNDERWORLD", desc: "Gritty crime" },
-      { label: "MORAL GRAY", desc: "Blurred lines" },
-      { label: "CAT & MOUSE", desc: "Tense pursuit" }
-    ],
-    movies: ['tt0113277', 'tt0119488', 'tt0477348', 'tt0443706', 'tt1392214', 'tt0114369', 'tt0327056', 'tt0353969', 'tt0407887', 'tt0139654'],
-    relatedCollections: ['best-thriller-movies', 'best-detective-thriller-movies', 'best-mystery-thriller-movies']
-  },
-
-  // 🧠 BEST PSYCHOLOGICAL THRILLER MOVIES
-  'best-psychological-thriller-movies': {
-    slug: 'best-psychological-thriller-movies',
-    title: '10 Best Psychological Thrillers',
-    stats: { averageRating: 8.6 },
-    badges: [
-      { label: "MIND GAMES", desc: "Mental warfare" },
-      { label: "UNRELIABLE", desc: "Doubt reality" },
-      { label: "DREAD", desc: "Creeping tension" }
-    ],
-    movies: ['tt0102926', 'tt0137523', 'tt0209144', 'tt0114369', 'tt1130884', 'tt0947798', 'tt0361862', 'tt0364569', 'tt0075314', 'tt0081505'],
-    relatedCollections: ['movies-like-se7en', 'movies-like-shutter-island', 'best-detective-thriller-movies']
-  },
-
-  // 🕵️‍♂️ BEST DETECTIVE THRILLER MOVIES
-  'best-detective-thriller-movies': {
-    slug: 'best-detective-thriller-movies',
-    title: '10 Best Detective Thrillers',
-    stats: { averageRating: 8.3 },
-    badges: [
-      { label: "OBSESSION", desc: "Consumed minds" },
-      { label: "MYSTERY", desc: "Complex cases" },
-      { label: "NOIR", desc: "Dark tone" }
-    ],
-    movies: ['tt0114369', 'tt0443706', 'tt0353969', 'tt1392214', 'tt1305806', 'tt1190539', 'tt0327056', 'tt0116282', 'tt3253930', 'tt0106977'],
-    relatedCollections: ['movies-like-se7en', 'best-crime-thriller-movies', 'best-psychological-thriller-movies']
-  },
-
-  // 🕵️‍♂️ BEST MYSTERY THRILLER MOVIES
-  'best-mystery-thriller-movies': {
-    slug: 'best-mystery-thriller-movies',
-    title: '10 Best Mystery Thrillers',
-    stats: { averageRating: 8.2 },
-    badges: [
-      { label: "PUZZLE", desc: "Clue solving" },
-      { label: "TWISTS", desc: "Shocking turns" },
-      { label: "SUSPENSE", desc: "High tension" }
-    ],
-    movies: ['tt0114369', 'tt1130884', 'tt1392214', 'tt0443706', 'tt2267998', 'tt0353969', 'tt4857264', 'tt7282468', 'tt0119174', 'tt0119177'],
-    relatedCollections: ['best-detective-thriller-movies', 'best-psychological-thriller-movies', 'best-crime-thriller-movies', 'movies-like-se7en']
-  },
 
   // 🎩 MOVIES LIKE THE PRESTIGE
   'movies-like-the-prestige': {

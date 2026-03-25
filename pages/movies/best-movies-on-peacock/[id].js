@@ -13,6 +13,7 @@ import InternalCollectionsSection from '../../../components/InternalCollectionsS
 import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
 import TMDBAttribution from '../../../components/TMDBAttribution';
+import { getPrimaryCollectionForMovie } from '../../../data/collections';
 
 // ✅ IMPORT DATA INCLUDING FAQs AND THE NEW SCHEMA GENERATOR
 import {
@@ -236,13 +237,14 @@ const PeacockBestMoviePage = ({ movie, tmdbData: movieData }) => {
   const cleanSEODesc = [movie.Title, ' (', currentMovieYear, ') - One of the highest-rated movies streaming on Peacock right now. Includes an exact Timestamps & Parents Guide, intensity score, and review.'].join('');
 
   const collectionSlug = router.pathname.split('/')[2];
-  const canonicalUrl = `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`;
+  const masterCollectionSlug = getPrimaryCollectionForMovie(movie.imdbID) || collectionSlug;
+    const canonicalUrl = `https://filmiway.com/movies/${masterCollectionSlug}/${movie.imdbID}`;
 
-  const { movieSchema, faqSchema } = generateCleanMovieSchema(
-      movie, 
-      movieData, 
-      currentMovieYear, 
-      collectionSlug, 
+    const { movieSchema, faqSchema } = generateCleanMovieSchema(
+        movie, 
+        movieData, 
+        currentMovieYear, 
+        masterCollectionSlug, 
       'Peacock',
       COMPLETE_MOVIE_DATA[movie.tmdbId]
   );
