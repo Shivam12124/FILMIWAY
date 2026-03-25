@@ -342,7 +342,13 @@ export async function getStaticProps({ params }) {
         const rawSensitive = SENSITIVE_TIMELINES[movie.tmdbId];
         const sensitiveData = rawSensitive ? { scenes: rawSensitive.scenes } : null;
 
-        return { props: { movie, tmdbData, sensitiveData } };
+        // 🔥 CRITICAL FIX: Sync local movie runtime with TMDB to prevent FAQ/Timestamps mismatch
+        const syncedMovie = { ...movie };
+        if (typeof tmdbData !== 'undefined' && tmdbData?.runtime) {
+            syncedMovie.runtime = tmdbData.runtime;
+            syncedMovie.Runtime = tmdbData.runtime;
+        }
+        return { props: { movie: syncedMovie, tmdbData, sensitiveData } };
     } catch (error) {
         return { props: { movie: COMPLETE_MOVIE_DATABASE.find((m) => m.imdbID === params.id), tmdbData: null, sensitiveData: null } };
     }

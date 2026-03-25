@@ -46,7 +46,7 @@ const InterstellarSEOFAQSection = ({ movie }) => {
                         transition={{ duration: 0.6, delay: index * 0.1 }}
                     >
                         <h3 className="text-base sm:text-lg font-medium text-yellow-200 mb-2 sm:mb-3">{faq.question}</h3>
-                        <p className="text-gray-300 leading-relaxed text-sm sm:text-base">{faq.answer}</p>
+                        <p className="text-gray-300 leading-relaxed text-sm sm:text-base whitespace-pre-line">{faq.answer}</p>
                     </motion.div>
                 ))}
             </div>

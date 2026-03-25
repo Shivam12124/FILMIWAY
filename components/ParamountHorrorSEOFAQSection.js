@@ -2,13 +2,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Info, Skull } from 'lucide-react';
-import { PARAMOUNT_HORROR_MOVIE_FAQS } from '../utils/paramountHorrorMovieData';
+import { getVisibleMovieFAQs } from '../utils/paramountHorrorMovieData';
 
 const ParamountHorrorSEOFAQSection = ({ movie }) => {
     // 🔥 Get FAQs from PARAMOUNT_HORROR_MOVIE_FAQS data
-    const faqsFromData = movie?.Title && PARAMOUNT_HORROR_MOVIE_FAQS?.[movie.Title] 
-        ? PARAMOUNT_HORROR_MOVIE_FAQS[movie.Title] 
-        : [];
+    const currentRuntime = movie?.Runtime || movie?.runtime || "Official";
+    const faqsFromData = getVisibleMovieFAQs(movie?.Title, movie?.tmdbId, currentRuntime);
 
     // 🔥 Safety check - return null if no FAQs
     if (!faqsFromData || faqsFromData.length === 0) {
@@ -43,7 +42,7 @@ const ParamountHorrorSEOFAQSection = ({ movie }) => {
                         <h3 className="text-base sm:text-lg font-medium text-red-200 mb-2 sm:mb-3">
                             {faq.question}
                         </h3>
-                        <p className="text-gray-400 leading-relaxed text-sm sm:text-base group-hover:text-gray-300 transition-colors">
+                        <p className="text-gray-400 leading-relaxed text-sm sm:text-base group-hover:text-gray-300 transition-colors whitespace-pre-line">
                             {faq.answer}
                         </p>
                     </motion.div>

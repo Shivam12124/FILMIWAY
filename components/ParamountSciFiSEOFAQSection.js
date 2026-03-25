@@ -2,13 +2,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Info, Sparkles } from 'lucide-react';
-import { PARAMOUNT_SCIFI_MOVIE_FAQS } from '../utils/paramountSciFiMovieData';
+import { getVisibleMovieFAQs } from '../utils/paramountSciFiMovieData';
 
 const ParamountSciFiSEOFAQSection = ({ movie }) => {
     // 🔥 Get FAQs from PARAMOUNT_SCIFI_MOVIE_FAQS data
-    const faqsFromData = movie?.Title && PARAMOUNT_SCIFI_MOVIE_FAQS?.[movie.Title] 
-        ? PARAMOUNT_SCIFI_MOVIE_FAQS[movie.Title] 
-        : [];
+    const currentRuntime = movie?.Runtime || movie?.runtime || "Official";
+    const faqsFromData = getVisibleMovieFAQs(movie?.Title, movie?.tmdbId, currentRuntime);
 
     // 🔥 Safety check - return null if no FAQs
     if (!faqsFromData || faqsFromData.length === 0) {
@@ -43,7 +42,7 @@ const ParamountSciFiSEOFAQSection = ({ movie }) => {
                         <h3 className="text-base sm:text-lg font-medium text-cyan-200 mb-2 sm:mb-3">
                             {faq.question}
                         </h3>
-                        <p className="text-gray-400 leading-relaxed text-sm sm:text-base group-hover:text-gray-300 transition-colors">
+                        <p className="text-gray-400 leading-relaxed text-sm sm:text-base group-hover:text-gray-300 transition-colors whitespace-pre-line">
                             {faq.answer}
                         </p>
                     </motion.div>

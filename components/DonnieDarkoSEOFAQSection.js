@@ -8,7 +8,8 @@ import { getVisibleMovieFAQs } from '../utils/donnieDarkoMovieData';
 const DonnieDarkoSEOFAQSection = ({ movie }) => {
     // 🔥 AUTOMATICALLY GENERATE THE FAQS FOR HUMANS (Includes the Dynamic Timestamp FAQ)
     // This calls the template engine we built, so the UI matches the Bot Schema exactly!
-    const faqsFromData = getVisibleMovieFAQs(movie?.Title, movie?.tmdbId);
+    const currentRuntime = movie?.Runtime || movie?.runtime || "Official";
+    const faqsFromData = getVisibleMovieFAQs(movie?.Title, movie?.tmdbId, currentRuntime);
 
     // 🔥 Safety check - return null if no FAQs
     if (!faqsFromData || faqsFromData.length === 0) {

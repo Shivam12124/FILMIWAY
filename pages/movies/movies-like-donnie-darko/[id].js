@@ -325,7 +325,13 @@ export async function getStaticProps({ params }) {
       const tmdbResponse = await fetch(`https://api.themoviedb.org/3/movie/${movie.tmdbId}?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&append_to_response=videos`);
       const tmdbData = tmdbResponse.ok ? await tmdbResponse.json() : null;
 
-      return { props: { movie, tmdbData } };
+      // 🔥 CRITICAL FIX: Sync local movie runtime with TMDB to prevent FAQ/Timestamps mismatch
+        const syncedMovie = { ...movie };
+        if (typeof tmdbData !== 'undefined' && tmdbData?.runtime) {
+            syncedMovie.runtime = tmdbData.runtime;
+            syncedMovie.Runtime = tmdbData.runtime;
+        }
+        return { props: { movie: syncedMovie, tmdbData } };
   } catch (error) {
       return { props: { movie: COMPLETE_MOVIE_DATABASE.find((m) => m.imdbID === params.id), tmdbData: null } };
   }

@@ -33,7 +33,11 @@ export const SENSITIVE_TIMELINES = {
     },
 
     // 2. Anchorman
-    8699: { scenes: [] },
+ 8699: { 
+        scenes: [
+            { start: "0:27:30", end: "0:28:00", type: "Sexual Content (Ejaculation)", severity: "Moderate" }
+        ] 
+    },
 
     // 3. The Naked Gun
     37136: { scenes: [] },

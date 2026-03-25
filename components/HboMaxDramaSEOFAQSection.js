@@ -8,7 +8,8 @@ import { getVisibleMovieFAQs } from '../utils/hboMaxDramaMovieData';
 const HboMaxDramaSEOFAQSection = ({ movie }) => {
     
     // 🔥 Get the dynamically generated FAQs (Includes Timestamps, Intensity, and Static FAQs)
-    const faqsFromData = getVisibleMovieFAQs(movie.Title, movie.tmdbId);
+    const currentRuntime = movie?.Runtime || movie?.runtime || "Official";
+    const faqsFromData = getVisibleMovieFAQs(movie.Title, movie.tmdbId, currentRuntime);
 
     // 🔥 Safety check - return null if no FAQs
     if (!faqsFromData || faqsFromData.length === 0) {

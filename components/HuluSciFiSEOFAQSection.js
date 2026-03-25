@@ -10,7 +10,8 @@ const HuluSciFiSEOFAQSection = ({ movie }) => {
     
     // 🔥 AUTOMATICALLY GENERATE THE FAQS (Includes the Dynamic Timestamp FAQ & Intensity Peaks)
     // This ensures the UI perfectly matches the Bot Schema!
-    const faqsFromData = getVisibleMovieFAQs(movie?.Title, movie?.tmdbId);
+    const currentRuntime = movie?.Runtime || movie?.runtime || "Official";
+    const faqsFromData = getVisibleMovieFAQs(movie?.Title, movie?.tmdbId, currentRuntime);
 
     // Safety check - return null if no FAQs are found
     if (!faqsFromData || faqsFromData.length === 0) {
