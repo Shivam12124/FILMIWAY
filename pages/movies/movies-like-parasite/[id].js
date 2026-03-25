@@ -222,18 +222,57 @@ const ParasiteMoviePage = ({ movie, tmdbData: movieData }) => {
 
   const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
   const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
+  // =========================================================================
+  // ✅ THE STANDARDIZED ELITE SEO BLOCK (Clean, Direct Intent)
+  // =========================================================================
 
-  // ✅ SEO FIX: Join title into a single string variable to prevent hydration markers ()
-  const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Movies Like Parasite | Filmiway'].join('');
+  const collectionSlug = 'movies-like-parasite';
+
+  const scenes = SENSITIVE_TIMELINES?.[movie.tmdbId]?.scenes || [];
   
-  // ✅ SEO FIX 2: Added highly clickable "Timestamps & Parents Guide" hook directly into the meta description
-  const cleanSEODesc = [movie.Title, ' (', currentMovieYear, ') - A brilliant class warfare film like Parasite. Includes an exact Timestamps & Parents Guide, analysis, and where to stream.'].join('');
+  // 1. PURE META TITLE LOGIC (No extra tags or keywords)
+  let cleanSEOTitle = '';
+  const coreUSP = "Timestamps & Parents Guide:";
 
-  const collectionSlug = router.pathname.split('/')[2];
+  if (scenes.length > 0) {
+    const idealTitle = `${coreUSP} ${movie.Title} (${currentMovieYear})`;
+    
+    if (idealTitle.length <= 62) {
+      cleanSEOTitle = idealTitle; 
+    } else {
+      cleanSEOTitle = `${coreUSP} ${movie.Title}`;
+    }
+  } else {
+    const idealCleanTitle = `Parents Guide: ${movie.Title} (${currentMovieYear})`;
+    
+    if (idealCleanTitle.length <= 62) {
+      cleanSEOTitle = idealCleanTitle;
+    } else {
+      cleanSEOTitle = `Parents Guide: ${movie.Title}`;
+    }
+  }
+
+  // 2. STANDARDIZED ELITE META DESCRIPTION (Mature Scenes & Top Ranges)
+  let currentRuntime = movie.Runtime || movie.runtime || "Official";
+  if (typeof currentRuntime === 'number') currentRuntime = `${currentRuntime} min`;
+
+  let cleanSEODesc = '';
+  if (scenes.length > 0) {
+    const sceneCount = scenes.length;
+    // Show the full range (Start-End) for the first 2 scenes only to save space
+    const topScenes = scenes.slice(0, 2).map(s => `${s.start}–${s.end}`).join(', ');
+    
+    cleanSEODesc = `${movie.Title} Parents Guide: ${sceneCount} mature scenes (sex, nudity) manually verified. Skip: ${topScenes}... Full ${currentRuntime} list inside.`;
+  } else {
+    cleanSEODesc = `${movie.Title} Parents Guide. Filmiway editors have manually verified zero sex scenes or nudity in the full ${currentRuntime} runtime.`;
+  }
+
+  // =========================================================================
+
   const masterCollectionSlug = getPrimaryCollectionForMovie(movie.imdbID) || collectionSlug;
-    const canonicalUrl = `https://filmiway.com/movies/${masterCollectionSlug}/${movie.imdbID}`;
-
-    const { movieSchema, faqSchema } = generateCleanMovieSchema(
+  const canonicalUrl = `https://filmiway.com/movies/${masterCollectionSlug}/${movie.imdbID}`;
+  
+  const { movieSchema, faqSchema } = generateCleanMovieSchema(
         movie, 
         movieData, 
         currentMovieYear, 

@@ -211,7 +211,7 @@ const TimeTravelBreadcrumb = ({ movie }) => (
   </motion.nav>
 );
 
-const TimeTravelMoviePage = ({ movie, tmdbData: movieData }) => {
+const TimeTravelMoviePage = ({ movie, tmdbData: movieData, sensitiveData }) => {
   const router = useRouter();
   const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
   const richData = COMPLETE_MOVIE_DATA[movie.tmdbId]; 
@@ -234,65 +234,56 @@ const TimeTravelMoviePage = ({ movie, tmdbData: movieData }) => {
 
   const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
   const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
-
   // =========================================================================
-  // ✅ THE STANDARDIZED ELITE SEO BLOCK (Feature First + Tag Protection)
+  // ✅ THE STANDARDIZED ELITE SEO BLOCK (Clean, Direct Intent)
   // =========================================================================
 
   const collectionSlug = 'best-time-travel-movies';
-  const routeSlug = 'time-travel'; // Exact Next.js folder name
-  const collectionShortTag = 'Paradox'; // 🔥 Unique, genre-specific tag!
 
   const scenes = SENSITIVE_TIMELINES?.[movie.tmdbId]?.scenes || [];
   
-  // 1. UNIQUE META TITLE LOGIC
+  // 1. PURE META TITLE LOGIC (No extra tags or keywords)
   let cleanSEOTitle = '';
   const coreUSP = "Timestamps & Parents Guide:";
 
   if (scenes.length > 0) {
-    // Ideal: Timestamps & Parents Guide: Predestination (2014) - Paradox
-    const idealTitle = `${coreUSP} ${movie.Title} (${currentMovieYear}) - ${collectionShortTag}`;
+    const idealTitle = `${coreUSP} ${movie.Title} (${currentMovieYear})`;
     
     if (idealTitle.length <= 62) {
-      cleanSEOTitle = idealTitle; // Fits perfectly
+      cleanSEOTitle = idealTitle; 
     } else {
-      // Backup: Drop the year to save the USP and the unique Tag
-      cleanSEOTitle = `${coreUSP} ${movie.Title} - ${collectionShortTag}`;
+      cleanSEOTitle = `${coreUSP} ${movie.Title}`;
     }
   } else {
-    // For completely clean movies (no timestamps needed)
-    const idealCleanTitle = `Parents Guide: ${movie.Title} (${currentMovieYear}) - Clean`;
+    const idealCleanTitle = `Parents Guide: ${movie.Title} (${currentMovieYear})`;
     
     if (idealCleanTitle.length <= 62) {
       cleanSEOTitle = idealCleanTitle;
     } else {
-      // Drop year if too long, but strictly keep the "Clean" tag
-      cleanSEOTitle = `Parents Guide: ${movie.Title} - Clean`;
+      cleanSEOTitle = `Parents Guide: ${movie.Title}`;
     }
   }
 
-  // 2. STANDARDIZED ELITE META DESCRIPTION
-  let cleanSEODesc = '';
-  
-  if (scenes.length > 0) {
-    // 🔥 Strictly grab only the first 2 timestamps so it's clean and readable
-    const rawTimes = scenes.slice(0, 2).map(s => s.end ? `${s.start}–${s.end}` : s.start);
-    const formattedTimes = rawTimes.join(', ') + ' and ' + rawTimes.slice(-1);
+  // 2. STANDARDIZED ELITE META DESCRIPTION (Mature Scenes & Top Ranges)
+  let currentRuntime = movie.Runtime || movie.runtime || "Official";
+  if (typeof currentRuntime === 'number') currentRuntime = `${currentRuntime} min`;
 
-    cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Viewer discretion advised. Includes exact scene timestamps: ${formattedTimes}.`;
+  let cleanSEODesc = '';
+  if (scenes.length > 0) {
+    const sceneCount = scenes.length;
+    // Show the full range (Start-End) for the first 2 scenes only to save space
+    const topScenes = scenes.slice(0, 2).map(s => `${s.start}–${s.end}`).join(', ');
+    
+    cleanSEODesc = `${movie.Title} Parents Guide: ${sceneCount} mature scenes (sex, nudity) manually verified. Skip: ${topScenes}... Full ${currentRuntime} list inside.`;
   } else {
-    // 🔥 Zero-liability runtime focus
-    cleanSEODesc = `Timestamps & Parents Guide for ${movie.Title} (${currentMovieYear}). Filmiway has identified zero explicit nudity or sexual content throughout the film's entire runtime.`;
+    cleanSEODesc = `${movie.Title} Parents Guide. Filmiway editors have manually verified zero sex scenes or nudity in the full ${currentRuntime} runtime.`;
   }
 
   // =========================================================================
 
-  // BUG FIX: Canonical URL is perfectly hardcoded to the exact route
-  236735
   const masterCollectionSlug = getPrimaryCollectionForMovie(movie.imdbID) || collectionSlug;
-    const canonicalUrl = `https://filmiway.com/movies/${masterCollectionSlug}/${movie.imdbID}`;
-
-  // Generate schema
+  const canonicalUrl = `https://filmiway.com/movies/${masterCollectionSlug}/${movie.imdbID}`;
+  
   const { movieSchema, faqSchema } = generateCleanMovieSchema(
       movie, 
       movieData, 
@@ -333,6 +324,8 @@ const TimeTravelMoviePage = ({ movie, tmdbData: movieData }) => {
           <SubtleFilmGrain />
           <div className="absolute inset-0"><CinematicBackground /></div>
           
+          <SmartBackButton />
+          
           <div className="relative z-10 pt-10 sm:pt-12 lg:pt-16">
               
               {/* ✅ SEO FIX: HIDDEN H1 ADDED HERE FOR GOOGLE & BING PARITY */}
@@ -352,7 +345,7 @@ const TimeTravelMoviePage = ({ movie, tmdbData: movieData }) => {
                       transition={{ duration: 0.5 }} // Faster, no massive delay
                       className="space-y-8 sm:space-y-12 px-3 sm:px-4 lg:px-6"
                   >
-                      <MovieDetailsSection movie={movie} fromTimeTravelCollection={true} />
+                      <MovieDetailsSection movie={movie} fromTimeTravelCollection={true} sensitiveData={sensitiveData} />
                   </motion.div>
                   
                   <div className="px-3 sm:px-4 lg:px-6">
@@ -381,20 +374,24 @@ export async function getStaticProps({ params }) {
       );
       const tmdbData = tmdbResponse.ok ? await tmdbResponse.json() : null;
 
+      // ✅ FETCH SENSITIVE DATA FOR FRONTEND RENDERING
+      const rawSensitive = SENSITIVE_TIMELINES[movie.tmdbId];
+      const sensitiveData = rawSensitive ? { scenes: rawSensitive.scenes } : null;
+
       // 🔥 CRITICAL FIX: Sync local movie runtime with TMDB to prevent FAQ/Timestamps mismatch
         const syncedMovie = { ...movie };
         if (typeof tmdbData !== 'undefined' && tmdbData?.runtime) {
             syncedMovie.runtime = tmdbData.runtime;
             syncedMovie.Runtime = tmdbData.runtime;
         }
-        return { props: { movie: syncedMovie, tmdbData },
-      };
+        return { props: { movie: syncedMovie, tmdbData, sensitiveData } };
   } catch (error) {
       console.error('Error fetching TMDB data:', error);
       return {
           props: {
               movie: COMPLETE_MOVIE_DATABASE.find((m) => m.imdbID === params.id),
               tmdbData: null,
+              sensitiveData: null
           },
       };
   }

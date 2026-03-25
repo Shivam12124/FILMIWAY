@@ -225,48 +225,57 @@ const OldboyMoviePage = ({ movie, tmdbData: movieData, sensitiveData }) => {
 
   const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
   const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
+  // =========================================================================
+  // ✅ THE STANDARDIZED ELITE SEO BLOCK (Clean, Direct Intent)
+  // =========================================================================
 
-  // =========================================================================
-  // ✅ THE STANDARDIZED ELITE SEO BLOCK
-  // =========================================================================
   const collectionSlug = 'movies-like-oldboy';
-  const collectionShortTag = 'Revenge';
 
   const scenes = SENSITIVE_TIMELINES?.[movie.tmdbId]?.scenes || [];
   
+  // 1. PURE META TITLE LOGIC (No extra tags or keywords)
   let cleanSEOTitle = '';
   const coreUSP = "Timestamps & Parents Guide:";
 
   if (scenes.length > 0) {
-    const idealTitle = `${coreUSP} ${movie.Title} (${currentMovieYear}) - ${collectionShortTag}`;
+    const idealTitle = `${coreUSP} ${movie.Title} (${currentMovieYear})`;
+    
     if (idealTitle.length <= 62) {
       cleanSEOTitle = idealTitle; 
     } else {
-      cleanSEOTitle = `${coreUSP} ${movie.Title} - ${collectionShortTag}`;
+      cleanSEOTitle = `${coreUSP} ${movie.Title}`;
     }
   } else {
-    const idealCleanTitle = `Parents Guide: ${movie.Title} (${currentMovieYear}) - Clean`;
+    const idealCleanTitle = `Parents Guide: ${movie.Title} (${currentMovieYear})`;
+    
     if (idealCleanTitle.length <= 62) {
       cleanSEOTitle = idealCleanTitle;
     } else {
-      cleanSEOTitle = `Parents Guide: ${movie.Title} - Clean`;
+      cleanSEOTitle = `Parents Guide: ${movie.Title}`;
     }
   }
 
+  // 2. STANDARDIZED ELITE META DESCRIPTION (Mature Scenes & Top Ranges)
+  let currentRuntime = movie.Runtime || movie.runtime || "Official";
+  if (typeof currentRuntime === 'number') currentRuntime = `${currentRuntime} min`;
+
   let cleanSEODesc = '';
-  
   if (scenes.length > 0) {
-    const rawTimes = scenes.slice(0, 2).map(s => s.end ? `${s.start}–${s.end}` : s.start);
-    const formattedTimes = rawTimes.join(', ') + ' and ' + rawTimes.slice(-1);
-    cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Viewer discretion advised. Includes exact scene timestamps: ${formattedTimes}.`;
+    const sceneCount = scenes.length;
+    // Show the full range (Start-End) for the first 2 scenes only to save space
+    const topScenes = scenes.slice(0, 2).map(s => `${s.start}–${s.end}`).join(', ');
+    
+    cleanSEODesc = `${movie.Title} Parents Guide: ${sceneCount} mature scenes (sex, nudity) manually verified. Skip: ${topScenes}... Full ${currentRuntime} list inside.`;
   } else {
-    cleanSEODesc = `Timestamps & Parents Guide for ${movie.Title} (${currentMovieYear}). Filmiway has identified zero explicit nudity or sexual content throughout the film's entire runtime.`;
+    cleanSEODesc = `${movie.Title} Parents Guide. Filmiway editors have manually verified zero sex scenes or nudity in the full ${currentRuntime} runtime.`;
   }
 
-  const masterCollectionSlug = getPrimaryCollectionForMovie(movie.imdbID) || collectionSlug;
-    const canonicalUrl = `https://filmiway.com/movies/${masterCollectionSlug}/${movie.imdbID}`;
+  // =========================================================================
 
-    const { movieSchema, faqSchema } = generateCleanMovieSchema(
+  const masterCollectionSlug = getPrimaryCollectionForMovie(movie.imdbID) || collectionSlug;
+  const canonicalUrl = `https://filmiway.com/movies/${masterCollectionSlug}/${movie.imdbID}`;
+  
+  const { movieSchema, faqSchema } = generateCleanMovieSchema(
         movie, 
         movieData, 
         currentMovieYear, 

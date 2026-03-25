@@ -239,15 +239,57 @@ const ParamountSciFiMoviePage = ({ movie, tmdbData: movieData }) => {
 
     const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
+  // =========================================================================
+  // ✅ THE STANDARDIZED ELITE SEO BLOCK (Clean, Direct Intent)
+  // =========================================================================
 
-    const cleanSEOTitle = [movie.Title, ' (', currentMovieYear, ') - Best Sci-Fi Movies on Paramount+ | Filmiway'].join('');
-    const cleanSEODesc = [movie.Title, ' (', currentMovieYear, ') - A visionary sci-fi masterpiece streaming on Paramount+. Ranked by complexity and visual scale.'].join('');
+  const collectionSlug = 'best-sci-fi-movies-on-paramount-plus';
 
-    const collectionSlug = router.pathname.split('/')[2];
-    const masterCollectionSlug = getPrimaryCollectionForMovie(movie.imdbID) || collectionSlug;
-    const canonicalUrl = `https://filmiway.com/movies/${masterCollectionSlug}/${movie.imdbID}`;
+  const scenes = SENSITIVE_TIMELINES?.[movie.tmdbId]?.scenes || [];
+  
+  // 1. PURE META TITLE LOGIC (No extra tags or keywords)
+  let cleanSEOTitle = '';
+  const coreUSP = "Timestamps & Parents Guide:";
 
-    const { movieSchema, faqSchema } = generateCleanMovieSchema(
+  if (scenes.length > 0) {
+    const idealTitle = `${coreUSP} ${movie.Title} (${currentMovieYear})`;
+    
+    if (idealTitle.length <= 62) {
+      cleanSEOTitle = idealTitle; 
+    } else {
+      cleanSEOTitle = `${coreUSP} ${movie.Title}`;
+    }
+  } else {
+    const idealCleanTitle = `Parents Guide: ${movie.Title} (${currentMovieYear})`;
+    
+    if (idealCleanTitle.length <= 62) {
+      cleanSEOTitle = idealCleanTitle;
+    } else {
+      cleanSEOTitle = `Parents Guide: ${movie.Title}`;
+    }
+  }
+
+  // 2. STANDARDIZED ELITE META DESCRIPTION (Mature Scenes & Top Ranges)
+  let currentRuntime = movie.Runtime || movie.runtime || "Official";
+  if (typeof currentRuntime === 'number') currentRuntime = `${currentRuntime} min`;
+
+  let cleanSEODesc = '';
+  if (scenes.length > 0) {
+    const sceneCount = scenes.length;
+    // Show the full range (Start-End) for the first 2 scenes only to save space
+    const topScenes = scenes.slice(0, 2).map(s => `${s.start}–${s.end}`).join(', ');
+    
+    cleanSEODesc = `${movie.Title} Parents Guide: ${sceneCount} mature scenes (sex, nudity) manually verified. Skip: ${topScenes}... Full ${currentRuntime} list inside.`;
+  } else {
+    cleanSEODesc = `${movie.Title} Parents Guide. Filmiway editors have manually verified zero sex scenes or nudity in the full ${currentRuntime} runtime.`;
+  }
+
+  // =========================================================================
+
+  const masterCollectionSlug = getPrimaryCollectionForMovie(movie.imdbID) || collectionSlug;
+  const canonicalUrl = `https://filmiway.com/movies/${masterCollectionSlug}/${movie.imdbID}`;
+  
+  const { movieSchema, faqSchema } = generateCleanMovieSchema(
         movie, 
         movieData, 
         currentMovieYear, 

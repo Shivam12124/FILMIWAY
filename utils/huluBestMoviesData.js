@@ -305,182 +305,104 @@ export const COMPLETE_MOVIE_DATA = {
 export const HULU_BEST_MOVIE_FAQS = {
     'Heat': [
         { 
-            question: "Did Al Pacino and Robert De Niro actually film together?", 
-            answer: "Yes, but remarkably, they share screen time in only two scenes throughout the entire nearly three-hour film: the legendary coffee shop conversation and the climatic finale. For the coffee shop scene, director Michael Mann chose not to rehearse the interaction to maintain a sense of unfamiliarity and tension. He also filmed with two cameras simultaneously (over-the-shoulder) to capture every micro-expression, ensuring the chemistry between the two titans was preserved in real-time." 
+            question: "Why is the coffee shop scene considered a 'cinematic event'?", 
+            answer: "It was the first time legends Al Pacino and Robert De Niro appeared on screen together. Director Michael Mann famously didn't rehearse them so their interaction would feel authentic and tense. Interestingly, they only share about 10 minutes of screen time in the entire 3-hour epic." 
         },
         { 
-            question: "Why is the bank robbery shootout considered realistic?", 
-            answer: "The downtown LA shootout is widely cited by military and police instructors as the gold standard for tactical realism in cinema. The actors underwent three months of rigorous weapons training with British SAS instructors using live rounds at a firing range. Uniquely, the sound design used the actual production audio of the blank gunfire echoing off the skyscrapers rather than dubbed sound effects, creating that deafening, visceral acoustic crack that defines the scene." 
+            question: "Is the bank robbery shootout actually realistic?", 
+            answer: "It’s the gold standard. The military actually uses this scene to train soldiers on 'fire and movement' tactics. The deafening sound of the gunfire isn't a studio effect—it's the actual audio of blanks echoing off the real skyscrapers of downtown LA." 
         },
         { 
-            question: "Is Heat based on a true story?", 
-            answer: "It is heavily based on the real-life experiences of Chicago police detective Chuck Adamson. He spent years tracking a highly disciplined career criminal named Neil McCauley (De Niro's character). The two men actually met for coffee once, just like in the film, where they admitted a mutual respect but acknowledged they would kill one another if necessary. The dialogue in the movie closely mirrors their real-life conversation." 
-        },
-        { 
-            question: "Why does Al Pacino yell so much in the film?", 
-            answer: "Al Pacino's explosive, eccentric performance as Vincent Hanna was originally grounded in a specific character detail that was cut from the final script: Hanna was supposed to be chipping cocaine throughout the movie. Pacino stated later that this explains his erratic energy, sudden outbursts (like the famous 'She's got a GREAT ASS!' line), and hyper-focus. He was playing a man constantly on the edge of a stimulant-fueled burnout." 
+            question: "Why does Al Pacino’s character act so erratically?", 
+            answer: "Pacino revealed that his character, Vincent Hanna, was originally written as having a cocaine habit. While the drug use was cut from the final film, Pacino kept the 'wired,' high-energy performance, which explains iconic outbursts like the 'Great Ass!' line." 
         }
     ],
+
     'Hacksaw Ridge': [
         { 
-            question: "How accurate is the true story of Desmond Doss?", 
-            answer: "The film is astonishingly accurate, and in some cases, actually tones down the truth because director Mel Gibson feared audiences wouldn't believe it. The real Desmond Doss estimated he saved 50 men, while his commanding officers estimated 100; the compromise was 75. In reality, Doss did step off a stretcher after being wounded to treat another soldier, and he did kick a grenade away to save his comrades—events depicted in the film that actually happened." 
+            question: "How much of Desmond Doss’s story is true?", 
+            answer: "Almost all of it. In fact, director Mel Gibson had to *remove* some of the real-life heroics—like Doss being hit by a sniper and crawling 300 yards to safety—because he thought audiences would find it too unbelievable for a movie." 
         },
         { 
-            question: "Why did Desmond Doss refuse to touch a gun?", 
-            answer: "Doss was a devout Seventh-day Adventist who strictly adhered to the Ten Commandments, specifically 'Thou shalt not kill.' However, he strongly believed in the war's cause against fascism. His solution was to enlist not as a combatant, but as a combat medic, viewing his role as saving lives amidst the death. This distinction made him a 'conscientious cooperator' rather than a conscientious objector." 
-        },
-        { 
-            question: "What is the significance of the knot tying scene?", 
-            answer: "Early in the film, Doss is shown practicing a specific knot (the double bowline). This setup pays off in the climax on the ridge. When lowering 75 wounded men down the sheer cliff face, Doss used that specific knot to create a harness for each soldier. This allowed him to lower them one by one without them slipping out, a feat of physical endurance that lasted for over 12 hours under enemy fire." 
-        },
-        { 
-            question: "Did Desmond Doss receive the Medal of Honor?", 
-            answer: "Yes. On October 12, 1945, Desmond Doss became the first conscientious objector in American history to be awarded the Medal of Honor. It was presented to him by President Harry S. Truman. The film captures the rarity of his courage: entering the bloodiest battle of the Pacific theater without a single weapon to protect himself, armed only with his faith and a medical kit." 
+            question: "Why did he refuse to carry a weapon?", 
+            answer: "Doss was a Seventh-day Adventist. His refusal wasn't about cowardice, but a strict adherence to 'Thou Shalt Not Kill.' He preferred the term 'Conscientious Cooperator' because he wanted to serve his country, just without taking a life." 
         }
     ],
+
     'Ip Man': [
         { 
-            question: "How historically accurate is the movie Ip Man?", 
-            answer: "While Ip Man was a real person—a Wing Chun grandmaster and the eventual teacher of Bruce Lee—the film takes significant dramatic liberties. The events during the Japanese occupation of Foshan are heavily dramatized for cinematic effect. There is no historical record of Ip Man fighting a Japanese General in a public duel, nor did he work in a coal mine. However, the film accurately captures his demeanor, philosophy, and status as a respected martial arts figure." 
+            question: "How accurate is this to the life of Bruce Lee’s teacher?", 
+            answer: "It’s a 'legendary' biography rather than a factual one. While Ip Man was a real Wing Chun grandmaster, the fights against Japanese generals are dramatized. However, the film perfectly captures the philosophy of Wing Chun: speed, efficiency, and calmness under pressure." 
         },
         { 
-            question: "What martial arts style is used in the movie?", 
-            answer: "The film showcases Wing Chun, a concept-based traditional Chinese Kung Fu style specializing in close-range combat. It emphasizes centerline theory (protecting your center while attacking the opponent's), rapid-fire punches (chain punching), and simultaneous attack and defense. Donnie Yen trained for nine months specifically in Wing Chun to master its unique, narrow stance and rapid hand movements." 
-        },
-        { 
-            question: "Is the '1 vs 10' fight scene realistic?", 
-            answer: "The iconic scene where Ip Man demands to fight ten black belts is a dramatization, but it perfectly illustrates the tactical advantage of Wing Chun. The style is designed to overwhelm opponents with speed and efficiency rather than brute strength. By using rapid strikes to vital points and breaking the opponents' structure, the choreography demonstrates how a skilled practitioner can manage multiple attackers in a confined space." 
-        },
-        { 
-            question: "Did Donnie Yen really injure anyone during filming?", 
-            answer: "The fight scenes were performed with high intensity. During the filming of the fight with the Northern master (Fan Siu-wong), Donnie Yen accidentally cut Fan near the eye with a prop weapon. Conversely, Donnie Yen himself sustained an injury near his eye during the final fight sequence. The intensity on screen reflects the physical toll and dedication of the stunt team." 
+            question: "Did Donnie Yen actually learn Wing Chun for the role?", 
+            answer: "Yes. Despite being a master of many styles, Yen trained for 9 months specifically in Wing Chun to master its unique 'chain punching' and centerline defense, making the fight choreography feel grounded and elite." 
         }
     ],
+
     'Donnie Darko': [
         { 
-            question: "What is the Tangent Universe explained simply?", 
-            answer: "The film's lore (explained in the Director's Cut) posits that at the moment the jet engine fell, time corrupted, creating an unstable 'Tangent Universe.' This alternate reality can only sustain itself for 28 days before collapsing and destroying the primary universe. Donnie is the 'Living Receiver' chosen to guide the 'Artifact' (the engine) back to the primary timeline to close the loop and save existence, sacrificing himself in the process." 
+            question: "Theatrical vs. Director’s Cut: Which one should I watch?", 
+            answer: "The Theatrical Cut is preferred by most fans because it's more mysterious and dream-like. The Director’s Cut adds explicit explanations about time travel 'Tangent Universes,' which some feel removes the 'cult' magic of the original mystery." 
         },
         { 
-            question: "Is Frank the rabbit a ghost or a hallucination?", 
-            answer: "Frank is technically a 'Manipulated Dead.' In the Tangent Universe, Frank (the human) is killed by Donnie. This allows his spirit to travel back through time to guide Donnie toward his destiny. He isn't a hallucination of mental illness, but a metaphysical entity ensuring that Donnie completes the tasks necessary to reset the timeline." 
-        },
-        { 
-            question: "Why does Donnie laugh at the end?", 
-            answer: "In the final moments, Donnie realizes that by staying in bed and allowing the jet engine to kill him, he is resetting the timeline. He laughs because he has achieved enlightenment; he understands his purpose was to save the world and the people he loves (like Gretchen and his mother/sister who died in the Tangent Universe). His death is a moment of triumphant acceptance, not tragedy." 
-        },
-        { 
-            question: "Should I watch the Theatrical or Director's Cut?", 
-            answer: "It depends on your preference for ambiguity. The Theatrical Cut is more mysterious, leaving much of the time travel logic open to interpretation and focusing on the emotional journey. The Director's Cut includes pages from 'The Philosophy of Time Travel' book on screen, which explicitly explains the sci-fi mechanics (Tangent Universe, Manipulated Living, etc.). Most fans prefer the Theatrical Cut for its pacing and mystery." 
+            question: "What does the ending actually mean? (Spoiler-Free)", 
+            answer: "It’s a story about sacrifice. Donnie realizes that for the world (and the people he loves) to survive, he must accept a destiny that only he can fulfill. It’s less of a tragedy and more of a triumphant 'reset' of the universe." 
         }
     ],
+
     'Black Swan': [
         { 
-            question: "Did Natalie Portman do her own dancing?", 
-            answer: "This was a subject of controversy. Natalie Portman trained for a year prior to filming, losing 20 pounds and doing ballet five hours a day. While she performed the upper-body acting and close-ups, professional ballerina Sarah Lane served as her body double for the complex footwork and wide shots. VFX were used to graft Portman's face onto Lane's body for the most difficult technical sequences." 
+            question: "Is this a horror movie or a drama?", 
+            answer: "It’s a 'Psychological Body-Horror.' Director Darren Aronofsky uses the physical toll of ballet—peeling skin, snapping joints—to show the mental breakdown of a perfectionist. It’s often called a companion piece to his other film, *The Wrestler*." 
         },
         { 
-            question: "Is Black Swan considered a horror movie?", 
-            answer: "Yes, it is widely classified as a psychological horror film. It utilizes classic horror tropes—body horror (peeling skin, snapping bones, growing feathers), doppelgängers, hallucinations, and a descent into madness—to visualize the internal pressure of perfectionism. It treats the physical toll of ballet with the same visceral gruesomeness as a Cronenberg film." 
-        },
-        { 
-            question: "What is the meaning of the final line 'I was perfect'?", 
-            answer: "The line signifies that Nina has finally achieved the artistic transcendence she craved, but at the cost of her life (or sanity). By embracing her dark side (the Black Swan) and destroying her fragile innocence (the White Swan), she achieved a singular moment of flawless performance. It is a tragic commentary on how the pursuit of artistic perfection can require total self-destruction." 
-        },
-        { 
-            question: "How does it connect to 'The Wrestler'?", 
-            answer: "Director Darren Aronofsky originally conceived the stories of 'The Wrestler' and 'Black Swan' as one film about a wrestler and a ballerina having a love affair. He eventually split them into two companion pieces. He views them as mirrors: 'The Wrestler' is about the lowest art form destroying the body, while 'Black Swan' is about the highest art form destroying the mind." 
+            question: "Did Natalie Portman really do her own stunts?", 
+            answer: "Portman trained for a year and lost 20 pounds to look like a pro. While she did most of the upper-body work and acting, professional ballerina Sarah Lane performed the complex 'en pointe' footwork." 
         }
     ],
+
     'Perfect Days': [
         { 
-            question: "Is the Tokyo Toilet project real?", 
-            answer: "Yes. The film was initially conceived as a promotional documentary for 'The Tokyo Toilet,' a real-life urban redevelopment project where famous architects (like Tadao Ando and Kengo Kuma) redesigned 17 public restrooms in Shibuya to be works of art. Director Wim Wenders decided to turn the concept into a fictional narrative feature instead, focusing on the soul of the man who cleans them." 
+            question: "Why is a movie about a toilet cleaner so highly rated?", 
+            answer: "It’s a 'slow cinema' masterpiece about finding dignity in routine. It was actually commissioned to celebrate 'The Tokyo Toilet' architectural project, but became a deeply moving character study about the beauty of the present moment." 
         },
         { 
-            question: "What is the significance of the concept 'Komorebi'?", 
-            answer: "The film is a meditation on the Japanese word 'Komorebi,' which describes the interplay of sunlight filtering through the leaves of trees. This untranslatable concept represents the fleeting, unique beauty of a single moment that can never be replicated. Hirayama's daily photography of trees captures this philosophy—finding profound joy in the small, shifting details of a routine life." 
-        },
-        { 
-            question: "What does the music represent for Hirayama?", 
-            answer: "Hirayama listens exclusively to cassette tapes of classic Western rock (The Animals, Lou Reed, The Velvet Underground, Nina Simone) in his van. The soundtrack represents his rich inner life and his connection to a tactile, analog past. The lyrics often comment on the narrative, specifically Lou Reed's 'Perfect Day,' which underscores the film's theme that a simple day can be a perfect one." 
-        },
-        { 
-            question: "Why did Kōji Yakusho win Best Actor at Cannes?", 
-            answer: "Yakusho's performance is a masterclass in minimalism. With very little dialogue, he conveys a complex history of sorrow, dignity, and contentment purely through micro-expressions and body language. The final shot—a long, unbroken close-up of him driving while crying and smiling simultaneously—is considered one of the greatest feats of acting in recent cinema history." 
+            question: "What is the meaning of 'Komorebi'?", 
+            answer: "It’s a Japanese word for sunlight filtering through leaves. The movie uses this concept to show that every moment is unique and fleeting—just like the light through the trees that the main character, Hirayama, photographs every day." 
         }
     ],
+
     'Predator': [
         { 
-            question: "How was the Predator creature design created?", 
-            answer: "The original design was a nimble, insect-like creature that looked disastrous on camera. Special effects legend Stan Winston was brought in to redesign it. While on a plane with James Cameron, Winston was sketching concepts. Cameron remarked, 'I've always wanted to see something with mandibles.' Winston added the crab-like facial features, creating one of cinema's most iconic monsters." 
+            question: "What’s the story behind the 'Epic Handshake' meme?", 
+            answer: "The mid-air bicep flex between Arnold Schwarzenegger and Carl Weathers was meant to show 80s 'hyper-masculinity.' It became one of the internet’s most famous memes, used to show two groups finally agreeing on something." 
         },
         { 
-            question: "Why was Jean-Claude Van Damme fired from the movie?", 
-            answer: "Van Damme was originally cast to play the Predator in the early 'insect' suit. He reportedly hated the suit (calling it a lobster), passed out frequently due to the jungle heat inside the rubber, and was frustrated that his kickboxing skills wouldn't be seen. He was eventually fired/quit, and the 7'2\" Kevin Peter Hall was hired to play the redesigned, imposing hunter." 
-        },
-        { 
-            question: "What is the origin of the famous handshake meme?", 
-            answer: "The biceps-bulging mid-air clasp between Arnold Schwarzenegger (Dutch) and Carl Weathers (Dillon) occurs early in the film. It was intended to show the history and alpha-male rivalry between the characters. The internet later adopted it as the 'Epic Handshake' meme, using it to symbolize two different groups agreeing on a shared truth. It remains the ultimate symbol of 80s action machismo." 
-        },
-        { 
-            question: "How did they film the heat vision scenes?", 
-            answer: "The filmmakers used a real thermal camera for the Predator's POV shots. However, the Mexican jungle was so hot that the actors' body temperatures didn't stand out against the background trees. To create the necessary contrast, the crew had to spray the trees with ice water moments before rolling the camera so the actors would appear 'hot' against a 'cool' background." 
+            question: "Was Jean-Claude Van Damme almost the Predator?", 
+            answer: "Yes! He was originally cast as the alien, but he hated the original 'bug-like' suit and complained that he couldn't show off his kickboxing. He was replaced by the 7'2\" Kevin Peter Hall, and the monster was redesigned into the icon we know today." 
         }
     ],
-    'O Brother, Where Art Thou?': [
-        { 
-            question: "How does the film parallel The Odyssey?", 
-            answer: "The film is a loose, satirical adaptation of Homer's epic poem set in the Depression-era South. George Clooney's character is Ulysses (Odysseus). Key parallels include the blind railroad prophet (Tiresias), the Sirens washing clothes in the river, the one-eyed Bible salesman Big Dan Teague (the Cyclops), and the crooked governor Menelaus 'Pappy' O'Daniel (King Menelaus)." 
-        },
-        { 
-            question: "Did the actors actually sing 'Man of Constant Sorrow'?", 
-            answer: "While Tim Blake Nelson (Delmar) sang his own vocals for 'In the Jailhouse Now,' George Clooney did not sing 'Man of Constant Sorrow.' He practiced for weeks but was ultimately dubbed by Dan Tyminski of the band Union Station. The soundtrack became a cultural phenomenon, winning the Grammy for Album of the Year and revitalizing American interest in bluegrass and folk music." 
-        },
-        { 
-            question: "Why does the movie look like an old postcard?", 
-            answer: "This was the first feature film to be entirely color-corrected digitally (using a digital intermediate). Cinematographer Roger Deakins wanted the film to look like 'an old hand-tinted postcard' with dried-out, sepia tones to reflect the Dust Bowl era. They digitally removed the lush greens of the Mississippi summer locations to achieve the golden, autumn-like aesthetic." 
-        },
-        { 
-            question: "Is the KKK rally scene based on reality?", 
-            answer: "The scene where the KKK performs a choreographed formation is a satirical absurdity typical of the Coen Brothers, but it serves a narrative purpose to rescue Tommy Johnson (based on real blues legend Tommy Johnson). The scene mocks the Klan's rituals while integrating the song 'O Death,' sung by Ralph Stanley, adding a chilling, operatic weight to the climax." 
-        }
-    ],
+
     'All of Us Strangers': [
         { 
-            question: "Are the parents ghosts or is it a dream?", 
-            answer: "The film intentionally blurs the line between a ghost story and a psychological breakdown. The parents can be interpreted as literal ghosts suspended in 1987, or as Adam's vivid manifestation of his grief and his desperate need to come out to the parents he lost as a child. The film operates on 'dream logic,' suggesting that the healing conversation is more important than the metaphysical reality." 
+            question: "Is this a ghost story or a memory?", 
+            answer: "It’s both. The film uses a supernatural premise—a man meeting his dead parents at the age they were when they died—to explore the trauma of growing up queer in the 80s. It’s designed to feel like 'dream logic.'" 
         },
         { 
-            question: "Where was the movie filmed?", 
-            answer: "To achieve a deep level of personal authenticity, director Andrew Haigh chose to film the scenes with the parents inside his own actual childhood home in Croydon, London. The production team recreated the interior to look exactly as it did in the 1980s, adding a layer of personal memoir to the fictional narrative." 
-        },
-        { 
-            question: "What is the significance of the song 'The Power of Love'?", 
-            answer: "Frankie Goes to Hollywood's 'The Power of Love' serves as the film's emotional anchor. It represents the era of Adam's childhood (1984) and bridges the gap between his queer identity and his parents' understanding. The song's lyrics about love as a purifying, protective force underscore the film's conclusion that love transcends death and trauma." 
-        },
-        { 
-            question: "What does the ending mean?", 
-            answer: "The ending is devastatingly tragic yet transcendent. It reveals that Harry (Paul Mescal) had actually died the night he first knocked on Adam's door, and Adam has been hallucinating a relationship with his ghost/spirit. The final shot of them curling up together as a new star implies that while they are dead/gone, the love they shared created a permanent light in the universe." 
+            question: "Why is the chemistry between Andrew Scott and Paul Mescal so praised?", 
+            answer: "They are two of the most acclaimed 'Tier 1' actors today. Their performances are incredibly raw and intimate, turning a sci-fi premise into a deeply grounded story about loneliness and the 'power of love.'" 
         }
     ],
+
     'Superbad': [
         { 
-            question: "Is Superbad based on a true story?", 
-            answer: "Yes, heavily. Writers Seth Rogen and Evan Goldberg started writing the script when they were just 13 years old because they wanted to make a movie about their own lives. The main characters, Seth (Jonah Hill) and Evan (Michael Cera), are named after the writers, and many of the awkward encounters and the desperate quest for alcohol were based on their actual high school experiences in Vancouver." 
+            question: "Why is 'McLovin' still a cultural icon 15+ years later?", 
+            answer: "Because it’s the ultimate 'fake ID' nightmare. The name was chosen for its total absurdity. Christopher Mintz-Plasse (who was 17 at the time) was so annoying in his audition that Jonah Hill actually hated him—which created the perfect on-screen rivalry." 
         },
         { 
-            question: "Is McLovin a real person?", 
-            answer: "The character is fictional, but the concept of a terrible fake ID was real. The name 'McLovin' was chosen for its sheer absurdity—the idea that a nerdy high schooler would choose a smooth-sounding R&B singer name. Christopher Mintz-Plasse, who played McLovin, was a complete unknown who annoyed Jonah Hill in the audition room so much that Seth Rogen immediately knew he was the perfect antagonist for the group." 
-        },
-        { 
-            question: "How much of the movie was improvised?", 
-            answer: "A significant amount. While the script was written over a decade, producer Judd Apatow encourages 'alt lines' where actors riff multiple versions of a joke during a scene. Jonah Hill and Michael Cera had incredible natural chemistry and often deviated from the script to trade insults and awkward banter. The 'dick drawing' confession scene, however, was based on real drawings Seth Rogen made as a teenager." 
-        },
-        { 
-            question: "Why is Superbad considered a defining teen comedy?", 
-            answer: "Superbad captured a specific cultural moment right before the smartphone era took over. It bridged the gap between the gross-out humor of 'American Pie' and a more sensitive, character-driven look at male friendship. It frankly depicted the anxiety of separation before college, making it surprisingly poignant beneath the layers of crude humor. It effectively launched the careers of Jonah Hill, Michael Cera, and Emma Stone." 
+            question: "How did this movie change teen comedies?", 
+            answer: "Before Superbad, teen movies were mostly about 'getting the girl.' This movie shifted the focus to the 'platonic love' between male friends facing the anxiety of going to different colleges. It made being 'sensitive' and 'awkward' the new cool." 
         }
     ]
 };

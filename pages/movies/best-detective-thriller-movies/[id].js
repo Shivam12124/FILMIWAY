@@ -212,65 +212,57 @@ const DetectiveThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
 
     const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
-
   // =========================================================================
-  // ✅ THE STANDARDIZED ELITE SEO BLOCK (Feature First + Tag Protection)
+  // ✅ THE STANDARDIZED ELITE SEO BLOCK (Clean, Direct Intent)
   // =========================================================================
 
   const collectionSlug = 'best-detective-thriller-movies';
-  const routeSlug = 'detective-thriller'; // Exact Next.js folder name
-  const collectionShortTag = 'Mystery'; // Short, unique tag for this collection
 
   const scenes = SENSITIVE_TIMELINES?.[movie.tmdbId]?.scenes || [];
   
-  // 1. UNIQUE META TITLE LOGIC
+  // 1. PURE META TITLE LOGIC (No extra tags or keywords)
   let cleanSEOTitle = '';
   const coreUSP = "Timestamps & Parents Guide:";
 
   if (scenes.length > 0) {
-    // Ideal: Timestamps & Parents Guide: Se7en (1995) - Mystery
-    const idealTitle = `${coreUSP} ${movie.Title} (${currentMovieYear}) - ${collectionShortTag}`;
+    const idealTitle = `${coreUSP} ${movie.Title} (${currentMovieYear})`;
     
     if (idealTitle.length <= 62) {
-      cleanSEOTitle = idealTitle; // Fits perfectly
+      cleanSEOTitle = idealTitle; 
     } else {
-      // Backup: Drop the year to save the USP and the unique Tag
-      cleanSEOTitle = `${coreUSP} ${movie.Title} - ${collectionShortTag}`;
+      cleanSEOTitle = `${coreUSP} ${movie.Title}`;
     }
   } else {
-    // For completely clean movies (no timestamps needed)
-    const idealCleanTitle = `Parents Guide: ${movie.Title} (${currentMovieYear}) - Clean`;
+    const idealCleanTitle = `Parents Guide: ${movie.Title} (${currentMovieYear})`;
     
     if (idealCleanTitle.length <= 62) {
       cleanSEOTitle = idealCleanTitle;
     } else {
-      // Drop year if too long, but strictly keep the "Clean" tag
-      cleanSEOTitle = `Parents Guide: ${movie.Title} - Clean`;
+      cleanSEOTitle = `Parents Guide: ${movie.Title}`;
     }
   }
 
-  // 2. STANDARDIZED ELITE META DESCRIPTION
-  let cleanSEODesc = '';
-  
-  if (scenes.length > 0) {
-    // 🔥 Strictly grab only the first 2 timestamps so it's clean and readable
-    const rawTimes = scenes.slice(0, 2).map(s => s.end ? `${s.start}–${s.end}` : s.start);
-    const formattedTimes = rawTimes.join(', ') + ' and ' + rawTimes.slice(-1);
+  // 2. STANDARDIZED ELITE META DESCRIPTION (Mature Scenes & Top Ranges)
+  let currentRuntime = movie.Runtime || movie.runtime || "Official";
+  if (typeof currentRuntime === 'number') currentRuntime = `${currentRuntime} min`;
 
-    cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Viewer discretion advised. Includes exact scene timestamps: ${formattedTimes}.`;
+  let cleanSEODesc = '';
+  if (scenes.length > 0) {
+    const sceneCount = scenes.length;
+    // Show the full range (Start-End) for the first 2 scenes only to save space
+    const topScenes = scenes.slice(0, 2).map(s => `${s.start}–${s.end}`).join(', ');
+    
+    cleanSEODesc = `${movie.Title} Parents Guide: ${sceneCount} mature scenes (sex, nudity) manually verified. Skip: ${topScenes}... Full ${currentRuntime} list inside.`;
   } else {
-    // 🔥 Zero-liability runtime focus
-    cleanSEODesc = `Timestamps & Parents Guide for ${movie.Title} (${currentMovieYear}). Filmiway has identified zero explicit nudity or sexual content throughout the film's entire runtime.`;
+    cleanSEODesc = `${movie.Title} Parents Guide. Filmiway editors have manually verified zero sex scenes or nudity in the full ${currentRuntime} runtime.`;
   }
 
   // =========================================================================
 
-    // BUG FIX: Canonical URL is perfectly hardcoded to the exact route to prevent Hydration mismatches
-    
   const masterCollectionSlug = getPrimaryCollectionForMovie(movie.imdbID) || collectionSlug;
-    const canonicalUrl = `https://filmiway.com/movies/${masterCollectionSlug}/${movie.imdbID}`;
-
-    const { movieSchema, faqSchema } = generateCleanMovieSchema(
+  const canonicalUrl = `https://filmiway.com/movies/${masterCollectionSlug}/${movie.imdbID}`;
+  
+  const { movieSchema, faqSchema } = generateCleanMovieSchema(
         movie, 
         movieData, 
         currentMovieYear, 

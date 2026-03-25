@@ -232,8 +232,7 @@ const PeacockComedyMoviePage = ({ movie, tmdbData: movieData, sensitiveData }) =
 
   const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
   const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
-
- // =========================================================================
+  // =========================================================================
   // ✅ THE STANDARDIZED ELITE SEO BLOCK (Clean, Direct Intent)
   // =========================================================================
 
@@ -281,9 +280,9 @@ const PeacockComedyMoviePage = ({ movie, tmdbData: movieData, sensitiveData }) =
   // =========================================================================
 
   const masterCollectionSlug = getPrimaryCollectionForMovie(movie.imdbID) || collectionSlug;
-    const canonicalUrl = `https://filmiway.com/movies/${masterCollectionSlug}/${movie.imdbID}`;
-
-    const { movieSchema, faqSchema } = generateCleanMovieSchema(
+  const canonicalUrl = `https://filmiway.com/movies/${masterCollectionSlug}/${movie.imdbID}`;
+  
+  const { movieSchema, faqSchema } = generateCleanMovieSchema(
         movie, 
         movieData, 
         currentMovieYear, 

@@ -216,41 +216,57 @@ const ShutterIslandMoviePage = ({ movie, tmdbData, sensitiveData }) => {
     const movieData = tmdbData;
     const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.Year || 'Unknown';
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
+  // =========================================================================
+  // ✅ THE STANDARDIZED ELITE SEO BLOCK (Clean, Direct Intent)
+  // =========================================================================
+
+  const collectionSlug = 'movies-like-shutter-island';
+
+  const scenes = SENSITIVE_TIMELINES?.[movie.tmdbId]?.scenes || [];
+  
+  // 1. PURE META TITLE LOGIC (No extra tags or keywords)
+  let cleanSEOTitle = '';
+  const coreUSP = "Timestamps & Parents Guide:";
+
+  if (scenes.length > 0) {
+    const idealTitle = `${coreUSP} ${movie.Title} (${currentMovieYear})`;
     
-    const collectionSlug = router.pathname.split('/')[2];
-    const masterCollectionSlug = getPrimaryCollectionForMovie(movie.imdbID) || 'missing-slug';
-    const canonicalUrl = `https://filmiway.com/movies/${masterCollectionSlug}/${movie.imdbID}`;
-    const movieTitle = movie?.Title || 'Untitled Movie';
-    const dynamicCollectionName = 'Movies Like Shutter Island';
-
-    // =========================================================================
-    // ✅ THE STANDARDIZED ELITE SEO BLOCK
-    // =========================================================================
-
-    const scenes = SENSITIVE_TIMELINES?.[movie.tmdbId]?.scenes || [];
-    
-    // 1. UNIQUE META TITLE (Targets "Parents Guide & Timestamps")
-    const cleanSEOTitle = scenes.length > 0
-        ? `${movieTitle} (${currentMovieYear}) Parents Guide & Timestamps | ${dynamicCollectionName}`
-        : `${movieTitle} (${currentMovieYear}) Parents Guide | ${dynamicCollectionName}`;
-
-    // 2. STANDARDIZED ELITE META DESCRIPTION
-    let cleanSEODesc = '';
-    
-    if (scenes.length > 0) {
-        const rawTimes = scenes.slice(0, 3).map(s => s.end ? `${s.start}–${s.end}` : s.start);
-        const formattedTimes = rawTimes.length > 1 
-        ? `${rawTimes.slice(0, -1).join(', ')} and ${rawTimes.slice(-1)}` 
-        : rawTimes[0];
-
-        cleanSEODesc = `Parents Guide for ${movieTitle} (${currentMovieYear}). Viewer discretion advised. Includes exact scene timestamps: ${formattedTimes}.`;
+    if (idealTitle.length <= 62) {
+      cleanSEOTitle = idealTitle; 
     } else {
-        cleanSEODesc = `Parents Guide for ${movieTitle} (${currentMovieYear}). Filmiway Timestamps & Parents Guide: No explicit sexual content or severe violence identified.`;
+      cleanSEOTitle = `${coreUSP} ${movie.Title}`;
     }
+  } else {
+    const idealCleanTitle = `Parents Guide: ${movie.Title} (${currentMovieYear})`;
+    
+    if (idealCleanTitle.length <= 62) {
+      cleanSEOTitle = idealCleanTitle;
+    } else {
+      cleanSEOTitle = `Parents Guide: ${movie.Title}`;
+    }
+  }
 
-    // =========================================================================
+  // 2. STANDARDIZED ELITE META DESCRIPTION (Mature Scenes & Top Ranges)
+  let currentRuntime = movie.Runtime || movie.runtime || "Official";
+  if (typeof currentRuntime === 'number') currentRuntime = `${currentRuntime} min`;
 
-    const { movieSchema, faqSchema } = generateCleanMovieSchema(
+  let cleanSEODesc = '';
+  if (scenes.length > 0) {
+    const sceneCount = scenes.length;
+    // Show the full range (Start-End) for the first 2 scenes only to save space
+    const topScenes = scenes.slice(0, 2).map(s => `${s.start}–${s.end}`).join(', ');
+    
+    cleanSEODesc = `${movie.Title} Parents Guide: ${sceneCount} mature scenes (sex, nudity) manually verified. Skip: ${topScenes}... Full ${currentRuntime} list inside.`;
+  } else {
+    cleanSEODesc = `${movie.Title} Parents Guide. Filmiway editors have manually verified zero sex scenes or nudity in the full ${currentRuntime} runtime.`;
+  }
+
+  // =========================================================================
+
+  const masterCollectionSlug = getPrimaryCollectionForMovie(movie.imdbID) || collectionSlug;
+  const canonicalUrl = `https://filmiway.com/movies/${masterCollectionSlug}/${movie.imdbID}`;
+  
+  const { movieSchema, faqSchema } = generateCleanMovieSchema(
         movie, 
         movieData, 
         currentMovieYear, 

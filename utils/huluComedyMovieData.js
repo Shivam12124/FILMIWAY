@@ -333,202 +333,113 @@ export const RATING_OPTIONS = [
 export const HULU_COMEDY_MOVIE_FAQS = {
     'Superbad': [
         { 
-            question: "Is McLovin a real name?", 
-            answer: "No, it was a fake name on the Hawaiian ID that the character Fogell used. The absurdity of choosing a single moniker like 'Seal' or 'Madonna'—rather than a standard first and last name—is the core of the joke. Originally, the character debated using the name 'Muhammed,' but settled on McLovin because it sounded like a 'sexy Irish R&B singer.'" 
+            question: "Why is 'McLovin' such a famous movie meme?", 
+            answer: "The joke stems from the character Fogell choosing a single, nonsensical moniker for a fake ID instead of a standard name. Seth Rogen revealed the name was inspired by the idea of a 'sexy Irish R&B singer.' It became a cultural touchstone for teen awkwardness in the late 2000s." 
         },
         { 
-            question: "Who wrote Superbad?", 
-            answer: "Seth Rogen and Evan Goldberg started writing the script when they were just 13 years old, essentially trying to write a movie about their own lives to see if they could get into parties. This is why the dialogue feels so authentically awkward and why the main characters are literally named Seth and Evan." 
+            question: "Is the friendship between Seth and Evan based on real people?", 
+            answer: "Yes. Writers Seth Rogen and Evan Goldberg wrote the script at age 13 as a semi-autobiographical project. The lead characters are named after them, and the dialogue was specifically crafted to capture the authentic, messy way suburban teens actually talk." 
         },
         { 
-            question: "Is it improvised?", 
-            answer: "A significant portion of the film is improvised. Jonah Hill and Michael Cera had incredible natural chemistry and often deviated from the script to trade insults and awkward banter. The 'dick drawing' confession scene, however, was based on real drawings Seth Rogen made as a teenager." 
+            question: "How much of the movie was improvised?", 
+            answer: "While the plot was scripted, the banter between Jonah Hill and Michael Cera was heavily improvised to keep the chemistry natural. However, the famous 'penis drawing' montage was fully scripted—Seth Rogen actually drew those as a teenager." 
         },
         { 
-            question: "Who played the cops?", 
-            answer: "Seth Rogen and Bill Hader played Officers Michaels and Slater. They created one of the funniest subplots in movie history by subverting the 'scary cop' trope, portraying them instead as irresponsible, lonely man-children who just want to be cool and hang out with the high schooler McLovin." 
-        },
-        {
-            question: "Does Superbad have nudity or sex scenes?",
-            answer: "Yes, Superbad contains multiple scenes with nudity, primarily in a comedic context. The sensitive scenes occur at approximately 4:45, 9:38, and a longer sequence from 18:15 to 20:30. Our content timeline provides exact timestamps."
+            question: "Content Advisory: Nudity and Language", 
+            answer: "Superbad is a hard R-rated comedy. It contains frequent profanity and comedic nudity. Key timestamps for sensitive content: 4:45, 9:38, and a sequence from 18:15 to 20:30." 
         }
     ],
+
     'O Brother, Where Art Thou?': [
         { 
-            question: "Is it really based on The Odyssey?", 
-            answer: "Yes, it is a loose, Depression-era adaptation of Homer's epic poem 'The Odyssey.' Ulysses Everett McGill corresponds to Odysseus trying to get home to his wife, Penny (Penelope). The film features direct parallels like the Cyclops (John Goodman's one-eyed Bible salesman) and the Sirens (the women washing clothes in the river)." 
+            question: "Is this movie a direct retelling of 'The Odyssey'?", 
+            answer: "It’s a 'folk-art' adaptation. Set in the 1930s Deep South, it mirrors Homer’s epic: Everett (Odysseus) tries to return to his wife Penny (Penelope) while encountering parallels like the Cyclops (a one-eyed salesman) and the Sirens (women at the river)." 
         },
         { 
-            question: "Did the actors really sing?", 
-            answer: "Most of the singing was dubbed by professional bluegrass musicians. For example, George Clooney practiced for weeks but was ultimately dubbed by Dan Tyminski of Alison Krauss and Union Station. However, Tim Blake Nelson (Delmar) did perform his own vocals for 'In the Jailhouse Now.'" 
+            question: "Did George Clooney actually sing 'Man of Constant Sorrow'?", 
+            answer: "No. While Clooney practiced for weeks, his voice was dubbed by bluegrass artist Dan Tyminski. However, co-star Tim Blake Nelson (Delmar) did perform his own vocals for 'In the Jailhouse Now.'" 
         },
         { 
-            question: "Why is the color so unique?", 
-            answer: "It was the first feature film in history to be entirely color-corrected digitally. The Coen Brothers wanted a dry, dust-bowl aesthetic that resembled old hand-tinted postcards. Since the actual Mississippi locations were lush and green, they used digital grading to turn the green leaves into a sepia-toned autumn gold." 
-        },
-        { 
-            question: "What is the Soggy Bottom Boys?", 
-            answer: "It is the fictional band formed by the main characters to make a quick buck. Their hit song, 'Man of Constant Sorrow,' became a massive real-world phenomenon, winning the Grammy Award for Album of the Year and sparking a nationwide revival of folk and bluegrass music." 
+            question: "Why does the movie have a unique 'sepia' look?", 
+            answer: "It was the first feature film to be entirely color-corrected digitally. The Coen Brothers wanted a 'dust bowl' aesthetic. Since Mississippi was too green during filming, they digitally tinted every frame to look like an old, sun-faded postcard." 
         }
     ],
+
     'Borat': [
         { 
-            question: "Was it scripted?", 
-            answer: "The vast majority of the interactions with the public were completely unscripted. Sacha Baron Cohen stayed in character as Borat 24/7 during production to provoke genuine, unfiltered reactions from real people, often exposing deep-seated prejudices or confusing polite society with his outrageous behavior." 
+            question: "How much of Borat is real vs. scripted?", 
+            answer: "Only the main characters were scripted. The reactions from the public were 100% real. Sacha Baron Cohen stayed in character for weeks at a time to provoke genuine responses, often resulting in the police being called (over 90 times during production)." 
         },
         { 
-            question: "Did he really get arrested?", 
-            answer: "Yes, the production was incredibly chaotic. The police were called on the film crew over 90 times during filming. Sacha Baron Cohen often had to flee scenes immediately after cutting to avoid being arrested or attacked by angry subjects who realized they had been duped." 
+            question: "Is the depiction of Kazakhstan accurate?", 
+            answer: "No, it’s a total caricature. The 'Kazakh' village was actually filmed in Romania, and the language Borat speaks is a mix of Hebrew and gibberish. Ironically, Kazakhstan later used Borat's 'Very Nice!' catchphrase for their official 2020 tourism campaign." 
         },
         { 
-            question: "Is Kazakhstan really like that?", 
-            answer: "No, absolutely not. The 'Kazakhstan' scenes were actually filmed in a poor village in Romania called Glod, and the language Borat speaks is largely Hebrew mixed with gibberish. The real Kazakhstan government initially banned the film but later embraced the catchphrase 'Very Nice!' for a tourism campaign." 
-        },
-        { 
-            question: "Why did he wear the green mankini?", 
-            answer: "The neon green mankini was designed specifically to be the most unflattering piece of swimwear imaginable. The goal was to maximize the discomfort of the conservative hotel guests and beachgoers he interacted with, creating immediate visual comedy through sheer awkwardness." 
-        },
-        {
-            question: "Does Borat have nudity or sex scenes?",
-            answer: "Yes, Borat is famous for its graphic and shocking humor, which includes scenes with nudity and sexual content. There is a scene with partial nudity at 3:36 and a very graphic scene involving sexual content and nudity from 55:15 to 58:20. Viewer discretion is strongly advised."
+            question: "Content Advisory: Graphic Humour & Nudity", 
+            answer: "The film is known for extreme 'cringe comedy.' Note: There is a highly graphic scene involving full male nudity from 55:15 to 58:20 that is a major talking point of the film." 
         }
     ],
+
     'Bullet Train': [
         { 
-            question: "Is it based on a book?", 
-            answer: "Yes, the film is an adaptation of the 2010 novel 'Maria Beetle' (published as 'Bullet Train' in English) by Japanese author Kōtarō Isaka. While the book is a darker thriller, the movie adaptation leaned heavily into the action-comedy genre, adding a layer of Jackie Chan-inspired slapstick." 
+            question: "What is the 'Thomas the Tank Engine' obsession about?", 
+            answer: "It’s a character philosophy for the assassin Lemon. He uses the children's show to categorize people's personalities (e.g., being a 'Diesel' means you're untrustworthy). This absurdist logic is a core part of the film’s 'action-comedy' DNA." 
         },
         { 
-            question: "Who is the cameo at the end?", 
-            answer: "Ryan Reynolds makes a surprise, uncredited cameo as the assassin 'Carver'—the man Brad Pitt's character was filling in for. This was reportedly a favor to repay Brad Pitt for his blink-and-you-miss-it cameo as The Vanisher in Reynolds' movie 'Deadpool 2'." 
+            question: "Did Brad Pitt really do his own stunts at 58?", 
+            answer: "Yes, approximately 95% of them. Director David Leitch (who was Pitt’s former stunt double) designed the fights to be 'Jackie Chan-style'—using the environment and props rather than just traditional martial arts." 
         },
         { 
-            question: "Did Brad Pitt do his own stunts?", 
-            answer: "According to the film's stunt coordinator, Brad Pitt performed approximately 95% of his own physical stunts. At 58 years old, he leaned into the 'Jackie Chan style' of fighting, which prioritizes humor, defensive improvisation, and using props over brute force." 
-        },
-        { 
-            question: "Why is it so funny?", 
-            answer: "The humor comes from the contrast between the high-stakes violence and the petty, mundane bickering of the assassins. Characters like Lemon and Tangerine discuss 'Thomas the Tank Engine' with the same seriousness as they discuss murder, creating a unique tone of nihilistic fun." 
+            question: "Is there a post-credits scene or cameo I should watch for?", 
+            answer: "Keep an eye out for an uncredited cameo by Ryan Reynolds as 'Carver.' It was a 'revenge' cameo after Brad Pitt appeared for one second in Reynolds' 'Deadpool 2'." 
         }
     ],
+
     'Palm Springs': [
         { 
-            question: "How long was Nyles stuck?", 
-            answer: "While the movie never gives an explicit number, writer Andy Siara has stated that Nyles was stuck for over 40 years, while fan calculations based on his knowledge of quantum physics and choreography suggest it could be thousands of years. He has been there long enough to forget his life before the loop." 
+            question: "How long was Nyles actually stuck in the time loop?", 
+            answer: "The movie is vague, but the writer suggested Nyles was stuck for over 40 years. Some fans calculate it as centuries given his mastery of quantum physics and the complex choreography he performs during the wedding." 
         },
         { 
-            question: "What is the science behind it?", 
-            answer: "The film deliberately avoids over-explaining the science, using a mysterious glowing cave as a plot device. The focus is not on the 'how' but on the existential crisis of being trapped. However, the solution involving quantum physics and blowing themselves up implies a sophisticated sci-fi logic under the hood." 
+            question: "How does it differ from 'Groundhog Day'?", 
+            answer: "Unlike 'Groundhog Day,' where one person is trapped, Palm Springs explores the nihilism of being trapped *with someone else*. It’s less about 'becoming a better person' and more about finding a reason to care in an infinite world." 
         },
         { 
-            question: "Is it a rom-com?", 
-            answer: "Yes, but it brilliantly subverts the genre. Instead of the traditional 'meet-cute' and courtship, the time loop forces the couple to skip straight to the messy, domestic reality of being stuck together forever. It explores whether love can survive without the promise of a 'tomorrow'." 
-        },
-        { 
-            question: "Who is Roy?", 
-            answer: "J.K. Simmons plays Roy, a family man who Nyles accidentally dragged into the loop years prior. Roy serves as a dark mirror to Nyles, initially hunting him for sport out of vengeance before finding a sense of peace and acceptance within the infinite day." 
-        },
-        {
-            question: "Does Palm Springs have nudity or sex scenes?",
-            answer: "Yes, Palm Springs features some sexual content and brief nudity. These scenes include sexual content at 1:12 and 31:20, a scene with no nudity at 39:20, and a brief instance of partial nudity at 29:53. The scenes are generally comedic in tone."
+            question: "Content Advisory: Sex and Nudity", 
+            answer: "Features comedic sexual situations and brief nudity. Notable timestamps: 1:12, 29:53 (partial nudity), and 31:20." 
         }
     ],
-    'Super Troopers': [
-        { 
-            question: "Is there a sequel?", 
-            answer: "Yes, due to the massive cult following of the original, 'Super Troopers 2' was released in 2018. It was funded by a massive Indiegogo crowdfunding campaign that raised over $4.4 million, proving how beloved the original film had become over the years." 
-        },
-        { 
-            question: "Who are Broken Lizard?", 
-            answer: "Broken Lizard is the five-man comedy troupe that wrote, starred in, and directed the film. They formed at Colgate University and are known for their collaborative, hangout-style comedy. They went on to make other cult hits like 'Club Dread' and 'Beerfest'." 
-        },
-        { 
-            question: "Is the syrup scene real?", 
-            answer: "The actors really did chug the liquid, but it wasn't actual maple syrup, which would have made them violently ill. It was iced tea thickened with sugar and gum to look like syrup. Despite the swap, drinking that volume of sugar was still physically difficult for the cast." 
-        },
-        { 
-            question: "What is the 'Meow' game?", 
-            answer: "The 'Meow Game' is the film's most iconic prank, where a trooper tries to replace the word 'now' with 'meow' ten times during a traffic stop without the driver noticing. It became a viral phenomenon and is frequently quoted or imitated by fans (and occasionally real police officers)." 
-        },
-        {
-            question: "Does Super Troopers have nudity or sex scenes?",
-            answer: "Yes, Super Troopers includes scenes with nudity. There is a scene at 44:10, a non-sexual nudity scene from 58:10 to 1:00:10, and a brief moment of partial nudity at 1:07:27. These scenes are presented in a comedic context."
-        }
-    ],
-    'Twinless': [
-        { 
-            question: "Is this a real movie?", 
-            answer: "Yes, 'Twinless' is a 2025 release starring Dylan O'Brien and James Sweeney. It fits into the modern wave of 'traumedies' (trauma comedies) that explore serious subjects like grief and loss through a lens of dark, offbeat humor." 
-        },
-        { 
-            question: "Is it sad?", 
-            answer: "While the premise deals with the heavy topic of losing a twin sibling, the tone is primarily a buddy comedy. It balances the emotional weight of grief with absurd situations and the awkward process of finding a new 'other half' in a support group." 
-        },
-        { 
-            question: "Who directed it?", 
-            answer: "The film is directed by James Griffiths, a veteran of British comedy who is known for balancing heart and humor. His direction ensures the film remains respectful of the subject matter while still delivering consistent laughs." 
-        },
-        { 
-            question: "Is it streaming only?", 
-            answer: "As a Hulu Original film, it bypassed a wide theatrical release to debut directly on the platform, part of Hulu's strategy to bolster its exclusive comedy library with star-driven vehicles." 
-        },
-        {
-            question: "Does Twinless have nudity or sex scenes?",
-            answer: "Yes, Twinless contains scenes with sex and nudity. These occur at approximately 23:45 to 25:15 and again from 1:04:25 to 1:06:10. Our content timeline provides precise details for viewer guidance."
-        }
-    ],
-    'Big': [
-        { 
-            question: "How did they do the piano scene?", 
-            answer: "The iconic 'Heart and Soul' duet on the giant floor piano was performed practically by Tom Hanks and Robert Loggia. There was no CGI trickery; the actors spent hours practicing the choreography to ensure they hit the right keys with their feet in real-time." 
-        },
-        { 
-            question: "Was there an alternate ending?", 
-            answer: "Yes, early drafts of the script considered having the love interest, Susan, step into the Zoltar machine to become a child so she could stay with Josh. The studio ultimately rejected this as being too 'creepy' and complex, opting for the bittersweet goodbye instead." 
-        },
-        { 
-            question: "How old is Josh meant to be?", 
-            answer: "The character Josh Baskin is a 12-year-old boy trapped inside a 30-year-old man's body. Tom Hanks' performance is widely praised because he didn't play a 'dumb adult,' but rather genuinely captured the posture, energy, and innocence of a pre-teen." 
-        },
-        { 
-            question: "Did Tom Hanks improvise?", 
-            answer: "Tom Hanks improvised many of the film's funniest physical moments to sell the 'kid in an adult body' concept. The famous scene where he eats a baby corn like it's a corn on the cob was an unscripted choice that made it into the final cut." 
-        }
-    ],
-    'Theater Camp': [
-        { 
-            question: "Is it unscripted?", 
-            answer: "Much of the film is improvised. Following in the footsteps of Christopher Guest movies like 'Waiting for Guffman,' the actors worked from a script outline but improvised their dialogue to create a natural, chaotic, and authentic mockumentary feel." 
-        },
-        { 
-            question: "Are the kids real actors?", 
-            answer: "Yes, the children in the film are actual theater kids, not just props. They are incredibly talented performers who sang live on set, adding a layer of genuine impressiveness to the comedy of the camp setting." 
-        },
-        { 
-            question: "Who is Joan?", 
-            answer: "Joan is the beloved founder of the camp whose sudden coma sets the plot in motion. She is played by comedic legend Amy Sedaris, whose brief but manic energy establishes the high stakes for the eccentric counselors trying to save her legacy." 
-        },
-        { 
-            question: "Is the play at the end real?", 
-            answer: "The musical performed in the finale, 'Joan, Still,' was written specifically for the movie by the cast and crew. It serves as a perfect parody of self-serious theater while also delivering a genuinely touching emotional climax." 
-        }
-    ],
+
     'Idiocracy': [
         { 
-            question: "Why does everyone wear Crocs?", 
-            answer: "The costume designer, Deborah Everton, needed a futuristic shoe that looked cheap and stupid. She found a startup making rubber clogs called Crocs and used them, reasoning that 'no one would ever actually wear these in the future.' The irony became legendary when Crocs became a global fashion staple." 
+            question: "Is the story about Crocs being 'future shoes' true?", 
+            answer: "Yes. The costume designer chose Crocs because they were a tiny startup at the time and she thought they looked 'too stupid' for anyone to wear in real life. By the time the movie gained a cult following, Crocs had become a multi-billion dollar global brand." 
         },
         { 
-            question: "Is it a documentary?", 
-            answer: "While intended as a broad satire, fans and critics frequently joke that it has become a documentary. Many of its absurd predictions—like the corporate takeover of politics, the anti-intellectualism of media, and the 'screens everywhere' culture—feel eerily accurate today." 
+            question: "Why is this movie considered a 'prophetic' comedy?", 
+            answer: "In Tier 1 countries, 'Idiocracy' is often cited as a warning. It satirizes the commercialization of politics, the decline of language, and the rise of anti-intellectualism. Many fans joke that the film has shifted from 'comedy' to 'documentary.'" 
+        }
+    ],
+
+    'Twinless': [
+        { 
+            question: "What is the 'Traumedy' genre of this 2025 hit?", 
+            answer: "Twinless is a prime example of a 'Trauma-Comedy.' It uses the dark, awkward reality of losing a sibling to fuel a buddy-comedy dynamic between Dylan O'Brien and James Sweeney. It's meant for fans of 'The Bear' or 'Fleabag' who like humor mixed with heavy emotion." 
         },
         { 
-            question: "Why was it buried?", 
-            answer: "20th Century Fox released the film in a tiny number of theaters with zero marketing. It is widely believed they were afraid of offending the real-life advertisers featured in the film (like Carl's Jr., Starbucks, and Costco), whom the movie portrays as dystopian corporate overlords." 
+            question: "Is it a streaming-only release?", 
+            answer: "Yes, it was developed as a Hulu Original to capitalize on the 'prestige comedy' trend. It’s a key recommendation for users looking for high-concept stories that aren't traditional sitcoms." 
+        }
+    ],
+
+    'Big': [
+        { 
+            question: "Was the floor piano scene real or CGI?", 
+            answer: "It was 100% real. Tom Hanks and Robert Loggia practiced the choreography for weeks. There were no stunt doubles or digital edits; they actually played the notes with their feet on a custom-built 16-foot keyboard." 
         },
         { 
-            question: "What are electrolytes?", 
-            answer: "In the movie, the sports drink 'Brawndo' contains electrolytes, which the characters insist are 'what plants crave.' It is a biting satire on how consumers blindly repeat marketing buzzwords without understanding what they actually mean." 
+            question: "Why is Tom Hanks' performance considered legendary?", 
+            answer: "Hanks didn't play a 'stupid adult'; he studied the movements of 12-year-olds. He focused on their boundless energy and lack of social self-consciousness, which is why the 'baby corn' scene feels so authentically childish." 
         }
     ]
 };

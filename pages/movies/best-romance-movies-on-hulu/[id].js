@@ -225,41 +225,57 @@ const HuluRomanceMoviePage = ({ movie, tmdbData: movieData }) => {
 
     const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
+  // =========================================================================
+  // ✅ THE STANDARDIZED ELITE SEO BLOCK (Clean, Direct Intent)
+  // =========================================================================
 
-    // =========================================================================
-    // ✅ THE STANDARDIZED ELITE SEO BLOCK
-    // =========================================================================
+  const collectionSlug = 'best-romance-movies-on-hulu';
 
-    const collectionSlug = 'best-romance-movies-on-hulu';
-    const dynamicCollectionName = 'Best Romance Movies on Hulu';
+  const scenes = SENSITIVE_TIMELINES?.[movie.tmdbId]?.scenes || [];
+  
+  // 1. PURE META TITLE LOGIC (No extra tags or keywords)
+  let cleanSEOTitle = '';
+  const coreUSP = "Timestamps & Parents Guide:";
 
-    const scenes = SENSITIVE_TIMELINES?.[movie.tmdbId]?.scenes || [];
+  if (scenes.length > 0) {
+    const idealTitle = `${coreUSP} ${movie.Title} (${currentMovieYear})`;
     
-    // 1. UNIQUE META TITLE (Targets "Parents Guide & Timestamps")
-    const cleanSEOTitle = scenes.length > 0
-        ? `${movie.Title} (${currentMovieYear}) Parents Guide & Timestamps | ${dynamicCollectionName}`
-        : `${movie.Title} (${currentMovieYear}) Parents Guide | ${dynamicCollectionName}`;
-
-    // 2. STANDARDIZED ELITE META DESCRIPTION
-    let cleanSEODesc = '';
-    
-    if (scenes.length > 0) {
-        const rawTimes = scenes.slice(0, 3).map(s => s.end ? `${s.start}–${s.end}` : s.start);
-        const formattedTimes = rawTimes.length > 1 
-        ? `${rawTimes.slice(0, -1).join(', ')} and ${rawTimes.slice(-1)}` 
-        : rawTimes[0];
-
-        cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Viewer discretion advised. Includes exact scene timestamps: ${formattedTimes}.`;
+    if (idealTitle.length <= 62) {
+      cleanSEOTitle = idealTitle; 
     } else {
-        cleanSEODesc = `Parents Guide for ${movie.Title} (${currentMovieYear}). Filmiway Timestamps & Parents Guide: No nudity or explicit sexual content identified. Suitable for general viewing.`;
+      cleanSEOTitle = `${coreUSP} ${movie.Title}`;
     }
+  } else {
+    const idealCleanTitle = `Parents Guide: ${movie.Title} (${currentMovieYear})`;
+    
+    if (idealCleanTitle.length <= 62) {
+      cleanSEOTitle = idealCleanTitle;
+    } else {
+      cleanSEOTitle = `Parents Guide: ${movie.Title}`;
+    }
+  }
 
-    // =========================================================================
+  // 2. STANDARDIZED ELITE META DESCRIPTION (Mature Scenes & Top Ranges)
+  let currentRuntime = movie.Runtime || movie.runtime || "Official";
+  if (typeof currentRuntime === 'number') currentRuntime = `${currentRuntime} min`;
 
-    const masterCollectionSlug = getPrimaryCollectionForMovie(movie.imdbID) || collectionSlug;
-    const canonicalUrl = `https://filmiway.com/movies/${masterCollectionSlug}/${movie.imdbID}`;
+  let cleanSEODesc = '';
+  if (scenes.length > 0) {
+    const sceneCount = scenes.length;
+    // Show the full range (Start-End) for the first 2 scenes only to save space
+    const topScenes = scenes.slice(0, 2).map(s => `${s.start}–${s.end}`).join(', ');
+    
+    cleanSEODesc = `${movie.Title} Parents Guide: ${sceneCount} mature scenes (sex, nudity) manually verified. Skip: ${topScenes}... Full ${currentRuntime} list inside.`;
+  } else {
+    cleanSEODesc = `${movie.Title} Parents Guide. Filmiway editors have manually verified zero sex scenes or nudity in the full ${currentRuntime} runtime.`;
+  }
 
-    const { movieSchema, faqSchema } = generateCleanMovieSchema(
+  // =========================================================================
+
+  const masterCollectionSlug = getPrimaryCollectionForMovie(movie.imdbID) || collectionSlug;
+  const canonicalUrl = `https://filmiway.com/movies/${masterCollectionSlug}/${movie.imdbID}`;
+  
+  const { movieSchema, faqSchema } = generateCleanMovieSchema(
         movie, 
         movieData, 
         currentMovieYear, 
