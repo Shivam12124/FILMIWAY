@@ -294,184 +294,64 @@ export const RATING_OPTIONS = [
 /// 3. FAQS (Deep Analysis & Insight Edition)
 export const SURVIVAL_MOVIE_FAQS = {
     '127 Hours': [
-        { 
-            question: "Why does the film use a camcorder perspective so often?", 
-            answer: "Director Danny Boyle uses the camcorder to turn the audience into Aron's confessor. It creates an intimate, claustrophobic bond where Aron strips away his bravado. The camera becomes his only companion, allowing him to externalize his internal monologue and effectively 'leave a will' for the parents he ignored." 
-        },
-        { 
-            question: "What is the meaning of the 'Game Show' hallucination?", 
-            answer: "It represents the fragmentation of Aron's mind under dehydration and regret. It mocks his own ego—he realizes his predicament isn't bad luck, but the result of his own arrogance (not telling anyone where he went). It creates a jarring contrast between the bright, loud fantasy and the silent, dark canyon." 
-        },
-        { 
-            question: "Is the amputation scene medically accurate?", 
-            answer: "Extremely. Danny Boyle worked with medical professionals to replicate the sound of bone snapping (using a cello string breaking) and the tension of the nerve cutting. Aron Ralston himself confirmed it is indistinguishable from his memory of the event. It is designed to be a moment of liberation, not just gore." 
-        },
-        { 
-            question: "What does the premonition of the future son signify?", 
-            answer: "The vision of the future son is the 'spark' that gives Aron the final push to sever his arm. It shifts his survival instinct from 'I don't want to die' to 'I have a life I haven't lived yet.' It symbolizes that connection to others is the ultimate fuel for survival." 
-        }
+        { question: "Why does 127 Hours use a camcorder perspective?", answer: "Director Danny Boyle uses the camcorder to turn the audience into Aron’s confessor. It creates an intimate, claustrophobic bond where Aron strips away his bravado. The camera becomes his only companion, allowing him to externalize his regret and effectively 'leave a will' for the family he previously ignored." },
+        { question: "What is the meaning of the game show hallucination in 127 Hours?", answer: "It represents the fragmentation of Aron’s mind under severe dehydration. The hallucination mocks his own ego—he realizes his predicament isn't just bad luck, but the direct result of his own arrogance in not telling anyone his location. It creates a jarring contrast between the loud, bright fantasy and the silent, dark reality of the canyon." },
+        { question: "Is the amputation scene in 127 Hours medically accurate?", answer: "Extremely. The production worked with medical professionals to replicate the specific sound of bone snapping and the visceral tension of cutting a nerve. Aron Ralston himself confirmed the scene is nearly indistinguishable from his memory. It is framed as a moment of liberation and rebirth, rather than just gratuitous gore." },
+        { question: "What does the vision of the future son mean in 127 Hours?", answer: "The premonition of his future son is the 'spark' that gives Aron the final psychological push to sever his arm. It shifts his survival instinct from mere fear of death to a desperate hope for a life not yet lived. It symbolizes the theme that human connection is the ultimate fuel for survival." }
     ],
     'Society of the Snow': [
-        { 
-            question: "Why is the film narrated by Numa Turcatti, who dies?", 
-            answer: "Narrating through Numa (who was the moral center of the group) emphasizes that survival wasn't just about the ones who walked out, but the ones who gave their bodies to keep others alive. Numa represents the spiritual sacrifice of the group. His death acts as the catalyst that forces the final expedition to happen immediately." 
-        },
-        { 
-            question: "What does the 'Society' in the title refer to?", 
-            answer: "It refers to the new social contract the survivors had to build. Stripped of civilization's rules, money, and status, they created a society based on absolute love and mutual sacrifice. The decision to consume the dead wasn't savagery; in their context, it was a holy act of communion and brotherhood." 
-        },
-        { 
-            question: "How did the film achieve the realistic look of starvation?", 
-            answer: "The film was shot chronologically. The actors went on strict, medically supervised diets to lose significant weight during the shoot, mirroring the deterioration of the real survivors. The black urine shown is a medically accurate symptom of severe dehydration and starvation (ketosis and rhabdomyolysis)." 
-        },
-        { 
-            question: "Is the avalanche scene accurate?", 
-            answer: "Yes. Unlike the crash, which was chaos, the avalanche was a silent tomb. Survivors were buried alive for days inside the fuselage. This period is critical because it forced the survivors to bond even tighter physically and emotionally, solidifying the 'society' that would eventually save them." 
-        }
+        { question: "Why is Society of the Snow narrated by a character who dies?", answer: "Narrating through Numa Turcatti (the group's moral center) emphasizes that survival wasn't just about the ones who walked out, but about the collective sacrifice of those who gave their bodies to keep the others alive. Numa represents the spiritual heart of the group, and his death acts as the final catalyst for the rescue expedition." },
+        { question: "What does the 'Society' in the film's title actually refer to?", answer: "It refers to the new social contract the survivors were forced to build. Stripped of civilization, money, and status, they created a society based on absolute love and mutual sacrifice. In their context, the decision to consume the deceased was not an act of savagery, but a holy act of communion and brotherhood." },
+        { question: "How did the actors in Society of the Snow achieve the starvation look?", answer: "The film was shot chronologically to capture real physical change. The actors followed strict, medically supervised diets to lose significant weight during production. Additionally, details like the 'black urine' shown are medically accurate symptoms of severe dehydration and rhabdomyolysis (muscle breakdown) during starvation." },
+        { question: "How accurate is the avalanche scene in Society of the Snow?", answer: "The scene is terrifyingly accurate. Unlike the initial crash, the avalanche was a 'silent tomb' that buried survivors inside the fuselage for days. This period was critical for the survivors' bond, as the extreme physical and emotional proximity solidified the 'society' that would eventually lead to their survival." }
     ],
     'Cast Away': [
-        { 
-            question: "What is the psychological purpose of Wilson?", 
-            answer: "Wilson is a dissociation mechanism. Humans are social creatures; without interaction, the mind collapses. By projecting a personality onto the volleyball, Chuck creates an 'Other' to care for and argue with. Wilson allows Chuck to externalize his thoughts and maintain language skills, preventing total insanity." 
-        },
-        { 
-            question: "Why is there no music for the island scenes?", 
-            answer: "Director Robert Zemeckis intentionally removed the score for the entire middle section. This forces the audience to experience the crushing silence of isolation. We only hear wind, waves, and Chuck's breathing. When the music finally returns during his escape, it hits the audience with overwhelming emotional force." 
-        },
-        { 
-            question: "What was in the unopened FedEx package?", 
-            answer: "Symbolically, the package represents Hope and Control. By saving one package, Chuck retains his identity as a dutiful FedEx employee—a link to his past self. It gives him a mission beyond just eating and sleeping. (The script draft revealed it contained salsa, but the mystery is more powerful)." 
-        },
-        { 
-            question: "Why doesn't Chuck stay with Kelly at the end?", 
-            answer: "The ending is the final survival test: emotional survival. Chuck realizes that while he survived the island, he 'died' to the world, and life moved on. Loving her means letting her go. The crossroads scene represents his new freedom—he mastered physical survival, and now he must master his destiny." 
-        }
+        { question: "What is the psychological purpose of Wilson the volleyball?", answer: "Wilson is a vital dissociation mechanism. Humans are inherently social; without interaction, the mind collapses. By projecting a personality onto the ball, Chuck creates an 'Other' to care for and argue with. This allows him to externalize his thoughts and maintain his language skills, preventing a total mental break." },
+        { question: "Why is there no music during the island scenes in Cast Away?", answer: "Director Robert Zemeckis intentionally removed the musical score for the middle hour of the film. This forces the audience to experience the crushing silence and auditory isolation of the island. When the music finally returns during the escape, it hits with overwhelming emotional power because the 'silence' has been broken." },
+        { question: "What was inside the unopened FedEx package in Cast Away?", answer: "Symbolically, the package represents hope and professional identity. By refusing to open it, Chuck retains his link to his past life as a dutiful employee. It gives him a mission beyond basic survival. While a script draft suggested it contained salsa, the mystery makes it a more powerful symbol of the 'will to return'." },
+        { question: "Why didn't Chuck and Kelly end up together at the end of Cast Away?", answer: "The ending is the final test of emotional survival. Chuck realizes that while he survived the island, his old life 'died,' and the world moved on. Loving Kelly means letting her keep the new life she built. The final crossroads scene represents his ultimate freedom—he mastered physical survival, and now he is the master of his own destiny." }
     ],
     'The Revenant': [
-        { 
-            question: "What is the significance of the long, continuous takes?", 
-            answer: "Cinematographer Emmanuel Lubezki used long, unedited takes to trap the audience in real-time suffering. There are no 'cuts' to save you from the bear attack or the freezing river. It creates an immersive, claustrophobic experience where the environment feels like a character that is constantly breathing down Hugh Glass's neck." 
-        },
-        { 
-            question: "Is the bear attack CGI or real?", 
-            answer: "It is highly advanced CGI based on stunt work. The scene is terrifying because it depicts the bear not as a movie monster, but as a confused, protective mother protecting her cubs. The violence is clumsy, heavy, and exhausting, which makes it feel disturbingly realistic compared to standard action movie fights." 
-        },
-        { 
-            question: "What does the final look at the camera mean?", 
-            answer: "Glass's final stare breaks the fourth wall. After achieving his revenge, he realizes it brought no peace ('Revenge is in God's hands'). He looks at the audience as if to ask: 'You watched my suffering for entertainment; are you satisfied?' It implicates the viewer in the violence." 
-        },
-        { 
-            question: "Why did the director use only natural light?", 
-            answer: "Iñárritu refused to use artificial lighting to capture the raw, gothic beauty of the landscape. They had a tiny window of time each day to shoot. This creates a visual texture that feels ancient and organic, emphasizing that nature is indifferent to human struggle." 
-        }
+        { question: "Why does The Revenant use such long, continuous takes?", answer: "Cinematographer Emmanuel Lubezki used long, unedited takes to trap the audience in real-time suffering. There are no 'cuts' to save the viewer from the intensity of the bear attack or the freezing river. It creates an immersive experience where the environment feels like a predatory character constantly watching Hugh Glass." },
+        { question: "Is the bear attack in The Revenant real or CGI?", answer: "It is a blend of highly advanced CGI and physical stunt work. The scene is famous for depicting the bear as a protective mother rather than a movie monster. The violence is clumsy, heavy, and exhausting, which makes it feel disturbingly realistic compared to standard Hollywood action sequences." },
+        { question: "What does Hugh Glass's final look at the camera mean?", answer: "Glass’s final stare breaks the 'fourth wall' to implicate the viewer. After achieving his bloody revenge, he realizes it brought him no peace. He looks at the audience as if to ask: 'You watched my agony for entertainment; are you satisfied?' It forces the viewer to confront their own role in the spectacle of violence." },
+        { question: "Why was The Revenant filmed using only natural light?", answer: "Director Alejandro Iñárritu refused artificial lighting to capture the raw, gothic texture of the wilderness. This required the crew to shoot in tiny 'golden hour' windows each day. The result is a visual style that feels ancient and organic, emphasizing that nature is entirely indifferent to human struggle." }
     ],
     'The Martian': [
-        { 
-            question: "How does The Martian differ from other survival films?", 
-            answer: "Most survival films focus on physical grit or despair. The Martian focuses on competence. It is 'Competence Porn'—the satisfaction of watching a smart person solve problems one by one. The antagonist isn't a villain; it's physics. Watney fights back not with a gun, but with math, botany, and chemistry." 
-        },
-        { 
-            question: "Is the 'Disco Music' just a joke?", 
-            answer: "It serves a dual purpose. Humor is Watney's defense mechanism against the crushing reality of death. The disco music (left by his commander) keeps him connected to humanity, even if he hates it. It provides a tonal contrast to the bleak red landscape, reinforcing the film's optimistic view of human spirit." 
-        },
-        { 
-            question: "Could you actually grow potatoes on Mars?", 
-            answer: "Theoretically, yes, but with caveats. Martian soil contains perchlorates (toxic), which Watney would have needed to wash out (not shown in film). However, the concept of using human waste for nitrates/fertilizer is scientifically sound. It represents the ultimate cycle of survival: using death/waste to create life." 
-        },
-        { 
-            question: "Why is the ending 'Iron Man' maneuver controversial?", 
-            answer: "In the book, Watney explicitly does NOT poke a hole in his glove because it would be impossible to control. The movie added this for cinematic flair. While physically dubious, it thematically fits—it is Watney taking one last, reckless gamble based on physics to bridge the gap between him and humanity." 
-        }
+        { question: "How is The Martian different from other survival movies?", answer: "While most survival films focus on despair or physical grit, The Martian focuses on 'competence.' It is a celebration of problem-solving. The antagonist isn't a villain, but the laws of physics. Mark Watney fights back not with a weapon, but with math, botany, and chemistry, making logic the hero of the story." },
+        { question: "Why is there so much disco music in The Martian?", answer: "The disco music serves as a vital defense mechanism. Humor and music keep Watney connected to his humanity and prevent him from succumbing to the crushing loneliness of Mars. The upbeat tracks provide a tonal irony to the bleak, red landscape, reinforcing the film’s theme of the resilient human spirit." },
+        { question: "Is the science of growing potatoes on Mars actually possible?", answer: "Theoretically, yes. While Martian soil contains toxic perchlorates that would need to be washed out (a detail omitted for time), the concept of using human waste as a nitrate-rich fertilizer is scientifically sound. It represents the ultimate survival cycle: using waste to create life in a dead world." },
+        { question: "Why did Mark Watney do the 'Iron Man' move at the end?", answer: "In the original book, Watney does not poke a hole in his glove because it would be impossible to control. The movie added this 'Iron Man' maneuver for cinematic tension. Thematically, however, it fits: it shows Watney taking one last, reckless gamble based on physics to bridge the final gap between himself and humanity." }
     ],
     'The Impossible': [
-        { 
-            question: "How was the tsunami sound design created?", 
-            answer: "The sound is as important as the visual. The filmmakers described the tsunami not as a wave, but as a 'monster.' The roar of the water was mixed with sounds of crumbling buildings and twisting metal to create a deafening, sensory overload that mimics the disorientation of the real victims. It creates a feeling of helplessness." 
-        },
-        { 
-            question: "Why focus so much on the mother's leg injury?", 
-            answer: "In a disaster movie, the threat usually ends after the event. In The Impossible, the threat continues microscopically. The open wound represents the ticking clock of infection and sepsis. It grounds the epic scale of the disaster into a very specific, intimate, and horrifying physical struggle." 
-        },
-        { 
-            question: "Is the family's survival statistically probable?", 
-            answer: "It is incredibly improbable, which is why the true story is so famous. The Belón family (the real family) noted that while the film feels miraculous, it is also 'guilt-inducing' because so many others died. The film attempts to honor this by showing the vast scale of death around their small miracle." 
-        },
-        { 
-            question: "What does the red ball scene symbolize?", 
-            answer: "When Lucas watches the red ball float away in the ruins, it symbolizes the loss of his childhood. He is forced to become the caretaker for his mother. The disaster stripped away his innocence instantly, forcing him to mature and make life-or-death decisions in a landscape of corpses." 
-        }
+        { question: "How was the tsunami sound design created in The Impossible?", answer: "The filmmakers treated the tsunami sound as a 'living monster.' The roar of the water was mixed with the sounds of crumbling buildings and twisting metal to create a deafening sensory overload. This mimics the total disorientation of real victims, making the audience feel the terrifying helplessness of the event." },
+        { question: "Why does the film focus so much on the mother’s leg injury?", answer: "In most disaster films, the threat ends when the wave stops. In The Impossible, the threat becomes microscopic. The open wound represents a ticking clock of infection and sepsis, grounding the massive scale of a global disaster into an intimate, agonizing physical struggle for survival." },
+        { question: "Is the family's survival in The Impossible a true story?", answer: "Yes, it is based on the miraculous true story of the Belón family. While the film feels improbable, the real survivors often mention the 'survivor's guilt' they felt because so many thousands around them did not make it. The film honors this by showing the vast landscape of death surrounding their specific miracle." },
+        { question: "What does the red ball symbolize in The Impossible?", answer: "When Lucas watches a red ball float away in the ruins, it symbolizes the sudden end of his childhood. He is instantly forced to become the caretaker for his injured mother. The disaster stripped away his innocence, forcing him to make life-or-death adult decisions in a world turned into a graveyard." }
     ],
     'Jungle': [
-        { 
-            question: "What is the role of the 'Guide' Karl?", 
-            answer: "Karl serves as the 'Siren' of the story. He lures Yossi with the promise of hidden tribes and gold—tempting his ego and desire for authentic adventure. Karl represents the danger of trusting charisma over preparation. In real life, Karl remains a mystery and was never seen again." 
-        },
-        { 
-            question: "Are the hallucinations real to the experience?", 
-            answer: "Yes. The real Yossi Ghinsberg experienced vivid hallucinations due to starvation and isolation, including imagining a woman he needed to protect. This psychological defense mechanism gave him a purpose to keep moving when his body wanted to give up. The film blurs reality to put the viewer in his fracturing mind." 
-        },
-        { 
-            question: "How did Daniel Radcliffe prepare for the physical transformation?", 
-            answer: "Radcliffe famously lived on one chicken breast and a protein bar per day to shed massive weight. The gaunt look in the final act is real. His performance strips away the 'Harry Potter' polish to reveal a raw, trembling, animalistic desperation that anchors the film's horror." 
-        },
-        { 
-            question: "What does the forehead bump scene represent?", 
-            answer: "The scene where he cuts a parasite out of his forehead is pure body horror. It signifies the jungle invading the body. It emphasizes that in the Amazon, you are not just an observer; you are biomass, food for the ecosystem. It is the moment Yossi realizes he is being eaten alive." 
-        }
+        { question: "Who was the guide Karl in the movie Jungle?", answer: "Karl serves as a 'Siren' figure, luring Yossi into the Amazon with promises of hidden tribes and gold. He represents the danger of following charisma over preparation. In real life, Karl’s true identity remains a mystery; he vanished shortly after the events of the film and was never seen again." },
+        { question: "Are the hallucinations in Jungle accurate to the real story?", answer: "Yes. The real Yossi Ghinsberg experienced vivid hallucinations due to starvation and isolation, including imagining a woman he needed to protect. This psychological 'companion' gave him a sense of purpose that kept him moving when his body was ready to give up. The film blurs reality to put the viewer inside his fracturing mind." },
+        { question: "How did Daniel Radcliffe prepare for his role in Jungle?", answer: "Radcliffe lived on a diet of one chicken breast and a protein bar per day to achieve a gaunt, skeletal look for the final act. His performance intentionally strips away his 'movie star' polish to reveal a raw, animalistic desperation that anchors the film’s grounded horror." },
+        { question: "What does the parasite scene in Jungle signify?", answer: "The scene where Yossi cuts a parasite out of his forehead is a moment of pure 'body horror.' It signifies the jungle literally invading the human body. It emphasizes that in the Amazon, a human is not an observer, but biomass—food for a relentless ecosystem." }
     ],
     'Apocalypto': [
-        { 
-            question: "What does the eclipse scene symbolize?", 
-            answer: "The eclipse represents the manipulation of fear by the elite. The priests know the astronomy, but they use it to claim divine power over the masses. It saves Jaguar Paw physically, but it highlights the corrupt, crumbling nature of a civilization that rules through terror and superstition." 
-        },
-        { 
-            question: "Why is the ending with the ships significant?", 
-            answer: "It is the ultimate 'Deus Ex Machina' but with a dark twist. The Spanish ships save Jaguar Paw from his pursuers, but they herald the actual Apocalypse for the Mayan civilization. It suggests that while one man survived his personal end-of-days, an even greater end-of-days has just arrived on the horizon." 
-        },
-        { 
-            question: "What is the meaning of 'I am Jaguar Paw' speech?", 
-            answer: "It is the turning point where the prey becomes the predator. Jaguar Paw stops running and reclaims his identity and his territory. By declaring his name and lineage, he rejects the status of 'sacrifice' or 'slave' and asserts his humanity. It is the film's thesis: fear is a sickness, and he has cured himself." 
-        },
-        { 
-            question: "Is the violence gratuitous or necessary?", 
-            answer: "Mel Gibson argues it is necessary to show the stakes. The brutality of the sacrifice and the chase emphasizes the primal value of life. By showing how easily life is taken, the film makes Jaguar Paw's struggle to breathe, run, and live feel incredibly precious and high-stakes." 
-        }
+        { question: "What is the meaning of the eclipse in Apocalypto?", answer: "The eclipse represents the elite's manipulation of fear. The priests use their knowledge of astronomy to claim divine power over the panicked masses. While it physically saves Jaguar Paw, it highlights the corruption of a civilization that maintains order through terror and religious superstition." },
+        { question: "What does the arrival of the Spanish ships at the end signify?", answer: "It is a dark 'Deus Ex Machina.' While the ships inadvertently save Jaguar Paw from his pursuers, they herald the actual 'Apocalypse' for the entire Mayan civilization. It suggests that while one man survived his personal end-of-days, a much larger, unstoppable end is arriving on the horizon." },
+        { question: "What is the significance of the 'I am Jaguar Paw' speech?", answer: "This is the moment the prey becomes the predator. By declaring his name and his territory, Jaguar Paw rejects the status of a 'sacrifice' or a 'slave' and reclaims his humanity. It is the film's central thesis: that once a man cures himself of fear, he becomes invincible." },
+        { question: "Is the violence in Apocalypto necessary for the story?", answer: "Director Mel Gibson argues that the brutality is necessary to establish the stakes. The graphic nature of the sacrifice and the chase emphasizes the primal value of a single life. By showing how easily life is taken in this world, Jaguar Paw’s struggle to breathe and survive feels incredibly precious." }
     ],
     '13 Lives': [
-        { 
-            question: "Why was sedating the boys necessary?", 
-            answer: "This is the terrifying crux of the rescue. A panicked child in a narrow, flooded tunnel would kill themselves and the diver instantly. The decision to render them unconscious (using Ketamine) was medically risky and ethically fraught, but it was the only variable the divers could control. It turned a rescue mission into a transport mission." 
-        },
-        { 
-            question: "Why focus on the British divers instead of just the Thai Navy SEALs?", 
-            answer: "The film highlights that cave diving is a niche, oddball hobby. The British divers were middle-aged hobbyists, not soldiers. The contrast between the disciplined Thai SEALs (who were heroic but untrained for *caves*) and the socially awkward but expert British divers highlights that survival sometimes requires hyper-specialized, eccentric skills." 
-        },
-        { 
-            question: "What makes cave diving so dangerous?", 
-            answer: "The film emphasizes 'Zero Visibility.' Unlike open ocean, you cannot surface for air. If you lose the guideline, you die. If you panic, you die. The psychological pressure of being squeezed in pitch blackness underwater is the primary antagonist of the film." 
-        },
-        { 
-            question: "How does the film depict the global effort?", 
-            answer: "It shows survival as a logistics miracle. It wasn't just divers; it was engineers pumping water, locals diverting streams on the mountain, and governments cooperating. It serves as a counterpoint to 'Solo Survival' films—sometimes, survival requires the entire world working in sync." 
-        }
+        { question: "Why did the divers have to sedate the boys in 13 Lives?", answer: "This was the most terrifying and controversial part of the rescue. A panicked child in a pitch-black, flooded tunnel would have drowned themselves and the diver instantly. Using Ketamine to render them unconscious was a massive medical risk, but it was the only way to ensure they could be transported safely through the narrowest passages." },
+        { question: "Why does the film focus on the British divers over the military?", answer: "The film highlights that cave diving is a hyper-specialized hobby. The British divers were middle-aged civilians, not soldiers. The contrast between the heroic Thai Navy SEALs (who were untrained for caves) and the expert hobbyists shows that survival often requires very specific, eccentric skills that even elite militaries don't possess." },
+        { question: "What makes cave diving so dangerous in 13 Lives?", answer: "The film emphasizes 'Zero Visibility' and the inability to surface. In a cave, you cannot swim 'up' for air; you must find your way back through a maze of flooded tunnels. If you lose your guideline or succumb to a moment of panic, death is almost certain. The psychological pressure of the tight, dark space is the film's true antagonist." },
+        { question: "How does 13 Lives depict the global survival effort?", answer: "The film portrays the rescue as a miracle of logistics and global cooperation. It wasn't just the divers; it involved engineers pumping millions of gallons of water and locals diverting mountain streams. It serves as a counterpoint to 'solo' survival stories, proving that sometimes survival requires the entire world working in sync." }
     ],
     'Unbroken': [
-        { 
-            question: "What is the dynamic between Louis and 'The Bird'?", 
-            answer: "It is a perverse intimacy. The Bird (Watanabe) is obsessed with Louis because Louis represents the strength he lacks. He tries to break Louis not just to punish him, but to prove his own dominance. It is a psychological war where The Bird wants Louis to admit defeat, and Louis uses his silence as a weapon." 
-        },
-        { 
-            question: "What does the plank-holding scene symbolize?", 
-            answer: "It is the Christ-like moment of the film. Holding the beam is physically impossible for that duration, but Louis does it through sheer spiritual defiance. When he screams, it isn't a scream of pain, but of victory. It breaks The Bird psychologically, marking the moment the prisoner defeated the guard." 
-        },
-        { 
-            question: "How does faith play a role in his survival?", 
-            answer: "While the raft survival is physical, the camp survival is spiritual. Louis survives because he refuses to become a beast. His promise to God ('If you get me through this, I'll serve you forever') gives him a transactional hope. The film argues that retaining one's humanity is the hardest part of survival." 
-        },
-        { 
-            question: "Why is the shark scene important?", 
-            answer: "It establishes the relentless nature of their reality. They are fighting the sun, the sea, the hunger, the enemy planes, AND the sharks. It strips them down to the absolute bottom of the food chain, making their survival feel like a defiance of the natural order." 
-        }
+        { question: "What is the relationship between Louis and 'The Bird' in Unbroken?", answer: "It is a psychological war of wills. The prison guard, Watanabe ('The Bird'), is obsessed with Louis because the prisoner possesses a spiritual strength that the guard lacks. He tries to break Louis not just for punishment, but to validate his own dominance. Louis uses his resilience and silence as his only weapons of defiance." },
+        { question: "What does the plank-holding scene symbolize in Unbroken?", answer: "This is the spiritual climax of the film. Holding a heavy wooden beam over his head while exhausted and starving is physically impossible, yet Louis does it through sheer mental defiance. When he screams, it is a cry of victory that psychologically breaks 'The Bird,' marking the moment the prisoner truly defeated the captor." },
+        { question: "How does faith contribute to survival in Unbroken?", answer: "While the raft survival is physical, the prison camp survival is spiritual. Louis survives because he refuses to let his circumstances turn him into a beast. His promise to God during the storm gives him a framework of hope, suggesting that retaining one's humanity is the hardest part of surviving total trauma." },
+        { question: "Why is the shark attack scene important in Unbroken?", answer: "The scene establishes the relentless nature of their reality. They aren't just fighting hunger or the enemy; they are fighting the entire natural world. It strips the characters down to the absolute bottom of the food chain, making their eventual survival feel like a direct defiance of the natural order." }
     ]
 };
 

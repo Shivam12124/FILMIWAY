@@ -65,7 +65,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
             : extractExactTypes(sensitiveData?.scenes);
     }
 
-    // ✅ DYNAMIC RUNTIME VERIFICATION (Including Sin City Override)
+    // ✅ DYNAMIC RUNTIME VERIFICATION (Including Specific Movie Overrides)
     let currentRuntime = movie.Runtime || movie.runtime || "Official";
     if (typeof currentRuntime === 'number') currentRuntime = `${currentRuntime} min`;
     
@@ -77,6 +77,11 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
     // Explicit Override for Sin City
     if (movie.tmdbId === 187) {
         currentRuntime = "2 hours 21 min (Unrated Extended Version)"; 
+    }
+
+    // 🔥 Explicit Override for Apocalypse Now
+    if (movie.tmdbId === 28) {
+        currentRuntime = "3 hours 1 min (Final Cut)"; 
     }
 
     const getSeverityDotColor = (severity) => {

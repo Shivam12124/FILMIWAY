@@ -364,184 +364,64 @@ export const COMPLETE_MOVIE_DATA = {
 
 export const EYES_WIDE_SHUT_MOVIE_FAQS = {
     'Mulholland Drive': [
-        { 
-            question: "Why is Mulholland Drive similar to Eyes Wide Shut?", 
-            answer: "Both films pull back the curtain on elite power. While Kubrick explores a literal secret society of New York’s wealthy, Lynch exposes Hollywood as a cult-like entity where studio executives and mob-connected figures act as puppeteers. Both protagonists (Bill and Diane) are outsiders who stumble into rituals and conspiracies they were never meant to see or survive." 
-        },
-        { 
-            question: "What is the meaning of the Club Silencio scene?", 
-            answer: "Club Silencio represents the realization that reality is a fabrication. The 'lip-sync' performance proves that the art and beauty we see are pre-recorded illusions. For the protagonist, it’s the moment the 'masked ball' of her dream ends, mirroring the moment Bill Harford realizes the elite party was a staged warning designed to remind him of his insignificance." 
-        },
-        { 
-            question: "Who is the Cowboy and what does he represent?", 
-            answer: "The Cowboy is the enforcer of the Hollywood 'system.' He is the surreal equivalent of the Red Cloak figure in Eyes Wide Shut. He doesn't use physical violence; he uses the threat of total erasure. When he tells Adam 'You will see me one more time if you do good,' he is asserting the elite's absolute control over destiny." 
-        },
-        { 
-            question: "Is the 'Monster' behind Winkie's a literal creature?", 
-            answer: "No, the creature is a manifestation of Diane's guilt and the raw, ugly truth of the industry. It represents the 'darkness' required to succeed in the elite circles of show business. Like the masked figures in EWS, it is a reminder that beneath the polished glamour of high society lies a decaying, terrifying reality that consumes the innocent." 
-        }
+        { question: "What is the hidden meaning of Mulholland Drive?", answer: "The film pulls back the curtain on the dark side of Hollywood. Similar to how Eyes Wide Shut explores a secret society of New York’s wealthy, David Lynch exposes the entertainment industry as a cult-like entity where shadowy executives and mob-connected figures act as puppeteers, crushing the innocent dreams of outsiders." },
+        { question: "What does the Club Silencio scene mean in Mulholland Drive?", answer: "Club Silencio represents the crushing realization that Hollywood reality is a fabrication. The 'lip-sync' performance proves that the art and beauty Diane worshipped are pre-recorded illusions. It is the exact moment the 'masked ball' of her dream ends, forcing her to wake up to her tragic reality." },
+        { question: "Who is the Cowboy in Mulholland Drive and what does he represent?", answer: "The Cowboy is the surreal, omnipotent enforcer of the Hollywood 'system.' He doesn't use physical violence; he uses the threat of total erasure from the industry. When he tells Adam, 'You will see me one more time if you do good,' he is asserting the elite's absolute, inescapable control over a person's destiny." },
+        { question: "What is the monster behind Winkie's diner in Mulholland Drive?", answer: "The creature is not a literal monster, but a physical manifestation of Diane's overwhelming guilt and the raw, ugly truth of the industry. It represents the terrifying 'darkness' required to succeed in elite circles, serving as a reminder that beneath polished glamour lies a decaying reality." }
     ],
     'The Ninth Gate': [
-        { 
-            question: "Is the cult in The Ninth Gate real?", 
-            answer: "The 'Order of the Silver Dragon' is a fictional creation but is heavily modeled after real-world esoteric societies like the Hellfire Club. These groups consist of bored, ultra-wealthy individuals who use their vast resources to chase forbidden knowledge, mirroring the high-society masked ball where wealth is the only requirement for entry into the world of the occult." 
-        },
-        { 
-            question: "Did Dean Corso become a demon at the ending?", 
-            answer: "Not literally, but he undergoes a spiritual initiation. By the end, Corso has abandoned his skepticism and his humanity. He enters the Ninth Gate not as a victim or a researcher, but as an 'enlightened' member of the cosmic elite. He has successfully navigated the labyrinth that the other cult members were too cowardly to truly enter." 
-        },
-        { 
-            question: "What is the connection between rare books and power?", 
-            answer: "In this world, rare books are the currency of the elite. They represent exclusive access to truth. Just as the password 'Fidelio' granted Bill access to the mansion in Eyes Wide Shut, the 'Nine Engravings' are the keys to a reality that the average person is forbidden from seeing. It is elitism through hidden information." 
-        },
-        { 
-            question: "Who is the 'Girl' following Dean Corso?", 
-            answer: "She is a fallen angel or a demonic guardian assigned to ensure Corso—the only one worthy—reaches the final gate. She represents the seductive, dangerous nature of the occult. Her role is similar to the woman who 'redeems' Bill in EWS; both are mysterious entities that guide the protagonist through a world of shadows and elite rituals." 
-        }
+        { question: "Is the Order of the Silver Dragon in The Ninth Gate a real cult?", answer: "The 'Order of the Silver Dragon' is a fictional creation, but it is heavily modeled after real-world esoteric societies like the historical Hellfire Club. These groups consisted of bored, ultra-wealthy individuals who used their vast resources and status to chase forbidden occult knowledge." },
+        { question: "What happens to Dean Corso at the end of The Ninth Gate?", answer: "While he doesn't literally turn into a demon, Corso undergoes a dark spiritual initiation. By the end, he has abandoned his skepticism and his humanity. He enters the Ninth Gate not as a victim, but as an 'enlightened' member of the cosmic elite, successfully navigating a labyrinth the wealthy cult members failed to conquer." },
+        { question: "What do the Nine Engravings mean in The Ninth Gate?", answer: "In the world of the film, these rare books are the ultimate currency of the elite, representing exclusive access to supernatural truth. Just as a password grants physical access to a mansion, the Nine Engravings are the keys to a reality that the average person is strictly forbidden from seeing." },
+        { question: "Who is the mysterious girl following Dean Corso in The Ninth Gate?", answer: "She is heavily implied to be a fallen angel or a demonic guardian assigned to ensure Corso—the only mortal ruthless enough to be worthy—reaches the final gate. She represents the seductive, dangerous nature of the occult, guiding him through a world of shadows." }
     ],
     'Blue Velvet': [
-        { 
-            question: "How does Blue Velvet mirror the themes of Eyes Wide Shut?", 
-            answer: "Both films explore the 'underworld' hiding beneath the surface of polite society. In Blue Velvet, the quiet suburb of Lumberton hides a sadistic, sexual nightmare. Both Bill Harford and Jeffrey Beaumont are 'voyeurs'—normal men who become obsessed with seeing the perversions of the night, only to realize they are in over their heads once the masks come off." 
-        },
-        { 
-            question: "What does the severed ear symbolize?", 
-            answer: "The ear is the 'portal' into the hidden world. By finding it, Jeffrey is invited to 'listen' to things he wasn't supposed to hear. It represents the loss of innocence. Much like the costume shop in EWS, the ear is the catalyst that drags a regular person into a reality where the rules of normal society no longer apply." 
-        },
-        { 
-            question: "Is Frank Booth a representation of the 'elite'?", 
-            answer: "Frank is the 'id' or the raw violence of the underworld. While he isn't a tuxedo-wearing elite, he operates with the same impunity and total control over his victims. He represents the terrifying, unpredictable power that lurks in the shadows. He is the nightmare that Bill Harford was lucky to avoid during his long night in New York." 
-        },
-        { 
-            question: "What is the meaning of the final robotic robin?", 
-            answer: "The robin represents the return of 'artificial' peace. It is a fake, mechanical version of purity. It suggests that while the evil has been pushed back into the shadows, the suburban 'dream' is now an empty facade. This mirrors the ending of EWS, where the couple tries to return to 'normal' while knowing the darkness still exists." 
-        }
+        { question: "What is the main theme of Blue Velvet?", answer: "The film explores the terrifying 'underworld' hiding just beneath the manicured surface of polite, suburban society. Jeffrey Beaumont is a voyeur—a normal man who becomes obsessed with uncovering the violent perversions of his town, only to realize he is in completely over his head." },
+        { question: "What does the severed ear symbolize in Blue Velvet?", answer: "The ear acts as the literal 'portal' into the hidden criminal underworld. By finding it, Jeffrey is invited to 'listen' to dark secrets he wasn't supposed to hear. It represents the sudden, jarring loss of innocence that drags a regular person out of normal society." },
+        { question: "What does Frank Booth represent in Blue Velvet?", answer: "Frank represents the 'id'—the raw, uninhibited violence and sexual depravity of the underworld. While he isn't a tuxedo-wearing elite, he operates with the same terrifying impunity and total psychological control over his victims, embodying the nightmare lurking in the shadows." },
+        { question: "What does the mechanical robin mean at the end of Blue Velvet?", answer: "The robotic robin represents the return of 'artificial' peace to the town. It is a fake, mechanical version of purity, suggesting that while Frank Booth is gone, the suburban 'American Dream' is just an empty facade covering up a darkness that will always exist." }
     ],
     'Rosemary\'s Baby': [
-        { 
-            question: "How does the cult in Rosemary's Baby operate?", 
-            answer: "They operate through total social integration. They aren't hooded figures in a cave; they are your polite, wealthy neighbors who offer you tea and advice. This is the exact horror of Eyes Wide Shut: the realization that the people who control the world and commit these rituals are the same people you see in broad daylight." 
-        },
-        { 
-            question: "Why is the gaslighting of Rosemary so effective?", 
-            answer: "The gaslighting works because the coven has systemic power. They control the doctors, the lawyers, and even Rosemary's husband. When every authority figure is a member of the society, the victim is isolated. This mirrors the helplessness Bill feels when he realizes the police and the newspapers will never investigate the events at the mansion." 
-        },
-        { 
-            question: "What is the 'Rich People Cult' theme?", 
-            answer: "The film explores how the ultra-wealthy use the lives of the lower and middle classes as literal fuel for their own legacies. Guy Woodhouse trades his wife’s body and his child for a successful acting career. It is a transaction of souls, suggesting that the elite's status is built on a foundation of ritualistic sacrifice and betrayal." 
-        },
-        { 
-            question: "What does the final scene signify?", 
-            answer: "The final scene shows Rosemary accepting her role as a mother to the antichrist. It represents the total victory of the coven. They didn't just take her child; they broke her spirit until she became an accomplice. It is a bleak conclusion that suggests the elite always win by forcing the outsider to join their ranks." 
-        }
+        { question: "Are the neighbors in Rosemary's Baby part of a real cult?", answer: "They are a fictional coven, but their terror comes from their social integration. They aren't robed figures hiding in a cave; they are polite, wealthy, elderly neighbors who offer tea and advice. The horror lies in the realization that the people committing unthinkable rituals look like everyday citizens." },
+        { question: "How does the cult manipulate Rosemary throughout the film?", answer: "The coven's gaslighting is effective because they possess systemic power. They control the doctors, the lawyers, and ultimately Rosemary's own husband. When every trusted authority figure is secretly a member of the society, the victim becomes completely and terrifyingly isolated." },
+        { question: "What is the deeper social meaning of Rosemary's Baby?", answer: "The film explores how the ultra-wealthy elite use the bodies and lives of the lower classes as literal fuel for their own legacies. Guy Woodhouse trades his wife’s bodily autonomy and his child for a successful acting career, framing elite success as a transaction built on betrayal." },
+        { question: "Why does Rosemary smile at the baby at the end of the movie?", answer: "Her smile represents the total, crushing victory of the coven. They didn't just steal her child; they broke her maternal instinct and spirit until she became an active accomplice. It is a bleak conclusion suggesting the elite always win by forcing the outsider to assimilate." }
     ],
     'The Game': [
-        { 
-            question: "Who are the 'Elite Puppeteers' in The Game?", 
-            answer: "Consumer Recreation Services (CRS) is a shadowy organization that specializes in manipulating the lives of the bored, ultra-wealthy. They act as a private secret society that can rewrite reality. Like the EWS elite, they operate outside the law, using vast surveillance and psychological triggers to control their 'member' for an unknown, high-stakes purpose." 
-        },
-        { 
-            question: "Is the game meant to be a therapeutic experience?", 
-            answer: "Ostensibly, yes. It is designed to strip a man of his ego and 'rebirth' him. However, the methods are so violent and traumatizing that the line between 'therapy' and 'psychological torture' disappears. It suggests that for the elite, true emotion can only be felt through artificial, life-threatening scenarios that simulate the struggles they no longer face." 
-        },
-        { 
-            question: "How does the theme of surveillance connect to Eyes Wide Shut?", 
-            answer: "In both films, the protagonist is being watched every second by a power they cannot see. Bill Harford is followed and warned; Nicholas Van Orton is tracked by hidden cameras and actors. Both films create an atmosphere of total paranoia where every stranger on the street could be an agent of the secret society watching you." 
-        },
-        { 
-            question: "Was the final jump planned by the company?", 
-            answer: "The film presents the jump as the 'ultimate' planned outcome, but the sheer statistical improbability of him landing on the 'X' suggests a more sinister, god-like control. It reinforces the theme that the elite possess a level of precision and power that is almost supernatural, leaving the individual with no true free will or agency." 
-        }
+        { question: "What is the CRS organization in the movie The Game?", answer: "Consumer Recreation Services (CRS) is a shadowy, omnipotent organization that specializes in manipulating the lives of the bored, ultra-wealthy. They act as a private secret society that operates entirely outside the law, using vast surveillance and psychological triggers to control their clients." },
+        { question: "Was the entire game planned from the beginning?", answer: "Yes, every terrifying detail was meticulously planned. Ostensibly, the game is designed to strip a wealthy man of his ego and 'rebirth' him. However, the methods are so violent that it suggests the elite can only feel true emotion through highly artificial, life-threatening psychological torture." },
+        { question: "What is the point of the psychological torture in The Game?", answer: "The film creates an atmosphere of total paranoia, where the protagonist is watched every second by a power he cannot see. It explores the idea that ultimate wealth brings ultimate isolation, and the only way to break a billionaire's apathy is to systematically destroy his entire reality." },
+        { question: "Did CRS plan the final jump off the roof in The Game?", answer: "The film presents the jump onto the giant airbag as the 'ultimate' planned outcome, but the sheer statistical improbability of him landing exactly on the 'X' suggests an almost god-like level of control by CRS, leaving the protagonist with absolutely zero free will or agency." }
     ],
     'Lost Highway': [
-        { 
-            question: "What is the 'Psychogenic Fugue' in the film?", 
-            answer: "It is a mental state where a person creates a new identity to escape a trauma or a crime they committed. Fred Madison transforms into Pete Dayton to escape the reality that he murdered his wife. This theme of 'fractured identity' mirrors Bill Harford’s night-long journey where he nearly loses himself in a dangerous alternative persona." 
-        },
-        { 
-            question: "Who is the Mystery Man?", 
-            answer: "The Mystery Man is a supernatural manifestation of Fred’s subconscious and the 'dark power' that watches everyone. When he says 'I'm at your house right now,' he breaks the laws of time and space. He is the ultimate voyeur, the one who films the truth that the elite try to hide behind their masks." 
-        },
-        { 
-            question: "How does infidelity drive the nightmare?", 
-            answer: "Jealousy is the catalyst for the entire horror. Like the central conflict in Eyes Wide Shut, the suspicion of a spouse's hidden sexual life triggers a psychological breakdown. In Lost Highway, this jealousy becomes a literal nightmare where the boundaries between the 'lover' and the 'killer' are erased through surreal, recursive loops of violence." 
-        },
-        { 
-            question: "What do the video tapes represent?", 
-            answer: "The tapes represent the objective truth that the characters are trying to deny. They are the 'eyes' that remain wide shut until the evidence of their actions is delivered to their doorstep. In both films, being 'watched' is the ultimate source of terror, as it forces the character to confront their own moral decay." 
-        }
+        { question: "What is the psychogenic fugue state in Lost Highway?", answer: "It is a severe dissociative mental state where a person creates an entirely new identity to escape a horrific trauma or crime. Fred Madison psychologically transforms into young mechanic Pete Dayton to escape the crushing reality that he violently murdered his own wife." },
+        { question: "Who is the Mystery Man in Lost Highway?", answer: "The terrifying Mystery Man is a supernatural manifestation of Fred’s dark subconscious. When he tells Fred, 'I'm at your house right now,' he breaks the laws of time and space. He is the ultimate voyeur, forcing Fred to look at the objective, violent truth he is trying to hide from." },
+        { question: "Did Fred really transform into Pete in Lost Highway?", answer: "Physically, no; psychologically, yes. The film takes place entirely within the fractured mind of a jealous murderer on death row. His suspicion of his wife's hidden sexual life triggers a complete breakdown, erasing the boundaries of reality through a surreal, recursive loop of violence." },
+        { question: "What do the mysterious VHS tapes represent in Lost Highway?", answer: "The tapes represent the undeniable, objective truth that the characters are desperately trying to deny. They act as the 'all-seeing eye' that forces the characters to literally watch the evidence of their own moral decay delivered right to their front door." }
     ],
     'Society': [
-        { 
-            question: "What is 'The Shunting' ritual?", 
-            answer: "The Shunting is a grotesque, body-horror ritual where the wealthy elite literally merge their bodies together into a singular, pulsing mass. It is a viscous, literal metaphor for the 'class' feeding on the poor. It represents the physical reality of elite societies: they are a closed loop of incestuous power that survives by consuming outsiders." 
-        },
-        { 
-            question: "Why is the protagonist's family part of the cult?", 
-            answer: "In Society, being 'elite' is a biological fact. They are a different species entirely. This takes the Eyes Wide Shut theme of 'the elite are different from us' to its most extreme conclusion. You cannot join this society; you are either born into the pulsing mass of power or you are food for it." 
-        },
-        { 
-            question: "Is Society a political satire?", 
-            answer: "Yes, it is a biting satire of the Reagan-era 'trickle-down' economics and the Beverly Hills lifestyle. It argues that the upper class doesn't just want your money; they want your literal life force. The film uses gross-out imagery to make the viewer feel the same disgust Bill Harford felt at the mansion." 
-        },
-        { 
-            question: "What does the ending suggest about the world?", 
-            answer: "The ending suggests that the 'Shunting' happens everywhere in elite circles and will continue forever. While the protagonist escapes, the power structure remains untouched. It echoes the cynical ending of Eyes Wide Shut: the masked elite are too powerful to be defeated by a single individual, and their secrets are protected by their biology." 
-        }
+        { question: "What is the 'Shunting' in the movie Society?", answer: "The Shunting is a grotesque, body-horror ritual where the wealthy elite literally melt and merge their bodies together into a singular, pulsing mass. It serves as a visceral, literal metaphor for the upper class feeding on the poor to sustain their own power and youth." },
+        { question: "Are the rich people in Society actually aliens or monsters?", answer: "In the lore of the film, they are a completely different biological species from normal humans. This takes the concept of elite exclusivity to its most terrifying extreme: you cannot marry or buy your way into this high society. You are either born into it, or you are food for it." },
+        { question: "What is the underlying political message of the movie Society?", answer: "Released in 1989, it is a biting, literal satire of 1980s 'trickle-down' economics and Beverly Hills excess. The film argues that the upper class doesn't just want the working class's money and labor; they want to consume their literal life force to maintain their pristine status." },
+        { question: "Does Bill escape the cult at the end of Society?", answer: "While Bill physically escapes the immediate ritual, the ending is deeply cynical. It suggests that 'The Shunting' happens everywhere in elite circles globally and will continue forever. The power structure remains entirely untouched, and their horrific secrets are protected by their wealth." }
     ],
     '8mm': [
-        { 
-            question: "How does 8mm explore the 'Dark Elite'?", 
-            answer: "The film follows a detective investigating a 'snuff film' found in a billionaire's safe. It explores the idea that for the ultra-wealthy, normal pleasure is no longer enough. Like the masked orgy in EWS, 8mm argues that extreme wealth inevitably leads to a search for the most taboo and depraved experiences that money can buy." 
-        },
-        { 
-            question: "What does the phrase 'If you dance with the devil' mean?", 
-            answer: "It means that investigating the darkness will inevitably corrupt you. Tom Welles starts as a clean, moral family man but becomes a violent, obsessive vigilante. This mirrors Bill Harford’s journey; even though he didn't join the cult, the mere act of witnessing their world forever changed his marriage and his psyche." 
-        },
-        { 
-            question: "Who are 'Machine' and 'Dino Velvet'?", 
-            answer: "They are the 'enablers' for the elite. They provide the depravity that the wealthy desire but don't want to get their hands dirty with. They represent the transactional nature of the secret society world—where every perversion has a price and every 'monster' is just an employee of someone with a larger bank account." 
-        },
-        { 
-            question: "Is the snuff film real in the movie?", 
-            answer: "Yes, and that is the central horror. Unlike the 'theatrical' rituals in other films, 8mm forces the protagonist to confront the reality of absolute evil. It confirms the EWS suspicion: that behind the masks and the mystery, there is real, physical victimisation and a total disregard for human life by those in power." 
-        }
+        { question: "Is the movie 8mm based on a true story?", answer: "While not based on one specific true story, the film is rooted in dark urban legends about the extreme criminal underground. It explores the terrifying idea that for ultra-wealthy billionaires, normal pleasures are no longer enough, leading them to fund the most depraved, illegal experiences imaginable." },
+        { question: "How does the investigation change Tom Welles in 8mm?", answer: "The film explores the concept that if you 'dance with the devil,' the darkness will inevitably corrupt you. Tom starts as a clean, highly moral family man but the sheer trauma of what he witnesses turns him into a violent, obsessive vigilante, forever destroying his peace of mind." },
+        { question: "Who are Dino Velvet and Machine in 8mm?", answer: "They are the cruel, ground-level 'enablers' for the elite. They produce the depravity that the wealthy billionaires desire but don't want to get their own hands dirty creating. They represent a transactional underworld where every human life has a price tag." },
+        { question: "Was the snuff film in 8mm real or fake?", answer: "Within the context of the movie's plot, the film is real, and that is the central horror. Unlike the theatrical, masked rituals seen in other secret society films, 8mm forces the protagonist to confront the reality of absolute, physical evil and the total disregard for human life by those in power." }
     ],
     'Get Out': [
-        { 
-            question: "How is the Armitage family a 'Secret Society'?", 
-            answer: "The Armitages and their friends are a modern version of the EWS coven. They are wealthy, 'liberal' elites who use their status to lure in victims for a ritualistic purpose. Instead of a masked ball, they have a garden party and an auction. They represent the polite, smiling face of systemic, predatory power." 
-        },
-        { 
-            question: "What does 'The Sunken Place' represent?", 
-            answer: "It represents the total loss of agency. It is a psychological prison where the victim can see everything but control nothing. This is the ultimate dream of the elite: to take the bodies and lives of the 'lesser' classes while erasing their consciousness. It is the most extreme form of commodification of the human being." 
-        },
-        { 
-            question: "Why do they want Chris's body?", 
-            answer: "They want his physical attributes—his eyes, his strength, his 'coolness.' It is a form of cultural and literal cannibalism. Like the elite in Society who merge bodies, the EWS-style elite in Get Out want to inhabit the lives of others to maintain their own sense of relevance and immortality through a scientific occult ritual." 
-        },
-        { 
-            question: "What is the meaning of the tea cup and the silver spoon?", 
-            answer: "These are the symbols of old-money elite power. Using a domestic, refined object like a silver spoon to perform high-level hypnosis is a brilliant metaphor for how the elite use their 'refinement' as a weapon of control. It suggests that the higher the social class, the more dangerous their tools of subjugation become." 
-        }
+        { question: "What is the Order of the Coagula in Get Out?", answer: "The Armitage family and their friends form 'The Order of the Coagula,' a modern, terrifying secret society. Unlike hooded cults, they are wealthy, outwardly 'liberal' elites who use polite garden parties and silent bingo auctions to lure in and sell victims for a sinister scientific ritual." },
+        { question: "What does the Sunken Place symbolize in Get Out?", answer: "The Sunken Place represents the total, horrifying loss of physical agency. It is a psychological prison where the victim's consciousness can see everything but control nothing. It is the ultimate metaphor for the commodification and subjugation of marginalized people by those in power." },
+        { question: "Why does the Armitage family target Chris in Get Out?", answer: "They target Chris because the aging elite want his physical attributes—his eyes, his strength, and his youth. It is a form of literal and cultural cannibalism, where the wealthy class uses advanced pseudo-science to hijack the bodies of younger people to achieve their own immortality." },
+        { question: "What is the significance of the teacup hypnosis in Get Out?", answer: "The teacup and silver spoon are classic symbols of old-money, refined elite power. Using a polite, domestic object like a silver spoon as a weapon for high-level hypnosis is a brilliant metaphor showing how the upper class uses their 'refinement' and manners to quietly subjugate others." }
     ],
     'The Killing of a Sacred Deer': [
-        { 
-            question: "How does the film represent 'Divine' or 'Elite' justice?", 
-            answer: "The teenager, Martin, acts as a god-like entity delivering a supernatural ultimatum. He imposes a set of rules that cannot be escaped by money or status. It mirrors the 'Red Cloak' scene in EWS, where an individual is suddenly held accountable by a higher power that operates on a logic far beyond his understanding." 
-        },
-        { 
-            question: "Why is the dialogue so robotic and strange?", 
-            answer: "The stylized, cold dialogue emphasizes the emotional detachment of the high-society characters. Like the stilted, dream-like conversations in Eyes Wide Shut, it suggests that these people are so insulated by their wealth and 'perfect' lives that they have lost the ability to express genuine human emotion or empathy." 
-        },
-        { 
-            question: "What is the connection between the surgeon and sacrifice?", 
-            answer: "Steven Murphy is a man of science who is forced to perform a ritualistic sacrifice. He must choose a member of his own family to die to pay for a past mistake. This 'Eye for an Eye' logic is ancient and occult, forcing the modern, elite man to return to the primal, violent roots of power and debt." 
-        },
-        { 
-            question: "Does the ending suggest a 'Clean Slate'?", 
-            answer: "No. While the debt is paid and the family 'survives,' the final shot in the diner shows them completely hollowed out. They have lost their humanity to save their status. Like the final scene of EWS, it is a 'victory' that feels like a total defeat, proving that the elite world is built on a foundation of cold, calculated survival." 
-        }
+        { question: "What is the exact meaning of the title The Killing of a Sacred Deer?", answer: "The title is a direct reference to the ancient Greek myth of Agamemnon, who accidentally killed a sacred deer belonging to the goddess Artemis. To pay his debt and save his army, he was forced to sacrifice his own daughter. The film modernizes this myth into a terrifying tale of inescapable karmic justice." },
+        { question: "Why do the characters talk so strangely in The Killing of a Sacred Deer?", answer: "Director Yorgos Lanthimos uses highly stylized, robotic dialogue to emphasize the emotional emptiness of his high-society characters. It suggests that these people are so deeply insulated by their massive wealth and 'perfect' suburban lives that they have lost the ability to express genuine human empathy." },
+        { question: "Why does Martin curse Steven's family in the movie?", answer: "Steven, a wealthy surgeon, made a fatal mistake while operating under the influence, resulting in the death of Martin's father. Martin acts as a supernatural, god-like entity delivering absolute justice. He forces Steven into an ancient 'Eye for an Eye' scenario that his money and status cannot protect him from." },
+        { question: "Who survives at the end of The Killing of a Sacred Deer?", answer: "Steven ultimately sacrifices his young son, Bob, to lift the curse and save his wife and daughter. While the remaining family physically survives, the final shot of them eating in the diner shows them completely hollowed out, proving that their elite world is built on cold, calculated survival rather than love." }
     ]
 };
 

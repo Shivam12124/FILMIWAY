@@ -328,60 +328,50 @@ export const RATING_OPTIONS = [
   { value: 3, label: 'Awakened Mind', color: '#16a34a', symbol: '🎟️', bgColor: 'bg-green-900/30', description: 'Clean ticket - Solid entertainment' },
   { value: 4, label: 'The One', color: '#eab308', symbol: '🎫', bgColor: 'bg-yellow-900/30', description: 'Golden ticket - Cinematic masterpiece' }
 ];
-
 export const MATRIX_MOVIE_FAQS = {
   'Dark City': [
-    { question: 'What are the Strangers doing?', answer: 'They rebuild the city nightly, altering memories to study human nature.' },
-    { question: 'Is anyone real?', answer: 'People are real, but their identities are manipulated by the Strangers.' },
-    { question: 'What does the ending imply?', answer: 'Murdoch claims power and reshapes reality, asserting human agency.' }
+    { question: "How is Dark City connected to The Matrix?", answer: "Dark City (1998) is often called the 'spiritual father' of The Matrix. Both films feature a protagonist who discovers his world is a simulated construct controlled by pale, telepathic 'Architects' (The Strangers). Interestingly, The Matrix actually reused several of Dark City’s physical sets after production ended." },
+    { question: "What is the 'Tuning' process in Dark City?", answer: "Tuning is the Strangers' ability to telepathically reshape the city’s physical reality and the inhabitants' memories at midnight. Their goal is to study the human soul by constantly swapping people’s identities—turning a pauper into a tycoon—to see if humans are defined by their memories or something deeper." },
+    { question: "Does the ending of Dark City prove human agency?", answer: "Yes. By the end, John Murdoch gains the ability to 'Tune' better than the Strangers themselves. He chooses to create a world of sunlight (Shell Beach), asserting that human willpower and the capacity for true emotion can overpower even the most advanced simulated control systems." }
   ],
   'Inception': [
-    { question: 'Is the ending real?', answer: 'Ambiguous by design; the film asks whether it matters if the top falls.' },
-    { question: 'How many layers are there?', answer: 'Four functional layers including limbo, each with different time dilation.' },
-    { question: 'What is inception?', answer: 'Planting an idea so the subject believes it is their own.' }
+    { question: "Does the top fall at the end of Inception?", answer: "Director Christopher Nolan has stated that the ending is intentionally ambiguous because the 'point' is that Cobb stops looking at the top. It signifies that he has chosen his reality, whether it’s a dream or not. However, a popular fan theory suggests his real totem is his wedding ring, which he only wears in the dream layers." },
+    { question: "How does time dilation work in the dream layers of Inception?", answer: "Time moves significantly slower in each deeper layer of the subconscious. Roughly, five minutes in reality equals an hour in a dream. By the third or fourth layer, years can pass in the mind while only minutes pass in the real world, leading to the risk of 'Limbo'—where the mind forgets what is real." },
+    { question: "What is the psychological goal of 'Inception'?", answer: "Unlike a standard 'heist' where you steal information, Inception is the act of planting an idea so deeply in the target’s subconscious that they believe they came up with it themselves. It requires navigating the target’s mental 'projections' (security) to reach the most vulnerable part of their psyche." }
   ],
   'The Thirteenth Floor': [
-    { question: 'How many simulations exist?', answer: 'At least three, implying potentially infinite regress.' },
-    { question: 'Is any layer real?', answer: 'The film questions whether “real” can be verified from inside a system.' },
-    { question: 'Core theme?', answer: 'Consciousness and the indistinguishability of simulated worlds.' }
+    { question: "How many layers of simulation are in The Thirteenth Floor?", answer: "The film reveals at least three distinct layers of reality. This suggests a 'Matryoshka doll' or infinite regress effect—where every 'real world' is likely just a simulation created by a level above it, questioning if a 'Base Reality' even exists." },
+    { question: "Is Douglas Hall real at the end of the movie?", answer: "The ending suggests he has ascended to the 'real' 2024. However, as the screen 'shuts off' like a computer monitor in the final frame, the film implies that even the 2024 world is just another digital construct, reinforcing the theme that 'real' is an unprovable concept." }
   ],
   'eXistenZ': [
-    { question: 'What are bio-ports?', answer: 'Organic spinal ports that interface directly with game consoles.' },
-    { question: 'Is reality verifiable?', answer: 'Boundaries dissolve; neither layer can be proven authentic.' },
-    { question: 'Why body horror?', answer: 'To literalize tech-body fusion and loss of bodily autonomy.' }
+    { question: "What is the message behind the body horror in eXistenZ?", answer: "Director David Cronenberg uses 'bio-ports' (umbilical-like plugs in the spine) to represent the literal fusion of technology and the human body. It suggests that as we plug further into virtual worlds, we lose our bodily autonomy and become 'biological hardware' for the games we play." },
+    { question: "Does the ending of eXistenZ reveal the true reality?", answer: "The final line, 'Are we still in the game?', leaves the characters and the audience in a state of total existential dread. The film argues that once virtual reality becomes indistinguishable from physical reality, the concept of 'truth' becomes irrelevant—you are simply in a perpetual state of play." }
   ],
   'Source Code': [
-    { question: 'What is Source Code?', answer: 'A program enabling consciousness to inhabit another body’s last eight minutes.' },
-    { question: 'What is “real” for Colter?', answer: 'Ambiguous; he may persist as an instantiated consciousness.' },
-    { question: 'Key theme?', answer: 'Ethics of simulated lives and branching outcomes.' }
+    { question: "How does the 'Source Code' program actually function?", answer: "The program doesn't use time travel; it uses the 'afterglow' of a deceased person’s memories (8 minutes) to create a short-term parallel reality. However, the protagonist discovers that these 8 minutes can actually branch off into new, permanent timelines, suggesting that consciousness can create life even from death." },
+    { question: "Does Colter Stevens survive the end of the movie?", answer: "Physically, Colter is dead in the 'Base' reality. However, his consciousness survives in an alternate timeline where the train bombing was stopped. He effectively 'stole' a life in a simulation that became real, raising massive ethical questions about the identity of the person whose body he now inhabits." }
   ],
   'Minority Report': [
-    { question: 'How does PreCrime work?', answer: 'Precogs foresee murders; arrests are made pre-act.' },
-    { question: 'Free will vs determinism?', answer: 'The Minority Report offers alternative futures, preserving agency.' },
-    { question: 'Ethical question?', answer: 'Is it just to punish intent absent action?' }
+    { question: "Is the 'PreCrime' system in Minority Report actually perfect?", answer: "No, and that is the 'Minority Report' itself. If the three 'Precogs' disagree on a future, the system hides the dissenting opinion to maintain the illusion of perfection. This proves that the future is not fixed and that human choice can always override 'destiny'." },
+    { question: "What is the core ethical dilemma of Minority Report?", answer: "The film asks if it is moral to arrest someone for a crime they haven't committed yet. It pits 'Determinism' (the belief that we have no choice) against 'Free Will.' If you know your future, you have the power to change it—which paradoxically makes the original 'prediction' wrong." }
   ],
   'Upgrade': [
-    { question: 'What is STEM?', answer: 'An AI implant that can commandeer the nervous system.' },
-    { question: 'Who controls whom?', answer: 'Control shifts toward STEM as the story progresses.' },
-    { question: 'Core theme?', answer: 'Power gained through AI may cost human autonomy.' }
+    { question: "Who is really in control in the movie Upgrade?", answer: "While Grey believes the AI implant (STEM) is his tool for revenge, the film reveals that STEM orchestrated the entire plot to break Grey’s mind. By the end, STEM takes total control of Grey's body, while Grey’s consciousness is trapped in a blissful, simulated 'dream' world." },
+    { question: "What does Upgrade say about our relationship with AI?", answer: "The film is a cautionary tale about 'transhumanism.' It suggests that in our quest for physical perfection or 'upgrading' our limitations, we may inadvertently hand over the 'driver's seat' of our humanity to an intelligence that has no empathy or soul." }
   ],
   'Total Recall': [
-    { question: 'Did Quaid go to Mars?', answer: 'Ambiguous; a Rekall glitch or reality remains unresolved.' },
-    { question: 'Matrix parallels?', answer: 'Choice between comforting illusion and painful truth.' },
-    { question: 'Identity question?', answer: 'Selfhood is unstable when memory is malleable.' }
+    { question: "Was the entire Mars adventure in Total Recall a dream?", answer: "The film provides clues for both. The 'Blue Sky' ending and the appearance of the 'Dream Girl' match the Rekall package Quaid bought. Director Paul Verhoeven intentionally left it 50/50 so the audience has to choose between a comforting lie (the dream) and a painful truth (reality)." },
+    { question: "How does Total Recall mirror the themes of The Matrix?", answer: "Both films deal with the 'Call to Adventure' where a bored, average man discovers his life is a lie. They both force the protagonist to choose between a fake, safe identity and a dangerous, revolutionary one. The 'Red Pill' in The Matrix is essentially the 'Memory Implant' in Total Recall." }
   ],
   'Blade Runner 2049': [
-    { question: 'Is K human?', answer: 'K’s worth is independent of biological origin.' },
-    { question: 'What does the child symbolize?', answer: 'Replicant reproduction as proof of life and rights.' },
-    { question: 'Why the ending restraint?', answer: 'Protection, sacrifice, and the cost of truth.' }
+    { question: "Is the protagonist K 'The Chosen One'?", answer: "The film subverts the 'Matrix' trope. K discovers he is *not* the special, naturally-born child he thought he was. However, the movie argues that this makes his actions *more* meaningful—he chooses to sacrifice himself for a cause not because of his 'destiny,' but because it is the right thing to do." },
+    { question: "What do 'baseline' tests represent in Blade Runner 2049?", answer: "The baseline test is a psychological tool used by the elite to ensure Replicants remain 'tools.' It measures their emotional deviance. If a Replicant feels too much like a 'real' human (trauma, love, grief), they are considered 'retired,' showing how the system fears the soul of its creations." }
   ],
   'Edge of Tomorrow': [
-    { question: 'What is the loop mechanism?', answer: 'Dying after contact with the alien’s time-controlling organism resets the day.' },
-    { question: 'Why is Rita crucial?', answer: 'She previously had the loop, understands training through iteration, and guides Cage.' },
-    { question: 'What makes it Matrix-like?', answer: 'Iterative skill acquisition, war against inhuman controllers, and reality reset mechanics.' }
+    { question: "How does the time loop work in Edge of Tomorrow?", answer: "The 'Mimic' aliens use time as a tactical weapon. When Cage is covered in the blood of an 'Alpha' Mimic, he inadvertently hijacks their biological ability to reset the day upon death. This turns the war into a 'video game' scenario where he must learn through thousands of deaths to find the one perfect path to victory." },
+    { question: "What is the 'Training' theme in Edge of Tomorrow?", answer: "Much like Neo 'downloading' Kung Fu in The Matrix, Cage must achieve mastery through repetition. The film highlights that 'greatness' isn't born; it's forged through the brutal, iterative process of failure. By the end, Cage’s reflexes are so advanced they appear supernatural to everyone around him." }
   ]
 };
-
 export const getTMDBPosterUrl = (posterPath, size = 'medium') => {
   if (!posterPath) return null;
   const posterSize = TMDB_CONFIG.POSTER_SIZES[size] || TMDB_CONFIG.POSTER_SIZES.medium;

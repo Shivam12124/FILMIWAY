@@ -186,7 +186,6 @@ import {
   SENSITIVE_TIMELINES as PARAMOUNT_COMEDY_SENSITIVE_TIMELINES
 } from '../utils/paramountComedyMovieData';
 
-// ✅ NEW: Paramount Best Movies Import
 import { 
   COMPLETE_MOVIE_DATA as PARAMOUNT_BEST_MOVIE_DATA, 
   SENSITIVE_TIMELINES as PARAMOUNT_BEST_SENSITIVE_TIMELINES 
@@ -268,7 +267,13 @@ import {
   COMPLETE_MOVIE_DATA as REVENGE_MOVIE_DATA,
   SENSITIVE_TIMELINES as REVENGE_SENSITIVE_TIMELINES 
 } from '../utils/revengeMovieData';
-import { COMPLETE_MOVIE_DATA as WAR_FILMS_MOVIE_DATA } from '../utils/warFilmsMovieData';
+
+// 🔥 FIX 1: ADDED SENSITIVE_TIMELINES IMPORT FOR WAR FILMS
+import { 
+  COMPLETE_MOVIE_DATA as WAR_FILMS_MOVIE_DATA,
+  SENSITIVE_TIMELINES as WAR_FILMS_SENSITIVE_TIMELINES
+} from '../utils/warFilmsMovieData';
+
 import { 
   COMPLETE_MOVIE_DATA as THRILLER_MOVIE_DATA,
   SENSITIVE_TIMELINES as THRILLER_SENSITIVE_TIMELINES 
@@ -662,9 +667,11 @@ const MovieDetailsSection = React.memo(({
    || CRIME_THRILLER_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
    || THRILLER_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || MYSTERY_THRILLER_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-   || DETECTIVE_THRILLER_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes // 🔥 FIX: ADDED MISSING COLLECTION
-   || PSYCH_THRILLER_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes // 🔥 FIX: ADDED MISSING COLLECTION
+   || DETECTIVE_THRILLER_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
+   || PSYCH_THRILLER_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || INTERSTELLAR_TIMELINES?.[movie?.tmdbId]?.scenes 
+   // 🔥 FIX 2: ADDED WAR FILMS SENSITIVE TIMELINES TO LOOKUP CHAIN
+   || WAR_FILMS_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
    || [];
 
@@ -1564,9 +1571,7 @@ if (fromPsychologicalThrillerCollection) {
         </motion.div>
       )}
 
-      {!fromWarFilmsCollection && (
-        <SensitiveContentTimelineSection movie={{...movie, Runtime: dynamicMovieData.runtime}} sensitiveScenes={sensitiveScenes} />
-      )}
+      <SensitiveContentTimelineSection movie={{...movie, Runtime: dynamicMovieData.runtime}} sensitiveScenes={sensitiveScenes} />
 
       {/* ✅ SEO FIX: Passing the data into ARIA labels instead of hiding it in a sr-only div */}
       <EnhancedIntensityGraph 

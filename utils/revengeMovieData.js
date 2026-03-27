@@ -256,67 +256,66 @@ export const COMPLETE_MOVIE_DATA = {
 // 5. CUSTOM FAQs
 export const REVENGE_MOVIE_FAQS = {
     'Oldboy': [
-        { question: "What is the twist in Oldboy?", answer: "The twist reveals that the antagonist, Woo-jin, manipulated Dae-su into falling in love with his own daughter." },
-        { question: "Is the octopus scene real?", answer: "Yes, actor Choi Min-sik actually ate four live octopuses to get the shot right." },
-        { question: "Why was he imprisoned for 15 years?", answer: "To allow his daughter to grow up to be an adult woman." },
-        { question: "Does Dae-su know the truth at the end?", answer: "It is ambiguous. He visits a hypnotist to erase the memory, but his final smile is open to interpretation." }
+        { question: "What is the final twist in the movie Oldboy?", answer: "The devastating twist reveals that the antagonist, Woo-jin, orchestrated a complex, decades-long plan to manipulate Dae-su into unknowingly falling in love with his own daughter, serving as the ultimate psychological revenge." },
+        { question: "Did the actor really eat a live octopus in Oldboy?", answer: "Yes, in one of the film's most famous scenes, actor Choi Min-sik actually consumed four live octopuses across multiple takes to capture the raw, visceral desperation of his character." },
+        { question: "Why was Oh Dae-su imprisoned for exactly 15 years?", answer: "He was kept in the private prison for 15 years specifically to allow his daughter, who was a toddler when he was captured, to grow into an adult woman, setting the stage for Woo-jin's final trap." },
+        { question: "Does Dae-su remember the truth at the end of Oldboy?", answer: "The ending is deliberately ambiguous. He visits a hypnotist to erase the traumatic memory of his daughter's identity, but his final, pained smile leaves the audience wondering if the hypnosis actually worked or if he is faking ignorance to survive." }
     ],
     'Gladiator': [
-        { question: "Is Maximus based on a real person?", answer: "Maximus is fictional, but inspired by figures like Narcissus and Spartacus." },
-        { question: "Did Commodus really kill his father?", answer: "Historically, Marcus Aurelius died of natural causes. The movie dramatizes this." },
-        { question: "Was the Colosseum built for the movie?", answer: "A massive replica of about one-third of the Colosseum was built in Malta." },
-        { question: "What does the ending mean?", answer: "Maximus dies and joins his family in the afterlife, having fulfilled his vow." }
+        { question: "Is Maximus from Gladiator based on a real historical figure?", answer: "Maximus Decimus Meridius is a fictional character, but he is heavily inspired by real historical figures, including the Roman general Narcissus (who assassinated Commodus) and Spartacus, the famous gladiator who led a slave uprising." },
+        { question: "Did Emperor Commodus really kill his father Marcus Aurelius?", answer: "No, historically Emperor Marcus Aurelius died of natural causes (likely the Antonine Plague) in 180 AD. The movie dramatically altered this event to establish Commodus as the central villain." },
+        { question: "Was a real Colosseum built for the movie Gladiator?", answer: "The production built a massive, 52-foot-high replica of about one-third of the Roman Colosseum in Malta. The remaining two-thirds, including the upper tiers and the roaring crowds, were created using groundbreaking CGI." },
+        { question: "What is the meaning of the ending in Gladiator?", answer: "When Maximus dies in the arena, his visions of the wheat fields signify that he has finally earned peace. Having fulfilled his vow to avenge his family and restore Rome's honor, he crosses into Elysium (the afterlife) to reunite with his wife and son." }
     ],
     'Unforgiven': [
-        { question: "What makes Unforgiven a 'revisionist' Western?", answer: "It deconstructs the romantic myth of the Wild West, showing violence as clumsy and painful." },
-        { question: "Why did William Munny take the job?", answer: "He was desperate for money to support his children due to his failing farm." },
-        { question: "Is the writer character based on anyone?", answer: "W.W. Beauchamp represents the dime novelists who exaggerated gritty events into legends." },
-        { question: "What does the final line mean?", answer: "It shows that while Munny is leaving, his capacity for extreme violence remains." }
+        { question: "Why is Unforgiven considered a 'revisionist' Western?", answer: "Instead of portraying the Wild West as a place of heroic gunfights and clear-cut morality, Unforgiven strips away the romantic myth. It shows violence as clumsy, terrifying, and deeply damaging to the soul, and depicts 'heroes' as flawed, aging men." },
+        { question: "Why does William Munny agree to do one last killing?", answer: "Despite swearing off violence, Munny is desperate. His pig farm is failing, his wife has died, and he needs the bounty money to ensure his young children do not starve or grow up in total poverty." },
+        { question: "What does the writer W.W. Beauchamp represent in Unforgiven?", answer: "Beauchamp represents the sensationalist 'dime novelists' of the 19th century who irresponsibly turned gritty, brutal outlaws into romanticized legends, fueling the toxic mythology of the American West." },
+        { question: "What does the final scene of Unforgiven mean?", answer: "When Munny threatens to kill anyone who shoots at him, it proves that his terrifying capacity for cold-blooded violence never truly left him. It shatters the illusion that a person can ever completely walk away from a violent past." }
     ],
     'Braveheart': [
-        { question: "How accurate is Braveheart?", answer: "It is historically loose; kilts were not worn in that era and the romance is fiction." },
-        { question: "Why does he scream 'Freedom'?", answer: "It is his final act of defiance against English rule." },
-        { question: "Did the Battle of Stirling Bridge happen on a bridge?", answer: "Historically yes, but in the film it was staged on an open field." },
-        { question: "Why is his face painted blue?", answer: "Woad paint was a Pictish tradition, not 13th-century Scottish, but used for visual effect." }
+        { question: "How historically accurate is the movie Braveheart?", answer: "The film is highly fictionalized for dramatic effect. For example, 13th-century Scots did not wear belted plaids (kilts), the romantic subplot with Princess Isabella is impossible due to her age at the time, and the English did not invoke 'Prima Nocta'." },
+        { question: "Why does William Wallace scream 'Freedom' at the end?", answer: "His final scream is the ultimate act of defiance. By refusing to beg for mercy or submit to the English King, he ensures he dies as a martyr, inspiring the Scottish rebellion to fight on and eventually win their independence." },
+        { question: "Did the real Battle of Stirling Bridge happen on a bridge?", answer: "Yes, the historical Battle of Stirling Bridge was a tactical masterclass where the Scots trapped the English on a narrow bridge. However, director Mel Gibson chose to film it on an open field to create a more cinematic, chaotic clash." },
+        { question: "Did Scottish warriors really paint their faces blue?", answer: "Using blue woad dye was a tradition of the ancient Picts who fought the Romans centuries earlier. It was not used by 13th-century Scottish soldiers, but it was included in the film to make Wallace's army look more visually intimidating." }
     ],
     'The Prestige': [
-        { question: "What is the twist regarding Borden?", answer: "Alfred Borden was actually identical twins living as one man." },
-        { question: "Did the machine really work?", answer: "Yes, Tesla's machine actually cloned Angier every time it was used." },
-        { question: "What does 'The Prestige' mean?", answer: "It is the third act of a magic trick where the vanished object is brought back." },
-        { question: "Who is the villain?", answer: "Both men are villains in their own way due to their destructive obsession." }
+        { question: "What is the big twist regarding Alfred Borden in The Prestige?", answer: "The twist reveals that 'Alfred Borden' was actually identical twins sharing one life and one identity. They took turns playing Borden and his assistant Fallon, sacrificing their individual lives to pull off the ultimate illusion." },
+        { question: "Did Nikola Tesla's machine actually work in The Prestige?", answer: "Yes, within the sci-fi logic of the film, Tesla's machine was not a teleportation device, but a cloning machine. It created an exact duplicate of Angier every time he used it, forcing him to murder his own clone during every performance." },
+        { question: "What does the title 'The Prestige' actually mean?", answer: "In the film's lore, a magic trick has three parts: The Pledge (showing an ordinary object), The Turn (making it disappear), and The Prestige (bringing it back). The Prestige is the hardest part and the one that earns the audience's applause." },
+        { question: "Who is the real villain in The Prestige?", answer: "The film argues that both Angier and Borden are villains. Their escalating obsession with besting one another destroys the lives of everyone around them, proving that the pursuit of absolute perfection demands a monstrous personal cost." }
     ],
     'The Revenant': [
-        { question: "Is The Revenant a true story?", answer: "Yes, it is based on the real survival story of Hugh Glass in 1823." },
-        { question: "Did Leonardo DiCaprio really sleep in a horse?", answer: "No, the horse carcass was a prop, but he did eat raw bison liver." },
-        { question: "Why didn't Glass kill Fitzgerald?", answer: "He leaves revenge in the Creator's hands, letting the Arikara deal with him." },
-        { question: "How was the bear attack filmed?", answer: "It was a mix of CGI and stunt work with a stuntman in a blue suit." }
+        { question: "Is the movie The Revenant based on a true story?", answer: "Yes, it is heavily inspired by the true story of Hugh Glass, an American frontiersman who was mauled by a grizzly bear in 1823 and left for dead by his companions, forcing him to crawl for weeks through the wilderness to survive." },
+        { question: "Did Leonardo DiCaprio actually sleep inside a dead horse?", answer: "While the horse carcass was a highly realistic prop created by the art department, DiCaprio did subject himself to extreme conditions, including swimming in freezing rivers and famously eating a real, raw bison liver on camera." },
+        { question: "Why does Hugh Glass let Fitzgerald live at the end of The Revenant?", answer: "Glass realizes that killing Fitzgerald will not bring his son back. By pushing Fitzgerald down the river to the Arikara tribe, he adheres to the belief that 'revenge is in the Creator's hands,' surrendering his personal vengeance to fate." },
+        { question: "How did they film the bear attack in The Revenant?", answer: "The attack is a masterful blend of highly detailed CGI and live-action stunt work. A stuntman wearing a blue suit physically threw DiCaprio around the set, and the bear was later digitally painted over the stuntman in post-production." }
     ],
     'Kill Bill: Vol. 2': [
-        { question: "What is the Five Point Palm Exploding Heart Technique?", answer: "A fictional martial arts move that stops the heart after five steps." },
-        { question: "Why is Bill's death so quiet?", answer: "It emphasizes their relationship as former lovers rather than just enemies." },
-        { question: "What is the real name of The Bride?", answer: "Her name is Beatrix Kiddo, revealed to humanize her." },
-        { question: "Why did Bill try to kill her?", answer: "His heartbreak turned into murderous jealousy when he thought she left him." }
+        { question: "Is the Five Point Palm Exploding Heart Technique a real martial arts move?", answer: "No, the technique is entirely fictional, created by Quentin Tarantino as a homage to classic 1970s Shaw Brothers kung-fu movies. It serves as the ultimate, mythical finishing move to conclude The Bride's journey." },
+        { question: "Why is the final fight with Bill so short and quiet?", answer: "After hours of bloody, high-octane sword fights, the quiet conversation and swift end subvert audience expectations. It emphasizes the tragic, intimate reality that Bill and The Bride were former lovers, making the climax an emotional breakup rather than a generic action scene." },
+        { question: "Why is The Bride's name 'beped' out in the first movie?", answer: "Her real name, Beatrix Kiddo, is hidden in Vol. 1 to build her mythic status as an unstoppable force of nature. Revealing her name in Vol. 2 humanizes her, shifting her role from a cold assassin to a grieving mother." },
+        { question: "Why did Bill try to assassinate The Bride at her wedding?", answer: "Bill's motivation was born from toxic, murderous jealousy. When he realized she had faked her death to escape him and marry a civilian, his heartbreak and ego drove him to destroy the peaceful life she was trying to build." }
     ],
     'John Wick': [
-        { question: "Why is the dog so important?", answer: "The puppy was a final gift from his dying wife, representing his last hope for love." },
-        { question: "What is the Gold Coin currency?", answer: "They represent a currency of favors and access within the underworld." },
-        { question: "Did Keanu Reeves do his own stunts?", answer: "Yes, he performed about 90% of his own stunts." },
-        { question: "What is 'Baba Yaga'?", answer: "He is the one you send to kill the Boogeyman." }
+        { question: "Why is the death of the dog so important to John Wick?", answer: "The beagle puppy was the final gift from his terminally ill wife. It wasn't just a pet; it represented John's last remaining connection to his wife and his final chance to grieve and live a peaceful, normal life outside the assassin world." },
+        { question: "How does the Gold Coin currency work in John Wick?", answer: "The gold coins are not tied to a specific monetary value like dollars. Instead, they represent an absolute currency of favors, respect, and access within the assassin underworld. One coin can buy a drink, a gun, or body disposal." },
+        { question: "Did Keanu Reeves perform his own stunts and shooting in John Wick?", answer: "Yes, Keanu Reeves trained extensively for months in Judo, Brazilian Jiu-Jitsu, and tactical 3-gun shooting (pistol, rifle, shotgun). He performed roughly 90% of his own stunts, which is why the camera rarely cuts away during action scenes." },
+        { question: "What does 'Baba Yaga' mean in John Wick?", answer: "While 'Baba Yaga' traditionally refers to a witch in Slavic folklore, the film uses it to mean 'The Boogeyman.' As the Russian mob boss explains, John Wick isn't exactly the Boogeyman; 'he is the one you sent to kill the fucking Boogeyman.'" }
     ],
     'I Saw the Devil': [
-        { question: "What is the message of the film?", answer: "When you fight monsters, you risk becoming one yourself." },
-        { question: "Why does he keep letting the killer go?", answer: "To inflict prolonged suffering rather than a quick death." },
-        { question: "Is there an alternate ending?", answer: "Yes, one where he walks away stoically instead of breaking down." },
-        { question: "Why is the violence so graphic?", answer: "To make the audience uncomfortable with the reality of revenge." }
+        { question: "What is the core message of the movie I Saw the Devil?", answer: "The film explores the Nietzschean warning: 'He who fights with monsters should look to it that he himself does not become a monster.' The protagonist's quest for vengeance completely strips him of his humanity, making him as sadistic as the killer." },
+        { question: "Why does the protagonist keep catching and releasing the killer?", answer: "He refuses to give the killer the mercy of a quick death. By planting a tracker on him, he beats the killer to the brink of death, lets him heal, and repeats the process, intending to inflict the maximum amount of prolonged psychological and physical torture." },
+        { question: "Is there an alternate ending to I Saw the Devil?", answer: "Yes, the director's cut features a slightly different tone at the end. Instead of breaking down into agonizing sobs, one version shows him walking away with a blank, stoic expression, leaving it ambiguous as to whether he feels regret or just complete emotional emptiness." },
+        { question: "Why is the violence in I Saw the Devil so extreme and graphic?", answer: "Director Kim Jee-woon uses extreme gore to prevent the audience from cheering for the revenge. The brutality is meant to be sickening, actively discouraging the viewer from enjoying the violence and forcing them to confront the ugly reality of retribution." }
     ],
     'The Count of Monte Cristo': [
-        { question: "How does this version differ from the book?", answer: "It simplifies the plot and changes the ending so Edmond ends up with Mercedes." },
-        { question: "Where was the prison filmed?", answer: "The Comino Tower in Malta." },
-        { question: "What is the meaning of 'Zatarra'?", answer: "It means 'Driftwood', symbolizing his state before finding purpose." },
-        { question: "Why does he spare Mondego initially?", answer: "He wants him to lose everything—family, fortune, reputation—before dying." }
+        { question: "How does the 2002 movie differ from the original Alexandre Dumas novel?", answer: "The movie significantly simplifies the massive novel. The biggest change is the ending: in the book, Edmond leaves Mercedes to start a new life, but the film gives them a Hollywood happy ending where they reunite and discover they have a son together." },
+        { question: "Where was the Château d'If prison filmed for the movie?", answer: "The exterior and interior scenes of the terrifying island prison, the Château d'If, were filmed at Saint Mary's Tower on the island of Comino in Malta, which provided the perfect isolated, ancient stone aesthetic." },
+        { question: "What is the meaning of the name 'Zatarra' in the film?", answer: "When Edmond is rescued by the smugglers, they call him 'Zatarra,' which they translate as 'driftwood.' This perfectly symbolizes his state at the time: a man with no identity, floating aimlessly through life before he discovers the treasure and his purpose." },
+        { question: "Why does Edmond spare Fernand Mondego initially?", answer: "Edmond's revenge is meticulous. He believes death is too easy a punishment. He wants Mondego to experience the exact same despair he felt in prison by systematically destroying Mondego's fortune, reputation, and family before finally allowing him to die." }
     ]
 };
-
 // 6. HELPER FUNCTIONS (🔥 UPGRADED FOR UNIVERSAL SEO)
 export const getTMDBPosterUrl = (posterPath, size = 'medium') => {
     if (!posterPath) return null;
