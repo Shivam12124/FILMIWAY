@@ -745,6 +745,19 @@ const CollectionsHub = () => {
             hasSubCollections: false
         },
 
+
+{
+            id: 'best-action-movies',
+            title: '10 Best Action Movies Of All Time',
+            description: 'The pinnacle of practical stunts, martial arts, gun-fu, and adrenaline-pumping cinema.',
+            icon: Zap, 
+            gradient: 'from-red-600 to-stone-900',
+            movieCount: '10',
+            rating: '7.9',
+            directLink: '/collection/best-action-movies',
+            hasSubCollections: false
+        },
+
     ];
 
 

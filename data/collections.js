@@ -240,7 +240,7 @@ export const COLLECTIONS = {
       { label: "AWAKENING", desc: "Reality shift" },
       { label: "PHILOSOPHY", desc: "Free will" }
     ],
-    movies: ['tt0118929', 'tt1375666', 'tt0139809', 'tt0120663', 'tt0945513', 'tt0181689', 'tt6499752', 'tt0100802', 'tt1856101', 'tt1631867'],
+    movies: ['tt0118929', 'tt1375666', 'tt0139809', 'tt0120907', 'tt0945513', 'tt0181689', 'tt6499752', 'tt0100802', 'tt1856101', 'tt1631867'],
     relatedCollections: ['best-sci-fi-movies', 'movies-like-inception', 'best-time-travel-movies']
   },
 
@@ -896,6 +896,21 @@ export const COLLECTIONS = {
     relatedCollections: ['movies-like-se7en', 'best-psychological-thriller-movies', 'best-crime-thriller-movies']
   },
 
+// 💥 10 BEST ACTION MOVIES OF ALL TIME
+  'best-action-movies': {
+    slug: 'best-action-movies',
+    title: 'The 10 Best Action Movies of All Time',
+    stats: { averageRating: 7.9 },
+    badges: [
+      { label: "ADRENALINE", desc: "Pulse-pounding" },
+      { label: "STUNTS", desc: "Practical effects" },
+      { label: "CHOREOGRAPHY", desc: "Flawless combat" }
+    ],
+    // ✅ Correct IMDb IDs for: Die Hard, T2, Fury Road, Aliens, John Wick, The Raid 2, M:I Fallout, Hard Boiled, Crouching Tiger, Shoot 'Em Up
+    movies: ['tt0095016', 'tt0103064', 'tt1392190', 'tt0090605', 'tt2981104', 'tt2265171', 'tt4508902', 'tt0104684', 'tt0118849', 'tt0465602'],
+    relatedCollections: ['best-thriller-movies', 'best-sci-fi-movies', 'best-revenge-movies']
+  },
+
   // 🩸 BEST THRILLER MOVIES
   'best-thriller-movies': {
     slug: 'best-thriller-movies',
@@ -942,7 +957,7 @@ export const getRoadTripCollection = () => COLLECTIONS['top-10-road-trip-movies'
 export const getThoughtProvokingCollection = () => COLLECTIONS['best-thought-provoking-movies'];
 export const getThrillerCollection = () => COLLECTIONS['best-thriller-movies'];
 export const getNeoNoirCollection = () => COLLECTIONS['best-neo-noir-movies'];
-
+export const getBestActionCollection = () => COLLECTIONS['best-action-movies'];
 // ============================================================================
 // 🧠 THE MASTER CANONICAL BRAIN
 // ============================================================================

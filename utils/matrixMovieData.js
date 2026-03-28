@@ -12,7 +12,7 @@ export const COMPLETE_MOVIE_DATABASE = [
   { tmdbId: 2666, imdbID: 'tt0118929', Title: 'Dark City', year: 1998, genre: 'Sci-Fi', runtime: 100, rank: 1 },
   { tmdbId: 27205, imdbID: 'tt1375666', Title: 'Inception', year: 2010, genre: 'Sci-Fi', runtime: 148, rank: 2 },
   { tmdbId: 1090, imdbID: 'tt0139809', Title: 'The Thirteenth Floor', year: 1999, genre: 'Sci-Fi', runtime: 100, rank: 3 },
-  { tmdbId: 1946, imdbID: 'tt0120663', Title: 'eXistenZ', year: 1999, genre: 'Sci-Fi', runtime: 97, rank: 4 },
+  { tmdbId: 1946, imdbID: 'tt0120907', Title: 'eXistenZ', year: 1999, genre: 'Sci-Fi', runtime: 97, rank: 4 },
   { tmdbId: 45612, imdbID: 'tt0945513', Title: 'Source Code', year: 2011, genre: 'Sci-Fi', runtime: 93, rank: 5 },
   { tmdbId: 180, imdbID: 'tt0181689', Title: 'Minority Report', year: 2002, genre: 'Sci-Fi', runtime: 145, rank: 6 },
   { tmdbId: 500664, imdbID: 'tt6499752', Title: 'Upgrade', year: 2018, genre: 'Sci-Fi', runtime: 100, rank: 7 },
@@ -159,7 +159,7 @@ export const COMPLETE_MOVIE_DATA = {
   
   // 4. eXistenZ
   1946: createMovieData({ 
-    tmdbId: 1946, imdbID: 'tt0120663', Title: 'eXistenZ',
+    tmdbId: 1946, imdbID: 'tt0120907', Title: 'eXistenZ',
     cyberComplexity: 90, philosophicalDepth: 88,
     complexityLevel: "HIGH", dominantColor: "#be123c", 
     rating: 6.8, criticsScore: 70, audienceScore: 62, 

@@ -53,6 +53,7 @@ import { COMPLETE_MOVIE_DATABASE as RAUNCHY_COMEDY_DATABASE, COMPLETE_MOVIE_DATA
 import { COMPLETE_MOVIE_DATABASE as ROAD_TRIP_DATABASE, COMPLETE_MOVIE_DATA as ROAD_TRIP_DATA } from '../../utils/roadTripMovieData';
 import { COMPLETE_MOVIE_DATABASE as THOUGHT_PROVOKING_DATABASE, COMPLETE_MOVIE_DATA as THOUGHT_PROVOKING_DATA } from '../../utils/thoughtProvokingMovieData';
 import { COMPLETE_MOVIE_DATABASE as NEO_NOIR_DATABASE, COMPLETE_MOVIE_DATA as NEO_NOIR_DATA } from '../../utils/neoNoirMovieData';
+import { COMPLETE_MOVIE_DATABASE as BEST_ACTION_DATABASE, COMPLETE_MOVIE_DATA as BEST_ACTION_DATA } from '../../utils/bestActionMoviesData';
 
 import { COMPLETE_MOVIE_DATABASE as HULU_FAMILY_DATABASE, COMPLETE_MOVIE_DATA as HULU_FAMILY_DATA } from '../../utils/huluFamilyMovieData';
 import { COMPLETE_MOVIE_DATABASE as HBO_ACTION_DATABASE, COMPLETE_MOVIE_DATA as HBO_ACTION_DATA } from '../../utils/hboActionMovieData';
@@ -1543,6 +1544,29 @@ const getCollectionContent = () => {
                 text2: "Each film serves as a stylish, thought-provoking descent into the darkest corners of human nature."
             }
         };
+    } else if (collection.slug === 'best-action-movies') {
+        return {
+            badge: "High-Octane Cinema",
+            title: "The 10 Best Action Movies of All Time",
+            description: "The absolute pinnacle of action cinema. Practical stunts, legendary choreography, and non-stop adrenaline.",
+            selection: {
+                text1: "From the genre-defining claustrophobia of 'Die Hard' to the relentless vehicular chaos of 'Mad Max: Fury Road'.",
+                text2: "Each selection represents a masterclass in pacing, practical effects, and visceral combat that revolutionized the industry."
+            },
+            ranking: {
+                text: "Our Adrenaline Score evaluates practical stunt authenticity, combat choreography, and the sheer momentum of the narrative.",
+                points: [
+                    "Action Choreography & Gun-Fu",
+                    "Practical Stunts & Effects",
+                    "Adrenaline & Pacing",
+                    "Cinematic Legacy"
+                ]
+            },
+            experience: {
+                text1: "Whether you're seeking martial arts perfection or explosive set pieces, this collection delivers pure cinematic adrenaline.",
+                text2: "Each film has been selected for its ability to keep your pulse pounding from the first frame to the last."
+            }
+        };
     } else if (collection.slug === 'best-heist-thriller-movies') {
         return {
             badge: "Heist Master Cinema",
@@ -2120,6 +2144,11 @@ subtitle: "While everyone searches Netflix, these classics hide in plain sight. 
             title: "10 Best Neo-Noir Movies",
             subtitle: "Gritty investigations, moral ambiguity & atmospheric dread in the modern city"
         };
+    } else if (collection.slug === 'best-action-movies') {
+        return {
+            title: "The 10 Best Action Movies of All Time",
+            subtitle: "High-octane pacing, practical stunts, and flawless action choreography"
+        };
 
     } else if (collection.slug === 'movies-like-interstellar') {
         return {
@@ -2273,6 +2302,11 @@ const getLoaderContent = () => {
         return {
             title: "Loading Neo-Noir Movies",
             description: "Curating atmospheric, morally complex mysteries with community reviews"
+        };
+    } else if (collection?.slug === 'best-action-movies') {
+        return {
+            title: "Loading Best Action Movies",
+            description: "Curating high-octane action masterpieces with community reviews and adrenaline scores"
         };
 
 } else if (collection?.slug === 'movies-like-donnie-darko') {
@@ -2703,6 +2737,15 @@ const getStaticMetaContent = () => {
             ogTitle: "10 Best Neo-Noir Movies: Neon & Shadows",
             twitterTitle: "The 10 Best Neo-Noir Movies You Need to Watch",
             progressText: `of Top ${movies.length} Neo-Noir Movies`
+        };
+    } else if (collection.slug === 'best-action-movies') {
+        return {
+            title: "10 Best Action Movies of All Time (Ranked by Adrenaline)",
+            description: "The definitive ranking of the 10 best action movies ever made. Featuring Die Hard, Mad Max: Fury Road, and John Wick. Includes an exact Timestamps & Parents Guide.",
+            keywords: "best action movies, top action movies of all time, die hard, mad max fury road, john wick, action choreography",
+            ogTitle: "10 Best Action Movies of All Time: Pure Adrenaline",
+            twitterTitle: "The 10 Best Action Movies Ever Made (Die Hard, Mad Max)",
+            progressText: `of Top ${movies.length} Action Movies`
         };
 
 
@@ -3309,6 +3352,7 @@ const getStaticMetaContent = () => {
             sessionStorage.removeItem('fromRoadTripCollection');
             sessionStorage.removeItem('fromThoughtProvokingCollection');
             sessionStorage.removeItem('fromNeoNoirCollection');
+            sessionStorage.removeItem('fromBestActionCollection');
 
             // Set appropriate collection flag âœ…
             if (collection.slug === 'movies-like-inception') {
@@ -3441,6 +3485,8 @@ const getStaticMetaContent = () => {
                 sessionStorage.setItem('fromThoughtProvokingCollection', 'true');
             } else if (collection.slug === 'best-neo-noir-movies') {
                 sessionStorage.setItem('fromNeoNoirCollection', 'true');
+            } else if (collection.slug === 'best-action-movies') {
+                sessionStorage.setItem('fromBestActionCollection', 'true');
             }
         }
     };
@@ -3866,6 +3912,8 @@ return (
 ? 'movies/best-thought-provoking-movies/'
 : collection?.slug === 'best-neo-noir-movies'
 ? 'movies/best-neo-noir-movies/'
+: collection?.slug === 'best-action-movies'
+? 'movies/best-action-movies/'
 : collection?.slug === 'best-action-movies-on-hulu'
                                     ? 'movies/best-action-movies-on-hulu/'
 : collection?.slug === 'best-romance-movies-on-hulu'
@@ -4115,6 +4163,8 @@ return (
                                     ? `/movies/best-thought-provoking-movies/${currentMovie.imdbID}`
                                     : collection.slug === 'best-neo-noir-movies'
                                     ? `/movies/best-neo-noir-movies/${currentMovie.imdbID}`
+                                    : collection.slug === 'best-action-movies'
+                                    ? `/movies/best-action-movies/${currentMovie.imdbID}`
                                     : collection.slug === 'best-action-movies-on-hulu'
                                     ? `/movies/best-action-movies-on-hulu/${currentMovie.imdbID}`
                                     : collection.slug === 'best-romance-movies-on-hulu'
@@ -4417,6 +4467,9 @@ case 'best-thought-provoking-movies':
             break;
 case 'best-neo-noir-movies':
             movieDatabase = NEO_NOIR_DATABASE;
+            break;
+case 'best-action-movies':
+            movieDatabase = BEST_ACTION_DATABASE;
             break;
 
             case 'best-action-movies-on-hulu':
