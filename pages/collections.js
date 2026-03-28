@@ -710,6 +710,29 @@ const CollectionsHub = () => {
             hasSubCollections: false
         },
 
+
+        {
+            id: 'hulu-drama',
+            title: '10 Best Drama Movies on Hulu',
+            description: 'The most emotionally resonant dramas ranked by character depth, narrative impact, and critical acclaim.',
+            icon: Film,
+            gradient: 'from-indigo-500 to-blue-600',
+            movieCount: '10',
+            rating: '7.7',
+            directLink: '/collection/best-drama-movies-on-hulu',
+            hasSubCollections: false
+        },
+        {
+            id: 'paramount-core-drama',
+            title: '10 Best Core Drama Movies on Paramount+',
+            description: 'Intense character studies and emotional masterclasses. From gritty realism to sweeping period epics.',
+            icon: Crown,
+            gradient: 'from-blue-600 to-indigo-900',
+            movieCount: '10',
+            rating: '8.2',
+            directLink: '/collection/best-core-drama-movies-on-paramount-plus',
+            hasSubCollections: false
+        },
 {
             id: 'movies-about-greed',
             title: '10 Best Movies About Greed',
@@ -723,6 +746,9 @@ const CollectionsHub = () => {
         },
 
     ];
+
+
+    
 
     const filteredCollections = collections.filter(collection =>
         collection.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
