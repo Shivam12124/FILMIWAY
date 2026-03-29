@@ -405,6 +405,9 @@ const getHighestSeverityInfo = (scenes) => {
 export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, collectionSlug, unused, movieInfo) => {
     let currentRuntime = movie.Runtime || movie.runtime || "Official";
     if (typeof currentRuntime === 'number') currentRuntime = `${currentRuntime} min`;
+    
+    // 🔥 Explicit Override for Apocalypse Now
+    if (movie.tmdbId === 28) currentRuntime = "3 hours 1 min (Final Cut)";
 
     const sensitiveScenes = SENSITIVE_TIMELINES[movie.tmdbId]?.scenes || [];
     const heavyScenes = sensitiveScenes.filter(s => {
@@ -538,6 +541,9 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
     const dbMovie = COMPLETE_MOVIE_DATABASE.find(m => m.tmdbId === tmdbId);
     let finalRuntime = currentRuntime !== "Official" ? currentRuntime : (dbMovie?.runtime ? `${dbMovie.runtime} min` : "Official");
     if (typeof finalRuntime === 'number') finalRuntime = `${finalRuntime} min`;
+    
+    // 🔥 Explicit Override for Apocalypse Now
+    if (tmdbId === 28) finalRuntime = "3 hours 1 min (Final Cut)";
 
     if (intensityScenes.length > 0) {
         const uiIntensityList = intensityScenes.map(s => `• Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)`).join('\n');

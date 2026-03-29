@@ -442,6 +442,9 @@ const getHighestSeverityInfo = (scenes) => {
 export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, collectionSlug, unused, movieInfo) => {
     let currentRuntime = movie.Runtime || movie.runtime || "Official";
     if (typeof currentRuntime === 'number') currentRuntime = `${currentRuntime} min`;
+    
+    // 🔥 Explicit Override for Sin City
+    if (movie.tmdbId === 187) currentRuntime = "2 hours 21 min (Unrated Extended Version)";
 
     const sensitiveScenes = SENSITIVE_TIMELINES[movie.tmdbId]?.scenes || [];
     const heavyScenes = sensitiveScenes.filter(s => {
@@ -575,6 +578,9 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
     const dbMovie = COMPLETE_MOVIE_DATABASE.find(m => m.tmdbId === tmdbId);
     let finalRuntime = currentRuntime !== "Official" ? currentRuntime : (dbMovie?.runtime ? `${dbMovie.runtime} min` : "Official");
     if (typeof finalRuntime === 'number') finalRuntime = `${finalRuntime} min`;
+    
+    // 🔥 Explicit Override for Sin City
+    if (tmdbId === 187) finalRuntime = "2 hours 21 min (Unrated Extended Version)";
 
     if (intensityScenes.length > 0) {
         const uiIntensityList = intensityScenes.map(s => `• Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)`).join('\n');

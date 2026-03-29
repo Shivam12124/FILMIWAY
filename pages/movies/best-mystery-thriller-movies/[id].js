@@ -13,6 +13,7 @@ import InternalCollectionsSection from '../../../components/InternalCollectionsS
 import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
 import TMDBAttribution from '../../../components/TMDBAttribution';
+import Header from '../../../components/Header';
 import { getPrimaryCollectionForMovie } from '../../../data/collections';
 
 // ✅ IMPORT DATA (CORRECT NAME MATCHING UTILS)
@@ -329,6 +330,8 @@ const MysteryThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
 
             <SubtleFilmGrain />
             <div className="absolute inset-0"><CinematicBackground /></div>
+          
+          <Header />
             
 
             <div className="relative z-10 pt-0 md:pt-16">

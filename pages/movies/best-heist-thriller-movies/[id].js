@@ -13,6 +13,7 @@ import InternalCollectionsSection from '../../../components/InternalCollectionsS
 import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
 import TMDBAttribution from '../../../components/TMDBAttribution';
+import Header from '../../../components/Header';
 import { getPrimaryCollectionForMovie } from '../../../data/collections';
 
 
@@ -189,7 +190,7 @@ const OptimizedBanner = ({ movie, movieData, trailer, richData, isMobile }) => {
 };
 
 const SmartBackButton = () => (
-    <Link href="/collection/best-heist-thriller-movies" className="fixed top-4 left-4 sm:top-6 sm:left-6 z-50 flex items-center gap-2 px-4 py-2 bg-black/60 backdrop-blur-md border border-gray-700 rounded-lg hover:border-amber-500 transition group">
+    <Link href="/collection/best-heist-thriller-movies" className="fixed top-20 left-4 sm:top-24 sm:left-6 z-50 flex items-center gap-2 px-4 py-2 bg-black/60 backdrop-blur-md border border-gray-700 rounded-lg hover:border-amber-500 transition group">
         <ChevronLeft className="w-4 h-4 text-gray-400 group-hover:text-amber-500 transition" />
         <span className="text-sm font-medium text-gray-200 group-hover:text-white">Collection</span>
     </Link>
@@ -330,8 +331,9 @@ const HeistThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
 
             <SubtleFilmGrain />
             <div className="absolute inset-0"><CinematicBackground /></div>
+          
+          <Header />
             
-            <SmartBackButton />
 
             <div className="relative z-10 pt-0 md:pt-16">
                 {/* ✅ HIDDEN H1 FOR SEO PARITY */}

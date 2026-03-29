@@ -13,6 +13,7 @@ import InternalCollectionsSection from '../../../components/InternalCollectionsS
 import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
 import TMDBAttribution from '../../../components/TMDBAttribution';
+import Header from '../../../components/Header';
 import { getPrimaryCollectionForMovie } from '../../../data/collections';
 
 // ✅ IMPORT DATA INCLUDING FAQs
@@ -308,8 +309,10 @@ const DetectiveThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
 
             <SubtleFilmGrain />
             <div className="absolute inset-0"><CinematicBackground /></div>
+          
+          <Header />
             
-            <div className="relative z-10 pt-10 sm:pt-12 lg:pt-16">
+            <div className="relative z-10 pt-20 sm:pt-24 lg:pt-28">
                 {/* ✅ HIDDEN H1 FOR GOOGLE/BING SEO PARITY */}
                 <h1 className="sr-only">{cleanSEOTitle}</h1>
 

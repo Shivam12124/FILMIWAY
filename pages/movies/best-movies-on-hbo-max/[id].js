@@ -13,6 +13,7 @@ import InternalCollectionsSection from '../../../components/InternalCollectionsS
 import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
 import TMDBAttribution from '../../../components/TMDBAttribution';
+import Header from '../../../components/Header';
 import { getPrimaryCollectionForMovie } from '../../../data/collections';
 
 // ✅ IMPORT DATA AND SCHEMA GENERATOR
@@ -176,14 +177,6 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
   );
 };
 
-const SmartBackButton = () => {
-  const handleBackClick = () => { if (typeof window !== 'undefined') window.location.href = '/collection/best-movies-on-hbo-max'; };
-  return (
-      <motion.button onClick={handleBackClick} className="fixed top-4 left-4 sm:top-6 sm:left-6 z-50 flex items-center gap-2 px-3 sm:px-4 py-2 backdrop-blur-md rounded-lg transition-all duration-300 shadow-xl text-xs sm:text-sm" style={{ backgroundColor: `${COLORS.bgPrimary}F2`, border: `1px solid ${COLORS.borderLight}` }} whileHover={{ scale: 1.02, x: -2 }} whileTap={{ scale: 0.98 }} initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} onMouseEnter={(e) => e.currentTarget.style.borderColor = COLORS.borderAccent} onMouseLeave={(e) => e.currentTarget.style.borderColor = COLORS.borderLight}>
-          <ChevronLeft className="w-3 h-3 sm:w-4 sm:h-4" style={{ color: COLORS.accent }} /><span className="font-medium" style={{ color: COLORS.accent }}>Back to Collection</span>
-      </motion.button>
-  );
-};
 
 const AuthorCreditSection = () => (
   <motion.section className="pt-6 sm:pt-8 mt-12 sm:mt-16" style={{ borderTop: `1px solid ${COLORS.borderLight}` }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2.0, duration: 0.8 }}>
@@ -315,10 +308,11 @@ const HboMaxBestMoviePage = ({ movie, tmdbData: movieData }) => {
           <SubtleFilmGrain />
           <div className="absolute inset-0"><CinematicBackground /></div>
           
-          {/* ✅ RESTORED BACK BUTTON IN THE DOM */}
-          <SmartBackButton />
+          <Header />
           
-          <div className="relative z-10 pt-10 sm:pt-12 lg:pt-16">
+          {/* ✅ RESTORED BACK BUTTON IN THE DOM */}
+          
+          <div className="relative z-10 pt-20 sm:pt-24 lg:pt-28">
               <h1 className="sr-only">{cleanSEOTitle}</h1>
 
               <HboMaxBestBreadcrumb movie={movie} />

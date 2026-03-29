@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Head from 'next/head';
 import Link from 'next/link';
 import { Search, Brain, Mountain, Film, ChevronDown, Sparkles, Plus, ArrowRight, Star, Clock, Eye, Scale, DollarSign, Shield, Zap, Heart, Moon, Ghost, Smile, Crown,Flame, Map, Rocket } from 'lucide-react';
+import Header from '../components/Header';
 import Image from 'next/image';
 
 const CollectionsHub = () => {
@@ -782,37 +783,7 @@ const CollectionsHub = () => {
             </Head>
 
             <div className="min-h-screen bg-black text-white">
-                {/* Fixed Header - CONSISTENT WITH HOMEPAGE */}
-                <motion.header
-                    className="fixed top-0 w-full z-50 bg-black/95 backdrop-blur-md border-b border-gray-800/50"
-                    initial={{ y: -100 }}
-                    animate={{ y: 0 }}
-                    transition={{ duration: 0.5 }}
-                >
-                    <div className="container mx-auto px-4 sm:px-6">
-                        <div className="flex items-center justify-between h-16 sm:h-20">
-                            <Link href="/" className="flex items-center">
-                                {/* ✅ CONSISTENT LOGO SIZE WITH HOMEPAGE */}
-                                <div className="w-24 sm:w-32 h-full flex items-center">
-                                    <Image
-                                        src="/filmiway-logo.svg"
-                                        alt="Filmiway"
-                                        width={160}
-                                        height={60}
-                                        className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
-                                        draggable={false}
-                                        priority
-                                    />
-                                </div>
-                            </Link>
-                            <Link href="/">
-                                <button className="text-sm sm:text-base text-gray-300 hover:text-yellow-400 transition-colors px-4 py-2 rounded-lg border border-gray-700/50 hover:border-yellow-400/50 hover:scale-105 transition-all duration-300">
-                                    ← Home
-                                </button>
-                            </Link>
-                        </div>
-                    </div>
-                </motion.header>
+                <Header />
 
                 {/* Main Content */}
                 <main className="pt-20 sm:pt-24 pb-16">
@@ -859,55 +830,42 @@ const CollectionsHub = () => {
                             {filteredCollections.map((collection, index) => {
                                 // Card Content Component
                                 const CardContent = (
-                                    <div className={`group relative bg-gradient-to-br from-gray-900 to-gray-900/50 border border-gray-800/50 rounded-2xl overflow-hidden hover:border-yellow-400/30 transition-all duration-300 hover:shadow-xl hover:shadow-yellow-400/5 ${
+                                    <div className={`group relative bg-[#0a0a0a] border border-white/5 rounded-lg p-6 sm:p-8 hover:bg-[#111] transition-colors duration-300 ${
                                         collection.hasSubCollections ? 'cursor-pointer' : ''
                                     }`}>
-                                        <div className="p-6 sm:p-8">
-                                            <div className="flex items-start justify-between gap-4">
-                                                <div className="flex-1">
-                                                    <div className="flex items-center gap-4 mb-3">
-                                                        <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br ${collection.gradient} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                                                            {(() => {
-                                                                const IconComponent = collection.icon;
-                                                                return <IconComponent className="w-6 h-6 sm:w-7 sm:h-7 text-white" />;
-                                                            })()}
-                                                        </div>
-                                                        <div className="flex-1">
-                                                            <h2 className="text-xl sm:text-2xl font-semibold text-white group-hover:text-yellow-400 transition-colors">
-                                                                {collection.title}
-                                                            </h2>
-                                                            <p className="text-sm sm:text-base text-gray-400 mt-1 line-clamp-2">
-                                                                {collection.description}
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                    <div className="flex items-center gap-4 mt-4 flex-wrap">
-                                                        <div className="flex items-center gap-2 text-sm text-gray-400 bg-gray-800/40 px-3 py-1.5 rounded-lg">
-                                                            <Film className="w-4 h-4 text-yellow-400" />
-                                                            <span className="font-medium">{collection.movieCount} Films</span>
-                                                        </div>
-                                                        <div className="flex items-center gap-2 text-sm text-gray-400 bg-gray-800/40 px-3 py-1.5 rounded-lg">
-                                                            <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                                                            <span className="font-medium">{collection.rating}/10</span>
-                                                        </div>
-                                                        {!collection.hasSubCollections && (
-                                                            <div className="flex items-center gap-2 text-sm text-yellow-400 group-hover:translate-x-2 transition-transform">
-                                                                <span className="font-medium">View Collection</span>
-                                                                <ArrowRight className="w-4 h-4" />
-                                                            </div>
-                                                        )}
-                                                    </div>
+                                        <div className="flex items-start justify-between gap-4">
+                                            <div className="flex-1">
+                                                <h2 className="text-xl sm:text-2xl font-bold text-white group-hover:text-yellow-500 transition-colors tracking-tight mb-2">
+                                                    {collection.title}
+                                                </h2>
+                                                <p className="text-sm sm:text-base text-gray-400 font-light leading-relaxed mb-6">
+                                                    {collection.description}
+                                                </p>
+                                                <div className="flex items-center gap-4 text-xs font-semibold tracking-wider uppercase text-gray-500">
+                                                    <span className="flex items-center gap-1">
+                                                        <Film className="w-3.5 h-3.5 text-yellow-500" />
+                                                        {collection.movieCount} Films
+                                                    </span>
+                                                    <span className="flex items-center gap-1">
+                                                        <Star className="w-3.5 h-3.5 text-yellow-500 fill-current" />
+                                                        {collection.rating}/10
+                                                    </span>
+                                                    {!collection.hasSubCollections && (
+                                                        <span className="text-yellow-500 group-hover:underline ml-2">
+                                                            Enter Hub →
+                                                        </span>
+                                                    )}
                                                 </div>
-                                                {collection.hasSubCollections && (
-                                                    <div className="flex-shrink-0">
-                                                        <ChevronDown
-                                                            className={`w-6 h-6 text-yellow-400 transition-transform duration-300 ${
-                                                                expandedCollection === collection.id ? 'rotate-180' : ''
-                                                            }`}
-                                                        />
-                                                    </div>
-                                                )}
                                             </div>
+                                            {collection.hasSubCollections && (
+                                                <div className="flex-shrink-0 pt-2">
+                                                    <ChevronDown
+                                                        className={`w-5 h-5 text-gray-500 group-hover:text-yellow-500 transition-colors duration-300 ${
+                                                            expandedCollection === collection.id ? 'rotate-180' : ''
+                                                        }`}
+                                                    />
+                                                </div>
+                                            )}
                                         </div>
                                     </div>
                                 );
@@ -947,29 +905,25 @@ const CollectionsHub = () => {
                                                                 href={`/collection/${subCollection.slug}`}
                                                                 className="group/sub block"
                                                             >
-                                                                <div className="bg-gray-900/80 border border-gray-800/50 rounded-xl overflow-hidden hover:border-yellow-400/50 transition-all duration-300 hover:shadow-lg hover:shadow-yellow-400/10 hover:-translate-y-1">
-                                                                    <div className="aspect-[2/3] w-full overflow-hidden relative">
+                                                                <div className="bg-[#111] border border-white/5 rounded-md overflow-hidden hover:border-white/20 transition-all duration-300">
+                                                                    <div className="aspect-[2/3] w-full overflow-hidden relative bg-[#0a0a0a]">
                                                                         <Image
                                                                             src={subCollection.poster}
                                                                             alt={subCollection.title}
                                                                             width={500}
                                                                             height={750}
-                                                                            className="w-full h-full object-cover group-hover/sub:scale-110 transition-transform duration-500"
+                                                                            className="w-full h-full object-cover group-hover/sub:scale-105 group-hover/sub:opacity-80 transition-all duration-500"
                                                                             loading="lazy"
                                                                             draggable={false}
                                                                         />
-                                                                        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-60 group-hover/sub:opacity-70 transition-opacity" />
-                                                                    </div>
-                                                                    <div className="p-4">
-                                                                        <h3 className="text-base sm:text-lg font-semibold text-white mb-1 group-hover/sub:text-yellow-400 transition-colors line-clamp-2">
-                                                                            {subCollection.title}
-                                                                        </h3>
-                                                                        <p className="text-xs sm:text-sm text-gray-400 mb-3 line-clamp-2">
-                                                                            {subCollection.description}
-                                                                        </p>
-                                                                        <div className="flex items-center justify-between">
-                                                                            <span className="text-xs text-gray-500 font-medium">{subCollection.count}</span>
-                                                                            <ArrowRight className="w-4 h-4 text-yellow-400 group-hover/sub:translate-x-1 transition-transform" />
+                                                                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-transparent opacity-80 group-hover/sub:opacity-100 transition-opacity" />
+                                                                        <div className="absolute bottom-0 left-0 w-full p-4 pointer-events-none">
+                                                                            <h3 className="text-white font-medium text-sm leading-snug mb-1 drop-shadow-md">
+                                                                                {subCollection.title}
+                                                                            </h3>
+                                                                            <span className="text-[10px] font-semibold text-gray-400 tracking-wider uppercase">
+                                                                                {subCollection.count}
+                                                                            </span>
                                                                         </div>
                                                                     </div>
                                                                 </div>

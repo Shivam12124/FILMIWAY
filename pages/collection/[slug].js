@@ -5,7 +5,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Crown, Star, MessageSquare, Volume2, VolumeX, Play, Pause, Menu, X, Home, Eye, MousePointer, TrendingUp, Users, Search, Brain, Zap, Film, Award, Mountain, Shield } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Crown, Star, MessageSquare, Volume2, VolumeX, Play, Pause, Home, Eye, MousePointer, TrendingUp, Users, Search, Brain, Zap, Film, Award, Mountain, Shield } from 'lucide-react';
 
 // âœ… NEW SURVIVAL FORMAT IMPORTS (MATRIX, SE7EN & PARASITE ADDED)
 import { COMPLETE_MOVIE_DATABASE as SURVIVAL_DATABASE, COMPLETE_MOVIE_DATA as SURVIVAL_DATA } from '../../utils/survivalMovieData';
@@ -82,6 +82,7 @@ import { COMPLETE_MOVIE_DATABASE as REVENGE_MOVIES } from '../../utils/revengeMo
 // Components
 import CinematicBackground from '../../components/CinematicBackground';
 import StrategicControls from '../../components/StrategicControls';
+import Header from '../../components/Header';
 import CinematicMovieCard from '../../components/CinematicMovieCard';
 import RelatedCollections from '../../components/RelatedCollections';
 
@@ -4061,10 +4062,7 @@ return (
             setIsAutoPlay={setIsAutoPlay}
             playSound={playSound}
         />
-        
-        <SiteHeader />
-        <MobileLogo />
-        <MobileHomepageButton />
+        <Header />
         
         {/* âœ… FIX: Render Loader as Overlay so Content is always in DOM for SEO */}
 <AnimatePresence>

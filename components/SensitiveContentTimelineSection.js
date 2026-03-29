@@ -27,7 +27,6 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                 setShowInfo(false);
             }
         };
-        // Listen for both clicks and touches
         document.addEventListener('mousedown', handleClickOutside);
         document.addEventListener('touchstart', handleClickOutside);
         return () => {
@@ -35,7 +34,6 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
             document.removeEventListener('touchstart', handleClickOutside);
         };
     }, []);
-    // ------------------------------------------
 
     const extractExactTypes = (scenes) => {
         if (!scenes) return [];
@@ -69,9 +67,9 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
     let currentRuntime = movie.Runtime || movie.runtime || "Official";
     if (typeof currentRuntime === 'number') currentRuntime = `${currentRuntime} min`;
     
-    // Explicit Override for Limitless
-    if (movie.tmdbId === 51876 && !currentRuntime.includes("Unrated")) {
-        currentRuntime += " (Unrated Version)"; 
+    // 🔥 Explicit Override for Limitless (Unrated Version)
+    if (movie.tmdbId === 51876) {
+        currentRuntime = "1 hour 45 min (Unrated Version)"; 
     }
     
     // Explicit Override for Sin City
@@ -79,7 +77,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
         currentRuntime = "2 hours 21 min (Unrated Extended Version)"; 
     }
 
-    // 🔥 Explicit Override for Apocalypse Now
+    // Explicit Override for Apocalypse Now
     if (movie.tmdbId === 28) {
         currentRuntime = "3 hours 1 min (Final Cut)"; 
     }
@@ -151,7 +149,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                             <h2 className="text-emerald-300 font-medium text-base sm:text-lg">Timestamps & Parents Guide</h2>
                         </div>
                         <p className="text-emerald-400/70 text-xs sm:text-sm font-light mt-1">
-                            <strong>{movie.Title}</strong>: Filmiway editors have manually verified this film is free of explicit sexual content and nudity. Accurate for the {currentRuntime} runtime.
+                            <strong>{movie.Title}</strong>: Filmiway editors have manually verified this film is free of explicit sexual content and nudity. Accurate for the {currentRuntime}.
                         </p>
                     </div>
                 </div>
@@ -172,7 +170,6 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                         <Shield className="text-red-500 w-5 h-5 sm:w-6 sm:h-6 shrink-0" />
                         <span className="truncate">Timestamps & Parents Guide</span>
                         
-                        {/* 🔥 UPDATED TOOLTIP CONTAINER 🔥 */}
                         <div className="relative flex items-center ml-1 shrink-0" ref={infoRef}>
                             <button
                                 type="button"
@@ -216,7 +213,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                         
                         <p className="text-[13px] sm:text-sm text-gray-500 flex items-start sm:items-center gap-2">
                             <CheckCircle size={14} className="text-emerald-500/80 shrink-0 mt-0.5 sm:mt-0" />
-                            <span className="leading-snug">Timestamps are accurate for the <span className="text-gray-300 font-medium">{currentRuntime}</span> runtime</span>
+                            <span className="leading-snug">Timestamps are accurate for the <span className="text-gray-300 font-medium">{currentRuntime}</span></span>
                         </p>
 
                         <p className="text-[13px] sm:text-sm text-gray-500 flex items-center gap-2">
@@ -265,7 +262,6 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
 
                         return (
                             <div key={index} className="group p-3.5 sm:px-5 sm:py-3.5 hover:bg-white/[0.03] transition-colors duration-200 flex flex-col sm:flex-row sm:items-center gap-2.5 sm:gap-4">
-                                
                                 <div className="flex items-center justify-between sm:justify-start w-full sm:w-auto gap-3">
                                     <div className="flex items-center gap-1.5 text-gray-400 group-hover:text-gray-200 transition-colors shrink-0">
                                         <Clock size={13} className="opacity-50 shrink-0" />
@@ -273,7 +269,6 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                                             {sceneStart} {sceneEnd && <span className="opacity-40 text-xs mx-0.5 sm:mx-1">→</span>} {sceneEnd}
                                         </span>
                                     </div>
-                                    
                                     <div className="sm:hidden shrink-0">
                                         {severityBadge}
                                     </div>
@@ -285,7 +280,6 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                                     <span className="text-gray-500 group-hover:text-white transition-colors duration-300 mt-[3px] sm:mt-[1px] shrink-0">
                                         {getSceneIcon(sceneType)}
                                     </span>
-                                    
                                     <div className="flex flex-col sm:flex-row sm:items-center min-w-0 gap-0.5 sm:gap-2">
                                         <span className="text-gray-300 text-[13px] sm:text-sm font-medium truncate group-hover:text-white transition-colors">
                                             {sceneType}

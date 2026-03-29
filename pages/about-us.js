@@ -10,6 +10,7 @@ import {
   Sparkles,
   Clock, // ✅ Added Clock for Parents Guide
 } from "lucide-react";
+import Header from "../components/Header";
 import Image from "next/image";
 
 // ✅ PREMIUM FILM REEL ANIMATION
@@ -76,26 +77,7 @@ export default function AboutUs() {
         </div>
 
         {/* ✅ COMPACT NAVIGATION & LOGO (Scaled Down 5%) */}
-        <nav className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-xl border-b border-white/5 h-16 sm:h-20 flex items-center">
-          <div className="container mx-auto px-6 flex items-center justify-between">
-            <Link href="/" aria-label="Homepage" className="group">
-              <Image
-                src="/filmiway-logo.svg"
-                alt="Filmiway Logo"
-                width={110} 
-                height={38}
-                className="w-[5.5rem] sm:w-[7rem] h-auto object-contain group-hover:opacity-80 transition-opacity" 
-                priority
-              />
-            </Link>
-            <Link 
-              href="/" 
-              className="px-5 py-1.5 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 text-xs sm:text-sm font-medium transition-colors backdrop-blur-md"
-            >
-              Back to Home
-            </Link>
-          </div>
-        </nav>
+        <Header />
 
         {/* ✅ ADJUSTED MAIN PADDING */}
         <main className="relative z-20 max-w-7xl mx-auto px-6 pt-24 pb-20">

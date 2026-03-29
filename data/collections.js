@@ -142,7 +142,7 @@ export const COLLECTIONS = {
       { label: "FRACTURED", desc: "Identity collapse" }
     ],
     movies: ['tt0156887', 'tt2582802', 'tt1034415', 'tt0040725', 'tt1125849', 'tt0166924', 'tt0254686', 'tt2562232', 'tt0180093', 'tt2872718'],
-    relatedCollections: ['best-psychological-thriller-movies', 'movies-like-shutter-island', 'best-crime-thriller-movies']
+    relatedCollections: ['best-psychological-thriller-movies', 'movies-like-shutter-island', 'best-erotic-thriller-movies']
   },
 
   // 🔪 MOVIES LIKE OLDBOY
@@ -184,7 +184,7 @@ export const COLLECTIONS = {
       { label: "PARANOIA", desc: "Conspiracy" }
     ],
     movies: ['tt0166924', 'tt0142688', 'tt0090756', 'tt0063522', 'tt0119174', 'tt0116922', 'tt0098354', 'tt0134273', 'tt5052448', 'tt5715874'],
-    relatedCollections: ['best-psychological-thriller-movies', 'movies-like-black-swan', 'best-mystery-thriller-movies']
+    relatedCollections: ['best-psychological-thriller-movies', 'movies-like-black-swan', 'best-erotic-thriller-movies']
   },
 
   // 🌀 MOVIES LIKE DONNIE DARKO
