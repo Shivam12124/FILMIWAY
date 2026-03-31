@@ -52,14 +52,14 @@ export const SENSITIVE_TIMELINES = {
         ]
     },
 // 3. Blue Velvet
-    793: {
+ 793: {
         scenes: [
-            { start: "0:35:20", end: "0:37:37", type: "Lingerie & Partial Nudity", severity: "Moderate" },
-            { start: "0:40:10", end: "0:42:10", type: "Nudity", severity: "High" },
-            { start: "0:43:25", end: "0:46:50", type: "Sexual Content & Nudity", severity: "High" },
-            { start: "0:49:45", end: "0:50:45", type: "Nudity", severity: "High" },
-            { start: "1:08:52", end: "1:09:27", type: "Nudity", severity: "High" },
-            { start: "1:41:15", end: "1:44:15", type: "Nudity", severity: "High" }
+            { start: "0:35:20", end: "0:37:37", type: "Suggestive Clothing (Undergarments) & Partial Nudity (Woman)", severity: "Moderate" },
+            { start: "0:40:55", end: "0:42:18", type: "Nudity (Man) & Sexual Content", severity: "High" },
+            { start: "0:43:25", end: "0:46:50", type: "Sexual Content & Nudity (Woman)", severity: "High" },
+            { start: "0:49:45", end: "0:50:45", type: "Nudity (Woman)", severity: "High" },
+            { start: "1:08:50", end: "1:09:27", type: "Nudity (Man & Woman)", severity: "High" },
+            { start: "1:41:19", end: "1:44:15", type: "Nudity (Woman)", severity: "High" }
         ]
     },
     // 4. Rosemary's Baby
