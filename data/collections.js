@@ -907,7 +907,7 @@ export const COLLECTIONS = {
       { label: "CHOREOGRAPHY", desc: "Flawless combat" }
     ],
     // ✅ Correct IMDb IDs for: Die Hard, T2, Fury Road, Aliens, John Wick, The Raid 2, M:I Fallout, Hard Boiled, Crouching Tiger, Shoot 'Em Up
-    movies: ['tt0095016', 'tt0103064', 'tt1392190', 'tt0090605', 'tt2981104', 'tt2265171', 'tt4508902', 'tt0104684', 'tt0118849', 'tt0465602'],
+    movies: ['tt0095016', 'tt0103064', 'tt1392190', 'tt0090605', 'tt2911666', 'tt2265171', 'tt4912910', 'tt0104684', 'tt0190332', 'tt0465602'],
     relatedCollections: ['best-thriller-movies', 'best-sci-fi-movies', 'best-revenge-movies']
   },
 

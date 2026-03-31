@@ -35,7 +35,7 @@ export const SENSITIVE_TIMELINES = {
     // 3. Ip Man
     14756: { 
         scenes: [
-            { start: "0:12:21", end: "0:12:24", type: "Partial Nudity (Non-Sexual)", severity: "Low" }
+            { start: "0:12:21", end: "0:12:24", type: "Partial Nudity (Non-Sexual)", severity: "Mild" }
         ] 
     },
 
@@ -54,7 +54,7 @@ export const SENSITIVE_TIMELINES = {
     // 6. Perfect Days
     976893: { 
         scenes: [
-            { start: "0:23:05", end: "0:23:25", type: "Partial Nudity (Non-Sexual)", severity: "Low" }
+            { start: "0:23:05", end: "0:23:25", type: "Partial Nudity (Non-Sexual)", severity: "Mild" }
         ] 
     }, 
 

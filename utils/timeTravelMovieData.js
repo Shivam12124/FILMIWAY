@@ -35,9 +35,13 @@ export const SENSITIVE_TIMELINES = {
        
         { start: '1:21:49', end: '1:22:13', type: 'Sexual Content', severity: 'Moderate' }
     ]},
-    280: { scenes: [ // T2
-        { start: '6:10', end: '6:20', type: 'Partial Nudity', severity: 'Mild' }
-    ]},
+// 2. Terminator 2: Judgment Day
+    280: {
+        scenes: [
+            { start: "0:06:10", end: "0:06:20", type: "Partial Nudity (Man)", severity: "Mild" },
+            { start: "0:11:40", end: "0:11:52", type: "Partial Nudity (Man)", severity: "Mild" }
+        ]
+    },
     218: { scenes: [ // The Terminator
         { start: '5:00', end: '7:30', type: ' Nudity', severity: 'Mild' },
         { start: '1:21:50', end: '1:23:00', type: 'Sex', severity: 'High' }

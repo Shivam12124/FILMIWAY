@@ -41,7 +41,7 @@ export const SENSITIVE_TIMELINES = {
     // 6. Gladiator
     98: { 
         scenes: [
-            { start: "50:40", end: "50:55", type: "Partial Nudity (Man)", severity: "Low" }
+            { start: "50:40", end: "50:55", type: "Partial Nudity (Man)", severity: "Mild" }
         ] 
     },
     

@@ -35,7 +35,7 @@ export const SENSITIVE_TIMELINES = {
     // 4. John Wick
     245891: { 
         scenes: [
-            { start: "45:00", end: "45:30", type: "Suggestive Clothing (Bikini)", severity: "Low" }
+            { start: "45:00", end: "45:30", type: "Suggestive Clothing (Bikini)", severity: "Mild" }
         ] 
     },
 

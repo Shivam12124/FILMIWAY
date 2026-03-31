@@ -27,19 +27,19 @@ export const BEST_ACTION_MOVIE_SLUGS = {
     'tt0090605': 'aliens',
     
     // Rank 5: John Wick
-    'tt2981104': 'john-wick',
+    'tt2911666': 'john-wick',
     
     // Rank 6: The Raid 2
     'tt2265171': 'the-raid-2',
     
     // Rank 7: Mission: Impossible - Fallout
-    'tt4508902': 'mission-impossible-fallout',
+    'tt4912910': 'mission-impossible-fallout',
     
     // Rank 8: Hard Boiled
     'tt0104684': 'hard-boiled',
     
     // Rank 9: Crouching Tiger, Hidden Dragon
-    'tt0118849': 'crouching-tiger-hidden-dragon',
+    'tt0190332': 'crouching-tiger-hidden-dragon',
     
     // Rank 10: Shoot 'Em Up
     'tt0465602': 'shoot-em-up'

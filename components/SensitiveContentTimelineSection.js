@@ -1,3 +1,4 @@
+// components/SensitiveContentTimelineSection.js
 import React, { useMemo, useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Shield, CheckCircle, Clock, AlertOctagon, Info, Film, FastForward, Eye, Heart, Swords, MessageSquare, AlertTriangle } from 'lucide-react';
@@ -80,6 +81,11 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
     // Explicit Override for Apocalypse Now
     if (movie.tmdbId === 28) {
         currentRuntime = "3 hours 1 min (Final Cut)"; 
+    }
+
+    // 🔥 Explicit Override for Mad Max: Fury Road
+    if (movie.tmdbId === 76341) {
+        currentRuntime = "120 min"; 
     }
 
     const getSeverityDotColor = (severity) => {

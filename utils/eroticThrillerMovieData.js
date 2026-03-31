@@ -40,13 +40,13 @@ export const SENSITIVE_TIMELINES = {
     // 1. Basic Instinct
     402: { 
         scenes: [
-            { start: "0:03:15", end: "0:04:40", type: "Sex & Nudity", severity: "Extreme" },
+            { start: "0:03:15", end: "0:04:40", type: "Sex & Nudity", severity: "High" }, 
             { start: "0:05:40", end: "0:06:50", type: "Nudity", severity: "Moderate" },
             { start: "0:22:35", end: "0:22:45", type: "Nudity", severity: "Moderate" },
-            { start: "0:27:55", end: "0:28:01", type: "Nudity", severity: "Extreme" },
-            { start: "0:36:15", end: "0:39:10", type: "Nudity & Sex", severity: "Extreme" },
+            { start: "0:27:55", end: "0:28:01", type: "Nudity", severity: "High" }, 
+            { start: "0:36:15", end: "0:39:10", type: "Nudity & Sex", severity: "High" }, 
             { start: "0:45:20", end: "0:45:30", type: "Nudity", severity: "High" },
-            { start: "1:11:15", end: "1:18:00", type: "Nudity & Sex", severity: "Extreme" },
+            { start: "1:11:15", end: "1:18:00", type: "Nudity & Sex", severity: "High" }, 
             { start: "1:33:50", end: "1:33:55", type: "Nudity", severity: "Mild" },
             { start: "1:45:00", end: "1:45:24", type: "Sexual content & Nudity", severity: "High" },
             { start: "2:00:50", end: "2:03:25", type: "Sex & Nudity", severity: "High" }
@@ -67,7 +67,7 @@ export const SENSITIVE_TIMELINES = {
             { start: "1:07:32", end: "1:08:53", type: "Suggestive clothing (Lingerie)", severity: "Mild" },
             { start: "1:09:14", end: "1:09:25", type: "Sexual content & Nudity", severity: "High" },
             { start: "1:14:22", end: "1:19:46", type: "Nudity", severity: "High" },
-            { start: "1:19:47", end: "1:24:20", type: "Sex & Nudity", severity: "Extreme" },
+            { start: "1:19:47", end: "1:24:20", type: "Sex & Nudity", severity: "High" }, 
             { start: "1:27:47", end: "1:29:45", type: "Nudity", severity: "Moderate" },
             { start: "1:47:56", end: "1:48:06", type: "Sexual content & Nudity", severity: "Moderate" },
             { start: "1:54:47", end: "1:54:57", type: "Sex & Nudity", severity: "High" },
@@ -80,7 +80,7 @@ export const SENSITIVE_TIMELINES = {
             { start: "0:21:45", end: "0:21:55", type: "Nudity (Woman)", severity: "Moderate" },
             { start: "0:51:10", end: "0:54:45", type: "Nudity & Sex", severity: "High" },
             { start: "1:47:10", end: "1:49:10", type: "Nudity (Woman)", severity: "Moderate" },
-            { start: "1:58:45", end: "2:03:45", type: "Sex & Nudity (Woman)", severity: "Extreme" },
+            { start: "1:58:45", end: "2:03:45", type: "Sex & Nudity (Woman)", severity: "High" }, 
             { start: "2:21:10", end: "2:23:15", type: "Sexual Content", severity: "High" },
             { start: "2:32:10", end: "2:32:20", type: "Partial nudity (Woman)", severity: "Moderate" },
             { start: "2:40:10", end: "2:42:20", type: "Sexual Content & Nudity (Woman)", severity: "High" }
@@ -91,7 +91,7 @@ export const SENSITIVE_TIMELINES = {
         scenes: [
             { start: "1:00:15", end: "1:02:40", type: "Sex & Nudity", severity: "High" },
             { start: "1:32:35", end: "1:34:26", type: "Sex & Nudity", severity: "High" },
-            { start: "1:40:20", end: "1:43:36", type: "Sex & Nudity", severity: "Extreme" },
+            { start: "1:40:20", end: "1:43:36", type: "Sex & Nudity", severity: "High" }, 
             { start: "1:52:50", end: "1:55:32", type: "Sex & Nudity", severity: "High" }
         ]
     },
@@ -101,7 +101,7 @@ export const SENSITIVE_TIMELINES = {
             { start: "0:11:58", end: "0:12:27", type: "Suggestive clothing (Lingerie)", severity: "Moderate" },
             { start: "0:16:45", end: "0:16:55", type: "Suggestive clothing", severity: "Moderate" },
             { start: "0:17:25", end: "0:17:52", type: "Sex & Nudity", severity: "High" },
-            { start: "0:57:40", end: "0:59:55", type: "Sexual content & Nudity", severity: "Extreme" },
+            { start: "0:57:40", end: "0:59:55", type: "Sexual content & Nudity", severity: "High" }, 
             { start: "1:01:35", end: "1:03:20", type: "Suggestive clothing (Woman in swimsuit)", severity: "Moderate" },
             { start: "1:09:30", end: "1:10:50", type: "Sexual content & Nudity", severity: "High" },
             { start: "1:24:25", end: "1:24:55", type: "Suggestive clothing (Lingerie)", severity: "Mild" },

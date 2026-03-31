@@ -185,7 +185,13 @@ export const SENSITIVE_TIMELINES = {
   603: { scenes: [] }, // Matrix
   348: { scenes: [] }, // Alien
   157336: { scenes: [] }, // Interstellar
-  280: { scenes: [] }, // T2
+// 2. Terminator 2: Judgment Day
+    280: {
+        scenes: [
+            { start: "0:06:10", end: "0:06:20", type: "Partial Nudity (Man)", severity: "Mild" },
+            { start: "0:11:40", end: "0:11:52", type: "Partial Nudity (Man)", severity: "Mild" }
+        ]
+    },// T2
   27205: { scenes: [] }, // Inception
   329865: { scenes: [] }, // Arrival
   11: { scenes: [] }, // Empire

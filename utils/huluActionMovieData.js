@@ -28,7 +28,7 @@ export const SENSITIVE_TIMELINES = {
     // 2. Ip Man
     14756: { 
         scenes: [
-            { start: "12:21", end: "12:24", type: "Partial Nudity (Non-Sexual)", severity: "Low" }
+            { start: "12:21", end: "12:24", type: "Partial Nudity (Non-Sexual)", severity: "Mild" }
         ] 
     },
     // 3. Dawn of the Planet of the Apes

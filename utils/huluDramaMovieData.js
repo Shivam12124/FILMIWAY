@@ -29,7 +29,7 @@ export const SENSITIVE_TIMELINES = {
     // 2. Perfect Days
     976893: { 
         scenes: [
-            { start: "0:23:05", end: "0:23:25", type: "Partial Nudity", severity: "Low" }
+            { start: "0:23:05", end: "0:23:25", type: "Partial Nudity", severity: "Mild" }
         ] 
     }, 
     

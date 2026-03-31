@@ -47,7 +47,7 @@ export const SENSITIVE_TIMELINES = {
     // 5. Before the Devil Knows You're Dead
     7972: { 
         scenes: [
-            { start: "0:39", end: "4:00", type: "Sex & Nudity", severity: "Extreme" },
+            { start: "0:39", end: "4:00", type: "Sex & Nudity", severity: "High" }, 
             { start: "14:14", end: "15:15", type: "Nudity", severity: "High" },
             { start: "37:50", end: "38:15", type: "Nudity", severity: "High" }
         ] 

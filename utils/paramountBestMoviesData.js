@@ -44,7 +44,7 @@ export const SENSITIVE_TIMELINES = {
     // Gladiator
     98: { 
         scenes: [
-            { start: "50:40", end: "50:55", type: "Partial Nudity (Man)", severity: "Low" }
+            { start: "50:40", end: "50:55", type: "Partial Nudity (Man)", severity: "Mild" }
         ] 
     },
 
@@ -58,12 +58,12 @@ export const SENSITIVE_TIMELINES = {
             { start: "13:55", end: "14:15", type: "Nudity (Woman)", severity: "High" },
             { start: "38:55", end: "39:47", type: "Nudity (Women)", severity: "High" },
             { start: "54:45", end: "55:10", type: "Nudity (Man)", severity: "High" },
-            { start: "58:25", end: "59:30", type: "Nudity (Woman) & Sex", severity: "Extreme" },
-            { start: "1:02:25", end: "1:02:45", type: "Nudity (Men), Partial Nudity (Man) & Sex", severity: "Extreme" },
-            { start: "1:07:30", end: "1:08:30", type: "Nudity (Women) & Sex", severity: "Extreme" },
+            { start: "58:25", end: "59:30", type: "Nudity (Woman) & Sex", severity: "High" }, 
+            { start: "1:02:25", end: "1:02:45", type: "Nudity (Men), Partial Nudity (Man) & Sex", severity: "High" }, 
+            { start: "1:07:30", end: "1:08:30", type: "Nudity (Women) & Sex", severity: "High" }, 
             { start: "1:12:05", end: "1:12:15", type: "Partial Nudity (Man)", severity: "Moderate" },
             { start: "1:16:55", end: "1:17:22", type: "Nudity (Woman)", severity: "High" },
-            { start: "1:48:20", end: "1:48:38", type: "Sex & Nudity (Woman)", severity: "Extreme" },
+            { start: "1:48:20", end: "1:48:38", type: "Sex & Nudity (Woman)", severity: "High" }, 
             { start: "2:17:30", end: "2:18:10", type: "Nudity (Women)", severity: "High" },
             { start: "2:31:20", end: "2:31:40", type: "Nudity (Woman)", severity: "High" },
             { start: "2:38:30", end: "2:40:00", type: "Sex", severity: "High" }

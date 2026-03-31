@@ -33,9 +33,9 @@ export const SENSITIVE_TIMELINES = {
     // 1. Perfect Blue
     10494: { 
         scenes: [
-            { start: "0:33:20", end: "0:35:10", type: "Sexual Content", severity: "Extreme" },
+            { start: "0:33:20", end: "0:35:10", type: "Sexual Content", severity: "High" }, 
             { start: "0:45:40", end: "0:48:00", type: "Nudity", severity: "High" },
-            { start: "0:57:05", end: "0:57:32", type: "Nudity", severity: "Extreme" }, // Fixed typo "Nudityt"
+            { start: "0:57:05", end: "0:57:32", type: "Nudity", severity: "High" },  // Fixed typo "Nudityt"
             { start: "1:04:20", end: "1:06:55", type: "Nudity", severity: "High" }
         ] 
     },
@@ -76,10 +76,10 @@ export const SENSITIVE_TIMELINES = {
         scenes: [
             { start: "0:25:00", end: "0:27:50", type: "Nudity & Sexual Content", severity: "High" },
             { start: "0:52:00", end: "0:53:20", type: "Sexual Content", severity: "High" },
-            { start: "1:06:50", end: "1:12:10", type: "Sexual Content", severity: "Extreme" },
+            { start: "1:06:50", end: "1:12:10", type: "Sexual Content", severity: "High" }, 
             { start: "1:39:40", end: "1:41:40", type: "Sexual Content", severity: "High" }, 
-            { start: "1:45:40", end: "1:49:40", type: "Sexual Content", severity: "Extreme" },
-            { start: "1:53:40", end: "2:03:40", type: "Nudity & Sex", severity: "Extreme" }
+            { start: "1:45:40", end: "1:49:40", type: "Sexual Content", severity: "High" }, 
+            { start: "1:53:40", end: "2:03:40", type: "Nudity & Sex", severity: "High" }
         ] 
     },
 
@@ -96,7 +96,7 @@ export const SENSITIVE_TIMELINES = {
             { start: "0:20:00", end: "0:20:30", type: "Nudity", severity: "Moderate" },
             { start: "0:33:00", end: "0:34:25", type: "Nudity", severity: "Moderate" },
             { start: "0:37:00", end: "0:37:25", type: "Nudity", severity: "Moderate" },
-            { start: "1:30:30", end: "1:33:50", type: "Sex & Nudity", severity: "Extreme" }
+            { start: "1:30:30", end: "1:33:50", type: "Sex & Nudity", severity: "High" }
         ] 
     },
     

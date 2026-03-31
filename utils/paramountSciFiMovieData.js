@@ -47,7 +47,7 @@ export const SENSITIVE_TIMELINES = {
     300668: { 
         scenes: [
             { start: "0:55:00", end: "0:58:00", type: "Gore/Body Horror", severity: "High" }, // Moving intestines
-            { start: "1:05:00", end: "1:10:00", type: "Terror/Gore", severity: "Extreme" } // The Bear Scene
+            { start: "1:05:00", end: "1:10:00", type: "Terror/Gore", severity: "High" } // The Bear Scene
         ] 
     },
     

@@ -1,6 +1,6 @@
-// pages/movies/best-action-movies/[id].js - HIGH OCTANE ACTION THEME ✅
-// 100% SEO SAFE: Framed around Adrenaline Score, Practical Stunts, and Action Choreography
-// SCHEMA: Maximalist (Hidden Adrenaline Score and FAQs for Bots)
+// pages/movies/best-action-movies/[id].js - H1 SEO FIX + HYDRATION FIX ✅
+// VISUALS: Minimalist (Banner + Details Only)
+// SCHEMA: Maximalist (Hidden Intensity, DNA, and FAQs for Bots)
 
 import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
@@ -8,8 +8,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, Play, X, User, Twitter, Hash, Send, Film, Zap } from 'lucide-react';
-
+import { ChevronLeft, Play, X, User, Twitter, Hash, Send, Film, Theater, Zap } from 'lucide-react';
 import InternalCollectionsSection from '../../../components/InternalCollectionsSection';
 import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
@@ -17,7 +16,7 @@ import TMDBAttribution from '../../../components/TMDBAttribution';
 import Header from '../../../components/Header';
 import { getPrimaryCollectionForMovie } from '../../../data/collections';
 
-// ✅ IMPORT DATA & SCHEMA GENERATOR
+// ✅ CORRECTED IMPORT: Pulling schema generator from the Action Movies data file
 import {
   COMPLETE_MOVIE_DATABASE, 
   COMPLETE_MOVIE_DATA,
@@ -26,41 +25,36 @@ import {
 } from '../../../utils/bestActionMoviesData';
 
 const COLORS = {
-  accent: '#ef4444', // Blood Red for high-octane action
-  accentLight: '#f87171', 
-  bgPrimary: '#000000ff', 
-  bgCard: 'rgba(15, 10, 10, 0.8)',
+  accent: '#EF4444', accentLight: '#F87171', bgPrimary: '#000000ff', bgCard: 'rgba(11, 11, 11, 0.8)',
   textPrimary: '#FFFFFF', textSecondary: '#E5E7EB', textMuted: '#9CA3AF', textDisabled: '#6B7280',
   borderAccent: 'rgba(239, 68, 68, 0.25)', borderLight: 'rgba(55, 65, 81, 0.5)',
 };
 
 const MOVIE_YEARS = {
-  'Die Hard': '1988', 'Terminator 2: Judgment Day': '1991', 'Mad Max: Fury Road': '2015', 
-  'Aliens': '1986', 'John Wick': '2014', 'The Raid 2': '2014', 
-  'Mission: Impossible - Fallout': '2018', 'Hard Boiled': '1992', 
-  'Crouching Tiger, Hidden Dragon': '2000', 'Shoot \'Em Up': '2007'
+  'Die Hard': '1988', 'Terminator 2: Judgment Day': '1991', 'Mad Max: Fury Road': '2015', 'Aliens': '1986',
+  'John Wick': '2014', 'The Raid 2': '2014', 'Mission: Impossible - Fallout': '2018', 'Hard Boiled': '1992',
+  'Crouching Tiger, Hidden Dragon': '2000', "Shoot 'Em Up": '2007'
 };
 
-// ✅ DEEP ACTION INSIGHTS (Why these films spike adrenaline)
 const MOVIE_DATA_BY_TITLE = {
-  'Die Hard': { connection: 'Defined the modern action genre by trapping a vulnerable, barefoot everyman in a relentless, high-stakes game of cat-and-mouse.' },
-  'Terminator 2: Judgment Day': { connection: 'A groundbreaking masterclass in pacing, practical stunts, and revolutionary CGI that set the absolute gold standard for blockbuster action.' },
-  'Mad Max: Fury Road': { connection: 'A relentless, 120-minute vehicular fever dream that relies on jaw-dropping practical stunts and breathless momentum.' },
-  'Aliens': { connection: 'Transforms the claustrophobic horror of the original into a high-octane, pulse-pounding militaristic rollercoaster against an unstoppable swarm.' },
-  'John Wick': { connection: 'Resurrected the American action movie with flawless, practical "gun-fu" choreography, turning a simple revenge plot into a brutal ballet.' },
-  'The Raid 2': { connection: 'The absolute pinnacle of martial arts cinema, featuring fluid, bone-crunching choreography and extreme, unrelenting brutality.' },
-  'Mission: Impossible - Fallout': { connection: 'The apex of the modern blockbuster, relying on death-defying, practical stunts performed by the lead actor himself.' },
-  'Hard Boiled': { connection: 'Redefined the action genre with infinite ammo, explosive set-pieces, and the greatest one-take hospital shootout in cinematic history.' },
-  'Crouching Tiger, Hidden Dragon': { connection: 'Brought the Wuxia genre to global prominence with poetic, gravity-defying balletic action and deep emotional resonance.' },
-  'Shoot \'Em Up': { connection: 'A wildly absurd, self-aware tribute to Hong Kong action cinema that plays like a live-action, hyper-violent Looney Tunes cartoon.' }
+  'Die Hard': { connection: 'The blueprint for the modern action hero—vulnerable, sarcastic, and trapped in a confined space against overwhelming odds.' },
+  'Terminator 2: Judgment Day': { connection: 'Pioneered CGI integration while delivering relentless, ground-breaking vehicular and practical stunts.' },
+  'Mad Max: Fury Road': { connection: 'A masterclass in visual storytelling and sustained, high-octane practical action that barely lets you breathe.' },
+  'Aliens': { connection: 'Shifted the franchise from haunted-house horror to a visceral, overwhelming military combat adrenaline rush.' },
+  'John Wick': { connection: 'Redefined modern action with its precise "Gun-Fu" choreography, long takes, and immersive underworld mythology.' },
+  'The Raid 2': { connection: 'Delivers some of the most brutal, complex, and exhaustingly brilliant martial arts sequences ever committed to film.' },
+  'Mission: Impossible - Fallout': { connection: 'Showcases Tom Cruise\'s unparalleled dedication to practical, death-defying stunts and perfect action pacing.' },
+  'Hard Boiled': { connection: 'John Woo\'s magnum opus of "Heroic Bloodshed", setting the gold standard for dual-wielding, slow-motion gun-fu.' },
+  'Crouching Tiger, Hidden Dragon': { connection: 'Elevated Wuxia to global prestige with breathtaking wire-work that is as emotionally resonant as it is kinetic.' },
+  'Shoot \'Em Up': { connection: 'A hyper-kinetic, gleefully absurd cartoon of a movie that dials every action trope to eleven.' }
 };
 
 const getTMDBImage = (path, size = 'w1280') =>
   path ? `https://image.tmdb.org/t/p/${size}${path}` : undefined;
 
-const getAdrenalineInsight = (title) => {
+const getActionInsight = (title) => {
   const data = MOVIE_DATA_BY_TITLE[title];
-  return data?.connection || 'A pulse-pounding cinematic experience defined by extreme tension and flawless action choreography.';
+  return data?.connection || 'A masterclass in high-octane stunts, ground-breaking choreography, and sheer cinematic adrenaline.';
 };
 
 // ✅ OPTIMIZED BANNER
@@ -76,20 +70,19 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
   const bannerImage = backdropPath ? getTMDBImage(backdropPath, 'w1280') : null;
   const posterImage = posterPath ? getTMDBImage(posterPath, 'w500') : null;
 
-  const insight = getAdrenalineInsight(movie?.Title);
-  // ✅ CUSTOM METRIC: Adrenaline Score
-  const adrenalineScore = richData?.adrenalineScore || 85;
+  const insight = getActionInsight(movie?.Title);
+  const actionIntensity = richData?.adrenalineRush || 85;
 
   const mobileHeroCSS = `
   @media (max-width: 767px) {
     .mobile-hero-row { display: flex; flex-direction: row; align-items: flex-start; width: 100vw; max-width: 100vw; gap: 10px; margin: 0; padding: 0 8px; }
     .mobile-hero-poster { width: 38vw; min-width: 106px; border-radius: 12px; overflow: hidden; box-shadow: 0 3px 14px #0007; margin: 0; flex-shrink: 0; }
     .mobile-hero-poster img { width: 100%; height: auto; border-radius: 12px; display: block; }
-    .mobile-action-card { background: linear-gradient(135deg, #2a0808 0%, #0f0505 100%); border-radius: 12px; box-shadow: 0 2px 12px #0006; margin: 0; flex: 1; border-left: 4px solid ${COLORS.accent}; display: flex; flex-direction: column; justify-content: flex-start; padding: 10px 10px 10px 12px; min-height: 110px; position: relative; }
-    .mobile-action-row { display: flex; align-items: flex-start; gap: 7px; }
-    .mobile-action-icon { min-width: 24px; min-height: 24px; color: ${COLORS.accentLight}; margin-top: 2px; }
-    .mobile-action-title { font-size: 15px; font-weight: bold; color: ${COLORS.accentLight}; margin-bottom: 1px; line-height: 1.12; }
-    .mobile-action-desc { font-size: 12.3px; color: #ededed; line-height: 1.36; margin-top: 2px; }
+    .mobile-psych-card { background: linear-gradient(135deg, #1a0505 0%, #0f0f15 100%); border-radius: 12px; box-shadow: 0 2px 12px #0006; margin: 0; flex: 1; border-left: 4px solid #EF4444; display: flex; flex-direction: column; justify-content: flex-start; padding: 10px 10px 10px 12px; min-height: 110px; position: relative; }
+    .mobile-psych-row { display: flex; align-items: flex-start; gap: 7px; }
+    .mobile-psych-icon { min-width: 24px; min-height: 24px; color: #F87171; margin-top: 2px; }
+    .mobile-psych-title { font-size: 15px; font-weight: bold; color: #F87171; margin-bottom: 1px; line-height: 1.12; }
+    .mobile-psych-desc { font-size: 12.3px; color: #ededed; line-height: 1.36; margin-top: 2px; }
   }`;
 
   useEffect(() => {
@@ -139,10 +132,10 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
       </div>
       {isMobile ? (
         <div className="mobile-hero-row">
-          <div className="mobile-hero-poster">{posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} width={320} height={480} className="w-full h-auto" priority /> : <div style={{ background: COLORS.bgCard, width: '100%', height: '150px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Zap style={{ color: COLORS.textMuted }} /></div>}</div>
-          <div className="mobile-action-card">
-            <div className="mobile-action-row"><Zap className="mobile-action-icon" /><div><div className="mobile-action-title">Adrenaline Spike</div></div></div>
-            <div className="mobile-action-desc"><strong>{adrenalineScore}/100</strong> - {insight.substring(0, 80)}...</div>
+          <div className="mobile-hero-poster">{posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} width={320} height={480} className="w-full h-auto" priority /> : <div style={{ background: COLORS.bgCard, width: '100%', height: '150px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Theater style={{ color: COLORS.textMuted }} /></div>}</div>
+          <div className="mobile-psych-card">
+            <div className="mobile-psych-row"><Zap className="mobile-psych-icon" /><div><div className="mobile-psych-title">Adrenaline Rush</div></div></div>
+            <div className="mobile-psych-desc"><strong>{actionIntensity}</strong> - {insight.substring(0, 80)}...</div>
           </div>
         </div>
       ) : (
@@ -150,15 +143,15 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 lg:gap-8 items-start">
             <motion.div className="flex-shrink-0 relative w-24 sm:w-48 md:w-56 lg:w-80 mx-auto sm:mx-0" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8, duration: 0.8 }}>
               <div className="relative" style={{ aspectRatio: '2/3' }}>
-                {posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} fill sizes="(max-width: 640px) 96px, (max-width: 768px) 192px, (max-width: 1024px) 224px, 320px" quality={85} className="object-cover rounded-lg sm:rounded-xl shadow-2xl" /> : <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: COLORS.bgCard, borderRadius: '12px' }}><Zap style={{ color: COLORS.textMuted }} /></div>}
+                {posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} fill sizes="(max-width: 640px) 96px, (max-width: 768px) 192px, (max-width: 1024px) 224px, 320px" quality={85} className="object-cover rounded-lg sm:rounded-xl shadow-2xl" /> : <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: COLORS.bgCard, borderRadius: '12px' }}><Theater style={{ color: COLORS.textMuted }} /></div>}
               </div>
             </motion.div>
             <motion.div className="flex-1 w-full min-w-0" initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 1.0, duration: 0.8 }}>
-              <motion.div className="relative rounded-xl sm:rounded-2xl overflow-hidden p-4 sm:p-6 lg:p-8 backdrop-blur-sm" style={{ background: `linear-gradient(135deg, rgba(239, 68, 68, 0.15) 0%, rgba(15, 10, 10, 0.5) 100%)`, border: `1px solid ${COLORS.borderLight}`, boxShadow: `0 8px 32px rgba(239, 68, 68, 0.2)` }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.1, duration: 0.8 }}>
+              <motion.div className="relative rounded-xl sm:rounded-2xl overflow-hidden p-4 sm:p-6 lg:p-8 backdrop-blur-sm" style={{ background: `linear-gradient(135deg, rgba(239, 68, 68, 0.15) 0%, rgba(15, 15, 20, 0.5) 100%)`, border: `1px solid ${COLORS.borderLight}`, boxShadow: `0 8px 32px rgba(239, 68, 68, 0.2)` }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.1, duration: 0.8 }}>
                 <div className="absolute top-0 left-0 right-0 h-0.5 sm:h-1" style={{ background: `linear-gradient(90deg, transparent, ${COLORS.accent}, transparent)` }} />
                 <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5">
                   <motion.div className="p-2 sm:p-2.5 rounded-lg sm:rounded-xl flex-shrink-0" style={{ background: `linear-gradient(135deg, ${COLORS.accent}20, ${COLORS.accent}10)`, border: `1px solid ${COLORS.accent}40` }} whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}><Zap className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" style={{ color: COLORS.accent }} /></motion.div>
-                  <div className="min-w-0 flex-1"><h2 className="text-sm sm:text-base lg:text-xl xl:text-2xl font-bold leading-tight" style={{ color: COLORS.accent }}>The Action Impact</h2><p className="text-xs sm:text-sm hidden sm:block" style={{ color: COLORS.textMuted }}>Adrenaline Score: {adrenalineScore}/100</p></div>
+                  <div className="min-w-0 flex-1"><h2 className="text-sm sm:text-base lg:text-xl xl:text-2xl font-bold leading-tight" style={{ color: COLORS.accent }}>Action Mastery</h2><p className="text-xs sm:text-sm hidden sm:block" style={{ color: COLORS.textMuted }}>Adrenaline Rush: {actionIntensity}/100</p></div>
                 </div>
                 <div className="relative pl-4 sm:pl-6 border-l-2" style={{ borderColor: `${COLORS.accent}40` }}>
                   <motion.div className="absolute -left-1.5 sm:-left-2 top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full" style={{ backgroundColor: COLORS.accent }} animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 2, repeat: Infinity }} />
@@ -178,7 +171,7 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
 const AuthorCreditSection = () => (
   <motion.section className="pt-6 sm:pt-8 mt-12 sm:mt-16" style={{ borderTop: `1px solid ${COLORS.borderLight}` }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2.0, duration: 0.8 }}>
     <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
-      <div className="flex items-center gap-3"><User className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: COLORS.textDisabled }} /><div><p className="text-xs sm:text-sm" style={{ color: COLORS.textMuted }}>Curated by <span className="font-medium" style={{ color: COLORS.textSecondary }}>Filmiway Editorial Team</span></p><p className="text-xs" style={{ color: COLORS.textDisabled }}>Expert analysis of action cinema</p></div></div>
+      <div className="flex items-center gap-3"><User className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: COLORS.textDisabled }} /><div><p className="text-xs sm:text-sm" style={{ color: COLORS.textMuted }}>Curated by <span className="font-medium" style={{ color: COLORS.textSecondary }}>Filmiway Editorial Team</span></p><p className="text-xs" style={{ color: COLORS.textDisabled }}>Expert analysis of high-octane cinema</p></div></div>
       <div className="flex items-center gap-3 sm:gap-4"><span className="text-xs sm:text-sm" style={{ color: COLORS.textDisabled }}>Share:</span><div className="flex gap-2 sm:gap-3">{[Twitter, Hash, Send].map((Icon, i) => (<button key={i} className="p-1.5 sm:p-2 rounded-full transition-colors" style={{ color: COLORS.textDisabled }} onMouseEnter={(e) => { e.currentTarget.style.color = COLORS.textSecondary; e.currentTarget.style.backgroundColor = COLORS.bgCard; }} onMouseLeave={(e) => { e.currentTarget.style.color = COLORS.textDisabled; e.currentTarget.style.backgroundColor = 'transparent'; }}><Icon className="w-3 h-3 sm:w-4 sm:h-4" /></button>))}</div></div>
     </div>
   </motion.section>
@@ -188,16 +181,16 @@ const SubtleFilmGrain = () => (
   <div className="fixed inset-0 pointer-events-none z-0 opacity-[0.005]"><div className="w-full h-full bg-repeat" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)' opacity='0.3'/%3E%3C/svg%3E")`, backgroundSize: '60px 60px' }} /></div>
 );
 
-const ActionMovieBreadcrumb = ({ movie }) => (
+const BestActionBreadcrumb = ({ movie }) => (
   <motion.nav className="mb-6 sm:mb-8 px-3 sm:px-4 lg:px-6 pb-3 sm:pb-4" style={{ borderBottom: `1px solid ${COLORS.borderLight}` }} initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
     <div className="flex items-center space-x-2 sm:space-x-3 text-xs sm:text-sm" style={{ color: COLORS.textMuted }}>
-      <Link href="/collection/best-action-movies" className="transition-all duration-300 truncate" style={{ color: COLORS.textMuted }} onMouseEnter={(e) => e.currentTarget.style.color = COLORS.accent} onMouseLeave={(e) => e.currentTarget.style.color = COLORS.textMuted}>10 Best Action Movies</Link>
+      <Link href="/collection/best-action-movies" className="transition-all duration-300 truncate" style={{ color: COLORS.textMuted }} onMouseEnter={(e) => e.currentTarget.style.color = COLORS.accent} onMouseLeave={(e) => e.currentTarget.style.color = COLORS.textMuted}>Best Action Movies of All Time</Link>
       <ChevronLeft size={14} className="flex-shrink-0" style={{ color: COLORS.textDisabled, transform: 'rotate(180deg)' }} /><span className="font-medium truncate" style={{ color: `${COLORS.accent}B3` }}>{movie.Title}</span>
     </div>
   </motion.nav>
 );
 
-const ActionMoviePage = ({ movie, tmdbData: movieData, sensitiveData }) => {
+const BestActionMoviesPage = ({ movie, tmdbData: movieData }) => {
   const router = useRouter();
   const richData = COMPLETE_MOVIE_DATA[movie.tmdbId]; 
   const [isMobile, setIsMobile] = useState(false);
@@ -212,41 +205,44 @@ const ActionMoviePage = ({ movie, tmdbData: movieData, sensitiveData }) => {
   useEffect(() => {
     if (typeof window !== 'undefined') {
         sessionStorage.setItem('fromCollection', 'best-action-movies');
-        sessionStorage.setItem('fromCollectionName', '10 Best Action Movies');
+        sessionStorage.setItem('fromCollectionName', 'Best Action Movies of All Time');
     }
   }, []);
 
   const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
   const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
-
+  
   // =========================================================================
-  // ✅ THE STANDARDIZED ELITE SEO BLOCK
+  // ✅ THE STANDARDIZED ELITE SEO BLOCK (Clean, Direct Intent)
   // =========================================================================
 
   const collectionSlug = 'best-action-movies';
-  const collectionShortTag = 'Action Collection';
 
   const scenes = SENSITIVE_TIMELINES?.[movie.tmdbId]?.scenes || [];
   
+  // 1. PURE META TITLE LOGIC
   let cleanSEOTitle = '';
-  const coreUSP = "Parents Guide & Warnings:";
+  const coreUSP = "Timestamps & Parents Guide:";
 
   if (scenes.length > 0) {
-    const idealTitle = `${coreUSP} ${movie.Title} (${currentMovieYear}) - ${collectionShortTag}`;
+    const idealTitle = `${coreUSP} ${movie.Title} (${currentMovieYear})`;
+    
     if (idealTitle.length <= 62) {
       cleanSEOTitle = idealTitle; 
     } else {
-      cleanSEOTitle = `${coreUSP} ${movie.Title} - Warnings`;
+      cleanSEOTitle = `${coreUSP} ${movie.Title}`;
     }
   } else {
-    const idealCleanTitle = `Parents Guide: ${movie.Title} (${currentMovieYear}) - Clean`;
+    const idealCleanTitle = `Parents Guide: ${movie.Title} (${currentMovieYear})`;
+    
     if (idealCleanTitle.length <= 62) {
       cleanSEOTitle = idealCleanTitle;
     } else {
-      cleanSEOTitle = `Parents Guide: ${movie.Title} - Clean`;
+      cleanSEOTitle = `Parents Guide: ${movie.Title}`;
     }
   }
 
+  // 2. STANDARDIZED ELITE META DESCRIPTION
   let currentRuntime = movie.Runtime || movie.runtime || "Official";
   if (typeof currentRuntime === 'number') currentRuntime = `${currentRuntime} min`;
 
@@ -254,10 +250,13 @@ const ActionMoviePage = ({ movie, tmdbData: movieData, sensitiveData }) => {
   if (scenes.length > 0) {
     const sceneCount = scenes.length;
     const topScenes = scenes.slice(0, 2).map(s => `${s.start}–${s.end}`).join(', ');
-    cleanSEODesc = `${movie.Title} Parents Guide: ${sceneCount} mature scenes (violence, gore) manually verified. Skip: ${topScenes}... Full ${currentRuntime} list inside.`;
+    
+    cleanSEODesc = `${movie.Title} Parents Guide: ${sceneCount} mature scenes manually verified. Skip: ${topScenes}... Full ${currentRuntime} list inside.`;
   } else {
-    cleanSEODesc = `${movie.Title} Parents Guide. Filmiway editors have manually verified zero extreme violence or nudity in the full ${currentRuntime} runtime.`;
+    cleanSEODesc = `${movie.Title} Parents Guide. Filmiway editors have manually verified zero sex scenes or nudity in the full ${currentRuntime} runtime. (Note: Contains heavy action violence).`;
   }
+
+  // =========================================================================
 
   const masterCollectionSlug = getPrimaryCollectionForMovie(movie.imdbID) || collectionSlug;
   const canonicalUrl = `https://filmiway.com/movies/${masterCollectionSlug}/${movie.imdbID}`;
@@ -299,20 +298,15 @@ const ActionMoviePage = ({ movie, tmdbData: movieData, sensitiveData }) => {
           
           <Header />
           
-          
           <div className="relative z-10 pt-20 sm:pt-24 lg:pt-28">
               <h1 className="sr-only">{cleanSEOTitle}</h1>
 
-              <ActionMovieBreadcrumb movie={movie} />
+              <BestActionBreadcrumb movie={movie} />
               <div className="container mx-auto px-0 pb-16 sm:pb-24 lg:pb-32 max-w-7xl">
                   <OptimizedBanner movie={movie} movieData={movieData} richData={richData} trailer={trailer} isMobile={isMobile} />
                   
                   <motion.div id="watch" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="space-y-8 sm:space-y-12 px-3 sm:px-4 lg:px-6">
-                      <MovieDetailsSection 
-                          movie={movie} 
-                          fromActionCollection={true} 
-                          sensitiveData={sensitiveData}
-                      />
+                      <MovieDetailsSection movie={movie} fromBestActionMoviesCollection={true} />
                   </motion.div>
                   
                   <div className="px-3 sm:px-4 lg:px-6">
@@ -342,27 +336,21 @@ export async function getStaticProps({ params }) {
       const tmdbData = tmdbResponse.ok ? await tmdbResponse.json() : null;
 
       // 🔥 CRITICAL FIX: Sync local movie runtime with TMDB to prevent FAQ/Timestamps mismatch
-      const syncedMovie = { ...movie };
-      if (typeof tmdbData !== 'undefined' && tmdbData?.runtime) {
-          syncedMovie.runtime = tmdbData.runtime;
-          syncedMovie.Runtime = tmdbData.runtime;
-      }
-
-      // ✅ FETCH SENSITIVE DATA FOR FRONTEND RENDERING
-      const rawSensitive = SENSITIVE_TIMELINES[movie.tmdbId];
-      const sensitiveData = rawSensitive ? { scenes: rawSensitive.scenes } : null;
-
-      return { props: { movie: syncedMovie, tmdbData, sensitiveData } };
+        const syncedMovie = { ...movie };
+        if (typeof tmdbData !== 'undefined' && tmdbData?.runtime) {
+            syncedMovie.runtime = tmdbData.runtime;
+            syncedMovie.Runtime = tmdbData.runtime;
+        }
+        return { props: { movie: syncedMovie, tmdbData } };
   } catch (error) {
       console.error('Error fetching TMDB data:', error);
       return {
           props: {
               movie: COMPLETE_MOVIE_DATABASE.find((m) => m.imdbID === params.id),
               tmdbData: null,
-              sensitiveData: null
           },
       };
   }
 }
 
-export default ActionMoviePage;
+export default BestActionMoviesPage;

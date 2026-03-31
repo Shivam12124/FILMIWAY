@@ -68,10 +68,10 @@ export const SENSITIVE_TIMELINES = {
             { start: "0:19:49", end: "0:20:49", type: "Nudity", severity: "High" },
             { start: "0:57:25", end: "0:58:12", type: "Sexual Content & Nudity", severity: "High" },
             { start: "0:58:45", end: "0:59:15", type: "Nudity & Sexual Content", severity: "High" },
-            { start: "1:04:20", end: "1:06:10", type: "Nudity & Sex", severity: "Extreme" },
-            { start: "1:08:00", end: "1:09:05", type: "Nudity & Sex", severity: "Extreme" },
-            { start: "1:21:25", end: "1:22:50", type: "Nudity & Sex", severity: "Extreme" },
-            { start: "1:23:40", end: "1:26:40", type: "Nudity & Sex", severity: "Extreme" }
+            { start: "1:04:20", end: "1:06:10", type: "Nudity & Sex", severity: "High" }, 
+            { start: "1:08:00", end: "1:09:05", type: "Nudity & Sex", severity: "High" }, 
+            { start: "1:21:25", end: "1:22:50", type: "Nudity & Sex", severity: "High" }, 
+            { start: "1:23:40", end: "1:26:40", type: "Nudity & Sex", severity: "High" }
         ] 
     },
 // 10. Joker

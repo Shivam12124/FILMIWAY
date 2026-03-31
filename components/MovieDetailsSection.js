@@ -271,13 +271,10 @@ import {
   COMPLETE_MOVIE_DATA as REVENGE_MOVIE_DATA,
   SENSITIVE_TIMELINES as REVENGE_SENSITIVE_TIMELINES 
 } from '../utils/revengeMovieData';
-
-// 🔥 FIX 1: ADDED SENSITIVE_TIMELINES IMPORT FOR WAR FILMS
 import { 
   COMPLETE_MOVIE_DATA as WAR_FILMS_MOVIE_DATA,
   SENSITIVE_TIMELINES as WAR_FILMS_SENSITIVE_TIMELINES
 } from '../utils/warFilmsMovieData';
-
 import { 
   COMPLETE_MOVIE_DATA as THRILLER_MOVIE_DATA,
   SENSITIVE_TIMELINES as THRILLER_SENSITIVE_TIMELINES 
@@ -388,7 +385,7 @@ const MovieDetailsSection = React.memo(({
   fromRoadTripCollection,
   fromThoughtProvokingCollection,
   fromNeoNoirCollection,
-  fromBestActionCollection,
+  fromBestActionMoviesCollection, // ✅ FIXED PROP NAME TO MATCH [id].js
   fromParasiteCollection,
   fromDonnieDarkoCollection,
   fromOldboyCollection,
@@ -494,7 +491,7 @@ const MovieDetailsSection = React.memo(({
   : fromRoadTripCollection ? safeLookup(ROAD_TRIP_MOVIE_DATA, movie.tmdbId)
   : fromThoughtProvokingCollection ? safeLookup(THOUGHT_PROVOKING_MOVIE_DATA, movie.tmdbId)
   : fromNeoNoirCollection ? safeLookup(NEO_NOIR_MOVIE_DATA, movie.tmdbId)
-  : fromBestActionCollection ? safeLookup(BEST_ACTION_MOVIE_DATA, movie.tmdbId)
+  : fromBestActionMoviesCollection ? safeLookup(BEST_ACTION_MOVIE_DATA, movie.tmdbId)
   : fromEyesWideShutCollection ? safeLookup(EYES_WIDE_SHUT_MOVIE_DATA, movie.tmdbId)
   : fromRevengeCollection ? safeLookup(REVENGE_MOVIE_DATA, movie.tmdbId)
   : fromWarFilmsCollection ? safeLookup(WAR_FILMS_MOVIE_DATA, movie.tmdbId)
@@ -517,8 +514,8 @@ const MovieDetailsSection = React.memo(({
    dominantColor: '#ca8a04',
    rating: movie.imdbRating || 7.5,
    director: movie.Director || 'Acclaimed Director',
-   scenes: [],
-   dna: { Mystery: 60, Thriller: 30, Drama: 10 },
+   scenes: [], // ✅ NO PLACEHOLDER SCENES
+   dna: null, // ✅ NO PLACEHOLDER DNA
    cast: ['Lead Actor', 'Supporting Cast'],
    boxOffice: 'N/A',
    budget: 'N/A',
@@ -664,7 +661,7 @@ const MovieDetailsSection = React.memo(({
    || RAUNCHY_COMEDY_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || ROAD_TRIP_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || THOUGHT_PROVOKING_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-  || NEO_NOIR_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
+   || NEO_NOIR_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || BEST_ACTION_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || EYES_WIDE_SHUT_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || SE7EN_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
@@ -678,7 +675,6 @@ const MovieDetailsSection = React.memo(({
    || DETECTIVE_THRILLER_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || PSYCH_THRILLER_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || INTERSTELLAR_TIMELINES?.[movie?.tmdbId]?.scenes 
-   // 🔥 FIX 2: ADDED WAR FILMS SENSITIVE TIMELINES TO LOOKUP CHAIN
    || WAR_FILMS_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
    || [];
@@ -730,8 +726,8 @@ const MovieDetailsSection = React.memo(({
    : fromRaunchyComedyCollection ? movie.raunchinessScore ?? safeMovieInfo.raunchinessScore ?? 0
    : fromRoadTripCollection ? movie.wanderlustScore ?? safeMovieInfo.wanderlustScore ?? 0
    : fromThoughtProvokingCollection ? movie.philosophicalDepth ?? safeMovieInfo.philosophicalDepth ?? 0
-  : fromNeoNoirCollection ? movie.moralAmbiguity ?? safeMovieInfo.moralAmbiguity ?? 0
-   : fromBestActionCollection ? movie.adrenalineScore ?? safeMovieInfo.adrenalineScore ?? 0
+   : fromNeoNoirCollection ? movie.moralAmbiguity ?? safeMovieInfo.moralAmbiguity ?? 0
+   : fromBestActionMoviesCollection ? movie.adrenalineScore ?? safeMovieInfo.adrenalineScore ?? 0
    : fromEyesWideShutCollection ? movie.paranoiaIntensity ?? safeMovieInfo.paranoiaIntensity ?? 0
    : fromSe7enCollection ? movie.se7enDNAScore ?? safeMovieInfo.se7enDNAScore ?? 0
    : fromRevengeCollection ? movie.revengeIntensity ?? safeMovieInfo.revengeIntensity ?? 0
@@ -961,7 +957,7 @@ const MovieDetailsSection = React.memo(({
      default: return '#6b7280';
         }
    }
-   if (fromBestActionCollection) {
+   if (fromBestActionMoviesCollection) {
         switch (level) {
      case 'EXTREME': return '#7f1d1d'; 
      case 'HIGH': return '#b91c1c';   
@@ -1050,7 +1046,7 @@ if (fromPsychologicalThrillerCollection) {
    if (fromRoadTripCollection) return 'WANDERLUST SCORE';
    if (fromThoughtProvokingCollection) return 'PHILOSOPHICAL DEPTH SCORE';
    if (fromNeoNoirCollection) return 'MORAL AMBIGUITY SCORE';
-   if (fromBestActionCollection) return 'ADRENALINE SCORE';
+   if (fromBestActionMoviesCollection) return 'ADRENALINE SCORE';
    if (fromSe7enCollection) return 'SE7EN DNA SCORE';
    if (fromRevengeCollection) return 'REVENGE INTENSITY SCORE';
    if (fromWarFilmsCollection) return 'WAR INTENSITY SCORE';
@@ -1118,7 +1114,7 @@ if (fromPsychologicalThrillerCollection) {
    if (fromRoadTripCollection) return 'WANDERLUST INDEX';
    if (fromThoughtProvokingCollection) return 'PROFOUNDNESS INDEX';
    if (fromNeoNoirCollection) return 'MORAL AMBIGUITY INDEX';
-   if (fromBestActionCollection) return 'ADRENALINE INDEX';
+   if (fromBestActionMoviesCollection) return 'ADRENALINE INDEX';
    return 'MIND-BENDING INDEX';
  };
 
@@ -1170,7 +1166,7 @@ if (fromPsychologicalThrillerCollection) {
    if (fromRoadTripCollection) return 'TRANSFORMATION LEVEL';
    if (fromThoughtProvokingCollection) return 'PHILOSOPHICAL IMPACT';
    if (fromNeoNoirCollection) return 'DREAD & AMBIGUITY LEVEL';
-   if (fromBestActionCollection) return 'ACTION INTENSITY LEVEL';
+   if (fromBestActionMoviesCollection) return 'ACTION INTENSITY LEVEL';
    return 'COGNITIVE DISTORTION LEVEL';
  };
 
@@ -1315,7 +1311,7 @@ if (fromPsychologicalThrillerCollection) {
      if (scoreValue >= 80) return 'A highly atmospheric and morally ambiguous descent into the dark side of human nature.';
      return 'A gritty cinematic experience exploring the dark, morally ambiguous underbelly of society.';
    }
-   if (fromBestActionCollection) {
+   if (fromBestActionMoviesCollection) {
      if (scoreValue >= 90) return 'A relentless, high-octane adrenaline rush with masterclass choreography.';
      if (scoreValue >= 80) return 'Intense, fast-paced action with thrilling set pieces.';
      return 'Solid action entertainment with satisfying combat and stunts.';
@@ -1360,7 +1356,7 @@ if (fromPsychologicalThrillerCollection) {
    if (fromRoadTripCollection) return 'border-amber-600/40';
    if (fromThoughtProvokingCollection) return 'border-indigo-600/40';
    if (fromNeoNoirCollection) return 'border-pink-700/40';
-   if (fromBestActionCollection) return 'border-red-600/40';
+   if (fromBestActionMoviesCollection) return 'border-red-600/40';
    return 'border-yellow-400/40';
  };
 
@@ -1397,7 +1393,7 @@ if (fromPsychologicalThrillerCollection) {
    if (fromRoadTripCollection) return 'text-amber-500';
    if (fromThoughtProvokingCollection) return 'text-indigo-500';
    if (fromNeoNoirCollection) return 'text-pink-600';
-   if (fromBestActionCollection) return 'text-red-600';
+   if (fromBestActionMoviesCollection) return 'text-red-600';
    return 'text-yellow-400';
  };
 
@@ -1523,7 +1519,7 @@ if (fromPsychologicalThrillerCollection) {
        !fromRoadTripCollection &&
        !fromThoughtProvokingCollection &&
        !fromNeoNoirCollection &&
-       !fromBestActionCollection &&
+       !fromBestActionMoviesCollection &&
        (
         <motion.div
           className="mb-6 sm:mb-8 md:mb-12 bg-gradient-to-br from-gray-800/40 to-gray-900/60 rounded-lg sm:rounded-xl border border-gray-700/50 p-3 sm:p-4 md:p-8 shadow-2xl backdrop-blur-sm relative overflow-hidden"
@@ -1601,18 +1597,23 @@ if (fromPsychologicalThrillerCollection) {
 
       <SensitiveContentTimelineSection movie={{...movie, Runtime: dynamicMovieData.runtime}} sensitiveScenes={sensitiveScenes} />
 
-      {/* ✅ SEO FIX: Passing the data into ARIA labels instead of hiding it in a sr-only div */}
-      <EnhancedIntensityGraph 
-          scenes={safeMovieInfo.scenes} 
-          dominantColor={safeMovieInfo.dominantColor} 
-          aria-label={`Intensity graph showing narrative peaks for ${movie.Title}.`}
-      />
+      {/* ✅ SEO FIX: Only render graphs if data exists! No placeholder data shown to users. */}
+      {safeMovieInfo?.scenes && safeMovieInfo.scenes.length > 0 && (
+        <EnhancedIntensityGraph 
+            scenes={safeMovieInfo.scenes} 
+            dominantColor={safeMovieInfo.dominantColor} 
+            aria-label={`Intensity graph showing narrative peaks for ${movie.Title}.`}
+        />
+      )}
       
-      <StrategicDNAHelix 
-          dna={safeMovieInfo.dna} 
-          dominantColor={safeMovieInfo.dominantColor} 
-          aria-label={`Genre DNA breakdown for ${movie.Title}: ${Object.entries(safeMovieInfo.dna || {}).map(([k, v]) => `${k} ${v}%`).join(', ')}.`}
-      />
+      {/* ✅ SEO FIX: Only render DNA if data exists! No placeholder data shown to users. */}
+      {safeMovieInfo?.dna && Object.keys(safeMovieInfo.dna).length > 0 && (
+        <StrategicDNAHelix 
+            dna={safeMovieInfo.dna} 
+            dominantColor={safeMovieInfo.dominantColor} 
+            aria-label={`Genre DNA breakdown for ${movie.Title}: ${Object.entries(safeMovieInfo.dna || {}).map(([k, v]) => `${k} ${v}%`).join(', ')}.`}
+        />
+      )}
 
       {/* ❌ REMOVED THE DANGEROUS SR-ONLY BLOCK HERE ❌ */}
 
@@ -1666,7 +1667,7 @@ if (fromPsychologicalThrillerCollection) {
         : fromRoadTripCollection ? <RoadTripSEOFAQSection movie={movie} />
         : fromThoughtProvokingCollection ? <ThoughtProvokingSEOFAQSection movie={movie} />
         : fromNeoNoirCollection ? <NeoNoirSEOFAQSection movie={movie} />
-        : fromBestActionCollection ? <BestActionMoviesSEOFAQSection movie={movie} />
+        : fromBestActionMoviesCollection ? <BestActionMoviesSEOFAQSection movie={movie} />
         : fromPrestigeCollection ? <PrestigeSEOFAQSection movie={movie} />
         : fromSe7enCollection ? <Se7enSEOFAQSection movie={movie} />
         : fromRevengeCollection ? <RevengeMovieSEOFAQSection movie={movie} />
@@ -1682,10 +1683,11 @@ if (fromPsychologicalThrillerCollection) {
         : fromThrillerCollection ? <ThrillerSEOFAQSection movie={movie} />
         : fromSurvivalCollection ? <SurvivalSEOFAQSection movie={movie} />
         
+        // Final safety fallbacks so empty FAQ isn't rendered
         : fromInceptionCollection ? <SEOFAQSection movie={movie} />
         : fromShutterIslandCollection ? <ShutterIslandSEOFAQSection movie={movie} />
         : fromMementoCollection ? <MementoSEOFAQSection movie={movie} />
-        : <SEOFAQSection movie={movie} />
+        : movieInfo?.faqs ? <SEOFAQSection movie={movie} /> : null
       }
     </motion.div>
   );

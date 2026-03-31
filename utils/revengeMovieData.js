@@ -40,7 +40,7 @@ export const SENSITIVE_TIMELINES = {
     ]},
    98: { 
         scenes: [
-            { start: "50:40", end: "50:55", type: "Partial Nudity (Man)", severity: "Low" }
+            { start: "50:40", end: "50:55", type: "Partial Nudity (Man)", severity: "Mild" }
         ] 
     },
     33: { scenes: [] },
@@ -50,7 +50,7 @@ export const SENSITIVE_TIMELINES = {
     393: { scenes: [] },
       245891: { 
         scenes: [
-            { start: "45:00", end: "45:30", type: "Suggestive Clothing (Bikini)", severity: "Low" }
+            { start: "45:00", end: "45:30", type: "Suggestive Clothing (Bikini)", severity: "Mild" }
         ] 
     },
     49797: { scenes: [{ start: '9:53', end: '10:25 ', type: 'Nudity', severity: 'Moderate"' }, { start: '26:40', end: '27:40', type: 'Sex & Nudity', severity: 'Moderate"' }] },
