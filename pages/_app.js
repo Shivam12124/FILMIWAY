@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { Bebas_Neue, Montserrat } from 'next/font/google'
+import Script from 'next/script'
 
 // ✅ 1. Configure Premium Fonts
 const bebas = Bebas_Neue({
@@ -19,21 +20,9 @@ const montserrat = Montserrat({
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
-  const [mounted, setMounted] = useState(false);
   
-  // ✅ Initialize Clarity (client-side only)
   useEffect(() => {
-    setMounted(true);
     console.log('🎬 Filmiway - SEO Optimized Version Loaded');
-
-    if (typeof window !== "undefined") {
-      (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-      })(window, document, "clarity", "script", "u1n9jixukw");
-      console.log("🎯 Microsoft Clarity script loaded");
-    }
   }, []);
   
   // ✅ Get current URL for Open Graph (no canonical needed here)
@@ -77,6 +66,17 @@ export default function App({ Component, pageProps }) {
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
       </Head>
+
+      {/* ⚡ OPTIMIZED: Load Clarity Analytics without blocking the main thread */}
+      <Script id="microsoft-clarity" strategy="lazyOnload">
+        {`
+          (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+          })(window, document, "clarity", "script", "u1n9jixukw");
+        `}
+      </Script>
 
       {/* ✅ Wrap Component in Main with Font Variables */}
       <main className={`${bebas.variable} ${montserrat.variable} font-sans`}>

@@ -1,5 +1,5 @@
 // pages/collections.js
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useTransition } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -13,6 +13,8 @@ import Header from '../components/Header';
 
 const CollectionsHub = () => {
     const [searchQuery, setSearchQuery] = useState('');
+    const [inputValue, setInputValue] = useState('');
+    const [isPending, startTransition] = useTransition();
     const [activeCategory, setActiveCategory] = useState('All');
     const [expandedCollection, setExpandedCollection] = useState(null);
 
@@ -187,8 +189,11 @@ const CollectionsHub = () => {
                                 <input
                                     type="text"
                                     placeholder="Search collections..."
-                                    value={searchQuery}
-                                    onChange={(e) => setSearchQuery(e.target.value)}
+                                    value={inputValue}
+                                    onChange={(e) => {
+                                        setInputValue(e.target.value);
+                                        startTransition(() => setSearchQuery(e.target.value));
+                                    }}
                                     className="w-full bg-gray-900/50 border border-gray-800 rounded-xl pl-12 pr-4 py-3 sm:py-4 text-white placeholder-gray-500 focus:outline-none focus:border-yellow-400/50 focus:ring-2 focus:ring-yellow-400/20 transition-all"
                                 />
                             </div>
@@ -204,7 +209,7 @@ const CollectionsHub = () => {
                             {categories.map((category) => (
                                 <button
                                     key={category}
-                                    onClick={() => setActiveCategory(category)}
+                                    onClick={() => startTransition(() => setActiveCategory(category))}
                                     className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
                                         activeCategory === category 
                                         ? 'bg-yellow-400 text-black shadow-[0_0_15px_rgba(250,204,21,0.3)]' 

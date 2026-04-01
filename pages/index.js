@@ -74,14 +74,14 @@ const fetchUniquePosterForCollection = async (movieIds, sectionName, collectionS
 };
 
 // ⚡ PURE CSS CARD - Optimized Next/Image for LCP
-const CollectionCard = memo(({ collection, index, onClick, isPrioritySection }) => {
+const CollectionCard = memo(({ collection, index, href, isPrioritySection }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
   const shouldPrioritize = isPrioritySection && index < 4;
 
   return (
-    <div
-      className="group cursor-pointer select-none h-full relative transition-all duration-500 hover:-translate-y-2"
-      onClick={onClick}
+    <Link
+      href={href}
+      className="group cursor-pointer select-none h-full relative transition-all duration-500 hover:-translate-y-2 block"
     >
       <div className="relative aspect-[2/3] rounded-xl sm:rounded-2xl overflow-hidden bg-[#0a0a0a] border border-white/5 group-hover:border-yellow-500/40 transition-all duration-500 shadow-2xl group-hover:shadow-yellow-500/20">
         <div className="relative w-full h-full">
@@ -120,7 +120,7 @@ const CollectionCard = memo(({ collection, index, onClick, isPrioritySection }) 
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 });
 
@@ -224,7 +224,7 @@ const ProfessionalCarousel = memo(({ collections, sectionRef, isPrioritySection 
             <CollectionCard 
               collection={collection} 
               index={index} 
-              onClick={() => router.push(`/collection/${collection.id}`)} 
+              href={`/collection/${collection.id}`} 
               isPrioritySection={isPrioritySection} 
             />
           </div>
