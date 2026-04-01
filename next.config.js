@@ -27,6 +27,12 @@ const nextConfig = {
         hostname: 'www.themoviedb.org',
         pathname: '/**',
       },
+      // ✅ ADDED UNSPLASH HERE TO FIX THE ERROR
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+        pathname: '/**',
+      },
     ],
     // ⚡ NEW: Modern image formats (AVIF/WebP save 50%+ bandwidth)
     formats: ['image/avif', 'image/webp'],

@@ -11,6 +11,7 @@ User-agent: PetalBot
 Disallow: /
 
 # 1. BLOCK AI TRAINING BOTS (CRITICAL SHIELD)
+# These bots scrape data to build their own models without citing you.
 User-agent: GPTBot
 User-agent: Google-Extended
 User-agent: CCBot
@@ -21,6 +22,7 @@ User-agent: magpie-crawler
 Disallow: /
 
 # 2. ALLOW AI SEARCH / RETRIEVAL (VIP CITATIONS)
+# These bots provide real-time answers and link back to Filmiway.
 User-agent: OAI-SearchBot
 User-agent: ChatGPT-User
 User-agent: PerplexityBot
@@ -29,6 +31,9 @@ User-agent: Applebot
 User-agent: BingPreview
 User-agent: Claude-SearchBot
 User-agent: Claude-User
+User-agent: DuckAssistBot
+User-agent: Amzn-SearchBot
+User-agent: Amzn-User
 Allow: /
 Allow: /_next/static/
 Allow: /_next/image/
