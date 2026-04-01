@@ -1,4 +1,4 @@
-// pages/movies/sci-fi/[id].js - H1 SEO FIX + HYDRATION FIX ✅
+// pages/movies/best-sci-fi-movies/[id].js - H1 SEO FIX + HYDRATION FIX ✅
 // VISUALS: Minimalist (Banner + Details Only)
 // SCHEMA: Maximalist (Hidden Complexity, Spectacle, and FAQs for Bots)
 
@@ -8,7 +8,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Play, X, User, Twitter, Hash, Send, Film, Sparkles } from 'lucide-react';
+import { ChevronLeft, Play, X, User, Twitter, Hash, Send, Film, Sparkles } from 'lucide-react';
 import InternalCollectionsSection from '../../../components/InternalCollectionsSection';
 import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
@@ -17,14 +17,12 @@ import Header from '../../../components/Header';
 import { getPrimaryCollectionForMovie } from '../../../data/collections';
 
 // ✅ IMPORT SCI-FI DATA
-// ✅ IMPORT SCI-FI DATA (Fixed Imports)
-// ✅ IMPORT SCI-FI DATA (Fixed Imports)
-import { generateCleanMovieSchema } from '../../../utils/cleanMovieSchema';
 import {
-  SCI_FI_MOVIES as COMPLETE_MOVIE_DATABASE, // ✅ FIXED: Import the Array (SCI_FI_MOVIES), not the Object
+  SCI_FI_MOVIES as COMPLETE_MOVIE_DATABASE,
   COMPLETE_SCI_FI_DETAILS as COMPLETE_MOVIE_DATA, 
   SENSITIVE_TIMELINES,
-  SCI_FI_FAQS as SCI_FI_MOVIE_FAQS 
+  SCI_FI_FAQS as SCI_FI_MOVIE_FAQS,
+  generateCleanMovieSchema 
 } from '../../../utils/sciFiMovieData';
 const COLORS = {
   accent: '#0ea5e9', accentLight: '#38bdf8', bgPrimary: '#050509', bgCard: 'rgba(15, 23, 42, 0.6)',
@@ -57,7 +55,6 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
   const [showTrailer, setShowTrailer] = useState(false);
   const [countdown, setCountdown] = useState(4);
   const [hasClosedTrailer, setHasClosedTrailer] = useState(false);
-  const [mounted, setMounted] = useState(false);
   const timerRef = useRef(null);
 
   const backdropPath = richData?.backdrop_path || movieData?.backdrop_path || movie?.backdrop_path;
@@ -69,14 +66,12 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
   const insight = getSciFiInsight(movie?.Title);
   const complexityIndex = richData?.sciFiComplexity || 90;
 
-  useEffect(() => { setMounted(true); }, []);
-
   const mobileHeroCSS = `
   @media (max-width: 767px) {
     .mobile-hero-row { display: flex; flex-direction: row; align-items: flex-start; width: 100vw; max-width: 100vw; gap: 10px; margin: 0; padding: 0 8px; }
     .mobile-hero-poster { width: 38vw; min-width: 106px; border-radius: 12px; overflow: hidden; box-shadow: 0 3px 14px #0007; margin: 0; flex-shrink: 0; }
     .mobile-hero-poster img { width: 100%; height: auto; border-radius: 12px; display: block; }
-    .mobile-psych-card { background: linear-gradient(135deg, #0f172a 0%, #000000 100%); border-radius: 12px; box-shadow: 0 2px 12px #0006; margin: 0; flex: 1; border-left: 4px solid #0ea5e9; display: flex; flex-direction: column; justify-content: flex-start; padding: 10px 10px 10px 12px; min-height: 110px; position: relative; }
+    .mobile-psych-card { background: linear-gradient(135deg, #0f172a 0%, #050509 100%); border-radius: 12px; box-shadow: 0 2px 12px #0006; margin: 0; flex: 1; border-left: 4px solid #0ea5e9; display: flex; flex-direction: column; justify-content: flex-start; padding: 10px 10px 10px 12px; min-height: 110px; position: relative; }
     .mobile-psych-row { display: flex; align-items: flex-start; gap: 7px; }
     .mobile-psych-icon { min-width: 24px; min-height: 24px; color: #38bdf8; margin-top: 2px; }
     .mobile-psych-title { font-size: 15px; font-weight: bold; color: #38bdf8; margin-bottom: 1px; line-height: 1.12; }
@@ -84,7 +79,7 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
   }`;
 
   useEffect(() => {
-    if (mounted && !isMobile && trailer && !showTrailer && !hasClosedTrailer) {
+    if (!isMobile && trailer && !showTrailer && !hasClosedTrailer) {
       timerRef.current = setInterval(() => {
         setCountdown((prev) => {
           if (prev <= 1) { clearInterval(timerRef.current); setShowTrailer(true); return 0; }
@@ -93,12 +88,10 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
       }, 1000);
     }
     return () => { if (timerRef.current) clearInterval(timerRef.current); };
-  }, [mounted, isMobile, trailer, showTrailer, hasClosedTrailer]);
+  }, [isMobile, trailer, showTrailer, hasClosedTrailer]);
 
   const handleCloseTrailer = () => { setShowTrailer(false); setHasClosedTrailer(true); if (timerRef.current) clearInterval(timerRef.current); };
   const handlePlayClick = () => { setShowTrailer(true); setHasClosedTrailer(false); };
-
-  if (!mounted) return <div className="h-[300px] w-full bg-black/50" />;
 
   return (
     <motion.div className="relative w-full overflow-hidden mb-6 sm:mb-8 mx-0 sm:mx-4 lg:mx-6 rounded-none sm:rounded-3xl" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8 }}>
@@ -185,7 +178,7 @@ const SciFiBreadcrumb = ({ movie }) => (
     <motion.nav className="mb-6 sm:mb-8 px-3 sm:px-4 lg:px-6 pb-3 sm:pb-4" style={{ borderBottom: `1px solid ${COLORS.borderLight}` }} initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
         <div className="flex items-center space-x-2 sm:space-x-3 text-xs sm:text-sm" style={{ color: COLORS.textMuted }}>
             <Link href="/collection/best-sci-fi-movies" className="transition-all duration-300 truncate" style={{ color: COLORS.textMuted }} onMouseEnter={(e) => e.currentTarget.style.color = COLORS.accent} onMouseLeave={(e) => e.currentTarget.style.color = COLORS.textMuted}>Best Sci-Fi Movies</Link>
-            <ChevronRight size={14} className="flex-shrink-0" style={{ color: COLORS.textDisabled }} /><span className="font-medium truncate" style={{ color: `${COLORS.accent}B3` }}>{movie.Title}</span>
+            <ChevronLeft size={14} className="flex-shrink-0" style={{ color: COLORS.textDisabled, transform: 'rotate(180deg)' }} /><span className="font-medium truncate" style={{ color: `${COLORS.accent}B3` }}>{movie.Title}</span>
         </div>
     </motion.nav>
 );
@@ -194,7 +187,8 @@ const SciFiBreadcrumb = ({ movie }) => (
 
 const SciFiMoviePage = ({ movie, tmdbData: movieData }) => {
     const router = useRouter();
-    const richData = COMPLETE_MOVIE_DATA[movie?.tmdbId] || {}; 
+    const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
+    const richData = COMPLETE_MOVIE_DATA[movie.tmdbId]; 
     const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -275,22 +269,37 @@ const SciFiMoviePage = ({ movie, tmdbData: movieData }) => {
     return (
         <div className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: COLORS.bgPrimary }}>
             <Head>
-                {/* ✅ HYDRATION BUG RESOLVED: No more split variables inside title tag */}
+                {/* ✅ HYDRATION BUG FULLY RESOLVED */}
                 <title>{cleanSEOTitle}</title>
                 <meta name="description" content={cleanSEODesc} />
                 <link rel="canonical" href={canonicalUrl} />
-                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
                 <meta name="robots" content="index, follow" />
+                <meta name="language" content="English" />
                 
-                {/* Social Meta Tags */}
+                {/* ✅ SCHEMA INJECTION WITH UNIQUE KEYS TO PREVENT NEXT.JS DELETION */}
+                <script
+                    key="schema-movie"
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }}
+                />
+                {faqSchema && (
+                    <script
+                        key="schema-faq"
+                        type="application/ld+json"
+                        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+                    />
+                )}
+
                 <meta property="og:title" content={cleanSEOTitle} />
                 <meta property="og:description" content={cleanSEODesc} />
+                <meta property="og:url" content={canonicalUrl} />
+                <meta property="og:type" content="video.movie" />
                 <meta property="og:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
+                <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content={cleanSEOTitle} />
                 <meta name="twitter:description" content={cleanSEODesc} />
-
-                <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }} />
-                {faqSchema && (<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />)}
+                <meta name="twitter:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
             </Head>
 
             <SubtleFilmGrain />
@@ -301,7 +310,7 @@ const SciFiMoviePage = ({ movie, tmdbData: movieData }) => {
             
             <div className="relative z-10 pt-20 sm:pt-24 lg:pt-28">
                 
-                {/* ✅ SEO FIX: HIDDEN H1 ADDED HERE FOR GOOGLE & BING */}
+                {/* ✅ HIDDEN H1 FOR SEO */}
                 <h1 className="sr-only">{cleanSEOTitle}</h1>
 
                 <SciFiBreadcrumb movie={movie} />
@@ -309,12 +318,12 @@ const SciFiMoviePage = ({ movie, tmdbData: movieData }) => {
                     <OptimizedBanner movie={movie} movieData={movieData} richData={richData} trailer={trailer} isMobile={isMobile} />
                     
                     <motion.div 
-    id="watch" 
-    initial={{ opacity: 0, y: 20 }} 
-    animate={{ opacity: 1, y: 0 }} 
-    transition={{ duration: 0.5 }} // Faster, no massive delay
-    className="space-y-8 sm:space-y-12 px-3 sm:px-4 lg:px-6"
->
+                        id="watch" 
+                        initial={{ opacity: 0, y: 20 }} 
+                        animate={{ opacity: 1, y: 0 }} 
+                        transition={{ duration: 0.5 }}
+                        className="space-y-8 sm:space-y-12 px-3 sm:px-4 lg:px-6"
+                    >
                         <MovieDetailsSection movie={movie} fromSciFiCollection={true} />
                     </motion.div>
                     
@@ -348,9 +357,16 @@ export async function getStaticProps({ params }) {
             syncedMovie.runtime = tmdbData.runtime;
             syncedMovie.Runtime = tmdbData.runtime;
         }
-        return { props: { movie: syncedMovie, tmdbData } };
+        return { props: { movie: syncedMovie, tmdbData },
+        };
     } catch (error) {
-        return { props: { movie: COMPLETE_MOVIE_DATABASE.find((m) => m.imdbID === params.id), tmdbData: null } };
+        console.error('Error fetching TMDB data:', error);
+        return {
+            props: {
+                movie: COMPLETE_MOVIE_DATABASE.find((m) => m.imdbID === params.id),
+                tmdbData: null,
+            },
+        };
     }
 }
 

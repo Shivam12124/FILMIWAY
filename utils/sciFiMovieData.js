@@ -302,6 +302,7 @@ export const getTMDBPosterUrl = (posterPath, size = 'medium') => {
   return `${TMDB_CONFIG.IMAGE_BASE_URL}/${posterSize}${posterPath}`;
 };
 
+// 🔥 1. THE KEYWORD BRIDGE (SEO-Optimized for General Content)
 export const getSensitiveContentTypes = (tmdbId) => {
     const sensitiveData = SENSITIVE_TIMELINES[tmdbId];
     if (!sensitiveData?.scenes?.length) return null;
@@ -316,45 +317,236 @@ export const getSensitiveContentTypes = (tmdbId) => {
     return Array.from(types);
 };
 
-export const generateFAQData = (movie) => {
-  return SCI_FI_FAQS[movie.Title] || [];
+// 🔥 HELPER: Calculates total skip time in minutes and seconds
+const calculateSkipStats = (scenes) => {
+    let totalSeconds = 0;
+    scenes.forEach(scene => {
+        if (scene.start && scene.end) {
+            const parseTime = (t) => {
+                const parts = t.split(':').map(Number);
+                if (parts.length === 3) return (parts[0] * 3600) + (parts[1] * 60) + (parts[2] || 0);
+                if (parts.length === 2) return (parts[0] * 60) + (parts[1] || 0);
+                return 0;
+            };
+            const startSec = parseTime(scene.start);
+            const endSec = parseTime(scene.end);
+            if (endSec > startSec) totalSeconds += (endSec - startSec);
+        }
+    });
+    const mins = Math.floor(totalSeconds / 60);
+    const secs = totalSeconds % 60;
+    if (totalSeconds === 0) return "< 1 min"; 
+    if (mins === 0) return `${secs} sec`;
+    return secs > 0 ? `${mins} min ${secs} sec` : `${mins} min`;
 };
 
-export const generateMovieSchema = (movie) => {
-  const movieInfo = COMPLETE_SCI_FI_DETAILS[movie.tmdbId];
-  // Define posterUrl if needed or use a fallback
-  const posterUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}`; 
-  
-  return {
-      '@context': 'https://schema.org',
-      '@type': 'Movie',
-      'name': movie.Title,
-      'description': movieInfo?.synopsis || `${movie.Title} - A genre-defining Sci-Fi film.`,
-      'genre': movie.genre,
-      'datePublished': movie.year.toString(),
-      'director': { '@type': 'Person', 'name': movieInfo?.director || 'Director' },
-      'actor': movieInfo?.cast?.map(actor => ({ '@type': 'Person', 'name': actor })) || [],
-      'duration': `PT${movie.runtime}M`,
-      'image': posterUrl,
-      'aggregateRating': { 
-          '@type': 'AggregateRating', 
-          'ratingValue': movieInfo?.rating || 7.5, 
-          'bestRating': 10, 
-          'worstRating': 1, 
-          'ratingCount': movieInfo?.audienceScore || 100 
-      }
-  };
+// 🔥 NEW: HELPER TO CALCULATE SEVERITY METRICS WITH 2+ EXTREME LOGIC
+const getHighestSeverityInfo = (scenes) => {
+    const severities = scenes.map(s => (s.severity || 'Moderate').toLowerCase());
+    const extremeCount = severities.filter(s => s === 'extreme').length;
+    if (extremeCount >= 2) return 'Extreme';
+    if (severities.includes('high') || extremeCount === 1) return 'High';
+    if (severities.includes('moderate')) return 'Moderate';
+    return 'Mild';
 };
 
-export const generateFAQSchema = (faqs) => ({
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  'mainEntity': faqs.map(faq => ({ 
-      '@type': 'Question', 
-      'name': faq.question, 
-      'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer } 
-  }))
-});
+// 🔥 7. THE "GOLDEN EGG" SCHEMA GENERATOR
+export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, collectionSlug, unused, movieInfo) => {
+    let currentRuntime = movie.Runtime || movie.runtime || "Official";
+    if (typeof currentRuntime === 'number') currentRuntime = `${currentRuntime} min`;
+
+    const sensitiveScenes = SENSITIVE_TIMELINES[movie.tmdbId]?.scenes || [];
+    const heavyScenes = sensitiveScenes.filter(s => {
+        const t = s.type?.toLowerCase() || '';
+        return t.includes('sex') || t.includes('nudity') || t.includes('explicit') || t.includes('suggestive') || t.includes('lingerie') || t.includes('bikini'); 
+    });
+
+    const sceneCount = heavyScenes.length;
+    let schemaDesc = '';
+    if (sceneCount > 0) {
+        schemaDesc = `${movie.Title} Parents Guide with exact sex & nudity timestamps. ${sceneCount} scenes manually verified frame by frame by Filmiway editors for the ${currentRuntime} runtime.`;
+    } else {
+        schemaDesc = `${movie.Title} Parents Guide. Filmiway editors have manually verified zero sex scenes or nudity in the full ${currentRuntime} runtime.`;
+    }
+
+    const movieSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'Movie',
+        'name': movie.Title,
+        'description': schemaDesc,
+        'genre': movie.genre,
+        'url': `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`, 
+        'datePublished': currentMovieYear?.toString() || movie.year.toString(),
+        'director': { '@type': 'Person', 'name': movieInfo?.director || 'Director' },
+        'actor': movieInfo?.cast?.map(actor => ({ '@type': 'Person', 'name': actor })) || [],
+        'image': tmdbData?.poster_path ? `https://image.tmdb.org/t/p/w500${tmdbData.poster_path}` : (FALLBACK_POSTERS[movie.tmdbId] || ''),
+        'duration': `PT${movie.runtime}M`
+    };
+
+    const staticFaqs = SCI_FI_FAQS[movie.Title] ? [...SCI_FI_FAQS[movie.Title]] : [];
+    const intensityScenes = movieInfo?.scenes || [];
+    
+    const schemaFaqs = staticFaqs.map(faq => ({ 
+        '@type': 'Question', 
+        'name': faq.question, 
+        'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer } 
+    }));
+
+    if (intensityScenes.length > 0) {
+        const schemaIntensityList = intensityScenes.map(s => `<li>Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)</li>`).join('');
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `What are the most intense scenes in ${movie.Title}?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `According to the Filmiway Intensity metric, ${movie.Title} peaks at the following moments:<br><br><ul>${schemaIntensityList}</ul>` 
+            }
+        });
+    }
+
+    if (heavyScenes.length > 0) {
+        const typesArray = getSensitiveContentTypes(movie.tmdbId) || ['mature content'];
+        const typesString = typesArray.join(' and ');
+        const totalSkipTime = calculateSkipStats(heavyScenes);
+        const firstTimestamp = heavyScenes[0].start;
+        const firstSeverity = heavyScenes[0].severity || 'Moderate';
+        const overallSeverity = getHighestSeverityInfo(heavyScenes);
+
+        const schemaListText = heavyScenes.map(s => {
+            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
+            const fullType = s.severity ? `${s.type} (${s.severity})` : (s.type || 'Mature Content');
+            return `<li>${timeRange} - ${fullType}</li>`;
+        }).join('');
+
+        const startTimesList = heavyScenes.map(s => s.start).join(', ');
+
+        schemaFaqs.unshift(
+            {
+                '@type': 'Question',
+                'name': `Does ${movie.Title} have sex scenes or nudity?`,
+                'acceptedAnswer': { 
+                    '@type': 'Answer', 
+                    'text': `Yes. ${movie.Title} contains ${sceneCount} scenes of ${typesString}. Exact timestamps:<br><br><ul>${schemaListText}</ul><br>Manually verified frame by frame by Filmiway editors for the ${currentRuntime} runtime.` 
+                }
+            },
+            {
+                '@type': 'Question',
+                'name': `What time does nudity appear in ${movie.Title} and how do I skip it?`,
+                'acceptedAnswer': {
+                    '@type': 'Answer',
+                    'text': `Explicit content first appears at ${firstTimestamp} (${firstSeverity}). Total time to skip: ${totalSkipTime} across ${sceneCount} scenes. Skip timestamps: ${startTimesList}. Verified for the ${currentRuntime} version.`
+                }
+            },
+            {
+                '@type': 'Question',
+                'name': `Is ${movie.Title} safe to watch with family?`,
+                'acceptedAnswer': {
+                    '@type': 'Answer',
+                    'text': `No. ${movie.Title} contains ${overallSeverity} severity scenes and is not recommended for children. Adults can use Filmiway's timestamps to skip all ${sceneCount} scenes.`
+                }
+            }
+        );
+    } else {
+        schemaFaqs.unshift(
+            {
+                '@type': 'Question',
+                'name': `Does ${movie.Title} have sex scenes or nudity?`,
+                'acceptedAnswer': { 
+                    '@type': 'Answer', 
+                    'text': `No. Filmiway editors have manually verified that ${movie.Title} is free of explicit sex scenes and nudity.` 
+                }
+            },
+            {
+                '@type': 'Question',
+                'name': `Is ${movie.Title} safe to watch with family?`,
+                'acceptedAnswer': { 
+                    '@type': 'Answer', 
+                    'text': `Yes, regarding explicit sexual content. Filmiway has confirmed 0 scenes of nudity, sexual content, or explicit scenes in the ${currentRuntime} runtime.` 
+                }
+            }
+        );
+    }
+
+    const faqSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        'name': `Parents Guide and FAQ for ${movie.Title}`,
+        'mainEntity': schemaFaqs
+    };
+
+    return { movieSchema, faqSchema };
+};
+
+// 🔥 8. FRONTEND UI SYNC
+export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Official") => {
+    const staticFaqs = SCI_FI_FAQS[movieTitle] ? [...SCI_FI_FAQS[movieTitle]] : [];
+    const sensitiveScenes = SENSITIVE_TIMELINES[tmdbId]?.scenes || [];
+    const movieInfo = COMPLETE_SCI_FI_DETAILS[tmdbId];
+    const intensityScenes = movieInfo?.scenes || [];
+
+    const dbMovie = SCI_FI_MOVIES.find(m => m.tmdbId === tmdbId);
+    let finalRuntime = currentRuntime !== "Official" ? currentRuntime : (dbMovie?.runtime ? `${dbMovie.runtime} min` : "Official");
+    if (typeof finalRuntime === 'number') finalRuntime = `${finalRuntime} min`;
+
+    if (intensityScenes.length > 0) {
+        const uiIntensityList = intensityScenes.map(s => `• Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)`).join('\n');
+        staticFaqs.unshift({
+            question: `What are the most intense scenes in ${movieTitle}?`,
+            answer: `According to the Filmiway Intensity metric, ${movieTitle} peaks at the following moments:\n\n${uiIntensityList}`
+        });
+    }
+
+    const heavyScenes = sensitiveScenes.filter(s => {
+        const t = s.type?.toLowerCase() || '';
+        return t.includes('sex') || t.includes('nudity') || t.includes('explicit') || t.includes('suggestive') || t.includes('lingerie') || t.includes('bikini');
+    });
+
+    if (heavyScenes.length > 0) {
+        const typesArray = getSensitiveContentTypes(tmdbId) || ['mature content'];
+        const typesString = typesArray.join(' and ');
+        const sceneCount = heavyScenes.length;
+        const totalSkipTime = calculateSkipStats(heavyScenes);
+        const firstTimestamp = heavyScenes[0].start;
+        const firstSeverity = heavyScenes[0].severity || 'Moderate';
+        const overallSeverity = getHighestSeverityInfo(heavyScenes);
+
+        const uiDetailedList = heavyScenes.map(s => {
+            const timeRange = s.end ? `${s.start}–${s.end}` : s.start;
+            const fullType = s.severity ? `${s.type || 'Mature Content'}, ${s.severity}` : (s.type || 'Mature Content');
+            return `• ${timeRange} (${fullType})`;
+        }).join('\n');
+        
+        const startTimesList = heavyScenes.map(s => s.start).join(', ');
+
+        staticFaqs.unshift(
+            {
+                question: `Does ${movieTitle} have sex scenes or nudity?`,
+                answer: `Yes. ${movieTitle} contains ${sceneCount} scenes of ${typesString}. Exact timestamps:\n\n${uiDetailedList}\n\nManually verified frame by frame by Filmiway editors for the ${finalRuntime} runtime.`
+            },
+            {
+                question: `What time does nudity appear in ${movieTitle} and how do I skip it?`,
+                answer: `Explicit content first appears at ${firstTimestamp} (${firstSeverity}). Total time to skip: ${totalSkipTime} across ${sceneCount} scenes. Skip timestamps: ${startTimesList}. Verified for the ${finalRuntime} version.`
+            },
+            {
+                question: `Is ${movieTitle} safe to watch with family?`,
+                answer: `No. ${movieTitle} contains ${overallSeverity} severity scenes and is not recommended for children. Adults can use Filmiway's timestamps to skip all ${sceneCount} scenes.`
+            }
+        );
+    } else {
+        staticFaqs.unshift(
+            {
+                question: `Does ${movieTitle} have sex scenes or nudity?`,
+                answer: `No. Filmiway editors have manually verified that ${movieTitle} is free of explicit sex scenes and nudity.`
+            },
+            {
+                question: `Is ${movieTitle} safe to watch with family?`,
+                answer: `Yes, regarding explicit sexual content. Filmiway has confirmed 0 scenes of nudity, sexual content, or explicit scenes in the ${finalRuntime} runtime.`
+            }
+        );
+    }
+
+    return staticFaqs;
+};
 
 export const fetchMovieFromTMDB = async (tmdbId) => ({ 
   poster_path: null, 
