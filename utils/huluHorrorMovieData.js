@@ -117,7 +117,7 @@ export const COMPLETE_MOVIE_DATA = {
             { time: 30, intensity: 75, label: "The Dog", color: "#991b1b" }, 
             { time: 50, intensity: 88, label: "The Road", color: "#b91c1c" }, 
             { time: 75, intensity: 82, label: "The School", color: "#dc2626" }, 
-            { time: 95, intensity: 100, label: "No Rules", color: "#ef4444" } 
+            { time: 95, intensity: 97, label: "No Rules", color: "#ef4444" } 
         ],
         synopsis: "In a remote village, two brothers discover a demon-infected man just days away from 'giving birth' to evil itself. Desperate to avoid a government protocol that would level their town, they attempt to dispose of the body themselves, but their actions inadvertently trigger a contagion of violence that spreads like a virus. It is a brutal, unforgiving film that disregards every safety rule of the genre—children, animals, and pregnant women are not safe here.",
         themes: ["Contagion", "Nihilism", "Family Trauma"]
