@@ -517,7 +517,9 @@ export const getSensitiveContentTypes = (tmdbId) => {
     const types = new Set();
     sensitiveData.scenes.forEach(scene => {
         const lowerType = scene.type?.toLowerCase() || '';
-        if (lowerType.includes('sex') || lowerType.includes('explicit')) types.add('sexual content');
+        if (lowerType.includes('sexual content')) types.add('sexual content');
+        else if (lowerType.match(/\bsex\b/)) types.add('sex');
+        else if (lowerType.includes('explicit')) types.add('explicit content');
         if (lowerType.includes('partial nudity')) types.add('partial nudity');
         else if (lowerType.includes('nudity')) types.add('nudity');
         if (lowerType.includes('suggestive') || lowerType.includes('lingerie') || lowerType.includes('bikini')) types.add('suggestive clothing');
@@ -595,6 +597,20 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
         
         const startTimesList = heavyScenes.map(s => s.start).join(', ');
 
+        // Filter out suggestive clothing for the UI as well
+        const familyUnsafeTypes = typesArray.filter(t => t !== 'suggestive clothing');
+        const familyUnsafeString = familyUnsafeTypes.join(' and ');
+
+        const familyFaqUI = familyUnsafeTypes.length > 0
+            ? {
+                question: `Is ${movieTitle} safe to watch with family?`,
+                answer: `No. ${movieTitle} is not safe to watch with family because it contains ${familyUnsafeString}. Adults can use Filmiway's timestamps to skip all ${sceneCount} scenes in the ${finalRuntime} runtime.`
+            }
+            : {
+                question: `Is ${movieTitle} safe to watch with family?`,
+                answer: `Yes, regarding explicit sexual content. Filmiway editors have manually verified that ${movieTitle} does not have any sex, nudity, or sexual content in the full ${finalRuntime} runtime.`
+            };
+
         staticFaqs.unshift(
             {
                 question: `Does ${movieTitle} have sex scenes or nudity?`,
@@ -604,10 +620,7 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
                 question: `What time does nudity appear in ${movieTitle} and how do I skip it?`,
                 answer: `Explicit content first appears at ${firstTimestamp} (${firstSeverity}). Total time to skip: ${totalSkipTime} across ${sceneCount} scenes. Skip timestamps: ${startTimesList}. Verified for the ${finalRuntime} version.`
             },
-            {
-                question: `Is ${movieTitle} safe to watch with family?`,
-                answer: `No. ${movieTitle} contains ${overallSeverity} severity scenes and is not recommended for children. Adults can use Filmiway's timestamps to skip all ${sceneCount} scenes.`
-            }
+            familyFaqUI
         );
     } else {
         staticFaqs.unshift(
@@ -617,7 +630,7 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
             },
             {
                 question: `Is ${movieTitle} safe to watch with family?`,
-                answer: `Yes, regarding explicit sexual content. Filmiway has confirmed 0 scenes of nudity, sexual content, or explicit scenes in the ${finalRuntime} runtime.`
+                answer: `Yes, regarding explicit sexual content. Filmiway editors have manually verified that ${movieTitle} does not have any sex, nudity, or sexual content in the full ${finalRuntime} runtime.`
             }
         );
     }

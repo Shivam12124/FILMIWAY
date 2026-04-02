@@ -395,7 +395,9 @@ export const getSensitiveContentTypes = (tmdbId) => {
     const types = new Set();
     sensitiveData.scenes.forEach(scene => {
         const lowerType = scene.type?.toLowerCase() || '';
-        if (lowerType.includes('sex') || lowerType.includes('explicit')) types.add('sexual content');
+        if (lowerType.includes('sexual content')) types.add('sexual content');
+        else if (lowerType.match(/\bsex\b/)) types.add('sex');
+        else if (lowerType.includes('explicit')) types.add('explicit content');
         if (lowerType.includes('partial nudity')) types.add('partial nudity');
         else if (lowerType.includes('nudity')) types.add('nudity');
         if (lowerType.includes('suggestive') || lowerType.includes('lingerie') || lowerType.includes('bikini')) types.add('suggestive clothing');
@@ -507,6 +509,28 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
 
         const startTimesList = heavyScenes.map(s => s.start).join(', ');
 
+        // Filter out suggestive clothing to determine if it's truly unsafe for family
+        const familyUnsafeTypes = typesArray.filter(t => t !== 'suggestive clothing');
+        const familyUnsafeString = familyUnsafeTypes.join(' and ');
+
+        const familyFaqSchema = familyUnsafeTypes.length > 0 
+            ? {
+                '@type': 'Question',
+                'name': `Is ${movie.Title} safe to watch with family?`,
+                'acceptedAnswer': {
+                    '@type': 'Answer',
+                    'text': `No. ${movie.Title} is not safe to watch with family because it contains ${familyUnsafeString}. Adults can use Filmiway's timestamps to skip all ${sceneCount} scenes in the ${currentRuntime} runtime.`
+                }
+            }
+            : {
+                '@type': 'Question',
+                'name': `Is ${movie.Title} safe to watch with family?`,
+                'acceptedAnswer': {
+                    '@type': 'Answer',
+                    'text': `Yes, regarding explicit sexual content. Filmiway editors have manually verified that ${movie.Title} does not have any sex, nudity, or sexual content in the full ${currentRuntime} runtime.`
+                }
+            };
+
         schemaFaqs.unshift(
             {
                 '@type': 'Question',
@@ -524,14 +548,7 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
                     'text': `Explicit content first appears at ${firstTimestamp} (${firstSeverity}). Total time to skip: ${totalSkipTime} across ${sceneCount} scenes. Skip timestamps: ${startTimesList}. Verified for the ${currentRuntime} version.`
                 }
             },
-            {
-                '@type': 'Question',
-                'name': `Is ${movie.Title} safe to watch with family?`,
-                'acceptedAnswer': {
-                    '@type': 'Answer',
-                    'text': `No. ${movie.Title} contains ${overallSeverity} severity scenes and is not recommended for children. Adults can use Filmiway's timestamps to skip all ${sceneCount} scenes.`
-                }
-            }
+            familyFaqSchema
         );
     } else {
         schemaFaqs.unshift(
@@ -548,7 +565,7 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
                 'name': `Is ${movie.Title} safe to watch with family?`,
                 'acceptedAnswer': { 
                     '@type': 'Answer', 
-                    'text': `Yes, regarding explicit sexual content. Filmiway has confirmed 0 scenes of nudity, sexual content, or explicit scenes in the ${currentRuntime} runtime.` 
+                    'text': `Yes, regarding explicit sexual content. Filmiway editors have manually verified that ${movie.Title} does not have any sex, nudity, or sexual content in the full ${currentRuntime} runtime.` 
                 }
             }
         );
@@ -607,6 +624,20 @@ ${uiIntensityList}`
         
         const startTimesList = heavyScenes.map(s => s.start).join(', ');
 
+        // Filter out suggestive clothing for the UI as well
+        const familyUnsafeTypes = typesArray.filter(t => t !== 'suggestive clothing');
+        const familyUnsafeString = familyUnsafeTypes.join(' and ');
+
+        const familyFaqUI = familyUnsafeTypes.length > 0
+            ? {
+                question: `Is ${movieTitle} safe to watch with family?`,
+                answer: `No. ${movieTitle} is not safe to watch with family because it contains ${familyUnsafeString}. Adults can use Filmiway's timestamps to skip all ${sceneCount} scenes in the ${finalRuntime} runtime.`
+            }
+            : {
+                question: `Is ${movieTitle} safe to watch with family?`,
+                answer: `Yes, regarding explicit sexual content. Filmiway editors have manually verified that ${movieTitle} does not have any sex, nudity, or sexual content in the full ${finalRuntime} runtime.`
+            };
+
         staticFaqs.unshift(
             {
                 question: `Does ${movieTitle} have sex scenes or nudity?`,
@@ -620,10 +651,7 @@ Manually verified frame by frame by Filmiway editors for the ${finalRuntime} run
                 question: `What time does nudity appear in ${movieTitle} and how do I skip it?`,
                 answer: `Explicit content first appears at ${firstTimestamp} (${firstSeverity}). Total time to skip: ${totalSkipTime} across ${sceneCount} scenes. Skip timestamps: ${startTimesList}. Verified for the ${finalRuntime} version.`
             },
-            {
-                question: `Is ${movieTitle} safe to watch with family?`,
-                answer: `No. ${movieTitle} contains ${overallSeverity} severity scenes and is not recommended for children. Adults can use Filmiway's timestamps to skip all ${sceneCount} scenes.`
-            }
+            familyFaqUI
         );
     } else {
         staticFaqs.unshift(
@@ -633,7 +661,7 @@ Manually verified frame by frame by Filmiway editors for the ${finalRuntime} run
             },
             {
                 question: `Is ${movieTitle} safe to watch with family?`,
-                answer: `Yes, regarding explicit sexual content. Filmiway has confirmed 0 scenes of nudity, sexual content, or explicit scenes in the ${finalRuntime} runtime.`
+                answer: `Yes, regarding explicit sexual content. Filmiway editors have manually verified that ${movieTitle} does not have any sex, nudity, or sexual content in the full ${finalRuntime} runtime.`
             }
         );
     }

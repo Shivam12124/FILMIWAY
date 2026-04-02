@@ -215,7 +215,6 @@ const WarFilmMoviePage = ({ movie, tmdbData: movieData }) => {
 
   const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
   const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
-  
   // =========================================================================
   // ✅ THE STANDARDIZED ELITE SEO BLOCK (Clean, Direct Intent)
   // =========================================================================
@@ -226,23 +225,31 @@ const WarFilmMoviePage = ({ movie, tmdbData: movieData }) => {
   
   // 1. PURE META TITLE LOGIC (No extra tags or keywords)
   let cleanSEOTitle = '';
-  const coreUSP = "Timestamps & Parents Guide:";
 
   if (scenes.length > 0) {
-    const idealTitle = `${coreUSP} ${movie.Title} (${currentMovieYear})`;
-    
-    if (idealTitle.length <= 62) {
-      cleanSEOTitle = idealTitle; 
+    // Define title variations from most descriptive (longest) to least (shortest)
+    const titleOption1 = `${movie.Title} Parents Guide (Skip Sex & Nudity Timestamps)`;
+    const titleOption2 = `${movie.Title} Parents Guide (Sex & Nudity Timestamps)`;
+    const titleOption3 = `${movie.Title} Parents Guide (Skip Timestamps)`;
+    const titleOption4 = `${movie.Title} Parents Guide (Timestamps)`;
+
+    // Dynamically select the best title that fits within Google's ~62 character limit
+    if (titleOption1.length <= 62) {
+      cleanSEOTitle = titleOption1;
+    } else if (titleOption2.length <= 62) {
+      cleanSEOTitle = titleOption2;
+    } else if (titleOption3.length <= 62) {
+      cleanSEOTitle = titleOption3;
     } else {
-      cleanSEOTitle = `${coreUSP} ${movie.Title}`;
+      cleanSEOTitle = titleOption4; // Final fallback
     }
   } else {
-    const idealCleanTitle = `Parents Guide: ${movie.Title} (${currentMovieYear})`;
+    const idealCleanTitle = `${movie.Title} Parents Guide (Clean)`;
     
     if (idealCleanTitle.length <= 62) {
       cleanSEOTitle = idealCleanTitle;
     } else {
-      cleanSEOTitle = `Parents Guide: ${movie.Title}`;
+      cleanSEOTitle = `${movie.Title} Parents Guide`;
     }
   }
 
@@ -256,9 +263,9 @@ const WarFilmMoviePage = ({ movie, tmdbData: movieData }) => {
     // Show the full range (Start-End) for the first 2 scenes only to save space
     const topScenes = scenes.slice(0, 2).map(s => `${s.start}–${s.end}`).join(', ');
     
-    cleanSEODesc = `${movie.Title} Parents Guide: ${sceneCount} mature scenes (violence, gore) manually verified. Skip: ${topScenes}... Full ${currentRuntime} list inside.`;
+    cleanSEODesc = `${movie.Title} Parents Guide: ${sceneCount} mature scenes (sex, nudity) manually verified. Skip: ${topScenes}... Full ${currentRuntime} list inside.`;
   } else {
-    cleanSEODesc = `${movie.Title} Parents Guide. Filmiway editors have manually verified zero explicit scenes in the full ${currentRuntime} runtime.`;
+    cleanSEODesc = `${movie.Title} Parents Guide. Filmiway editors have manually verified this film does not have any explicit scenes in the full ${currentRuntime} runtime.`;
   }
 
   // =========================================================================
