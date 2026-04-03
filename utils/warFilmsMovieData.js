@@ -603,7 +603,7 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
             }
             : {
                 question: `Is ${movieTitle} safe to watch with family?`,
-                answer: `Yes, regarding explicit sexual content. Filmiway editors have manually verified that ${movieTitle} does not have any sex, nudity, or sexual content in the full ${finalRuntime} runtime.`
+                               answer: `Yes. Filmiway editors have manually verified that ${movieTitle} is completely free of sex, nudity, and sexual content throughout its entire ${finalRuntime} runtime.`
             };
 
         staticFaqs.unshift(
@@ -625,7 +625,7 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
             },
             {
                 question: `Is ${movieTitle} safe to watch with family?`,
-                answer: `Yes, regarding explicit content. Filmiway has confirmed 0 scenes of extreme mature content in the ${finalRuntime} runtime.`
+                               answer: `Yes. Filmiway editors have manually verified that ${movieTitle} is completely free of sex, nudity, and sexual content throughout its entire ${finalRuntime} runtime.`
             }
         );
     }

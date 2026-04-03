@@ -626,27 +626,26 @@ ${uiIntensityList}`
         
         const startTimesList = heavyScenes.map(s => s.start).join(', ');
 
-        const familyFaqUI = typesArray.length > 0
+           const familyUnsafeTypes = typesArray.filter(t => t !== 'suggestive clothing');
+        const familyUnsafeString = familyUnsafeTypes.join(' and ');
+
+        const familyFaqUI = familyUnsafeTypes.length > 0
             ? {
                 question: `Is ${movieTitle} safe to watch with family?`,
-                answer: `No. ${movieTitle} is not safe to watch with family because it contains ${typesString}. Adults can use Filmiway's timestamps to skip all ${sceneCount} scenes in the ${finalRuntime} runtime.`
+                answer: `No. ${movieTitle} is not safe to watch with family because it contains ${familyUnsafeString}. Adults can use Filmiway's timestamps to skip all ${sceneCount} scenes in the ${finalRuntime} runtime.`
             }
             : {
                 question: `Is ${movieTitle} safe to watch with family?`,
-                answer: `Filmiway editors have verified that ${movieTitle} does not have explicit severe content in the full ${finalRuntime} runtime, but discretion is advised for heavy themes.`
+                 answer: `Yes. Filmiway editors have manually verified that ${movieTitle} is completely free of sex, nudity, and sexual content throughout its entire ${finalRuntime} runtime.`
             };
 
         staticFaqs.unshift(
             {
-                question: `Does ${movieTitle} have explicit content, violence or nudity?`,
-                answer: `Yes. ${movieTitle} contains ${sceneCount} scenes of ${typesString}. Exact timestamps:
-
-${uiDetailedList}
-
-Manually verified frame by frame by Filmiway editors for the ${finalRuntime} runtime.`
+                question: `Does ${movieTitle} have explicit scenes or extreme violence?`,
+                answer: `Yes. ${movieTitle} contains ${sceneCount} scenes of ${typesString}. Exact timestamps:\n\n${uiDetailedList}\n\nManually verified frame by frame by Filmiway editors for the ${finalRuntime} runtime.`
             },
             {
-                question: `What time does mature content appear in ${movieTitle} and how do I skip it?`,
+                question: `What time does explicit content appear in ${movieTitle} and how do I skip it?`,
                 answer: `Explicit content first appears at ${firstTimestamp} (${firstSeverity}). Total time to skip: ${totalSkipTime} across ${sceneCount} scenes. Skip timestamps: ${startTimesList}. Verified for the ${finalRuntime} version.`
             },
             familyFaqUI
@@ -654,12 +653,12 @@ Manually verified frame by frame by Filmiway editors for the ${finalRuntime} run
     } else {
         staticFaqs.unshift(
             {
-                question: `Does ${movieTitle} have explicit scenes, violence or nudity?`,
-                answer: `No. Filmiway editors have manually verified that ${movieTitle} is free of explicit mature scenes.`
+                question: `Does ${movieTitle} have explicit scenes?`,
+                answer: `No. Filmiway editors have manually verified that ${movieTitle} is free of explicit scenes.`
             },
             {
                 question: `Is ${movieTitle} safe to watch with family?`,
-                answer: `Yes, regarding explicit content. Filmiway editors have manually verified that ${movieTitle} does not have severe content in the full ${finalRuntime} runtime.`
+                               answer: `Yes. Filmiway editors have manually verified that ${movieTitle} is completely free of sex, nudity, and sexual content throughout its entire ${finalRuntime} runtime.`
             }
         );
     }
