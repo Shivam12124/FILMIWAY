@@ -927,6 +927,22 @@ export const COLLECTIONS = {
     relatedCollections: ['best-war-films', 'best-crime-thriller-movies', 'best-thought-provoking-movies']
   },
 
+
+// 🏆 BEST MOVIES OF THE DECADE (2020-2026)
+  'best-movies-of-the-decade': {
+    slug: 'best-movies-of-the-decade',
+    title: '10 Best Movies of the Decade (2020-2026)',
+    stats: { averageRating: 8.2 },
+    badges: [
+      { label: "VISIONARY", desc: "Groundbreaking cinema" },
+      { label: "CULTURAL", desc: "Defining impact" },
+      { label: "MASTERPIECE", desc: "Modern classics" }
+    ],
+    // Dune 2, One Battle After Another, Spider-Verse, EEAAO, Oppenheimer, Sinners, Marty Supreme, The Batman, Poor Things, Saltburn
+    movies: ['tt15239678', 'tt30144839', 'tt9362722', 'tt6710474', 'tt15398776', 'tt31193180', 'tt32916440', 'tt1877830', 'tt14230458', 'tt17351924'],
+    relatedCollections: ['best-sci-fi-movies', 'best-thought-provoking-movies', 'best-movies-on-hbo-max']
+  },
+
   // 🩸 BEST THRILLER MOVIES
   'best-thriller-movies': {
     slug: 'best-thriller-movies',
@@ -974,6 +990,7 @@ export const getThoughtProvokingCollection = () => COLLECTIONS['best-thought-pro
 export const getThrillerCollection = () => COLLECTIONS['best-thriller-movies'];
 export const getNeoNoirCollection = () => COLLECTIONS['best-neo-noir-movies'];
 export const getTrueStoryCollection = () => COLLECTIONS['best-true-story-movies'];
+export const getDecadeCollection = () => COLLECTIONS['best-movies-of-the-decade'];
 export const getBestActionCollection = () => COLLECTIONS['best-action-movies'];
 // ============================================================================
 // 🧠 THE MASTER CANONICAL BRAIN

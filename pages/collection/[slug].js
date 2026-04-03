@@ -55,6 +55,7 @@ import { COMPLETE_MOVIE_DATABASE as THOUGHT_PROVOKING_DATABASE, COMPLETE_MOVIE_D
 import { COMPLETE_MOVIE_DATABASE as NEO_NOIR_DATABASE, COMPLETE_MOVIE_DATA as NEO_NOIR_DATA } from '../../utils/neoNoirMovieData';
 import { COMPLETE_MOVIE_DATABASE as BEST_ACTION_DATABASE, COMPLETE_MOVIE_DATA as BEST_ACTION_DATA } from '../../utils/bestActionMoviesData';
 import { COMPLETE_MOVIE_DATABASE as TRUE_STORY_DATABASE, COMPLETE_MOVIE_DATA as TRUE_STORY_DATA } from '../../utils/trueStoryMovieData';
+import { COMPLETE_MOVIE_DATABASE as DECADE_DATABASE, COMPLETE_MOVIE_DATA as DECADE_DATA } from '../../utils/decadeMovieData';
 
 import { COMPLETE_MOVIE_DATABASE as HULU_FAMILY_DATABASE, COMPLETE_MOVIE_DATA as HULU_FAMILY_DATA } from '../../utils/huluFamilyMovieData';
 import { COMPLETE_MOVIE_DATABASE as HBO_ACTION_DATABASE, COMPLETE_MOVIE_DATA as HBO_ACTION_DATA } from '../../utils/hboActionMovieData';
@@ -1592,6 +1593,29 @@ const getCollectionContent = () => {
                 text2: "Each film serves as a window into the past, offering profound insights into the triumphs and tragedies of the human experience."
             }
         };
+    } else if (collection.slug === 'best-movies-of-the-decade') {
+        return {
+            badge: "Decade Defining",
+            title: "Best Movies of the Decade",
+            description: "The defining cinematic achievements of the 2020s, featuring groundbreaking sci-fi, sweeping historical epics, and revolutionary animation.",
+            selection: {
+                text1: "From the scale of Dune: Part Two to the multiversal chaos of Everything Everywhere All at Once, these films redefine modern cinema.",
+                text2: "Each selection has been chosen for pushing the boundaries of visual craft, narrative innovation, and thematic depth."
+            },
+            ranking: {
+                text: "Our visceral impact index evaluates cinematic achievement, cultural resonance, and storytelling mastery.",
+                points: [
+                    "Cinematic and visual mastery",
+                    "Thematic depth and resonance",
+                    "Cultural impact of the decade",
+                    "Visceral storytelling power"
+                ]
+            },
+            experience: {
+                text1: "Whether you're seeking a sweeping epic or an intimate drama, this collection represents the absolute peak of modern filmmaking.",
+                text2: "Each film serves as a defining cultural milestone of the 2020s that will be remembered for generations."
+            }
+        };
     } else if (collection.slug === 'best-heist-thriller-movies') {
         return {
             badge: "Heist Master Cinema",
@@ -2179,6 +2203,11 @@ subtitle: "While everyone searches Netflix, these classics hide in plain sight. 
             title: "10 Best Movies Based on a True Story",
             subtitle: "Real events, historical impact & profound human stories ranked by critical acclaim"
         };
+    } else if (collection.slug === 'best-movies-of-the-decade') {
+        return {
+            title: "10 Best Movies of the Decade (2020-2026)",
+            subtitle: "The defining cinematic achievements of the 2020s, ranked by visceral impact"
+        };
 
     } else if (collection.slug === 'movies-like-interstellar') {
         return {
@@ -2342,6 +2371,11 @@ const getLoaderContent = () => {
         return {
             title: "Loading Best True Story Movies",
             description: "Curating powerful historical dramas and biopics with community reviews"
+        };
+    } else if (collection?.slug === 'best-movies-of-the-decade') {
+        return {
+            title: "Loading Best Movies of the Decade",
+            description: "Curating the defining cinematic achievements of the 2020s with community reviews"
         };
 
 } else if (collection?.slug === 'movies-like-donnie-darko') {
@@ -2790,6 +2824,15 @@ const getStaticMetaContent = () => {
             ogTitle: "10 Best True Story Movies: Real History & Drama",
             twitterTitle: "The 10 Best Movies Based on a True Story You Need to Watch",
             progressText: `of Top ${movies.length} True Story Movies`
+        };
+    } else if (collection.slug === 'best-movies-of-the-decade') {
+        return {
+            title: "10 Best Movies of the Decade (2020-2026) Ranked",
+            description: "The defining cinematic achievements of the 2020s, featuring groundbreaking sci-fi, sweeping historical epics, and revolutionary animation. Includes an exact Timestamps & Parents Guide.",
+            keywords: "best movies of the decade, best movies 2020s, top movies 2020-2026, best modern films, dune part two, oppenheimer",
+            ogTitle: "10 Best Movies of the Decade (2020-2026)",
+            twitterTitle: "The 10 Best Movies of the Decade You Need to Watch",
+            progressText: `of Top ${movies.length} Movies of the Decade`
         };
 
 
@@ -3398,6 +3441,7 @@ const getStaticMetaContent = () => {
             sessionStorage.removeItem('fromNeoNoirCollection');
             sessionStorage.removeItem('fromBestActionCollection');
             sessionStorage.removeItem('fromTrueStoryCollection');
+            sessionStorage.removeItem('fromDecadeCollection');
 
             // Set appropriate collection flag âœ…
             if (collection.slug === 'movies-like-inception') {
@@ -3534,6 +3578,8 @@ const getStaticMetaContent = () => {
                 sessionStorage.setItem('fromBestActionCollection', 'true');
             } else if (collection.slug === 'best-true-story-movies') {
                 sessionStorage.setItem('fromTrueStoryCollection', 'true');
+            } else if (collection.slug === 'best-movies-of-the-decade') {
+                sessionStorage.setItem('fromDecadeCollection', 'true');
             }
         }
     };
@@ -3967,6 +4013,8 @@ return (
 ? 'movies/best-action-movies/'
 : collection?.slug === 'best-true-story-movies'
 ? 'movies/best-true-story-movies/'
+: collection?.slug === 'best-movies-of-the-decade'
+? 'movies/best-movies-of-the-decade/'
 : collection?.slug === 'best-action-movies-on-hulu'
                                     ? 'movies/best-action-movies-on-hulu/'
 : collection?.slug === 'best-romance-movies-on-hulu'
@@ -4220,6 +4268,8 @@ return (
                                     ? `/movies/best-action-movies/${currentMovie.imdbID}`
                                     : collection.slug === 'best-true-story-movies'
                                     ? `/movies/best-true-story-movies/${currentMovie.imdbID}`
+                                    : collection.slug === 'best-movies-of-the-decade'
+                                    ? `/movies/best-movies-of-the-decade/${currentMovie.imdbID}`
                                     : collection.slug === 'best-action-movies-on-hulu'
                                     ? `/movies/best-action-movies-on-hulu/${currentMovie.imdbID}`
                                     : collection.slug === 'best-romance-movies-on-hulu'
@@ -4529,6 +4579,9 @@ case 'best-action-movies':
             break;
         case 'best-true-story-movies':
             movieDatabase = TRUE_STORY_DATABASE;
+            break;
+        case 'best-movies-of-the-decade':
+            movieDatabase = DECADE_DATABASE;
             break;
 
             case 'best-action-movies-on-hulu':

@@ -255,6 +255,10 @@ import {
   SENSITIVE_TIMELINES as TRUE_STORY_SENSITIVE_TIMELINES
   , COMPLETE_MOVIE_DATABASE as TRUE_STORY_DATABASE
 } from '../utils/trueStoryMovieData';
+import {
+  COMPLETE_MOVIE_DATA as DECADE_MOVIE_DATA,
+  SENSITIVE_TIMELINES as DECADE_SENSITIVE_TIMELINES
+} from '../utils/decadeMovieData';
 
 import { 
   COMPLETE_MOVIE_DATA as CRIME_THRILLER_MOVIE_DATA,
@@ -343,6 +347,7 @@ import ThoughtProvokingSEOFAQSection from './ThoughtProvokingSEOFAQSection';
 import NeoNoirSEOFAQSection from './NeoNoirSEOFAQSection';
 import BestActionMoviesSEOFAQSection from './BestActionMoviesSEOFAQSection';
 import TrueStorySEOFAQSection from './TrueStorySEOFAQSection';
+import DecadeSEOFAQSection from './DecadeSEOFAQSection';
 
 import HuluActionSEOFAQSection from './HuluActionSEOFAQSection';
 import HuluRomanceSEOFAQSection from './HuluRomanceSEOFAQSection';
@@ -391,6 +396,7 @@ const MovieDetailsSection = React.memo(({
   fromNeoNoirCollection,
   fromBestActionMoviesCollection,
   fromTrueStoryCollection,
+  fromDecadeCollection,
   fromParasiteCollection,
   fromDonnieDarkoCollection,
   fromOldboyCollection,
@@ -503,6 +509,7 @@ const MovieDetailsSection = React.memo(({
   : fromNeoNoirCollection ? safeLookup(NEO_NOIR_MOVIE_DATA, movie.tmdbId)
   : fromBestActionMoviesCollection ? safeLookup(BEST_ACTION_MOVIE_DATA, movie.tmdbId)
   : fromTrueStoryCollection ? safeLookup(TRUE_STORY_MOVIE_DATA, movie.tmdbId)
+  : fromDecadeCollection ? safeLookup(DECADE_MOVIE_DATA, movie.tmdbId)
   : fromEyesWideShutCollection ? safeLookup(EYES_WIDE_SHUT_MOVIE_DATA, movie.tmdbId)
   : fromRevengeCollection ? safeLookup(REVENGE_MOVIE_DATA, movie.tmdbId)
   : fromWarFilmsCollection ? safeLookup(WAR_FILMS_MOVIE_DATA, movie.tmdbId)
@@ -674,6 +681,7 @@ const MovieDetailsSection = React.memo(({
    || ROAD_TRIP_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || THOUGHT_PROVOKING_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
   || NEO_NOIR_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
+   || DECADE_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || EYES_WIDE_SHUT_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || SE7EN_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || SCI_FI_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
@@ -987,6 +995,14 @@ const MovieDetailsSection = React.memo(({
      default: return '#6b7280';
         }
    }
+   if (fromDecadeCollection) {
+        switch (level) {
+     case 'EXTREME': return '#b45309'; 
+     case 'HIGH': return '#d97706';   
+     case 'MEDIUM': return '#f59e0b';  
+     default: return '#6b7280';
+        }
+   }
 if (fromPsychologicalThrillerCollection) {
       switch (level) {
         case 'EXTREME': return '#7f1d1d'; // Deep Blood Red for total sanity loss
@@ -1139,6 +1155,7 @@ if (fromPsychologicalThrillerCollection) {
    if (fromNeoNoirCollection) return 'MORAL AMBIGUITY INDEX';
    if (fromBestActionMoviesCollection) return 'ADRENALINE INDEX';
    if (fromTrueStoryCollection) return 'HISTORICAL FIDELITY INDEX';
+   if (fromDecadeCollection) return 'VISCERAL IMPACT INDEX';
    return 'MIND-BENDING INDEX';
  };
 
@@ -1193,6 +1210,7 @@ if (fromPsychologicalThrillerCollection) {
    if (fromNeoNoirCollection) return 'DREAD & AMBIGUITY LEVEL';
    if (fromBestActionMoviesCollection) return 'ACTION INTENSITY LEVEL';
    if (fromTrueStoryCollection) return 'HISTORICAL IMPACT LEVEL';
+   if (fromDecadeCollection) return 'CINEMATIC IMPACT LEVEL';
    return 'COGNITIVE DISTORTION LEVEL';
  };
 
@@ -1347,6 +1365,11 @@ if (fromPsychologicalThrillerCollection) {
      if (scoreValue >= 80) return 'A highly impactful true story with incredible dramatic tension.';
      return 'A compelling movie based on true events with solid performances.';
    }
+   if (fromDecadeCollection) {
+     if (scoreValue >= 90) return 'A decade-defining cinematic masterpiece with groundbreaking visual and narrative achievements.';
+     if (scoreValue >= 80) return 'An essential film of the 2020s with immense cultural and visceral impact.';
+     return 'A highly influential modern film that left a significant mark on the decade.';
+   }
    // Generic fallback
    if (scoreValue >= 90) return 'A transcendent masterpiece redefining narrative complexity.';
    if (scoreValue >= 80) return 'Sophisticated cinematic storytelling with advanced non-linear elements.';
@@ -1392,6 +1415,7 @@ if (fromPsychologicalThrillerCollection) {
    if (fromNeoNoirCollection) return 'border-pink-700/40';
    if (fromBestActionMoviesCollection) return 'border-red-600/40';
    if (fromTrueStoryCollection) return 'border-amber-700/40';
+   if (fromDecadeCollection) return 'border-amber-500/40';
    return 'border-yellow-400/40';
  };
 
@@ -1433,6 +1457,7 @@ if (fromPsychologicalThrillerCollection) {
    if (fromNeoNoirCollection) return 'text-pink-600';
    if (fromBestActionMoviesCollection) return 'text-red-600';
    if (fromTrueStoryCollection) return 'text-amber-600';
+   if (fromDecadeCollection) return 'text-amber-500';
    return 'text-yellow-400';
  };
 
@@ -1558,6 +1583,7 @@ if (fromPsychologicalThrillerCollection) {
        !fromRoadTripCollection &&
        !fromThoughtProvokingCollection &&
        !fromNeoNoirCollection && !isTrueStoryMovie &&
+       !fromDecadeCollection &&
        (
         <motion.div
           className="mb-6 sm:mb-8 md:mb-12 bg-gradient-to-br from-gray-800/40 to-gray-900/60 rounded-lg sm:rounded-xl border border-gray-700/50 p-3 sm:p-4 md:p-8 shadow-2xl backdrop-blur-sm relative overflow-hidden"
@@ -1707,6 +1733,7 @@ if (fromPsychologicalThrillerCollection) {
         : fromNeoNoirCollection ? <NeoNoirSEOFAQSection movie={movie} />
         : fromBestActionMoviesCollection ? <BestActionMoviesSEOFAQSection movie={movie} />
         : fromTrueStoryCollection ? <TrueStorySEOFAQSection movie={movie} />
+        : fromDecadeCollection ? <DecadeSEOFAQSection movie={movie} />
         : fromPrestigeCollection ? <PrestigeSEOFAQSection movie={movie} />
         : fromSe7enCollection ? <Se7enSEOFAQSection movie={movie} />
         : fromRevengeCollection ? <RevengeMovieSEOFAQSection movie={movie} />

@@ -7,7 +7,7 @@ import Image from 'next/image';
 import { 
     Search, Brain, Mountain, Film, ChevronDown, Sparkles, Plus, 
     Star, Clock, Eye, Scale, DollarSign, Shield, Zap, Heart, 
-    Moon, Ghost, Smile, Crown, Flame, Map, Rocket 
+    Moon, Ghost, Smile, Crown, Flame, Map,Award, Rocket 
 } from 'lucide-react';
 import Header from '../components/Header';
 
@@ -22,40 +22,9 @@ const CollectionsHub = () => {
 
     const collections = [
         // --- MOVIES LIKE... ---
-        {
-            id: 'mind-bending',
-            category: 'Movies Like...',
-            title: 'Mind-Bending Movies',
-            description: 'Psychological thrillers that challenge reality and perception',
-            icon: Brain,
-            gradient: 'from-purple-500 to-blue-600',
-            movieCount: '30',
-            rating: '8.5',
-            hasSubCollections: true,
-            subCollections: [
-                {
-                    slug: 'movies-like-inception',
-                    title: 'Movies Like Inception',
-                    description: 'Mind-bending sci-fi thrillers',
-                    count: '10 films',
-                    poster: 'https://image.tmdb.org/t/p/w500/ljsZTbVsrQSqZgWeep2B1QiDKuh.jpg'
-                },
-                {
-                    slug: 'movies-like-memento',
-                    title: 'Movies Like Memento',
-                    description: 'Nonlinear narratives',
-                    count: '10 films',
-                    poster: 'https://image.tmdb.org/t/p/w500/yuNs09hvpHVU1cBTCAk9zxsL2oW.jpg'
-                },
-                {
-                    slug: 'movies-like-shutter-island',
-                    title: 'Movies Like Shutter Island',
-                    description: 'Psychological horror twists',
-                    count: '10 films',
-                    poster: 'https://image.tmdb.org/t/p/w500/kve20tXwUZpu4GUX8l6X7Z4jmL6.jpg'
-                }
-            ]
-        },
+        { id: 'inception', category: 'Movies Like...', title: 'Movies Like Inception', description: 'Mind-bending sci-fi thrillers with dream logic and reality distortion', icon: Brain, gradient: 'from-purple-500 to-blue-600', movieCount: '10', rating: '8.1', directLink: '/collection/movies-like-inception', hasSubCollections: false },
+        { id: 'memento', category: 'Movies Like...', title: 'Movies Like Memento', description: 'Nonlinear narratives, amnesia, and fractured timeline puzzles', icon: Clock, gradient: 'from-blue-600 to-indigo-800', movieCount: '10', rating: '8.1', directLink: '/collection/movies-like-memento', hasSubCollections: false },
+        { id: 'shutter-island', category: 'Movies Like...', title: 'Movies Like Shutter Island', description: 'Psychological horror twists, paranoia, and unreliable narrators', icon: Eye, gradient: 'from-slate-700 to-purple-900', movieCount: '10', rating: '8.2', directLink: '/collection/movies-like-shutter-island', hasSubCollections: false },
         { id: 'oldboy', category: 'Movies Like...', title: 'Movies Like Oldboy', description: 'Brutal revenge thrillers with shocking twists and moral devastation', icon: Shield, gradient: 'from-red-700 to-rose-900', movieCount: '10', rating: '8.7', directLink: '/collection/movies-like-oldboy', hasSubCollections: false },
         { id: 'donnie-darko', category: 'Movies Like...', title: 'Movies Like Donnie Darko', description: 'Mind-bending time travel, reality-warping films with existential twists', icon: Clock, gradient: 'from-purple-600 to-indigo-800', movieCount: '10', rating: '8.6', directLink: '/collection/movies-like-donnie-darko', hasSubCollections: false },
         { id: 'eyes-wide-shut', category: 'Movies Like...', title: 'Movies Like Eyes Wide Shut', description: 'Paranoid thrillers about secret societies, occult rituals, and the hidden elite', icon: Eye, gradient: 'from-violet-700 to-slate-900', movieCount: '10', rating: '8.1', directLink: '/collection/movies-like-eyes-wide-shut', hasSubCollections: false },
@@ -82,12 +51,14 @@ const CollectionsHub = () => {
         { id: 'best-action-movies', category: 'Genres', title: '10 Best Action Movies Of All Time', description: 'The pinnacle of practical stunts, martial arts, gun-fu, and adrenaline-pumping cinema.', icon: Zap, gradient: 'from-red-600 to-stone-900', movieCount: '10', rating: '7.9', directLink: '/collection/best-action-movies', hasSubCollections: false },
 
         // --- THEMES & VIBES ---
+        { id: 'mind-bending-hub', category: 'Themes & Vibes', title: 'Mind-Bending Hub', description: 'Explore our full hub of psychological thrillers and sci-fi that challenge reality and perception.', icon: Brain, gradient: 'from-fuchsia-600 to-purple-900', movieCount: '40+', rating: '8.5', directLink: '/genre/mind-bending', hasSubCollections: false },
         { id: 'raunchy-comedy', category: 'Themes & Vibes', title: '10 Best Raunchy Comedy Movies', description: 'Explorations of extreme R-rated humor, legendary teen chaos, and iconic gross-out gags.', icon: Smile, gradient: 'from-pink-600 to-orange-500', movieCount: '10', rating: '7.0', directLink: '/collection/best-raunchy-comedy-movies', hasSubCollections: false },
         { id: 'top-10-road-trip-movies', category: 'Themes & Vibes', title: 'Top 10 Road Trip Movies', description: 'Cinematic journeys exploring human texture, emotional transformation, and the vast open road.', icon: Map, gradient: 'from-amber-600 to-orange-800', movieCount: '10', rating: '7.7', directLink: '/collection/top-10-road-trip-movies', hasSubCollections: false },
         { id: 'thought-provoking', category: 'Themes & Vibes', title: '10 Best Thought-Provoking Movies', description: 'Profound cinematic masterpieces exploring the depths of human existence, grief, and the search for meaning.', icon: Brain, gradient: 'from-indigo-600 to-blue-900', movieCount: '10', rating: '8.3', directLink: '/collection/best-thought-provoking-movies', hasSubCollections: false },
         { id: 'neo-noir', category: 'Themes & Vibes', title: '10 Best Neo-Noir Movies', description: 'A curation of cinema\'s most stylized, morally ambiguous, and neon-drenched urban nightmares.', icon: Moon, gradient: 'from-pink-800 to-slate-950', movieCount: '10', rating: '7.8', directLink: '/collection/best-neo-noir-movies', hasSubCollections: false },
         { id: 'movies-about-greed', category: 'Themes & Vibes', title: '10 Best Movies About Greed', description: 'Explorations of extreme capitalism, corporate corruption, and the devastating pursuit of wealth.', icon: DollarSign, gradient: 'from-emerald-600 to-green-900', movieCount: '10', rating: '7.7', directLink: '/collection/best-movies-about-greed', hasSubCollections: false },
 { id: 'true-story', category: 'Themes & Vibes', title: '10 Best True Story Movies', description: 'Powerful, critically acclaimed dramas rooted in real-world events, historical consequences, and incredible lives.', icon: Film, gradient: 'from-amber-600 to-yellow-900', movieCount: '10', rating: '8.3', directLink: '/collection/best-true-story-movies', hasSubCollections: false },
+{ id: 'best-movies-of-the-decade', category: 'Themes & Vibes', title: '10 Best Movies of the Decade (2020-2026)', description: 'The defining cinematic achievements of the 2020s, featuring groundbreaking sci-fi, sweeping historical epics, and revolutionary animation.', icon: Award, gradient: 'from-yellow-500 to-amber-700', movieCount: '10', rating: '8.2', directLink: '/collection/best-movies-of-the-decade', hasSubCollections: false },
         // --- STREAMING GUIDES ---
         // Hulu
         { id: 'hulu-best', category: 'Streaming Guides', title: 'Top 10 Best Movies on Hulu', description: 'The definitive ranking of the highest-rated films streaming on Hulu right now', icon: Crown, gradient: 'from-amber-500 to-yellow-600', movieCount: '10', rating: '7.9', directLink: '/collection/best-movies-on-hulu', hasSubCollections: false },

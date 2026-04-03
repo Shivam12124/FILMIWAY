@@ -1,6 +1,6 @@
-// pages\movies\movies-like-black-swan\[id].js - H1 SEO FIX + HYDRATION COMMENT REMOVAL ✅
+// pages/movies/best-movies-of-the-decade/[id].js - H1 SEO FIX + HYDRATION COMMENT REMOVAL ✅
 // VISUALS: Minimalist (Banner + Details Only)
-// SCHEMA: Maximalist (Hidden Intensity, DNA, and FAQs for Bots)
+// SCHEMA: Maximalist (Hidden Impact, DNA, and FAQs for Bots)
 
 import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
@@ -8,7 +8,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, Play, X, User, Twitter, Hash, Send, Film, Theater } from 'lucide-react';
+import { ChevronLeft, Play, X, User, Twitter, Hash, Send, Film, Theater, Award } from 'lucide-react';
 import InternalCollectionsSection from '../../../components/InternalCollectionsSection';
 import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
@@ -16,14 +16,14 @@ import TMDBAttribution from '../../../components/TMDBAttribution';
 import Header from '../../../components/Header';
 import { getPrimaryCollectionForMovie } from '../../../data/collections';
 
-// ✅ CORRECTED IMPORT: Pulled directly from your updated data file
+// ✅ CORRECTED IMPORT: Pulled directly from your Decade data file
 import {
   COMPLETE_MOVIE_DATABASE,
   COMPLETE_MOVIE_DATA,
   SENSITIVE_TIMELINES,
-  BLACK_SWAN_MOVIE_FAQS,
-  generateCleanMovieSchema // 🔥 Now correctly imported from here
-} from '../../../utils/blackSwanMovieData';
+  DECADE_MOVIE_FAQS,
+  generateCleanMovieSchema
+} from '../../../utils/decadeMovieData';
 
 const COLORS = {
   accent: '#EAB308', accentLight: '#FDE047', bgPrimary: '#000000ff', bgCard: 'rgba(11, 11, 11, 0.8)',
@@ -32,30 +32,30 @@ const COLORS = {
 };
 
 const MOVIE_YEARS = {
-  'Perfect Blue': '1997', 'Whiplash': '2014', 'Suspiria': '2018', 'The Red Shoes': '1948',
-  'The Wrestler': '2008', 'Mulholland Drive': '2001', 'The Piano Teacher': '2001', 'Birdman': '2014',
-  'Requiem for a Dream': '2000', 'Nightcrawler': '2014'
+  'Dune: Part Two': '2024', 'One Battle After Another': '2025', 'Spider-Man: Across the Spider-Verse': '2023',
+  'Everything Everywhere All at Once': '2022', 'Oppenheimer': '2023', 'Sinners': '2025',
+  'Marty Supreme': '2025', 'The Batman': '2022', 'Poor Things': '2023', 'Saltburn': '2023'
 };
 
 const MOVIE_DATA_BY_TITLE = {
-  'Perfect Blue': { connection: 'Perfect Blue is the purest Black Swan companion: both dive into identity fracture, performance pressure, and the horror of not knowing where the role ends and the self begins.' },
-  'Whiplash': { connection: 'Whiplash swaps ballet for jazz drumming but keeps the same core obsession: how far can a mentor push a student before greatness becomes self-destruction.' },
-  'Suspiria': { connection: 'Suspiria takes the dance academy setting of Black Swan and drenches it in occult horror, turning artistic transformation into literal body-breaking witchcraft.' },
-  'The Red Shoes': { connection: 'The Red Shoes is the original "art vs life" ballet tragedy; Black Swan updates its central question: if art demands everything, what is left of the artist.' },
-  'The Wrestler': { connection: 'Directed by the same filmmaker, The Wrestler is Black Swan\'s bruised, masculine twin: a body pushed beyond its limits to keep performing for an unforgiving audience.' },
-  'Mulholland Drive': { connection: 'Mulholland Drive and Black Swan both explore Hollywood performance, split identities, and dreams turning into psychological nightmares.' },
-  'The Piano Teacher': { connection: 'The Piano Teacher shows another artist crushed by control and repression, mirroring Black Swan\'s descent into self-harm and obsession with perfection.' },
-  'Birdman': { connection: 'Birdman is Black Swan for theatre: a washed-up superhero actor gambles everything on one Broadway play as his sense of reality starts to fracture.' },
-  'Requiem for a Dream': { connection: 'Requiem for a Dream is Aronofsky at his most nightmarish; its manic editing and bodily horror anticipate Black Swan\'s psychological breakdown style.' },
-  'Nightcrawler': { connection: 'Nightcrawler swaps ballet for crime journalism, but keeps the same icy focus on ambition mutating into sociopathy and performance for the camera.' }
+  'Dune: Part Two': { connection: 'A staggering visual and thematic achievement, Dune 2 redefines the modern blockbuster scale while acting as a terrifying cautionary tale about charismatic messiahs.' },
+  'One Battle After Another': { connection: 'Paul Thomas Anderson\'s most explosive film of the decade blends 1970s radicalism with sheer cinematic adrenaline to explore generational guilt and vengeance.' },
+  'Spider-Man: Across the Spider-Verse': { connection: 'A revolutionary leap in animation that shatters the boundaries of what a superhero film can look and feel like, tackling determinism and the burden of destiny.' },
+  'Everything Everywhere All at Once': { connection: 'The ultimate postmodern masterpiece: a dizzying, maximalist exploration of multiversal nihilism that somehow lands on a deeply profound message of radical empathy.' },
+  'Oppenheimer': { connection: 'Christopher Nolan\'s terrifying historical epic uses breathtaking practical effects and subjective framing to drop the audience directly into the mind of the destroyer of worlds.' },
+  'Sinners': { connection: 'Ryan Coogler masterfully fuses Southern Gothic folklore with occult horror, turning literal bloodsuckers into a terrifying metaphor for historical trauma and greed.' },
+  'Marty Supreme': { connection: 'The Safdie brothers deliver their signature anxiety-inducing cinema with a frantic, obsessive character study of an unlikable but utterly compelling table tennis hustler.' },
+  'The Batman': { connection: 'Matt Reeves strips the superhero genre down to a gritty, noir serial killer thriller, pushing Bruce Wayne through a psychological meat grinder to find hope in a corrupt city.' },
+  'Poor Things': { connection: 'A fiercely original, hilariously grotesque, and visually stunning feminist fairy tale that tracks the rapid, unconstrained evolution of a woman discovering free will.' },
+  'Saltburn': { connection: 'A slick, poisonous, and visually intoxicating thriller that weaponizes class envy, tracking a sociopathic parasite as he devours an aristocratic family from the inside out.' }
 };
 
 const getTMDBImage = (path, size = 'w1280') =>
   path ? `https://image.tmdb.org/t/p/${size}${path}` : undefined;
 
-const getPsychologicalInsight = (title) => {
+const getCinematicInsight = (title) => {
   const data = MOVIE_DATA_BY_TITLE[title];
-  return data?.connection || 'A razor-sharp psychological character study about obsession, performance pressure, and the fragile nature of identity.';
+  return data?.connection || 'A defining cinematic achievement of the 2020s, pushing the boundaries of storytelling, visual craft, and thematic depth.';
 };
 
 // ✅ OPTIMIZED BANNER
@@ -71,8 +71,8 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
   const bannerImage = backdropPath ? getTMDBImage(backdropPath, 'w1280') : null;
   const posterImage = posterPath ? getTMDBImage(posterPath, 'w500') : null;
 
-  const insight = getPsychologicalInsight(movie?.Title);
-  const psychIntensity = richData?.psychologicalIntensity || 90;
+  const insight = getCinematicInsight(movie?.Title);
+  const visceralImpact = richData?.visceralImpact || 85;
 
   const mobileHeroCSS = `
   @media (max-width: 767px) {
@@ -133,10 +133,10 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
       </div>
       {isMobile ? (
         <div className="mobile-hero-row">
-          <div className="mobile-hero-poster">{posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} width={320} height={480} className="w-full h-auto" priority /> : <div style={{ background: COLORS.bgCard, width: '100%', height: '150px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Theater style={{ color: COLORS.textMuted }} /></div>}</div>
+          <div className="mobile-hero-poster">{posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} width={320} height={480} className="w-full h-auto" priority /> : <div style={{ background: COLORS.bgCard, width: '100%', height: '150px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Award style={{ color: COLORS.textMuted }} /></div>}</div>
           <div className="mobile-psych-card">
-            <div className="mobile-psych-row"><Theater className="mobile-psych-icon" /><div><div className="mobile-psych-title">Psychological Intensity</div></div></div>
-            <div className="mobile-psych-desc"><strong>{psychIntensity}</strong> - {insight.substring(0, 80)}...</div>
+            <div className="mobile-psych-row"><Award className="mobile-psych-icon" /><div><div className="mobile-psych-title">Visceral Impact</div></div></div>
+            <div className="mobile-psych-desc"><strong>{visceralImpact}</strong> - {insight.substring(0, 80)}...</div>
           </div>
         </div>
       ) : (
@@ -144,15 +144,15 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 lg:gap-8 items-start">
             <motion.div className="flex-shrink-0 relative w-24 sm:w-48 md:w-56 lg:w-80 mx-auto sm:mx-0" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8, duration: 0.8 }}>
               <div className="relative" style={{ aspectRatio: '2/3' }}>
-                {posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} fill sizes="(max-width: 640px) 96px, (max-width: 768px) 192px, (max-width: 1024px) 224px, 320px" quality={85} className="object-cover rounded-lg sm:rounded-xl shadow-2xl" /> : <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: COLORS.bgCard, borderRadius: '12px' }}><Theater style={{ color: COLORS.textMuted }} /></div>}
+                {posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} fill sizes="(max-width: 640px) 96px, (max-width: 768px) 192px, (max-width: 1024px) 224px, 320px" quality={85} className="object-cover rounded-lg sm:rounded-xl shadow-2xl" /> : <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: COLORS.bgCard, borderRadius: '12px' }}><Award style={{ color: COLORS.textMuted }} /></div>}
               </div>
             </motion.div>
             <motion.div className="flex-1 w-full min-w-0" initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 1.0, duration: 0.8 }}>
               <motion.div className="relative rounded-xl sm:rounded-2xl overflow-hidden p-4 sm:p-6 lg:p-8 backdrop-blur-sm" style={{ background: `linear-gradient(135deg, rgba(234, 179, 8, 0.15) 0%, rgba(15, 15, 20, 0.5) 100%)`, border: `1px solid ${COLORS.borderLight}`, boxShadow: `0 8px 32px rgba(234, 179, 8, 0.2)` }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.1, duration: 0.8 }}>
                 <div className="absolute top-0 left-0 right-0 h-0.5 sm:h-1" style={{ background: `linear-gradient(90deg, transparent, ${COLORS.accent}, transparent)` }} />
                 <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5">
-                  <motion.div className="p-2 sm:p-2.5 rounded-lg sm:rounded-xl flex-shrink-0" style={{ background: `linear-gradient(135deg, ${COLORS.accent}20, ${COLORS.accent}10)`, border: `1px solid ${COLORS.accent}40` }} whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}><Theater className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" style={{ color: COLORS.accent }} /></motion.div>
-                  <div className="min-w-0 flex-1"><h2 className="text-sm sm:text-base lg:text-xl xl:text-2xl font-bold leading-tight" style={{ color: COLORS.accent }}>Why This Psychological Thriller Hits Hard</h2><p className="text-xs sm:text-sm hidden sm:block" style={{ color: COLORS.textMuted }}>Psychological Intensity: {psychIntensity}/100</p></div>
+                  <motion.div className="p-2 sm:p-2.5 rounded-lg sm:rounded-xl flex-shrink-0" style={{ background: `linear-gradient(135deg, ${COLORS.accent}20, ${COLORS.accent}10)`, border: `1px solid ${COLORS.accent}40` }} whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}><Award className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" style={{ color: COLORS.accent }} /></motion.div>
+                  <div className="min-w-0 flex-1"><h2 className="text-sm sm:text-base lg:text-xl xl:text-2xl font-bold leading-tight" style={{ color: COLORS.accent }}>Why This Film Defines The Decade</h2><p className="text-xs sm:text-sm hidden sm:block" style={{ color: COLORS.textMuted }}>Visceral Impact: {visceralImpact}/100</p></div>
                 </div>
                 <div className="relative pl-4 sm:pl-6 border-l-2" style={{ borderColor: `${COLORS.accent}40` }}>
                   <motion.div className="absolute -left-1.5 sm:-left-2 top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full" style={{ backgroundColor: COLORS.accent }} animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 2, repeat: Infinity }} />
@@ -172,7 +172,7 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
 const AuthorCreditSection = () => (
     <motion.section className="pt-6 sm:pt-8 mt-12 sm:mt-16" style={{ borderTop: `1px solid ${COLORS.borderLight}` }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2.0, duration: 0.8 }}>
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
-            <div className="flex items-center gap-3"><User className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: COLORS.textDisabled }} /><div><p className="text-xs sm:text-sm" style={{ color: COLORS.textMuted }}>Curated by <span className="font-medium" style={{ color: COLORS.textSecondary }}>Filmiway Editorial Team</span></p><p className="text-xs" style={{ color: COLORS.textDisabled }}>Expert analysis of psychological thrillers</p></div></div>
+            <div className="flex items-center gap-3"><User className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: COLORS.textDisabled }} /><div><p className="text-xs sm:text-sm" style={{ color: COLORS.textMuted }}>Curated by <span className="font-medium" style={{ color: COLORS.textSecondary }}>Filmiway Editorial Team</span></p><p className="text-xs" style={{ color: COLORS.textDisabled }}>Expert analysis of modern cinema</p></div></div>
             <div className="flex items-center gap-3 sm:gap-4"><span className="text-xs sm:text-sm" style={{ color: COLORS.textDisabled }}>Share:</span><div className="flex gap-2 sm:gap-3">{[Twitter, Hash, Send].map((Icon, i) => (<button key={i} className="p-1.5 sm:p-2 rounded-full transition-colors" style={{ color: COLORS.textDisabled }} onMouseEnter={(e) => { e.currentTarget.style.color = COLORS.textSecondary; e.currentTarget.style.backgroundColor = COLORS.bgCard; }} onMouseLeave={(e) => { e.currentTarget.style.color = COLORS.textDisabled; e.currentTarget.style.backgroundColor = 'transparent'; }}><Icon className="w-3 h-3 sm:w-4 sm:h-4" /></button>))}</div></div>
         </div>
     </motion.section>
@@ -182,18 +182,17 @@ const SubtleFilmGrain = () => (
     <div className="fixed inset-0 pointer-events-none z-0 opacity-[0.005]"><div className="w-full h-full bg-repeat" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)' opacity='0.3'/%3E%3C/svg%3E")`, backgroundSize: '60px 60px' }} /></div>
 );
 
-const BlackSwanBreadcrumb = ({ movie }) => (
+const DecadeBreadcrumb = ({ movie }) => (
     <motion.nav className="mb-6 sm:mb-8 px-3 sm:px-4 lg:px-6 pb-3 sm:pb-4" style={{ borderBottom: `1px solid ${COLORS.borderLight}` }} initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
         <div className="flex items-center space-x-2 sm:space-x-3 text-xs sm:text-sm" style={{ color: COLORS.textMuted }}>
-            <Link href="/collection/movies-like-black-swan" className="transition-all duration-300 truncate" style={{ color: COLORS.textMuted }} onMouseEnter={(e) => e.currentTarget.style.color = COLORS.accent} onMouseLeave={(e) => e.currentTarget.style.color = COLORS.textMuted}>Movies Like Black Swan</Link>
+            <Link href="/collection/best-movies-of-the-decade" className="transition-all duration-300 truncate" style={{ color: COLORS.textMuted }} onMouseEnter={(e) => e.currentTarget.style.color = COLORS.accent} onMouseLeave={(e) => e.currentTarget.style.color = COLORS.textMuted}>Best Movies of the Decade</Link>
             <ChevronLeft size={14} className="flex-shrink-0" style={{ color: COLORS.textDisabled, transform: 'rotate(180deg)' }} /><span className="font-medium truncate" style={{ color: `${COLORS.accent}B3` }}>{movie.Title}</span>
         </div>
     </motion.nav>
 );
 
-const BlackSwanMoviePage = ({ movie, tmdbData: movieData }) => {
+const DecadeMoviePage = ({ movie, tmdbData: movieData }) => {
     const router = useRouter();
-    const movieInfo = COMPLETE_MOVIE_DATA[movie.tmdbId];
     const richData = COMPLETE_MOVIE_DATA[movie.tmdbId];
     const [isMobile, setIsMobile] = useState(false);
 
@@ -206,18 +205,19 @@ const BlackSwanMoviePage = ({ movie, tmdbData: movieData }) => {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-        sessionStorage.setItem('fromCollection', 'movies-like-black-swan');
-        sessionStorage.setItem('fromCollectionName', 'Movies Like Black Swan');
+        sessionStorage.setItem('fromCollection', 'best-movies-of-the-decade');
+        sessionStorage.setItem('fromCollectionName', 'Best Movies of the Decade');
     }
   }, []);
 
     const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
+    
   // =========================================================================
   // ✅ THE STANDARDIZED ELITE SEO BLOCK (Clean, Direct Intent)
   // =========================================================================
 
-  const collectionSlug = 'movies-like-black-swan';
+  const collectionSlug = 'best-movies-of-the-decade';
 
   const scenes = SENSITIVE_TIMELINES?.[movie.tmdbId]?.scenes || [];
   
@@ -225,13 +225,11 @@ const BlackSwanMoviePage = ({ movie, tmdbData: movieData }) => {
   let cleanSEOTitle = '';
 
   if (scenes.length > 0) {
-    // Define title variations from most descriptive (longest) to least (shortest)
     const titleOption1 = `${movie.Title} Parents Guide (Skip Sex & Nudity Timestamps)`;
     const titleOption2 = `${movie.Title} Parents Guide (Sex & Nudity Timestamps)`;
     const titleOption3 = `${movie.Title} Parents Guide (Skip Timestamps)`;
     const titleOption4 = `${movie.Title} Parents Guide (Timestamps)`;
 
-    // Dynamically select the best title that fits within Google's ~62 character limit
     if (titleOption1.length <= 62) {
       cleanSEOTitle = titleOption1;
     } else if (titleOption2.length <= 62) {
@@ -239,7 +237,7 @@ const BlackSwanMoviePage = ({ movie, tmdbData: movieData }) => {
     } else if (titleOption3.length <= 62) {
       cleanSEOTitle = titleOption3;
     } else {
-      cleanSEOTitle = titleOption4; // Final fallback
+      cleanSEOTitle = titleOption4;
     }
   } else {
     const idealCleanTitle = `${movie.Title} Parents Guide (Clean)`;
@@ -258,7 +256,6 @@ const BlackSwanMoviePage = ({ movie, tmdbData: movieData }) => {
   let cleanSEODesc = '';
   if (scenes.length > 0) {
     const sceneCount = scenes.length;
-    // Show the full range (Start-End) for the first 2 scenes only to save space
     const topScenes = scenes.slice(0, 2).map(s => `${s.start}–${s.end}`).join(', ');
     
     cleanSEODesc = `${movie.Title} Parents Guide: ${sceneCount} mature scenes (sex, nudity) manually verified. Skip: ${topScenes}... Full ${currentRuntime} list inside.`;
@@ -277,7 +274,7 @@ const BlackSwanMoviePage = ({ movie, tmdbData: movieData }) => {
         currentMovieYear, 
         masterCollectionSlug, 
         null,
-        COMPLETE_MOVIE_DATA[movie.tmdbId]
+        richData
     );
 
     return (
@@ -291,7 +288,7 @@ const BlackSwanMoviePage = ({ movie, tmdbData: movieData }) => {
                 <meta name="robots" content="index, follow" />
                 <meta name="language" content="English" />
 
-                {/* ✅ BARRIER #3 DEFEATED: JSON-LD Schema for SEO & LLMs */}
+                {/* ✅ JSON-LD Schema for SEO & LLMs */}
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }}
@@ -320,13 +317,12 @@ const BlackSwanMoviePage = ({ movie, tmdbData: movieData }) => {
           
           <Header />
             
-            
             <div className="relative z-10 pt-20 sm:pt-24 lg:pt-28">
                 
                 {/* ✅ SEO FIX: HIDDEN H1 ADDED HERE FOR BING & GOOGLE */}
                 <h1 className="sr-only">{cleanSEOTitle}</h1>
 
-                <BlackSwanBreadcrumb movie={movie} />
+                <DecadeBreadcrumb movie={movie} />
                 <div className="container mx-auto px-0 pb-16 sm:pb-24 lg:pb-32 max-w-7xl">
                     <OptimizedBanner movie={movie} movieData={movieData} richData={richData} trailer={trailer} isMobile={isMobile} />
                     
@@ -337,11 +333,11 @@ const BlackSwanMoviePage = ({ movie, tmdbData: movieData }) => {
                         transition={{ duration: 0.5 }}
                         className="space-y-8 sm:space-y-12 px-3 sm:px-4 lg:px-6"
                     >
-                        <MovieDetailsSection movie={movie} fromBlackSwanCollection={true} />
+                        <MovieDetailsSection movie={movie} fromDecadeCollection={true} />
                     </motion.div>
                     
                     <div className="px-3 sm:px-4 lg:px-6">
-                        <InternalCollectionsSection currentSlug="movies-like-black-swan" />
+                        <InternalCollectionsSection currentSlug="best-movies-of-the-decade" />
                         <TMDBAttribution />
                         <AuthorCreditSection />
                     </div>
@@ -385,4 +381,4 @@ export async function getStaticProps({ params }) {
     }
 }
 
-export default BlackSwanMoviePage;
+export default DecadeMoviePage;
