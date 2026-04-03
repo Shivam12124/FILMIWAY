@@ -64,11 +64,11 @@ export const SENSITIVE_TIMELINES = {
 
     // 5. Schindler's List
     424: {
-        scenes: [
+          scenes: [
             { start: "0:44:15", end: "0:44:50", type: "Sex & Nudity", severity: "High" },
             { start: "1:15:40", end: "1:16:50", type: "Nudity (Woman)", severity: "High" },
             { start: "2:00:25", end: "2:03:00", type: "Nudity (Men & Women)", severity: "High" },
-            { start: "2:34:45", end: "2:37:05", type: "Nudity (Woman)", severity: "High" }
+            { start: "2:34:45", end: "2:37:05", type: "Nudity (Women)", severity: "High" }
         ]
     },
 

@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { Users, Film, BookOpen, Star } from 'lucide-react';
 
 // ==================== DATA IMPORTS ====================
-import { COMPLETE_MOVIE_DATA, STRATEGIC_QUOTES } from '../utils/movieData';
+import { COMPLETE_MOVIE_DATA, STRATEGIC_QUOTES, SENSITIVE_TIMELINES as MIND_BENDING_SENSITIVE_TIMELINES } from '../utils/movieData';
 import { 
   COMPLETE_MOVIE_DATA as SURVIVAL_MOVIE_DATA, 
   STRATEGIC_QUOTES as SURVIVAL_QUOTES, 
@@ -250,6 +250,11 @@ import {
   COMPLETE_MOVIE_DATA as BEST_ACTION_MOVIE_DATA,
   SENSITIVE_TIMELINES as BEST_ACTION_SENSITIVE_TIMELINES
 } from '../utils/bestActionMoviesData';
+import {
+  COMPLETE_MOVIE_DATA as TRUE_STORY_MOVIE_DATA,
+  SENSITIVE_TIMELINES as TRUE_STORY_SENSITIVE_TIMELINES
+  , COMPLETE_MOVIE_DATABASE as TRUE_STORY_DATABASE
+} from '../utils/trueStoryMovieData';
 
 import { 
   COMPLETE_MOVIE_DATA as CRIME_THRILLER_MOVIE_DATA,
@@ -301,8 +306,6 @@ import RealCommentsRatingSection from './RealCommentsRatingSection';
 
 // FAQ Sections
 import SEOFAQSection from './SEOFAQSection';
-import MementoSEOFAQSection from './MementoSEOFAQSection';
-import ShutterIslandSEOFAQSection from './ShutterIslandSEOFAQSection';
 import SurvivalSEOFAQSection from './SurvivalSEOFAQSection';
 import ThrillerSEOFAQSection from './ThrillerSEOFAQSection';
 import MysteryThrillerSEOFAQSection from './MysteryThrillerSEOFAQSection';
@@ -339,6 +342,7 @@ import RoadTripSEOFAQSection from './RoadTripSEOFAQSection';
 import ThoughtProvokingSEOFAQSection from './ThoughtProvokingSEOFAQSection';
 import NeoNoirSEOFAQSection from './NeoNoirSEOFAQSection';
 import BestActionMoviesSEOFAQSection from './BestActionMoviesSEOFAQSection';
+import TrueStorySEOFAQSection from './TrueStorySEOFAQSection';
 
 import HuluActionSEOFAQSection from './HuluActionSEOFAQSection';
 import HuluRomanceSEOFAQSection from './HuluRomanceSEOFAQSection';
@@ -385,7 +389,8 @@ const MovieDetailsSection = React.memo(({
   fromRoadTripCollection,
   fromThoughtProvokingCollection,
   fromNeoNoirCollection,
-  fromBestActionMoviesCollection, // ✅ FIXED PROP NAME TO MATCH [id].js
+  fromBestActionMoviesCollection,
+  fromTrueStoryCollection,
   fromParasiteCollection,
   fromDonnieDarkoCollection,
   fromOldboyCollection,
@@ -440,10 +445,15 @@ const MovieDetailsSection = React.memo(({
 
  if (!movie) return null;
 
+ const isTrueStoryMovie = TRUE_STORY_DATABASE.some(m => m.imdbID === movie.imdbID);
+
  const safeLookup = (collection, id) => (collection && id && collection[id]) || null;
 
  // ✅ UNIFIED MOVIE INFO LOOKUP
- const movieInfo = fromHboActionCollection ? safeLookup(HBO_ACTION_MOVIE_DATA, movie.tmdbId) 
+ const movieInfo = fromInceptionCollection ? safeLookup(COMPLETE_MOVIE_DATA, movie.tmdbId)
+  : fromMementoCollection ? safeLookup(COMPLETE_MOVIE_DATA, movie.tmdbId)
+  : fromShutterIslandCollection ? safeLookup(COMPLETE_MOVIE_DATA, movie.tmdbId)
+  : fromHboActionCollection ? safeLookup(HBO_ACTION_MOVIE_DATA, movie.tmdbId) 
   : fromHboRomanceCollection ? safeLookup(HBO_ROMANCE_MOVIE_DATA, movie.tmdbId)
   : fromHboMaxThrillerCollection ? safeLookup(HBO_MAX_THRILLER_MOVIE_DATA, movie.tmdbId)
   : fromHboMaxFamilyCollection ? safeLookup(HBO_MAX_FAMILY_MOVIE_DATA, movie.tmdbId) 
@@ -492,6 +502,7 @@ const MovieDetailsSection = React.memo(({
   : fromThoughtProvokingCollection ? safeLookup(THOUGHT_PROVOKING_MOVIE_DATA, movie.tmdbId)
   : fromNeoNoirCollection ? safeLookup(NEO_NOIR_MOVIE_DATA, movie.tmdbId)
   : fromBestActionMoviesCollection ? safeLookup(BEST_ACTION_MOVIE_DATA, movie.tmdbId)
+  : fromTrueStoryCollection ? safeLookup(TRUE_STORY_MOVIE_DATA, movie.tmdbId)
   : fromEyesWideShutCollection ? safeLookup(EYES_WIDE_SHUT_MOVIE_DATA, movie.tmdbId)
   : fromRevengeCollection ? safeLookup(REVENGE_MOVIE_DATA, movie.tmdbId)
   : fromWarFilmsCollection ? safeLookup(WAR_FILMS_MOVIE_DATA, movie.tmdbId)
@@ -613,9 +624,10 @@ const MovieDetailsSection = React.memo(({
    fetchAllData();
  }, [movie.tmdbId]);
 
- // ✅ UNIFIED SENSITIVE SCENES LOOKUP (BUG FIXED: Added missing collections!)
+ // ✅ UNIFIED SENSITIVE SCENES LOOKUP
  const sensitiveScenes = safeMovieInfo.sensitiveScenes 
    || HBO_ACTION_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
+   || MIND_BENDING_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
    || HBO_ROMANCE_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
    || HBO_MAX_THRILLER_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
    || HBO_MAX_FAMILY_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
@@ -661,8 +673,7 @@ const MovieDetailsSection = React.memo(({
    || RAUNCHY_COMEDY_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || ROAD_TRIP_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || THOUGHT_PROVOKING_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-   || NEO_NOIR_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-   || BEST_ACTION_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
+  || NEO_NOIR_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || EYES_WIDE_SHUT_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || SE7EN_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || SCI_FI_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
@@ -676,12 +687,16 @@ const MovieDetailsSection = React.memo(({
    || PSYCH_THRILLER_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || INTERSTELLAR_TIMELINES?.[movie?.tmdbId]?.scenes 
    || WAR_FILMS_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
+   || TRUE_STORY_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
    || [];
 
  // ✅ DYNAMIC SCORE VALUE SELECTION
  const scoreValue = fromHboActionCollection ? movie.actionIntensity ?? safeMovieInfo.actionIntensity ?? 0
    : fromHboRomanceCollection ? movie.emotionalIntensity ?? safeMovieInfo.emotionalIntensity ?? 0 
+   : fromInceptionCollection ? movie.mindBendingIndex ?? safeMovieInfo.mindBendingIndex ?? 0
+   : fromShutterIslandCollection ? movie.psychologicalComplexity ?? safeMovieInfo.psychologicalComplexity ?? 0
+   : fromMementoCollection ? movie.memoryComplexity ?? safeMovieInfo.memoryComplexity ?? 0
    : fromHboMaxThrillerCollection ? movie.suspenseIntensity ?? safeMovieInfo.suspenseIntensity ?? 0 
    : fromHboMaxFamilyCollection ? movie.funFactor ?? safeMovieInfo.funFactor ?? 0
    : fromHboMaxSciFiCollection ? movie.spectacularLevel ?? safeMovieInfo.spectacularLevel ?? 0 
@@ -726,8 +741,7 @@ const MovieDetailsSection = React.memo(({
    : fromRaunchyComedyCollection ? movie.raunchinessScore ?? safeMovieInfo.raunchinessScore ?? 0
    : fromRoadTripCollection ? movie.wanderlustScore ?? safeMovieInfo.wanderlustScore ?? 0
    : fromThoughtProvokingCollection ? movie.philosophicalDepth ?? safeMovieInfo.philosophicalDepth ?? 0
-   : fromNeoNoirCollection ? movie.moralAmbiguity ?? safeMovieInfo.moralAmbiguity ?? 0
-   : fromBestActionMoviesCollection ? movie.adrenalineScore ?? safeMovieInfo.adrenalineScore ?? 0
+  : fromNeoNoirCollection ? movie.moralAmbiguity ?? safeMovieInfo.moralAmbiguity ?? 0
    : fromEyesWideShutCollection ? movie.paranoiaIntensity ?? safeMovieInfo.paranoiaIntensity ?? 0
    : fromSe7enCollection ? movie.se7enDNAScore ?? safeMovieInfo.se7enDNAScore ?? 0
    : fromRevengeCollection ? movie.revengeIntensity ?? safeMovieInfo.revengeIntensity ?? 0
@@ -965,6 +979,14 @@ const MovieDetailsSection = React.memo(({
      default: return '#6b7280';
         }
    }
+   if (fromTrueStoryCollection) {
+        switch (level) {
+     case 'EXTREME': return '#451a03'; 
+     case 'HIGH': return '#78350f';   
+     case 'MEDIUM': return '#b45309';  
+     default: return '#6b7280';
+        }
+   }
 if (fromPsychologicalThrillerCollection) {
       switch (level) {
         case 'EXTREME': return '#7f1d1d'; // Deep Blood Red for total sanity loss
@@ -1014,6 +1036,9 @@ if (fromPsychologicalThrillerCollection) {
  const getComplexityScoreTitle = () => {
    if (fromHboActionCollection) return 'ACTION INTENSITY';
    if (fromHboRomanceCollection) return 'EMOTIONAL INTENSITY'; 
+   if (fromInceptionCollection) return 'MIND-BENDING COMPLEXITY SCORE';
+   if (fromShutterIslandCollection) return 'PSYCHOLOGICAL COMPLEXITY SCORE';
+   if (fromMementoCollection) return 'MEMORY COMPLEXITY SCORE';
    if (fromHboMaxThrillerCollection) return 'SUSPENSE INTENSITY'; 
    if (fromHboMaxFamilyCollection || fromHuluFamilyCollection || fromParamountFamilyCollection || fromPeacockFamilyCollection) return 'FUN FACTOR SCORE';
    if (fromHboMaxSciFiCollection) return 'SPECTACULAR LEVEL'; 
@@ -1046,7 +1071,6 @@ if (fromPsychologicalThrillerCollection) {
    if (fromRoadTripCollection) return 'WANDERLUST SCORE';
    if (fromThoughtProvokingCollection) return 'PHILOSOPHICAL DEPTH SCORE';
    if (fromNeoNoirCollection) return 'MORAL AMBIGUITY SCORE';
-   if (fromBestActionMoviesCollection) return 'ADRENALINE SCORE';
    if (fromSe7enCollection) return 'SE7EN DNA SCORE';
    if (fromRevengeCollection) return 'REVENGE INTENSITY SCORE';
    if (fromWarFilmsCollection) return 'WAR INTENSITY SCORE';
@@ -1061,14 +1085,15 @@ if (fromPsychologicalThrillerCollection) {
    if (fromThrillerCollection) return 'SUSPENSE INTENSITY SCORE';
    if (fromSurvivalCollection) return 'SURVIVAL INTENSITY SCORE';
    if (fromInceptionCollection) return 'MIND-BENDING COMPLEXITY SCORE';
-   if (fromShutterIslandCollection) return 'PSYCHOLOGICAL COMPLEXITY SCORE';
-   if (fromMementoCollection) return 'MEMORY COMPLEXITY SCORE';
    return 'COMPLEXITY SCORE';
  };
 
  const getComplexityIndexLabel = () => {
    if (fromHboActionCollection) return 'EPIC SCALE INDEX'; 
    if (fromHboRomanceCollection) return 'EMOTION INDEX'; 
+   if (fromInceptionCollection) return 'MIND-BENDING INDEX';
+   if (fromShutterIslandCollection) return 'PSYCHOLOGICAL INDEX';
+   if (fromMementoCollection) return 'MEMORY INDEX';
    if (fromHboMaxThrillerCollection) return 'TENSION INDEX'; 
    if (fromHboMaxFamilyCollection || fromHuluFamilyCollection || fromParamountFamilyCollection || fromPeacockFamilyCollection) return 'FAMILY FUN INDEX';
    if (fromHboMaxSciFiCollection) return 'COSMIC SCALE INDEX'; 
@@ -1105,8 +1130,6 @@ if (fromPsychologicalThrillerCollection) {
    if (fromThrillerCollection) return 'SUSPENSE INDEX';
    if (fromSurvivalCollection) return 'SURVIVAL INTENSITY INDEX';
    if (fromInceptionCollection) return 'MIND-BENDING INDEX';
-   if (fromShutterIslandCollection) return 'PSYCHOLOGICAL INDEX';
-   if (fromMementoCollection) return 'MEMORY INDEX';
    if (fromPrestigeCollection) return 'DECEPTION INDEX';
    if (fromEroticThrillerCollection) return 'MANIPULATION INDEX';
    if (fromGreedCollection) return 'CORRUPTION INDEX';
@@ -1115,12 +1138,16 @@ if (fromPsychologicalThrillerCollection) {
    if (fromThoughtProvokingCollection) return 'PROFOUNDNESS INDEX';
    if (fromNeoNoirCollection) return 'MORAL AMBIGUITY INDEX';
    if (fromBestActionMoviesCollection) return 'ADRENALINE INDEX';
+   if (fromTrueStoryCollection) return 'HISTORICAL FIDELITY INDEX';
    return 'MIND-BENDING INDEX';
  };
 
  const getComplexityLevelLabel = () => {
    if (fromHboActionCollection) return 'CINEMATIC SCALE LEVEL';
    if (fromHboRomanceCollection) return 'ROMANCE TIER LEVEL'; 
+   if (fromInceptionCollection) return 'COGNITIVE COMPLEXITY LEVEL';
+   if (fromShutterIslandCollection) return 'PSYCHOLOGICAL DISTORTION LEVEL';
+   if (fromMementoCollection) return 'MEMORY DISTORTION LEVEL';
    if (fromHboMaxThrillerCollection) return 'PSYCHOLOGICAL LEVEL'; 
    if (fromHboMaxFamilyCollection || fromHuluFamilyCollection || fromParamountFamilyCollection || fromPeacockFamilyCollection) return 'WHOLESOME LEVEL';
    if (fromHboMaxSciFiCollection) return 'SPECTACLE TIER LEVEL'; 
@@ -1157,8 +1184,6 @@ if (fromPsychologicalThrillerCollection) {
    if (fromThrillerCollection) return 'SUSPENSE INTENSITY LEVEL';
    if (fromSurvivalCollection) return 'SURVIVAL INTENSITY LEVEL';
    if (fromInceptionCollection) return 'COGNITIVE COMPLEXITY LEVEL';
-   if (fromShutterIslandCollection) return 'PSYCHOLOGICAL DISTORTION LEVEL';
-   if (fromMementoCollection) return 'MEMORY DISTORTION LEVEL';
    if (fromPrestigeCollection) return 'ILLUSION LEVEL';
    if (fromEroticThrillerCollection) return 'PSYCHOLOGICAL TENSION LEVEL';
    if (fromGreedCollection) return 'MORAL DECAY LEVEL';
@@ -1167,6 +1192,7 @@ if (fromPsychologicalThrillerCollection) {
    if (fromThoughtProvokingCollection) return 'PHILOSOPHICAL IMPACT';
    if (fromNeoNoirCollection) return 'DREAD & AMBIGUITY LEVEL';
    if (fromBestActionMoviesCollection) return 'ACTION INTENSITY LEVEL';
+   if (fromTrueStoryCollection) return 'HISTORICAL IMPACT LEVEL';
    return 'COGNITIVE DISTORTION LEVEL';
  };
 
@@ -1316,6 +1342,11 @@ if (fromPsychologicalThrillerCollection) {
      if (scoreValue >= 80) return 'Intense, fast-paced action with thrilling set pieces.';
      return 'Solid action entertainment with satisfying combat and stunts.';
    }
+   if (fromTrueStoryCollection) {
+     if (scoreValue >= 90) return 'A historically profound and accurate masterpiece that defined an era.';
+     if (scoreValue >= 80) return 'A highly impactful true story with incredible dramatic tension.';
+     return 'A compelling movie based on true events with solid performances.';
+   }
    // Generic fallback
    if (scoreValue >= 90) return 'A transcendent masterpiece redefining narrative complexity.';
    if (scoreValue >= 80) return 'Sophisticated cinematic storytelling with advanced non-linear elements.';
@@ -1326,6 +1357,9 @@ if (fromPsychologicalThrillerCollection) {
  const getBorderColor = () => {
    if (fromHboActionCollection) return 'border-red-600/40';
    if (fromHboRomanceCollection) return 'border-pink-500/40'; 
+   if (fromInceptionCollection) return 'border-yellow-400/40'; // Assuming yellow for inception
+   if (fromShutterIslandCollection) return 'border-yellow-400/40'; // Assuming yellow for shutter island
+   if (fromMementoCollection) return 'border-yellow-400/40'; // Assuming yellow for memento
    if (fromHboMaxThrillerCollection) return 'border-red-500/40'; 
    if (fromHboMaxFamilyCollection || fromHuluFamilyCollection || fromParamountFamilyCollection || fromPeacockFamilyCollection) return 'border-yellow-400/40';
    if (fromHboMaxSciFiCollection) return 'border-cyan-500/40'; 
@@ -1357,12 +1391,16 @@ if (fromPsychologicalThrillerCollection) {
    if (fromThoughtProvokingCollection) return 'border-indigo-600/40';
    if (fromNeoNoirCollection) return 'border-pink-700/40';
    if (fromBestActionMoviesCollection) return 'border-red-600/40';
+   if (fromTrueStoryCollection) return 'border-amber-700/40';
    return 'border-yellow-400/40';
  };
 
  const getStarColor = () => {
    if (fromHboActionCollection) return 'text-red-600';
    if (fromHboRomanceCollection) return 'text-pink-500'; 
+   if (fromInceptionCollection) return 'text-yellow-400';
+   if (fromShutterIslandCollection) return 'text-yellow-400';
+   if (fromMementoCollection) return 'text-yellow-400';
    if (fromHboMaxThrillerCollection) return 'text-red-500'; 
    if (fromHboMaxFamilyCollection || fromHuluFamilyCollection || fromParamountFamilyCollection || fromPeacockFamilyCollection) return 'text-yellow-400';
    if (fromHboMaxSciFiCollection) return 'text-cyan-500'; 
@@ -1394,6 +1432,7 @@ if (fromPsychologicalThrillerCollection) {
    if (fromThoughtProvokingCollection) return 'text-indigo-500';
    if (fromNeoNoirCollection) return 'text-pink-600';
    if (fromBestActionMoviesCollection) return 'text-red-600';
+   if (fromTrueStoryCollection) return 'text-amber-600';
    return 'text-yellow-400';
  };
 
@@ -1518,8 +1557,7 @@ if (fromPsychologicalThrillerCollection) {
        !fromRaunchyComedyCollection &&
        !fromRoadTripCollection &&
        !fromThoughtProvokingCollection &&
-       !fromNeoNoirCollection &&
-       !fromBestActionMoviesCollection &&
+       !fromNeoNoirCollection && !isTrueStoryMovie &&
        (
         <motion.div
           className="mb-6 sm:mb-8 md:mb-12 bg-gradient-to-br from-gray-800/40 to-gray-900/60 rounded-lg sm:rounded-xl border border-gray-700/50 p-3 sm:p-4 md:p-8 shadow-2xl backdrop-blur-sm relative overflow-hidden"
@@ -1668,6 +1706,7 @@ if (fromPsychologicalThrillerCollection) {
         : fromThoughtProvokingCollection ? <ThoughtProvokingSEOFAQSection movie={movie} />
         : fromNeoNoirCollection ? <NeoNoirSEOFAQSection movie={movie} />
         : fromBestActionMoviesCollection ? <BestActionMoviesSEOFAQSection movie={movie} />
+        : fromTrueStoryCollection ? <TrueStorySEOFAQSection movie={movie} />
         : fromPrestigeCollection ? <PrestigeSEOFAQSection movie={movie} />
         : fromSe7enCollection ? <Se7enSEOFAQSection movie={movie} />
         : fromRevengeCollection ? <RevengeMovieSEOFAQSection movie={movie} />
@@ -1685,8 +1724,8 @@ if (fromPsychologicalThrillerCollection) {
         
         // Final safety fallbacks so empty FAQ isn't rendered
         : fromInceptionCollection ? <SEOFAQSection movie={movie} />
-        : fromShutterIslandCollection ? <ShutterIslandSEOFAQSection movie={movie} />
-        : fromMementoCollection ? <MementoSEOFAQSection movie={movie} />
+        : fromShutterIslandCollection ? <SEOFAQSection movie={movie} />
+        : fromMementoCollection ? <SEOFAQSection movie={movie} />
         : movieInfo?.faqs ? <SEOFAQSection movie={movie} /> : null
       }
     </motion.div>

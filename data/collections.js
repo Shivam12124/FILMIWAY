@@ -911,6 +911,22 @@ export const COLLECTIONS = {
     relatedCollections: ['best-thriller-movies', 'best-sci-fi-movies', 'best-revenge-movies']
   },
 
+
+  // 📜 BEST TRUE STORY MOVIES
+  'best-true-story-movies': {
+    slug: 'best-true-story-movies',
+    title: '10 Best Movies Based on a True Story',
+    stats: { averageRating: 8.3 },
+    badges: [
+      { label: "REAL HISTORY", desc: "Factual events" },
+      { label: "BIOPIC", desc: "Iconic figures" },
+      { label: "IMPACTFUL", desc: "World-changing consequences" }
+    ],
+    // Schindler's List, Goodfellas, The Pianist, Oppenheimer, Braveheart, 12 Years a Slave, Rush, Dallas Buyers Club, The Social Network, Donnie Brasco
+    movies: ['tt0108052', 'tt0099685', 'tt0253474', 'tt15398776', 'tt0112573', 'tt2024544', 'tt1979320', 'tt0790636', 'tt1285016', 'tt0119008'],
+    relatedCollections: ['best-war-films', 'best-crime-thriller-movies', 'best-thought-provoking-movies']
+  },
+
   // 🩸 BEST THRILLER MOVIES
   'best-thriller-movies': {
     slug: 'best-thriller-movies',
@@ -957,6 +973,7 @@ export const getRoadTripCollection = () => COLLECTIONS['top-10-road-trip-movies'
 export const getThoughtProvokingCollection = () => COLLECTIONS['best-thought-provoking-movies'];
 export const getThrillerCollection = () => COLLECTIONS['best-thriller-movies'];
 export const getNeoNoirCollection = () => COLLECTIONS['best-neo-noir-movies'];
+export const getTrueStoryCollection = () => COLLECTIONS['best-true-story-movies'];
 export const getBestActionCollection = () => COLLECTIONS['best-action-movies'];
 // ============================================================================
 // 🧠 THE MASTER CANONICAL BRAIN
