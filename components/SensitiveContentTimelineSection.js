@@ -37,19 +37,22 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
     }, []);
 
     const extractExactTypes = (scenes) => {
-        if (!scenes) return [];
+        if (!scenes || !Array.isArray(scenes)) return [];
         const types = scenes
             .map(scene => scene.type) 
             .filter(Boolean); 
         return [...new Set(types)]; 
     };
 
+    // 🔥 SMART DETECTION FIX: Ensure we process the array properly
+    const actualScenes = Array.isArray(sensitiveScenes) ? sensitiveScenes : sensitiveScenes?.scenes;
+
     let sensitiveData = null;
     let contentTypes = [];
 
-    if (sensitiveScenes && sensitiveScenes.length > 0) {
-        sensitiveData = { scenes: sensitiveScenes };
-        contentTypes = extractExactTypes(sensitiveScenes);
+    if (actualScenes) {
+        sensitiveData = { scenes: actualScenes };
+        contentTypes = extractExactTypes(actualScenes);
     } else {
         const inceptionData = formatInceptionTimeline?.(movie.tmdbId);
         const survivalData = formatSurvivalTimeline?.(movie.tmdbId);
@@ -68,24 +71,29 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
     let currentRuntime = movie.Runtime || movie.runtime || "Official";
     if (typeof currentRuntime === 'number') currentRuntime = `${currentRuntime} min`;
     
-    // 🔥 Explicit Override for Limitless (Unrated Version)
+    // Explicit Override for Limitless (Unrated Version)
     if (movie.tmdbId === 51876) {
-        currentRuntime = "1 hour 45 min (Unrated Version)"; 
+        currentRuntime = "105 min (Unrated Version)"; 
     }
     
     // Explicit Override for Sin City
     if (movie.tmdbId === 187) {
-        currentRuntime = "2 hours 21 min (Unrated Extended Version)"; 
+        currentRuntime = "141 min (Unrated Extended Version)"; 
     }
 
     // Explicit Override for Apocalypse Now
     if (movie.tmdbId === 28) {
-        currentRuntime = "3 hours 1 min (Final Cut)"; 
+        currentRuntime = "181 min (Final Cut)"; 
     }
 
-    // 🔥 Explicit Override for Mad Max: Fury Road
+    // Explicit Override for Mad Max: Fury Road
     if (movie.tmdbId === 76341) {
         currentRuntime = "120 min"; 
+    }
+
+    // 🔥 Explicit Override for Once Upon a Time in America
+    if (movie.tmdbId === 311) {
+        currentRuntime = "249 min"; 
     }
 
     const getSeverityDotColor = (severity) => {

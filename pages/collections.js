@@ -7,7 +7,7 @@ import Image from 'next/image';
 import { 
     Search, Brain, Mountain, Film, ChevronDown, Sparkles, Plus, 
     Star, Clock, Eye, Scale, DollarSign, Shield, Zap, Heart, 
-    Moon, Ghost, Smile, Crown, Flame, Map,Award, Rocket 
+    Moon, Ghost, Smile, Crown, Flame, Map, Crosshair, Award, Rocket 
 } from 'lucide-react';
 import Header from '../components/Header';
 
@@ -59,6 +59,7 @@ const CollectionsHub = () => {
         { id: 'movies-about-greed', category: 'Themes & Vibes', title: '10 Best Movies About Greed', description: 'Explorations of extreme capitalism, corporate corruption, and the devastating pursuit of wealth.', icon: DollarSign, gradient: 'from-emerald-600 to-green-900', movieCount: '10', rating: '7.7', directLink: '/collection/best-movies-about-greed', hasSubCollections: false },
 { id: 'true-story', category: 'Themes & Vibes', title: '10 Best True Story Movies', description: 'Powerful, critically acclaimed dramas rooted in real-world events, historical consequences, and incredible lives.', icon: Film, gradient: 'from-amber-600 to-yellow-900', movieCount: '10', rating: '8.3', directLink: '/collection/best-true-story-movies', hasSubCollections: false },
 { id: 'best-movies-of-the-decade', category: 'Themes & Vibes', title: '10 Best Movies of the Decade (2020-2026)', description: 'The defining cinematic achievements of the 2020s, featuring groundbreaking sci-fi, sweeping historical epics, and revolutionary animation.', icon: Award, gradient: 'from-yellow-500 to-amber-700', movieCount: '10', rating: '8.2', directLink: '/collection/best-movies-of-the-decade', hasSubCollections: false },
+{ id: 'best-gangster-movies-of-all-time', category: 'Themes & Vibes', title: '10 Best Gangster Movies of All Time', description: 'The defining cinematic masterpieces of the criminal underworld, exploring loyalty, betrayal, and ruthless ambition.', icon: Crosshair, gradient: 'from-red-800 to-stone-900', movieCount: '10', rating: '8.3', directLink: '/collection/best-gangster-movies-of-all-time', hasSubCollections: false },
         // --- STREAMING GUIDES ---
         // Hulu
         { id: 'hulu-best', category: 'Streaming Guides', title: 'Top 10 Best Movies on Hulu', description: 'The definitive ranking of the highest-rated films streaming on Hulu right now', icon: Crown, gradient: 'from-amber-500 to-yellow-600', movieCount: '10', rating: '7.9', directLink: '/collection/best-movies-on-hulu', hasSubCollections: false },

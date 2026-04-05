@@ -1,5 +1,5 @@
-// pages/movies/best-heist-thriller-movies/[id].js - H1 SEO FIX + HYDRATION COMMENT REMOVAL ✅
-// VISUALS: Amber/Gold Theme (Heist), Minimalist Banner
+// pages/movies/best-gangster-movies-of-all-time/[id].js - H1 SEO FIX + HYDRATION COMMENT REMOVAL ✅
+// VISUALS: Minimalist (Banner + Details Only)
 // SCHEMA: Maximalist (Hidden Impact, DNA, and FAQs for Bots)
 
 import React, { useState, useEffect, useRef } from 'react';
@@ -8,7 +8,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, Play, X, User, Twitter, Hash, Send, Film, Lock } from 'lucide-react';
+import { ChevronLeft, Play, X, User, Twitter, Hash, Send, Film, Crosshair } from 'lucide-react'; // ✅ CHANGED: Crosshairs to Crosshair
 import InternalCollectionsSection from '../../../components/InternalCollectionsSection';
 import CinematicBackground from '../../../components/CinematicBackground';
 import MovieDetailsSection from '../../../components/MovieDetailsSection';
@@ -16,37 +16,37 @@ import TMDBAttribution from '../../../components/TMDBAttribution';
 import Header from '../../../components/Header';
 import { getPrimaryCollectionForMovie } from '../../../data/collections';
 
-// ✅ IMPORT HEIST THRILLER DATA & SCHEMA GENERATOR
+// ✅ CORRECTED IMPORT: Pulled directly from your Gangster data file
 import {
   COMPLETE_MOVIE_DATABASE,
   COMPLETE_MOVIE_DATA,
   SENSITIVE_TIMELINES,
   generateCleanMovieSchema
-} from '../../../utils/heistThrillerMovieData';
+} from '../../../utils/gangsterMovieData';
 
 const COLORS = {
-  accent: '#F59E0B', accentLight: '#FBBF24', bgPrimary: '#000000ff', bgCard: 'rgba(11, 11, 11, 0.8)',
+  accent: '#DC2626', accentLight: '#EF4444', bgPrimary: '#000000ff', bgCard: 'rgba(11, 11, 11, 0.8)',
   textPrimary: '#FFFFFF', textSecondary: '#E5E7EB', textMuted: '#9CA3AF', textDisabled: '#6B7280',
-  borderAccent: 'rgba(245, 158, 11, 0.25)', borderLight: 'rgba(55, 65, 81, 0.5)',
+  borderAccent: 'rgba(220, 38, 38, 0.25)', borderLight: 'rgba(55, 65, 81, 0.5)',
 };
 
 const MOVIE_YEARS = {
-  'Heat': '1995', 'Inception': '2010', 'Reservoir Dogs': '1992', 'The Town': '2010',
-  'Inside Man': '2006', 'Ocean\'s Eleven': '2001', 'Baby Driver': '2017', 'Hell or High Water': '2016',
-  'Dog Day Afternoon': '1975', 'Widows': '2018', 'The Bank Job': '2008', 'Thief': '1981', 'The Italian Job': '1969'
+  'The Godfather Part II': '1974', 'The Godfather': '1972', 'Goodfellas': '1990',
+  'City of God': '2002', 'Once Upon a Time in America': '1984', 'Casino': '1995',
+  'Scarface': '1983', 'Eastern Promises': '2007', 'Carlito\'s Way': '1993', 'Gangs of New York': '2002'
 };
 
 const MOVIE_DATA_BY_TITLE = {
-  'Heat': { connection: 'A masterful cat-and-mouse thriller with breathtaking heist sequences and stellar performances from De Niro and Pacino.' },
-  'Reservoir Dogs': { connection: 'A gritty, dialogue-driven thriller about loyalty and betrayal in a failed heist gone catastrophically wrong.' },
-  'The Town': { connection: 'A thrilling crime drama where love collides with a life of crime in the tight-knit neighborhoods of Boston.' },
-  'Hell or High Water': { connection: 'A modern western thriller filled with emotional depth about brothers planning desperate bank robberies.' },
-  'The Bank Job': { connection: 'An intricately woven heist exposing political conspiracies and corruption at the highest levels.' },
-  'Inside Man': { connection: 'A clever and stylish bank robbery layered with suspense and unexpected twists from Spike Lee.' },
-  'Thief': { connection: 'A gritty neo-noir exploring the professional life of a master safecracker seeking one last big score.' },
-  'Dog Day Afternoon': { connection: 'A tense and eccentric hostage drama based on a true story with iconic performances.' },
-  'The Italian Job': { connection: 'A stylish, fast-paced heist with iconic Mini Cooper chase scenes through Turin.' },
-  "Ocean's Eleven": { connection: 'An ensemble caper with wit, charm, and elaborate casino heists executed with style.' }
+  'The Godfather Part II': { connection: 'A masterful tragedy that juxtaposes the building of an empire with the rotting of a soul, defining the moral cost of absolute power.' },
+  'The Godfather': { connection: 'The foundational text of the mafia genre, transforming criminal syndicates into Shakespearean family dramas of loyalty and capitalism.' },
+  'Goodfellas': { connection: 'A kinetic, intoxicating, and ultimately devastating ground-level tour of mob life where loyalty is bought and betrayal is inevitable.' },
+  'City of God': { connection: 'A hyper-kinetic, terrifyingly authentic look at the cyclical nature of poverty and violence in the slums of Rio de Janeiro.' },
+  'Once Upon a Time in America': { connection: 'Sergio Leone\'s sprawling, mournful epic about childhood friends torn apart by time, greed, and the hollow American Dream.' },
+  'Casino': { connection: 'A neon-soaked autopsy of the mob\'s golden age in Las Vegas, undone by hubris, unchecked greed, and uncontrollable tempers.' },
+  'Scarface': { connection: 'An operatic, blood-drenched parable of 1980s excess, where the ruthless pursuit of the world leaves you with absolutely nothing.' },
+  'Eastern Promises': { connection: 'A chilling, surgically precise descent into the brutal operations and flesh-trading economy of the Russian Vory v Zakone in London.' },
+  'Carlito\'s Way': { connection: 'A deeply melancholic portrait of a criminal desperate to go straight, tragically pulled back down by the gravity of the streets.' },
+  'Gangs of New York': { connection: 'A violent, sweeping origin story of modern America, forged not by politicians, but by the bloody street wars of the Five Points.' }
 };
 
 const getTMDBImage = (path, size = 'w1280') =>
@@ -54,7 +54,7 @@ const getTMDBImage = (path, size = 'w1280') =>
 
 const getCinematicInsight = (title) => {
   const data = MOVIE_DATA_BY_TITLE[title];
-  return data?.connection || 'An unforgettable heist thriller packed with suspense, action, and masterful execution.';
+  return data?.connection || 'A defining masterpiece of the crime genre, exploring the brutal realities of the criminal underworld and the cost of ambition.';
 };
 
 // ✅ OPTIMIZED BANNER
@@ -71,17 +71,17 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
   const posterImage = posterPath ? getTMDBImage(posterPath, 'w500') : null;
 
   const insight = getCinematicInsight(movie?.Title);
-  const heistComplexity = richData?.heistComplexity || 90;
+  const underworldGrit = richData?.underworldGrit || 90;
 
   const mobileHeroCSS = `
   @media (max-width: 767px) {
     .mobile-hero-row { display: flex; flex-direction: row; align-items: flex-start; width: 100vw; max-width: 100vw; gap: 10px; margin: 0; padding: 0 8px; }
     .mobile-hero-poster { width: 38vw; min-width: 106px; border-radius: 12px; overflow: hidden; box-shadow: 0 3px 14px #0007; margin: 0; flex-shrink: 0; }
     .mobile-hero-poster img { width: 100%; height: auto; border-radius: 12px; display: block; }
-    .mobile-psych-card { background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%); border-radius: 12px; box-shadow: 0 2px 12px #0006; margin: 0; flex: 1; border-left: 4px solid #EAB308; display: flex; flex-direction: column; justify-content: flex-start; padding: 10px 10px 10px 12px; min-height: 110px; position: relative; }
+    .mobile-psych-card { background: linear-gradient(135deg, #1a0505 0%, #0f0f15 100%); border-radius: 12px; box-shadow: 0 2px 12px #0006; margin: 0; flex: 1; border-left: 4px solid #DC2626; display: flex; flex-direction: column; justify-content: flex-start; padding: 10px 10px 10px 12px; min-height: 110px; position: relative; }
     .mobile-psych-row { display: flex; align-items: flex-start; gap: 7px; }
-    .mobile-psych-icon { min-width: 24px; min-height: 24px; color: #FDE047; margin-top: 2px; }
-    .mobile-psych-title { font-size: 15px; font-weight: bold; color: #FDE047; margin-bottom: 1px; line-height: 1.12; }
+    .mobile-psych-icon { min-width: 24px; min-height: 24px; color: #EF4444; margin-top: 2px; }
+    .mobile-psych-title { font-size: 15px; font-weight: bold; color: #EF4444; margin-bottom: 1px; line-height: 1.12; }
     .mobile-psych-desc { font-size: 12.3px; color: #ededed; line-height: 1.36; margin-top: 2px; }
   }`;
 
@@ -132,10 +132,10 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
       </div>
       {isMobile ? (
         <div className="mobile-hero-row">
-          <div className="mobile-hero-poster">{posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} width={320} height={480} className="w-full h-auto" priority /> : <div style={{ background: COLORS.bgCard, width: '100%', height: '150px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Lock style={{ color: COLORS.textMuted }} /></div>}</div>
+          <div className="mobile-hero-poster">{posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} width={320} height={480} className="w-full h-auto" priority /> : <div style={{ background: COLORS.bgCard, width: '100%', height: '150px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Crosshair style={{ color: COLORS.textMuted }} /></div>}</div> {/* ✅ CHANGED: Crosshairs to Crosshair */}
           <div className="mobile-psych-card">
-            <div className="mobile-psych-row"><Lock className="mobile-psych-icon" /><div><div className="mobile-psych-title">Heist Complexity</div></div></div>
-            <div className="mobile-psych-desc"><strong>{heistComplexity}</strong> - {insight.substring(0, 80)}...</div>
+            <div className="mobile-psych-row"><Crosshair className="mobile-psych-icon" /><div><div className="mobile-psych-title">Underworld Grit</div></div></div> {/* ✅ CHANGED: Crosshairs to Crosshair */}
+            <div className="mobile-psych-desc"><strong>{underworldGrit}</strong> - {insight.substring(0, 80)}...</div>
           </div>
         </div>
       ) : (
@@ -143,15 +143,15 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 lg:gap-8 items-start">
             <motion.div className="flex-shrink-0 relative w-24 sm:w-48 md:w-56 lg:w-80 mx-auto sm:mx-0" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8, duration: 0.8 }}>
               <div className="relative" style={{ aspectRatio: '2/3' }}>
-                {posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} fill sizes="(max-width: 640px) 96px, (max-width: 768px) 192px, (max-width: 1024px) 224px, 320px" quality={85} className="object-cover rounded-lg sm:rounded-xl shadow-2xl" /> : <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: COLORS.bgCard, borderRadius: '12px' }}><Lock style={{ color: COLORS.textMuted }} /></div>}
+                {posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} fill sizes="(max-width: 640px) 96px, (max-width: 768px) 192px, (max-width: 1024px) 224px, 320px" quality={85} className="object-cover rounded-lg sm:rounded-xl shadow-2xl" /> : <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: COLORS.bgCard, borderRadius: '12px' }}><Crosshair style={{ color: COLORS.textMuted }} /></div>} {/* ✅ CHANGED: Crosshairs to Crosshair */}
               </div>
             </motion.div>
             <motion.div className="flex-1 w-full min-w-0" initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 1.0, duration: 0.8 }}>
-              <motion.div className="relative rounded-xl sm:rounded-2xl overflow-hidden p-4 sm:p-6 lg:p-8 backdrop-blur-sm" style={{ background: `linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(15, 15, 20, 0.5) 100%)`, border: `1px solid ${COLORS.borderLight}`, boxShadow: `0 8px 32px rgba(245, 158, 11, 0.2)` }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.1, duration: 0.8 }}>
+              <motion.div className="relative rounded-xl sm:rounded-2xl overflow-hidden p-4 sm:p-6 lg:p-8 backdrop-blur-sm" style={{ background: `linear-gradient(135deg, rgba(220, 38, 38, 0.15) 0%, rgba(15, 15, 20, 0.5) 100%)`, border: `1px solid ${COLORS.borderLight}`, boxShadow: `0 8px 32px rgba(220, 38, 38, 0.2)` }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.1, duration: 0.8 }}>
                 <div className="absolute top-0 left-0 right-0 h-0.5 sm:h-1" style={{ background: `linear-gradient(90deg, transparent, ${COLORS.accent}, transparent)` }} />
                 <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5">
-                  <motion.div className="p-2 sm:p-2.5 rounded-lg sm:rounded-xl flex-shrink-0" style={{ background: `linear-gradient(135deg, ${COLORS.accent}20, ${COLORS.accent}10)`, border: `1px solid ${COLORS.accent}40` }} whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}><Lock className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" style={{ color: COLORS.accent }} /></motion.div>
-                  <div className="min-w-0 flex-1"><h2 className="text-sm sm:text-base lg:text-xl xl:text-2xl font-bold leading-tight" style={{ color: COLORS.accent }}>Why This Heist Thriller Masterpiece Hits Hard</h2><p className="text-xs sm:text-sm hidden sm:block" style={{ color: COLORS.textMuted }}>Heist Complexity: {heistComplexity}/100</p></div>
+                  <motion.div className="p-2 sm:p-2.5 rounded-lg sm:rounded-xl flex-shrink-0" style={{ background: `linear-gradient(135deg, ${COLORS.accent}20, ${COLORS.accent}10)`, border: `1px solid ${COLORS.accent}40` }} whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}><Crosshair className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" style={{ color: COLORS.accent }} /></motion.div> {/* ✅ CHANGED: Crosshairs to Crosshair */}
+                  <div className="min-w-0 flex-1"><h2 className="text-sm sm:text-base lg:text-xl xl:text-2xl font-bold leading-tight" style={{ color: COLORS.accent }}>Why This Film Rules The Underworld</h2><p className="text-xs sm:text-sm hidden sm:block" style={{ color: COLORS.textMuted }}>Underworld Grit: {underworldGrit}/100</p></div>
                 </div>
                 <div className="relative pl-4 sm:pl-6 border-l-2" style={{ borderColor: `${COLORS.accent}40` }}>
                   <motion.div className="absolute -left-1.5 sm:-left-2 top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full" style={{ backgroundColor: COLORS.accent }} animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 2, repeat: Infinity }} />
@@ -169,31 +169,31 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
 
 
 const AuthorCreditSection = () => (
-    <motion.section className="pt-6 sm:pt-8 mt-12 sm:mt-16" style={{ borderTop: `1px solid ${COLORS.borderLight}` }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2.0, duration: 0.8 }}>
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
-            <div className="flex items-center gap-3"><User className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: COLORS.textDisabled }} /><div><p className="text-xs sm:text-sm" style={{ color: COLORS.textMuted }}>Curated by <span className="font-medium" style={{ color: COLORS.textSecondary }}>Filmiway Editorial Team</span></p><p className="text-xs" style={{ color: COLORS.textDisabled }}>Expert analysis of heist cinema</p></div></div>
-            <div className="flex items-center gap-3 sm:gap-4"><span className="text-xs sm:text-sm" style={{ color: COLORS.textDisabled }}>Share:</span><div className="flex gap-2 sm:gap-3">{[Twitter, Hash, Send].map((Icon, i) => (<button key={i} className="p-1.5 sm:p-2 rounded-full transition-colors" style={{ color: COLORS.textDisabled }} onMouseEnter={(e) => { e.currentTarget.style.color = COLORS.textSecondary; e.currentTarget.style.backgroundColor = COLORS.bgCard; }} onMouseLeave={(e) => { e.currentTarget.style.color = COLORS.textDisabled; e.currentTarget.style.backgroundColor = 'transparent'; }}><Icon className="w-3 h-3 sm:w-4 sm:h-4" /></button>))}</div></div>
-        </div>
-    </motion.section>
+  <motion.section className="pt-6 sm:pt-8 mt-12 sm:mt-16" style={{ borderTop: `1px solid ${COLORS.borderLight}` }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2.0, duration: 0.8 }}>
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
+          <div className="flex items-center gap-3"><User className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: COLORS.textDisabled }} /><div><p className="text-xs sm:text-sm" style={{ color: COLORS.textMuted }}>Curated by <span className="font-medium" style={{ color: COLORS.textSecondary }}>Filmiway Editorial Team</span></p><p className="text-xs" style={{ color: COLORS.textDisabled }}>Expert analysis of the crime genre</p></div></div>
+          <div className="flex items-center gap-3 sm:gap-4"><span className="text-xs sm:text-sm" style={{ color: COLORS.textDisabled }}>Share:</span><div className="flex gap-2 sm:gap-3">{[Twitter, Hash, Send].map((Icon, i) => (<button key={i} className="p-1.5 sm:p-2 rounded-full transition-colors" style={{ color: COLORS.textDisabled }} onMouseEnter={(e) => { e.currentTarget.style.color = COLORS.textSecondary; e.currentTarget.style.backgroundColor = COLORS.bgCard; }} onMouseLeave={(e) => { e.currentTarget.style.color = COLORS.textDisabled; e.currentTarget.style.backgroundColor = 'transparent'; }}><Icon className="w-3 h-3 sm:w-4 sm:h-4" /></button>))}</div></div>
+      </div>
+  </motion.section>
 );
 
 const SubtleFilmGrain = () => (
-    <div className="fixed inset-0 pointer-events-none z-0 opacity-[0.005]"><div className="w-full h-full bg-repeat" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)' opacity='0.3'/%3E%3C/svg%3E")`, backgroundSize: '60px 60px' }} /></div>
+  <div className="fixed inset-0 pointer-events-none z-0 opacity-[0.005]"><div className="w-full h-full bg-repeat" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)' opacity='0.3'/%3E%3C/svg%3E")`, backgroundSize: '60px 60px' }} /></div>
 );
 
-const HeistBreadcrumb = ({ movie }) => (
-    <motion.nav className="mb-6 sm:mb-8 px-3 sm:px-4 lg:px-6 pb-3 sm:pb-4" style={{ borderBottom: `1px solid ${COLORS.borderLight}` }} initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-        <div className="flex items-center space-x-2 sm:space-x-3 text-xs sm:text-sm" style={{ color: COLORS.textMuted }}>
-            <Link href="/collection/best-heist-thriller-movies" className="transition-all duration-300 truncate" style={{ color: COLORS.textMuted }} onMouseEnter={(e) => e.currentTarget.style.color = COLORS.accent} onMouseLeave={(e) => e.currentTarget.style.color = COLORS.textMuted}>Best Heist Thriller Movies</Link>
-            <ChevronLeft size={14} className="flex-shrink-0" style={{ color: COLORS.textDisabled, transform: 'rotate(180deg)' }} /><span className="font-medium truncate" style={{ color: `${COLORS.accent}B3` }}>{movie.Title}</span>
-        </div>
-    </motion.nav>
+const GangsterBreadcrumb = ({ movie }) => (
+  <motion.nav className="mb-6 sm:mb-8 px-3 sm:px-4 lg:px-6 pb-3 sm:pb-4" style={{ borderBottom: `1px solid ${COLORS.borderLight}` }} initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+      <div className="flex items-center space-x-2 sm:space-x-3 text-xs sm:text-sm" style={{ color: COLORS.textMuted }}>
+          <Link href="/collection/best-gangster-movies-of-all-time" className="transition-all duration-300 truncate" style={{ color: COLORS.textMuted }} onMouseEnter={(e) => e.currentTarget.style.color = COLORS.accent} onMouseLeave={(e) => e.currentTarget.style.color = COLORS.textMuted}>10 Best Gangster Movies of All Time</Link>
+          <ChevronLeft size={14} className="flex-shrink-0" style={{ color: COLORS.textDisabled, transform: 'rotate(180deg)' }} /><span className="font-medium truncate" style={{ color: `${COLORS.accent}B3` }}>{movie.Title}</span>
+      </div>
+  </motion.nav>
 );
 
-const HeistThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
-    const router = useRouter();
-    const richData = COMPLETE_MOVIE_DATA[movie.tmdbId];
-    const [isMobile, setIsMobile] = useState(false);
+const GangsterMoviePage = ({ movie, tmdbData: movieData }) => {
+  const router = useRouter();
+  const richData = COMPLETE_MOVIE_DATA[movie.tmdbId];
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -204,19 +204,19 @@ const HeistThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-        sessionStorage.setItem('fromCollection', 'best-heist-thriller-movies');
-        sessionStorage.setItem('fromCollectionName', 'Best Heist Thriller Movies');
+        sessionStorage.setItem('fromCollection', 'best-gangster-movies-of-all-time');
+        sessionStorage.setItem('fromCollectionName', '10 Best Gangster Movies of All Time');
     }
   }, []);
 
-    const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
-    const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
-    
+  const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
+  const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
+  
   // =========================================================================
   // ✅ THE STANDARDIZED ELITE SEO BLOCK (Clean, Direct Intent)
   // =========================================================================
 
-  const collectionSlug = 'best-heist-thriller-movies';
+  const collectionSlug = 'best-gangster-movies-of-all-time';
 
   const scenes = SENSITIVE_TIMELINES?.[movie.tmdbId]?.scenes || [];
   
@@ -321,7 +321,7 @@ const HeistThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
                 {/* ✅ SEO FIX: HIDDEN H1 ADDED HERE FOR BING & GOOGLE */}
                 <h1 className="sr-only">{cleanSEOTitle}</h1>
 
-                <HeistBreadcrumb movie={movie} />
+                <GangsterBreadcrumb movie={movie} />
                 <div className="container mx-auto px-0 pb-16 sm:pb-24 lg:pb-32 max-w-7xl">
                     <OptimizedBanner movie={movie} movieData={movieData} richData={richData} trailer={trailer} isMobile={isMobile} />
                     
@@ -332,11 +332,11 @@ const HeistThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
                         transition={{ duration: 0.5 }}
                         className="space-y-8 sm:space-y-12 px-3 sm:px-4 lg:px-6"
                     >
-                        <MovieDetailsSection movie={movie} fromHeistThrillerCollection={true} />
+                        <MovieDetailsSection movie={movie} fromGangsterCollection={true} />
                     </motion.div>
                     
                     <div className="px-3 sm:px-4 lg:px-6">
-                        <InternalCollectionsSection currentSlug="best-heist-thriller-movies" />
+                        <InternalCollectionsSection currentSlug="best-gangster-movies-of-all-time" />
                         <TMDBAttribution />
                         <AuthorCreditSection />
                     </div>
@@ -380,4 +380,4 @@ export async function getStaticProps({ params }) {
     }
 }
 
-export default HeistThrillerMoviePage;
+export default GangsterMoviePage;

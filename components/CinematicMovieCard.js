@@ -147,7 +147,7 @@ const CinematicMovieCard = React.memo(({ movie, rank, isActive, fromSurvivalColl
                 <motion.div
                     initial={false}
                     animate={{ 
-                        height: isHovered && hoverText ? 'auto' : 0,
+                        maxHeight: isHovered && hoverText ? '80px' : '0px', // Animate max-height instead of height
                         opacity: isHovered && hoverText ? 1 : 0
                     }}
                     transition={{ duration: 0.4, ease: "easeInOut" }}

@@ -259,6 +259,10 @@ import {
   COMPLETE_MOVIE_DATA as DECADE_MOVIE_DATA,
   SENSITIVE_TIMELINES as DECADE_SENSITIVE_TIMELINES
 } from '../utils/decadeMovieData';
+import {
+  COMPLETE_MOVIE_DATA as GANGSTER_MOVIE_DATA,
+  SENSITIVE_TIMELINES as GANGSTER_SENSITIVE_TIMELINES
+} from '../utils/gangsterMovieData';
 
 import { 
   COMPLETE_MOVIE_DATA as CRIME_THRILLER_MOVIE_DATA,
@@ -348,6 +352,7 @@ import NeoNoirSEOFAQSection from './NeoNoirSEOFAQSection';
 import BestActionMoviesSEOFAQSection from './BestActionMoviesSEOFAQSection';
 import TrueStorySEOFAQSection from './TrueStorySEOFAQSection';
 import DecadeSEOFAQSection from './DecadeSEOFAQSection';
+import GangsterSEOFAQSection from './GangsterSEOFAQSection';
 
 import HuluActionSEOFAQSection from './HuluActionSEOFAQSection';
 import HuluRomanceSEOFAQSection from './HuluRomanceSEOFAQSection';
@@ -397,6 +402,7 @@ const MovieDetailsSection = React.memo(({
   fromBestActionMoviesCollection,
   fromTrueStoryCollection,
   fromDecadeCollection,
+  fromGangsterCollection,
   fromParasiteCollection,
   fromDonnieDarkoCollection,
   fromOldboyCollection,
@@ -510,6 +516,7 @@ const MovieDetailsSection = React.memo(({
   : fromBestActionMoviesCollection ? safeLookup(BEST_ACTION_MOVIE_DATA, movie.tmdbId)
   : fromTrueStoryCollection ? safeLookup(TRUE_STORY_MOVIE_DATA, movie.tmdbId)
   : fromDecadeCollection ? safeLookup(DECADE_MOVIE_DATA, movie.tmdbId)
+  : fromGangsterCollection ? safeLookup(GANGSTER_MOVIE_DATA, movie.tmdbId)
   : fromEyesWideShutCollection ? safeLookup(EYES_WIDE_SHUT_MOVIE_DATA, movie.tmdbId)
   : fromRevengeCollection ? safeLookup(REVENGE_MOVIE_DATA, movie.tmdbId)
   : fromWarFilmsCollection ? safeLookup(WAR_FILMS_MOVIE_DATA, movie.tmdbId)
@@ -681,6 +688,7 @@ const MovieDetailsSection = React.memo(({
    || ROAD_TRIP_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || THOUGHT_PROVOKING_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
   || NEO_NOIR_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
+   || GANGSTER_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || DECADE_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || EYES_WIDE_SHUT_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || SE7EN_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
@@ -1003,6 +1011,14 @@ const MovieDetailsSection = React.memo(({
      default: return '#6b7280';
         }
    }
+   if (fromGangsterCollection) {
+        switch (level) {
+     case 'EXTREME': return '#991b1b'; 
+     case 'HIGH': return '#ef4444';   
+     case 'MEDIUM': return '#b45309';  
+     default: return '#6b7280';
+        }
+   }
 if (fromPsychologicalThrillerCollection) {
       switch (level) {
         case 'EXTREME': return '#7f1d1d'; // Deep Blood Red for total sanity loss
@@ -1156,6 +1172,7 @@ if (fromPsychologicalThrillerCollection) {
    if (fromBestActionMoviesCollection) return 'ADRENALINE INDEX';
    if (fromTrueStoryCollection) return 'HISTORICAL FIDELITY INDEX';
    if (fromDecadeCollection) return 'VISCERAL IMPACT INDEX';
+   if (fromGangsterCollection) return 'UNDERWORLD GRIT INDEX';
    return 'MIND-BENDING INDEX';
  };
 
@@ -1211,6 +1228,7 @@ if (fromPsychologicalThrillerCollection) {
    if (fromBestActionMoviesCollection) return 'ACTION INTENSITY LEVEL';
    if (fromTrueStoryCollection) return 'HISTORICAL IMPACT LEVEL';
    if (fromDecadeCollection) return 'CINEMATIC IMPACT LEVEL';
+   if (fromGangsterCollection) return 'CRIMINAL PSYCHOLOGY LEVEL';
    return 'COGNITIVE DISTORTION LEVEL';
  };
 
@@ -1370,6 +1388,11 @@ if (fromPsychologicalThrillerCollection) {
      if (scoreValue >= 80) return 'An essential film of the 2020s with immense cultural and visceral impact.';
      return 'A highly influential modern film that left a significant mark on the decade.';
    }
+   if (fromGangsterCollection) {
+     if (scoreValue >= 90) return 'A defining cinematic masterpiece of the criminal underworld with profound narrative authenticity and moral complexity.';
+     if (scoreValue >= 80) return 'A deeply compelling gangster epic with high visceral impact and iconic characters.';
+     return 'A solid gangster film exploring the brutal realities of the criminal life.';
+   }
    // Generic fallback
    if (scoreValue >= 90) return 'A transcendent masterpiece redefining narrative complexity.';
    if (scoreValue >= 80) return 'Sophisticated cinematic storytelling with advanced non-linear elements.';
@@ -1416,6 +1439,7 @@ if (fromPsychologicalThrillerCollection) {
    if (fromBestActionMoviesCollection) return 'border-red-600/40';
    if (fromTrueStoryCollection) return 'border-amber-700/40';
    if (fromDecadeCollection) return 'border-amber-500/40';
+   if (fromGangsterCollection) return 'border-red-800/40';
    return 'border-yellow-400/40';
  };
 
@@ -1458,6 +1482,7 @@ if (fromPsychologicalThrillerCollection) {
    if (fromBestActionMoviesCollection) return 'text-red-600';
    if (fromTrueStoryCollection) return 'text-amber-600';
    if (fromDecadeCollection) return 'text-amber-500';
+   if (fromGangsterCollection) return 'text-red-700';
    return 'text-yellow-400';
  };
 
@@ -1584,6 +1609,7 @@ if (fromPsychologicalThrillerCollection) {
        !fromThoughtProvokingCollection &&
        !fromNeoNoirCollection && !isTrueStoryMovie &&
        !fromDecadeCollection &&
+       !fromGangsterCollection &&
        (
         <motion.div
           className="mb-6 sm:mb-8 md:mb-12 bg-gradient-to-br from-gray-800/40 to-gray-900/60 rounded-lg sm:rounded-xl border border-gray-700/50 p-3 sm:p-4 md:p-8 shadow-2xl backdrop-blur-sm relative overflow-hidden"
@@ -1733,6 +1759,7 @@ if (fromPsychologicalThrillerCollection) {
         : fromNeoNoirCollection ? <NeoNoirSEOFAQSection movie={movie} />
         : fromBestActionMoviesCollection ? <BestActionMoviesSEOFAQSection movie={movie} />
         : fromTrueStoryCollection ? <TrueStorySEOFAQSection movie={movie} />
+        : fromGangsterCollection ? <GangsterSEOFAQSection movie={movie} />
         : fromDecadeCollection ? <DecadeSEOFAQSection movie={movie} />
         : fromPrestigeCollection ? <PrestigeSEOFAQSection movie={movie} />
         : fromSe7enCollection ? <Se7enSEOFAQSection movie={movie} />

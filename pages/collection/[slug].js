@@ -55,6 +55,7 @@ import { COMPLETE_MOVIE_DATABASE as THOUGHT_PROVOKING_DATABASE, COMPLETE_MOVIE_D
 import { COMPLETE_MOVIE_DATABASE as NEO_NOIR_DATABASE, COMPLETE_MOVIE_DATA as NEO_NOIR_DATA } from '../../utils/neoNoirMovieData';
 import { COMPLETE_MOVIE_DATABASE as BEST_ACTION_DATABASE, COMPLETE_MOVIE_DATA as BEST_ACTION_DATA } from '../../utils/bestActionMoviesData';
 import { COMPLETE_MOVIE_DATABASE as TRUE_STORY_DATABASE, COMPLETE_MOVIE_DATA as TRUE_STORY_DATA } from '../../utils/trueStoryMovieData';
+import { COMPLETE_MOVIE_DATABASE as GANGSTER_DATABASE, COMPLETE_MOVIE_DATA as GANGSTER_DATA } from '../../utils/gangsterMovieData';
 import { COMPLETE_MOVIE_DATABASE as DECADE_DATABASE, COMPLETE_MOVIE_DATA as DECADE_DATA } from '../../utils/decadeMovieData';
 
 import { COMPLETE_MOVIE_DATABASE as HULU_FAMILY_DATABASE, COMPLETE_MOVIE_DATA as HULU_FAMILY_DATA } from '../../utils/huluFamilyMovieData';
@@ -1616,6 +1617,29 @@ const getCollectionContent = () => {
                 text2: "Each film serves as a defining cultural milestone of the 2020s that will be remembered for generations."
             }
         };
+    } else if (collection.slug === 'best-gangster-movies-of-all-time') {
+        return {
+            badge: "Underworld Legends",
+            title: "Best Gangster Movies of All Time",
+            description: "The defining cinematic masterpieces of the criminal underworld, exploring themes of loyalty, betrayal, and the devastating cost of ruthless ambition.",
+            selection: {
+                text1: "From the iconic sagas of 'The Godfather' to the kinetic realism of 'Goodfellas', these films portray the allure and brutality of organized crime.",
+                text2: "Each selection is a masterclass in character development, intricate plotting, and unflinching realism that has shaped the genre."
+            },
+            ranking: {
+                text: "Our 'Underworld Grit Index' evaluates narrative authenticity, moral complexity, and the raw, visceral impact of each film's portrayal of gangster life.",
+                points: [
+                    "Narrative authenticity & realism",
+                    "Moral complexity & character depth",
+                    "Visceral impact of violence",
+                    "Cinematic legacy & influence"
+                ]
+            },
+            experience: {
+                text1: "Whether you're seeking a grand epic or a street-level exposé, this collection delivers cinema's most compelling gangster narratives.",
+                text2: "Each film offers a deep dive into the psychology of power and loyalty, leaving you questioning the true cost of the criminal dream."
+            }
+        };
     } else if (collection.slug === 'best-heist-thriller-movies') {
         return {
             badge: "Heist Master Cinema",
@@ -2208,6 +2232,11 @@ subtitle: "While everyone searches Netflix, these classics hide in plain sight. 
             title: "10 Best Movies of the Decade (2020-2026)",
             subtitle: "The defining cinematic achievements of the 2020s, ranked by visceral impact"
         };
+    } else if (collection.slug === 'best-gangster-movies-of-all-time') {
+        return {
+            title: "10 Best Gangster Movies of All Time",
+            subtitle: "The defining cinematic masterpieces of loyalty, betrayal & ruthless ambition"
+        };
 
     } else if (collection.slug === 'movies-like-interstellar') {
         return {
@@ -2376,6 +2405,11 @@ const getLoaderContent = () => {
         return {
             title: "Loading Best Movies of the Decade",
             description: "Curating the defining cinematic achievements of the 2020s with community reviews"
+        };
+    } else if (collection?.slug === 'best-gangster-movies-of-all-time') {
+        return {
+            title: "Loading Best Gangster Movies",
+            description: "Curating the defining cinematic masterpieces of the criminal underworld with community reviews"
         };
 
 } else if (collection?.slug === 'movies-like-donnie-darko') {
@@ -2833,6 +2867,15 @@ const getStaticMetaContent = () => {
             ogTitle: "10 Best Movies of the Decade (2020-2026)",
             twitterTitle: "The 10 Best Movies of the Decade You Need to Watch",
             progressText: `of Top ${movies.length} Movies of the Decade`
+        };
+    } else if (collection.slug === 'best-gangster-movies-of-all-time') {
+        return {
+            title: "10 Best Gangster Movies of All Time (Ranked)",
+            description: "The definitive ranking of the 10 greatest gangster movies ever made. From The Godfather to Goodfellas. Includes an exact Timestamps & Parents Guide.",
+            keywords: "best gangster movies, top gangster films, mafia movies, goodfellas, the godfather, organized crime cinema",
+            ogTitle: "10 Best Gangster Movies of All Time: Underworld Legends",
+            twitterTitle: "The 10 Best Gangster Movies of All Time You Need to Watch",
+            progressText: `of Top ${movies.length} Gangster Movies`
         };
 
 
@@ -3442,6 +3485,7 @@ const getStaticMetaContent = () => {
             sessionStorage.removeItem('fromBestActionCollection');
             sessionStorage.removeItem('fromTrueStoryCollection');
             sessionStorage.removeItem('fromDecadeCollection');
+            sessionStorage.removeItem('fromGangsterCollection');
 
             // Set appropriate collection flag âœ…
             if (collection.slug === 'movies-like-inception') {
@@ -3580,6 +3624,8 @@ const getStaticMetaContent = () => {
                 sessionStorage.setItem('fromTrueStoryCollection', 'true');
             } else if (collection.slug === 'best-movies-of-the-decade') {
                 sessionStorage.setItem('fromDecadeCollection', 'true');
+            } else if (collection.slug === 'best-gangster-movies-of-all-time') {
+                sessionStorage.setItem('fromGangsterCollection', 'true');
             }
         }
     };
@@ -4015,6 +4061,8 @@ return (
 ? 'movies/best-true-story-movies/'
 : collection?.slug === 'best-movies-of-the-decade'
 ? 'movies/best-movies-of-the-decade/'
+: collection?.slug === 'best-gangster-movies-of-all-time'
+? 'movies/best-gangster-movies-of-all-time/'
 : collection?.slug === 'best-action-movies-on-hulu'
                                     ? 'movies/best-action-movies-on-hulu/'
 : collection?.slug === 'best-romance-movies-on-hulu'
@@ -4192,13 +4240,8 @@ return (
                         <CinematicHeader />
                     </div>
                     
-                    {/* 2. SEO TEXT: Shows below header on PC (order-2), but drops to the bottom on Mobile (order-3) */}
-                    <div className="order-3 lg:order-2 w-full mt-10 lg:mt-0">
-                        <CinematicExplorerSection currentRank={currentRank} />
-                    </div>
-                    
-                    {/* 3. MOVIE POSTER & CONTROLS: Shows at top on Mobile (order-2), bottom on PC (order-3) */}
-                    <div className="order-2 lg:order-3 w-full flex flex-col">
+                    {/* 2. MOVIE POSTER & CONTROLS: Fixed to order-2 to prevent jumping to bottom on laptop */}
+                    <div className="order-2 w-full flex flex-col mt-2 lg:mt-6">
                         
                         {/* 🎬 Your existing poster code starts here */}
                         <div className="relative flex items-center justify-center min-h-[70vh] sm:min-h-[80vh]">
@@ -4270,6 +4313,8 @@ return (
                                     ? `/movies/best-true-story-movies/${currentMovie.imdbID}`
                                     : collection.slug === 'best-movies-of-the-decade'
                                     ? `/movies/best-movies-of-the-decade/${currentMovie.imdbID}`
+                                    : collection.slug === 'best-gangster-movies-of-all-time'
+                                    ? `/movies/best-gangster-movies-of-all-time/${currentMovie.imdbID}`
                                     : collection.slug === 'best-action-movies-on-hulu'
                                     ? `/movies/best-action-movies-on-hulu/${currentMovie.imdbID}`
                                     : collection.slug === 'best-romance-movies-on-hulu'
@@ -4415,6 +4460,11 @@ return (
                                 </span>
                             </div>
                         </motion.div>
+                    </div>
+
+                    {/* 3. SEO TEXT: Drops below the movie poster to fix layout shift from 10 to 9 */}
+                    <div className="order-3 w-full mt-12 lg:mt-16">
+                        <CinematicExplorerSection currentRank={currentRank} />
                     </div>
                     </main>
 
@@ -4582,6 +4632,9 @@ case 'best-action-movies':
             break;
         case 'best-movies-of-the-decade':
             movieDatabase = DECADE_DATABASE;
+            break;
+        case 'best-gangster-movies-of-all-time':
+            movieDatabase = GANGSTER_DATABASE;
             break;
 
             case 'best-action-movies-on-hulu':

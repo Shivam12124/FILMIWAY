@@ -50,7 +50,7 @@ export const SENSITIVE_TIMELINES = {
     // 2. Goodfellas
     769: { 
         scenes: [
-            { start: "0:48:31", end: "0:48:34", type: "Nudity (Woman)", severity: "Moderate" }
+            { start: "0:48:31", end: "0:48:34", type: "Nudity (Woman) Brief", severity: "Moderate" }
         ]
     },
 

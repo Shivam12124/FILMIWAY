@@ -943,6 +943,22 @@ export const COLLECTIONS = {
     relatedCollections: ['best-sci-fi-movies', 'best-thought-provoking-movies', 'best-movies-on-hbo-max']
   },
 
+// 🎩 10 BEST GANGSTER MOVIES OF ALL TIME
+  'best-gangster-movies-of-all-time': {
+    slug: 'best-gangster-movies-of-all-time',
+    title: '10 Best Gangster Movies of All Time',
+    stats: { averageRating: 8.3 },
+    badges: [
+      { label: "MOBSTERS", desc: "Organized crime" },
+      { label: "LOYALTY", desc: "Family above all" },
+      { label: "RUTHLESS", desc: "Violent ambition" }
+    ],
+    // The Godfather Part II, The Godfather, Goodfellas, City of God, Once Upon a Time in America, Casino, Scarface, Eastern Promises, Carlito's Way, Gangs of New York
+    movies: ['tt0071562', 'tt0068646', 'tt0099685', 'tt0317248', 'tt0087843', 'tt0112641', 'tt0086250', 'tt0765443', 'tt0106519', 'tt0217505'],
+    relatedCollections: ['best-crime-thriller-movies', 'best-neo-noir-movies', 'best-movies-about-greed']
+  },
+
+
   // 🩸 BEST THRILLER MOVIES
   'best-thriller-movies': {
     slug: 'best-thriller-movies',
@@ -991,6 +1007,7 @@ export const getThrillerCollection = () => COLLECTIONS['best-thriller-movies'];
 export const getNeoNoirCollection = () => COLLECTIONS['best-neo-noir-movies'];
 export const getTrueStoryCollection = () => COLLECTIONS['best-true-story-movies'];
 export const getDecadeCollection = () => COLLECTIONS['best-movies-of-the-decade'];
+export const getGangsterCollection = () => COLLECTIONS['best-gangster-movies-of-all-time'];
 export const getBestActionCollection = () => COLLECTIONS['best-action-movies'];
 // ============================================================================
 // 🧠 THE MASTER CANONICAL BRAIN
