@@ -448,6 +448,7 @@ const getHighestSeverityInfo = (scenes) => {
 };
 
 // 🔥 7. THE "GOLDEN EGG" SCHEMA GENERATOR
+// 🔥 7. THE "GOLDEN EGG" SCHEMA GENERATOR
 export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, collectionSlug, unused, movieInfo) => {
     let currentRuntime = movie.Runtime || movie.runtime || "Official";
     if (typeof currentRuntime === 'number') currentRuntime = `${currentRuntime} min`;
@@ -455,15 +456,15 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
     const sensitiveScenes = SENSITIVE_TIMELINES[movie.tmdbId]?.scenes || [];
     const heavyScenes = sensitiveScenes.filter(s => {
         const t = s.type?.toLowerCase() || '';
-        return t.includes('sex') || t.includes('nudity') || t.includes('explicit') || t.includes('violence') || t.includes('gore') || t.includes('disturbing') || t.includes('drug'); 
+        return t.includes('sex') || t.includes('nudity') || t.includes('explicit') || t.includes('suggestive') || t.includes('lingerie') || t.includes('bikini'); 
     });
 
     const sceneCount = heavyScenes.length;
     let schemaDesc = '';
     if (sceneCount > 0) {
-        schemaDesc = `${movie.Title} Parents Guide with exact mature content timestamps. ${sceneCount} scenes manually verified frame by frame by Filmiway editors for the ${currentRuntime} runtime.`;
+        schemaDesc = `${movie.Title} Parents Guide with exact sex & nudity timestamps. ${sceneCount} scenes manually verified frame by frame by Filmiway editors for the ${currentRuntime} runtime.`;
     } else {
-        schemaDesc = `${movie.Title} Parents Guide. Filmiway editors have manually verified zero explicit scenes in the full ${currentRuntime} runtime.`;
+        schemaDesc = `${movie.Title} Parents Guide. Filmiway editors have manually verified zero sex scenes or nudity in the full ${currentRuntime} runtime.`;
     }
 
     const movieSchema = {
@@ -483,46 +484,51 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
     const staticFaqs = TRUE_STORY_MOVIE_FAQS[movie.Title] ? [...TRUE_STORY_MOVIE_FAQS[movie.Title]] : [];
     const intensityScenes = movieInfo?.scenes || [];
     
-    const schemaFaqs = staticFaqs.map(faq => ({ 
-        '@type': 'Question', 
-        'name': faq.question, 
-        'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer } 
-    }));
-
-    if (intensityScenes.length > 0) {
-        const schemaIntensityList = intensityScenes.map(s => `<li>Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)</li>`).join('');
-        schemaFaqs.unshift({
-            '@type': 'Question',
-            'name': `What are the most intense scenes in ${movie.Title}?`,
-            'acceptedAnswer': { 
-                '@type': 'Answer', 
-                'text': `According to the Filmiway Intensity metric, ${movie.Title} peaks at the following moments:<br><br><ul>${schemaIntensityList}</ul>` 
-            }
-        });
-    }
-
-    if (heavyScenes.length > 0) {
-        const typesArray = getSensitiveContentTypes(movie.tmdbId) || ['mature content'];
-        const typesString = typesArray.join(', ');
-        const totalSkipTime = calculateSkipStats(heavyScenes);
-        const firstTimestamp = heavyScenes[0].start;
-        const firstSeverity = heavyScenes[0].severity || 'Moderate';
-
-        const schemaListText = heavyScenes.map(s => {
-            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
-            const fullType = s.severity ? `${s.type} (${s.severity})` : (s.type || 'Mature Content');
-            return `<li>${timeRange} - ${fullType}</li>`;
-        }).join('');
-
-        const startTimesList = heavyScenes.map(s => s.start).join(', ');
-
-        const familyFaqSchema = typesArray.length > 0 
-            ? {
-                '@type': 'Question',
+       const schemaFaqs = staticFaqs.map(faq => ({ 
+           '@type': 'Question', 
+           'name': faq.question, 
+           'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer } 
+       }));
+   
+       if (intensityScenes.length > 0) {
+           const schemaIntensityList = intensityScenes.map(s => `<li>Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)</li>`).join('');
+           schemaFaqs.unshift({
+               '@type': 'Question',
+               'name': `What are the most intense scenes in ${movie.Title}?`,
+               'acceptedAnswer': { 
+                   '@type': 'Answer', 
+                   'text': `According to the Filmiway Intensity metric, ${movie.Title} peaks at the following moments:<br><br><ul>${schemaIntensityList}</ul>` 
+               }
+           });
+       }
+   
+       if (heavyScenes.length > 0) {
+           const typesArray = getSensitiveContentTypes(movie.tmdbId) || ['mature content'];
+           const typesString = typesArray.join(' and ');
+           const totalSkipTime = calculateSkipStats(heavyScenes);
+           const firstTimestamp = heavyScenes[0].start;
+           const firstSeverity = heavyScenes[0].severity || 'Moderate';
+           const overallSeverity = getHighestSeverityInfo(heavyScenes);
+   
+           const schemaListText = heavyScenes.map(s => {
+               const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
+               const fullType = s.severity ? `${s.type} (${s.severity})` : (s.type || 'Mature Content');
+               return `<li>${timeRange} - ${fullType}</li>`;
+           }).join('');
+   
+           const startTimesList = heavyScenes.map(s => s.start).join(', ');
+   
+           // Filter out suggestive clothing to determine if it's truly unsafe for family
+           const familyUnsafeTypes = typesArray.filter(t => t !== 'suggestive clothing');
+           const familyUnsafeString = familyUnsafeTypes.join(' and ');
+   
+           const familyFaqSchema = familyUnsafeTypes.length > 0 
+               ? {
+      '@type': 'Question',
                 'name': `Is ${movie.Title} safe to watch with family?`,
                 'acceptedAnswer': {
                     '@type': 'Answer',
-                    'text': `No. ${movie.Title} is not safe to watch with family because it contains ${typesString}. Adults can use Filmiway's timestamps to skip all ${sceneCount} sensitive scenes in the ${currentRuntime} runtime.`
+                    'text': `No. ${movie.Title} is not safe to watch with family because it contains ${familyUnsafeString}. Adults can use Filmiway's timestamps to skip all ${sceneCount} scenes in the ${currentRuntime} runtime.`
                 }
             }
             : {
@@ -530,25 +536,25 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
                 'name': `Is ${movie.Title} safe to watch with family?`,
                 'acceptedAnswer': {
                     '@type': 'Answer',
-                    'text': `Filmiway editors have verified that ${movie.Title} does not contain explicit severe content in the full ${currentRuntime} runtime, but discretion is advised for historical themes.`
+                    'text': `Yes, regarding explicit sexual content. Filmiway editors have manually verified that ${movie.Title} does not have any sex, nudity, or sexual content in the full ${currentRuntime} runtime.`
                 }
             };
 
         schemaFaqs.unshift(
             {
                 '@type': 'Question',
-                'name': `Does ${movie.Title} have explicit content, violence or nudity?`,
+                'name': `Does ${movie.Title} have sex scenes or nudity?`,
                 'acceptedAnswer': { 
                     '@type': 'Answer', 
-                    'text': `Yes. ${movie.Title} contains ${sceneCount} scenes featuring ${typesString}. Exact timestamps:<br><br><ul>${schemaListText}</ul><br>Manually verified frame by frame by Filmiway editors for the ${currentRuntime} runtime.` 
+                    'text': `Yes. ${movie.Title} contains ${sceneCount} scenes of ${typesString}. Exact timestamps:<br><br><ul>${schemaListText}</ul><br>Manually verified frame by frame by Filmiway editors for the ${currentRuntime} runtime.` 
                 }
             },
             {
                 '@type': 'Question',
-                'name': `What time does mature content appear in ${movie.Title} and how do I skip it?`,
+                'name': `What time does nudity appear in ${movie.Title} and how do I skip it?`,
                 'acceptedAnswer': {
                     '@type': 'Answer',
-                    'text': `Mature content first appears at ${firstTimestamp} (${firstSeverity}). Total time to skip: ${totalSkipTime} across ${sceneCount} scenes. Skip timestamps: ${startTimesList}. Verified for the ${currentRuntime} version.`
+                    'text': `Explicit content first appears at ${firstTimestamp} (${firstSeverity}). Total time to skip: ${totalSkipTime} across ${sceneCount} scenes. Skip timestamps: ${startTimesList}. Verified for the ${currentRuntime} version.`
                 }
             },
             familyFaqSchema
@@ -557,10 +563,10 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
         schemaFaqs.unshift(
             {
                 '@type': 'Question',
-                'name': `Does ${movie.Title} have explicit scenes, violence or nudity?`,
+                'name': `Does ${movie.Title} have sex scenes or nudity?`,
                 'acceptedAnswer': { 
                     '@type': 'Answer', 
-                    'text': `No. Filmiway editors have manually verified that ${movie.Title} is free of explicit mature scenes.` 
+                    'text': `No. Filmiway editors have manually verified that ${movie.Title} is free of explicit sex scenes and nudity.` 
                 }
             },
             {
@@ -568,7 +574,7 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
                 'name': `Is ${movie.Title} safe to watch with family?`,
                 'acceptedAnswer': { 
                     '@type': 'Answer', 
-                    'text': `Yes, regarding explicit content. Filmiway editors have manually verified that ${movie.Title} is clean in the full ${currentRuntime} runtime, though historical themes may require parental guidance.` 
+                    'text': `Yes, regarding explicit sexual content. Filmiway editors have manually verified that ${movie.Title} does not have any sex, nudity, or sexual content in the full ${currentRuntime} runtime.` 
                 }
             }
         );
@@ -583,7 +589,6 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
 
     return { movieSchema, faqSchema };
 };
-
 // 🔥 8. FRONTEND UI SYNC
 export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Official") => {
     const staticFaqs = TRUE_STORY_MOVIE_FAQS[movieTitle] ? [...TRUE_STORY_MOVIE_FAQS[movieTitle]] : [];
@@ -605,63 +610,70 @@ ${uiIntensityList}`
         });
     }
 
-    const heavyScenes = sensitiveScenes.filter(s => {
-        const t = s.type?.toLowerCase() || '';
-        return t.includes('sex') || t.includes('nudity') || t.includes('explicit') || t.includes('violence') || t.includes('gore') || t.includes('disturbing') || t.includes('drug');
-    });
-
-    if (heavyScenes.length > 0) {
-        const typesArray = getSensitiveContentTypes(tmdbId) || ['mature content'];
-        const typesString = typesArray.join(', ');
-        const sceneCount = heavyScenes.length;
-        const totalSkipTime = calculateSkipStats(heavyScenes);
-        const firstTimestamp = heavyScenes[0].start;
-        const firstSeverity = heavyScenes[0].severity || 'Moderate';
-
-        const uiDetailedList = heavyScenes.map(s => {
-            const timeRange = s.end ? `${s.start}–${s.end}` : s.start;
-            const fullType = s.severity ? `${s.type || 'Mature Content'}, ${s.severity}` : (s.type || 'Mature Content');
-            return `• ${timeRange} (${fullType})`;
-        }).join('\n');
-        
-        const startTimesList = heavyScenes.map(s => s.start).join(', ');
-
-           const familyUnsafeTypes = typesArray.filter(t => t !== 'suggestive clothing');
-        const familyUnsafeString = familyUnsafeTypes.join(' and ');
-
-        const familyFaqUI = familyUnsafeTypes.length > 0
-            ? {
-                question: `Is ${movieTitle} safe to watch with family?`,
-                answer: `No. ${movieTitle} is not safe to watch with family because it contains ${familyUnsafeString}. Adults can use Filmiway's timestamps to skip all ${sceneCount} scenes in the ${finalRuntime} runtime.`
-            }
-            : {
-                question: `Is ${movieTitle} safe to watch with family?`,
+ 
+     const heavyScenes = sensitiveScenes.filter(s => {
+         const t = s.type?.toLowerCase() || '';
+         return t.includes('sex') || t.includes('nudity') || t.includes('explicit') || t.includes('suggestive') || t.includes('lingerie') || t.includes('bikini');
+     });
+ 
+     if (heavyScenes.length > 0) {
+         const typesArray = getSensitiveContentTypes(tmdbId) || ['mature content'];
+         const typesString = typesArray.join(' and ');
+         const sceneCount = heavyScenes.length;
+         const totalSkipTime = calculateSkipStats(heavyScenes);
+         const firstTimestamp = heavyScenes[0].start;
+         const firstSeverity = heavyScenes[0].severity || 'Moderate';
+         const overallSeverity = getHighestSeverityInfo(heavyScenes);
+ 
+         const uiDetailedList = heavyScenes.map(s => {
+             const timeRange = s.end ? `${s.start}–${s.end}` : s.start;
+             const fullType = s.severity ? `${s.type || 'Mature Content'}, ${s.severity}` : (s.type || 'Mature Content');
+             return `• ${timeRange} (${fullType})`;
+         }).join('\n');
+         
+         const startTimesList = heavyScenes.map(s => s.start).join(', ');
+ 
+         // Filter out suggestive clothing for the UI as well
+         const familyUnsafeTypes = typesArray.filter(t => t !== 'suggestive clothing');
+         const familyUnsafeString = familyUnsafeTypes.join(' and ');
+ 
+         const familyFaqUI = familyUnsafeTypes.length > 0
+             ? {
+                 question: `Is ${movieTitle} safe to watch with family?`,
+                 answer: `No. ${movieTitle} is not safe to watch with family because it contains ${familyUnsafeString}. Adults can use Filmiway's timestamps to skip all ${sceneCount} scenes in the ${finalRuntime} runtime.`
+             }
+             : {
+                 question: `Is ${movieTitle} safe to watch with family?`,
                  answer: `Yes. Filmiway editors have manually verified that ${movieTitle} is completely free of sex, nudity, and sexual content throughout its entire ${finalRuntime} runtime.`
-            };
-
-        staticFaqs.unshift(
-            {
-                question: `Does ${movieTitle} have explicit scenes or extreme violence?`,
-                answer: `Yes. ${movieTitle} contains ${sceneCount} scenes of ${typesString}. Exact timestamps:\n\n${uiDetailedList}\n\nManually verified frame by frame by Filmiway editors for the ${finalRuntime} runtime.`
-            },
-            {
-                question: `What time does explicit content appear in ${movieTitle} and how do I skip it?`,
-                answer: `Explicit content first appears at ${firstTimestamp} (${firstSeverity}). Total time to skip: ${totalSkipTime} across ${sceneCount} scenes. Skip timestamps: ${startTimesList}. Verified for the ${finalRuntime} version.`
-            },
-            familyFaqUI
-        );
-    } else {
-        staticFaqs.unshift(
-            {
-                question: `Does ${movieTitle} have explicit scenes?`,
-                answer: `No. Filmiway editors have manually verified that ${movieTitle} is free of explicit scenes.`
-            },
-            {
-                question: `Is ${movieTitle} safe to watch with family?`,
-                               answer: `Yes. Filmiway editors have manually verified that ${movieTitle} is completely free of sex, nudity, and sexual content throughout its entire ${finalRuntime} runtime.`
-            }
-        );
-    }
-
-    return staticFaqs;
-};
+             };
+ 
+         staticFaqs.unshift(
+             {
+                 question: `Does ${movieTitle} have sex scenes or nudity?`,
+                 answer: `Yes. ${movieTitle} contains ${sceneCount} scenes of ${typesString}. Exact timestamps:
+ 
+ ${uiDetailedList}
+ 
+ Manually verified frame by frame by Filmiway editors for the ${finalRuntime} runtime.`
+             },
+             {
+                 question: `What time does nudity appear in ${movieTitle} and how do I skip it?`,
+                 answer: `Explicit content first appears at ${firstTimestamp} (${firstSeverity}). Total time to skip: ${totalSkipTime} across ${sceneCount} scenes. Skip timestamps: ${startTimesList}. Verified for the ${finalRuntime} version.`
+             },
+             familyFaqUI
+         );
+     } else {
+         staticFaqs.unshift(
+             {
+                 question: `Does ${movieTitle} have sex scenes or nudity?`,
+                 answer: `No. Filmiway editors have manually verified that ${movieTitle} is free of explicit sex scenes and nudity.`
+             },
+             {
+                 question: `Is ${movieTitle} safe to watch with family?`,
+                 answer: `Yes. Filmiway editors have manually verified that ${movieTitle} is completely free of sex, nudity, and sexual content throughout its entire ${finalRuntime} runtime.`
+             }
+         );
+     }
+ 
+     return staticFaqs;
+ };
