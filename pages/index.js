@@ -326,8 +326,8 @@ const FilmiwayHomepage = ({ huluCollections, mindBendingCollections, thrillerCol
         </main>
 
         <div className="container mx-auto px-4 sm:px-6 py-12 sm:py-16 bg-[#111] border-y border-white/5 mb-12 text-center">
-          <h2 className="text-lg sm:text-xl font-medium text-white mb-2 tracking-tight">Expanding The Catalog</h2>
-          <p className="text-gray-400 text-sm font-light max-w-md mx-auto">We are continuously curating new collections to help you discover cinema even faster.</p>
+          <h2 className="text-lg sm:text-xl font-medium text-white mb-2 tracking-tight">A Revolutionary New Feature is Cooking</h2>
+          <p className="text-gray-400 text-sm font-light max-w-md mx-auto">Stay tuned for a groundbreaking new way to experience and discover cinema.</p>
         </div>
 
         <footer className="bg-black py-8 sm:py-12 border-t border-gray-800">
@@ -356,6 +356,7 @@ const FilmiwayHomepage = ({ huluCollections, mindBendingCollections, thrillerCol
                   <li><Link href="/collection/best-crime-thriller-movies" className="hover:text-white transition-colors inline-block py-1">Crime</Link></li>
                   <li><Link href="/collection/best-mystery-thriller-movies" className="hover:text-white transition-colors inline-block py-1">Mystery</Link></li>
                   <li><Link href="/collection/best-erotic-thriller-movies" className="hover:text-white transition-colors inline-block py-1">Erotic Thrillers</Link></li>
+                  <li><Link href="/collection/best-true-story-movies" className="hover:text-white transition-colors inline-block py-1">True Story</Link></li>
                 </ul>
               </div>
               <div>

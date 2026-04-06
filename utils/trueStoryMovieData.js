@@ -408,7 +408,7 @@ const calculateSkipStats = (scenes) => {
     return secs > 0 ? `${mins} min ${secs} sec` : `${mins} min`;
 };
 
-// 🔥 6. THE KEYWORD BRIDGE (Updated for True Story/War/Crime content)
+// 🔥 6. THE KEYWORD BRIDGE
 export const getSensitiveContentTypes = (tmdbId) => {
     const sensitiveData = SENSITIVE_TIMELINES[tmdbId];
     if (!sensitiveData?.scenes?.length) return null;
@@ -419,28 +419,21 @@ export const getSensitiveContentTypes = (tmdbId) => {
         if (lowerType.includes('sexual content')) types.add('sexual content');
         else if (lowerType.match(/\bsex\b/)) types.add('sex');
         else if (lowerType.includes('explicit')) types.add('explicit content');
-        
+
         if (lowerType.includes('partial nudity')) types.add('partial nudity');
         else if (lowerType.includes('nudity')) types.add('nudity');
-        
-        if (lowerType.includes('suggestive') || lowerType.includes('lingerie')) types.add('suggestive clothing');
-        
-        // NEW ADDITIONS for True Story realism
-        if (lowerType.includes('extreme violence')) types.add('extreme violence');
-        else if (lowerType.includes('violence')) types.add('violence');
-        if (lowerType.includes('gore')) types.add('gore');
-        if (lowerType.includes('disturbing')) types.add('disturbing content');
-        if (lowerType.includes('drug')) types.add('drug use');
-        if (lowerType.includes('abuse')) types.add('abuse');
+        if (lowerType.includes('suggestive') || lowerType.includes('lingerie') || lowerType.includes('bikini')) types.add('suggestive clothing');
     });
     return Array.from(types);
 };
 
-// 🔥 HELPER TO CALCULATE SEVERITY METRICS WITH 2+ EXTREME LOGIC
+// 🔥 NEW: HELPER TO CALCULATE SEVERITY METRICS WITH 2+ EXTREME LOGIC
 const getHighestSeverityInfo = (scenes) => {
     const severities = scenes.map(s => (s.severity || 'Moderate').toLowerCase());
     const extremeCount = severities.filter(s => s === 'extreme').length;
     
+    // User's flawless logic: 2+ Extreme means the whole movie is Extreme. 
+    // Otherwise, we cap the warning at High.
     if (extremeCount >= 2) return 'Extreme';
     if (severities.includes('high') || extremeCount === 1) return 'High';
     if (severities.includes('moderate')) return 'Moderate';
