@@ -958,6 +958,21 @@ export const COLLECTIONS = {
     relatedCollections: ['best-crime-thriller-movies', 'best-neo-noir-movies', 'best-movies-about-greed']
   },
 
+  // 📖 TOP 10 BOOK ADAPTATIONS
+  'top-10-book-adaptations': {
+    slug: 'top-10-book-adaptations',
+    title: 'The 10 Best Book-to-Movie Adaptations of All Time',
+    stats: { averageRating: 8.2 },
+    badges: [
+      { label: "LITERARY", desc: "Page to screen" },
+      { label: "FAITHFUL", desc: "Honors the source" },
+      { label: "MASTERPIECE", desc: "Cinematic triumphs" }
+    ],
+    movies: ['tt0111161', 'tt0167260', 'tt0073486', 'tt0120689', 'tt0117951', 'tt3170832', 'tt0388795', 'tt0976051', 'tt2402927', 'tt1441395'],
+    relatedCollections: ['best-thought-provoking-movies', 'best-drama-movies-on-hbo-max', 'best-movies-on-hbo-max']
+  },
+
+
 
   // 🩸 BEST THRILLER MOVIES
   'best-thriller-movies': {
@@ -1008,6 +1023,7 @@ export const getNeoNoirCollection = () => COLLECTIONS['best-neo-noir-movies'];
 export const getTrueStoryCollection = () => COLLECTIONS['best-true-story-movies'];
 export const getDecadeCollection = () => COLLECTIONS['best-movies-of-the-decade'];
 export const getGangsterCollection = () => COLLECTIONS['best-gangster-movies-of-all-time'];
+export const getBookAdaptationsCollection = () => COLLECTIONS['top-10-book-adaptations'];
 export const getBestActionCollection = () => COLLECTIONS['best-action-movies'];
 // ============================================================================
 // 🧠 THE MASTER CANONICAL BRAIN

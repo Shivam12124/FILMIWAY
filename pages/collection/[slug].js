@@ -57,6 +57,7 @@ import { COMPLETE_MOVIE_DATABASE as BEST_ACTION_DATABASE, COMPLETE_MOVIE_DATA as
 import { COMPLETE_MOVIE_DATABASE as TRUE_STORY_DATABASE, COMPLETE_MOVIE_DATA as TRUE_STORY_DATA } from '../../utils/trueStoryMovieData';
 import { COMPLETE_MOVIE_DATABASE as GANGSTER_DATABASE, COMPLETE_MOVIE_DATA as GANGSTER_DATA } from '../../utils/gangsterMovieData';
 import { COMPLETE_MOVIE_DATABASE as DECADE_DATABASE, COMPLETE_MOVIE_DATA as DECADE_DATA } from '../../utils/decadeMovieData';
+import { COMPLETE_MOVIE_DATABASE as BOOK_ADAPTATION_DATABASE, COMPLETE_MOVIE_DATA as BOOK_ADAPTATION_DATA } from '../../utils/bookAdaptationData';
 
 import { COMPLETE_MOVIE_DATABASE as HULU_FAMILY_DATABASE, COMPLETE_MOVIE_DATA as HULU_FAMILY_DATA } from '../../utils/huluFamilyMovieData';
 import { COMPLETE_MOVIE_DATABASE as HBO_ACTION_DATABASE, COMPLETE_MOVIE_DATA as HBO_ACTION_DATA } from '../../utils/hboActionMovieData';
@@ -1640,6 +1641,29 @@ const getCollectionContent = () => {
                 text2: "Each film offers a deep dive into the psychology of power and loyalty, leaving you questioning the true cost of the criminal dream."
             }
         };
+    } else if (collection.slug === 'top-10-book-adaptations') {
+        return {
+            badge: "Literary Cinema",
+            title: "Top 10 Book Adaptations",
+            description: "The definitive ranking of the best movies based on books, honoring literary depth, page-to-screen fidelity, and timeless storytelling.",
+            selection: {
+                text1: "From the sweeping fantasy of The Lord of the Rings to the profound humanity of The Shawshank Redemption.",
+                text2: "Each selection has been chosen for its ability to honor the original text while elevating it into an unforgettable cinematic experience."
+            },
+            ranking: {
+                text: "Our 'Literary Depth Index' evaluates source material fidelity, thematic resonance, and cinematic execution.",
+                points: [
+                    "Fidelity to the source material",
+                    "Thematic depth & resonance",
+                    "Cinematic elevation of the text",
+                    "Overall literary impact"
+                ]
+            },
+            experience: {
+                text1: "Whether you're a book purist or a cinema lover, this collection delivers the finest translations of the written word.",
+                text2: "Each film stands as a testament to the power of adaptation when placed in the hands of visionary filmmakers."
+            }
+        };
     } else if (collection.slug === 'best-heist-thriller-movies') {
         return {
             badge: "Heist Master Cinema",
@@ -2237,6 +2261,11 @@ subtitle: "While everyone searches Netflix, these classics hide in plain sight. 
             title: "10 Best Gangster Movies of All Time",
             subtitle: "The defining cinematic masterpieces of loyalty, betrayal & ruthless ambition"
         };
+    } else if (collection.slug === 'top-10-book-adaptations') {
+        return {
+            title: "10 Best Book Adaptations of All Time",
+            subtitle: "Page-to-screen masterpieces ranked by literary depth & cinematic impact"
+        };
 
     } else if (collection.slug === 'movies-like-interstellar') {
         return {
@@ -2410,6 +2439,11 @@ const getLoaderContent = () => {
         return {
             title: "Loading Best Gangster Movies",
             description: "Curating the defining cinematic masterpieces of the criminal underworld with community reviews"
+        };
+    } else if (collection?.slug === 'top-10-book-adaptations') {
+        return {
+            title: "Loading Best Book Adaptations",
+            description: "Curating literary masterpieces and cinematic translations with community reviews"
         };
 
 } else if (collection?.slug === 'movies-like-donnie-darko') {
@@ -2876,6 +2910,15 @@ const getStaticMetaContent = () => {
             ogTitle: "10 Best Gangster Movies of All Time: Underworld Legends",
             twitterTitle: "The 10 Best Gangster Movies of All Time You Need to Watch",
             progressText: `of Top ${movies.length} Gangster Movies`
+        };
+    } else if (collection.slug === 'top-10-book-adaptations') {
+        return {
+            title: "10 Best Movies Based on Books (Ranked)",
+            description: "The definitive ranking of the 10 best book-to-movie adaptations. From The Shawshank Redemption to The Lord of the Rings. Includes an exact Timestamps & Parents Guide.",
+            keywords: "best book adaptations, movies based on books, top 10 book to movie, best literary films, the shawshank redemption, lord of the rings",
+            ogTitle: "10 Best Book Adaptations of All Time: Page to Screen",
+            twitterTitle: "The 10 Best Movies Based on Books You Need to Watch",
+            progressText: `of Top ${movies.length} Book Adaptations`
         };
 
 
@@ -3486,6 +3529,7 @@ const getStaticMetaContent = () => {
             sessionStorage.removeItem('fromTrueStoryCollection');
             sessionStorage.removeItem('fromDecadeCollection');
             sessionStorage.removeItem('fromGangsterCollection');
+            sessionStorage.removeItem('fromBookAdaptationCollection');
 
             // Set appropriate collection flag âœ…
             if (collection.slug === 'movies-like-inception') {
@@ -3626,6 +3670,8 @@ const getStaticMetaContent = () => {
                 sessionStorage.setItem('fromDecadeCollection', 'true');
             } else if (collection.slug === 'best-gangster-movies-of-all-time') {
                 sessionStorage.setItem('fromGangsterCollection', 'true');
+            } else if (collection.slug === 'top-10-book-adaptations') {
+                sessionStorage.setItem('fromBookAdaptationCollection', 'true');
             }
         }
     };
@@ -4063,6 +4109,8 @@ return (
 ? 'movies/best-movies-of-the-decade/'
 : collection?.slug === 'best-gangster-movies-of-all-time'
 ? 'movies/best-gangster-movies-of-all-time/'
+: collection?.slug === 'top-10-book-adaptations'
+? 'movies/top-10-book-adaptations/'
 : collection?.slug === 'best-action-movies-on-hulu'
                                     ? 'movies/best-action-movies-on-hulu/'
 : collection?.slug === 'best-romance-movies-on-hulu'
@@ -4315,6 +4363,8 @@ return (
                                     ? `/movies/best-movies-of-the-decade/${currentMovie.imdbID}`
                                     : collection.slug === 'best-gangster-movies-of-all-time'
                                     ? `/movies/best-gangster-movies-of-all-time/${currentMovie.imdbID}`
+                                    : collection.slug === 'top-10-book-adaptations'
+                                    ? `/movies/top-10-book-adaptations/${currentMovie.imdbID}`
                                     : collection.slug === 'best-action-movies-on-hulu'
                                     ? `/movies/best-action-movies-on-hulu/${currentMovie.imdbID}`
                                     : collection.slug === 'best-romance-movies-on-hulu'
@@ -4635,6 +4685,9 @@ case 'best-action-movies':
             break;
         case 'best-gangster-movies-of-all-time':
             movieDatabase = GANGSTER_DATABASE;
+            break;
+        case 'top-10-book-adaptations':
+            movieDatabase = BOOK_ADAPTATION_DATABASE;
             break;
 
             case 'best-action-movies-on-hulu':

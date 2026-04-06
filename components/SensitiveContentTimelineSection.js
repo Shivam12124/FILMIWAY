@@ -1,11 +1,15 @@
 // components/SensitiveContentTimelineSection.js
 import React, { useMemo, useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Shield, CheckCircle, Clock, AlertOctagon, Info, Film, FastForward, Eye, Heart, Swords, MessageSquare, AlertTriangle } from 'lucide-react';
+import { Shield, CheckCircle, Clock, AlertOctagon, Info, Film, FastForward, Eye, Heart, Swords, MessageSquare, AlertTriangle, ThumbsUp, ThumbsDown } from 'lucide-react';
 
 // Import formatting functions from BOTH data sources
 import { formatSensitiveTimeline as formatInceptionTimeline, getSensitiveContentTypes as getInceptionContentTypes } from '../utils/movieData';
 import { formatSensitiveTimeline as formatSurvivalTimeline, getSensitiveContentTypes as getSurvivalContentTypes } from '../utils/survivalMovieData';
+
+// Firebase imports for real data tracking
+import { doc, getDoc, setDoc, updateDoc, increment } from 'firebase/firestore';
+import { db } from '../firebaseConfig';
 
 const COLORS = {
     warningBg: 'rgba(127, 29, 29, 0.15)',
@@ -22,6 +26,11 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
     const [showInfo, setShowInfo] = useState(false);
     const infoRef = useRef(null);
 
+    // --- REAL FIREBASE VOTE STATE ---
+    const [helpfulCount, setHelpfulCount] = useState(0);
+    const [hasVoted, setHasVoted] = useState(false);
+    const [isVoting, setIsVoting] = useState(false);
+
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (infoRef.current && !infoRef.current.contains(event.target)) {
@@ -30,11 +39,70 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
         };
         document.addEventListener('mousedown', handleClickOutside);
         document.addEventListener('touchstart', handleClickOutside);
+        
+        // 🔥 Check if user already voted for this movie using their browser storage
+        if (typeof window !== 'undefined' && movie?.tmdbId) {
+            const previouslyVoted = localStorage.getItem(`filmiway_voted_${movie.tmdbId}`);
+            if (previouslyVoted) {
+                setHasVoted(true);
+            }
+        }
+
+        // 🔥 Fetch REAL vote count from Firebase on mount
+        const fetchVotes = async () => {
+            if (!movie?.tmdbId) return;
+            try {
+                const voteDoc = await getDoc(doc(db, 'helpful_votes', movie.tmdbId.toString()));
+                if (voteDoc.exists()) {
+                    setHelpfulCount(voteDoc.data().count || 0);
+                }
+            } catch (error) {
+                console.error("Error fetching helpful votes:", error);
+            }
+        };
+        fetchVotes();
+
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
             document.removeEventListener('touchstart', handleClickOutside);
         };
-    }, []);
+    }, [movie?.tmdbId]);
+
+    // 🔥 Handle REAL Firebase vote submission
+    const handleVote = async () => {
+        if (hasVoted || isVoting || !movie?.tmdbId) return;
+        setIsVoting(true);
+        
+        // Optimistic UI update (feels instant to the user)
+        setHasVoted(true);
+        setHelpfulCount(prev => prev + 1);
+
+        // 🔥 Save to localStorage so it remembers even if they refresh the page
+        if (typeof window !== 'undefined') {
+            localStorage.setItem(`filmiway_voted_${movie.tmdbId}`, 'true');
+        }
+
+        try {
+            const voteRef = doc(db, 'helpful_votes', movie.tmdbId.toString());
+            const voteDoc = await getDoc(voteRef);
+            
+            if (voteDoc.exists()) {
+                await updateDoc(voteRef, { count: increment(1) });
+            } else {
+                await setDoc(voteRef, { count: 1 });
+            }
+        } catch (error) {
+            console.error("Error submitting vote:", error);
+            // Revert on failure (optional, but good practice)
+            setHasVoted(false);
+            setHelpfulCount(prev => prev - 1);
+            if (typeof window !== 'undefined') {
+                localStorage.removeItem(`filmiway_voted_${movie.tmdbId}`);
+            }
+        } finally {
+            setIsVoting(false);
+        }
+    };
 
     const extractExactTypes = (scenes) => {
         if (!scenes || !Array.isArray(scenes)) return [];
@@ -314,9 +382,36 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                     })}
                 </div>
 
-                <div className="bg-black/40 p-2.5 sm:p-3 flex items-center justify-center gap-2 text-[9px] sm:text-[10px] text-gray-500 uppercase tracking-[0.2em] border-t border-white/5">
-                    <Shield size={12} className="text-emerald-500/50" />
-                    <span className="text-center">Manually Verified • {currentRuntime}</span>
+                <div className="bg-black/40 p-3 sm:p-4 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 border-t border-white/5">
+                    <div className="flex items-center gap-2 text-[9px] sm:text-[10px] text-gray-500 uppercase tracking-[0.2em]">
+                        <Shield size={12} className="text-emerald-500/50 shrink-0" />
+                        <span className="truncate">Manually Verified • {currentRuntime}</span>
+                    </div>
+                    
+                    <div className="flex items-center gap-4">
+                        {/* 🔥 THRESHOLD LOGIC: Only show text if real count > 5 */}
+                        {helpfulCount > 5 && (
+                            <span className="text-xs text-gray-400 hidden sm:inline-block">
+                                <strong className="text-gray-200 font-medium">{helpfulCount} people</strong> found this guide helpful.
+                            </span>
+                        )}
+                        
+                        <button 
+                            onClick={handleVote}
+                            disabled={hasVoted || isVoting}
+                            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md transition-all text-xs font-medium border ${
+                                hasVoted 
+                                ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400 cursor-default' 
+                                : 'bg-transparent hover:bg-white/5 border-white/10 text-gray-400 hover:text-gray-200 cursor-pointer'
+                            }`}
+                        >
+                            {hasVoted ? (
+                                <><CheckCircle size={14} /> Thank you!</>
+                            ) : (
+                                <><ThumbsUp size={14} className="opacity-70" /> Yes, this was helpful</>
+                            )}
+                        </button>
+                    </div>
                 </div>
             </div>
         </motion.section>

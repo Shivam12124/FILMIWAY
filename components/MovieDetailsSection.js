@@ -263,6 +263,10 @@ import {
   COMPLETE_MOVIE_DATA as GANGSTER_MOVIE_DATA,
   SENSITIVE_TIMELINES as GANGSTER_SENSITIVE_TIMELINES
 } from '../utils/gangsterMovieData';
+import {
+  COMPLETE_MOVIE_DATA as BOOK_ADAPTATION_MOVIE_DATA,
+  SENSITIVE_TIMELINES as BOOK_ADAPTATION_SENSITIVE_TIMELINES
+} from '../utils/bookAdaptationData';
 
 import { 
   COMPLETE_MOVIE_DATA as CRIME_THRILLER_MOVIE_DATA,
@@ -353,6 +357,7 @@ import BestActionMoviesSEOFAQSection from './BestActionMoviesSEOFAQSection';
 import TrueStorySEOFAQSection from './TrueStorySEOFAQSection';
 import DecadeSEOFAQSection from './DecadeSEOFAQSection';
 import GangsterSEOFAQSection from './GangsterSEOFAQSection';
+import BookAdaptationSEOFAQSection from './BookAdaptationSEOFAQSection';
 
 import HuluActionSEOFAQSection from './HuluActionSEOFAQSection';
 import HuluRomanceSEOFAQSection from './HuluRomanceSEOFAQSection';
@@ -403,6 +408,7 @@ const MovieDetailsSection = React.memo(({
   fromTrueStoryCollection,
   fromDecadeCollection,
   fromGangsterCollection,
+  fromBookAdaptationCollection,
   fromParasiteCollection,
   fromDonnieDarkoCollection,
   fromOldboyCollection,
@@ -517,6 +523,7 @@ const MovieDetailsSection = React.memo(({
   : fromTrueStoryCollection ? safeLookup(TRUE_STORY_MOVIE_DATA, movie.tmdbId)
   : fromDecadeCollection ? safeLookup(DECADE_MOVIE_DATA, movie.tmdbId)
   : fromGangsterCollection ? safeLookup(GANGSTER_MOVIE_DATA, movie.tmdbId)
+  : fromBookAdaptationCollection ? safeLookup(BOOK_ADAPTATION_MOVIE_DATA, movie.tmdbId)
   : fromEyesWideShutCollection ? safeLookup(EYES_WIDE_SHUT_MOVIE_DATA, movie.tmdbId)
   : fromRevengeCollection ? safeLookup(REVENGE_MOVIE_DATA, movie.tmdbId)
   : fromWarFilmsCollection ? safeLookup(WAR_FILMS_MOVIE_DATA, movie.tmdbId)
@@ -689,6 +696,7 @@ const MovieDetailsSection = React.memo(({
    || THOUGHT_PROVOKING_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
   || NEO_NOIR_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || GANGSTER_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
+   || BOOK_ADAPTATION_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || DECADE_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || EYES_WIDE_SHUT_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || SE7EN_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
@@ -1019,6 +1027,14 @@ const MovieDetailsSection = React.memo(({
      default: return '#6b7280';
         }
    }
+   if (fromBookAdaptationCollection) {
+        switch (level) {
+     case 'MASTERPIECE': return '#1e3a8a'; 
+     case 'EPIC': return '#2563eb';   
+     case 'HIGH': return '#3b82f6';  
+     default: return '#6b7280';
+        }
+   }
 if (fromPsychologicalThrillerCollection) {
       switch (level) {
         case 'EXTREME': return '#7f1d1d'; // Deep Blood Red for total sanity loss
@@ -1173,6 +1189,7 @@ if (fromPsychologicalThrillerCollection) {
    if (fromTrueStoryCollection) return 'HISTORICAL FIDELITY INDEX';
    if (fromDecadeCollection) return 'VISCERAL IMPACT INDEX';
    if (fromGangsterCollection) return 'UNDERWORLD GRIT INDEX';
+   if (fromBookAdaptationCollection) return 'PAGE-TO-SCREEN FIDELITY';
    return 'MIND-BENDING INDEX';
  };
 
@@ -1229,6 +1246,7 @@ if (fromPsychologicalThrillerCollection) {
    if (fromTrueStoryCollection) return 'HISTORICAL IMPACT LEVEL';
    if (fromDecadeCollection) return 'CINEMATIC IMPACT LEVEL';
    if (fromGangsterCollection) return 'CRIMINAL PSYCHOLOGY LEVEL';
+   if (fromBookAdaptationCollection) return 'ADAPTATION MASTERY LEVEL';
    return 'COGNITIVE DISTORTION LEVEL';
  };
 
@@ -1393,6 +1411,11 @@ if (fromPsychologicalThrillerCollection) {
      if (scoreValue >= 80) return 'A deeply compelling gangster epic with high visceral impact and iconic characters.';
      return 'A solid gangster film exploring the brutal realities of the criminal life.';
    }
+   if (fromBookAdaptationCollection) {
+     if (scoreValue >= 90) return 'A flawless adaptation that honors the original text while elevating it into an unforgettable cinematic masterpiece.';
+     if (scoreValue >= 80) return 'A highly faithful and emotionally resonant translation of the written word to the screen.';
+     return 'A solid book-to-movie adaptation with great performances and literary depth.';
+   }
    // Generic fallback
    if (scoreValue >= 90) return 'A transcendent masterpiece redefining narrative complexity.';
    if (scoreValue >= 80) return 'Sophisticated cinematic storytelling with advanced non-linear elements.';
@@ -1440,6 +1463,7 @@ if (fromPsychologicalThrillerCollection) {
    if (fromTrueStoryCollection) return 'border-amber-700/40';
    if (fromDecadeCollection) return 'border-amber-500/40';
    if (fromGangsterCollection) return 'border-red-800/40';
+   if (fromBookAdaptationCollection) return 'border-blue-500/40';
    return 'border-yellow-400/40';
  };
 
@@ -1483,6 +1507,7 @@ if (fromPsychologicalThrillerCollection) {
    if (fromTrueStoryCollection) return 'text-amber-600';
    if (fromDecadeCollection) return 'text-amber-500';
    if (fromGangsterCollection) return 'text-red-700';
+   if (fromBookAdaptationCollection) return 'text-blue-500';
    return 'text-yellow-400';
  };
 
@@ -1587,7 +1612,8 @@ if (fromPsychologicalThrillerCollection) {
         </div>
       </motion.div>
 
-      <EnhancedWhereToWatchSection movie={movie} />
+      {/* 🔥 MOVED SENSITIVE CONTENT HIGH UP TO IMMEDIATELY SHOW TIMESTAMP VALUE 🔥 */}
+      <SensitiveContentTimelineSection movie={{...movie, Runtime: dynamicMovieData.runtime}} sensitiveScenes={sensitiveScenes} />
 
 {!fromParasiteCollection && 
        !fromOldboyCollection && 
@@ -1610,6 +1636,7 @@ if (fromPsychologicalThrillerCollection) {
        !fromNeoNoirCollection && !isTrueStoryMovie &&
        !fromDecadeCollection &&
        !fromGangsterCollection &&
+       !fromBookAdaptationCollection &&
        (
         <motion.div
           className="mb-6 sm:mb-8 md:mb-12 bg-gradient-to-br from-gray-800/40 to-gray-900/60 rounded-lg sm:rounded-xl border border-gray-700/50 p-3 sm:p-4 md:p-8 shadow-2xl backdrop-blur-sm relative overflow-hidden"
@@ -1685,8 +1712,6 @@ if (fromPsychologicalThrillerCollection) {
         </motion.div>
       )}
 
-      <SensitiveContentTimelineSection movie={{...movie, Runtime: dynamicMovieData.runtime}} sensitiveScenes={sensitiveScenes} />
-
       {/* ✅ SEO FIX: Only render graphs if data exists! No placeholder data shown to users. */}
       {safeMovieInfo?.scenes && safeMovieInfo.scenes.length > 0 && (
         <EnhancedIntensityGraph 
@@ -1704,6 +1729,8 @@ if (fromPsychologicalThrillerCollection) {
             aria-label={`Genre DNA breakdown for ${movie.Title}: ${Object.entries(safeMovieInfo.dna || {}).map(([k, v]) => `${k} ${v}%`).join(', ')}.`}
         />
       )}
+
+      <EnhancedWhereToWatchSection movie={movie} />
 
       {/* ❌ REMOVED THE DANGEROUS SR-ONLY BLOCK HERE ❌ */}
 
@@ -1760,6 +1787,7 @@ if (fromPsychologicalThrillerCollection) {
         : fromBestActionMoviesCollection ? <BestActionMoviesSEOFAQSection movie={movie} />
         : fromTrueStoryCollection ? <TrueStorySEOFAQSection movie={movie} />
         : fromGangsterCollection ? <GangsterSEOFAQSection movie={movie} />
+        : fromBookAdaptationCollection ? <BookAdaptationSEOFAQSection movie={movie} />
         : fromDecadeCollection ? <DecadeSEOFAQSection movie={movie} />
         : fromPrestigeCollection ? <PrestigeSEOFAQSection movie={movie} />
         : fromSe7enCollection ? <Se7enSEOFAQSection movie={movie} />
