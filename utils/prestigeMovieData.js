@@ -12,7 +12,7 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 1491, "imdbID": "tt0443543", "Title": "The Illusionist", "year": 2006, "genre": "Mystery", "runtime": 110, "rank": 1 },
     { "tmdbId": 77, "imdbID": "tt0209144", "Title": "Memento", "year": 2000, "genre": "Thriller", "runtime": 113, "rank": 2 },
     { "tmdbId": 11324, "imdbID": "tt1130884", "Title": "Shutter Island", "year": 2010, "genre": "Thriller", "runtime": 138, "rank": 3 },
-    { "tmdbId": 744, "imdbID": "tt0119174", "Title": "The Game", "year": 1997, "genre": "Mystery", "runtime": 129, "rank": 4 },
+    { "tmdbId": 2649, "imdbID": "tt0119174", "Title": "The Game", "year": 1997, "genre": "Mystery", "runtime": 129, "rank": 4 },
     { "tmdbId": 629, "imdbID": "tt0114814", "Title": "The Usual Suspects", "year": 1995, "genre": "Crime", "runtime": 106, "rank": 5 },
     { "tmdbId": 550, "imdbID": "tt0137523", "Title": "Fight Club", "year": 1999, "genre": "Drama", "runtime": 139, "rank": 6 },
     { "tmdbId": 745, "imdbID": "tt0167404", "Title": "The Sixth Sense", "year": 1999, "genre": "Thriller", "runtime": 107, "rank": 7 },
@@ -37,9 +37,9 @@ export const SENSITIVE_TIMELINES = {
     },
 
     // 4. The Game
-    744: { 
+    2649: { 
         scenes: [
-            { start: "0:57:52", end: "0:59:30", type: "Sexual Content(Sexual Sounds)", severity: "Moderate" }
+            { start: "0:57:52", end: "0:59:30", type: "Sexual Content(Moaning)", severity: "Moderate" }
         ] 
     },
 
@@ -87,7 +87,7 @@ export const FALLBACK_POSTERS = {
     1491: "https://m.media-amazon.com/images/M/MV5BY2VkMzZlZDAtNTkzNS00MDIzLWFmOWEtYjUwZDQ1OWNjZmMxXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX500.jpg",
     77: "https://m.media-amazon.com/images/M/MV5BZTcyNjk1MjgtOWI3Mi00YzgwLWI5MTktMzY4ZmI2NDNjZmVjXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX500.jpg",
     11324: "https://m.media-amazon.com/images/M/MV5BYzhiNDkyNzktNTZmYS00ZTBkLTk2MDAtM2U0YjU1MzgxZjgzXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX500.jpg",
-    744: "https://m.media-amazon.com/images/M/MV5BMzY1ZjMwMGEtYTY1ZS00ZDllLTk0ZmUtYzA3ZTA4NmYwNGNkXkEyXkFqcGdeQXVyNDk3NzU2MTQ@._V1_SX500.jpg",
+    2649: "https://m.media-amazon.com/images/M/MV5BMzY1ZjMwMGEtYTY1ZS00ZDllLTk0ZmUtYzA3ZTA4NmYwNGNkXkEyXkFqcGdeQXVyNDk3NzU2MTQ@._V1_SX500.jpg",
     629: "https://m.media-amazon.com/images/M/MV5BYTViNzMxZjEtZGEzNy00NTgyLWIwM2EtYjI2YjU1ZjUxODgxXkEyXkFqcGdeQXVyNzQ1ODk3MTQ@._V1_SX500.jpg",
     550: "https://m.media-amazon.com/images/M/MV5BMmEzNTkxYjQtZTc0MC00YTVjLTg5ZTEtZWMwOWVlYzY0NWIwXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX500.jpg",
     745: "https://m.media-amazon.com/images/M/MV5BMjMwNDIxMTI5Nl5BMl5BanBnXkFtZTgwNzcwNDgwNTM@._V1_SX500.jpg",
@@ -159,7 +159,7 @@ export const COMPLETE_MOVIE_DATA = {
     }),
 
     // 4. The Game
-    744: createPrestigeData({ 
+    2649: createPrestigeData({ 
         deceptionScore: 95, narrativeComplexity: 85, twistImpact: 96, complexityLevel: "HIGH", 
         dominantColor: "#064e3b", rating: 7.7, criticsScore: 77, audienceScore: 84, director: "David Fincher", 
         cast: ["Michael Douglas", "Sean Penn"], boxOffice: "$109.4 million", budget: "$50 million", 
@@ -283,7 +283,7 @@ export const STRATEGIC_QUOTES = {
     1491: "Everything you have seen is an illusion.",
     77: "We all lie to ourselves to be happy.",
     11324: "Which would be worse - to live as a monster, or to die as a good man?",
-    744: "Discovering the object of the game *is* the purpose of the game.",
+    2649: "Discovering the object of the game *is* the purpose of the game.",
     629: "The greatest trick the devil ever pulled was convincing the world he didn't exist.",
     550: "It's only after we've lost everything that we're free to do anything.",
     745: "They only see what they want to see.",

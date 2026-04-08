@@ -164,6 +164,11 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
         currentRuntime = "249 min"; 
     }
 
+    // 🔥 Explicit Override for Fifty Shades Darker
+    if (movie.tmdbId === 341174) {
+        currentRuntime = "132 min (Unrated Version)"; 
+    }
+
     const getSeverityDotColor = (severity) => {
         if (!severity) return 'bg-gray-500 shadow-gray-500/50';
         const s = severity.toLowerCase();

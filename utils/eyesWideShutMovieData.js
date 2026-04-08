@@ -70,8 +70,7 @@ export const SENSITIVE_TIMELINES = {
         ]
     },
     // 5. The Game
-    2649: { scenes: [
-        { start: "57:52", end: "59:30", type: "Sexual Content(Sexual Sounds)", severity: "Moderate" }
+    2649: { scenes: [ { start: "57:52", end: "59:30", type: "Sexual Content(Moaning)", severity: "Moderate" }
     ]},
     // 6. Lost Highway
     638: {

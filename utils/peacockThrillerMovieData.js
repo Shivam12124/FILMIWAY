@@ -38,8 +38,7 @@ export const STRATEGIC_QUOTES = {
 // ✅ SENSITIVE TIMELINES (Thriller Edition)
 export const SENSITIVE_TIMELINES = {
     77: { scenes: [] },
-    2649: { scenes: [
-        { start: "57:52", end: "59:30", type: "Sexual Content(Sexual Sounds)", severity: "Moderate" }
+    2649: { scenes: [ { start: "57:52", end: "59:30", type: "Sexual Content(Moaning)", severity: "Moderate" }
     ]},
     273481: { scenes: [
         { start: "0:28:37", end: "0:28:47", type: "Nudity, non sexual", severity: "Moderate" }

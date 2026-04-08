@@ -973,6 +973,20 @@ export const COLLECTIONS = {
   },
 
 
+  // 💖 BEST EROTIC ROMANCE MOVIES
+  'best-erotic-romance-movies': {
+    slug: 'best-erotic-romance-movies',
+    title: '10 Best Erotic Romance Movies of All Time',
+    stats: { averageRating: 6.4 },
+    badges: [
+      { label: "PASSION", desc: "Intense connection" },
+      { label: "INTIMACY", desc: "Deeply emotional" },
+      { label: "DESIRE", desc: "Romantic fantasy" }
+    ],
+    movies: ['tt2278871', 'tt10886166', 'tt0309987', 'tt14369780', ' tt0070849', 'tt4465564', 'tt2322441', 'tt4465566', 'tt0274812', 'tt0107211'],
+    relatedCollections: ['best-erotic-thriller-movies', 'best-romance-movies-on-hbo-max', 'best-romance-movies-on-hulu']
+  },
+
 
   // 🩸 BEST THRILLER MOVIES
   'best-thriller-movies': {
@@ -1024,6 +1038,7 @@ export const getTrueStoryCollection = () => COLLECTIONS['best-true-story-movies'
 export const getDecadeCollection = () => COLLECTIONS['best-movies-of-the-decade'];
 export const getGangsterCollection = () => COLLECTIONS['best-gangster-movies-of-all-time'];
 export const getBookAdaptationsCollection = () => COLLECTIONS['top-10-book-adaptations'];
+export const getEroticRomanceCollection = () => COLLECTIONS['best-erotic-romance-movies'];
 export const getBestActionCollection = () => COLLECTIONS['best-action-movies'];
 // ============================================================================
 // 🧠 THE MASTER CANONICAL BRAIN

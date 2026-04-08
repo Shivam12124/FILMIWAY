@@ -18,6 +18,7 @@ import { COMPLETE_MOVIE_DATABASE as BLACK_SWAN_DATABASE, COMPLETE_MOVIE_DATA as 
 import { COMPLETE_MOVIE_DATABASE as EYES_WIDE_SHUT_DATABASE, COMPLETE_MOVIE_DATA as EYES_WIDE_SHUT_DATA } from '../../utils/eyesWideShutMovieData';
 import { COMPLETE_MOVIE_DATABASE as PRESTIGE_DATABASE, COMPLETE_MOVIE_DATA as PRESTIGE_DATA } from '../../utils/prestigeMovieData';
 import { COMPLETE_MOVIE_DATABASE as EROTIC_THRILLER_DATABASE, COMPLETE_MOVIE_DATA as EROTIC_THRILLER_DATA } from '../../utils/eroticThrillerMovieData';
+import { COMPLETE_MOVIE_DATABASE as EROTIC_ROMANCE_DATABASE, COMPLETE_MOVIE_DATA as EROTIC_ROMANCE_DATA } from '../../utils/eroticRomanceMovieData';
 import { COMPLETE_MOVIE_DATABASE as GREED_DATABASE, COMPLETE_MOVIE_DATA as GREED_DATA } from '../../utils/greedMovieData';
 import { COMPLETE_MOVIE_DATABASE as INTERSTELLAR_DATABASE, COMPLETE_MOVIE_DATA as INTERSTELLAR_DATA } from '../../utils/interstellarMovieData';
 import { COMPLETE_MOVIE_DATABASE as CRIME_THRILLER_DATABASE, COMPLETE_MOVIE_DATA as CRIME_THRILLER_DATA } from '../../utils/crimeThrillerMovieData';
@@ -1258,6 +1259,29 @@ const getCollectionContent = () => {
             text2: "This collection is an exploration of the darker side of human nature. You will witness the destructive power of obsession and the deadly consequences of forbidden desires. In the world of the erotic thriller, no one is innocent."
         }
     };
+    } else if (collection.slug === 'best-erotic-romance-movies') {
+        return {
+            badge: "Intimate Cinema",
+            title: "Best Erotic Romance Movies",
+            description: "The defining cinematic masterpieces of passion and intimacy, exploring themes of deep emotional connection, desire, and romantic drama.",
+            selection: {
+                text1: "From sweeping, emotionally charged epics to deeply personal character studies, these films portray the allure and complexity of passionate relationships.",
+                text2: "Each selection is a masterclass in chemistry, vulnerability, and breathtaking visual storytelling that has shaped the romantic drama genre."
+            },
+            ranking: {
+                text: "Our 'Passion & Intimacy Index' evaluates narrative authenticity, emotional depth, and the cinematic impact of each film's portrayal of romance.",
+                points: [
+                    "Chemistry and tension",
+                    "Emotional and narrative depth",
+                    "Cinematic style and atmosphere",
+                    "Romantic legacy"
+                ]
+            },
+            experience: {
+                text1: "Whether you're seeking a grand romance or an intense character drama, this collection delivers cinema's most compelling stories of desire.",
+                text2: "Each film offers a deep dive into the psychology of connection and vulnerability, leaving a lasting emotional impact."
+            }
+        };
 } else if (collection.slug === 'best-movies-about-greed') {
     return {
         badge: "Greed & Capitalism Cinema",
@@ -2216,6 +2240,11 @@ subtitle: "While everyone searches Netflix, these classics hide in plain sight. 
             title: "10 Best Erotic Thriller Movies: Where Desire Meets Danger",
             subtitle: "A curated selection of films exploring passion, obsession, and the dark side of human intimacy"
         };
+    } else if (collection.slug === 'best-erotic-romance-movies') {
+        return {
+            title: "10 Best Erotic Romance Movies of All Time",
+            subtitle: "The defining cinematic masterpieces of passion, intimacy, and emotional drama"
+        };
     } else if (collection.slug === 'best-movies-about-greed') {
         return {
             title: "10 Best Movies About Greed: Capitalism & Corruption",
@@ -2394,6 +2423,11 @@ const getLoaderContent = () => {
     return {
         title: "Loading Best Erotic Thriller Movies",
         description: "Curating sensual and suspenseful cinematic masterpieces with community reviews."
+    };
+} else if (collection?.slug === 'best-erotic-romance-movies') {
+    return {
+        title: "Loading Best Erotic Romance Movies",
+        description: "Curating the defining cinematic masterpieces of passionate romance with community reviews"
     };
 } else if (collection?.slug === 'best-movies-about-greed') {
     return {
@@ -2830,6 +2864,15 @@ const getStaticMetaContent = () => {
         twitterTitle: "10 Best Erotic Thrillers Where Desire Meets Danger",
         progressText: `of Top ${movies.length} Erotic Thriller Movies`
     };
+    } else if (collection.slug === 'best-erotic-romance-movies') {
+        return {
+            title: "10 Best Erotic Romance Movies of All Time (Ranked)",
+            description: "The definitive ranking of the 10 greatest erotic romance movies ever made. Exploring deep passion and intimacy. Includes an exact Timestamps & Parents Guide.",
+            keywords: "best erotic romance movies, top romantic drama films, passionate movies, romantic cinema, intimate love stories",
+            ogTitle: "10 Best Erotic Romance Movies: Intimate Masterpieces",
+            twitterTitle: "The 10 Best Erotic Romance Movies You Need to Watch",
+            progressText: `of Top ${movies.length} Erotic Romance Movies`
+        };
     } else if (collection.slug === 'best-movies-about-greed') {
         return {
             title: "10 Best Movies About Greed & Corporate Corruption (Ranked)",
@@ -3520,6 +3563,7 @@ const getStaticMetaContent = () => {
             sessionStorage.removeItem('fromRevengeCollection');
             sessionStorage.removeItem('fromWarFilmsCollection');
             sessionStorage.removeItem('fromEroticThrillerCollection');
+            sessionStorage.removeItem('fromEroticRomanceCollection');
             sessionStorage.removeItem('fromGreedCollection');
             sessionStorage.removeItem('fromRaunchyComedyCollection');
             sessionStorage.removeItem('fromRoadTripCollection');
@@ -3652,6 +3696,8 @@ const getStaticMetaContent = () => {
                 sessionStorage.setItem('fromWarFilmsCollection', 'true');
             } else if (collection.slug === 'best-erotic-thriller-movies') {
                 sessionStorage.setItem('fromEroticThrillerCollection', 'true');
+            } else if (collection.slug === 'best-erotic-romance-movies') {
+                sessionStorage.setItem('fromEroticRomanceCollection', 'true');
             } else if (collection.slug === 'best-movies-about-greed') {
                 sessionStorage.setItem('fromGreedCollection', 'true');
             } else if (collection.slug === 'best-raunchy-comedy-movies') {
@@ -4091,6 +4137,8 @@ return (
 ? 'movies/like-prestige/'
 : collection?.slug === 'best-erotic-thriller-movies'
 ? 'movies/best-erotic-thriller-movies/'
+: collection?.slug === 'best-erotic-romance-movies'
+? 'movies/best-erotic-romance-movies/'
 : collection?.slug === 'best-movies-about-greed'
 ? 'movies/best-movies-about-greed/'
 : collection?.slug === 'best-raunchy-comedy-movies'
@@ -4345,6 +4393,8 @@ return (
                                     ? `/movies/like-prestige/${currentMovie.imdbID}`
                                     : collection.slug === 'best-erotic-thriller-movies'
                                     ? `/movies/best-erotic-thriller-movies/${currentMovie.imdbID}`
+                                    : collection.slug === 'best-erotic-romance-movies'
+                                    ? `/movies/best-erotic-romance-movies/${currentMovie.imdbID}`
                                     : collection.slug === 'best-movies-about-greed'
                                     ? `/movies/best-movies-about-greed/${currentMovie.imdbID}`
                                     : collection.slug === 'best-raunchy-comedy-movies'
@@ -4658,6 +4708,9 @@ case 'movies-like-the-prestige':
             break;
 case 'best-erotic-thriller-movies':
             movieDatabase = EROTIC_THRILLER_DATABASE;
+            break;
+case 'best-erotic-romance-movies':
+            movieDatabase = EROTIC_ROMANCE_DATABASE;
             break;
 case 'best-movies-about-greed':
             movieDatabase = GREED_DATABASE;

@@ -61,6 +61,10 @@ import {
   SENSITIVE_TIMELINES as EROTIC_THRILLER_SENSITIVE_TIMELINES
 } from '../utils/eroticThrillerMovieData';
 import {
+  COMPLETE_MOVIE_DATA as EROTIC_ROMANCE_MOVIE_DATA,
+  SENSITIVE_TIMELINES as EROTIC_ROMANCE_SENSITIVE_TIMELINES
+} from '../utils/eroticRomanceMovieData';
+import {
   COMPLETE_MOVIE_DATA as GREED_MOVIE_DATA,
   SENSITIVE_TIMELINES as GREED_SENSITIVE_TIMELINES
 } from '../utils/greedMovieData';
@@ -338,6 +342,7 @@ import DonnieDarkoSEOFAQSection from './DonnieDarkoSEOFAQSection';
 import BlackSwanSEOFAQSection from './BlackSwanSEOFAQSection';
 import EyesWideShutSEOFAQSection from './EyesWideShutSEOFAQSection';
 import EroticThrillerSEOFAQSection from './EroticThrillerSEOFAQSection';
+import EroticRomanceSEOFAQSection from './EroticRomanceSEOFAQSection';
 import GreedSEOFAQSection from './GreedSEOFAQSection';
 import PrestigeSEOFAQSection from './PrestigeSEOFAQSection';
 import HboActionSEOFAQSection from './HboActionSEOFAQSection';
@@ -398,6 +403,7 @@ const MovieDetailsSection = React.memo(({
   fromBlackSwanCollection,
   fromPrestigeCollection,
   fromEroticThrillerCollection,
+  fromEroticRomanceCollection,
   fromGreedCollection,
   fromSe7enCollection,
   fromRaunchyComedyCollection,
@@ -514,6 +520,7 @@ const MovieDetailsSection = React.memo(({
   : fromBlackSwanCollection ? safeLookup(BLACK_SWAN_MOVIE_DATA, movie.tmdbId)
   : fromPrestigeCollection ? safeLookup(PRESTIGE_MOVIE_DATA, movie.tmdbId)
   : fromEroticThrillerCollection ? safeLookup(EROTIC_THRILLER_MOVIE_DATA, movie.tmdbId)
+  : fromEroticRomanceCollection ? safeLookup(EROTIC_ROMANCE_MOVIE_DATA, movie.tmdbId)
   : fromGreedCollection ? safeLookup(GREED_MOVIE_DATA, movie.tmdbId)
   : fromRaunchyComedyCollection ? safeLookup(RAUNCHY_COMEDY_MOVIE_DATA, movie.tmdbId)
   : fromRoadTripCollection ? safeLookup(ROAD_TRIP_MOVIE_DATA, movie.tmdbId)
@@ -690,6 +697,7 @@ const MovieDetailsSection = React.memo(({
    || BLACK_SWAN_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || PRESTIGE_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || EROTIC_THRILLER_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
+   || EROTIC_ROMANCE_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || GREED_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || RAUNCHY_COMEDY_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || ROAD_TRIP_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
@@ -761,6 +769,7 @@ const MovieDetailsSection = React.memo(({
    : fromBlackSwanCollection ? movie.psychologicalIntensity ?? safeMovieInfo.psychologicalIntensity ?? 0
    : fromPrestigeCollection ? movie. deceptionScore ?? safeMovieInfo. deceptionScore ?? 0
    : fromEroticThrillerCollection ? movie.eroticTension ?? safeMovieInfo.eroticTension ?? 0
+   : fromEroticRomanceCollection ? movie.passionIndex ?? safeMovieInfo.eroticTension ?? 0
    : fromGreedCollection ? movie.greedIndex ?? safeMovieInfo.greedIndex ?? 0
    : fromRaunchyComedyCollection ? movie.raunchinessScore ?? safeMovieInfo.raunchinessScore ?? 0
    : fromRoadTripCollection ? movie.wanderlustScore ?? safeMovieInfo.wanderlustScore ?? 0
@@ -788,285 +797,9 @@ const MovieDetailsSection = React.memo(({
  const complexityLevel = safeMovieInfo.complexityLevel || 'HIGH';
 
  const getComplexityColor = (level) => {
-   if (fromHboActionCollection) {
-        switch (level) {
-     case 'EXTREME': return '#ea0808ff';
-     case 'HIGH': return '#eb7a09ff';
-     case 'MEDIUM': return '#8d7708ff';
-     default: return '#6b7280';
-        }
-   }
-   if (fromHboRomanceCollection) { 
-        switch (level) {
-     case 'EXTREME': return '#ea0808ff';
-     case 'HIGH': return '#eb7a09ff';
-     case 'MEDIUM': return '#8d7708ff';
-     default: return '#6b7280';
-        }
-   }
-      if (fromHboMaxThrillerCollection) {
-           switch (level) {
-        case 'EXTREME': return '#ea0808ff';
-        case 'HIGH': return '#eb7a09ff';
-        case 'MEDIUM': return '#8d7708ff';
-        default: return '#6b7280';
-           }
-      }
-      if (fromHboMaxFamilyCollection || fromHuluFamilyCollection || fromParamountFamilyCollection || fromPeacockFamilyCollection) {        switch (level) {
-     case 'EXTREME': return '#ea0808ff';
-     case 'HIGH': return '#eb7a09ff';
-     case 'MEDIUM': return '#8d7708ff';
-     default: return '#6b7280';
-        }
-   }
-   if (fromHboMaxSciFiCollection) { 
-        switch (level) {
-     case 'EXTREME': return '#ea0808ff';
-     case 'HIGH': return '#eb7a09ff';
-     case 'MEDIUM': return '#8d7708ff';
-     default: return '#6b7280';
-        }
-   }
-   if (fromHboMaxHorrorCollection || fromParamountHorrorCollection) { 
-        switch (level) {
-     case 'EXTREME': return '#ea0808ff';
-     case 'HIGH': return '#eb7a09ff';
-     case 'MEDIUM': return '#8d7708ff';
-     default: return '#6b7280';
-        }
-   }
-   if (fromHboMaxBestCollection || fromParamountBestCollection || fromPeacockBestCollection) { 
-        switch (level) {
-     case 'EXTREME': return '#ea0808ff';
-     case 'HIGH': return '#eb7a09ff';
-     case 'MEDIUM': return '#8d7708ff';
-     default: return '#6b7280';
-        }
-   }
-   if (fromHboMaxDramaCollection || fromParamountDramaCollection) { 
-        switch (level) {
-     case 'EXTREME': return '#ea0808ff';
-     case 'HIGH': return '#eb7a09ff';
-     case 'MEDIUM': return '#8d7708ff';
-     default: return '#6b7280';
-        }
-   }
-   if (fromHboMaxComedyCollection || fromParamountComedyCollection || fromPeacockComedyCollection) {
-        switch (level) {
-     case 'EXTREME': return '#ea0808ff';
-     case 'HIGH': return '#eb7a09ff';
-     case 'MEDIUM': return '#8d7708ff';
-     default: return '#6b7280';
-        }
-   }
-   if (fromHuluDramaCollection || fromPeacockDramaCollection) { 
-        switch (level) {
-     case 'EXTREME': return '#ea0808ff';
-     case 'HIGH': return '#eb7a09ff';
-     case 'MEDIUM': return '#8d7708ff';
-     default: return '#6b7280';
-        }
-   }
-   if (fromHuluBestCollection) { 
-        switch (level) {
-     case 'EXTREME': return '#ea0808ff';
-     case 'HIGH': return '#eb7a09ff';
-     case 'MEDIUM': return '#8d7708ff';
-     default: return '#6b7280';
-        }
-   }
-   if (fromHuluThrillerCollection || fromParamountThrillerCollection || fromPeacockThrillerCollection) { 
-        switch (level) {
-     case 'EXTREME': return '#ea0808ff';
-     case 'HIGH': return '#eb7a09ff';
-     case 'MEDIUM': return '#8d7708ff';
-     default: return '#6b7280';
-        }
-   }
-   if (fromHuluSciFiCollection) { 
-        switch (level) {
-     case 'EXTREME': return '#ea0808ff';
-     case 'HIGH': return '#eb7a09ff';
-     case 'MEDIUM': return '#8d7708ff';
-     default: return '#6b7280';
-        }
-   }
-   if (fromHuluComedyCollection) {
-        switch (level) {
-     case 'EXTREME': return '#ea0808ff';
-     case 'HIGH': return '#eb7a09ff';
-     case 'MEDIUM': return '#8d7708ff';
-     default: return '#6b7280';
-        }
-   }
-   if (fromHuluHorrorCollection) {
-        switch (level) {
-     case 'EXTREME': return '#ea0808ff';
-     case 'HIGH': return '#eb7a09ff';
-     case 'MEDIUM': return '#8d7708ff';
-     default: return '#6b7280';
-        }
-   }
-   if (fromHuluRomanceCollection) {
-        switch (level) {
-     case 'EXTREME': return '#ea0808ff';
-     case 'HIGH': return '#eb7a09ff';
-     case 'MEDIUM': return '#8d7708ff';
-     default: return '#6b7280';
-        }
-   }
-   if (fromHuluActionCollection || fromParamountActionCollection || fromPeacockActionAdventureCollection) {
-        switch (level) {
-     case 'EXTREME': return '#ea0808ff';
-     case 'HIGH': return '#eb7a09ff';
-     case 'MEDIUM': return '#8d7708ff';
-     default: return '#6b7280';
-        }
-   }
-   if (fromParamountSciFiCollection || fromPeacockSciFiCollection) {
-        switch (level) {
-     case 'EXTREME': return '#ea0808ff';
-     case 'HIGH': return '#eb7a09ff';
-     case 'MEDIUM': return '#8d7708ff';
-     default: return '#6b7280';
-        }
-   }
-   if (fromParamountRomanceCollection || fromPeacockRomanceCollection) { 
-        switch (level) {
-     case 'EXTREME': return '#ea0808ff';
-     case 'HIGH': return '#eb7a09ff';
-     case 'MEDIUM': return '#8d7708ff';
-     default: return '#6b7280'; 
-        }
-   }
-   if (fromMatrixCollection) {
-        switch (level) {
-     case 'EXTREME': return '#ea0808ff';
-     case 'HIGH': return '#eb7a09ff';
-     case 'MEDIUM': return '#8d7708ff';
-     default: return '#6b7280';
-        }
-   }
-   if (fromEroticThrillerCollection) {
-        switch (level) {
-     case 'EXTREME': return '#e11d48'; 
-     case 'HIGH': return '#be123c';   
-     case 'MEDIUM': return '#9f1239';  
-     default: return '#6b7280';
-        }
-   }
-   if (fromGreedCollection) {
-        switch (level) {
-     case 'EXTREME': return '#064e3b'; 
-     case 'HIGH': return '#047857';   
-     case 'MEDIUM': return '#059669';  
-     default: return '#6b7280';
-        }
-   }
-   if (fromRaunchyComedyCollection) {
-        switch (level) {
-     case 'EXTREME': return '#9f1239'; 
-     case 'HIGH': return '#db2777';   
-     case 'MEDIUM': return '#f472b6';  
-     default: return '#6b7280';
-        }
-   }
-   if (fromRoadTripCollection) {
-        switch (level) {
-     case 'EXTREME': return '#9a3412'; 
-     case 'HIGH': return '#c2410c';   
-     case 'MEDIUM': return '#ea580c';  
-     default: return '#6b7280';
-        }
-   }
-   if (fromThoughtProvokingCollection) {
-        switch (level) {
-     case 'EXTREME': return '#312e81'; 
-     case 'HIGH': return '#3730a3';   
-     case 'MEDIUM': return '#4f46e5';  
-     default: return '#6b7280';
-        }
-   }
-   if (fromNeoNoirCollection) {
-        switch (level) {
-     case 'EXTREME': return '#831843'; 
-     case 'HIGH': return '#be185d';   
-     case 'MEDIUM': return '#e11d48';  
-     default: return '#6b7280';
-        }
-   }
-   if (fromBestActionMoviesCollection) {
-        switch (level) {
-     case 'EXTREME': return '#7f1d1d'; 
-     case 'HIGH': return '#b91c1c';   
-     case 'MEDIUM': return '#ea580c';  
-     default: return '#6b7280';
-        }
-   }
-   if (fromTrueStoryCollection) {
-        switch (level) {
-     case 'EXTREME': return '#451a03'; 
-     case 'HIGH': return '#78350f';   
-     case 'MEDIUM': return '#b45309';  
-     default: return '#6b7280';
-        }
-   }
-   if (fromDecadeCollection) {
-        switch (level) {
-     case 'EXTREME': return '#b45309'; 
-     case 'HIGH': return '#d97706';   
-     case 'MEDIUM': return '#f59e0b';  
-     default: return '#6b7280';
-        }
-   }
-   if (fromGangsterCollection) {
-        switch (level) {
-     case 'EXTREME': return '#991b1b'; 
-     case 'HIGH': return '#ef4444';   
-     case 'MEDIUM': return '#b45309';  
-     default: return '#6b7280';
-        }
-   }
-   if (fromBookAdaptationCollection) {
-        switch (level) {
-     case 'MASTERPIECE': return '#1e3a8a'; 
-     case 'EPIC': return '#2563eb';   
-     case 'HIGH': return '#3b82f6';  
-     default: return '#6b7280';
-        }
-   }
-if (fromPsychologicalThrillerCollection) {
-      switch (level) {
-        case 'EXTREME': return '#7f1d1d'; // Deep Blood Red for total sanity loss
-        case 'HIGH': return '#b91c1c';    // Intense Red
-        case 'MEDIUM': return '#c2410c';  // Orange-Red
-        default: return '#6b7280';
-      }
-    }
-
-    if (fromInterstellarCollection) {
-      switch (level) {
-        case 'EXTREME': return '#7f1d1d'; // Deep Blood Red for total sanity loss
-        case 'HIGH': return '#b91c1c';    // Intense Red
-        case 'MEDIUM': return '#c2410c';  // Orange-Red
-        default: return '#6b7280';
-      }
-    }
-
-   if (fromRevengeCollection || fromWarFilmsCollection || fromDramaCollection) {
-     switch (level) {
-     case 'EXTREME': return '#ea0808ff';
-     case 'HIGH': return '#eb7a09ff';
-     case 'MEDIUM': return '#8d7708ff';
-     default: return '#6b7280';
-     }
-   }
-   switch (level) {
-     case 'EXTREME': return '#ea0808ff';
-     case 'HIGH': return '#eb7a09ff';
-     case 'MEDIUM': return '#8d7708ff';
-     default: return '#6b7280';
-   }
+   if (scoreValue >= 90) return '#ef4444'; // Red for Top/Extreme
+   if (scoreValue >= 80) return '#f97316'; // Orange for High
+   return '#22c55e'; // Green for Mid/Default
  };
 
  // ✅ HELPER: Age Rating Colors
@@ -1114,6 +847,7 @@ if (fromPsychologicalThrillerCollection) {
    if (fromEyesWideShutCollection) return 'PARANOIA INTENSITY';
    if (fromPrestigeCollection) return 'RIVALRY INDEX';
    if (fromEroticThrillerCollection) return 'EROTIC TENSION SCORE';
+   if (fromEroticRomanceCollection) return 'EROTIC TENSION SCORE';
    if (fromGreedCollection) return 'GREED INDEX';
    if (fromRaunchyComedyCollection) return 'CHAOS SCORE';
    if (fromRoadTripCollection) return 'WANDERLUST SCORE';
@@ -1179,7 +913,8 @@ if (fromPsychologicalThrillerCollection) {
    if (fromSurvivalCollection) return 'SURVIVAL INTENSITY INDEX';
    if (fromInceptionCollection) return 'MIND-BENDING INDEX';
    if (fromPrestigeCollection) return 'DECEPTION INDEX';
-   if (fromEroticThrillerCollection) return 'MANIPULATION INDEX';
+   if (fromEroticThrillerCollection) return 'EROTIC TENSION INDEX';
+   if (fromEroticRomanceCollection) return 'EROTIC TENSION INDEX';
    if (fromGreedCollection) return 'CORRUPTION INDEX';
    if (fromRaunchyComedyCollection) return 'RAUNCHINESS INDEX';
    if (fromRoadTripCollection) return 'WANDERLUST INDEX';
@@ -1236,7 +971,8 @@ if (fromPsychologicalThrillerCollection) {
    if (fromSurvivalCollection) return 'SURVIVAL INTENSITY LEVEL';
    if (fromInceptionCollection) return 'COGNITIVE COMPLEXITY LEVEL';
    if (fromPrestigeCollection) return 'ILLUSION LEVEL';
-   if (fromEroticThrillerCollection) return 'PSYCHOLOGICAL TENSION LEVEL';
+   if (fromEroticThrillerCollection) return 'EROTIC LEVEL';
+   if (fromEroticRomanceCollection) return 'EROTIC LEVEL';
    if (fromGreedCollection) return 'MORAL DECAY LEVEL';
    if (fromRaunchyComedyCollection) return 'ABSURDITY LEVEL';
    if (fromRoadTripCollection) return 'TRANSFORMATION LEVEL';
@@ -1366,6 +1102,11 @@ if (fromPsychologicalThrillerCollection) {
      if (scoreValue >= 80) return 'Highly charged with dark romance and dangerous stakes. A gripping psychological descent.';
      return 'A suspenseful thriller balancing desire and danger perfectly.';
    }
+   if (fromEroticRomanceCollection) {
+     if (scoreValue >= 90) return 'A masterful exploration of deep passion and intimacy. Highly provocative and emotionally resonant.';
+     if (scoreValue >= 80) return 'Highly charged with romantic tension and deep emotional stakes.';
+     return 'A compelling romantic drama exploring the complexities of human connection.';
+   }
    if (fromGreedCollection) {
      if (scoreValue >= 90) return 'A devastating portrait of extreme capitalism and total moral collapse.';
      if (scoreValue >= 80) return 'A sharp, thrilling exploration of corporate greed and compromised morals.';
@@ -1454,6 +1195,7 @@ if (fromPsychologicalThrillerCollection) {
    if (fromCrimeThrillerCollection) return 'border-slate-400/40';
    if (fromPrestigeCollection) return 'border-blue-400/40'; 
    if (fromEroticThrillerCollection) return 'border-rose-600/40';
+   if (fromEroticRomanceCollection) return 'border-pink-500/40';
    if (fromGreedCollection) return 'border-emerald-600/40';
    if (fromRaunchyComedyCollection) return 'border-pink-600/40';
    if (fromRoadTripCollection) return 'border-amber-600/40';
@@ -1498,6 +1240,7 @@ if (fromPsychologicalThrillerCollection) {
    if (fromCrimeThrillerCollection) return 'text-slate-400';
    if (fromPrestigeCollection) return 'text-blue-400';
    if (fromEroticThrillerCollection) return 'text-rose-500';
+   if (fromEroticRomanceCollection) return 'text-pink-500';
    if (fromGreedCollection) return 'text-emerald-500';
    if (fromRaunchyComedyCollection) return 'text-pink-500';
    if (fromRoadTripCollection) return 'text-amber-500';
@@ -1779,6 +1522,7 @@ if (fromPsychologicalThrillerCollection) {
         : fromBlackSwanCollection ? <BlackSwanSEOFAQSection movie={movie} />
         : fromEyesWideShutCollection ? <EyesWideShutSEOFAQSection movie={movie} />
         : fromEroticThrillerCollection ? <EroticThrillerSEOFAQSection movie={movie} />
+        : fromEroticRomanceCollection ? <EroticRomanceSEOFAQSection movie={movie} />
         : fromGreedCollection ? <GreedSEOFAQSection movie={movie} />
         : fromRaunchyComedyCollection ? <RaunchyComedySEOFAQSection movie={movie} />
         : fromRoadTripCollection ? <RoadTripSEOFAQSection movie={movie} />
