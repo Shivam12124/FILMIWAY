@@ -356,6 +356,7 @@ const FilmiwayHomepage = ({ huluCollections, mindBendingCollections, thrillerCol
                   <li><Link href="/collection/best-crime-thriller-movies" className="hover:text-white transition-colors inline-block py-1">Crime</Link></li>
                   <li><Link href="/collection/best-mystery-thriller-movies" className="hover:text-white transition-colors inline-block py-1">Mystery</Link></li>
                   <li><Link href="/collection/best-erotic-thriller-movies" className="hover:text-white transition-colors inline-block py-1">Erotic Thrillers</Link></li>
+                  <li><Link href="/collection/best-erotic-romance-movies" className="hover:text-white transition-colors inline-block py-1">Erotic Romance</Link></li>
                   <li><Link href="/collection/best-true-story-movies" className="hover:text-white transition-colors inline-block py-1">True Story</Link></li>
                 </ul>
               </div>
