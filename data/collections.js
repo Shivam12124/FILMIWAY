@@ -988,6 +988,21 @@ export const COLLECTIONS = {
   },
 
 
+  // 💔 BEST MARRIAGE CRISIS MOVIES
+  'best-marriage-crisis-movies': {
+    slug: 'best-marriage-crisis-movies',
+    title: '10 Best Movies About Marriage Crises',
+    stats: { averageRating: 7.8 },
+    badges: [
+      { label: "HEARTBREAK", desc: "Emotional weight" },
+      { label: "REALISM", desc: "Honest portrayals" },
+      { label: "DIVORCE", desc: "Relationship breakdown" }
+    ],
+    movies: ['tt1832382', 'tt0070644', 'tt7653254', 'tt2209418', 'tt0079417', 'tt0169547', 'tt0078444', 'tt1120985', 'tt1570728', 'tt0959337'],
+    relatedCollections: ['best-drama-movies-on-hbo-max', 'best-thought-provoking-movies', 'best-erotic-romance-movies']
+  },
+
+
   // 🩸 BEST THRILLER MOVIES
   'best-thriller-movies': {
     slug: 'best-thriller-movies',
@@ -1039,6 +1054,7 @@ export const getDecadeCollection = () => COLLECTIONS['best-movies-of-the-decade'
 export const getGangsterCollection = () => COLLECTIONS['best-gangster-movies-of-all-time'];
 export const getBookAdaptationsCollection = () => COLLECTIONS['top-10-book-adaptations'];
 export const getEroticRomanceCollection = () => COLLECTIONS['best-erotic-romance-movies'];
+export const getMarriageCrisisCollection = () => COLLECTIONS['best-marriage-crisis-movies'];
 export const getBestActionCollection = () => COLLECTIONS['best-action-movies'];
 // ============================================================================
 // 🧠 THE MASTER CANONICAL BRAIN

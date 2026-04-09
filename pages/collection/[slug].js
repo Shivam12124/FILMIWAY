@@ -59,6 +59,7 @@ import { COMPLETE_MOVIE_DATABASE as TRUE_STORY_DATABASE, COMPLETE_MOVIE_DATA as 
 import { COMPLETE_MOVIE_DATABASE as GANGSTER_DATABASE, COMPLETE_MOVIE_DATA as GANGSTER_DATA } from '../../utils/gangsterMovieData';
 import { COMPLETE_MOVIE_DATABASE as DECADE_DATABASE, COMPLETE_MOVIE_DATA as DECADE_DATA } from '../../utils/decadeMovieData';
 import { COMPLETE_MOVIE_DATABASE as BOOK_ADAPTATION_DATABASE, COMPLETE_MOVIE_DATA as BOOK_ADAPTATION_DATA } from '../../utils/bookAdaptationData';
+import { COMPLETE_MOVIE_DATABASE as MARRIAGE_CRISIS_DATABASE, COMPLETE_MOVIE_DATA as MARRIAGE_CRISIS_DATA } from '../../utils/marriageCrisisMovieData';
 
 import { COMPLETE_MOVIE_DATABASE as HULU_FAMILY_DATABASE, COMPLETE_MOVIE_DATA as HULU_FAMILY_DATA } from '../../utils/huluFamilyMovieData';
 import { COMPLETE_MOVIE_DATABASE as HBO_ACTION_DATABASE, COMPLETE_MOVIE_DATA as HBO_ACTION_DATA } from '../../utils/hboActionMovieData';
@@ -1259,6 +1260,29 @@ const getCollectionContent = () => {
             text2: "This collection is an exploration of the darker side of human nature. You will witness the destructive power of obsession and the deadly consequences of forbidden desires. In the world of the erotic thriller, no one is innocent."
         }
     };
+    } else if (collection.slug === 'best-marriage-crisis-movies') {
+        return {
+            badge: "Relationship Drama",
+            title: "10 Best Movies About Marriage Crises",
+            description: "The most emotionally raw and devastating portrayals of marriages falling apart. From the legal nightmare of Marriage Story to the quiet tragedy of Blue Valentine.",
+            selection: {
+                text1: "These aren't standard romance movies. We selected films that explore the complex, painful, and messy realities of long-term relationships breaking down.",
+                text2: "Each film provides an unflinching look at love, resentment, and the psychological toll of a failing marriage."
+            },
+            ranking: {
+                text: "Ranked by emotional weight and realism, evaluating how authentically each film captures the devastating truth of a relationship in crisis.",
+                points: [
+                    "Emotional devastation factor",
+                    "Authenticity and realism",
+                    "Performances and chemistry",
+                    "Thematic depth of the breakdown"
+                ]
+            },
+            experience: {
+                text1: "Prepare for heavy, emotionally taxing cinema. These films are brilliant but undeniably heartbreaking.",
+                text2: "Each selection offers a profound, challenging reflection on the fragility of human connection."
+            }
+        };
     } else if (collection.slug === 'best-erotic-romance-movies') {
         return {
             badge: "Intimate Cinema",
@@ -2295,6 +2319,11 @@ subtitle: "While everyone searches Netflix, these classics hide in plain sight. 
             title: "10 Best Book Adaptations of All Time",
             subtitle: "Page-to-screen masterpieces ranked by literary depth & cinematic impact"
         };
+    } else if (collection.slug === 'best-marriage-crisis-movies') {
+        return {
+            title: "10 Best Movies About Marriage Crises",
+            subtitle: "Emotionally devastating portraits of love, resentment, and relationships falling apart"
+        };
 
     } else if (collection.slug === 'movies-like-interstellar') {
         return {
@@ -2478,6 +2507,11 @@ const getLoaderContent = () => {
         return {
             title: "Loading Best Book Adaptations",
             description: "Curating literary masterpieces and cinematic translations with community reviews"
+        };
+    } else if (collection?.slug === 'best-marriage-crisis-movies') {
+        return {
+            title: "Loading Best Marriage Crisis Movies",
+            description: "Curating the most emotionally powerful films about relationships falling apart with community reviews"
         };
 
 } else if (collection?.slug === 'movies-like-donnie-darko') {
@@ -2962,6 +2996,15 @@ const getStaticMetaContent = () => {
             ogTitle: "10 Best Book Adaptations of All Time: Page to Screen",
             twitterTitle: "The 10 Best Movies Based on Books You Need to Watch",
             progressText: `of Top ${movies.length} Book Adaptations`
+        };
+    } else if (collection.slug === 'best-marriage-crisis-movies') {
+        return {
+            title: "10 Best Movies About Marriage Crises (Ranked)",
+            description: "The definitive ranking of the 10 best movies about marriage crises and divorce. From Marriage Story to Blue Valentine. Includes an exact Timestamps & Parents Guide.",
+            keywords: "best movies about marriage crisis, divorce movies, movies about failing relationships, marriage story, blue valentine",
+            ogTitle: "10 Best Movies About Marriage Crises: Emotional Devastation",
+            twitterTitle: "The 10 Best Movies About Failing Marriages You Need to Watch",
+            progressText: `of Top ${movies.length} Marriage Crisis Movies`
         };
 
 
@@ -3574,6 +3617,7 @@ const getStaticMetaContent = () => {
             sessionStorage.removeItem('fromDecadeCollection');
             sessionStorage.removeItem('fromGangsterCollection');
             sessionStorage.removeItem('fromBookAdaptationCollection');
+            sessionStorage.removeItem('fromMarriageCrisisCollection');
 
             // Set appropriate collection flag âœ…
             if (collection.slug === 'movies-like-inception') {
@@ -3718,6 +3762,8 @@ const getStaticMetaContent = () => {
                 sessionStorage.setItem('fromGangsterCollection', 'true');
             } else if (collection.slug === 'top-10-book-adaptations') {
                 sessionStorage.setItem('fromBookAdaptationCollection', 'true');
+            } else if (collection.slug === 'best-marriage-crisis-movies') {
+                sessionStorage.setItem('fromMarriageCrisisCollection', 'true');
             }
         }
     };
@@ -4159,6 +4205,8 @@ return (
 ? 'movies/best-gangster-movies-of-all-time/'
 : collection?.slug === 'top-10-book-adaptations'
 ? 'movies/top-10-book-adaptations/'
+: collection?.slug === 'best-marriage-crisis-movies'
+? 'movies/best-marriage-crisis-movies/'
 : collection?.slug === 'best-action-movies-on-hulu'
                                     ? 'movies/best-action-movies-on-hulu/'
 : collection?.slug === 'best-romance-movies-on-hulu'
@@ -4415,6 +4463,8 @@ return (
                                     ? `/movies/best-gangster-movies-of-all-time/${currentMovie.imdbID}`
                                     : collection.slug === 'top-10-book-adaptations'
                                     ? `/movies/top-10-book-adaptations/${currentMovie.imdbID}`
+                                    : collection.slug === 'best-marriage-crisis-movies'
+                                    ? `/movies/best-marriage-crisis-movies/${currentMovie.imdbID}`
                                     : collection.slug === 'best-action-movies-on-hulu'
                                     ? `/movies/best-action-movies-on-hulu/${currentMovie.imdbID}`
                                     : collection.slug === 'best-romance-movies-on-hulu'
@@ -4741,6 +4791,9 @@ case 'best-action-movies':
             break;
         case 'top-10-book-adaptations':
             movieDatabase = BOOK_ADAPTATION_DATABASE;
+            break;
+        case 'best-marriage-crisis-movies':
+            movieDatabase = MARRIAGE_CRISIS_DATABASE;
             break;
 
             case 'best-action-movies-on-hulu':

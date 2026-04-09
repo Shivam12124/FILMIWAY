@@ -6,9 +6,14 @@ import Image from 'next/image';
 
 // 🌍 ALL TMDB SUPPORTED COUNTRIES - FULLY ALPHABETICAL
 const ALL_REGIONS = [
+  { code: 'AF', name: 'Afghanistan', flag: '🇦🇫' },
   { code: 'AL', name: 'Albania', flag: '🇦🇱' },
   { code: 'DZ', name: 'Algeria', flag: '🇩🇿' },
+  { code: 'AO', name: 'Angola', flag: '🇦🇴' },
+  { code: 'AR', name: 'Argentina', flag: '🇦🇷' },
   { code: 'AM', name: 'Armenia', flag: '🇦🇲' },
+  { code: 'AU', name: 'Australia', flag: '🇦🇺' },
+  { code: 'AT', name: 'Austria', flag: '🇦🇹' },
   { code: 'AZ', name: 'Azerbaijan', flag: '🇦🇿' },
   { code: 'BS', name: 'Bahamas', flag: '🇧🇸' },
   { code: 'BH', name: 'Bahrain', flag: '🇧🇭' },
@@ -35,6 +40,7 @@ const ALL_REGIONS = [
   { code: 'CU', name: 'Cuba', flag: '🇨🇺' },
   { code: 'CY', name: 'Cyprus', flag: '🇨🇾' },
   { code: 'CZ', name: 'Czech Republic', flag: '🇨🇿' },
+  { code: 'CD', name: 'Democratic Republic of the Congo', flag: '🇨🇩' },
   { code: 'DK', name: 'Denmark', flag: '🇩🇰' },
   { code: 'DO', name: 'Dominican Republic', flag: '🇩🇴' },
   { code: 'EC', name: 'Ecuador', flag: '🇪🇨' },
@@ -49,16 +55,15 @@ const ALL_REGIONS = [
   { code: 'GH', name: 'Ghana', flag: '🇬🇭' },
   { code: 'GR', name: 'Greece', flag: '🇬🇷' },
   { code: 'GT', name: 'Guatemala', flag: '🇬🇹' },
-  { code: 'GB', name: 'United Kingdom', flag: '🇬🇧' },
   { code: 'GY', name: 'Guyana', flag: '🇬🇾' },
-  { code: 'HK', name: 'Hong Kong', flag: '🇭🇰' },
   { code: 'HN', name: 'Honduras', flag: '🇭🇳' },
+  { code: 'HK', name: 'Hong Kong', flag: '🇭🇰' },
   { code: 'HU', name: 'Hungary', flag: '🇭🇺' },
   { code: 'IS', name: 'Iceland', flag: '🇮🇸' },
   { code: 'IN', name: 'India', flag: '🇮🇳' },
   { code: 'ID', name: 'Indonesia', flag: '🇮🇩' },
-  { code: 'IQ', name: 'Iraq', flag: '🇮🇶' },
   { code: 'IR', name: 'Iran', flag: '🇮🇷' },
+  { code: 'IQ', name: 'Iraq', flag: '🇮🇶' },
   { code: 'IE', name: 'Ireland', flag: '🇮🇪' },
   { code: 'IL', name: 'Israel', flag: '🇮🇱' },
   { code: 'IT', name: 'Italy', flag: '🇮🇹' },
@@ -93,11 +98,11 @@ const ALL_REGIONS = [
   { code: 'NG', name: 'Nigeria', flag: '🇳🇬' },
   { code: 'NO', name: 'Norway', flag: '🇳🇴' },
   { code: 'OM', name: 'Oman', flag: '🇴🇲' },
+  { code: 'PK', name: 'Pakistan', flag: '🇵🇰' },
   { code: 'PA', name: 'Panama', flag: '🇵🇦' },
   { code: 'PY', name: 'Paraguay', flag: '🇵🇾' },
   { code: 'PE', name: 'Peru', flag: '🇵🇪' },
   { code: 'PH', name: 'Philippines', flag: '🇵🇭' },
-  { code: 'PK', name: 'Pakistan', flag: '🇵🇰' },
   { code: 'PL', name: 'Poland', flag: '🇵🇱' },
   { code: 'PT', name: 'Portugal', flag: '🇵🇹' },
   { code: 'QA', name: 'Qatar', flag: '🇶🇦' },
@@ -113,6 +118,7 @@ const ALL_REGIONS = [
   { code: 'KR', name: 'South Korea', flag: '🇰🇷' },
   { code: 'ES', name: 'Spain', flag: '🇪🇸' },
   { code: 'LK', name: 'Sri Lanka', flag: '🇱🇰' },
+  { code: 'SD', name: 'Sudan', flag: '🇸🇩' },
   { code: 'SR', name: 'Suriname', flag: '🇸🇷' },
   { code: 'SE', name: 'Sweden', flag: '🇸🇪' },
   { code: 'CH', name: 'Switzerland', flag: '🇨🇭' },
@@ -125,13 +131,16 @@ const ALL_REGIONS = [
   { code: 'TG', name: 'Togo', flag: '🇹🇬' },
   { code: 'TR', name: 'Turkey', flag: '🇹🇷' },
   { code: 'TM', name: 'Turkmenistan', flag: '🇹🇲' },
+  { code: 'UG', name: 'Uganda', flag: '🇺🇬' },
   { code: 'UA', name: 'Ukraine', flag: '🇺🇦' },
   { code: 'AE', name: 'United Arab Emirates', flag: '🇦🇪' },
+  { code: 'GB', name: 'United Kingdom', flag: '🇬🇧' },
   { code: 'US', name: 'United States', flag: '🇺🇸' },
   { code: 'UY', name: 'Uruguay', flag: '🇺🇾' },
   { code: 'UZ', name: 'Uzbekistan', flag: '🇺🇿' },
   { code: 'VE', name: 'Venezuela', flag: '🇻🇪' },
   { code: 'VN', name: 'Vietnam', flag: '🇻🇳' },
+  { code: 'YE', name: 'Yemen', flag: '🇾🇪' },
   { code: 'ZM', name: 'Zambia', flag: '🇿🇲' },
   { code: 'ZW', name: 'Zimbabwe', flag: '🇿🇼' },
 ];
@@ -319,10 +328,10 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
             <motion.div
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-orange-500/20 bg-orange-500/10 backdrop-blur-sm"
+              className="flex items-center gap-2 px-1"
             >
-              <Info size={14} className="text-orange-400" />
-              <p className="text-orange-300 text-[13px] font-medium tracking-wide">
+              <Info size={14} className="text-gray-500" />
+              <p className="text-gray-400 text-sm font-light tracking-wide">
                 {fallbackMessage}
               </p>
             </motion.div>
