@@ -4,7 +4,6 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { Inter } from 'next/font/google';
 import { 
   ArrowRight, Compass,
   ChevronLeft, ChevronRight, Construction,
@@ -15,13 +14,6 @@ import { COLLECTIONS } from '../data/collections';
 import { COMPLETE_MOVIE_DATABASE as EROTIC_THRILLER_DB, FALLBACK_POSTERS as EROTIC_THRILLER_POSTERS } from '../utils/eroticThrillerMovieData';
 import PlatformSelector from '../components/PlatformSelector';
 import Header from '../components/Header';
-
-// ⚡ OPTIMIZED NATIVE FONT LOADING
-const inter = Inter({ 
-  subsets: ['latin'],
-  display: 'swap',
-  weight: ['300', '400', '500', '600', '700']
-});
 
 const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p';
 
@@ -76,7 +68,6 @@ const fetchUniquePosterForCollection = async (movieIds, sectionName, collectionS
 
 // ⚡ PURE CSS CARD - Optimized Next/Image for LCP
 const CollectionCard = memo(({ collection, index, href, isPrioritySection }) => {
-  const [imageLoaded, setImageLoaded] = useState(false);
   const shouldPrioritize = isPrioritySection && index < 4;
 
   return (
@@ -97,8 +88,7 @@ const CollectionCard = memo(({ collection, index, href, isPrioritySection }) => 
             priority={shouldPrioritize}
             quality={65} 
             sizes="(max-width: 640px) 160px, 250px"
-            className={`object-cover transition-transform duration-700 group-hover:scale-105 ${shouldPrioritize || imageLoaded ? 'opacity-100' : 'opacity-0'}`}
-            onLoad={() => setImageLoaded(true)}
+            className="object-cover transition-transform duration-700 group-hover:scale-105"
             draggable={false}
           />
         </div>
@@ -129,6 +119,7 @@ const Top10MovieCard = memo(({ movie, index }) => {
   const rank = index + 1;
   const isDoubleDigit = rank >= 10;
   const posterUrl = movie.posterUrl || "https://via.placeholder.com/342x513/111827/4b5563?text=No+Image";
+  const shouldPrioritize = index < 3; // Prioritize the first 3 visible Top 10 movies
   
   return (
     <Link
@@ -159,6 +150,8 @@ const Top10MovieCard = memo(({ movie, index }) => {
           src={posterUrl}
           alt={movie.Title}
           fill
+          priority={shouldPrioritize}
+          quality={65}
           sizes="(max-width: 640px) 160px, 250px"
           className="object-cover"
         />
@@ -390,7 +383,7 @@ const FilmiwayHomepage = ({ huluCollections, mindBendingCollections, thrillerCol
   const scrollToSection = (ref) => ref.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
   return (
-    <div className={inter.className}>
+    <div>
       <Head>
         <title>Filmiway | Premium Movie Collections & Streaming Guide</title>
         <meta name="description" content="Expertly curated movie collections for Netflix, Hulu, HBO Max, Peacock. Hand-picked recommendations for true cinema lovers." />

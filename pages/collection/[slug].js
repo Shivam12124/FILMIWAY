@@ -191,7 +191,8 @@ const MobileHomepageButton = () => (
 //  COLLECTION PAGE COMPONENT
 const CollectionPage = ({ collection, movies }) => {
     const [currentMovieIndex, setCurrentMovieIndex] = useState(0);
-    const [isLoading, setIsLoading] = useState(true);
+    // ⚡ OPTIMIZATION: Disabled artificial loader. Next.js SSG pages load instantly.
+    const [isLoading, setIsLoading] = useState(false);
     const [isMuted, setIsMuted] = useState(false);
     const [isAutoPlay, setIsAutoPlay] = useState(false);
 

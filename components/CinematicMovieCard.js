@@ -32,7 +32,8 @@ const CinematicMovieCard = React.memo(({ movie, rank, isActive, fromSurvivalColl
         return (sourceQuotes && movie?.tmdbId && sourceQuotes[movie.tmdbId]) || null;
     }, [movie?.tmdbId, fromSurvivalCollection]);
 
-    const posterQuality = isMobile ? "w342" : "w780"; 
+    // ⚡ OPTIMIZATION: Reduced desktop poster size from w780 to w500 to cut load times in half
+    const posterQuality = isMobile ? "w342" : "w500"; 
 
     const hoverText = useMemo(() => {
         if (quote) return quote;
@@ -76,6 +77,8 @@ const CinematicMovieCard = React.memo(({ movie, rank, isActive, fromSurvivalColl
                                 movie={movie} 
                                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
                                 posterSize={posterQuality} 
+                                priority={rank <= 4}
+                                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                             />
                         ) : (
                             <div className="w-full h-full bg-gray-800 animate-pulse" /> 
