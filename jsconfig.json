@@ -2,11 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*":              ["src/*"],          // everything under src
-      "@/components/*":   ["src/components/*"],
-      "@/contexts/*":     ["contexts/*"],     // ← points to root-level folder
-      "@/lib/*":          ["lib/*"],
-      "@/app/*":          ["app/*"]
+      "@/*": ["./*"]
     }
   },
   "exclude": ["node_modules", ".next"]

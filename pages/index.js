@@ -486,6 +486,7 @@ const FilmiwayHomepage = ({ huluCollections, mindBendingCollections, thrillerCol
                   <li><Link href="/terms" className="hover:text-white transition-colors inline-block py-1">Terms of Use</Link></li>
                   <li><Link href="/about-us" className="hover:text-white transition-colors inline-block py-1">About Us</Link></li>
                   <li><Link href="/faq" className="hover:text-white transition-colors inline-block py-1">FAQ</Link></li>
+                  <li><Link href="/movie-directory" className="hover:text-yellow-400 text-yellow-500/80 transition-colors inline-block py-1 font-medium">A-Z Directory</Link></li>
                 </ul>
               </div>
             </div>
