@@ -8,10 +8,11 @@ import { Inter } from 'next/font/google';
 import { 
   ArrowRight, Compass,
   ChevronLeft, ChevronRight, Construction,
-  Film, Star
+  Film, Star, Flame
 } from 'lucide-react';
 
 import { COLLECTIONS } from '../data/collections';
+import { COMPLETE_MOVIE_DATABASE as EROTIC_THRILLER_DB, FALLBACK_POSTERS as EROTIC_THRILLER_POSTERS } from '../utils/eroticThrillerMovieData';
 import PlatformSelector from '../components/PlatformSelector';
 import Header from '../components/Header';
 
@@ -81,9 +82,13 @@ const CollectionCard = memo(({ collection, index, href, isPrioritySection }) => 
   return (
     <Link
       href={href}
-      className="group cursor-pointer select-none h-full relative transition-all duration-500 hover:-translate-y-2 block"
+      className="group cursor-pointer select-none relative transition-transform duration-300 hover:-translate-y-2 block shrink-0"
+      style={{ 
+         width: 'clamp(140px, 35vw, 220px)', 
+         height: 'clamp(210px, 52.5vw, 330px)' 
+      }}
     >
-      <div className="relative aspect-[2/3] rounded-xl sm:rounded-2xl overflow-hidden bg-[#0a0a0a] border border-white/5 group-hover:border-yellow-500/40 transition-all duration-500 shadow-2xl group-hover:shadow-yellow-500/20">
+      <div className="relative w-full h-full rounded-lg sm:rounded-xl overflow-hidden bg-gray-900 border border-white/10 group-hover:border-yellow-400/50 transition-all duration-300 shadow-[0_8px_30px_rgba(0,0,0,0.8)]">
         <div className="relative w-full h-full">
           <Image
             src={collection.poster_path ? `${IMAGE_BASE_URL}/w342${collection.poster_path}` : "https://via.placeholder.com/342x513/111827/4b5563?text=No+Image"}
@@ -91,7 +96,7 @@ const CollectionCard = memo(({ collection, index, href, isPrioritySection }) => 
             fill
             priority={shouldPrioritize}
             quality={65} 
-            sizes="(max-width: 640px) 160px, (max-width: 1024px) 220px, 200px"
+            sizes="(max-width: 640px) 160px, 250px"
             className={`object-cover transition-transform duration-700 group-hover:scale-105 ${shouldPrioritize || imageLoaded ? 'opacity-100' : 'opacity-0'}`}
             onLoad={() => setImageLoaded(true)}
             draggable={false}
@@ -101,23 +106,16 @@ const CollectionCard = memo(({ collection, index, href, isPrioritySection }) => 
         <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/10 to-transparent opacity-100 group-hover:opacity-80 transition-opacity duration-500 z-10 pointer-events-none" />
 
         <div className="absolute top-2 left-2 right-2 sm:top-3 sm:left-3 sm:right-3 z-20 flex justify-between items-start pointer-events-none">
-          <div className="bg-black/60 backdrop-blur-md px-1.5 py-0.5 sm:px-2 sm:py-1 rounded text-[9px] sm:text-[10px] font-bold text-white border border-white/10 flex items-center gap-1 shadow-lg">
+          <div className="bg-black/60 backdrop-blur-md px-2 py-1 rounded text-[10px] sm:text-xs font-bold text-white border border-white/10 flex items-center gap-1 shadow-lg">
             <Star className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-yellow-400 fill-current" />
             {collection.vote_average}
           </div>
-          <div className="bg-black/60 backdrop-blur-md px-1.5 py-0.5 sm:px-2 sm:py-1 rounded text-[9px] sm:text-[10px] font-bold text-yellow-400 border border-white/10 shadow-lg tracking-wider">
-            {collection.item_count} FILMS
-          </div>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-5 z-20 pointer-events-none transform translate-y-1 sm:translate-y-3 group-hover:translate-y-0 transition-transform duration-500">
-          <h3 className="text-white font-semibold sm:font-bold text-xs sm:text-base md:text-lg leading-tight sm:leading-snug mb-1 sm:mb-2 line-clamp-2 group-hover:text-yellow-400 transition-colors duration-300 drop-shadow-md">
+        <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 z-20 pointer-events-none transform translate-y-1 sm:translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+          <h3 className="text-white font-semibold sm:font-bold text-sm sm:text-base leading-tight mb-1 line-clamp-3 group-hover:text-yellow-400 transition-colors duration-300 drop-shadow-md">
             {collection.title}
           </h3>
-          <div className="hidden sm:flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-75">
-            <span className="text-xs font-semibold text-white uppercase tracking-wider">Explore</span>
-            <ArrowRight className="w-4 h-4 text-yellow-400" />
-          </div>
         </div>
       </div>
     </Link>
@@ -125,6 +123,101 @@ const CollectionCard = memo(({ collection, index, href, isPrioritySection }) => 
 });
 
 CollectionCard.displayName = 'CollectionCard';
+
+// ⚡ TOP 10 MOVIE CARD (NETFLIX STYLE)
+const Top10MovieCard = memo(({ movie, index }) => {
+  const rank = index + 1;
+  const isDoubleDigit = rank >= 10;
+  const posterUrl = movie.posterUrl || "https://via.placeholder.com/342x513/111827/4b5563?text=No+Image";
+  
+  return (
+    <Link
+      href={`/movies/best-erotic-thriller-movies/${movie.imdbID}`}
+      className="group relative flex items-end shrink-0 transition-transform duration-300 hover:-translate-y-2 pl-4 sm:pl-6"
+      style={{ 
+         width: 'clamp(215px, 53.8vw, 338px)', 
+         height: 'clamp(210px, 52.5vw, 330px)' 
+      }}
+    >
+      {/* Massive Overlapping Number */}
+      <div 
+         className={`absolute ${isDoubleDigit ? 'left-[-45px] sm:left-[-75px]' : 'left-[-10px] sm:left-[-20px]'} bottom-[-15px] sm:bottom-[-20px] z-0 leading-none text-transparent select-none pointer-events-none drop-shadow-2xl`}
+         style={{
+           fontSize: 'clamp(170px, 35vw, 280px)',
+           fontWeight: '900',
+           WebkitTextStroke: '3px #d4d4d8', // Slate-300 outline
+           letterSpacing: isDoubleDigit ? '-0.12em' : '-0.05em',
+           fontFamily: '"Arial Black", "Impact", sans-serif'
+         }}
+      >
+        {rank}
+      </div>
+      
+      {/* Movie Poster */}
+      <div className="absolute right-0 w-[65%] h-full z-10 rounded-lg overflow-hidden border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.8)] group-hover:border-yellow-400/50 transition-all duration-300 bg-gray-900">
+        <Image
+          src={posterUrl}
+          alt={movie.Title}
+          fill
+          sizes="(max-width: 640px) 160px, 250px"
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-yellow-500/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      </div>
+    </Link>
+  );
+});
+
+Top10MovieCard.displayName = 'Top10MovieCard';
+
+// ⚡ TOP 10 CAROUSEL
+const Top10Carousel = memo(({ movies }) => {
+  const scrollContainerRef = useRef(null);
+
+  const scroll = (direction) => {
+    if (scrollContainerRef.current) {
+      const { clientWidth } = scrollContainerRef.current;
+      const scrollAmount = direction === 'left' ? -clientWidth + 50 : clientWidth - 50;
+      scrollContainerRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  };
+
+  if (!movies || movies.length === 0) return null;
+
+  return (
+    <div className="relative group/carousel mt-4 sm:mt-8 mb-4">
+      <button 
+        onClick={() => scroll('left')} 
+        className="hidden md:flex absolute -left-5 top-1/2 -translate-y-1/2 z-30 w-12 h-12 bg-black/90 backdrop-blur-xl rounded-full border border-white/10 items-center justify-center opacity-0 group-hover/carousel:opacity-100 transition-all duration-300 hover:border-white/30 hover:scale-110 shadow-2xl" 
+        aria-label="Scroll left"
+      >
+        <ChevronLeft className="w-5 h-5 text-white" />
+      </button>
+      
+      <button 
+        onClick={() => scroll('right')} 
+        className="hidden md:flex absolute -right-5 top-1/2 -translate-y-1/2 z-30 w-12 h-12 bg-black/90 backdrop-blur-xl rounded-full border border-white/10 items-center justify-center opacity-0 group-hover/carousel:opacity-100 transition-all duration-300 hover:border-white/30 hover:scale-110 shadow-2xl" 
+        aria-label="Scroll right"
+      >
+        <ChevronRight className="w-5 h-5 text-white" />
+      </button>
+
+      <div 
+        ref={scrollContainerRef}
+        className="flex overflow-x-auto gap-4 sm:gap-6 pb-12 pt-4 px-2 sm:px-4 snap-x snap-mandatory hide-scrollbar scroll-smooth"
+        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+      >
+        {movies.map((movie, index) => (
+          <div key={movie.imdbID} className="snap-start flex-shrink-0">
+            <Top10MovieCard movie={movie} index={index} />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+});
+
+Top10Carousel.displayName = 'Top10Carousel';
 
 // ⚡ HERO SECTION - Fast initial load
 const HeroSection = memo(() => {
@@ -213,13 +306,13 @@ const ProfessionalCarousel = memo(({ collections, sectionRef, isPrioritySection 
 
       <div 
         ref={scrollContainerRef}
-        className="flex overflow-x-auto gap-3 sm:gap-5 pb-6 pt-2 px-1 snap-x snap-mandatory hide-scrollbar scroll-smooth"
+        className="flex overflow-x-auto gap-4 sm:gap-6 pb-6 pt-2 px-1 snap-x snap-mandatory hide-scrollbar scroll-smooth"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
         {safeCollections.map((collection, index) => (
           <div 
             key={collection.id} 
-            className="flex-shrink-0 snap-start w-[48%] sm:w-[30%] md:w-[22%] lg:w-[18%] xl:w-[16%]"
+            className="flex-shrink-0 snap-start"
           >
             <CollectionCard 
               collection={collection} 
@@ -266,7 +359,27 @@ const MovieSection = memo(({ title, movies, description, sectionRef, viewAllLink
 
 MovieSection.displayName = 'MovieSection';
 
-const FilmiwayHomepage = ({ huluCollections, mindBendingCollections, thrillerCollections, hboCollections, peacockCollections, paramountCollections }) => {
+// ⚡ TOP 10 SECTION 
+const Top10Section = memo(({ title, movies, description }) => {
+  return (
+    <section className="mb-12 sm:mb-20 select-none">
+      <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-4 sm:mb-8 px-1">
+        <div>
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white tracking-tight mb-1 sm:mb-2 flex items-center gap-3">
+            <Flame className="w-6 h-6 sm:w-8 sm:h-8 text-red-500" />
+            {title}
+          </h2>
+          <p className="text-sm sm:text-base text-gray-400 font-light max-w-2xl">{description}</p>
+        </div>
+      </div>
+      <Top10Carousel movies={movies} />
+    </section>
+  );
+});
+
+Top10Section.displayName = 'Top10Section';
+
+const FilmiwayHomepage = ({ huluCollections, mindBendingCollections, thrillerCollections, hboCollections, peacockCollections, paramountCollections, top10EroticThrillers }) => {
   const mindRef = useRef(null);
   const thrillerRef = useRef(null);
   const huluRef = useRef(null);
@@ -304,6 +417,12 @@ const FilmiwayHomepage = ({ huluCollections, mindBendingCollections, thrillerCol
               sectionRef={mindRef} 
               viewAllLink="/genre/mind-bending" 
               isPrioritySection={true}
+            />
+
+            <Top10Section 
+              title="Top 10 Erotic Thrillers" 
+              description="The most intensely debated psychological and sensual thrillers streaming right now." 
+              movies={top10EroticThrillers} 
             />
             
             <MovieSection 
@@ -455,6 +574,24 @@ export async function getStaticProps() {
     return results.filter(item => item !== null);
   };
 
+  // ⚡ Fetch Posters for the direct Top 10 Movies
+  const fetchTop10Movies = async (moviesList) => {
+    if (!moviesList) return [];
+    return await Promise.all(moviesList.slice(0, 10).map(async (movie) => {
+      let posterUrl = EROTIC_THRILLER_POSTERS?.[movie.tmdbId] || null;
+      try {
+        const res = await fetch(`${TMDB_BASE_URL}/movie/${movie.tmdbId}?api_key=${TMDB_API_KEY}`);
+        const data = await res.json();
+        if (data.poster_path) {
+          posterUrl = `https://image.tmdb.org/t/p/w500${data.poster_path}`;
+        }
+      } catch (e) {
+        console.error("Error fetching top 10 poster for:", movie.Title);
+      }
+      return { ...movie, posterUrl };
+    }));
+  };
+
   try {
     const [huluData, mindData, thrillerData, hboData, peacockData, paramountData] = await Promise.all([
       fetchCollectionData(huluKeys, 'hulu'),
@@ -465,6 +602,8 @@ export async function getStaticProps() {
       fetchCollectionData(paramountKeys, 'paramount')
     ]);
 
+    const top10EroticThrillers = await fetchTop10Movies(EROTIC_THRILLER_DB);
+
     return {
       props: {
         huluCollections: huluData,
@@ -472,7 +611,8 @@ export async function getStaticProps() {
         thrillerCollections: thrillerData,
         hboCollections: hboData,
         peacockCollections: peacockData,
-        paramountCollections: paramountData
+        paramountCollections: paramountData,
+        top10EroticThrillers
       },
       revalidate: 604800, 
     };
@@ -486,6 +626,7 @@ export async function getStaticProps() {
         hboCollections: [],
         peacockCollections: [],
         paramountCollections: [],
+        top10EroticThrillers: []
       },
     };
   }
