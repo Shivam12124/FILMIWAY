@@ -39,7 +39,7 @@ export const HULU_THRILLER_MOVIE_SLUGS = {
     'tt0455944': 'the-equalizer',
     
     // Rank 9: How to Blow Up a Pipeline
-    'tt20446690': 'how-to-blow-up-a-pipeline',
+    'tt21440780': 'how-to-blow-up-a-pipeline',
     
     // Rank 10: The Pledge
     'tt0237572': 'the-pledge'

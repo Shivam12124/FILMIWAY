@@ -1,6 +1,6 @@
-// utils/huluRomanceMovieRoutes.js - COMPLETELY FIXED SSG ROUTE MAPPING FOR HULU ROMANCE COLLECTION
+// utils/a24MovieRoutes.js - COMPLETELY FIXED SSG ROUTE MAPPING FOR A24 MOVIES COLLECTION
 
-import { COMPLETE_MOVIE_DATABASE, COMPLETE_MOVIE_DATA } from './huluRomanceMovieData';
+import { COMPLETE_MOVIE_DATABASE, COMPLETE_MOVIE_DATA } from './a24MovieData';
 
 // ✅ GENERATE URL SLUG FROM MOVIE TITLE
 export const generateMovieSlug = (title) => {
@@ -12,45 +12,42 @@ export const generateMovieSlug = (title) => {
         .trim();
 };
 
-// ✅ COMPLETE HULU ROMANCE MOVIE SLUG MAPPING
-export const HULU_ROMANCE_MOVIE_SLUGS = {
+// ✅ COMPLETE A24 MOVIE SLUG MAPPING
+export const A24_MOVIE_SLUGS = {
+    // Rank 1: Aftersun
+    'tt19770238': 'aftersun',
     
-        // Rank 1: All of Us Strangers
-     'tt21192142': 'all-of-us-strangers',
+    // Rank 2: The Zone of Interest
+    'tt7160372': 'the-zone-of-interest',
     
-    // Rank 2: Anora
-    'tt22359552': 'anora',
+    // Rank 3: The Florida Project
+    'tt5649144': 'the-florida-project',
     
- 
+    // Rank 4: The Lighthouse
+    'tt7984734': 'the-lighthouse',
     
-    // Rank 3: And Then We Danced
-    'tt8963708': 'and-then-we-danced',
+    // Rank 5: The Iron Claw
+    'tt21064584': 'the-iron-claw',
     
-    // Rank 4: Brooklyn
-    'tt2381111': 'brooklyn',
+    // Rank 6: Lady Bird
+    'tt4925292': 'lady-bird',
     
-    // Rank 5: Little Manhattan
-    'tt0412922': 'little-manhattan',
+    // Rank 7: Hereditary
+    'tt7784604': 'hereditary',
     
-    // Rank 6: Palm Springs
-    'tt9484998': 'palm-springs',
+    // Rank 8: Midsommar
+    'tt8772262': 'midsommar',
     
-    // Rank 7: Rye Lane
-    'tt15893750': 'rye-lane',
+    // Rank 9: Close
+    'tt9660502': 'close',
     
-    // Rank 8: Crazy Heart
-    'tt1263670': 'crazy-heart',
-    
-    // Rank 9: Good Luck to You, Leo Grande
-    'tt13352968': 'good-luck-to-you-leo-grande',
-    
-    // Rank 10: 13 Going on 30
-    'tt0337563': '13-going-on-30'
+    // Rank 10: The Whale
+    'tt13833688': 'the-whale'
 };
 
 // ✅ REVERSE SLUG MAPPING (SLUG TO IMDB ID)
 export const SLUG_TO_IMDB = Object.fromEntries(
-    Object.entries(HULU_ROMANCE_MOVIE_SLUGS).map(([imdbId, slug]) => [slug, imdbId])
+    Object.entries(A24_MOVIE_SLUGS).map(([imdbId, slug]) => [slug, imdbId])
 );
 
 // ✅ GET MOVIE BY SLUG - FIXED
@@ -63,30 +60,30 @@ export const getMovieBySlug = (slug) => {
 
 // ✅ GET MOVIE SLUG BY IMDB ID
 export const getMovieSlug = (imdbId) => {
-    return HULU_ROMANCE_MOVIE_SLUGS[imdbId] || null;
+    return A24_MOVIE_SLUGS[imdbId] || null;
 };
 
-// ✅ GENERATE ALL STATIC PATHS FOR HULU ROMANCE MOVIES
-export const generateHuluRomanceMoviePaths = () => {
+// ✅ GENERATE ALL STATIC PATHS FOR A24 MOVIES - FIXED
+export const generateA24MoviePaths = () => {
     return COMPLETE_MOVIE_DATABASE.map(movie => ({
         params: {
-            slug: HULU_ROMANCE_MOVIE_SLUGS[movie.imdbID]
+            slug: A24_MOVIE_SLUGS[movie.imdbID]
         }
     }));
 };
 
-// ✅ HULU ROMANCE MOVIE NAVIGATION BREADCRUMBS
-export const getHuluRomanceMovieBreadcrumbs = (movie) => {
+// ✅ A24 MOVIE NAVIGATION BREADCRUMBS
+export const getA24MovieBreadcrumbs = (movie) => {
     return [
         { label: 'Home', href: '/' },
         { label: 'Collections', href: '/collection' },
-        { label: 'Best Romance Movies on Hulu', href: '/best-romance-movies-on-hulu' },
-        { label: movie.Title, href: `/best-romance-movies-on-hulu/${HULU_ROMANCE_MOVIE_SLUGS[movie.imdbID]}` }
+        { label: '10 Best A24 Movies', href: '/collection/best-a24-movies' },
+        { label: movie.Title, href: `/collection/best-a24-movies/${A24_MOVIE_SLUGS[movie.imdbID]}` }
     ];
 };
 
-// ✅ GET NEXT/PREVIOUS HULU ROMANCE MOVIE
-export const getHuluRomanceMovieNavigation = (currentMovie) => {
+// ✅ GET NEXT/PREVIOUS A24 MOVIE - FIXED
+export const getA24MovieNavigation = (currentMovie) => {
     const currentIndex = COMPLETE_MOVIE_DATABASE.findIndex(m => m.imdbID === currentMovie.imdbID);
     
     const previousMovie = currentIndex > 0 
@@ -100,17 +97,17 @@ export const getHuluRomanceMovieNavigation = (currentMovie) => {
     return {
         previous: previousMovie ? {
             ...previousMovie,
-            slug: HULU_ROMANCE_MOVIE_SLUGS[previousMovie.imdbID]
+            slug: A24_MOVIE_SLUGS[previousMovie.imdbID]
         } : null,
         next: nextMovie ? {
             ...nextMovie,
-            slug: HULU_ROMANCE_MOVIE_SLUGS[nextMovie.imdbID]
+            slug: A24_MOVIE_SLUGS[nextMovie.imdbID]
         } : null
     };
 };
 
-// ✅ GET RELATED HULU ROMANCE MOVIES (SAME GENRE/DECADE)
-export const getRelatedHuluRomanceMovies = (currentMovie, limit = 3) => {
+// ✅ GET RELATED A24 MOVIES (SAME GENRE/DECADE)
+export const getRelatedA24Movies = (currentMovie, limit = 3) => {
     const currentDecade = Math.floor(currentMovie.year / 10) * 10;
     const currentGenre = currentMovie.genre;
     
@@ -124,32 +121,22 @@ export const getRelatedHuluRomanceMovies = (currentMovie, limit = 3) => {
         .slice(0, limit)
         .map(movie => ({
             ...movie,
-            slug: HULU_ROMANCE_MOVIE_SLUGS[movie.imdbID]
+            slug: A24_MOVIE_SLUGS[movie.imdbID]
         }));
 };
 
-// ✅ HULU ROMANCE COLLECTION METADATA
-export const HULU_ROMANCE_COLLECTION_META = {
-    title: '10 Best Romance Movies on Hulu (Ranked 2026)',
-    description: 'The definitive ranking of romance movies on Hulu. From the adrenaline of Anora to the nostalgia of Little Manhattan. Ranked by chemistry and emotional resonance.',
-    keywords: 'best romance movies hulu, hulu romance films, anora hulu, all of us strangers, romantic movies streaming, love stories hulu',
-    canonicalUrl: 'https://filmiway.com/best-romance-movies-on-hulu',
-    ogImage: 'https://filmiway.com/images/hulu-romance-collection-og.jpg',
-    totalMovies: COMPLETE_MOVIE_DATABASE.length,
-    // ✅ FIXED - CALCULATES AVERAGE EMOTIONAL RESONANCE (psychologicalIntensity)
-    averageEmotionalScore: Math.round(
-        COMPLETE_MOVIE_DATABASE.reduce((sum, movie) => {
-            const data = COMPLETE_MOVIE_DATA[movie.tmdbId];
-            return sum + (data?.psychologicalIntensity || 85); 
-        }, 0) / COMPLETE_MOVIE_DATABASE.length
-    )
+// 👁️ A24 COLLECTION METADATA (FINAL – CTR + SEO SAFE)
+export const A24_COLLECTION_META = {
+    title: "10 Best A24 Movies of All Time",
+    description: "Explore the most profound, terrifying, and artistically complex films from A24. Verified timestamps, emotional depth, and complete guides.",
+    slug: "best-a24-movies"
 };
 
-// ✅ GENERATE HULU ROMANCE MOVIE SITEMAP URLS
-export const generateHuluRomanceMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+// ✅ GENERATE A24 MOVIE SITEMAP URLS
+export const generateA24MovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
     const urls = [
         {
-            url: `${baseUrl}/best-romance-movies-on-hulu`,
+            url: `${baseUrl}/collection/best-a24-movies`,
             lastmod: new Date().toISOString(),
             priority: '0.8',
             changefreq: 'weekly'
@@ -158,7 +145,7 @@ export const generateHuluRomanceMovieSitemapUrls = (baseUrl = 'https://filmiway.
     
     COMPLETE_MOVIE_DATABASE.forEach(movie => {
         urls.push({
-            url: `${baseUrl}/best-romance-movies-on-hulu/${HULU_ROMANCE_MOVIE_SLUGS[movie.imdbID]}`,
+            url: `${baseUrl}/collection/best-a24-movies/${A24_MOVIE_SLUGS[movie.imdbID]}`,
             lastmod: new Date().toISOString(),
             priority: '0.7',
             changefreq: 'weekly'
@@ -168,13 +155,13 @@ export const generateHuluRomanceMovieSitemapUrls = (baseUrl = 'https://filmiway.
     return urls;
 };
 
-// ✅ VALIDATE HULU ROMANCE MOVIE SLUG
-export const isValidHuluRomanceMovieSlug = (slug) => {
-    return Object.values(HULU_ROMANCE_MOVIE_SLUGS).includes(slug);
+// ✅ VALIDATE A24 MOVIE SLUG
+export const isValidA24MovieSlug = (slug) => {
+    return Object.values(A24_MOVIE_SLUGS).includes(slug);
 };
 
-// ✅ HULU ROMANCE MOVIE SEARCH/FILTER UTILITIES
-export const searchHuluRomanceMovies = (query) => {
+// ✅ A24 MOVIE SEARCH/FILTER UTILITIES - FIXED
+export const searchA24Movies = (query) => {
     const lowercaseQuery = query.toLowerCase();
     
     return COMPLETE_MOVIE_DATABASE
@@ -186,23 +173,23 @@ export const searchHuluRomanceMovies = (query) => {
         )
         .map(movie => ({
             ...movie,
-            slug: HULU_ROMANCE_MOVIE_SLUGS[movie.imdbID]
+            slug: A24_MOVIE_SLUGS[movie.imdbID]
         }));
 };
 
-export const filterHuluRomanceMoviesByGenre = (genre) => {
+export const filterA24MoviesByGenre = (genre) => {
     if (genre === 'All') return COMPLETE_MOVIE_DATABASE;
     
     return COMPLETE_MOVIE_DATABASE
         .filter(movie => movie.genre === genre)
         .map(movie => ({
             ...movie,
-            slug: HULU_ROMANCE_MOVIE_SLUGS[movie.imdbID]
+            slug: A24_MOVIE_SLUGS[movie.imdbID]
         }));
 };
 
-// ✅ FIXED SORTING - NOW USES REAL DATA
-export const sortHuluRomanceMovies = (movies, sortBy) => {
+// ✅ FIXED SORTING - NOW USES REAL METRICS FROM DATA FILE
+export const sortA24Movies = (movies, sortBy) => {
     const sortedMovies = [...movies];
     
     switch (sortBy) {
@@ -214,11 +201,11 @@ export const sortHuluRomanceMovies = (movies, sortBy) => {
             });
         case 'year':
             return sortedMovies.sort((a, b) => b.year - a.year);
-        case 'emotion': // Replaces adrenaline/classWarfare
+        case 'emotionalResonance': // Replaces paranoiaLevel
             return sortedMovies.sort((a, b) => {
-                const scoreA = COMPLETE_MOVIE_DATA[a.tmdbId]?.psychologicalIntensity || 0;
-                const scoreB = COMPLETE_MOVIE_DATA[b.tmdbId]?.psychologicalIntensity || 0;
-                return scoreB - scoreA;
+                const resonanceA = COMPLETE_MOVIE_DATA[a.tmdbId]?.emotionalResonance || 0;
+                const resonanceB = COMPLETE_MOVIE_DATA[b.tmdbId]?.emotionalResonance || 0;
+                return resonanceB - resonanceA;
             });
         case 'runtime':
             return sortedMovies.sort((a, b) => b.runtime - a.runtime);
@@ -227,8 +214,8 @@ export const sortHuluRomanceMovies = (movies, sortBy) => {
     }
 };
 
-// ✅ GET HULU ROMANCE MOVIE COLLECTION STATS
-export const getHuluRomanceCollectionStats = () => {
+// ✅ GET A24 COLLECTION STATS
+export const getA24CollectionStats = () => {
     const genres = [...new Set(COMPLETE_MOVIE_DATABASE.map(m => m.genre))];
     const decades = [...new Set(COMPLETE_MOVIE_DATABASE.map(m => Math.floor(m.year / 10) * 10))];
     const yearRange = {
@@ -248,16 +235,16 @@ export const getHuluRomanceCollectionStats = () => {
         averageRuntime: Math.round(
             COMPLETE_MOVIE_DATABASE.reduce((sum, m) => sum + m.runtime, 0) / COMPLETE_MOVIE_DATABASE.length
         ),
-        // ✅ ADDED - AVERAGE EMOTIONAL SCORE
-        averageEmotionalScore: Math.round(
+        // ✅ ADDED - AVERAGE EMOTIONAL RESONANCE (Replaces Paranoia Index)
+        averageEmotionalResonance: Math.round(
             COMPLETE_MOVIE_DATABASE.reduce((sum, m) => {
-                return sum + (COMPLETE_MOVIE_DATA[m.tmdbId]?.psychologicalIntensity || 85);
+                return sum + (COMPLETE_MOVIE_DATA[m.tmdbId]?.emotionalResonance || 0);
             }, 0) / COMPLETE_MOVIE_DATABASE.length
         ),
         // ✅ ADDED - AVERAGE RATING
         averageRating: (
             COMPLETE_MOVIE_DATABASE.reduce((sum, m) => {
-                return sum + (COMPLETE_MOVIE_DATA[m.tmdbId]?.rating || 7.5);
+                return sum + (COMPLETE_MOVIE_DATA[m.tmdbId]?.rating || 0);
             }, 0) / COMPLETE_MOVIE_DATABASE.length
         ).toFixed(1)
     };
@@ -266,19 +253,19 @@ export const getHuluRomanceCollectionStats = () => {
 // ✅ EXPORT ALL UTILITIES
 export default {
     generateMovieSlug,
-    HULU_ROMANCE_MOVIE_SLUGS,
+    A24_MOVIE_SLUGS,
     SLUG_TO_IMDB,
     getMovieBySlug,
     getMovieSlug,
-    generateHuluRomanceMoviePaths,
-    getHuluRomanceMovieBreadcrumbs,
-    getHuluRomanceMovieNavigation,
-    getRelatedHuluRomanceMovies,
-    HULU_ROMANCE_COLLECTION_META,
-    generateHuluRomanceMovieSitemapUrls,
-    isValidHuluRomanceMovieSlug,
-    searchHuluRomanceMovies,
-    filterHuluRomanceMoviesByGenre,
-    sortHuluRomanceMovies,
-    getHuluRomanceCollectionStats
+    generateA24MoviePaths,
+    getA24MovieBreadcrumbs,
+    getA24MovieNavigation,
+    getRelatedA24Movies,
+    A24_COLLECTION_META,
+    generateA24MovieSitemapUrls,
+    isValidA24MovieSlug,
+    searchA24Movies,
+    filterA24MoviesByGenre,
+    sortA24Movies,
+    getA24CollectionStats
 };

@@ -60,6 +60,7 @@ import { COMPLETE_MOVIE_DATABASE as GANGSTER_DATABASE, COMPLETE_MOVIE_DATA as GA
 import { COMPLETE_MOVIE_DATABASE as DECADE_DATABASE, COMPLETE_MOVIE_DATA as DECADE_DATA } from '../../utils/decadeMovieData';
 import { COMPLETE_MOVIE_DATABASE as BOOK_ADAPTATION_DATABASE, COMPLETE_MOVIE_DATA as BOOK_ADAPTATION_DATA } from '../../utils/bookAdaptationData';
 import { COMPLETE_MOVIE_DATABASE as MARRIAGE_CRISIS_DATABASE, COMPLETE_MOVIE_DATA as MARRIAGE_CRISIS_DATA } from '../../utils/marriageCrisisMovieData';
+import { COMPLETE_MOVIE_DATABASE as A24_DATABASE, COMPLETE_MOVIE_DATA as A24_DATA } from '../../utils/a24MovieData';
 
 import { COMPLETE_MOVIE_DATABASE as HULU_FAMILY_DATABASE, COMPLETE_MOVIE_DATA as HULU_FAMILY_DATA } from '../../utils/huluFamilyMovieData';
 import { COMPLETE_MOVIE_DATABASE as HBO_ACTION_DATABASE, COMPLETE_MOVIE_DATA as HBO_ACTION_DATA } from '../../utils/hboActionMovieData';
@@ -1575,6 +1576,29 @@ const getCollectionContent = () => {
                 text2: "Each film serves as a profound, uncompromising meditation on the human condition."
             }
         };
+    } else if (collection.slug === 'best-a24-movies') {
+        return {
+            badge: "Auteur Cinema",
+            title: "10 Best A24 Movies",
+            description: "Explore the most profound, terrifying, and artistically complex films from A24. Ranked by emotional resonance and artistic brilliance.",
+            selection: {
+                text1: "From the sun-drenched horror of 'Midsommar' to the intimate devastation of 'Aftersun'—these films represent the absolute pinnacle of A24's catalog.",
+                text2: "Each selection is a bold, uncompromising vision from an auteur director, blending genre thrills with profound human emotion."
+            },
+            ranking: {
+                text: "Our emotional resonance index evaluates psychological depth, artistic complexity, and the visceral impact of each film.",
+                points: [
+                    "Emotional resonance & depth",
+                    "Artistic & visual complexity",
+                    "Visceral impact factor",
+                    "Cinematic originality"
+                ]
+            },
+            experience: {
+                text1: "Whether you're seeking deeply moving dramas or unforgettable horror, this collection delivers cinema's most audacious experiences.",
+                text2: "Each film has been selected for its ability to challenge and linger with you long after the credits roll."
+            }
+        };
     } else if (collection.slug === 'best-neo-noir-movies') {
         return {
             badge: "Neon & Shadows",
@@ -2325,6 +2349,11 @@ subtitle: "While everyone searches Netflix, these classics hide in plain sight. 
             title: "10 Best Movies About Marriage Crises",
             subtitle: "Emotionally devastating portraits of love, resentment, and relationships falling apart"
         };
+    } else if (collection.slug === 'best-a24-movies') {
+        return {
+            title: "10 Best A24 Movies of All Time",
+            subtitle: "Profound, terrifying, and artistically complex masterpieces from modern cinema's boldest studio"
+        };
 
     } else if (collection.slug === 'movies-like-interstellar') {
         return {
@@ -2513,6 +2542,11 @@ const getLoaderContent = () => {
         return {
             title: "Loading Best Marriage Crisis Movies",
             description: "Curating the most emotionally powerful films about relationships falling apart with community reviews"
+        };
+    } else if (collection?.slug === 'best-a24-movies') {
+        return {
+            title: "Loading Best A24 Movies",
+            description: "Curating the finest A24 masterpieces with community reviews and ratings"
         };
 
 } else if (collection?.slug === 'movies-like-donnie-darko') {
@@ -3006,6 +3040,15 @@ const getStaticMetaContent = () => {
             ogTitle: "10 Best Movies About Marriage Crises: Emotional Devastation",
             twitterTitle: "The 10 Best Movies About Failing Marriages You Need to Watch",
             progressText: `of Top ${movies.length} Marriage Crisis Movies`
+        };
+    } else if (collection.slug === 'best-a24-movies') {
+        return {
+            title: "10 Best A24 Movies of All Time (Ranked)",
+            description: "The definitive ranking of the 10 best A24 movies. From Hereditary to Everything Everywhere All at Once. Includes an exact Timestamps & Parents Guide.",
+            keywords: "best a24 movies, top a24 films, a24 masterpieces, hereditary, midsommar, everything everywhere all at once, indie films",
+            ogTitle: "10 Best A24 Movies of All Time: Auteur Masterpieces",
+            twitterTitle: "The 10 Best A24 Movies You Need to Watch",
+            progressText: `of Top ${movies.length} A24 Movies`
         };
 
 
@@ -3619,6 +3662,7 @@ const getStaticMetaContent = () => {
             sessionStorage.removeItem('fromGangsterCollection');
             sessionStorage.removeItem('fromBookAdaptationCollection');
             sessionStorage.removeItem('fromMarriageCrisisCollection');
+            sessionStorage.removeItem('fromA24Collection');
 
             // Set appropriate collection flag âœ…
             if (collection.slug === 'movies-like-inception') {
@@ -3765,6 +3809,8 @@ const getStaticMetaContent = () => {
                 sessionStorage.setItem('fromBookAdaptationCollection', 'true');
             } else if (collection.slug === 'best-marriage-crisis-movies') {
                 sessionStorage.setItem('fromMarriageCrisisCollection', 'true');
+            } else if (collection.slug === 'best-a24-movies') {
+                sessionStorage.setItem('fromA24Collection', 'true');
             }
         }
     };
@@ -4208,6 +4254,8 @@ return (
 ? 'movies/top-10-book-adaptations/'
 : collection?.slug === 'best-marriage-crisis-movies'
 ? 'movies/best-marriage-crisis-movies/'
+: collection?.slug === 'best-a24-movies'
+? 'movies/best-a24-movies/'
 : collection?.slug === 'best-action-movies-on-hulu'
                                     ? 'movies/best-action-movies-on-hulu/'
 : collection?.slug === 'best-romance-movies-on-hulu'
@@ -4466,6 +4514,8 @@ return (
                                     ? `/movies/top-10-book-adaptations/${currentMovie.imdbID}`
                                     : collection.slug === 'best-marriage-crisis-movies'
                                     ? `/movies/best-marriage-crisis-movies/${currentMovie.imdbID}`
+                                    : collection.slug === 'best-a24-movies'
+                                    ? `/movies/best-a24-movies/${currentMovie.imdbID}`
                                     : collection.slug === 'best-action-movies-on-hulu'
                                     ? `/movies/best-action-movies-on-hulu/${currentMovie.imdbID}`
                                     : collection.slug === 'best-romance-movies-on-hulu'
@@ -4795,6 +4845,9 @@ case 'best-action-movies':
             break;
         case 'best-marriage-crisis-movies':
             movieDatabase = MARRIAGE_CRISIS_DATABASE;
+            break;
+        case 'best-a24-movies':
+            movieDatabase = A24_DATABASE;
             break;
 
             case 'best-action-movies-on-hulu':

@@ -5,15 +5,15 @@ import COMPLETE_WAR_FILMS_DATABASE, { WAR_FILMS } from './warFilmsMovieData';
 // ✅ WAR FILMS MOVIE SLUGS MAPPING (IMDB ID TO SLUG)
 export const WAR_FILMS_MOVIE_SLUGS = {
   'tt0120815': 'saving-private-ryan',
-  'tt0064116': 'apocalypse-now',
+  'tt0078788': 'apocalypse-now',
   'tt0056172': 'lawrence-of-arabia',
   'tt0091251': 'come-and-see',
   'tt0108052': 'schindlers-list',
   'tt0093058': 'full-metal-jacket',
-  'tt8183660': '1917',
+  'tt8579674': '1917',
   'tt0082096': 'das-boot',
   'tt0091763': 'platoon',
-  'tt0047528': 'paths-of-glory'
+  'tt0050825': 'paths-of-glory'
 };
 
 // ✅ REVERSE SLUG MAPPING (SLUG TO IMDB ID)

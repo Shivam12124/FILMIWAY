@@ -14,8 +14,8 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 572916, "imdbID": "tt8963708", "Title": "And Then We Danced", "year": 2019, "genre": "Drama", "runtime": 113, "rank": 3 },
     { "tmdbId": 167073, "imdbID": "tt2381111", "Title": "Brooklyn", "year": 2015, "genre": "Drama", "runtime": 111, "rank": 4 },
     { "tmdbId": 16553, "imdbID": "tt0412922", "Title": "Little Manhattan", "year": 2005, "genre": "Family", "runtime": 90, "rank": 5 },
-    { "tmdbId": 587792, "imdbID": "tt8385738", "Title": "Palm Springs", "year": 2020, "genre": "Comedy", "runtime": 90, "rank": 6 },
-    { "tmdbId": 1049638, "imdbID": "tt15893794", "Title": "Rye Lane", "year": 2023, "genre": "Comedy", "runtime": 82, "rank": 7 },
+    { "tmdbId": 587792, "imdbID": "tt9484998", "Title": "Palm Springs", "year": 2020, "genre": "Comedy", "runtime": 90, "rank": 6 },
+    { "tmdbId": 1049638, "imdbID": "tt15893750", "Title": "Rye Lane", "year": 2023, "genre": "Comedy", "runtime": 82, "rank": 7 },
     { "tmdbId": 25196, "imdbID": "tt1263670", "Title": "Crazy Heart", "year": 2009, "genre": "Drama", "runtime": 112, "rank": 8 },
     { "tmdbId": 758330, "imdbID": "tt13352968", "Title": "Good Luck to You, Leo Grande", "year": 2022, "genre": "Comedy", "runtime": 97, "rank": 9 },
     { "tmdbId": 10096, "imdbID": "tt0337563", "Title": "13 Going on 30", "year": 2004, "genre": "Comedy", "runtime": 98, "rank": 10 }

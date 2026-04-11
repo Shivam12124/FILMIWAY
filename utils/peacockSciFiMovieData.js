@@ -18,7 +18,7 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 2787, "imdbID": "tt0134847", "Title": "Pitch Black", "year": 2000, "genre": "Sci-Fi", "runtime": 109, "rank": 7 },
     { "tmdbId": 539892, "imdbID": "tt8781414", "Title": "Freaks", "year": 2018, "genre": "Sci-Fi", "runtime": 105, "rank": 8 },
     { "tmdbId": 536554, "imdbID": "tt8760708", "Title": "M3GAN", "year": 2023, "genre": "Horror", "runtime": 102, "rank": 9 },
-    { "tmdbId": 777847, "imdbID": "tt18389166", "Title": "If You Were the Last", "year": 2023, "genre": "Romance", "runtime": 92, "rank": 10 }
+    { "tmdbId": 777847, "imdbID": "tt13650540", "Title": "If You Were the Last", "year": 2023, "genre": "Romance", "runtime": 92, "rank": 10 }
 ];
 
 // ✅ SENSITIVE TIMELINES (Focusing on Psychological Stress & Gore)

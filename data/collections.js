@@ -325,7 +325,7 @@ export const COLLECTIONS = {
       { label: "HEARTBREAK", desc: "Emotional weight" },
       { label: "PRESTIGE", desc: "Acclaimed romance" }
     ],
-    movies: ['tt21192142', 'tt22359552', 'tt8963708', 'tt2381111', 'tt0412922', 'tt8385738', 'tt15893794', 'tt1263670', 'tt13352968', 'tt0337563'],
+    movies: ['tt21192142', 'tt22359552', 'tt8963708', 'tt2381111', 'tt0412922', 'tt9484998', 'tt15893750', 'tt1263670', 'tt13352968', 'tt0337563'],
     relatedCollections: ['movies-like-parasite', 'best-psychological-thriller-movies', 'best-movies-on-hulu']
   },
 
@@ -353,7 +353,7 @@ export const COLLECTIONS = {
       { label: "QUOTABLE", desc: "Iconic dialogue" },
       { label: "CHAOTIC", desc: "Absurd situations" }
     ],
-    movies: ['tt0829482', 'tt0190590', 'tt0443453', 'tt12593682', 'tt8385738', 'tt0247745', 'tt31322753', 'tt0094737', 'tt21376880', 'tt0387808'],
+    movies: ['tt0829482', 'tt0190590', 'tt0443453', 'tt12593682', 'tt9484998', 'tt0247745', 'tt31322753', 'tt0094737', 'tt21376880', 'tt0387808'],
     relatedCollections: ['best-romance-movies-on-hulu', 'best-action-movies-on-hulu', 'best-sci-fi-movies', 'best-movies-on-hulu']
   },
 
@@ -381,7 +381,7 @@ export const COLLECTIONS = {
       { label: "TWISTS", desc: "Unexpected turns" },
       { label: "STAKES", desc: "Life or death" }
     ],
-    movies: ['tt0113277', 'tt0947798', 'tt17009710', 'tt0246578', 'tt0292963', 'tt0443543', 'tt13403046', 'tt0455944', 'tt20446690', 'tt0237572'],
+    movies: ['tt0113277', 'tt0947798', 'tt17009710', 'tt0246578', 'tt0292963', 'tt0443543', 'tt13403046', 'tt0455944', 'tt21440780', 'tt0237572'],
     relatedCollections: ['best-crime-thriller-movies', 'best-psychological-thriller-movies', 'best-detective-thriller-movies', 'best-movies-on-hulu']
   },
 
@@ -703,7 +703,7 @@ export const COLLECTIONS = {
       { label: "EXTRATERRESTRIAL", desc: "Alien worlds" },
       { label: "FUTURISTIC", desc: "Tech themes" }
     ],
-    movies: ['tt2866360', 'tt12300742', 'tt10954984', 'tt3986820', 'tt1959490', 'tt2194499', 'tt0134847', 'tt8781414', 'tt8760708', 'tt18389166'],
+    movies: ['tt2866360', 'tt12300742', 'tt10954984', 'tt3986820', 'tt1959490', 'tt2194499', 'tt0134847', 'tt8781414', 'tt8760708', 'tt13650540'],
     relatedCollections: ['best-sci-fi-movies-on-hulu', 'best-sci-fi-movies-on-hbo-max', 'best-sci-fi-movies-on-paramount-plus', 'best-time-travel-movies']
   },
 
@@ -802,7 +802,7 @@ export const COLLECTIONS = {
       { label: "ANTI-WAR", desc: "Moral cost" },
       { label: "TRAUMA", desc: "Psychological toll" }
     ],
-    movies: ['tt0120815', 'tt0078788', 'tt0056172', 'tt0091251', 'tt0108052', 'tt0093058', 'tt8183660', 'tt0082096', 'tt0091763', 'tt0047528'],
+    movies: ['tt0120815', 'tt0078788', 'tt0056172', 'tt0091251', 'tt0108052', 'tt0093058', 'tt8579674', 'tt0082096', 'tt0091763', 'tt0050825'],
     relatedCollections: ['best-survival-movies', 'best-crime-thriller-movies']
   },
 
@@ -1002,6 +1002,19 @@ export const COLLECTIONS = {
     relatedCollections: ['best-drama-movies-on-hbo-max', 'best-thought-provoking-movies', 'best-erotic-romance-movies']
   },
 
+// ✨ BEST A24 MOVIES
+  'best-a24-movies': {
+    slug: 'best-a24-movies',
+    title: '10 Best A24 Movies of All Time',
+    stats: { averageRating: 7.6 },
+    badges: [
+      { label: "AUTEUR", desc: "Director driven" },
+      { label: "ATMOSPHERIC", desc: "Distinct visual style" },
+      { label: "EMOTIONAL", desc: "Deeply resonant" }
+    ],
+    movies: ['tt19770238', 'tt7160372', 'tt5649144', 'tt7984734', 'tt21064584', 'tt4925292', 'tt7784604', 'tt8772262', 'tt9660502', 'tt13833688'],
+    relatedCollections: ['best-thought-provoking-movies', 'best-psychological-thriller-movies', 'best-drama-movies-on-hbo-max']
+  },
 
   // 🩸 BEST THRILLER MOVIES
   'best-thriller-movies': {
@@ -1055,6 +1068,7 @@ export const getGangsterCollection = () => COLLECTIONS['best-gangster-movies-of-
 export const getBookAdaptationsCollection = () => COLLECTIONS['top-10-book-adaptations'];
 export const getEroticRomanceCollection = () => COLLECTIONS['best-erotic-romance-movies'];
 export const getMarriageCrisisCollection = () => COLLECTIONS['best-marriage-crisis-movies'];
+export const getBestA24MoviesCollection = () => COLLECTIONS['best-a24-movies'];
 export const getBestActionCollection = () => COLLECTIONS['best-action-movies'];
 // ============================================================================
 // 🧠 THE MASTER CANONICAL BRAIN

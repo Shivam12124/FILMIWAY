@@ -18,7 +18,7 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 1491, "imdbID": "tt0443543", "Title": "The Illusionist", "year": 2006, "genre": "Mystery", "runtime": 110, "rank": 6 },
     { "tmdbId": 787752, "imdbID": "tt13403046", "Title": "Fresh", "year": 2022, "genre": "Horror Thriller", "runtime": 114, "rank": 7 },
     { "tmdbId": 156022, "imdbID": "tt0455944", "Title": "The Equalizer", "year": 2014, "genre": "Action Thriller", "runtime": 132, "rank": 8 },
-    { "tmdbId":1008048, "imdbID": "tt20446690", "Title": "How to Blow Up a Pipeline", "year": 2023, "genre": "Eco-Thriller", "runtime": 104, "rank": 9 },
+    { "tmdbId":1008048, "imdbID": "tt21440780", "Title": "How to Blow Up a Pipeline", "year": 2023, "genre": "Eco-Thriller", "runtime": 104, "rank": 9 },
     { "tmdbId": 5955, "imdbID": "tt0237572", "Title": "The Pledge", "year": 2001, "genre": "Mystery", "runtime": 124, "rank": 10 }
 ];
 

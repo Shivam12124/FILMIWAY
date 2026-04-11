@@ -27,7 +27,7 @@ export const HULU_COMEDY_MOVIE_SLUGS = {
     'tt12593682': 'bullet-train',
     
     // Rank 5: Palm Springs
-    'tt8385738': 'palm-springs',
+    'tt9484998': 'palm-springs',
     
     // Rank 6: Super Troopers
     'tt0247745': 'super-troopers',

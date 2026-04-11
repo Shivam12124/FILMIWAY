@@ -15,10 +15,10 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 25237, "imdbID": "tt0091251", "Title": "Come and See", "year": 1985, "genre": "Drama, War", "runtime": 142, "rank": 4 },
     { "tmdbId": 424, "imdbID": "tt0108052", "Title": "Schindler's List", "year": 1993, "genre": "Biography, Drama, History, War", "runtime": 195, "rank": 5 },
     { "tmdbId": 600, "imdbID": "tt0093058", "Title": "Full Metal Jacket", "year": 1987, "genre": "Drama, War", "runtime": 116, "rank": 6 },
-    { "tmdbId": 530915, "imdbID": "tt8183660", "Title": "1917", "year": 2019, "genre": "Drama, War", "runtime": 119, "rank": 7 },
+    { "tmdbId": 530915, "imdbID": "tt8579674", "Title": "1917", "year": 2019, "genre": "Drama, War", "runtime": 119, "rank": 7 },
     { "tmdbId": 156249, "imdbID": "tt0082096", "Title": "Das Boot", "year": 1981, "genre": "Drama, War", "runtime": 149, "rank": 8 },
     { "tmdbId": 792, "imdbID": "tt0091763", "Title": "Platoon", "year": 1986, "genre": "Drama, War", "runtime": 120, "rank": 9 },
-    { "tmdbId": 975, "imdbID": "tt0047528", "Title": "Paths of Glory", "year": 1957, "genre": "Drama, War", "runtime": 88, "rank": 10 }
+    { "tmdbId": 975, "imdbID": "tt0050825", "Title": "Paths of Glory", "year": 1957, "genre": "Drama, War", "runtime": 88, "rank": 10 }
 ];
 
 // ✅ REVISED STRATEGIC QUOTES (100% Clean & SEO Safe)

@@ -42,7 +42,7 @@ export const PEACOCK_SCIFI_MOVIE_SLUGS = {
     'tt8760708': 'm3gan',
     
     // Rank 10: If You Were the Last
-    'tt18389166': 'if-you-were-the-last'
+    'tt13650540': 'if-you-were-the-last'
 };
 
 // ✅ REVERSE SLUG MAPPING (SLUG TO IMDB ID)

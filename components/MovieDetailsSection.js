@@ -275,6 +275,10 @@ import {
   COMPLETE_MOVIE_DATA as MARRIAGE_CRISIS_MOVIE_DATA,
   SENSITIVE_TIMELINES as MARRIAGE_CRISIS_SENSITIVE_TIMELINES
 } from '../utils/marriageCrisisMovieData';
+import {
+  COMPLETE_MOVIE_DATA as A24_MOVIE_DATA,
+  SENSITIVE_TIMELINES as A24_SENSITIVE_TIMELINES
+} from '../utils/a24MovieData';
 
 import { 
   COMPLETE_MOVIE_DATA as CRIME_THRILLER_MOVIE_DATA,
@@ -368,6 +372,7 @@ import DecadeSEOFAQSection from './DecadeSEOFAQSection';
 import GangsterSEOFAQSection from './GangsterSEOFAQSection';
 import BookAdaptationSEOFAQSection from './BookAdaptationSEOFAQSection';
 import MarriageCrisisSEOFAQSection from './MarriageCrisisSEOFAQSection';
+import A24SEOFAQSection from './A24SEOFAQSection';
 
 import HuluActionSEOFAQSection from './HuluActionSEOFAQSection';
 import HuluRomanceSEOFAQSection from './HuluRomanceSEOFAQSection';
@@ -421,6 +426,7 @@ const MovieDetailsSection = React.memo(({
   fromGangsterCollection,
   fromBookAdaptationCollection,
   fromMarriageCrisisCollection,
+  fromA24Collection,
   fromParasiteCollection,
   fromDonnieDarkoCollection,
   fromOldboyCollection,
@@ -538,6 +544,7 @@ const MovieDetailsSection = React.memo(({
   : fromGangsterCollection ? safeLookup(GANGSTER_MOVIE_DATA, movie.tmdbId)
   : fromBookAdaptationCollection ? safeLookup(BOOK_ADAPTATION_MOVIE_DATA, movie.tmdbId)
   : fromMarriageCrisisCollection ? safeLookup(MARRIAGE_CRISIS_MOVIE_DATA, movie.tmdbId)
+  : fromA24Collection ? safeLookup(A24_MOVIE_DATA, movie.tmdbId)
   : fromEyesWideShutCollection ? safeLookup(EYES_WIDE_SHUT_MOVIE_DATA, movie.tmdbId)
   : fromRevengeCollection ? safeLookup(REVENGE_MOVIE_DATA, movie.tmdbId)
   : fromWarFilmsCollection ? safeLookup(WAR_FILMS_MOVIE_DATA, movie.tmdbId)
@@ -713,6 +720,7 @@ const MovieDetailsSection = React.memo(({
    || GANGSTER_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || BOOK_ADAPTATION_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || MARRIAGE_CRISIS_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
+   || A24_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || DECADE_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || EYES_WIDE_SHUT_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || SE7EN_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
@@ -862,6 +870,7 @@ const MovieDetailsSection = React.memo(({
    if (fromThoughtProvokingCollection) return 'PHILOSOPHICAL DEPTH SCORE';
    if (fromNeoNoirCollection) return 'MORAL AMBIGUITY SCORE';
    if (fromSe7enCollection) return 'SE7EN DNA SCORE';
+   if (fromA24Collection) return 'EMOTIONAL RESONANCE SCORE';
    if (fromRevengeCollection) return 'REVENGE INTENSITY SCORE';
    if (fromWarFilmsCollection) return 'WAR INTENSITY SCORE';
    if (fromSciFiCollection) return 'COSMIC SCALE SCORE';
@@ -934,6 +943,7 @@ const MovieDetailsSection = React.memo(({
    if (fromGangsterCollection) return 'UNDERWORLD GRIT INDEX';
    if (fromBookAdaptationCollection) return 'PAGE-TO-SCREEN FIDELITY';
    if (fromMarriageCrisisCollection) return 'DEVASTATION INDEX';
+   if (fromA24Collection) return 'EMOTIONAL RESONANCE INDEX';
    return 'MIND-BENDING INDEX';
  };
 
@@ -993,6 +1003,7 @@ const MovieDetailsSection = React.memo(({
    if (fromGangsterCollection) return 'CRIMINAL PSYCHOLOGY LEVEL';
    if (fromBookAdaptationCollection) return 'ADAPTATION MASTERY LEVEL';
    if (fromMarriageCrisisCollection) return 'EMOTIONAL DEVASTATION LEVEL';
+   if (fromA24Collection) return 'ARTISTIC COMPLEXITY LEVEL';
    return 'COGNITIVE DISTORTION LEVEL';
  };
 
@@ -1172,6 +1183,11 @@ const MovieDetailsSection = React.memo(({
      if (scoreValue >= 80) return 'A powerful and heartbreaking exploration of love, resentment, and relationship breakdown.';
      return 'A solid, emotionally challenging look at the difficult realities of marriage and divorce.';
    }
+   if (fromA24Collection) {
+     if (scoreValue >= 90) return 'A deeply profound, artistically complex masterpiece that defines modern auteur cinema.';
+     if (scoreValue >= 80) return 'A highly resonant and visually striking film with uncompromising artistic vision.';
+     return 'A compelling A24 film with unique storytelling and emotional depth.';
+   }
    // Generic fallback
    if (scoreValue >= 90) return 'A transcendent masterpiece redefining narrative complexity.';
    if (scoreValue >= 80) return 'Sophisticated cinematic storytelling with advanced non-linear elements.';
@@ -1222,6 +1238,7 @@ const MovieDetailsSection = React.memo(({
    if (fromGangsterCollection) return 'border-red-800/40';
    if (fromBookAdaptationCollection) return 'border-blue-500/40';
    if (fromMarriageCrisisCollection) return 'border-slate-500/40';
+   if (fromA24Collection) return 'border-amber-500/40';
    return 'border-yellow-400/40';
  };
 
@@ -1268,6 +1285,7 @@ const MovieDetailsSection = React.memo(({
    if (fromGangsterCollection) return 'text-red-700';
    if (fromBookAdaptationCollection) return 'text-blue-500';
    if (fromMarriageCrisisCollection) return 'text-slate-500';
+   if (fromA24Collection) return 'text-amber-500';
    return 'text-yellow-400';
  };
 
@@ -1398,6 +1416,7 @@ const MovieDetailsSection = React.memo(({
        !fromGangsterCollection &&
        !fromBookAdaptationCollection &&
        !fromMarriageCrisisCollection &&
+       !fromA24Collection &&
        (
         <motion.div
           className="mb-6 sm:mb-8 md:mb-12 bg-gradient-to-br from-gray-800/40 to-gray-900/60 rounded-lg sm:rounded-xl border border-gray-700/50 p-3 sm:p-4 md:p-8 shadow-2xl backdrop-blur-sm relative overflow-hidden"
@@ -1551,6 +1570,7 @@ const MovieDetailsSection = React.memo(({
         : fromGangsterCollection ? <GangsterSEOFAQSection movie={movie} />
         : fromBookAdaptationCollection ? <BookAdaptationSEOFAQSection movie={movie} />
         : fromMarriageCrisisCollection ? <MarriageCrisisSEOFAQSection movie={movie} />
+        : fromA24Collection ? <A24SEOFAQSection movie={movie} />
         : fromDecadeCollection ? <DecadeSEOFAQSection movie={movie} />
         : fromPrestigeCollection ? <PrestigeSEOFAQSection movie={movie} />
         : fromSe7enCollection ? <Se7enSEOFAQSection movie={movie} />

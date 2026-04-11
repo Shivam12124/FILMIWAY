@@ -14,7 +14,7 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 134, "imdbID": "tt0190590", "Title": "O Brother, Where Art Thou?", "year": 2000, "genre": "Comedy", "runtime": 107, "rank": 2 },
     { "tmdbId": 3779, "imdbID": "tt0443453", "Title": "Borat", "year": 2006, "genre": "Comedy", "runtime": 84, "rank": 3 },
     { "tmdbId": 718930, "imdbID": "tt12593682", "Title": "Bullet Train", "year": 2022, "genre": "Action", "runtime": 127, "rank": 4 },
-    { "tmdbId": 587792, "imdbID": "tt8385738", "Title": "Palm Springs", "year": 2020, "genre": "Comedy", "runtime": 90, "rank": 5 },
+    { "tmdbId": 587792, "imdbID": "tt9484998", "Title": "Palm Springs", "year": 2020, "genre": "Comedy", "runtime": 90, "rank": 5 },
     { "tmdbId": 39939, "imdbID": "tt0247745", "Title": "Super Troopers", "year": 2001, "genre": "Comedy", "runtime": 100, "rank": 6 },
     { "tmdbId": 1245347, "imdbID": "tt31322753", "Title": "Twinless", "year": 2025, "genre": "Comedy", "runtime": 98, "rank": 7 },
     { "tmdbId": 2280, "imdbID": "tt0094737", "Title": "Big", "year": 1988, "genre": "Comedy", "runtime": 104, "rank": 8 },
