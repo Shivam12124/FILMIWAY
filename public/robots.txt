@@ -4,6 +4,8 @@
 
 # 0. BLOCKED BOTS (Meta & ByteDance)
 User-agent: Meta-ExternalAgent
+User-agent: Meta-ExternalFetcher
+User-agent: FacebookBot
 User-agent: Bytespider
 User-agent: ByteDance
 User-agent: Tiktokbot
