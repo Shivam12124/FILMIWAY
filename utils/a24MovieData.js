@@ -39,59 +39,73 @@ export const STRATEGIC_QUOTES = {
 export const SENSITIVE_TIMELINES = {
     // 1. Aftersun
     965150: { 
-        scenes: [] 
+        scenes: [
+            { start: "1:13:45", end: "1:13:49", type: "Partial Nudity (Man)", severity: "Mild" }
+        ] 
     },
+    
     // 2. The Zone of Interest
     467244: {
-        scenes: [
-            { start: "0:45:10", end: "0:46:15", type: "Sexual Content (Implied/Audio)", severity: "Moderate" }
-        ]
+        scenes: []
     },
+    
     // 3. The Florida Project
     394117: {
         scenes: [
-            { start: "1:20:10", end: "1:21:05", type: "Suggestive Content & Partial Nudity", severity: "Moderate" }
+            { start: "0:30:43", end: "0:31:40", type: "Partial Nudity", severity: "Moderate" }
         ]
     },
+    
     // 4. The Lighthouse
     503919: {
         scenes: [
-            { start: "0:55:10", end: "0:56:05", type: "Sexual Content & Nudity (Mermaid)", severity: "High" },
-            { start: "1:15:30", end: "1:16:15", type: "Suggestive Content", severity: "High" },
-            { start: "1:28:40", end: "1:29:20", type: "Nudity & Sexual Content", severity: "High" }
+            { start: "0:49:55", end: "0:50:36", type: "Nudity (Woman)", severity: "High" },
+            { start: "1:07:33", end: "1:08:33", type: "Sexual Content (Masturbation), Nudity (Woman) & Sex Montage", severity: "High" }
         ]
     },
+    
     // 5. The Iron Claw
     850165: { 
         scenes: [ 
-            { start: "0:25:00", end: "0:26:30", type: "Suggestive Content", severity: "Moderate" } 
+            { start: "0:02:45", end: "0:02:49", type: "Partial Nudity (Man in Background)", severity: "Mild" },
+            { start: "0:10:54", end: "0:11:06", type: "Sexual Content (Masturbation)", severity: "Moderate" },
+            { start: "0:48:07", end: "0:48:17", type: "Sex", severity: "Moderate" }
         ]
     },
+    
     // 6. Lady Bird
     391713: {
         scenes: [
-            { start: "1:05:15", end: "1:06:20", type: "Sexual Content (Teen)", severity: "Moderate" }
+            { start: "0:58:00", end: "0:59:08", type: "Sex", severity: "Moderate" },
+            { start: "1:17:48", end: "1:17:52", type: "Nudity (Man / Magazine)", severity: "Moderate" }
         ]
     },
+    
     // 7. Hereditary
     493922: {
         scenes: [
-            { start: "2:00:15", end: "2:02:45", type: "Nudity (Cult Members)", severity: "High" }
+            { start: "1:58:21", end: "2:03:07", type: "Nudity (Man & Woman)", severity: "High" }
         ]
     },
+    
     // 8. Midsommar
     530385: {
         scenes: [
-            { start: "1:55:20", end: "1:58:45", type: "Sexual Content & Nudity (Ritual)", severity: "Extreme" },
-            { start: "2:10:15", end: "2:11:30", type: "Nudity", severity: "High" }
+            { start: "0:45:40", end: "0:45:50", type: "Nudity (Graphic Female Anatomy Drawing)", severity: "High" },
+            { start: "1:58:56", end: "2:02:23", type: "Nudity & Sex", severity: "High" },
+            { start: "2:06:03", end: "2:09:10", type: "Nudity & Sex", severity: "High" }
         ]
     },
+    
     // 9. Close
-    901563: { scenes: [] },
+    901563: { 
+        scenes: [] 
+    },
+    
     // 10. The Whale
     785084: {
         scenes: [
-            { start: "0:05:10", end: "0:06:30", type: "Suggestive Content", severity: "Moderate" }
+            { start: "0:02:12", end: "0:02:36", type: "Sexual Content (Masturbation)", severity: "Moderate" }
         ]
     }
 };
