@@ -241,10 +241,11 @@ const HeroSection = memo(() => {
             </span>
           </h1>
 
-          <p className="text-base sm:text-xl text-gray-400 mb-8 sm:mb-10 font-light leading-relaxed max-w-2xl mx-auto px-4">
+          <p className="text-base sm:text-xl text-gray-400 mb-10 font-light leading-relaxed max-w-2xl mx-auto px-4">
             Stop endlessly scrolling. Start watching. We hand-pick the absolute best films across every major platform so you don't have to.
           </p>
           
+          {/* Collections Button */}
           <div className="relative z-20 flex justify-center items-center gap-4 mb-10 sm:mb-14 px-4">
             <Link href="/collections" className="w-full sm:w-auto">
               <button className="w-full sm:w-auto bg-yellow-500 text-black px-8 py-3.5 rounded-md font-bold flex items-center justify-center gap-2 hover:bg-yellow-400 transition-colors shadow-xl shadow-yellow-500/10 text-sm sm:text-base active:scale-95">
@@ -478,13 +479,14 @@ const FilmiwayHomepage = ({ huluCollections, mindBendingCollections, thrillerCol
                 </ul>
               </div>
               <div>
-                <h3 className="text-gray-400 font-bold mb-3 uppercase text-[10px] tracking-widest">Legal</h3>
+                <h3 className="text-gray-400 font-bold mb-3 uppercase text-[10px] tracking-widest">Resources & Legal</h3>
                 <ul className="space-y-2.5 text-xs text-gray-300">
-                  <li><Link href="/privacy" className="hover:text-white transition-colors inline-block py-1">Privacy Policy</Link></li>
-                  <li><Link href="/terms" className="hover:text-white transition-colors inline-block py-1">Terms of Use</Link></li>
+                  <li><Link href="/how-to-skip-awkward-scenes-in-movies" className="hover:text-green-400 text-green-500/90 transition-colors inline-block py-1 font-medium">Skip Awkward Scenes Guide</Link></li>
+                  <li><Link href="/movie-directory" className="hover:text-yellow-400 text-yellow-500/90 transition-colors inline-block py-1 font-medium">A-Z Directory</Link></li>
                   <li><Link href="/about-us" className="hover:text-white transition-colors inline-block py-1">About Us</Link></li>
                   <li><Link href="/faq" className="hover:text-white transition-colors inline-block py-1">FAQ</Link></li>
-                  <li><Link href="/movie-directory" className="hover:text-yellow-400 text-yellow-500/80 transition-colors inline-block py-1 font-medium">A-Z Directory</Link></li>
+                  <li><Link href="/privacy" className="hover:text-white transition-colors inline-block py-1">Privacy Policy</Link></li>
+                  <li><Link href="/terms" className="hover:text-white transition-colors inline-block py-1">Terms of Use</Link></li>
                 </ul>
               </div>
             </div>

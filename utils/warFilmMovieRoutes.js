@@ -1,6 +1,6 @@
 // utils/warFilmMovieRoutes.js - 10 BEST WAR FILMS MOVIE ROUTES MAPPING
 
-import COMPLETE_WAR_FILMS_DATABASE, { WAR_FILMS } from './warFilmsMovieData';
+import COMPLETE_WAR_FILMS_DATABASE, { COMPLETE_MOVIE_DATABASE as WAR_FILMS } from './warFilmsMovieData';
 
 // ✅ WAR FILMS MOVIE SLUGS MAPPING (IMDB ID TO SLUG)
 export const WAR_FILMS_MOVIE_SLUGS = {
