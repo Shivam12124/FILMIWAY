@@ -4,9 +4,10 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { 
-  Brain, Skull, Search, Home, ChevronRight, TrendingUp, Layers 
+  Brain, Skull, Search, ChevronRight, TrendingUp, Layers 
 } from 'lucide-react';
 import { COLLECTIONS } from '../../data/collections';
+import Header from '../../components/Header';
 
 // 🎨 Genre Configuration
 const getCategoryConfig = (category) => {
@@ -72,21 +73,15 @@ const GenreHub = ({ category, collections }) => {
         <link rel="canonical" href={`https://filmiway.com/genre/${category}`} />
       </Head>
 
+      <Header />
+
       {/* Ambient Background */}
       <div className="fixed inset-0 pointer-events-none">
         <div className={`absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full blur-[120px] opacity-20 bg-gradient-to-br ${config.color}`} />
         <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.03] mix-blend-overlay"></div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-24">
-        {/* Navigation */}
-        <nav className="flex items-center gap-4 mb-16 text-sm text-gray-400">
-          <Link href="/" className="hover:text-white flex items-center gap-2"><Home size={16} /> Home</Link>
-          <ChevronRight size={14} />
-          <span>Genre</span>
-          <ChevronRight size={14} />
-          <span className="text-white capitalize">{category.replace('-', ' ')}</span>
-        </nav>
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-24">
 
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-20">

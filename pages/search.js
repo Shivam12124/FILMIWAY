@@ -8,76 +8,109 @@ import Header from '../components/Header';
 import { getPrimaryCollectionForMovie } from '../data/collections';
 
 // ⚡ ALL MOVIE DATABASES IMPORTED (Safe Server-Side Fetching)
-import { COMPLETE_MOVIE_DATABASE as SURVIVAL_DATABASE } from '../utils/survivalMovieData';
-import { COMPLETE_MOVIE_DATABASE as MATRIX_DATABASE } from '../utils/matrixMovieData';
-import { COMPLETE_MOVIE_DATABASE as SE7EN_DATABASE } from '../utils/se7enMovieData';
-import { COMPLETE_MOVIE_DATABASE as PARASITE_DATABASE } from '../utils/parasiteMovieData'; 
-import { COMPLETE_MOVIE_DATABASE as OLDBOY_DATABASE } from '../utils/oldboyMovieData'; 
-import { COMPLETE_MOVIE_DATABASE as DONNIE_DARKO_DATABASE } from '../utils/donnieDarkoMovieData';
-import { COMPLETE_MOVIE_DATABASE as BLACK_SWAN_DATABASE } from '../utils/blackSwanMovieData';
-import { COMPLETE_MOVIE_DATABASE as EYES_WIDE_SHUT_DATABASE } from '../utils/eyesWideShutMovieData';
-import { COMPLETE_MOVIE_DATABASE as PRESTIGE_DATABASE } from '../utils/prestigeMovieData';
-import { COMPLETE_MOVIE_DATABASE as EROTIC_THRILLER_DATABASE } from '../utils/eroticThrillerMovieData';
-import { COMPLETE_MOVIE_DATABASE as EROTIC_ROMANCE_DATABASE } from '../utils/eroticRomanceMovieData';
-import { COMPLETE_MOVIE_DATABASE as GREED_DATABASE } from '../utils/greedMovieData';
-import { COMPLETE_MOVIE_DATABASE as INTERSTELLAR_DATABASE } from '../utils/interstellarMovieData';
-import { COMPLETE_MOVIE_DATABASE as CRIME_THRILLER_DATABASE } from '../utils/crimeThrillerMovieData';
-import { COMPLETE_MOVIE_DATABASE as WAR_FILMS_DATABASE } from '../utils/warFilmsMovieData';
-import { COMPLETE_MOVIE_DATABASE as HULU_ACTION_DATABASE } from '../utils/huluActionMovieData';
-import { COMPLETE_MOVIE_DATABASE as HULU_ROMANCE_DATABASE } from '../utils/huluRomanceMovieData';
-import { COMPLETE_MOVIE_DATABASE as HULU_HORROR_DATABASE } from '../utils/huluHorrorMovieData';
-import { COMPLETE_MOVIE_DATABASE as HULU_COMEDY_DATABASE } from '../utils/huluComedyMovieData';
-import { COMPLETE_MOVIE_DATABASE as HULU_SCIFI_DATABASE } from '../utils/huluSciFiMovieData';
-import { COMPLETE_MOVIE_DATABASE as HULU_THRILLER_DATABASE } from '../utils/huluThrillerMovieData';
-import { COMPLETE_MOVIE_DATABASE } from '../utils/movieData';
-import { COMPLETE_MOVIE_DATABASE as HULU_BEST_DATABASE } from '../utils/huluBestMoviesData';
-import { COMPLETE_MOVIE_DATABASE as HULU_DRAMA_DATABASE } from '../utils/huluDramaMovieData';
-import { COMPLETE_MOVIE_DATABASE as HBO_MAX_COMEDY_DATABASE } from '../utils/hboMaxComedyMovieData';
-import { COMPLETE_MOVIE_DATABASE as PARAMOUNT_ACTION_DATABASE } from '../utils/paramountActionMovieData';
-import { COMPLETE_MOVIE_DATABASE as PARAMOUNT_SCIFI_DATABASE } from '../utils/paramountSciFiMovieData';
-import { COMPLETE_MOVIE_DATABASE as PARAMOUNT_ROMANCE_DATABASE } from '../utils/paramountRomanceMovieData';
-import { COMPLETE_MOVIE_DATABASE as PARAMOUNT_DRAMA_DATABASE } from '../utils/paramountDramaMovieData';
-import { COMPLETE_MOVIE_DATABASE as PARAMOUNT_THRILLER_DATABASE } from '../utils/paramountThrillerMovieData';
-import { COMPLETE_MOVIE_DATABASE as PARAMOUNT_FAMILY_DATABASE } from '../utils/paramountFamilyMovieData';
-import { COMPLETE_MOVIE_DATABASE as PARAMOUNT_HORROR_DATABASE } from '../utils/paramountHorrorMovieData';
-import { COMPLETE_MOVIE_DATABASE as PARAMOUNT_COMEDY_DATABASE } from '../utils/paramountComedyMovieData';
-import { COMPLETE_MOVIE_DATABASE as PARAMOUNT_BEST_DATABASE } from '../utils/paramountBestMoviesData';
-import { COMPLETE_MOVIE_DATABASE as PEACOCK_ACTION_ADVENTURE_DATABASE } from '../utils/peacockActionAdventureData';
-import { COMPLETE_MOVIE_DATABASE as PEACOCK_SCIFI_DATABASE } from '../utils/peacockSciFiMovieData';
-import { COMPLETE_MOVIE_DATABASE as PEACOCK_ROMANCE_DATABASE } from '../utils/peacockRomanceMovieData';
-import { COMPLETE_MOVIE_DATABASE as PEACOCK_FAMILY_DATABASE } from '../utils/peacockFamilyMovieData';
-import { COMPLETE_MOVIE_DATABASE as PEACOCK_DRAMA_DATABASE } from '../utils/peacockDramaMovieData';
-import { COMPLETE_MOVIE_DATABASE as PEACOCK_THRILLER_DATABASE } from '../utils/peacockThrillerMovieData';
-import { COMPLETE_MOVIE_DATABASE as PEACOCK_BEST_DATABASE } from '../utils/peacockBestMoviesData';
-import { COMPLETE_MOVIE_DATABASE as PEACOCK_COMEDY_DATABASE } from '../utils/peacockComedyMovieData';
-import { COMPLETE_MOVIE_DATABASE as RAUNCHY_COMEDY_DATABASE } from '../utils/raunchyComedyMovieData';
-import { COMPLETE_MOVIE_DATABASE as ROAD_TRIP_DATABASE } from '../utils/roadTripMovieData';
-import { COMPLETE_MOVIE_DATABASE as THOUGHT_PROVOKING_DATABASE } from '../utils/thoughtProvokingMovieData';
-import { COMPLETE_MOVIE_DATABASE as NEO_NOIR_DATABASE } from '../utils/neoNoirMovieData';
-import { COMPLETE_MOVIE_DATABASE as BEST_ACTION_DATABASE } from '../utils/bestActionMoviesData';
-import { COMPLETE_MOVIE_DATABASE as TRUE_STORY_DATABASE } from '../utils/trueStoryMovieData';
-import { COMPLETE_MOVIE_DATABASE as GANGSTER_DATABASE } from '../utils/gangsterMovieData';
-import { COMPLETE_MOVIE_DATABASE as DECADE_DATABASE } from '../utils/decadeMovieData';
-import { COMPLETE_MOVIE_DATABASE as BOOK_ADAPTATION_DATABASE } from '../utils/bookAdaptationData';
-import { COMPLETE_MOVIE_DATABASE as MARRIAGE_CRISIS_DATABASE } from '../utils/marriageCrisisMovieData';
-import { COMPLETE_MOVIE_DATABASE as A24_DATABASE } from '../utils/a24MovieData';
-import { COMPLETE_MOVIE_DATABASE as HULU_FAMILY_DATABASE } from '../utils/huluFamilyMovieData';
-import { COMPLETE_MOVIE_DATABASE as HBO_ACTION_DATABASE } from '../utils/hboActionMovieData';
-import { COMPLETE_MOVIE_DATABASE as HBO_MAX_ROMANCE_DATABASE } from '../utils/hboMaxRomanceMovieData';
-import { COMPLETE_MOVIE_DATABASE as HBO_MAX_THRILLER_DATABASE } from '../utils/hboMaxThrillerMovieData';
-import { COMPLETE_MOVIE_DATABASE as HBO_MAX_FAMILY_DATABASE } from '../utils/hboMaxFamilyMovieData';
-import { COMPLETE_MOVIE_DATABASE as HBO_MAX_SCIFI_DATABASE } from '../utils/hboMaxSciFiMovieData';
-import { COMPLETE_MOVIE_DATABASE as HBO_MAX_HORROR_DATABASE } from '../utils/hboMaxHorrorMovieData';
-import { COMPLETE_MOVIE_DATABASE as HBO_MAX_BEST_DATABASE } from '../utils/hboMaxBestMoviesData';
-import { COMPLETE_MOVIE_DATABASE as HBO_MAX_DRAMA_DATABASE } from '../utils/hboMaxDramaMovieData';
-import { COMPLETE_SCI_FI_DATABASE as SCI_FI_DATABASE } from '../utils/sciFiMovieData';
-import { COMPLETE_MOVIE_DATABASE as THRILLER_MOVIES } from '../utils/thrillerMovieData';
-import { COMPLETE_MOVIE_DATABASE as MYSTERY_THRILLER_MOVIES } from '../utils/mysteryThrillerMovieData'; 
-import { COMPLETE_MOVIE_DATABASE as DETECTIVE_THRILLER_MOVIES } from '../utils/detectiveThrillerMovieData';
-import { COMPLETE_MOVIE_DATABASE as PSYCH_THRILLER_MOVIES } from '../utils/psychologicalThrillerMovieData'; 
-import { COMPLETE_MOVIE_DATABASE as HEIST_THRILLER_MOVIES } from '../utils/heistThrillerMovieData';
-import { COMPLETE_MOVIE_DATABASE as TIME_TRAVEL_MOVIES } from '../utils/timeTravelMovieData';
-import { COMPLETE_MOVIE_DATABASE as REVENGE_MOVIES } from '../utils/revengeMovieData';
+import * as SURVIVAL from '../utils/survivalMovieData';
+import * as MATRIX from '../utils/matrixMovieData';
+import * as SE7EN from '../utils/se7enMovieData';
+import * as PARASITE from '../utils/parasiteMovieData'; 
+import * as OLDBOY from '../utils/oldboyMovieData'; 
+import * as DONNIE_DARKO from '../utils/donnieDarkoMovieData';
+import * as BLACK_SWAN from '../utils/blackSwanMovieData';
+import * as EYES_WIDE_SHUT from '../utils/eyesWideShutMovieData';
+import * as PRESTIGE from '../utils/prestigeMovieData';
+import * as EROTIC_THRILLER from '../utils/eroticThrillerMovieData';
+import * as EROTIC_ROMANCE from '../utils/eroticRomanceMovieData';
+import * as GREED from '../utils/greedMovieData';
+import * as INTERSTELLAR from '../utils/interstellarMovieData';
+import * as CRIME_THRILLER from '../utils/crimeThrillerMovieData';
+import * as WAR_FILMS from '../utils/warFilmsMovieData';
+import * as HULU_ACTION from '../utils/huluActionMovieData';
+import * as HULU_ROMANCE from '../utils/huluRomanceMovieData';
+import * as HULU_HORROR from '../utils/huluHorrorMovieData';
+import * as HULU_COMEDY from '../utils/huluComedyMovieData';
+import * as HULU_SCIFI from '../utils/huluSciFiMovieData';
+import * as HULU_THRILLER from '../utils/huluThrillerMovieData';
+import * as MOVIE_DATA from '../utils/movieData';
+import * as HULU_BEST from '../utils/huluBestMoviesData';
+import * as HULU_DRAMA from '../utils/huluDramaMovieData';
+import * as HBO_MAX_COMEDY from '../utils/hboMaxComedyMovieData';
+import * as PARAMOUNT_ACTION from '../utils/paramountActionMovieData';
+import * as PARAMOUNT_SCIFI from '../utils/paramountSciFiMovieData';
+import * as PARAMOUNT_ROMANCE from '../utils/paramountRomanceMovieData';
+import * as PARAMOUNT_DRAMA from '../utils/paramountDramaMovieData';
+import * as PARAMOUNT_THRILLER from '../utils/paramountThrillerMovieData';
+import * as PARAMOUNT_FAMILY from '../utils/paramountFamilyMovieData';
+import * as PARAMOUNT_HORROR from '../utils/paramountHorrorMovieData';
+import * as PARAMOUNT_COMEDY from '../utils/paramountComedyMovieData';
+import * as PARAMOUNT_BEST from '../utils/paramountBestMoviesData';
+import * as PEACOCK_ACTION_ADVENTURE from '../utils/peacockActionAdventureData';
+import * as PEACOCK_SCIFI from '../utils/peacockSciFiMovieData';
+import * as PEACOCK_ROMANCE from '../utils/peacockRomanceMovieData';
+import * as PEACOCK_FAMILY from '../utils/peacockFamilyMovieData';
+import * as PEACOCK_DRAMA from '../utils/peacockDramaMovieData';
+import * as PEACOCK_THRILLER from '../utils/peacockThrillerMovieData';
+import * as PEACOCK_BEST from '../utils/peacockBestMoviesData';
+import * as PEACOCK_COMEDY from '../utils/peacockComedyMovieData';
+import * as RAUNCHY_COMEDY from '../utils/raunchyComedyMovieData';
+import * as ROAD_TRIP from '../utils/roadTripMovieData';
+import * as THOUGHT_PROVOKING from '../utils/thoughtProvokingMovieData';
+import * as NEO_NOIR from '../utils/neoNoirMovieData';
+import * as BEST_ACTION from '../utils/bestActionMoviesData';
+import * as TRUE_STORY from '../utils/trueStoryMovieData';
+import * as GANGSTER from '../utils/gangsterMovieData';
+import * as DECADE from '../utils/decadeMovieData';
+import * as BOOK_ADAPTATION from '../utils/bookAdaptationData';
+import * as MARRIAGE_CRISIS from '../utils/marriageCrisisMovieData';
+import * as A24 from '../utils/a24MovieData';
+import * as HULU_FAMILY from '../utils/huluFamilyMovieData';
+import * as HBO_ACTION from '../utils/hboActionMovieData';
+import * as HBO_MAX_ROMANCE from '../utils/hboMaxRomanceMovieData';
+import * as HBO_MAX_THRILLER from '../utils/hboMaxThrillerMovieData';
+import * as HBO_MAX_FAMILY from '../utils/hboMaxFamilyMovieData';
+import * as HBO_MAX_SCIFI from '../utils/hboMaxSciFiMovieData';
+import * as HBO_MAX_HORROR from '../utils/hboMaxHorrorMovieData';
+import * as HBO_MAX_BEST from '../utils/hboMaxBestMoviesData';
+import * as HBO_MAX_DRAMA from '../utils/hboMaxDramaMovieData';
+import * as SCI_FI from '../utils/sciFiMovieData';
+import * as THRILLER_MOVIES from '../utils/thrillerMovieData';
+import * as MYSTERY_THRILLER from '../utils/mysteryThrillerMovieData'; 
+import * as DETECTIVE_THRILLER from '../utils/detectiveThrillerMovieData';
+import * as PSYCH_THRILLER from '../utils/psychologicalThrillerMovieData'; 
+import * as HEIST_THRILLER from '../utils/heistThrillerMovieData';
+import * as TIME_TRAVEL from '../utils/timeTravelMovieData';
+import * as REVENGE from '../utils/revengeMovieData';
+
+// ⚡ MOVIE RESULT ITEM COMPONENT (Handles 404 Broken Images)
+const MovieResultItem = ({ movie }) => {
+  const [imgError, setImgError] = useState(false);
+  
+  return (
+    <li>
+      <Link href={`/movies/${movie.slug}/${movie.imdbID}`} className="flex items-center group p-2 rounded-xl hover:bg-gray-800/50 transition-colors border border-transparent hover:border-white/5">
+        {movie.poster && !imgError ? (
+          <div className="w-12 h-16 relative mr-4 flex-shrink-0 rounded-lg overflow-hidden bg-gray-800 border border-white/10 shadow-md">
+            <Image 
+              src={movie.poster} 
+              alt={movie.title} 
+              fill 
+              className="object-cover" 
+              sizes="48px" 
+              onError={() => setImgError(true)} 
+            />
+          </div>
+        ) : (
+          <div className="w-12 h-16 relative mr-4 flex-shrink-0 rounded-lg bg-gray-800 border border-white/10 flex items-center justify-center">
+            <Film className="w-5 h-5 text-gray-600" />
+          </div>
+        )}
+        <div className="flex-grow min-w-0">
+          <h3 className="text-gray-200 group-hover:text-yellow-400 transition-colors duration-200 text-base font-medium truncate">{movie.title}</h3>
+          {movie.year && <p className="text-xs text-gray-500 mt-0.5">{movie.year}</p>}
+        </div>
+        <ArrowRight className="w-5 h-5 text-gray-600 opacity-0 group-hover:opacity-100 group-hover:text-yellow-400 transition-all transform -translate-x-2 group-hover:translate-x-0 flex-shrink-0 ml-2" />
+      </Link>
+    </li>
+  );
+};
 
 export default function SearchPage({ allMovies }) {
   const router = useRouter();
@@ -179,28 +212,7 @@ export default function SearchPage({ allMovies }) {
                 </div>
                 <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
                   {results.map((movie) => (
-                    <li key={movie.imdbID}>
-                      <Link href={`/movies/${movie.slug}/${movie.imdbID}`} className="flex items-center group p-2 rounded-xl hover:bg-gray-800/50 transition-colors border border-transparent hover:border-white/5">
-                        {movie.poster ? (
-                          <div className="w-12 h-16 relative mr-4 flex-shrink-0 rounded-lg overflow-hidden bg-gray-800 border border-white/10 shadow-md">
-                            <Image src={movie.poster} alt={movie.title} fill className="object-cover" sizes="48px" />
-                          </div>
-                        ) : (
-                          <div className="w-12 h-16 relative mr-4 flex-shrink-0 rounded-lg bg-gray-800 border border-white/10 flex items-center justify-center">
-                            <Film className="w-5 h-5 text-gray-600" />
-                          </div>
-                        )}
-                        <div className="flex-grow min-w-0">
-                          <h3 className="text-gray-200 group-hover:text-yellow-400 transition-colors duration-200 text-base font-medium truncate">
-                            {movie.title}
-                          </h3>
-                          {movie.year && (
-                            <p className="text-xs text-gray-500 mt-0.5">{movie.year}</p>
-                          )}
-                        </div>
-                        <ArrowRight className="w-5 h-5 text-gray-600 opacity-0 group-hover:opacity-100 group-hover:text-yellow-400 transition-all transform -translate-x-2 group-hover:translate-x-0 flex-shrink-0 ml-2" />
-                      </Link>
-                    </li>
+                    <MovieResultItem key={movie.imdbID} movie={movie} />
                   ))}
                 </ul>
               </div>
@@ -241,53 +253,92 @@ export default function SearchPage({ allMovies }) {
 
 // ✅ RE-USE THE EXACT STATIC PROPS LOGIC FROM MOVIE DIRECTORY TO PREVENT BUILD ERRORS
 export async function getStaticProps() {
-  const allDbs = [
-    SURVIVAL_DATABASE, MATRIX_DATABASE, SE7EN_DATABASE, PARASITE_DATABASE, OLDBOY_DATABASE,
-    DONNIE_DARKO_DATABASE, BLACK_SWAN_DATABASE, EYES_WIDE_SHUT_DATABASE, PRESTIGE_DATABASE,
-    EROTIC_THRILLER_DATABASE, EROTIC_ROMANCE_DATABASE, GREED_DATABASE, INTERSTELLAR_DATABASE,
-    CRIME_THRILLER_DATABASE, WAR_FILMS_DATABASE, HULU_ACTION_DATABASE, HULU_ROMANCE_DATABASE,
-    HULU_HORROR_DATABASE, HULU_COMEDY_DATABASE, HULU_SCIFI_DATABASE, HULU_THRILLER_DATABASE,
-    COMPLETE_MOVIE_DATABASE, HULU_BEST_DATABASE, HULU_DRAMA_DATABASE, HBO_MAX_COMEDY_DATABASE,
-    PARAMOUNT_ACTION_DATABASE, PARAMOUNT_SCIFI_DATABASE, PARAMOUNT_ROMANCE_DATABASE,
-    PARAMOUNT_DRAMA_DATABASE, PARAMOUNT_THRILLER_DATABASE, PARAMOUNT_FAMILY_DATABASE,
-    PARAMOUNT_HORROR_DATABASE, PARAMOUNT_COMEDY_DATABASE, PARAMOUNT_BEST_DATABASE,
-    PEACOCK_ACTION_ADVENTURE_DATABASE, PEACOCK_SCIFI_DATABASE, PEACOCK_ROMANCE_DATABASE,
-    PEACOCK_FAMILY_DATABASE, PEACOCK_DRAMA_DATABASE, PEACOCK_THRILLER_DATABASE,
-    PEACOCK_BEST_DATABASE, PEACOCK_COMEDY_DATABASE, RAUNCHY_COMEDY_DATABASE, ROAD_TRIP_DATABASE,
-    THOUGHT_PROVOKING_DATABASE, NEO_NOIR_DATABASE, BEST_ACTION_DATABASE, TRUE_STORY_DATABASE,
-    GANGSTER_DATABASE, DECADE_DATABASE, BOOK_ADAPTATION_DATABASE, MARRIAGE_CRISIS_DATABASE,
-    A24_DATABASE, HULU_FAMILY_DATABASE, HBO_ACTION_DATABASE, HBO_MAX_ROMANCE_DATABASE, HBO_MAX_THRILLER_DATABASE,
-    HBO_MAX_FAMILY_DATABASE, HBO_MAX_SCIFI_DATABASE, HBO_MAX_HORROR_DATABASE, HBO_MAX_BEST_DATABASE,
-    HBO_MAX_DRAMA_DATABASE, SCI_FI_DATABASE, THRILLER_MOVIES, MYSTERY_THRILLER_MOVIES,
-    DETECTIVE_THRILLER_MOVIES, PSYCH_THRILLER_MOVIES, HEIST_THRILLER_MOVIES, TIME_TRAVEL_MOVIES,
-    REVENGE_MOVIES
+  const allModules = [
+    SURVIVAL, MATRIX, SE7EN, PARASITE, OLDBOY,
+    DONNIE_DARKO, BLACK_SWAN, EYES_WIDE_SHUT, PRESTIGE,
+    EROTIC_THRILLER, EROTIC_ROMANCE, GREED, INTERSTELLAR,
+    CRIME_THRILLER, WAR_FILMS, HULU_ACTION, HULU_ROMANCE,
+    HULU_HORROR, HULU_COMEDY, HULU_SCIFI, HULU_THRILLER,
+    MOVIE_DATA, HULU_BEST, HULU_DRAMA, HBO_MAX_COMEDY,
+    PARAMOUNT_ACTION, PARAMOUNT_SCIFI, PARAMOUNT_ROMANCE,
+    PARAMOUNT_DRAMA, PARAMOUNT_THRILLER, PARAMOUNT_FAMILY,
+    PARAMOUNT_HORROR, PARAMOUNT_COMEDY, PARAMOUNT_BEST,
+    PEACOCK_ACTION_ADVENTURE, PEACOCK_SCIFI, PEACOCK_ROMANCE,
+    PEACOCK_FAMILY, PEACOCK_DRAMA, PEACOCK_THRILLER,
+    PEACOCK_BEST, PEACOCK_COMEDY, RAUNCHY_COMEDY, ROAD_TRIP,
+    THOUGHT_PROVOKING, NEO_NOIR, BEST_ACTION, TRUE_STORY,
+    GANGSTER, DECADE, BOOK_ADAPTATION, MARRIAGE_CRISIS,
+    A24, HULU_FAMILY, HBO_ACTION, HBO_MAX_ROMANCE, HBO_MAX_THRILLER,
+    HBO_MAX_FAMILY, HBO_MAX_SCIFI, HBO_MAX_HORROR, HBO_MAX_BEST,
+    HBO_MAX_DRAMA, SCI_FI, THRILLER_MOVIES, MYSTERY_THRILLER,
+    DETECTIVE_THRILLER, PSYCH_THRILLER, HEIST_THRILLER, TIME_TRAVEL,
+    REVENGE
   ];
+
+  // ⚡ 1. AGGREGATE ALL POSTERS GLOBALLY FIRST
+  const globalPosters = {};
+  allModules.forEach(mod => {
+    if (mod && mod.FALLBACK_POSTERS) {
+      Object.assign(globalPosters, mod.FALLBACK_POSTERS);
+    }
+  });
 
   const uniqueMoviesMap = new Map();
   
-  allDbs.forEach(db => {
+  allModules.forEach(mod => {
+    if (!mod) return;
+    
+    // Safely extract the Database from the module
+    const db = mod.COMPLETE_MOVIE_DATABASE || mod.SCI_FI_MOVIES || mod.COMPLETE_SCI_FI_DATABASE || mod.THRILLER_MOVIES || mod.MYSTERY_THRILLER_MOVIES || mod.DETECTIVE_THRILLER_MOVIES || mod.PSYCH_THRILLER_MOVIES || mod.HEIST_THRILLER_MOVIES || mod.TIME_TRAVEL_MOVIES || mod.REVENGE_MOVIES || mod.WAR_FILMS;
+    
     if (!db) return;
+    
     const moviesArray = Array.isArray(db) ? db : Object.values(db);
     moviesArray.forEach(movie => {
-      if (movie && movie.imdbID && !uniqueMoviesMap.has(movie.imdbID)) {
+      // ⚡ 2. DO NOT SKIP IF ALREADY IN MAP. WE MIGHT NEED TO UPDATE ITS POSTER.
+      if (movie && movie.imdbID) {
         const primaryCollectionSlug = getPrimaryCollectionForMovie(movie.imdbID);
         if (primaryCollectionSlug) {
           // ⚡ SAFELY EXTRACT POSTER REGARDLESS OF DATABASE ORIGIN (TMDB vs OMDb)
           let finalPoster = null;
-          if (movie.poster_path) {
-            finalPoster = `https://image.tmdb.org/t/p/w92${movie.poster_path}`;
+          if (movie.poster_path && movie.poster_path !== 'N/A') {
+            finalPoster = movie.poster_path.startsWith('http') 
+              ? movie.poster_path 
+              : `https://image.tmdb.org/t/p/w92${movie.poster_path.startsWith('/') ? '' : '/'}${movie.poster_path}`;
           } else {
-            const fallback = movie.posterUrl || movie.Poster || movie.poster;
-            if (fallback && fallback !== 'N/A') finalPoster = fallback;
+            const tmdbId = movie.tmdbId || movie.tmdbID || movie.id;
+            if (tmdbId && globalPosters[tmdbId]) {
+              let p = globalPosters[tmdbId];
+              if (p.includes('w500')) p = p.replace('w500', 'w92'); // Reduce image size to load instantly
+              if (p.includes('w780')) p = p.replace('w780', 'w92');
+              finalPoster = p;
+            } else {
+              const fallback = movie.posterUrl || movie.Poster || movie.poster;
+              if (fallback && fallback !== 'N/A' && fallback.startsWith('http')) {
+                finalPoster = fallback;
+              }
+            }
           }
 
-          uniqueMoviesMap.set(movie.imdbID, {
-            title: movie.Title || movie.title || 'Unknown',
-            imdbID: movie.imdbID,
-            slug: primaryCollectionSlug,
-            year: movie.year || movie.Year || '',
-            poster: finalPoster
-          });
+          if (finalPoster && !finalPoster.startsWith('http')) {
+            finalPoster = null;
+          }
+
+          if (!uniqueMoviesMap.has(movie.imdbID)) {
+            uniqueMoviesMap.set(movie.imdbID, {
+              title: movie.Title || movie.title || 'Unknown',
+              imdbID: movie.imdbID,
+              slug: primaryCollectionSlug,
+              year: movie.year || movie.Year || '',
+              poster: finalPoster
+            });
+          } else {
+            // ⚡ 3. IF MOVIE EXISTS BUT HAS NO POSTER, UPDATE IT!
+            const existing = uniqueMoviesMap.get(movie.imdbID);
+            if (!existing.poster && finalPoster) {
+              existing.poster = finalPoster;
+            }
+          }
         }
       }
     });

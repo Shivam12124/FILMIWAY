@@ -14,6 +14,7 @@ import {
   Mail
 } from "lucide-react";
 import Image from "next/image";
+import Header from "../components/Header";
 
 export default function Privacy() {
   const lastUpdated = "January 24, 2026";
@@ -35,27 +36,7 @@ export default function Privacy() {
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-yellow-500/5 rounded-full blur-[120px] pointer-events-none" />
         </div>
 
-        {/* ✅ COMPACT NAVIGATION & LOGO (Matches About Us) */}
-        <nav className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-xl border-b border-white/5 h-16 sm:h-20 flex items-center">
-          <div className="container mx-auto px-6 flex items-center justify-between">
-            <Link href="/" aria-label="Homepage" className="group">
-              <Image
-                src="/filmiway-logo.svg"
-                alt="Filmiway Logo"
-                width={110} 
-                height={38}
-                className="w-[5.5rem] sm:w-[7rem] h-auto object-contain group-hover:opacity-80 transition-opacity" 
-                priority
-              />
-            </Link>
-            <Link 
-              href="/" 
-              className="px-5 py-1.5 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 text-xs sm:text-sm font-medium transition-colors backdrop-blur-md"
-            >
-              Back to Home
-            </Link>
-          </div>
-        </nav>
+        <Header />
 
         <main className="relative z-20 max-w-4xl mx-auto px-6 pt-32 pb-20">
           
