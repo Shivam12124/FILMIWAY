@@ -39,7 +39,8 @@ const fetchUniquePosterForCollection = async (movieIds, sectionName, collectionS
     }
   }
 
-  for (let i = 0; i < Math.min(movieIds.length, 8); i++) {
+  // ⚡ PERFORMANCE: Check max 3 movies instead of 8 to drastically reduce external API wait times during SSG/ISR
+  for (let i = 0; i < Math.min(movieIds.length, 3); i++) {
     const movieId = movieIds[i];
     try {
       let posterPath = null;
@@ -68,7 +69,8 @@ const fetchUniquePosterForCollection = async (movieIds, sectionName, collectionS
 
 // ⚡ PURE CSS CARD - Optimized Next/Image for LCP
 const CollectionCard = memo(({ collection, index, href, isPrioritySection }) => {
-  const shouldPrioritize = isPrioritySection && index < 4;
+  // ⚡ LCP OPTIMIZATION: Cards are below the fold (Hero takes full screen), so we defer all images
+  const shouldPrioritize = false;
 
   return (
     <Link
@@ -119,7 +121,7 @@ const Top10MovieCard = memo(({ movie, index }) => {
   const rank = index + 1;
   const isDoubleDigit = rank >= 10;
   const posterUrl = movie.posterUrl || "https://via.placeholder.com/342x513/111827/4b5563?text=No+Image";
-  const shouldPrioritize = index < 3; // Prioritize the first 3 visible Top 10 movies
+  const shouldPrioritize = false; // ⚡ LCP OPTIMIZATION: Top 10 is below fold, defer loading
   
   return (
     <Link
@@ -218,8 +220,8 @@ const HeroSection = memo(() => {
     <section className="relative flex flex-col items-center justify-center bg-[#030303] overflow-hidden select-none pt-24 pb-4 sm:pt-28 sm:pb-8">
       {/* Premium Cinematic Background Gradients */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] bg-blue-900/20 rounded-full blur-[120px] mix-blend-screen" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] bg-yellow-600/10 rounded-full blur-[120px] mix-blend-screen" />
+        <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] bg-blue-900/20 rounded-full blur-[120px] mix-blend-screen transform-gpu" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] bg-yellow-600/10 rounded-full blur-[120px] mix-blend-screen transform-gpu" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#030303]/80 to-[#030303]" />
       </div>
 
@@ -355,7 +357,10 @@ MovieSection.displayName = 'MovieSection';
 // ⚡ TOP 10 SECTION 
 const Top10Section = memo(({ title, movies, description }) => {
   return (
-    <section className="mb-12 sm:mb-20 select-none">
+    <section 
+      className="mb-12 sm:mb-20 select-none"
+      style={{ contentVisibility: 'auto', containIntrinsicSize: '450px' }}
+    >
       <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-4 sm:mb-8 px-1">
         <div>
           <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white tracking-tight mb-1 sm:mb-2 flex items-center gap-3">
@@ -409,7 +414,7 @@ const FilmiwayHomepage = ({ huluCollections, mindBendingCollections, thrillerCol
               movies={mindBendingCollections} 
               sectionRef={mindRef} 
               viewAllLink="/genre/mind-bending" 
-              isPrioritySection={true}
+              isPrioritySection={false}
             />
 
             <Top10Section 
@@ -442,7 +447,7 @@ const FilmiwayHomepage = ({ huluCollections, mindBendingCollections, thrillerCol
           <p className="text-gray-400 text-sm font-light max-w-md mx-auto">Stay tuned for a groundbreaking new way to experience and discover cinema.</p>
         </div>
 
-        <footer className="bg-black py-8 sm:py-12 border-t border-gray-800">
+        <footer className="bg-black py-8 sm:py-12 border-t border-gray-800" style={{ contentVisibility: 'auto', containIntrinsicSize: '400px' }}>
           <div className="container mx-auto px-4 sm:px-6">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 mb-8 sm:mb-12 border-b border-gray-800 pb-8 sm:pb-12">
               <div>
