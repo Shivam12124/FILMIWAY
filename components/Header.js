@@ -9,6 +9,7 @@ const Header = () => {
   const router = useRouter();
   const currentPath = router.pathname;
   const [searchQuery, setSearchQuery] = useState('');
+  const isSearchPage = currentPath === '/search';
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -35,23 +36,25 @@ const Header = () => {
             </div>
           </Link>
 
-          {/* ⚡ GLOBAL SEARCH BAR */}
-          <div className="flex-1 max-w-xl hidden md:block mx-4">
-            <form onSubmit={handleSearch} className="relative">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search movies..."
-                className="w-full bg-white/5 border border-white/10 rounded-full py-2 pl-11 pr-4 text-sm text-white placeholder-gray-400 focus:outline-none focus:border-yellow-400/50 focus:ring-1 focus:ring-yellow-400/50 transition-all"
-              />
-            </form>
-          </div>
+          {/* ⚡ GLOBAL SEARCH BAR (Hidden on Search Page to prevent double search bars) */}
+          {!isSearchPage && (
+            <div className="flex-1 max-w-xl hidden md:block mx-4">
+              <form onSubmit={handleSearch} className="relative">
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search movies..."
+                  className="w-full bg-white/5 border border-white/10 rounded-full py-2 pl-11 pr-4 text-sm text-white placeholder-gray-400 focus:outline-none focus:border-yellow-400/50 focus:ring-1 focus:ring-yellow-400/50 transition-all"
+                />
+              </form>
+            </div>
+          )}
 
           <div className="flex items-center space-x-5 sm:space-x-8 shrink-0">
-            {/* Mobile Search Icon */}
-            <button onClick={() => router.push('/search')} className="md:hidden text-gray-400 hover:text-white transition-colors" aria-label="Search">
+            {/* Search Icon (Visible on mobile ALWAYS, and visible on desktop ONLY on the Search page) */}
+            <button onClick={() => router.push('/search')} className={`${isSearchPage ? 'block' : 'md:hidden'} text-gray-400 hover:text-white transition-colors`} aria-label="Search">
               <Search className="w-5 h-5" />
             </button>
             <Link href="/" className={`font-medium text-sm sm:text-base transition-colors ${currentPath === '/' ? 'text-yellow-500' : 'text-gray-300 hover:text-white'}`}>Home</Link>
