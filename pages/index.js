@@ -230,7 +230,7 @@ const HeroSection = memo(() => {
           <div className="mb-4">
             <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8">
               <span className="flex h-2 w-2 rounded-full bg-yellow-400 animate-pulse" />
-              <span className="text-[10px] sm:text-xs font-medium text-gray-300 tracking-wider uppercase">60+ Expertly Curated Collections</span>
+              <span className="text-[10px] sm:text-xs font-medium text-gray-300 tracking-wider uppercase">70+ Expertly Curated Collections</span>
             </div>
           </div>
 

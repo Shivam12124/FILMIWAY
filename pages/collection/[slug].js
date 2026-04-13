@@ -14,6 +14,7 @@ import { COMPLETE_MOVIE_DATABASE as SE7EN_DATABASE, COMPLETE_MOVIE_DATA as SE7EN
 import { COMPLETE_MOVIE_DATABASE as PARASITE_DATABASE, COMPLETE_MOVIE_DATA as PARASITE_DATA } from '../../utils/parasiteMovieData'; 
 import { COMPLETE_MOVIE_DATABASE as OLDBOY_DATABASE, COMPLETE_MOVIE_DATA as OLDBOY_DATA } from '../../utils/oldboyMovieData'; 
 import { COMPLETE_MOVIE_DATABASE as DONNIE_DARKO_DATABASE, COMPLETE_MOVIE_DATA as DONNIE_DARKO_DATA } from '../../utils/donnieDarkoMovieData';
+import { COMPLETE_MOVIE_DATABASE as FIGHT_CLUB_DATABASE, COMPLETE_MOVIE_DATA as FIGHT_CLUB_DATA } from '../../utils/fightClubMovieData';
 import { COMPLETE_MOVIE_DATABASE as BLACK_SWAN_DATABASE, COMPLETE_MOVIE_DATA as BLACK_SWAN_DATA } from '../../utils/blackSwanMovieData';
 import { COMPLETE_MOVIE_DATABASE as EYES_WIDE_SHUT_DATABASE, COMPLETE_MOVIE_DATA as EYES_WIDE_SHUT_DATA } from '../../utils/eyesWideShutMovieData';
 import { COMPLETE_MOVIE_DATABASE as PRESTIGE_DATABASE, COMPLETE_MOVIE_DATA as PRESTIGE_DATA } from '../../utils/prestigeMovieData';
@@ -1360,6 +1361,29 @@ const getCollectionContent = () => {
             text2: "Each film creates genuine existential confusionmirroring protagonists' descent into temporal madness where linear reality ceases to exist. Your perception will never recover."
         }
     };
+    } else if (collection.slug === 'movies-like-fight-club') {
+        return {
+            badge: "Anarchic Cinema",
+            title: "10 Movies Like Fight Club",
+            description: "Explore the best psychological thrillers and dark satires exploring identity fracture, anti-system rebellion, and anarchic collapse.",
+            selection: {
+                text1: "From the hyper-aggressive plunge of Filth to the soul-crushing dystopia of Brazil. These films tear down modern consumerism, toxic masculinity, and the fragile walls of sanity.",
+                text2: "Each masterpiece features unhinged narrators, anti-system rebellion, and profound existential dread."
+            },
+            ranking: {
+                text: "Our 'Anarchy Level' index evaluates anti-system rebellion, identity fracture, and the visceral shock value of each film's psychological collapse.",
+                points: [
+                    "Anti-system rebellion scale",
+                    "Identity fracture intensity",
+                    "Visceral shock value",
+                    "Psychological complexity"
+                ]
+            },
+            experience: {
+                text1: "Whether you're seeking dark satire or a complete mental breakdown, this collection delivers cinema's most chaotic and rule-breaking experiences.",
+                text2: "Warning: These films do not hold your hand. Prepare for unreliable narrators and reality-shattering conclusions."
+            }
+        };
     
 
 
@@ -2273,6 +2297,11 @@ subtitle: "While everyone searches Netflix, these classics hide in plain sight. 
         title: "Movies Like Donnie Darko: 10 Reality-Warping Films",
         subtitle: "Time travel paradoxes, dying dreams & doppelgängers that shatter reality itself"
     };
+    } else if (collection.slug === 'movies-like-fight-club') {
+        return {
+            title: "10 Movies Like Fight Club: Anarchic Masterpieces",
+            subtitle: "Psychological thrillers, dark satires & anti-system rebellion"
+        };
 
          } else if (collection.slug === 'movies-like-eyes-wide-shut') {
          return {
@@ -2553,6 +2582,11 @@ const getLoaderContent = () => {
     return {
         title: "Loading Movies Like Donnie Darko",
         description: "Curating reality-warping time travel films with community reviews and ratings"
+    };
+} else if (collection?.slug === 'movies-like-fight-club') {
+    return {
+        title: "Loading Movies Like Fight Club",
+        description: "Curating anarchic cinema and psychological thrillers with community reviews"
     };
 } else if (collection?.slug === 'movies-like-black-swan') { 
     return {
@@ -3383,6 +3417,15 @@ const getStaticMetaContent = () => {
             twitterTitle: "Loved Donnie Darko? These 10 Films Will Break Reality",
             progressText: `of Top ${movies.length} Movies Like Donnie Darko`
         };
+    } else if (collection.slug === 'movies-like-fight-club') {
+        return {
+            title: "10 Movies Like Fight Club (Psychological Thrillers & Dark Satire)",
+            description: "Loved Fight Club? Discover 10 mind-bending movies featuring identity fracture, anti-system rebellion, and anarchic collapse. Includes an exact Timestamps & Parents Guide.",
+            keywords: "movies like fight club, psychological thrillers, dark satire movies, anti system rebellion, unhinged narrator films",
+            ogTitle: "10 Movies Like Fight Club: Anarchic Masterpieces",
+            twitterTitle: "Loved Fight Club? Watch These 10 Anarchic Films Next",
+            progressText: `of Top ${movies.length} Movies Like Fight Club`
+        };
     } else if (collection.slug === 'movies-like-parasite') { 
         return {
             title: "10 Movies Like Parasite: Class Warfare Thrillers",
@@ -3631,6 +3674,7 @@ const getStaticMetaContent = () => {
             sessionStorage.removeItem('fromPeacockFamilyCollection');
             sessionStorage.removeItem('fromPeacockDramaCollection');
             sessionStorage.removeItem('fromEyesWideShutCollection');
+            sessionStorage.removeItem('fromFightClubCollection');
             sessionStorage.removeItem('fromDonnieDarkoCollection');
             sessionStorage.removeItem('fromBlackSwanCollection');
             sessionStorage.removeItem('fromPrestigeCollection');
@@ -3755,6 +3799,8 @@ const getStaticMetaContent = () => {
     sessionStorage.setItem('fromBlackSwanCollection', 'true');
           } else if (collection.slug === 'movies-like-donnie-darko') {
     sessionStorage.setItem('fromDonnieDarkoCollection', 'true');
+          } else if (collection.slug === 'movies-like-fight-club') {
+    sessionStorage.setItem('fromFightClubCollection', 'true');
             } else if (collection.slug === 'movies-like-interstellar') {
                 sessionStorage.setItem('fromInterstellarCollection', 'true');
             } else if (collection.slug === 'movies-like-shutter-island') {
@@ -4220,6 +4266,8 @@ return (
 
 : collection?.slug === 'movies-like-donnie-darko'
 ? 'movies/donnie-darko/'
+: collection?.slug === 'movies-like-fight-club'
+? 'movies/movies-like-fight-club/'
 : collection?.slug === 'movies-like-black-swan'
 ? 'movies/black-swan/'
 
@@ -4482,6 +4530,8 @@ return (
                                     ? `/movies/oldboy/${currentMovie.imdbID}`
                                     : collection.slug === 'movies-like-donnie-darko'
                                     ? `/movies/donnie-darko/${currentMovie.imdbID}`
+                                    : collection.slug === 'movies-like-fight-club'
+                                    ? `/movies/movies-like-fight-club/${currentMovie.imdbID}`
                                     : collection.slug === 'movies-like-black-swan'
                                     ? `/movies/black-swan/${currentMovie.imdbID}`
                                     : collection.slug === 'movies-like-eyes-wide-shut'
@@ -4800,6 +4850,9 @@ case 'movies-like-oldboy':
 
 case 'movies-like-donnie-darko':
     movieDatabase = DONNIE_DARKO_DATABASE;
+    break;
+case 'movies-like-fight-club':
+    movieDatabase = FIGHT_CLUB_DATABASE;
     break;
 case 'movies-like-eyes-wide-shut':
             movieDatabase = EYES_WIDE_SHUT_DATABASE;

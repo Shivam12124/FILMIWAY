@@ -47,6 +47,11 @@ import {
   SENSITIVE_TIMELINES as DONNIE_DARKO_SENSITIVE_TIMELINES 
 } from '../utils/donnieDarkoMovieData';
 import { 
+  COMPLETE_MOVIE_DATA as FIGHT_CLUB_MOVIE_DATA, 
+  STRATEGIC_QUOTES as FIGHT_CLUB_QUOTES, 
+  SENSITIVE_TIMELINES as FIGHT_CLUB_SENSITIVE_TIMELINES 
+} from '../utils/fightClubMovieData';
+import { 
   COMPLETE_MOVIE_DATA as EYES_WIDE_SHUT_MOVIE_DATA, 
   STRATEGIC_QUOTES as EYES_WIDE_SHUT_QUOTES, 
   SENSITIVE_TIMELINES as EYES_WIDE_SHUT_SENSITIVE_TIMELINES 
@@ -347,6 +352,7 @@ import Se7enSEOFAQSection from './Se7enSEOFAQSection';
 import ParasiteSEOFAQSection from './ParasiteSEOFAQSection'; 
 import OldboySEOFAQSection from './OldboySEOFAQSection';
 import DonnieDarkoSEOFAQSection from './DonnieDarkoSEOFAQSection';
+import FightClubSEOFAQSection from './FightClubSEOFAQSection';
 import BlackSwanSEOFAQSection from './BlackSwanSEOFAQSection';
 import EyesWideShutSEOFAQSection from './EyesWideShutSEOFAQSection';
 import EroticThrillerSEOFAQSection from './EroticThrillerSEOFAQSection';
@@ -429,6 +435,7 @@ const MovieDetailsSection = React.memo(({
   fromA24Collection,
   fromParasiteCollection,
   fromDonnieDarkoCollection,
+  fromFightClubCollection,
   fromOldboyCollection,
   fromInterstellarCollection,
   fromDramaCollection,
@@ -525,6 +532,7 @@ const MovieDetailsSection = React.memo(({
   : fromPeacockBestCollection ? safeLookup(PEACOCK_BEST_MOVIE_DATA, movie.tmdbId)
   : fromPeacockComedyCollection ? safeLookup(PEACOCK_COMEDY_MOVIE_DATA, movie.tmdbId)
   : fromDonnieDarkoCollection ? safeLookup(DONNIE_DARKO_MOVIE_DATA, movie.tmdbId)
+  : fromFightClubCollection ? safeLookup(FIGHT_CLUB_MOVIE_DATA, movie.tmdbId)
   : fromParasiteCollection ? safeLookup(PARASITE_MOVIE_DATA, movie.tmdbId)
   : fromMatrixCollection ? safeLookup(MATRIX_MOVIE_DATA, movie.tmdbId)
   : fromSe7enCollection ? safeLookup(SE7EN_MOVIE_DATA, movie.tmdbId)
@@ -705,6 +713,7 @@ const MovieDetailsSection = React.memo(({
    || PEACOCK_BEST_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || PEACOCK_COMEDY_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || DONNIE_DARKO_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
+   || FIGHT_CLUB_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || PARASITE_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || MATRIX_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
    || OLDBOY_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
@@ -779,6 +788,7 @@ const MovieDetailsSection = React.memo(({
    : fromPeacockBestCollection ? movie.cinematicMastery ?? safeMovieInfo.cinematicMastery ?? 0
    : fromPeacockComedyCollection ? movie.laughterIndex ?? safeMovieInfo.laughterIndex ?? 0
    : fromDonnieDarkoCollection ? movie.realityWarpIndex ?? safeMovieInfo.realityWarpIndex ?? 0
+   : fromFightClubCollection ? movie.anarchyLevel ?? safeMovieInfo.anarchyLevel ?? 0
    : fromParasiteCollection ? movie.classWarfareIndex ?? safeMovieInfo.classWarfareIndex ?? 0
    : fromMatrixCollection ? movie.cyberComplexity ?? safeMovieInfo.cyberComplexity ?? 0
    : fromOldboyCollection ? movie.revengeIntensity ?? safeMovieInfo.revengeIntensity ?? 0
@@ -942,6 +952,7 @@ const MovieDetailsSection = React.memo(({
    if (fromDecadeCollection) return 'VISCERAL IMPACT INDEX';
    if (fromGangsterCollection) return 'UNDERWORLD GRIT INDEX';
    if (fromBookAdaptationCollection) return 'PAGE-TO-SCREEN FIDELITY';
+   if (fromFightClubCollection) return 'ANTI-SYSTEM REBELLION INDEX';
    if (fromMarriageCrisisCollection) return 'DEVASTATION INDEX';
    if (fromA24Collection) return 'EMOTIONAL RESONANCE INDEX';
    return 'MIND-BENDING INDEX';
@@ -1002,6 +1013,7 @@ const MovieDetailsSection = React.memo(({
    if (fromDecadeCollection) return 'CINEMATIC IMPACT LEVEL';
    if (fromGangsterCollection) return 'CRIMINAL PSYCHOLOGY LEVEL';
    if (fromBookAdaptationCollection) return 'ADAPTATION MASTERY LEVEL';
+   if (fromFightClubCollection) return 'PSYCHOLOGICAL COLLAPSE LEVEL';
    if (fromMarriageCrisisCollection) return 'EMOTIONAL DEVASTATION LEVEL';
    if (fromA24Collection) return 'ARTISTIC COMPLEXITY LEVEL';
    return 'COGNITIVE DISTORTION LEVEL';
@@ -1183,6 +1195,11 @@ const MovieDetailsSection = React.memo(({
      if (scoreValue >= 80) return 'A powerful and heartbreaking exploration of love, resentment, and relationship breakdown.';
      return 'A solid, emotionally challenging look at the difficult realities of marriage and divorce.';
    }
+   if (fromFightClubCollection) {
+     if (scoreValue >= 90) return 'Total systemic collapse and extreme psychological fracture. Pure cinematic anarchy.';
+     if (scoreValue >= 80) return 'Highly chaotic and subversive, deeply questioning the foundations of modern society.';
+     return 'A dark exploration of identity fracture and anti-system rebellion.';
+   }
    if (fromA24Collection) {
      if (scoreValue >= 90) return 'A deeply profound, artistically complex masterpiece that defines modern auteur cinema.';
      if (scoreValue >= 80) return 'A highly resonant and visually striking film with uncompromising artistic vision.';
@@ -1238,6 +1255,7 @@ const MovieDetailsSection = React.memo(({
    if (fromGangsterCollection) return 'border-red-800/40';
    if (fromBookAdaptationCollection) return 'border-blue-500/40';
    if (fromMarriageCrisisCollection) return 'border-slate-500/40';
+   if (fromFightClubCollection) return 'border-red-700/40';
    if (fromA24Collection) return 'border-amber-500/40';
    return 'border-yellow-400/40';
  };
@@ -1285,6 +1303,7 @@ const MovieDetailsSection = React.memo(({
    if (fromGangsterCollection) return 'text-red-700';
    if (fromBookAdaptationCollection) return 'text-blue-500';
    if (fromMarriageCrisisCollection) return 'text-slate-500';
+   if (fromFightClubCollection) return 'text-red-700';
    if (fromA24Collection) return 'text-amber-500';
    return 'text-yellow-400';
  };
@@ -1417,6 +1436,7 @@ const MovieDetailsSection = React.memo(({
        !fromBookAdaptationCollection &&
        !fromMarriageCrisisCollection &&
        !fromA24Collection &&
+       !fromFightClubCollection &&
        (
         <motion.div
           className="mb-6 sm:mb-8 md:mb-12 bg-gradient-to-br from-gray-800/40 to-gray-900/60 rounded-lg sm:rounded-xl border border-gray-700/50 p-3 sm:p-4 md:p-8 shadow-2xl backdrop-blur-sm relative overflow-hidden"
@@ -1553,6 +1573,7 @@ const MovieDetailsSection = React.memo(({
         : fromPeacockDramaCollection ? <PeacockDramaSEOFAQSection movie={movie} />
         : fromPeacockThrillerCollection ? <PeacockThrillerSEOFAQSection movie={movie} />
         : fromDonnieDarkoCollection ? <DonnieDarkoSEOFAQSection movie={movie} />
+        : fromFightClubCollection ? <FightClubSEOFAQSection movie={movie} />
         : fromParasiteCollection ? <ParasiteSEOFAQSection movie={movie} />
         : fromMatrixCollection ? <MatrixSEOFAQSection movie={movie} />
         : fromOldboyCollection ? <OldboySEOFAQSection movie={movie} />

@@ -12,6 +12,7 @@ import { COMPLETE_MOVIE_DATABASE as SE7EN_DATABASE } from '../utils/se7enMovieDa
 import { COMPLETE_MOVIE_DATABASE as PARASITE_DATABASE } from '../utils/parasiteMovieData'; 
 import { COMPLETE_MOVIE_DATABASE as OLDBOY_DATABASE } from '../utils/oldboyMovieData'; 
 import { COMPLETE_MOVIE_DATABASE as DONNIE_DARKO_DATABASE } from '../utils/donnieDarkoMovieData';
+import { COMPLETE_MOVIE_DATABASE as FIGHT_CLUB_DATABASE } from '../utils/fightClubMovieData';
 import { COMPLETE_MOVIE_DATABASE as BLACK_SWAN_DATABASE } from '../utils/blackSwanMovieData';
 import { COMPLETE_MOVIE_DATABASE as EYES_WIDE_SHUT_DATABASE } from '../utils/eyesWideShutMovieData';
 import { COMPLETE_MOVIE_DATABASE as PRESTIGE_DATABASE } from '../utils/prestigeMovieData';
@@ -114,7 +115,7 @@ export default function MovieDirectory({ sortedMovies }) {
               A-Z Movie <span className="font-normal text-yellow-400">Index</span>
             </h1>
             <p className="text-gray-400 text-lg font-light leading-relaxed">
-              Explore our complete, deduplicated index of all movies featured on Filmiway. Every film links directly to its primary canonical URL, featuring our in-depth Parents Guide and explicit scene timestamps.
+              Explore our complete A-Z index of every movie featured on Filmiway. Select any film to view its detailed Parents Guide, exact timestamps for skipping awkward scenes, and expert cinematic analysis.
             </p>
           </div>
 
@@ -187,7 +188,7 @@ export default function MovieDirectory({ sortedMovies }) {
 export async function getStaticProps() {
   const allDbs = [
     SURVIVAL_DATABASE, MATRIX_DATABASE, SE7EN_DATABASE, PARASITE_DATABASE, OLDBOY_DATABASE,
-    DONNIE_DARKO_DATABASE, BLACK_SWAN_DATABASE, EYES_WIDE_SHUT_DATABASE, PRESTIGE_DATABASE,
+    DONNIE_DARKO_DATABASE, FIGHT_CLUB_DATABASE, BLACK_SWAN_DATABASE, EYES_WIDE_SHUT_DATABASE, PRESTIGE_DATABASE,
     EROTIC_THRILLER_DATABASE, EROTIC_ROMANCE_DATABASE, GREED_DATABASE, INTERSTELLAR_DATABASE,
     CRIME_THRILLER_DATABASE, WAR_FILMS_DATABASE, HULU_ACTION_DATABASE, HULU_ROMANCE_DATABASE,
     HULU_HORROR_DATABASE, HULU_COMEDY_DATABASE, HULU_SCIFI_DATABASE, HULU_THRILLER_DATABASE,

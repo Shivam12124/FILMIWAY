@@ -1016,6 +1016,20 @@ export const COLLECTIONS = {
     relatedCollections: ['best-thought-provoking-movies', 'best-psychological-thriller-movies', 'best-drama-movies-on-hbo-max']
   },
 
+  // 🥊 MOVIES LIKE FIGHT CLUB
+  'movies-like-fight-club': {
+    slug: 'movies-like-fight-club',
+    title: '10 Best Movies Like Fight Club',
+    stats: { averageRating: 7.5 },
+    badges: [
+      { label: "ANARCHY", desc: "Anti-system rebellion" },
+      { label: "IDENTITY", desc: "Psychological fracture" },
+      { label: "SATIRE", desc: "Dark modern commentary" }
+    ],
+    movies: ['tt1450321', 'tt1024715', 'tt1825157', 'tt7339248', 'tt0106856', 'tt0120586', 'tt0088846', 'tt0151804', 'tt0434409', 'tt0120601'],
+    relatedCollections: ['best-psychological-thriller-movies', 'movies-like-shutter-island', 'movies-like-se7en']
+  },
+
   // 🩸 BEST THRILLER MOVIES
   'best-thriller-movies': {
     slug: 'best-thriller-movies',
@@ -1069,6 +1083,7 @@ export const getBookAdaptationsCollection = () => COLLECTIONS['top-10-book-adapt
 export const getEroticRomanceCollection = () => COLLECTIONS['best-erotic-romance-movies'];
 export const getMarriageCrisisCollection = () => COLLECTIONS['best-marriage-crisis-movies'];
 export const getBestA24MoviesCollection = () => COLLECTIONS['best-a24-movies'];
+export const getFightClubCollection = () => COLLECTIONS['movies-like-fight-club'];
 export const getBestActionCollection = () => COLLECTIONS['best-action-movies'];
 // ============================================================================
 // 🧠 THE MASTER CANONICAL BRAIN
