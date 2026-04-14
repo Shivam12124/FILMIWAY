@@ -69,8 +69,14 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
   const [countdown, setCountdown] = useState(4);
   const timerRef = useRef(null);
 
-  const backdropPath = movieData?.backdrop_path || richData?.backdrop_path || movie?.backdrop_path;
+  let backdropPath = movieData?.backdrop_path || richData?.backdrop_path || movie?.backdrop_path || movieData?.poster_path;
   const posterPath = movieData?.poster_path || richData?.poster_path || movie?.poster_path;
+
+  // ✅ SAFE OVERRIDE: The Dreamers (tt0309987) has an inappropriate default TMDB backdrop.
+  // We pull the alternate official images from TMDB and use a different, safer scene instead.
+  if (movie?.imdbID === 'tt0309987' && movieData?.images?.backdrops?.length > 1) {
+    backdropPath = movieData.images.backdrops[2]?.file_path || movieData.images.backdrops[1]?.file_path || backdropPath;
+  }
 
   const bannerImage = backdropPath ? getTMDBImage(backdropPath, 'w1280') : null;
   const posterImage = posterPath ? getTMDBImage(posterPath, 'w500') : null;
@@ -198,7 +204,7 @@ const EroticRomanceBreadcrumb = ({ movie }) => (
 
 const EroticRomanceMoviePage = ({ movie, tmdbData: movieData, sensitiveData }) => {
   const router = useRouter();
-  const richData = COMPLETE_MOVIE_DATA[movie.tmdbId]; 
+  const richData = movie ? COMPLETE_MOVIE_DATA[movie.tmdbId] : null; 
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -214,6 +220,10 @@ const EroticRomanceMoviePage = ({ movie, tmdbData: movieData, sensitiveData }) =
         sessionStorage.setItem('fromCollectionName', 'Best Erotic Romance Movies');
     }
   }, []);
+
+  if (router.isFallback || !movie) {
+    return <div className="min-h-screen flex items-center justify-center text-white" style={{ backgroundColor: COLORS.bgPrimary }}>Loading...</div>;
+  }
 
   const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
   const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
@@ -272,6 +282,10 @@ const EroticRomanceMoviePage = ({ movie, tmdbData: movieData, sensitiveData }) =
 
   // =========================================================================
 
+  const ogImage = movieData?.poster_path 
+    ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` 
+    : '';
+
   const masterCollectionSlug = getPrimaryCollectionForMovie(movie.imdbID) || collectionSlug;
   const canonicalUrl = `https://filmiway.com/movies/${masterCollectionSlug}/${movie.imdbID}`;
   
@@ -301,11 +315,11 @@ const EroticRomanceMoviePage = ({ movie, tmdbData: movieData, sensitiveData }) =
               <meta property="og:description" content={cleanSEODesc} />
               <meta property="og:type" content="video.movie" />
               <meta property="og:url" content={canonicalUrl} />
-              <meta property="og:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
+              <meta property="og:image" content={ogImage} />
               <meta name="twitter:card" content="summary_large_image" />
               <meta name="twitter:title" content={cleanSEOTitle} />
               <meta name="twitter:description" content={cleanSEODesc} />
-              <meta name="twitter:image" content={movieData?.poster_path ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}` : ''} />
+              <meta name="twitter:image" content={ogImage} />
           </Head>
 
           <SubtleFilmGrain />
@@ -351,7 +365,7 @@ export async function getStaticProps({ params }) {
       if (!movie) return { notFound: true };
 
       const tmdbResponse = await fetch(
-          `https://api.themoviedb.org/3/movie/${movie.tmdbId}?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&append_to_response=videos`
+          `https://api.themoviedb.org/3/movie/${movie.tmdbId}?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&append_to_response=videos,images`
       );
       const tmdbData = tmdbResponse.ok ? await tmdbResponse.json() : null;
 

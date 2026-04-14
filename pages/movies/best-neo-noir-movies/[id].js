@@ -197,7 +197,7 @@ const NeoNoirBreadcrumb = ({ movie }) => (
 
 const NeoNoirMoviePage = ({ movie, tmdbData: movieData, sensitiveData }) => {
   const router = useRouter();
-  const richData = COMPLETE_MOVIE_DATA[movie.tmdbId]; 
+  const richData = movie ? COMPLETE_MOVIE_DATA[movie.tmdbId] : null; 
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -213,6 +213,10 @@ const NeoNoirMoviePage = ({ movie, tmdbData: movieData, sensitiveData }) => {
         sessionStorage.setItem('fromCollectionName', '10 Best Neo-Noir Movies');
     }
   }, []);
+
+  if (router.isFallback || !movie) {
+    return <div className="min-h-screen flex items-center justify-center text-white" style={{ backgroundColor: COLORS.bgPrimary }}>Loading...</div>;
+  }
 
   const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
   const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');

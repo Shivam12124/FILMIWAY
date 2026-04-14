@@ -191,7 +191,9 @@ const MobileHomepageButton = () => (
 );
 
 //  COLLECTION PAGE COMPONENT
-const CollectionPage = ({ collection, movies }) => {
+const CollectionPage = ({ collection: propCollection, movies: propMovies }) => {
+    const collection = propCollection || { title: 'Movies', slug: '', description: '' };
+    const movies = propMovies || [];
     const [currentMovieIndex, setCurrentMovieIndex] = useState(0);
     // ⚡ OPTIMIZATION: Disabled artificial loader. Next.js SSG pages load instantly.
     const [isLoading, setIsLoading] = useState(false);
@@ -3574,12 +3576,14 @@ const getStaticMetaContent = () => {
 
 
     const nextMovie = useCallback(() => {
+        if (!movies || movies.length === 0) return;
         setCurrentMovieIndex((prev) => (prev + 1) % movies.length);
-    }, [movies.length]);
+    }, [movies]);
 
     const prevMovie = useCallback(() => {
+        if (!movies || movies.length === 0) return;
         setCurrentMovieIndex((prev) => (prev - 1 + movies.length) % movies.length);
-    }, [movies.length]);
+    }, [movies]);
 
     const goToMovie = useCallback((index) => {
         setCurrentMovieIndex(index);

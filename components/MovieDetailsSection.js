@@ -581,7 +581,7 @@ const MovieDetailsSection = React.memo(({
    boxOffice: 'N/A',
    budget: 'N/A',
    synopsis: 'A compelling exploration of cinema.',
-   ageRating: 'Rated'
+   ageRating: 'NR'
  });
 
  const title = movie.Title || (movieInfo && movieInfo.title) || 'Unknown Title';
@@ -607,22 +607,37 @@ const MovieDetailsSection = React.memo(({
    cast: safeMovieInfo.cast?.join(', ') || '',
    budget: safeMovieInfo.budget || 'N/A',
    boxOffice: safeMovieInfo.boxOffice || 'N/A',
-   ageRating: safeMovieInfo.ageRating || 'Rated',
+   ageRating: safeMovieInfo.ageRating || movie.Rated || 'NR',
    synopsis: safeMovieInfo.synopsis || movie.Plot || getUniqueDescription(),
    runtime: safeMovieInfo.runtime || movie.Runtime || '120 min'
  });
 
  useEffect(() => {
-   if (!movie.tmdbId) return;
 
    const fetchAllData = async () => {
        try {
-           const API_KEY = 'a07e22bc18f5cb106bfe4cc1f83ad8ed';
+           const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY || 'a07e22bc18f5cb106bfe4cc1f83ad8ed';
+           let targetTmdbId = movie.tmdbId || movie.tmdbID;
            
-           const [detailsRes, creditsRes, releasesRes] = await Promise.all([
-               fetch(`https://api.themoviedb.org/3/movie/${movie.tmdbId}?api_key=${API_KEY}`),
-               fetch(`https://api.themoviedb.org/3/movie/${movie.tmdbId}/credits?api_key=${API_KEY}`),
-               fetch(`https://api.themoviedb.org/3/movie/${movie.tmdbId}/release_dates?api_key=${API_KEY}`)
+           // 🔥 FIRST FETCH ATTEMPT
+           let detailsRes = await fetch(`https://api.themoviedb.org/3/movie/${targetTmdbId}?api_key=${API_KEY}`);
+           
+           // 🔥 THE ULTIMATE CURE: If the TMDB ID in the database is outdated/wrong, the fetch returns a 404.
+           // If it fails, we instantly use the infallible IMDb ID to find the correct, updated TMDB ID!
+           if (!detailsRes.ok && movie.imdbID) {
+               const findRes = await fetch(`https://api.themoviedb.org/3/find/${movie.imdbID}?api_key=${API_KEY}&external_source=imdb_id`);
+               const findData = await findRes.json();
+               if (findData.movie_results?.length > 0) {
+                   targetTmdbId = findData.movie_results[0].id;
+                   detailsRes = await fetch(`https://api.themoviedb.org/3/movie/${targetTmdbId}?api_key=${API_KEY}`);
+               } else {
+                   return; // Exit if movie truly doesn't exist on TMDB
+               }
+           }
+
+           const [creditsRes, releasesRes] = await Promise.all([
+               fetch(`https://api.themoviedb.org/3/movie/${targetTmdbId}/credits?api_key=${API_KEY}`),
+               fetch(`https://api.themoviedb.org/3/movie/${targetTmdbId}/release_dates?api_key=${API_KEY}`)
            ]);
 
            const details = await detailsRes.json();
@@ -645,10 +660,18 @@ const MovieDetailsSection = React.memo(({
            const topCast = credits.cast?.slice(0, 3).map(c => c.name).join(', ') || dynamicMovieData.cast;
 
            let newRating = dynamicMovieData.ageRating;
+           if (newRating === 'Rated') newRating = 'NR'; // Clean up bad initial states
            const usRelease = releases.results?.find(r => r.iso_3166_1 === 'US');
            if (usRelease) {
                const cert = usRelease.release_dates.find(d => d.certification !== '')?.certification;
                if (cert) newRating = cert;
+           } else {
+               // Fallback to International ratings if US rating is missing
+               const anyRelease = releases.results?.find(r => r.release_dates?.some(d => d.certification && d.certification !== ''));
+               if (anyRelease) {
+                   const cert = anyRelease.release_dates.find(d => d.certification && d.certification !== '')?.certification;
+                   if (cert) newRating = cert;
+               }
            }
 
            const newSynopsis = details.overview ? details.overview : dynamicMovieData.synopsis;
@@ -672,7 +695,7 @@ const MovieDetailsSection = React.memo(({
    };
 
    fetchAllData();
- }, [movie.tmdbId]);
+ }, [movie.tmdbId, movie.imdbID]);
 
  // ✅ UNIFIED SENSITIVE SCENES LOOKUP
  const sensitiveScenes = safeMovieInfo.sensitiveScenes 

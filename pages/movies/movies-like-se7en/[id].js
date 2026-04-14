@@ -196,8 +196,8 @@ const Se7enBreadcrumb = ({ movie }) => (
 
 const Se7enMoviePage = ({ movie, tmdbData: movieData }) => {
     const router = useRouter();
-    const movieInfo = COMPLETE_MOVIE_DATA?.[movie.tmdbId] || {};
-    const richData = COMPLETE_MOVIE_DATA?.[movie.tmdbId] || {}; 
+    const movieInfo = movie ? COMPLETE_MOVIE_DATA[movie.tmdbId] : {};
+    const richData = movie ? COMPLETE_MOVIE_DATA[movie.tmdbId] : {}; 
     const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -213,6 +213,10 @@ const Se7enMoviePage = ({ movie, tmdbData: movieData }) => {
         sessionStorage.setItem('fromCollectionName', 'Movies Like Se7en');
     }
   }, []);
+
+  if (router.isFallback || !movie) {
+    return <div className="min-h-screen flex items-center justify-center text-white" style={{ backgroundColor: COLORS.bgPrimary }}>Loading...</div>;
+  }
 
     const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');

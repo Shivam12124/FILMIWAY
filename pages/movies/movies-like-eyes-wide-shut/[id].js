@@ -193,7 +193,7 @@ const EyesWideShutBreadcrumb = ({ movie }) => (
 
 const EyesWideShutMoviePage = ({ movie, tmdbData: movieData }) => {
   const router = useRouter();
-  const richData = COMPLETE_MOVIE_DATA[movie.tmdbId]; 
+  const richData = movie ? COMPLETE_MOVIE_DATA[movie.tmdbId] : null; 
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -209,6 +209,10 @@ const EyesWideShutMoviePage = ({ movie, tmdbData: movieData }) => {
         sessionStorage.setItem('fromCollectionName', 'Movies Like Eyes Wide Shut');
     }
   }, []);
+
+  if (router.isFallback || !movie) {
+    return <div className="min-h-screen flex items-center justify-center text-white" style={{ backgroundColor: COLORS.bgPrimary }}>Loading...</div>;
+  }
 
   const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
   const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');

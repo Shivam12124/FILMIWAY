@@ -21,10 +21,47 @@ const montserrat = Montserrat({
 export default function App({ Component, pageProps }) {
   const router = useRouter();
   
+  // ✅ STATE TO HOLD ENHANCED PROPS
+  const [enhancedProps, setEnhancedProps] = useState(pageProps);
+
   useEffect(() => {
     console.log('🎬 Filmiway - SEO Optimized Version Loaded');
   }, []);
   
+  // 🔥 THE MASTER KEY FIX: UNIVERSAL CLIENT-SIDE TMDB FALLBACK 🔥
+  // This fixes ALL 50+ collections dynamically without editing them one by one.
+  useEffect(() => {
+    // Sync state when route changes
+    setEnhancedProps(pageProps);
+    
+    // If this is a movie detail page AND TMDB failed during the build (Rate Limit)
+    const tmdbId = pageProps?.movie?.tmdbId || pageProps?.movie?.tmdbID;
+    const imdbId = pageProps?.movie?.imdbID || pageProps?.movie?.imdbId;
+    const missingData = !pageProps?.tmdbData || !pageProps?.tmdbData?.poster_path;
+    
+    if (missingData && imdbId) {
+      const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY;
+      if (apiKey) {
+        // 🔥 THE ULTIMATE CURE: If data is missing, we completely ignore the potentially 
+        // broken tmdbId in the database and hunt it down fresh using the infallible IMDb ID!
+        fetch(`https://api.themoviedb.org/3/find/${imdbId}?api_key=${apiKey}&external_source=imdb_id`)
+          .then(res => res.json())
+          .then(findData => {
+            if (findData?.movie_results?.[0]?.id) {
+              const correctTmdbId = findData.movie_results[0].id;
+              fetch(`https://api.themoviedb.org/3/movie/${correctTmdbId}?api_key=${apiKey}&append_to_response=videos,images,release_dates`)
+                .then(res => res.json())
+                .then(fullData => {
+                  if (fullData?.id) {
+                    setEnhancedProps(prev => ({ ...prev, tmdbData: fullData }));
+                  }
+                }).catch(err => console.error("Full TMDB Fetch Failed:", err));
+            }
+          }).catch(err => console.error("Master Fallback Failed:", err));
+      }
+    }
+  }, [pageProps]);
+
   // ✅ Get current URL for Open Graph (no canonical needed here)
   const getCurrentUrl = () => {
     const baseUrl = 'https://filmiway.com';
@@ -80,7 +117,8 @@ export default function App({ Component, pageProps }) {
 
       {/* ✅ Wrap Component in Main with Font Variables */}
       <main className={`${bebas.variable} ${montserrat.variable} font-sans`}>
-        <Component {...pageProps} />
+        {/* ✅ PASS ENHANCED PROPS INSTEAD OF STANDARD PAGEPROPS */}
+        <Component {...enhancedProps} />
       </main>
     </>
   )
