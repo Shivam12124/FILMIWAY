@@ -6,6 +6,8 @@ import Image from 'next/image';
 import { Search as SearchIcon, ArrowRight, Film, X, Send, CheckCircle2, Loader } from 'lucide-react';
 import Header from '../components/Header';
 import { getPrimaryCollectionForMovie } from '../data/collections';
+import { db } from '../firebaseConfig';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
 // ⚡ ALL MOVIE DATABASES IMPORTED (Safe Server-Side Fetching)
 import * as SURVIVAL from '../utils/survivalMovieData';
@@ -149,13 +151,11 @@ export default function SearchPage({ allMovies }) {
   const handleRequestMovie = async () => {
     setRequestStatus('submitting');
     try {
-      // 🔥 TO CONNECT TO FIREBASE: Uncomment the lines below and ensure your firebase.js is set up!
-      // const { db } = await import('../firebase');
-      // const { collection, addDoc } = await import('firebase/firestore');
-      // await addDoc(collection(db, 'movieRequests'), { title: query, requestedAt: new Date(), status: 'pending' });
-      
-      // Simulated network delay so the UI button works beautifully right now
-      await new Promise(resolve => setTimeout(resolve, 800));
+      await addDoc(collection(db, 'movieRequests'), { 
+        title: query.trim(), 
+        requestedAt: serverTimestamp(), 
+        status: 'pending' 
+      });
       setRequestStatus('success');
     } catch (error) {
       console.error("Error requesting movie:", error);
@@ -223,7 +223,7 @@ export default function SearchPage({ allMovies }) {
                 {/* 🔥 REQUEST A MOVIE FEATURE */}
                 <div className="mt-8 p-6 sm:p-8 border border-yellow-500/20 rounded-2xl bg-gradient-to-b from-gray-900/60 to-gray-900/20 text-center max-w-md w-full">
                   <h3 className="text-xl font-medium text-white mb-2">Film not available?</h3>
-                  <p className="text-gray-400 text-sm mb-6">Want to know exactly when to skip the awkward scenes? Request it and our editors will try to add its parents guide within the next 7 days.</p>
+                  <p className="text-gray-400 text-sm mb-6">Request it and our editors will try to add its full movie page—complete with parents guide, streaming links, and analysis—within the next 7 days.</p>
                   
                   {requestStatus === 'success' ? (
                     <div className="flex items-center justify-center gap-2 text-green-400 bg-green-400/10 px-6 py-3 rounded-full border border-green-400/20">

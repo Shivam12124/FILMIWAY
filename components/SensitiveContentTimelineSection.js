@@ -1,7 +1,7 @@
 // components/SensitiveContentTimelineSection.js
 import React, { useMemo, useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Shield, CheckCircle, Clock, AlertOctagon, Info, Film, FastForward, Eye, Heart, Swords, MessageSquare, AlertTriangle, ThumbsUp, ThumbsDown } from 'lucide-react';
+import { Shield, CheckCircle, Clock, AlertOctagon, Info, Film, FastForward, Eye, Heart, AlertTriangle, ThumbsUp, ThumbsDown } from 'lucide-react';
 
 // Import formatting functions from BOTH data sources
 import { formatSensitiveTimeline as formatInceptionTimeline, getSensitiveContentTypes as getInceptionContentTypes } from '../utils/movieData';
@@ -316,6 +316,29 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                 </div>
             </div>
 
+            {/* ⚡ SEO CHEAT CODE: HIDDEN HTML TABLE FOR GOOGLE FEATURED SNIPPETS & LLMs */}
+            <table className="sr-only" aria-label={`Parents Guide Timestamps for ${movie.Title}`}>
+                <caption>Exact skip timestamps for sensitive scenes in {movie.Title} ({currentRuntime})</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Content Type</th>
+                        <th scope="col">Start Time</th>
+                        <th scope="col">End Time</th>
+                        <th scope="col">Severity Level</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {sensitiveData.scenes.map((scene, idx) => (
+                        <tr key={`seo-table-row-${idx}`}>
+                            <td>{scene.type || scene.description || 'Mature Content'}</td>
+                            <td>{scene.start || 'N/A'}</td>
+                            <td>{scene.end || 'N/A'}</td>
+                            <td>{scene.severity || 'Moderate'}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+
             <div 
                 className="rounded-xl overflow-hidden border backdrop-blur-md relative"
                 style={{ backgroundColor: 'rgba(10, 10, 12, 0.4)', borderColor: 'rgba(255, 255, 255, 0.08)' }}
@@ -333,8 +356,6 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                             const lowerType = type.toLowerCase();
                             if (lowerType.includes('nudity') || lowerType.includes('sex') || lowerType.includes('lingerie') || lowerType.includes('suggestive')) return <Eye size={14} />;
                             if (lowerType.includes('kissing')) return <Heart size={14} />;
-                            if (lowerType.includes('violence') || lowerType.includes('blood') || lowerType.includes('gore')) return <Swords size={14} />;
-                            if (lowerType.includes('language') || lowerType.includes('profanity')) return <MessageSquare size={14} />;
                             return <AlertTriangle size={14} />;
                         };
 
