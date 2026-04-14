@@ -98,7 +98,7 @@ export default function MovieDirectory({ sortedMovies }) {
       <Head>
         <title>A-Z Movie Directory & Parents Guides | Filmiway</title>
         <meta name="description" content="Browse our complete A-Z directory of individual movies. Get precise Parents Guide timestamps and explicit scene data for every film." />
-        <meta name="robots" content="noindex, follow" />
+        <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://filmiway.com/movie-directory" />
       </Head>
 
