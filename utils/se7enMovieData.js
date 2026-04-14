@@ -1,6 +1,8 @@
 // utils/se7enMovieData.js - COMPLETE DARK NOIR THRILLERS COLLECTION 🔥
 // Gritty, rain-soaked noir thrillers hunting pure evil.
 
+export const FALLBACK_POSTERS = {};
+
 export const TMDB_CONFIG = {
       API_KEY: 'process.env.NEXT_PUBLIC_TMDB_API_KEY',
     BASE_URL: 'https://api.themoviedb.org/3',

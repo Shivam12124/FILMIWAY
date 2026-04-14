@@ -10,6 +10,8 @@ const timeToSeconds = (timeStr) => {
     return 0;
 };
 
+export const FALLBACK_POSTERS = {};
+
 export const SENSITIVE_TIMELINES = {
     14337: { scenes: [] }, // Primer - Clean film
     

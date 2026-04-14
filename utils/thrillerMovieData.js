@@ -1,6 +1,8 @@
 // utils/thrillerMovieData.js - COMPLETE SUSPENSE THRILLER COLLECTION DATA ✅
 // Edge-of-your-seat suspense thrillers with relentless pacing, shocking twists & psychological depth.
 
+export const FALLBACK_POSTERS = {};
+
 export const TMDB_CONFIG = {
       API_KEY: 'process.env.NEXT_PUBLIC_TMDB_API_KEY',
     BASE_URL: 'https://api.themoviedb.org/3',

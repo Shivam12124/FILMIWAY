@@ -1,6 +1,8 @@
 // utils/eyesWideShutMovieData.js - EYES WIDE SHUT COLLECTION DATA ✅
 // Movies exploring secret societies, paranoia, the occult elite, and surreal nightmares.
 
+export const FALLBACK_POSTERS = {};
+
 export const TMDB_CONFIG = {
       API_KEY: 'process.env.NEXT_PUBLIC_TMDB_API_KEY',
     BASE_URL: 'https://api.themoviedb.org/3',

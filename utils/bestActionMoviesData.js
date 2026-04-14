@@ -1,6 +1,8 @@
 // utils/bestActionMoviesData.js - BEST ACTION MOVIES COLLECTION DATA ✅
 // Movies defining high-octane stunts, ground-breaking choreography, and sheer adrenaline.
 
+export const FALLBACK_POSTERS = {};
+
 export const TMDB_CONFIG = {
     API_KEY: 'process.env.NEXT_PUBLIC_TMDB_API_KEY',
     BASE_URL: 'https://api.themoviedb.org/3',
