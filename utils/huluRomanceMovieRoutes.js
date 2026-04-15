@@ -19,7 +19,7 @@ export const HULU_ROMANCE_MOVIE_SLUGS = {
      'tt21192142': 'all-of-us-strangers',
     
     // Rank 2: Anora
-    'tt22359552': 'anora',
+    'tt28607951': 'anora',
     
  
     

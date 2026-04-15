@@ -325,7 +325,7 @@ export const COLLECTIONS = {
       { label: "HEARTBREAK", desc: "Emotional weight" },
       { label: "PRESTIGE", desc: "Acclaimed romance" }
     ],
-    movies: ['tt21192142', 'tt22359552', 'tt8963708', 'tt2381111', 'tt0412922', 'tt9484998', 'tt15893750', 'tt1263670', 'tt13352968', 'tt0337563'],
+    movies: ['tt21192142', 'tt28607951', 'tt8963708', 'tt2381111', 'tt0412922', 'tt9484998', 'tt15893750', 'tt1263670', 'tt13352968', 'tt0337563'],
     relatedCollections: ['movies-like-parasite', 'best-psychological-thriller-movies', 'best-movies-on-hulu']
   },
 

@@ -9,7 +9,7 @@ export const TMDB_CONFIG = {
 };
 
 export const COMPLETE_MOVIE_DATABASE = [
-    { "tmdbId": 1064213, "imdbID": "tt22359552", "Title": "Anora", "year": 2024, "genre": "Comedy", "runtime": 139, "rank": 1 },
+    { "tmdbId": 1064213, "imdbID": "tt28607951", "Title": "Anora", "year": 2024, "genre": "Comedy", "runtime": 139, "rank": 1 },
     { "tmdbId": 994108, "imdbID": "tt21192142", "Title": "All of Us Strangers", "year": 2023, "genre": "Fantasy", "runtime": 105, "rank": 2 },
     { "tmdbId": 572916, "imdbID": "tt8963708", "Title": "And Then We Danced", "year": 2019, "genre": "Drama", "runtime": 113, "rank": 3 },
     { "tmdbId": 167073, "imdbID": "tt2381111", "Title": "Brooklyn", "year": 2015, "genre": "Drama", "runtime": 111, "rank": 4 },
@@ -23,21 +23,21 @@ export const COMPLETE_MOVIE_DATABASE = [
 
 // ✅ SENSITIVE TIMELINES (Detailed Sexual Content & Nudity Tracking)
 export const SENSITIVE_TIMELINES = {
-    // 1. Anora
+// 1. Anora
     1064213: { 
         scenes: [
-            { start: "1:00", end: "5:15", type: "Nudity", severity: "High" },
-            { start: "9:00", end: "9:50", type: "Nudity", severity: "High" },
-            { start: "14:45", end: "15:01", type: "Sex & Nudity", severity: "High" },
-            { start: "20:00", end: "20:25", type: "Nudity", severity: "High" },
-            { start: "21:30", end: "21:45", type: "Sex & Nudity", severity: "High" },
-            { start: "24:55", end: "25:15", type: "Sex & Nudity", severity: "High" },
-            { start: "27:55", end: "28:20", type: "Nudity", severity: "High" },
-            { start: "29:20", end: "29:32", type: "Sex & Nudity", severity: "High" },
-            { start: "35:30", end: "36:00", type: "Sex & Nudity", severity: "High" },
-            { start: "1:30:55", end: "1:31:30", type: "Nudity", severity: "High" },
-            { start: "1:34:35", end: "1:38:45", type: "Nudity", severity: "High" },
-            { start: "2:13:30", end: "2:14:30", type: "Sex", severity: "High" }
+            { start: "0:01:00", end: "0:04:30", type: "Nudity (Women)", severity: "High" },
+            { start: "0:05:11", end: "0:05:25", type: "Nudity (Woman)", severity: "High" },
+            { start: "0:09:04", end: "0:09:50", type: "Nudity (Woman)", severity: "High" },
+            { start: "0:14:45", end: "0:15:01", type: "Sex & Nudity", severity: "High" },
+            { start: "0:20:20", end: "0:20:27", type: "Nudity (Woman)", severity: "High" },
+            { start: "0:21:30", end: "0:21:45", type: "Sex & Nudity", severity: "High" },
+            { start: "0:24:58", end: "0:25:13", type: "Sex & Nudity", severity: "High" },
+            { start: "0:28:05", end: "0:28:20", type: "Nudity (Woman)", severity: "High" },
+            { start: "0:29:20", end: "0:29:32", type: "Sex & Nudity", severity: "High" },
+            { start: "0:35:30", end: "0:36:04", type: "Sex & Nudity", severity: "High" },
+            { start: "1:34:42", end: "1:38:45", type: "Nudity (Women)", severity: "High" },
+            { start: "2:13:20", end: "2:15:00", type: "Sex", severity: "Moderate" }
         ] 
     },
 
