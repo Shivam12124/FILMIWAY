@@ -62,6 +62,7 @@ import { COMPLETE_MOVIE_DATABASE as DECADE_DATABASE, COMPLETE_MOVIE_DATA as DECA
 import { COMPLETE_MOVIE_DATABASE as BOOK_ADAPTATION_DATABASE, COMPLETE_MOVIE_DATA as BOOK_ADAPTATION_DATA } from '../../utils/bookAdaptationData';
 import { COMPLETE_MOVIE_DATABASE as MARRIAGE_CRISIS_DATABASE, COMPLETE_MOVIE_DATA as MARRIAGE_CRISIS_DATA } from '../../utils/marriageCrisisMovieData';
 import { COMPLETE_MOVIE_DATABASE as A24_DATABASE, COMPLETE_MOVIE_DATA as A24_DATA } from '../../utils/a24MovieData';
+import { COMPLETE_MOVIE_DATABASE as DARK_COMEDY_DATABASE, COMPLETE_MOVIE_DATA as DARK_COMEDY_DATA } from '../../utils/darkComedyMovieData';
 
 import { COMPLETE_MOVIE_DATABASE as HULU_FAMILY_DATABASE, COMPLETE_MOVIE_DATA as HULU_FAMILY_DATA } from '../../utils/huluFamilyMovieData';
 import { COMPLETE_MOVIE_DATABASE as HBO_ACTION_DATABASE, COMPLETE_MOVIE_DATA as HBO_ACTION_DATA } from '../../utils/hboActionMovieData';
@@ -1625,6 +1626,29 @@ const getCollectionContent = () => {
                 text2: "Each film has been selected for its ability to challenge and linger with you long after the credits roll."
             }
         };
+    } else if (collection.slug === 'best-dark-comedy-movies') {
+        return {
+            badge: "Cynical Cinema",
+            title: "10 Best Dark Comedy Movies",
+            description: "The definitive ranking of the bleakest, most cynical, and absurdly hilarious dark comedies ever made.",
+            selection: {
+                text1: "From the nuclear paranoia of 'Dr. Strangelove' to the political absurdity of 'The Death of Stalin'—these films master the art of finding laughter in the darkest places.",
+                text2: "Each selection explores the absurdity of the human condition, offering sharp satire and existential dread wrapped in brilliant, uncomfortably funny storytelling."
+            },
+            ranking: {
+                text: "Our cynicism index evaluates the bleakness of the worldview, the sharpness of the satire, and the sheer audacity of the comedy.",
+                points: [
+                    "Cynicism and bleakness level",
+                    "Satirical bite and social critique",
+                    "Absurdity factor",
+                    "Comedic execution of taboo subjects"
+                ]
+            },
+            experience: {
+                text1: "Whether you're seeking pitch-black humor or brilliant social commentary, this collection delivers cinema's most audacious and hilarious experiences.",
+                text2: "Prepare to laugh at things you probably shouldn't. These films are as insightful as they are uncompromisingly dark."
+            }
+        };
     } else if (collection.slug === 'best-neo-noir-movies') {
         return {
             badge: "Neon & Shadows",
@@ -2385,6 +2409,11 @@ subtitle: "While everyone searches Netflix, these classics hide in plain sight. 
             title: "10 Best A24 Movies of All Time",
             subtitle: "Profound, terrifying, and artistically complex masterpieces from modern cinema's boldest studio"
         };
+    } else if (collection.slug === 'best-dark-comedy-movies') {
+        return {
+            title: "10 Best Dark Comedy Movies",
+            subtitle: "Bleak humor, deep cynicism, and the absurdity of the human condition"
+        };
 
     } else if (collection.slug === 'movies-like-interstellar') {
         return {
@@ -2578,6 +2607,11 @@ const getLoaderContent = () => {
         return {
             title: "Loading Best A24 Movies",
             description: "Curating the finest A24 masterpieces with community reviews and ratings"
+        };
+    } else if (collection?.slug === 'best-dark-comedy-movies') {
+        return {
+            title: "Loading Best Dark Comedy Movies",
+            description: "Curating pitch-black comedies and satirical masterpieces with community reviews"
         };
 
 } else if (collection?.slug === 'movies-like-donnie-darko') {
@@ -3085,6 +3119,15 @@ const getStaticMetaContent = () => {
             ogTitle: "10 Best A24 Movies of All Time: Auteur Masterpieces",
             twitterTitle: "The 10 Best A24 Movies You Need to Watch",
             progressText: `of Top ${movies.length} A24 Movies`
+        };
+    } else if (collection.slug === 'best-dark-comedy-movies') {
+        return {
+            title: "10 Best Dark Comedy Movies of All Time (Ranked)",
+            description: "The definitive ranking of the 10 best dark comedy movies ever made. From Dr. Strangelove to The Banshees of Inisherin. Includes an exact Timestamps & Parents Guide.",
+            keywords: "best dark comedy movies, top dark comedies, satirical movies, dark humor films, dr strangelove, movies with dark humor",
+            ogTitle: "10 Best Dark Comedy Movies: Cynical Masterpieces",
+            twitterTitle: "The 10 Best Dark Comedy Movies You Need to Watch",
+            progressText: `of Top ${movies.length} Dark Comedy Movies`
         };
 
 
@@ -3711,6 +3754,7 @@ const getStaticMetaContent = () => {
             sessionStorage.removeItem('fromBookAdaptationCollection');
             sessionStorage.removeItem('fromMarriageCrisisCollection');
             sessionStorage.removeItem('fromA24Collection');
+            sessionStorage.removeItem('fromDarkComedyCollection');
 
             // Set appropriate collection flag âœ…
             if (collection.slug === 'movies-like-inception') {
@@ -3861,6 +3905,8 @@ const getStaticMetaContent = () => {
                 sessionStorage.setItem('fromMarriageCrisisCollection', 'true');
             } else if (collection.slug === 'best-a24-movies') {
                 sessionStorage.setItem('fromA24Collection', 'true');
+            } else if (collection.slug === 'best-dark-comedy-movies') {
+                sessionStorage.setItem('fromDarkComedyCollection', 'true');
             }
         }
     };
@@ -4308,6 +4354,8 @@ return (
 ? 'movies/best-marriage-crisis-movies/'
 : collection?.slug === 'best-a24-movies'
 ? 'movies/best-a24-movies/'
+: collection?.slug === 'best-dark-comedy-movies'
+? 'movies/best-dark-comedy-movies/'
 : collection?.slug === 'best-action-movies-on-hulu'
                                     ? 'movies/best-action-movies-on-hulu/'
 : collection?.slug === 'best-romance-movies-on-hulu'
@@ -4640,6 +4688,8 @@ return (
                                     ? `/movies/best-movies-on-peacock/${currentMovie.imdbID}`
                                     : collection.slug === 'best-comedy-movies-on-peacock'
                                     ? `/movies/best-comedy-movies-on-peacock/${currentMovie.imdbID}`
+                                    : collection.slug === 'best-dark-comedy-movies'
+                                    ? `/movies/best-dark-comedy-movies/${currentMovie.imdbID}`
                                     : collection.slug === 'movies-like-interstellar'
                                     ? `/movies/interstellar/${currentMovie.imdbID}`
                                     : collection.slug === 'best-survival-movies'
@@ -4905,6 +4955,9 @@ case 'best-action-movies':
             break;
         case 'best-a24-movies':
             movieDatabase = A24_DATABASE;
+            break;
+        case 'best-dark-comedy-movies':
+            movieDatabase = DARK_COMEDY_DATABASE;
             break;
 
             case 'best-action-movies-on-hulu':

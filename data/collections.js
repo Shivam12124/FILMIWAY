@@ -1030,6 +1030,20 @@ export const COLLECTIONS = {
     relatedCollections: ['best-psychological-thriller-movies', 'movies-like-shutter-island', 'movies-like-se7en']
   },
 
+  // 🤡 BEST DARK COMEDY MOVIES
+  'best-dark-comedy-movies': {
+    slug: 'best-dark-comedy-movies',
+    title: '10 Best Dark Comedy Movies',
+    stats: { averageRating: 7.7 },
+    badges: [
+      { label: "CYNICAL", desc: "Bleak worldview" },
+      { label: "ABSURDIST", desc: "Surreal humor" },
+      { label: "SATIRE", desc: "Sharp social critique" }
+    ],
+    movies: ['tt0057012', 'tt0074958', 'tt11813216', 'tt0780536', 'tt0094336', 'tt4686844', 'tt3416742', 'tt0268126', 'tt0126886', 'tt0887883'],
+    relatedCollections: ['best-comedy-movies-on-hulu', 'best-thought-provoking-movies', 'best-movies-about-greed']
+  },
+
   // 🩸 BEST THRILLER MOVIES
   'best-thriller-movies': {
     slug: 'best-thriller-movies',
@@ -1084,6 +1098,7 @@ export const getEroticRomanceCollection = () => COLLECTIONS['best-erotic-romance
 export const getMarriageCrisisCollection = () => COLLECTIONS['best-marriage-crisis-movies'];
 export const getBestA24MoviesCollection = () => COLLECTIONS['best-a24-movies'];
 export const getFightClubCollection = () => COLLECTIONS['movies-like-fight-club'];
+export const getDarkComedyCollection = () => COLLECTIONS['best-dark-comedy-movies'];
 export const getBestActionCollection = () => COLLECTIONS['best-action-movies'];
 // ============================================================================
 // 🧠 THE MASTER CANONICAL BRAIN
