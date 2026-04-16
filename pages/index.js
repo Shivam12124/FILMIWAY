@@ -10,8 +10,9 @@ import {
   Film, Star, Flame
 } from 'lucide-react';
 
-import { COLLECTIONS } from '../data/collections';
+import { COLLECTIONS, getPrimaryCollectionForMovie } from '../data/collections';
 import { COMPLETE_MOVIE_DATABASE as EROTIC_THRILLER_DB, FALLBACK_POSTERS as EROTIC_THRILLER_POSTERS } from '../utils/eroticThrillerMovieData';
+import { COMPLETE_MOVIE_DATABASE as TRENDING_DB, FALLBACK_POSTERS as TRENDING_POSTERS } from '../utils/trendingMovieData';
 import PlatformSelector from '../components/PlatformSelector';
 import Header from '../components/Header';
 
@@ -125,7 +126,7 @@ const Top10MovieCard = memo(({ movie, index }) => {
   
   return (
     <Link
-      href={`/movies/best-erotic-thriller-movies/${movie.imdbID}`}
+      href={`/movies/${movie.collectionSlug}/${movie.imdbID}`}
       className="group relative flex items-end shrink-0 transition-transform duration-300 hover:-translate-y-2 pl-4 sm:pl-6"
       style={{ 
          width: 'clamp(215px, 53.8vw, 338px)', 
@@ -377,9 +378,7 @@ const Top10Section = memo(({ title, movies, description }) => {
 });
 
 Top10Section.displayName = 'Top10Section';
-
-const FilmiwayHomepage = ({ huluCollections, mindBendingCollections, thrillerCollections, hboCollections, peacockCollections, paramountCollections, top10EroticThrillers }) => {
-  const mindRef = useRef(null);
+const FilmiwayHomepage = ({ huluCollections, thrillerCollections, hboCollections, peacockCollections, paramountCollections, top10EroticThrillers, top10TrendingMovies }) => {
   const thrillerRef = useRef(null);
   const huluRef = useRef(null);
   const hboRef = useRef(null);
@@ -408,14 +407,11 @@ const FilmiwayHomepage = ({ huluCollections, mindBendingCollections, thrillerCol
         
         <main className="pb-20">
           <div className="container mx-auto px-4 sm:px-6 pt-8 sm:pt-12 space-y-16 sm:space-y-24 relative z-20">
-            
-            <MovieSection 
-              title="Mind-Bending & Sci-Fi" 
-              description="Visionary films that challenge reality, time, and human perception." 
-              movies={mindBendingCollections} 
-              sectionRef={mindRef} 
-              viewAllLink="/genre/mind-bending" 
-              isPrioritySection={false}
+
+            <Top10Section 
+              title="Top 10 Trending Movies" 
+              description="The most searched and critically-acclaimed movies on Filmiway right now." 
+              movies={top10TrendingMovies} 
             />
 
             <Top10Section 
@@ -534,7 +530,6 @@ export async function getStaticProps() {
   const TMDB_BASE_URL = 'https://api.themoviedb.org/3';
 
   const huluKeys = ['best-movies-on-hulu', 'best-action-movies-on-hulu', 'best-romance-movies-on-hulu', 'best-comedy-movies-on-hulu', 'best-sci-fi-movies-on-hulu', 'best-thriller-movies-hulu', 'best-horror-movies-on-hulu', 'best-drama-movies-on-hulu', 'best-family-movies-on-hulu'];
-  const mindBendingKeys = ['movies-like-inception', 'movies-like-the-matrix', 'movies-like-interstellar', 'best-sci-fi-movies', 'best-time-travel-movies', 'movies-like-donnie-darko', 'movies-like-memento', 'movies-like-eyes-wide-shut'];
   const thrillerKeys = ['best-thriller-movies', 'best-crime-thriller-movies', 'best-heist-thriller-movies', 'best-psychological-thriller-movies', 'best-detective-thriller-movies', 'best-mystery-thriller-movies', 'movies-like-se7en', 'movies-like-shutter-island', 'movies-like-parasite', 'movies-like-oldboy', 'movies-like-black-swan', 'best-revenge-movies'];
   const hboKeys = ['best-movies-on-hbo-max', 'best-action-movies-on-hbo-max', 'best-sci-fi-movies-on-hbo-max', 'best-horror-movies-on-hbo-max', 'best-romance-movies-on-hbo-max', 'best-drama-movies-on-hbo-max', 'best-comedy-movies-on-hbo-max', 'best-family-movies-on-hbo-max', 'best-thriller-movies-on-hbo-max'];
   
@@ -552,7 +547,7 @@ export async function getStaticProps() {
 
   const peacockKeys = ['best-movies-on-peacock', 'best-action-adventure-movies-on-peacock', 'best-sci-fi-movies-on-peacock', 'best-romance-movies-on-peacock', 'best-drama-movies-on-peacock', 'best-thriller-movies-on-peacock', 'best-family-movies-on-peacock', 'best-comedy-movies-on-peacock'];
 
-  const usedPostersPerSection = { hulu: new Set(), mind: new Set(), thriller: new Set(), hbo: new Set(), peacock: new Set(), paramount: new Set() };
+  const usedPostersPerSection = { hulu: new Set(), thriller: new Set(), hbo: new Set(), peacock: new Set(), paramount: new Set() };
 
   const fetchCollectionData = async (keys, sectionName) => {
     const results = await Promise.all(keys.map(async (key) => {
@@ -575,11 +570,11 @@ export async function getStaticProps() {
     return results.filter(item => item !== null);
   };
 
-  // ⚡ Fetch Posters for the direct Top 10 Movies
-  const fetchTop10Movies = async (moviesList) => {
+  // ⚡ Generic Fetcher for Top 10 Movies with Slugs
+  const fetchTop10MoviesWithSlugs = async (moviesList, fallbackPosters) => {
     if (!moviesList) return [];
     return await Promise.all(moviesList.slice(0, 10).map(async (movie) => {
-      let posterUrl = EROTIC_THRILLER_POSTERS?.[movie.tmdbId] || null;
+      let posterUrl = fallbackPosters?.[movie.tmdbId] || null;
       try {
         const res = await fetch(`${TMDB_BASE_URL}/movie/${movie.tmdbId}?api_key=${TMDB_API_KEY}`);
         const data = await res.json();
@@ -589,31 +584,32 @@ export async function getStaticProps() {
       } catch (e) {
         console.error("Error fetching top 10 poster for:", movie.Title);
       }
-      return { ...movie, posterUrl };
+      const collectionSlug = getPrimaryCollectionForMovie(movie.imdbID) || 'best-movies-of-the-decade'; // Fallback slug
+      return { ...movie, posterUrl, collectionSlug };
     }));
   };
 
   try {
-    const [huluData, mindData, thrillerData, hboData, peacockData, paramountData] = await Promise.all([
+    const [huluData, thrillerData, hboData, peacockData, paramountData] = await Promise.all([
       fetchCollectionData(huluKeys, 'hulu'),
-      fetchCollectionData(mindBendingKeys, 'mind'),
       fetchCollectionData(thrillerKeys, 'thriller'),
       fetchCollectionData(hboKeys, 'hbo'),
       fetchCollectionData(peacockKeys, 'peacock'),
       fetchCollectionData(paramountKeys, 'paramount')
     ]);
 
-    const top10EroticThrillers = await fetchTop10Movies(EROTIC_THRILLER_DB);
+    const top10EroticThrillers = await fetchTop10MoviesWithSlugs(EROTIC_THRILLER_DB, EROTIC_THRILLER_POSTERS);
+    const top10TrendingMovies = await fetchTop10MoviesWithSlugs(TRENDING_DB, TRENDING_POSTERS);
 
     return {
       props: {
         huluCollections: huluData,
-        mindBendingCollections: mindData,
         thrillerCollections: thrillerData,
         hboCollections: hboData,
         peacockCollections: peacockData,
         paramountCollections: paramountData,
-        top10EroticThrillers
+        top10EroticThrillers,
+        top10TrendingMovies
       },
       revalidate: 604800, 
     };
@@ -622,12 +618,12 @@ export async function getStaticProps() {
     return {
       props: {
         huluCollections: [],
-        mindBendingCollections: [],
         thrillerCollections: [],
         hboCollections: [],
         peacockCollections: [],
         paramountCollections: [],
-        top10EroticThrillers: []
+        top10EroticThrillers: [],
+        top10TrendingMovies: []
       },
     };
   }
