@@ -179,11 +179,14 @@ const OptimizedBanner = ({ movie, movieData, trailer, isMobile, richData }) => {
   );
 };
 
-const SmartBackButton = () => (
-    <Link href="/collection/best-mystery-thriller-movies" className="fixed top-4 left-4 z-50 flex items-center gap-2 px-4 py-2 bg-black/60 backdrop-blur-md border border-gray-700 rounded-lg hover:border-indigo-500 transition group">
-        <ChevronLeft className="w-4 h-4 text-gray-400 group-hover:text-indigo-500 transition" />
-        <span className="text-sm font-medium text-gray-200 group-hover:text-white">Collection</span>
-    </Link>
+// ✅ ONLY THE BREADCRUMB NAVIGATION IS KEPT HERE
+const MysteryBreadcrumb = ({ movie }) => (
+    <motion.nav className="mt-4 mb-6 sm:mb-8 px-3 sm:px-4 lg:px-6 pb-3 sm:pb-4" style={{ borderBottom: `1px solid ${COLORS.borderLight}` }} initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+        <div className="flex items-center space-x-2 sm:space-x-3 text-xs sm:text-sm" style={{ color: COLORS.textMuted }}>
+            <Link href="/collection/best-mystery-thriller-movies" className="transition-all duration-300 truncate" style={{ color: COLORS.textMuted }} onMouseEnter={(e) => e.currentTarget.style.color = COLORS.accent} onMouseLeave={(e) => e.currentTarget.style.color = COLORS.textMuted}>Best Mystery Thriller Movies</Link>
+            <ChevronLeft size={14} className="flex-shrink-0" style={{ color: COLORS.textDisabled }} /><span className="font-medium truncate" style={{ color: `${COLORS.accent}B3` }}>{movie.Title}</span>
+        </div>
+    </motion.nav>
 );
 
 const AuthorCreditSection = () => (
@@ -202,15 +205,6 @@ const SubtleFilmGrain = () => (
          <rect width='100%' height='100%' filter='url(#grain)'/>
        </svg>
     </div>
-);
-
-const MysteryBreadcrumb = ({ movie }) => (
-    <motion.nav className="mb-6 sm:mb-8 px-3 sm:px-4 lg:px-6 pb-3 sm:pb-4" style={{ borderBottom: `1px solid ${COLORS.borderLight}` }} initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-        <div className="flex items-center space-x-2 sm:space-x-3 text-xs sm:text-sm" style={{ color: COLORS.textMuted }}>
-            <Link href="/collection/best-mystery-thriller-movies" className="transition-all duration-300 truncate" style={{ color: COLORS.textMuted }} onMouseEnter={(e) => e.currentTarget.style.color = COLORS.accent} onMouseLeave={(e) => e.currentTarget.style.color = COLORS.textMuted}>Best Mystery Thriller Movies</Link>
-            <ChevronLeft size={14} className="flex-shrink-0" style={{ color: COLORS.textDisabled, transform: 'rotate(180deg)' }} /><span className="font-medium truncate" style={{ color: `${COLORS.accent}B3` }}>{movie.Title}</span>
-        </div>
-    </motion.nav>
 );
 
 const MysteryThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
@@ -235,25 +229,23 @@ const MysteryThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
 
     const currentMovieYear = MOVIE_YEARS[movie.Title] || movie.year || 'Unknown';
     const trailer = movieData?.videos?.results?.find(video => video.type === 'Trailer' && video.site === 'YouTube');
+
   // =========================================================================
   // ✅ THE STANDARDIZED ELITE SEO BLOCK (Clean, Direct Intent)
   // =========================================================================
 
   const collectionSlug = 'best-mystery-thriller-movies';
-
   const scenes = SENSITIVE_TIMELINES?.[movie.tmdbId]?.scenes || [];
   
   // 1. PURE META TITLE LOGIC (No extra tags or keywords)
   let cleanSEOTitle = '';
 
   if (scenes.length > 0) {
-    // Define title variations from most descriptive (longest) to least (shortest)
     const titleOption1 = `${movie.Title} Parents Guide (Skip Sex & Nudity Timestamps)`;
     const titleOption2 = `${movie.Title} Parents Guide (Sex & Nudity Timestamps)`;
     const titleOption3 = `${movie.Title} Parents Guide (Skip Timestamps)`;
     const titleOption4 = `${movie.Title} Parents Guide (Timestamps)`;
 
-    // Dynamically select the best title that fits within Google's ~62 character limit
     if (titleOption1.length <= 62) {
       cleanSEOTitle = titleOption1;
     } else if (titleOption2.length <= 62) {
@@ -261,7 +253,7 @@ const MysteryThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
     } else if (titleOption3.length <= 62) {
       cleanSEOTitle = titleOption3;
     } else {
-      cleanSEOTitle = titleOption4; // Final fallback
+      cleanSEOTitle = titleOption4; 
     }
   } else {
     const idealCleanTitle = `${movie.Title} Parents Guide (Clean)`;
@@ -280,7 +272,6 @@ const MysteryThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
   let cleanSEODesc = '';
   if (scenes.length > 0) {
     const sceneCount = scenes.length;
-    // Show the full range (Start-End) for the first 2 scenes only to save space
     const topScenes = scenes.slice(0, 2).map(s => `${s.start}–${s.end}`).join(', ');
     
     cleanSEODesc = `${movie.Title} Parents Guide: ${sceneCount} mature scenes (sex, nudity) manually verified. Skip: ${topScenes}... Full ${currentRuntime} list inside.`;
@@ -341,12 +332,12 @@ const MysteryThrillerMoviePage = ({ movie, tmdbData: movieData }) => {
           
           <Header />
             
-
             <div className="relative z-10 pt-0 md:pt-16">
                 {/* ✅ HIDDEN H1 FOR SEO PARITY */}
                 <h1 className="sr-only">{cleanSEOTitle}</h1>
-                
+
                 <div className="container mx-auto px-0 pb-16 max-w-7xl">
+                    <MysteryBreadcrumb movie={movie} />
                     <OptimizedBanner movie={movie} movieData={movieData} richData={richData} trailer={trailer} isMobile={isMobile} />
                     
                     <div className="px-4 lg:px-6 space-y-12 mt-8">
@@ -388,7 +379,6 @@ export async function getStaticProps({ params }) {
         }
         return { props: { movie: syncedMovie, tmdbData } };
     } catch (error) {
-        // 🔥 CRITICAL FIX: Sync local movie runtime with TMDB to prevent FAQ/Timestamps mismatch
         const syncedMovie = { ...movie };
         if (typeof tmdbData !== 'undefined' && tmdbData?.runtime) {
             syncedMovie.runtime = tmdbData.runtime;

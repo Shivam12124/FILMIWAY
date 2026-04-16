@@ -25,26 +25,3 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 930564, "imdbID": "tt17351924", "Title": "Saltburn", "year": 2023, "genre": "Thriller", "runtime": 131, "rank": 9 },
     { "tmdbId": 1064213, "imdbID": "tt28607951", "Title": "Anora", "year": 2024, "genre": "Comedy", "runtime": 139, "rank": 10 }
 ];
-
-export const SENSITIVE_TIMELINES = {
-    // Oppenheimer
-    872585: { scenes: [ { start: "0:23:14", end: "0:24:46", type: "Sex & Nudity", severity: "High" }, { start: "1:14:38", end: "1:15:14", type: "Nudity", severity: "High" }, { start: "1:15:43", end: "1:16:00", type: "Sex & Nudity", severity: "High" } ] },
-    // Titanic
-    597: { scenes: [ { start: "1:28:30", end: "1:29:45", type: "Nudity (Woman)", severity: "High" }, { start: "1:33:00", end: "1:33:30", type: "Sex", severity: "Moderate" } ] },
-    // Parasite
-    496243: { scenes: [ { start: "1:17:50", end: "1:19:30", type: "Sex", severity: "High" } ] },
-    // The Wolf of Wall Street
-    106646: { scenes: [ { start: "0:04:00", end: "0:04:30", type: "Nudity", severity: "High" }, { start: "0:21:00", end: "0:23:00", type: "Sex & Nudity", severity: "Extreme" }, { start: "1:01:00", end: "1:03:00", type: "Sex & Nudity", severity: "Extreme" }, { start: "1:45:00", end: "1:47:00", type: "Sex & Nudity", severity: "Extreme" } ] },
-    // Fifty Shades of Grey
-    216015: { scenes: [ { start: "0:45:00", end: "0:48:00", type: "Sex & Nudity", severity: "Extreme" }, { start: "1:05:00", end: "1:08:00", type: "Sex & Nudity", severity: "Extreme" }, { start: "1:25:00", end: "1:28:00", type: "Sex & Nudity", severity: "Extreme" } ] },
-    // Gone Girl
-    210577: { scenes: [ { start: "0:55:00", end: "0:57:00", type: "Sex & Nudity", severity: "High" }, { start: "1:40:00", end: "1:42:00", type: "Sex & Nudity", severity: "High" } ] },
-    // Black Swan
-    44214: { scenes: [ { start: "0:58:00", end: "1:00:00", type: "Sex & Nudity", severity: "High" }, { start: "1:20:00", end: "1:22:00", type: "Sex", severity: "High" } ] },
-    // Poor Things
-    792307: { scenes: [ { start: "0:35:00", end: "0:38:00", type: "Sex & Nudity", severity: "Extreme" }, { start: "1:10:00", end: "1:15:00", type: "Sex & Nudity", severity: "Extreme" }, { start: "1:40:00", end: "1:45:00", type: "Sex & Nudity", severity: "Extreme" } ] },
-    // Saltburn
-    930564: { scenes: [ { start: "0:50:00", end: "0:53:00", type: "Sex & Nudity", severity: "Extreme" }, { start: "1:30:00", end: "1:33:00", type: "Sex & Nudity", severity: "Extreme" }, { start: "1:55:00", end: "1:58:00", type: "Nudity", severity: "Extreme" } ] },
-    // Anora
-    1064213: { scenes: [ { start: "0:01:00", end: "0:04:30", type: "Nudity (Women)", severity: "High" }, { start: "0:14:45", end: "0:15:01", type: "Sex & Nudity", severity: "High" }, { start: "1:34:42", end: "1:38:45", type: "Nudity (Women)", severity: "High" } ] },
-};
