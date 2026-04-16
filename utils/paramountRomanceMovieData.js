@@ -12,7 +12,7 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 597, "imdbID": "tt0120338", "Title": "Titanic", "year": 1997, "genre": "Romance", "runtime": 194, "rank": 1 },
     { "tmdbId": 122906, "imdbID": "tt2194499", "Title": "About Time", "year": 2013, "genre": "Romance", "runtime": 123, "rank": 2 },
     { "tmdbId": 1585, "imdbID": "tt0038650", "Title": "It's a Wonderful Life", "year": 1946, "genre": "Drama", "runtime": 130, "rank": 3 },
-    { "tmdbId": 456, "imdbID": "tt0116209", "Title": "The English Patient", "year": 1996, "genre": "Romance", "runtime": 162, "rank": 4 },
+    { "tmdbId": 409, "imdbID": "tt0116209", "Title": "The English Patient", "year": 1996, "genre": "Romance", "runtime": 162, "rank": 4 },
     { "tmdbId": 4922, "imdbID": "tt0421715", "Title": "The Curious Case of Benjamin Button", "year": 2008, "genre": "Romance", "runtime": 166, "rank": 5 },
     { "tmdbId": 251, "imdbID": "tt0099653", "Title": "Ghost", "year": 1990, "genre": "Romance", "runtime": 127, "rank": 6 },
     { "tmdbId": 164, "imdbID": "tt0054698", "Title": "Breakfast at Tiffany's", "year": 1961, "genre": "Romance", "runtime": 115, "rank": 7 },
@@ -26,44 +26,35 @@ export const SENSITIVE_TIMELINES = {
     // 1. Titanic
     597: { 
         scenes: [
-            { start: "0:38:00", end: "0:42:00", type: "Suicide Attempt", severity: "High" },
-            { start: "2:15:00", end: "3:05:00", type: "Drowning/Mass Death", severity: "High" }
+            { start: "1:25:35", end: "1:28:10", type: "Nudity (Woman)", severity: "High" }
         ] 
     },
     
     // 2. About Time
-    122906: { scenes: [] }, // Generally wholesome, deals with death of parent gently
+    122906: { scenes: [] },
     
     // 3. It's a Wonderful Life
-    1585: { 
-        scenes: [
-            { start: "1:45:00", end: "1:55:00", type: "Suicide Ideation", severity: "High" },
-            { start: "1:30:00", end: "1:35:00", type: "Domestic Distress", severity: "Moderate" } // George yelling at family
-        ] 
-    },
+    1585: { scenes: [] },
     
     // 4. The English Patient
-    456: { 
+    409: { 
         scenes: [
-            { start: "0:05:00", end: "0:10:00", type: "Severe Burns", severity: "High" },
-            { start: "2:20:00", end: "2:25:00", type: "Euthanasia", severity: "Moderate" }
+            { start: "1:14:35", end: "1:16:02", type: "Nudity (Woman)", severity: "High" },
+            { start: "1:21:05", end: "1:21:30", type: "Sex", severity: "High" },
+            { start: "1:28:00", end: "1:29:30", type: "Nudity (Woman)", severity: "High" },
+            { start: "1:54:30", end: "1:54:37", type: "Nudity (Woman)", severity: "High" }
         ] 
     },
     
     // 5. The Curious Case of Benjamin Button
-    4922: { 
+      4922: { 
         scenes: [
-            { start: "2:30:00", end: "2:35:00", type: "Dementia/Death of Child", severity: "High" }
-        ] 
+            { start: "0:20:50", end: "0:20:57", type: "Partial Nudity (Man)", severity: "Mild" }
+        ]
     },
     
     // 6. Ghost
-    251: { 
-        scenes: [
-            { start: "0:15:00", end: "0:18:00", type: "Mugging/Murder", severity: "High" },
-            { start: "1:45:00", end: "1:50:00", type: "Violent Death", severity: "Moderate" } // Villain death
-        ] 
-    },
+    251: { scenes: [] },
     
     // 7. Breakfast at Tiffany's
     164: { scenes: [] },
@@ -82,7 +73,7 @@ export const FALLBACK_POSTERS = {
     597: "https://image.tmdb.org/t/p/w500/9xjZS2rlVxm8SFx8kPC3aIGCOYQ.jpg",
     122906: "https://image.tmdb.org/t/p/w500/iL1c1e40wA47P3a522t3N92W08L.jpg",
     1585: "https://image.tmdb.org/t/p/w500/bSqt9rhDZx1Q7UZ86dBPKdNomp2.jpg",
-    456: "https://image.tmdb.org/t/p/w500/a3e1a7Q5Z3y5Z3y5.jpg",
+    409: "https://image.tmdb.org/t/p/w500/a3e1a7Q5Z3y5Z3y5.jpg",
     4922: "https://image.tmdb.org/t/p/w500/22323.jpg",
     251: "https://image.tmdb.org/t/p/w500/w9kR4q7.jpg",
     164: "https://image.tmdb.org/t/p/w500/r2J02Z2.jpg",
@@ -162,7 +153,7 @@ export const COMPLETE_MOVIE_DATA = {
     }),
 
     // 4. The English Patient
-    456: createMovieData({ 
+    409: createMovieData({ 
         emotionalIntensity: 90, 
         chemistryScore: 88, 
         complexityLevel: "POETIC", 
