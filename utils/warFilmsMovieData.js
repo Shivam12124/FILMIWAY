@@ -16,7 +16,7 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 424, "imdbID": "tt0108052", "Title": "Schindler's List", "year": 1993, "genre": "Biography, Drama, History, War", "runtime": 195, "rank": 5 },
     { "tmdbId": 600, "imdbID": "tt0093058", "Title": "Full Metal Jacket", "year": 1987, "genre": "Drama, War", "runtime": 116, "rank": 6 },
     { "tmdbId": 530915, "imdbID": "tt8579674", "Title": "1917", "year": 2019, "genre": "Drama, War", "runtime": 119, "rank": 7 },
-    { "tmdbId": 156249, "imdbID": "tt0082096", "Title": "Das Boot", "year": 1981, "genre": "Drama, War", "runtime": 149, "rank": 8 },
+    { "tmdbId": 387, "imdbID": "tt0082096", "Title": "Das Boot", "year": 1981, "genre": "Drama, War", "runtime": 149, "rank": 8 },
     { "tmdbId": 792, "imdbID": "tt0091763", "Title": "Platoon", "year": 1986, "genre": "Drama, War", "runtime": 120, "rank": 9 },
     { "tmdbId": 975, "imdbID": "tt0050825", "Title": "Paths of Glory", "year": 1957, "genre": "Drama, War", "runtime": 88, "rank": 10 }
 ];
@@ -30,7 +30,7 @@ export const STRATEGIC_QUOTES = {
     424: "Whoever saves one life, saves the world entire.", // Schindler's List
     600: "Born to kill.", // Full Metal Jacket
     530915: "There is only one way this war ends. Last man standing.", // 1917
-    156249: "Not yet, kameraden. Not yet.", // Das Boot
+    387: "Not yet, kameraden. Not yet.", // Das Boot
     792: "The first casualty of war is innocence.", // Platoon
     975: "The paths of glory lead but to the grave." // Paths of Glory
 };
@@ -79,7 +79,7 @@ export const SENSITIVE_TIMELINES = {
     530915: { scenes: [] },
 
     // 8. Das Boot
-    156249: {
+    387: {
         scenes: [
             { start: "0:09:42", end: "0:09:47", type: "Nudity (Painting)", severity: "Moderate" },
             { start: "0:17:13", end: "0:17:16", type: "Partial Nudity (Man)", severity: "Moderate" },
@@ -107,7 +107,7 @@ export const FALLBACK_POSTERS = {
     424: "https://image.tmdb.org/t/p/w500/sF1U4EUQS8YHUcQ8CAA0E6nouaC.jpg",
     600: "https://image.tmdb.org/t/p/w500/2l0vHaM1J7s3RvHH0yvIQqANgZN.jpg",
     530915: "https://image.tmdb.org/t/p/w500/sv3q8ZyK3D7zpW6HLzBzpqf4A5J.jpg",
-    156249: "https://image.tmdb.org/t/p/w500/qGhV5Apu6fvJD9mfJO7RM5NWDMM.jpg",
+    387: "https://image.tmdb.org/t/p/w500/qGhV5Apu6fvJD9mfJO7RM5NWDMM.jpg",
     792: "https://image.tmdb.org/t/p/w500/a0jR03qjDUYfKPi5HGU8S7BG6An.jpg",
     975: "https://image.tmdb.org/t/p/w500/kZ3VKEqJFp2C5h1AyhRr6cjNbWZ.jpg"
 };
@@ -238,7 +238,7 @@ export const COMPLETE_MOVIE_DATA = {
         themes: ["Duty", "Survival", "The Value of Life"]
     }),
     // 8. Das Boot
-    156249: createMovieData({ 
+    387: createMovieData({ 
         warIntensity: 87, complexityLevel: "HIGH", dominantColor: "#001f3f",
         rating: 8.4, criticsScore: 98, audienceScore: 95, director: "Wolfgang Petersen", 
         cast: ["Jürgen Prochnow", "Herbert Grönemeyer", "Klaus Wennemann"], boxOffice: "$84.7 million", budget: "$45 million",

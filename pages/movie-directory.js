@@ -211,6 +211,7 @@ export async function getStaticProps() {
 
   const uniqueMoviesMap = new Map();
   const validImdbIds = new Set();
+  const seenTitles = new Set(); // 🔥 FIX: Track titles to prevent identical duplicates
 
   Object.values(COLLECTIONS).forEach(col => {
     if (col.movies && Array.isArray(col.movies)) {
@@ -222,14 +223,23 @@ export async function getStaticProps() {
     if (!db) return;
     const moviesArray = Array.isArray(db) ? db : Object.values(db);
     moviesArray.forEach(movie => {
-      if (movie && movie.imdbID && validImdbIds.has(movie.imdbID) && !uniqueMoviesMap.has(movie.imdbID)) {
-        const primaryCollectionSlug = getPrimaryCollectionForMovie(movie.imdbID);
-        if (primaryCollectionSlug) {
-          uniqueMoviesMap.set(movie.imdbID, {
-            title: movie.Title || movie.title || 'Unknown',
-            imdbID: movie.imdbID,
-            slug: primaryCollectionSlug
-          });
+      if (movie && movie.imdbID) {
+        const rawId = movie.imdbID;
+        const cleanId = rawId.toString().trim();
+        const cleanTitle = (movie.Title || movie.title || 'Unknown').trim();
+          // 🔥 STRIP PUNCTUATION + ADD YEAR: Safely catches Dash (-) vs En-dash (–)
+          const titleKey = cleanTitle.toLowerCase().replace(/[^a-z0-9]/g, '') + (movie.year || movie.Year || '');
+
+        if (validImdbIds.has(rawId) && !uniqueMoviesMap.has(cleanId) && !seenTitles.has(titleKey)) {
+          const primaryCollectionSlug = getPrimaryCollectionForMovie(rawId);
+          if (primaryCollectionSlug) {
+            uniqueMoviesMap.set(cleanId, {
+              title: cleanTitle,
+              imdbID: cleanId,
+              slug: primaryCollectionSlug
+            });
+            seenTitles.add(titleKey);
+          }
         }
       }
     });

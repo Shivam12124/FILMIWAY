@@ -16,7 +16,7 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 693134, "imdbID": "tt15239678", "Title": "Dune: Part Two", "year": 2024, "genre": "Sci-Fi", "runtime": 166, "rank": 5 },
     { "tmdbId": 791373, "imdbID": "tt12361974", "Title": "Zack Snyder's Justice League", "year": 2021, "genre": "Action", "runtime": 242, "rank": 6 },
     { "tmdbId": 414906, "imdbID": "tt1877830", "Title": "The Batman", "year": 2022, "genre": "Crime", "runtime": 176, "rank": 7 },
-    { "tmdbId": 149191, "imdbID": "tt2820466", "Title": "Justice League: The Flashpoint Paradox", "year": 2013, "genre": "Animation", "runtime": 81, "rank": 8 },
+    { "tmdbId": 183011, "imdbID": "tt2820466", "Title": "Justice League: The Flashpoint Paradox", "year": 2013, "genre": "Animation", "runtime": 81, "rank": 8 },
     { "tmdbId": 263115, "imdbID": "tt3315342", "Title": "Logan", "year": 2017, "genre": "Action", "runtime": 137, "rank": 9 },
     { "tmdbId": 438631, "imdbID": "tt1160419", "Title": "Dune", "year": 2021, "genre": "Sci-Fi", "runtime": 155, "rank": 10 }
 ];
@@ -49,7 +49,7 @@ export const SENSITIVE_TIMELINES = {
     414906: { scenes: [] },
 
     // 8. Justice League: The Flashpoint Paradox
-    149191: { scenes: [] },
+    183011: { scenes: [] },
 
     // 9. Logan
     263115: { 
@@ -70,7 +70,7 @@ export const FALLBACK_POSTERS = {
     693134: "https://image.tmdb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg",
     791373: "https://image.tmdb.org/t/p/w500/tnAuBimRihohTFFr8Wki1cNPGtA.jpg",
     414906: "https://image.tmdb.org/t/p/w500/74xTEgt7R36Fpooo50r9T25onhq.jpg",
-    149191: "https://image.tmdb.org/t/p/w500/6bCplVkhowCjTHXWv49Uj480Sz6.jpg", 
+    183011: "https://image.tmdb.org/t/p/w500/6bCplVkhowCjTHXWv49Uj480Sz6.jpg", 
     263115: "https://image.tmdb.org/t/p/w500/fnbjc3lwFSPodDF529FfaKPn9Ff.jpg",
     438631: "https://image.tmdb.org/t/p/w500/d5NXSklXo0qyIYkgV94XAgMIckC.jpg"
 };
@@ -219,7 +219,7 @@ export const COMPLETE_MOVIE_DATA = {
     }),
 
     // 8. Justice League: The Flashpoint Paradox (ANIMATED BRUTALITY)
-    149191: createMovieData({ 
+    183011: createMovieData({ 
         actionIntensity: 88, 
         epicScale: 85, 
         complexityLevel: "DARK", 
@@ -284,7 +284,7 @@ export const STRATEGIC_QUOTES = {
     693134: "May thy knife chip and shatter.",
     791373: "Make your own future. Make your own past. It's all right now.",
     414906: "I am the shadows.",
-    149191: "Accept the things you cannot change. Have the courage to change the things you can.",
+    183011: "Accept the things you cannot change. Have the courage to change the things you can.",
     263115: "Don't be what they made you.",
     438631: "Fear is the mind-killer."
 };

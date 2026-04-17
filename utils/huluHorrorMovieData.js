@@ -12,7 +12,7 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 744857, "imdbID": "tt16300962", "Title": "When Evil Lurks", "year": 2023, "genre": "Horror", "runtime": 99, "rank": 1 },
     { "tmdbId": 1226578, "imdbID": "tt23468450", "Title": "Longlegs", "year": 2024, "genre": "Horror", "runtime": 101, "rank": 2 },
     { "tmdbId": 398173, "imdbID": "tt4003440", "Title": "The House That Jack Built", "year": 2018, "genre": "Horror", "runtime": 152, "rank": 3 },
-    { "tmdbId": 1094318, "imdbID": "tt26466146", "Title": "Oddity", "year": 2024, "genre": "Horror", "runtime": 98, "rank": 4 },
+    { "tmdbId": 1216191, "imdbID": "tt26470109", "Title": "Oddity", "year": 2024, "genre": "Horror", "runtime": 98, "rank": 4 },
     { "tmdbId": 300669, "imdbID": "tt4160708", "Title": "Don't Breathe", "year": 2016, "genre": "Horror", "runtime": 88, "rank": 5 },
     { "tmdbId": 242224, "imdbID": "tt2321549", "Title": "The Babadook", "year": 2014, "genre": "Horror", "runtime": 94, "rank": 6 },
     { "tmdbId": 516632, "imdbID": "tt5867314", "Title": "The Empty Man", "year": 2020, "genre": "Horror", "runtime": 137, "rank": 7 },
@@ -43,7 +43,7 @@ export const SENSITIVE_TIMELINES = {
     },
 
     // 4. Oddity
-    1094318: { scenes: [] },
+    1216191: { scenes: [] },
 
   // 5. Don't Breathe
     300669: { 
@@ -87,7 +87,7 @@ export const FALLBACK_POSTERS = {
     1017409: "https://image.tmdb.org/t/p/w500/2yl2zC3tX7F2KyD62P8R92V7X9o.jpg",
     1079373: "https://image.tmdb.org/t/p/w500/5aj8vVGFvGVbXQmZhcs62060w23.jpg",
     400535: "https://image.tmdb.org/t/p/w500/77i12a2Q5b3Z1X5Z5X5X5X5X5X5.jpg",
-    1094318: "https://image.tmdb.org/t/p/w500/uln9Efc2vzDOl0WTEhlqcedtJc.jpg",
+    1216191: "https://image.tmdb.org/t/p/w500/uln9Efc2vzDOl0WTEhlqcedtJc.jpg",
     300669: "https://image.tmdb.org/t/p/w500/a7V9Xh5b32G2bB5g3g5g3g5g3g5.jpg", // Don't Breathe
     242224: "https://image.tmdb.org/t/p/w500/k5WCg7in2F3xX7aX7aX7aX7aX7a.jpg",
     516632: "https://image.tmdb.org/t/p/w500/4PAqJ9l8J9l8J9l8J9l8J9l8J.jpg",
@@ -164,7 +164,7 @@ export const COMPLETE_MOVIE_DATA = {
     // 4. Oddity
     // Curve: Intrigue -> Unease -> Supernatural -> Terror -> Reveal.
     // Peak: 92 (The Wooden Man - High Tension).
-    1094318: createMovieData({ 
+    1216191: createMovieData({ 
         scariness: 88, 
         dominantColor: "#78350f", rating: 7.0, criticsScore: 96, audienceScore: 83, director: "Damian McCarthy", 
         cast: ["Gwilym Lee", "Carolyn Bracken", "Tadhg Murphy"], boxOffice: "$1 million", budget: "N/A", 
@@ -299,7 +299,7 @@ export const STRATEGIC_QUOTES = {
     1017409: "Evil doesn't wait.",
     1079373: "Hail Satan!",
     400535: "The house that Jack built.",
-    1094318: "It sees things you can't.",
+    1216191: "It sees things you can't.",
     300669: "There is nothing a man cannot do once he accepts the fact that there is no God.",
     242224: "If it's in a word, or it's in a look, you can't get rid of the Babadook.",
     516632: "The Empty Man made me do it.",

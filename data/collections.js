@@ -296,7 +296,7 @@ export const COLLECTIONS = {
       { label: "EXECUTION", desc: "Tense action" },
       { label: "DECEPTION", desc: "Sleight of hand" }
     ],
-    movies: ['tt0113277', 'tt0105236', 'tt0844708', 'tt0475304', 'tt0305224', 'tt0454848', 'tt0083190', 'tt0073195', 'tt0317740', 'tt0240772'],
+    movies: ['tt0113277', 'tt0105236', 'tt0840361', 'tt2582782', 'tt0200465', 'tt0454848', 'tt0083190', 'tt0072890', 'tt0317740', 'tt0240772'],
     relatedCollections: ['best-crime-thriller-movies', 'best-thriller-movies', 'best-mystery-thriller-movies']
   },
 
@@ -339,7 +339,7 @@ export const COLLECTIONS = {
       { label: "NIGHTMARE", desc: "Visceral scares" },
       { label: "TRAUMA", desc: "Psychological horror" }
     ],
-    movies: ['tt16300962', 'tt23468450', 'tt4003440', 'tt26466146', 'tt4160708', 'tt2321549', 'tt5867314', 'tt15791034', 'tt5672290', 'tt14966898'],
+    movies: ['tt16300962', 'tt23468450', 'tt4003440', 'tt26470109', 'tt4160708', 'tt2321549', 'tt5867314', 'tt15791034', 'tt5672290', 'tt14966898'],
     relatedCollections: ['best-psychological-thriller-movies', 'movies-like-se7en', 'best-mystery-thriller-movies']
   },
 
@@ -465,7 +465,7 @@ export const COLLECTIONS = {
       { label: "TENSION", desc: "Unbearable suspense" },
       { label: "DARK", desc: "Gritty tone" }
     ],
-    movies: ['tt0119167', 'tt5052448', 'tt5715874', 'tt4972582', 'tt2316411', 'tt0470752', 'tt0116282', 'tt0844708', 'tt0468569', 'tt1375666'],
+    movies: ['tt0119167', 'tt5052448', 'tt5715874', 'tt4972582', 'tt2316411', 'tt0470752', 'tt0116282', 'tt0840361', 'tt0468569', 'tt1375666'],
     relatedCollections: ['best-psychological-thriller-movies', 'best-crime-thriller-movies', 'movies-like-se7en']
   },
 
@@ -983,7 +983,7 @@ export const COLLECTIONS = {
       { label: "INTIMACY", desc: "Deeply emotional" },
       { label: "DESIRE", desc: "Romantic fantasy" }
     ],
-    movies: ['tt2278871', 'tt10886166', 'tt0309987', 'tt14369780', ' tt0070849', 'tt4465564', 'tt2322441', 'tt4465566', 'tt0274812', 'tt0107211'],
+    movies: ['tt2278871', 'tt10886166', 'tt0309987', 'tt14369780', 'tt0070849', 'tt4465564', 'tt2322441', 'tt4465566', 'tt0274812', 'tt0107211'],
     relatedCollections: ['best-erotic-thriller-movies', 'best-romance-movies-on-hbo-max', 'best-romance-movies-on-hulu']
   },
 

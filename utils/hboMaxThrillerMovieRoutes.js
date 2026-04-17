@@ -36,7 +36,7 @@ export const HBO_MAX_THRILLER_MOVIE_SLUGS = {
     'tt0116282': 'fargo',
     
     // Rank 8: The Town
-    'tt0844708': 'the-town',
+    'tt0840361': 'the-town',
     
     // Rank 9: The Dark Knight
     'tt0468569': 'the-dark-knight',

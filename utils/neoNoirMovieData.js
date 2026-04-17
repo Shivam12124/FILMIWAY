@@ -16,7 +16,7 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 429200, "imdbID": "tt4846232", "Title": "Good Time", "year": 2017, "genre": "Crime", "runtime": 102, "rank": 5 },
     { "tmdbId": 705996, "imdbID": "tt12477480", "Title": "Decision to Leave", "year": 2022, "genre": "Mystery", "runtime": 139, "rank": 6 },
     { "tmdbId": 11454, "imdbID": "tt0091474", "Title": "Manhunter", "year": 1986, "genre": "Crime", "runtime": 120, "rank": 7 },
-    { "tmdbId": 9850, "imdbID": "tt0090180", "Title": "To Live and Die in L.A.", "year": 1985, "genre": "Crime", "runtime": 116, "rank": 8 },
+    { "tmdbId": 9846, "imdbID": "tt0090180", "Title": "To Live and Die in L.A.", "year": 1985, "genre": "Crime", "runtime": 116, "rank": 8 },
     { "tmdbId": 1847, "imdbID": "tt0070334", "Title": "The Long Goodbye", "year": 1973, "genre": "Mystery", "runtime": 112, "rank": 9 },
     { "tmdbId": 10843, "imdbID": "tt0088680", "Title": "After Hours", "year": 1985, "genre": "Comedy", "runtime": 97, "rank": 10 }
 ];
@@ -30,7 +30,7 @@ export const STRATEGIC_QUOTES = {
     429200: "I think I was a dog in a previous life.",
     705996: "The moment you said you loved me, your love is over.",
     11454: "It's just you and me now, sport.",
-    9850: "You want bread? Fuck you. You're dead.",
+    9846: "You want bread? Fuck you. You're dead.",
     1847: "Nothing says goodbye like a bullet.",
     10843: "I just want to live. I just want to go home."
 };
@@ -75,7 +75,7 @@ export const SENSITIVE_TIMELINES = {
     11454: { scenes: [] },
 
     // 8. To Live and Die in L.A.
-    9850: { 
+    9846: { 
         scenes: [
             { start: "0:07:57", end: "0:08:08", type: "Nudity (Sculpture)", severity: "Mild" },
             { start: "0:37:37", end: "0:37:44", type: "Sexual Content", severity: "Moderate" },
@@ -113,7 +113,7 @@ export const FALLBACK_POSTERS = {
     429200: "https://m.media-amazon.com/images/M/MV5BMTQyNzM2MjcwMV5BMl5BanBnXkFtZTgwNTY2NTYxMzI@._V1_SX500.jpg",
     705996: "https://m.media-amazon.com/images/M/MV5BMTczMWQ2NjItNTE1OC00YTJhLTgzM2YtMjg3ZmFiZmRjM2ZmXkEyXkFqcGdeQXVyMTMzNDk0ODEw._V1_SX500.jpg",
     11454: "https://m.media-amazon.com/images/M/MV5BZWE5MWNjMmYtNzk2Zi00ZDJjLWIzZmUtMTMxYzc1YTRmMDA0XkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX500.jpg",
-    9850: "https://m.media-amazon.com/images/M/MV5BM2U4MDNlNWEtZTc1Ni00MWY3LWI2NmMtYTJiN2ZiZTA0MjA3XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX500.jpg",
+    9846: "https://m.media-amazon.com/images/M/MV5BM2U4MDNlNWEtZTc1Ni00MWY3LWI2NmMtYTJiN2ZiZTA0MjA3XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX500.jpg",
     1847: "https://m.media-amazon.com/images/M/MV5BMGEwZTNkNzItZTFlYS00ZTFmLWE4NTQtNTE4MGQ2MmNmMTljXkEyXkFqcGdeQXVyNjUwNzk3NDc@._V1_SX500.jpg",
     10843: "https://m.media-amazon.com/images/M/MV5BMTQ4NTQ5MTQyMF5BMl5BanBnXkFtZTcwNTI5NjUzMQ@@._V1_SX500.jpg"
 };
@@ -248,7 +248,7 @@ export const COMPLETE_MOVIE_DATA = {
     }),
 
     // 8. To Live and Die in L.A.
-    9850: createNoirData({ 
+    9846: createNoirData({ 
         moralAmbiguity: 100, atmosphericDread: 90, complexityLevel: "CYNICAL", 
         dominantColor: "#c2410c", rating: 7.3, criticsScore: 90, audienceScore: 78, director: "William Friedkin", 
         cast: ["William Petersen", "Willem Dafoe", "John Pankow"], boxOffice: "$17.3 million", budget: "$6 million", 

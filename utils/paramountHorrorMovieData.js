@@ -11,7 +11,7 @@ export const TMDB_CONFIG = {
 export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 82507, "imdbID": "tt1922777", "Title": "Sinister", "year": 2012, "genre": "Horror", "runtime": 110, "rank": 1 },
     { "tmdbId": 397243, "imdbID": "tt3289956", "Title": "The Autopsy of Jane Doe", "year": 2016, "genre": "Horror", "runtime": 86, "rank": 2 },
-    { "tmdbId": 1058609, "imdbID": "tt29268110", "Title": "Smile 2", "year": 2024, "genre": "Horror", "runtime": 127, "rank": 3 },
+    { "tmdbId": 1100782, "imdbID": "tt29268110", "Title": "Smile 2", "year": 2024, "genre": "Horror", "runtime": 127, "rank": 3 },
     { "tmdbId": 882598, "imdbID": "tt15474916", "Title": "Smile", "year": 2022, "genre": "Horror", "runtime": 115, "rank": 4 },
     { "tmdbId": 8413, "imdbID": "tt0119081", "Title": "Event Horizon", "year": 1997, "genre": "Sci-Fi Horror", "runtime": 96, "rank": 5 },
     { "tmdbId": 447332, "imdbID": "tt6644200", "Title": "A Quiet Place", "year": 2018, "genre": "Horror", "runtime": 90, "rank": 6 },
@@ -32,7 +32,7 @@ export const SENSITIVE_TIMELINES = {
         ] 
     },
   // 3. Smile 2
-    1058609: { scenes: [] },
+    1100782: { scenes: [] },
 
     // 4. Smile
     882598: { scenes: [] },
@@ -61,7 +61,7 @@ export const SENSITIVE_TIMELINES = {
 export const FALLBACK_POSTERS = {
     82507: "https://image.tmdb.org/t/p/w500/h6j5sE3vXh6j5s.jpg",
     397243: "https://image.tmdb.org/t/p/w500/e33dE6e6.jpg",
-    1058609: "https://image.tmdb.org/t/p/w500/ht8Uv9UyUp.jpg",
+    1100782: "https://image.tmdb.org/t/p/w500/ht8Uv9UyUp.jpg",
     882598: "https://image.tmdb.org/t/p/w500/aPqcQwu4VGEewPhagk.jpg",
     8413: "https://image.tmdb.org/t/p/w500/6h3k6h3k.jpg",
     447332: "https://image.tmdb.org/t/p/w500/nJD7.jpg",
@@ -118,7 +118,7 @@ export const COMPLETE_MOVIE_DATA = {
 
     // 3. Smile 2 (2024)
     // Corrected DNA: Horror/Thriller. Pacing: Lower start, higher finish.
-    1058609: createMovieData({ 
+    1100782: createMovieData({ 
         scariness: 96, 
         dominantColor: "#be123c", rating: 7.2, criticsScore: 85, audienceScore: 81, director: "Parker Finn", 
         cast: ["Naomi Scott", "Kyle Gallner", "Rosemarie DeWitt"], boxOffice: "$130 million", budget: "$28 million", 
@@ -264,7 +264,7 @@ export const COMPLETE_MOVIE_DATA = {
 export const STRATEGIC_QUOTES = {
     82507: "Don't worry, Daddy. I'll make you famous again.",
     397243: "Every body has a secret. Some just hide them better than others.",
-    1058609: "It's smiling at me.",
+    1100782: "It's smiling at me.",
     882598: "You're going to die!",
     8413: "Where we're going, we won't need eyes to see.",
     447332: "If they hear you, they hunt you.",

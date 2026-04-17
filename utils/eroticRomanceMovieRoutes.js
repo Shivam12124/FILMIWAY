@@ -28,7 +28,7 @@ export const EROTIC_ROMANCE_MOVIE_SLUGS = {
     'tt14369780': 'lady-chatterleys-lover',
     
     // Rank 5: Last Tango in Paris
-    ' tt0070849': 'last-tango-in-paris',
+    'tt0070849': 'last-tango-in-paris',
     
     // Rank 6: Fifty Shades Darker
     'tt4465564': 'fifty-shades-darker',

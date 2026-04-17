@@ -13,11 +13,11 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 664413, "imdbID": "tt10886166", "Title": "365 Days", "year": 2020, "genre": "Romance", "runtime": 114, "rank": 2 },
     { "tmdbId": 1278, "imdbID": "tt0309987", "Title": "The Dreamers", "year": 2003, "genre": "Drama", "runtime": 115, "rank": 3 },
     { "tmdbId": 814338, "imdbID": "tt14369780", "Title": "Lady Chatterley's Lover", "year": 2022, "genre": "Romance", "runtime": 126, "rank": 4 },
-    { "tmdbId": 1064, "imdbID": "tt0070849", "Title": "Last Tango in Paris", "year": 1972, "genre": "Drama", "runtime": 129, "rank": 5 },
+    { "tmdbId": 1643, "imdbID": "tt0070849", "Title": "Last Tango In Paris", "year": 1972, "genre": "Drama", "runtime": 129, "rank": 5 },
     { "tmdbId": 341174 , "imdbID": "tt4465564", "Title": "Fifty Shades Darker", "year": 2017, "genre": "Romance", "runtime": 118, "rank": 6 },
     { "tmdbId": 216015, "imdbID": "tt2322441", "Title": "Fifty Shades of Grey", "year": 2015, "genre": "Romance", "runtime": 125, "rank": 7 },
     { "tmdbId": 337167, "imdbID": "tt4465566", "Title": "Fifty Shades Freed", "year": 2018, "genre": "Romance", "runtime": 105, "rank": 8 },
-    { "tmdbId": 4014, "imdbID": "tt0274812", "Title": "Secretary", "year": 2002, "genre": "Romance", "runtime": 111, "rank": 9 },
+    { "tmdbId": 11013, "imdbID": "tt0274812", "Title": "Secretary", "year": 2002, "genre": "Romance", "runtime": 111, "rank": 9 },
     { "tmdbId": 4478, "imdbID": "tt0107211", "Title": "Indecent Proposal", "year": 1993, "genre": "Drama", "runtime": 117, "rank": 10 }
 ];
 
@@ -27,11 +27,11 @@ export const STRATEGIC_QUOTES = {
     664413: "I'm not going to force you to do anything. But I will make you fall in love with me.",
     1278: "I'm going to stay right here, until you tell me you love me.",
     814338: "I have never felt so alive as I do with you.",
-    1064: "No names here. We don't need names.",
+    1643: "No names here. We don't need names.",
     341174 : "I want you back. I'll do anything it takes.",
     216015: "I don't do romance. My tastes are very singular.",
     337167: "Don't you miss the vanilla days?",
-    4014: "I'm not going to stop.",
+    11013: "I'm not going to stop.",
     4478: "Suppose I were to offer you one million dollars for one night with your wife."
 };
 
@@ -97,7 +97,7 @@ export const SENSITIVE_TIMELINES = {
     },
 
     // 5. Last Tango in Paris
-    1064: { 
+    1643: { 
         scenes: [
             { start: "0:14:38", end: "0:16:50", type: "Sex & Nudity", severity: "High" },
             { start: "0:35:50", end: "0:37:44", type: "Nudity (Woman)", severity: "High" },
@@ -153,7 +153,7 @@ export const SENSITIVE_TIMELINES = {
     },
 
     // 9. Secretary
-    4014: { 
+    11013: { 
         scenes: [
             { start: "0:53:16", end: "0:56:28", type: "Partial Nudity (Woman)", severity: "Moderate" },
             { start: "0:57:56", end: "0:59:30", type: "Sexual Content", severity: "High" },
@@ -179,11 +179,11 @@ export const FALLBACK_POSTERS = {
     664413: "https://m.media-amazon.com/images/M/MV5BODg1ZTgyNGEtNWUxYS00NTRiLTgxMzItY2MxOWFhMjBkNDdlXkEyXkFqcGdeQXVyMTE0MzQwOTg2._V1_SX500.jpg",
     1278: "https://m.media-amazon.com/images/M/MV5BMTc5NTA3MDM1M15BMl5BanBnXkFtZTcwMTQyNjYyMQ@@._V1_SX500.jpg",
     814338: "https://m.media-amazon.com/images/M/MV5BYzA3MDcxMjEtMjMyOC00ZmFhLTlhOTctMzRjYTgwZDJmZDlhXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_SX500.jpg",
-    1064: "https://m.media-amazon.com/images/M/MV5BMTczMjc4MjAzM15BMl5BanBnXkFtZTgwMjc1OTY2MjE@._V1_SX500.jpg",
+    1643: "https://m.media-amazon.com/images/M/MV5BMTczMjc4MjAzM15BMl5BanBnXkFtZTgwMjc1OTY2MjE@._V1_SX500.jpg",
     341174 : "https://m.media-amazon.com/images/M/MV5BMTg0NjE5ODA5NDl5BMl5BanBnXkFtZTgwNjUyNDAwMTI@._V1_SX500.jpg",
     216015: "https://m.media-amazon.com/images/M/MV5BMjA5OTk2Nzk2Ml5BMl5BanBnXkFtZTgwMDY2Njk5MzE@._V1_SX500.jpg",
     337167: "https://m.media-amazon.com/images/M/MV5BMTQxNzcyMTMzOF5BMl5BanBnXkFtZTgwMDM2ODc5NDM@._V1_SX500.jpg",
-    4014: "https://m.media-amazon.com/images/M/MV5BMjA5MjgwNTkzMl5BMl5BanBnXkFtZTYwNTc0NTg5._V1_SX500.jpg",
+    11013: "https://m.media-amazon.com/images/M/MV5BMjA5MjgwNTkzMl5BMl5BanBnXkFtZTYwNTc0NTg5._V1_SX500.jpg",
     4478: "https://m.media-amazon.com/images/M/MV5BNTI2MWZlNDAtNjVkMC00MDRmLTk2MGYtYjBhMTA4YjlkYmMzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX500.jpg"
 };
 
@@ -257,7 +257,7 @@ export const COMPLETE_MOVIE_DATA = {
         synopsis: "An unhappy aristocrat begins a torrid affair with the gamekeeper on her husband's country estate. This adaptation brings a fresh, sensual, and emotionally grounded take to D.H. Lawrence's classic novel about class boundaries and physical awakening.",
         themes: ["Class Divide", "Female Desire", "Nature and Freedom"]
     }),
-    1064: createRomanceData({ // Last Tango in Paris
+    1643: createRomanceData({ // Last Tango in Paris
         eroticTension: 90, complexityLevel: "EXTREME", 
         dominantColor: "#d97706", rating: 6.9, criticsScore: 83, audienceScore: 71, director: "Bernardo Bertolucci", 
         cast: ["Marlon Brando", "Maria Schneider"], boxOffice: "$36 million", budget: "$1.2 million", 
@@ -317,7 +317,7 @@ export const COMPLETE_MOVIE_DATA = {
         synopsis: "Believing they have left behind shadowy figures from their past, newlyweds Christian and Ana fully embrace an inextricable connection and shared life of luxury, until new threats jeopardize their happy ending.",
         themes: ["Marriage", "Security", "Closing the Chapter"]
     }),
-    4014: createRomanceData({ // Secretary
+    11013: createRomanceData({ // Secretary
         eroticTension: 90, complexityLevel: "HIGH", 
         dominantColor: "#7c2d12", rating: 6.9, criticsScore: 78, audienceScore: 82, director: "Steven Shainberg", 
         cast: ["James Spader", "Maggie Gyllenhaal"], boxOffice: "$9.3 million", budget: "$4 million", 

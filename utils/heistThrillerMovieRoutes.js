@@ -6,13 +6,13 @@ import COMPLETE_HEIST_THRILLER_DATABASE, { COMPLETE_MOVIE_DATABASE as HEIST_THRI
 export const HEIST_THRILLER_MOVIE_SLUGS = {
   'tt0113277': 'heat',
   'tt0105236': 'reservoir-dogs',
-  'tt0844708': 'the-town',
-  'tt0475304': 'hell-or-high-water',
-  'tt0305224': 'the-bank-job',
+  'tt0840361': 'the-town',
+  'tt2582782': 'hell-or-high-water',
+  'tt0200465': 'the-bank-job',
   'tt0454848': 'inside-man',
-  'tt0081505': 'thief',
-  'tt0073195': 'dog-day-afternoon',
-  'tt0074751': 'the-italian-job',
+  'tt0083190': 'thief',
+  'tt0072890': 'dog-day-afternoon',
+  'tt0317740': 'the-italian-job',
   'tt0240772': 'oceans-eleven'
 };
 

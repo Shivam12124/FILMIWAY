@@ -7,12 +7,12 @@ import { useRouter } from 'next/router';
 import { 
   ArrowRight, Compass,
   ChevronLeft, ChevronRight, Construction,
-  Film, Star, Flame
+  Film, Star, Flame, Shield
 } from 'lucide-react';
 
 import { COLLECTIONS, getPrimaryCollectionForMovie } from '../data/collections';
 import { COMPLETE_MOVIE_DATABASE as EROTIC_THRILLER_DB, FALLBACK_POSTERS as EROTIC_THRILLER_POSTERS } from '../utils/eroticThrillerMovieData';
-import { COMPLETE_MOVIE_DATABASE as EROTIC_ROMANCE_DB, FALLBACK_POSTERS as EROTIC_ROMANCE_POSTERS } from '../utils/eroticRomanceMovieData';
+import { COMPLETE_MOVIE_DATABASE as EROTIC_ROMANCE_DB } from '../utils/eroticRomanceMovieData';
 import { COMPLETE_MOVIE_DATABASE as TRENDING_DB, FALLBACK_POSTERS as TRENDING_POSTERS } from '../utils/trendingMovieData';
 import PlatformSelector from '../components/PlatformSelector';
 import Header from '../components/Header';
@@ -367,6 +367,50 @@ const Top10Section = memo(({ title, movies, description }) => {
 });
 
 Top10Section.displayName = 'Top10Section';
+
+// ⚡ TEXT-BASED SEO LINKS (Compact & High-Density for Fast Indexing)
+const QuickLinksSection = memo(({ title, movies, collectionSlug }) => {
+  if (!movies || movies.length === 0) return null;
+  return (
+    <section className="mt-8 sm:mt-12 mb-4 sm:mb-8" style={{ contentVisibility: 'auto' }}>
+      <div className="border-t border-white/5 pt-8 sm:pt-10">
+        <div className="flex items-center gap-2.5 mb-5 px-1">
+           <Shield className="w-5 h-5 text-yellow-500" />
+           <h2 className="text-sm sm:text-base font-bold text-gray-200 tracking-wide">
+             {title}
+           </h2>
+        </div>
+        
+        {/* Premium Grid Layout for Desktop & Mobile */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4 px-1">
+          {movies.map((movie) => (
+            <Link
+              key={movie.imdbID}
+              href={`/movies/${collectionSlug}/${movie.imdbID}`}
+              className="group relative flex items-center justify-between p-3.5 sm:p-4 bg-[#0a0a0a] border border-white/5 hover:border-yellow-500/30 rounded-xl transition-all duration-300 hover:bg-gradient-to-r hover:from-yellow-500/10 hover:to-transparent overflow-hidden shadow-sm hover:shadow-lg"
+            >
+              {/* Subtle left accent bar on hover */}
+              <div className="absolute left-0 top-0 bottom-0 w-1 bg-yellow-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              
+              <div className="flex flex-col min-w-0 pr-3">
+                <span className="font-semibold text-sm sm:text-base text-gray-300 group-hover:text-yellow-400 transition-colors truncate">
+                  {movie.Title || movie.title}
+                </span>
+                <span className="text-[10px] sm:text-xs text-gray-600 font-medium tracking-wider mt-1 uppercase">
+                  {movie.year || movie.Year} • Parents Guide
+                </span>
+              </div>
+              
+              <ArrowRight className="w-4 h-4 text-gray-600 group-hover:text-yellow-400 transform -translate-x-2 group-hover:translate-x-0 transition-all duration-300 shrink-0" />
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+});
+QuickLinksSection.displayName = 'QuickLinksSection';
+
 const FilmiwayHomepage = ({ huluCollections, thrillerCollections, hboCollections, peacockCollections, paramountCollections, top10EroticThrillers, top10EroticRomance, top10TrendingMovies }) => {
   const thrillerRef = useRef(null);
   const huluRef = useRef(null);
@@ -409,12 +453,6 @@ const FilmiwayHomepage = ({ huluCollections, thrillerCollections, hboCollections
               movies={top10EroticThrillers} 
             />
             
-            <Top10Section 
-              title="Top 10 Erotic Romance" 
-              description="Passionate, intimate, and highly searched romance films with complete Parents Guides." 
-              movies={top10EroticRomance} 
-            />
-            
             <MovieSection 
               title="The Thriller Gang" 
               description="Gripping crime, mystery, and revenge thrillers for the edge of your seat." 
@@ -431,6 +469,12 @@ const FilmiwayHomepage = ({ huluCollections, thrillerCollections, hboCollections
             
             <MovieSection title="Best of Peacock" description="NBCUniversal's finest: Edge-of-your-seat thrillers and sci-fi." movies={peacockCollections} sectionRef={peacockRef} viewAllLink="/streaming/peacock" />
             
+            {/* ⚡ SEO QUICK LINKS FOR FAST INDEXING */}
+            <QuickLinksSection 
+              title="Trending Parents Guides" 
+              movies={EROTIC_ROMANCE_DB} 
+              collectionSlug="best-erotic-romance-movies" 
+            />
           </div>
         </main>
 
@@ -591,7 +635,6 @@ export async function getStaticProps() {
     const paramountData = getCollectionData(paramountKeys, 'paramount');
 
     const top10EroticThrillers = getTop10MoviesWithSlugs(EROTIC_THRILLER_DB, EROTIC_THRILLER_POSTERS);
-    const top10EroticRomance = getTop10MoviesWithSlugs(EROTIC_ROMANCE_DB, EROTIC_ROMANCE_POSTERS);
     const top10TrendingMovies = getTop10MoviesWithSlugs(TRENDING_DB, TRENDING_POSTERS);
 
     return {
@@ -602,7 +645,6 @@ export async function getStaticProps() {
         peacockCollections: peacockData,
         paramountCollections: paramountData,
         top10EroticThrillers,
-        top10EroticRomance,
         top10TrendingMovies
       },
       revalidate: 604800, 
@@ -617,7 +659,6 @@ export async function getStaticProps() {
         peacockCollections: [],
         paramountCollections: [],
         top10EroticThrillers: [],
-        top10EroticRomance: [],
         top10TrendingMovies: []
       },
     };

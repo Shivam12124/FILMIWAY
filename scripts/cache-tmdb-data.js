@@ -51,11 +51,14 @@ async function buildCache() {
 
     files.forEach(file => {
         const content = fs.readFileSync(path.join(UTILS_DIR, file), 'utf8');
-        const regex = /"tmdbId"\s*:\s*(\d+)\s*,\s*"imdbID"\s*:\s*"([^"]+)"/g;
-        let match;
-        while ((match = regex.exec(content)) !== null) {
-            uniqueMovies.set(match[2], match[1]); // Map imdbID -> tmdbId
-        }
+        const lines = content.split('\n');
+        lines.forEach(line => {
+            const tmdbMatch = line.match(/['"]?(?:tmdbId|tmdbID|id)['"]?\s*:\s*(\d+)/i);
+            const imdbMatch = line.match(/['"]?(?:imdbID|imdbId)['"]?\s*:\s*['"](tt\d+)['"]/i);
+            if (tmdbMatch && imdbMatch) {
+                uniqueMovies.set(imdbMatch[1], tmdbMatch[1]);
+            }
+        });
     });
 
     console.log(`📦 Found ${uniqueMovies.size} unique movies to process.`);

@@ -12,7 +12,7 @@ export const TMDB_CONFIG = {
 export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 8363, "imdbID": "tt0829482", "Title": "Superbad", "year": 2007, "genre": "Comedy", "runtime": 113, "rank": 1 },
     { "tmdbId": 134, "imdbID": "tt0190590", "Title": "O Brother, Where Art Thou?", "year": 2000, "genre": "Comedy", "runtime": 107, "rank": 2 },
-    { "tmdbId": 3779, "imdbID": "tt0443453", "Title": "Borat", "year": 2006, "genre": "Comedy", "runtime": 84, "rank": 3 },
+    { "tmdbId": 496, "imdbID": "tt0443453", "Title": "Borat", "year": 2006, "genre": "Comedy", "runtime": 84, "rank": 3 },
     { "tmdbId": 718930, "imdbID": "tt12593682", "Title": "Bullet Train", "year": 2022, "genre": "Action", "runtime": 127, "rank": 4 },
     { "tmdbId": 587792, "imdbID": "tt9484998", "Title": "Palm Springs", "year": 2020, "genre": "Comedy", "runtime": 90, "rank": 5 },
     { "tmdbId": 39939, "imdbID": "tt0247745", "Title": "Super Troopers", "year": 2001, "genre": "Comedy", "runtime": 100, "rank": 6 },
@@ -38,7 +38,7 @@ export const SENSITIVE_TIMELINES = {
     134: { scenes: [] }, 
 
     // 3. Borat
-    3779: { 
+    496: { 
         scenes: [
             { start: "3:36", end: "3:50", type: "Partial Nudity", severity: "Moderate" },
             { start: "55:15", end: "58:20", type: "Sexual Content & Nudity", severity: "High" }
@@ -88,7 +88,7 @@ export const SENSITIVE_TIMELINES = {
 export const FALLBACK_POSTERS = {
     8363: "https://image.tmdb.org/t/p/w500/ek8e8txUyUwd2BNqj6lFEerJnhq.jpg",
     134: "https://image.tmdb.org/t/p/w500/min5Q6Xo3Xj8B86629K9qfD0Q5.jpg",
-    3779: "https://image.tmdb.org/t/p/w500/y1Z77dY1jYdc2Jg6Y3B6S77Z.jpg",
+    496: "https://image.tmdb.org/t/p/w500/y1Z77dY1jYdc2Jg6Y3B6S77Z.jpg",
     718930: "https://image.tmdb.org/t/p/w500/tVxDe01Zy3kZqaPETYiXe2FOUVy.jpg",
     587792: "https://image.tmdb.org/t/p/w500/1SBNmo4JG2ziZFnXA23jJ2Sbd.jpg",
     39939: "https://image.tmdb.org/t/p/w500/3s9Y5w27dGHX03aA7Y5W6v.jpg",
@@ -149,7 +149,7 @@ export const COMPLETE_MOVIE_DATA = {
     // 3. Borat (GENRE-DEFINING CHAOS)
     // Curve: Culture Clash -> Offense -> Discomfort -> Extreme Shock -> Resolution.
     // Peak: 98 (The Hotel Fight - Extreme Discomfort).
-    3779: createMovieData({ 
+    496: createMovieData({ 
         laughterIndex: 98, 
         complexityLevel: "CHAOTIC", 
         dominantColor: "#fcd34d", rating: 7.4, criticsScore: 91, audienceScore: 79, director: "Larry Charles", 
@@ -309,7 +309,7 @@ export const COMPLETE_MOVIE_DATA = {
 export const STRATEGIC_QUOTES = {
     8363: "I am McLovin.",
     134: "We thought you was a toad!",
-    3779: "Very nice!",
+    496: "Very nice!",
     718930: "Diesel is a diesel.",
     587792: "Today, tomorrow, it's all the same.",
     39939: "The snozberries taste like snozberries.",

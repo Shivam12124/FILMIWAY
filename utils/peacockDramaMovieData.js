@@ -10,7 +10,7 @@ export const TMDB_CONFIG = {
 
 export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 641, "imdbID": "tt0180093", "Title": "Requiem for a Dream", "year": 2000, "genre": "Drama", "runtime": 102, "rank": 1 },
-    { "tmdbId": 1603, "imdbID": "tt0084707", "Title": "Sophie's Choice", "year": 1982, "genre": "Drama", "runtime": 150, "rank": 2 },
+    { "tmdbId": 15764, "imdbID": "tt0084707", "Title": "Sophie's Choice", "year": 1982, "genre": "Drama", "runtime": 150, "rank": 2 },
     { "tmdbId": 804095, "imdbID": "tt14208870", "Title": "The Fabelmans", "year": 2022, "genre": "Drama", "runtime": 151, "rank": 3 },
     { "tmdbId": 855263, "imdbID": "tt13423600", "Title": "A Thousand and One", "year": 2023, "genre": "Drama", "runtime": 116, "rank": 4 },
     { "tmdbId": 1158915, "imdbID": "tt28323620", "Title": "Dìdi", "year": 2024, "genre": "Comedy", "runtime": 94, "rank": 5 },
@@ -24,7 +24,7 @@ export const COMPLETE_MOVIE_DATABASE = [
 // ✅ STRATEGIC QUOTES (100% Clean & SEO Safe)
 export const STRATEGIC_QUOTES = {
     641: "I'm somebody now, Harry. Everybody likes me.", // Requiem for a Dream
-    1603: "The truth is a terrible thing.", // Sophie's Choice
+    15764: "The truth is a terrible thing.", // Sophie's Choice
     804095: "Movies are dreams that you never forget.", // The Fabelmans
     855263: "I'm the only one who's gonna look out for you.", // A Thousand and One
     1158915: "I don't know how to be normal.", // Dìdi
@@ -46,7 +46,7 @@ export const SENSITIVE_TIMELINES = {
             { start: "1:30:30", end: "1:33:50", type: "Sex & Nudity", severity: "High" }
         ] 
     },
-    1603: { scenes: [] }, // Sophie's Choice
+    15764: { scenes: [] }, // Sophie's Choice
     804095: { scenes: [] }, // The Fabelmans
     855263: { scenes: [] }, // A Thousand and One
     1158915: { scenes: [] }, // Dìdi
@@ -59,7 +59,7 @@ export const SENSITIVE_TIMELINES = {
 
 export const FALLBACK_POSTERS = {
     641: "https://image.tmdb.org/t/p/w500/nOd6vjEmzCT0k4VYqsA2hwyi87C.jpg",
-    1603: "https://image.tmdb.org/t/p/w500/3Z7o2d9ag9ZdbZ5LBDYyP99C9H6.jpg",
+    15764: "https://image.tmdb.org/t/p/w500/3Z7o2d9ag9ZdbZ5LBDYyP99C9H6.jpg",
     804095: "https://image.tmdb.org/t/p/w500/d2IywyOPS78vEnJvwVqkVRTiNC1.jpg",
     855263: "https://image.tmdb.org/t/p/w500/5TheK2Ff5l55776c59X5G5Y5z55.jpg",
     1158915: "https://image.tmdb.org/t/p/w500/2Gf5y555555.jpg",
@@ -98,7 +98,7 @@ export const COMPLETE_MOVIE_DATA = {
     }),
 
     // 2. Sophie's Choice (1982)
-    1603: createMovieData({ 
+    15764: createMovieData({ 
         emotionalIntensity: 98, 
         complexityLevel: "MASTERPIECE", 
         dominantColor: "#78350f", rating: 7.5, criticsScore: 78, audienceScore: 83, director: "Alan J. Pakula", 

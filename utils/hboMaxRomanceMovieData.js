@@ -17,7 +17,7 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 770, "imdbID": "tt0031381", "Title": "Gone with the Wind", "year": 1939, "genre": "Romance", "runtime": 238, "rank": 6 },
     { "tmdbId": 37563, "imdbID": "tt0115940", "Title": "A Summer's Tale", "year": 1996, "genre": "Romance", "runtime": 113, "rank": 7 },
     { "tmdbId": 216, "imdbID": "tt0071141", "Title": "Ali: Fear Eats the Soul", "year": 1974, "genre": "Drama", "runtime": 93, "rank": 8 },
-    { "tmdbId": 15195, "imdbID": "tt0113824", "Title": "Whisper of the Heart", "year": 1995, "genre": "Romance", "runtime": 111, "rank": 9 },
+    { "tmdbId": 37797, "imdbID": "tt0113824", "Title": "Whisper of the Heart", "year": 1995, "genre": "Romance", "runtime": 111, "rank": 9 },
     { "tmdbId": 84892, "imdbID": "tt1659337", "Title": "The Perks of Being a Wallflower", "year": 2012, "genre": "Drama", "runtime": 103, "rank": 10 }
 ];
 
@@ -68,7 +68,7 @@ export const SENSITIVE_TIMELINES = {
     },
     
     // 9. Whisper of the Heart
-    15195: { scenes: [] },
+    37797: { scenes: [] },
     
     // 10. The Perks of Being a Wallflower
     84892: { scenes: [] }
@@ -83,7 +83,7 @@ export const FALLBACK_POSTERS = {
     770: "https://image.tmdb.org/t/p/w500/l8789.jpg",
     37563: "https://image.tmdb.org/t/p/w500/k89898.jpg",
     216: "https://image.tmdb.org/t/p/w500/j8789.jpg",
-    15195: "https://image.tmdb.org/t/p/w500/58989.jpg",
+    37797: "https://image.tmdb.org/t/p/w500/58989.jpg",
     84892: "https://image.tmdb.org/t/p/w500/a8789.jpg"
 };
 
@@ -267,7 +267,7 @@ export const COMPLETE_MOVIE_DATA = {
 
     // 9. Whisper of the Heart
     // STATUS: LOCKED 🔒 (Peak Lowered)
-    15195: createMovieData({ 
+    37797: createMovieData({ 
         emotionalIntensity: 80, 
         chemistryScore: 85, 
         complexityLevel: "WHOLESOME", 

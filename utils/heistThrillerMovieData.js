@@ -10,12 +10,12 @@ export const TMDB_CONFIG = {
 export const COMPLETE_MOVIE_DATABASE = [
     { tmdbId: 949, imdbID: 'tt0113277', Title: 'Heat', year: 1995, genre: 'Crime Drama', runtime: 170, rank: 1 },
     { tmdbId: 500, imdbID: 'tt0105236', Title: 'Reservoir Dogs', year: 1992, genre: 'Crime Thriller', runtime: 99, rank: 2 },
-    { tmdbId: 23168, imdbID: 'tt0844708', Title: 'The Town', year: 2010, genre: 'Crime Thriller', runtime: 125, rank: 3 },
-    { tmdbId: 338766, imdbID: 'tt0475304', Title: 'Hell or High Water', year: 2016, genre: 'Crime Drama', runtime: 102, rank: 4 },
-    { tmdbId: 374, imdbID: 'tt0305224', Title: 'The Bank Job', year: 2008, genre: 'Crime Thriller', runtime: 111, rank: 5 },
+    { tmdbId: 23168, imdbID: 'tt0840361', Title: 'The Town', year: 2010, genre: 'Crime Thriller', runtime: 125, rank: 3 },
+    { tmdbId: 338766, imdbID: 'tt2582782', Title: 'Hell or High Water', year: 2016, genre: 'Crime Drama', runtime: 102, rank: 4 },
+    { tmdbId: 8848, imdbID: 'tt0200465', Title: 'The Bank Job', year: 2008, genre: 'Crime Thriller', runtime: 111, rank: 5 },
     { tmdbId: 388, imdbID: 'tt0454848', Title: 'Inside Man', year: 2006, genre: 'Crime Thriller', runtime: 129, rank: 6 },
     { tmdbId: 11524, imdbID: 'tt0083190', Title: 'Thief', year: 1981, genre: 'Crime Drama', runtime: 122, rank: 7 },
-    { tmdbId: 1981, imdbID: 'tt0073195', Title: 'Dog Day Afternoon', year: 1975, genre: 'Crime Drama', runtime: 125, rank: 8 },
+    { tmdbId: 968, imdbID: 'tt0072890', Title: 'Dog Day Afternoon', year: 1975, genre: 'Crime Drama', runtime: 125, rank: 8 },
     { tmdbId: 9654, imdbID: 'tt0317740', Title: 'The Italian Job', year: 1969, genre: 'Action Crime', runtime: 99, rank: 9 },
     { tmdbId: 161, imdbID: 'tt0240772', Title: "Ocean's Eleven", year: 2001, genre: 'Crime Comedy', runtime: 116, rank: 10 }
 ];
@@ -40,7 +40,7 @@ export const SENSITIVE_TIMELINES = {
     338766: { scenes: [
         { start: '45:07', end: '45:13', type: 'Sex (In the background)', severity: 'Mild' }
     ]},
-    374: { scenes: [
+    8848: { scenes: [
         { start: '1:00', end: '1:45', type: 'Sex & Nudity', severity: 'High' },
         { start: '12:13', end: '13:10', type: 'Nudity', severity: 'High' },
         { start: '15:15', end: '16:00', type: 'Nudity', severity: 'Moderate' },
@@ -51,7 +51,7 @@ export const SENSITIVE_TIMELINES = {
         { start: '19:40', end: '20:35', type: 'Lingerie', severity: 'Mild' }
     ]},
     11524: { scenes: [] }, // Thief
-    1981: { scenes: [] }, // Dog Day Afternoon
+    986: { scenes: [] }, // Dog Day Afternoon
     9654: { scenes: [
         { start: '41:15', end: '41:30', type: 'Lingerie', severity: 'Mild' }
     ]},
@@ -63,10 +63,10 @@ export const FALLBACK_POSTERS = {
     500: "https://image.tmdb.org/t/p/w500/g7spS3XD5senC1Jg0vafvoB32fG.jpg",
     23168: "https://image.tmdb.org/t/p/w500/l4K9aX2Z0Z0X3X7X7X7X7X7X7.jpg", // Placeholder
     338766: "https://image.tmdb.org/t/p/w500/5gL61j9x7x9x7x9x7x9x7x9x7.jpg", // Placeholder
-    374: "https://image.tmdb.org/t/p/w500/8g8g8g8g8g8g8g8g8g8g8g8g8.jpg", // Placeholder
+    8848: "https://image.tmdb.org/t/p/w500/8g8g8g8g8g8g8g8g8g8g8g8g8.jpg", // Placeholder
     388: "https://image.tmdb.org/t/p/w500/mf4i9z4f9z4f9z4f9z4f9z4f9.jpg", // Placeholder
     11524: "https://image.tmdb.org/t/p/w500/1.jpg", // Placeholder
-    1981: "https://image.tmdb.org/t/p/w500/2.jpg", // Placeholder
+    986: "https://image.tmdb.org/t/p/w500/2.jpg", // Placeholder
     9654: "https://image.tmdb.org/t/p/w500/3.jpg", // Placeholder
     161: "https://image.tmdb.org/t/p/w500/4.jpg" // Placeholder
 };
@@ -149,7 +149,7 @@ export const COMPLETE_MOVIE_DATA = {
     }),
 
     // 5. The Bank Job
-    374: createMovieData({ 
+    8848: createMovieData({ 
         heistComplexity: 82, tensionLevel: 85, actionImpact: 80, complexityLevel: "MEDIUM", 
         dominantColor: "#5d4037", rating: 6.9, criticsScore: 80, audienceScore: 74, 
         director: "Roger Donaldson", cast: ["Jason Statham", "Saffron Burrows", "David Suchet"], 
@@ -206,7 +206,7 @@ export const COMPLETE_MOVIE_DATA = {
     }),
 
     // 8. Dog Day Afternoon
-    1981: createMovieData({ 
+    986: createMovieData({ 
         heistComplexity: 80, tensionLevel: 85, actionImpact: 75, complexityLevel: "MEDIUM", 
         dominantColor: "#ca8a04", rating: 8.0, criticsScore: 96, audienceScore: 90, 
         director: "Sidney Lumet", cast: ["Al Pacino", "John Cazale", "Charles Durning"], 

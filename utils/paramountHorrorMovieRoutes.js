@@ -22,7 +22,7 @@ export const PARAMOUNT_HORROR_MOVIE_SLUGS = {
     '397243': 'the-autopsy-of-jane-doe',
     
     // Rank 3: Smile 2
-    '1058609': 'smile-2',
+    '1100782': 'smile-2',
     
     // Rank 4: Smile
     '882598': 'smile',

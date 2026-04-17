@@ -11,7 +11,7 @@ export const TMDB_CONFIG = {
 export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 1064213, "imdbID": "tt28607951", "Title": "Anora", "year": 2024, "genre": "Comedy", "runtime": 139, "rank": 1 },
     { "tmdbId": 994108, "imdbID": "tt21192142", "Title": "All of Us Strangers", "year": 2023, "genre": "Fantasy", "runtime": 105, "rank": 2 },
-    { "tmdbId": 572916, "imdbID": "tt8963708", "Title": "And Then We Danced", "year": 2019, "genre": "Drama", "runtime": 113, "rank": 3 },
+    { "tmdbId": 597088, "imdbID": "tt8963708", "Title": "And Then We Danced", "year": 2019, "genre": "Drama", "runtime": 113, "rank": 3 },
     { "tmdbId": 167073, "imdbID": "tt2381111", "Title": "Brooklyn", "year": 2015, "genre": "Drama", "runtime": 111, "rank": 4 },
     { "tmdbId": 16553, "imdbID": "tt0412922", "Title": "Little Manhattan", "year": 2005, "genre": "Family", "runtime": 90, "rank": 5 },
     { "tmdbId": 587792, "imdbID": "tt9484998", "Title": "Palm Springs", "year": 2020, "genre": "Comedy", "runtime": 90, "rank": 6 },
@@ -49,7 +49,7 @@ export const SENSITIVE_TIMELINES = {
     },
 
     // 3. And Then We Danced
-    572916: { 
+    597088: { 
         scenes: [
             { start: "51:55", end: "52:55", type: "Sexual Content", severity: "Moderate" },
             { start: "59:45", end: "1:00:21", type: "Sex", severity: "High" }
@@ -99,7 +99,7 @@ export const SENSITIVE_TIMELINES = {
 export const FALLBACK_POSTERS = {
     1064213: "https://image.tmdb.org/t/p/w500/7Mrg94aa3ypigf5A6J7lB6Q77t.jpg",
     994108: "https://image.tmdb.org/t/p/w500/b679b398679b98679b.jpg",
-    572916: "https://image.tmdb.org/t/p/w500/3E37373737.jpg",
+    597088: "https://image.tmdb.org/t/p/w500/3E37373737.jpg",
     167073: "https://image.tmdb.org/t/p/w500/9J9J9J9J9J.jpg",
     16553: "https://image.tmdb.org/t/p/w500/5K5K5K5K5K.jpg",
     587792: "https://image.tmdb.org/t/p/w500/1G1G1G1G1G.jpg",
@@ -161,7 +161,7 @@ export const COMPLETE_MOVIE_DATA = {
     // 3. And Then We Danced
     // Curve: Routine -> Spark -> Tension -> Explosion -> Freedom.
     // Peak: 92 (The Final Dance - Defiant Passion).
-    572916: createMovieData({ 
+    597088: createMovieData({ 
         romanticIntensity: 92, 
         complexityLevel: "HIGH", 
         dominantColor: "#ea580c", rating: 7.6, criticsScore: 93, audienceScore: 94, director: "Levan Akin", 
@@ -322,7 +322,7 @@ export const COMPLETE_MOVIE_DATA = {
 export const STRATEGIC_QUOTES = {
     1064213: "I'm not a hooker, I'm an escort.",
     994108: "I've always been lonely. That's why I'm here.",
-    572916: "There is no sex in Georgian dance!",
+    597088: "There is no sex in Georgian dance!",
     167073: "You'll feel so homesick that you'll want to die, and there's nothing you can do about it apart from endure it.",
    16553: "Love is an ugly, terrible business practiced by fools.",
     587792: "Today, tomorrow, it's all the same.",

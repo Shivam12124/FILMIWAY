@@ -24,7 +24,7 @@ export const HULU_HORROR_MOVIE_SLUGS = {
     'tt4003440': 'the-house-that-jack-built',
     
     // Rank 4: Oddity
-    'tt26466146': 'oddity',
+    'tt26470109': 'oddity',
     
     // Rank 5: Don't Breathe (Replaces The Babadook at #5)
     'tt4160708': 'dont-breathe',
