@@ -349,10 +349,32 @@ export async function getStaticProps({ params }) {
       const movie = COMPLETE_MOVIE_DATABASE.find((m) => m.imdbID === params.id);
       if (!movie) return { notFound: true };
 
-      const tmdbResponse = await fetch(
-          `https://api.themoviedb.org/3/movie/${movie.tmdbId}?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&append_to_response=videos`
-      );
-      const tmdbData = tmdbResponse.ok ? await tmdbResponse.json() : null;
+      // ⚡ ANTI-CRASH RETRY LOGIC (Prevents ECONNRESET during massive static builds)
+        let tmdbData = null;
+        const MAX_RETRIES = 3;
+        for (let i = 0; i < MAX_RETRIES; i++) {
+            try {
+                // Stagger requests to prevent slamming the API at the exact same millisecond
+                if (i > 0) await new Promise(r => setTimeout(r, 1500 * i + Math.random() * 1000));
+                
+                const tmdbResponse = await fetch(
+                    `https://api.themoviedb.org/3/movie/${movie.tmdbId}?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY || 'a07e22bc18f5cb106bfe4cc1f83ad8ed'}&append_to_response=videos`
+                );
+                
+                if (tmdbResponse.ok) {
+                    tmdbData = await tmdbResponse.json();
+                    break; // Success! Exit the retry loop.
+                } else if (tmdbResponse.status === 429) {
+                    // Rate limited. Wait and retry.
+                    continue;
+                } else {
+                    // Other error (404, etc). Don't retry.
+                    break;
+                }
+            } catch (err) {
+                // Network error (ECONNRESET). Will retry silently.
+            }
+        }
 
       // 🔥 CRITICAL FIX: Sync local movie runtime with TMDB to prevent FAQ/Timestamps mismatch
         const syncedMovie = { ...movie };

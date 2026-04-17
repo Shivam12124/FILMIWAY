@@ -53,7 +53,6 @@ const nextConfig = {
   generateEtags: true, 
   poweredByHeader: false,
   compress: true,
-  swcMinify: true, // ⚡ NEW: Faster minification
 
   // ✅ REDIRECTS
   async redirects() {

@@ -7,15 +7,16 @@ import { useRouter } from 'next/router';
 import { 
   ArrowRight, Compass,
   ChevronLeft, ChevronRight, Construction,
-  Film, Star, Flame, Shield
+  Film, Star, Flame
 } from 'lucide-react';
 
 import { COLLECTIONS, getPrimaryCollectionForMovie } from '../data/collections';
 import { COMPLETE_MOVIE_DATABASE as EROTIC_THRILLER_DB, FALLBACK_POSTERS as EROTIC_THRILLER_POSTERS } from '../utils/eroticThrillerMovieData';
-import { COMPLETE_MOVIE_DATABASE as EROTIC_ROMANCE_DB } from '../utils/eroticRomanceMovieData';
+import { COMPLETE_MOVIE_DATABASE as EROTIC_ROMANCE_DB, FALLBACK_POSTERS as EROTIC_ROMANCE_POSTERS } from '../utils/eroticRomanceMovieData';
 import { COMPLETE_MOVIE_DATABASE as TRENDING_DB, FALLBACK_POSTERS as TRENDING_POSTERS } from '../utils/trendingMovieData';
 import PlatformSelector from '../components/PlatformSelector';
 import Header from '../components/Header';
+import tmdbCache from '../data/tmdbCache.json'; // ⚡ NEW: Instant Local Data
 
 const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p';
 
@@ -26,7 +27,7 @@ const ICON_SIZES = {
 };
 
 // ⚡ HELPER FUNCTIONS
-const fetchUniquePosterForCollection = async (movieIds, sectionName, collectionSlug, usedPosters, TMDB_BASE_URL, TMDB_API_KEY) => {
+const getUniquePosterFromCache = (movieIds, collectionSlug, usedPosters) => {
   if (!movieIds || movieIds.length === 0) return null;
 
   const posterOverrides = {
@@ -41,29 +42,16 @@ const fetchUniquePosterForCollection = async (movieIds, sectionName, collectionS
     }
   }
 
-  // ⚡ PERFORMANCE: Check max 3 movies instead of 8 to drastically reduce external API wait times during SSG/ISR
-  for (let i = 0; i < Math.min(movieIds.length, 3); i++) {
-    const movieId = movieIds[i];
-    try {
-      let posterPath = null;
-      if (movieId.toString().startsWith('tt')) {
-        const url = `${TMDB_BASE_URL}/find/${movieId}?api_key=${TMDB_API_KEY}&external_source=imdb_id`;
-        const res = await fetch(url);
-        const data = await res.json();
-        if (data.movie_results?.[0]?.poster_path) posterPath = data.movie_results[0].poster_path;
-      } else {
-        const url = `${TMDB_BASE_URL}/movie/${movieId}?api_key=${TMDB_API_KEY}`;
-        const res = await fetch(url);
-        const data = await res.json();
-        if (data.poster_path) posterPath = data.poster_path;
-      }
-
-      if (posterPath && !usedPosters.has(posterPath)) {
-        usedPosters.add(posterPath);
-        return posterPath;
-      }
-    } catch (e) {
-      console.error(`Error fetching poster for ${movieId}:`, e);
+  // ⚡ SUPER FAST: Look up the poster instantly from our local JSON cache
+  for (let i = 0; i < Math.min(movieIds.length, 5); i++) {
+    // Some of your movieIds arrays contain IMDb IDs, others contain TMDB IDs.
+    // Our cache uses IMDb IDs as the key.
+    const movieId = movieIds[i].toString().trim();
+    const cachedData = tmdbCache[movieId];
+    
+    if (cachedData && cachedData.poster_path && !usedPosters.has(cachedData.poster_path)) {
+      usedPosters.add(cachedData.poster_path);
+      return cachedData.poster_path;
     }
   }
   return null;
@@ -379,51 +367,7 @@ const Top10Section = memo(({ title, movies, description }) => {
 });
 
 Top10Section.displayName = 'Top10Section';
-
-// ⚡ TEXT-BASED SEO LINKS (Compact & High-Density for Fast Indexing)
-const QuickLinksSection = memo(({ title, movies, collectionSlug }) => {
-  if (!movies || movies.length === 0) return null;
-  return (
-    <section className="mt-8 sm:mt-12 mb-4 sm:mb-8" style={{ contentVisibility: 'auto' }}>
-      <div className="border-t border-white/5 pt-8 sm:pt-10">
-        <div className="flex items-center gap-2.5 mb-5 px-1">
-           <Shield className="w-5 h-5 text-yellow-500" />
-           <h2 className="text-sm sm:text-base font-bold text-gray-200 tracking-wide">
-             {title}
-           </h2>
-        </div>
-        
-        {/* Premium Grid Layout for Desktop & Mobile */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4 px-1">
-          {movies.map((movie) => (
-            <Link
-              key={movie.imdbID}
-              href={`/movies/${collectionSlug}/${movie.imdbID}`}
-              className="group relative flex items-center justify-between p-3.5 sm:p-4 bg-[#0a0a0a] border border-white/5 hover:border-yellow-500/30 rounded-xl transition-all duration-300 hover:bg-gradient-to-r hover:from-yellow-500/10 hover:to-transparent overflow-hidden shadow-sm hover:shadow-lg"
-            >
-              {/* Subtle left accent bar on hover */}
-              <div className="absolute left-0 top-0 bottom-0 w-1 bg-yellow-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              
-              <div className="flex flex-col min-w-0 pr-3">
-                <span className="font-semibold text-sm sm:text-base text-gray-300 group-hover:text-yellow-400 transition-colors truncate">
-                  {movie.Title}
-                </span>
-                <span className="text-[10px] sm:text-xs text-gray-600 font-medium tracking-wider mt-1 uppercase">
-                  {movie.year} • Parents Guide
-                </span>
-              </div>
-              
-              <ArrowRight className="w-4 h-4 text-gray-600 group-hover:text-yellow-400 transform -translate-x-2 group-hover:translate-x-0 transition-all duration-300 shrink-0" />
-            </Link>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-});
-QuickLinksSection.displayName = 'QuickLinksSection';
-
-const FilmiwayHomepage = ({ huluCollections, thrillerCollections, hboCollections, peacockCollections, paramountCollections, top10EroticThrillers, top10TrendingMovies }) => {
+const FilmiwayHomepage = ({ huluCollections, thrillerCollections, hboCollections, peacockCollections, paramountCollections, top10EroticThrillers, top10EroticRomance, top10TrendingMovies }) => {
   const thrillerRef = useRef(null);
   const huluRef = useRef(null);
   const hboRef = useRef(null);
@@ -465,6 +409,12 @@ const FilmiwayHomepage = ({ huluCollections, thrillerCollections, hboCollections
               movies={top10EroticThrillers} 
             />
             
+            <Top10Section 
+              title="Top 10 Erotic Romance" 
+              description="Passionate, intimate, and highly searched romance films with complete Parents Guides." 
+              movies={top10EroticRomance} 
+            />
+            
             <MovieSection 
               title="The Thriller Gang" 
               description="Gripping crime, mystery, and revenge thrillers for the edge of your seat." 
@@ -481,12 +431,6 @@ const FilmiwayHomepage = ({ huluCollections, thrillerCollections, hboCollections
             
             <MovieSection title="Best of Peacock" description="NBCUniversal's finest: Edge-of-your-seat thrillers and sci-fi." movies={peacockCollections} sectionRef={peacockRef} viewAllLink="/streaming/peacock" />
             
-            {/* ⚡ SEO QUICK LINKS FOR FAST INDEXING */}
-            <QuickLinksSection 
-              title="Trending Parents Guides" 
-              movies={EROTIC_ROMANCE_DB} 
-              collectionSlug="best-erotic-romance-movies" 
-            />
           </div>
         </main>
 
@@ -600,12 +544,12 @@ export async function getStaticProps() {
 
   const usedPostersPerSection = { hulu: new Set(), thriller: new Set(), hbo: new Set(), peacock: new Set(), paramount: new Set() };
 
-  const fetchCollectionData = async (keys, sectionName) => {
-    const results = await Promise.all(keys.map(async (key) => {
+  const getCollectionData = (keys, sectionName) => {
+    const results = keys.map((key) => {
       const collection = COLLECTIONS[key];
       if (!collection) return null;
 
-      const posterPath = await fetchUniquePosterForCollection(collection.movies, sectionName, collection.slug, usedPostersPerSection[sectionName], TMDB_BASE_URL, TMDB_API_KEY);
+      const posterPath = getUniquePosterFromCache(collection.movies, collection.slug, usedPostersPerSection[sectionName]);
       if (!posterPath) return null;
 
       return {
@@ -616,41 +560,39 @@ export async function getStaticProps() {
         vote_average: collection.stats?.averageRating || 8.0,
         isCollection: true
       };
-    }));
+    });
 
     return results.filter(item => item !== null);
   };
 
-  // ⚡ Generic Fetcher for Top 10 Movies with Slugs
-  const fetchTop10MoviesWithSlugs = async (moviesList, fallbackPosters) => {
+  // ⚡ FAST CACHE FETCHER FOR TOP 10 LISTS
+  const getTop10MoviesWithSlugs = (moviesList, fallbackPosters) => {
     if (!moviesList) return [];
-    return await Promise.all(moviesList.slice(0, 10).map(async (movie) => {
+    return moviesList.slice(0, 10).map((movie) => {
       let posterUrl = fallbackPosters?.[movie.tmdbId] || null;
-      try {
-        const res = await fetch(`${TMDB_BASE_URL}/movie/${movie.tmdbId}?api_key=${TMDB_API_KEY}`);
-        const data = await res.json();
-        if (data.poster_path) {
-          posterUrl = `https://image.tmdb.org/t/p/w500${data.poster_path}`;
-        }
-      } catch (e) {
-        console.error("Error fetching top 10 poster for:", movie.Title);
+      
+      // Use local cache if available!
+      const cachedData = tmdbCache[movie.imdbID];
+      if (cachedData && cachedData.poster_path) {
+         posterUrl = `https://image.tmdb.org/t/p/w500${cachedData.poster_path}`;
       }
+      
       const collectionSlug = getPrimaryCollectionForMovie(movie.imdbID) || 'best-movies-of-the-decade'; // Fallback slug
       return { ...movie, posterUrl, collectionSlug };
-    }));
+    });
   };
 
   try {
-    const [huluData, thrillerData, hboData, peacockData, paramountData] = await Promise.all([
-      fetchCollectionData(huluKeys, 'hulu'),
-      fetchCollectionData(thrillerKeys, 'thriller'),
-      fetchCollectionData(hboKeys, 'hbo'),
-      fetchCollectionData(peacockKeys, 'peacock'),
-      fetchCollectionData(paramountKeys, 'paramount')
-    ]);
+    // ⚡ EVERYTHING IS NOW SYNCHRONOUS AND INSTANT
+    const huluData = getCollectionData(huluKeys, 'hulu');
+    const thrillerData = getCollectionData(thrillerKeys, 'thriller');
+    const hboData = getCollectionData(hboKeys, 'hbo');
+    const peacockData = getCollectionData(peacockKeys, 'peacock');
+    const paramountData = getCollectionData(paramountKeys, 'paramount');
 
-    const top10EroticThrillers = await fetchTop10MoviesWithSlugs(EROTIC_THRILLER_DB, EROTIC_THRILLER_POSTERS);
-    const top10TrendingMovies = await fetchTop10MoviesWithSlugs(TRENDING_DB, TRENDING_POSTERS);
+    const top10EroticThrillers = getTop10MoviesWithSlugs(EROTIC_THRILLER_DB, EROTIC_THRILLER_POSTERS);
+    const top10EroticRomance = getTop10MoviesWithSlugs(EROTIC_ROMANCE_DB, EROTIC_ROMANCE_POSTERS);
+    const top10TrendingMovies = getTop10MoviesWithSlugs(TRENDING_DB, TRENDING_POSTERS);
 
     return {
       props: {
@@ -660,6 +602,7 @@ export async function getStaticProps() {
         peacockCollections: peacockData,
         paramountCollections: paramountData,
         top10EroticThrillers,
+        top10EroticRomance,
         top10TrendingMovies
       },
       revalidate: 604800, 
@@ -674,6 +617,7 @@ export async function getStaticProps() {
         peacockCollections: [],
         paramountCollections: [],
         top10EroticThrillers: [],
+        top10EroticRomance: [],
         top10TrendingMovies: []
       },
     };
