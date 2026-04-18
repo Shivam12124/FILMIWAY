@@ -44,20 +44,25 @@ export default function App({ Component, pageProps }) {
       if (apiKey) {
         // 🔥 THE ULTIMATE CURE: If data is missing, we completely ignore the potentially 
         // broken tmdbId in the database and hunt it down fresh using the infallible IMDb ID!
-        fetch(`https://api.themoviedb.org/3/find/${imdbId}?api_key=${apiKey}&external_source=imdb_id`)
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 2000); // Kill after 2 seconds
+
+        fetch(`https://api.themoviedb.org/3/find/${imdbId}?api_key=${apiKey}&external_source=imdb_id`, { signal: controller.signal })
           .then(res => res.json())
           .then(findData => {
             if (findData?.movie_results?.[0]?.id) {
               const correctTmdbId = findData.movie_results[0].id;
-              fetch(`https://api.themoviedb.org/3/movie/${correctTmdbId}?api_key=${apiKey}&append_to_response=videos,images,release_dates`)
+              fetch(`https://api.themoviedb.org/3/movie/${correctTmdbId}?api_key=${apiKey}&append_to_response=videos,images,release_dates`, { signal: controller.signal })
                 .then(res => res.json())
                 .then(fullData => {
                   if (fullData?.id) {
                     setEnhancedProps(prev => ({ ...prev, tmdbData: fullData }));
                   }
-                }).catch(err => console.error("Full TMDB Fetch Failed:", err));
+                }).catch(err => console.warn("Background TMDB Fetch Skipped"));
             }
-          }).catch(err => console.error("Master Fallback Failed:", err));
+          })
+          .catch(err => console.warn("TMDB connection timeout or blocked"))
+          .finally(() => clearTimeout(timeoutId));
       }
     }
   }, [pageProps]);

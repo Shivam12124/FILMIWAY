@@ -1,5 +1,5 @@
 // components/Header.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
@@ -11,9 +11,26 @@ const Header = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const isSearchPage = currentPath === '/search';
 
+  // Clear memory when going home or searching to prevent "ghost" breadcrumbs
+  const clearCollectionMemory = () => {
+    if (typeof window !== 'undefined') {
+      sessionStorage.removeItem('fromCollection');
+      sessionStorage.removeItem('currentCollection');
+      sessionStorage.removeItem('collectionTitle');
+    }
+  };
+
+  // 🚀 AUTOMATIC GHOST MEMORY WIPER
+  useEffect(() => {
+    if (currentPath === '/' || isSearchPage || currentPath === '/collections') {
+      clearCollectionMemory();
+    }
+  }, [currentPath, isSearchPage]);
+
   const handleSearch = (e) => {
     e.preventDefault();
     if (searchQuery.trim()) {
+      clearCollectionMemory();
       router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
       setSearchQuery('');
     }
@@ -23,7 +40,7 @@ const Header = () => {
     <nav className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-xl select-none border-b border-white/5">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-14 sm:h-20 gap-3 sm:gap-6">
-          <Link href="/" className="flex items-center shrink-0">
+          <Link href="/" className="flex items-center shrink-0" onClick={clearCollectionMemory}>
             <div className="w-20 sm:w-32 h-full flex items-center">
               <Image 
                 src="/filmiway-logo.svg" 
@@ -57,7 +74,7 @@ const Header = () => {
             <button onClick={() => router.push('/search')} className={`${isSearchPage ? 'block' : 'md:hidden'} text-gray-400 hover:text-white transition-colors`} aria-label="Search">
               <Search className="w-5 h-5" />
             </button>
-            <Link href="/" className={`font-medium text-sm sm:text-base transition-colors ${currentPath === '/' ? 'text-yellow-500' : 'text-gray-300 hover:text-white'}`}>Home</Link>
+            <Link href="/" className={`font-medium text-sm sm:text-base transition-colors ${currentPath === '/' ? 'text-yellow-500' : 'text-gray-300 hover:text-white'}`} onClick={clearCollectionMemory}>Home</Link>
             <Link href="/collections" className={`font-medium text-sm sm:text-base transition-colors ${currentPath.startsWith('/collection') ? 'text-yellow-500' : 'text-gray-300 hover:text-white'}`}>Collections</Link>
           </div>
         </div>

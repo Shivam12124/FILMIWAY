@@ -134,7 +134,7 @@ const StrategicDNAHelix = React.memo(({ dna, dominantColor, className = "" }) =>
                                                 className="cursor-help" 
                                                 opacity="0.95"
                                             >
-                                                <title>{genreInfo.genre}: {genreInfo.percentage}%</title>
+                                                <title>{`${genreInfo.genre}: ${genreInfo.percentage}%`}</title>
                                             </circle>
                                             <circle 
                                                 cx={x2} cy={y} r="2.5" 
@@ -143,7 +143,7 @@ const StrategicDNAHelix = React.memo(({ dna, dominantColor, className = "" }) =>
                                                 className="cursor-help" 
                                                 opacity="0.95"
                                             >
-                                                <title>{genreInfo.genre}: {genreInfo.percentage}%</title>
+                                                <title>{`${genreInfo.genre}: ${genreInfo.percentage}%`}</title>
                                             </circle>
                                         </motion.g>
                                     </g>

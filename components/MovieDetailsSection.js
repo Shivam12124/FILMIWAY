@@ -615,8 +615,9 @@ const MovieDetailsSection = React.memo(({
    budget: safeMovieInfo.budget || 'N/A',
    boxOffice: safeMovieInfo.boxOffice || 'N/A',
    ageRating: safeMovieInfo.ageRating || movie.Rated || 'NR',
+   runtime: safeMovieInfo.runtime || movie.Runtime || '120 min',
    synopsis: safeMovieInfo.synopsis || movie.Plot || getUniqueDescription(),
-   runtime: safeMovieInfo.runtime || movie.Runtime || '120 min'
+   tagline: '' // 🔥 NEW: We will store the official movie tagline here
  });
 
  useEffect(() => {
@@ -626,26 +627,33 @@ const MovieDetailsSection = React.memo(({
            const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY || 'a07e22bc18f5cb106bfe4cc1f83ad8ed';
            let targetTmdbId = movie.tmdbId || movie.tmdbID;
            
+           // 🔥 ADDED ABORT CONTROLLER TO PREVENT HANGING FETCHES
+           const controller = new AbortController();
+           const timeoutId = setTimeout(() => controller.abort(), 5000);
+
            // 🔥 FIRST FETCH ATTEMPT
-           let detailsRes = await fetch(`https://api.themoviedb.org/3/movie/${targetTmdbId}?api_key=${API_KEY}`);
+           let detailsRes = await fetch(`https://api.themoviedb.org/3/movie/${targetTmdbId}?api_key=${API_KEY}`, { signal: controller.signal });
            
            // 🔥 THE ULTIMATE CURE: If the TMDB ID in the database is outdated/wrong, the fetch returns a 404.
            // If it fails, we instantly use the infallible IMDb ID to find the correct, updated TMDB ID!
            if (!detailsRes.ok && movie.imdbID) {
-               const findRes = await fetch(`https://api.themoviedb.org/3/find/${movie.imdbID}?api_key=${API_KEY}&external_source=imdb_id`);
+               const findRes = await fetch(`https://api.themoviedb.org/3/find/${movie.imdbID}?api_key=${API_KEY}&external_source=imdb_id`, { signal: controller.signal });
                const findData = await findRes.json();
                if (findData.movie_results?.length > 0) {
                    targetTmdbId = findData.movie_results[0].id;
-                   detailsRes = await fetch(`https://api.themoviedb.org/3/movie/${targetTmdbId}?api_key=${API_KEY}`);
+                   detailsRes = await fetch(`https://api.themoviedb.org/3/movie/${targetTmdbId}?api_key=${API_KEY}`, { signal: controller.signal });
                } else {
+                   clearTimeout(timeoutId);
                    return; // Exit if movie truly doesn't exist on TMDB
                }
            }
 
            const [creditsRes, releasesRes] = await Promise.all([
-               fetch(`https://api.themoviedb.org/3/movie/${targetTmdbId}/credits?api_key=${API_KEY}`),
-               fetch(`https://api.themoviedb.org/3/movie/${targetTmdbId}/release_dates?api_key=${API_KEY}`)
+               fetch(`https://api.themoviedb.org/3/movie/${targetTmdbId}/credits?api_key=${API_KEY}`, { signal: controller.signal }),
+               fetch(`https://api.themoviedb.org/3/movie/${targetTmdbId}/release_dates?api_key=${API_KEY}`, { signal: controller.signal })
            ]);
+           
+           clearTimeout(timeoutId);
 
            const details = await detailsRes.json();
            const credits = await creditsRes.json();
@@ -685,6 +693,7 @@ const MovieDetailsSection = React.memo(({
            
            // ✅ Fetch Runtime from TMDB and format it
            const newRuntime = details.runtime ? `${details.runtime} min` : dynamicMovieData.runtime;
+           const newTagline = details.tagline ? details.tagline : ''; // 🔥 Grab the TMDB Tagline
 
            setDynamicMovieData({
                director: newDirector,
@@ -693,11 +702,13 @@ const MovieDetailsSection = React.memo(({
                boxOffice: newRevenue,
                ageRating: newRating,
                synopsis: newSynopsis,
-               runtime: newRuntime // ✅ Update state with TMDB runtime
+               runtime: newRuntime,
+               tagline: newTagline // ✅ Update state
            });
 
        } catch (error) {
-           console.error("TMDB Auto-Fetch Failed:", error);
+           // 🔥 SILENT FAIL: Prevents terminal spam and hydration crashes if offline/ad-blocked
+           console.warn(`TMDB Client Fetch Skipped for ${movie.Title} (Using Local Data).`);
        }
    };
 
@@ -1452,107 +1463,6 @@ const MovieDetailsSection = React.memo(({
 
       {/* 🔥 MOVED SENSITIVE CONTENT HIGH UP TO IMMEDIATELY SHOW TIMESTAMP VALUE 🔥 */}
       <SensitiveContentTimelineSection movie={{...movie, Runtime: dynamicMovieData.runtime}} sensitiveScenes={sensitiveScenes} />
-
-{!fromParasiteCollection && 
-       !fromOldboyCollection && 
-       !fromHeistThrillerCollection && 
-       !fromDonnieDarkoCollection && 
-       !fromBlackSwanCollection && 
-       !fromEyesWideShutCollection && 
-       !fromHuluBestCollection && 
-       !fromHuluFamilyCollection && 
-       !fromHboMaxFamilyCollection && 
-       !fromHboMaxBestCollection && 
-       !fromParamountFamilyCollection && 
-       !fromParamountHorrorCollection &&
-       !fromParamountComedyCollection &&
-       !fromParamountBestCollection &&
-       !fromPeacockBestCollection &&
-       !fromRaunchyComedyCollection &&
-       !fromRoadTripCollection &&
-       !fromThoughtProvokingCollection &&
-       !fromNeoNoirCollection && !isTrueStoryMovie &&
-       !fromDecadeCollection &&
-       !fromGangsterCollection &&
-       !fromBookAdaptationCollection &&
-       !fromMarriageCrisisCollection &&
-       !fromA24Collection &&
-       !fromDarkComedyCollection &&
-       !fromFightClubCollection &&
-       (
-        <motion.div
-          className="mb-6 sm:mb-8 md:mb-12 bg-gradient-to-br from-gray-800/40 to-gray-900/60 rounded-lg sm:rounded-xl border border-gray-700/50 p-3 sm:p-4 md:p-8 shadow-2xl backdrop-blur-sm relative overflow-hidden"
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8 }}
-          whileHover={{ scale: 1.01 }}
-        >
-          {[
-            { pos: 'top-2 left-2 sm:top-4 sm:left-4', border: 'border-t-2 border-l-2' },
-            { pos: 'top-2 right-2 sm:top-4 sm:right-4', border: 'border-t-2 border-r-2' },
-            { pos: 'bottom-2 left-2 sm:bottom-4 sm:left-4', border: 'border-b-2 border-l-2' },
-            { pos: 'bottom-2 right-2 sm:bottom-4 sm:right-4', border: 'border-b-2 border-r-2' }
-          ].map((corner, i) => (
-            <div key={i} className={`absolute ${corner.pos} w-3 h-3 sm:w-5 sm:h-5 ${corner.border} ${getBorderColor()}`} />
-          ))}
-
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 sm:mb-6 md:mb-8 gap-3 sm:gap-4 md:gap-6">
-            <div className="flex items-center gap-2 sm:gap-3">
-              <Star className={`w-5 h-5 sm:w-6 sm:h-6 ${getStarColor()}`} />
-              <h3 className="text-lg sm:text-xl md:text-2xl font-light text-gray-200 tracking-normal sm:tracking-wide uppercase">
-                {getComplexityScoreTitle()}
-              </h3>
-            </div>
-
-            <div className="flex items-center gap-4 sm:gap-6 md:gap-8">
-              <div className="text-right">
-                <div className="text-2xl sm:text-3xl md:text-4xl font-extralight mb-0.5 sm:mb-1 tracking-normal sm:tracking-wider text-gray-200">{scoreValue}</div>
-                <div className="text-xs text-gray-400 font-light tracking-normal sm:tracking-wide uppercase">{getComplexityIndexLabel()}</div>
-              </div>
-              <div className="text-right">
-                <div className="text-2xl sm:text-3xl md:text-4xl font-extralight mb-0.5 sm:mb-1 tracking-normal sm:tracking-wider text-gray-200">{rating}</div>
-                <div className="text-xs text-gray-400 font-light tracking-normal sm:tracking-wide uppercase">IMDB RATING</div>
-              </div>
-            </div>
-          </div>
-
-          <div className="space-y-3 sm:space-y-4 md:space-y-6">
-            <div>
-              <div className="flex items-center justify-between mb-2 sm:mb-2.5">
-                <span className="text-xs sm:text-sm text-gray-300 font-light tracking-normal sm:tracking-wider uppercase">{getComplexityLevelLabel()}</span>
-                <span
-                  className="text-sm font-light px-3 py-1 sm:px-4 sm:py-2 rounded-lg border backdrop-blur-sm tracking-wider uppercase"
-                  style={{
-                    color: getComplexityColor(complexityLevel),
-                    borderColor: getComplexityColor(complexityLevel),
-                    backgroundColor: `${getComplexityColor(complexityLevel)}15`
-                  }}
-                >
-                  {complexityLevel}
-                </span>
-              </div>
-
-              <div className="relative w-full bg-gray-700/50 rounded-full h-4 overflow-hidden">
-                <motion.div
-                  className="h-full rounded-full relative"
-                  style={{ backgroundColor: getComplexityColor(complexityLevel) }}
-                  initial={{ width: 0 }}
-                  animate={{ width: `${scoreValue}%` }}
-                  transition={{ duration: 2, delay: 0.5, ease: 'easeOut' }}
-                >
-                  <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent animate-pulse" />
-                </motion.div>
-                <div className="absolute -top-1 sm:-top-2 left-0 w-full flex justify-between">
-                  {[25, 50, 75].map((mark) => (
-                    <div key={mark} className={`w-0.5 sm:w-1 h-4 sm:h-7 rounded-full ${getBorderColor().replace('border', 'bg').replace('/40', '/30')}`} style={{ left: `${mark}%` }} />
-                  ))}
-                </div>
-              </div>
-              <p className="text-gray-300/90 text-sm font-light leading-relaxed tracking-wide mt-3">{getComplexityDescription()}</p>
-            </div>
-          </div>
-        </motion.div>
-      )}
 
       {/* ✅ SEO FIX: Only render graphs if data exists! No placeholder data shown to users. */}
       {safeMovieInfo?.scenes && safeMovieInfo.scenes.length > 0 && (

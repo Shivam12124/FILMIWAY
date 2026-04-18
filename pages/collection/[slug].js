@@ -64,6 +64,8 @@ import { COMPLETE_MOVIE_DATABASE as MARRIAGE_CRISIS_DATABASE, COMPLETE_MOVIE_DAT
 import { COMPLETE_MOVIE_DATABASE as A24_DATABASE, COMPLETE_MOVIE_DATA as A24_DATA } from '../../utils/a24MovieData';
 import { COMPLETE_MOVIE_DATABASE as DARK_COMEDY_DATABASE, COMPLETE_MOVIE_DATA as DARK_COMEDY_DATA } from '../../utils/darkComedyMovieData';
 
+import masterDatabase from '../../utils/masterDatabase.json';
+
 import { COMPLETE_MOVIE_DATABASE as HULU_FAMILY_DATABASE, COMPLETE_MOVIE_DATA as HULU_FAMILY_DATA } from '../../utils/huluFamilyMovieData';
 import { COMPLETE_MOVIE_DATABASE as HBO_ACTION_DATABASE, COMPLETE_MOVIE_DATA as HBO_ACTION_DATA } from '../../utils/hboActionMovieData';
 import { COMPLETE_MOVIE_DATABASE as HBO_MAX_ROMANCE_DATABASE, COMPLETE_MOVIE_DATA as HBO_MAX_ROMANCE_DATA } from '../../utils/hboMaxRomanceMovieData';
@@ -4567,6 +4569,7 @@ return (
                             <Link
                                
                             href={`/movies/${collection.slug}/${currentMovie.imdbID}`}
+                            href={`/movie/${currentMovie.slug}`}
                                 key={currentMovieIndex}
                                 onClick={handleMovieClick}
                             >
@@ -4996,10 +4999,13 @@ case 'best-sci-fi-movies':
             const movie = movieArray.find(m => m.imdbID === imdbId);
             if (!movie) return null;
 
+            const masterMovie = masterDatabase.find(m => m.imdbID === movie.imdbID);
+
             return {
                 imdbID: movie.imdbID || '',
                 tmdbId: movie.tmdbId || 0,
                 Title: movie.Title || movie.title || 'Unknown',
+                slug: masterMovie?.slug || movie.imdbID,
                 Year: movie.Year || movie.year || '2024',
                 Genre: movie.Genre || movie.genre || 'Thriller',
                 Runtime: movie.Runtime || movie.runtime || 120,

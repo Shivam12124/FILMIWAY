@@ -16,12 +16,16 @@ const TMDBMoviePoster = React.memo(({ movie, className = "", alt, posterSize = "
     // 🔥 SEARCH BY MOVIE TITLE + YEAR IF DIRECT ID FAILS
     const searchMovieByTitle = useCallback(async (title, year) => {
         try {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 3000);
             const searchResponse = await fetch(
-                `${TMDB_BASE_URL}/search/movie?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(title)}&year=${year}`
+                `${TMDB_BASE_URL}/search/movie?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(title)}&year=${year}`,
+                { signal: controller.signal }
             );
             
             if (searchResponse.ok) {
                 const searchData = await searchResponse.json();
+                clearTimeout(timeoutId);
                 
                 // Find exact match by year
                 const exactMatch = searchData.results.find(result => 
@@ -46,16 +50,22 @@ const TMDBMoviePoster = React.memo(({ movie, className = "", alt, posterSize = "
     // Fetch poster with search fallback
     const fetchMoviePoster = useCallback(async (tmdbId) => {
         try {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 3000);
+
             // Step 1: Try direct TMDB ID
             let response = await fetch(
-                `${TMDB_BASE_URL}/movie/${tmdbId}?api_key=${TMDB_API_KEY}&language=en-US`
+                `${TMDB_BASE_URL}/movie/${tmdbId}?api_key=${TMDB_API_KEY}&language=en-US`,
+                { signal: controller.signal }
             );
             
             let data = null;
             
             if (response.ok) {
                 data = await response.json();
+                clearTimeout(timeoutId);
             } else {
+                clearTimeout(timeoutId);
                 // Step 2: Search by title + year
                 data = await searchMovieByTitle(movie.Title, movie.Year);
             }

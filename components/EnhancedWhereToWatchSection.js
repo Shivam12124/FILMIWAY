@@ -159,11 +159,16 @@ async function detectUserCountry() {
 }
 
 async function getAllRegionStreamingData(tmdbId, title) {
-  const apiKey = '6054e5498fb2619274454959c38bbdfa';
+  const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY || 'a07e22bc18f5cb106bfe4cc1f83ad8ed';
   const streamingData = {};
 
   try {
-    const response = await fetch(`https://api.themoviedb.org/3/movie/${tmdbId}/watch/providers?api_key=${apiKey}`);
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 2000);
+    
+    const response = await fetch(`https://api.themoviedb.org/3/movie/${tmdbId}/watch/providers?api_key=${apiKey}`, { signal: controller.signal });
+    clearTimeout(timeoutId);
+    
     if (!response.ok) return {};
 
     const data = await response.json();
