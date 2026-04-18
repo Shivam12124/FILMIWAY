@@ -31,7 +31,7 @@ const UniversalBanner = ({ movie, isMobile }) => {
     const [countdown, setCountdown] = useState(4);
     const [hasClosedTrailer, setHasClosedTrailer] = useState(false);
     const [trailerKey, setTrailerKey] = useState(null);
-    const [tagline, setTagline] = useState('');
+    const [tagline, setTagline] = useState(movie?.Tagline || '');
     const timerRef = useRef(null);
 
     // Dynamically fetch the trailer just for this component so it doesn't slow down the server!
@@ -42,7 +42,8 @@ const UniversalBanner = ({ movie, isMobile }) => {
                 .then(data => {
                     const trailer = data.videos?.results?.find(v => v.type === 'Trailer' && v.site === 'YouTube');
                     if (trailer) setTrailerKey(trailer.key);
-                    if (data.tagline) setTagline(data.tagline);
+                    // Fallback: If the cache missed the tagline, fetch it live
+                    if (!movie?.Tagline && data.tagline) setTagline(data.tagline);
                 })
                 .catch(() => {});
         }
@@ -72,7 +73,7 @@ const UniversalBanner = ({ movie, isMobile }) => {
       .mobile-hero-row { display: flex; flex-direction: row; align-items: flex-start; width: 100vw; max-width: 100vw; gap: 10px; margin: 0; padding: 0 8px; }
       .mobile-hero-poster { width: 38vw; min-width: 106px; border-radius: 12px; overflow: hidden; box-shadow: 0 3px 14px #0007; margin: 0; flex-shrink: 0; }
       .mobile-hero-poster img { width: 100%; height: auto; border-radius: 12px; display: block; }
-      .mobile-psych-card { background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%); border-radius: 12px; box-shadow: 0 2px 12px #0006; margin: 0; flex: 1; border-left: 4px solid #eab308; display: flex; flex-direction: column; justify-content: flex-start; padding: 10px 10px 10px 12px; min-height: 110px; position: relative; }
+      .mobile-psych-card { background: #000000; border-radius: 12px; box-shadow: -6px 0 16px -6px rgba(234, 179, 8, 0.8), 0 2px 12px #0006; margin: 0; flex: 1; border-left: 4px solid #eab308; display: flex; flex-direction: column; justify-content: flex-start; padding: 10px 10px 10px 12px; min-height: 110px; position: relative; }
       .mobile-psych-row { display: flex; align-items: flex-start; gap: 7px; }
       .mobile-psych-icon { min-width: 24px; min-height: 24px; color: #facc15; margin-top: 2px; }
       .mobile-psych-title { font-size: 15px; font-weight: bold; color: #facc15; margin-bottom: 1px; line-height: 1.12; }
@@ -80,20 +81,20 @@ const UniversalBanner = ({ movie, isMobile }) => {
     }`;
 
     return (
-      <motion.div className="relative w-full overflow-hidden mb-6 sm:mb-8 mx-0 sm:mx-4 lg:mx-6 rounded-none sm:rounded-3xl" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8 }}>
+      <motion.div className="relative w-[100vw] left-[50%] right-[50%] -ml-[50vw] -mr-[50vw] overflow-hidden mb-6 sm:mb-8" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8 }}>
         <style>{mobileHeroCSS}</style>
         <div className="relative h-[300px] sm:h-[400px] lg:h-[600px]">
           <AnimatePresence mode="wait">
             {showTrailer && trailerKey ? (
-               <motion.div key="trailer" className="absolute inset-0 rounded-none sm:rounded-3xl overflow-hidden" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+               <motion.div key="trailer" className="absolute inset-0 overflow-hidden" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
                  <iframe width="100%" height="100%" src={`https://www.youtube.com/embed/${trailerKey}?autoplay=1&mute=1&controls=1`} allow="autoplay; encrypted-media" allowFullScreen className="w-full h-full border-0" />
                  <button onClick={handleCloseTrailer} className="absolute top-4 right-4 sm:top-6 sm:right-6 p-2 sm:p-3 rounded-full backdrop-blur-md shadow-xl transition-all duration-300 hover:scale-110 z-50" style={{ backgroundColor: `${COLORS.bgPrimary}DD`, color: COLORS.textPrimary }}><X className="w-4 h-4 sm:w-5 sm:h-5" /></button>
                </motion.div>
             ) : (
-              <motion.div key="image" className="absolute inset-0 rounded-none sm:rounded-3xl overflow-hidden" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
+              <motion.div key="image" className="absolute inset-0 overflow-hidden" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
                 <div className="relative w-full h-full">
-                  {bannerImage ? <Image src={bannerImage} alt={`${movie?.Title} banner`} fill priority sizes="100vw" quality={90} className="object-cover" /> : <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: COLORS.bgCard }}><Film className="w-16 h-16 sm:w-24 sm:h-24" style={{ color: COLORS.textMuted }} /></div>}
-                  <div className="absolute inset-0 z-10" style={{ background: `linear-gradient(to bottom, transparent 0%, transparent 60%, ${COLORS.bgPrimary}80 85%, ${COLORS.bgPrimary} 100%)` }} />
+                  {bannerImage ? <Image src={bannerImage} alt={`${movie?.Title} banner`} fill priority sizes="100vw" quality={90} className="object-cover" /> : <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: '#000000' }}><Film className="w-16 h-16 sm:w-24 sm:h-24" style={{ color: COLORS.textMuted }} /></div>}
+                  <div className="absolute inset-0 z-10" style={{ background: `linear-gradient(to bottom, transparent 0%, transparent 50%, #000000 90%, #000000 100%), linear-gradient(to right, #000000 0%, transparent 15%, transparent 85%, #000000 100%)` }} />
                 </div>
                 {trailerKey && (
                   <motion.div className="absolute inset-0 flex items-center justify-center z-20" initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 1, duration: 0.8 }}>
@@ -112,33 +113,33 @@ const UniversalBanner = ({ movie, isMobile }) => {
   
         {isMobile ? (
           <div className="mobile-hero-row">
-            <div className="mobile-hero-poster">{posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} width={320} height={480} className="w-full h-auto" priority /> : <div style={{ background: COLORS.bgCard, width: '100%', height: '150px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Film style={{ color: COLORS.textMuted }} /></div>}</div>
+            <div className="mobile-hero-poster">{posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} width={320} height={480} className="w-full h-auto" priority /> : <div style={{ background: '#000000', width: '100%', height: '150px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Film style={{ color: COLORS.textMuted }} /></div>}</div>
             <div className="mobile-psych-card">
               <div className="mobile-psych-row"><Star className="mobile-psych-icon" /><div><div className="mobile-psych-title">At a Glance</div></div></div>
               <div className="mobile-psych-desc text-sm mt-1">
-                <strong>{movie.Rated || 'NR'}</strong> - {tagline ? <span className="text-yellow-400 italic">"{tagline}"</span> : `${insight.substring(0, 85)}...`}
+                {tagline ? <span className="text-white italic font-medium">"{tagline}"</span> : <span className="text-white font-medium">{insight.substring(0, 85)}...</span>}
               </div>
             </div>
           </div>
         ) : (
-          <div className="relative px-3 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8 z-20" style={{ backgroundColor: COLORS.bgPrimary }}>
-            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 lg:gap-8 items-start">
+          <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8">
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 lg:gap-10 items-start">
               <motion.div className="flex-shrink-0 relative w-24 sm:w-48 md:w-56 lg:w-80 mx-auto sm:mx-0" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8, duration: 0.8 }}>
                 <div className="relative" style={{ aspectRatio: '2/3' }}>
-                  {posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} fill sizes="(max-width: 640px) 96px, (max-width: 768px) 192px, (max-width: 1024px) 224px, 320px" quality={85} className="object-cover rounded-lg sm:rounded-xl shadow-2xl" /> : <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: COLORS.bgCard, borderRadius: '12px' }}><Film style={{ color: COLORS.textMuted }} /></div>}
+                  {posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} fill sizes="(max-width: 640px) 96px, (max-width: 768px) 192px, (max-width: 1024px) 224px, 320px" quality={85} className="object-cover rounded-lg sm:rounded-xl shadow-2xl border border-white/5" /> : <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: '#000000', borderRadius: '12px' }}><Film style={{ color: COLORS.textMuted }} /></div>}
                 </div>
               </motion.div>
-              <motion.div className="flex-1 w-full min-w-0" initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 1.0, duration: 0.8 }}>
-                <motion.div className="relative rounded-xl sm:rounded-2xl overflow-hidden p-4 sm:p-6 lg:p-8 backdrop-blur-sm" style={{ background: `linear-gradient(135deg, rgba(234, 179, 8, 0.15) 0%, rgba(10, 10, 10, 0.5) 100%)`, border: `1px solid ${COLORS.borderLight}`, boxShadow: `0 8px 32px rgba(234, 179, 8, 0.2)` }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.1, duration: 0.8 }}>
+              <motion.div className="w-full sm:w-3/4 md:w-2/3 lg:w-[55%] xl:w-[45%] min-w-0" initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 1.0, duration: 0.8 }}>
+                <motion.div className="relative rounded-xl sm:rounded-2xl overflow-hidden p-4 sm:p-6 lg:p-8" style={{ background: '#000000', border: `1px solid ${COLORS.borderLight}`, boxShadow: `0 8px 32px rgba(234, 179, 8, 0.2)` }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.1, duration: 0.8 }}>
                   <div className="absolute top-0 left-0 right-0 h-0.5 sm:h-1" style={{ background: `linear-gradient(90deg, transparent, ${COLORS.accent}, transparent)` }} />
                   <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5">
                     <motion.div className="p-2 sm:p-2.5 rounded-lg sm:rounded-xl flex-shrink-0" style={{ background: `linear-gradient(135deg, ${COLORS.accent}20, ${COLORS.accent}10)`, border: `1px solid ${COLORS.accent}40` }} whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}><Star className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" style={{ color: COLORS.accent }} /></motion.div>
                     <div className="min-w-0 flex-1"><h2 className="text-sm sm:text-base lg:text-xl xl:text-2xl font-bold leading-tight" style={{ color: COLORS.accent }}>At a Glance</h2></div>
                   </div>
-                  <div className="relative pl-4 sm:pl-6 border-l-2" style={{ borderColor: `${COLORS.accent}40` }}>
+                  <div className="relative pl-4 sm:pl-6 border-l-[3px]" style={{ borderColor: COLORS.accent, boxShadow: `-8px 0 16px -6px rgba(234, 179, 8, 0.6)` }}>
                     <motion.div className="absolute -left-1.5 sm:-left-2 top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full" style={{ backgroundColor: COLORS.accent }} animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 2, repeat: Infinity }} />
-                    <p className="text-xs sm:text-sm lg:text-base xl:text-lg leading-relaxed font-normal break-words" style={{ color: COLORS.textSecondary, lineHeight: '1.8' }}>
-                      {tagline ? <span className="text-yellow-400/90 italic font-medium">"{tagline}"</span> : insight}
+                    <p className="text-sm sm:text-base lg:text-lg xl:text-xl leading-relaxed font-normal break-words" style={{ color: COLORS.textSecondary, lineHeight: '1.6' }}>
+                      {tagline ? <span className="text-white italic font-medium tracking-wide">"{tagline}"</span> : <span className="text-white tracking-wide">{insight}</span>}
                     </p>
                   </div>
                 </motion.div>
@@ -309,7 +310,8 @@ export async function getStaticProps({ params }) {
         backdrop_path: cacheData.backdrop_path || null,
         Poster: cacheData.poster_path ? `https://image.tmdb.org/t/p/w780${cacheData.poster_path}` : null,
         Plot: cacheData.overview || '',
-        Rated: cacheData.ageRating || 'NR'
+        Rated: cacheData.ageRating || 'NR',
+        Tagline: cacheData.tagline || ''
     };
     
     return { props: { movie } };
