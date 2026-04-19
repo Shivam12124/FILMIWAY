@@ -10,6 +10,7 @@ import MovieDetailsSection from '../../components/MovieDetailsSection';
 import masterDatabase from '../../utils/masterDatabase.json';
 import tmdbCache from '../../data/tmdbCache.json';
 import CinematicBackground from '../../components/CinematicBackground';
+import { getPrimaryCollectionForMovie, COLLECTIONS } from '../../data/collections';
 
 // ✅ THEME COLORS FOR UNIVERSAL BANNER
 const COLORS = {
@@ -236,7 +237,15 @@ const getCollectionProp = (sourceFile) => {
 
 export default function UniversalMoviePage({ movie }) {
     const router = useRouter();
-    const [breadcrumb, setBreadcrumb] = useState({ label: 'HOME', url: '/' });
+    
+    // 🔥 The Magic: Automatically generate the breadcrumb based on the Primary Collection!
+    const getCleanTitle = (title) => title.toUpperCase().replace(/^(THE\s+)?(10\s+)?(TOP\s+10\s+)?BEST\s+/i, '').replace(/^(10\s+)?(.*?)\s*MOVIES\s+LIKE\s+/i, '').replace(/\s+MOVIES(\s+OF\s+ALL\s+TIME)?$/i, '').replace(/\s*\(.*?\)$/i, '');
+    
+    const defaultLabel = movie?.primaryCollectionTitle ? `BACK TO ${getCleanTitle(movie.primaryCollectionTitle)}` : 'BACK TO HOME';
+    const defaultUrl = movie?.primaryCollectionSlug ? `/collection/${movie.primaryCollectionSlug}` : '/';
+
+    // Initialize state immediately with the dynamic breadcrumb so Google Bots can crawl it!
+    const [breadcrumb, setBreadcrumb] = useState({ label: defaultLabel, url: defaultUrl });
     const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
@@ -247,17 +256,16 @@ export default function UniversalMoviePage({ movie }) {
     }, []);
 
     useEffect(() => {
-        // FLAWLESS BREADCRUMB LOGIC (Fixed for Next.js Client-Side Routing)
         const fromCollection = sessionStorage.getItem('fromCollection');
         const savedCollectionSlug = sessionStorage.getItem('currentCollection');
         const savedCollectionTitle = sessionStorage.getItem('collectionTitle');
         
+        // Only override the default if they specifically clicked through from a DIFFERENT collection during this session
         if (fromCollection === 'true' && savedCollectionTitle && savedCollectionSlug) {
-            // 🔥 Strip out "Best" and "Movies" to make it sleek and professional (e.g., "BACK TO MYSTERY THRILLER")
-            const cleanTitle = savedCollectionTitle.toUpperCase().replace(/^BEST\s+/i, '').replace(/\s+MOVIES$/i, '');
-            setBreadcrumb({ label: `BACK TO ${cleanTitle}`, url: `/collection/${savedCollectionSlug}` });
-        } else {
-            setBreadcrumb({ label: 'BACK TO HOME', url: '/' });
+            setBreadcrumb({ 
+                label: `BACK TO ${getCleanTitle(savedCollectionTitle)}`, 
+                url: `/collection/${savedCollectionSlug}` 
+            });
         }
     }, []);
 
@@ -280,7 +288,7 @@ export default function UniversalMoviePage({ movie }) {
                 <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }} className="mb-6 sm:mb-8 relative z-50">
                     <Link href={breadcrumb.url} className="inline-flex items-center gap-1.5 text-gray-500 hover:text-gray-200 transition-colors text-xs sm:text-sm font-medium tracking-[0.1em] uppercase group">
                         <ChevronLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" /> 
-                        {breadcrumb.label}
+                        <span suppressHydrationWarning>{breadcrumb.label}</span>
                     </Link>
                 </motion.div>
 
@@ -304,6 +312,10 @@ export async function getStaticProps({ params }) {
     
     const cacheData = tmdbCache[baseMovie.imdbID] || {};
     
+    // 🔥 Look up the primary collection for this specific movie
+    const primarySlug = getPrimaryCollectionForMovie(baseMovie.imdbID);
+    const primaryTitle = primarySlug && COLLECTIONS[primarySlug] ? COLLECTIONS[primarySlug].title : null;
+
     const movie = {
         ...baseMovie,
         poster_path: cacheData.poster_path || null,
@@ -311,7 +323,9 @@ export async function getStaticProps({ params }) {
         Poster: cacheData.poster_path ? `https://image.tmdb.org/t/p/w780${cacheData.poster_path}` : null,
         Plot: cacheData.overview || '',
         Rated: cacheData.ageRating || 'NR',
-        Tagline: cacheData.tagline || ''
+        Tagline: cacheData.tagline || '',
+        primaryCollectionSlug: primarySlug || null,
+        primaryCollectionTitle: primaryTitle || null
     };
     
     return { props: { movie } };
