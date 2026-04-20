@@ -63,6 +63,7 @@ import { COMPLETE_MOVIE_DATABASE as BOOK_ADAPTATION_DATABASE, COMPLETE_MOVIE_DAT
 import { COMPLETE_MOVIE_DATABASE as MARRIAGE_CRISIS_DATABASE, COMPLETE_MOVIE_DATA as MARRIAGE_CRISIS_DATA } from '../../utils/marriageCrisisMovieData';
 import { COMPLETE_MOVIE_DATABASE as A24_DATABASE, COMPLETE_MOVIE_DATA as A24_DATA } from '../../utils/a24MovieData';
 import { COMPLETE_MOVIE_DATABASE as DARK_COMEDY_DATABASE, COMPLETE_MOVIE_DATA as DARK_COMEDY_DATA } from '../../utils/darkComedyMovieData';
+import { COMPLETE_MOVIE_DATABASE as PTA_DATABASE, COMPLETE_MOVIE_DATA as PTA_DATA } from '../../utils/ptaMoviesData';
 
 import masterDatabase from '../../utils/masterDatabase.json';
 
@@ -1651,6 +1652,29 @@ const getCollectionContent = () => {
                 text2: "Prepare to laugh at things you probably shouldn't. These films are as insightful as they are uncompromisingly dark."
             }
         };
+    } else if (collection.slug === 'best-paul-thomas-anderson-movies') {
+        return {
+            badge: "Auteur Cinema",
+            title: "Paul Thomas Anderson Movies Ranked",
+            description: "The complete filmography of Paul Thomas Anderson, ranked from worst to best, featuring intense character studies and cinematic mastery.",
+            selection: {
+                text1: "From the sprawling epic of 'Magnolia' to the psychological warfare of 'There Will Be Blood', PTA's filmography is a masterclass in modern American cinema.",
+                text2: "Each selection features incredible ensemble casts, brilliant long takes, and deeply flawed characters searching for connection and meaning."
+            },
+            ranking: {
+                text: "Our Auteur Vision Index evaluates character depth, cinematic mastery, thematic ambition, and the sheer audacity of PTA's direction.",
+                points: [
+                    "Character study complexity",
+                    "Cinematic and visual mastery",
+                    "Thematic depth and ambition",
+                    "Overall auteur execution"
+                ]
+            },
+            experience: {
+                text1: "Prepare for sweeping narratives, existential dread, and the most compelling character arcs of the 21st century.",
+                text2: "Each film serves as a defining cultural milestone that rewards multiple viewings and deep analysis."
+            }
+        };
     } else if (collection.slug === 'best-neo-noir-movies') {
         return {
             badge: "Neon & Shadows",
@@ -2416,6 +2440,11 @@ subtitle: "While everyone searches Netflix, these classics hide in plain sight. 
             title: "10 Best Dark Comedy Movies",
             subtitle: "Bleak humor, deep cynicism, and the absurdity of the human condition"
         };
+    } else if (collection.slug === 'best-paul-thomas-anderson-movies') {
+        return {
+            title: "Paul Thomas Anderson Movies Ranked (Worst to Best)",
+            subtitle: "Intense character studies, cinematic mastery, and auteur-driven masterpieces"
+        };
 
     } else if (collection.slug === 'movies-like-interstellar') {
         return {
@@ -2614,6 +2643,11 @@ const getLoaderContent = () => {
         return {
             title: "Loading Best Dark Comedy Movies",
             description: "Curating pitch-black comedies and satirical masterpieces with community reviews"
+        };
+    } else if (collection?.slug === 'best-paul-thomas-anderson-movies') {
+        return {
+            title: "Loading Paul Thomas Anderson Movies",
+            description: "Curating the complete filmography of an American auteur with community reviews and ratings"
         };
 
 } else if (collection?.slug === 'movies-like-donnie-darko') {
@@ -3130,6 +3164,15 @@ const getStaticMetaContent = () => {
             ogTitle: "10 Best Dark Comedy Movies: Cynical Masterpieces",
             twitterTitle: "The 10 Best Dark Comedy Movies You Need to Watch",
             progressText: `of Top ${movies.length} Dark Comedy Movies`
+        };
+    } else if (collection.slug === 'best-paul-thomas-anderson-movies') {
+        return {
+            title: "All Paul Thomas Anderson Movies Ranked (Worst to Best)",
+            description: "The complete filmography of Paul Thomas Anderson ranked. From Magnolia to There Will Be Blood. Includes an exact Timestamps & Parents Guide.",
+            keywords: "paul thomas anderson movies ranked, best pta movies, there will be blood, boogie nights, magnolia, auteur films",
+            ogTitle: "All Paul Thomas Anderson Movies Ranked: Auteur Masterpieces",
+            twitterTitle: "Every Paul Thomas Anderson Movie Ranked from Worst to Best",
+            progressText: `of PTA's Filmography`
         };
 
 
@@ -3757,6 +3800,7 @@ const getStaticMetaContent = () => {
             sessionStorage.removeItem('fromMarriageCrisisCollection');
             sessionStorage.removeItem('fromA24Collection');
             sessionStorage.removeItem('fromDarkComedyCollection');
+            sessionStorage.removeItem('fromPtaCollection');
 
             // Set appropriate collection flag âœ…
             if (collection.slug === 'movies-like-inception') {
@@ -3909,6 +3953,8 @@ const getStaticMetaContent = () => {
                 sessionStorage.setItem('fromA24Collection', 'true');
             } else if (collection.slug === 'best-dark-comedy-movies') {
                 sessionStorage.setItem('fromDarkComedyCollection', 'true');
+            } else if (collection.slug === 'best-paul-thomas-anderson-movies') {
+                sessionStorage.setItem('fromPtaCollection', 'true');
             }
         }
     };
@@ -4430,6 +4476,8 @@ return (
 : collection?.slug === 'best-movies-on-paramount-plus' // 
         ? 'movies/best-movies-on-paramount-plus/'
                                     
+        : collection?.slug === 'best-paul-thomas-anderson-movies'
+? 'movies/best-paul-thomas-anderson-movies/'
                                     
                                      
                                     : collection?.slug === 'movies-like-interstellar'
@@ -4809,6 +4857,9 @@ case 'best-action-movies':
             break;
         case 'best-dark-comedy-movies':
             movieDatabase = DARK_COMEDY_DATABASE;
+            break;
+        case 'best-paul-thomas-anderson-movies':
+            movieDatabase = PTA_DATABASE;
             break;
 
             case 'best-action-movies-on-hulu':

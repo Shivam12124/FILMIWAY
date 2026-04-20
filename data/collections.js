@@ -1044,6 +1044,20 @@ export const COLLECTIONS = {
     relatedCollections: ['best-comedy-movies-on-hulu', 'best-thought-provoking-movies', 'best-movies-about-greed']
   },
 
+// 🎬 PAUL THOMAS ANDERSON MOVIES RANKED
+  'best-paul-thomas-anderson-movies': {
+    slug: 'best-paul-thomas-anderson-movies',
+    title: 'All Paul Thomas Anderson Movies Ranked',
+    stats: { averageRating: 7.7 },
+    badges: [
+      { label: "AUTEUR", desc: "Masterful direction" },
+      { label: "CHARACTER", desc: "Deep psychological studies" },
+      { label: "ENSEMBLE", desc: "Incredible casts" }
+    ],
+    movies: ['tt0469494', 'tt0118749', 'tt31046187', 'tt1560747', 'tt5776858', 'tt0175880', 'tt0272338', 'tt11271038', 'tt0119256', 'tt1791528'],
+    relatedCollections: ['best-drama-movies-on-hbo-max', 'best-thought-provoking-movies', 'best-movies-of-the-decade']
+  },
+
   // 🩸 BEST THRILLER MOVIES
   'best-thriller-movies': {
     slug: 'best-thriller-movies',
@@ -1058,6 +1072,9 @@ export const COLLECTIONS = {
     relatedCollections: ['best-psychological-thriller-movies', 'best-crime-thriller-movies', 'best-mystery-thriller-movies']
   }
 };
+
+
+
 
 // 🔍 COLLECTION ACCESSORS
 export const getAllCollectionSlugs = () => Object.keys(COLLECTIONS);
@@ -1099,6 +1116,7 @@ export const getMarriageCrisisCollection = () => COLLECTIONS['best-marriage-cris
 export const getBestA24MoviesCollection = () => COLLECTIONS['best-a24-movies'];
 export const getFightClubCollection = () => COLLECTIONS['movies-like-fight-club'];
 export const getDarkComedyCollection = () => COLLECTIONS['best-dark-comedy-movies'];
+export const getPtaCollection = () => COLLECTIONS['best-paul-thomas-anderson-movies'];
 export const getBestActionCollection = () => COLLECTIONS['best-action-movies'];
 // ============================================================================
 // 🧠 THE MASTER CANONICAL BRAIN

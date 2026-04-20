@@ -226,6 +226,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://filmiway.com/movie/magnolia</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://filmiway.com/movie/eyes-wide-shut</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -916,6 +921,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://filmiway.com/movie/boogie-nights</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://filmiway.com/movie/the-fugitive</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -977,6 +987,16 @@
   </url>
   <url>
     <loc>https://filmiway.com/movie/highlander</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://filmiway.com/movie/punch-drunk-love</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://filmiway.com/movie/hard-eight</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -1576,6 +1596,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://filmiway.com/movie/the-master</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://filmiway.com/movie/oz-the-great-and-powerful</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -1747,6 +1772,11 @@
   </url>
   <url>
     <loc>https://filmiway.com/movie/brooklyn</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://filmiway.com/movie/inherent-vice</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -2076,6 +2106,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://filmiway.com/movie/phantom-thread</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://filmiway.com/movie/the-death-of-stalin</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -2347,6 +2382,11 @@
   </url>
   <url>
     <loc>https://filmiway.com/movie/evil-dead-rise</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://filmiway.com/movie/licorice-pizza</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -2642,6 +2682,11 @@
   </url>
   <url>
     <loc>https://filmiway.com/movie/longlegs</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://filmiway.com/movie/one-battle-after-another</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>

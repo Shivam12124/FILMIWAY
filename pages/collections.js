@@ -7,7 +7,7 @@ import Image from 'next/image';
 import { 
     Search, Brain, Mountain, Film, ChevronDown, Sparkles, Plus, 
     Star, Clock, Eye, Scale, DollarSign, Shield, Zap, Heart, 
-    Moon, Ghost, Smile, Crown, Flame, Map, Crosshair, Award,HeartCrack, BookOpen,Rocket 
+    Moon, Ghost, Smile, Crown, Flame, Map, Crosshair, Award,HeartCrack,Camera, BookOpen,Rocket 
 } from 'lucide-react';
 import Header from '../components/Header';
 
@@ -18,7 +18,7 @@ const CollectionsHub = () => {
     const [activeCategory, setActiveCategory] = useState('All');
     const [expandedCollection, setExpandedCollection] = useState(null);
 
-    const categories = ['All', 'Streaming Guides', 'Movies Like...', 'Genres', 'Themes & Vibes'];
+  const categories = ['All', 'Streaming Guides', 'Movies Like...', 'Genres', "Director's Best", 'Themes & Vibes'];
 
     const collections = [
         // --- MOVIES LIKE... ---
@@ -65,7 +65,8 @@ const CollectionsHub = () => {
 { id: 'top-10-book-adaptations', category: 'Themes & Vibes', title: '10 Best Book-to-Movie Adaptations', description: 'Cinematic masterclasses in translating the written word, exploring literary depth, page-to-screen fidelity, and timeless storytelling.', icon: BookOpen, gradient: 'from-blue-600 to-slate-900', movieCount: '10', rating: '8.2', directLink: '/collection/top-10-book-adaptations', hasSubCollections: false },
 { id: 'best-marriage-crisis-movies', category: 'Themes & Vibes', title: '10 Best Movies About Marriage Crises', description: 'Profound cinematic explorations of the breakdown, complexity, and emotional realities of marriage.', icon: HeartCrack, gradient: 'from-slate-600 to-slate-900', movieCount: '10', rating: '7.8', directLink: '/collection/best-marriage-crisis-movies', hasSubCollections: false },
 { id: 'best-a24-movies', category: 'Themes & Vibes', title: '10 Best A24 Movies of All Time', description: 'Auteur-driven masterpieces exploring profound human emotion, surreal horror, and undeniable artistic vision.', icon: Film, gradient: 'from-stone-700 to-neutral-950', movieCount: '10', rating: '7.6', directLink: '/collection/best-a24-movies', hasSubCollections: false },
-
+// --- DIRECTOR'S BEST ---
+        { id: 'best-paul-thomas-anderson-movies', category: "Director's Best", title: 'Paul Thomas Anderson Movies Ranked', description: 'The complete filmography of Paul Thomas Anderson, ranked from worst to best, featuring intense character studies and cinematic mastery.', icon: Camera, gradient: 'from-stone-600 to-neutral-900', movieCount: '10', rating: '7.7', directLink: '/collection/best-paul-thomas-anderson-movies', hasSubCollections: false },
         // --- STREAMING GUIDES ---
         // Hulu
         { id: 'hulu-best', category: 'Streaming Guides', title: 'Top 10 Best Movies on Hulu', description: 'The definitive ranking of the highest-rated films streaming on Hulu right now', icon: Crown, gradient: 'from-amber-500 to-yellow-600', movieCount: '10', rating: '7.9', directLink: '/collection/best-movies-on-hulu', hasSubCollections: false },
@@ -111,6 +112,7 @@ const CollectionsHub = () => {
         { id: 'paramount-core-drama', category: 'Streaming Guides', title: '10 Best Core Drama Movies on Paramount+', description: 'Intense character studies and emotional masterclasses.', icon: Crown, gradient: 'from-blue-600 to-indigo-900', movieCount: '10', rating: '8.2', directLink: '/collection/best-core-drama-movies-on-paramount-plus', hasSubCollections: false },
     ];
 
+    
     // Filter Logic
     const filteredCollections = useMemo(() => {
         return collections.filter(collection => {

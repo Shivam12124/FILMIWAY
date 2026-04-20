@@ -285,6 +285,10 @@ import {
   SENSITIVE_TIMELINES as A24_SENSITIVE_TIMELINES
 } from '../utils/a24MovieData';
 import {
+  COMPLETE_MOVIE_DATA as PTA_MOVIE_DATA,
+  SENSITIVE_TIMELINES as PTA_SENSITIVE_TIMELINES
+} from '../utils/ptaMoviesData';
+import {
   COMPLETE_MOVIE_DATA as DARK_COMEDY_MOVIE_DATA,
   SENSITIVE_TIMELINES as DARK_COMEDY_SENSITIVE_TIMELINES
 } from '../utils/darkComedyMovieData';
@@ -384,6 +388,7 @@ import BookAdaptationSEOFAQSection from './BookAdaptationSEOFAQSection';
 import MarriageCrisisSEOFAQSection from './MarriageCrisisSEOFAQSection';
 import A24SEOFAQSection from './A24SEOFAQSection';
 import DarkComedySEOFAQSection from './DarkComedySEOFAQSection';
+import PtaSEOFAQSection from './PtaSEOFAQSection';
 
 import HuluActionSEOFAQSection from './HuluActionSEOFAQSection';
 import HuluRomanceSEOFAQSection from './HuluRomanceSEOFAQSection';
@@ -439,6 +444,7 @@ const MovieDetailsSection = React.memo(({
   fromMarriageCrisisCollection,
   fromA24Collection,
   fromDarkComedyCollection,
+  fromPtaCollection,
   fromParasiteCollection,
   fromDonnieDarkoCollection,
   fromFightClubCollection,
@@ -560,6 +566,7 @@ const MovieDetailsSection = React.memo(({
   : fromMarriageCrisisCollection ? safeLookup(MARRIAGE_CRISIS_MOVIE_DATA, movie.tmdbId)
   : fromA24Collection ? safeLookup(A24_MOVIE_DATA, movie.tmdbId)
   : fromDarkComedyCollection ? safeLookup(DARK_COMEDY_MOVIE_DATA, movie.tmdbId)
+  : fromPtaCollection ? safeLookup(PTA_MOVIE_DATA, movie.tmdbId)
   : fromEyesWideShutCollection ? safeLookup(EYES_WIDE_SHUT_MOVIE_DATA, movie.tmdbId)
   : fromRevengeCollection ? safeLookup(REVENGE_MOVIE_DATA, movie.tmdbId)
   : fromWarFilmsCollection ? safeLookup(WAR_FILMS_MOVIE_DATA, movie.tmdbId)
@@ -772,6 +779,7 @@ const MovieDetailsSection = React.memo(({
    || MARRIAGE_CRISIS_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || A24_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || DARK_COMEDY_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
+   || PTA_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || DECADE_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || EYES_WIDE_SHUT_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || SE7EN_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
@@ -1061,6 +1069,7 @@ const MovieDetailsSection = React.memo(({
    if (fromMarriageCrisisCollection) return 'EMOTIONAL DEVASTATION LEVEL';
    if (fromA24Collection) return 'ARTISTIC COMPLEXITY LEVEL';
    if (fromDarkComedyCollection) return 'BLEAKNESS LEVEL';
+   if (fromPtaCollection) return 'AUTEUR EXECUTION LEVEL';
    return 'COGNITIVE DISTORTION LEVEL';
  };
 
@@ -1255,6 +1264,11 @@ const MovieDetailsSection = React.memo(({
      if (scoreValue >= 80) return 'Highly absurd and bleakly hilarious satire.';
      return 'A sharp, dark comedy with biting social commentary.';
    }
+   if (fromPtaCollection) {
+     if (scoreValue >= 95) return 'A masterclass in modern American cinema. A defining cultural milestone.';
+     if (scoreValue >= 85) return 'A complex, ambitious, and brilliantly executed character study.';
+     return 'A compelling film showcasing PTA\'s signature auteur vision.';
+   }
    // Generic fallback
    if (scoreValue >= 90) return 'A transcendent masterpiece redefining narrative complexity.';
    if (scoreValue >= 80) return 'Sophisticated cinematic storytelling with advanced non-linear elements.';
@@ -1307,6 +1321,7 @@ const MovieDetailsSection = React.memo(({
    if (fromMarriageCrisisCollection) return 'border-slate-500/40';
    if (fromFightClubCollection) return 'border-red-700/40';
    if (fromA24Collection) return 'border-amber-500/40';
+   if (fromPtaCollection) return 'border-stone-500/40';
    if (fromDarkComedyCollection) return 'border-zinc-500/40';
    return 'border-yellow-400/40';
  };
@@ -1356,6 +1371,7 @@ const MovieDetailsSection = React.memo(({
    if (fromMarriageCrisisCollection) return 'text-slate-500';
    if (fromFightClubCollection) return 'text-red-700';
    if (fromA24Collection) return 'text-amber-500';
+   if (fromPtaCollection) return 'text-stone-400';
    if (fromDarkComedyCollection) return 'text-zinc-400';
    return 'text-yellow-400';
  };
@@ -1545,6 +1561,7 @@ const MovieDetailsSection = React.memo(({
         : fromMarriageCrisisCollection ? <MarriageCrisisSEOFAQSection movie={movie} />
         : fromA24Collection ? <A24SEOFAQSection movie={movie} />
         : fromDarkComedyCollection ? <DarkComedySEOFAQSection movie={movie} />
+        : fromPtaCollection ? <PtaSEOFAQSection movie={movie} />
         : fromDecadeCollection ? <DecadeSEOFAQSection movie={movie} />
         : fromPrestigeCollection ? <PrestigeSEOFAQSection movie={movie} />
         : fromSe7enCollection ? <Se7enSEOFAQSection movie={movie} />

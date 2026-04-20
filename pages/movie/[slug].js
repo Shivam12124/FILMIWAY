@@ -222,6 +222,7 @@ const getCollectionProp = (sourceFile) => {
         'paramountFamilyMovieData.js': 'fromParamountFamilyCollection',
         'paramountHorrorMovieData.js': 'fromParamountHorrorCollection',
         'paramountComedyMovieData.js': 'fromParamountComedyCollection',
+        'ptaMoviesData.js': 'fromPtaCollection',
         'paramountBestMoviesData.js': 'fromParamountBestCollection',
         'peacockActionAdventureData.js': 'fromPeacockActionAdventureCollection',
         'peacockSciFiMovieData.js': 'fromPeacockSciFiCollection',

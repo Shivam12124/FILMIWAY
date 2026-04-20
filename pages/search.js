@@ -64,6 +64,7 @@ import * as BOOK_ADAPTATION from '../utils/bookAdaptationData';
 import * as MARRIAGE_CRISIS from '../utils/marriageCrisisMovieData';
 import * as A24 from '../utils/a24MovieData';
 import * as DARK_COMEDY from '../utils/darkComedyMovieData';
+import * as PTA from '../utils/ptaMoviesData';
 import * as HULU_FAMILY from '../utils/huluFamilyMovieData';
 import * as HBO_ACTION from '../utils/hboActionMovieData';
 import * as HBO_MAX_ROMANCE from '../utils/hboMaxRomanceMovieData';
@@ -310,6 +311,7 @@ export async function getStaticProps() {
     THOUGHT_PROVOKING, NEO_NOIR, BEST_ACTION, TRUE_STORY,
     GANGSTER, DECADE, BOOK_ADAPTATION, MARRIAGE_CRISIS,
     A24, DARK_COMEDY, HULU_FAMILY, HBO_ACTION, HBO_MAX_ROMANCE, HBO_MAX_THRILLER,
+    A24, DARK_COMEDY, PTA, HULU_FAMILY, HBO_ACTION, HBO_MAX_ROMANCE, HBO_MAX_THRILLER,
     HBO_MAX_FAMILY, HBO_MAX_SCIFI, HBO_MAX_HORROR, HBO_MAX_BEST,
     HBO_MAX_DRAMA, SCI_FI, THRILLER_MOVIES, MYSTERY_THRILLER,
     DETECTIVE_THRILLER, PSYCH_THRILLER, HEIST_THRILLER, TIME_TRAVEL,

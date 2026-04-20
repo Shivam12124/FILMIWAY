@@ -15,7 +15,7 @@ export const COMPLETE_MOVIE_DATABASE = [
     { tmdbId: 505192, imdbID: 'tt8075192', Title: 'Shoplifters', year: 2018, genre: 'Drama', runtime: 121, rank: 5 },
     { tmdbId: 619264, imdbID: 'tt8228288', Title: 'The Platform', year: 2019, genre: 'Sci-Fi', runtime: 94, rank: 6 },
     { tmdbId: 44865, imdbID: 'tt1216496', Title: 'Mother', year: 2009, genre: 'Thriller', runtime: 129, rank: 7 },
-    { tmdbId: 326359, imdbID: 'tt5715874', Title: 'The Killing of a Sacred Deer', year: 2017, genre: 'Thriller', runtime: 121, rank: 8 },
+    { tmdbId: 399057, imdbID: 'tt5715874', Title: 'The Killing of a Sacred Deer', year: 2017, genre: 'Thriller', runtime: 121, rank: 8 },
     { tmdbId: 42506, imdbID: 'tt0150980', Title: 'The Housemaid', year: 1960, genre: 'Thriller', runtime: 108, rank: 9 },
     { tmdbId: 1213, imdbID: 'tt0134119', Title: 'The Talented Mr. Ripley', year: 1999, genre: 'Thriller', runtime: 139, rank: 10 }
 ];
@@ -82,7 +82,7 @@ export const SENSITIVE_TIMELINES = {
     
     44865: { scenes: [] },
     
-    326359: { 
+    399057: { 
         scenes: [
             { start: '00:09:20', end: '00:11:00', type: 'Sexual Content & Nudity ', severity: 'Moderate' }
         ] 
@@ -109,7 +109,7 @@ export const FALLBACK_POSTERS = {
     505192: 'https://m.media-amazon.com/images/M/MV5BZjE3OTU3OTIwOV5BMl5BanBnXkFtZTgwNzU5OTMwNjM@._V1_SX500.jpg',
     619264: 'https://m.media-amazon.com/images/M/MV5BMjEzMjcxODg3Nl5BMl5BanBnXkFtZTgwNzUwMTkwODM@._V1_SX500.jpg',
     44865: 'https://m.media-amazon.com/images/M/MV5BMTc0NzY2OTU0MF5BMl5BanBnXkFtZTcwMDI4MjM1Mw@@._V1_SX500.jpg',
-    326359: 'https://m.media-amazon.com/images/M/MV5BNTFiODAzNTktODRmNy00ODY2LTgyNjQtZjRkYzFkY2Y4NDM5XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX500.jpg',
+    399057: 'https://m.media-amazon.com/images/M/MV5BNTFiODAzNTktODRmNy00ODY2LTgyNjQtZjRkYzFkY2Y4NDM5XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX500.jpg',
     42506: 'https://m.media-amazon.com/images/M/MV5BMTYzOTE0MjEyNV5BMl5BanBnXkFtZTcwMjcwMDU5Mw@@._V1_SX500.jpg',
     1213: 'https://m.media-amazon.com/images/M/MV5BODA4Mjg4NzEzMF5BMl5BanBnXkFtZTcwNTU2NzY5NA@@._V1_SX500.jpg'
 };
@@ -249,7 +249,7 @@ export const COMPLETE_MOVIE_DATA = {
     }),
 
     // 9. The Killing of a Sacred Deer
-    326359: createMovieData({
+    399057: createMovieData({
         classWarfareIndex: 60, thrillerElements: 92, complexityLevel: 'HIGH', dominantColor: '#164e63',
         rating: 7.0, criticsScore: 79, audienceScore: 58,
         director: 'Yorgos Lanthimos', cast: ['Colin Farrell', 'Nicole Kidman', 'Barry Keoghan'],
@@ -315,7 +315,7 @@ export const STRATEGIC_QUOTES = {
     505192: 'When you die, I\'ll become Grandma',
     619264: 'There are three kinds of people: those above, those below, and those who fall',
     44865: 'Who cares if I\'m smart or stupid as long as I\'m better than him?',
-    326359: 'A surgeon never apologizes',
+    399057: 'A surgeon never apologizes',
     42506: 'I\'m going to destroy your family',
     1213: 'I always thought it would be better to be a fake somebody than a real nobody'
 };

@@ -10,7 +10,7 @@ export const TMDB_CONFIG = {
 
 export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 693134, "imdbID": "tt15239678", "Title": "Dune: Part Two", "year": 2024, "genre": "Sci-Fi", "runtime": 166, "rank": 1 },
-    { "tmdbId": 1100001, "imdbID": "tt30144839", "Title": "One Battle After Another", "year": 2025, "genre": "Action", "runtime": 162, "rank": 2 },
+    { "tmdbId": 1054867, "imdbID": "tt30144839", "Title": "One Battle After Another", "year": 2025, "genre": "Action", "runtime": 162, "rank": 2 },
     { "tmdbId": 569094, "imdbID": "tt9362722", "Title": "Spider-Man: Across the Spider-Verse", "year": 2023, "genre": "Animation", "runtime": 140, "rank": 3 },
     { "tmdbId":545611, "imdbID": "tt6710474", "Title": "Everything Everywhere All at Once", "year": 2022, "genre": "Sci-Fi", "runtime": 139, "rank": 4 },
     { "tmdbId": 872585, "imdbID": "tt15398776", "Title": "Oppenheimer", "year": 2023, "genre": "Drama", "runtime": 181, "rank": 5 },
@@ -34,7 +34,7 @@ export const SENSITIVE_TIMELINES = {
     693134: { scenes: [] }, 
     
     // One Battle After Another
-    1100001: { 
+    1054867: { 
         scenes: [
             { start: "0:06:17", end: "0:07:10", type: "Sexual Content (Ejaculation)", severity: "High" },
             { start: "0:12:00", end: "0:12:17", type: "Sexual Content (Masturbation)", severity: "High" }
@@ -129,7 +129,7 @@ export const SENSITIVE_TIMELINES = {
 
 export const FALLBACK_POSTERS = {
     693134: "https://image.tmdb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2IGpbRXYS.jpg",
-    1100001: "https://image.tmdb.org/t/p/w500/fallback-onebattle.jpg",
+    1054867: "https://image.tmdb.org/t/p/w500/fallback-onebattle.jpg",
     569094: "https://image.tmdb.org/t/p/w500/8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg",
    545611: "https://image.tmdb.org/t/p/w500/w3LxiVYdWWRvEVll56s4l0FwR4v.jpg",
     872585: "https://image.tmdb.org/t/p/w500/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg",
@@ -166,7 +166,7 @@ export const COMPLETE_MOVIE_DATA = {
         themes: ["Prophecy", "Religious Fanaticism", "Colonialism"]
     }),
 
-    1100001: createMovieData({ 
+    1054867: createMovieData({ 
         psychologicalIntensity: 88, visceralImpact: 90, complexityLevel: "HIGH", 
         dominantColor: "#1d4ed8", rating: 8.5, criticsScore: 91, audienceScore: 89, director: "Paul Thomas Anderson", 
         cast: ["Leonardo DiCaprio", "Sean Penn", "Teyana Taylor"], boxOffice: "$212.1 million", budget: "$150 million", 
@@ -313,7 +313,7 @@ export const COMPLETE_MOVIE_DATA = {
 
 export const STRATEGIC_QUOTES = {
     693134: "May thy knife chip and shatter.",
-    1100001: "The past doesn't forget, it just reloads.",
+    1054867: "The past doesn't forget, it just reloads.",
     569094: "Everyone keeps telling me how my story is supposed to go. Nah. I'm'a do my own thing.",
    545611: "In another life, I would have really liked just doing laundry and taxes with you.",
     872585: "Now I am become Death, the destroyer of worlds.",

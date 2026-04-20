@@ -495,6 +495,17 @@
     "sourceFile": "crimeThrillerMovieData.js"
   },
   {
+    "tmdbId": 334,
+    "imdbID": "tt0175880",
+    "Title": "Magnolia",
+    "year": 1999,
+    "genre": "Drama",
+    "runtime": 188,
+    "rank": 6,
+    "slug": "magnolia",
+    "sourceFile": "ptaMoviesData.js"
+  },
+  {
     "tmdbId": 345,
     "imdbID": "tt0120663",
     "Title": "Eyes Wide Shut",
@@ -2013,6 +2024,17 @@
     "sourceFile": "movieData.js"
   },
   {
+    "tmdbId": 4995,
+    "imdbID": "tt0118749",
+    "Title": "Boogie Nights",
+    "year": 1997,
+    "genre": "Drama",
+    "runtime": 155,
+    "rank": 2,
+    "slug": "boogie-nights",
+    "sourceFile": "ptaMoviesData.js"
+  },
+  {
     "tmdbId": 5503,
     "imdbID": "tt0106977",
     "Title": "The Fugitive",
@@ -2154,6 +2176,28 @@
     "rank": 3,
     "slug": "highlander",
     "sourceFile": "peacockActionAdventureData.js"
+  },
+  {
+    "tmdbId": 8051,
+    "imdbID": "tt0272338",
+    "Title": "Punch-Drunk Love",
+    "year": 2002,
+    "genre": "Comedy",
+    "runtime": 95,
+    "rank": 7,
+    "slug": "punch-drunk-love",
+    "sourceFile": "ptaMoviesData.js"
+  },
+  {
+    "tmdbId": 8052,
+    "imdbID": "tt0119256",
+    "Title": "Hard Eight",
+    "year": 1996,
+    "genre": "Crime",
+    "runtime": 101,
+    "rank": 9,
+    "slug": "hard-eight",
+    "sourceFile": "ptaMoviesData.js"
   },
   {
     "tmdbId": 8055,
@@ -3465,6 +3509,17 @@
     "sourceFile": "se7enMovieData.js"
   },
   {
+    "tmdbId": 68722,
+    "imdbID": "tt1560747",
+    "Title": "The Master",
+    "year": 2012,
+    "genre": "Drama",
+    "runtime": 137,
+    "rank": 4,
+    "slug": "the-master",
+    "sourceFile": "ptaMoviesData.js"
+  },
+  {
     "tmdbId": 68728,
     "imdbID": "tt1622029",
     "Title": "Oz the Great and Powerful",
@@ -3848,6 +3903,17 @@
     "rank": 3,
     "slug": "brooklyn",
     "sourceFile": "huluDramaMovieData.js"
+  },
+  {
+    "tmdbId": 171274,
+    "imdbID": "tt1791528",
+    "Title": "Inherent Vice",
+    "year": 2014,
+    "genre": "Comedy",
+    "runtime": 148,
+    "rank": 10,
+    "slug": "inherent-vice",
+    "sourceFile": "ptaMoviesData.js"
   },
   {
     "tmdbId": 180299,
@@ -4257,7 +4323,7 @@
     "sourceFile": "hboMaxComedyMovieData.js"
   },
   {
-    "tmdbId": 326359,
+    "tmdbId": 399057,
     "imdbID": "tt5715874",
     "Title": "The Killing of a Sacred Deer",
     "year": 2017,
@@ -4553,16 +4619,17 @@
     "slug": "call-me-by-your-name",
     "sourceFile": "hboMaxRomanceMovieData.js"
   },
+
   {
-    "tmdbId": 399057,
-    "imdbID": "tt5715874",
-    "Title": "The Killing of a Sacred Deer",
+    "tmdbId": 400617,
+    "imdbID": "tt5776858",
+    "Title": "Phantom Thread",
     "year": 2017,
     "genre": "Drama",
-    "runtime": 121,
-    "rank": 10,
-    "slug": "the-killing-of-a-sacred-deer",
-    "sourceFile": "eyesWideShutMovieData.js"
+    "runtime": 130,
+    "rank": 5,
+    "slug": "phantom-thread",
+    "sourceFile": "ptaMoviesData.js"
   },
   {
     "tmdbId": 402897,
@@ -5170,6 +5237,17 @@
     "sourceFile": "hboMaxHorrorMovieData.js"
   },
   {
+    "tmdbId": 718032,
+    "imdbID": "tt11271038",
+    "Title": "Licorice Pizza",
+    "year": 2021,
+    "genre": "Comedy",
+    "runtime": 133,
+    "rank": 8,
+    "slug": "licorice-pizza",
+    "sourceFile": "ptaMoviesData.js"
+  },
+  {
     "tmdbId": 718821,
     "imdbID": "tt6689876",
     "Title": "Twisters",
@@ -5720,7 +5798,7 @@
     "sourceFile": "huluRomanceMovieData.js"
   },
   {
-    "tmdbId": 1100001,
+    "tmdbId": 1054867,
     "imdbID": "tt30144839",
     "Title": "One Battle After Another",
     "year": 2025,
@@ -5818,6 +5896,7 @@
     "slug": "longlegs",
     "sourceFile": "huluHorrorMovieData.js"
   },
+ 
   {
     "tmdbId": 1233413,
     "imdbID": "tt31193180",
