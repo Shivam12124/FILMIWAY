@@ -59,10 +59,13 @@ export const SENSITIVE_TIMELINES = {
         { start: '1:08:20', end: '1:11:01', type: 'Sex', severity: 'High' },
         { start: '1:20:20', end: '1:20:40', type: 'Sex', severity: 'High' }
     ]},
-    4553: { scenes: [
-        { start: '17:00', end: '18:25', type: 'Sex', severity: 'Moderate' },
-       
-    ]},
+ 4553: { 
+        scenes: [
+            { start: "0:17:06", end: "0:18:20", type: "Nudity (Woman)", severity: "High" },
+            { start: "0:18:21", end: "0:18:30", type: "Sex", severity: "Moderate" },
+            { start: "0:42:33", end: "0:42:36", type: "Sexual Content", severity: "Moderate" }
+        ] 
+    },
     670: { scenes: [
         { start: '11:20', end: '11:40', type: 'Sexual Content', severity: 'Moderate' },
         { start: '57:37', end: '1:01:10', type: 'Nudity (Woman)', severity: 'Moderate' },
@@ -75,7 +78,7 @@ export const SENSITIVE_TIMELINES = {
         { start: '58:52', end: '59:05', type: 'Sexual Content', severity: 'Moderate' }
     ]},
     694: { scenes: [
-        { start: '1:10:40', end: '1:11:00', type: 'Nudity (Posters)', severity: 'Mild' },
+        { start: '1:10:40', end: '1:11:00', type: 'Nudity', severity: 'Mild' },
         { start: '1:13:10', end: '1:16:00', type: 'Nudity', severity: 'High' }
     ]}
 };

@@ -30,63 +30,23 @@ export const SENSITIVE_TIMELINES = {
     329865: { scenes: [] }, 
     
     // 3. The Martian
-    286217: { 
-        scenes: [
-            { start: "0:12:00", end: "0:14:00", type: "Self-Surgery", severity: "Moderate" } // Removing antenna
-        ] 
-    },
+    286217:{ scenes: [] }, 
     
     // 4. Minority Report
-    180: { 
-        scenes: [
-            { start: "0:55:00", end: "0:58:00", type: "Medical Procedure", severity: "High" } // Eye replacement
-        ] 
-    },
+    180: { scenes: [] }, 
     
     // 5. Annihilation
-    300668: { 
-        scenes: [
-            { start: "0:55:00", end: "0:58:00", type: "Gore/Body Horror", severity: "High" }, // Moving intestines
-            { start: "1:05:00", end: "1:10:00", type: "Terror/Gore", severity: "High" } // The Bear Scene
-        ] 
-    },
-    
+    300668:      { start: "1:08:25", end: "1:08:40", type: "Sex", severity: "Moderate" },
     // 6. A Quiet Place
-    447332: { 
-        scenes: [
-            { start: "0:08:00", end: "0:10:00", type: "Child Death", severity: "High" },
-            { start: "1:05:00", end: "1:07:00", type: "Injury", severity: "High" } // The Nail
-        ] 
-    },
-    
+    447332:{ scenes: [] }, 
     // 7. Star Trek II: The Wrath of Khan
-    154: { 
-        scenes: [
-            { start: "0:25:00", end: "0:27:00", type: "Body Horror", severity: "Moderate" } // Ceti Eel in ear
-        ] 
-    },
-    
+    154:{ scenes: [] }, 
     // 8. 10 Cloverfield Lane
-    333371: { 
-        scenes: [
-            { start: "1:15:00", end: "1:17:00", type: "Body Horror", severity: "Moderate" } // Acid face
-        ] 
-    },
-    
+    333371:{ scenes: [] }, 
     // 9. A.I. Artificial Intelligence
-    644: { 
-        scenes: [
-            { start: "0:50:00", end: "0:55:00", type: "Violence/Distress", severity: "Moderate" } // Flesh Fair
-        ] 
-    },
-    
+    644:{ scenes: [] }, 
     // 10. War of the Worlds
-    74: { 
-        scenes: [
-            { start: "0:25:00", end: "0:28:00", type: "Mass Death", severity: "High" }, // People turning to dust
-            { start: "1:15:00", end: "1:20:00", type: "Blood/Gore", severity: "High" } // Blood harvesting
-        ] 
-    }
+    74:{ scenes: [] }, 
 };
 
 export const FALLBACK_POSTERS = {
