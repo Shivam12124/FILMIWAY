@@ -297,6 +297,25 @@ export default function UniversalMoviePage({ movie }) {
 
                 {/* 🔥 PASSING DYNAMIC PROPS INJECTS THE SPECIFIC FAQ/GRAPH COMPONENT AUTOMATICALLY */}
                 <MovieDetailsSection movie={movie} {...dynamicProps} />
+
+                {/* 🔥 TMDB API ATTRIBUTION (Required by TMDB Terms of Service) */}
+                <div className="mt-16 sm:mt-24 pt-8 pb-8 border-t border-white/5 flex flex-col items-center justify-center text-center">
+                    <div className="flex flex-col sm:flex-row items-center justify-center space-y-3 sm:space-y-0 sm:space-x-3 mb-4">
+                        <p className="text-gray-500 text-xs sm:text-sm font-light">Movie data and posters powered by</p>
+                        <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer" className="opacity-70 hover:opacity-100 transition-opacity flex items-center">
+                            <Image 
+                                src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg" 
+                                alt="The Movie Database (TMDB)" 
+                                width={100} 
+                                height={14} 
+                                className="h-3.5 sm:h-4 w-auto" 
+                            />
+                        </a>
+                    </div>
+                    <p className="text-gray-600 text-[10px] sm:text-xs font-light">
+                        This product uses the TMDB API but is not endorsed or certified by TMDB.
+                    </p>
+                </div>
             </main>
         </div>
     );
