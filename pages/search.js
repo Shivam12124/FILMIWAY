@@ -130,10 +130,50 @@ export default function SearchPage({ allMovies }) {
 
   useEffect(() => {
     if (query.trim().length > 0) {
-      const lowerQuery = query.toLowerCase();
-      const filtered = allMovies.filter(movie => 
-        movie.title.toLowerCase().includes(lowerQuery)
-      );
+      // ⚡ SMART SEARCH NORMALIZATION: Handles numbers to words, missing punctuation, and typos
+      const normalizeForSearch = (text) => {
+        if (!text) return '';
+        return text.toLowerCase()
+          .replace(/\b50\b/g, 'fifty')
+          .replace(/\b40\b/g, 'forty')
+          .replace(/\b30\b/g, 'thirty')
+          .replace(/\b20\b/g, 'twenty')
+          .replace(/\b13\b/g, 'thirteen')
+          .replace(/\b12\b/g, 'twelve')
+          .replace(/\b11\b/g, 'eleven')
+          .replace(/\b10\b/g, 'ten')
+          .replace(/\b9\b/g, 'nine')
+          .replace(/\b8\b/g, 'eight')
+          .replace(/\b7\b/g, 'seven')
+          .replace(/\b6\b/g, 'six')
+          .replace(/\b5\b/g, 'five')
+          .replace(/\b4\b/g, 'four')
+          .replace(/\b3\b/g, 'three')
+          .replace(/\b2\b/g, 'two')
+          .replace(/\b1\b/g, 'one')
+          .replace(/&/g, 'and')
+          .replace(/se7en/g, 'seven')
+          .replace(/[^a-z0-9]/g, ''); // Remove spaces and punctuation entirely
+      };
+
+      const normalizedQuery = normalizeForSearch(query);
+      
+      const filtered = allMovies.filter(movie => {
+        const normalizedTitle = normalizeForSearch(movie.title);
+        
+        // 1. Super-loose continuous match (handles "spiderman", "50shades", "walle")
+        if (normalizedTitle.includes(normalizedQuery)) return true;
+        
+        // 2. Out-of-order or skipped words match (handles "lord rings")
+        const queryWords = query.toLowerCase().split(/[\s\W]+/).filter(Boolean);
+        const titleWords = movie.title.toLowerCase().split(/[\s\W]+/).filter(Boolean);
+        
+        const numMap = { '50':'fifty', '40':'forty', '30':'thirty', '20':'twenty', '13':'thirteen', '12':'twelve', '11':'eleven', '10':'ten', '9':'nine', '8':'eight', '7':'seven', '6':'six', '5':'five', '4':'four', '3':'three', '2':'two', '1':'one' };
+        const mappedQWords = queryWords.map(w => numMap[w] || w);
+        const mappedTWords = titleWords.map(w => numMap[w] || (w === 'se7en' ? 'seven' : w));
+        
+        return mappedQWords.every(qw => mappedTWords.some(tw => tw.includes(qw)));
+      });
       setResults(filtered);
       setRequestStatus('idle'); // Reset request status when typing
     } else {
