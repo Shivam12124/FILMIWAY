@@ -102,6 +102,18 @@ export default function MovieDirectory({ sortedMovies }) {
         <meta name="description" content="Browse our complete A-Z directory of individual movies. Get precise Parents Guide timestamps and explicit scene data for every film." />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://filmiway.com/movie-directory" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "CollectionPage",
+              "name": "A-Z Movie Directory & Parents Guides | Filmiway",
+              "description": "Browse our complete A-Z directory of over 500 individual movies. Get precise Parents Guide timestamps and explicit scene data.",
+              "url": "https://filmiway.com/movie-directory"
+            })
+          }}
+        />
       </Head>
 
       <div className="min-h-screen bg-[#030303] text-white font-sans">
@@ -116,8 +128,11 @@ export default function MovieDirectory({ sortedMovies }) {
             <h1 className="text-4xl sm:text-5xl font-extralight tracking-tight text-white mb-4">
               A-Z Movie <span className="font-normal text-yellow-400">Index</span>
             </h1>
-            <p className="text-gray-400 text-lg font-light leading-relaxed">
+            <p className="text-gray-400 text-lg font-light leading-relaxed mb-4">
               Explore our complete A-Z index of every movie featured on Filmiway. Select any film to view its detailed Parents Guide, exact timestamps for skipping awkward scenes, and expert cinematic analysis.
+            </p>
+            <p className="text-gray-500 text-base font-light leading-relaxed">
+              With over 500+ curated titles, this directory serves as your ultimate family-safe streaming companion. Whether you are looking for psychological thrillers, award-winning dramas, or classic action films, our editors have manually verified the timestamps for every movie below so you can watch with confidence.
             </p>
           </div>
 
@@ -151,25 +166,27 @@ export default function MovieDirectory({ sortedMovies }) {
             </div>
 
             {/* Categorized Movie Lists */}
-            <div className="space-y-12">
+            <nav aria-label="A to Z Movie Directory" className="space-y-12">
               {alphabet.map(letter => {
                 const moviesInLetter = groupedMovies[letter];
                 if (!moviesInLetter || moviesInLetter.length === 0) return null;
 
                 return (
-                  <div key={letter} id={`letter-${letter === '#' ? 'num' : letter}`} className="scroll-mt-32">
+                  <div key={letter} id={`letter-${letter === '#' ? 'num' : letter}`} className="scroll-mt-32" style={{ contentVisibility: 'auto', containIntrinsicSize: '150px' }}>
                     <div className="flex items-baseline gap-3 mb-6 border-b border-white/5 pb-2">
                       <h3 className="text-3xl font-bold text-white">{letter}</h3>
                       <span className="text-gray-500 text-sm">{moviesInLetter.length} movies</span>
                     </div>
                     
-                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3">
+                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3 pl-1">
                       {moviesInLetter.map((movie) => (
                         <li key={movie.imdbID} className="flex items-start group">
                           <span className="text-yellow-500/30 mr-3 mt-1 text-xs font-mono group-hover:text-yellow-400 transition-colors duration-300">»</span>
                           <Link 
                             href={`/movies/${movie.slug}/${movie.imdbID}`}
-                            className="text-gray-400 hover:text-white transition-colors duration-200 text-sm sm:text-base leading-snug"
+                            className="text-gray-300 hover:text-yellow-400 transition-colors duration-200 text-sm sm:text-base leading-snug font-medium"
+                            prefetch={false} // Prevents Next.js from pre-loading data for all linked pages immediately
+                            title={`${movie.title} Parents Guide, Full Analysis, Timestamps, & Streaming Info`}
                           >
                             {movie.title}
                           </Link>
@@ -179,7 +196,7 @@ export default function MovieDirectory({ sortedMovies }) {
                   </div>
                 );
               })}
-            </div>
+            </nav>
           </div>
         </main>
       </div>
@@ -247,5 +264,5 @@ export async function getStaticProps() {
   });
 
   const sortedMovies = Array.from(uniqueMoviesMap.values()).sort((a, b) => a.title.localeCompare(b.title));
-  return { props: { sortedMovies }, revalidate: 604800 };
+  return { props: { sortedMovies }, revalidate: 259200 };
 }

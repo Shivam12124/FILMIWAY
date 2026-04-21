@@ -388,5 +388,5 @@ export async function getStaticProps() {
   });
 
   const allMovies = Array.from(uniqueMoviesMap.values()).sort((a, b) => a.title.localeCompare(b.title));
-  return { props: { allMovies }, revalidate: 604800 };
+  return { props: { allMovies }, revalidate: 259200 };
 }
