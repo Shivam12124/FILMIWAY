@@ -292,6 +292,10 @@ import {
   COMPLETE_MOVIE_DATA as DARK_COMEDY_MOVIE_DATA,
   SENSITIVE_TIMELINES as DARK_COMEDY_SENSITIVE_TIMELINES
 } from '../utils/darkComedyMovieData';
+import {
+  COMPLETE_MOVIE_DATA as BASIC_INSTINCT_MOVIE_DATA,
+  SENSITIVE_TIMELINES as BASIC_INSTINCT_SENSITIVE_TIMELINES
+} from '../utils/basicInstinctMovieData';
 
 import { 
   COMPLETE_MOVIE_DATA as CRIME_THRILLER_MOVIE_DATA,
@@ -389,6 +393,7 @@ import MarriageCrisisSEOFAQSection from './MarriageCrisisSEOFAQSection';
 import A24SEOFAQSection from './A24SEOFAQSection';
 import DarkComedySEOFAQSection from './DarkComedySEOFAQSection';
 import PtaSEOFAQSection from './PtaSEOFAQSection';
+import BasicInstinctSEOFAQSection from './BasicInstinctSEOFAQSection';
 
 import HuluActionSEOFAQSection from './HuluActionSEOFAQSection';
 import HuluRomanceSEOFAQSection from './HuluRomanceSEOFAQSection';
@@ -445,6 +450,7 @@ const MovieDetailsSection = React.memo(({
   fromA24Collection,
   fromDarkComedyCollection,
   fromPtaCollection,
+  fromBasicInstinctCollection,
   fromParasiteCollection,
   fromDonnieDarkoCollection,
   fromFightClubCollection,
@@ -567,6 +573,7 @@ const MovieDetailsSection = React.memo(({
   : fromA24Collection ? safeLookup(A24_MOVIE_DATA, movie.tmdbId)
   : fromDarkComedyCollection ? safeLookup(DARK_COMEDY_MOVIE_DATA, movie.tmdbId)
   : fromPtaCollection ? safeLookup(PTA_MOVIE_DATA, movie.tmdbId)
+  : fromBasicInstinctCollection ? safeLookup(BASIC_INSTINCT_MOVIE_DATA, movie.tmdbId)
   : fromEyesWideShutCollection ? safeLookup(EYES_WIDE_SHUT_MOVIE_DATA, movie.tmdbId)
   : fromRevengeCollection ? safeLookup(REVENGE_MOVIE_DATA, movie.tmdbId)
   : fromWarFilmsCollection ? safeLookup(WAR_FILMS_MOVIE_DATA, movie.tmdbId)
@@ -780,6 +787,7 @@ const MovieDetailsSection = React.memo(({
    || A24_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || DARK_COMEDY_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || PTA_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
+   || BASIC_INSTINCT_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || DECADE_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || EYES_WIDE_SHUT_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || SE7EN_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
@@ -840,6 +848,7 @@ const MovieDetailsSection = React.memo(({
    : fromDonnieDarkoCollection ? movie.realityWarpIndex ?? safeMovieInfo.realityWarpIndex ?? 0
    : fromFightClubCollection ? movie.anarchyLevel ?? safeMovieInfo.anarchyLevel ?? 0
    : fromDarkComedyCollection ? movie.cynicismLevel ?? safeMovieInfo.cynicismLevel ?? 0
+   : fromBasicInstinctCollection ? movie.eroticTension ?? safeMovieInfo.eroticTension ?? 0
    : fromParasiteCollection ? movie.classWarfareIndex ?? safeMovieInfo.classWarfareIndex ?? 0
    : fromMatrixCollection ? movie.cyberComplexity ?? safeMovieInfo.cyberComplexity ?? 0
    : fromOldboyCollection ? movie.revengeIntensity ?? safeMovieInfo.revengeIntensity ?? 0
@@ -1007,6 +1016,7 @@ const MovieDetailsSection = React.memo(({
    if (fromMarriageCrisisCollection) return 'DEVASTATION INDEX';
    if (fromA24Collection) return 'EMOTIONAL RESONANCE INDEX';
    if (fromDarkComedyCollection) return 'CYNICISM INDEX';
+   if (fromBasicInstinctCollection) return 'EROTIC TENSION INDEX';
    return 'MIND-BENDING INDEX';
  };
 
@@ -1070,6 +1080,7 @@ const MovieDetailsSection = React.memo(({
    if (fromA24Collection) return 'ARTISTIC COMPLEXITY LEVEL';
    if (fromDarkComedyCollection) return 'BLEAKNESS LEVEL';
    if (fromPtaCollection) return 'AUTEUR EXECUTION LEVEL';
+   if (fromBasicInstinctCollection) return 'PSYCHOLOGICAL MANIPULATION LEVEL';
    return 'COGNITIVE DISTORTION LEVEL';
  };
 
@@ -1269,6 +1280,11 @@ const MovieDetailsSection = React.memo(({
      if (scoreValue >= 85) return 'A complex, ambitious, and brilliantly executed character study.';
      return 'A compelling film showcasing PTA\'s signature auteur vision.';
    }
+       if (fromBasicInstinctCollection) {
+         if (scoreValue >= 90) return 'A masterful, steamy neo-noir with intense psychological manipulation and deadly stakes.';
+         if (scoreValue >= 80) return 'A highly charged erotic thriller filled with dangerous seduction and suspense.';
+         return 'A solid psychological thriller balancing desire and danger perfectly.';
+       }
    // Generic fallback
    if (scoreValue >= 90) return 'A transcendent masterpiece redefining narrative complexity.';
    if (scoreValue >= 80) return 'Sophisticated cinematic storytelling with advanced non-linear elements.';
@@ -1323,6 +1339,7 @@ const MovieDetailsSection = React.memo(({
    if (fromA24Collection) return 'border-amber-500/40';
    if (fromPtaCollection) return 'border-stone-500/40';
    if (fromDarkComedyCollection) return 'border-zinc-500/40';
+   if (fromBasicInstinctCollection) return 'border-rose-700/40';
    return 'border-yellow-400/40';
  };
 
@@ -1373,6 +1390,7 @@ const MovieDetailsSection = React.memo(({
    if (fromA24Collection) return 'text-amber-500';
    if (fromPtaCollection) return 'text-stone-400';
    if (fromDarkComedyCollection) return 'text-zinc-400';
+   if (fromBasicInstinctCollection) return 'text-rose-600';
    return 'text-yellow-400';
  };
 
@@ -1562,6 +1580,7 @@ const MovieDetailsSection = React.memo(({
         : fromA24Collection ? <A24SEOFAQSection movie={movie} />
         : fromDarkComedyCollection ? <DarkComedySEOFAQSection movie={movie} />
         : fromPtaCollection ? <PtaSEOFAQSection movie={movie} />
+        : fromBasicInstinctCollection ? <BasicInstinctSEOFAQSection movie={movie} />
         : fromDecadeCollection ? <DecadeSEOFAQSection movie={movie} />
         : fromPrestigeCollection ? <PrestigeSEOFAQSection movie={movie} />
         : fromSe7enCollection ? <Se7enSEOFAQSection movie={movie} />

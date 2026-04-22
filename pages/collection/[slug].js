@@ -64,6 +64,7 @@ import { COMPLETE_MOVIE_DATABASE as MARRIAGE_CRISIS_DATABASE, COMPLETE_MOVIE_DAT
 import { COMPLETE_MOVIE_DATABASE as A24_DATABASE, COMPLETE_MOVIE_DATA as A24_DATA } from '../../utils/a24MovieData';
 import { COMPLETE_MOVIE_DATABASE as DARK_COMEDY_DATABASE, COMPLETE_MOVIE_DATA as DARK_COMEDY_DATA } from '../../utils/darkComedyMovieData';
 import { COMPLETE_MOVIE_DATABASE as PTA_DATABASE, COMPLETE_MOVIE_DATA as PTA_DATA } from '../../utils/ptaMoviesData';
+import { COMPLETE_MOVIE_DATABASE as BASIC_INSTINCT_DATABASE, COMPLETE_MOVIE_DATA as BASIC_INSTINCT_DATA } from '../../utils/basicInstinctMovieData';
 
 import masterDatabase from '../../utils/masterDatabase.json';
 
@@ -1675,6 +1676,29 @@ const getCollectionContent = () => {
                 text2: "Each film serves as a defining cultural milestone that rewards multiple viewings and deep analysis."
             }
         };
+    } else if (collection.slug === 'movies-like-basic-instinct') {
+        return {
+            badge: "Erotic Thriller Cinema",
+            title: "Basic Instinct",
+            description: "Psychological manipulation, dangerous seduction & neo-noir mysteries where desire is a deadly weapon.",
+            selection: {
+                text1: "From ice picks to intense interrogations—these films explore the dark, intoxicating allure of fatal attraction and psychological warfare.",
+                text2: "Each masterpiece features femme fatales, morally compromised detectives, and twisted narratives where trust is the ultimate mistake."
+            },
+            ranking: {
+                text: "Our erotic tension index evaluates psychological manipulation, narrative complexity, and the visceral intensity of seduction throughout each film.",
+                points: [
+                    "Erotic tension level",
+                    "Psychological manipulation",
+                    "Neo-noir atmosphere",
+                    "Plot twist sophistication"
+                ]
+            },
+            experience: {
+                text1: "Whether you're seeking steamy romance or heart-pounding suspense, this collection delivers cinema's most dangerous cat-and-mouse games.",
+                text2: "Each film has been selected for its unflinching portrayal of fatal obsession, creating unforgettable narratives where passion and violence intertwine."
+            }
+        };
     } else if (collection.slug === 'best-neo-noir-movies') {
         return {
             badge: "Neon & Shadows",
@@ -2445,6 +2469,11 @@ subtitle: "While everyone searches Netflix, these classics hide in plain sight. 
             title: "Paul Thomas Anderson Movies Ranked (Worst to Best)",
             subtitle: "Intense character studies, cinematic mastery, and auteur-driven masterpieces"
         };
+    } else if (collection.slug === 'movies-like-basic-instinct') {
+        return {
+            title: "Movies Like Basic Instinct: 10 Erotic Thrillers",
+            subtitle: "Psychological manipulation, dangerous seduction & neo-noir mysteries"
+        };
 
     } else if (collection.slug === 'movies-like-interstellar') {
         return {
@@ -2648,6 +2677,11 @@ const getLoaderContent = () => {
         return {
             title: "Loading Paul Thomas Anderson Movies",
             description: "Curating the complete filmography of an American auteur with community reviews and ratings"
+        };
+    } else if (collection?.slug === 'movies-like-basic-instinct') {
+        return {
+            title: "Loading Movies Like Basic Instinct",
+            description: "Curating neo-noir and erotic thrillers with community reviews and ratings"
         };
 
 } else if (collection?.slug === 'movies-like-donnie-darko') {
@@ -3173,6 +3207,15 @@ const getStaticMetaContent = () => {
             ogTitle: "All Paul Thomas Anderson Movies Ranked: Auteur Masterpieces",
             twitterTitle: "Every Paul Thomas Anderson Movie Ranked from Worst to Best",
             progressText: `of PTA's Filmography`
+        };
+    } else if (collection.slug === 'movies-like-basic-instinct') {
+        return {
+            title: "10 Movies Like Basic Instinct: Erotic Thrillers",
+            description: "Loved Basic Instinct? Discover 10 steamy, neo-noir psychological thrillers filled with fatal attraction. Includes an exact Timestamps & Parents Guide.",
+            keywords: "movies like basic instinct, erotic thrillers, fatal attraction, neo noir movies, psychological thrillers",
+            ogTitle: "10 Movies Like Basic Instinct: Dangerous Seduction",
+            twitterTitle: "Loved Basic Instinct? Watch These 10 Erotic Thrillers Next",
+            progressText: `of Top ${movies.length} Movies Like Basic Instinct`
         };
 
 
@@ -3801,6 +3844,7 @@ const getStaticMetaContent = () => {
             sessionStorage.removeItem('fromA24Collection');
             sessionStorage.removeItem('fromDarkComedyCollection');
             sessionStorage.removeItem('fromPtaCollection');
+            sessionStorage.removeItem('fromBasicInstinctCollection');
 
             // Set appropriate collection flag âœ…
             if (collection.slug === 'movies-like-inception') {
@@ -3955,6 +3999,8 @@ const getStaticMetaContent = () => {
                 sessionStorage.setItem('fromDarkComedyCollection', 'true');
             } else if (collection.slug === 'best-paul-thomas-anderson-movies') {
                 sessionStorage.setItem('fromPtaCollection', 'true');
+            } else if (collection.slug === 'movies-like-basic-instinct') {
+                sessionStorage.setItem('fromBasicInstinctCollection', 'true');
             }
         }
     };
@@ -4860,6 +4906,9 @@ case 'best-action-movies':
             break;
         case 'best-paul-thomas-anderson-movies':
             movieDatabase = PTA_DATABASE;
+            break;
+        case 'movies-like-basic-instinct':
+            movieDatabase = BASIC_INSTINCT_DATABASE;
             break;
 
             case 'best-action-movies-on-hulu':

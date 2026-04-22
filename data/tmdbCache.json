@@ -9310,5 +9310,175 @@
     ],
     "budget": "$46,000,000",
     "revenue": "$23,834,809"
+  },
+  "tt0080661": {
+    "tmdbId": "11033",
+    "poster_path": "/oy1m5dd44foNrxV8U9l6Walx82V.jpg",
+    "backdrop_path": "/vTsEz34qxqBDOxVNdqC1bXNlL3X.jpg",
+    "runtime": 105,
+    "release_date": "1980-07-25",
+    "overview": "After witnessing a mysterious woman brutally slay a homemaker, prostitute Liz Blake finds herself trapped in a dangerous situation. While the police thinks she is the murderer, the real killer is intent on silencing her only witness.",
+    "ageRating": "R",
+    "director": "Brian De Palma",
+    "cast": [
+      "Michael Caine",
+      "Nancy Allen",
+      "Angie Dickinson"
+    ],
+    "budget": "$6,500,000",
+    "revenue": "$31,899,000"
+  },
+  "tt0089360": {
+    "tmdbId": "12235",
+    "poster_path": "/wHYjo3NLc293ZEXVSGhRIUr3Iqi.jpg",
+    "backdrop_path": "/oPQqAgvVLpvmQOalLHxXlRQtHYY.jpg",
+    "runtime": 108,
+    "release_date": "1985-10-04",
+    "overview": "After a wealthy heiress is murdered in her beach house, her devastated husband becomes the prime suspect. He hires a lawyer who hasn’t taken a criminal case in years, and as they work together, a complicated romance develops amidst the trial.",
+    "ageRating": "R",
+    "director": "Richard Marquand",
+    "cast": [
+      "Glenn Close",
+      "Jeff Bridges",
+      "Peter Coyote"
+    ],
+    "budget": "$15,000,000",
+    "revenue": "$40,491,165"
+  },
+  "tt0108162": {
+    "tmdbId": "867",
+    "poster_path": "/g7PC2e2KqDkIfOoJx9iXJJez99d.jpg",
+    "backdrop_path": "/zu09Mwoo69qwHpcj3gNtKntgUB7.jpg",
+    "runtime": 107,
+    "release_date": "1993-05-21",
+    "overview": "A woman moves into a Manhattan apartment, where she learns that the previous tenant's life ended under mysterious circumstances.",
+    "ageRating": "R",
+    "director": "Phillip Noyce",
+    "cast": [
+      "Sharon Stone",
+      "William Baldwin",
+      "Tom Berenger"
+    ],
+    "budget": "$40,000,000",
+    "revenue": "$116,300,000"
+  },
+  "tt0098273": {
+    "tmdbId": "12150",
+    "poster_path": "/vJ88WmJ12eAK9CRb3cggn9CJthH.jpg",
+    "backdrop_path": "/8she0UIhlxoUnzWhO5AZpPlL0uf.jpg",
+    "runtime": 113,
+    "release_date": "1989-09-15",
+    "overview": "Seen-it-all New York detective Frank Keller is unsettled - he has done twenty years on the force and could retire, and he hasn't come to terms with his wife leaving him for a colleague. Joining up with an officer from another part of town to investigate a series of murders linked by the lonely hearts columns he finds he is getting seriously and possibly dangerously involved with Helen, one of the main suspects.",
+    "ageRating": "R",
+    "director": "Harold Becker",
+    "cast": [
+      "Al Pacino",
+      "Ellen Barkin",
+      "John Goodman"
+    ],
+    "budget": "$19,000,000",
+    "revenue": "$110,879,513"
+  },
+  "tt0109635": {
+    "tmdbId": "8984",
+    "poster_path": "/dnA4QkIZZCF9wRtF8HHxWwUXVMf.jpg",
+    "backdrop_path": "/gMXzyxFvLi2hJpGua9UE4kaI9cE.jpg",
+    "runtime": 128,
+    "release_date": "1994-12-09",
+    "overview": "A computer specialist is sued for sexual harassment by a former lover turned boss who initiated the act forcefully, which threatens both his career and his personal life.",
+    "ageRating": "R",
+    "director": "Barry Levinson",
+    "cast": [
+      "Michael Douglas",
+      "Demi Moore",
+      "Donald Sutherland"
+    ],
+    "budget": "$55,000,000",
+    "revenue": "$214,015,089"
+  },
+  "tt0118971": {
+    "tmdbId": "1813",
+    "poster_path": "/5ZzBGpxy55OQzHxKVY11IpY6a0o.jpg",
+    "backdrop_path": "/2Y6Q7eYDXoolcHjYCAyJQlE2CVT.jpg",
+    "runtime": 144,
+    "release_date": "1997-10-17",
+    "overview": "Aspiring Florida defense lawyer Kevin Lomax accepts a job at a New York law firm. With the stakes getting higher every case, Kevin quickly learns that his boss has something far more evil planned.",
+    "ageRating": "R",
+    "director": "Taylor Hackford",
+    "cast": [
+      "Keanu Reeves",
+      "Al Pacino",
+      "Charlize Theron"
+    ],
+    "budget": "$57,000,000",
+    "revenue": "$153,000,000"
+  },
+  "tt0218922": {
+    "tmdbId": "2057",
+    "poster_path": "/7wB76uteIjw95oygMdCkmcibJg3.jpg",
+    "backdrop_path": "/6u4zm2EiOHbDS6A6VWaybdWkdNL.jpg",
+    "runtime": 116,
+    "release_date": "2001-05-08",
+    "overview": "A young man is plunged into a life of subterfuge, deceit and mistaken identity in pursuit of a femme fatale whose heart is never quite within his grasp.",
+    "ageRating": "R",
+    "director": "Michael Cristofer",
+    "cast": [
+      "Angelina Jolie",
+      "Antonio Banderas",
+      "Thomas Jane"
+    ],
+    "budget": "$42,000,000",
+    "revenue": "$35,402,320"
+  },
+  "tt1352824": {
+    "tmdbId": "28211",
+    "poster_path": "/7VC7Q7GvIhEECIU3fiaRf71mxV6.jpg",
+    "backdrop_path": "/yo7rPvwjHHYDM1bw4OgTZJY6QYP.jpg",
+    "runtime": 96,
+    "release_date": "2010-02-25",
+    "overview": "Catherine and David Stewart are a well-to-do couple living in a posh area of Toronto, but all is not well in paradise. Catherine suspects that David is cheating on her, so she hires an escort named Chloe to meet David and see if he gives in to temptation — but events spin out of control when Chloe spills the details of her torrid encounters.",
+    "ageRating": "R",
+    "director": "Atom Egoyan",
+    "cast": [
+      "Amanda Seyfried",
+      "Julianne Moore",
+      "Liam Neeson"
+    ],
+    "budget": "$14,000,000",
+    "revenue": "$13,657,649"
+  },
+  "tt0115964": {
+    "tmdbId": "884",
+    "poster_path": "/gpai5oUFyFGLHOCsYTvVMqlbY7A.jpg",
+    "backdrop_path": "/vQNknPEVSAui6IL6eUlDBPfUzcW.jpg",
+    "runtime": 100,
+    "release_date": "1996-07-17",
+    "overview": "A car crash victim suddenly finds himself turned on by car accidents and becomes involved with an underground sub-culture of like-minded souls.",
+    "ageRating": "NC-17",
+    "director": "David Cronenberg",
+    "cast": [
+      "James Spader",
+      "Holly Hunter",
+      "Elias Koteas"
+    ],
+    "budget": "$9,000,000",
+    "revenue": "$2,671,855"
+  },
+  "tt0430912": {
+    "tmdbId": "3093",
+    "poster_path": "/yNRSbx6AhOlW673t2073Wr2iH4U.jpg",
+    "backdrop_path": "/g03rOxKeJJbgR3Lvzrcdii55dm8.jpg",
+    "runtime": 114,
+    "release_date": "2006-03-29",
+    "overview": "Novelist Catherine Tramell is once again in trouble with the law, and Scotland Yard appoints psychiatrist Dr. Michael Glass to evaluate her. Though, like Detective Nick Curran before him, Glass is entranced by Tramell and lured into a seductive game.",
+    "ageRating": "R",
+    "director": "Michael Caton-Jones",
+    "cast": [
+      "Sharon Stone",
+      "David Morrissey",
+      "Charlotte Rampling"
+    ],
+    "budget": "$70,000,000",
+    "revenue": "$38,629,478"
   }
 }

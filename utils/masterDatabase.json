@@ -1232,6 +1232,17 @@
     "sourceFile": "matrixMovieData.js"
   },
   {
+    "tmdbId": 867,
+    "imdbID": "tt0108162",
+    "Title": "Sliver",
+    "year": 1993,
+    "genre": "Thriller",
+    "runtime": 107,
+    "rank": 3,
+    "slug": "sliver",
+    "sourceFile": "basicInstinctMovieData.js"
+  },
+  {
     "tmdbId": 872,
     "imdbID": "tt0045152",
     "Title": "Singin' in the Rain",
@@ -1252,6 +1263,17 @@
     "rank": 8,
     "slug": "the-color-purple",
     "sourceFile": "hboMaxDramaMovieData.js"
+  },
+  {
+    "tmdbId": 884,
+    "imdbID": "tt0115964",
+    "Title": "Crash",
+    "year": 1996,
+    "genre": "Drama",
+    "runtime": 100,
+    "rank": 9,
+    "slug": "crash",
+    "sourceFile": "basicInstinctMovieData.js"
   },
   {
     "tmdbId": 901,
@@ -1617,6 +1639,17 @@
     "sourceFile": "blackSwanMovieData.js"
   },
   {
+    "tmdbId": 1813,
+    "imdbID": "tt0118971",
+    "Title": "The Devil's Advocate",
+    "year": 1997,
+    "genre": "Thriller",
+    "runtime": 144,
+    "rank": 6,
+    "slug": "the-devils-advocate",
+    "sourceFile": "basicInstinctMovieData.js"
+  },
+  {
     "tmdbId": 1824,
     "imdbID": "tt0343660",
     "Title": "50 First Dates",
@@ -1714,6 +1747,17 @@
     "rank": 10,
     "slug": "training-day",
     "sourceFile": "crimeThrillerMovieData.js"
+  },
+  {
+    "tmdbId": 2057,
+    "imdbID": "tt0218922",
+    "Title": "Original Sin",
+    "year": 2001,
+    "genre": "Thriller",
+    "runtime": 116,
+    "rank": 7,
+    "slug": "original-sin",
+    "sourceFile": "basicInstinctMovieData.js"
   },
   {
     "tmdbId": 2105,
@@ -1868,6 +1912,17 @@
     "rank": 4,
     "slug": "the-treasure-of-the-sierra-madre",
     "sourceFile": "greedMovieData.js"
+  },
+  {
+    "tmdbId": 3093,
+    "imdbID": "tt0430912",
+    "Title": "Basic Instinct 2",
+    "year": 2006,
+    "genre": "Thriller",
+    "runtime": 114,
+    "rank": 10,
+    "slug": "basic-instinct-2",
+    "sourceFile": "basicInstinctMovieData.js"
   },
   {
     "tmdbId": 3131,
@@ -2332,6 +2387,17 @@
     "sourceFile": "paramountComedyMovieData.js"
   },
   {
+    "tmdbId": 8984,
+    "imdbID": "tt0109635",
+    "Title": "Disclosure",
+    "year": 1994,
+    "genre": "Thriller",
+    "runtime": 128,
+    "rank": 5,
+    "slug": "disclosure",
+    "sourceFile": "basicInstinctMovieData.js"
+  },
+  {
     "tmdbId": 9285,
     "imdbID": "tt0215129",
     "Title": "Road Trip",
@@ -2640,6 +2706,17 @@
     "sourceFile": "hboMaxComedyMovieData.js"
   },
   {
+    "tmdbId": 11033,
+    "imdbID": "tt0080661",
+    "Title": "Dressed to Kill",
+    "year": 1980,
+    "genre": "Thriller",
+    "runtime": 104,
+    "rank": 1,
+    "slug": "dressed-to-kill",
+    "sourceFile": "basicInstinctMovieData.js"
+  },
+  {
     "tmdbId": 11072,
     "imdbID": "tt0071230",
     "Title": "Blazing Saddles",
@@ -2794,6 +2871,17 @@
     "sourceFile": "marriageCrisisMovieData.js"
   },
   {
+    "tmdbId": 12150,
+    "imdbID": "tt0098273",
+    "Title": "Sea of Love",
+    "year": 1989,
+    "genre": "Thriller",
+    "runtime": 113,
+    "rank": 4,
+    "slug": "sea-of-love",
+    "sourceFile": "basicInstinctMovieData.js"
+  },
+  {
     "tmdbId": 12163,
     "imdbID": "tt1125849",
     "Title": "The Wrestler",
@@ -2803,6 +2891,17 @@
     "rank": 5,
     "slug": "the-wrestler",
     "sourceFile": "blackSwanMovieData.js"
+  },
+  {
+    "tmdbId": 12235,
+    "imdbID": "tt0089360",
+    "Title": "Jagged Edge",
+    "year": 1985,
+    "genre": "Thriller",
+    "runtime": 108,
+    "rank": 2,
+    "slug": "jagged-edge",
+    "sourceFile": "basicInstinctMovieData.js"
   },
   {
     "tmdbId": 13446,
@@ -3100,6 +3199,17 @@
     "rank": 5,
     "slug": "the-other-guys",
     "sourceFile": "paramountComedyMovieData.js"
+  },
+  {
+    "tmdbId": 28211,
+    "imdbID": "tt1352824",
+    "Title": "Chloe",
+    "year": 2009,
+    "genre": "Thriller",
+    "runtime": 96,
+    "rank": 8,
+    "slug": "chloe",
+    "sourceFile": "basicInstinctMovieData.js"
   },
   {
     "tmdbId": 30020,

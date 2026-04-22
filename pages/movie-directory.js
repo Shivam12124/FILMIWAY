@@ -62,6 +62,7 @@ import { COMPLETE_MOVIE_DATABASE as MARRIAGE_CRISIS_DATABASE } from '../utils/ma
 import { COMPLETE_MOVIE_DATABASE as A24_DATABASE } from '../utils/a24MovieData';
 import { COMPLETE_MOVIE_DATABASE as DARK_COMEDY_DATABASE } from '../utils/darkComedyMovieData';
 import { COMPLETE_MOVIE_DATABASE as PTA_DATABASE } from '../utils/ptaMoviesData';
+import { COMPLETE_MOVIE_DATABASE as BASIC_INSTINCT_DATABASE } from '../utils/basicInstinctMovieData';
 import { COMPLETE_MOVIE_DATABASE as HULU_FAMILY_DATABASE } from '../utils/huluFamilyMovieData';
 import { COMPLETE_MOVIE_DATABASE as HBO_ACTION_DATABASE } from '../utils/hboActionMovieData';
 import { COMPLETE_MOVIE_DATABASE as HBO_MAX_ROMANCE_DATABASE } from '../utils/hboMaxRomanceMovieData';

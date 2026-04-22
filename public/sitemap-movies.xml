@@ -561,12 +561,22 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://filmiway.com/movie/sliver</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://filmiway.com/movie/singin-in-the-rain</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://filmiway.com/movie/the-color-purple</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://filmiway.com/movie/crash</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -736,6 +746,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://filmiway.com/movie/the-devils-advocate</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://filmiway.com/movie/50-first-dates</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -777,6 +792,11 @@
   </url>
   <url>
     <loc>https://filmiway.com/movie/training-day</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://filmiway.com/movie/original-sin</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -847,6 +867,11 @@
   </url>
   <url>
     <loc>https://filmiway.com/movie/the-treasure-of-the-sierra-madre</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://filmiway.com/movie/basic-instinct-2</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -1061,6 +1086,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://filmiway.com/movie/disclosure</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://filmiway.com/movie/road-trip</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -1201,6 +1231,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://filmiway.com/movie/dressed-to-kill</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://filmiway.com/movie/blazing-saddles</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -1271,7 +1306,17 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://filmiway.com/movie/sea-of-love</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://filmiway.com/movie/the-wrestler</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://filmiway.com/movie/jagged-edge</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -1407,6 +1452,11 @@
   </url>
   <url>
     <loc>https://filmiway.com/movie/the-other-guys</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://filmiway.com/movie/chloe</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -1602,6 +1652,11 @@
   </url>
   <url>
     <loc>https://filmiway.com/movie/oz-the-great-and-powerful</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://filmiway.com/movie/silence</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -1962,11 +2017,6 @@
   </url>
   <url>
     <loc>https://filmiway.com/movie/the-lego-batman-movie</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://filmiway.com/movie/the-killing-of-a-sacred-deer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -2431,6 +2481,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://filmiway.com/movie/one-life</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://filmiway.com/movie/a-quiet-place-day-one</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -2601,11 +2656,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://filmiway.com/movie/one-life</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://filmiway.com/movie/how-to-blow-up-a-pipeline</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -2631,17 +2681,17 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://filmiway.com/movie/one-battle-after-another</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://filmiway.com/movie/american-fiction</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://filmiway.com/movie/anora</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://filmiway.com/movie/one-battle-after-another</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -2682,11 +2732,6 @@
   </url>
   <url>
     <loc>https://filmiway.com/movie/longlegs</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://filmiway.com/movie/one-battle-after-another</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>

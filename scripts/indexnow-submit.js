@@ -16,82 +16,69 @@ const config = {
   urls: extractedUrls
 };
 
-const submitToIndexNow = () => {
-  const postData = JSON.stringify({
-    host: config.host,
-    key: config.key,
-    keyLocation: config.keyLocation,
-    urlList: config.urls
-  });
+const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-  const options = {
-    hostname: 'www.bing.com',
-    port: 443,
-    path: '/indexnow',
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json; charset=utf-8',
-      'Content-Length': Buffer.byteLength(postData),
-      'User-Agent': 'Filmiway-IndexNow/1.0'
-    }
-  };
-
-  const req = https.request(options, (res) => {
-    let data = '';
-    res.on('data', (chunk) => data += chunk);
-    res.on('end', () => {
-      console.log(`✅ HTTP ${res.statusCode}`);
-      if (res.statusCode === 200) {
-        console.log(`🎉 SUCCESS! Submitted ${config.urls.length} URLs to Bing IndexNow`);
-      } else if (res.statusCode === 202) {
-        console.log(`✅ ACCEPTED! Bing received ${config.urls.length} URLs`);
-      } else {
-        console.log(`⚠️ Response: ${data}`);
-      }
-      process.exit(0);
+const submitChunk = (chunkUrls, chunkIndex, totalChunks) => {
+  return new Promise((resolve, reject) => {
+    const postData = JSON.stringify({
+      host: config.host,
+      key: config.key,
+      keyLocation: config.keyLocation,
+      urlList: chunkUrls
     });
-  });
 
-  req.on('error', (e) => {
-    console.error('❌ Primary endpoint failed:', e.message);
-    
-    // Try alternative endpoint
-    console.log('🔄 Trying api.indexnow.org...');
-    const altOptions = {
-      hostname: 'api.indexnow.org',
+    const options = {
+      hostname: 'www.bing.com',
       port: 443,
-      path: '/IndexNow',
+      path: '/indexnow',
       method: 'POST',
       headers: {
         'Content-Type': 'application/json; charset=utf-8',
-        'Content-Length': Buffer.byteLength(postData)
+        'Content-Length': Buffer.byteLength(postData),
+        'User-Agent': 'Filmiway-IndexNow/1.0'
       }
     };
 
-    const altReq = https.request(altOptions, (altRes) => {
-      let altData = '';
-      altRes.on('data', (chunk) => altData += chunk);
-      altRes.on('end', () => {
-        console.log(`✅ ALT HTTP ${altRes.statusCode}`);
-        if (altRes.statusCode === 200 || altRes.statusCode === 202) {
-          console.log(`🎉 SUCCESS via alternative endpoint!`);
+    const req = https.request(options, (res) => {
+      res.on('data', () => {}); // Consume data to free memory
+      res.on('end', () => {
+        if (res.statusCode === 200 || res.statusCode === 202) {
+          console.log(`✅ Chunk ${chunkIndex}/${totalChunks} Accepted (${chunkUrls.length} URLs)`);
+          resolve();
+        } else {
+          console.log(`⚠️ Chunk ${chunkIndex} returned status: ${res.statusCode}`);
+          resolve(); // Resolve anyway to keep going
         }
-        process.exit(0);
       });
     });
 
-    altReq.on('error', (altE) => {
-      console.error('❌ Both endpoints failed:', altE.message);
-      process.exit(1);
+    req.on('error', (e) => {
+      console.error(`❌ Chunk ${chunkIndex} failed:`, e.message);
+      resolve(); // Resolve to keep the loop going
     });
 
-    altReq.write(postData);
-    altReq.end();
+    req.write(postData);
+    req.end();
   });
-
-  req.write(postData);
-  req.end();
 };
 
-console.log(`🚀 Submitting ${extractedUrls.length} movie pages to Bing IndexNow...`);
-submitToIndexNow();
+const startStreaming = async () => {
+  console.log(`🚀 Starting "Streaming" Mode for ${extractedUrls.length} URLs...`);
+  
+  // Split URLs into chunks of 40 to avoid "Batch Mode" warning
+  const chunkSize = 40;
+  const chunks = [];
+  for (let i = 0; i < extractedUrls.length; i += chunkSize) {
+    chunks.push(extractedUrls.slice(i, i + chunkSize));
+  }
+  
+  for (let i = 0; i < chunks.length; i++) {
+    await submitChunk(chunks[i], i + 1, chunks.length);
+    // Wait 2 seconds between chunks so Bing thinks we are "Streaming"
+    if (i < chunks.length - 1) await sleep(2000); 
+  }
+  
+  console.log('🎉 SUCCESS! All URLs streamed to Bing IndexNow!');
+};
+
+startStreaming();

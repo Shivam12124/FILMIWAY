@@ -1058,6 +1058,20 @@ export const COLLECTIONS = {
     relatedCollections: ['best-drama-movies-on-hbo-max', 'best-thought-provoking-movies', 'best-movies-of-the-decade']
   },
 
+// 🔪 MOVIES LIKE BASIC INSTINCT
+  'movies-like-basic-instinct': {
+    slug: 'movies-like-basic-instinct',
+    title: '10 Movies Like Basic Instinct',
+    stats: { averageRating: 6.2 },
+    badges: [
+      { label: "MANIPULATION", desc: "Psychological games" },
+      { label: "SEDUCTION", desc: "Fatal attraction" },
+      { label: "NEO-NOIR", desc: "Dark mysteries" }
+    ],
+    movies: ['tt0080661', 'tt0089360', 'tt0108162', 'tt0098273', 'tt0109635', 'tt0118971', 'tt0218922', 'tt1352824', 'tt0115964', 'tt0430912'],
+    relatedCollections: ['best-erotic-thriller-movies', 'best-psychological-thriller-movies', 'best-erotic-romance-movies']
+  },
+
   // 🩸 BEST THRILLER MOVIES
   'best-thriller-movies': {
     slug: 'best-thriller-movies',
@@ -1117,6 +1131,7 @@ export const getBestA24MoviesCollection = () => COLLECTIONS['best-a24-movies'];
 export const getFightClubCollection = () => COLLECTIONS['movies-like-fight-club'];
 export const getDarkComedyCollection = () => COLLECTIONS['best-dark-comedy-movies'];
 export const getPtaCollection = () => COLLECTIONS['best-paul-thomas-anderson-movies'];
+export const getBasicInstinctCollection = () => COLLECTIONS['movies-like-basic-instinct'];
 export const getBestActionCollection = () => COLLECTIONS['best-action-movies'];
 // ============================================================================
 // 🧠 THE MASTER CANONICAL BRAIN
