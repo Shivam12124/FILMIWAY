@@ -27,13 +27,13 @@ export const PARAMOUNT_DRAMA_MOVIE_SLUGS = {
     '687': 'dead-man-walking',
     
     // Rank 5: Selma
-    '273896': 'selma',
+    '273895': 'selma',
     
     // Rank 6: Silence
-    '259693': 'silence',
+    '68730': 'silence',
     
     // Rank 7: One Life
-    '995746': 'one-life',
+    '760774': 'one-life',
     
     // Rank 8: I, Daniel Blake
     '374473': 'i-daniel-blake',

@@ -38,7 +38,7 @@ const manualTaglines = {
   "tt14369780": "Love breaks all boundaries.", // Lady Chatterley's Lover
   "tt9660502": "The fragility of friendship.", // Close
   "tt18550182": "Fear is the oldest border.", // R.M.N.
-  "tt13004880": "He saved 669 children. This is his story.", // One Life
+  "tt13097932": "He saved 669 children. This is his story.", // One Life
   "tt15893750": "A vibrant South London romance.", // Rye Lane
   "tt30144839": "The fight never truly ends.", // One Battle After Another
   "tt30321095": "Healing takes center stage.", // Ghostlight

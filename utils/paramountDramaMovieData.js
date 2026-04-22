@@ -13,9 +13,9 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 409, "imdbID": "tt0116209", "Title": "The English Patient", "year": 1996, "genre": "Romance", "runtime": 162, "rank": 2 },
     { "tmdbId": 393457, "imdbID": "tt2671706", "Title": "Fences", "year": 2016, "genre": "Drama", "runtime": 139, "rank": 3 },
     { "tmdbId": 687, "imdbID": "tt0112818", "Title": "Dead Man Walking", "year": 1995, "genre": "Drama", "runtime": 122, "rank": 4 },
-    { "tmdbId": 273896, "imdbID": "tt1020072", "Title": "Selma", "year": 2014, "genre": "History", "runtime": 128, "rank": 5 },
-    { "tmdbId": 259693, "imdbID": "tt0490215", "Title": "Silence", "year": 2016, "genre": "Drama", "runtime": 161, "rank": 6 },
-    { "tmdbId": 995746, "imdbID": "tt13004880", "Title": "One Life", "year": 2024, "genre": "History", "runtime": 110, "rank": 7 },
+    { "tmdbId": 273895, "imdbID": "tt1020072", "Title": "Selma", "year": 2014, "genre": "History", "runtime": 128, "rank": 5 },
+    { "tmdbId": 68730, "imdbID": "tt0490215", "Title": "Silence", "year": 2016, "genre": "Drama", "runtime": 161, "rank": 6 },
+    { "tmdbId": 760774, "imdbID": "tt13097932", "Title": "One Life", "year": 2024, "genre": "History", "runtime": 110, "rank": 7 },
     { "tmdbId": 374473, "imdbID": "tt5168192", "Title": "I, Daniel Blake", "year": 2016, "genre": "Drama", "runtime": 100, "rank": 8 },
     { "tmdbId": 4922, "imdbID": "tt0421715", "Title": "The Curious Case of Benjamin Button", "year": 2008, "genre": "Fantasy", "runtime": 166, "rank": 9 },
     { "tmdbId": 13, "imdbID": "tt0109830", "Title": "Forrest Gump", "year": 1994, "genre": "Drama", "runtime": 142, "rank": 10 }
@@ -48,13 +48,13 @@ export const SENSITIVE_TIMELINES = {
     },
 
     // 5. Selma
-    273896: { scenes: [] },
+    273895: { scenes: [] },
 
     // 6. Silence
-    259693: { scenes: [] },
+    68730: { scenes: [] },
 
     // 7. One Life
-    995746: { scenes: [] },
+    760774: { scenes: [] },
 
     // 8. I, Daniel Blake
     374473: { scenes: [] },
@@ -80,9 +80,9 @@ export const FALLBACK_POSTERS = {
     409: "https://image.tmdb.org/t/p/w500/a32p18e6c7c7f.jpg",
     393457: "https://image.tmdb.org/t/p/w500/m59f8P72sa6s2.jpg",
     687: "https://image.tmdb.org/t/p/w500/7754s1s8s8s.jpg",
-    273896: "https://image.tmdb.org/t/p/w500/88990011.jpg",
-    259693: "https://image.tmdb.org/t/p/w500/silence_poster.jpg",
-    995746: "https://image.tmdb.org/t/p/w500/onelife_poster.jpg",
+    273895: "https://image.tmdb.org/t/p/w500/88990011.jpg",
+    68730: "https://image.tmdb.org/t/p/w500/silence_poster.jpg",
+    760774: "https://image.tmdb.org/t/p/w500/onelife_poster.jpg",
     374473: "https://image.tmdb.org/t/p/w500/idanielblake.jpg",
     4922: "https://image.tmdb.org/t/p/w500/benjamin_button.jpg",
     13: "https://image.tmdb.org/t/p/w500/forrest_gump.jpg"
@@ -193,7 +193,7 @@ export const COMPLETE_MOVIE_DATA = {
   // 5. Selma (2014)
   // Curve: Strategy -> Violence -> Resolve -> Victory.
   // Peak: 95 (Bloody Sunday).
-  273896: createMovieData({
+  273895: createMovieData({
     emotionalIntensity: 90,
     complexityLevel: "HISTORICAL",
     dominantColor: "#9f1239", // Blood Red / Brick
@@ -216,7 +216,7 @@ export const COMPLETE_MOVIE_DATA = {
   // 6. Silence (2016)
   // Curve: Faith -> Doubt -> Torture -> Apostasy.
   // Peak: 95 (Trample the Image).
-  259693: createMovieData({
+  68730: createMovieData({
     emotionalIntensity: 88,
     complexityLevel: "SPIRITUAL",
     dominantColor: "#365314", // Jungle Green / Mud
@@ -239,7 +239,7 @@ export const COMPLETE_MOVIE_DATA = {
   // 7. One Life (2024)
   // Curve: Memory -> Effort -> Failure -> Revelation -> Legacy.
   // Peak: 95 (That's Life TV Show).
-  995746: createMovieData({
+  760774: createMovieData({
     emotionalIntensity: 91,
     complexityLevel: "HUMANIST",
     dominantColor: "#1e3a8a", // British Blue
@@ -334,9 +334,9 @@ export const STRATEGIC_QUOTES = {
     409: "We die. We die rich with lovers and tribes, tastes we have swallowed...",
     393457: "Some people build fences to keep people out, and other people build fences to keep people in.",
     687: "I want the last thing you see in this world to be the face of love.",
-    273896: "We negotiate, we demonstrate, we resist.",
-    259693: "I pray but I am lost. Am I just praying to silence?",
-    995746: "If something is not impossible, then there must be a way to do it.",
+    273895: "We negotiate, we demonstrate, we resist.",
+    68730: "I pray but I am lost. Am I just praying to silence?",
+    760774: "If something is not impossible, then there must be a way to do it.",
     374473: "I am a man, not a dog. As such, I demand my rights.",
     4922: "Our lives are defined by opportunities, even the ones we miss.",
     13: "Life is like a box of chocolates. You never know what you're gonna get."

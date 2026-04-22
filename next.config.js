@@ -575,7 +575,7 @@ const nextConfig = {
       { source: '/movies/:collection/tt27503384', destination: '/movie/perfect-days', permanent: true },
       { source: '/movies/:collection/tt21376880', destination: '/movie/theater-camp', permanent: true },
       { source: '/movies/:collection/tt21192142', destination: '/movie/all-of-us-strangers', permanent: true },
-      { source: '/movies/:collection/tt13004880', destination: '/movie/one-life', permanent: true },
+      { source: '/movies/:collection/tt13097932', destination: '/movie/one-life', permanent: true },
       { source: '/movies/:collection/tt21440780', destination: '/movie/how-to-blow-up-a-pipeline', permanent: true },
       { source: '/movies/:collection/tt21823606', destination: '/movie/a-real-pain', permanent: true },
       { source: '/movies/:collection/tt21867434', destination: '/movie/blackberry', permanent: true },

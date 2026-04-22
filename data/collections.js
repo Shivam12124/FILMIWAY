@@ -605,7 +605,7 @@ export const COLLECTIONS = {
       { label: "MASTERCLASS", desc: "Acting peaks" },
       { label: "GRIEF", desc: "Heavy themes" }
     ],
-    movies: ['tt0469494', 'tt0116209', 'tt2671706', 'tt0112818', 'tt1020072', 'tt0490215', 'tt13004880', 'tt5168192', 'tt0421715', 'tt0109830'],
+    movies: ['tt0469494', 'tt0116209', 'tt2671706', 'tt0112818', 'tt1020072', 'tt0490215', 'tt13097932', 'tt5168192', 'tt0421715', 'tt0109830'],
     relatedCollections: ['best-romance-movies-on-paramount-plus', 'best-drama-movies-on-hbo-max', 'best-movies-on-hbo-max']
   },
 

@@ -73,42 +73,56 @@ async function buildCache() {
     // 3. Fetch rich data from TMDB
     let newFetches = 0;
     for (const [imdbID, tmdbId] of uniqueMovies.entries()) {
-        // We force a re-fetch if they don't have the new rich data fields
-        if (!cache[imdbID] || !cache[imdbID].overview || !cache[imdbID].director) {
+        // ⚡ SELF-HEALING CACHE: Force a re-fetch if data is missing OR if you fixed/changed the TMDB ID!
+        if (!cache[imdbID] || !cache[imdbID].overview || !cache[imdbID].director || cache[imdbID].tmdbId !== tmdbId) {
             process.stdout.write(`Fetching rich data for ${imdbID} (TMDB: ${tmdbId})... `);
             
-            try {
-                // We ask for credits and release_dates to get Cast, Director, and Age Rating
-                const data = await fetchTMDB(`https://api.themoviedb.org/3/movie/${tmdbId}?api_key=${TMDB_API_KEY}&append_to_response=credits,release_dates`);
-                
-                if (data) {
-                    // Find US Age Rating
-                    let ageRating = 'Not Rated';
-                    const usRelease = data.release_dates?.results?.find(r => r.iso_3166_1 === 'US');
-                    if (usRelease && usRelease.release_dates) {
-                        const ratedRelease = usRelease.release_dates.find(r => r.certification && r.certification !== '');
-                        if (ratedRelease) ageRating = ratedRelease.certification;
-                    }
+            let retries = 3;
+            let success = false;
+            
+            while (retries > 0 && !success) {
+                try {
+                    // We ask for credits and release_dates to get Cast, Director, and Age Rating
+                    const data = await fetchTMDB(`https://api.themoviedb.org/3/movie/${tmdbId}?api_key=${TMDB_API_KEY}&append_to_response=credits,release_dates`);
+                    
+                    if (data) {
+                        // Find US Age Rating
+                        let ageRating = 'Not Rated';
+                        const usRelease = data.release_dates?.results?.find(r => r.iso_3166_1 === 'US');
+                        if (usRelease && usRelease.release_dates) {
+                            const ratedRelease = usRelease.release_dates.find(r => r.certification && r.certification !== '');
+                            if (ratedRelease) ageRating = ratedRelease.certification;
+                        }
 
-                    cache[imdbID] = {
-                        poster_path: data.poster_path,
-                        backdrop_path: data.backdrop_path,
-                        runtime: data.runtime,
-                        release_date: data.release_date,
-                        overview: data.overview,
-                        ageRating: ageRating,
-                        director: data.credits?.crew?.find(c => c.job === 'Director')?.name || 'Unknown',
-                        cast: data.credits?.cast?.slice(0, 3).map(c => c.name) || [], // Top 3 actors
-                        budget: formatMoney(data.budget),
-                        revenue: formatMoney(data.revenue)
-                    };
-                    console.log('✅ Success');
-                    newFetches++;
-                } else {
-                    console.log('❌ Failed (Not Found)');
+                        cache[imdbID] = {
+                            tmdbId: tmdbId, // ⚡ Save the TMDB ID so the script knows if you ever change it again!
+                            poster_path: data.poster_path,
+                            backdrop_path: data.backdrop_path,
+                            runtime: data.runtime,
+                            release_date: data.release_date,
+                            overview: data.overview,
+                            ageRating: ageRating,
+                            director: data.credits?.crew?.find(c => c.job === 'Director')?.name || 'Unknown',
+                            cast: data.credits?.cast?.slice(0, 3).map(c => c.name) || [], // Top 3 actors
+                            budget: formatMoney(data.budget),
+                            revenue: formatMoney(data.revenue)
+                        };
+                        console.log('✅ Success');
+                        newFetches++;
+                        success = true;
+                    } else {
+                        console.log('❌ Failed (Not Found)');
+                        break;
+                    }
+                } catch (err) {
+                    retries--;
+                    if (retries === 0) {
+                        console.log(`❌ Error: ${err.message}`);
+                    } else {
+                        process.stdout.write(`⚠️ Network glitch, retrying... `);
+                        await sleep(1000); // Wait 1s before retrying
+                    }
                 }
-            } catch (err) {
-                console.log(`❌ Error: ${err.message}`);
             }
 
             await sleep(50); // Respect TMDB rate limits
