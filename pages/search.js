@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { Search as SearchIcon, ArrowRight, Film, X, Send, CheckCircle2, Loader } from 'lucide-react';
 import Header from '../components/Header';
-import { getPrimaryCollectionForMovie } from '../data/collections';
+import { COLLECTIONS, getPrimaryCollectionForMovie } from '../data/collections';
 import { db } from '../firebaseConfig';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import masterDatabase from '../utils/masterDatabase.json';
@@ -89,9 +89,20 @@ import * as REVENGE from '../utils/revengeMovieData';
 const MovieResultItem = ({ movie }) => {
   const [imgError, setImgError] = useState(false);
   
+  // ⚡ SMART CLICK HANDLER: Traps the user into the canonical collection for proper breadcrumbs
+  const handleSearchMovieClick = () => {
+    if (typeof window !== 'undefined' && movie.slug) {
+      const collectionTitle = COLLECTIONS[movie.slug]?.title || 'Collection';
+      sessionStorage.setItem('currentCollection', movie.slug);
+      sessionStorage.setItem('collectionTitle', collectionTitle);
+      sessionStorage.setItem('fromCollection', 'true');
+      sessionStorage.removeItem('fromDirectory');
+    }
+  };
+
   return (
     <li>
-      <Link href={`/movie/${movie.movieSlug}`} className="flex items-center group p-2 rounded-xl hover:bg-gray-800/50 transition-colors border border-transparent hover:border-white/5">
+      <Link href={`/movie/${movie.movieSlug}`} onClick={handleSearchMovieClick} className="flex items-center group p-2 rounded-xl hover:bg-gray-800/50 transition-colors border border-transparent hover:border-white/5">
         {movie.poster && !imgError ? (
           <div className="w-12 h-16 relative mr-4 flex-shrink-0 rounded-lg overflow-hidden bg-gray-800 border border-white/10 shadow-md">
             <Image 
