@@ -17,6 +17,7 @@ import { COMPLETE_MOVIE_DATABASE as TRENDING_DB, FALLBACK_POSTERS as TRENDING_PO
 import PlatformSelector from '../components/PlatformSelector';
 import Header from '../components/Header';
 import tmdbCache from '../data/tmdbCache.json'; // ⚡ NEW: Instant Local Data
+import masterDatabase from '../utils/masterDatabase.json';
 
 const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p';
 
@@ -113,9 +114,12 @@ const Top10MovieCard = memo(({ movie, index }) => {
   const posterUrl = movie.posterUrl || "https://via.placeholder.com/342x513/111827/4b5563?text=No+Image";
   const shouldPrioritize = false; // ⚡ LCP OPTIMIZATION: Top 10 is below fold, defer loading
   
+  const masterMovie = masterDatabase?.find(m => m.imdbID === movie.imdbID);
+  const movieSlug = masterMovie?.slug || movie.slug || (movie.Title || movie.title || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+
   return (
     <Link
-      href={`/movies/${movie.collectionSlug}/${movie.imdbID}`}
+      href={`/movie/${movieSlug}`}
       className="group relative flex items-end shrink-0 transition-transform duration-300 hover:-translate-y-2 pl-4 sm:pl-6"
       style={{ 
          width: 'clamp(215px, 53.8vw, 338px)', 
@@ -369,7 +373,7 @@ const Top10Section = memo(({ title, movies, description }) => {
 Top10Section.displayName = 'Top10Section';
 
 // ⚡ TEXT-BASED SEO LINKS (Compact & High-Density for Fast Indexing)
-const QuickLinksSection = memo(({ title, movies, collectionSlug }) => {
+const QuickLinksSection = memo(({ title, movies }) => {
   if (!movies || movies.length === 0) return null;
   return (
     <section className="mt-8 sm:mt-12 mb-4 sm:mb-8" style={{ contentVisibility: 'auto' }}>
@@ -383,12 +387,15 @@ const QuickLinksSection = memo(({ title, movies, collectionSlug }) => {
         
         {/* Premium Grid Layout for Desktop & Mobile */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4 px-1">
-          {movies.map((movie) => (
-            <Link
-              key={movie.imdbID}
-              href={`/movies/${collectionSlug}/${movie.imdbID}`}
-              className="group relative flex items-center justify-between p-3.5 sm:p-4 bg-[#0a0a0a] border border-white/5 hover:border-yellow-500/30 rounded-xl transition-all duration-300 hover:bg-gradient-to-r hover:from-yellow-500/10 hover:to-transparent overflow-hidden shadow-sm hover:shadow-lg"
-            >
+          {movies.slice(0, 10).map((movie) => {
+            const masterMovie = masterDatabase?.find(m => m.imdbID === movie.imdbID);
+            const movieSlug = masterMovie?.slug || movie.slug || (movie.Title || movie.title || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+            return (
+              <Link
+                key={movie.imdbID}
+                href={`/movie/${movieSlug}`}
+                className="group relative flex items-center justify-between p-3.5 sm:p-4 bg-[#0a0a0a] border border-white/5 hover:border-yellow-500/30 rounded-xl transition-all duration-300 hover:bg-gradient-to-r hover:from-yellow-500/10 hover:to-transparent overflow-hidden shadow-sm hover:shadow-lg"
+              >
               {/* Subtle left accent bar on hover */}
               <div className="absolute left-0 top-0 bottom-0 w-1 bg-yellow-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               
@@ -402,8 +409,9 @@ const QuickLinksSection = memo(({ title, movies, collectionSlug }) => {
               </div>
               
               <ArrowRight className="w-4 h-4 text-gray-600 group-hover:text-yellow-400 transform -translate-x-2 group-hover:translate-x-0 transition-all duration-300 shrink-0" />
-            </Link>
-          ))}
+              </Link>
+            );
+          })}
         </div>
       </div>
     </section>
@@ -473,7 +481,6 @@ const FilmiwayHomepage = ({ huluCollections, thrillerCollections, hboCollections
             <QuickLinksSection 
               title="Trending Parents Guides" 
               movies={EROTIC_ROMANCE_DB} 
-              collectionSlug="best-erotic-romance-movies" 
             />
           </div>
         </main>

@@ -602,6 +602,11 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
     let finalRuntime = currentRuntime !== "Official" ? currentRuntime : (dbMovie?.runtime ? `${dbMovie.runtime} min` : "Official");
     if (typeof finalRuntime === 'number') finalRuntime = `${finalRuntime} min`;
 
+    // 🔥 Explicit Override for Original Sin (Unrated Version)
+    if (tmdbId === 2057) {
+        finalRuntime = "118 min (Unrated Version)";
+    }
+
     if (intensityScenes.length > 0) {
         const uiIntensityList = intensityScenes.map(s => `• Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)`).join('\n');
         staticFaqs.unshift({

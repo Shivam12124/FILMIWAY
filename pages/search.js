@@ -8,6 +8,7 @@ import Header from '../components/Header';
 import { getPrimaryCollectionForMovie } from '../data/collections';
 import { db } from '../firebaseConfig';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import masterDatabase from '../utils/masterDatabase.json';
 
 // ⚡ ALL MOVIE DATABASES IMPORTED (Safe Server-Side Fetching)
 import * as SURVIVAL from '../utils/survivalMovieData';
@@ -90,7 +91,7 @@ const MovieResultItem = ({ movie }) => {
   
   return (
     <li>
-      <Link href={`/movies/${movie.slug}/${movie.imdbID}`} className="flex items-center group p-2 rounded-xl hover:bg-gray-800/50 transition-colors border border-transparent hover:border-white/5">
+      <Link href={`/movie/${movie.movieSlug}`} className="flex items-center group p-2 rounded-xl hover:bg-gray-800/50 transition-colors border border-transparent hover:border-white/5">
         {movie.poster && !imgError ? (
           <div className="w-12 h-16 relative mr-4 flex-shrink-0 rounded-lg overflow-hidden bg-gray-800 border border-white/10 shadow-md">
             <Image 
@@ -367,11 +368,15 @@ export async function getStaticProps() {
             finalPoster = null;
           }
 
+          const masterMovie = masterDatabase?.find(m => m.imdbID === movie.imdbID);
+          const movieSlug = masterMovie?.slug || (movie.Title || movie.title || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+
           if (!uniqueMoviesMap.has(movie.imdbID)) {
             uniqueMoviesMap.set(movie.imdbID, {
               title: movie.Title || movie.title || 'Unknown',
               imdbID: movie.imdbID,
               slug: primaryCollectionSlug,
+              movieSlug: movieSlug,
               year: movie.year || movie.Year || '',
               poster: finalPoster
             });

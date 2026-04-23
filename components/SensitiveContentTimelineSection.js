@@ -169,6 +169,11 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
         currentRuntime = "132 min (Unrated Version)"; 
     }
 
+    // 🔥 Explicit Override for Original Sin
+    if (movie.tmdbId === 2057) {
+        currentRuntime = "118 min (Unrated Version)"; 
+    }
+
     const getSeverityDotColor = (severity) => {
         if (!severity) return 'bg-gray-500 shadow-gray-500/50';
         const s = severity.toLowerCase();

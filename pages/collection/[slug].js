@@ -4390,172 +4390,6 @@ return (
                         "numberOfItems": movies?.length || 0,
                         "url": `https://filmiway.com/collection/${collection?.slug || ""}`,
                         "itemListElement": (movies || []).map((movie, index) => {
-                            const basePath =
-                                collection?.slug === 'best-survival-movies'
-                                    ? 'movies/survival/'
-                                    : collection?.slug === 'movies-like-inception'
-                                    ? 'movies/like-inception/'
-                                    : collection?.slug === 'movies-like-memento'
-                                    ? 'movies/like-memento/'
-                                    : collection?.slug === 'movies-like-shutter-island'
-                                    ? 'movies/like-shutter-island/'
-                                    : collection?.slug === 'movies-like-the-matrix'
-                                    ? 'movies/matrix/'
-                                    : collection?.slug === 'movies-like-se7en'
-                                    ? 'movies/like-se7en/'
-                                    : collection?.slug === 'movies-like-parasite' 
-                                    ? 'movies/parasite/'
-                                   : collection?.slug === 'movies-like-oldboy'
-? 'movies/oldboy/'
-
-: collection?.slug === 'movies-like-donnie-darko'
-? 'movies/donnie-darko/'
-: collection?.slug === 'movies-like-fight-club'
-? 'movies/movies-like-fight-club/'
-: collection?.slug === 'movies-like-black-swan'
-? 'movies/black-swan/'
-
-
-: collection?.slug === 'movies-like-eyes-wide-shut'
-? 'movies/eyes-wide-shut/'
-: collection?.slug === 'movies-like-the-prestige'
-? 'movies/like-prestige/'
-: collection?.slug === 'best-erotic-thriller-movies'
-? 'movies/best-erotic-thriller-movies/'
-: collection?.slug === 'best-erotic-romance-movies'
-? 'movies/best-erotic-romance-movies/'
-: collection?.slug === 'best-movies-about-greed'
-? 'movies/best-movies-about-greed/'
-: collection?.slug === 'best-raunchy-comedy-movies'
-? 'movies/best-raunchy-comedy-movies/'
-: collection?.slug === 'top-10-road-trip-movies'
-? 'movies/top-10-road-trip-movies/'
-: collection?.slug === 'best-thought-provoking-movies'
-? 'movies/best-thought-provoking-movies/'
-: collection?.slug === 'best-neo-noir-movies'
-? 'movies/best-neo-noir-movies/'
-: collection?.slug === 'best-action-movies'
-? 'movies/best-action-movies/'
-: collection?.slug === 'best-true-story-movies'
-? 'movies/best-true-story-movies/'
-: collection?.slug === 'best-movies-of-the-decade'
-? 'movies/best-movies-of-the-decade/'
-: collection?.slug === 'best-gangster-movies-of-all-time'
-? 'movies/best-gangster-movies-of-all-time/'
-: collection?.slug === 'top-10-book-adaptations'
-? 'movies/top-10-book-adaptations/'
-: collection?.slug === 'best-marriage-crisis-movies'
-? 'movies/best-marriage-crisis-movies/'
-: collection?.slug === 'best-a24-movies'
-? 'movies/best-a24-movies/'
-: collection?.slug === 'best-dark-comedy-movies'
-? 'movies/best-dark-comedy-movies/'
-: collection?.slug === 'best-action-movies-on-hulu'
-                                    ? 'movies/best-action-movies-on-hulu/'
-: collection?.slug === 'best-romance-movies-on-hulu'
-                                   ? 'movies/best-romance-movies-on-hulu/'
-
-: collection?.slug === 'best-horror-movies-on-hulu'
-                                 ? 'movies/best-horror-movies-on-hulu/'
-: collection?.slug === 'best-comedy-movies-on-hulu'
-                                   ? 'movies/best-comedy-movies-on-hulu/'
-                                   : collection?.slug === 'best-sci-fi-movies-on-hulu'
-? 'movies/best-sci-fi-movies-on-hulu/'
-: collection?.slug === 'best-thriller-movies-hulu'
-? 'movies/best-thriller-movies-hulu/'
-: collection?.slug === 'best-movies-on-hulu'
-? 'movies/best-movies-on-hulu/'
-: collection?.slug === 'best-drama-movies-on-hulu'
-? 'movies/best-drama-movies-on-hulu/'
-: collection?.slug === 'best-family-movies-on-hulu'
-? 'movies/best-family-movies-on-hulu/'
-: collection?.slug === 'best-action-movies-on-hbo-max'
-? 'movies/best-action-movies-on-hbo-max/'
-: collection?.slug === 'best-romance-movies-on-hbo-max'
-? 'movies/best-romance-movies-on-hbo-max/'
-: collection?.slug === 'best-thriller-movies-on-hbo-max'
-? 'movies/best-thriller-movies-on-hbo-max/'
-: collection?.slug === 'best-family-movies-on-hbo-max'
-? 'movies/best-family-movies-on-hbo-max/'
-: collection?.slug === 'best-sci-fi-movies-on-hbo-max'
-? 'movies/best-sci-fi-movies-on-hbo-max/'
-: collection?.slug === 'best-horror-movies-on-hbo-max'
-? 'movies/best-horror-movies-on-hbo-max/'
-: collection?.slug === 'best-movies-on-hbo-max'
-? 'movies/best-movies-on-hbo-max/'
-: collection?.slug === 'best-drama-movies-on-hbo-max'
-? 'movies/best-drama-movies-on-hbo-max/'
-: collection?.slug === 'best-comedy-movies-on-hbo-max'
-? 'movies/best-comedy-movies-on-hbo-max/'
-: collection?.slug === 'best-action-movies-on-paramount-plus'
-? 'movies/best-action-movies-on-paramount-plus/'
-: collection?.slug === 'best-sci-fi-movies-on-paramount-plus'
-? 'movies/best-sci-fi-movies-on-paramount-plus/'
-: collection?.slug === 'best-action-adventure-movies-on-peacock'
-? 'movies/best-action-adventure-movies-on-peacock/'
-: collection?.slug === 'best-sci-fi-movies-on-peacock'
-? 'movies/best-sci-fi-movies-on-peacock/'
-: collection?.slug === 'best-romance-movies-on-peacock'
-? 'movies/best-romance-movies-on-peacock/'
-: collection?.slug === 'best-family-movies-on-peacock'
-? 'movies/best-family-movies-on-peacock/'
-: collection?.slug === 'best-drama-movies-on-peacock'
-? 'movies/best-drama-movies-on-peacock/'
-: collection?.slug === 'best-thriller-movies-on-peacock'
-? 'movies/best-thriller-movies-on-peacock/'
-: collection?.slug === 'best-movies-on-peacock'
-? 'movies/best-movies-on-peacock/'
-: collection?.slug === 'best-comedy-movies-on-peacock'
-? 'movies/best-comedy-movies-on-peacock/'
-: collection?.slug === 'best-romance-movies-on-paramount-plus'
-? 'movies/best-romance-movies-on-paramount-plus/'
-: collection?.slug === 'best-core-drama-movies-on-paramount-plus'
-? 'movies/best-core-drama-movies-on-paramount-plus/'
-: collection?.slug === 'best-thriller-movies-on-paramount-plus'
-? 'movies/best-thriller-movies-on-paramount-plus/'
-: collection?.slug === 'best-family-movies-on-paramount-plus'
-? 'movies/best-family-movies-on-paramount-plus/'
-: collection?.slug === 'best-horror-movies-on-paramount-plus'
-? 'movies/best-horror-movies-on-paramount-plus/'
-: collection?.slug === 'best-comedy-movies-on-paramount-plus'
-? 'movies/best-comedy-movies-on-paramount-plus/'
-: collection?.slug === 'best-movies-on-paramount-plus' // 
-        ? 'movies/best-movies-on-paramount-plus/'
-                                    
-        : collection?.slug === 'best-paul-thomas-anderson-movies'
-? 'movies/best-paul-thomas-anderson-movies/'
-                                    
-                                     
-                                    : collection?.slug === 'movies-like-interstellar'
-                                    ? 'movies/interstellar/'
-                                    : collection?.slug === 'movies-like-memento'
-                                    ? 'movies/like-memento/'
-                                    : collection?.slug === 'movies-like-shutter-island'
-                                    ? 'movies/like-shutter-island/'
-                                    : collection?.slug === 'best-thriller-movies'
-                                    ? 'movies/thriller/'
-                                    : collection?.slug === 'best-mystery-thriller-movies'
-                                    ? 'movies/mystery-thriller/'
-                                    : collection?.slug === 'best-detective-thriller-movies'
-                                    ? 'movies/detective-thriller/'
-                                    : collection?.slug === 'best-drama-movies-on-netflix'
-                                    ? 'movies/netflix/'
-                                    : collection?.slug === 'best-psychological-thriller-movies'
-                                    ? 'movies/psych-thriller/'
-                                    : collection?.slug === 'best-crime-thriller-movies'
-                                    ? 'movies/crime-thriller/'
-                                    : collection?.slug === 'best-heist-thriller-movies'
-                                    ? 'movies/heist-thriller/'
-                                    : collection?.slug === 'best-time-travel-movies'
-                                    ? 'movies/time-travel/'
-                                    : collection?.slug === 'best-sci-fi-movies'
-                                    ? 'movies/sci-fi/'
-                                    : collection?.slug === 'best-revenge-movies'
-                                    ? 'movies/revenge/'
-                                    : collection?.slug === 'best-war-films'
-                                    ? 'movies/war-films/'
-                                    : 'movies/';
-
                             let itemObj = {
                                 "@type": "Movie",
                                 "name": movie?.Title || "Unknown Movie",
@@ -4577,7 +4411,7 @@ return (
                             }
 
                             if (movie?.imdbID) {
-                                itemObj.url = `https://filmiway.com/${basePath}${movie.imdbID}`;
+                                itemObj.url = `https://filmiway.com/movie/${movie.slug}`;
                             }
 
                             return {
@@ -4661,9 +4495,7 @@ return (
                     <AnimatePresence mode="wait">
                         {currentMovie && (
                             <Link
-                               
-                            href={`/movies/${collection.slug}/${currentMovie.imdbID}`}
-                            href={`/movie/${currentMovie.slug}`}
+                                href={`/movie/${currentMovie.slug}`}
                                 key={currentMovieIndex}
                                 onClick={handleMovieClick}
                             >

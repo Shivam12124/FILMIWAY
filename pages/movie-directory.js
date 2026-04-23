@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { BookOpen, FolderTree } from 'lucide-react';
 import Header from '../components/Header';
 import { COLLECTIONS, getPrimaryCollectionForMovie } from '../data/collections';
+import masterDatabase from '../utils/masterDatabase.json';
 
 // ⚡ ALL MOVIE DATABASES IMPORTED
 import { COMPLETE_MOVIE_DATABASE as SURVIVAL_DATABASE } from '../utils/survivalMovieData';
@@ -184,7 +185,7 @@ export default function MovieDirectory({ sortedMovies }) {
                         <li key={movie.imdbID} className="flex items-start group">
                           <span className="text-yellow-500/30 mr-3 mt-1 text-xs font-mono group-hover:text-yellow-400 transition-colors duration-300">»</span>
                           <Link 
-                            href={`/movies/${movie.slug}/${movie.imdbID}`}
+                            href={`/movie/${movie.movieSlug}`}
                             className="text-gray-300 hover:text-yellow-400 transition-colors duration-200 text-sm sm:text-base leading-snug font-medium"
                             prefetch={false} // Prevents Next.js from pre-loading data for all linked pages immediately
                             title={`${movie.title} Parents Guide, Full Analysis, Timestamps, & Streaming Info`}
@@ -221,7 +222,7 @@ export async function getStaticProps() {
     PEACOCK_BEST_DATABASE, PEACOCK_COMEDY_DATABASE, RAUNCHY_COMEDY_DATABASE, ROAD_TRIP_DATABASE,
     THOUGHT_PROVOKING_DATABASE, NEO_NOIR_DATABASE, BEST_ACTION_DATABASE, TRUE_STORY_DATABASE,
     GANGSTER_DATABASE, DECADE_DATABASE, BOOK_ADAPTATION_DATABASE, MARRIAGE_CRISIS_DATABASE,
-    A24_DATABASE, DARK_COMEDY_DATABASE, PTA_DATABASE, HULU_FAMILY_DATABASE, HBO_ACTION_DATABASE, HBO_MAX_ROMANCE_DATABASE, HBO_MAX_THRILLER_DATABASE,
+    A24_DATABASE, DARK_COMEDY_DATABASE, PTA_DATABASE, BASIC_INSTINCT_DATABASE, HULU_FAMILY_DATABASE, HBO_ACTION_DATABASE, HBO_MAX_ROMANCE_DATABASE, HBO_MAX_THRILLER_DATABASE,
     HBO_MAX_FAMILY_DATABASE, HBO_MAX_SCIFI_DATABASE, HBO_MAX_HORROR_DATABASE, HBO_MAX_BEST_DATABASE,
     HBO_MAX_DRAMA_DATABASE, SCI_FI_DATABASE, THRILLER_MOVIES, MYSTERY_THRILLER_MOVIES,
     DETECTIVE_THRILLER_MOVIES, PSYCH_THRILLER_MOVIES, HEIST_THRILLER_MOVIES, TIME_TRAVEL_MOVIES,
@@ -252,10 +253,14 @@ export async function getStaticProps() {
         if (validImdbIds.has(rawId) && !uniqueMoviesMap.has(cleanId) && !seenTitles.has(titleKey)) {
           const primaryCollectionSlug = getPrimaryCollectionForMovie(rawId);
           if (primaryCollectionSlug) {
+            const masterMovie = masterDatabase?.find(m => m.imdbID === cleanId);
+            const movieSlug = masterMovie?.slug || cleanTitle.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+
             uniqueMoviesMap.set(cleanId, {
               title: cleanTitle,
               imdbID: cleanId,
-              slug: primaryCollectionSlug
+              slug: primaryCollectionSlug,
+              movieSlug: movieSlug
             });
             seenTitles.add(titleKey);
           }
