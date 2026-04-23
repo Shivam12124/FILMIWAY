@@ -36,7 +36,11 @@ export const SENSITIVE_TIMELINES = {
     180: { scenes: [] }, 
     
     // 5. Annihilation
-    300668:      { start: "1:08:25", end: "1:08:40", type: "Sex", severity: "Moderate" },
+    300668: { 
+        scenes: [
+            { start: "1:08:25", end: "1:08:40", type: "Sex", severity: "Moderate" }
+        ]
+    },
     // 6. A Quiet Place
     447332:{ scenes: [] }, 
     // 7. Star Trek II: The Wrath of Khan

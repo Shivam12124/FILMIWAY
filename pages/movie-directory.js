@@ -97,6 +97,17 @@ export default function MovieDirectory({ sortedMovies }) {
 
   const alphabet = ['#', ...Array.from({ length: 26 }, (_, i) => String.fromCharCode(65 + i))];
 
+  // ⚡ SMART CLICK HANDLER: Traps the user into a curated collection when they click 'Back'
+  const handleDirectoryMovieClick = (movie) => {
+    if (typeof window !== 'undefined' && movie.slug) {
+      const collectionTitle = COLLECTIONS[movie.slug]?.title || 'Collection';
+      sessionStorage.setItem('currentCollection', movie.slug);
+      sessionStorage.setItem('collectionTitle', collectionTitle);
+      sessionStorage.setItem('fromCollection', 'true');
+      sessionStorage.removeItem('fromDirectory');
+    }
+  };
+
   return (
     <>
       <Head>
@@ -186,6 +197,7 @@ export default function MovieDirectory({ sortedMovies }) {
                           <span className="text-yellow-500/30 mr-3 mt-1 text-xs font-mono group-hover:text-yellow-400 transition-colors duration-300">»</span>
                           <Link 
                             href={`/movie/${movie.movieSlug}`}
+                            onClick={() => handleDirectoryMovieClick(movie)}
                             className="text-gray-300 hover:text-yellow-400 transition-colors duration-200 text-sm sm:text-base leading-snug font-medium"
                             prefetch={false} // Prevents Next.js from pre-loading data for all linked pages immediately
                             title={`${movie.title} Parents Guide, Full Analysis, Timestamps, & Streaming Info`}
