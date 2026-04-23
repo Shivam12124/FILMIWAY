@@ -3,10 +3,7 @@ import React, { useMemo, useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Shield, CheckCircle, Clock, AlertOctagon, Info, Film, FastForward, Eye, Heart, AlertTriangle, ThumbsUp, ThumbsDown } from 'lucide-react';
 
-// Import formatting functions from BOTH data sources
-import { formatSensitiveTimeline as formatInceptionTimeline, getSensitiveContentTypes as getInceptionContentTypes } from '../utils/movieData';
-import { formatSensitiveTimeline as formatSurvivalTimeline, getSensitiveContentTypes as getSurvivalContentTypes } from '../utils/survivalMovieData';
-
+import masterTimestamps from '../utils/masterTimestamps.json';
 // Firebase imports for real data tracking
 import { doc, getDoc, setDoc, updateDoc, increment } from 'firebase/firestore';
 import { db } from '../firebaseConfig';
@@ -104,36 +101,25 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
         }
     };
 
-    const extractExactTypes = (scenes) => {
-        if (!scenes || !Array.isArray(scenes)) return [];
-        const types = scenes
-            .map(scene => scene.type) 
-            .filter(Boolean); 
-        return [...new Set(types)]; 
-    };
-
-    // 🔥 SMART DETECTION FIX: Ensure we process the array properly
-    const actualScenes = Array.isArray(sensitiveScenes) ? sensitiveScenes : sensitiveScenes?.scenes;
+    // 🔥 SINGLE SOURCE OF TRUTH: Read directly from the JSON file
+    const actualScenes = masterTimestamps[movie?.tmdbId]?.scenes || [];
 
     let sensitiveData = null;
     let contentTypes = [];
 
-    if (actualScenes) {
-        sensitiveData = { scenes: actualScenes };
-        contentTypes = extractExactTypes(actualScenes);
-    } else {
-        const inceptionData = formatInceptionTimeline?.(movie.tmdbId);
-        const survivalData = formatSurvivalTimeline?.(movie.tmdbId);
-        sensitiveData = inceptionData || survivalData;
-        
-        let predefinedTypes = inceptionData 
-            ? (getInceptionContentTypes?.(movie.tmdbId) || [])
-            : (getSurvivalContentTypes?.(movie.tmdbId) || []);
-            
-        contentTypes = predefinedTypes.length > 0 
-            ? predefinedTypes 
-            : extractExactTypes(sensitiveData?.scenes);
-    }
+    sensitiveData = { scenes: actualScenes };
+    const types = new Set();
+    actualScenes.forEach(scene => {
+        const lowerType = scene.type?.toLowerCase() || '';
+        if (lowerType.includes('sexual content')) types.add('sexual content');
+        else if (lowerType.match(/\bsex\b/)) types.add('sex');
+        else if (lowerType.includes('explicit')) types.add('explicit content');
+        if (lowerType.includes('partial nudity')) types.add('partial nudity');
+        else if (lowerType.includes('nudity')) types.add('nudity');
+        if (lowerType.includes('suggestive') || lowerType.includes('lingerie') || lowerType.includes('bikini')) types.add('suggestive clothing');
+    });
+    contentTypes = Array.from(types);
+    if (contentTypes.length === 0) contentTypes = [...new Set(actualScenes.map(s => s.type).filter(Boolean))];
 
     // ✅ DYNAMIC RUNTIME VERIFICATION (Including Specific Movie Overrides)
     let currentRuntime = movie.Runtime || movie.runtime || "Official";

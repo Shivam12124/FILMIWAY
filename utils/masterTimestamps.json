@@ -203,14 +203,14 @@
         "Title": "Taxi Driver",
         "scenes": [
             {
-                "start": "0:35:34",
-                "end": "0:35:45",
+                "start": "35:34",
+                "end": "35:45",
                 "type": "Sexual Content",
                 "severity": "Moderate"
             },
             {
-                "start": "0:58:52",
-                "end": "0:59:05",
+                "start": "58:52",
+                "end": "59:05",
                 "type": "Sexual Content",
                 "severity": "Moderate"
             }
@@ -443,8 +443,8 @@
         "Title": "Braveheart",
         "scenes": [
             {
-                "start": "0:38:23",
-                "end": "0:39:20",
+                "start": "38:23",
+                "end": "39:20",
                 "type": "Nudity (Woman)",
                 "severity": "Moderate"
             }
@@ -1127,8 +1127,8 @@
                 "severity": "Moderate"
             },
             {
-                "start": "0:48:40",
-                "end": "0:48:55",
+                "start": "48:40",
+                "end": "48:55",
                 "type": "Nudity",
                 "severity": "High"
             },
@@ -1335,7 +1335,7 @@
             {
                 "start": "1:00:15",
                 "end": "1:00:47",
-                "type": "Sexual Content",
+                "type": "Sexual content",
                 "severity": "Moderate"
             }
         ]
@@ -1393,14 +1393,7 @@
     },
     "639": {
         "Title": "When Harry Met Sally...",
-        "scenes": [
-            {
-                "start": "0:46:13",
-                "end": "0:47:22",
-                "type": "Sexual Content (Moaning / Fake Orgasm)",
-                "severity": "Moderate"
-            }
-        ]
+        "scenes": []
     },
     "640": {
         "Title": "Catch Me If You Can",
@@ -1695,7 +1688,7 @@
         ]
     },
     "807": {
-        "Title": "Se7en",
+        "Title": "Unknown Movie",
         "scenes": []
     },
     "808": {
@@ -1943,6 +1936,10 @@
         "Title": "Heat",
         "scenes": []
     },
+    "968": {
+        "Title": "Dog Day Afternoon",
+        "scenes": []
+    },
     "975": {
         "Title": "Paths of Glory",
         "scenes": []
@@ -1962,7 +1959,7 @@
             },
             {
                 "start": "1:38:45",
-                "end": "1:42:55",
+                "end": "1:42:18",
                 "type": "Nudity",
                 "severity": "High"
             },
@@ -2880,18 +2877,16 @@
         "Title": "Dark City",
         "scenes": [
             {
-                "start": "2:38",
-                "end": "3:00",
-                "type": "Partial Nudity",
-                "severity": "Mild",
-                "description": "Partial nudity (man)"
+                "start": "0:02:38",
+                "end": "0:03:00",
+                "type": "Partial nudity (man)",
+                "severity": "Mild"
             },
             {
-                "start": "18:00",
-                "end": "19:00",
-                "type": "Nudity",
-                "severity": "Moderate",
-                "description": "Nudity (woman)"
+                "start": "0:18:00",
+                "end": "0:19:00",
+                "type": "Nudity (woman)",
+                "severity": "High"
             }
         ]
     },
@@ -4548,19 +4543,22 @@
                 "start": "54:34",
                 "end": "54:55",
                 "type": "Nudity",
-                "severity": "Mild"
+                "severity": "Mild",
+                "description": "Men"
             },
             {
                 "start": "1:01:12",
                 "end": "1:02:40",
                 "type": "Sexual content",
-                "severity": "Moderate"
+                "severity": "Moderate",
+                "description": "Man"
             },
             {
                 "start": "1:25:12",
                 "end": "1:25:47",
-                "type": "Sexual content",
-                "severity": "Mild"
+                "type": "Nudity",
+                "severity": "Mild",
+                "description": "Woman"
             }
         ]
     },
@@ -4688,14 +4686,8 @@
         "Title": "The Chaser",
         "scenes": [
             {
-                "start": "0:04:12",
-                "end": "0:04:30",
-                "type": "Nudity",
-                "severity": "Moderate"
-            },
-            {
-                "start": "0:06:25",
-                "end": "0:07:30",
+                "start": "6:30",
+                "end": "7:30",
                 "type": "Lingerie",
                 "severity": "Mild"
             }
@@ -4942,8 +4934,8 @@
         "Title": "The Town",
         "scenes": [
             {
-                "start": "0:21:08",
-                "end": "0:21:26",
+                "start": "21:08",
+                "end": "21:26",
                 "type": "Sex",
                 "severity": "Moderate"
             },
@@ -5221,19 +5213,19 @@
             {
                 "start": "39:40",
                 "end": "40:40",
-                "type": "Sexual content",
+                "type": "Sexual Content",
                 "severity": "High"
             },
             {
                 "start": "48:52",
                 "end": "49:10",
-                "type": "Sexual content",
+                "type": "Sexual Content",
                 "severity": "Moderate"
             },
             {
                 "start": "51:20",
                 "end": "51:40",
-                "type": "Sexual content",
+                "type": "Sexual Content",
                 "severity": "High"
             },
             {
@@ -6406,8 +6398,8 @@
         "Title": "John Wick",
         "scenes": [
             {
-                "start": "0:45:00",
-                "end": "0:45:30",
+                "start": "45:00",
+                "end": "45:30",
                 "type": "Suggestive Clothing (Bikini)",
                 "severity": "Mild"
             }
@@ -6667,7 +6659,7 @@
         ]
     },
     "324849": {
-        "Title": "The Lego Batman Movie",
+        "Title": "The LEGO Batman Movie",
         "scenes": []
     },
     "329865": {
@@ -7217,33 +7209,33 @@
         "Title": "Burning",
         "scenes": [
             {
-                "start": "00:15:00",
-                "end": "00:18:20",
+                "start": "15:00",
+                "end": "18:20",
                 "type": "Sex & Nudity",
                 "severity": "High"
             },
             {
-                "start": "00:29:30",
-                "end": "00:30:00",
-                "type": "Sexual Content ",
+                "start": "29:30",
+                "end": "30:00",
+                "type": "Sexual Content (man)",
                 "severity": "Moderate"
             },
             {
-                "start": "00:35:10",
-                "end": "00:35:39",
-                "type": "Sexual Content ",
+                "start": "35:10",
+                "end": "35:39",
+                "type": "Sexual Content (man)",
                 "severity": "Moderate"
             },
             {
-                "start": "01:08:35",
-                "end": "01:11:25",
+                "start": "1:08:35",
+                "end": "1:11:25",
                 "type": "Nudity (woman)",
                 "severity": "Moderate"
             },
             {
-                "start": "02:13:30",
-                "end": "02:14:07",
-                "type": "Sexual Content",
+                "start": "2:13:30",
+                "end": "2:14:07",
+                "type": "Sexual Content (man)",
                 "severity": "Moderate"
             }
         ]
