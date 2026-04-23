@@ -422,6 +422,7 @@ import PeacockDramaSEOFAQSection from './PeacockDramaSEOFAQSection';
 import PeacockThrillerSEOFAQSection from './PeacockThrillerSEOFAQSection';
 import PeacockBestSEOFAQSection from './PeacockBestSEOFAQSection';
 import PeacockComedySEOFAQSection from './PeacockComedySEOFAQSection';
+import FanFavoritesSection from './FanFavoritesSection';
 
 const MovieDetailsSection = React.memo(({
   movie,
@@ -1497,6 +1498,9 @@ const MovieDetailsSection = React.memo(({
 
       {/* 🔥 MOVED SENSITIVE CONTENT HIGH UP TO IMMEDIATELY SHOW TIMESTAMP VALUE 🔥 */}
       <SensitiveContentTimelineSection movie={{...movie, Runtime: dynamicMovieData.runtime}} sensitiveScenes={sensitiveScenes} />
+
+      {/* 🔥 THE BOUNCE INTERCEPTOR: FAN FAVORITES 🔥 */}
+      <FanFavoritesSection currentMovieSlug={movie.slug} />
 
       {/* ✅ SEO FIX: Only render graphs if data exists! No placeholder data shown to users. */}
       {safeMovieInfo?.scenes && safeMovieInfo.scenes.length > 0 && (

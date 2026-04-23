@@ -75,10 +75,10 @@ const UniversalBanner = ({ movie, isMobile }) => {
       .mobile-hero-poster { width: 38vw; min-width: 106px; border-radius: 12px; overflow: hidden; box-shadow: 0 3px 14px #0007; margin: 0; flex-shrink: 0; }
       .mobile-hero-poster img { width: 100%; height: auto; border-radius: 12px; display: block; }
       .mobile-psych-card { background: #000000; border-radius: 12px; box-shadow: -6px 0 16px -6px rgba(234, 179, 8, 0.8), 0 2px 12px #0006; margin: 0; flex: 1; border-left: 4px solid #eab308; display: flex; flex-direction: column; justify-content: flex-start; padding: 10px 10px 10px 12px; min-height: 110px; position: relative; }
-      .mobile-psych-row { display: flex; align-items: flex-start; gap: 7px; }
-      .mobile-psych-icon { min-width: 24px; min-height: 24px; color: #facc15; margin-top: 2px; }
-      .mobile-psych-title { font-size: 15px; font-weight: bold; color: #facc15; margin-bottom: 1px; line-height: 1.12; }
-      .mobile-psych-desc { font-size: 12.3px; color: #ededed; line-height: 1.36; margin-top: 2px; }
+      .mobile-psych-row { display: flex; align-items: center; gap: 6px; }
+      .mobile-psych-icon { min-width: 18px; min-height: 18px; width: 18px; height: 18px; color: #facc15; margin-top: -2px; }
+      .mobile-psych-title { font-size: 15px; font-weight: bold; color: #facc15; margin-bottom: 0; line-height: 1.12; }
+      .mobile-psych-desc { font-size: 12.3px; color: #ededed; line-height: 1.36; margin-top: 4px; }
     }`;
 
     return (
@@ -237,11 +237,11 @@ const getCollectionProp = (sourceFile) => {
     return mapping[sourceFile] || null;
 };
 
+// 🔥 The Magic: Automatically generate the breadcrumb based on the Primary Collection!
+const getCleanTitle = (title) => title ? title.toUpperCase().replace(/^(THE\s+)?(10\s+)?(TOP\s+10\s+)?BEST\s+/i, '').replace(/^(10\s+)?(.*?)\s*MOVIES\s+LIKE\s+/i, '').replace(/\s+MOVIES(\s+OF\s+ALL\s+TIME)?$/i, '').replace(/\s*\(.*?\)$/i, '') : '';
+
 export default function UniversalMoviePage({ movie }) {
     const router = useRouter();
-    
-    // 🔥 The Magic: Automatically generate the breadcrumb based on the Primary Collection!
-    const getCleanTitle = (title) => title.toUpperCase().replace(/^(THE\s+)?(10\s+)?(TOP\s+10\s+)?BEST\s+/i, '').replace(/^(10\s+)?(.*?)\s*MOVIES\s+LIKE\s+/i, '').replace(/\s+MOVIES(\s+OF\s+ALL\s+TIME)?$/i, '').replace(/\s*\(.*?\)$/i, '');
     
     const defaultLabel = movie?.primaryCollectionTitle ? `BACK TO ${getCleanTitle(movie.primaryCollectionTitle)}` : 'BACK TO HOME';
     const defaultUrl = movie?.primaryCollectionSlug ? `/collection/${movie.primaryCollectionSlug}` : '/';
@@ -268,8 +268,11 @@ export default function UniversalMoviePage({ movie }) {
                 label: `BACK TO ${getCleanTitle(savedCollectionTitle)}`, 
                 url: `/collection/${savedCollectionSlug}` 
             });
+        } else {
+            // 🔥 RESET BREADCRUMB TO NEW MOVIE'S DEFAULT WHEN SESSION IS CLEARED OR ROUTE CHANGES
+            setBreadcrumb({ label: defaultLabel, url: defaultUrl });
         }
-    }, []);
+    }, [movie?.slug, defaultLabel, defaultUrl]);
 
     if (router.isFallback || !movie) return <div className="min-h-screen bg-black" />;
 
@@ -278,7 +281,7 @@ export default function UniversalMoviePage({ movie }) {
     const dynamicProps = propName ? { [propName]: true } : {};
 
     return (
-        <div className="min-h-screen bg-black selection:bg-yellow-500/30 font-inter text-gray-200">
+        <div key={movie.slug} className="min-h-screen bg-black selection:bg-yellow-500/30 font-inter text-gray-200">
             <div className="absolute inset-0 z-0 pointer-events-none"><CinematicBackground /></div>
             <Head>
                 <title>{`${movie.Title} Parents Guide (Skip Sex & Nudity Timestamps)`}</title>
