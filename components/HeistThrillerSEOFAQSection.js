@@ -38,7 +38,7 @@ const HeistThrillerSEOFAQSection = ({ movie }) => {
             <span>Frequently Asked Questions About <span className="font-semibold text-yellow-300">{title}</span></span>
           </h2>
           <p className="text-gray-400 mt-2 text-sm sm:text-base max-w-2xl">
-            Explore our **Parents Guide** and expert analysis for {title}. We provide accurate timestamps for sensitive scenes to skip and map the biggest heist tension peaks of this cinematic thriller.
+            Explore our Parents Guide and expert analysis for {title}. We provide accurate timestamps for sensitive scenes to skip and map the biggest heist tension peaks of this cinematic thriller.
           </p>
         </div>
       </div>

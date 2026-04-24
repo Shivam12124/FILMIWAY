@@ -33,7 +33,7 @@ const MatrixSEOFAQSection = ({ movie }) => {
             </h2>
             
             <p className="text-emerald-200/80 mb-4 sm:mb-6 text-sm sm:text-base leading-relaxed">
-                Explore our **Parents Guide** and expert analysis for {title}. We provide accurate timestamps for sensitive scenes to skip and map the sci-fi complexity of this cyberpunk masterpiece.
+                Explore our Parents Guide and expert analysis for {title}. We provide accurate timestamps for sensitive scenes to skip and map the sci-fi complexity of this cyberpunk masterpiece.
             </p>
 
             <div className="space-y-4 sm:space-y-6">

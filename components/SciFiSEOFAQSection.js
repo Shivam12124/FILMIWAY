@@ -34,7 +34,7 @@ const SciFiSEOFAQSection = ({ movie }) => {
         <span className="sm:hidden">FAQ About {title}</span>
       </h2>
       <p className="text-gray-300 mb-4 sm:mb-6 text-sm sm:text-base">
-        Explore our **Parents Guide** and expert analysis for {title}. We provide accurate timestamps for sensitive scenes to skip and map the conceptual complexities of this sci-fi masterpiece.
+        Explore our Parents Guide and expert analysis for {title}. We provide accurate timestamps for sensitive scenes to skip and map the conceptual complexities of this sci-fi masterpiece.
       </p>
       <div className="space-y-4 sm:space-y-6">
         {faqsFromData.map((faq, idx) => (

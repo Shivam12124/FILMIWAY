@@ -32,7 +32,7 @@ const ThrillerSEOFAQSection = ({ movie }) => {
             </h2>
             
             <p className="text-gray-300 mb-4 sm:mb-6 text-sm sm:text-base leading-relaxed">
-                Explore our **Parents Guide** and expert analysis for {title}. We provide accurate timestamps for sensitive scenes and map the intensity of this intense thriller.
+                Explore our Parents Guide and expert analysis for {title}. We provide accurate timestamps for sensitive scenes and map the intensity of this intense thriller.
             </p>
 
             <div className="space-y-4 sm:space-y-6">

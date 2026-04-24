@@ -33,7 +33,7 @@ const ParamountComedySEOFAQSection = ({ movie }) => {
             </h2>
             
             <p className="text-gray-300 mb-4 sm:mb-6 text-sm sm:text-base leading-relaxed">
-                Explore our **Parents Guide** and expert analysis for {title}. We provide accurate timestamps for sensitive scenes to skip and map the biggest laughs of this Paramount+ comedy hit.
+                Explore our Parents Guide and expert analysis for {title}. We provide accurate timestamps for sensitive scenes to skip and map the biggest laughs of this Paramount+ comedy hit.
             </p>
 
             <div className="space-y-4 sm:space-y-6">
