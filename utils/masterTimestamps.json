@@ -1228,18 +1228,7 @@
     "617": {
         "Title": "Wild Things",
         "scenes": [
-            {
-                "start": "0:11:58",
-                "end": "0:12:27",
-                "type": "Suggestive clothing (Lingerie)",
-                "severity": "Moderate"
-            },
-            {
-                "start": "0:16:45",
-                "end": "0:16:55",
-                "type": "Suggestive clothing",
-                "severity": "Moderate"
-            },
+     
             {
                 "start": "0:17:25",
                 "end": "0:17:52",
@@ -1264,12 +1253,7 @@
                 "type": "Sexual content & Nudity",
                 "severity": "High"
             },
-            {
-                "start": "1:24:25",
-                "end": "1:24:55",
-                "type": "Suggestive clothing (Lingerie)",
-                "severity": "Mild"
-            },
+      
             {
                 "start": "1:28:40",
                 "end": "1:28:57",

@@ -280,13 +280,34 @@ export default function UniversalMoviePage({ movie }) {
     const propName = getCollectionProp(movie.sourceFile);
     const dynamicProps = propName ? { [propName]: true } : {};
 
+    // ⚡ SEO EXPERIMENT: Custom Meta Tags for Specific Movies
+    let metaTitle = `${movie.Title} Parents Guide (Skip Sex & Nudity Timestamps)`;
+    let metaDesc = `Is there nudity in ${movie.Title}? Get the exact minute-by-minute timestamps to skip mature scenes. Read our 100% verified Parents Guide and Cinematic Impact review.`;
+
+    if (movie.slug === 'blue-is-the-warmest-color') {
+        metaTitle = "Blue Is the Warmest Color Skip Sex & Nudity Timestamps";
+        metaDesc = "PARENTS GUIDE: Exact skip timestamps for Blue Is the Warmest Color. Sex & Nudity 0:22:04-0:24:22, Sex & Nudity 1:14:53-1:21:46 and more.";
+    } else if (movie.slug === 'the-dreamers') {
+        metaTitle = "The Dreamers Skip Sex & Nudity Timestamps";
+        metaDesc = "PARENTS GUIDE: Exact skip timestamps for The Dreamers. Sexual Content 0:45:11-0:46:36, Nudity & Sex 0:52:55-1:02:52 and more.";
+    } else if (movie.slug === 'basic-instinct') {
+        metaDesc = "PARENTS GUIDE: Exact skip timestamps for Basic Instinct. Sex & Nudity 0:03:15-0:04:40, Nudity 0:05:40-0:06:50 and more.";
+    } else if (movie.slug === 'wild-things') {
+        metaDesc = "PARENTS GUIDE: Exact skip timestamps for Wild Things. Sex & Nudity 0:17:25-0:17:52, Sexual content & Nudity 0:57:40-0:59:55 and more.";
+    } else if (movie.slug === 'lust-caution') {
+        metaDesc = "PARENTS GUIDE: Exact skip timestamps for Lust, Caution. Sex & Nudity 1:00:15-1:02:40, Sex & Nudity 1:32:35-1:34:26 and more.";
+    }
+
     return (
         <div key={movie.slug} className="min-h-screen bg-black selection:bg-yellow-500/30 font-inter text-gray-200">
             <div className="absolute inset-0 z-0 pointer-events-none"><CinematicBackground /></div>
             <Head>
-                <title>{`${movie.Title} Parents Guide (Skip Sex & Nudity Timestamps)`}</title>
-                <meta name="description" content={`Is there nudity in ${movie.Title}? Get the exact minute-by-minute timestamps to skip mature scenes. Read our 100% verified Parents Guide and Cinematic Impact review.`} />
+                <title>{metaTitle}</title>
+                <meta name="description" content={metaDesc} />
                 <link rel="canonical" href={`https://filmiway.com/movie/${movie.slug}`} />
+                <meta property="og:title" content={metaTitle} />
+                <meta property="og:description" content={metaDesc} />
+                <meta property="og:type" content="video.movie" />
             </Head>
             <Header />
             <main className="relative z-10 pt-20 sm:pt-24 lg:pt-28 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
