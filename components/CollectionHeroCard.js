@@ -36,6 +36,7 @@ const CollectionHeroCard = ({ collection, index = 0 }) => {
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-90 group-hover:opacity-100"
                     priority={index < 4} // Load top 4 immediately for speed
+                    unoptimized
                 />
 
                 {/* B. PREMIUM GRADIENT OVERLAY */}

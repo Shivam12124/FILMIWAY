@@ -93,7 +93,7 @@ const FanFavoritesSection = ({ currentMovieSlug }) => {
                     
                     return (
                         <Link key={idx} href={`/movie/${slug}`} onClick={handleFanFavoriteClick} className="group relative rounded-xl overflow-hidden aspect-[2/3] border border-white/5 hover:border-orange-500/50 transition-all duration-300 shadow-lg">
-                            <Image src={`https://image.tmdb.org/t/p/w342${movieData.poster}`} alt={movieData.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 768px) 50vw, 25vw" />
+                            <Image src={`https://image.tmdb.org/t/p/w342${movieData.poster}`} alt={movieData.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 768px) 50vw, 25vw" unoptimized />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300"></div>
                             <div className="absolute bottom-0 left-0 w-full p-3 sm:p-4 transform translate-y-1 sm:translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
                                 <p className="text-white text-xs sm:text-sm font-medium line-clamp-2 leading-tight drop-shadow-md">{movieData.title}</p>

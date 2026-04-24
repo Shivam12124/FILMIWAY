@@ -156,7 +156,7 @@ const Header = () => {
                             >
                               {posterUrl ? (
                                 <div className="w-10 h-14 relative rounded overflow-hidden flex-shrink-0 border border-white/10 group-hover:border-yellow-500/50 transition-colors">
-                                  <Image src={posterUrl} alt={movieTitle} fill className="object-cover" sizes="40px" />
+                                  <Image src={posterUrl} alt={movieTitle} fill className="object-cover" sizes="40px" unoptimized />
                                 </div>
                               ) : (
                                 <div className="w-10 h-14 bg-gray-800 rounded flex items-center justify-center flex-shrink-0 border border-white/10">

@@ -112,7 +112,8 @@ const MovieResultItem = ({ movie }) => {
               fill 
               className="object-cover" 
               sizes="48px" 
-              onError={() => setImgError(true)} 
+              onError={() => setImgError(true)}
+              unoptimized
             />
           </div>
         ) : (

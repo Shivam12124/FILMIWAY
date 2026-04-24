@@ -123,6 +123,7 @@ const TMDBMoviePoster = React.memo(({ movie, className = "", alt, posterSize = "
                     setHasError(true);
                     setIsLoading(false);
                 }}
+                unoptimized
             />
 
             {/* Error Fallback: Only text if image breaks */}

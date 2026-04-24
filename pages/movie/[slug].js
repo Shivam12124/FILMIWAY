@@ -94,7 +94,7 @@ const UniversalBanner = ({ movie, isMobile }) => {
             ) : (
               <motion.div key="image" className="absolute inset-0 overflow-hidden" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
                 <div className="relative w-full h-full">
-                  {bannerImage ? <Image src={bannerImage} alt={`${movie?.Title} banner`} fill priority sizes="100vw" quality={90} className="object-cover object-[center_25%]" /> : <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: '#000000' }}><Film className="w-16 h-16 sm:w-24 sm:h-24" style={{ color: COLORS.textMuted }} /></div>}
+                  {bannerImage ? <Image src={bannerImage} alt={`${movie?.Title} banner`} fill priority sizes="100vw" quality={90} className="object-cover object-[center_25%]" unoptimized /> : <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: '#000000' }}><Film className="w-16 h-16 sm:w-24 sm:h-24" style={{ color: COLORS.textMuted }} /></div>}
                   <div className="absolute inset-0 z-10" style={{ background: `linear-gradient(to bottom, transparent 0%, transparent 50%, #000000 90%, #000000 100%), linear-gradient(to right, #000000 0%, transparent 15%, transparent 85%, #000000 100%)` }} />
                 </div>
                 {trailerKey && (
@@ -114,7 +114,7 @@ const UniversalBanner = ({ movie, isMobile }) => {
   
         {isMobile ? (
           <div className="mobile-hero-row">
-            <div className="mobile-hero-poster">{posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} width={320} height={480} className="w-full h-auto" priority /> : <div style={{ background: '#000000', width: '100%', height: '150px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Film style={{ color: COLORS.textMuted }} /></div>}</div>
+            <div className="mobile-hero-poster">{posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} width={320} height={480} className="w-full h-auto" priority unoptimized /> : <div style={{ background: '#000000', width: '100%', height: '150px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Film style={{ color: COLORS.textMuted }} /></div>}</div>
             <div className="mobile-psych-card">
               <div className="mobile-psych-row"><Star className="mobile-psych-icon" /><div><h2 className="mobile-psych-title">{movie?.Title} Parents Guide</h2></div></div>
               <div className="mobile-psych-desc text-sm mt-1">
@@ -127,7 +127,7 @@ const UniversalBanner = ({ movie, isMobile }) => {
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 lg:gap-10 items-start">
               <motion.div className="flex-shrink-0 relative w-24 sm:w-48 md:w-56 lg:w-80 mx-auto sm:mx-0" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8, duration: 0.8 }}>
                 <div className="relative" style={{ aspectRatio: '2/3' }}>
-                  {posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} fill sizes="(max-width: 640px) 96px, (max-width: 768px) 192px, (max-width: 1024px) 224px, 320px" quality={85} className="object-cover rounded-lg sm:rounded-xl shadow-2xl border border-white/5" /> : <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: '#000000', borderRadius: '12px' }}><Film style={{ color: COLORS.textMuted }} /></div>}
+                  {posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} fill sizes="(max-width: 640px) 96px, (max-width: 768px) 192px, (max-width: 1024px) 224px, 320px" quality={85} className="object-cover rounded-lg sm:rounded-xl shadow-2xl border border-white/5" unoptimized /> : <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: '#000000', borderRadius: '12px' }}><Film style={{ color: COLORS.textMuted }} /></div>}
                 </div>
               </motion.div>
               <motion.div className="w-full sm:w-3/4 md:w-2/3 lg:w-[55%] xl:w-[45%] min-w-0" initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 1.0, duration: 0.8 }}>
