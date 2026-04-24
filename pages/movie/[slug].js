@@ -77,7 +77,7 @@ const UniversalBanner = ({ movie, isMobile }) => {
       .mobile-psych-card { background: #000000; border-radius: 12px; box-shadow: -6px 0 16px -6px rgba(234, 179, 8, 0.8), 0 2px 12px #0006; margin: 0; flex: 1; border-left: 4px solid #eab308; display: flex; flex-direction: column; justify-content: flex-start; padding: 10px 10px 10px 12px; min-height: 110px; position: relative; }
       .mobile-psych-row { display: flex; align-items: center; gap: 6px; }
       .mobile-psych-icon { min-width: 18px; min-height: 18px; width: 18px; height: 18px; color: #facc15; margin-top: -2px; }
-      .mobile-psych-title { font-size: 15px; font-weight: bold; color: #facc15; margin-bottom: 0; line-height: 1.12; }
+      .mobile-psych-title { font-size: 14px; font-weight: bold; color: #facc15; margin-bottom: 0; line-height: 1.12; }
       .mobile-psych-desc { font-size: 12.3px; color: #ededed; line-height: 1.36; margin-top: 4px; }
     }`;
 
@@ -116,7 +116,7 @@ const UniversalBanner = ({ movie, isMobile }) => {
           <div className="mobile-hero-row">
             <div className="mobile-hero-poster">{posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} width={320} height={480} className="w-full h-auto" priority /> : <div style={{ background: '#000000', width: '100%', height: '150px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Film style={{ color: COLORS.textMuted }} /></div>}</div>
             <div className="mobile-psych-card">
-              <div className="mobile-psych-row"><Star className="mobile-psych-icon" /><div><div className="mobile-psych-title">At a Glance</div></div></div>
+              <div className="mobile-psych-row"><Star className="mobile-psych-icon" /><div><h2 className="mobile-psych-title">{movie?.Title} Parents Guide</h2></div></div>
               <div className="mobile-psych-desc text-sm mt-1">
                 {tagline ? <span className="text-white italic font-medium">"{tagline}"</span> : <span className="text-white font-medium">{insight.substring(0, 85)}...</span>}
               </div>
@@ -135,7 +135,7 @@ const UniversalBanner = ({ movie, isMobile }) => {
                   <div className="absolute top-0 left-0 right-0 h-0.5 sm:h-1" style={{ background: `linear-gradient(90deg, transparent, ${COLORS.accent}, transparent)` }} />
                   <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5">
                     <motion.div className="p-2 sm:p-2.5 rounded-lg sm:rounded-xl flex-shrink-0" style={{ background: `linear-gradient(135deg, ${COLORS.accent}20, ${COLORS.accent}10)`, border: `1px solid ${COLORS.accent}40` }} whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}><Star className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" style={{ color: COLORS.accent }} /></motion.div>
-                    <div className="min-w-0 flex-1"><h2 className="text-sm sm:text-base lg:text-xl xl:text-2xl font-bold leading-tight" style={{ color: COLORS.accent }}>At a Glance</h2></div>
+                    <div className="min-w-0 flex-1"><h2 className="text-sm sm:text-base lg:text-xl xl:text-2xl font-bold leading-tight" style={{ color: COLORS.accent }}>{movie?.Title} Parents Guide</h2></div>
                   </div>
                   <div className="relative pl-4 sm:pl-6 border-l-[3px]" style={{ borderColor: COLORS.accent, boxShadow: `-8px 0 16px -6px rgba(234, 179, 8, 0.6)` }}>
                     <motion.div className="absolute -left-1.5 sm:-left-2 top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full" style={{ backgroundColor: COLORS.accent }} animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 2, repeat: Infinity }} />

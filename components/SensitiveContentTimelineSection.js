@@ -224,7 +224,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                     </div>
                     <div>
                         <div className="flex items-center gap-2">
-                            <h2 className="text-emerald-300 font-medium text-base sm:text-lg">Timestamps & Parents Guide</h2>
+                            <h1 className="text-emerald-300 font-medium text-base sm:text-lg">{movie?.Title} Parents Guide & Skip Timestamps</h1>
                         </div>
                         <p className="text-emerald-400/70 text-xs sm:text-sm font-light mt-1">
                             <strong>{movie.Title}</strong>: Filmiway editors have manually verified this film is free of explicit sexual content and nudity. Accurate for the {currentRuntime}.
@@ -244,9 +244,9 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
         >
             <div className="flex flex-col mb-5 sm:mb-6 border-b border-white/5 pb-4 sm:pb-5 gap-3 sm:gap-4">
                 <div className="space-y-3 w-full">
-                    <h2 className="text-xl sm:text-2xl font-light text-red-200 flex items-center gap-2.5 sm:gap-3 tracking-wide">
+                    <h1 className="text-xl sm:text-2xl font-light text-red-200 flex items-center gap-2.5 sm:gap-3 tracking-wide">
                         <Shield className="text-red-500 w-5 h-5 sm:w-6 sm:h-6 shrink-0" />
-                        <span className="truncate">Timestamps & Parents Guide</span>
+                        <span className="truncate">{movie?.Title} Parents Guide & Skip Timestamps</span>
                         
                         <div className="relative flex items-center ml-1 shrink-0" ref={infoRef}>
                             <button
@@ -281,7 +281,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                                 )}
                             </AnimatePresence>
                         </div>
-                    </h2>
+                    </h1>
                     
                     <div className="ml-1 space-y-2.5 sm:space-y-2">
                         <p className="text-[13px] sm:text-sm text-gray-500 flex items-start sm:items-center gap-2">
