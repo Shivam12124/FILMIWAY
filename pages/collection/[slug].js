@@ -4182,7 +4182,7 @@ const getStaticMetaContent = () => {
 // MOBILE-OPTIMIZED CINEMATIC HEADER - SEO FIXED âœ…
 const CinematicHeader = React.memo(() => {
     return (
-        <header className="text-center mb-8 sm:mb-16 lg:mb-20 px-4 sm:px-6 w-full relative">
+        <header className="text-center mb-1 sm:mb-10 lg:mb-16 px-4 sm:px-6 w-full relative">
             <motion.div 
                 initial={{ opacity: 0, y: -40 }} 
                 animate={{ opacity: 1, y: 0 }} 
@@ -4200,7 +4200,7 @@ const CinematicHeader = React.memo(() => {
 {/* Visual Title */}
 {/* Visual Title */}
 <h1 
-    className="text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-extralight tracking-tight sm:tracking-[0.1em] text-transparent bg-clip-text bg-gradient-to-r from-yellow-100 via-yellow-300 to-amber-300 md:ml-20 lg:ml-24 xl:ml-28" 
+    className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-extralight tracking-tight sm:tracking-[0.1em] text-transparent bg-clip-text bg-gradient-to-r from-yellow-100 via-yellow-300 to-amber-300 md:ml-20 lg:ml-24 xl:ml-28" 
     style={{ 
         fontFamily: "'Playfair Display', serif", 
         textShadow: '0 0 80px rgba(234, 179, 8, 0.15)',
@@ -4232,7 +4232,7 @@ const CinematicHeader = React.memo(() => {
                 </div>
                 
                 <motion.div 
-                    className="grid grid-cols-3 sm:grid-cols-3 gap-2 sm:gap-4 lg:gap-6 mt-8 sm:mt-16 lg:mt-20 max-w-4xl mx-auto" 
+                    className="grid grid-cols-3 sm:grid-cols-3 gap-2 sm:gap-4 lg:gap-6 mt-14 sm:mt-16 lg:mt-20 max-w-4xl mx-auto" 
                     initial={{ opacity: 0, y: 40 }} 
                     animate={{ opacity: 1, y: 0 }} 
                     transition={{ delay: 2, duration: 0.8 }}
@@ -4244,7 +4244,7 @@ const CinematicHeader = React.memo(() => {
                             whileHover={{ y: -8, scale: 1.03 }} 
                             transition={{ duration: 0.4 }}
                         >
-                            <div className="h-full p-2 sm:p-6 lg:p-8 bg-gradient-to-br from-gray-800/40 via-gray-900/30 to-black/40 border border-yellow-500/20 rounded-2xl backdrop-blur-xl relative overflow-hidden">
+                            <div className="h-full p-3 sm:p-6 lg:p-8 bg-gradient-to-br from-gray-800/40 via-gray-900/30 to-black/40 border border-yellow-500/20 rounded-2xl backdrop-blur-xl relative overflow-hidden">
                                 <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/5 via-transparent to-amber-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                                 
                                 <div className="flex flex-col items-center space-y-2 sm:space-y-4 relative z-10">
@@ -4467,49 +4467,73 @@ return (
                     <div className="order-2 w-full flex flex-col mt-2 lg:mt-6">
                         
                         {/* 🎬 Your existing poster code starts here */}
-                        <div className="relative flex items-center justify-center min-h-[70vh] sm:min-h-[80vh]">
+                        <div className="relative flex items-center justify-center min-h-[70vh] sm:min-h-[80vh] touch-pan-y">
                     {!isFirstMovie && (
                         <motion.button
                             onClick={prevMovie}
-                            className="absolute left-2 sm:left-8 z-20 w-14 h-14 sm:w-18 sm:h-18 bg-gradient-to-r from-gray-800/90 to-gray-900/90 backdrop-blur-xl rounded-2xl border border-yellow-400/20 hover:border-yellow-400/40 transition-all duration-300 flex items-center justify-center group"
-                            whileHover={{ scale: 1.1, x: -8 }}
+                            className="absolute left-2 sm:left-8 md:left-12 lg:left-20 z-30 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 bg-black/60 sm:bg-gradient-to-r sm:from-gray-800/90 sm:to-gray-900/90 backdrop-blur-xl rounded-full sm:rounded-2xl border border-white/20 sm:border-yellow-400/20 hover:border-yellow-400/40 transition-all duration-300 flex items-center justify-center group shadow-xl"
+                            whileHover={{ scale: 1.1, x: -5 }}
                             whileTap={{ scale: 0.95 }}
                         >
-                            <ChevronLeft size={24} className="sm:w-7 sm:h-7 text-gray-300 group-hover:text-yellow-400 transition-colors" />
-                            <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/10 to-amber-400/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                            <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 lg:w-8 lg:h-8 text-white sm:text-gray-300 group-hover:text-yellow-400 transition-colors" />
+                            <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/10 to-amber-400/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity hidden sm:block"></div>
                         </motion.button>
                     )}
 
                     {!isLastMovie && (
                         <motion.button
                             onClick={nextMovie}
-                            className="absolute right-2 sm:right-8 z-20 w-14 h-14 sm:w-18 sm:h-18 bg-gradient-to-l from-gray-800/90 to-gray-900/90 backdrop-blur-xl rounded-2xl border border-yellow-400/20 hover:border-yellow-400/40 transition-all duration-300 flex items-center justify-center group"
-                            whileHover={{ scale: 1.1, x: 8 }}
+                            className="absolute right-2 sm:right-8 md:right-12 lg:right-20 z-30 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 bg-black/60 sm:bg-gradient-to-l sm:from-gray-800/90 sm:to-gray-900/90 backdrop-blur-xl rounded-full sm:rounded-2xl border border-white/20 sm:border-yellow-400/20 hover:border-yellow-400/40 transition-all duration-300 flex items-center justify-center group shadow-xl"
+                            whileHover={{ scale: 1.1, x: 5 }}
                             whileTap={{ scale: 0.95 }}
                         >
-                            <ChevronRight size={24} className="sm:w-7 sm:h-7 text-gray-300 group-hover:text-yellow-400 transition-colors" />
-                            <div className="absolute inset-0 bg-gradient-to-l from-yellow-400/10 to-amber-400/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                            <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 lg:w-8 lg:h-8 text-white sm:text-gray-300 group-hover:text-yellow-400 transition-colors" />
+                            <div className="absolute inset-0 bg-gradient-to-l from-yellow-400/10 to-amber-400/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity hidden sm:block"></div>
                         </motion.button>
                     )}
                     
                     <AnimatePresence mode="wait">
                         {currentMovie && (
-                            <Link
-                                href={`/movie/${currentMovie.slug}`}
+                            <motion.div
                                 key={currentMovieIndex}
-                                onClick={handleMovieClick}
+                                initial={{ opacity: 0, scale: 0.95, x: 20 }}
+                                animate={{ opacity: 1, scale: 1, x: 0 }}
+                                exit={{ opacity: 0, scale: 0.95, x: -20 }}
+                                transition={{ duration: 0.3 }}
+                                drag="x"
+                                dragConstraints={{ left: 0, right: 0 }}
+                                dragElastic={0.2}
+                                onDragEnd={(e, { offset }) => {
+                                    if (offset.x < -50 && !isLastMovie) nextMovie();
+                                    else if (offset.x > 50 && !isFirstMovie) prevMovie();
+                                }}
+                                className="w-full flex justify-center z-20 cursor-grab active:cursor-grabbing"
+                                style={{ userSelect: 'none', WebkitUserDrag: 'none' }}
                             >
+                                <Link
+                                    href={`/movie/${currentMovie.slug}`}
+                                    onClick={handleMovieClick}
+                                    className="outline-none"
+                                    draggable={false}
+                                >
                                 <CinematicMovieCard
                                     movie={currentMovie}
                                     rank={currentRank}
                                     isActive={true}
                                 />
-                            </Link>
+                                </Link>
+                            </motion.div>
                         )}
                     </AnimatePresence>
 
                 </div>
 
+                {/* Mobile Swipe Hint */}
+                <div className="sm:hidden flex items-center justify-center gap-2 mt-4 mb-2 text-gray-500 text-[10px] uppercase tracking-[0.2em] animate-pulse">
+                    <ChevronLeft className="w-3 h-3" />
+                    <span>Swipe to Browse Films</span>
+                    <ChevronRight className="w-3 h-3" />
+                </div>
                             
                             
 

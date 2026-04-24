@@ -9,6 +9,7 @@ import { COLLECTIONS, getPrimaryCollectionForMovie } from '../data/collections';
 import { db } from '../firebaseConfig';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import masterDatabase from '../utils/masterDatabase.json';
+import tmdbCache from '../data/tmdbCache.json';
 
 // ⚡ ALL MOVIE DATABASES IMPORTED (Safe Server-Side Fetching)
 import * as SURVIVAL from '../utils/survivalMovieData';
@@ -356,7 +357,12 @@ export async function getStaticProps() {
         if (primaryCollectionSlug) {
           // ⚡ SAFELY EXTRACT POSTER REGARDLESS OF DATABASE ORIGIN (TMDB vs OMDb)
           let finalPoster = null;
-          if (movie.poster_path && movie.poster_path !== 'N/A') {
+          const cleanId = movie.imdbID.toString().trim();
+            const cachedData = tmdbCache[cleanId];
+            
+            if (cachedData && cachedData.poster_path) {
+              finalPoster = `https://image.tmdb.org/t/p/w92${cachedData.poster_path}`;
+            } else if (movie.poster_path && movie.poster_path !== 'N/A') {
             finalPoster = movie.poster_path.startsWith('http') 
               ? movie.poster_path 
               : `https://image.tmdb.org/t/p/w92${movie.poster_path.startsWith('/') ? '' : '/'}${movie.poster_path}`;
