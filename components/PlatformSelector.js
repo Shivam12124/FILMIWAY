@@ -59,6 +59,8 @@ const PlatformSelector = () => {
 <img
   src={platform.logo}
   alt={`${platform.name} logo`}
+  width="80"
+  height="80"
   className={
     "h-10 sm:h-11 object-contain filter drop-shadow-[0_0_8px_rgba(0,0,0,0.9)]" +
     (platform.id === "hbo-max" || platform.id === "peacock" ? " invert" : "")

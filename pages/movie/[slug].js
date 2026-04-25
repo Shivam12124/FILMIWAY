@@ -26,8 +26,8 @@ const COLORS = {
 
 const getTMDBImage = (path, size = 'w1280') => path ? `https://image.tmdb.org/t/p/${size}${path}` : null;
 
-// ✅ YOUR MASTERPIECE HERO BANNER (Made Universal!)
-const UniversalBanner = ({ movie, isMobile }) => {
+// ✅ YOUR MASTERPIECE HERO BANNER (Made Universal & SEO/CLS Optimized!)
+const UniversalBanner = ({ movie }) => {
     const [showTrailer, setShowTrailer] = useState(false);
     const [countdown, setCountdown] = useState(4);
     const [hasClosedTrailer, setHasClosedTrailer] = useState(false);
@@ -55,7 +55,8 @@ const UniversalBanner = ({ movie, isMobile }) => {
     const insight = movie.Plot || 'A compelling cinematic experience that demands to be watched.';
 
     useEffect(() => {
-        if (!isMobile && trailerKey && !showTrailer && !hasClosedTrailer) {
+        const isMobileDevice = window.innerWidth < 768;
+        if (!isMobileDevice && trailerKey && !showTrailer && !hasClosedTrailer) {
             timerRef.current = setInterval(() => {
                 setCountdown((prev) => {
                     if (prev <= 1) { clearInterval(timerRef.current); setShowTrailer(true); return 0; }
@@ -64,7 +65,7 @@ const UniversalBanner = ({ movie, isMobile }) => {
             }, 1000);
         }
         return () => { if (timerRef.current) clearInterval(timerRef.current); };
-    }, [isMobile, trailerKey, showTrailer, hasClosedTrailer]);
+    }, [trailerKey, showTrailer, hasClosedTrailer]);
 
     const handlePlayClick = () => { setShowTrailer(true); setHasClosedTrailer(false); };
     const handleCloseTrailer = () => { setShowTrailer(false); setHasClosedTrailer(true); if (timerRef.current) clearInterval(timerRef.current); };
@@ -102,8 +103,8 @@ const UniversalBanner = ({ movie, isMobile }) => {
                     <motion.button onClick={handlePlayClick} className="p-4 sm:p-6 rounded-full backdrop-blur-lg shadow-2xl transition-all duration-300" style={{ backgroundColor: `${COLORS.bgPrimary}BB`, border: `2px solid ${COLORS.textPrimary}`, color: COLORS.textPrimary }} whileHover={{ scale: 1.15, backgroundColor: `${COLORS.accent}DD`, borderColor: COLORS.accent }} whileTap={{ scale: 0.95 }}><Play className="w-6 h-6 sm:w-8 sm:h-8 ml-1" /></motion.button>
                   </motion.div>
                 )}
-                {!isMobile && trailerKey && !showTrailer && !hasClosedTrailer && countdown > 0 && (
-                  <motion.div className="absolute top-6 sm:top-8 right-6 sm:right-8 backdrop-blur-md rounded-full px-3 sm:px-4 py-1.5 sm:py-2 border z-30" style={{ backgroundColor: `${COLORS.bgPrimary}CC`, borderColor: `${COLORS.accent}66`, color: COLORS.accent }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>
+                {trailerKey && !showTrailer && !hasClosedTrailer && countdown > 0 && (
+                  <motion.div className="hidden sm:block absolute top-6 sm:top-8 right-6 sm:right-8 backdrop-blur-md rounded-full px-3 sm:px-4 py-1.5 sm:py-2 border z-30" style={{ backgroundColor: `${COLORS.bgPrimary}CC`, borderColor: `${COLORS.accent}66`, color: COLORS.accent }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>
                     <div className="flex items-center gap-2 text-xs sm:text-sm font-medium"><div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full animate-pulse" style={{ backgroundColor: COLORS.accent }}></div>Trailer in {countdown}s</div>
                   </motion.div>
                 )}
@@ -112,8 +113,8 @@ const UniversalBanner = ({ movie, isMobile }) => {
           </AnimatePresence>
         </div>
   
-        {isMobile ? (
-          <div className="mobile-hero-row">
+        {/* MOBILE LAYOUT */}
+        <div className="mobile-hero-row sm:hidden">
             <div className="mobile-hero-poster">{posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} width={320} height={480} className="w-full h-auto" priority unoptimized /> : <div style={{ background: '#000000', width: '100%', height: '150px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Film style={{ color: COLORS.textMuted }} /></div>}</div>
             <div className="mobile-psych-card">
             <div className="mobile-psych-row"><Star className="mobile-psych-icon" /><div><h2 className="mobile-psych-title">{movie?.Title}</h2></div></div>
@@ -121,13 +122,14 @@ const UniversalBanner = ({ movie, isMobile }) => {
                 {tagline ? <span className="text-white italic font-medium">"{tagline}"</span> : <span className="text-white font-medium">{insight.substring(0, 85)}...</span>}
               </div>
             </div>
-          </div>
-        ) : (
-          <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8">
+        </div>
+
+        {/* DESKTOP LAYOUT */}
+        <div className="hidden sm:block relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8">
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 lg:gap-10 items-start">
               <motion.div className="flex-shrink-0 relative w-24 sm:w-48 md:w-56 lg:w-80 mx-auto sm:mx-0" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8, duration: 0.8 }}>
                 <div className="relative" style={{ aspectRatio: '2/3' }}>
-                  {posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} fill sizes="(max-width: 640px) 96px, (max-width: 768px) 192px, (max-width: 1024px) 224px, 320px" quality={85} className="object-cover rounded-lg sm:rounded-xl shadow-2xl border border-white/5" unoptimized /> : <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: '#000000', borderRadius: '12px' }}><Film style={{ color: COLORS.textMuted }} /></div>}
+                  {posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} fill sizes="(max-width: 640px) 96px, (max-width: 768px) 192px, (max-width: 1024px) 224px, 320px" quality={85} className="object-cover rounded-lg sm:rounded-xl shadow-2xl border border-white/5" priority unoptimized /> : <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: '#000000', borderRadius: '12px' }}><Film style={{ color: COLORS.textMuted }} /></div>}
                 </div>
               </motion.div>
               <motion.div className="w-full sm:w-3/4 md:w-2/3 lg:w-[55%] xl:w-[45%] min-w-0" initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 1.0, duration: 0.8 }}>
@@ -146,8 +148,7 @@ const UniversalBanner = ({ movie, isMobile }) => {
                 </motion.div>
               </motion.div>
             </div>
-          </div>
-        )}
+        </div>
       </motion.div>
     );
 };
@@ -248,14 +249,6 @@ export default function UniversalMoviePage({ movie }) {
 
     // Initialize state immediately with the dynamic breadcrumb so Google Bots can crawl it!
     const [breadcrumb, setBreadcrumb] = useState({ label: defaultLabel, url: defaultUrl });
-    const [isMobile, setIsMobile] = useState(false);
-
-    useEffect(() => {
-        const checkMobile = () => setIsMobile(window.innerWidth < 768);
-        checkMobile();
-        window.addEventListener('resize', checkMobile);
-        return () => window.removeEventListener('resize', checkMobile);
-    }, []);
 
     useEffect(() => {
         const fromCollection = sessionStorage.getItem('fromCollection');
@@ -319,7 +312,7 @@ export default function UniversalMoviePage({ movie }) {
                 </motion.div>
 
                 {/* 🔥 YOUR BEAUTIFUL HERO BANNER RE-INJECTED */}
-                <UniversalBanner movie={movie} isMobile={isMobile} />
+                <UniversalBanner movie={movie} />
 
                 {/* 🔥 PASSING DYNAMIC PROPS INJECTS THE SPECIFIC FAQ/GRAPH COMPONENT AUTOMATICALLY */}
                 <MovieDetailsSection movie={movie} {...dynamicProps} />
@@ -365,7 +358,7 @@ export async function getStaticProps({ params }) {
         ...baseMovie,
         poster_path: cacheData.poster_path || null,
         backdrop_path: cacheData.backdrop_path || null,
-        Poster: cacheData.poster_path ? `https://image.tmdb.org/t/p/w780${cacheData.poster_path}` : null,
+        Poster: cacheData.poster_path ? `https://image.tmdb.org/t/p/w500${cacheData.poster_path}` : null,
         Plot: cacheData.overview || '',
         Rated: cacheData.ageRating || 'NR',
         Tagline: cacheData.tagline || '',

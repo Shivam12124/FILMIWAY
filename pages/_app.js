@@ -110,7 +110,7 @@ export default function App({ Component, pageProps }) {
       </Head>
 
       {/* ⚡ OPTIMIZED: Load Clarity Analytics without blocking the main thread */}
-      <Script id="microsoft-clarity" strategy="afterInteractive" dangerouslySetInnerHTML={{
+      <Script id="microsoft-clarity" strategy="lazyOnload" dangerouslySetInnerHTML={{
         __html: `
           (function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
