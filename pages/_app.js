@@ -27,6 +27,19 @@ export default function App({ Component, pageProps }) {
   useEffect(() => {
     console.log('🎬 Filmiway - SEO Optimized Version Loaded');
   }, []);
+
+  // ✅ Track Next.js Route Changes in Google Analytics
+  useEffect(() => {
+    const handleRouteChange = (url) => {
+      if (typeof window.gtag !== 'undefined') {
+        window.gtag('config', 'G-EDS2VZ5HP1', {
+          page_path: url,
+        });
+      }
+    };
+    router.events.on('routeChangeComplete', handleRouteChange);
+    return () => router.events.off('routeChangeComplete', handleRouteChange);
+  }, [router.events]);
   
   // 🔥 THE MASTER KEY FIX: UNIVERSAL CLIENT-SIDE TMDB FALLBACK 🔥
   // This fixes ALL 50+ collections dynamically without editing them one by one.
@@ -108,6 +121,26 @@ export default function App({ Component, pageProps }) {
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
       </Head>
+
+      {/* ⚡ OPTIMIZED: Google Analytics 4 (GA4) */}
+      <Script
+        strategy="afterInteractive"
+        src={`https://www.googletagmanager.com/gtag/js?id=G-EDS2VZ5HP1`}
+      />
+      <Script
+        id="google-analytics"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-EDS2VZ5HP1', {
+              page_path: window.location.pathname,
+            });
+          `,
+        }}
+      />
 
       {/* ⚡ OPTIMIZED: Load Clarity Analytics without blocking the main thread */}
       <Script id="microsoft-clarity" strategy="lazyOnload" dangerouslySetInnerHTML={{
