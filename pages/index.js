@@ -58,22 +58,6 @@ const getUniquePosterFromCache = (movieIds, collectionSlug, usedPosters) => {
   return null;
 };
 
-// ⚡ CUSTOM TMDB LOADER (Bypasses Next.js Server & Fixes Sizing for 100/100 Lighthouse Score!)
-const tmdbLoader = ({ src, width }) => {
-  if (!src || src.includes('placeholder')) return "https://via.placeholder.com/342x513/111827/4b5563?text=No+Image";
-  const path = src.includes('tmdb.org') ? src.split('/').pop() : src.replace(/^\//, '');
-  
-  let size = 'w342';
-  if (width <= 92) size = 'w92';
-  else if (width <= 154) size = 'w154';
-  else if (width <= 185) size = 'w185';
-  else if (width <= 342) size = 'w342';
-  else if (width <= 500) size = 'w500';
-  else size = 'w780';
-  
-  return `https://image.tmdb.org/t/p/${size}/${path}`;
-};
-
 // ⚡ PURE CSS CARD - Optimized Next/Image for LCP
 const CollectionCard = memo(({ collection, index, href, isPrioritySection }) => {
   // ⚡ LCP OPTIMIZATION: Cards are below the fold (Hero takes full screen), so we defer all images
@@ -91,15 +75,15 @@ const CollectionCard = memo(({ collection, index, href, isPrioritySection }) => 
       <div className="relative w-full h-full rounded-lg sm:rounded-xl overflow-hidden bg-gray-900 border border-white/10 group-hover:border-yellow-400/50 transition-all duration-300 shadow-[0_8px_30px_rgba(0,0,0,0.8)]">
         <div className="relative w-full h-full">
           <Image
-            loader={tmdbLoader}
             src={collection.poster_path ? `${IMAGE_BASE_URL}/w342${collection.poster_path}` : "https://via.placeholder.com/342x513/111827/4b5563?text=No+Image"}
             alt={collection.title}
             fill
             priority={shouldPrioritize}
             quality={65} 
-            sizes="(max-width: 640px) 154px, 250px"
+            sizes="(max-width: 640px) 160px, 250px"
             className="object-cover transition-transform duration-700 group-hover:scale-105"
             draggable={false}
+            unoptimized
           />
         </div>
         
@@ -160,14 +144,14 @@ const Top10MovieCard = memo(({ movie, index }) => {
       {/* Movie Poster */}
       <div className="absolute right-0 w-[65%] h-full z-10 rounded-lg overflow-hidden border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.8)] group-hover:border-yellow-400/50 transition-all duration-300 bg-gray-900">
         <Image
-          loader={tmdbLoader}
           src={posterUrl}
           alt={movie.Title}
           fill
           priority={shouldPrioritize}
           quality={65}
-          sizes="(max-width: 640px) 185px, 250px"
+          sizes="(max-width: 640px) 160px, 250px"
           className="object-cover"
+          unoptimized
         />
         <div className="absolute inset-0 bg-gradient-to-t from-yellow-500/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       </div>

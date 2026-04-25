@@ -65,8 +65,7 @@ const PlatformSelector = () => {
     "h-10 sm:h-11 object-contain filter drop-shadow-[0_0_8px_rgba(0,0,0,0.9)]" +
     (platform.id === "hbo-max" || platform.id === "peacock" ? " invert" : "")
   }
-  loading="eager"
-  fetchPriority="high"
+  loading="lazy"
 />
 
 
