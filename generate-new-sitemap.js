@@ -7,9 +7,12 @@ const sitemapPath = path.join(__dirname, 'public', 'sitemap-movies.xml');
 // Read our new Master Database
 const movies = JSON.parse(fs.readFileSync(masterDbPath, 'utf8'));
 
+// Get the current date in ISO format to tell Google these pages were JUST updated!
+const currentDate = new Date().toISOString();
+
 // Generate the XML for each movie using the new flat slug
 const sitemapEntries = movies.map(movie => {
-    return `  <url>\n    <loc>https://filmiway.com/movie/${movie.slug}</loc>\n    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>`;
+    return `  <url>\n    <loc>https://filmiway.com/movie/${movie.slug}</loc>\n    <lastmod>${currentDate}</lastmod>\n    <changefreq>daily</changefreq>\n    <priority>0.8</priority>\n  </url>`;
 });
 
 // Wrap it in the official Google Sitemap XML tags
