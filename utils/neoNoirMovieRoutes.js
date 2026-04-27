@@ -78,7 +78,7 @@ export const getNeoNoirMovieBreadcrumbs = (movie) => {
         { label: 'Home', href: '/' },
         { label: 'Collections', href: '/collection' },
         { label: '10 Best Neo-Noir Movies', href: '/collection/best-neo-noir-movies' },
-        { label: movie.Title, href: `/movies/best-neo-noir-movies/${NEO_NOIR_MOVIE_SLUGS[movie.imdbID]}` } 
+        { label: movie.Title, href: `/movie/${NEO_NOIR_MOVIE_SLUGS[movie.imdbID]}` } 
     ];
 };
 
@@ -138,7 +138,7 @@ export const generateNeoNoirMovieSitemapUrls = (baseUrl = 'https://filmiway.com'
     
     COMPLETE_MOVIE_DATABASE.forEach(movie => {
         urls.push({
-            url: `${baseUrl}/movies/best-neo-noir-movies/${NEO_NOIR_MOVIE_SLUGS[movie.imdbID]}`,
+            url: `${baseUrl}/movie/${NEO_NOIR_MOVIE_SLUGS[movie.imdbID]}`,
             lastmod: new Date().toISOString(),
             priority: '0.7',
             changefreq: 'weekly'

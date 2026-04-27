@@ -39,7 +39,7 @@ export const generateCleanMovieSchema = (movie, movieData, currentMovieYear, col
       "ratingCount": "1"
     } : undefined,
     "genre": data?.dna ? Object.keys(data.dna) : ["Drama"],
-    "url": `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`
+    "url": `https://filmiway.com/movie/${movie.slug || movie.Title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '')}`
   };
 
   const faqSchema = null;

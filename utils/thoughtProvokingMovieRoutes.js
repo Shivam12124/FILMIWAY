@@ -78,7 +78,7 @@ export const getThoughtProvokingMovieBreadcrumbs = (movie) => {
         { label: 'Home', href: '/' },
         { label: 'Collections', href: '/collection' },
         { label: '10 Best Thought-Provoking Movies', href: '/collection/best-thought-provoking-movies' },
-        { label: movie.Title, href: `/movies/best-thought-provoking-movies/${THOUGHT_PROVOKING_MOVIE_SLUGS[movie.imdbID]}` } 
+        { label: movie.Title, href: `/movie/${THOUGHT_PROVOKING_MOVIE_SLUGS[movie.imdbID]}` } 
     ];
 };
 
@@ -138,7 +138,7 @@ export const generateThoughtProvokingMovieSitemapUrls = (baseUrl = 'https://film
     
     COMPLETE_MOVIE_DATABASE.forEach(movie => {
         urls.push({
-            url: `${baseUrl}/movies/best-thought-provoking-movies/${THOUGHT_PROVOKING_MOVIE_SLUGS[movie.imdbID]}`,
+            url: `${baseUrl}/movie/${THOUGHT_PROVOKING_MOVIE_SLUGS[movie.imdbID]}`,
             lastmod: new Date().toISOString(),
             priority: '0.7',
             changefreq: 'weekly'

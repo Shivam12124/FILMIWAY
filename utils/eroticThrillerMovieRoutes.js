@@ -79,7 +79,7 @@ export const getEroticThrillerMovieBreadcrumbs = (movie) => {
         { label: 'Home', href: '/' },
         { label: 'Collections', href: '/collection' },
         { label: 'Best Erotic Thriller Movies', href: '/collection/best-erotic-thriller-movies' },
-        { label: movie.Title, href: `/movies/best-erotic-thriller-movies/${EROTIC_THRILLER_MOVIE_SLUGS[movie.imdbID]}` }
+        { label: movie.Title, href: `/movie/${EROTIC_THRILLER_MOVIE_SLUGS[movie.imdbID]}` }
     ];
 };
 
@@ -139,7 +139,7 @@ export const generateEroticThrillerMovieSitemapUrls = (baseUrl = 'https://filmiw
     
     COMPLETE_MOVIE_DATABASE.forEach(movie => {
         urls.push({
-            url: `${baseUrl}/movies/best-erotic-thriller-movies/${EROTIC_THRILLER_MOVIE_SLUGS[movie.imdbID]}`,
+            url: `${baseUrl}/movie/${EROTIC_THRILLER_MOVIE_SLUGS[movie.imdbID]}`,
             lastmod: new Date().toISOString(),
             priority: '0.7',
             changefreq: 'weekly'

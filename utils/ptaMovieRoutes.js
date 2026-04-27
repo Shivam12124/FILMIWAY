@@ -79,7 +79,7 @@ export const getPtaMovieBreadcrumbs = (movie) => {
         { label: 'Home', href: '/' },
         { label: 'Collections', href: '/collection' },
         { label: 'Paul Thomas Anderson Movies Ranked', href: '/collection/best-paul-thomas-anderson-movies' },
-        { label: movie.Title, href: `/movies/best-paul-thomas-anderson-movies/${PTA_MOVIE_SLUGS[movie.imdbID]}` }
+        { label: movie.Title, href: `/movie/${PTA_MOVIE_SLUGS[movie.imdbID]}` }
     ];
 };
 
@@ -146,7 +146,7 @@ export const generatePtaMovieSitemapUrls = (baseUrl = 'https://filmiway.com') =>
     
     COMPLETE_MOVIE_DATABASE.forEach(movie => {
         urls.push({
-            url: `${baseUrl}/movies/best-paul-thomas-anderson-movies/${PTA_MOVIE_SLUGS[movie.imdbID]}`,
+            url: `${baseUrl}/movie/${PTA_MOVIE_SLUGS[movie.imdbID]}`,
             lastmod: new Date().toISOString(),
             priority: '0.7',
             changefreq: 'weekly'

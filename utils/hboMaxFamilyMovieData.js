@@ -517,7 +517,7 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
         'name': movie.Title,
         'description': schemaDesc,
         'genre': movie.genre,
-        'url': `https://filmiway.com/movies/${collectionSlug}/${movie.imdbID}`, 
+        'url': `https://filmiway.com/movie/${movie.slug || movie.Title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '')}`, 
         'datePublished': currentMovieYear?.toString() || movie.year.toString(),
         'director': { '@type': 'Person', 'name': movieInfo?.director || 'Director' },
         'actor': movieInfo?.cast?.map(actor => ({ '@type': 'Person', 'name': actor })) || [],

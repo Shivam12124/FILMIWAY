@@ -78,7 +78,7 @@ export const getPrestigeMovieBreadcrumbs = (movie) => {
         { label: 'Home', href: '/' },
         { label: 'Collections', href: '/collection' },
         { label: 'Movies Like The Prestige', href: '/collection/movies-like-the-prestige' },
-        { label: movie.Title, href: `/movies/like-prestige/${PRESTIGE_MOVIE_SLUGS[movie.imdbID]}` } // Adjust path to match your folder structure
+        { label: movie.Title, href: `/movie/${PRESTIGE_MOVIE_SLUGS[movie.imdbID]}` } // Adjust path to match your folder structure
     ];
 };
 
@@ -138,7 +138,7 @@ export const generatePrestigeMovieSitemapUrls = (baseUrl = 'https://filmiway.com
     
     COMPLETE_MOVIE_DATABASE.forEach(movie => {
         urls.push({
-            url: `${baseUrl}/movies/like-prestige/${PRESTIGE_MOVIE_SLUGS[movie.imdbID]}`,
+            url: `${baseUrl}/movie/${PRESTIGE_MOVIE_SLUGS[movie.imdbID]}`,
             lastmod: new Date().toISOString(),
             priority: '0.7',
             changefreq: 'weekly'

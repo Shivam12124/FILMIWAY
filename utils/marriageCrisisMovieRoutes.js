@@ -79,7 +79,7 @@ export const getMarriageCrisisMovieBreadcrumbs = (movie) => {
         { label: 'Home', href: '/' },
         { label: 'Collections', href: '/collection' },
         { label: '10 Best Movies About Marriage Crises', href: '/collection/best-marriage-crisis-movies' },
-        { label: movie.Title, href: `/movies/best-marriage-crisis-movies/${MARRIAGE_CRISIS_MOVIE_SLUGS[movie.imdbID]}` }
+        { label: movie.Title, href: `/movie/${MARRIAGE_CRISIS_MOVIE_SLUGS[movie.imdbID]}` }
     ];
 };
 
@@ -139,7 +139,7 @@ export const generateMarriageCrisisMovieSitemapUrls = (baseUrl = 'https://filmiw
     
     COMPLETE_MOVIE_DATABASE.forEach(movie => {
         urls.push({
-            url: `${baseUrl}/movies/best-marriage-crisis-movies/${MARRIAGE_CRISIS_MOVIE_SLUGS[movie.imdbID]}`,
+            url: `${baseUrl}/movie/${MARRIAGE_CRISIS_MOVIE_SLUGS[movie.imdbID]}`,
             lastmod: new Date().toISOString(),
             priority: '0.7',
             changefreq: 'weekly'

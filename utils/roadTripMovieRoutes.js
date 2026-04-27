@@ -78,7 +78,7 @@ export const getRoadTripMovieBreadcrumbs = (movie) => {
         { label: 'Home', href: '/' },
         { label: 'Collections', href: '/collection' },
         { label: 'Top 10 Road Trip Movies', href: '/collection/top-10-road-trip-movies' },
-        { label: movie.Title, href: `/movies/top-10-road-trip-movies/${ROAD_TRIP_MOVIE_SLUGS[movie.imdbID]}` } 
+        { label: movie.Title, href: `/movie/${ROAD_TRIP_MOVIE_SLUGS[movie.imdbID]}` } 
     ];
 };
 
@@ -138,7 +138,7 @@ export const generateRoadTripMovieSitemapUrls = (baseUrl = 'https://filmiway.com
     
     COMPLETE_MOVIE_DATABASE.forEach(movie => {
         urls.push({
-            url: `${baseUrl}/movies/top-10-road-trip-movies/${ROAD_TRIP_MOVIE_SLUGS[movie.imdbID]}`,
+            url: `${baseUrl}/movie/${ROAD_TRIP_MOVIE_SLUGS[movie.imdbID]}`,
             lastmod: new Date().toISOString(),
             priority: '0.7',
             changefreq: 'weekly'

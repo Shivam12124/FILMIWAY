@@ -78,7 +78,7 @@ export const getBestActionMovieBreadcrumbs = (movie) => {
         { label: 'Home', href: '/' },
         { label: 'Collections', href: '/collection' },
         { label: '10 Best Action Movies', href: '/collection/best-action-movies' },
-        { label: movie.Title, href: `/movies/best-action-movies/${BEST_ACTION_MOVIE_SLUGS[movie.imdbID]}` } 
+        { label: movie.Title, href: `/movie/${BEST_ACTION_MOVIE_SLUGS[movie.imdbID]}` } 
     ];
 };
 
@@ -138,7 +138,7 @@ export const generateBestActionMovieSitemapUrls = (baseUrl = 'https://filmiway.c
     
     COMPLETE_MOVIE_DATABASE.forEach(movie => {
         urls.push({
-            url: `${baseUrl}/movies/best-action-movies/${BEST_ACTION_MOVIE_SLUGS[movie.imdbID]}`,
+            url: `${baseUrl}/movie/${BEST_ACTION_MOVIE_SLUGS[movie.imdbID]}`,
             lastmod: new Date().toISOString(),
             priority: '0.7',
             changefreq: 'weekly'

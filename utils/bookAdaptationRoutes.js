@@ -78,7 +78,7 @@ export const getBookAdaptationBreadcrumbs = (movie) => {
         { label: 'Home', href: '/' },
         { label: 'Collections', href: '/collection' },
         { label: 'Top 10 Book Adaptations', href: '/collection/top-10-book-adaptations' },
-        { label: movie.Title, href: `/movies/top-10-book-adaptations/${BOOK_ADAPTATION_SLUGS[movie.imdbID]}` } 
+        { label: movie.Title, href: `/movie/${BOOK_ADAPTATION_SLUGS[movie.imdbID]}` } 
     ];
 };
 
@@ -138,7 +138,7 @@ export const generateBookAdaptationSitemapUrls = (baseUrl = 'https://filmiway.co
     
     COMPLETE_MOVIE_DATABASE.forEach(movie => {
         urls.push({
-            url: `${baseUrl}/movies/top-10-book-adaptations/${BOOK_ADAPTATION_SLUGS[movie.imdbID]}`,
+            url: `${baseUrl}/movie/${BOOK_ADAPTATION_SLUGS[movie.imdbID]}`,
             lastmod: new Date().toISOString(),
             priority: '0.7',
             changefreq: 'weekly'

@@ -78,7 +78,7 @@ export const getGreedMovieBreadcrumbs = (movie) => {
         { label: 'Home', href: '/' },
         { label: 'Collections', href: '/collection' },
         { label: 'Best Movies About Greed', href: '/collection/best-movies-about-greed' },
-        { label: movie.Title, href: `/movies/best-movies-about-greed/${GREED_MOVIE_SLUGS[movie.imdbID]}` }
+        { label: movie.Title, href: `/movie/${GREED_MOVIE_SLUGS[movie.imdbID]}` }
     ];
 };
 
@@ -138,7 +138,7 @@ export const generateGreedMovieSitemapUrls = (baseUrl = 'https://filmiway.com') 
     
     COMPLETE_MOVIE_DATABASE.forEach(movie => {
         urls.push({
-            url: `${baseUrl}/movies/best-movies-about-greed/${GREED_MOVIE_SLUGS[movie.imdbID]}`,
+            url: `${baseUrl}/movie/${GREED_MOVIE_SLUGS[movie.imdbID]}`,
             lastmod: new Date().toISOString(),
             priority: '0.7',
             changefreq: 'weekly'

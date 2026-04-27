@@ -79,7 +79,7 @@ export const getEroticRomanceMovieBreadcrumbs = (movie) => {
         { label: 'Home', href: '/' },
         { label: 'Collections', href: '/collection' },
         { label: 'Best Erotic Romance Movies', href: '/collection/best-erotic-romance-movies' },
-        { label: movie.Title, href: `/movies/best-erotic-romance-movies/${EROTIC_ROMANCE_MOVIE_SLUGS[movie.imdbID]}` }
+        { label: movie.Title, href: `/movie/${EROTIC_ROMANCE_MOVIE_SLUGS[movie.imdbID]}` }
     ];
 };
 
@@ -139,7 +139,7 @@ export const generateEroticRomanceMovieSitemapUrls = (baseUrl = 'https://filmiwa
     
     COMPLETE_MOVIE_DATABASE.forEach(movie => {
         urls.push({
-            url: `${baseUrl}/movies/best-erotic-romance-movies/${EROTIC_ROMANCE_MOVIE_SLUGS[movie.imdbID]}`,
+            url: `${baseUrl}/movie/${EROTIC_ROMANCE_MOVIE_SLUGS[movie.imdbID]}`,
             lastmod: new Date().toISOString(),
             priority: '0.7',
             changefreq: 'weekly'

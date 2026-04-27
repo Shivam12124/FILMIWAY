@@ -8,6 +8,7 @@ import { ChevronLeft, Play, X, Film, Star } from 'lucide-react';
 import Header from '../../components/Header';
 import MovieDetailsSection from '../../components/MovieDetailsSection';
 import masterDatabase from '../../utils/masterDatabase.json';
+import masterTimestamps from '../../utils/masterTimestamps.json';
 import tmdbCache from '../../data/tmdbCache.json';
 import CinematicBackground from '../../components/CinematicBackground';
 import { getPrimaryCollectionForMovie, COLLECTIONS } from '../../data/collections';
@@ -70,21 +71,33 @@ const UniversalBanner = ({ movie }) => {
     const handlePlayClick = () => { setShowTrailer(true); setHasClosedTrailer(false); };
     const handleCloseTrailer = () => { setShowTrailer(false); setHasClosedTrailer(true); if (timerRef.current) clearInterval(timerRef.current); };
 
-    const mobileHeroCSS = `
+    const unifiedHeroCSS = `
+    .unified-hero-row { display: flex; flex-direction: row; align-items: flex-start; width: 100%; max-width: 1280px; gap: 32px; margin: -60px auto 0 auto; padding: 0 32px; position: relative; z-index: 20; }
+    .unified-hero-poster { width: 25%; max-width: 260px; min-width: 140px; border-radius: 16px; overflow: hidden; box-shadow: 0 12px 40px rgba(0,0,0,0.8); margin: 0; flex-shrink: 0; border: 1px solid rgba(255,255,255,0.1); }
+    .unified-hero-poster img { width: 100%; height: auto; border-radius: 16px; display: block; }
+    .unified-psych-card { background: #000000; border-radius: 16px; box-shadow: -8px 0 24px -8px rgba(234, 179, 8, 0.6), 0 8px 32px rgba(0,0,0,0.8); margin: 0; flex: 1; border-left: 4px solid #eab308; border-top: 1px solid rgba(255,255,255,0.05); border-right: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; flex-direction: column; justify-content: flex-start; padding: 24px; min-height: 140px; position: relative; }
+    .unified-psych-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+    .unified-psych-icon { min-width: 24px; min-height: 24px; width: 24px; height: 24px; color: #facc15; }
+    .unified-psych-title { font-size: 24px; font-weight: bold; color: #facc15; margin-bottom: 0; line-height: 1.2; }
+    .unified-psych-desc { font-size: 19px; color: #ededed; line-height: 1.6; }
+    .insight-text { display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+
     @media (max-width: 767px) {
-      .mobile-hero-row { display: flex; flex-direction: row; align-items: flex-start; width: 100vw; max-width: 100vw; gap: 10px; margin: 0; padding: 0 8px; }
-      .mobile-hero-poster { width: 38vw; min-width: 106px; border-radius: 12px; overflow: hidden; box-shadow: 0 3px 14px #0007; margin: 0; flex-shrink: 0; }
-      .mobile-hero-poster img { width: 100%; height: auto; border-radius: 12px; display: block; }
-      .mobile-psych-card { background: #000000; border-radius: 12px; box-shadow: -6px 0 16px -6px rgba(234, 179, 8, 0.8), 0 2px 12px #0006; margin: 0; flex: 1; border-left: 4px solid #eab308; display: flex; flex-direction: column; justify-content: flex-start; padding: 10px 10px 10px 12px; min-height: 110px; position: relative; }
-      .mobile-psych-row { display: flex; align-items: center; gap: 6px; }
-      .mobile-psych-icon { min-width: 18px; min-height: 18px; width: 18px; height: 18px; color: #facc15; margin-top: -2px; }
-      .mobile-psych-title { font-size: 14px; font-weight: bold; color: #facc15; margin-bottom: 0; line-height: 1.12; }
-      .mobile-psych-desc { font-size: 12.3px; color: #ededed; line-height: 1.36; margin-top: 4px; }
-    }`;
+      .unified-hero-row { width: 100vw; max-width: 100vw; gap: 10px; margin: 0; padding: 0 8px; }
+      .unified-hero-poster { width: 38vw; min-width: 106px; border-radius: 12px; box-shadow: 0 3px 14px #0007; border: none; }
+      .unified-hero-poster img { border-radius: 12px; }
+      .unified-psych-card { border-radius: 12px; padding: 10px 10px 10px 12px; min-height: 110px; box-shadow: -6px 0 16px -6px rgba(234, 179, 8, 0.8), 0 2px 12px #0006; border-top: none; border-right: none; border-bottom: none; }
+      .unified-psych-row { gap: 6px; margin-bottom: 4px; }
+      .unified-psych-icon { min-width: 18px; min-height: 18px; width: 18px; height: 18px; margin-top: -2px; }
+      .unified-psych-title { font-size: 14px; line-height: 1.12; }
+      .unified-psych-desc { font-size: 12.3px; line-height: 1.36; }
+      .insight-text { -webkit-line-clamp: 4; }
+    }
+    `;
 
     return (
       <motion.div className="relative w-[100vw] left-[50%] right-[50%] -ml-[50vw] -mr-[50vw] overflow-hidden mb-6 sm:mb-8" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8 }}>
-        <style>{mobileHeroCSS}</style>
+        <style>{unifiedHeroCSS}</style>
         <div className="relative h-[300px] sm:h-[400px] lg:h-[600px]">
           <AnimatePresence mode="wait">
             {showTrailer && trailerKey ? (
@@ -113,40 +126,16 @@ const UniversalBanner = ({ movie }) => {
           </AnimatePresence>
         </div>
   
-        {/* MOBILE LAYOUT */}
-        <div className="mobile-hero-row sm:hidden">
-            <div className="mobile-hero-poster">{posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} width={320} height={480} className="w-full h-auto" priority unoptimized /> : <div style={{ background: '#000000', width: '100%', height: '150px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Film style={{ color: COLORS.textMuted }} /></div>}</div>
-            <div className="mobile-psych-card">
-            <div className="mobile-psych-row"><Star className="mobile-psych-icon" /><div><h2 className="mobile-psych-title">{movie?.Title}</h2></div></div>
-              <div className="mobile-psych-desc text-sm mt-1">
-                {tagline ? <span className="text-white italic font-medium">"{tagline}"</span> : <span className="text-white font-medium">{insight.substring(0, 85)}...</span>}
-              </div>
+        {/* UNIFIED LAYOUT */}
+        <div className="unified-hero-row">
+            <div className="unified-hero-poster">
+                {posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} width={320} height={480} className="w-full h-auto" priority unoptimized /> : <div style={{ background: '#000000', width: '100%', height: '150px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Film style={{ color: COLORS.textMuted }} /></div>}
             </div>
-        </div>
-
-        {/* DESKTOP LAYOUT */}
-        <div className="hidden sm:block relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8">
-            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 lg:gap-10 items-start">
-              <motion.div className="flex-shrink-0 relative w-24 sm:w-48 md:w-56 lg:w-80 mx-auto sm:mx-0" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8, duration: 0.8 }}>
-                <div className="relative" style={{ aspectRatio: '2/3' }}>
-                  {posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} fill sizes="(max-width: 640px) 96px, (max-width: 768px) 192px, (max-width: 1024px) 224px, 320px" quality={85} className="object-cover rounded-lg sm:rounded-xl shadow-2xl border border-white/5" priority unoptimized /> : <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: '#000000', borderRadius: '12px' }}><Film style={{ color: COLORS.textMuted }} /></div>}
-                </div>
-              </motion.div>
-              <motion.div className="w-full sm:w-3/4 md:w-2/3 lg:w-[55%] xl:w-[45%] min-w-0" initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 1.0, duration: 0.8 }}>
-                <motion.div className="relative rounded-xl sm:rounded-2xl overflow-hidden p-4 sm:p-6 lg:p-8" style={{ background: '#000000', border: `1px solid ${COLORS.borderLight}`, boxShadow: `0 8px 32px rgba(234, 179, 8, 0.2)` }} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.1, duration: 0.8 }}>
-                  <div className="absolute top-0 left-0 right-0 h-0.5 sm:h-1" style={{ background: `linear-gradient(90deg, transparent, ${COLORS.accent}, transparent)` }} />
-                  <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5">
-                    <motion.div className="p-2 sm:p-2.5 rounded-lg sm:rounded-xl flex-shrink-0" style={{ background: `linear-gradient(135deg, ${COLORS.accent}20, ${COLORS.accent}10)`, border: `1px solid ${COLORS.accent}40` }} whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}><Star className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" style={{ color: COLORS.accent }} /></motion.div>
-                  <div className="min-w-0 flex-1"><h2 className="text-sm sm:text-base lg:text-xl xl:text-2xl font-bold leading-tight" style={{ color: COLORS.accent }}>{movie?.Title}</h2></div>
-                  </div>
-                  <div className="relative pl-4 sm:pl-6 border-l-[3px]" style={{ borderColor: COLORS.accent, boxShadow: `-8px 0 16px -6px rgba(234, 179, 8, 0.6)` }}>
-                    <motion.div className="absolute -left-1.5 sm:-left-2 top-0 w-3 h-3 sm:w-4 sm:h-4 rounded-full" style={{ backgroundColor: COLORS.accent }} animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 2, repeat: Infinity }} />
-                    <p className="text-sm sm:text-base lg:text-lg xl:text-xl leading-relaxed font-normal break-words" style={{ color: COLORS.textSecondary, lineHeight: '1.6' }}>
-                      {tagline ? <span className="text-white italic font-medium tracking-wide">"{tagline}"</span> : <span className="text-white tracking-wide">{insight}</span>}
-                    </p>
-                  </div>
-                </motion.div>
-              </motion.div>
+            <div className="unified-psych-card">
+              <div className="unified-psych-row"><Star className="unified-psych-icon" /><div><h2 className="unified-psych-title">At a Glance</h2></div></div>
+              <div className="unified-psych-desc insight-text font-medium text-white">
+                {tagline ? <span className="italic">"{tagline}"</span> : <span>{insight}</span>}
+              </div>
             </div>
         </div>
       </motion.div>
@@ -244,7 +233,7 @@ const getCleanTitle = (title) => title ? title.toUpperCase().replace(/^(THE\s+)?
 export default function UniversalMoviePage({ movie }) {
     const router = useRouter();
     
-    const defaultLabel = movie?.primaryCollectionTitle ? `BACK TO ${getCleanTitle(movie.primaryCollectionTitle)}` : 'BACK TO HOME';
+    const defaultLabel = movie?.primaryCollectionTitle ? `BACK TO ${getCleanTitle(movie.primaryCollectionTitle)} COLLECTION` : 'BACK TO HOME';
     const defaultUrl = movie?.primaryCollectionSlug ? `/collection/${movie.primaryCollectionSlug}` : '/';
 
     // Initialize state immediately with the dynamic breadcrumb so Google Bots can crawl it!
@@ -258,7 +247,7 @@ export default function UniversalMoviePage({ movie }) {
         // Only override the default if they specifically clicked through from a DIFFERENT collection during this session
         if (fromCollection === 'true' && savedCollectionTitle && savedCollectionSlug) {
             setBreadcrumb({ 
-                label: `BACK TO ${getCleanTitle(savedCollectionTitle)}`, 
+                label: `BACK TO ${getCleanTitle(savedCollectionTitle)} COLLECTION`, 
                 url: `/collection/${savedCollectionSlug}` 
             });
         } else {
@@ -273,10 +262,45 @@ export default function UniversalMoviePage({ movie }) {
     const propName = getCollectionProp(movie.sourceFile);
     const dynamicProps = propName ? { [propName]: true } : {};
 
-    // ⚡ SEO EXPERIMENT: Custom Meta Tags for Specific Movies
-    let metaTitle = `${movie.Title} Parents Guide (Skip Sex & Nudity Timestamps)`;
-    let metaDesc = `Is there nudity in ${movie.Title}? Get the exact minute-by-minute timestamps to skip mature scenes. Read our 100% verified Parents Guide and Cinematic Impact review.`;
+    // ⚡ DYNAMIC SEO: Smart Parents Guide Meta Tags
+    const sensitiveData = masterTimestamps[String(movie.tmdbId)] || { scenes: [] };
+    const allScenes = sensitiveData.scenes || [];
+    
+    // Check if it's 100% clean OR only contains "suggestive clothing"
+    const isClean = allScenes.length === 0 || allScenes.every(s => {
+        const t = (s.type || '').toLowerCase();
+        return !t.match(/sex|nudity|explicit/);
+    });
 
+    let metaTitle = '';
+    let metaDesc = '';
+
+    if (isClean) {
+        metaTitle = `${movie.Title} Parents Guide (Clean)`;
+        metaDesc = `Yes. Filmiway editors have manually verified that ${movie.Title} is completely free of sex, nudity, and sexual content throughout its entire ${movie.runtime || movie.Runtime || "Official"} min runtime.`;
+    } else {
+        metaTitle = `${movie.Title} Parents Guide (Skip Sex & Nudity Timestamps)`;
+        
+        // Prioritize actual Sex/Nudity scenes over Suggestive Clothing for the SEO preview
+        const sortedScenes = [...allScenes].sort((a, b) => {
+            const aIsSevere = a.type?.toLowerCase().match(/sex|nudity|explicit/);
+            const bIsSevere = b.type?.toLowerCase().match(/sex|nudity|explicit/);
+            if (aIsSevere && !bIsSevere) return -1;
+            if (!aIsSevere && bIsSevere) return 1;
+            return 0;
+        });
+        
+        // Grab the first 2 highest-priority scenes
+        const displayScenes = sortedScenes.slice(0, 2);
+        const scenesText = displayScenes.map(s => {
+            const range = s.end ? `${s.start}-${s.end}` : s.start;
+            return `${s.type} ${range}`;
+        }).join(', ');
+
+        metaDesc = `PARENTS GUIDE: Exact skip timestamps for ${movie.Title}. ${scenesText} and more.`;
+    }
+
+    // Retain hardcoded exceptions as requested
     if (movie.slug === 'blue-is-the-warmest-color') {
         metaTitle = "Blue Is the Warmest Color Skip Sex & Nudity Timestamps";
         metaDesc = "PARENTS GUIDE: Exact skip timestamps for Blue Is the Warmest Color. Sex & Nudity 0:22:04-0:24:22, Sex & Nudity 1:14:53-1:21:46 and more.";

@@ -78,8 +78,7 @@ function updateSEOBlockInFile(filePath) {
 
   // =========================================================================
 
-  const masterCollectionSlug = getPrimaryCollectionForMovie(movie.imdbID) || collectionSlug;
-  const canonicalUrl = \`https://filmiway.com/movies/\${masterCollectionSlug}/\${movie.imdbID}\`;
+  const canonicalUrl = \`https://filmiway.com/movie/\${movie.slug || movie.Title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '')}\`;
   `;
 
   // Rebuild the file
