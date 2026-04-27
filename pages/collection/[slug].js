@@ -65,6 +65,7 @@ import { COMPLETE_MOVIE_DATABASE as A24_DATABASE, COMPLETE_MOVIE_DATA as A24_DAT
 import { COMPLETE_MOVIE_DATABASE as DARK_COMEDY_DATABASE, COMPLETE_MOVIE_DATA as DARK_COMEDY_DATA } from '../../utils/darkComedyMovieData';
 import { COMPLETE_MOVIE_DATABASE as PTA_DATABASE, COMPLETE_MOVIE_DATA as PTA_DATA } from '../../utils/ptaMoviesData';
 import { COMPLETE_MOVIE_DATABASE as BASIC_INSTINCT_DATABASE, COMPLETE_MOVIE_DATA as BASIC_INSTINCT_DATA } from '../../utils/basicInstinctMovieData';
+import { COMPLETE_MOVIE_DATABASE as ENEMIES_TO_LOVERS_DATABASE, COMPLETE_MOVIE_DATA as ENEMIES_TO_LOVERS_DATA } from '../../utils/enemiesToLoversMovieData';
 
 import masterDatabase from '../../utils/masterDatabase.json';
 
@@ -2094,6 +2095,29 @@ const getCollectionContent = () => {
                 text2: "Each film has been selected for its unflinching portrayal of warfare's true cost and its ability to provoke deep reflection on conflict, humanity, and the price of violence."
             }
         };
+    } else if (collection.slug === 'best-enemies-to-lovers-movies') {
+        return {
+            badge: "Enemies to Lovers",
+            title: "10 Best Enemies to Lovers Movies",
+            description: "The most electric enemies-to-lovers romances. From witty banter to undeniable chemistry, these films perfect the slow-burn romance.",
+            selection: {
+                text1: "From the classic tension of 'Pride & Prejudice' to the modern charm of 'Anyone But You'—these films represent the absolute best of the enemies-to-lovers trope.",
+                text2: "Each selection features crackling chemistry, sharp dialogue, and the satisfying transition from mutual disdain to undeniable love."
+            },
+            ranking: {
+                text: "Our romantic chemistry index evaluates the intensity of the banter, the slow-burn build-up, and the ultimate payoff of their relationship.",
+                points: [
+                    "Romantic chemistry & tension",
+                    "Witty banter & dialogue",
+                    "Emotional build-up",
+                    "Satisfying payoff"
+                ]
+            },
+            experience: {
+                text1: "Whether you're looking for a laugh-out-loud rom-com or a sweeping period piece, this collection delivers the most satisfying romantic arcs.",
+                text2: "Each film has been selected for its ability to make you swoon, laugh, and root for the couple from their very first argument."
+            }
+        };
     } else {
         return {
             badge: collection.title,
@@ -2474,6 +2498,11 @@ subtitle: "While everyone searches Netflix, these classics hide in plain sight. 
             title: "Movies Like Basic Instinct: 10 Erotic Thrillers",
             subtitle: "Psychological manipulation, dangerous seduction & neo-noir mysteries"
         };
+    } else if (collection.slug === 'best-enemies-to-lovers-movies') {
+        return {
+            title: "10 Best Enemies to Lovers Movies",
+            subtitle: "Electric chemistry, sharp banter, and the most satisfying slow-burn romances in cinema"
+        };
 
     } else if (collection.slug === 'movies-like-interstellar') {
         return {
@@ -2682,6 +2711,11 @@ const getLoaderContent = () => {
         return {
             title: "Loading Movies Like Basic Instinct",
             description: "Curating neo-noir and erotic thrillers with community reviews and ratings"
+        };
+    } else if (collection?.slug === 'best-enemies-to-lovers-movies') {
+        return {
+            title: "Loading Best Enemies to Lovers Movies",
+            description: "Curating the most electric slow-burn romances with community reviews and ratings"
         };
 
 } else if (collection?.slug === 'movies-like-donnie-darko') {
@@ -3216,6 +3250,15 @@ const getStaticMetaContent = () => {
             ogTitle: "10 Movies Like Basic Instinct: Dangerous Seduction",
             twitterTitle: "Loved Basic Instinct? Watch These 10 Erotic Thrillers Next",
             progressText: `of Top ${movies.length} Movies Like Basic Instinct`
+        };
+    } else if (collection.slug === 'best-enemies-to-lovers-movies') {
+        return {
+            title: "10 Best Enemies to Lovers Movies (Ranked by Chemistry)",
+            description: "The definitive ranking of the 10 best enemies to lovers movies. From Pride & Prejudice to 10 Things I Hate About You. Includes an exact Timestamps & Parents Guide.",
+            keywords: "best enemies to lovers movies, enemies to lovers trope, romantic comedies, pride and prejudice, 10 things i hate about you",
+            ogTitle: "10 Best Enemies to Lovers Movies: Electric Chemistry",
+            twitterTitle: "The 10 Best Enemies to Lovers Movies You Need to Watch",
+            progressText: `of Top ${movies.length} Enemies to Lovers Movies`
         };
 
 
@@ -3845,6 +3888,7 @@ const getStaticMetaContent = () => {
             sessionStorage.removeItem('fromDarkComedyCollection');
             sessionStorage.removeItem('fromPtaCollection');
             sessionStorage.removeItem('fromBasicInstinctCollection');
+            sessionStorage.removeItem('fromEnemiesToLoversCollection');
 
             // Set appropriate collection flag âœ…
             if (collection.slug === 'movies-like-inception') {
@@ -4001,6 +4045,8 @@ const getStaticMetaContent = () => {
                 sessionStorage.setItem('fromPtaCollection', 'true');
             } else if (collection.slug === 'movies-like-basic-instinct') {
                 sessionStorage.setItem('fromBasicInstinctCollection', 'true');
+            } else if (collection.slug === 'best-enemies-to-lovers-movies') {
+                sessionStorage.setItem('fromEnemiesToLoversCollection', 'true');
             }
         }
     };
@@ -4765,6 +4811,9 @@ case 'best-action-movies':
             break;
         case 'movies-like-basic-instinct':
             movieDatabase = BASIC_INSTINCT_DATABASE;
+            break;
+        case 'best-enemies-to-lovers-movies':
+            movieDatabase = ENEMIES_TO_LOVERS_DATABASE;
             break;
 
             case 'best-action-movies-on-hulu':

@@ -1072,6 +1072,20 @@ export const COLLECTIONS = {
     relatedCollections: ['best-erotic-thriller-movies', 'best-psychological-thriller-movies', 'best-erotic-romance-movies']
   },
 
+// 💘 BEST ENEMIES TO LOVERS MOVIES
+  'best-enemies-to-lovers-movies': {
+    slug: 'best-enemies-to-lovers-movies',
+    title: '10 Best Enemies to Lovers Movies',
+    stats: { averageRating: 7.2 }, // Normalized to 10-point scale based on the 5-point averages
+    badges: [
+      { label: "SLOW BURN", desc: "Building tension" },
+      { label: "BANTER", desc: "Sharp dialogue" },
+      { label: "CHEMISTRY", desc: "Electric leads" }
+    ],
+    movies: ['tt0414387', 'tt0098635', 'tt0147746', 'tt1045658', 'tt0128853', 'tt0092890', 'tt2674426', 'tt1041829', 'tt0251127', 'tt26047818'],
+    relatedCollections: ['best-romance-movies-on-hulu', 'best-romance-movies-on-hbo-max', 'best-marriage-crisis-movies']
+  },
+
   // 🩸 BEST THRILLER MOVIES
   'best-thriller-movies': {
     slug: 'best-thriller-movies',
@@ -1132,6 +1146,7 @@ export const getFightClubCollection = () => COLLECTIONS['movies-like-fight-club'
 export const getDarkComedyCollection = () => COLLECTIONS['best-dark-comedy-movies'];
 export const getPtaCollection = () => COLLECTIONS['best-paul-thomas-anderson-movies'];
 export const getBasicInstinctCollection = () => COLLECTIONS['movies-like-basic-instinct'];
+export const getEnemiesToLoversCollection = () => COLLECTIONS['best-enemies-to-lovers-movies'];
 export const getBestActionCollection = () => COLLECTIONS['best-action-movies'];
 // ============================================================================
 // 🧠 THE MASTER CANONICAL BRAIN

@@ -132,6 +132,17 @@
     "sourceFile": "paramountActionMovieData.js"
   },
   {
+    "tmdbId": 88,
+    "imdbID": "tt0092890",
+    "Title": "Dirty Dancing",
+    "year": 1987,
+    "genre": "Romance",
+    "runtime": 100,
+    "rank": 6,
+    "slug": "dirty-dancing",
+    "sourceFile": "enemiesToLoversMovieData.js"
+  },
+  {
     "tmdbId": 98,
     "imdbID": "tt0172495",
     "Title": "Gladiator",
@@ -886,9 +897,9 @@
     "year": 1989,
     "genre": "Romance",
     "runtime": 96,
-    "rank": 5,
+    "rank": 2,
     "slug": "when-harry-met-sally",
-    "sourceFile": "hboMaxComedyMovieData.js"
+    "sourceFile": "enemiesToLoversMovieData.js"
   },
   {
     "tmdbId": 640,
@@ -1975,9 +1986,9 @@
     "year": 2005,
     "genre": "Romance",
     "runtime": 129,
-    "rank": 2,
+    "rank": 1,
     "slug": "pride-prejudice",
-    "sourceFile": "peacockRomanceMovieData.js"
+    "sourceFile": "enemiesToLoversMovieData.js"
   },
   {
     "tmdbId": 4478,
@@ -2066,6 +2077,17 @@
     "rank": 10,
     "slug": "burn-after-reading",
     "sourceFile": "darkComedyMovieData.js"
+  },
+  {
+    "tmdbId": 4951,
+    "imdbID": "tt0147746",
+    "Title": "10 Things I Hate About You",
+    "year": 1999,
+    "genre": "Comedy",
+    "runtime": 97,
+    "rank": 3,
+    "slug": "10-things-i-hate-about-you",
+    "sourceFile": "enemiesToLoversMovieData.js"
   },
   {
     "tmdbId": 4960,
@@ -2464,6 +2486,17 @@
     "sourceFile": "darkComedyMovieData.js"
   },
   {
+    "tmdbId": 9489,
+    "imdbID": "tt0128853",
+    "Title": "You've Got Mail",
+    "year": 1998,
+    "genre": "Romance",
+    "runtime": 119,
+    "rank": 5,
+    "slug": "youve-got-mail",
+    "sourceFile": "enemiesToLoversMovieData.js"
+  },
+  {
     "tmdbId": 9502,
     "imdbID": "tt0441773",
     "Title": "Kung Fu Panda",
@@ -2582,7 +2615,7 @@
     "runtime": 116,
     "rank": 9,
     "slug": "how-to-lose-a-guy-in-10-days",
-    "sourceFile": "peacockRomanceMovieData.js"
+    "sourceFile": "enemiesToLoversMovieData.js"
   },
   {
     "tmdbId": 10096,
@@ -3045,6 +3078,17 @@
     "rank": 9,
     "slug": "moon",
     "sourceFile": "interstellarMovieData.js"
+  },
+  {
+    "tmdbId": 18240,
+    "imdbID": "tt1041829",
+    "Title": "The Proposal",
+    "year": 2009,
+    "genre": "Comedy",
+    "runtime": 108,
+    "rank": 8,
+    "slug": "the-proposal",
+    "sourceFile": "enemiesToLoversMovieData.js"
   },
   {
     "tmdbId": 18785,
@@ -3751,6 +3795,17 @@
     "sourceFile": "paramountHorrorMovieData.js"
   },
   {
+    "tmdbId": 82693,
+    "imdbID": "tt1045658",
+    "Title": "Silver Linings Playbook",
+    "year": 2012,
+    "genre": "Drama",
+    "runtime": 122,
+    "rank": 4,
+    "slug": "silver-linings-playbook",
+    "sourceFile": "enemiesToLoversMovieData.js"
+  },
+  {
     "tmdbId": 82702,
     "imdbID": "tt1646971",
     "Title": "How to Train Your Dragon 2",
@@ -4365,6 +4420,17 @@
     "rank": 8,
     "slug": "the-age-of-adaline",
     "sourceFile": "peacockRomanceMovieData.js"
+  },
+  {
+    "tmdbId": 296096,
+    "imdbID": "tt2674426",
+    "Title": "Me Before You",
+    "year": 2016,
+    "genre": "Romance",
+    "runtime": 110,
+    "rank": 7,
+    "slug": "me-before-you",
+    "sourceFile": "enemiesToLoversMovieData.js"
   },
   {
     "tmdbId": 300668,
@@ -5927,6 +5993,17 @@
     "rank": 1,
     "slug": "anora",
     "sourceFile": "huluRomanceMovieData.js"
+  },
+  {
+    "tmdbId": 1072790,
+    "imdbID": "tt26047818",
+    "Title": "Anyone But You",
+    "year": 2023,
+    "genre": "Comedy",
+    "runtime": 103,
+    "rank": 10,
+    "slug": "anyone-but-you",
+    "sourceFile": "enemiesToLoversMovieData.js"
   },
   {
     "tmdbId": 1100782,

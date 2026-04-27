@@ -296,6 +296,10 @@ import {
   COMPLETE_MOVIE_DATA as BASIC_INSTINCT_MOVIE_DATA,
   SENSITIVE_TIMELINES as BASIC_INSTINCT_SENSITIVE_TIMELINES
 } from '../utils/basicInstinctMovieData';
+import {
+  COMPLETE_MOVIE_DATA as ENEMIES_TO_LOVERS_MOVIE_DATA,
+  SENSITIVE_TIMELINES as ENEMIES_TO_LOVERS_SENSITIVE_TIMELINES
+} from '../utils/enemiesToLoversMovieData';
 
 import { 
   COMPLETE_MOVIE_DATA as CRIME_THRILLER_MOVIE_DATA,
@@ -394,6 +398,7 @@ import A24SEOFAQSection from './A24SEOFAQSection';
 import DarkComedySEOFAQSection from './DarkComedySEOFAQSection';
 import PtaSEOFAQSection from './PtaSEOFAQSection';
 import BasicInstinctSEOFAQSection from './BasicInstinctSEOFAQSection';
+import EnemiesToLoversSEOFAQSection from './EnemiesToLoversSEOFAQSection';
 
 import HuluActionSEOFAQSection from './HuluActionSEOFAQSection';
 import HuluRomanceSEOFAQSection from './HuluRomanceSEOFAQSection';
@@ -452,6 +457,7 @@ const MovieDetailsSection = React.memo(({
   fromDarkComedyCollection,
   fromPtaCollection,
   fromBasicInstinctCollection,
+  fromEnemiesToLoversCollection,
   fromParasiteCollection,
   fromDonnieDarkoCollection,
   fromFightClubCollection,
@@ -575,6 +581,7 @@ const MovieDetailsSection = React.memo(({
   : fromDarkComedyCollection ? safeLookup(DARK_COMEDY_MOVIE_DATA, movie.tmdbId)
   : fromPtaCollection ? safeLookup(PTA_MOVIE_DATA, movie.tmdbId)
   : fromBasicInstinctCollection ? safeLookup(BASIC_INSTINCT_MOVIE_DATA, movie.tmdbId)
+  : fromEnemiesToLoversCollection ? safeLookup(ENEMIES_TO_LOVERS_MOVIE_DATA, movie.tmdbId)
   : fromEyesWideShutCollection ? safeLookup(EYES_WIDE_SHUT_MOVIE_DATA, movie.tmdbId)
   : fromRevengeCollection ? safeLookup(REVENGE_MOVIE_DATA, movie.tmdbId)
   : fromWarFilmsCollection ? safeLookup(WAR_FILMS_MOVIE_DATA, movie.tmdbId)
@@ -789,6 +796,7 @@ const MovieDetailsSection = React.memo(({
    || DARK_COMEDY_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || PTA_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || BASIC_INSTINCT_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
+   || ENEMIES_TO_LOVERS_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || DECADE_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || EYES_WIDE_SHUT_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
    || SE7EN_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
@@ -850,6 +858,7 @@ const MovieDetailsSection = React.memo(({
    : fromFightClubCollection ? movie.anarchyLevel ?? safeMovieInfo.anarchyLevel ?? 0
    : fromDarkComedyCollection ? movie.cynicismLevel ?? safeMovieInfo.cynicismLevel ?? 0
    : fromBasicInstinctCollection ? movie.eroticTension ?? safeMovieInfo.eroticTension ?? 0
+   : fromEnemiesToLoversCollection ? movie.romanticChemistry ?? safeMovieInfo.romanticChemistry ?? 0
    : fromParasiteCollection ? movie.classWarfareIndex ?? safeMovieInfo.classWarfareIndex ?? 0
    : fromMatrixCollection ? movie.cyberComplexity ?? safeMovieInfo.cyberComplexity ?? 0
    : fromOldboyCollection ? movie.revengeIntensity ?? safeMovieInfo.revengeIntensity ?? 0
@@ -955,6 +964,7 @@ const MovieDetailsSection = React.memo(({
    if (fromThrillerCollection) return 'SUSPENSE INTENSITY SCORE';
    if (fromSurvivalCollection) return 'SURVIVAL INTENSITY SCORE';
    if (fromInceptionCollection) return 'MIND-BENDING COMPLEXITY SCORE';
+   if (fromEnemiesToLoversCollection) return 'ROMANTIC CHEMISTRY SCORE';
    return 'COMPLEXITY SCORE';
  };
 
@@ -1018,6 +1028,7 @@ const MovieDetailsSection = React.memo(({
    if (fromA24Collection) return 'EMOTIONAL RESONANCE INDEX';
    if (fromDarkComedyCollection) return 'CYNICISM INDEX';
    if (fromBasicInstinctCollection) return 'EROTIC TENSION INDEX';
+   if (fromEnemiesToLoversCollection) return 'CHEMISTRY INDEX';
    return 'MIND-BENDING INDEX';
  };
 
@@ -1082,6 +1093,7 @@ const MovieDetailsSection = React.memo(({
    if (fromDarkComedyCollection) return 'BLEAKNESS LEVEL';
    if (fromPtaCollection) return 'AUTEUR EXECUTION LEVEL';
    if (fromBasicInstinctCollection) return 'PSYCHOLOGICAL MANIPULATION LEVEL';
+   if (fromEnemiesToLoversCollection) return 'SLOW BURN TENSION LEVEL';
    return 'COGNITIVE DISTORTION LEVEL';
  };
 
@@ -1286,6 +1298,11 @@ const MovieDetailsSection = React.memo(({
          if (scoreValue >= 80) return 'A highly charged erotic thriller filled with dangerous seduction and suspense.';
          return 'A solid psychological thriller balancing desire and danger perfectly.';
        }
+   if (fromEnemiesToLoversCollection) {
+     if (scoreValue >= 90) return 'Electrifying chemistry with the ultimate slow-burn payoff. A masterpiece of romantic tension.';
+     if (scoreValue >= 80) return 'A deeply satisfying enemies-to-lovers arc filled with sharp banter and undeniable sparks.';
+     return 'A fun, engaging romance with great friction and sweet moments.';
+   }
    // Generic fallback
    if (scoreValue >= 90) return 'A transcendent masterpiece redefining narrative complexity.';
    if (scoreValue >= 80) return 'Sophisticated cinematic storytelling with advanced non-linear elements.';
@@ -1341,6 +1358,7 @@ const MovieDetailsSection = React.memo(({
    if (fromPtaCollection) return 'border-stone-500/40';
    if (fromDarkComedyCollection) return 'border-zinc-500/40';
    if (fromBasicInstinctCollection) return 'border-rose-700/40';
+   if (fromEnemiesToLoversCollection) return 'border-rose-500/40';
    return 'border-yellow-400/40';
  };
 
@@ -1392,6 +1410,7 @@ const MovieDetailsSection = React.memo(({
    if (fromPtaCollection) return 'text-stone-400';
    if (fromDarkComedyCollection) return 'text-zinc-400';
    if (fromBasicInstinctCollection) return 'text-rose-600';
+   if (fromEnemiesToLoversCollection) return 'text-rose-500';
    return 'text-yellow-400';
  };
 
@@ -1585,6 +1604,7 @@ const MovieDetailsSection = React.memo(({
         : fromDarkComedyCollection ? <DarkComedySEOFAQSection movie={movie} />
         : fromPtaCollection ? <PtaSEOFAQSection movie={movie} />
         : fromBasicInstinctCollection ? <BasicInstinctSEOFAQSection movie={movie} />
+        : fromEnemiesToLoversCollection ? <EnemiesToLoversSEOFAQSection movie={movie} />
         : fromDecadeCollection ? <DecadeSEOFAQSection movie={movie} />
         : fromPrestigeCollection ? <PrestigeSEOFAQSection movie={movie} />
         : fromSe7enCollection ? <Se7enSEOFAQSection movie={movie} />

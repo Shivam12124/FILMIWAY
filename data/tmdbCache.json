@@ -9480,5 +9480,124 @@
     ],
     "budget": "$70,000,000",
     "revenue": "$38,629,478"
+  },
+  "tt0147746": {
+    "tmdbId": "4951",
+    "poster_path": "/ujERk3aKABXU3NDXOAxEQYTHe9A.jpg",
+    "backdrop_path": "/yvPbncYhMu9FfTjDhq0N5lgnVkO.jpg",
+    "runtime": 97,
+    "release_date": "1999-03-30",
+    "overview": "On the first day at his new school, Cameron instantly falls for Bianca, the gorgeous girl of his dreams. The only problem is that Bianca is forbidden to date until her ill-tempered, completely un-dateable older sister Kat goes out, too. In an attempt to solve his problem, Cameron singles out the only guy who could possibly be a match for Kat: a mysterious bad boy with a nasty reputation of his own.",
+    "ageRating": "PG-13",
+    "director": "Gil Junger",
+    "cast": [
+      "Heath Ledger",
+      "Julia Stiles",
+      "Joseph Gordon-Levitt"
+    ],
+    "budget": "$16,000,000",
+    "revenue": "$53,478,166"
+  },
+  "tt1045658": {
+    "tmdbId": "82693",
+    "poster_path": "/fhHB1uvfFKKFbj6bTKE8xdtsjKi.jpg",
+    "backdrop_path": "/9IUQL0jr8Aqvy3ugWheHTCGonrU.jpg",
+    "runtime": 122,
+    "release_date": "2012-11-16",
+    "overview": "After losing his job and wife, and spending time in an institution, a former teacher winds up living with his parents. He wants to rebuild his life and reconcile with his wife, but his father would be happy if he shared his obsession with the Philadelphia Eagles. Things get complicated when he meets Tiffany Maxwell who offers to help him reconnect with his wife if he will do something very important for her in exchange.",
+    "ageRating": "R",
+    "director": "David O. Russell",
+    "cast": [
+      "Bradley Cooper",
+      "Jennifer Lawrence",
+      "Robert De Niro"
+    ],
+    "budget": "$21,000,000",
+    "revenue": "$236,412,453"
+  },
+  "tt0128853": {
+    "tmdbId": "9489",
+    "poster_path": "/e2uVtH6TpMfUl7WeOM70ezkcjsU.jpg",
+    "backdrop_path": "/wZM9vnatKefMHUNolmGMTr8sZrd.jpg",
+    "runtime": 119,
+    "release_date": "1998-12-18",
+    "overview": "Book superstore magnate Joe Fox and independent book shop owner Kathleen Kelly fall in love in the anonymity of the Internet—both blissfully unaware that he's trying to put her out of business.",
+    "ageRating": "PG",
+    "director": "Nora Ephron",
+    "cast": [
+      "Meg Ryan",
+      "Tom Hanks",
+      "Greg Kinnear"
+    ],
+    "budget": "$65,000,000",
+    "revenue": "$250,800,000"
+  },
+  "tt0092890": {
+    "tmdbId": "88",
+    "poster_path": "/9Jw6jys7q9gjzVX5zm1z0gC8gY9.jpg",
+    "backdrop_path": "/6iDQCBUSZKzY8Rnu8ECwl2gXcfG.jpg",
+    "runtime": 100,
+    "release_date": "1987-08-21",
+    "overview": "Expecting the usual tedium that accompanies a summer in the Catskills with her family, 17-year-old Frances 'Baby' Houseman is surprised to find herself stepping into the shoes of a professional hoofer—and unexpectedly falling in love.",
+    "ageRating": "PG-13",
+    "director": "Emile Ardolino",
+    "cast": [
+      "Jennifer Grey",
+      "Patrick Swayze",
+      "Cynthia Rhodes"
+    ],
+    "budget": "$6,000,000",
+    "revenue": "$214,577,242"
+  },
+  "tt2674426": {
+    "tmdbId": "296096",
+    "poster_path": "/Ia3dzj5LnCj1ZBdlVeJrbKJQxG.jpg",
+    "backdrop_path": "/3WK7p9EdZmmvB1IbB2Vw9Rf4lXH.jpg",
+    "runtime": 110,
+    "release_date": "2016-06-01",
+    "overview": "Lou Clark, a directionless 26-year-old from the English countryside, takes a job at the local castle as a caregiver and companion to a wealthy young banker, Will Traynor. Wheelchair-bound from an accident two years prior, the once adventurous Will has all but given up — that is until Lou determines to show him that life is worth living.",
+    "ageRating": "PG-13",
+    "director": "Thea Sharrock",
+    "cast": [
+      "Emilia Clarke",
+      "Sam Claflin",
+      "Janet McTeer"
+    ],
+    "budget": "$20,000,000",
+    "revenue": "$207,945,075"
+  },
+  "tt1041829": {
+    "tmdbId": "18240",
+    "poster_path": "/6stnAm1wSek8ZrislwK4xGTyCnt.jpg",
+    "backdrop_path": "/ojgXOhVi9Yk8irDpRfDkIzdD1LK.jpg",
+    "runtime": 108,
+    "release_date": "2009-06-02",
+    "overview": "When she learns she's in danger of losing her visa status and being deported, overbearing book editor Margaret Tate forces her put-upon assistant, Andrew Paxton, to marry her.",
+    "ageRating": "PG-13",
+    "director": "Anne Fletcher",
+    "cast": [
+      "Sandra Bullock",
+      "Ryan Reynolds",
+      "Malin Åkerman"
+    ],
+    "budget": "$40,000,000",
+    "revenue": "$317,400,000"
+  },
+  "tt26047818": {
+    "tmdbId": "1072790",
+    "poster_path": "/5qHoazZiaLe7oFBok7XlUhg96f2.jpg",
+    "backdrop_path": "/j9eOeLlTGoHoM8BNUJVNyWmIvCi.jpg",
+    "runtime": 103,
+    "release_date": "2023-12-21",
+    "overview": "After an amazing first date, Bea and Ben’s fiery attraction turns ice cold — until they find themselves unexpectedly reunited at a destination wedding in Australia. So they do what any two mature adults would do: pretend to be a couple.",
+    "ageRating": "R",
+    "director": "Will Gluck",
+    "cast": [
+      "Sydney Sweeney",
+      "Glen Powell",
+      "Mia Artemis"
+    ],
+    "budget": "$25,000,000",
+    "revenue": "$214,891,370"
   }
 }

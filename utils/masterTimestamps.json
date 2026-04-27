@@ -1377,7 +1377,12 @@
     },
     "639": {
         "Title": "When Harry Met Sally...",
-        "scenes": []
+        "scenes": [ {
+                "start": "0:46:13", 
+                "end": "0:47:22", 
+                "type": "Sexual Content (Moaning / Fake Orgasm)", 
+                "severity": "Moderate" 
+            }]
     },
     "640": {
         "Title": "Catch Me If You Can",
