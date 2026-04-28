@@ -4,345 +4,9 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Users, Film, BookOpen, Star } from 'lucide-react';
 
-// ==================== DATA IMPORTS ====================
-import { COMPLETE_MOVIE_DATA, STRATEGIC_QUOTES, SENSITIVE_TIMELINES as MIND_BENDING_SENSITIVE_TIMELINES } from '../utils/movieData';
-import { 
-  COMPLETE_MOVIE_DATA as SURVIVAL_MOVIE_DATA, 
-  STRATEGIC_QUOTES as SURVIVAL_QUOTES, 
-  SENSITIVE_TIMELINES 
-} from '../utils/survivalMovieData';
-import { 
-  COMPLETE_MOVIE_DATA as BLACK_SWAN_MOVIE_DATA, 
-  STRATEGIC_QUOTES as BLACK_SWAN_QUOTES, 
-  SENSITIVE_TIMELINES as BLACK_SWAN_SENSITIVE_TIMELINES 
-} from '../utils/blackSwanMovieData';
-import { 
-  COMPLETE_MOVIE_DATA as MATRIX_MOVIE_DATA, 
-  STRATEGIC_QUOTES as MATRIX_QUOTES, 
-  SENSITIVE_TIMELINES as MATRIX_SENSITIVE_TIMELINES 
-} from '../utils/matrixMovieData';
-import { 
-  COMPLETE_MOVIE_DATA as PARASITE_MOVIE_DATA, 
-  STRATEGIC_QUOTES as PARASITE_QUOTES, 
-  SENSITIVE_TIMELINES as PARASITE_SENSITIVE_TIMELINES 
-} from '../utils/parasiteMovieData';
-import { 
-  COMPLETE_MOVIE_DATA as OLDBOY_MOVIE_DATA, 
-  STRATEGIC_QUOTES as OLDBOY_QUOTES, 
-  SENSITIVE_TIMELINES as OLDBOY_SENSITIVE_TIMELINES 
-} from '../utils/oldboyMovieData';
-import { 
-  COMPLETE_MOVIE_DATA as SE7EN_MOVIE_DATA, 
-  STRATEGIC_QUOTES as SE7EN_QUOTES, 
-  SENSITIVE_TIMELINES as SE7EN_SENSITIVE_TIMELINES 
-} from '../utils/se7enMovieData';
-import { 
-  COMPLETE_MOVIE_DATA as INTERSTELLAR_MOVIE_DATA, 
-  STRATEGIC_QUOTES as INTERSTELLAR_QUOTES, 
-  SENSITIVE_TIMELINES as INTERSTELLAR_TIMELINES 
-} from '../utils/interstellarMovieData';
-import { 
-  COMPLETE_MOVIE_DATA as DONNIE_DARKO_MOVIE_DATA, 
-  STRATEGIC_QUOTES as DONNIE_DARKO_QUOTES, 
-  SENSITIVE_TIMELINES as DONNIE_DARKO_SENSITIVE_TIMELINES 
-} from '../utils/donnieDarkoMovieData';
-import { 
-  COMPLETE_MOVIE_DATA as FIGHT_CLUB_MOVIE_DATA, 
-  STRATEGIC_QUOTES as FIGHT_CLUB_QUOTES, 
-  SENSITIVE_TIMELINES as FIGHT_CLUB_SENSITIVE_TIMELINES 
-} from '../utils/fightClubMovieData';
-import { 
-  COMPLETE_MOVIE_DATA as EYES_WIDE_SHUT_MOVIE_DATA, 
-  STRATEGIC_QUOTES as EYES_WIDE_SHUT_QUOTES, 
-  SENSITIVE_TIMELINES as EYES_WIDE_SHUT_SENSITIVE_TIMELINES 
-} from '../utils/eyesWideShutMovieData';
-import { 
-  COMPLETE_MOVIE_DATA as PRESTIGE_MOVIE_DATA, 
-  STRATEGIC_QUOTES as PRESTIGE_QUOTES, 
-  SENSITIVE_TIMELINES as PRESTIGE_SENSITIVE_TIMELINES 
-} from '../utils/prestigeMovieData';
-import {
-  COMPLETE_MOVIE_DATA as EROTIC_THRILLER_MOVIE_DATA,
-  SENSITIVE_TIMELINES as EROTIC_THRILLER_SENSITIVE_TIMELINES
-} from '../utils/eroticThrillerMovieData';
-import {
-  COMPLETE_MOVIE_DATA as EROTIC_ROMANCE_MOVIE_DATA,
-  SENSITIVE_TIMELINES as EROTIC_ROMANCE_SENSITIVE_TIMELINES
-} from '../utils/eroticRomanceMovieData';
-import {
-  COMPLETE_MOVIE_DATA as GREED_MOVIE_DATA,
-  SENSITIVE_TIMELINES as GREED_SENSITIVE_TIMELINES
-} from '../utils/greedMovieData';
-import { 
-  COMPLETE_MOVIE_DATA as HBO_ACTION_MOVIE_DATA, 
-  STRATEGIC_QUOTES as HBO_ACTION_QUOTES, 
-  SENSITIVE_TIMELINES as HBO_ACTION_SENSITIVE_TIMELINES 
-} from '../utils/hboActionMovieData';
-import { 
-  COMPLETE_MOVIE_DATA as HBO_ROMANCE_MOVIE_DATA, 
-  STRATEGIC_QUOTES as HBO_ROMANCE_QUOTES, 
-  SENSITIVE_TIMELINES as HBO_ROMANCE_SENSITIVE_TIMELINES 
-} from '../utils/hboMaxRomanceMovieData'; 
-import { 
-  COMPLETE_MOVIE_DATA as HBO_MAX_THRILLER_MOVIE_DATA, 
-  SENSITIVE_TIMELINES as HBO_MAX_THRILLER_SENSITIVE_TIMELINES 
-} from '../utils/hboMaxThrillerMovieData';
-import { 
-  COMPLETE_MOVIE_DATA as HBO_MAX_FAMILY_MOVIE_DATA, 
-  SENSITIVE_TIMELINES as HBO_MAX_FAMILY_SENSITIVE_TIMELINES 
-} from '../utils/hboMaxFamilyMovieData';
-import { 
-  COMPLETE_MOVIE_DATA as HBO_MAX_SCIFI_MOVIE_DATA, 
-  SENSITIVE_TIMELINES as HBO_MAX_SCIFI_SENSITIVE_TIMELINES 
-} from '../utils/hboMaxSciFiMovieData';
-import { 
-  COMPLETE_MOVIE_DATA as HBO_MAX_HORROR_MOVIE_DATA, 
-  SENSITIVE_TIMELINES as HBO_MAX_HORROR_SENSITIVE_TIMELINES 
-} from '../utils/hboMaxHorrorMovieData';
-import { 
-  COMPLETE_MOVIE_DATA as HBO_MAX_BEST_MOVIE_DATA, 
-  SENSITIVE_TIMELINES as HBO_MAX_BEST_SENSITIVE_TIMELINES 
-} from '../utils/hboMaxBestMoviesData';
-import { 
-  COMPLETE_MOVIE_DATA as HBO_MAX_DRAMA_MOVIE_DATA, 
-  SENSITIVE_TIMELINES as HBO_MAX_DRAMA_SENSITIVE_TIMELINES 
-} from '../utils/hboMaxDramaMovieData';
-import { 
-  COMPLETE_MOVIE_DATA as HBO_MAX_COMEDY_MOVIE_DATA, 
-  SENSITIVE_TIMELINES as HBO_MAX_COMEDY_SENSITIVE_TIMELINES 
-} from '../utils/hboMaxComedyMovieData';
-
-import { 
-  COMPLETE_MOVIE_DATA as HULU_ACTION_MOVIE_DATA, 
-  STRATEGIC_QUOTES as HULU_ACTION_QUOTES, 
-  SENSITIVE_TIMELINES as HULU_ACTION_SENSITIVE_TIMELINES 
-} from '../utils/huluActionMovieData';
-import { 
-  COMPLETE_MOVIE_DATA as HULU_ROMANCE_MOVIE_DATA, 
-  STRATEGIC_QUOTES as HULU_ROMANCE_QUOTES, 
-  SENSITIVE_TIMELINES as HULU_ROMANCE_SENSITIVE_TIMELINES 
-} from '../utils/huluRomanceMovieData';
-import { 
-  COMPLETE_MOVIE_DATA as HULU_HORROR_MOVIE_DATA, 
-  STRATEGIC_QUOTES as HULU_HORROR_QUOTES, 
-  SENSITIVE_TIMELINES as HULU_HORROR_SENSITIVE_TIMELINES 
-} from '../utils/huluHorrorMovieData';
-import { 
-  COMPLETE_MOVIE_DATA as HULU_COMEDY_MOVIE_DATA, 
-  STRATEGIC_QUOTES as HULU_COMEDY_QUOTES, 
-  SENSITIVE_TIMELINES as HULU_COMEDY_SENSITIVE_TIMELINES 
-} from '../utils/huluComedyMovieData';
-import { 
-  COMPLETE_MOVIE_DATA as HULU_SCIFI_MOVIE_DATA, 
-  STRATEGIC_QUOTES as HULU_SCIFI_QUOTES, 
-  SENSITIVE_TIMELINES as HULU_SCIFI_SENSITIVE_TIMELINES 
-} from '../utils/huluSciFiMovieData';
-import { 
-  COMPLETE_MOVIE_DATA as HULU_THRILLER_MOVIE_DATA, 
-  STRATEGIC_QUOTES as HULU_THRILLER_QUOTES, 
-  SENSITIVE_TIMELINES as HULU_THRILLER_SENSITIVE_TIMELINES 
-} from '../utils/huluThrillerMovieData';
-import { 
-  COMPLETE_MOVIE_DATA as HULU_BEST_MOVIE_DATA, 
-  SENSITIVE_TIMELINES as HULU_BEST_SENSITIVE_TIMELINES 
-} from '../utils/huluBestMoviesData';
-import { 
-  COMPLETE_MOVIE_DATA as HULU_DRAMA_MOVIE_DATA, 
-  SENSITIVE_TIMELINES as HULU_DRAMA_SENSITIVE_TIMELINES 
-} from '../utils/huluDramaMovieData';
-import { 
-  COMPLETE_MOVIE_DATA as HULU_FAMILY_MOVIE_DATA, 
-  SENSITIVE_TIMELINES as HULU_FAMILY_SENSITIVE_TIMELINES 
-} from '../utils/huluFamilyMovieData';
-
-import { 
-  COMPLETE_MOVIE_DATA as PARAMOUNT_ACTION_MOVIE_DATA, 
-  SENSITIVE_TIMELINES as PARAMOUNT_ACTION_SENSITIVE_TIMELINES 
-} from '../utils/paramountActionMovieData';
-
-import { 
-  COMPLETE_MOVIE_DATA as PARAMOUNT_SCIFI_MOVIE_DATA, 
-  SENSITIVE_TIMELINES as PARAMOUNT_SCIFI_SENSITIVE_TIMELINES 
-} from '../utils/paramountSciFiMovieData';
-
-import { 
-  COMPLETE_MOVIE_DATA as PARAMOUNT_ROMANCE_MOVIE_DATA, 
-  SENSITIVE_TIMELINES as PARAMOUNT_ROMANCE_SENSITIVE_TIMELINES 
-} from '../utils/paramountRomanceMovieData';
-
-import { 
-  COMPLETE_MOVIE_DATA as PARAMOUNT_DRAMA_MOVIE_DATA, 
-  SENSITIVE_TIMELINES as PARAMOUNT_DRAMA_SENSITIVE_TIMELINES 
-} from '../utils/paramountDramaMovieData';
-
-import { 
-  COMPLETE_MOVIE_DATA as PARAMOUNT_THRILLER_MOVIE_DATA, 
-  SENSITIVE_TIMELINES as PARAMOUNT_THRILLER_SENSITIVE_TIMELINES 
-} from '../utils/paramountThrillerMovieData';
-
-import { 
-  COMPLETE_MOVIE_DATA as PARAMOUNT_FAMILY_MOVIE_DATA, 
-  SENSITIVE_TIMELINES as PARAMOUNT_FAMILY_SENSITIVE_TIMELINES 
-} from '../utils/paramountFamilyMovieData';
-
-import {
-  COMPLETE_MOVIE_DATA as PARAMOUNT_HORROR_MOVIE_DATA,
-  SENSITIVE_TIMELINES as PARAMOUNT_HORROR_SENSITIVE_TIMELINES
-} from '../utils/paramountHorrorMovieData';
-
-import {
-  COMPLETE_MOVIE_DATA as PARAMOUNT_COMEDY_MOVIE_DATA,
-  SENSITIVE_TIMELINES as PARAMOUNT_COMEDY_SENSITIVE_TIMELINES
-} from '../utils/paramountComedyMovieData';
-
-import { 
-  COMPLETE_MOVIE_DATA as PARAMOUNT_BEST_MOVIE_DATA, 
-  SENSITIVE_TIMELINES as PARAMOUNT_BEST_SENSITIVE_TIMELINES 
-} from '../utils/paramountBestMoviesData';
-
-import {
-  COMPLETE_MOVIE_DATA as PEACOCK_ACTION_ADVENTURE_MOVIE_DATA,
-  SENSITIVE_TIMELINES as PEACOCK_ACTION_ADVENTURE_SENSITIVE_TIMELINES
-} from '../utils/peacockActionAdventureData';
-
-import {
-  COMPLETE_MOVIE_DATA as PEACOCK_SCIFI_MOVIE_DATA,
-  SENSITIVE_TIMELINES as PEACOCK_SCIFI_SENSITIVE_TIMELINES
-} from '../utils/peacockSciFiMovieData';
-
-import {
-  COMPLETE_MOVIE_DATA as PEACOCK_ROMANCE_MOVIE_DATA,
-  SENSITIVE_TIMELINES as PEACOCK_ROMANCE_SENSITIVE_TIMELINES
-} from '../utils/peacockRomanceMovieData';
-
-import {
-  COMPLETE_MOVIE_DATA as PEACOCK_FAMILY_MOVIE_DATA,
-  SENSITIVE_TIMELINES as PEACOCK_FAMILY_SENSITIVE_TIMELINES
-} from '../utils/peacockFamilyMovieData';
-
-import {
-  COMPLETE_MOVIE_DATA as PEACOCK_DRAMA_MOVIE_DATA,
-  SENSITIVE_TIMELINES as PEACOCK_DRAMA_SENSITIVE_TIMELINES
-} from '../utils/peacockDramaMovieData';
-
-import {
-  COMPLETE_MOVIE_DATA as PEACOCK_THRILLER_MOVIE_DATA,
-  SENSITIVE_TIMELINES as PEACOCK_THRILLER_SENSITIVE_TIMELINES
-} from '../utils/peacockThrillerMovieData';
-
-import {
-  COMPLETE_MOVIE_DATA as PEACOCK_BEST_MOVIE_DATA,
-  SENSITIVE_TIMELINES as PEACOCK_BEST_SENSITIVE_TIMELINES
-} from '../utils/peacockBestMoviesData';
-
-import {
-  COMPLETE_MOVIE_DATA as PEACOCK_COMEDY_MOVIE_DATA,
-  SENSITIVE_TIMELINES as PEACOCK_COMEDY_SENSITIVE_TIMELINES
-} from '../utils/peacockComedyMovieData';
-import {
-  COMPLETE_MOVIE_DATA as RAUNCHY_COMEDY_MOVIE_DATA,
-  SENSITIVE_TIMELINES as RAUNCHY_COMEDY_SENSITIVE_TIMELINES
-} from '../utils/raunchyComedyMovieData';
-import {
-  COMPLETE_MOVIE_DATA as ROAD_TRIP_MOVIE_DATA,
-  SENSITIVE_TIMELINES as ROAD_TRIP_SENSITIVE_TIMELINES
-} from '../utils/roadTripMovieData';
-import {
-  COMPLETE_MOVIE_DATA as THOUGHT_PROVOKING_MOVIE_DATA,
-  SENSITIVE_TIMELINES as THOUGHT_PROVOKING_SENSITIVE_TIMELINES
-} from '../utils/thoughtProvokingMovieData';
-import {
-  COMPLETE_MOVIE_DATA as NEO_NOIR_MOVIE_DATA,
-  SENSITIVE_TIMELINES as NEO_NOIR_SENSITIVE_TIMELINES
-} from '../utils/neoNoirMovieData';
-import {
-  COMPLETE_MOVIE_DATA as BEST_ACTION_MOVIE_DATA,
-  SENSITIVE_TIMELINES as BEST_ACTION_SENSITIVE_TIMELINES
-} from '../utils/bestActionMoviesData';
-import {
-  COMPLETE_MOVIE_DATA as TRUE_STORY_MOVIE_DATA,
-  SENSITIVE_TIMELINES as TRUE_STORY_SENSITIVE_TIMELINES
-  , COMPLETE_MOVIE_DATABASE as TRUE_STORY_DATABASE
-} from '../utils/trueStoryMovieData';
-import {
-  COMPLETE_MOVIE_DATA as DECADE_MOVIE_DATA,
-  SENSITIVE_TIMELINES as DECADE_SENSITIVE_TIMELINES
-} from '../utils/decadeMovieData';
-import {
-  COMPLETE_MOVIE_DATA as GANGSTER_MOVIE_DATA,
-  SENSITIVE_TIMELINES as GANGSTER_SENSITIVE_TIMELINES
-} from '../utils/gangsterMovieData';
-import {
-  COMPLETE_MOVIE_DATA as BOOK_ADAPTATION_MOVIE_DATA,
-  SENSITIVE_TIMELINES as BOOK_ADAPTATION_SENSITIVE_TIMELINES
-} from '../utils/bookAdaptationData';
-import {
-  COMPLETE_MOVIE_DATA as MARRIAGE_CRISIS_MOVIE_DATA,
-  SENSITIVE_TIMELINES as MARRIAGE_CRISIS_SENSITIVE_TIMELINES
-} from '../utils/marriageCrisisMovieData';
-import {
-  COMPLETE_MOVIE_DATA as A24_MOVIE_DATA,
-  SENSITIVE_TIMELINES as A24_SENSITIVE_TIMELINES
-} from '../utils/a24MovieData';
-import {
-  COMPLETE_MOVIE_DATA as PTA_MOVIE_DATA,
-  SENSITIVE_TIMELINES as PTA_SENSITIVE_TIMELINES
-} from '../utils/ptaMoviesData';
-import {
-  COMPLETE_MOVIE_DATA as DARK_COMEDY_MOVIE_DATA,
-  SENSITIVE_TIMELINES as DARK_COMEDY_SENSITIVE_TIMELINES
-} from '../utils/darkComedyMovieData';
-import {
-  COMPLETE_MOVIE_DATA as BASIC_INSTINCT_MOVIE_DATA,
-  SENSITIVE_TIMELINES as BASIC_INSTINCT_SENSITIVE_TIMELINES
-} from '../utils/basicInstinctMovieData';
-import {
-  COMPLETE_MOVIE_DATA as ENEMIES_TO_LOVERS_MOVIE_DATA,
-  SENSITIVE_TIMELINES as ENEMIES_TO_LOVERS_SENSITIVE_TIMELINES
-} from '../utils/enemiesToLoversMovieData';
-
-import { 
-  COMPLETE_MOVIE_DATA as CRIME_THRILLER_MOVIE_DATA,
-  SENSITIVE_TIMELINES as CRIME_THRILLER_SENSITIVE_TIMELINES 
-} from '../utils/crimeThrillerMovieData';
-import { 
-  COMPLETE_MOVIE_DATA as HEIST_THRILLER_MOVIE_DATA,
-  SENSITIVE_TIMELINES as HEIST_THRILLER_SENSITIVE_TIMELINES 
-} from '../utils/heistThrillerMovieData';
-import { 
-  COMPLETE_MOVIE_DATA as TIME_TRAVEL_MOVIE_DATA,
-  SENSITIVE_TIMELINES as TIME_TRAVEL_SENSITIVE_TIMELINES 
-} from '../utils/timeTravelMovieData';
-import { 
-  COMPLETE_SCI_FI_DETAILS as SCI_FI_MOVIE_DATA,
-  SENSITIVE_TIMELINES as SCI_FI_SENSITIVE_TIMELINES 
-} from '../utils/sciFiMovieData';
-import { 
-  COMPLETE_MOVIE_DATA as REVENGE_MOVIE_DATA,
-  SENSITIVE_TIMELINES as REVENGE_SENSITIVE_TIMELINES 
-} from '../utils/revengeMovieData';
-import { 
-  COMPLETE_MOVIE_DATA as WAR_FILMS_MOVIE_DATA,
-  SENSITIVE_TIMELINES as WAR_FILMS_SENSITIVE_TIMELINES
-} from '../utils/warFilmsMovieData';
-import { 
-  COMPLETE_MOVIE_DATA as THRILLER_MOVIE_DATA,
-  SENSITIVE_TIMELINES as THRILLER_SENSITIVE_TIMELINES 
-} from '../utils/thrillerMovieData';
-import { 
-  COMPLETE_MOVIE_DATA as MYSTERY_THRILLER_MOVIE_DATA,
-  SENSITIVE_TIMELINES as MYSTERY_THRILLER_SENSITIVE_TIMELINES 
-} from '../utils/mysteryThrillerMovieData';
-import { 
-  COMPLETE_MOVIE_DATA as DETECTIVE_THRILLER_MOVIE_DATA,
-  SENSITIVE_TIMELINES as DETECTIVE_THRILLER_SENSITIVE_TIMELINES 
-} from '../utils/detectiveThrillerMovieData';
-import { 
-  COMPLETE_MOVIE_DATA as PSYCH_THRILLER_MOVIE_DATA,
-  SENSITIVE_TIMELINES as PSYCH_THRILLER_SENSITIVE_TIMELINES 
-} from '../utils/psychologicalThrillerMovieData';
-
-// ==================== COMPONENT IMPORTS ====================
+// ==================== COMPONENT IMPORTS ==================== 
+// ⚡ OPTIMIZED: Dynamic Code Splitting drops payload by ~2.5MB
+import dynamic from 'next/dynamic';
 import EnhancedIntensityGraph from './EnhancedIntensityGraph';
 import StrategicDNAHelix from './StrategicDNAHelix';
 import SensitiveContentTimelineSection from './SensitiveContentTimelineSection';
@@ -350,83 +14,83 @@ import EnhancedWhereToWatchSection from './EnhancedWhereToWatchSection';
 import RealCommentsRatingSection from './RealCommentsRatingSection';
 
 // FAQ Sections
-import SEOFAQSection from './SEOFAQSection';
-import SurvivalSEOFAQSection from './SurvivalSEOFAQSection';
-import ThrillerSEOFAQSection from './ThrillerSEOFAQSection';
-import MysteryThrillerSEOFAQSection from './MysteryThrillerSEOFAQSection';
-import DetectiveThrillerSEOFAQSection from './DetectiveThrillerSEOFAQSection';
-import PsychThrillerSEOFAQSection from './PsychThrillerSEOFAQSection';
-import CrimeThrillerSEOFAQSection from './CrimeThrillerSEOFAQSection';
-import HeistThrillerSEOFAQSection from './HeistThrillerSEOFAQSection';
-import TimeTravelSEOFAQSection from './TimeTravelSEOFAQSection';
-import SciFiSEOFAQSection from './SciFiSEOFAQSection';
-import RevengeMovieSEOFAQSection from './RevengeMovieSEOFAQSection';
-import WarFilmsSEOFAQSection from './WarFilmsSEOFAQSection';
-import InterstellarSEOFAQSection from './InterstellarSEOFAQSection';
-import MatrixSEOFAQSection from './MatrixSEOFAQSection';
-import Se7enSEOFAQSection from './Se7enSEOFAQSection'; 
-import ParasiteSEOFAQSection from './ParasiteSEOFAQSection'; 
-import OldboySEOFAQSection from './OldboySEOFAQSection';
-import DonnieDarkoSEOFAQSection from './DonnieDarkoSEOFAQSection';
-import FightClubSEOFAQSection from './FightClubSEOFAQSection';
-import BlackSwanSEOFAQSection from './BlackSwanSEOFAQSection';
-import EyesWideShutSEOFAQSection from './EyesWideShutSEOFAQSection';
-import EroticThrillerSEOFAQSection from './EroticThrillerSEOFAQSection';
-import EroticRomanceSEOFAQSection from './EroticRomanceSEOFAQSection';
-import GreedSEOFAQSection from './GreedSEOFAQSection';
-import PrestigeSEOFAQSection from './PrestigeSEOFAQSection';
-import HboActionSEOFAQSection from './HboActionSEOFAQSection';
-import HboMaxRomanceSEOFAQSection from './HboMaxRomanceSEOFAQSection';
-import HboMaxThrillerSEOFAQSection from './HboMaxThrillerSEOFAQSection';
-import HboMaxFamilySEOFAQSection from './HboMaxFamilySEOFAQSection';
-import HboMaxSciFiSEOFAQSection from './HboMaxSciFiSEOFAQSection'; 
-import HboMaxHorrorSEOFAQSection from './HboMaxHorrorSEOFAQSection'; 
-import HboMaxBestSEOFAQSection from './HboMaxBestSEOFAQSection';
-import HboMaxDramaSEOFAQSection from './HboMaxDramaSEOFAQSection';
-import HboMaxComedySEOFAQSection from './HboMaxComedySEOFAQSection';
-import RaunchyComedySEOFAQSection from './RaunchyComedySEOFAQSection';
-import RoadTripSEOFAQSection from './RoadTripSEOFAQSection';
-import ThoughtProvokingSEOFAQSection from './ThoughtProvokingSEOFAQSection';
-import NeoNoirSEOFAQSection from './NeoNoirSEOFAQSection';
-import BestActionMoviesSEOFAQSection from './BestActionMoviesSEOFAQSection';
-import TrueStorySEOFAQSection from './TrueStorySEOFAQSection';
-import DecadeSEOFAQSection from './DecadeSEOFAQSection';
-import GangsterSEOFAQSection from './GangsterSEOFAQSection';
-import BookAdaptationSEOFAQSection from './BookAdaptationSEOFAQSection';
-import MarriageCrisisSEOFAQSection from './MarriageCrisisSEOFAQSection';
-import A24SEOFAQSection from './A24SEOFAQSection';
-import DarkComedySEOFAQSection from './DarkComedySEOFAQSection';
-import PtaSEOFAQSection from './PtaSEOFAQSection';
-import BasicInstinctSEOFAQSection from './BasicInstinctSEOFAQSection';
-import EnemiesToLoversSEOFAQSection from './EnemiesToLoversSEOFAQSection';
+const SEOFAQSection = dynamic(() => import('./SEOFAQSection'));
+const SurvivalSEOFAQSection = dynamic(() => import('./SurvivalSEOFAQSection'));
+const ThrillerSEOFAQSection = dynamic(() => import('./ThrillerSEOFAQSection'));
+const MysteryThrillerSEOFAQSection = dynamic(() => import('./MysteryThrillerSEOFAQSection'));
+const DetectiveThrillerSEOFAQSection = dynamic(() => import('./DetectiveThrillerSEOFAQSection'));
+const PsychThrillerSEOFAQSection = dynamic(() => import('./PsychThrillerSEOFAQSection'));
+const CrimeThrillerSEOFAQSection = dynamic(() => import('./CrimeThrillerSEOFAQSection'));
+const HeistThrillerSEOFAQSection = dynamic(() => import('./HeistThrillerSEOFAQSection'));
+const TimeTravelSEOFAQSection = dynamic(() => import('./TimeTravelSEOFAQSection'));
+const SciFiSEOFAQSection = dynamic(() => import('./SciFiSEOFAQSection'));
+const RevengeMovieSEOFAQSection = dynamic(() => import('./RevengeMovieSEOFAQSection'));
+const WarFilmsSEOFAQSection = dynamic(() => import('./WarFilmsSEOFAQSection'));
+const InterstellarSEOFAQSection = dynamic(() => import('./InterstellarSEOFAQSection'));
+const MatrixSEOFAQSection = dynamic(() => import('./MatrixSEOFAQSection'));
+const Se7enSEOFAQSection = dynamic(() => import('./Se7enSEOFAQSection')); 
+const ParasiteSEOFAQSection = dynamic(() => import('./ParasiteSEOFAQSection')); 
+const OldboySEOFAQSection = dynamic(() => import('./OldboySEOFAQSection'));
+const DonnieDarkoSEOFAQSection = dynamic(() => import('./DonnieDarkoSEOFAQSection'));
+const FightClubSEOFAQSection = dynamic(() => import('./FightClubSEOFAQSection'));
+const BlackSwanSEOFAQSection = dynamic(() => import('./BlackSwanSEOFAQSection'));
+const EyesWideShutSEOFAQSection = dynamic(() => import('./EyesWideShutSEOFAQSection'));
+const EroticThrillerSEOFAQSection = dynamic(() => import('./EroticThrillerSEOFAQSection'));
+const EroticRomanceSEOFAQSection = dynamic(() => import('./EroticRomanceSEOFAQSection'));
+const GreedSEOFAQSection = dynamic(() => import('./GreedSEOFAQSection'));
+const PrestigeSEOFAQSection = dynamic(() => import('./PrestigeSEOFAQSection'));
+const HboActionSEOFAQSection = dynamic(() => import('./HboActionSEOFAQSection'));
+const HboMaxRomanceSEOFAQSection = dynamic(() => import('./HboMaxRomanceSEOFAQSection'));
+const HboMaxThrillerSEOFAQSection = dynamic(() => import('./HboMaxThrillerSEOFAQSection'));
+const HboMaxFamilySEOFAQSection = dynamic(() => import('./HboMaxFamilySEOFAQSection'));
+const HboMaxSciFiSEOFAQSection = dynamic(() => import('./HboMaxSciFiSEOFAQSection')); 
+const HboMaxHorrorSEOFAQSection = dynamic(() => import('./HboMaxHorrorSEOFAQSection')); 
+const HboMaxBestSEOFAQSection = dynamic(() => import('./HboMaxBestSEOFAQSection'));
+const HboMaxDramaSEOFAQSection = dynamic(() => import('./HboMaxDramaSEOFAQSection'));
+const HboMaxComedySEOFAQSection = dynamic(() => import('./HboMaxComedySEOFAQSection'));
+const RaunchyComedySEOFAQSection = dynamic(() => import('./RaunchyComedySEOFAQSection'));
+const RoadTripSEOFAQSection = dynamic(() => import('./RoadTripSEOFAQSection'));
+const ThoughtProvokingSEOFAQSection = dynamic(() => import('./ThoughtProvokingSEOFAQSection'));
+const NeoNoirSEOFAQSection = dynamic(() => import('./NeoNoirSEOFAQSection'));
+const BestActionMoviesSEOFAQSection = dynamic(() => import('./BestActionMoviesSEOFAQSection'));
+const TrueStorySEOFAQSection = dynamic(() => import('./TrueStorySEOFAQSection'));
+const DecadeSEOFAQSection = dynamic(() => import('./DecadeSEOFAQSection'));
+const GangsterSEOFAQSection = dynamic(() => import('./GangsterSEOFAQSection'));
+const BookAdaptationSEOFAQSection = dynamic(() => import('./BookAdaptationSEOFAQSection'));
+const MarriageCrisisSEOFAQSection = dynamic(() => import('./MarriageCrisisSEOFAQSection'));
+const A24SEOFAQSection = dynamic(() => import('./A24SEOFAQSection'));
+const DarkComedySEOFAQSection = dynamic(() => import('./DarkComedySEOFAQSection'));
+const PtaSEOFAQSection = dynamic(() => import('./PtaSEOFAQSection'));
+const BasicInstinctSEOFAQSection = dynamic(() => import('./BasicInstinctSEOFAQSection'));
+const EnemiesToLoversSEOFAQSection = dynamic(() => import('./EnemiesToLoversSEOFAQSection'));
 
-import HuluActionSEOFAQSection from './HuluActionSEOFAQSection';
-import HuluRomanceSEOFAQSection from './HuluRomanceSEOFAQSection';
-import HuluHorrorSEOFAQSection from './HuluHorrorSEOFAQSection';
-import HuluComedySEOFAQSection from './HuluComedySEOFAQSection';
-import HuluSciFiSEOFAQSection from './HuluSciFiSEOFAQSection';
-import HuluThrillerSEOFAQSection from './HuluThrillerSEOFAQSection';
-import HuluBestSEOFAQSection from './HuluBestSEOFAQSection';
-import HuluDramaSEOFAQSection from './HuluDramaSEOFAQSection';
-import HuluFamilySEOFAQSection from './HuluFamilySEOFAQSection';
+const HuluActionSEOFAQSection = dynamic(() => import('./HuluActionSEOFAQSection'));
+const HuluRomanceSEOFAQSection = dynamic(() => import('./HuluRomanceSEOFAQSection'));
+const HuluHorrorSEOFAQSection = dynamic(() => import('./HuluHorrorSEOFAQSection'));
+const HuluComedySEOFAQSection = dynamic(() => import('./HuluComedySEOFAQSection'));
+const HuluSciFiSEOFAQSection = dynamic(() => import('./HuluSciFiSEOFAQSection'));
+const HuluThrillerSEOFAQSection = dynamic(() => import('./HuluThrillerSEOFAQSection'));
+const HuluBestSEOFAQSection = dynamic(() => import('./HuluBestSEOFAQSection'));
+const HuluDramaSEOFAQSection = dynamic(() => import('./HuluDramaSEOFAQSection'));
+const HuluFamilySEOFAQSection = dynamic(() => import('./HuluFamilySEOFAQSection'));
 
-import ParamountActionSEOFAQSection from './ParamountActionSEOFAQSection';
-import ParamountSciFiSEOFAQSection from './ParamountSciFiSEOFAQSection';
-import ParamountRomanceSEOFAQSection from './ParamountRomanceSEOFAQSection';
-import ParamountDramaSEOFAQSection from './ParamountDramaSEOFAQSection';
-import ParamountThrillerSEOFAQSection from './ParamountThrillerSEOFAQSection';
-import ParamountFamilySEOFAQSection from './ParamountFamilySEOFAQSection';
-import ParamountHorrorSEOFAQSection from './ParamountHorrorSEOFAQSection';
-import ParamountComedySEOFAQSection from './ParamountComedySEOFAQSection';
-import ParamountBestSEOFAQSection from './ParamountBestSEOFAQSection';
-import PeacockActionAdventureSEOFAQSection from './PeacockActionAdventureSEOFAQSection';
-import PeacockSciFiSEOFAQSection from './PeacockSciFiSEOFAQSection';
-import PeacockRomanceSEOFAQSection from './PeacockRomanceSEOFAQSection';
-import PeacockFamilySEOFAQSection from './PeacockFamilySEOFAQSection';
-import PeacockDramaSEOFAQSection from './PeacockDramaSEOFAQSection';
-import PeacockThrillerSEOFAQSection from './PeacockThrillerSEOFAQSection';
-import PeacockBestSEOFAQSection from './PeacockBestSEOFAQSection';
-import PeacockComedySEOFAQSection from './PeacockComedySEOFAQSection';
+const ParamountActionSEOFAQSection = dynamic(() => import('./ParamountActionSEOFAQSection'));
+const ParamountSciFiSEOFAQSection = dynamic(() => import('./ParamountSciFiSEOFAQSection'));
+const ParamountRomanceSEOFAQSection = dynamic(() => import('./ParamountRomanceSEOFAQSection'));
+const ParamountDramaSEOFAQSection = dynamic(() => import('./ParamountDramaSEOFAQSection'));
+const ParamountThrillerSEOFAQSection = dynamic(() => import('./ParamountThrillerSEOFAQSection'));
+const ParamountFamilySEOFAQSection = dynamic(() => import('./ParamountFamilySEOFAQSection'));
+const ParamountHorrorSEOFAQSection = dynamic(() => import('./ParamountHorrorSEOFAQSection'));
+const ParamountComedySEOFAQSection = dynamic(() => import('./ParamountComedySEOFAQSection'));
+const ParamountBestSEOFAQSection = dynamic(() => import('./ParamountBestSEOFAQSection'));
+const PeacockActionAdventureSEOFAQSection = dynamic(() => import('./PeacockActionAdventureSEOFAQSection'));
+const PeacockSciFiSEOFAQSection = dynamic(() => import('./PeacockSciFiSEOFAQSection'));
+const PeacockRomanceSEOFAQSection = dynamic(() => import('./PeacockRomanceSEOFAQSection'));
+const PeacockFamilySEOFAQSection = dynamic(() => import('./PeacockFamilySEOFAQSection'));
+const PeacockDramaSEOFAQSection = dynamic(() => import('./PeacockDramaSEOFAQSection'));
+const PeacockThrillerSEOFAQSection = dynamic(() => import('./PeacockThrillerSEOFAQSection'));
+const PeacockBestSEOFAQSection = dynamic(() => import('./PeacockBestSEOFAQSection'));
+const PeacockComedySEOFAQSection = dynamic(() => import('./PeacockComedySEOFAQSection'));
 import FanFavoritesSection from './FanFavoritesSection';
 
 const MovieDetailsSection = React.memo(({
@@ -513,90 +177,10 @@ const MovieDetailsSection = React.memo(({
 
  if (!movie) return null;
 
- const isTrueStoryMovie = TRUE_STORY_DATABASE.some(m => m.imdbID === movie.imdbID);
+ const isTrueStoryMovie = movie.isTrueStory;
 
- const safeLookup = (collection, id) => (collection && id && collection[id]) || null;
-
- // ✅ UNIFIED MOVIE INFO LOOKUP
- const movieInfo = fromInceptionCollection ? safeLookup(COMPLETE_MOVIE_DATA, movie.tmdbId)
-  : fromMementoCollection ? safeLookup(COMPLETE_MOVIE_DATA, movie.tmdbId)
-  : fromShutterIslandCollection ? safeLookup(COMPLETE_MOVIE_DATA, movie.tmdbId)
-  : fromHboActionCollection ? safeLookup(HBO_ACTION_MOVIE_DATA, movie.tmdbId) 
-  : fromHboRomanceCollection ? safeLookup(HBO_ROMANCE_MOVIE_DATA, movie.tmdbId)
-  : fromHboMaxThrillerCollection ? safeLookup(HBO_MAX_THRILLER_MOVIE_DATA, movie.tmdbId)
-  : fromHboMaxFamilyCollection ? safeLookup(HBO_MAX_FAMILY_MOVIE_DATA, movie.tmdbId) 
-  : fromHboMaxSciFiCollection ? safeLookup(HBO_MAX_SCIFI_MOVIE_DATA, movie.tmdbId) 
-  : fromHboMaxHorrorCollection ? safeLookup(HBO_MAX_HORROR_MOVIE_DATA, movie.tmdbId)
-  : fromHboMaxBestCollection ? safeLookup(HBO_MAX_BEST_MOVIE_DATA, movie.tmdbId)
-  : fromHboMaxDramaCollection ? safeLookup(HBO_MAX_DRAMA_MOVIE_DATA, movie.tmdbId)
-  : fromHboMaxComedyCollection ? safeLookup(HBO_MAX_COMEDY_MOVIE_DATA, movie.tmdbId)
-  : fromHuluFamilyCollection ? safeLookup(HULU_FAMILY_MOVIE_DATA, movie.tmdbId)
-  : fromHuluDramaCollection ? safeLookup(HULU_DRAMA_MOVIE_DATA, movie.tmdbId)
-  : fromHuluBestCollection ? safeLookup(HULU_BEST_MOVIE_DATA, movie.tmdbId)
-  : fromHuluThrillerCollection ? safeLookup(HULU_THRILLER_MOVIE_DATA, movie.tmdbId)
-  : fromHuluSciFiCollection ? safeLookup(HULU_SCIFI_MOVIE_DATA, movie.tmdbId)
-  : fromHuluComedyCollection ? safeLookup(HULU_COMEDY_MOVIE_DATA, movie.tmdbId)
-  : fromHuluHorrorCollection ? safeLookup(HULU_HORROR_MOVIE_DATA, movie.tmdbId)
-  : fromHuluRomanceCollection ? safeLookup(HULU_ROMANCE_MOVIE_DATA, movie.tmdbId)
-  : fromHuluActionCollection ? safeLookup(HULU_ACTION_MOVIE_DATA, movie.tmdbId)
-  : fromParamountActionCollection ? safeLookup(PARAMOUNT_ACTION_MOVIE_DATA, movie.tmdbId)
-  : fromParamountSciFiCollection ? safeLookup(PARAMOUNT_SCIFI_MOVIE_DATA, movie.tmdbId)
-  : fromParamountRomanceCollection ? safeLookup(PARAMOUNT_ROMANCE_MOVIE_DATA, movie.tmdbId) 
-  : fromParamountDramaCollection ? safeLookup(PARAMOUNT_DRAMA_MOVIE_DATA, movie.tmdbId)
-  : fromParamountThrillerCollection ? safeLookup(PARAMOUNT_THRILLER_MOVIE_DATA, movie.tmdbId)
-  : fromParamountFamilyCollection ? safeLookup(PARAMOUNT_FAMILY_MOVIE_DATA, movie.tmdbId) 
-  : fromParamountHorrorCollection ? safeLookup(PARAMOUNT_HORROR_MOVIE_DATA, movie.tmdbId)
-  : fromParamountComedyCollection ? safeLookup(PARAMOUNT_COMEDY_MOVIE_DATA, movie.tmdbId)
-  : fromParamountBestCollection ? safeLookup(PARAMOUNT_BEST_MOVIE_DATA, movie.tmdbId)
-  : fromPeacockActionAdventureCollection ? safeLookup(PEACOCK_ACTION_ADVENTURE_MOVIE_DATA, movie.tmdbId)
-  : fromPeacockSciFiCollection ? safeLookup(PEACOCK_SCIFI_MOVIE_DATA, movie.tmdbId)
-  : fromPeacockRomanceCollection ? safeLookup(PEACOCK_ROMANCE_MOVIE_DATA, movie.tmdbId)
-  : fromPeacockFamilyCollection ? safeLookup(PEACOCK_FAMILY_MOVIE_DATA, movie.tmdbId)
-  : fromPeacockDramaCollection ? safeLookup(PEACOCK_DRAMA_MOVIE_DATA, movie.tmdbId)
-  : fromPeacockThrillerCollection ? safeLookup(PEACOCK_THRILLER_MOVIE_DATA, movie.tmdbId)
-  : fromPeacockBestCollection ? safeLookup(PEACOCK_BEST_MOVIE_DATA, movie.tmdbId)
-  : fromPeacockComedyCollection ? safeLookup(PEACOCK_COMEDY_MOVIE_DATA, movie.tmdbId)
-  : fromDonnieDarkoCollection ? safeLookup(DONNIE_DARKO_MOVIE_DATA, movie.tmdbId)
-  : fromFightClubCollection ? safeLookup(FIGHT_CLUB_MOVIE_DATA, movie.tmdbId)
-  : fromParasiteCollection ? safeLookup(PARASITE_MOVIE_DATA, movie.tmdbId)
-  : fromMatrixCollection ? safeLookup(MATRIX_MOVIE_DATA, movie.tmdbId)
-  : fromSe7enCollection ? safeLookup(SE7EN_MOVIE_DATA, movie.tmdbId)
-  : fromOldboyCollection ? safeLookup(OLDBOY_MOVIE_DATA, movie.tmdbId)
-  : fromBlackSwanCollection ? safeLookup(BLACK_SWAN_MOVIE_DATA, movie.tmdbId)
-  : fromPrestigeCollection ? safeLookup(PRESTIGE_MOVIE_DATA, movie.tmdbId)
-  : fromEroticThrillerCollection ? safeLookup(EROTIC_THRILLER_MOVIE_DATA, movie.tmdbId)
-  : fromEroticRomanceCollection ? safeLookup(EROTIC_ROMANCE_MOVIE_DATA, movie.tmdbId)
-  : fromGreedCollection ? safeLookup(GREED_MOVIE_DATA, movie.tmdbId)
-  : fromRaunchyComedyCollection ? safeLookup(RAUNCHY_COMEDY_MOVIE_DATA, movie.tmdbId)
-  : fromRoadTripCollection ? safeLookup(ROAD_TRIP_MOVIE_DATA, movie.tmdbId)
-  : fromThoughtProvokingCollection ? safeLookup(THOUGHT_PROVOKING_MOVIE_DATA, movie.tmdbId)
-  : fromNeoNoirCollection ? safeLookup(NEO_NOIR_MOVIE_DATA, movie.tmdbId)
-  : fromBestActionMoviesCollection ? safeLookup(BEST_ACTION_MOVIE_DATA, movie.tmdbId)
-  : fromTrueStoryCollection ? safeLookup(TRUE_STORY_MOVIE_DATA, movie.tmdbId)
-  : fromDecadeCollection ? safeLookup(DECADE_MOVIE_DATA, movie.tmdbId)
-  : fromGangsterCollection ? safeLookup(GANGSTER_MOVIE_DATA, movie.tmdbId)
-  : fromBookAdaptationCollection ? safeLookup(BOOK_ADAPTATION_MOVIE_DATA, movie.tmdbId)
-  : fromMarriageCrisisCollection ? safeLookup(MARRIAGE_CRISIS_MOVIE_DATA, movie.tmdbId)
-  : fromA24Collection ? safeLookup(A24_MOVIE_DATA, movie.tmdbId)
-  : fromDarkComedyCollection ? safeLookup(DARK_COMEDY_MOVIE_DATA, movie.tmdbId)
-  : fromPtaCollection ? safeLookup(PTA_MOVIE_DATA, movie.tmdbId)
-  : fromBasicInstinctCollection ? safeLookup(BASIC_INSTINCT_MOVIE_DATA, movie.tmdbId)
-  : fromEnemiesToLoversCollection ? safeLookup(ENEMIES_TO_LOVERS_MOVIE_DATA, movie.tmdbId)
-  : fromEyesWideShutCollection ? safeLookup(EYES_WIDE_SHUT_MOVIE_DATA, movie.tmdbId)
-  : fromRevengeCollection ? safeLookup(REVENGE_MOVIE_DATA, movie.tmdbId)
-  : fromWarFilmsCollection ? safeLookup(WAR_FILMS_MOVIE_DATA, movie.tmdbId)
-  : fromSciFiCollection ? safeLookup(SCI_FI_MOVIE_DATA, movie.tmdbId)
-  : fromTimeTravelCollection ? safeLookup(TIME_TRAVEL_MOVIE_DATA, movie.tmdbId)
-  : fromHeistThrillerCollection ? safeLookup(HEIST_THRILLER_MOVIE_DATA, movie.tmdbId)
-  : fromCrimeThrillerCollection ? safeLookup(CRIME_THRILLER_MOVIE_DATA, movie.tmdbId)
-  : fromDetectiveThrillerCollection ? safeLookup(DETECTIVE_THRILLER_MOVIE_DATA, movie.tmdbId)
-  : fromMysteryThrillerCollection ? safeLookup(MYSTERY_THRILLER_MOVIE_DATA, movie.tmdbId)
-  : fromPsychologicalThrillerCollection ? safeLookup(PSYCH_THRILLER_MOVIE_DATA, movie.tmdbId)
-  : fromThrillerCollection ? safeLookup(THRILLER_MOVIE_DATA, movie.tmdbId)
-  : fromInterstellarCollection ? safeLookup(INTERSTELLAR_MOVIE_DATA, movie.tmdbId)
-  : fromSurvivalCollection ? safeLookup(SURVIVAL_MOVIE_DATA, movie.tmdbId)
-  : fromDramaCollection ? safeLookup(DRAMA_MOVIE_DATA, movie.tmdbId)
-  : safeLookup(COMPLETE_MOVIE_DATA, movie.tmdbId);
+ // ⚡ SERVER-RESOLVED: Massive DB switch moved to getStaticProps to save ~3MB client payload
+ const movieInfo = movie.resolvedMovieInfo || null;
 
  const getMovieSpecificData = (title) => ({
    mindBendingIndex: 85,
@@ -737,83 +321,8 @@ const MovieDetailsSection = React.memo(({
    fetchAllData();
  }, [movie.tmdbId, movie.imdbID]);
 
- // ✅ UNIFIED SENSITIVE SCENES LOOKUP
- const sensitiveScenes = safeMovieInfo.sensitiveScenes 
-   || HBO_ACTION_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
-   || MIND_BENDING_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
-   || HBO_ROMANCE_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
-   || HBO_MAX_THRILLER_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
-   || HBO_MAX_FAMILY_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
-   || HBO_MAX_SCIFI_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
-   || HBO_MAX_HORROR_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
-   || HBO_MAX_BEST_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-   || HBO_MAX_DRAMA_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-   || HBO_MAX_COMEDY_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-   || HULU_FAMILY_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
-   || HULU_DRAMA_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
-   || HULU_BEST_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
-   || HULU_THRILLER_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-   || HULU_SCIFI_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
-   || HULU_COMEDY_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-   || HULU_HORROR_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
-   || HULU_ROMANCE_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-   || HULU_ACTION_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-   || PARAMOUNT_ACTION_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-   || PARAMOUNT_SCIFI_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-   || PARAMOUNT_ROMANCE_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
-   || PARAMOUNT_DRAMA_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-   || PARAMOUNT_THRILLER_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-   || PARAMOUNT_FAMILY_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
-   || PARAMOUNT_HORROR_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-   || PARAMOUNT_COMEDY_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-   || PARAMOUNT_BEST_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-   || PEACOCK_ACTION_ADVENTURE_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-   || PEACOCK_SCIFI_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-   || PEACOCK_ROMANCE_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-   || PEACOCK_FAMILY_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-   || PEACOCK_DRAMA_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-   || PEACOCK_THRILLER_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-   || PEACOCK_BEST_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-   || PEACOCK_COMEDY_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-   || DONNIE_DARKO_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-   || FIGHT_CLUB_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-   || PARASITE_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-   || MATRIX_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
-   || OLDBOY_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-   || BLACK_SWAN_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-   || PRESTIGE_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-   || EROTIC_THRILLER_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-   || EROTIC_ROMANCE_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-   || GREED_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-   || RAUNCHY_COMEDY_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-   || ROAD_TRIP_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-   || THOUGHT_PROVOKING_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-  || NEO_NOIR_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-   || GANGSTER_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-   || BOOK_ADAPTATION_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-   || MARRIAGE_CRISIS_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-   || A24_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-   || DARK_COMEDY_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-   || PTA_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-   || BASIC_INSTINCT_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-   || ENEMIES_TO_LOVERS_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-   || DECADE_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-   || EYES_WIDE_SHUT_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-   || SE7EN_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-   || SCI_FI_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-   || TIME_TRAVEL_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-   || HEIST_THRILLER_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-   || REVENGE_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-   || CRIME_THRILLER_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
-   || THRILLER_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-   || MYSTERY_THRILLER_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-   || DETECTIVE_THRILLER_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-   || PSYCH_THRILLER_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-   || INTERSTELLAR_TIMELINES?.[movie?.tmdbId]?.scenes 
-   || WAR_FILMS_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-   || TRUE_STORY_SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes
-   || SENSITIVE_TIMELINES?.[movie?.tmdbId]?.scenes 
-   || [];
+ // ⚡ SERVER-RESOLVED: Sensitive scenes directly from getStaticProps!
+ const sensitiveScenes = movie.resolvedSensitiveScenes || [];
 
  // ✅ DYNAMIC SCORE VALUE SELECTION
  const scoreValue = fromHboActionCollection ? movie.actionIntensity ?? safeMovieInfo.actionIntensity ?? 0
