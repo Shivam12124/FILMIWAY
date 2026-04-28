@@ -12,83 +12,6 @@ import tmdbCache from '../../data/tmdbCache.json';
 import CinematicBackground from '../../components/CinematicBackground';
 import { getPrimaryCollectionForMovie, COLLECTIONS } from '../../data/collections';
 
-// ⚡ SERVER-SIDE DATA IMPORTS (These will be stripped from the client bundle by Next.js)
-import * as SURVIVAL from '../../utils/survivalMovieData';
-import * as MATRIX from '../../utils/matrixMovieData';
-import * as SE7EN from '../../utils/se7enMovieData';
-import * as PARASITE from '../../utils/parasiteMovieData'; 
-import * as OLDBOY from '../../utils/oldboyMovieData'; 
-import * as DONNIE_DARKO from '../../utils/donnieDarkoMovieData';
-import * as FIGHT_CLUB from '../../utils/fightClubMovieData';
-import * as BLACK_SWAN from '../../utils/blackSwanMovieData';
-import * as EYES_WIDE_SHUT from '../../utils/eyesWideShutMovieData';
-import * as PRESTIGE from '../../utils/prestigeMovieData';
-import * as EROTIC_THRILLER from '../../utils/eroticThrillerMovieData';
-import * as EROTIC_ROMANCE from '../../utils/eroticRomanceMovieData';
-import * as GREED from '../../utils/greedMovieData';
-import * as INTERSTELLAR from '../../utils/interstellarMovieData';
-import * as CRIME_THRILLER from '../../utils/crimeThrillerMovieData';
-import * as WAR_FILMS from '../../utils/warFilmsMovieData';
-import * as HULU_ACTION from '../../utils/huluActionMovieData';
-import * as HULU_ROMANCE from '../../utils/huluRomanceMovieData';
-import * as HULU_HORROR from '../../utils/huluHorrorMovieData';
-import * as HULU_COMEDY from '../../utils/huluComedyMovieData';
-import * as HULU_SCIFI from '../../utils/huluSciFiMovieData';
-import * as HULU_THRILLER from '../../utils/huluThrillerMovieData';
-import * as MOVIE_DATA from '../../utils/movieData';
-import * as HULU_BEST from '../../utils/huluBestMoviesData';
-import * as HULU_DRAMA from '../../utils/huluDramaMovieData';
-import * as HBO_MAX_COMEDY from '../../utils/hboMaxComedyMovieData';
-import * as PARAMOUNT_ACTION from '../../utils/paramountActionMovieData';
-import * as PARAMOUNT_SCIFI from '../../utils/paramountSciFiMovieData';
-import * as PARAMOUNT_ROMANCE from '../../utils/paramountRomanceMovieData';
-import * as PARAMOUNT_DRAMA from '../../utils/paramountDramaMovieData';
-import * as PARAMOUNT_THRILLER from '../../utils/paramountThrillerMovieData';
-import * as PARAMOUNT_FAMILY from '../../utils/paramountFamilyMovieData';
-import * as PARAMOUNT_HORROR from '../../utils/paramountHorrorMovieData';
-import * as PARAMOUNT_COMEDY from '../../utils/paramountComedyMovieData';
-import * as PARAMOUNT_BEST from '../../utils/paramountBestMoviesData';
-import * as PEACOCK_ACTION_ADVENTURE from '../../utils/peacockActionAdventureData';
-import * as PEACOCK_SCIFI from '../../utils/peacockSciFiMovieData';
-import * as PEACOCK_ROMANCE from '../../utils/peacockRomanceMovieData';
-import * as PEACOCK_FAMILY from '../../utils/peacockFamilyMovieData';
-import * as PEACOCK_DRAMA from '../../utils/peacockDramaMovieData';
-import * as PEACOCK_THRILLER from '../../utils/peacockThrillerMovieData';
-import * as PEACOCK_BEST from '../../utils/peacockBestMoviesData';
-import * as PEACOCK_COMEDY from '../../utils/peacockComedyMovieData';
-import * as RAUNCHY_COMEDY from '../../utils/raunchyComedyMovieData';
-import * as ROAD_TRIP from '../../utils/roadTripMovieData';
-import * as THOUGHT_PROVOKING from '../../utils/thoughtProvokingMovieData';
-import * as NEO_NOIR from '../../utils/neoNoirMovieData';
-import * as BEST_ACTION from '../../utils/bestActionMoviesData';
-import * as TRUE_STORY from '../../utils/trueStoryMovieData';
-import * as GANGSTER from '../../utils/gangsterMovieData';
-import * as DECADE from '../../utils/decadeMovieData';
-import * as BOOK_ADAPTATION from '../../utils/bookAdaptationData';
-import * as MARRIAGE_CRISIS from '../../utils/marriageCrisisMovieData';
-import * as A24 from '../../utils/a24MovieData';
-import * as DARK_COMEDY from '../../utils/darkComedyMovieData';
-import * as PTA from '../../utils/ptaMoviesData';
-import * as BASIC_INSTINCT from '../../utils/basicInstinctMovieData';
-import * as ENEMIES_TO_LOVERS from '../../utils/enemiesToLoversMovieData';
-import * as HULU_FAMILY from '../../utils/huluFamilyMovieData';
-import * as HBO_ACTION from '../../utils/hboActionMovieData';
-import * as HBO_MAX_ROMANCE from '../../utils/hboMaxRomanceMovieData';
-import * as HBO_MAX_THRILLER from '../../utils/hboMaxThrillerMovieData';
-import * as HBO_MAX_FAMILY from '../../utils/hboMaxFamilyMovieData';
-import * as HBO_MAX_SCIFI from '../../utils/hboMaxSciFiMovieData';
-import * as HBO_MAX_HORROR from '../../utils/hboMaxHorrorMovieData';
-import * as HBO_MAX_BEST from '../../utils/hboMaxBestMoviesData';
-import * as HBO_MAX_DRAMA from '../../utils/hboMaxDramaMovieData';
-import * as SCI_FI from '../../utils/sciFiMovieData';
-import * as THRILLER_MOVIES from '../../utils/thrillerMovieData';
-import * as MYSTERY_THRILLER from '../../utils/mysteryThrillerMovieData'; 
-import * as DETECTIVE_THRILLER from '../../utils/detectiveThrillerMovieData';
-import * as PSYCH_THRILLER from '../../utils/psychologicalThrillerMovieData'; 
-import * as HEIST_THRILLER from '../../utils/heistThrillerMovieData';
-import * as TIME_TRAVEL from '../../utils/timeTravelMovieData';
-import * as REVENGE from '../../utils/revengeMovieData';
-
 // ✅ THEME COLORS FOR UNIVERSAL BANNER
 const COLORS = {
     accent: '#eab308', // Yellow-500
@@ -132,15 +55,8 @@ const UniversalBanner = ({ movie }) => {
     const insight = movie.Plot || 'A compelling cinematic experience that demands to be watched.';
 
     useEffect(() => {
-        const isMobileDevice = window.innerWidth < 768;
-        if (!isMobileDevice && trailerKey && !showTrailer && !hasClosedTrailer) {
-            timerRef.current = setInterval(() => {
-                setCountdown((prev) => {
-                    if (prev <= 1) { clearInterval(timerRef.current); setShowTrailer(true); return 0; }
-                    return prev - 1;
-                });
-            }, 1000);
-        }
+        // ⚡ LCP & TBT FIX: Removed the 4-second auto-play countdown.
+        // Auto-playing YouTube iframes destroys Lighthouse scores and blocks the main thread.
         return () => { if (timerRef.current) clearInterval(timerRef.current); };
     }, [trailerKey, showTrailer, hasClosedTrailer]);
 
@@ -184,17 +100,12 @@ const UniversalBanner = ({ movie }) => {
             ) : (
               <motion.div key="image" className="absolute inset-0 overflow-hidden" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
                 <div className="relative w-full h-full">
-                  {bannerImage ? <Image src={bannerImage} alt={`${movie?.Title} banner`} fill priority sizes="100vw" quality={90} className="object-cover object-[center_25%]" unoptimized /> : <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: '#000000' }}><Film className="w-16 h-16 sm:w-24 sm:h-24" style={{ color: COLORS.textMuted }} /></div>}
+                  {bannerImage ? <Image src={bannerImage} alt={`${movie?.Title} banner`} fill priority sizes="(max-width: 768px) 100vw, 1280px" quality={80} className="object-cover object-[center_25%]" /> : <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: '#000000' }}><Film className="w-16 h-16 sm:w-24 sm:h-24" style={{ color: COLORS.textMuted }} /></div>}
                   <div className="absolute inset-0 z-10" style={{ background: `linear-gradient(to bottom, transparent 0%, transparent 50%, #000000 90%, #000000 100%), linear-gradient(to right, #000000 0%, transparent 15%, transparent 85%, #000000 100%)` }} />
                 </div>
                 {trailerKey && (
                   <motion.div className="absolute inset-0 flex items-center justify-center z-20" initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 1, duration: 0.8 }}>
                     <motion.button onClick={handlePlayClick} className="p-4 sm:p-6 rounded-full backdrop-blur-lg shadow-2xl transition-all duration-300" style={{ backgroundColor: `${COLORS.bgPrimary}BB`, border: `2px solid ${COLORS.textPrimary}`, color: COLORS.textPrimary }} whileHover={{ scale: 1.15, backgroundColor: `${COLORS.accent}DD`, borderColor: COLORS.accent }} whileTap={{ scale: 0.95 }}><Play className="w-6 h-6 sm:w-8 sm:h-8 ml-1" /></motion.button>
-                  </motion.div>
-                )}
-                {trailerKey && !showTrailer && !hasClosedTrailer && countdown > 0 && (
-                  <motion.div className="hidden sm:block absolute top-6 sm:top-8 right-6 sm:right-8 backdrop-blur-md rounded-full px-3 sm:px-4 py-1.5 sm:py-2 border z-30" style={{ backgroundColor: `${COLORS.bgPrimary}CC`, borderColor: `${COLORS.accent}66`, color: COLORS.accent }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>
-                    <div className="flex items-center gap-2 text-xs sm:text-sm font-medium"><div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full animate-pulse" style={{ backgroundColor: COLORS.accent }}></div>Trailer in {countdown}s</div>
                   </motion.div>
                 )}
               </motion.div>
@@ -403,88 +314,88 @@ export async function getStaticProps({ params }) {
     const primaryTitle = primarySlug && COLLECTIONS[primarySlug] ? COLLECTIONS[primarySlug].title : null;
 
     // ⚡ SERVER-SIDE ONLY: Map the correct database collection instantly to avoid 3MB client payload
-    let collectionData = MOVIE_DATA; // Fallback
+    let collectionData = require('../../utils/movieData'); // Fallback
     switch(primarySlug) {
-        case 'best-survival-movies': collectionData = SURVIVAL; break;
-        case 'movies-like-the-matrix': collectionData = MATRIX; break;
-        case 'movies-like-se7en': collectionData = SE7EN; break;
-        case 'movies-like-parasite': collectionData = PARASITE; break;
-        case 'movies-like-oldboy': collectionData = OLDBOY; break;
-        case 'movies-like-donnie-darko': collectionData = DONNIE_DARKO; break;
-        case 'movies-like-fight-club': collectionData = FIGHT_CLUB; break;
-        case 'movies-like-black-swan': collectionData = BLACK_SWAN; break;
-        case 'movies-like-eyes-wide-shut': collectionData = EYES_WIDE_SHUT; break;
-        case 'movies-like-the-prestige': collectionData = PRESTIGE; break;
-        case 'best-erotic-thriller-movies': collectionData = EROTIC_THRILLER; break;
-        case 'best-erotic-romance-movies': collectionData = EROTIC_ROMANCE; break;
-        case 'best-movies-about-greed': collectionData = GREED; break;
-        case 'best-interstellar-movies': collectionData = INTERSTELLAR; break; 
-        case 'movies-like-interstellar': collectionData = INTERSTELLAR; break;
-        case 'best-crime-thriller-movies': collectionData = CRIME_THRILLER; break;
-        case 'best-war-films': collectionData = WAR_FILMS; break;
-        case 'best-action-movies-on-hulu': collectionData = HULU_ACTION; break;
-        case 'best-romance-movies-on-hulu': collectionData = HULU_ROMANCE; break;
-        case 'best-horror-movies-on-hulu': collectionData = HULU_HORROR; break;
-        case 'best-comedy-movies-on-hulu': collectionData = HULU_COMEDY; break;
-        case 'best-sci-fi-movies-on-hulu': collectionData = HULU_SCIFI; break;
-        case 'best-thriller-movies-hulu': collectionData = HULU_THRILLER; break;
-        case 'best-movies-on-hulu': collectionData = HULU_BEST; break;
-        case 'best-drama-movies-on-hulu': collectionData = HULU_DRAMA; break;
-        case 'best-comedy-movies-on-hbo-max': collectionData = HBO_MAX_COMEDY; break;
-        case 'best-action-movies-on-paramount-plus': collectionData = PARAMOUNT_ACTION; break;
-        case 'best-sci-fi-movies-on-paramount-plus': collectionData = PARAMOUNT_SCIFI; break;
-        case 'best-romance-movies-on-paramount-plus': collectionData = PARAMOUNT_ROMANCE; break;
-        case 'best-core-drama-movies-on-paramount-plus': collectionData = PARAMOUNT_DRAMA; break;
-        case 'best-thriller-movies-on-paramount-plus': collectionData = PARAMOUNT_THRILLER; break;
-        case 'best-family-movies-on-paramount-plus': collectionData = PARAMOUNT_FAMILY; break;
-        case 'best-horror-movies-on-paramount-plus': collectionData = PARAMOUNT_HORROR; break;
-        case 'best-comedy-movies-on-paramount-plus': collectionData = PARAMOUNT_COMEDY; break;
-        case 'best-movies-on-paramount-plus': collectionData = PARAMOUNT_BEST; break;
-        case 'best-action-adventure-movies-on-peacock': collectionData = PEACOCK_ACTION_ADVENTURE; break;
-        case 'best-sci-fi-movies-on-peacock': collectionData = PEACOCK_SCIFI; break;
-        case 'best-romance-movies-on-peacock': collectionData = PEACOCK_ROMANCE; break;
-        case 'best-family-movies-on-peacock': collectionData = PEACOCK_FAMILY; break;
-        case 'best-drama-movies-on-peacock': collectionData = PEACOCK_DRAMA; break;
-        case 'best-thriller-movies-on-peacock': collectionData = PEACOCK_THRILLER; break;
-        case 'best-movies-on-peacock': collectionData = PEACOCK_BEST; break;
-        case 'best-comedy-movies-on-peacock': collectionData = PEACOCK_COMEDY; break;
-        case 'best-raunchy-comedy-movies': collectionData = RAUNCHY_COMEDY; break;
-        case 'top-10-road-trip-movies': collectionData = ROAD_TRIP; break;
-        case 'best-thought-provoking-movies': collectionData = THOUGHT_PROVOKING; break;
-        case 'best-neo-noir-movies': collectionData = NEO_NOIR; break;
-        case 'best-action-movies': collectionData = BEST_ACTION; break;
-        case 'best-true-story-movies': collectionData = TRUE_STORY; break;
-        case 'best-gangster-movies-of-all-time': collectionData = GANGSTER; break;
-        case 'best-movies-of-the-decade': collectionData = DECADE; break;
-        case 'top-10-book-adaptations': collectionData = BOOK_ADAPTATION; break;
-        case 'best-marriage-crisis-movies': collectionData = MARRIAGE_CRISIS; break;
-        case 'best-a24-movies': collectionData = A24; break;
-        case 'best-dark-comedy-movies': collectionData = DARK_COMEDY; break;
-        case 'best-paul-thomas-anderson-movies': collectionData = PTA; break;
-        case 'movies-like-basic-instinct': collectionData = BASIC_INSTINCT; break;
-        case 'best-enemies-to-lovers-movies': collectionData = ENEMIES_TO_LOVERS; break;
-        case 'best-family-movies-on-hulu': collectionData = HULU_FAMILY; break;
-        case 'best-action-movies-on-hbo-max': collectionData = HBO_ACTION; break;
-        case 'best-romance-movies-on-hbo-max': collectionData = HBO_MAX_ROMANCE; break;
-        case 'best-thriller-movies-on-hbo-max': collectionData = HBO_MAX_THRILLER; break;
-        case 'best-family-movies-on-hbo-max': collectionData = HBO_MAX_FAMILY; break;
-        case 'best-sci-fi-movies-on-hbo-max': collectionData = HBO_MAX_SCIFI; break;
-        case 'best-horror-movies-on-hbo-max': collectionData = HBO_MAX_HORROR; break;
-        case 'best-movies-on-hbo-max': collectionData = HBO_MAX_BEST; break;
-        case 'best-drama-movies-on-hbo-max': collectionData = HBO_MAX_DRAMA; break;
-        case 'best-sci-fi-movies': collectionData = SCI_FI; break;
-        case 'best-thriller-movies': collectionData = THRILLER_MOVIES; break;
-        case 'best-mystery-thriller-movies': collectionData = MYSTERY_THRILLER; break;
-        case 'best-detective-thriller-movies': collectionData = DETECTIVE_THRILLER; break;
-        case 'best-psychological-thriller-movies': collectionData = PSYCH_THRILLER; break;
-        case 'best-heist-thriller-movies': collectionData = HEIST_THRILLER; break;
-        case 'best-time-travel-movies': collectionData = TIME_TRAVEL; break;
-        case 'best-revenge-movies': collectionData = REVENGE; break;
+        case 'best-survival-movies': collectionData = require('../../utils/survivalMovieData'); break;
+        case 'movies-like-the-matrix': collectionData = require('../../utils/matrixMovieData'); break;
+        case 'movies-like-se7en': collectionData = require('../../utils/se7enMovieData'); break;
+        case 'movies-like-parasite': collectionData = require('../../utils/parasiteMovieData'); break;
+        case 'movies-like-oldboy': collectionData = require('../../utils/oldboyMovieData'); break;
+        case 'movies-like-donnie-darko': collectionData = require('../../utils/donnieDarkoMovieData'); break;
+        case 'movies-like-fight-club': collectionData = require('../../utils/fightClubMovieData'); break;
+        case 'movies-like-black-swan': collectionData = require('../../utils/blackSwanMovieData'); break;
+        case 'movies-like-eyes-wide-shut': collectionData = require('../../utils/eyesWideShutMovieData'); break;
+        case 'movies-like-the-prestige': collectionData = require('../../utils/prestigeMovieData'); break;
+        case 'best-erotic-thriller-movies': collectionData = require('../../utils/eroticThrillerMovieData'); break;
+        case 'best-erotic-romance-movies': collectionData = require('../../utils/eroticRomanceMovieData'); break;
+        case 'best-movies-about-greed': collectionData = require('../../utils/greedMovieData'); break;
+        case 'best-interstellar-movies': 
+        case 'movies-like-interstellar': collectionData = require('../../utils/interstellarMovieData'); break;
+        case 'best-crime-thriller-movies': collectionData = require('../../utils/crimeThrillerMovieData'); break;
+        case 'best-war-films': collectionData = require('../../utils/warFilmsMovieData'); break;
+        case 'best-action-movies-on-hulu': collectionData = require('../../utils/huluActionMovieData'); break;
+        case 'best-romance-movies-on-hulu': collectionData = require('../../utils/huluRomanceMovieData'); break;
+        case 'best-horror-movies-on-hulu': collectionData = require('../../utils/huluHorrorMovieData'); break;
+        case 'best-comedy-movies-on-hulu': collectionData = require('../../utils/huluComedyMovieData'); break;
+        case 'best-sci-fi-movies-on-hulu': collectionData = require('../../utils/huluSciFiMovieData'); break;
+        case 'best-thriller-movies-hulu': collectionData = require('../../utils/huluThrillerMovieData'); break;
+        case 'best-movies-on-hulu': collectionData = require('../../utils/huluBestMoviesData'); break;
+        case 'best-drama-movies-on-hulu': collectionData = require('../../utils/huluDramaMovieData'); break;
+        case 'best-comedy-movies-on-hbo-max': collectionData = require('../../utils/hboMaxComedyMovieData'); break;
+        case 'best-action-movies-on-paramount-plus': collectionData = require('../../utils/paramountActionMovieData'); break;
+        case 'best-sci-fi-movies-on-paramount-plus': collectionData = require('../../utils/paramountSciFiMovieData'); break;
+        case 'best-romance-movies-on-paramount-plus': collectionData = require('../../utils/paramountRomanceMovieData'); break;
+        case 'best-core-drama-movies-on-paramount-plus': collectionData = require('../../utils/paramountDramaMovieData'); break;
+        case 'best-thriller-movies-on-paramount-plus': collectionData = require('../../utils/paramountThrillerMovieData'); break;
+        case 'best-family-movies-on-paramount-plus': collectionData = require('../../utils/paramountFamilyMovieData'); break;
+        case 'best-horror-movies-on-paramount-plus': collectionData = require('../../utils/paramountHorrorMovieData'); break;
+        case 'best-comedy-movies-on-paramount-plus': collectionData = require('../../utils/paramountComedyMovieData'); break;
+        case 'best-movies-on-paramount-plus': collectionData = require('../../utils/paramountBestMoviesData'); break;
+        case 'best-action-adventure-movies-on-peacock': collectionData = require('../../utils/peacockActionAdventureData'); break;
+        case 'best-sci-fi-movies-on-peacock': collectionData = require('../../utils/peacockSciFiMovieData'); break;
+        case 'best-romance-movies-on-peacock': collectionData = require('../../utils/peacockRomanceMovieData'); break;
+        case 'best-family-movies-on-peacock': collectionData = require('../../utils/peacockFamilyMovieData'); break;
+        case 'best-drama-movies-on-peacock': collectionData = require('../../utils/peacockDramaMovieData'); break;
+        case 'best-thriller-movies-on-peacock': collectionData = require('../../utils/peacockThrillerMovieData'); break;
+        case 'best-movies-on-peacock': collectionData = require('../../utils/peacockBestMoviesData'); break;
+        case 'best-comedy-movies-on-peacock': collectionData = require('../../utils/peacockComedyMovieData'); break;
+        case 'best-raunchy-comedy-movies': collectionData = require('../../utils/raunchyComedyMovieData'); break;
+        case 'top-10-road-trip-movies': collectionData = require('../../utils/roadTripMovieData'); break;
+        case 'best-thought-provoking-movies': collectionData = require('../../utils/thoughtProvokingMovieData'); break;
+        case 'best-neo-noir-movies': collectionData = require('../../utils/neoNoirMovieData'); break;
+        case 'best-action-movies': collectionData = require('../../utils/bestActionMoviesData'); break;
+        case 'best-true-story-movies': collectionData = require('../../utils/trueStoryMovieData'); break;
+        case 'best-gangster-movies-of-all-time': collectionData = require('../../utils/gangsterMovieData'); break;
+        case 'best-movies-of-the-decade': collectionData = require('../../utils/decadeMovieData'); break;
+        case 'top-10-book-adaptations': collectionData = require('../../utils/bookAdaptationData'); break;
+        case 'best-marriage-crisis-movies': collectionData = require('../../utils/marriageCrisisMovieData'); break;
+        case 'best-a24-movies': collectionData = require('../../utils/a24MovieData'); break;
+        case 'best-dark-comedy-movies': collectionData = require('../../utils/darkComedyMovieData'); break;
+        case 'best-paul-thomas-anderson-movies': collectionData = require('../../utils/ptaMoviesData'); break;
+        case 'movies-like-basic-instinct': collectionData = require('../../utils/basicInstinctMovieData'); break;
+        case 'best-enemies-to-lovers-movies': collectionData = require('../../utils/enemiesToLoversMovieData'); break;
+        case 'best-family-movies-on-hulu': collectionData = require('../../utils/huluFamilyMovieData'); break;
+        case 'best-action-movies-on-hbo-max': collectionData = require('../../utils/hboActionMovieData'); break;
+        case 'best-romance-movies-on-hbo-max': collectionData = require('../../utils/hboMaxRomanceMovieData'); break;
+        case 'best-thriller-movies-on-hbo-max': collectionData = require('../../utils/hboMaxThrillerMovieData'); break;
+        case 'best-family-movies-on-hbo-max': collectionData = require('../../utils/hboMaxFamilyMovieData'); break;
+        case 'best-sci-fi-movies-on-hbo-max': collectionData = require('../../utils/hboMaxSciFiMovieData'); break;
+        case 'best-horror-movies-on-hbo-max': collectionData = require('../../utils/hboMaxHorrorMovieData'); break;
+        case 'best-movies-on-hbo-max': collectionData = require('../../utils/hboMaxBestMoviesData'); break;
+        case 'best-drama-movies-on-hbo-max': collectionData = require('../../utils/hboMaxDramaMovieData'); break;
+        case 'best-sci-fi-movies': collectionData = require('../../utils/sciFiMovieData'); break;
+        case 'best-thriller-movies': collectionData = require('../../utils/thrillerMovieData'); break;
+        case 'best-mystery-thriller-movies': collectionData = require('../../utils/mysteryThrillerMovieData'); break;
+        case 'best-detective-thriller-movies': collectionData = require('../../utils/detectiveThrillerMovieData'); break;
+        case 'best-psychological-thriller-movies': collectionData = require('../../utils/psychologicalThrillerMovieData'); break;
+        case 'best-heist-thriller-movies': collectionData = require('../../utils/heistThrillerMovieData'); break;
+        case 'best-time-travel-movies': collectionData = require('../../utils/timeTravelMovieData'); break;
+        case 'best-revenge-movies': collectionData = require('../../utils/revengeMovieData'); break;
     }
 
     const resolvedMovieInfo = collectionData?.COMPLETE_MOVIE_DATA?.[baseMovie.tmdbId] || null;
     const resolvedSensitiveScenes = collectionData?.SENSITIVE_TIMELINES?.[baseMovie.tmdbId]?.scenes || [];
-    const isTrueStory = TRUE_STORY.COMPLETE_MOVIE_DATABASE.some(m => m.imdbID === baseMovie.imdbID);
+    const isTrueStory = require('../../utils/trueStoryMovieData').COMPLETE_MOVIE_DATABASE.some(m => m.imdbID === baseMovie.imdbID);
     
     // ⚡ PRE-CALCULATE SEO METADATA HERE TO SAVE CLIENT PAYLOAD
     const masterTimestamps = require('../../utils/masterTimestamps.json');

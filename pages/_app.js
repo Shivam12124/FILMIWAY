@@ -3,7 +3,7 @@ import '../styles/globals.css'
 import { useEffect, useState } from 'react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import { Bebas_Neue, Montserrat } from 'next/font/google'
+import { Bebas_Neue, Montserrat, Inter, Playfair_Display } from 'next/font/google'
 import Script from 'next/script'
 
 // ✅ 1. Configure Premium Fonts
@@ -17,6 +17,18 @@ const bebas = Bebas_Neue({
 const montserrat = Montserrat({
   subsets: ['latin'],
   variable: '--font-montserrat',
+  display: 'swap',
+});
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+});
+
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  variable: '--font-playfair',
   display: 'swap',
 });
 
@@ -184,7 +196,7 @@ export default function App({ Component, pageProps }) {
       )}
 
       {/* ✅ Wrap Component in Main with Font Variables */}
-      <main className={`${bebas.variable} ${montserrat.variable} font-sans`}>
+      <main className={`${bebas.variable} ${montserrat.variable} ${inter.variable} ${playfair.variable} font-sans`}>
         {/* ✅ PASS ENHANCED PROPS INSTEAD OF STANDARD PAGEPROPS */}
         <Component {...enhancedProps} />
       </main>

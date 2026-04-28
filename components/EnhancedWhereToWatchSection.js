@@ -253,7 +253,7 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
 
   if (!mounted) {
     return (
-      <div className="mb-12 mt-12 w-full h-32 rounded-2xl border border-white/5 bg-white/[0.02] flex items-center justify-center animate-pulse">
+      <div className="mb-12 mt-12 w-full min-h-[250px] rounded-2xl border border-white/5 bg-white/[0.02] flex items-center justify-center animate-pulse">
         <Loader className="w-5 h-5 animate-spin text-gray-500" />
       </div>
     );
@@ -323,7 +323,7 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
       </h2>
 
       {isLoading ? (
-        <div className="w-full h-32 rounded-2xl border border-white/5 bg-white/[0.02] flex items-center justify-center animate-pulse">
+        <div className="w-full min-h-[250px] rounded-2xl border border-white/5 bg-white/[0.02] flex items-center justify-center animate-pulse">
            <Loader className="w-5 h-5 animate-spin text-gray-500" />
         </div>
       ) : (
