@@ -4,8 +4,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { Search, Film } from 'lucide-react';
-import masterDatabase from '../utils/masterDatabase.json';
-import tmdbCache from '../data/tmdbCache.json';
 
 const Header = () => {
   const router = useRouter();
@@ -13,6 +11,7 @@ const Header = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [suggestions, setSuggestions] = useState([]);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [searchDB, setSearchDB] = useState(null);
   const searchRef = useRef(null);
   const isSearchPage = currentPath === '/search';
 
@@ -32,9 +31,20 @@ const Header = () => {
     }
   }, [currentPath, isSearchPage]);
 
+  // ⚡ LAZY LOAD HEAVY JSON DATABASES ONLY ON HOVER/FOCUS
+  const loadDatabases = async () => {
+    if (!searchDB) {
+      const [masterModule, cacheModule] = await Promise.all([
+        import('../utils/masterDatabase.json'),
+        import('../data/tmdbCache.json')
+      ]);
+      setSearchDB({ master: masterModule.default || masterModule, cache: cacheModule.default || cacheModule });
+    }
+  };
+
   // ⚡ SMART AUTOCOMPLETE LOGIC (Netflix Style)
   useEffect(() => {
-    if (searchQuery.trim().length > 1) {
+    if (searchQuery.trim().length > 1 && searchDB) {
       const normalizeForSearch = (text) => {
         if (!text) return '';
         return text.toLowerCase()
@@ -62,7 +72,7 @@ const Header = () => {
 
       const normalizedQuery = normalizeForSearch(searchQuery);
       
-      const matches = masterDatabase.filter(movie => {
+      const matches = searchDB.master.filter(movie => {
         const title = movie.Title || movie.title || '';
         const normalizedTitle = normalizeForSearch(title);
         // Loose continuous match
@@ -80,7 +90,7 @@ const Header = () => {
       setSuggestions([]);
       setIsDropdownOpen(false);
     }
-  }, [searchQuery]);
+  }, [searchQuery, searchDB]);
 
   // ⚡ CLOSE DROPDOWN WHEN CLICKING OUTSIDE
   useEffect(() => {
@@ -128,7 +138,8 @@ const Header = () => {
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  onFocus={() => { if (searchQuery.trim().length > 1) setIsDropdownOpen(true); }}
+                  onMouseEnter={loadDatabases}
+                  onFocus={() => { loadDatabases(); if (searchQuery.trim().length > 1) setIsDropdownOpen(true); }}
                   placeholder="Search movies..."
                   className="w-full bg-white/5 border border-white/10 rounded-full py-2 pl-11 pr-4 text-sm text-white placeholder-gray-400 focus:outline-none focus:border-yellow-400/50 focus:ring-1 focus:ring-yellow-400/50 transition-all"
                 />
@@ -141,7 +152,7 @@ const Header = () => {
                     <ul className="max-h-[350px] overflow-y-auto" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
                       <style dangerouslySetInnerHTML={{__html: `ul::-webkit-scrollbar { display: none; }`}} />
                       {suggestions.map(movie => {
-                        const cached = tmdbCache[movie.imdbID] || {};
+                        const cached = searchDB.cache[movie.imdbID] || {};
                         const posterUrl = cached.poster_path ? `https://image.tmdb.org/t/p/w92${cached.poster_path}` : null;
                         const movieTitle = movie.Title || movie.title || 'Unknown';
                         const movieSlug = movie.slug || movieTitle.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');

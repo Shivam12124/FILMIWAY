@@ -115,8 +115,7 @@ const Top10MovieCard = memo(({ movie, index }) => {
   const posterUrl = movie.posterUrl || "https://via.placeholder.com/342x513/111827/4b5563?text=No+Image";
   const shouldPrioritize = false; // ⚡ LCP OPTIMIZATION: Top 10 is below fold, defer loading
   
-  const masterMovie = masterDatabase?.find(m => m.imdbID === movie.imdbID);
-  const movieSlug = masterMovie?.slug || movie.slug || (movie.Title || movie.title || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+  const movieSlug = movie.slug || (movie.Title || movie.title || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
 
   return (
     <Link
@@ -216,8 +215,8 @@ const HeroSection = memo(() => {
     <section className="relative flex flex-col items-center justify-center bg-[#030303] overflow-hidden select-none pt-24 pb-4 sm:pt-28 sm:pb-8">
       {/* Premium Cinematic Background Gradients */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] bg-blue-900/20 rounded-full blur-[120px] mix-blend-screen transform-gpu" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] bg-yellow-600/10 rounded-full blur-[120px] mix-blend-screen transform-gpu" />
+        <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] rounded-full mix-blend-screen transform-gpu" style={{ background: 'radial-gradient(circle, rgba(30,58,138,0.2) 0%, transparent 70%)' }} />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] rounded-full mix-blend-screen transform-gpu" style={{ background: 'radial-gradient(circle, rgba(202,138,4,0.1) 0%, transparent 70%)' }} />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#030303]/80 to-[#030303]" />
       </div>
 
@@ -390,8 +389,7 @@ const QuickLinksSection = memo(({ title, movies }) => {
         {/* Premium Grid Layout for Desktop & Mobile */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4 px-1">
           {movies.slice(0, 10).map((movie) => {
-            const masterMovie = masterDatabase?.find(m => m.imdbID === movie.imdbID);
-            const movieSlug = masterMovie?.slug || movie.slug || (movie.Title || movie.title || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+            const movieSlug = movie.slug || (movie.Title || movie.title || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
             return (
               <Link
                 key={movie.imdbID}
@@ -421,7 +419,7 @@ const QuickLinksSection = memo(({ title, movies }) => {
 });
 QuickLinksSection.displayName = 'QuickLinksSection';
 
-const FilmiwayHomepage = ({ huluCollections, thrillerCollections, hboCollections, peacockCollections, paramountCollections, top10EroticThrillers, top10EroticRomance, top10TrendingMovies }) => {
+const FilmiwayHomepage = ({ huluCollections, thrillerCollections, hboCollections, peacockCollections, paramountCollections, top10EroticThrillers, trendingParentsGuides, top10TrendingMovies }) => {
   const thrillerRef = useRef(null);
   const huluRef = useRef(null);
   const hboRef = useRef(null);
@@ -482,7 +480,7 @@ const FilmiwayHomepage = ({ huluCollections, thrillerCollections, hboCollections
             {/* ⚡ SEO QUICK LINKS FOR FAST INDEXING */}
             <QuickLinksSection 
               title="Trending Parents Guides" 
-              movies={EROTIC_ROMANCE_DB} 
+              movies={trendingParentsGuides} 
             />
           </div>
         </main>
@@ -650,6 +648,7 @@ export async function getStaticProps() {
 
     const top10EroticThrillers = getTop10MoviesWithSlugs(EROTIC_THRILLER_DB, EROTIC_THRILLER_POSTERS);
     const top10TrendingMovies = getTop10MoviesWithSlugs(TRENDING_DB, TRENDING_POSTERS);
+    const trendingParentsGuides = getTop10MoviesWithSlugs(EROTIC_ROMANCE_DB, null);
 
     return {
       props: {
@@ -659,7 +658,8 @@ export async function getStaticProps() {
         peacockCollections: peacockData,
         paramountCollections: paramountData,
         top10EroticThrillers,
-        top10TrendingMovies
+        top10TrendingMovies,
+        trendingParentsGuides
       },
       revalidate: 604800, 
     };
