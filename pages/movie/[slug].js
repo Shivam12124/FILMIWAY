@@ -405,7 +405,6 @@ export async function getStaticProps({ params }) {
     const assignedFallbackTagline = UNIVERSAL_FALLBACK_TAGLINES[(baseMovie.tmdbId || 0) % UNIVERSAL_FALLBACK_TAGLINES.length];
 
     const resolvedMovieInfo = collectionData?.COMPLETE_MOVIE_DATA?.[baseMovie.tmdbId] || null;
-    const resolvedSensitiveScenes = collectionData?.SENSITIVE_TIMELINES?.[baseMovie.tmdbId]?.scenes || [];
     const isTrueStory = require('../../utils/trueStoryMovieData').COMPLETE_MOVIE_DATABASE.some(m => m.imdbID === baseMovie.imdbID);
     
     // ⚡ PRE-CALCULATE SEO METADATA HERE TO SAVE CLIENT PAYLOAD
@@ -413,6 +412,9 @@ export async function getStaticProps({ params }) {
     const sensitiveData = masterTimestamps[String(baseMovie.tmdbId)] || { scenes: [] };
     const allScenes = sensitiveData.scenes || [];
     
+    // ✅ FIX: Pull timestamps from masterTimestamps.json so new collections never show 0 timestamps!
+    const resolvedSensitiveScenes = allScenes.length > 0 ? allScenes : (collectionData?.SENSITIVE_TIMELINES?.[baseMovie.tmdbId]?.scenes || []);
+
     const isClean = allScenes.length === 0 || allScenes.every(s => !((s.type || '').toLowerCase().match(/sex|nudity|explicit/)));
     let metaTitle = '';
     let metaDesc = '';

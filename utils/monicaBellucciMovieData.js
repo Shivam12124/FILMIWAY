@@ -23,7 +23,7 @@ export const COMPLETE_MOVIE_DATABASE = [
 
 // ✅ STRATEGIC QUOTES (100% Clean & SEO Safe)
 export const STRATEGIC_QUOTES = {
-    1086774: "From now on, I'll be the one to choose who I go with.", 
+    10867: "From now on, I'll be the one to choose who I go with.", 
     615: "Let him who is without sin cast the first stone.", 
     979: "Time destroys everything.", 
     206647: "If you go there, you will cross over to a place where there is no mercy.", 

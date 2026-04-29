@@ -101,8 +101,8 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
         }
     };
 
-    // 🔥 SINGLE SOURCE OF TRUTH: Read directly from the JSON file
-    const actualScenes = masterTimestamps[movie?.tmdbId]?.scenes || [];
+    // 🔥 SINGLE SOURCE OF TRUTH: Read from props first so individual collection data files work!
+    const actualScenes = (sensitiveScenes && sensitiveScenes.length > 0) ? sensitiveScenes : (masterTimestamps[String(movie?.tmdbId)]?.scenes || []);
 
     let sensitiveData = null;
     let contentTypes = [];
