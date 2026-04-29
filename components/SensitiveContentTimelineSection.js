@@ -160,6 +160,11 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
         currentRuntime = "118 min (Unrated Version)"; 
     }
 
+    // 🔥 Explicit Override for Malèna
+    if (movie.tmdbId === 10867) {
+        currentRuntime = "1 hour 32 min"; 
+    }
+
     const getSeverityDotColor = (severity) => {
         if (!severity) return 'bg-gray-500 shadow-gray-500/50';
         const s = severity.toLowerCase();
