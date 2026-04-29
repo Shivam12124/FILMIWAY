@@ -15,8 +15,8 @@ async function updateTaglines() {
     for (const movie of db) {
         if (!cache[movie.imdbID]) cache[movie.imdbID] = {};
         
-        // Skip if we already successfully saved a tagline (saves API calls!)
-        if (cache[movie.imdbID].tagline) continue;
+        // Skip if we already checked for a tagline (even if it was an empty string)
+        if (typeof cache[movie.imdbID].tagline !== 'undefined') continue;
 
         let retries = 3;
         while (retries > 0) {

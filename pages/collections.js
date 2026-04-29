@@ -18,7 +18,7 @@ const CollectionsHub = () => {
     const [activeCategory, setActiveCategory] = useState('All');
     const [expandedCollection, setExpandedCollection] = useState(null);
 
-  const categories = ['All', 'Streaming Guides', 'Movies Like...', 'Genres', "Director's Best", 'Themes & Vibes'];
+  const categories = ['All', 'Streaming Guides', 'Movies Like...', 'Genres', "Director's Best", "Actor's Best", 'Themes & Vibes'];
 
     const collections = [
         // --- MOVIES LIKE... ---
@@ -69,6 +69,10 @@ const CollectionsHub = () => {
 { id: 'best-enemies-to-lovers-movies', category: 'Themes & Vibes', title: '10 Best Enemies to Lovers Movies', description: 'Explore the 10 best enemies to lovers movies of all time, featuring intense romantic chemistry, witty banter, and iconic slow-burn romances.', icon: Heart, gradient: 'from-rose-500 to-red-900', movieCount: '10', rating: '7.2', directLink: '/collection/best-enemies-to-lovers-movies', hasSubCollections: false },
 // --- DIRECTOR'S BEST ---
         { id: 'best-paul-thomas-anderson-movies', category: "Director's Best", title: 'Paul Thomas Anderson Movies Ranked', description: 'The complete filmography of Paul Thomas Anderson, ranked from worst to best, featuring intense character studies and cinematic mastery.', icon: Camera, gradient: 'from-stone-600 to-neutral-900', movieCount: '10', rating: '7.7', directLink: '/collection/best-paul-thomas-anderson-movies', hasSubCollections: false },
+
+        // --- ACTOR'S BEST ---
+        { id: 'top-10-jennifer-lawrence-movies', category: "Actor's Best", title: 'Top 10 Jennifer Lawrence Movies', description: 'From Oscar-winning dramas to blockbuster franchises—her absolute best performances.', icon: Star, gradient: 'from-amber-500 to-orange-700', movieCount: '10', rating: '7.0', directLink: '/collection/top-10-jennifer-lawrence-movies', hasSubCollections: false },
+        { id: 'top-10-monica-bellucci-movies', category: "Actor's Best", title: 'Top 10 Monica Bellucci Movies', description: 'From timeless international masterpieces to blockbuster epics—her absolute best performances.', icon: Star, gradient: 'from-red-700 to-rose-900', movieCount: '10', rating: '7.0', directLink: '/collection/top-10-monica-bellucci-movies', hasSubCollections: false },
         // --- STREAMING GUIDES ---
         // Hulu
         { id: 'hulu-best', category: 'Streaming Guides', title: 'Top 10 Best Movies on Hulu', description: 'The definitive ranking of the highest-rated films streaming on Hulu right now', icon: Crown, gradient: 'from-amber-500 to-yellow-600', movieCount: '10', rating: '7.9', directLink: '/collection/best-movies-on-hulu', hasSubCollections: false },

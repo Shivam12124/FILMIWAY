@@ -69,6 +69,8 @@ import * as DARK_COMEDY from '../utils/darkComedyMovieData';
 import * as PTA from '../utils/ptaMoviesData';
 import * as BASIC_INSTINCT from '../utils/basicInstinctMovieData';
 import * as ENEMIES_TO_LOVERS from '../utils/enemiesToLoversMovieData';
+import * as JLAW from '../utils/jenniferLawrenceMovieData';
+import * as MONICA_BELLUCCI from '../utils/monicaBellucciMovieData';
 import * as HULU_FAMILY from '../utils/huluFamilyMovieData';
 import * as HBO_ACTION from '../utils/hboActionMovieData';
 import * as HBO_MAX_ROMANCE from '../utils/hboMaxRomanceMovieData';
@@ -326,7 +328,7 @@ export async function getStaticProps() {
     PEACOCK_BEST, PEACOCK_COMEDY, RAUNCHY_COMEDY, ROAD_TRIP,
     THOUGHT_PROVOKING, NEO_NOIR, BEST_ACTION, TRUE_STORY,
     GANGSTER, DECADE, BOOK_ADAPTATION, MARRIAGE_CRISIS,
-    A24, DARK_COMEDY, PTA, BASIC_INSTINCT, ENEMIES_TO_LOVERS, HULU_FAMILY, HBO_ACTION, HBO_MAX_ROMANCE, HBO_MAX_THRILLER,
+    A24, DARK_COMEDY, PTA, BASIC_INSTINCT, ENEMIES_TO_LOVERS, JLAW, MONICA_BELLUCCI, HULU_FAMILY, HBO_ACTION, HBO_MAX_ROMANCE, HBO_MAX_THRILLER,
     HBO_MAX_FAMILY, HBO_MAX_SCIFI, HBO_MAX_HORROR, HBO_MAX_BEST,
     HBO_MAX_DRAMA, SCI_FI, THRILLER_MOVIES, MYSTERY_THRILLER,
     DETECTIVE_THRILLER, PSYCH_THRILLER, HEIST_THRILLER, TIME_TRAVEL,

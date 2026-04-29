@@ -814,6 +814,39 @@
     "sourceFile": "warFilmsMovieData.js"
   },
   {
+    "tmdbId": 604,
+    "imdbID": "tt0234215",
+    "Title": "The Matrix Reloaded",
+    "year": 2003,
+    "genre": "Sci-Fi",
+    "runtime": 138,
+    "rank": 5,
+    "slug": "the-matrix-reloaded",
+    "sourceFile": "monicaBellucciMovieData.js"
+  },
+  {
+    "tmdbId": 605,
+    "imdbID": "tt0242653",
+    "Title": "The Matrix Revolutions",
+    "year": 2003,
+    "genre": "Sci-Fi",
+    "runtime": 129,
+    "rank": 8,
+    "slug": "the-matrix-revolutions",
+    "sourceFile": "monicaBellucciMovieData.js"
+  },
+  {
+    "tmdbId": 615,
+    "imdbID": "tt0335345",
+    "Title": "The Passion of the Christ",
+    "year": 2004,
+    "genre": "Drama",
+    "runtime": 127,
+    "rank": 2,
+    "slug": "the-passion-of-the-christ",
+    "sourceFile": "monicaBellucciMovieData.js"
+  },
+  {
     "tmdbId": 617,
     "imdbID": "tt0120890",
     "Title": "Wild Things",
@@ -1362,6 +1395,17 @@
     "rank": 10,
     "slug": "paths-of-glory",
     "sourceFile": "warFilmsMovieData.js"
+  },
+  {
+    "tmdbId": 979,
+    "imdbID": "tt0290673",
+    "Title": "Irréversible",
+    "year": 2002,
+    "genre": "Thriller",
+    "runtime": 97,
+    "rank": 3,
+    "slug": "irrversible",
+    "sourceFile": "monicaBellucciMovieData.js"
   },
   {
     "tmdbId": 1018,
@@ -2178,6 +2222,28 @@
     "sourceFile": "gangsterMovieData.js"
   },
   {
+    "tmdbId": 6114,
+    "imdbID": "tt0103874",
+    "Title": "Bram Stoker's Dracula",
+    "year": 1992,
+    "genre": "Horror",
+    "runtime": 128,
+    "rank": 7,
+    "slug": "bram-stokers-dracula",
+    "sourceFile": "monicaBellucciMovieData.js"
+  },
+  {
+    "tmdbId": 6312,
+    "imdbID": "tt0237534",
+    "Title": "Brotherhood of the Wolf",
+    "year": 2001,
+    "genre": "Action",
+    "runtime": 142,
+    "rank": 9,
+    "slug": "brotherhood-of-the-wolf",
+    "sourceFile": "monicaBellucciMovieData.js"
+  },
+  {
     "tmdbId": 6957,
     "imdbID": "tt0425061",
     "Title": "The 40-Year-Old Virgin",
@@ -2530,6 +2596,17 @@
     "sourceFile": "raunchyComedyMovieData.js"
   },
   {
+    "tmdbId": 9567,
+    "imdbID": "tt0314353",
+    "Title": "Tears of the Sun",
+    "year": 2003,
+    "genre": "Action",
+    "runtime": 121,
+    "rank": 10,
+    "slug": "tears-of-the-sun",
+    "sourceFile": "monicaBellucciMovieData.js"
+  },
+  {
     "tmdbId": 9603,
     "imdbID": "tt0112697",
     "Title": "Clueless",
@@ -2704,6 +2781,17 @@
     "rank": 10,
     "slug": "after-hours",
     "sourceFile": "neoNoirMovieData.js"
+  },
+  {
+    "tmdbId": 10867,
+    "imdbID": "tt0213847",
+    "Title": "Malèna",
+    "year": 2000,
+    "genre": "Drama",
+    "runtime": 109,
+    "rank": 1,
+    "slug": "malna",
+    "sourceFile": "monicaBellucciMovieData.js"
   },
   {
     "tmdbId": 10998,
@@ -3366,6 +3454,17 @@
     "sourceFile": "marriageCrisisMovieData.js"
   },
   {
+    "tmdbId": 39013,
+    "imdbID": "tt1399683",
+    "Title": "Winter's Bone",
+    "year": 2010,
+    "genre": "Drama",
+    "runtime": 100,
+    "rank": 2,
+    "slug": "winters-bone",
+    "sourceFile": "jenniferLawrenceMovieData.js"
+  },
+  {
     "tmdbId": 39939,
     "imdbID": "tt0247745",
     "Title": "Super Troopers",
@@ -3439,7 +3538,7 @@
     "genre": "Thriller",
     "runtime": 129,
     "rank": 7,
-    "slug": "mother",
+    "slug": "mother-2009",
     "sourceFile": "parasiteMovieData.js"
   },
   {
@@ -3696,6 +3795,17 @@
     "sourceFile": "paramountDramaMovieData.js"
   },
   {
+    "tmdbId": 70160,
+    "imdbID": "tt1392170",
+    "Title": "The Hunger Games",
+    "year": 2012,
+    "genre": "Action",
+    "runtime": 142,
+    "rank": 7,
+    "slug": "the-hunger-games",
+    "sourceFile": "jenniferLawrenceMovieData.js"
+  },
+  {
     "tmdbId": 72190,
     "imdbID": "tt0816711",
     "Title": "World War Z",
@@ -3884,14 +3994,14 @@
   },
   {
     "tmdbId": 101299,
-    "imdbID": "tt1959490",
+    "imdbID": "tt1951264",
     "Title": "The Hunger Games: Catching Fire",
     "year": 2013,
-    "genre": "Sci-Fi",
+    "genre": "Action",
     "runtime": 146,
-    "rank": 9,
+    "rank": 5,
     "slug": "the-hunger-games-catching-fire",
-    "sourceFile": "peacockActionAdventureData.js"
+    "sourceFile": "jenniferLawrenceMovieData.js"
   },
   {
     "tmdbId": 106646,
@@ -4081,6 +4191,17 @@
     "sourceFile": "huluDramaMovieData.js"
   },
   {
+    "tmdbId": 168672,
+    "imdbID": "tt2261597",
+    "Title": "American Hustle",
+    "year": 2013,
+    "genre": "Crime",
+    "runtime": 138,
+    "rank": 4,
+    "slug": "american-hustle",
+    "sourceFile": "jenniferLawrenceMovieData.js"
+  },
+  {
     "tmdbId": 171274,
     "imdbID": "tt1791528",
     "Title": "Inherent Vice",
@@ -4145,6 +4266,17 @@
     "rank": 4,
     "slug": "predestination",
     "sourceFile": "movieData.js"
+  },
+  {
+    "tmdbId": 206647,
+    "imdbID": "tt2379713",
+    "Title": "Spectre",
+    "year": 2015,
+    "genre": "Action",
+    "runtime": 148,
+    "rank": 4,
+    "slug": "spectre",
+    "sourceFile": "monicaBellucciMovieData.js"
   },
   {
     "tmdbId": 207703,
@@ -4365,6 +4497,17 @@
     "rank": 5,
     "slug": "selma",
     "sourceFile": "paramountDramaMovieData.js"
+  },
+  {
+    "tmdbId": 274870,
+    "imdbID": "tt1355644",
+    "Title": "Passengers",
+    "year": 2016,
+    "genre": "Sci-Fi",
+    "runtime": 116,
+    "rank": 10,
+    "slug": "passengers",
+    "sourceFile": "jenniferLawrenceMovieData.js"
   },
   {
     "tmdbId": 281338,
@@ -4686,6 +4829,17 @@
     "sourceFile": "hboMaxDramaMovieData.js"
   },
   {
+    "tmdbId": 381283,
+    "imdbID": "tt5109784",
+    "Title": "mother!",
+    "year": 2017,
+    "genre": "Thriller",
+    "runtime": 121,
+    "rank": 3,
+    "slug": "mother",
+    "sourceFile": "jenniferLawrenceMovieData.js"
+  },
+  {
     "tmdbId": 381288,
     "imdbID": "tt4972582",
     "Title": "Split",
@@ -4816,6 +4970,17 @@
     "rank": 5,
     "slug": "phantom-thread",
     "sourceFile": "ptaMoviesData.js"
+  },
+  {
+    "tmdbId": 401981,
+    "imdbID": "tt2873282",
+    "Title": "Red Sparrow",
+    "year": 2018,
+    "genre": "Thriller",
+    "runtime": 140,
+    "rank": 8,
+    "slug": "red-sparrow",
+    "sourceFile": "jenniferLawrenceMovieData.js"
   },
   {
     "tmdbId": 402897,
@@ -5753,6 +5918,17 @@
     "sourceFile": "paramountHorrorMovieData.js"
   },
   {
+    "tmdbId": 884605,
+    "imdbID": "tt14425042",
+    "Title": "No Hard Feelings",
+    "year": 2023,
+    "genre": "Comedy",
+    "runtime": 103,
+    "rank": 9,
+    "slug": "no-hard-feelings",
+    "sourceFile": "jenniferLawrenceMovieData.js"
+  },
+  {
     "tmdbId": 893723,
     "imdbID": "tt15837338",
     "Title": "PAW Patrol: The Mighty Movie",
@@ -5949,6 +6125,17 @@
     "rank": 8,
     "slug": "strange-darling",
     "sourceFile": "paramountHorrorMovieData.js"
+  },
+  {
+    "tmdbId": 1033148,
+    "imdbID": "tt9362736",
+    "Title": "Die My Love",
+    "year": 2025,
+    "genre": "Drama",
+    "runtime": 119,
+    "rank": 6,
+    "slug": "die-my-love",
+    "sourceFile": "jenniferLawrenceMovieData.js"
   },
   {
     "tmdbId": 1049638,

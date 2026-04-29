@@ -1086,6 +1086,34 @@ export const COLLECTIONS = {
     relatedCollections: ['best-romance-movies-on-hulu', 'best-romance-movies-on-hbo-max', 'best-marriage-crisis-movies']
   },
 
+  // 🌟 TOP 10 JENNIFER LAWRENCE MOVIES
+  'top-10-jennifer-lawrence-movies': {
+    slug: 'top-10-jennifer-lawrence-movies',
+    title: 'Top 10 Jennifer Lawrence Movies',
+    stats: { averageRating: 7.0 },
+    badges: [
+      { label: "STAR POWER", desc: "Global icon" },
+      { label: "RANGE", desc: "Drama to comedy" },
+      { label: "ACCLAIMED", desc: "Award winning" }
+    ],
+    movies: ['tt1045658', 'tt1399683', 'tt5109784', 'tt2261597', 'tt1951264', 'tt9362736', 'tt1392170', 'tt2873282', 'tt14425042', 'tt1355644'],
+    relatedCollections: ['best-action-movies', 'best-drama-movies-on-hulu', 'best-comedy-movies-on-hulu']
+  },
+
+  // 🇮🇹 TOP 10 MONICA BELLUCCI MOVIES
+  'top-10-monica-bellucci-movies': {
+    slug: 'top-10-monica-bellucci-movies',
+    title: 'Top 10 Monica Bellucci Movies',
+    stats: { averageRating: 7.0 },
+    badges: [
+      { label: "CINEMATIC", desc: "Global allure" },
+      { label: "DRAMATIC", desc: "Fearless roles" },
+      { label: "ICONIC", desc: "European legend" }
+    ],
+    movies: ['tt0213847', 'tt0335345', 'tt0290673', 'tt2379713', 'tt0234215', 'tt0465602', 'tt0103874', 'tt0242653', 'tt0237534', 'tt0314353'],
+    relatedCollections: ['best-erotic-thriller-movies', 'best-action-movies', 'best-neo-noir-movies']
+  },
+
   // 🩸 BEST THRILLER MOVIES
   'best-thriller-movies': {
     slug: 'best-thriller-movies',
@@ -1147,6 +1175,8 @@ export const getDarkComedyCollection = () => COLLECTIONS['best-dark-comedy-movie
 export const getPtaCollection = () => COLLECTIONS['best-paul-thomas-anderson-movies'];
 export const getBasicInstinctCollection = () => COLLECTIONS['movies-like-basic-instinct'];
 export const getEnemiesToLoversCollection = () => COLLECTIONS['best-enemies-to-lovers-movies'];
+export const getJLawCollection = () => COLLECTIONS['top-10-jennifer-lawrence-movies'];
+export const getMonicaBellucciCollection = () => COLLECTIONS['top-10-monica-bellucci-movies'];
 export const getBestActionCollection = () => COLLECTIONS['best-action-movies'];
 // ============================================================================
 // 🧠 THE MASTER CANONICAL BRAIN

@@ -24,6 +24,12 @@ const COLORS = {
     borderLight: 'rgba(255, 255, 255, 0.1)',
 };
 
+const UNIVERSAL_FALLBACK_TAGLINES = [
+    "A cinematic journey that demands to be experienced.",
+    "Some stories leave a mark that never fades.",
+    "Discover a world where every single moment matters."
+];
+
 const getTMDBImage = (path, size = 'w1280') => path ? `https://image.tmdb.org/t/p/${size}${path}` : null;
 
 // ✅ YOUR MASTERPIECE HERO BANNER (Made Universal & SEO/CLS Optimized!)
@@ -44,7 +50,7 @@ const UniversalBanner = ({ movie }) => {
                     const trailer = data.videos?.results?.find(v => v.type === 'Trailer' && v.site === 'YouTube');
                     if (trailer) setTrailerKey(trailer.key);
                     // Fallback: If the cache missed the tagline, fetch it live
-                    if (!movie?.Tagline && data.tagline) setTagline(data.tagline);
+                    if ((!movie?.Tagline || UNIVERSAL_FALLBACK_TAGLINES.includes(movie?.Tagline)) && data.tagline) setTagline(data.tagline);
                 })
                 .catch(() => {});
         }
@@ -64,7 +70,7 @@ const UniversalBanner = ({ movie }) => {
     const handleCloseTrailer = () => { setShowTrailer(false); setHasClosedTrailer(true); if (timerRef.current) clearInterval(timerRef.current); };
 
     const unifiedHeroCSS = `
-    .unified-hero-row { display: flex; flex-direction: row; align-items: flex-start; width: 100%; max-width: 1280px; gap: 32px; margin: -60px auto 0 auto; padding: 0 32px; position: relative; z-index: 20; }
+    .unified-hero-row { display: flex; flex-direction: row; align-items: flex-start; width: 100%; max-width: 1280px; gap: 8px; margin: -60px auto 0 auto; padding: 0 32px; position: relative; z-index: 20; }
     .unified-hero-poster { width: 25%; max-width: 260px; min-width: 140px; border-radius: 16px; overflow: hidden; box-shadow: 0 12px 40px rgba(0,0,0,0.8); margin: 0; flex-shrink: 0; border: 1px solid rgba(255,255,255,0.1); }
     .unified-hero-poster img { width: 100%; height: auto; border-radius: 16px; display: block; }
     .unified-psych-card { background: #000000; border-radius: 16px; box-shadow: -8px 0 24px -8px rgba(234, 179, 8, 0.6), 0 8px 32px rgba(0,0,0,0.8); margin: 0; flex: 1; border-left: 4px solid #eab308; border-top: 1px solid rgba(255,255,255,0.05); border-right: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; flex-direction: column; justify-content: flex-start; padding: 24px; min-height: 140px; position: relative; }
@@ -75,7 +81,7 @@ const UniversalBanner = ({ movie }) => {
     .insight-text { display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
 
     @media (max-width: 767px) {
-      .unified-hero-row { width: 100vw; max-width: 100vw; gap: 10px; margin: 0; padding: 0 8px; }
+      .unified-hero-row { width: 100vw; max-width: 100vw; gap: 4px; margin: 0; padding: 0 8px; }
       .unified-hero-poster { width: 38vw; min-width: 106px; border-radius: 12px; box-shadow: 0 3px 14px #0007; border: none; }
       .unified-hero-poster img { border-radius: 12px; }
       .unified-psych-card { border-radius: 12px; padding: 10px 10px 10px 12px; min-height: 110px; box-shadow: -6px 0 16px -6px rgba(234, 179, 8, 0.8), 0 2px 12px #0006; border-top: none; border-right: none; border-bottom: none; }
@@ -209,7 +215,8 @@ const getCollectionProp = (slug) => {
         'best-drama-movies-on-peacock': 'fromPeacockDramaCollection',
         'best-thriller-movies-on-peacock': 'fromPeacockThrillerCollection',
         'best-movies-on-peacock': 'fromPeacockBestCollection',
-        'best-comedy-movies-on-peacock': 'fromPeacockComedyCollection'
+        'best-comedy-movies-on-peacock': 'fromPeacockComedyCollection',
+        'top-10-jennifer-lawrence-movies': 'fromJLawCollection'
     };
     return slugMap[slug] || null;
 };
@@ -391,7 +398,11 @@ export async function getStaticProps({ params }) {
         case 'best-heist-thriller-movies': collectionData = require('../../utils/heistThrillerMovieData'); break;
         case 'best-time-travel-movies': collectionData = require('../../utils/timeTravelMovieData'); break;
         case 'best-revenge-movies': collectionData = require('../../utils/revengeMovieData'); break;
+        case 'top-10-jennifer-lawrence-movies': collectionData = require('../../utils/jenniferLawrenceMovieData'); break;
+        case 'top-10-monica-bellucci-movies': collectionData = require('../../utils/monicaBellucciMovieData'); break;
     }
+
+    const assignedFallbackTagline = UNIVERSAL_FALLBACK_TAGLINES[(baseMovie.tmdbId || 0) % UNIVERSAL_FALLBACK_TAGLINES.length];
 
     const resolvedMovieInfo = collectionData?.COMPLETE_MOVIE_DATA?.[baseMovie.tmdbId] || null;
     const resolvedSensitiveScenes = collectionData?.SENSITIVE_TIMELINES?.[baseMovie.tmdbId]?.scenes || [];
@@ -444,7 +455,7 @@ export async function getStaticProps({ params }) {
         Poster: cacheData.poster_path ? `https://image.tmdb.org/t/p/w500${cacheData.poster_path}` : null,
         Plot: cacheData.overview || '',
         Rated: cacheData.ageRating || 'NR',
-        Tagline: cacheData.tagline || '',
+        Tagline: cacheData.tagline || assignedFallbackTagline,
         primaryCollectionSlug: primarySlug || null,
         primaryCollectionTitle: primaryTitle || null,
         resolvedMovieInfo,

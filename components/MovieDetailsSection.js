@@ -63,6 +63,8 @@ const DarkComedySEOFAQSection = dynamic(() => import('./DarkComedySEOFAQSection'
 const PtaSEOFAQSection = dynamic(() => import('./PtaSEOFAQSection'));
 const BasicInstinctSEOFAQSection = dynamic(() => import('./BasicInstinctSEOFAQSection'));
 const EnemiesToLoversSEOFAQSection = dynamic(() => import('./EnemiesToLoversSEOFAQSection'));
+const JenniferLawrenceSEOFAQSection = dynamic(() => import('./JenniferLawrenceSEOFAQSection'));
+const MonicaBellucciSEOFAQSection = dynamic(() => import('./MonicaBellucciSEOFAQSection'));
 
 const HuluActionSEOFAQSection = dynamic(() => import('./HuluActionSEOFAQSection'));
 const HuluRomanceSEOFAQSection = dynamic(() => import('./HuluRomanceSEOFAQSection'));
@@ -122,6 +124,8 @@ const MovieDetailsSection = React.memo(({
   fromPtaCollection,
   fromBasicInstinctCollection,
   fromEnemiesToLoversCollection,
+  fromJLawCollection,
+  fromMonicaBellucciCollection,
   fromParasiteCollection,
   fromDonnieDarkoCollection,
   fromFightClubCollection,
@@ -368,6 +372,8 @@ const MovieDetailsSection = React.memo(({
    : fromDarkComedyCollection ? movie.cynicismLevel ?? safeMovieInfo.cynicismLevel ?? 0
    : fromBasicInstinctCollection ? movie.eroticTension ?? safeMovieInfo.eroticTension ?? 0
    : fromEnemiesToLoversCollection ? movie.romanticChemistry ?? safeMovieInfo.romanticChemistry ?? 0
+   : fromJLawCollection ? movie.starPower ?? safeMovieInfo.starPower ?? 0
+   : fromMonicaBellucciCollection ? movie.cinematicAllure ?? safeMovieInfo.cinematicAllure ?? 0
    : fromParasiteCollection ? movie.classWarfareIndex ?? safeMovieInfo.classWarfareIndex ?? 0
    : fromMatrixCollection ? movie.cyberComplexity ?? safeMovieInfo.cyberComplexity ?? 0
    : fromOldboyCollection ? movie.revengeIntensity ?? safeMovieInfo.revengeIntensity ?? 0
@@ -538,6 +544,8 @@ const MovieDetailsSection = React.memo(({
    if (fromDarkComedyCollection) return 'CYNICISM INDEX';
    if (fromBasicInstinctCollection) return 'EROTIC TENSION INDEX';
    if (fromEnemiesToLoversCollection) return 'CHEMISTRY INDEX';
+   if (fromJLawCollection) return 'STAR POWER INDEX';
+   if (fromMonicaBellucciCollection) return 'CINEMATIC ALLURE INDEX';
    return 'MIND-BENDING INDEX';
  };
 
@@ -603,6 +611,8 @@ const MovieDetailsSection = React.memo(({
    if (fromPtaCollection) return 'AUTEUR EXECUTION LEVEL';
    if (fromBasicInstinctCollection) return 'PSYCHOLOGICAL MANIPULATION LEVEL';
    if (fromEnemiesToLoversCollection) return 'SLOW BURN TENSION LEVEL';
+   if (fromJLawCollection) return 'ACTING RANGE LEVEL';
+   if (fromMonicaBellucciCollection) return 'CINEMATIC ALLURE LEVEL';
    return 'COGNITIVE DISTORTION LEVEL';
  };
 
@@ -812,6 +822,16 @@ const MovieDetailsSection = React.memo(({
      if (scoreValue >= 80) return 'A deeply satisfying enemies-to-lovers arc filled with sharp banter and undeniable sparks.';
      return 'A fun, engaging romance with great friction and sweet moments.';
    }
+   if (fromJLawCollection) {
+     if (scoreValue >= 90) return 'A powerhouse performance showcasing unparalleled acting range and undeniable star quality.';
+     if (scoreValue >= 80) return 'A highly compelling and memorable performance defining her career.';
+     return 'A solid, engaging performance highlighting her unique talent.';
+   }
+   if (fromMonicaBellucciCollection) {
+     if (scoreValue >= 90) return 'A mesmerizing performance showcasing profound dramatic range and unforgettable cinematic allure.';
+     if (scoreValue >= 80) return 'A highly compelling and iconic performance defining her international career.';
+     return 'A captivating performance highlighting her unique presence and talent.';
+   }
    // Generic fallback
    if (scoreValue >= 90) return 'A transcendent masterpiece redefining narrative complexity.';
    if (scoreValue >= 80) return 'Sophisticated cinematic storytelling with advanced non-linear elements.';
@@ -868,6 +888,8 @@ const MovieDetailsSection = React.memo(({
    if (fromDarkComedyCollection) return 'border-zinc-500/40';
    if (fromBasicInstinctCollection) return 'border-rose-700/40';
    if (fromEnemiesToLoversCollection) return 'border-rose-500/40';
+   if (fromJLawCollection) return 'border-amber-500/40';
+   if (fromMonicaBellucciCollection) return 'border-red-800/40';
    return 'border-yellow-400/40';
  };
 
@@ -920,6 +942,8 @@ const MovieDetailsSection = React.memo(({
    if (fromDarkComedyCollection) return 'text-zinc-400';
    if (fromBasicInstinctCollection) return 'text-rose-600';
    if (fromEnemiesToLoversCollection) return 'text-rose-500';
+   if (fromJLawCollection) return 'text-amber-500';
+   if (fromMonicaBellucciCollection) return 'text-red-700';
    return 'text-yellow-400';
  };
 
@@ -1114,6 +1138,8 @@ const MovieDetailsSection = React.memo(({
         : fromPtaCollection ? <PtaSEOFAQSection movie={movie} />
         : fromBasicInstinctCollection ? <BasicInstinctSEOFAQSection movie={movie} />
         : fromEnemiesToLoversCollection ? <EnemiesToLoversSEOFAQSection movie={movie} />
+        : fromJLawCollection ? <JenniferLawrenceSEOFAQSection movie={movie} />
+        : fromMonicaBellucciCollection ? <MonicaBellucciSEOFAQSection movie={movie} />
         : fromDecadeCollection ? <DecadeSEOFAQSection movie={movie} />
         : fromPrestigeCollection ? <PrestigeSEOFAQSection movie={movie} />
         : fromSe7enCollection ? <Se7enSEOFAQSection movie={movie} />

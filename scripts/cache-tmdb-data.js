@@ -105,7 +105,8 @@ async function buildCache() {
                             director: data.credits?.crew?.find(c => c.job === 'Director')?.name || 'Unknown',
                             cast: data.credits?.cast?.slice(0, 3).map(c => c.name) || [], // Top 3 actors
                             budget: formatMoney(data.budget),
-                            revenue: formatMoney(data.revenue)
+                            revenue: formatMoney(data.revenue),
+                            tagline: data.tagline || '' // ✅ ADDED: Save the tagline
                         };
                         console.log('✅ Success');
                         newFetches++;

@@ -1956,6 +1956,52 @@ const getCollectionContent = () => {
                 text2: "Each film has been selected for its ability to make you swoon, laugh, and root for the couple from their very first argument."
             }
         };
+    } else if (collection.slug === 'top-10-jennifer-lawrence-movies') {
+        return {
+            badge: "Star Power Cinema",
+            title: "Top 10 Jennifer Lawrence Movies",
+            description: "Explore the top 10 best Jennifer Lawrence movies, showcasing her Oscar-winning dramatic range, iconic blockbuster roles, and comedic brilliance.",
+            selection: {
+                text1: "From her gritty breakout in 'Winter's Bone' to her commanding presence as Katniss Everdeen, these films represent the absolute best of Jennifer Lawrence.",
+                text2: "Each selection highlights her versatility—whether she's anchoring a massive sci-fi franchise, delivering an Academy Award-winning dramatic performance, or leading a raunchy comedy."
+            },
+            ranking: {
+                text: "Our Star Power index evaluates her acting range, the complexity of her character, and the lasting cultural impact of her performance in each film.",
+                points: [
+                    "Oscar-winning dramatic range",
+                    "Iconic blockbuster presence",
+                    "Comedic timing & physical humor",
+                    "Cultural & cinematic legacy"
+                ]
+            },
+            experience: {
+                text1: "Whether you're seeking intense psychological thrillers, laugh-out-loud comedies, or gripping survival action, this collection delivers pure cinematic star power.",
+                text2: "Each film has been selected to showcase why she remains one of the most compelling and defining actresses of her generation."
+            }
+        };
+    } else if (collection.slug === 'top-10-monica-bellucci-movies') {
+        return {
+            badge: "Cinematic Allure",
+            title: "Top 10 Monica Bellucci Movies",
+            description: "Explore the top 10 best Monica Bellucci movies, showcasing her legendary international cinema roles, profound dramatic range, and unparalleled cinematic allure.",
+            selection: {
+                text1: "From her deeply moving and tragic role in 'Malèna' to her fearless performance in 'Irréversible', these films represent the absolute best of Monica Bellucci.",
+                text2: "Each selection highlights her mesmerizing presence and versatility—whether anchoring a profound dramatic European film or commanding the screen in a massive Hollywood blockbuster."
+            },
+            ranking: {
+                text: "Our Cinematic Allure index evaluates her commanding screen presence, the emotional complexity of her characters, and the lasting international impact of her performances.",
+                points: [
+                    "Profound dramatic range",
+                    "Mesmerizing cinematic allure",
+                    "Iconic international cinema legacy",
+                    "Fearless character portrayals"
+                ]
+            },
+            experience: {
+                text1: "Whether you're seeking devastating European dramas, high-octane action, or intense psychological thrillers, this collection delivers pure international star power.",
+                text2: "Each film has been selected to showcase why she remains one of the most compelling and iconic actresses in global cinema."
+            }
+        };
     } else {
         return {
             badge: collection.title,
@@ -2341,6 +2387,16 @@ subtitle: "While everyone searches Netflix, these classics hide in plain sight. 
             title: "10 Best Enemies to Lovers Movies",
             subtitle: "Electric chemistry, sharp banter, and the most satisfying slow-burn romances in cinema"
         };
+    } else if (collection.slug === 'top-10-jennifer-lawrence-movies') {
+        return {
+            title: "Top 10 Jennifer Lawrence Movies",
+            subtitle: "From Oscar-winning dramas to blockbuster franchises—her absolute best performances"
+        };
+    } else if (collection.slug === 'top-10-monica-bellucci-movies') {
+        return {
+            title: "Top 10 Monica Bellucci Movies",
+            subtitle: "From timeless international masterpieces to blockbuster epics—her absolute best performances"
+        };
 
     } else if (collection.slug === 'movies-like-interstellar') {
         return {
@@ -2554,6 +2610,16 @@ const getLoaderContent = () => {
         return {
             title: "Loading Best Enemies to Lovers Movies",
             description: "Curating the most electric slow-burn romances with community reviews and ratings"
+        };
+    } else if (collection?.slug === 'top-10-jennifer-lawrence-movies') {
+        return {
+            title: "Loading Jennifer Lawrence Collection",
+            description: "Curating the best performances from her Oscar-winning career with community reviews"
+        };
+    } else if (collection?.slug === 'top-10-monica-bellucci-movies') {
+        return {
+            title: "Loading Monica Bellucci Collection",
+            description: "Curating the best performances from her legendary international career with community reviews"
         };
 
 } else if (collection?.slug === 'movies-like-donnie-darko') {
@@ -3097,6 +3163,24 @@ const getStaticMetaContent = () => {
             ogTitle: "10 Best Enemies to Lovers Movies: Electric Chemistry",
             twitterTitle: "The 10 Best Enemies to Lovers Movies You Need to Watch",
             progressText: `of Top ${movies.length} Enemies to Lovers Movies`
+        };
+    } else if (collection.slug === 'top-10-jennifer-lawrence-movies') {
+        return {
+            title: "Top 10 Jennifer Lawrence Movies (Ranked by Star Power)",
+            description: "The definitive ranking of the best Jennifer Lawrence movies. From The Hunger Games to Silver Linings Playbook. Includes exact Timestamps & Parents Guide.",
+            keywords: "best jennifer lawrence movies, top 10 jennifer lawrence, the hunger games, silver linings playbook, jlaw movies",
+            ogTitle: "10 Best Jennifer Lawrence Movies: Essential Viewing",
+            twitterTitle: "The 10 Best Jennifer Lawrence Movies You Need to Watch",
+            progressText: `of Top ${movies.length} Jennifer Lawrence Movies`
+        };
+    } else if (collection.slug === 'top-10-monica-bellucci-movies') {
+        return {
+            title: "Top 10 Monica Bellucci Movies (Ranked by Cinematic Allure)",
+            description: "The definitive ranking of the best Monica Bellucci movies. From Malèna to The Matrix Reloaded. Includes exact Timestamps & Parents Guide.",
+            keywords: "best monica bellucci movies, top 10 monica bellucci, malena, irreversible, italian cinema, monica bellucci films",
+            ogTitle: "10 Best Monica Bellucci Movies: Essential Viewing",
+            twitterTitle: "The 10 Best Monica Bellucci Movies You Need to Watch",
+            progressText: `of Top ${movies.length} Monica Bellucci Movies`
         };
 
 
@@ -3727,6 +3811,8 @@ const getStaticMetaContent = () => {
             sessionStorage.removeItem('fromPtaCollection');
             sessionStorage.removeItem('fromBasicInstinctCollection');
             sessionStorage.removeItem('fromEnemiesToLoversCollection');
+            sessionStorage.removeItem('fromJLawCollection');
+            sessionStorage.removeItem('fromMonicaBellucciCollection');
 
             // Set appropriate collection flag âœ…
             if (collection.slug === 'movies-like-inception') {
@@ -3885,6 +3971,10 @@ const getStaticMetaContent = () => {
                 sessionStorage.setItem('fromBasicInstinctCollection', 'true');
             } else if (collection.slug === 'best-enemies-to-lovers-movies') {
                 sessionStorage.setItem('fromEnemiesToLoversCollection', 'true');
+            } else if (collection.slug === 'top-10-jennifer-lawrence-movies') {
+                sessionStorage.setItem('fromJLawCollection', 'true');
+            } else if (collection.slug === 'top-10-monica-bellucci-movies') {
+                sessionStorage.setItem('fromMonicaBellucciCollection', 'true');
             }
         }
     };
@@ -4586,6 +4676,8 @@ export async function getStaticProps({ params }) {
         case 'best-paul-thomas-anderson-movies': movieDatabase = require('../../utils/ptaMoviesData').COMPLETE_MOVIE_DATABASE; break;
         case 'movies-like-basic-instinct': movieDatabase = require('../../utils/basicInstinctMovieData').COMPLETE_MOVIE_DATABASE; break;
         case 'best-enemies-to-lovers-movies': movieDatabase = require('../../utils/enemiesToLoversMovieData').COMPLETE_MOVIE_DATABASE; break;
+        case 'top-10-jennifer-lawrence-movies': movieDatabase = require('../../utils/jenniferLawrenceMovieData').COMPLETE_MOVIE_DATABASE; break;
+        case 'top-10-monica-bellucci-movies': movieDatabase = require('../../utils/monicaBellucciMovieData').COMPLETE_MOVIE_DATABASE; break;
         case 'best-action-movies-on-hulu': movieDatabase = require('../../utils/huluActionMovieData').COMPLETE_MOVIE_DATABASE; break;
         case 'best-romance-movies-on-hulu': movieDatabase = require('../../utils/huluRomanceMovieData').COMPLETE_MOVIE_DATABASE; break;
         case 'best-horror-movies-on-hulu': movieDatabase = require('../../utils/huluHorrorMovieData').COMPLETE_MOVIE_DATABASE; break;

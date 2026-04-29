@@ -708,7 +708,18 @@
     <priority>0.8</priority>
 </url>
 
-
+<url>
+    <loc>https://filmiway.com/collection/top-10-jennifer-lawrence-movies</loc>
+    <lastmod>2026-04-15T12:00:00+05:30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+</url>
+<url>
+    <loc>https://filmiway.com/collection/top-10-monica-bellucci-movies</loc>
+    <lastmod>2026-04-15T12:00:00+05:30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+</url>
 
 
 </urlset>
