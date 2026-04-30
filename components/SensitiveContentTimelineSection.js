@@ -28,6 +28,8 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
     const [hasVoted, setHasVoted] = useState(false);
     const [isVoting, setIsVoting] = useState(false);
 
+    const movieId = movie?.slug || movie?.tmdbId?.toString();
+
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (infoRef.current && !infoRef.current.contains(event.target)) {
@@ -37,9 +39,9 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
         document.addEventListener('mousedown', handleClickOutside);
         document.addEventListener('touchstart', handleClickOutside);
         
-        // 🔥 Check if user already voted for this movie using their browser storage
-        if (typeof window !== 'undefined' && movie?.tmdbId) {
-            const previouslyVoted = localStorage.getItem(`filmiway_voted_${movie.tmdbId}`);
+        // 🔥 Check if user already voted for this movie using the slug as the key
+        if (typeof window !== 'undefined' && movieId) {
+            const previouslyVoted = localStorage.getItem(`filmiway_voted_${movieId}`);
             if (previouslyVoted) {
                 setHasVoted(true);
             }
@@ -47,9 +49,9 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
 
         // 🔥 Fetch REAL vote count from Firebase on mount
         const fetchVotes = async () => {
-            if (!movie?.tmdbId) return;
+            if (!movieId) return;
             try {
-                const voteDoc = await getDoc(doc(db, 'helpful_votes', movie.tmdbId.toString()));
+                const voteDoc = await getDoc(doc(db, 'helpful_votes', movieId));
                 if (voteDoc.exists()) {
                     setHelpfulCount(voteDoc.data().count || 0);
                 }
@@ -63,11 +65,11 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
             document.removeEventListener('mousedown', handleClickOutside);
             document.removeEventListener('touchstart', handleClickOutside);
         };
-    }, [movie?.tmdbId]);
+    }, [movie?.slug, movie?.tmdbId]);
 
     // 🔥 Handle REAL Firebase vote submission
     const handleVote = async () => {
-        if (hasVoted || isVoting || !movie?.tmdbId) return;
+        if (hasVoted || isVoting || !movieId) return;
         setIsVoting(true);
         
         // Optimistic UI update (feels instant to the user)
@@ -76,11 +78,11 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
 
         // 🔥 Save to localStorage so it remembers even if they refresh the page
         if (typeof window !== 'undefined') {
-            localStorage.setItem(`filmiway_voted_${movie.tmdbId}`, 'true');
+            localStorage.setItem(`filmiway_voted_${movieId}`, 'true');
         }
 
         try {
-            const voteRef = doc(db, 'helpful_votes', movie.tmdbId.toString());
+            const voteRef = doc(db, 'helpful_votes', movieId);
             const voteDoc = await getDoc(voteRef);
             
             if (voteDoc.exists()) {
@@ -94,7 +96,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
             setHasVoted(false);
             setHelpfulCount(prev => prev - 1);
             if (typeof window !== 'undefined') {
-                localStorage.removeItem(`filmiway_voted_${movie.tmdbId}`);
+                localStorage.removeItem(`filmiway_voted_${movieId}`);
             }
         } finally {
             setIsVoting(false);
@@ -249,9 +251,9 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
         >
             <div className="flex flex-col mb-5 sm:mb-6 border-b border-white/5 pb-4 sm:pb-5 gap-3 sm:gap-4">
                 <div className="space-y-3 w-full">
-                    <h1 className="text-xl sm:text-2xl font-light text-red-200 flex items-center gap-2.5 sm:gap-3 tracking-wide">
-                        <Shield className="text-red-500 w-5 h-5 sm:w-6 sm:h-6 shrink-0" />
-                        <span className="truncate">{movie?.Title} Parents Guide & Skip Timestamps</span>
+                    <h1 className="text-xl sm:text-2xl font-light text-red-200 flex items-start sm:items-center gap-2.5 sm:gap-3 tracking-wide">
+                        <Shield className="text-red-500 w-5 h-5 sm:w-6 sm:h-6 shrink-0 mt-0.5 sm:mt-0" />
+                        <span className="leading-snug">{movie?.Title} Parents Guide & Skip Timestamps</span>
                         
                         <div className="relative flex items-center ml-1 shrink-0" ref={infoRef}>
                             <button
@@ -267,7 +269,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                             >
                                 <Info 
                                     size={16} 
-                                    className={`transition-colors sm:w-[18px] sm:h-[18px] ${showInfo ? 'text-gray-300' : 'text-gray-500 hover:text-gray-300'}`} 
+                                    className={`transition-colors sm:w-[18px] sm:h-[18px] mt-1 sm:mt-0 ${showInfo ? 'text-gray-300' : 'text-gray-500 hover:text-gray-300'}`} 
                                 />
                             </button>
                             
@@ -404,35 +406,42 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                     })}
                 </div>
 
-                <div className="bg-black/40 p-3 sm:p-4 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 border-t border-white/5">
-                    <div className="flex items-center gap-2 text-[9px] sm:text-[10px] text-gray-500 uppercase tracking-[0.2em]">
-                        <Shield size={12} className="text-emerald-500/50 shrink-0" />
+                {/* 🔥 ENHANCED ENGAGEMENT FOOTER: Designed for maximum CTR */}
+                <div className="bg-black/60 p-4 sm:p-5 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-white/10 rounded-b-xl">
+                    <div className="flex items-center gap-2 text-[10px] sm:text-xs text-gray-400 uppercase tracking-[0.15em]">
+                        <Shield size={14} className="text-emerald-500/70 shrink-0" />
                         <span className="truncate">Manually Verified • {currentRuntime}</span>
                     </div>
                     
-                    <div className="flex items-center gap-4">
-                        {/* 🔥 THRESHOLD LOGIC: Only show text if real count > 5 */}
-                        {helpfulCount > 5 && (
-                            <span className="text-xs text-gray-400 hidden sm:inline-block">
-                                <strong className="text-gray-200 font-medium">{helpfulCount} people</strong> found this guide helpful.
-                            </span>
-                        )}
+                    <div className="flex items-center justify-between w-full sm:w-auto gap-4 sm:gap-6">
+                        {/* Social Proof / Prompt */}
+                        <div className="text-xs sm:text-sm text-gray-400">
+                            {hasVoted ? (
+                                <span className="text-emerald-400/90 font-medium">Thanks for your feedback!</span>
+                            ) : helpfulCount > 5 ? (
+                                <span><strong className="text-gray-200">{helpfulCount}</strong> found this helpful. You?</span>
+                            ) : (
+                                <span>Was this guide helpful?</span>
+                            )}
+                        </div>
                         
-                        <button 
+                        <motion.button 
+                            whileHover={!hasVoted && !isVoting ? { scale: 1.05 } : {}}
+                            whileTap={!hasVoted && !isVoting ? { scale: 0.95 } : {}}
                             onClick={handleVote}
                             disabled={hasVoted || isVoting}
-                            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md transition-all text-xs font-medium border ${
+                            className={`group flex items-center gap-2 px-5 py-2.5 rounded-full transition-all duration-300 text-xs sm:text-sm font-bold border ${
                                 hasVoted 
-                                ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400 cursor-default' 
-                                : 'bg-transparent hover:bg-white/5 border-white/10 text-gray-400 hover:text-gray-200 cursor-pointer'
+                                ? 'bg-emerald-500/15 border-emerald-500/30 text-emerald-400 cursor-default shadow-[0_0_15px_rgba(16,185,129,0.15)]' 
+                                : 'bg-gradient-to-r from-yellow-400 to-amber-400 hover:from-yellow-300 hover:to-amber-300 text-gray-900 border-yellow-400 cursor-pointer shadow-[0_0_20px_rgba(234,179,8,0.4)] hover:shadow-[0_0_30px_rgba(234,179,8,0.6)]'
                             }`}
                         >
                             {hasVoted ? (
-                                <><CheckCircle size={14} /> Thank you!</>
+                                <><CheckCircle size={16} className="text-emerald-400" /> Helpful!</>
                             ) : (
-                                <><ThumbsUp size={14} className="opacity-70" /> Yes, this was helpful</>
+                                <><ThumbsUp size={16} className={`transition-transform duration-300 text-gray-900 ${isVoting ? 'animate-bounce' : 'group-hover:-translate-y-0.5 group-hover:scale-110'}`} /> Yes, it was!</>
                             )}
-                        </button>
+                        </motion.button>
                     </div>
                 </div>
             </div>
