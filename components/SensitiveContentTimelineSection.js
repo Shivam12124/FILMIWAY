@@ -3,7 +3,6 @@ import React, { useMemo, useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Shield, CheckCircle, Clock, AlertOctagon, Info, Film, FastForward, Eye, Heart, AlertTriangle, ThumbsUp, ThumbsDown } from 'lucide-react';
 
-import masterTimestamps from '../utils/masterTimestamps.json';
 // Firebase imports for real data tracking
 import { doc, getDoc, setDoc, updateDoc, increment } from 'firebase/firestore';
 import { db } from '../firebaseConfig';
@@ -104,7 +103,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
     };
 
     // 🔥 SINGLE SOURCE OF TRUTH: Read from props first so individual collection data files work!
-    const actualScenes = (sensitiveScenes && sensitiveScenes.length > 0) ? sensitiveScenes : (masterTimestamps[String(movie?.tmdbId)]?.scenes || []);
+    const actualScenes = sensitiveScenes || [];
 
     let sensitiveData = null;
     let contentTypes = [];

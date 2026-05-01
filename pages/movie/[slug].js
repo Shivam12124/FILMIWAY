@@ -94,7 +94,7 @@ const UniversalBanner = ({ movie }) => {
     `;
 
     return (
-      <motion.div className="relative w-[100vw] left-[50%] right-[50%] -ml-[50vw] -mr-[50vw] overflow-hidden mb-6 sm:mb-8" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8 }}>
+      <motion.div className="relative w-[100vw] left-[50%] right-[50%] -ml-[50vw] -mr-[50vw] overflow-hidden mb-6 sm:mb-8" initial={{ opacity: 1 }} animate={{ opacity: 1 }} transition={{ duration: 0.8 }}>
         <style>{unifiedHeroCSS}</style>
         <div className="relative h-[300px] sm:h-[400px] lg:h-[600px]">
           <AnimatePresence mode="wait">
@@ -104,7 +104,7 @@ const UniversalBanner = ({ movie }) => {
                  <button onClick={handleCloseTrailer} className="absolute top-4 right-4 sm:top-6 sm:right-6 p-2 sm:p-3 rounded-full backdrop-blur-md shadow-xl transition-all duration-300 hover:scale-110 z-50" style={{ backgroundColor: `${COLORS.bgPrimary}DD`, color: COLORS.textPrimary }}><X className="w-4 h-4 sm:w-5 sm:h-5" /></button>
                </motion.div>
             ) : (
-              <motion.div key="image" className="absolute inset-0 overflow-hidden" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
+              <motion.div key="image" className="absolute inset-0 overflow-hidden" initial={{ opacity: 1 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
                 <div className="relative w-full h-full">
                   {bannerImage ? <Image src={bannerImage} alt={`${movie?.Title} banner`} fill priority sizes="(max-width: 768px) 100vw, 1280px" quality={80} className="object-cover object-[center_25%]" /> : <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: '#000000' }}><Film className="w-16 h-16 sm:w-24 sm:h-24" style={{ color: COLORS.textMuted }} /></div>}
                   <div className="absolute inset-0 z-10" style={{ background: `linear-gradient(to bottom, transparent 0%, transparent 50%, #000000 90%, #000000 100%), linear-gradient(to right, #000000 0%, transparent 15%, transparent 85%, #000000 100%)` }} />
