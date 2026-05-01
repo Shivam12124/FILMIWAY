@@ -218,6 +218,13 @@ const MovieDetailsSection = React.memo(({
  const year = movie.Year || movie.year || '20XX';
  const rating = safeMovieInfo.rating || movie.imdbRating || 7.5;
 
+ // ⚡ HIGH PERFORMANCE DEFERRAL: Delays heavy charts and Firebase comments until CPU is idle
+ const [loadHeavyComponents, setLoadHeavyComponents] = useState(false);
+ useEffect(() => {
+   const timer = setTimeout(() => setLoadHeavyComponents(true), 4000);
+   return () => clearTimeout(timer);
+ }, []);
+
  // 🔥🔥🔥 AUTO-FETCH LOGIC FOR ALL MOVIE DATA INCLUDING SYNOPSIS AND RUNTIME 🔥🔥🔥
  const [dynamicMovieData, setDynamicMovieData] = useState({
    director: safeMovieInfo.director || movie.Director || 'Unknown Director',
@@ -1054,8 +1061,8 @@ const MovieDetailsSection = React.memo(({
       {/* 🔥 THE BOUNCE INTERCEPTOR: FAN FAVORITES 🔥 */}
       <FanFavoritesSection currentMovieSlug={movie.slug} />
 
-      {/* ✅ SEO FIX: Only render graphs if data exists! No placeholder data shown to users. */}
-      {safeMovieInfo?.scenes && safeMovieInfo.scenes.length > 0 && (
+      {/* ⚡ DEFERRED: Only render graphs after initial paint to save mobile CPU */}
+      {loadHeavyComponents && safeMovieInfo?.scenes && safeMovieInfo.scenes.length > 0 && (
         <EnhancedIntensityGraph 
             scenes={safeMovieInfo.scenes} 
             dominantColor={safeMovieInfo.dominantColor} 
@@ -1063,8 +1070,8 @@ const MovieDetailsSection = React.memo(({
         />
       )}
       
-      {/* ✅ SEO FIX: Only render DNA if data exists! No placeholder data shown to users. */}
-      {safeMovieInfo?.dna && Object.keys(safeMovieInfo.dna).length > 0 && (
+      {/* ⚡ DEFERRED: Only render DNA after initial paint to save mobile CPU */}
+      {loadHeavyComponents && safeMovieInfo?.dna && Object.keys(safeMovieInfo.dna).length > 0 && (
         <StrategicDNAHelix 
             dna={safeMovieInfo.dna} 
             dominantColor={safeMovieInfo.dominantColor} 

@@ -56,11 +56,14 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                 console.error("Error fetching helpful votes:", error);
             }
         };
-        fetchVotes();
+        
+        // ⚡ DEFER FIREBASE IMPORT BY 5 SECONDS TO PREVENT MAIN THREAD BLOCKING
+        const timer = setTimeout(() => fetchVotes(), 5000);
 
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
             document.removeEventListener('touchstart', handleClickOutside);
+            clearTimeout(timer);
         };
     }, [movie?.slug, movie?.tmdbId]);
 

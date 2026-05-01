@@ -1,6 +1,5 @@
 // components/EnhancedIntensityGraph.js - TOOLTIP FIXED ✅
 import React from 'react';
-import { motion } from 'framer-motion';
 import { ResponsiveContainer, AreaChart, Area, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
 import { TrendingUp, HelpCircle } from 'lucide-react';
 
@@ -21,11 +20,8 @@ const EnhancedIntensityGraph = React.memo(({ scenes, dominantColor }) => {
     };
 
     return (
-        <motion.div 
+        <div 
             className="mb-8 sm:mb-12 bg-gradient-to-br from-gray-800/40 to-gray-900/60 rounded-xl border border-gray-700/50 p-4 sm:p-8 shadow-2xl backdrop-blur-sm relative"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
             style={{ overflow: 'visible' }}
         >
             <div className="absolute top-2 left-2 sm:top-4 sm:left-4 w-3 h-3 sm:w-5 sm:h-5 border-t-2 border-l-2 border-yellow-400/40"></div>
@@ -33,31 +29,20 @@ const EnhancedIntensityGraph = React.memo(({ scenes, dominantColor }) => {
             <div className="absolute bottom-2 left-2 sm:bottom-4 sm:left-4 w-3 h-3 sm:w-5 sm:h-5 border-b-2 border-l-2 border-yellow-400/40"></div>
             <div className="absolute bottom-2 right-2 sm:bottom-4 sm:right-4 w-3 h-3 sm:w-5 sm:h-5 border-b-2 border-r-2 border-yellow-400/40"></div>
             
-            <motion.div 
+            <div 
                 className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 sm:mb-8 gap-2 sm:gap-0 relative"
-                initial={{ opacity: 0, x: -40 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.4 }}
             >
                 <h4 className="text-lg sm:text-2xl font-light text-gray-100 flex items-center gap-2 sm:gap-4 tracking-wide">
-                    <motion.div 
-                        animate={{ rotate: 360 }} 
-                        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                        className="text-xl sm:text-3xl"
-                    >
+                    <div className="text-xl sm:text-3xl">
                         📊
-                    </motion.div>
+                    </div>
                     INTENSITY GRAPH 
                     
                     {/* 💡 TOOLTIP - FIXED POSITIONING */}
                     <div className="group relative inline-flex items-center">
-                        <motion.div
-                            className="cursor-help"
-                            whileHover={{ scale: 1.15 }}
-                            transition={{ duration: 0.2 }}
-                        >
+                        <div className="cursor-help hover:scale-110 transition-transform duration-200">
                             <HelpCircle className="w-4 h-4 text-gray-400 hover:text-yellow-400 transition-colors" />
-                        </motion.div>
+                        </div>
                         
                         {/* Tooltip popup - FIXED: Changed positioning and z-index */}
                         <div 
@@ -96,7 +81,7 @@ const EnhancedIntensityGraph = React.memo(({ scenes, dominantColor }) => {
                     <TrendingUp size={12} className="sm:w-4 sm:h-4" />
                     Narrative Analysis
                 </div>
-            </motion.div>
+            </div>
 
             <div className="h-48 sm:h-64 w-full">
                 <ResponsiveContainer width="100%" height="100%">
@@ -137,12 +122,9 @@ const EnhancedIntensityGraph = React.memo(({ scenes, dominantColor }) => {
             {/* Peak Labels */}
             <div className="mt-4 sm:mt-6 flex flex-wrap gap-2 sm:gap-3 justify-center">
                 {scenes.map((scene, index) => (
-                    <motion.div
+                <div
                         key={index}
                         className="flex items-center gap-2 px-2 py-1 sm:px-3 sm:py-1 bg-gray-700/50 rounded-full text-xs border border-gray-600/50"
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: index * 0.1 + 1.5 }}
                     >
                         <div 
                             className="w-2 h-2 sm:w-3 sm:h-3 rounded-full border border-white/50" 
@@ -150,10 +132,10 @@ const EnhancedIntensityGraph = React.memo(({ scenes, dominantColor }) => {
                         />
                         <span className="text-gray-300 font-medium">{scene.label}</span>
                         <span className="text-gray-400">({scene.intensity}%)</span>
-                    </motion.div>
+                </div>
                 ))}
             </div>
-        </motion.div>
+        </div>
     );
 });
 

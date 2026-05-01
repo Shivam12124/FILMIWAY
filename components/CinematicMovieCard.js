@@ -4,13 +4,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { Crown } from 'lucide-react';
 
-// ✅ CORRECT IMPORT: Standard default import. 
-import TMDBMoviePoster from './TMDBMoviePoster';
-
-import { COMPLETE_MOVIE_DATA, STRATEGIC_QUOTES } from '../utils/movieData';
-import { COMPLETE_MOVIE_DATA as SURVIVAL_DATA, STRATEGIC_QUOTES as SURVIVAL_QUOTES } from '../utils/survivalMovieData';
-
-const CinematicMovieCard = React.memo(({ movie, rank, isActive, fromSurvivalCollection }) => {
+const CinematicMovieCard = React.memo(({ movie, rank, isActive }) => {
     const [isHovered, setIsHovered] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
 
@@ -21,25 +15,15 @@ const CinematicMovieCard = React.memo(({ movie, rank, isActive, fromSurvivalColl
         }
     }, []);
 
-    // ⚡ PERFORMANCE: Memoize data lookups
-    const movieInfo = useMemo(() => {
-        const sourceData = fromSurvivalCollection ? SURVIVAL_DATA : COMPLETE_MOVIE_DATA;
-        return (sourceData && movie?.tmdbId && sourceData[movie.tmdbId]) || {};
-    }, [movie?.tmdbId, fromSurvivalCollection]);
-
-    const quote = useMemo(() => {
-        const sourceQuotes = fromSurvivalCollection ? SURVIVAL_QUOTES : STRATEGIC_QUOTES;
-        return (sourceQuotes && movie?.tmdbId && sourceQuotes[movie.tmdbId]) || null;
-    }, [movie?.tmdbId, fromSurvivalCollection]);
-
     // ⚡ OPTIMIZATION: Reduced desktop poster size from w780 to w500 to cut load times in half
     const posterQuality = isMobile ? "w342" : "w500"; 
+    const posterUrl = movie.Poster || (movie.poster_path ? `https://image.tmdb.org/t/p/${posterQuality}${movie.poster_path}` : "https://via.placeholder.com/342x513/111827/4b5563?text=No+Image");
 
     const hoverText = useMemo(() => {
-        if (quote) return quote;
-        if (movieInfo.synopsis) return movieInfo.synopsis.substring(0, 80) + '...';
+        if (movie.quote) return movie.quote;
+        if (movie.synopsis || movie.Plot) return (movie.synopsis || movie.Plot).substring(0, 80) + '...';
         return null;
-    }, [quote, movieInfo.synopsis]);
+    }, [movie.quote, movie.synopsis, movie.Plot]);
 
     return (
         <motion.article 
@@ -61,7 +45,7 @@ const CinematicMovieCard = React.memo(({ movie, rank, isActive, fromSurvivalColl
                         scale: 1.03, 
                         rotateY: 5, 
                         rotateX: 2,
-                        boxShadow: `0 25px 50px -12px rgba(0,0,0,0.7), 0 0 40px ${movieInfo.dominantColor || '#ca8a04'}30` 
+                    boxShadow: `0 25px 50px -12px rgba(0,0,0,0.7), 0 0 40px ${movie.dominantColor || '#ca8a04'}30` 
                     } : {}}
                     whileTap={{ scale: 0.96 }}
                     
@@ -72,17 +56,15 @@ const CinematicMovieCard = React.memo(({ movie, rank, isActive, fromSurvivalColl
                 >
                     {/* Poster Image */}
                     <div className="w-full h-full bg-gray-800">
-                        {TMDBMoviePoster ? (
-                            <TMDBMoviePoster 
-                                movie={movie} 
-                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
-                                posterSize={posterQuality} 
-                                priority={rank <= 4}
-                                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                            />
-                        ) : (
-                            <div className="w-full h-full bg-gray-800 animate-pulse" /> 
-                        )}
+                    <Image 
+                        src={posterUrl}
+                        alt={movie.Title || movie.title || 'Movie Poster'}
+                        fill
+                        className="object-cover transition-transform duration-700 group-hover:scale-105" 
+                        priority={rank <= 4}
+                        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                        unoptimized
+                    />
                     </div>
 
                     {/* Gradient Overlay (Provides dark backing so text is readable) */}
@@ -108,11 +90,11 @@ const CinematicMovieCard = React.memo(({ movie, rank, isActive, fromSurvivalColl
                     
                     {/* 🧠 COMPLEXITY BADGE */}
                     <div className="absolute top-3 right-3 sm:top-4 sm:right-4 z-20">
-                        {movieInfo.complexityLevel && (
+                        {movie.complexityLevel && (
                             <motion.div 
                                 className="px-3 py-1.5 bg-black/60 backdrop-blur-md border border-white/10 rounded-lg text-[10px] sm:text-xs font-medium tracking-widest uppercase text-white/90 shadow-lg"
                             >
-                                {movieInfo.complexityLevel}
+                                {movie.complexityLevel}
                             </motion.div>
                         )}
                     </div>

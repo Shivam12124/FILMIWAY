@@ -125,6 +125,7 @@ const Header = () => {
                 height={60} 
                 className="w-full h-auto object-contain" 
                 priority
+                unoptimized
               />
             </div>
           </Link>

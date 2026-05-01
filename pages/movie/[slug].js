@@ -8,7 +8,6 @@ import { ChevronLeft, Play, X, Film, Star } from 'lucide-react';
 import Header from '../../components/Header';
 import MovieDetailsSection from '../../components/MovieDetailsSection';
 import CinematicBackground from '../../components/CinematicBackground';
-import { getPrimaryCollectionForMovie, COLLECTIONS } from '../../data/collections';
 
 // ✅ THEME COLORS FOR UNIVERSAL BANNER
 const COLORS = {
@@ -107,7 +106,7 @@ const UniversalBanner = ({ movie }) => {
             ) : (
               <motion.div key="image" className="absolute inset-0 overflow-hidden" initial={{ opacity: 1 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
                 <div className="relative w-full h-full">
-                  {bannerImage ? <Image src={bannerImage} alt={`${movie?.Title} banner`} fill priority sizes="(max-width: 768px) 100vw, 1280px" quality={80} className="object-cover object-[center_25%]" /> : <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: '#000000' }}><Film className="w-16 h-16 sm:w-24 sm:h-24" style={{ color: COLORS.textMuted }} /></div>}
+                  {bannerImage ? <Image src={bannerImage} alt={`${movie?.Title} banner`} fill priority sizes="(max-width: 768px) 100vw, 1280px" quality={80} className="object-cover object-[center_25%]" unoptimized /> : <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: '#000000' }}><Film className="w-16 h-16 sm:w-24 sm:h-24" style={{ color: COLORS.textMuted }} /></div>}
                   <div className="absolute inset-0 z-10" style={{ background: `linear-gradient(to bottom, transparent 0%, transparent 50%, #000000 90%, #000000 100%), linear-gradient(to right, #000000 0%, transparent 15%, transparent 85%, #000000 100%)` }} />
                 </div>
                 {trailerKey && (
@@ -123,7 +122,7 @@ const UniversalBanner = ({ movie }) => {
         {/* UNIFIED LAYOUT */}
         <div className="unified-hero-row">
             <div className="unified-hero-poster">
-                {posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} width={320} height={480} className="w-full h-auto" priority /> : <div style={{ background: '#000000', width: '100%', height: '150px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Film style={{ color: COLORS.textMuted }} /></div>}
+                {posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} width={320} height={480} className="w-full h-auto" priority unoptimized /> : <div style={{ background: '#000000', width: '100%', height: '150px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Film style={{ color: COLORS.textMuted }} /></div>}
             </div>
             <div className="unified-psych-card">
               <div className="unified-psych-row"><Star className="unified-psych-icon" /><div><h2 className="unified-psych-title">At a Glance</h2></div></div>
@@ -316,6 +315,7 @@ export async function getStaticProps({ params }) {
     const masterDatabase = require('../../utils/masterDatabase.json');
     const tmdbCache = require('../../data/tmdbCache.json');
     const baseMovie = masterDatabase.find((m) => m.slug === params.slug) || null;
+    const { getPrimaryCollectionForMovie, COLLECTIONS } = require('../../data/collections');
     if (!baseMovie) return { notFound: true };
     
     const cacheData = tmdbCache[baseMovie.imdbID] || {};
