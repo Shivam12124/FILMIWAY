@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { Crown } from 'lucide-react';
 
 const CinematicMovieCard = React.memo(({ movie, rank, isActive }) => {

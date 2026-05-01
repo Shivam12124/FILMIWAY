@@ -4741,10 +4741,12 @@ export async function getStaticProps({ params }) {
     const movies = collection.movies
         .map(imdbId => {
             const masterDatabase = require('../../utils/masterDatabase.json');
+            const tmdbCache = require('../../data/tmdbCache.json');
             const movie = movieArray.find(m => m.imdbID === imdbId);
             if (!movie) return null;
 
             const masterMovie = masterDatabase.find(m => m.imdbID === movie.imdbID);
+            const cachedMovie = tmdbCache[movie.imdbID] || {};
 
             return {
                 imdbID: movie.imdbID || '',
@@ -4755,16 +4757,17 @@ export async function getStaticProps({ params }) {
                 Genre: movie.Genre || movie.genre || 'Thriller',
                 Runtime: movie.Runtime || movie.runtime || 120,
                 
-                // ✅ FIX 1: Pass the raw path so the component can use different sizes
-                poster_path: movie.poster_path || null,
-
-                // ✅ FIX 2: Force 'Poster' to use High-Res TMDB URL if available (w780 is crisp)
-                Poster: movie.poster_path 
-                    ? `https://image.tmdb.org/t/p/w780${movie.poster_path}` 
+                poster_path: cachedMovie.poster_path || movie.poster_path || null,
+                Poster: cachedMovie.poster_path 
+                    ? `https://image.tmdb.org/t/p/w780${cachedMovie.poster_path}` 
                     : (movie.Poster || movie.poster || ''),
 
                 Plot: movie.Plot || movie.plot || movie.synopsis || '',
-                rating: movie.rating || 0
+                rating: movie.rating || 0,
+                complexityLevel: movie.complexityLevel || null,
+                dominantColor: movie.dominantColor || null,
+                quote: movie.quote || null,
+                synopsis: movie.synopsis || null
             };
         })
         .filter(Boolean)
