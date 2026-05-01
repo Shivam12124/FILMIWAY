@@ -7,8 +7,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, Play, X, Film, Star } from 'lucide-react';
 import Header from '../../components/Header';
 import MovieDetailsSection from '../../components/MovieDetailsSection';
-import masterDatabase from '../../utils/masterDatabase.json';
-import tmdbCache from '../../data/tmdbCache.json';
 import CinematicBackground from '../../components/CinematicBackground';
 import { getPrimaryCollectionForMovie, COLLECTIONS } from '../../data/collections';
 
@@ -44,15 +42,18 @@ const UniversalBanner = ({ movie }) => {
     // Dynamically fetch the trailer just for this component so it doesn't slow down the server!
     useEffect(() => {
         if (movie?.tmdbId) {
-            fetch(`https://api.themoviedb.org/3/movie/${movie.tmdbId}?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&append_to_response=videos`)
-                .then(res => res.json())
-                .then(data => {
-                    const trailer = data.videos?.results?.find(v => v.type === 'Trailer' && v.site === 'YouTube');
-                    if (trailer) setTrailerKey(trailer.key);
-                    // Fallback: If the cache missed the tagline, fetch it live
-                    if ((!movie?.Tagline || UNIVERSAL_FALLBACK_TAGLINES.includes(movie?.Tagline)) && data.tagline) setTagline(data.tagline);
-                })
-                .catch(() => {});
+            const timer = setTimeout(() => {
+                fetch(`https://api.themoviedb.org/3/movie/${movie.tmdbId}?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&append_to_response=videos`)
+                    .then(res => res.json())
+                    .then(data => {
+                        const trailer = data.videos?.results?.find(v => v.type === 'Trailer' && v.site === 'YouTube');
+                        if (trailer) setTrailerKey(trailer.key);
+                        // Fallback: If the cache missed the tagline, fetch it live
+                        if ((!movie?.Tagline || UNIVERSAL_FALLBACK_TAGLINES.includes(movie?.Tagline)) && data.tagline) setTagline(data.tagline);
+                    })
+                    .catch(() => {});
+            }, 2500); // ⚡ Defer fetch by 2.5s to keep main thread completely clear for LCP
+            return () => clearTimeout(timer);
         }
     }, [movie]);
 
@@ -106,7 +107,7 @@ const UniversalBanner = ({ movie }) => {
             ) : (
               <motion.div key="image" className="absolute inset-0 overflow-hidden" initial={{ opacity: 1 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
                 <div className="relative w-full h-full">
-                  {bannerImage ? <Image src={bannerImage} alt={`${movie?.Title} banner`} fill priority sizes="(max-width: 768px) 100vw, 1280px" quality={80} className="object-cover object-[center_25%]" /> : <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: '#000000' }}><Film className="w-16 h-16 sm:w-24 sm:h-24" style={{ color: COLORS.textMuted }} /></div>}
+                  {bannerImage ? <Image src={bannerImage} alt={`${movie?.Title} banner`} fill priority sizes="(max-width: 768px) 100vw, 1280px" quality={80} className="object-cover object-[center_25%]" unoptimized /> : <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: '#000000' }}><Film className="w-16 h-16 sm:w-24 sm:h-24" style={{ color: COLORS.textMuted }} /></div>}
                   <div className="absolute inset-0 z-10" style={{ background: `linear-gradient(to bottom, transparent 0%, transparent 50%, #000000 90%, #000000 100%), linear-gradient(to right, #000000 0%, transparent 15%, transparent 85%, #000000 100%)` }} />
                 </div>
                 {trailerKey && (
@@ -307,10 +308,13 @@ export default function UniversalMoviePage({ movie }) {
 }
 
 export async function getStaticPaths() {
+    const masterDatabase = require('../../utils/masterDatabase.json');
     return { paths: masterDatabase.map((m) => ({ params: { slug: m.slug } })), fallback: false };
 }
 
 export async function getStaticProps({ params }) {
+    const masterDatabase = require('../../utils/masterDatabase.json');
+    const tmdbCache = require('../../data/tmdbCache.json');
     const baseMovie = masterDatabase.find((m) => m.slug === params.slug) || null;
     if (!baseMovie) return { notFound: true };
     
