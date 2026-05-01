@@ -7,11 +7,11 @@ import { Users, Film, BookOpen, Star } from 'lucide-react';
 // ==================== COMPONENT IMPORTS ==================== 
 // ⚡ OPTIMIZED: Dynamic Code Splitting drops payload by ~2.5MB
 import dynamic from 'next/dynamic';
-import EnhancedIntensityGraph from './EnhancedIntensityGraph';
-import StrategicDNAHelix from './StrategicDNAHelix';
 import SensitiveContentTimelineSection from './SensitiveContentTimelineSection';
 import EnhancedWhereToWatchSection from './EnhancedWhereToWatchSection';
-import RealCommentsRatingSection from './RealCommentsRatingSection';
+const EnhancedIntensityGraph = dynamic(() => import('./EnhancedIntensityGraph'), { ssr: false });
+const StrategicDNAHelix = dynamic(() => import('./StrategicDNAHelix'), { ssr: false });
+const RealCommentsRatingSection = dynamic(() => import('./RealCommentsRatingSection'), { ssr: false });
 
 // FAQ Sections
 const SEOFAQSection = dynamic(() => import('./SEOFAQSection'));
@@ -93,7 +93,7 @@ const PeacockDramaSEOFAQSection = dynamic(() => import('./PeacockDramaSEOFAQSect
 const PeacockThrillerSEOFAQSection = dynamic(() => import('./PeacockThrillerSEOFAQSection'));
 const PeacockBestSEOFAQSection = dynamic(() => import('./PeacockBestSEOFAQSection'));
 const PeacockComedySEOFAQSection = dynamic(() => import('./PeacockComedySEOFAQSection'));
-import FanFavoritesSection from './FanFavoritesSection';
+const FanFavoritesSection = dynamic(() => import('./FanFavoritesSection'), { ssr: false });
 
 const MovieDetailsSection = React.memo(({
   movie,

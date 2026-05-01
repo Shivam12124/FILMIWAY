@@ -3,10 +3,6 @@ import React, { useMemo, useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Shield, CheckCircle, Clock, AlertOctagon, Info, Film, FastForward, Eye, Heart, AlertTriangle, ThumbsUp, ThumbsDown } from 'lucide-react';
 
-// Firebase imports for real data tracking
-import { doc, getDoc, setDoc, updateDoc, increment } from 'firebase/firestore';
-import { db } from '../firebaseConfig';
-
 const COLORS = {
     warningBg: 'rgba(127, 29, 29, 0.15)',
     warningBorder: 'rgba(248, 113, 113, 0.2)',
@@ -50,6 +46,8 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
         const fetchVotes = async () => {
             if (!movieId) return;
             try {
+                const { doc, getDoc } = await import('firebase/firestore');
+                const { db } = await import('../firebaseConfig');
                 const voteDoc = await getDoc(doc(db, 'helpful_votes', movieId));
                 if (voteDoc.exists()) {
                     setHelpfulCount(voteDoc.data().count || 0);
@@ -81,6 +79,8 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
         }
 
         try {
+            const { doc, getDoc, setDoc, updateDoc, increment } = await import('firebase/firestore');
+            const { db } = await import('../firebaseConfig');
             const voteRef = doc(db, 'helpful_votes', movieId);
             const voteDoc = await getDoc(voteRef);
             

@@ -80,7 +80,7 @@ export const COMPLETE_MOVIE_DATA = {
         scenes: [
             { time: 15, intensity: 35, label: "The Dawn of Man", color: "#b45309" },
             { time: 45, intensity: 30, label: "The Space Waltz", color: "#0ea5e9" },
-            { time: 90, intensity: 85, label: "HAL’s Betrayal", color: "#dc2626" },
+            { time: 90, intensity: 86, label: "HAL’s Betrayal", color: "#dc2626" },
             { time: 120, intensity: 75, label: "The Stargate", color: "#4f46e5" },
             { time: 140, intensity: 92, label: "The Star Child", color: "#ffffff" }
         ],

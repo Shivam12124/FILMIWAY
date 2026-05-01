@@ -39,29 +39,6 @@ export default function App({ Component, pageProps }) {
   const [enhancedProps, setEnhancedProps] = useState(pageProps);
   const [isInteracted, setIsInteracted] = useState(false);
 
-  // ⚡ DELAY HEAVY SCRIPTS UNTIL USER INTERACTION (Improves Lighthouse TTI & TBT by 90%)
-  useEffect(() => {
-    const handleInteraction = () => {
-      setIsInteracted(true);
-      ['scroll', 'mousemove', 'touchstart', 'keydown', 'click'].forEach(event =>
-        window.removeEventListener(event, handleInteraction)
-      );
-    };
-
-    ['scroll', 'mousemove', 'touchstart', 'keydown', 'click'].forEach(event =>
-      window.addEventListener(event, handleInteraction, { once: true, passive: true })
-    );
-
-    const timeoutId = setTimeout(() => setIsInteracted(true), 5000); // Fallback
-
-    return () => {
-      ['scroll', 'mousemove', 'touchstart', 'keydown', 'click'].forEach(event =>
-        window.removeEventListener(event, handleInteraction)
-      );
-      clearTimeout(timeoutId);
-    };
-  }, []);
-
   useEffect(() => {
     console.log('🎬 Filmiway - SEO Optimized Version Loaded');
   }, []);
@@ -88,32 +65,36 @@ export default function App({ Component, pageProps }) {
     // If this is a movie detail page AND TMDB failed during the build (Rate Limit)
     const tmdbId = pageProps?.movie?.tmdbId || pageProps?.movie?.tmdbID;
     const imdbId = pageProps?.movie?.imdbID || pageProps?.movie?.imdbId;
-    const missingData = !pageProps?.tmdbData || !pageProps?.tmdbData?.poster_path;
     
+    // 🔥 THE FIX: Check if we ALREADY have the poster from the [slug].js props to prevent infinite re-rendering!
+    const missingData = (!pageProps?.tmdbData?.poster_path) && (!pageProps?.movie?.Poster) && (!pageProps?.movie?.poster_path);
+
     if (missingData && imdbId) {
       const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY;
       if (apiKey) {
-        // 🔥 THE ULTIMATE CURE: If data is missing, we completely ignore the potentially 
-        // broken tmdbId in the database and hunt it down fresh using the infallible IMDb ID!
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 2000); // Kill after 2 seconds
+        // ⚡ DEFER FALLBACK API CALL SO MAIN THREAD REMAINS IDLE
+        const deferTimer = setTimeout(() => {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 2000); // Kill after 2 seconds
 
-        fetch(`https://api.themoviedb.org/3/find/${imdbId}?api_key=${apiKey}&external_source=imdb_id`, { signal: controller.signal })
-          .then(res => res.json())
-          .then(findData => {
-            if (findData?.movie_results?.[0]?.id) {
-              const correctTmdbId = findData.movie_results[0].id;
-              fetch(`https://api.themoviedb.org/3/movie/${correctTmdbId}?api_key=${apiKey}&append_to_response=videos,images,release_dates`, { signal: controller.signal })
-                .then(res => res.json())
-                .then(fullData => {
-                  if (fullData?.id) {
-                    setEnhancedProps(prev => ({ ...prev, tmdbData: fullData }));
-                  }
-                }).catch(err => console.warn("Background TMDB Fetch Skipped"));
-            }
-          })
-          .catch(err => console.warn("TMDB connection timeout or blocked"))
-          .finally(() => clearTimeout(timeoutId));
+            fetch(`https://api.themoviedb.org/3/find/${imdbId}?api_key=${apiKey}&external_source=imdb_id`, { signal: controller.signal })
+              .then(res => res.json())
+              .then(findData => {
+                if (findData?.movie_results?.[0]?.id) {
+                  const correctTmdbId = findData.movie_results[0].id;
+                  fetch(`https://api.themoviedb.org/3/movie/${correctTmdbId}?api_key=${apiKey}&append_to_response=videos,images,release_dates`, { signal: controller.signal })
+                    .then(res => res.json())
+                    .then(fullData => {
+                      if (fullData?.id) {
+                        setEnhancedProps(prev => ({ ...prev, tmdbData: fullData }));
+                      }
+                    }).catch(err => console.warn("Background TMDB Fetch Skipped"));
+                }
+              })
+              .catch(err => console.warn("TMDB connection timeout or blocked"))
+              .finally(() => clearTimeout(timeoutId));
+        }, 4000);
+        return () => clearTimeout(deferTimer);
       }
     }
   }, [pageProps]);
@@ -160,40 +141,34 @@ export default function App({ Component, pageProps }) {
         <link rel="manifest" href="/manifest.json" />
       </Head>
 
-      {isInteracted && (
-        <>
-          {/* ⚡ OPTIMIZED: Google Analytics 4 (GA4) - Delayed until interaction */}
-          <Script
-            strategy="afterInteractive"
-            src={`https://www.googletagmanager.com/gtag/js?id=G-EDS2VZ5HP1`}
-          />
-          <Script
-            id="google-analytics"
-            strategy="afterInteractive"
-            dangerouslySetInnerHTML={{
-              __html: `
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', 'G-EDS2VZ5HP1', {
-                  page_path: window.location.pathname,
-                });
-              `,
-            }}
-          />
-
-          {/* ⚡ OPTIMIZED: Load Clarity Analytics without blocking the main thread */}
-          <Script id="microsoft-clarity" strategy="afterInteractive" dangerouslySetInnerHTML={{
-            __html: `
-              (function(c,l,a,r,i,t,y){
-                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-              })(window, document, "clarity", "script", "u1n9jixukw");
-            `
-          }} />
-        </>
-      )}
+      {/* ⚡ OPTIMIZED: Native Next.js lazyOnload completely bypasses Lighthouse main-thread blocking */}
+      <Script
+        strategy="lazyOnload"
+        src={`https://www.googletagmanager.com/gtag/js?id=G-EDS2VZ5HP1`}
+      />
+      <Script
+        id="google-analytics"
+        strategy="lazyOnload"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-EDS2VZ5HP1', {
+              page_path: window.location.pathname,
+            });
+          `,
+        }}
+      />
+      <Script id="microsoft-clarity" strategy="lazyOnload" dangerouslySetInnerHTML={{
+        __html: `
+          (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+          })(window, document, "clarity", "script", "u1n9jixukw");
+        `
+      }} />
 
       {/* ✅ Wrap Component in Main with Font Variables */}
       <main className={`${bebas.variable} ${montserrat.variable} ${inter.variable} ${playfair.variable} font-sans`}>

@@ -44,6 +44,7 @@ const UniversalBanner = ({ movie }) => {
     // Dynamically fetch the trailer just for this component so it doesn't slow down the server!
     useEffect(() => {
         if (movie?.tmdbId) {
+            const timer = setTimeout(() => {
                 fetch(`https://api.themoviedb.org/3/movie/${movie.tmdbId}?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&append_to_response=videos`)
                     .then(res => res.json())
                     .then(data => {
@@ -53,6 +54,8 @@ const UniversalBanner = ({ movie }) => {
                         if ((!movie?.Tagline || UNIVERSAL_FALLBACK_TAGLINES.includes(movie?.Tagline)) && data.tagline) setTagline(data.tagline);
                     })
                     .catch(() => {});
+            }, 3000); // ⚡ Defer trailer fetch by 3s to keep mobile CPU completely clear for LCP
+            return () => clearTimeout(timer);
         }
     }, [movie]);
 
@@ -104,9 +107,9 @@ const UniversalBanner = ({ movie }) => {
                  <button onClick={handleCloseTrailer} className="absolute top-4 right-4 sm:top-6 sm:right-6 p-2 sm:p-3 rounded-full backdrop-blur-md shadow-xl transition-all duration-300 hover:scale-110 z-50" style={{ backgroundColor: `${COLORS.bgPrimary}DD`, color: COLORS.textPrimary }}><X className="w-4 h-4 sm:w-5 sm:h-5" /></button>
                </motion.div>
             ) : (
-              <motion.div key="image" className="absolute inset-0 overflow-hidden" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
+              <motion.div key="image" className="absolute inset-0 overflow-hidden" initial={{ opacity: 1 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
                 <div className="relative w-full h-full">
-                  {bannerImage ? <Image src={bannerImage} alt={`${movie?.Title} banner`} fill priority sizes="(max-width: 768px) 100vw, 1280px" quality={80} className="object-cover object-[center_25%]" /> : <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: '#000000' }}><Film className="w-16 h-16 sm:w-24 sm:h-24" style={{ color: COLORS.textMuted }} /></div>}
+                  {bannerImage ? <Image src={bannerImage} alt={`${movie?.Title} banner`} fill priority sizes="(max-width: 768px) 100vw, 1280px" quality={80} className="object-cover object-[center_25%]" unoptimized /> : <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: '#000000' }}><Film className="w-16 h-16 sm:w-24 sm:h-24" style={{ color: COLORS.textMuted }} /></div>}
                   <div className="absolute inset-0 z-10" style={{ background: `linear-gradient(to bottom, transparent 0%, transparent 50%, #000000 90%, #000000 100%), linear-gradient(to right, #000000 0%, transparent 15%, transparent 85%, #000000 100%)` }} />
                 </div>
                 {trailerKey && (
@@ -307,13 +310,10 @@ export default function UniversalMoviePage({ movie }) {
 }
 
 export async function getStaticPaths() {
-    const masterDatabase = masterDatabase;
     return { paths: masterDatabase.map((m) => ({ params: { slug: m.slug } })), fallback: false };
 }
 
 export async function getStaticProps({ params }) {
-    const masterDatabase = masterDatabase;
-    const tmdbCache = tmdbCache;
     const baseMovie = masterDatabase.find((m) => m.slug === params.slug) || null;
     if (!baseMovie) return { notFound: true };
     
