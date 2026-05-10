@@ -59,7 +59,9 @@ export const SENSITIVE_TIMELINES = {
             { start: "0:58:45", end: "0:59:00", type: "Sexual content", severity: "Moderate" },
             { start: "1:06:55", end: "1:07:35", type: "Partial nudity", severity: "Moderate" },
             { start: "1:54:29", end: "1:54:32", type: "Sex(Glimpse)", severity: "Mild" }
-        ] 
+        ,
+            { start: "", end: "", type: "Profanity", severity: "High", description: "Approximately 78 uses of the F-word and pervasive strong profanity throughout." },
+            { start: "", end: "", type: "Violence & Gore", severity: "High", description: "Features brutal bare-knuckle fighting with detailed facial injuries and blood. Includes chemical burns, a fatal head wound, and a self-inflicted gunshot wound." }] 
     },
 
     // 7. The Sixth Sense
@@ -325,6 +327,8 @@ export const PRESTIGE_COLLECTION_FAQS = {
         { question: "Did Söze really kill his own family?", answer: "According to the myth, yes. When Hungarian mobsters held his family hostage, he killed them himself to prove he had no weaknesses, which built his terrifying, untouchable reputation." }
     ],
     'Fight Club': [
+        { question: "Does Fight Club have profanity?", answer: "According to our Parents Guide, Fight Club has a High severity rating for profanity. Approximately 78 uses of the F-word and pervasive strong profanity throughout." },
+        { question: "Does Fight Club have Violence & Gore scenes?", answer: "Our Parents Guide rates the Violence & Gore in Fight Club as High. Features brutal bare-knuckle fighting with detailed facial injuries and blood. Includes chemical burns, a fatal head wound, and a self-inflicted gunshot wound." },
         { question: "Are the narrator and Tyler Durden the same person?", answer: "Yes. Tyler Durden is a dissociative identity created by the narrator's insomnia and profound dissatisfaction with his consumerist, emasculated life. Tyler represents everything the narrator wishes he could be." },
         { question: "Did the narrator really shoot himself?", answer: "Yes, but he shoots himself through the cheek. Because Tyler is a projection of his mind, the narrator realizes that 'killing' himself is the only way to kill Tyler. The physical trauma snaps him back to reality." },
         { question: "What is Project Mayhem?", answer: "It is the evolution of Fight Club from a localized support group for angry men into an anti-capitalist domestic terrorist organization, aimed at erasing debt records by destroying credit card company headquarters." },
@@ -563,7 +567,8 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
         );
     }
 
-    const faqSchema = {
+    
+const faqSchema = {
         '@context': 'https://schema.org',
         '@type': 'FAQPage',
         'name': `Parents Guide and FAQ for ${movie.Title}`,
@@ -658,5 +663,6 @@ Manually verified frame by frame by Filmiway editors for the ${finalRuntime} run
         );
     }
 
-    return staticFaqs;
+    
+return staticFaqs;
 };

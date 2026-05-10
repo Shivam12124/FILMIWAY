@@ -50,7 +50,9 @@ export const SENSITIVE_TIMELINES = {
             { start: "1:33:50", end: "1:33:55", type: "Nudity", severity: "Mild" },
             { start: "1:45:00", end: "1:45:24", type: "Sexual content & Nudity", severity: "High" },
             { start: "2:00:50", end: "2:03:25", type: "Sex & Nudity", severity: "High" }
-        ]
+        ,
+            { start: "", end: "", type: "Profanity", severity: "High", description: "Approximately 40 uses of the F-word and frequent crude sexual references." },
+            { start: "", end: "", type: "Violence & Gore", severity: "High", description: "Features graphic ice-pick murders with detailed shots of blood and physical injury. Contains themes of sexual violence and assault." }]
     },
     // 2. Eyes Wide Shut
     345: { 
@@ -84,7 +86,9 @@ export const SENSITIVE_TIMELINES = {
             { start: "2:21:10", end: "2:23:15", type: "Sexual Content", severity: "High" },
             { start: "2:32:10", end: "2:32:20", type: "Partial nudity (Woman)", severity: "Moderate" },
             { start: "2:40:10", end: "2:42:20", type: "Sexual Content & Nudity (Woman)", severity: "High" }
-        ]
+        ,
+            { start: "", end: "", type: "Profanity", severity: "High", description: "Frequent use of strong profanity and sexually explicit language throughout." },
+            { start: "", end: "", type: "Violence & Gore", severity: "Moderate", description: "Contains sequences involving drugging, child abuse, and suicide themes. Includes references to sexual sadism and graphic mutilation." }]
     },
     // 4. Lust, Caution
     4588: { 
@@ -93,7 +97,9 @@ export const SENSITIVE_TIMELINES = {
             { start: "1:32:35", end: "1:34:26", type: "Sex & Nudity", severity: "High" },
             { start: "1:40:20", end: "1:43:36", type: "Sex & Nudity", severity: "High" }, 
             { start: "1:52:50", end: "1:55:32", type: "Sex & Nudity", severity: "High" }
-        ]
+        ,
+            { start: "", end: "", type: "Profanity", severity: "Moderate", description: "Minimal use of strong language (approximately 1 use of the F-word)." },
+            { start: "", end: "", type: "Violence & Gore", severity: "Moderate", description: "Contains graphic wartime brutality, including an execution by firing squad and a brutal stabbing. Includes themes of sexual assault and predatory behavior." }]
     },
     // 5. Wild Things
     617: { 
@@ -342,6 +348,8 @@ export const COMPLETE_MOVIE_DATA = {
 // 🎬 EROTIC THRILLER FAQS - (100% SEO SAFE, CRITICAL ANALYSIS ONLY)
 export const EROTIC_THRILLER_MOVIE_FAQS = {
     'Basic Instinct': [
+        { question: "Does Basic Instinct have profanity?", answer: "According to our Parents Guide, Basic Instinct has a High severity rating for profanity. Approximately 40 uses of the F-word and frequent crude sexual references." },
+        { question: "Does Basic Instinct have Violence & Gore scenes?", answer: "Our Parents Guide rates the Violence & Gore in Basic Instinct as High. Features graphic ice-pick murders with detailed shots of blood and physical injury. Contains themes of sexual violence and assault." },
         { question: "How does the film utilize the 'Femme Fatale' archetype?", answer: "Catherine Tramell represents the ultimate evolution of the classic film noir antagonist. Instead of hiding her guilt, she uses her prime suspect status as a psychological weapon, creating a dynamic where the detective's fascination overrides his sense of duty." },
         { question: "What is the significance of the ice pick?", answer: "The ice pick serves as a recurring motif of violence hiding in plain sight. It represents a domestic, unassuming object weaponized for brutal efficiency, reinforcing the film's theme that the greatest danger often looks pristine and elegant." },
         { question: "Is the ending meant to be ambiguous?", answer: "Yes. Director Paul Verhoeven intentionally designed the final shot to leave the audience questioning the truth. It confirms that the protagonist has accepted his fate, preferring the danger of the illusion over the safety of reality." },
@@ -354,12 +362,16 @@ export const EROTIC_THRILLER_MOVIE_FAQS = {
         { question: "Is the film truly about a secret society?", answer: "While the secret society is the visual centerpiece, Kubrick uses it primarily as a mirror. The true horror of the film is a husband's realization that he does not truly know his wife's inner life, making the domestic tension far scarier than the cult." }
     ],
     'The Handmaiden': [
+        { question: "Does The Handmaiden have profanity?", answer: "According to our Parents Guide, The Handmaiden has a High severity rating for profanity. Frequent use of strong profanity and sexually explicit language throughout." },
+        { question: "Does The Handmaiden have Violence & Gore scenes?", answer: "Our Parents Guide rates the Violence & Gore in The Handmaiden as Moderate. Contains sequences involving drugging, child abuse, and suicide themes. Includes references to sexual sadism and graphic mutilation." },
         { question: "Why is the film split into three parts?", answer: "Director Park Chan-wook uses the three-act structure to repeatedly pull the rug out from under the audience. Each part forces the viewer to re-evaluate who is manipulating whom, turning the narrative into an intricate puzzle box." },
         { question: "How does the setting reflect the themes?", answer: "Set in 1930s Japanese-occupied Korea, the setting acts as a macro-level mirror for the plot. The fusion of traditional Korean architecture with Western/Japanese additions symbolizes the loss of identity and the pervasive theme of colonization and control." },
         { question: "What is the meaning of the destroyed books?", answer: "The destruction of the rare book collection is an act of reclaiming agency. The books were tools of oppression used by the uncle to control his niece. By destroying them, the protagonists physically dismantle the system of their abuse." },
         { question: "Is Count Fujiwara a mastermind or a pawn?", answer: "He begins the film believing he is the mastermind, relying on arrogant assumptions about class and gender. His ultimate downfall occurs because he underestimates the intelligence and loyalty of the women he planned to exploit." }
     ],
     'Lust, Caution': [
+        { question: "Does Lust, Caution have profanity?", answer: "According to our Parents Guide, Lust, Caution has a Moderate severity rating for profanity. Minimal use of strong language (approximately 1 use of the F-word)." },
+        { question: "Does Lust, Caution have Violence & Gore scenes?", answer: "Our Parents Guide rates the Violence & Gore in Lust, Caution as Moderate. Contains graphic wartime brutality, including an execution by firing squad and a brutal stabbing. Includes themes of sexual assault and predatory behavior." },
         { question: "How does the film blend espionage with psychological tension?", answer: "Ang Lee directs the film less like a traditional spy thriller and more like a high-stakes psychological drama. Every glance, every mahjong game, and every dinner conversation is layered with the lethal threat of discovery." },
         { question: "What makes Mr. Yee such a dangerous target?", answer: "As a secret police chief, Mr. Yee is a professional interrogator who operates in a state of constant, violent paranoia. The protagonist's challenge is not just gaining his trust, but surviving the intense, brutal scrutiny he applies to everyone around him." },
         { question: "Why does Wong Chia Chi hesitate at the jewelry store?", answer: "The gift of the ring represents the only moment of genuine vulnerability Mr. Yee ever shows. In a world defined by fake identities and wartime cruelty, that brief flash of authentic connection breaks her resolve as a spy." },
@@ -614,7 +626,8 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
         );
     }
 
-    const faqSchema = {
+    
+const faqSchema = {
         '@context': 'https://schema.org',
         '@type': 'FAQPage',
         'name': `Parents Guide and FAQ for ${movie.Title}`,
@@ -709,5 +722,6 @@ Manually verified frame by frame by Filmiway editors for the ${finalRuntime} run
         );
     }
 
-    return staticFaqs;
+    
+return staticFaqs;
 };

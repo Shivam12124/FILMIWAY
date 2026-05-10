@@ -54,7 +54,9 @@ export const SENSITIVE_TIMELINES = {
         scenes: [
             { start: "0:24:03", end: "0:24:42", type: "Sex", severity: "Moderate" },
             { start: "0:52:40", end: "0:53:40", type: "Sex", severity: "Moderate" }
-        ] 
+        ,
+            { start: "", end: "", type: "Profanity", severity: "High", description: "Approximately 78 uses of the F-word and pervasive strong profanity throughout." },
+            { start: "", end: "", type: "Violence & Gore", severity: "High", description: "Features brutal bare-knuckle fighting with detailed facial injuries and blood. Includes chemical burns, a fatal head wound, and a self-inflicted gunshot wound." }] 
     },
 
     // ID: 51608
@@ -88,7 +90,9 @@ export const SENSITIVE_TIMELINES = {
             { start: '02:21:10', end: '02:23:15', type: 'Sexual Content', severity: 'High' },
             { start: '02:32:10', end: '02:32:20', type: 'Partial nudity (woman)', severity: 'Moderate' },
             { start: '02:40:10', end: '02:42:20', type: 'Sexual Content & Nudity (women)', severity: 'High' }
-        ] 
+        ,
+            { start: "", end: "", type: "Profanity", severity: "High", description: "Frequent use of strong profanity and sexually explicit language throughout." },
+            { start: "", end: "", type: "Violence & Gore", severity: "Moderate", description: "Contains sequences involving drugging, child abuse, and suicide themes. Includes references to sexual sadism and graphic mutilation." }] 
     },
 
     // ID: 54186
@@ -463,7 +467,9 @@ export const OLDBOY_MOVIE_FAQS = {
   ],
 
   'The Handmaiden': [
-    { 
+    { question: "Does The Handmaiden have profanity?", answer: "According to our Parents Guide, The Handmaiden has a High severity rating for profanity. Frequent use of strong profanity and sexually explicit language throughout." },
+        { question: "Does The Handmaiden have Violence & Gore scenes?", answer: "Our Parents Guide rates the Violence & Gore in The Handmaiden as Moderate. Contains sequences involving drugging, child abuse, and suicide themes. Includes references to sexual sadism and graphic mutilation." },
+        { 
       question: "Is this Park Chan-wook's most sensual cinematic achievement?", 
       answer: "Erotic deception transforms into genuine love across revolutionary four-timeline structure. Initial con-artist manipulation evolves into authentic connection defying genre expectations. Victorian novel adaptation Koreanized brilliantly. Sensuality serves narrative complexity rather than exploitation, elevating erotic thriller into high art territory." 
     },
@@ -727,7 +733,8 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
         );
     }
 
-    const faqSchema = {
+    
+const faqSchema = {
         '@context': 'https://schema.org',
         '@type': 'FAQPage',
         'name': `Parents Guide and FAQ for ${movie.Title}`,
@@ -822,5 +829,6 @@ Manually verified frame by frame by Filmiway editors for the ${finalRuntime} run
         );
     }
 
-    return staticFaqs;
+    
+return staticFaqs;
 };

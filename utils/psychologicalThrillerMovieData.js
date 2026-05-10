@@ -44,7 +44,9 @@ export const SENSITIVE_TIMELINES = {
             { start: "0:58:45", end: "0:59:00", type: "Sexual content", severity: "Moderate" },
             { start: "1:06:55", end: "1:07:35", type: "Partial nudity", severity: "Moderate" },
             { start: "1:54:29", end: "1:54:32", type: "Sex(Glimpse)", severity: "Mild" }
-        ]
+        ,
+            { start: "", end: "", type: "Profanity", severity: "High", description: "Approximately 78 uses of the F-word and pervasive strong profanity throughout." },
+            { start: "", end: "", type: "Violence & Gore", severity: "High", description: "Features brutal bare-knuckle fighting with detailed facial injuries and blood. Includes chemical burns, a fatal head wound, and a self-inflicted gunshot wound." }]
     },
     77: { scenes: [] },
     807: { scenes: [] }, // Se7en
@@ -234,6 +236,8 @@ export const PSYCH_THRILLER_FAQS = {
         { question: "Why doesn't Clarice quit?", answer: "Clarice is driven by the 'screaming of the lambs'—her childhood trauma of failing to save a slaughterhouse lamb. Saving Catherine Martin is her way of silencing those screams. She endures Lecter's probing and Bill's terror because her need for redemption is stronger than her fear." }
     ],
     'Fight Club': [
+        { question: "Does Fight Club have profanity?", answer: "According to our Parents Guide, Fight Club has a High severity rating for profanity. Approximately 78 uses of the F-word and pervasive strong profanity throughout." },
+        { question: "Does Fight Club have Violence & Gore scenes?", answer: "Our Parents Guide rates the Violence & Gore in Fight Club as High. Features brutal bare-knuckle fighting with detailed facial injuries and blood. Includes chemical burns, a fatal head wound, and a self-inflicted gunshot wound." },
         { question: "What is the true meaning of 'Project Mayhem'?", answer: "Project Mayhem represents the chaotic, destructive reaction to consumerist numbness. It isn't a solution; it's a tantrum. The film argues that stripping away civilization doesn't create freedom—it creates a fascist cult. Tyler Durden is not a hero; he is the dangerous charisma of extremism." },
         { question: "Why does the Narrator shoot himself?", answer: "Shooting himself through the cheek is the ultimate act of reclaiming control. It kills Tyler (an idea in his head) without killing himself. It symbolizes the death of his ego and his dependence on the toxic masculine fantasy Tyler represented. He is finally 'awake.'" },
         { question: "Is Marla Singer real?", answer: "Yes, Marla is the catalyst. She ruins the Narrator's fake support group therapy because her presence reflects his own lie back at him. She is the chaotic reality he tries to escape, and ultimately, the human connection he needs to accept to heal." },
@@ -499,7 +503,8 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
         );
     }
 
-    const faqSchema = {
+    
+const faqSchema = {
         '@context': 'https://schema.org',
         '@type': 'FAQPage',
         'name': `Parents Guide and FAQ for ${movie.Title}`,
@@ -594,7 +599,8 @@ Manually verified frame by frame by Filmiway editors for the ${finalRuntime} run
         );
     }
 
-    return staticFaqs;
+    
+return staticFaqs;
 };
 
 // Build object map by tmdbId

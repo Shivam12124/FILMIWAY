@@ -75,7 +75,9 @@ export const SENSITIVE_TIMELINES = {
             { start: "45:00", end: "45:10", type: "Sex", severity: "High" },
             { start: "2:04:20", end: "2:05:34", type: "Sex & Nudity(Man)", severity: "High" },
             { start: "2:12:30", end: "2:13:45", type: "Nudity(Man & Woman)", severity: "High" }
-        ]
+        ,
+            { start: "", end: "", type: "Profanity", severity: "High", description: "Pervasive use of strong profanity and graphic sexual language." },
+            { start: "", end: "", type: "Violence & Gore", severity: "High", description: "Features one extremely graphic sequence involving a throat-slitting and significant blood flow. Includes domestic battery and self-inflicted injury." }]
     },
     2649: { scenes: [ { start: "57:52", end: "59:30", type: "Sexual Content(Moaning)", severity: "Moderate" }
     ]},
@@ -323,6 +325,8 @@ export const THRILLER_MOVIE_FAQS = {
         { question: "Is the movie Wind River based on a true story?", answer: "While the plot is fictional, it is inspired by the real-life epidemic of missing and murdered Indigenous women (MMIW) in North America. The film's final title card highlights the devastating fact that there is no official missing persons database for Indigenous women, turning the film into a social critique." }
     ],
     'Gone Girl': [
+        { question: "Does Gone Girl have profanity?", answer: "According to our Parents Guide, Gone Girl has a High severity rating for profanity. Pervasive use of strong profanity and graphic sexual language." },
+        { question: "Does Gone Girl have Violence & Gore scenes?", answer: "Our Parents Guide rates the Violence & Gore in Gone Girl as High. Features one extremely graphic sequence involving a throat-slitting and significant blood flow. Includes domestic battery and self-inflicted injury." },
         { question: "Did Amy Dunne plan her own disappearance in Gone Girl?", answer: "Yes. Amy meticulously orchestrated her own 'murder' to frame her husband, Nick, as punishment for his infidelity. She acted as an expert unreliable narrator, manipulating the media, the police, and the audience into believing she was a victim when she was actually the architect of the chaos." },
         { question: "Why does Nick stay with Amy at the end of Gone Girl?", answer: "Nick stays out of a mix of fear and a twisted psychological realization that they are 'perfect' for each other. They are both performers who thrive on a toxic, high-stakes relationship. He realizes that staying in the 'performative' marriage is his only way to survive her final trap." },
         { question: "What are Amy Dunne's personality traits in Gone Girl?", answer: "Amy exhibits classic psychopathic and narcissistic traits, including a total lack of empathy, high-level manipulation, and a need for absolute control. She views the people in her life as mere characters in a narrative that she must write and direct." },
@@ -518,7 +522,8 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
         );
     }
 
-    const faqSchema = {
+    
+const faqSchema = {
         '@context': 'https://schema.org',
         '@type': 'FAQPage',
         'name': `Parents Guide and FAQ for ${movie.Title}`,
@@ -613,7 +618,8 @@ Manually verified frame by frame by Filmiway editors for the ${finalRuntime} run
         );
     }
 
-    return staticFaqs;
+    
+return staticFaqs;
 };
 
 // Build object map by tmdbId for easy UI lookups

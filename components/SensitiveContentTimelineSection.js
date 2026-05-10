@@ -1,7 +1,7 @@
 // components/SensitiveContentTimelineSection.js
 import React, { useMemo, useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Shield, CheckCircle, Clock, AlertOctagon, Info, Film, FastForward, Eye, Heart, AlertTriangle, ThumbsUp, ThumbsDown } from 'lucide-react';
+import { Shield, CheckCircle, Clock, AlertOctagon, Info, Film, FastForward, Eye, Heart, AlertTriangle, ThumbsUp, ThumbsDown, MessageSquare, Flame } from 'lucide-react';
 
 const COLORS = {
     warningBg: 'rgba(127, 29, 29, 0.15)',
@@ -355,6 +355,8 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                         const getSceneIcon = (type) => {
                             const lowerType = type.toLowerCase();
                             if (lowerType.includes('nudity') || lowerType.includes('sex') || lowerType.includes('lingerie') || lowerType.includes('suggestive')) return <Eye size={14} />;
+                            if (lowerType.includes('language') || lowerType.includes('profanity')) return <MessageSquare size={14} />;
+                            if (lowerType.includes('violence') || lowerType.includes('gore') || lowerType.includes('blood')) return <Flame size={14} />;
                             if (lowerType.includes('kissing')) return <Heart size={14} />;
                             return <AlertTriangle size={14} />;
                         };
@@ -370,31 +372,33 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
 
                         return (
                             <div key={index} className="group p-3.5 sm:px-5 sm:py-3.5 hover:bg-white/[0.03] transition-colors duration-200 flex flex-col sm:flex-row sm:items-center gap-2.5 sm:gap-4">
-                                <div className="flex items-center justify-between sm:justify-start w-full sm:w-auto gap-3">
-                                    <div className="flex items-center gap-1.5 text-gray-400 group-hover:text-gray-200 transition-colors shrink-0">
-                                        <Clock size={13} className="opacity-50 shrink-0" />
-                                        <span className="font-mono text-[13px] sm:text-sm tracking-wide">
-                                            {sceneStart} {sceneEnd && <span className="opacity-40 text-xs mx-0.5 sm:mx-1">→</span>} {sceneEnd}
-                                        </span>
-                                    </div>
+                                <div className={`flex items-center ${sceneStart ? 'justify-between' : 'justify-end'} sm:justify-start w-full sm:w-auto gap-3`}>
+                                    {sceneStart && (
+                                        <div className="flex items-center gap-1.5 text-gray-400 group-hover:text-gray-200 transition-colors shrink-0">
+                                            <Clock size={13} className="opacity-50 shrink-0" />
+                                            <span className="font-mono text-[13px] sm:text-sm tracking-wide">
+                                                {sceneStart} {sceneEnd && <span className="opacity-40 text-xs mx-0.5 sm:mx-1">→</span>} {sceneEnd}
+                                            </span>
+                                        </div>
+                                    )}
                                     <div className="sm:hidden shrink-0">
                                         {severityBadge}
                                     </div>
                                 </div>
                                 
-                                <div className="hidden sm:block w-px h-4 bg-white/10 shrink-0" />
+                                {sceneStart && <div className="hidden sm:block w-px h-4 bg-white/10 shrink-0" />}
 
-                                <div className="flex items-start sm:items-center gap-2 min-w-0 flex-1">
-                                    <span className="text-gray-500 group-hover:text-white transition-colors duration-300 mt-[3px] sm:mt-[1px] shrink-0">
+                                <div className="flex items-start gap-2.5 min-w-0 flex-1">
+                                    <span className="text-gray-500 group-hover:text-white transition-colors duration-300 mt-[3px] shrink-0">
                                         {getSceneIcon(sceneType)}
                                     </span>
-                                    <div className="flex flex-col sm:flex-row sm:items-center min-w-0 gap-0.5 sm:gap-2">
+                                    <div className="flex flex-col min-w-0 w-full">
                                         <span className="text-gray-300 text-[13px] sm:text-sm font-medium truncate group-hover:text-white transition-colors">
                                             {sceneType}
                                         </span>
                                         {sceneDescription && sceneDescription !== sceneType && (
-                                            <span className="text-[12px] text-gray-500 leading-snug sm:truncate">
-                                                <span className="hidden sm:inline">— </span>{sceneDescription}
+                                            <span className="text-[12px] sm:text-[13px] text-gray-400/90 leading-snug mt-0.5 break-words whitespace-normal group-hover:text-gray-300 transition-colors">
+                                                {sceneDescription}
                                             </span>
                                         )}
                                     </div>

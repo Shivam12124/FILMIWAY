@@ -40,7 +40,9 @@ export const SENSITIVE_TIMELINES = {
             { start: '02:21:10', end: '02:23:15', type: 'Sexual Content', severity: 'High' },
             { start: '02:32:10', end: '02:32:20', type: 'Partial nudity (woman)', severity: 'Moderate' },
             { start: '02:40:10', end: '02:42:20', type: 'Sexual Content & Nudity (women)', severity: 'High' }
-        ] 
+        ,
+            { start: "", end: "", type: "Profanity", severity: "High", description: "Frequent use of strong profanity and sexually explicit language throughout." },
+            { start: "", end: "", type: "Violence & Gore", severity: "Moderate", description: "Contains sequences involving drugging, child abuse, and suicide themes. Includes references to sexual sadism and graphic mutilation." }] 
     },
     
     // ID 491584
@@ -334,7 +336,9 @@ export const RATING_OPTIONS = [
 
 export const PARASITE_MOVIE_FAQS = {
   'The Handmaiden': [
-    { 
+    { question: "Does The Handmaiden have profanity?", answer: "According to our Parents Guide, The Handmaiden has a High severity rating for profanity. Frequent use of strong profanity and sexually explicit language throughout." },
+        { question: "Does The Handmaiden have Violence & Gore scenes?", answer: "Our Parents Guide rates the Violence & Gore in The Handmaiden as Moderate. Contains sequences involving drugging, child abuse, and suicide themes. Includes references to sexual sadism and graphic mutilation." },
+        { 
       question: "How does the three-part structure of The Handmaiden reframes the story?", 
       answer: "The film employs a 'Rashomon-style' narrative where events are replayed from shifting perspectives. Part 1 establishes a standard con; Part 2 reveals a secret alliance between the women that completely subverts previous scenes; and Part 3 executes the final retribution. This structure masterfully transforms a tale of victimization into one of ultimate empowerment." 
     },
@@ -730,7 +734,8 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
         );
     }
 
-    const faqSchema = {
+    
+const faqSchema = {
         '@context': 'https://schema.org',
         '@type': 'FAQPage',
         'name': `Parents Guide and FAQ for ${movie.Title}`,
@@ -825,5 +830,6 @@ Manually verified frame by frame by Filmiway editors for the ${finalRuntime} run
         );
     }
 
-    return staticFaqs;
+    
+return staticFaqs;
 };

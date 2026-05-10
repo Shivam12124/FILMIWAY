@@ -47,7 +47,9 @@ export const SENSITIVE_TIMELINES = {
             { start: "1:38:18", end: "1:41:50", type: "Sex & Nudity", severity: "High" },
             { start: "2:02:01", end: "2:03:36", type: "Sex & Nudity", severity: "High" },
             { start: "2:47:58", end: "2:48:20", type: "Sex & Nudity", severity: "High" }
-        ]
+        ,
+            { start: "", end: "", type: "Profanity", severity: "Moderate", description: "Approximately 12–33 uses of strong sexual expletives, including sexual slurs and derogatory language." },
+            { start: "", end: "", type: "Violence & Gore", severity: "Mild", description: "Features physical altercations including face-slapping and shoving during intense emotional conflict." }]
     },
 
     // 2. 365 Days
@@ -77,7 +79,9 @@ export const SENSITIVE_TIMELINES = {
             { start: "1:27:20", end: "1:29:50", type: "Nudity (Woman) & Sex", severity: "High" },
             { start: "1:38:00", end: "1:38:33", type: "Nudity (Man & Woman)", severity: "High" },
             { start: "1:40:40", end: "1:41:20", type: "Nudity (Woman)", severity: "High" }
-        ]
+        ,
+            { start: "", end: "", type: "Profanity", severity: "Moderate", description: "Approximately 10 uses of strong sexual expletives (F-words)." },
+            { start: "", end: "", type: "Violence & Gore", severity: "Moderate", description: "Depicts riot violence involving the throwing of bricks and petrol bombs. Contains a suicide attempt by gas and themes of self-harm." }]
     },
 
     // 4. Lady Chatterley's Lover
@@ -135,7 +139,9 @@ export const SENSITIVE_TIMELINES = {
             { start: "1:23:56", end: "1:29:35", type: "Nudity & Sex", severity: "High" },
             { start: "1:45:47", end: "1:47:36", type: "Nudity & Sex", severity: "High" },
             { start: "1:51:50", end: "1:54:21", type: "Nudity", severity: "High" }
-        ]
+        ,
+            { start: "", end: "", type: "Profanity", severity: "Mild", description: "Strong language is infrequent, with the F-word used approximately 7 times." },
+            { start: "", end: "", type: "Violence & Gore", severity: "Moderate", description: "Focuses on BDSM-themed activity involving physical restraint and disciplinary tools." }]
     },
 
     // 8. Fifty Shades Freed
@@ -352,6 +358,8 @@ export const COMPLETE_MOVIE_DATA = {
 // 🎬 EROTIC ROMANCE FAQS - (100% SEO SAFE, CRITICAL ANALYSIS ONLY)
 export const EROTIC_ROMANCE_MOVIE_FAQS = {
     'Blue Is the Warmest Color': [
+        { question: "Does Blue Is the Warmest Color have profanity?", answer: "According to our Parents Guide, Blue Is the Warmest Color has a Moderate severity rating for profanity. Approximately 12–33 uses of strong sexual expletives, including sexual slurs and derogatory language." },
+        { question: "Does Blue Is the Warmest Color have Violence & Gore scenes?", answer: "Our Parents Guide rates the Violence & Gore in Blue Is the Warmest Color as Mild. Features physical altercations including face-slapping and shoving during intense emotional conflict." },
         { question: "Why is the film considered a landmark in romantic cinema?", answer: "It captures the entire lifecycle of a relationship—from the intoxicating, obsessive heights of first love to the agonizing, slow decay of falling out of sync. Its hyper-realistic, documentary-style approach makes the emotions feel incredibly raw and lived-in." },
         { question: "Why was the film controversial upon release?", answer: "Despite winning the Palme d'Or, controversy arose regarding the grueling working conditions created by director Abdellatif Kechiche. Furthermore, the extensive, highly choreographed sex scenes drew criticism for feeling tailored to the male gaze rather than authentic to the lesbian experience." },
         { question: "What does the color blue symbolize?", answer: "Blue represents Emma and the profound impact she has on Adèle's life. Initially, Emma's blue hair signifies freedom and passion. As they drift apart, the blue fades from Emma's life, but Adèle begins wearing blue clothing, showing how she has been permanently changed by the relationship." },
@@ -364,6 +372,8 @@ export const EROTIC_ROMANCE_MOVIE_FAQS = {
         { question: "What is the significance of the 'Are you lost, baby girl?' line?", answer: "The line became an instant viral meme on platforms like TikTok. It perfectly encapsulates the film's melodramatic, over-the-top tone, cementing the movie's status in pop culture despite abysmal critical reviews." }
     ],
     'The Dreamers': [
+        { question: "Does The Dreamers have profanity?", answer: "According to our Parents Guide, The Dreamers has a Moderate severity rating for profanity. Approximately 10 uses of strong sexual expletives (F-words)." },
+        { question: "Does The Dreamers have Violence & Gore scenes?", answer: "Our Parents Guide rates the Violence & Gore in The Dreamers as Moderate. Depicts riot violence involving the throwing of bricks and petrol bombs. Contains a suicide attempt by gas and themes of self-harm." },
         { question: "What is the historical context of the film?", answer: "The film is set in Paris during the May 1968 student riots, a period of massive civil unrest and social revolution. The political chaos on the streets serves as a backdrop to the characters' own internal, sexual, and ideological revolution inside their apartment." },
         { question: "How does cinema influence the characters?", answer: "Matthew, Isabelle, and Théo are utterly obsessed with film history. They communicate through movie quotes and force each other to recreate classic scenes, using cinema as a shield to avoid dealing with real-world consequences and their own complex emotions." },
         { question: "What does the apartment represent?", answer: "The apartment functions as an isolated, utopian bubble where the trio can ignore societal norms, morality, and the violent riots happening outside. It is a space of pure intellectual and physical indulgence that is ultimately shattered when reality physically breaks through the window." },
@@ -388,6 +398,8 @@ export const EROTIC_ROMANCE_MOVIE_FAQS = {
         { question: "How does the film handle Christian's trauma?", answer: "The sequel attempts to contextualize Christian's controlling behavior and sadistic tendencies not just as a kink, but as a direct result of severe childhood abuse and the toxic grooming he experienced from 'Mrs. Robinson.'" }
     ],
     'Fifty Shades of Grey': [
+        { question: "Does Fifty Shades of Grey have profanity?", answer: "According to our Parents Guide, Fifty Shades of Grey has a Mild severity rating for profanity. Strong language is infrequent, with the F-word used approximately 7 times." },
+        { question: "Does Fifty Shades of Grey have Violence & Gore scenes?", answer: "Our Parents Guide rates the Violence & Gore in Fifty Shades of Grey as Moderate. Focuses on BDSM-themed activity involving physical restraint and disciplinary tools." },
         { question: "Why was the film a cultural phenomenon?", answer: "Based on the explosive bestselling novel, it brought BDSM, kink, and female-driven erotic fantasy out of niche literature and into mainstream, blockbuster multiplex cinema, sparking massive conversations about sexuality and power dynamics." },
         { question: "How does the film use color?", answer: "Before meeting Christian, Ana's world is filled with warm, floral, and soft tones. Upon entering Christian's life, the visual palette shifts dramatically to stark, cold, metallic greys and blues, reflecting his sterile, highly controlled emotional state." },
         { question: "What is the true conflict of the story?", answer: "The core tension isn't about the physical acts in the Red Room, but an ideological battle. Christian wants complete control and a transaction without emotion, while Ana demands traditional romance and emotional vulnerability. The film is a negotiation of these boundaries." },
@@ -628,7 +640,8 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
         );
     }
 
-    const faqSchema = {
+    
+const faqSchema = {
         '@context': 'https://schema.org',
         '@type': 'FAQPage',
         'name': `Parents Guide and FAQ for ${movie.Title}`,
@@ -720,5 +733,6 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
         );
     }
 
-    return staticFaqs;
+    
+return staticFaqs;
 };

@@ -56,7 +56,9 @@ export const SENSITIVE_TIMELINES = {
             { start: "2:17:30", end: "2:18:10", type: "Nudity (Women)", severity: "High" },
             { start: "2:31:20", end: "2:31:40", type: "Nudity (Woman)", severity: "High" },
             { start: "2:38:30", end: "2:40:00", type: "Sex", severity: "High" }
-        ] 
+        ,
+            { start: "", end: "", type: "Profanity", severity: "Severe", description: "Pervasive strong language with over 430–500 uses of the F-word and frequent use of the C-word." },
+            { start: "", end: "", type: "Violence & Gore", severity: "Moderate", description: "Depicts domestic abuse, drug-induced injuries, and reckless behavior. Includes scenes of vomiting and physical altercations." }] 
     },
 
     // 3. Wall Street
@@ -320,6 +322,8 @@ export const GREED_MOVIE_FAQS = {
         { question: "How does the film compare religion and capitalism?", answer: "Director Paul Thomas Anderson sets up Daniel (Capitalism) and Eli (Religion) as two sides of the same corrupt coin. Both men use manipulation, theatricality, and the exploitation of the desperate to gain power and wealth." }
     ],
     'The Wolf of Wall Street': [
+        { question: "Does The Wolf of Wall Street have profanity?", answer: "According to our Parents Guide, The Wolf of Wall Street has a Severe severity rating for profanity. Pervasive strong language with over 430–500 uses of the F-word and frequent use of the C-word." },
+        { question: "Does The Wolf of Wall Street have Violence & Gore scenes?", answer: "Our Parents Guide rates the Violence & Gore in The Wolf of Wall Street as Moderate. Depicts domestic abuse, drug-induced injuries, and reckless behavior. Includes scenes of vomiting and physical altercations." },
         { question: "Is the film glorifying Jordan Belfort's lifestyle?", answer: "This is the central debate of the film. While Scorsese presents the wealth and debauchery as incredibly seductive and fun, the ending is an indictment. The film shows that Belfort ruins lives and faces virtually no consequences, exposing a broken justice system." },
         { question: "What does the final shot of the audience mean?", answer: "The final shot pans over a mesmerized audience watching Belfort speak at a seminar. Scorsese is turning the camera on us, suggesting that society is complicit because we secretly idolize and want to replicate his immense wealth, despite knowing it's corrupt." },
         { question: "Were the Stratton Oakmont tactics real?", answer: "Yes. They used a 'Pump and Dump' scheme. They would artificially inflate the price of cheap penny stocks by aggressively selling them to naive investors, then sell their own shares at the peak, causing the stock to crash and the investors to lose everything." },
@@ -582,7 +586,8 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
         );
     }
 
-    const faqSchema = {
+    
+const faqSchema = {
         '@context': 'https://schema.org',
         '@type': 'FAQPage',
         'name': `Parents Guide and FAQ for ${movie.Title}`,
@@ -677,5 +682,6 @@ Manually verified frame by frame by Filmiway editors for the ${finalRuntime} run
         );
     }
 
-    return staticFaqs;
+    
+return staticFaqs;
 };

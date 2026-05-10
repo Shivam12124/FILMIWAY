@@ -73,7 +73,9 @@ export const SENSITIVE_TIMELINES = {
             { start: "2:17:30", end: "2:18:10", type: "Nudity (Women)", severity: "High" },
             { start: "2:31:20", end: "2:31:40", type: "Nudity (Woman)", severity: "High" },
             { start: "2:38:30", end: "2:40:00", type: "Sex", severity: "High" }
-        ] 
+        ,
+            { start: "", end: "", type: "Profanity", severity: "Severe", description: "Pervasive strong language with over 430–500 uses of the F-word and frequent use of the C-word." },
+            { start: "", end: "", type: "Violence & Gore", severity: "Moderate", description: "Depicts domestic abuse, drug-induced injuries, and reckless behavior. Includes scenes of vomiting and physical altercations." }] 
     },
 
     // 8. Wayne's World
@@ -355,6 +357,8 @@ export const PARAMOUNT_COMEDY_MOVIE_FAQS = {
         { question: "Was there a sequel?", answer: "There was a TV show adaptation and a Broadway musical, but a film sequel never materialized, making the original a standalone classic." }
     ],
     'The Wolf of Wall Street': [
+        { question: "Does The Wolf of Wall Street have profanity?", answer: "According to our Parents Guide, The Wolf of Wall Street has a Severe severity rating for profanity. Pervasive strong language with over 430–500 uses of the F-word and frequent use of the C-word." },
+        { question: "Does The Wolf of Wall Street have Violence & Gore scenes?", answer: "Our Parents Guide rates the Violence & Gore in The Wolf of Wall Street as Moderate. Depicts domestic abuse, drug-induced injuries, and reckless behavior. Includes scenes of vomiting and physical altercations." },
         { question: "Is the Quaalude scene real?", answer: "The scene where Jordan tries to get to his Ferrari while paralyzed by Lemmon 714s is considered a masterpiece of physical comedy. DiCaprio claimed he channeled his inner 'drunken cerebral palsy' to pull it off." },
         { question: "Did they really do drugs?", answer: "No, the actors snorted crushed B-vitamins for the cocaine scenes. Jonah Hill eventually got bronchitis and was hospitalized from inhaling so much vitamin powder during the shoot." },
         { question: "How much is improvised?", answer: "Matthew McConaughey's chest-thumping chant was actually his own warm-up ritual. DiCaprio saw him doing it before a take and asked Scorsese to include it in the scene." }
@@ -569,7 +573,8 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
         );
     }
 
-    const faqSchema = {
+    
+const faqSchema = {
         '@context': 'https://schema.org',
         '@type': 'FAQPage',
         'name': `Parents Guide and FAQ for ${movie.Title}`,
@@ -664,7 +669,8 @@ Manually verified frame by frame by Filmiway editors for the ${finalRuntime} run
         );
     }
 
-    return staticFaqs;
+    
+return staticFaqs;
 };
 
 export const fetchMovieFromTMDB = async (tmdbId) => ({ 

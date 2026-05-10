@@ -63,7 +63,9 @@ export const SENSITIVE_TIMELINES = {
             { start: "0:23:14", end: "0:24:46", type: "Sex & Nudity", severity: "High" },
             { start: "1:14:38", end: "1:15:14", type: "Nudity", severity: "High" },
             { start: "1:15:43", end: "1:16:00", type: "Sex & Nudity", severity: "High" }
-        ]
+        ,
+            { start: "", end: "", type: "Profanity", severity: "Moderate", description: "Approximately 8–9 uses of strong sexual expletives (F-words) and infrequent moderate profanity used in dialogue." },
+            { start: "", end: "", type: "Violence & Gore", severity: "Moderate", description: "Contains graphic historical images of charred human remains and radiation victims. Includes a suicide by drug overdose and intense sequences of psychological peril." }]
     },
 
     // 5. Braveheart
@@ -318,6 +320,8 @@ export const TRUE_STORY_MOVIE_FAQS = {
         { question: "How does the film differ from Schindler's List?", answer: "While Schindler's List focuses on a collective rescue orchestrated by a figure in power, The Pianist is a deeply intimate, isolating story of individual survival, relying heavily on chance, hiding, and silence rather than grand heroics." }
     ],
     "Oppenheimer": [
+        { question: "Does Oppenheimer have profanity?", answer: "According to our Parents Guide, Oppenheimer has a Moderate severity rating for profanity. Approximately 8–9 uses of strong sexual expletives (F-words) and infrequent moderate profanity used in dialogue." },
+        { question: "Does Oppenheimer have Violence & Gore scenes?", answer: "Our Parents Guide rates the Violence & Gore in Oppenheimer as Moderate. Contains graphic historical images of charred human remains and radiation victims. Includes a suicide by drug overdose and intense sequences of psychological peril." },
         { question: "How accurately does the film portray the Trinity Test?", answer: "Christopher Nolan recreated the Trinity Test without using CGI, relying on practical effects. The tension, the silence preceding the blast wave, and the immense psychological weight of the moment align closely with historical accounts of the scientists present." },
         { question: "Why does the timeline constantly shift between color and black-and-white?", answer: "Nolan uses color to represent Oppenheimer's subjective, first-person perspective (fission), while the black-and-white sequences represent the objective, historical perspective (fusion), largely centered around Lewis Strauss's Senate confirmation hearings." },
         { question: "What was the real reason behind Oppenheimer's security clearance revocation?", answer: "While framed around his past communist associations, the revocation was heavily orchestrated by political enemies like Lewis Strauss, who resented Oppenheimer's influence and his opposition to the development of the hydrogen bomb." },
@@ -573,7 +577,8 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
         );
     }
 
-    const faqSchema = {
+    
+const faqSchema = {
         '@context': 'https://schema.org',
         '@type': 'FAQPage',
         'name': `Parents Guide and FAQ for ${movie.Title}`,
@@ -668,5 +673,6 @@ ${uiIntensityList}`
          );
      }
  
-     return staticFaqs;
+     
+return staticFaqs;
  };

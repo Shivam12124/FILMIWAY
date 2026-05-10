@@ -908,6 +908,20 @@
                 "end": "2:03:25",
                 "type": "Sex & Nudity",
                 "severity": "High"
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "High",
+                "description": "Approximately 40 uses of the F-word and frequent crude sexual references."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "High",
+                "description": "Features graphic ice-pick murders with detailed shots of blood and physical injury. Contains themes of sexual violence and assault."
             }
         ]
     },
@@ -1155,6 +1169,20 @@
                 "end": "1:54:32",
                 "type": "Sex(Glimpse)",
                 "severity": "Mild"
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "High",
+                "description": "Approximately 78 uses of the F-word and pervasive strong profanity throughout."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "High",
+                "description": "Features brutal bare-knuckle fighting with detailed facial injuries and blood. Includes chemical burns, a fatal head wound, and a self-inflicted gunshot wound."
             }
         ]
     },
@@ -1228,7 +1256,6 @@
     "617": {
         "Title": "Wild Things",
         "scenes": [
-     
             {
                 "start": "0:17:25",
                 "end": "0:17:52",
@@ -1253,7 +1280,6 @@
                 "type": "Sexual content & Nudity",
                 "severity": "High"
             },
-      
             {
                 "start": "1:28:40",
                 "end": "1:28:57",
@@ -1377,12 +1403,14 @@
     },
     "639": {
         "Title": "When Harry Met Sally...",
-        "scenes": [ {
-                "start": "0:46:13", 
-                "end": "0:47:22", 
-                "type": "Sexual Content (Moaning / Fake Orgasm)", 
-                "severity": "Moderate" 
-            }]
+        "scenes": [
+            {
+                "start": "0:46:13",
+                "end": "0:47:22",
+                "type": "Sexual Content (Moaning / Fake Orgasm)",
+                "severity": "Moderate"
+            }
+        ]
     },
     "640": {
         "Title": "Catch Me If You Can",
@@ -2063,6 +2091,20 @@
                 "end": "1:41:20",
                 "type": "Nudity (Woman)",
                 "severity": "High"
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "Moderate",
+                "description": "Approximately 10 uses of strong sexual expletives (F-words)."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "Moderate",
+                "description": "Depicts riot violence involving the throwing of bricks and petrol bombs. Contains a suicide attempt by gas and themes of self-harm."
             }
         ]
     },
@@ -3186,6 +3228,20 @@
                 "end": "1:55:32",
                 "type": "Sex & Nudity",
                 "severity": "High"
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "Moderate",
+                "description": "Minimal use of strong language (approximately 1 use of the F-word)."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "Moderate",
+                "description": "Contains graphic wartime brutality, including an execution by firing squad and a brutal stabbing. Includes themes of sexual assault and predatory behavior."
             }
         ]
     },
@@ -5893,6 +5949,20 @@
                 "end": "2:40:00",
                 "type": "Sex",
                 "severity": "High"
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "Severe",
+                "description": "Pervasive strong language with over 430–500 uses of the F-word and frequent use of the C-word."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "Moderate",
+                "description": "Depicts domestic abuse, drug-induced injuries, and reckless behavior. Includes scenes of vomiting and physical altercations."
             }
         ]
     },
@@ -6061,6 +6131,20 @@
                 "end": "2:48:20",
                 "type": "Sex & Nudity",
                 "severity": "High"
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "Moderate",
+                "description": "Approximately 12–33 uses of strong sexual expletives, including sexual slurs and derogatory language."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "Mild",
+                "description": "Features physical altercations including face-slapping and shoving during intense emotional conflict."
             }
         ]
     },
@@ -6273,6 +6357,20 @@
                 "end": "2:13:45",
                 "type": "Nudity(Man & Woman)",
                 "severity": "High"
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "High",
+                "description": "Pervasive use of strong profanity and graphic sexual language."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "High",
+                "description": "Features one extremely graphic sequence involving a throat-slitting and significant blood flow. Includes domestic battery and self-inflicted injury."
             }
         ]
     },
@@ -6320,6 +6418,20 @@
                 "end": "1:54:21",
                 "type": "Nudity",
                 "severity": "High"
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "Mild",
+                "description": "Strong language is infrequent, with the F-word used approximately 7 times."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "Moderate",
+                "description": "Focuses on BDSM-themed activity involving physical restraint and disciplinary tools."
             }
         ]
     },
@@ -6557,6 +6669,20 @@
                 "end": "02:42:20",
                 "type": "Sexual Content & Nudity (women)",
                 "severity": "High"
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "High",
+                "description": "Frequent use of strong profanity and sexually explicit language throughout."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "Moderate",
+                "description": "Contains sequences involving drugging, child abuse, and suicide themes. Includes references to sexual sadism and graphic mutilation."
             }
         ]
     },
@@ -7968,6 +8094,20 @@
                 "end": "1:16:00",
                 "type": "Sex & Nudity",
                 "severity": "High"
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "Moderate",
+                "description": "Approximately 8–9 uses of strong sexual expletives (F-words) and infrequent moderate profanity used in dialogue."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "Moderate",
+                "description": "Contains graphic historical images of charred human remains and radiation victims. Includes a suicide by drug overdose and intense sequences of psychological peril."
             }
         ]
     },

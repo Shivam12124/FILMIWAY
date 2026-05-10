@@ -62,7 +62,9 @@ export const SENSITIVE_TIMELINES = {
             { start: "45:00", end: "45:10", type: "Sex", severity: "High" },
             { start: "2:04:20", end: "2:05:34", type: "Sex & Nudity(Man)", severity: "High" },
             { start: "2:12:30", end: "2:13:45", type: "Nudity(Man & Woman)", severity: "High" }
-        ]
+        ,
+            { start: "", end: "", type: "Profanity", severity: "High", description: "Pervasive use of strong profanity and graphic sexual language." },
+            { start: "", end: "", type: "Violence & Gore", severity: "High", description: "Features one extremely graphic sequence involving a throat-slitting and significant blood flow. Includes domestic battery and self-inflicted injury." }]
     },
     11423: { 
         scenes: [
@@ -317,6 +319,8 @@ export const MYSTERY_THRILLER_FAQS = {
         { question: "How accurate is the film?", answer: "It is considered one of the most accurate true crime films ever made. Fincher obsessively verified police reports to ensure every detail was factual." }
     ],
     'Gone Girl': [
+        { question: "Does Gone Girl have profanity?", answer: "According to our Parents Guide, Gone Girl has a High severity rating for profanity. Pervasive use of strong profanity and graphic sexual language." },
+        { question: "Does Gone Girl have Violence & Gore scenes?", answer: "Our Parents Guide rates the Violence & Gore in Gone Girl as High. Features one extremely graphic sequence involving a throat-slitting and significant blood flow. Includes domestic battery and self-inflicted injury." },
         { question: "Did Amy plan everything?", answer: "Yes. Amy orchestrated her disappearance to frame Nick for murder as punishment for his infidelity and laziness. She is the ultimate unreliable narrator." },
         { question: "Why does Nick stay with her?", answer: "He stays out of fear and a twisted realization that they deserve each other. They are 'partners in crime' trapped in a toxic performance of a perfect marriage." },
         { question: "Is Amy a psychopath?", answer: "She exhibits psychopathic traits: lack of empathy, manipulation, and narcissism. She views people as props in her life's narrative." },
@@ -537,7 +541,8 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
         );
     }
 
-    const faqSchema = {
+    
+const faqSchema = {
         '@context': 'https://schema.org',
         '@type': 'FAQPage',
         'name': `Parents Guide and FAQ for ${movie.Title}`,
@@ -632,7 +637,8 @@ Manually verified frame by frame by Filmiway editors for the ${finalRuntime} run
         );
     }
 
-    return staticFaqs;
+    
+return staticFaqs;
 };
 
 // Build object map by tmdbId

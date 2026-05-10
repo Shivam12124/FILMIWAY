@@ -58,7 +58,9 @@ export const SENSITIVE_TIMELINES = {
             { start: "0:23:14", end: "0:24:46", type: "Sex & Nudity", severity: "High" },
             { start: "1:14:38", end: "1:15:14", type: "Nudity", severity: "High" },
             { start: "1:15:43", end: "1:16:00", type: "Sex & Nudity", severity: "High" }
-        ]
+        ,
+            { start: "", end: "", type: "Profanity", severity: "Moderate", description: "Approximately 8–9 uses of strong sexual expletives (F-words) and infrequent moderate profanity used in dialogue." },
+            { start: "", end: "", type: "Violence & Gore", severity: "Moderate", description: "Contains graphic historical images of charred human remains and radiation victims. Includes a suicide by drug overdose and intense sequences of psychological peril." }]
     },
 
     // Sinners
@@ -361,6 +363,8 @@ export const DECADE_MOVIE_FAQS = {
         { question: "How were the visual effects done so cheaply?", answer: "The Oscar-winning visual effects were created by a core team of just five people, mostly self-taught, working from their bedrooms during the pandemic using Adobe After Effects." }
     ],
     'Oppenheimer': [
+        { question: "Does Oppenheimer have profanity?", answer: "According to our Parents Guide, Oppenheimer has a Moderate severity rating for profanity. Approximately 8–9 uses of strong sexual expletives (F-words) and infrequent moderate profanity used in dialogue." },
+        { question: "Does Oppenheimer have Violence & Gore scenes?", answer: "Our Parents Guide rates the Violence & Gore in Oppenheimer as Moderate. Contains graphic historical images of charred human remains and radiation victims. Includes a suicide by drug overdose and intense sequences of psychological peril." },
         { question: "Why does the movie shift between color and black-and-white?", answer: "Christopher Nolan uses color for subjective scenes told entirely from J. Robert Oppenheimer's perspective (Fission), and black-and-white for objective, historical scenes centered around Lewis Strauss's perspective (Fusion)." },
         { question: "Did they actually detonate a real atomic bomb?", answer: "No, but Nolan notoriously refused to use CGI for the Trinity Test. The visual effects team used forced perspective, chemical reactions, and highly specialized micro-explosions to simulate the apocalyptic scale of an atomic blast practically." },
         { question: "Why don't we see the bombings of Hiroshima and Nagasaki?", answer: "The film is strictly tethered to Oppenheimer's psychological viewpoint. Because he learned about the bombings from the radio just like the rest of the world, the audience only experiences his delayed, devastating realization of what he had unleashed." },
@@ -599,7 +603,8 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
         );
     }
 
-    const faqSchema = {
+    
+const faqSchema = {
         '@context': 'https://schema.org',
         '@type': 'FAQPage',
         'name': `Parents Guide and FAQ for ${movie.Title}`,
@@ -687,5 +692,6 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
         );
     }
 
-    return staticFaqs;
+    
+return staticFaqs;
 };
