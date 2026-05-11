@@ -8081,19 +8081,22 @@
                 "start": "0:23:14",
                 "end": "0:24:46",
                 "type": "Sex & Nudity",
-                "severity": "High"
+                "severity": "High",
+                "description": "Lengthy explicit sexual content featuring a topless woman, strong intimate activity, and repeated sexual positioning."
             },
             {
                 "start": "1:14:38",
                 "end": "1:15:14",
                 "type": "Nudity",
-                "severity": "High"
+                "severity": "High",
+                "description": "Lengthy nudity following sexual activity featuring a fully nude woman and male character."
             },
             {
                 "start": "1:15:43",
                 "end": "1:16:00",
                 "type": "Sex & Nudity",
-                "severity": "High"
+                "severity": "High",
+                "description": "Explicit sexual content featuring female nudity and vigorous intimate activity during a chair sequence."
             },
             {
                 "start": "",
