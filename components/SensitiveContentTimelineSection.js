@@ -330,7 +330,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                 <tbody>
                     {sensitiveData.scenes.map((scene, idx) => (
                         <tr key={`seo-table-row-${idx}`}>
-                            <td>{scene.type || scene.description || 'Mature Content'}</td>
+                            <td>{scene.type || 'Mature Content'}{scene.description && scene.description !== scene.type ? ` - ${scene.description}` : ''}</td>
                             <td>{scene.start || 'N/A'}</td>
                             <td>{scene.end || 'N/A'}</td>
                             <td>{scene.severity || 'Moderate'}</td>
