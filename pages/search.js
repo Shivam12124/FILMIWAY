@@ -138,17 +138,30 @@ export default function SearchPage({ allMovies }) {
   const router = useRouter();
   const { q } = router.query;
   const [query, setQuery] = useState('');
+  const [debouncedQuery, setDebouncedQuery] = useState('');
   const [results, setResults] = useState([]);
   const [requestStatus, setRequestStatus] = useState('idle');
 
   useEffect(() => {
-    if (router.isReady && q) {
+    if (router.isReady && q && !query) {
       setQuery(q);
+      setDebouncedQuery(q);
     }
-  }, [router.isReady, q]);
+  }, [router.isReady, q, query]);
+
+  // ⚡ FIX INP: Debounce search input so typing is instantaneous
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedQuery(query);
+      if (router.isReady && query !== (router.query.q || '')) {
+        router.replace({ pathname: '/search', query: query ? { q: query } : {} }, undefined, { shallow: true });
+      }
+    }, 300);
+    return () => clearTimeout(timer);
+  }, [query, router.isReady]);
 
   useEffect(() => {
-    if (query.trim().length > 0) {
+    if (debouncedQuery.trim().length > 0) {
       // ⚡ SMART SEARCH NORMALIZATION: Handles numbers to words, missing punctuation, and typos
       const normalizeForSearch = (text) => {
         if (!text) return '';
@@ -175,7 +188,7 @@ export default function SearchPage({ allMovies }) {
           .replace(/[^a-z0-9]/g, ''); // Remove spaces and punctuation entirely
       };
 
-      const normalizedQuery = normalizeForSearch(query);
+      const normalizedQuery = normalizeForSearch(debouncedQuery);
       
       const filtered = allMovies.filter(movie => {
         const normalizedTitle = normalizeForSearch(movie.title);
@@ -184,7 +197,7 @@ export default function SearchPage({ allMovies }) {
         if (normalizedTitle.includes(normalizedQuery)) return true;
         
         // 2. Out-of-order or skipped words match (handles "lord rings")
-        const queryWords = query.toLowerCase().split(/[\s\W]+/).filter(Boolean);
+        const queryWords = debouncedQuery.toLowerCase().split(/[\s\W]+/).filter(Boolean);
         const titleWords = movie.title.toLowerCase().split(/[\s\W]+/).filter(Boolean);
         
         const numMap = { '50':'fifty', '40':'forty', '30':'thirty', '20':'twenty', '13':'thirteen', '12':'twelve', '11':'eleven', '10':'ten', '9':'nine', '8':'eight', '7':'seven', '6':'six', '5':'five', '4':'four', '3':'three', '2':'two', '1':'one' };
@@ -199,12 +212,11 @@ export default function SearchPage({ allMovies }) {
       setResults([]);
       setRequestStatus('idle');
     }
-  }, [query, allMovies]);
+  }, [debouncedQuery, allMovies]);
 
   const handleSearchChange = (e) => {
     const val = e.target.value;
     setQuery(val);
-    router.replace({ pathname: '/search', query: val ? { q: val } : {} }, undefined, { shallow: true });
   };
 
   // ⚡ FIREBASE REQUEST HANDLER

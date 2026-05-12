@@ -1062,21 +1062,29 @@ const MovieDetailsSection = React.memo(({
       <FanFavoritesSection currentMovieSlug={movie.slug} />
 
       {/* ⚡ DEFERRED: Only render graphs after initial paint to save mobile CPU */}
-      {loadHeavyComponents && safeMovieInfo?.scenes && safeMovieInfo.scenes.length > 0 && (
-        <EnhancedIntensityGraph 
-            scenes={safeMovieInfo.scenes} 
-            dominantColor={safeMovieInfo.dominantColor} 
-            aria-label={`Intensity graph showing narrative peaks for ${movie.Title}.`}
-        />
+      {safeMovieInfo?.scenes && safeMovieInfo.scenes.length > 0 && (
+        <div className="w-full min-h-[350px]">
+          {loadHeavyComponents && (
+            <EnhancedIntensityGraph 
+                scenes={safeMovieInfo.scenes} 
+                dominantColor={safeMovieInfo.dominantColor} 
+                aria-label={`Intensity graph showing narrative peaks for ${movie.Title}.`}
+            />
+          )}
+        </div>
       )}
       
       {/* ⚡ DEFERRED: Only render DNA after initial paint to save mobile CPU */}
-      {loadHeavyComponents && safeMovieInfo?.dna && Object.keys(safeMovieInfo.dna).length > 0 && (
-        <StrategicDNAHelix 
-            dna={safeMovieInfo.dna} 
-            dominantColor={safeMovieInfo.dominantColor} 
-            aria-label={`Genre DNA breakdown for ${movie.Title}: ${Object.entries(safeMovieInfo.dna || {}).map(([k, v]) => `${k} ${v}%`).join(', ')}.`}
-        />
+      {safeMovieInfo?.dna && Object.keys(safeMovieInfo.dna).length > 0 && (
+        <div className="w-full min-h-[300px]">
+          {loadHeavyComponents && (
+            <StrategicDNAHelix 
+                dna={safeMovieInfo.dna} 
+                dominantColor={safeMovieInfo.dominantColor} 
+                aria-label={`Genre DNA breakdown for ${movie.Title}: ${Object.entries(safeMovieInfo.dna || {}).map(([k, v]) => `${k} ${v}%`).join(', ')}.`}
+            />
+          )}
+        </div>
       )}
 
       <EnhancedWhereToWatchSection movie={movie} />

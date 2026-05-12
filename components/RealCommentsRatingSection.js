@@ -205,7 +205,7 @@ const RealCommentsRatingSection = ({ movie }) => {
 
     if (!mounted || loading) {
         return (
-            <section className="rounded-2xl p-4 sm:p-6 lg:p-8 backdrop-blur-sm border"
+             <section className="rounded-2xl p-4 sm:p-6 lg:p-8 backdrop-blur-sm border min-h-[300px]"
                      style={{ backgroundColor: COLORS.bgCard, borderColor: COLORS.borderNeutral }}>
                 <h2 className="text-xl sm:text-2xl lg:text-3xl font-light mb-6 flex items-center gap-3"
                     style={{ color: COLORS.textPrimary }}>
