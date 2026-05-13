@@ -205,7 +205,7 @@ export default function SearchPage({ allMovies }) {
         const mappedTWords = titleWords.map(w => numMap[w] || (w === 'se7en' ? 'seven' : w));
         
         return mappedQWords.every(qw => mappedTWords.some(tw => tw.includes(qw)));
-      });
+      }).slice(0, 24); // ⚡ FIX INP & LCP: Only render top 24 results to prevent massive DOM overload
       setResults(filtered);
       setRequestStatus('idle'); // Reset request status when typing
     } else {

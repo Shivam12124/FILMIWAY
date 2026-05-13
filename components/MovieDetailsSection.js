@@ -238,8 +238,7 @@ const MovieDetailsSection = React.memo(({
  });
 
  useEffect(() => {
-
-   const fetchAllData = async () => {
+   const timer = setTimeout(async () => {
        try {
            const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY || 'a07e22bc18f5cb106bfe4cc1f83ad8ed';
            let targetTmdbId = movie.tmdbId || movie.tmdbID;
@@ -278,59 +277,51 @@ const MovieDetailsSection = React.memo(({
 
            const formatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
            
-           const newBudget = details.budget && details.budget > 0 
-               ? formatter.format(details.budget) 
-               : dynamicMovieData.budget;
+           setDynamicMovieData(prev => {
+               const newBudget = details.budget && details.budget > 0 ? formatter.format(details.budget) : prev.budget;
+               const newRevenue = details.revenue && details.revenue > 0 ? formatter.format(details.revenue) : prev.boxOffice;
+               const directorObj = credits.crew?.find(person => person.job === 'Director');
+               const newDirector = directorObj ? directorObj.name : prev.director;
+               const topCast = credits.cast?.slice(0, 3).map(c => c.name).join(', ') || prev.cast;
 
-           const newRevenue = details.revenue && details.revenue > 0 
-               ? formatter.format(details.revenue) 
-               : dynamicMovieData.boxOffice;
-
-           const directorObj = credits.crew?.find(person => person.job === 'Director');
-           const newDirector = directorObj ? directorObj.name : dynamicMovieData.director;
-
-           const topCast = credits.cast?.slice(0, 3).map(c => c.name).join(', ') || dynamicMovieData.cast;
-
-           let newRating = dynamicMovieData.ageRating;
-           if (newRating === 'Rated') newRating = 'NR'; // Clean up bad initial states
-           const usRelease = releases.results?.find(r => r.iso_3166_1 === 'US');
-           if (usRelease) {
-               const cert = usRelease.release_dates.find(d => d.certification !== '')?.certification;
-               if (cert) newRating = cert;
-           } else {
-               // Fallback to International ratings if US rating is missing
-               const anyRelease = releases.results?.find(r => r.release_dates?.some(d => d.certification && d.certification !== ''));
-               if (anyRelease) {
-                   const cert = anyRelease.release_dates.find(d => d.certification && d.certification !== '')?.certification;
+               let newRating = prev.ageRating;
+               if (newRating === 'Rated') newRating = 'NR';
+               const usRelease = releases.results?.find(r => r.iso_3166_1 === 'US');
+               if (usRelease) {
+                   const cert = usRelease.release_dates.find(d => d.certification !== '')?.certification;
                    if (cert) newRating = cert;
+               } else {
+                   const anyRelease = releases.results?.find(r => r.release_dates?.some(d => d.certification && d.certification !== ''));
+                   if (anyRelease) {
+                       const cert = anyRelease.release_dates.find(d => d.certification && d.certification !== '')?.certification;
+                       if (cert) newRating = cert;
+                   }
                }
-           }
 
-           const newSynopsis = details.overview ? details.overview : dynamicMovieData.synopsis;
-           
-           // ✅ Fetch Runtime from TMDB and format it
-           const newRuntime = details.runtime ? `${details.runtime} min` : dynamicMovieData.runtime;
-           const newTagline = details.tagline ? details.tagline : ''; // 🔥 Grab the TMDB Tagline
+               const newSynopsis = details.overview ? details.overview : prev.synopsis;
+               const newRuntime = details.runtime ? `${details.runtime} min` : prev.runtime;
+               const newTagline = details.tagline ? details.tagline : '';
 
-           setDynamicMovieData({
-               director: newDirector,
-               cast: topCast,
-               budget: newBudget,
-               boxOffice: newRevenue,
-               ageRating: newRating,
-               synopsis: newSynopsis,
-               runtime: newRuntime,
-               tagline: newTagline // ✅ Update state
+               return {
+                   director: newDirector,
+                   cast: topCast,
+                   budget: newBudget,
+                   boxOffice: newRevenue,
+                   ageRating: newRating,
+                   synopsis: newSynopsis,
+                   runtime: newRuntime,
+                   tagline: newTagline
+               };
            });
 
        } catch (error) {
            // 🔥 SILENT FAIL: Prevents terminal spam and hydration crashes if offline/ad-blocked
            console.warn(`TMDB Client Fetch Skipped for ${movie.Title} (Using Local Data).`);
        }
-   };
+   }, 3500); // ⚡ LCP/INP FIX: Defer TMDB fetch by 3.5s to let the page paint and become interactive first
 
-   fetchAllData();
- }, [movie.tmdbId, movie.imdbID]);
+   return () => clearTimeout(timer);
+ }, [movie.tmdbId, movie.imdbID, movie.Title]);
 
  // ⚡ SERVER-RESOLVED: Sensitive scenes directly from getStaticProps!
  const sensitiveScenes = movie.resolvedSensitiveScenes || [];
