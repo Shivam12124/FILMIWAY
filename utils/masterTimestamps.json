@@ -7,16 +7,32 @@
         "Title": "Forrest Gump",
         "scenes": [
             {
-                "start": "0:35:50",
-                "end": "0:35:55",
+                "start": "0:35:38",
+                "end": "0:36:00",
                 "type": "Nudity (Woman)",
-                "severity": "Moderate"
+                "severity": "Moderate",
+                "description": "A brief scene shows a man reading adult magazine material, with fleeting female topless imagery that is difficult to discern."
             },
             {
                 "start": "0:37:15",
                 "end": "0:38:02",
                 "type": "Partial Nudity (Woman)",
-                "severity": "Mild"
+                "severity": "Mild",
+                "description": "A scene depicts a woman playing guitar while nude, with nudity largely obscured by lighting and the guitar, revealing only brief partial topless and rear exposure."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "Moderate",
+                "description": "Language includes a single use of the F-word, along with crude expressions, insulting remarks, and occasional racially offensive terminology."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "Moderate",
+                "description": "The film contains primarily war-related violence with explosions, gunfire, dead and wounded soldiers, occasional fistfights and bullying, brief real and historical assassination footage, and a few emotionally intense deaths."
             }
         ]
     },
@@ -850,64 +866,68 @@
         "Title": "Basic Instinct",
         "scenes": [
             {
-                "start": "0:03:15",
-                "end": "0:04:40",
+                "start": "0:03:11",
+                "end": "0:05:25",
                 "type": "Sex & Nudity",
-                "severity": "High"
+                "severity": "High",
+                "description": "Explicit sexual content involving a man and woman engaged in intercourse, with full female nudity."
             },
             {
-                "start": "0:05:40",
-                "end": "0:06:50",
+                "start": "0:05:17",
+                "end": "0:05:25",
+                "type": "Nudity (Man)",
+                "severity": "Moderate",
+                "description": "A deceased male character is shown lying on a bed covered in blood, with genital nudity visible."
+            },
+            {
+                "start": "0:22:16",
+                "end": "0:22:26",
+                "type": "Nudity (Woman)",
+                "severity": "High",
+                "description": "A sequence features a female character in a state of total nudity as she begins to dress."
+            },
+            {
+                "start": "0:27:35",
+                "end": "0:27:41",
                 "type": "Nudity",
-                "severity": "Moderate"
+                "severity": "Extreme",
+                "description": "An interrogation sequence features a female character whose seated position and subsequent posture adjustment result in a brief instance of visible genital nudity."
             },
             {
-                "start": "0:22:35",
-                "end": "0:22:45",
-                "type": "Nudity",
-                "severity": "Moderate"
-            },
-            {
-                "start": "0:27:55",
-                "end": "0:28:01",
-                "type": "Nudity",
-                "severity": "High"
-            },
-            {
-                "start": "0:36:15",
-                "end": "0:39:10",
+                "start": "0:36:29",
+                "end": "0:39:00",
                 "type": "Nudity & Sex",
-                "severity": "High"
+                "severity": "High",
+                "description": "A sequence depicts a non-consensual sexual encounter involving the forcible disrobing of a female character and intimate contact, followed by mutual nudity and an act of intercourse."
             },
             {
-                "start": "0:45:20",
-                "end": "0:45:30",
+                "start": "0:45:00",
+                "end": "0:45:10",
                 "type": "Nudity",
-                "severity": "High"
+                "severity": "High",
+                "description": "A brief sequence features a female character disrobing to a state of total nudity."
             },
             {
-                "start": "1:11:15",
-                "end": "1:18:00",
+                "start": "1:11:30",
+                "end": "1:16:05",
                 "type": "Nudity & Sex",
-                "severity": "High"
+                "severity": "High",
+                "description": "Explicit sexual content involving a fully nude man and woman engaged in prolonged intercourse in multiple positions, including oral sexual activity."
             },
-            {
-                "start": "1:33:50",
-                "end": "1:33:55",
-                "type": "Nudity",
-                "severity": "Mild"
-            },
+         
             {
                 "start": "1:45:00",
                 "end": "1:45:24",
-                "type": "Sexual content & Nudity",
-                "severity": "High"
+                "type": "Partial Nudity",
+                "severity": "High",
+                "description": "A scene depicts a fully nude man and woman with nudity partially obscured by other characters’ hands and body positioning."
             },
             {
                 "start": "2:00:50",
-                "end": "2:03:25",
+                "end": "2:02:55",
                 "type": "Sex & Nudity",
-                "severity": "High"
+                "severity": "High",
+                "description": "Explicit sexual content involving a man and woman engaged in intercourse, with female topless and rear nudity visible."
             },
             {
                 "start": "",
@@ -6394,37 +6414,43 @@
                 "start": "6:41",
                 "end": "6:59",
                 "type": "Sex",
-                "severity": "High"
+                "severity": "High",
+                "description": "Explicit sexual content featuring oral sexual activity between a man and a woman."
             },
             {
                 "start": "20:57",
                 "end": "21:02",
                 "type": "Sex",
-                "severity": "High"
+                "severity": "High",
+                "description": "Explicit sexual content featuring a man and woman engaged in intercourse, with audible sexual sounds and sexual movement."
             },
             {
                 "start": "44:21",
                 "end": "44:38",
                 "type": "Nudity(Woman)",
-                "severity": "High"
+                "severity": "High",
+                "description": "A man and woman engage in sexual activity involving passionate kissing, straddling, and female topless nudity with intimate contact"
             },
             {
                 "start": "45:00",
                 "end": "45:10",
                 "type": "Sex",
-                "severity": "High"
+                "severity": "High",
+                "description": "Explicit sexual content involving a man and woman engaged in intercourse while standing."
             },
             {
                 "start": "2:04:20",
                 "end": "2:05:34",
                 "type": "Sex & Nudity(Man)",
-                "severity": "High"
+                "severity": "High",
+                "description": "Explicit sexual content involving a man and woman engaged in intercourse, with brief male genital visible."
             },
             {
                 "start": "2:12:30",
                 "end": "2:13:45",
                 "type": "Nudity(Man & Woman)",
-                "severity": "High"
+                "severity": "High",
+                "description": "A woman is shown showering with full nudity, followed by a brief scene of a fully nude man entering the shower, with fleeting male genital nudity visible."
             },
             {
                 "start": "",
@@ -6449,57 +6475,64 @@
                 "start": "0:43:10",
                 "end": "0:46:25",
                 "type": "Sex & Nudity",
-                "severity": "High"
+                "severity": "High",
+                "description": "Explicit sexual content involving a man and woman, including disrobing, visible female topless and rear nudity, male rear nudity, and sustained sexual activity."
             },
             {
                 "start": "0:47:49",
                 "end": "0:50:15",
                 "type": "Nudity & Sex",
-                "severity": "High"
+                "severity": "High",
+                "description": "Explicit sexual content involving a man and woman, including disrobing, female topless nudity, male rear nudity, bondage, and sustained intercourse with visible sexual activity and audible sexual sounds."
             },
             {
                 "start": "1:03:00",
                 "end": "1:06:10",
                 "type": "Sex & Nudity",
-                "severity": "High"
+                "severity": "High",
+                "description": "A consensual BDSM scene involving restraint and visible female topless nudity."
             },
             {
                 "start": "1:18:25",
                 "end": "1:18:56",
                 "type": "Partial Nudity",
-                "severity": "Moderate"
+                "severity": "Moderate",
+                "description": "A consensual BDSM scene involving restraint and spanking, with partial female nudity."
             },
             {
                 "start": "1:23:56",
                 "end": "1:29:35",
                 "type": "Nudity & Sex",
-                "severity": "High"
+                "severity": "High",
+                "description": "Explicit sexual content involving a man and woman, including disrobing, BDSM elements, full nudity, and sustained intercourse."
             },
             {
                 "start": "1:45:47",
                 "end": "1:47:36",
                 "type": "Nudity & Sex",
-                "severity": "High"
+                "severity": "High",
+                "description": "Explicit sexual content involving full nudity of woman, BDSM elements, and sexual intercourse."
             },
             {
                 "start": "1:51:50",
                 "end": "1:54:21",
                 "type": "Nudity",
-                "severity": "High"
+                "severity": "High",
+                "description": "Explicit sexual content involving disrobing, full female nudity, BDSM elements"
             },
             {
                 "start": "",
                 "end": "",
                 "type": "Profanity",
-                "severity": "Mild",
-                "description": "Strong language is infrequent, with the F-word used approximately 7 times."
+                "severity": "Moderate",
+                "description": "The dialogue features infrequent strong profanity, including approximately seven uses of the F-word (some in sexual context), alongside moderate coarse language and occasional vulgar expressions."
             },
             {
                 "start": "",
                 "end": "",
                 "type": "Violence & Gore",
                 "severity": "Moderate",
-                "description": "Focuses on BDSM-themed activity involving physical restraint and disciplinary tools."
+                "description": "A film depicting BDSM-themed sexual relationships with bondage, restraint, and spanking elements, brief violence."
             }
         ]
     },
@@ -7696,43 +7729,58 @@
                 "start": "0:11:30",
                 "end": "0:13:28",
                 "type": "Sex & Nudity",
-                "severity": "High"
+                "severity": "High",
+                "description": "Explicit sexual content featuring oral sexual activity with male genital visibility, alongside a separate implied woman masturbation scene with minimal visual detail."
             },
-            {
-                "start": "0:35:55",
-                "end": "0:36:42",
-                "type": "Suggestive Clothing (Lingerie)",
-                "severity": "Moderate"
-            },
+
             {
                 "start": "0:44:11",
                 "end": "0:46:44",
-                "type": "Nudity (Woman)",
-                "severity": "High"
+                "type": "Nudity (Woman) & Partial Nudity (Man)",
+                "severity": "High",
+                "description": "A sequence depicts a female character disrobing to a state of total nudity while entering a shower, involving visible upper-body and rear nudity, followed by a male character joining her, also exhibiting rear nudity."
             },
             {
                 "start": "0:53:13",
                 "end": "0:59:05",
                 "type": "Partial Nudity (Man), Nudity (Woman) & Sex",
-                "severity": "High"
+                "severity": "High",
+                "description": "Explicit sexual content involving nudity, bondage/restraint, non-consensual elements, forced sexual witnessing, oral sexual activity, and brief male rear nudity and woman topless nudity."
             },
             {
                 "start": "1:07:55",
                 "end": "1:12:50",
                 "type": "Sex & Nudity",
-                "severity": "High"
+                "severity": "High",
+                "description": "A prolonged sexual montage depicting a couple engaged in intercourse in multiple positions, featuring full nudity including female topless and rear nudity, male rear nudity, and brief male genital exposure."
             },
             {
                 "start": "1:18:22",
                 "end": "1:21:07",
                 "type": "Sex & Nudity",
-                "severity": "High"
+                "severity": "High",
+                "description": "A sexual scene shows a couple engaging in intercourse in a bathroom, including full female nudity and brief male rear nudity, with sexual climax."
             },
             {
                 "start": "1:32:30",
                 "end": "1:36:07",
                 "type": "Sex & Nudity",
-                "severity": "High"
+                "severity": "High",
+                "description": "Explicit sexual content involving a man and woman engaged in intercourse and oral sexual activity, with full female nudity."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "Mild",
+                "description": "Content featuring serious sexual violence themes including kidnapping, threats of rape, non-consensual sexual touching, forced restraint, and attempted assault, alongside strong violence with shootings and visible blood."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "Moderate",
+                "description": "Strong and frequent profanity throughout, including repeated uses of the F-word along with other crude, sexual, and offensive language."
             }
         ]
     },

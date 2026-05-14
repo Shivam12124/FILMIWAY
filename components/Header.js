@@ -156,7 +156,7 @@ const Header = () => {
                         const cached = searchDB.cache[movie.imdbID] || {};
                         const posterUrl = cached.poster_path ? `https://image.tmdb.org/t/p/w92${cached.poster_path}` : null;
                         const movieTitle = movie.Title || movie.title || 'Unknown';
-                        const movieSlug = movie.slug || movieTitle.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+                        const movieSlug = movie.slug || movieTitle.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
                         const movieYear = movie.year || movie.Year || '';
                         
                         return (

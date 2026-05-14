@@ -62,7 +62,10 @@ const nextConfig = {
       // Essential redirects
       { source: '/contact', destination: '/contact-us', permanent: true },
 
-      // 🚀 MASTER SEO REDIRECTS (Catches ALL old collection duplicates!)
+      // 🔥 FIXED SLUG REDIRECTS
+      { source: '/movie/malna', destination: '/movie/malena', permanent: true },
+
+      // � MASTER SEO REDIRECTS (Catches ALL old collection duplicates!)
       { source: '/movies/:collection/tt0109830', destination: '/movie/forrest-gump', permanent: true },
       { source: '/movies/:collection/tt0169547', destination: '/movie/american-beauty', permanent: true },
       { source: '/movies/:collection/tt0078788', destination: '/movie/apocalypse-now', permanent: true },
