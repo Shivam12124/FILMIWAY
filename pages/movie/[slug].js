@@ -420,7 +420,7 @@ export async function getStaticProps({ params }) {
     // ✅ FIX: Pull timestamps from masterTimestamps.json so new collections never show 0 timestamps!
     const resolvedSensitiveScenes = allScenes.length > 0 ? allScenes : (collectionData?.SENSITIVE_TIMELINES?.[baseMovie.tmdbId]?.scenes || []);
 
-    const isClean = allScenes.length === 0 || allScenes.every(s => !((s.type || '').toLowerCase().match(/sex|nudity|explicit/)));
+    const isClean = resolvedSensitiveScenes.length === 0 || resolvedSensitiveScenes.every(s => !((s.type || '').toLowerCase().match(/sex|nudity|explicit/)));
     let metaTitle = '';
     let metaDesc = '';
 
@@ -429,7 +429,7 @@ export async function getStaticProps({ params }) {
         metaDesc = `Yes. Filmiway editors have manually verified that ${baseMovie.Title} is completely free of sex, nudity, and sexual content throughout its entire ${baseMovie.runtime || baseMovie.Runtime || "Official"} min runtime.`;
     } else {
         metaTitle = `${baseMovie.Title} Parents Guide (Skip Sex & Nudity Timestamps)`;
-        const sortedScenes = [...allScenes].sort((a, b) => {
+        const sortedScenes = [...resolvedSensitiveScenes].sort((a, b) => {
             const aIsSevere = a.type?.toLowerCase().match(/sex|nudity|explicit/);
             const bIsSevere = b.type?.toLowerCase().match(/sex|nudity|explicit/);
             if (aIsSevere && !bIsSevere) return -1;
