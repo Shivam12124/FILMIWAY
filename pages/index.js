@@ -12,7 +12,6 @@ import {
 
 import { COLLECTIONS, getPrimaryCollectionForMovie } from '../data/collections';
 import { COMPLETE_MOVIE_DATABASE as EROTIC_THRILLER_DB, FALLBACK_POSTERS as EROTIC_THRILLER_POSTERS } from '../utils/eroticThrillerMovieData';
-import { COMPLETE_MOVIE_DATABASE as EROTIC_ROMANCE_DB } from '../utils/eroticRomanceMovieData';
 import { COMPLETE_MOVIE_DATABASE as TRENDING_DB, FALLBACK_POSTERS as TRENDING_POSTERS } from '../utils/trendingMovieData';
 import PlatformSelector from '../components/PlatformSelector';
 import Header from '../components/Header';
@@ -648,7 +647,11 @@ export async function getStaticProps() {
 
     const top10EroticThrillers = getTop10MoviesWithSlugs(EROTIC_THRILLER_DB, EROTIC_THRILLER_POSTERS);
     const top10TrendingMovies = getTop10MoviesWithSlugs(TRENDING_DB, TRENDING_POSTERS);
-    const trendingParentsGuides = getTop10MoviesWithSlugs(EROTIC_ROMANCE_DB, null);
+    
+    // ⚡ CUSTOM HOMEPAGE ARRAY: High-traffic Parents Guides 
+    const trendingParentsGuideIds = [152584, 664413, 1278, 814338, 1643, 1791, 10867, 979, 11423, 1072790];
+    const customTrendingGuidesDb = trendingParentsGuideIds.map(id => masterDatabase.find(m => m.tmdbId === id)).filter(Boolean);
+    const trendingParentsGuides = getTop10MoviesWithSlugs(customTrendingGuidesDb, null);
 
     return {
       props: {

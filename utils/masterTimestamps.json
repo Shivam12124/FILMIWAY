@@ -790,6 +790,20 @@
                 "end": "2:10:12",
                 "type": "Nudity",
                 "severity": "Moderate"
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "Mild",
+                "description": "Very mild violence-related content, limited to implied off-screen injury, brief minor intimidation, and a non-graphic corpse depiction."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "Moderate",
+                "description": "Strong language throughout, including around 18 uses of the F-word alongside repeated moderate profanity, crude sexual terms, and vulgar insults."
             }
         ]
     },
@@ -1243,6 +1257,20 @@
                 "end": "1:28:10",
                 "type": "Nudity (Woman)",
                 "severity": "High"
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "Moderate",
+                "description": "Strong disaster-related violence and peril throughout the latter half, including drowning, freezing deaths, shootings, physical assaults, suicide references, and intense scenes of mass panic and fatal injury during the ship’s sinking."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "Moderate",
+                "description": "Moderate to strong language throughout, including uses of the F-word, other profanity, and an obscene hand gesture."
             }
         ]
     },
@@ -1704,6 +1732,20 @@
                 "end": "1:04:40",
                 "type": "Nudity & Suggestive Clothing (Lingerie in Magazine)",
                 "severity": "High"
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "None",
+                "description": "The film contains no actual violence."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "Moderate",
+                "description": "Moderate language throughout, including some strong profanity, repeated mild to moderate coarse terms, and an isolated derogatory slur."
             }
         ]
     },
@@ -2065,6 +2107,20 @@
                 "end": "1:26:07",
                 "type": "Nudity (Man & Woman)",
                 "severity": "High"
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "High",
+                "description": "Extreme graphic violence featuring brutal assaults, sexual violence, severe beatings, bone-breaking, bloody injuries, and prolonged scenes of disturbing physical abuse."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "High",
+                "description": "Very strong coarse language throughout, including repeated use of the F-word, highly offensive sexual profanity, and other frequent vulgar insults and profanity."
             }
         ]
     },
@@ -3968,22 +4024,39 @@
         "Title": "Superbad",
         "scenes": [
             {
-                "start": "4:45",
-                "end": "4:55",
-                "type": "Nudity",
-                "severity": "Moderate"
+                "start": "0:04:45",
+                "end": "0:04:55",
+                "type": "Nudity (Woman)",
+                "severity": "High",
+                "description": "A brief scene shows a character viewing adult magazine material containing female topless nudity."
             },
             {
-                "start": "9:38",
-                "end": "9:45",
-                "type": "Nudity",
-                "severity": "High"
+                "start": "0:09:38",
+                "end": "0:09:45",
+                "type": "Nudity (Women)",
+                "severity": "High",
+                "description": "A scene shows characters watching an explicit video featuring female topless nudity."
             },
             {
-                "start": "18:15",
-                "end": "20:30",
+                "start": "0:18:15",
+                "end": "0:20:30",
                 "type": "Sexual Content",
-                "severity": "Mild"
+                "severity": "Moderate",
+                "description": "A scene depicts a character repeatedly drawing explicit male genitalia imagery."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "Mild",
+                "description": "Teen-focused violence and chaos including imagined and real assaults, punches, car impacts, police confrontations with weapons, property destruction and arson, threats of killing and mutilation, accidental injuries, vomiting, and scenes of public disturbance and intoxication."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "High",
+                "description": "Extremely strong and pervasive language throughout, including heavy repeated F-word usage, frequent sexual and scatological references, anatomical terminology, insults and occasional offensive slurs."
             }
         ]
     },
@@ -4666,6 +4739,20 @@
                 "end": "1:11:17",
                 "type": "Nudity (Woman)",
                 "severity": "High"
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "Moderate",
+                "description": "Moderate to strong violence includes physical assaults, public mob brutality, slapping and punching, and a prolonged beating resulting in visible blood and bruising."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "Moderate",
+                "description": "Moderate coarse language includes several uses of the F-word, repeated profanity, crude insults, and occasional sexual slang."
             }
         ]
     },
@@ -4742,6 +4829,20 @@
                 "end": "1:44:40",
                 "type": "Nudity (Woman)",
                 "severity": "High"
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "Moderate",
+                "description": "Strong disturbing themes involving self-harm with brief bloody imagery, along with BDSM-related sexual content and psychologically intense material."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "Moderate",
+                "description": "Strong coarse language throughout, including repeated uses of the F-word, other profanity, and crude sexual insults."
             }
         ]
     },
@@ -4882,6 +4983,20 @@
                 "type": "Nudity",
                 "severity": "Mild",
                 "description": "Woman"
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "Moderate",
+                "description": "Strong disturbing content involving murder investigations, sexual violence references, grisly crime-scene imagery, police brutality, beatings, torture, bloody injuries, and brief graphic death-related imagery."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "Moderate",
+                "description": "Strong and frequent coarse language throughout, including over 30 uses of the F-word alongside repeated uses of other profanity and insulting terms."
             }
         ]
     },
@@ -7340,6 +7455,20 @@
                 "end": "1:54:12",
                 "type": "Nudity & Sex",
                 "severity": "High"
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "Mild",
+                "description": "Moderate violence and threat-related content, including gunfire, attempted sexual assault, a helicopter crash, physical confrontations."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "Moderate",
+                "description": "Strong language throughout, including repeated uses of the F-word and other coarse profanity, along with crude insults."
             }
         ]
     },
@@ -7852,6 +7981,20 @@
                 "end": "1:31:15",
                 "type": "Sexual Content",
                 "severity": "High"
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "High",
+                "description": "Strong violence featuring strangulation, blunt-force killings, bloody injuries, fatal falls, and a graphic mass knife attack."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "Moderate",
+                "description": "Moderate coarse language throughout, including several uses of the F-word alongside other mild to moderate profanity, crude remarks, and occasional vulgar expressions."
             }
         ]
     },
@@ -8451,6 +8594,20 @@
                 "end": "1:48:23",
                 "type": "Sex & Nudity",
                 "severity": "High"
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "High",
+                "description": "Strong disturbing content throughout, featuring graphic surgical and body-horror imagery, corpse mutilation, animal deaths, bloody injuries, threats, physical assaults, and unsettling depictions of experimental medical procedures."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "High",
+                "description": "Very strong language throughout, including more than 30+ uses of the F-word, repeated sexual and anatomical references, mild obscenities, frequent insulting and derogatory name-calling, and aggressive verbal outbursts."
             }
         ]
     },
@@ -8992,6 +9149,20 @@
                 "end": "1:11:32",
                 "type": "Sex & Nudity",
                 "severity": "High"
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "None",
+                "description": "The film contains no actual violence, with only mild comedic physical incidents and brief non-serious confrontations."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "Moderate",
+                "description": "Very strong and frequent coarse language throughout, including 50+ uses of the F-word, repeated strong profanity, highly offensive sexual terms, and other moderate vulgar expressions."
             }
         ]
     },
