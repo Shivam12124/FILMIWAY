@@ -321,7 +321,12 @@ export const RATING_OPTIONS = [
     { value: 4, label: "Exceptional", color: "#eab308", symbol: "🎫", bgColor: "bg-yellow-900/30", description: "Golden ticket - Cinematic masterpiece" }
 ];
 
-export const GANGSTER_MOVIE_FAQS = {
+export const GANGSTER_MOVIE_FAQS = { 
+    'Secretary': [
+        { question: "Does Secretary have violence and gore?", answer: "According to the Filmiway Parents Guide, the violence in Secretary is rated as Moderate. Strong disturbing themes involving self-harm with brief bloody imagery, along with BDSM-related sexual content and psychologically intense material." },
+        { question: "Does Secretary have profanity or swearing?", answer: "The profanity in Secretary is rated as Moderate. Strong coarse language throughout, including repeated uses of the F-word, other profanity, and crude sexual insults." },
+        { question: "Why is Secretary rated R?", answer: "Secretary earns its R rating due to high sexual content and nudity, moderate violence, and moderate profanity. Specifically, the film contains Strong coarse language throughout, including repeated uses of the F-word, other profanity, and crude sexual insults. Strong disturbing themes involving self-harm with brief bloody imagery, along with BDSM-related sexual content and psychologically intense material. Adults can use our timestamps to skip the explicit content." },
+        ],
     'The Godfather Part II': [
         { question: "Why is The Godfather Part II considered better than the first?", answer: "Many critics argue it is superior because it expands the scope of the original. By juxtaposing Vito's rise to power with Michael's moral descent and the slow destruction of his family, it turns a mafia story into a profound American tragedy." },
         { question: "Why did Michael have Fredo killed?", answer: "Fredo's betrayal endangered Michael's life and his family. In Michael's ruthless worldview, loyalty to the 'family business' supersedes blood. Letting Fredo live would have been a sign of weakness in his absolute dictatorship." },

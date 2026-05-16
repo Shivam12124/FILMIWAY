@@ -319,6 +319,9 @@ export const HULU_DRAMA_MOVIE_FAQS = {
         { question: "Why Romeo and Juliet?", answer: "The play deals with the death of children and the grief of parents. By performing it, the characters are forced to confront the very emotions they have been suppressing in their real lives." }
     ],
     'Little Miss Sunshine': [
+        { question: "Does Little Miss Sunshine have violence and gore?", answer: "According to the Filmiway Parents Guide, the violence in Little Miss Sunshine is rated as None. The film contains no actual violence." },
+        { question: "Does Little Miss Sunshine have profanity or swearing?", answer: "The profanity in Little Miss Sunshine is rated as Moderate. Moderate language throughout, including some strong profanity, repeated mild to moderate coarse terms, and an isolated derogatory slur." },
+        { question: "Why is Little Miss Sunshine rated R?", answer: "Little Miss Sunshine earns its R rating due to high sexual content and nudity, none violence, and moderate profanity. Specifically, the film contains Moderate language throughout, including some strong profanity, repeated mild to moderate coarse terms, and an isolated derogatory slur. The film contains no actual violence. Adults can use our timestamps to skip the explicit content." },
         { question: "Who directed Little Miss Sunshine?", answer: "It was directed by the husband-and-wife team Jonathan Dayton and Valerie Faris. It was their debut feature film after a career in music videos." },
         { question: "What is the meaning of the dance?", answer: "Olive's 'Super Freak' dance is inappropriate and shocking, but the family joining her on stage is a moment of pure solidarity. It signifies them rejecting society's standards of 'winning' and choosing to support each other instead." }
     ],

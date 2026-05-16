@@ -307,7 +307,12 @@ export const COMPLETE_MOVIE_DATA = {
     })
 };
 
-export const FIGHT_CLUB_MOVIE_FAQS = {
+export const FIGHT_CLUB_MOVIE_FAQS = { 
+    'Fight Club': [
+        { question: "Does Fight Club have violence and gore?", answer: "According to the Filmiway Parents Guide, the violence in Fight Club is rated as High. Features brutal bare-knuckle fighting with detailed facial injuries and blood. Includes chemical burns, a fatal head wound, and a self-inflicted gunshot wound." },
+        { question: "Does Fight Club have profanity or swearing?", answer: "The profanity in Fight Club is rated as High. Approximately 78 uses of the F-word and pervasive strong profanity throughout." },
+        { question: "Why is Fight Club rated R?", answer: "Fight Club earns its R rating due to high sexual content and nudity, high violence, and high profanity. Specifically, the film contains Approximately 78 uses of the F-word and pervasive strong profanity throughout. Features brutal bare-knuckle fighting with detailed facial injuries and blood. Includes chemical burns, a fatal head wound, and a self-inflicted gunshot wound. Adults can use our timestamps to skip the explicit content." },
+        ],
     'Filth': [
         { question: "How does Filth compare to Fight Club?", answer: "Both films center on an unreliable, misanthropic narrator whose sanity is fracturing in real-time. Where Tyler Durden is a projection of hyper-masculine rebellion, Bruce Robertson's hallucinations are projections of his deep-seated guilt and extreme bipolar disorder." },
         { question: "Is the ending of Filth different from the book?", answer: "The film's ending is slightly modified but retains the same bleak core. While the book gets much more granular with his internal tapeworm monologue, the film perfectly visually captures his final, tragic attempt to exert control over his collapsing reality." },

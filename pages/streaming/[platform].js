@@ -66,7 +66,7 @@ const getPlatformConfig = (platform) => {
   };
 
   return configs[platform] || {
-    name: platform.charAt(0).toUpperCase() + platform.slice(1),
+    name: platform ? platform.charAt(0).toUpperCase() + platform.slice(1) : 'Streaming',
     color: 'from-gray-500 to-gray-700',
     textColor: 'text-gray-400',
     borderColor: 'border-gray-500/20',
@@ -76,7 +76,7 @@ const getPlatformConfig = (platform) => {
   };
 };
 
-const StreamingHub = ({ platform, collections }) => {
+const StreamingHub = ({ platform = '', collections = [] }) => {
   const config = getPlatformConfig(platform);
   const PlatformIcon = config.icon;
 

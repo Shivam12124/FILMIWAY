@@ -332,6 +332,9 @@ export const RATING_OPTIONS = [
 
 export const HULU_COMEDY_MOVIE_FAQS = {
     'Superbad': [
+        { question: "Does Superbad have violence and gore?", answer: "According to the Filmiway Parents Guide, the violence in Superbad is rated as Mild. Teen-focused violence and chaos including imagined and real assaults, punches, car impacts, police confrontations with weapons, property destruction and arson, threats of killing and mutilation, accidental injuries, vomiting, and scenes of public disturbance and intoxication." },
+        { question: "Does Superbad have profanity or swearing?", answer: "The profanity in Superbad is rated as High. Extremely strong and pervasive language throughout, including heavy repeated F-word usage, frequent sexual and scatological references, anatomical terminology, insults and occasional offensive slurs." },
+        { question: "Why is Superbad rated R?", answer: "Superbad earns its R rating due to high sexual content and nudity, mild violence, and high profanity. Specifically, the film contains Extremely strong and pervasive language throughout, including heavy repeated F-word usage, frequent sexual and scatological references, anatomical terminology, insults and occasional offensive slurs. Teen-focused violence and chaos including imagined and real assaults, punches, car impacts, police confrontations with weapons, property destruction and arson, threats of killing and mutilation, accidental injuries, vomiting, and scenes of public disturbance and intoxication. Adults can use our timestamps to skip the explicit content." },
         { 
             question: "Why is 'McLovin' such a famous movie meme?", 
             answer: "The joke stems from the character Fogell choosing a single, nonsensical moniker for a fake ID instead of a standard name. Seth Rogen revealed the name was inspired by the idea of a 'sexy Irish R&B singer.' It became a cultural touchstone for teen awkwardness in the late 2000s." 

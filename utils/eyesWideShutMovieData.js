@@ -363,7 +363,12 @@ export const COMPLETE_MOVIE_DATA = {
     })
 };
 
-export const EYES_WIDE_SHUT_MOVIE_FAQS = {
+export const EYES_WIDE_SHUT_MOVIE_FAQS = { 
+    'Eyes Wide Shut': [
+        { question: "Does Eyes Wide Shut have violence and gore?", answer: "According to the Filmiway Parents Guide, the violence in Eyes Wide Shut is rated as Mild. Very mild violence-related content, limited to implied off-screen injury, brief minor intimidation, and a non-graphic corpse depiction." },
+        { question: "Does Eyes Wide Shut have profanity or swearing?", answer: "The profanity in Eyes Wide Shut is rated as Moderate. Strong language throughout, including around 18 uses of the F-word alongside repeated moderate profanity, crude sexual terms, and vulgar insults." },
+        { question: "Why is Eyes Wide Shut rated R?", answer: "Eyes Wide Shut earns its R rating due to high sexual content and nudity, mild violence, and moderate profanity. Specifically, the film contains Strong language throughout, including around 18 uses of the F-word alongside repeated moderate profanity, crude sexual terms, and vulgar insults. Very mild violence-related content, limited to implied off-screen injury, brief minor intimidation, and a non-graphic corpse depiction. Adults can use our timestamps to skip the explicit content." },
+        ],
     'Mulholland Drive': [
         { question: "What is the hidden meaning of Mulholland Drive?", answer: "The film pulls back the curtain on the dark side of Hollywood. Similar to how Eyes Wide Shut explores a secret society of New York’s wealthy, David Lynch exposes the entertainment industry as a cult-like entity where shadowy executives and mob-connected figures act as puppeteers, crushing the innocent dreams of outsiders." },
         { question: "What does the Club Silencio scene mean in Mulholland Drive?", answer: "Club Silencio represents the crushing realization that Hollywood reality is a fabrication. The 'lip-sync' performance proves that the art and beauty Diane worshipped are pre-recorded illusions. It is the exact moment the 'masked ball' of her dream ends, forcing her to wake up to her tragic reality." },

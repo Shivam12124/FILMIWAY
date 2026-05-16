@@ -320,7 +320,12 @@ export const COMPLETE_MOVIE_DATA = {
 };
 
 // 🎬 MOVIE FAQS - (100% SEO SAFE, CRITICAL ANALYSIS ONLY)
-export const BASIC_INSTINCT_MOVIE_FAQS = {
+export const BASIC_INSTINCT_MOVIE_FAQS = { 
+    'Basic Instinct': [
+        { question: "Does Basic Instinct have violence and gore?", answer: "According to the Filmiway Parents Guide, the violence in Basic Instinct is rated as High. Features graphic ice-pick murders with detailed shots of blood and physical injury. Contains themes of sexual violence and assault." },
+        { question: "Does Basic Instinct have profanity or swearing?", answer: "The profanity in Basic Instinct is rated as High. Approximately 40 uses of the F-word and frequent crude sexual references." },
+        { question: "Why is Basic Instinct rated R?", answer: "Basic Instinct earns its R rating due to high sexual content and nudity, high violence, and high profanity. Specifically, the film contains Approximately 40 uses of the F-word and frequent crude sexual references. Features graphic ice-pick murders with detailed shots of blood and physical injury. Contains themes of sexual violence and assault. Adults can use our timestamps to skip the explicit content." },
+        ],
     "Dressed to Kill": [
         { question: "How does Dressed to Kill emulate Alfred Hitchcock?", answer: "Director Brian De Palma heavily references Hitchcock's 'Psycho', utilizing complex tracking shots, a shocking early murder of the supposed protagonist, and themes of split personalities to craft a modern, highly stylized neo-noir thriller." },
         { question: "What is the significance of the museum sequence?", answer: "The extended, dialogue-free sequence in the art museum is a masterclass in visual storytelling, building intense erotic tension and mystery purely through eye contact, tracking movement, and Pino Donaggio's swelling score." },

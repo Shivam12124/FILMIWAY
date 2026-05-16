@@ -334,10 +334,16 @@ export const RATING_OPTIONS = [
     { value: 4, label: 'Exceptional', color: '#eab308', symbol: '🎫', bgColor: 'bg-yellow-900/30', description: 'Golden ticket - Cinematic masterpiece' }
 ];
 
-export const PARASITE_MOVIE_FAQS = {
+export const PARASITE_MOVIE_FAQS = { 
+    'Parasite': [
+        { question: "Does Parasite have violence and gore?", answer: "According to the Filmiway Parents Guide, the violence in Parasite is rated as High. Strong violence featuring strangulation, blunt-force killings, bloody injuries, fatal falls, and a graphic mass knife attack." },
+        { question: "Does Parasite have profanity or swearing?", answer: "The profanity in Parasite is rated as Moderate. Moderate coarse language throughout, including several uses of the F-word alongside other mild to moderate profanity, crude remarks, and occasional vulgar expressions." },
+        { question: "Why is Parasite rated R?", answer: "Parasite earns its R rating due to high sexual content and nudity, high violence, and moderate profanity. Specifically, the film contains Moderate coarse language throughout, including several uses of the F-word alongside other mild to moderate profanity, crude remarks, and occasional vulgar expressions. Strong violence featuring strangulation, blunt-force killings, bloody injuries, fatal falls, and a graphic mass knife attack. Adults can use our timestamps to skip the explicit content." },
+        ],
   'The Handmaiden': [
-    { question: "Does The Handmaiden have profanity?", answer: "According to our Parents Guide, The Handmaiden has a High severity rating for profanity. Frequent use of strong profanity and sexually explicit language throughout." },
-        { question: "Does The Handmaiden have Violence & Gore scenes?", answer: "Our Parents Guide rates the Violence & Gore in The Handmaiden as Moderate. Contains sequences involving drugging, child abuse, and suicide themes. Includes references to sexual sadism and graphic mutilation." },
+        { question: "Does The Handmaiden have violence and gore?", answer: "According to the Filmiway Parents Guide, the violence in The Handmaiden is rated as Moderate. Contains sequences involving drugging, child abuse, and suicide themes. Includes references to sexual sadism and graphic mutilation." },
+        { question: "Does The Handmaiden have profanity or swearing?", answer: "The profanity in The Handmaiden is rated as High. Frequent use of strong profanity and sexually explicit language throughout." },
+        { question: "Why is The Handmaiden rated R?", answer: "The Handmaiden earns its R rating due to high sexual content and nudity, moderate violence, and high profanity. Specifically, the film contains Frequent use of strong profanity and sexually explicit language throughout. Contains sequences involving drugging, child abuse, and suicide themes. Includes references to sexual sadism and graphic mutilation. Adults can use our timestamps to skip the explicit content." },
         { 
       question: "How does the three-part structure of The Handmaiden reframes the story?", 
       answer: "The film employs a 'Rashomon-style' narrative where events are replayed from shifting perspectives. Part 1 establishes a standard con; Part 2 reveals a secret alliance between the women that completely subverts previous scenes; and Part 3 executes the final retribution. This structure masterfully transforms a tale of victimization into one of ultimate empowerment." 
@@ -395,7 +401,10 @@ export const PARASITE_MOVIE_FAQS = {
   ],
 
   'Memories of Murder': [
-    { 
+        { question: "Does Memories of Murder have violence and gore?", answer: "According to the Filmiway Parents Guide, the violence in Memories of Murder is rated as Moderate. Strong disturbing content involving murder investigations, sexual violence references, grisly crime-scene imagery, police brutality, beatings, torture, bloody injuries, and brief graphic death-related imagery." },
+        { question: "Does Memories of Murder have profanity or swearing?", answer: "The profanity in Memories of Murder is rated as Moderate. Strong and frequent coarse language throughout, including over 30 uses of the F-word alongside repeated uses of other profanity and insulting terms." },
+        { question: "Why is Memories of Murder rated Not Rated?", answer: "Memories of Murder earns its Not Rated rating due to moderate sexual content and nudity, moderate violence, and moderate profanity. Specifically, the film contains Strong and frequent coarse language throughout, including over 30 uses of the F-word alongside repeated uses of other profanity and insulting terms. Strong disturbing content involving murder investigations, sexual violence references, grisly crime-scene imagery, police brutality, beatings, torture, bloody injuries, and brief graphic death-related imagery. Adults can use our timestamps to skip the explicit content." },
+        { 
       question: "Why does the detective stare at the camera at the end of Memories of Murder?", 
       answer: "In the final shot, Detective Park breaks the fourth wall to stare directly at the audience. Director Bong Joon-ho intended this as a direct confrontation for the real-life killer (who remained uncaught at the time of release). It asks the chilling question: 'Are you watching this right now?'—implying the monster is an ordinary person hiding among us." 
     },

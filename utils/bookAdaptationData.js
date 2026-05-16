@@ -324,7 +324,12 @@ export const COMPLETE_MOVIE_DATA = {
 };
 
 // 🎬 FAQS FOR THE BOOK ADAPTATION COLLECTION
-export const BOOK_ADAPTATION_FAQS = {
+export const BOOK_ADAPTATION_FAQS = { 
+    'Forrest Gump': [
+        { question: "Does Forrest Gump have violence and gore?", answer: "According to the Filmiway Parents Guide, the violence in Forrest Gump is rated as Moderate. The film contains primarily war-related violence with explosions, gunfire, dead and wounded soldiers, occasional fistfights and bullying, brief real and historical assassination footage, and a few emotionally intense deaths." },
+        { question: "Does Forrest Gump have profanity or swearing?", answer: "The profanity in Forrest Gump is rated as Moderate. Language includes a single use of the F-word, along with crude expressions, insulting remarks, and occasional racially offensive terminology." },
+        { question: "Why is Forrest Gump rated PG-13?", answer: "Forrest Gump earns its PG-13 rating due to moderate sexual content and nudity, moderate violence, and moderate profanity. Specifically, the film contains Language includes a single use of the F-word, along with crude expressions, insulting remarks, and occasional racially offensive terminology. The film contains primarily war-related violence with explosions, gunfire, dead and wounded soldiers, occasional fistfights and bullying, brief real and historical assassination footage, and a few emotionally intense deaths. Adults can use our timestamps to skip the explicit content." },
+        ],
     'The Shawshank Redemption': [
         { question: "Why did Stephen King sell the rights so cheaply?", answer: "Stephen King famously sold the rights to his novella 'Rita Hayworth and Shawshank Redemption' to Frank Darabont for just $1. King had a policy of granting 'dollar baby' deals to aspiring filmmakers he believed in, and Darabont had previously impressed him with a short film." },
         { question: "What is the significance of the posters in Andy's cell?", answer: "The posters (Rita Hayworth, Marilyn Monroe, Raquel Welch) visually track the passage of decades in prison. Thematically, they represent Andy's desire for a normal, beautiful life on the outside, while practically serving to hide his escape tunnel." },

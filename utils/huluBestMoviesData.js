@@ -396,6 +396,9 @@ export const HULU_BEST_MOVIE_FAQS = {
     ],
 
     'Superbad': [
+        { question: "Does Superbad have violence and gore?", answer: "According to the Filmiway Parents Guide, the violence in Superbad is rated as Mild. Teen-focused violence and chaos including imagined and real assaults, punches, car impacts, police confrontations with weapons, property destruction and arson, threats of killing and mutilation, accidental injuries, vomiting, and scenes of public disturbance and intoxication." },
+        { question: "Does Superbad have profanity or swearing?", answer: "The profanity in Superbad is rated as High. Extremely strong and pervasive language throughout, including heavy repeated F-word usage, frequent sexual and scatological references, anatomical terminology, insults and occasional offensive slurs." },
+        { question: "Why is Superbad rated R?", answer: "Superbad earns its R rating due to high sexual content and nudity, mild violence, and high profanity. Specifically, the film contains Extremely strong and pervasive language throughout, including heavy repeated F-word usage, frequent sexual and scatological references, anatomical terminology, insults and occasional offensive slurs. Teen-focused violence and chaos including imagined and real assaults, punches, car impacts, police confrontations with weapons, property destruction and arson, threats of killing and mutilation, accidental injuries, vomiting, and scenes of public disturbance and intoxication. Adults can use our timestamps to skip the explicit content." },
         { 
             question: "Why is 'McLovin' still a cultural icon 15+ years later?", 
             answer: "Because it’s the ultimate 'fake ID' nightmare. The name was chosen for its total absurdity. Christopher Mintz-Plasse (who was 17 at the time) was so annoying in his audition that Jonah Hill actually hated him—which created the perfect on-screen rivalry." 

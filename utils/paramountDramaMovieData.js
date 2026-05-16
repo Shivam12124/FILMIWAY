@@ -342,7 +342,12 @@ export const STRATEGIC_QUOTES = {
     13: "Life is like a box of chocolates. You never know what you're gonna get."
 };
 
-export const PARAMOUNT_DRAMA_MOVIE_FAQS = {
+export const PARAMOUNT_DRAMA_MOVIE_FAQS = { 
+    'The Wolf of Wall Street': [
+        { question: "Does The Wolf of Wall Street have violence and gore?", answer: "According to the Filmiway Parents Guide, the violence in The Wolf of Wall Street is rated as Moderate. Depicts domestic abuse, drug-induced injuries, and reckless behavior. Includes scenes of vomiting and physical altercations." },
+        { question: "Does The Wolf of Wall Street have profanity or swearing?", answer: "The profanity in The Wolf of Wall Street is rated as Severe. Pervasive strong language with over 430–500 uses of the F-word and frequent use of the C-word." },
+        { question: "Why is The Wolf of Wall Street rated R?", answer: "The Wolf of Wall Street earns its R rating due to high sexual content and nudity, moderate violence, and severe profanity. Specifically, the film contains Pervasive strong language with over 430–500 uses of the F-word and frequent use of the C-word. Depicts domestic abuse, drug-induced injuries, and reckless behavior. Includes scenes of vomiting and physical altercations. Adults can use our timestamps to skip the explicit content." },
+        ],
     'There Will Be Blood': [
         { question: "Is Daniel Plainview a real person?", answer: "He is loosely based on Edward Doheny, a real-life oil tycoon. However, the character is largely a fictional creation adapted from Upton Sinclair's novel 'Oil!', designed to personify the destructive nature of unchecked capitalism." },
         { question: "What does the ending mean?", answer: "The bowling alley scene represents Daniel's total descent into madness. Having achieved absolute wealth, he has nothing left to conquer but his own past (Eli Sunday). His line 'I'm finished' signifies both the end of his task (killing Eli) and the end of his humanity." },
@@ -389,6 +394,9 @@ export const PARAMOUNT_DRAMA_MOVIE_FAQS = {
         { question: "What is the significance of the hummingbird?", answer: "The hummingbird appears at key moments of death and transition (like on the tugboat). It symbolizes infinity (its wings move in a figure-8 pattern) and the idea that life is fleeting but the energy of a soul persists." }
     ],
     'Forrest Gump': [
+        { question: "Does Forrest Gump have violence and gore?", answer: "According to the Filmiway Parents Guide, the violence in Forrest Gump is rated as Moderate. The film contains primarily war-related violence with explosions, gunfire, dead and wounded soldiers, occasional fistfights and bullying, brief real and historical assassination footage, and a few emotionally intense deaths." },
+        { question: "Does Forrest Gump have profanity or swearing?", answer: "The profanity in Forrest Gump is rated as Moderate. Language includes a single use of the F-word, along with crude expressions, insulting remarks, and occasional racially offensive terminology." },
+        { question: "Why is Forrest Gump rated PG-13?", answer: "Forrest Gump earns its PG-13 rating due to moderate sexual content and nudity, moderate violence, and moderate profanity. Specifically, the film contains Language includes a single use of the F-word, along with crude expressions, insulting remarks, and occasional racially offensive terminology. The film contains primarily war-related violence with explosions, gunfire, dead and wounded soldiers, occasional fistfights and bullying, brief real and historical assassination footage, and a few emotionally intense deaths. Adults can use our timestamps to skip the explicit content." },
         { question: "Is Forrest Gump a reliable narrator?", answer: "Not entirely. Forrest sees the world through a lens of innocence. He describes horrific events (war, assassination, abuse) with a matter-of-fact tone. The audience understands the gravity of the history while Forrest just sees people 'doing things.' This irony is the core of the film." },
         { question: "Did Tom Hanks really run that much?", answer: "Tom Hanks did a lot of the running, but for the wide shots of him running across the country, a lookalike double (Jim Hanks, his brother) was often used." },
         { question: "What was in the letter Jenny gave Forrest?", answer: "The movie never reveals what is written in the letter. It is left to the audience's imagination, but it presumably explains her love for him and perhaps the truth about her illness (implied to be HIV/AIDS)." }

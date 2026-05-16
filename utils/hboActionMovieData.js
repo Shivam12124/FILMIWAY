@@ -300,7 +300,12 @@ export const RATING_OPTIONS = [
     { value: 4, label: "Legendary", color: "#eab308", symbol: "👑", bgColor: "bg-yellow-900/30", description: "Cinema history" }
 ];
 
-export const HBO_ACTION_MOVIE_FAQS = {
+export const HBO_ACTION_MOVIE_FAQS = { 
+    'Titanic': [
+        { question: "Does Titanic have violence and gore?", answer: "According to the Filmiway Parents Guide, the violence in Titanic is rated as Moderate. Strong disaster-related violence and peril throughout the latter half, including drowning, freezing deaths, shootings, physical assaults, suicide references, and intense scenes of mass panic and fatal injury during the ship’s sinking." },
+        { question: "Does Titanic have profanity or swearing?", answer: "The profanity in Titanic is rated as Moderate. Moderate to strong language throughout, including uses of the F-word, other profanity, and an obscene hand gesture." },
+        { question: "Why is Titanic rated PG-13?", answer: "Titanic earns its PG-13 rating due to high sexual content and nudity, moderate violence, and moderate profanity. Specifically, the film contains Moderate to strong language throughout, including uses of the F-word, other profanity, and an obscene hand gesture. Strong disaster-related violence and peril throughout the latter half, including drowning, freezing deaths, shootings, physical assaults, suicide references, and intense scenes of mass panic and fatal injury during the ship’s sinking. Adults can use our timestamps to skip the explicit content." },
+        ],
     'Seven Samurai': [
         { 
             question: "Is it too old to enjoy today?", 

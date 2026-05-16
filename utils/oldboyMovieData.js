@@ -467,8 +467,9 @@ export const OLDBOY_MOVIE_FAQS = {
   ],
 
   'The Handmaiden': [
-    { question: "Does The Handmaiden have profanity?", answer: "According to our Parents Guide, The Handmaiden has a High severity rating for profanity. Frequent use of strong profanity and sexually explicit language throughout." },
-        { question: "Does The Handmaiden have Violence & Gore scenes?", answer: "Our Parents Guide rates the Violence & Gore in The Handmaiden as Moderate. Contains sequences involving drugging, child abuse, and suicide themes. Includes references to sexual sadism and graphic mutilation." },
+        { question: "Does The Handmaiden have violence and gore?", answer: "According to the Filmiway Parents Guide, the violence in The Handmaiden is rated as Moderate. Contains sequences involving drugging, child abuse, and suicide themes. Includes references to sexual sadism and graphic mutilation." },
+        { question: "Does The Handmaiden have profanity or swearing?", answer: "The profanity in The Handmaiden is rated as High. Frequent use of strong profanity and sexually explicit language throughout." },
+        { question: "Why is The Handmaiden rated R?", answer: "The Handmaiden earns its R rating due to high sexual content and nudity, moderate violence, and high profanity. Specifically, the film contains Frequent use of strong profanity and sexually explicit language throughout. Contains sequences involving drugging, child abuse, and suicide themes. Includes references to sexual sadism and graphic mutilation. Adults can use our timestamps to skip the explicit content." },
         { 
       question: "Is this Park Chan-wook's most sensual cinematic achievement?", 
       answer: "Erotic deception transforms into genuine love across revolutionary four-timeline structure. Initial con-artist manipulation evolves into authentic connection defying genre expectations. Victorian novel adaptation Koreanized brilliantly. Sensuality serves narrative complexity rather than exploitation, elevating erotic thriller into high art territory." 

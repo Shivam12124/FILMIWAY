@@ -296,7 +296,10 @@ export const COMPLETE_MOVIE_DATA = {
 export const PARAMOUNT_ROMANCE_MOVIE_FAQS = {
 
   'Titanic': [
-    {
+        { question: "Does Titanic have violence and gore?", answer: "According to the Filmiway Parents Guide, the violence in Titanic is rated as Moderate. Strong disaster-related violence and peril throughout the latter half, including drowning, freezing deaths, shootings, physical assaults, suicide references, and intense scenes of mass panic and fatal injury during the ship’s sinking." },
+        { question: "Does Titanic have profanity or swearing?", answer: "The profanity in Titanic is rated as Moderate. Moderate to strong language throughout, including uses of the F-word, other profanity, and an obscene hand gesture." },
+        { question: "Why is Titanic rated PG-13?", answer: "Titanic earns its PG-13 rating due to high sexual content and nudity, moderate violence, and moderate profanity. Specifically, the film contains Moderate to strong language throughout, including uses of the F-word, other profanity, and an obscene hand gesture. Strong disaster-related violence and peril throughout the latter half, including drowning, freezing deaths, shootings, physical assaults, suicide references, and intense scenes of mass panic and fatal injury during the ship’s sinking. Adults can use our timestamps to skip the explicit content." },
+        {
       question: "Could Jack have survived if Rose shared the door?",
       answer: "From a physics standpoint, later tests (including ones conducted by James Cameron himself) showed that it *may* have been possible with perfect balance. However, the film is not about survival logistics. Jack’s death is a narrative and emotional necessity—it transforms Titanic from a disaster spectacle into a timeless tragedy. His sacrifice freezes their love at its most pure, ensuring it is remembered as eternal rather than ordinary."
     },
