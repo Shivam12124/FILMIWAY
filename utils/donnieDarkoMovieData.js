@@ -131,7 +131,7 @@ export const COMPLETE_MOVIE_DATA = {
         psychologicalIntensity: 95, mindBendScore: 85, dominantColor: "#3b82f6", complexityLevel: "HIGH",
         rating: 7.6, criticsScore: 33, audienceScore: 81, director: "Eric Bress",
         cast: ["Ashton Kutcher", "Amy Smart"], boxOffice: "$96 million", budget: "$13 million",
-        dna: { "Sci-Fi": 50, "Thriller": 30, "Drama": 20 },
+        dna: { "Sci-Fi": 60, "Thriller": 30, "Drama": 10 },
         scenes: [
             { time: 15, intensity: 40, label: "The Blackouts", color: "#1e3a8a" },
             { time: 45, intensity: 65, label: "Prison Reality", color: "#1d4ed8" },
