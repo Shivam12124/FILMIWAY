@@ -158,38 +158,38 @@ export default function App({ Component, pageProps }) {
         <link rel="manifest" href="/manifest.json" />
       </Head>
       
-      {/* Google Analytics scripts: Load after the page is interactive for better data accuracy, without user interaction gate. */}
-      <Script
-        strategy="afterInteractive"
-        src={`https://www.googletagmanager.com/gtag/js?id=G-EDS2VZ5HP1`}
-      />
-      <Script
-        id="google-analytics"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-EDS2VZ5HP1', {
-              page_path: window.location.pathname,
-            });
-          `,
-        }}
-      />
-      {/* Microsoft Clarity script: Moved to lazyOnload. Eliminates the 200ms+ TBT penalty. */}
-      <Script id="microsoft-clarity" strategy="lazyOnload" dangerouslySetInnerHTML={{
-        __html: `
-          (function(c,l,a,r,i,t,y){
-            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-          })(window, document, "clarity", "script", "u1n9jixukw");
-        `
-      }} />
-
-      {/* The isInteracted block remains available for other truly heavy scripts if needed in the future */}
-      {isInteracted && <></>}
+      {/* ⚡ ZERO-TBT STRATEGY: Delay all heavy tracking scripts until the user actually interacts with the page */}
+      {isInteracted && (
+        <>
+          <Script
+            strategy="afterInteractive"
+            src={`https://www.googletagmanager.com/gtag/js?id=G-EDS2VZ5HP1`}
+          />
+          <Script
+            id="google-analytics"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'G-EDS2VZ5HP1', {
+                  page_path: window.location.pathname,
+                });
+              `,
+            }}
+          />
+          <Script id="microsoft-clarity" strategy="afterInteractive" dangerouslySetInnerHTML={{
+            __html: `
+              (function(c,l,a,r,i,t,y){
+                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+              })(window, document, "clarity", "script", "u1n9jixukw");
+            `
+          }} />
+        </>
+      )}
 
       {/* ✅ Wrap Component in Main with Font Variables */}
       <main className={`${bebas.variable} ${montserrat.variable} ${inter.variable} ${playfair.variable} font-sans`}>
