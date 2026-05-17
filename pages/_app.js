@@ -150,9 +150,7 @@ export default function App({ Component, pageProps }) {
         <meta name="twitter:site" content="@filmiway" />
         <meta name="twitter:creator" content="@filmiway" />
         
-        {/* Fonts, Icons, Manifest */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
+        {/* Icons, Manifest */}
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />

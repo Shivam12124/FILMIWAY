@@ -110,12 +110,11 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
         }
     };
 
-    let sensitiveData = null;
-    let contentTypes = [];
-
-    sensitiveData = { scenes: filteredHeavyScenes }; // Use filtered scenes for the UI display
-    contentTypes = [...new Set(filteredHeavyScenes.map(s => s.type).filter(t => isHeavyScene({ type: t })))];
-    if (contentTypes.length === 0 && filteredHeavyScenes.length > 0) contentTypes = ['Mature Content']; // Fallback label if types are too vague
+    const actualScenes = sensitiveScenes || [];
+    let sensitiveData = { scenes: actualScenes }; // Show ALL scenes in the timeline (including violence & gore)
+    
+    let contentTypes = [...new Set(filteredHeavyScenes.map(s => s.type).filter(Boolean))];
+    if (contentTypes.length === 0 && filteredHeavyScenes.length > 0) contentTypes = ['Mature Content'];
 
     // ✅ DYNAMIC RUNTIME VERIFICATION (Including Specific Movie Overrides)
     let currentRuntime = movie.Runtime || movie.runtime || "Official";
@@ -206,7 +205,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
             totalScenes: filteredHeavyScenes.length,
             formattedTime
         };
-    }, [sensitiveData]);
+    }, [filteredHeavyScenes]);
 
     if (!sensitiveData?.scenes?.length) {
         return (
@@ -287,7 +286,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                     <div className="ml-1 space-y-2.5 sm:space-y-2">
                         <p className="text-[13px] sm:text-sm text-gray-500 flex items-start sm:items-center gap-2">
                             <AlertOctagon size={14} className="text-red-500/80 shrink-0 mt-0.5 sm:mt-0" />
-                            <span className="leading-snug">Scenes to skip: <span className="text-gray-300 font-medium">{contentTypes.length > 0 ? contentTypes.join(', ') : 'Explicit Content'}</span></span>
+                            <span className="leading-snug">Scenes to skip: <span className="text-gray-300 font-medium">{contentTypes.length > 0 ? contentTypes.join(', ') : 'None (Violence/Language Only)'}</span></span>
                         </p> 
                         
                         <p className="text-[13px] sm:text-sm text-gray-500 flex items-start sm:items-center gap-2">
@@ -313,7 +312,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                 <caption>Exact skip timestamps for sensitive scenes in {movie.Title} ({currentRuntime})</caption>
                 <thead>
                     <tr>
-                        <th scope="col">Content Type (Sex, Nudity, Explicit)</th>
+                        <th scope="col">Content Type</th>
                         <th scope="col">Start Time</th>
                         <th scope="col">End Time</th>
                         <th scope="col">Severity Level</th>
