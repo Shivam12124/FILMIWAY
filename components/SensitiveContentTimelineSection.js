@@ -1,5 +1,5 @@
 // components/SensitiveContentTimelineSection.js
-import React, { useMemo, useState, useEffect, useRef } from 'react';
+import React, { useMemo, useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Shield, CheckCircle, Clock, AlertOctagon, Info, Film, FastForward, Eye, Heart, AlertTriangle, ThumbsUp, ThumbsDown, MessageSquare, Flame } from 'lucide-react';
 
@@ -21,20 +21,25 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
     // --- REAL FIREBASE VOTE STATE ---
     const [helpfulCount, setHelpfulCount] = useState(0);
     const [hasVoted, setHasVoted] = useState(false);
-    const [isVoting, setIsVoting] = useState(false);
+    const [isVoting, setIsVoting] = useState(false); // Manages vote submission state
 
-    const movieId = movie?.slug || movie?.tmdbId?.toString();
+    const movieId = movie?.slug || movie?.tmdbId?.toString(); // Unique identifier for the movie
+
+    const isHeavyScene = useCallback((scene) => {
+        const t = scene.type?.toLowerCase() || '';
+        return t.includes('sex') || t.includes('nudity') || t.includes('explicit') || t.includes('suggestive') || t.includes('lingerie') || t.includes('bikini');
+    }, []);
+
+    const filteredHeavyScenes = useMemo(() => {
+        return sensitiveScenes.filter(isHeavyScene);
+    }, [sensitiveScenes, isHeavyScene]);
 
     useEffect(() => {
         const handleClickOutside = (event) => {
-            if (infoRef.current && !infoRef.current.contains(event.target)) {
-                setShowInfo(false);
-            }
+            if (infoRef.current && !infoRef.current.contains(event.target)) setShowInfo(false);
         };
         document.addEventListener('mousedown', handleClickOutside);
         document.addEventListener('touchstart', handleClickOutside);
-        
-        // 🔥 Check if user already voted for this movie using the slug as the key
         if (typeof window !== 'undefined' && movieId) {
             const previouslyVoted = localStorage.getItem(`filmiway_voted_${movieId}`);
             if (previouslyVoted) {
@@ -55,7 +60,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
             } catch (error) {
                 console.error("Error fetching helpful votes:", error);
             }
-        };
+        }; 
         
         // ⚡ DEFER FIREBASE IMPORT BY 5 SECONDS TO PREVENT MAIN THREAD BLOCKING
         const timer = setTimeout(() => fetchVotes(), 5000);
@@ -63,7 +68,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
             document.removeEventListener('touchstart', handleClickOutside);
-            clearTimeout(timer);
+            clearTimeout(timer); // Cleanup timeout to prevent memory leaks
         };
     }, [movie?.slug, movie?.tmdbId]);
 
@@ -105,25 +110,12 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
         }
     };
 
-    // 🔥 SINGLE SOURCE OF TRUTH: Read from props first so individual collection data files work!
-    const actualScenes = sensitiveScenes || [];
-
     let sensitiveData = null;
     let contentTypes = [];
 
-    sensitiveData = { scenes: actualScenes };
-    const types = new Set();
-    actualScenes.forEach(scene => {
-        const lowerType = scene.type?.toLowerCase() || '';
-        if (lowerType.includes('sexual content')) types.add('sexual content');
-        else if (lowerType.match(/\bsex\b/)) types.add('sex');
-        else if (lowerType.includes('explicit')) types.add('explicit content');
-        if (lowerType.includes('partial nudity')) types.add('partial nudity');
-        else if (lowerType.includes('nudity')) types.add('nudity');
-        if (lowerType.includes('suggestive') || lowerType.includes('lingerie') || lowerType.includes('bikini')) types.add('suggestive clothing');
-    });
-    contentTypes = Array.from(types);
-    if (contentTypes.length === 0) contentTypes = [...new Set(actualScenes.map(s => s.type).filter(Boolean))];
+    sensitiveData = { scenes: filteredHeavyScenes }; // Use filtered scenes for the UI display
+    contentTypes = [...new Set(filteredHeavyScenes.map(s => s.type).filter(t => isHeavyScene({ type: t })))];
+    if (contentTypes.length === 0 && filteredHeavyScenes.length > 0) contentTypes = ['Mature Content']; // Fallback label if types are too vague
 
     // ✅ DYNAMIC RUNTIME VERIFICATION (Including Specific Movie Overrides)
     let currentRuntime = movie.Runtime || movie.runtime || "Official";
@@ -180,14 +172,14 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
     };
 
     const skipStats = useMemo(() => {
-        if (!sensitiveData?.scenes?.length) return { totalScenes: 0, formattedTime: "0 sec" };
+        if (!filteredHeavyScenes.length) return { totalScenes: 0, formattedTime: "0 sec" };
 
         let totalSeconds = 0;
         
-        sensitiveData.scenes.forEach(scene => {
+        filteredHeavyScenes.forEach(scene => { // Iterate over filtered heavy scenes
             if (scene.start && scene.end) {
                 const parseTime = (t) => {
-                    const parts = t.split(':').map(Number);
+                    const parts = t.split(':').map(Number); // Time format (HH:MM:SS or MM:SS)
                     if (parts.length === 3) return (parts[0] * 3600) + (parts[1] * 60) + (parts[2] || 0);
                     if (parts.length === 2) return (parts[0] * 60) + (parts[1] || 0);
                     return 0;
@@ -210,8 +202,8 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
         else if (mins === 0) formattedTime = `${secs} sec`;
         else formattedTime = secs > 0 ? `${mins} min ${secs} sec` : `${mins} min`;
 
-        return {
-            totalScenes: sensitiveData.scenes.length,
+        return { // Return stats based on filtered heavy scenes
+            totalScenes: filteredHeavyScenes.length,
             formattedTime
         };
     }, [sensitiveData]);
@@ -296,7 +288,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                         <p className="text-[13px] sm:text-sm text-gray-500 flex items-start sm:items-center gap-2">
                             <AlertOctagon size={14} className="text-red-500/80 shrink-0 mt-0.5 sm:mt-0" />
                             <span className="leading-snug">Scenes to skip: <span className="text-gray-300 font-medium">{contentTypes.length > 0 ? contentTypes.join(', ') : 'Explicit Content'}</span></span>
-                        </p>
+                        </p> 
                         
                         <p className="text-[13px] sm:text-sm text-gray-500 flex items-start sm:items-center gap-2">
                             <CheckCircle size={14} className="text-emerald-500/80 shrink-0 mt-0.5 sm:mt-0" />
@@ -321,7 +313,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                 <caption>Exact skip timestamps for sensitive scenes in {movie.Title} ({currentRuntime})</caption>
                 <thead>
                     <tr>
-                        <th scope="col">Content Type</th>
+                        <th scope="col">Content Type (Sex, Nudity, Explicit)</th>
                         <th scope="col">Start Time</th>
                         <th scope="col">End Time</th>
                         <th scope="col">Severity Level</th>
@@ -329,7 +321,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                 </thead>
                 <tbody>
                     {sensitiveData.scenes.map((scene, idx) => (
-                        <tr key={`seo-table-row-${idx}`}>
+                        <tr key={`seo-table-row-${idx}`}> {/* These scenes are already filtered */}
                             <td>{scene.type || 'Mature Content'}{scene.description && scene.description !== scene.type ? ` - ${scene.description}` : ''}</td>
                             <td>{scene.start || 'N/A'}</td>
                             <td>{scene.end || 'N/A'}</td>

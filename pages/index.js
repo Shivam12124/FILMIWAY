@@ -82,7 +82,6 @@ const CollectionCard = memo(({ collection, index, href, isPrioritySection }) => 
             sizes="(max-width: 640px) 160px, 250px"
             className="object-cover transition-transform duration-700 group-hover:scale-105"
             draggable={false}
-            unoptimized
           />
         </div>
         
@@ -149,7 +148,6 @@ const Top10MovieCard = memo(({ movie, index }) => {
           quality={65}
           sizes="(max-width: 640px) 160px, 250px"
           className="object-cover"
-          unoptimized
         />
         <div className="absolute inset-0 bg-gradient-to-t from-yellow-500/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       </div>

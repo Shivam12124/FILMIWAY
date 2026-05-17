@@ -4353,6 +4353,11 @@ return (
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" key={`twitter-title-${collection.slug}`} content={`${metaContent.twitterTitle || metaContent.title || collection.title}`} />
     <meta name="twitter:description" key={`twitter-desc-${collection.slug}`} content={`${metaContent.description || collection.description}`} />
+
+    {/* ⚡ LCP PRELOAD: Preload the first movie's poster so the collection page loads like lightning */}
+    {movies && movies.length > 0 && movies[0]?.Poster && (
+        <link rel="preload" as="image" href={movies[0].Poster} fetchPriority="high" />
+    )}
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{

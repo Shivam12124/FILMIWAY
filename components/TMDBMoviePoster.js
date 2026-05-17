@@ -7,8 +7,8 @@ const TMDB_API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
 const TMDB_BASE_URL = 'https://api.themoviedb.org/3';
 const TMDB_IMAGE_BASE_URL = 'https://image.tmdb.org/t/p';
 
-// ✅ FIX: Changed default to 'w500' for HD Quality (No more blur)
-const TMDBMoviePoster = React.memo(({ movie, className = "", alt, posterSize = "w500" }) => {
+// ✅ FIX: Added 'priority' prop support and removed 'unoptimized' for lightning-fast LCP
+const TMDBMoviePoster = React.memo(({ movie, className = "", alt, posterSize = "w500", priority = false }) => {
     const [posterUrl, setPosterUrl] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [hasError, setHasError] = useState(false);
@@ -117,13 +117,13 @@ const TMDBMoviePoster = React.memo(({ movie, className = "", alt, posterSize = "
                 fill // Use fill to adapt to container size
                 sizes="(max-width: 768px) 33vw, (max-width: 1200px) 20vw, 15vw" // Responsive sizes hint
                 className={`object-cover transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
-                loading="lazy"
+                priority={priority}
+                loading={priority ? undefined : "lazy"}
                 onLoadingComplete={() => setIsLoading(false)}
                 onError={() => {
                     setHasError(true);
                     setIsLoading(false);
                 }}
-                unoptimized
             />
 
             {/* Error Fallback: Only text if image breaks */}
