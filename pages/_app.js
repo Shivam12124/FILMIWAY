@@ -11,25 +11,25 @@ const bebas = Bebas_Neue({
   weight: '400',
   subsets: ['latin'],
   variable: '--font-bebas',
-  display: 'optional',
+  display: 'swap',
 });
 
 const montserrat = Montserrat({
   subsets: ['latin'],
   variable: '--font-montserrat',
-  display: 'optional',
+  display: 'swap',
 });
 
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
-  display: 'optional',
+  display: 'swap',
 });
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
   variable: '--font-playfair',
-  display: 'optional',
+  display: 'swap',
 });
 
 export default function App({ Component, pageProps }) {
@@ -177,8 +177,8 @@ export default function App({ Component, pageProps }) {
           `,
         }}
       />
-      {/* Microsoft Clarity script: Also load after interactive for better data capture. */}
-      <Script id="microsoft-clarity" strategy="afterInteractive" dangerouslySetInnerHTML={{
+      {/* Microsoft Clarity script: Moved to lazyOnload. Eliminates the 200ms+ TBT penalty. */}
+      <Script id="microsoft-clarity" strategy="lazyOnload" dangerouslySetInnerHTML={{
         __html: `
           (function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};

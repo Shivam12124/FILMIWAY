@@ -51,34 +51,14 @@ const PlatformSelector = () => {
 <Link
   key={platform.id}
   href={`/streaming/${platform.id}`}
-  className="group flex flex-col items-center text-center gap-3 sm:gap-4 p-3 sm:p-4 hover:-translate-y-1 transition-transform duration-300"
+  className="group flex flex-col items-center text-center p-3 hover:-translate-y-1 transition-transform duration-300 w-full"
 >
-  <div className="relative flex flex-col items-center text-center gap-3">
-    {/* Bigger, punchier app-icon tile */}
-    <div className="h-16 w-16 sm:h-20 sm:w-20 rounded-3xl bg-white/8 backdrop-blur-xl flex items-center justify-center shadow-[0_0_40px_rgba(0,0,0,0.85)] group-hover:shadow-[0_0_55px_rgba(250,204,21,0.7)] group-hover:scale-110 transition-all duration-300">
-<img
-  src={platform.logo}
-  alt={`${platform.name} logo`}
-  width="80"
-  height="80"
-  className={
-    "h-10 sm:h-11 object-contain filter drop-shadow-[0_0_8px_rgba(0,0,0,0.9)]" +
-    (platform.id === "hbo-max" || platform.id === "peacock" ? " invert" : "")
-  }
-  loading="lazy"
-/>
-
-
-
+  <div className="relative w-full max-w-[240px] mx-auto">
+    <div className={`h-16 sm:h-20 w-full rounded-2xl bg-gradient-to-br ${platform.color} flex items-center justify-center shadow-[0_8px_30px_rgba(0,0,0,0.5)] group-hover:shadow-[0_0_40px_rgba(250,204,21,0.4)] group-hover:scale-105 transition-all duration-300 border border-white/20`}>
+        <span className="text-xl sm:text-2xl font-bold text-white drop-shadow-md tracking-wide">
+            {platform.name}
+        </span>
     </div>
-
-    <h3 className="text-lg sm:text-xl font-semibold text-white group-hover:text-yellow-300 transition-colors">
-      {platform.name}
-    </h3>
-
-    <p className="text-xs sm:text-sm text-gray-400 group-hover:text-gray-100 transition-colors">
-      {platform.description}
-    </p>
   </div>
 </Link>
 
