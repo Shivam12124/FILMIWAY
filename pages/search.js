@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -10,6 +10,33 @@ import { db } from '../firebaseConfig';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import masterDatabase from '../utils/masterDatabase.json';
 import tmdbCache from '../data/tmdbCache.json';
+
+// ⚡ LEVENSHTEIN DISTANCE FOR "DID YOU MEAN" SUGGESTIONS
+const getLevenshteinDistance = (a, b) => {
+  if (a.length === 0) return b.length;
+  if (b.length === 0) return a.length;
+
+  const matrix = [];
+  for (let i = 0; i <= b.length; i++) {
+    matrix[i] = [i];
+  }
+  for (let j = 0; j <= a.length; j++) {
+    matrix[0][j] = j;
+  }
+  for (let i = 1; i <= b.length; i++) {
+    for (let j = 1; j <= a.length; j++) {
+      if (b.charAt(i - 1) === a.charAt(j - 1)) {
+        matrix[i][j] = matrix[i - 1][j - 1];
+      } else {
+        matrix[i][j] = Math.min(
+          matrix[i - 1][j - 1] + 1, 
+          Math.min(matrix[i][j - 1] + 1, matrix[i - 1][j] + 1)
+        );
+      }
+    }
+  }
+  return matrix[b.length][a.length];
+};
 
 // ⚡ ALL MOVIE DATABASES IMPORTED (Safe Server-Side Fetching)
 import * as SURVIVAL from '../utils/survivalMovieData';
@@ -139,14 +166,19 @@ export default function SearchPage({ allMovies }) {
   const [query, setQuery] = useState('');
   const [debouncedQuery, setDebouncedQuery] = useState('');
   const [results, setResults] = useState([]);
+  const [suggestedResults, setSuggestedResults] = useState([]);
   const [requestStatus, setRequestStatus] = useState('idle');
+  const initializedRef = useRef(false);
 
   useEffect(() => {
-    if (router.isReady && q && !query) {
-      setQuery(q);
-      setDebouncedQuery(q);
+    if (router.isReady && !initializedRef.current) {
+      if (q) {
+        setQuery(q);
+        setDebouncedQuery(q);
+      }
+      initializedRef.current = true;
     }
-  }, [router.isReady, q, query]);
+  }, [router.isReady, q]);
 
   // ⚡ FIX INP: Debounce search input so typing is instantaneous
   useEffect(() => {
@@ -204,11 +236,33 @@ export default function SearchPage({ allMovies }) {
         const mappedTWords = titleWords.map(w => numMap[w] || (w === 'se7en' ? 'seven' : w));
         
         return mappedQWords.every(qw => mappedTWords.some(tw => tw.includes(qw)));
-      }).slice(0, 24); // ⚡ FIX INP & LCP: Only render top 24 results to prevent massive DOM overload
-      setResults(filtered);
+      });
+
+      if (filtered.length > 0) {
+        setResults(filtered.slice(0, 24)); // ⚡ FIX INP & LCP: Only render top 24 results
+        setSuggestedResults([]);
+      } else {
+        setResults([]);
+        
+        // ⚡ DID YOU MEAN: Find closest matches using Levenshtein distance
+        const scoredMovies = allMovies.map(movie => {
+          const normTitle = normalizeForSearch(movie.title);
+          const dist = getLevenshteinDistance(normalizedQuery, normTitle);
+          return { ...movie, dist };
+        });
+
+        scoredMovies.sort((a, b) => a.dist - b.dist);
+        
+        // Filter out garbage suggestions if the distance is way too high
+        const validSuggestions = scoredMovies.filter(m => m.dist <= Math.max(6, normalizedQuery.length * 0.7));
+        
+        setSuggestedResults(validSuggestions.slice(0, 4));
+      }
+
       setRequestStatus('idle'); // Reset request status when typing
     } else {
       setResults([]);
+      setSuggestedResults([]);
       setRequestStatus('idle');
     }
   }, [debouncedQuery, allMovies]);
@@ -258,7 +312,8 @@ export default function SearchPage({ allMovies }) {
               />
               {query && (
                 <button 
-                  onClick={() => handleSearchChange({ target: { value: '' } })} 
+                  type="button"
+                  onClick={() => setQuery('')} 
                   className="absolute right-5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white transition-colors"
                 >
                   <X className="w-6 h-6" />
@@ -288,11 +343,25 @@ export default function SearchPage({ allMovies }) {
                 </ul>
               </div>
             ) : (
-              <div className="flex flex-col items-center justify-center h-full text-gray-500 pt-20">
-                <p className="text-lg font-light mb-2">No movies found matching "{query}".</p>
+              <div className="flex flex-col items-center justify-center h-full text-gray-500 pt-10">
+                <p className="text-lg font-light mb-8">No movies found matching "{query}".</p>
+                
+                {/* 🔥 DID YOU MEAN / YOU MAY LIKE THIS SECTION */}
+                {suggestedResults.length > 0 && (
+                  <div className="w-full mb-10 text-left">
+                    <h3 className="text-xl font-medium text-gray-300 mb-6 border-b border-white/5 pb-4">
+                      Did you mean? (You may like this)
+                    </h3>
+                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
+                      {suggestedResults.map((movie) => (
+                        <MovieResultItem key={movie.imdbID} movie={movie} />
+                      ))}
+                    </ul>
+                  </div>
+                )}
                 
                 {/* 🔥 REQUEST A MOVIE FEATURE */}
-                <div className="mt-8 p-6 sm:p-8 border border-yellow-500/20 rounded-2xl bg-gradient-to-b from-gray-900/60 to-gray-900/20 text-center max-w-md w-full">
+                <div className="mt-2 p-6 sm:p-8 border border-yellow-500/20 rounded-2xl bg-gradient-to-b from-gray-900/60 to-gray-900/20 text-center max-w-md w-full mx-auto">
                   <h3 className="text-xl font-medium text-white mb-2">Film not available?</h3>
                   <p className="text-gray-400 text-sm mb-6">Request it and our editors will try to add its full movie page—complete with parents guide, streaming links, and analysis—within the next 7 days.</p>
                   
