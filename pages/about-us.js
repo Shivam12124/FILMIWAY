@@ -45,13 +45,13 @@ const features = [
   },
   {
     icon: <Users className="w-6 h-6 text-blue-400" />,
-    title: "Human Curation",
-    description: "No algorithms. Our collections are hand-picked by cinephiles who understand the nuance of storytelling.",
+    title: "Every Film Covered",
+    description: "Every single film listed on Filmiway includes exact timestamps to skip awkward scenes if the film contains them.",
   },
   {
     icon: <ShieldCheck className="w-6 h-6 text-green-400" />,
-    title: "100% Legal Streaming",
-    description: "We only recommend movies available on official platforms like Hulu, HBO Max, Netflix, and Prime Video.",
+    title: "100% Free Forever",
+    description: "Our parents guides and exact skip timestamps are completely free to use. No paywalls, no hidden fees.",
   },
 ];
 
@@ -59,10 +59,10 @@ export default function AboutUs() {
   return (
     <>
       <Head>
-        <title>About Filmiway | The Premium Movie Discovery Platform</title>
+        <title>About Filmiway | Parents Guide & Film Recommendations</title>
         <meta
           name="description"
-          content="Filmiway is a premium guide for discovering movies on Netflix, Hulu, HBO Max, and Prime Video. We offer curated collections and exact Parents Guide timestamps."
+          content="Filmiway is your trusted parents guide and film recommendation site. We offer expertly curated collections and exact timestamps to skip awkward scenes."
         />
         <link rel="canonical" href="https://filmiway.com/about-us" />
         <meta name="robots" content="index, follow" />
@@ -104,7 +104,7 @@ export default function AboutUs() {
               <FilmReel />
               
               <p className="text-lg sm:text-xl text-gray-400 font-light leading-relaxed max-w-2xl mx-auto">
-                Filmiway is the premier discovery engine for the modern cinephile. We help you cut through the noise of streaming algorithms.
+                The No. 1 best parents guide for completely stress-free movie nights. We provide exact timestamps to skip awkward scenes with your family for free.
               </p>
             </motion.div>
           </section>
@@ -142,23 +142,23 @@ export default function AboutUs() {
                   </h2>
                   <div className="space-y-4 text-base sm:text-lg text-gray-300 font-light leading-relaxed">
                     <p>
-                      In an era of endless scrolling, finding a great movie has become harder, not easier. Algorithms feed you "more of the same," burying cinematic gems.
+                      Watching a great movie with your family shouldn't mean constantly hovering over the remote control. We built this platform to give you your peace of mind back.
                     </p>
                     <p>
-                      We built Filmiway to bring the <strong className="text-white font-medium">human touch</strong> back to discovery. Whether it's a mind-bending thriller on <span className="text-white">HBO Max</span> or an indie romance on <span className="text-white">Hulu</span>, we find it so you don't have to.
+                      Every film listed on Filmiway.com features precise skip timestamps if that movie contains sensitive or explicit content. We watch it first and map out the exact seconds to skip so you don't have to.
                     </p>
                   </div>
                 </div>
                 
                 <div className="flex-shrink-0 w-full md:w-auto grid grid-cols-2 gap-3">
                   <div className="bg-black/40 p-5 rounded-xl border border-white/5 text-center">
-                    <div className="text-2xl font-bold text-yellow-400 mb-1">50+</div>
+                    <div className="text-2xl font-bold text-yellow-400 mb-1">70+</div>
                     {/* ✅ CHANGED TO COLLECTIONS */}
                     <div className="text-[10px] text-gray-400 uppercase tracking-wider">Collections</div>
                   </div>
                   <div className="bg-black/40 p-5 rounded-xl border border-white/5 text-center">
-                    <div className="text-2xl font-bold text-yellow-400 mb-1">100%</div>
-                    <div className="text-[10px] text-gray-400 uppercase tracking-wider">Legal</div>
+                    <div className="text-2xl font-bold text-yellow-400 mb-1">Free</div>
+                    <div className="text-[10px] text-gray-400 uppercase tracking-wider">Forever</div>
                   </div>
                   <div className="bg-black/40 p-5 rounded-xl border border-white/5 text-center col-span-2">
                     <div className="text-2xl font-bold text-white mb-1">Global</div>
@@ -187,18 +187,6 @@ export default function AboutUs() {
                  "I started Filmiway with a simple belief: Cinema is a universal language. It doesn't matter if a masterpiece comes from <strong>Hollywood, Seoul, or the artistic hubs of Europe</strong>—if it pushes the boundaries of storytelling, you will find it here."
                </blockquote>
              </motion.div>
-          </section>
-
-          {/* ✅ TRUSTED PLATFORMS */}
-          <section className="border-t border-b border-white/5 py-10 mb-16">
-            <p className="text-center text-gray-500 text-xs uppercase tracking-widest mb-6">We Guide You To The Best Content On</p>
-            <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-12 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
-               <span className="text-lg font-bold text-white hover:text-[#1CE783]">Hulu</span>
-               <span className="text-lg font-bold text-white hover:text-[#E50914]">Netflix</span>
-               <span className="text-lg font-bold text-white hover:text-[#991EEB]">HBO Max</span>
-               <span className="text-lg font-bold text-white hover:text-[#00A8E1]">Prime Video</span>
-               <span className="text-lg font-bold text-white hover:text-white">Apple TV+</span>
-            </div>
           </section>
 
           {/* ✅ LEGAL DISCLAIMER */}

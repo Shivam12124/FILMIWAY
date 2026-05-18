@@ -38,7 +38,7 @@ export default function Document() {
               '@type': 'WebSite',
               name: 'Filmiway',
               url: 'https://filmiway.com',
-              description: 'Discover curated movie collections with expert analysis and streaming guides',
+              description: 'Discover curated movie collections with exact parents guides and film recommendations',
               potentialAction: {
                 '@type': 'SearchAction',
                 target: {

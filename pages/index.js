@@ -428,8 +428,8 @@ const FilmiwayHomepage = ({ huluCollections, thrillerCollections, hboCollections
   return (
     <div>
       <Head>
-        <title>Filmiway | Premium Movie Collections & Streaming Guide</title>
-        <meta name="description" content="Expertly curated movie collections for Netflix, Hulu, HBO Max, Peacock. Hand-picked recommendations for true cinema lovers." />
+        <title>Filmiway | Parents Guide & Film Recommendations</title>
+        <meta name="description" content="Expertly curated movie collections, exact parents guide timestamps, and hand-picked film recommendations for true cinema lovers." />
         <link rel="canonical" href="https://filmiway.com/" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
         
