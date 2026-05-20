@@ -1,3 +1,4 @@
+import masterTimestamps from './masterTimestamps.json';
 // utils/paramountThrillerMovieData.js - PARAMOUNT+ THRILLER COLLECTION DATA
 // High Tension, Psychological Dread, and Edge-of-Seat Suspense
 
@@ -416,7 +417,6 @@ export const getSensitiveContentTypes = (tmdbId) => {
     return Array.from(types);
 };
 
-
 // 🔥 FRONTEND UI SYNC (Injected by script)
 export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Official") => {
     const staticFaqs = typeof PARAMOUNT_THRILLER_MOVIE_FAQS !== 'undefined' && PARAMOUNT_THRILLER_MOVIE_FAQS[movieTitle] ? [...PARAMOUNT_THRILLER_MOVIE_FAQS[movieTitle]] : [];
@@ -433,6 +433,19 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
         staticFaqs.unshift({
             question: `What are the most intense scenes in ${movieTitle}?`,
             answer: `According to the Filmiway Intensity metric, ${movieTitle} peaks at the following moments:\n\n${uiIntensityList}`
+        });
+    }
+
+    // 🔥 DYNAMIC RECOMMENDED AGE FAQ INJECTION (UI)
+    const tmdbIdKeyStr = tmdbId?.toString();
+    const timestampDataUI = tmdbIdKeyStr ? masterTimestamps[tmdbIdKeyStr] : null;
+    const recommendedAgeUI = timestampDataUI?.Age;
+    const ageSummaryUI = timestampDataUI?.Summary;
+
+    if (recommendedAgeUI && ageSummaryUI) {
+        staticFaqs.unshift({
+            question: `What is the suitable age to watch ${movieTitle}?`,
+            answer: `According to Filmiway's Parents Guide, the recommended age for ${movieTitle} is ${recommendedAgeUI}. ${ageSummaryUI}`
         });
     }
 

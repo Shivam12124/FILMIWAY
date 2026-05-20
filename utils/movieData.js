@@ -1,3 +1,4 @@
+import masterTimestamps from './masterTimestamps.json';
 // utils/movieData.js - MOVIES LIKE INCEPTION (MIND-BENDING) ✅
 // Focused on narrative complexity, surrealism, and psychological depth.
 
@@ -496,6 +497,7 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
     if (typeof currentRuntime === 'number') currentRuntime = `${currentRuntime} min`;
 
     const sensitiveScenes = SENSITIVE_TIMELINES[movie.tmdbId]?.scenes || [];
+
     const heavyScenes = sensitiveScenes.filter(s => {
         const t = s.type?.toLowerCase() || '';
         return t.includes('sex') || t.includes('nudity') || t.includes('explicit') || t.includes('suggestive') || t.includes('lingerie') || t.includes('bikini'); 
@@ -531,6 +533,23 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
         'name': faq.question, 
         'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer } 
     }));
+
+    // 🔥 DYNAMIC RECOMMENDED AGE FAQ INJECTION (SEO SCHEMA)
+    const tmdbIdKey = movie?.tmdbId?.toString();
+    const timestampData = tmdbIdKey ? masterTimestamps[tmdbIdKey] : null;
+    const recommendedAge = timestampData?.Age || movie?.Age;
+    const ageSummary = timestampData?.Summary || movie?.Summary;
+
+    if (recommendedAge && ageSummary) {
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `What is the suitable age to watch ${movie.Title}?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `According to Filmiway's Parents Guide, the recommended age for ${movie.Title} is ${recommendedAge}. ${ageSummary}` 
+            }
+        });
+    }
 
     if (intensityScenes.length > 0) {
         const schemaIntensityList = intensityScenes.map(s => `<li>Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)</li>`).join('');
@@ -622,7 +641,6 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
         );
     }
 
-    
 const faqSchema = {
         '@context': 'https://schema.org',
         '@type': 'FAQPage',
@@ -651,6 +669,19 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
             answer: `According to the Filmiway Intensity metric, ${movieTitle} peaks at the following moments:
 
 ${uiIntensityList}`
+        });
+    }
+
+    // 🔥 DYNAMIC RECOMMENDED AGE FAQ INJECTION (UI)
+    const tmdbIdKeyStr = tmdbId?.toString();
+    const timestampDataUI = tmdbIdKeyStr ? masterTimestamps[tmdbIdKeyStr] : null;
+    const recommendedAgeUI = timestampDataUI?.Age;
+    const ageSummaryUI = timestampDataUI?.Summary;
+
+    if (recommendedAgeUI && ageSummaryUI) {
+        staticFaqs.unshift({
+            question: `What is the suitable age to watch ${movieTitle}?`,
+            answer: `According to Filmiway's Parents Guide, the recommended age for ${movieTitle} is ${recommendedAgeUI}. ${ageSummaryUI}`
         });
     }
 
@@ -718,7 +749,6 @@ Manually verified frame by frame by Filmiway editors for the ${finalRuntime} run
         );
     }
 
-    
 return staticFaqs;
 };
 

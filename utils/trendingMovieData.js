@@ -1,3 +1,4 @@
+import masterTimestamps from './masterTimestamps.json';
 // utils/trendingMovieData.js - TOP 10 TRENDING MOVIES WITH PARENTS GUIDE DATA
 
 export const FALLBACK_POSTERS = {

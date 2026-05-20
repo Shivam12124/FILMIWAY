@@ -1,3 +1,4 @@
+import masterTimestamps from './masterTimestamps.json';
 // utils/paramountRomanceMovieData.js - PARAMOUNT+ ROMANCE COLLECTION DATA
 // Emotional Resonance, Chemistry, and Cinematic Legacy
 
@@ -489,7 +490,6 @@ export const PARAMOUNT_ROMANCE_MOVIE_FAQS = {
   ]
 };
 
-
 export const getTMDBPosterUrl = (posterPath, size = 'medium') => {
     if (!posterPath) return null;
     const posterSize = TMDB_CONFIG.POSTER_SIZES[size] || TMDB_CONFIG.POSTER_SIZES.medium;
@@ -529,7 +529,6 @@ export const getSensitiveContentTypes = (tmdbId) => {
     return Array.from(types);
 };
 
-
 // 🔥 FRONTEND UI SYNC (Injected by script)
 export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Official") => {
     const staticFaqs = typeof PARAMOUNT_ROMANCE_MOVIE_FAQS !== 'undefined' && PARAMOUNT_ROMANCE_MOVIE_FAQS[movieTitle] ? [...PARAMOUNT_ROMANCE_MOVIE_FAQS[movieTitle]] : [];
@@ -546,6 +545,19 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
         staticFaqs.unshift({
             question: `What are the most intense scenes in ${movieTitle}?`,
             answer: `According to the Filmiway Intensity metric, ${movieTitle} peaks at the following moments:\n\n${uiIntensityList}`
+        });
+    }
+
+    // 🔥 DYNAMIC RECOMMENDED AGE FAQ INJECTION (UI)
+    const tmdbIdKeyStr = tmdbId?.toString();
+    const timestampDataUI = tmdbIdKeyStr ? masterTimestamps[tmdbIdKeyStr] : null;
+    const recommendedAgeUI = timestampDataUI?.Age;
+    const ageSummaryUI = timestampDataUI?.Summary;
+
+    if (recommendedAgeUI && ageSummaryUI) {
+        staticFaqs.unshift({
+            question: `What is the suitable age to watch ${movieTitle}?`,
+            answer: `According to Filmiway's Parents Guide, the recommended age for ${movieTitle} is ${recommendedAgeUI}. ${ageSummaryUI}`
         });
     }
 

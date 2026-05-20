@@ -1,3 +1,4 @@
+import masterTimestamps from './masterTimestamps.json';
 // utils/interstellarMovieData.js - COSMIC SCALE COLLECTION DATA 🌌
 
 export const FALLBACK_POSTERS = {};
@@ -379,6 +380,19 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
         staticFaqs.unshift({
             question: `What are the most intense scenes in ${movieTitle}?`,
             answer: `According to the Filmiway Intensity metric, ${movieTitle} peaks at the following moments:\n\n${uiIntensityList}`
+        });
+    }
+
+    // 🔥 DYNAMIC RECOMMENDED AGE FAQ INJECTION (UI)
+    const tmdbIdKeyStr = tmdbId?.toString();
+    const timestampDataUI = tmdbIdKeyStr ? masterTimestamps[tmdbIdKeyStr] : null;
+    const recommendedAgeUI = timestampDataUI?.Age;
+    const ageSummaryUI = timestampDataUI?.Summary;
+
+    if (recommendedAgeUI && ageSummaryUI) {
+        staticFaqs.unshift({
+            question: `What is the suitable age to watch ${movieTitle}?`,
+            answer: `According to Filmiway's Parents Guide, the recommended age for ${movieTitle} is ${recommendedAgeUI}. ${ageSummaryUI}`
         });
     }
 

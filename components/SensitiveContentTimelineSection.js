@@ -2,6 +2,7 @@
 import React, { useMemo, useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Shield, CheckCircle, Clock, AlertOctagon, Info, Film, FastForward, Eye, Heart, AlertTriangle, ThumbsUp, ThumbsDown, MessageSquare, Flame } from 'lucide-react';
+import masterTimestamps from '../utils/masterTimestamps.json';
 
 const COLORS = {
     warningBg: 'rgba(127, 29, 29, 0.15)',
@@ -160,6 +161,12 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
         currentRuntime = "1 hour 32 min"; 
     }
 
+    // 🔥 GRAB RECOMMENDED AGE DATA
+    const tmdbIdKey = movie?.tmdbId?.toString();
+    const timestampData = tmdbIdKey ? masterTimestamps[tmdbIdKey] : null;
+    const recommendedAge = timestampData?.Age || movie?.Age;
+    const ageSummary = timestampData?.Summary || movie?.Summary;
+
     const getSeverityDotColor = (severity) => {
         if (!severity) return 'bg-gray-500 shadow-gray-500/50';
         const s = severity.toLowerCase();
@@ -231,6 +238,27 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                         </p>
                     </div>
                 </div>
+
+                {/* 🔥 RECOMMENDED AGE BADGE (Dynamic) */}
+                {recommendedAge && ageSummary && (
+                    <motion.div 
+                        className="mt-5 relative overflow-hidden rounded-2xl border border-white/10 bg-black/40 backdrop-blur-md p-4 sm:p-5 flex flex-row items-center gap-4 sm:gap-5 shadow-xl"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: 0.2 }}
+                    >
+                        <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-yellow-400 to-yellow-600"></div>
+                        
+                        <div className="flex-shrink-0 flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-yellow-500/10 border border-yellow-500/20 shadow-[0_0_15px_rgba(234,179,8,0.15)]">
+                            <span className="text-xl sm:text-2xl font-bold text-yellow-400 tracking-tight">{recommendedAge}</span>
+                        </div>
+                        
+                        <div className="flex-1 flex flex-col justify-center">
+                            <h3 className="text-xs sm:text-sm font-semibold text-gray-300 mb-1 uppercase tracking-widest">Recommended Age</h3>
+                            <p className="text-[13px] sm:text-sm text-gray-400 leading-relaxed font-light">{ageSummary}</p>
+                        </div>
+                    </motion.div>
+                )}
             </motion.section>
         );
     }
@@ -282,6 +310,27 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                             </AnimatePresence>
                         </div>
                     </h1>
+
+                    {/* 🔥 RECOMMENDED AGE BADGE (Dynamic) */}
+                    {recommendedAge && ageSummary && (
+                        <motion.div 
+                            className="my-5 relative overflow-hidden rounded-2xl border border-white/10 bg-black/40 backdrop-blur-md p-4 sm:p-5 flex flex-row items-center gap-4 sm:gap-5 shadow-xl"
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: 0.2 }}
+                        >
+                            <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-yellow-400 to-yellow-600"></div>
+                            
+                            <div className="flex-shrink-0 flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-yellow-500/10 border border-yellow-500/20 shadow-[0_0_15px_rgba(234,179,8,0.15)]">
+                                <span className="text-xl sm:text-2xl font-bold text-yellow-400 tracking-tight">{recommendedAge}</span>
+                            </div>
+                            
+                            <div className="flex-1 flex flex-col justify-center">
+                                <h3 className="text-xs sm:text-sm font-semibold text-gray-300 mb-1 uppercase tracking-widest">Recommended Age</h3>
+                                <p className="text-[13px] sm:text-sm text-gray-400 leading-relaxed font-light">{ageSummary}</p>
+                            </div>
+                        </motion.div>
+                    )}
                     
                     <div className="ml-1 space-y-2.5 sm:space-y-2">
                         <p className="text-[13px] sm:text-sm text-gray-500 flex items-start sm:items-center gap-2">
@@ -308,8 +357,13 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
             </div>
 
             {/* ⚡ SEO CHEAT CODE: HIDDEN HTML TABLE FOR GOOGLE FEATURED SNIPPETS & LLMs */}
+            <div className="sr-only" aria-hidden="false">
+                <h2>{movie.Title} Recommended Age and Parents Guide Summary</h2>
+                {recommendedAge && <p><strong>Age Rating:</strong> {recommendedAge}</p>}
+                {ageSummary && <p><strong>Content Summary:</strong> {ageSummary}</p>}
+            </div>
             <table className="sr-only" aria-label={`Parents Guide Timestamps for ${movie.Title}`}>
-                <caption>Exact skip timestamps for sensitive scenes in {movie.Title} ({currentRuntime})</caption>
+                <caption>Exact skip timestamps and severity ratings for sensitive scenes in {movie.Title} ({currentRuntime})</caption>
                 <thead>
                     <tr>
                         <th scope="col">Content Type</th>

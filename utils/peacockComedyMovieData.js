@@ -1,3 +1,4 @@
+import masterTimestamps from './masterTimestamps.json';
 // utils/peacockComedyMovieData.js - PEACOCK COMEDY COLLECTION DATA ✅
 // Ranked by Laughter, Quotability, and Chaos
 // CALIBRATION: 0-20 (Setup) | 20-40 (Light) | 40-60 (Funny) | 60-75 (Chaos) | 75-85 (Implosion) | 85-95 (Extreme) | 95-100 (Genre-Defining)
@@ -483,6 +484,7 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
     if (typeof currentRuntime === 'number') currentRuntime = `${currentRuntime} min`;
 
     const sensitiveScenes = SENSITIVE_TIMELINES[movie.tmdbId]?.scenes || [];
+
     const heavyScenes = sensitiveScenes.filter(s => {
         const t = s.type?.toLowerCase() || '';
         return t.includes('sex') || t.includes('nudity') || t.includes('explicit') || t.includes('suggestive') || t.includes('lingerie') || t.includes('bikini'); 
@@ -518,6 +520,23 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
         'name': faq.question, 
         'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer } 
     }));
+
+    // 🔥 DYNAMIC RECOMMENDED AGE FAQ INJECTION (SEO SCHEMA)
+    const tmdbIdKey = movie?.tmdbId?.toString();
+    const timestampData = tmdbIdKey ? masterTimestamps[tmdbIdKey] : null;
+    const recommendedAge = timestampData?.Age || movie?.Age;
+    const ageSummary = timestampData?.Summary || movie?.Summary;
+
+    if (recommendedAge && ageSummary) {
+        schemaFaqs.unshift({
+            '@type': 'Question',
+            'name': `What is the suitable age to watch ${movie.Title}?`,
+            'acceptedAnswer': { 
+                '@type': 'Answer', 
+                'text': `According to Filmiway's Parents Guide, the recommended age for ${movie.Title} is ${recommendedAge}. ${ageSummary}` 
+            }
+        });
+    }
 
     if (intensityScenes.length > 0) {
         const schemaIntensityList = intensityScenes.map(s => `<li>Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)</li>`).join('');
@@ -609,7 +628,6 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
         );
     }
 
-    
 const faqSchema = {
         '@context': 'https://schema.org',
         '@type': 'FAQPage',
@@ -636,6 +654,19 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
         staticFaqs.unshift({
             question: `What are the most intense scenes in ${movieTitle}?`,
             answer: `According to the Filmiway Intensity metric, ${movieTitle} peaks at the following moments:\n\n${uiIntensityList}`
+        });
+    }
+
+    // 🔥 DYNAMIC RECOMMENDED AGE FAQ INJECTION (UI)
+    const tmdbIdKeyStr = tmdbId?.toString();
+    const timestampDataUI = tmdbIdKeyStr ? masterTimestamps[tmdbIdKeyStr] : null;
+    const recommendedAgeUI = timestampDataUI?.Age;
+    const ageSummaryUI = timestampDataUI?.Summary;
+
+    if (recommendedAgeUI && ageSummaryUI) {
+        staticFaqs.unshift({
+            question: `What is the suitable age to watch ${movieTitle}?`,
+            answer: `According to Filmiway's Parents Guide, the recommended age for ${movieTitle} is ${recommendedAgeUI}. ${ageSummaryUI}`
         });
     }
 
@@ -699,6 +730,5 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
         );
     }
 
-    
 return staticFaqs;
 };
