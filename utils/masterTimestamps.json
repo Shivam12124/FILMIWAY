@@ -40,16 +40,18 @@
         "Summary": "Aged 16+ for intense action violence, graphic special effects, and minor sexual content.",
         "scenes": [
             {
-                "start": "5:00",
-                "end": "7:30",
-                "type": " Nudity",
-                "severity": "Mild"
+                "start": "4:40",
+                "end": "7:50",
+                "type": "Nudity (men)",
+                "severity": "Mild",
+                "description": "Two separate scenes feature brief male nudity, with only rear nudity visible as genital detail is obscured by lighting."
             },
             {
-                "start": "1:21:50",
+                "start": "1:22:20",
                 "end": "1:23:00",
-                "type": "Sex",
-                "severity": "High"
+                "type": "Sex & Nudity",
+                "severity": "High",
+                "description": "A man and woman engage in sexual activity involving sensual touching and intercourse, with visible female topless nudity."
             },
             {
                 "start": "",
@@ -1862,7 +1864,7 @@
                 "end": "",
                 "type": "Profanity",
                 "severity": "Severe",
-                "description": "Pervasive strong language with over 430–500 uses of the F-word and frequent use of the C-word."
+                "description": "Pervasive strong language with over 500 uses of the F-word and frequent use of the C-word."
             },
             {
                 "start": "",
@@ -1876,7 +1878,7 @@
     "152584": {
         "Title": "Blue Is the Warmest Color",
         "Age": "18+",
-        "Summary": "Aged 18+ for exceptionally lengthy, highly explicit sexual content and complete full nudity.",
+        "Summary": "Aged 18+ for exceptionally lengthy, highly explicit sexual content and moderate profanity.",
         "scenes": [
             {
                 "start": "0:18:05",
@@ -1939,7 +1941,7 @@
                 "end": "",
                 "type": "Profanity",
                 "severity": "Moderate",
-                "description": "Approximately 12–33 uses of strong sexual expletives, including sexual slurs and derogatory language."
+                "description": "Approximately 12 uses of strong sexual expletives, including sexual slurs and derogatory language."
             },
             {
                 "start": "",
@@ -3673,6 +3675,8 @@
     },
     "424": {
         "Title": "Schindler's List",
+        "Age": "17+",
+        "Summary": "Aged 17+ for brutal graphic violence, nudity, and moderate profanity.",
         "scenes": [
             {
                 "start": "0:44:15",
@@ -3697,6 +3701,20 @@
                 "end": "2:37:05",
                 "type": "Nudity (Women)",
                 "severity": "High"
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "High",
+                "description": "Extremely disturbing wartime violence featuring realistic executions, mass shootings, and brutal killings of innocent civilians. Frequent bloodshed, headshots, corpse piles, and emotionally harrowing Nazi atrocities are shown throughout."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "Moderate",
+                "description": "Contains occasional strong language including multiple uses of the F-word(around 6-7 time) alongside several crude insults and aggressive verbal outbursts."
             }
         ]
     },
@@ -7312,6 +7330,8 @@
     },
     "46705": {
         "Title": "Blue Valentine",
+        "Age": "18+",
+        "Summary": "Aged 18+ for explicit sexual intercourse, nudity, and high profanity.",
         "scenes": [
             {
                 "start": "0:30:00",
@@ -7336,6 +7356,20 @@
                 "end": "1:03:40",
                 "type": "Sex",
                 "severity": "High"
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "Mild",
+                "description": "Mild physical altercations involving pushing, yelling, and brief striking during emotionally intense confrontations."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "High",
+                "description": "Frequent strong language including over 30 uses of the F-word alongside repeated crude insults and profanity throughout."
             }
         ]
     },
