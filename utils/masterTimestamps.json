@@ -8472,15 +8472,26 @@
                 "start": "0:53:25",
                 "end": "0:54:45",
                 "type": "Nudity (Woman)",
-                "severity": "High"
+                "severity": "High",
+                "description": "Frequent female topless nudity featuring close-up exposure during a strip club sequence."
             },
             {
-                "start": "1:15:55",
-                "end": "1:16:51",
-                "type": "Suggestive Clothing (Bikini)",
-                "severity": "Mild"
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "Mild",
+                "description": "No notable violence is shown, aside from brief disturbing references and isolated moments such as an eye injury and an implied suicide discussed in dialogue. The film otherwise contains no on-screen violent content."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "High",
+                "description": "Strong language throughout, including over 70 uses of the F-word and variations, frequent scatological references, and repeated mild obscenities. The dialogue also includes extensive name-calling and insulting language."
             }
-        ]
+        ],
+        "Age": "16+",
+        "Summary": "Aged 16+ for frequent strong language and nudity."
     },
     "324849": {
         "Title": "The LEGO Batman Movie",

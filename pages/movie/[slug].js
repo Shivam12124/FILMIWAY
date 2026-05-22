@@ -452,7 +452,25 @@ export async function getStaticProps({ params }) {
     }
 
     // Retain hardcoded exceptions
-    if (baseMovie.slug === 'blue-is-the-warmest-color') {
+    if (baseMovie.slug === 'eyes-wide-shut') {
+        metaTitle = "Eyes Wide Shut Parents Guide: Exact Ritual Scene & Nudity Timestamps";
+        metaDesc = "PARENTS GUIDE: Complete timestamps to skip the explicit ritual sequences and continuous full nudity in Eyes Wide Shut. Manually verified 18+ content breakdown.";
+    } else if (baseMovie.slug === 'the-wolf-of-wall-street') {
+        metaTitle = "The Wolf of Wall Street Parents Guide: Exact Explicit Scene Timestamps";
+        metaDesc = "PARENTS GUIDE: Exact timestamps to skip the heavy nudity, drug use, and explicit scenes in The Wolf of Wall Street. Includes a complete 18+ severity breakdown.";
+    } else if (baseMovie.slug === 'little-miss-sunshine') {
+        metaTitle = "Little Miss Sunshine Parents Guide: Why is it Rated R? (Timestamps)";
+        metaDesc = "Is Little Miss Sunshine safe for kids? It is rated R for strong language and a brief adult magazine scene. Get the exact timestamps to skip the mature moments.";
+    } else if (baseMovie.slug === 'fight-club') {
+        metaTitle = "Fight Club Parents Guide: Violence, Nudity & Exact Skip Timestamps";
+        metaDesc = "Is Fight Club appropriate for teenagers? Get a complete breakdown of the extreme brutal violence and the exact timestamps to skip the explicit subliminal flashes.";
+    } else if (baseMovie.slug === 'titanic') {
+        metaTitle = "Titanic Parents Guide: Is it Safe for Kids? (Skip Timestamps)";
+        metaDesc = "Can you watch Titanic with your family? Yes, if you skip the explicit parts. Get the exact timestamps to bypass the drawing scene and brief intimacy.";
+    } else if (baseMovie.slug === 'superbad') {
+        metaTitle = "Superbad Parents Guide: Why is it Rated R? (Timestamps)";
+        metaDesc = "Is Superbad appropriate for teenagers? Get a complete breakdown of the extreme profanity, plus exact timestamps to skip the explicit drawings and magazine scenes.";
+    } else if (baseMovie.slug === 'blue-is-the-warmest-color') {
         metaTitle = "Blue Is the Warmest Color Skip Sex & Nudity Timestamps";
         metaDesc = "PARENTS GUIDE: Exact skip timestamps for Blue Is the Warmest Color. Sex & Nudity 0:22:04-0:24:22, Sex & Nudity 1:14:53-1:21:46 and more.";
     } else if (baseMovie.slug === 'the-dreamers') {
@@ -461,7 +479,80 @@ export async function getStaticProps({ params }) {
     } else if (baseMovie.slug === 'basic-instinct') {
         metaDesc = "PARENTS GUIDE: Exact skip timestamps for Basic Instinct. Sex & Nudity 0:03:15-0:04:40, Nudity 0:05:40-0:06:50 and more.";
     } else if (baseMovie.slug === 'wild-things') {
-        metaDesc = "PARENTS GUIDE: Exact skip timestamps for Wild Things. Sex & Nudity 0:17:25-0:17:52, Sexual content & Nudity 0:57:40-0:59:55 and more.";
+        metaTitle = "Wild Things Parents Guide: Explicit Scenes & Nudity Timestamps";
+        metaDesc = "PARENTS GUIDE: Wild Things is a notorious 90s erotic thriller. Here are the exact timestamps to safely skip the heavy female nudity and explicit intimacy.";
+    } else if (baseMovie.slug === 'the-usual-suspects') {
+        metaTitle = "The Usual Suspects Parents Guide: Why is it Rated R? (Timestamps)";
+        metaDesc = "Is The Usual Suspects safe for teens? It is rated R for pervasive strong language and violence. Get exact timestamps to skip the single mature sexual scene.";
+    } else if (baseMovie.slug === 'blade-runner-2049') {
+        metaTitle = "Blade Runner 2049 Parents Guide: Exact Nudity Skip Timestamps";
+        metaDesc = "Is Blade Runner 2049 safe for younger sci-fi fans? Get the exact timestamps to safely skip the holographic nudity and mature scenes in this visually stunning sequel.";
+    } else if (baseMovie.slug === 'the-hangover') {
+        metaTitle = "The Hangover Parents Guide: Why is it Rated R? (Timestamps)";
+        metaDesc = "Is The Hangover safe for teens? It is rated R for pervasive strong language, sexual content, and brief nudity. Get the exact timestamps to safely skip the mature scenes.";
+    } else if (baseMovie.slug === 'indecent-proposal') {
+        metaTitle = "Indecent Proposal Parents Guide: Why is it Rated R? (Timestamps)";
+        metaDesc = "Why is Indecent Proposal rated R? Read our parents guide for a breakdown of the heavy sexual themes, plus exact timestamps to skip the explicit intimacy and nudity.";
+    } else if (baseMovie.slug === 'marty-supreme') {
+        metaTitle = "Marty Supreme Parents Guide: Why is it Rated R? (Timestamps)";
+        metaDesc = "Is Marty Supreme appropriate for teens? Get a complete breakdown of the strong language and violence, plus exact timestamps to skip the explicit sexual content.";
+    } else if (baseMovie.slug === 'the-big-short') {
+        metaTitle = "The Big Short Parents Guide: Timestamps to Skip Nudity";
+        metaDesc = "Showing The Big Short in a classroom or to teens? Get the exact timestamps to safely skip the strip club scene while keeping the educational content.";
+    } else if (baseMovie.slug === 'passengers') {
+        metaTitle = "Passengers Parents Guide: Exact Timestamps to Skip Nudity";
+        metaDesc = "Showing Passengers to younger sci-fi fans? Read our breakdown of the intense space peril and get exact timestamps to skip the brief partial nudity.";
+    } else if (baseMovie.slug === 'enemy') {
+        metaTitle = "Enemy Parents Guide: Timestamps for All 11 Explicit Scenes";
+        metaDesc = "Is Enemy safe to watch? It contains a surprisingly high amount of sexual content. Get the exact timestamps to safely skip all 11 explicit intimacy and nudity scenes and watch comfortably.";
+    } else if (baseMovie.slug === 'rain-man') {
+        metaTitle = "Rain Man Parents Guide: Is it Safe for Teens? (Timestamps)";
+        metaDesc = "Planning to watch the classic Rain Man with your family? Be prepared for the moderate profanity and get exact timestamps to skip the brief awkward sexual moments.";
+    } else if (baseMovie.slug === 'the-equalizer') {
+        metaTitle = "The Equalizer Parents Guide: Why is it Rated R? (Timestamps)";
+        metaDesc = "Is The Equalizer appropriate for teens? Get a complete breakdown of the extreme graphic violence, heavy profanity, and the exact timestamp to skip the brief nudity.";
+    } else if (baseMovie.slug === 'along-came-polly') {
+        metaTitle = "Along Came Polly Parents Guide: Is it Safe for Teens? (Timestamps)";
+        metaDesc = "Planning to watch Along Came Polly with your family? Read our breakdown of the crude humor and get exact timestamps to safely skip the brief sexual content and partial nudity.";
+    } else if (baseMovie.slug === 'perfect-blue') {
+        metaTitle = "Perfect Blue Parents Guide: Explicit Scenes & Nudity Timestamps";
+        metaDesc = "PARENTS GUIDE: Perfect Blue is a deeply disturbing psychological anime thriller. Get exact timestamps to safely skip the intense explicit scenes and heavy nudity.";
+    } else if (baseMovie.slug === 'magnolia') {
+        metaTitle = "Magnolia Parents Guide: Timestamps to Skip Brief Nudity";
+        metaDesc = "PARENTS GUIDE: Magnolia is a 3-hour emotional masterpiece with only a few seconds of explicit content. Get the exact timestamps to safely skip the brief sex and nudity.";
+    } else if (baseMovie.slug === 'red-sparrow') {
+        metaTitle = "Red Sparrow Parents Guide: Explicit Content Skip Timestamps";
+        metaDesc = "Planning to watch Red Sparrow? Be prepared for a highly graphic espionage thriller, and get exact timestamps to bypass the intense nudity and assault scenes.";
+    } else if (baseMovie.slug === 'memories-of-murder') {
+        metaTitle = "Memories of Murder Parents Guide: Explicit Scene Skip Timestamps";
+        metaDesc = "Why is Memories of Murder unrated? We break down the grisly crime scenes and police brutality, providing exact timestamps to skip the unexpected sex and nudity.";
+    } else if (baseMovie.slug === 'the-chaser') {
+        metaTitle = "The Chaser Parents Guide: Why is it Rated R? (Timestamps)";
+        metaDesc = "Is The Chaser safe to watch? Read our complete breakdown of the disturbing serial killer violence, plus exact timestamps to safely skip the brief mature scenes.";
+    } else if (baseMovie.slug === 'i-saw-the-devil') {
+        metaTitle = "I Saw the Devil Parents Guide: Explicit Scene Skip Timestamps";
+        metaDesc = "PARENTS GUIDE: I Saw the Devil features extreme gore and explicit content. Get exact timestamps to safely skip the explicit scenes and intimacy.";
+    } else if (baseMovie.slug === 'dead-poets-society') {
+        metaTitle = "Dead Poets Society Parents Guide: Is it Safe for Teens? (Timestamps)";
+        metaDesc = "Showing Dead Poets Society to students or family? Read our breakdown, and get the exact timestamp to safely skip the brief magazine nudity scene.";
+    } else if (baseMovie.slug === 'the-invisible-guest') {
+        metaTitle = "The Invisible Guest Parents Guide: Is it Safe for Teens? (Clean)";
+        metaDesc = "Is the Spanish thriller The Invisible Guest safe for families? Yes. Filmiway editors have manually verified it is 100% free of sex scenes and nudity.";
+    } else if (baseMovie.slug === 'paris-texas') {
+        metaTitle = "Paris, Texas Parents Guide: Timestamps to Skip Brief Nudity";
+        metaDesc = "PARENTS GUIDE: Paris, Texas is a cinematic masterpiece containing brief, non-sexual nudity. Get the exact timestamps to safely skip these moments for family viewing.";
+    } else if (baseMovie.slug === 'black-swan') {
+        metaTitle = "Black Swan Parents Guide: Explicit Scene Skip Timestamps";
+        metaDesc = "Why is Black Swan rated R? Be prepared for self-harm, plus get exact timestamps to skip the explicit intimacy.";
+    } else if (baseMovie.slug === 'scarface') {
+        metaTitle = "Scarface Parents Guide: Explicit Scene Skip Timestamps";
+        metaDesc = "PARENTS GUIDE: Here are the exact timestamps to safely skip the explicit female nudity scene.";
+    } else if (baseMovie.slug === 'parasite') {
+        metaTitle = "Parasite Parents Guide: Why is it Rated R?";
+        metaDesc = "Is the Oscar-winning Parasite safe for teens? It is rated R for sudden graphic violence. Get the exact timestamp to safely skip the explicit couch scene.";
+    } else if (baseMovie.slug === 'baby-driver') {
+        metaTitle = "Baby Driver Parents Guide: Why is it Rated R? (Clean)";
+        metaDesc = "Why is Baby Driver rated R? It contains strong language and action violence. However, Filmiway editors have verified it has zero sex scenes or nudity.";
     } else if (baseMovie.slug === 'lust-caution') {
         metaDesc = "PARENTS GUIDE: Exact skip timestamps for Lust, Caution. Sex & Nudity 1:00:15-1:02:40, Sex & Nudity 1:32:35-1:34:26 and more.";
     }
