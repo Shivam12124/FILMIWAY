@@ -3227,6 +3227,8 @@
     },
     "111": {
         "Title": "Scarface",
+        "Age": "17+",
+        "Summary": "Aged 17+ for brutal graphic violence, brief nudity, and strong language throughout.",
         "scenes": [
             {
                 "start": "1:32:35",
@@ -3239,6 +3241,20 @@
                 "end": "2:37:12",
                 "type": "Nudity (Woman)",
                 "severity": "Moderate"
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "High",
+                "description": "Strong bloody violence featuring frequent shootings, graphic gunshot wounds, executions, explosions, riots, and prolonged intense shootouts throughout."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "High",
+                "description": "Extremely frequent strong language including over 200 uses of the F-word, repeated sexual expletives, coarse insults, and heavy Spanish profanity throughout."
             }
         ]
     },
@@ -3446,12 +3462,28 @@
     },
     "207": {
         "Title": "Dead Poets Society",
+        "Age": "14+",
+        "Summary": "Aged 14+ for mature themes, mild violence, brief nudity, and mild language.",
         "scenes": [
             {
                 "start": "0:39:13",
                 "end": "0:39:40",
                 "type": "Nudity",
-                "severity": "High"
+                "severity": "Moderate"
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "Mild",
+                "description": "Moderate violence including fistfights with minor blood, corporal punishment, and a deeply upsetting suicide involving a gunshot."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "Mild",
+                "description": "Mild-to-moderate language including several uses of profanity such as \"shit,\" \"damn,\" \"goddamn,\" and \"hell\"."
             }
         ]
     },
@@ -3594,6 +3626,8 @@
     },
     "334": {
         "Title": "Magnolia",
+        "Age": "18+",
+        "Summary": "Aged 18+ for mature themes, moderate violence, explicit sex and brief nudity, and strong language throughout.",
         "scenes": [
             {
                 "start": "0:07:32",
@@ -3606,6 +3640,20 @@
                 "end": "0:07:54",
                 "type": "Sex",
                 "severity": "High"
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "Moderate",
+                "description": "Moderate disturbing content including suicides, hanging imagery, brief bloody injuries, implied animal death, emotional physical altercations, and unsettling surreal sequences."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "High",
+                "description": "Severe strong language throughout including over 170 uses of the F-word, repeated sexual insults, racial slurs, and frequent crude profanity."
             }
         ]
     },
@@ -5707,6 +5755,8 @@
     },
     "5966": {
         "Title": "Along Came Polly",
+        "Age": "13+",
+        "Summary": "Aged 13+ for minor sexual content and moderate language.",
         "scenes": [
             {
                 "start": "0:06:33",
@@ -5719,6 +5769,20 @@
                 "end": "0:09:51",
                 "type": "Sex",
                 "severity": "Mild"
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "None",
+                "description": "The film contains no actual violence."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "Moderate",
+                "description": "Moderate language throughout including infrequent strong profanity such as a single F-word, alongside repeated uses of \"shit,\" \"goddamn,\" \"hell,\" and other mild insults."
             }
         ]
     },
@@ -6592,6 +6656,8 @@
     },
     "10494": {
         "Title": "Perfect Blue",
+        "Age": "18+",
+        "Summary": "Aged 18+ for brutal graphic violence, explicit sex and nudity, and moderate language.",
         "scenes": [
             {
                 "start": "0:33:20",
@@ -6616,6 +6682,20 @@
                 "end": "1:06:55",
                 "type": "Nudity",
                 "severity": "High"
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "High",
+                "description": "Graphic violence involving impalement, eye-gouging, explosions, stabbings, bloody corpses, and disturbing murder imagery throughout."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "Moderate",
+                "description": "Contains frequent moderate to strong language including repeated uses of the F-word alongside moderate coarse profanity."
             }
         ]
     },
@@ -7021,18 +7101,14 @@
     },
     "18785": {
         "Title": "The Hangover",
+        "Age": "16+",
+        "Summary": "Aged 16+ for mild violence, brief nudity, and strong language throughout.",
         "scenes": [
             {
                 "start": "0:04:29",
                 "end": "0:05:47",
                 "type": "Partial Nudity (Man)",
                 "severity": "Moderate"
-            },
-            {
-                "start": "0:33:39",
-                "end": "0:36:05",
-                "type": "Suggestive Clothing (Bikini)",
-                "severity": "Mild"
             },
             {
                 "start": "0:39:23",
@@ -7051,6 +7127,20 @@
                 "end": "1:00:56",
                 "type": "Nudity (Man)",
                 "severity": "High"
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "Mild",
+                "description": "Mild crude violence includes frequent slapstick fights, punches, taser use, minor injuries with small amounts of blood, reckless driving, and some disturbing but comedic animal-related chaos. Most violence is exaggerated and not graphic."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "High",
+                "description": "Strong language throughout, including over 75 uses of the F-word and variations, frequent sexual references, heavy coarse profanity, and extensive scatological and insulting language. along with a few highly offensive derogatory slurs."
             }
         ]
     },
@@ -7387,6 +7477,8 @@
     },
     "49797": {
         "Title": "I Saw the Devil",
+        "Age": "18+",
+        "Summary": "Aged 18+ for brutal graphic violence, explicit sex and brief nudity, and strong language throughout.",
         "scenes": [
             {
                 "start": "0:09:53",
@@ -7399,6 +7491,20 @@
                 "end": "0:27:40",
                 "type": "Nudity & Sex",
                 "severity": "High"
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "High",
+                "description": "Extreme graphic violence featuring brutal beatings, repeated stabbings, dismemberment, decapitations, mutilation, cannibalism, and prolonged bloody injury detail throughout."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "High",
+                "description": "Contains frequent strong language including several uses of the F-word alongside repeated coarse profanity."
             }
         ]
     },
@@ -8507,6 +8613,8 @@
     },
     "335984": {
         "Title": "Blade Runner 2049",
+        "Age": "15+",
+        "Summary": "Aged 15+ for moderate violence, heavy nudity, and moderate language.",
         "scenes": [
             {
                 "start": "38:10",
@@ -8535,6 +8643,20 @@
                 "type": "Nudity",
                 "severity": "Moderate",
                 "description": "Nudity (Woman)"
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "Moderate",
+                "description": "Moderate to strong featuring shootings, stabbings, explosions, drowning, hand-to-hand combat, bloody injuries, disturbing deaths, and occasional graphic aftermath imagery."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "Moderate",
+                "description": "Moderate language throughout, including around 7 uses of the F-word, occasional coarse profanity, mild obscenities, insulting name-calling."
             }
         ]
     },
@@ -8604,7 +8726,24 @@
     },
     "339403": {
         "Title": "Baby Driver",
-        "scenes": []
+        "Age": "15+",
+        "Summary": "Aged 15+ for heavy action violence and strong language throughout.",
+        "scenes": [
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "Moderate",
+                "description": "Moderate action violence centered around intense car chases, crashes, shootouts, and occasional bloody injuries including headshots, stabbings, and explosions, though gore is limited and brief."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "High",
+                "description": "Strong language throughout including frequent F-words, repeated crude profanity, sexual references, and occasional insulting language."
+            }
+        ]
     },
     "346364": {
         "Title": "It",
@@ -8847,6 +8986,8 @@
     },
     "401981": {
         "Title": "Red Sparrow",
+        "Age": "17+",
+        "Summary": "Aged 17+ for brutal graphic violence, explicit sex and heavy nudity, and moderate language.",
         "scenes": [
             {
                 "start": "0:15:35",
@@ -8901,6 +9042,20 @@
                 "end": "1:43:10",
                 "type": "Partial Nudity (Woman)",
                 "severity": "Moderate"
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "High",
+                "description": "Graphic violence involving sexual assault attempts, torture, mutilation, bloody stabbings, disturbing injury detail, and prolonged scenes of physical suffering."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "Moderate",
+                "description": "Contains strong language including uses of the F-word, sexual expletives, and repeated coarse profanity."
             }
         ]
     },
@@ -8910,7 +9065,24 @@
     },
     "411088": {
         "Title": "The Invisible Guest",
-        "scenes": []
+        "Age": "13+",
+        "Summary": "Aged 13+ for mild violence and mild language.",
+        "scenes": [
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "Mild",
+                "description": "The film is close to containing no significant violence, with only brief mild moments including a repeated crime scene depiction."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "Mild",
+                "description": "The film is close to containing no strong profanity, with only occasional mild language and infrequent coarse expressions."
+            }
+        ]
     },
     "414906": {
         "Title": "The Batman",
