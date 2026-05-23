@@ -68,6 +68,11 @@ export default function App({ Component, pageProps }) {
           page_path: url,
         });
       }
+      
+      // Trigger Mediavine Grow Pageview on Route Change for SPA
+      if (typeof window !== 'undefined' && window.growMe) {
+        window.growMe('triggerPageview');
+      }
     };
     router.events.on('routeChangeComplete', handleRouteChange);
     return () => router.events.off('routeChangeComplete', handleRouteChange);
@@ -156,27 +161,38 @@ export default function App({ Component, pageProps }) {
         <link rel="manifest" href="/manifest.json" />
       </Head>
       
+      {/* 🚀 MEDIAVINE GROW SCRIPT 🚀 */}
+      <Script
+        id="mediavine-grow"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `!(function(){window.growMe||((window.growMe=function(e){window.growMe._.push(e);}),(window.growMe._=[]));var e=document.createElement("script");(e.type="text/javascript"),(e.src="https://faves.grow.me/main.js"),(e.defer=!0),e.setAttribute("data-grow-faves-site-id","U2l0ZTpmYzEyNGY4Ni1jYzUwLTQ4ZGQtOWFkZi1mZmI1YjQwODI5Y2I=");var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t);})();`
+        }}
+      />
+      
+      {/* 🚀 GOOGLE ANALYTICS (Loaded immediately to capture 100% of traffic) */}
+      <Script
+        strategy="afterInteractive"
+        src={`https://www.googletagmanager.com/gtag/js?id=G-EDS2VZ5HP1`}
+      />
+      <Script
+        id="google-analytics"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-EDS2VZ5HP1', {
+              page_path: window.location.pathname,
+            });
+          `,
+        }}
+      />
+
       {/* ⚡ ZERO-TBT STRATEGY: Delay all heavy tracking scripts until the user actually interacts with the page */}
       {isInteracted && (
         <>
-          <Script
-            strategy="afterInteractive"
-            src={`https://www.googletagmanager.com/gtag/js?id=G-EDS2VZ5HP1`}
-          />
-          <Script
-            id="google-analytics"
-            strategy="afterInteractive"
-            dangerouslySetInnerHTML={{
-              __html: `
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', 'G-EDS2VZ5HP1', {
-                  page_path: window.location.pathname,
-                });
-              `,
-            }}
-          />
           <Script id="microsoft-clarity" strategy="afterInteractive" dangerouslySetInnerHTML={{
             __html: `
               (function(c,l,a,r,i,t,y){

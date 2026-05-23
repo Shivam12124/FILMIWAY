@@ -2,7 +2,7 @@
     "13": {
         "Title": "Forrest Gump",
         "Age": "13+",
-        "Summary": "Aged 13+ for moderate war violence, occasional strong language, and brief nudity.",
+        "Summary": "Aged 13+ for moderate war violence, brief nudity, and moderate language.",
         "scenes": [
             {
                 "start": "0:35:38",
@@ -37,7 +37,7 @@
     "218": {
         "Title": "The Terminator",
         "Age": "16+",
-        "Summary": "Aged 16+ for intense action violence, graphic special effects, and minor sexual content.",
+        "Summary": "Aged 16+ for intense action violence, explicit sex and brief nudity, and moderate language.",
         "scenes": [
             {
                 "start": "4:40",
@@ -72,7 +72,7 @@
     "275": {
         "Title": "Fargo",
         "Age": "17+",
-        "Summary": "Aged 17+ for graphic bloody violence, disturbing images, and frequent strong language.",
+        "Summary": "Aged 17+ for brutal graphic violence, minor sexual content, and strong language throughout.",
         "scenes": [
             {
                 "start": "11:45",
@@ -105,7 +105,7 @@
     "280": {
         "Title": "Terminator 2: Judgment Day",
         "Age": "14+",
-        "Summary": "Aged 14+ for pervasive sci-fi violence, intense explosions, and moderate profanity.",
+        "Summary": "Aged 14+ for heavy action violence, brief nudity, and moderate language.",
         "scenes": [
             {
                 "start": "0:06:10",
@@ -138,7 +138,7 @@
     "345": {
         "Title": "Eyes Wide Shut",
         "Age": "18+",
-        "Summary": "Aged 18+ for mature sexual themes, extensive full nudity, and strong language.",
+        "Summary": "Aged 18+ for mild violence, explicit sex and extensive nudity, and moderate language.",
         "scenes": [
             {
                 "start": "0:00:48",
@@ -261,7 +261,7 @@
     "380": {
         "Title": "Rain Man",
         "Age": "14+",
-        "Summary": "Aged 14+ for frequent coarse language and minor off-screen sexual sounds.",
+        "Summary": "Aged 14+ for mild violence, brief nudity and minor sexual content, and moderate language.",
         "scenes": [
             {
                 "start": "0:33:16",
@@ -294,7 +294,7 @@
     "402": {
         "Title": "Basic Instinct",
         "Age": "18+",
-        "Summary": "Aged 18+ for explicit sexual intercourse, heavy full nudity, and graphic violence.",
+        "Summary": "Aged 18+ for brutal graphic violence, explicit sex and heavy nudity, and strong language throughout.",
         "scenes": [
             {
                 "start": "0:03:11",
@@ -378,7 +378,7 @@
     "409": {
         "Title": "The English Patient",
         "Age": "16+",
-        "Summary": "Aged 16+ for realistic war violence, intense injury detail, and brief nudity.",
+        "Summary": "Aged 16+ for moderate war violence, explicit sex and heavy nudity, and moderate language.",
         "scenes": [
             {
                 "start": "1:14:35",
@@ -423,7 +423,7 @@
     "550": {
         "Title": "Fight Club",
         "Age": "16+",
-        "Summary": "Aged 16+ for brutal physical violence, graphic injuries, and pervasive strong language.",
+        "Summary": "Aged 16+ for brutal graphic violence, explicit sex and heavy nudity, and strong language throughout.",
         "scenes": [
             {
                 "start": "0:32:27",
@@ -479,7 +479,7 @@
     "562": {
         "Title": "Die Hard",
         "Age": "16+",
-        "Summary": "Aged 16+ for heavy action violence, continuous gunfights, and a high volume of profanity.",
+        "Summary": "Aged 16+ for heavy action violence, heavy nudity, and strong language throughout.",
         "scenes": [
             {
                 "start": "0:23:32",
@@ -512,7 +512,7 @@
     "597": {
         "Title": "Titanic",
         "Age": "13+",
-        "Summary": "Aged 13+ for intense disaster peril, mass casualties, and a single scene of brief nudity.",
+        "Summary": "Aged 13+ for moderate violence, brief nudity, and moderate language.",
         "scenes": [
             {
                 "start": "1:25:35",
@@ -539,7 +539,7 @@
     "605": {
         "Title": "The Matrix Revolutions",
         "Age": "13+",
-        "Summary": "Aged 13+ for heavy stylized sci-fi combat and moderate profanity.",
+        "Summary": "Aged 13+ for moderate action violence and moderate language.",
         "scenes": [
             {
                 "start": "",
@@ -560,7 +560,7 @@
     "617": {
         "Title": "Wild Things",
         "Age": "16+",
-        "Summary": "Aged 16+ for explicit sexual themes, frequent nudity, and strong language.",
+        "Summary": "Aged 16+ for moderate violence, explicit sex and heavy nudity, and strong language throughout.",
         "scenes": [
             {
                 "start": "0:17:25",
@@ -616,7 +616,7 @@
     "629": {
         "Title": "The Usual Suspects",
         "Age": "16+",
-        "Summary": "Aged 16+ for heavy criminal violence, frequent gunfire, and pervasive strong language.",
+        "Summary": "Aged 16+ for moderate violence, minor sexual content, and strong language throughout.",
         "scenes": [
             {
                 "start": "1:00:15",
@@ -643,7 +643,7 @@
     "639": {
         "Title": "When Harry Met Sally...",
         "Age": "14+",
-        "Summary": "Aged 14+ for frequent crude sexual references and mature dialogue.",
+        "Summary": "Aged 14+ for minor sexual content and moderate language.",
         "scenes": [
             {
                 "start": "0:46:13",
@@ -670,7 +670,7 @@
     "655": {
         "Title": "Paris, Texas",
         "Age": "13+",
-        "Summary": "Aged 13+ for bloodless adult themes and brief non-sexual nudity.",
+        "Summary": "Aged 13+ for brief nudity and mild language.",
         "scenes": [
             {
                 "start": "0:04:30",
@@ -703,7 +703,7 @@
     "670": {
         "Title": "Oldboy",
         "Age": "18+",
-        "Summary": "Aged 18+ for extreme graphic violence, brutal torture,  explicit sexual content, self-harm, and highly taboo themes.",
+        "Summary": "Aged 18+ for brutal graphic violence, explicit sex and heavy nudity, and moderate language.",
         "scenes": [
             {
                 "start": "0:11:05",
@@ -759,7 +759,7 @@
     "694": {
         "Title": "The Shining",
         "Age": "16+",
-        "Summary": "Aged 16+ for intense psychological terror, disturbing horror imagery, and brief nudity.",
+        "Summary": "Aged 16+ for brutal graphic violence, heavy nudity, and moderate language.",
         "scenes": [
             {
                 "start": "1:10:40",
@@ -792,7 +792,7 @@
     "769": {
         "Title": "Goodfellas",
         "Age": "17+",
-        "Summary": "Aged 17+ for brutal mob violence, bloody executions, and an extreme frequency of strong profanity.",
+        "Summary": "Aged 17+ for brutal graphic violence, brief nudity, and strong language throughout.",
         "scenes": [
             {
                 "start": "0:48:31",
@@ -819,7 +819,7 @@
     "773": {
         "Title": "Little Miss Sunshine",
         "Age": "14+",
-        "Summary": "Aged 14+ for moderate coarse language and brief crude references.",
+        "Summary": "Aged 14+ for minor sexual content and moderate language.",
         "scenes": [
             {
                 "start": "1:04:04",
@@ -846,7 +846,7 @@
     "979": {
         "Title": "Irréversible",
         "Age": "18+",
-        "Summary": "Aged 18+ for extreme prolonged sexual violence, graphic fatal trauma, and heavy nudity.",
+        "Summary": "Aged 18+ for brutal graphic violence, explicit sex and heavy nudity, and strong language throughout.",
         "scenes": [
             {
                 "start": "0:05:50",
@@ -891,7 +891,7 @@
     "1278": {
         "Title": "The Dreamers",
         "Age": "18+",
-        "Summary": "Aged 18+ for continuous full nudity and explicit sexual content.",
+        "Summary": "Aged 18+ for moderate violence, explicit sex and heavy nudity, and moderate language.",
         "scenes": [
             {
                 "start": "0:26:50",
@@ -989,7 +989,7 @@
     "1791": {
         "Title": "The Piano Teacher",
         "Age": "18+",
-        "Summary": "Aged 18+ for deeply disturbing psychological themes, graphic self-harm, and sexual violence.",
+        "Summary": "Aged 18+ for moderate violence, explicit sex and heavy nudity, and moderate language.",
         "scenes": [
             {
                 "start": "0:25:10",
@@ -1045,7 +1045,7 @@
     "2251": {
         "Title": "Unfaithful",
         "Age": "17+",
-        "Summary": "Aged 17+ for explicit sexual content, frequent nudity, and sudden lethal violence.",
+        "Summary": "Aged 17+ for moderate violence, explicit sex and heavy nudity, and moderate language.",
         "scenes": [
             {
                 "start": "0:33:50",
@@ -1120,7 +1120,7 @@
     "2649": {
         "Title": "The Game",
         "Age": "14+",
-        "Summary": "Aged 14+ for intense psychological tension, sustained peril, and moderate profanity.",
+        "Summary": "Aged 14+ for mild violence, minor sexual content, and strong language.",
         "scenes": [
             {
                 "start": "57:52",
@@ -1147,7 +1147,7 @@
     "4478": {
         "Title": "Indecent Proposal",
         "Age": "16+",
-        "Summary": "Aged 16+ for mature sexual themes and brief nudity.",
+        "Summary": "Aged 16+ for explicit sex and brief nudity, and moderate language.",
         "scenes": [
             {
                 "start": "0:05:25",
@@ -1186,7 +1186,7 @@
     "4588": {
         "Title": "Lust, Caution",
         "Age": "18+",
-        "Summary": "Aged 18+ for highly explicit sexual content, heavy full nudity, and wartime violence.",
+        "Summary": "Aged 18+ for moderate violence, explicit sex and heavy nudity, and moderate language.",
         "scenes": [
             {
                 "start": "1:00:15",
@@ -1242,7 +1242,7 @@
     "8363": {
         "Title": "Superbad",
         "Age": "16+",
-        "Summary": "Aged 16+ for an extreme density of aggressive vulgarity, crude sexual humor, and explicit drawings.",
+        "Summary": "Aged 16+ for mild violence, minor sexual content and brief nudity, and strong language throughout.",
         "scenes": [
             {
                 "start": "0:04:45",
@@ -1284,7 +1284,7 @@
     "9303": {
         "Title": "Bound",
         "Age": "16+",
-        "Summary": "Aged 16+ for explicit sexual content, heavy nudity, and bloody organized crime violence.",
+        "Summary": "Aged 16+ for brutal graphic violence, explicit sex and heavy nudity, and moderate language.",
         "scenes": [
             {
                 "start": "0:13:00",
@@ -1317,7 +1317,7 @@
     "10843": {
         "Title": "After Hours",
         "Age": "14+",
-        "Summary": "Aged 14+ for a tense paranoid atmosphere and brief non-sexual nudity.",
+        "Summary": "Aged 14+ for mild violence, brief nudity, and mild language.",
         "scenes": [
             {
                 "start": "0:20:08",
@@ -1350,7 +1350,7 @@
     "10867": {
         "Title": "Malèna",
         "Age": "16+",
-        "Summary": "Aged 16+ for frequent full nudity, strong sexual themes, and intense public violence.",
+        "Summary": "Aged 16+ for moderate violence, heavy nudity and minor sexual content, and moderate language.",
         "scenes": [
             {
                 "start": "0:14:04",
@@ -1425,7 +1425,7 @@
     "10998": {
         "Title": "Fatal Attraction",
         "Age": "17+",
-        "Summary": "Aged 17+ for explicit sexual content, intense psychological stalking, and a violent climax.",
+        "Summary": "Aged 17+ for moderate violence, explicit sex and brief nudity, and moderate language.",
         "scenes": [
             {
                 "start": "0:17:00",
@@ -1470,7 +1470,7 @@
     "11013": {
         "Title": "Secretary",
         "Age": "17+",
-        "Summary": "Aged 17+ for explicit BDSM sexual themes, physical restraint, and minor self-harm.",
+        "Summary": "Aged 17+ for moderate violence, explicit sex and heavy nudity, and moderate language.",
         "scenes": [
             {
                 "start": "0:53:16",
@@ -1533,7 +1533,7 @@
     "11423": {
         "Title": "Memories of Murder",
         "Age": "16+",
-        "Summary": "Aged 16+ for a grim focus on violent crime, realistic police brutality, and disturbing forensic images.",
+        "Summary": "Aged 16+ for moderate violence, explicit sex and brief nudity, and moderate language.",
         "scenes": [
             {
                 "start": "9:58",
@@ -1581,7 +1581,7 @@
     "13855": {
         "Title": "The Chaser",
         "Age": "18+",
-        "Summary": "Aged 18+ for brutal graphic murders, severe physical trauma, and highly disturbing crime scenes.",
+        "Summary": "Aged 18+ for brutal graphic violence, minor sexual content, and moderate language.",
         "scenes": [
             {
                 "start": "6:30",
@@ -1608,7 +1608,7 @@
     "14412": {
         "Title": "Body Heat",
         "Age": "16+",
-        "Summary": "Aged 16+ for heavy atmospheric sexual content and clear nudity.",
+        "Summary": "Aged 16+ for mild violence, explicit sex and brief nudity, and mild language.",
         "scenes": [
             {
                 "start": "0:20:55",
@@ -1677,7 +1677,7 @@
     "25284": {
         "Title": "The Last Seduction",
         "Age": "16+",
-        "Summary": "Aged 16+ for mature sexual content and frequent strong language.",
+        "Summary": "Aged 16+ for moderate violence, explicit sex and heavy nudity, and strong language throughout.",
         "scenes": [
             {
                 "start": "0:30:15",
@@ -1728,7 +1728,7 @@
     "44214": {
         "Title": "Black Swan",
         "Age": "16+",
-        "Summary": "Aged 16+ for intense psychological breakdown, disturbing self-harm themes, and sexual content.",
+        "Summary": "Aged 16+ for brutal graphic violence, explicit sex, and moderate language.",
         "scenes": [
             {
                 "start": "39:40",
@@ -1779,7 +1779,7 @@
     "106646": {
         "Title": "The Wolf of Wall Street",
         "Age": "18+",
-        "Summary": "Aged 18+ for an extreme frequency of strong profanity, massive drug abuse, and pervasive graphic sex with full nudity.",
+        "Summary": "Aged 18+ for moderate violence, explicit sex and heavy nudity, and strong language throughout.",
         "scenes": [
             {
                 "start": "0:02:02",
@@ -1878,7 +1878,7 @@
     "152584": {
         "Title": "Blue Is the Warmest Color",
         "Age": "18+",
-        "Summary": "Aged 18+ for exceptionally lengthy, highly explicit sexual content and moderate profanity.",
+        "Summary": "Aged 18+ for mild violence, explicit sex and heavy nudity, and moderate language.",
         "scenes": [
             {
                 "start": "0:18:05",
@@ -1955,7 +1955,7 @@
     "156022": {
         "Title": "The Equalizer",
         "Age": "17+",
-        "Summary": "Aged 17+ for highly graphic close-quarters violence, prolonged brutal combat, and frequent strong language.",
+        "Summary": "Aged 17+ for brutal graphic violence, brief nudity, and strong language throughout.",
         "scenes": [
             {
                 "start": "2:04:35",
@@ -1982,7 +1982,7 @@
     "157336": {
         "Title": "Interstellar",
         "Age": "13+",
-        "Summary": "Aged 13+ for intense survival peril, space-hazard sequences, and minimal strong language.",
+        "Summary": "Aged 13+ for mild violence and mild language.",
         "scenes": [
             {
                 "start": "",
@@ -2003,7 +2003,7 @@
     "206487": {
         "Title": "Predestination",
         "Age": "15+",
-        "Summary": "Aged 15+ for moderate action violence, a scene of explicit intimacy, and strong language.",
+        "Summary": "Aged 15+ for mild violence, explicit sex and brief nudity, and moderate language.",
         "scenes": [
             {
                 "start": "0:19:07",
@@ -2036,7 +2036,7 @@
     "210577": {
         "Title": "Gone Girl",
         "Age": "18+",
-        "Summary": "Aged 18+ for sudden extreme graphic violence, explicit sexual content, and full nudity.",
+        "Summary": "Aged 18+ for brutal graphic violence, explicit sex and heavy nudity, and strong language throughout.",
         "scenes": [
             {
                 "start": "6:41",
@@ -2099,7 +2099,7 @@
     "216015": {
         "Title": "Fifty Shades of Grey",
         "Age": "18+",
-        "Summary": "Aged 18+ for extensive BDSM themes, intense physical restraint, and prolonged explicit intercourse.",
+        "Summary": "Aged 18+ for moderate violence, explicit sex and heavy nudity, and moderate language.",
         "scenes": [
             {
                 "start": "0:43:10",
@@ -2169,7 +2169,7 @@
     "220289": {
         "Title": "Coherence",
         "Age": "14+",
-        "Summary": "Aged 14+ for a highly tense psychological scenario, minimal physical violence, and moderate profanity.",
+        "Summary": "Aged 14+ for mild violence and strong language.",
         "scenes": [
             {
                 "start": "",
@@ -2190,7 +2190,7 @@
     "274870": {
         "Title": "Passengers",
         "Age": "13+",
-        "Summary": "Aged 13+ for moderate space peril, brief injury detail, and very light language choices.",
+        "Summary": "Aged 13+ for mild violence, brief nudity, and mild language.",
         "scenes": [
             {
                 "start": "0:06:36",
@@ -2223,7 +2223,7 @@
     "290098": {
         "Title": "The Handmaiden",
         "Age": "18+",
-        "Summary": "Aged 18+ for highly explicit same-sex sexual content, heavy full nudity, and graphic physical trauma.",
+        "Summary": "Aged 18+ for moderate violence, explicit sex and heavy nudity, and strong language throughout.",
         "scenes": [
             {
                 "start": "0:21:45",
@@ -2307,7 +2307,7 @@
     "324786": {
         "Title": "Hacksaw Ridge",
         "Age": "17+",
-        "Summary": "Aged 17+ for relentlessly graphic wartime combat, severe injury detail, and extreme battlefield gore.",
+        "Summary": "Aged 17+ for brutal graphic violence, brief nudity, and moderate language.",
         "scenes": [
             {
                 "start": "0:28:00",
@@ -2334,7 +2334,7 @@
     "341174": {
         "Title": "Fifty Shades Darker",
         "Age": "18+",
-        "Summary": "Aged 18+ for frequent explicit sexual content, heavy full nudity, and lifestyle BDSM themes.",
+        "Summary": "Aged 18+ for mild violence, explicit sex and heavy nudity, and moderate language.",
         "scenes": [
             {
                 "start": "0:21:52",
@@ -2403,7 +2403,7 @@
     "399057": {
         "Title": "The Killing of a Sacred Deer",
         "Age": "16+",
-        "Summary": "Aged 16+ for a highly distressing psychological premise, themes of harm to minors, and realistic medical imagery.",
+        "Summary": "Aged 16+ for moderate violence, explicit sex and brief nudity, and moderate language.",
         "scenes": [
             {
                 "start": "00:09:20",
@@ -2430,7 +2430,7 @@
     "496243": {
         "Title": "Parasite",
         "Age": "16+",
-        "Summary": "Aged 16+ for sudden graphic knife violence, strong verbal sex, and class-conflict tension.",
+        "Summary": "Aged 16+ for brutal graphic violence, explicit sex, and moderate language.",
         "scenes": [
             {
                 "start": "1:28:35",
@@ -2457,7 +2457,7 @@
     "664413": {
         "Title": "365 Days",
         "Age": "18+",
-        "Summary": "Aged 18+ for pervasive highly explicit sexual content, continuous heavy nudity, and themes of coercion.",
+        "Summary": "Aged 18+ for mild violence, explicit sex and heavy nudity, and moderate language.",
         "scenes": [
             {
                 "start": "0:11:30",
@@ -2520,7 +2520,7 @@
     "718930": {
         "Title": "Bullet Train",
         "Age": "16+",
-        "Summary": "Aged 16+ for fast-paced stylized violence, bloody executions, and an extreme volume of strong profanity.",
+        "Summary": "Aged 16+ for brutal graphic violence and strong language throughout.",
         "scenes": [
             {
                 "start": "",
@@ -2541,7 +2541,7 @@
     "792307": {
         "Title": "Poor Things",
         "Age": "18+",
-        "Summary": "Aged 18+ for frequent highly explicit sexual content, heavy full nudity, and graphic surgical imagery.",
+        "Summary": "Aged 18+ for brutal graphic violence, explicit sex and heavy nudity, and strong language throughout.",
         "scenes": [
             {
                 "start": "0:20:19",
@@ -2694,7 +2694,7 @@
     "872585": {
         "Title": "Oppenheimer",
         "Age": "15+",
-       "Summary": "Aged 15+ due to sustained psychological tension based on historical events, brief nudity, and occasional mature language.",
+        "Summary": "Aged 15+ for moderate violence, explicit sex and heavy nudity, and moderate language.",
         "scenes": [
             {
                 "start": "0:23:14",
@@ -2736,7 +2736,7 @@
     "937287": {
         "Title": "Challengers",
         "Age": "16+",
-        "Summary": "Aged 16+ for heavy language metrics exceeding 50 instances of the F-word and brief full nudity.",
+        "Summary": "Aged 16+ for mild violence, heavy nudity and minor sexual content, and strong language throughout.",
         "scenes": [
             {
                 "start": "0:04:20",
@@ -2781,7 +2781,7 @@
     "1064213": {
         "Title": "Anora",
         "Age": "18+",
-        "Summary": "Aged 18+ for an extreme density of strong language, pervasive explicit sexual content, and heavy full nudity.",
+        "Summary": "Aged 18+ for mild violence, explicit sex and heavy nudity, and strong language throughout.",
         "scenes": [
             {
                 "start": "0:01:00",
@@ -2874,7 +2874,7 @@
     "1072790": {
         "Title": "Anyone But You",
         "Age": "16+",
-        "Summary": "Aged 16+ for high profanity metrics and scenes of brief nudity.",
+        "Summary": "Aged 16+ for explicit sex and brief nudity, and strong language throughout.",
         "scenes": [
             {
                 "start": "0:21:00",
@@ -2913,7 +2913,7 @@
     "1317088": {
         "Title": "The Assessment",
         "Age": "16+",
-        "Summary": "Aged 16+ for intense psychological tension and explicit sexual content.",
+        "Summary": "Aged 16+ for mild violence, explicit sex, and mild language.",
         "scenes": [
             {
                 "start": "2:40",
@@ -2964,7 +2964,7 @@
     "1317288": {
         "Title": "Marty Supreme",
         "Age": "16+",
-        "Summary": "Aged 16+ for frequent explicit sexual content, strong language, and sudden outbreaks of criminal violence.",
+        "Summary": "Aged 16+ for moderate violence, explicit sex and brief nudity, and strong language throughout.",
         "scenes": [
             {
                 "start": "0:30:28",

@@ -334,11 +334,6 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                     
                     <div className="ml-1 space-y-2.5 sm:space-y-2">
                         <p className="text-[13px] sm:text-sm text-gray-500 flex items-start sm:items-center gap-2">
-                            <AlertOctagon size={14} className="text-red-500/80 shrink-0 mt-0.5 sm:mt-0" />
-                            <span className="leading-snug">Scenes to skip: <span className="text-gray-300 font-medium">{contentTypes.length > 0 ? contentTypes.join(', ') : 'None (Violence/Language Only)'}</span></span>
-                        </p> 
-                        
-                        <p className="text-[13px] sm:text-sm text-gray-500 flex items-start sm:items-center gap-2">
                             <CheckCircle size={14} className="text-emerald-500/80 shrink-0 mt-0.5 sm:mt-0" />
                             <span className="leading-snug">Timestamps are accurate for the <span className="text-gray-300 font-medium">{currentRuntime}</span></span>
                         </p>

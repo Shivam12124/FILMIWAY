@@ -8,7 +8,7 @@ const TMDB_BASE_URL = 'https://api.themoviedb.org/3';
 const TMDB_IMAGE_BASE_URL = 'https://image.tmdb.org/t/p';
 
 // ✅ FIX: Added 'priority' prop support and removed 'unoptimized' for lightning-fast LCP
-const TMDBMoviePoster = React.memo(({ movie, className = "", alt, posterSize = "w500", priority = false }) => {
+const TMDBMoviePoster = React.memo(({ movie, className = "", alt, posterSize = "w342", priority = false }) => {
     const [posterUrl, setPosterUrl] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [hasError, setHasError] = useState(false);
@@ -71,7 +71,7 @@ const TMDBMoviePoster = React.memo(({ movie, className = "", alt, posterSize = "
             }
             
             if (data && data.poster_path) {
-                // ✅ SPEED: Construct URL using the requested size (w500 now default)
+                // ✅ SPEED: Construct URL using the requested size (w342 now default)
                 const fullPosterUrl = `${TMDB_IMAGE_BASE_URL}/${posterSize}${data.poster_path}`;
                 
                 setPosterUrl(fullPosterUrl);
@@ -118,6 +118,7 @@ const TMDBMoviePoster = React.memo(({ movie, className = "", alt, posterSize = "
                 sizes="(max-width: 768px) 33vw, (max-width: 1200px) 20vw, 15vw" // Responsive sizes hint
                 className={`object-cover transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
                 priority={priority}
+                quality={50} // ⚡ REDUCED QUALITY FOR FASTER LOADING
                 loading={priority ? undefined : "lazy"}
                 onLoadingComplete={() => setIsLoading(false)}
                 onError={() => {
