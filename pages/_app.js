@@ -159,16 +159,15 @@ export default function App({ Component, pageProps }) {
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
+        
+        {/* 🚀 MEDIAVINE GROW SCRIPT (Forced into raw HTML for bot verification) 🚀 */}
+        <script 
+          data-grow-initializer="" 
+          dangerouslySetInnerHTML={{ 
+            __html: `!(function(){window.growMe||((window.growMe=function(e){window.growMe._.push(e);}),(window.growMe._=[]));var e=document.createElement("script");(e.type="text/javascript"),(e.src="https://faves.grow.me/main.js"),(e.defer=!0),e.setAttribute("data-grow-faves-site-id","U2l0ZTpmYzEyNGY4Ni1jYzUwLTQ4ZGQtOWFkZi1mZmI1YjQwODI5Y2I=");var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t);})();` 
+          }} 
+        />
       </Head>
-      
-      {/* 🚀 MEDIAVINE GROW SCRIPT 🚀 */}
-      <Script
-        id="mediavine-grow"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `!(function(){window.growMe||((window.growMe=function(e){window.growMe._.push(e);}),(window.growMe._=[]));var e=document.createElement("script");(e.type="text/javascript"),(e.src="https://faves.grow.me/main.js"),(e.defer=!0),e.setAttribute("data-grow-faves-site-id","U2l0ZTpmYzEyNGY4Ni1jYzUwLTQ4ZGQtOWFkZi1mZmI1YjQwODI5Y2I=");var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t);})();`
-        }}
-      />
       
       {/* 🚀 GOOGLE ANALYTICS (Loaded immediately to capture 100% of traffic) */}
       <Script
