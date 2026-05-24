@@ -104,7 +104,7 @@ export default function AboutUs() {
               <FilmReel />
               
               <p className="text-lg sm:text-xl text-gray-400 font-light leading-relaxed max-w-2xl mx-auto">
-                The No. 1 best parents guide for completely stress-free movie nights. We provide exact timestamps to skip awkward scenes with your family for free.
+                One of the only free movie guide platforms with exact skip timestamps. We provide precise skip timestamps in a family-safe, text-only format for completely stress-free movie nights.
               </p>
             </motion.div>
           </section>
