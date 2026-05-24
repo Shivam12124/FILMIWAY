@@ -223,13 +223,16 @@ const HeroSection = memo(() => {
             <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8">
               <span className="flex h-2 w-2 rounded-full bg-yellow-400 animate-pulse" />
               <span className="text-[10px] sm:text-xs font-medium text-gray-300 tracking-wider uppercase">70+ Expertly Curated Collections</span>
+            
             </div>
           </div>
 
           <h1 className="text-5xl sm:text-7xl md:text-8xl font-extralight text-white mb-6 leading-[1.1] tracking-tight">
             The Art of <br className="hidden sm:block" />
+        
             <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 via-yellow-400 to-amber-500 ml-2 sm:ml-0">
               Cinema Discovery
+    
             </span>
           </h1>
 
@@ -429,7 +432,8 @@ const FilmiwayHomepage = ({ huluCollections, thrillerCollections, hboCollections
     <div>
       <Head>
         <title>Filmiway | Parents Guide & Film Recommendations</title>
-        <meta name="description" content="Expertly curated movie collections, exact parents guide timestamps, and hand-picked film recommendations for true cinema lovers." />
+       
+        <meta name="description" content="Filmiway is a parents guide website with exact skip timestamps. We help families from all over the world by telling them exactly what is in a movie as it is, so they can expect what they are going to see." />
         <link rel="canonical" href="https://filmiway.com/" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
         

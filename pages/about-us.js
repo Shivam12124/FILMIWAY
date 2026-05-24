@@ -34,24 +34,24 @@ const FilmReel = () => (
 // ✅ REFINED FEATURES (Now with 4 Items)
 const features = [
   {
-    icon: <Globe className="w-6 h-6 text-yellow-400" />,
-    title: "Global Cinema Scope",
-    description: "Beyond Hollywood. We curate masterpieces from Korea, Europe, and independent studios worldwide.",
+    icon: <Clock className="w-6 h-6 text-yellow-400" />,
+    title: "Educational Parents Guide",
+    description: "Created strictly for educational purposes, empowering parents to know exactly what content their families are about to watch.",
   },
   {
-    icon: <Clock className="w-6 h-6 text-purple-400" />, // ✅ NEW SEO UTILITY FEATURE
-    title: "Precise Parents Guide",
-    description: "Never sit through an awkward scene with family again. We provide exact minute-by-minute timestamps to safely skip mature content.",
+    icon: <ShieldCheck className="w-6 h-6 text-purple-400" />,
+    title: "100% Text-Only. No Images.",
+    description: "We maintain a completely safe platform. We never host explicit images or screenshots—only text-based descriptions and precise timestamps.",
   },
   {
     icon: <Users className="w-6 h-6 text-blue-400" />,
-    title: "Every Film Covered",
-    description: "Every single film listed on Filmiway includes exact timestamps to skip awkward scenes if the film contains them.",
+    title: "Family-First Philosophy",
+    description: "Never sit through an awkward scene again. Every film listed includes exact timestamps so you can safely skip mature content.",
   },
   {
-    icon: <ShieldCheck className="w-6 h-6 text-green-400" />,
+    icon: <Globe className="w-6 h-6 text-green-400" />,
     title: "100% Free Forever",
-    description: "Our parents guides and exact skip timestamps are completely free to use. No paywalls, no hidden fees.",
+    description: "Our educational content and parents guides are completely free for all parents. No paywalls, no hidden fees.",
   },
 ];
 
@@ -62,7 +62,7 @@ export default function AboutUs() {
         <title>About Filmiway | Parents Guide & Film Recommendations</title>
         <meta
           name="description"
-          content="Filmiway is your trusted parents guide and film recommendation site. We offer expertly curated collections and exact timestamps to skip awkward scenes."
+          content="Filmiway is a parents guide website with exact skip timestamps. We help families from all over the world by telling them exactly what is in a movie as it is, so they can expect what they are going to see."
         />
         <link rel="canonical" href="https://filmiway.com/about-us" />
         <meta name="robots" content="index, follow" />
@@ -95,9 +95,9 @@ export default function AboutUs() {
               </div>
               
               <h1 className="text-4xl sm:text-6xl font-extralight tracking-tight text-white mb-4 leading-[1.1]">
-                Curating the 
+                Filmiway Parents Guide & 
                 <span className="block font-normal text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 via-yellow-400 to-amber-500">
-                  Art of Cinema
+                  Skip Timestamps
                 </span>
               </h1>
               
@@ -142,19 +142,21 @@ export default function AboutUs() {
                   </h2>
                   <div className="space-y-4 text-base sm:text-lg text-gray-300 font-light leading-relaxed">
                     <p>
-                      Watching a great movie with your family shouldn't mean constantly hovering over the remote control. We built this platform to give you your peace of mind back.
+                      Watching a great movie with your family shouldn't mean constantly hovering over the remote control. We built this platform as a <strong>free educational resource</strong> to give parents their peace of mind back.
                     </p>
                     <p>
-                      Every film listed on Filmiway.com features precise skip timestamps if that movie contains sensitive or explicit content. We watch it first and map out the exact seconds to skip so you don't have to.
+                      Our Parents Guide is strictly for educational purposes, designed to help you monitor and understand exactly what you and your kids are going to see. Every film listed features precise skip timestamps for sensitive or explicit content.
+                    </p>
+                    <p>
+                      To maintain a completely family-safe environment, <strong>we do not host, upload, or display any explicit images or screenshots</strong>. We provide only clear, text-based descriptions and exact timestamps, empowering you to make informed viewing choices safely.
                     </p>
                   </div>
                 </div>
                 
                 <div className="flex-shrink-0 w-full md:w-auto grid grid-cols-2 gap-3">
                   <div className="bg-black/40 p-5 rounded-xl border border-white/5 text-center">
-                    <div className="text-2xl font-bold text-yellow-400 mb-1">70+</div>
-                    {/* ✅ CHANGED TO COLLECTIONS */}
-                    <div className="text-[10px] text-gray-400 uppercase tracking-wider">Collections</div>
+                    <div className="text-2xl font-bold text-yellow-400 mb-1">570+</div>
+                    <div className="text-[10px] text-gray-400 uppercase tracking-wider">Films</div>
                   </div>
                   <div className="bg-black/40 p-5 rounded-xl border border-white/5 text-center">
                     <div className="text-2xl font-bold text-yellow-400 mb-1">Free</div>

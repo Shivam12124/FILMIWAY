@@ -38,7 +38,7 @@ export default function Document() {
               '@type': 'WebSite',
               name: 'Filmiway',
               url: 'https://filmiway.com',
-              description: 'Discover curated movie collections with exact parents guides and film recommendations',
+              description: 'Filmiway is a parents guide website with skip timestamps. We help families from all over the world by telling them exactly what is in a movie as it is, so they can expect what they are going to see.',
               potentialAction: {
                 '@type': 'SearchAction',
                 target: {
