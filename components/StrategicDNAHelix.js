@@ -46,10 +46,31 @@ const StrategicDNAHelix = React.memo(({ dna, dominantColor, className = "" }) =>
         normalizedPercentage: (percentage / total) * 100 
     }));
 
+    // 🔥 DYNAMIC SINGLE-HELIX ENGINE: Perfectly maps genres to 26 exact rungs
+    const TOTAL_RUNGS = 26;
+    let accumulatedPercentage = 0;
+    const genreThresholds = genreData.map(g => {
+        accumulatedPercentage += g.normalizedPercentage;
+        return { ...g, threshold: accumulatedPercentage };
+    });
+
+    const rungs = Array.from({ length: TOTAL_RUNGS }).map((_, i) => {
+        const progress = ((i + 0.5) / TOTAL_RUNGS) * 100;
+        const genre = genreThresholds.find(g => progress <= g.threshold) || genreThresholds[genreThresholds.length - 1];
+        return {
+            index: i,
+            color: genre.color,
+            genreName: genre.genre,
+            percentage: genre.percentage
+        };
+    });
+
     return (
-        <div 
-            className={`mb-8 sm:mb-12 ${className}`}
-        >
+        <div className={`w-full bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8 mb-8 sm:mb-12 ${className}`}>
+            <div className="flex items-center gap-3 mb-6 border-b border-white/5 pb-4">
+                <span className="text-2xl">🧬</span>
+                <h2 className="text-xl sm:text-2xl font-light text-gray-200 tracking-wide">Cinematic DNA</h2>
+            </div>
             <div className="flex flex-col lg:flex-row items-center gap-8 sm:gap-12">
                 <div className="relative w-24 h-64 sm:w-32 sm:h-80 lg:w-36 lg:h-96 flex-shrink-0 bg-gradient-to-b from-gray-800/40 to-gray-900/60 rounded-xl p-3 sm:p-4 lg:p-6 border border-gray-700/50 shadow-2xl backdrop-blur-sm">
                     <div className="absolute top-2 left-2 sm:top-3 sm:left-3 w-3 h-3 sm:w-4 sm:h-4 border-t-2 border-l-2 border-yellow-400/30"></div>
@@ -58,12 +79,17 @@ const StrategicDNAHelix = React.memo(({ dna, dominantColor, className = "" }) =>
                     <div className="absolute bottom-2 right-2 sm:bottom-3 sm:right-3 w-3 h-3 sm:w-4 sm:h-4 border-b-2 border-r-2 border-yellow-400/30"></div>
                     <svg viewBox="0 0 120 320" className="w-full h-full relative z-10">
                         <defs>
-                            <linearGradient id="strategicHelix" x1="0%" y1="0%" x2="0%" y2="100%">
-                                <stop offset="0%" stopColor="#ca8a04" stopOpacity="0.9" />
-                                <stop offset="25%" stopColor="#a16207" stopOpacity="0.8" />
-                                <stop offset="50%" stopColor="#854d0e" stopOpacity="0.9" />
-                                <stop offset="75%" stopColor="#a16207" stopOpacity="0.8" />
-                                <stop offset="100%" stopColor="#ca8a04" stopOpacity="0.7" />
+                            <linearGradient id="dynamicHelix" x1="0%" y1="0%" x2="0%" y2="100%">
+                                {genreData.map((genreInfo, index, arr) => {
+                                    const prevOffset = arr.slice(0, index).reduce((acc, curr) => acc + curr.normalizedPercentage, 0);
+                                    const currentOffset = prevOffset + genreInfo.normalizedPercentage;
+                                    return (
+                                        <React.Fragment key={`${genreInfo.genre}-gradient`}>
+                                            <stop offset={`${prevOffset}%`} stopColor={genreInfo.color} stopOpacity="0.95" />
+                                            <stop offset={`${currentOffset}%`} stopColor={genreInfo.color} stopOpacity="0.95" />
+                                        </React.Fragment>
+                                    );
+                                })}
                             </linearGradient>
                             <filter id="strategicGlow">
                                 <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
@@ -73,104 +99,65 @@ const StrategicDNAHelix = React.memo(({ dna, dominantColor, className = "" }) =>
                                 </feMerge>
                             </filter>
                         </defs>
-                    <path 
+                        <path 
                             d="M 60 30 Q 30 80, 60 130 Q 90 180, 60 230 Q 30 280, 60 320" 
-                            stroke="url(#strategicHelix)" 
-                            strokeWidth="2" 
+                            stroke="url(#dynamicHelix)" 
+                            strokeWidth="2.5" 
+                            strokeDasharray="4 4"
                             fill="none" 
                             filter="url(#strategicGlow)" 
                         />
-                    <path 
+                        <path 
                             d="M 60 30 Q 90 80, 60 130 Q 30 180, 60 230 Q 90 280, 60 320" 
-                            stroke="url(#strategicHelix)" 
-                            strokeWidth="2" 
+                            stroke="url(#dynamicHelix)" 
+                            strokeWidth="2.5" 
+                            strokeDasharray="4 4"
                             fill="none" 
                             filter="url(#strategicGlow)" 
                         />
-                        {genreData.map((genreInfo, index) => {
-                            const count = Math.round((genreInfo.percentage / total) * 15);
-                            return Array(count).fill().map((_, i) => {
-                                const y = 40 + (index * count + i) * 12;
-                                if (y > 300) return null;
-                                const angle = (index * count + i) * 20;
-                                const x1 = 60 + Math.cos(angle * Math.PI / 180) * 20;
-                                const x2 = 60 - Math.cos(angle * Math.PI / 180) * 20;
-                                return (
-                                    <g key={`${genreInfo.genre}-${i}`}>
+                        {rungs.map((rung, i) => {
+                            const y = 40 + i * 10;
+                            
+                            // 🔥 MATHEMATICAL FIX: Perfectly align rungs with the Bezier paths to prevent the "2 DNA" illusion
+                            let t, offset, x1, x2;
+                            if (y <= 130) {
+                                t = (y - 30) / 100;
+                                offset = 60 * t * (1 - t);
+                                x1 = 60 - offset;
+                                x2 = 60 + offset;
+                            } else if (y <= 230) {
+                                t = (y - 130) / 100;
+                                offset = 60 * t * (1 - t);
+                                x1 = 60 + offset;
+                                x2 = 60 - offset;
+                            } else {
+                                t = (y - 230) / 100;
+                                offset = 60 * t * (1 - t);
+                                x1 = 60 - offset;
+                                x2 = 60 + offset;
+                            }
+
+                            return (
+                                <g key={`rung-${rung.index}`}>
                                     <line 
-                                            x1={x1} y1={y} x2={x2} y2={y}
-                                            stroke={genreInfo.color} 
-                                            strokeWidth="2" 
-                                            filter="url(#strategicGlow)" 
-                                        />
-                                    <g>
-                                            <circle 
-                                                cx={x1} cy={y} r="2.5" 
-                                                fill={genreInfo.color} 
-                                                filter="url(#strategicGlow)" 
-                                                className="cursor-help" 
-                                                opacity="0.95"
-                                            >
-                                                <title>{`${genreInfo.genre}: ${genreInfo.percentage}%`}</title>
-                                            </circle>
-                                            <circle 
-                                                cx={x2} cy={y} r="2.5" 
-                                                fill={genreInfo.color} 
-                                                filter="url(#strategicGlow)" 
-                                                className="cursor-help" 
-                                                opacity="0.95"
-                                            >
-                                                <title>{`${genreInfo.genre}: ${genreInfo.percentage}%`}</title>
-                                            </circle>
-                                    </g>
-                                    </g>
-                                );
-                            });
+                                        x1={x1} y1={y} x2={x2} y2={y}
+                                        stroke={rung.color} 
+                                        strokeWidth="2" 
+                                        filter="url(#strategicGlow)" 
+                                        opacity="0.8"
+                                    />
+                                    <circle cx={x1} cy={y} r="2.5" fill={rung.color} filter="url(#strategicGlow)" className="cursor-help" opacity="0.95">
+                                        <title>{`${rung.genreName}: ${rung.percentage}%`}</title>
+                                    </circle>
+                                    <circle cx={x2} cy={y} r="2.5" fill={rung.color} filter="url(#strategicGlow)" className="cursor-help" opacity="0.95">
+                                        <title>{`${rung.genreName}: ${rung.percentage}%`}</title>
+                                    </circle>
+                                </g>
+                            );
                         })}
                     </svg>
                 </div>
                 <div className="flex-1 space-y-6 sm:space-y-8 w-full">
-                <div 
-                        className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-0" 
-                    >
-                        <h4 className="text-xl sm:text-2xl font-light text-gray-100 flex items-center gap-3 sm:gap-4 tracking-wide">
-                            <div className="text-2xl sm:text-3xl">
-                                🧬
-                            </div>
-                            CINEMATIC DNA
-                            
-                            {/* 💡 TOOLTIP */}
-                            <div className="group relative cursor-help inline-block hover:scale-110 transition-transform duration-200">
-                                <HelpCircle className="w-4 h-4 text-gray-400" />
-                                
-                                {/* Tooltip popup */}
-                                <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-4 py-3 rounded-lg border backdrop-blur-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 whitespace-nowrap z-50 shadow-xl"
-                                     style={{ 
-                                       backgroundColor: 'rgba(31, 41, 55, 0.95)',
-                                       borderColor: 'rgba(234, 179, 8, 0.3)',
-                                       minWidth: '280px'
-                                     }}>
-                                    <div className="text-yellow-400 font-medium mb-1 text-sm">
-                                        Genre DNA Breakdown
-                                    </div>
-                                    <div className="text-gray-300 text-xs leading-relaxed">
-                                        Visual representation of the movie's<br/>
-                                        genre composition. Larger segments<br/>
-                                        indicate dominant genre elements.
-                                    </div>
-                                    {/* Arrow pointing down */}
-                                    <div className="absolute top-full left-1/2 transform -translate-x-1/2">
-                                        <div className="w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent" 
-                                             style={{ borderTopColor: 'rgba(234, 179, 8, 0.3)' }}></div>
-                                    </div>
-                                </div>
-                        </div>
-                        </h4>
-                        <div className="text-xs text-gray-400 flex items-center gap-2 sm:gap-3 tracking-wider uppercase">
-                            <BarChart3 size={14} className="sm:w-4 sm:h-4" />
-                            Genre Analysis
-                        </div>
-                </div>
                     <div className="space-y-4 sm:space-y-6">
                         {genreData.map(({ genre, percentage, color }, index) => (
                         <div 

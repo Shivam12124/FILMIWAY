@@ -9,9 +9,7 @@ import { Users, Film, BookOpen, Star } from 'lucide-react';
 import dynamic from 'next/dynamic';
 import SensitiveContentTimelineSection from './SensitiveContentTimelineSection';
 import EnhancedWhereToWatchSection from './EnhancedWhereToWatchSection';
-const EnhancedIntensityGraph = dynamic(() => import('./EnhancedIntensityGraph'), { ssr: false });
 const StrategicDNAHelix = dynamic(() => import('./StrategicDNAHelix'), { ssr: false });
-const RealCommentsRatingSection = dynamic(() => import('./RealCommentsRatingSection'), { ssr: false });
 
 // FAQ Sections
 const SEOFAQSection = dynamic(() => import('./SEOFAQSection'));
@@ -947,7 +945,7 @@ const MovieDetailsSection = React.memo(({
 
   return (
 <motion.div
-  className="space-y-12 mt-16"
+  className="max-w-4xl mx-auto w-full flex flex-col gap-6 sm:gap-8 mt-8 sm:mt-12"
   initial={{ opacity: 1, y: 40 }} // WAS: opacity: 0
   animate={{ opacity: 1, y: 0 }}
   transition={{ duration: 0.8 }}
@@ -971,9 +969,9 @@ const MovieDetailsSection = React.memo(({
         >
           <span>{year}</span>
           <span>•</span>
-          <span>{dynamicMovieData.director}</span>
+          <span suppressHydrationWarning>{dynamicMovieData.director}</span>
           <span>•</span>
-          <span>{dynamicMovieData.runtime}</span>
+          <span suppressHydrationWarning>{dynamicMovieData.runtime}</span>
           <span>•</span>
           <span
             className="px-2 py-1 rounded border font-medium"
@@ -982,6 +980,7 @@ const MovieDetailsSection = React.memo(({
               borderColor: getAgeRatingColor(dynamicMovieData.ageRating),
               backgroundColor: `${getAgeRatingColor(dynamicMovieData.ageRating)}15`
             }}
+            suppressHydrationWarning
           >
             {dynamicMovieData.ageRating}
           </span>
@@ -989,56 +988,46 @@ const MovieDetailsSection = React.memo(({
       </div>
 
       <motion.div
-        className="max-w-4xl mx-auto"
+        className="w-full bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8"
         initial={{ opacity: 1, y: 0 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.2 }}
       >
-        <div className="p-4 sm:p-6 md:p-8 bg-gradient-to-r from-gray-800/30 to-gray-900/50 rounded-xl sm:rounded-2xl border border-yellow-400/20">
-          <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
-            <BookOpen className="w-5 h-5 sm:w-6 sm:h-6 text-yellow-400" />
-            <h3 className="text-lg sm:text-xl md:text-2xl font-light text-yellow-300">The Experience</h3>
-          </div>
-          {/* ✅ UPDATED TO USE DYNAMIC SYNOPSIS */}
-          <p className="text-gray-200 leading-relaxed text-sm sm:text-base md:text-lg">{dynamicMovieData.synopsis}</p>
+        <div className="flex items-center gap-3 mb-6 border-b border-white/5 pb-4">
+          <BookOpen className="w-6 h-6 text-yellow-500 shrink-0" />
+          <h2 className="text-xl sm:text-2xl font-light text-gray-200 tracking-wide">The Experience</h2>
         </div>
+        <p className="text-gray-300 leading-relaxed text-sm sm:text-base" suppressHydrationWarning>{dynamicMovieData.synopsis}</p>
       </motion.div>
 
       <motion.div
-        className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 max-w-4xl mx-auto"
+        className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
       >
-        <div className="p-3 sm:p-5 bg-gray-900/40 rounded-lg sm:rounded-xl border-l-2 border-yellow-400/50 h-full min-h-[160px] flex flex-col justify-start">
-          <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
-            <Users className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400" />
-            <h3 className="text-sm sm:text-base font-light text-white">Cast & Crew</h3>
+        <div className="w-full bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8 flex flex-col justify-start">
+          <div className="flex items-center gap-3 mb-6 border-b border-white/5 pb-4">
+            <Users className="w-6 h-6 text-yellow-500 shrink-0" />
+            <h2 className="text-xl sm:text-2xl font-light text-gray-200 tracking-wide">Cast & Crew</h2>
           </div>
-          <div className="space-y-2 sm:space-y-3">
-            <p className="text-gray-300 text-xs sm:text-sm leading-relaxed"><span className="text-gray-500 font-medium block mb-0.5">Director:</span> {dynamicMovieData.director}</p>
-            <p className="text-gray-300 text-xs sm:text-sm leading-relaxed"><span className="text-gray-500 font-medium block mb-0.5">Starring:</span> {dynamicMovieData.cast}</p>
+          <div className="space-y-4">
+            <p className="text-gray-300 text-sm leading-relaxed"><span className="text-gray-500 font-medium block mb-1">Director</span> <span suppressHydrationWarning>{dynamicMovieData.director}</span></p>
+            <p className="text-gray-300 text-sm leading-relaxed"><span className="text-gray-500 font-medium block mb-1">Starring</span> <span suppressHydrationWarning>{dynamicMovieData.cast}</span></p>
           </div>
         </div>
 
-        <div className="p-3 sm:p-5 bg-gray-900/40 rounded-lg sm:rounded-xl border-l-2 border-blue-400/50 h-full min-h-[160px] flex flex-col justify-start">
-          <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
-            <Film className="w-4 h-4 sm:w-5 sm:h-5 text-blue-400" />
-            <h3 className="text-sm sm:text-base font-light text-white">Production Details</h3>
+        <div className="w-full bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8 flex flex-col justify-start">
+          <div className="flex items-center gap-3 mb-6 border-b border-white/5 pb-4">
+            <Film className="w-6 h-6 text-yellow-500 shrink-0" />
+            <h2 className="text-xl sm:text-2xl font-light text-gray-200 tracking-wide">Production Details</h2>
           </div>
-          <div className="space-y-2 sm:space-y-3">
-            <p className="text-gray-300 text-xs sm:text-sm"><span className="text-gray-500 font-medium block mb-0.5">Budget:</span> {dynamicMovieData.budget}</p>
-            <p className="text-gray-300 text-xs sm:text-sm"><span className="text-gray-500 font-medium block mb-0.5">Box Office:</span> {dynamicMovieData.boxOffice}</p>
-            <div className="text-gray-300 text-xs sm:text-sm">
-              <span className="text-gray-500 font-medium block mb-0.5">Age Rating:</span>
-              <span
-                className="inline-block px-1.5 py-0.5 rounded border text-[10px] sm:text-xs font-medium mt-0.5"
-                style={{
-                  color: getAgeRatingColor(dynamicMovieData.ageRating),
-                  borderColor: getAgeRatingColor(dynamicMovieData.ageRating),
-                  backgroundColor: `${getAgeRatingColor(dynamicMovieData.ageRating)}15`
-                }}
-              >
+          <div className="space-y-4">
+            <p className="text-gray-300 text-sm"><span className="text-gray-500 font-medium block mb-1">Budget</span> <span suppressHydrationWarning>{dynamicMovieData.budget}</span></p>
+            <p className="text-gray-300 text-sm"><span className="text-gray-500 font-medium block mb-1">Box Office</span> <span suppressHydrationWarning>{dynamicMovieData.boxOffice}</span></p>
+            <div className="text-gray-300 text-sm">
+              <span className="text-gray-500 font-medium block mb-1">Age Rating</span>
+              <span className="inline-block px-2 py-1 rounded border text-xs font-medium mt-1" style={{ color: getAgeRatingColor(dynamicMovieData.ageRating), borderColor: getAgeRatingColor(dynamicMovieData.ageRating), backgroundColor: `${getAgeRatingColor(dynamicMovieData.ageRating)}15` }}>
                 {dynamicMovieData.ageRating}
               </span>
             </div>
@@ -1046,45 +1035,56 @@ const MovieDetailsSection = React.memo(({
         </div>
       </motion.div>
 
-      {/* 🔥 MOVED SENSITIVE CONTENT HIGH UP TO IMMEDIATELY SHOW TIMESTAMP VALUE 🔥 */}
-      <SensitiveContentTimelineSection movie={{...movie, Runtime: dynamicMovieData.runtime}} sensitiveScenes={sensitiveScenes} />
+      <div id="parents-guide" className="scroll-mt-28 w-full max-w-4xl mx-auto">
+        <SensitiveContentTimelineSection movie={{...movie, Runtime: dynamicMovieData.runtime}} sensitiveScenes={sensitiveScenes} />
+      </div>
 
-      {/* 🔥 THE BOUNCE INTERCEPTOR: FAN FAVORITES 🔥 */}
-      <FanFavoritesSection currentMovieSlug={movie.slug} />
+      <div className="w-full bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8 overflow-hidden clean-injected-component">
+        <div className="flex items-center gap-3 mb-6 border-b border-white/5 pb-4 custom-new-header">
+          <Star className="w-6 h-6 text-yellow-500 shrink-0" />
+          <h2 className="text-xl sm:text-2xl font-light text-gray-200 tracking-wide">Fan Favorites</h2>
+        </div>
+        <FanFavoritesSection currentMovieSlug={movie.slug} />
+      </div>
 
-      {/* ⚡ DEFERRED: Only render graphs after initial paint to save mobile CPU */}
-      {safeMovieInfo?.scenes && safeMovieInfo.scenes.length > 0 && (
-        <div className="w-full min-h-[350px]">
-          {loadHeavyComponents && (
-            <EnhancedIntensityGraph 
-                scenes={safeMovieInfo.scenes} 
-                dominantColor={safeMovieInfo.dominantColor} 
-                aria-label={`Intensity graph showing narrative peaks for ${movie.Title}.`}
-            />
-          )}
-        </div>
-      )}
-      
-      {/* ⚡ DEFERRED: Only render DNA after initial paint to save mobile CPU */}
-      {safeMovieInfo?.dna && Object.keys(safeMovieInfo.dna).length > 0 && (
-        <div className="w-full min-h-[300px]">
-          {loadHeavyComponents && (
-            <StrategicDNAHelix 
-                dna={safeMovieInfo.dna} 
-                dominantColor={safeMovieInfo.dominantColor} 
-                aria-label={`Genre DNA breakdown for ${movie.Title}: ${Object.entries(safeMovieInfo.dna || {}).map(([k, v]) => `${k} ${v}%`).join(', ')}.`}
-            />
-          )}
-        </div>
+      {safeMovieInfo?.dna && Object.keys(safeMovieInfo.dna).length > 0 && loadHeavyComponents && (
+        <StrategicDNAHelix 
+            dna={safeMovieInfo.dna} 
+            dominantColor={safeMovieInfo.dominantColor} 
+            aria-label={`Genre DNA breakdown for ${movie.Title}: ${Object.entries(safeMovieInfo.dna || {}).map(([k, v]) => `${k} ${v}%`).join(', ')}.`}
+        />
       )}
 
-      <EnhancedWhereToWatchSection movie={movie} />
-
-      {/* ❌ REMOVED THE DANGEROUS SR-ONLY BLOCK HERE ❌ */}
-
-      <RealCommentsRatingSection movie={movie} />
+      <div className="w-full bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8 clean-injected-component">
+        <div className="flex items-center gap-3 mb-6 border-b border-white/5 pb-4 custom-new-header">
+          <Film className="w-6 h-6 text-yellow-500 shrink-0" />
+          <h2 className="text-xl sm:text-2xl font-light text-gray-200 tracking-wide">Where to Watch</h2>
+        </div>
+        <EnhancedWhereToWatchSection movie={movie} />
+      </div>
 
       {/* FAQ SECTIONS */}
+      <div className="w-full bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8 faq-unified-container">
+        <div className="flex items-center gap-3 mb-6 border-b border-white/5 pb-4">
+          <span className="text-2xl">❓</span>
+          <h2 className="text-xl sm:text-2xl font-light text-gray-200 tracking-wide">Frequently Asked Questions</h2>
+        </div>
+        <style>{`
+          .faq-unified-container section { margin-top: 0 !important; padding-top: 0 !important; border-top: none !important; }
+          .faq-unified-container section > div:first-child { display: none !important; }
+          .faq-unified-container section > h2 { display: none !important; }
+          .faq-unified-container section > p { display: none !important; }
+          
+          /* Completely hide the old internal headers inside Fan Favorites and Where To Watch */
+          .clean-injected-component section > div:first-child:has(h2),
+          .clean-injected-component section > div:first-child:has(h3),
+          .clean-injected-component > div:not(.custom-new-header):first-of-type:has(h2),
+          .clean-injected-component > div:not(.custom-new-header):first-of-type:has(h3),
+          .clean-injected-component section > h2:first-of-type,
+          .clean-injected-component section > h3:first-of-type,
+          .clean-injected-component > div:not(.custom-new-header) > h2:first-of-type,
+          .clean-injected-component > div:not(.custom-new-header) > h3:first-of-type { display: none !important; }
+        `}</style>
       {fromHboActionCollection ? <HboActionSEOFAQSection movie={movie} />
         : fromHboRomanceCollection ? <HboMaxRomanceSEOFAQSection movie={movie} /> 
         : fromHboMaxThrillerCollection ? <HboMaxThrillerSEOFAQSection movie={movie} /> 
@@ -1168,6 +1168,7 @@ const MovieDetailsSection = React.memo(({
         : fromMementoCollection ? <SEOFAQSection movie={movie} />
         : movieInfo?.faqs ? <SEOFAQSection movie={movie} /> : null
       }
+      </div>
     </motion.div>
   );
 });

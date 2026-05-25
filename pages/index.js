@@ -76,11 +76,12 @@ const CollectionCard = memo(({ collection, index, href, isPrioritySection }) => 
           <Image
             src={collection.poster_path ? `${IMAGE_BASE_URL}/w342${collection.poster_path}` : "https://via.placeholder.com/342x513/111827/4b5563?text=No+Image"}
             alt={collection.title}
-            fill
+            width={342}
+            height={513}
             priority={shouldPrioritize}
             quality={65} 
             sizes="(max-width: 640px) 160px, 250px"
-            className="object-cover transition-transform duration-700 group-hover:scale-105"
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             draggable={false}
           />
         </div>
@@ -143,11 +144,12 @@ const Top10MovieCard = memo(({ movie, index }) => {
         <Image
           src={posterUrl}
           alt={movie.Title}
-          fill
+          width={342}
+          height={513}
           priority={shouldPrioritize}
           quality={65}
           sizes="(max-width: 640px) 160px, 250px"
-          className="object-cover"
+          className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-yellow-500/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       </div>

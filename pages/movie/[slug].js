@@ -138,7 +138,7 @@ const UniversalBanner = ({ movie }) => {
             </div>
             <div className="unified-psych-card">
               <div className="unified-psych-row"><Star className="unified-psych-icon" /><div><h2 className="unified-psych-title">At a Glance</h2></div></div>
-              <div className="unified-psych-desc insight-text font-medium text-white">
+              <div className="unified-psych-desc insight-text font-medium text-white" suppressHydrationWarning>
                 {tagline ? <span className="italic">"{tagline}"</span> : <span>{insight}</span>}
               </div>
             </div>
@@ -554,7 +554,50 @@ export async function getStaticProps({ params }) {
         metaTitle = "Baby Driver Parents Guide: Why is it Rated R? (Clean)";
         metaDesc = "Why is Baby Driver rated R? It contains strong language and action violence. However, Filmiway editors have verified it has zero sex scenes or nudity.";
     } else if (baseMovie.slug === 'lust-caution') {
-        metaDesc = "PARENTS GUIDE: Exact skip timestamps for Lust, Caution. Sex & Nudity 1:00:15-1:02:40, Sex & Nudity 1:32:35-1:34:26 and more.";
+        metaTitle = "Lust, Caution Parents Guide: Why is it Rated NC-17? (Timestamps)";
+        metaDesc = "Why is Lust, Caution rated NC-17? Read our complete breakdown and get exact skip timestamps, including Sex & Nudity at 1:00:15-1:02:40, to safely bypass the explicit sexual content.";
+    } else if (baseMovie.slug === 'sinners') {
+        metaTitle = "Sinners Parents Guide: Exact Explicit Scenes & Nudity Skip Timestamps";
+        metaDesc = "PARENTS GUIDE: Sinners features multiple scenes of explicit sex and nudity. Get exact timestamps to safely skip content like Sex (High) at 1:00:15-1:01:05, Nudity (Woman in Background) at 0:57:40-0:59:00, and more.";
+    } else if (baseMovie.slug === 'call-me-by-your-name') {
+        metaTitle = "Call Me By Your Name Parents Guide: Is it Family-Safe? (Explicit Content Timestamps)";
+        metaDesc = "Is Call Me By Your Name safe for family viewing? It contains high-severity sex and nudity. Our Parents Guide provides exact minute-by-minute skip timestamps for Nudity & Sex, Sexual Content, and more.";
+    } else if (baseMovie.slug === 'the-green-mile') {
+        metaTitle = "The Green Mile Parents Guide: Is it Family-Safe? (Mature Content Timestamps)";
+        metaDesc = "Is The Green Mile safe for family viewing? It contains moderate sexual content and partial nudity. Our Parents Guide provides exact minute-by-minute skip timestamps for Partial Nudity, Sexual Content (Moaning), and Nudity (Magazine).";
+    } else if (baseMovie.slug === 'joker') {
+        metaTitle = "Joker Parents Guide: Is it Family-Safe? (Nudity Timestamps)";
+        metaDesc = "Is Joker safe for family viewing? It contains intense psychological themes and brief nudity. Our Parents Guide provides exact minute-by-minute skip timestamps for these mature scenes.";
+    } else if (baseMovie.slug === 'blue-valentine') {
+        metaTitle = "Blue Valentine Parents Guide: Is it Family-Safe? (Explicit Timestamps)";
+        metaDesc = "Is Blue Valentine safe for family viewing? It contains high-severity sex, nudity, and intense emotional trauma. Get exact skip timestamps, including Sex & Nudity at 0:37:09-0:38:45, to bypass explicit scenes.";
+    } else if (baseMovie.slug === 'anora') {
+        metaTitle = "Anora Parents Guide: Is it Family-Safe? (Explicit Timestamps)";
+        metaDesc = "Is Anora safe for family viewing? It contains an extreme density of explicit sex and heavy full nudity. Get exact skip timestamps, including Nudity at 0:01:00-0:04:30, to safely bypass these mature scenes.";
+    } else if (baseMovie.slug === 'mulholland-drive') {
+        metaTitle = "Mulholland Drive Parents Guide: Is it Family-Safe? (Nudity Timestamps)";
+        metaDesc = "Is Mulholland Drive safe for family viewing? It contains mature content, frightening scenes, and full nudity. Get exact skip timestamps, including Nudity at 1:38:45-1:42:18, to safely bypass sensitive scenes.";
+    } else if (baseMovie.slug === 'chinatown') {
+        metaTitle = "Chinatown Parents Guide: Is it Family-Safe? (Mature Content Timestamps)";
+        metaDesc = "Is Chinatown safe for family viewing? It contains dark crime themes, violence, and brief nudity. Get exact skip timestamps, including Nudity (Woman) at 1:26:42-1:27:34, to safely bypass sensitive scenes.";
+    } else if (baseMovie.slug === 'uncut-gems') {
+        metaTitle = "Uncut Gems Parents Guide: Is it Family-Safe? (Mature Content Timestamps)";
+        metaDesc = "Is Uncut Gems safe for family viewing? It contains intense language, anxiety-inducing situations, and brief suggestive content. Get exact skip timestamps, including Suggestive clothing at 0:33:57-0:35:27, to safely bypass sensitive scenes.";
+    } else if (baseMovie.slug === 'crash') {
+        metaTitle = "Crash Parents Guide: Why is it Rated NC-17? (Explicit Timestamps)";
+        metaDesc = "Why is Crash rated NC-17? It features pervasive heavy sexual content and  nudity. Get exact skip timestamps, including Sex & Nudity at 0:05:03-0:05:24, for all explicit scenes.";
+    } else if (baseMovie.slug === 'oldboy') {
+        metaTitle = "Oldboy Parents Guide: Why is it Rated R? (Explicit Timestamps)";
+        metaDesc = "Why is Oldboy rated R? Read our complete breakdown and get exact skip timestamps, including Sex at 1:03:35-1:04:57, to safely bypass the explicit sexual content.";
+    } else if (baseMovie.slug === 'mickey-17') {
+        metaTitle = "Mickey 17 Parents Guide: Is it Family-Safe? (Mature Content Timestamps)";
+        metaDesc = "Is Mickey 17 safe for family viewing? It contains sci-fi action violence and brief partial nudity. Get exact skip timestamps, including Partial Nudity at 0:27:55-0:28:00, to safely bypass sensitive scenes.";
+    } else if (baseMovie.slug === 'gladiator') {
+        metaTitle = "Gladiator Parents Guide: Is it Family-Safe? (Mature Content Timestamps)";
+        metaDesc = "Is Gladiator safe for family viewing? It contains intense combat violence and brief partial nudity. Get exact skip timestamps, including Partial Nudity at 50:40-50:55, to safely bypass sensitive scenes.";
+    } else if (baseMovie.slug === 'the-silence-of-the-lambs') {
+        metaTitle = "The Silence of the Lambs Parents Guide: Is it Family-Safe? (Mature Timestamps)";
+        metaDesc = "Is The Silence of the Lambs safe for family viewing? It contains disturbing violence, frightening sequences, and brief nudity. Get exact skip timestamps, including Nudity at 1:36:30-1:36:37, to safely bypass sensitive scenes.";
     }
 
     const movie = {

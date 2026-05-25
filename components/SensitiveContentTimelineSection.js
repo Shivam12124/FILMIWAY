@@ -217,7 +217,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
     if (!sensitiveData?.scenes?.length) {
         return (
             <motion.section 
-                className="mb-8"
+                    className="w-full bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8"
                 initial={{ opacity: 1, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
@@ -234,7 +234,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                             <h1 className="text-emerald-300 font-medium text-base sm:text-lg">{movie?.Title} Parents Guide & Skip Timestamps</h1>
                         </div>
                         <p className="text-emerald-400/70 text-xs sm:text-sm font-light mt-1">
-                            <strong>{movie.Title}</strong>: Filmiway editors have manually verified this film is free of explicit sexual content and nudity. Accurate for the {currentRuntime}.
+                            <strong>{movie.Title}</strong>: Filmiway editors have manually verified this film is free of explicit sexual content and nudity. Accurate for the <span suppressHydrationWarning>{currentRuntime}</span>.
                         </p>
                     </div>
                 </div>
@@ -265,16 +265,18 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
 
     return (
         <motion.section 
-            className="mb-12"
+                className="w-full bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8"
             initial={{ opacity: 1, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
         >
-            <div className="flex flex-col mb-5 sm:mb-6 border-b border-white/5 pb-4 sm:pb-5 gap-3 sm:gap-4">
+                <div className="flex flex-col mb-6 border-b border-white/5 pb-4 gap-4">
                 <div className="space-y-3 w-full">
-                    <h1 className="text-xl sm:text-2xl font-light text-red-200 flex items-start sm:items-center gap-2.5 sm:gap-3 tracking-wide">
-                        <Shield className="text-red-500 w-5 h-5 sm:w-6 sm:h-6 shrink-0 mt-0.5 sm:mt-0" />
-                        <span className="leading-snug">{movie?.Title} Parents Guide & Skip Timestamps</span>
+                        <div className="flex items-center justify-between w-full">
+                            <h2 className="text-xl sm:text-2xl font-light text-gray-200 flex items-center gap-3 tracking-wide">
+                                <Shield className="text-red-500 w-6 h-6 shrink-0" />
+                                <span>Parents Guide & Skip Timestamps</span>
+                            </h2>
                         
                         <div className="relative flex items-center ml-1 shrink-0" ref={infoRef}>
                             <button
@@ -304,12 +306,12 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                                         className="absolute right-0 sm:right-auto sm:left-1/2 sm:-translate-x-1/2 bottom-[120%] mb-1 w-[280px] max-w-[90vw] sm:w-72 p-3.5 bg-[#0a0a0c] border border-white/10 rounded-xl text-xs text-gray-300 shadow-2xl z-50 font-sans tracking-normal leading-relaxed origin-bottom-right sm:origin-bottom"
                                     >
                                         <strong className="text-white block mb-1">ⓘ Exact Scene Timestamps</strong>
-                                        Our Parents Guide provides the exact timestamps for explicit and sexual scenes in the film, verified manually by our editorial team for absolute accuracy.
+                                        Our Parents Guide provides exact timestamps for explicit and sensitive scenes, verified manually by our team. We do this so parents know exactly what they are watching with their family, or what their kids are about to watch.
                                     </motion.div>
                                 )}
                             </AnimatePresence>
                         </div>
-                    </h1>
+                        </div>
 
                     {/* 🔥 RECOMMENDED AGE BADGE (Dynamic) */}
                     {recommendedAge && ageSummary && (
@@ -335,7 +337,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                     <div className="ml-1 space-y-2.5 sm:space-y-2">
                         <p className="text-[13px] sm:text-sm text-gray-500 flex items-start sm:items-center gap-2">
                             <CheckCircle size={14} className="text-emerald-500/80 shrink-0 mt-0.5 sm:mt-0" />
-                            <span className="leading-snug">Timestamps are accurate for the <span className="text-gray-300 font-medium">{currentRuntime}</span></span>
+                            <span className="leading-snug">Timestamps are accurate for the <span className="text-gray-300 font-medium" suppressHydrationWarning>{currentRuntime}</span></span>
                         </p>
 
                         <p className="text-[13px] sm:text-sm text-gray-500 flex items-center gap-2">
@@ -358,7 +360,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                 {ageSummary && <p><strong>Content Summary:</strong> {ageSummary}</p>}
             </div>
             <table className="sr-only" aria-label={`Parents Guide Timestamps for ${movie.Title}`}>
-                <caption>Exact skip timestamps and severity ratings for sensitive scenes in {movie.Title} ({currentRuntime})</caption>
+                <caption suppressHydrationWarning>Exact skip timestamps and severity ratings for sensitive scenes in {movie.Title} ({currentRuntime})</caption>
                 <thead>
                     <tr>
                         <th scope="col">Content Type</th>
@@ -380,10 +382,8 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
             </table>
 
             <div 
-                className="rounded-xl overflow-hidden border backdrop-blur-md relative"
-                style={{ backgroundColor: 'rgba(10, 10, 12, 0.4)', borderColor: 'rgba(255, 255, 255, 0.08)' }}
+                className="relative mt-2"
             >
-                <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-red-600/50 via-orange-600/50 to-transparent opacity-50" />
 
                 <div className="divide-y divide-white/5">
                     {sensitiveData.scenes.map((scene, index) => {
@@ -453,10 +453,10 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                 </div>
 
                 {/* 🔥 ENHANCED ENGAGEMENT FOOTER: Designed for maximum CTR */}
-                <div className="bg-black/60 p-4 sm:p-5 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-white/10 rounded-b-xl">
+                <div className="bg-white/5 p-4 sm:p-5 flex flex-col sm:flex-row items-center justify-between gap-4 border border-white/10 rounded-xl mt-4">
                     <div className="flex items-center gap-2 text-[10px] sm:text-xs text-gray-400 uppercase tracking-[0.15em]">
                         <Shield size={14} className="text-emerald-500/70 shrink-0" />
-                        <span className="truncate">Manually Verified • {currentRuntime}</span>
+                        <span className="truncate" suppressHydrationWarning>Manually Verified • {currentRuntime}</span>
                     </div>
                     
                     <div className="flex items-center justify-between w-full sm:w-auto gap-4 sm:gap-6">

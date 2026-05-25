@@ -3184,12 +3184,28 @@
     },
     "98": {
         "Title": "Gladiator",
+        "Age": "15+",
+        "Summary": "Aged 15+ for brutal graphic violence, brief nudity, and mild language.",
         "scenes": [
             {
                 "start": "50:40",
                 "end": "50:55",
                 "type": "Partial Nudity (Man)",
                 "severity": "Mild"
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "High",
+                "description": "Strong graphic battle violence throughout including beheadings, stabbings, impalements, bloody gladiator combat, mutilated corpses, severe wounds, and disturbing injury detail with frequent blood spray."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "Mild",
+                "description": "Mild coarse language including infrequent insults, crude terms, and derogatory language."
             }
         ]
     },
@@ -3531,6 +3547,8 @@
     },
     "274": {
         "Title": "The Silence of the Lambs",
+        "Age": "16+",
+        "Summary": "Aged 16+ for brutal graphic violence, brief nudity and minor sexual content, and moderate language.",
         "scenes": [
             {
                 "start": "18:50",
@@ -3543,6 +3561,20 @@
                 "end": "1:36:37",
                 "type": "Nudity (Man)",
                 "severity": "Moderate"
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "High",
+                "description": "Disturbing psychological violence including cannibalism references, graphic corpse imagery, autopsies, mutilation, bloody murders, and intense scenes of kidnapping and torture themes."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "Moderate",
+                "description": "Strong language including multiple F-words, use of the C-word, sexual profanity, and repeated moderate coarse language."
             }
         ]
     },
@@ -3802,6 +3834,8 @@
     },
     "497": {
         "Title": "The Green Mile",
+        "Age": "16+",
+        "Summary": "Aged 16+ for brutal graphic violence, minor sexual content and brief nudity, and moderate language.",
         "scenes": [
             {
                 "start": "0:56:23",
@@ -3820,6 +3854,20 @@
                 "end": "1:14:19",
                 "type": "Nudity (Magazine)",
                 "severity": "Moderate"
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "High",
+                "description": "Strong disturbing violence including graphic executions, prolonged electrocution scenes, bloody shootings, brutal assaults, and disturbing death-related themes."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "Moderate",
+                "description": "Strong language including repeated use of the F-word, crude sexual language, racial and homophobic slurs, and frequent coarse profanity throughout."
             }
         ]
     },
@@ -4264,6 +4312,8 @@
     },
     "829": {
         "Title": "Chinatown",
+        "Age": "16+",
+        "Summary": "Aged 16+ for moderate violence, explicit sex and  nudity, and mild language.",
         "scenes": [
             {
                 "start": "0:01:55",
@@ -4288,6 +4338,20 @@
                 "end": "1:29:07",
                 "type": "Nudity (Man)",
                 "severity": "Mild"
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "Moderate",
+                "description": "Moderate bloody violence including graphic murder aftermaths, brutal fist fights, shootings, facial injuries, and disturbing corpse imagery."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "Mild",
+                "description": "Mild-to-moderate language including infrequent use of the F-word, sexual jokes, crude terms, and occasional derogatory language."
             }
         ]
     },
@@ -4368,6 +4432,8 @@
     },
     "884": {
         "Title": "Crash",
+        "Age": "18+",
+        "Summary": "Aged 18+ for explicit sex and heavy nudity, brutal graphic violence, and strong vulgar language throughout.",
         "scenes": [
             {
                 "start": "0:03:06",
@@ -4476,6 +4542,20 @@
                 "end": "1:36:18",
                 "type": "Sex",
                 "severity": "Moderate"
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "High",
+                "description": "Disturbing crash-related imagery including graphic injury detail, bloody wounds, disturbing corpse visuals, and intense car accident sequences throughout."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "High",
+                "description": "Strong language including 10+ uses of the F-word and frequent explicit sexual dialogue."
             }
         ]
     },
@@ -4513,6 +4593,8 @@
     },
     "1018": {
         "Title": "Mulholland Drive",
+        "Age": "16+",
+        "Summary": "Aged 16+ for moderate violence, nudity, and mild language.",
         "scenes": [
             {
                 "start": "0:23:32",
@@ -4531,6 +4613,20 @@
                 "end": "2:02:59",
                 "type": "Nudity",
                 "severity": "High"
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "Moderate",
+                "description": "Moderate violence including shootings, a suicide scene, disturbing corpse imagery, car crash injuries, and brief bloody injury detail."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "Mild",
+                "description": "Mild language with occasional use of the F-word and infrequent coarse terms."
             }
         ]
     },
@@ -6436,6 +6532,8 @@
     },
     "9522": {
         "Title": "Wedding Crashers",
+        "Age": "16+",
+        "Summary": "Aged 16+ for mild violence, sexual content and  nudity, and moderate language.",
         "scenes": [
             {
                 "start": "0:13:04",
@@ -6472,6 +6570,20 @@
                 "end": "1:07:05",
                 "type": "Nudity (Woman)",
                 "severity": "High"
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "Mild",
+                "description": "Mild comedic violence including punches, minor bloody injuries, rough physical altercations, and brief gross-out vomiting scenes."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "Moderate",
+                "description": "Strong language throughout including 20+ uses of the F-word, repeated crude profanity, sexual slang."
             }
         ]
     },
@@ -8936,6 +9048,8 @@
     },
     "398818": {
         "Title": "Call Me by Your Name",
+        "Age": "16+",
+        "Summary": "Aged 16+ for explicit sex and nudity, and mild language.",
         "scenes": [
             {
                 "start": "1:16:15",
@@ -8960,6 +9074,20 @@
                 "end": "1:37:40",
                 "type": "Sexual Content",
                 "severity": "Moderate"
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "None",
+                "description": "The film contains no actual violence."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "Mild",
+                "description": "Mild-to-moderate language including infrequent use of the F-word, mild insults, and occasional crude references."
             }
         ]
     },
@@ -9151,6 +9279,8 @@
     },
     "473033": {
         "Title": "Uncut Gems",
+        "Age": "16+",
+        "Summary": "Aged 16+ for moderate violence, minor sexual content, and strong language throughout.",
         "scenes": [
             {
                 "start": "0:33:57",
@@ -9169,11 +9299,27 @@
                 "end": "0:36:02",
                 "type": "Suggestive clothing (Lingerie)",
                 "severity": "Moderate"
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "Moderate",
+                "description": "Moderate violence including intense fights, bloody injuries, physical assaults, and one sudden graphic shooting with visible blood spray."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "High",
+                "description": "Extremely strong language throughout including 500+ uses of the F-word, constant crude sexual references, repeated vulgar terms, and pervasive coarse dialogue."
             }
         ]
     },
     "475557": {
         "Title": "Joker",
+        "Age": "16+",
+        "Summary": "Aged 16+ for brutal graphic violence, heavy nudity, and moderate language.",
         "scenes": [
             {
                 "start": "0:06:06",
@@ -9186,6 +9332,20 @@
                 "end": "0:44:51",
                 "type": "Nudity",
                 "severity": "Mild"
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "High",
+                "description": "Strong disturbing violence including shootings, bloody beatings, stabbings, head trauma, and sudden graphic blood spray throughout, with several intense psychologically disturbing scenes."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "Moderate",
+                "description": "Moderate to strong language including 20+ uses of the F-word, repeated crude language, obscene gestures, and moderate profanity throughout."
             }
         ]
     },
@@ -9516,12 +9676,28 @@
     },
     "696506": {
         "Title": "Mickey 17",
+        "Age": "16+",
+        "Summary": "Aged 16+ for moderate violence, brief nudity, and moderate language.",
         "scenes": [
             {
                 "start": "0:27:55",
                 "end": "0:28:00",
                 "type": "Partial Nudity",
                 "severity": "Mild"
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "Moderate",
+                "description": "Moderate to strong violence including amputations, bloody vomiting, chainsaw mutilation, burnings, creature attacks, disturbing body horror, gore, and repeated scenes of brutal injury detail."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "Moderate",
+                "description": "Moderate to strong language throughout including 50+ uses of the F-word, repeated crude language, sexual references, insults, and frequent mild profanity."
             }
         ]
     },
@@ -10074,6 +10250,8 @@
     },
     "1233413": {
         "Title": "Sinners",
+        "Age": "18+",
+        "Summary": "Aged 18+ for brutal graphic violence, explicit sex and brief nudity, and strong vulgar language throughout.",
         "scenes": [
             {
                 "start": "0:40:33",
@@ -10104,6 +10282,20 @@
                 "end": "2:02:28",
                 "type": "Partial Nudity (Woman)",
                 "severity": "Moderate"
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "High",
+                "description": "Strong graphic violence throughout including shootings, stabbings, bloody bite attacks, mutilation, burnings, disturbing corpse imagery, and repeated scenes of gore involving vampire attacks and human deaths."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "High",
+                "description": "Strong language throughout including frequent F-words, racial slurs, crude sexual references, and repeated uses of vulgar profanity."
             }
         ]
     },
