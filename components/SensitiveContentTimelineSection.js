@@ -273,9 +273,9 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                 <div className="flex flex-col mb-6 border-b border-white/5 pb-4 gap-4">
                 <div className="space-y-3 w-full">
                         <div className="flex items-center justify-between w-full">
-                            <h2 className="text-xl sm:text-2xl font-light text-gray-200 flex items-center gap-3 tracking-wide">
+                            <h2 className="text-xl sm:text-2xl font-light text-gray-200 flex items-center gap-3 tracking-wide leading-tight">
                                 <Shield className="text-red-500 w-6 h-6 shrink-0" />
-                                <span>Parents Guide & Skip Timestamps</span>
+                                <span>{movie?.Title} Parents Guide & Skip Timestamps</span>
                             </h2>
                         
                         <div className="relative flex items-center ml-1 shrink-0" ref={infoRef}>

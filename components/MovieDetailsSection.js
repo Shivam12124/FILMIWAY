@@ -951,7 +951,7 @@ const MovieDetailsSection = React.memo(({
   transition={{ duration: 0.8 }}
 >
       <div className="text-center space-y-6">
-        <motion.h2
+        <motion.h1
           className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-extralight tracking-tight sm:tracking-wider text-white"
           style={{ fontFamily: "'Playfair Display', serif" }}
           initial={{ opacity: 1, y: 0 }}
@@ -959,7 +959,7 @@ const MovieDetailsSection = React.memo(({
           transition={{ duration: 1.2, delay: 0.2 }}
         >
           {title}
-        </motion.h2>
+        </motion.h1>
 
         <motion.div
           className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 sm:space-x-6 text-gray-400 text-xs sm:text-sm tracking-normal sm:tracking-wider uppercase"
