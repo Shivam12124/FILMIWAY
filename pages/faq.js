@@ -163,7 +163,7 @@ export default function FAQ() {
               filmiway.media@gmail.com
             </a>
             <div className="mt-8 text-[10px] text-gray-600 uppercase tracking-widest">
-              &copy; {new Date().getFullYear()} Filmiway Media
+              &copy; 2026 Filmiway Media
             </div>
           </footer>
 

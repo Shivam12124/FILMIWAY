@@ -171,7 +171,7 @@ export default function Privacy() {
                <span className="font-semibold text-xs uppercase tracking-widest">Legal Documentation</span>
             </div>
             <p className="text-gray-600 text-xs">
-              &copy; {new Date().getFullYear()} Filmiway Media. All rights reserved.
+              &copy; 2026 Filmiway Media. All rights reserved.
             </p>
           </footer>
 

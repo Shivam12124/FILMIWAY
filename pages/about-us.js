@@ -201,7 +201,7 @@ export default function AboutUs() {
               Filmiway is a recommendation and discovery platform. We do not host, upload, or provide illegal links to copyrighted content. All movie recommendations point to official, legal streaming services or theatrical releases.
             </p>
             <div className="mt-6 text-[10px] text-gray-600">
-              &copy; {new Date().getFullYear()} Filmiway Media. All rights reserved.
+              &copy; 2026 Filmiway Media. All rights reserved.
             </div>
           </footer>
 

@@ -7,7 +7,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, Play, X, Film, Star } from 'lucide-react';
 import Header from '../../components/Header';
 import MovieDetailsSection from '../../components/MovieDetailsSection';
-import CinematicBackground from '../../components/CinematicBackground';
+import dynamic from 'next/dynamic';
+
+const CinematicBackground = dynamic(() => import('../../components/CinematicBackground'), { ssr: false });
 
 // ✅ THEME COLORS FOR UNIVERSAL BANNER
 const COLORS = {

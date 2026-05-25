@@ -7,9 +7,10 @@ import { Users, Film, BookOpen, Star } from 'lucide-react';
 // ==================== COMPONENT IMPORTS ==================== 
 // ⚡ OPTIMIZED: Dynamic Code Splitting drops payload by ~2.5MB
 import dynamic from 'next/dynamic';
-import SensitiveContentTimelineSection from './SensitiveContentTimelineSection';
-import EnhancedWhereToWatchSection from './EnhancedWhereToWatchSection';
+const SensitiveContentTimelineSection = dynamic(() => import('./SensitiveContentTimelineSection'));
+const EnhancedWhereToWatchSection = dynamic(() => import('./EnhancedWhereToWatchSection'));
 const StrategicDNAHelix = dynamic(() => import('./StrategicDNAHelix'), { ssr: false });
+const EnhancedIntensityGraph = dynamic(() => import('./EnhancedIntensityGraph'), { ssr: false });
 
 // FAQ Sections
 const SEOFAQSection = dynamic(() => import('./SEOFAQSection'));
@@ -1012,8 +1013,8 @@ const MovieDetailsSection = React.memo(({
             <h2 className="text-xl sm:text-2xl font-light text-gray-200 tracking-wide">Cast & Crew</h2>
           </div>
           <div className="space-y-4">
-            <p className="text-gray-300 text-sm leading-relaxed"><span className="text-gray-500 font-medium block mb-1">Director</span> <span suppressHydrationWarning>{dynamicMovieData.director}</span></p>
-            <p className="text-gray-300 text-sm leading-relaxed"><span className="text-gray-500 font-medium block mb-1">Starring</span> <span suppressHydrationWarning>{dynamicMovieData.cast}</span></p>
+          <div className="text-gray-300 text-sm leading-relaxed"><span className="text-gray-500 font-medium block mb-1">Director</span> <span suppressHydrationWarning>{dynamicMovieData.director}</span></div>
+          <div className="text-gray-300 text-sm leading-relaxed"><span className="text-gray-500 font-medium block mb-1">Starring</span> <span suppressHydrationWarning>{dynamicMovieData.cast}</span></div>
           </div>
         </div>
 
@@ -1023,8 +1024,8 @@ const MovieDetailsSection = React.memo(({
             <h2 className="text-xl sm:text-2xl font-light text-gray-200 tracking-wide">Production Details</h2>
           </div>
           <div className="space-y-4">
-            <p className="text-gray-300 text-sm"><span className="text-gray-500 font-medium block mb-1">Budget</span> <span suppressHydrationWarning>{dynamicMovieData.budget}</span></p>
-            <p className="text-gray-300 text-sm"><span className="text-gray-500 font-medium block mb-1">Box Office</span> <span suppressHydrationWarning>{dynamicMovieData.boxOffice}</span></p>
+          <div className="text-gray-300 text-sm"><span className="text-gray-500 font-medium block mb-1">Budget</span> <span suppressHydrationWarning>{dynamicMovieData.budget}</span></div>
+          <div className="text-gray-300 text-sm"><span className="text-gray-500 font-medium block mb-1">Box Office</span> <span suppressHydrationWarning>{dynamicMovieData.boxOffice}</span></div>
             <div className="text-gray-300 text-sm">
               <span className="text-gray-500 font-medium block mb-1">Age Rating</span>
               <span className="inline-block px-2 py-1 rounded border text-xs font-medium mt-1" style={{ color: getAgeRatingColor(dynamicMovieData.ageRating), borderColor: getAgeRatingColor(dynamicMovieData.ageRating), backgroundColor: `${getAgeRatingColor(dynamicMovieData.ageRating)}15` }}>
@@ -1046,6 +1047,13 @@ const MovieDetailsSection = React.memo(({
         </div>
         <FanFavoritesSection currentMovieSlug={movie.slug} />
       </div>
+
+      {safeMovieInfo?.scenes && safeMovieInfo.scenes.length > 0 && loadHeavyComponents && (
+        <EnhancedIntensityGraph 
+            scenes={safeMovieInfo.scenes} 
+            dominantColor={safeMovieInfo.dominantColor} 
+        />
+      )}
 
       {safeMovieInfo?.dna && Object.keys(safeMovieInfo.dna).length > 0 && loadHeavyComponents && (
         <StrategicDNAHelix 

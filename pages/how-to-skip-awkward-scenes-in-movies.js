@@ -11,9 +11,7 @@ export default function HowToSkipAwkwardScenes() {
   const [searchQuery, setSearchQuery] = useState('');
 
   const publishDateStr = "2026-04-12";
-  const publishDateDisplay = new Date(publishDateStr).toLocaleDateString('en-US', { 
-    year: 'numeric', month: 'long', day: 'numeric' 
-  });
+  const publishDateDisplay = "April 12, 2026";
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -303,7 +301,7 @@ We’ve all had this experience. You’re comfortably seated on your couch, watc
 
         {/* FOOTER */}
         <footer className="border-t border-white/5 py-8 text-center text-gray-500 text-sm">
-          <p>&copy; {new Date().getFullYear()} Filmiway. All rights reserved.</p>
+          <p>&copy; 2026 Filmiway. All rights reserved.</p>
         </footer>
       </div>
     </>
