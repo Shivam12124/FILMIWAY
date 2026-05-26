@@ -62,6 +62,7 @@ const UniversalBanner = ({ movie }) => {
 
     const bannerImage = movie.backdrop_path ? getTMDBImage(movie.backdrop_path, 'w780') : null;
     const posterImage = movie.Poster;
+
     const insight = movie.Plot || 'A compelling cinematic experience that demands to be watched.';
 
     useEffect(() => {
@@ -110,9 +111,10 @@ const UniversalBanner = ({ movie }) => {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                <div className="relative w-full h-full">
-                  {bannerImage ? <Image src={bannerImage} alt={`${movie?.Title} banner`} fill priority fetchPriority="high" sizes="(max-width: 768px) 100vw, 1280px" quality={85} className="object-cover object-[center_25%]" /> : <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: '#000000' }}><Film className="w-16 h-16 sm:w-24 sm:h-24" style={{ color: COLORS.textMuted }} /></div>}
-                  <div className="absolute inset-0 z-10" style={{ background: `linear-gradient(to bottom, transparent 0%, transparent 50%, #000000 90%, #000000 100%), linear-gradient(to right, #000000 0%, transparent 15%, transparent 85%, #000000 100%)` }} />
+                <div className="relative w-full h-full bg-[#030303]">
+                  {/* ⚡ THE MAIN IMAGE */}
+                  {bannerImage ? <Image src={bannerImage} alt={`${movie?.Title} banner`} fill priority fetchPriority="high" sizes="(max-width: 768px) 100vw, 1280px" quality={40} className="object-cover object-[center_25%] relative z-10" /> : <div className="w-full h-full flex items-center justify-center relative z-10" style={{ backgroundColor: '#000000' }}><Film className="w-16 h-16 sm:w-24 sm:h-24" style={{ color: COLORS.textMuted }} /></div>}
+                  <div className="absolute inset-0 z-20" style={{ background: `linear-gradient(to bottom, transparent 0%, transparent 50%, #000000 90%, #000000 100%), linear-gradient(to right, #000000 0%, transparent 15%, transparent 85%, #000000 100%)` }} />
                 </div>
                 {trailerKey && (
                   <motion.div className="absolute inset-0 flex items-center justify-center z-20" initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 1, duration: 0.8 }}>
@@ -137,8 +139,9 @@ const UniversalBanner = ({ movie }) => {
   
         {/* UNIFIED LAYOUT */}
         <div className="unified-hero-row">
-            <div className="unified-hero-poster">
-                {posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} width={320} height={480} className="w-full h-auto" priority fetchPriority="high" quality={85} sizes="(max-width: 768px) 35vw, 320px" /> : <div style={{ background: '#000000', width: '100%', height: '150px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Film style={{ color: COLORS.textMuted }} /></div>}
+            <div className="unified-hero-poster relative bg-[#030303] overflow-hidden">
+                {/* ⚡ THE MAIN IMAGE */}
+                {posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} width={320} height={480} className="w-full h-auto relative z-10" priority fetchPriority="high" quality={60} sizes="(max-width: 768px) 35vw, 320px" /> : <div style={{ background: '#000000', width: '100%', height: '150px', display: 'flex', items: 'center', justifyContent: 'center' }} className="relative z-10"><Film style={{ color: COLORS.textMuted }} /></div>}
             </div>
             <div className="unified-psych-card">
               <div className="unified-psych-row"><Star className="unified-psych-icon" /><div><h2 className="unified-psych-title">At a Glance</h2></div></div>
