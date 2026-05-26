@@ -11,7 +11,7 @@ export const TMDB_CONFIG = {
 
 export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 829, "imdbID": "tt0071315", "Title": "Chinatown", "year": 1974, "genre": "Mystery", "runtime": 130, "rank": 1 },
-    { "tmdbId": 5511, "imdbID": "tt0062229", "Title": "Le Samouraï", "year": 1967, "genre": "Crime", "runtime": 105, "rank": 2 },
+    { "tmdbId": 5511, "imdbID": "tt0062229", "Title": "Le Samouraï", "slug": "le-samourai", "year": 1967, "genre": "Crime", "runtime": 105, "rank": 2 },
     { "tmdbId": 64690, "imdbID": "tt0780504", "Title": "Drive", "year": 2011, "genre": "Crime", "runtime": 100, "rank": 3 },
     { "tmdbId": 187, "imdbID": "tt0401792", "Title": "Sin City", "year": 2005, "genre": "Crime", "runtime": 124, "rank": 4 },
     { "tmdbId": 429200, "imdbID": "tt4846232", "Title": "Good Time", "year": 2017, "genre": "Crime", "runtime": 102, "rank": 5 },

@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, Play, X, Film, Star } from 'lucide-react';
+import { ChevronLeft, Play, X, Film, Star, ChevronDown } from 'lucide-react';
 import Header from '../../components/Header';
 import dynamic from 'next/dynamic';
 
@@ -40,7 +40,15 @@ const UniversalBanner = ({ movie }) => {
     const [hasClosedTrailer, setHasClosedTrailer] = useState(false);
     const [trailerKey, setTrailerKey] = useState(null);
     const [tagline, setTagline] = useState(movie?.Tagline || '');
+    const [bannerQuality, setBannerQuality] = useState(40);
     const timerRef = useRef(null);
+
+    // ⚡ DESKTOP BANNER QUALITY UPGRADE
+    useEffect(() => {
+        if (typeof window !== 'undefined' && window.innerWidth > 768) {
+            setBannerQuality(100); // ⚡ Max Quality for Desktop/Computer users!
+        }
+    }, []);
 
     // Dynamically fetch the trailer just for this component so it doesn't slow down the server!
     useEffect(() => {
@@ -113,7 +121,7 @@ const UniversalBanner = ({ movie }) => {
               >
                 <div className="relative w-full h-full bg-[#030303]">
                   {/* ⚡ THE MAIN IMAGE */}
-                  {bannerImage ? <Image src={bannerImage} alt={`${movie?.Title} banner`} fill priority fetchPriority="high" sizes="(max-width: 768px) 100vw, 1280px" quality={40} className="object-cover object-[center_25%] relative z-10" /> : <div className="w-full h-full flex items-center justify-center relative z-10" style={{ backgroundColor: '#000000' }}><Film className="w-16 h-16 sm:w-24 sm:h-24" style={{ color: COLORS.textMuted }} /></div>}
+                  {bannerImage ? <Image src={bannerImage} alt={`${movie?.Title} banner`} fill priority fetchPriority="high" sizes="(max-width: 768px) 100vw, 1280px" quality={bannerQuality} className="object-cover object-[center_25%] relative z-10" /> : <div className="w-full h-full flex items-center justify-center relative z-10" style={{ backgroundColor: '#000000' }}><Film className="w-16 h-16 sm:w-24 sm:h-24" style={{ color: COLORS.textMuted }} /></div>}
                   <div className="absolute inset-0 z-20" style={{ background: `linear-gradient(to bottom, transparent 0%, transparent 50%, #000000 90%, #000000 100%), linear-gradient(to right, #000000 0%, transparent 15%, transparent 85%, #000000 100%)` }} />
                 </div>
                 {trailerKey && (
@@ -148,6 +156,28 @@ const UniversalBanner = ({ movie }) => {
               <div className="unified-psych-desc insight-text font-medium text-white" suppressHydrationWarning>
                 {tagline ? <span className="italic">"{tagline}"</span> : <span>{insight}</span>}
               </div>
+            </div>
+        </div>
+
+        {/* ⚡ ULTRA-PREMIUM CASCADING SCROLL INDICATOR */}
+        <div className="sm:hidden w-full flex flex-col items-center justify-center mt-10 pb-6 select-none pointer-events-none relative z-30">
+            <motion.span 
+                animate={{ opacity: [0.6, 1, 0.6] }}
+                transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+                className="text-[10px] tracking-[0.3em] uppercase font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-500 via-gray-100 to-gray-500 mb-2"
+            >
+                Scroll Down For Parents Guide
+            </motion.span>
+            <div className="flex flex-col items-center -space-y-3.5">
+                <motion.div animate={{ opacity: [0.1, 1, 0.1], y: [0, 4, 0] }} transition={{ repeat: Infinity, duration: 1.5, delay: 0, ease: "easeInOut" }}>
+                    <ChevronDown className="w-5 h-5 text-gray-100 stroke-[2.5]" />
+                </motion.div>
+                <motion.div animate={{ opacity: [0.1, 1, 0.1], y: [0, 4, 0] }} transition={{ repeat: Infinity, duration: 1.5, delay: 0.2, ease: "easeInOut" }}>
+                    <ChevronDown className="w-5 h-5 text-gray-400 stroke-[2]" />
+                </motion.div>
+                <motion.div animate={{ opacity: [0.1, 1, 0.1], y: [0, 4, 0] }} transition={{ repeat: Infinity, duration: 1.5, delay: 0.4, ease: "easeInOut" }}>
+                    <ChevronDown className="w-5 h-5 text-gray-600 stroke-[1.5]" />
+                </motion.div>
             </div>
         </div>
       </div>

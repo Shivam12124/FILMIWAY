@@ -31,7 +31,7 @@ const MOVIE_DATA = {
     'the-piano-teacher': { title: 'The Piano Teacher', poster: '/gNHKYQnP1RnqEhkivHJzBPb4MOP.jpg' },
     'unfaithful': { title: 'Unfaithful', poster: '/bjiHEhuiwhIygzjczbTPAA07cGc.jpg' },
     'when-harry-met-sally': { title: 'When Harry Met Sally...', poster: '/rFOiFUhTMtDetqCGClC9PIgnC1P.jpg' },
-    'y-tu-mam-tambin': { title: 'Y Tu Mamá También', poster: '/aj3rqjab8jfc2fWmcS3H3c5qbur.jpg' },
+    'y-tu-mama-tambien': { title: 'Y Tu Mamá También', poster: '/aj3rqjab8jfc2fWmcS3H3c5qbur.jpg' },
     'trainspotting': { title: 'Trainspotting', poster: '/y0HmDV0bZDTtXWHqqYYbT9XoshB.jpg' },
     'fatal-attraction': { title: 'Fatal Attraction', poster: '/vjB9XwJKnYqFKKjhWcE6WpAf5Ki.jpg' },
     'wild-things': { title: 'Wild Things', poster: '/wrcTDD9T7Ga5c9MW7kaOo2qwIvW.jpg' },
@@ -48,7 +48,7 @@ const BATCHES = [
     ['last-tango-in-paris', 'memories-of-murder', 'oldboy', 'fifty-shades-freed'],
     ['mulholland-drive', 'basic-instinct', 'the-wolf-of-wall-street', 'the-dreamers'],
     ['the-terminator', 'the-piano-teacher', 'unfaithful', 'when-harry-met-sally'],
-    ['y-tu-mam-tambin', 'trainspotting', 'fatal-attraction', 'wild-things']
+    ['y-tu-mama-tambien', 'trainspotting', 'fatal-attraction', 'wild-things']
 ];
 
 // 🧠 THE ALGORITHM: Batches 1, 3, 4, 5 (Indices 0, 2, 3, 4) appear TWICE as often to maximize clicks

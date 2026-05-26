@@ -11,7 +11,7 @@ export const TMDB_CONFIG = {
 
 export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 44896, "imdbID": "tt1192628", "Title": "Rango", "year": 2011, "genre": "Animation", "runtime": 107, "rank": 1 },
-    { "tmdbId": 614930, "imdbID": "tt8589698", "Title": "TMNT: Mutant Mayhem", "year": 2023, "genre": "Animation", "runtime": 99, "rank": 2 },
+    { "tmdbId": 614930, "imdbID": "tt8589698", "Title": "TMNT: Mutant Mayhem", "slug": "teenage-mutant-ninja-turtles-mutant-mayhem", "year": 2023, "genre": "Animation", "runtime": 99, "rank": 2 },
     { "tmdbId": 11836, "imdbID": "tt0345950", "Title": "The SpongeBob SquarePants Movie", "year": 2004, "genre": "Animation", "runtime": 87, "rank": 3 },
     { "tmdbId": 939243, "imdbID": "tt18259086", "Title": "Sonic the Hedgehog 3", "year": 2025, "genre": "Family", "runtime": 110, "rank": 4 },
     { "tmdbId": 499701, "imdbID": "tt7547410", "Title": "Dora and the Lost City of Gold", "year": 2019, "genre": "Adventure", "runtime": 102, "rank": 5 },

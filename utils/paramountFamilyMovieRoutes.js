@@ -19,7 +19,7 @@ export const PARAMOUNT_FAMILY_MOVIE_SLUGS = {
     '44896': 'rango',
     
     // Rank 2: TMNT: Mutant Mayhem
-    '614930': 'tmnt-mutant-mayhem',
+    'tt8589698': 'teenage-mutant-ninja-turtles-mutant-mayhem',
     
     // Rank 3: The SpongeBob SquarePants Movie
     '11836': 'the-spongebob-squarepants-movie',

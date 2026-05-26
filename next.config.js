@@ -64,6 +64,14 @@ const nextConfig = {
 
       // 🔥 FIXED SLUG REDIRECTS
       { source: '/movie/malna', destination: '/movie/malena', permanent: true },
+      { source: '/movie/irrversible', destination: '/movie/irreversible', permanent: true },
+      { source: '/movie/y-tu-mam-tambin', destination: '/movie/y-tu-mama-tambien', permanent: true },
+      { source: '/movie/le-samoura', destination: '/movie/le-samourai', permanent: true },
+      { source: '/movie/ddi', destination: '/movie/didi', permanent: true },
+      { source: '/movie/faceoff', destination: '/movie/face-off', permanent: true },
+      { source: '/movie/5050', destination: '/movie/50-50', permanent: true },
+      { source: '/movie/tmnt-mutant-mayhem', destination: '/movie/teenage-mutant-ninja-turtles-mutant-mayhem', permanent: true },
+      { source: '/movie/rmn', destination: '/movie/r-m-n', permanent: true },
 
       // � MASTER SEO REDIRECTS (Catches ALL old collection duplicates!)
       { source: '/movies/:collection/tt0109830', destination: '/movie/forrest-gump', permanent: true },

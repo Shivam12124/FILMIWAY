@@ -97,7 +97,8 @@
     </url>
 
     <url>
-        <loc>https://filmiway.com/faq</loc>
+    <loc>https://filmiway.com/movie/face-off</loc>
+    <loc>https://filmiway.com/movie/50-50</loc>
         <lastmod>2026-01-25T10:00:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
@@ -658,7 +659,7 @@
 </url>
 
 <url>
-    <loc>https://filmiway.com/how-to-skip-awkward-scenes-in-movies</loc>
+    <loc>https://filmiway.com/movie/teenage-mutant-ninja-turtles-mutant-mayhem</loc>
     <lastmod>2026-05-15T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -672,7 +673,7 @@
 </url>
 
 <url>
-    <loc>https://filmiway.com/movie-directory</loc>
+    <loc>https://filmiway.com/movie/r-m-n</loc>
     <lastmod>2026-04-14T12:00:00+05:30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>

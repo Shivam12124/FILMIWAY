@@ -17,7 +17,7 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 72190, "imdbID": "tt0816711", "Title": "World War Z", "year": 2013, "genre": "Horror", "runtime": 116, "rank": 5 },
     { "tmdbId": 98, "imdbID": "tt0172495", "Title": "Gladiator", "year": 2000, "genre": "Action", "runtime": 155, "rank": 6 },
     { "tmdbId": 1858, "imdbID": "tt0418279", "Title": "Transformers", "year": 2007, "genre": "Sci-Fi", "runtime": 144, "rank": 7 },
-    { "tmdbId": 754, "imdbID": "tt0119094", "Title": "Face/Off", "year": 1997, "genre": "Thriller", "runtime": 138, "rank": 8 },
+    { "tmdbId": 754, "imdbID": "tt0119094", "Title": "Face/Off", "slug": "face-off", "year": 1997, "genre": "Thriller", "runtime": 138, "rank": 8 },
     { "tmdbId": 85, "imdbID": "tt0082971", "Title": "Raiders of the Lost Ark", "year": 1981, "genre": "Adventure", "runtime": 115, "rank": 9 },
     { "tmdbId": 54138, "imdbID": "tt1408101", "Title": "Star Trek Into Darkness", "year": 2013, "genre": "Sci-Fi", "runtime": 132, "rank": 10 }
 ];

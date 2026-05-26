@@ -14,9 +14,9 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 15764, "imdbID": "tt0084707", "Title": "Sophie's Choice", "year": 1982, "genre": "Drama", "runtime": 150, "rank": 2 },
     { "tmdbId": 804095, "imdbID": "tt14208870", "Title": "The Fabelmans", "year": 2022, "genre": "Drama", "runtime": 151, "rank": 3 },
     { "tmdbId": 855263, "imdbID": "tt13423600", "Title": "A Thousand and One", "year": 2023, "genre": "Drama", "runtime": 116, "rank": 4 },
-    { "tmdbId": 1158915, "imdbID": "tt28323620", "Title": "Dìdi", "year": 2024, "genre": "Comedy", "runtime": 94, "rank": 5 },
+    { "tmdbId": 1158915, "imdbID": "tt28323620", "Title": "Dìdi", "slug": "didi", "year": 2024, "genre": "Comedy", "runtime": 94, "rank": 5 },
     { "tmdbId": 837881, "imdbID": "tt14807308", "Title": "She Said", "year": 2022, "genre": "History", "runtime": 129, "rank": 6 },
-    { "tmdbId": 40807, "imdbID": "tt1306980", "Title": "50/50", "year": 2011, "genre": "Comedy", "runtime": 100, "rank": 7 },
+    { "tmdbId": 40807, "imdbID": "tt1306980", "Title": "50/50", "slug": "50-50", "year": 2011, "genre": "Comedy", "runtime": 100, "rank": 7 },
     { "tmdbId": 11816, "imdbID": "tt0082846", "Title": "On Golden Pond", "year": 1981, "genre": "Drama", "runtime": 109, "rank": 8 },
     { "tmdbId": 754609, "imdbID": "tt13374522", "Title": "Mrs. Harris Goes to Paris", "year": 2022, "genre": "Comedy", "runtime": 115, "rank": 9 },
     { "tmdbId": 589049, "imdbID": "tt7798646", "Title": "The Photograph", "year": 2020, "genre": "Romance", "runtime": 106, "rank": 10 }

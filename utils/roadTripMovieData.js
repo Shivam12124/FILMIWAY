@@ -10,7 +10,7 @@ export const TMDB_CONFIG = {
 };
 
 export const COMPLETE_MOVIE_DATABASE = [
-    { "tmdbId": 1391, "imdbID": "tt0245574", "Title": "Y Tu Mamá También", "year": 2001, "genre": "Drama", "runtime": 106, "rank": 1 },
+    { "tmdbId": 1391, "imdbID": "tt0245574", "Title": "Y Tu Mamá También", "slug": "y-tu-mama-tambien", "year": 2001, "genre": "Drama", "runtime": 106, "rank": 1 },
     { "tmdbId": 1541, "imdbID": "tt0103074", "Title": "Thelma & Louise", "year": 1991, "genre": "Crime", "runtime": 130, "rank": 2 },
     { "tmdbId": 380, "imdbID": "tt0095953", "Title": "Rain Man", "year": 1988, "genre": "Drama", "runtime": 133, "rank": 3 },
     { "tmdbId": 5915, "imdbID": "tt0758758", "Title": "Into the Wild", "year": 2007, "genre": "Adventure", "runtime": 148, "rank": 4 },

@@ -19,7 +19,7 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 1013850, "imdbID": "tt21823606", "Title": "A Real Pain", "year": 2024, "genre": "Comedy", "runtime": 90, "rank": 7 },
     { "tmdbId": 1214469, "imdbID": "tt30321095", "Title": "Ghostlight", "year": 2024, "genre": "Drama", "runtime": 115, "rank": 8 },
     { "tmdbId": 773, "imdbID": "tt0449059", "Title": "Little Miss Sunshine", "year": 2006, "genre": "Comedy", "runtime": 101, "rank": 9 },
-    { "tmdbId": 919570, "imdbID": "tt18550182", "Title": "R.M.N.", "year": 2022, "genre": "Drama", "runtime": 125, "rank": 10 }
+    { "tmdbId": 919570, "imdbID": "tt18550182", "Title": "R.M.N.", "slug": "r-m-n", "year": 2022, "genre": "Drama", "runtime": 125, "rank": 10 }
 ];
 
 // ✅ SENSITIVE TIMELINES (Focusing on Grief, Language, and Emotional Trauma)

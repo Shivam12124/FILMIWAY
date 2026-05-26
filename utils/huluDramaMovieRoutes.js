@@ -43,7 +43,7 @@ export const HULU_DRAMA_MOVIE_SLUGS = {
     'tt0449059': 'little-miss-sunshine',
     
     // Rank 10: R.M.N.
-    'tt18550182': 'rmn'
+    'tt18550182': 'r-m-n'
 };
 
 // ✅ REVERSE SLUG MAPPING (SLUG TO TMDB ID)
