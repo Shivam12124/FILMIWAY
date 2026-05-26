@@ -115,10 +115,10 @@ const TMDBMoviePoster = React.memo(({ movie, className = "", alt, posterSize = "
                 src={posterUrl || placeholderSrc}
                 alt={alt || `${movie.Title} Poster`}
                 fill // Use fill to adapt to container size
-                sizes="(max-width: 768px) 33vw, (max-width: 1200px) 20vw, 15vw" // Responsive sizes hint
+                sizes="(max-width: 768px) 25vw, (max-width: 1200px) 20vw, 15vw" // Responsive sizes hint
                 className={`object-cover transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
                 priority={priority}
-                quality={50} // ⚡ REDUCED QUALITY FOR FASTER LOADING
+                quality={40} // ⚡ REDUCED QUALITY FOR FASTER LOADING
                 loading={priority ? undefined : "lazy"}
                 onLoadingComplete={() => setIsLoading(false)}
                 onError={() => {

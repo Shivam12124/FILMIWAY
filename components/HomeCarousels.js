@@ -26,8 +26,8 @@ export const CollectionCard = memo(({ collection, index, href, isPrioritySection
             width={342}
             height={513}
             priority={shouldPrioritize}
-            quality={65} 
-            sizes="(max-width: 640px) 160px, 250px"
+            quality={40} 
+            sizes="(max-width: 640px) 120px, 250px"
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             draggable={false}
           />
@@ -84,7 +84,7 @@ export const Top10MovieCard = memo(({ movie, index }) => {
         {rank}
       </div>
       <div className="absolute right-0 w-[65%] h-full z-10 rounded-lg overflow-hidden border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.8)] group-hover:border-yellow-400/50 transition-all duration-300 bg-gray-900">
-        <Image src={posterUrl} alt={movie.Title} width={342} height={513} priority={shouldPrioritize} quality={65} sizes="(max-width: 640px) 160px, 250px" className="w-full h-full object-cover" />
+        <Image src={posterUrl} alt={movie.Title} width={342} height={513} priority={shouldPrioritize} quality={40} sizes="(max-width: 640px) 120px, 250px" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-yellow-500/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       </div>
     </Link>

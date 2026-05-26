@@ -31,7 +31,8 @@ const OptimizedTMDBPoster = ({
       width={width}
       height={height}
       priority={priority}
-      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 300px"
+      quality={40}
+      sizes="(max-width: 768px) 25vw, (max-width: 1200px) 50vw, 300px"
       className={className}
     />
   );
