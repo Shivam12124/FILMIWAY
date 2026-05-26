@@ -953,7 +953,7 @@ const MovieDetailsSection = React.memo(({
 >
       <div className="text-center space-y-6">
         <motion.h1
-          className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-extralight tracking-tight sm:tracking-wider text-white"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extralight tracking-tight sm:tracking-wider text-white"
           style={{ fontFamily: "'Playfair Display', serif" }}
           initial={{ opacity: 1, y: 0 }}
           animate={{ opacity: 1, y: 0 }}
@@ -993,6 +993,7 @@ const MovieDetailsSection = React.memo(({
         initial={{ opacity: 1, y: 0 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.2 }}
+        style={{ contentVisibility: 'auto', containIntrinsicSize: '150px' }}
       >
         <div className="flex items-center gap-3 mb-6 border-b border-white/5 pb-4">
           <BookOpen className="w-6 h-6 text-yellow-500 shrink-0" />
@@ -1006,6 +1007,7 @@ const MovieDetailsSection = React.memo(({
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
+        style={{ contentVisibility: 'auto', containIntrinsicSize: '300px' }}
       >
         <div className="w-full bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8 flex flex-col justify-start">
           <div className="flex items-center gap-3 mb-6 border-b border-white/5 pb-4">
@@ -1036,11 +1038,11 @@ const MovieDetailsSection = React.memo(({
         </div>
       </motion.div>
 
-      <div id="parents-guide" className="scroll-mt-28 w-full max-w-4xl mx-auto">
+      <div id="parents-guide" className="scroll-mt-28 w-full max-w-4xl mx-auto" style={{ contentVisibility: 'auto', containIntrinsicSize: '800px' }}>
         <SensitiveContentTimelineSection movie={{...movie, Runtime: dynamicMovieData.runtime}} sensitiveScenes={sensitiveScenes} />
       </div>
 
-      <div className="w-full bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8 overflow-hidden clean-injected-component">
+      <div className="w-full bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8 overflow-hidden clean-injected-component" style={{ contentVisibility: 'auto', containIntrinsicSize: '400px' }}>
         <div className="flex items-center gap-3 mb-6 border-b border-white/5 pb-4 custom-new-header">
           <Star className="w-6 h-6 text-yellow-500 shrink-0" />
           <h2 className="text-xl sm:text-2xl font-light text-gray-200 tracking-wide">Fan Favorites</h2>
@@ -1063,7 +1065,7 @@ const MovieDetailsSection = React.memo(({
         />
       )}
 
-      <div className="w-full bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8 clean-injected-component">
+      <div className="w-full bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8 clean-injected-component" style={{ contentVisibility: 'auto', containIntrinsicSize: '300px' }}>
         <div className="flex items-center gap-3 mb-6 border-b border-white/5 pb-4 custom-new-header">
           <Film className="w-6 h-6 text-yellow-500 shrink-0" />
           <h2 className="text-xl sm:text-2xl font-light text-gray-200 tracking-wide">Where to Watch</h2>
@@ -1072,7 +1074,7 @@ const MovieDetailsSection = React.memo(({
       </div>
 
       {/* FAQ SECTIONS */}
-      <div className="w-full bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8 faq-unified-container">
+      <div className="w-full bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8 faq-unified-container" style={{ contentVisibility: 'auto', containIntrinsicSize: '1000px' }}>
         <div className="flex items-center gap-3 mb-6 border-b border-white/5 pb-4">
           <span className="text-2xl">❓</span>
           <h2 className="text-xl sm:text-2xl font-light text-gray-200 tracking-wide">Frequently Asked Questions</h2>
