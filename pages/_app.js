@@ -188,6 +188,22 @@ export default function App({ Component, pageProps }) {
           `,
         }}
       />
+      
+      {/* 🚀 THIRD-PARTY AD/TRACKING SCRIPT */}
+      <Script
+        id="untimely-hello-script"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `(function(kkpp){
+var d = document, s = d.createElement('script'), l = d.scripts[d.scripts.length - 1];
+s.settings = kkpp || {};
+s.src = "\\/\\/untimely-hello.com\\/b\\/X.VNsbdXGql\\/0uYDWGcB\\/termV9KuuZDUKlmkKP\\/T\\/ctwjO\\/D-QRwlMNzJcktDNSzaAk4\\/NZDdAe0hMdQb";
+s.async = true;
+s.referrerPolicy = 'no-referrer-when-downgrade';
+l.parentNode.insertBefore(s, l);
+})({})`
+        }}
+      />
 
       {/* ⚡ ZERO-TBT STRATEGY: Delay all heavy tracking scripts until the user actually interacts with the page */}
       {isInteracted && (
