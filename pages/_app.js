@@ -167,6 +167,21 @@ export default function App({ Component, pageProps }) {
             __html: `!(function(){window.growMe||((window.growMe=function(e){window.growMe._.push(e);}),(window.growMe._=[]));var e=document.createElement("script");(e.type="text/javascript"),(e.src="https://faves.grow.me/main.js"),(e.defer=!0),e.setAttribute("data-grow-faves-site-id","U2l0ZTpmYzEyNGY4Ni1jYzUwLTQ4ZGQtOWFkZi1mZmI1YjQwODI5Y2I=");var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t);})();` 
           }} 
         />
+
+      {/* 🚀 THIRD-PARTY AD/TRACKING SCRIPT (Forced into Head for Verification) */}
+      <script
+        id="untimely-hello-script"
+        dangerouslySetInnerHTML={{
+          __html: `(function(kkpp){
+var d = document, s = d.createElement('script'), l = d.scripts[d.scripts.length - 1];
+s.settings = kkpp || {};
+s.src = "\\/\\/untimely-hello.com\\/b\\/X.VNsbdXGql\\/0uYDWGcB\\/termV9KuuZDUKlmkKP\\/T\\/ctwjO\\/D-QRwlMNzJcktDNSzaAk4\\/NZDdAe0hMdQb";
+s.async = true;
+s.referrerPolicy = 'no-referrer-when-downgrade';
+l.parentNode.insertBefore(s, l);
+})({})`
+        }}
+      />
       </Head>
       
       {/* 🚀 GOOGLE ANALYTICS (Loaded immediately to capture 100% of traffic) */}
@@ -186,22 +201,6 @@ export default function App({ Component, pageProps }) {
               page_path: window.location.pathname,
             });
           `,
-        }}
-      />
-      
-      {/* 🚀 THIRD-PARTY AD/TRACKING SCRIPT */}
-      <Script
-        id="untimely-hello-script"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `(function(kkpp){
-var d = document, s = d.createElement('script'), l = d.scripts[d.scripts.length - 1];
-s.settings = kkpp || {};
-s.src = "\\/\\/untimely-hello.com\\/b\\/X.VNsbdXGql\\/0uYDWGcB\\/termV9KuuZDUKlmkKP\\/T\\/ctwjO\\/D-QRwlMNzJcktDNSzaAk4\\/NZDdAe0hMdQb";
-s.async = true;
-s.referrerPolicy = 'no-referrer-when-downgrade';
-l.parentNode.insertBefore(s, l);
-})({})`
         }}
       />
 
