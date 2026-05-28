@@ -128,21 +128,6 @@ const FilmiwayHomepage = ({ huluCollections, thrillerCollections, hboCollections
         {/* ⚡ CRITICAL PERFORMANCE OPTIMIZATION */}
         <link rel="preconnect" href="https://image.tmdb.org" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://www.themoviedb.org" />
-        
-        {/* 🚀 THIRD-PARTY AD SCRIPT (Main Page Only) */}
-        <script
-          id="untimely-hello-script-main"
-          dangerouslySetInnerHTML={{
-            __html: `(function(zdn){
-var d = document, s = d.createElement('script'), l = d.scripts[d.scripts.length - 1];
-s.settings = zdn || {};
-s.src = "\\/\\/untimely-hello.com\\/b.XGVHsBdwGVlz0LYVWBcW\\/De-mt9suUZLUNl\\/kqPmTrc-wUOuDLQmweMizIc\\/tnNSzrAA4\\/N\\/D\\/A\\/0vMDQv";
-s.async = true;
-s.referrerPolicy = 'no-referrer-when-downgrade';
-l.parentNode.insertBefore(s, l);
-})({})`
-          }}
-        />
       </Head>
       
       <div className="min-h-screen bg-[#030303] text-white overflow-x-hidden">
