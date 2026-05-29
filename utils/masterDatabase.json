@@ -1103,11 +1103,11 @@
     "tmdbId": 754,
     "imdbID": "tt0119094",
     "Title": "Face/Off",
+    "slug": "faceoff",
     "year": 1997,
     "genre": "Thriller",
     "runtime": 138,
     "rank": 8,
-    "slug": "faceoff",
     "sourceFile": "paramountActionMovieData.js"
   },
   {
@@ -1510,11 +1510,11 @@
     "tmdbId": 1391,
     "imdbID": "tt0245574",
     "Title": "Y Tu Mamá También",
+    "slug": "y-tu-mam-tambin",
     "year": 2001,
     "genre": "Drama",
     "runtime": 106,
     "rank": 1,
-    "slug": "y-tu-mam-tambin",
     "sourceFile": "roadTripMovieData.js"
   },
   {
@@ -2170,11 +2170,11 @@
     "tmdbId": 5511,
     "imdbID": "tt0062229",
     "Title": "Le Samouraï",
+    "slug": "le-samoura",
     "year": 1967,
     "genre": "Crime",
     "runtime": 105,
     "rank": 2,
-    "slug": "le-samoura",
     "sourceFile": "neoNoirMovieData.js"
   },
   {
@@ -2790,7 +2790,7 @@
     "genre": "Drama",
     "runtime": 109,
     "rank": 1,
-    "slug": "malena",
+    "slug": "malna",
     "sourceFile": "monicaBellucciMovieData.js"
   },
   {
@@ -3479,11 +3479,11 @@
     "tmdbId": 40807,
     "imdbID": "tt1306980",
     "Title": "50/50",
+    "slug": "5050",
     "year": 2011,
     "genre": "Comedy",
     "runtime": 100,
     "rank": 7,
-    "slug": "5050",
     "sourceFile": "peacockDramaMovieData.js"
   },
   {
@@ -4554,6 +4554,17 @@
     "sourceFile": "eroticThrillerMovieData.js"
   },
   {
+    "tmdbId": 293660,
+    "imdbID": "tt1431045",
+    "Title": "Deadpool",
+    "year": 2016,
+    "genre": "Action, Comedy",
+    "runtime": 108,
+    "rank": "BONUS",
+    "slug": "deadpool",
+    "sourceFile": "raunchyComedyMovieData.js"
+  },
+  {
     "tmdbId": 293863,
     "imdbID": "tt1655441",
     "Title": "The Age of Adaline",
@@ -4849,6 +4860,17 @@
     "rank": 4,
     "slug": "split",
     "sourceFile": "hboMaxThrillerMovieData.js"
+  },
+  {
+    "tmdbId": 383498,
+    "imdbID": "tt5463162",
+    "Title": "Deadpool 2",
+    "year": 2018,
+    "genre": "Action, Comedy",
+    "runtime": 119,
+    "rank": "BONUS",
+    "slug": "deadpool-2",
+    "sourceFile": "raunchyComedyMovieData.js"
   },
   {
     "tmdbId": 390062,
@@ -5437,11 +5459,11 @@
     "tmdbId": 614930,
     "imdbID": "tt8589698",
     "Title": "TMNT: Mutant Mayhem",
+    "slug": "tmnt-mutant-mayhem",
     "year": 2023,
     "genre": "Animation",
     "runtime": 99,
     "rank": 2,
-    "slug": "tmnt-mutant-mayhem",
     "sourceFile": "paramountFamilyMovieData.js"
   },
   {
@@ -5987,11 +6009,11 @@
     "tmdbId": 919570,
     "imdbID": "tt18550182",
     "Title": "R.M.N.",
+    "slug": "rmn",
     "year": 2022,
     "genre": "Drama",
     "runtime": 125,
     "rank": 10,
-    "slug": "rmn",
     "sourceFile": "huluDramaMovieData.js"
   },
   {
@@ -6229,11 +6251,11 @@
     "tmdbId": 1158915,
     "imdbID": "tt28323620",
     "Title": "Dìdi",
+    "slug": "ddi",
     "year": 2024,
     "genre": "Comedy",
     "runtime": 94,
     "rank": 5,
-    "slug": "ddi",
     "sourceFile": "peacockDramaMovieData.js"
   },
   {

@@ -19,7 +19,9 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 9352, "imdbID": "tt0356150", "Title": "EuroTrip", "year": 2004, "genre": "Comedy", "runtime": 90, "rank": 7 },
     { "tmdbId": 55721, "imdbID": "tt1478338", "Title": "Bridesmaids", "year": 2011, "genre": "Comedy", "runtime": 125, "rank": 8 },
     { "tmdbId": 544, "imdbID": "tt0129387", "Title": "There's Something About Mary", "year": 1998, "genre": "Comedy", "runtime": 119, "rank": 9 },
-    { "tmdbId": 11282, "imdbID": "tt0366551", "Title": "Harold & Kumar Go to White Castle", "year": 2004, "genre": "Comedy", "runtime": 88, "rank": 10 }
+    { "tmdbId": 11282, "imdbID": "tt0366551", "Title": "Harold & Kumar Go to White Castle", "year": 2004, "genre": "Comedy", "runtime": 88, "rank": 10 },
+    { "tmdbId": 293660, "imdbID": "tt1431045", "Title": "Deadpool", "year": 2016, "genre": "Action, Comedy", "runtime": 108, "rank": "BONUS" },
+    { "tmdbId": 383498, "imdbID": "tt5463162", "Title": "Deadpool 2", "year": 2018, "genre": "Action, Comedy", "runtime": 119, "rank": "BONUS" }
 ];
 
 // ✅ STRATEGIC QUOTES
@@ -33,7 +35,9 @@ export const STRATEGIC_QUOTES = {
     9352: "Scotty doesn't know!",
     55721: "Help me, I'm poor.",
     544: "Is that... hair gel?",
-    11282: "Dude, we are so high right now!"
+    11282: "Dude, we are so high right now!",
+    293660: "Maximum effort.",
+    383498: "Family is not an f-word."
 };
 
 // ✅ SENSITIVE TIMELINES (Crucial for Raunchy Comedies!)
@@ -159,6 +163,20 @@ export const SENSITIVE_TIMELINES = {
             { start: "0:45:00", end: "0:45:23", type: "Nudity (Woman)", severity: "High" },
             { start: "1:05:00", end: "1:05:20", type: "Nudity (Woman)", severity: "High" }
         ] 
+    },
+    // BONUS: Deadpool
+    293660: { 
+        scenes: [
+            { start: "23:21", end: "24:40", type: "Sex & Nudity (Woman)", severity: "High" },
+            { start: "1:11:06", end: "1:11:40", type: "Nudity (Women)", severity: "High" }
+        ] 
+    },
+    // BONUS: Deadpool 2
+    383498: {
+        scenes: [
+            { start: "5:00", end: "5:03", type: "Nudity (Woman)", severity: "High" },
+            { start: "1:31:53", end: "1:31:56", type: "Partial Nudity (Man)", severity: "Mild" }
+        ]
     }
 };
 
@@ -172,7 +190,9 @@ export const FALLBACK_POSTERS = {
     9352: "https://m.media-amazon.com/images/M/MV5BMTkxNDg5NzA4Nl5BMl5BanBnXkFtZTcwMDk4ODMzMQ@@._V1_SX500.jpg",
     55721: "https://m.media-amazon.com/images/M/MV5BMjAyOTMyMzUxNl5BMl5BanBnXkFtZTcwNDg4MTA0NA@@._V1_SX500.jpg",
     544: "https://m.media-amazon.com/images/M/MV5BMTU2MzM0ODAzMl5BMl5BanBnXkFtZTgwNTUwODk0MTI@._V1_SX500.jpg",
-    11282: "https://m.media-amazon.com/images/M/MV5BMjA5NTg5MzYxMl5BMl5BanBnXkFtZTgwNDkwOTUzMTE@._V1_SX500.jpg"
+    11282: "https://m.media-amazon.com/images/M/MV5BMjA5NTg5MzYxMl5BMl5BanBnXkFtZTgwNDkwOTUzMTE@._V1_SX500.jpg",
+    293660: "https://m.media-amazon.com/images/M/MV5BYzE5MjY1ZDgtMTkyNC00MTMyLThhMjAtZGI5OTE1NzFlZGJjXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX500.jpg",
+    383498: "https://m.media-amazon.com/images/M/MV5BNzQxMjUxNjQxN15BMl5BanBnXkFtZTgwNTU0ODMzNTM@._V1_SX500.jpg"
 };
 
 // ✅ Helper function for Raunchy Comedy metrics
@@ -353,6 +373,40 @@ export const COMPLETE_MOVIE_DATA = {
         ],
         synopsis: "Two stoner friends embark on a quest to satisfy their desire for White Castle burgers. It brilliantly subverts racial stereotypes while delivering an unhinged, surreal midnight adventure.",
         themes: ["Munchies", "Subverting Stereotypes", "Surreal Road Trips"]
+    }),
+
+    // BONUS: Deadpool
+    293660: createRaunchyData({ 
+        raunchinessScore: 92, laughterIndex: 94, cringeFactor: 80, complexityLevel: "HARD R", 
+        dominantColor: "#b91c1c", rating: 8.0, criticsScore: 85, audienceScore: 90, director: "Tim Miller", 
+        cast: ["Ryan Reynolds", "Morena Baccarin", "Ed Skrein"], boxOffice: "$782 million", budget: "$58 million", 
+        dna: { "Comedy": 50, "Action": 40, "Romance": 10 }, 
+        scenes: [
+            { time: 10, intensity: 85, label: "Highway Fight" },
+            { time: 45, intensity: 60, label: "The Strip Club" },
+            { time: 65, intensity: 90, label: "Weapon X Torture" },
+            { time: 85, intensity: 75, label: "Roommate Blindness" },
+            { time: 95, intensity: 95, label: "Helicarrier Climax" }
+        ],
+        synopsis: "A wisecracking mercenary gets experimented on and becomes immortal but ugly, and sets out to track down the man who ruined his looks. A hilarious, hyper-violent superhero movie that constantly breaks the fourth wall.",
+        themes: ["Revenge", "Meta-Humor", "Unconventional Romance"]
+    }),
+
+    // BONUS: Deadpool 2
+    383498: createRaunchyData({
+        raunchinessScore: 88, laughterIndex: 92, cringeFactor: 75, complexityLevel: "HARD R", 
+        dominantColor: "#991b1b", rating: 7.6, criticsScore: 84, audienceScore: 85, director: "David Leitch", 
+        cast: ["Ryan Reynolds", "Josh Brolin", "Morena Baccarin"], boxOffice: "$785.8 million", budget: "$110 million", 
+        dna: { "Comedy": 50, "Action": 40, "Sci-Fi": 10 }, 
+        scenes: [
+            { time: 15, intensity: 90, label: "Apartment Attack" },
+            { time: 40, intensity: 85, label: "The Ice Box Prison" },
+            { time: 70, intensity: 95, label: "X-Force Skydive" },
+            { time: 90, intensity: 88, label: "Juggernaut Fight" },
+            { time: 110, intensity: 92, label: "Time Travel Fixes" }
+        ],
+        synopsis: "Foul-mouthed mutant mercenary Wade Wilson brings together a team of fellow mutant rogues to protect a young boy with supernatural abilities from the brutal, time-traveling cyborg Cable.",
+        themes: ["Found Family", "Redemption", "Time Travel"]
     })
 };
 
@@ -420,6 +474,16 @@ export const RAUNCHY_COMEDY_FAQS = {
         { question: "Why did they choose White Castle?", answer: "The writers realized that White Castle burgers inspire a specific, desperate kind of late-night craving (especially when intoxicated). They reached out to Krispy Kreme first, who declined because of the marijuana themes. White Castle embraced the stoner culture and fully supported the film." },
         { question: "How did it subvert racial stereotypes?", answer: "Prior to 2004, Asian-American and Indian-American actors were typically relegated to nerdy sidekicks or punchlines. Harold and Kumar placed them front and center as the cool, flawed, chaotic leads of an R-rated adventure, fighting racist assumptions while searching for fast food." },
         { question: "How much did they smoke on set?", answer: "None! John Cho and Kal Penn smoked a completely fake, herbal 'movie weed' blend. However, they had to eat dozens of real White Castle sliders during the final scene, which both actors admitted made them incredibly sick by the end of the shooting day." }
+    ],
+    'Deadpool': [
+        { question: "Does Deadpool have violence and gore?", answer: "According to the Filmiway Parents Guide, the violence in Deadpool is rated as High. It contains extreme graphic violence, decapitations, impalements, and blood throughout the film." },
+        { question: "Does Deadpool have profanity or swearing?", answer: "The profanity in Deadpool is rated as High. The film uses extremely strong language, including over 80 uses of the F-word and other sexually explicit jokes." },
+        { question: "Why is Deadpool rated R?", answer: "Deadpool earns its R rating due to high sexual content and nudity, high violence, and high profanity. Adults can use our timestamps to skip the explicit content." },
+        { question: "Is the sex montage real?", answer: "The infamous 'Happy International Women's Day' montage is a comedic but explicit sequence demonstrating the couple's intense sexual relationship over the course of a year." }
+    ],
+    'Deadpool 2': [
+        { question: "Does Deadpool 2 have a post-credits scene?", answer: "Yes, it has one of the most famous mid-credits scenes ever, where Deadpool uses Cable's time travel device to fix past cinematic mistakes, including 'saving' Vanessa and killing the 'X-Men Origins: Wolverine' version of himself." },
+        { question: "Is Brad Pitt in Deadpool 2?", answer: "Yes! Brad Pitt has a blink-and-you-miss-it cameo as The Vanisher. He is invisible for the entire movie until he gets electrocuted on a power line, revealing his face for roughly one second." }
     ]
 };
 

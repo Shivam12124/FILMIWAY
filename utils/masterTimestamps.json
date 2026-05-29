@@ -138,7 +138,7 @@
     "345": {
         "Title": "Eyes Wide Shut",
         "Age": "18+",
-        "Summary": "Aged 18+ for mild violence, explicit sex and extensive nudity, and moderate language.",
+        "Summary": "Aged 18+ for mild violence, explicit sex and heavy nudity, and moderate language.",
         "scenes": [
             {
                 "start": "0:00:48",
@@ -378,7 +378,7 @@
     "409": {
         "Title": "The English Patient",
         "Age": "16+",
-        "Summary": "Aged 16+ for moderate war violence, explicit sex and heavy nudity, and moderate language.",
+        "Summary": "Aged 16+ for moderate war violence, explicit sex and  nudity, and moderate language.",
         "scenes": [
             {
                 "start": "1:14:35",
@@ -423,7 +423,7 @@
     "550": {
         "Title": "Fight Club",
         "Age": "16+",
-        "Summary": "Aged 16+ for brutal graphic violence, explicit sex and heavy nudity, and strong language throughout.",
+        "Summary": "Aged 16+ for brutal graphic violence, explicit sex and  nudity, and strong language throughout.",
         "scenes": [
             {
                 "start": "0:32:27",
@@ -479,7 +479,7 @@
     "562": {
         "Title": "Die Hard",
         "Age": "16+",
-        "Summary": "Aged 16+ for heavy action violence, heavy nudity, and strong language throughout.",
+        "Summary": "Aged 16+ for heavy action violence,  nudity, and strong language throughout.",
         "scenes": [
             {
                 "start": "0:23:32",
@@ -560,7 +560,7 @@
     "617": {
         "Title": "Wild Things",
         "Age": "16+",
-        "Summary": "Aged 16+ for moderate violence, explicit sex and heavy nudity, and strong language throughout.",
+        "Summary": "Aged 16+ for moderate violence, explicit sex and  nudity, and strong language throughout.",
         "scenes": [
             {
                 "start": "0:17:25",
@@ -703,7 +703,7 @@
     "670": {
         "Title": "Oldboy",
         "Age": "18+",
-        "Summary": "Aged 18+ for brutal graphic violence, explicit sex and heavy nudity, and moderate language.",
+        "Summary": "Aged 18+ for brutal graphic violence, explicit sex and  nudity, and moderate language.",
         "scenes": [
             {
                 "start": "0:11:05",
@@ -759,7 +759,7 @@
     "694": {
         "Title": "The Shining",
         "Age": "16+",
-        "Summary": "Aged 16+ for brutal graphic violence, heavy nudity, and moderate language.",
+        "Summary": "Aged 16+ for brutal graphic violence,  nudity, and moderate language.",
         "scenes": [
             {
                 "start": "1:10:40",
@@ -989,7 +989,7 @@
     "1791": {
         "Title": "The Piano Teacher",
         "Age": "18+",
-        "Summary": "Aged 18+ for moderate violence, explicit sex and heavy nudity, and moderate language.",
+        "Summary": "Aged 18+ for moderate violence, explicit sex and  nudity, and moderate language.",
         "scenes": [
             {
                 "start": "0:25:10",
@@ -1045,7 +1045,7 @@
     "2251": {
         "Title": "Unfaithful",
         "Age": "17+",
-        "Summary": "Aged 17+ for moderate violence, explicit sex and heavy nudity, and moderate language.",
+        "Summary": "Aged 17+ for moderate violence, explicit sex and  nudity, and moderate language.",
         "scenes": [
             {
                 "start": "0:33:50",
@@ -1284,7 +1284,7 @@
     "9303": {
         "Title": "Bound",
         "Age": "16+",
-        "Summary": "Aged 16+ for brutal graphic violence, explicit sex and heavy nudity, and moderate language.",
+        "Summary": "Aged 16+ for brutal graphic violence, explicit sex and  nudity, and moderate language.",
         "scenes": [
             {
                 "start": "0:13:00",
@@ -1470,7 +1470,7 @@
     "11013": {
         "Title": "Secretary",
         "Age": "17+",
-        "Summary": "Aged 17+ for moderate violence, explicit sex and heavy nudity, and moderate language.",
+        "Summary": "Aged 17+ for moderate violence, explicit sex and  nudity, and moderate language.",
         "scenes": [
             {
                 "start": "0:53:16",
@@ -2036,7 +2036,7 @@
     "210577": {
         "Title": "Gone Girl",
         "Age": "18+",
-        "Summary": "Aged 18+ for brutal graphic violence, explicit sex and heavy nudity, and strong language throughout.",
+        "Summary": "Aged 18+ for brutal graphic violence, explicit sex and  nudity, and strong language throughout.",
         "scenes": [
             {
                 "start": "6:41",
@@ -2694,7 +2694,7 @@
     "872585": {
         "Title": "Oppenheimer",
         "Age": "15+",
-        "Summary": "Aged 15+ for moderate violence, explicit sex and heavy nudity, and moderate language.",
+        "Summary": "Aged 15+ for moderate violence, explicit sex and  nudity, and moderate language.",
         "scenes": [
             {
                 "start": "0:23:14",
@@ -2736,7 +2736,7 @@
     "937287": {
         "Title": "Challengers",
         "Age": "16+",
-        "Summary": "Aged 16+ for mild violence, heavy nudity and minor sexual content, and strong language throughout.",
+        "Summary": "Aged 16+ for mild violence, nudity and minor sexual content, and strong language throughout.",
         "scenes": [
             {
                 "start": "0:04:20",
@@ -10319,5 +10319,71 @@
     "1376434": {
         "Title": "Predator: Killer of Killers",
         "scenes": []
-    }
+        },
+        "293660": {
+            "Title": "Deadpool",
+            "Age": "17+",
+            "Summary": "Aged 17+ for brutal graphic violence, explicit sex and nudity, and strong language throughout. A mature superhero movie, definitely not for kids.",
+            "scenes": [
+                {
+                    "start": "23:21",
+                    "end": "24:40",
+                    "type": "Sex & Nudity (Woman)",
+                    "severity": "High"
+                },
+                {
+                    "start": "1:11:06",
+                    "end": "1:11:40",
+                    "type": "Nudity (Women)",
+                    "severity": "High"
+                },
+                {
+                    "start": "",
+                    "end": "",
+                    "type": "Violence & Gore",
+                    "severity": "High",
+                    "description": "Strong graphic comic-book violence including bloody shootings, decapitations, severed limbs, torture, brutal hand-to-hand combat, gore splatter, and disturbing injury detail throughout."
+                },
+                {
+                    "start": "",
+                    "end": "",
+                    "type": "Profanity",
+                    "severity": "High",
+                    "description": "Pervasive strong language including 70+ uses of the F-word, crude sexual references, obscene gestures, and occasional racial language throughout."
+                }
+            ]
+        },
+        "383498": {
+            "Title": "Deadpool 2",
+            "Age": "17+",
+            "Summary": "Aged 17+ for brutal graphic violence, brief nudity, and strong language throughout. A mature superhero movie, definitely not for kids.",
+            "scenes": [
+                {
+                    "start": "5:00",
+                    "end": "5:03",
+                    "type": "Nudity (Woman)",
+                    "severity": "High"
+                },
+                {
+                    "start": "1:31:53",
+                    "end": "1:31:56",
+                    "type": "Partial Nudity (Man)",
+                    "severity": "Mild"
+                },
+                {
+                    "start": "",
+                    "end": "",
+                    "type": "Violence & Gore",
+                    "severity": "High",
+                    "description": "Strong violence including shootings, explosions, brutal fist fights, prison riots, deadly crashes, and frequent combat sequences with occasional bloody injury detail."
+                },
+                {
+                    "start": "",
+                    "end": "",
+                    "type": "Profanity",
+                    "severity": "High",
+                    "description": "Pervasive strong language including 100+ uses of the F-word, crude sexual references, obscene gestures, and repeated use of strong profanity throughout."
+                }
+            ]
+        }
 }

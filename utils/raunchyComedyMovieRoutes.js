@@ -42,7 +42,13 @@ export const RAUNCHY_COMEDY_MOVIE_SLUGS = {
     'tt0129387': 'theres-something-about-mary',
     
     // Rank 10: Harold & Kumar Go to White Castle
-    'tt0366551': 'harold-and-kumar-go-to-white-castle'
+    'tt0366551': 'harold-and-kumar-go-to-white-castle',
+    
+    // BONUS FILM: Deadpool
+    'tt1431045': 'deadpool',
+    
+    // BONUS FILM: Deadpool 2
+    'tt5463162': 'deadpool-2'
 };
 
 // ✅ REVERSE SLUG MAPPING (SLUG TO IMDB ID)
@@ -202,7 +208,11 @@ export const sortRaunchyComedyMovies = (movies, sortBy) => {
         case 'runtime':
             return sortedMovies.sort((a, b) => b.runtime - a.runtime);
         default:
-            return sortedMovies.sort((a, b) => a.rank - b.rank);
+            return sortedMovies.sort((a, b) => {
+                const getRankVal = (r) => typeof r === 'number' ? r : 0;
+                // Sort descending so 10, 9, 8... comes first, and 0 (Bonus) goes to the bottom
+                return getRankVal(b.rank) - getRankVal(a.rank);
+            });
     }
 };
 

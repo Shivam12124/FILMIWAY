@@ -840,14 +840,14 @@ export const COLLECTIONS = {
   // 🍻 BEST RAUNCHY COMEDY MOVIES
   'best-raunchy-comedy-movies': {
     slug: 'best-raunchy-comedy-movies',
-    title: '10 Best Raunchy Comedy Movies',
+    title: '10 Best Raunchy Comedy Movies (+ Bonus)',
     stats: { averageRating: 7.0 },
     badges: [
       { label: "CHAOS", desc: "R-rated laughs" },
       { label: "CRINGE", desc: "Gross-out humor" },
       { label: "QUOTABLE", desc: "Iconic lines" }
     ],
-    movies: ['tt0163651', 'tt0829482', 'tt1119646', 'tt0425061', 'tt0396269', 'tt0215129', 'tt0356150', 'tt1478338', 'tt0129387', 'tt0366551'],
+    movies: ['tt0366551', 'tt0129387', 'tt1478338', 'tt0356150', 'tt0215129', 'tt0396269', 'tt0425061', 'tt1119646', 'tt0829482', 'tt0163651', 'tt1431045', 'tt5463162'],
     relatedCollections: ['best-comedy-movies-on-hulu', 'best-comedy-movies-on-hbo-max', 'best-movies-about-greed']
   },
 

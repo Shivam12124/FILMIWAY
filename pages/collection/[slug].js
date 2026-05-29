@@ -3036,7 +3036,7 @@ const getStaticMetaContent = () => {
             keywords: "best raunchy comedy movies, r rated comedies, teen sex comedies, superbad, american pie, gross out humor",
             ogTitle: "10 Best Raunchy Comedies (Ranked by R-Rated Chaos)",
             twitterTitle: "10 Best Raunchy Comedies (Ranked by R-Rated Chaos)",
-            progressText: `of Top ${movies.length} Raunchy Comedies`
+            progressText: `of Top 10 Raunchy Comedies`
         };
     } else if (collection.slug === 'top-10-road-trip-movies') {
         return {
@@ -3708,7 +3708,7 @@ const getStaticMetaContent = () => {
 
     // GET CURRENT MOVIE AND CALCULATE RANK CORRECTLY
     const currentMovie = movies[currentMovieIndex];
-    const currentRank = movies.length - currentMovieIndex;
+    const currentRank = currentMovie?.rank || (movies.length - currentMovieIndex);
 
     // SMART NAVIGATION LOGIC
     const isFirstMovie = currentMovieIndex === 0;
@@ -3996,9 +3996,9 @@ const getStaticMetaContent = () => {
     const metaContent = getStaticMetaContent();
 
     //  ENHANCED CINEMATIC EXPLORER SECTION WITH DNA HELIX - SHOWS ON POSITION #10
-    const CinematicExplorerSection = ({ currentRank }) => {
-        // Only render when currentRank === 10 (Position #10)
-        if (currentRank !== 10) {
+    const CinematicExplorerSection = ({ currentIndex }) => {
+        // Only render when it's the first slide (Index 0)
+        if (currentIndex !== 0) {
             return null;
         }
 
@@ -4498,18 +4498,38 @@ return (
                                 className="w-full flex justify-center z-20 cursor-grab active:cursor-grabbing"
                                 style={{ userSelect: 'none', WebkitUserDrag: 'none' }}
                             >
-                                <Link
-                                    href={`/movie/${currentMovie.slug}`}
-                                    onClick={handleMovieClick}
-                                    className="outline-none"
-                                    draggable={false}
-                                >
-                                <CinematicMovieCard
-                                    movie={currentMovie}
-                                    rank={currentRank}
-                                    isActive={true}
-                                />
-                                </Link>
+                                {currentMovie.isBonusSlide ? (
+                                    <div className="flex flex-col md:flex-row gap-8 sm:gap-16 justify-center items-center w-full">
+                                        {currentMovie.bonusMovies.map(bMovie => (
+                                            <Link
+                                                key={bMovie.imdbID}
+                                                href={`/movie/${bMovie.slug}`}
+                                                onClick={handleMovieClick}
+                                                className="outline-none transition-transform hover:scale-105"
+                                                draggable={false}
+                                            >
+                                                <CinematicMovieCard
+                                                    movie={bMovie}
+                                                    rank={bMovie.rank || "BONUS"}
+                                                    isActive={true}
+                                                />
+                                            </Link>
+                                        ))}
+                                    </div>
+                                ) : (
+                                    <Link
+                                        href={`/movie/${currentMovie.slug}`}
+                                        onClick={handleMovieClick}
+                                        className="outline-none"
+                                        draggable={false}
+                                    >
+                                        <CinematicMovieCard
+                                            movie={currentMovie}
+                                            rank={currentRank}
+                                            isActive={true}
+                                        />
+                                    </Link>
+                                )}
                             </motion.div>
                         )}
                     </AnimatePresence>
@@ -4539,18 +4559,18 @@ return (
                         >
                             <div className="flex items-center gap-4 sm:gap-6 px-6 py-4 sm:px-8 sm:py-5 bg-gradient-to-r from-gray-800/40 via-gray-900/40 to-gray-800/40 backdrop-blur-xl rounded-2xl border border-yellow-400/20">
                                 <span className="text-yellow-400 font-light text-lg sm:text-xl">
-                                    #{currentRank}
+                                    {currentMovie?.isBonusSlide ? "BONUS" : `#${currentRank}`}
                                 </span>
                                 <div className="w-16 sm:w-24 h-2 bg-gray-700/50 rounded-full overflow-hidden">
                                     <motion.div
                                         className="h-full bg-gradient-to-r from-yellow-400 to-amber-400 rounded-full"
-                                        style={{ width: `${((currentMovieIndex + 1) / movies.length) * 100}%` }}
+                                        style={{ width: `${Math.min(100, ((currentMovieIndex + 1) / (collection.slug === 'best-raunchy-comedy-movies' ? 10 : movies.length)) * 100)}%` }}
                                         transition={{ duration: 0.5, ease: "easeOut" }}
                                     />
                                 </div>
                                 <span className="text-gray-400 font-light text-sm sm:text-base">
                                     <span className="hidden sm:inline">{metaContent.progressText}</span>
-                                    <span className="sm:hidden">of {movies.length}</span>
+                                    <span className="sm:hidden">of {collection.slug === 'best-raunchy-comedy-movies' ? 10 : movies.length}</span>
                                 </span>
                             </div>
                         </motion.div>
@@ -4558,7 +4578,7 @@ return (
 
                     {/* 3. SEO TEXT: Drops below the movie poster to fix layout shift from 10 to 9 */}
                     <div className="order-3 w-full mt-12 lg:mt-16">
-                        <CinematicExplorerSection currentRank={currentRank} />
+                        <CinematicExplorerSection currentIndex={currentMovieIndex} />
                     </div>
                     </main>
 
@@ -4752,7 +4772,7 @@ export async function getStaticProps({ params }) {
 
     // ✅ FIND MOVIES - search by imdbID
  // ... inside getStaticProps ...
-    const movies = collection.movies
+    let movies = collection.movies
         .map(imdbId => {
             const masterDatabase = require('../../utils/masterDatabase.json');
             const tmdbCache = require('../../data/tmdbCache.json');
@@ -4781,11 +4801,20 @@ export async function getStaticProps({ params }) {
                 complexityLevel: movie.complexityLevel || null,
                 dominantColor: movie.dominantColor || null,
                 quote: movie.quote || null,
-                synopsis: movie.synopsis || null
+                synopsis: movie.synopsis || null,
+                rank: movie.rank || null
             };
         })
-        .filter(Boolean)
-        .reverse();
+        .filter(Boolean);
+
+    // ⚡ CUSTOM LOGIC FOR BONUS SLIDES
+    if (collection.slug === 'best-raunchy-comedy-movies') {
+        const standardMovies = movies.slice(0, 10);
+        const bonusMovies = movies.slice(10);
+        movies = [...standardMovies, { isBonusSlide: true, bonusMovies }];
+    } else {
+        movies.reverse();
+    }
 
     return {
         props: {
