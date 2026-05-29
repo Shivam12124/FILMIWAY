@@ -7,28 +7,28 @@
     <!-- 🔥 HOMEPAGE - HIGHEST PRIORITY -->
     <url>
         <loc>https://filmiway.com/</loc>
-  <lastmod>2026-03-04T23:30:00+05:30</lastmod>
+  <lastmod>2026-05-29T04:23:20.080Z</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
 
 <url>
         <loc>https://filmiway.com/streaming/hulu</loc>
-        <lastmod>2026-01-30T12:00:00+05:30</lastmod>
+        <lastmod>2026-05-29T04:23:20.080Z</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.7</priority>
     </url>
 
     <url>
         <loc>https://filmiway.com/streaming/hbo-max</loc>
-        <lastmod>2026-01-30T12:00:00+05:30</lastmod>
+        <lastmod>2026-05-29T04:23:20.080Z</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.7</priority>
     </url>
 
     <url>
         <loc>https://filmiway.com/streaming/paramount-plus</loc>
-        <lastmod>2026-01-30T12:00:00+05:30</lastmod>
+        <lastmod>2026-05-29T04:23:20.080Z</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.7</priority>
     </url>
@@ -36,28 +36,28 @@
 
         <url>
         <loc>https://filmiway.com/streaming/peacock</loc>
-        <lastmod>2026-01-30T12:00:00+05:30</lastmod>
+        <lastmod>2026-05-29T04:23:20.080Z</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.7</priority>
     </url>
 
     <url>
         <loc>https://filmiway.com/genre/mind-bending</loc>
-        <lastmod>2026-01-30T12:00:00+05:30</lastmod>
+        <lastmod>2026-05-29T04:23:20.080Z</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.7</priority>
     </url>
 
     <url>
         <loc>https://filmiway.com/genre/thriller</loc>
-        <lastmod>2026-01-30T12:00:00+05:30</lastmod>
+        <lastmod>2026-05-29T04:23:20.080Z</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.7</priority>
     </url>
 
     <url>
         <loc>https://filmiway.com/genre/crime</loc>
-        <lastmod>2026-01-30T12:00:00+05:30</lastmod>
+        <lastmod>2026-05-29T04:23:20.080Z</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.7</priority>
     </url>
@@ -66,7 +66,7 @@
 
     <url>
         <loc>https://filmiway.com/collections</loc>
-  <lastmod>2026-03-04T23:30:00+05:30</lastmod>
+  <lastmod>2026-05-29T04:23:20.080Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>
@@ -74,7 +74,7 @@
     <!-- 🔥 ABOUT US PAGE -->
     <url>
         <loc>https://filmiway.com/about-us</loc>
-  <lastmod>2026-05-24T23:30:00+05:30</lastmod>
+  <lastmod>2026-05-29T04:23:20.080Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
@@ -82,7 +82,7 @@
     <!-- 🔥 LEGAL PAGES -->
     <url>
         <loc>https://filmiway.com/privacy</loc>
-  <lastmod>2026-03-04T23:30:00+05:30</lastmod>
+  <lastmod>2026-05-29T04:23:20.080Z</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.7</priority>
     </url>
@@ -91,7 +91,7 @@
 
     <url>
         <loc>https://filmiway.com/terms</loc>
-        <lastmod>2026-01-25T10:00:00+05:30</lastmod>
+        <lastmod>2026-05-29T04:23:20.080Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
@@ -99,7 +99,7 @@
     <url>
     <loc>https://filmiway.com/movie/face-off</loc>
     <loc>https://filmiway.com/movie/50-50</loc>
-        <lastmod>2026-01-25T10:00:00+05:30</lastmod>
+        <lastmod>2026-05-29T04:23:20.080Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
@@ -108,28 +108,28 @@
     <!-- 🔥 ALL MAIN COLLECTION PAGES -->
     <url>
         <loc>https://filmiway.com/collection/movies-like-inception</loc>
-        <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+        <lastmod>2026-05-29T04:23:20.080Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
 
     <url>
         <loc>https://filmiway.com/collection/movies-like-memento</loc>
-        <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+        <lastmod>2026-05-29T04:23:20.080Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
 
     <url>
         <loc>https://filmiway.com/collection/movies-like-shutter-island</loc>
-        <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+        <lastmod>2026-05-29T04:23:20.080Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
 
     <url>
         <loc>https://filmiway.com/collection/best-survival-movies</loc>
-        <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+        <lastmod>2026-05-29T04:23:20.080Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
@@ -138,28 +138,28 @@
 
     <url>
         <loc>https://filmiway.com/collection/best-psychological-thriller-movies</loc>
-        <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+        <lastmod>2026-05-29T04:23:20.080Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
 
     <url>
         <loc>https://filmiway.com/collection/best-mystery-thriller-movies</loc>
-        <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+        <lastmod>2026-05-29T04:23:20.080Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
 
     <url>
         <loc>https://filmiway.com/collection/best-thriller-movies</loc>
-        <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+        <lastmod>2026-05-29T04:23:20.080Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
 
     <url>
         <loc>https://filmiway.com/collection/best-detective-thriller-movies</loc>
-        <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+        <lastmod>2026-05-29T04:23:20.080Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
@@ -169,7 +169,7 @@
 <!-- ⚔️ BEST REVENGE MOVIES COLLECTION PAGE -->
 <url>
     <loc>https://filmiway.com/collection/best-revenge-movies</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 </url>
@@ -178,28 +178,28 @@
 <!-- 🔬 BEST SCI-FI MOVIES COLLECTION PAGE -->
 <url>
     <loc>https://filmiway.com/collection/best-sci-fi-movies</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 </url>
 
 <url>
     <loc>https://filmiway.com/collection/best-time-travel-movies</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 </url>
 
 <url>
     <loc>https://filmiway.com/collection/best-heist-thriller-movies</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 </url>
 
 <url>
     <loc>https://filmiway.com/collection/best-crime-thriller-movies</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 </url>
@@ -211,7 +211,7 @@
 <!-- 🚀 MOVIES LIKE INTERSTELLAR COLLECTION PAGE -->
 <url>
     <loc>https://filmiway.com/collection/movies-like-interstellar</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 </url>
@@ -219,7 +219,7 @@
 <!-- 🔍 MOVIES LIKE SE7EN COLLECTION PAGE -->
 <url>
     <loc>https://filmiway.com/collection/movies-like-se7en</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 </url>
@@ -229,7 +229,7 @@
 <!-- 🕶️ MOVIES LIKE THE MATRIX COLLECTION PAGE -->
 <url>
     <loc>https://filmiway.com/collection/movies-like-the-matrix</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 </url>
@@ -238,7 +238,7 @@
 <!-- 🎭 MOVIES LIKE PARASITE COLLECTION PAGE -->
 <url>
     <loc>https://filmiway.com/collection/movies-like-parasite</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 </url>
@@ -247,7 +247,7 @@
 <!-- 🎭 MOVIES LIKE BLACK SWAN -->
 <url>
     <loc>https://filmiway.com/collection/movies-like-black-swan</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 </url>
@@ -257,7 +257,7 @@
   <!-- 🔥 MAIN COLLECTION -->
   <url>
     <loc>https://filmiway.com/collection/movies-like-oldboy</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -266,7 +266,7 @@
 
   <url>
     <loc>https://filmiway.com/collection/movies-like-donnie-darko</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 </url>
@@ -275,14 +275,14 @@
 
 <url>
         <loc>https://filmiway.com/collection/movies-like-eyes-wide-shut</loc>
-        <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+        <lastmod>2026-05-29T04:23:20.080Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
 
 <url>
         <loc>https://filmiway.com/collection/best-action-movies-on-hulu</loc>
-        <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+        <lastmod>2026-05-29T04:23:20.080Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
@@ -290,7 +290,7 @@
 
 <url>
         <loc>https://filmiway.com/collection/best-romance-movies-on-hulu</loc>
-        <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+        <lastmod>2026-05-29T04:23:20.080Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
@@ -299,7 +299,7 @@
 
 <url>
         <loc>https://filmiway.com/collection/best-comedy-movies-on-hulu</loc>
-        <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+        <lastmod>2026-05-29T04:23:20.080Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
@@ -308,28 +308,28 @@
 
     <url>
         <loc>https://filmiway.com/collection/best-horror-movies-on-hulu</loc>
-        <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+        <lastmod>2026-05-29T04:23:20.080Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
 
 <url>
     <loc>https://filmiway.com/collection/best-thriller-movies-hulu</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 </url>
 
 <url>
     <loc>https://filmiway.com/collection/best-sci-fi-movies-on-hulu</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 </url>
 
     <url>
         <loc>https://filmiway.com/collection/best-movies-on-hulu</loc>
-        <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+        <lastmod>2026-05-29T04:23:20.080Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
@@ -337,7 +337,7 @@
 
 <url>
         <loc>https://filmiway.com/collection/best-drama-movies-on-hulu</loc>
-        <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+        <lastmod>2026-05-29T04:23:20.080Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
@@ -345,7 +345,7 @@
 
 <url>
     <loc>https://filmiway.com/collection/best-family-movies-on-hulu</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 </url>
@@ -353,7 +353,7 @@
 
 <url>
     <loc>https://filmiway.com/collection/best-horror-movies-on-hbo-max</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 </url>
@@ -361,7 +361,7 @@
 
 <url>
     <loc>https://filmiway.com/collection/best-family-movies-on-hbo-max</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 </url>
@@ -369,7 +369,7 @@
 
 <url>
     <loc>https://filmiway.com/collection/best-movies-on-hbo-max</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 </url>
@@ -377,35 +377,35 @@
 
 <url>
     <loc>https://filmiway.com/collection/best-comedy-movies-on-hbo-max</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 </url>
 
 <url>
     <loc>https://filmiway.com/collection/best-action-movies-on-hbo-max</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 </url>
 
 <url>
     <loc>https://filmiway.com/collection/best-sci-fi-movies-on-hbo-max</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 </url>
 
 <url>
     <loc>https://filmiway.com/collection/best-thriller-movies-on-hbo-max</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 </url>
 
 <url>
     <loc>https://filmiway.com/collection/best-romance-movies-on-hbo-max</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 </url>
@@ -413,7 +413,7 @@
 
 <url>
     <loc>https://filmiway.com/collection/best-drama-movies-on-hbo-max</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 </url>
@@ -421,7 +421,7 @@
 
 <url>
     <loc>https://filmiway.com/collection/best-sci-fi-movies-on-paramount-plus</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 </url>
@@ -429,49 +429,49 @@
 
 <url>
     <loc>https://filmiway.com/collection/best-action-movies-on-paramount-plus</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 </url>
 
 <url>
     <loc>https://filmiway.com/collection/best-romance-movies-on-paramount-plus</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 </url>
 
 <url>
     <loc>https://filmiway.com/collection/best-horror-movies-on-paramount-plus</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 </url>
 
 <url>
     <loc>https://filmiway.com/collection/best-thriller-movies-on-paramount-plus</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 </url>
 
 <url>
     <loc>https://filmiway.com/collection/best-movies-on-paramount-plus</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 </url>
 
 <url>
     <loc>https://filmiway.com/collection/best-comedy-movies-on-paramount-plus</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 </url>
 
 <url>
     <loc>https://filmiway.com/collection/best-family-movies-on-paramount-plus</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 </url>
@@ -479,21 +479,21 @@
 
 <url>
     <loc>https://filmiway.com/collection/best-action-adventure-movies-on-peacock</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 </url>
 
 <url>
     <loc>https://filmiway.com/collection/best-sci-fi-movies-on-peacock</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 </url>
 
 <url>
     <loc>https://filmiway.com/collection/best-romance-movies-on-peacock</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 </url>
@@ -501,7 +501,7 @@
 
 <url>
     <loc>https://filmiway.com/collection/best-family-movies-on-peacock</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 </url>
@@ -509,7 +509,7 @@
 
 <url>
     <loc>https://filmiway.com/collection/best-drama-movies-on-peacock</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 </url>
@@ -517,28 +517,28 @@
 
 <url>
     <loc>https://filmiway.com/collection/best-thriller-movies-on-peacock</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 </url>
 
 <url>
     <loc>https://filmiway.com/collection/best-movies-on-peacock</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 </url>
 
 <url>
     <loc>https://filmiway.com/collection/best-neo-noir-movies</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 </url>
 
 <url>
     <loc>https://filmiway.com/collection/best-war-films</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 </url>
@@ -546,33 +546,33 @@
 
 <url>
     <loc>https://filmiway.com/collection/best-comedy-movies-on-peacock</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 </url>
 
 <url>
     <loc>https://filmiway.com/collection/best-thought-provoking-movies</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 </url>
 
 <url>
     <loc>https://filmiway.com/collection/top-10-road-trip-movies</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 </url>
 <url>
     <loc>https://filmiway.com/collection/best-erotic-thriller-movies</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 </url>
 <url>
     <loc>https://filmiway.com/collection/best-movies-about-greed</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 </url>
@@ -580,7 +580,7 @@
 
 <url>
     <loc>https://filmiway.com/collection/best-raunchy-comedy-movies</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 </url>
@@ -589,35 +589,35 @@
 
 <url>
     <loc>https://filmiway.com/collection/movies-like-the-prestige</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 </url>
 
 <url>
     <loc>https://filmiway.com/collection/best-core-drama-movies-on-paramount-plus</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 </url>
 
 <url>
         <loc>https://filmiway.com/collection/best-action-movies</loc>
-        <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+        <lastmod>2026-05-29T04:23:20.080Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
 
     <url>
         <loc>https://filmiway.com/collection/best-true-story-movies</loc>
-        <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+        <lastmod>2026-05-29T04:23:20.080Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
 
     <url>
     <loc>https://filmiway.com/collection/best-movies-of-the-decade</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 </url>
@@ -625,70 +625,70 @@
 
 <url>
     <loc>https://filmiway.com/collection/best-gangster-movies-of-all-time</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 </url>
 
 <url>
     <loc>https://filmiway.com/collection/top-10-book-adaptations</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 </url>
 
 <url>
     <loc>https://filmiway.com/collection/best-erotic-romance-movies</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 </url>
 
 <url>
     <loc>https://filmiway.com/collection/best-marriage-crisis-movies</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 </url>
 
 <url>
     <loc>https://filmiway.com/collection/best-a24-movies</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
 </url>
 
 <url>
     <loc>https://filmiway.com/movie/teenage-mutant-ninja-turtles-mutant-mayhem</loc>
-    <lastmod>2026-05-15T04:23:20.080Z</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 </url>
 
 <url>
     <loc>https://filmiway.com/collection/movies-like-fight-club</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
 </url>
 
 <url>
     <loc>https://filmiway.com/movie/r-m-n</loc>
-    <lastmod>2026-04-14T12:00:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
 </url>
 
 <url>
     <loc>https://filmiway.com/collection/best-dark-comedy-movies</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
 </url>
 
 <url>
     <loc>https://filmiway.com/collection/best-paul-thomas-anderson-movies</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
 </url>
@@ -696,7 +696,7 @@
 
 <url>
     <loc>https://filmiway.com/collection/movies-like-basic-instinct</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
 </url>
@@ -704,20 +704,20 @@
 
 <url>
     <loc>https://filmiway.com/collection/best-enemies-to-lovers-movies</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
 </url>
 
 <url>
     <loc>https://filmiway.com/collection/top-10-jennifer-lawrence-movies</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
 </url>
 <url>
     <loc>https://filmiway.com/collection/top-10-monica-bellucci-movies</loc>
-    <lastmod>2026-05-22T20:57:00+05:30</lastmod>
+    <lastmod>2026-05-29T04:23:20.080Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
 </url>
