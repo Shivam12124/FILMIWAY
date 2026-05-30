@@ -358,7 +358,6 @@ export const PEACOCK_COMEDY_MOVIE_FAQS = {
     'Along Came Polly': [
         { question: "Does Along Came Polly have violence and gore?", answer: "According to the Filmiway Parents Guide, the violence in Along Came Polly is rated as None. The film contains no actual violence." },
         { question: "Does Along Came Polly have profanity or swearing?", answer: "The profanity in Along Came Polly is rated as Moderate. Moderate language throughout including infrequent strong profanity such as a single F-word, alongside repeated uses of \"shit,\" \"goddamn,\" \"hell,\" and other mild insults." },
-        { question: "Why is Along Came Polly rated 13+?", answer: "Along Came Polly earns its 13+ rating for minor sexual content and moderate language. Specifically, the film contains: The film contains no actual violence. Moderate language throughout including infrequent strong profanity such as a single F-word, alongside repeated uses of \"shit,\" \"goddamn,\" \"hell,\" and other mild insults. The film contains mature scenes some people might find uncomfortable. They can use our timestamps to skip it." },
         { 
             question: "Did Ben Stiller really play basketball?", 
             answer: "The scene where Philip Seymour Hoffman ('Rain Dance!') plays basketball is iconic. Hoffman improvised many of his missed shots and clumsy moves, stealing every scene he was in with his commitment to physical comedy." 

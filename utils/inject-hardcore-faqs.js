@@ -61,25 +61,12 @@ files.forEach(file => {
             }
         }
 
-        const hasNudity = tsData.scenes.some(s => s.type.toLowerCase().includes("sex") || s.type.toLowerCase().includes("nudity"));
-        
-        // CONDITION: "use notsuenumberbutuse aftercoutn liekthis for brutal graphic violence..."
-        const summaryFormatted = tsData.Summary.replace(/^Aged \d+\+\s*/i, '');
-        
-        let ageAnswer = `${movie.title} earns its ${tsData.Age} rating ${summaryFormatted} Specifically, the film contains: ${violenceScene.description} ${profanityScene.description}`;
-        
-        // CONDITION: Append the mature skip warning if necessary
-        if (hasNudity) {
-            ageAnswer += " The film contains mature scenes some people might find uncomfortable. They can use our timestamps to skip it.";
-        }
-
         const violenceAnswer = `According to the Filmiway Parents Guide, the violence in ${movie.title} is rated as ${violenceScene.severity || 'Moderate'}. ${violenceScene.description}`;
         const profanityAnswer = `The profanity in ${movie.title} is rated as ${profanityScene.severity || 'Moderate'}. ${profanityScene.description}`;
 
         const faqsToAdd = [
             `        { question: "Does ${movie.title} have violence and gore?", answer: ${JSON.stringify(violenceAnswer)} }`,
-            `        { question: "Does ${movie.title} have profanity or swearing?", answer: ${JSON.stringify(profanityAnswer)} }`,
-            `        { question: "Why is ${movie.title} rated ${tsData.Age}?", answer: ${JSON.stringify(ageAnswer.trim())} }`
+            `        { question: "Does ${movie.title} have profanity or swearing?", answer: ${JSON.stringify(profanityAnswer)} }`
         ];
 
         if (faqBlockMatch) {
