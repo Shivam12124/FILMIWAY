@@ -357,6 +357,9 @@ export const PARAMOUNT_ROMANCE_MOVIE_FAQS = {
   ],
 
   'The English Patient': [
+        { question: "Does The English Patient have violence and gore?", answer: "According to the Filmiway Parents Guide, the violence in The English Patient is rated as Moderate. Moderate to strong war violence includes disturbing images of burned and disfigured bodies, explosions, shootings, and tense mine-related danger throughout. The film contains some bloody injury detail, including a mine explosion aftermath, along with several physical assaults and scenes of death that may be unsettling." },
+        { question: "Does The English Patient have profanity or swearing?", answer: "The profanity in The English Patient is rated as Moderate. Moderate language includes 4 uses of the F-word alongside occasional coarse profanity, mild vulgar references, and a few other mild obscenities." },
+        { question: "Why is The English Patient rated 16+?", answer: "The English Patient earns its 16+ rating for moderate war violence, explicit sex and  nudity, and moderate language. Specifically, the film contains: Moderate to strong war violence includes disturbing images of burned and disfigured bodies, explosions, shootings, and tense mine-related danger throughout. The film contains some bloody injury detail, including a mine explosion aftermath, along with several physical assaults and scenes of death that may be unsettling. Moderate language includes 4 uses of the F-word alongside occasional coarse profanity, mild vulgar references, and a few other mild obscenities. The film contains mature scenes some people might find uncomfortable. They can use our timestamps to skip it." },
     {
       question: "Is this a love story or a war story?",
       answer: "It is a love story destroyed by war. The war does not just kill people—it interrupts identity, loyalty, and rescue. Love here exists in a world where timing is lethal."

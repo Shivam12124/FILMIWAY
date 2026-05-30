@@ -346,6 +346,9 @@ export const HULU_SCIFI_MOVIE_FAQS = {
         { question: "What is the virus?", answer: "The ALZ-113 virus makes apes smarter but is lethal to humans, known later as the Simian Flu." }
     ],
     'The Assessment': [
+        { question: "Does The Assessment have violence and gore?", answer: "According to the Filmiway Parents Guide, the violence in The Assessment is rated as Mild. Very mild disturbing content includes an off-screen implied suicide reference with no graphic detail shown." },
+        { question: "Does The Assessment have profanity or swearing?", answer: "The profanity in The Assessment is rated as Mild. Mild language includes infrequent use of the F-word alongside occasional mild to moderate profanity." },
+        { question: "Why is The Assessment rated 16+?", answer: "The Assessment earns its 16+ rating for mild violence, explicit sex, and mild language. Specifically, the film contains: Very mild disturbing content includes an off-screen implied suicide reference with no graphic detail shown. Mild language includes infrequent use of the F-word alongside occasional mild to moderate profanity. The film contains mature scenes some people might find uncomfortable. They can use our timestamps to skip it." },
         { question: "What is the assessment for?", answer: "In a future with scarce resources, couples must pass a grueling 7-day test to earn the right to have a child." },
         { question: "Is it scary?", answer: "It is a psychological thriller that creates dread through awkward social situations and the creepy behavior of the assessor, rather than jump scares." },
         { question: "Why does Alicia Vikander act like a child?", answer: "She plays the assessor, who role-plays as a toddler/child to test the couple's patience, discipline, and emotional stability under extreme stress." }

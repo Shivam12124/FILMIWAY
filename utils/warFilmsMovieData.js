@@ -289,6 +289,11 @@ export const COMPLETE_MOVIE_DATA = {
 };
 
 export const WAR_FILMS_MOVIE_FAQS = {
+    "Schindler's List": [
+        { question: "Does Schindler's List have violence and gore?", answer: "According to the Filmiway Parents Guide, the violence in Schindler's List is rated as High. Extremely disturbing wartime violence featuring realistic executions, mass shootings, and brutal killings of innocent civilians. Frequent bloodshed, headshots, corpse piles, and emotionally harrowing Nazi atrocities are shown throughout." },
+        { question: "Does Schindler's List have profanity or swearing?", answer: "The profanity in Schindler's List is rated as Moderate. Contains occasional strong language including multiple uses of the F-word(around 6-7 time) alongside several crude insults and aggressive verbal outbursts." },
+        { question: "Why is Schindler's List rated 17+?", answer: "Schindler's List earns its 17+ rating for brutal graphic violence, nudity, and moderate profanity. Specifically, the film contains: Extremely disturbing wartime violence featuring realistic executions, mass shootings, and brutal killings of innocent civilians. Frequent bloodshed, headshots, corpse piles, and emotionally harrowing Nazi atrocities are shown throughout. Contains occasional strong language including multiple uses of the F-word(around 6-7 time) alongside several crude insults and aggressive verbal outbursts. The film contains mature scenes some people might find uncomfortable. They can use our timestamps to skip it." }
+    ],
     'Saving Private Ryan': [
         { question: "Is the D-Day scene realistic?", answer: "Yes, the 24-minute opening sequence is widely considered the most realistic depiction of combat in cinema history. Spielberg used handheld cameras and desaturated color to mimic 1940s newsreel footage, and many WWII veterans reportedly had to leave theaters because it was too intense." },
         { question: "Did the mission actually happen?", answer: "The specific mission is fictional, but it was inspired by the true story of the Niland brothers. Fritz Niland was sent home after it was believed his three brothers had been killed in action, though one was later found alive in a POW camp." },

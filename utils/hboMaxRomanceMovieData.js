@@ -366,6 +366,9 @@ export const HBO_ROMANCE_MOVIE_FAQS = {
         }
     ],
     'When Harry Met Sally...': [
+        { question: "Does When Harry Met Sally... have violence and gore?", answer: "According to the Filmiway Parents Guide, the violence in When Harry Met Sally... is rated as None. No actual violence is present in the film, with no significant violent or graphic content." },
+        { question: "Does When Harry Met Sally... have profanity or swearing?", answer: "The profanity in When Harry Met Sally... is rated as Moderate. Moderate language includes occasional use of the F-word (including one sexual usage) alongside other coarse profanity, mild obscenities, and a few crude terms." },
+        { question: "Why is When Harry Met Sally... rated 14+?", answer: "When Harry Met Sally... earns its 14+ rating for minor sexual content and moderate language. Specifically, the film contains: No actual violence is present in the film, with no significant violent or graphic content. Moderate language includes occasional use of the F-word (including one sexual usage) alongside other coarse profanity, mild obscenities, and a few crude terms. The film contains mature scenes some people might find uncomfortable. They can use our timestamps to skip it." },
         { 
             question: "Was the deli scene real?", 
             answer: "The famous 'I'll have what she's having' scene was filmed at Katz's Delicatessen in NYC, which still has a sign above the table today. The line itself was delivered by director Rob Reiner's mother, Estelle Reiner, after Meg Ryan faked an orgasm in the middle of the crowded restaurant." 
@@ -384,6 +387,9 @@ export const HBO_ROMANCE_MOVIE_FAQS = {
         }
     ],
     'Call Me by Your Name': [
+        { question: "Does Call Me by Your Name have violence and gore?", answer: "According to the Filmiway Parents Guide, the violence in Call Me by Your Name is rated as None. The film contains no actual violence." },
+        { question: "Does Call Me by Your Name have profanity or swearing?", answer: "The profanity in Call Me by Your Name is rated as Mild. Mild-to-moderate language including infrequent use of the F-word, mild insults, and occasional crude references." },
+        { question: "Why is Call Me by Your Name rated 16+?", answer: "Call Me by Your Name earns its 16+ rating for explicit sex and nudity, and mild language. Specifically, the film contains: The film contains no actual violence. Mild-to-moderate language including infrequent use of the F-word, mild insults, and occasional crude references. The film contains mature scenes some people might find uncomfortable. They can use our timestamps to skip it." },
         { 
             question: "What happens in the peach scene?", 
             answer: "It is a moment of intense, private exploration for Elio involving a peach. When Oliver finds him, Elio expects shame, but Oliver embraces him. It becomes a scene of profound vulnerability and acceptance, signifying that Oliver loves every part of Elio, even the parts Elio is ashamed of." 

@@ -381,6 +381,9 @@ export const PARAMOUNT_ACTION_MOVIE_FAQS = {
         }
     ],
     'Baby Driver': [
+        { question: "Does Baby Driver have violence and gore?", answer: "According to the Filmiway Parents Guide, the violence in Baby Driver is rated as Moderate. Moderate action violence centered around intense car chases, crashes, shootouts, and occasional bloody injuries including headshots, stabbings, and explosions, though gore is limited and brief." },
+        { question: "Does Baby Driver have profanity or swearing?", answer: "The profanity in Baby Driver is rated as High. Strong language throughout including frequent F-words, repeated crude profanity, sexual references, and occasional insulting language." },
+        { question: "Why is Baby Driver rated 15+?", answer: "Baby Driver earns its 15+ rating for heavy action violence and strong language throughout. Specifically, the film contains: Moderate action violence centered around intense car chases, crashes, shootouts, and occasional bloody injuries including headshots, stabbings, and explosions, though gore is limited and brief. Strong language throughout including frequent F-words, repeated crude profanity, sexual references, and occasional insulting language." },
         { 
             question: "Do the gunshots actually match the music?", 
             answer: "Yes, with incredible precision. Every gunshot, windshield wiper swipe, and footstep in the movie is synchronized to the soundtrack's beat. Director Edgar Wright printed the lyrics of the songs directly onto the script pages so the actors knew exactly when to fire their weapons or move to ensure the action remained perfectly in tempo." 
@@ -417,6 +420,9 @@ export const PARAMOUNT_ACTION_MOVIE_FAQS = {
         }
     ],
     'Gladiator': [
+        { question: "Does Gladiator have violence and gore?", answer: "According to the Filmiway Parents Guide, the violence in Gladiator is rated as High. Strong graphic battle violence throughout including beheadings, stabbings, impalements, bloody gladiator combat, mutilated corpses, severe wounds, and disturbing injury detail with frequent blood spray." },
+        { question: "Does Gladiator have profanity or swearing?", answer: "The profanity in Gladiator is rated as Mild. Mild coarse language including infrequent insults, crude terms, and derogatory language." },
+        { question: "Why is Gladiator rated 15+?", answer: "Gladiator earns its 15+ rating for brutal graphic violence, brief nudity, and mild language. Specifically, the film contains: Strong graphic battle violence throughout including beheadings, stabbings, impalements, bloody gladiator combat, mutilated corpses, severe wounds, and disturbing injury detail with frequent blood spray. Mild coarse language including infrequent insults, crude terms, and derogatory language. The film contains mature scenes some people might find uncomfortable. They can use our timestamps to skip it." },
         { 
             question: "Was the tiger real?", 
             answer: "Yes, in the arena fight scene, a real tiger was used. A veterinarian was present with a tranquilizer gun, and Russell Crowe was kept a safe distance away via careful camera angles. However, the tiger was very much alive and on set, adding a layer of genuine fear and tension to the performance." 

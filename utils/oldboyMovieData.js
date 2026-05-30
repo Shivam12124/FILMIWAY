@@ -335,6 +335,9 @@ export const RATING_OPTIONS = [
 
 export const OLDBOY_MOVIE_FAQS = {
   'I Saw the Devil': [
+        { question: "Does I Saw the Devil have violence and gore?", answer: "According to the Filmiway Parents Guide, the violence in I Saw the Devil is rated as High. Extreme graphic violence featuring brutal beatings, repeated stabbings, dismemberment, decapitations, mutilation, cannibalism, and prolonged bloody injury detail throughout." },
+        { question: "Does I Saw the Devil have profanity or swearing?", answer: "The profanity in I Saw the Devil is rated as High. Contains frequent strong language including several uses of the F-word alongside repeated coarse profanity." },
+        { question: "Why is I Saw the Devil rated 18+?", answer: "I Saw the Devil earns its 18+ rating for brutal graphic violence, explicit sex and brief nudity, and strong language throughout. Specifically, the film contains: Extreme graphic violence featuring brutal beatings, repeated stabbings, dismemberment, decapitations, mutilation, cannibalism, and prolonged bloody injury detail throughout. Contains frequent strong language including several uses of the F-word alongside repeated coarse profanity. The film contains mature scenes some people might find uncomfortable. They can use our timestamps to skip it." },
     { 
       question: "Is I Saw the Devil too violent for first-time revenge viewers?", 
       answer: "EXTREME violence rating (96/100). Features graphic torture sequences, serial killer dismemberment, and unrelenting psychological brutality that shocked even Korean censors. The endless capture-torture-release cycle pushes boundaries far beyond typical revenge films. Only recommended for viewers who loved Oldboy's hallway fight intensity and can handle moral descent into monstrosity." 
@@ -411,6 +414,9 @@ export const OLDBOY_MOVIE_FAQS = {
   ],
 
   'The Chaser': [
+        { question: "Does The Chaser have violence and gore?", answer: "According to the Filmiway Parents Guide, the violence in The Chaser is rated as High. Strong violence includes bloody blunt-force killings, disturbing crime-scene imagery, corpse depictions, severed body parts, and several physical assaults, with some off-screen animal death." },
+        { question: "Does The Chaser have profanity or swearing?", answer: "The profanity in The Chaser is rated as Moderate. Moderate language includes occasional use of the F-word alongside other coarse profanity, vulgar insults, and mild expletives." },
+        { question: "Why is The Chaser rated 18+?", answer: "The Chaser earns its 18+ rating for brutal graphic violence, minor sexual content, and moderate language. Specifically, the film contains: Strong violence includes bloody blunt-force killings, disturbing crime-scene imagery, corpse depictions, severed body parts, and several physical assaults, with some off-screen animal death. Moderate language includes occasional use of the F-word alongside other coarse profanity, vulgar insults, and mild expletives." },
     { 
       question: "How realistic is its portrayal compared to fictional thrillers?", 
       answer: "Documentary-style authenticity based on real Korean serial killer case. Frustrating police bureaucracy and jurisdictional conflicts feel painfully genuine. Procedural realism rejects Hollywood CSI fantasy for genuine investigative dead-ends and lucky breaks. Mundane evil presentation shocks more than supernatural horror elements." 
