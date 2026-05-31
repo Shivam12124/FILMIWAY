@@ -511,14 +511,16 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
             
             schemaDesc = `Why is ${movie.Title} rated ${mpaaRating}? Use our parents guide to skip mature content. Skip scenes at ${firstTwo}.`;
         } else {
-            schemaDesc = `${movie.Title
+            schemaDesc = `${movie.Title} Parents Guide. Filmiway editors have manually verified zero explicit scenes in the full ${currentRuntime} runtime.`;
+        }
     } else {
         // Fallback to standard Filmiway format for all other movies
         if (sceneCount > 0) {
             schemaDesc = `${movie.Title} Parents Guide with exact explicit timestamps. ${sceneCount} scenes manually verified frame by frame by Filmiway editors for the ${currentRuntime} runtime.`;
         } else {
-            schemaDesc = `${movie.Title
-    
+            schemaDesc = `${movie.Title} Parents Guide. Filmiway editors have manually verified zero explicit scenes in the full ${currentRuntime} runtime.`;
+        }
+    }
 
     const movieSchema = {
         '@context': 'https://schema.org',

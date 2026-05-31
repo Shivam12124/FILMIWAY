@@ -9,8 +9,8 @@ files.forEach(file => {
     const filePath = path.join(utilsDir, file);
     let content = fs.readFileSync(filePath, 'utf8');
 
-    // Matches the schema generation block (works on both the original AND the broken injected version)
-    const blockRegex = /const sceneCount = heavyScenes\.length;[\s\S]*?let schemaDesc = '';\s*if\s*\(sceneCount\s*>\s*0\)\s*\{[\s\S]*?\}\s*else\s*\{[\s\S]*?\}/;
+    // 🔥 This regex perfectly captures EVERYTHING from the start of the block up to the movieSchema definition, wiping out any broken code or dangling brackets!
+    const blockRegex = /const sceneCount = heavyScenes\.length;[\s\S]*?(?=const movieSchema = \{)/;
 
     const newBlock = `const sceneCount = heavyScenes.length;
     
@@ -52,14 +52,16 @@ files.forEach(file => {
         } else {
             schemaDesc = \`\${movie.Title} Parents Guide. Filmiway editors have manually verified zero explicit scenes in the full \${currentRuntime} runtime.\`;
         }
-    }`;
+    }
+
+    `;
 
     if (content.match(blockRegex)) {
         content = content.replace(blockRegex, newBlock);
         fs.writeFileSync(filePath, content, 'utf8');
         updatedCount++;
-        console.log(`✅ Fixed timestamps & length in ${file}`);
+        console.log(`✅ Completely repaired syntax in ${file}`);
     }
 });
 
-console.log(`\n🎉 Complete! Updated ${updatedCount} files to use START and END timestamps.`);
+console.log(`\n🎉 Ultimate Fix Complete! Fully repaired the syntax errors in ${updatedCount} files.`);
