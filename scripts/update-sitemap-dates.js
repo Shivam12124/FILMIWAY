@@ -6,7 +6,7 @@ const sitemapsToUpdate = [
     '../public/sitemap.xml'
 ];
 
-const newDate = '2026-05-29T04:23:20.080Z';
+const newDate = '2026-06-01T08:00:00.000Z';
 
 sitemapsToUpdate.forEach(file => {
     const sitemapPath = path.join(__dirname, file);
