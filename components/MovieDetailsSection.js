@@ -92,7 +92,7 @@ const PeacockDramaSEOFAQSection = dynamic(() => import('./PeacockDramaSEOFAQSect
 const PeacockThrillerSEOFAQSection = dynamic(() => import('./PeacockThrillerSEOFAQSection'));
 const PeacockBestSEOFAQSection = dynamic(() => import('./PeacockBestSEOFAQSection'));
 const PeacockComedySEOFAQSection = dynamic(() => import('./PeacockComedySEOFAQSection'));
-const FanFavoritesSection = dynamic(() => import('./FanFavoritesSection'), { ssr: false });
+const FanFavoritesSection = dynamic(() => import('./FanFavoritesSection'));
 
 const MovieDetailsSection = React.memo(({
   movie,

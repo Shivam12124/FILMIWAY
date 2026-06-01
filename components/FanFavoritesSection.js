@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Flame } from 'lucide-react';
@@ -55,19 +55,18 @@ const BATCHES = [
 const BATCH_WEIGHTS = [0, 0, 1, 2, 2, 3, 3, 4, 4, 5, 6, 7];
 
 const FanFavoritesSection = ({ currentMovieSlug }) => {
-    const [batch, setBatch] = useState([]);
-
-    useEffect(() => {
-        const randomIndex = Math.floor(Math.random() * BATCH_WEIGHTS.length);
-        const selectedBatchIdx = BATCH_WEIGHTS[randomIndex];
-        let selectedBatch = BATCHES[selectedBatchIdx];
-        
-        // Prevent the current movie from showing up in its own "You May Also Like" section
-        if (currentMovieSlug && selectedBatch.includes(currentMovieSlug)) {
-            selectedBatch = selectedBatch.map(slug => slug === currentMovieSlug ? 'se7en' : slug);
-        }
-        setBatch(selectedBatch);
-    }, [currentMovieSlug]);
+    // 🔥 DETERMINISTIC SELECTION (SEO SAFE): 
+    // Uses the movie's slug to pick a permanent batch so Googlebot always sees the exact same links!
+    const hash = currentMovieSlug ? currentMovieSlug.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0) : 0;
+    const weightIndex = hash % BATCH_WEIGHTS.length;
+    const selectedBatchIdx = BATCH_WEIGHTS[weightIndex];
+    
+    let batch = BATCHES[selectedBatchIdx] || BATCHES[0];
+    
+    // Prevent the current movie from showing up in its own "You May Also Like" section
+    if (currentMovieSlug && batch.includes(currentMovieSlug)) {
+        batch = batch.map(slug => slug === currentMovieSlug ? 'se7en' : slug);
+    }
 
     if (batch.length === 0) return null;
 
