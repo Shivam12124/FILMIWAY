@@ -988,6 +988,11 @@ const MovieDetailsSection = React.memo(({
         </motion.div>
       </div>
 
+      {/* 🔥 THE GOOGLE RECOVERY FIX: Move the Unique Parents Guide ABOVE the TMDB data! */}
+      <div id="parents-guide" className="scroll-mt-28 w-full max-w-4xl mx-auto" style={{ contentVisibility: 'auto', containIntrinsicSize: '800px' }}>
+        <SensitiveContentTimelineSection movie={{...movie, Runtime: dynamicMovieData.runtime}} sensitiveScenes={sensitiveScenes} />
+      </div>
+
       <motion.div
         className="w-full bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8"
         initial={{ opacity: 1, y: 0 }}
@@ -1037,10 +1042,6 @@ const MovieDetailsSection = React.memo(({
           </div>
         </div>
       </motion.div>
-
-      <div id="parents-guide" className="scroll-mt-28 w-full max-w-4xl mx-auto" style={{ contentVisibility: 'auto', containIntrinsicSize: '800px' }}>
-        <SensitiveContentTimelineSection movie={{...movie, Runtime: dynamicMovieData.runtime}} sensitiveScenes={sensitiveScenes} />
-      </div>
 
       <div className="w-full bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8 overflow-hidden clean-injected-component" style={{ contentVisibility: 'auto', containIntrinsicSize: '400px' }}>
         <div className="flex items-center gap-3 mb-6 border-b border-white/5 pb-4 custom-new-header">

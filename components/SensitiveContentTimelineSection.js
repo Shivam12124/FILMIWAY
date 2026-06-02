@@ -14,6 +14,40 @@ const COLORS = {
     safeBorder: 'rgba(52, 211, 153, 0.2)',
 };
 
+// 🔥 HELPER FUNCTIONS FOR VISUAL TIMELINE MAP
+const parseRuntimeToSeconds = (runtimeStr) => {
+    if (!runtimeStr) return 7200; 
+    let totalMins = 0;
+    const hourMatch = runtimeStr.match(/(\d+)\s*(?:hour|h)/i);
+    const minMatch = runtimeStr.match(/(\d+)\s*(?:min|m)/i);
+
+    if (hourMatch || minMatch) {
+        if (hourMatch) totalMins += parseInt(hourMatch[1], 10) * 60;
+        if (minMatch) totalMins += parseInt(minMatch[1], 10);
+    } else {
+        const numMatch = runtimeStr.match(/(\d+)/);
+        if (numMatch) totalMins += parseInt(numMatch[1], 10);
+    }
+    return totalMins > 0 ? totalMins * 60 : 7200;
+};
+
+const parseTimestampToSeconds = (t) => {
+    if (!t) return 0;
+    const parts = t.split(':').map(Number);
+    if (parts.length === 3) return (parts[0] * 3600) + (parts[1] * 60) + (parts[2] || 0);
+    if (parts.length === 2) return (parts[0] * 60) + (parts[1] || 0);
+    return 0;
+};
+
+const getMarkerColorHex = (severity) => {
+    const s = (severity || '').toLowerCase();
+    if (s === 'extreme' || s === 'severe') return '#ef4444'; // Red-500
+    if (s === 'high') return '#f97316'; // Orange-500
+    if (s === 'moderate') return '#eab308'; // Yellow-500
+    if (s === 'mild') return '#10b981'; // Emerald-500
+    return '#6b7280'; // Gray-500
+};
+
 const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) => {
     // --- MOBILE RESPONSIVE TOOLTIP STATE ---
     const [showInfo, setShowInfo] = useState(false);
@@ -166,6 +200,22 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
     const timestampData = tmdbIdKey ? masterTimestamps[tmdbIdKey] : null;
     const recommendedAge = timestampData?.Age || movie?.Age;
     const ageSummary = timestampData?.Summary || movie?.Summary;
+
+    // 🔥 VISUAL TIMELINE MARKERS GENERATION
+    const timelineMarkers = useMemo(() => {
+        const runtimeSeconds = parseRuntimeToSeconds(currentRuntime);
+        return sensitiveData.scenes.map((scene, idx) => {
+            const startSec = parseTimestampToSeconds(scene.start);
+            let percentage = (startSec / runtimeSeconds) * 100;
+            percentage = Math.max(0.5, Math.min(percentage, 99.5)); // Keep inside bounds securely
+            
+            return {
+                ...scene,
+                percentage,
+                id: idx
+            };
+        }).filter(m => m.start && m.start !== 'N/A' && m.start !== ''); 
+    }, [sensitiveData.scenes, currentRuntime]);
 
     const getSeverityDotColor = (severity) => {
         if (!severity) return 'bg-gray-500 shadow-gray-500/50';
@@ -359,6 +409,66 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                     </div>
                 </div>
             </div>
+
+                {/* 🔥 THE "SHOWER IDEA" VISUAL TIMELINE MAP */}
+                {timelineMarkers.length > 0 && (
+                    <motion.div 
+                        className="w-full mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-white/5"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.3, duration: 0.5 }}
+                    >
+                        <h3 className="text-[11px] sm:text-xs font-bold text-gray-400 mb-5 uppercase tracking-[0.2em] flex items-center gap-2">
+                            <Film size={14} className="text-yellow-500" /> Parents Guide Tracker
+                        </h3>
+                        
+                        <div className="relative w-full h-2.5 sm:h-3 bg-[#030303] rounded-full border border-white/10 shadow-inner group/track mt-10">
+                            <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-gray-800/40 to-transparent w-full rounded-full pointer-events-none" />
+                            
+                            {timelineMarkers.map((marker) => {
+                                // 🔥 Improved Edge Detection: Widened threshold to 25% so it NEVER gets cut off on narrow mobile screens
+                                const isStartEdge = marker.percentage < 25;
+                                const isEndEdge = marker.percentage > 75;
+                                const tooltipAlign = isStartEdge ? "left-0" : isEndEdge ? "right-0" : "left-1/2 -translate-x-1/2";
+                                const pointerAlign = isStartEdge ? "left-2" : isEndEdge ? "right-2" : "left-1/2 -translate-x-1/2";
+
+                                return (
+                                    <div
+                                        key={`pin-${marker.id}`}
+                                        aria-label={`${marker.type} starting at ${marker.start}`}
+                                        className="group/pin absolute top-1/2 -translate-y-1/2 w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full border-2 border-[#0a0a0c] shadow-[0_0_8px_rgba(0,0,0,0.8)] cursor-pointer hover:scale-[1.5] focus:scale-[1.5] transition-all duration-300 z-10 hover:z-50 focus:z-50 outline-none"
+                                        style={{ 
+                                            left: `${marker.percentage}%`,
+                                            backgroundColor: getMarkerColorHex(marker.severity)
+                                        }}
+                                        tabIndex="0"
+                                    >
+                                        {/* Properly scaled micro-tooltip - Readable on mobile, sleek on PC */}
+                                        <div className={`pointer-events-none absolute bottom-full mb-1.5 sm:mb-2 w-max max-w-[120px] sm:max-w-[140px] opacity-0 group-hover/pin:opacity-100 group-focus/pin:opacity-100 transition-all duration-200 z-[100] transform group-hover/pin:-translate-y-1 group-focus/pin:-translate-y-1 origin-bottom ${tooltipAlign}`}>
+                                            <div className="bg-[#111113] border border-gray-600/50 rounded-md px-2 py-1.5 shadow-xl text-left relative">
+                                                <div className={`absolute -bottom-1 w-2 h-2 bg-[#111113] border-b border-r border-gray-600/50 transform rotate-45 ${pointerAlign}`}></div>
+                                                <span className="text-gray-400 font-mono block mb-1 flex items-center gap-1 text-[10px] sm:text-[11px]">
+                                                    <Clock size={10} className="text-gray-500 shrink-0" />
+                                                    <span className="truncate">{marker.start}{marker.end ? `-${marker.end}` : ''}</span>
+                                                </span>
+                                                <span className="text-gray-200 font-medium block leading-tight break-words whitespace-normal text-[11px] sm:text-[12px]">
+                                                    {marker.type}
+                                                </span>
+                                                <span className="text-[9px] sm:text-[10px] uppercase tracking-widest font-bold mt-1 block" style={{ color: getMarkerColorHex(marker.severity) }}>
+                                                    {marker.severity}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                        <div className="flex justify-between text-[10px] text-gray-500 mt-4 font-mono font-medium tracking-widest uppercase">
+                            <span>00:00</span>
+                            <span suppressHydrationWarning>{currentRuntime}</span>
+                        </div>
+                    </motion.div>
+                )}
 
             {/* ⚡ SEO CHEAT CODE: HIDDEN HTML TABLE FOR GOOGLE FEATURED SNIPPETS & LLMs */}
             <div className="sr-only" aria-hidden="false">

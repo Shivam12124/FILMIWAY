@@ -158,38 +158,6 @@ const UniversalBanner = ({ movie }) => {
             </div>
           </div>
         </div>
-
-        {/* ⚡ MOBILE "JUMP TO PARENTS GUIDE" BUTTON */}
-        <motion.button 
-            onClick={() => {
-                const element = document.getElementById('parents-guide');
-                if (element) element.scrollIntoView({ behavior: 'smooth' });
-            }}
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="sm:hidden w-full flex flex-col items-center justify-center mt-10 pb-6 select-none outline-none focus:outline-none focus:ring-0 relative z-30"
-            style={{ WebkitTapHighlightColor: 'transparent' }}
-        >
-            <motion.span 
-                animate={{ opacity: [0.6, 1, 0.6] }}
-                transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-                className="text-[11px] tracking-[0.3em] uppercase font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-500 via-gray-100 to-gray-500 mb-2.5"
-            >
-                Jump To Parents Guide
-            </motion.span>
-            <div className="flex flex-col items-center -space-y-4">
-                <motion.div animate={{ opacity: [0.1, 1, 0.1], y: [0, 4, 0] }} transition={{ repeat: Infinity, duration: 1.5, delay: 0, ease: "easeInOut" }}>
-                    <ChevronDown className="w-6 h-6 text-gray-100 stroke-[2.5]" />
-                </motion.div>
-                <motion.div animate={{ opacity: [0.1, 1, 0.1], y: [0, 4, 0] }} transition={{ repeat: Infinity, duration: 1.5, delay: 0.2, ease: "easeInOut" }}>
-                    <ChevronDown className="w-6 h-6 text-gray-400 stroke-[2]" />
-                </motion.div>
-                <motion.div animate={{ opacity: [0.1, 1, 0.1], y: [0, 4, 0] }} transition={{ repeat: Infinity, duration: 1.5, delay: 0.4, ease: "easeInOut" }}>
-                    <ChevronDown className="w-6 h-6 text-gray-600 stroke-[1.5]" />
-                </motion.div>
-            </div>
-        </motion.button>
       </div>
     );
 };
