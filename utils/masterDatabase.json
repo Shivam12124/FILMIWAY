@@ -4730,6 +4730,17 @@
     "sourceFile": "paramountActionMovieData.js"
   },
   {
+    "tmdbId": 340666,
+    "imdbID": "tt4550098",
+    "Title": "Nocturnal Animals",
+    "year": 2016,
+    "genre": "Thriller, Drama",
+    "runtime": 116,
+    "rank": "BONUS",
+    "slug": "nocturnal-animals",
+    "sourceFile": "psychologicalThrillerMovieData.js"
+  },
+  {
     "tmdbId": 341174,
     "imdbID": "tt4465564",
     "Title": "Fifty Shades Darker",

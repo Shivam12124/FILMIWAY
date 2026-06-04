@@ -344,6 +344,15 @@ export const COMPLETE_MOVIE_DATA = {
 
 // 5. INCEPTION COLLECTION FAQs (4 PER FILM)
 export const INCEPTION_COLLECTION_FAQS = {
+    'Inception': [
+        { question: "Does Inception have violence and gore?", answer: "According to the Filmiway Parents Guide, the violence in Inception is rated as Moderate. Moderate action violence including shootings, explosions, stabbings, fatal accidents, hand-to-hand combat, and scenes of death and peril." },
+        { question: "Does Inception have profanity or swearing?", answer: "The profanity in Inception is rated as Mild. Mild language including occasional coarse terms, religious exclamations, and infrequent profanity." },
+        { question: "Why is Inception rated PG-13?", answer: "Inception earns its PG-13 rating due to moderate action violence, no sex or nudity, and mild language. Specifically, the film contains Mild language including occasional coarse terms, religious exclamations, and infrequent profanity. Moderate action violence including shootings, explosions, stabbings, fatal accidents, hand-to-hand combat, and scenes of death and peril. Adults can use our timestamps to skip the explicit content." },
+        { question: "Did the top fall at the end?", answer: "Nolan cut to black to make a point: Cobb walked away. He chose to be with his kids rather than stare at the top. The reality doesn't matter to him anymore; his happiness does." },
+        { question: "What is a Kick?", answer: "A physical sensation (like falling or hitting water) used to wake a dreamer up. In layered dreams, kicks must be synchronized across levels to pull the team out simultaneously." },
+        { question: "Why is Mal the villain?", answer: "She isn't the real Mal; she is a 'shade'—a projection of Cobb's guilt. He blames himself for her suicide, so his subconscious manifests her to sabotage his attempts at moving on." },
+        { question: "What is the Totem rule?", answer: "A totem must have a unique weight or property known only to the owner (like a loaded die). If someone else touches it, the weight can be copied, ruining its ability to verify reality." }
+    ],
     'Primer': [
         { question: "Is the timeline in the movie Primer actually solvable?", answer: "Yes, but it is notoriously difficult to map. Fans have spent years creating complex flowcharts to track the 9+ overlapping timelines created by the recursive use of 'The Box.' The film is unique because it refuses to simplify its math, forcing the audience to experience the same disorientation as the characters." },
         { question: "What happens to the 'original' versions of the characters in Primer?", answer: "The film implies a dark reality: to take over a timeline, the time-traveling version must neutralize their double. There are scenes suggesting that the future versions of Aaron and Abe have drugged or physically locked away their original-timeline selves in attics to steal their lives." },

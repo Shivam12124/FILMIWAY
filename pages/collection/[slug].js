@@ -3710,6 +3710,8 @@ const getStaticMetaContent = () => {
     const currentMovie = movies[currentMovieIndex];
     const currentRank = currentMovie?.rank || (movies.length - currentMovieIndex);
 
+    const hasBonusSlides = ['best-raunchy-comedy-movies', 'best-psychological-thriller-movies', 'best-neo-noir-movies', 'best-revenge-movies'].includes(collection.slug);
+
     // SMART NAVIGATION LOGIC
     const isFirstMovie = currentMovieIndex === 0;
     const isLastMovie = currentMovieIndex === movies.length - 1;
@@ -4564,13 +4566,13 @@ return (
                                 <div className="w-16 sm:w-24 h-2 bg-gray-700/50 rounded-full overflow-hidden">
                                     <motion.div
                                         className="h-full bg-gradient-to-r from-yellow-400 to-amber-400 rounded-full"
-                                        style={{ width: `${Math.min(100, ((currentMovieIndex + 1) / (collection.slug === 'best-raunchy-comedy-movies' ? 10 : movies.length)) * 100)}%` }}
+                                        style={{ width: `${Math.min(100, ((currentMovieIndex + 1) / (hasBonusSlides ? 10 : movies.length)) * 100)}%` }}
                                         transition={{ duration: 0.5, ease: "easeOut" }}
                                     />
                                 </div>
                                 <span className="text-gray-400 font-light text-sm sm:text-base">
                                     <span className="hidden sm:inline">{metaContent.progressText}</span>
-                                    <span className="sm:hidden">of {collection.slug === 'best-raunchy-comedy-movies' ? 10 : movies.length}</span>
+                                    <span className="sm:hidden">of {hasBonusSlides ? 10 : movies.length}</span>
                                 </span>
                             </div>
                         </motion.div>
@@ -4771,16 +4773,19 @@ export async function getStaticProps({ params }) {
         : (movieDatabase ? Object.values(movieDatabase) : []);
 
     // ✅ FIND MOVIES - search by imdbID
- // ... inside getStaticProps ...
+    const masterDatabase = require('../../utils/masterDatabase.json');
+    const tmdbCache = require('../../data/tmdbCache.json');
+
     let movies = collection.movies
         .map(imdbId => {
-            const masterDatabase = require('../../utils/masterDatabase.json');
-            const tmdbCache = require('../../data/tmdbCache.json');
             const movie = movieArray.find(m => m.imdbID === imdbId);
             if (!movie) return null;
 
             const masterMovie = masterDatabase.find(m => m.imdbID === movie.imdbID);
             const cachedMovie = tmdbCache[movie.imdbID] || {};
+            const finalPoster = cachedMovie.poster_path 
+                ? `https://image.tmdb.org/t/p/w780${cachedMovie.poster_path}` 
+                : (movie.Poster || movie.poster || '');
 
             return {
                 imdbID: movie.imdbID || '',
@@ -4790,12 +4795,10 @@ export async function getStaticProps({ params }) {
                 Year: movie.Year || movie.year || '2024',
                 Genre: movie.Genre || movie.genre || 'Thriller',
                 Runtime: movie.Runtime || movie.runtime || 120,
-                
                 poster_path: cachedMovie.poster_path || movie.poster_path || null,
-                Poster: cachedMovie.poster_path 
-                    ? `https://image.tmdb.org/t/p/w780${cachedMovie.poster_path}` 
-                    : (movie.Poster || movie.poster || ''),
-
+                Poster: finalPoster,
+                posterUrl: finalPoster,
+                fallbackPoster: finalPoster,
                 Plot: movie.Plot || movie.plot || movie.synopsis || '',
                 rating: movie.rating || 0,
                 complexityLevel: movie.complexityLevel || null,
@@ -4808,9 +4811,44 @@ export async function getStaticProps({ params }) {
         .filter(Boolean);
 
     // ⚡ CUSTOM LOGIC FOR BONUS SLIDES
-    if (collection.slug === 'best-raunchy-comedy-movies') {
-        const standardMovies = movies.slice(0, 10);
-        const bonusMovies = movies.slice(10);
+    // Added support for Psychological Thrillers, Neo-Noir, and Revenge
+    if (collection.slug === 'best-raunchy-comedy-movies' || collection.slug === 'best-psychological-thriller-movies' || collection.slug === 'best-neo-noir-movies' || collection.slug === 'best-revenge-movies') {
+        const standardMovies = movies.slice(0, 10).reverse();
+        let bonusMovies = movies.slice(10);
+        
+        // ✅ FIX: If the user forgot to add the BONUS movie to data/collections.js, automatically fetch it from the database!
+        if (bonusMovies.length === 0) {
+            const bonusFromDB = movieArray.filter(m => m.rank === "BONUS");
+            bonusMovies = bonusFromDB.map(movie => {
+                const masterMovie = masterDatabase.find(m => m.imdbID === movie.imdbID);
+                const cachedMovie = tmdbCache[movie.imdbID] || {};
+                const finalPoster = cachedMovie.poster_path 
+                    ? `https://image.tmdb.org/t/p/w780${cachedMovie.poster_path}` 
+                    : (movie.Poster || movie.poster || '');
+
+                return {
+                    imdbID: movie.imdbID || '',
+                    tmdbId: movie.tmdbId || 0,
+                    Title: movie.Title || movie.title || 'Unknown',
+                    slug: masterMovie?.slug || movie.imdbID,
+                    Year: movie.Year || movie.year || '2024',
+                    Genre: movie.Genre || movie.genre || 'Thriller',
+                    Runtime: movie.Runtime || movie.runtime || 120,
+                    poster_path: cachedMovie.poster_path || movie.poster_path || null,
+                    Poster: finalPoster,
+                    posterUrl: finalPoster,
+                    fallbackPoster: finalPoster,
+                    Plot: movie.Plot || movie.plot || movie.synopsis || '',
+                    rating: movie.rating || 0,
+                    complexityLevel: movie.complexityLevel || null,
+                    dominantColor: movie.dominantColor || null,
+                    quote: movie.quote || null,
+                    synopsis: movie.synopsis || null,
+                    rank: movie.rank || null
+                };
+            });
+        }
+
         movies = [...standardMovies, { isBonusSlide: true, bonusMovies }];
     } else {
         movies.reverse();

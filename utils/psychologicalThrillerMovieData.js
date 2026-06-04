@@ -18,7 +18,8 @@ export const COMPLETE_MOVIE_DATABASE = [
     { tmdbId: 4553, imdbID: 'tt0361862', Title: 'The Machinist', year: 2004, genre: 'Thriller', runtime: 101, rank: 7 },
     { tmdbId: 670, imdbID: 'tt0364569', Title: 'Oldboy', year: 2003, genre: 'Action', runtime: 120, rank: 8 },
     { tmdbId: 103, imdbID: 'tt0075314', Title: 'Taxi Driver', year: 1976, genre: 'Crime', runtime: 114, rank: 9 },
-    { tmdbId: 694, imdbID: 'tt0081505', Title: 'The Shining', year: 1980, genre: 'Horror', runtime: 146, rank: 10 }
+    { tmdbId: 694, imdbID: 'tt0081505', Title: 'The Shining', year: 1980, genre: 'Horror', runtime: 146, rank: 10 },
+    { tmdbId: 340666, imdbID: 'tt4550098', Title: 'Nocturnal Animals', year: 2016, genre: 'Thriller, Drama', runtime: 116, rank: 'BONUS' }
 ];
 
 // Helper to ensure default values with the new KILLER metric
@@ -83,7 +84,19 @@ export const SENSITIVE_TIMELINES = {
     694: { scenes: [
         { start: '1:10:40', end: '1:11:00', type: 'Nudity', severity: 'Mild' },
         { start: '1:13:10', end: '1:16:00', type: 'Nudity', severity: 'High' }
-    ]}
+    ]},
+    340666: { 
+        scenes: [
+            { start: "1:10", end: "4:21", type: "Nudity (Women)", severity: "High" },
+            { start: "39:12", end: "39:25", type: "Partial Nudity (Man)", severity: "Mild" },
+            { start: "43:23", end: "44:00", type: "Partial Nudity (Woman)", severity: "Moderate" },
+            { start: "44:23", end: "45:25", type: "Partial Nudity (Man & Woman)", severity: "Moderate" },
+            { start: "59:03", end: "59:10", type: "Partial Nudity (Woman)", severity: "Moderate" },
+            { start: "1:11:01", end: "1:13:10", type: "Nudity (Man)", severity: "High" },
+            { start: "", end: "", type: "Violence & Gore", severity: "High", description: "Disturbing violence including shootings, bloody injuries, suicide, implied sexual violence, and references to murder, abuse, and child harm." },
+            { start: "", end: "", type: "Profanity", severity: "High", description: "Strong language including 50+ uses of the F-word, crude references, obscene gestures, insults, and frequent coarse profanity throughout." }
+        ]
+    }
 };
 
 export const FALLBACK_POSTERS = {
@@ -96,7 +109,8 @@ export const FALLBACK_POSTERS = {
     4553: "https://image.tmdb.org/t/p/w500/wM2oJ5s4E5c0t9c2c2f2f2f2.jpg",
     670: "https://image.tmdb.org/t/p/w500/pWDtjs568ZfOTMbURQBYuT4Qxka.jpg",
     103: "https://image.tmdb.org/t/p/w500/ekstpHby5fsBliVqgJ6kL.jpg",
-    694: "https://image.tmdb.org/t/p/w500/9w0Vkq1e5c3bWp6b1c1c1.jpg"
+    694: "https://image.tmdb.org/t/p/w500/9w0Vkq1e5c3bWp6b1c1c1.jpg",
+    340666: "https://image.tmdb.org/t/p/w500/tdnziT5NfC1aQz56fP92jTpe6uD.jpg"
 };
 
 export const COMPLETE_MOVIE_DATA = {
@@ -211,6 +225,24 @@ export const COMPLETE_MOVIE_DATA = {
             { time: 120, intensity: 90, label: "Here's Johnny", color: "#fde68a" },
             { time: 140, intensity: 95, label: "Frozen in the Maze", color: "#dc2626" } // PEAK: Haunting Climax
         ]
+    }),
+
+    // BONUS: Nocturnal Animals (2016) - STATUS: PSYCHOLOGICAL BREAKDOWN
+    340666: createMovieData({ 
+        sanityErosion: 95, complexityLevel: "MASTERPIECE", 
+        dominantColor: "#b91c1c", rating: 7.5, criticsScore: 74, audienceScore: 73, 
+        director: "Tom Ford", cast: ["Amy Adams", "Jake Gyllenhaal", "Michael Shannon"], 
+        boxOffice: "$32.4 million", budget: "$22.5 million", 
+        dna: { Thriller: 50, Drama: 30, Psychological: 20 }, 
+        scenes: [
+            { time: 15, intensity: 85, label: "The Highway Encounter", color: "#b91c1c" }, 
+            { time: 45, intensity: 90, label: "The Discovery", color: "#f87171" }, 
+            { time: 70, intensity: 75, label: "The Interrogation", color: "#fbbf24" }, 
+            { time: 95, intensity: 95, label: "The Showdown", color: "#fde68a" }, 
+            { time: 110, intensity: 80, label: "The Restaurant", color: "#dc2626" } 
+        ],
+        synopsis: "A wealthy art gallery owner is haunted by her ex-husband's novel, a violent thriller she interprets as a symbolic revenge tale. A visually stunning, deeply unsettling masterpiece that blurs the line between fiction and reality.",
+        themes: ["Revenge", "Regret", "Fiction vs Reality"]
     })
 };
 
@@ -300,6 +332,14 @@ export const PSYCH_THRILLER_FAQS = {
         { question: "Why is Jack in the 1921 photo?", answer: "The photo implies reincarnation or absorption. Jack has 'always been the caretaker.' His soul has been claimed by the hotel, joining the timeless party of ghosts. It suggests that Jack was never truly free; he was destined to return to the Overlook to replay its tragedy." },
         { question: "What does the elevator of blood mean?", answer: "It represents the accumulated violence of the hotel's history—Indian burial grounds, murders, suicides. The blood cannot be contained; it spills out, demanding acknowledgment. It is a visual metaphor for the return of the repressed trauma that the hotel embodies." },
         { question: "Did the hotel drive Jack crazy or was he already unstable?", answer: "Both. Jack was an alcoholic with a history of violence (dislocating Danny's shoulder). The hotel didn't create the monster; it exploited the cracks already present in Jack's psyche. It offered him a drink and validated his resentment, pushing him over the edge." }
+        ],
+    'Nocturnal Animals': [
+        { question: "Does Nocturnal Animals have violence and gore?", answer: "According to the Filmiway Parents Guide, the violence in Nocturnal Animals is rated as High. Disturbing violence including shootings, bloody injuries, suicide, implied sexual violence, and references to murder, abuse, and child harm." },
+        { question: "Does Nocturnal Animals have profanity or swearing?", answer: "The profanity in Nocturnal Animals is rated as High. Strong language including 50+ uses of the F-word, crude references, obscene gestures, insults, and frequent coarse profanity throughout." },
+        { question: "Why is Nocturnal Animals rated R?", answer: "Nocturnal Animals earns its R rating due to disturbing graphic violence and implied sexual assault, heavy nudity, and strong language throughout. Specifically, the film contains Strong language including 50+ uses of the F-word, crude references, obscene gestures, insults, and frequent coarse profanity throughout. Disturbing violence including shootings, bloody injuries, suicide, implied sexual violence, and references to murder, abuse, and child harm. Adults can use our timestamps to skip the explicit content." },
+        { question: "What does the ending of Nocturnal Animals mean?", answer: "Edward standing Susan up at the restaurant is his ultimate revenge. He proves that he is no longer 'weak' (as she claimed) and that he has moved on, leaving her trapped in the shallow, unhappy life she chose over him." },
+        { question: "Why are there two different storylines?", answer: "The film cuts between Susan's real life and the plot of her ex-husband's novel. The novel is a violent allegory for their failed marriage; the characters in the book represent Susan, Edward, and the emotional 'murder' of their relationship." },
+        { question: "What is the meaning of the opening scene?", answer: "The grotesque, slow-motion opening credits sequence featuring nude, dancing women is meant to represent the shallow and superficial nature of Susan's high-society art world, setting the tone for her feelings of emptiness." }
     ]
 };
 

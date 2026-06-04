@@ -5129,7 +5129,24 @@
     },
     "1949": {
         "Title": "Zodiac",
-        "scenes": []
+        "Age": "15+",
+        "Summary": "Aged 15+ for moderate violence and unsettling serial-killer themes, moderate language, and no sex or nudity.",
+        "scenes": [
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "Moderate",
+                "description": "Disturbing violence including shootings, stabbings, murder scenes, bloodshed, and unsettling serial-killer themes, though graphic gore is limited."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "Moderate",
+                "description": "Moderate language including several uses of the F-word, obscene gestures, sexual references, mild insults and derogatory terms."
+            }
+        ]
     },
     "1954": {
         "Title": "The Butterfly Effect",
@@ -7343,7 +7360,24 @@
     },
     "27205": {
         "Title": "Inception",
-        "scenes": []
+        "Age": "13+",
+        "Summary": "Aged 13+ for moderate action violence, no sex or nudity, and mild language.",
+        "scenes": [
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "Moderate",
+                "description": "Moderate action violence including shootings, explosions, stabbings, fatal accidents, hand-to-hand combat, and scenes of death and peril."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "Mild",
+                "description": "Mild language including occasional coarse terms, religious exclamations, and infrequent profanity."
+            }
+        ]
     },
     "27581": {
         "Title": "The Other Guys",
@@ -10385,5 +10419,62 @@
                     "description": "Pervasive strong language including 100+ uses of the F-word, crude sexual references, obscene gestures, and repeated use of strong profanity throughout."
                 }
             ]
-        }
+        },
+    "340666": {
+        "Title": "Nocturnal Animals",
+        "Age": "17+",
+        "Summary": "Aged 17+ for disturbing graphic violence and implied sexual assault, heavy nudity, and strong language throughout.",
+        "scenes": [
+            {
+                "start": "1:10",
+                "end": "4:21",
+                "type": "Nudity (Women)",
+                "severity": "High"
+            },
+            {
+                "start": "39:12",
+                "end": "39:25",
+                "type": "Partial Nudity (Man)",
+                "severity": "Mild"
+            },
+            {
+                "start": "43:23",
+                "end": "44:00",
+                "type": "Partial Nudity (Woman)",
+                "severity": "Moderate"
+            },
+            {
+                "start": "44:23",
+                "end": "45:25",
+                "type": "Partial Nudity (Man & Woman)",
+                "severity": "Moderate"
+            },
+            {
+                "start": "59:03",
+                "end": "59:10",
+                "type": "Partial Nudity (Woman)",
+                "severity": "Moderate"
+            },
+            {
+                "start": "1:11:01",
+                "end": "1:13:10",
+                "type": "Nudity (Man)",
+                "severity": "High"
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "High",
+                "description": "Disturbing violence including shootings, bloody injuries, suicide, implied sexual violence, and references to murder, abuse, and child harm."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "High",
+                "description": "Strong language including 50+ uses of the F-word, crude references, obscene gestures, insults, and frequent coarse profanity throughout."
+            }
+        ]
+    }
 }

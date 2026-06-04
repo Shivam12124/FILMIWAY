@@ -99,6 +99,7 @@ export const COLLECTIONS = {
       { label: "DREAD", desc: "Creeping tension" }
     ],
     movies: ['tt0102926', 'tt0137523', 'tt0209144', 'tt0114369', 'tt1130884', 'tt0947798', 'tt0361862', 'tt0364569', 'tt0075314', 'tt0081505'],
+        movies: ['tt0102926', 'tt0137523', 'tt0209144', 'tt0114369', 'tt1130884', 'tt0947798', 'tt0361862', 'tt0364569', 'tt0075314', 'tt0081505', 'tt4550098'],
     relatedCollections: ['movies-like-se7en', 'movies-like-shutter-island', 'best-detective-thriller-movies']
   },
 

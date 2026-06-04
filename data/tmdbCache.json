@@ -10516,5 +10516,23 @@
     "budget": "$110,000,000",
     "revenue": "$785,896,632",
     "tagline": "Prepare for the Second Coming."
+  },
+  "tt4550098": {
+    "tmdbId": "340666",
+    "poster_path": "/mdLDgQBD0va09npSQX5Zgo2evXM.jpg",
+    "backdrop_path": "/5d6m8CIBQcHeiwr6R5ou4wxO9Vn.jpg",
+    "runtime": 116,
+    "release_date": "2016-11-04",
+    "overview": "Susan Morrow receives a book manuscript from her ex-husband – a man she left 20 years earlier – asking for her opinion of his writing. As she reads, she is drawn into the fictional life of Tony Hastings, a mathematics professor whose family vacation turns violent.",
+    "ageRating": "R",
+    "director": "Tom Ford",
+    "cast": [
+      "Amy Adams",
+      "Jake Gyllenhaal",
+      "Michael Shannon"
+    ],
+    "budget": "$22,500,000",
+    "revenue": "$29,300,000",
+    "tagline": "When you love someone you can't just throw it away."
   }
 }

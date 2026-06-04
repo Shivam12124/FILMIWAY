@@ -40,7 +40,12 @@ export const STRATEGIC_QUOTES = {
 
 // ✅ SENSITIVE TIMELINES (Strictly Sex & Nudity Only)
 export const SENSITIVE_TIMELINES = {
-    1949: { scenes: [] }, // Zodiac
+    1949: { 
+        scenes: [
+            { start: "", end: "", type: "Violence & Gore", severity: "Moderate", description: "Disturbing violence including shootings, stabbings, murder scenes, bloodshed, and unsettling serial-killer themes, though graphic gore is limited." },
+            { start: "", end: "", type: "Profanity", severity: "Moderate", description: "Moderate language including several uses of the F-word, obscene gestures, sexual references, mild insults and derogatory terms." }
+        ]
+    }, // Zodiac
     11423: { // Memories of Murder
         scenes: [
             { start: "9:58", end: "10:10", type: "Sex", severity: "Moderate" },
@@ -349,6 +354,9 @@ export const COMPLETE_MOVIE_DATA = {
 // ✅ CUSTOM FAQs FOR DRAMA MOVIES
 export const SE7EN_MOVIE_FAQS = {
     'Zodiac': [
+        { question: "Does Zodiac have violence and gore?", answer: "According to the Filmiway Parents Guide, the violence in Zodiac is rated as Moderate. Disturbing violence including shootings, stabbings, murder scenes, bloodshed, and unsettling serial-killer themes, though graphic gore is limited." },
+        { question: "Does Zodiac have profanity or swearing?", answer: "The profanity in Zodiac is rated as Moderate. Moderate language including several uses of the F-word, obscene gestures, sexual references, mild insults and derogatory terms." },
+        { question: "Why is Zodiac rated R?", answer: "Zodiac earns its R rating due to moderate violence and unsettling serial-killer themes, moderate language, and no sex or nudity. Specifically, the film contains Moderate language including several uses of the F-word, obscene gestures, sexual references, mild insults and derogatory terms. Disturbing violence including shootings, stabbings, murder scenes, bloodshed, and unsettling serial-killer themes, though graphic gore is limited. Adults can use our timestamps to skip the explicit content." },
         { question: "Did they catch the Zodiac?", answer: "The case officially remains open, though Arthur Leigh Allen was the prime suspect. DNA evidence in later years was inconclusive, leaving the mystery unsolved." },
         { question: "Is the basement scene real?", answer: "It is based on a real report by Robert Graysmith, though dramatized for tension. The filmmaker wanted to capture the sheer terror of walking into the unknown." },
         { question: "Why is Zodiac considered similar to Se7en?", answer: "Both are directed by David Fincher and feature obsessive hunts for a killer who taunts police, though Zodiac focuses more on the procedural drudgery than the stylized horror." },

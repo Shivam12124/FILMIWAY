@@ -968,7 +968,7 @@
   </url>
   <url>
     <loc>https://filmiway.com/movie/zodiac</loc>
-    <lastmod>2026-06-01T04:23:20.080Z</lastmod>
+    <lastmod>2026-06-04T04:23:20.080Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -1808,7 +1808,7 @@
   </url>
   <url>
     <loc>https://filmiway.com/movie/inception</loc>
-    <lastmod>2026-06-01T04:23:20.080Z</lastmod>
+    <lastmod>2026-06-04T04:23:20.080Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -3484,4 +3484,12 @@
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <url>
+    <loc>https://filmiway.com/movie/nocturnal-animals</loc>
+    <lastmod>2026-06-04T04:23:20.080Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+ 
 </urlset>

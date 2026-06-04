@@ -264,55 +264,6 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
         };
     }, [filteredHeavyScenes]);
 
-    if (!sensitiveData?.scenes?.length) {
-        return (
-            <motion.section 
-                    className="w-full bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8"
-                initial={{ opacity: 1, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-            >
-                <div 
-                    className="w-full px-4 sm:px-6 py-4 sm:py-5 rounded-2xl border backdrop-blur-sm flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4"
-                    style={{ backgroundColor: COLORS.safeBg, borderColor: COLORS.safeBorder }}
-                >
-                    <div className="p-2 rounded-full bg-emerald-500/20 text-emerald-400 self-start sm:self-auto shrink-0">
-                        <CheckCircle size={24} />
-                    </div>
-                    <div>
-                        <div className="flex items-center gap-2">
-                            <h1 className="text-emerald-300 font-medium text-base sm:text-lg">{movie?.Title} Parents Guide & Skip Timestamps</h1>
-                        </div>
-                        <p className="text-emerald-400/80 text-xs sm:text-base md:text-lg font-light mt-1 sm:mt-2 leading-relaxed">
-                            Filmiway editors have manually verified this film is free of explicit sexual content and nudity. Accurate for the <span suppressHydrationWarning>{currentRuntime}</span>.
-                        </p>
-                    </div>
-                </div>
-
-                {/* 🔥 RECOMMENDED AGE BADGE (Dynamic) */}
-                {recommendedAge && ageSummary && (
-                    <motion.div 
-                        className="mt-5 relative overflow-hidden rounded-2xl border border-white/10 bg-black/40 backdrop-blur-md p-4 sm:p-5 flex flex-row items-center gap-4 sm:gap-5 shadow-xl"
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: 0.2 }}
-                    >
-                        <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-yellow-400 to-yellow-600"></div>
-                        
-                        <div className="flex-shrink-0 flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-yellow-500/10 border border-yellow-500/20 shadow-[0_0_15px_rgba(234,179,8,0.15)]">
-                            <span className="text-xl sm:text-2xl font-bold text-yellow-400 tracking-tight">{recommendedAge}</span>
-                        </div>
-                        
-                        <div className="flex-1 flex flex-col justify-center">
-                            <h3 className="text-xs sm:text-sm font-semibold text-gray-300 mb-1 uppercase tracking-widest">Recommended Age</h3>
-                            <p className="text-[13px] sm:text-sm text-gray-400 leading-relaxed font-light">{ageSummary}</p>
-                        </div>
-                    </motion.div>
-                )}
-            </motion.section>
-        );
-    }
-
     return (
         <motion.section 
                 className="w-full bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8"
@@ -320,13 +271,53 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
         >
-                <div className="flex flex-col mb-2 sm:mb-3 border-b border-white/5 pb-4 sm:pb-5 gap-4 sm:gap-6 relative z-50">
+            {filteredHeavyScenes.length === 0 ? (
+                <div 
+                    className="w-full px-4 sm:px-6 py-4 sm:py-5 rounded-2xl border backdrop-blur-sm flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 mb-4"
+                    style={{ backgroundColor: COLORS.safeBg, borderColor: COLORS.safeBorder }}
+                >
+                    <div className="p-2 rounded-full bg-emerald-500/20 text-emerald-400 self-start sm:self-auto shrink-0">
+                        <CheckCircle size={24} />
+                    </div>
+                    <div>
+                        <div className="flex items-center gap-2">
+                            <h1 className="text-emerald-300 font-medium text-base sm:text-lg">{movie?.Title} Parents Guide (Clean)</h1>
+                        </div>
+                        
+                        {/* 🔥 RECOMMENDED AGE BADGE (Dynamic) */}
+                        {recommendedAge && ageSummary && (
+                            <motion.div 
+                                className="my-3 relative overflow-hidden rounded-xl border border-white/10 bg-black/40 backdrop-blur-md p-3 sm:p-4 flex flex-row items-center gap-3 sm:gap-4 shadow-lg w-full"
+                                initial={{ opacity: 0, y: 5 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5, delay: 0.2 }}
+                            >
+                                <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-yellow-400 to-yellow-600"></div>
+                                
+                                <div className="flex-shrink-0 flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-yellow-500/10 border border-yellow-500/20 shadow-[0_0_15px_rgba(234,179,8,0.15)]">
+                                    <span className="text-lg sm:text-xl font-bold text-yellow-400 tracking-tight">{recommendedAge}</span>
+                                </div>
+                                
+                                <div className="flex-1 flex flex-col justify-center">
+                                    <h3 className="text-[11px] sm:text-xs font-semibold text-gray-300 mb-0.5 uppercase tracking-widest">Recommended Age</h3>
+                                    <p className="text-xs sm:text-[13px] text-gray-400 leading-snug font-light">{ageSummary}</p>
+                                </div>
+                            </motion.div>
+                        )}
+
+                        <p className="text-emerald-400/80 text-xs sm:text-base md:text-lg font-light mt-1 sm:mt-2 leading-relaxed">
+                            Filmiway editors have manually verified this film is free of explicit sexual content and nudity. Accurate for the <span suppressHydrationWarning>{currentRuntime}</span>.
+                        </p>
+                    </div>
+                </div>
+            ) : (
+                <div className="flex flex-col gap-4 sm:gap-6 relative z-50">
                 <div className="space-y-3 w-full">
                         <div className="flex items-center justify-between w-full">
-                            <h2 className="text-xl sm:text-2xl font-light text-gray-200 flex items-center gap-3 tracking-wide leading-tight">
+                            <h1 className="text-xl sm:text-2xl font-light text-gray-200 flex items-center gap-3 tracking-wide leading-tight">
                                 <Shield className="text-red-500 w-6 h-6 shrink-0" />
                                 <span>{movie?.Title} Parents Guide & Skip Timestamps</span>
-                            </h2>
+                            </h1>
                         
                         <div 
                             className="relative flex items-center ml-1 shrink-0 z-50" 
@@ -366,31 +357,31 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                         </div>
                         </div>
 
+                        {/* 🔥 RECOMMENDED AGE BADGE (Dynamic) */}
+                        {recommendedAge && ageSummary && (
+                            <motion.div 
+                                className="my-4 relative overflow-hidden rounded-2xl border border-white/10 bg-black/40 backdrop-blur-md p-4 sm:p-5 flex flex-row items-center gap-4 sm:gap-5 shadow-xl"
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5, delay: 0.2 }}
+                            >
+                                <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-yellow-400 to-yellow-600"></div>
+                                
+                                <div className="flex-shrink-0 flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-yellow-500/10 border border-yellow-500/20 shadow-[0_0_15px_rgba(234,179,8,0.15)]">
+                                    <span className="text-xl sm:text-2xl font-bold text-yellow-400 tracking-tight">{recommendedAge}</span>
+                                </div>
+                                
+                                <div className="flex-1 flex flex-col justify-center">
+                                    <h3 className="text-xs sm:text-sm font-semibold text-gray-300 mb-1 uppercase tracking-widest">Recommended Age</h3>
+                                    <p className="text-[13px] sm:text-sm text-gray-400 leading-relaxed font-light">{ageSummary}</p>
+                                </div>
+                            </motion.div>
+                        )}
+
                         <p className="text-sm sm:text-base md:text-lg text-gray-400 font-light mt-3 sm:mt-4 leading-relaxed">
                             We provide exact timestamps for <strong className="text-gray-300">{movie?.Title}</strong> because we want parents to know exactly what they and their kids are going to see. This allows you to easily monitor the film and safely skip any explicit scenes if you aren't comfortable with them.
                         </p>
 
-                    {/* 🔥 RECOMMENDED AGE BADGE (Dynamic) */}
-                    {recommendedAge && ageSummary && (
-                        <motion.div 
-                            className="my-5 relative overflow-hidden rounded-2xl border border-white/10 bg-black/40 backdrop-blur-md p-4 sm:p-5 flex flex-row items-center gap-4 sm:gap-5 shadow-xl"
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: 0.2 }}
-                        >
-                            <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-yellow-400 to-yellow-600"></div>
-                            
-                            <div className="flex-shrink-0 flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-yellow-500/10 border border-yellow-500/20 shadow-[0_0_15px_rgba(234,179,8,0.15)]">
-                                <span className="text-xl sm:text-2xl font-bold text-yellow-400 tracking-tight">{recommendedAge}</span>
-                            </div>
-                            
-                            <div className="flex-1 flex flex-col justify-center">
-                                <h3 className="text-xs sm:text-sm font-semibold text-gray-300 mb-1 uppercase tracking-widest">Recommended Age</h3>
-                                <p className="text-[13px] sm:text-sm text-gray-400 leading-relaxed font-light">{ageSummary}</p>
-                            </div>
-                        </motion.div>
-                    )}
-                    
                     <div className="ml-1 space-y-2.5 sm:space-y-3 mt-2 sm:mt-4">
                         <p className="text-[13px] sm:text-sm text-gray-500 flex items-start sm:items-center gap-2">
                             <CheckCircle size={14} className="text-emerald-500/80 shrink-0 mt-0.5 sm:mt-0" />
@@ -409,11 +400,12 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                     </div>
                 </div>
             </div>
+            )}
 
                 {/* 🔥 THE "SHOWER IDEA" VISUAL TIMELINE MAP */}
                 {timelineMarkers.length > 0 && (
                     <motion.div 
-                        className="w-full mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-white/5"
+                        className="w-full mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-white/5"
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.3, duration: 0.5 }}
@@ -422,7 +414,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                             <Film size={14} className="text-yellow-500" /> Parents Guide Tracker
                         </h3>
                         
-                        <div className="relative w-full h-2.5 sm:h-3 bg-[#030303] rounded-full border border-white/10 shadow-inner group/track mt-10">
+                        <div className="relative w-full h-2.5 sm:h-3 bg-[#030303] rounded-full border border-white/10 shadow-inner group/track mt-6 sm:mt-8">
                             <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-gray-800/40 to-transparent w-full rounded-full pointer-events-none" />
                             
                             {timelineMarkers.map((marker) => {
@@ -566,9 +558,10 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                         );
                     })}
                 </div>
+            </div>
 
                 {/* 🔥 ENHANCED ENGAGEMENT FOOTER: Designed for maximum CTR */}
-                <div className="bg-white/5 p-4 sm:p-5 flex flex-col sm:flex-row items-center justify-between gap-4 border border-white/10 rounded-xl mt-4">
+                <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-white/5 pt-4 sm:pt-5 mt-4">
                     <div className="flex items-center gap-2 text-[10px] sm:text-xs text-gray-400 uppercase tracking-[0.15em]">
                         <Shield size={14} className="text-emerald-500/70 shrink-0" />
                         <span className="truncate" suppressHydrationWarning>Manually Verified • {currentRuntime}</span>
@@ -605,7 +598,6 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                         </motion.button>
                     </div>
                 </div>
-            </div>
         </motion.section>
     );
 });

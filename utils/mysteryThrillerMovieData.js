@@ -54,7 +54,12 @@ export const SENSITIVE_TIMELINES = {
         ]
     },
     146233: { scenes: [] }, // Prisoners
-    1949: { scenes: [] }, // Zodiac
+    1949: { 
+        scenes: [
+            { start: "", end: "", type: "Violence & Gore", severity: "Moderate", description: "Disturbing violence including shootings, stabbings, murder scenes, bloodshed, and unsettling serial-killer themes, though graphic gore is limited." },
+            { start: "", end: "", type: "Profanity", severity: "Moderate", description: "Moderate language including several uses of the F-word, obscene gestures, sexual references, mild insults and derogatory terms." }
+        ]
+    }, // Zodiac
     210577: { 
         scenes: [
             { start: "6:41", end: "6:59", type: "Sex", severity: "High" },
@@ -314,6 +319,9 @@ export const MYSTERY_THRILLER_FAQS = {
         { question: "Is the ending happy?", answer: "It is bittersweet. The children are saved, but Keller is a broken man who has committed torture, likely facing prison if rescued." }
     ],
     'Zodiac': [
+        { question: "Does Zodiac have violence and gore?", answer: "According to the Filmiway Parents Guide, the violence in Zodiac is rated as Moderate. Disturbing violence including shootings, stabbings, murder scenes, bloodshed, and unsettling serial-killer themes, though graphic gore is limited." },
+        { question: "Does Zodiac have profanity or swearing?", answer: "The profanity in Zodiac is rated as Moderate. Moderate language including several uses of the F-word, obscene gestures, sexual references, mild insults and derogatory terms." },
+        { question: "Why is Zodiac rated R?", answer: "Zodiac earns its R rating due to moderate violence and unsettling serial-killer themes, moderate language, and no sex or nudity. Specifically, the film contains Moderate language including several uses of the F-word, obscene gestures, sexual references, mild insults and derogatory terms. Disturbing violence including shootings, stabbings, murder scenes, bloodshed, and unsettling serial-killer themes, though graphic gore is limited. Adults can use our timestamps to skip the explicit content." },
         { question: "Did they ever catch the Zodiac?", answer: "Officially, no. The film suggests Arthur Leigh Allen was the most likely suspect, but DNA evidence was inconclusive." },
         { question: "Why does the film focus on paperwork?", answer: "Fincher highlights the drudgery of investigation—the endless filing and dead ends—to de-romanticize police work and show the erosion of truth over time." },
         { question: "What does the basement scene represent?", answer: "It captures the terrifying vulnerability of an amateur investigator realizing he might be face-to-face with a monster, relying entirely on implication." },
