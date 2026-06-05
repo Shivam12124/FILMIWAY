@@ -993,6 +993,14 @@ const MovieDetailsSection = React.memo(({
         <SensitiveContentTimelineSection movie={{...movie, Runtime: dynamicMovieData.runtime}} sensitiveScenes={sensitiveScenes} />
       </div>
 
+      <div className="w-full bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8 overflow-hidden clean-injected-component" style={{ contentVisibility: 'auto', containIntrinsicSize: '400px' }}>
+        <div className="flex items-center gap-3 mb-6 border-b border-white/5 pb-4 custom-new-header">
+          <Star className="w-6 h-6 text-yellow-500 shrink-0" />
+          <h2 className="text-xl sm:text-2xl font-light text-gray-200 tracking-wide">Fan Favorites</h2>
+        </div>
+        <FanFavoritesSection currentMovieSlug={movie.slug} />
+      </div>
+
       <motion.div
         className="w-full bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8"
         initial={{ opacity: 1, y: 0 }}
@@ -1042,14 +1050,6 @@ const MovieDetailsSection = React.memo(({
           </div>
         </div>
       </motion.div>
-
-      <div className="w-full bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8 overflow-hidden clean-injected-component" style={{ contentVisibility: 'auto', containIntrinsicSize: '400px' }}>
-        <div className="flex items-center gap-3 mb-6 border-b border-white/5 pb-4 custom-new-header">
-          <Star className="w-6 h-6 text-yellow-500 shrink-0" />
-          <h2 className="text-xl sm:text-2xl font-light text-gray-200 tracking-wide">Fan Favorites</h2>
-        </div>
-        <FanFavoritesSection currentMovieSlug={movie.slug} />
-      </div>
 
       {safeMovieInfo?.scenes && safeMovieInfo.scenes.length > 0 && loadHeavyComponents && (
         <EnhancedIntensityGraph 
