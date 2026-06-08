@@ -19,7 +19,8 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 296096, "imdbID": "tt2674426", "Title": "Me Before You", "year": 2016, "genre": "Romance", "runtime": 110, "rank": 7 },
     { "tmdbId": 18240, "imdbID": "tt1041829", "Title": "The Proposal", "year": 2009, "genre": "Comedy", "runtime": 108, "rank": 8 },
     { "tmdbId": 9919, "imdbID": "tt0251127", "Title": "How to Lose a Guy in 10 Days", "year": 2003, "genre": "Comedy", "runtime": 116, "rank": 9 },
-    { "tmdbId": 1072790, "imdbID": "tt26047818", "Title": "Anyone But You", "year": 2023, "genre": "Comedy", "runtime": 103, "rank": 10 }
+    { "tmdbId": 1072790, "imdbID": "tt26047818", "Title": "Anyone But You", "year": 2023, "genre": "Comedy", "runtime": 103, "rank": 10 },
+    { "tmdbId": 1358005, "imdbID": "tt33397980", "Title": "Office Romance", "year": 2026, "genre": "Comedy, Romance", "runtime": 115, "rank": "BONUS" }
 ];
 
 // ✅ STRATEGIC QUOTES (100% Clean & SEO Safe)
@@ -33,7 +34,8 @@ export const STRATEGIC_QUOTES = {
     296096: "You are pretty much the only thing that makes me want to get up in the morning.", 
     18240: "Why are you panting? Because I've been running! From who? A bear?", 
     9919: "You can't lose something you never had!", 
-    1072790: "There's no way we can convince anyone we actually like each other." 
+    1072790: "There's no way we can convince anyone we actually like each other.",
+    1358005: "Keep it professional. Or don't."
 };
 
 // ✅ SENSITIVE TIMELINES (Clinical, factual timestamps for the Parents Guide tool)
@@ -79,6 +81,14 @@ export const SENSITIVE_TIMELINES = {
             { start: "0:21:00", end: "0:21:05", type: "Nudity (Woman)", severity: "High" },
             { start: "0:49:20", end: "0:50:05", type: "Partial Nudity (Man)", severity: "Moderate" },
             { start: "1:10:53", end: "1:11:32", type: "Sex & Nudity", severity: "High" }
+        ]
+    },
+
+    // BONUS: Office Romance
+    1358005: {
+        scenes: [
+            { start: "1:04:45", end: "1:05:55", type: "Suggestive Clothing (Bikini)", severity: "Mild" },
+            { start: "1:20:10", end: "1:20:20", type: "Nudity", severity: "High" }
         ]
     }
 };
@@ -242,6 +252,23 @@ export const COMPLETE_MOVIE_DATA = {
         ],
         synopsis: "After an amazing first date, Bea and Ben's fiery attraction turns ice cold - until they find themselves unexpectedly reunited at a destination wedding in Australia. So they do what any two mature adults would do: pretend to be a couple.",
         themes: ["Miscommunication", "Fake Dating", "Wedding Antics"]
+    }),
+    
+    // BONUS: Office Romance
+    1358005: createRomanceData({ 
+        romanticChemistry: 88, enemiesTension: 85, complexityLevel: "MEDIUM", 
+        dominantColor: "#db2777", rating: 6.5, criticsScore: 70, audienceScore: 85, director: "Unspecified", 
+        cast: ["Jennifer Lopez", "Brett Goldstein"], boxOffice: "N/A", budget: "N/A", 
+        dna: { "Comedy": 70, "Romance": 30 }, 
+       scenes: [
+    { time: 15, intensity: 60, label: "The New Lawyer Arrives" },
+    { time: 45, intensity: 75, label: "Workplace Romance Begins" },
+    { time: 65, intensity: 85, label: "The Tropical Getaway" },
+    { time: 80, intensity: 90, label: "The Childbirth Chaos" },
+    { time: 105, intensity: 88, label: "Love Wins Out" }
+],
+        synopsis: "Jackie Cruz, a perfectionist airline CEO, and Daniel Blanchflower, her company's ambitious new lawyer, navigate a highly inappropriate and forbidden workplace relationship in this hilarious and raunchy new romantic comedy.",
+        themes: ["Workplace Romance", "Enemies to Lovers", "Forbidden Love"]
     })
 };
 
@@ -301,6 +328,11 @@ export const ENEMIES_TO_LOVERS_MOVIE_FAQS = {
         { question: "What Shakespeare play is Anyone But You based on?", answer: "Like '10 Things I Hate About You', this film is a loose modernization of Shakespeare—specifically 'Much Ado About Nothing'. The characters Bea and Ben are direct references to the original play's bickering lovers, Beatrice and Benedick." },
         { question: "How did the film achieve such massive box office success?", answer: "It utilized a masterful marketing campaign heavily driven by viral TikTok moments, leaning into the off-screen chemistry rumors of its leads, Sydney Sweeney and Glen Powell, and successfully reviving the R-rated studio rom-com for a new generation." },
         { question: "What role does the song 'Unwritten' play in the narrative?", answer: "Natasha Bedingfield's 'Unwritten' serves as Ben's secret 'serenity song', a vulnerability he hides from the world. When Bea uses it to calm him down on the buoy, it shifts their dynamic from performative hatred to genuine, intimate care." }
+    ],
+    "Office Romance": [
+        { question: "Does Office Romance have nudity?", answer: "Yes, but it is medical in nature. There is a scene showing brief graphic childbirth detail (Nudity - High) from 1:20:10 to 1:20:20. There is also a scene featuring Jennifer Lopez in a bikini with moderate skin exposure from 1:04:45 to 1:05:55." },
+        { question: "Why is Office Romance rated R?", answer: "Office Romance is rated R (or 16+) primarily for pervasive raunchy language and strong sexual dialogue throughout. There is no violence or gore, but the frequent use of the F-word and crude sexual discussions make it strictly for mature audiences." },
+        { question: "Is Office Romance safe for kids to watch?", answer: "No, Office Romance is not recommended for children or young teenagers. Our Parents Guide suggests it is appropriate for viewers aged 16 and older due to the continuous strong profanity and a brief graphic childbirth scene." }
     ]
 };
 

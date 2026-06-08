@@ -43,7 +43,10 @@ export const ENEMIES_TO_LOVERS_MOVIE_SLUGS = {
     'tt0251127': 'how-to-lose-a-guy-in-10-days',
     
     // Rank 10: Anyone But You
-    'tt26047818': 'anyone-but-you'
+    'tt26047818': 'anyone-but-you',
+    
+    // BONUS FILM: Office Romance
+    'tt33397980': 'office-romance'
 };
 
 // ✅ REVERSE SLUG MAPPING (SLUG TO IMDB ID)

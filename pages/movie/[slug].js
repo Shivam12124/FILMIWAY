@@ -348,7 +348,18 @@ export async function getStaticProps({ params }) {
     const cacheData = tmdbCache[baseMovie.imdbID] || {};
     
     // 🔥 Look up the primary collection for this specific movie
-    const primarySlug = getPrimaryCollectionForMovie(baseMovie.imdbID);
+    let primarySlug = getPrimaryCollectionForMovie(baseMovie.imdbID);
+    
+    // ⚡ FALLBACK: If the collections.js router is outdated, derive the slug directly from the master database!
+    if (!primarySlug || (baseMovie.imdbID === 'tt33397980' && primarySlug !== 'best-enemies-to-lovers-movies')) {
+        const sourceMap = {
+            'enemiesToLoversMovieData.js': 'best-enemies-to-lovers-movies',
+            'raunchyComedyMovieData.js': 'best-raunchy-comedy-movies'
+        };
+        if (baseMovie.sourceFile && sourceMap[baseMovie.sourceFile]) {
+            primarySlug = sourceMap[baseMovie.sourceFile];
+        }
+    }
     const primaryTitle = primarySlug && COLLECTIONS[primarySlug] ? COLLECTIONS[primarySlug].title : null;
 
     // ⚡ SERVER-SIDE ONLY: Map the correct database collection instantly to avoid 3MB client payload

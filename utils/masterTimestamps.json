@@ -10476,5 +10476,33 @@
                 "description": "Strong language including 50+ uses of the F-word, crude references, obscene gestures, insults, and frequent coarse profanity throughout."
             }
         ]
+    },
+    "1358005": {
+        "Title": "Office Romance",
+        "Age": "16+",
+        "Summary": "Aged 16+ for brief graphic medical nudity, no action violence, and strong, pervasive raunchy language throughout.",
+        "scenes": [
+            {
+                "start": "1:04:45",
+                "end": "1:05:55",
+                "type": "Suggestive Clothing (Bikini)",
+                "severity": "Mild",
+                "description": "Jennifer Lopez's character is shown wearing a brown bikini with moderate skin exposure."
+            },
+            {
+                "start": "1:20:10",
+                "end": "1:20:20",
+                "type": "Nudity",
+                "severity": "High",
+                "description": "A woman is shown giving birth, with brief graphic childbirth detail visible."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "High",
+                "description": "Strong and frequent sexual language throughout, including repeated use of the F-word, crude sexual terms, and explicit sexual discussions; overall raunchy dialogue dominates the film."
+            }
+        ]
     }
 }

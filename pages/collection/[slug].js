@@ -4811,9 +4811,9 @@ export async function getStaticProps({ params }) {
         .filter(Boolean);
 
     // ⚡ CUSTOM LOGIC FOR BONUS SLIDES
-    // Added support for Psychological Thrillers, Neo-Noir, and Revenge
-    if (collection.slug === 'best-raunchy-comedy-movies' || collection.slug === 'best-psychological-thriller-movies' || collection.slug === 'best-neo-noir-movies' || collection.slug === 'best-revenge-movies') {
-        const standardMovies = movies.slice(0, 10).reverse();
+    // Added support for Psychological Thrillers, Neo-Noir, Revenge, and Enemies to Lovers
+    if (collection.slug === 'best-raunchy-comedy-movies' || collection.slug === 'best-psychological-thriller-movies' || collection.slug === 'best-neo-noir-movies' || collection.slug === 'best-revenge-movies' || collection.slug === 'best-enemies-to-lovers-movies') {
+        const standardMovies = movies.slice(0, 10).sort((a, b) => (b.rank || 0) - (a.rank || 0));
         let bonusMovies = movies.slice(10);
         
         // ✅ FIX: If the user forgot to add the BONUS movie to data/collections.js, automatically fetch it from the database!
