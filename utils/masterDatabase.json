@@ -6378,5 +6378,49 @@
     "rank": 4,
     "slug": "predator-killer-of-killers",
     "sourceFile": "huluActionMovieData.js"
+  },
+  {
+    "tmdbId": 78,
+    "imdbID": "tt0082869",
+    "Title": "Blade Runner",
+    "year": 1982,
+    "genre": "Sci-Fi",
+    "runtime": 117,
+    "rank": 2,
+    "slug": "blade-runner",
+    "sourceFile": "sciFiMovieData.js"
+  },
+  {
+    "tmdbId": 603,
+    "imdbID": "tt0133093",
+    "Title": "The Matrix",
+    "year": 1999,
+    "genre": "Sci-Fi",
+    "runtime": 136,
+    "rank": 3,
+    "slug": "the-matrix",
+    "sourceFile": "sciFiMovieData.js"
+  },
+  {
+    "tmdbId": 348,
+    "imdbID": "tt0078748",
+    "Title": "Alien",
+    "year": 1979,
+    "genre": "Horror",
+    "runtime": 117,
+    "rank": 4,
+    "slug": "alien",
+    "sourceFile": "sciFiMovieData.js"
+  },
+  {
+    "tmdbId": 11,
+    "imdbID": "tt0080684",
+    "Title": "Star Wars: Episode V - The Empire Strikes Back",
+    "year": 1980,
+    "genre": "Adventure",
+    "runtime": 124,
+    "rank": 9,
+    "slug": "star-wars-episode-v-the-empire-strikes-back",
+    "sourceFile": "sciFiMovieData.js"
   }
 ]

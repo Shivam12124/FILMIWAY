@@ -678,4 +678,7 @@ export const COMPLETE_SCI_FI_DATABASE = Object.fromEntries(
   SCI_FI_MOVIES.map(m => [m.tmdbId, { ...m, ...COMPLETE_SCI_FI_DETAILS[m.tmdbId] }])
 );
 
+export const COMPLETE_MOVIE_DATA = COMPLETE_SCI_FI_DETAILS;
+export const COMPLETE_MOVIE_DATABASE = Object.values(COMPLETE_SCI_FI_DATABASE);
+
 export default COMPLETE_SCI_FI_DATABASE;

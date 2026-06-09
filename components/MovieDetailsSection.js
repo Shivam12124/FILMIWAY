@@ -190,10 +190,10 @@ const MovieDetailsSection = React.memo(({
    complexityLevel: 'HIGH',
    dominantColor: '#ca8a04',
    rating: movie.imdbRating || 7.5,
-   director: movie.Director || 'Acclaimed Director',
+   director: movie.Director || 'Unknown Director',
    scenes: [], // ✅ NO PLACEHOLDER SCENES
    dna: null, // ✅ NO PLACEHOLDER DNA
-   cast: ['Lead Actor', 'Supporting Cast'],
+   cast: movie.Cast || [],
    boxOffice: 'N/A',
    budget: 'N/A',
    synopsis: 'A compelling exploration of cinema.',
@@ -217,23 +217,17 @@ const MovieDetailsSection = React.memo(({
  const year = movie.Year || movie.year || '20XX';
  const rating = safeMovieInfo.rating || movie.imdbRating || 7.5;
 
- // ⚡ HIGH PERFORMANCE DEFERRAL: Delays heavy charts and Firebase comments until CPU is idle
- const [loadHeavyComponents, setLoadHeavyComponents] = useState(false);
- useEffect(() => {
-   const timer = setTimeout(() => setLoadHeavyComponents(true), 4000);
-   return () => clearTimeout(timer);
- }, []);
 
  // 🔥🔥🔥 AUTO-FETCH LOGIC FOR ALL MOVIE DATA INCLUDING SYNOPSIS AND RUNTIME 🔥🔥🔥
  const [dynamicMovieData, setDynamicMovieData] = useState({
-   director: safeMovieInfo.director || movie.Director || 'Unknown Director',
-   cast: safeMovieInfo.cast?.join(', ') || '',
-   budget: safeMovieInfo.budget || 'N/A',
-   boxOffice: safeMovieInfo.boxOffice || 'N/A',
-   ageRating: safeMovieInfo.ageRating || movie.Rated || 'NR',
+   director: movie.Director || safeMovieInfo.director || 'Unknown Director',
+   cast: (movie.Cast && movie.Cast.length > 0) ? movie.Cast.join(', ') : (safeMovieInfo.cast?.join(', ') || ''),
+   budget: movie.Budget || safeMovieInfo.budget || 'N/A',
+   boxOffice: movie.BoxOffice || safeMovieInfo.boxOffice || 'N/A',
+   ageRating: movie.Rated || safeMovieInfo.ageRating || 'NR',
    runtime: safeMovieInfo.runtime || movie.Runtime || '120 min',
    synopsis: safeMovieInfo.synopsis || movie.Plot || getUniqueDescription(),
-   tagline: '' // 🔥 NEW: We will store the official movie tagline here
+   tagline: movie.Tagline || '' 
  });
 
  useEffect(() => {
@@ -989,39 +983,23 @@ const MovieDetailsSection = React.memo(({
       </div>
 
       {/* 🔥 THE GOOGLE RECOVERY FIX: Move the Unique Parents Guide ABOVE the TMDB data! */}
-      <div id="parents-guide" className="scroll-mt-28 w-full max-w-4xl mx-auto" style={{ contentVisibility: 'auto', containIntrinsicSize: '800px' }}>
+      <div id="parents-guide" className="scroll-mt-28 w-full max-w-4xl mx-auto">
         <SensitiveContentTimelineSection movie={{...movie, Runtime: dynamicMovieData.runtime}} sensitiveScenes={sensitiveScenes} />
       </div>
 
-      <div className="w-full bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8 overflow-hidden clean-injected-component" style={{ contentVisibility: 'auto', containIntrinsicSize: '400px' }}>
-        <div className="flex items-center gap-3 mb-6 border-b border-white/5 pb-4 custom-new-header">
-          <Star className="w-6 h-6 text-yellow-500 shrink-0" />
-          <h2 className="text-xl sm:text-2xl font-light text-gray-200 tracking-wide">Fan Favorites</h2>
-        </div>
+      <div className="w-full bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8 overflow-hidden clean-injected-component">
         <FanFavoritesSection currentMovieSlug={movie.slug} />
       </div>
 
-      <motion.div
-        className="w-full bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8"
-        initial={{ opacity: 1, y: 0 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.2 }}
-        style={{ contentVisibility: 'auto', containIntrinsicSize: '150px' }}
-      >
+      <div className="w-full bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8">
         <div className="flex items-center gap-3 mb-6 border-b border-white/5 pb-4">
           <BookOpen className="w-6 h-6 text-yellow-500 shrink-0" />
           <h2 className="text-xl sm:text-2xl font-light text-gray-200 tracking-wide">The Experience</h2>
         </div>
         <p className="text-gray-300 leading-relaxed text-sm sm:text-base" suppressHydrationWarning>{dynamicMovieData.synopsis}</p>
-      </motion.div>
+      </div>
 
-      <motion.div
-        className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-        style={{ contentVisibility: 'auto', containIntrinsicSize: '300px' }}
-      >
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
         <div className="w-full bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8 flex flex-col justify-start">
           <div className="flex items-center gap-3 mb-6 border-b border-white/5 pb-4">
             <Users className="w-6 h-6 text-yellow-500 shrink-0" />
@@ -1049,16 +1027,16 @@ const MovieDetailsSection = React.memo(({
             </div>
           </div>
         </div>
-      </motion.div>
+      </div>
 
-      {safeMovieInfo?.scenes && safeMovieInfo.scenes.length > 0 && loadHeavyComponents && (
+      {safeMovieInfo?.scenes && safeMovieInfo.scenes.length > 0 && (
         <EnhancedIntensityGraph 
             scenes={safeMovieInfo.scenes} 
             dominantColor={safeMovieInfo.dominantColor} 
         />
       )}
 
-      {safeMovieInfo?.dna && Object.keys(safeMovieInfo.dna).length > 0 && loadHeavyComponents && (
+      {safeMovieInfo?.dna && Object.keys(safeMovieInfo.dna).length > 0 && (
         <StrategicDNAHelix 
             dna={safeMovieInfo.dna} 
             dominantColor={safeMovieInfo.dominantColor} 
@@ -1066,35 +1044,20 @@ const MovieDetailsSection = React.memo(({
         />
       )}
 
-      <div className="w-full bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8 clean-injected-component" style={{ contentVisibility: 'auto', containIntrinsicSize: '300px' }}>
-        <div className="flex items-center gap-3 mb-6 border-b border-white/5 pb-4 custom-new-header">
-          <Film className="w-6 h-6 text-yellow-500 shrink-0" />
-          <h2 className="text-xl sm:text-2xl font-light text-gray-200 tracking-wide">Where to Watch</h2>
-        </div>
+      <div className="w-full bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8 clean-injected-component">
         <EnhancedWhereToWatchSection movie={movie} />
       </div>
 
       {/* FAQ SECTIONS */}
-      <div className="w-full bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8 faq-unified-container" style={{ contentVisibility: 'auto', containIntrinsicSize: '1000px' }}>
-        <div className="flex items-center gap-3 mb-6 border-b border-white/5 pb-4">
-          <span className="text-2xl">❓</span>
-          <h2 className="text-xl sm:text-2xl font-light text-gray-200 tracking-wide">Frequently Asked Questions</h2>
-        </div>
+      <div className="w-full bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8 faq-unified-container">
         <style>{`
-          .faq-unified-container section { margin-top: 0 !important; padding-top: 0 !important; border-top: none !important; }
-          .faq-unified-container section > div:first-child { display: none !important; }
-          .faq-unified-container section > h2 { display: none !important; }
-          .faq-unified-container section > p { display: none !important; }
-          
-          /* Completely hide the old internal headers inside Fan Favorites and Where To Watch */
-          .clean-injected-component section > div:first-child:has(h2),
-          .clean-injected-component section > div:first-child:has(h3),
-          .clean-injected-component > div:not(.custom-new-header):first-of-type:has(h2),
-          .clean-injected-component > div:not(.custom-new-header):first-of-type:has(h3),
-          .clean-injected-component section > h2:first-of-type,
-          .clean-injected-component section > h3:first-of-type,
-          .clean-injected-component > div:not(.custom-new-header) > h2:first-of-type,
-          .clean-injected-component > div:not(.custom-new-header) > h3:first-of-type { display: none !important; }
+          .faq-unified-container section,
+          .clean-injected-component section { 
+              margin-top: 0 !important; 
+              padding-top: 0 !important; 
+              border-top: none !important; 
+              margin-bottom: 0 !important;
+          }
         `}</style>
       {fromHboActionCollection ? <HboActionSEOFAQSection movie={movie} />
         : fromHboRomanceCollection ? <HboMaxRomanceSEOFAQSection movie={movie} /> 

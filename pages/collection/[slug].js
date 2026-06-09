@@ -4786,12 +4786,13 @@ export async function getStaticProps({ params }) {
             const finalPoster = cachedMovie.poster_path 
                 ? `https://image.tmdb.org/t/p/w780${cachedMovie.poster_path}` 
                 : (movie.Poster || movie.poster || '');
+            const generatedSlug = (movie.Title || movie.title || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
 
             return {
                 imdbID: movie.imdbID || '',
                 tmdbId: movie.tmdbId || 0,
                 Title: movie.Title || movie.title || 'Unknown',
-                slug: masterMovie?.slug || movie.imdbID,
+                slug: masterMovie?.slug || generatedSlug,
                 Year: movie.Year || movie.year || '2024',
                 Genre: movie.Genre || movie.genre || 'Thriller',
                 Runtime: movie.Runtime || movie.runtime || 120,
@@ -4825,12 +4826,13 @@ export async function getStaticProps({ params }) {
                 const finalPoster = cachedMovie.poster_path 
                     ? `https://image.tmdb.org/t/p/w780${cachedMovie.poster_path}` 
                     : (movie.Poster || movie.poster || '');
+                const generatedSlug = (movie.Title || movie.title || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
 
                 return {
                     imdbID: movie.imdbID || '',
                     tmdbId: movie.tmdbId || 0,
                     Title: movie.Title || movie.title || 'Unknown',
-                    slug: masterMovie?.slug || movie.imdbID,
+                    slug: masterMovie?.slug || generatedSlug,
                     Year: movie.Year || movie.year || '2024',
                     Genre: movie.Genre || movie.genre || 'Thriller',
                     Runtime: movie.Runtime || movie.runtime || 120,

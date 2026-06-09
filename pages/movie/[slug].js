@@ -121,7 +121,7 @@ const UniversalBanner = ({ movie }) => {
               >
                 <div className="relative w-full h-full bg-[#030303]">
                   {/* ⚡ THE MAIN IMAGE */}
-                  {bannerImage ? <Image src={bannerImage} alt={`${movie?.Title} banner`} fill priority fetchPriority="high" sizes="(max-width: 768px) 100vw, 1280px" quality={bannerQuality} className="object-cover object-[center_25%] relative z-10" /> : <div className="w-full h-full flex items-center justify-center relative z-10" style={{ backgroundColor: '#000000' }}><Film className="w-16 h-16 sm:w-24 sm:h-24" style={{ color: COLORS.textMuted }} /></div>}
+                  {bannerImage ? <Image src={bannerImage} alt={`${movie?.Title} banner`} fill priority fetchPriority="high" unoptimized className="object-cover object-[center_25%] relative z-10" /> : <div className="w-full h-full flex items-center justify-center relative z-10" style={{ backgroundColor: '#000000' }}><Film className="w-16 h-16 sm:w-24 sm:h-24" style={{ color: COLORS.textMuted }} /></div>}
                   <div className="absolute inset-0 z-20" style={{ background: `linear-gradient(to bottom, transparent 0%, transparent 50%, #000000 90%, #000000 100%), linear-gradient(to right, #000000 0%, transparent 15%, transparent 85%, #000000 100%)` }} />
                 </div>
                 {trailerKey && (
@@ -149,7 +149,7 @@ const UniversalBanner = ({ movie }) => {
         <div className="unified-hero-row">
           <div className="unified-hero-poster relative bg-[#030303] overflow-hidden">
             {/* ⚡ THE MAIN IMAGE */}
-            {posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} width={320} height={480} className="w-full h-auto relative z-10" priority fetchPriority="high" quality={60} sizes="(max-width: 768px) 35vw, 320px" /> : <div style={{ background: '#000000', width: '100%', height: '150px', display: 'flex', items: 'center', justifyContent: 'center' }} className="relative z-10"><Film style={{ color: COLORS.textMuted }} /></div>}
+            {posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} width={320} height={480} className="w-full h-auto relative z-10" priority fetchPriority="high" unoptimized /> : <div style={{ background: '#000000', width: '100%', height: '150px', display: 'flex', items: 'center', justifyContent: 'center' }} className="relative z-10"><Film style={{ color: COLORS.textMuted }} /></div>}
           </div>
           <div className="unified-psych-card">
             <div className="unified-psych-row"><Star className="unified-psych-icon" /><div><h2 className="unified-psych-title">At a Glance</h2></div></div>
@@ -294,6 +294,11 @@ export default function UniversalMoviePage({ movie }) {
                 <meta property="og:title" content={movie.metaTitle} />
                 <meta property="og:description" content={movie.metaDesc} />
                 <meta property="og:type" content="video.movie" />
+                {/* ⚡ MAGIC SPEED BOOST: Pre-connect to TMDB CDN & Preload Critical Images for lightning-fast loading! */}
+                <link rel="preconnect" href="https://image.tmdb.org" crossOrigin="anonymous" />
+                <link rel="dns-prefetch" href="https://image.tmdb.org" />
+                {movie.backdrop_path && <link rel="preload" as="image" href={`https://image.tmdb.org/t/p/w780${movie.backdrop_path}`} fetchPriority="high" />}
+                {movie.Poster && <link rel="preload" as="image" href={movie.Poster} fetchPriority="high" />}
             </Head>
             <Header />
             <main className="relative z-10 pt-20 sm:pt-24 lg:pt-28 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
@@ -335,13 +340,19 @@ export default function UniversalMoviePage({ movie }) {
 
 export async function getStaticPaths() {
     const masterDatabase = require('../../utils/masterDatabase.json');
-    return { paths: masterDatabase.map((m) => ({ params: { slug: m.slug } })), fallback: false };
+    return { paths: masterDatabase.map((m) => {
+        const safeSlug = m.slug || (m.Title || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+        return { params: { slug: safeSlug } };
+    }), fallback: false };
 }
 
 export async function getStaticProps({ params }) {
     const masterDatabase = require('../../utils/masterDatabase.json');
     const tmdbCache = require('../../data/tmdbCache.json');
-    const baseMovie = masterDatabase.find((m) => m.slug === params.slug) || null;
+    const baseMovie = masterDatabase.find((m) => {
+        const safeSlug = m.slug || (m.Title || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+        return safeSlug === params.slug;
+    }) || null;
     const { getPrimaryCollectionForMovie, COLLECTIONS } = require('../../data/collections');
     if (!baseMovie) return { notFound: true };
     
@@ -633,6 +644,10 @@ export async function getStaticProps({ params }) {
         Poster: cacheData.poster_path ? `https://image.tmdb.org/t/p/w342${cacheData.poster_path}` : null,
         Plot: cacheData.overview || '',
         Rated: cacheData.ageRating || 'NR',
+        Director: cacheData.director || null,
+        Cast: cacheData.cast || null,
+        Budget: cacheData.budget || null,
+        BoxOffice: cacheData.revenue || null,
         Tagline: cacheData.tagline || assignedFallbackTagline,
         primaryCollectionSlug: primarySlug || null,
         primaryCollectionTitle: primaryTitle || null,
