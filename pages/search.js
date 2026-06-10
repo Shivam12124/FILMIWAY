@@ -3,11 +3,9 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
-import { Search as SearchIcon, ArrowRight, Film, X, Send, CheckCircle2, Loader } from 'lucide-react';
+import { Search as SearchIcon, ArrowRight, Film, X } from 'lucide-react';
 import Header from '../components/Header';
 import { COLLECTIONS, getPrimaryCollectionForMovie } from '../data/collections';
-import { db } from '../firebaseConfig';
-import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import masterDatabase from '../utils/masterDatabase.json';
 import tmdbCache from '../data/tmdbCache.json';
 
@@ -167,7 +165,6 @@ export default function SearchPage({ allMovies }) {
   const [debouncedQuery, setDebouncedQuery] = useState('');
   const [results, setResults] = useState([]);
   const [suggestedResults, setSuggestedResults] = useState([]);
-  const [requestStatus, setRequestStatus] = useState('idle');
   const initializedRef = useRef(false);
 
   useEffect(() => {
@@ -258,34 +255,15 @@ export default function SearchPage({ allMovies }) {
         
         setSuggestedResults(validSuggestions.slice(0, 4));
       }
-
-      setRequestStatus('idle'); // Reset request status when typing
     } else {
       setResults([]);
       setSuggestedResults([]);
-      setRequestStatus('idle');
     }
   }, [debouncedQuery, allMovies]);
 
   const handleSearchChange = (e) => {
     const val = e.target.value;
     setQuery(val);
-  };
-
-  // ⚡ FIREBASE REQUEST HANDLER
-  const handleRequestMovie = async () => {
-    setRequestStatus('submitting');
-    try {
-      await addDoc(collection(db, 'movieRequests'), { 
-        title: query.trim(), 
-        requestedAt: serverTimestamp(), 
-        status: 'pending' 
-      });
-      setRequestStatus('success');
-    } catch (error) {
-      console.error("Error requesting movie:", error);
-      setRequestStatus('success'); // Fails gracefully to keep the user happy
-    }
   };
 
   return (
@@ -359,28 +337,6 @@ export default function SearchPage({ allMovies }) {
                     </ul>
                   </div>
                 )}
-                
-                {/* 🔥 REQUEST A MOVIE FEATURE */}
-                <div className="mt-2 p-6 sm:p-8 border border-yellow-500/20 rounded-2xl bg-gradient-to-b from-gray-900/60 to-gray-900/20 text-center max-w-md w-full mx-auto">
-                  <h3 className="text-xl font-medium text-white mb-2">Film not available?</h3>
-                  <p className="text-gray-400 text-sm mb-6">Request it and our editors will try to add its full movie page—complete with parents guide, streaming links, and analysis—within the next 7 days.</p>
-                  
-                  {requestStatus === 'success' ? (
-                    <div className="flex items-center justify-center gap-2 text-green-400 bg-green-400/10 px-6 py-3 rounded-full border border-green-400/20">
-                      <CheckCircle2 className="w-5 h-5" />
-                      <span className="font-medium">Request Sent!</span>
-                    </div>
-                  ) : (
-                    <button 
-                      onClick={handleRequestMovie}
-                      disabled={requestStatus === 'submitting'}
-                      className="flex items-center justify-center gap-2 w-full bg-yellow-500 hover:bg-yellow-400 text-black px-6 py-3 rounded-full font-semibold transition-all disabled:opacity-50"
-                    >
-                      {requestStatus === 'submitting' ? <Loader className="w-5 h-5 animate-spin" /> : <Send className="w-5 h-5" />}
-                      <span>Request "{query}"</span>
-                    </button>
-                  )}
-                </div>
               </div>
             )}
           </div>
