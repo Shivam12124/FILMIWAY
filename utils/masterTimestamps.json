@@ -10504,5 +10504,40 @@
                 "description": "Strong and frequent sexual language throughout, including repeated use of the F-word, crude sexual terms, and explicit sexual discussions; overall raunchy dialogue dominates the film."
             }
         ]
+    },
+    "1339713": {
+        "Title": "Obsession",
+        "Age": "18+",
+        "Summary": "Aged 18+ for brutal graphic violence, nudity and a brief explicit sex scene, and strong language throughout.",
+        "scenes": [
+            {
+                "start": "0:44:36",
+                "end": "0:45:00",
+                "type": "Sex & Partial Nudity",
+                "severity": "High",
+                "description": "A brief sex scene with visible thrusting; the female character is fully clothed, while the male character’s bare back and buttocks are visible."
+            },
+            {
+                "start": "1:36:42",
+                "end": "1:36:50",
+                "type": "Nudity",
+                "severity": "High",
+                "description": "Full frontal nudity of a female corpse seated in a chair; genital area is obscured by shadow."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "High",
+                "description": "Strong and disturbing violence throughout, including severe head injuries from physical attacks, shootings to the head, self-harm, stabbings with glass, suicide and overdose, and graphic assaults with bloody and unsettling injury detail."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "High",
+                "description": "Strong and pervasive language throughout, including ~80+ uses of the F-word, frequent coarse expletives, sexual references, and repeated insults and vulgar expressions."
+            }
+        ]
     }
 }

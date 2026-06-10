@@ -10552,5 +10552,23 @@
     "budget": "N/A",
     "revenue": "N/A",
     "tagline": "It's going down."
+  },
+  "tt37287335": {
+    "tmdbId": "1339713",
+    "poster_path": "/bRwnj8WEKBCvmfeUNOukJPwB43K.jpg",
+    "backdrop_path": "/4k99kV4R1bbbrsnjR205v91Xbin.jpg",
+    "runtime": 108,
+    "release_date": "2026-05-13",
+    "overview": "After breaking the mysterious \"One Wish Willow\" to win his crush's heart, a hopeless romantic finds himself getting exactly what he asked for but soon discovers that some desires come at a dark, sinister price.",
+    "ageRating": "R",
+    "director": "Curry Barker",
+    "cast": [
+      "Michael Johnston",
+      "Inde Navarrette",
+      "Cooper Tomlinson"
+    ],
+    "budget": "$750,000",
+    "revenue": "$229,414,260",
+    "tagline": "Be careful who you wish for…"
   }
 }

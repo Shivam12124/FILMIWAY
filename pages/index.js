@@ -336,12 +336,21 @@ export async function getStaticProps() {
     const paramountData = getCollectionData(paramountKeys, 'paramount');
 
     const top10EroticThrillers = getTop10MoviesWithSlugs(EROTIC_THRILLER_DB, EROTIC_THRILLER_POSTERS);
-    const top10TrendingMovies = getTop10MoviesWithSlugs(TRENDING_DB, TRENDING_POSTERS);
+    let top10TrendingMovies = getTop10MoviesWithSlugs(TRENDING_DB, TRENDING_POSTERS);
     
     // ⚡ CUSTOM HOMEPAGE ARRAY: High-traffic Parents Guides 
-    const trendingParentsGuideIds = [884, 218, 318846, 475557, 398818, 1791, 10867, 979, 11423, 1072790];
+    const trendingParentsGuideIds = [1339713, 884, 218, 318846, 475557, 398818, 1791, 10867, 979, 11423];
     const customTrendingGuidesDb = trendingParentsGuideIds.map(id => masterDatabase.find(m => m.tmdbId === id)).filter(Boolean);
     const trendingParentsGuides = getTop10MoviesWithSlugs(customTrendingGuidesDb, null);
+
+    // ⚡ INJECT OBSESSION INTO TRENDING CAROUSEL AND REMOVE SALTBURN
+    top10TrendingMovies = top10TrendingMovies.map(movie => {
+      if (movie.tmdbId === 930564 || movie.Title === "Saltburn") {
+        const obsession = masterDatabase.find(m => m.tmdbId === 1339713);
+        return obsession ? getTop10MoviesWithSlugs([obsession], null)[0] : movie;
+      }
+      return movie;
+    });
 
     return {
       props: {

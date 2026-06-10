@@ -98,8 +98,7 @@ export const COLLECTIONS = {
       { label: "UNRELIABLE", desc: "Doubt reality" },
       { label: "DREAD", desc: "Creeping tension" }
     ],
-    movies: ['tt0102926', 'tt0137523', 'tt0209144', 'tt0114369', 'tt1130884', 'tt0947798', 'tt0361862', 'tt0364569', 'tt0075314', 'tt0081505'],
-        movies: ['tt0102926', 'tt0137523', 'tt0209144', 'tt0114369', 'tt1130884', 'tt0947798', 'tt0361862', 'tt0364569', 'tt0075314', 'tt0081505', 'tt4550098'],
+    movies: ['tt0102926', 'tt0137523', 'tt0209144', 'tt0114369', 'tt1130884', 'tt0947798', 'tt0361862', 'tt0364569', 'tt0075314', 'tt0081505', 'tt4550098'],
     relatedCollections: ['movies-like-se7en', 'movies-like-shutter-island', 'best-detective-thriller-movies']
   },
 
@@ -142,7 +141,7 @@ export const COLLECTIONS = {
       { label: "PERFECTION", desc: "Artistic toll" },
       { label: "FRACTURED", desc: "Identity collapse" }
     ],
-    movies: ['tt0156887', 'tt2582802', 'tt1034415', 'tt0040725', 'tt1125849', 'tt0166924', 'tt0254686', 'tt2562232', 'tt0180093', 'tt2872718'],
+    movies: ['tt0156887', 'tt2582802', 'tt1034415', 'tt0040725', 'tt1125849', 'tt0166924', 'tt0254686', 'tt2562232', 'tt0180093', 'tt2872718', 'tt37287335'],
     relatedCollections: ['best-psychological-thriller-movies', 'movies-like-shutter-island', 'best-erotic-thriller-movies']
   },
 

@@ -214,7 +214,11 @@ export const sortEnemiesToLoversMovies = (movies, sortBy) => {
         case 'runtime':
             return sortedMovies.sort((a, b) => b.runtime - a.runtime);
         default:
-            return sortedMovies.sort((a, b) => a.rank - b.rank);
+            return sortedMovies.sort((a, b) => {
+                const rankA = typeof a.rank === 'number' ? a.rank : Infinity;
+                const rankB = typeof b.rank === 'number' ? b.rank : Infinity;
+                return rankA - rankB;
+            });
     }
 };
 

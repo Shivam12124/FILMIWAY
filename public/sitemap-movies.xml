@@ -3531,5 +3531,13 @@
     <priority>0.8</priority>
   </url>
 
+
+    <url>
+    <loc>https://filmiway.com/movie/obsession</loc>
+    <lastmod>2026-06-10T06:45:44.129Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
  
 </urlset>

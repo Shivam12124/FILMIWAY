@@ -6422,5 +6422,16 @@
     "rank": 9,
     "slug": "star-wars-episode-v-the-empire-strikes-back",
     "sourceFile": "sciFiMovieData.js"
+  },
+  {
+    "tmdbId": 1339713,
+    "imdbID": "tt37287335",
+    "Title": "Obsession",
+    "year": 2026,
+    "genre": "Thriller, Horror",
+    "runtime": 104,
+    "rank": "BONUS",
+    "slug": "obsession",
+    "sourceFile": "blackSwanMovieData.js"
   }
 ]

@@ -24,7 +24,7 @@ export const BLACK_SWAN_MOVIE_SLUGS = {
     'tt1034415': 'suspiria',
     
     // Rank 4: The Red Shoes
-    'ttt0040725': 'the-red-shoes',
+    'tt0040725': 'the-red-shoes',
     
     // Rank 5: The Wrestler
     'tt1125849': 'the-wrestler',
@@ -42,7 +42,10 @@ export const BLACK_SWAN_MOVIE_SLUGS = {
     'tt0180093': 'requiem-for-a-dream',
     
     // Rank 10: Nightcrawler
-    'tt2872718': 'nightcrawler'
+    'tt2872718': 'nightcrawler',
+    
+    // BONUS FILM: Obsession
+    'tt37287335': 'obsession'
 };
 
 // ✅ REVERSE SLUG MAPPING (SLUG TO IMDB ID)
@@ -197,7 +200,11 @@ export const sortBlackSwanMovies = (movies, sortBy) => {
         case 'runtime':
             return sortedMovies.sort((a, b) => b.runtime - a.runtime); // ✅ ADDED
         default:
-            return sortedMovies.sort((a, b) => a.rank - b.rank);
+            return sortedMovies.sort((a, b) => {
+                const rankA = typeof a.rank === 'number' ? a.rank : Infinity;
+                const rankB = typeof b.rank === 'number' ? b.rank : Infinity;
+                return rankA - rankB;
+            });
     }
 };
 

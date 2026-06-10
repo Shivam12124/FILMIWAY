@@ -19,7 +19,8 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 1791, "imdbID": "tt0254686", "Title": "The Piano Teacher", "year": 2001, "genre": "Drama", "runtime": 131, "rank": 7 },
     { "tmdbId": 194662, "imdbID": "tt2562232", "Title": "Birdman", "year": 2014, "genre": "Comedy", "runtime": 119, "rank": 8 },
     { "tmdbId": 641, "imdbID": "tt0180093", "Title": "Requiem for a Dream", "year": 2000, "genre": "Drama", "runtime": 102, "rank": 9 },
-    { "tmdbId": 242582, "imdbID": "tt2872718", "Title": "Nightcrawler", "year": 2014, "genre": "Thriller", "runtime": 117, "rank": 10 }
+    { "tmdbId": 242582, "imdbID": "tt2872718", "Title": "Nightcrawler", "year": 2014, "genre": "Thriller", "runtime": 117, "rank": 10 },
+    { "tmdbId": 1339713, "imdbID": "tt37287335", "Title": "Obsession", "year": 2026, "genre": "Thriller, Horror", "runtime": 104, "rank": "BONUS" }
 ];
 
 const timeToSeconds = (timeStr) => {
@@ -102,7 +103,15 @@ export const SENSITIVE_TIMELINES = {
     },
     
     // 10. Nightcrawler (Clean)
-    242582: { scenes: [] }
+    242582: { scenes: [] },
+    
+    // BONUS: Obsession
+    1339713: { 
+        scenes: [
+            { start: "0:44:36", end: "0:45:00", type: "Sex & Partial Nudity", severity: "High" },
+            { start: "1:36:42", end: "1:36:50", type: "Nudity", severity: "High" }
+        ] 
+    }
 };
 
 export const FALLBACK_POSTERS = {
@@ -115,7 +124,8 @@ export const FALLBACK_POSTERS = {
    1791: "https://m.media-amazon.com/images/M/MV5BMTQ5NDk2NTg3MF5BMl5BanBnXkFtZTcwNTA5NDk2NA@@._V1_SX500.jpg",
     194662: "https://m.media-amazon.com/images/M/MV5BODAzNDMxMzAxOV5BMl5BanBnXkFtZTgwMDMxMjA4MjE@._V1_SX500.jpg",
     641: "https://m.media-amazon.com/images/M/MV5BOTdiNzJlOWUtN2VlZS00MjE1LTkxN2QtN2Y3YjY3MDI5YmM4XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX500.jpg",
-    242582: "https://m.media-amazon.com/images/M/MV5BNjkyMDQ1NTEwMl5BMl5BanBnXkFtZTgwNzQ4NDE5NTM@._V1_SX500.jpg"
+    242582: "https://m.media-amazon.com/images/M/MV5BNjkyMDQ1NTEwMl5BMl5BanBnXkFtZTgwNzQ4NDE5NTM@._V1_SX500.jpg",
+    1339713: "https://via.placeholder.com/500x750?text=Obsession"
 };
 
 // ✅ Helper function to ensure defaults
@@ -297,6 +307,22 @@ export const COMPLETE_MOVIE_DATA = {
         ],
         synopsis: "A petty thief turns tragedy into cold, calculated art by racing to capture the first footage of accidents and murder. Lou Bloom is the sociopathic evolution of the obsessive artist, where the perfect shot is worth more than a human life.",
         themes: ["Media Exploitation", "Sociopathy", "Ruthless Ambition"]
+    }),
+    
+    // BONUS: Obsession
+    1339713: createMovieData({ 
+        psychologicalIntensity: 90, destructiveObsession: 95, visceralImpact: 85, complexityLevel: "HIGH", 
+        dominantColor: "#7f1d1d", rating: 7.5, criticsScore: 80, audienceScore: 85, director: "Curry Barker", 
+        cast: ["Curry Barker"], boxOffice: "N/A", budget: "N/A", 
+        dna: { "Psychological": 60, "Horror": 30, "Thriller": 10 },
+        scenes: [
+            { time: 10, intensity: 50, label: "The Beginning", color: "#450a0a" },
+            { time: 44, intensity: 85, label: "The Encounter", color: "#7f1d1d" },
+            { time: 70, intensity: 90, label: "Psychological Break", color: "#991b1b" },
+            { time: 96, intensity: 100, label: "The Corpse", color: "#b91c1c" }
+        ],
+        synopsis: "A gripping psychological horror exploring the terrifying lengths one will go to in the name of obsession, identity, and perfection.",
+        themes: ["Obsession", "Identity Collapse", "Paranoia"]
     })
 };
 
@@ -310,7 +336,8 @@ export const STRATEGIC_QUOTES = {
    1791: "I have no feelings. Get that into your head.",
     194662: "You are not your work.",
     641: "I'm gonna be on television.",
-    242582: "I like to say that if you're seeing me, you're having the worst day of your life."
+    242582: "I like to say that if you're seeing me, you're having the worst day of your life.",
+    1339713: "How far would you go?"
 };
 
 export const CINEMATIC_COLORS = {
@@ -391,6 +418,13 @@ export const BLACK_SWAN_MOVIE_FAQS = {
         { question: "What does the broken mirror scene symbolize in Nightcrawler?", answer: "This powerful scene is Lou's only moment of genuine, uncontrolled emotion in the entire film. When he violently shatters the mirror, we see the terrifying 'cracks' in his polite, corporate mask. Like Nina's mirror hallucinations, it shows a man whose internal self is so fractured and dangerous that it can barely be contained." },
         { question: "Why does Lou let Rick die at the end of Nightcrawler?", answer: "Rick simply became a business 'cost' that Lou was no longer willing to pay. Lou actively orchestrated the shootout not just to get incredible, exclusive footage, but to permanently eliminate a partner who was demanding more money and leverage. It is his ultimate act of 'artistic purity'—removing anything that interferes with the final product." },
         { question: "What is the deeper message of the movie Nightcrawler?", answer: "The film is a brilliant, biting indictment of the audience. Lou Bloom's booming success only exists because the public desperately wants to see the most graphic, bloody footage on the morning news. If Black Swan is about the artist's sacrifice *for* art, Nightcrawler is about the artist sacrificing *others* to feed the audience’s hunger for spectacle." }
+    ],
+    'Obsession': [
+        { question: "Does Obsession have violence and gore?", answer: "According to the Filmiway Parents Guide, the violence in Obsession is rated as High. Strong and disturbing violence throughout, including severe head injuries from physical attacks, shootings to the head, self-harm, stabbings with glass, suicide and overdose, and graphic assaults with bloody and unsettling injury detail." },
+        { question: "Does Obsession have profanity or swearing?", answer: "The profanity in Obsession is rated as High. Strong and pervasive language throughout, including ~80+ uses of the F-word, frequent coarse expletives, sexual references, and repeated insults and vulgar expressions." },
+        { question: "Why is Obsession rated R?", answer: "Obsession earns its R rating due to high sexual content and nudity, high violence, and high profanity. Specifically, the film contains Strong and pervasive language throughout, including ~80+ uses of the F-word, frequent coarse expletives, sexual references, and repeated insults and vulgar expressions. Strong and disturbing violence throughout, including severe head injuries from physical attacks, shootings to the head, self-harm, stabbings with glass, suicide and overdose, and graphic assaults with bloody and unsettling injury detail. Adults can use our timestamps to skip the explicit content." },
+        { question: "Is Obsession similar to Black Swan?", answer: "Yes. Just as Black Swan explores the destructive pursuit of artistic perfection in ballet, Obsession delves into the horrifying psychological toll of identity collapse, paranoia, and the desperate desire to achieve an impossible ideal." },
+        { question: "Who directed Obsession?", answer: "The film is directed by Curry Barker, an indie filmmaker known for his raw, unhinged, and gritty style, heavily utilizing unreliable narrators to craft intense, reality-breaking cinema." }
     ]
 };
 // 5. UTILITY FUNCTIONS & THE KEYWORD BRIDGE
