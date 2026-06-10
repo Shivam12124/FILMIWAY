@@ -1044,7 +1044,8 @@ const MovieDetailsSection = React.memo(({
         />
       )}
 
-      <div className="w-full bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8 clean-injected-component">
+      {/* ⚡ CLS FIX: Reserve height so region-detection doesn't shift the layout! */}
+      <div className="w-full min-h-[220px] sm:min-h-[180px] bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8 clean-injected-component">
         <EnhancedWhereToWatchSection movie={movie} />
       </div>
 
