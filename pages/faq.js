@@ -68,9 +68,9 @@ const FAQItem = ({ item, index }) => {
         
         {/* Text Content */}
         <div>
-          <h3 className="text-xl font-semibold text-white mb-3 leading-tight">
+          <h2 className="text-xl font-semibold text-white mb-3 leading-tight">
             {item.question}
-          </h3>
+          </h2>
           <p className="text-gray-400 font-light leading-relaxed text-base">
             {item.answer}
           </p>
