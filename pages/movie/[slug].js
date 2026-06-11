@@ -343,7 +343,7 @@ export async function getStaticPaths() {
     return { paths: masterDatabase.map((m) => {
         const safeSlug = m.slug || (m.Title || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
         return { params: { slug: safeSlug } };
-    }), fallback: false };
+    }), fallback: 'blocking' };
 }
 
 export async function getStaticProps({ params }) {
@@ -351,7 +351,7 @@ export async function getStaticProps({ params }) {
     const tmdbCache = require('../../data/tmdbCache.json');
     const baseMovie = masterDatabase.find((m) => {
         const safeSlug = m.slug || (m.Title || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
-        return safeSlug === params.slug;
+        return safeSlug.toLowerCase().trim() === (params.slug || '').toLowerCase().trim();
     }) || null;
     const { getPrimaryCollectionForMovie, COLLECTIONS } = require('../../data/collections');
     if (!baseMovie) return { notFound: true };

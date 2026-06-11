@@ -49,7 +49,7 @@ export const SENSITIVE_TIMELINES = {
     300669: { 
         scenes: [
             { start: "0:03:14", end: "0:03:17", type: "Sexual Content", severity: "Moderate" },
-            { start: "1:09:50", end: "1:11:00", type: "Sexual content", severity: "High" }
+            { start: "1:09:50", end: "1:11:00", type: "Sexual content", severity: "High", description: "A restrained woman is subjected to a forced insemination attempt using a turkey baster, creating a disturbing sexual assault context." }
         ] 
     },
 
@@ -185,7 +185,7 @@ export const COMPLETE_MOVIE_DATA = {
     // Peak: 94 (The Basement - Twisted Reveal).
     300669: createMovieData({ 
         scariness: 90, 
-        dominantColor: "#171717", rating: 7.1, criticsScore: 88, audienceScore: 79, director: "Fede Álvarez", 
+        dominantColor: "#800101", rating: 7.1, criticsScore: 88, audienceScore: 79, director: "Fede Álvarez", 
         cast: ["Stephen Lang", "Jane Levy", "Dylan Minnette"], boxOffice: "$157 million", budget: "$9 million", 
         dna: { "Horror": 50, "Thriller": 50 }, 
         scenes: [
@@ -397,18 +397,12 @@ export const HULU_HORROR_MOVIE_FAQS = {
             question: "Who is the Blind Man?", 
             answer: "Norman Nordstrom (The Blind Man) is a Gulf War veteran who lost his sight during combat due to shrapnel. He is played menacingly by Stephen Lang. Despite his disability, his heightened hearing and smell, combined with his military training, make him a lethal apex predator in his own dark home." 
         },
-        { 
-            question: "Is it supernatural?", 
-            answer: "No. The film is entirely grounded in reality, which makes the tension even more palpable. The danger is physical and immediate—a locked door, a loaded gun, a vicious dog—rather than ghosts or demons, forcing the audience to hold their breath alongside the characters." 
-        },
+        
         { 
             question: "What is the turkey baster scene?", 
             answer: "It is one of the most controversial and disturbing scenes in modern thriller history. It reveals the Blind Man's true, twisted motivation involving forced insemination to replace his lost daughter. This scene shifts the film from a standard home invasion thriller to something significantly darker and more perverse." 
-        },
-        { 
-            question: "Why is the dog so scary?", 
-            answer: "The Rottweiler in the film serves as a relentless biological weapon. Unlike the Blind Man, who can be tricked by silence, the dog can smell and track the intruders instantly. It removes their ability to hide, forcing them to keep moving into dangerous traps." 
         }
+        
     ],
     'The Babadook': [
         { 
