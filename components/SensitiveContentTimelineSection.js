@@ -462,34 +462,6 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                     </motion.div>
                 )}
 
-            {/* ⚡ SEO CHEAT CODE: HIDDEN HTML TABLE FOR GOOGLE FEATURED SNIPPETS & LLMs */}
-            <div className="sr-only" aria-hidden="false">
-                <h2>{movie.Title} Recommended Age and Parents Guide Summary</h2>
-                {recommendedAge && <p><strong>Age Rating:</strong> {recommendedAge}</p>}
-                {ageSummary && <p><strong>Content Summary:</strong> {ageSummary}</p>}
-            </div>
-            <table className="sr-only" aria-label={`Parents Guide Timestamps for ${movie.Title}`}>
-                <caption suppressHydrationWarning>Exact skip timestamps and severity ratings for sensitive scenes in {movie.Title} ({currentRuntime})</caption>
-                <thead>
-                    <tr>
-                        <th scope="col">Content Type</th>
-                        <th scope="col">Start Time</th>
-                        <th scope="col">End Time</th>
-                        <th scope="col">Severity Level</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {sensitiveData.scenes.map((scene, idx) => (
-                        <tr key={`seo-table-row-${idx}`}> {/* These scenes are already filtered */}
-                            <td>{scene.type || 'Mature Content'}{scene.description && scene.description !== scene.type ? ` - ${scene.description}` : ''}</td>
-                            <td>{scene.start || 'N/A'}</td>
-                            <td>{scene.end || 'N/A'}</td>
-                            <td>{scene.severity || 'Moderate'}</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-
             <div className="relative mt-0">
 
                 <div className="divide-y divide-white/5">
