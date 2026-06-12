@@ -341,7 +341,7 @@ export default function UniversalMoviePage({ movie }) {
 export async function getStaticPaths() {
     const masterDatabase = require('../../utils/masterDatabase.json');
     return { paths: masterDatabase.map((m) => {
-        const safeSlug = m.slug || (m.Title || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+        const safeSlug = m.slug || (m.Title || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
         return { params: { slug: safeSlug } };
     }), fallback: 'blocking' };
 }
@@ -350,7 +350,7 @@ export async function getStaticProps({ params }) {
     const masterDatabase = require('../../utils/masterDatabase.json');
     const tmdbCache = require('../../data/tmdbCache.json');
     const baseMovie = masterDatabase.find((m) => {
-        const safeSlug = m.slug || (m.Title || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+        const safeSlug = m.slug || (m.Title || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
         return safeSlug.toLowerCase().trim() === (params.slug || '').toLowerCase().trim();
     }) || null;
     const { getPrimaryCollectionForMovie, COLLECTIONS } = require('../../data/collections');

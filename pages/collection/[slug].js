@@ -4786,7 +4786,7 @@ export async function getStaticProps({ params }) {
             const finalPoster = cachedMovie.poster_path 
                 ? `https://image.tmdb.org/t/p/w780${cachedMovie.poster_path}` 
                 : (movie.Poster || movie.poster || '');
-            const generatedSlug = (movie.Title || movie.title || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+            const generatedSlug = (movie.Title || movie.title || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
 
             return {
                 imdbID: movie.imdbID || '',
@@ -4826,7 +4826,7 @@ export async function getStaticProps({ params }) {
                 const finalPoster = cachedMovie.poster_path 
                     ? `https://image.tmdb.org/t/p/w780${cachedMovie.poster_path}` 
                     : (movie.Poster || movie.poster || '');
-                const generatedSlug = (movie.Title || movie.title || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+                const generatedSlug = (movie.Title || movie.title || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
 
                 return {
                     imdbID: movie.imdbID || '',

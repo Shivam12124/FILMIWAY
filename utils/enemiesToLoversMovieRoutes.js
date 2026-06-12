@@ -6,6 +6,8 @@ import { COMPLETE_MOVIE_DATABASE, COMPLETE_MOVIE_DATA } from './enemiesToLoversM
 // ✅ GENERATE URL SLUG FROM MOVIE TITLE
 export const generateMovieSlug = (title) => {
     return title
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
         .toLowerCase()
         .replace(/[^a-z0-9\s-]/g, '') // Remove special chars except spaces and hyphens
         .replace(/\s+/g, '-')         // Replace spaces with hyphens
