@@ -9,10 +9,15 @@ const slugTracker = {};
 
 // ✅ HELPER: Generates beautiful, SEO-friendly slugs (e.g., "black-swan")
 function generateSlug(title, year) {
-    let baseSlug = title.toLowerCase()
+    if (title === "TMNT: Mutant Mayhem") return "teenage-mutant-ninja-turtles-mutant-mayhem";
+
+    let baseSlug = title.normalize("NFD").replace(/[\u0300-\u036f]/g, "") // Fix Accents (e.g., é, à)
+        .replace(/[\/.]/g, '-')       // Fix Punctuation (Face/Off -> face-off, R.M.N. -> r-m-n)
+        .toLowerCase()
         .replace(/[^a-z0-9\s-]/g, '') // Remove special characters
         .replace(/\s+/g, '-')         // Replace spaces with hyphens
         .replace(/-+/g, '-')          // Remove double hyphens
+        .replace(/^-|-$/g, '')        // Remove leading/trailing hyphens
         .trim();
 
     // Prevent collisions (e.g., if there are two movies named "Crash", append the year)
