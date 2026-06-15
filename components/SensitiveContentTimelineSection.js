@@ -462,9 +462,14 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                     </motion.div>
                 )}
 
-            <div className="relative mt-0">
+            <div className="relative mt-4 sm:mt-6">
+                {/* 🚀 SEO UPGRADE: Visible intro sentence for Google's Featured Snippet extractor */}
+                <h2 className="text-[13px] sm:text-sm font-semibold text-gray-300 mb-3 px-3.5 sm:px-5">
+                    Complete list of exact timestamps to skip mature content in {movie?.Title}:
+                </h2>
 
-                <div className="divide-y divide-white/5">
+                {/* 🚀 SEO UPGRADE: Changed div to ul for semantic list extraction */}
+                <ul className="divide-y divide-white/5 m-0 p-0 list-none">
                     {sensitiveData.scenes.map((scene, index) => {
                         const sceneStart = scene.start || '';
                         const sceneEnd = scene.end || '';
@@ -490,7 +495,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                         ) : null;
 
                         return (
-                            <div key={index} className="group p-3.5 sm:px-5 sm:py-3.5 hover:bg-white/[0.03] transition-colors duration-200 flex flex-col sm:flex-row sm:items-center gap-2.5 sm:gap-4">
+                            <li key={index} className="group p-3.5 sm:px-5 sm:py-3.5 hover:bg-white/[0.03] transition-colors duration-200 flex flex-col sm:flex-row sm:items-center gap-2.5 sm:gap-4">
                                 <div className={`flex items-center ${sceneStart ? 'justify-between' : 'justify-end'} sm:justify-start w-full sm:w-auto gap-3`}>
                                     {sceneStart && (
                                         <div className="flex items-center gap-1.5 text-gray-400 group-hover:text-gray-200 transition-colors shrink-0">
@@ -526,10 +531,10 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                                 <div className="hidden sm:block shrink-0 ml-auto">
                                     {severityBadge}
                                 </div>
-                            </div>
+                            </li>
                         );
                     })}
-                </div>
+                </ul>
             </div>
 
                 {/* 🔥 ENHANCED ENGAGEMENT FOOTER: Designed for maximum CTR */}

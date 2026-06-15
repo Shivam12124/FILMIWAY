@@ -393,11 +393,13 @@ export async function getStaticProps() {
     moviesArray.forEach(movie => {
       // ⚡ 2. DO NOT SKIP IF ALREADY IN MAP. WE MIGHT NEED TO UPDATE ITS POSTER.
       if (movie && movie.imdbID) {
-        const primaryCollectionSlug = getPrimaryCollectionForMovie(movie.imdbID);
-        if (primaryCollectionSlug) {
+        const cleanId = movie.imdbID.toString().trim();
+        const masterMovie = masterDatabase?.find(m => m.imdbID === cleanId);
+        
+        if (masterMovie) {
+          const primaryCollectionSlug = getPrimaryCollectionForMovie(movie.imdbID) || 'collection';
           // ⚡ SAFELY EXTRACT POSTER REGARDLESS OF DATABASE ORIGIN (TMDB vs OMDb)
           let finalPoster = null;
-          const cleanId = movie.imdbID.toString().trim();
             const cachedData = tmdbCache[cleanId];
             
             if (cachedData && cachedData.poster_path) {
@@ -425,7 +427,6 @@ export async function getStaticProps() {
             finalPoster = null;
           }
 
-          const masterMovie = masterDatabase?.find(m => m.imdbID === movie.imdbID);
           const movieSlug = masterMovie?.slug || (movie.Title || movie.title || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
 
           if (!uniqueMoviesMap.has(movie.imdbID)) {

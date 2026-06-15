@@ -265,10 +265,11 @@ export async function getStaticProps() {
           // 🔥 STRIP PUNCTUATION + ADD YEAR: Safely catches Dash (-) vs En-dash (–)
           const titleKey = cleanTitle.toLowerCase().replace(/[^a-z0-9]/g, '') + (movie.year || movie.Year || '');
 
-        if (validImdbIds.has(rawId) && !uniqueMoviesMap.has(cleanId) && !seenTitles.has(titleKey)) {
-          const primaryCollectionSlug = getPrimaryCollectionForMovie(rawId);
-          if (primaryCollectionSlug) {
-            const masterMovie = masterDatabase?.find(m => m.imdbID === cleanId);
+        // 🔥 THE FIX: If the user forgot to add a bonus movie to collections.js, 
+        // we still allow it to render if it exists in the masterDatabase!
+        const masterMovie = masterDatabase?.find(m => m.imdbID === cleanId);
+        if (masterMovie && !uniqueMoviesMap.has(cleanId) && !seenTitles.has(titleKey)) {
+          const primaryCollectionSlug = getPrimaryCollectionForMovie(rawId) || 'collection';
             const movieSlug = masterMovie?.slug || cleanTitle.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
 
             uniqueMoviesMap.set(cleanId, {
@@ -278,7 +279,6 @@ export async function getStaticProps() {
               movieSlug: movieSlug
             });
             seenTitles.add(titleKey);
-          }
         }
       }
     });

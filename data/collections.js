@@ -1185,10 +1185,56 @@ export const getBestActionCollection = () => COLLECTIONS['best-action-movies'];
 // This ensures that no matter how many collections a movie is added to,
 // it will always use this primary URL for SEO, preventing cannibalization.
 export const getPrimaryCollectionForMovie = (imdbID) => {
-  const primarySlug = Object.keys(COLLECTIONS).find(slug => 
+  let primarySlug = Object.keys(COLLECTIONS).find(slug => 
     COLLECTIONS[slug].movies.includes(imdbID)
   );
   
+  // ⚡ GLOBAL FALLBACK: Automatically map Bonus films using the master database!
+  // This completely prevents the "BACK TO COLLECTION COLLECTION" bug from Search & Directory pages.
+  if (!primarySlug) {
+    try {
+      const masterDatabase = require('../utils/masterDatabase.json');
+      const movie = masterDatabase.find(m => m.imdbID === imdbID);
+      if (movie && movie.sourceFile) {
+        const sourceMap = {
+            'enemiesToLoversMovieData.js': 'best-enemies-to-lovers-movies',
+            'raunchyComedyMovieData.js': 'best-raunchy-comedy-movies',
+            'blackSwanMovieData.js': 'movies-like-black-swan',
+            'monicaBellucciMovieData.js': 'top-10-monica-bellucci-movies',
+            'jenniferLawrenceMovieData.js': 'top-10-jennifer-lawrence-movies',
+            'a24MovieData.js': 'best-a24-movies',
+            'darkComedyMovieData.js': 'best-dark-comedy-movies',
+            'ptaMoviesData.js': 'best-paul-thomas-anderson-movies',
+            'basicInstinctMovieData.js': 'movies-like-basic-instinct',
+            'survivalMovieData.js': 'best-survival-movies',
+            'matrixMovieData.js': 'movies-like-the-matrix',
+            'se7enMovieData.js': 'movies-like-se7en',
+            'parasiteMovieData.js': 'movies-like-parasite',
+            'oldboyMovieData.js': 'movies-like-oldboy',
+            'donnieDarkoMovieData.js': 'movies-like-donnie-darko',
+            'fightClubMovieData.js': 'movies-like-fight-club',
+            'eyesWideShutMovieData.js': 'movies-like-eyes-wide-shut',
+            'prestigeMovieData.js': 'movies-like-the-prestige',
+            'eroticThrillerMovieData.js': 'best-erotic-thriller-movies',
+            'eroticRomanceMovieData.js': 'best-erotic-romance-movies',
+            'greedMovieData.js': 'best-movies-about-greed',
+            'roadTripMovieData.js': 'top-10-road-trip-movies',
+            'thoughtProvokingMovieData.js': 'best-thought-provoking-movies',
+            'neoNoirMovieData.js': 'best-neo-noir-movies',
+            'bestActionMoviesData.js': 'best-action-movies',
+            'trueStoryMovieData.js': 'best-true-story-movies',
+            'decadeMovieData.js': 'best-movies-of-the-decade',
+            'gangsterMovieData.js': 'best-gangster-movies-of-all-time',
+            'bookAdaptationData.js': 'top-10-book-adaptations',
+            'marriageCrisisMovieData.js': 'best-marriage-crisis-movies'
+        };
+        primarySlug = sourceMap[movie.sourceFile] || null;
+      }
+    } catch (e) {
+      // Ignore if file doesn't exist during certain build steps
+    }
+  }
+
   return primarySlug || null; 
 };
 
