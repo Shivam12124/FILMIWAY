@@ -10,12 +10,12 @@ import {
 import dynamic from 'next/dynamic';
 
 import { COLLECTIONS, getPrimaryCollectionForMovie } from '../data/collections';
-import { COMPLETE_MOVIE_DATABASE as EROTIC_THRILLER_DB, FALLBACK_POSTERS as EROTIC_THRILLER_POSTERS } from '../utils/eroticThrillerMovieData';
 import { COMPLETE_MOVIE_DATABASE as TRENDING_DB, FALLBACK_POSTERS as TRENDING_POSTERS } from '../utils/trendingMovieData';
 import PlatformSelector from '../components/PlatformSelector';
 import Header from '../components/Header';
 import tmdbCache from '../data/tmdbCache.json'; // ⚡ NEW: Instant Local Data
 import masterDatabase from '../utils/masterDatabase.json';
+import masterTimestamps from '../utils/masterTimestamps.json';
 
 const MovieSection = dynamic(() => import('../components/HomeCarousels').then(mod => mod.MovieSection));
 const Top10Section = dynamic(() => import('../components/HomeCarousels').then(mod => mod.Top10Section));
@@ -107,7 +107,7 @@ const HeroSection = memo(() => {
 
 HeroSection.displayName = 'HeroSection';
 
-const FilmiwayHomepage = ({ huluCollections, thrillerCollections, hboCollections, peacockCollections, paramountCollections, top10EroticThrillers, trendingParentsGuides, top10TrendingMovies }) => {
+const FilmiwayHomepage = ({ huluCollections, thrillerCollections, hboCollections, peacockCollections, paramountCollections, rRatedCleanMovies, trendingParentsGuides, top10TrendingMovies }) => {
   const thrillerRef = useRef(null);
   const huluRef = useRef(null);
   const hboRef = useRef(null);
@@ -145,9 +145,9 @@ const FilmiwayHomepage = ({ huluCollections, thrillerCollections, hboCollections
             />
 
             <Top10Section 
-              title="Top 10 Erotic Thrillers" 
-              description="The most intensely debated psychological and sensual thrillers streaming right now." 
-              movies={top10EroticThrillers} 
+              title="R-Rated Movies (No Sexual Content)" 
+              description="Good for movie night." 
+              movies={rRatedCleanMovies} 
             />
             
             <MovieSection 
@@ -335,7 +335,25 @@ export async function getStaticProps() {
     const peacockData = getCollectionData(peacockKeys, 'peacock');
     const paramountData = getCollectionData(paramountKeys, 'paramount');
 
-    const top10EroticThrillers = getTop10MoviesWithSlugs(EROTIC_THRILLER_DB, EROTIC_THRILLER_POSTERS);
+    // ⚡ CUSTOM HOMEPAGE ARRAY: R-Rated Movies with No Sexual Content
+    const rRatedCleanMoviesDb = masterDatabase.filter(m => {
+      const cachedData = tmdbCache[m.imdbID];
+      if (!cachedData || cachedData.ageRating !== 'R') return false;
+      
+      const tmdbIdStr = m.tmdbId.toString();
+      const timestampData = masterTimestamps[tmdbIdStr];
+      if (!timestampData) return false;
+      
+      const scenes = timestampData.scenes || [];
+      const heavyScenes = scenes.filter(s => {
+        const t = (s.type || '').toLowerCase();
+        return t.includes('sex') || t.includes('nudity') || t.includes('explicit') || t.includes('suggestive') || t.includes('lingerie') || t.includes('bikini');
+      });
+      
+      return heavyScenes.length === 0;
+    }).slice(0, 10);
+    const rRatedCleanMovies = getTop10MoviesWithSlugs(rRatedCleanMoviesDb, null);
+
     let top10TrendingMovies = getTop10MoviesWithSlugs(TRENDING_DB, TRENDING_POSTERS);
     
     // ⚡ CUSTOM HOMEPAGE ARRAY: High-traffic Parents Guides 
@@ -359,7 +377,7 @@ export async function getStaticProps() {
         hboCollections: hboData,
         peacockCollections: peacockData,
         paramountCollections: paramountData,
-        top10EroticThrillers,
+        rRatedCleanMovies,
         top10TrendingMovies,
         trendingParentsGuides
       },
@@ -374,7 +392,7 @@ export async function getStaticProps() {
         hboCollections: [],
         peacockCollections: [],
         paramountCollections: [],
-        top10EroticThrillers: [],
+        rRatedCleanMovies: [],
         top10TrendingMovies: []
       },
     };
