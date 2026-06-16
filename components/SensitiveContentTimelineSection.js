@@ -463,11 +463,6 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                 )}
 
             <div className="relative mt-4 sm:mt-6">
-                {/* 🚀 SEO UPGRADE: Visible intro sentence for Google's Featured Snippet extractor */}
-                <h2 className="text-[13px] sm:text-sm font-semibold text-gray-300 mb-3 px-3.5 sm:px-5">
-                    Complete list of exact timestamps to skip mature content in {movie?.Title}:
-                </h2>
-
                 {/* 🚀 SEO UPGRADE: Changed div to ul for semantic list extraction */}
                 <ul className="divide-y divide-white/5 m-0 p-0 list-none">
                     {sensitiveData.scenes.map((scene, index) => {
