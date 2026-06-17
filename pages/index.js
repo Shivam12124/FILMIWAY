@@ -335,23 +335,24 @@ export async function getStaticProps() {
     const peacockData = getCollectionData(peacockKeys, 'peacock');
     const paramountData = getCollectionData(paramountKeys, 'paramount');
 
-    // ⚡ CUSTOM HOMEPAGE ARRAY: R-Rated Movies with No Sexual Content
-    const rRatedCleanMoviesDb = masterDatabase.filter(m => {
-      const cachedData = tmdbCache[m.imdbID];
-      if (!cachedData || cachedData.ageRating !== 'R') return false;
-      
-      const tmdbIdStr = m.tmdbId.toString();
-      const timestampData = masterTimestamps[tmdbIdStr];
-      if (!timestampData) return false;
-      
-      const scenes = timestampData.scenes || [];
-      const heavyScenes = scenes.filter(s => {
-        const t = (s.type || '').toLowerCase();
-        return t.includes('sex') || t.includes('nudity') || t.includes('explicit') || t.includes('suggestive') || t.includes('lingerie') || t.includes('bikini');
-      });
-      
-      return heavyScenes.length === 0;
-    }).slice(0, 10);
+    // --- R-Rated (No Sexual Content) Carousel Logic ---
+    // 🔥 USER REQUEST: Curated a new list of 10 R-Rated "clean" masterpieces.
+    const handPickedCleanR_IMDB_IDs = [
+      'tt0114369', // Se7en
+      'tt1392214', // Prisoners
+      'tt0443706', // Zodiac
+      'tt0477348', // No Country for Old Men
+      'tt0469494', // There Will Be Blood
+      'tt0113277', // Heat
+      'tt0099685', // Goodfellas
+      'tt0105236', // Reservoir Dogs
+      'tt0407887', // The Departed
+      'tt1392190', // Mad Max: Fury Road
+    ];
+
+    const rRatedCleanMoviesDb = handPickedCleanR_IMDB_IDs
+      .map(id => masterDatabase.find(m => m.imdbID === id))
+      .filter(Boolean);
     const rRatedCleanMovies = getTop10MoviesWithSlugs(rRatedCleanMoviesDb, null);
 
     let top10TrendingMovies = getTop10MoviesWithSlugs(TRENDING_DB, TRENDING_POSTERS);

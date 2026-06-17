@@ -201,7 +201,26 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
     const recommendedAge = timestampData?.Age || movie?.Age;
     const ageSummary = timestampData?.Summary || movie?.Summary;
 
-    // 🔥 VISUAL TIMELINE MARKERS GENERATION
+    // 🚀 SEO UPGRADE: DYNAMIC TEXT GENERATOR
+    // Prevents Google from flagging the pages as "Templated Boilerplate"
+    const textHash = useMemo(() => {
+        const str = movie?.Title || 'Film';
+        return str.charCodeAt(0) + str.length + (movie?.Year || movie?.year || 0);
+    }, [movie?.Title, movie?.Year, movie?.year]);
+
+    const genreText = useMemo(() => {
+        const g = movie?.Genre || movie?.genre;
+        return g ? `this ${g.split(',')[0].toLowerCase()}` : 'this film';
+    }, [movie?.Genre, movie?.genre]);
+
+    const cleanVariations = useMemo(() => [
+        "Filmiway editors have manually verified this film is free of explicit sexual content and nudity. Accurate for the ",
+        "Our team has carefully reviewed this movie and confirmed it contains zero sex scenes or explicit nudity. Verified for the ",
+        "You can watch with confidence knowing our editors verified there is no explicit sexual content or nudity in this film. Accurate for the ",
+        "We have fully vetted this movie and confirmed it is completely clear of any explicit nudity or sexual situations. Verified for the "
+    ], []);
+
+    //  VISUAL TIMELINE MARKERS GENERATION
     const timelineMarkers = useMemo(() => {
         const runtimeSeconds = parseRuntimeToSeconds(currentRuntime);
         return sensitiveData.scenes.map((scene, idx) => {
@@ -306,7 +325,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                         )}
 
                         <p className="text-emerald-400/80 text-xs sm:text-base md:text-lg font-light mt-1 sm:mt-2 leading-relaxed">
-                            Filmiway editors have manually verified this film is free of explicit sexual content and nudity. Accurate for the <span suppressHydrationWarning>{currentRuntime}</span>.
+                            {cleanVariations[textHash % cleanVariations.length]}<span suppressHydrationWarning>{currentRuntime}</span>.
                         </p>
                     </div>
                 </div>
@@ -320,10 +339,8 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                             </h1>
                         
                         <div 
-                            className="relative flex items-center ml-1 shrink-0 z-50" 
+                            className="relative flex items-center ml-1 shrink-0 z-50"
                             ref={infoRef}
-                            onMouseEnter={() => setShowInfo(true)}
-                            onMouseLeave={() => setShowInfo(false)}
                         >
                             <button
                                 type="button"
@@ -340,24 +357,24 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                                 />
                             </button>
                             
-                            <AnimatePresence>
-                                {showInfo && (
-                                    <motion.div 
-                                        initial={{ opacity: 0, y: -5, scale: 0.95 }}
-                                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                                        exit={{ opacity: 0, y: -5, scale: 0.95 }}
-                                        transition={{ duration: 0.15 }}
-                                        className="absolute right-0 top-[130%] mt-2 w-[280px] max-w-[90vw] sm:w-72 p-4 bg-[#111113] border border-gray-600/50 rounded-xl text-xs sm:text-sm text-gray-200 shadow-[0_15px_40px_rgba(0,0,0,0.9)] z-[100] font-sans tracking-normal leading-relaxed origin-top-right"
-                                    >
-                                        <strong className="text-white block mb-1">ⓘ 100% Manually Verified</strong>
-                                        Our editors manually watch and pull exact timestamps directly from the film. These are not based on assumptions or automated tools, so you can highly rely on them to be fully accurate and reliable.
-                                    </motion.div>
-                                )}
-                            </AnimatePresence>
+                            {/* 🚀 SEO FIX: Always render this in the DOM so Googlebot reads it, but hide visually with CSS/opacity when not active */}
+                            <motion.div 
+                                initial={false}
+                                animate={{ 
+                                    opacity: showInfo ? 1 : 0, 
+                                    y: showInfo ? 0 : -5, 
+                                    scale: showInfo ? 1 : 0.95,
+                                    pointerEvents: showInfo ? 'auto' : 'none'
+                                }}
+                                transition={{ duration: 0.15 }}
+                                className="absolute right-0 top-[130%] mt-2 w-[280px] max-w-[90vw] sm:w-72 p-4 bg-[#111113] border border-gray-600/50 rounded-xl text-xs sm:text-sm text-gray-200 shadow-[0_15px_40px_rgba(0,0,0,0.9)] z-[100] font-sans tracking-normal leading-relaxed origin-top-right"
+                            >
+                                <strong className="text-white block mb-1">100% Manually Verified</strong>
+                                Our editors manually watch and pull exact timestamps directly from the film. We provide these timestamps so parents know exactly what they or their kids are going to see, helping to remove those awkward moments in movie nights.
+                            </motion.div>
                         </div>
                         </div>
 
-                        {/* 🔥 RECOMMENDED AGE BADGE (Dynamic) */}
                         {recommendedAge && ageSummary && (
                             <motion.div 
                                 className="my-4 relative overflow-hidden rounded-2xl border border-white/10 bg-black/40 backdrop-blur-md p-4 sm:p-5 flex flex-row items-center gap-4 sm:gap-5 shadow-xl"
@@ -377,10 +394,6 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                                 </div>
                             </motion.div>
                         )}
-
-                        <p className="text-sm sm:text-base md:text-lg text-gray-400 font-light mt-3 sm:mt-4 leading-relaxed">
-                            We provide exact timestamps for <strong className="text-gray-300">{movie?.Title}</strong> because we want parents to know exactly what they and their kids are going to see. This allows you to easily monitor the film and safely skip any explicit scenes if you aren't comfortable with them.
-                        </p>
 
                     <div className="ml-1 space-y-2.5 sm:space-y-3 mt-2 sm:mt-4">
                         <p className="text-[13px] sm:text-sm text-gray-500 flex items-start sm:items-center gap-2">
