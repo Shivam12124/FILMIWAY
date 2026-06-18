@@ -146,7 +146,32 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
     };
 
     const actualScenes = sensitiveScenes || [];
-    let sensitiveData = { scenes: actualScenes }; // Show ALL scenes in the timeline (including violence & gore)
+    let sensitiveData = { scenes: [...actualScenes] }; // Show ALL scenes in the timeline (including violence & gore)
+    
+    // 🔥 Ensure both Profanity and Violence & Gore appear if at least one is present
+    const hasProfanity = sensitiveData.scenes.some(s => s.type?.toLowerCase().includes('profanity') || s.type?.toLowerCase() === 'language');
+    const hasViolence = sensitiveData.scenes.some(s => s.type?.toLowerCase().includes('violence') || s.type?.toLowerCase().includes('gore'));
+
+    if (hasProfanity || hasViolence) {
+        if (!hasProfanity) {
+            sensitiveData.scenes.push({
+                start: "",
+                end: "",
+                type: "Profanity",
+                severity: "None",
+                description: "None"
+            });
+        }
+        if (!hasViolence) {
+            sensitiveData.scenes.push({
+                start: "",
+                end: "",
+                type: "Violence & Gore",
+                severity: "None",
+                description: "None"
+            });
+        }
+    }
     
     let contentTypes = [...new Set(filteredHeavyScenes.map(s => s.type).filter(Boolean))];
     if (contentTypes.length === 0 && filteredHeavyScenes.length > 0) contentTypes = ['Mature Content'];
@@ -233,7 +258,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                 percentage,
                 id: idx
             };
-        }).filter(m => m.start && m.start !== 'N/A' && m.start !== ''); 
+                }).filter(m => m.start && m.start !== 'N/A' && m.start !== '' && m.start.toLowerCase() !== 'none'); 
     }, [sensitiveData.scenes, currentRuntime]);
 
     const getSeverityDotColor = (severity) => {
@@ -479,7 +504,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                 {/* 🚀 SEO UPGRADE: Changed div to ul for semantic list extraction */}
                 <ul className="divide-y divide-white/5 m-0 p-0 list-none">
                     {sensitiveData.scenes.map((scene, index) => {
-                        const sceneStart = scene.start || '';
+                        const rawStart = scene.start || '';
                         const sceneEnd = scene.end || '';
                         const sceneType = scene.type || scene.description || 'Content Warning';
                         const sceneDescription = scene.description || '';
@@ -502,43 +527,70 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                             </div>
                         ) : null;
 
+                        const isGeneralWarning = rawStart === '' || rawStart.toLowerCase() === 'none';
+
                         return (
                             <li key={index} className="group p-3.5 sm:px-5 sm:py-3.5 hover:bg-white/[0.03] transition-colors duration-200 flex flex-col sm:flex-row sm:items-center gap-2.5 sm:gap-4">
-                                <div className={`flex items-center ${sceneStart ? 'justify-between' : 'justify-end'} sm:justify-start w-full sm:w-auto gap-3`}>
-                                    {sceneStart && (
-                                        <div className="flex items-center gap-1.5 text-gray-400 group-hover:text-gray-200 transition-colors shrink-0">
-                                            <Clock size={13} className="opacity-50 shrink-0" />
-                                            <span className="font-mono text-[13px] sm:text-sm tracking-wide">
-                                                {sceneStart} {sceneEnd && <span className="opacity-40 text-xs mx-0.5 sm:mx-1">→</span>} {sceneEnd}
-                                            </span>
-                                        </div>
-                                    )}
-                                    <div className="sm:hidden shrink-0">
-                                        {severityBadge}
-                                    </div>
-                                </div>
-                                
-                                {sceneStart && <div className="hidden sm:block w-px h-4 bg-white/10 shrink-0" />}
-
-                                <div className="flex items-start gap-2.5 min-w-0 flex-1">
-                                    <span className="text-gray-500 group-hover:text-white transition-colors duration-300 mt-[3px] shrink-0">
-                                        {getSceneIcon(sceneType)}
-                                    </span>
-                                    <div className="flex flex-col min-w-0 w-full">
-                                        <span className="text-gray-300 text-[13px] sm:text-sm font-medium truncate group-hover:text-white transition-colors">
-                                            {sceneType}
+                                {isGeneralWarning ? (
+                                    // 🚀 NEW: Clean Layout for General Warnings (No timestamp, but has data)
+                                    <div className="flex items-start gap-3 w-full">
+                                        <span className="text-gray-500 group-hover:text-white transition-colors duration-300 mt-[3px] shrink-0">
+                                            {getSceneIcon(sceneType)}
                                         </span>
-                                        {sceneDescription && sceneDescription !== sceneType && (
-                                            <span className="text-[12px] sm:text-[13px] text-gray-400/90 leading-snug mt-0.5 break-words whitespace-normal group-hover:text-gray-300 transition-colors">
-                                                {sceneDescription}
-                                            </span>
-                                        )}
+                                        <div className="flex flex-col min-w-0 flex-1">
+                                            <div className="flex items-center justify-between w-full">
+                                                <span className="text-gray-300 text-[13px] sm:text-sm font-medium truncate group-hover:text-white transition-colors">
+                                                    {sceneType}
+                                                </span>
+                                                <div className="shrink-0 ml-3">
+                                                    {severityBadge}
+                                                </div>
+                                            </div>
+                                            {sceneDescription && sceneDescription !== sceneType && sceneDescription.toLowerCase() !== 'none' && (
+                                                <span className="text-[12px] sm:text-[13px] text-gray-400/90 leading-relaxed mt-1 break-words whitespace-normal group-hover:text-gray-300 transition-colors">
+                                                    {sceneDescription}
+                                                </span>
+                                            )}
+                                        </div>
                                     </div>
-                                </div>
+                                ) : (
+                                    // 🚀 Original Timestamp Layout for scenes that actually have times
+                                    <>
+                                        <div className={`flex items-center justify-between sm:justify-start w-full sm:w-auto gap-3`}>
+                                            <div className="flex items-center gap-1.5 text-gray-400 group-hover:text-gray-200 transition-colors shrink-0">
+                                                <Clock size={13} className="opacity-50 shrink-0" />
+                                                <span className="font-mono text-[13px] sm:text-sm tracking-wide">
+                                                    {rawStart} {sceneEnd && <span className="opacity-40 text-xs mx-0.5 sm:mx-1">→</span>} {sceneEnd}
+                                                </span>
+                                            </div>
+                                            <div className="sm:hidden shrink-0">
+                                                {severityBadge}
+                                            </div>
+                                        </div>
+                                        
+                                        <div className="hidden sm:block w-px h-4 bg-white/10 shrink-0" />
 
-                                <div className="hidden sm:block shrink-0 ml-auto">
-                                    {severityBadge}
-                                </div>
+                                        <div className="flex items-start gap-2.5 min-w-0 flex-1">
+                                            <span className="text-gray-500 group-hover:text-white transition-colors duration-300 mt-[3px] shrink-0">
+                                                {getSceneIcon(sceneType)}
+                                            </span>
+                                            <div className="flex flex-col min-w-0 w-full">
+                                                <span className="text-gray-300 text-[13px] sm:text-sm font-medium truncate group-hover:text-white transition-colors">
+                                                    {sceneType}
+                                                </span>
+                                                {sceneDescription && sceneDescription !== sceneType && sceneDescription.toLowerCase() !== 'none' && (
+                                                    <span className="text-[12px] sm:text-[13px] text-gray-400/90 leading-snug mt-0.5 break-words whitespace-normal group-hover:text-gray-300 transition-colors">
+                                                        {sceneDescription}
+                                                    </span>
+                                                )}
+                                            </div>
+                                        </div>
+
+                                        <div className="hidden sm:block shrink-0 ml-auto">
+                                            {severityBadge}
+                                        </div>
+                                    </>
+                                )}
                             </li>
                         );
                     })}

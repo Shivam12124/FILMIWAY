@@ -465,8 +465,19 @@ export async function getStaticProps({ params }) {
     const sensitiveData = masterTimestamps[String(baseMovie.tmdbId)] || { scenes: [] };
     const allScenes = sensitiveData.scenes || [];
     
-    // ✅ FIX: Pull timestamps from masterTimestamps.json so new collections never show 0 timestamps!
-    const resolvedSensitiveScenes = allScenes.length > 0 ? allScenes : (collectionData?.SENSITIVE_TIMELINES?.[baseMovie.tmdbId]?.scenes || []);
+    // ✅ FIX: Merge masterTimestamps with hardcoded scenes so NO DATA DISAPPEARS!
+    const hardcodedScenes = collectionData?.SENSITIVE_TIMELINES?.[baseMovie.tmdbId]?.scenes || [];
+    const mergedScenes = [...hardcodedScenes];
+    
+    allScenes.forEach(masterScene => {
+        // Prevent duplicate scenes from stacking
+        const exists = mergedScenes.some(s => s.type === masterScene.type && s.start === masterScene.start);
+        if (!exists) {
+            mergedScenes.push(masterScene);
+        }
+    });
+
+    const resolvedSensitiveScenes = mergedScenes;
 
     const isClean = resolvedSensitiveScenes.length === 0 || resolvedSensitiveScenes.every(s => !((s.type || '').toLowerCase().match(/sex|nudity|explicit/)));
     let metaTitle = '';

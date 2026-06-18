@@ -81,7 +81,7 @@ export const getBlackSwanMovieBreadcrumbs = (movie) => {
         { label: 'Home', href: '/' },
         { label: 'Collections', href: '/collection' },
         { label: 'Movies Like Black Swan', href: '/collection/movies-like-black-swan' },
-        { label: movie.Title, href: `/collection/movies-like-black-swan/${BLACK_SWAN_MOVIE_SLUGS[movie.imdbID]}` }
+        { label: movie.Title, href: `/movie/${BLACK_SWAN_MOVIE_SLUGS[movie.imdbID]}` }
     ];
 };
 
@@ -143,7 +143,7 @@ export const generateBlackSwanMovieSitemapUrls = (baseUrl = 'https://filmiway.co
     
     COMPLETE_MOVIE_DATABASE.forEach(movie => {
         urls.push({
-            url: `${baseUrl}/collection/movies-like-black-swan/${BLACK_SWAN_MOVIE_SLUGS[movie.imdbID]}`,
+            url: `${baseUrl}/movie/${BLACK_SWAN_MOVIE_SLUGS[movie.imdbID]}`,
             lastmod: new Date().toISOString(),
             priority: '0.7',
             changefreq: 'weekly'

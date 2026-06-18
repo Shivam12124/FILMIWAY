@@ -84,7 +84,7 @@ export const getEnemiesToLoversMovieBreadcrumbs = (movie) => {
         { label: 'Home', href: '/' },
         { label: 'Collections', href: '/collection' },
         { label: '10 Best Enemies to Lovers Movies', href: '/collection/best-enemies-to-lovers-movies' },
-        { label: movie.Title, href: `/movies/best-enemies-to-lovers-movies/${ENEMIES_TO_LOVERS_MOVIE_SLUGS[movie.imdbID]}` }
+        { label: movie.Title, href: `/movie/${ENEMIES_TO_LOVERS_MOVIE_SLUGS[movie.imdbID]}` }
     ];
 };
 
@@ -151,7 +151,7 @@ export const generateEnemiesToLoversMovieSitemapUrls = (baseUrl = 'https://filmi
     
     COMPLETE_MOVIE_DATABASE.forEach(movie => {
         urls.push({
-            url: `${baseUrl}/movies/best-enemies-to-lovers-movies/${ENEMIES_TO_LOVERS_MOVIE_SLUGS[movie.imdbID]}`,
+            url: `${baseUrl}/movie/${ENEMIES_TO_LOVERS_MOVIE_SLUGS[movie.imdbID]}`,
             lastmod: new Date().toISOString(),
             priority: '0.7',
             changefreq: 'weekly'

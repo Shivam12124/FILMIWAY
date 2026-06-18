@@ -500,6 +500,8 @@ export const HBO_THRILLER_MOVIE_FAQS = {
         }
     ],
     'Inception': [
+        { question: "Does Inception have violence and gore?", answer: "According to the Filmiway Parents Guide, the violence in Inception is rated as Moderate. Moderate action violence including shootings, explosions, stabbings, fatal accidents, hand-to-hand combat, and scenes of death and peril." },
+        { question: "Does Inception have profanity or swearing?", answer: "The profanity in Inception is rated as Mild. Mild language including occasional coarse terms, religious exclamations, and infrequent profanity." },
         { 
             question: "Does the top fall?", 
             answer: "The film cuts to black before we see if the top falls. Nolan says the point isn't whether it falls, but that Cobb *walks away* and stops looking at it. He has chosen his reality (his kids), regardless of whether it is a dream or not." 

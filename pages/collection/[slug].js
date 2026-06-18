@@ -4452,6 +4452,18 @@ return (
                     <div className="order-1 w-full">
                         <CinematicHeader />
                     </div>
+
+                    {/* 🚀 SEO FIX: SR-ONLY LINKS SO GOOGLEBOT CRAWLS EVERY MOVIE INSTANTLY */}
+                    <nav className="sr-only" aria-label="Collection Movies">
+                        {movies.map((m) => {
+                            if (m.isBonusSlide) {
+                                return m.bonusMovies.map(b => (
+                                    <a key={`seo-${b.imdbID}`} href={`/movie/${b.slug}`}>{b.Title}</a>
+                                ));
+                            }
+                            return <a key={`seo-${m.imdbID}`} href={`/movie/${m.slug}`}>{m.Title}</a>;
+                        })}
+                    </nav>
                     
                     {/* 2. MOVIE POSTER & CONTROLS: Fixed to order-2 to prevent jumping to bottom on laptop */}
                     <div className="order-2 w-full flex flex-col mt-2 lg:mt-6">
