@@ -257,12 +257,7 @@ const FilmiwayHomepage = ({ huluCollections, thrillerCollections, hboCollections
 export default FilmiwayHomepage;
 
 export async function getStaticProps() {
-  const TMDB_API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
-  if (!TMDB_API_KEY) {
-    throw new Error("❌ TMDB_API_KEY is missing in environment variables. Build failed to prevent security leak.");
-  }
-  
-  const TMDB_BASE_URL = 'https://api.themoviedb.org/3';
+  // ⚡ NOTE: TMDB_API_KEY is not required here because getStaticProps uses local data (tmdbCache.json & masterDatabase.json)
 
   const huluKeys = ['best-movies-on-hulu', 'best-action-movies-on-hulu', 'best-romance-movies-on-hulu', 'best-comedy-movies-on-hulu', 'best-sci-fi-movies-on-hulu', 'best-thriller-movies-hulu', 'best-horror-movies-on-hulu', 'best-drama-movies-on-hulu', 'best-family-movies-on-hulu'];
   const thrillerKeys = ['best-thriller-movies', 'best-crime-thriller-movies', 'best-heist-thriller-movies', 'best-psychological-thriller-movies', 'best-detective-thriller-movies', 'best-mystery-thriller-movies', 'movies-like-se7en', 'movies-like-shutter-island', 'movies-like-parasite', 'movies-like-oldboy', 'movies-like-black-swan', 'best-revenge-movies'];

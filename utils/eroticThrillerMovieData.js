@@ -77,20 +77,7 @@ export const SENSITIVE_TIMELINES = {
             { start: "2:08:17", end: "2:10:12", type: "Nudity", severity: "Moderate" }
         ]
     },
-    // 3. The Handmaiden
-    290098: { 
-        scenes: [
-            { start: "0:21:45", end: "0:21:55", type: "Nudity (Woman)", severity: "Moderate" },
-            { start: "0:51:10", end: "0:54:45", type: "Nudity & Sex", severity: "High" },
-            { start: "1:47:10", end: "1:49:10", type: "Nudity (Woman)", severity: "Moderate" },
-            { start: "1:58:45", end: "2:03:45", type: "Sex & Nudity (Woman)", severity: "High" }, 
-            { start: "2:21:10", end: "2:23:15", type: "Sexual Content", severity: "High" },
-            { start: "2:32:10", end: "2:32:20", type: "Partial nudity (Woman)", severity: "Moderate" },
-            { start: "2:40:10", end: "2:42:20", type: "Sexual Content & Nudity (Woman)", severity: "High" }
-        ,
-            { start: "", end: "", type: "Profanity", severity: "High", description: "Frequent use of strong profanity and sexually explicit language throughout." },
-            { start: "", end: "", type: "Violence & Gore", severity: "Moderate", description: "Contains sequences involving drugging, child abuse, and suicide themes. Includes references to sexual sadism and graphic mutilation." }]
-    },
+    // 3. The Handmaiden (Handled via masterTimestamps.json to include descriptions)
     // 4. Lust, Caution
     4588: { 
         scenes: [
