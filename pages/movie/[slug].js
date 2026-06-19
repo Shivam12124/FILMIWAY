@@ -465,14 +465,48 @@ export async function getStaticProps({ params }) {
     const sensitiveData = masterTimestamps[String(baseMovie.tmdbId)] || { scenes: [] };
     const allScenes = sensitiveData.scenes || [];
     
+    // Helper to parse "hh:mm:ss" or "mm:ss" into total seconds for comparison
+    const parseTimeToSeconds = (t) => {
+        if (!t) return -1;
+        const parts = String(t).trim().split(':').map(Number);
+        if (parts.length === 3) return (parts[0] * 3600) + (parts[1] * 60) + (parts[2] || 0);
+        if (parts.length === 2) return (parts[0] * 60) + (parts[1] || 0);
+        return Number(t) || 0;
+    };
+
     // ✅ FIX: Merge masterTimestamps with hardcoded scenes so NO DATA DISAPPEARS!
     const hardcodedScenes = collectionData?.SENSITIVE_TIMELINES?.[baseMovie.tmdbId]?.scenes || [];
     const mergedScenes = [...hardcodedScenes];
     
     allScenes.forEach(masterScene => {
-        // Prevent duplicate scenes from stacking
-        const exists = mergedScenes.some(s => s.type === masterScene.type && s.start === masterScene.start);
-        if (!exists) {
+        const masterStartSec = parseTimeToSeconds(masterScene.start);
+        
+        // Prevent duplicate scenes from stacking by checking if they start at the same second
+        const existingIndex = mergedScenes.findIndex(s => {
+            const sStartSec = parseTimeToSeconds(s.start);
+            if (sStartSec !== -1 && masterStartSec !== -1) {
+                return sStartSec === masterStartSec;
+            }
+            return s.start && s.start.trim() === masterScene.start && masterScene.start.trim();
+        });
+
+        if (existingIndex !== -1) {
+            // It's a duplicate start time! Merge properties to enrich the scene metadata
+            const existing = mergedScenes[existingIndex];
+            if (!existing.description && masterScene.description) {
+                existing.description = masterScene.description;
+            }
+            if (!existing.severity && masterScene.severity) {
+                existing.severity = masterScene.severity;
+            }
+            if (masterScene.end && !existing.end) {
+                existing.end = masterScene.end;
+            }
+            // Normalize type if the master one is more descriptive
+            if (masterScene.type && (!existing.type || existing.type.length < masterScene.type.length)) {
+                existing.type = masterScene.type;
+            }
+        } else {
             mergedScenes.push(masterScene);
         }
     });

@@ -30,7 +30,7 @@ export const CRIME_THRILLER_MOVIE_SLUGS = {
     'tt1392214': 'prisoners',
     
     // Rank 6: The Usual Suspects
-    'tt0114369': 'the-usual-suspects',
+    'tt0114814': 'the-usual-suspects',
     
     // Rank 7: Mystic River
     'tt0327056': 'mystic-river',

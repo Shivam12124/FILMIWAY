@@ -5,7 +5,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { 
-  Compass
+  Compass,
+  Search,
+  Sparkles,
+  Clock,
+  Shield,
+  ChevronRight,
+  Film
 } from 'lucide-react';
 import dynamic from 'next/dynamic';
 
@@ -16,10 +22,6 @@ import Header from '../components/Header';
 import tmdbCache from '../data/tmdbCache.json'; // ⚡ NEW: Instant Local Data
 import masterDatabase from '../utils/masterDatabase.json';
 import masterTimestamps from '../utils/masterTimestamps.json';
-
-const MovieSection = dynamic(() => import('../components/HomeCarousels').then(mod => mod.MovieSection));
-const Top10Section = dynamic(() => import('../components/HomeCarousels').then(mod => mod.Top10Section));
-const QuickLinksSection = dynamic(() => import('../components/HomeCarousels').then(mod => mod.QuickLinksSection));
 
 // ⚡ HELPER FUNCTIONS
 const getUniquePosterFromCache = (movieIds, collectionSlug, usedPosters) => {
@@ -52,10 +54,78 @@ const getUniquePosterFromCache = (movieIds, collectionSlug, usedPosters) => {
   return null;
 };
 
+// Client-Side Autocomplete Search Bar Component
+const SearchBar = () => {
+  const [query, setQuery] = useState('');
+  const [results, setResults] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
+  const containerRef = useRef(null);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (containerRef.current && !containerRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  const handleSearch = (e) => {
+    const val = e.target.value;
+    setQuery(val);
+    if (val.trim().length > 1) {
+      const cleanQuery = val.toLowerCase().trim();
+      const filtered = masterDatabase.filter(movie => 
+        (movie.Title || '').toLowerCase().includes(cleanQuery)
+      ).slice(0, 6); // show top 6 matches
+      setResults(filtered);
+      setIsOpen(true);
+    } else {
+      setResults([]);
+      setIsOpen(false);
+    }
+  };
+
+  return (
+    <div ref={containerRef} className="relative w-full max-w-xl mx-auto z-50">
+      <div className="relative">
+        <Search className="absolute left-4.5 top-1/2 -translate-y-1/2 w-5 h-5 text-yellow-500" />
+        <input 
+          type="text"
+          value={query}
+          onChange={handleSearch}
+          placeholder="Search movies for skip timestamps... (e.g. Oppenheimer, The Handmaiden)"
+          className="w-full bg-[#111] hover:bg-[#151515] focus:bg-[#181818] border border-white/10 hover:border-white/20 focus:border-yellow-500 rounded-xl py-4.5 pl-12 pr-6 text-sm sm:text-base text-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-yellow-500 transition-all shadow-2xl"
+        />
+      </div>
+      {isOpen && results.length > 0 && (
+        <div className="absolute left-0 right-0 mt-2 bg-[#0e0e0e] border border-white/10 rounded-xl shadow-2xl overflow-hidden z-50 divide-y divide-white/5 max-h-[300px] overflow-y-auto">
+          <ul className="py-2">
+            {results.map((movie) => {
+              const safeSlug = movie.slug || (movie.Title || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+              return (
+                <li key={movie.imdbID}>
+                  <Link href={`/movie/${safeSlug}`} className="flex items-center gap-3 px-4 py-3 hover:bg-yellow-500 hover:text-black transition-colors text-left text-sm font-medium text-white">
+                    <Film className="w-4 h-4 opacity-75 shrink-0" />
+                    <span className="flex-grow truncate">{movie.Title} <span className="text-[10px] opacity-60 ml-1">({movie.Year || movie.year})</span></span>
+                    <ChevronRight className="w-4 h-4 opacity-50 shrink-0" />
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      )}
+    </div>
+  );
+};
+
 // ⚡ HERO SECTION - Fast initial load
 const HeroSection = memo(() => {
   return (
-    <section className="relative flex flex-col items-center justify-center bg-[#030303] overflow-hidden select-none pt-24 pb-4 sm:pt-28 sm:pb-8">
+    <section className="relative flex flex-col items-center justify-center bg-[#030303] overflow-hidden select-none pt-24 pb-8 sm:pt-28 sm:pb-12">
       {/* Premium Cinematic Background Gradients */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] rounded-full mix-blend-screen transform-gpu" style={{ background: 'radial-gradient(circle, rgba(30,58,138,0.2) 0%, transparent 70%)' }} />
@@ -68,31 +138,30 @@ const HeroSection = memo(() => {
           <div className="mb-4">
             <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8">
               <span className="flex h-2 w-2 rounded-full bg-yellow-400 animate-pulse" />
-              <span className="text-[10px] sm:text-xs font-medium text-gray-300 tracking-wider uppercase">70+ Expertly Curated Collections</span>
-            
+              <span className="text-[10px] sm:text-xs font-medium text-gray-300 tracking-wider uppercase">Manually Curated Parents Guides</span>
             </div>
           </div>
 
           <h1 className="text-5xl sm:text-7xl md:text-8xl font-extralight text-white mb-6 leading-[1.1] tracking-tight">
-            The Art of <br className="hidden sm:block" />
-        
+            Worry-Free <br className="hidden sm:block" />
             <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 via-yellow-400 to-amber-500 ml-2 sm:ml-0">
-              Cinema Discovery
-    
+              Family Movie Night
             </span>
           </h1>
 
           <p className="text-base sm:text-xl text-gray-400 mb-10 font-light leading-relaxed max-w-2xl mx-auto px-4">
-            Stop endlessly scrolling. Start watching. We hand-pick the absolute best films across every major platform so you don't have to.
+            Find exact skip timestamps to bypass intimate scenes, sensitive content, and mature themes in popular movies. Plan a clean, worry-free family movie night instantly.
           </p>
           
-          {/* Collections Button */}
-          <div className="relative z-20 flex justify-center items-center gap-4 mb-10 sm:mb-14 px-4">
-            <Link href="/collections" className="w-full sm:w-auto">
-              <button className="w-full sm:w-auto bg-yellow-500 text-black px-8 py-3.5 rounded-md font-bold flex items-center justify-center gap-2 hover:bg-yellow-400 transition-colors shadow-xl shadow-yellow-500/10 text-sm sm:text-base active:scale-95">
-                <Compass className="w-5 h-5" />
-                Explore All Collections
-              </button>
+          {/* Curated Collections Button */}
+          <div className="mb-12 px-4 flex justify-center">
+            <Link 
+              href="/collections" 
+              className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-500 rounded-xl text-black font-bold text-base sm:text-lg shadow-[0_8px_30px_rgba(250,204,21,0.2)] hover:shadow-[0_0_40px_rgba(250,204,21,0.4)] transition-all duration-300 hover:scale-105 select-none"
+            >
+              <Sparkles className="w-5 h-5 text-black animate-pulse" />
+              <span>Explore Curated Collections</span>
+              <ChevronRight className="w-5 h-5 text-black group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
 
@@ -104,28 +173,206 @@ const HeroSection = memo(() => {
     </section>
   );
 });
-
 HeroSection.displayName = 'HeroSection';
 
-const FilmiwayHomepage = ({ huluCollections, thrillerCollections, hboCollections, peacockCollections, paramountCollections, rRatedCleanMovies, trendingParentsGuides, top10TrendingMovies }) => {
-  const thrillerRef = useRef(null);
-  const huluRef = useRef(null);
-  const hboRef = useRef(null);
-  const paramountRef = useRef(null);
-  const peacockRef = useRef(null);
+// ⚡ STATIC MOVIE GRID (DESKTOP) & CAROUSEL (MOBILE)
+const MovieGrid = ({ title, description, movies }) => {
+  const [activeIndex, setActiveIndex] = useState(0);
 
-  const scrollToSection = (ref) => ref.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  if (!movies || movies.length === 0) return null;
 
+  const handlePrev = () => {
+    setActiveIndex((prev) => (prev === 0 ? movies.length - 1 : prev - 1));
+  };
+
+  const handleNext = () => {
+    setActiveIndex((prev) => (prev === movies.length - 1 ? 0 : prev + 1));
+  };
+
+  return (
+    <section className="mb-16 select-none">
+      <div className="flex flex-col mb-8 px-1">
+        <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight mb-2">{title}</h2>
+        <p className="text-sm sm:text-base text-gray-400 font-light max-w-2xl">{description}</p>
+      </div>
+
+      {/* Desktop Grid Layout: hidden on mobile */}
+      <div className="hidden sm:grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 sm:gap-8 px-1">
+        {movies.slice(0, 10).map((movie) => {
+          const movieSlug = movie.slug || (movie.Title || movie.title || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+          const posterUrl = movie.posterUrl || "https://via.placeholder.com/342x513/111827/4b5563?text=No+Image";
+          return (
+            <Link
+              key={movie.imdbID}
+              href={`/movie/${movieSlug}`}
+              className="group cursor-pointer relative transition-transform duration-300 hover:-translate-y-2 block"
+            >
+              <div className="relative w-full aspect-[2/3] rounded-xl overflow-hidden bg-gray-900 border border-white/10 group-hover:border-yellow-500/50 transition-all duration-300 shadow-[0_8px_30px_rgba(0,0,0,0.8)]">
+                <div className="relative w-full h-full">
+                  <Image
+                    src={posterUrl}
+                    alt={movie.Title}
+                    fill
+                    sizes="(max-width: 1024px) 250px, 300px"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    draggable={false}
+                  />
+                </div>
+                
+                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/20 to-transparent z-10 pointer-events-none" />
+
+                <div className="absolute top-2 left-2 z-20 pointer-events-none">
+                  <div className="bg-black/75 backdrop-blur-md px-2 py-1 rounded text-[10px] font-bold text-yellow-400 border border-white/10 flex items-center gap-1 shadow-lg">
+                    ★ {movie.imdbRating || movie.vote_average || '7.5'}
+                  </div>
+                </div>
+
+                <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 z-20 pointer-events-none">
+                  <h3 className="text-white font-bold text-sm sm:text-base leading-tight mb-1 line-clamp-2 group-hover:text-yellow-400 transition-colors duration-300 drop-shadow-md">
+                    {movie.Title}
+                  </h3>
+                  <span className="text-[10px] sm:text-xs text-yellow-500/90 font-medium tracking-wide block uppercase mt-1">
+                    {movie.Year || movie.year} • Parents Guide
+                  </span>
+                </div>
+              </div>
+            </Link>
+          );
+        })}
+      </div>
+
+      {/* Mobile Carousel Layout: hidden on desktop */}
+      <div className="block sm:hidden px-8">
+        <div className="relative w-full max-w-[280px] mx-auto">
+          {movies.slice(0, 10).map((movie, index) => {
+            if (index !== activeIndex) return null;
+            const movieSlug = movie.slug || (movie.Title || movie.title || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+            const posterUrl = movie.posterUrl || "https://via.placeholder.com/342x513/111827/4b5563?text=No+Image";
+            return (
+              <div key={movie.imdbID} className="animate-fade-in duration-300">
+                <Link 
+                  href={`/movie/${movieSlug}`} 
+                  className="block relative aspect-[2/3] rounded-2xl overflow-hidden bg-gray-900 border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.8)]"
+                >
+                  <div className="relative w-full h-full">
+                    <Image
+                      src={posterUrl}
+                      alt={movie.Title}
+                      fill
+                      sizes="280px"
+                      className="object-cover"
+                      draggable={false}
+                    />
+                  </div>
+                  
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent z-10" />
+
+                  <div className="absolute top-3 left-3 z-20">
+                    <div className="bg-black/80 backdrop-blur-md px-2.5 py-1 rounded-lg text-xs font-bold text-yellow-400 border border-white/10 flex items-center gap-1 shadow-lg">
+                      ★ {movie.imdbRating || movie.vote_average || '7.5'}
+                    </div>
+                  </div>
+
+                  <div className="absolute bottom-0 left-0 right-0 p-5 z-20">
+                    <h3 className="text-white font-bold text-lg leading-snug mb-1 drop-shadow-md">
+                      {movie.Title}
+                    </h3>
+                    <span className="text-xs text-yellow-400 font-semibold tracking-wide block uppercase mt-1">
+                      {movie.Year || movie.year} • Parents Guide
+                    </span>
+                  </div>
+                </Link>
+              </div>
+            );
+          })}
+
+          {/* Carousel Navigation Buttons */}
+          <button 
+            onClick={handlePrev}
+            className="absolute left-[-42px] top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/60 border border-white/10 flex items-center justify-center text-white active:scale-95 transition-transform"
+            aria-label="Previous Movie"
+          >
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          
+          <button 
+            onClick={handleNext}
+            className="absolute right-[-42px] top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/60 border border-white/10 flex items-center justify-center text-white active:scale-95 transition-transform"
+            aria-label="Next Movie"
+          >
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+
+          {/* Indicator Dots */}
+          <div className="flex justify-center items-center gap-1.5 mt-5">
+            {movies.slice(0, 10).map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => setActiveIndex(idx)}
+                className={`h-1.5 rounded-full transition-all duration-300 ${idx === activeIndex ? 'w-4 bg-yellow-400' : 'w-1.5 bg-gray-600'}`}
+                aria-label={`Go to slide ${idx + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// ⚡ HOW IT WORKS / VALUES SECTION
+const FeaturesSection = () => {
+  return (
+    <section className="py-12 border-y border-white/5 bg-[#080808] -mx-4 sm:-mx-6 px-4 sm:px-6 mb-16 select-none">
+      <div className="max-w-6xl mx-auto text-center">
+        <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight mb-2">How Filmiway Works</h2>
+        <p className="text-sm sm:text-base text-gray-400 font-light max-w-xl mx-auto mb-10">We manually analyze movies scene-by-scene so you can bypass uncomfortable elements.</p>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="bg-[#0e0e0e] border border-white/5 rounded-2xl p-6 hover:border-yellow-500/20 transition-all duration-300">
+            <div className="w-12 h-12 bg-yellow-500/10 text-yellow-500 rounded-full flex items-center justify-center mx-auto mb-4 border border-yellow-500/20">
+              <Clock className="w-5 h-5" />
+            </div>
+            <h3 className="text-lg font-bold text-white mb-2">Exact Skip Timestamps</h3>
+            <p className="text-sm text-gray-400 font-light leading-relaxed">Get frame-by-frame starting and ending points to safely skip intimacy and mature content without missing the plot.</p>
+          </div>
+
+          <div className="bg-[#0e0e0e] border border-white/5 rounded-2xl p-6 hover:border-yellow-500/20 transition-all duration-300">
+            <div className="w-12 h-12 bg-yellow-500/10 text-yellow-500 rounded-full flex items-center justify-center mx-auto mb-4 border border-yellow-500/20">
+              <Shield className="w-5 h-5" />
+            </div>
+            <h3 className="text-lg font-bold text-white mb-2">Manually Verified</h3>
+            <p className="text-sm text-gray-400 font-light leading-relaxed">No automated AI guesswork. Every timestamp is manually checked, double-verified, and contextualized by real human editors.</p>
+          </div>
+
+          <div className="bg-[#0e0e0e] border border-white/5 rounded-2xl p-6 hover:border-yellow-500/20 transition-all duration-300">
+            <div className="w-12 h-12 bg-yellow-500/10 text-yellow-500 rounded-full flex items-center justify-center mx-auto mb-4 border border-yellow-500/20">
+              <Sparkles className="w-5 h-5" />
+            </div>
+            <h3 className="text-lg font-bold text-white mb-2">Worry-Free Viewing</h3>
+            <p className="text-sm text-gray-400 font-light leading-relaxed">Filter movies by streaming platforms, locate clean recommendations, and comfortably host family movie nights.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// PlatformGrid removed because it is duplicated by PlatformSelector at the top.
+
+const FilmiwayHomepage = ({ rRatedCleanMovies, trendingParentsGuides, top10TrendingMovies }) => {
   return (
     <div>
       <Head>
-        <title>Filmiway | Parents Guide & Film Recommendations</title>
-       
-        <meta name="description" content="Filmiway is a parents guide website with exact skip timestamps. We help families from all over the world by telling them exactly what is in a movie as it is, so they can expect what they are going to see." />
+        <title>Filmiway | Parents Guide: Skip Intimate Scenes & Timestamps</title>
+        <meta name="description" content="Get exact skip timestamps to bypass intimate scenes, sensitive content, and mature themes in popular movies. Plan a safe, worry-free family movie night instantly." />
         <link rel="canonical" href="https://filmiway.com/" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
         
-        {/* ⚡ CRITICAL PERFORMANCE OPTIMIZATION */}
         <link rel="preconnect" href="https://image.tmdb.org" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://www.themoviedb.org" />
       </Head>
@@ -137,47 +384,35 @@ const FilmiwayHomepage = ({ huluCollections, thrillerCollections, hboCollections
         
         <main className="pb-20">
           <div className="container mx-auto px-4 sm:px-6 pt-8 sm:pt-12 space-y-16 sm:space-y-24 relative z-20">
+            
+            {/* Trending Parents Guides Grid */}
+            <MovieGrid 
+              title="Trending Parents Guides" 
+              description="Manually verified skip timestamps guides for the most searched movies."
+              movies={trendingParentsGuides}
+            />
 
-            <Top10Section 
-              title="Top 10 Trending Movies" 
-              description="The most searched and critically-acclaimed movies on Filmiway right now." 
+            {/* Features (How It Works) Section */}
+            <FeaturesSection />
+
+            {/* Clean Movies Grid */}
+            <MovieGrid 
+              title="R-Rated Masterpiece Movies with No Sexual Content" 
+              description="Acclaimed movies manually verified as free of sensitive or intimate content. For a stress-free movie night." 
+              movies={rRatedCleanMovies} 
+            />
+
+
+
+            {/* Popular/Trending List */}
+            <MovieGrid 
+              title="Popular Movie Guides" 
+              description="The most searched and critically-acclaimed movie guides on Filmiway." 
               movies={top10TrendingMovies} 
             />
 
-            <Top10Section 
-              title="R-Rated Movies (No Sexual Content)" 
-              description="Good for movie night." 
-              movies={rRatedCleanMovies} 
-            />
-            
-            <MovieSection 
-              title="The Thriller Gang" 
-              description="Gripping crime, mystery, and revenge thrillers for the edge of your seat." 
-              movies={thrillerCollections} 
-              sectionRef={thrillerRef} 
-              viewAllLink="/genre/thriller" 
-            />
-
-            <MovieSection title="Best of Hulu" description="The absolute best movies streaming on Hulu right now." movies={huluCollections} sectionRef={huluRef} viewAllLink="/streaming/hulu" />
-            
-            <MovieSection title="Best of HBO Max" description="Epic blockbusters and prestige drama on HBO Max." movies={hboCollections} sectionRef={hboRef} viewAllLink="/streaming/hbo-max" />
-            
-            <MovieSection title="Best of Paramount+" description="The peak of entertainment: Top Gun, Interstellar, and more." movies={paramountCollections} sectionRef={paramountRef} viewAllLink="/streaming/paramount-plus" />
-            
-            <MovieSection title="Best of Peacock" description="NBCUniversal's finest: Edge-of-your-seat thrillers and sci-fi." movies={peacockCollections} sectionRef={peacockRef} viewAllLink="/streaming/peacock" />
-            
-            {/* ⚡ SEO QUICK LINKS FOR FAST INDEXING */}
-            <QuickLinksSection 
-              title="Trending Parents Guides" 
-              movies={trendingParentsGuides} 
-            />
           </div>
         </main>
-
-        <div className="container mx-auto px-4 sm:px-6 py-12 sm:py-16 bg-[#111] border-y border-white/5 mb-12 text-center">
-          <h2 className="text-lg sm:text-xl font-medium text-white mb-2 tracking-tight">A Revolutionary New Feature is Cooking</h2>
-          <p className="text-gray-400 text-sm font-light max-w-md mx-auto">Stay tuned for a groundbreaking new way to experience and discover cinema.</p>
-        </div>
 
         <footer className="bg-black py-8 sm:py-12 border-t border-gray-800" style={{ contentVisibility: 'auto', containIntrinsicSize: '400px' }}>
           <div className="container mx-auto px-4 sm:px-6">
@@ -339,10 +574,10 @@ export async function getStaticProps() {
       'tt0477348', // No Country for Old Men
       'tt0469494', // There Will Be Blood
       'tt0113277', // Heat
-      'tt0099685', // Goodfellas
-      'tt0105236', // Reservoir Dogs
-      'tt0407887', // The Departed
-      'tt1392190', // Mad Max: Fury Road
+      'tt1285016', // The Social Network
+      'tt0120815', // Saving Private Ryan
+      'tt2582802', // Whiplash
+      'tt8579674', // 1917
     ];
 
     const rRatedCleanMoviesDb = handPickedCleanR_IMDB_IDs

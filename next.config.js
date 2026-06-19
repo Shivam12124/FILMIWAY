@@ -150,7 +150,7 @@ const nextConfig = {
       { source: '/movies/:collection/tt0142688', destination: '/movie/the-ninth-gate', permanent: true },
       { source: '/movies/:collection/tt0064276', destination: '/movie/easy-rider', permanent: true },
       { source: '/movies/:collection/tt0117951', destination: '/movie/trainspotting', permanent: true },
-      { source: '/movies/:collection/tt0114369', destination: '/movie/the-usual-suspects', permanent: true },
+      { source: '/movies/:collection/tt0114814', destination: '/movie/the-usual-suspects', permanent: true },
       { source: '/movies/:collection/tt0032138', destination: '/movie/the-wizard-of-oz', permanent: true },
       { source: '/movies/:collection/tt0116922', destination: '/movie/lost-highway', permanent: true },
       { source: '/movies/:collection/tt0098635', destination: '/movie/when-harry-met-sally', permanent: true },
