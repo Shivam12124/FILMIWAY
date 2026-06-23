@@ -116,6 +116,9 @@ export default function Terms() {
                   <p className="text-gray-400 leading-relaxed font-light mb-4">
                     <strong>Filmiway Branding:</strong> The Filmiway logo, site design, and curated text lists are the property of Filmiway Media.
                   </p>
+                  <p className="text-gray-400 leading-relaxed font-light mb-4">
+                    <strong>Data Protection & Scraping Policy:</strong> Scraping, automated data extraction, or commercial redistribution of Filmiway timestamp directories is strictly prohibited.
+                  </p>
                   <p className="text-gray-400 leading-relaxed font-light">
                     <strong>Movie Data:</strong> Film posters, backdrops, and plot summaries are provided via the <strong>TMDB API</strong>. This content remains the property of its respective owners and is used here under fair use for informational purposes.
                   </p>

@@ -458,7 +458,7 @@ const FilmiwayHomepage = ({ rRatedCleanMovies, trendingParentsGuides, top10Trend
             </div>
             
             <div className="flex flex-col items-center justify-center space-y-4">
-              <p className="text-gray-400 text-[10px] sm:text-xs">Where Every Film Finds Its Way.</p>
+              <p className="text-gray-400 text-[10px] sm:text-xs">Worry-Free Movie Nights. Skip the Awkward.</p>
               <div className="flex items-center gap-4 text-gray-400 text-[10px]">
                 <span>&copy; 2026 Filmiway</span>
               </div>

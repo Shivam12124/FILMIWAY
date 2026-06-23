@@ -4657,7 +4657,7 @@ return (
                                 <span></span>
                                 <span>All Rights Reserved</span>
                                 <span></span>
-                                <span>Where Every Film Finds Its Way</span>
+                                <span>Worry-Free Movie Nights. Skip the Awkward.</span>
                             </div>
                         </div>
                     </motion.footer>
