@@ -91,26 +91,26 @@ const SearchBar = () => {
   return (
     <div ref={containerRef} className="relative w-full max-w-xl mx-auto z-50">
       <div className="relative">
-        <Search className="absolute left-4.5 top-1/2 -translate-y-1/2 w-5 h-5 text-yellow-500" />
+        <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-amber-500/70" />
         <input 
           type="text"
           value={query}
           onChange={handleSearch}
           placeholder="Search movies for skip timestamps... (e.g. Oppenheimer, The Handmaiden)"
-          className="w-full bg-[#111] hover:bg-[#151515] focus:bg-[#181818] border border-white/10 hover:border-white/20 focus:border-yellow-500 rounded-xl py-4.5 pl-12 pr-6 text-sm sm:text-base text-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-yellow-500 transition-all shadow-2xl"
+          className="w-full bg-[#0a0a0a]/90 hover:bg-[#0f0f0f]/90 focus:bg-[#0f0f0f] border border-white/10 hover:border-white/15 focus:border-amber-500/40 rounded-xl py-4 pl-12 pr-6 text-sm sm:text-base text-white placeholder-neutral-500 focus:outline-none focus:ring-1 focus:ring-amber-500/20 transition-all shadow-xl"
         />
       </div>
       {isOpen && results.length > 0 && (
-        <div className="absolute left-0 right-0 mt-2 bg-[#0e0e0e] border border-white/10 rounded-xl shadow-2xl overflow-hidden z-50 divide-y divide-white/5 max-h-[300px] overflow-y-auto">
-          <ul className="py-2">
+        <div className="absolute left-0 right-0 mt-2 bg-[#0a0a0a] border border-white/10 rounded-xl shadow-2xl overflow-hidden z-50 divide-y divide-white/5 max-h-[300px] overflow-y-auto">
+          <ul className="py-1">
             {results.map((movie) => {
               const safeSlug = movie.slug || (movie.Title || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
               return (
                 <li key={movie.imdbID}>
-                  <Link href={`/movie/${safeSlug}`} className="flex items-center gap-3 px-4 py-3 hover:bg-yellow-500 hover:text-black transition-colors text-left text-sm font-medium text-white">
-                    <Film className="w-4 h-4 opacity-75 shrink-0" />
-                    <span className="flex-grow truncate">{movie.Title} <span className="text-[10px] opacity-60 ml-1">({movie.Year || movie.year})</span></span>
-                    <ChevronRight className="w-4 h-4 opacity-50 shrink-0" />
+                  <Link href={`/movie/${safeSlug}`} className="flex items-center gap-3 px-4 py-3.5 hover:bg-white/5 hover:text-amber-400 transition-all text-left text-sm font-medium text-white">
+                    <Film className="w-4 h-4 opacity-70 shrink-0" />
+                    <span className="flex-grow truncate">{movie.Title} <span className="text-[10px] opacity-50 ml-1">({movie.Year || movie.year})</span></span>
+                    <ChevronRight className="w-4 h-4 opacity-40 shrink-0" />
                   </Link>
                 </li>
               );
@@ -128,40 +128,40 @@ const HeroSection = memo(() => {
     <section className="relative flex flex-col items-center justify-center bg-[#030303] overflow-hidden select-none pt-24 pb-8 sm:pt-28 sm:pb-12">
       {/* Premium Cinematic Background Gradients */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] rounded-full mix-blend-screen transform-gpu" style={{ background: 'radial-gradient(circle, rgba(30,58,138,0.2) 0%, transparent 70%)' }} />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] rounded-full mix-blend-screen transform-gpu" style={{ background: 'radial-gradient(circle, rgba(202,138,4,0.1) 0%, transparent 70%)' }} />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#030303]/80 to-[#030303]" />
+        {/* Soft warm cinematic center glow */}
+        <div className="absolute top-[10%] left-1/2 -translate-x-1/2 w-[70%] h-[60%] rounded-full mix-blend-screen transform-gpu opacity-40 filter blur-3xl pointer-events-none" style={{ background: 'radial-gradient(circle at center, rgba(202,138,4,0.12) 0%, rgba(202,138,4,0.03) 50%, transparent 100%)' }} />
+        {/* Muted warm sepia backing */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0805] via-[#030303] to-[#030303]" />
       </div>
 
       <div className="relative z-10 container mx-auto px-4 text-center">
         <div className="max-w-5xl mx-auto">
-          <div className="mb-4">
-            <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8">
-              <span className="flex h-2 w-2 rounded-full bg-yellow-400 animate-pulse" />
-              <span className="text-[10px] sm:text-xs font-medium text-gray-300 tracking-wider uppercase">Manually Curated Parents Guides</span>
+          <div className="mb-6">
+            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border border-white/10 bg-white/[0.02] mb-6">
+              <Film className="w-3.5 h-3.5 text-amber-500/80" />
+              <span className="text-[10px] sm:text-xs font-light text-neutral-300 tracking-[0.18em] uppercase">Manually Curated Parents Guides</span>
             </div>
           </div>
 
-          <h1 className="text-5xl sm:text-7xl md:text-8xl font-extralight text-white mb-6 leading-[1.1] tracking-tight">
+          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-playfair font-normal text-white mb-6 leading-[1.15] tracking-tight">
             Worry-Free <br className="hidden sm:block" />
-            <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 via-yellow-400 to-amber-500 ml-2 sm:ml-0">
-              Family Movie Night
+            <span className="font-normal italic text-amber-400/90 font-playfair">
+              Family Movie Nights
             </span>
           </h1>
 
-          <p className="text-base sm:text-xl text-gray-400 mb-10 font-light leading-relaxed max-w-2xl mx-auto px-4">
+          <p className="text-base sm:text-lg text-neutral-400 mb-8 font-light leading-relaxed max-w-2xl mx-auto px-4">
             Find exact skip timestamps to bypass intimate scenes, sensitive content, and mature themes in popular movies. Plan a clean, worry-free family movie night instantly.
           </p>
           
           {/* Curated Collections Button */}
-          <div className="mb-12 px-4 flex justify-center">
+          <div className="mb-10 px-4 flex justify-center">
             <Link 
               href="/collections" 
-              className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-500 rounded-xl text-black font-bold text-base sm:text-lg shadow-[0_8px_30px_rgba(250,204,21,0.2)] hover:shadow-[0_0_40px_rgba(250,204,21,0.4)] transition-all duration-300 hover:scale-105 select-none"
+              className="group relative inline-flex items-center gap-3 px-8 py-3.5 bg-amber-500 hover:bg-amber-400 text-black hover:text-black font-semibold text-sm sm:text-base rounded-xl transition-all duration-300 hover:-translate-y-0.5 select-none shadow-lg"
             >
-              <Sparkles className="w-5 h-5 text-black animate-pulse" />
               <span>Explore Curated Collections</span>
-              <ChevronRight className="w-5 h-5 text-black group-hover:translate-x-1 transition-transform" />
+              <ChevronRight className="w-4 h-4 text-black hover:text-black group-hover:translate-x-0.5 transition-transform" />
             </Link>
           </div>
 

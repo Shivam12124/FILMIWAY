@@ -470,7 +470,7 @@ We’ve all had this experience. You’re comfortably seated on your couch, watc
                 </form>
 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                  <Link href="/movie-directory" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-yellow-500 text-black px-8 py-3 rounded-full font-bold hover:bg-yellow-400 hover:scale-105 active:scale-95 transition-all shadow-[0_0_20px_rgba(234,179,8,0.15)]">
+                  <Link href="/movie-directory" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-yellow-500 text-black hover:text-black px-8 py-3 rounded-full font-bold hover:bg-yellow-400 hover:scale-105 active:scale-95 transition-all shadow-[0_0_20px_rgba(234,179,8,0.15)]">
                     <FastForward className="w-5 h-5" />
                     Browse A-Z Directory
                   </Link>
