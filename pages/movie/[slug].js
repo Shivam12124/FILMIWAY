@@ -487,16 +487,38 @@ export async function getStaticProps({ params }) {
             if (sStartSec !== -1 && masterStartSec !== -1) {
                 return sStartSec === masterStartSec;
             }
+            
+            // Check if both are general warnings (empty or "none" start times)
+            const sIsGeneral = !s.start || s.start.trim() === '' || s.start.toLowerCase() === 'none';
+            const mIsGeneral = !masterScene.start || masterScene.start.trim() === '' || masterScene.start.toLowerCase() === 'none';
+            
+            if (sIsGeneral && mIsGeneral) {
+                const sType = (s.type || '').toLowerCase();
+                const mType = (masterScene.type || '').toLowerCase();
+                
+                // Group similar types for general warnings
+                const isProfanity = (sType.includes('profanity') || sType.includes('language')) &&
+                                    (mType.includes('profanity') || mType.includes('language'));
+                const isViolence = (sType.includes('violence') || sType.includes('gore') || sType.includes('blood')) &&
+                                   (mType.includes('violence') || mType.includes('gore') || mType.includes('blood'));
+                const isNudity = (sType.includes('nudity') || sType.includes('sex') || sType.includes('explicit')) &&
+                                 (mType.includes('nudity') || mType.includes('sex') || mType.includes('explicit'));
+                
+                if (sType === mType || isProfanity || isViolence || isNudity) {
+                    return true;
+                }
+            }
+            
             return s.start && s.start.trim() === masterScene.start && masterScene.start.trim();
         });
 
         if (existingIndex !== -1) {
             // It's a duplicate start time! Merge properties to enrich the scene metadata
             const existing = mergedScenes[existingIndex];
-            if (!existing.description && masterScene.description) {
+            if ((!existing.description || existing.description === 'None' || existing.description === existing.type) && masterScene.description && masterScene.description !== 'None') {
                 existing.description = masterScene.description;
             }
-            if (!existing.severity && masterScene.severity) {
+            if ((!existing.severity || existing.severity === 'None') && masterScene.severity && masterScene.severity !== 'None') {
                 existing.severity = masterScene.severity;
             }
             if (masterScene.end && !existing.end) {

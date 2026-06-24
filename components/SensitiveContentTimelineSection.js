@@ -172,6 +172,29 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
             });
         }
     }
+
+    // Deduplicate general warnings of the same type (e.g. multiple empty start times for Profanity or Violence)
+    const uniqueScenes = [];
+    const seenGeneralTypes = new Set();
+    
+    sensitiveData.scenes.forEach(scene => {
+        const isGeneral = !scene.start || scene.start.trim() === '' || scene.start.toLowerCase() === 'none';
+        if (isGeneral) {
+            const sType = (scene.type || '').toLowerCase();
+            let normType = sType;
+            if (sType.includes('profanity') || sType.includes('language')) normType = 'profanity';
+            else if (sType.includes('violence') || sType.includes('gore') || sType.includes('blood')) normType = 'violence';
+            else if (sType.includes('nudity') || sType.includes('sex') || sType.includes('explicit')) normType = 'nudity';
+            
+            if (seenGeneralTypes.has(normType)) {
+                // Duplicate general warning of this type, skip it
+                return;
+            }
+            seenGeneralTypes.add(normType);
+        }
+        uniqueScenes.push(scene);
+    });
+    sensitiveData.scenes = uniqueScenes;
     
     let contentTypes = [...new Set(filteredHeavyScenes.map(s => s.type).filter(Boolean))];
     if (contentTypes.length === 0 && filteredHeavyScenes.length > 0) contentTypes = ['Mature Content'];
