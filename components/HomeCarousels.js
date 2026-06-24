@@ -1,7 +1,7 @@
 import React, { useRef, memo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ChevronLeft, ChevronRight, Star, Flame, Shield, ArrowRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Flame, Shield, ArrowRight } from 'lucide-react';
 
 const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p';
 
@@ -34,13 +34,6 @@ export const CollectionCard = memo(({ collection, index, href, isPrioritySection
         </div>
         
         <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/10 to-transparent opacity-100 group-hover:opacity-80 transition-opacity duration-500 z-10 pointer-events-none" />
-
-        <div className="absolute top-2 left-2 right-2 sm:top-3 sm:left-3 sm:right-3 z-20 flex justify-between items-start pointer-events-none">
-          <div className="bg-black/60 backdrop-blur-md px-2 py-1 rounded text-[10px] sm:text-xs font-bold text-white border border-white/10 flex items-center gap-1 shadow-lg">
-            <Star className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-yellow-400 fill-current" />
-            {collection.vote_average}
-          </div>
-        </div>
 
         <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 z-20 pointer-events-none transform translate-y-1 sm:translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
           <h3 className="text-white font-semibold sm:font-bold text-sm sm:text-base leading-tight mb-1 line-clamp-3 group-hover:text-yellow-400 transition-colors duration-300 drop-shadow-md">

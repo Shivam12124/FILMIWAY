@@ -221,12 +221,6 @@ const MovieGrid = ({ title, description, movies }) => {
                 
                 <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/20 to-transparent z-10 pointer-events-none" />
 
-                <div className="absolute top-2 left-2 z-20 pointer-events-none">
-                  <div className="bg-black/75 backdrop-blur-md px-2 py-1 rounded text-[10px] font-bold text-yellow-400 border border-white/10 flex items-center gap-1 shadow-lg">
-                    ★ {movie.imdbRating || movie.vote_average || '7.5'}
-                  </div>
-                </div>
-
                 <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 z-20 pointer-events-none">
                   <h3 className="text-white font-bold text-sm sm:text-base leading-tight mb-1 line-clamp-2 group-hover:text-yellow-400 transition-colors duration-300 drop-shadow-md">
                     {movie.Title}
@@ -266,12 +260,6 @@ const MovieGrid = ({ title, description, movies }) => {
                   </div>
                   
                   <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent z-10" />
-
-                  <div className="absolute top-3 left-3 z-20">
-                    <div className="bg-black/80 backdrop-blur-md px-2.5 py-1 rounded-lg text-xs font-bold text-yellow-400 border border-white/10 flex items-center gap-1 shadow-lg">
-                      ★ {movie.imdbRating || movie.vote_average || '7.5'}
-                    </div>
-                  </div>
 
                   <div className="absolute bottom-0 left-0 right-0 p-5 z-20">
                     <h3 className="text-white font-bold text-lg leading-snug mb-1 drop-shadow-md">
