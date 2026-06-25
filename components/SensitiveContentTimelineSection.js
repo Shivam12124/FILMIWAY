@@ -423,6 +423,10 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                         </div>
                         </div>
 
+                        <p className="text-sm sm:text-base text-gray-400 leading-relaxed font-light mt-3 max-w-3xl ml-1">
+                            We provide skip timestamps that help parents and families know exactly what to expect before watching. Avoid unexpected surprises or uncomfortable moments that can interrupt your movie experience. With our timestamps, you can simply skip the scenes you want to avoid and enjoy worry-free movie nights.
+                        </p>
+
                         {recommendedAge && ageSummary && (
                             <motion.div 
                                 className="my-4 relative overflow-hidden rounded-2xl border border-white/10 bg-black/40 backdrop-blur-md p-4 sm:p-5 flex flex-row items-center gap-4 sm:gap-5 shadow-xl"
