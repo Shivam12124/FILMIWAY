@@ -286,7 +286,19 @@ export default function UniversalMoviePage({ movie }) {
     const { metaTitle, metaDesc } = movie;
 
     // ⚡ SEO JSON-LD SCHEMAS: Machine-readable data for Google and AI Crawlers
-    const currentRuntime = movie.Runtime || movie.runtime || "Official";
+    let currentRuntime = movie.Runtime || movie.runtime || "Official";
+    if (typeof currentRuntime === 'number') currentRuntime = `${currentRuntime} min`;
+
+    // Explicit Overrides for Runtime (Matching SensitiveContentTimelineSection.js perfectly)
+    if (movie.tmdbId === 51876) currentRuntime = "105 min (Unrated Version)";
+    if (movie.tmdbId === 187) currentRuntime = "141 min (Unrated Extended Version)";
+    if (movie.tmdbId === 28) currentRuntime = "181 min (Final Cut)";
+    if (movie.tmdbId === 76341) currentRuntime = "120 min";
+    if (movie.tmdbId === 311) currentRuntime = "249 min";
+    if (movie.tmdbId === 341174) currentRuntime = "132 min (Unrated Version)";
+    if (movie.tmdbId === 2057) currentRuntime = "118 min (Unrated Version)";
+    if (movie.tmdbId === 10867) currentRuntime = "1 hour 32 min";
+
     const faqs = getVisibleMovieFAQs(movie.Title, movie.tmdbId, currentRuntime) || [];
 
     // Format the exact, manually verified timestamps with their descriptions for the movie description
@@ -298,8 +310,50 @@ export default function UniversalMoviePage({ movie }) {
             .join(', ')
         : "None (Verified Clean)";
 
+    // Calculate heavy scenes stats dynamically for the JSON schema
+    const sensitiveScenes = movie.resolvedSensitiveScenes || [];
+    const isHeavyScene = (scene) => {
+        const t = scene.type?.toLowerCase() || '';
+        return t.includes('sex') || t.includes('nudity') || t.includes('explicit') || t.includes('suggestive') || t.includes('lingerie') || t.includes('bikini');
+    };
+    const filteredHeavyScenes = sensitiveScenes.filter(isHeavyScene);
+
+    let totalSeconds = 0;
+    filteredHeavyScenes.forEach(scene => {
+        if (scene.start && scene.end) {
+            const parseTime = (t) => {
+                const parts = String(t).split(':').map(Number);
+                if (parts.length === 3) return (parts[0] * 3600) + (parts[1] * 60) + (parts[2] || 0);
+                if (parts.length === 2) return (parts[0] * 60) + (parts[1] || 0);
+                return 0;
+            };
+            const startSec = parseTime(scene.start);
+            const endSec = parseTime(scene.end);
+            if (endSec > startSec) {
+                totalSeconds += (endSec - startSec);
+            }
+        }
+    });
+
+    const mins = Math.floor(totalSeconds / 60);
+    const secs = totalSeconds % 60;
+    let formattedTime = "";
+    if (totalSeconds === 0) formattedTime = "< 1 min";
+    else if (mins === 0) formattedTime = `${secs} sec`;
+    else formattedTime = secs > 0 ? `${mins} min ${secs} sec` : `${mins} min`;
+
+    const totalScenesFlagged = filteredHeavyScenes.length;
+
     // Construct a highly enriched, unique description that matches the visible page content perfectly
-    let enrichedDescription = "";
+    let enrichedDescription = `We provide skip timestamps for ${movie.Title} that help parents and families know exactly what to expect before watching. Avoid unexpected surprises or uncomfortable moments that can interrupt your movie experience. With our timestamps, you can simply skip the scenes you want to avoid and enjoy worry-free movie nights. `;
+    
+    // Add dynamic stats to the schema description to match on-page details
+    if (totalScenesFlagged > 0) {
+        enrichedDescription += `Timestamps are accurate for the ${currentRuntime}. Total scenes flagged: ${totalScenesFlagged}. Total time to skip: ${formattedTime}. `;
+    } else {
+        enrichedDescription += `Timestamps are accurate for the ${currentRuntime}. `;
+    }
+
     if (movie.Age && movie.Summary) {
         enrichedDescription += `[Parents Guide Recommended Age: ${movie.Age} - Reason: ${movie.Summary}] `;
     }
