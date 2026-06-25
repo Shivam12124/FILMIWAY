@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, Play, X, Film, Star, ChevronDown } from 'lucide-react';
 import Header from '../../components/Header';
 import dynamic from 'next/dynamic';
+import { getVisibleMovieFAQs } from '../../utils/movieData';
 
 const CinematicBackground = dynamic(() => import('../../components/CinematicBackground'), { ssr: false });
 
@@ -284,6 +285,54 @@ export default function UniversalMoviePage({ movie }) {
     const dynamicProps = propName ? { [propName]: true } : {};
     const { metaTitle, metaDesc } = movie;
 
+    // ⚡ SEO JSON-LD SCHEMAS: Machine-readable data for Google and AI Crawlers
+    const currentRuntime = movie.Runtime || movie.runtime || "Official";
+    const faqs = getVisibleMovieFAQs(movie.Title, movie.tmdbId, currentRuntime) || [];
+
+    // Format the exact, manually verified timestamps with their descriptions for the movie description
+    const hasTimestamps = movie.resolvedSensitiveScenes && movie.resolvedSensitiveScenes.length > 0;
+    const formattedTimestamps = hasTimestamps
+        ? movie.resolvedSensitiveScenes
+            .filter(s => s.start && s.start.toLowerCase() !== 'none')
+            .map(s => `• ${s.start}${s.end ? ' to ' + s.end : ''}: ${s.type} (Severity: ${s.severity})${s.description ? ' - ' + s.description : ''}`)
+            .join(', ')
+        : "None (Verified Clean)";
+
+    // Construct a highly enriched, unique description that matches the visible page content perfectly
+    let enrichedDescription = "";
+    if (movie.Age && movie.Summary) {
+        enrichedDescription += `[Parents Guide Recommended Age: ${movie.Age} - Reason: ${movie.Summary}] `;
+    }
+    if (hasTimestamps) {
+        enrichedDescription += `[Manually Verified Skip Timestamps: ${formattedTimestamps}] `;
+    } else {
+        enrichedDescription += `[Verified Clean: Zero explicit intimate scenes in full runtime] `;
+    }
+    enrichedDescription += movie.Plot || movie.metaDesc;
+
+    // 🚀 Construct the Movie schema focusing heavily on the custom recommended age and timestamps
+    const movieSchema = {
+        "@context": "https://schema.org",
+        "@type": "Movie",
+        "name": movie.Title,
+        "image": movie.Poster,
+        "description": enrichedDescription
+    };
+
+    // 🚀 Construct the FAQPage schema mapping EXACTLY to the on-page accordion FAQs (1:1 identical)
+    const faqSchema = faqs.length > 0 ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": faqs.map(faq => ({
+            "@type": "Question",
+            "name": faq.question || faq.q,
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer || faq.a
+            }
+        }))
+    } : null;
+
     return (
         <div key={movie.slug} className="min-h-screen bg-black selection:bg-yellow-500/30 font-inter text-gray-200">
             <div className="absolute inset-0 z-0 pointer-events-none"><CinematicBackground /></div>
@@ -299,6 +348,18 @@ export default function UniversalMoviePage({ movie }) {
                 <link rel="dns-prefetch" href="https://image.tmdb.org" />
                 {movie.backdrop_path && <link rel="preload" as="image" href={`https://image.tmdb.org/t/p/w780${movie.backdrop_path}`} fetchPriority="high" />}
                 {movie.Poster && <link rel="preload" as="image" href={movie.Poster} fetchPriority="high" />}
+                
+                {/* 🚀 Injected JSON-LD Schemas */}
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }}
+                />
+                {faqSchema && (
+                    <script
+                        type="application/ld+json"
+                        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+                    />
+                )}
             </Head>
             <Header />
             <main className="relative z-10 pt-20 sm:pt-24 lg:pt-28 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
@@ -584,7 +645,9 @@ export async function getStaticProps({ params }) {
         resolvedSensitiveScenes,
         isTrueStory,
         metaTitle,
-        metaDesc
+        metaDesc,
+        Age: sensitiveData.Age || null,
+        Summary: sensitiveData.Summary || null
     };
     
     return { props: { movie } };
