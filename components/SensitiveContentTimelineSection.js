@@ -69,6 +69,23 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
         return sensitiveScenes.filter(isHeavyScene);
     }, [sensitiveScenes, isHeavyScene]);
 
+    // 🔥 CURATED LIST: Films that show the "Viewer Discretion Advised" advisory box
+    // Includes Top 20 famous explicit films + all films with 10+ Sex/Nudity scenes
+    const EXPLICIT_ADVISORY_TMDB_IDS = useMemo(() => new Set([
+        792307, 884, 185, 345, 8055, 4995, 9352, 106646, 1359, 1391, 13973, 1064213,
+        1278, 152532, 181886, 2105, 85889, 814338, // 10+ scenes
+        402, 617, 979, 1643, 2057, 2251, 4588, 10867, 11013, 76025, 152584,
+        216015, 337167, 341174, 401981, 664413, 930564 // Famous explicit films
+    ]), []);
+
+    const showExplicitAdvisory = useMemo(() => {
+        const tmdbId = movie?.tmdbId;
+        if (tmdbId && EXPLICIT_ADVISORY_TMDB_IDS.has(tmdbId)) return true;
+        // Also auto-include any film with 10+ heavy scenes
+        if (filteredHeavyScenes.length >= 10) return true;
+        return false;
+    }, [movie?.tmdbId, EXPLICIT_ADVISORY_TMDB_IDS, filteredHeavyScenes]);
+
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (infoRef.current && !infoRef.current.contains(event.target)) setShowInfo(false);
@@ -379,6 +396,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                 </div>
             ) : (
                 <div className="flex flex-col gap-4 sm:gap-6 relative z-50">
+
                     <div className="space-y-3 w-full">
                         <div className="flex items-center justify-between w-full">
                             <h1 className="text-xl sm:text-2xl font-light text-gray-200 flex items-center gap-3 tracking-wide leading-tight">
@@ -424,7 +442,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                         </div>
 
                         <p className="text-sm sm:text-base text-gray-400 leading-relaxed font-light mt-3 max-w-3xl ml-1">
-                            We provide skip timestamps for <span className="underline font-normal text-gray-200">{movie?.Title}</span> that help parents and families know exactly what to expect before watching. Avoid unexpected surprises or uncomfortable moments that can interrupt your movie experience. With our timestamps, you can simply skip the scenes you want to avoid and enjoy worry-free movie nights.
+                            We provide skip timestamps for <span className="underline font-normal text-gray-200">{movie?.Title}</span> that help parents and families know exactly what to expect before watching. Avoid unexpected surprises or uncomfortable moments that can interrupt your movie experience. With our timestamps, you can simply skip the scenes you want to avoid and enjoy worry-free movie nights. These timestamps serve as an educational utility so that parents can skip scenes while watching with family or kids, or skip content they are personally uncomfortable with.
                         </p>
 
                         {recommendedAge && ageSummary && (
@@ -478,6 +496,19 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                     <h3 className="text-[11px] sm:text-xs font-bold text-gray-400 mb-5 uppercase tracking-[0.2em] flex items-center gap-2">
                         <Film size={14} className="text-yellow-500" /> Parents Guide Tracker
                     </h3>
+
+                    {/* 🔥 SEO SAFE-SEARCH PARENTAL ADVISORY — Only for curated explicit films */}
+                    {showExplicitAdvisory && (
+                        <div className="relative overflow-hidden rounded-xl border border-white/10 bg-black/40 backdrop-blur-md p-3.5 sm:p-4 mb-5 shadow-lg">
+                            <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-red-500 to-red-700"></div>
+                            <div className="flex items-start gap-3 ml-1">
+                                <AlertOctagon className="text-red-400/80 w-4 h-4 shrink-0 mt-0.5" />
+                                <p className="text-[12px] sm:text-[13px] text-gray-400 leading-relaxed font-light">
+                                    <span className="text-gray-300 font-medium">Viewer Discretion Advised:</span> This film contains scenes of an extremely explicit nature. Filmiway strongly advises that this film is <span className="text-red-400/90 font-medium">not suitable for family viewing or watching with children</span>. If you choose to watch, use the skip timestamps below to navigate past scenes you may find uncomfortable.
+                                </p>
+                            </div>
+                        </div>
+                    )}
 
                     <div className="relative w-full h-2.5 sm:h-3 bg-[#030303] rounded-full border border-white/10 shadow-inner group/track mt-6 sm:mt-8">
                         <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-gray-800/40 to-transparent w-full rounded-full pointer-events-none" />

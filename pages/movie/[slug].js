@@ -345,7 +345,7 @@ export default function UniversalMoviePage({ movie }) {
     const totalScenesFlagged = filteredHeavyScenes.length;
 
     // Construct a highly enriched, unique description that matches the visible page content perfectly
-    let enrichedDescription = `We provide skip timestamps for ${movie.Title} that help parents and families know exactly what to expect before watching. Avoid unexpected surprises or uncomfortable moments that can interrupt your movie experience. With our timestamps, you can simply skip the scenes you want to avoid and enjoy worry-free movie nights. `;
+    let enrichedDescription = `We provide skip timestamps for ${movie.Title} that help parents and families know exactly what to expect before watching. Avoid unexpected surprises or uncomfortable moments that can interrupt your movie experience. With our timestamps, you can simply skip the scenes you want to avoid and enjoy worry-free movie nights. These timestamps are provided strictly as an educational utility so that parents can censor or skip the scenes while watching with family or kids, or scenes they are personally uncomfortable with. `;
     
     // Add dynamic stats to the schema description to match on-page details
     if (totalScenesFlagged > 0) {
