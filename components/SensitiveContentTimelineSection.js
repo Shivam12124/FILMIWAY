@@ -504,7 +504,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                             <div className="flex items-start gap-3 ml-1">
                                 <AlertOctagon className="text-red-400/80 w-4 h-4 shrink-0 mt-0.5" />
                                 <p className="text-[12px] sm:text-[13px] text-gray-400 leading-relaxed font-light">
-                                    <span className="text-gray-300 font-medium">Viewer Discretion Advised:</span> This film contains scenes of an extremely explicit nature. Filmiway strongly advises that this film is <span className="text-red-400/90 font-medium">not suitable for family viewing or watching with children</span>. If you choose to watch, use the skip timestamps below to navigate past scenes you may find uncomfortable.
+                                    <span className="text-gray-300 font-medium">Viewer Discretion Advised:</span> This film contains scenes of an extremely explicit nature. Filmiway strongly advises that this film is <span className="text-red-400/90 font-medium">not suitable for family viewing or watching with children</span>. If you choose to watch, use the skip timestamps below to navigate past scenes you may find uncomfortable. These timestamps are provided strictly as an educational utility.
                                 </p>
                             </div>
                         </div>

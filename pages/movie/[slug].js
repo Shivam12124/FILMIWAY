@@ -344,8 +344,23 @@ export default function UniversalMoviePage({ movie }) {
 
     const totalScenesFlagged = filteredHeavyScenes.length;
 
+    // Curated list of highly explicit/famous films (should match the frontend component)
+    const EXPLICIT_ADVISORY_TMDB_IDS = new Set([
+        792307, 884, 185, 345, 8055, 4995, 9352, 106646, 1359, 1391, 13973, 1064213,
+        1278, 152532, 181886, 2105, 85889, 814338, // 10+ scenes
+        402, 617, 979, 1643, 2057, 2251, 4588, 10867, 11013, 76025, 152584,
+        216015, 337167, 341174, 401981, 664413, 930564 // Famous explicit films
+    ]);
+
+    const hasExplicitAdvisory = EXPLICIT_ADVISORY_TMDB_IDS.has(Number(movie.tmdbId)) || totalScenesFlagged >= 10;
+
     // Construct a highly enriched, unique description that matches the visible page content perfectly
-    let enrichedDescription = `We provide skip timestamps for ${movie.Title} that help parents and families know exactly what to expect before watching. Avoid unexpected surprises or uncomfortable moments that can interrupt your movie experience. With our timestamps, you can simply skip the scenes you want to avoid and enjoy worry-free movie nights. These timestamps are provided strictly as an educational utility so that parents can censor or skip the scenes while watching with family or kids, or scenes they are personally uncomfortable with. `;
+    let enrichedDescription = "";
+    if (hasExplicitAdvisory) {
+        enrichedDescription += `Viewer Discretion Advised: This film contains scenes of an extremely explicit nature. Filmiway strongly advises that this film is not suitable for family viewing or watching with children. These skip timestamps are provided strictly as an educational utility. `;
+    }
+
+    enrichedDescription += `We provide skip timestamps for ${movie.Title} that help parents and families know exactly what to expect before watching. Avoid unexpected surprises or uncomfortable moments that can interrupt your movie experience. With our timestamps, you can simply skip the scenes you want to avoid and enjoy worry-free movie nights. These timestamps are provided strictly as an educational utility so that parents can censor or skip the scenes while watching with family or kids, or scenes they are personally uncomfortable with. `;
     
     // Add dynamic stats to the schema description to match on-page details
     if (totalScenesFlagged > 0) {
