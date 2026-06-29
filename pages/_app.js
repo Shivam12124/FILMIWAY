@@ -167,6 +167,52 @@ export default function App({ Component, pageProps }) {
             __html: `!(function(){window.growMe||((window.growMe=function(e){window.growMe._.push(e);}),(window.growMe._=[]));var e=document.createElement("script");(e.type="text/javascript"),(e.src="https://faves.grow.me/main.js"),(e.defer=!0),e.setAttribute("data-grow-faves-site-id","U2l0ZTpmYzEyNGY4Ni1jYzUwLTQ4ZGQtOWFkZi1mZmI1YjQwODI5Y2I=");var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t);})();` 
           }} 
         />
+        {/* 🚀 ORGANIZATION SCHEMA (DOMAIN-LEVEL TRUST) 🚀 */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "WebSite",
+                  "@id": "https://filmiway.com/#website",
+                  "url": "https://filmiway.com/",
+                  "name": "Filmiway",
+                  "description": "Educational utility and parents guide providing precise skip timestamps for sensitive content in movies.",
+                  "publisher": {
+                    "@id": "https://filmiway.com/#organization"
+                  }
+                },
+                {
+                  "@type": "Organization",
+                  "@id": "https://filmiway.com/#organization",
+                  "name": "Filmiway Media",
+                  "url": "https://filmiway.com/",
+                  "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://filmiway.com/logo.png"
+                  },
+                  "email": "filmiway.media@gmail.com",
+                  "founder": {
+                    "@type": "Person",
+                    "name": "Shivam Singh",
+                    "url": "https://www.linkedin.com/in/shivam-singh-2ba0a541a/"
+                  },
+                  "sameAs": [
+                    "https://x.com/FilmiwayMedia",
+                    "https://www.linkedin.com/in/shivam-singh-2ba0a541a/"
+                  ],
+                  "contactPoint": {
+                    "@type": "ContactPoint",
+                    "email": "filmiway.media@gmail.com",
+                    "contactType": "customer support"
+                  }
+                }
+              ]
+            })
+          }}
+        />
       </Head>
       
       {/* 🚀 GOOGLE ANALYTICS (Loaded immediately to capture 100% of traffic) */}
