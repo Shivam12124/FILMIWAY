@@ -279,10 +279,10 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
     }, [movie?.Genre, movie?.genre]);
 
     const cleanVariations = useMemo(() => [
-        "Filmiway editors have manually verified this film is free of explicit sexual content and nudity. Accurate for the ",
-        "Our team has carefully reviewed this movie and confirmed it contains zero sex scenes or explicit nudity. Verified for the ",
-        "You can watch with confidence knowing our editors verified there is no explicit sexual content or nudity in this film. Accurate for the ",
-        "We have fully vetted this movie and confirmed it is completely clear of any explicit nudity or sexual situations. Verified for the "
+        "The movie has no timestamps as it contains no sexual or major explicit scenes. Accurate for the ",
+        "No explicit timestamps found. The movie has no timestamps as it has no sexual or major explicit scenes. Verified for the ",
+        "Our editors did not flag any explicit content. The movie has no timestamps as it has no sexual or major explicit scenes. Accurate for the ",
+        "Zero intimate scenes detected. The movie has no timestamps as it has no sexual or major explicit scenes. Verified for the "
     ], []);
 
     //  VISUAL TIMELINE MARKERS GENERATION
@@ -348,6 +348,30 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
         };
     }, [filteredHeavyScenes]);
 
+    const safetyScoreColor = movie?.safetyScore >= 8 ? '#10b981' : movie?.safetyScore >= 5 ? '#eab308' : '#ef4444';
+    const safetyScoreBg = movie?.safetyScore >= 8 ? 'rgba(16,185,129,0.15)' : movie?.safetyScore >= 5 ? 'rgba(234,179,8,0.15)' : 'rgba(239,68,68,0.15)';
+    const safetyScoreBorder = movie?.safetyScore >= 8 ? 'rgba(16,185,129,0.3)' : movie?.safetyScore >= 5 ? 'rgba(234,179,8,0.3)' : 'rgba(239,68,68,0.3)';
+
+    const minimalistSafetyBadge = movie?.safetyScore ? (
+        <div 
+            className="flex flex-wrap items-center gap-2 sm:gap-3 mt-3 mb-2 w-fit rounded-xl border backdrop-blur-md px-4 py-2 sm:py-2.5 shadow-lg relative overflow-hidden"
+            style={{ backgroundColor: 'rgba(10, 10, 12, 0.8)', borderColor: safetyScoreBorder }}
+        >
+            <div className="absolute left-0 top-0 bottom-0 w-1" style={{ backgroundColor: safetyScoreColor }}></div>
+            <Shield size={16} style={{ color: safetyScoreColor }} className="hidden sm:block opacity-80" />
+            <div className="flex items-center gap-2.5">
+                <span className="text-xs sm:text-sm font-semibold text-gray-200 tracking-wide">Family Safety Score:</span>
+                <span className="text-base sm:text-lg font-black" style={{ color: safetyScoreColor }}>
+                    {movie.safetyScore}/10
+                </span>
+                <span className="text-xs sm:text-sm uppercase tracking-widest font-bold ml-1 opacity-90"
+                      style={{ color: safetyScoreColor }}>
+                    {movie.safetyLabel}
+                </span>
+            </div>
+        </div>
+    ) : null;
+
     return (
         <motion.section
             className="w-full bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8"
@@ -356,43 +380,41 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
             transition={{ duration: 0.6 }}
         >
             {filteredHeavyScenes.length === 0 ? (
-                <div
-                    className="w-full px-4 sm:px-6 py-4 sm:py-5 rounded-2xl border backdrop-blur-sm flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 mb-4"
-                    style={{ backgroundColor: COLORS.safeBg, borderColor: COLORS.safeBorder }}
-                >
-                    <div className="p-2 rounded-full bg-emerald-500/20 text-emerald-400 self-start sm:self-auto shrink-0">
-                        <CheckCircle size={24} />
-                    </div>
-                    <div>
-                        <div className="flex items-center gap-2">
-                            <h1 className="text-emerald-300 font-medium text-base sm:text-lg">{movie?.Title} Parents Guide (Clean)</h1>
+                <div className="flex flex-col gap-4 sm:gap-6 relative z-50">
+                    <div className="space-y-3 w-full">
+                        <div className="flex items-center justify-between w-full">
+                            <h1 className="text-xl sm:text-2xl font-light text-gray-200 flex items-center gap-3 tracking-wide leading-tight">
+                                <CheckCircle className="text-emerald-500 w-6 h-6 shrink-0" />
+                                <span>{movie?.Title} Parents Guide (Clean)</span>
+                            </h1>
                         </div>
-
-                        {/* 🔥 RECOMMENDED AGE BADGE (Dynamic) */}
-                        {recommendedAge && ageSummary && (
-                            <motion.div
-                                className="my-3 relative overflow-hidden rounded-xl border border-white/10 bg-black/40 backdrop-blur-md p-3 sm:p-4 flex flex-row items-center gap-3 sm:gap-4 shadow-lg w-full"
-                                initial={{ opacity: 0, y: 5 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.5, delay: 0.2 }}
-                            >
-                                <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-yellow-400 to-yellow-600"></div>
-
-                                <div className="flex-shrink-0 flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-yellow-500/10 border border-yellow-500/20 shadow-[0_0_15px_rgba(234,179,8,0.15)]">
-                                    <span className="text-lg sm:text-xl font-bold text-yellow-400 tracking-tight">{recommendedAge}</span>
-                                </div>
-
-                                <div className="flex-1 flex flex-col justify-center">
-                                    <h3 className="text-[11px] sm:text-xs font-semibold text-gray-300 mb-0.5 uppercase tracking-widest">Recommended Age</h3>
-                                    <p className="text-xs sm:text-[13px] text-gray-400 leading-snug font-light">{ageSummary}</p>
-                                </div>
-                            </motion.div>
-                        )}
-
-                        <p className="text-emerald-400/80 text-xs sm:text-base md:text-lg font-light mt-1 sm:mt-2 leading-relaxed">
+                        {minimalistSafetyBadge}
+                        
+                        <p className="text-sm sm:text-base text-gray-400 leading-relaxed font-light mt-3 max-w-3xl ml-1">
                             {cleanVariations[textHash % cleanVariations.length]}<span suppressHydrationWarning>{currentRuntime}</span>.
                         </p>
                     </div>
+
+                    {/* 🔥 RECOMMENDED AGE BADGE (Dynamic) */}
+                    {recommendedAge && ageSummary && (
+                        <motion.div
+                            className="my-3 relative overflow-hidden rounded-xl border border-white/10 bg-black/40 backdrop-blur-md p-3 sm:p-4 flex flex-row items-center gap-3 sm:gap-4 shadow-lg w-full"
+                            initial={{ opacity: 0, y: 5 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: 0.2 }}
+                        >
+                            <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-yellow-400 to-yellow-600"></div>
+
+                            <div className="flex-shrink-0 flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-yellow-500/10 border border-yellow-500/20 shadow-[0_0_15px_rgba(234,179,8,0.15)]">
+                                <span className="text-lg sm:text-xl font-bold text-yellow-400 tracking-tight">{recommendedAge}</span>
+                            </div>
+
+                            <div className="flex-1 flex flex-col justify-center">
+                                <h3 className="text-[11px] sm:text-xs font-semibold text-gray-300 mb-0.5 uppercase tracking-widest">Recommended Age</h3>
+                                <p className="text-xs sm:text-[13px] text-gray-400 leading-snug font-light">{ageSummary}</p>
+                            </div>
+                        </motion.div>
+                    )}
                 </div>
             ) : (
                 <div className="flex flex-col gap-4 sm:gap-6 relative z-50">
@@ -440,6 +462,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                                 </motion.div>
                             </div>
                         </div>
+                        {minimalistSafetyBadge}
 
                         <p className="text-sm sm:text-base text-gray-400 leading-relaxed font-light mt-3 max-w-3xl ml-1">
                             We provide skip timestamps for <span className="underline font-normal text-gray-200">{movie?.Title}</span> that help parents and families know exactly what to expect before watching. Avoid unexpected surprises or uncomfortable moments that can interrupt your movie experience. With our timestamps, you can simply skip the scenes you want to avoid and enjoy worry-free movie nights. These timestamps serve as an educational utility so that parents can skip scenes while watching with family or kids, or skip content they are personally uncomfortable with.

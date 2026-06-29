@@ -385,7 +385,30 @@ export default function UniversalMoviePage({ movie }) {
         "@type": "Movie",
         "name": movie.Title,
         "image": movie.Poster,
-        "description": enrichedDescription
+        "description": enrichedDescription,
+        "aggregateRating": movie.safetyScore ? {
+            "@type": "AggregateRating",
+            "ratingValue": String(movie.safetyScore),
+            "bestRating": "10",
+            "worstRating": "1",
+            "ratingCount": "1",
+            "reviewCount": "1"
+        } : undefined,
+        "review": movie.safetyScore ? {
+            "@type": "Review",
+            "author": {
+                "@type": "Organization",
+                "name": "Filmiway"
+            },
+            "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": String(movie.safetyScore),
+                "bestRating": "10",
+                "worstRating": "1",
+                "ratingExplanation": `Family Safety Score: ${movie.safetyLabel}`
+            },
+            "name": "Family Safety Score"
+        } : undefined
     };
 
     // 🚀 Construct the FAQPage schema mapping EXACTLY to the on-page accordion FAQs (1:1 identical)
@@ -655,6 +678,71 @@ export async function getStaticProps({ params }) {
         Age: sensitiveData.Age || null,
         Summary: sensitiveData.Summary || null
     };
+
+    // --- FILMIWAY SAFETY SCORE ALGORITHM ---
+    const ageRating = (movie.Rated || 'NR').toUpperCase();
+    const explicitAdvisoryIds = new Set([
+        792307, 884, 185, 345, 8055, 4995, 9352, 106646, 1359, 1391, 13973, 1064213,
+        1278, 152532, 181886, 2105, 85889, 814338, 402, 617, 979, 1643, 2057, 2251, 4588, 10867, 11013, 76025, 152584,
+        216015, 337167, 341174, 401981, 664413, 930564
+    ]);
+
+    let safetyScore = 10;
+    
+    // 1. Age Rating Baseline (Ceiling)
+    if (ageRating.includes('R') || ageRating.includes('NC-17') || ageRating.includes('TV-MA') || ageRating.includes('18')) {
+        safetyScore = Math.min(safetyScore, 7);
+    } else if (ageRating.includes('PG-13') || ageRating.includes('TV-14') || ageRating.includes('14')) {
+        safetyScore = Math.min(safetyScore, 8);
+    }
+
+    // 2. Profanity/Violence Adjustment
+    const parentGuideSummary = (movie.Summary || '').toLowerCase();
+    const hasHighProfanity = parentGuideSummary.includes('severe language') || parentGuideSummary.includes('pervasive language') || parentGuideSummary.includes('strong profanity') || parentGuideSummary.includes('extreme profanity');
+    const hasHighViolence = parentGuideSummary.includes('severe violence') || parentGuideSummary.includes('strong bloody violence') || parentGuideSummary.includes('graphic gore') || parentGuideSummary.includes('extreme violence');
+    
+    if (hasHighProfanity && hasHighViolence) safetyScore = Math.min(safetyScore, 4);
+    else if (hasHighViolence) safetyScore = Math.min(safetyScore, 5);
+    else if (hasHighProfanity) safetyScore = Math.min(safetyScore, 6);
+
+    // 3. Explicit Timestamps Penalty
+    const heavyScenes = movie.resolvedSensitiveScenes.filter(s => {
+        const t = (s.type || '').toLowerCase();
+        return t.includes('sex') || t.includes('nudity') || t.includes('explicit') || t.includes('suggestive') || t.includes('lingerie') || t.includes('bikini');
+    });
+
+    if (heavyScenes.length > 0) {
+        if (heavyScenes.length <= 2) safetyScore = Math.min(safetyScore, 7);
+        else if (heavyScenes.length <= 4) safetyScore = Math.min(safetyScore, 5);
+        else if (heavyScenes.length <= 6) safetyScore = Math.min(safetyScore, 4);
+        else if (heavyScenes.length <= 9) safetyScore = Math.min(safetyScore, 3);
+        else safetyScore = Math.min(safetyScore, 2);
+    }
+
+    // 4. Override for Top 35 Explicit Films
+    if (explicitAdvisoryIds.has(Number(movie.tmdbId))) {
+        safetyScore = 1;
+    }
+
+    // Assign Label
+    let safetyLabel = "";
+    switch (safetyScore) {
+        case 10: safetyLabel = "Family Safe"; break;
+        case 9:  safetyLabel = "Can be watched with family"; break;
+        case 8:  safetyLabel = "Mostly clean"; break;
+        case 7:  safetyLabel = "Be cautious"; break;
+        case 6:  safetyLabel = "Recommended for mature people"; break;
+        case 5:  safetyLabel = "Strong caution"; break;
+        case 4:  safetyLabel = "Not family safe"; break;
+        case 3:  safetyLabel = "Not recommended to watch with family"; break;
+        case 2:  safetyLabel = "Adults only"; break;
+        case 1:  safetyLabel = "Maximum caution advised"; break;
+        default: safetyLabel = "Use discretion"; break;
+    }
+    
+    movie.safetyScore = safetyScore;
+    movie.safetyLabel = safetyLabel;
+
     
     return { props: { movie } };
 }
