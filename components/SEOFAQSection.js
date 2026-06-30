@@ -16,7 +16,16 @@ const SEOFAQSection = ({ movie }) => {
     // 🔥 AUTOMATICALLY GENERATE THE FAQS FOR HUMANS (Includes Dynamic Timestamp FAQ)
     // This ensures your UI matches the Bot Schema 1:1 using the new universal Intensity Metric.
     const currentRuntime = movie?.Runtime || movie?.runtime || "Official";
-    const faqsFromData = getVisibleMovieFAQs(movie?.Title, movie?.tmdbId, currentRuntime);
+    const faqsRaw = getVisibleMovieFAQs(movie?.Title, movie?.tmdbId, currentRuntime);
+    const faqsFromData = faqsRaw ? faqsRaw.map(faq => {
+        if (faq.answer && faq.answer.includes("[DYNAMIC_SCORE]")) {
+            return {
+                ...faq,
+                answer: faq.answer.replace("[DYNAMIC_SCORE]", movie?.safetyScore || 5).replace("[DYNAMIC_LABEL]", movie?.safetyLabel || "Watch With Caution")
+            };
+        }
+        return faq;
+    }) : [];
 
     // 🔥 Safety check - return null if no FAQs found
     if (!faqsFromData || faqsFromData.length === 0) {

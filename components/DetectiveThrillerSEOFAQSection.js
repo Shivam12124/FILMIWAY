@@ -13,7 +13,16 @@ const DetectiveThrillerSEOFAQSection = ({ movie }) => {
     
     // 🔥 AUTOMATICALLY GENERATE THE FAQS FOR HUMANS
     // Passing currentRuntime as the 3rd parameter so the UI matches the Schema exactly!
-    const faqsFromData = getVisibleMovieFAQs(movie?.Title, movie?.tmdbId, currentRuntime);
+    const faqsRaw = getVisibleMovieFAQs(movie?.Title, movie?.tmdbId, currentRuntime);
+    const faqsFromData = faqsRaw ? faqsRaw.map(faq => {
+        if (faq.answer && faq.answer.includes("[DYNAMIC_SCORE]")) {
+            return {
+                ...faq,
+                answer: faq.answer.replace("[DYNAMIC_SCORE]", movie?.safetyScore || 5).replace("[DYNAMIC_LABEL]", movie?.safetyLabel || "Watch With Caution")
+            };
+        }
+        return faq;
+    }) : [];
 
     // 🔥 Safety check - fallback to generic if nothing generates
     const finalFaqs = (faqsFromData && faqsFromData.length > 0) ? faqsFromData : [

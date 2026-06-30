@@ -11,7 +11,16 @@ const HuluThrillerSEOFAQSection = ({ movie }) => {
     // 🔥 AUTOMATICALLY GENERATE THE FAQS (Includes the Dynamic Timestamp FAQ & Intensity Peaks)
     // This ensures the UI perfectly matches the Bot Schema!
     const currentRuntime = movie?.Runtime || movie?.runtime || "Official";
-    const faqsFromData = getVisibleMovieFAQs(movie?.Title, movie?.tmdbId, currentRuntime);
+    const faqsRaw = getVisibleMovieFAQs(movie?.Title, movie?.tmdbId, currentRuntime);
+    const faqsFromData = faqsRaw ? faqsRaw.map(faq => {
+        if (faq.answer && faq.answer.includes("[DYNAMIC_SCORE]")) {
+            return {
+                ...faq,
+                answer: faq.answer.replace("[DYNAMIC_SCORE]", movie?.safetyScore || 5).replace("[DYNAMIC_LABEL]", movie?.safetyLabel || "Watch With Caution")
+            };
+        }
+        return faq;
+    }) : [];
 
     // Safety check - return null if no FAQs are found
     if (!faqsFromData || faqsFromData.length === 0) {

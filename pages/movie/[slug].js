@@ -197,6 +197,7 @@ const getCollectionProp = (slug) => {
         'movies-like-donnie-darko': 'fromDonnieDarkoCollection',
         'movies-like-fight-club': 'fromFightClubCollection',
         'movies-like-oldboy': 'fromOldboyCollection',
+        'best-interstellar-movies': 'fromInterstellarCollection',
         'movies-like-interstellar': 'fromInterstellarCollection',
         'best-drama-movies-on-netflix': 'fromDramaCollection', 
         'best-psychological-thriller-movies': 'fromPsychologicalThrillerCollection',
@@ -244,7 +245,8 @@ const getCollectionProp = (slug) => {
         'best-thriller-movies-on-peacock': 'fromPeacockThrillerCollection',
         'best-movies-on-peacock': 'fromPeacockBestCollection',
         'best-comedy-movies-on-peacock': 'fromPeacockComedyCollection',
-        'top-10-jennifer-lawrence-movies': 'fromJLawCollection'
+        'top-10-jennifer-lawrence-movies': 'fromJLawCollection',
+        'top-10-monica-bellucci-movies': 'fromMonicaBellucciCollection'
     };
     return slugMap[slug] || null;
 };
@@ -299,7 +301,16 @@ export default function UniversalMoviePage({ movie }) {
     if (movie.tmdbId === 2057) currentRuntime = "118 min (Unrated Version)";
     if (movie.tmdbId === 10867) currentRuntime = "1 hour 32 min";
 
-    const faqs = getVisibleMovieFAQs(movie.Title, movie.tmdbId, currentRuntime) || [];
+    const rawFaqs = getVisibleMovieFAQs(movie.Title, movie.tmdbId, currentRuntime) || [];
+    const faqs = rawFaqs.map(faq => {
+        if (faq.answer && faq.answer.includes("[DYNAMIC_SCORE]")) {
+            return {
+                ...faq,
+                answer: faq.answer.replace("[DYNAMIC_SCORE]", movie.safetyScore || 5).replace("[DYNAMIC_LABEL]", movie.safetyLabel || "Watch With Caution")
+            };
+        }
+        return faq;
+    });
 
     // Format the exact, manually verified timestamps with their descriptions for the movie description
     const hasTimestamps = movie.resolvedSensitiveScenes && movie.resolvedSensitiveScenes.length > 0;

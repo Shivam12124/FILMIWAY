@@ -14,7 +14,16 @@ const WarFilmsSEOFAQSection = ({ movie }) => {
     const currentRuntime = movie?.Runtime || movie?.runtime || "Official";
     
     // Generate FAQs
-    const faqsFromData = getVisibleMovieFAQs(movieTitle, movie?.tmdbId, currentRuntime);
+    const rawFaqs = getVisibleMovieFAQs(movieTitle, movie?.tmdbId, currentRuntime);
+    const faqsFromData = rawFaqs ? rawFaqs.map(faq => {
+        if (faq.answer && faq.answer.includes("[DYNAMIC_SCORE]")) {
+            return {
+                ...faq,
+                answer: faq.answer.replace("[DYNAMIC_SCORE]", movie?.safetyScore || 5).replace("[DYNAMIC_LABEL]", movie?.safetyLabel || "Watch With Caution")
+            };
+        }
+        return faq;
+    }) : [];
 
     // Safety check
     if (!faqsFromData || faqsFromData.length === 0) {

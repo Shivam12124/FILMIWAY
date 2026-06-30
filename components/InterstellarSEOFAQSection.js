@@ -11,9 +11,18 @@ const InterstellarSEOFAQSection = ({ movie }) => {
     const sensitiveData = SENSITIVE_TIMELINES[movie.tmdbId];
     
     // 🔥 Get FAQs from INTERSTELLAR_MOVIE_FAQS data
-    const faqsFromData = movie?.Title && INTERSTELLAR_MOVIE_FAQS?.[movie.Title] 
+    const rawFaqs = movie?.Title && INTERSTELLAR_MOVIE_FAQS?.[movie.Title] 
         ? INTERSTELLAR_MOVIE_FAQS[movie.Title] 
         : [];
+    const faqsFromData = rawFaqs.map(faq => {
+        if (faq.answer && faq.answer.includes("[DYNAMIC_SCORE]")) {
+            return {
+                ...faq,
+                answer: faq.answer.replace("[DYNAMIC_SCORE]", movie?.safetyScore || 5).replace("[DYNAMIC_LABEL]", movie?.safetyLabel || "Watch With Caution")
+            };
+        }
+        return faq;
+    });
 
     // 🔥 Safety check - return null if no FAQs
     if (!faqsFromData || faqsFromData.length === 0) {

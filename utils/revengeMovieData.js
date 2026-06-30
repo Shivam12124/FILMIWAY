@@ -674,50 +674,43 @@ ${uiIntensityList}`
         }).join('\n');
         
         const startTimesList = heavyScenes.map(s => s.start).join(', ');
-
         // Filter out suggestive clothing for the UI as well
         const familyUnsafeTypes = typesArray.filter(t => t !== 'suggestive clothing');
         const familyUnsafeString = familyUnsafeTypes.join(' and ');
+        
+                let familyFaqAnswer = `No. ${movieTitle} is not safe to watch with family because it contains ${familyUnsafeString}, earning it a [DYNAMIC_SCORE]/10 ([DYNAMIC_LABEL]) Family Safety Score. Adults can use Filmiway's timestamps to skip all ${sceneCount} explicit scenes in the ${finalRuntime} runtime.`;
 
         const familyFaqUI = familyUnsafeTypes.length > 0
             ? {
                 question: `Is ${movieTitle} safe to watch with family?`,
-                answer: `No. ${movieTitle} is not safe to watch with family because it contains ${familyUnsafeString}. Adults can use Filmiway's timestamps to skip all ${sceneCount} scenes in the ${finalRuntime} runtime.`
+                answer: familyFaqAnswer
             }
             : {
                 question: `Is ${movieTitle} safe to watch with family?`,
-                answer: `Yes. Filmiway editors have manually verified that ${movieTitle} is completely free of sex, nudity, and sexual content throughout its entire ${finalRuntime} runtime.`
+                answer: `Yes. ${movieTitle} earns a [DYNAMIC_SCORE]/10 ([DYNAMIC_LABEL]) Family Safety Score. Filmiway editors have manually verified that it is completely free of sex, nudity, and sexual content throughout its entire ${finalRuntime} runtime.`
             };
 
         staticFaqs.unshift(
             {
-                question: `Does ${movieTitle} have sex scenes or nudity?`,
-                answer: `Yes. ${movieTitle} contains ${sceneCount} scenes of ${typesString}. Exact timestamps:
-
-${uiDetailedList}
-
-Manually verified frame by frame by Filmiway editors for the ${finalRuntime} runtime.`
-            },
-            {
-                question: `What time does nudity appear in ${movieTitle} and how do I skip it?`,
-                answer: `Explicit content first appears at ${firstTimestamp} (${firstSeverity}). Total time to skip: ${totalSkipTime} across ${sceneCount} scenes. Skip timestamps: ${startTimesList}. Verified for the ${finalRuntime} version.`
+                question: `Does ${movieTitle} have inappropriate scenes? If yes, how to skip them while watching with family?`,
+                answer: `Yes. ${movieTitle} contains ${sceneCount} scenes of ${typesString}. To ensure a safe family movie night, you can use these exact skip timestamps:\n\n${uiDetailedList}\n\nManually verified frame by frame by Filmiway editors for the ${finalRuntime} runtime.`
             },
             familyFaqUI
         );
     } else {
         staticFaqs.unshift(
             {
-                question: `Does ${movieTitle} have sex scenes or nudity?`,
+                question: `Does ${movieTitle} have inappropriate scenes? If yes, how to skip them while watching with family?`,
                 answer: `No. Filmiway editors have manually verified that ${movieTitle} is free of explicit sex scenes and nudity.`
             },
             {
                 question: `Is ${movieTitle} safe to watch with family?`,
-                answer: `Yes. Filmiway editors have manually verified that ${movieTitle} is completely free of sex, nudity, and sexual content throughout its entire ${finalRuntime} runtime.`
+                answer: `Yes. ${movieTitle} earns a [DYNAMIC_SCORE]/10 ([DYNAMIC_LABEL]) Family Safety Score. Filmiway editors have manually verified that it is completely free of sex, nudity, and sexual content throughout its entire ${finalRuntime} runtime.`
             }
         );
     }
 
-return staticFaqs;
+    return staticFaqs;
 };
 
 // EXPORT NAMED ALIAS FOR COMPATIBILITY
