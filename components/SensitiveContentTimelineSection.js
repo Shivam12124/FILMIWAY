@@ -354,20 +354,29 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
 
     const minimalistSafetyBadge = movie?.safetyScore ? (
         <div 
-            className="flex flex-wrap items-center gap-2 sm:gap-3 mt-3 mb-2 w-fit rounded-xl border backdrop-blur-md px-4 py-2 sm:py-2.5 shadow-lg relative overflow-hidden"
+            className="flex flex-wrap items-center gap-2 sm:gap-3 mt-3 mb-2 w-fit rounded-xl border backdrop-blur-md px-4 py-2 sm:py-2.5 shadow-lg relative"
             style={{ backgroundColor: 'rgba(10, 10, 12, 0.8)', borderColor: safetyScoreBorder }}
         >
-            <div className="absolute left-0 top-0 bottom-0 w-1" style={{ backgroundColor: safetyScoreColor }}></div>
+            <div className="absolute left-0 top-0 bottom-0 w-1 rounded-l-xl" style={{ backgroundColor: safetyScoreColor }}></div>
             <Shield size={16} style={{ color: safetyScoreColor }} className="hidden sm:block opacity-80" />
             <div className="flex items-center gap-2.5">
-                <span className="text-xs sm:text-sm font-semibold text-gray-200 tracking-wide">Family Safety Score:</span>
-                <span className="text-base sm:text-lg font-black" style={{ color: safetyScoreColor }}>
+                <div className="flex items-center">
+                    <span className="text-xs sm:text-sm font-semibold text-gray-200 tracking-wide">Family Safety Score:</span>
+                </div>
+                <span className="text-base sm:text-lg font-black ml-1" style={{ color: safetyScoreColor }}>
                     {movie.safetyScore}/10
                 </span>
-                <span className="text-xs sm:text-sm uppercase tracking-widest font-bold ml-1 opacity-90"
+                <span className="text-xs sm:text-sm uppercase tracking-widest font-bold opacity-90"
                       style={{ color: safetyScoreColor }}>
                     {movie.safetyLabel}
                 </span>
+                <div className="relative group flex items-center ml-1">
+                    <Info size={14} className="text-gray-400 cursor-pointer hover:text-white transition-colors" />
+                    <div className="absolute top-[150%] right-0 w-64 p-3 bg-[#18181b] border border-gray-600 rounded-lg text-xs text-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[9999] text-left shadow-[0_10px_40px_rgba(0,0,0,0.8)] leading-relaxed font-normal">
+                        The Family Safety Score helps families decide whether to watch a movie together based on explicit content, violence, and profanity.
+                        <div className="absolute bottom-full right-[5px] border-[6px] border-transparent border-b-[#18181b]"></div>
+                    </div>
+                </div>
             </div>
         </div>
     ) : null;
