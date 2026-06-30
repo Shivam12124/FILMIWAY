@@ -405,7 +405,7 @@ export default function UniversalMoviePage({ movie }) {
                 "ratingValue": String(movie.safetyScore),
                 "bestRating": "10",
                 "worstRating": "1",
-                "ratingExplanation": `Family Safety Score: ${movie.safetyLabel}`
+                "ratingExplanation": `Family Safety Score: ${movie.safetyLabel}. ${movie.safetyDesc}`
             },
             "name": "Family Safety Score"
         } : undefined
@@ -726,22 +726,24 @@ export async function getStaticProps({ params }) {
 
     // Assign Label
     let safetyLabel = "";
+    let safetyDesc = "";
     switch (safetyScore) {
-        case 10: safetyLabel = "Family Safe"; break;
-        case 9:  safetyLabel = "Can be watched with family"; break;
-        case 8:  safetyLabel = "Mostly clean"; break;
-        case 7:  safetyLabel = "Be cautious"; break;
-        case 6:  safetyLabel = "Recommended for mature people"; break;
-        case 5:  safetyLabel = "Strong caution"; break;
-        case 4:  safetyLabel = "Not family safe"; break;
-        case 3:  safetyLabel = "Not recommended to watch with family"; break;
-        case 2:  safetyLabel = "Adults only"; break;
-        case 1:  safetyLabel = "Maximum caution advised"; break;
-        default: safetyLabel = "Use discretion"; break;
+        case 10: safetyLabel = "Family Friendly"; safetyDesc = "Suitable for family movie nights with minimal concerns."; break;
+        case 9:  safetyLabel = "Family Watch Recommended"; safetyDesc = "Generally suitable, with very minor moments some families may prefer to skip."; break;
+        case 8:  safetyLabel = "Mostly Family Friendly"; safetyDesc = "Mostly suitable, but contains some mild content to consider."; break;
+        case 7:  safetyLabel = "Parental Guidance Suggested"; safetyDesc = "Parents should review the content details before watching with children."; break;
+        case 6:  safetyLabel = "Mature Audience Recommended"; safetyDesc = "Better suited for older teens and adults due to mature themes."; break;
+        case 5:  safetyLabel = "Watch With Caution"; safetyDesc = "Contains several elements that may not be suitable for family viewing."; break;
+        case 4:  safetyLabel = "Not Family Friendly"; safetyDesc = "Contains noticeable mature content that may make family viewing uncomfortable."; break;
+        case 3:  safetyLabel = "Avoid Family Viewing"; safetyDesc = "Not recommended for watching with children or family groups."; break;
+        case 2:  safetyLabel = "Adult Viewing Recommended"; safetyDesc = "Contains significant mature content."; break;
+        case 1:  safetyLabel = "Strictly Adults Only"; safetyDesc = "Contains extremely explicit material and requires strict parental discretion."; break;
+        default: safetyLabel = "Use discretion"; safetyDesc = ""; break;
     }
     
     movie.safetyScore = safetyScore;
     movie.safetyLabel = safetyLabel;
+    movie.safetyDesc = safetyDesc;
 
     
     return { props: { movie } };
