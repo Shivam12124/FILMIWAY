@@ -15,11 +15,12 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 1278, "imdbID": "tt0309987", "Title": "The Dreamers", "year": 2003, "genre": "Drama", "runtime": 115, "rank": 3 },
     { "tmdbId": 814338, "imdbID": "tt14369780", "Title": "Lady Chatterley's Lover", "year": 2022, "genre": "Romance", "runtime": 126, "rank": 4 },
     { "tmdbId": 1643, "imdbID": "tt0070849", "Title": "Last Tango In Paris", "year": 1972, "genre": "Drama", "runtime": 129, "rank": 5 },
-    { "tmdbId": 341174 , "imdbID": "tt4465564", "Title": "Fifty Shades Darker", "year": 2017, "genre": "Romance", "runtime": 118, "rank": 6 },
+    { "tmdbId": 341174, "imdbID": "tt4465564", "Title": "Fifty Shades Darker", "year": 2017, "genre": "Romance", "runtime": 118, "rank": 6 },
     { "tmdbId": 216015, "imdbID": "tt2322441", "Title": "Fifty Shades of Grey", "year": 2015, "genre": "Romance", "runtime": 125, "rank": 7 },
     { "tmdbId": 337167, "imdbID": "tt4465566", "Title": "Fifty Shades Freed", "year": 2018, "genre": "Romance", "runtime": 105, "rank": 8 },
     { "tmdbId": 11013, "imdbID": "tt0274812", "Title": "Secretary", "year": 2002, "genre": "Romance", "runtime": 111, "rank": 9 },
     { "tmdbId": 4478, "imdbID": "tt0107211", "Title": "Indecent Proposal", "year": 1993, "genre": "Drama", "runtime": 117, "rank": 10 }
+    , { "tmdbId": 258216, "imdbID": "tt1937390", "Title": "Nymphomaniac: Vol. I", "year": 2013, "genre": "Drama", "runtime": 117, "rank": "BONUS" }
 ];
 
 // ✅ STRATEGIC QUOTES (100% Clean & SEO Safe)
@@ -29,17 +30,19 @@ export const STRATEGIC_QUOTES = {
     1278: "I'm going to stay right here, until you tell me you love me.",
     814338: "I have never felt so alive as I do with you.",
     1643: "No names here. We don't need names.",
-    341174 : "I want you back. I'll do anything it takes.",
+    341174: "I want you back. I'll do anything it takes.",
     216015: "I don't do romance. My tastes are very singular.",
     337167: "Don't you miss the vanilla days?",
     11013: "I'm not going to stop.",
     4478: "Suppose I were to offer you one million dollars for one night with your wife."
+    ,
+    258216: "Perhaps the only difference between me and other people is that I've always demanded more from the sunset."
 };
 
 // ✅ SENSITIVE TIMELINES (Clinical, factual timestamps for the Parents Guide tool)
 export const SENSITIVE_TIMELINES = {
     // 1. Blue Is the Warmest Color
-    152584: { 
+    152584: {
         scenes: [
             { start: "0:18:05", end: "0:19:06", type: "Sexual Content & Nudity (Woman)", severity: "High" },
             { start: "0:22:04", end: "0:24:22", type: "Sex & Nudity", severity: "High" },
@@ -48,13 +51,13 @@ export const SENSITIVE_TIMELINES = {
             { start: "1:38:18", end: "1:41:50", type: "Sex & Nudity", severity: "High" },
             { start: "2:02:01", end: "2:03:36", type: "Sex & Nudity", severity: "High" },
             { start: "2:47:58", end: "2:48:20", type: "Sex & Nudity", severity: "High" }
-        ,
+            ,
             { start: "", end: "", type: "Profanity", severity: "Moderate", description: "Approximately 12–33 uses of strong sexual expletives, including sexual slurs and derogatory language." },
             { start: "", end: "", type: "Violence & Gore", severity: "Mild", description: "Features physical altercations including face-slapping and shoving during intense emotional conflict." }]
     },
 
     // 2. 365 Days
-    664413: { 
+    664413: {
         scenes: [
             { start: "0:11:30", end: "0:13:28", type: "Sex & Nudity", severity: "High" },
             { start: "0:35:55", end: "0:36:42", type: "Suggestive Clothing (Lingerie)", severity: "Moderate" },
@@ -67,7 +70,7 @@ export const SENSITIVE_TIMELINES = {
     },
 
     // 3. The Dreamers
-    1278: { 
+    1278: {
         scenes: [
             { start: "0:26:50", end: "0:27:11", type: "Partial Nudity (Man & Woman)", severity: "Moderate" },
             { start: "0:31:42", end: "0:32:20", type: "Nudity (Man)", severity: "High" },
@@ -80,13 +83,13 @@ export const SENSITIVE_TIMELINES = {
             { start: "1:27:20", end: "1:29:50", type: "Nudity (Woman) & Sex", severity: "High" },
             { start: "1:38:00", end: "1:38:33", type: "Nudity (Man & Woman)", severity: "High" },
             { start: "1:40:40", end: "1:41:20", type: "Nudity (Woman)", severity: "High" }
-        ,
+            ,
             { start: "", end: "", type: "Profanity", severity: "Moderate", description: "Approximately 10 uses of strong sexual expletives (F-words)." },
             { start: "", end: "", type: "Violence & Gore", severity: "Moderate", description: "Depicts riot violence involving the throwing of bricks and petrol bombs. Contains a suicide attempt by gas and themes of self-harm." }]
     },
 
     // 4. Lady Chatterley's Lover
-    814338: { 
+    814338: {
         scenes: [
             { start: "0:34:54", end: "0:35:14", type: "Nudity (Woman)", severity: "High" },
             { start: "0:35:15", end: "0:35:56", type: "Sexual Content", severity: "Moderate" },
@@ -102,7 +105,7 @@ export const SENSITIVE_TIMELINES = {
     },
 
     // 5. Last Tango in Paris
-    1643: { 
+    1643: {
         scenes: [
             { start: "0:14:38", end: "0:16:50", type: "Sex & Nudity", severity: "High" },
             { start: "0:35:50", end: "0:37:44", type: "Nudity (Woman)", severity: "High" },
@@ -117,7 +120,7 @@ export const SENSITIVE_TIMELINES = {
     },
 
     // 6. Fifty Shades Darker
-    341174 : { 
+    341174: {
         scenes: [
             { start: "0:21:52", end: "0:24:21", type: "Nudity & Sex", severity: "High" },
             { start: "0:34:40", end: "0:37:25", type: "Suggestive Clothing", severity: "Moderate" },
@@ -131,7 +134,7 @@ export const SENSITIVE_TIMELINES = {
     },
 
     // 7. Fifty Shades of Grey
-    216015: { 
+    216015: {
         scenes: [
             { start: "0:43:10", end: "0:46:25", type: "Sex & Nudity", severity: "High" },
             { start: "0:47:49", end: "0:50:15", type: "Nudity & Sex", severity: "High" },
@@ -140,13 +143,13 @@ export const SENSITIVE_TIMELINES = {
             { start: "1:23:56", end: "1:29:35", type: "Nudity & Sex", severity: "High" },
             { start: "1:45:47", end: "1:47:36", type: "Nudity & Sex", severity: "High" },
             { start: "1:51:50", end: "1:54:21", type: "Nudity", severity: "High" }
-        ,
+            ,
             { start: "", end: "", type: "Profanity", severity: "Mild", description: "Strong language is infrequent, with the F-word used approximately 7 times." },
             { start: "", end: "", type: "Violence & Gore", severity: "Moderate", description: "Focuses on BDSM-themed activity involving physical restraint and disciplinary tools." }]
     },
 
     // 8. Fifty Shades Freed
-    337167: { 
+    337167: {
         scenes: [
             { start: "0:07:06", end: "0:07:15", type: "Nudity (Woman)", severity: "High" },
             { start: "0:09:05", end: "0:10:23", type: "Nudity & Sex", severity: "High" },
@@ -160,7 +163,7 @@ export const SENSITIVE_TIMELINES = {
     },
 
     // 9. Secretary
-    11013: { 
+    11013: {
         scenes: [
             { start: "0:53:16", end: "0:56:28", type: "Partial Nudity (Woman)", severity: "Moderate" },
             { start: "0:57:56", end: "0:59:30", type: "Sexual Content", severity: "High" },
@@ -173,11 +176,33 @@ export const SENSITIVE_TIMELINES = {
     },
 
     // 10. Indecent Proposal
-    4478: { 
+    4478: {
         scenes: [
-            { start: "0:05:25", end: "0:06:15", type: "Sexual Content & Nudity (Woman)", severity: "High" },
-            { start: "0:16:25", end: "0:17:35", type: "Sexual Content", severity: "Moderate" },
+            { start: "0:12:10", end: "0:13:30", type: "Sexual Content", severity: "Moderate" },
             { start: "0:40:26", end: "0:41:25", type: "Nudity (Woman)", severity: "Moderate" }
+        ]
+    },
+    // BONUS: Nymphomaniac: Vol. I
+    258216: {
+        scenes: [
+            {
+                start: "0:21:40", end: "0:22:00", type: "Nudity (Woman)", severity: "Moderate", description: "A brief topless image of a female character appears on a poster in the background."
+            },
+            { start: "0:23:30", end: "0:24:05", type: "Sex & Partial Nudity", severity: "High", description: "A male and female character are shown engaging in sexual activity, with most nudity obscured by camera angles." },
+            { start: "0:23:38", end: "0:23:49", type: "Sex & Nudity", severity: "High", description: "A male and female character are shown engaging in sexual activity, with genital exposure." },
+            { start: "0:25:33", end: "0:25:36", type: "Nudity (Woman)", severity: "High", description: "A female character is shown briefly topless while talking to her friend." },
+            { start: "0:34:18", end: "0:34:34", type: "Sex", severity: "High", description: "A male and female character are shown engaging in sexual activity." },
+            { start: "0:41:10", end: "0:42:17", type: "Sex & Nudity", severity: "High", description: "A male and female character are shown engaging in oral sexual activity." },
+            { start: "0:51:03", end: "0:52:55", type: "Sex & Nudity", severity: "High", description: "A montage depicts a male and female character engaging in sexual activity, including full-body nudity." },
+            { start: "0:59:10", end: "0:59:36", type: "Nudity (Woman)", severity: "High", description: "A hospital scene depicts a female character's genital area exposed for a medical procedure." },
+            { start: "1:16:25", end: "1:16:36", type: "Sex & Nudity (Woman)", severity: "High", description: "Sexual activity is depicted showing female topless nudity, while the male character's nudity is obscured by the camera angle." },
+            { start: "1:21:40", end: "1:22:55", type: "Sexual Content (Masturbation)", severity: "Moderate", description: "A female character is implied to be masturbating. Her hand is seen under clothing, so no graphic details are shown." },
+            { start: "2:01:50", end: "2:02:08", type: "Sex & Nudity", severity: "High", description: "A male and female character are shown engaging in sexual activity, with genital exposure." },
+            { start: "2:03:30", end: "2:03:42", type: "Partial Nudity (Man)", severity: "Mild", description: "A male character's backside is shown while he is lying down on a hospital bed." },
+            { start: "2:03:43", end: "2:04:35", type: "Sex", severity: "High", description: "A male and female character are shown engaging in sexual activity." },
+            { start: "2:13:20", end: "2:17:30", type: "Sex & Nudity", severity: "High", description: "A montage depicts male and female characters in a state of full nudity, including oral sexual activity." },
+            { start: "2:20:50", end: "2:23:40", type: "Sex & Nudity", severity: "High", description: "A male and female character are shown engaging in sexual activity, including full-state nudity." },
+            { start: "2:24:05", end: "2:25:00", type: "Sex & Nudity", severity: "High", description: "During the credits, several scenes of sexual activity and nudity appear." }
         ]
     }
 };
@@ -187,7 +212,7 @@ export const FALLBACK_POSTERS = {
     1278: "https://m.media-amazon.com/images/M/MV5BMTc5NTA3MDM1M15BMl5BanBnXkFtZTcwMTQyNjYyMQ@@._V1_SX500.jpg",
     814338: "https://m.media-amazon.com/images/M/MV5BYzA3MDcxMjEtMjMyOC00ZmFhLTlhOTctMzRjYTgwZDJmZDlhXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_SX500.jpg",
     1643: "https://m.media-amazon.com/images/M/MV5BMTczMjc4MjAzM15BMl5BanBnXkFtZTgwMjc1OTY2MjE@._V1_SX500.jpg",
-    341174 : "https://m.media-amazon.com/images/M/MV5BMTg0NjE5ODA5NDl5BMl5BanBnXkFtZTgwNjUyNDAwMTI@._V1_SX500.jpg",
+    341174: "https://m.media-amazon.com/images/M/MV5BMTg0NjE5ODA5NDl5BMl5BanBnXkFtZTgwNjUyNDAwMTI@._V1_SX500.jpg",
     216015: "https://m.media-amazon.com/images/M/MV5BMjA5OTk2Nzk2Ml5BMl5BanBnXkFtZTgwMDY2Njk5MzE@._V1_SX500.jpg",
     337167: "https://m.media-amazon.com/images/M/MV5BMTQxNzcyMTMzOF5BMl5BanBnXkFtZTgwMDM2ODc5NDM@._V1_SX500.jpg",
     11013: "https://m.media-amazon.com/images/M/MV5BMjA5MjgwNTkzMl5BMl5BanBnXkFtZTYwNTc0NTg5._V1_SX500.jpg",
@@ -196,7 +221,7 @@ export const FALLBACK_POSTERS = {
 
 // ✅ Custom metric for this collection: 'passionScore' and 'intimacyIndex'
 const createRomanceData = (data) => ({
-    passionScore: 85, 
+    passionScore: 85,
     intimacyIndex: 80,
     complexityLevel: "HIGH",
     dominantColor: "#be123c",
@@ -205,154 +230,168 @@ const createRomanceData = (data) => ({
 
 export const COMPLETE_MOVIE_DATA = {
     152584: createRomanceData({ // Blue Is the Warmest Color
-        eroticTension: 98, complexityLevel: "EXTREME", 
-        dominantColor: "#1d4ed8", rating: 7.7, criticsScore: 89, audienceScore: 78, director: "Abdellatif Kechiche", 
-        cast: ["Léa Seydoux", "Adèle Exarchopoulos"], boxOffice: "$19.5 million", budget: "$4 million", 
+        eroticTension: 98, complexityLevel: "EXTREME",
+        dominantColor: "#1d4ed8", rating: 7.7, criticsScore: 89, audienceScore: 78, director: "Abdellatif Kechiche",
+        cast: ["Léa Seydoux", "Adèle Exarchopoulos"], boxOffice: "$19.5 million", budget: "$4 million",
         dna: { "Romance": 60, "Drama": 40 },
         scenes: [
-            { time: 15, intensity: 45, label: "First Glance" }, 
-            { time: 65, intensity: 85, label: "The Connection" }, 
-            { time: 105, intensity: 100, label: "Intimacy" }, 
+            { time: 15, intensity: 45, label: "First Glance" },
+            { time: 65, intensity: 85, label: "The Connection" },
+            { time: 105, intensity: 100, label: "Intimacy" },
             { time: 150, intensity: 90, label: "The Betrayal" },
-            { time: 175, intensity: 75, label: "The Cafe Reunion" } 
+            { time: 175, intensity: 75, label: "The Cafe Reunion" }
         ],
         synopsis: "A raw, deeply emotional coming-of-age story that tracks the passionate, consuming romance between a high school student and an older art student. It is widely praised for its incredibly intimate and unflinching portrayal of first love and devastating heartbreak.",
         themes: ["First Love", "Sexual Awakening", "Heartbreak"]
     }),
     664413: createRomanceData({ // 365 Days
-        eroticTension: 95, complexityLevel: "LOW", 
-        dominantColor: "#000000", rating: 3.3, criticsScore: 0, audienceScore: 28, director: "Barbara Białowąs, Tomasz Mandes", 
-        cast: ["Anna-Maria Sieklucka", "Michele Morrone"], boxOffice: "$9.5 million", budget: "N/A", 
+        eroticTension: 95, complexityLevel: "LOW",
+        dominantColor: "#000000", rating: 3.3, criticsScore: 0, audienceScore: 28, director: "Barbara Białowąs, Tomasz Mandes",
+        cast: ["Anna-Maria Sieklucka", "Michele Morrone"], boxOffice: "$9.5 million", budget: "N/A",
         dna: { "Romance": 50, "Drama": 30, "Crime": 20 },
         scenes: [
-            { time: 20, intensity: 50, label: "The Kidnapping" }, 
-            { time: 55, intensity: 70, label: "The Ultimatum" }, 
-            { time: 85, intensity: 95, label: "The Shower" }, 
-            { time: 105, intensity: 100, label: "The Yacht" }, 
-            { time: 112, intensity: 80, label: "The Tunnel" } 
+            { time: 20, intensity: 50, label: "The Kidnapping" },
+            { time: 55, intensity: 70, label: "The Ultimatum" },
+            { time: 85, intensity: 95, label: "The Shower" },
+            { time: 105, intensity: 100, label: "The Yacht" },
+            { time: 112, intensity: 80, label: "The Tunnel" }
         ],
         synopsis: "A Sicilian mafia boss gives a kidnapped woman 365 days to fall in love with him. Though heavily criticized for its plot, it became a massive global phenomenon for its highly glossy, music-video-style execution of extreme erotic fantasy.",
         themes: ["Captivity Fantasy", "Power Dynamics", "Wealth and Luxury"]
     }),
     1278: createRomanceData({ // The Dreamers
-        eroticTension: 92, complexityLevel: "HIGH", 
-        dominantColor: "#b45309", rating: 7.2, criticsScore: 60, audienceScore: 82, director: "Bernardo Bertolucci", 
-        cast: ["Michael Pitt", "Eva Green", "Louis Garrel"], boxOffice: "$15.3 million", budget: "$15 million", 
+        eroticTension: 92, complexityLevel: "HIGH",
+        dominantColor: "#b45309", rating: 7.2, criticsScore: 60, audienceScore: 82, director: "Bernardo Bertolucci",
+        cast: ["Michael Pitt", "Eva Green", "Louis Garrel"], boxOffice: "$15.3 million", budget: "$15 million",
         dna: { "Drama": 50, "Romance": 50 },
         scenes: [
-            { time: 30, intensity: 65, label: "The Louvre Run" }, 
-            { time: 60, intensity: 85, label: "The Forfeit" }, 
-            { time: 95, intensity: 100, label: "The Tent" }, 
-            { time: 105, intensity: 80, label: "The Bathtub" }, 
-            { time: 112, intensity: 90, label: "The Riot Outside" } 
+            { time: 30, intensity: 65, label: "The Louvre Run" },
+            { time: 60, intensity: 85, label: "The Forfeit" },
+            { time: 95, intensity: 100, label: "The Tent" },
+            { time: 105, intensity: 80, label: "The Bathtub" },
+            { time: 112, intensity: 90, label: "The Riot Outside" }
         ],
         synopsis: "Set against the backdrop of the 1968 Paris student riots, an American exchange student enters a dangerously intimate and incestuous world with a French brother and sister, isolating themselves in an apartment to explore cinema, politics, and uninhibited sexuality.",
         themes: ["Youth Rebellion", "Cinematic Obsession", "Sexual Liberation"]
     }),
     814338: createRomanceData({ // Lady Chatterley's Lover
-        eroticTension: 88, complexityLevel: "MEDIUM", 
-        dominantColor: "#14532d", rating: 6.6, criticsScore: 86, audienceScore: 68, director: "Laure de Clermont-Tonnerre", 
-        cast: ["Emma Corrin", "Jack O'Connell"], boxOffice: "N/A", budget: "N/A", 
+        eroticTension: 88, complexityLevel: "MEDIUM",
+        dominantColor: "#14532d", rating: 6.6, criticsScore: 86, audienceScore: 68, director: "Laure de Clermont-Tonnerre",
+        cast: ["Emma Corrin", "Jack O'Connell"], boxOffice: "N/A", budget: "N/A",
         dna: { "Romance": 60, "Drama": 40 },
         scenes: [
             { time: 40, intensity: 60, label: "The First Touch" },
-            { time: 60, intensity: 85, label: "The Cabin" }, 
-            { time: 75, intensity: 100, label: "Dancing in the Rain" }, 
-            { time: 105, intensity: 90, label: "The Discovery" }, 
-            { time: 120, intensity: 80, label: "The Departure" } 
+            { time: 60, intensity: 85, label: "The Cabin" },
+            { time: 75, intensity: 100, label: "Dancing in the Rain" },
+            { time: 105, intensity: 90, label: "The Discovery" },
+            { time: 120, intensity: 80, label: "The Departure" }
         ],
         synopsis: "An unhappy aristocrat begins a torrid affair with the gamekeeper on her husband's country estate. This adaptation brings a fresh, sensual, and emotionally grounded take to D.H. Lawrence's classic novel about class boundaries and physical awakening.",
         themes: ["Class Divide", "Female Desire", "Nature and Freedom"]
     }),
     1643: createRomanceData({ // Last Tango in Paris
-        eroticTension: 90, complexityLevel: "EXTREME", 
-        dominantColor: "#d97706", rating: 6.9, criticsScore: 83, audienceScore: 71, director: "Bernardo Bertolucci", 
-        cast: ["Marlon Brando", "Maria Schneider"], boxOffice: "$36 million", budget: "$1.2 million", 
+        eroticTension: 90, complexityLevel: "EXTREME",
+        dominantColor: "#d97706", rating: 6.9, criticsScore: 83, audienceScore: 71, director: "Bernardo Bertolucci",
+        cast: ["Marlon Brando", "Maria Schneider"], boxOffice: "$36 million", budget: "$1.2 million",
         dna: { "Drama": 70, "Romance": 30 },
         scenes: [
             { time: 15, intensity: 70, label: "The Empty Apartment" },
             { time: 45, intensity: 80, label: "No Names" },
             { time: 65, intensity: 100, label: "The Butter Scene" },
-            { time: 105, intensity: 85, label: "The Tango" }, 
-            { time: 125, intensity: 95, label: "The Balcony" } 
+            { time: 105, intensity: 85, label: "The Tango" },
+            { time: 125, intensity: 95, label: "The Balcony" }
         ],
         synopsis: "A grieving American widower and a young Parisian woman enter into a purely physical, anonymous relationship in an empty apartment. A highly controversial, bleak, and devastating look at grief masquerading as primal lust.",
         themes: ["Grief and Despair", "Anonymity", "Toxic Masculinity"]
     }),
-    341174 : createRomanceData({ // Fifty Shades Darker
-        eroticTension: 85, complexityLevel: "LOW", 
-        dominantColor: "#475569", rating: 4.6, criticsScore: 11, audienceScore: 48, director: "James Foley", 
-        cast: ["Dakota Johnson", "Jamie Dornan"], boxOffice: "$381.5 million", budget: "$55 million", 
+    341174: createRomanceData({ // Fifty Shades Darker
+        eroticTension: 85, complexityLevel: "LOW",
+        dominantColor: "#475569", rating: 4.6, criticsScore: 11, audienceScore: 48, director: "James Foley",
+        cast: ["Dakota Johnson", "Jamie Dornan"], boxOffice: "$381.5 million", budget: "$55 million",
         dna: { "Romance": 70, "Drama": 30 },
         scenes: [
             { time: 20, intensity: 65, label: "The Dinner Negotiation" },
             { time: 45, intensity: 90, label: "The Elevator" },
             { time: 70, intensity: 75, label: "The Masquerade Ball" },
-            { time: 95, intensity: 95, label: "Return to the Red Room" }, 
-            { time: 110, intensity: 80, label: "The Proposal" } 
+            { time: 95, intensity: 95, label: "Return to the Red Room" },
+            { time: 110, intensity: 80, label: "The Proposal" }
         ],
         synopsis: "While Christian wrestles with his inner demons, Anastasia must confront the anger and envy of the women who came before her. The sequel leans heavily into glossy romantic fantasy and thriller elements while continuing its exploration of BDSM.",
         themes: ["Jealousy", "Compromise", "Romantic Fantasy"]
     }),
     216015: createRomanceData({ // Fifty Shades of Grey
-        eroticTension: 88, complexityLevel: "LOW", 
-        dominantColor: "#94a3b8", rating: 4.2, criticsScore: 24, audienceScore: 41, director: "Sam Taylor-Johnson", 
-        cast: ["Dakota Johnson", "Jamie Dornan"], boxOffice: "$569.7 million", budget: "$40 million", 
+        eroticTension: 88, complexityLevel: "LOW",
+        dominantColor: "#94a3b8", rating: 4.2, criticsScore: 24, audienceScore: 41, director: "Sam Taylor-Johnson",
+        cast: ["Dakota Johnson", "Jamie Dornan"], boxOffice: "$569.7 million", budget: "$40 million",
         dna: { "Romance": 60, "Drama": 40 },
         scenes: [
             { time: 15, intensity: 30, label: "The Interview" },
             { time: 45, intensity: 70, label: "The Contract" },
-            { time: 75, intensity: 90, label: "The First Time" }, 
+            { time: 75, intensity: 90, label: "The First Time" },
             { time: 105, intensity: 95, label: "The Red Room Introduction" },
-            { time: 120, intensity: 100, label: "The Punishment" } 
+            { time: 120, intensity: 100, label: "The Punishment" }
         ],
         synopsis: "A literature student's life changes forever when she meets a handsome, yet tormented, billionaire. The film that brought BDSM aesthetics into mainstream blockbuster cinema, kicking off a global pop culture phenomenon.",
         themes: ["Power Dynamics", "Naivete vs Experience", "BDSM Fantasy"]
     }),
     337167: createRomanceData({ // Fifty Shades Freed
-        eroticTension: 82, complexityLevel: "LOW", 
-        dominantColor: "#f1f5f9", rating: 4.5, criticsScore: 11, audienceScore: 37, director: "James Foley", 
-        cast: ["Dakota Johnson", "Jamie Dornan"], boxOffice: "$371.9 million", budget: "$55 million", 
+        eroticTension: 82, complexityLevel: "LOW",
+        dominantColor: "#f1f5f9", rating: 4.5, criticsScore: 11, audienceScore: 37, director: "James Foley",
+        cast: ["Dakota Johnson", "Jamie Dornan"], boxOffice: "$371.9 million", budget: "$55 million",
         dna: { "Romance": 70, "Thriller": 30 },
         scenes: [
             { time: 10, intensity: 75, label: "The Honeymoon" },
             { time: 35, intensity: 85, label: "The Architect" },
             { time: 55, intensity: 95, label: "The Ice Cream Scene" },
             { time: 80, intensity: 80, label: "The Kidnapping" },
-            { time: 95, intensity: 90, label: "The Rescue" } 
+            { time: 95, intensity: 90, label: "The Rescue" }
         ],
         synopsis: "Believing they have left behind shadowy figures from their past, newlyweds Christian and Ana fully embrace an inextricable connection and shared life of luxury, until new threats jeopardize their happy ending.",
         themes: ["Marriage", "Security", "Closing the Chapter"]
     }),
     11013: createRomanceData({ // Secretary
-        eroticTension: 90, complexityLevel: "HIGH", 
-        dominantColor: "#7c2d12", rating: 6.9, criticsScore: 78, audienceScore: 82, director: "Steven Shainberg", 
-        cast: ["James Spader", "Maggie Gyllenhaal"], boxOffice: "$9.3 million", budget: "$4 million", 
+        eroticTension: 90, complexityLevel: "HIGH",
+        dominantColor: "#7c2d12", rating: 6.9, criticsScore: 78, audienceScore: 82, director: "Steven Shainberg",
+        cast: ["James Spader", "Maggie Gyllenhaal"], boxOffice: "$9.3 million", budget: "$4 million",
         dna: { "Romance": 50, "Comedy": 30, "Drama": 20 },
         scenes: [
             { time: 25, intensity: 60, label: "The Typos" },
             { time: 45, intensity: 85, label: "The First Spanking" },
             { time: 70, intensity: 90, label: "The Masturbation Scene" },
             { time: 95, intensity: 100, label: "The Desk Sit" },
-            { time: 105, intensity: 80, label: "The Wedding" } 
+            { time: 105, intensity: 80, label: "The Wedding" }
         ],
         synopsis: "A young woman recently released from a mental hospital gets a job as a secretary to a demanding lawyer, where their employer-employee relationship turns into a deeply therapeutic and loving BDSM dynamic.",
         themes: ["Therapeutic Kink", "Self-Acceptance", "Dark Comedy"]
     }),
     4478: createRomanceData({ // Indecent Proposal
-        eroticTension: 80, complexityLevel: "MEDIUM", 
-        dominantColor: "#064e3b", rating: 6.0, criticsScore: 34, audienceScore: 48, director: "Adrian Lyne", 
-        cast: ["Robert Redford", "Demi Moore", "Woody Harrelson"], boxOffice: "$266.6 million", budget: "$38 million", 
+        eroticTension: 80, complexityLevel: "MEDIUM",
+        dominantColor: "#064e3b", rating: 6.0, criticsScore: 34, audienceScore: 48, director: "Adrian Lyne",
+        cast: ["Robert Redford", "Demi Moore", "Woody Harrelson"], boxOffice: "$266.6 million", budget: "$38 million",
         dna: { "Drama": 60, "Romance": 40 },
         scenes: [
             { time: 15, intensity: 60, label: "Financial Ruin" },
             { time: 35, intensity: 80, label: "The Proposal" },
             { time: 65, intensity: 95, label: "The Yacht Night" },
             { time: 90, intensity: 75, label: "The Jealousy" },
-            { time: 110, intensity: 85, label: "The Final Auction" } 
+            { time: 110, intensity: 85, label: "The Final Auction" }
         ],
         synopsis: "A billionaire offers a financially desperate married couple one million dollars for a single night with the wife. Adrian Lyne explores the devastating psychological and romantic fallout of treating love as a transaction.",
         themes: ["Wealth and Morality", "Trust and Betrayal", "Transactional Love"]
+    }),
+    258216: createRomanceData({ // Nymphomaniac: Vol. I
+        eroticTension: 98, complexityLevel: "EXTREME",
+        dominantColor: "#52525b", rating: 6.9, criticsScore: 76, audienceScore: 68, director: "Lars von Trier",
+        cast: ["Charlotte Gainsbourg", "Stellan Skarsgård", "Stacy Martin"], boxOffice: "$13.5 million", budget: "€4.7 million",
+        dna: { "Drama": 80, "Romance": 20 },
+        scenes: [
+            { time: 15, intensity: 70, label: "The Train Journey" },
+            { time: 45, intensity: 95, label: "The Secret Club" },
+            { time: 80, intensity: 100, label: "Jerome" },
+            { time: 110, intensity: 85, label: "The Hospital" }
+        ],
+        synopsis: "A self-diagnosed nymphomaniac recounts her erotic experiences to the man who saved her after a beating. The film explores female sexuality, desire, and psychological trauma through a highly explicit, chapter-based narrative.",
+        themes: ["Sexual Addiction", "Psychological Trauma", "Human Connection"]
     })
 };
 
@@ -431,12 +470,20 @@ export const EROTIC_ROMANCE_MOVIE_FAQS = {
         { question: "How does the film use dark comedy?", answer: "The film finds immense humor in the absurdity of office mundanity clashing with extreme kink. The contrast between dictating a legal memo and receiving a spanking highlights the awkward, beautiful weirdness of human connection." }
     ],
     'Indecent Proposal': [
-        { question: "Does Indecent Proposal have violence and gore?", answer: "According to the Filmiway Parents Guide, the violence in Indecent Proposal is rated as None. The film contains no actual violence, with no notable violent or graphic content." },
-        { question: "Does Indecent Proposal have profanity or swearing?", answer: "The profanity in Indecent Proposal is rated as Moderate. Moderate language includes around 5-6 uses of the F-word alongside occasional coarse profanity, mild sexual references, and insulting language." },
-        { question: "What is the central moral dilemma?", answer: "The film presents a terrifyingly simple question: Is a marriage strong enough to survive a transactional infidelity if the financial reward solves all their problems? It examines whether love can truly be separated from money." },
-        { question: "How does John Gage manipulate the couple?", answer: "Gage (Robert Redford) uses his immense wealth not just to buy a night with Diana, but to exploit the cracks already present in their marriage. He weaponizes David's insecurity and financial desperation to make the offer impossible to refuse." },
-        { question: "Why does the deal destroy them?", answer: "While Diana views the night as a physical transaction to save their future, David is consumed by jealousy and paranoia. The film argues that the true cost wasn't the physical act, but the total destruction of their mutual trust." },
-        { question: "What makes Adrian Lyne the perfect director for this?", answer: "Lyne (who also directed Fatal Attraction and Unfaithful) is a master of the erotic thriller. He excels at taking glossy, upper-middle-class lives and injecting them with highly stylized, devastating moral compromises that challenge the audience's own ethics." }
+        { question: "Does Indecent Proposal have violence and gore?", answer: "According to the Filmiway Parents Guide, the violence in Indecent Proposal is rated as None. There is no violence or gore depicted." },
+        { question: "Does Indecent Proposal have profanity or swearing?", answer: "The profanity in Indecent Proposal is rated as Moderate. Contains around 15–20 uses of mild to moderate profanity, mostly situational." },
+        { question: "Why is Indecent Proposal rated R?", answer: "Indecent Proposal earns its R rating due to sexual content, nudity, and moderate profanity. Specifically, the film contains Several passionate scenes, some depicting partial nudity in a romantic context. Adults can use our timestamps to skip the explicit content." },
+        { question: "What is the psychological message of the film?", answer: "It confronts the uncomfortable reality of transactional love and whether money can permanently alter the foundation of trust in a marriage." },
+        { question: "Does the film endorse Gage's actions?", answer: "No. Gage is framed as an antagonist who wields wealth as power. However, the film critiques Diana and David just as heavily for believing their love was immune to financial temptation." },
+        { question: "Why is the dress scene significant?", answer: "The dress represents David's inability to provide what Gage can effortlessly buy. It is the visual turning point where money begins to erode their marital intimacy." }
+    ],
+    'Nymphomaniac: Vol. I': [
+        { question: "Does Nymphomaniac: Vol. I have violence and gore?", answer: "According to the Filmiway Parents Guide, the violence in Nymphomaniac: Vol. I is rated as Mild. The protagonist is found beaten in an alleyway, with bruises and cuts visible." },
+        { question: "Does Nymphomaniac: Vol. I have profanity or swearing?", answer: "The profanity in Nymphomaniac: Vol. I is rated as High. Extreme and frequent sexual profanity throughout the entire film." },
+        { question: "Why is Nymphomaniac: Vol. I rated NC-17?", answer: "Nymphomaniac: Vol. I earns its NC-17 rating due to extreme sexual content and graphic nudity, mild violence, and high profanity. Specifically, the film contains Extreme and frequent sexual profanity throughout the entire film. The protagonist is found beaten in an alleyway, with bruises and cuts visible. Adults can use our timestamps to skip the explicit content." },
+        { question: "Why did Lars von Trier make this film?", answer: "Lars von Trier intended to explore human sexuality without moral judgment, using Joe's condition as a lens to dissect religion, psychology, and societal hypocrisy." },
+        { question: "How does the film treat female sexuality?", answer: "Unlike many erotic films, it presents female desire as clinical, obsessive, and occasionally destructive, removing the romanticized lens typically applied to sex in cinema." },
+        { question: "What is the significance of the fly fishing metaphor?", answer: "Seligman constantly uses intellectual metaphors (like fly fishing) to rationalize Joe's carnal experiences, highlighting the contrast between lived physical trauma and detached intellectualism." }
     ]
 };
 
@@ -482,7 +529,7 @@ export const calculateSkipStats = (scenes) => {
     });
     const mins = Math.floor(totalSeconds / 60);
     const secs = totalSeconds % 60;
-    if (totalSeconds === 0) return "< 1 min"; 
+    if (totalSeconds === 0) return "< 1 min";
     if (mins === 0) return `${secs} sec`;
     return secs > 0 ? `${mins} min ${secs} sec` : `${mins} min`;
 };
@@ -494,7 +541,7 @@ export const getSensitiveContentTypes = (tmdbId) => {
     const types = new Set();
     sensitiveData.scenes.forEach(scene => {
         const lowerType = scene.type?.toLowerCase() || '';
-        
+
         if (lowerType.includes('sexual content')) types.add('sexual content');
         else if (lowerType.match(/\bsex\b/)) types.add('sex');
         else if (lowerType.includes('explicit')) types.add('explicit content');
@@ -511,7 +558,7 @@ export const getSensitiveContentTypes = (tmdbId) => {
 export const getHighestSeverityInfo = (scenes) => {
     const severities = scenes.map(s => (s.severity || 'Moderate').toLowerCase());
     const extremeCount = severities.filter(s => s === 'extreme').length;
-    
+
     // 2+ Extreme means the whole movie is Extreme. 
     // Otherwise, we cap the warning at High.
     if (extremeCount >= 2) return 'Extreme';
@@ -532,11 +579,11 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
 
     const heavyScenes = sensitiveScenes.filter(s => {
         const t = s.type?.toLowerCase() || '';
-        return t.includes('sex') || t.includes('nudity') || t.includes('explicit') || t.includes('suggestive') || t.includes('lingerie') || t.includes('bikini') || t.includes('bdsm'); 
+        return t.includes('sex') || t.includes('nudity') || t.includes('explicit') || t.includes('suggestive') || t.includes('lingerie') || t.includes('bikini') || t.includes('bdsm');
     });
 
     const sceneCount = heavyScenes.length;
-    
+
     // 🔥 DYNAMIC SEO META DESCRIPTION GENERATOR
     const targetMovies = {
         "Eyes Wide Shut": "R",
@@ -548,7 +595,7 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
         "Gone Girl": "R",
         "Basic Instinct": "R"
     };
-    
+
     let schemaDesc = '';
     if (targetMovies[movie.Title]) {
         const mpaaRating = targetMovies[movie.Title];
@@ -556,14 +603,14 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
             // 🔥 Prioritize Sex/Nudity over Suggestive Clothing
             const heavyOnly = heavyScenes.filter(s => s.type?.toLowerCase().match(/sex|nudity|explicit/));
             const lightOnly = heavyScenes.filter(s => !s.type?.toLowerCase().match(/sex|nudity|explicit/));
-            
+
             // Grab the top 2 priority scenes, then sort them chronologically
             const selectedScenes = [...heavyOnly, ...lightOnly].slice(0, 2);
             selectedScenes.sort((a, b) => heavyScenes.indexOf(a) - heavyScenes.indexOf(b));
-            
+
             // Format with start, end, and TYPE reason!
             const firstTwo = selectedScenes.map(s => s.end ? `${s.start} to ${s.end} (${s.type})` : `${s.start} (${s.type})`).join(' and ');
-            
+
             schemaDesc = `Why is ${movie.Title} rated ${mpaaRating}? Use our parents guide to skip mature content. Skip scenes at ${firstTwo}.`;
         } else {
             schemaDesc = `${movie.Title} Parents Guide. Filmiway editors have manually verified zero explicit scenes in the full ${currentRuntime} runtime.`;
@@ -583,7 +630,7 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
         'name': movie.Title,
         'description': schemaDesc,
         'genre': movie.genre,
-        'url': `https://filmiway.com/movie/${movie.slug || movie.Title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '')}`, 
+        'url': `https://filmiway.com/movie/${movie.slug || movie.Title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '')}`,
         'datePublished': currentMovieYear?.toString() || movie.year.toString(),
         'director': { '@type': 'Person', 'name': movieInfo?.director || 'Director' },
         'actor': movieInfo?.cast?.map(actor => ({ '@type': 'Person', 'name': actor })) || [],
@@ -593,11 +640,11 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
 
     const staticFaqs = EROTIC_ROMANCE_MOVIE_FAQS[movie.Title] ? [...EROTIC_ROMANCE_MOVIE_FAQS[movie.Title]] : [];
     const intensityScenes = movieInfo?.scenes || [];
-    
-    const schemaFaqs = staticFaqs.map(faq => ({ 
-        '@type': 'Question', 
-        'name': faq.question, 
-        'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer } 
+
+    const schemaFaqs = staticFaqs.map(faq => ({
+        '@type': 'Question',
+        'name': faq.question,
+        'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer }
     }));
 
     // 🔥 DYNAMIC RECOMMENDED AGE FAQ INJECTION (SEO SCHEMA)
@@ -610,9 +657,9 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
         schemaFaqs.unshift({
             '@type': 'Question',
             'name': `What is the suitable age to watch ${movie.Title}?`,
-            'acceptedAnswer': { 
-                '@type': 'Answer', 
-                'text': `According to Filmiway's Parents Guide, the recommended age for ${movie.Title} is ${recommendedAge}. ${ageSummary}` 
+            'acceptedAnswer': {
+                '@type': 'Answer',
+                'text': `According to Filmiway's Parents Guide, the recommended age for ${movie.Title} is ${recommendedAge}. ${ageSummary}`
             }
         });
     }
@@ -622,9 +669,9 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
         schemaFaqs.unshift({
             '@type': 'Question',
             'name': `What are the most intense scenes in ${movie.Title}?`,
-            'acceptedAnswer': { 
-                '@type': 'Answer', 
-                'text': `According to the Filmiway Intensity metric, ${movie.Title} peaks at the following moments:<br><br><ul>${schemaIntensityList}</ul>` 
+            'acceptedAnswer': {
+                '@type': 'Answer',
+                'text': `According to the Filmiway Intensity metric, ${movie.Title} peaks at the following moments:<br><br><ul>${schemaIntensityList}</ul>`
             }
         });
     }
@@ -649,7 +696,7 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
         const familyUnsafeTypes = typesArray.filter(t => t !== 'suggestive clothing');
         const familyUnsafeString = familyUnsafeTypes.join(' and ');
 
-        const familyFaqSchema = familyUnsafeTypes.length > 0 
+        const familyFaqSchema = familyUnsafeTypes.length > 0
             ? {
                 '@type': 'Question',
                 'name': `Is ${movie.Title} safe to watch with family?`,
@@ -671,9 +718,9 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
             {
                 '@type': 'Question',
                 'name': `Does ${movie.Title} have sex scenes or nudity?`,
-                'acceptedAnswer': { 
-                    '@type': 'Answer', 
-                    'text': `Yes. ${movie.Title} contains ${sceneCount} scenes of ${typesString}. Exact timestamps:<br><br><ul>${schemaListText}</ul><br>Manually verified frame by frame by Filmiway editors for the ${currentRuntime} runtime.` 
+                'acceptedAnswer': {
+                    '@type': 'Answer',
+                    'text': `Yes. ${movie.Title} contains ${sceneCount} scenes of ${typesString}. Exact timestamps:<br><br><ul>${schemaListText}</ul><br>Manually verified frame by frame by Filmiway editors for the ${currentRuntime} runtime.`
                 }
             },
             {
@@ -691,23 +738,23 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
             {
                 '@type': 'Question',
                 'name': `Does ${movie.Title} have sex scenes or nudity?`,
-                'acceptedAnswer': { 
-                    '@type': 'Answer', 
-                    'text': `No. Filmiway editors have manually verified that ${movie.Title} is free of explicit sex scenes and nudity.` 
+                'acceptedAnswer': {
+                    '@type': 'Answer',
+                    'text': `No. Filmiway editors have manually verified that ${movie.Title} is free of explicit sex scenes and nudity.`
                 }
             },
             {
                 '@type': 'Question',
                 'name': `Is ${movie.Title} safe to watch with family?`,
-                'acceptedAnswer': { 
-                    '@type': 'Answer', 
-                    'text': `Yes, regarding explicit sexual content. Filmiway editors have manually verified that ${movie.Title} does not have any sex, nudity, or sexual content in the full ${currentRuntime} runtime.` 
+                'acceptedAnswer': {
+                    '@type': 'Answer',
+                    'text': `Yes, regarding explicit sexual content. Filmiway editors have manually verified that ${movie.Title} does not have any sex, nudity, or sexual content in the full ${currentRuntime} runtime.`
                 }
             }
         );
     }
 
-const faqSchema = {
+    const faqSchema = {
         '@context': 'https://schema.org',
         '@type': 'FAQPage',
         'name': `Parents Guide and FAQ for ${movie.Title}`,
@@ -722,7 +769,7 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
     const staticFaqs = EROTIC_ROMANCE_MOVIE_FAQS[movieTitle] ? [...EROTIC_ROMANCE_MOVIE_FAQS[movieTitle]] : [];
     const masterScenes = masterTimestamps[String(tmdbId)]?.scenes || [];
     const sensitiveScenes = [...(SENSITIVE_TIMELINES[tmdbId]?.scenes || [])];
-    
+
     const parseTimeToSeconds = (t) => {
         if (!t) return -1;
         const parts = String(t).trim().split(':').map(Number);
@@ -794,13 +841,13 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
             const fullType = s.severity ? `${s.type || 'Mature Content'}, ${s.severity}` : (s.type || 'Mature Content');
             return `• ${timeRange} (${fullType})`;
         }).join('\n');
-        
+
         const startTimesList = heavyScenes.map(s => s.start).join(', ');
         // Filter out suggestive clothing for the UI as well
         const familyUnsafeTypes = typesArray.filter(t => t !== 'suggestive clothing');
         const familyUnsafeString = familyUnsafeTypes.join(' and ');
-        
-                let familyFaqAnswer = `No. ${movieTitle} is not safe to watch with family because it contains ${familyUnsafeString}, earning it a [DYNAMIC_SCORE]/10 ([DYNAMIC_LABEL]) Family Safety Score. Adults can use Filmiway's timestamps to skip all ${sceneCount} explicit scenes in the ${finalRuntime} runtime.`;
+
+        let familyFaqAnswer = `No. ${movieTitle} is not safe to watch with family because it contains ${familyUnsafeString}, earning it a [DYNAMIC_SCORE]/10 ([DYNAMIC_LABEL]) Family Safety Score. Adults can use Filmiway's timestamps to skip all ${sceneCount} explicit scenes in the ${finalRuntime} runtime.`;
 
         const familyFaqUI = familyUnsafeTypes.length > 0
             ? {

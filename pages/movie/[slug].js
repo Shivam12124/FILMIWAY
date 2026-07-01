@@ -707,27 +707,45 @@ export async function getStaticProps({ params }) {
         safetyScore = Math.min(safetyScore, 8);
     }
 
-    // 2. Profanity/Violence Adjustment
-    const parentGuideSummary = (movie.Summary || '').toLowerCase();
-    const hasHighProfanity = parentGuideSummary.includes('severe language') || parentGuideSummary.includes('pervasive language') || parentGuideSummary.includes('strong profanity') || parentGuideSummary.includes('extreme profanity');
-    const hasHighViolence = parentGuideSummary.includes('severe violence') || parentGuideSummary.includes('strong bloody violence') || parentGuideSummary.includes('graphic gore') || parentGuideSummary.includes('extreme violence');
-    
-    if (hasHighProfanity && hasHighViolence) safetyScore = Math.min(safetyScore, 4);
-    else if (hasHighViolence) safetyScore = Math.min(safetyScore, 5);
-    else if (hasHighProfanity) safetyScore = Math.min(safetyScore, 6);
-
-    // 3. Explicit Timestamps Penalty
+    // 2. Explicit Timestamps Penalty
     const heavyScenes = movie.resolvedSensitiveScenes.filter(s => {
         const t = (s.type || '').toLowerCase();
         return t.includes('sex') || t.includes('nudity') || t.includes('explicit') || t.includes('suggestive') || t.includes('lingerie') || t.includes('bikini');
     });
 
     if (heavyScenes.length > 0) {
-        if (heavyScenes.length <= 2) safetyScore = Math.min(safetyScore, 7);
-        else if (heavyScenes.length <= 4) safetyScore = Math.min(safetyScore, 5);
-        else if (heavyScenes.length <= 6) safetyScore = Math.min(safetyScore, 4);
-        else if (heavyScenes.length <= 9) safetyScore = Math.min(safetyScore, 3);
-        else safetyScore = Math.min(safetyScore, 2);
+        if (heavyScenes.length === 1) {
+            safetyScore = Math.min(safetyScore, 6);
+        } else if (heavyScenes.length >= 2 && heavyScenes.length <= 4) {
+            safetyScore = Math.min(safetyScore, 5);
+        } else if (heavyScenes.length >= 5 && heavyScenes.length <= 6) {
+            safetyScore = Math.min(safetyScore, 4);
+        } else if (heavyScenes.length >= 7 && heavyScenes.length <= 8) {
+            safetyScore = Math.min(safetyScore, 3);
+        } else if (heavyScenes.length === 9) {
+            safetyScore = Math.min(safetyScore, 2);
+        } else if (heavyScenes.length >= 10) {
+            safetyScore = Math.min(safetyScore, 1);
+        }
+    }
+
+    // 3. Profanity/Violence Adjustment
+    const parentGuideSummary = (movie.Summary || '').toLowerCase();
+    const hasHighProfanity = parentGuideSummary.includes('severe language') || parentGuideSummary.includes('pervasive language') || parentGuideSummary.includes('strong profanity') || parentGuideSummary.includes('extreme profanity');
+    const hasHighViolence = parentGuideSummary.includes('severe violence') || parentGuideSummary.includes('strong bloody violence') || parentGuideSummary.includes('graphic gore') || parentGuideSummary.includes('extreme violence');
+    
+    const isRRated = ageRating.includes('R') || ageRating.includes('NC-17') || ageRating.includes('TV-MA') || ageRating.includes('18');
+    
+    if (isRRated && heavyScenes.length === 0) {
+        if (hasHighProfanity || hasHighViolence) {
+            safetyScore = Math.min(safetyScore, 6);
+        } else {
+            safetyScore = Math.min(safetyScore, 7);
+        }
+    } else {
+        if (hasHighProfanity && hasHighViolence) safetyScore = Math.min(safetyScore, 4);
+        else if (hasHighViolence) safetyScore = Math.min(safetyScore, 5);
+        else if (hasHighProfanity) safetyScore = Math.min(safetyScore, 6);
     }
 
     // 4. Override for Top 35 Explicit Films

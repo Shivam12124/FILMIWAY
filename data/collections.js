@@ -983,7 +983,7 @@ export const COLLECTIONS = {
       { label: "INTIMACY", desc: "Deeply emotional" },
       { label: "DESIRE", desc: "Romantic fantasy" }
     ],
-    movies: ['tt2278871', 'tt10886166', 'tt0309987', 'tt14369780', 'tt0070849', 'tt4465564', 'tt2322441', 'tt4465566', 'tt0274812', 'tt0107211'],
+    movies: ['tt2278871', 'tt10886166', 'tt0309987', 'tt14369780', 'tt0070849', 'tt4465564', 'tt2322441', 'tt4465566', 'tt0274812', 'tt0107211', 'tt1937390'],
     relatedCollections: ['best-erotic-thriller-movies', 'best-romance-movies-on-hbo-max', 'best-romance-movies-on-hulu']
   },
 

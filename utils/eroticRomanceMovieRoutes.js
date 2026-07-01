@@ -43,7 +43,10 @@ export const EROTIC_ROMANCE_MOVIE_SLUGS = {
     'tt0274812': 'secretary',
     
     // Rank 10: Indecent Proposal
-    'tt0107211': 'indecent-proposal'
+    'tt0107211': 'indecent-proposal',
+    
+    // BONUS FILM: Nymphomaniac: Vol. I
+    'tt1937390': 'nymphomaniac-vol-1'
 };
 
 // ✅ REVERSE SLUG MAPPING (SLUG TO IMDB ID)
@@ -204,7 +207,11 @@ export const sortEroticRomanceMovies = (movies, sortBy) => {
         case 'runtime':
             return sortedMovies.sort((a, b) => b.runtime - a.runtime);
         default:
-            return sortedMovies.sort((a, b) => a.rank - b.rank);
+            return sortedMovies.sort((a, b) => {
+                const getRankVal = (r) => typeof r === 'number' ? r : 0;
+                // Sort descending so 10, 9, 8... comes first, and 0 (Bonus) goes to the bottom
+                return getRankVal(b.rank) - getRankVal(a.rank);
+            });
     }
 };
 
