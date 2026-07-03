@@ -225,7 +225,9 @@ const MovieDetailsSection = React.memo(({
    budget: movie.Budget || safeMovieInfo.budget || 'N/A',
    boxOffice: movie.BoxOffice || safeMovieInfo.boxOffice || 'N/A',
    ageRating: movie.Rated || safeMovieInfo.ageRating || 'NR',
-   runtime: safeMovieInfo.runtime || movie.Runtime || '120 min',
+   runtime: (movie.runtime || movie.Runtime || safeMovieInfo.runtime || '120').toString().includes('min') 
+            ? (movie.runtime || movie.Runtime || safeMovieInfo.runtime || '120 min')
+            : `${movie.runtime || movie.Runtime || safeMovieInfo.runtime || '120'} min`,
    synopsis: safeMovieInfo.synopsis || movie.Plot || getUniqueDescription(),
    tagline: movie.Tagline || '' 
  });
@@ -1061,88 +1063,88 @@ const MovieDetailsSection = React.memo(({
               margin-bottom: 0 !important;
           }
         `}</style>
-      {fromHboActionCollection ? <HboActionSEOFAQSection movie={movie} />
-        : fromHboRomanceCollection ? <HboMaxRomanceSEOFAQSection movie={movie} /> 
-        : fromHboMaxThrillerCollection ? <HboMaxThrillerSEOFAQSection movie={movie} /> 
-        : fromHboMaxFamilyCollection ? <HboMaxFamilySEOFAQSection movie={movie} /> 
-        : fromHboMaxSciFiCollection ? <HboMaxSciFiSEOFAQSection movie={movie} /> 
-        : fromHboMaxHorrorCollection ? <HboMaxHorrorSEOFAQSection movie={movie} />
-        : fromHboMaxBestCollection ? <HboMaxBestSEOFAQSection movie={movie} />
-        : fromHboMaxDramaCollection ? <HboMaxDramaSEOFAQSection movie={movie} />
-        : fromHboMaxComedyCollection ? <HboMaxComedySEOFAQSection movie={movie} />
-        : fromHuluFamilyCollection ? <HuluFamilySEOFAQSection movie={movie} />
-        : fromHuluDramaCollection ? <HuluDramaSEOFAQSection movie={movie} />
-        : fromHuluBestCollection ? <HuluBestSEOFAQSection movie={movie} />
-        : fromHuluThrillerCollection ? <HuluThrillerSEOFAQSection movie={movie} />
-        : fromHuluSciFiCollection ? <HuluSciFiSEOFAQSection movie={movie} />
-        : fromHuluComedyCollection ? <HuluComedySEOFAQSection movie={movie} />
-        : fromHuluHorrorCollection ? <HuluHorrorSEOFAQSection movie={movie} /> 
-        : fromHuluRomanceCollection ? <HuluRomanceSEOFAQSection movie={movie} /> 
-        : fromHuluActionCollection ? <HuluActionSEOFAQSection movie={movie} />
-        : fromParamountActionCollection ? <ParamountActionSEOFAQSection movie={movie} />
-        : fromParamountSciFiCollection ? <ParamountSciFiSEOFAQSection movie={movie} /> 
-        : fromParamountRomanceCollection ? <ParamountRomanceSEOFAQSection movie={movie} /> 
-        : fromParamountDramaCollection ? <ParamountDramaSEOFAQSection movie={movie} /> 
-        : fromParamountThrillerCollection ? <ParamountThrillerSEOFAQSection movie={movie} />
-        : fromParamountFamilyCollection ? <ParamountFamilySEOFAQSection movie={movie} /> 
-        : fromParamountHorrorCollection ? <ParamountHorrorSEOFAQSection movie={movie} />
-        : fromParamountComedyCollection ? <ParamountComedySEOFAQSection movie={movie} />
-        : fromParamountBestCollection ? <ParamountBestSEOFAQSection movie={movie} />
-        : fromPeacockBestCollection ? <PeacockBestSEOFAQSection movie={movie} />
-        : fromPeacockComedyCollection ? <PeacockComedySEOFAQSection movie={movie} />
-        : fromPeacockActionAdventureCollection ? <PeacockActionAdventureSEOFAQSection movie={movie} />
-        : fromPeacockSciFiCollection ? <PeacockSciFiSEOFAQSection movie={movie} />
-        : fromPeacockRomanceCollection ? <PeacockRomanceSEOFAQSection movie={movie} />
-        : fromPeacockFamilyCollection ? <PeacockFamilySEOFAQSection movie={movie} />
-        : fromPeacockDramaCollection ? <PeacockDramaSEOFAQSection movie={movie} />
-        : fromPeacockThrillerCollection ? <PeacockThrillerSEOFAQSection movie={movie} />
-        : fromDonnieDarkoCollection ? <DonnieDarkoSEOFAQSection movie={movie} />
-        : fromFightClubCollection ? <FightClubSEOFAQSection movie={movie} />
-        : fromParasiteCollection ? <ParasiteSEOFAQSection movie={movie} />
-        : fromMatrixCollection ? <MatrixSEOFAQSection movie={movie} />
-        : fromOldboyCollection ? <OldboySEOFAQSection movie={movie} />
-        : fromBlackSwanCollection ? <BlackSwanSEOFAQSection movie={movie} />
-        : fromEyesWideShutCollection ? <EyesWideShutSEOFAQSection movie={movie} />
-        : fromEroticThrillerCollection ? <EroticThrillerSEOFAQSection movie={movie} />
-        : fromEroticRomanceCollection ? <EroticRomanceSEOFAQSection movie={movie} />
-        : fromGreedCollection ? <GreedSEOFAQSection movie={movie} />
-        : fromRaunchyComedyCollection ? <RaunchyComedySEOFAQSection movie={movie} />
-        : fromRoadTripCollection ? <RoadTripSEOFAQSection movie={movie} />
-        : fromThoughtProvokingCollection ? <ThoughtProvokingSEOFAQSection movie={movie} />
-        : fromNeoNoirCollection ? <NeoNoirSEOFAQSection movie={movie} />
-        : fromBestActionMoviesCollection ? <BestActionMoviesSEOFAQSection movie={movie} />
-        : fromTrueStoryCollection ? <TrueStorySEOFAQSection movie={movie} />
-        : fromGangsterCollection ? <GangsterSEOFAQSection movie={movie} />
-        : fromBookAdaptationCollection ? <BookAdaptationSEOFAQSection movie={movie} />
-        : fromMarriageCrisisCollection ? <MarriageCrisisSEOFAQSection movie={movie} />
-        : fromA24Collection ? <A24SEOFAQSection movie={movie} />
-        : fromDarkComedyCollection ? <DarkComedySEOFAQSection movie={movie} />
-        : fromPtaCollection ? <PtaSEOFAQSection movie={movie} />
-        : fromBasicInstinctCollection ? <BasicInstinctSEOFAQSection movie={movie} />
-        : fromEnemiesToLoversCollection ? <EnemiesToLoversSEOFAQSection movie={movie} />
-        : fromJLawCollection ? <JenniferLawrenceSEOFAQSection movie={movie} />
-        : fromMonicaBellucciCollection ? <MonicaBellucciSEOFAQSection movie={movie} />
-        : fromDecadeCollection ? <DecadeSEOFAQSection movie={movie} />
-        : fromPrestigeCollection ? <PrestigeSEOFAQSection movie={movie} />
-        : fromSe7enCollection ? <Se7enSEOFAQSection movie={movie} />
-        : fromRevengeCollection ? <RevengeMovieSEOFAQSection movie={movie} />
-        : fromWarFilmsCollection ? <WarFilmsSEOFAQSection movie={movie} />
-        : fromSciFiCollection ? <SciFiSEOFAQSection movie={movie} />
-        : fromTimeTravelCollection ? <TimeTravelSEOFAQSection movie={movie} />
-        : fromInterstellarCollection ? <InterstellarSEOFAQSection movie={movie} />
-        : fromHeistThrillerCollection ? <HeistThrillerSEOFAQSection movie={movie} />
-        : fromCrimeThrillerCollection ? <CrimeThrillerSEOFAQSection movie={movie} />
-        : fromDetectiveThrillerCollection ? <DetectiveThrillerSEOFAQSection movie={movie} />
-        : fromMysteryThrillerCollection ? <MysteryThrillerSEOFAQSection movie={movie} />
-        : fromPsychologicalThrillerCollection ? <PsychThrillerSEOFAQSection movie={movie} />
-        : fromThrillerCollection ? <ThrillerSEOFAQSection movie={movie} />
-        : fromSurvivalCollection ? <SurvivalSEOFAQSection movie={movie} />
+      {fromHboActionCollection ? <HboActionSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromHboRomanceCollection ? <HboMaxRomanceSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} /> 
+        : fromHboMaxThrillerCollection ? <HboMaxThrillerSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} /> 
+        : fromHboMaxFamilyCollection ? <HboMaxFamilySEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} /> 
+        : fromHboMaxSciFiCollection ? <HboMaxSciFiSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} /> 
+        : fromHboMaxHorrorCollection ? <HboMaxHorrorSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromHboMaxBestCollection ? <HboMaxBestSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromHboMaxDramaCollection ? <HboMaxDramaSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromHboMaxComedyCollection ? <HboMaxComedySEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromHuluFamilyCollection ? <HuluFamilySEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromHuluDramaCollection ? <HuluDramaSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromHuluBestCollection ? <HuluBestSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromHuluThrillerCollection ? <HuluThrillerSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromHuluSciFiCollection ? <HuluSciFiSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromHuluComedyCollection ? <HuluComedySEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromHuluHorrorCollection ? <HuluHorrorSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} /> 
+        : fromHuluRomanceCollection ? <HuluRomanceSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} /> 
+        : fromHuluActionCollection ? <HuluActionSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromParamountActionCollection ? <ParamountActionSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromParamountSciFiCollection ? <ParamountSciFiSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} /> 
+        : fromParamountRomanceCollection ? <ParamountRomanceSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} /> 
+        : fromParamountDramaCollection ? <ParamountDramaSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} /> 
+        : fromParamountThrillerCollection ? <ParamountThrillerSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromParamountFamilyCollection ? <ParamountFamilySEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} /> 
+        : fromParamountHorrorCollection ? <ParamountHorrorSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromParamountComedyCollection ? <ParamountComedySEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromParamountBestCollection ? <ParamountBestSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromPeacockBestCollection ? <PeacockBestSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromPeacockComedyCollection ? <PeacockComedySEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromPeacockActionAdventureCollection ? <PeacockActionAdventureSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromPeacockSciFiCollection ? <PeacockSciFiSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromPeacockRomanceCollection ? <PeacockRomanceSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromPeacockFamilyCollection ? <PeacockFamilySEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromPeacockDramaCollection ? <PeacockDramaSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromPeacockThrillerCollection ? <PeacockThrillerSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromDonnieDarkoCollection ? <DonnieDarkoSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromFightClubCollection ? <FightClubSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromParasiteCollection ? <ParasiteSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromMatrixCollection ? <MatrixSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromOldboyCollection ? <OldboySEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromBlackSwanCollection ? <BlackSwanSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromEyesWideShutCollection ? <EyesWideShutSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromEroticThrillerCollection ? <EroticThrillerSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromEroticRomanceCollection ? <EroticRomanceSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromGreedCollection ? <GreedSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromRaunchyComedyCollection ? <RaunchyComedySEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromRoadTripCollection ? <RoadTripSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromThoughtProvokingCollection ? <ThoughtProvokingSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromNeoNoirCollection ? <NeoNoirSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromBestActionMoviesCollection ? <BestActionMoviesSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromTrueStoryCollection ? <TrueStorySEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromGangsterCollection ? <GangsterSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromBookAdaptationCollection ? <BookAdaptationSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromMarriageCrisisCollection ? <MarriageCrisisSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromA24Collection ? <A24SEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromDarkComedyCollection ? <DarkComedySEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromPtaCollection ? <PtaSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromBasicInstinctCollection ? <BasicInstinctSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromEnemiesToLoversCollection ? <EnemiesToLoversSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromJLawCollection ? <JenniferLawrenceSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromMonicaBellucciCollection ? <MonicaBellucciSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromDecadeCollection ? <DecadeSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromPrestigeCollection ? <PrestigeSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromSe7enCollection ? <Se7enSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromRevengeCollection ? <RevengeMovieSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromWarFilmsCollection ? <WarFilmsSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromSciFiCollection ? <SciFiSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromTimeTravelCollection ? <TimeTravelSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromInterstellarCollection ? <InterstellarSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromHeistThrillerCollection ? <HeistThrillerSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromCrimeThrillerCollection ? <CrimeThrillerSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromDetectiveThrillerCollection ? <DetectiveThrillerSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromMysteryThrillerCollection ? <MysteryThrillerSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromPsychologicalThrillerCollection ? <PsychThrillerSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromThrillerCollection ? <ThrillerSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromSurvivalCollection ? <SurvivalSEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
         
         // Final safety fallbacks so empty FAQ isn't rendered
-        : fromInceptionCollection ? <SEOFAQSection movie={movie} />
-        : fromShutterIslandCollection ? <SEOFAQSection movie={movie} />
-        : fromMementoCollection ? <SEOFAQSection movie={movie} />
-        : movieInfo?.faqs ? <SEOFAQSection movie={movie} /> : null
+        : fromInceptionCollection ? <SEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromShutterIslandCollection ? <SEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : fromMementoCollection ? <SEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} />
+        : movieInfo?.faqs ? <SEOFAQSection movie={{...movie, Runtime: dynamicMovieData.runtime, runtime: dynamicMovieData.runtime}} /> : null
       }
       </div>
     </motion.div>

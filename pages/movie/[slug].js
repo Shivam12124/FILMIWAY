@@ -642,8 +642,8 @@ export async function getStaticProps({ params }) {
 
     if (isClean) {
         metaTitle = `${baseMovie.Title} Parents Guide (Clean)`;
-        let currentRuntime = baseMovie.runtime || baseMovie.Runtime || "Official";
-        if (typeof currentRuntime === 'number') currentRuntime = `${currentRuntime} min`;
+        let currentRuntime = cacheData.runtime || baseMovie.runtime || baseMovie.Runtime || "Official";
+        if (typeof currentRuntime === 'number' || (typeof currentRuntime === 'string' && !currentRuntime.includes('min') && currentRuntime !== 'Official')) currentRuntime = `${currentRuntime} min`;
         metaDesc = `Filmiway editors have manually verified that ${baseMovie.Title} has zero intimate scenes in its full ${currentRuntime} runtime.`;
     } else {
         metaTitle = `${baseMovie.Title} Parents Guide: Timestamps to Skip Intimate Scenes`;
@@ -679,6 +679,8 @@ export async function getStaticProps({ params }) {
         Budget: cacheData.budget || null,
         BoxOffice: cacheData.revenue || null,
         Tagline: cacheData.tagline || assignedFallbackTagline,
+        Runtime: cacheData.runtime ? `${cacheData.runtime} min` : (baseMovie.Runtime || baseMovie.runtime || null),
+        runtime: cacheData.runtime ? `${cacheData.runtime} min` : (baseMovie.runtime || baseMovie.Runtime || null),
         primaryCollectionSlug: primarySlug || null,
         primaryCollectionTitle: primaryTitle || null,
         resolvedMovieInfo,
