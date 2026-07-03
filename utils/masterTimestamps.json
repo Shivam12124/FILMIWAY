@@ -7949,64 +7949,55 @@
         "start": "0:21:45",
         "end": "0:21:51",
         "type": "Nudity (woman)",
-        "severity": "High",
-        "description": "A sequence features a female character in a bathtub with visible upper-body nudity."
+        "severity": "High"
       },
       {
         "start": "0:51:38",
         "end": "0:54:38",
         "type": "Nudity & Sex, Sexual content",
-        "severity": "High",
-        "description": "An intense sequence features passionate kissing and sexual activity in intimate positions with visible female nudity."
+        "severity": "High"
       },
       {
         "start": "1:47:10",
         "end": "1:47:20",
         "type": "Nudity (women)",
-        "severity": "Moderate",
-        "description": "Explicit sexual content involving disrobing, visible female topless nudity, intimate touching, and implied sexual vocalization."
+        "severity": "Moderate"
       },
       {
         "start": "1:48:38",
         "end": "1:48:48",
         "type": "Nudity (woman)",
-        "severity": "High",
-        "description": "Brief female topless nudity as a woman rises from bed."
+        "severity": "High"
       },
       {
         "start": "1:58:45",
         "end": "2:03:06",
         "type": "Sex & Nudity (women)",
-        "severity": "High",
-        "description": "Lengthy explicit same-sex sexual content featuring female nudity, intimate oral contact, and sustained sexual activity in multiple positions."
+        "severity": "High"
       },
       {
         "start": "2:21:10",
         "end": "2:23:15",
         "type": "Sexual Content",
-        "severity": "High",
-        "description": "Explicit sexual content involving  intimate breast contact and moaning."
+        "severity": "High"
       },
       {
         "start": "2:32:26",
         "end": "2:32:33",
         "type": "Partial nudity (woman)",
-        "severity": "Moderate",
-        "description": "Brief rear nudity as a woman removes her robe, with visible buttocks and partial back exposure."
+        "severity": "Moderate"
       },
       {
         "start": "2:33:32",
         "end": "2:34:30",
         "type": "Sexual content (masturbation)",
-        "severity": "Moderate",
-        "description": "Implied sexual activity involving  masturbation and moaning."
+        "severity": "Moderate"
       },
       {
         "start": "2:40:10",
         "end": "2:42:20",
         "type": "Sexual Content & Nudity (women)",
-        "severity": "High",
-        "description": "Explicit same-sex sexual content featuring full nudity, passionate kissing, intimate genital contact, and sustained sexual activity."
+        "severity": "High"
       },
       {
         "start": "",
