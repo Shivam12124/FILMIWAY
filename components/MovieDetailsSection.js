@@ -225,9 +225,9 @@ const MovieDetailsSection = React.memo(({
    budget: movie.Budget || safeMovieInfo.budget || 'N/A',
    boxOffice: movie.BoxOffice || safeMovieInfo.boxOffice || 'N/A',
    ageRating: movie.Rated || safeMovieInfo.ageRating || 'NR',
-   runtime: (movie.runtime || movie.Runtime || safeMovieInfo.runtime || '120').toString().includes('min') 
-            ? (movie.runtime || movie.Runtime || safeMovieInfo.runtime || '120 min')
-            : `${movie.runtime || movie.Runtime || safeMovieInfo.runtime || '120'} min`,
+   runtime: (movie.runtime || movie.Runtime || safeMovieInfo.runtime) 
+            ? ((movie.runtime || movie.Runtime || safeMovieInfo.runtime).toString().includes('min') ? (movie.runtime || movie.Runtime || safeMovieInfo.runtime) : `${movie.runtime || movie.Runtime || safeMovieInfo.runtime} min`)
+            : 'Unknown',
    synopsis: safeMovieInfo.synopsis || movie.Plot || getUniqueDescription(),
    tagline: movie.Tagline || '' 
  });
