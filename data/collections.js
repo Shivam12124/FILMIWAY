@@ -25,7 +25,7 @@ export const COLLECTIONS = {
       { label: "WEALTH", desc: "Excessive capitalism" },
       { label: "DOWNFALL", desc: "Tragic arcs" }
     ],
-    movies: ['tt0469494', 'tt0993846', 'tt0094291', 'tt0040897', 'tt0112641', 'tt1596363', 'tt5727208', 'tt0015881', 'tt0144084', 'tt0120324'],
+    movies: ['tt0469494', 'tt0993846', 'tt0094291', 'tt0040897', 'tt0112641', 'tt1596363', 'tt5727208', 'tt0015881', 'tt0144084', 'tt0120324', 'tt0086200'],
     relatedCollections: ['best-heist-thriller-movies', 'best-crime-thriller-movies', 'best-psychological-thriller-movies']
   },
 

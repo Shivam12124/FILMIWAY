@@ -10581,5 +10581,54 @@
   "1376434": {
     "Title": "Predator: Killer of Killers",
     "scenes": []
+  },
+  "9346": {
+    "Title": "Risky Business",
+    "Age": "17+",
+    "Summary": "Aged 17+ for explicit sex and nudity and moderate language.",
+    "scenes": [
+      {
+        "start": "0:03:13",
+        "end": "0:04:23",
+        "type": "Nudity",
+        "severity": "High",
+        "description": "A female character is shown showering. Heavy steam obscures most details, though brief upper-body nudity and partial buttock nudity are visible."
+      },
+      {
+        "start": "0:23:36",
+        "end": "0:23:43",
+        "type": "Sexual Content (Masturbation)",
+        "severity": "Mild",
+        "description": "A male character is briefly implied to be masturbating under a bedsheet. No nudity is visible."
+      },
+      {
+        "start": "0:29:05",
+        "end": "0:30:12",
+        "type": "Nudity & Sex",
+        "severity": "High",
+        "description": "A man undresses a woman and kisses her. Topless female nudity and a brief shot of pubic hair are shown. The two are then seen having sex, including shots from behind and on a rocking chair."
+      },
+      {
+        "start": "1:21:00",
+        "end": "1:23:20",
+        "type": "Sexual Content",
+        "severity": "Moderate",
+        "description": "A man removes a woman's underwear in a close-up (no graphic nudity is shown). The scene depicts them engaging in slow-motion sexual activity while mostly clothed, shown from the shoulders up."
+      },
+      {
+        "start": "",
+        "end": "",
+        "type": "Profanity",
+        "severity": "Moderate",
+        "description": "Contains frequent strong language, including around 16 uses of the F-word and other coarse profanity, alongside occasional sexual references."
+      },
+      {
+        "start": "",
+        "end": "",
+        "type": "Violence & Gore",
+        "severity": "None",
+        "description": "No visible violence or gore is present in the film."
+      }
+    ]
   }
 }

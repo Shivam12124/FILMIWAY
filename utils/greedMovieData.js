@@ -19,7 +19,8 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 473033, "imdbID": "tt5727208", "Title": "Uncut Gems", "year": 2019, "genre": "Thriller", "runtime": 135, "rank": 7 },
     { "tmdbId": 1405, "imdbID": "tt0015881", "Title": "Greed", "year": 1924, "genre": "Drama", "runtime": 140, "rank": 8 },
     { "tmdbId": 1359, "imdbID": "tt0144084", "Title": "American Psycho", "year": 2000, "genre": "Thriller", "runtime": 102, "rank": 9 },
-    { "tmdbId": 10223, "imdbID": "tt0120324", "Title": "A Simple Plan", "year": 1998, "genre": "Thriller", "runtime": 121, "rank": 10 }
+    { "tmdbId": 10223, "imdbID": "tt0120324", "Title": "A Simple Plan", "year": 1998, "genre": "Thriller", "runtime": 121, "rank": 10 },
+    { "tmdbId": 9346, "imdbID": "tt0086200", "Title": "Risky Business", "year": 1983, "genre": "Comedy, Crime", "runtime": 99, "rank": "BONUS" }
 ];
 
 // ✅ STRATEGIC QUOTES
@@ -33,7 +34,8 @@ export const STRATEGIC_QUOTES = {
     473033: "This is how I win.",
     1405: "I can't help it... I love money!",
     1359: "I have all the characteristics of a human being: blood, flesh, skin, hair; but not a single, clear, identifiable emotion.",
-    10223: "It's the American Dream in a gym bag."
+    10223: "It's the American Dream in a gym bag.",
+    9346: "Joel, you are a capitalist."
 };
 
 // ✅ SENSITIVE TIMELINES (Parents Guide Data)
@@ -56,8 +58,7 @@ export const SENSITIVE_TIMELINES = {
             { start: "1:48:20", end: "1:48:38", type: "Sex & Nudity (Woman)", severity: "High" },
             { start: "2:17:30", end: "2:18:10", type: "Nudity (Women)", severity: "High" },
             { start: "2:31:20", end: "2:31:40", type: "Nudity (Woman)", severity: "High" },
-            { start: "2:38:30", end: "2:40:00", type: "Sex", severity: "High" }
-        ,
+            { start: "2:38:30", end: "2:40:00", type: "Sex", severity: "High" },
             { start: "", end: "", type: "Profanity", severity: "Severe", description: "Pervasive strong language with over 430–500 uses of the F-word and frequent use of the C-word." },
             { start: "", end: "", type: "Violence & Gore", severity: "Moderate", description: "Depicts domestic abuse, drug-induced injuries, and reckless behavior. Includes scenes of vomiting and physical altercations." }] 
     },
@@ -126,6 +127,18 @@ export const SENSITIVE_TIMELINES = {
         scenes: [
             { start: "0:04:37", end: "0:04:50", type: "Nudity", severity: "Moderate" }
         ]
+    },
+
+    // 11. Risky Business
+    9346: {
+        scenes: [
+            { start: "0:03:13", end: "0:04:23", type: "Nudity", severity: "High", description: "A female character is shown showering. Heavy steam obscures most details, though brief upper-body nudity and partial buttock nudity are visible." },
+            { start: "0:23:36", end: "0:23:43", type: "Sexual Content (Masturbation)", severity: "Mild", description: "A male character is briefly implied to be masturbating under a bedsheet. No nudity is visible." },
+            { start: "0:29:05", end: "0:30:12", type: "Nudity & Sex", severity: "High", description: "A man undresses a woman and kisses her. Topless female nudity and a brief shot of pubic hair are shown. The two are then seen having sex, including shots from behind and on a rocking chair." },
+            { start: "1:21:00", end: "1:23:20", type: "Sexual Content", severity: "Moderate", description: "A man removes a woman's underwear in a close-up (no graphic nudity is shown). The scene depicts them engaging in slow-motion sexual activity while mostly clothed, shown from the shoulders up." },
+            { start: "", end: "", type: "Profanity", severity: "Moderate", description: "Contains frequent strong language, including around 16 uses of the F-word and other coarse profanity, alongside occasional sexual references." },
+            { start: "", end: "", type: "Violence & Gore", severity: "None", description: "No visible violence or gore is present in the film." }
+        ]
     }
 };
 
@@ -139,7 +152,8 @@ export const FALLBACK_POSTERS = {
     473033: "https://m.media-amazon.com/images/M/MV5BZDhkNjViNDMtZWZmZi00ZmZkLTk0YTItZWFhMWZlMTU3YzVmXkEyXkFqcGdeQXVyMTMzNDExODE5._V1_SX500.jpg",
     1405: "https://m.media-amazon.com/images/M/MV5BMjA5NzIyODczMF5BMl5BanBnXkFtZTgwOTE5NDE5MzE@._V1_SX500.jpg",
     1359: "https://m.media-amazon.com/images/M/MV5BZTM2ZGJmNjQtN2UyOS00NjcxLWFjMDktOTE2ZjJhNzg5MzliXkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_SX500.jpg",
-    10223: "https://m.media-amazon.com/images/M/MV5BMzcwNmU2OGYtYTE0Mi00YzRjLTljZTUtMTI0NTE2MmFlMThlXkEyXkFqcGdeQXVyMTA0MjU0Ng@@._V1_SX500.jpg"
+    10223: "https://m.media-amazon.com/images/M/MV5BMzcwNmU2OGYtYTE0Mi00YzRjLTljZTUtMTI0NTE2MmFlMThlXkEyXkFqcGdeQXVyMTA0MjU0Ng@@._V1_SX500.jpg",
+    9346: "https://image.tmdb.org/t/p/w500/82KOHShH9raGhkcAN3TztVjqjj3.jpg"
 };
 
 // ✅ Custom metric for this collection: 'greedIndex' and 'moralDecay'
@@ -311,6 +325,23 @@ export const COMPLETE_MOVIE_DATA = {
         ],
         synopsis: "Three men discover a crashed plane holding $4.4 million. Their decision to keep it triggers a tragic chain of suspicion and murder.",
         themes: ["Found Money", "Snow Noir", "Brotherly Betrayal"]
+    }),
+    
+    // 11. Risky Business
+    9346: createGreedData({
+        greedIndex: 90, moralDecay: 85, complexityLevel: "MEDIUM",
+        dominantColor: "#b91c1c", rating: 6.8, criticsScore: 92, audienceScore: 68, director: "Paul Brickman",
+        cast: ["Tom Cruise", "Rebecca De Mornay", "Joe Pantoliano"], boxOffice: "$63.5 million", budget: "$6.2 million",
+        dna: { "Comedy": 50, "Drama": 30, "Crime": 20 },
+        scenes: [
+            { time: 10, intensity: 30, label: "Parents Leave" },
+            { time: 30, intensity: 75, label: "Lana Arrives" },
+            { time: 60, intensity: 85, label: "The Porsche in the Lake" },
+            { time: 80, intensity: 95, label: "The House Party Enterprise" },
+            { time: 95, intensity: 70, label: "The Princeton Interview" }
+        ],
+        synopsis: "A Chicago teenager turns his parents' house into a brothel to recover the money he lost after crashing his father's Porsche. A dark, cynical coming-of-age comedy that perfectly captures 1980s materialism.",
+        themes: ["Materialism", "Loss of Innocence", "Free Enterprise"]
     })
 };
 
@@ -382,6 +413,13 @@ export const GREED_MOVIE_FAQS = {
         { question: "What is Sarah's role in the conspiracy?", answer: "Sarah (Hank's wife) represents the seductive, rationalizing voice of greed. She stays removed from the initial crime but uses cold, calculating logic to push Hank into committing worse atrocities to protect their newfound 'American Dream.'" },
         { question: "Why did Hank have to kill Jacob?", answer: "Jacob is the tragic heart of the film. He realizes that keeping the money has destroyed their souls and prefers to die rather than live with the guilt. Hank shoots his own brother to protect the secret, completing his total moral collapse." },
         { question: "What is the irony of the ending?", answer: "After murdering multiple people and destroying his family, Hank discovers the stolen money was marked by the FBI and is completely unspendable. He burns the millions of dollars in the fireplace, meaning the entire tragedy was for absolutely nothing." }
+    ],
+    'Risky Business': [
+        { question: "Does Risky Business have violence and gore?", answer: "According to the Filmiway Parents Guide, the violence in Risky Business is Mild. There are brief moments of pushing or comedic scuffles, but no graphic violence." },
+        { question: "Does Risky Business have profanity or swearing?", answer: "The profanity in Risky Business is Moderate to High. The film features frequent use of strong language consistent with an R-rated 1980s teen comedy, including multiple uses of the F-word and sexual slang." },
+        { question: "Why is Risky Business rated R?", answer: "Risky Business earns its R rating due to its core plot involving prostitution, multiple scenes of sexual content, brief nudity, and strong language. Parents can use our timestamps to skip the explicit scenes." },
+        { question: "Is the film a comedy or a drama?", answer: "While often remembered for the comedic 'dancing in underwear' scene, the film is actually a dark, satirical drama about capitalism, greed, and the loss of innocence in 1980s suburban America." },
+        { question: "What is the significance of the Porsche?", answer: "The father's Porsche represents ultimate material success and parental authority. Joel crashing it is the inciting incident that forces him to fully embrace ruthless capitalism to fix his mistake." }
     ]
 };
 

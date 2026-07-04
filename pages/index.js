@@ -576,7 +576,7 @@ export async function getStaticProps() {
     let top10TrendingMovies = getTop10MoviesWithSlugs(TRENDING_DB, TRENDING_POSTERS);
     
     // ⚡ CUSTOM HOMEPAGE ARRAY: High-traffic Parents Guides 
-    const trendingParentsGuideIds = [1339713, 884, 218, 318846, 475557, 398818, 1791, 10867, 979, 11423];
+    const trendingParentsGuideIds = [1339713, 884, 218, 318846, 475557, 398818, 1791, 10867, 9346, 11423];
     const customTrendingGuidesDb = trendingParentsGuideIds.map(id => masterDatabase.find(m => m.tmdbId === id)).filter(Boolean);
     const trendingParentsGuides = getTop10MoviesWithSlugs(customTrendingGuidesDb, null);
 
