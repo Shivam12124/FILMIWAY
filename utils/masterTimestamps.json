@@ -1,4 +1,8 @@
 {
+    "11": {
+        "Title": "Star Wars: Episode V - The Empire Strikes Back",
+        "scenes": []
+    },
     "13": {
         "Title": "Forrest Gump",
         "Age": "13+",
@@ -31,643 +35,6 @@
                 "description": "The film contains primarily war-related violence with explosions, gunfire, dead and wounded soldiers, occasional fistfights and bullying, brief real and historical assassination footage, and a few emotionally intense deaths."
             }
         ]
-    },
-    "218": {
-        "Title": "The Terminator",
-        "Age": "16+",
-        "Summary": "Aged 16+ for intense action violence, explicit sex and brief nudity, and moderate language.",
-        "scenes": [
-            {
-                "start": "4:40",
-                "end": "7:50",
-                "type": "Nudity (men)",
-                "severity": "Mild"
-            },
-            {
-                "start": "1:22:20",
-                "end": "1:23:00",
-                "type": "Sex & Nudity",
-                "severity": "High"
-            },
-            {
-                "start": "",
-                "end": "",
-                "type": "Violence & Gore",
-                "severity": "High",
-                "description": "Strong action violence throughout, including intense car chases, frequent gunfire, explosions, brutal killings, graphic bloody injuries, disturbing body-horror imagery, and sustained scenes of destruction involving both humans and the damaged mechanical antagonist."
-            },
-            {
-                "start": "",
-                "end": "",
-                "type": "Profanity",
-                "severity": "Moderate",
-                "description": "Moderate to strong language throughout, including uses of the F-word alongside other coarse profanity."
-            }
-        ]
-    },
-    "550": {
-        "Title": "Fight Club",
-        "Age": "16+",
-        "Summary": "Aged 16+ for brutal graphic violence, explicit sex and  nudity, and strong language throughout.",
-        "scenes": [
-            {
-                "start": "0:32:27",
-                "end": "0:32:37",
-                "type": "Nudity (Man & Woman)",
-                "severity": "High"
-            },
-            {
-                "start": "48:40",
-                "end": "48:55",
-                "type": "Nudity",
-                "severity": "High"
-            },
-            {
-                "start": "0:53:45",
-                "end": "0:55:58",
-                "type": "Sexual content (Sexual sounds)",
-                "severity": "Moderate"
-            },
-            {
-                "start": "0:58:45",
-                "end": "0:59:00",
-                "type": "Sexual content",
-                "severity": "Moderate"
-            },
-            {
-                "start": "1:54:29",
-                "end": "1:54:32",
-                "type": "Sex",
-                "severity": "Mild"
-            },
-            {
-                "start": "",
-                "end": "",
-                "type": "Profanity",
-                "severity": "High",
-                "description": "Approximately 78 uses of the F-word and pervasive strong profanity throughout."
-            },
-            {
-                "start": "",
-                "end": "",
-                "type": "Violence & Gore",
-                "severity": "High",
-                "description": "Features brutal bare-knuckle fighting with detailed facial injuries and blood. Includes chemical burns, a fatal head wound, and a self-inflicted gunshot wound."
-            }
-        ]
-    },
-    "670": {
-        "Title": "Oldboy",
-        "Age": "18+",
-        "Summary": "Aged 18+ for brutal graphic violence, explicit sex and  nudity, and moderate language.",
-        "scenes": [
-            {
-                "start": "0:11:05",
-                "end": "0:11:30",
-                "type": "Sexual content (Masturbation)",
-                "severity": "High"
-            },
-            {
-                "start": "0:57:25",
-                "end": "1:01:56",
-                "type": "Nudity (Woman)",
-                "severity": "High"
-            },
-            {
-                "start": "1:03:35",
-                "end": "1:04:57",
-                "type": "Sex",
-                "severity": "High"
-            },
-            {
-                "start": "1:23:25",
-                "end": "1:24:17",
-                "type": "Nudity (Woman)",
-                "severity": "High"
-            },
-            {
-                "start": "1:30:10",
-                "end": "1:30:32",
-                "type": "Partial Nudity (Man)",
-                "severity": "Mild"
-            },
-            {
-                "start": "",
-                "end": "",
-                "type": "Violence & Gore",
-                "severity": "High",
-                "description": "Strong brutal violence throughout featuring graphic torture, realistic hand-to-hand combat, bloody self-harm and suicide imagery, tooth extraction, stabbing, severed body parts, and disturbing mutilation."
-            },
-            {
-                "start": "",
-                "end": "",
-                "type": "Profanity",
-                "severity": "Moderate",
-                "description": "Strong language throughout includes frequent use of the F-word, scatological profanity, vulgar body-part references, and repeated moderate profanity."
-            }
-        ]
-    },
-    "686": {
-        "Title": "Contact",
-        "scenes": [
-            {
-                "start": "45:00",
-                "end": "46:00",
-                "type": "Intimacy",
-                "severity": "Mild"
-            }
-        ]
-    },
-    "861": {
-        "Title": "Total Recall",
-        "scenes": [
-            {
-                "start": "55:50",
-                "end": "56:00",
-                "type": "Nudity",
-                "severity": "Moderate"
-            },
-            {
-                "start": "59:50",
-                "end": "59:59",
-                "type": "Nudity",
-                "severity": "Moderate"
-            },
-            {
-                "start": "1:13:00",
-                "end": "1:13:05",
-                "type": "Nudity",
-                "severity": "Moderate"
-            }
-        ]
-    },
-    "1272": {
-        "Title": "Sunshine",
-        "scenes": [
-            {
-                "start": "1:05:00",
-                "end": "1:10:00",
-                "type": "Violence",
-                "severity": "High"
-            }
-        ]
-    },
-    "1791": {
-        "Title": "The Piano Teacher",
-        "Age": "18+",
-        "Summary": "Aged 18+ for moderate violence, explicit sex and  nudity, and moderate language.",
-        "scenes": [
-            {
-                "start": "0:25:10",
-                "end": "0:27:41",
-                "type": "Sex & Nudity",
-                "severity": "High"
-            },
-            {
-                "start": "0:52:00",
-                "end": "0:53:20",
-                "type": "Sex",
-                "severity": "High"
-            },
-            {
-                "start": "1:07:30",
-                "end": "1:11:20",
-                "type": "Sex",
-                "severity": "High"
-            },
-            {
-                "start": "1:47:00",
-                "end": "1:49:40",
-                "type": "Sex",
-                "severity": "High"
-            },
-            {
-                "start": "1:54:40",
-                "end": "2:01:10",
-                "type": "Sex & Nudity",
-                "severity": "High"
-            },
-            {
-                "start": "",
-                "end": "",
-                "type": "Violence & Gore",
-                "severity": "Moderate",
-                "description": "Strong and disturbing content including physical fights, self-harm, and sexual violence, with scenes of assault, blood, and psychologically intense abuse."
-            },
-            {
-                "start": "",
-                "end": "",
-                "type": "Profanity",
-                "severity": "Moderate",
-                "description": "The dialogue features pervasive use of very strong profanity and highly offensive coarse language."
-            }
-        ]
-    },
-    "2118": {
-        "Title": "L.A. Confidential",
-        "scenes": [
-            {
-                "start": "12:02",
-                "end": "12:10",
-                "type": "Nudity",
-                "severity": "Mild"
-            },
-            {
-                "start": "35:00",
-                "end": "35:08",
-                "type": "Nudity",
-                "severity": "Mild"
-            },
-            {
-                "start": "57:28",
-                "end": "57:34",
-                "type": "Nudity",
-                "severity": "Mild"
-            },
-            {
-                "start": "1:04:05",
-                "end": "1:04:10",
-                "type": "Nudity",
-                "severity": "Mild"
-            }
-        ]
-    },
-    "8363": {
-        "Title": "Superbad",
-        "Age": "16+",
-        "Summary": "Aged 16+ for mild violence, minor sexual content and brief nudity, and strong language throughout.",
-        "scenes": [
-            {
-                "start": "0:04:45",
-                "end": "0:04:55",
-                "type": "Nudity (Woman)",
-                "severity": "High"
-            },
-            {
-                "start": "0:09:38",
-                "end": "0:09:45",
-                "type": "Nudity (Women)",
-                "severity": "High"
-            },
-            {
-                "start": "0:18:15",
-                "end": "0:20:30",
-                "type": "Sexual Content",
-                "severity": "Moderate"
-            },
-            {
-                "start": "",
-                "end": "",
-                "type": "Violence & Gore",
-                "severity": "Mild",
-                "description": "Teen-focused violence and chaos including imagined and real assaults, punches, car impacts, police confrontations with weapons, property destruction and arson, threats of killing and mutilation, accidental injuries, vomiting, and scenes of public disturbance and intoxication."
-            },
-            {
-                "start": "",
-                "end": "",
-                "type": "Profanity",
-                "severity": "High",
-                "description": "Extremely strong and pervasive language throughout, including heavy repeated F-word usage, frequent sexual and scatological references, anatomical terminology, insults and occasional offensive slurs."
-            }
-        ]
-    },
-    "9346": {
-        "Title": "Risky Business",
-        "Age": "17+",
-        "Summary": "Aged 17+ for explicit sex and nudity and moderate language.",
-        "scenes": [
-            {
-                "start": "0:03:13",
-                "end": "0:04:23",
-                "type": "Nudity",
-                "severity": "High"
-            },
-            {
-                "start": "0:23:36",
-                "end": "0:23:43",
-                "type": "Sexual Content (Masturbation)",
-                "severity": "Mild"
-            },
-            {
-                "start": "0:29:05",
-                "end": "0:30:12",
-                "type": "Nudity & Sex",
-                "severity": "High"
-            },
-            {
-                "start": "1:21:00",
-                "end": "1:23:20",
-                "type": "Sexual Content",
-                "severity": "Moderate"
-            },
-            {
-                "start": "",
-                "end": "",
-                "type": "Profanity",
-                "severity": "Moderate",
-                "description": "Contains frequent strong language, including around 16 uses of the F-word and other coarse profanity, alongside occasional sexual references."
-            },
-            {
-                "start": "",
-                "end": "",
-                "type": "Violence & Gore",
-                "severity": "None",
-                "description": "No visible violence or gore is present in the film."
-            }
-        ]
-    },
-    "11423": {
-        "Title": "Memories of Murder",
-        "Age": "16+",
-        "Summary": "Aged 16+ for moderate violence, explicit sex and brief nudity, and moderate language.",
-        "scenes": [
-            {
-                "start": "9:58",
-                "end": "10:10",
-                "type": "Sex",
-                "severity": "Moderate"
-            },
-            {
-                "start": "54:34",
-                "end": "54:55",
-                "type": "Nudity",
-                "severity": "Mild"
-            },
-            {
-                "start": "1:01:12",
-                "end": "1:02:40",
-                "type": "Sexual content",
-                "severity": "Moderate"
-            },
-            {
-                "start": "1:25:12",
-                "end": "1:25:47",
-                "type": "Nudity",
-                "severity": "Mild"
-            },
-            {
-                "start": "",
-                "end": "",
-                "type": "Violence & Gore",
-                "severity": "Moderate",
-                "description": "Strong disturbing content involving murder investigations, sexual violence references, grisly crime-scene imagery, police brutality, beatings, torture, bloody injuries, and brief graphic death-related imagery."
-            },
-            {
-                "start": "",
-                "end": "",
-                "type": "Profanity",
-                "severity": "Moderate",
-                "description": "Strong and frequent coarse language throughout, including over 30 uses of the F-word alongside repeated uses of other profanity and insulting terms."
-            }
-        ]
-    },
-    "210577": {
-        "Title": "Gone Girl",
-        "Age": "18+",
-        "Summary": "Aged 18+ for brutal graphic violence, explicit sex and  nudity, and strong language throughout.",
-        "scenes": [
-            {
-                "start": "6:41",
-                "end": "6:59",
-                "type": "Sex",
-                "severity": "High"
-            },
-            {
-                "start": "20:57",
-                "end": "21:02",
-                "type": "Sex",
-                "severity": "High"
-            },
-            {
-                "start": "44:21",
-                "end": "44:38",
-                "type": "Nudity(Woman)",
-                "severity": "High"
-            },
-            {
-                "start": "45:00",
-                "end": "45:10",
-                "type": "Sex",
-                "severity": "High"
-            },
-            {
-                "start": "2:04:20",
-                "end": "2:05:34",
-                "type": "Sex & Nudity(Man)",
-                "severity": "High"
-            },
-            {
-                "start": "2:12:30",
-                "end": "2:13:45",
-                "type": "Nudity(Man & Woman)",
-                "severity": "High"
-            },
-            {
-                "start": "",
-                "end": "",
-                "type": "Profanity",
-                "severity": "High",
-                "description": "Pervasive use of strong profanity and graphic sexual language."
-            },
-            {
-                "start": "",
-                "end": "",
-                "type": "Violence & Gore",
-                "severity": "High",
-                "description": "Features one extremely graphic sequence involving a throat-slitting and significant blood flow. Includes domestic battery and self-inflicted injury."
-            }
-        ]
-    },
-    "300669": {
-        "Title": "Don't Breathe",
-        "scenes": [
-            {
-                "start": "0:03:14",
-                "end": "0:03:17",
-                "type": "Sexual Content",
-                "severity": "Moderate"
-            },
-            {
-                "start": "1:09:50",
-                "end": "1:11:00",
-                "type": "Sexual content",
-                "severity": "High"
-            }
-        ]
-    },
-    "318846": {
-        "Title": "The Big Short",
-        "scenes": [
-            {
-                "start": "0:53:25",
-                "end": "0:54:45",
-                "type": "Nudity (Woman)",
-                "severity": "High"
-            },
-            {
-                "start": "",
-                "end": "",
-                "type": "Violence & Gore",
-                "severity": "Mild",
-                "description": "No notable violence is shown, aside from brief disturbing references and isolated moments such as an eye injury and an implied suicide discussed in dialogue. The film otherwise contains no on-screen violent content."
-            },
-            {
-                "start": "",
-                "end": "",
-                "type": "Profanity",
-                "severity": "High",
-                "description": "Strong language throughout, including over 70 uses of the F-word and variations, frequent scatological references, and repeated mild obscenities. The dialogue also includes extensive name-calling and insulting language."
-            }
-        ],
-        "Age": "16+",
-        "Summary": "Aged 16+ for frequent strong language and nudity."
-    },
-    "335984": {
-        "Title": "Blade Runner 2049",
-        "Age": "15+",
-        "Summary": "Aged 15+ for moderate violence, heavy nudity, and moderate language.",
-        "scenes": [
-            {
-                "start": "38:10",
-                "end": "42:45",
-                "type": "Nudity",
-                "severity": "Moderate"
-            },
-            {
-                "start": "1:30:50",
-                "end": "1:31:00",
-                "type": "Nudity",
-                "severity": "Mild"
-            },
-            {
-                "start": "2:02:58",
-                "end": "2:03:03",
-                "type": "Partial Nudity",
-                "severity": "Mild"
-            },
-            {
-                "start": "2:17:00",
-                "end": "2:18:05",
-                "type": "Nudity",
-                "severity": "Moderate"
-            },
-            {
-                "start": "",
-                "end": "",
-                "type": "Violence & Gore",
-                "severity": "Moderate",
-                "description": "Moderate to strong featuring shootings, stabbings, explosions, drowning, hand-to-hand combat, bloody injuries, disturbing deaths, and occasional graphic aftermath imagery."
-            },
-            {
-                "start": "",
-                "end": "",
-                "type": "Profanity",
-                "severity": "Moderate",
-                "description": "Moderate language throughout, including around 7 uses of the F-word, occasional coarse profanity, mild obscenities, insulting name-calling."
-            }
-        ]
-    },
-    "872585": {
-        "Title": "Oppenheimer",
-        "Age": "15+",
-        "Summary": "Aged 15+ for moderate violence, explicit sex and  nudity, and moderate language.",
-        "scenes": [
-            {
-                "start": "0:23:14",
-                "end": "0:24:46",
-                "type": "Sex & Nudity",
-                "severity": "High"
-            },
-            {
-                "start": "1:14:38",
-                "end": "1:15:14",
-                "type": "Nudity",
-                "severity": "High"
-            },
-            {
-                "start": "1:15:43",
-                "end": "1:16:00",
-                "type": "Sex & Nudity",
-                "severity": "High"
-            },
-            {
-                "start": "",
-                "end": "",
-                "type": "Profanity",
-                "severity": "Moderate",
-                "description": "Approximately 8–9 uses of strong sexual expletives (F-words) and infrequent moderate profanity used in dialogue."
-            },
-            {
-                "start": "",
-                "end": "",
-                "type": "Violence & Gore",
-                "severity": "Moderate",
-                "description": "Contains graphic historical images of charred human remains and radiation victims. Includes a suicide by drug overdose and intense sequences of psychological peril."
-            }
-        ]
-    },
-    "1339713": {
-        "Title": "Obsession",
-        "Age": "18+",
-        "Summary": "Aged 18+ for brutal graphic violence, nudity and a brief explicit sex scene, and strong language throughout.",
-        "scenes": [
-            {
-                "start": "0:44:36",
-                "end": "0:45:00",
-                "type": "Sex & Partial Nudity",
-                "severity": "High"
-            },
-            {
-                "start": "1:36:42",
-                "end": "1:36:50",
-                "type": "Nudity",
-                "severity": "High"
-            },
-            {
-                "start": "",
-                "end": "",
-                "type": "Violence & Gore",
-                "severity": "High",
-                "description": "Strong and disturbing violence throughout, including severe head injuries from physical attacks, shootings to the head, self-harm, stabbings with glass, suicide and overdose, and graphic assaults with bloody and unsettling injury detail."
-            },
-            {
-                "start": "",
-                "end": "",
-                "type": "Profanity",
-                "severity": "High",
-                "description": "Strong and pervasive language throughout, including ~80+ uses of the F-word, frequent coarse expletives, sexual references, and repeated insults and vulgar expressions."
-            }
-        ]
-    },
-    "1358005": {
-        "Title": "Office Romance",
-        "Age": "16+",
-        "Summary": "Aged 16+ for brief graphic medical nudity, no action violence, and strong, pervasive raunchy language throughout.",
-        "scenes": [
-            {
-                "start": "1:04:45",
-                "end": "1:05:55",
-                "type": "Suggestive Clothing (Bikini)",
-                "severity": "Mild"
-            },
-            {
-                "start": "1:20:10",
-                "end": "1:20:20",
-                "type": "Nudity",
-                "severity": "High"
-            },
-            {
-                "start": "",
-                "end": "",
-                "type": "Profanity",
-                "severity": "High",
-                "description": "Strong and frequent sexual language throughout, including repeated use of the F-word, crude sexual terms, and explicit sexual discussions; overall raunchy dialogue dominates the film."
-            }
-        ]
-    },
-    "11": {
-        "Title": "Star Wars: Episode V - The Empire Strikes Back",
-        "scenes": []
     },
     "14": {
         "Title": "American Beauty",
@@ -929,7 +296,7 @@
                 "end": "",
                 "type": "Profanity",
                 "severity": "High",
-                "description": "Extremely frequent strong language including over 200 uses of the F-word, repeated sexual expletives, coarse insults, and heavy Spanish profanity throughout."
+                "description": "Extremely frequent strong language including over 200 uses of the F-word, repeated strong profanity, coarse insults, and heavy Spanish profanity throughout."
             }
         ]
     },
@@ -1179,6 +546,39 @@
             }
         ]
     },
+    "218": {
+        "Title": "The Terminator",
+        "Age": "16+",
+        "Summary": "Aged 16+ for intense action violence, explicit sex and brief nudity, and moderate language.",
+        "scenes": [
+            {
+                "start": "4:40",
+                "end": "7:50",
+                "type": "Nudity (men)",
+                "severity": "Mild"
+            },
+            {
+                "start": "1:22:20",
+                "end": "1:23:00",
+                "type": "Sex & Nudity",
+                "severity": "High"
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "High",
+                "description": "Strong action violence throughout, including intense car chases, frequent gunfire, explosions, brutal killings, graphic bloody injuries, disturbing body-horror imagery, and sustained scenes of destruction involving both humans and the damaged mechanical antagonist."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "Moderate",
+                "description": "Moderate to strong language throughout, including uses of the F-word alongside other coarse profanity."
+            }
+        ]
+    },
     "238": {
         "Title": "The Godfather",
         "scenes": [
@@ -1233,7 +633,7 @@
                 "end": "",
                 "type": "Profanity",
                 "severity": "Moderate",
-                "description": "Strong language including multiple F-words, use of the C-word, sexual profanity, and repeated moderate coarse language."
+                "description": "Strong language including multiple F-words, use of the C-word, vulgar profanity, and repeated moderate coarse language."
             }
         ]
     },
@@ -1410,7 +810,7 @@
                 "end": "",
                 "type": "Profanity",
                 "severity": "High",
-                "description": "Severe strong language throughout including over 170 uses of the F-word, repeated sexual insults, racial slurs, and frequent crude profanity."
+                "description": "Severe strong language throughout including over 170 uses of the F-word, repeated vulgar insults, racial slurs, and frequent crude profanity."
             }
         ]
     },
@@ -1533,7 +933,7 @@
                 "end": "",
                 "type": "Profanity",
                 "severity": "Moderate",
-                "description": "Strong language throughout, including around 18 uses of the F-word alongside repeated moderate profanity, crude sexual terms, and vulgar insults."
+                "description": "Strong language throughout, including around 18 uses of the F-word alongside repeated moderate profanity, crude terms, and vulgar insults."
             }
         ]
     },
@@ -1690,14 +1090,14 @@
                 "end": "",
                 "type": "Profanity",
                 "severity": "High",
-                "description": "Approximately 40 uses of the F-word and frequent crude sexual references."
+                "description": "Approximately 40 uses of the F-word and frequent crude mature references."
             },
             {
                 "start": "",
                 "end": "",
                 "type": "Violence & Gore",
                 "severity": "High",
-                "description": "Features graphic ice-pick murders with detailed shots of blood and physical injury. Contains themes of sexual violence and assault."
+                "description": "Features graphic ice-pick murders with detailed shots of blood and physical injury. Contains themes of mature themes and assault."
             }
         ]
     },
@@ -1868,7 +1268,7 @@
                 "end": "",
                 "type": "Profanity",
                 "severity": "Moderate",
-                "description": "Strong language including repeated use of the F-word, crude sexual language, racial and homophobic slurs, and frequent coarse profanity throughout."
+                "description": "Strong language including repeated use of the F-word, crude vulgar language, racial and homophobic slurs, and frequent coarse profanity throughout."
             }
         ]
     },
@@ -1952,6 +1352,57 @@
                 "end": "1:06:05",
                 "type": "Sexual content",
                 "severity": "High"
+            }
+        ]
+    },
+    "550": {
+        "Title": "Fight Club",
+        "Age": "16+",
+        "Summary": "Aged 16+ for brutal graphic violence, explicit sex and  nudity, and strong language throughout.",
+        "scenes": [
+            {
+                "start": "0:32:27",
+                "end": "0:32:37",
+                "type": "Nudity (Man & Woman)",
+                "severity": "High"
+            },
+            {
+                "start": "48:40",
+                "end": "48:55",
+                "type": "Nudity",
+                "severity": "High"
+            },
+            {
+                "start": "0:53:45",
+                "end": "0:55:58",
+                "type": "Sexual content (Sexual sounds)",
+                "severity": "Moderate"
+            },
+            {
+                "start": "0:58:45",
+                "end": "0:59:00",
+                "type": "Sexual content",
+                "severity": "Moderate"
+            },
+            {
+                "start": "1:54:29",
+                "end": "1:54:32",
+                "type": "Sex",
+                "severity": "Mild"
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "High",
+                "description": "Approximately 78 uses of the F-word and pervasive strong profanity throughout."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "High",
+                "description": "Features brutal bare-knuckle fighting with detailed facial injuries and blood. Includes chemical burns, a fatal head wound, and a self-inflicted gunshot wound."
             }
         ]
     },
@@ -2195,7 +1646,7 @@
                 "end": "",
                 "type": "Violence & Gore",
                 "severity": "Moderate",
-                "description": "Strong violence includes frequent shootings, bloody aftermath scenes, and disturbing injury detail such as burned bodies and visible corpses. The film also contains a highly disturbing sequence involving sexual assault, family murder, and self-inflicted death, along with sustained threat and discussion of violence throughout."
+                "description": "Strong violence includes frequent shootings, bloody aftermath scenes, and disturbing injury detail such as burned bodies and visible corpses. The film also contains a highly disturbing sequence involving severe physical threat, family murder, and self-inflicted death, along with sustained threat and discussion of violence throughout."
             },
             {
                 "start": "",
@@ -2280,7 +1731,7 @@
                 "end": "",
                 "type": "Profanity",
                 "severity": "Moderate",
-                "description": "Moderate language includes occasional use of the F-word (including one sexual usage) alongside other coarse profanity, mild obscenities, and a few crude terms."
+                "description": "Moderate language includes occasional use of the F-word (including one vulgar usage) alongside other coarse profanity, mild obscenities, and a few crude terms."
             }
         ]
     },
@@ -2354,6 +1805,57 @@
             }
         ]
     },
+    "670": {
+        "Title": "Oldboy",
+        "Age": "18+",
+        "Summary": "Aged 18+ for brutal graphic violence, explicit sex and  nudity, and moderate language.",
+        "scenes": [
+            {
+                "start": "0:11:05",
+                "end": "0:11:30",
+                "type": "Sexual content (Masturbation)",
+                "severity": "High"
+            },
+            {
+                "start": "0:57:25",
+                "end": "1:01:56",
+                "type": "Nudity (Woman)",
+                "severity": "High"
+            },
+            {
+                "start": "1:03:35",
+                "end": "1:04:57",
+                "type": "Sex",
+                "severity": "High"
+            },
+            {
+                "start": "1:23:25",
+                "end": "1:24:17",
+                "type": "Nudity (Woman)",
+                "severity": "High"
+            },
+            {
+                "start": "1:30:10",
+                "end": "1:30:32",
+                "type": "Partial Nudity (Man)",
+                "severity": "Mild"
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "High",
+                "description": "Strong brutal violence throughout featuring graphic torture, realistic hand-to-hand combat, bloody self-harm and suicide imagery, tooth extraction, stabbing, severed body parts, and disturbing mutilation."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "Moderate",
+                "description": "Strong language throughout includes frequent use of the F-word, scatological profanity, vulgar body-part references, and repeated moderate profanity."
+            }
+        ]
+    },
     "671": {
         "Title": "Harry Potter and the Sorcerer's Stone",
         "scenes": []
@@ -2380,6 +1882,17 @@
                 "end": "1:22:00",
                 "type": "Nudity (Man)",
                 "severity": "High"
+            }
+        ]
+    },
+    "686": {
+        "Title": "Contact",
+        "scenes": [
+            {
+                "start": "45:00",
+                "end": "46:00",
+                "type": "Intimacy",
+                "severity": "Mild"
             }
         ]
     },
@@ -2429,7 +1942,7 @@
                 "end": "",
                 "type": "Profanity",
                 "severity": "Moderate",
-                "description": "Moderate to strong language includes occasional use of the F-word alongside other coarse profanity, sexual references, and derogatory insults, including a racial slur."
+                "description": "Moderate to strong language includes occasional use of the F-word alongside other coarse profanity, mature references, and derogatory insults, including a racial slur."
             }
         ]
     },
@@ -2483,7 +1996,7 @@
                 "end": "",
                 "type": "Profanity",
                 "severity": "High",
-                "description": "Very strong and pervasive coarse language throughout, including 250+ uses of the F-word, repeated highly offensive sexual profanity, derogatory slurs, and frequent vulgar insults."
+                "description": "Very strong and pervasive coarse language throughout, including 250+ uses of the F-word, repeated highly offensive vulgar profanity, derogatory slurs, and frequent vulgar insults."
             }
         ]
     },
@@ -2646,7 +2159,7 @@
                 "end": "",
                 "type": "Profanity",
                 "severity": "Mild",
-                "description": "Mild-to-moderate language including infrequent use of the F-word, sexual jokes, crude terms, and occasional derogatory language."
+                "description": "Mild-to-moderate language including infrequent use of the F-word, crude jokes, crude terms, and occasional derogatory language."
             }
         ]
     },
@@ -2661,6 +2174,29 @@
     "857": {
         "Title": "Saving Private Ryan",
         "scenes": []
+    },
+    "861": {
+        "Title": "Total Recall",
+        "scenes": [
+            {
+                "start": "55:50",
+                "end": "56:00",
+                "type": "Nudity",
+                "severity": "Moderate"
+            },
+            {
+                "start": "59:50",
+                "end": "59:59",
+                "type": "Nudity",
+                "severity": "Moderate"
+            },
+            {
+                "start": "1:13:00",
+                "end": "1:13:05",
+                "type": "Nudity",
+                "severity": "Moderate"
+            }
+        ]
     },
     "867": {
         "Title": "Sliver",
@@ -2824,7 +2360,7 @@
                 "end": "",
                 "type": "Profanity",
                 "severity": "High",
-                "description": "Strong language including 10+ uses of the F-word and frequent explicit sexual dialogue."
+                "description": "Strong language including 10+ uses of the F-word and frequent explicit mature dialogue."
             }
         ]
     },
@@ -2890,14 +2426,14 @@
                 "end": "",
                 "type": "Violence & Gore",
                 "severity": "High",
-                "description": "Extreme graphic violence featuring brutal assaults, sexual violence, severe beatings, bone-breaking, bloody injuries, and prolonged scenes of disturbing physical abuse."
+                "description": "Extreme graphic violence featuring brutal assaults, mature themes, severe beatings, bone-breaking, bloody injuries, and prolonged scenes of disturbing physical abuse."
             },
             {
                 "start": "",
                 "end": "",
                 "type": "Profanity",
                 "severity": "High",
-                "description": "Very strong coarse language throughout, including repeated use of the F-word, highly offensive sexual profanity, and other frequent vulgar insults and profanity."
+                "description": "Very strong coarse language throughout, including repeated use of the F-word, highly offensive vulgar profanity, and other frequent vulgar insults and profanity."
             }
         ]
     },
@@ -2964,6 +2500,17 @@
                 "end": "00:53:10",
                 "type": "Nudity",
                 "severity": "Moderate"
+            }
+        ]
+    },
+    "1272": {
+        "Title": "Sunshine",
+        "scenes": [
+            {
+                "start": "1:05:00",
+                "end": "1:10:00",
+                "type": "Violence",
+                "severity": "High"
             }
         ]
     },
@@ -3043,7 +2590,7 @@
                 "end": "",
                 "type": "Profanity",
                 "severity": "Moderate",
-                "description": "Approximately 10 uses of strong sexual expletives (F-words)."
+                "description": "Approximately 10 uses of strong strong profanity (F-words)."
             },
             {
                 "start": "",
@@ -3424,6 +2971,57 @@
         "Title": "The Motorcycle Diaries",
         "scenes": []
     },
+    "1791": {
+        "Title": "The Piano Teacher",
+        "Age": "18+",
+        "Summary": "Aged 18+ for moderate violence, explicit sex and  nudity, and moderate language.",
+        "scenes": [
+            {
+                "start": "0:25:10",
+                "end": "0:27:41",
+                "type": "Sex & Nudity",
+                "severity": "High"
+            },
+            {
+                "start": "0:52:00",
+                "end": "0:53:20",
+                "type": "Sex",
+                "severity": "High"
+            },
+            {
+                "start": "1:07:30",
+                "end": "1:11:20",
+                "type": "Sex",
+                "severity": "High"
+            },
+            {
+                "start": "1:47:00",
+                "end": "1:49:40",
+                "type": "Sex",
+                "severity": "High"
+            },
+            {
+                "start": "1:54:40",
+                "end": "2:01:10",
+                "type": "Sex & Nudity",
+                "severity": "High"
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "Moderate",
+                "description": "Strong and disturbing content including physical fights, self-harm, and mature themes, with scenes of assault, blood, and psychologically intense abuse."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "Moderate",
+                "description": "The dialogue features pervasive use of very strong profanity and highly offensive coarse language."
+            }
+        ]
+    },
     "1813": {
         "Title": "The Devil's Advocate",
         "scenes": [
@@ -3533,7 +3131,7 @@
                 "end": "",
                 "type": "Profanity",
                 "severity": "Moderate",
-                "description": "Moderate language including several uses of the F-word, obscene gestures, sexual references, mild insults and derogatory terms."
+                "description": "Moderate language including several uses of the F-word, obscene gestures, mature references, mild insults and derogatory terms."
             }
         ]
     },
@@ -3668,6 +3266,35 @@
                 "end": "1:26:50",
                 "type": "Sexual content (Sexual sounds)",
                 "severity": "Moderate"
+            }
+        ]
+    },
+    "2118": {
+        "Title": "L.A. Confidential",
+        "scenes": [
+            {
+                "start": "12:02",
+                "end": "12:10",
+                "type": "Nudity",
+                "severity": "Mild"
+            },
+            {
+                "start": "35:00",
+                "end": "35:08",
+                "type": "Nudity",
+                "severity": "Mild"
+            },
+            {
+                "start": "57:28",
+                "end": "57:34",
+                "type": "Nudity",
+                "severity": "Mild"
+            },
+            {
+                "start": "1:04:05",
+                "end": "1:04:10",
+                "type": "Nudity",
+                "severity": "Mild"
             }
         ]
     },
@@ -4098,7 +3725,7 @@
                 "end": "",
                 "type": "Profanity",
                 "severity": "Moderate",
-                "description": "Moderate language includes around 5-6 uses of the F-word alongside occasional coarse profanity, mild sexual references, and insulting language."
+                "description": "Moderate language includes around 5-6 uses of the F-word alongside occasional coarse profanity, mild mature references, and insulting language."
             }
         ]
     },
@@ -4189,7 +3816,7 @@
                 "end": "",
                 "type": "Violence & Gore",
                 "severity": "Moderate",
-                "description": "Contains graphic wartime brutality, including an execution by firing squad and a brutal stabbing. Includes themes of sexual assault and predatory behavior."
+                "description": "Contains graphic wartime brutality, including an execution by firing squad and a brutal stabbing. Includes themes of severe physical threat and predatory behavior."
             }
         ]
     },
@@ -4786,6 +4413,45 @@
         "Title": "Cast Away",
         "scenes": []
     },
+    "8363": {
+        "Title": "Superbad",
+        "Age": "16+",
+        "Summary": "Aged 16+ for mild violence, minor sexual content and brief nudity, and strong language throughout.",
+        "scenes": [
+            {
+                "start": "0:04:45",
+                "end": "0:04:55",
+                "type": "Nudity (Woman)",
+                "severity": "High"
+            },
+            {
+                "start": "0:09:38",
+                "end": "0:09:45",
+                "type": "Nudity (Women)",
+                "severity": "High"
+            },
+            {
+                "start": "0:18:15",
+                "end": "0:20:30",
+                "type": "Sexual Content",
+                "severity": "Moderate"
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "Mild",
+                "description": "Teen-focused violence and chaos including imagined and real assaults, punches, car impacts, police confrontations with weapons, property destruction and arson, threats of killing and mutilation, accidental injuries, vomiting, and scenes of public disturbance and intoxication."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "High",
+                "description": "Extremely strong and pervasive language throughout, including heavy repeated F-word usage, frequent mature and scatological references, anatomical terminology, insults and occasional offensive slurs."
+            }
+        ]
+    },
     "8374": {
         "Title": "The Boondock Saints",
         "scenes": []
@@ -4952,6 +4618,51 @@
                 "type": "Profanity",
                 "severity": "Moderate",
                 "description": "Moderate language includes occasional use of the F-word alongside other coarse profanity and insulting language."
+            }
+        ]
+    },
+    "9346": {
+        "Title": "Risky Business",
+        "Age": "17+",
+        "Summary": "Aged 17+ for explicit sex and nudity and moderate language.",
+        "scenes": [
+            {
+                "start": "0:03:13",
+                "end": "0:04:23",
+                "type": "Nudity",
+                "severity": "High"
+            },
+            {
+                "start": "0:23:36",
+                "end": "0:23:43",
+                "type": "Sexual Content (Masturbation)",
+                "severity": "Mild"
+            },
+            {
+                "start": "0:29:05",
+                "end": "0:30:12",
+                "type": "Nudity & Sex",
+                "severity": "High"
+            },
+            {
+                "start": "1:21:00",
+                "end": "1:23:20",
+                "type": "Sexual Content",
+                "severity": "Moderate"
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "Moderate",
+                "description": "Contains frequent strong language, including around 16 uses of the F-word and other coarse profanity, alongside occasional mature references."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "None",
+                "description": "No visible violence or gore is present in the film."
             }
         ]
     },
@@ -5184,7 +4895,7 @@
                 "end": "",
                 "type": "Profanity",
                 "severity": "Moderate",
-                "description": "Strong language throughout including 20+ uses of the F-word, repeated crude profanity, sexual slang."
+                "description": "Strong language throughout including 20+ uses of the F-word, repeated crude profanity, vulgar slang."
             }
         ]
     },
@@ -5544,7 +5255,7 @@
                 "end": "",
                 "type": "Profanity",
                 "severity": "Moderate",
-                "description": "Moderate coarse language includes several uses of the F-word, repeated profanity, crude insults, and occasional sexual slang."
+                "description": "Moderate coarse language includes several uses of the F-word, repeated profanity, crude insults, and occasional vulgar slang."
             }
         ]
     },
@@ -5589,7 +5300,7 @@
                 "end": "",
                 "type": "Profanity",
                 "severity": "Moderate",
-                "description": "Strong language throughout, including around 11 uses of the F-word, frequent sexual references, repeated coarse profanity, occasional vulgar body-part references and isolated derogatory slur."
+                "description": "Strong language throughout, including around 11 uses of the F-word, frequent mature references, repeated coarse profanity, occasional vulgar body-part references and isolated derogatory slur."
             }
         ]
     },
@@ -5645,14 +5356,14 @@
                 "end": "",
                 "type": "Violence & Gore",
                 "severity": "Moderate",
-                "description": "Strong disturbing themes involving self-harm with brief bloody imagery, along with BDSM-related sexual content and psychologically intense material."
+                "description": "Strong disturbing themes involving self-harm with brief bloody imagery, along with alternative lifestyle themes mature content and psychologically intense material."
             },
             {
                 "start": "",
                 "end": "",
                 "type": "Profanity",
                 "severity": "Moderate",
-                "description": "Strong coarse language throughout, including repeated uses of the F-word, other profanity, and crude sexual insults."
+                "description": "Strong coarse language throughout, including repeated uses of the F-word, other profanity, and highly vulgar insults."
             }
         ]
     },
@@ -5763,6 +5474,51 @@
     "11362": {
         "Title": "The Count of Monte Cristo",
         "scenes": []
+    },
+    "11423": {
+        "Title": "Memories of Murder",
+        "Age": "16+",
+        "Summary": "Aged 16+ for moderate violence, explicit sex and brief nudity, and moderate language.",
+        "scenes": [
+            {
+                "start": "9:58",
+                "end": "10:10",
+                "type": "Sex",
+                "severity": "Moderate"
+            },
+            {
+                "start": "54:34",
+                "end": "54:55",
+                "type": "Nudity",
+                "severity": "Mild"
+            },
+            {
+                "start": "1:01:12",
+                "end": "1:02:40",
+                "type": "Sexual content",
+                "severity": "Moderate"
+            },
+            {
+                "start": "1:25:12",
+                "end": "1:25:47",
+                "type": "Nudity",
+                "severity": "Mild"
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "Moderate",
+                "description": "Strong disturbing content involving murder investigations, mature themes references, grisly crime-scene imagery, police brutality, beatings, torture, bloody injuries, and brief graphic death-related imagery."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "Moderate",
+                "description": "Strong and frequent coarse language throughout, including over 30 uses of the F-word alongside repeated uses of other profanity and insulting terms."
+            }
+        ]
     },
     "11454": {
         "Title": "Manhunter",
@@ -6165,7 +5921,7 @@
                 "end": "",
                 "type": "Profanity",
                 "severity": "High",
-                "description": "Strong language throughout, including over 75 uses of the F-word and variations, frequent sexual references, heavy coarse profanity, and extensive scatological and insulting language. along with a few highly offensive derogatory slurs."
+                "description": "Strong language throughout, including over 75 uses of the F-word and variations, frequent mature references, heavy coarse profanity, and extensive scatological and insulting language. along with a few highly offensive derogatory slurs."
             }
         ]
     },
@@ -6263,7 +6019,7 @@
                 "end": "",
                 "type": "Violence & Gore",
                 "severity": "Moderate",
-                "description": "Moderate violence and disturbing threat-related content includes a vehicle crash with visible injury detail, physical assault, and unsettling verbal references to sexual violence."
+                "description": "Moderate violence and disturbing threat-related content includes a vehicle crash with visible injury detail, physical assault, and unsettling verbal references to mature themes."
             },
             {
                 "start": "",
@@ -6546,7 +6302,7 @@
                 "end": "",
                 "type": "Profanity",
                 "severity": "Moderate",
-                "description": "Strong language throughout, including around 16 uses of the F-word alongside repeated coarse profanity, sexual references, and occasional vulgar insults."
+                "description": "Strong language throughout, including around 16 uses of the F-word alongside repeated coarse profanity, mature references, and occasional vulgar insults."
             }
         ]
     },
@@ -7457,7 +7213,7 @@
                 "end": "",
                 "type": "Profanity",
                 "severity": "Moderate",
-                "description": "Approximately 12 uses of strong sexual expletives, including sexual slurs and derogatory language."
+                "description": "Approximately 12 uses of strong strong profanity, including vulgar slurs and derogatory language."
             },
             {
                 "start": "",
@@ -7715,6 +7471,63 @@
             }
         ]
     },
+    "210577": {
+        "Title": "Gone Girl",
+        "Age": "18+",
+        "Summary": "Aged 18+ for brutal graphic violence, explicit sex and  nudity, and strong language throughout.",
+        "scenes": [
+            {
+                "start": "6:41",
+                "end": "6:59",
+                "type": "Sex",
+                "severity": "High"
+            },
+            {
+                "start": "20:57",
+                "end": "21:02",
+                "type": "Sex",
+                "severity": "High"
+            },
+            {
+                "start": "44:21",
+                "end": "44:38",
+                "type": "Nudity(Woman)",
+                "severity": "High"
+            },
+            {
+                "start": "45:00",
+                "end": "45:10",
+                "type": "Sex",
+                "severity": "High"
+            },
+            {
+                "start": "2:04:20",
+                "end": "2:05:34",
+                "type": "Sex & Nudity(Man)",
+                "severity": "High"
+            },
+            {
+                "start": "2:12:30",
+                "end": "2:13:45",
+                "type": "Nudity(Man & Woman)",
+                "severity": "High"
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "High",
+                "description": "Pervasive use of strong profanity and explicit language."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "High",
+                "description": "Features one extremely graphic sequence involving a throat-slitting and significant blood flow. Includes domestic battery and self-inflicted injury."
+            }
+        ]
+    },
     "216015": {
         "Title": "Fifty Shades of Grey",
         "Age": "18+",
@@ -7767,14 +7580,14 @@
                 "end": "",
                 "type": "Profanity",
                 "severity": "Moderate",
-                "description": "The dialogue features infrequent strong profanity, including approximately seven uses of the F-word (some in sexual context), alongside moderate coarse language and occasional vulgar expressions."
+                "description": "The dialogue features infrequent strong profanity, including approximately seven uses of the F-word (some in vulgar context), alongside moderate coarse language and occasional vulgar expressions."
             },
             {
                 "start": "",
                 "end": "",
                 "type": "Violence & Gore",
                 "severity": "Moderate",
-                "description": "A film depicting BDSM-themed sexual relationships with bondage, restraint, and spanking elements, brief violence."
+                "description": "A film depicting alternative lifestyle themes mature relationships with bondage, restraint, and spanking elements, brief violence."
             }
         ]
     },
@@ -8183,14 +7996,14 @@
                 "end": "",
                 "type": "Profanity",
                 "severity": "High",
-                "description": "Frequent use of strong profanity and sexually explicit language throughout."
+                "description": "Frequent use of strong profanity and highly explicit language throughout."
             },
             {
                 "start": "",
                 "end": "",
                 "type": "Violence & Gore",
                 "severity": "Moderate",
-                "description": "Contains sequences involving drugging, child abuse, and suicide themes. Includes references to sexual sadism and graphic mutilation."
+                "description": "Contains sequences involving drugging, child abuse, and suicide themes. Includes references to psychological cruelty and graphic mutilation."
             }
         ]
     },
@@ -8223,7 +8036,7 @@
                 "end": "",
                 "type": "Profanity",
                 "severity": "High",
-                "description": "Pervasive strong language including 70+ uses of the F-word, crude sexual references, obscene gestures, and occasional racial language throughout."
+                "description": "Pervasive strong language including 70+ uses of the F-word, crude mature references, obscene gestures, and occasional racial language throughout."
             }
         ]
     },
@@ -8243,6 +8056,23 @@
                 "end": "1:08:40",
                 "type": "Sex",
                 "severity": "Moderate"
+            }
+        ]
+    },
+    "300669": {
+        "Title": "Don't Breathe",
+        "scenes": [
+            {
+                "start": "0:03:14",
+                "end": "0:03:17",
+                "type": "Sexual Content",
+                "severity": "Moderate"
+            },
+            {
+                "start": "1:09:50",
+                "end": "1:11:00",
+                "type": "Sexual content",
+                "severity": "High"
             }
         ]
     },
@@ -8272,6 +8102,33 @@
     "315162": {
         "Title": "Puss in Boots: The Last Wish",
         "scenes": []
+    },
+    "318846": {
+        "Title": "The Big Short",
+        "scenes": [
+            {
+                "start": "0:53:25",
+                "end": "0:54:45",
+                "type": "Nudity (Woman)",
+                "severity": "High"
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "Mild",
+                "description": "No notable violence is shown, aside from brief disturbing references and isolated moments such as an eye injury and an implied suicide discussed in dialogue. The film otherwise contains no on-screen violent content."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "High",
+                "description": "Strong language throughout, including over 70 uses of the F-word and variations, frequent scatological references, and repeated mild obscenities. The dialogue also includes extensive name-calling and insulting language."
+            }
+        ],
+        "Age": "16+",
+        "Summary": "Aged 16+ for frequent strong language and nudity."
     },
     "324786": {
         "Title": "Hacksaw Ridge",
@@ -8311,6 +8168,51 @@
     "333371": {
         "Title": "10 Cloverfield Lane",
         "scenes": []
+    },
+    "335984": {
+        "Title": "Blade Runner 2049",
+        "Age": "15+",
+        "Summary": "Aged 15+ for moderate violence, heavy nudity, and moderate language.",
+        "scenes": [
+            {
+                "start": "38:10",
+                "end": "42:45",
+                "type": "Nudity",
+                "severity": "Moderate"
+            },
+            {
+                "start": "1:30:50",
+                "end": "1:31:00",
+                "type": "Nudity",
+                "severity": "Mild"
+            },
+            {
+                "start": "2:02:58",
+                "end": "2:03:03",
+                "type": "Partial Nudity",
+                "severity": "Mild"
+            },
+            {
+                "start": "2:17:00",
+                "end": "2:18:05",
+                "type": "Nudity",
+                "severity": "Moderate"
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "Moderate",
+                "description": "Moderate to strong featuring shootings, stabbings, explosions, drowning, hand-to-hand combat, bloody injuries, disturbing deaths, and occasional graphic aftermath imagery."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "Moderate",
+                "description": "Moderate language throughout, including around 7 uses of the F-word, occasional coarse profanity, mild obscenities, insulting name-calling."
+            }
+        ]
     },
     "337167": {
         "Title": "Fifty Shades Freed",
@@ -8393,7 +8295,7 @@
                 "end": "",
                 "type": "Profanity",
                 "severity": "High",
-                "description": "Strong language throughout including frequent F-words, repeated crude profanity, sexual references, and occasional insulting language."
+                "description": "Strong language throughout including frequent F-words, repeated crude profanity, mature references, and occasional insulting language."
             }
         ]
     },
@@ -8443,7 +8345,7 @@
                 "end": "",
                 "type": "Violence & Gore",
                 "severity": "High",
-                "description": "Disturbing violence including shootings, bloody injuries, suicide, implied sexual violence, and references to murder, abuse, and child harm."
+                "description": "Disturbing violence including shootings, bloody injuries, suicide, implied mature themes, and references to murder, abuse, and child harm."
             },
             {
                 "start": "",
@@ -8512,7 +8414,7 @@
                 "end": "",
                 "type": "Violence & Gore",
                 "severity": "Mild",
-                "description": "Moderate violence and threat-related content, including gunfire, attempted sexual assault, a helicopter crash, physical confrontations."
+                "description": "Moderate violence and threat-related content, including gunfire, attempted physical assault, a helicopter crash, physical confrontations."
             },
             {
                 "start": "",
@@ -8666,7 +8568,7 @@
                 "end": "",
                 "type": "Profanity",
                 "severity": "High",
-                "description": "Pervasive strong language including 100+ uses of the F-word, crude sexual references, obscene gestures, and repeated use of strong profanity throughout."
+                "description": "Pervasive strong language including 100+ uses of the F-word, crude mature references, obscene gestures, and repeated use of strong profanity throughout."
             }
         ]
     },
@@ -8902,14 +8804,14 @@
                 "end": "",
                 "type": "Violence & Gore",
                 "severity": "High",
-                "description": "Graphic violence involving sexual assault attempts, torture, mutilation, bloody stabbings, disturbing injury detail, and prolonged scenes of physical suffering."
+                "description": "Graphic violence involving severe threat attempts, torture, mutilation, bloody stabbings, disturbing injury detail, and prolonged scenes of physical suffering."
             },
             {
                 "start": "",
                 "end": "",
                 "type": "Profanity",
                 "severity": "Moderate",
-                "description": "Contains strong language including uses of the F-word, sexual expletives, and repeated coarse profanity."
+                "description": "Contains strong language including uses of the F-word, strong profanity, and repeated coarse profanity."
             }
         ]
     },
@@ -9038,7 +8940,7 @@
                 "end": "",
                 "type": "Profanity",
                 "severity": "High",
-                "description": "Extremely strong language throughout including 500+ uses of the F-word, constant crude sexual references, repeated vulgar terms, and pervasive coarse dialogue."
+                "description": "Extremely strong language throughout including 500+ uses of the F-word, constant crude mature references, repeated vulgar terms, and pervasive coarse dialogue."
             }
         ]
     },
@@ -9446,14 +9348,14 @@
                 "end": "",
                 "type": "Violence & Gore",
                 "severity": "Mild",
-                "description": "Content featuring serious sexual violence themes including kidnapping, threats of rape, non-consensual sexual touching, forced restraint, and attempted assault, alongside strong violence with shootings and visible blood."
+                "description": "Content featuring serious mature themes themes including kidnapping, severe physical threats, non-conmature touching, forced restraint, and attempted assault, alongside strong violence with shootings and visible blood."
             },
             {
                 "start": "",
                 "end": "",
                 "type": "Profanity",
                 "severity": "Moderate",
-                "description": "Strong and frequent profanity throughout, including repeated uses of the F-word along with other crude, sexual, and offensive language."
+                "description": "Strong and frequent profanity throughout, including repeated uses of the F-word along with other crude, mature, and offensive language."
             }
         ]
     },
@@ -9507,7 +9409,7 @@
                 "end": "",
                 "type": "Profanity",
                 "severity": "Moderate",
-                "description": "Moderate to strong language throughout including 50+ uses of the F-word, repeated crude language, sexual references, insults, and frequent mild profanity."
+                "description": "Moderate to strong language throughout including 50+ uses of the F-word, repeated crude language, mature references, insults, and frequent mild profanity."
             }
         ]
     },
@@ -9552,7 +9454,7 @@
                 "end": "",
                 "type": "Profanity",
                 "severity": "High",
-                "description": "Strong language throughout, including over 100 uses of the F-word and variations, frequent coarse profanity, and extensive insulting and sexualized language. The dialogue also includes repeated scatological and mild obscenities."
+                "description": "Strong language throughout, including over 100 uses of the F-word and variations, frequent coarse profanity, and extensive insulting and vulgar language. The dialogue also includes repeated scatological and mild obscenities."
             }
         ]
     },
@@ -9821,7 +9723,7 @@
                 "end": "",
                 "type": "Profanity",
                 "severity": "High",
-                "description": "Very strong language throughout, including more than 30+ uses of the F-word, repeated sexual and anatomical references, mild obscenities, frequent insulting and derogatory name-calling, and aggressive verbal outbursts."
+                "description": "Very strong language throughout, including more than 30+ uses of the F-word, repeated mature and anatomical references, mild obscenities, frequent insulting and derogatory name-calling, and aggressive verbal outbursts."
             }
         ]
     },
@@ -9932,6 +9834,45 @@
     "855263": {
         "Title": "A Thousand and One",
         "scenes": []
+    },
+    "872585": {
+        "Title": "Oppenheimer",
+        "Age": "15+",
+        "Summary": "Aged 15+ for moderate violence, explicit sex and  nudity, and moderate language.",
+        "scenes": [
+            {
+                "start": "0:23:14",
+                "end": "0:24:46",
+                "type": "Sex & Nudity",
+                "severity": "High"
+            },
+            {
+                "start": "1:14:38",
+                "end": "1:15:14",
+                "type": "Nudity",
+                "severity": "High"
+            },
+            {
+                "start": "1:15:43",
+                "end": "1:16:00",
+                "type": "Sex & Nudity",
+                "severity": "High"
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "Moderate",
+                "description": "Approximately 8–9 uses of strong strong profanity (F-words) and infrequent moderate profanity used in dialogue."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "Moderate",
+                "description": "Contains graphic historical images of charred human remains and radiation victims. Includes a suicide by drug overdose and intense sequences of psychological peril."
+            }
+        ]
     },
     "882598": {
         "Title": "Smile",
@@ -10067,7 +10008,7 @@
                 "end": "",
                 "type": "Profanity",
                 "severity": "High",
-                "description": "Strong language throughout, including over 50 uses of the F-word and its derivatives, along with occasional sexual references, mild obscenities, and name-calling. The dialogue also includes a few scatological terms and an isolated obscene gesture, plus frequent heated exchanges and exclamations."
+                "description": "Strong language throughout, including over 50 uses of the F-word and its derivatives, along with occasional mature references, mild obscenities, and name-calling. The dialogue also includes a few scatological terms and an isolated obscene gesture, plus frequent heated exchanges and exclamations."
             }
         ]
     },
@@ -10331,7 +10272,7 @@
                 "end": "",
                 "type": "Profanity",
                 "severity": "High",
-                "description": "Very strong language throughout, including extremely frequent use of the F-word (over 500 uses), repeated coarse profanity, sexualized insults, degrading slurs, and occasional highly offensive language."
+                "description": "Very strong language throughout, including extremely frequent use of the F-word (over 500 uses), repeated coarse profanity, vulgar insults, degrading slurs, and occasional highly offensive language."
             }
         ]
     },
@@ -10370,7 +10311,7 @@
                 "end": "",
                 "type": "Profanity",
                 "severity": "Moderate",
-                "description": "Very strong and frequent coarse language throughout, including 50+ uses of the F-word, repeated strong profanity, highly offensive sexual terms, and other moderate vulgar expressions."
+                "description": "Very strong and frequent coarse language throughout, including 50+ uses of the F-word, repeated strong profanity, highly offensive vulgar terms, and other moderate vulgar expressions."
             }
         ]
     },
@@ -10456,7 +10397,7 @@
                 "end": "",
                 "type": "Profanity",
                 "severity": "High",
-                "description": "Strong language throughout including frequent F-words, racial slurs, crude sexual references, and repeated uses of vulgar profanity."
+                "description": "Strong language throughout including frequent F-words, racial slurs, crude mature references, and repeated uses of vulgar profanity."
             }
         ]
     },
@@ -10569,7 +10510,66 @@
                 "end": "",
                 "type": "Profanity",
                 "severity": "High",
-                "description": "Strong and frequent coarse language throughout, including moderate F-word usage, repeated profanity, crude sexual references, occasional slurs, and vulgar gestures."
+                "description": "Strong and frequent coarse language throughout, including moderate F-word usage, repeated profanity, crude mature references, occasional slurs, and vulgar gestures."
+            }
+        ]
+    },
+    "1339713": {
+        "Title": "Obsession",
+        "Age": "18+",
+        "Summary": "Aged 18+ for brutal graphic violence, nudity and a brief explicit sex scene, and strong language throughout.",
+        "scenes": [
+            {
+                "start": "0:44:36",
+                "end": "0:45:00",
+                "type": "Sex & Partial Nudity",
+                "severity": "High"
+            },
+            {
+                "start": "1:36:42",
+                "end": "1:36:50",
+                "type": "Nudity",
+                "severity": "High"
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Violence & Gore",
+                "severity": "High",
+                "description": "Strong and disturbing violence throughout, including severe head injuries from physical attacks, shootings to the head, self-harm, stabbings with glass, suicide and overdose, and graphic assaults with bloody and unsettling injury detail."
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "High",
+                "description": "Strong and pervasive language throughout, including ~80+ uses of the F-word, frequent coarse expletives, mature references, and repeated insults and vulgar expressions."
+            }
+        ]
+    },
+    "1358005": {
+        "Title": "Office Romance",
+        "Age": "16+",
+        "Summary": "Aged 16+ for brief graphic medical nudity, no action violence, and strong, pervasive raunchy language throughout.",
+        "scenes": [
+            {
+                "start": "1:04:45",
+                "end": "1:05:55",
+                "type": "Suggestive Clothing (Bikini)",
+                "severity": "Mild"
+            },
+            {
+                "start": "1:20:10",
+                "end": "1:20:20",
+                "type": "Nudity",
+                "severity": "High"
+            },
+            {
+                "start": "",
+                "end": "",
+                "type": "Profanity",
+                "severity": "High",
+                "description": "Strong and frequent vulgar language throughout, including repeated use of the F-word, crude terms, and explicit mature discussions; overall raunchy dialogue dominates the film."
             }
         ]
     },
