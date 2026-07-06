@@ -4,7 +4,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { 
+import {
   Compass,
   Search,
   Sparkles,
@@ -45,7 +45,7 @@ const getUniquePosterFromCache = (movieIds, collectionSlug, usedPosters) => {
     // Our cache uses IMDb IDs as the key.
     const movieId = movieIds[i].toString().trim();
     const cachedData = tmdbCache[movieId];
-    
+
     if (cachedData && cachedData.poster_path && !usedPosters.has(cachedData.poster_path)) {
       usedPosters.add(cachedData.poster_path);
       return cachedData.poster_path;
@@ -77,7 +77,7 @@ const SearchBar = () => {
     setQuery(val);
     if (val.trim().length > 1) {
       const cleanQuery = val.toLowerCase().trim();
-      const filtered = masterDatabase.filter(movie => 
+      const filtered = masterDatabase.filter(movie =>
         (movie.Title || '').toLowerCase().includes(cleanQuery)
       ).slice(0, 6); // show top 6 matches
       setResults(filtered);
@@ -92,7 +92,7 @@ const SearchBar = () => {
     <div ref={containerRef} className="relative w-full max-w-xl mx-auto z-50">
       <div className="relative">
         <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-amber-500/70" />
-        <input 
+        <input
           type="text"
           value={query}
           onChange={handleSearch}
@@ -151,13 +151,13 @@ const HeroSection = memo(() => {
           </h1>
 
           <p className="text-base sm:text-lg text-neutral-400 mb-8 font-light leading-relaxed max-w-2xl mx-auto px-4">
-            Find exact skip timestamps to bypass intimate scenes, sensitive content, and mature themes in popular movies. Plan a clean, worry-free family movie night instantly.
+            Find exact skip timestamps to bypass intimate scenes and sensitive content in popular movies. Plan a clean, worry-free family movie night instantly.
           </p>
-          
+
           {/* Curated Collections Button */}
           <div className="mb-10 px-4 flex justify-center">
-            <Link 
-              href="/collections" 
+            <Link
+              href="/collections"
               className="group relative inline-flex items-center gap-3 px-8 py-3.5 bg-amber-500 hover:bg-amber-400 text-black hover:text-black font-semibold text-sm sm:text-base rounded-xl transition-all duration-300 hover:-translate-y-0.5 select-none shadow-lg"
             >
               <span>Explore Curated Collections</span>
@@ -218,7 +218,7 @@ const MovieGrid = ({ title, description, movies }) => {
                     draggable={false}
                   />
                 </div>
-                
+
                 <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/20 to-transparent z-10 pointer-events-none" />
 
                 <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 z-20 pointer-events-none">
@@ -244,8 +244,8 @@ const MovieGrid = ({ title, description, movies }) => {
             const posterUrl = movie.posterUrl || "https://via.placeholder.com/342x513/111827/4b5563?text=No+Image";
             return (
               <div key={movie.imdbID} className="animate-fade-in duration-300">
-                <Link 
-                  href={`/movie/${movieSlug}`} 
+                <Link
+                  href={`/movie/${movieSlug}`}
                   className="block relative aspect-[2/3] rounded-2xl overflow-hidden bg-gray-900 border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.8)]"
                 >
                   <div className="relative w-full h-full">
@@ -258,7 +258,7 @@ const MovieGrid = ({ title, description, movies }) => {
                       draggable={false}
                     />
                   </div>
-                  
+
                   <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent z-10" />
 
                   <div className="absolute bottom-0 left-0 right-0 p-5 z-20">
@@ -275,7 +275,7 @@ const MovieGrid = ({ title, description, movies }) => {
           })}
 
           {/* Carousel Navigation Buttons */}
-          <button 
+          <button
             onClick={handlePrev}
             className="absolute left-[-42px] top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/60 border border-white/10 flex items-center justify-center text-white active:scale-95 transition-transform"
             aria-label="Previous Movie"
@@ -284,8 +284,8 @@ const MovieGrid = ({ title, description, movies }) => {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
-          
-          <button 
+
+          <button
             onClick={handleNext}
             className="absolute right-[-42px] top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/60 border border-white/10 flex items-center justify-center text-white active:scale-95 transition-transform"
             aria-label="Next Movie"
@@ -319,14 +319,14 @@ const FeaturesSection = () => {
       <div className="max-w-6xl mx-auto text-center">
         <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight mb-2">How Filmiway Works</h2>
         <p className="text-sm sm:text-base text-gray-400 font-light max-w-xl mx-auto mb-10">We manually analyze movies scene-by-scene so you can bypass uncomfortable elements.</p>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="bg-[#0e0e0e] border border-white/5 rounded-2xl p-6 hover:border-yellow-500/20 transition-all duration-300">
             <div className="w-12 h-12 bg-yellow-500/10 text-yellow-500 rounded-full flex items-center justify-center mx-auto mb-4 border border-yellow-500/20">
               <Clock className="w-5 h-5" />
             </div>
             <h3 className="text-lg font-bold text-white mb-2">Exact Skip Timestamps</h3>
-            <p className="text-sm text-gray-400 font-light leading-relaxed">Get frame-by-frame starting and ending points to safely skip intimacy and mature content without missing the plot.</p>
+            <p className="text-sm text-gray-400 font-light leading-relaxed">Get frame-by-frame starting and ending points to safely skip intimate and sensitive scenes without missing the plot.</p>
           </div>
 
           <div className="bg-[#0e0e0e] border border-white/5 rounded-2xl p-6 hover:border-yellow-500/20 transition-all duration-300">
@@ -357,25 +357,25 @@ const FilmiwayHomepage = ({ rRatedCleanMovies, trendingParentsGuides, top10Trend
     <div>
       <Head>
         <title>Filmiway | Parents Guide: Skip Intimate Scenes & Timestamps</title>
-        <meta name="description" content="Get exact skip timestamps to bypass intimate scenes, sensitive content, and mature themes in popular movies. Plan a safe, worry-free family movie night instantly." />
+        <meta name="description" content="Get exact skip timestamps to bypass intimate and sensitive scenes in popular movies. Plan a safe, worry-free family movie night instantly." />
         <link rel="canonical" href="https://filmiway.com/" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-        
+
         <link rel="preconnect" href="https://image.tmdb.org" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://www.themoviedb.org" />
       </Head>
-      
+
       <div className="min-h-screen bg-[#030303] text-white overflow-x-hidden">
         <Header />
 
         <HeroSection />
-        
+
         <main className="pb-20">
           <div className="container mx-auto px-4 sm:px-6 pt-8 sm:pt-12 space-y-16 sm:space-y-24 relative z-20">
-            
+
             {/* Trending Parents Guides Grid */}
-            <MovieGrid 
-              title="Trending Parents Guides" 
+            <MovieGrid
+              title="Trending Parents Guides"
               description="Manually verified skip timestamps guides for the most searched movies."
               movies={trendingParentsGuides}
             />
@@ -384,20 +384,15 @@ const FilmiwayHomepage = ({ rRatedCleanMovies, trendingParentsGuides, top10Trend
             <FeaturesSection />
 
             {/* Clean Movies Grid */}
-            <MovieGrid 
-              title="R-Rated Masterpiece Movies with No Sexual Content" 
-              description="Acclaimed movies manually verified as free of sensitive or intimate content. For a stress-free movie night." 
-              movies={rRatedCleanMovies} 
+            <MovieGrid
+              title="R-Rated Masterpiece Movies with No Sexual Content"
+              description="Acclaimed movies manually verified as free of sensitive or intimate content. For a stress-free movie night."
+              movies={rRatedCleanMovies}
             />
 
 
 
-            {/* Popular/Trending List */}
-            <MovieGrid 
-              title="Popular Movie Guides" 
-              description="The most searched and critically-acclaimed movie guides on Filmiway." 
-              movies={top10TrendingMovies} 
-            />
+
 
           </div>
         </main>
@@ -444,24 +439,24 @@ const FilmiwayHomepage = ({ rRatedCleanMovies, trendingParentsGuides, top10Trend
                 </ul>
               </div>
             </div>
-            
+
             <div className="flex flex-col items-center justify-center space-y-4">
               <p className="text-gray-400 text-[10px] sm:text-xs">Worry-Free Movie Nights. Skip the Awkward.</p>
               <div className="flex items-center gap-4 text-gray-400 text-[10px]">
                 <span>&copy; 2026 Filmiway</span>
               </div>
               <div className="flex items-center gap-2 opacity-50 hover:opacity-80 transition-opacity">
-                <a 
-                  href="https://www.themoviedb.org/" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                <a
+                  href="https://www.themoviedb.org/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex items-center gap-2"
                   aria-label="Powered by The Movie Database"
                 >
-                  <img 
-                    src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg" 
-                    alt="TMDB Logo" 
-                    className="h-3 w-auto" 
+                  <img
+                    src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg"
+                    alt="TMDB Logo"
+                    className="h-3 w-auto"
                     width="33"
                     height="12"
                     loading="lazy"
@@ -485,7 +480,7 @@ export async function getStaticProps() {
   const huluKeys = ['best-movies-on-hulu', 'best-action-movies-on-hulu', 'best-romance-movies-on-hulu', 'best-comedy-movies-on-hulu', 'best-sci-fi-movies-on-hulu', 'best-thriller-movies-hulu', 'best-horror-movies-on-hulu', 'best-drama-movies-on-hulu', 'best-family-movies-on-hulu'];
   const thrillerKeys = ['best-thriller-movies', 'best-crime-thriller-movies', 'best-heist-thriller-movies', 'best-psychological-thriller-movies', 'best-detective-thriller-movies', 'best-mystery-thriller-movies', 'movies-like-se7en', 'movies-like-shutter-island', 'movies-like-parasite', 'movies-like-oldboy', 'movies-like-black-swan', 'best-revenge-movies'];
   const hboKeys = ['best-movies-on-hbo-max', 'best-action-movies-on-hbo-max', 'best-sci-fi-movies-on-hbo-max', 'best-horror-movies-on-hbo-max', 'best-romance-movies-on-hbo-max', 'best-drama-movies-on-hbo-max', 'best-comedy-movies-on-hbo-max', 'best-family-movies-on-hbo-max', 'best-thriller-movies-on-hbo-max'];
-  
+
   const paramountKeys = [
     'best-movies-on-paramount-plus',
     'best-action-movies-on-paramount-plus',
@@ -528,18 +523,18 @@ export async function getStaticProps() {
     if (!moviesList) return [];
     return moviesList.slice(0, 10).map((movie) => {
       let posterUrl = fallbackPosters?.[movie.tmdbId] || null;
-      
+
       // Use local cache if available!
       const cachedData = tmdbCache[movie.imdbID];
       if (cachedData && cachedData.poster_path) {
-         posterUrl = `https://image.tmdb.org/t/p/w342${cachedData.poster_path}`;
+        posterUrl = `https://image.tmdb.org/t/p/w342${cachedData.poster_path}`;
       }
-      
+
       // Ensure fallback URLs also use the optimized w342 size instead of heavy w500
       if (posterUrl && posterUrl.includes('w500')) {
-         posterUrl = posterUrl.replace('w500', 'w342');
+        posterUrl = posterUrl.replace('w500', 'w342');
       }
-      
+
       const collectionSlug = getPrimaryCollectionForMovie(movie.imdbID) || 'best-movies-of-the-decade'; // Fallback slug
       return { ...movie, posterUrl, collectionSlug };
     });
@@ -574,7 +569,7 @@ export async function getStaticProps() {
     const rRatedCleanMovies = getTop10MoviesWithSlugs(rRatedCleanMoviesDb, null);
 
     let top10TrendingMovies = getTop10MoviesWithSlugs(TRENDING_DB, TRENDING_POSTERS);
-    
+
     // ⚡ CUSTOM HOMEPAGE ARRAY: High-traffic Parents Guides 
     const trendingParentsGuideIds = [1339713, 27205, 218, 318846, 475557, 398818, 1791, 10867, 9346, 11423];
     const customTrendingGuidesDb = trendingParentsGuideIds.map(id => masterDatabase.find(m => m.tmdbId === id)).filter(Boolean);
@@ -600,7 +595,7 @@ export async function getStaticProps() {
         top10TrendingMovies,
         trendingParentsGuides
       },
-      revalidate: 604800, 
+      revalidate: 604800,
     };
   } catch (error) {
     console.error('SSG Error:', error);

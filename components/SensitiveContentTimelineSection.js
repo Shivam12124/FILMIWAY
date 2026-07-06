@@ -629,7 +629,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                                         </span>
                                         <div className="flex flex-col min-w-0 flex-1">
                                             <div className="flex items-center justify-between w-full">
-                                                <span className="text-gray-300 text-[13px] sm:text-sm font-medium truncate group-hover:text-white transition-colors">
+                                                <span className="text-gray-300 text-[13px] sm:text-sm font-medium break-words whitespace-normal group-hover:text-white transition-colors leading-tight">
                                                     {sceneType}
                                                 </span>
                                                 <div className="shrink-0 ml-3">
@@ -665,7 +665,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                                                 {getSceneIcon(sceneType)}
                                             </span>
                                             <div className="flex flex-col min-w-0 w-full">
-                                                <span className="text-gray-300 text-[13px] sm:text-sm font-medium truncate group-hover:text-white transition-colors">
+                                                <span className="text-gray-300 text-[13px] sm:text-sm font-medium break-words whitespace-normal group-hover:text-white transition-colors leading-tight">
                                                     {sceneType}
                                                 </span>
                                                 {sceneDescription && sceneDescription !== sceneType && sceneDescription.toLowerCase() !== 'none' && (

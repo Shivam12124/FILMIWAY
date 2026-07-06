@@ -58,13 +58,17 @@ const UniversalBanner = ({ movie }) => {
                 fetch(`https://api.themoviedb.org/3/movie/${movie.tmdbId}?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&append_to_response=videos`)
                     .then(res => res.json())
                     .then(data => {
-                        const trailer = data.videos?.results?.find(v => v.type === 'Trailer' && v.site === 'YouTube');
+                        let trailer = data.videos?.results?.find(v => v.type === 'Trailer' && v.site === 'YouTube');
+                        if (!trailer) trailer = data.videos?.results?.find(v => v.type === 'Teaser' && v.site === 'YouTube');
+                        if (!trailer && data.videos?.results?.length > 0) trailer = data.videos.results.find(v => v.site === 'YouTube');
+                        
                         if (trailer) setTrailerKey(trailer.key);
+                        
                         // Fallback: If the cache missed the tagline, fetch it live
                         if ((!movie?.Tagline || UNIVERSAL_FALLBACK_TAGLINES.includes(movie?.Tagline)) && data.tagline) setTagline(data.tagline);
                     })
                     .catch(() => {});
-            }, 3000); // ⚡ Defer trailer fetch by 3s to keep mobile CPU completely clear for LCP
+            }, 1500); // ⚡ Defer trailer fetch slightly to prioritize LCP, but show play button faster
             return () => clearTimeout(timer);
         }
     }, [movie]);
@@ -667,11 +671,24 @@ export async function getStaticProps({ params }) {
         metaDesc = `PARENTS GUIDE: Exact skip timestamps for ${baseMovie.Title}. ${rawTimestampsText}. Skip intimate content.`;
     }
 
+    // 🛡️ SAFE POSTER OVERRIDES: Use safe alternate TMDB images instead of explicit ones
+    const SAFE_OVERRIDES = {
+        664413: { // 365 Days
+            poster: '/27nn2YJBwY7a1etZ0AiIcOrIgu3.jpg', // User selected Banner B for poster
+            backdrop: '/27nn2YJBwY7a1etZ0AiIcOrIgu3.jpg' // User selected Banner B
+        },
+        1278: { // The Dreamers
+            poster: '/gBb7GGaFYPu7nEUYvC8G4LaJJN1.jpg', // User selected Poster A
+            backdrop: '/xtvxa5Hu69blChmb5ndJ9poTkgB.jpg' // User selected Banner C
+        }
+    };
+    const explicitOverride = SAFE_OVERRIDES[Number(baseMovie.tmdbId)];
+
     const movie = {
         ...baseMovie,
-        poster_path: cacheData.poster_path || null,
-        backdrop_path: cacheData.backdrop_path || null,
-        Poster: cacheData.poster_path ? `https://image.tmdb.org/t/p/w342${cacheData.poster_path}` : null,
+        poster_path: explicitOverride ? explicitOverride.poster : (cacheData.poster_path || null),
+        backdrop_path: explicitOverride ? explicitOverride.backdrop : (cacheData.backdrop_path || null),
+        Poster: explicitOverride ? `https://image.tmdb.org/t/p/w342${explicitOverride.poster}` : (cacheData.poster_path ? `https://image.tmdb.org/t/p/w342${cacheData.poster_path}` : null),
         Plot: cacheData.overview || '',
         Rated: cacheData.ageRating || 'NR',
         Director: cacheData.director || null,
