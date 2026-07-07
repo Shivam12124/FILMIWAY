@@ -321,7 +321,7 @@ export default function UniversalMoviePage({ movie }) {
     const formattedTimestamps = hasTimestamps
         ? movie.resolvedSensitiveScenes
             .filter(s => s.start && s.start.toLowerCase() !== 'none')
-            .map(s => `• ${s.start}${s.end ? ' to ' + s.end : ''}: ${s.type} (Severity: ${s.severity})${s.description ? ' - ' + s.description : ''}`)
+            .map(s => `• Action: Skip ${s.start}${s.end ? ' to ' + s.end : ''} [Content Advisory: ${s.type} (Severity: ${s.severity})]${s.description ? ' - ' + s.description : ''}`)
             .join(', ')
         : "None (Verified Clean)";
 

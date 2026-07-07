@@ -627,9 +627,10 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                                         <span className="text-gray-500 group-hover:text-white transition-colors duration-300 mt-[3px] shrink-0">
                                             {getSceneIcon(sceneType)}
                                         </span>
-                                        <div className="flex flex-col min-w-0 flex-1">
+                                        <div className="flex flex-col min-w-0 flex-1 gap-1">
                                             <div className="flex items-center justify-between w-full">
-                                                <span className="text-gray-300 text-[13px] sm:text-sm font-medium break-words whitespace-normal group-hover:text-white transition-colors leading-tight">
+                                                <span className="text-gray-300 text-[13px] sm:text-sm font-medium break-words whitespace-normal group-hover:text-white transition-colors leading-tight flex flex-wrap items-center gap-1.5 sm:gap-2">
+                                                    <span className="text-gray-400 font-semibold uppercase tracking-[0.15em] text-[10px] sm:text-[11px] opacity-80">Content Advisory:</span>
                                                     {sceneType}
                                                 </span>
                                                 <div className="shrink-0 ml-3">
@@ -637,49 +638,52 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                                                 </div>
                                             </div>
                                             {sceneDescription && sceneDescription !== sceneType && sceneDescription.toLowerCase() !== 'none' && (
-                                                <span className="text-[12px] sm:text-[13px] text-gray-400/90 leading-relaxed mt-1 break-words whitespace-normal group-hover:text-gray-300 transition-colors">
+                                                <span className="text-[12px] sm:text-[13px] text-gray-400/80 leading-relaxed mt-0.5 break-words whitespace-normal group-hover:text-gray-300 transition-colors">
                                                     {sceneDescription}
                                                 </span>
                                             )}
                                         </div>
                                     </div>
                                 ) : (
-                                    // 🚀 Original Timestamp Layout for scenes that actually have times
-                                    <>
-                                        <div className={`flex items-center justify-between sm:justify-start w-full sm:w-auto gap-3`}>
-                                            <div className="flex items-center gap-1.5 text-gray-400 group-hover:text-gray-200 transition-colors shrink-0">
-                                                <Clock size={13} className="opacity-50 shrink-0" />
-                                                <span className="font-mono text-[13px] sm:text-sm tracking-wide">
-                                                    {rawStart} {sceneEnd && <span className="opacity-40 text-xs mx-0.5 sm:mx-1">→</span>} {sceneEnd}
+                                    // 🚀 NEW: Action-Oriented Skip Guide Layout for Timestamps (Sleek UI)
+                                    <div className="flex flex-col min-w-0 w-full gap-1.5 sm:gap-2">
+                                        <div className="flex items-center justify-between w-full">
+                                            <div className="flex items-start sm:items-center gap-2.5 min-w-0 flex-1">
+                                                <span className="text-gray-500 group-hover:text-white transition-colors duration-300 mt-[1px] sm:mt-0 shrink-0">
+                                                    {getSceneIcon(sceneType)}
+                                                </span>
+                                                <span className="text-gray-300 text-[13px] sm:text-sm font-medium break-words whitespace-normal group-hover:text-white transition-colors leading-tight flex flex-wrap items-center gap-1.5 sm:gap-2">
+                                                    <span className="text-gray-400 font-semibold uppercase tracking-[0.15em] text-[10px] sm:text-[11px] opacity-80">Content Advisory:</span>
+                                                    {sceneType}
                                                 </span>
                                             </div>
-                                            <div className="sm:hidden shrink-0">
+                                            <div className="shrink-0 ml-3">
                                                 {severityBadge}
                                             </div>
                                         </div>
-
-                                        <div className="hidden sm:block w-px h-4 bg-white/10 shrink-0" />
-
-                                        <div className="flex items-start gap-2.5 min-w-0 flex-1">
-                                            <span className="text-gray-500 group-hover:text-white transition-colors duration-300 mt-[3px] shrink-0">
-                                                {getSceneIcon(sceneType)}
-                                            </span>
-                                            <div className="flex flex-col min-w-0 w-full">
-                                                <span className="text-gray-300 text-[13px] sm:text-sm font-medium break-words whitespace-normal group-hover:text-white transition-colors leading-tight">
-                                                    {sceneType}
+                                        
+                                        <div className="flex flex-wrap items-center gap-2 text-gray-400 group-hover:text-gray-200 transition-colors ml-7 sm:ml-8 mt-0.5">
+                                            <div className="flex items-center gap-1.5 opacity-90">
+                                                <FastForward size={12} className="opacity-70 shrink-0" />
+                                                <span className="text-[10px] sm:text-[11px] font-semibold tracking-widest uppercase">Action: Skip</span>
+                                            </div>
+                                            <span className="opacity-30 mx-0.5 text-[10px]">•</span>
+                                            <div className="flex items-center gap-1.5">
+                                                <Clock size={12} className="opacity-60 shrink-0" />
+                                                <span className="font-mono text-[12px] sm:text-[13px] tracking-wide font-medium">
+                                                    {rawStart} {sceneEnd && <span className="opacity-40 text-[10px] mx-1">→</span>} {sceneEnd}
                                                 </span>
-                                                {sceneDescription && sceneDescription !== sceneType && sceneDescription.toLowerCase() !== 'none' && (
-                                                    <span className="text-[12px] sm:text-[13px] text-gray-400/90 leading-snug mt-0.5 break-words whitespace-normal group-hover:text-gray-300 transition-colors">
-                                                        {sceneDescription}
-                                                    </span>
-                                                )}
                                             </div>
                                         </div>
 
-                                        <div className="hidden sm:block shrink-0 ml-auto">
-                                            {severityBadge}
-                                        </div>
-                                    </>
+                                        {sceneDescription && sceneDescription !== sceneType && sceneDescription.toLowerCase() !== 'none' && (
+                                            <div className="ml-7 sm:ml-8 mt-0.5">
+                                                <span className="text-[12px] sm:text-[13px] text-gray-400/80 leading-relaxed break-words whitespace-normal group-hover:text-gray-300 transition-colors">
+                                                    {sceneDescription}
+                                                </span>
+                                            </div>
+                                        )}
+                                    </div>
                                 )}
                             </li>
                         );
