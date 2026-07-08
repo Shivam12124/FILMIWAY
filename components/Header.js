@@ -162,7 +162,7 @@ const Header = () => {
                         return (
                           <li key={movie.imdbID}>
                             <Link 
-                              href={`/movie/${movieSlug}`} 
+                              href={`/movie/${movieSlug}/skip-timestamps`} 
                               onClick={() => { setIsDropdownOpen(false); setSearchQuery(''); clearCollectionMemory(); }} 
                               className="flex items-center gap-3 p-3 hover:bg-white/10 transition-colors border-b border-white/5 last:border-0 group"
                             >

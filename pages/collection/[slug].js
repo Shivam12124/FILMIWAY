@@ -4458,10 +4458,10 @@ return (
                         {movies.map((m) => {
                             if (m.isBonusSlide) {
                                 return m.bonusMovies.map(b => (
-                                    <a key={`seo-${b.imdbID}`} href={`/movie/${b.slug}`}>{b.Title}</a>
+                                    <a key={`seo-${b.imdbID}`} href={`/movie/${b.slug}/skip-timestamps`}>{b.Title}</a>
                                 ));
                             }
-                            return <a key={`seo-${m.imdbID}`} href={`/movie/${m.slug}`}>{m.Title}</a>;
+                            return <a key={`seo-${m.imdbID}`} href={`/movie/${m.slug}/skip-timestamps`}>{m.Title}</a>;
                         })}
                     </nav>
                     
@@ -4517,7 +4517,7 @@ return (
                                         {currentMovie.bonusMovies.map(bMovie => (
                                             <Link
                                                 key={bMovie.imdbID}
-                                                href={`/movie/${bMovie.slug}`}
+                                                href={`/movie/${bMovie.slug}/skip-timestamps`}
                                                 onClick={handleMovieClick}
                                                 className="outline-none transition-transform hover:scale-105"
                                                 draggable={false}
@@ -4532,7 +4532,7 @@ return (
                                     </div>
                                 ) : (
                                     <Link
-                                        href={`/movie/${currentMovie.slug}`}
+                                        href={`/movie/${currentMovie.slug}/skip-timestamps`}
                                         onClick={handleMovieClick}
                                         className="outline-none"
                                         draggable={false}

@@ -57,7 +57,7 @@ export const Top10MovieCard = memo(({ movie, index }) => {
 
   return (
     <Link
-      href={`/movie/${movieSlug}`}
+      href={`/movie/${movieSlug}/skip-timestamps`}
       className="group relative flex items-end shrink-0 transition-transform duration-300 hover:-translate-y-2 pl-4 sm:pl-6"
       style={{ 
          width: 'clamp(215px, 53.8vw, 338px)', 
@@ -166,7 +166,7 @@ export const QuickLinksSection = memo(({ title, movies }) => {
           {movies.slice(0, 10).map((movie) => {
             const movieSlug = movie.slug || (movie.Title || movie.title || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
             return (
-              <Link key={movie.imdbID} href={`/movie/${movieSlug}`} className="group relative flex items-center justify-between p-3.5 sm:p-4 bg-[#0a0a0a] border border-white/5 hover:border-yellow-500/30 rounded-xl transition-all duration-300 hover:bg-gradient-to-r hover:from-yellow-500/10 hover:to-transparent overflow-hidden shadow-sm hover:shadow-lg">
+              <Link key={movie.imdbID} href={`/movie/${movieSlug}/skip-timestamps`} className="group relative flex items-center justify-between p-3.5 sm:p-4 bg-[#0a0a0a] border border-white/5 hover:border-yellow-500/30 rounded-xl transition-all duration-300 hover:bg-gradient-to-r hover:from-yellow-500/10 hover:to-transparent overflow-hidden shadow-sm hover:shadow-lg">
               <div className="absolute left-0 top-0 bottom-0 w-1 bg-yellow-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <div className="flex flex-col min-w-0 pr-3"><span className="font-semibold text-sm sm:text-base text-gray-300 group-hover:text-yellow-400 transition-colors truncate">{movie.Title || movie.title}</span><span className="text-[10px] sm:text-xs text-gray-600 font-medium tracking-wider mt-1 uppercase">{movie.year || movie.Year} • Parents Guide</span></div>
               <ArrowRight className="w-4 h-4 text-gray-600 group-hover:text-yellow-400 transform -translate-x-2 group-hover:translate-x-0 transition-all duration-300 shrink-0" />

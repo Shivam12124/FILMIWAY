@@ -353,7 +353,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
     const safetyScoreBorder = movie?.safetyScore >= 8 ? 'rgba(16,185,129,0.3)' : movie?.safetyScore >= 5 ? 'rgba(234,179,8,0.3)' : 'rgba(239,68,68,0.3)';
 
     const minimalistSafetyBadge = movie?.safetyScore ? (
-        <div 
+        <div
             className="flex flex-wrap items-center gap-2 sm:gap-3 mt-3 mb-2 w-fit rounded-xl border backdrop-blur-md px-4 py-2 sm:py-2.5 shadow-lg relative"
             style={{ backgroundColor: 'rgba(10, 10, 12, 0.8)', borderColor: safetyScoreBorder }}
         >
@@ -367,7 +367,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                     {movie.safetyScore}/10
                 </span>
                 <span className="text-xs sm:text-sm uppercase tracking-widest font-bold opacity-90"
-                      style={{ color: safetyScoreColor }}>
+                    style={{ color: safetyScoreColor }}>
                     {movie.safetyLabel}
                 </span>
                 <div className="relative group flex items-center ml-1">
@@ -398,7 +398,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                             </h1>
                         </div>
                         {minimalistSafetyBadge}
-                        
+
                         <p className="text-sm sm:text-base text-gray-400 leading-relaxed font-light mt-3 max-w-3xl ml-1">
                             {cleanVariations[textHash % cleanVariations.length]}<span suppressHydrationWarning>{currentRuntime}</span>.
                         </p>
@@ -661,7 +661,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                                                 {severityBadge}
                                             </div>
                                         </div>
-                                        
+
                                         <div className="flex flex-wrap items-center gap-2 text-gray-400 group-hover:text-gray-200 transition-colors ml-7 sm:ml-8 mt-0.5">
                                             <div className="flex items-center gap-1.5 opacity-90">
                                                 <FastForward size={12} className="opacity-70 shrink-0" />
@@ -716,8 +716,8 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                         onClick={handleVote}
                         disabled={hasVoted || isVoting}
                         className={`group flex items-center gap-2 px-5 py-2.5 rounded-full transition-all duration-300 text-xs sm:text-sm font-bold border ${hasVoted
-                                ? 'bg-emerald-500/15 border-emerald-500/30 text-emerald-400 cursor-default shadow-[0_0_15px_rgba(16,185,129,0.15)]'
-                                : 'bg-gradient-to-r from-yellow-400 to-amber-400 hover:from-yellow-300 hover:to-amber-300 text-gray-900 border-yellow-400 cursor-pointer shadow-[0_0_20px_rgba(234,179,8,0.4)] hover:shadow-[0_0_30px_rgba(234,179,8,0.6)]'
+                            ? 'bg-emerald-500/15 border-emerald-500/30 text-emerald-400 cursor-default shadow-[0_0_15px_rgba(16,185,129,0.15)]'
+                            : 'bg-gradient-to-r from-yellow-400 to-amber-400 hover:from-yellow-300 hover:to-amber-300 text-gray-900 border-yellow-400 cursor-pointer shadow-[0_0_20px_rgba(234,179,8,0.4)] hover:shadow-[0_0_30px_rgba(234,179,8,0.6)]'
                             }`}
                     >
                         {hasVoted ? (

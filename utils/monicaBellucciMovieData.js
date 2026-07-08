@@ -504,17 +504,6 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
         });
     }
 
-       if (intensityScenes.length > 0) {
-           const schemaIntensityList = intensityScenes.map(s => `<li>Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)</li>`).join('');
-           schemaFaqs.unshift({
-               '@type': 'Question',
-               'name': `What are the most intense scenes in ${movie.Title}?`,
-               'acceptedAnswer': { 
-                   '@type': 'Answer', 
-                   'text': `According to the Filmiway Intensity metric, ${movie.Title} peaks at the following moments:<br><br><ul>${schemaIntensityList}</ul>` 
-               }
-           });
-       }
    
        if (heavyScenes.length > 0) {
            const typesArray = getSensitiveContentTypes(movie.tmdbId) || ['mature content'];
@@ -640,13 +629,6 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
     // 🔥 Explicit Override for Malèna
     if (tmdbId === 10867) finalRuntime = "1 hour 32 min";
 
-    if (intensityScenes.length > 0) {
-        const uiIntensityList = intensityScenes.map(s => `• Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)`).join('\n');
-        staticFaqs.unshift({
-            question: `What are the most intense scenes in ${movieTitle}?`,
-            answer: `According to the Filmiway Intensity metric, ${movieTitle} peaks at the following moments:\n\n${uiIntensityList}`
-        });
-    }
 
     // 🔥 DYNAMIC RECOMMENDED AGE FAQ INJECTION (UI)
     const tmdbIdKeyStr = tmdbId?.toString();

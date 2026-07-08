@@ -1032,12 +1032,7 @@ const MovieDetailsSection = React.memo(({
         </div>
       </div>
 
-      {safeMovieInfo?.scenes && safeMovieInfo.scenes.length > 0 && (
-        <EnhancedIntensityGraph 
-            scenes={safeMovieInfo.scenes} 
-            dominantColor={safeMovieInfo.dominantColor} 
-        />
-      )}
+      
 
       {safeMovieInfo?.dna && Object.keys(safeMovieInfo.dna).length > 0 && (
         <StrategicDNAHelix 

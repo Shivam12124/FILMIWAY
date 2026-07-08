@@ -107,7 +107,7 @@ const SearchBar = () => {
               const safeSlug = movie.slug || (movie.Title || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
               return (
                 <li key={movie.imdbID}>
-                  <Link href={`/movie/${safeSlug}`} className="flex items-center gap-3 px-4 py-3.5 hover:bg-white/5 hover:text-amber-400 transition-all text-left text-sm font-medium text-white">
+                  <Link href={`/movie/${safeSlug}/skip-timestamps`} className="flex items-center gap-3 px-4 py-3.5 hover:bg-white/5 hover:text-amber-400 transition-all text-left text-sm font-medium text-white">
                     <Film className="w-4 h-4 opacity-70 shrink-0" />
                     <span className="flex-grow truncate">{movie.Title} <span className="text-[10px] opacity-50 ml-1">({movie.Year || movie.year})</span></span>
                     <ChevronRight className="w-4 h-4 opacity-40 shrink-0" />
@@ -204,7 +204,7 @@ const MovieGrid = ({ title, description, movies }) => {
           return (
             <Link
               key={movie.imdbID}
-              href={`/movie/${movieSlug}`}
+              href={`/movie/${movieSlug}/skip-timestamps`}
               className="group cursor-pointer relative transition-transform duration-300 hover:-translate-y-2 block"
             >
               <div className="relative w-full aspect-[2/3] rounded-xl overflow-hidden bg-gray-900 border border-white/10 group-hover:border-yellow-500/50 transition-all duration-300 shadow-[0_8px_30px_rgba(0,0,0,0.8)]">
@@ -245,7 +245,7 @@ const MovieGrid = ({ title, description, movies }) => {
             return (
               <div key={movie.imdbID} className="animate-fade-in duration-300">
                 <Link
-                  href={`/movie/${movieSlug}`}
+                  href={`/movie/${movieSlug}/skip-timestamps`}
                   className="block relative aspect-[2/3] rounded-2xl overflow-hidden bg-gray-900 border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.8)]"
                 >
                   <div className="relative w-full h-full">

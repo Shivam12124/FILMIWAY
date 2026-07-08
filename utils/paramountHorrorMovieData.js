@@ -442,13 +442,6 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
     let finalRuntime = currentRuntime !== "Official" ? currentRuntime : (dbMovie?.runtime ? `${dbMovie.runtime} min` : "Official");
     if (typeof finalRuntime === 'number') finalRuntime = `${finalRuntime} min`;
 
-    if (intensityScenes.length > 0) {
-        const uiIntensityList = intensityScenes.map(s => `• Minute ${s.time} - ${s.label} (Intensity: ${s.intensity}/100)`).join('\n');
-        staticFaqs.unshift({
-            question: `What are the most intense scenes in ${movieTitle}?`,
-            answer: `According to the Filmiway Intensity metric, ${movieTitle} peaks at the following moments:\n\n${uiIntensityList}`
-        });
-    }
 
     // 🔥 DYNAMIC RECOMMENDED AGE FAQ INJECTION (UI)
     const tmdbIdKeyStr = tmdbId?.toString();

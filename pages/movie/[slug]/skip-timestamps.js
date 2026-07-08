@@ -5,23 +5,23 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, Play, X, Film, Star, ChevronDown } from 'lucide-react';
-import Header from '../../components/Header';
+import Header from '../../../components/Header';
 import dynamic from 'next/dynamic';
-import { getVisibleMovieFAQs } from '../../utils/movieData';
+import { getVisibleMovieFAQs } from '../../../utils/movieData';
 
-const CinematicBackground = dynamic(() => import('../../components/CinematicBackground'), { ssr: false });
+const CinematicBackground = dynamic(() => import('../../../components/CinematicBackground'), { ssr: false });
 
 // ⚡ DYNAMIC IMPORT: Splits JS so mobile ONLY loads the top banner first! (SEO is fully preserved)
-const MovieDetailsSection = dynamic(() => import('../../components/MovieDetailsSection'));
+const MovieDetailsSection = dynamic(() => import('../../../components/MovieDetailsSection'));
 
 // ✅ THEME COLORS FOR UNIVERSAL BANNER
 const COLORS = {
     accent: '#eab308', // Yellow-500
-    bgPrimary: '#0a0a0a', 
-    bgCard: 'rgba(17, 24, 39, 0.7)', 
-    textPrimary: '#FFFFFF', 
-    textSecondary: '#E5E7EB', 
-    textMuted: '#9CA3AF', 
+    bgPrimary: '#0a0a0a',
+    bgCard: 'rgba(17, 24, 39, 0.7)',
+    textPrimary: '#FFFFFF',
+    textSecondary: '#E5E7EB',
+    textMuted: '#9CA3AF',
     textDisabled: '#6B7280',
     borderLight: 'rgba(255, 255, 255, 0.1)',
 };
@@ -61,13 +61,13 @@ const UniversalBanner = ({ movie }) => {
                         let trailer = data.videos?.results?.find(v => v.type === 'Trailer' && v.site === 'YouTube');
                         if (!trailer) trailer = data.videos?.results?.find(v => v.type === 'Teaser' && v.site === 'YouTube');
                         if (!trailer && data.videos?.results?.length > 0) trailer = data.videos.results.find(v => v.site === 'YouTube');
-                        
+
                         if (trailer) setTrailerKey(trailer.key);
-                        
+
                         // Fallback: If the cache missed the tagline, fetch it live
                         if ((!movie?.Tagline || UNIVERSAL_FALLBACK_TAGLINES.includes(movie?.Tagline)) && data.tagline) setTagline(data.tagline);
                     })
-                    .catch(() => {});
+                    .catch(() => { });
             }, 1500); // ⚡ Defer trailer fetch slightly to prioritize LCP, but show play button faster
             return () => clearTimeout(timer);
         }
@@ -112,58 +112,58 @@ const UniversalBanner = ({ movie }) => {
     `;
 
     return (
-      <div className="relative w-[100vw] left-[50%] right-[50%] -ml-[50vw] -mr-[50vw] overflow-hidden mb-6 sm:mb-8">
-        <style>{unifiedHeroCSS}</style>
-        <div className="relative h-[300px] sm:h-[400px] lg:h-[600px]">
-          <AnimatePresence>
-            {(!showTrailer || !trailerKey) ? (
-              <motion.div
-                key="image"
-                className="absolute inset-0 overflow-hidden"
-                initial={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.5 }}
-              >
-                <div className="relative w-full h-full bg-[#030303]">
-                  {/* ⚡ THE MAIN IMAGE */}
-                  {bannerImage ? <Image src={bannerImage} alt={`${movie?.Title} banner`} fill priority fetchPriority="high" unoptimized className="object-cover object-[center_25%] relative z-10" /> : <div className="w-full h-full flex items-center justify-center relative z-10" style={{ backgroundColor: '#000000' }}><Film className="w-16 h-16 sm:w-24 sm:h-24" style={{ color: COLORS.textMuted }} /></div>}
-                  <div className="absolute inset-0 z-20" style={{ background: `linear-gradient(to bottom, transparent 0%, transparent 50%, #000000 90%, #000000 100%), linear-gradient(to right, #000000 0%, transparent 15%, transparent 85%, #000000 100%)` }} />
-                </div>
-                {trailerKey && (
-                  <motion.div className="absolute inset-0 flex items-center justify-center z-20" initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 1, duration: 0.8 }}>
-                    <motion.button onClick={handlePlayClick} className="p-4 sm:p-6 rounded-full backdrop-blur-lg shadow-2xl transition-all duration-300" style={{ backgroundColor: `${COLORS.bgPrimary}BB`, border: `2px solid ${COLORS.textPrimary}`, color: COLORS.textPrimary }} whileHover={{ scale: 1.15, backgroundColor: `${COLORS.accent}DD`, borderColor: COLORS.accent }} whileTap={{ scale: 0.95 }}><Play className="w-6 h-6 sm:w-8 sm:h-8 ml-1" /></motion.button>
-                  </motion.div>
-                )}
-              </motion.div>
-            ) : (
-              <motion.div
-                key="trailer"
-                className="absolute inset-0 overflow-hidden"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5 }}
-              >
-                <iframe width="100%" height="100%" src={`https://www.youtube.com/embed/${trailerKey}?autoplay=1&mute=0&controls=1&rel=0`} allow="autoplay" allowFullScreen className="w-full h-full border-0" />
-                <button onClick={handleCloseTrailer} className="absolute top-4 right-4 sm:top-6 sm:right-6 p-2 sm:p-3 rounded-full backdrop-blur-md shadow-xl transition-all duration-300 hover:scale-110 z-50" style={{ backgroundColor: `${COLORS.bgPrimary}DD`, color: COLORS.textPrimary }}><X className="w-4 h-4 sm:w-5 sm:h-5" /></button>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-  
-        {/* UNIFIED LAYOUT */}
-        <div className="unified-hero-row">
-          <div className="unified-hero-poster relative bg-[#030303] overflow-hidden">
-            {/* ⚡ THE MAIN IMAGE */}
-            {posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} width={320} height={480} className="w-full h-auto relative z-10" priority fetchPriority="high" unoptimized /> : <div style={{ background: '#000000', width: '100%', height: '150px', display: 'flex', items: 'center', justifyContent: 'center' }} className="relative z-10"><Film style={{ color: COLORS.textMuted }} /></div>}
-          </div>
-          <div className="unified-psych-card">
-            <div className="unified-psych-row"><Star className="unified-psych-icon" /><div><h2 className="unified-psych-title">At a Glance</h2></div></div>
-            <div className="unified-psych-desc insight-text font-medium text-white" suppressHydrationWarning>
-              {tagline ? <span className="italic">"{tagline}"</span> : <span>{insight}</span>}
+        <div className="relative w-[100vw] left-[50%] right-[50%] -ml-[50vw] -mr-[50vw] overflow-hidden mb-6 sm:mb-8">
+            <style>{unifiedHeroCSS}</style>
+            <div className="relative h-[300px] sm:h-[400px] lg:h-[600px]">
+                <AnimatePresence>
+                    {(!showTrailer || !trailerKey) ? (
+                        <motion.div
+                            key="image"
+                            className="absolute inset-0 overflow-hidden"
+                            initial={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.5 }}
+                        >
+                            <div className="relative w-full h-full bg-[#030303]">
+                                {/* ⚡ THE MAIN IMAGE */}
+                                {bannerImage ? <Image src={bannerImage} alt={`${movie?.Title} banner`} fill priority fetchPriority="high" unoptimized className="object-cover object-[center_25%] relative z-10" /> : <div className="w-full h-full flex items-center justify-center relative z-10" style={{ backgroundColor: '#000000' }}><Film className="w-16 h-16 sm:w-24 sm:h-24" style={{ color: COLORS.textMuted }} /></div>}
+                                <div className="absolute inset-0 z-20" style={{ background: `linear-gradient(to bottom, transparent 0%, transparent 50%, #000000 90%, #000000 100%), linear-gradient(to right, #000000 0%, transparent 15%, transparent 85%, #000000 100%)` }} />
+                            </div>
+                            {trailerKey && (
+                                <motion.div className="absolute inset-0 flex items-center justify-center z-20" initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 1, duration: 0.8 }}>
+                                    <motion.button onClick={handlePlayClick} className="p-4 sm:p-6 rounded-full backdrop-blur-lg shadow-2xl transition-all duration-300" style={{ backgroundColor: `${COLORS.bgPrimary}BB`, border: `2px solid ${COLORS.textPrimary}`, color: COLORS.textPrimary }} whileHover={{ scale: 1.15, backgroundColor: `${COLORS.accent}DD`, borderColor: COLORS.accent }} whileTap={{ scale: 0.95 }}><Play className="w-6 h-6 sm:w-8 sm:h-8 ml-1" /></motion.button>
+                                </motion.div>
+                            )}
+                        </motion.div>
+                    ) : (
+                        <motion.div
+                            key="trailer"
+                            className="absolute inset-0 overflow-hidden"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ duration: 0.5 }}
+                        >
+                            <iframe width="100%" height="100%" src={`https://www.youtube.com/embed/${trailerKey}?autoplay=1&mute=0&controls=1&rel=0`} allow="autoplay" allowFullScreen className="w-full h-full border-0" />
+                            <button onClick={handleCloseTrailer} className="absolute top-4 right-4 sm:top-6 sm:right-6 p-2 sm:p-3 rounded-full backdrop-blur-md shadow-xl transition-all duration-300 hover:scale-110 z-50" style={{ backgroundColor: `${COLORS.bgPrimary}DD`, color: COLORS.textPrimary }}><X className="w-4 h-4 sm:w-5 sm:h-5" /></button>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </div>
-          </div>
+
+            {/* UNIFIED LAYOUT */}
+            <div className="unified-hero-row">
+                <div className="unified-hero-poster relative bg-[#030303] overflow-hidden">
+                    {/* ⚡ THE MAIN IMAGE */}
+                    {posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} width={320} height={480} className="w-full h-auto relative z-10" priority fetchPriority="high" unoptimized /> : <div style={{ background: '#000000', width: '100%', height: '150px', display: 'flex', items: 'center', justifyContent: 'center' }} className="relative z-10"><Film style={{ color: COLORS.textMuted }} /></div>}
+                </div>
+                <div className="unified-psych-card">
+                    <div className="unified-psych-row"><Star className="unified-psych-icon" /><div><h2 className="unified-psych-title">At a Glance</h2></div></div>
+                    <div className="unified-psych-desc insight-text font-medium text-white" suppressHydrationWarning>
+                        {tagline ? <span className="italic">"{tagline}"</span> : <span>{insight}</span>}
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     );
 };
 
@@ -203,7 +203,7 @@ const getCollectionProp = (slug) => {
         'movies-like-oldboy': 'fromOldboyCollection',
         'best-interstellar-movies': 'fromInterstellarCollection',
         'movies-like-interstellar': 'fromInterstellarCollection',
-        'best-drama-movies-on-netflix': 'fromDramaCollection', 
+        'best-drama-movies-on-netflix': 'fromDramaCollection',
         'best-psychological-thriller-movies': 'fromPsychologicalThrillerCollection',
         'best-thriller-movies': 'fromThrillerCollection',
         'best-mystery-thriller-movies': 'fromMysteryThrillerCollection',
@@ -260,7 +260,7 @@ const getCleanTitle = (title) => title ? title.toUpperCase().replace(/^(THE\s+)?
 
 export default function UniversalMoviePage({ movie }) {
     const router = useRouter();
-    
+
     const defaultLabel = movie?.primaryCollectionTitle ? `BACK TO ${getCleanTitle(movie.primaryCollectionTitle)} COLLECTION` : 'BACK TO HOME';
     const defaultUrl = movie?.primaryCollectionSlug ? `/collection/${movie.primaryCollectionSlug}` : '/';
 
@@ -271,12 +271,12 @@ export default function UniversalMoviePage({ movie }) {
         const fromCollection = sessionStorage.getItem('fromCollection');
         const savedCollectionSlug = sessionStorage.getItem('currentCollection');
         const savedCollectionTitle = sessionStorage.getItem('collectionTitle');
-        
+
         // Only override the default if they specifically clicked through from a DIFFERENT collection during this session
         if (fromCollection === 'true' && savedCollectionTitle && savedCollectionSlug) {
-            setBreadcrumb({ 
-                label: `BACK TO ${getCleanTitle(savedCollectionTitle)} COLLECTION`, 
-                url: `/collection/${savedCollectionSlug}` 
+            setBreadcrumb({
+                label: `BACK TO ${getCleanTitle(savedCollectionTitle)} COLLECTION`,
+                url: `/collection/${savedCollectionSlug}`
             });
         } else {
             // 🔥 RESET BREADCRUMB TO NEW MOVIE'S DEFAULT WHEN SESSION IS CLEARED OR ROUTE CHANGES
@@ -376,7 +376,7 @@ export default function UniversalMoviePage({ movie }) {
     }
 
     enrichedDescription += `We provide skip timestamps for ${movie.Title} that help parents and families know exactly what to expect before watching. Avoid unexpected surprises or uncomfortable moments that can interrupt your movie experience. With our timestamps, you can simply skip the scenes you want to avoid and enjoy worry-free movie nights. These timestamps are provided strictly as an educational utility so that parents can censor or skip the scenes while watching with family or kids, or scenes they are personally uncomfortable with. `;
-    
+
     // Add dynamic stats to the schema description to match on-page details
     if (totalScenesFlagged > 0) {
         enrichedDescription += `Timestamps are accurate for the ${currentRuntime}. Total scenes flagged: ${totalScenesFlagged}. Total time to skip: ${formattedTime}. `;
@@ -446,7 +446,7 @@ export default function UniversalMoviePage({ movie }) {
             <Head>
                 <title>{movie.metaTitle}</title>
                 <meta name="description" content={movie.metaDesc} />
-                <link rel="canonical" href={`https://filmiway.com/movie/${movie.slug}`} />
+                <link rel="canonical" href={`https://filmiway.com/movie/${movie.slug}/skip-timestamps`} />
                 <meta property="og:title" content={movie.metaTitle} />
                 <meta property="og:description" content={movie.metaDesc} />
                 <meta property="og:type" content="video.movie" />
@@ -455,7 +455,7 @@ export default function UniversalMoviePage({ movie }) {
                 <link rel="dns-prefetch" href="https://image.tmdb.org" />
                 {movie.backdrop_path && <link rel="preload" as="image" href={`https://image.tmdb.org/t/p/w780${movie.backdrop_path}`} fetchPriority="high" />}
                 {movie.Poster && <link rel="preload" as="image" href={movie.Poster} fetchPriority="high" />}
-                
+
                 {/* 🚀 Injected JSON-LD Schemas */}
                 <script
                     type="application/ld+json"
@@ -472,7 +472,7 @@ export default function UniversalMoviePage({ movie }) {
             <main className="relative z-10 pt-20 sm:pt-24 lg:pt-28 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
                 <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }} className="mb-6 sm:mb-8 relative z-50">
                     <Link href={breadcrumb.url} className="inline-flex items-center gap-1.5 text-gray-500 hover:text-gray-200 transition-colors text-xs sm:text-sm font-medium tracking-[0.1em] uppercase group">
-                        <ChevronLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" /> 
+                        <ChevronLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
                         <span suppressHydrationWarning>{breadcrumb.label}</span>
                     </Link>
                 </motion.div>
@@ -488,12 +488,12 @@ export default function UniversalMoviePage({ movie }) {
                     <div className="flex flex-col sm:flex-row items-center justify-center space-y-3 sm:space-y-0 sm:space-x-3 mb-4">
                         <p className="text-gray-500 text-xs sm:text-sm font-light">Movie data and posters powered by</p>
                         <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer" className="opacity-70 hover:opacity-100 transition-opacity flex items-center">
-                            <Image 
-                                src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg" 
-                                alt="The Movie Database (TMDB)" 
-                                width={100} 
-                                height={14} 
-                                className="h-3.5 sm:h-4 w-auto" 
+                            <Image
+                                src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg"
+                                alt="The Movie Database (TMDB)"
+                                width={100}
+                                height={14}
+                                className="h-3.5 sm:h-4 w-auto"
                             />
                         </a>
                     </div>
@@ -507,28 +507,30 @@ export default function UniversalMoviePage({ movie }) {
 }
 
 export async function getStaticPaths() {
-    const masterDatabase = require('../../utils/masterDatabase.json');
-    return { paths: masterDatabase.map((m) => {
-        const safeSlug = m.slug || (m.Title || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
-        return { params: { slug: safeSlug } };
-    }), fallback: 'blocking' };
+    const masterDatabase = require('../../../utils/masterDatabase.json');
+    return {
+        paths: masterDatabase.map((m) => {
+            const safeSlug = m.slug || (m.Title || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+            return { params: { slug: safeSlug } };
+        }), fallback: 'blocking'
+    };
 }
 
 export async function getStaticProps({ params }) {
-    const masterDatabase = require('../../utils/masterDatabase.json');
-    const tmdbCache = require('../../data/tmdbCache.json');
+    const masterDatabase = require('../../../utils/masterDatabase.json');
+    const tmdbCache = require('../../../data/tmdbCache.json');
     const baseMovie = masterDatabase.find((m) => {
         const safeSlug = m.slug || (m.Title || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
         return safeSlug.toLowerCase().trim() === (params.slug || '').toLowerCase().trim();
     }) || null;
-    const { getPrimaryCollectionForMovie, COLLECTIONS } = require('../../data/collections');
+    const { getPrimaryCollectionForMovie, COLLECTIONS } = require('../../../data/collections');
     if (!baseMovie) return { notFound: true };
-    
+
     const cacheData = tmdbCache[baseMovie.imdbID] || {};
-    
+
     // 🔥 Look up the primary collection for this specific movie
     let primarySlug = getPrimaryCollectionForMovie(baseMovie.imdbID);
-    
+
     // ⚡ FALLBACK: If the collections.js router is outdated, derive the slug directly from the master database!
     if (!primarySlug || (baseMovie.imdbID === 'tt33397980' && primarySlug !== 'best-enemies-to-lovers-movies')) {
         const sourceMap = {
@@ -542,99 +544,99 @@ export async function getStaticProps({ params }) {
     const primaryTitle = primarySlug && COLLECTIONS[primarySlug] ? COLLECTIONS[primarySlug].title : null;
 
     // ⚡ SERVER-SIDE ONLY: Map the correct database collection instantly to avoid 3MB client payload
-    let collectionData = require('../../utils/movieData'); // Fallback
-    switch(primarySlug) {
-        case 'best-survival-movies': collectionData = require('../../utils/survivalMovieData'); break;
-        case 'movies-like-the-matrix': collectionData = require('../../utils/matrixMovieData'); break;
-        case 'movies-like-se7en': collectionData = require('../../utils/se7enMovieData'); break;
-        case 'movies-like-parasite': collectionData = require('../../utils/parasiteMovieData'); break;
-        case 'movies-like-oldboy': collectionData = require('../../utils/oldboyMovieData'); break;
-        case 'movies-like-donnie-darko': collectionData = require('../../utils/donnieDarkoMovieData'); break;
-        case 'movies-like-fight-club': collectionData = require('../../utils/fightClubMovieData'); break;
-        case 'movies-like-black-swan': collectionData = require('../../utils/blackSwanMovieData'); break;
-        case 'movies-like-eyes-wide-shut': collectionData = require('../../utils/eyesWideShutMovieData'); break;
-        case 'movies-like-the-prestige': collectionData = require('../../utils/prestigeMovieData'); break;
-        case 'best-erotic-thriller-movies': collectionData = require('../../utils/eroticThrillerMovieData'); break;
-        case 'best-erotic-romance-movies': collectionData = require('../../utils/eroticRomanceMovieData'); break;
-        case 'best-movies-about-greed': collectionData = require('../../utils/greedMovieData'); break;
-        case 'best-interstellar-movies': 
-        case 'movies-like-interstellar': collectionData = require('../../utils/interstellarMovieData'); break;
-        case 'best-crime-thriller-movies': collectionData = require('../../utils/crimeThrillerMovieData'); break;
-        case 'best-war-films': collectionData = require('../../utils/warFilmsMovieData'); break;
-        case 'best-action-movies-on-hulu': collectionData = require('../../utils/huluActionMovieData'); break;
-        case 'best-romance-movies-on-hulu': collectionData = require('../../utils/huluRomanceMovieData'); break;
-        case 'best-horror-movies-on-hulu': collectionData = require('../../utils/huluHorrorMovieData'); break;
-        case 'best-comedy-movies-on-hulu': collectionData = require('../../utils/huluComedyMovieData'); break;
-        case 'best-sci-fi-movies-on-hulu': collectionData = require('../../utils/huluSciFiMovieData'); break;
-        case 'best-thriller-movies-hulu': collectionData = require('../../utils/huluThrillerMovieData'); break;
-        case 'best-movies-on-hulu': collectionData = require('../../utils/huluBestMoviesData'); break;
-        case 'best-drama-movies-on-hulu': collectionData = require('../../utils/huluDramaMovieData'); break;
-        case 'best-comedy-movies-on-hbo-max': collectionData = require('../../utils/hboMaxComedyMovieData'); break;
-        case 'best-action-movies-on-paramount-plus': collectionData = require('../../utils/paramountActionMovieData'); break;
-        case 'best-sci-fi-movies-on-paramount-plus': collectionData = require('../../utils/paramountSciFiMovieData'); break;
-        case 'best-romance-movies-on-paramount-plus': collectionData = require('../../utils/paramountRomanceMovieData'); break;
-        case 'best-core-drama-movies-on-paramount-plus': collectionData = require('../../utils/paramountDramaMovieData'); break;
-        case 'best-thriller-movies-on-paramount-plus': collectionData = require('../../utils/paramountThrillerMovieData'); break;
-        case 'best-family-movies-on-paramount-plus': collectionData = require('../../utils/paramountFamilyMovieData'); break;
-        case 'best-horror-movies-on-paramount-plus': collectionData = require('../../utils/paramountHorrorMovieData'); break;
-        case 'best-comedy-movies-on-paramount-plus': collectionData = require('../../utils/paramountComedyMovieData'); break;
-        case 'best-movies-on-paramount-plus': collectionData = require('../../utils/paramountBestMoviesData'); break;
-        case 'best-action-adventure-movies-on-peacock': collectionData = require('../../utils/peacockActionAdventureData'); break;
-        case 'best-sci-fi-movies-on-peacock': collectionData = require('../../utils/peacockSciFiMovieData'); break;
-        case 'best-romance-movies-on-peacock': collectionData = require('../../utils/peacockRomanceMovieData'); break;
-        case 'best-family-movies-on-peacock': collectionData = require('../../utils/peacockFamilyMovieData'); break;
-        case 'best-drama-movies-on-peacock': collectionData = require('../../utils/peacockDramaMovieData'); break;
-        case 'best-thriller-movies-on-peacock': collectionData = require('../../utils/peacockThrillerMovieData'); break;
-        case 'best-movies-on-peacock': collectionData = require('../../utils/peacockBestMoviesData'); break;
-        case 'best-comedy-movies-on-peacock': collectionData = require('../../utils/peacockComedyMovieData'); break;
-        case 'best-raunchy-comedy-movies': collectionData = require('../../utils/raunchyComedyMovieData'); break;
-        case 'top-10-road-trip-movies': collectionData = require('../../utils/roadTripMovieData'); break;
-        case 'best-thought-provoking-movies': collectionData = require('../../utils/thoughtProvokingMovieData'); break;
-        case 'best-neo-noir-movies': collectionData = require('../../utils/neoNoirMovieData'); break;
-        case 'best-action-movies': collectionData = require('../../utils/bestActionMoviesData'); break;
-        case 'best-true-story-movies': collectionData = require('../../utils/trueStoryMovieData'); break;
-        case 'best-gangster-movies-of-all-time': collectionData = require('../../utils/gangsterMovieData'); break;
-        case 'best-movies-of-the-decade': collectionData = require('../../utils/decadeMovieData'); break;
-        case 'top-10-book-adaptations': collectionData = require('../../utils/bookAdaptationData'); break;
-        case 'best-marriage-crisis-movies': collectionData = require('../../utils/marriageCrisisMovieData'); break;
-        case 'best-a24-movies': collectionData = require('../../utils/a24MovieData'); break;
-        case 'best-dark-comedy-movies': collectionData = require('../../utils/darkComedyMovieData'); break;
-        case 'best-paul-thomas-anderson-movies': collectionData = require('../../utils/ptaMoviesData'); break;
-        case 'movies-like-basic-instinct': collectionData = require('../../utils/basicInstinctMovieData'); break;
-        case 'best-enemies-to-lovers-movies': collectionData = require('../../utils/enemiesToLoversMovieData'); break;
-        case 'best-family-movies-on-hulu': collectionData = require('../../utils/huluFamilyMovieData'); break;
-        case 'best-action-movies-on-hbo-max': collectionData = require('../../utils/hboActionMovieData'); break;
-        case 'best-romance-movies-on-hbo-max': collectionData = require('../../utils/hboMaxRomanceMovieData'); break;
-        case 'best-thriller-movies-on-hbo-max': collectionData = require('../../utils/hboMaxThrillerMovieData'); break;
-        case 'best-family-movies-on-hbo-max': collectionData = require('../../utils/hboMaxFamilyMovieData'); break;
-        case 'best-sci-fi-movies-on-hbo-max': collectionData = require('../../utils/hboMaxSciFiMovieData'); break;
-        case 'best-horror-movies-on-hbo-max': collectionData = require('../../utils/hboMaxHorrorMovieData'); break;
-        case 'best-movies-on-hbo-max': collectionData = require('../../utils/hboMaxBestMoviesData'); break;
-        case 'best-drama-movies-on-hbo-max': collectionData = require('../../utils/hboMaxDramaMovieData'); break;
-        case 'best-sci-fi-movies': collectionData = require('../../utils/sciFiMovieData'); break;
-        case 'best-thriller-movies': collectionData = require('../../utils/thrillerMovieData'); break;
-        case 'best-mystery-thriller-movies': collectionData = require('../../utils/mysteryThrillerMovieData'); break;
-        case 'best-detective-thriller-movies': collectionData = require('../../utils/detectiveThrillerMovieData'); break;
-        case 'best-psychological-thriller-movies': collectionData = require('../../utils/psychologicalThrillerMovieData'); break;
-        case 'best-heist-thriller-movies': collectionData = require('../../utils/heistThrillerMovieData'); break;
-        case 'best-time-travel-movies': collectionData = require('../../utils/timeTravelMovieData'); break;
-        case 'best-revenge-movies': collectionData = require('../../utils/revengeMovieData'); break;
-        case 'top-10-jennifer-lawrence-movies': collectionData = require('../../utils/jenniferLawrenceMovieData'); break;
-        case 'top-10-monica-bellucci-movies': collectionData = require('../../utils/monicaBellucciMovieData'); break;
+    let collectionData = require('../../../utils/movieData'); // Fallback
+    switch (primarySlug) {
+        case 'best-survival-movies': collectionData = require('../../../utils/survivalMovieData'); break;
+        case 'movies-like-the-matrix': collectionData = require('../../../utils/matrixMovieData'); break;
+        case 'movies-like-se7en': collectionData = require('../../../utils/se7enMovieData'); break;
+        case 'movies-like-parasite': collectionData = require('../../../utils/parasiteMovieData'); break;
+        case 'movies-like-oldboy': collectionData = require('../../../utils/oldboyMovieData'); break;
+        case 'movies-like-donnie-darko': collectionData = require('../../../utils/donnieDarkoMovieData'); break;
+        case 'movies-like-fight-club': collectionData = require('../../../utils/fightClubMovieData'); break;
+        case 'movies-like-black-swan': collectionData = require('../../../utils/blackSwanMovieData'); break;
+        case 'movies-like-eyes-wide-shut': collectionData = require('../../../utils/eyesWideShutMovieData'); break;
+        case 'movies-like-the-prestige': collectionData = require('../../../utils/prestigeMovieData'); break;
+        case 'best-erotic-thriller-movies': collectionData = require('../../../utils/eroticThrillerMovieData'); break;
+        case 'best-erotic-romance-movies': collectionData = require('../../../utils/eroticRomanceMovieData'); break;
+        case 'best-movies-about-greed': collectionData = require('../../../utils/greedMovieData'); break;
+        case 'best-interstellar-movies':
+        case 'movies-like-interstellar': collectionData = require('../../../utils/interstellarMovieData'); break;
+        case 'best-crime-thriller-movies': collectionData = require('../../../utils/crimeThrillerMovieData'); break;
+        case 'best-war-films': collectionData = require('../../../utils/warFilmsMovieData'); break;
+        case 'best-action-movies-on-hulu': collectionData = require('../../../utils/huluActionMovieData'); break;
+        case 'best-romance-movies-on-hulu': collectionData = require('../../../utils/huluRomanceMovieData'); break;
+        case 'best-horror-movies-on-hulu': collectionData = require('../../../utils/huluHorrorMovieData'); break;
+        case 'best-comedy-movies-on-hulu': collectionData = require('../../../utils/huluComedyMovieData'); break;
+        case 'best-sci-fi-movies-on-hulu': collectionData = require('../../../utils/huluSciFiMovieData'); break;
+        case 'best-thriller-movies-hulu': collectionData = require('../../../utils/huluThrillerMovieData'); break;
+        case 'best-movies-on-hulu': collectionData = require('../../../utils/huluBestMoviesData'); break;
+        case 'best-drama-movies-on-hulu': collectionData = require('../../../utils/huluDramaMovieData'); break;
+        case 'best-comedy-movies-on-hbo-max': collectionData = require('../../../utils/hboMaxComedyMovieData'); break;
+        case 'best-action-movies-on-paramount-plus': collectionData = require('../../../utils/paramountActionMovieData'); break;
+        case 'best-sci-fi-movies-on-paramount-plus': collectionData = require('../../../utils/paramountSciFiMovieData'); break;
+        case 'best-romance-movies-on-paramount-plus': collectionData = require('../../../utils/paramountRomanceMovieData'); break;
+        case 'best-core-drama-movies-on-paramount-plus': collectionData = require('../../../utils/paramountDramaMovieData'); break;
+        case 'best-thriller-movies-on-paramount-plus': collectionData = require('../../../utils/paramountThrillerMovieData'); break;
+        case 'best-family-movies-on-paramount-plus': collectionData = require('../../../utils/paramountFamilyMovieData'); break;
+        case 'best-horror-movies-on-paramount-plus': collectionData = require('../../../utils/paramountHorrorMovieData'); break;
+        case 'best-comedy-movies-on-paramount-plus': collectionData = require('../../../utils/paramountComedyMovieData'); break;
+        case 'best-movies-on-paramount-plus': collectionData = require('../../../utils/paramountBestMoviesData'); break;
+        case 'best-action-adventure-movies-on-peacock': collectionData = require('../../../utils/peacockActionAdventureData'); break;
+        case 'best-sci-fi-movies-on-peacock': collectionData = require('../../../utils/peacockSciFiMovieData'); break;
+        case 'best-romance-movies-on-peacock': collectionData = require('../../../utils/peacockRomanceMovieData'); break;
+        case 'best-family-movies-on-peacock': collectionData = require('../../../utils/peacockFamilyMovieData'); break;
+        case 'best-drama-movies-on-peacock': collectionData = require('../../../utils/peacockDramaMovieData'); break;
+        case 'best-thriller-movies-on-peacock': collectionData = require('../../../utils/peacockThrillerMovieData'); break;
+        case 'best-movies-on-peacock': collectionData = require('../../../utils/peacockBestMoviesData'); break;
+        case 'best-comedy-movies-on-peacock': collectionData = require('../../../utils/peacockComedyMovieData'); break;
+        case 'best-raunchy-comedy-movies': collectionData = require('../../../utils/raunchyComedyMovieData'); break;
+        case 'top-10-road-trip-movies': collectionData = require('../../../utils/roadTripMovieData'); break;
+        case 'best-thought-provoking-movies': collectionData = require('../../../utils/thoughtProvokingMovieData'); break;
+        case 'best-neo-noir-movies': collectionData = require('../../../utils/neoNoirMovieData'); break;
+        case 'best-action-movies': collectionData = require('../../../utils/bestActionMoviesData'); break;
+        case 'best-true-story-movies': collectionData = require('../../../utils/trueStoryMovieData'); break;
+        case 'best-gangster-movies-of-all-time': collectionData = require('../../../utils/gangsterMovieData'); break;
+        case 'best-movies-of-the-decade': collectionData = require('../../../utils/decadeMovieData'); break;
+        case 'top-10-book-adaptations': collectionData = require('../../../utils/bookAdaptationData'); break;
+        case 'best-marriage-crisis-movies': collectionData = require('../../../utils/marriageCrisisMovieData'); break;
+        case 'best-a24-movies': collectionData = require('../../../utils/a24MovieData'); break;
+        case 'best-dark-comedy-movies': collectionData = require('../../../utils/darkComedyMovieData'); break;
+        case 'best-paul-thomas-anderson-movies': collectionData = require('../../../utils/ptaMoviesData'); break;
+        case 'movies-like-basic-instinct': collectionData = require('../../../utils/basicInstinctMovieData'); break;
+        case 'best-enemies-to-lovers-movies': collectionData = require('../../../utils/enemiesToLoversMovieData'); break;
+        case 'best-family-movies-on-hulu': collectionData = require('../../../utils/huluFamilyMovieData'); break;
+        case 'best-action-movies-on-hbo-max': collectionData = require('../../../utils/hboActionMovieData'); break;
+        case 'best-romance-movies-on-hbo-max': collectionData = require('../../../utils/hboMaxRomanceMovieData'); break;
+        case 'best-thriller-movies-on-hbo-max': collectionData = require('../../../utils/hboMaxThrillerMovieData'); break;
+        case 'best-family-movies-on-hbo-max': collectionData = require('../../../utils/hboMaxFamilyMovieData'); break;
+        case 'best-sci-fi-movies-on-hbo-max': collectionData = require('../../../utils/hboMaxSciFiMovieData'); break;
+        case 'best-horror-movies-on-hbo-max': collectionData = require('../../../utils/hboMaxHorrorMovieData'); break;
+        case 'best-movies-on-hbo-max': collectionData = require('../../../utils/hboMaxBestMoviesData'); break;
+        case 'best-drama-movies-on-hbo-max': collectionData = require('../../../utils/hboMaxDramaMovieData'); break;
+        case 'best-sci-fi-movies': collectionData = require('../../../utils/sciFiMovieData'); break;
+        case 'best-thriller-movies': collectionData = require('../../../utils/thrillerMovieData'); break;
+        case 'best-mystery-thriller-movies': collectionData = require('../../../utils/mysteryThrillerMovieData'); break;
+        case 'best-detective-thriller-movies': collectionData = require('../../../utils/detectiveThrillerMovieData'); break;
+        case 'best-psychological-thriller-movies': collectionData = require('../../../utils/psychologicalThrillerMovieData'); break;
+        case 'best-heist-thriller-movies': collectionData = require('../../../utils/heistThrillerMovieData'); break;
+        case 'best-time-travel-movies': collectionData = require('../../../utils/timeTravelMovieData'); break;
+        case 'best-revenge-movies': collectionData = require('../../../utils/revengeMovieData'); break;
+        case 'top-10-jennifer-lawrence-movies': collectionData = require('../../../utils/jenniferLawrenceMovieData'); break;
+        case 'top-10-monica-bellucci-movies': collectionData = require('../../../utils/monicaBellucciMovieData'); break;
     }
 
     const assignedFallbackTagline = UNIVERSAL_FALLBACK_TAGLINES[(baseMovie.tmdbId || 0) % UNIVERSAL_FALLBACK_TAGLINES.length];
 
     const resolvedMovieInfo = collectionData?.COMPLETE_MOVIE_DATA?.[baseMovie.tmdbId] || null;
-    const isTrueStory = require('../../utils/trueStoryMovieData').COMPLETE_MOVIE_DATABASE.some(m => m.imdbID === baseMovie.imdbID);
-    
+    const isTrueStory = require('../../../utils/trueStoryMovieData').COMPLETE_MOVIE_DATABASE.some(m => m.imdbID === baseMovie.imdbID);
+
     // ⚡ PRE-CALCULATE SEO METADATA HERE TO SAVE CLIENT PAYLOAD
-    const masterTimestamps = require('../../utils/masterTimestamps.json');
+    const masterTimestamps = require('../../../utils/masterTimestamps.json');
     const rawSensitiveData = masterTimestamps[String(baseMovie.tmdbId)];
     const sensitiveData = rawSensitiveData || { scenes: [] };
-    
+
     const hardcodedScenes = collectionData?.SENSITIVE_TIMELINES?.[baseMovie.tmdbId]?.scenes || [];
-    
+
     // ✅ FIX: Make masterTimestamps the absolute single source of truth to prevent duplicates.
     // If masterTimestamps has an entry for this movie, USE IT ALONE (ignoring the old buggy hardcoded data).
     // Otherwise, fall back to the old hardcoded scenes.
@@ -651,7 +653,7 @@ export async function getStaticProps({ params }) {
         metaDesc = `Filmiway editors have manually verified that ${baseMovie.Title} has zero intimate scenes in its full ${currentRuntime} runtime.`;
     } else {
         metaTitle = `${baseMovie.Title} Parents Guide: Timestamps to Skip Intimate Scenes`;
-        
+
         const sortedScenes = [...resolvedSensitiveScenes].sort((a, b) => {
             const aIsSevere = a.type?.toLowerCase().match(/sex|nudity|explicit/);
             const bIsSevere = b.type?.toLowerCase().match(/sex|nudity|explicit/);
@@ -718,7 +720,7 @@ export async function getStaticProps({ params }) {
     ]);
 
     let safetyScore = 10;
-    
+
     // 1. Age Rating Baseline (Ceiling)
     if (ageRating.includes('R') || ageRating.includes('NC-17') || ageRating.includes('TV-MA') || ageRating.includes('18')) {
         safetyScore = Math.min(safetyScore, 7);
@@ -752,9 +754,9 @@ export async function getStaticProps({ params }) {
     const parentGuideSummary = (movie.Summary || '').toLowerCase();
     const hasHighProfanity = parentGuideSummary.includes('severe language') || parentGuideSummary.includes('pervasive language') || parentGuideSummary.includes('strong profanity') || parentGuideSummary.includes('extreme profanity');
     const hasHighViolence = parentGuideSummary.includes('severe violence') || parentGuideSummary.includes('strong bloody violence') || parentGuideSummary.includes('graphic gore') || parentGuideSummary.includes('extreme violence');
-    
+
     const isRRated = ageRating.includes('R') || ageRating.includes('NC-17') || ageRating.includes('TV-MA') || ageRating.includes('18');
-    
+
     if (isRRated && heavyScenes.length === 0) {
         if (hasHighProfanity || hasHighViolence) {
             safetyScore = Math.min(safetyScore, 6);
@@ -777,22 +779,22 @@ export async function getStaticProps({ params }) {
     let safetyLabel = "";
     switch (safetyScore) {
         case 10: safetyLabel = "Family Friendly"; break;
-        case 9:  safetyLabel = "Family Watch Recommended"; break;
-        case 8:  safetyLabel = "Mostly Family Friendly"; break;
-        case 7:  safetyLabel = "Parental Guidance Suggested"; break;
-        case 6:  safetyLabel = "Mature Audience Recommended"; break;
-        case 5:  safetyLabel = "Watch With Caution"; break;
-        case 4:  safetyLabel = "Not Family Friendly"; break;
-        case 3:  safetyLabel = "Avoid Family Viewing"; break;
-        case 2:  safetyLabel = "Adult Viewing Recommended"; break;
-        case 1:  safetyLabel = "Strictly Adults Only"; break;
+        case 9: safetyLabel = "Family Watch Recommended"; break;
+        case 8: safetyLabel = "Mostly Family Friendly"; break;
+        case 7: safetyLabel = "Parental Guidance Suggested"; break;
+        case 6: safetyLabel = "Mature Audience Recommended"; break;
+        case 5: safetyLabel = "Watch With Caution"; break;
+        case 4: safetyLabel = "Not Family Friendly"; break;
+        case 3: safetyLabel = "Avoid Family Viewing"; break;
+        case 2: safetyLabel = "Adult Viewing Recommended"; break;
+        case 1: safetyLabel = "Strictly Adults Only"; break;
         default: safetyLabel = "Use discretion"; break;
     }
-    
+
     movie.safetyScore = safetyScore;
     movie.safetyLabel = safetyLabel;
     movie.safetyDesc = universalSafetyDesc;
 
-    
+
     return { props: { movie } };
 }

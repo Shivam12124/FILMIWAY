@@ -62,6 +62,9 @@ const nextConfig = {
       // Essential redirects
       { source: '/contact', destination: '/contact-us', permanent: true },
 
+      // 🔥 HARD RESET: Mass URL Restructure to bypass SafeSearch
+      { source: '/movie/:slug', destination: '/movie/:slug/skip-timestamps', permanent: true },
+
       // 🔥 FIXED SLUG REDIRECTS
       { source: '/movie/malna', destination: '/movie/malena', permanent: true },
       { source: '/movie/irrversible', destination: '/movie/irreversible', permanent: true },

@@ -131,7 +131,7 @@ const MovieResultItem = ({ movie }) => {
 
   return (
     <li>
-      <Link href={`/movie/${movie.movieSlug}`} onClick={handleSearchMovieClick} className="flex items-center group p-2 rounded-xl hover:bg-gray-800/50 transition-colors border border-transparent hover:border-white/5">
+      <Link href={`/movie/${movie.movieSlug}/skip-timestamps`} onClick={handleSearchMovieClick} className="flex items-center group p-2 rounded-xl hover:bg-gray-800/50 transition-colors border border-transparent hover:border-white/5">
         {movie.poster && !imgError ? (
           <div className="w-12 h-16 relative mr-4 flex-shrink-0 rounded-lg overflow-hidden bg-gray-800 border border-white/10 shadow-md">
             <Image 

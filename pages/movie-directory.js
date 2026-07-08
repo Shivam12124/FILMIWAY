@@ -199,7 +199,7 @@ export default function MovieDirectory({ sortedMovies }) {
                         <li key={movie.imdbID} className="flex items-start group">
                           <span className="text-yellow-500/30 mr-3 mt-1 text-xs font-mono group-hover:text-yellow-400 transition-colors duration-300">»</span>
                           <Link 
-                            href={`/movie/${movie.movieSlug}`}
+                            href={`/movie/${movie.movieSlug}/skip-timestamps`}
                             onClick={() => handleDirectoryMovieClick(movie)}
                             className="text-gray-300 hover:text-yellow-400 transition-colors duration-200 text-sm sm:text-base leading-snug font-medium"
                             prefetch={false} // Prevents Next.js from pre-loading data for all linked pages immediately
