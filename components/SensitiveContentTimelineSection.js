@@ -388,6 +388,47 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
         >
+            {/* 🎨 Premium scrollbar (desktop) + severity accent bar (all devices) */}
+            <style>{`
+                @media (min-width: 1024px) {
+                    .desktop-timestamp-scroll::-webkit-scrollbar {
+                        width: 5px;
+                    }
+                    .desktop-timestamp-scroll::-webkit-scrollbar-track {
+                        background: transparent;
+                    }
+                    .desktop-timestamp-scroll::-webkit-scrollbar-thumb {
+                        background: rgba(255, 255, 255, 0.08);
+                        border-radius: 10px;
+                    }
+                    .desktop-timestamp-scroll::-webkit-scrollbar-thumb:hover {
+                        background: rgba(234, 179, 8, 0.25);
+                    }
+                    .desktop-timestamp-scroll {
+                        scrollbar-width: thin;
+                        scrollbar-color: rgba(255,255,255,0.08) transparent;
+                    }
+                }
+                .timestamp-card-list .group {
+                    position: relative;
+                    overflow: hidden;
+                }
+                .timestamp-card-list .group::before {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    bottom: 0;
+                    width: 3px;
+                    border-radius: 3px 0 0 3px;
+                    background: var(--accent-color, rgba(107,114,128,0.5));
+                    opacity: 0.6;
+                    transition: opacity 0.3s ease;
+                }
+                .timestamp-card-list .group:hover::before {
+                    opacity: 1;
+                }
+            `}</style>
             {filteredHeavyScenes.length === 0 ? (
                 <div className="flex flex-col gap-4 sm:gap-6 relative z-50">
                     <div className="space-y-3 w-full">
@@ -590,9 +631,11 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                 </motion.div>
             )}
 
+            {/* 🔥 DESKTOP LAYOUT FIX: Desktop ONLY gets the scrollable pane. Mobile remains 100% exactly as it was. */}
             <div className="relative mt-4 sm:mt-6">
+                <div className="lg:max-h-[520px] lg:overflow-y-auto lg:overflow-x-hidden lg:pr-1 desktop-timestamp-scroll">
                 {/* 🚀 SEO UPGRADE: Changed div to ul for semantic list extraction */}
-                <ul className="divide-y divide-white/5 m-0 p-0 list-none">
+                <ul className="space-y-2 sm:space-y-2.5 m-0 p-0 list-none timestamp-card-list">
                     {sensitiveData.scenes.map((scene, index) => {
                         const rawStart = scene.start || '';
                         const sceneEnd = scene.end || '';
@@ -620,7 +663,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                         const isGeneralWarning = rawStart === '' || rawStart.toLowerCase() === 'none';
 
                         return (
-                            <li key={index} className="group p-3.5 sm:px-5 sm:py-3.5 hover:bg-white/[0.03] transition-colors duration-200 flex flex-col sm:flex-row sm:items-center gap-2.5 sm:gap-4">
+                            <li key={index} className="group rounded-lg sm:rounded-xl border border-white/[0.06] bg-white/[0.015] hover:bg-white/[0.04] hover:border-white/[0.12] transition-all duration-300 flex flex-col sm:flex-row sm:items-center gap-2.5 sm:gap-4 p-3.5 pl-5 sm:px-6 sm:py-4" style={{ '--accent-color': getMarkerColorHex(scene.severity) }}>
                                 {isGeneralWarning ? (
                                     // 🚀 NEW: Clean Layout for General Warnings (No timestamp, but has data)
                                     <div className="flex items-start gap-3 w-full">
@@ -689,6 +732,9 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                         );
                     })}
                 </ul>
+                </div>
+                {/* 🎨 DESKTOP-ONLY: Subtle bottom fade to hint "scroll for more" — reduced opacity so text stays readable */}
+                <div className="hidden lg:block pointer-events-none absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-[#0a0a0c]/60 to-transparent rounded-b-xl z-10" />
             </div>
 
             {/* 🔥 ENHANCED ENGAGEMENT FOOTER: Designed for maximum CTR */}
