@@ -377,6 +377,12 @@
         "Title": "A Clockwork Orange",
         "scenes": [
             {
+                "start": "0:01:25",
+                "end": "0:02:17",
+                "type": "Nudity (Sculpture)",
+                "severity": "Moderate"
+            },
+            {
                 "start": "0:05:04",
                 "end": "0:06:07",
                 "type": "Sexual Content",
@@ -385,14 +391,44 @@
             {
                 "start": "0:12:12",
                 "end": "0:13:23",
-                "type": "Nudity (Woman)",
+                "type": "Nudity(Woman)",
                 "severity": "High"
+            },
+            {
+                "start": "0:13:39",
+                "end": "0:16:48",
+                "type": "Nudity(Sculpture)",
+                "severity": "Moderate"
+            },
+            {
+                "start": "0:17:47",
+                "end": "0:19:25",
+                "type": "Nudity (Painting)",
+                "severity": "Moderate"
+            },
+            {
+                "start": "0:21:46",
+                "end": "0:24:40",
+                "type": "Suggestive clothing (Man in underwear)",
+                "severity": "Mild"
             },
             {
                 "start": "0:28:25",
                 "end": "0:29:03",
                 "type": "Sex & Nudity",
                 "severity": "High"
+            },
+            {
+                "start": "0:36:31",
+                "end": "0:37:22",
+                "type": "Nudity (Painting)",
+                "severity": "Moderate"
+            },
+            {
+                "start": "0:39:05",
+                "end": "0:42:57",
+                "type": "Nudity (Painting)",
+                "severity": "Moderate"
             },
             {
                 "start": "0:52:39",
@@ -792,7 +828,7 @@
             {
                 "start": "0:13:10",
                 "end": "0:15:00",
-                "type": "Nudity (Woman)",
+                "type": "Nudity(Woman)",
                 "severity": "High"
             },
             {
@@ -804,13 +840,13 @@
             {
                 "start": "0:21:20",
                 "end": "0:21:28",
-                "type": "Nudity (Woman)",
+                "type": "Nudity(Woman)",
                 "severity": "Moderate"
             },
             {
                 "start": "0:21:40",
                 "end": "0:21:50",
-                "type": "Nudity (Woman)",
+                "type": "Nudity(Woman)",
                 "severity": "Moderate"
             },
             {
@@ -945,6 +981,12 @@
     "387": {
         "Title": "Das Boot",
         "scenes": [
+            {
+                "start": "0:09:42",
+                "end": "0:09:47",
+                "type": "Nudity (Painting)",
+                "severity": "Moderate"
+            },
             {
                 "start": "0:17:13",
                 "end": "0:17:16",
@@ -1558,6 +1600,12 @@
         "Title": "Easy Rider",
         "scenes": [
             {
+                "start": "1:15:30",
+                "end": "1:16:22",
+                "type": "Nudity (Paintings)",
+                "severity": "Moderate"
+            },
+            {
                 "start": "1:25:16",
                 "end": "1:27:45",
                 "type": "Sex & Nudity",
@@ -1732,7 +1780,7 @@
             {
                 "start": "0:04:30",
                 "end": "0:04:57",
-                "type": "Nudity (Woman)",
+                "type": "Nudity(Woman)",
                 "severity": "Mild"
             },
             {
@@ -1843,8 +1891,8 @@
             {
                 "start": "45:00",
                 "end": "46:00",
-                "type": "Sexual Content",
-                "severity": "Moderate"
+                "type": "Intimacy",
+                "severity": "Mild"
             }
         ]
     },
@@ -1854,7 +1902,7 @@
             {
                 "start": "1:01:45",
                 "end": "1:01:50",
-                "type": "Nudity (Woman)",
+                "type": "Nudity(Woman)",
                 "severity": "Mild"
             },
             {
@@ -2401,7 +2449,7 @@
             {
                 "start": "0:23:32",
                 "end": "0:24:30",
-                "type": "Nudity",
+                "type": "Nudity (Blurred)",
                 "severity": "Moderate"
             },
             {
@@ -2803,7 +2851,7 @@
             {
                 "start": "0:17:10",
                 "end": "0:18:10",
-                "type": "Partial Nudity",
+                "type": "Partial nudity",
                 "severity": "Mild"
             }
         ]
@@ -3419,7 +3467,7 @@
             {
                 "start": "0:18:00",
                 "end": "0:19:00",
-                "type": "Nudity (Woman)",
+                "type": "Nudity (woman)",
                 "severity": "High"
             }
         ]
@@ -4740,6 +4788,12 @@
                 "severity": "Moderate"
             },
             {
+                "start": "0:49:15",
+                "end": "0:49:30",
+                "type": "Nudity (Sculpture)",
+                "severity": "Moderate"
+            },
+            {
                 "start": "1:02:22",
                 "end": "1:02:57",
                 "type": "Sexual Content",
@@ -4942,6 +4996,12 @@
         "Title": "To Live and Die in L.A.",
         "scenes": [
             {
+                "start": "0:07:57",
+                "end": "0:08:08",
+                "type": "Nudity (Sculpture)",
+                "severity": "Mild"
+            },
+            {
                 "start": "0:37:37",
                 "end": "0:37:44",
                 "type": "Sexual Content",
@@ -4952,6 +5012,12 @@
                 "end": "0:45:38",
                 "type": "Nudity (Man & Woman) & Sexual Content",
                 "severity": "High"
+            },
+            {
+                "start": "0:49:48",
+                "end": "0:50:18",
+                "type": "Nudity (Painting)",
+                "severity": "Moderate"
             },
             {
                 "start": "0:59:08",
@@ -5982,7 +6048,7 @@
             {
                 "start": "1:15:00",
                 "end": "1:15:07",
-                "type": "Partial Nudity",
+                "type": "Partial nudity",
                 "severity": "Mild"
             }
         ]
@@ -6358,7 +6424,7 @@
             {
                 "start": "0:30:55",
                 "end": "0:40:12",
-                "type": "Nudity (Woman)",
+                "type": "Nudity(Woman)",
                 "severity": "High"
             }
         ]
@@ -6375,7 +6441,7 @@
             {
                 "start": "0:24:00",
                 "end": "0:24:10",
-                "type": "Nudity (Woman)",
+                "type": "Nudity(Woman)",
                 "severity": "Mild"
             }
         ]
@@ -7218,6 +7284,12 @@
         "Title": "American Hustle",
         "scenes": [
             {
+                "start": "0:10:27",
+                "end": "0:10:45",
+                "type": "Suggestive Clothing (Revealing Clothes)",
+                "severity": "High"
+            },
+            {
                 "start": "0:19:54",
                 "end": "0:20:18",
                 "type": "Nudity & Sex",
@@ -7419,7 +7491,7 @@
             {
                 "start": "44:21",
                 "end": "44:38",
-                "type": "Nudity (Woman)",
+                "type": "Nudity(Woman)",
                 "severity": "High"
             },
             {
@@ -7546,13 +7618,13 @@
             {
                 "start": "0:13:40",
                 "end": "0:13:45",
-                "type": "Partial Nudity",
+                "type": "Partial nudity",
                 "severity": "Mild"
             },
             {
                 "start": "1:07:45",
                 "end": "1:08:37",
-                "type": "Partial Nudity",
+                "type": "Partial nudity",
                 "severity": "Mild"
             }
         ]
@@ -7868,7 +7940,7 @@
             {
                 "start": "0:21:45",
                 "end": "0:21:51",
-                "type": "Nudity (Woman)",
+                "type": "Nudity (woman)",
                 "severity": "High"
             },
             {
@@ -7886,7 +7958,7 @@
             {
                 "start": "1:48:38",
                 "end": "1:48:48",
-                "type": "Nudity (Woman)",
+                "type": "Nudity (woman)",
                 "severity": "High"
             },
             {
@@ -8570,7 +8642,7 @@
             {
                 "start": "0:19:15",
                 "end": "0:29:10",
-                "type": "Nudity (Woman)",
+                "type": "Nudity(Woman)",
                 "severity": "High"
             }
         ]
@@ -8958,7 +9030,7 @@
             {
                 "start": "1:08:35",
                 "end": "1:11:25",
-                "type": "Nudity (Woman)",
+                "type": "Nudity (woman)",
                 "severity": "Moderate"
             },
             {
@@ -9219,13 +9291,13 @@
             {
                 "start": "00:38:40",
                 "end": "00:39:20",
-                "type": "Nudity (Woman)",
+                "type": "Nudity(Woman)",
                 "severity": "Moderate"
             },
             {
                 "start": "00:53:15",
                 "end": "00:53:25",
-                "type": "Nudity (Woman)",
+                "type": "Nudity(Woman)",
                 "severity": "Moderate"
             }
         ]
@@ -9578,6 +9650,12 @@
                 "end": "0:49:21",
                 "type": "Sex",
                 "severity": "High"
+            },
+            {
+                "start": "0:52:03",
+                "end": "0:52:07",
+                "type": "Sexual Content (Drawing)",
+                "severity": "Mild"
             },
             {
                 "start": "1:17:00",
