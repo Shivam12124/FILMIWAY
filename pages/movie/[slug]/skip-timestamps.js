@@ -796,6 +796,75 @@ export async function getStaticProps({ params }) {
     movie.safetyLabel = safetyLabel;
     movie.safetyDesc = universalSafetyDesc;
 
+    // --- DYNAMIC SIMILAR MOVIES ENGINE (SEO & Internal Linking) ---
+    const masterTimestampsData = require('../../../utils/masterTimestamps.json');
+    let similarMovies = [];
+    if (primarySlug && COLLECTIONS[primarySlug] && COLLECTIONS[primarySlug].movies) {
+        let collectionImdbIDs = COLLECTIONS[primarySlug].movies.filter(id => id !== baseMovie.imdbID);
+        
+        // Filter out empty (noindex) movies and apply family safety guard
+        let candidateIDs = collectionImdbIDs.filter(id => {
+            const m = masterDatabase.find(dbm => dbm.imdbID === id);
+            if (!m) return false;
+            
+            const tsData = masterTimestampsData[String(m.tmdbId)] || { scenes: [] };
+            const hasTimestamps = tsData.scenes && tsData.scenes.length > 0;
+            const hasSummary = !!(tsData.Summary && tsData.Summary.trim().length);
+            if (!hasTimestamps && !hasSummary) return false;
+            
+            if (movie.Rated === 'PG' || movie.Rated === 'PG-13' || movie.Rated === 'G') {
+                 const candTmdb = tmdbCache[id] || {};
+                 const candRating = (candTmdb.ageRating || 'NR').toUpperCase();
+                 if (candRating === 'R' || candRating === 'NC-17') return false;
+            }
+            return true;
+        });
+
+        // Get details for up to 4 movies
+        for (let i = 0; i < candidateIDs.length && similarMovies.length < 4; i++) {
+            const id = candidateIDs[i];
+            const m = masterDatabase.find(dbm => dbm.imdbID === id);
+            if (m) {
+                const cData = tmdbCache[id] || {};
+                similarMovies.push({
+                    title: m.Title,
+                    slug: m.slug,
+                    poster: cData.poster_path ? `${cData.poster_path}` : null 
+                });
+            }
+        }
+    }
+
+    // Fallback if not enough movies found
+    if (similarMovies.length < 4) {
+        const fallbacks = ['tt0111161', 'tt0468569', 'tt0137523', 'tt0993846']; 
+        const safeFallbacks = ['tt0109830', 'tt0120737', 'tt0241527', 'tt0499549'];
+        const isFamilySafe = (movie.Rated === 'PG' || movie.Rated === 'PG-13' || movie.Rated === 'G');
+        const fallbackIDs = isFamilySafe ? safeFallbacks : fallbacks;
+        
+        for (let id of fallbackIDs) {
+            if (id === baseMovie.imdbID) continue;
+            if (similarMovies.length >= 4) break;
+            if (similarMovies.find(sm => sm.title === masterDatabase.find(dbm => dbm.imdbID === id)?.Title)) continue;
+
+            const m = masterDatabase.find(dbm => dbm.imdbID === id);
+            if (m) {
+                 const tsData = masterTimestampsData[String(m.tmdbId)] || { scenes: [] };
+                 const hasTimestamps = tsData.scenes && tsData.scenes.length > 0;
+                 const hasSummary = !!(tsData.Summary && tsData.Summary.trim().length);
+                 if (hasTimestamps || hasSummary) {
+                     const cData = tmdbCache[id] || {};
+                     similarMovies.push({
+                         title: m.Title,
+                         slug: m.slug,
+                         poster: cData.poster_path ? `${cData.poster_path}` : null 
+                     });
+                 }
+            }
+        }
+    }
+    
+    movie.similarMovies = similarMovies;
 
     return { props: { movie } };
 }

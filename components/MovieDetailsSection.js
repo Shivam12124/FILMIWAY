@@ -991,7 +991,7 @@ const MovieDetailsSection = React.memo(({
 
       {/* ⚡ CLS FIX: Reserve height for Firebase comments so mobile layout stays locked and smooth! */}
       <div className="w-full min-h-[350px] sm:min-h-[300px] bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8 overflow-hidden clean-injected-component">
-        <FanFavoritesSection currentMovieSlug={movie.slug} />
+        <FanFavoritesSection currentMovieSlug={movie.slug} similarMovies={movie.similarMovies} />
       </div>
 
       <div className="w-full bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8">
