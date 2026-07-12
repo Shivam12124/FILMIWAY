@@ -446,6 +446,7 @@ export default function UniversalMoviePage({ movie }) {
             <Head>
                 <title>{movie.metaTitle}</title>
                 <meta name="description" content={movie.metaDesc} />
+                {(!hasTimestamps && !movie.Summary) && <meta name="robots" content="noindex" />}
                 <link rel="canonical" href={`https://filmiway.com/movie/${movie.slug}/skip-timestamps`} />
                 <meta property="og:title" content={movie.metaTitle} />
                 <meta property="og:description" content={movie.metaDesc} />

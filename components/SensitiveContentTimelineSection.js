@@ -432,10 +432,10 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
             {filteredHeavyScenes.length === 0 ? (
                 <div className="flex flex-col gap-4 sm:gap-6 relative z-50">
                     <div className="space-y-3 w-full">
-                        <div className="flex items-center justify-between w-full">
-                            <h1 className="text-xl sm:text-2xl font-light text-gray-200 flex items-center gap-3 tracking-wide leading-tight">
-                                <CheckCircle className="text-emerald-500 w-6 h-6 shrink-0" />
-                                <span>{movie?.Title} Parents Guide (Clean)</span>
+                        <div className="flex items-start sm:items-center justify-between w-full gap-2">
+                            <h1 className="text-xl sm:text-2xl font-light text-gray-200 flex items-start sm:items-center gap-2 sm:gap-3 leading-tight flex-1">
+                                <CheckCircle className="text-emerald-500 w-5 h-5 sm:w-6 sm:h-6 shrink-0 mt-0.5 sm:mt-0" />
+                                <span className="block">{movie?.Title} Parents Guide (Clean)</span>
                             </h1>
                         </div>
                         {minimalistSafetyBadge}
@@ -470,14 +470,14 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                 <div className="flex flex-col gap-4 sm:gap-6 relative z-50">
 
                     <div className="space-y-3 w-full">
-                        <div className="flex items-center justify-between w-full">
-                            <h1 className="text-xl sm:text-2xl font-light text-gray-200 flex items-center gap-3 tracking-wide leading-tight">
-                                <Shield className="text-red-500 w-6 h-6 shrink-0" />
-                                <span>{movie?.Title} Parents Guide & Skip Timestamps</span>
+                        <div className="flex items-start sm:items-center justify-between w-full gap-2">
+                            <h1 className="text-xl sm:text-2xl font-light text-gray-200 flex items-start sm:items-center gap-2 sm:gap-3 leading-tight flex-1">
+                                <Shield className="text-red-500 w-5 h-5 sm:w-6 sm:h-6 shrink-0 mt-0.5 sm:mt-0" />
+                                <span className="block">{movie?.Title} Parents Guide & Skip Timestamps</span>
                             </h1>
 
                             <div
-                                className="relative flex items-center ml-1 shrink-0 z-50"
+                                className="relative flex items-center shrink-0 z-50 pt-0.5 sm:pt-0"
                                 ref={infoRef}
                             >
                                 <button
