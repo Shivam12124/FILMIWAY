@@ -392,21 +392,22 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
             <style>{`
                 @media (min-width: 1024px) {
                     .desktop-timestamp-scroll::-webkit-scrollbar {
-                        width: 5px;
+                        width: 6px;
                     }
                     .desktop-timestamp-scroll::-webkit-scrollbar-track {
-                        background: transparent;
+                        background: rgba(255, 255, 255, 0.03);
+                        border-radius: 10px;
                     }
                     .desktop-timestamp-scroll::-webkit-scrollbar-thumb {
-                        background: rgba(255, 255, 255, 0.08);
+                        background: rgba(234, 179, 8, 0.5);
                         border-radius: 10px;
                     }
                     .desktop-timestamp-scroll::-webkit-scrollbar-thumb:hover {
-                        background: rgba(234, 179, 8, 0.25);
+                        background: rgba(234, 179, 8, 0.8);
                     }
                     .desktop-timestamp-scroll {
                         scrollbar-width: thin;
-                        scrollbar-color: rgba(255,255,255,0.08) transparent;
+                        scrollbar-color: rgba(234, 179, 8, 0.5) transparent;
                     }
                 }
                 .timestamp-card-list .group {
