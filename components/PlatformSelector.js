@@ -6,25 +6,25 @@ const platforms = [
   {
     id: 'hulu',
     name: 'Hulu',
-    logo: 'https://upload.wikimedia.org/wikipedia/commons/e/e4/Hulu_Logo.svg',
+    logo: '/logos/hulu.svg',
     color: 'from-[#1CE783]/20 to-[#1CE783]/5 hover:bg-[#1CE783]/10 border-[#1CE783]/30',
   },
   {
     id: 'hbo-max',
     name: 'HBO Max',
-    logo: 'https://upload.wikimedia.org/wikipedia/commons/b/b3/HBO_Max_%282025%29.svg',
+    logo: '/logos/hbo-max.svg',
     color: 'from-[#002be7]/20 to-[#002be7]/5 hover:bg-[#002be7]/10 border-[#002be7]/30',
   },
   {
     id: 'paramount-plus',
     name: 'Paramount+',
-    logo: 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Paramount%2B_logo.svg',
+    logo: '/logos/paramount-plus.svg',
     color: 'from-[#0057ff]/20 to-[#0057ff]/5 hover:bg-[#0057ff]/10 border-[#0057ff]/30',
   },
   {
     id: 'peacock',
     name: 'Peacock',
-    logo: 'https://upload.wikimedia.org/wikipedia/commons/d/d3/NBCUniversal_Peacock_Logo.svg',
+    logo: '/logos/peacock.svg',
     color: 'from-[#000000]/40 to-[#000000]/20 hover:bg-white/5 border-white/10',
   },
 ];
@@ -33,12 +33,12 @@ const PlatformCard = ({ platform }) => {
   const [hasError, setHasError] = React.useState(false);
 
   return (
-    <div className={`h-16 sm:h-20 w-full rounded-2xl bg-gradient-to-br ${platform.color} flex items-center justify-center shadow-[0_8px_30px_rgba(0,0,0,0.5)] group-hover:shadow-[0_0_40px_rgba(250,204,21,0.4)] group-hover:scale-105 transition-all duration-300 border border-white/20 px-6`}>
+    <div className="w-full flex items-center justify-center transition-all duration-300 group-hover:scale-110 py-4">
       {!hasError && platform.logo ? (
         <img 
           src={platform.logo} 
           alt={`${platform.name} Parents Guide`} 
-          className={`h-7 sm:h-9 w-auto object-contain transition-transform group-hover:scale-105 duration-300 ${platform.id !== 'peacock' ? 'brightness-0 invert' : ''}`}
+          className="h-12 sm:h-16 w-auto max-w-[90%] object-contain opacity-75 group-hover:opacity-100 transition-all duration-300"
           onError={() => setHasError(true)}
           loading="lazy"
         />

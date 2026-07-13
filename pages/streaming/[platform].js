@@ -20,6 +20,8 @@ import {
   Feather // 1. IMPORTED FEATHER ICON
 } from 'lucide-react';
 
+import Header from '../../components/Header';
+
 // Import your data
 import { COLLECTIONS } from '../../data/collections';
 
@@ -89,6 +91,8 @@ const StreamingHub = ({ platform = '', collections = [] }) => {
         <link rel="canonical" href={`https://filmiway.com/streaming/${platform}`} />
       </Head>
 
+      <Header />
+
       {/* 🎬 Background Ambience */}
       <div className="fixed inset-0 pointer-events-none">
         <div className={`absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full blur-[120px] opacity-20 bg-gradient-to-br ${config.color}`} />
@@ -96,7 +100,7 @@ const StreamingHub = ({ platform = '', collections = [] }) => {
         <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.03] mix-blend-overlay"></div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-24">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32 pb-24">
         
         {/* 🏠 Navigation */}
         <nav className="flex items-center gap-4 mb-16 text-sm text-gray-400">
