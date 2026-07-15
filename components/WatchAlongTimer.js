@@ -621,7 +621,7 @@ const WatchAlongTimer = ({ movie, sensitiveScenes, onClose }) => {
                         <div className="text-[10px] text-gray-500 tracking-[0.2em] mt-3">TAP CLOCK TO EDIT TIME</div>
 
                         {/* NEXT SCENE ALERTS */}
-                        <div className="h-24 mt-6 flex flex-col items-center justify-center w-full">
+                        <div className="min-h-[6rem] h-auto mt-6 flex flex-col items-center justify-center w-full">
                             {timerState.scene && timerState.mode !== 'DURING' && (
                                 <div className="flex flex-col items-center">
                                     <div className="flex flex-col items-center mb-2">
