@@ -626,7 +626,18 @@ const WatchAlongTimer = ({ movie, sensitiveScenes, onClose }) => {
                                 <div className="flex flex-col items-center">
                                     <div className="px-3 py-1 rounded-lg bg-white/[0.05] border border-white/10 text-gray-300 text-xs font-semibold mb-2 flex items-center gap-2">
                                         <Shield size={12} className="text-yellow-500" />
-                                        {timerState.scene.type || 'Sensitive Scene'}
+                                        <span>{timerState.scene.type || 'Sensitive Scene'}</span>
+                                        {timerState.scene.severity && (
+                                            <span className={`px-1.5 py-0.5 rounded text-[9px] uppercase font-bold tracking-wider ${
+                                                timerState.scene.severity.toLowerCase() === 'high' || timerState.scene.severity.toLowerCase() === 'severe'
+                                                    ? 'bg-red-500/20 text-red-400 border border-red-500/30'
+                                                    : timerState.scene.severity.toLowerCase() === 'moderate'
+                                                    ? 'bg-yellow-500/20 text-yellow-400 border border-yellow-500/30'
+                                                    : 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
+                                            }`}>
+                                                {timerState.scene.severity}
+                                            </span>
+                                        )}
                                     </div>
                                     <div className="text-sm text-gray-400 mb-3">
                                         at <strong className="text-white font-medium">{getSceneStart(timerState.scene)}</strong>
@@ -663,8 +674,21 @@ const WatchAlongTimer = ({ movie, sensitiveScenes, onClose }) => {
 
                             {timerState.mode === 'DURING' && timerState.scene && (
                                 <div className="w-full max-w-xs flex flex-col items-center">
-                                    <div className="w-full flex justify-between text-xs font-bold text-red-500 mb-2 uppercase tracking-wide">
-                                        <span>{timerState.scene.type}</span>
+                                    <div className="w-full flex justify-between items-center text-xs font-bold text-red-500 mb-2 uppercase tracking-wide">
+                                        <div className="flex items-center gap-2">
+                                            <span>{timerState.scene.type}</span>
+                                            {timerState.scene.severity && (
+                                                <span className={`px-1.5 py-0.5 rounded text-[8px] uppercase font-bold tracking-wider ${
+                                                    timerState.scene.severity.toLowerCase() === 'high' || timerState.scene.severity.toLowerCase() === 'severe'
+                                                        ? 'bg-red-500/20 text-red-400 border border-red-500/30'
+                                                        : timerState.scene.severity.toLowerCase() === 'moderate'
+                                                        ? 'bg-yellow-500/20 text-yellow-400 border border-yellow-500/30'
+                                                        : 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
+                                                }`}>
+                                                    {timerState.scene.severity}
+                                                </span>
+                                            )}
+                                        </div>
                                         <span>{formatSecondsShort(timerState.secsRemaining || 0)} left</span>
                                     </div>
                                     <div className="w-full h-2 bg-red-950 rounded-full overflow-hidden">
