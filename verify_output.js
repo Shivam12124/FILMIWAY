@@ -26,9 +26,9 @@ function getMetadataForSlug(slug) {
         metaTitle = `${baseMovie.Title} Parents Guide (Clean)`;
         let currentRuntime = baseMovie.runtime || baseMovie.Runtime || "Official";
         if (typeof currentRuntime === 'number') currentRuntime = `${currentRuntime} min`;
-        metaDesc = `Filmiway editors have manually verified that ${baseMovie.Title} has zero intimate scenes in its full ${currentRuntime} runtime.`;
+        metaDesc = `Filmiway editors have manually verified that ${baseMovie.Title} has zero sensitive scenes in its full ${currentRuntime} runtime.`;
     } else {
-        metaTitle = `${baseMovie.Title} Parents Guide: Timestamps to Skip Intimate Scenes`;
+        metaTitle = `${baseMovie.Title} Parents Guide: Timestamps to Skip Sensitive Scenes`;
         
         const sortedScenes = [...mergedScenes].sort((a, b) => {
             const aIsSevere = a.type?.toLowerCase().match(/sex|nudity|explicit/);
@@ -46,7 +46,7 @@ function getMetadataForSlug(slug) {
             rawTimestampsText = `${timestampList[0]}`;
         }
 
-        metaDesc = `PARENTS GUIDE: Exact skip timestamps for ${baseMovie.Title}. ${rawTimestampsText}. Skip intimate content.`;
+        metaDesc = `PARENTS GUIDE: Exact skip timestamps for ${baseMovie.Title}. ${rawTimestampsText}. Skip sensitive scenes.`;
     }
 
     return { title: metaTitle, description: metaDesc };

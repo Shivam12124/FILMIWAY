@@ -43,7 +43,7 @@ const nextConfig = {
     // ⚡ NEW: Optimized image sizes (matches your actual usage)
     imageSizes: [150, 185, 200, 250, 300],
     // 🔥 FIX: Added qualities to stop the "quality 65 is not configured" terminal warnings
-    qualities: [25, 50, 65, 75, 85, 100],
+    qualities: [25, 40, 50, 65, 75, 85, 100],
   },
 
   // ✅ ENVIRONMENT VARIABLES

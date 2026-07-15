@@ -1,8 +1,12 @@
 // components/SensitiveContentTimelineSection.js
 import React, { useMemo, useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Shield, CheckCircle, Clock, AlertOctagon, Info, Film, FastForward, Eye, Heart, AlertTriangle, ThumbsUp, ThumbsDown, MessageSquare, Flame } from 'lucide-react';
+import { Shield, CheckCircle, Clock, AlertOctagon, Info, Film, FastForward, Eye, Heart, AlertTriangle, ThumbsUp, ThumbsDown, MessageSquare, Flame, Play } from 'lucide-react';
+import dynamic from 'next/dynamic';
 import masterTimestamps from '../utils/masterTimestamps.json';
+
+// 🎬 WATCH-ALONG TIMER — loaded only when user opens it
+const WatchAlongTimer = dynamic(() => import('./WatchAlongTimer'), { ssr: false });
 
 const COLORS = {
     warningBg: 'rgba(127, 29, 29, 0.15)',
@@ -57,6 +61,11 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
     const [helpfulCount, setHelpfulCount] = useState(0);
     const [hasVoted, setHasVoted] = useState(false);
     const [isVoting, setIsVoting] = useState(false); // Manages vote submission state
+    
+    // --- WATCH-ALONG STATE ---
+    const [showWatchAlong, setShowWatchAlong] = useState(false);
+    const handleOpenWatchAlong = useCallback(() => setShowWatchAlong(true), []);
+    const handleCloseWatchAlong = useCallback(() => setShowWatchAlong(false), []);
 
     const movieId = movie?.slug || movie?.tmdbId?.toString(); // Unique identifier for the movie
 
@@ -567,9 +576,35 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3, duration: 0.5 }}
                 >
-                    <h3 className="text-[11px] sm:text-xs font-bold text-gray-400 mb-5 uppercase tracking-[0.2em] flex items-center gap-2">
-                        <Film size={14} className="text-yellow-500" /> Parents Guide Tracker
-                    </h3>
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-5">
+                        <h3 className="text-[11px] sm:text-xs font-bold text-gray-400 uppercase tracking-[0.2em] flex items-center gap-2 m-0">
+                            <Film size={14} className="text-yellow-500" /> Parents Guide Tracker
+                        </h3>
+                        
+                        <button
+                            onClick={handleOpenWatchAlong}
+                            className="group relative flex items-center justify-center gap-2.5 bg-gradient-to-r from-yellow-500/10 to-yellow-600/10 hover:from-yellow-500/20 hover:to-yellow-600/20 border border-yellow-500/30 hover:border-yellow-400 rounded-xl px-5 py-2.5 transition-all duration-300 shadow-[0_0_15px_rgba(234,179,8,0.15)] hover:shadow-[0_0_25px_rgba(234,179,8,0.3)] overflow-hidden"
+                        >
+                            <div className="absolute inset-0 bg-yellow-500/5 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-in-out skew-x-12" />
+                            <div className="relative flex h-2.5 w-2.5">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-yellow-500"></span>
+                            </div>
+                            <span className="text-[12px] sm:text-xs font-bold text-yellow-500/90 group-hover:text-yellow-400 uppercase tracking-[0.25em] z-10">
+                                Launch Watch-Along
+                            </span>
+                            <Play size={14} className="text-yellow-500 opacity-90 group-hover:opacity-100 z-10" />
+                        </button>
+                    </div>
+
+                    {/* 🎬 WATCH-ALONG TIMER OVERLAY */}
+                    {showWatchAlong && (
+                        <WatchAlongTimer
+                            movie={movie}
+                            sensitiveScenes={sensitiveScenes}
+                            onClose={handleCloseWatchAlong}
+                        />
+                    )}
 
                     {/* 🔥 SEO SAFE-SEARCH PARENTAL ADVISORY — Only for curated explicit films */}
                     {showExplicitAdvisory && (

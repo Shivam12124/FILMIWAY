@@ -41,7 +41,7 @@ const UniversalBanner = ({ movie }) => {
     const [hasClosedTrailer, setHasClosedTrailer] = useState(false);
     const [trailerKey, setTrailerKey] = useState(null);
     const [tagline, setTagline] = useState(movie?.Tagline || '');
-    const [bannerQuality, setBannerQuality] = useState(40);
+    const [bannerQuality, setBannerQuality] = useState(50);
     const timerRef = useRef(null);
 
     // ⚡ DESKTOP BANNER QUALITY UPGRADE
@@ -651,9 +651,9 @@ export async function getStaticProps({ params }) {
         metaTitle = `${baseMovie.Title} Parents Guide (Clean)`;
         let currentRuntime = cacheData.runtime || baseMovie.runtime || baseMovie.Runtime || "Official";
         if (typeof currentRuntime === 'number' || (typeof currentRuntime === 'string' && !currentRuntime.includes('min') && currentRuntime !== 'Official')) currentRuntime = `${currentRuntime} min`;
-        metaDesc = `Filmiway editors have manually verified that ${baseMovie.Title} has zero intimate scenes in its full ${currentRuntime} runtime.`;
+        metaDesc = `Filmiway editors have manually verified that ${baseMovie.Title} has zero sensitive scenes in its full ${currentRuntime} runtime.`;
     } else {
-        metaTitle = `${baseMovie.Title} Parents Guide: Timestamps to Skip Intimate Scenes`;
+        metaTitle = `${baseMovie.Title} Parents Guide: Timestamps to Skip Sensitive Scenes`;
 
         const sortedScenes = [...resolvedSensitiveScenes].sort((a, b) => {
             const aIsSevere = a.type?.toLowerCase().match(/sex|nudity|explicit/);
@@ -671,7 +671,7 @@ export async function getStaticProps({ params }) {
             rawTimestampsText = `${timestampList[0]}`;
         }
 
-        metaDesc = `PARENTS GUIDE: Exact skip timestamps for ${baseMovie.Title}. ${rawTimestampsText}. Skip intimate content.`;
+        metaDesc = `PARENTS GUIDE: Exact skip timestamps for ${baseMovie.Title}. ${rawTimestampsText}. Skip sensitive scenes.`;
     }
 
     // 🛡️ SAFE POSTER OVERRIDES: Use safe alternate TMDB images instead of explicit ones
