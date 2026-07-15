@@ -123,6 +123,10 @@ export default function HowToSkipAwkwardScenes() {
       answer: "All timestamps are manually verified against the official theatrical or home release runtime by our editors, ensuring pinpoint accuracy down to the exact second."
     },
     {
+      question: "What is the Filmiway Watch-Along Timer?",
+      answer: "The Live Watch-Along Timer is an interactive companion clock that runs locally in your browser. It syncs with your movie, sounding a clear alert 12 seconds before any sensitive scene begins, and offering a one-click button to jump past inappropriate content instantly."
+    },
+    {
       question: "Does Filmiway cover every movie?",
       answer: "We currently have over 500 films with exact timestamps, focusing on popular blockbusters, critically acclaimed classics, and frequently requested titles. Our editors add new movies to the catalog daily."
     },
@@ -243,6 +247,24 @@ We’ve all had this experience. You’re comfortably seated on your couch, watc
 
               <h2 className="text-3xl text-white mt-12 mb-6 border-b border-white/10 pb-4 flex items-center gap-3">
                 <Clock className="w-8 h-8 text-yellow-500" />
+                Live Watch-Along Companion Timer
+              </h2>
+              <p>
+                We recently launched the ultimate companion for family movie nights: the <strong>Live Watch-Along Timer</strong>. Simply open the Watch-Along panel, press <strong>START TIMER</strong> the moment your movie begins playing on your TV or tablet, and enjoy the film stress-free.
+              </p>
+              <p>
+                The timer runs entirely in your browser and is equipped with advanced features:
+              </p>
+              <ul className="text-gray-300 space-y-2 mb-6">
+                <li><strong>12-Second Audio Alerts:</strong> The system sounds a gentle warning chime exactly 12 seconds before a sensitive scene begins, giving you time to look away or skip.</li>
+                <li><strong>One-Tap Skipping:</strong> Easily tap the "Skip Scene Now" button to automatically jump past the awkward scene and catch up to the safe parts of the film.</li>
+                <li><strong>100% Drift-Free Tracking:</strong> Built using absolute time anchors (<code className="text-yellow-400">Date.now()</code>) so the timer stays perfectly synced even if your phone's processor slows down or background tasks lag.</li>
+                <li><strong>Keep-Alive Screen Wake Lock:</strong> Automatically prevents your phone or tablet screen from dimming or falling asleep during long 3-hour movie sessions.</li>
+                <li><strong>Manual Clock Editing:</strong> If you ever lose sync, simply tap the digital clock at any time to manually adjust and type in your exact movie time.</li>
+              </ul>
+
+              <h2 className="text-3xl text-white mt-12 mb-6 border-b border-white/10 pb-4 flex items-center gap-3">
+                <Film className="w-8 h-8 text-yellow-500" />
                 The Filmiway Timestamp Advantage
               </h2>
               <p>
