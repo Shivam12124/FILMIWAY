@@ -124,7 +124,7 @@ export default function HowToSkipAwkwardScenes() {
     },
     {
       question: "What is the Filmiway Watch-Along Timer?",
-      answer: "The Live Watch-Along Timer is an interactive companion clock that runs locally in your browser. It syncs with your movie, sounding a clear alert 12 seconds before any sensitive scene begins, and offering a one-click button to jump past inappropriate content instantly."
+      answer: "The Live Watch-Along Timer is a companion tool that helps you skip awkward scenes in movies without compromising on the story. It runs on your mobile or desktop, and when you watch a movie on your main screen, it alerts you exactly 12 seconds before a sensitive scene occurs, helping you seamlessly skip the scene if you are uncomfortable watching it with family, friends, or individually."
     },
     {
       question: "Does Filmiway cover every movie?",
