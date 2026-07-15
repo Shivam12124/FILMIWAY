@@ -625,12 +625,11 @@ const WatchAlongTimer = ({ movie, sensitiveScenes, onClose }) => {
                             {timerState.scene && timerState.mode !== 'DURING' && (
                                 <div className="flex flex-col items-center">
                                     <div className="flex flex-col items-center mb-2">
-                                        <div className="px-3 py-1 rounded-lg bg-white/[0.05] border border-white/10 text-gray-300 text-xs font-semibold flex items-center gap-1.5">
-                                            <Shield size={12} className="text-yellow-500" />
-                                            <span>{timerState.scene.type || 'Sensitive Scene'}</span>
-                                        </div>
+                                        <span className="text-sm sm:text-base font-semibold text-gray-200 tracking-wide text-center max-w-[280px] break-words leading-snug">
+                                            {timerState.scene.type || 'Sensitive Scene'}
+                                        </span>
                                         {timerState.scene.severity && (
-                                            <span className="text-[10px] text-gray-500 font-bold uppercase tracking-wider mt-1.5">
+                                            <span className="text-[10px] text-gray-500 font-bold uppercase tracking-wider mt-1">
                                                 SEVERITY: {timerState.scene.severity}
                                             </span>
                                         )}
