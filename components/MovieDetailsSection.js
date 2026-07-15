@@ -293,8 +293,18 @@ const MovieDetailsSection = React.memo(({
                    }
                }
 
+               let newRuntime = details.runtime ? `${details.runtime} min` : prev.runtime;
+               const tmdbIdNum = Number(movie.tmdbId || movie.tmdbID);
+               if (tmdbIdNum === 51876) newRuntime = "105 min (Unrated Version)";
+               else if (tmdbIdNum === 187) newRuntime = "141 min (Unrated Extended Version)";
+               else if (tmdbIdNum === 28) newRuntime = "181 min (Final Cut)";
+               else if (tmdbIdNum === 76341) newRuntime = "120 min";
+               else if (tmdbIdNum === 311) newRuntime = "249 min";
+               else if (tmdbIdNum === 341174) newRuntime = "132 min (Unrated Version)";
+               else if (tmdbIdNum === 2057) newRuntime = "118 min (Unrated Version)";
+               else if (tmdbIdNum === 10867) newRuntime = "1 hour 32 min";
+
                const newSynopsis = details.overview ? details.overview : prev.synopsis;
-               const newRuntime = details.runtime ? `${details.runtime} min` : prev.runtime;
                const newTagline = details.tagline ? details.tagline : '';
 
                return {

@@ -687,6 +687,17 @@ export async function getStaticProps({ params }) {
     };
     const explicitOverride = SAFE_OVERRIDES[Number(baseMovie.tmdbId)];
 
+    let finalRuntime = cacheData.runtime ? `${cacheData.runtime} min` : (baseMovie.Runtime || baseMovie.runtime || null);
+    const tmdbIdNum = Number(baseMovie.tmdbId);
+    if (tmdbIdNum === 51876) finalRuntime = "105 min (Unrated Version)";
+    else if (tmdbIdNum === 187) finalRuntime = "141 min (Unrated Extended Version)";
+    else if (tmdbIdNum === 28) finalRuntime = "181 min (Final Cut)";
+    else if (tmdbIdNum === 76341) finalRuntime = "120 min";
+    else if (tmdbIdNum === 311) finalRuntime = "249 min";
+    else if (tmdbIdNum === 341174) finalRuntime = "132 min (Unrated Version)";
+    else if (tmdbIdNum === 2057) finalRuntime = "118 min (Unrated Version)";
+    else if (tmdbIdNum === 10867) finalRuntime = "1 hour 32 min";
+
     const movie = {
         ...baseMovie,
         poster_path: explicitOverride ? explicitOverride.poster : (cacheData.poster_path || null),
@@ -699,8 +710,8 @@ export async function getStaticProps({ params }) {
         Budget: cacheData.budget || null,
         BoxOffice: cacheData.revenue || null,
         Tagline: cacheData.tagline || assignedFallbackTagline,
-        Runtime: cacheData.runtime ? `${cacheData.runtime} min` : (baseMovie.Runtime || baseMovie.runtime || null),
-        runtime: cacheData.runtime ? `${cacheData.runtime} min` : (baseMovie.runtime || baseMovie.Runtime || null),
+        Runtime: finalRuntime,
+        runtime: finalRuntime,
         primaryCollectionSlug: primarySlug || null,
         primaryCollectionTitle: primaryTitle || null,
         resolvedMovieInfo,
