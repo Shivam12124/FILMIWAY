@@ -624,18 +624,12 @@ const WatchAlongTimer = ({ movie, sensitiveScenes, onClose }) => {
                         <div className="h-24 mt-6 flex flex-col items-center justify-center w-full">
                             {timerState.scene && timerState.mode !== 'DURING' && (
                                 <div className="flex flex-col items-center">
-                                    <div className="px-3 py-1 rounded-lg bg-white/[0.05] border border-white/10 text-gray-300 text-xs font-semibold mb-2 flex items-center gap-2">
+                                    <div className="px-3 py-1 rounded-lg bg-white/[0.05] border border-white/10 text-gray-300 text-xs font-semibold mb-2 flex items-center gap-1.5">
                                         <Shield size={12} className="text-yellow-500" />
                                         <span>{timerState.scene.type || 'Sensitive Scene'}</span>
                                         {timerState.scene.severity && (
-                                            <span className={`px-1.5 py-0.5 rounded text-[9px] uppercase font-bold tracking-wider ${
-                                                timerState.scene.severity.toLowerCase() === 'high' || timerState.scene.severity.toLowerCase() === 'severe'
-                                                    ? 'bg-red-500/20 text-red-400 border border-red-500/30'
-                                                    : timerState.scene.severity.toLowerCase() === 'moderate'
-                                                    ? 'bg-yellow-500/20 text-yellow-400 border border-yellow-500/30'
-                                                    : 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
-                                            }`}>
-                                                {timerState.scene.severity}
+                                            <span className="text-[10px] text-gray-500 font-bold uppercase tracking-wider">
+                                                · {timerState.scene.severity}
                                             </span>
                                         )}
                                     </div>
@@ -674,22 +668,16 @@ const WatchAlongTimer = ({ movie, sensitiveScenes, onClose }) => {
 
                             {timerState.mode === 'DURING' && timerState.scene && (
                                 <div className="w-full max-w-xs flex flex-col items-center">
-                                    <div className="w-full flex justify-between items-center text-xs font-bold text-red-500 mb-2 uppercase tracking-wide">
-                                        <div className="flex items-center gap-2">
-                                            <span>{timerState.scene.type}</span>
+                                    <div className="w-full flex justify-between items-end text-xs font-bold text-red-500 mb-2 uppercase tracking-wide">
+                                        <div className="flex flex-col text-left min-w-0 flex-1 mr-4">
+                                            <span className="truncate">{timerState.scene.type}</span>
                                             {timerState.scene.severity && (
-                                                <span className={`px-1.5 py-0.5 rounded text-[8px] uppercase font-bold tracking-wider ${
-                                                    timerState.scene.severity.toLowerCase() === 'high' || timerState.scene.severity.toLowerCase() === 'severe'
-                                                        ? 'bg-red-500/20 text-red-400 border border-red-500/30'
-                                                        : timerState.scene.severity.toLowerCase() === 'moderate'
-                                                        ? 'bg-yellow-500/20 text-yellow-400 border border-yellow-500/30'
-                                                        : 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
-                                                }`}>
-                                                    {timerState.scene.severity}
+                                                <span className="text-[10px] text-red-400/60 font-bold tracking-wider mt-0.5">
+                                                    SEVERITY: {timerState.scene.severity}
                                                 </span>
                                             )}
                                         </div>
-                                        <span>{formatSecondsShort(timerState.secsRemaining || 0)} left</span>
+                                        <span className="shrink-0 text-right">{formatSecondsShort(timerState.secsRemaining || 0)} left</span>
                                     </div>
                                     <div className="w-full h-2 bg-red-950 rounded-full overflow-hidden">
                                         <div 
