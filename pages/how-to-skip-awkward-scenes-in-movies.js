@@ -39,36 +39,33 @@ export default function HowToSkipAwkwardScenes() {
       start: "0:23:14",
       end: "0:24:46",
       type: "Sex & Nudity",
-      severity: "High",
-      description: "A long scene of explicit sex and nudity between J. Robert Oppenheimer and Jean Tatlock."
+      severity: "High"
     },
     {
       start: "1:14:38",
       end: "1:15:14",
       type: "Nudity",
-      severity: "High",
-      description: "Nudity during the security clearance hearing scene."
+      severity: "High"
     },
     {
       start: "1:15:43",
       end: "1:16:00",
       type: "Sex & Nudity",
-      severity: "High",
-      description: "Another brief scene of sex and nudity during the hearing."
+      severity: "High"
     },
     {
       start: "",
       end: "",
       type: "Profanity",
       severity: "Moderate",
-      description: "Approximately 8–9 uses of strong sexual expletives (F-words) and infrequent moderate profanity used in dialogue."
+      description: "Approximately 8–9 uses of strong strong profanity (F-words) and infrequent moderate profanity used in dialogue."
     },
     {
       start: "",
       end: "",
       type: "Violence & Gore",
       severity: "Moderate",
-      description: "Contains graphic historical images of charred human remains and radiation victims. Includes a suicide by drug overdose."
+      description: "Contains graphic historical images of charred human remains and radiation victims. Includes a suicide by drug overdose and intense sequences of psychological peril."
     }
   ];
 
