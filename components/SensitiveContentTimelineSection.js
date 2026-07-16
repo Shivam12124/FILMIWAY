@@ -1,7 +1,8 @@
 // components/SensitiveContentTimelineSection.js
 import React, { useMemo, useState, useEffect, useRef, useCallback } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Shield, CheckCircle, Clock, AlertOctagon, Info, Film, FastForward, Eye, Heart, AlertTriangle, ThumbsUp, ThumbsDown, MessageSquare, Flame, Play } from 'lucide-react';
+import { Shield, CheckCircle, Clock, AlertOctagon, Info, Film, FastForward, Eye, Heart, AlertTriangle, ThumbsUp, ThumbsDown, MessageSquare, Flame, Play, Timer } from 'lucide-react';
 import dynamic from 'next/dynamic';
 import masterTimestamps from '../utils/masterTimestamps.json';
 
@@ -66,6 +67,10 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
     const [showWatchAlong, setShowWatchAlong] = useState(false);
     const handleOpenWatchAlong = useCallback(() => setShowWatchAlong(true), []);
     const handleCloseWatchAlong = useCallback(() => setShowWatchAlong(false), []);
+
+    // --- 📱 STICKY BOTTOM CTA BAR STATE ---
+    const [showStickyBar, setShowStickyBar] = useState(false);
+    const [stickyDismissed, setStickyDismissed] = useState(false);
 
     const movieId = movie?.slug || movie?.tmdbId?.toString(); // Unique identifier for the movie
 
@@ -132,6 +137,21 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
             clearTimeout(timer); // Cleanup timeout to prevent memory leaks
         };
     }, [movie?.slug, movie?.tmdbId]);
+
+    // 📱 SCROLL-TRIGGERED STICKY BAR — appears after 300px scroll on MOBILE only (desktop has inline CTA)
+    useEffect(() => {
+        const handleScroll = () => {
+            if (stickyDismissed || showWatchAlong) return;
+            // Only show sticky bar on mobile screens (< 640px = Tailwind's sm breakpoint)
+            if (window.innerWidth >= 640) {
+                setShowStickyBar(false);
+                return;
+            }
+            setShowStickyBar(window.scrollY > 300);
+        };
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, [stickyDismissed, showWatchAlong]);
 
     // 🔥 Handle REAL Firebase vote submission
     const handleVote = async () => {
@@ -390,7 +410,59 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
         </div>
     ) : null;
 
+    // 📱 STICKY BOTTOM CTA BAR — rendered via portal so it's always on top, above thumb zone
+    const stickyBar = (typeof document !== 'undefined' && showStickyBar && !showWatchAlong && filteredHeavyScenes.length > 0)
+        ? createPortal(
+            <AnimatePresence>
+                <motion.div
+                    key="sticky-watch-along"
+                    initial={{ y: 120, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ y: 120, opacity: 0 }}
+                    transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                    className="fixed bottom-0 left-0 right-0 z-[9999] px-4 pb-4 pt-2 pointer-events-none"
+                    style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.95) 60%, transparent)' }}
+                >
+                    <div className="max-w-xl mx-auto flex items-center gap-3 bg-[#111113] border border-yellow-500/40 rounded-2xl px-4 py-3 shadow-[0_0_40px_rgba(234,179,8,0.25)] pointer-events-auto">
+                        {/* Pulsing live dot */}
+                        <div className="relative flex-shrink-0 flex h-3 w-3">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75" />
+                            <span className="relative inline-flex rounded-full h-3 w-3 bg-yellow-500" />
+                        </div>
+
+                        {/* Text */}
+                        <div className="flex-1 min-w-0">
+                            <p className="text-white text-[13px] font-semibold leading-tight truncate">⏱ Watch-Along Timer</p>
+                            <p className="text-gray-400 text-[11px] leading-tight">Auto-alerts you 12 sec before each scene</p>
+                        </div>
+
+                        {/* CTA */}
+                        <button
+                            onClick={() => { handleOpenWatchAlong(); setStickyDismissed(true); }}
+                            className="flex-shrink-0 flex items-center gap-1.5 bg-yellow-500 hover:bg-yellow-400 active:bg-yellow-300 text-black text-[12px] font-bold px-4 py-2 rounded-xl transition-all duration-200 shadow-[0_0_15px_rgba(234,179,8,0.4)] active:scale-95"
+                        >
+                            <Play size={12} />
+                            Start
+                        </button>
+
+                        {/* Dismiss X */}
+                        <button
+                            onClick={() => { setShowStickyBar(false); setStickyDismissed(true); }}
+                            className="flex-shrink-0 p-1 text-gray-500 hover:text-gray-300 transition-colors"
+                            aria-label="Dismiss"
+                        >
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M1 1l12 12M13 1L1 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/></svg>
+                        </button>
+                    </div>
+                </motion.div>
+            </AnimatePresence>,
+            document.body
+        )
+        : null;
+
     return (
+        <>
+        {stickyBar}
         <motion.section
             className="w-full bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8"
             initial={{ opacity: 1, y: 20 }}
@@ -576,24 +648,32 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3, duration: 0.5 }}
                 >
-                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-5">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-5">
                         <h3 className="text-[11px] sm:text-xs font-bold text-gray-400 uppercase tracking-[0.2em] flex items-center gap-2 m-0">
                             <Film size={14} className="text-yellow-500" /> Parents Guide Tracker
                         </h3>
                         
+                        {/* Watch-Along CTA — visible on both mobile & desktop */}
                         <button
                             onClick={handleOpenWatchAlong}
-                            className="group relative flex items-center justify-center gap-2.5 bg-gradient-to-r from-yellow-500/10 to-yellow-600/10 hover:from-yellow-500/20 hover:to-yellow-600/20 border border-yellow-500/30 hover:border-yellow-400 rounded-xl px-5 py-2.5 transition-all duration-300 shadow-[0_0_15px_rgba(234,179,8,0.15)] hover:shadow-[0_0_25px_rgba(234,179,8,0.3)] overflow-hidden"
+                            className="group relative flex items-center gap-3 bg-[#0d0d0f] border border-white/10 hover:border-yellow-500/40 rounded-xl px-4 py-2.5 transition-all duration-300 hover:shadow-[0_0_20px_rgba(234,179,8,0.12)] overflow-hidden self-start sm:self-auto"
                         >
-                            <div className="absolute inset-0 bg-yellow-500/5 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-in-out skew-x-12" />
-                            <div className="relative flex h-2.5 w-2.5">
-                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
-                                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-yellow-500"></span>
+                            {/* Subtle shimmer on hover */}
+                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-yellow-500/5 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700 ease-in-out" />
+                            {/* Left accent line */}
+                            <div className="absolute left-0 top-0 bottom-0 w-[2px] rounded-l-xl bg-yellow-500/0 group-hover:bg-yellow-500/60 transition-colors duration-300" />
+                            {/* Live dot */}
+                            <div className="relative flex-shrink-0 flex h-2 w-2">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-50" />
+                                <span className="relative inline-flex rounded-full h-2 w-2 bg-yellow-500/80" />
                             </div>
-                            <span className="text-[12px] sm:text-xs font-bold text-yellow-500/90 group-hover:text-yellow-400 uppercase tracking-[0.25em] z-10">
-                                Launch Watch-Along
-                            </span>
-                            <Play size={14} className="text-yellow-500 opacity-90 group-hover:opacity-100 z-10" />
+                            {/* Text */}
+                            <div className="text-left z-10">
+                                <span className="block text-[12px] font-semibold text-gray-200 group-hover:text-white tracking-normal leading-tight transition-colors">Watch-Along Timer</span>
+                                <span className="block text-[10px] text-gray-500 group-hover:text-gray-400 leading-tight transition-colors mt-0.5">Alerts you 12 sec before each scene</span>
+                            </div>
+                            {/* Play icon */}
+                            <Play size={12} className="text-gray-500 group-hover:text-yellow-400 group-hover:translate-x-0.5 transition-all duration-200 z-10 flex-shrink-0" />
                         </button>
                     </div>
 
@@ -811,6 +891,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                 </div>
             </div>
         </motion.section>
+        </>
     );
 });
 
