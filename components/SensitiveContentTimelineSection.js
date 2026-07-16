@@ -71,6 +71,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
     // --- 📱 STICKY BOTTOM CTA BAR STATE ---
     const [showStickyBar, setShowStickyBar] = useState(false);
     const [stickyDismissed, setStickyDismissed] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
 
     const movieId = movie?.slug || movie?.tmdbId?.toString(); // Unique identifier for the movie
 
@@ -138,19 +139,22 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
         };
     }, [movie?.slug, movie?.tmdbId]);
 
-    // 📱 SCROLL-TRIGGERED STICKY BAR — appears after 300px scroll on MOBILE only (desktop has inline CTA)
+    // 📱 SCROLL-TRIGGERED STICKY BAR — appears after 300px scroll on all devices
     useEffect(() => {
         const handleScroll = () => {
             if (stickyDismissed || showWatchAlong) return;
-            // Only show sticky bar on mobile screens (< 640px = Tailwind's sm breakpoint)
-            if (window.innerWidth >= 640) {
-                setShowStickyBar(false);
-                return;
-            }
             setShowStickyBar(window.scrollY > 300);
         };
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < 640);
+        };
+        handleResize(); // set initial client width
         window.addEventListener('scroll', handleScroll, { passive: true });
-        return () => window.removeEventListener('scroll', handleScroll);
+        window.addEventListener('resize', handleResize, { passive: true });
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('resize', handleResize);
+        };
     }, [stickyDismissed, showWatchAlong]);
 
     // 🔥 Handle REAL Firebase vote submission
@@ -410,18 +414,19 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
         </div>
     ) : null;
 
-    // 📱 STICKY BOTTOM CTA BAR — rendered via portal so it's always on top, above thumb zone
+    // 📱 STICKY CTA BAR — rendered via portal so it's always on top
     const stickyBar = (typeof document !== 'undefined' && showStickyBar && !showWatchAlong && filteredHeavyScenes.length > 0)
         ? createPortal(
             <AnimatePresence>
                 <motion.div
                     key="sticky-watch-along"
-                    initial={{ y: 120, opacity: 0 }}
+                    initial={isMobile ? { y: -120, opacity: 0 } : { y: 120, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
-                    exit={{ y: 120, opacity: 0 }}
+                    exit={isMobile ? { y: -120, opacity: 0 } : { y: 120, opacity: 0 }}
                     transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                    className="fixed bottom-0 left-0 right-0 z-[9999] px-4 pb-4 pt-2 pointer-events-none"
-                    style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.95) 60%, transparent)' }}
+                    className={isMobile 
+                        ? "fixed top-14 left-0 right-0 z-[9999] px-4 pt-2 pointer-events-none" 
+                        : "fixed bottom-4 left-4 w-[460px] z-[9999] pointer-events-none"}
                 >
                     <div className="max-w-xl mx-auto flex items-center gap-3 bg-[#111113] border border-yellow-500/40 rounded-2xl px-4 py-3 shadow-[0_0_40px_rgba(234,179,8,0.25)] pointer-events-auto">
                         {/* Pulsing live dot */}
