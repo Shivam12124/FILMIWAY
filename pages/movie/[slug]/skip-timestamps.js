@@ -324,7 +324,7 @@ export default function UniversalMoviePage({ movie }) {
         answer: `Filmiway provides a free Live Watch-Along sync timer for ${movie.Title}. Tap "Start Watch-Along" on your phone when the movie starts on your TV to receive live alerts 12 seconds before sensitive scenes occur, allowing you to skip them effortlessly.`
     } : {
         question: `Does ${movie.Title} require a Watch-Along skip timer?`,
-        answer: `No. Filmiway editors have verified that ${movie.Title} contains no explicit sexual content or intimate scenes. (Note: swearing or violence may still be present).`
+        answer: `No. Filmiway editors have verified that ${movie.Title} contains no explicit sexual content or intimate scenes.`
     };
 
     if (!faqs.some(f => (f.question || f.q || '').includes("Watch-Along"))) {
