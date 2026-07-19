@@ -55,7 +55,7 @@ const UniversalBanner = ({ movie }) => {
     useEffect(() => {
         if (movie?.tmdbId) {
             const timer = setTimeout(() => {
-                fetch(`https://api.themoviedb.org/3/movie/${movie.tmdbId}?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&append_to_response=videos`)
+                fetch(`https://api.themoviedb.org/3/movie/${movie.tmdbId}?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&append_to_response=videos`)
                     .then(res => res.json())
                     .then(data => {
                         let trailer = data.videos?.results?.find(v => v.type === 'Trailer' && v.site === 'YouTube');
@@ -318,6 +318,18 @@ export default function UniversalMoviePage({ movie }) {
 
     // Format the exact, manually verified timestamps with their descriptions for the movie description
     const hasTimestamps = movie.resolvedSensitiveScenes && movie.resolvedSensitiveScenes.length > 0;
+
+    const watchAlongFAQ = hasTimestamps ? {
+        question: `How does the Filmiway Live Watch-Along feature work for ${movie.Title}?`,
+        answer: `Filmiway provides a free Live Watch-Along sync timer for ${movie.Title}. Tap "Start Watch-Along" on your phone when the movie starts on your TV to receive live alerts 12 seconds before sensitive scenes occur, allowing you to skip them effortlessly.`
+    } : {
+        question: `Does ${movie.Title} require a Watch-Along skip timer?`,
+        answer: `No. Filmiway editors have verified that ${movie.Title} contains no explicit sexual content or intimate scenes. (Note: swearing or violence may still be present).`
+    };
+
+    if (!faqs.some(f => (f.question || f.q || '').includes("Watch-Along"))) {
+        faqs.push(watchAlongFAQ);
+    }
     const formattedTimestamps = hasTimestamps
         ? movie.resolvedSensitiveScenes
             .filter(s => s.start && s.start.toLowerCase() !== 'none')

@@ -159,7 +159,7 @@ async function detectUserCountry() {
 }
 
 async function getAllRegionStreamingData(tmdbId, title) {
-  const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY || 'a07e22bc18f5cb106bfe4cc1f83ad8ed';
+  const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY;
   const streamingData = {};
 
   try {
