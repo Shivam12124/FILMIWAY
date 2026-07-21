@@ -45,3 +45,8 @@
 - **Optimization:** When suggesting UI changes, prioritize cinematography-inspired layouts (1980s aesthetic: soothing but high-quality).
 
 - **Work Schedule Context:** The developer works 10 hours daily. Focus on efficiency and bulk-task management.
+
+## 5. Movie Integration Blueprint (SOP)
+- **Fast Movie Addition Rule:** When asked to add a new movie or bonus movie, ALWAYS follow the 5-step protocol in `ADD_MOVIE_BLUEPRINT.md` / `.agents/skills/add-movie-guide/SKILL.md`.
+- Never hardcode fake poster URLs; always run `node scripts/cache-tmdb-data.js`.
+- Always update `masterDatabase.json`, `masterTimestamps.json`, `tmdbCache.json`, `data/collections.js`, `utils/*Data.js`, and `utils/*Routes.js` simultaneously.
