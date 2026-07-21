@@ -13,7 +13,8 @@ export const WAR_FILMS_MOVIE_SLUGS = {
   'tt8579674': '1917',
   'tt0082096': 'das-boot',
   'tt0091763': 'platoon',
-  'tt0050825': 'paths-of-glory'
+  'tt0050825': 'paths-of-glory',
+  'tt0332452': 'troy'
 };
 
 // ✅ REVERSE SLUG MAPPING (SLUG TO IMDB ID)

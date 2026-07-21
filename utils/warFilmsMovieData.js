@@ -19,7 +19,8 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 530915, "imdbID": "tt8579674", "Title": "1917", "year": 2019, "genre": "Drama, War", "runtime": 119, "rank": 7 },
     { "tmdbId": 387, "imdbID": "tt0082096", "Title": "Das Boot", "year": 1981, "genre": "Drama, War", "runtime": 149, "rank": 8 },
     { "tmdbId": 792, "imdbID": "tt0091763", "Title": "Platoon", "year": 1986, "genre": "Drama, War", "runtime": 120, "rank": 9 },
-    { "tmdbId": 975, "imdbID": "tt0050825", "Title": "Paths of Glory", "year": 1957, "genre": "Drama, War", "runtime": 88, "rank": 10 }
+    { "tmdbId": 975, "imdbID": "tt0050825", "Title": "Paths of Glory", "year": 1957, "genre": "Drama, War", "runtime": 88, "rank": 10 },
+    { "tmdbId": 652, "imdbID": "tt0332452", "Title": "Troy", "year": 2004, "genre": "Drama, War, Action", "runtime": 163, "rank": "BONUS" }
 ];
 
 // ✅ REVISED STRATEGIC QUOTES (100% Clean & SEO Safe)
@@ -33,7 +34,8 @@ export const STRATEGIC_QUOTES = {
     530915: "There is only one way this war ends. Last man standing.", // 1917
     387: "Not yet, kameraden. Not yet.", // Das Boot
     792: "The first casualty of war is innocence.", // Platoon
-    975: "The paths of glory lead but to the grave." // Paths of Glory
+    975: "The paths of glory lead but to the grave.", // Paths of Glory
+    652: "I want what all men want. I just want it more." // Troy
 };
 
 // ✅ SENSITIVE TIMELINES (The "Utility" Data)
@@ -98,7 +100,17 @@ export const SENSITIVE_TIMELINES = {
     },
 
     // 10. Paths of Glory
-    975: { scenes: [] }
+    975: { scenes: [] },
+    // BONUS: Troy
+    652: {
+        scenes: [
+            { start: "00:06:55", end: "00:07:45", type: "Nudity", severity: "High" },
+            { start: "00:15:38", end: "00:15:50", type: "Nudity", severity: "High" },
+            { start: "00:16:17", end: "00:16:50", type: "Nudity", severity: "High" },
+            { start: "01:05:20", end: "01:06:06", type: "Partial Nudity", severity: "Mild" },
+            { start: "01:53:20", end: "01:54:21", type: "Sex & Nudity", severity: "High" }
+        ]
+    }
 };
 export const FALLBACK_POSTERS = {
     857: "https://image.tmdb.org/t/p/w500/dXF8R5jL0VsUJLc7xij5AzHj1IZ.jpg",

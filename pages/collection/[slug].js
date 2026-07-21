@@ -4825,7 +4825,7 @@ export async function getStaticProps({ params }) {
 
     // ⚡ CUSTOM LOGIC FOR BONUS SLIDES
     // Added support for Psychological Thrillers, Neo-Noir, Revenge, Enemies to Lovers, and Black Swan
-    if (collection.slug === 'best-movies-about-greed' || collection.slug === 'best-raunchy-comedy-movies' || collection.slug === 'best-psychological-thriller-movies' || collection.slug === 'best-neo-noir-movies' || collection.slug === 'best-revenge-movies' || collection.slug === 'best-enemies-to-lovers-movies' || collection.slug === 'movies-like-black-swan' || collection.slug === 'best-erotic-romance-movies') {
+    if (collection.slug === 'best-movies-about-greed' || collection.slug === 'best-raunchy-comedy-movies' || collection.slug === 'best-psychological-thriller-movies' || collection.slug === 'best-neo-noir-movies' || collection.slug === 'best-revenge-movies' || collection.slug === 'best-enemies-to-lovers-movies' || collection.slug === 'movies-like-black-swan' || collection.slug === 'best-erotic-romance-movies' || collection.slug === 'best-war-films') {
         const standardMovies = movies.slice(0, 10).sort((a, b) => (b.rank || 0) - (a.rank || 0));
         let bonusMovies = movies.slice(10);
         

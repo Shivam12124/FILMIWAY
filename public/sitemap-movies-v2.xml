@@ -1782,4 +1782,10 @@
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://filmiway.com/movie/troy/skip-timestamps</loc>
+    <lastmod>2026-07-21T06:55:14.105Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>

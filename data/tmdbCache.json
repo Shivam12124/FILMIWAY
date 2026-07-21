@@ -10606,5 +10606,23 @@
     "budget": "$6,200,000",
     "revenue": "$63,541,777",
     "tagline": "There's a time for playing it safe and a time for Risky Business."
+  },
+  "tt0332452": {
+    "tmdbId": "652",
+    "poster_path": "/a07wLy4ONfpsjnBqMwhlWTJTcm.jpg",
+    "backdrop_path": "/y51M7Ca95sCXTCDvJaRP1uzxKbg.jpg",
+    "runtime": 163,
+    "release_date": "2004-05-13",
+    "overview": "In year 1250 B.C. during the late Bronze age, two emerging nations begin to clash. Paris, the Trojan prince, convinces Helen, Queen of Sparta, to leave her husband Menelaus, and sail with him back to Troy. After Menelaus finds out that his wife was taken by the Trojans, he asks his brother Agamemnon to help him get her back. Agamemnon sees this as an opportunity for power. They set off with 1,000 ships holding 50,000 Greeks to Troy.",
+    "ageRating": "R",
+    "director": "Wolfgang Petersen",
+    "cast": [
+      "Brad Pitt",
+      "Orlando Bloom",
+      "Eric Bana"
+    ],
+    "budget": "$175,000,000",
+    "revenue": "$497,409,852",
+    "tagline": "For passion. For honor. For destiny. For victory. For love."
   }
 }
