@@ -268,6 +268,11 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
         currentRuntime = "181 min (Final Cut)";
     }
 
+    // Explicit Override for Troy
+    if (movie.tmdbId === 652 || movie.imdbID === 'tt0332452') {
+        currentRuntime = "196 min (Director's Cut)";
+    }
+
     // Explicit Override for Mad Max: Fury Road
     if (movie.tmdbId === 76341) {
         currentRuntime = "120 min";

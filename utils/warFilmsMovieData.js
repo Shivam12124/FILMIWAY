@@ -20,7 +20,7 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 387, "imdbID": "tt0082096", "Title": "Das Boot", "year": 1981, "genre": "Drama, War", "runtime": 149, "rank": 8 },
     { "tmdbId": 792, "imdbID": "tt0091763", "Title": "Platoon", "year": 1986, "genre": "Drama, War", "runtime": 120, "rank": 9 },
     { "tmdbId": 975, "imdbID": "tt0050825", "Title": "Paths of Glory", "year": 1957, "genre": "Drama, War", "runtime": 88, "rank": 10 },
-    { "tmdbId": 652, "imdbID": "tt0332452", "Title": "Troy", "year": 2004, "genre": "Drama, War, Action", "runtime": 163, "rank": "BONUS" }
+    { "tmdbId": 652, "imdbID": "tt0332452", "Title": "Troy", "year": 2004, "genre": "Drama, War, Action", "runtime": 196, "rank": "BONUS" }
 ];
 
 // ✅ REVISED STRATEGIC QUOTES (100% Clean & SEO Safe)
@@ -425,8 +425,9 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
     let currentRuntime = movie.Runtime || movie.runtime || "Official";
     if (typeof currentRuntime === 'number') currentRuntime = `${currentRuntime} min`;
     
-    // 🔥 Explicit Override for Apocalypse Now
+    // 🔥 Explicit Override for Apocalypse Now & Troy
     if (movie.tmdbId === 28) currentRuntime = "3 hours 1 min (Final Cut)";
+    if (movie.tmdbId === 652) currentRuntime = "3 hours 16 min (Director's Cut)";
 
     const sensitiveScenes = SENSITIVE_TIMELINES[movie.tmdbId]?.scenes || [];
 
@@ -640,8 +641,9 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
     let finalRuntime = currentRuntime !== "Official" ? currentRuntime : (dbMovie?.runtime ? `${dbMovie.runtime} min` : "Official");
     if (typeof finalRuntime === 'number') finalRuntime = `${finalRuntime} min`;
     
-    // 🔥 Explicit Override for Apocalypse Now
+    // 🔥 Explicit Override for Apocalypse Now & Troy
     if (tmdbId === 28) finalRuntime = "3 hours 1 min (Final Cut)";
+    if (tmdbId === 652) finalRuntime = "3 hours 16 min (Director's Cut)";
 
 
     // 🔥 DYNAMIC RECOMMENDED AGE FAQ INJECTION (UI)

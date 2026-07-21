@@ -299,6 +299,7 @@ export default function UniversalMoviePage({ movie }) {
     if (movie.tmdbId === 51876) currentRuntime = "105 min (Unrated Version)";
     if (movie.tmdbId === 187) currentRuntime = "141 min (Unrated Extended Version)";
     if (movie.tmdbId === 28) currentRuntime = "181 min (Final Cut)";
+    if (movie.tmdbId === 652 || movie.imdbID === 'tt0332452') currentRuntime = "196 min (Director's Cut)";
     if (movie.tmdbId === 76341) currentRuntime = "120 min";
     if (movie.tmdbId === 311) currentRuntime = "249 min";
     if (movie.tmdbId === 341174) currentRuntime = "132 min (Unrated Version)";
@@ -704,6 +705,7 @@ export async function getStaticProps({ params }) {
     if (tmdbIdNum === 51876) finalRuntime = "105 min (Unrated Version)";
     else if (tmdbIdNum === 187) finalRuntime = "141 min (Unrated Extended Version)";
     else if (tmdbIdNum === 28) finalRuntime = "181 min (Final Cut)";
+    else if (tmdbIdNum === 652 || baseMovie.imdbID === 'tt0332452') finalRuntime = "3 hours 16 min (Director's Cut)";
     else if (tmdbIdNum === 76341) finalRuntime = "120 min";
     else if (tmdbIdNum === 311) finalRuntime = "249 min";
     else if (tmdbIdNum === 341174) finalRuntime = "132 min (Unrated Version)";

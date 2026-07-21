@@ -298,6 +298,7 @@ const MovieDetailsSection = React.memo(({
                if (tmdbIdNum === 51876) newRuntime = "105 min (Unrated Version)";
                else if (tmdbIdNum === 187) newRuntime = "141 min (Unrated Extended Version)";
                else if (tmdbIdNum === 28) newRuntime = "181 min (Final Cut)";
+               else if (tmdbIdNum === 652 || movie.imdbID === 'tt0332452') newRuntime = "3 hours 16 min (Director's Cut)";
                else if (tmdbIdNum === 76341) newRuntime = "120 min";
                else if (tmdbIdNum === 311) newRuntime = "249 min";
                else if (tmdbIdNum === 341174) newRuntime = "132 min (Unrated Version)";
