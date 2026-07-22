@@ -42,7 +42,10 @@ export const SURVIVAL_MOVIE_SLUGS = {
     'tt12262116': '13-lives',
     
     // Rank 10: Unbroken
-    'tt1809398': 'unbroken'
+    'tt1809398': 'unbroken',
+    
+    // BONUS: Jaws
+    'tt0073195': 'jaws'
 };
 
 // ✅ REVERSE SLUG MAPPING (SLUG TO IMDB ID)

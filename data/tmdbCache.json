@@ -10624,5 +10624,77 @@
     "budget": "$175,000,000",
     "revenue": "$497,409,852",
     "tagline": "For passion. For honor. For destiny. For victory. For love."
+  },
+  "tt33764258": {
+    "tmdbId": "1368337",
+    "poster_path": "/5rhTDKUhPYvpdQIijFIs5VoWsON.jpg",
+    "backdrop_path": "/r57L2UBLPKcHdZQYg8tagv9XqK2.jpg",
+    "runtime": 173,
+    "release_date": "2026-07-15",
+    "overview": "Odysseus, the legendary King of Ithaca, embarks on a long and perilous journey home following the Trojan War. Throughout his voyage, he is forced to confront the whims of gods, mythological monsters, and trials that stretch both his cunning and his humanity to the breaking point.",
+    "ageRating": "R",
+    "director": "Christopher Nolan",
+    "cast": [
+      "Matt Damon",
+      "Tom Holland",
+      "Anne Hathaway"
+    ],
+    "budget": "$250,000,000",
+    "revenue": "$264,100,000",
+    "tagline": "Defy the gods."
+  },
+  "tt0073195": {
+    "tmdbId": "578",
+    "poster_path": "/lxM6kqilAdpdhqUl2biYp5frUxE.jpg",
+    "backdrop_path": "/i1yf91svRHX45l9BXL8rVFzLoPH.jpg",
+    "runtime": 124,
+    "release_date": "1975-06-20",
+    "overview": "When the seaside community of Amity finds itself under attack by a dangerous great white shark, the town's chief of police, a young marine biologist, and a grizzled shark hunter embark on a desperate quest to kill the beast before it strikes again.",
+    "ageRating": "PG",
+    "director": "Steven Spielberg",
+    "cast": [
+      "Roy Scheider",
+      "Robert Shaw",
+      "Richard Dreyfuss"
+    ],
+    "budget": "$7,000,000",
+    "revenue": "$470,653,000",
+    "tagline": "The terrifying motion picture from the terrifying No. 1 best seller."
+  },
+  "tt0111503": {
+    "tmdbId": "36955",
+    "poster_path": "/pweFTnzzTfGK68woSVkiTgjLzWm.jpg",
+    "backdrop_path": "/jRZ3joUcg8YDCQYl4Tog5xhY6wk.jpg",
+    "runtime": 141,
+    "release_date": "1994-07-15",
+    "overview": "A fearless, globe-trotting, terrorist-battling secret agent has his life turned upside down when he discovers his wife might be having an affair with a used car salesman while terrorists smuggle nuclear war heads into the United States.",
+    "ageRating": "R",
+    "director": "James Cameron",
+    "cast": [
+      "Arnold Schwarzenegger",
+      "Jamie Lee Curtis",
+      "Tom Arnold"
+    ],
+    "budget": "$115,000,000",
+    "revenue": "$378,900,000",
+    "tagline": "When he said I do, he never said what he did."
+  },
+  "tt17526714": {
+    "tmdbId": "933260",
+    "poster_path": "/uYJvxMWMb9W4zIY3cbM50sj3dpC.jpg",
+    "backdrop_path": "/8ODNt5olCeIqBYTP3GgXEQYTfeX.jpg",
+    "runtime": 141,
+    "release_date": "2024-09-07",
+    "overview": "A fading celebrity decides to use a black market drug, a cell-replicating substance that temporarily creates a younger, better version of herself.",
+    "ageRating": "R",
+    "director": "Coralie Fargeat",
+    "cast": [
+      "Demi Moore",
+      "Margaret Qualley",
+      "Dennis Quaid"
+    ],
+    "budget": "$17,500,000",
+    "revenue": "$77,316,812",
+    "tagline": "Have you ever dreamt of a better version of yourself?"
   }
 }

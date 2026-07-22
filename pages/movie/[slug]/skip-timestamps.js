@@ -342,6 +342,7 @@ export default function UniversalMoviePage({ movie }) {
     const sensitiveScenes = movie.resolvedSensitiveScenes || [];
     const isHeavyScene = (scene) => {
         const t = scene.type?.toLowerCase() || '';
+        if (!scene.start || scene.start.trim() === '') return false;
         return t.includes('sex') || t.includes('nudity') || t.includes('explicit') || t.includes('suggestive') || t.includes('lingerie') || t.includes('bikini');
     };
     const filteredHeavyScenes = sensitiveScenes.filter(isHeavyScene);
@@ -757,6 +758,7 @@ export async function getStaticProps({ params }) {
     // 2. Explicit Timestamps Penalty
     const heavyScenes = movie.resolvedSensitiveScenes.filter(s => {
         const t = (s.type || '').toLowerCase();
+        if (!s.start || s.start.trim() === '') return false;
         return t.includes('sex') || t.includes('nudity') || t.includes('explicit') || t.includes('suggestive') || t.includes('lingerie') || t.includes('bikini');
     });
 

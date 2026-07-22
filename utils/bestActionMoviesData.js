@@ -21,7 +21,8 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 353081, "imdbID": "tt4912910", "Title": "Mission: Impossible - Fallout", "year": 2018, "genre": "Action", "runtime": 147, "rank": 7 },
     { "tmdbId": 11782, "imdbID": "tt0104684", "Title": "Hard Boiled", "year": 1992, "genre": "Action", "runtime": 128, "rank": 8 },
     { "tmdbId": 146, "imdbID": "tt0190332", "Title": "Crouching Tiger, Hidden Dragon", "year": 2000, "genre": "Action", "runtime": 120, "rank": 9 },
-    { "tmdbId": 4141, "imdbID": "tt0465602", "Title": "Shoot 'Em Up", "year": 2007, "genre": "Action", "runtime": 86, "rank": 10 }
+    { "tmdbId": 36955, "imdbID": "tt0111503", "Title": "True Lies", "year": 1994, "genre": "Action, Comedy, Thriller", "runtime": 141, "rank": 10 },
+    { "tmdbId": 4141, "imdbID": "tt0465602", "Title": "Shoot 'Em Up", "year": 2007, "genre": "Action", "runtime": 86, "rank": "BONUS" }
 ];
 
 // ✅ REVISED STRATEGIC QUOTES (100% Clean & SEO Safe)
@@ -35,6 +36,7 @@ export const STRATEGIC_QUOTES = {
     353081: "There cannot be peace without first a great suffering.", // MI: Fallout
     11782: "Give a guy a gun, he thinks he's Superman.", // Hard Boiled
     146: "A sword by itself rules nothing. It only comes alive in skillful hands.", // Crouching Tiger
+    36955: "Fear is not an option.", // True Lies
     4141: "Eat your vegetables." // Shoot 'Em Up
 };
 
@@ -100,6 +102,12 @@ export const SENSITIVE_TIMELINES = {
             { start: "0:16:15", end: "0:16:37", type: "Sexual Content & Nudity (Woman)", severity: "High" },
             { start: "0:18:30", end: "0:19:13", type: "Sexual Content & Nudity (Woman)", severity: "High" },
             { start: "0:46:00", end: "0:47:20", type: "Sexual Content, Sex & Nudity", severity: "High" }
+        ]
+    },
+    // BONUS: True Lies
+    36955: {
+        scenes: [
+            { start: "01:21:20", end: "01:25:50", type: "Suggestive clothing (lingerie) / Sensual dance", severity: "Moderate" }
         ]
     }
 };
@@ -266,6 +274,22 @@ export const COMPLETE_MOVIE_DATA = {
         ],
         synopsis: "A man named Mr. Smith delivers a woman's baby during a shootout, and is then called upon to protect the newborn from the army of gunmen.",
         themes: ["Absurdity", "Protection", "Cartoon Violence"]
+    }),
+    // BONUS: True Lies
+    36955: createMovieData({
+        adrenalineRush: 90, stuntComplexity: 95, visceralImpact: 80, complexityLevel: "MEDIUM",
+        dominantColor: "#0f172a", rating: 7.3, criticsScore: 71, audienceScore: 76, director: "James Cameron",
+        cast: ["Arnold Schwarzenegger", "Jamie Lee Curtis", "Tom Arnold"], boxOffice: "$378.9 million", budget: "$115 million",
+        dna: { Action: 60, Comedy: 30, Thriller: 10 },
+        scenes: [
+            { time: 15, intensity: 85, label: "Mansion Escape", color: "#1e293b" },
+            { time: 45, intensity: 90, label: "Bathroom Fight", color: "#dc2626" },
+            { time: 82, intensity: 75, label: "Lingerie Dance", color: "#db2777" },
+            { time: 110, intensity: 95, label: "Bridge Explosion", color: "#f97316" },
+            { time: 130, intensity: 100, label: "Harrier Jet Climax", color: "#dc2626" }
+        ],
+        synopsis: "Harry Tasker is a top-tier secret agent for the U.S. government, but his wife Helen believes he is a boring computer salesman. When Harry discovers his wife is seeking adventure, he uses his intelligence resources to give her a harmless spy mission, only for both of them to get captured by real terrorists. James Cameron's blockbuster blends massive practical stunts, explosive military set-pieces, and martial arts action with high-stakes marital comedy.",
+        themes: ["Double Life", "Trust", "Empowerment", "Explosive Action"]
     })
 };
 
@@ -375,6 +399,7 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
 
     const heavyScenes = sensitiveScenes.filter(s => {
         const t = s.type?.toLowerCase() || '';
+        if (!s.start || s.start.trim() === '') return false;
         return t.includes('sex') || t.includes('nudity') || t.includes('explicit') || t.includes('suggestive') || t.includes('lingerie') || t.includes('bikini'); 
     });
 
@@ -599,12 +624,55 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
 
     const heavyScenes = sensitiveScenes.filter(s => {
         const t = s.type?.toLowerCase() || '';
+        if (!s.start || s.start.trim() === '') return false;
         return t.includes('sex') || t.includes('nudity') || t.includes('explicit') || t.includes('suggestive') || t.includes('lingerie') || t.includes('bikini');
     });
 
     if (heavyScenes.length > 0) {
-        const typesArray = getSensitiveContentTypes(tmdbId) || ['mature content'];
-        const typesString = typesArray.join(' and ');
+        const getTypesFromScenes = (scenes) => {
+            const typeSeverities = {};
+
+            const addType = (typeKey, severity) => {
+                const sev = String(severity || 'moderate').toLowerCase();
+                if (!typeSeverities[typeKey]) {
+                    typeSeverities[typeKey] = sev;
+                } else {
+                    const order = { 'extreme': 4, 'high': 3, 'moderate': 2, 'mild': 1 };
+                    if ((order[sev] || 2) > (order[typeSeverities[typeKey]] || 2)) {
+                        typeSeverities[typeKey] = sev;
+                    }
+                }
+            };
+
+            scenes.forEach(scene => {
+                const lowerType = scene.type?.toLowerCase() || '';
+                const severity = scene.severity;
+                if (lowerType.includes('sexual content')) addType('sexual content', severity);
+                else if (lowerType.match(/\bsex\b/)) addType('sex', severity);
+                else if (lowerType.includes('explicit')) addType('explicit content', severity);
+                if (lowerType.includes('partial nudity')) addType('partial nudity', severity);
+                else if (lowerType.includes('nudity')) addType('nudity', severity);
+                if (lowerType.includes('suggestive') || lowerType.includes('lingerie') || lowerType.includes('bikini')) addType('suggestive clothing', severity);
+                if (lowerType.includes('gore') || lowerType.includes('violence') || lowerType.includes('massacre') || lowerType.includes('execution')) addType('violence & gore', severity);
+                if (lowerType.includes('profanity') || lowerType.includes('language') || lowerType.includes('swearing')) addType('profanity', severity);
+                if (lowerType.includes('suicide')) addType('suicide', severity);
+            });
+
+            return Object.entries(typeSeverities).map(([typeKey, sev]) => {
+                return `${sev} ${typeKey}`;
+            });
+        };
+        const typesArray = getTypesFromScenes(sensitiveScenes);
+        if (typesArray.length === 0) typesArray.push('mature content');
+
+        const joinWithAnd = (arr) => {
+            if (arr.length === 0) return '';
+            if (arr.length === 1) return arr[0];
+            if (arr.length === 2) return arr.join(' and ');
+            return arr.slice(0, -1).join(', ') + ', and ' + arr[arr.length - 1];
+        };
+
+        const typesString = joinWithAnd(typesArray);
         const sceneCount = heavyScenes.length;
         const totalSkipTime = calculateSkipStats(heavyScenes);
         const firstTimestamp = heavyScenes[0].start;
@@ -620,7 +688,7 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
         const startTimesList = heavyScenes.map(s => s.start).join(', ');
         // Filter out suggestive clothing for the UI as well
         const familyUnsafeTypes = typesArray.filter(t => t !== 'suggestive clothing');
-        const familyUnsafeString = familyUnsafeTypes.join(' and ');
+        const familyUnsafeString = joinWithAnd(familyUnsafeTypes);
         
                 let familyFaqAnswer = `No. ${movieTitle} is not safe to watch with family because it contains ${familyUnsafeString}, earning it a [DYNAMIC_SCORE]/10 ([DYNAMIC_LABEL]) Family Safety Score. Adults can use Filmiway's timestamps to skip all ${sceneCount} explicit scenes in the ${finalRuntime} runtime.`;
 

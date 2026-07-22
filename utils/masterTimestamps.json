@@ -1397,6 +1397,19 @@
       }
     ]
   },
+  "578": {
+    "Title": "Jaws",
+    "scenes": [
+      {
+        "start": "0:02:50",
+        "end": "0:03:00",
+        "type": "Partial Nudity (Woman)",
+        "severity": "High"
+      }
+    ],
+    "Summary": "Aged 13+ for creature violence, suspense, and brief opening partial nudity.",
+    "Age": "13+"
+  },
   "593": {
     "Title": "Solaris",
     "scenes": []
@@ -6129,6 +6142,19 @@
     "Title": "Cure",
     "scenes": []
   },
+  "36955": {
+    "Title": "True Lies",
+    "scenes": [
+      {
+        "start": "01:21:20",
+        "end": "01:25:50",
+        "type": "Suggestive clothing (lingerie) / Sensual dance",
+        "severity": "Moderate"
+      }
+    ],
+    "Summary": "Aged 15+ for intense stylized action sequences, mild profanity, and a famous moderate sensual/lingerie dance scene.",
+    "Age": "15+"
+  },
   "37094": {
     "Title": "Falling Down",
     "scenes": []
@@ -9926,6 +9952,67 @@
       }
     ]
   },
+  "933260": {
+    "Title": "The Substance",
+    "scenes": [
+      {
+        "start": "0:18:27",
+        "end": "0:18:34",
+        "type": "Nudity (Woman)",
+        "severity": "High"
+      },
+      {
+        "start": "0:23:23",
+        "end": "0:33:38",
+        "type": "Nudity (Women)",
+        "severity": "High"
+      },
+      {
+        "start": "0:33:50",
+        "end": "0:34:17",
+        "type": "Nudity (Woman)",
+        "severity": "High"
+      },
+      {
+        "start": "0:42:27",
+        "end": "0:44:14",
+        "type": "Nudity (Women)",
+        "severity": "High"
+      },
+      {
+        "start": "0:44:35",
+        "end": "0:44:38",
+        "type": "Partial Nudity (Woman)",
+        "severity": "Mild"
+      },
+      {
+        "start": "0:45:44",
+        "end": "0:45:46",
+        "type": "Partial Nudity (Woman)",
+        "severity": "Mild"
+      },
+      {
+        "start": "0:57:50",
+        "end": "0:58:35",
+        "type": "Sexual Content",
+        "severity": "Moderate"
+      },
+      {
+        "start": "1:24:20",
+        "end": "1:24:24",
+        "type": "Partial Nudity (Woman)",
+        "severity": "Mild"
+      },
+      {
+        "start": "1:32:46",
+        "end": "1:32:52",
+        "type": "Partial Nudity (Woman)",
+        "severity": "Moderate"
+      }
+    ],
+    "Summary": "Aged 18+ for frequent full graphic nudity, intense body horror, and brief sexual content.",
+    "Age": "18+"
+  },
   "937287": {
     "Title": "Challengers",
     "Age": "16+",
@@ -10531,6 +10618,33 @@
         "description": "Strong and frequent vulgar language throughout, including repeated use of the F-word, crude terms, and explicit mature discussions; overall raunchy dialogue dominates the film."
       }
     ]
+  },
+  "1368337": {
+    "Title": "The Odyssey",
+    "scenes": [
+      {
+        "start": "1:10:32",
+        "end": "1:10:37",
+        "type": "Partial Nudity (Man)",
+        "severity": "Mild"
+      },
+      {
+        "start": "",
+        "end": "",
+        "type": "Violence & Gore",
+        "severity": "High",
+        "description": "Frequent fantasy battle violence featuring sword fights, stabbings, impalements, executions, and numerous on-screen deaths with limited blood detail. Includes one moderately graphic Cyclops attack, brief bloody injuries, disturbing monster attacks, and implied beheadings."
+      },
+      {
+        "start": "",
+        "end": "",
+        "type": "Profanity",
+        "severity": "Moderate",
+        "description": "Infrequent strong language, including 3 uses of the F-word, along with occasional uses of \"shit,\" \"bastard,\" and other mild profanity."
+      }
+    ],
+    "Summary": "Aged 14+ for heavy fantasy action violence, mild language including infrequent strong expletives, and brief partial nudity.",
+    "Age": "14+"
   },
   "1376434": {
     "Title": "Predator: Killer of Killers",

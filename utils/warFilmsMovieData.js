@@ -20,7 +20,8 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 387, "imdbID": "tt0082096", "Title": "Das Boot", "year": 1981, "genre": "Drama, War", "runtime": 149, "rank": 8 },
     { "tmdbId": 792, "imdbID": "tt0091763", "Title": "Platoon", "year": 1986, "genre": "Drama, War", "runtime": 120, "rank": 9 },
     { "tmdbId": 975, "imdbID": "tt0050825", "Title": "Paths of Glory", "year": 1957, "genre": "Drama, War", "runtime": 88, "rank": 10 },
-    { "tmdbId": 652, "imdbID": "tt0332452", "Title": "Troy", "year": 2004, "genre": "Drama, War, Action", "runtime": 196, "rank": "BONUS" }
+    { "tmdbId": 652, "imdbID": "tt0332452", "Title": "Troy", "year": 2004, "genre": "Drama, War, Action", "runtime": 196, "rank": "BONUS" },
+    { "tmdbId": 1368337, "imdbID": "tt33764258", "Title": "The Odyssey", "year": 2026, "genre": "Action, Adventure, Fantasy, War", "runtime": 173, "rank": "BONUS" }
 ];
 
 // ✅ REVISED STRATEGIC QUOTES (100% Clean & SEO Safe)
@@ -35,7 +36,8 @@ export const STRATEGIC_QUOTES = {
     387: "Not yet, kameraden. Not yet.", // Das Boot
     792: "The first casualty of war is innocence.", // Platoon
     975: "The paths of glory lead but to the grave.", // Paths of Glory
-    652: "I want what all men want. I just want it more." // Troy
+    652: "I want what all men want. I just want it more.", // Troy
+    1368337: "My name is Nobody." // The Odyssey
 };
 
 // ✅ SENSITIVE TIMELINES (The "Utility" Data)
@@ -109,6 +111,12 @@ export const SENSITIVE_TIMELINES = {
             { start: "00:16:17", end: "00:16:50", type: "Nudity", severity: "High" },
             { start: "01:05:20", end: "01:06:06", type: "Partial Nudity", severity: "Mild" },
             { start: "01:53:20", end: "01:54:21", type: "Sex & Nudity", severity: "High" }
+        ]
+    },
+    // BONUS 2: The Odyssey
+    1368337: {
+        scenes: [
+            { start: "01:10:32", end: "01:10:37", type: "Partial Nudity (Man)", severity: "Mild" }
         ]
     }
 };
@@ -297,6 +305,18 @@ export const COMPLETE_MOVIE_DATA = {
         ],
         synopsis: "A damning critique of military hierarchy and the futility of WWI. When a commanding officer orders a suicidal assault on an enemy position, the failure becomes a PR problem for headquarters. Three random soldiers are selected as scapegoats and court-martialed for cowardice.",
         themes: ["Injustice", "Military Bureaucracy", "Class Divide"]
+    }),
+    // BONUS 2: The Odyssey
+    1368337: createMovieData({
+        warIntensity: 82, complexityLevel: "HIGH", dominantColor: "#1e1b4b",
+        rating: 8.0, criticsScore: 89, audienceScore: 86, director: "Christopher Nolan",
+        cast: ["Matt Damon", "Anne Hathaway", "Tom Holland"], boxOffice: "$250 million", budget: "$150 million",
+        dna: { Adventure: 40, Fantasy: 30, War: 20, Drama: 10 },
+        scenes: [
+            { time: 70, intensity: 45, label: "Sirens Call", color: "#0284c7" }
+        ],
+        synopsis: "Christopher Nolan's epic adaptation of Homer's legendary poem. Following the fall of Troy, King Odysseus and his crew embark on a decade-long journey home to Ithaca, facing mythical dangers and the wrath of gods, while his wife Penelope defends their home from hostile suitors.",
+        themes: ["Homecoming", "Endurance", "Divine Wrath"]
     })
 };
 
@@ -433,6 +453,7 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
 
     const heavyScenes = sensitiveScenes.filter(s => {
         const t = s.type?.toLowerCase() || '';
+        if (!s.start || s.start.trim() === '') return false;
         return t.includes('sex') || t.includes('nudity') || t.includes('explicit') || t.includes('suggestive') || t.includes('violence') || t.includes('gore') || t.includes('massacre') || t.includes('execution'); 
     });
 
@@ -661,12 +682,55 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
 
     const heavyScenes = sensitiveScenes.filter(s => {
         const t = s.type?.toLowerCase() || '';
+        if (!s.start || s.start.trim() === '') return false;
         return t.includes('sex') || t.includes('nudity') || t.includes('explicit') || t.includes('violence') || t.includes('gore') || t.includes('massacre') || t.includes('execution');
     });
 
     if (heavyScenes.length > 0) {
-        const typesArray = getSensitiveContentTypes(tmdbId) || ['mature content'];
-        const typesString = typesArray.join(' and ');
+        const getTypesFromScenes = (scenes) => {
+            const typeSeverities = {};
+
+            const addType = (typeKey, severity) => {
+                const sev = String(severity || 'moderate').toLowerCase();
+                if (!typeSeverities[typeKey]) {
+                    typeSeverities[typeKey] = sev;
+                } else {
+                    const order = { 'extreme': 4, 'high': 3, 'moderate': 2, 'mild': 1 };
+                    if ((order[sev] || 2) > (order[typeSeverities[typeKey]] || 2)) {
+                        typeSeverities[typeKey] = sev;
+                    }
+                }
+            };
+
+            scenes.forEach(scene => {
+                const lowerType = scene.type?.toLowerCase() || '';
+                const severity = scene.severity;
+                if (lowerType.includes('sexual content')) addType('sexual content', severity);
+                else if (lowerType.match(/\bsex\b/)) addType('sex', severity);
+                else if (lowerType.includes('explicit')) addType('explicit content', severity);
+                if (lowerType.includes('partial nudity')) addType('partial nudity', severity);
+                else if (lowerType.includes('nudity')) addType('nudity', severity);
+                if (lowerType.includes('suggestive') || lowerType.includes('lingerie') || lowerType.includes('bikini')) addType('suggestive clothing', severity);
+                if (lowerType.includes('gore') || lowerType.includes('violence') || lowerType.includes('massacre') || lowerType.includes('execution')) addType('violence & gore', severity);
+                if (lowerType.includes('profanity') || lowerType.includes('language') || lowerType.includes('swearing')) addType('profanity', severity);
+                if (lowerType.includes('suicide')) addType('suicide', severity);
+            });
+
+            return Object.entries(typeSeverities).map(([typeKey, sev]) => {
+                return `${sev} ${typeKey}`;
+            });
+        };
+        const typesArray = getTypesFromScenes(sensitiveScenes);
+        if (typesArray.length === 0) typesArray.push('mature content');
+
+        const joinWithAnd = (arr) => {
+            if (arr.length === 0) return '';
+            if (arr.length === 1) return arr[0];
+            if (arr.length === 2) return arr.join(' and ');
+            return arr.slice(0, -1).join(', ') + ', and ' + arr[arr.length - 1];
+        };
+
+        const typesString = joinWithAnd(typesArray);
         const sceneCount = heavyScenes.length;
         const totalSkipTime = calculateSkipStats(heavyScenes);
         const firstTimestamp = heavyScenes[0].start;
@@ -682,7 +746,7 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
         const startTimesList = heavyScenes.map(s => s.start).join(', ');
         // Filter out suggestive clothing for the UI as well
         const familyUnsafeTypes = typesArray.filter(t => t !== 'suggestive clothing');
-        const familyUnsafeString = familyUnsafeTypes.join(' and ');
+        const familyUnsafeString = joinWithAnd(familyUnsafeTypes);
         
                 let familyFaqAnswer = `No. ${movieTitle} is not safe to watch with family because it contains ${familyUnsafeString}, earning it a [DYNAMIC_SCORE]/10 ([DYNAMIC_LABEL]) Family Safety Score. Adults can use Filmiway's timestamps to skip all ${sceneCount} explicit scenes in the ${finalRuntime} runtime.`;
 

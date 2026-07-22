@@ -20,7 +20,8 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 194662, "imdbID": "tt2562232", "Title": "Birdman", "year": 2014, "genre": "Comedy", "runtime": 119, "rank": 8 },
     { "tmdbId": 641, "imdbID": "tt0180093", "Title": "Requiem for a Dream", "year": 2000, "genre": "Drama", "runtime": 102, "rank": 9 },
     { "tmdbId": 242582, "imdbID": "tt2872718", "Title": "Nightcrawler", "year": 2014, "genre": "Thriller", "runtime": 117, "rank": 10 },
-    { "tmdbId": 1339713, "imdbID": "tt37287335", "Title": "Obsession", "year": 2026, "genre": "Thriller, Horror", "runtime": 104, "rank": "BONUS" }
+    { "tmdbId": 1339713, "imdbID": "tt37287335", "Title": "Obsession", "year": 2026, "genre": "Thriller, Horror", "runtime": 104, "rank": "BONUS" },
+    { "tmdbId": 933260, "imdbID": "tt17526714", "Title": "The Substance", "year": 2024, "genre": "Horror, Sci-Fi", "runtime": 141, "rank": "BONUS" }
 ];
 
 const timeToSeconds = (timeStr) => {
@@ -111,6 +112,20 @@ export const SENSITIVE_TIMELINES = {
             { start: "0:44:36", end: "0:45:00", type: "Sex & Partial Nudity", severity: "High" },
             { start: "1:36:42", end: "1:36:50", type: "Nudity", severity: "High" }
         ] 
+    },
+    // BONUS 2: The Substance
+    933260: {
+        scenes: [
+            { start: "0:18:27", end: "0:18:34", type: "Nudity (Woman)", severity: "High" },
+            { start: "0:23:23", end: "0:33:38", type: "Nudity (Women)", severity: "High" },
+            { start: "0:33:50", end: "0:34:17", type: "Nudity (Woman)", severity: "High" },
+            { start: "0:42:27", end: "0:44:14", type: "Nudity (Women)", severity: "High" },
+            { start: "0:44:35", end: "0:44:38", type: "Partial Nudity (Woman)", severity: "Mild" },
+            { start: "0:45:44", end: "0:45:46", type: "Partial Nudity (Woman)", severity: "Mild" },
+            { start: "0:57:50", end: "0:58:35", type: "Sexual Content", severity: "Moderate" },
+            { start: "1:24:20", end: "1:24:24", type: "Partial Nudity (Woman)", severity: "Mild" },
+            { start: "1:32:46", end: "1:32:52", type: "Partial Nudity (Woman)", severity: "Moderate" }
+        ]
     }
 };
 
@@ -323,6 +338,22 @@ export const COMPLETE_MOVIE_DATA = {
         ],
         synopsis: "A gripping psychological horror exploring the terrifying lengths one will go to in the name of obsession, identity, and perfection.",
         themes: ["Obsession", "Identity Collapse", "Paranoia"]
+    }),
+    // BONUS 2: The Substance
+    933260: createMovieData({
+        psychologicalIntensity: 95, destructiveObsession: 98, visceralImpact: 100, complexityLevel: "EXTREME",
+        dominantColor: "#0f172a", rating: 8.0, criticsScore: 91, audienceScore: 84, director: "Coralie Fargeat",
+        cast: ["Demi Moore", "Margaret Qualley", "Dennis Quaid"], boxOffice: "$43.5 million", budget: "$17.5 million",
+        dna: { "Horror": 40, "Psychological": 40, "Sci-Fi": 20 },
+        scenes: [
+            { time: 20, intensity: 50, label: "The Injection", color: "#065f46" },
+            { time: 25, intensity: 90, label: "Sue Emerges", color: "#dc2626" },
+            { time: 70, intensity: 75, label: "The Shift Back", color: "#9333ea" },
+            { time: 110, intensity: 95, label: "Flesh Distortion", color: "#b91c1c" },
+            { time: 135, intensity: 100, label: "Monstrous Climax", color: "#991b1b" }
+        ],
+        synopsis: "An aging Hollywood star, desperate to reclaim her youth, uses a mysterious black-market substance to create a younger, more perfect version of herself. However, she must share the time: one week for the old self, one week for the new, with no exceptions. Coralie Fargeat's body-horror masterpiece is a neon-drenched, visceral satire of vanity, female objectification, and the ultimate cost of perfection.",
+        themes: ["Vanity", "Body Dysmorphia", "Self-Destruction", "Identity Split"]
     })
 };
 
@@ -337,7 +368,8 @@ export const STRATEGIC_QUOTES = {
     194662: "You are not your work.",
     641: "I'm gonna be on television.",
     242582: "I like to say that if you're seeing me, you're having the worst day of your life.",
-    1339713: "How far would you go?"
+    1339713: "How far would you go?",
+    933260: "If you respect the balance... it's perfect."
 };
 
 export const CINEMATIC_COLORS = {
@@ -510,6 +542,7 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
 
     const heavyScenes = sensitiveScenes.filter(s => {
         const t = s.type?.toLowerCase() || '';
+        if (!s.start || s.start.trim() === '') return false;
         return t.includes('sex') || t.includes('nudity') || t.includes('explicit') || t.includes('suggestive') || t.includes('lingerie') || t.includes('bikini'); 
     });
 
@@ -734,12 +767,55 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
 
     const heavyScenes = sensitiveScenes.filter(s => {
         const t = s.type?.toLowerCase() || '';
+        if (!s.start || s.start.trim() === '') return false;
         return t.includes('sex') || t.includes('nudity') || t.includes('explicit') || t.includes('suggestive') || t.includes('lingerie') || t.includes('bikini');
     });
 
     if (heavyScenes.length > 0) {
-        const typesArray = getSensitiveContentTypes(tmdbId) || ['mature content'];
-        const typesString = typesArray.join(' and ');
+        const getTypesFromScenes = (scenes) => {
+            const typeSeverities = {};
+
+            const addType = (typeKey, severity) => {
+                const sev = String(severity || 'moderate').toLowerCase();
+                if (!typeSeverities[typeKey]) {
+                    typeSeverities[typeKey] = sev;
+                } else {
+                    const order = { 'extreme': 4, 'high': 3, 'moderate': 2, 'mild': 1 };
+                    if ((order[sev] || 2) > (order[typeSeverities[typeKey]] || 2)) {
+                        typeSeverities[typeKey] = sev;
+                    }
+                }
+            };
+
+            scenes.forEach(scene => {
+                const lowerType = scene.type?.toLowerCase() || '';
+                const severity = scene.severity;
+                if (lowerType.includes('sexual content')) addType('sexual content', severity);
+                else if (lowerType.match(/\bsex\b/)) addType('sex', severity);
+                else if (lowerType.includes('explicit')) addType('explicit content', severity);
+                if (lowerType.includes('partial nudity')) addType('partial nudity', severity);
+                else if (lowerType.includes('nudity')) addType('nudity', severity);
+                if (lowerType.includes('suggestive') || lowerType.includes('lingerie') || lowerType.includes('bikini')) addType('suggestive clothing', severity);
+                if (lowerType.includes('gore') || lowerType.includes('violence') || lowerType.includes('massacre') || lowerType.includes('execution')) addType('violence & gore', severity);
+                if (lowerType.includes('profanity') || lowerType.includes('language') || lowerType.includes('swearing')) addType('profanity', severity);
+                if (lowerType.includes('suicide')) addType('suicide', severity);
+            });
+
+            return Object.entries(typeSeverities).map(([typeKey, sev]) => {
+                return `${sev} ${typeKey}`;
+            });
+        };
+        const typesArray = getTypesFromScenes(sensitiveScenes);
+        if (typesArray.length === 0) typesArray.push('mature content');
+
+        const joinWithAnd = (arr) => {
+            if (arr.length === 0) return '';
+            if (arr.length === 1) return arr[0];
+            if (arr.length === 2) return arr.join(' and ');
+            return arr.slice(0, -1).join(', ') + ', and ' + arr[arr.length - 1];
+        };
+
+        const typesString = joinWithAnd(typesArray);
         const sceneCount = heavyScenes.length;
         const totalSkipTime = calculateSkipStats(heavyScenes);
         const firstTimestamp = heavyScenes[0].start;
@@ -755,7 +831,7 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
         const startTimesList = heavyScenes.map(s => s.start).join(', ');
         // Filter out suggestive clothing for the UI as well
         const familyUnsafeTypes = typesArray.filter(t => t !== 'suggestive clothing');
-        const familyUnsafeString = familyUnsafeTypes.join(' and ');
+        const familyUnsafeString = joinWithAnd(familyUnsafeTypes);
         
                 let familyFaqAnswer = `No. ${movieTitle} is not safe to watch with family because it contains ${familyUnsafeString}, earning it a [DYNAMIC_SCORE]/10 ([DYNAMIC_LABEL]) Family Safety Score. Adults can use Filmiway's timestamps to skip all ${sceneCount} explicit scenes in the ${finalRuntime} runtime.`;
 

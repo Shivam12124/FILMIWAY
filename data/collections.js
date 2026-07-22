@@ -68,7 +68,7 @@ export const COLLECTIONS = {
       { label: "ENDURANCE", desc: "Physical limits" },
       { label: "REALISM", desc: "Grounded survival" }
     ],
-    movies: ['tt1542344', 'tt16277242', 'tt0162222', 'tt1663202', 'tt3659388', 'tt1649419', 'tt3758172', 'tt0472043', 'tt12262116', 'tt1809398'],
+    movies: ['tt1542344', 'tt16277242', 'tt0162222', 'tt1663202', 'tt3659388', 'tt1649419', 'tt3758172', 'tt0472043', 'tt12262116', 'tt1809398', 'tt0073195'],
     relatedCollections: ['best-war-films', 'movies-like-interstellar', 'best-thriller-movies']
   },
 
@@ -141,7 +141,7 @@ export const COLLECTIONS = {
       { label: "PERFECTION", desc: "Artistic toll" },
       { label: "FRACTURED", desc: "Identity collapse" }
     ],
-    movies: ['tt0156887', 'tt2582802', 'tt1034415', 'tt0040725', 'tt1125849', 'tt0166924', 'tt0254686', 'tt2562232', 'tt0180093', 'tt2872718', 'tt37287335'],
+    movies: ['tt0156887', 'tt2582802', 'tt1034415', 'tt0040725', 'tt1125849', 'tt0166924', 'tt0254686', 'tt2562232', 'tt0180093', 'tt2872718', 'tt37287335', 'tt17526714'],
     relatedCollections: ['best-psychological-thriller-movies', 'movies-like-shutter-island', 'best-erotic-thriller-movies']
   },
 
@@ -802,7 +802,7 @@ export const COLLECTIONS = {
       { label: "ANTI-WAR", desc: "Moral cost" },
       { label: "TRAUMA", desc: "Psychological toll" }
     ],
-    movies: ['tt0120815', 'tt0078788', 'tt0056172', 'tt0091251', 'tt0108052', 'tt0093058', 'tt8579674', 'tt0082096', 'tt0091763', 'tt0050825', 'tt0332452'],
+    movies: ['tt0120815', 'tt0078788', 'tt0056172', 'tt0091251', 'tt0108052', 'tt0093058', 'tt8579674', 'tt0082096', 'tt0091763', 'tt0050825', 'tt0332452', 'tt33764258'],
     relatedCollections: ['best-survival-movies', 'best-crime-thriller-movies']
   },
 
@@ -907,7 +907,7 @@ export const COLLECTIONS = {
       { label: "CHOREOGRAPHY", desc: "Flawless combat" }
     ],
     // ✅ Correct IMDb IDs for: Die Hard, T2, Fury Road, Aliens, John Wick, The Raid 2, M:I Fallout, Hard Boiled, Crouching Tiger, Shoot 'Em Up
-    movies: ['tt0095016', 'tt0103064', 'tt1392190', 'tt0090605', 'tt2911666', 'tt2265171', 'tt4912910', 'tt0104684', 'tt0190332', 'tt0465602'],
+    movies: ['tt0095016', 'tt0103064', 'tt1392190', 'tt0090605', 'tt2911666', 'tt2265171', 'tt4912910', 'tt0104684', 'tt0190332', 'tt0111503', 'tt0465602'],
     relatedCollections: ['best-thriller-movies', 'best-sci-fi-movies', 'best-revenge-movies']
   },
 

@@ -42,7 +42,10 @@ export const BEST_ACTION_MOVIE_SLUGS = {
     'tt0190332': 'crouching-tiger-hidden-dragon',
     
     // Rank 10: Shoot 'Em Up
-    'tt0465602': 'shoot-em-up'
+    'tt0465602': 'shoot-em-up',
+    
+    // BONUS: True Lies
+    'tt0111503': 'true-lies'
 };
 
 // ✅ REVERSE SLUG MAPPING (SLUG TO IMDB ID)

@@ -187,6 +187,22 @@ export const COMPLETE_MOVIE_DATA = {
         ], 
         synopsis: "Olympian Louis Zamperini survives a plane crash, 47 days on a raft, and years in a brutal Japanese POW camp. A powerful story about survival as an act of defiance: refusing to surrender your humanity is the ultimate victory.", 
         themes: ["Forgiveness", "Faith", "Endurance", "War Survival"]
+    }),
+    // BONUS: Jaws
+    578: createMovieData({
+        survivabilityIndex: 78, physicalToll: 70, complexityLevel: "HIGH",
+        dominantColor: "#0f172a", rating: 8.1, criticsScore: 97, audienceScore: 90, director: "Steven Spielberg",
+        cast: ["Roy Scheider", "Robert Shaw", "Richard Dreyfuss"], boxOffice: "$476.5 million", budget: "$9 million",
+        dna: { "Thriller": 50, "Horror": 30, "Adventure": 20 },
+        scenes: [
+            { time: 5, intensity: 90, label: "Chrissie's Death", color: "#b91c1c" },
+            { time: 45, intensity: 75, label: "Alex Kintner Attack", color: "#dc2626" },
+            { time: 80, intensity: 65, label: "Finding Ben Gardner", color: "#7f1d1d" },
+            { time: 105, intensity: 85, label: "Quint's Monologue", color: "#1e293b" },
+            { time: 120, intensity: 95, label: "Final Battle", color: "#991b1b" }
+        ],
+        synopsis: "When an insatiable great white shark terrorizes a small New England resort town, the local police chief, a marine biologist, and a grizzled shark hunter set sail on a suicidal voyage to hunt the beast. Steven Spielberg's seminal masterpiece defined the summer blockbuster, creating a masterclass in primal dread, maritime survival, and claustrophobic tension.",
+        themes: ["Man vs. Nature", "Isolation", "Obsession", "Primal Fear"]
     })
 };
 
@@ -253,6 +269,12 @@ export const SENSITIVE_TIMELINES = {
             { start: "0:13:40", end: "0:13:45", type: "Partial nudity", severity: "Mild" }, 
             { start: "1:07:45", end: "1:08:37", type: "Partial nudity", severity: "Mild" }
         ] 
+    },
+    // BONUS: Jaws
+    578: {
+        scenes: [
+            { start: "0:02:50", end: "0:03:00", type: "Partial Nudity (Woman)", severity: "High" }
+        ]
     }
 };
 export const FALLBACK_POSTERS = {
@@ -278,7 +300,8 @@ export const STRATEGIC_QUOTES = {
     390062: "When you can't walk, you crawl.", 
     1579: "I am Jaguar Paw, son of Flint Sky.", 
     698948: "Thirteen lives were saved.", 
-    227306: "A moment of pain is worth a lifetime of glory."
+    227306: "A moment of pain is worth a lifetime of glory.",
+    578: "You're gonna need a bigger boat."
 };
 
 export const CINEMATIC_COLORS = {
@@ -367,7 +390,8 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 390062, "imdbID": "tt3758172", "Title": "Jungle", "year": 2017, "genre": "Adventure", "runtime": 115, "rank": 7 },
     { "tmdbId": 1579, "imdbID": "tt0472043", "Title": "Apocalypto", "year": 2006, "genre": "Action", "runtime": 139, "rank": 8 },
     { "tmdbId": 698948, "imdbID": "tt12262116", "Title": "13 Lives", "year": 2022, "genre": "Drama", "runtime": 147, "rank": 9 },
-    { "tmdbId": 227306, "imdbID": "tt1809398", "Title": "Unbroken", "year": 2014, "genre": "Drama", "runtime": 137, "rank": 10 }
+    { "tmdbId": 227306, "imdbID": "tt1809398", "Title": "Unbroken", "year": 2014, "genre": "Drama", "runtime": 137, "rank": 10 },
+    { "tmdbId": 578, "imdbID": "tt0073195", "Title": "Jaws", "year": 1975, "genre": "Adventure, Thriller, Horror", "runtime": 124, "rank": "BONUS" }
 ];
 
 // 5. UTILITY FUNCTIONS & THE KEYWORD BRIDGE
@@ -453,6 +477,7 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
 
     const heavyScenes = sensitiveScenes.filter(s => {
         const t = s.type?.toLowerCase() || '';
+        if (!s.start || s.start.trim() === '') return false;
         return t.includes('sex') || t.includes('nudity') || t.includes('explicit') || t.includes('suggestive') || t.includes('lingerie') || t.includes('bikini'); 
     });
 
@@ -677,12 +702,55 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
 
     const heavyScenes = sensitiveScenes.filter(s => {
         const t = s.type?.toLowerCase() || '';
+        if (!s.start || s.start.trim() === '') return false;
         return t.includes('sex') || t.includes('nudity') || t.includes('explicit') || t.includes('suggestive') || t.includes('lingerie') || t.includes('bikini');
     });
 
     if (heavyScenes.length > 0) {
-        const typesArray = getSensitiveContentTypes(tmdbId) || ['mature content'];
-        const typesString = typesArray.join(' and ');
+        const getTypesFromScenes = (scenes) => {
+            const typeSeverities = {};
+
+            const addType = (typeKey, severity) => {
+                const sev = String(severity || 'moderate').toLowerCase();
+                if (!typeSeverities[typeKey]) {
+                    typeSeverities[typeKey] = sev;
+                } else {
+                    const order = { 'extreme': 4, 'high': 3, 'moderate': 2, 'mild': 1 };
+                    if ((order[sev] || 2) > (order[typeSeverities[typeKey]] || 2)) {
+                        typeSeverities[typeKey] = sev;
+                    }
+                }
+            };
+
+            scenes.forEach(scene => {
+                const lowerType = scene.type?.toLowerCase() || '';
+                const severity = scene.severity;
+                if (lowerType.includes('sexual content')) addType('sexual content', severity);
+                else if (lowerType.match(/\bsex\b/)) addType('sex', severity);
+                else if (lowerType.includes('explicit')) addType('explicit content', severity);
+                if (lowerType.includes('partial nudity')) addType('partial nudity', severity);
+                else if (lowerType.includes('nudity')) addType('nudity', severity);
+                if (lowerType.includes('suggestive') || lowerType.includes('lingerie') || lowerType.includes('bikini')) addType('suggestive clothing', severity);
+                if (lowerType.includes('gore') || lowerType.includes('violence') || lowerType.includes('massacre') || lowerType.includes('execution')) addType('violence & gore', severity);
+                if (lowerType.includes('profanity') || lowerType.includes('language') || lowerType.includes('swearing')) addType('profanity', severity);
+                if (lowerType.includes('suicide')) addType('suicide', severity);
+            });
+
+            return Object.entries(typeSeverities).map(([typeKey, sev]) => {
+                return `${sev} ${typeKey}`;
+            });
+        };
+        const typesArray = getTypesFromScenes(sensitiveScenes);
+        if (typesArray.length === 0) typesArray.push('mature content');
+
+        const joinWithAnd = (arr) => {
+            if (arr.length === 0) return '';
+            if (arr.length === 1) return arr[0];
+            if (arr.length === 2) return arr.join(' and ');
+            return arr.slice(0, -1).join(', ') + ', and ' + arr[arr.length - 1];
+        };
+
+        const typesString = joinWithAnd(typesArray);
         const sceneCount = heavyScenes.length;
         const totalSkipTime = calculateSkipStats(heavyScenes);
         const firstTimestamp = heavyScenes[0].start;
@@ -698,7 +766,7 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
         const startTimesList = heavyScenes.map(s => s.start).join(', ');
         // Filter out suggestive clothing for the UI as well
         const familyUnsafeTypes = typesArray.filter(t => t !== 'suggestive clothing');
-        const familyUnsafeString = familyUnsafeTypes.join(' and ');
+        const familyUnsafeString = joinWithAnd(familyUnsafeTypes);
         
                 let familyFaqAnswer = `No. ${movieTitle} is not safe to watch with family because it contains ${familyUnsafeString}, earning it a [DYNAMIC_SCORE]/10 ([DYNAMIC_LABEL]) Family Safety Score. Adults can use Filmiway's timestamps to skip all ${sceneCount} explicit scenes in the ${finalRuntime} runtime.`;
 

@@ -759,6 +759,17 @@
     "sourceFile": "bestActionMoviesData.js"
   },
   {
+    "tmdbId": 578,
+    "imdbID": "tt0073195",
+    "Title": "Jaws",
+    "year": 1975,
+    "genre": "Adventure, Thriller, Horror",
+    "runtime": 124,
+    "rank": "BONUS",
+    "slug": "jaws",
+    "sourceFile": "survivalMovieData.js"
+  },
+  {
     "tmdbId": 593,
     "imdbID": "tt0069293",
     "Title": "Solaris",
@@ -2008,7 +2019,7 @@
     "year": 2007,
     "genre": "Action",
     "runtime": 86,
-    "rank": 10,
+    "rank": "BONUS",
     "slug": "shoot-em-up",
     "sourceFile": "bestActionMoviesData.js"
   },
@@ -3397,6 +3408,17 @@
     "rank": 8,
     "slug": "cure",
     "sourceFile": "se7enMovieData.js"
+  },
+  {
+    "tmdbId": 36955,
+    "imdbID": "tt0111503",
+    "Title": "True Lies",
+    "year": 1994,
+    "genre": "Action, Comedy, Thriller",
+    "runtime": 141,
+    "rank": 10,
+    "slug": "true-lies",
+    "sourceFile": "bestActionMoviesData.js"
   },
   {
     "tmdbId": 37094,
@@ -6072,6 +6094,17 @@
     "sourceFile": "decadeMovieData.js"
   },
   {
+    "tmdbId": 933260,
+    "imdbID": "tt17526714",
+    "Title": "The Substance",
+    "year": 2024,
+    "genre": "Horror, Sci-Fi",
+    "runtime": 141,
+    "rank": "BONUS",
+    "slug": "the-substance",
+    "sourceFile": "blackSwanMovieData.js"
+  },
+  {
     "tmdbId": 937287,
     "imdbID": "tt16426418",
     "Title": "Challengers",
@@ -6411,6 +6444,17 @@
     "rank": "BONUS",
     "slug": "office-romance",
     "sourceFile": "enemiesToLoversMovieData.js"
+  },
+  {
+    "tmdbId": 1368337,
+    "imdbID": "tt33764258",
+    "Title": "The Odyssey",
+    "year": 2026,
+    "genre": "Action, Adventure, Fantasy, War",
+    "runtime": 173,
+    "rank": "BONUS",
+    "slug": "the-odyssey",
+    "sourceFile": "warFilmsMovieData.js"
   },
   {
     "tmdbId": 1376434,

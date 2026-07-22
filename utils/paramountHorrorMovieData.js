@@ -457,6 +457,7 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
     }
 
     const heavyScenes = sensitiveScenes.filter(s => {
+        if (!s.start || s.start.trim() === '') return false;
         const t = s.type?.toLowerCase() || '';
         return t.includes('sex') || t.includes('nudity') || t.includes('explicit') || t.includes('suggestive') || t.includes('lingerie') || t.includes('bikini');
     });

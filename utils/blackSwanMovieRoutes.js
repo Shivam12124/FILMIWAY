@@ -45,7 +45,10 @@ export const BLACK_SWAN_MOVIE_SLUGS = {
     'tt2872718': 'nightcrawler',
     
     // BONUS FILM: Obsession
-    'tt37287335': 'obsession'
+    'tt37287335': 'obsession',
+    
+    // BONUS FILM 2: The Substance
+    'tt17526714': 'the-substance'
 };
 
 // ✅ REVERSE SLUG MAPPING (SLUG TO IMDB ID)

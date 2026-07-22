@@ -581,6 +581,7 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
     const sensitiveScenes = SENSITIVE_TIMELINES[movie.tmdbId]?.scenes || [];
 
     const heavyScenes = sensitiveScenes.filter(s => {
+        if (!s.start || s.start.trim() === '') return false;
         const t = s.type?.toLowerCase() || '';
         return t.includes('sex') || t.includes('nudity') || t.includes('explicit') || t.includes('suggestive') || t.includes('lingerie') || t.includes('bikini'); 
     });
@@ -810,8 +811,49 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
     });
 
     if (heavyScenes.length > 0) {
-        const typesArray = getSensitiveContentTypes(tmdbId) || ['mature content'];
-        const typesString = typesArray.join(' and ');
+        const getTypesFromScenes = (scenes) => {
+            const typeSeverities = {};
+            const addType = (typeKey, severity) => {
+                const sev = String(severity || 'moderate').toLowerCase();
+                if (!typeSeverities[typeKey]) {
+                    typeSeverities[typeKey] = sev;
+                } else {
+                    const order = { 'extreme': 4, 'high': 3, 'moderate': 2, 'mild': 1 };
+                    if ((order[sev] || 2) > (order[typeSeverities[typeKey]] || 2)) {
+                        typeSeverities[typeKey] = sev;
+                    }
+                }
+            };
+
+            scenes.forEach(scene => {
+                const lowerType = scene.type?.toLowerCase() || '';
+                const severity = scene.severity;
+                if (lowerType.includes('sexual content')) addType('sexual content', severity);
+                else if (lowerType.match(/\bsex\b/)) addType('sex', severity);
+                else if (lowerType.includes('explicit')) addType('explicit content', severity);
+                if (lowerType.includes('partial nudity')) addType('partial nudity', severity);
+                else if (lowerType.includes('nudity')) addType('nudity', severity);
+                if (lowerType.includes('suggestive') || lowerType.includes('lingerie') || lowerType.includes('bikini')) addType('suggestive clothing', severity);
+                if (lowerType.includes('gore') || lowerType.includes('violence') || lowerType.includes('massacre') || lowerType.includes('execution')) addType('violence & gore', severity);
+                if (lowerType.includes('profanity') || lowerType.includes('language') || lowerType.includes('swearing')) addType('profanity', severity);
+                if (lowerType.includes('suicide')) addType('suicide', severity);
+            });
+
+            return Object.entries(typeSeverities).map(([typeKey, sev]) => {
+                return `${sev} ${typeKey}`;
+            });
+        };
+        const typesArray = getTypesFromScenes(sensitiveScenes);
+        if (typesArray.length === 0) typesArray.push('mature content');
+
+        const joinWithAnd = (arr) => {
+            if (arr.length === 0) return '';
+            if (arr.length === 1) return arr[0];
+            if (arr.length === 2) return arr.join(' and ');
+            return arr.slice(0, -1).join(', ') + ', and ' + arr[arr.length - 1];
+        };
+
+        const typesString = joinWithAnd(typesArray);
         const sceneCount = heavyScenes.length;
         const totalSkipTime = calculateSkipStats(heavyScenes);
         const firstTimestamp = heavyScenes[0].start;
@@ -827,7 +869,7 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
         const startTimesList = heavyScenes.map(s => s.start).join(', ');
         // Filter out suggestive clothing for the UI as well
         const familyUnsafeTypes = typesArray.filter(t => t !== 'suggestive clothing');
-        const familyUnsafeString = familyUnsafeTypes.join(' and ');
+        const familyUnsafeString = joinWithAnd(familyUnsafeTypes);
         
                 let familyFaqAnswer = `No. ${movieTitle} is not safe to watch with family because it contains ${familyUnsafeString}, earning it a [DYNAMIC_SCORE]/10 ([DYNAMIC_LABEL]) Family Safety Score. Adults can use Filmiway's timestamps to skip all ${sceneCount} explicit scenes in the ${finalRuntime} runtime.`;
 

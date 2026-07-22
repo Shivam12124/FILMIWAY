@@ -14,7 +14,8 @@ export const WAR_FILMS_MOVIE_SLUGS = {
   'tt0082096': 'das-boot',
   'tt0091763': 'platoon',
   'tt0050825': 'paths-of-glory',
-  'tt0332452': 'troy'
+  'tt0332452': 'troy',
+  'tt33764258': 'the-odyssey'
 };
 
 // ✅ REVERSE SLUG MAPPING (SLUG TO IMDB ID)
@@ -92,7 +93,6 @@ export default {
   getWarFilmByImdbId,
   getWarFilmBySlug,
   getWarFilmSlug,
-  generateWarFilmMoviePaths,
   getWarFilmMovieNavigation,
   getWarFilmRank,
   getTotalWarFilms
