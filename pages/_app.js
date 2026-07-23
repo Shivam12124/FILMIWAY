@@ -160,7 +160,7 @@ export default function App({ Component, pageProps }) {
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
-        
+
         {/* 🚀 MEDIAVINE GROW SCRIPT (Forced into raw HTML for bot verification) 🚀 */}
         <script 
           data-grow-initializer="" 

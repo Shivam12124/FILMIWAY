@@ -4,7 +4,12 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        {/* ⚡ OPTIMIZED: Removed unused preconnects to prevent network bottlenecking */}
+        {/* Google AdSense */}
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9989540501740548"
+          crossorigin="anonymous"
+        />
 
         {/* Global CSS */}
         <style>{`
