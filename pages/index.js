@@ -11,7 +11,8 @@ import {
   Clock,
   Shield,
   ChevronRight,
-  Film
+  Film,
+  Bell
 } from 'lucide-react';
 import dynamic from 'next/dynamic';
 
@@ -320,7 +321,7 @@ const FeaturesSection = () => {
         <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight mb-2">How Filmiway Works</h2>
         <p className="text-sm sm:text-base text-gray-400 font-light max-w-xl mx-auto mb-10">We manually analyze movies scene-by-scene so you can bypass uncomfortable elements.</p>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="bg-[#0e0e0e] border border-white/5 rounded-2xl p-6 hover:border-yellow-500/20 transition-all duration-300">
             <div className="w-12 h-12 bg-yellow-500/10 text-yellow-500 rounded-full flex items-center justify-center mx-auto mb-4 border border-yellow-500/20">
               <Clock className="w-5 h-5" />
@@ -343,6 +344,14 @@ const FeaturesSection = () => {
             </div>
             <h3 className="text-lg font-bold text-white mb-2">Worry-Free Viewing</h3>
             <p className="text-sm text-gray-400 font-light leading-relaxed">Filter movies by streaming platforms, locate clean recommendations, and comfortably host family movie nights.</p>
+          </div>
+
+          <div className="bg-[#0e0e0e] border border-white/5 rounded-2xl p-6 hover:border-yellow-500/20 transition-all duration-300">
+            <div className="w-12 h-12 bg-yellow-500/10 text-yellow-500 rounded-full flex items-center justify-center mx-auto mb-4 border border-yellow-500/20">
+              <Bell className="w-5 h-5" />
+            </div>
+            <h3 className="text-lg font-bold text-white mb-2">Watch-Along Mode</h3>
+            <p className="text-sm text-gray-400 font-light leading-relaxed">Get dynamic, synchronized on-screen alerts exactly 12 seconds before any sensitive scene occurs.</p>
           </div>
         </div>
       </div>

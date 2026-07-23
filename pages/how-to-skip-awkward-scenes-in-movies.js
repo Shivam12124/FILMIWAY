@@ -163,11 +163,6 @@ export default function HowToSkipAwkwardScenes() {
       },
       {
         "@type": "HowToStep",
-        "name": "Search Google",
-        "text": "Type '[Movie Name] Parents Guide and Timestamps Filmiway.com' directly into Google."
-      },
-      {
-        "@type": "HowToStep",
         "name": "Visit Us Directly",
         "text": "Go to filmiway.com/movie-directory to browse our complete A-Z index of safe viewing guides."
       }
@@ -307,14 +302,11 @@ We’ve all had this experience. You’re comfortably seated on your couch, watc
                 How to Find Timestamps for Your Next Movie
               </h2>
               <p>
-                It’s incredibly simple to protect your movie night. Before you press play on Netflix, Hulu, HBO Max, or Prime Video, just follow these three easy steps:
+                It’s incredibly simple to protect your movie night. Before you press play on Netflix, Hulu, HBO Max, or Prime Video, just follow these two easy steps:
               </p>
               <ol className="text-gray-300 space-y-4">
                 <li>
                   <strong>Use Our Instant Search:</strong> Click the magnifying glass icon at the top of any page to instantly search our 500+ movie database.
-                </li>
-                <li>
-                  <strong>Search Google:</strong> Type <em>"[Movie Name] Parents Guide and Timestamps Filmiway.com"</em> directly into Google.
                 </li>
                 <li>
                   <strong>Visit Us Directly:</strong> Go to <Link href="/movie-directory">filmiway.com/movie-directory</Link> to browse our complete A-Z index of safe viewing guides.
