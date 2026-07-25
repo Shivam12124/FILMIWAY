@@ -10696,5 +10696,59 @@
     "budget": "$17,500,000",
     "revenue": "$77,316,812",
     "tagline": "Have you ever dreamt of a better version of yourself?"
+  },
+  "tt0409459": {
+    "tmdbId": "13183",
+    "poster_path": "/aVURelN3pM56lFM7Dgfs5TixcIf.jpg",
+    "backdrop_path": "/dH7ia3vtkYCa3CBvDnvVjqm9uiQ.jpg",
+    "runtime": 163,
+    "release_date": "2009-03-04",
+    "overview": "In a gritty and alternate 1985, the glory days of costumed vigilantes have been brought to a close by a government crackdown. But after one of the masked veterans is brutally murdered, an investigation into the killer is initiated. The reunited heroes set out to prevent their own destruction, but in doing so they uncover a sinister plot that puts all of humanity in grave danger.",
+    "ageRating": "R",
+    "director": "Zack Snyder",
+    "cast": [
+      "Malin Åkerman",
+      "Patrick Wilson",
+      "Billy Crudup"
+    ],
+    "budget": "$130,000,000",
+    "revenue": "$185,258,983",
+    "tagline": "Justice is coming to all of us. No matter what we do."
+  },
+  "tt0416449": {
+    "tmdbId": "1271",
+    "poster_path": "/h7Lcio0c9ohxPhSZg42eTlKIVVY.jpg",
+    "backdrop_path": "/lgBZlJ1LHQel5nneNQMoesmvc7l.jpg",
+    "runtime": 117,
+    "release_date": "2007-03-07",
+    "overview": "A story very loosely based the 480 B.C. Battle of Thermopylae, where the King of Sparta led his army against the advancing Persians.",
+    "ageRating": "R",
+    "director": "Zack Snyder",
+    "cast": [
+      "Gerard Butler",
+      "Lena Headey",
+      "Dominic West"
+    ],
+    "budget": "$65,000,000",
+    "revenue": "$456,082,343",
+    "tagline": "Prepare for glory!"
+  },
+  "tt0335266": {
+    "tmdbId": "153",
+    "poster_path": "/3jCLmYDIIiSMPujbwygNpqdpM8N.jpg",
+    "backdrop_path": "/6ITVHoipvxAS8luzKtHTbPaHLtT.jpg",
+    "runtime": 102,
+    "release_date": "2003-09-18",
+    "overview": "Two lost souls visiting Tokyo -- the young, neglected wife of a photographer and a washed-up movie star shooting a TV commercial -- find an odd solace and pensive freedom to be real in each other's company, away from their lives in America.",
+    "ageRating": "R",
+    "director": "Sofia Coppola",
+    "cast": [
+      "Bill Murray",
+      "Scarlett Johansson",
+      "Giovanni Ribisi"
+    ],
+    "budget": "$4,000,000",
+    "revenue": "$119,723,856",
+    "tagline": "Everyone wants to be found."
   }
 }

@@ -10686,5 +10686,158 @@
       "severity": "high",
       "description": "Partial nudity and intimate scene."
     }
-  ]
+  ],
+  "13183": {
+    "Title": "Watchmen",
+    "scenes": [
+      {
+        "start": "00:59:20",
+        "end": "00:59:28",
+        "type": "Nudity (Woman)",
+        "severity": "High"
+      },
+      {
+        "start": "01:03:36",
+        "end": "01:04:16",
+        "type": "Sex",
+        "severity": "Moderate"
+      },
+      {
+        "start": "01:22:58",
+        "end": "01:23:08",
+        "type": "Sex",
+        "severity": "High"
+      },
+      {
+        "start": "01:26:28",
+        "end": "01:26:42",
+        "type": "Nudity (Man)",
+        "severity": "Moderate"
+      },
+      {
+        "start": "02:05:38",
+        "end": "02:06:45",
+        "type": "Sex",
+        "severity": "Moderate"
+      },
+      {
+        "start": "02:08:00",
+        "end": "02:08:20",
+        "type": "Nudity (Man & Woman)",
+        "severity": "High"
+      },
+      {
+        "start": "02:13:45",
+        "end": "02:14:00",
+        "type": "Partial Nudity (Man)",
+        "severity": "Mild"
+      },
+      {
+        "start": "02:19:10",
+        "end": "02:20:23",
+        "type": "Sex & Nudity",
+        "severity": "High"
+      },
+      {
+        "start": "",
+        "end": "",
+        "type": "Violence & Gore",
+        "severity": "High",
+        "description": "Frequent strong violence featuring brutal beatings, shootings, stabbings, dismemberment, explosions, and numerous deaths with graphic blood and gore. Includes severed limbs, exposed organs, compound fractures, attempted sexual assault, and disturbing injury detail."
+      },
+      {
+        "start": "",
+        "end": "",
+        "type": "Profanity",
+        "severity": "Moderate",
+        "description": "Frequent strong language, including 19 uses of the F-word and repeated moderate profanity throughout."
+      }
+    ],
+    "Summary": "Aged 18+ for strong graphic violence, explicit sex, nudity, and moderate language.",
+    "Age": "18+"
+  },
+  "1271": {
+    "Title": "300",
+    "scenes": [
+      {
+        "start": "00:17:30",
+        "end": "00:18:05",
+        "type": "Nudity (Woman)",
+        "severity": "Moderate"
+      },
+      {
+        "start": "00:19:45",
+        "end": "00:19:49",
+        "type": "Partial Nudity (Man)",
+        "severity": "Mild"
+      },
+      {
+        "start": "00:21:50",
+        "end": "00:22:30",
+        "type": "Nudity (Woman) and sex",
+        "severity": "High"
+      },
+      {
+        "start": "01:16:20",
+        "end": "01:17:50",
+        "type": "Suggestive clothing & Nudity (Women)",
+        "severity": "High"
+      },
+      {
+        "start": "01:22:00",
+        "end": "01:22:20",
+        "type": "Sex",
+        "severity": "Moderate"
+      },
+      {
+        "start": "",
+        "end": "",
+        "type": "Violence & Gore",
+        "severity": "High",
+        "description": "Extremely graphic and stylized battle violence featuring frequent decapitations, severed limbs, impalements, heavy bloodshed, mutilated bodies, and numerous on-screen deaths. Includes brutal combat, disturbing and wartime imagery."
+      },
+      {
+        "start": "",
+        "end": "",
+        "type": "Profanity",
+        "severity": "Mild",
+        "description": "Very infrequent profanity, including a single stronger insult and a few mild expletives."
+      }
+    ],
+    "Summary": "Aged 16+ for graphic stylized violence, brief nudity, and mild language.",
+    "Age": "16+"
+  },
+  "153": {
+    "Title": "Lost in Translation",
+    "scenes": [
+      {
+        "start": "00:00:20",
+        "end": "00:00:50",
+        "type": "Suggestive clothing (Woman in underwear)",
+        "severity": "Mild"
+      },
+      {
+        "start": "01:03:30",
+        "end": "01:04:36",
+        "type": "Nudity (Women)",
+        "severity": "High"
+      },
+      {
+        "start": "",
+        "end": "",
+        "type": "Violence & Gore",
+        "severity": "None",
+        "description": "Manually verified by Filmiway editors to contain no graphic violence, bloodshed, or gore."
+      },
+      {
+        "start": "",
+        "end": "",
+        "type": "Profanity",
+        "severity": "Mild",
+        "description": "Infrequent strong language, including a single use of the F-word, mild-to-moderate profanity, and brief coarse lyrics."
+      }
+    ],
+    "Summary": "Aged 16+ for brief nudity, suggestive scenes, and mild language.",
+    "Age": "16+"
+  }
 }

@@ -254,7 +254,7 @@ export const COLLECTIONS = {
       { label: "CEREBRAL", desc: "Deep thought" },
       { label: "SPECTACLE", desc: "Visual wonder" }
     ],
-    movies: ['tt0062622', 'tt0082869', 'tt0133093', 'tt0078748', 'tt0816692', 'tt0103064', 'tt1375666', 'tt2543164', 'tt0080684', 'tt1856101'],
+    movies: ['tt0062622', 'tt0082869', 'tt0133093', 'tt0078748', 'tt0816692', 'tt0103064', 'tt1375666', 'tt2543164', 'tt0080684', 'tt1856101', 'tt0409459'],
     relatedCollections: ['best-time-travel-movies', 'movies-like-inception', 'best-thriller-movies']
   },
 
@@ -907,7 +907,7 @@ export const COLLECTIONS = {
       { label: "CHOREOGRAPHY", desc: "Flawless combat" }
     ],
     // ✅ Correct IMDb IDs for: Die Hard, T2, Fury Road, Aliens, John Wick, The Raid 2, M:I Fallout, Hard Boiled, Crouching Tiger, Shoot 'Em Up
-    movies: ['tt0095016', 'tt0103064', 'tt1392190', 'tt0090605', 'tt2911666', 'tt2265171', 'tt4912910', 'tt0104684', 'tt0190332', 'tt0111503', 'tt0465602'],
+    movies: ['tt0095016', 'tt0103064', 'tt1392190', 'tt0090605', 'tt2911666', 'tt2265171', 'tt4912910', 'tt0104684', 'tt0190332', 'tt0111503', 'tt0465602', 'tt0416449'],
     relatedCollections: ['best-thriller-movies', 'best-sci-fi-movies', 'best-revenge-movies']
   },
 
@@ -998,7 +998,7 @@ export const COLLECTIONS = {
       { label: "REALISM", desc: "Honest portrayals" },
       { label: "DIVORCE", desc: "Relationship breakdown" }
     ],
-    movies: ['tt1832382', 'tt0070644', 'tt7653254', 'tt2209418', 'tt0079417', 'tt0169547', 'tt0078444', 'tt1120985', 'tt1570728', 'tt0959337'],
+    movies: ['tt1832382', 'tt0070644', 'tt7653254', 'tt2209418', 'tt0079417', 'tt0169547', 'tt0078444', 'tt1120985', 'tt1570728', 'tt0959337', 'tt0335266'],
     relatedCollections: ['best-drama-movies-on-hbo-max', 'best-thought-provoking-movies', 'best-erotic-romance-movies']
   },
 
@@ -1226,7 +1226,8 @@ export const getPrimaryCollectionForMovie = (imdbID) => {
             'decadeMovieData.js': 'best-movies-of-the-decade',
             'gangsterMovieData.js': 'best-gangster-movies-of-all-time',
             'bookAdaptationData.js': 'top-10-book-adaptations',
-            'marriageCrisisMovieData.js': 'best-marriage-crisis-movies'
+            'marriageCrisisMovieData.js': 'best-marriage-crisis-movies',
+            'sciFiMovieData.js': 'best-sci-fi-movies'
         };
         primarySlug = sourceMap[movie.sourceFile] || null;
       }

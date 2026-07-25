@@ -22,7 +22,8 @@ export const SCI_FI_MOVIES = [
   { tmdbId: 27205, imdbID: "tt1375666", Title: "Inception", year: 2010, genre: "Sci-Fi", runtime: 148, rank: 7 },
   { tmdbId: 329865, imdbID: "tt2543164", Title: "Arrival", year: 2016, genre: "Sci-Fi", runtime: 116, rank: 8 },
   { tmdbId: 11, imdbID: "tt0080684", Title: "Star Wars: Episode V - The Empire Strikes Back", year: 1980, genre: "Adventure", runtime: 124, rank: 9 },
-  { tmdbId: 335984, imdbID: "tt1856101", Title: "Blade Runner 2049", year: 2017, genre: "Sci-Fi", runtime: 164, rank: 10 }
+  { tmdbId: 335984, imdbID: "tt1856101", Title: "Blade Runner 2049", year: 2017, genre: "Sci-Fi", runtime: 164, rank: 10 },
+  { tmdbId: 13183, imdbID: "tt0409459", Title: "Watchmen", year: 2009, genre: "Action, Mystery, Sci-Fi", runtime: 162, rank: "BONUS" }
 ];
 
 // ✅ HELPER: Data Factory
@@ -173,6 +174,19 @@ export const COMPLETE_SCI_FI_DETAILS = {
           { time: 135, intensity: 85, label: "Sea Wall Fight", color: "#1e293b" },
           { time: 160, intensity: 90, label: "Dying for a Cause", color: "#ffffff" }
       ]
+  }),
+
+  // BONUS: Watchmen (2009)
+  13183: createMovieData({
+      cosmicScale: 85, complexityLevel: "HIGH",
+      dominantColor: "#facc15", rating: 7.8,
+      dna: { "Action": 40, "Mystery": 30, "Sci-Fi": 30 },
+      scenes: [
+          { time: 10, intensity: 75, label: "The Comedian's Death", color: "#b91c1c" },
+          { time: 59, intensity: 40, label: "Silk Spectre Nudity", color: "#fb7185" },
+          { time: 125, intensity: 85, label: "Owl Ship Climax", color: "#fbbf24" },
+          { time: 162, intensity: 90, label: "Rorschach's Stand", color: "#b91c1c" }
+      ]
   })
 };
 
@@ -205,7 +219,19 @@ export const SENSITIVE_TIMELINES = {
           { start: '2:02:58', end: '2:03:03', type: 'Partial Nudity(Woman)', severity: 'Mild' },
           { start: '2:17:00', end: '2:18:05', type: 'Nudity(Woman)', severity: 'High' }
       ]
-  } // BR 2049
+  }, // BR 2049
+  13183: {
+      scenes: [
+          { start: "00:59:20", end: "00:59:28", type: "Nudity (Woman)", severity: "High" },
+          { start: "01:03:36", end: "01:04:16", type: "Sex", severity: "Moderate" },
+          { start: "01:22:58", end: "01:23:08", type: "Sex", severity: "High" },
+          { start: "01:26:28", end: "01:26:42", type: "Nudity (Man)", severity: "Moderate" },
+          { start: "02:05:38", end: "02:06:45", type: "Sex", severity: "Moderate" },
+          { start: "02:08:00", end: "02:08:20", type: "Nudity (Man & Woman)", severity: "High" },
+          { start: "02:13:45", end: "02:14:00", type: "Partial Nudity (Man)", severity: "Mild" },
+          { start: "02:19:10", end: "02:20:23", type: "Sex & Nudity", severity: "High" }
+      ]
+  }
 };
 // 4. FAQS (Deep Analysis)
 export const SCI_FI_FAQS = {
@@ -277,6 +303,12 @@ export const SCI_FI_FAQS = {
       { question: "What is the 'Baseline' test?", answer: "A post-traumatic stress test for replicants. They recite poetry (Nabokov) to check for emotional deviation. If they respond emotionally, they are retired. K fails when he starts hoping." },
       { question: "Is Deckard a replicant in this one?", answer: "The movie deliberately keeps it ambiguous. Wallace taunts Deckard, suggesting his love for Rachael was programmed math, but Deckard rejects it: 'I know what's real.'" },
       { question: "What does the snow ending mean?", answer: "It mirrors the 'Tears in Rain' scene. K lies down to die on the steps, feeling the snow (nature). He has completed his mission and found peace, earning his humanity." }
+  ],
+  'Watchmen': [
+      { question: "Does Watchmen have violence and gore?", answer: "According to the Filmiway Parents Guide, the violence in Watchmen is rated as High. It contains brutal combat, dismemberment, bone-breaking, stabbings, and graphic scenes of murder and war throughout." },
+      { question: "Does Watchmen have profanity or swearing?", answer: "The profanity in Watchmen is rated as Moderate. It includes repeated strong language, coarse expressions, and occasional vulgar slurs." },
+      { question: "Why is Watchmen rated R?", answer: "Watchmen earns its R rating due to strong graphic violence, sexuality, nudity, and language. Adults can use our timestamps to skip the explicit content." },
+      { question: "What does the ending of Watchmen mean?", answer: "Ozymandias' plan succeeds: he prevents nuclear war by killing millions in New York and uniting the world against a fake alien/Dr. Manhattan threat. Rorschach refuses to compromise the truth, so Dr. Manhattan vaporizes him. However, Rorschach's journal is left with a newspaper, suggesting the truth might be revealed anyway." }
   ]
 };
 
@@ -291,7 +323,8 @@ export const STRATEGIC_QUOTES = {
   27205: "You mustn't be afraid to dream a little bigger, darling.",
   329865: "Despite knowing the journey... I embrace it.",
   11: "No, I am your father.",
-  335984: "Dying for the right cause. It's the most human thing we can do."
+  335984: "Dying for the right cause. It's the most human thing we can do.",
+  13183: "Who watches the watchmen?"
 };
 
 // 6. COLORS (For Theme Generation)

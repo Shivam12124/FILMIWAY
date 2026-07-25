@@ -34,6 +34,8 @@ const MobileHomepageButton = () => (
 const CollectionPage = ({ collection: propCollection, movies: propMovies }) => {
     const collection = propCollection || { title: 'Movies', slug: '', description: '' };
     const movies = propMovies || [];
+    const hasBonusSlides = movies.some(m => m?.isBonusSlide || m?.rank === 'BONUS' || m?.rank === 'bonus');
+    const displayLength = hasBonusSlides ? 10 : movies.length;
     const [currentMovieIndex, setCurrentMovieIndex] = useState(0);
     // ⚡ OPTIMIZATION: Disabled artificial loader. Next.js SSG pages load instantly.
     const [isLoading, setIsLoading] = useState(false);
@@ -2936,6 +2938,7 @@ const getLoaderContent = () => {
 //  STATIC META CONTENT - SEO OPTIMIZED (EVERGREEN & HIGH CTR)
 // STATIC META CONTENT - SEO OPTIMIZED (EVERGREEN & HIGH CTR)
 const getStaticMetaContent = () => {
+    const movies = { length: displayLength };
    if (collection.slug === 'movies-like-memento') {
         return {
             title: "10 Movies Like Memento With Unsolvable Timelines",
@@ -3708,9 +3711,7 @@ const getStaticMetaContent = () => {
 
     // GET CURRENT MOVIE AND CALCULATE RANK CORRECTLY
     const currentMovie = movies[currentMovieIndex];
-    const currentRank = currentMovie?.rank || (movies.length - currentMovieIndex);
-
-    const hasBonusSlides = ['best-movies-about-greed', 'best-raunchy-comedy-movies', 'best-psychological-thriller-movies', 'best-neo-noir-movies', 'best-revenge-movies', 'best-erotic-romance-movies'].includes(collection.slug);
+    const currentRank = currentMovie?.rank || (displayLength - currentMovieIndex);
 
     // SMART NAVIGATION LOGIC
     const isFirstMovie = currentMovieIndex === 0;
@@ -4578,13 +4579,13 @@ return (
                                 <div className="w-16 sm:w-24 h-2 bg-gray-700/50 rounded-full overflow-hidden">
                                     <motion.div
                                         className="h-full bg-gradient-to-r from-yellow-400 to-amber-400 rounded-full"
-                                        style={{ width: `${Math.min(100, ((currentMovieIndex + 1) / (hasBonusSlides ? 10 : movies.length)) * 100)}%` }}
+                                        style={{ width: `${Math.min(100, ((currentMovieIndex + 1) / displayLength) * 100)}%` }}
                                         transition={{ duration: 0.5, ease: "easeOut" }}
                                     />
                                 </div>
                                 <span className="text-gray-400 font-light text-sm sm:text-base">
                                     <span className="hidden sm:inline">{metaContent.progressText}</span>
-                                    <span className="sm:hidden">of {hasBonusSlides ? 10 : movies.length}</span>
+                                    <span className="sm:hidden">of {displayLength}</span>
                                 </span>
                             </div>
                         </motion.div>
@@ -4824,10 +4825,14 @@ export async function getStaticProps({ params }) {
         .filter(Boolean);
 
     // ⚡ CUSTOM LOGIC FOR BONUS SLIDES
-    // Added support for Psychological Thrillers, Neo-Noir, Revenge, Enemies to Lovers, and Black Swan
-    if (collection.slug === 'best-movies-about-greed' || collection.slug === 'best-raunchy-comedy-movies' || collection.slug === 'best-psychological-thriller-movies' || collection.slug === 'best-neo-noir-movies' || collection.slug === 'best-revenge-movies' || collection.slug === 'best-enemies-to-lovers-movies' || collection.slug === 'movies-like-black-swan' || collection.slug === 'best-erotic-romance-movies' || collection.slug === 'best-war-films' || collection.slug === 'best-survival-movies' || collection.slug === 'best-action-movies') {
-        const standardMovies = movies.slice(0, 10).sort((a, b) => (b.rank || 0) - (a.rank || 0));
-        let bonusMovies = movies.slice(10);
+    // Automatically applies to any collection that contains a BONUS movie (or more than 10 movies)
+    const hasBonus = movies.some(m => m.rank === "BONUS" || m.rank === "bonus") || 
+                      movies.length > 10 || 
+                      movieArray.some(m => m.rank === "BONUS" || m.rank === "bonus");
+
+    if (hasBonus) {
+        const standardMovies = movies.filter(m => m.rank !== "BONUS" && m.rank !== "bonus").slice(0, 10).sort((a, b) => (b.rank || 0) - (a.rank || 0));
+        let bonusMovies = movies.filter(m => m.rank === "BONUS" || m.rank === "bonus");
         
         // ✅ FIX: If the user forgot to add the BONUS movie to data/collections.js, automatically fetch it from the database!
         if (bonusMovies.length === 0) {

@@ -1,5 +1,16 @@
 [
   {
+    "tmdbId": 11,
+    "imdbID": "tt0080684",
+    "Title": "Star Wars: Episode V - The Empire Strikes Back",
+    "year": 1980,
+    "genre": "Adventure",
+    "runtime": 124,
+    "rank": 9,
+    "slug": "star-wars-episode-v-the-empire-strikes-back",
+    "sourceFile": "sciFiMovieData.js"
+  },
+  {
     "tmdbId": 13,
     "imdbID": "tt0109830",
     "Title": "Forrest Gump",
@@ -119,6 +130,17 @@
     "rank": 1,
     "slug": "memento",
     "sourceFile": "peacockBestMoviesData.js"
+  },
+  {
+    "tmdbId": 78,
+    "imdbID": "tt0082869",
+    "Title": "Blade Runner",
+    "year": 1982,
+    "genre": "Sci-Fi",
+    "runtime": 117,
+    "rank": 2,
+    "slug": "blade-runner",
+    "sourceFile": "sciFiMovieData.js"
   },
   {
     "tmdbId": 85,
@@ -273,6 +295,17 @@
     "rank": 9,
     "slug": "crouching-tiger-hidden-dragon",
     "sourceFile": "bestActionMoviesData.js"
+  },
+  {
+    "tmdbId": 153,
+    "imdbID": "tt0335266",
+    "Title": "Lost in Translation",
+    "year": 2003,
+    "genre": "Drama, Romance",
+    "runtime": 102,
+    "rank": "BONUS",
+    "slug": "lost-in-translation",
+    "sourceFile": "marriageCrisisMovieData.js"
   },
   {
     "tmdbId": 154,
@@ -537,6 +570,17 @@
     "rank": 1,
     "slug": "seven-samurai",
     "sourceFile": "hboActionMovieData.js"
+  },
+  {
+    "tmdbId": 348,
+    "imdbID": "tt0078748",
+    "Title": "Alien",
+    "year": 1979,
+    "genre": "Horror",
+    "runtime": 117,
+    "rank": 4,
+    "slug": "alien",
+    "sourceFile": "sciFiMovieData.js"
   },
   {
     "tmdbId": 380,
@@ -823,6 +867,17 @@
     "rank": 6,
     "slug": "full-metal-jacket",
     "sourceFile": "warFilmsMovieData.js"
+  },
+  {
+    "tmdbId": 603,
+    "imdbID": "tt0133093",
+    "Title": "The Matrix",
+    "year": 1999,
+    "genre": "Sci-Fi",
+    "runtime": 136,
+    "rank": 3,
+    "slug": "the-matrix",
+    "sourceFile": "sciFiMovieData.js"
   },
   {
     "tmdbId": 604,
@@ -1483,6 +1538,17 @@
     "rank": 10,
     "slug": "the-talented-mr-ripley",
     "sourceFile": "parasiteMovieData.js"
+  },
+  {
+    "tmdbId": 1271,
+    "imdbID": "tt0416449",
+    "Title": "300",
+    "year": 2006,
+    "genre": "Action, Fantasy, War",
+    "runtime": 117,
+    "rank": "BONUS",
+    "slug": "300",
+    "sourceFile": "bestActionMoviesData.js"
   },
   {
     "tmdbId": 1272,
@@ -3056,6 +3122,17 @@
     "rank": 2,
     "slug": "jagged-edge",
     "sourceFile": "basicInstinctMovieData.js"
+  },
+  {
+    "tmdbId": 13183,
+    "imdbID": "tt0409459",
+    "Title": "Watchmen",
+    "year": 2009,
+    "genre": "Action, Mystery, Sci-Fi",
+    "runtime": 162,
+    "rank": "BONUS",
+    "slug": "watchmen",
+    "sourceFile": "sciFiMovieData.js"
   },
   {
     "tmdbId": 13446,

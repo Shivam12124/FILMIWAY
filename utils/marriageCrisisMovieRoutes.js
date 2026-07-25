@@ -43,7 +43,10 @@ export const MARRIAGE_CRISIS_MOVIE_SLUGS = {
     'tt1570728': 'crazy-stupid-love',
     
     // Rank 10: Revolutionary Road
-    'tt0959337': 'revolutionary-road'
+    'tt0959337': 'revolutionary-road',
+    
+    // BONUS: Lost in Translation
+    'tt0335266': 'lost-in-translation'
 };
 
 // ✅ REVERSE SLUG MAPPING (SLUG TO IMDB ID)

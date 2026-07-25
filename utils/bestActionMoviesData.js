@@ -22,7 +22,8 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 11782, "imdbID": "tt0104684", "Title": "Hard Boiled", "year": 1992, "genre": "Action", "runtime": 128, "rank": 8 },
     { "tmdbId": 146, "imdbID": "tt0190332", "Title": "Crouching Tiger, Hidden Dragon", "year": 2000, "genre": "Action", "runtime": 120, "rank": 9 },
     { "tmdbId": 36955, "imdbID": "tt0111503", "Title": "True Lies", "year": 1994, "genre": "Action, Comedy, Thriller", "runtime": 141, "rank": 10 },
-    { "tmdbId": 4141, "imdbID": "tt0465602", "Title": "Shoot 'Em Up", "year": 2007, "genre": "Action", "runtime": 86, "rank": "BONUS" }
+    { "tmdbId": 4141, "imdbID": "tt0465602", "Title": "Shoot 'Em Up", "year": 2007, "genre": "Action", "runtime": 86, "rank": "BONUS" },
+    { "tmdbId": 1271, "imdbID": "tt0416449", "Title": "300", "year": 2006, "genre": "Action, Fantasy, War", "runtime": 117, "rank": "BONUS" }
 ];
 
 // ✅ REVISED STRATEGIC QUOTES (100% Clean & SEO Safe)
@@ -37,7 +38,8 @@ export const STRATEGIC_QUOTES = {
     11782: "Give a guy a gun, he thinks he's Superman.", // Hard Boiled
     146: "A sword by itself rules nothing. It only comes alive in skillful hands.", // Crouching Tiger
     36955: "Fear is not an option.", // True Lies
-    4141: "Eat your vegetables." // Shoot 'Em Up
+    4141: "Eat your vegetables.", // Shoot 'Em Up
+    1271: "This is Sparta!"
 };
 
 // ✅ SENSITIVE TIMELINES (The "Utility" Data - specifically filtered for the Parents Guide schema logic)
@@ -108,6 +110,16 @@ export const SENSITIVE_TIMELINES = {
     36955: {
         scenes: [
             { start: "01:21:20", end: "01:25:50", type: "Suggestive clothing (lingerie) / Sensual dance", severity: "Moderate" }
+        ]
+    },
+    // BONUS: 300
+    1271: {
+        scenes: [
+            { start: "00:17:30", end: "00:18:05", type: "Nudity (Woman)", severity: "Moderate" },
+            { start: "00:19:45", end: "00:19:49", type: "Partial Nudity (Man)", severity: "Mild" },
+            { start: "00:21:50", end: "00:22:30", type: "Nudity (Woman) and sex", severity: "High" },
+            { start: "01:16:20", end: "01:17:50", type: "Suggestive clothing & Nudity (Women)", severity: "High" },
+            { start: "01:22:00", end: "01:22:20", type: "Sex", severity: "Moderate" }
         ]
     }
 };
@@ -290,6 +302,21 @@ export const COMPLETE_MOVIE_DATA = {
         ],
         synopsis: "Harry Tasker is a top-tier secret agent for the U.S. government, but his wife Helen believes he is a boring computer salesman. When Harry discovers his wife is seeking adventure, he uses his intelligence resources to give her a harmless spy mission, only for both of them to get captured by real terrorists. James Cameron's blockbuster blends massive practical stunts, explosive military set-pieces, and martial arts action with high-stakes marital comedy.",
         themes: ["Double Life", "Trust", "Empowerment", "Explosive Action"]
+    }),
+    // BONUS: 300
+    1271: createMovieData({
+        adrenalineRush: 98, stuntComplexity: 92, visceralImpact: 96, complexityLevel: "MEDIUM",
+        dominantColor: "#facc15", rating: 7.6, criticsScore: 61, audienceScore: 89, director: "Zack Snyder",
+        cast: ["Gerard Butler", "Lena Headey", "David Wenham", "Dominic West"], boxOffice: "$456.1 million", budget: "$65 million",
+        dna: { Action: 70, Fantasy: 20, War: 10 },
+        scenes: [
+            { time: 17, intensity: 50, label: "Oracle Dance", color: "#60a5fa" },
+            { time: 31, intensity: 95, label: "This is Sparta!", color: "#dc2626" },
+            { time: 55, intensity: 90, label: "Battle of Thermopylae", color: "#f97316" },
+            { time: 110, intensity: 85, label: "Final Stand", color: "#b91c1c" }
+        ],
+        synopsis: "King Leonidas of Sparta and a force of 300 men fight the Persians at the Battle of Thermopylae. Zack Snyder's hyper-stylized adaptation of Frank Miller's graphic novel blends intense battlefield choreography, slow-motion action, and striking visuals.",
+        themes: ["Honor", "Sacrifice", "Stylized Warfare", "Brotherhood"]
     })
 };
 
@@ -337,6 +364,12 @@ export const BEST_ACTION_MOVIES_FAQS = {
     'Shoot \'Em Up': [
         { question: "Is Shoot 'Em Up meant to be a comedy?", answer: "Yes, it's a hyper-kinetic, self-aware parody of action movies. It takes tropes—like shooting while skydiving or delivering a baby during a gunfight—and dials them up to an absurd, cartoonish level (literally referencing Bugs Bunny)." },
         { question: "Why does Smith constantly eat carrots?", answer: "Aside from being a nod to Bugs Bunny, the director wanted a unique visual hook. Smith even uses carrots as lethal weapons throughout the film, doubling down on the movie's dedication to ridiculous, over-the-top violence." }
+    ],
+    '300': [
+        { question: "Does 300 have violence and gore?", answer: "According to the Filmiway Parents Guide, the violence in 300 is rated as High. It features graphic stylized battle sequences with decapitations, dismemberments, and arterial spurts of blood throughout." },
+        { question: "Does 300 have profanity or swearing?", answer: "The profanity in 300 is rated as Mild. It contains infrequent coarse language, military shouts, and mild insults." },
+        { question: "Why is 300 rated R?", answer: "300 earns its R rating due to graphic battle sequences, sexuality, and nudity. Adults can use our skip timestamps to bypass the explicit scenes." },
+        { question: "Is 300 historically accurate?", answer: "Not strictly. While the Battle of Thermopylae and Leonidas' stand of 300 Spartans (along with several thousand Greek allies) did happen in 480 BC, the film is a highly stylized adaptation of Frank Miller's graphic novel, deliberately told from the biased perspective of a Spartan soldier to motivate his troops." }
     ]
 };
 

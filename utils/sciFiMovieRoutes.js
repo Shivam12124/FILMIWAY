@@ -13,7 +13,8 @@ export const SCI_FI_MOVIE_SLUGS = {
   'tt1375666': 'inception',
   'tt2543164': 'arrival',
   'tt0080684': 'Star Wars: Episode V - The Empire Strikes Back',
-  'tt1856101': 'blade-runner-2049' // must match imdbID used in sciFiMovieData
+  'tt1856101': 'blade-runner-2049', // must match imdbID used in sciFiMovieData
+  'tt0409459': 'watchmen'
 };
 
 // ✅ REVERSE SLUG MAPPING (SLUG TO IMDB ID)

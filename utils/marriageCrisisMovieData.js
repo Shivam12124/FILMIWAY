@@ -19,7 +19,8 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 38731, "imdbID": "tt0078444", "Title": "An Unmarried Woman", "year": 1978, "genre": "Drama", "runtime": 124, "rank": 7 },
     { "tmdbId": 46705, "imdbID": "tt1120985", "Title": "Blue Valentine", "year": 2010, "genre": "Romance", "runtime": 112, "rank": 8 },
     { "tmdbId": 50646, "imdbID": "tt1570728", "Title": "Crazy, Stupid, Love.", "year": 2011, "genre": "Comedy", "runtime": 118, "rank": 9 },
-    { "tmdbId": 4148, "imdbID": "tt0959337", "Title": "Revolutionary Road", "year": 2008, "genre": "Drama", "runtime": 119, "rank": 10 }
+    { "tmdbId": 4148, "imdbID": "tt0959337", "Title": "Revolutionary Road", "year": 2008, "genre": "Drama", "runtime": 119, "rank": 10 },
+    { "tmdbId": 153, "imdbID": "tt0335266", "Title": "Lost in Translation", "year": 2003, "genre": "Drama, Romance", "runtime": 102, "rank": "BONUS" }
 ];
 
 // ✅ STRATEGIC QUOTES
@@ -33,7 +34,8 @@ export const STRATEGIC_QUOTES = {
     38731: "You're a very independent woman.", // An Unmarried Woman
     46705: "I'm so out of love with you.", // Blue Valentine
     50646: "I will never stop trying. Because when you find the one... you never give up.", // Crazy, Stupid, Love.
-    4148: "It takes backbone to lead the life you want, Frank." // Revolutionary Road
+    4148: "It takes backbone to lead the life you want, Frank.", // Revolutionary Road
+    153: "Everyone wants to be found."
 };
 
 // ✅ SENSITIVE TIMELINES (Crucial for High-Volume Timestamps Search)
@@ -108,6 +110,13 @@ export const SENSITIVE_TIMELINES = {
             { start: "0:42:50", end: "0:43:30", type: "Sex", severity: "Moderate" },
             { start: "1:17:25", end: "1:18:02", type: "Sex", severity: "Moderate" }
         ] 
+    },
+    // BONUS: Lost in Translation
+    153: {
+        scenes: [
+            { start: "00:00:20", end: "00:00:50", type: "Suggestive clothing (Woman in underwear)", severity: "Mild" },
+            { start: "01:03:30", end: "01:04:36", type: "Nudity (Women)", severity: "High" }
+        ]
     }
 };
 
@@ -302,6 +311,21 @@ export const COMPLETE_MOVIE_DATA = {
         ],
         synopsis: "A seemingly perfect couple in 1950s Connecticut struggles to cope with their personal problems and the suffocating conformity of their suburban environment. A bleak, powerful look at crushed dreams and the terror of an ordinary life.",
         themes: ["Suburban Conformity", "Crushed Dreams", "Desperation"]
+    }),
+    // BONUS: Lost in Translation (2003)
+    153: createMarriageData({
+        psychologicalIntensity: 75, visceralImpact: 50, complexityLevel: "MEDIUM",
+        dominantColor: "#fb7185", rating: 7.7, criticsScore: 95, audienceScore: 85, director: "Sofia Coppola",
+        cast: ["Bill Murray", "Scarlett Johansson", "Giovanni Ribisi"], boxOffice: "$118.7 million", budget: "$4 million",
+        dna: { "Drama": 60, "Romance": 40 },
+        scenes: [
+            { time: 1, intensity: 30, label: "Opening (Underwear)", color: "#fb7185" },
+            { time: 20, intensity: 45, label: "Meeting Bob Harris", color: "#cbd5e1" },
+            { time: 64, intensity: 70, label: "Strip Club Visit", color: "#db2777" },
+            { time: 95, intensity: 85, label: "Karaoke Night", color: "#60a5fa" }
+        ],
+        synopsis: "Two lonely Americans—an aging movie star and a neglected young woman—cross paths in Tokyo and form an unlikely, deeply touching bond while navigating their failing marriages.",
+        themes: ["Loneliness", "Alienation", "Human Connection", "Marriage Crisis"]
     })
 };
 
@@ -368,6 +392,12 @@ export const MARRIAGE_CRISIS_MOVIE_FAQS = {
         { question: "What role does John Givings play in the story?", answer: "John, the mathematically brilliant but institutionalized son of their neighbor, acts as the film's 'truth-teller.' Because he is outside societal norms, he is the only character who voices the ugly, undeniable truth about Frank's cowardice and the emptiness of their lives." },
         { question: "Why does Frank ultimately sabotage the Paris plan?", answer: "Frank is offered a promotion at a job he claims to hate. Ultimately, the comfort of financial security, the validation of corporate success, and the fear of the unknown outweigh his desire for an extraordinary life. He chooses the golden cage." },
         { question: "What makes the final breakfast scene so terrifying?", answer: "After a night of brutal, hateful arguing, April makes Frank a perfect 1950s breakfast with a serene, hollow smile. The absolute silence and forced normalcy are far more terrifying than the screaming, signaling that April has completely surrendered her soul before her tragic end." }
+    ],
+    'Lost in Translation': [
+        { question: "Does Lost in Translation have nudity or sexual content?", answer: "According to the Filmiway Parents Guide, the sexual content in Lost in Translation is rated as Moderate. It contains a strip club scene with topless dancers, suggestive underwear shots, and mild sexual references, but is free of explicit sex scenes." },
+        { question: "Does Lost in Translation have profanity or swearing?", answer: "The profanity in Lost in Translation is rated as Mild. It includes occasional coarse language, mild obscenities, and infrequent swearing." },
+        { question: "Why is Lost in Translation rated R?", answer: "Lost in Translation earns its R rating due to some sexual content, including a scene in a strip club and some suggestive dialogue. Adults can use our skip timestamps to skip these scenes." },
+        { question: "What did Bob whisper to Charlotte at the end of Lost in Translation?", answer: "The whisper is intentionally left inaudible to the audience, preserving it as a private moment between the two characters. Director Sofia Coppola has stated that she never intended for the audience to hear it, emphasizing that their connection belongs only to them, though digital enhancement suggests it was a tender message about moving forward with their lives." }
     ]
 };
 

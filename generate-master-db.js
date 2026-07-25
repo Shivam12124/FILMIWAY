@@ -37,7 +37,10 @@ files.forEach(file => {
     const content = fs.readFileSync(filePath, 'utf8');
 
     // ✅ Extract the COMPLETE_MOVIE_DATABASE array from the file
-    const match = content.match(/export const COMPLETE_MOVIE_DATABASE\s*=\s*(\[[\s\S]*?\])\s*(?:;|\n\n|\n\s*export|\n\s*\/\/)/);
+    let match = content.match(/export const COMPLETE_MOVIE_DATABASE\s*=\s*(\[[\s\S]*?\])\s*(?:;|\n\n|\n\s*export|\n\s*\/\/)/);
+    if (!match) {
+        match = content.match(/export const SCI_FI_MOVIES\s*=\s*(\[[\s\S]*?\])\s*(?:;|\n\n|\n\s*export|\n\s*\/\/)/);
+    }
     
     if (match && match[1]) {
         try {

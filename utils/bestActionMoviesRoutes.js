@@ -45,7 +45,10 @@ export const BEST_ACTION_MOVIE_SLUGS = {
     'tt0465602': 'shoot-em-up',
     
     // BONUS: True Lies
-    'tt0111503': 'true-lies'
+    'tt0111503': 'true-lies',
+    
+    // BONUS: 300
+    'tt0416449': '300'
 };
 
 // ✅ REVERSE SLUG MAPPING (SLUG TO IMDB ID)
