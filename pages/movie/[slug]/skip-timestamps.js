@@ -527,7 +527,7 @@ export async function getStaticPaths() {
         paths: masterDatabase.map((m) => {
             const safeSlug = m.slug || (m.Title || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
             return { params: { slug: safeSlug } };
-        }), fallback: 'blocking'
+        }), fallback: false
     };
 }
 

@@ -4,7 +4,7 @@
 
 import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { createPortal } from 'react-dom';
-import { X, Play, Pause, ChevronLeft, ChevronRight, AlertTriangle, Shield, CheckCircle } from 'lucide-react';
+import { X, Play, Pause, ChevronLeft, ChevronRight, AlertTriangle, Shield, CheckCircle, Tv, Smartphone, Bell, Eye } from 'lucide-react';
 
 // ─── HELPERS ────────────────────────────────────────────────────────────────
 const parseTimestampToSeconds = (t) => {
@@ -553,18 +553,30 @@ const WatchAlongTimer = ({ movie, sensitiveScenes, onClose }) => {
             <div className="flex-1 relative z-30 flex flex-col items-center justify-center px-4 py-4 overflow-y-auto overflow-x-hidden">
                 {!hasStarted ? (
                     <div className="flex flex-col items-center text-center w-full max-w-sm my-auto py-4">
-                        <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-white/[0.02] border border-white/5 flex items-center justify-center mb-4 shadow-xl">
-                            <AlertTriangle size={24} className="text-yellow-500" />
+                        <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-yellow-500/10 border border-yellow-500/20 flex items-center justify-center mb-4 shadow-xl">
+                            <Shield size={24} className="text-yellow-500" />
                         </div>
-                        <h2 className="text-xl sm:text-2xl font-light text-white mb-2">Ready to Watch?</h2>
+                        <h2 className="text-xl sm:text-2xl font-light text-white mb-2">How to Use the Timer</h2>
                         <p className="text-gray-400 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6 px-2">
-                            Press START TIMER the moment your movie begins playing on your TV or any other screen. We'll alert you 12 seconds before every sensitive scene.
+                            Don't ruin your movie night. Follow these simple steps:
                         </p>
 
-                        <div className="w-full bg-white/[0.02] border border-white/5 rounded-xl p-3 sm:p-5 mb-4 sm:mb-6 text-left space-y-2.5 shadow-lg">
-                            <div className="flex items-start gap-2.5 text-xs sm:text-sm text-gray-300">
-                                <Pause size={14} className="text-emerald-500 shrink-0 mt-0.5" />
-                                <span>Pause this timer when you pause the movie.</span>
+                        <div className="w-full bg-white/[0.02] border border-white/5 rounded-xl p-4 sm:p-5 mb-4 sm:mb-6 text-left space-y-4 shadow-lg">
+                            <div className="flex items-start gap-3 text-xs sm:text-sm text-gray-300">
+                                <Tv size={18} className="text-emerald-500 shrink-0 mt-0.5" />
+                                <span><strong className="text-white">1. Start the movie</strong> on your TV or other screen.</span>
+                            </div>
+                            <div className="flex items-start gap-3 text-xs sm:text-sm text-gray-300">
+                                <Smartphone size={18} className="text-emerald-500 shrink-0 mt-0.5" />
+                                <span><strong className="text-white">2. Press START TIMER</strong> below at the exact same time.</span>
+                            </div>
+                            <div className="flex items-start gap-3 text-xs sm:text-sm text-gray-300">
+                                <Bell size={18} className="text-yellow-500 shrink-0 mt-0.5" />
+                                <span><strong className="text-white">3. Get alerted</strong> 12 seconds before any sensitive scene begins, so you can skip it fast!</span>
+                            </div>
+                            <div className="flex items-start gap-3 text-xs sm:text-sm text-gray-300">
+                                <Eye size={18} className="text-blue-500 shrink-0 mt-0.5" />
+                                <span><strong className="text-white">Tip:</strong> Keep an eye on the timer to see exactly how close the next scene is.</span>
                             </div>
                         </div>
 
