@@ -6674,8 +6674,24 @@
         "end": "1:06:25",
         "type": "Nudity (Women)",
         "severity": "High"
+      },
+      {
+        "start": "",
+        "end": "",
+        "type": "Violence & Gore",
+        "severity": "High",
+        "description": "Strong, increasingly graphic violence featuring brutal beatings, stabbings, shootings, throat slittings, and bloody injuries. Includes several disturbing gore sequences with head trauma, decapitation, visible brain matter, and frequent bloodshed in the movie."
+      },
+      {
+        "start": "",
+        "end": "",
+        "type": "Profanity",
+        "severity": "High",
+        "description": "Frequent strong language, over 30 uses of the F-word, along with repeated moderate profanity, discriminatory slurs, and an obscene hand gesture."
       }
-    ]
+    ],
+    "Age": "17+",
+    "Summary": "Aged 17+ for extreme graphic violence and gore, nudity, and strong language throughout."
   },
   "65754": {
     "Title": "The Girl with the Dragon Tattoo",
