@@ -730,6 +730,7 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
                 if (lowerType.includes('sexual content')) addType('sexual content', severity);
                 else if (lowerType.match(/\bsex\b/)) addType('sex', severity);
                 else if (lowerType.includes('explicit')) addType('explicit content', severity);
+                else if (lowerType.includes('steamy')) addType('steamy scenes', severity);
                 if (lowerType.includes('partial nudity')) addType('partial nudity', severity);
                 else if (lowerType.includes('nudity')) addType('nudity', severity);
                 if (lowerType.includes('suggestive') || lowerType.includes('lingerie') || lowerType.includes('bikini')) addType('suggestive clothing', severity);

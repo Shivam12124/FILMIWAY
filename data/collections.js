@@ -998,7 +998,7 @@ export const COLLECTIONS = {
       { label: "REALISM", desc: "Honest portrayals" },
       { label: "DIVORCE", desc: "Relationship breakdown" }
     ],
-    movies: ['tt1832382', 'tt0070644', 'tt7653254', 'tt2209418', 'tt0079417', 'tt0169547', 'tt0078444', 'tt1120985', 'tt1570728', 'tt0959337', 'tt0335266'],
+    movies: ['tt1832382', 'tt0070644', 'tt7653254', 'tt2209418', 'tt0079417', 'tt0169547', 'tt0078444', 'tt1120985', 'tt1570728', 'tt0959337', 'tt0335266', 'tt27543632'],
     relatedCollections: ['best-drama-movies-on-hbo-max', 'best-thought-provoking-movies', 'best-erotic-romance-movies']
   },
 

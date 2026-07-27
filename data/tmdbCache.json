@@ -10750,5 +10750,23 @@
     "budget": "$4,000,000",
     "revenue": "$119,723,856",
     "tagline": "Everyone wants to be found."
+  },
+  "tt27543632": {
+    "tmdbId": "1368166",
+    "poster_path": "/cWsBscZzwu5brg9YjNkGewRUvJX.jpg",
+    "backdrop_path": "/zTnAnYIn0Iv3cn0ZHlzLhou3ybm.jpg",
+    "runtime": 131,
+    "release_date": "2025-12-18",
+    "overview": "Trying to escape her past, Millie Calloway accepts a job as a live-in housemaid for the wealthy Nina and Andrew Winchester. But what begins as a dream job quickly unravels into something far more dangerous—a sexy, seductive game of secrets, scandal, and power.",
+    "ageRating": "R",
+    "director": "Paul Feig",
+    "cast": [
+      "Sydney Sweeney",
+      "Amanda Seyfried",
+      "Brandon Sklenar"
+    ],
+    "budget": "$35,000,000",
+    "revenue": "$399,644,671",
+    "tagline": "Discover what lies behind closed doors."
   }
 }

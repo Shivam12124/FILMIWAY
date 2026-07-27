@@ -20,7 +20,8 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 46705, "imdbID": "tt1120985", "Title": "Blue Valentine", "year": 2010, "genre": "Romance", "runtime": 112, "rank": 8 },
     { "tmdbId": 50646, "imdbID": "tt1570728", "Title": "Crazy, Stupid, Love.", "year": 2011, "genre": "Comedy", "runtime": 118, "rank": 9 },
     { "tmdbId": 4148, "imdbID": "tt0959337", "Title": "Revolutionary Road", "year": 2008, "genre": "Drama", "runtime": 119, "rank": 10 },
-    { "tmdbId": 153, "imdbID": "tt0335266", "Title": "Lost in Translation", "year": 2003, "genre": "Drama, Romance", "runtime": 102, "rank": "BONUS" }
+    { "tmdbId": 153, "imdbID": "tt0335266", "Title": "Lost in Translation", "year": 2003, "genre": "Drama, Romance", "runtime": 102, "rank": "BONUS" },
+    { "tmdbId": 1368166, "imdbID": "tt27543632", "Title": "The Housemaid", "year": 2025, "genre": "Thriller", "runtime": 110, "rank": "BONUS" }
 ];
 
 // ✅ STRATEGIC QUOTES
@@ -116,6 +117,13 @@ export const SENSITIVE_TIMELINES = {
         scenes: [
             { start: "00:00:20", end: "00:00:50", type: "Suggestive clothing (Woman in underwear)", severity: "Mild" },
             { start: "01:03:30", end: "01:04:36", type: "Nudity (Women)", severity: "High" }
+        ]
+    },
+    // BONUS: The Housemaid
+    1368166: {
+        scenes: [
+            { start: "0:54:40", end: "0:56:55", type: "Sex & Nudity", severity: "High" },
+            { start: "1:08:10", end: "1:08:40", type: "Partial Nudity & Steamy Scene", severity: "Moderate" }
         ]
     }
 };
@@ -738,6 +746,7 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
                 if (lowerType.includes('sexual content')) addType('sexual content', severity);
                 else if (lowerType.match(/\bsex\b/)) addType('sex', severity);
                 else if (lowerType.includes('explicit')) addType('explicit content', severity);
+                else if (lowerType.includes('steamy')) addType('steamy scenes', severity);
                 if (lowerType.includes('partial nudity')) addType('partial nudity', severity);
                 else if (lowerType.includes('nudity')) addType('nudity', severity);
                 if (lowerType.includes('suggestive') || lowerType.includes('lingerie') || lowerType.includes('bikini')) addType('suggestive clothing', severity);

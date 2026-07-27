@@ -46,7 +46,10 @@ export const MARRIAGE_CRISIS_MOVIE_SLUGS = {
     'tt0959337': 'revolutionary-road',
     
     // BONUS: Lost in Translation
-    'tt0335266': 'lost-in-translation'
+    'tt0335266': 'lost-in-translation',
+    
+    // BONUS: The Housemaid
+    'tt27543632': 'the-housemaid'
 };
 
 // ✅ REVERSE SLUG MAPPING (SLUG TO IMDB ID)
