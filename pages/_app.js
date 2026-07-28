@@ -5,6 +5,7 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { Bebas_Neue, Montserrat, Inter, Playfair_Display } from 'next/font/google'
 import Script from 'next/script'
+import { Analytics } from '@vercel/analytics/react'
 
 // ✅ 1. Configure Premium Fonts
 const bebas = Bebas_Neue({
@@ -256,6 +257,7 @@ export default function App({ Component, pageProps }) {
         {/* ✅ PASS ENHANCED PROPS INSTEAD OF STANDARD PAGEPROPS */}
         <Component {...enhancedProps} />
       </main>
+      <Analytics />
     </>
   )
 }
