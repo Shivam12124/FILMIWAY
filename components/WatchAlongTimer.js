@@ -5,6 +5,8 @@
 import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { createPortal } from 'react-dom';
 import { X, Play, Pause, ChevronLeft, ChevronRight, AlertTriangle, Shield, CheckCircle, Tv, Smartphone, Bell, Eye } from 'lucide-react';
+import { db } from '../lib/firebase';
+import { collection, addDoc, updateDoc, doc } from 'firebase/firestore';
 
 // ─── HELPERS ────────────────────────────────────────────────────────────────
 const parseTimestampToSeconds = (t) => {
@@ -253,6 +255,79 @@ const WatchAlongTimer = ({ movie, sensitiveScenes, onClose }) => {
             document.removeEventListener('visibilitychange', handleVisibilityChange);
         };
     }, [isRunning, acquireWakeLock]);
+
+    // --- TELEMETRY / ANALYTICS ---
+    const sessionDocRef = useRef(null);
+    const telemetryInterval = useRef(null);
+    const mountTimeRef = useRef(Date.now());
+
+    useEffect(() => {
+        if (!movie?.tmdbId) return;
+
+        const initTelemetry = async () => {
+            try {
+                // Determine Country
+                let country = 'Unknown';
+                try {
+                    const ipRes = await fetch('https://ipinfo.io/json');
+                    if (ipRes.ok) {
+                        const ipData = await ipRes.json();
+                        if (ipData.country) country = ipData.country;
+                    }
+                } catch(e) {}
+
+                // Create Session Document
+                const colRef = collection(db, 'watchalong_sessions');
+                const docRef = await addDoc(colRef, {
+                    tmdbId: movie.tmdbId,
+                    movieTitle: movie.Title || movie.title || 'Unknown',
+                    country: country,
+                    startTime: new Date().toISOString(),
+                    durationMinutes: 0,
+                    lastUpdated: new Date().toISOString()
+                });
+                
+                sessionDocRef.current = docRef.id;
+
+                // Update the duration every 60 seconds (1 minute)
+                telemetryInterval.current = setInterval(async () => {
+                    if (sessionDocRef.current) {
+                        try {
+                            const currentDurationMin = Math.round(((Date.now() - mountTimeRef.current) / 60000) * 10) / 10;
+                            await updateDoc(doc(db, 'watchalong_sessions', sessionDocRef.current), {
+                                durationMinutes: currentDurationMin,
+                                lastUpdated: new Date().toISOString()
+                            });
+                        } catch (err) {
+                            console.error("Telemetry update failed:", err);
+                        }
+                    }
+                }, 60000);
+            } catch (e) {
+                console.error("Failed to init telemetry", e);
+            }
+        };
+
+        initTelemetry();
+
+        // Cleanup on unmount (or close)
+        return () => {
+            if (telemetryInterval.current) {
+                clearInterval(telemetryInterval.current);
+            }
+            // Attempt a final update before unmounting
+            if (sessionDocRef.current) {
+                try {
+                    const currentDurationMin = Math.round(((Date.now() - mountTimeRef.current) / 60000) * 10) / 10;
+                    updateDoc(doc(db, 'watchalong_sessions', sessionDocRef.current), {
+                        durationMinutes: currentDurationMin,
+                        lastUpdated: new Date().toISOString()
+                    }).catch(() => {});
+                } catch (err) {}
+            }
+        };
+    }, [movie?.tmdbId, movie?.Title, movie?.title]);
+    // ----------------------------
 
     // Fetch Watch Providers for the compact "Where to Watch" UI
     useEffect(() => {
