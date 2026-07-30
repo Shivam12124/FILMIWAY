@@ -6,6 +6,7 @@ const nextConfig = {
 
   // ⚡ OPTIMIZED: Image settings with modern formats
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',
