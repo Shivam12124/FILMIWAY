@@ -6554,5 +6554,16 @@
     "rank": 4,
     "slug": "predator-killer-of-killers",
     "sourceFile": "huluActionMovieData.js"
+  },
+  {
+    "tmdbId": 634649,
+    "imdbID": "tt10872600",
+    "Title": "Spider-Man: No Way Home",
+    "year": 2021,
+    "genre": "Action, Adventure, Sci-Fi",
+    "runtime": 148,
+    "rank": "BONUS",
+    "slug": "spider-man-no-way-home",
+    "sourceFile": "trendingMovieData.js"
   }
 ]

@@ -9462,6 +9462,20 @@
       }
     ]
   },
+  "634649": {
+    "Title": "Spider-Man: No Way Home",
+    "scenes": [
+      {
+        "start": "01:25:10",
+        "end": "01:28:30",
+        "type": "Violence & Gore",
+        "severity": "Moderate",
+        "description": "Green Goblin attacks and Aunt May is tragically injured during a high-stakes battle."
+      }
+    ],
+    "Summary": "Aged 12+ for sci-fi action, fantasy violence, brief language, and intense emotional scenes.",
+    "Age": "12+"
+  },
   "664413": {
     "Title": "365 Days",
     "Age": "18+",

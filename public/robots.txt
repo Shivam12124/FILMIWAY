@@ -73,5 +73,6 @@ Disallow: /private/
 
 # 6. Sitemap
 Sitemap: https://filmiway.com/sitemap.xml
+Sitemap: https://filmiway.com/sitemap-main.xml
 Sitemap: https://filmiway.com/sitemap-movies.xml
 Sitemap: https://filmiway.com/sitemap-movies-v2.xml
