@@ -57,6 +57,7 @@ const getUniquePosterFromCache = (movieIds, collectionSlug, usedPosters) => {
 
 // Client-Side Autocomplete Search Bar Component
 const SearchBar = () => {
+  const router = useRouter();
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
@@ -73,14 +74,49 @@ const SearchBar = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  const handleSearch = (e) => {
+  const normalizeForSearch = (text) => {
+    if (!text) return '';
+    return text.toLowerCase()
+      .replace(/\b50\b/g, 'fifty')
+      .replace(/\b40\b/g, 'forty')
+      .replace(/\b30\b/g, 'thirty')
+      .replace(/\b20\b/g, 'twenty')
+      .replace(/\b13\b/g, 'thirteen')
+      .replace(/\b12\b/g, 'twelve')
+      .replace(/\b11\b/g, 'eleven')
+      .replace(/\b10\b/g, 'ten')
+      .replace(/\b9\b/g, 'nine')
+      .replace(/\b8\b/g, 'eight')
+      .replace(/\b7\b/g, 'seven')
+      .replace(/\b6\b/g, 'six')
+      .replace(/\b5\b/g, 'five')
+      .replace(/\b4\b/g, 'four')
+      .replace(/\b3\b/g, 'three')
+      .replace(/\b2\b/g, 'two')
+      .replace(/\b1\b/g, 'one')
+      .replace(/&/g, 'and')
+      .replace(/se7en/g, 'seven')
+      .replace(/[^a-z0-9]/g, '');
+  };
+
+  const handleSearchChange = (e) => {
     const val = e.target.value;
     setQuery(val);
     if (val.trim().length > 1) {
-      const cleanQuery = val.toLowerCase().trim();
-      const filtered = masterDatabase.filter(movie =>
-        (movie.Title || '').toLowerCase().includes(cleanQuery)
-      ).slice(0, 6); // show top 6 matches
+      const normalizedQuery = normalizeForSearch(val);
+      
+      const filtered = masterDatabase.filter(movie => {
+        const title = movie.Title || movie.title || '';
+        const normalizedTitle = normalizeForSearch(title);
+        // Loose continuous match
+        if (normalizedTitle.includes(normalizedQuery)) return true;
+        
+        // Sub-word match
+        const queryWords = val.toLowerCase().split(/[\s\W]+/).filter(Boolean);
+        const titleWords = title.toLowerCase().split(/[\s\W]+/).filter(Boolean);
+        return queryWords.every(qw => titleWords.some(tw => tw.includes(qw)));
+      }).slice(0, 6); // show top 6 matches
+
       setResults(filtered);
       setIsOpen(true);
     } else {
@@ -89,34 +125,65 @@ const SearchBar = () => {
     }
   };
 
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    if (query.trim()) {
+      setIsOpen(false);
+      router.push(`/search?q=${encodeURIComponent(query.trim())}`);
+    }
+  };
+
   return (
     <div ref={containerRef} className="relative w-full max-w-xl mx-auto z-50">
-      <div className="relative">
+      <form onSubmit={handleSearchSubmit} className="relative">
         <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-amber-500/70" />
         <input
           type="text"
           value={query}
-          onChange={handleSearch}
-          placeholder="Search movies for skip timestamps... (e.g. Oppenheimer, The Handmaiden)"
+          onChange={handleSearchChange}
+          placeholder="Search movies to watch with family..."
           className="w-full bg-[#0a0a0a]/90 hover:bg-[#0f0f0f]/90 focus:bg-[#0f0f0f] border border-white/10 hover:border-white/15 focus:border-amber-500/40 rounded-xl py-4 pl-12 pr-6 text-sm sm:text-base text-white placeholder-neutral-500 focus:outline-none focus:ring-1 focus:ring-amber-500/20 transition-all shadow-xl"
         />
-      </div>
-      {isOpen && results.length > 0 && (
-        <div className="absolute left-0 right-0 mt-2 bg-[#0a0a0a] border border-white/10 rounded-xl shadow-2xl overflow-hidden z-50 divide-y divide-white/5 max-h-[300px] overflow-y-auto">
-          <ul className="py-1">
-            {results.map((movie) => {
-              const safeSlug = movie.slug || (movie.Title || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
-              return (
-                <li key={movie.imdbID}>
-                  <Link href={`/movie/${safeSlug}/skip-timestamps`} className="flex items-center gap-3 px-4 py-3.5 hover:bg-white/5 hover:text-amber-400 transition-all text-left text-sm font-medium text-white">
-                    <Film className="w-4 h-4 opacity-70 shrink-0" />
-                    <span className="flex-grow truncate">{movie.Title} <span className="text-[10px] opacity-50 ml-1">({movie.Year || movie.year})</span></span>
-                    <ChevronRight className="w-4 h-4 opacity-40 shrink-0" />
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
+      </form>
+      {isOpen && (
+        <div className="absolute left-0 right-0 mt-2 bg-[#0a0a0a] border border-white/10 rounded-xl shadow-2xl overflow-hidden z-50 divide-y divide-white/5 max-h-[350px] overflow-y-auto" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+          <style dangerouslySetInnerHTML={{__html: `div::-webkit-scrollbar { display: none; }`}} />
+          {results.length > 0 ? (
+            <ul className="py-1">
+              {results.map((movie) => {
+                const safeSlug = movie.slug || (movie.Title || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+                const cached = tmdbCache[movie.imdbID] || {};
+                const posterUrl = cached.poster_path ? `https://image.tmdb.org/t/p/w92${cached.poster_path}` : null;
+                const movieTitle = movie.Title || movie.title || 'Unknown';
+                const movieYear = movie.year || movie.Year || '';
+                
+                return (
+                  <li key={movie.imdbID}>
+                    <Link href={`/movie/${safeSlug}/skip-timestamps`} onClick={() => { setIsOpen(false); setQuery(''); }} className="flex items-center gap-3 px-4 py-3 hover:bg-white/5 hover:text-amber-400 transition-all text-left text-sm font-medium text-white group">
+                      {posterUrl ? (
+                        <div className="w-8 h-12 relative rounded overflow-hidden flex-shrink-0 border border-white/10 group-hover:border-yellow-500/50 transition-colors">
+                          <Image src={posterUrl} alt={movieTitle} fill className="object-cover" sizes="32px" unoptimized />
+                        </div>
+                      ) : (
+                        <div className="w-8 h-12 bg-gray-800 rounded flex items-center justify-center flex-shrink-0 border border-white/10">
+                          <Film className="w-4 h-4 text-gray-500" />
+                        </div>
+                      )}
+                      <div className="flex flex-col min-w-0 flex-grow">
+                        <span className="truncate">{movieTitle}</span>
+                        <span className="text-[10px] text-gray-500">{movieYear}</span>
+                      </div>
+                      <ChevronRight className="w-4 h-4 opacity-40 shrink-0" />
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          ) : (
+            <button onClick={handleSearchSubmit} className="w-full p-4 text-center text-sm text-gray-400 hover:bg-white/5 hover:text-yellow-400 transition-colors">
+              Search for "{query}" <span className="ml-1">→</span>
+            </button>
+          )}
         </div>
       )}
     </div>
@@ -154,6 +221,10 @@ const HeroSection = memo(() => {
           <p className="text-base sm:text-lg text-neutral-400 mb-8 font-light leading-relaxed max-w-2xl mx-auto px-4">
             Find exact skip timestamps to bypass intimate scenes and sensitive content in popular movies. Plan a clean, worry-free family movie night instantly.
           </p>
+
+          <div className="mb-10 px-4">
+            <SearchBar />
+          </div>
 
           {/* Curated Collections Button */}
           <div className="mb-10 px-4 flex justify-center">
