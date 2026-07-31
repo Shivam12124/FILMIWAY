@@ -4402,7 +4402,7 @@ return (
                             }
 
                             if (movie?.imdbID) {
-                                itemObj.url = `https://filmiway.com/movie/${movie.slug}`;
+                                itemObj.url = `https://filmiway.com/movie/${movie.slug}/skip-timestamps`;
                             }
 
                             return {
