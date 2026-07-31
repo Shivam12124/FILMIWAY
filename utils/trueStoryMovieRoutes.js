@@ -17,31 +17,31 @@ export const generateMovieSlug = (title) => {
 export const TRUE_STORY_MOVIE_SLUGS = {
     // Rank 1: Schindler's List
     'tt0108052': 'schindlers-list',
-    
+
     // Rank 2: Goodfellas
     'tt0099685': 'goodfellas',
-    
+
     // Rank 3: The Pianist
     'tt0253474': 'the-pianist',
-    
+
     // Rank 4: Oppenheimer
     'tt15398776': 'oppenheimer',
-    
+
     // Rank 5: Braveheart
     'tt0112573': 'braveheart',
-    
+
     // Rank 6: 12 Years a Slave
     'tt2024544': '12-years-a-slave',
-    
+
     // Rank 7: Rush
     'tt1979320': 'rush',
-    
+
     // Rank 8: Dallas Buyers Club
     'tt0790636': 'dallas-buyers-club',
-    
+
     // Rank 9: The Social Network
     'tt1285016': 'the-social-network',
-    
+
     // Rank 10: Donnie Brasco
     'tt0119008': 'donnie-brasco'
 };
@@ -55,7 +55,7 @@ export const SLUG_TO_IMDB = Object.fromEntries(
 export const getMovieBySlug = (slug) => {
     const imdbId = SLUG_TO_IMDB[slug];
     if (!imdbId) return null;
-    
+
     return COMPLETE_MOVIE_DATABASE.find(movie => movie.imdbID === imdbId);
 };
 
@@ -86,15 +86,15 @@ export const getTrueStoryMovieBreadcrumbs = (movie) => {
 // ✅ GET NEXT/PREVIOUS TRUE STORY MOVIE
 export const getTrueStoryMovieNavigation = (currentMovie) => {
     const currentIndex = COMPLETE_MOVIE_DATABASE.findIndex(m => m.imdbID === currentMovie.imdbID);
-    
-    const previousMovie = currentIndex > 0 
+
+    const previousMovie = currentIndex > 0
         ? COMPLETE_MOVIE_DATABASE[currentIndex - 1]
         : null;
-        
+
     const nextMovie = currentIndex < COMPLETE_MOVIE_DATABASE.length - 1
         ? COMPLETE_MOVIE_DATABASE[currentIndex + 1]
         : null;
-    
+
     return {
         previous: previousMovie ? {
             ...previousMovie,
@@ -111,11 +111,11 @@ export const getTrueStoryMovieNavigation = (currentMovie) => {
 export const getRelatedTrueStoryMovies = (currentMovie, limit = 3) => {
     const currentDecade = Math.floor(currentMovie.year / 10) * 10;
     const currentGenre = currentMovie.genre;
-    
+
     return COMPLETE_MOVIE_DATABASE
-        .filter(movie => 
+        .filter(movie =>
             movie.imdbID !== currentMovie.imdbID && (
-                movie.genre === currentGenre || 
+                movie.genre === currentGenre ||
                 Math.floor(movie.year / 10) * 10 === currentDecade
             )
         )
@@ -136,7 +136,7 @@ export const generateTrueStoryMovieSitemapUrls = (baseUrl = 'https://filmiway.co
             changefreq: 'weekly'
         }
     ];
-    
+
     COMPLETE_MOVIE_DATABASE.forEach(movie => {
         urls.push({
             url: `${baseUrl}/movie/${TRUE_STORY_MOVIE_SLUGS[movie.imdbID]}`,
@@ -145,7 +145,7 @@ export const generateTrueStoryMovieSitemapUrls = (baseUrl = 'https://filmiway.co
             changefreq: 'weekly'
         });
     });
-    
+
     return urls;
 };
 
@@ -157,9 +157,9 @@ export const isValidTrueStoryMovieSlug = (slug) => {
 // ✅ TRUE STORY MOVIE SEARCH/FILTER UTILITIES
 export const searchTrueStoryMovies = (query) => {
     const lowercaseQuery = query.toLowerCase();
-    
+
     return COMPLETE_MOVIE_DATABASE
-        .filter(movie => 
+        .filter(movie =>
             movie.Title.toLowerCase().includes(lowercaseQuery) ||
             movie.genre.toLowerCase().includes(lowercaseQuery) ||
             (COMPLETE_MOVIE_DATA[movie.tmdbId]?.director || '').toLowerCase().includes(lowercaseQuery) ||
@@ -173,7 +173,7 @@ export const searchTrueStoryMovies = (query) => {
 
 export const filterTrueStoryMoviesByGenre = (genre) => {
     if (genre === 'All') return COMPLETE_MOVIE_DATABASE;
-    
+
     return COMPLETE_MOVIE_DATABASE
         .filter(movie => movie.genre === genre)
         .map(movie => ({
@@ -185,7 +185,7 @@ export const filterTrueStoryMoviesByGenre = (genre) => {
 // ✅ FIXED SORTING - NOW USES REAL METRICS FROM DATA FILE
 export const sortTrueStoryMovies = (movies, sortBy) => {
     const sortedMovies = [...movies];
-    
+
     switch (sortBy) {
         case 'rating':
             return sortedMovies.sort((a, b) => {
@@ -216,7 +216,7 @@ export const getTrueStoryCollectionStats = () => {
         earliest: Math.min(...COMPLETE_MOVIE_DATABASE.map(m => m.year)),
         latest: Math.max(...COMPLETE_MOVIE_DATABASE.map(m => m.year))
     };
-    
+
     return {
         totalMovies: COMPLETE_MOVIE_DATABASE.length,
         genres: genres.length,

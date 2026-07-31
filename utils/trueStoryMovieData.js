@@ -39,7 +39,7 @@ export const STRATEGIC_QUOTES = {
 // ✅ SENSITIVE TIMELINES (Clinical, factual timestamps for the Parents Guide tool)
 export const SENSITIVE_TIMELINES = {
     // 1. Schindler's List
-    424: { 
+    424: {
         scenes: [
             { start: "0:44:15", end: "0:44:50", type: "Sex & Nudity", severity: "High" },
             { start: "1:15:40", end: "1:16:50", type: "Nudity (Woman)", severity: "High" },
@@ -49,7 +49,7 @@ export const SENSITIVE_TIMELINES = {
     },
 
     // 2. Goodfellas
-    769: { 
+    769: {
         scenes: [
             { start: "0:48:31", end: "0:48:34", type: "Nudity (Woman) Brief", severity: "Moderate" }
         ]
@@ -59,25 +59,25 @@ export const SENSITIVE_TIMELINES = {
     423: { scenes: [] },
 
     // 4. Oppenheimer
-    872585: { 
+    872585: {
         scenes: [
             { start: "0:23:14", end: "0:24:46", type: "Sex & Nudity", severity: "High" },
             { start: "1:14:38", end: "1:15:14", type: "Nudity", severity: "High" },
             { start: "1:15:43", end: "1:16:00", type: "Sex & Nudity", severity: "High" }
-        ,
+            ,
             { start: "", end: "", type: "Profanity", severity: "Moderate", description: "Approximately 8–9 uses of strong sexual expletives (F-words) and infrequent moderate profanity used in dialogue." },
             { start: "", end: "", type: "Violence & Gore", severity: "Moderate", description: "Contains graphic historical images of charred human remains and radiation victims. Includes a suicide by drug overdose and intense sequences of psychological peril." }]
     },
 
     // 5. Braveheart
-    197: { 
+    197: {
         scenes: [
             { start: "0:38:23", end: "0:39:20", type: "Nudity (Woman)", severity: "Moderate" }
         ]
     },
 
     // 6. 12 Years a Slave
-    76203: { 
+    76203: {
         scenes: [
             { start: "0:04:29", end: "0:05:21", type: "Sexual Content", severity: "High" },
             { start: "0:17:33", end: "0:18:10", type: "Partial Nudity (Men)", severity: "Moderate" },
@@ -89,7 +89,7 @@ export const SENSITIVE_TIMELINES = {
     },
 
     // 7. Rush
-    96721: { 
+    96721: {
         scenes: [
             { start: "0:05:00", end: "0:05:17", type: "Sex & Nudity", severity: "High" },
             { start: "0:56:15", end: "0:56:34", type: "Sex & Nudity", severity: "High" },
@@ -98,7 +98,7 @@ export const SENSITIVE_TIMELINES = {
     },
 
     // 8. Dallas Buyers Club
-    152532: { 
+    152532: {
         scenes: [
             { start: "0:01:01", end: "0:01:40", type: "Sex", severity: "High" },
             { start: "0:12:25", end: "0:12:45", type: "Nudity (Women) & Sexual Content", severity: "High" },
@@ -118,7 +118,7 @@ export const SENSITIVE_TIMELINES = {
     37799: { scenes: [] },
 
     // 10. Donnie Brasco
-    9366: { 
+    9366: {
         scenes: [
             { start: "1:22:45", end: "1:22:55", type: "Nudity (Woman)", severity: "High" }
         ]
@@ -140,7 +140,7 @@ export const FALLBACK_POSTERS = {
 
 // ✅ Custom metric for this collection: 'historicalAccuracy' and 'dramaticTension'
 const createTrueStoryData = (data) => ({
-    historicalAccuracy: 85, 
+    historicalAccuracy: 85,
     dramaticTension: 90,
     complexityLevel: "HIGH",
     dominantColor: "#1c1917",
@@ -149,151 +149,151 @@ const createTrueStoryData = (data) => ({
 
 export const COMPLETE_MOVIE_DATA = {
     424: createTrueStoryData({ // Schindler's List
-        historicalAccuracy: 95, complexityLevel: "EXTREME", 
-        dominantColor: "#52525b", rating: 9.0, criticsScore: 98, audienceScore: 97, director: "Steven Spielberg", 
-        cast: ["Liam Neeson", "Ben Kingsley", "Ralph Fiennes"], boxOffice: "$322.2 million", budget: "$22 million", 
+        historicalAccuracy: 95, complexityLevel: "EXTREME",
+        dominantColor: "#52525b", rating: 9.0, criticsScore: 98, audienceScore: 97, director: "Steven Spielberg",
+        cast: ["Liam Neeson", "Ben Kingsley", "Ralph Fiennes"], boxOffice: "$322.2 million", budget: "$22 million",
         dna: { "History": 50, "Drama": 30, "War": 20 },
         scenes: [
-            { time: 15, intensity: 55, label: "The Typewriter" }, 
-            { time: 65, intensity: 95, label: "Liquidation of the Ghetto" }, 
-            { time: 110, intensity: 88, label: "The Girl in Red" }, 
+            { time: 15, intensity: 55, label: "The Typewriter" },
+            { time: 65, intensity: 95, label: "Liquidation of the Ghetto" },
+            { time: 110, intensity: 88, label: "The Girl in Red" },
             { time: 165, intensity: 90, label: "The List is Life" },
-            { time: 185, intensity: 100, label: "I Could Have Got More" } 
+            { time: 185, intensity: 100, label: "I Could Have Got More" }
         ],
         synopsis: "In German-occupied Poland during World War II, industrialist Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis, ultimately saving over a thousand lives.",
         themes: ["Holocaust", "Redemption", "The Value of Human Life"]
     }),
     769: createTrueStoryData({ // Goodfellas
-        historicalAccuracy: 88, complexityLevel: "MEDIUM", 
-        dominantColor: "#7f1d1d", rating: 8.7, criticsScore: 96, audienceScore: 97, director: "Martin Scorsese", 
-        cast: ["Ray Liotta", "Robert De Niro", "Joe Pesci"], boxOffice: "$47 million", budget: "$25 million", 
+        historicalAccuracy: 88, complexityLevel: "MEDIUM",
+        dominantColor: "#7f1d1d", rating: 8.7, criticsScore: 96, audienceScore: 97, director: "Martin Scorsese",
+        cast: ["Ray Liotta", "Robert De Niro", "Joe Pesci"], boxOffice: "$47 million", budget: "$25 million",
         dna: { "Crime": 50, "Biography": 30, "Drama": 20 },
         scenes: [
-            { time: 2, intensity: 85, label: "The Trunk" }, 
-            { time: 45, intensity: 92, label: "Funny How?" }, 
-            { time: 85, intensity: 75, label: "The Lufthansa Heist" }, 
-            { time: 115, intensity: 98, label: "Sunday Gravy / Helicopter Paranoia" }, 
-            { time: 135, intensity: 80, label: "Witness Protection" } 
+            { time: 2, intensity: 85, label: "The Trunk" },
+            { time: 45, intensity: 92, label: "Funny How?" },
+            { time: 85, intensity: 75, label: "The Lufthansa Heist" },
+            { time: 115, intensity: 98, label: "Sunday Gravy / Helicopter Paranoia" },
+            { time: 135, intensity: 80, label: "Witness Protection" }
         ],
         synopsis: "The story of Henry Hill and his life in the mob, covering his relationship with his wife Karen Hill and his mob partners Jimmy Conway and Tommy DeVito in the Italian-American crime syndicate.",
         themes: ["Organized Crime", "Greed", "Betrayal"]
     }),
     423: createTrueStoryData({ // The Pianist
-        historicalAccuracy: 92, complexityLevel: "HIGH", 
-        dominantColor: "#78350f", rating: 8.5, criticsScore: 95, audienceScore: 96, director: "Roman Polanski", 
-        cast: ["Adrien Brody", "Thomas Kretschmann", "Frank Finlay"], boxOffice: "$120.1 million", budget: "$35 million", 
+        historicalAccuracy: 92, complexityLevel: "HIGH",
+        dominantColor: "#78350f", rating: 8.5, criticsScore: 95, audienceScore: 96, director: "Roman Polanski",
+        cast: ["Adrien Brody", "Thomas Kretschmann", "Frank Finlay"], boxOffice: "$120.1 million", budget: "$35 million",
         dna: { "War": 40, "Biography": 35, "Drama": 25 },
         scenes: [
-            { time: 10, intensity: 65, label: "The Bombing of the Station" }, 
-            { time: 55, intensity: 85, label: "The Umschlagplatz" }, 
-            { time: 95, intensity: 78, label: "The Warsaw Uprising" }, 
-            { time: 125, intensity: 95, label: "Playing for the Officer" }, 
-            { time: 145, intensity: 70, label: "The Coat" } 
+            { time: 10, intensity: 65, label: "The Bombing of the Station" },
+            { time: 55, intensity: 85, label: "The Umschlagplatz" },
+            { time: 95, intensity: 78, label: "The Warsaw Uprising" },
+            { time: 125, intensity: 95, label: "Playing for the Officer" },
+            { time: 145, intensity: 70, label: "The Coat" }
         ],
         synopsis: "A Polish Jewish musician struggles to survive the destruction of the Warsaw ghetto of World War II, relying on his talent, strangers' kindness, and sheer will.",
         themes: ["Survival", "The Power of Art", "Isolation"]
     }),
     872585: createTrueStoryData({ // Oppenheimer
-        historicalAccuracy: 85, complexityLevel: "EXTREME", 
-        dominantColor: "#fb923c", rating: 8.3, criticsScore: 93, audienceScore: 91, director: "Christopher Nolan", 
-        cast: ["Cillian Murphy", "Robert Downey Jr.", "Emily Blunt"], boxOffice: "$960 million", budget: "$100 million", 
+        historicalAccuracy: 85, complexityLevel: "EXTREME",
+        dominantColor: "#fb923c", rating: 8.3, criticsScore: 93, audienceScore: 91, director: "Christopher Nolan",
+        cast: ["Cillian Murphy", "Robert Downey Jr.", "Emily Blunt"], boxOffice: "$960 million", budget: "$100 million",
         dna: { "History": 40, "Thriller": 35, "Biography": 25 },
         scenes: [
-            { time: 35, intensity: 60, label: "The Poisoned Apple" }, 
-            { time: 85, intensity: 75, label: "Building Los Alamos" }, 
-            { time: 118, intensity: 100, label: "The Trinity Test" }, 
-            { time: 140, intensity: 90, label: "The Gymnasium Speech" }, 
-            { time: 165, intensity: 95, label: "The Security Clearance Hearing" } 
+            { time: 35, intensity: 60, label: "The Poisoned Apple" },
+            { time: 85, intensity: 75, label: "Building Los Alamos" },
+            { time: 118, intensity: 100, label: "The Trinity Test" },
+            { time: 140, intensity: 90, label: "The Gymnasium Speech" },
+            { time: 165, intensity: 95, label: "The Security Clearance Hearing" }
         ],
         synopsis: "The story of J. Robert Oppenheimer's role in the development of the atomic bomb during World War II, and the devastating political and psychological fallout that followed.",
         themes: ["Scientific Responsibility", "Political Persecution", "Destruction"]
     }),
     197: createTrueStoryData({ // Braveheart
-        historicalAccuracy: 60, complexityLevel: "MEDIUM", 
-        dominantColor: "#1e3a8a", rating: 8.3, criticsScore: 78, audienceScore: 85, director: "Mel Gibson", 
-        cast: ["Mel Gibson", "Sophie Marceau", "Patrick McGoohan"], boxOffice: "$213.2 million", budget: "$72 million", 
+        historicalAccuracy: 60, complexityLevel: "MEDIUM",
+        dominantColor: "#1e3a8a", rating: 8.3, criticsScore: 78, audienceScore: 85, director: "Mel Gibson",
+        cast: ["Mel Gibson", "Sophie Marceau", "Patrick McGoohan"], boxOffice: "$213.2 million", budget: "$72 million",
         dna: { "Action": 45, "History": 30, "Drama": 25 },
         scenes: [
-            { time: 30, intensity: 75, label: "Murron's Execution" }, 
-            { time: 55, intensity: 85, label: "The MacClannough Rescue" }, 
-            { time: 85, intensity: 98, label: "Battle of Stirling Bridge" }, 
-            { time: 135, intensity: 88, label: "The Betrayal at Falkirk" }, 
-            { time: 170, intensity: 100, label: "Freedom!" } 
+            { time: 30, intensity: 75, label: "Murron's Execution" },
+            { time: 55, intensity: 85, label: "The MacClannough Rescue" },
+            { time: 85, intensity: 98, label: "Battle of Stirling Bridge" },
+            { time: 135, intensity: 88, label: "The Betrayal at Falkirk" },
+            { time: 170, intensity: 100, label: "Freedom!" }
         ],
         synopsis: "Scottish warrior William Wallace leads his countrymen in a rebellion to free his homeland from the tyranny of King Edward I of England.",
         themes: ["Freedom", "Martyrdom", "Rebellion"]
     }),
     76203: createTrueStoryData({ // 12 Years a Slave
-        historicalAccuracy: 90, complexityLevel: "HIGH", 
-        dominantColor: "#b45309", rating: 8.1, criticsScore: 95, audienceScore: 90, director: "Steve McQueen", 
-        cast: ["Chiwetel Ejiofor", "Michael Fassbender", "Lupita Nyong'o"], boxOffice: "$187.7 million", budget: "$22 million", 
+        historicalAccuracy: 90, complexityLevel: "HIGH",
+        dominantColor: "#b45309", rating: 8.1, criticsScore: 95, audienceScore: 90, director: "Steve McQueen",
+        cast: ["Chiwetel Ejiofor", "Michael Fassbender", "Lupita Nyong'o"], boxOffice: "$187.7 million", budget: "$22 million",
         dna: { "History": 45, "Drama": 40, "Biography": 15 },
         scenes: [
-            { time: 15, intensity: 85, label: "The Kidnapping" }, 
-            { time: 45, intensity: 88, label: "Hanging from the Tree" }, 
-            { time: 95, intensity: 75, label: "The Soap" }, 
-            { time: 115, intensity: 100, label: "Patsy's Whipping" }, 
-            { time: 125, intensity: 90, label: "The Rescue" } 
+            { time: 15, intensity: 85, label: "The Kidnapping" },
+            { time: 45, intensity: 88, label: "Hanging from the Tree" },
+            { time: 95, intensity: 75, label: "The Soap" },
+            { time: 115, intensity: 100, label: "Patsy's Whipping" },
+            { time: 125, intensity: 90, label: "The Rescue" }
         ],
         synopsis: "In the antebellum United States, Solomon Northup, a free black man from upstate New York, is abducted and sold into slavery for twelve grueling years.",
         themes: ["Slavery", "Endurance", "Dehumanization"]
     }),
     96721: createTrueStoryData({ // Rush
-        historicalAccuracy: 85, complexityLevel: "MEDIUM", 
-        dominantColor: "#b91c1c", rating: 8.1, criticsScore: 89, audienceScore: 88, director: "Ron Howard", 
-        cast: ["Chris Hemsworth", "Daniel Brühl", "Olivia Wilde"], boxOffice: "$96.9 million", budget: "$38 million", 
+        historicalAccuracy: 85, complexityLevel: "MEDIUM",
+        dominantColor: "#b91c1c", rating: 8.1, criticsScore: 89, audienceScore: 88, director: "Ron Howard",
+        cast: ["Chris Hemsworth", "Daniel Brühl", "Olivia Wilde"], boxOffice: "$96.9 million", budget: "$38 million",
         dna: { "Action": 40, "Biography": 35, "Sports": 25 },
         scenes: [
-            { time: 25, intensity: 65, label: "Formula 3 Rivalry" }, 
-            { time: 65, intensity: 80, label: "The Wedding and the Track" }, 
-            { time: 85, intensity: 95, label: "Nürburgring Crash" }, 
-            { time: 95, intensity: 88, label: "The Hospital Recovery" }, 
-            { time: 115, intensity: 92, label: "The Final Race in Japan" } 
+            { time: 25, intensity: 65, label: "Formula 3 Rivalry" },
+            { time: 65, intensity: 80, label: "The Wedding and the Track" },
+            { time: 85, intensity: 95, label: "Nürburgring Crash" },
+            { time: 95, intensity: 88, label: "The Hospital Recovery" },
+            { time: 115, intensity: 92, label: "The Final Race in Japan" }
         ],
         synopsis: "The merciless 1970s rivalry between Formula One rivals James Hunt and Niki Lauda, exploring how their vastly different approaches to life and racing pushed them to the absolute edge.",
         themes: ["Rivalry", "Risk", "Obsession"]
     }),
     152532: createTrueStoryData({ // Dallas Buyers Club
-        historicalAccuracy: 75, complexityLevel: "MEDIUM", 
-        dominantColor: "#082f49", rating: 7.9, criticsScore: 92, audienceScore: 91, director: "Jean-Marc Vallée", 
-        cast: ["Matthew McConaughey", "Jared Leto", "Jennifer Garner"], boxOffice: "$55.2 million", budget: "$5 million", 
+        historicalAccuracy: 75, complexityLevel: "MEDIUM",
+        dominantColor: "#082f49", rating: 7.9, criticsScore: 92, audienceScore: 91, director: "Jean-Marc Vallée",
+        cast: ["Matthew McConaughey", "Jared Leto", "Jennifer Garner"], boxOffice: "$55.2 million", budget: "$5 million",
         dna: { "Biography": 40, "Drama": 40, "History": 20 },
         scenes: [
-            { time: 10, intensity: 75, label: "The Diagnosis" }, 
-            { time: 45, intensity: 65, label: "Crossing the Border" }, 
-            { time: 75, intensity: 85, label: "The Supermarket Confrontation" }, 
-            { time: 95, intensity: 90, label: "Rayon's Farewell" }, 
-            { time: 110, intensity: 80, label: "The Courtroom" } 
+            { time: 10, intensity: 75, label: "The Diagnosis" },
+            { time: 45, intensity: 65, label: "Crossing the Border" },
+            { time: 75, intensity: 85, label: "The Supermarket Confrontation" },
+            { time: 95, intensity: 90, label: "Rayon's Farewell" },
+            { time: 110, intensity: 80, label: "The Courtroom" }
         ],
         synopsis: "In 1985 Dallas, electrician and hustler Ron Woodroof works around the system to help AIDS patients get the medication they need after he is diagnosed with the disease.",
         themes: ["Medical Establishment", "Survival", "Prejudice"]
     }),
     37799: createTrueStoryData({ // The Social Network
-        historicalAccuracy: 70, complexityLevel: "HIGH", 
-        dominantColor: "#022c22", rating: 7.8, criticsScore: 96, audienceScore: 87, director: "David Fincher", 
-        cast: ["Jesse Eisenberg", "Andrew Garfield", "Justin Timberlake"], boxOffice: "$224.9 million", budget: "$40 million", 
+        historicalAccuracy: 70, complexityLevel: "HIGH",
+        dominantColor: "#022c22", rating: 7.8, criticsScore: 96, audienceScore: 87, director: "David Fincher",
+        cast: ["Jesse Eisenberg", "Andrew Garfield", "Justin Timberlake"], boxOffice: "$224.9 million", budget: "$40 million",
         dna: { "Biography": 40, "Drama": 40, "Thriller": 20 },
         scenes: [
-            { time: 5, intensity: 75, label: "The Breakup Scene" }, 
-            { time: 35, intensity: 85, label: "Facemash Launch" }, 
-            { time: 75, intensity: 80, label: "Meeting Sean Parker" }, 
-            { time: 105, intensity: 95, label: "Eduardo's Confrontation" }, 
-            { time: 115, intensity: 70, label: "Refresh" } 
+            { time: 5, intensity: 75, label: "The Breakup Scene" },
+            { time: 35, intensity: 85, label: "Facemash Launch" },
+            { time: 75, intensity: 80, label: "Meeting Sean Parker" },
+            { time: 105, intensity: 95, label: "Eduardo's Confrontation" },
+            { time: 115, intensity: 70, label: "Refresh" }
         ],
         synopsis: "As Harvard student Mark Zuckerberg creates the social networking site that would become known as Facebook, he is sued by the twins who claimed he stole their idea, and by the co-founder who was later squeezed out of the business.",
         themes: ["Ambition", "Betrayal", "The Digital Age"]
     }),
     9366: createTrueStoryData({ // Donnie Brasco
-        historicalAccuracy: 80, complexityLevel: "HIGH", 
-        dominantColor: "#3f3f46", rating: 7.7, criticsScore: 88, audienceScore: 89, director: "Mike Newell", 
-        cast: ["Al Pacino", "Johnny Depp", "Michael Madsen"], boxOffice: "$124.9 million", budget: "$35 million", 
+        historicalAccuracy: 80, complexityLevel: "HIGH",
+        dominantColor: "#3f3f46", rating: 7.7, criticsScore: 88, audienceScore: 89, director: "Mike Newell",
+        cast: ["Al Pacino", "Johnny Depp", "Michael Madsen"], boxOffice: "$124.9 million", budget: "$35 million",
         dna: { "Crime": 50, "Biography": 30, "Thriller": 20 },
         scenes: [
-            { time: 25, intensity: 65, label: "The Jewel Assessment" }, 
-            { time: 65, intensity: 85, label: "The Japanese Restaurant" }, 
-            { time: 95, intensity: 90, label: "The Basement Hit" }, 
-            { time: 110, intensity: 88, label: "The Tape Recorder" }, 
-            { time: 120, intensity: 95, label: "Lefty's Final Walk" } 
+            { time: 25, intensity: 65, label: "The Jewel Assessment" },
+            { time: 65, intensity: 85, label: "The Japanese Restaurant" },
+            { time: 95, intensity: 90, label: "The Basement Hit" },
+            { time: 110, intensity: 88, label: "The Tape Recorder" },
+            { time: 120, intensity: 95, label: "Lefty's Final Walk" }
         ],
         synopsis: "An FBI undercover agent infiltrates the mob and finds himself identifying more with the mafia life, specifically with an aging hitman, than his regular life.",
         themes: ["Undercover Identity", "Loyalty", "The Toll of Deception"]
@@ -413,7 +413,7 @@ const calculateSkipStats = (scenes) => {
     });
     const mins = Math.floor(totalSeconds / 60);
     const secs = totalSeconds % 60;
-    if (totalSeconds === 0) return "< 1 min"; 
+    if (totalSeconds === 0) return "< 1 min";
     if (mins === 0) return `${secs} sec`;
     return secs > 0 ? `${mins} min ${secs} sec` : `${mins} min`;
 };
@@ -425,7 +425,7 @@ export const getSensitiveContentTypes = (tmdbId) => {
     const types = new Set();
     sensitiveData.scenes.forEach(scene => {
         const lowerType = scene.type?.toLowerCase() || '';
-        
+
         if (lowerType.includes('sexual content')) types.add('sexual content');
         else if (lowerType.match(/\bsex\b/)) types.add('sex');
         else if (lowerType.includes('explicit')) types.add('explicit content');
@@ -441,7 +441,7 @@ export const getSensitiveContentTypes = (tmdbId) => {
 const getHighestSeverityInfo = (scenes) => {
     const severities = scenes.map(s => (s.severity || 'Moderate').toLowerCase());
     const extremeCount = severities.filter(s => s === 'extreme').length;
-    
+
     // User's flawless logic: 2+ Extreme means the whole movie is Extreme. 
     // Otherwise, we cap the warning at High.
     if (extremeCount >= 2) return 'Extreme';
@@ -461,11 +461,11 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
     const heavyScenes = sensitiveScenes.filter(s => {
         if (!s.start || s.start.trim() === '') return false;
         const t = s.type?.toLowerCase() || '';
-        return t.includes('sex') || t.includes('nudity') || t.includes('explicit') || t.includes('suggestive') || t.includes('lingerie') || t.includes('bikini'); 
+        return t.includes('sex') || t.includes('nudity') || t.includes('explicit') || t.includes('suggestive') || t.includes('lingerie') || t.includes('bikini');
     });
 
     const sceneCount = heavyScenes.length;
-    
+
     // 🔥 DYNAMIC SEO META DESCRIPTION GENERATOR
     const targetMovies = {
         "Eyes Wide Shut": "R",
@@ -477,7 +477,7 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
         "Gone Girl": "R",
         "Basic Instinct": "R"
     };
-    
+
     let schemaDesc = '';
     if (targetMovies[movie.Title]) {
         const mpaaRating = targetMovies[movie.Title];
@@ -485,14 +485,14 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
             // 🔥 Prioritize Sex/Nudity over Suggestive Clothing
             const heavyOnly = heavyScenes.filter(s => s.type?.toLowerCase().match(/sex|nudity|explicit/));
             const lightOnly = heavyScenes.filter(s => !s.type?.toLowerCase().match(/sex|nudity|explicit/));
-            
+
             // Grab the top 2 priority scenes, then sort them chronologically
             const selectedScenes = [...heavyOnly, ...lightOnly].slice(0, 2);
             selectedScenes.sort((a, b) => heavyScenes.indexOf(a) - heavyScenes.indexOf(b));
-            
+
             // Format with start, end, and TYPE reason!
             const firstTwo = selectedScenes.map(s => s.end ? `${s.start} to ${s.end} (${s.type})` : `${s.start} (${s.type})`).join(' and ');
-            
+
             schemaDesc = `Why is ${movie.Title} rated ${mpaaRating}? Use our parents guide to skip mature content. Skip scenes at ${firstTwo}.`;
         } else {
             schemaDesc = `${movie.Title} Parents Guide. Filmiway editors have manually verified zero explicit scenes in the full ${currentRuntime} runtime.`;
@@ -512,7 +512,7 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
         'name': movie.Title,
         'description': schemaDesc,
         'genre': movie.genre,
-        'url': `https://filmiway.com/movie/${movie.slug || movie.Title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '')}`, 
+        'url': `https://filmiway.com/movie/${movie.slug || movie.Title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '')}`,
         'datePublished': currentMovieYear?.toString() || movie.year.toString(),
         'director': { '@type': 'Person', 'name': movieInfo?.director || 'Director' },
         'actor': movieInfo?.cast?.map(actor => ({ '@type': 'Person', 'name': actor })) || [],
@@ -522,12 +522,12 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
 
     const staticFaqs = TRUE_STORY_MOVIE_FAQS[movie.Title] ? [...TRUE_STORY_MOVIE_FAQS[movie.Title]] : [];
     const intensityScenes = movieInfo?.scenes || [];
-    
-       const schemaFaqs = staticFaqs.map(faq => ({ 
-           '@type': 'Question', 
-           'name': faq.question, 
-           'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer } 
-       }));
+
+    const schemaFaqs = staticFaqs.map(faq => ({
+        '@type': 'Question',
+        'name': faq.question,
+        'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer }
+    }));
 
     // 🔥 DYNAMIC RECOMMENDED AGE FAQ INJECTION (SEO SCHEMA)
     const tmdbIdKey = movie?.tmdbId?.toString();
@@ -539,37 +539,37 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
         schemaFaqs.unshift({
             '@type': 'Question',
             'name': `What is the suitable age to watch ${movie.Title}?`,
-            'acceptedAnswer': { 
-                '@type': 'Answer', 
-                'text': `According to Filmiway's Parents Guide, the recommended age for ${movie.Title} is ${recommendedAge}. ${ageSummary}` 
+            'acceptedAnswer': {
+                '@type': 'Answer',
+                'text': `According to Filmiway's Parents Guide, the recommended age for ${movie.Title} is ${recommendedAge}. ${ageSummary}`
             }
         });
     }
 
-   
-       if (heavyScenes.length > 0) {
-           const typesArray = getSensitiveContentTypes(movie.tmdbId) || ['mature content'];
-           const typesString = typesArray.join(' and ');
-           const totalSkipTime = calculateSkipStats(heavyScenes);
-           const firstTimestamp = heavyScenes[0].start;
-           const firstSeverity = heavyScenes[0].severity || 'Moderate';
-           const overallSeverity = getHighestSeverityInfo(heavyScenes);
-   
-           const schemaListText = heavyScenes.map(s => {
-               const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
-               const fullType = s.severity ? `${s.type} (${s.severity})` : (s.type || 'Mature Content');
-               return `<li>${timeRange} - ${fullType}</li>`;
-           }).join('');
-   
-           const startTimesList = heavyScenes.map(s => s.start).join(', ');
-   
-           // Filter out suggestive clothing to determine if it's truly unsafe for family
-           const familyUnsafeTypes = typesArray.filter(t => t !== 'suggestive clothing');
-           const familyUnsafeString = familyUnsafeTypes.join(' and ');
-   
-           const familyFaqSchema = familyUnsafeTypes.length > 0 
-               ? {
-      '@type': 'Question',
+
+    if (heavyScenes.length > 0) {
+        const typesArray = getSensitiveContentTypes(movie.tmdbId) || ['mature content'];
+        const typesString = typesArray.join(' and ');
+        const totalSkipTime = calculateSkipStats(heavyScenes);
+        const firstTimestamp = heavyScenes[0].start;
+        const firstSeverity = heavyScenes[0].severity || 'Moderate';
+        const overallSeverity = getHighestSeverityInfo(heavyScenes);
+
+        const schemaListText = heavyScenes.map(s => {
+            const timeRange = s.end ? `${s.start} to ${s.end}` : s.start;
+            const fullType = s.severity ? `${s.type} (${s.severity})` : (s.type || 'Mature Content');
+            return `<li>${timeRange} - ${fullType}</li>`;
+        }).join('');
+
+        const startTimesList = heavyScenes.map(s => s.start).join(', ');
+
+        // Filter out suggestive clothing to determine if it's truly unsafe for family
+        const familyUnsafeTypes = typesArray.filter(t => t !== 'suggestive clothing');
+        const familyUnsafeString = familyUnsafeTypes.join(' and ');
+
+        const familyFaqSchema = familyUnsafeTypes.length > 0
+            ? {
+                '@type': 'Question',
                 'name': `Is ${movie.Title} safe to watch with family?`,
                 'acceptedAnswer': {
                     '@type': 'Answer',
@@ -589,9 +589,9 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
             {
                 '@type': 'Question',
                 'name': `Does ${movie.Title} have sex scenes or nudity?`,
-                'acceptedAnswer': { 
-                    '@type': 'Answer', 
-                    'text': `Yes. ${movie.Title} contains ${sceneCount} scenes of ${typesString}. Exact timestamps:<br><br><ul>${schemaListText}</ul><br>Manually verified frame by frame by Filmiway editors for the ${currentRuntime} runtime.` 
+                'acceptedAnswer': {
+                    '@type': 'Answer',
+                    'text': `Yes. ${movie.Title} contains ${sceneCount} scenes of ${typesString}. Exact timestamps:<br><br><ul>${schemaListText}</ul><br>Manually verified frame by frame by Filmiway editors for the ${currentRuntime} runtime.`
                 }
             },
             {
@@ -609,23 +609,23 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
             {
                 '@type': 'Question',
                 'name': `Does ${movie.Title} have sex scenes or nudity?`,
-                'acceptedAnswer': { 
-                    '@type': 'Answer', 
-                    'text': `No. Filmiway editors have manually verified that ${movie.Title} is free of explicit sex scenes and nudity.` 
+                'acceptedAnswer': {
+                    '@type': 'Answer',
+                    'text': `No. Filmiway editors have manually verified that ${movie.Title} is free of explicit sex scenes and nudity.`
                 }
             },
             {
                 '@type': 'Question',
                 'name': `Is ${movie.Title} safe to watch with family?`,
-                'acceptedAnswer': { 
-                    '@type': 'Answer', 
-                    'text': `Yes, regarding explicit sexual content. Filmiway editors have manually verified that ${movie.Title} does not have any sex, nudity, or sexual content in the full ${currentRuntime} runtime.` 
+                'acceptedAnswer': {
+                    '@type': 'Answer',
+                    'text': `Yes, regarding explicit sexual content. Filmiway editors have manually verified that ${movie.Title} does not have any sex, nudity, or sexual content in the full ${currentRuntime} runtime.`
                 }
             }
         );
     }
 
-const faqSchema = {
+    const faqSchema = {
         '@context': 'https://schema.org',
         '@type': 'FAQPage',
         'name': `Parents Guide and FAQ for ${movie.Title}`,
@@ -639,7 +639,7 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
     const staticFaqs = TRUE_STORY_MOVIE_FAQS[movieTitle] ? [...TRUE_STORY_MOVIE_FAQS[movieTitle]] : [];
     const masterScenes = masterTimestamps[String(tmdbId)]?.scenes || [];
     const sensitiveScenes = [...(SENSITIVE_TIMELINES[tmdbId]?.scenes || [])];
-    
+
     const parseTimeToSeconds = (t) => {
         if (!t) return -1;
         const parts = String(t).trim().split(':').map(Number);
@@ -682,13 +682,13 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
         });
     }
 
-     const heavyScenes = sensitiveScenes.filter(s => {
-         const t = s.type?.toLowerCase() || '';
-         return t.includes('sex') || t.includes('nudity') || t.includes('explicit') || t.includes('suggestive') || t.includes('lingerie') || t.includes('bikini');
-     });
- 
-     if (heavyScenes.length > 0) {
-         const getTypesFromScenes = (scenes) => {
+    const heavyScenes = sensitiveScenes.filter(s => {
+        const t = s.type?.toLowerCase() || '';
+        return t.includes('sex') || t.includes('nudity') || t.includes('explicit') || t.includes('suggestive') || t.includes('lingerie') || t.includes('bikini');
+    });
+
+    if (heavyScenes.length > 0) {
+        const getTypesFromScenes = (scenes) => {
             const typeSeverities = {};
             const addType = (typeKey, severity) => {
                 const sev = String(severity || 'moderate').toLowerCase();
@@ -743,13 +743,13 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
             const fullType = s.severity ? `${s.type || 'Mature Content'}, ${s.severity}` : (s.type || 'Mature Content');
             return `• ${timeRange} (${fullType})`;
         }).join('\n');
-        
+
         const startTimesList = heavyScenes.map(s => s.start).join(', ');
         // Filter out suggestive clothing for the UI as well
         const familyUnsafeTypes = typesArray.filter(t => t !== 'suggestive clothing');
         const familyUnsafeString = joinWithAnd(familyUnsafeTypes);
-        
-                let familyFaqAnswer = `No. ${movieTitle} is not safe to watch with family because it contains ${familyUnsafeString}, earning it a [DYNAMIC_SCORE]/10 ([DYNAMIC_LABEL]) Family Safety Score. Adults can use Filmiway's timestamps to skip all ${sceneCount} explicit scenes in the ${finalRuntime} runtime.`;
+
+        let familyFaqAnswer = `No. ${movieTitle} is not safe to watch with family because it contains ${familyUnsafeString}, earning it a [DYNAMIC_SCORE]/10 ([DYNAMIC_LABEL]) Family Safety Score. Adults can use Filmiway's timestamps to skip all ${sceneCount} explicit scenes in the ${finalRuntime} runtime.`;
 
         const familyFaqUI = familyUnsafeTypes.length > 0
             ? {
@@ -782,4 +782,4 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
     }
 
     return staticFaqs;
- };
+};

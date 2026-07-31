@@ -131,7 +131,7 @@ export const COLLECTIONS = {
   },
 
 
-// 🦢 MOVIES LIKE BLACK SWAN
+  // 🦢 MOVIES LIKE BLACK SWAN
   'movies-like-black-swan': {
     slug: 'movies-like-black-swan',
     title: 'Movies Like Black Swan',
@@ -791,7 +791,7 @@ export const COLLECTIONS = {
     relatedCollections: ['best-comedy-movies-on-hulu', 'best-movies-on-peacock', 'best-action-adventure-movies-on-peacock']
   },
 
-  
+
   // ⚔️ BEST WAR FILMS
   'best-war-films': {
     slug: 'best-war-films',
@@ -865,7 +865,7 @@ export const COLLECTIONS = {
     relatedCollections: ['best-comedy-movies-on-hulu', 'best-drama-movies-on-hbo-max', 'best-survival-movies']
   },
 
-// 🧠 THE 10 MOST PROFOUND & THOUGHT-PROVOKING MOVIES
+  // 🧠 THE 10 MOST PROFOUND & THOUGHT-PROVOKING MOVIES
   'best-thought-provoking-movies': {
     slug: 'best-thought-provoking-movies',
     title: 'The 10 Most Profound & Thought-Provoking Movies',
@@ -896,7 +896,7 @@ export const COLLECTIONS = {
     relatedCollections: ['movies-like-se7en', 'best-psychological-thriller-movies', 'best-crime-thriller-movies']
   },
 
-// 💥 10 BEST ACTION MOVIES OF ALL TIME
+  // 💥 10 BEST ACTION MOVIES OF ALL TIME
   'best-action-movies': {
     slug: 'best-action-movies',
     title: 'The 10 Best Action Movies of All Time',
@@ -928,7 +928,7 @@ export const COLLECTIONS = {
   },
 
 
-// 🏆 BEST MOVIES OF THE DECADE (2020-2026)
+  // 🏆 BEST MOVIES OF THE DECADE (2020-2026)
   'best-movies-of-the-decade': {
     slug: 'best-movies-of-the-decade',
     title: '10 Best Movies of the Decade (2020-2026)',
@@ -943,7 +943,7 @@ export const COLLECTIONS = {
     relatedCollections: ['best-sci-fi-movies', 'best-thought-provoking-movies', 'best-movies-on-hbo-max']
   },
 
-// 🎩 10 BEST GANGSTER MOVIES OF ALL TIME
+  // 🎩 10 BEST GANGSTER MOVIES OF ALL TIME
   'best-gangster-movies-of-all-time': {
     slug: 'best-gangster-movies-of-all-time',
     title: '10 Best Gangster Movies of All Time',
@@ -1002,7 +1002,7 @@ export const COLLECTIONS = {
     relatedCollections: ['best-drama-movies-on-hbo-max', 'best-thought-provoking-movies', 'best-erotic-romance-movies']
   },
 
-// ✨ BEST A24 MOVIES
+  // ✨ BEST A24 MOVIES
   'best-a24-movies': {
     slug: 'best-a24-movies',
     title: '10 Best A24 Movies of All Time',
@@ -1044,7 +1044,7 @@ export const COLLECTIONS = {
     relatedCollections: ['best-comedy-movies-on-hulu', 'best-thought-provoking-movies', 'best-movies-about-greed']
   },
 
-// 🎬 PAUL THOMAS ANDERSON MOVIES RANKED
+  // 🎬 PAUL THOMAS ANDERSON MOVIES RANKED
   'best-paul-thomas-anderson-movies': {
     slug: 'best-paul-thomas-anderson-movies',
     title: 'All Paul Thomas Anderson Movies Ranked',
@@ -1058,7 +1058,7 @@ export const COLLECTIONS = {
     relatedCollections: ['best-drama-movies-on-hbo-max', 'best-thought-provoking-movies', 'best-movies-of-the-decade']
   },
 
-// 🔪 MOVIES LIKE BASIC INSTINCT
+  // 🔪 MOVIES LIKE BASIC INSTINCT
   'movies-like-basic-instinct': {
     slug: 'movies-like-basic-instinct',
     title: '10 Movies Like Basic Instinct',
@@ -1072,7 +1072,7 @@ export const COLLECTIONS = {
     relatedCollections: ['best-erotic-thriller-movies', 'best-psychological-thriller-movies', 'best-erotic-romance-movies']
   },
 
-// 💘 BEST ENEMIES TO LOVERS MOVIES
+  // 💘 BEST ENEMIES TO LOVERS MOVIES
   'best-enemies-to-lovers-movies': {
     slug: 'best-enemies-to-lovers-movies',
     title: '10 Best Enemies to Lovers Movies',
@@ -1185,10 +1185,10 @@ export const getBestActionCollection = () => COLLECTIONS['best-action-movies'];
 // This ensures that no matter how many collections a movie is added to,
 // it will always use this primary URL for SEO, preventing cannibalization.
 export const getPrimaryCollectionForMovie = (imdbID) => {
-  let primarySlug = Object.keys(COLLECTIONS).find(slug => 
+  let primarySlug = Object.keys(COLLECTIONS).find(slug =>
     COLLECTIONS[slug].movies.includes(imdbID)
   );
-  
+
   // ⚡ GLOBAL FALLBACK: Automatically map Bonus films using the master database!
   // This completely prevents the "BACK TO COLLECTION COLLECTION" bug from Search & Directory pages.
   if (!primarySlug) {
@@ -1197,37 +1197,37 @@ export const getPrimaryCollectionForMovie = (imdbID) => {
       const movie = masterDatabase.find(m => m.imdbID === imdbID);
       if (movie && movie.sourceFile) {
         const sourceMap = {
-            'enemiesToLoversMovieData.js': 'best-enemies-to-lovers-movies',
-            'raunchyComedyMovieData.js': 'best-raunchy-comedy-movies',
-            'blackSwanMovieData.js': 'movies-like-black-swan',
-            'monicaBellucciMovieData.js': 'top-10-monica-bellucci-movies',
-            'jenniferLawrenceMovieData.js': 'top-10-jennifer-lawrence-movies',
-            'a24MovieData.js': 'best-a24-movies',
-            'darkComedyMovieData.js': 'best-dark-comedy-movies',
-            'ptaMoviesData.js': 'best-paul-thomas-anderson-movies',
-            'basicInstinctMovieData.js': 'movies-like-basic-instinct',
-            'survivalMovieData.js': 'best-survival-movies',
-            'matrixMovieData.js': 'movies-like-the-matrix',
-            'se7enMovieData.js': 'movies-like-se7en',
-            'parasiteMovieData.js': 'movies-like-parasite',
-            'oldboyMovieData.js': 'movies-like-oldboy',
-            'donnieDarkoMovieData.js': 'movies-like-donnie-darko',
-            'fightClubMovieData.js': 'movies-like-fight-club',
-            'eyesWideShutMovieData.js': 'movies-like-eyes-wide-shut',
-            'prestigeMovieData.js': 'movies-like-the-prestige',
-            'eroticThrillerMovieData.js': 'best-erotic-thriller-movies',
-            'eroticRomanceMovieData.js': 'best-erotic-romance-movies',
-            'greedMovieData.js': 'best-movies-about-greed',
-            'roadTripMovieData.js': 'top-10-road-trip-movies',
-            'thoughtProvokingMovieData.js': 'best-thought-provoking-movies',
-            'neoNoirMovieData.js': 'best-neo-noir-movies',
-            'bestActionMoviesData.js': 'best-action-movies',
-            'trueStoryMovieData.js': 'best-true-story-movies',
-            'decadeMovieData.js': 'best-movies-of-the-decade',
-            'gangsterMovieData.js': 'best-gangster-movies-of-all-time',
-            'bookAdaptationData.js': 'top-10-book-adaptations',
-            'marriageCrisisMovieData.js': 'best-marriage-crisis-movies',
-            'sciFiMovieData.js': 'best-sci-fi-movies'
+          'enemiesToLoversMovieData.js': 'best-enemies-to-lovers-movies',
+          'raunchyComedyMovieData.js': 'best-raunchy-comedy-movies',
+          'blackSwanMovieData.js': 'movies-like-black-swan',
+          'monicaBellucciMovieData.js': 'top-10-monica-bellucci-movies',
+          'jenniferLawrenceMovieData.js': 'top-10-jennifer-lawrence-movies',
+          'a24MovieData.js': 'best-a24-movies',
+          'darkComedyMovieData.js': 'best-dark-comedy-movies',
+          'ptaMoviesData.js': 'best-paul-thomas-anderson-movies',
+          'basicInstinctMovieData.js': 'movies-like-basic-instinct',
+          'survivalMovieData.js': 'best-survival-movies',
+          'matrixMovieData.js': 'movies-like-the-matrix',
+          'se7enMovieData.js': 'movies-like-se7en',
+          'parasiteMovieData.js': 'movies-like-parasite',
+          'oldboyMovieData.js': 'movies-like-oldboy',
+          'donnieDarkoMovieData.js': 'movies-like-donnie-darko',
+          'fightClubMovieData.js': 'movies-like-fight-club',
+          'eyesWideShutMovieData.js': 'movies-like-eyes-wide-shut',
+          'prestigeMovieData.js': 'movies-like-the-prestige',
+          'eroticThrillerMovieData.js': 'best-erotic-thriller-movies',
+          'eroticRomanceMovieData.js': 'best-erotic-romance-movies',
+          'greedMovieData.js': 'best-movies-about-greed',
+          'roadTripMovieData.js': 'top-10-road-trip-movies',
+          'thoughtProvokingMovieData.js': 'best-thought-provoking-movies',
+          'neoNoirMovieData.js': 'best-neo-noir-movies',
+          'bestActionMoviesData.js': 'best-action-movies',
+          'trueStoryMovieData.js': 'best-true-story-movies',
+          'decadeMovieData.js': 'best-movies-of-the-decade',
+          'gangsterMovieData.js': 'best-gangster-movies-of-all-time',
+          'bookAdaptationData.js': 'top-10-book-adaptations',
+          'marriageCrisisMovieData.js': 'best-marriage-crisis-movies',
+          'sciFiMovieData.js': 'best-sci-fi-movies'
         };
         primarySlug = sourceMap[movie.sourceFile] || null;
       }
@@ -1236,7 +1236,7 @@ export const getPrimaryCollectionForMovie = (imdbID) => {
     }
   }
 
-  return primarySlug || null; 
+  return primarySlug || null;
 };
 
 export default COLLECTIONS;
