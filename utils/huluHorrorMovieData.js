@@ -35,10 +35,10 @@ export const SENSITIVE_TIMELINES = {
     1079373: { scenes: [] },
 
     // 3. The House That Jack Built
-    400535: { 
+    398173: { 
         scenes: [
-            { start: "1:24:10", end: "1:25:10", type: "Nudity", severity: "High" },
-            { start: "1:38:10", end: "1:39:05", type: "Nudity", severity: "High" }
+            { start: "1:24:10", end: "1:25:10", type: "Nudity", severity: "Moderate" },
+            { start: "1:38:10", end: "1:39:05", type: "Nudity", severity: "Moderate" }
         ] 
     },
 
@@ -86,7 +86,7 @@ export const SENSITIVE_TIMELINES = {
 export const FALLBACK_POSTERS = {
     1017409: "https://image.tmdb.org/t/p/w500/2yl2zC3tX7F2KyD62P8R92V7X9o.jpg",
     1079373: "https://image.tmdb.org/t/p/w500/5aj8vVGFvGVbXQmZhcs62060w23.jpg",
-    400535: "https://image.tmdb.org/t/p/w500/77i12a2Q5b3Z1X5Z5X5X5X5X5X5.jpg",
+    398173: "https://image.tmdb.org/t/p/w500/77i12a2Q5b3Z1X5Z5X5X5X5X5X5.jpg",
     1216191: "https://image.tmdb.org/t/p/w500/uln9Efc2vzDOl0WTEhlqcedtJc.jpg",
     300669: "https://image.tmdb.org/t/p/w500/a7V9Xh5b32G2bB5g3g5g3g5g3g5.jpg", // Don't Breathe
     242224: "https://image.tmdb.org/t/p/w500/k5WCg7in2F3xX7aX7aX7aX7aX7a.jpg",
@@ -145,7 +145,7 @@ export const COMPLETE_MOVIE_DATA = {
     // 3. The House That Jack Built
     // Curve: Philosophy -> Cruelty -> Sadism -> Descent -> Hell.
     // Peak: 98 (The Picnic - Moral abyss).
-    400535: createMovieData({ 
+    398173: createMovieData({ 
         scariness: 95, 
         dominantColor: "#ef4444", rating: 6.8, criticsScore: 59, audienceScore: 67, director: "Lars von Trier", 
         cast: ["Matt Dillon", "Bruno Ganz", "Uma Thurman"], boxOffice: "$5 million", budget: "$10 million", 
@@ -298,7 +298,7 @@ export const COMPLETE_MOVIE_DATA = {
 export const STRATEGIC_QUOTES = {
     1017409: "Evil doesn't wait.",
     1079373: "Hail Satan!",
-    400535: "The house that Jack built.",
+    398173: "The house that Jack built.",
     1216191: "It sees things you can't.",
     300669: "There is nothing a man cannot do once he accepts the fact that there is no God.",
     242224: "If it's in a word, or it's in a look, you can't get rid of the Babadook.",
