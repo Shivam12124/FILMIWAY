@@ -10001,7 +10001,7 @@
     "backdrop_path": "/vQNknPEVSAui6IL6eUlDBPfUzcW.jpg",
     "runtime": 100,
     "release_date": "1996-07-17",
-    "overview": "A car crash victim suddenly finds himself turned on by car accidents and becomes involved with an underground sub-culture of like-minded souls.",
+    "overview": "A car crash victim inexplicably finds himself aroused by car accidents and becomes involved with an underground subculture of like-minded souls.",
     "ageRating": "NC-17",
     "director": "David Cronenberg",
     "cast": [
@@ -10768,5 +10768,23 @@
     "budget": "$35,000,000",
     "revenue": "$399,644,671",
     "tagline": "Discover what lies behind closed doors."
+  },
+  "tt32897959": {
+    "tmdbId": "1316092",
+    "poster_path": "/3YBce6dTh1D5oCMITXk2S5QhPt.jpg",
+    "backdrop_path": "/nHKscpZcAPkh97OsJJjyE5yaVE0.jpg",
+    "runtime": 137,
+    "release_date": "2026-02-11",
+    "overview": "Tragedy strikes when Heathcliff falls in love with Catherine Earnshaw, a woman from a wealthy family in 18th-century England.",
+    "ageRating": "R",
+    "director": "Emerald Fennell",
+    "cast": [
+      "Margot Robbie",
+      "Jacob Elordi",
+      "Hong Chau"
+    ],
+    "budget": "$80,000,000",
+    "revenue": "$241,601,072",
+    "tagline": "Come undone."
   }
 }

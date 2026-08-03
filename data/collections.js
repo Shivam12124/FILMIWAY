@@ -968,7 +968,7 @@ export const COLLECTIONS = {
       { label: "FAITHFUL", desc: "Honors the source" },
       { label: "MASTERPIECE", desc: "Cinematic triumphs" }
     ],
-    movies: ['tt0111161', 'tt0167260', 'tt0073486', 'tt0120689', 'tt0117951', 'tt3170832', 'tt0388795', 'tt0976051', 'tt2402927', 'tt1441395'],
+    movies: ['tt0111161', 'tt0167260', 'tt0073486', 'tt0120689', 'tt0117951', 'tt3170832', 'tt0388795', 'tt0976051', 'tt2402927', 'tt1441395', 'tt32897959'],
     relatedCollections: ['best-thought-provoking-movies', 'best-drama-movies-on-hbo-max', 'best-movies-on-hbo-max']
   },
 

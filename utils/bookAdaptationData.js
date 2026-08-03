@@ -19,7 +19,8 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 142, "imdbID": "tt0388795", "Title": "Brokeback Mountain", "year": 2005, "genre": "Drama", "runtime": 134, "rank": 7 },
     { "tmdbId": 8055, "imdbID": "tt0976051", "Title": "The Reader", "year": 2008, "genre": "Romance", "runtime": 124, "rank": 8 },
     { "tmdbId": 258480, "imdbID": "tt2402927", "Title": "Carol", "year": 2015, "genre": "Romance", "runtime": 118, "rank": 9 },
-    { "tmdbId": 97370, "imdbID": "tt1441395", "Title": "Under the Skin", "year": 2013, "genre": "Sci-Fi", "runtime": 108, "rank": 10 }
+    { "tmdbId": 97370, "imdbID": "tt1441395", "Title": "Under the Skin", "year": 2013, "genre": "Sci-Fi", "runtime": 108, "rank": 10 },
+    { "tmdbId": 1316092, "imdbID": "tt32897959", "Title": "Wuthering Heights", "year": 2026, "genre": "Romance", "runtime": 120, "rank": "BONUS" }
 ];
 
 // ✅ STRATEGIC QUOTES
@@ -33,7 +34,8 @@ export const STRATEGIC_QUOTES = {
     142: "I wish I knew how to quit you.",
     8055: "It doesn't matter what I feel. It doesn't matter what I think. The dead are still dead.",
     258480: "My angel. Flung out of space.",
-    97370: "Do you live alone?"
+    97370: "Do you live alone?",
+    1316092: "Whatever our souls are made of, his and mine are the same."
 };
 
 // ✅ SENSITIVE TIMELINES (Crucial for High-Volume Timestamps Search)
@@ -127,6 +129,14 @@ export const SENSITIVE_TIMELINES = {
             { start: "1:16:50", end: "1:18:15", type: "Nudity (Woman)", severity: "High" },
             { start: "1:24:51", end: "1:26:35", type: "Partial Nudity & Sex", severity: "High" }
         ] 
+    },
+    // BONUS: Wuthering Heights
+    1316092: {
+        scenes: [
+            { start: "37:10", end: "38:15", type: "Sexual Content (Sounds)", severity: "Moderate" },
+            { start: "1:27:00", end: "1:30:11", type: "Sexual Content", severity: "Moderate" },
+            { start: "1:40:45", end: "1:41:30", type: "Sex", severity: "Moderate" }
+        ]
     }
 };
 
@@ -140,7 +150,8 @@ export const FALLBACK_POSTERS = {
     142: "https://m.media-amazon.com/images/M/MV5BMTY5Njc3NzI4OF5BMl5BanBnXkFtZTcwMzY3MTM1MQ@@._V1_SX500.jpg",
     8055: "https://m.media-amazon.com/images/M/MV5BMTcxNDExNzY4NF5BMl5BanBnXkFtZTcwNTI1OTYzMg@@._V1_SX500.jpg",
     258480: "https://m.media-amazon.com/images/M/MV5BMTM0MjA1MTQyOF5BMl5BanBnXkFtZTgwNTc4NDE4NjE@._V1_SX500.jpg",
-    97370: "https://m.media-amazon.com/images/M/MV5BMTUwNjU3MjIwM15BMl5BanBnXkFtZTgwMTAxOTkyMTE@._V1_SX500.jpg"
+    97370: "https://m.media-amazon.com/images/M/MV5BMTUwNjU3MjIwM15BMl5BanBnXkFtZTgwMTAxOTkyMTE@._V1_SX500.jpg",
+    1316092: ""
 };
 
 // ✅ Custom metric for this collection
@@ -321,6 +332,20 @@ export const COMPLETE_MOVIE_DATA = {
         ],
         synopsis: "An alien masquerades as a human female to harvest men in Scotland, slowly catching a fatal strain of human empathy.",
         themes: ["Alienation", "The Male Gaze", "Humanity and Empathy"]
+    }),
+    1316092: createBookAdaptationData({
+        literaryDepth: 88, fidelityScore: 82, complexityLevel: "HIGH",
+        dominantColor: "#292524", rating: 7.2, criticsScore: 78, audienceScore: 80, director: "Emerald Fennell",
+        cast: ["Margot Robbie", "Jacob Elordi"], boxOffice: "N/A", budget: "N/A",
+        dna: { "Romance": 50, "Drama": 50 },
+        scenes: [
+            { time: 37, intensity: 50, label: "The Heath", color: "#292524" },
+            { time: 87, intensity: 68, label: "The Return", color: "#78716c" },
+            { time: 100, intensity: 82, label: "Love & Passion", color: "#dc2626" }, // PRIMARY PEAK
+            { time: 120, intensity: 45, label: "Tragic Ending", color: "#1c1917" }
+        ],
+        synopsis: "Emerald Fennell's stylish, gothic adaptation of Emily Brontë's legendary novel, depicting the volatile, obsessive romance between Cathy and Heathcliff.",
+        themes: ["Obsessive Romance", "Class Divide", "Gothic Drama"]
     })
 };
 

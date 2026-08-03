@@ -6479,6 +6479,17 @@
     "sourceFile": "huluComedyMovieData.js"
   },
   {
+    "tmdbId": 1316092,
+    "imdbID": "tt32897959",
+    "Title": "Wuthering Heights",
+    "year": 2026,
+    "genre": "Romance",
+    "runtime": 120,
+    "rank": "BONUS",
+    "slug": "wuthering-heights",
+    "sourceFile": "bookAdaptationData.js"
+  },
+  {
     "tmdbId": 1317088,
     "imdbID": "tt32768323",
     "Title": "The Assessment",

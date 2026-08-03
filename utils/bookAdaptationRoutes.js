@@ -42,7 +42,10 @@ export const BOOK_ADAPTATION_SLUGS = {
     'tt2402927': 'carol',
     
     // Rank 10: Under the Skin
-    'tt1441395': 'under-the-skin'
+    'tt1441395': 'under-the-skin',
+    
+    // BONUS: Wuthering Heights
+    'tt32897959': 'wuthering-heights'
 };
 
 // ✅ REVERSE SLUG MAPPING (SLUG TO IMDB ID)

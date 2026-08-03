@@ -25,7 +25,7 @@ export const COMPLETE_MOVIE_DATABASE = [
 // ✅ SENSITIVE TIMELINES (Focusing on Scary Moments for Kids)
 export const SENSITIVE_TIMELINES = {
     // 1. Robot Dreams
-    1012201: { scenes: [] }, // Very gentle
+    838240: { scenes: [] }, // Very gentle
     
     // 2. Night at the Museum
     1593: { scenes: [] },
@@ -39,12 +39,12 @@ export const SENSITIVE_TIMELINES = {
     76492: { scenes: [] }, // Funny monsters only
     
     // 6. Hotel Transylvania 2
-    260513: { scenes: [] },
+    159824: { scenes: [] },
     
     // 7. The Amazing Maurice
-    791334: { scenes: [] },
+    676710: { scenes: [] },
     // 8. My Friend the Penguin
-    1007535: { scenes: [] },
+    1159799: { scenes: [] },
     
     // 9. Fireheart
     778810:{ scenes: [] },
@@ -54,14 +54,14 @@ export const SENSITIVE_TIMELINES = {
 };
 
 export const FALLBACK_POSTERS = {
-    1012201: "https://image.tmdb.org/t/p/w500/vB8o2p4ETnrfiWEgVxHmHWP9yRl.jpg",
+    838240: "https://image.tmdb.org/t/p/w500/vB8o2p4ETnrfiWEgVxHmHWP9yRl.jpg",
     1593: "https://image.tmdb.org/t/p/w500/h6W7rX697fK1790iY3l590.jpg",
     675353: "https://image.tmdb.org/t/p/w500/6DrHO1jr3qVrViUO8MQO0p.jpg",
     537061: "https://image.tmdb.org/t/p/w500/8mRgpubxHqnqvEN44ManL.jpg",
     76492: "https://image.tmdb.org/t/p/w500/2yQUnpc1BXQuT8ImVR.jpg",
-    260513: "https://image.tmdb.org/t/p/w500/5aGhaIHYuKepojCZ7Q.jpg",
-    791334: "https://image.tmdb.org/t/p/w500/ydhZuC15.jpg",
-    1007535: "https://image.tmdb.org/t/p/w500/p3a3a.jpg",
+    159824: "https://image.tmdb.org/t/p/w500/5aGhaIHYuKepojCZ7Q.jpg",
+    676710: "https://image.tmdb.org/t/p/w500/ydhZuC15.jpg",
+    1159799: "https://image.tmdb.org/t/p/w500/p3a3a.jpg",
     778810: "https://image.tmdb.org/t/p/w500/198.jpg",
     68728: "https://image.tmdb.org/t/p/w500/7q.jpg"
 };
@@ -77,7 +77,7 @@ const createMovieData = (data) => ({
 
 export const COMPLETE_MOVIE_DATA = {
     // 1. Robot Dreams (Collection Anchor - Emotional Peak)
-    1012201: createMovieData({ 
+    838240: createMovieData({ 
         wholesomeScore: 98, 
         funFactor: 80, 
         complexityLevel: "MASTERPIECE", 
@@ -177,7 +177,7 @@ export const COMPLETE_MOVIE_DATA = {
     }),
 
     // 6. Hotel Transylvania 2 (Comedy Mid-Tier)
-    260513: createMovieData({ 
+    159824: createMovieData({ 
         wholesomeScore: 90, 
         funFactor: 92, 
         complexityLevel: "FUN", 
@@ -197,7 +197,7 @@ export const COMPLETE_MOVIE_DATA = {
     }),
 
     // 7. The Amazing Maurice (Clever Adventure)
-    791334: createMovieData({ 
+    676710: createMovieData({ 
         wholesomeScore: 85, 
         funFactor: 88, 
         complexityLevel: "CLEVER", 
@@ -217,7 +217,7 @@ export const COMPLETE_MOVIE_DATA = {
     }),
 
     // 8. My Friend the Penguin (Gentle True Story)
-    1007535: createMovieData({ 
+    1159799: createMovieData({ 
         wholesomeScore: 100, 
         funFactor: 75, 
         complexityLevel: "HEARTWARMING", 

@@ -25,14 +25,14 @@ export const COMPLETE_MOVIE_DATABASE = [
 // ✅ SENSITIVE TIMELINES (Horror Collection - Updated)
 export const SENSITIVE_TIMELINES = {
     // 1. When Evil Lurks
-    1017409: { 
+    744857: { 
         scenes: [
-            { start: "32:25", end: "32:45", type: "Nudity", severity: "High" }
+            { start: "32:25", end: "32:45", type: "Nudity", severity: "Moderate" }
         ] 
     },
     
     // 2. Longlegs
-    1079373: { scenes: [] },
+    1226578: { scenes: [] },
 
     // 3. The House That Jack Built
     398173: { 
@@ -80,12 +80,12 @@ export const SENSITIVE_TIMELINES = {
     },
 
     // 10. Late Night with the Devil
-    1014590: { scenes: [] }
+    938614: { scenes: [] }
 };
 
 export const FALLBACK_POSTERS = {
-    1017409: "https://image.tmdb.org/t/p/w500/2yl2zC3tX7F2KyD62P8R92V7X9o.jpg",
-    1079373: "https://image.tmdb.org/t/p/w500/5aj8vVGFvGVbXQmZhcs62060w23.jpg",
+    744857: "https://image.tmdb.org/t/p/w500/2yl2zC3tX7F2KyD62P8R92V7X9o.jpg",
+    1226578: "https://image.tmdb.org/t/p/w500/5aj8vVGFvGVbXQmZhcs62060w23.jpg",
     398173: "https://image.tmdb.org/t/p/w500/77i12a2Q5b3Z1X5Z5X5X5X5X5X5.jpg",
     1216191: "https://image.tmdb.org/t/p/w500/uln9Efc2vzDOl0WTEhlqcedtJc.jpg",
     300669: "https://image.tmdb.org/t/p/w500/a7V9Xh5b32G2bB5g3g5g3g5g3g5.jpg", // Don't Breathe
@@ -93,7 +93,7 @@ export const FALLBACK_POSTERS = {
     516632: "https://image.tmdb.org/t/p/w500/4PAqJ9l8J9l8J9l8J9l8J9l8J.jpg",
     913290: "https://image.tmdb.org/t/p/w500/y2Ca1neKke2mGPMaZvXdMjFvqCN.jpg",
     437342: "https://image.tmdb.org/t/p/w500/uGyGdD8f1Z8f1Z8f1Z8f1Z8f1Z8.jpg",
-    1014590: "https://image.tmdb.org/t/p/w500/j9j9j9j9j9j9j9j9j9j9j9j9j9j.jpg"
+    938614: "https://image.tmdb.org/t/p/w500/j9j9j9j9j9j9j9j9j9j9j9j9j9j.jpg"
 };
 
 // ✅ Helper to map "Horror" metrics to your existing code keys
@@ -107,7 +107,7 @@ export const COMPLETE_MOVIE_DATA = {
     // 1. When Evil Lurks
     // Curve: Unease -> Violence -> Dread -> Chaos -> Hopelessness.
     // Peak: 100 (No Rules - Genre-breaking cruelty).
-    1017409: createMovieData({ 
+    744857: createMovieData({ 
         scariness: 98, 
         dominantColor: "#7f1d1d", rating: 7.0, criticsScore: 96, audienceScore: 78, director: "Demián Rugna", 
         cast: ["Ezequiel Rodríguez", "Demián Salomón", "Silvina Sabater"], boxOffice: "$0.6 million", budget: "$4 million", 
@@ -126,7 +126,7 @@ export const COMPLETE_MOVIE_DATA = {
     // 2. Longlegs
     // Curve: Mystery -> Codebreaking -> Dread -> Revelation -> Curse.
     // Peak: 92 (Hail Satan - Psychological Peak).
-    1079373: createMovieData({ 
+    1226578: createMovieData({ 
         scariness: 95, 
         dominantColor: "#fcd34d", rating: 7.2, criticsScore: 86, audienceScore: 60, director: "Osgood Perkins", 
         cast: ["Maika Monroe", "Nicolas Cage", "Alicia Witt"], boxOffice: "$100 million", budget: "$10 million", 
@@ -278,7 +278,7 @@ export const COMPLETE_MOVIE_DATA = {
     // 10. Late Night with the Devil
     // Curve: Talk Show -> Unease -> Hypnosis -> Chaos -> Signal Loss.
     // Peak: 92 (Static - Total Collapse).
-    1014590: createMovieData({ 
+    938614: createMovieData({ 
         scariness: 85, 
         dominantColor: "#c2410c", rating: 7.0, criticsScore: 97, audienceScore: 81, director: "Cameron Cairnes", 
         cast: ["David Dastmalchian", "Laura Gordon", "Ian Bliss"], boxOffice: "$12 million", budget: "$2 million", 
@@ -296,14 +296,14 @@ export const COMPLETE_MOVIE_DATA = {
 };
 
 export const STRATEGIC_QUOTES = {
-    1017409: "Evil doesn't wait.",
-    1079373: "Hail Satan!",
+    744857: "Evil doesn't wait.",
+    1226578: "Hail Satan!",
     398173: "The house that Jack built.",
     1216191: "It sees things you can't.",
     300669: "There is nothing a man cannot do once he accepts the fact that there is no God.",
     242224: "If it's in a word, or it's in a look, you can't get rid of the Babadook.",
     516632: "The Empty Man made me do it.",
-    1014590: "Don't turn that dial.",
+    938614: "Don't turn that dial.",
     913290: "This is perfectly natural.",
     437342: "It's all for you."
 };
