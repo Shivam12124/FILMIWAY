@@ -23,12 +23,12 @@ function getMetadataForSlug(slug) {
     let metaDesc = '';
 
     if (isClean) {
-        metaTitle = `${baseMovie.Title} Parents Guide (Clean)`;
-        let currentRuntime = baseMovie.runtime || baseMovie.Runtime || "Official";
-        if (typeof currentRuntime === 'number') currentRuntime = `${currentRuntime} min`;
-        metaDesc = `Filmiway editors have manually verified that ${baseMovie.Title} has zero sensitive scenes in its full ${currentRuntime} runtime.`;
+        metaTitle = `${baseMovie.Title} Parents Guide & Age Rating | Filmiway`;
+        let currentRuntime = cacheData.runtime || baseMovie.runtime || baseMovie.Runtime || "Official";
+        if (typeof currentRuntime === 'number' || (typeof currentRuntime === 'string' && !currentRuntime.includes('min') && currentRuntime !== 'Official')) currentRuntime = `${currentRuntime} min`;
+        metaDesc = `Parents Guide for ${baseMovie.Title}. Detailed content advisory breakdown for violence, profanity, and sensitive themes.`;
     } else {
-        metaTitle = `${baseMovie.Title} Parents Guide: Timestamps to Skip Sensitive Scenes`;
+        metaTitle = `${baseMovie.Title} Parents Guide: Timestamps to Skip Awkward Scenes`;
         
         const sortedScenes = [...mergedScenes].sort((a, b) => {
             const aIsSevere = a.type?.toLowerCase().match(/sex|nudity|explicit/);

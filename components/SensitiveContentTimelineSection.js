@@ -527,28 +527,24 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                         <div className="flex items-start sm:items-center justify-between w-full gap-2">
                             <h1 className="text-xl sm:text-2xl font-light text-gray-200 flex items-start sm:items-center gap-2 sm:gap-3 leading-tight flex-1">
                                 <CheckCircle className="text-emerald-500 w-5 h-5 sm:w-6 sm:h-6 shrink-0 mt-0.5 sm:mt-0" />
-                                <span className="block">{movie?.Title} Parents Guide (Clean)</span>
+                                <span className="block">{movie?.Title} Parents Guide & Content Advisory</span>
                             </h1>
                         </div>
                         {minimalistSafetyBadge}
-
-                        <p className="text-sm sm:text-base text-gray-400 leading-relaxed font-light mt-3 max-w-3xl ml-1">
-                            {cleanVariations[textHash % cleanVariations.length]}<span suppressHydrationWarning>{currentRuntime}</span>.
-                        </p>
                     </div>
 
                     {/* 🔥 RECOMMENDED AGE BADGE (Dynamic) */}
                     {recommendedAge && ageSummary && (
                         <motion.div
-                            className="my-3 relative overflow-hidden rounded-xl border border-white/10 bg-black/40 backdrop-blur-md p-3 sm:p-4 flex flex-row items-center gap-3 sm:gap-4 shadow-lg w-full"
+                            className="my-1 relative overflow-hidden rounded-xl border border-white/10 bg-black/40 backdrop-blur-md p-3 sm:p-4 flex flex-row items-center gap-3 sm:gap-4 shadow-lg w-full"
                             initial={{ opacity: 0, y: 5 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.2 }}
                         >
                             <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-yellow-400 to-yellow-600"></div>
 
-                            <div className="flex-shrink-0 flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-yellow-500/10 border border-yellow-500/20 shadow-[0_0_15px_rgba(234,179,8,0.15)]">
-                                <span className="text-lg sm:text-xl font-bold text-yellow-400 tracking-tight">{recommendedAge}</span>
+                            <div className={`flex-shrink-0 flex items-center justify-center bg-yellow-500/10 border border-yellow-500/20 shadow-[0_0_15px_rgba(234,179,8,0.15)] ${recommendedAge.length > 4 ? 'px-3.5 py-2 rounded-xl min-w-[64px]' : 'w-12 h-12 sm:w-14 sm:h-14 rounded-full'}`}>
+                                <span className={`font-bold text-yellow-400 text-center ${recommendedAge.length > 4 ? 'text-xs sm:text-sm whitespace-nowrap' : 'text-lg sm:text-xl tracking-tight'}`}>{recommendedAge}</span>
                             </div>
 
                             <div className="flex-1 flex flex-col justify-center">
@@ -557,6 +553,15 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                             </div>
                         </motion.div>
                     )}
+
+                    {/* 🟢 REASSURANCE BOX (Green card positioned below Recommended Age & above Content Advisory) */}
+                    <div className="my-1 relative overflow-hidden rounded-xl border border-emerald-500/20 bg-emerald-950/20 backdrop-blur-md p-3.5 sm:p-4 flex items-start gap-3 shadow-md w-full">
+                        <div className="absolute left-0 top-0 bottom-0 w-1 bg-emerald-500"></div>
+                        <CheckCircle className="text-emerald-500 w-5 h-5 shrink-0 mt-0.5" />
+                        <p className="text-xs sm:text-sm text-gray-300 leading-relaxed font-light">
+                            Filmiway editors have verified that <span className="underline font-normal text-white">{movie?.Title}</span> has no skip timestamps because it is completely free of explicit, intimate, or sexual scenes throughout its full <span className="text-emerald-400 font-medium" suppressHydrationWarning>{currentRuntime}</span> runtime.
+                        </p>
+                    </div>
                 </div>
             ) : (
                 <div className="flex flex-col gap-4 sm:gap-6 relative z-50">
@@ -619,8 +624,8 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                             >
                                 <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-yellow-400 to-yellow-600"></div>
 
-                                <div className="flex-shrink-0 flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-yellow-500/10 border border-yellow-500/20 shadow-[0_0_15px_rgba(234,179,8,0.15)]">
-                                    <span className="text-xl sm:text-2xl font-bold text-yellow-400 tracking-tight">{recommendedAge}</span>
+                                <div className={`flex-shrink-0 flex items-center justify-center bg-yellow-500/10 border border-yellow-500/20 shadow-[0_0_15px_rgba(234,179,8,0.15)] ${recommendedAge.length > 4 ? 'px-3.5 py-2 rounded-xl min-w-[64px]' : 'w-14 h-14 sm:w-16 sm:h-16 rounded-full'}`}>
+                                    <span className={`font-bold text-yellow-400 text-center ${recommendedAge.length > 4 ? 'text-xs sm:text-sm whitespace-nowrap' : 'text-xl sm:text-2xl tracking-tight'}`}>{recommendedAge}</span>
                                 </div>
 
                                 <div className="flex-1 flex flex-col justify-center">

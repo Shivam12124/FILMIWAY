@@ -306,21 +306,42 @@ export default function UniversalMoviePage({ movie }) {
     if (movie.tmdbId === 2057) currentRuntime = "118 min (Unrated Version)";
     if (movie.tmdbId === 10867) currentRuntime = "1 hour 32 min";
 
-    const rawFaqs = getVisibleMovieFAQs(movie.Title, movie.tmdbId, currentRuntime) || [];
-    const faqs = rawFaqs.map(faq => {
-        if (faq.answer && faq.answer.includes("[DYNAMIC_SCORE]")) {
-            return {
-                ...faq,
-                answer: faq.answer.replace("[DYNAMIC_SCORE]", movie.safetyScore || 5).replace("[DYNAMIC_LABEL]", movie.safetyLabel || "Watch With Caution")
-            };
-        }
-        return faq;
-    });
+    // 🚀 DYNAMIC TEMPLATE FAQ GENERATOR (FOR ALL 607+ MOVIES)
+    const sensitiveScenes = movie.resolvedSensitiveScenes || [];
+    const isHeavyScene = (scene) => {
+        const t = scene.type?.toLowerCase() || '';
+        if (!scene.start || scene.start.trim() === '' || scene.start.toLowerCase() === 'none') return false;
+        return t.includes('sex') || t.includes('nudity') || t.includes('explicit') || t.includes('suggestive') || t.includes('lingerie') || t.includes('bikini');
+    };
+    const filteredHeavyScenes = sensitiveScenes.filter(isHeavyScene);
+    const hasTimestamps = filteredHeavyScenes.length > 0;
 
-    // Format the exact, manually verified timestamps with their descriptions for the movie description
-    const hasTimestamps = movie.resolvedSensitiveScenes && movie.resolvedSensitiveScenes.length > 0;
+    const violenceScene = sensitiveScenes.find(s => (s.type || '').toLowerCase().includes('violence') || (s.type || '').toLowerCase().includes('gore'));
+    const profanityScene = sensitiveScenes.find(s => (s.type || '').toLowerCase().includes('profanity') || (s.type || '').toLowerCase().includes('swearing'));
 
-    const watchAlongFAQ = hasTimestamps ? {
+    const faq1 = {
+        question: `Is ${movie.Title} safe to watch with family?`,
+        answer: hasTimestamps 
+            ? `No. ${movie.Title} is not safe to watch with family without caution because it contains explicit content, earning it a ${movie.safetyScore}/10 (${movie.safetyLabel}) Family Safety Score. Adults can use Filmiway's timestamps to skip all ${filteredHeavyScenes.length} explicit scene${filteredHeavyScenes.length > 1 ? 's' : ''} in the ${currentRuntime} runtime.`
+            : `Yes. ${movie.Title} is safe to watch with family. It earns a ${movie.safetyScore}/10 (${movie.safetyLabel}) Family Safety Score because it is completely free of explicit, intimate, or sexual scenes throughout its full ${currentRuntime} runtime.`
+    };
+
+    const faq2 = {
+        question: `What is the suitable age to watch ${movie.Title}?`,
+        answer: `According to Filmiway's Parents Guide, the recommended age for ${movie.Title} is ${movie.Age || '13+'}. ${movie.Summary || ''}`
+    };
+
+    const faq3 = {
+        question: `Does ${movie.Title} have violence and gore?`,
+        answer: `According to the Filmiway Parents Guide, the violence in ${movie.Title} is rated as ${violenceScene ? violenceScene.severity : 'None'}. ${violenceScene && violenceScene.description ? violenceScene.description : `Contains zero graphic physical violence throughout.`}`
+    };
+
+    const faq4 = {
+        question: `Does ${movie.Title} have profanity or swearing?`,
+        answer: `The profanity in ${movie.Title} is rated as ${profanityScene ? profanityScene.severity : 'None'}. ${profanityScene && profanityScene.description ? profanityScene.description : `Contains clean, family-friendly dialogue with zero profanity.`}`
+    };
+
+    const faq5 = hasTimestamps ? {
         question: `How does the Filmiway Live Watch-Along feature work for ${movie.Title}?`,
         answer: `Filmiway provides a free Live Watch-Along sync timer for ${movie.Title}. Tap "Start Watch-Along" on your phone when the movie starts on your TV to receive live alerts 12 seconds before sensitive scenes occur, allowing you to skip them effortlessly.`
     } : {
@@ -328,24 +349,23 @@ export default function UniversalMoviePage({ movie }) {
         answer: `No. Filmiway editors have verified that ${movie.Title} contains no explicit sexual content or intimate scenes.`
     };
 
-    if (!faqs.some(f => (f.question || f.q || '').includes("Watch-Along"))) {
-        faqs.push(watchAlongFAQ);
-    }
+    const dynamicTemplateFaqs = [faq1, faq2, faq3, faq4, faq5];
+
+    const rawFaqs = getVisibleMovieFAQs(movie.Title, movie.tmdbId, currentRuntime) || [];
+    const faqs = [...dynamicTemplateFaqs];
+
+    rawFaqs.forEach(customFaq => {
+        const qText = (customFaq.question || customFaq.q || '').toLowerCase();
+        if (!faqs.some(f => (f.question || f.q || '').toLowerCase().includes(qText.substring(0, 15)))) {
+            faqs.push(customFaq);
+        }
+    });
     const formattedTimestamps = hasTimestamps
         ? movie.resolvedSensitiveScenes
             .filter(s => s.start && s.start.toLowerCase() !== 'none')
             .map(s => `• Action: Skip ${s.start}${s.end ? ' to ' + s.end : ''} [Content Advisory: ${s.type} (Severity: ${s.severity})]${s.description ? ' - ' + s.description : ''}`)
             .join(', ')
         : "None (Verified Clean)";
-
-    // Calculate heavy scenes stats dynamically for the JSON schema
-    const sensitiveScenes = movie.resolvedSensitiveScenes || [];
-    const isHeavyScene = (scene) => {
-        const t = scene.type?.toLowerCase() || '';
-        if (!scene.start || scene.start.trim() === '') return false;
-        return t.includes('sex') || t.includes('nudity') || t.includes('explicit') || t.includes('suggestive') || t.includes('lingerie') || t.includes('bikini');
-    };
-    const filteredHeavyScenes = sensitiveScenes.filter(isHeavyScene);
 
     let totalSeconds = 0;
     filteredHeavyScenes.forEach(scene => {
@@ -460,7 +480,7 @@ export default function UniversalMoviePage({ movie }) {
             <Head>
                 <title>{movie.metaTitle}</title>
                 <meta name="description" content={movie.metaDesc} />
-                {(!hasTimestamps && !movie.Summary) && <meta name="robots" content="noindex" />}
+                <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
                 <link rel="canonical" href={`https://filmiway.com/movie/${movie.slug}/skip-timestamps`} />
                 <meta property="og:title" content={movie.metaTitle} />
                 <meta property="og:description" content={movie.metaDesc} />
@@ -657,46 +677,15 @@ export async function getStaticProps({ params }) {
     // Otherwise, fall back to the old hardcoded scenes.
     const resolvedSensitiveScenes = rawSensitiveData ? (rawSensitiveData.scenes || []) : hardcodedScenes;
 
-    const isClean = resolvedSensitiveScenes.length === 0 || resolvedSensitiveScenes.every(s => !((s.type || '').toLowerCase().match(/sex|nudity|explicit/)));
-    let metaTitle = '';
-    let metaDesc = '';
-
-    if (isClean) {
-        metaTitle = `${baseMovie.Title} Parents Guide (Clean)`;
-        let currentRuntime = cacheData.runtime || baseMovie.runtime || baseMovie.Runtime || "Official";
-        if (typeof currentRuntime === 'number' || (typeof currentRuntime === 'string' && !currentRuntime.includes('min') && currentRuntime !== 'Official')) currentRuntime = `${currentRuntime} min`;
-        metaDesc = `Filmiway editors have manually verified that ${baseMovie.Title} has zero sensitive scenes in its full ${currentRuntime} runtime.`;
-    } else {
-        metaTitle = `${baseMovie.Title} Parents Guide: Timestamps to Skip Sensitive Scenes`;
-
-        const sortedScenes = [...resolvedSensitiveScenes].sort((a, b) => {
-            const aIsSevere = a.type?.toLowerCase().match(/sex|nudity|explicit/);
-            const bIsSevere = b.type?.toLowerCase().match(/sex|nudity|explicit/);
-            if (aIsSevere && !bIsSevere) return -1;
-            if (!aIsSevere && bIsSevere) return 1;
-            return 0;
-        });
-
-        const timestampList = sortedScenes.map(s => s.end ? `${s.start}-${s.end}` : s.start);
-        let rawTimestampsText = '';
-        if (timestampList.length >= 2) {
-            rawTimestampsText = `${timestampList[0]}, ${timestampList[1]} and more`;
-        } else if (timestampList.length === 1) {
-            rawTimestampsText = `${timestampList[0]}`;
-        }
-
-        metaDesc = `PARENTS GUIDE: Exact skip timestamps for ${baseMovie.Title}. ${rawTimestampsText}. Skip sensitive scenes.`;
-    }
-
     // 🛡️ SAFE POSTER OVERRIDES: Use safe alternate TMDB images instead of explicit ones
     const SAFE_OVERRIDES = {
         664413: { // 365 Days
-            poster: '/27nn2YJBwY7a1etZ0AiIcOrIgu3.jpg', // User selected Banner B for poster
-            backdrop: '/27nn2YJBwY7a1etZ0AiIcOrIgu3.jpg' // User selected Banner B
+            poster: '/27nn2YJBwY7a1etZ0AiIcOrIgu3.jpg',
+            backdrop: '/27nn2YJBwY7a1etZ0AiIcOrIgu3.jpg'
         },
         1278: { // The Dreamers
-            poster: '/gBb7GGaFYPu7nEUYvC8G4LaJJN1.jpg', // User selected Poster A
-            backdrop: '/xtvxa5Hu69blChmb5ndJ9poTkgB.jpg' // User selected Banner C
+            poster: '/gBb7GGaFYPu7nEUYvC8G4LaJJN1.jpg',
+            backdrop: '/xtvxa5Hu69blChmb5ndJ9poTkgB.jpg'
         }
     };
     const explicitOverride = SAFE_OVERRIDES[Number(baseMovie.tmdbId)];
@@ -712,6 +701,125 @@ export async function getStaticProps({ params }) {
     else if (tmdbIdNum === 341174) finalRuntime = "132 min (Unrated Version)";
     else if (tmdbIdNum === 2057) finalRuntime = "118 min (Unrated Version)";
     else if (tmdbIdNum === 10867) finalRuntime = "1 hour 32 min";
+
+    // --- FILMIWAY SAFETY SCORE ALGORITHM ---
+    const ageRating = ((cacheData.ageRating || baseMovie.Rated) || 'NR').toUpperCase();
+    const explicitAdvisoryIds = new Set([
+        290098, 792307, 884, 185, 345, 8055, 4995, 9352, 106646, 1359, 1391, 13973, 1064213,
+        1278, 152532, 181886, 2105, 85889, 814338, 402, 617, 979, 1643, 2057, 2251, 4588, 10867, 11013, 76025, 152584,
+        216015, 337167, 341174, 401981, 664413, 930564
+    ]);
+
+    let safetyScore = 10;
+
+    // 1. Age Rating Baseline (Ceiling)
+    if (ageRating.includes('R') || ageRating.includes('NC-17') || ageRating.includes('TV-MA') || ageRating.includes('18')) {
+        safetyScore = Math.min(safetyScore, 7);
+    } else if (ageRating.includes('PG-13') || ageRating.includes('TV-14') || ageRating.includes('14')) {
+        safetyScore = Math.min(safetyScore, 8);
+    }
+
+    // 2. Explicit Timestamps Penalty
+    const heavyScenes = resolvedSensitiveScenes.filter(s => {
+        const t = (s.type || '').toLowerCase();
+        if (!s.start || s.start.trim() === '') return false;
+        return t.includes('sex') || t.includes('nudity') || t.includes('explicit') || t.includes('suggestive') || t.includes('lingerie') || t.includes('bikini');
+    });
+
+    if (heavyScenes.length > 0) {
+        if (heavyScenes.length === 1) {
+            safetyScore = Math.min(safetyScore, 6);
+        } else if (heavyScenes.length >= 2 && heavyScenes.length <= 4) {
+            safetyScore = Math.min(safetyScore, 5);
+        } else if (heavyScenes.length >= 5 && heavyScenes.length <= 6) {
+            safetyScore = Math.min(safetyScore, 4);
+        } else if (heavyScenes.length >= 7 && heavyScenes.length <= 8) {
+            safetyScore = Math.min(safetyScore, 3);
+        } else if (heavyScenes.length === 9) {
+            safetyScore = Math.min(safetyScore, 2);
+        } else if (heavyScenes.length >= 10) {
+            safetyScore = Math.min(safetyScore, 1);
+        }
+    }
+
+    // 3. Profanity/Violence Adjustment
+    const parentGuideSummary = (sensitiveData.Summary || '').toLowerCase();
+    const hasHighProfanity = parentGuideSummary.includes('severe language') || parentGuideSummary.includes('pervasive language') || parentGuideSummary.includes('strong profanity') || parentGuideSummary.includes('extreme profanity');
+    const hasHighViolence = parentGuideSummary.includes('severe violence') || parentGuideSummary.includes('strong bloody violence') || parentGuideSummary.includes('graphic gore') || parentGuideSummary.includes('extreme violence');
+
+    const isRRated = ageRating.includes('R') || ageRating.includes('NC-17') || ageRating.includes('TV-MA') || ageRating.includes('18');
+
+    if (isRRated && heavyScenes.length === 0) {
+        if (hasHighProfanity || hasHighViolence) {
+            safetyScore = Math.min(safetyScore, 6);
+        } else {
+            safetyScore = Math.min(safetyScore, 7);
+        }
+    } else {
+        if (hasHighProfanity && hasHighViolence) safetyScore = Math.min(safetyScore, 4);
+        else if (hasHighViolence) safetyScore = Math.min(safetyScore, 5);
+        else if (hasHighProfanity) safetyScore = Math.min(safetyScore, 6);
+    }
+
+    // 4. Override for Top 35 Explicit Films
+    if (explicitAdvisoryIds.has(Number(baseMovie.tmdbId))) {
+        safetyScore = 1;
+    }
+
+    // Assign Label
+    const universalSafetyDesc = "The Family Safety Score helps families decide whether to watch a movie together based on explicit content, violence, and profanity.";
+    let safetyLabel = "";
+    switch (safetyScore) {
+        case 10: safetyLabel = "Family Friendly"; break;
+        case 9: safetyLabel = "Family Watch Recommended"; break;
+        case 8: safetyLabel = "Mostly Family Friendly"; break;
+        case 7: safetyLabel = "Parental Guidance Suggested"; break;
+        case 6: safetyLabel = "Mature Audience Recommended"; break;
+        case 5: safetyLabel = "Watch With Caution"; break;
+        case 4: safetyLabel = "Not Family Friendly"; break;
+        case 3: safetyLabel = "Avoid Family Viewing"; break;
+        case 2: safetyLabel = "Adult Viewing Recommended"; break;
+        case 1: safetyLabel = "Strictly Adults Only"; break;
+        default: safetyLabel = "Use discretion"; break;
+    }
+
+    // ⚡ DYNAMIC SEO META TITLE & META DESCRIPTION GENERATOR
+    const hasExactTimestamps = resolvedSensitiveScenes.some(s => s.start && s.start.trim() !== '' && s.start.toLowerCase() !== 'none');
+    const violenceScene = resolvedSensitiveScenes.find(s => (s.type || '').toLowerCase().includes('violence') || (s.type || '').toLowerCase().includes('gore'));
+    const profanityScene = resolvedSensitiveScenes.find(s => (s.type || '').toLowerCase().includes('profanity') || (s.type || '').toLowerCase().includes('swearing'));
+
+    let metaTitle = '';
+    let metaDesc = '';
+
+    if (hasExactTimestamps) {
+        metaTitle = `${baseMovie.Title} Parents Guide: Timestamps to Skip Awkward Scenes`;
+
+        const sortedScenes = [...resolvedSensitiveScenes].filter(s => s.start && s.start.trim() !== '' && s.start.toLowerCase() !== 'none').sort((a, b) => {
+            const aIsSevere = a.type?.toLowerCase().match(/sex|nudity|explicit/);
+            const bIsSevere = b.type?.toLowerCase().match(/sex|nudity|explicit/);
+            if (aIsSevere && !bIsSevere) return -1;
+            if (!aIsSevere && bIsSevere) return 1;
+            return 0;
+        });
+
+        const timestampList = sortedScenes.map(s => s.end ? `${s.start}-${s.end}` : s.start);
+        let rawTimestampsText = '';
+        if (timestampList.length >= 2) {
+            rawTimestampsText = `${timestampList[0]}, ${timestampList[1]} and more`;
+        } else if (timestampList.length === 1) {
+            rawTimestampsText = `${timestampList[0]}`;
+        }
+
+        metaDesc = `PARENTS GUIDE: Exact skip timestamps for ${baseMovie.Title}. ${rawTimestampsText}. Skip awkward scenes effortlessly.`;
+    } else {
+        metaTitle = `${baseMovie.Title} Parents Guide & Age Rating | Filmiway`;
+
+        let vPart = violenceScene ? `Violence: ${violenceScene.severity}${violenceScene.description ? ` (${violenceScene.description})` : ''}. ` : '';
+        let pPart = profanityScene ? `Profanity: ${profanityScene.severity}${profanityScene.description ? ` (${profanityScene.description})` : ''}. ` : '';
+        let agePart = sensitiveData.Age ? `Age Rating: ${sensitiveData.Age}. ` : '';
+
+        metaDesc = `Parents Guide for ${baseMovie.Title}: Family Safety Score ${safetyScore}/10 (${safetyLabel}). ${agePart}${vPart}${pPart}`.trim();
+    }
 
     const movie = {
         ...baseMovie,
@@ -735,93 +843,11 @@ export async function getStaticProps({ params }) {
         metaTitle,
         metaDesc,
         Age: sensitiveData.Age || null,
-        Summary: sensitiveData.Summary || null
+        Summary: sensitiveData.Summary || null,
+        safetyScore,
+        safetyLabel,
+        safetyDesc: universalSafetyDesc
     };
-
-    // --- FILMIWAY SAFETY SCORE ALGORITHM ---
-    const ageRating = (movie.Rated || 'NR').toUpperCase();
-    const explicitAdvisoryIds = new Set([
-        290098, 792307, 884, 185, 345, 8055, 4995, 9352, 106646, 1359, 1391, 13973, 1064213,
-        1278, 152532, 181886, 2105, 85889, 814338, 402, 617, 979, 1643, 2057, 2251, 4588, 10867, 11013, 76025, 152584,
-        216015, 337167, 341174, 401981, 664413, 930564
-    ]);
-
-    let safetyScore = 10;
-
-    // 1. Age Rating Baseline (Ceiling)
-    if (ageRating.includes('R') || ageRating.includes('NC-17') || ageRating.includes('TV-MA') || ageRating.includes('18')) {
-        safetyScore = Math.min(safetyScore, 7);
-    } else if (ageRating.includes('PG-13') || ageRating.includes('TV-14') || ageRating.includes('14')) {
-        safetyScore = Math.min(safetyScore, 8);
-    }
-
-    // 2. Explicit Timestamps Penalty
-    const heavyScenes = movie.resolvedSensitiveScenes.filter(s => {
-        const t = (s.type || '').toLowerCase();
-        if (!s.start || s.start.trim() === '') return false;
-        return t.includes('sex') || t.includes('nudity') || t.includes('explicit') || t.includes('suggestive') || t.includes('lingerie') || t.includes('bikini');
-    });
-
-    if (heavyScenes.length > 0) {
-        if (heavyScenes.length === 1) {
-            safetyScore = Math.min(safetyScore, 6);
-        } else if (heavyScenes.length >= 2 && heavyScenes.length <= 4) {
-            safetyScore = Math.min(safetyScore, 5);
-        } else if (heavyScenes.length >= 5 && heavyScenes.length <= 6) {
-            safetyScore = Math.min(safetyScore, 4);
-        } else if (heavyScenes.length >= 7 && heavyScenes.length <= 8) {
-            safetyScore = Math.min(safetyScore, 3);
-        } else if (heavyScenes.length === 9) {
-            safetyScore = Math.min(safetyScore, 2);
-        } else if (heavyScenes.length >= 10) {
-            safetyScore = Math.min(safetyScore, 1);
-        }
-    }
-
-    // 3. Profanity/Violence Adjustment
-    const parentGuideSummary = (movie.Summary || '').toLowerCase();
-    const hasHighProfanity = parentGuideSummary.includes('severe language') || parentGuideSummary.includes('pervasive language') || parentGuideSummary.includes('strong profanity') || parentGuideSummary.includes('extreme profanity');
-    const hasHighViolence = parentGuideSummary.includes('severe violence') || parentGuideSummary.includes('strong bloody violence') || parentGuideSummary.includes('graphic gore') || parentGuideSummary.includes('extreme violence');
-
-    const isRRated = ageRating.includes('R') || ageRating.includes('NC-17') || ageRating.includes('TV-MA') || ageRating.includes('18');
-
-    if (isRRated && heavyScenes.length === 0) {
-        if (hasHighProfanity || hasHighViolence) {
-            safetyScore = Math.min(safetyScore, 6);
-        } else {
-            safetyScore = Math.min(safetyScore, 7);
-        }
-    } else {
-        if (hasHighProfanity && hasHighViolence) safetyScore = Math.min(safetyScore, 4);
-        else if (hasHighViolence) safetyScore = Math.min(safetyScore, 5);
-        else if (hasHighProfanity) safetyScore = Math.min(safetyScore, 6);
-    }
-
-    // 4. Override for Top 35 Explicit Films
-    if (explicitAdvisoryIds.has(Number(movie.tmdbId))) {
-        safetyScore = 1;
-    }
-
-    // Assign Label
-    const universalSafetyDesc = "The Family Safety Score helps families decide whether to watch a movie together based on explicit content, violence, and profanity.";
-    let safetyLabel = "";
-    switch (safetyScore) {
-        case 10: safetyLabel = "Family Friendly"; break;
-        case 9: safetyLabel = "Family Watch Recommended"; break;
-        case 8: safetyLabel = "Mostly Family Friendly"; break;
-        case 7: safetyLabel = "Parental Guidance Suggested"; break;
-        case 6: safetyLabel = "Mature Audience Recommended"; break;
-        case 5: safetyLabel = "Watch With Caution"; break;
-        case 4: safetyLabel = "Not Family Friendly"; break;
-        case 3: safetyLabel = "Avoid Family Viewing"; break;
-        case 2: safetyLabel = "Adult Viewing Recommended"; break;
-        case 1: safetyLabel = "Strictly Adults Only"; break;
-        default: safetyLabel = "Use discretion"; break;
-    }
-
-    movie.safetyScore = safetyScore;
-    movie.safetyLabel = safetyLabel;
-    movie.safetyDesc = universalSafetyDesc;
 
     // --- DYNAMIC SIMILAR MOVIES ENGINE (SEO & Internal Linking) ---
     const masterTimestampsData = require('../../../utils/masterTimestamps.json');

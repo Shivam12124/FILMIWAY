@@ -3324,6 +3324,13 @@
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
+
+    <url>
+    <loc>https://filmiway.com/movie-directory</loc>
+    <lastmod>2026-07-27T12:53:21.270Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
   <url>
     <loc>https://filmiway.com/movie/paw-patrol-the-mighty-movie/skip-timestamps</loc>
     <lastmod>2026-07-27T12:53:21.270Z</lastmod>
@@ -3573,6 +3580,12 @@
   <url>
     <loc>https://filmiway.com/movie/predator-killer-of-killers/skip-timestamps</loc>
     <lastmod>2026-07-27T12:53:21.270Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://filmiway.com/movie/wuthering-heights/skip-timestamps</loc>
+    <lastmod>2026-08-03T12:00:00.000Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
