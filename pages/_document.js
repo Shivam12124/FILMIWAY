@@ -12,7 +12,7 @@ export default function Document() {
         />
 
         {/* Impact.com Site Verification */}
-        <meta name='impact-site-verification' value='260139d7-9531-47b2-8d91-3005b46163df' />
+        <meta name='impact-site-verification' value='6b59a763-6f50-4bca-a43c-817e01c6a068' />
 
         {/* Global CSS */}
         <style>{`
