@@ -208,7 +208,16 @@ function getDeepLink(providerId, region, title, tmdbId, providerName) {
       JP: 'amazon.co.jp'
     };
     const domain = amazonDomains[region] || 'amazon.com';
-    const tag = region === 'IN' ? 'filmiway-21' : 'filmiway-20';
+    
+    // Country-specific tracking tag routing
+    const trackingTags = {
+      IN: 'filmiway-21',
+      GB: 'filmiway09-21',
+      US: 'filmiway-20',
+      CA: 'filmiway06-20'
+    };
+    const tag = trackingTags[region] || 'filmiway-20';
+    
     return `https://www.${domain}/s?k=${encodeURIComponent(title + " movie")}&tag=${tag}`;
   }
   return `https://www.themoviedb.org/movie/${tmdbId}/watch?locale=${region}`;
