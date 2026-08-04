@@ -165,10 +165,10 @@ async function getAllRegionStreamingData(tmdbId, title) {
   try {
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 2000);
-    
+
     const response = await fetch(`https://api.themoviedb.org/3/movie/${tmdbId}/watch/providers?api_key=${apiKey}`, { signal: controller.signal });
     clearTimeout(timeoutId);
-    
+
     if (!response.ok) return {};
 
     const data = await response.json();
@@ -196,17 +196,17 @@ function getDeepLink(providerId, region, title, tmdbId) {
 function selectBestRegion(streamingData, userCountry) {
   const availableRegions = Object.keys(streamingData);
   if (availableRegions.length === 0) return { selectedRegion: null, fallbackMessage: 'No data' };
-  
+
   const userCountryName = ALL_REGIONS.find(r => r.code === userCountry)?.name || 'your country';
 
   if (streamingData[userCountry]) return { selectedRegion: userCountry, fallbackMessage: null };
   if (streamingData['US']) return { selectedRegion: 'US', fallbackMessage: `Not available in ${userCountryName}. Showing USA availability.` };
-  
+
   const firstAvailableName = ALL_REGIONS.find(r => r.code === availableRegions[0])?.name || availableRegions[0];
-  
-  return { 
-    selectedRegion: availableRegions[0], 
-    fallbackMessage: `Not available in ${userCountryName}. Showing ${firstAvailableName} availability.` 
+
+  return {
+    selectedRegion: availableRegions[0],
+    fallbackMessage: `Not available in ${userCountryName}. Showing ${firstAvailableName} availability.`
   };
 }
 
@@ -324,11 +324,11 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
 
       {isLoading ? (
         <div className="w-full min-h-[250px] rounded-2xl border border-white/5 bg-white/[0.02] flex items-center justify-center animate-pulse">
-           <Loader className="w-5 h-5 animate-spin text-gray-500" />
+          <Loader className="w-5 h-5 animate-spin text-gray-500" />
         </div>
       ) : (
         <div className="space-y-6">
-          
+
           {fallbackMessage && selectedRegion && selectedRegion !== userCountry && (
             <motion.div
               initial={{ opacity: 0, y: -10 }}
@@ -497,7 +497,7 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
           </div>
         </div>
       )}
-      
+
       <style jsx>{`
         .custom-scrollbar::-webkit-scrollbar {
           width: 4px;
