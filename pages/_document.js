@@ -11,6 +11,9 @@ export default function Document() {
           crossOrigin="anonymous"
         />
 
+        {/* Impact.com Site Verification */}
+        <meta name='impact-site-verification' value='260139d7-9531-47b2-8d91-3005b46163df' />
+
         {/* Global CSS */}
         <style>{`
           body {
