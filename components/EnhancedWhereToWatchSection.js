@@ -192,7 +192,7 @@ async function getAllRegionStreamingData(tmdbId, title) {
 function getDeepLink(providerId, region, title, tmdbId, providerName) {
   const pId = Number(providerId);
   const name = (providerName || '').toLowerCase();
-  
+
   // 119 = Amazon Prime Video, 9 = Amazon Video (Rent/Buy), 10 = Amazon Video (Rent), 2100 = Amazon Prime Video with Ads
   if (name.includes('amazon') || pId === 119 || pId === 9 || pId === 10 || pId === 2100) {
     const amazonDomains = {
@@ -208,7 +208,7 @@ function getDeepLink(providerId, region, title, tmdbId, providerName) {
       JP: 'amazon.co.jp'
     };
     const domain = amazonDomains[region] || 'amazon.com';
-    const tag = 'filmiway-21';
+    const tag = region === 'IN' ? 'filmiway-21' : 'filmiway-20';
     return `https://www.${domain}/s?k=${encodeURIComponent(title + " movie")}&tag=${tag}`;
   }
   return `https://www.themoviedb.org/movie/${tmdbId}/watch?locale=${region}`;
@@ -287,7 +287,7 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
 
   const StreamingPlatformCard = ({ provider, type, region }) => {
     const logoUrl = provider.logo_path ? `https://image.tmdb.org/t/p/w45${provider.logo_path}` : null;
-    const deepLink = getDeepLink(provider.provider_id, region, movie.Title, movie.tmdbId, provider.provider_name);
+    const deepLink = getDeepLink(provider.provider_id, region, movie.Title, movie.tmdbId);
     const typeLabel = type === 'flatrate' ? 'Stream' : type === 'rent' ? 'Rent' : 'Buy';
 
     return (
