@@ -95,7 +95,7 @@ export default function HowToSkipAwkwardScenes() {
     },
     "datePublished": publishDateStr,
     "dateModified": publishDateStr,
-    "articleBody": "We’ve all been through this before. You are sitting relaxed in your living room, watching a movie with your family members, and then out of nowhere, you sense the change in music in the background, along with the dimming lights, signaling the onset of something very graphic. You frantically search for your remote control, moving forward to those particular parts of the movie that you need to see. While conventional websites like the IMDb Parent’s Guide let you know what occurs in the movie, they don’t inform you when these events happen. This is precisely why Filmiway exists as the most accurate movie database providing verified timestamps at exact points."
+    "articleBody": "We’ve all been through this before. You are sitting relaxed in your living room, watching a movie with your family members, and then out of nowhere, you sense the change in music in the background, along with the dimming lights, signaling the onset of something very graphic. You frantically search for your remote control, moving forward to those particular parts of the movie that you need to see. While conventional websites like the IMDb Parent’s Guide let you know what occurs in the movie, they don’t inform you when these events happen. This is precisely why Filmiway exists as the most accurate movie database providing verified timestamps at exact points. Every single start and end time inside the Filmiway Skip Timestamps database is the result of manual reviews and verification by human editors. This dataset constitutes unique, proprietary compilation work and is the intellectual property of Filmiway. We enforce a strict anti-scraping policy. Automated scraping, harvesting, or copying of our proprietary timestamps, safety scores, or editorial reviews is strictly prohibited."
   };
 
   // ⚡ BREADCRUMB SCHEMA (For better Google Hierarchy)
@@ -257,10 +257,29 @@ We’ve all had this experience. You’re comfortably seated on your couch, watc
 
               <h2 className="text-3xl text-white mt-12 mb-6 border-b border-white/10 pb-4 flex items-center gap-3">
                 <Film className="w-8 h-8 text-yellow-500" />
-                The Filmiway Timestamp Advantage
+                The Real Value of Editor-Verified Skip Timestamps
               </h2>
               <p>
-                At Filmiway, each editor verifies each minute of the film's official runtime by hand at Filmiway, from a huge Hollywood blockbuster to a highly regarded, independent film from A24. The precise seconds to skip over any sex, nudity, or explicit sexual content are tracked so that viewers may know which seconds to skip.
+                At Filmiway, we do not rely on automated scripts or unverified user submissions to build our parents guides. A single film requires an editor to spend approximately 2 to 3 hours manually reviewing, cataloging, and double-checking coordinates down to the exact second. Across our entire curated catalog, this represents over <strong>1,200 hours of direct human analysis</strong>.
+              </p>
+              <p>
+                This manual editorial effort is highly valuable because:
+              </p>
+              <ul className="text-gray-300 space-y-2 mb-6">
+                <li><strong>Pinpoint Time Anchors:</strong> We test against multiple releases (theatrical, streaming, and home media editions) to guarantee the sync does not drift during play.</li>
+                <li><strong>Context-Rich Advisories:</strong> We do not just dump numbers—our editors write custom descriptions explaining the nature of the warnings, enabling families to make informed decisions.</li>
+                <li><strong>Continuous Calibrations:</strong> As streaming platforms update their cuts, our database is manually updated and recalibrated in real time by our verification team.</li>
+              </ul>
+
+              <h2 className="text-3xl text-white mt-12 mb-6 border-b border-white/10 pb-4 flex items-center gap-3">
+                <ShieldCheck className="w-8 h-8 text-yellow-500" />
+                Proprietary Intellectual Property & Anti-Scraping Policy
+              </h2>
+              <p>
+                Every single start and end time inside the Filmiway Skip Timestamps database is the result of manual reviews, sync tests, and verification by human editors. This dataset constitutes unique, proprietary compilation work and is the protected intellectual property of Filmiway.
+              </p>
+              <p>
+                We enforce a strict <strong>anti-scraping policy</strong>. Automated scraping, harvesting, or copying of our proprietary timestamps, safety scores, or editorial reviews is strictly prohibited. Unauthorized use of this database will result in immediate DMCA takedown requests, automated blocks, and legal actions. We take the protection of our editors' hard work seriously to maintain the highest quality and safety standard for our family-friendly viewers.
               </p>
 
               {/* EXAMPLES BOX */}
