@@ -1,0 +1,1472 @@
+[
+  {
+    "title": "Star Wars: Episode V - The Empire Strikes Back",
+    "tmdbId": "11",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"7+\"."
+  },
+  {
+    "title": "Forrest Gump",
+    "tmdbId": "13",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "2001: A Space Odyssey",
+    "tmdbId": "62",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"7+\"."
+  },
+  {
+    "title": "12 Monkeys",
+    "tmdbId": "63",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "Brazil",
+    "tmdbId": "68",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"14+\"."
+  },
+  {
+    "title": "War of the Worlds",
+    "tmdbId": "74",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "Blade Runner",
+    "tmdbId": "78",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"14+\"."
+  },
+  {
+    "title": "Raiders of the Lost Ark",
+    "tmdbId": "85",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"12+\"."
+  },
+  {
+    "title": "Dirty Dancing",
+    "tmdbId": "88",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"12+\"."
+  },
+  {
+    "title": "Back to the Future",
+    "tmdbId": "105",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "The Lord of the Rings: The Return of the King",
+    "tmdbId": "122",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"12+\"."
+  },
+  {
+    "title": "Spirited Away",
+    "tmdbId": "129",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"7+\"."
+  },
+  {
+    "title": "O Brother, Where Art Thou?",
+    "tmdbId": "134",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "Groundhog Day",
+    "tmdbId": "137",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"10+\"."
+  },
+  {
+    "title": "Groundhog Day",
+    "tmdbId": "137",
+    "rule": "Violence & Gore Severity Contradiction",
+    "details": "Severity is \"Mild\", but description mentions strong/graphic content: \"Comedic, non-graphic suicide attempts played for dark humor.\""
+  },
+  {
+    "title": "Crouching Tiger, Hidden Dragon",
+    "tmdbId": "146",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"12+\"."
+  },
+  {
+    "title": "Star Trek II: The Wrath of Khan",
+    "tmdbId": "154",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"12+\"."
+  },
+  {
+    "title": "The Dark Knight",
+    "tmdbId": "155",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "Ocean's Eleven",
+    "tmdbId": "161",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "Breakfast at Tiffany's",
+    "tmdbId": "164",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"All ages\"."
+  },
+  {
+    "title": "Minority Report",
+    "tmdbId": "180",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "Dead Poets Society",
+    "tmdbId": "207",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"14+\"."
+  },
+  {
+    "title": "Ali: Fear Eats the Soul",
+    "tmdbId": "216",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "Ghost",
+    "tmdbId": "251",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "Terminator 2: Judgment Day",
+    "tmdbId": "280",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"14+\"."
+  },
+  {
+    "title": "Casablanca",
+    "tmdbId": "289",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"All ages\"."
+  },
+  {
+    "title": "Eyes Wide Shut",
+    "tmdbId": "345",
+    "rule": "Violence & Gore Severity Contradiction",
+    "details": "Severity is \"Mild\", but description mentions strong/graphic content: \"Very mild violence-related content, limited to implied off-screen injury, brief minor intimidation, and a non-graphic corpse depiction.\""
+  },
+  {
+    "title": "Seven Samurai",
+    "tmdbId": "346",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"12+\"."
+  },
+  {
+    "title": "Rain Man",
+    "tmdbId": "380",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"14+\"."
+  },
+  {
+    "title": "Rain Man",
+    "tmdbId": "380",
+    "rule": "Violence & Gore Severity Contradiction",
+    "details": "Severity is \"Mild\", but description mentions strong/graphic content: \"Mild comedic violence and distress includes a brief scalding incident with non-graphic injury, a character being shouted at, and some physical reactions played for dramatic/comedic effect, with no lasting harm shown.\""
+  },
+  {
+    "title": "Das Boot",
+    "tmdbId": "387",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"14+\"."
+  },
+  {
+    "title": "12 Angry Men",
+    "tmdbId": "389",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"All ages\"."
+  },
+  {
+    "title": "The Straight Story",
+    "tmdbId": "404",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"All ages\"."
+  },
+  {
+    "title": "Notting Hill",
+    "tmdbId": "509",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "Jaws",
+    "tmdbId": "578",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "Solaris",
+    "tmdbId": "593",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"12+\"."
+  },
+  {
+    "title": "Solaris",
+    "tmdbId": "593",
+    "rule": "Violence & Gore Severity Contradiction",
+    "details": "Severity is \"Mild\", but description mentions strong/graphic content: \"Psychological distress and a bloodless suicide scene, but no graphic violence.\""
+  },
+  {
+    "title": "Titanic",
+    "tmdbId": "597",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "Sunset Boulevard",
+    "tmdbId": "599",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"12+\"."
+  },
+  {
+    "title": "The Matrix",
+    "tmdbId": "603",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "The Matrix Reloaded",
+    "tmdbId": "604",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "The Matrix Revolutions",
+    "tmdbId": "605",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "The Wizard of Oz",
+    "tmdbId": "630",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"All ages\"."
+  },
+  {
+    "title": "When Harry Met Sally...",
+    "tmdbId": "639",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"14+\"."
+  },
+  {
+    "title": "Catch Me If You Can",
+    "tmdbId": "640",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "A.I. Artificial Intelligence",
+    "tmdbId": "644",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"12+\"."
+  },
+  {
+    "title": "Paris, Texas",
+    "tmdbId": "655",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "Harry Potter and the Sorcerer's Stone",
+    "tmdbId": "671",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"7+\"."
+  },
+  {
+    "title": "Harry Potter and the Prisoner of Azkaban",
+    "tmdbId": "673",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"8+\"."
+  },
+  {
+    "title": "Contact",
+    "tmdbId": "686",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "Dead Man Walking",
+    "tmdbId": "687",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "A Hard Day's Night",
+    "tmdbId": "704",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"All ages\"."
+  },
+  {
+    "title": "The Sixth Sense",
+    "tmdbId": "745",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "Monty Python and the Holy Grail",
+    "tmdbId": "762",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"12+\"."
+  },
+  {
+    "title": "Gone with the Wind",
+    "tmdbId": "770",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"12+\"."
+  },
+  {
+    "title": "Little Miss Sunshine",
+    "tmdbId": "773",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"14+\"."
+  },
+  {
+    "title": "Rosemary's Baby",
+    "tmdbId": "805",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "Shrek",
+    "tmdbId": "808",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"All ages\"."
+  },
+  {
+    "title": "Shrek 2",
+    "tmdbId": "809",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"All ages\"."
+  },
+  {
+    "title": "In the Mood for Love",
+    "tmdbId": "843",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"All ages\"."
+  },
+  {
+    "title": "A Christmas Story",
+    "tmdbId": "850",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"8+\"."
+  },
+  {
+    "title": "Singin' in the Rain",
+    "tmdbId": "872",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"All ages\"."
+  },
+  {
+    "title": "City Lights",
+    "tmdbId": "901",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"All ages\"."
+  },
+  {
+    "title": "The Great Dictator",
+    "tmdbId": "914",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"All ages\"."
+  },
+  {
+    "title": "The Great Dictator",
+    "tmdbId": "914",
+    "rule": "Violence & Gore Severity Contradiction",
+    "details": "Severity is \"Mild\", but description mentions strong/graphic content: \"Satirical wartime scuffles, slapstick aerial mishaps, and non-graphic military arrests.\""
+  },
+  {
+    "title": "Dr. Strangelove",
+    "tmdbId": "935",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"12+\"."
+  },
+  {
+    "title": "Lawrence of Arabia",
+    "tmdbId": "947",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"12+\"."
+  },
+  {
+    "title": "Paths of Glory",
+    "tmdbId": "975",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"14+\"."
+  },
+  {
+    "title": "The Thirteenth Floor",
+    "tmdbId": "1090",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"14+\"."
+  },
+  {
+    "title": "The Prestige",
+    "tmdbId": "1124",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "The Talented Mr. Ripley",
+    "tmdbId": "1213",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"14+\"."
+  },
+  {
+    "title": "Sunshine",
+    "tmdbId": "1272",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "The Fountain",
+    "tmdbId": "1381",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "The Fountain",
+    "tmdbId": "1381",
+    "rule": "Profanity Severity Contradiction",
+    "details": "Severity is \"Mild\", but description mentions strong/graphic content: \"A few rare uses of strong profanity in moments of extreme distress.\""
+  },
+  {
+    "title": "Stalker",
+    "tmdbId": "1398",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"12+\"."
+  },
+  {
+    "title": "Greed",
+    "tmdbId": "1405",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"12+\"."
+  },
+  {
+    "title": "The Illusionist",
+    "tmdbId": "1491",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"12+\"."
+  },
+  {
+    "title": "School of Rock",
+    "tmdbId": "1584",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"9+\"."
+  },
+  {
+    "title": "It's a Wonderful Life",
+    "tmdbId": "1585",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"All ages\"."
+  },
+  {
+    "title": "Night at the Museum",
+    "tmdbId": "1593",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"All ages\"."
+  },
+  {
+    "title": "The Motorcycle Diaries",
+    "tmdbId": "1653",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "50 First Dates",
+    "tmdbId": "1824",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "Transformers",
+    "tmdbId": "1858",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"12+\"."
+  },
+  {
+    "title": "Shakespeare in Love",
+    "tmdbId": "1934",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"14+\"."
+  },
+  {
+    "title": "Big",
+    "tmdbId": "2280",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"9+\"."
+  },
+  {
+    "title": "The Game",
+    "tmdbId": "2649",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"14+\"."
+  },
+  {
+    "title": "Dark City",
+    "tmdbId": "2666",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "The Abyss",
+    "tmdbId": "2756",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"14+\"."
+  },
+  {
+    "title": "The Treasure of the Sierra Madre",
+    "tmdbId": "3090",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"12+\"."
+  },
+  {
+    "title": "Pride & Prejudice",
+    "tmdbId": "4348",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"All ages\"."
+  },
+  {
+    "title": "The Curious Case of Benjamin Button",
+    "tmdbId": "4922",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "10 Things I Hate About You",
+    "tmdbId": "4951",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "The Fugitive",
+    "tmdbId": "5503",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "Le Samouraï",
+    "tmdbId": "5511",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"12+\"."
+  },
+  {
+    "title": "Along Came Polly",
+    "tmdbId": "5966",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "Cast Away",
+    "tmdbId": "8358",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"12+\"."
+  },
+  {
+    "title": "Wayne's World",
+    "tmdbId": "8872",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"12+\"."
+  },
+  {
+    "title": "Zoolander",
+    "tmdbId": "9398",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"12+\"."
+  },
+  {
+    "title": "You've Got Mail",
+    "tmdbId": "9489",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"All ages\"."
+  },
+  {
+    "title": "Kung Fu Panda",
+    "tmdbId": "9502",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"All ages\"."
+  },
+  {
+    "title": "Tears of the Sun",
+    "tmdbId": "9567",
+    "rule": "Violence & Gore Severity Contradiction",
+    "details": "Severity is \"High\", but description sounds very mild/passive: \"Graphic war crimes, ethnic cleansing massacres, machete murders, and heavy combat gore.\""
+  },
+  {
+    "title": "Clueless",
+    "tmdbId": "9603",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"12+\"."
+  },
+  {
+    "title": "Happy Gilmore",
+    "tmdbId": "9614",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "The Italian Job",
+    "tmdbId": "9654",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "How to Lose a Guy in 10 Days",
+    "tmdbId": "9919",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"12+\"."
+  },
+  {
+    "title": "13 Going on 30",
+    "tmdbId": "10096",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"All ages\"."
+  },
+  {
+    "title": "How to Train Your Dragon",
+    "tmdbId": "10191",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"All ages\"."
+  },
+  {
+    "title": "My Cousin Vinny",
+    "tmdbId": "10377",
+    "rule": "Violence & Gore Severity Contradiction",
+    "details": "Severity is \"Mild\", but description mentions strong/graphic content: \"Threat of prison time and brief barroom shoving, with no graphic violence or blood.\""
+  },
+  {
+    "title": "After Hours",
+    "tmdbId": "10843",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"14+\"."
+  },
+  {
+    "title": "After Hours",
+    "tmdbId": "10843",
+    "rule": "Violence & Gore Severity Contradiction",
+    "details": "Severity is \"Mild\", but description mentions strong/graphic content: \"Mild disturbing content includes suicide-related themes, animal distress, a non-graphic corpse depiction, brief gun violence with some blood, and unsettling references to violent death.\""
+  },
+  {
+    "title": "The Count of Monte Cristo",
+    "tmdbId": "11362",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"12+\"."
+  },
+  {
+    "title": "On Golden Pond",
+    "tmdbId": "11816",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"All ages\"."
+  },
+  {
+    "title": "The SpongeBob SquarePants Movie",
+    "tmdbId": "11836",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"All ages\"."
+  },
+  {
+    "title": "The 'Burbs",
+    "tmdbId": "11974",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"12+\"."
+  },
+  {
+    "title": "Kramer vs. Kramer",
+    "tmdbId": "12102",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"12+\"."
+  },
+  {
+    "title": "Primer",
+    "tmdbId": "14337",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"12+\"."
+  },
+  {
+    "title": "Ip Man",
+    "tmdbId": "14756",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"14+\"."
+  },
+  {
+    "title": "Batman: Mask of the Phantasm",
+    "tmdbId": "14919",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"10+\"."
+  },
+  {
+    "title": "Little Manhattan",
+    "tmdbId": "16553",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"All ages\"."
+  },
+  {
+    "title": "Kiki's Delivery Service",
+    "tmdbId": "16859",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"All ages\"."
+  },
+  {
+    "title": "Moon",
+    "tmdbId": "17431",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"14+\"."
+  },
+  {
+    "title": "The Proposal",
+    "tmdbId": "18240",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"12+\"."
+  },
+  {
+    "title": "The Hangover",
+    "tmdbId": "18785",
+    "rule": "Violence & Gore Severity Contradiction",
+    "details": "Severity is \"Mild\", but description mentions strong/graphic content: \"Mild crude violence includes frequent slapstick fights, punches, taser use, minor injuries with small amounts of blood, reckless driving, and some disturbing but comedic animal-related chaos. Most violence is exaggerated and not graphic.\""
+  },
+  {
+    "title": "The Red Shoes",
+    "tmdbId": "19542",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"12+\"."
+  },
+  {
+    "title": "Despicable Me",
+    "tmdbId": "20352",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"All ages\"."
+  },
+  {
+    "title": "Crazy Heart",
+    "tmdbId": "25196",
+    "rule": "Violence & Gore Severity Contradiction",
+    "details": "Severity is \"Mild\", but description mentions strong/graphic content: \"Physical collapse due to severe alcoholism and minor scuffles; no graphic gore.\""
+  },
+  {
+    "title": "Deliver Us from Eva",
+    "tmdbId": "26454",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "Inception",
+    "tmdbId": "27205",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "The Other Guys",
+    "tmdbId": "27581",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "Taste of Cherry",
+    "tmdbId": "30020",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"12+\"."
+  },
+  {
+    "title": "Taste of Cherry",
+    "tmdbId": "30020",
+    "rule": "Profanity Text Contradiction",
+    "details": "Severity is \"None\", but description lists active content: \"Subtitled dialogue contains very minimal mild swearing.\""
+  },
+  {
+    "title": "The Naked Gun: From the Files of Police Squad!",
+    "tmdbId": "37136",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"12+\"."
+  },
+  {
+    "title": "The Truman Show",
+    "tmdbId": "37165",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"All ages\"."
+  },
+  {
+    "title": "The Truman Show",
+    "tmdbId": "37165",
+    "rule": "Profanity Text Contradiction",
+    "details": "Severity is \"None\", but description lists active content: \"Very infrequent and mild swearing.\""
+  },
+  {
+    "title": "A Summer's Tale",
+    "tmdbId": "37563",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"All ages\"."
+  },
+  {
+    "title": "Whisper of the Heart",
+    "tmdbId": "37797",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"All ages\"."
+  },
+  {
+    "title": "Unstoppable",
+    "tmdbId": "44048",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "Rango",
+    "tmdbId": "44896",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"9+\"."
+  },
+  {
+    "title": "Source Code",
+    "tmdbId": "45612",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "Insidious",
+    "tmdbId": "49018",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "Gravity",
+    "tmdbId": "49047",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "Crazy, Stupid, Love.",
+    "tmdbId": "50646",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "Star Trek Into Darkness",
+    "tmdbId": "54138",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"12+\"."
+  },
+  {
+    "title": "Bridesmaids",
+    "tmdbId": "55721",
+    "rule": "Violence & Gore Severity Contradiction",
+    "details": "Severity is \"Mild\", but description mentions strong/graphic content: \"Comedic tantrums, minor scuffles, and an infamously graphic (but comedic) severe food poisoning sequence.\""
+  },
+  {
+    "title": "Mission: Impossible – Ghost Protocol",
+    "tmdbId": "56292",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"12+\"."
+  },
+  {
+    "title": "A Separation",
+    "tmdbId": "60243",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"12+\"."
+  },
+  {
+    "title": "Like Crazy",
+    "tmdbId": "60420",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "Rise of the Planet of the Apes",
+    "tmdbId": "61791",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "Oz the Great and Powerful",
+    "tmdbId": "68728",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"All ages\"."
+  },
+  {
+    "title": "The Hunger Games",
+    "tmdbId": "70160",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "World War Z",
+    "tmdbId": "72190",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"14+\"."
+  },
+  {
+    "title": "Now You See Me",
+    "tmdbId": "75656",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"12+\"."
+  },
+  {
+    "title": "Hotel Transylvania",
+    "tmdbId": "76492",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"All ages\"."
+  },
+  {
+    "title": "How to Train Your Dragon 2",
+    "tmdbId": "82702",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"All ages\"."
+  },
+  {
+    "title": "The Perks of Being a Wallflower",
+    "tmdbId": "84892",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"14+\"."
+  },
+  {
+    "title": "Boyhood",
+    "tmdbId": "85350",
+    "rule": "Violence & Gore Severity Contradiction",
+    "details": "Severity is \"Mild\", but description mentions strong/graphic content: \"Tense domestic abuse situations with thrown objects and threats, but no graphic physical violence.\""
+  },
+  {
+    "title": "Insidious: Chapter 2",
+    "tmdbId": "91586",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "The Hunger Games: Catching Fire",
+    "tmdbId": "101299",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "Dawn of the Planet of the Apes",
+    "tmdbId": "119450",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "About Time",
+    "tmdbId": "122906",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"14+\"."
+  },
+  {
+    "title": "Edge of Tomorrow",
+    "tmdbId": "137113",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "The Double",
+    "tmdbId": "146015",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"14+\"."
+  },
+  {
+    "title": "The Equalizer",
+    "tmdbId": "156022",
+    "rule": "Profanity Severity Contradiction",
+    "details": "Severity is \"High\", but description sounds very mild/passive: \"Strong language throughout, including around 89 uses of the F-word and variations, frequent coarse profanity, mild vulgar references, and repeated insulting language. The dialogue also includes occasional offensive stereotypes and an obscene gesture.\""
+  },
+  {
+    "title": "Interstellar",
+    "tmdbId": "157336",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "Hotel Transylvania 2",
+    "tmdbId": "159824",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"All ages\"."
+  },
+  {
+    "title": "How to Train Your Dragon: The Hidden World",
+    "tmdbId": "166428",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"All ages\"."
+  },
+  {
+    "title": "Brooklyn",
+    "tmdbId": "167073",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"All ages\"."
+  },
+  {
+    "title": "Justice League: The Flashpoint Paradox",
+    "tmdbId": "183011",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"14+\"."
+  },
+  {
+    "title": "Spectre",
+    "tmdbId": "206647",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "Coherence",
+    "tmdbId": "220289",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"14+\"."
+  },
+  {
+    "title": "When Marnie Was There",
+    "tmdbId": "242828",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"All ages\"."
+  },
+  {
+    "title": "Carol",
+    "tmdbId": "258480",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"12+\"."
+  },
+  {
+    "title": "The Conjuring 2",
+    "tmdbId": "259693",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "Passengers",
+    "tmdbId": "274870",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "Passengers",
+    "tmdbId": "274870",
+    "rule": "Violence & Gore Severity Contradiction",
+    "details": "Severity is \"Mild\", but description mentions strong/graphic content: \"Mild to moderate violence includes brief injury detail such as visible blood, a puncture wound, and a character coughing up blood. The film also contains several tense peril sequences involving near-drowning, physical confrontation, and threat-related moments, though violence is infrequent and not graphic.\""
+  },
+  {
+    "title": "War for the Planet of the Apes",
+    "tmdbId": "281338",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "The Martian",
+    "tmdbId": "286217",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "The Martian",
+    "tmdbId": "286217",
+    "rule": "Violence & Gore Severity Contradiction",
+    "details": "Severity is \"Mild\", but description mentions strong/graphic content: \"A tense, graphic self-surgery scene to remove shrapnel and staple a wound, but otherwise bloodless sci-fi peril.\""
+  },
+  {
+    "title": "The Age of Adaline",
+    "tmdbId": "293863",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"12+\"."
+  },
+  {
+    "title": "Me Before You",
+    "tmdbId": "296096",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "Puss in Boots: The Last Wish",
+    "tmdbId": "315162",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"All ages\"."
+  },
+  {
+    "title": "Puss in Boots: The Last Wish",
+    "tmdbId": "315162",
+    "rule": "Profanity Text Contradiction",
+    "details": "Severity is \"None\", but description lists active content: \"Comedic, bleeped-out swearing gags and mild insults.\""
+  },
+  {
+    "title": "The Big Short",
+    "tmdbId": "318846",
+    "rule": "Profanity Severity Contradiction",
+    "details": "Severity is \"High\", but description sounds very mild/passive: \"Strong language throughout, including over 70 uses of the F-word and variations, frequent scatological references, and repeated mild obscenities. The dialogue also includes extensive name-calling and insulting language.\""
+  },
+  {
+    "title": "The LEGO Batman Movie",
+    "tmdbId": "324849",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"All ages\"."
+  },
+  {
+    "title": "Arrival",
+    "tmdbId": "329865",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "Barbie",
+    "tmdbId": "346698",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"All ages\"."
+  },
+  {
+    "title": "Mission: Impossible - Fallout",
+    "tmdbId": "353081",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "Top Gun: Maverick",
+    "tmdbId": "361743",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"12+\"."
+  },
+  {
+    "title": "First Man",
+    "tmdbId": "369972",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "Lady Bird",
+    "tmdbId": "391713",
+    "rule": "Violence & Gore Severity Contradiction",
+    "details": "Severity is \"Mild\", but description mentions strong/graphic content: \"A teenager suddenly throws herself out of a moving car (resulting in a cast, not graphic), and minor emotional scuffles.\""
+  },
+  {
+    "title": "Phantom Thread",
+    "tmdbId": "400617",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"12+\"."
+  },
+  {
+    "title": "The Invisible Guest",
+    "tmdbId": "411088",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "The Batman",
+    "tmdbId": "414906",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"14+\"."
+  },
+  {
+    "title": "Ad Astra",
+    "tmdbId": "419704",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "Abominable",
+    "tmdbId": "431580",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"All ages\"."
+  },
+  {
+    "title": "Dune",
+    "tmdbId": "438631",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "Hey Arnold! The Jungle Movie",
+    "tmdbId": "439058",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"All ages\"."
+  },
+  {
+    "title": "The Nun",
+    "tmdbId": "439079",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"14+\"."
+  },
+  {
+    "title": "A Quiet Place",
+    "tmdbId": "447332",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"14+\"."
+  },
+  {
+    "title": "Sonic the Hedgehog",
+    "tmdbId": "454626",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"All ages\"."
+  },
+  {
+    "title": "Dora and the Lost City of Gold",
+    "tmdbId": "499701",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"All ages\"."
+  },
+  {
+    "title": "Shoplifters",
+    "tmdbId": "505192",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"12+\"."
+  },
+  {
+    "title": "Annabelle Comes Home",
+    "tmdbId": "521029",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "M3GAN",
+    "tmdbId": "536554",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "Steven Universe: The Movie",
+    "tmdbId": "537061",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"All ages\"."
+  },
+  {
+    "title": "Spider-Man: Across the Spider-Verse",
+    "tmdbId": "569094",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"All ages\"."
+  },
+  {
+    "title": "The Photograph",
+    "tmdbId": "589049",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"12+\"."
+  },
+  {
+    "title": "And Then We Danced",
+    "tmdbId": "597088",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"14+\"."
+  },
+  {
+    "title": "The Father",
+    "tmdbId": "600354",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "TMNT: Mutant Mayhem",
+    "tmdbId": "614930",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"All ages\"."
+  },
+  {
+    "title": "Past Lives",
+    "tmdbId": "666277",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"12+\"."
+  },
+  {
+    "title": "Sonic the Hedgehog 2",
+    "tmdbId": "675353",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"All ages\"."
+  },
+  {
+    "title": "PAW Patrol: The Movie",
+    "tmdbId": "675445",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"All ages\"."
+  },
+  {
+    "title": "The Amazing Maurice",
+    "tmdbId": "676710",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"All ages\"."
+  },
+  {
+    "title": "Dune: Part Two",
+    "tmdbId": "693134",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "13 Lives",
+    "tmdbId": "698948",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "13 Lives",
+    "tmdbId": "698948",
+    "rule": "Violence & Gore Severity Contradiction",
+    "details": "Severity is \"Mild\", but description mentions strong/graphic content: \"Extreme claustrophobia, underwater scraping injuries, and intense tension, but no combat violence.\""
+  },
+  {
+    "title": "Twisters",
+    "tmdbId": "718821",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "Bullet Train",
+    "tmdbId": "718930",
+    "rule": "Profanity Severity Contradiction",
+    "details": "Severity is \"High\", but description sounds very mild/passive: \"Strong language throughout, including over 100 uses of the F-word and variations, frequent coarse profanity, and extensive insulting and vulgar language. The dialogue also includes repeated scatological and mild obscenities.\""
+  },
+  {
+    "title": "The Fall Guy",
+    "tmdbId": "746036",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "Mrs. Harris Goes to Paris",
+    "tmdbId": "754609",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"All ages\"."
+  },
+  {
+    "title": "One Life",
+    "tmdbId": "760774",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"12+\"."
+  },
+  {
+    "title": "One Life",
+    "tmdbId": "760774",
+    "rule": "Profanity Text Contradiction",
+    "details": "Severity is \"None\", but description lists active content: \"Minimal swearing in a serious historical context.\""
+  },
+  {
+    "title": "A Quiet Place: Day One",
+    "tmdbId": "762441",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"14+\"."
+  },
+  {
+    "title": "Fireheart",
+    "tmdbId": "778810",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"All ages\"."
+  },
+  {
+    "title": "Poor Things",
+    "tmdbId": "792307",
+    "rule": "Profanity Severity Contradiction",
+    "details": "Severity is \"High\", but description sounds very mild/passive: \"Very strong language throughout, including more than 30+ uses of the F-word, repeated mature and anatomical references, mild obscenities, frequent insulting and derogatory name-calling, and aggressive verbal outbursts.\""
+  },
+  {
+    "title": "The Fabelmans",
+    "tmdbId": "804095",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "No One Will Save You",
+    "tmdbId": "820609",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "Flow",
+    "tmdbId": "823219",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"All ages\"."
+  },
+  {
+    "title": "Robot Dreams",
+    "tmdbId": "838240",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"All ages\"."
+  },
+  {
+    "title": "A Thousand and One",
+    "tmdbId": "855263",
+    "rule": "Violence & Gore Severity Contradiction",
+    "details": "Severity is \"Mild\", but description mentions strong/graphic content: \"Tense street arguments and brief physical shoving, but no graphic violence.\""
+  },
+  {
+    "title": "PAW Patrol: The Mighty Movie",
+    "tmdbId": "893723",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"All ages\"."
+  },
+  {
+    "title": "Close",
+    "tmdbId": "901563",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "Challengers",
+    "tmdbId": "937287",
+    "rule": "Violence & Gore Severity Contradiction",
+    "details": "Severity is \"Mild\", but description mentions strong/graphic content: \"Mild to moderate sports-related violence includes an on-court knee injury with a visible snap and later brace use, along with brief physical altercations such as slapping, pushing, and a groin hit. The film also contains frequent heated arguments, aggressive behavior during tennis matches, and moments of emotional distress, but no serious or graphic violence beyond the injury scene.\""
+  },
+  {
+    "title": "Challengers",
+    "tmdbId": "937287",
+    "rule": "Profanity Severity Contradiction",
+    "details": "Severity is \"High\", but description sounds very mild/passive: \"Strong language throughout, including over 50 uses of the F-word and its derivatives, along with occasional mature references, mild obscenities, and name-calling. The dialogue also includes a few scatological terms and an isolated obscene gesture, plus frequent heated exchanges and exclamations.\""
+  },
+  {
+    "title": "Sonic the Hedgehog 3",
+    "tmdbId": "939243",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"All ages\"."
+  },
+  {
+    "title": "Aftersun",
+    "tmdbId": "965150",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"12+\"."
+  },
+  {
+    "title": "Perfect Days",
+    "tmdbId": "976893",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"All ages\"."
+  },
+  {
+    "title": "Theater Camp",
+    "tmdbId": "986054",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"13+\"."
+  },
+  {
+    "title": "Small Things Like These",
+    "tmdbId": "1102493",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"12+\"."
+  },
+  {
+    "title": "Sing Sing",
+    "tmdbId": "1155828",
+    "rule": "Violence & Gore Severity Contradiction",
+    "details": "Severity is \"Mild\", but description mentions strong/graphic content: \"Set within a maximum-security prison; contains underlying physical tension and minor scuffles, but avoids graphic violence.\""
+  },
+  {
+    "title": "My Friend the Penguin",
+    "tmdbId": "1159799",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"All ages\"."
+  },
+  {
+    "title": "Twinless",
+    "tmdbId": "1245347",
+    "rule": "Violence & Gore Severity Contradiction",
+    "details": "Severity is \"Mild\", but description mentions strong/graphic content: \"Dark comedy focusing on grief; contains minor thematic tension and brief scuffles but no graphic violence.\""
+  },
+  {
+    "title": "The Assessment",
+    "tmdbId": "1317088",
+    "rule": "Violence & Gore Severity Contradiction",
+    "details": "Severity is \"Mild\", but description mentions strong/graphic content: \"Very mild disturbing content includes an off-screen implied suicide reference with no graphic detail shown.\""
+  },
+  {
+    "title": "The Odyssey",
+    "tmdbId": "1368337",
+    "rule": "Age Recommendation Mismatch",
+    "details": "Movie is rated NR but Recommended Age is only \"14+\"."
+  }
+]

@@ -1,0 +1,183 @@
+Total Issues Flagged: 62
+
+=========================================
+             AUDIT RESULTS               
+=========================================
+
+1. Movie: Breakfast at Tiffany's
+   - [Violence & Gore Global Guide] Mismatched severity "None" with active description: "Completely free of physical violence or combat."
+
+2. Movie: The Straight Story
+   - [Violence & Gore Global Guide] Mismatched severity "None" with active description: "A completely peaceful, non-violent road trip on a lawnmower."
+
+3. Movie: Sunset Boulevard
+   - [Profanity Global Guide] Mismatched severity "None" with active description: "Classic Hollywood noir dialogue devoid of profanity."
+
+4. Movie: The Wizard of Oz
+   - [Profanity Global Guide] Mismatched severity "None" with active description: "Pure family-friendly dialogue."
+
+5. Movie: Shrek
+   - [Profanity Global Guide] Mismatched severity "None" with active description: "Wholesome family-friendly dialogue with very mild crude humor."
+
+6. Movie: Shrek 2
+   - [Profanity Global Guide] Mismatched severity "None" with active description: "Family-friendly fairytale dialogue with mild crude humor and playful insults."
+
+7. Movie: In the Mood for Love
+   - [Violence & Gore Global Guide] Mismatched severity "None" with active description: "Completely non-violent romantic drama."
+
+8. Movie: School of Rock
+   - [Violence & Gore Global Guide] Mismatched severity "None" with active description: "Non-violent comedy with occasional comedic staging or minor physical humor."
+
+9. Movie: Night at the Museum
+   - [Profanity Global Guide] Mismatched severity "None" with active description: "Very light family-comedy exclamations and mild insults."
+
+10. Movie: 13 Going on 30
+   - [Violence & Gore Global Guide] Mismatched severity "None" with active description: "Completely devoid of physical violence or gore."
+
+11. Movie: Little Manhattan
+   - [Violence & Gore Global Guide] Mismatched severity "None" with active description: "Non-violent romantic comedy focusing on young childhood romance."
+
+12. Movie: Kiki's Delivery Service
+   - [Violence & Gore Global Guide] Mismatched severity "None" with active description: "Completely non-violent animated family film."
+   - [Profanity Scene] Duplicate template text used: "clean, family-friendly dialogue...." (shared by 6 movies)
+
+13. Movie: The Truman Show
+   - [Profanity Global Guide] Mismatched severity "None" with active description: "Very infrequent and mild swearing."
+
+14. Movie: Whisper of the Heart
+   - [Violence & Gore Global Guide] Mismatched severity "None" with active description: "Completely non-violent animated coming-of-age story."
+
+15. Movie: Like Crazy
+   - [Violence & Gore Global Guide] Mismatched severity "None" with active description: "A purely non-violent romantic drama."
+
+16. Movie: Before Midnight
+   - [Violence & Gore Global Guide] Mismatched severity "None" with active description: "A completely non-violent romantic drama focused entirely on dialogue."
+
+17. Movie: When Marnie Was There
+   - [Violence & Gore Global Guide] Mismatched severity "None" with active description: "A completely non-violent animated drama."
+   - [Profanity Scene] Duplicate template text used: "clean, family-friendly dialogue...." (shared by 6 movies)
+
+18. Movie: Puss in Boots: The Last Wish
+   - [Profanity Global Guide] Mismatched severity "None" with active description: "Comedic, bleeped-out swearing gags and mild insults."
+
+19. Movie: I, Daniel Blake
+   - [Violence & Gore Global Guide] Mismatched severity "None" with active description: "A deeply emotional, non-violent drama focusing on poverty and bureaucratic struggles."
+
+20. Movie: Abominable
+   - [Violence & Gore Global Guide] Mismatched severity "None" with active description: "Animated chase sequences, tranquilizer darts, and mild peril."
+   - [Profanity Scene] Duplicate template text used: "clean, family-friendly dialogue...." (shared by 6 movies)
+
+21. Movie: Hey Arnold! The Jungle Movie
+   - [Violence & Gore Global Guide] Mismatched severity "None" with active description: "Animated adventure peril, comedic traps, and minor scuffles."
+
+22. Movie: Spider-Man: Across the Spider-Verse
+   - [Profanity Global Guide] Mismatched severity "None" with active description: "Mild insults and PG-level language."
+
+23. Movie: TMNT: Mutant Mayhem
+   - [Profanity Global Guide] Mismatched severity "None" with active description: "Mild PG-level insults (e.g., 'hell,' 'damn') and teenage slang."
+
+24. Movie: Past Lives
+   - [Violence & Gore Global Guide] Mismatched severity "None" with active description: "A deeply emotional romantic drama completely devoid of physical violence."
+
+25. Movie: Sonic the Hedgehog 2
+   - [Profanity Global Guide] Mismatched severity "None" with active description: "Very mild PG insults."
+
+26. Movie: PAW Patrol: The Movie
+   - [Violence & Gore Global Guide] Mismatched severity "None" with active description: "Harmless animated rescue action and minor slapstick danger."
+
+27. Movie: Mrs. Harris Goes to Paris
+   - [Violence & Gore Global Guide] Mismatched severity "None" with active description: "A completely peaceful, feel-good historical comedy."
+   - [Profanity Scene] Duplicate template text used: "very minimal mild language...." (shared by 7 movies)
+
+28. Movie: Good Luck to You, Leo Grande
+   - [Violence & Gore Global Guide] Mismatched severity "None" with active description: "A completely non-violent drama set primarily in a hotel room."
+
+29. Movie: Sonic the Hedgehog 3
+   - [Profanity Global Guide] Mismatched severity "None" with active description: "Very mild PG insults and cartoon attitude."
+
+30. Movie: Theater Camp
+   - [Violence & Gore Global Guide] Mismatched severity "None" with active description: "Non-violent comedy revolving around the chaos of running a children's acting camp."
+
+31. Movie: Little Miss Sunshine
+   - [Violence & Gore Scene] Duplicate template text used: "the film contains no actual violence...." (shared by 3 movies)
+
+32. Movie: Along Came Polly
+   - [Violence & Gore Scene] Duplicate template text used: "the film contains no actual violence...." (shared by 3 movies)
+
+33. Movie: Call Me by Your Name
+   - [Violence & Gore Scene] Duplicate template text used: "the film contains no actual violence...." (shared by 3 movies)
+
+34. Movie: How to Train Your Dragon
+   - [Profanity Scene] Duplicate template text used: "clean, family-friendly animated dialogue...." (shared by 3 movies)
+
+35. Movie: How to Train Your Dragon 2
+   - [Profanity Scene] Duplicate template text used: "clean, family-friendly animated dialogue...." (shared by 3 movies)
+
+36. Movie: How to Train Your Dragon: The Hidden World
+   - [Profanity Scene] Duplicate template text used: "clean, family-friendly animated dialogue...." (shared by 3 movies)
+
+37. Movie: Steven Universe: The Movie
+   - [Profanity Scene] Duplicate template text used: "clean, family-friendly dialogue...." (shared by 6 movies)
+
+38. Movie: The Amazing Maurice
+   - [Profanity Scene] Duplicate template text used: "clean, family-friendly dialogue...." (shared by 6 movies)
+
+39. Movie: Fireheart
+   - [Profanity Scene] Duplicate template text used: "clean, family-friendly dialogue...." (shared by 6 movies)
+
+40. Movie: Limitless
+   - [Profanity Scene] Duplicate template text used: "pervasive strong language and f-bombs throughout...." (shared by 3 movies)
+
+41. Movie: Logan
+   - [Profanity Scene] Duplicate template text used: "pervasive strong language and f-bombs throughout...." (shared by 3 movies)
+
+42. Movie: Upgrade
+   - [Profanity Scene] Duplicate template text used: "pervasive strong language and f-bombs throughout...." (shared by 3 movies)
+
+43. Movie: The Hunger Games
+   - [Profanity Scene] Duplicate template text used: "very minimal mild language...." (shared by 7 movies)
+
+44. Movie: The Hunger Games: Catching Fire
+   - [Profanity Scene] Duplicate template text used: "very minimal mild language...." (shared by 7 movies)
+
+45. Movie: The Conjuring 2
+   - [Profanity Scene] Duplicate template text used: "very minimal mild language...." (shared by 7 movies)
+
+46. Movie: Annabelle: Creation
+   - [Profanity Scene] Duplicate template text used: "very minimal mild language...." (shared by 7 movies)
+
+47. Movie: The Nun
+   - [Profanity Scene] Duplicate template text used: "very minimal mild language...." (shared by 7 movies)
+
+48. Movie: My Friend the Penguin
+   - [Profanity Scene] Duplicate template text used: "very minimal mild language...." (shared by 7 movies)
+
+49. Movie: Enemy
+   - [Profanity Scene] Duplicate template text used: "frequent strong language and f-bombs...." (shared by 3 movies)
+
+50. Movie: Ex Machina
+   - [Profanity Scene] Duplicate template text used: "frequent strong language and f-bombs...." (shared by 3 movies)
+
+51. Movie: Nope
+   - [Profanity Scene] Duplicate template text used: "frequent strong language and f-bombs...." (shared by 3 movies)
+
+52. Movie: Get Out
+   - [Profanity Scene] Duplicate template text used: "frequent strong language and panic-driven swearing..." (shared by 4 movies)
+
+53. Movie: The Empty Man
+   - [Profanity Scene] Duplicate template text used: "frequent strong language and panic-driven swearing..." (shared by 4 movies)
+
+54. Movie: Smile
+   - [Profanity Scene] Duplicate template text used: "frequent strong language and panic-driven swearing..." (shared by 4 movies)
+
+55. Movie: Oddity
+   - [Profanity Scene] Duplicate template text used: "frequent strong language and panic-driven swearing..." (shared by 4 movies)
+
+56. Movie: Freaks
+   - [Profanity Scene] Duplicate template text used: "pervasive strong language and f-bombs...." (shared by 3 movies)
+
+57. Movie: Orphan: First Kill
+   - [Profanity Scene] Duplicate template text used: "pervasive strong language and f-bombs...." (shared by 3 movies)
+
+58. Movie: Strange Darling
+   - [Profanity Scene] Duplicate template text used: "pervasive strong language and f-bombs...." (shared by 3 movies)
