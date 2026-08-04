@@ -190,6 +190,12 @@ const WatchAlongTimer = ({ movie, sensitiveScenes, onClose }) => {
     const [inputM, setInputM] = useState('0');
     const [inputS, setInputS] = useState('0');
 
+    // 🌟 EXIT FEEDBACK MODAL STATES
+    const [showFeedbackModal, setShowFeedbackModal] = useState(false);
+    const [feedbackRating, setFeedbackRating] = useState(null); // 'positive' or 'negative'
+    const [feedbackComment, setFeedbackComment] = useState('');
+    const [isSubmittingFeedback, setIsSubmittingFeedback] = useState(false);
+
     const lastTapLeft = useRef(0);
     const lastTapRight = useRef(0);
     const doubleTapFeedback = useRef(null);
@@ -421,8 +427,7 @@ const WatchAlongTimer = ({ movie, sensitiveScenes, onClose }) => {
             return newSec;
         });
     }, [isRunning, resumeAudio]);
-    const handleClose = useCallback(() => {
-        console.log('FILMIWAY: Closing Watch-Along overlay via back button');
+    const closeTimer = useCallback(() => {
         setIsRunning(false);
         releaseWakeLock();
         try {
@@ -437,6 +442,49 @@ const WatchAlongTimer = ({ movie, sensitiveScenes, onClose }) => {
         }
         onClose();
     }, [releaseWakeLock, onClose]);
+
+    const handleClose = useCallback(() => {
+        console.log('FILMIWAY: handleClose triggered');
+        const durationMin = ((Date.now() - mountTimeRef.current) / 60000);
+        // Prompt for feedback if they have spent 20+ minutes in the session
+        if (durationMin >= 20) {
+            setShowFeedbackModal(true);
+            setIsRunning(false); // Pause timer
+        } else {
+            closeTimer();
+        }
+    }, [closeTimer]);
+
+    const submitFeedback = async (rating) => {
+        setIsSubmittingFeedback(true);
+        try {
+            const durationMin = Math.round(((Date.now() - mountTimeRef.current) / 60000) * 10) / 10;
+            let country = 'US';
+            try {
+                const ipRes = await fetch('https://ipinfo.io/json');
+                if (ipRes.ok) {
+                    const ipData = await ipRes.json();
+                    if (ipData.country) country = ipData.country;
+                }
+            } catch(e) {}
+
+            await addDoc(collection(db, 'watchalong_feedback'), {
+                tmdbId: movie.tmdbId,
+                movieTitle: movie.Title || movie.title || 'Unknown',
+                durationMinutes: durationMin,
+                startTime: new Date(mountTimeRef.current).toISOString(),
+                rating: rating, // 'positive' or 'negative'
+                comment: feedbackComment.trim(),
+                country: country,
+                timestamp: new Date().toISOString()
+            });
+        } catch (e) {
+            console.error("Failed to submit feedback:", e);
+        }
+        setIsSubmittingFeedback(false);
+        setShowFeedbackModal(false);
+        closeTimer();
+    };
 
     const handleSkipScene = useCallback(() => {
         resumeAudio();
@@ -845,6 +893,73 @@ const WatchAlongTimer = ({ movie, sensitiveScenes, onClose }) => {
                             </button>
                             <button onClick={applyTimeInput} className="flex-1 py-3 rounded-xl bg-yellow-500 hover:bg-yellow-400 text-black font-bold text-sm transition-colors">
                                 Set Time
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* EXIT FEEDBACK MODAL (Cinematic styling, matching site theme) */}
+            {showFeedbackModal && (
+                <div className="absolute inset-0 z-[200] bg-black/95 backdrop-blur-md flex items-center justify-center px-4">
+                    <div className="bg-[#111113]/90 border border-white/10 rounded-2xl p-6 sm:p-8 flex flex-col items-center w-full max-w-sm shadow-2xl relative">
+                        
+                        <div className="w-12 h-12 rounded-full bg-yellow-500/10 border border-yellow-500/20 flex items-center justify-center mb-4 shadow-xl">
+                            <Tv size={24} className="text-yellow-500" />
+                        </div>
+                        
+                        <h2 className="text-xl font-light text-white mb-2 text-center">How was your movie?</h2>
+                        <p className="text-gray-400 text-xs sm:text-sm text-center leading-relaxed mb-6 px-2">
+                            Since you spent time watching along with us, did the skip alerts work well for your movie night?
+                        </p>
+
+                        {/* RATING BUTTONS */}
+                        <div className="flex gap-4 w-full mb-6">
+                            <button 
+                                onClick={() => setFeedbackRating('positive')}
+                                className={`flex-1 py-3 px-4 rounded-xl border flex items-center justify-center gap-2 font-medium text-sm transition-all ${feedbackRating === 'positive' ? 'bg-emerald-500/20 border-emerald-500 text-emerald-400' : 'bg-white/[0.02] border-white/5 text-gray-300 hover:bg-white/[0.08]'}`}
+                            >
+                                👍 Yes, worked great!
+                            </button>
+                            <button 
+                                onClick={() => setFeedbackRating('negative')}
+                                className={`flex-1 py-3 px-4 rounded-xl border flex items-center justify-center gap-2 font-medium text-sm transition-all ${feedbackRating === 'negative' ? 'bg-red-500/20 border-red-500 text-red-400' : 'bg-white/[0.02] border-white/5 text-gray-300 hover:bg-white/[0.08]'}`}
+                            >
+                                👎 Needs improvement
+                            </button>
+                        </div>
+
+                        {/* COMMENTS TEXTAREA */}
+                        {feedbackRating && (
+                            <div className="w-full flex flex-col gap-2 mb-6">
+                                <div className="flex justify-between items-center w-full">
+                                    <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Optional Comments</label>
+                                    <span className="text-[9px] text-gray-500 font-bold">{feedbackComment.length}/500</span>
+                                </div>
+                                <textarea
+                                    value={feedbackComment}
+                                    onChange={e => setFeedbackComment(e.target.value.slice(0, 500))}
+                                    maxLength={500}
+                                    placeholder={feedbackRating === 'positive' ? "What did you like about the alerts?" : "What went wrong? E.g., bad scene timing, audio bugs..."}
+                                    className="w-full h-24 bg-black/60 border border-white/10 rounded-xl p-3 text-xs sm:text-sm text-white focus:border-yellow-500 focus:outline-none transition-colors resize-none placeholder-gray-600"
+                                />
+                            </div>
+                        )}
+
+                        {/* ACTIONS */}
+                        <div className="flex gap-3 w-full">
+                            <button 
+                                onClick={closeTimer} 
+                                className="flex-1 py-3 rounded-xl bg-white/[0.02] border border-white/5 hover:bg-white/10 text-gray-400 font-medium text-sm transition-colors"
+                            >
+                                Skip
+                            </button>
+                            <button 
+                                onClick={() => submitFeedback(feedbackRating || 'skipped')}
+                                disabled={isSubmittingFeedback || !feedbackRating}
+                                className={`flex-1 py-3 rounded-xl font-bold text-sm transition-all ${feedbackRating ? 'bg-yellow-500 hover:bg-yellow-400 text-black cursor-pointer' : 'bg-white/5 text-gray-600 cursor-not-allowed'}`}
+                            >
+                                {isSubmittingFeedback ? 'Submitting...' : 'Submit'}
                             </button>
                         </div>
                     </div>
