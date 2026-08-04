@@ -1005,6 +1005,11 @@ const MovieDetailsSection = React.memo(({
         <FanFavoritesSection currentMovieSlug={movie.slug} similarMovies={movie.similarMovies} />
       </div>
 
+      {/* ⚡ CLS FIX: Reserve height so region-detection doesn't shift the layout! */}
+      <div className="w-full min-h-[220px] sm:min-h-[180px] bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8 clean-injected-component">
+        <EnhancedWhereToWatchSection movie={movie} />
+      </div>
+
       <div className="w-full bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8">
         <div className="flex items-center gap-3 mb-6 border-b border-white/5 pb-4">
           <BookOpen className="w-6 h-6 text-yellow-500 shrink-0" />
@@ -1052,11 +1057,6 @@ const MovieDetailsSection = React.memo(({
             aria-label={`Genre DNA breakdown for ${movie.Title}: ${Object.entries(safeMovieInfo.dna || {}).map(([k, v]) => `${k} ${v}%`).join(', ')}.`}
         />
       )}
-
-      {/* ⚡ CLS FIX: Reserve height so region-detection doesn't shift the layout! */}
-      <div className="w-full min-h-[220px] sm:min-h-[180px] bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8 clean-injected-component">
-        <EnhancedWhereToWatchSection movie={movie} />
-      </div>
 
       {/* FAQ SECTIONS */}
       <div className="w-full bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8 faq-unified-container">
