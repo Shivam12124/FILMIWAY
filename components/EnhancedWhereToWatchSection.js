@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, Globe, ExternalLink, Loader, MapPin, ChevronDown, ChevronUp, Tv, Search, Info } from 'lucide-react';
 import Image from 'next/image';
+import { db } from '../lib/firebase';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
 // 🌍 ALL TMDB SUPPORTED COUNTRIES - FULLY ALPHABETICAL
 const ALL_REGIONS = [
@@ -384,9 +386,24 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
     const deepLink = getDeepLink(provider.provider_id, region, movie.Title, movie.tmdbId, provider.provider_name);
     const typeLabel = type === 'flatrate' ? 'Stream Now' : type === 'rent' ? 'Rent Now' : 'Buy Now';
 
+    const handleAmazonClick = async () => {
+      try {
+        await addDoc(collection(db, 'amazon_affiliate_clicks'), {
+          movieTitle: movie.Title,
+          tmdbId: movie.tmdbId,
+          country: region,
+          providerName: provider.provider_name,
+          timestamp: serverTimestamp()
+        });
+      } catch (e) {
+        console.error('Error tracking Amazon click:', e);
+      }
+      window.open(deepLink, '_blank', 'noopener,noreferrer');
+    };
+
     return (
       <motion.button
-        onClick={() => window.open(deepLink, '_blank', 'noopener,noreferrer')}
+        onClick={handleAmazonClick}
         className="group relative w-full p-6 sm:p-8 rounded-2xl border border-yellow-500/30 bg-gradient-to-br from-yellow-500/10 to-transparent hover:bg-yellow-500/20 hover:border-yellow-500/50 transition-all duration-500 flex flex-col sm:flex-row items-center gap-6 backdrop-blur-md overflow-hidden shadow-2xl shadow-yellow-500/5"
         whileHover={{ y: -4, scale: 1.01 }}
         whileTap={{ scale: 0.98 }}
