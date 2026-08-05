@@ -247,6 +247,7 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
   const [fallbackMessage, setFallbackMessage] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [showOtherRegions, setShowOtherRegions] = useState(false);
+  const [showAllOptions, setShowAllOptions] = useState(false);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => setMounted(true), []);
@@ -294,6 +295,44 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
   const otherRegions = availableRegions.filter((code) => code !== selectedRegion);
   const selectedRegionInfo = ALL_REGIONS.find((r) => r.code === selectedRegion);
 
+  // --- NEW LOGIC FOR HERO AMAZON ---
+  const targetRegions = ['US', 'GB', 'CA', 'IN'];
+  const isTargetRegion = targetRegions.includes(selectedRegion);
+
+  let heroAmazonProvider = null;
+  let heroAmazonType = null;
+  let filteredFlatrate = currentRegionData?.flatrate || [];
+  let filteredRent = currentRegionData?.rent || [];
+  let filteredBuy = currentRegionData?.buy || [];
+
+  const isAmazon = (p) => p.provider_name.toLowerCase().includes('amazon') || [119, 9, 10, 2100].includes(p.provider_id);
+
+  if (isTargetRegion && currentRegionData) {
+    // Check flatrate first
+    const amzFlatrate = filteredFlatrate.find(isAmazon);
+    if (amzFlatrate) {
+      heroAmazonProvider = amzFlatrate;
+      heroAmazonType = 'flatrate';
+      filteredFlatrate = filteredFlatrate.filter(p => !isAmazon(p));
+    } else {
+      const amzRent = filteredRent.find(isAmazon);
+      if (amzRent) {
+        heroAmazonProvider = amzRent;
+        heroAmazonType = 'rent';
+        filteredRent = filteredRent.filter(p => !isAmazon(p));
+      } else {
+        const amzBuy = filteredBuy.find(isAmazon);
+        if (amzBuy) {
+          heroAmazonProvider = amzBuy;
+          heroAmazonType = 'buy';
+          filteredBuy = filteredBuy.filter(p => !isAmazon(p));
+        }
+      }
+    }
+  }
+  const hasOtherOptions = filteredFlatrate.length > 0 || filteredRent.length > 0 || filteredBuy.length > 0;
+  // ----------------------------------
+
   const StreamingPlatformCard = ({ provider, type, region }) => {
     const logoUrl = provider.logo_path ? `https://image.tmdb.org/t/p/w45${provider.logo_path}` : null;
     const deepLink = getDeepLink(provider.provider_id, region, movie.Title, movie.tmdbId);
@@ -336,6 +375,61 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
         </div>
 
         <ExternalLink className="absolute top-2 right-2 w-3 h-3 text-gray-500 opacity-0 group-hover:opacity-100 transition-opacity" />
+      </motion.button>
+    );
+  };
+
+  const HeroAmazonCard = ({ provider, type, region }) => {
+    const logoUrl = provider.logo_path ? `https://image.tmdb.org/t/p/w45${provider.logo_path}` : null;
+    const deepLink = getDeepLink(provider.provider_id, region, movie.Title, movie.tmdbId, provider.provider_name);
+    const typeLabel = type === 'flatrate' ? 'Stream Now' : type === 'rent' ? 'Rent Now' : 'Buy Now';
+
+    return (
+      <motion.button
+        onClick={() => window.open(deepLink, '_blank', 'noopener,noreferrer')}
+        className="group relative w-full p-6 sm:p-8 rounded-2xl border border-yellow-500/30 bg-gradient-to-br from-yellow-500/10 to-transparent hover:bg-yellow-500/20 hover:border-yellow-500/50 transition-all duration-500 flex flex-col sm:flex-row items-center gap-6 backdrop-blur-md overflow-hidden shadow-2xl shadow-yellow-500/5"
+        whileHover={{ y: -4, scale: 1.01 }}
+        whileTap={{ scale: 0.98 }}
+      >
+        <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-yellow-400 to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
+        <div className="absolute inset-0 bg-yellow-500/5 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+
+        {logoUrl ? (
+          <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden shadow-xl shadow-yellow-500/20 group-hover:shadow-yellow-500/40 transition-all duration-500 shrink-0 border border-white/10">
+            <Image
+              src={logoUrl}
+              alt={provider.provider_name}
+              fill
+              className="object-cover"
+              sizes="(max-width: 640px) 64px, 80px"
+            />
+          </div>
+        ) : (
+          <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white/5 flex items-center justify-center shrink-0 border border-white/10">
+            <Tv className="w-8 h-8 text-yellow-500/80" />
+          </div>
+        )}
+
+        <div className="text-center sm:text-left w-full flex flex-col gap-2 z-10">
+          <div className="text-[11px] font-bold uppercase tracking-[0.25em] text-yellow-500/90 group-hover:text-yellow-400 transition-colors">
+            Featured on Amazon
+          </div>
+          <div className="text-xl sm:text-2xl font-semibold text-white group-hover:text-yellow-50 transition-colors">
+            Watch {movie.Title}
+          </div>
+          <div className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors flex items-center justify-center sm:justify-start gap-2">
+            <span>{provider.provider_name}</span>
+            <span className="w-1 h-1 rounded-full bg-gray-600" />
+            <span className="text-yellow-500/80 font-medium">{typeLabel}</span>
+          </div>
+        </div>
+
+        <div className="shrink-0 w-full sm:w-auto mt-4 sm:mt-0 z-10">
+          <div className="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-yellow-500 text-black font-semibold tracking-wide flex items-center justify-center gap-2 group-hover:bg-yellow-400 transition-colors shadow-lg shadow-yellow-500/25">
+            <Play fill="currentColor" size={16} />
+            {typeLabel}
+          </div>
+        </div>
       </motion.button>
     );
   };
@@ -453,49 +547,84 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
                 transition={{ duration: 0.3 }}
                 className="space-y-8"
               >
-                {currentRegionData.flatrate?.length > 0 && (
-                  <div>
-                    <h3 className="text-[11px] font-bold uppercase tracking-[0.2em] text-yellow-500/80 mb-4 flex items-center gap-2">
-                      <div className="w-1 h-1 rounded-full bg-yellow-500" />
-                      Stream with Subscription
-                    </h3>
-                    <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3 sm:gap-4">
-                      {currentRegionData.flatrate.map((provider) => (
-                        <StreamingPlatformCard key={`flatrate-${provider.provider_id}`} provider={provider} type="flatrate" region={selectedRegion} />
-                      ))}
-                    </div>
+                
+                {heroAmazonProvider && (
+                  <div className="w-full pb-4">
+                    <HeroAmazonCard provider={heroAmazonProvider} type={heroAmazonType} region={selectedRegion} />
                   </div>
                 )}
 
-                {currentRegionData.rent?.length > 0 && (
-                  <div>
-                    <h3 className="text-[11px] font-bold uppercase tracking-[0.2em] text-gray-400 mb-4 flex items-center gap-2">
-                      <div className="w-1 h-1 rounded-full bg-gray-400" />
-                      Rent Digital Copy
-                    </h3>
-                    <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3 sm:gap-4">
-                      {currentRegionData.rent.map((provider) => (
-                        <StreamingPlatformCard key={`rent-${provider.provider_id}`} provider={provider} type="rent" region={selectedRegion} />
-                      ))}
-                    </div>
+                {heroAmazonProvider && hasOtherOptions && !showAllOptions && (
+                  <div className="flex justify-center -mt-4">
+                    <button
+                      onClick={() => setShowAllOptions(true)}
+                      className="px-5 py-2 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 transition-colors text-[13px] text-gray-300 hover:text-white flex items-center gap-2"
+                    >
+                      Show other viewing options
+                      <ChevronDown size={14} />
+                    </button>
                   </div>
                 )}
 
-                {currentRegionData.buy?.length > 0 && (
-                  <div>
-                    <h3 className="text-[11px] font-bold uppercase tracking-[0.2em] text-gray-400 mb-4 flex items-center gap-2">
-                      <div className="w-1 h-1 rounded-full bg-gray-400" />
-                      Buy Digital Copy
-                    </h3>
-                    <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3 sm:gap-4">
-                      {currentRegionData.buy.map((provider) => (
-                        <StreamingPlatformCard key={`buy-${provider.provider_id}`} provider={provider} type="buy" region={selectedRegion} />
-                      ))}
-                    </div>
-                  </div>
+                {(!heroAmazonProvider || showAllOptions) && (
+                  <>
+                    {filteredFlatrate.length > 0 && (
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        className="space-y-4"
+                      >
+                        <h3 className="text-[11px] font-bold uppercase tracking-[0.2em] text-yellow-500/80 flex items-center gap-2">
+                          <div className="w-1 h-1 rounded-full bg-yellow-500" />
+                          Stream with Subscription
+                        </h3>
+                        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3 sm:gap-4">
+                          {filteredFlatrate.map((provider) => (
+                            <StreamingPlatformCard key={`flatrate-${provider.provider_id}`} provider={provider} type="flatrate" region={selectedRegion} />
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+
+                    {filteredRent.length > 0 && (
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        className="space-y-4"
+                      >
+                        <h3 className="text-[11px] font-bold uppercase tracking-[0.2em] text-gray-400 flex items-center gap-2">
+                          <div className="w-1 h-1 rounded-full bg-gray-400" />
+                          Rent Digital Copy
+                        </h3>
+                        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3 sm:gap-4">
+                          {filteredRent.map((provider) => (
+                            <StreamingPlatformCard key={`rent-${provider.provider_id}`} provider={provider} type="rent" region={selectedRegion} />
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+
+                    {filteredBuy.length > 0 && (
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        className="space-y-4"
+                      >
+                        <h3 className="text-[11px] font-bold uppercase tracking-[0.2em] text-gray-400 flex items-center gap-2">
+                          <div className="w-1 h-1 rounded-full bg-gray-400" />
+                          Buy Digital Copy
+                        </h3>
+                        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3 sm:gap-4">
+                          {filteredBuy.map((provider) => (
+                            <StreamingPlatformCard key={`buy-${provider.provider_id}`} provider={provider} type="buy" region={selectedRegion} />
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </>
                 )}
 
-                {!currentRegionData.flatrate?.length && !currentRegionData.rent?.length && !currentRegionData.buy?.length && (
+                {!heroAmazonProvider && filteredFlatrate.length === 0 && filteredRent.length === 0 && filteredBuy.length === 0 && (
                   <div className="flex flex-col items-center justify-center p-10 rounded-2xl border border-white/5 bg-white/[0.02]">
                     <MapPin className="w-8 h-8 text-gray-600 mb-3" />
                     <p className="text-gray-400 text-sm font-medium">No streaming options found in {selectedRegionInfo?.name || selectedRegion}</p>
