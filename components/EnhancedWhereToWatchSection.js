@@ -337,7 +337,7 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
 
   const StreamingPlatformCard = ({ provider, type, region }) => {
     const logoUrl = provider.logo_path ? `https://image.tmdb.org/t/p/w45${provider.logo_path}` : null;
-    const deepLink = getDeepLink(provider.provider_id, region, movie.Title, movie.tmdbId);
+    const deepLink = getDeepLink(provider.provider_id, region, movie.Title, movie.tmdbId, provider.provider_name);
     const typeLabel = type === 'flatrate' ? 'Stream' : type === 'rent' ? 'Rent' : 'Buy';
 
     return (
