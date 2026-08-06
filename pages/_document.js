@@ -14,6 +14,14 @@ export default function Document() {
         {/* Impact.com Site Verification */}
         <meta name='impact-site-verification' value='6b59a763-6f50-4bca-a43c-817e01c6a068' />
 
+        {/* Skimlinks Integration */}
+        <script
+          async
+          defer
+          type="text/javascript"
+          src="https://s.skimresources.com/js/307276X1795556.skimlinks.js"
+        />
+
         {/* Global CSS */}
         <style>{`
           body {
