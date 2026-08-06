@@ -42,7 +42,10 @@ export const A24_MOVIE_SLUGS = {
     'tt9660502': 'close',
     
     // Rank 10: The Whale
-    'tt13833688': 'the-whale'
+    'tt13833688': 'the-whale',
+    
+    // Bonus: We Live in Time
+    'tt27131358': 'we-live-in-time'
 };
 
 // ✅ REVERSE SLUG MAPPING (SLUG TO IMDB ID)

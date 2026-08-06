@@ -19,7 +19,8 @@ export const COMPLETE_MOVIE_DATABASE = [
     { "tmdbId": 493922, "imdbID": "tt7784604", "Title": "Hereditary", "year": 2018, "genre": "Horror", "runtime": 127, "rank": 7 },
     { "tmdbId": 530385, "imdbID": "tt8772262", "Title": "Midsommar", "year": 2019, "genre": "Horror", "runtime": 148, "rank": 8 },
     { "tmdbId": 901563, "imdbID": "tt9660502", "Title": "Close", "year": 2022, "genre": "Drama", "runtime": 104, "rank": 9 },
-    { "tmdbId": 785084, "imdbID": "tt13833688", "Title": "The Whale", "year": 2022, "genre": "Drama", "runtime": 117, "rank": 10 }
+    { "tmdbId": 785084, "imdbID": "tt13833688", "Title": "The Whale", "year": 2022, "genre": "Drama", "runtime": 117, "rank": 10 },
+    { "tmdbId": 1100099, "imdbID": "tt27131358", "Title": "We Live in Time", "year": 2024, "genre": "Drama", "runtime": 108, "rank": "BONUS" }
 ];
 
 // ✅ REVISED STRATEGIC QUOTES (100% Clean & SEO Safe)
@@ -33,7 +34,8 @@ export const STRATEGIC_QUOTES = {
     493922: "I am your mother!", // Hereditary
     530385: "Do you feel held by him? Does he feel like home to you?", // Midsommar
     901563: "I miss him.", // Close
-    785084: "I need to know that I have done one right thing with my life!" // The Whale
+    785084: "I need to know that I have done one right thing with my life!", // The Whale
+    1100099: "I think I'm starting to realize that the things that happen to you... they don't define you, it's what you do with them." // We Live in Time
 };
 
 // ✅ SENSITIVE TIMELINES (The "Utility" Data)
@@ -108,6 +110,15 @@ export const SENSITIVE_TIMELINES = {
         scenes: [
             { start: "0:02:12", end: "0:02:36", type: "Sexual Content (Masturbation)", severity: "Moderate" }
         ]
+    },
+    
+    // 11. We Live in Time
+    1100099: {
+        scenes: [
+            { start: "21:20", end: "22:05", type: "Nudity", severity: "Moderate" },
+            { start: "38:10", end: "38:20", type: "Nudity", severity: "Moderate" },
+            { start: "57:15", end: "58:15", type: "Nudity", severity: "Moderate" }
+        ]
     }
 };
 
@@ -121,7 +132,8 @@ export const FALLBACK_POSTERS = {
     493922: "https://image.tmdb.org/t/p/w500/4n2M1A5v0L8e7N9x3I0o5R6m1Z7.jpg",
     530385: "https://image.tmdb.org/t/p/w500/5m1N2A4v0L8e7N9x3I0o5R6m1Z7.jpg",
     901563: "https://image.tmdb.org/t/p/w500/6o1N2A4v0L8e7N9x3I0o5R6m1Z7.jpg",
-    785084: "https://image.tmdb.org/t/p/w500/7p1N2A4v0L8e7N9x3I0o5R6m1Z7.jpg"
+    785084: "https://image.tmdb.org/t/p/w500/7p1N2A4v0L8e7N9x3I0o5R6m1Z7.jpg",
+    1100099: "https://image.tmdb.org/t/p/w500/jZc0wHkplfNnL3Tq6n3w8F6z3b3.jpg"
 };
 
 // ✅ MAPPING NOTE:
@@ -296,6 +308,22 @@ export const COMPLETE_MOVIE_DATA = {
         ],
         synopsis: "A reclusive, morbidly obese English teacher attempts to reconnect with his estranged teenage daughter for one last chance at redemption.",
         themes: ["Redemption", "Self-Destruction", "Honesty"]
+    }),
+    // 11. We Live in Time
+    1100099: createMovieData({ 
+        emotionalResonance: 90, artisticComplexity: 80, visceralImpact: 85, complexityLevel: "MEDIUM", 
+        dominantColor: "#f59e0b", rating: 7.0, criticsScore: 84, audienceScore: 82, director: "John Crowley", 
+        cast: ["Andrew Garfield", "Florence Pugh"], boxOffice: "$25 million", budget: "$10 million",
+        dna: { Drama: 80, Romance: 20 },
+        scenes: [
+            { time: 15, intensity: 50, label: "A Chance Encounter", color: "#f59e0b" },
+            { time: 40, intensity: 70, label: "The Diagnosis", color: "#fb923c" },
+            { time: 65, intensity: 80, label: "Gas Station Labor", color: "#ea580c" },
+            { time: 90, intensity: 95, label: "Cooking Competition", color: "#dc2626" },
+            { time: 105, intensity: 100, label: "Time is Precious", color: "#ffffff" }
+        ],
+        synopsis: "An up-and-coming chef and a recent divorcée find their lives forever changed when a chance encounter brings them together.",
+        themes: ["Love", "Grief", "Time"]
     })
 };
 
