@@ -588,7 +588,7 @@
         "start": "",
         "end": "",
         "type": "Violence & Gore",
-        "severity": "High",
+        "severity": "Moderate",
         "description": "Massive-scale fantasy warfare featuring decapitations, monstrous creature attacks, and combat deaths, though mostly bloodless."
       },
       {
@@ -813,7 +813,7 @@
         "start": "",
         "end": "",
         "type": "Violence & Gore",
-        "severity": "High",
+        "severity": "Moderate",
         "description": "Intense superhero action, knife threats, hostage situations, explosions, and severe facial burns."
       },
       {
@@ -842,7 +842,7 @@
         "end": "",
         "type": "Profanity",
         "severity": "Moderate",
-        "description": "Occasional strong language, including conversational swearing and a few F-words."
+        "description": "Includes 2 F-words, occasional mild swearing ('shit', 'ass'), and humorous heist banter."
       }
     ],
     "Age": "13+",
@@ -1808,7 +1808,7 @@
         "start": "0:27:35",
         "end": "0:27:41",
         "type": "Nudity",
-        "severity": "Extreme"
+        "severity": "High"
       },
       {
         "start": "0:36:29",
@@ -2349,13 +2349,13 @@
         "start": "0:02:50",
         "end": "0:03:00",
         "type": "Partial Nudity (Woman)",
-        "severity": "High"
+        "severity": "Moderate"
       },
       {
         "start": "",
         "end": "",
         "type": "Violence & Gore",
-        "severity": "High",
+        "severity": "Moderate",
         "description": "Iconic, terrifying shark attacks featuring severed limbs, a gruesome death in a shark cage, and heavy blood in the water."
       },
       {
@@ -2505,7 +2505,7 @@
         "start": "",
         "end": "",
         "type": "Violence & Gore",
-        "severity": "High",
+        "severity": "Moderate",
         "description": "Massive, stylized gun battles, heavy martial arts combat, and a sci-fi bug-extraction scene."
       },
       {
@@ -3437,7 +3437,7 @@
         "start": "1:04:04",
         "end": "1:04:40",
         "type": "Nudity & Suggestive Clothing (Lingerie in Magazine)",
-        "severity": "High"
+        "severity": "Moderate"
       },
       {
         "start": "",
@@ -5322,13 +5322,13 @@
         "start": "1:06:00",
         "end": "1:07:10",
         "type": "Sex & Nudity",
-        "severity": "Strong"
+        "severity": "High"
       },
       {
         "start": "1:26:30",
         "end": "1:27:50",
         "type": "Sex & Nudity",
-        "severity": "Strong"
+        "severity": "High"
       },
       {
         "start": "",
@@ -5947,7 +5947,7 @@
         "start": "",
         "end": "",
         "type": "Profanity",
-        "severity": "High",
+        "severity": "Moderate",
         "description": "Heavy pressure-filled swearing with frequent F-words from oil rig workers."
       }
     ],
@@ -6470,7 +6470,7 @@
         "start": "1:40:20",
         "end": "1:43:36",
         "type": "Sex & Nudity",
-        "severity": "Extreme"
+        "severity": "High"
       },
       {
         "start": "1:52:50",
@@ -8403,7 +8403,7 @@
         "start": "1:30:00",
         "end": "1:30:30",
         "type": "Sex & Nudity",
-        "severity": "Strong"
+        "severity": "High"
       },
       {
         "start": "",
@@ -10441,7 +10441,7 @@
         "start": "",
         "end": "",
         "type": "Profanity",
-        "severity": "High",
+        "severity": "Moderate",
         "description": "Pervasive PG-13/R-borderline swearing, constant crude humor, and aggressive insults."
       }
     ],
@@ -11520,7 +11520,7 @@
         "start": "01:38:40",
         "end": "01:40:00",
         "type": "Sex & Nudity",
-        "severity": "Extreme"
+        "severity": "High"
       },
       {
         "start": "",
@@ -11640,7 +11640,7 @@
         "start": "",
         "end": "",
         "type": "Violence & Gore",
-        "severity": "High",
+        "severity": "Moderate",
         "description": "Disturbing premise of teenagers brutally murdering each other with spears, arrows, and swords, plus deadly wasp stings."
       },
       {
@@ -11661,7 +11661,7 @@
         "start": "",
         "end": "",
         "type": "Violence & Gore",
-        "severity": "High",
+        "severity": "Moderate",
         "description": "Intense, massive zombie swarm attacks, chaotic panic, and a tense, bloodless on-screen hand amputation to stop an infection."
       },
       {
@@ -12031,7 +12031,7 @@
         "start": "",
         "end": "",
         "type": "Profanity",
-        "severity": "High",
+        "severity": "Moderate",
         "description": "Frequent strong profanity and teenage sexual language throughout."
       }
     ],
@@ -12377,7 +12377,7 @@
         "start": "",
         "end": "",
         "type": "Profanity",
-        "severity": "Severe",
+        "severity": "High",
         "description": "Pervasive strong language with over 500 uses of the F-word and frequent use of the C-word."
       },
       {
@@ -12445,7 +12445,7 @@
         "start": "",
         "end": "",
         "type": "Profanity",
-        "severity": "High",
+        "severity": "Moderate",
         "description": "Frequent British swearing and F-bombs in casual, friendly conversation."
       }
     ],
@@ -12513,7 +12513,7 @@
         "start": "",
         "end": "",
         "type": "Violence & Gore",
-        "severity": "High",
+        "severity": "Moderate",
         "description": "Relentless sci-fi battlefield deaths, getting crushed by vehicles, and point-blank resets, mostly without graphic blood."
       },
       {
@@ -13131,7 +13131,7 @@
         "start": "",
         "end": "",
         "type": "Violence & Gore",
-        "severity": "High",
+        "severity": "Moderate",
         "description": "High-impact action shootouts, explosions, and a disturbing, graphic torture scene involving cranial drilling."
       },
       {
@@ -13830,8 +13830,8 @@
         "start": "",
         "end": "",
         "type": "Violence & Gore",
-        "severity": "High",
-        "description": "Horrific, historically accurate depictions of racial violence, including the fatal bombing of little girls and brutal police beatings with nightsticks."
+        "severity": "Moderate",
+        "description": "Historically accurate depictions of civil rights march beatings and a tragic explosion, handled without graphic gore."
       },
       {
         "start": "",
@@ -13951,7 +13951,7 @@
         "start": "",
         "end": "",
         "type": "Profanity",
-        "severity": "High",
+        "severity": "Moderate",
         "description": "Frequent use of the F-word in moments of isolation and high stress."
       }
     ],
@@ -15402,7 +15402,7 @@
         "start": "",
         "end": "",
         "type": "Violence & Gore",
-        "severity": "High",
+        "severity": "Moderate",
         "description": "Brutal, heavy-hitting fistfights, bomb blasts, and dark serial killer crime scenes (including a thumb cut off off-screen)."
       },
       {
@@ -15624,7 +15624,7 @@
         "start": "",
         "end": "",
         "type": "Violence & Gore",
-        "severity": "High",
+        "severity": "Moderate",
         "description": "Grueling tension, stepping on an exposed nail, alien creature attacks, and a child snatched (off-screen)."
       },
       {
@@ -16005,7 +16005,7 @@
         "start": "01:28:35",
         "end": "01:31:15",
         "type": "Sexual Content",
-        "severity": "Extreme"
+        "severity": "Moderate"
       },
       {
         "start": "",
@@ -17059,7 +17059,7 @@
         "start": "",
         "end": "",
         "type": "Violence & Gore",
-        "severity": "High",
+        "severity": "Moderate",
         "description": "Terrifying, chaotic alien invasions, massive city destruction, and people being suddenly snatched away, but avoiding heavy R-rated gore."
       },
       {
