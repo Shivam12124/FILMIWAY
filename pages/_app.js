@@ -220,7 +220,7 @@ export default function App({ Component, pageProps }) {
       {/* 🚀 GOOGLE ANALYTICS (Loaded immediately to capture 100% of traffic) */}
       <Script
         strategy="afterInteractive"
-        src={`https://www.googletagmanager.com/gtag/js?id=G-EDS2VZ5HP1`}
+        src={`https://www.googletagmanager.com/gtag/js?id=G-WSQMYM9R9G`}
       />
       <Script
         id="google-analytics"
@@ -230,6 +230,9 @@ export default function App({ Component, pageProps }) {
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
+            gtag('config', 'G-WSQMYM9R9G', {
+              page_path: window.location.pathname,
+            });
             gtag('config', 'G-EDS2VZ5HP1', {
               page_path: window.location.pathname,
             });
