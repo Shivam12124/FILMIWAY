@@ -319,39 +319,6 @@ export const PEACOCK_ROMANCE_MOVIE_FAQS = {
   'Notting Hill': [
     { question: "Is the travel bookshop real?", answer: "Yes, it was inspired by a real travel bookshop in Notting Hill, though the store in the movie was a set. The real shop (The Travel Bookshop) unfortunately closed in 2011 but the location remains a tourist spot." },
     { question: "How much did Julia Roberts get paid?", answer: "Julia Roberts reportedly received $15 million for the role, mirroring her character's status as the world's biggest movie star." },
-    { question: "Did Hugh Grant really walk through the seasons?", answer: "Yes, the famous 'Ain't No Sunshine' scene where Hugh Grant walks through four seasons in one take was achieved using computer-controlled motion control cameras and practical weather effects." },
-    { question: "Who wrote the script?", answer: "Richard Curtis, the king of British rom-coms (Love Actually, Four Weddings and a Funeral). He claimed he wrote it imagining what would happen if he turned up to a dinner party with Madonna." }
-  ],
-  'Ghost': [
-    { question: "What does 'Ditto' mean?", answer: "It is Sam's way of saying 'I love you too' without being vulnerable. By the end, it becomes a powerful callback representing their unique bond and continuity beyond death." },
-    { question: "Is the pottery scene iconic?", answer: "Absolutely. It is widely considered one of the most romantic and parodied scenes in film history, symbolizing intimacy and creation." },
-    { question: "Was the scary shadow effect CGI?", answer: "Mostly practical. The dark shadows that drag bad spirits away were created using dancers in black bodysuits and rotoscoping animation techniques, giving them a fluid, eerie movement." },
-    { question: "Why did Patrick Swayze get the role?", answer: "The writer saw an interview where Swayze cried talking about his father. He realized Swayze had the emotional vulnerability needed to play a ghost who could cry but not touch." }
-  ],
-  'Shakespeare in Love': [
-    { question: "Is it historically accurate?", answer: "Very little. It is a fictional romantic comedy that imagines how Shakespeare *might* have been inspired to write Romeo and Juliet. Most characters (except Shakespeare and Queen Elizabeth) are fictionalized." },
-    { question: "Did it really beat Saving Private Ryan?", answer: "Yes. In one of the biggest upsets in Oscar history, 'Shakespeare in Love' won Best Picture over Spielberg's war epic, largely credited to Harvey Weinstein's aggressive marketing campaign." },
-    { question: "Who is the little boy?", answer: "The boy who likes feeding mice to snakes is a young John Webster, who grew up to be a real playwright famous for gruesome tragedies like 'The Duchess of Malfi'. It's an inside joke." },
-    { question: "Was Gwyneth Paltrow British?", answer: "No, she is American. Her British accent in the film was so convincing that many viewers assumed she was actually from the UK." }
-  ],
-  'One Day': [
-    { question: "Why July 15th?", answer: "July 15th is St. Swithin's Day. The folklore says the weather on this day predicts the weather for the next 40 days. In the film, it serves as a narrative anchor to check in on the characters annually." },
-    { question: "Why is the ending so controversial?", answer: "The sudden death of Emma is a major tonal shift. Some fans hate it for the heartbreak, while others believe it's necessary to show that life's most important moments are often realized too late." },
-    { question: "Is the Netflix series better?", answer: "Many fans prefer the 2024 Netflix series because the 14-episode format allows for much deeper character development than the 107-minute movie could provide." },
-    { question: "Did they age the actors?", answer: "Yes, subtle makeup and hair changes were used to age Anne Hathaway and Jim Sturgess over the 20-year span of the story, reflecting the passage of time and maturity." }
-  ],
-  'Challengers': [
-        { question: "Does Challengers have violence and gore?", answer: "According to the Filmiway Parents Guide, the violence in Challengers is rated as Mild. Mild to moderate sports-related violence includes an on-court knee injury with a visible snap and later brace use, along with brief physical altercations such as slapping, pushing, and a groin hit. The film also contains frequent heated arguments, aggressive behavior during tennis matches, and moments of emotional distress, but no serious or graphic violence beyond the injury scene." },
-        { question: "Does Challengers have profanity or swearing?", answer: "The profanity in Challengers is rated as High. Strong language throughout, including over 50 uses of the F-word and its derivatives, along with occasional sexual references, mild obscenities, and name-calling. The dialogue also includes a few scatological terms and an isolated obscene gesture, plus frequent heated exchanges and exclamations." },
-    { question: "Is it a true story?", answer: "No, Challengers is a fictional drama written by Justin Kuritzkes. However, the tennis dynamics and intense rivalries are inspired by real professional tennis circuits." },
-    { question: "Did Zendaya play the tennis?", answer: "Zendaya trained for three months to play Tashi. While a body double was used for complex shots, she performed many of the swings herself to ensure authenticity." },
-    { question: "What does the ending mean?", answer: "The final embrace at the net implies that Art and Patrick have reconnected through their shared love of the game, finally giving Tashi the 'real match' she has been craving for years." },
-    { question: "Why is the music techno?", answer: "Trent Reznor and Atticus Ross composed a driving, high-energy techno score to mimic the pulse of a tennis match and the sexual tension between the characters." }
-  ],
-  'The Age of Adaline': [
-    { question: "Is the science real?", answer: "No. The explanation involving lightning and telomere compression is pseudoscientific fantasy designed to serve the romantic plot." },
-    { question: "Who plays young William?", answer: "Anthony Ingruber plays the young version of Harrison Ford's character. He was cast because of his uncanny resemblance to a young Harrison Ford, largely due to viral YouTube impressions." },
-    { question: "Why does she run away?", answer: "Adaline runs to protect her secret and her daughter. She fears becoming a government experiment and believes she can never have a normal life, so isolation is her only safety." },
     { question: "What restarts her aging?", answer: "A second accident involving a car crash and a defibrillator (lightning equivalent) reverses the condition, allowing her to age naturally again and finally commit to a relationship." }
   ],
   'How to Lose a Guy in 10 Days': [
