@@ -14,6 +14,9 @@ export default function Document() {
         {/* Impact.com Site Verification */}
         <meta name='impact-site-verification' value='6b59a763-6f50-4bca-a43c-817e01c6a068' />
 
+        {/* Google Site Verification */}
+        <meta name="google-site-verification" content="rbc-nkW2usal1o0pyLwW70o8f-fewlFIR6sx19YOJik" />
+
         {/* Skimlinks Integration */}
         <script
           async
@@ -53,13 +56,13 @@ export default function Document() {
               '@context': 'https://schema.org',
               '@type': 'WebSite',
               name: 'Filmiway',
-              url: 'https://filmiway.com',
+              url: 'https://www.filmiway.com',
               description: 'Filmiway is a parents guide website with skip timestamps. We help families from all over the world by telling them exactly what is in a movie as it is, so they can expect what they are going to see.',
               potentialAction: {
                 '@type': 'SearchAction',
                 target: {
                   '@type': 'EntryPoint',
-                  urlTemplate: 'https://filmiway.com/search?q={search_term_string}'
+                  urlTemplate: 'https://www.filmiway.com/search?q={search_term_string}'
                 },
                 'query-input': 'required name=search_term_string'
               }
