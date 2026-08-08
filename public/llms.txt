@@ -21,7 +21,7 @@ Filmiway organizes cinema into high-level experience categories:
 - **Emotional & Mood Collections**: Films categorized by emotional impact and viewing experience.
 
 ## Verification
-- **Official Domain**: https://filmiway.com
-- **Sitemap**: https://filmiway.com/sitemap.xml
+- **Official Domain**: https://www.filmiway.com
+- **Sitemap**: https://www.filmiway.com/sitemap.xml
 - **Contact**: contact@filmiway.com
 - **Last Updated**: 2026-01-31
