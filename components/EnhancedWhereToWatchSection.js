@@ -340,9 +340,25 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
     const deepLink = getDeepLink(provider.provider_id, region, movie.Title, movie.tmdbId, provider.provider_name);
     const typeLabel = type === 'flatrate' ? 'Stream' : type === 'rent' ? 'Rent' : 'Buy';
 
+    const handleCardClick = async () => {
+      try {
+        await addDoc(collection(db, 'amazon_affiliate_clicks'), {
+          movieTitle: movie.Title,
+          tmdbId: movie.tmdbId,
+          country: userCountry || region || 'US',
+          storeRegion: region,
+          providerName: provider.provider_name,
+          timestamp: serverTimestamp()
+        });
+      } catch (e) {
+        console.error('Error tracking platform click:', e);
+      }
+      window.open(deepLink, '_blank', 'noopener,noreferrer');
+    };
+
     return (
       <motion.button
-        onClick={() => window.open(deepLink, '_blank', 'noopener,noreferrer')}
+        onClick={handleCardClick}
         className="group relative p-3 sm:p-4 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.06] hover:border-yellow-500/30 transition-all duration-300 flex flex-col items-center gap-3 w-full backdrop-blur-sm overflow-hidden"
         whileHover={{ y: -2 }}
         whileTap={{ scale: 0.98 }}
@@ -391,7 +407,8 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
         await addDoc(collection(db, 'amazon_affiliate_clicks'), {
           movieTitle: movie.Title,
           tmdbId: movie.tmdbId,
-          country: region,
+          country: userCountry || region || 'US',
+          storeRegion: region,
           providerName: provider.provider_name,
           timestamp: serverTimestamp()
         });
