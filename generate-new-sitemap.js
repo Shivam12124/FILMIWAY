@@ -13,7 +13,7 @@ const currentDate = new Date().toISOString();
 
 // Generate the XML for each movie using the new flat slug
 const sitemapEntries = movies.map(movie => {
-    return `  <url>\n    <loc>https://filmiway.com/movie/${movie.slug}/skip-timestamps</loc>\n    <lastmod>${currentDate}</lastmod>\n    <changefreq>daily</changefreq>\n    <priority>0.8</priority>\n  </url>`;
+    return `  <url>\n    <loc>https://www.filmiway.com/movie/${movie.slug}/skip-timestamps</loc>\n    <lastmod>${currentDate}</lastmod>\n    <changefreq>daily</changefreq>\n    <priority>0.8</priority>\n  </url>`;
 });
 
 // Wrap it in the official Google Sitemap XML tags

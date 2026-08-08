@@ -481,7 +481,7 @@ export default function UniversalMoviePage({ movie }) {
                 <title>{movie.metaTitle}</title>
                 <meta name="description" content={movie.metaDesc} />
                 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-                <link rel="canonical" href={`https://filmiway.com/movie/${movie.slug}/skip-timestamps`} />
+                <link rel="canonical" href={`https://www.filmiway.com/movie/${movie.slug}/skip-timestamps`} />
                 <meta property="og:title" content={movie.metaTitle} />
                 <meta property="og:description" content={movie.metaDesc} />
                 <meta property="og:type" content="video.movie" />
