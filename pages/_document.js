@@ -17,6 +17,9 @@ export default function Document() {
         {/* Google Site Verification */}
         <meta name="google-site-verification" content="rbc-nkW2usal1o0pyLwW70o8f-fewlFIR6sx19YOJik" />
 
+        {/* Monetag Site Verification */}
+        <meta name="monetag" content="532d2dbd3552f6707fc54cfc65b90bda" />
+
         {/* Skimlinks Integration */}
         <script
           async
