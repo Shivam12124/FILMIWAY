@@ -615,6 +615,30 @@ const nextConfig = {
     ];
   },
 
+  // ⚡ IMMUTABLE ASSET CACHING: Prevents Vercel Edge Request limit exhaustion
+  async headers() {
+    return [
+      {
+        source: '/:all*(svg|jpg|png|webp|avif|ico|css|js|woff2|json|xml|txt)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        source: '/_next/static/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+    ];
+  },
+
   // ✅ BUILD CACHE
   onDemandEntries: {
     maxInactiveAge: 60 * 1000,
