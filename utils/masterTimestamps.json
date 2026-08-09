@@ -1,4 +1,18 @@
 {
+  "12102": {
+    "Title": "Kramer vs. Kramer",
+    "scenes": [
+      {
+        "start": "0:12:15",
+        "end": "0:12:40",
+        "type": "Nudity",
+        "severity": "Mild",
+        "description": "Brief partial nudity as Margaret walks out of the bathroom."
+      }
+    ],
+    "Age": "13+",
+    "Summary": "Aged 13+ for intense emotional marital drama, coarse language, and brief nudity."
+  },
   "11": {
     "Title": "Star Wars: Episode V - The Empire Strikes Back",
     "scenes": [
