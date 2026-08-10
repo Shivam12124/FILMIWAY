@@ -38,12 +38,57 @@ const steps = [
 ];
 
 export default function WatchAlongTimer() {
+  const timerSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "Filmiway Watch-Along Timer",
+        "url": "https://filmiway.com/watch-along-timer",
+        "applicationCategory": "MultimediaApplication",
+        "operatingSystem": "All (Web-based)",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "description": "Real-time web application timer that syncs with film playback to provide audio and visual alerts 12 seconds before awkward or sensitive scenes occur."
+      },
+      {
+        "@type": "HowTo",
+        "name": "How to Use the Watch-Along Timer to Skip Awkward Movie Scenes",
+        "description": "Step-by-step guide to syncing Filmiway's real-time Watch-Along Timer with movie streaming playback.",
+        "step": [
+          {
+            "@type": "HowToStep",
+            "name": "Launch your streaming app",
+            "text": "Start your movie from 0:00 on Netflix, Hulu, HBO Max, or Prime Video."
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Start the Filmiway Watch-Along Timer",
+            "text": "Press the Watch-Along Timer button on Filmiway simultaneously as playback begins."
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Receive Live Warnings",
+            "text": "Listen for the sound notification 12 seconds before explicit or awkward scenes occur."
+          }
+        ]
+      }
+    ]
+  };
+
   return (
     <>
       <Head>
         <title>Watch-Along Timer – Get Movie Scene Alerts in Real Time | Filmiway</title>
         <meta name="description" content="Use the Filmiway Watch-Along Timer to get real-time alerts 12 seconds before awkward movie scenes begin. The ultimate real-time parents guide." />
         <link rel="canonical" href="https://filmiway.com/watch-along-timer" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(timerSchema) }}
+        />
       </Head>
 
       <div className="relative min-h-screen bg-black text-white font-sans overflow-hidden select-none">
@@ -80,6 +125,11 @@ export default function WatchAlongTimer() {
               <p className="text-gray-400 max-w-2xl mx-auto text-lg font-light leading-relaxed">
                 Say goodbye to manually checking timestamps and frantically reaching for the remote. Let our timer run alongside your movie and alert you exactly 12 seconds before awkward scenes happen.
               </p>
+
+              <div className="mt-6 flex items-center justify-center gap-2 text-xs text-gray-500 uppercase tracking-widest">
+                <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                <span>Verified Utility • Last Updated: August 10, 2026</span>
+              </div>
             </motion.div>
           </div>
 
