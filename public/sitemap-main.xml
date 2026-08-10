@@ -101,6 +101,14 @@
         <priority>0.8</priority>
     </url>
 
+    <!-- 🔥 HOW WE WORK METHODOLOGY PAGE -->
+    <url>
+        <loc>https://www.filmiway.com/how-we-work</loc>
+        <lastmod>2026-08-10T11:27:00Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
     <!-- 🔥 LEGAL PAGES -->
     <url>
         <loc>https://www.filmiway.com/privacy</loc>
