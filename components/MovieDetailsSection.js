@@ -93,6 +93,7 @@ const PeacockThrillerSEOFAQSection = dynamic(() => import('./PeacockThrillerSEOF
 const PeacockBestSEOFAQSection = dynamic(() => import('./PeacockBestSEOFAQSection'));
 const PeacockComedySEOFAQSection = dynamic(() => import('./PeacockComedySEOFAQSection'));
 const FanFavoritesSection = dynamic(() => import('./FanFavoritesSection'));
+import AudibleBookPromo from './AudibleBookPromo';
 
 const MovieDetailsSection = React.memo(({
   movie,
@@ -999,6 +1000,9 @@ const MovieDetailsSection = React.memo(({
       <div id="parents-guide" className="scroll-mt-28 w-full max-w-4xl mx-auto">
         <SensitiveContentTimelineSection movie={{...movie, Runtime: dynamicMovieData.runtime}} sensitiveScenes={sensitiveScenes} />
       </div>
+
+      {/* 📚 Audible Book-to-Movie Affiliate Promo */}
+      <AudibleBookPromo movieSlug={movie.slug} movieTitle={movie.Title} />
 
       {/* ⚡ CLS FIX: Reserve height for Firebase comments so mobile layout stays locked and smooth! */}
       <div className="w-full min-h-[350px] sm:min-h-[300px] bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8 overflow-hidden clean-injected-component">
