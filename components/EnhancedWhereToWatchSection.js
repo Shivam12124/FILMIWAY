@@ -543,14 +543,12 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
 
           <div className="flex flex-col flex-1 min-w-0">
             {/* ExpressVPN Brand Header */}
-            <div className="flex items-center gap-2.5 mb-1 flex-wrap">
+            <div className="flex flex-col items-start gap-1.5 mb-1">
               <span className="text-sm font-extrabold text-white tracking-wide uppercase">
                 ExpressVPN
               </span>
               <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-red-600/30 text-red-300 border border-red-500/40 shrink-0">
-                {isGeoBlocked
-                  ? `🔒 NOT STREAMING IN ${displayCountryName.toUpperCase()}`
-                  : '🛡️ OFFICIAL PRIVACY & UNBLOCK PARTNER'}
+                🔥 SPECIAL OFFER FOR FILMIWAY USERS • $2.99/MO
               </span>
             </div>
 
@@ -564,8 +562,8 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
             {/* Dynamic Body Description */}
             <p className="text-xs text-gray-300 font-light mt-1.5 leading-relaxed m-0">
               {isGeoBlocked
-                ? `${movie?.Title || movie?.title || 'This film'} is geo-blocked in ${displayCountryName}. Connect to US or UK servers with ExpressVPN to bypass regional restrictions & watch right now.`
-                : `Watching ${movie?.Title || movie?.title || 'this movie'} in ${displayCountryName}? ExpressVPN stops ISP speed throttling, hides private browsing from network admins, and unlocks restricted sites, torrents & global streaming catalogs.`}
+                ? `${movie?.Title || movie?.title || 'This film'} is geo-blocked in ${displayCountryName}. Connect to US or UK servers with ExpressVPN ($2.99/mo + 4 Months Free) to bypass regional restrictions & watch right now.`
+                : `Watching ${movie?.Title || movie?.title || 'this movie'} in ${displayCountryName}? ExpressVPN ($2.99/mo + 4 Months Free) stops ISP speed throttling, hides private browsing from network admins, and unlocks restricted sites, torrents & global streaming catalogs.`}
             </p>
           </div>
         </div>
@@ -574,8 +572,8 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
         <div className="flex items-center gap-2 text-xs sm:text-sm font-bold text-white shrink-0 w-full md:w-auto justify-center px-5 py-3 rounded-xl bg-gradient-to-r from-[#e01931] to-red-700 hover:from-red-500 hover:to-rose-600 transition-all shadow-md shadow-red-600/30 group-hover:shadow-red-600/50 z-10 border border-red-400/40 whitespace-nowrap">
           <span>
             {isGeoBlocked
-              ? `Watch ${movie?.Title || movie?.title || 'Movie'} via ExpressVPN`
-              : 'Unblock Sites & Bypass ISP Limits'}
+              ? `Watch ${movie?.Title || movie?.title || 'Movie'} ($2.99/mo + 4 Months Free)`
+              : 'Claim Filmiway Deal ($2.99/mo + 4 Months Free)'}
           </span>
           <ExternalLink size={14} className="group-hover:translate-x-0.5 transition-transform" />
         </div>
