@@ -1,7 +1,7 @@
 // components/EnhancedWhereToWatchSection.js - SEO HIERARCHY FIXED (H2 -> H3) 🍷✅
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Play, Globe, ExternalLink, Loader, MapPin, ChevronDown, ChevronUp, Tv, Search, Info } from 'lucide-react';
+import { Play, Globe, ExternalLink, Loader, MapPin, ChevronDown, ChevronUp, Tv, Search, Info, Zap } from 'lucide-react';
 import Image from 'next/image';
 import { db } from '../lib/firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
@@ -479,6 +479,43 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
         <Play className="text-yellow-500 w-5 h-5 sm:w-6 sm:h-6" />
         Where to Watch
       </h2>
+
+      {/* 🚀 GearUP Booster Affiliate Link Banner (Below Where to Watch Heading, Above Country Selector) */}
+      <motion.a
+        href="https://www.dpbolvw.net/click-101856314-17255582"
+        target="_blank"
+        rel="noopener noreferrer"
+        initial={{ opacity: 0, y: -5 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="group relative flex flex-col sm:flex-row items-center justify-between gap-4 p-4 mb-6 rounded-2xl border border-amber-500/30 bg-gradient-to-r from-amber-950/30 via-amber-900/10 to-black/50 hover:border-amber-400/60 transition-all duration-300 backdrop-blur-md shadow-lg shadow-black/40 hover:shadow-amber-500/10 cursor-pointer overflow-hidden"
+      >
+        {/* Subtle background glow effect */}
+        <div className="absolute -left-10 -top-10 w-32 h-32 bg-amber-500/10 rounded-full blur-2xl group-hover:bg-amber-500/20 transition-all pointer-events-none" />
+
+        <div className="flex items-center gap-3.5 w-full sm:w-auto z-10">
+          <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-400 shrink-0 group-hover:scale-105 group-hover:bg-amber-500/20 transition-all shadow-inner">
+            <Zap size={18} className="fill-amber-400/20" />
+          </div>
+          <div className="flex flex-col">
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className="text-sm font-semibold text-white group-hover:text-amber-200 transition-colors">
+                Facing Stream Lag or Regional Restrictions?
+              </span>
+              <span className="text-[11px] font-medium text-amber-400/90 tracking-wide">
+                • Special Offer
+              </span>
+            </div>
+            <span className="text-xs text-gray-400 font-light mt-1 leading-relaxed">
+              Bypass ISP throttling &amp; optimize your network connection for smooth HD playback with GearUP Booster.
+            </span>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-2 text-xs font-bold text-gray-900 shrink-0 w-full sm:w-auto justify-center px-4 py-2.5 rounded-xl bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 hover:from-amber-300 hover:to-yellow-300 transition-all shadow-md shadow-amber-500/20 group-hover:shadow-amber-500/40 z-10">
+          <span>Stream Smoothly</span>
+          <ExternalLink size={14} className="group-hover:translate-x-0.5 transition-transform" />
+        </div>
+      </motion.a>
 
       {isLoading ? (
         <div className="w-full min-h-[250px] rounded-2xl border border-white/5 bg-white/[0.02] flex items-center justify-center animate-pulse">

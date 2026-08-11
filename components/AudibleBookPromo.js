@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { Headphones, ExternalLink } from 'lucide-react';
 import { db } from '../lib/firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
@@ -172,11 +171,8 @@ const AudibleBookPromo = ({ movieSlug, movieTitle }) => {
   };
 
   return (
-    <motion.div 
-      className="w-full bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8 relative overflow-hidden"
-      initial={{ opacity: 0, y: 15 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
+    <div 
+      className="w-full bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8 relative overflow-hidden animate-fade-in-up"
     >
       <div className="flex flex-col md:flex-row items-start md:items-center gap-5 justify-between relative z-10">
         
@@ -229,7 +225,7 @@ const AudibleBookPromo = ({ movieSlug, movieTitle }) => {
         </div>
 
       </div>
-    </motion.div>
+    </div>
   );
 };
 

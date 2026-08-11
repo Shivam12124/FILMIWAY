@@ -672,38 +672,66 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
             {/* 🔥 THE "SHOWER IDEA" VISUAL TIMELINE MAP */}
             {timelineMarkers.length > 0 && (
                 <motion.div
-                    className="w-full mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-white/5"
+                    className="w-full mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-white/5"
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3, duration: 0.5 }}
                 >
-                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-5">
-                        <h3 className="text-[11px] sm:text-xs font-bold text-gray-400 uppercase tracking-[0.2em] flex items-center gap-2 m-0">
-                            <Film size={14} className="text-yellow-500" /> Parents Guide Tracker
+                    {/* ⏱️ DEDICATED WATCH-ALONG TIMER UTILITY CARD (MINIMALIST & PARENTS GUIDE MATCHED) */}
+                    <div 
+                        itemScope 
+                        itemType="https://schema.org/SoftwareApplication"
+                        className="group relative w-full mb-8 p-5 sm:p-6 rounded-2xl border border-white/10 bg-[#0a0a0c] shadow-xl overflow-hidden"
+                    >
+                        <meta itemProp="name" content={`Filmiway Live Watch-Along Sync Timer for ${movie?.Title || 'Movie'}`} />
+                        <meta itemProp="applicationCategory" content="MultimediaApplication" />
+                        <meta itemProp="operatingSystem" content="Web, iOS, Android" />
+
+                        {/* Subtle top accent border line */}
+                        <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-yellow-500/40 to-transparent" />
+
+                        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-5 relative z-10">
+                            {/* Left Side: Title & Explanatory Text */}
+                            <div className="flex-1 space-y-2">
+                                <div className="flex items-center gap-2.5">
+                                    <div className="relative flex h-2 w-2 shrink-0">
+                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75" />
+                                        <span className="relative inline-flex rounded-full h-2 w-2 bg-yellow-500" />
+                                    </div>
+                                    <span className="text-[11px] sm:text-xs font-semibold text-yellow-500/90 uppercase tracking-[0.18em]">
+                                        Live Synchronization Tool
+                                    </span>
+                                </div>
+
+                                <h3 itemProp="headline" className="text-base sm:text-lg font-medium text-white tracking-wide leading-snug m-0">
+                                    Filmiway Watch-Along Timer
+                                </h3>
+
+                                <p itemProp="description" className="text-xs sm:text-sm text-gray-300 font-light leading-relaxed max-w-2xl m-0">
+                                    Sync this live timer on your mobile phone simultaneously when playing the film on your TV. The tool runs in real-time and alerts you <strong className="text-yellow-400 font-medium">12 seconds before explicit or sensitive scenes appear</strong>, giving you enough time to skip past them before things get awkward.
+                                </p>
+                            </div>
+
+                            {/* Right Side: Action Button */}
+                            <div className="shrink-0 w-full lg:w-auto">
+                                <button
+                                    onClick={handleOpenWatchAlong}
+                                    className="group/btn relative w-full lg:w-auto inline-flex items-center justify-center gap-3 bg-gradient-to-r from-yellow-400 via-amber-400 to-yellow-500 hover:from-yellow-300 hover:to-amber-300 text-gray-950 font-bold text-xs sm:text-sm px-6 py-3.5 rounded-full shadow-[0_0_20px_rgba(234,179,8,0.25)] hover:shadow-[0_0_35px_rgba(234,179,8,0.45)] transition-all duration-300 border border-yellow-300/40 cursor-pointer overflow-hidden transform hover:-translate-y-0.5 active:translate-y-0"
+                                >
+                                    <div className="flex items-center justify-center w-6 h-6 rounded-full bg-black/10 group-hover/btn:bg-black/20 transition-colors shrink-0">
+                                        <Play size={12} className="fill-gray-950 text-gray-950 translate-x-[1px]" />
+                                    </div>
+                                    <span className="tracking-wide">Launch Watch-Along Timer</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* PARENTS GUIDE TRACKER HEADER */}
+                    <div className="flex items-center justify-between gap-3 mb-5">
+                        <h3 className="text-xs sm:text-sm font-bold text-gray-300 uppercase tracking-[0.2em] flex items-center gap-2 m-0">
+                            <Film size={16} className="text-yellow-500" /> Parents Guide Tracker
                         </h3>
-                        
-                        {/* Watch-Along CTA — visible on both mobile & desktop */}
-                        <button
-                            onClick={handleOpenWatchAlong}
-                            className="group relative flex items-center gap-3 bg-[#0d0d0f] border border-white/10 hover:border-yellow-500/40 rounded-xl px-4 py-2.5 transition-all duration-300 hover:shadow-[0_0_20px_rgba(234,179,8,0.12)] overflow-hidden self-start sm:self-auto"
-                        >
-                            {/* Subtle shimmer on hover */}
-                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-yellow-500/5 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700 ease-in-out" />
-                            {/* Left accent line */}
-                            <div className="absolute left-0 top-0 bottom-0 w-[2px] rounded-l-xl bg-yellow-500/0 group-hover:bg-yellow-500/60 transition-colors duration-300" />
-                            {/* Live dot */}
-                            <div className="relative flex-shrink-0 flex h-2 w-2">
-                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-50" />
-                                <span className="relative inline-flex rounded-full h-2 w-2 bg-yellow-500/80" />
-                            </div>
-                            {/* Text */}
-                            <div className="text-left z-10">
-                                <span className="block text-[12px] font-semibold text-gray-200 group-hover:text-white tracking-normal leading-tight transition-colors">Watch-Along Timer</span>
-                                <span className="block text-[10px] text-gray-500 group-hover:text-gray-400 leading-tight transition-colors mt-0.5">Alerts you 12 sec before each scene</span>
-                            </div>
-                            {/* Play icon */}
-                            <Play size={12} className="text-gray-500 group-hover:text-yellow-400 group-hover:translate-x-0.5 transition-all duration-200 z-10 flex-shrink-0" />
-                        </button>
                     </div>
 
                     {/* 🎬 WATCH-ALONG TIMER OVERLAY */}

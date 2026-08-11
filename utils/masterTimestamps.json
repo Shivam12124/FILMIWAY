@@ -1,18 +1,4 @@
 {
-  "12102": {
-    "Title": "Kramer vs. Kramer",
-    "scenes": [
-      {
-        "start": "0:12:15",
-        "end": "0:12:40",
-        "type": "Nudity",
-        "severity": "Mild",
-        "description": "Brief partial nudity as Margaret walks out of the bathroom."
-      }
-    ],
-    "Age": "13+",
-    "Summary": "Aged 13+ for intense emotional marital drama, coarse language, and brief nudity."
-  },
   "11": {
     "Title": "Star Wars: Episode V - The Empire Strikes Back",
     "scenes": [
@@ -7341,7 +7327,7 @@
         "start": "",
         "end": "",
         "type": "Profanity",
-        "severity": "High",
+        "severity": "Moderate",
         "description": "Frequent strong language and criminal-underworld swearing."
       }
     ],
@@ -9788,7 +9774,7 @@
         "start": "",
         "end": "",
         "type": "Violence & Gore",
-        "severity": "High",
+        "severity": "Moderate",
         "description": "A scissors stabbing to the arm, a bloody rooftop fall, and tense, disorienting slasher-like attacks."
       },
       {
@@ -10586,7 +10572,7 @@
         "start": "",
         "end": "",
         "type": "Violence & Gore",
-        "severity": "High",
+        "severity": "Moderate",
         "description": "Disturbing psychological horror featuring mesmerized killings and a recurring gruesome X carved into victims' necks."
       },
       {
@@ -13385,7 +13371,7 @@
         "start": "",
         "end": "",
         "type": "Violence & Gore",
-        "severity": "High",
+        "severity": "Moderate",
         "description": "Disturbing crime scene photos of sexually assaulted and mutilated girls, plus gritty, bloody shootouts."
       },
       {
@@ -14996,15 +14982,15 @@
         "start": "",
         "end": "",
         "type": "Violence & Gore",
-        "severity": "High",
-        "description": "Harrowing wilderness survival gore, severe starvation, foot rot, and a highly graphic scene of cutting a parasite out of a forehead."
+        "severity": "Moderate",
+        "description": "Wilderness survival injury detail, foot infections, and body horror elements."
       },
       {
         "start": "",
         "end": "",
         "type": "Profanity",
-        "severity": "High",
-        "description": "Frequent swearing and F-bombs due to extreme desperation."
+        "severity": "Moderate",
+        "description": "Panic-driven swearing and occasional F-words."
       }
     ],
     "Age": "16+",
@@ -15507,7 +15493,7 @@
         "start": "",
         "end": "",
         "type": "Profanity",
-        "severity": "High",
+        "severity": "Moderate",
         "description": "Frequent strong language and F-words."
       }
     ],
@@ -16079,14 +16065,14 @@
         "start": "",
         "end": "",
         "type": "Violence & Gore",
-        "severity": "High",
+        "severity": "Moderate",
         "description": "Unsettling cult violence, a mass suicide featuring bloody hanging bodies, and sudden brutal stabbings."
       },
       {
         "start": "",
         "end": "",
         "type": "Profanity",
-        "severity": "High",
+        "severity": "Moderate",
         "description": "Frequent strong language and panic-driven swearing."
       }
     ],
@@ -17890,7 +17876,7 @@
         "start": "",
         "end": "",
         "type": "Profanity",
-        "severity": "High",
+        "severity": "Moderate",
         "description": "Frequent heavy swearing and ethnic slurs in the subtitled dialogue."
       }
     ],
