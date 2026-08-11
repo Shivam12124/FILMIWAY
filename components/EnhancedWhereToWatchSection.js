@@ -334,6 +334,9 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
   }
   const hasOtherOptions = filteredFlatrate.length > 0 || filteredRent.length > 0 || filteredBuy.length > 0;
   const isMovieAvailableInRegion = Boolean(currentRegionData && (heroAmazonProvider || hasOtherOptions));
+  const isAvailableInUserCountry = Boolean(userCountry && streamingData[userCountry]);
+  const isGeoBlocked = !isMovieAvailableInRegion || Boolean(fallbackMessage) || (Boolean(userCountry) && selectedRegion !== userCountry && !isAvailableInUserCountry);
+  const displayCountryName = (isGeoBlocked && userCountry && ALL_REGIONS.find(r => r.code === userCountry)?.name) || selectedRegionInfo?.name || 'Your Region';
 
   const handleExpressVpnClick = async (e) => {
     e.preventDefault();
@@ -507,8 +510,7 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
   };
 
   return (
-    <motion.section
-      className="mb-12 mt-12"
+    <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
@@ -546,29 +548,35 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
                 ExpressVPN
               </span>
               <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-red-600/30 text-red-300 border border-red-500/40 shrink-0">
-                {!isMovieAvailableInRegion ? `🔒 REGION LOCKED IN ${selectedRegionInfo?.name?.toUpperCase() || 'YOUR REGION'}` : '🌐 OFFICIAL STREAMING PARTNER'}
+                {isGeoBlocked
+                  ? `🔒 NOT STREAMING IN ${displayCountryName.toUpperCase()}`
+                  : '🛡️ OFFICIAL PRIVACY & UNBLOCK PARTNER'}
               </span>
             </div>
 
             {/* Dynamic Headline */}
             <h4 className="text-sm sm:text-base font-semibold text-gray-100 group-hover:text-red-200 transition-colors m-0">
-              {!isMovieAvailableInRegion
-                ? `Not Available for Streaming in ${selectedRegionInfo?.name || 'Your Region'}?`
-                : `Unlock 10,000+ Hidden Global Movies with ExpressVPN`}
+              {isGeoBlocked
+                ? `Not Available for Streaming in ${displayCountryName}?`
+                : `Bypass ISP Throttling & Unblock Restricted Sites`}
             </h4>
 
             {/* Dynamic Body Description */}
-            <p className="text-xs text-gray-300 font-light mt-1 leading-relaxed m-0">
-              {!isMovieAvailableInRegion
-                ? `This film is geo-blocked or missing from ${selectedRegionInfo?.name || 'local'} platforms. Connect to US or UK servers with ExpressVPN to bypass regional blocks &amp; stream ${movie?.Title || 'it'} immediately.`
-                : `Streaming ${movie?.Title || 'this movie'} in ${selectedRegionInfo?.name || 'your country'}? Use ExpressVPN to easily switch server regions &amp; access international US Netflix, Max, &amp; Prime video catalogs.`}
+            <p className="text-xs text-gray-300 font-light mt-1.5 leading-relaxed m-0">
+              {isGeoBlocked
+                ? `${movie?.Title || movie?.title || 'This film'} is geo-blocked in ${displayCountryName}. Connect to US or UK servers with ExpressVPN to bypass regional restrictions & watch right now.`
+                : `Watching ${movie?.Title || movie?.title || 'this movie'} in ${displayCountryName}? ExpressVPN stops ISP speed throttling, hides private browsing from network admins, and unlocks restricted sites, torrents & global streaming catalogs.`}
             </p>
           </div>
         </div>
 
         {/* Action Button */}
         <div className="flex items-center gap-2 text-xs sm:text-sm font-bold text-white shrink-0 w-full md:w-auto justify-center px-5 py-3 rounded-xl bg-gradient-to-r from-[#e01931] to-red-700 hover:from-red-500 hover:to-rose-600 transition-all shadow-md shadow-red-600/30 group-hover:shadow-red-600/50 z-10 border border-red-400/40 whitespace-nowrap">
-          <span>{!isMovieAvailableInRegion ? `Stream with ExpressVPN` : 'Get ExpressVPN (49% Off)'}</span>
+          <span>
+            {isGeoBlocked
+              ? `Watch ${movie?.Title || movie?.title || 'Movie'} via ExpressVPN`
+              : 'Unblock Sites & Bypass ISP Limits'}
+          </span>
           <ExternalLink size={14} className="group-hover:translate-x-0.5 transition-transform" />
         </div>
       </motion.a>
@@ -802,7 +810,7 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
           background: rgba(255, 255, 255, 0.2);
         }
       `}</style>
-    </motion.section>
+    </motion.div>
   );
 });
 
