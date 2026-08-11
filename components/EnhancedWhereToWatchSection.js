@@ -1,7 +1,7 @@
 // components/EnhancedWhereToWatchSection.js - SEO HIERARCHY FIXED (H2 -> H3) 🍷✅
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Play, Globe, ExternalLink, Loader, MapPin, ChevronDown, ChevronUp, Tv, Search, Info, Zap } from 'lucide-react';
+import { Play, Globe, ExternalLink, Loader, MapPin, ChevronDown, ChevronUp, Tv, Search, Info, ShieldCheck } from 'lucide-react';
 import Image from 'next/image';
 import { db } from '../lib/firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
@@ -210,7 +210,7 @@ function getDeepLink(providerId, region, title, tmdbId, providerName) {
       JP: 'amazon.co.jp'
     };
     const domain = amazonDomains[region] || 'amazon.com';
-    
+
     // Country-specific tracking tag routing
     const trackingTags = {
       IN: 'filmiway-21',
@@ -219,7 +219,7 @@ function getDeepLink(providerId, region, title, tmdbId, providerName) {
       CA: 'filmiway06-20'
     };
     const tag = trackingTags[region] || 'filmiway-20';
-    
+
     return `https://www.${domain}/s?k=${encodeURIComponent(title + " movie")}&tag=${tag}`;
   }
   return `https://www.themoviedb.org/movie/${tmdbId}/watch?locale=${region}`;
@@ -333,6 +333,44 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
     }
   }
   const hasOtherOptions = filteredFlatrate.length > 0 || filteredRent.length > 0 || filteredBuy.length > 0;
+  const isMovieAvailableInRegion = Boolean(currentRegionData && (heroAmazonProvider || hasOtherOptions));
+
+  const handleExpressVpnClick = async (e) => {
+    e.preventDefault();
+    // Open ExpressVPN tracking link immediately in a new tab
+    window.open("https://go.expressvpn.com/c/7564909/1462856/16063", "_blank", "noopener,noreferrer");
+
+    // Log click event & geolocation analytics to Firebase Firestore
+    try {
+      let country = selectedRegion || userCountry || 'US';
+      let city = 'Unknown';
+
+      try {
+        const response = await fetch('https://ipinfo.io/json');
+        if (response.ok) {
+          const data = await response.json();
+          country = data.country?.toUpperCase() || country;
+          city = data.city || 'Unknown';
+        }
+      } catch (err) {
+        // Silent fallback if IP info fails
+      }
+
+      await addDoc(collection(db, 'affiliate_clicks'), {
+        movieSlug: movie?.slug || movie?.tmdbId || 'unknown',
+        movieTitle: movie?.Title || 'Unknown Movie',
+        promoType: 'expressvpn',
+        isAvailableInRegion: isMovieAvailableInRegion,
+        selectedRegion: selectedRegion || 'US',
+        userCountry: country,
+        city: city,
+        timestamp: serverTimestamp(),
+        userAgent: typeof navigator !== 'undefined' ? navigator.userAgent : 'Unknown'
+      });
+    } catch (err) {
+      console.error("Firebase ExpressVPN click tracking error:", err);
+    }
+  };
   // ----------------------------------
 
   const StreamingPlatformCard = ({ provider, type, region }) => {
@@ -480,42 +518,62 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
         Where to Watch
       </h2>
 
-      {/* 🚀 GearUP Booster Affiliate Link Banner (Below Where to Watch Heading, Above Country Selector) */}
+      {/* 🚀 ExpressVPN Official Affiliate Link Banner (Prominent Brand & Dynamic Geo-Messaging) */}
       <motion.a
-        href="https://www.dpbolvw.net/click-101856314-17255582"
+        href="https://go.expressvpn.com/c/7564909/1462856/16063"
         target="_blank"
         rel="noopener noreferrer"
+        onClick={handleExpressVpnClick}
         initial={{ opacity: 0, y: -5 }}
         animate={{ opacity: 1, y: 0 }}
-        className="group relative flex flex-col sm:flex-row items-center justify-between gap-4 p-4 mb-6 rounded-2xl border border-amber-500/30 bg-gradient-to-r from-amber-950/30 via-amber-900/10 to-black/50 hover:border-amber-400/60 transition-all duration-300 backdrop-blur-md shadow-lg shadow-black/40 hover:shadow-amber-500/10 cursor-pointer overflow-hidden"
+        className="group relative flex flex-col md:flex-row items-start md:items-center justify-between gap-5 p-5 lg:p-6 mb-6 rounded-2xl border border-red-500/35 bg-gradient-to-r from-red-950/50 via-[#120507] to-black/90 hover:border-red-500/70 transition-all duration-300 backdrop-blur-md shadow-xl shadow-black/50 hover:shadow-red-600/15 cursor-pointer overflow-hidden"
       >
-        {/* Subtle background glow effect */}
-        <div className="absolute -left-10 -top-10 w-32 h-32 bg-amber-500/10 rounded-full blur-2xl group-hover:bg-amber-500/20 transition-all pointer-events-none" />
+        {/* Subtle red background aura */}
+        <div className="absolute -left-10 -top-10 w-40 h-40 bg-red-600/15 rounded-full blur-3xl group-hover:bg-red-600/25 transition-all pointer-events-none" />
 
-        <div className="flex items-center gap-3.5 w-full sm:w-auto z-10">
-          <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-400 shrink-0 group-hover:scale-105 group-hover:bg-amber-500/20 transition-all shadow-inner">
-            <Zap size={18} className="fill-amber-400/20" />
+        <div className="flex items-start sm:items-center gap-4 flex-1 min-w-0 z-10">
+          {/* ExpressVPN Official Red Brand Badge */}
+          <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-[#e01931] border border-red-400/40 text-white shrink-0 group-hover:scale-105 transition-transform shadow-md shadow-red-900/60 mt-0.5 sm:mt-0">
+            <svg className="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
+              <path d="M12 2L2 7v6c0 5.55 3.84 10.74 10 12 6.16-1.26 10-6.45 10-12V7l-10-5zm0 4.5l6 3v4.5c0 3.85-2.6 7.42-6 8.4-3.4-.98-6-4.55-6-8.4V9.5l6-3z" />
+            </svg>
           </div>
-          <div className="flex flex-col">
-            <div className="flex items-center gap-2 flex-wrap">
-              <span className="text-sm font-semibold text-white group-hover:text-amber-200 transition-colors">
-                Facing Stream Lag or Regional Restrictions?
+
+          <div className="flex flex-col flex-1 min-w-0">
+            {/* ExpressVPN Brand Header */}
+            <div className="flex items-center gap-2.5 mb-1 flex-wrap">
+              <span className="text-sm font-extrabold text-white tracking-wide uppercase">
+                ExpressVPN
               </span>
-              <span className="text-[11px] font-medium text-amber-400/90 tracking-wide">
-                • Special Offer
+              <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-red-600/30 text-red-300 border border-red-500/40 shrink-0">
+                {!isMovieAvailableInRegion ? `🔒 REGION LOCKED IN ${selectedRegionInfo?.name?.toUpperCase() || 'YOUR REGION'}` : '🌐 OFFICIAL STREAMING PARTNER'}
               </span>
             </div>
-            <span className="text-xs text-gray-400 font-light mt-1 leading-relaxed">
-              Bypass ISP throttling &amp; optimize your network connection for smooth HD playback with GearUP Booster.
-            </span>
+
+            {/* Dynamic Headline */}
+            <h4 className="text-sm sm:text-base font-semibold text-gray-100 group-hover:text-red-200 transition-colors m-0">
+              {!isMovieAvailableInRegion
+                ? `Not Available for Streaming in ${selectedRegionInfo?.name || 'Your Region'}?`
+                : `Unlock 10,000+ Hidden Global Movies with ExpressVPN`}
+            </h4>
+
+            {/* Dynamic Body Description */}
+            <p className="text-xs text-gray-300 font-light mt-1 leading-relaxed m-0">
+              {!isMovieAvailableInRegion
+                ? `This film is geo-blocked or missing from ${selectedRegionInfo?.name || 'local'} platforms. Connect to US or UK servers with ExpressVPN to bypass regional blocks &amp; stream ${movie?.Title || 'it'} immediately.`
+                : `Streaming ${movie?.Title || 'this movie'} in ${selectedRegionInfo?.name || 'your country'}? Use ExpressVPN to easily switch server regions &amp; access international US Netflix, Max, &amp; Prime video catalogs.`}
+            </p>
           </div>
         </div>
 
-        <div className="flex items-center gap-2 text-xs font-bold text-gray-900 shrink-0 w-full sm:w-auto justify-center px-4 py-2.5 rounded-xl bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 hover:from-amber-300 hover:to-yellow-300 transition-all shadow-md shadow-amber-500/20 group-hover:shadow-amber-500/40 z-10">
-          <span>Stream Smoothly</span>
+        {/* Action Button */}
+        <div className="flex items-center gap-2 text-xs sm:text-sm font-bold text-white shrink-0 w-full md:w-auto justify-center px-5 py-3 rounded-xl bg-gradient-to-r from-[#e01931] to-red-700 hover:from-red-500 hover:to-rose-600 transition-all shadow-md shadow-red-600/30 group-hover:shadow-red-600/50 z-10 border border-red-400/40 whitespace-nowrap">
+          <span>{!isMovieAvailableInRegion ? `Stream with ExpressVPN` : 'Get ExpressVPN (49% Off)'}</span>
           <ExternalLink size={14} className="group-hover:translate-x-0.5 transition-transform" />
         </div>
       </motion.a>
+
+
 
       {isLoading ? (
         <div className="w-full min-h-[250px] rounded-2xl border border-white/5 bg-white/[0.02] flex items-center justify-center animate-pulse">
@@ -618,7 +676,7 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
                 transition={{ duration: 0.3 }}
                 className="space-y-8"
               >
-                
+
                 {heroAmazonProvider && (
                   <div className="w-full pb-4">
                     <HeroAmazonCard provider={heroAmazonProvider} type={heroAmazonType} region={selectedRegion} />
