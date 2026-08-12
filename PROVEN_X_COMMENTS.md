@@ -4,9 +4,12 @@ This document stores Filmiway's proven, high-converting X (Twitter) comment temp
 
 ---
 
-## 🚫 Forbidden Words (DO NOT USE)
+## 🚫 Forbidden Words & Anti-Shadowban Rules
 * **NEVER USE:** `guide`, `timecodes`, `parents guide`, `utility`, `website`, `check out our site`
-* **WHY:** These corporate/promotional words get flagged as spam by X's algorithm and lower engagement.
+* **RAW LINK SHADOWBAN:** X automatically shadow-hides replies on big accounts like `@DiscussingFilm` if a raw `https://` link is placed directly in the main reply!
+* **THE 2 PROVEN BYPASS METHODS:**
+  1. **Method 1 (Self-Reply Thread):** Post Reply 1 with 100% organic text (NO LINK). Then reply to your OWN comment with the link!
+  2. **Method 2 (Link in Bio):** Reference *"timestamps link in bio"* in the main reply.
 
 ---
 
@@ -50,3 +53,14 @@ This document stores Filmiway's proven, high-converting X (Twitter) comment temp
 1. **Always lead with a 100% human film reaction** (quote, joke, emotional response, or actor praise).
 2. **Keep the transition smooth and natural** using *"before things get awkward"* or *"if you're doing a family/partner rewatch"*.
 3. **End simply with:** `here are the timestamps: (link)` or `the timestamps are here: (link)`.
+
+---
+
+## 🎬 Nymphomaniac: Vol. I Verified Comments
+- *"Charlotte Gainsbourg & Shia LaBeouf really went full send with Lars von Trier on this one 😂 If you’re planning to watch Nymphomaniac with family... STOP right now. Just no way 😂 It’s NC-17. If you still wanna watch but wanna skip the most explicit scenes before things get weird, here are the timestamps: https://www.filmiway.com/movie/nymphomaniac-vol-i/skip-timestamps"*
+
+---
+
+## 🎬 Titanic (Bill Paxton / James Cameron) Verified Comments
+- **Step 1 (Main Comment - No Link):** *"Bill Paxton breaking that news to James Cameron mid-expedition while 13,000 feet deep at the Titanic wreck is such a surreal piece of film history."*
+- **Step 2 (Self-Reply - With Link):** *"For anyone rewatching Titanic with family or kids and wanting to skip the car scene/drawing scene, the exact timestamps are here: https://www.filmiway.com/movie/titanic/skip-timestamps"*

@@ -321,7 +321,7 @@ export default function UniversalMoviePage({ movie }) {
 
     const faq1 = {
         question: `Is ${movie.Title} safe to watch with family?`,
-        answer: hasTimestamps 
+        answer: hasTimestamps
             ? `No. ${movie.Title} is not safe to watch with family without caution because it contains explicit content, earning it a ${movie.safetyScore}/10 (${movie.safetyLabel}) Family Safety Score. Adults can use Filmiway's timestamps to skip all ${filteredHeavyScenes.length} explicit scene${filteredHeavyScenes.length > 1 ? 's' : ''} in the ${currentRuntime} runtime.`
             : `Yes. ${movie.Title} is safe to watch with family. It earns a ${movie.safetyScore}/10 (${movie.safetyLabel}) Family Safety Score because it is completely free of explicit, intimate, or sexual scenes throughout its full ${currentRuntime} runtime.`
     };
@@ -868,21 +868,21 @@ export async function getStaticProps({ params }) {
     let similarMovies = [];
     if (primarySlug && COLLECTIONS[primarySlug] && COLLECTIONS[primarySlug].movies) {
         let collectionImdbIDs = COLLECTIONS[primarySlug].movies.filter(id => id !== baseMovie.imdbID);
-        
+
         // Filter out empty (noindex) movies and apply family safety guard
         let candidateIDs = collectionImdbIDs.filter(id => {
             const m = masterDatabase.find(dbm => dbm.imdbID === id);
             if (!m) return false;
-            
+
             const tsData = masterTimestampsData[String(m.tmdbId)] || { scenes: [] };
             const hasTimestamps = tsData.scenes && tsData.scenes.length > 0;
             const hasSummary = !!(tsData.Summary && tsData.Summary.trim().length);
             if (!hasTimestamps && !hasSummary) return false;
-            
+
             if (movie.Rated === 'PG' || movie.Rated === 'PG-13' || movie.Rated === 'G') {
-                 const candTmdb = tmdbCache[id] || {};
-                 const candRating = (candTmdb.ageRating || 'NR').toUpperCase();
-                 if (candRating === 'R' || candRating === 'NC-17') return false;
+                const candTmdb = tmdbCache[id] || {};
+                const candRating = (candTmdb.ageRating || 'NR').toUpperCase();
+                if (candRating === 'R' || candRating === 'NC-17') return false;
             }
             return true;
         });
@@ -896,7 +896,7 @@ export async function getStaticProps({ params }) {
                 similarMovies.push({
                     title: m.Title,
                     slug: m.slug,
-                    poster: cData.poster_path ? `${cData.poster_path}` : null 
+                    poster: cData.poster_path ? `${cData.poster_path}` : null
                 });
             }
         }
@@ -904,11 +904,11 @@ export async function getStaticProps({ params }) {
 
     // Fallback if not enough movies found
     if (similarMovies.length < 4) {
-        const fallbacks = ['tt0111161', 'tt0468569', 'tt0137523', 'tt0993846']; 
+        const fallbacks = ['tt0111161', 'tt0468569', 'tt0137523', 'tt0993846'];
         const safeFallbacks = ['tt0109830', 'tt0120737', 'tt0241527', 'tt0499549'];
         const isFamilySafe = (movie.Rated === 'PG' || movie.Rated === 'PG-13' || movie.Rated === 'G');
         const fallbackIDs = isFamilySafe ? safeFallbacks : fallbacks;
-        
+
         for (let id of fallbackIDs) {
             if (id === baseMovie.imdbID) continue;
             if (similarMovies.length >= 4) break;
@@ -916,21 +916,21 @@ export async function getStaticProps({ params }) {
 
             const m = masterDatabase.find(dbm => dbm.imdbID === id);
             if (m) {
-                 const tsData = masterTimestampsData[String(m.tmdbId)] || { scenes: [] };
-                 const hasTimestamps = tsData.scenes && tsData.scenes.length > 0;
-                 const hasSummary = !!(tsData.Summary && tsData.Summary.trim().length);
-                 if (hasTimestamps || hasSummary) {
-                     const cData = tmdbCache[id] || {};
-                     similarMovies.push({
-                         title: m.Title,
-                         slug: m.slug,
-                         poster: cData.poster_path ? `${cData.poster_path}` : null 
-                     });
-                 }
+                const tsData = masterTimestampsData[String(m.tmdbId)] || { scenes: [] };
+                const hasTimestamps = tsData.scenes && tsData.scenes.length > 0;
+                const hasSummary = !!(tsData.Summary && tsData.Summary.trim().length);
+                if (hasTimestamps || hasSummary) {
+                    const cData = tmdbCache[id] || {};
+                    similarMovies.push({
+                        title: m.Title,
+                        slug: m.slug,
+                        poster: cData.poster_path ? `${cData.poster_path}` : null
+                    });
+                }
             }
         }
     }
-    
+
     movie.similarMovies = similarMovies;
 
     return { props: { movie } };
