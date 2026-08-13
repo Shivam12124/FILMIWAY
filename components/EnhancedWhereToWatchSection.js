@@ -543,12 +543,12 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
 
           <div className="flex flex-col flex-1 min-w-0">
             {/* ExpressVPN Brand Header */}
-            <div className="flex flex-col items-start gap-1.5 mb-1">
+            <div className="flex flex-col items-start gap-0.5 mb-1">
               <span className="text-sm font-extrabold text-white tracking-wide uppercase">
                 ExpressVPN
               </span>
-              <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-red-600/30 text-red-300 border border-red-500/40 shrink-0">
-                🔥 SPECIAL OFFER FOR FILMIWAY USERS • $2.99/MO
+              <span className="text-[11px] font-bold uppercase tracking-wider text-red-400">
+                Special Offer for Filmiway Users • $2.99/mo + 4 Months Free
               </span>
             </div>
 
@@ -569,13 +569,13 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
         </div>
 
         {/* Action Button */}
-        <div className="flex items-center gap-2 text-xs sm:text-sm font-bold text-white shrink-0 w-full md:w-auto justify-center px-5 py-3 rounded-xl bg-gradient-to-r from-[#e01931] to-red-700 hover:from-red-500 hover:to-rose-600 transition-all shadow-md shadow-red-600/30 group-hover:shadow-red-600/50 z-10 border border-red-400/40 whitespace-nowrap">
-          <span>
+        <div className="flex items-center gap-2 text-xs sm:text-sm font-bold text-white shrink-0 w-full md:w-auto justify-center px-3.5 py-2.5 sm:px-5 sm:py-3 rounded-xl bg-gradient-to-r from-[#e01931] to-red-700 hover:from-red-500 hover:to-rose-600 transition-all shadow-md shadow-red-600/30 group-hover:shadow-red-600/50 z-10 border border-red-400/40 text-center leading-snug max-w-full">
+          <span className="text-center">
             {isGeoBlocked
               ? `Watch ${movie?.Title || movie?.title || 'Movie'} ($2.99/mo + 4 Months Free)`
               : 'Claim Filmiway Deal ($2.99/mo + 4 Months Free)'}
           </span>
-          <ExternalLink size={14} className="group-hover:translate-x-0.5 transition-transform" />
+          <ExternalLink size={14} className="group-hover:translate-x-0.5 transition-transform shrink-0" />
         </div>
       </motion.a>
 
