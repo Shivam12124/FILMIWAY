@@ -170,8 +170,15 @@ export default function FilmiwayVsImdbParentsGuide() {
                 <button type="submit" className="absolute inset-y-1.5 right-1.5 bg-yellow-500 hover:bg-yellow-400 text-black px-6 rounded-full font-bold tracking-wide transition-colors">
                   Try It
                 </button>
+              <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-gray-400 font-light mt-8">
+                <Link href="/vidangel-alternatives" className="hover:text-yellow-400 underline transition-colors">
+                  Best VidAngel Alternatives (100% Free)
+                </Link>
+                <span>•</span>
+                <Link href="/watch-along-timer" className="hover:text-yellow-400 underline transition-colors">
+                  Live Watch-Along Sync Timer
+                </Link>
               </div>
-            </form>
           </footer>
 
         </main>
