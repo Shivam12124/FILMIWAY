@@ -16667,8 +16667,7 @@
         "start": "01:25:10",
         "end": "01:28:30",
         "type": "Violence & Gore",
-        "severity": "Moderate",
-        "description": "Green Goblin attacks and Aunt May is tragically injured during a high-stakes battle."
+        "severity": "Moderate"
       },
       {
         "start": "",
@@ -17849,19 +17848,22 @@
         "start": "0:23:14",
         "end": "0:24:46",
         "type": "Sex & Nudity",
-        "severity": "High"
+        "severity": "High",
+        "description": "Lengthy explicit sexual content featuring a topless woman (Florence Pugh), strong intimate activity, and repeated sexual positioning."
       },
       {
         "start": "1:14:38",
         "end": "1:15:14",
         "type": "Nudity",
-        "severity": "High"
+        "severity": "High",
+        "description": "Lengthy nudity following sexual activity featuring a fully nude woman (Florence Pugh) and male (Cillian Murphy) character."
       },
       {
         "start": "1:15:43",
         "end": "1:16:00",
         "type": "Sex & Nudity",
-        "severity": "High"
+        "severity": "High",
+        "description": "Explicit sexual content featuring female (Florence Pugh) nudity and vigorous intimate activity during a chair sequence."
       },
       {
         "start": "",
