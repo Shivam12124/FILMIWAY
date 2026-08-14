@@ -533,9 +533,9 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
         {/* Subtle red background aura */}
         <div className="absolute -left-10 -top-10 w-40 h-40 bg-red-600/15 rounded-full blur-3xl group-hover:bg-red-600/25 transition-all pointer-events-none" />
 
-        <div className="flex items-start sm:items-center gap-4 flex-1 min-w-0 z-10">
+        <div className="flex items-start gap-4 flex-1 min-w-0 z-10">
           {/* ExpressVPN Official Red Brand Badge */}
-          <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-[#e01931] border border-red-400/40 text-white shrink-0 group-hover:scale-105 transition-transform shadow-md shadow-red-900/60 mt-0.5 sm:mt-0">
+          <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-[#e01931] border border-red-400/40 text-white shrink-0 group-hover:scale-105 transition-transform shadow-md shadow-red-900/60 mt-0.5">
             <svg className="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
               <path d="M12 2L2 7v6c0 5.55 3.84 10.74 10 12 6.16-1.26 10-6.45 10-12V7l-10-5zm0 4.5l6 3v4.5c0 3.85-2.6 7.42-6 8.4-3.4-.98-6-4.55-6-8.4V9.5l6-3z" />
             </svg>

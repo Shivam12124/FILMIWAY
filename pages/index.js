@@ -104,13 +104,13 @@ const SearchBar = () => {
     setQuery(val);
     if (val.trim().length > 1) {
       const normalizedQuery = normalizeForSearch(val);
-      
+
       const filtered = masterDatabase.filter(movie => {
         const title = movie.Title || movie.title || '';
         const normalizedTitle = normalizeForSearch(title);
         // Loose continuous match
         if (normalizedTitle.includes(normalizedQuery)) return true;
-        
+
         // Sub-word match
         const queryWords = val.toLowerCase().split(/[\s\W]+/).filter(Boolean);
         const titleWords = title.toLowerCase().split(/[\s\W]+/).filter(Boolean);
@@ -147,7 +147,7 @@ const SearchBar = () => {
       </form>
       {isOpen && (
         <div className="absolute left-0 right-0 mt-2 bg-[#0a0a0a] border border-white/10 rounded-xl shadow-2xl overflow-hidden z-50 divide-y divide-white/5 max-h-[350px] overflow-y-auto" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-          <style dangerouslySetInnerHTML={{__html: `div::-webkit-scrollbar { display: none; }`}} />
+          <style dangerouslySetInnerHTML={{ __html: `div::-webkit-scrollbar { display: none; }` }} />
           {results.length > 0 ? (
             <ul className="py-1">
               {results.map((movie) => {
@@ -156,7 +156,7 @@ const SearchBar = () => {
                 const posterUrl = cached.poster_path ? `https://image.tmdb.org/t/p/w92${cached.poster_path}` : null;
                 const movieTitle = movie.Title || movie.title || 'Unknown';
                 const movieYear = movie.year || movie.Year || '';
-                
+
                 return (
                   <li key={movie.imdbID}>
                     <Link href={`/movie/${safeSlug}/skip-timestamps`} onClick={() => { setIsOpen(false); setQuery(''); }} className="flex items-center gap-3 px-4 py-3 hover:bg-white/5 hover:text-amber-400 transition-all text-left text-sm font-medium text-white group">

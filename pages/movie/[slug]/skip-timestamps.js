@@ -34,6 +34,22 @@ const UNIVERSAL_FALLBACK_TAGLINES = [
 
 const getTMDBImage = (path, size = 'w1280') => path ? `https://image.tmdb.org/t/p/${size}${path}` : null;
 
+// 🛡️ VERIFIED TOP & MANUAL MOVIES (Keep full Parents Guide for Violence & Profanity)
+const VERIFIED_PARENTS_GUIDE_IDS = new Set([
+    // Top 50 Famous Masterpieces & Manual Movies
+    'tt15398776', 'tt0993846', 'tt0137523', 'tt0120338', 'tt1375666', 'tt0468569', 'tt0114369', 'tt0103772',
+    'tt2322441', 'tt0163970', 'tt0477348', 'tt0110912', 'tt0068646', 'tt0246578', 'tt33397980', 'tt0816692',
+    'tt1130884', 'tt0482571', 'tt0209144', 'tt6751668', 'tt0364569', 'tt0947798', 'tt0120663', 'tt0099685',
+    'tt0108052', 'tt0172495', 'tt0120815', 'tt0111161', 'tt0133093', 'tt1937390', 'tt10886166', 'tt17351924',
+    'tt14230458', 'tt290098', 'tt1245084', 'tt0388795', 'tt4016934', 'tt0213847', 'tt0309987', 'tt0120890',
+    'tt2267998', 'tt1392214', 'tt0443706', 'tt0113277', 'tt1285016', 'tt2582802', 'tt8579674', 'tt1345836',
+    'tt0167260', 'tt0469494', 'tt0113277', '872585', '106646', '550', '597', '27205', '155', '807', '402', '617',
+    '884', '979', '1278', '2251', '4588', '10867', '11013', '106646', '152584', '216015', '341174', '401981',
+    '664413', '792307', '1064213', '2105', '6977', '680', '238', '141', '1339713', '157336', '11324', '19995',
+    '77', '496243', '670', '44214', '345', '769', '424', '98', '857', '278', '603', '181886', '930564', '43939', '1422',
+    '210577', '146233', '1949', '949', '37799', '244786', '530915', '7345'
+]);
+
 // ✅ YOUR MASTERPIECE HERO BANNER (Made Universal & SEO/CLS Optimized!)
 const UniversalBanner = ({ movie }) => {
     const [showTrailer, setShowTrailer] = useState(false);
@@ -286,6 +302,9 @@ export default function UniversalMoviePage({ movie }) {
 
     if (router.isFallback || !movie) return <div className="min-h-screen bg-black" />;
 
+    const isVerifiedParentsGuideMovie = VERIFIED_PARENTS_GUIDE_IDS.has(String(movie?.imdbID || '')) || 
+                                       VERIFIED_PARENTS_GUIDE_IDS.has(String(movie?.tmdbId || ''));
+
     // Generate the specific collection boolean dynamically!
     const propName = getCollectionProp(movie.primaryCollectionSlug);
     const dynamicProps = propName ? { [propName]: true } : {};
@@ -351,11 +370,28 @@ export default function UniversalMoviePage({ movie }) {
 
     const dynamicTemplateFaqs = [faq1, faq2, faq3, faq4, faq5];
 
+    // Filter template FAQs for non-whitelisted movies
+    let filteredFaqs = dynamicTemplateFaqs;
+    if (!isVerifiedParentsGuideMovie) {
+        filteredFaqs = dynamicTemplateFaqs.filter(faq => {
+            const q = (faq.question || '').toLowerCase();
+            return !q.includes('violence and gore') && !q.includes('profanity or swearing');
+        });
+    }
+
     const rawFaqs = getVisibleMovieFAQs(movie.Title, movie.tmdbId, currentRuntime) || [];
-    const faqs = [...dynamicTemplateFaqs];
+    const faqs = [...filteredFaqs];
 
     rawFaqs.forEach(customFaq => {
         const qText = (customFaq.question || customFaq.q || '').toLowerCase();
+
+        // On non-whitelisted movies, skip custom profanity and violence FAQs
+        if (!isVerifiedParentsGuideMovie) {
+            if (qText.includes('profanity') || qText.includes('swearing') || qText.includes('violence and gore') || qText.includes('violence & gore')) {
+                return;
+            }
+        }
+
         if (!faqs.some(f => (f.question || f.q || '').toLowerCase().includes(qText.substring(0, 15)))) {
             faqs.push(customFaq);
         }
@@ -672,10 +708,26 @@ export async function getStaticProps({ params }) {
 
     const hardcodedScenes = collectionData?.SENSITIVE_TIMELINES?.[baseMovie.tmdbId]?.scenes || [];
 
+    // 🛡️ VERIFIED TOP & MANUAL MOVIES (Keep full Parents Guide for Violence & Profanity)
+    const isVerifiedParentsGuideMovie = VERIFIED_PARENTS_GUIDE_IDS.has(String(baseMovie.imdbID)) || 
+                                       VERIFIED_PARENTS_GUIDE_IDS.has(String(baseMovie.tmdbId));
+
     // ✅ FIX: Make masterTimestamps the absolute single source of truth to prevent duplicates.
-    // If masterTimestamps has an entry for this movie, USE IT ALONE (ignoring the old buggy hardcoded data).
-    // Otherwise, fall back to the old hardcoded scenes.
-    const resolvedSensitiveScenes = rawSensitiveData ? (rawSensitiveData.scenes || []) : hardcodedScenes;
+    const baseScenes = rawSensitiveData ? (rawSensitiveData.scenes || []) : hardcodedScenes;
+    const resolvedSensitiveScenes = baseScenes.filter(scene => {
+        // Always keep valid timestamped scene entries (has start time)
+        if (scene.start && scene.start.trim() !== '') return true;
+
+        const type = (scene.type || '').toLowerCase();
+        const isViolenceOrProfanity = type.includes('violence') || type.includes('gore') || type.includes('profanity') || type.includes('language') || type.includes('swearing');
+
+        // If it's a non-timestamped Violence/Profanity text entry, keep ONLY if it's a verified top/manual movie
+        if (isViolenceOrProfanity) {
+            return isVerifiedParentsGuideMovie;
+        }
+
+        return true;
+    });
 
     // 🛡️ SAFE POSTER OVERRIDES: Use safe alternate TMDB images instead of explicit ones
     const SAFE_OVERRIDES = {
