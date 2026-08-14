@@ -4653,6 +4653,20 @@ return (
                                 </p>
                             </motion.div>
 
+                            <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-xs text-gray-400 font-light mb-6">
+                                <Link href="/vidangel-alternatives" className="hover:text-yellow-400 underline transition-colors">
+                                    Best VidAngel Alternatives (100% Free)
+                                </Link>
+                                <span>•</span>
+                                <Link href="/watch-along-timer" className="hover:text-yellow-400 underline transition-colors">
+                                    Live Watch-Along Sync Timer
+                                </Link>
+                                <span>•</span>
+                                <Link href="/filmiway-vs-imdb-parents-guide" className="hover:text-yellow-400 underline transition-colors">
+                                    Filmiway vs IMDb
+                                </Link>
+                            </div>
+
                             <div className="flex items-center justify-center space-x-8 text-gray-500 text-sm pb-10">
                                 <span>© 2026 Filmiway</span>
                                 <span></span>

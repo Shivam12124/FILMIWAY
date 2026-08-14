@@ -376,6 +376,19 @@ We’ve all had this experience. You’re comfortably seated on your couch, watc
 
         {/* FOOTER */}
         <footer className="border-t border-white/5 py-8 text-center text-gray-500 text-sm">
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-xs text-gray-400 font-light mb-4">
+            <Link href="/vidangel-alternatives" className="hover:text-yellow-400 underline transition-colors">
+              Best VidAngel Alternatives (100% Free)
+            </Link>
+            <span>•</span>
+            <Link href="/watch-along-timer" className="hover:text-yellow-400 underline transition-colors">
+              Live Watch-Along Sync Timer
+            </Link>
+            <span>•</span>
+            <Link href="/filmiway-vs-imdb-parents-guide" className="hover:text-yellow-400 underline transition-colors">
+              Filmiway vs IMDb
+            </Link>
+          </div>
           <p>&copy; 2026 Filmiway. All rights reserved.</p>
         </footer>
       </div>

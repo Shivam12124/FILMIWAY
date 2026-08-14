@@ -571,6 +571,19 @@ export default function UniversalMoviePage({ movie }) {
                     <p className="text-gray-600 text-[10px] sm:text-xs font-light">
                         This product uses the TMDB API but is not endorsed or certified by TMDB.
                     </p>
+                    <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-xs text-gray-400 font-light mt-6">
+                        <Link href="/vidangel-alternatives" className="hover:text-yellow-400 underline transition-colors">
+                            Best VidAngel Alternatives (100% Free)
+                        </Link>
+                        <span>•</span>
+                        <Link href="/watch-along-timer" className="hover:text-yellow-400 underline transition-colors">
+                            Live Watch-Along Sync Timer
+                        </Link>
+                        <span>•</span>
+                        <Link href="/filmiway-vs-imdb-parents-guide" className="hover:text-yellow-400 underline transition-colors">
+                            Filmiway vs IMDb
+                        </Link>
+                    </div>
                 </div>
             </main>
         </div>

@@ -29,6 +29,11 @@ export default function VidAngelAlternatives() {
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState('');
   const [openFaq, setOpenFaq] = useState(null);
+  const [isMounted, setIsMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -294,7 +299,7 @@ export default function VidAngelAlternatives() {
 
         <Header />
 
-        <main className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 sm:pt-44 lg:pt-48 pb-24">
+        <main className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-48 sm:pt-56 lg:pt-60 pb-24">
           
           {/* HERO SECTION */}
           <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
@@ -304,13 +309,13 @@ export default function VidAngelAlternatives() {
               transition={{ duration: 0.6 }}
             >
               {/* HERO BADGES */}
-              <div className="flex flex-wrap items-center justify-center gap-3 mb-8">
-                <div className="inline-flex items-center gap-1.5 border border-white/15 bg-white/[0.04] rounded-full px-4 py-1.5 text-gray-300 text-xs font-light tracking-wide uppercase backdrop-blur-md shadow-md">
-                  <Clock className="w-3.5 h-3.5 text-yellow-400" />
-                  <span>Updated: <strong className="text-white font-medium">{publishDateDisplay}</strong> • Editorial Review</span>
+              <div className="flex flex-wrap items-center justify-center gap-3.5 mb-8 pt-4" suppressHydrationWarning>
+                <div className="inline-flex items-center gap-2 border border-yellow-500/40 bg-zinc-900/95 rounded-full px-5 py-2 text-gray-200 text-xs sm:text-sm font-medium tracking-wide uppercase backdrop-blur-md shadow-[0_0_20px_rgba(245,158,11,0.15)] transition-all" suppressHydrationWarning>
+                  {isMounted ? <Clock className="w-4 h-4 text-yellow-400 shrink-0" /> : <div className="w-4 h-4" />}
+                  <span>Updated: <strong className="text-yellow-400 font-bold">{publishDateDisplay}</strong> • Editorial Review</span>
                 </div>
-                <div className="inline-flex items-center gap-1.5 border border-yellow-500/30 bg-yellow-500/10 rounded-full px-4 py-1.5 text-yellow-400 text-xs font-semibold tracking-wider uppercase shadow-[0_0_15px_rgba(245,158,11,0.15)]">
-                  <Sparkles className="w-3.5 h-3.5" />
+                <div className="inline-flex items-center gap-2 border border-amber-500/50 bg-amber-500/15 rounded-full px-5 py-2 text-yellow-400 text-xs sm:text-sm font-bold tracking-wider uppercase shadow-[0_0_20px_rgba(245,158,11,0.2)]" suppressHydrationWarning>
+                  {isMounted ? <Sparkles className="w-4 h-4 text-yellow-400 shrink-0" /> : <div className="w-4 h-4" />}
                   <span>100% Free & No Subscription</span>
                 </div>
               </div>
