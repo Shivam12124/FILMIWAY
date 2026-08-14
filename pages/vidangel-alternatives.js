@@ -142,7 +142,7 @@ export default function VidAngelAlternatives() {
         "Works with Netflix, Prime Video, HBO Max, Hulu, Paramount+, Disney+, and 4K Blu-ray",
         "Includes real-time Watch-Along timer that alerts you 12 seconds before explicit scenes",
         "No account creation, no password linking, no credit card required",
-        "Provides curated Parents Guides, Age Ratings, and Safety Scores"
+        "Provides curated Parents Guides, Age Ratings, and Family Safety Scores"
       ],
       cons: [
         "Requires manual skipping on TV via remote when prompted by phone timer alert"
@@ -294,7 +294,7 @@ export default function VidAngelAlternatives() {
 
         <Header />
 
-        <main className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 sm:pt-36 pb-24">
+        <main className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 sm:pt-44 lg:pt-48 pb-24">
           
           {/* HERO SECTION */}
           <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
@@ -303,13 +303,16 @@ export default function VidAngelAlternatives() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <div className="inline-flex items-center gap-2 border border-yellow-500/30 bg-yellow-500/10 rounded-full px-4 py-1.5 text-yellow-400 text-xs font-semibold tracking-wider uppercase mb-6 shadow-[0_0_15px_rgba(245,158,11,0.15)]">
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>100% Free & No Subscription Required</span>
-              </div>
-              
-              <div className="text-gray-400 text-xs sm:text-sm mb-4 font-light tracking-wide uppercase">
-                Updated: <span className="text-gray-200 font-medium">{publishDateDisplay}</span> • Editorial Review
+              {/* HERO BADGES */}
+              <div className="flex flex-wrap items-center justify-center gap-3 mb-8">
+                <div className="inline-flex items-center gap-1.5 border border-white/15 bg-white/[0.04] rounded-full px-4 py-1.5 text-gray-300 text-xs font-light tracking-wide uppercase backdrop-blur-md shadow-md">
+                  <Clock className="w-3.5 h-3.5 text-yellow-400" />
+                  <span>Updated: <strong className="text-white font-medium">{publishDateDisplay}</strong> • Editorial Review</span>
+                </div>
+                <div className="inline-flex items-center gap-1.5 border border-yellow-500/30 bg-yellow-500/10 rounded-full px-4 py-1.5 text-yellow-400 text-xs font-semibold tracking-wider uppercase shadow-[0_0_15px_rgba(245,158,11,0.15)]">
+                  <Sparkles className="w-3.5 h-3.5" />
+                  <span>100% Free & No Subscription</span>
+                </div>
               </div>
 
               <h1 className="text-3xl sm:text-5xl lg:text-6xl font-light tracking-tight text-white mb-6 leading-[1.15]">
@@ -457,15 +460,14 @@ export default function VidAngelAlternatives() {
                     : 'border-white/10 bg-black/40 hover:border-white/20'
                 }`}
               >
-                {alt.isEditorChoice && (
-                  <div className="absolute -top-3.5 left-6 bg-yellow-500 text-black font-bold text-[11px] uppercase tracking-wider px-3.5 py-1 rounded-full shadow-md flex items-center gap-1">
-                    <Award className="w-3.5 h-3.5" />
-                    <span>Rank #1 • Editor's Choice</span>
-                  </div>
-                )}
-
                 <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-6 pb-6 border-b border-white/10">
                   <div>
+                    {alt.isEditorChoice && (
+                      <div className="inline-flex items-center gap-1.5 bg-yellow-500 text-black font-bold text-[11px] uppercase tracking-wider px-3.5 py-1 rounded-full shadow-md mb-3">
+                        <Award className="w-3.5 h-3.5" />
+                        <span>Rank #1 • Editor's Choice</span>
+                      </div>
+                    )}
                     <div className="flex items-center gap-3 mb-1">
                       <span className="text-xs font-mono font-bold text-black bg-yellow-500 px-2.5 py-1 rounded-md">
                         #{alt.rank}

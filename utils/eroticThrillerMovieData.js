@@ -39,24 +39,24 @@ export const STRATEGIC_QUOTES = {
 // ✅ SENSITIVE TIMELINES (Clinical, factual timestamps for the Parents Guide tool)
 export const SENSITIVE_TIMELINES = {
     // 1. Basic Instinct
-    402: { 
+    402: {
         scenes: [
-            { start: "0:03:15", end: "0:04:40", type: "Sex & Nudity", severity: "High" }, 
+            { start: "0:03:15", end: "0:04:40", type: "Sex & Nudity", severity: "High" },
             { start: "0:05:40", end: "0:06:50", type: "Nudity", severity: "Moderate" },
             { start: "0:22:35", end: "0:22:45", type: "Nudity", severity: "Moderate" },
-            { start: "0:27:55", end: "0:28:01", type: "Nudity", severity: "High" }, 
-            { start: "0:36:15", end: "0:39:10", type: "Nudity & Sex", severity: "High" }, 
+            { start: "0:27:55", end: "0:28:01", type: "Nudity", severity: "High" },
+            { start: "0:36:15", end: "0:39:10", type: "Nudity & Sex", severity: "High" },
             { start: "0:45:20", end: "0:45:30", type: "Nudity", severity: "High" },
-            { start: "1:11:15", end: "1:18:00", type: "Nudity & Sex", severity: "High" }, 
+            { start: "1:11:15", end: "1:18:00", type: "Nudity & Sex", severity: "High" },
             { start: "1:33:50", end: "1:33:55", type: "Nudity", severity: "Mild" },
             { start: "1:45:00", end: "1:45:24", type: "Sexual content & Nudity", severity: "High" },
             { start: "2:00:50", end: "2:03:25", type: "Sex & Nudity", severity: "High" }
-        ,
+            ,
             { start: "", end: "", type: "Profanity", severity: "High", description: "Approximately 40 uses of the F-word and frequent crude sexual references." },
             { start: "", end: "", type: "Violence & Gore", severity: "High", description: "Features graphic ice-pick murders with detailed shots of blood and physical injury. Contains themes of sexual violence and assault." }]
     },
     // 2. Eyes Wide Shut
-    345: { 
+    345: {
         scenes: [
             { start: "0:00:48", end: "0:00:53", type: "Partial Nudity(Woman)", severity: "Moderate" },
             { start: "0:13:10", end: "0:15:00", type: "Nudity(Woman)", severity: "High" },
@@ -70,7 +70,7 @@ export const SENSITIVE_TIMELINES = {
             { start: "1:07:32", end: "1:08:53", type: "Suggestive clothing (Lingerie)", severity: "Mild" },
             { start: "1:09:14", end: "1:09:25", type: "Sexual content & Nudity", severity: "High" },
             { start: "1:14:22", end: "1:19:46", type: "Nudity", severity: "High" },
-            { start: "1:19:47", end: "1:24:20", type: "Sex & Nudity", severity: "High" }, 
+            { start: "1:19:47", end: "1:24:20", type: "Sex & Nudity", severity: "High" },
             { start: "1:27:47", end: "1:29:45", type: "Nudity", severity: "Moderate" },
             { start: "1:47:56", end: "1:48:06", type: "Sexual content & Nudity", severity: "Moderate" },
             { start: "1:54:47", end: "1:54:57", type: "Sex & Nudity", severity: "High" },
@@ -79,23 +79,23 @@ export const SENSITIVE_TIMELINES = {
     },
     // 3. The Handmaiden (Handled via masterTimestamps.json to include descriptions)
     // 4. Lust, Caution
-    4588: { 
+    4588: {
         scenes: [
             { start: "1:00:15", end: "1:02:40", type: "Sex & Nudity", severity: "High" },
             { start: "1:32:35", end: "1:34:26", type: "Sex & Nudity", severity: "High" },
-            { start: "1:40:20", end: "1:43:36", type: "Sex & Nudity", severity: "High" }, 
+            { start: "1:40:20", end: "1:43:36", type: "Sex & Nudity", severity: "High" },
             { start: "1:52:50", end: "1:55:32", type: "Sex & Nudity", severity: "High" }
-        ,
+            ,
             { start: "", end: "", type: "Profanity", severity: "Moderate", description: "Minimal use of strong language (approximately 1 use of the F-word)." },
             { start: "", end: "", type: "Violence & Gore", severity: "Moderate", description: "Contains graphic wartime brutality, including an execution by firing squad and a brutal stabbing. Includes themes of sexual assault and predatory behavior." }]
     },
     // 5. Wild Things
-    617: { 
+    617: {
         scenes: [
             { start: "0:11:58", end: "0:12:27", type: "Suggestive clothing (Lingerie)", severity: "Moderate" },
             { start: "0:16:45", end: "0:16:55", type: "Suggestive clothing", severity: "Moderate" },
             { start: "0:17:25", end: "0:17:52", type: "Sex & Nudity", severity: "High" },
-            { start: "0:57:40", end: "0:59:55", type: "Sexual content & Nudity", severity: "High" }, 
+            { start: "0:57:40", end: "0:59:55", type: "Sexual content & Nudity", severity: "High" },
             { start: "1:01:35", end: "1:03:20", type: "Suggestive clothing (Woman in swimsuit)", severity: "Moderate" },
             { start: "1:09:30", end: "1:10:50", type: "Sexual content & Nudity", severity: "High" },
             { start: "1:24:25", end: "1:24:55", type: "Suggestive clothing (Lingerie)", severity: "Mild" },
@@ -104,7 +104,7 @@ export const SENSITIVE_TIMELINES = {
         ]
     },
     // 6. Unfaithful
-    2251: { 
+    2251: {
         scenes: [
             { start: "0:33:50", end: "0:36:26", type: "Sexual Content", severity: "High" },
             { start: "0:40:40", end: "0:41:10", type: "Sexual Content", severity: "High" },
@@ -118,7 +118,7 @@ export const SENSITIVE_TIMELINES = {
         ]
     },
     // 7. Fatal Attraction
-    10998: { 
+    10998: {
         scenes: [
             { start: "0:17:00", end: "0:18:57", type: "Sex & Nudity", severity: "High" },
             { start: "0:20:25", end: "0:21:16", type: "Sex & Nudity", severity: "High" },
@@ -127,7 +127,7 @@ export const SENSITIVE_TIMELINES = {
         ]
     },
     // 8. Body Heat
-    14412: { 
+    14412: {
         scenes: [
             { start: "0:20:55", end: "0:23:00", type: "Sexual Content & Nudity", severity: "Moderate" },
             { start: "0:24:30", end: "0:25:06", type: "Nudity", severity: "Moderate" },
@@ -140,7 +140,7 @@ export const SENSITIVE_TIMELINES = {
         ]
     },
     // 9. The Last Seduction
-    25284: { 
+    25284: {
         scenes: [
             { start: "0:30:15", end: "0:32:55", type: "Sex & Nudity", severity: "Moderate" },
             { start: "0:38:15", end: "0:38:30", type: "Partial Nudity", severity: "Moderate" },
@@ -150,7 +150,7 @@ export const SENSITIVE_TIMELINES = {
         ]
     },
     // 10. Bound
-    9303: { 
+    9303: {
         scenes: [
             { start: "0:13:00", end: "0:15:30", type: "Sexual Content", severity: "High" },
             { start: "0:19:35", end: "0:20:55", type: "Sex & Nudity", severity: "High" }
@@ -173,7 +173,7 @@ export const FALLBACK_POSTERS = {
 
 // ✅ Custom metric for this collection: 'seductionScore' and 'manipulationIndex'
 const createThrillerData = (data) => ({
-    seductionScore: 85, 
+    seductionScore: 85,
     manipulationIndex: 80,
     complexityLevel: "HIGH",
     dominantColor: "#7f1d1d",
@@ -182,151 +182,151 @@ const createThrillerData = (data) => ({
 
 export const COMPLETE_MOVIE_DATA = {
     402: createThrillerData({ // Basic Instinct
-        eroticTension: 98, complexityLevel: "EXTREME", 
-        dominantColor: "#e11d48", rating: 7.1, criticsScore: 56, audienceScore: 64, director: "Paul Verhoeven", 
-        cast: ["Michael Douglas", "Sharon Stone"], boxOffice: "$352.9 million", budget: "$49 million", 
+        eroticTension: 98, complexityLevel: "EXTREME",
+        dominantColor: "#e11d48", rating: 7.1, criticsScore: 56, audienceScore: 64, director: "Paul Verhoeven",
+        cast: ["Michael Douglas", "Sharon Stone"], boxOffice: "$352.9 million", budget: "$49 million",
         dna: { "Neo-Noir": 45, "Thriller": 35, "Mystery": 20 },
         scenes: [
-            { time: 5, intensity: 55, label: "The Ice Pick" }, 
-            { time: 52, intensity: 75, label: "The Interrogation" }, 
-            { time: 85, intensity: 62, label: "The Polygraph" }, 
+            { time: 5, intensity: 55, label: "The Ice Pick" },
+            { time: 52, intensity: 75, label: "The Interrogation" },
+            { time: 85, intensity: 62, label: "The Polygraph" },
             { time: 110, intensity: 70, label: "Car Chase" },
-            { time: 125, intensity: 92, label: "Under the Bed" } 
+            { time: 125, intensity: 92, label: "Under the Bed" }
         ],
         synopsis: "A brilliant, manipulative novelist becomes the prime suspect in a brutal murder. As the investigating detective falls deeper under her spell, the film masters the neo-noir trope of the ultimate femme fatale holding all the psychological cards.",
         themes: ["Psychological Dominance", "Neo-Noir", "Fatal Attraction"]
     }),
     345: createThrillerData({ // Eyes Wide Shut
-        eroticTension: 92, complexityLevel: "EXTREME", 
-        dominantColor: "#1e3a8a", rating: 7.5, criticsScore: 76, audienceScore: 74, director: "Stanley Kubrick", 
-        cast: ["Tom Cruise", "Nicole Kidman"], boxOffice: "$162 million", budget: "$65 million", 
+        eroticTension: 92, complexityLevel: "EXTREME",
+        dominantColor: "#1e3a8a", rating: 7.5, criticsScore: 76, audienceScore: 74, director: "Stanley Kubrick",
+        cast: ["Tom Cruise", "Nicole Kidman"], boxOffice: "$162 million", budget: "$65 million",
         dna: { "Psychological": 50, "Drama": 30, "Mystery": 20 },
         scenes: [
-            { time: 30, intensity: 58, label: "The Confession" }, 
-            { time: 65, intensity: 40, label: "The Costume Shop" }, 
-            { time: 95, intensity: 88, label: "The Mansion Ritual" }, 
-            { time: 120, intensity: 75, label: "The Mask on the Pillow" }, 
-            { time: 155, intensity: 52, label: "Awakening" } 
+            { time: 30, intensity: 58, label: "The Confession" },
+            { time: 65, intensity: 40, label: "The Costume Shop" },
+            { time: 95, intensity: 88, label: "The Mansion Ritual" },
+            { time: 120, intensity: 75, label: "The Mask on the Pillow" },
+            { time: 155, intensity: 52, label: "Awakening" }
         ],
         synopsis: "A doctor embarks on a night-long, surreal odyssey of moral discovery after his wife admits to suppressed desires. Kubrick’s final film is a hypnotic, dream-like exploration of jealousy, fidelity, and the hidden power structures of the elite.",
         themes: ["Secret Societies", "Marital Paranoia", "Class Voyeurism"]
     }),
     290098: createThrillerData({ // The Handmaiden
-        eroticTension: 95, complexityLevel: "EXTREME", 
-        dominantColor: "#065f46", rating: 8.1, criticsScore: 96, audienceScore: 91, director: "Park Chan-wook", 
-        cast: ["Kim Min-hee", "Kim Tae-ri", "Ha Jung-woo"], boxOffice: "$38.6 million", budget: "$8.8 million", 
+        eroticTension: 95, complexityLevel: "EXTREME",
+        dominantColor: "#065f46", rating: 8.1, criticsScore: 96, audienceScore: 91, director: "Park Chan-wook",
+        cast: ["Kim Min-hee", "Kim Tae-ri", "Ha Jung-woo"], boxOffice: "$38.6 million", budget: "$8.8 million",
         dna: { "Thriller": 45, "Romance": 35, "Crime": 20 },
         scenes: [
-            { time: 25, intensity: 35, label: "The Thimble" }, 
-            { time: 65, intensity: 72, label: "The Betrayal" }, 
-            { time: 95, intensity: 95, label: "Perspective Shift" }, 
-            { time: 120, intensity: 82, label: "The Library Destruction" }, 
-            { time: 140, intensity: 65, label: "The Ferry" } 
+            { time: 25, intensity: 35, label: "The Thimble" },
+            { time: 65, intensity: 72, label: "The Betrayal" },
+            { time: 95, intensity: 95, label: "Perspective Shift" },
+            { time: 120, intensity: 82, label: "The Library Destruction" },
+            { time: 140, intensity: 65, label: "The Ferry" }
         ],
         synopsis: "In 1930s Korea, a con man hires a pickpocket to become the maid of a Japanese heiress to steal her fortune. What follows is an intricate puzzle-box of shifting alliances, hidden motives, and visually stunning cinematic misdirection.",
         themes: ["Con Artistry", "Shifting Perspectives", "Class Subversion"]
     }),
-      4588: createThrillerData({ // Lust, Caution
-        eroticTension: 90, complexityLevel: "HIGH", 
-        dominantColor: "#78350f", rating: 7.5, criticsScore: 72, audienceScore: 82, director: "Ang Lee", 
-        cast: ["Tony Leung", "Tang Wei"], boxOffice: "$67.2 million", budget: "$15 million", 
+    4588: createThrillerData({ // Lust, Caution
+        eroticTension: 90, complexityLevel: "HIGH",
+        dominantColor: "#78350f", rating: 7.5, criticsScore: 72, audienceScore: 82, director: "Ang Lee",
+        cast: ["Tony Leung", "Tang Wei"], boxOffice: "$67.2 million", budget: "$15 million",
         dna: { "Espionage": 45, "Drama": 35, "Thriller": 20 },
         scenes: [
             { time: 40, intensity: 30, label: "The Operation Begins" },
-            { time: 85, intensity: 68, label: "The First Encounter" }, 
-            { time: 125, intensity: 84, label: "The Breaking Point" }, 
-            { time: 145, intensity: 90, label: "The Jewelry Store" }, 
-            { time: 155, intensity: 78, label: "The Quarry" } 
+            { time: 85, intensity: 68, label: "The First Encounter" },
+            { time: 125, intensity: 84, label: "The Breaking Point" },
+            { time: 145, intensity: 90, label: "The Jewelry Store" },
+            { time: 155, intensity: 78, label: "The Quarry" }
         ],
         synopsis: "During WWII in Shanghai, a young actress is recruited to seduce and assassinate a high-ranking political official. Ang Lee directs a tense, suffocating game of cat-and-mouse where the lines between espionage and true emotion blur fatally.",
         themes: ["Undercover Espionage", "Wartime Betrayal", "Dangerous Roles"]
     }),
     617: createThrillerData({ // Wild Things
-        eroticTension: 88, complexityLevel: "HIGH", 
-        dominantColor: "#0284c7", rating: 6.6, criticsScore: 62, audienceScore: 57, director: "John McNaughton", 
-        cast: ["Matt Dillon", "Neve Campbell", "Denise Richards"], boxOffice: "$67.2 million", budget: "$20 million", 
+        eroticTension: 88, complexityLevel: "HIGH",
+        dominantColor: "#0284c7", rating: 6.6, criticsScore: 62, audienceScore: 57, director: "John McNaughton",
+        cast: ["Matt Dillon", "Neve Campbell", "Denise Richards"], boxOffice: "$67.2 million", budget: "$20 million",
         dna: { "Neo-Noir": 45, "Crime": 35, "Mystery": 20 },
         scenes: [
             { time: 20, intensity: 35, label: "The Accusation" },
             { time: 55, intensity: 50, label: "The Settlement" },
             { time: 75, intensity: 72, label: "The Motel Meeting" },
-            { time: 95, intensity: 82, label: "The Swamp Scene" }, 
-            { time: 105, intensity: 86, label: "The Final Twist" } 
+            { time: 95, intensity: 82, label: "The Swamp Scene" },
+            { time: 105, intensity: 86, label: "The Final Twist" }
         ],
         synopsis: "A high school guidance counselor is accused of a crime by two female students, unleashing a labyrinthine plot of blackmail and murder. A masterclass in 'trash-noir' built on constant double-crossing.",
         themes: ["Double Crosses", "Florida Noir", "Blackmail"]
     }),
     2251: createThrillerData({ // Unfaithful
-        eroticTension: 86, complexityLevel: "MEDIUM", 
-        dominantColor: "#64748b", rating: 6.7, criticsScore: 50, audienceScore: 62, director: "Adrian Lyne", 
-        cast: ["Richard Gere", "Diane Lane", "Olivier Martinez"], boxOffice: "$119.1 million", budget: "$50 million", 
+        eroticTension: 86, complexityLevel: "MEDIUM",
+        dominantColor: "#64748b", rating: 6.7, criticsScore: 50, audienceScore: 62, director: "Adrian Lyne",
+        cast: ["Richard Gere", "Diane Lane", "Olivier Martinez"], boxOffice: "$119.1 million", budget: "$50 million",
         dna: { "Drama": 60, "Thriller": 30, "Romance": 10 },
         scenes: [
             { time: 15, intensity: 22, label: "The Windstorm" },
             { time: 45, intensity: 48, label: "The Train Ride Home" },
             { time: 80, intensity: 75, label: "The Husband Discovers" },
-            { time: 95, intensity: 89, label: "The Snow Globe" }, 
-            { time: 118, intensity: 65, label: "The Traffic Light" } 
+            { time: 95, intensity: 89, label: "The Snow Globe" },
+            { time: 118, intensity: 65, label: "The Traffic Light" }
         ],
         synopsis: "A suburban housewife’s accidental encounter with a younger man leads to a passionate affair, setting off a chain reaction of guilt and violence.",
         themes: ["Guilt", "Marital Decay", "Crimes of Passion"]
     }),
     10998: createThrillerData({ // Fatal Attraction
-        eroticTension: 88, complexityLevel: "MEDIUM", 
-        dominantColor: "#0f172a", rating: 6.9, criticsScore: 74, audienceScore: 68, director: "Adrian Lyne", 
-        cast: ["Michael Douglas", "Glenn Close"], boxOffice: "$320.1 million", budget: "$14 million", 
+        eroticTension: 88, complexityLevel: "MEDIUM",
+        dominantColor: "#0f172a", rating: 6.9, criticsScore: 74, audienceScore: 68, director: "Adrian Lyne",
+        cast: ["Michael Douglas", "Glenn Close"], boxOffice: "$320.1 million", budget: "$14 million",
         dna: { "Psychological": 50, "Thriller": 40, "Drama": 10 },
         scenes: [
             { time: 20, intensity: 42, label: "The Weekend" },
             { time: 55, intensity: 65, label: "The Umbrella" },
-            { time: 75, intensity: 82, label: "The Stove" }, 
+            { time: 75, intensity: 82, label: "The Stove" },
             { time: 90, intensity: 70, label: "The Tape Cassette" },
-            { time: 110, intensity: 91, label: "The Bathroom" } 
+            { time: 110, intensity: 91, label: "The Bathroom" }
         ],
         synopsis: "A married man's brief indiscretion comes back to haunt him when his weekend companion refuses to let him go.",
         themes: ["Obsession", "Stalking", "Consequences"]
     }),
     14412: createThrillerData({ // Body Heat
-        eroticTension: 96, complexityLevel: "HIGH", 
-        dominantColor: "#d97706", rating: 7.4, criticsScore: 98, audienceScore: 78, director: "Lawrence Kasdan", 
-        cast: ["William Hurt", "Kathleen Turner"], boxOffice: "$24 million", budget: "$9 million", 
+        eroticTension: 96, complexityLevel: "HIGH",
+        dominantColor: "#d97706", rating: 7.4, criticsScore: 98, audienceScore: 78, director: "Lawrence Kasdan",
+        cast: ["William Hurt", "Kathleen Turner"], boxOffice: "$24 million", budget: "$9 million",
         dna: { "Neo-Noir": 60, "Crime": 30, "Thriller": 10 },
         scenes: [
             { time: 15, intensity: 45, label: "Breaking the Window" },
             { time: 45, intensity: 62, label: "Planning the Murder" },
             { time: 75, intensity: 75, label: "The Alibi" },
             { time: 95, intensity: 84, label: "The Setup" },
-            { time: 110, intensity: 90, label: "The Boathouse Reveal" } 
+            { time: 110, intensity: 90, label: "The Boathouse Reveal" }
         ],
         synopsis: "In the sweltering Florida heat, an inept lawyer is manipulated by a brilliant, ruthless woman into murdering her wealthy husband.",
         themes: ["Classic Noir", "The Perfect Crime", "Femme Fatale"]
     }),
     25284: createThrillerData({ // The Last Seduction
-        eroticTension: 92, complexityLevel: "HIGH", 
-        dominantColor: "#000000", rating: 7.0, criticsScore: 94, audienceScore: 73, director: "John Dahl", 
-        cast: ["Linda Fiorentino", "Peter Berg"], boxOffice: "$5.8 million", budget: "$2.5 million", 
+        eroticTension: 92, complexityLevel: "HIGH",
+        dominantColor: "#000000", rating: 7.0, criticsScore: 94, audienceScore: 73, director: "John Dahl",
+        cast: ["Linda Fiorentino", "Peter Berg"], boxOffice: "$5.8 million", budget: "$2.5 million",
         dna: { "Neo-Noir": 50, "Crime": 35, "Thriller": 15 },
         scenes: [
             { time: 10, intensity: 52, label: "The Cash Grab" },
             { time: 35, intensity: 30, label: "Small Town Hideout" },
             { time: 65, intensity: 75, label: "The Setup" },
             { time: 90, intensity: 82, label: "The Husband Arrives" },
-            { time: 105, intensity: 89, label: "The Perfect Frame" } 
+            { time: 105, intensity: 89, label: "The Perfect Frame" }
         ],
         synopsis: "After stealing her husband's drug money, a fiercely intelligent woman targets a naive local to serve as her perfect pawn.",
         themes: ["Ruthless Ambition", "Small Town Traps", "Unapologetic Villainy"]
     }),
     9303: createThrillerData({ // Bound
-        eroticTension: 90, complexityLevel: "MEDIUM", 
-        dominantColor: "#7f1d1d", rating: 7.3, criticsScore: 92, audienceScore: 81, director: "The Wachowskis", 
-        cast: ["Jennifer Tilly", "Gina Gershon", "Joe Pantoliano"], boxOffice: "$3.8 million", budget: "$4.5 million", 
+        eroticTension: 90, complexityLevel: "MEDIUM",
+        dominantColor: "#7f1d1d", rating: 7.3, criticsScore: 92, audienceScore: 81, director: "The Wachowskis",
+        cast: ["Jennifer Tilly", "Gina Gershon", "Joe Pantoliano"], boxOffice: "$3.8 million", budget: "$4.5 million",
         dna: { "Crime": 45, "Neo-Noir": 35, "Thriller": 20 },
         scenes: [
             { time: 15, intensity: 38, label: "The Plumbing Fix" },
             { time: 40, intensity: 65, label: "The Heist Plan" },
             { time: 65, intensity: 80, label: "The Suitcase Switch" },
             { time: 85, intensity: 86, label: "Caesar Panics" },
-            { time: 100, intensity: 87, label: "The Final Standoff" } 
+            { time: 100, intensity: 87, label: "The Final Standoff" }
         ],
         synopsis: "An ex-con forms a dangerous alliance with a mafia money-launderer's girlfriend to steal millions in mob cash.",
         themes: ["Mob Heists", "Claustrophobic Tension", "Trust and Deception"]
@@ -464,7 +464,7 @@ const calculateSkipStats = (scenes) => {
     });
     const mins = Math.floor(totalSeconds / 60);
     const secs = totalSeconds % 60;
-    if (totalSeconds === 0) return "< 1 min"; 
+    if (totalSeconds === 0) return "< 1 min";
     if (mins === 0) return `${secs} sec`;
     return secs > 0 ? `${mins} min ${secs} sec` : `${mins} min`;
 };
@@ -476,7 +476,7 @@ export const getSensitiveContentTypes = (tmdbId) => {
     const types = new Set();
     sensitiveData.scenes.forEach(scene => {
         const lowerType = scene.type?.toLowerCase() || '';
-        
+
         if (lowerType.includes('sexual content')) types.add('sexual content');
         else if (lowerType.match(/\bsex\b/)) types.add('sex');
         else if (lowerType.includes('explicit')) types.add('explicit content');
@@ -492,7 +492,7 @@ export const getSensitiveContentTypes = (tmdbId) => {
 const getHighestSeverityInfo = (scenes) => {
     const severities = scenes.map(s => (s.severity || 'Moderate').toLowerCase());
     const extremeCount = severities.filter(s => s === 'extreme').length;
-    
+
     // User's flawless logic: 2+ Extreme means the whole movie is Extreme. 
     // Otherwise, we cap the warning at High.
     if (extremeCount >= 2) return 'Extreme';
@@ -511,11 +511,11 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
     const heavyScenes = sensitiveScenes.filter(s => {
         if (!s.start || s.start.trim() === '') return false;
         const t = s.type?.toLowerCase() || '';
-        return t.includes('sex') || t.includes('nudity') || t.includes('explicit') || t.includes('suggestive') || t.includes('lingerie') || t.includes('bikini'); 
+        return t.includes('sex') || t.includes('nudity') || t.includes('explicit') || t.includes('suggestive') || t.includes('lingerie') || t.includes('bikini');
     });
 
     const sceneCount = heavyScenes.length;
-    
+
     // 🔥 DYNAMIC SEO META DESCRIPTION GENERATOR
     const targetMovies = {
         "Eyes Wide Shut": "R",
@@ -527,7 +527,7 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
         "Gone Girl": "R",
         "Basic Instinct": "R"
     };
-    
+
     let schemaDesc = '';
     if (targetMovies[movie.Title]) {
         const mpaaRating = targetMovies[movie.Title];
@@ -535,14 +535,14 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
             // 🔥 Prioritize Sex/Nudity over Suggestive Clothing
             const heavyOnly = heavyScenes.filter(s => s.type?.toLowerCase().match(/sex|nudity|explicit/));
             const lightOnly = heavyScenes.filter(s => !s.type?.toLowerCase().match(/sex|nudity|explicit/));
-            
+
             // Grab the top 2 priority scenes, then sort them chronologically
             const selectedScenes = [...heavyOnly, ...lightOnly].slice(0, 2);
             selectedScenes.sort((a, b) => heavyScenes.indexOf(a) - heavyScenes.indexOf(b));
-            
+
             // Format with start, end, and TYPE reason!
             const firstTwo = selectedScenes.map(s => s.end ? `${s.start} to ${s.end} (${s.type})` : `${s.start} (${s.type})`).join(' and ');
-            
+
             schemaDesc = `Why is ${movie.Title} rated ${mpaaRating}? Use our parents guide to skip mature content. Skip scenes at ${firstTwo}.`;
         } else {
             schemaDesc = `${movie.Title} Parents Guide. Filmiway editors have manually verified zero explicit scenes in the full ${currentRuntime} runtime.`;
@@ -562,7 +562,7 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
         'name': movie.Title,
         'description': schemaDesc,
         'genre': movie.genre,
-        'url': `https://filmiway.com/movie/${movie.slug || movie.Title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '')}`, 
+        'url': `https://filmiway.com/movie/${movie.slug || movie.Title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '')}`,
         'datePublished': currentMovieYear?.toString() || movie.year.toString(),
         'director': { '@type': 'Person', 'name': movieInfo?.director || 'Director' },
         'actor': movieInfo?.cast?.map(actor => ({ '@type': 'Person', 'name': actor })) || [],
@@ -572,11 +572,11 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
 
     const staticFaqs = EROTIC_THRILLER_MOVIE_FAQS[movie.Title] ? [...EROTIC_THRILLER_MOVIE_FAQS[movie.Title]] : [];
     const intensityScenes = movieInfo?.scenes || [];
-    
-    const schemaFaqs = staticFaqs.map(faq => ({ 
-        '@type': 'Question', 
-        'name': faq.question, 
-        'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer } 
+
+    const schemaFaqs = staticFaqs.map(faq => ({
+        '@type': 'Question',
+        'name': faq.question,
+        'acceptedAnswer': { '@type': 'Answer', 'text': faq.answer }
     }));
 
     // 🔥 DYNAMIC RECOMMENDED AGE FAQ INJECTION (SEO SCHEMA)
@@ -589,9 +589,9 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
         schemaFaqs.unshift({
             '@type': 'Question',
             'name': `What is the suitable age to watch ${movie.Title}?`,
-            'acceptedAnswer': { 
-                '@type': 'Answer', 
-                'text': `According to Filmiway's Parents Guide, the recommended age for ${movie.Title} is ${recommendedAge}. ${ageSummary}` 
+            'acceptedAnswer': {
+                '@type': 'Answer',
+                'text': `According to Filmiway's Parents Guide, the recommended age for ${movie.Title} is ${recommendedAge}. ${ageSummary}`
             }
         });
     }
@@ -617,7 +617,7 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
         const familyUnsafeTypes = typesArray.filter(t => t !== 'suggestive clothing');
         const familyUnsafeString = familyUnsafeTypes.join(' and ');
 
-        const familyFaqSchema = familyUnsafeTypes.length > 0 
+        const familyFaqSchema = familyUnsafeTypes.length > 0
             ? {
                 '@type': 'Question',
                 'name': `Is ${movie.Title} safe to watch with family?`,
@@ -639,9 +639,9 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
             {
                 '@type': 'Question',
                 'name': `Does ${movie.Title} have sex scenes or nudity?`,
-                'acceptedAnswer': { 
-                    '@type': 'Answer', 
-                    'text': `Yes. ${movie.Title} contains ${sceneCount} scenes of ${typesString}. Exact timestamps:<br><br><ul>${schemaListText}</ul><br>Manually verified frame by frame by Filmiway editors for the ${currentRuntime} runtime.` 
+                'acceptedAnswer': {
+                    '@type': 'Answer',
+                    'text': `Yes. ${movie.Title} contains ${sceneCount} scenes of ${typesString}. Exact timestamps:<br><br><ul>${schemaListText}</ul><br>Manually verified frame by frame by Filmiway editors for the ${currentRuntime} runtime.`
                 }
             },
             {
@@ -659,23 +659,23 @@ export const generateCleanMovieSchema = (movie, tmdbData, currentMovieYear, coll
             {
                 '@type': 'Question',
                 'name': `Does ${movie.Title} have sex scenes or nudity?`,
-                'acceptedAnswer': { 
-                    '@type': 'Answer', 
-                    'text': `No. Filmiway editors have manually verified that ${movie.Title} is free of explicit sex scenes and nudity.` 
+                'acceptedAnswer': {
+                    '@type': 'Answer',
+                    'text': `No. Filmiway editors have manually verified that ${movie.Title} is free of explicit sex scenes and nudity.`
                 }
             },
             {
                 '@type': 'Question',
                 'name': `Is ${movie.Title} safe to watch with family?`,
-                'acceptedAnswer': { 
-                    '@type': 'Answer', 
-                    'text': `Yes, regarding explicit sexual content. Filmiway editors have manually verified that ${movie.Title} does not have any sex, nudity, or sexual content in the full ${currentRuntime} runtime.` 
+                'acceptedAnswer': {
+                    '@type': 'Answer',
+                    'text': `Yes, regarding explicit sexual content. Filmiway editors have manually verified that ${movie.Title} does not have any sex, nudity, or sexual content in the full ${currentRuntime} runtime.`
                 }
             }
         );
     }
 
-const faqSchema = {
+    const faqSchema = {
         '@context': 'https://schema.org',
         '@type': 'FAQPage',
         'name': `Parents Guide and FAQ for ${movie.Title}`,
@@ -690,7 +690,7 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
     const staticFaqs = EROTIC_THRILLER_MOVIE_FAQS[movieTitle] ? [...EROTIC_THRILLER_MOVIE_FAQS[movieTitle]] : [];
     const masterScenes = masterTimestamps[String(tmdbId)]?.scenes || [];
     const sensitiveScenes = [...(SENSITIVE_TIMELINES[tmdbId]?.scenes || [])];
-    
+
     const parseTimeToSeconds = (t) => {
         if (!t) return -1;
         const parts = String(t).trim().split(':').map(Number);
@@ -794,13 +794,13 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
             const fullType = s.severity ? `${s.type || 'Mature Content'}, ${s.severity}` : (s.type || 'Mature Content');
             return `• ${timeRange} (${fullType})`;
         }).join('\n');
-        
+
         const startTimesList = heavyScenes.map(s => s.start).join(', ');
         // Filter out suggestive clothing for the UI as well
         const familyUnsafeTypes = typesArray.filter(t => t !== 'suggestive clothing');
         const familyUnsafeString = joinWithAnd(familyUnsafeTypes);
-        
-                let familyFaqAnswer = `No. ${movieTitle} is not safe to watch with family because it contains ${familyUnsafeString}, earning it a [DYNAMIC_SCORE]/10 ([DYNAMIC_LABEL]) Family Safety Score. Adults can use Filmiway's timestamps to skip all ${sceneCount} explicit scenes in the ${finalRuntime} runtime.`;
+
+        let familyFaqAnswer = `No. ${movieTitle} is not safe to watch with family because it contains ${familyUnsafeString}, earning it a [DYNAMIC_SCORE]/10 ([DYNAMIC_LABEL]) Family Safety Score. Adults can use Filmiway's timestamps to skip all ${sceneCount} explicit scenes in the ${finalRuntime} runtime.`;
 
         const familyFaqUI = familyUnsafeTypes.length > 0
             ? {
