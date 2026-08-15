@@ -124,6 +124,12 @@ const BOOK_ADAPTATIONS = {
 };
 
 const AudibleBookPromo = ({ movieSlug, movieTitle }) => {
+  const [isMounted, setIsMounted] = React.useState(false);
+  
+  React.useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   const adaptation = BOOK_ADAPTATIONS[movieSlug];
   
   // General landing page link on US Amazon (.com) with tracking ID

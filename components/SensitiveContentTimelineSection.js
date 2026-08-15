@@ -716,12 +716,12 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                             <div className="shrink-0 w-full lg:w-auto">
                                 <button
                                     onClick={handleOpenWatchAlong}
-                                    className="group/btn relative w-full lg:w-auto inline-flex items-center justify-center gap-3 bg-gradient-to-r from-yellow-400 via-amber-400 to-yellow-500 hover:from-yellow-300 hover:to-amber-300 text-gray-950 font-bold text-xs sm:text-sm px-6 py-3.5 rounded-full shadow-[0_0_20px_rgba(234,179,8,0.25)] hover:shadow-[0_0_35px_rgba(234,179,8,0.45)] transition-all duration-300 border border-yellow-300/40 cursor-pointer overflow-hidden transform hover:-translate-y-0.5 active:translate-y-0"
+                                    className="group/btn relative w-full lg:w-auto inline-flex items-center justify-center gap-3 bg-zinc-900/90 hover:bg-zinc-800/95 text-white font-semibold text-xs sm:text-sm px-6 py-3.5 rounded-full border border-yellow-500/40 hover:border-yellow-400/80 shadow-[0_0_20px_rgba(245,158,11,0.15)] hover:shadow-[0_0_30px_rgba(245,158,11,0.3)] transition-all duration-300 cursor-pointer overflow-hidden backdrop-blur-md transform hover:-translate-y-0.5 active:translate-y-0"
                                 >
-                                    <div className="flex items-center justify-center w-6 h-6 rounded-full bg-black/10 group-hover/btn:bg-black/20 transition-colors shrink-0">
-                                        <Play size={12} className="fill-gray-950 text-gray-950 translate-x-[1px]" />
+                                    <div className="flex items-center justify-center w-6 h-6 rounded-full bg-yellow-500/15 border border-yellow-500/30 group-hover/btn:bg-yellow-500/25 group-hover/btn:border-yellow-400/60 transition-all shrink-0">
+                                        <Play size={11} className="fill-yellow-400 text-yellow-400 translate-x-[0.5px]" />
                                     </div>
-                                    <span className="tracking-wide">Launch Watch-Along Timer</span>
+                                    <span className="tracking-wide text-gray-100 group-hover/btn:text-yellow-400 transition-colors font-medium">Launch Watch-Along Timer</span>
                                 </button>
                             </div>
                         </div>

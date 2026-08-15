@@ -653,31 +653,31 @@ const WatchAlongTimer = ({ movie, sensitiveScenes, onClose }) => {
             </div>
 
             {/* HEADER */}
-            <div className="relative z-50 flex items-center px-4 sm:px-6 py-4 border-b border-white/5 bg-black/40 backdrop-blur-md w-full">
+            <div className="relative z-50 flex items-center px-4 sm:px-6 py-3 sm:py-3.5 border-b border-white/10 bg-black/90 backdrop-blur-xl w-full shrink-0">
                 <button
                     onClick={handleClose}
                     className="flex items-center justify-center p-2 -ml-2 text-white/80 hover:text-white transition-colors mr-2 sm:mr-4 shrink-0 cursor-pointer pointer-events-auto z-[99999]"
                     title="Go Back"
                 >
-                    <ChevronLeft size={32} strokeWidth={2.5} />
+                    <ChevronLeft size={28} strokeWidth={2.5} />
                 </button>
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3 min-w-0">
                     <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-yellow-500/10 border border-yellow-500/20 flex items-center justify-center shrink-0">
                         <Play size={14} className="text-yellow-500" />
                     </div>
-                    <div className="text-left">
-                        <div className="text-[9px] sm:text-[10px] text-gray-400 uppercase tracking-widest font-bold">Watch-Along</div>
-                        <div className="text-xs sm:text-sm font-semibold text-gray-200 max-w-[200px] sm:max-w-[250px] truncate">{movie?.Title || 'Movie'}</div>
+                    <div className="text-left min-w-0">
+                        <div className="text-[9px] sm:text-[10px] text-yellow-500/90 uppercase tracking-widest font-bold leading-none mb-0.5">Watch-Along</div>
+                        <div className="text-xs sm:text-sm font-semibold text-gray-100 max-w-[200px] sm:max-w-[280px] truncate leading-tight">{movie?.Title || 'Movie'}</div>
                     </div>
                 </div>
             </div>
 
             {/* MAIN CONTENT */}
-            <div className="flex-1 relative z-30 flex flex-col items-center justify-center px-4 py-4 overflow-y-auto overflow-x-hidden">
+            <div className="flex-1 relative z-30 flex flex-col items-center px-4 pt-6 sm:pt-8 pb-20 sm:pb-24 overflow-y-auto overflow-x-hidden">
                 {!hasStarted ? (
-                    <div className="flex flex-col items-center text-center w-full max-w-sm my-auto py-4">
-                        <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-yellow-500/10 border border-yellow-500/20 flex items-center justify-center mb-4 shadow-xl">
-                            <Shield size={24} className="text-yellow-500" />
+                    <div className="flex flex-col items-center text-center w-full max-w-sm my-auto py-2 sm:py-4">
+                        <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-yellow-500/10 border border-yellow-500/30 flex items-center justify-center mb-4 shadow-[0_0_20px_rgba(245,158,11,0.15)] shrink-0">
+                            <Shield size={26} className="text-yellow-400" />
                         </div>
                         <h2 className="text-xl sm:text-2xl font-light text-white mb-2">How to Use the Timer</h2>
                         <p className="text-gray-400 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6 px-2">
