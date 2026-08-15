@@ -2,9 +2,11 @@
 import React, { useMemo, useState, useEffect, useRef, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Shield, CheckCircle, Clock, AlertOctagon, Info, Film, FastForward, Eye, Heart, AlertTriangle, ThumbsUp, ThumbsDown, MessageSquare, Flame, Play, Timer } from 'lucide-react';
+import { Shield, CheckCircle, Clock, AlertOctagon, Info, Film, FastForward, Eye, Heart, AlertTriangle, ThumbsUp, ThumbsDown, MessageSquare, Flame, Play, Timer, ExternalLink } from 'lucide-react';
 import dynamic from 'next/dynamic';
 import masterTimestamps from '../utils/masterTimestamps.json';
+import { db } from '../lib/firebase';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
 // 🎬 WATCH-ALONG TIMER — loaded only when user opens it
 const WatchAlongTimer = dynamic(() => import('./WatchAlongTimer'), { ssr: false });
@@ -67,6 +69,35 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
     const [showWatchAlong, setShowWatchAlong] = useState(false);
     const handleOpenWatchAlong = useCallback(() => setShowWatchAlong(true), []);
     const handleCloseWatchAlong = useCallback(() => setShowWatchAlong(false), []);
+
+    // --- EXPRESSVPN AFFILIATE CLICK TRACKER ---
+    const handleExpressVpnClick = useCallback(async () => {
+        try {
+            let country = 'US';
+            let city = 'Unknown';
+            try {
+                const response = await fetch('https://ipinfo.io/json');
+                if (response.ok) {
+                    const data = await response.json();
+                    country = data.country?.toUpperCase() || 'US';
+                    city = data.city || 'Unknown';
+                }
+            } catch (e) {}
+
+            await addDoc(collection(db, 'affiliate_clicks'), {
+                movieSlug: movie?.slug || 'unknown',
+                movieTitle: movie?.Title || 'Unknown Movie',
+                promoType: 'expressvpn',
+                placement: 'below_timestamps',
+                country,
+                city,
+                timestamp: serverTimestamp(),
+                userAgent: typeof navigator !== 'undefined' ? navigator.userAgent : 'Unknown'
+            });
+        } catch (err) {
+            console.error("Firebase analytics click tracking failed:", err);
+        }
+    }, [movie]);
 
     // --- 📱 STICKY BOTTOM CTA BAR STATE ---
     const [showStickyBar, setShowStickyBar] = useState(false);
@@ -908,6 +939,59 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                 </div>
                 {/* 🎨 DESKTOP-ONLY: Subtle bottom fade to hint "scroll for more" — reduced opacity so text stays readable */}
                 <div className="hidden lg:block pointer-events-none absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-[#0a0a0c]/60 to-transparent rounded-b-xl z-10" />
+            </div>
+
+            {/* 🚀 ExpressVPN Official Affiliate Banner (Placed directly below timestamps, above Last Verified / Was this guide useful) */}
+            <div className="mt-6 mb-2">
+                <a
+                    href="https://go.expressvpn.com/c/7564909/1462856/16063"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={handleExpressVpnClick}
+                    className="group relative flex flex-col md:flex-row items-start md:items-center justify-between gap-5 p-5 lg:p-6 rounded-2xl border border-red-500/35 bg-gradient-to-r from-red-950/50 via-[#120507] to-black/90 hover:border-red-500/70 transition-all duration-300 backdrop-blur-md shadow-xl shadow-black/50 hover:shadow-red-600/15 cursor-pointer overflow-hidden"
+                >
+                    {/* Subtle red background aura */}
+                    <div className="absolute -left-10 -top-10 w-40 h-40 bg-red-600/15 rounded-full blur-3xl group-hover:bg-red-600/25 transition-all pointer-events-none" />
+
+                    <div className="flex items-start gap-4 flex-1 min-w-0 z-10">
+                        {/* ExpressVPN Official Red Brand Badge */}
+                        <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-[#e01931] border border-red-400/40 text-white shrink-0 group-hover:scale-105 transition-transform shadow-md shadow-red-900/60 mt-0.5">
+                            <svg className="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
+                                <path d="M12 2L2 7v6c0 5.55 3.84 10.74 10 12 6.16-1.26 10-6.45 10-12V7l-10-5zm0 4.5l6 3v4.5c0 3.85-2.6 7.42-6 8.4-3.4-.98-6-4.55-6-8.4V9.5l6-3z" />
+                            </svg>
+                        </div>
+
+                        <div className="flex flex-col flex-1 min-w-0">
+                            {/* ExpressVPN Brand Header */}
+                            <div className="flex flex-col items-start gap-0.5 mb-1">
+                                <span className="text-sm font-extrabold text-white tracking-wide uppercase">
+                                    ExpressVPN
+                                </span>
+                                <span className="text-[11px] font-bold uppercase tracking-wider text-red-400">
+                                    Special Offer for Filmiway Users • $2.99/mo + 4 Months Free
+                                </span>
+                            </div>
+
+                            {/* Dynamic Headline */}
+                            <h4 className="text-sm sm:text-base font-semibold text-gray-100 group-hover:text-red-200 transition-colors m-0">
+                                Bypass ISP Throttling & Unblock Restricted Streaming Sites
+                            </h4>
+
+                            {/* Dynamic Body Description */}
+                            <p className="text-xs text-gray-300 font-light mt-1.5 leading-relaxed m-0">
+                                Watching {movie?.Title || movie?.title || 'this movie'}? ExpressVPN ($2.99/mo + 4 Months Free) stops ISP speed throttling, hides private browsing from network admins, and unlocks restricted sites & global streaming catalogs.
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* Action Button */}
+                    <div className="flex items-center gap-2 text-xs sm:text-sm font-bold text-white shrink-0 w-full md:w-auto justify-center px-3.5 py-2.5 sm:px-5 sm:py-3 rounded-xl bg-gradient-to-r from-[#e01931] to-red-700 hover:from-red-500 hover:to-rose-600 transition-all shadow-md shadow-red-600/30 group-hover:shadow-red-600/50 z-10 border border-red-400/40 text-center leading-snug max-w-full">
+                        <span className="text-center">
+                            Claim Filmiway Deal ($2.99/mo + 4 Months Free)
+                        </span>
+                        <ExternalLink size={14} className="group-hover:translate-x-0.5 transition-transform shrink-0" />
+                    </div>
+                </a>
             </div>
 
             {/* 🔥 ENHANCED ENGAGEMENT FOOTER: Designed for maximum CTR */}
