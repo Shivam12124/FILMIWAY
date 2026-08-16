@@ -21,7 +21,8 @@ import {
   ChevronDown,
   Monitor,
   EyeOff,
-  Film
+  Film,
+  ExternalLink
 } from 'lucide-react';
 import Header from '../components/Header';
 
@@ -152,11 +153,13 @@ export default function VidAngelAlternatives() {
       cons: [
         "Requires manual skipping on TV via remote when prompted by phone timer alert"
       ],
-      summary: "Filmiway is the leading free alternative to VidAngel. Instead of charging $9.99/month and asking for your Netflix login credentials, Filmiway provides curated skip timestamps and a real-time mobile sync timer that lets you skip explicit content on any device for free."
+      summary: "Filmiway is the leading free alternative to VidAngel. Instead of charging $9.99/month and asking for your Netflix login credentials, Filmiway provides curated skip timestamps and a real-time mobile sync timer that lets you skip explicit content on any device for free.",
+      officialUrl: "https://www.filmiway.com"
     },
     {
       rank: 2,
       name: "IMDb Parents Guide",
+      officialUrl: "https://www.imdb.com",
       isEditorChoice: false,
       tagline: "Crowd-Sourced Content Warnings & Maturity Categories",
       cost: "Free (Ad-Supported)",
@@ -180,6 +183,7 @@ export default function VidAngelAlternatives() {
     {
       rank: 3,
       name: "Common Sense Media",
+      officialUrl: "https://www.commonsensemedia.org",
       isEditorChoice: false,
       tagline: "Educational Age Ratings & Family Reviews",
       cost: "Freemium ($3/mo for Full Access)",
@@ -202,6 +206,7 @@ export default function VidAngelAlternatives() {
     {
       rank: 4,
       name: "ClearPlay",
+      officialUrl: "https://www.clearplay.com",
       isEditorChoice: false,
       tagline: "Hardware & Extension Based Filter for Custom Media",
       cost: "$7.99 / Month",
@@ -223,24 +228,25 @@ export default function VidAngelAlternatives() {
     },
     {
       rank: 5,
-      name: "Native Platform Content Advisories",
+      name: "VidAngel (Paid Filter)",
+      officialUrl: "https://www.vidangel.com",
       isEditorChoice: false,
-      tagline: "Built-In Streaming Badges (Netflix, Prime, Max)",
-      cost: "Included with Streaming",
-      subscriptionRequired: "Streaming Subscription",
-      creditCardRequired: "Varies",
-      setupTime: "Built-In",
-      precision: "None (Global Rating Badge Only)",
-      liveSync: "None",
-      privacy: "Standard Streaming Account",
+      tagline: "Paid Subscription Filter ($9.99/mo)",
+      cost: "$9.99 / Month",
+      subscriptionRequired: "Yes ($9.99/mo)",
+      creditCardRequired: "Yes",
+      setupTime: "10-15 Minutes",
+      precision: "High (Automated Mute/Skip)",
+      liveSync: "Integrated App",
+      privacy: "Requires Account & Credentials",
       pros: [
-        "Appears automatically in top corner when playing video"
+        "Automated audio muting and video skipping"
       ],
       cons: [
-        "Only shows generic labels (e.g. 'TV-MA: Violence, Language')",
-        "No details on specific scenes or timestamp timings"
+        "Requires $9.99/mo paid subscription",
+        "Breaks when streaming platforms update DRM"
       ],
-      summary: "Built-in streaming badges alert you to overall maturity ratings when a video starts, but offer no way to locate or skip specific scenes during playback."
+      summary: "VidAngel is a paid filtering app that requires a monthly subscription and account linking, but provides automated skipping for supported streaming services."
     }
   ];
 
@@ -477,8 +483,20 @@ export default function VidAngelAlternatives() {
                       <span className="text-xs font-mono font-bold text-black bg-yellow-500 px-2.5 py-1 rounded-md">
                         #{alt.rank}
                       </span>
-                      <h3 className="text-2xl sm:text-3xl font-medium text-white tracking-wide">
+                      <h3 className="text-2xl sm:text-3xl font-medium text-white tracking-wide flex items-center gap-2">
                         {alt.name}
+                        {alt.officialUrl && (
+                          <a
+                            href={alt.officialUrl}
+                            target="_blank"
+                            rel="nofollow noopener noreferrer"
+                            className="inline-flex items-center gap-1 text-xs text-gray-400 hover:text-yellow-400 font-normal transition-colors ml-1"
+                            title={`Visit ${alt.name} official website`}
+                          >
+                            <span>Visit Site</span>
+                            <ExternalLink className="w-3 h-3" />
+                          </a>
+                        )}
                       </h3>
                     </div>
                     <p className="text-xs sm:text-sm font-light text-amber-300/90">{alt.tagline}</p>
