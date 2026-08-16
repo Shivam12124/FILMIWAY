@@ -39,26 +39,29 @@ export default function HowToSkipAwkwardScenes() {
       start: "0:23:14",
       end: "0:24:46",
       type: "Sex & Nudity",
-      severity: "High"
+      severity: "High",
+      description: "Lengthy explicit sexual content featuring a topless woman (Florence Pugh), strong intimate activity, and repeated sexual positioning."
     },
     {
       start: "1:14:38",
       end: "1:15:14",
       type: "Nudity",
-      severity: "High"
+      severity: "High",
+      description: "Lengthy nudity following sexual activity featuring a fully nude woman (Florence Pugh) and male (Cillian Murphy) character."
     },
     {
       start: "1:15:43",
       end: "1:16:00",
       type: "Sex & Nudity",
-      severity: "High"
+      severity: "High",
+      description: "Explicit sexual content featuring female (Florence Pugh) nudity and vigorous intimate activity during a chair sequence."
     },
     {
       start: "",
       end: "",
       type: "Profanity",
       severity: "Moderate",
-      description: "Approximately 8–9 uses of strong strong profanity (F-words) and infrequent moderate profanity used in dialogue."
+      description: "Approximately 8–9 uses of strong sexual expletives (F-words) and infrequent moderate profanity used in dialogue."
     },
     {
       start: "",
@@ -271,24 +274,14 @@ We’ve all had this experience. You’re comfortably seated on your couch, watc
                 <li><strong>Continuous Calibrations:</strong> As streaming platforms update their cuts, our database is manually updated and recalibrated in real time by our verification team.</li>
               </ul>
 
-              <h2 className="text-3xl text-white mt-12 mb-6 border-b border-white/10 pb-4 flex items-center gap-3">
-                <ShieldCheck className="w-8 h-8 text-yellow-500" />
-                Proprietary Intellectual Property & Anti-Scraping Policy
-              </h2>
-              <p>
-                Every single start and end time inside the Filmiway Skip Timestamps database is the result of manual reviews, sync tests, and verification by human editors. This dataset constitutes unique, proprietary compilation work and is the protected intellectual property of Filmiway.
-              </p>
-              <p>
-                We enforce a strict <strong>anti-scraping policy</strong>. Automated scraping, harvesting, or copying of our proprietary timestamps, safety scores, or editorial reviews is strictly prohibited. Unauthorized use of this database will result in immediate DMCA takedown requests, automated blocks, and legal actions. We take the protection of our editors' hard work seriously to maintain the highest quality and safety standard for our family-friendly viewers.
-              </p>
-
-              {/* EXAMPLES BOX */}
+              {/* EXAMPLES BOX (OPPENHEIMER INTERACTIVE TIMELINE EXAMPLE) */}
               <div className="my-10">
                 <h3 className="text-xl font-semibold text-white mb-6 text-center sm:text-left">Real Examples from our 500+ Movie Database:</h3>
                 <div className="not-prose">
                   <SensitiveContentTimelineSection movie={mockMovie} sensitiveScenes={mockScenes} />
                 </div>
               </div>
+
               <h2 className="text-3xl text-white mt-12 mb-6 border-b border-white/10 pb-4 flex items-center gap-3">
                 <MonitorPlay className="w-8 h-8 text-yellow-500" />
                 Over 500+ Curated Films (And Growing)
@@ -331,6 +324,18 @@ We’ve all had this experience. You’re comfortably seated on your couch, watc
                   <strong>Visit Us Directly:</strong> Go to <Link href="/movie-directory">filmiway.com/movie-directory</Link> to browse our complete A-Z index of safe viewing guides.
                 </li>
               </ol>
+
+              {/* ⚡ PROPRIETARY IP & ANTI-SCRAPING POLICY */}
+              <h2 className="text-3xl text-white mt-16 mb-6 border-b border-white/10 pb-4 flex items-center gap-3">
+                <ShieldCheck className="w-8 h-8 text-yellow-500" />
+                Proprietary Intellectual Property & Anti-Scraping Policy
+              </h2>
+              <p>
+                Every single start and end time inside the Filmiway Skip Timestamps database is the result of manual reviews, sync tests, and verification by human editors. This dataset constitutes unique, proprietary compilation work and is the protected intellectual property of Filmiway.
+              </p>
+              <p>
+                We enforce a strict <strong>anti-scraping policy</strong>. Automated scraping, harvesting, or copying of our proprietary timestamps, safety scores, or editorial reviews is strictly prohibited. Unauthorized use of this database will result in immediate DMCA takedown requests, automated blocks, and legal actions. We take the protection of our editors' hard work seriously to maintain the highest quality and safety standard for our family-friendly viewers.
+              </p>
 
               {/* ⚡ FAQ SECTION */}
               <h2 className="text-3xl text-white mt-16 mb-6 border-b border-white/10 pb-4 flex items-center gap-3">
