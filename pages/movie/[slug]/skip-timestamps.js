@@ -571,18 +571,25 @@ export default function UniversalMoviePage({ movie }) {
                     <p className="text-gray-600 text-[10px] sm:text-xs font-light">
                         This product uses the TMDB API but is not endorsed or certified by TMDB.
                     </p>
-                    <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-xs text-gray-400 font-light mt-6">
-                        <Link href="/vidangel-alternatives" className="hover:text-yellow-400 underline transition-colors">
-                            Best VidAngel Alternatives (100% Free)
-                        </Link>
-                        <span>•</span>
-                        <Link href="/watch-along-timer" className="hover:text-yellow-400 underline transition-colors">
-                            Live Watch-Along Sync Timer
-                        </Link>
-                        <span>•</span>
-                        <Link href="/filmiway-vs-imdb-parents-guide" className="hover:text-yellow-400 underline transition-colors">
-                            Filmiway vs IMDb
-                        </Link>
+                    {/* 🎬 CLEAN REGULAR TEXT FOOTER LINKS */}
+                    <div className="mt-8 border-t border-white/10 pt-6 w-full max-w-4xl mx-auto">
+                        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-xs text-gray-400 font-medium">
+                            <Link href="/how-to-skip-awkward-scenes-in-movies" className="hover:text-yellow-400 transition-colors py-0.5">
+                                Skip Awkward Scenes Guide
+                            </Link>
+                            <span className="text-gray-700 hidden sm:inline">•</span>
+                            <Link href="/vidangel-alternatives" className="hover:text-yellow-400 transition-colors py-0.5">
+                                Free VidAngel Alternatives
+                            </Link>
+                            <span className="text-gray-700 hidden sm:inline">•</span>
+                            <Link href="/watch-along-timer" className="hover:text-yellow-400 transition-colors py-0.5">
+                                Watch-Along Timer
+                            </Link>
+                            <span className="text-gray-700 hidden sm:inline">•</span>
+                            <Link href="/filmiway-vs-imdb-parents-guide" className="hover:text-yellow-400 transition-colors py-0.5">
+                                Filmiway vs IMDb
+                            </Link>
+                        </div>
                     </div>
                 </div>
             </main>

@@ -70,29 +70,24 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
     const handleOpenWatchAlong = useCallback(() => setShowWatchAlong(true), []);
     const handleCloseWatchAlong = useCallback(() => setShowWatchAlong(false), []);
 
-    // --- EXPRESSVPN AFFILIATE CLICK TRACKER ---
+    // --- EXPRESSVPN AFFILIATE CLICK TRACKER (INSTANT NON-BLOCKING) ---
     const handleExpressVpnClick = useCallback(async () => {
         try {
-            let country = 'US';
-            let city = 'Unknown';
-            try {
-                const response = await fetch('https://ipinfo.io/json');
-                if (response.ok) {
-                    const data = await response.json();
-                    country = data.country?.toUpperCase() || 'US';
-                    city = data.city || 'Unknown';
-                }
-            } catch (e) { }
-
-            await addDoc(collection(db, 'affiliate_clicks'), {
+            // Write to Firebase INSTANTLY so click is never lost when user opens target=_blank
+            const clickData = {
                 movieSlug: movie?.slug || 'unknown',
-                movieTitle: movie?.Title || 'Unknown Movie',
+                movieTitle: movie?.Title || movie?.title || 'Unknown Movie',
                 promoType: 'expressvpn',
                 placement: 'below_timestamps',
-                country,
-                city,
+                country: 'US',
+                city: 'Unknown',
                 timestamp: serverTimestamp(),
                 userAgent: typeof navigator !== 'undefined' ? navigator.userAgent : 'Unknown'
+            };
+
+            // Non-blocking fire-and-forget Firestore write
+            addDoc(collection(db, 'affiliate_clicks'), clickData).catch(err => {
+                console.error("Firebase analytics click tracking failed:", err);
             });
         } catch (err) {
             console.error("Firebase analytics click tracking failed:", err);

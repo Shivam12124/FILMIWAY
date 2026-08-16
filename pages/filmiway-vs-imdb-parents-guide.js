@@ -173,6 +173,10 @@ export default function FilmiwayVsImdbParentsGuide() {
               </div>
             </form>
             <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-gray-400 font-light mt-8">
+              <Link href="/how-to-skip-awkward-scenes-in-movies" className="hover:text-yellow-400 underline transition-colors font-medium text-gray-300">
+                How to Skip Awkward Scenes in Movies
+              </Link>
+              <span>•</span>
               <Link href="/vidangel-alternatives" className="hover:text-yellow-400 underline transition-colors">
                 Best VidAngel Alternatives (100% Free)
               </Link>

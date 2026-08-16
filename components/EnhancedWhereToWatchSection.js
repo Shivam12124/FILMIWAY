@@ -343,32 +343,22 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
     // Open ExpressVPN tracking link immediately in a new tab
     window.open("https://go.expressvpn.com/c/7564909/1462856/16063", "_blank", "noopener,noreferrer");
 
-    // Log click event & geolocation analytics to Firebase Firestore
+    // Log click event analytics to Firebase Firestore INSTANTLY
     try {
-      let country = selectedRegion || userCountry || 'US';
-      let city = 'Unknown';
-
-      try {
-        const response = await fetch('https://ipinfo.io/json');
-        if (response.ok) {
-          const data = await response.json();
-          country = data.country?.toUpperCase() || country;
-          city = data.city || 'Unknown';
-        }
-      } catch (err) {
-        // Silent fallback if IP info fails
-      }
-
-      await addDoc(collection(db, 'affiliate_clicks'), {
+      const clickData = {
         movieSlug: movie?.slug || movie?.tmdbId || 'unknown',
-        movieTitle: movie?.Title || 'Unknown Movie',
+        movieTitle: movie?.Title || movie?.title || 'Unknown Movie',
         promoType: 'expressvpn',
         isAvailableInRegion: isMovieAvailableInRegion,
         selectedRegion: selectedRegion || 'US',
-        userCountry: country,
-        city: city,
+        userCountry: selectedRegion || userCountry || 'US',
+        city: 'Unknown',
         timestamp: serverTimestamp(),
         userAgent: typeof navigator !== 'undefined' ? navigator.userAgent : 'Unknown'
+      };
+
+      addDoc(collection(db, 'affiliate_clicks'), clickData).catch(err => {
+        console.error("Firebase ExpressVPN click tracking error:", err);
       });
     } catch (err) {
       console.error("Firebase ExpressVPN click tracking error:", err);

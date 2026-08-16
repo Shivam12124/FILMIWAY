@@ -4653,20 +4653,20 @@ return (
                                 </p>
                             </motion.div>
 
-                            <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-xs text-gray-400 font-light mb-6">
-                                <Link href="/how-to-skip-awkward-scenes-in-movies" className="hover:text-yellow-400 underline transition-colors font-medium text-gray-300">
-                                    How to Skip Awkward Scenes in Movies
+                            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-xs text-gray-400 font-medium my-6 pt-6 border-t border-white/10 max-w-4xl mx-auto">
+                                <Link href="/how-to-skip-awkward-scenes-in-movies" className="hover:text-yellow-400 transition-colors py-0.5">
+                                    Skip Awkward Scenes Guide
                                 </Link>
-                                <span>•</span>
-                                <Link href="/vidangel-alternatives" className="hover:text-yellow-400 underline transition-colors">
-                                    Best VidAngel Alternatives (100% Free)
+                                <span className="text-gray-700 hidden sm:inline">•</span>
+                                <Link href="/vidangel-alternatives" className="hover:text-yellow-400 transition-colors py-0.5">
+                                    Free VidAngel Alternatives
                                 </Link>
-                                <span>•</span>
-                                <Link href="/watch-along-timer" className="hover:text-yellow-400 underline transition-colors">
-                                    Live Watch-Along Sync Timer
+                                <span className="text-gray-700 hidden sm:inline">•</span>
+                                <Link href="/watch-along-timer" className="hover:text-yellow-400 transition-colors py-0.5">
+                                    Watch-Along Timer
                                 </Link>
-                                <span>•</span>
-                                <Link href="/filmiway-vs-imdb-parents-guide" className="hover:text-yellow-400 underline transition-colors">
+                                <span className="text-gray-700 hidden sm:inline">•</span>
+                                <Link href="/filmiway-vs-imdb-parents-guide" className="hover:text-yellow-400 transition-colors py-0.5">
                                     Filmiway vs IMDb
                                 </Link>
                             </div>
