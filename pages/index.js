@@ -511,7 +511,7 @@ const FilmiwayHomepage = ({ rRatedCleanMovies, trendingParentsGuides, top10Trend
                 <h3 className="text-gray-400 font-bold mb-3 uppercase text-[10px] tracking-widest">Resources & Legal</h3>
                 <ul className="space-y-2.5 text-xs text-gray-300">
                   <li><Link href="/how-we-work" className="hover:text-yellow-400 text-yellow-500/90 transition-colors inline-block py-1 font-medium">How We Work (Methodology)</Link></li>
-                  <li><Link href="/how-to-skip-awkward-scenes-in-movies" className="hover:text-green-400 text-green-500/90 transition-colors inline-block py-1 font-medium">Skip Awkward Scenes Guide</Link></li>
+                  <li><Link href="/how-to-skip-awkward-scenes-in-movies" className="hover:text-green-400 text-green-500/90 transition-colors inline-block py-1 font-medium">How to Skip Awkward Scenes in Movies</Link></li>
                   <li><Link href="/vidangel-alternatives" className="hover:text-amber-400 text-amber-500/90 transition-colors inline-block py-1 font-medium">Best VidAngel Alternatives</Link></li>
                   <li><Link href="/watch-along-timer" className="hover:text-yellow-400 text-yellow-500/90 transition-colors inline-block py-1 font-medium">Watch-Along Timer</Link></li>
                   <li><Link href="/movie-directory" className="hover:text-yellow-400 text-yellow-500/90 transition-colors inline-block py-1 font-medium">A-Z Directory</Link></li>

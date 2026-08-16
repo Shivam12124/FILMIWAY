@@ -64,7 +64,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
     const [helpfulCount, setHelpfulCount] = useState(0);
     const [hasVoted, setHasVoted] = useState(false);
     const [isVoting, setIsVoting] = useState(false); // Manages vote submission state
-    
+
     // --- WATCH-ALONG STATE ---
     const [showWatchAlong, setShowWatchAlong] = useState(false);
     const handleOpenWatchAlong = useCallback(() => setShowWatchAlong(true), []);
@@ -82,7 +82,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                     country = data.country?.toUpperCase() || 'US';
                     city = data.city || 'Unknown';
                 }
-            } catch (e) {}
+            } catch (e) { }
 
             await addDoc(collection(db, 'affiliate_clicks'), {
                 movieSlug: movie?.slug || 'unknown',
@@ -460,8 +460,8 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                     animate={{ y: 0, opacity: 1 }}
                     exit={isMobile ? { y: -120, opacity: 0 } : { y: 120, opacity: 0 }}
                     transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                    className={isMobile 
-                        ? "fixed top-14 left-0 right-0 z-[9999] px-4 pt-2 pointer-events-none" 
+                    className={isMobile
+                        ? "fixed top-14 left-0 right-0 z-[9999] px-4 pt-2 pointer-events-none"
                         : "fixed bottom-4 left-4 w-[460px] z-[9999] pointer-events-none"}
                 >
                     <div className="max-w-xl mx-auto flex items-center gap-3 bg-[#111113] border border-yellow-500/40 rounded-2xl px-4 py-3 shadow-[0_0_40px_rgba(234,179,8,0.25)] pointer-events-auto">
@@ -492,7 +492,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                             className="flex-shrink-0 p-1 text-gray-500 hover:text-gray-300 transition-colors"
                             aria-label="Dismiss"
                         >
-                            <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M1 1l12 12M13 1L1 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/></svg>
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M1 1l12 12M13 1L1 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /></svg>
                         </button>
                     </div>
                 </motion.div>
@@ -503,15 +503,15 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
 
     return (
         <>
-        {stickyBar}
-        <motion.section
-            className="w-full bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8"
-            initial={{ opacity: 1, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-        >
-            {/* 🎨 Premium scrollbar (desktop) + severity accent bar (all devices) */}
-            <style>{`
+            {stickyBar}
+            <motion.section
+                className="w-full bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8"
+                initial={{ opacity: 1, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+            >
+                {/* 🎨 Premium scrollbar (desktop) + severity accent bar (all devices) */}
+                <style>{`
                 @media (min-width: 1024px) {
                     .desktop-timestamp-scroll::-webkit-scrollbar {
                         width: 6px;
@@ -552,486 +552,486 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                     opacity: 1;
                 }
             `}</style>
-            {filteredHeavyScenes.length === 0 ? (
-                <div className="flex flex-col gap-4 sm:gap-6 relative z-50">
-                    <div className="space-y-3 w-full">
-                        <div className="flex items-start sm:items-center justify-between w-full gap-2">
-                            <h1 className="text-xl sm:text-2xl font-light text-gray-200 flex items-start sm:items-center gap-2 sm:gap-3 leading-tight flex-1">
-                                <CheckCircle className="text-emerald-500 w-5 h-5 sm:w-6 sm:h-6 shrink-0 mt-0.5 sm:mt-0" />
-                                <span className="block">{movie?.Title} Parents Guide & Content Advisory</span>
-                            </h1>
+                {filteredHeavyScenes.length === 0 ? (
+                    <div className="flex flex-col gap-4 sm:gap-6 relative z-50">
+                        <div className="space-y-3 w-full">
+                            <div className="flex items-start sm:items-center justify-between w-full gap-2">
+                                <h1 className="text-xl sm:text-2xl font-light text-gray-200 flex items-start sm:items-center gap-2 sm:gap-3 leading-tight flex-1">
+                                    <CheckCircle className="text-emerald-500 w-5 h-5 sm:w-6 sm:h-6 shrink-0 mt-0.5 sm:mt-0" />
+                                    <span className="block">{movie?.Title} Parents Guide & Content Advisory</span>
+                                </h1>
+                            </div>
+                            {minimalistSafetyBadge}
                         </div>
-                        {minimalistSafetyBadge}
-                    </div>
 
-                    {/* 🔥 RECOMMENDED AGE BADGE (Dynamic) */}
-                    {recommendedAge && ageSummary && (
-                        <motion.div
-                            className="my-1 relative overflow-hidden rounded-xl border border-white/10 bg-black/40 backdrop-blur-md p-3 sm:p-4 flex flex-row items-center gap-3 sm:gap-4 shadow-lg w-full"
-                            initial={{ opacity: 0, y: 5 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: 0.2 }}
-                        >
-                            <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-yellow-400 to-yellow-600"></div>
-
-                            <div className={`flex-shrink-0 flex items-center justify-center bg-yellow-500/10 border border-yellow-500/20 shadow-[0_0_15px_rgba(234,179,8,0.15)] ${recommendedAge.length > 4 ? 'px-3.5 py-2 rounded-xl min-w-[64px]' : 'w-12 h-12 sm:w-14 sm:h-14 rounded-full'}`}>
-                                <span className={`font-bold text-yellow-400 text-center ${recommendedAge.length > 4 ? 'text-xs sm:text-sm whitespace-nowrap' : 'text-lg sm:text-xl tracking-tight'}`}>{recommendedAge}</span>
-                            </div>
-
-                            <div className="flex-1 flex flex-col justify-center">
-                                <h3 className="text-[11px] sm:text-xs font-semibold text-gray-300 mb-0.5 uppercase tracking-widest">Recommended Age</h3>
-                                <p className="text-xs sm:text-[13px] text-gray-400 leading-snug font-light">{ageSummary}</p>
-                            </div>
-                        </motion.div>
-                    )}
-
-                    {/* 🟢 REASSURANCE BOX (Green card positioned below Recommended Age & above Content Advisory) */}
-                    <div className="my-1 relative overflow-hidden rounded-xl border border-emerald-500/20 bg-emerald-950/20 backdrop-blur-md p-3.5 sm:p-4 flex items-start gap-3 shadow-md w-full">
-                        <div className="absolute left-0 top-0 bottom-0 w-1 bg-emerald-500"></div>
-                        <CheckCircle className="text-emerald-500 w-5 h-5 shrink-0 mt-0.5" />
-                        <p className="text-xs sm:text-sm text-gray-300 leading-relaxed font-light">
-                            Filmiway editors have verified that <span className="underline font-normal text-white">{movie?.Title}</span> has no skip timestamps because it is completely free of explicit, intimate, or sexual scenes throughout its full <span className="text-emerald-400 font-medium" suppressHydrationWarning>{currentRuntime}</span> runtime.
-                        </p>
-                    </div>
-                </div>
-            ) : (
-                <div className="flex flex-col gap-4 sm:gap-6 relative z-50">
-
-                    <div className="space-y-3 w-full">
-                        <div className="flex items-start sm:items-center justify-between w-full gap-2">
-                            <h1 className="text-xl sm:text-2xl font-light text-gray-200 flex items-start sm:items-center gap-2 sm:gap-3 leading-tight flex-1">
-                                <Shield className="text-red-500 w-5 h-5 sm:w-6 sm:h-6 shrink-0 mt-0.5 sm:mt-0" />
-                                <span className="block">{movie?.Title} Parents Guide & Skip Timestamps</span>
-                            </h1>
-
-                            <div
-                                className="relative flex items-center shrink-0 z-50 pt-0.5 sm:pt-0"
-                                ref={infoRef}
-                            >
-                                <button
-                                    type="button"
-                                    className="focus:outline-none p-1 -m-1"
-                                    onClick={(e) => {
-                                        e.preventDefault();
-                                        setShowInfo(!showInfo);
-                                    }}
-                                    aria-label="How we verify timestamps"
-                                >
-                                    <Info
-                                        size={16}
-                                        className={`transition-colors sm:w-[18px] sm:h-[18px] mt-1 sm:mt-0 ${showInfo ? 'text-gray-300' : 'text-gray-500 hover:text-gray-300'}`}
-                                    />
-                                </button>
-
-                                {/* 🚀 SEO FIX: Always render this in the DOM so Googlebot reads it, but hide visually with CSS/opacity when not active */}
-                                <motion.div
-                                    initial={false}
-                                    animate={{
-                                        opacity: showInfo ? 1 : 0,
-                                        y: showInfo ? 0 : -5,
-                                        scale: showInfo ? 1 : 0.95,
-                                        pointerEvents: showInfo ? 'auto' : 'none'
-                                    }}
-                                    transition={{ duration: 0.15 }}
-                                    className="absolute right-0 top-[130%] mt-2 w-[280px] max-w-[90vw] sm:w-72 p-4 bg-[#111113] border border-gray-600/50 rounded-xl text-xs sm:text-sm text-gray-200 shadow-[0_15px_40px_rgba(0,0,0,0.9)] z-[100] font-sans tracking-normal leading-relaxed origin-top-right"
-                                >
-                                    <strong className="text-white block mb-1">100% Manually Verified</strong>
-                                    Our editors manually watch and pull exact timestamps directly from the film. We provide these timestamps so parents know exactly what they or their kids are going to see, helping to remove those awkward moments in movie nights.
-                                </motion.div>
-                            </div>
-                        </div>
-                        {minimalistSafetyBadge}
-
-                        <p className="text-sm sm:text-base text-gray-400 leading-relaxed font-light mt-3 max-w-3xl ml-1">
-                            {(() => {
-                                const title = movie?.Title || 'this movie';
-                                const seed = Math.abs(Number(movie?.tmdbId || 0) + title.length);
-                                const templates = [
-                                    <>Filmiway provides manually verified skip timestamps for <span className="underline font-normal text-gray-200">{title}</span> so parents and families know exactly what to expect before pressing play. Every timecode is hand-checked by our editors to be 100% reliable and pinpoint correct for the official runtime, eliminating uncomfortable surprises. Use our timestamps as an educational utility to skip awkward scenes seamlessly while enjoying family movie nights.</>,
-                                    <>To help you avoid unexpected moments during movie nights, Filmiway editors manually log and verify exact skip timestamps for <span className="underline font-normal text-gray-200">{title}</span>. Each scene marker is pinpoint-accurate for the official runtime, ensuring 100% reliability for parents and families. Our timestamps serve as an educational utility to skip awkward scenes seamlessly while enjoying family movie nights.</>,
-                                    <>Filmiway's team manually reviews <span className="underline font-normal text-gray-200">{title}</span> to deliver 100% reliable, pinpoint-accurate skip timestamps for the full runtime. We help parents and families preview content warnings in advance to eliminate uncomfortable interruptions. Designed as an educational utility to skip awkward scenes seamlessly while enjoying family movie nights.</>,
-                                    <>Enjoy a worry-free movie night with <span className="underline font-normal text-gray-200">{title}</span> using Filmiway's manually verified skip timestamps. Our editors hand-verify every single timecode for pinpoint precision against the official runtime, giving parents full confidence when watching with family. These timestamps function as an educational utility to skip awkward scenes seamlessly while enjoying family movie nights.</>,
-                                    <>Filmiway provides precise, hand-verified skip timestamps for <span className="underline font-normal text-gray-200">{title}</span> to ensure parents and families are never caught off guard. Every timestamp is manually checked by our editorial team to guarantee 100% accuracy for the exact runtime. Use our timestamps as an educational utility to skip awkward scenes seamlessly while enjoying family movie nights.</>,
-                                    <>Avoid unexpected interruptions during <span className="underline font-normal text-gray-200">{title}</span> with Filmiway's 100% reliable skip timestamps. Every scene marker is manually analyzed and verified by Filmiway editors for pinpoint accuracy matching the full runtime. We provide these timestamps as an educational utility to skip awkward scenes seamlessly while enjoying family movie nights.</>,
-                                    <>Filmiway editors manually watch and verify all skip timestamps for <span className="underline font-normal text-gray-200">{title}</span>, delivering 100% reliable, pinpoint-accurate timecodes for the official runtime. We created this guide to help parents preview content beforehand. Feel free to use our timestamps as an educational utility to skip awkward scenes seamlessly while enjoying family movie nights.</>,
-                                    <>With Filmiway's hand-verified skip guide for <span className="underline font-normal text-gray-200">{title}</span>, parents can enjoy movie nights without worrying about unexpected content. Our team manually checks every timecode for 100% pinpoint accuracy against the exact runtime, offering an educational utility to skip awkward scenes seamlessly while enjoying family movie nights.</>
-                                ];
-                                return templates[seed % templates.length];
-                            })()}
-                        </p>
-
+                        {/* 🔥 RECOMMENDED AGE BADGE (Dynamic) */}
                         {recommendedAge && ageSummary && (
                             <motion.div
-                                className="my-4 relative overflow-hidden rounded-2xl border border-white/10 bg-black/40 backdrop-blur-md p-4 sm:p-5 flex flex-row items-center gap-4 sm:gap-5 shadow-xl"
-                                initial={{ opacity: 0, y: 10 }}
+                                className="my-1 relative overflow-hidden rounded-xl border border-white/10 bg-black/40 backdrop-blur-md p-3 sm:p-4 flex flex-row items-center gap-3 sm:gap-4 shadow-lg w-full"
+                                initial={{ opacity: 0, y: 5 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.5, delay: 0.2 }}
                             >
                                 <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-yellow-400 to-yellow-600"></div>
 
-                                <div className={`flex-shrink-0 flex items-center justify-center bg-yellow-500/10 border border-yellow-500/20 shadow-[0_0_15px_rgba(234,179,8,0.15)] ${recommendedAge.length > 4 ? 'px-3.5 py-2 rounded-xl min-w-[64px]' : 'w-14 h-14 sm:w-16 sm:h-16 rounded-full'}`}>
-                                    <span className={`font-bold text-yellow-400 text-center ${recommendedAge.length > 4 ? 'text-xs sm:text-sm whitespace-nowrap' : 'text-xl sm:text-2xl tracking-tight'}`}>{recommendedAge}</span>
+                                <div className={`flex-shrink-0 flex items-center justify-center bg-yellow-500/10 border border-yellow-500/20 shadow-[0_0_15px_rgba(234,179,8,0.15)] ${recommendedAge.length > 4 ? 'px-3.5 py-2 rounded-xl min-w-[64px]' : 'w-12 h-12 sm:w-14 sm:h-14 rounded-full'}`}>
+                                    <span className={`font-bold text-yellow-400 text-center ${recommendedAge.length > 4 ? 'text-xs sm:text-sm whitespace-nowrap' : 'text-lg sm:text-xl tracking-tight'}`}>{recommendedAge}</span>
                                 </div>
 
                                 <div className="flex-1 flex flex-col justify-center">
-                                    <h3 className="text-xs sm:text-sm font-semibold text-gray-300 mb-1 uppercase tracking-widest">Recommended Age</h3>
-                                    <p className="text-[13px] sm:text-sm text-gray-400 leading-relaxed font-light">{ageSummary}</p>
+                                    <h3 className="text-[11px] sm:text-xs font-semibold text-gray-300 mb-0.5 uppercase tracking-widest">Recommended Age</h3>
+                                    <p className="text-xs sm:text-[13px] text-gray-400 leading-snug font-light">{ageSummary}</p>
                                 </div>
                             </motion.div>
                         )}
 
-                        <div className="ml-1 space-y-2.5 sm:space-y-3 mt-2 sm:mt-4">
-                            <p className="text-[13px] sm:text-sm text-gray-500 flex items-start sm:items-center gap-2">
-                                <CheckCircle size={14} className="text-emerald-500/80 shrink-0 mt-0.5 sm:mt-0" />
-                                <span className="leading-snug">Timestamps are accurate for the <span className="text-gray-300 font-medium" suppressHydrationWarning>{currentRuntime}</span></span>
-                            </p>
-
-                            <p className="text-[13px] sm:text-sm text-gray-500 flex items-center gap-2">
-                                <Film size={14} className="text-indigo-400/80 shrink-0" />
-                                <span>Total scenes flagged: <span className="text-gray-300 font-medium">{skipStats.totalScenes}</span></span>
-                            </p>
-
-                            <p className="text-[13px] sm:text-sm text-gray-500 flex items-center gap-2">
-                                <FastForward size={14} className="text-yellow-500/80 shrink-0" />
-                                <span>Total time to skip: <span className="text-gray-300 font-medium">{skipStats.formattedTime}</span></span>
+                        {/* 🟢 REASSURANCE BOX (Green card positioned below Recommended Age & above Content Advisory) */}
+                        <div className="my-1 relative overflow-hidden rounded-xl border border-emerald-500/20 bg-emerald-950/20 backdrop-blur-md p-3.5 sm:p-4 flex items-start gap-3 shadow-md w-full">
+                            <div className="absolute left-0 top-0 bottom-0 w-1 bg-emerald-500"></div>
+                            <CheckCircle className="text-emerald-500 w-5 h-5 shrink-0 mt-0.5" />
+                            <p className="text-xs sm:text-sm text-gray-300 leading-relaxed font-light">
+                                Filmiway editors have verified that <span className="underline font-normal text-white">{movie?.Title}</span> has no skip timestamps because it is completely free of explicit, intimate, or sexual scenes throughout its full <span className="text-emerald-400 font-medium" suppressHydrationWarning>{currentRuntime}</span> runtime.
                             </p>
                         </div>
                     </div>
-                </div>
-            )}
+                ) : (
+                    <div className="flex flex-col gap-4 sm:gap-6 relative z-50">
 
-            {/* 🔥 THE "SHOWER IDEA" VISUAL TIMELINE MAP */}
-            {timelineMarkers.length > 0 && (
-                <motion.div
-                    className="w-full mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-white/5"
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3, duration: 0.5 }}
-                >
-                    {/* ⏱️ DEDICATED WATCH-ALONG TIMER UTILITY CARD (MINIMALIST & PARENTS GUIDE MATCHED) */}
-                    <div 
-                        itemScope 
-                        itemType="https://schema.org/SoftwareApplication"
-                        className="group relative w-full mb-8 p-5 sm:p-6 rounded-2xl border border-white/10 bg-[#0a0a0c] shadow-xl overflow-hidden"
-                    >
-                        <meta itemProp="name" content={`Filmiway Live Watch-Along Sync Timer for ${movie?.Title || 'Movie'}`} />
-                        <meta itemProp="applicationCategory" content="MultimediaApplication" />
-                        <meta itemProp="operatingSystem" content="Web, iOS, Android" />
+                        <div className="space-y-3 w-full">
+                            <div className="flex items-start sm:items-center justify-between w-full gap-2">
+                                <h1 className="text-xl sm:text-2xl font-light text-gray-200 flex items-start sm:items-center gap-2 sm:gap-3 leading-tight flex-1">
+                                    <Shield className="text-red-500 w-5 h-5 sm:w-6 sm:h-6 shrink-0 mt-0.5 sm:mt-0" />
+                                    <span className="block">{movie?.Title} Parents Guide & Skip Timestamps</span>
+                                </h1>
 
-                        {/* Subtle top accent border line */}
-                        <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-yellow-500/40 to-transparent" />
+                                <div
+                                    className="relative flex items-center shrink-0 z-50 pt-0.5 sm:pt-0"
+                                    ref={infoRef}
+                                >
+                                    <button
+                                        type="button"
+                                        className="focus:outline-none p-1 -m-1"
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            setShowInfo(!showInfo);
+                                        }}
+                                        aria-label="How we verify timestamps"
+                                    >
+                                        <Info
+                                            size={16}
+                                            className={`transition-colors sm:w-[18px] sm:h-[18px] mt-1 sm:mt-0 ${showInfo ? 'text-gray-300' : 'text-gray-500 hover:text-gray-300'}`}
+                                        />
+                                    </button>
 
-                        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-5 relative z-10">
-                            {/* Left Side: Title & Explanatory Text */}
-                            <div className="flex-1 space-y-2">
-                                <div className="flex items-center gap-2.5">
-                                    <div className="relative flex h-2 w-2 shrink-0">
-                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75" />
-                                        <span className="relative inline-flex rounded-full h-2 w-2 bg-yellow-500" />
+                                    {/* 🚀 SEO FIX: Always render this in the DOM so Googlebot reads it, but hide visually with CSS/opacity when not active */}
+                                    <motion.div
+                                        initial={false}
+                                        animate={{
+                                            opacity: showInfo ? 1 : 0,
+                                            y: showInfo ? 0 : -5,
+                                            scale: showInfo ? 1 : 0.95,
+                                            pointerEvents: showInfo ? 'auto' : 'none'
+                                        }}
+                                        transition={{ duration: 0.15 }}
+                                        className="absolute right-0 top-[130%] mt-2 w-[280px] max-w-[90vw] sm:w-72 p-4 bg-[#111113] border border-gray-600/50 rounded-xl text-xs sm:text-sm text-gray-200 shadow-[0_15px_40px_rgba(0,0,0,0.9)] z-[100] font-sans tracking-normal leading-relaxed origin-top-right"
+                                    >
+                                        <strong className="text-white block mb-1">100% Manually Verified</strong>
+                                        Our editors manually watch and pull exact timestamps directly from the film. We provide these timestamps so parents know exactly what they or their kids are going to see, helping to remove those awkward moments in movie nights.
+                                    </motion.div>
+                                </div>
+                            </div>
+                            {minimalistSafetyBadge}
+
+                            <p className="text-sm sm:text-base text-gray-400 leading-relaxed font-light mt-3 max-w-3xl ml-1">
+                                {(() => {
+                                    const title = movie?.Title || 'this movie';
+                                    const seed = Math.abs(Number(movie?.tmdbId || 0) + title.length);
+                                    const templates = [
+                                        <>Filmiway provides manually verified skip timestamps for <span className="underline font-normal text-gray-200">{title}</span> so parents and families know exactly what to expect before pressing play. Every timecode is hand-checked by our editors to be 100% reliable and pinpoint correct for the official runtime, eliminating uncomfortable surprises. Use our timestamps as an educational utility to skip awkward scenes seamlessly while enjoying family movie nights.</>,
+                                        <>To help you avoid unexpected moments during movie nights, Filmiway editors manually log and verify exact skip timestamps for <span className="underline font-normal text-gray-200">{title}</span>. Each scene marker is pinpoint-accurate for the official runtime, ensuring 100% reliability for parents and families. Our timestamps serve as an educational utility to skip awkward scenes seamlessly while enjoying family movie nights.</>,
+                                        <>Filmiway's team manually reviews <span className="underline font-normal text-gray-200">{title}</span> to deliver 100% reliable, pinpoint-accurate skip timestamps for the full runtime. We help parents and families preview content warnings in advance to eliminate uncomfortable interruptions. Designed as an educational utility to skip awkward scenes seamlessly while enjoying family movie nights.</>,
+                                        <>Enjoy a worry-free movie night with <span className="underline font-normal text-gray-200">{title}</span> using Filmiway's manually verified skip timestamps. Our editors hand-verify every single timecode for pinpoint precision against the official runtime, giving parents full confidence when watching with family. These timestamps function as an educational utility to skip awkward scenes seamlessly while enjoying family movie nights.</>,
+                                        <>Filmiway provides precise, hand-verified skip timestamps for <span className="underline font-normal text-gray-200">{title}</span> to ensure parents and families are never caught off guard. Every timestamp is manually checked by our editorial team to guarantee 100% accuracy for the exact runtime. Use our timestamps as an educational utility to skip awkward scenes seamlessly while enjoying family movie nights.</>,
+                                        <>Avoid unexpected interruptions during <span className="underline font-normal text-gray-200">{title}</span> with Filmiway's 100% reliable skip timestamps. Every scene marker is manually analyzed and verified by Filmiway editors for pinpoint accuracy matching the full runtime. We provide these timestamps as an educational utility to skip awkward scenes seamlessly while enjoying family movie nights.</>,
+                                        <>Filmiway editors manually watch and verify all skip timestamps for <span className="underline font-normal text-gray-200">{title}</span>, delivering 100% reliable, pinpoint-accurate timecodes for the official runtime. We created this guide to help parents preview content beforehand. Feel free to use our timestamps as an educational utility to skip awkward scenes seamlessly while enjoying family movie nights.</>,
+                                        <>With Filmiway's hand-verified skip guide for <span className="underline font-normal text-gray-200">{title}</span>, parents can enjoy movie nights without worrying about unexpected content. Our team manually checks every timecode for 100% pinpoint accuracy against the exact runtime, offering an educational utility to skip awkward scenes seamlessly while enjoying family movie nights.</>
+                                    ];
+                                    return templates[seed % templates.length];
+                                })()}
+                            </p>
+
+                            {recommendedAge && ageSummary && (
+                                <motion.div
+                                    className="my-4 relative overflow-hidden rounded-2xl border border-white/10 bg-black/40 backdrop-blur-md p-4 sm:p-5 flex flex-row items-center gap-4 sm:gap-5 shadow-xl"
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.5, delay: 0.2 }}
+                                >
+                                    <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-yellow-400 to-yellow-600"></div>
+
+                                    <div className={`flex-shrink-0 flex items-center justify-center bg-yellow-500/10 border border-yellow-500/20 shadow-[0_0_15px_rgba(234,179,8,0.15)] ${recommendedAge.length > 4 ? 'px-3.5 py-2 rounded-xl min-w-[64px]' : 'w-14 h-14 sm:w-16 sm:h-16 rounded-full'}`}>
+                                        <span className={`font-bold text-yellow-400 text-center ${recommendedAge.length > 4 ? 'text-xs sm:text-sm whitespace-nowrap' : 'text-xl sm:text-2xl tracking-tight'}`}>{recommendedAge}</span>
                                     </div>
-                                    <span className="text-[11px] sm:text-xs font-semibold text-yellow-500/90 uppercase tracking-[0.18em]">
-                                        Live Synchronization Tool
+
+                                    <div className="flex-1 flex flex-col justify-center">
+                                        <h3 className="text-xs sm:text-sm font-semibold text-gray-300 mb-1 uppercase tracking-widest">Recommended Age</h3>
+                                        <p className="text-[13px] sm:text-sm text-gray-400 leading-relaxed font-light">{ageSummary}</p>
+                                    </div>
+                                </motion.div>
+                            )}
+
+                            <div className="ml-1 space-y-2.5 sm:space-y-3 mt-2 sm:mt-4">
+                                <p className="text-[13px] sm:text-sm text-gray-500 flex items-start sm:items-center gap-2">
+                                    <CheckCircle size={14} className="text-emerald-500/80 shrink-0 mt-0.5 sm:mt-0" />
+                                    <span className="leading-snug">Timestamps are accurate for the <span className="text-gray-300 font-medium" suppressHydrationWarning>{currentRuntime}</span></span>
+                                </p>
+
+                                <p className="text-[13px] sm:text-sm text-gray-500 flex items-center gap-2">
+                                    <Film size={14} className="text-indigo-400/80 shrink-0" />
+                                    <span>Total scenes flagged: <span className="text-gray-300 font-medium">{skipStats.totalScenes}</span></span>
+                                </p>
+
+                                <p className="text-[13px] sm:text-sm text-gray-500 flex items-center gap-2">
+                                    <FastForward size={14} className="text-yellow-500/80 shrink-0" />
+                                    <span>Total time to skip: <span className="text-gray-300 font-medium">{skipStats.formattedTime}</span></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                )}
+
+                {/* 🔥 THE "SHOWER IDEA" VISUAL TIMELINE MAP */}
+                {timelineMarkers.length > 0 && (
+                    <motion.div
+                        className="w-full mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-white/5"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.3, duration: 0.5 }}
+                    >
+                        {/* ⏱️ DEDICATED WATCH-ALONG TIMER UTILITY CARD (MINIMALIST & PARENTS GUIDE MATCHED) */}
+                        <div
+                            itemScope
+                            itemType="https://schema.org/SoftwareApplication"
+                            className="group relative w-full mb-8 p-5 sm:p-6 rounded-2xl border border-white/10 bg-[#0a0a0c] shadow-xl overflow-hidden"
+                        >
+                            <meta itemProp="name" content={`Filmiway Live Watch-Along Sync Timer for ${movie?.Title || 'Movie'}`} />
+                            <meta itemProp="applicationCategory" content="MultimediaApplication" />
+                            <meta itemProp="operatingSystem" content="Web, iOS, Android" />
+
+                            {/* Subtle top accent border line */}
+                            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-yellow-500/40 to-transparent" />
+
+                            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-5 relative z-10">
+                                {/* Left Side: Title & Explanatory Text */}
+                                <div className="flex-1 space-y-2">
+                                    <div className="flex items-center gap-2.5">
+                                        <div className="relative flex h-2 w-2 shrink-0">
+                                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75" />
+                                            <span className="relative inline-flex rounded-full h-2 w-2 bg-yellow-500" />
+                                        </div>
+                                        <span className="text-[11px] sm:text-xs font-semibold text-yellow-500/90 uppercase tracking-[0.18em]">
+                                            Live Synchronization Tool
+                                        </span>
+                                    </div>
+
+                                    <h3 itemProp="headline" className="text-base sm:text-lg font-medium text-white tracking-wide leading-snug m-0">
+                                        Filmiway Watch-Along Timer
+                                    </h3>
+
+                                    <p itemProp="description" className="text-xs sm:text-sm text-gray-300 font-light leading-relaxed max-w-2xl m-0">
+                                        Sync this live timer on your mobile phone simultaneously when playing the film on your TV. The tool runs in real-time and alerts you <strong className="text-yellow-400 font-medium">12 seconds before explicit or sensitive scenes appear</strong>, giving you enough time to skip past them before things get awkward.
+                                    </p>
+                                </div>
+
+                                {/* Right Side: Action Button */}
+                                <div className="shrink-0 w-full lg:w-auto">
+                                    <button
+                                        onClick={handleOpenWatchAlong}
+                                        className="group/btn relative w-full lg:w-auto inline-flex items-center justify-center gap-3 bg-zinc-900/90 hover:bg-zinc-800/95 text-white font-semibold text-xs sm:text-sm px-6 py-3.5 rounded-full border border-yellow-500/40 hover:border-yellow-400/80 shadow-[0_0_20px_rgba(245,158,11,0.15)] hover:shadow-[0_0_30px_rgba(245,158,11,0.3)] transition-all duration-300 cursor-pointer overflow-hidden backdrop-blur-md transform hover:-translate-y-0.5 active:translate-y-0"
+                                    >
+                                        <div className="flex items-center justify-center w-6 h-6 rounded-full bg-yellow-500/15 border border-yellow-500/30 group-hover/btn:bg-yellow-500/25 group-hover/btn:border-yellow-400/60 transition-all shrink-0">
+                                            <Play size={11} className="fill-yellow-400 text-yellow-400 translate-x-[0.5px]" />
+                                        </div>
+                                        <span className="tracking-wide text-gray-100 group-hover/btn:text-yellow-400 transition-colors font-medium">Launch Watch-Along Timer</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* PARENTS GUIDE TRACKER HEADER */}
+                        <div className="flex items-center justify-between gap-3 mb-5">
+                            <h3 className="text-xs sm:text-sm font-bold text-gray-300 uppercase tracking-[0.2em] flex items-center gap-2 m-0">
+                                <Film size={16} className="text-yellow-500" /> Parents Guide Tracker
+                            </h3>
+                        </div>
+
+                        {/* 🎬 WATCH-ALONG TIMER OVERLAY */}
+                        {showWatchAlong && (
+                            <WatchAlongTimer
+                                movie={movie}
+                                sensitiveScenes={sensitiveScenes}
+                                onClose={handleCloseWatchAlong}
+                            />
+                        )}
+
+                        {/* 🔥 SEO SAFE-SEARCH PARENTAL ADVISORY — Only for curated explicit films */}
+                        {showExplicitAdvisory && (
+                            <div className="relative overflow-hidden rounded-xl border border-white/10 bg-black/40 backdrop-blur-md p-3.5 sm:p-4 mb-5 shadow-lg">
+                                <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-red-500 to-red-700"></div>
+                                <div className="flex items-start gap-3 ml-1">
+                                    <AlertOctagon className="text-red-400/80 w-4 h-4 shrink-0 mt-0.5" />
+                                    <p className="text-[12px] sm:text-[13px] text-gray-400 leading-relaxed font-light">
+                                        <span className="text-gray-300 font-medium">Viewer Discretion Advised:</span> This film contains scenes of an extremely explicit nature. Filmiway strongly advises that this film is <span className="text-red-400/90 font-medium">not suitable for family viewing or watching with children</span>. If you choose to watch, use the skip timestamps below to navigate past scenes you may find uncomfortable. These timestamps are provided strictly as an educational utility.
+                                    </p>
+                                </div>
+                            </div>
+                        )}
+
+                        <div className="relative w-full h-2.5 sm:h-3 bg-[#030303] rounded-full border border-white/10 shadow-inner group/track mt-6 sm:mt-8">
+                            <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-gray-800/40 to-transparent w-full rounded-full pointer-events-none" />
+
+                            {timelineMarkers.map((marker) => {
+                                // 🔥 Improved Edge Detection: Widened threshold to 25% so it NEVER gets cut off on narrow mobile screens
+                                const isStartEdge = marker.percentage < 25;
+                                const isEndEdge = marker.percentage > 75;
+                                const tooltipAlign = isStartEdge ? "left-0" : isEndEdge ? "right-0" : "left-1/2 -translate-x-1/2";
+                                const pointerAlign = isStartEdge ? "left-2" : isEndEdge ? "right-2" : "left-1/2 -translate-x-1/2";
+
+                                return (
+                                    <div
+                                        key={`pin-${marker.id}`}
+                                        aria-label={`${marker.type} starting at ${marker.start}`}
+                                        className="group/pin absolute top-1/2 -translate-y-1/2 w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full border-2 border-[#0a0a0c] shadow-[0_0_8px_rgba(0,0,0,0.8)] cursor-pointer hover:scale-[1.5] focus:scale-[1.5] transition-all duration-300 z-10 hover:z-50 focus:z-50 outline-none"
+                                        style={{
+                                            left: `${marker.percentage}%`,
+                                            backgroundColor: getMarkerColorHex(marker.severity)
+                                        }}
+                                        tabIndex="0"
+                                    >
+                                        {/* Properly scaled micro-tooltip - Readable on mobile, sleek on PC */}
+                                        <div className={`pointer-events-none absolute bottom-full mb-1.5 sm:mb-2 w-max max-w-[120px] sm:max-w-[140px] opacity-0 group-hover/pin:opacity-100 group-focus/pin:opacity-100 transition-all duration-200 z-[100] transform group-hover/pin:-translate-y-1 group-focus/pin:-translate-y-1 origin-bottom ${tooltipAlign}`}>
+                                            <div className="bg-[#111113] border border-gray-600/50 rounded-md px-2 py-1.5 shadow-xl text-left relative">
+                                                <div className={`absolute -bottom-1 w-2 h-2 bg-[#111113] border-b border-r border-gray-600/50 transform rotate-45 ${pointerAlign}`}></div>
+                                                <span className="text-gray-400 font-mono block mb-1 flex items-center gap-1 text-[10px] sm:text-[11px]">
+                                                    <Clock size={10} className="text-gray-500 shrink-0" />
+                                                    <span className="truncate">{marker.start}{marker.end ? `-${marker.end}` : ''}</span>
+                                                </span>
+                                                <span className="text-gray-200 font-medium block leading-tight break-words whitespace-normal text-[11px] sm:text-[12px]">
+                                                    {marker.type}
+                                                </span>
+                                                <span className="text-[9px] sm:text-[10px] uppercase tracking-widest font-bold mt-1 block" style={{ color: getMarkerColorHex(marker.severity) }}>
+                                                    {marker.severity}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                        <div className="flex justify-between text-[10px] text-gray-500 mt-4 font-mono font-medium tracking-widest uppercase">
+                            <span>00:00</span>
+                            <span suppressHydrationWarning>{currentRuntime}</span>
+                        </div>
+                    </motion.div>
+                )}
+
+                {/* 🔥 DESKTOP LAYOUT FIX: Desktop ONLY gets the scrollable pane. Mobile remains 100% exactly as it was. */}
+                <div className="relative mt-4 sm:mt-6">
+                    <div className="lg:max-h-[520px] lg:overflow-y-auto lg:overflow-x-hidden lg:pr-1 desktop-timestamp-scroll">
+                        {/* 🚀 SEO UPGRADE: Changed div to ul for semantic list extraction */}
+                        <ul className="space-y-2 sm:space-y-2.5 m-0 p-0 list-none timestamp-card-list">
+                            {sensitiveData.scenes.map((scene, index) => {
+                                const rawStart = scene.start || '';
+                                const sceneEnd = scene.end || '';
+                                const sceneType = scene.type || scene.description || 'Content Warning';
+                                const sceneDescription = scene.description || '';
+
+                                const getSceneIcon = (type) => {
+                                    const lowerType = type.toLowerCase();
+                                    if (lowerType.includes('nudity') || lowerType.includes('sex') || lowerType.includes('lingerie') || lowerType.includes('suggestive')) return <Eye size={14} />;
+                                    if (lowerType.includes('language') || lowerType.includes('profanity')) return <MessageSquare size={14} />;
+                                    if (lowerType.includes('violence') || lowerType.includes('gore') || lowerType.includes('blood')) return <Flame size={14} />;
+                                    if (lowerType.includes('kissing')) return <Heart size={14} />;
+                                    return <AlertTriangle size={14} />;
+                                };
+
+                                const severityBadge = scene.severity ? (
+                                    <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-sm border border-white/10 bg-white/[0.02] group-hover:border-white/20 transition-colors">
+                                        <div className={`w-1.5 h-1.5 rounded-full ${getSeverityDotColor(scene.severity)}`} />
+                                        <span className="text-[9px] sm:text-[10px] font-semibold tracking-[0.15em] uppercase text-gray-400 group-hover:text-gray-200 transition-colors">
+                                            {scene.severity}
+                                        </span>
+                                    </div>
+                                ) : null;
+
+                                const isGeneralWarning = rawStart === '' || rawStart.toLowerCase() === 'none';
+
+                                return (
+                                    <li key={index} className="group rounded-lg sm:rounded-xl border border-white/[0.06] bg-white/[0.015] hover:bg-white/[0.04] hover:border-white/[0.12] transition-all duration-300 flex flex-col sm:flex-row sm:items-center gap-2.5 sm:gap-4 p-3.5 pl-5 sm:px-6 sm:py-4" style={{ '--accent-color': getMarkerColorHex(scene.severity) }}>
+                                        {isGeneralWarning ? (
+                                            // 🚀 NEW: Clean Layout for General Warnings (No timestamp, but has data)
+                                            <div className="flex items-start gap-3 w-full">
+                                                <span className="text-gray-500 group-hover:text-white transition-colors duration-300 mt-[3px] shrink-0">
+                                                    {getSceneIcon(sceneType)}
+                                                </span>
+                                                <div className="flex flex-col min-w-0 flex-1 gap-1">
+                                                    <div className="flex items-center justify-between w-full">
+                                                        <span className="text-gray-300 text-[13px] sm:text-sm font-medium break-words whitespace-normal group-hover:text-white transition-colors leading-tight flex flex-wrap items-center gap-1.5 sm:gap-2">
+                                                            <span className="text-gray-400 font-semibold uppercase tracking-[0.15em] text-[10px] sm:text-[11px] opacity-80">Content Advisory:</span>
+                                                            {sceneType}
+                                                        </span>
+                                                        <div className="shrink-0 ml-3">
+                                                            {severityBadge}
+                                                        </div>
+                                                    </div>
+                                                    {sceneDescription && sceneDescription !== sceneType && sceneDescription.toLowerCase() !== 'none' && (
+                                                        <span className="text-[12px] sm:text-[13px] text-gray-400/80 leading-relaxed mt-0.5 break-words whitespace-normal group-hover:text-gray-300 transition-colors">
+                                                            {sceneDescription}
+                                                        </span>
+                                                    )}
+                                                </div>
+                                            </div>
+                                        ) : (
+                                            // 🚀 NEW: Action-Oriented Skip Guide Layout for Timestamps (Sleek UI)
+                                            <div className="flex flex-col min-w-0 w-full gap-1.5 sm:gap-2">
+                                                <div className="flex items-center justify-between w-full">
+                                                    <div className="flex items-start sm:items-center gap-2.5 min-w-0 flex-1">
+                                                        <span className="text-gray-500 group-hover:text-white transition-colors duration-300 mt-[1px] sm:mt-0 shrink-0">
+                                                            {getSceneIcon(sceneType)}
+                                                        </span>
+                                                        <span className="text-gray-300 text-[13px] sm:text-sm font-medium break-words whitespace-normal group-hover:text-white transition-colors leading-tight flex flex-wrap items-center gap-1.5 sm:gap-2">
+                                                            <span className="text-gray-400 font-semibold uppercase tracking-[0.15em] text-[10px] sm:text-[11px] opacity-80">Content Advisory:</span>
+                                                            {sceneType}
+                                                        </span>
+                                                    </div>
+                                                    <div className="shrink-0 ml-3">
+                                                        {severityBadge}
+                                                    </div>
+                                                </div>
+
+                                                <div className="flex flex-wrap items-center gap-2 text-gray-400 group-hover:text-gray-200 transition-colors ml-7 sm:ml-8 mt-0.5">
+                                                    <div className="flex items-center gap-1.5 opacity-90">
+                                                        <FastForward size={12} className="opacity-70 shrink-0" />
+                                                        <span className="text-[10px] sm:text-[11px] font-semibold tracking-widest uppercase">Action: Skip</span>
+                                                    </div>
+                                                    <span className="opacity-30 mx-0.5 text-[10px]">•</span>
+                                                    <div className="flex items-center gap-1.5">
+                                                        <Clock size={12} className="opacity-60 shrink-0" />
+                                                        <span className="font-mono text-[12px] sm:text-[13px] tracking-wide font-medium">
+                                                            {rawStart} {sceneEnd && <span className="opacity-40 text-[10px] mx-1">→</span>} {sceneEnd}
+                                                        </span>
+                                                    </div>
+                                                </div>
+
+                                                {sceneDescription && sceneDescription !== sceneType && sceneDescription.toLowerCase() !== 'none' && (
+                                                    <div className="ml-7 sm:ml-8 mt-0.5">
+                                                        <span className="text-[12px] sm:text-[13px] text-gray-400/80 leading-relaxed break-words whitespace-normal group-hover:text-gray-300 transition-colors">
+                                                            {sceneDescription}
+                                                        </span>
+                                                    </div>
+                                                )}
+                                            </div>
+                                        )}
+                                    </li>
+                                );
+                            })}
+                        </ul>
+                    </div>
+                    {/* 🎨 DESKTOP-ONLY: Subtle bottom fade to hint "scroll for more" — reduced opacity so text stays readable */}
+                    <div className="hidden lg:block pointer-events-none absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-[#0a0a0c]/60 to-transparent rounded-b-xl z-10" />
+                </div>
+
+                {/* 🚀 ExpressVPN Official Affiliate Banner (Placed directly below timestamps, above Last Verified / Was this guide useful) */}
+                <div className="mt-6 mb-2">
+                    <a
+                        href="https://go.expressvpn.com/c/7564909/1462856/16063"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={handleExpressVpnClick}
+                        className="group relative flex flex-col md:flex-row items-start md:items-center justify-between gap-5 p-5 lg:p-6 rounded-2xl border border-red-500/35 bg-gradient-to-r from-red-950/50 via-[#120507] to-black/90 hover:border-red-500/70 transition-all duration-300 backdrop-blur-md shadow-xl shadow-black/50 hover:shadow-red-600/15 cursor-pointer overflow-hidden"
+                    >
+                        {/* Subtle red background aura */}
+                        <div className="absolute -left-10 -top-10 w-40 h-40 bg-red-600/15 rounded-full blur-3xl group-hover:bg-red-600/25 transition-all pointer-events-none" />
+
+                        <div className="flex items-start gap-4 flex-1 min-w-0 z-10">
+                            {/* ExpressVPN Official Red Brand Badge */}
+                            <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-[#e01931] border border-red-400/40 text-white shrink-0 group-hover:scale-105 transition-transform shadow-md shadow-red-900/60 mt-0.5">
+                                <svg className="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
+                                    <path d="M12 2L2 7v6c0 5.55 3.84 10.74 10 12 6.16-1.26 10-6.45 10-12V7l-10-5zm0 4.5l6 3v4.5c0 3.85-2.6 7.42-6 8.4-3.4-.98-6-4.55-6-8.4V9.5l6-3z" />
+                                </svg>
+                            </div>
+
+                            <div className="flex flex-col flex-1 min-w-0">
+                                {/* ExpressVPN Brand Header */}
+                                <div className="flex flex-col items-start gap-0.5 mb-1">
+                                    <span className="text-sm font-extrabold text-white tracking-wide uppercase">
+                                        ExpressVPN
+                                    </span>
+                                    <span className="text-[11px] font-bold uppercase tracking-wider text-red-400">
+                                        Special Offer for Filmiway Users • $2.99/mo + 4 Months Free
                                     </span>
                                 </div>
 
-                                <h3 itemProp="headline" className="text-base sm:text-lg font-medium text-white tracking-wide leading-snug m-0">
-                                    Filmiway Watch-Along Timer
-                                </h3>
+                                {/* Dynamic Headline */}
+                                <h4 className="text-sm sm:text-base font-semibold text-gray-100 group-hover:text-red-200 transition-colors m-0">
+                                    Bypass ISP Throttling & Unblock Restricted Streaming Sites
+                                </h4>
 
-                                <p itemProp="description" className="text-xs sm:text-sm text-gray-300 font-light leading-relaxed max-w-2xl m-0">
-                                    Sync this live timer on your mobile phone simultaneously when playing the film on your TV. The tool runs in real-time and alerts you <strong className="text-yellow-400 font-medium">12 seconds before explicit or sensitive scenes appear</strong>, giving you enough time to skip past them before things get awkward.
-                                </p>
-                            </div>
-
-                            {/* Right Side: Action Button */}
-                            <div className="shrink-0 w-full lg:w-auto">
-                                <button
-                                    onClick={handleOpenWatchAlong}
-                                    className="group/btn relative w-full lg:w-auto inline-flex items-center justify-center gap-3 bg-zinc-900/90 hover:bg-zinc-800/95 text-white font-semibold text-xs sm:text-sm px-6 py-3.5 rounded-full border border-yellow-500/40 hover:border-yellow-400/80 shadow-[0_0_20px_rgba(245,158,11,0.15)] hover:shadow-[0_0_30px_rgba(245,158,11,0.3)] transition-all duration-300 cursor-pointer overflow-hidden backdrop-blur-md transform hover:-translate-y-0.5 active:translate-y-0"
-                                >
-                                    <div className="flex items-center justify-center w-6 h-6 rounded-full bg-yellow-500/15 border border-yellow-500/30 group-hover/btn:bg-yellow-500/25 group-hover/btn:border-yellow-400/60 transition-all shrink-0">
-                                        <Play size={11} className="fill-yellow-400 text-yellow-400 translate-x-[0.5px]" />
-                                    </div>
-                                    <span className="tracking-wide text-gray-100 group-hover/btn:text-yellow-400 transition-colors font-medium">Launch Watch-Along Timer</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* PARENTS GUIDE TRACKER HEADER */}
-                    <div className="flex items-center justify-between gap-3 mb-5">
-                        <h3 className="text-xs sm:text-sm font-bold text-gray-300 uppercase tracking-[0.2em] flex items-center gap-2 m-0">
-                            <Film size={16} className="text-yellow-500" /> Parents Guide Tracker
-                        </h3>
-                    </div>
-
-                    {/* 🎬 WATCH-ALONG TIMER OVERLAY */}
-                    {showWatchAlong && (
-                        <WatchAlongTimer
-                            movie={movie}
-                            sensitiveScenes={sensitiveScenes}
-                            onClose={handleCloseWatchAlong}
-                        />
-                    )}
-
-                    {/* 🔥 SEO SAFE-SEARCH PARENTAL ADVISORY — Only for curated explicit films */}
-                    {showExplicitAdvisory && (
-                        <div className="relative overflow-hidden rounded-xl border border-white/10 bg-black/40 backdrop-blur-md p-3.5 sm:p-4 mb-5 shadow-lg">
-                            <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-red-500 to-red-700"></div>
-                            <div className="flex items-start gap-3 ml-1">
-                                <AlertOctagon className="text-red-400/80 w-4 h-4 shrink-0 mt-0.5" />
-                                <p className="text-[12px] sm:text-[13px] text-gray-400 leading-relaxed font-light">
-                                    <span className="text-gray-300 font-medium">Viewer Discretion Advised:</span> This film contains scenes of an extremely explicit nature. Filmiway strongly advises that this film is <span className="text-red-400/90 font-medium">not suitable for family viewing or watching with children</span>. If you choose to watch, use the skip timestamps below to navigate past scenes you may find uncomfortable. These timestamps are provided strictly as an educational utility.
+                                {/* Dynamic Body Description */}
+                                <p className="text-xs text-gray-300 font-light mt-1.5 leading-relaxed m-0">
+                                    Watching {movie?.Title || movie?.title || 'this movie'}? ExpressVPN ($2.99/mo + 4 Months Free) stops ISP speed throttling, hides private browsing from network admins, and unlocks restricted sites & global streaming catalogs.
                                 </p>
                             </div>
                         </div>
-                    )}
 
-                    <div className="relative w-full h-2.5 sm:h-3 bg-[#030303] rounded-full border border-white/10 shadow-inner group/track mt-6 sm:mt-8">
-                        <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-gray-800/40 to-transparent w-full rounded-full pointer-events-none" />
-
-                        {timelineMarkers.map((marker) => {
-                            // 🔥 Improved Edge Detection: Widened threshold to 25% so it NEVER gets cut off on narrow mobile screens
-                            const isStartEdge = marker.percentage < 25;
-                            const isEndEdge = marker.percentage > 75;
-                            const tooltipAlign = isStartEdge ? "left-0" : isEndEdge ? "right-0" : "left-1/2 -translate-x-1/2";
-                            const pointerAlign = isStartEdge ? "left-2" : isEndEdge ? "right-2" : "left-1/2 -translate-x-1/2";
-
-                            return (
-                                <div
-                                    key={`pin-${marker.id}`}
-                                    aria-label={`${marker.type} starting at ${marker.start}`}
-                                    className="group/pin absolute top-1/2 -translate-y-1/2 w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full border-2 border-[#0a0a0c] shadow-[0_0_8px_rgba(0,0,0,0.8)] cursor-pointer hover:scale-[1.5] focus:scale-[1.5] transition-all duration-300 z-10 hover:z-50 focus:z-50 outline-none"
-                                    style={{
-                                        left: `${marker.percentage}%`,
-                                        backgroundColor: getMarkerColorHex(marker.severity)
-                                    }}
-                                    tabIndex="0"
-                                >
-                                    {/* Properly scaled micro-tooltip - Readable on mobile, sleek on PC */}
-                                    <div className={`pointer-events-none absolute bottom-full mb-1.5 sm:mb-2 w-max max-w-[120px] sm:max-w-[140px] opacity-0 group-hover/pin:opacity-100 group-focus/pin:opacity-100 transition-all duration-200 z-[100] transform group-hover/pin:-translate-y-1 group-focus/pin:-translate-y-1 origin-bottom ${tooltipAlign}`}>
-                                        <div className="bg-[#111113] border border-gray-600/50 rounded-md px-2 py-1.5 shadow-xl text-left relative">
-                                            <div className={`absolute -bottom-1 w-2 h-2 bg-[#111113] border-b border-r border-gray-600/50 transform rotate-45 ${pointerAlign}`}></div>
-                                            <span className="text-gray-400 font-mono block mb-1 flex items-center gap-1 text-[10px] sm:text-[11px]">
-                                                <Clock size={10} className="text-gray-500 shrink-0" />
-                                                <span className="truncate">{marker.start}{marker.end ? `-${marker.end}` : ''}</span>
-                                            </span>
-                                            <span className="text-gray-200 font-medium block leading-tight break-words whitespace-normal text-[11px] sm:text-[12px]">
-                                                {marker.type}
-                                            </span>
-                                            <span className="text-[9px] sm:text-[10px] uppercase tracking-widest font-bold mt-1 block" style={{ color: getMarkerColorHex(marker.severity) }}>
-                                                {marker.severity}
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            );
-                        })}
-                    </div>
-                    <div className="flex justify-between text-[10px] text-gray-500 mt-4 font-mono font-medium tracking-widest uppercase">
-                        <span>00:00</span>
-                        <span suppressHydrationWarning>{currentRuntime}</span>
-                    </div>
-                </motion.div>
-            )}
-
-            {/* 🔥 DESKTOP LAYOUT FIX: Desktop ONLY gets the scrollable pane. Mobile remains 100% exactly as it was. */}
-            <div className="relative mt-4 sm:mt-6">
-                <div className="lg:max-h-[520px] lg:overflow-y-auto lg:overflow-x-hidden lg:pr-1 desktop-timestamp-scroll">
-                {/* 🚀 SEO UPGRADE: Changed div to ul for semantic list extraction */}
-                <ul className="space-y-2 sm:space-y-2.5 m-0 p-0 list-none timestamp-card-list">
-                    {sensitiveData.scenes.map((scene, index) => {
-                        const rawStart = scene.start || '';
-                        const sceneEnd = scene.end || '';
-                        const sceneType = scene.type || scene.description || 'Content Warning';
-                        const sceneDescription = scene.description || '';
-
-                        const getSceneIcon = (type) => {
-                            const lowerType = type.toLowerCase();
-                            if (lowerType.includes('nudity') || lowerType.includes('sex') || lowerType.includes('lingerie') || lowerType.includes('suggestive')) return <Eye size={14} />;
-                            if (lowerType.includes('language') || lowerType.includes('profanity')) return <MessageSquare size={14} />;
-                            if (lowerType.includes('violence') || lowerType.includes('gore') || lowerType.includes('blood')) return <Flame size={14} />;
-                            if (lowerType.includes('kissing')) return <Heart size={14} />;
-                            return <AlertTriangle size={14} />;
-                        };
-
-                        const severityBadge = scene.severity ? (
-                            <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-sm border border-white/10 bg-white/[0.02] group-hover:border-white/20 transition-colors">
-                                <div className={`w-1.5 h-1.5 rounded-full ${getSeverityDotColor(scene.severity)}`} />
-                                <span className="text-[9px] sm:text-[10px] font-semibold tracking-[0.15em] uppercase text-gray-400 group-hover:text-gray-200 transition-colors">
-                                    {scene.severity}
-                                </span>
-                            </div>
-                        ) : null;
-
-                        const isGeneralWarning = rawStart === '' || rawStart.toLowerCase() === 'none';
-
-                        return (
-                            <li key={index} className="group rounded-lg sm:rounded-xl border border-white/[0.06] bg-white/[0.015] hover:bg-white/[0.04] hover:border-white/[0.12] transition-all duration-300 flex flex-col sm:flex-row sm:items-center gap-2.5 sm:gap-4 p-3.5 pl-5 sm:px-6 sm:py-4" style={{ '--accent-color': getMarkerColorHex(scene.severity) }}>
-                                {isGeneralWarning ? (
-                                    // 🚀 NEW: Clean Layout for General Warnings (No timestamp, but has data)
-                                    <div className="flex items-start gap-3 w-full">
-                                        <span className="text-gray-500 group-hover:text-white transition-colors duration-300 mt-[3px] shrink-0">
-                                            {getSceneIcon(sceneType)}
-                                        </span>
-                                        <div className="flex flex-col min-w-0 flex-1 gap-1">
-                                            <div className="flex items-center justify-between w-full">
-                                                <span className="text-gray-300 text-[13px] sm:text-sm font-medium break-words whitespace-normal group-hover:text-white transition-colors leading-tight flex flex-wrap items-center gap-1.5 sm:gap-2">
-                                                    <span className="text-gray-400 font-semibold uppercase tracking-[0.15em] text-[10px] sm:text-[11px] opacity-80">Content Advisory:</span>
-                                                    {sceneType}
-                                                </span>
-                                                <div className="shrink-0 ml-3">
-                                                    {severityBadge}
-                                                </div>
-                                            </div>
-                                            {sceneDescription && sceneDescription !== sceneType && sceneDescription.toLowerCase() !== 'none' && (
-                                                <span className="text-[12px] sm:text-[13px] text-gray-400/80 leading-relaxed mt-0.5 break-words whitespace-normal group-hover:text-gray-300 transition-colors">
-                                                    {sceneDescription}
-                                                </span>
-                                            )}
-                                        </div>
-                                    </div>
-                                ) : (
-                                    // 🚀 NEW: Action-Oriented Skip Guide Layout for Timestamps (Sleek UI)
-                                    <div className="flex flex-col min-w-0 w-full gap-1.5 sm:gap-2">
-                                        <div className="flex items-center justify-between w-full">
-                                            <div className="flex items-start sm:items-center gap-2.5 min-w-0 flex-1">
-                                                <span className="text-gray-500 group-hover:text-white transition-colors duration-300 mt-[1px] sm:mt-0 shrink-0">
-                                                    {getSceneIcon(sceneType)}
-                                                </span>
-                                                <span className="text-gray-300 text-[13px] sm:text-sm font-medium break-words whitespace-normal group-hover:text-white transition-colors leading-tight flex flex-wrap items-center gap-1.5 sm:gap-2">
-                                                    <span className="text-gray-400 font-semibold uppercase tracking-[0.15em] text-[10px] sm:text-[11px] opacity-80">Content Advisory:</span>
-                                                    {sceneType}
-                                                </span>
-                                            </div>
-                                            <div className="shrink-0 ml-3">
-                                                {severityBadge}
-                                            </div>
-                                        </div>
-
-                                        <div className="flex flex-wrap items-center gap-2 text-gray-400 group-hover:text-gray-200 transition-colors ml-7 sm:ml-8 mt-0.5">
-                                            <div className="flex items-center gap-1.5 opacity-90">
-                                                <FastForward size={12} className="opacity-70 shrink-0" />
-                                                <span className="text-[10px] sm:text-[11px] font-semibold tracking-widest uppercase">Action: Skip</span>
-                                            </div>
-                                            <span className="opacity-30 mx-0.5 text-[10px]">•</span>
-                                            <div className="flex items-center gap-1.5">
-                                                <Clock size={12} className="opacity-60 shrink-0" />
-                                                <span className="font-mono text-[12px] sm:text-[13px] tracking-wide font-medium">
-                                                    {rawStart} {sceneEnd && <span className="opacity-40 text-[10px] mx-1">→</span>} {sceneEnd}
-                                                </span>
-                                            </div>
-                                        </div>
-
-                                        {sceneDescription && sceneDescription !== sceneType && sceneDescription.toLowerCase() !== 'none' && (
-                                            <div className="ml-7 sm:ml-8 mt-0.5">
-                                                <span className="text-[12px] sm:text-[13px] text-gray-400/80 leading-relaxed break-words whitespace-normal group-hover:text-gray-300 transition-colors">
-                                                    {sceneDescription}
-                                                </span>
-                                            </div>
-                                        )}
-                                    </div>
-                                )}
-                            </li>
-                        );
-                    })}
-                </ul>
+                        {/* Action Button */}
+                        <div className="flex items-center gap-2 text-xs sm:text-sm font-bold text-white shrink-0 w-full md:w-auto justify-center px-3.5 py-2.5 sm:px-5 sm:py-3 rounded-xl bg-gradient-to-r from-[#e01931] to-red-700 hover:from-red-500 hover:to-rose-600 transition-all shadow-md shadow-red-600/30 group-hover:shadow-red-600/50 z-10 border border-red-400/40 text-center leading-snug max-w-full">
+                            <span className="text-center">
+                                Claim Filmiway Deal ($2.99/mo + 4 Months Free)
+                            </span>
+                            <ExternalLink size={14} className="group-hover:translate-x-0.5 transition-transform shrink-0" />
+                        </div>
+                    </a>
                 </div>
-                {/* 🎨 DESKTOP-ONLY: Subtle bottom fade to hint "scroll for more" — reduced opacity so text stays readable */}
-                <div className="hidden lg:block pointer-events-none absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-[#0a0a0c]/60 to-transparent rounded-b-xl z-10" />
-            </div>
 
-            {/* 🚀 ExpressVPN Official Affiliate Banner (Placed directly below timestamps, above Last Verified / Was this guide useful) */}
-            <div className="mt-6 mb-2">
-                <a
-                    href="https://go.expressvpn.com/c/7564909/1462856/16063"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={handleExpressVpnClick}
-                    className="group relative flex flex-col md:flex-row items-start md:items-center justify-between gap-5 p-5 lg:p-6 rounded-2xl border border-red-500/35 bg-gradient-to-r from-red-950/50 via-[#120507] to-black/90 hover:border-red-500/70 transition-all duration-300 backdrop-blur-md shadow-xl shadow-black/50 hover:shadow-red-600/15 cursor-pointer overflow-hidden"
-                >
-                    {/* Subtle red background aura */}
-                    <div className="absolute -left-10 -top-10 w-40 h-40 bg-red-600/15 rounded-full blur-3xl group-hover:bg-red-600/25 transition-all pointer-events-none" />
+                {/* 🔥 ENHANCED ENGAGEMENT FOOTER: Designed for maximum CTR */}
+                <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-white/5 pt-4 sm:pt-5 mt-4">
+                    <div className="flex items-center gap-2 text-[10px] sm:text-xs text-gray-400 uppercase tracking-[0.15em]">
+                        <Shield size={14} className="text-emerald-500/70 shrink-0" />
+                        <span className="truncate" suppressHydrationWarning>Last Updated: {movie?.lastVerifiedDate || 'August 6, 2026'}</span>
+                    </div>
 
-                    <div className="flex items-start gap-4 flex-1 min-w-0 z-10">
-                        {/* ExpressVPN Official Red Brand Badge */}
-                        <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-[#e01931] border border-red-400/40 text-white shrink-0 group-hover:scale-105 transition-transform shadow-md shadow-red-900/60 mt-0.5">
-                            <svg className="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
-                                <path d="M12 2L2 7v6c0 5.55 3.84 10.74 10 12 6.16-1.26 10-6.45 10-12V7l-10-5zm0 4.5l6 3v4.5c0 3.85-2.6 7.42-6 8.4-3.4-.98-6-4.55-6-8.4V9.5l6-3z" />
-                            </svg>
+                    <div className="flex items-center justify-between w-full sm:w-auto gap-4 sm:gap-6">
+                        {/* Social Proof / Prompt */}
+                        <div className="text-xs sm:text-sm text-gray-400">
+                            {hasVoted ? (
+                                <span className="text-emerald-400/90 font-medium">Thanks for your feedback!</span>
+                            ) : helpfulCount > 5 ? (
+                                <span><strong className="text-gray-200">{helpfulCount}</strong> found this helpful. You?</span>
+                            ) : (
+                                <span>Was this guide helpful?</span>
+                            )}
                         </div>
 
-                        <div className="flex flex-col flex-1 min-w-0">
-                            {/* ExpressVPN Brand Header */}
-                            <div className="flex flex-col items-start gap-0.5 mb-1">
-                                <span className="text-sm font-extrabold text-white tracking-wide uppercase">
-                                    ExpressVPN
-                                </span>
-                                <span className="text-[11px] font-bold uppercase tracking-wider text-red-400">
-                                    Special Offer for Filmiway Users • $2.99/mo + 4 Months Free
-                                </span>
-                            </div>
-
-                            {/* Dynamic Headline */}
-                            <h4 className="text-sm sm:text-base font-semibold text-gray-100 group-hover:text-red-200 transition-colors m-0">
-                                Bypass ISP Throttling & Unblock Restricted Streaming Sites
-                            </h4>
-
-                            {/* Dynamic Body Description */}
-                            <p className="text-xs text-gray-300 font-light mt-1.5 leading-relaxed m-0">
-                                Watching {movie?.Title || movie?.title || 'this movie'}? ExpressVPN ($2.99/mo + 4 Months Free) stops ISP speed throttling, hides private browsing from network admins, and unlocks restricted sites & global streaming catalogs.
-                            </p>
-                        </div>
+                        <motion.button
+                            whileHover={!hasVoted && !isVoting ? { scale: 1.05 } : {}}
+                            whileTap={!hasVoted && !isVoting ? { scale: 0.95 } : {}}
+                            onClick={handleVote}
+                            disabled={hasVoted || isVoting}
+                            className={`group flex items-center gap-2 px-5 py-2.5 rounded-full transition-all duration-300 text-xs sm:text-sm font-bold border ${hasVoted
+                                ? 'bg-emerald-500/15 border-emerald-500/30 text-emerald-400 cursor-default shadow-[0_0_15px_rgba(16,185,129,0.15)]'
+                                : 'bg-gradient-to-r from-yellow-400 to-amber-400 hover:from-yellow-300 hover:to-amber-300 text-gray-900 border-yellow-400 cursor-pointer shadow-[0_0_20px_rgba(234,179,8,0.4)] hover:shadow-[0_0_30px_rgba(234,179,8,0.6)]'
+                                }`}
+                        >
+                            {hasVoted ? (
+                                <><CheckCircle size={16} className="text-emerald-400" /> Helpful!</>
+                            ) : (
+                                <><ThumbsUp size={16} className={`transition-transform duration-300 text-gray-900 ${isVoting ? 'animate-bounce' : 'group-hover:-translate-y-0.5 group-hover:scale-110'}`} /> Yes, it was!</>
+                            )}
+                        </motion.button>
                     </div>
-
-                    {/* Action Button */}
-                    <div className="flex items-center gap-2 text-xs sm:text-sm font-bold text-white shrink-0 w-full md:w-auto justify-center px-3.5 py-2.5 sm:px-5 sm:py-3 rounded-xl bg-gradient-to-r from-[#e01931] to-red-700 hover:from-red-500 hover:to-rose-600 transition-all shadow-md shadow-red-600/30 group-hover:shadow-red-600/50 z-10 border border-red-400/40 text-center leading-snug max-w-full">
-                        <span className="text-center">
-                            Claim Filmiway Deal ($2.99/mo + 4 Months Free)
-                        </span>
-                        <ExternalLink size={14} className="group-hover:translate-x-0.5 transition-transform shrink-0" />
-                    </div>
-                </a>
-            </div>
-
-            {/* 🔥 ENHANCED ENGAGEMENT FOOTER: Designed for maximum CTR */}
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-white/5 pt-4 sm:pt-5 mt-4">
-                <div className="flex items-center gap-2 text-[10px] sm:text-xs text-gray-400 uppercase tracking-[0.15em]">
-                    <Shield size={14} className="text-emerald-500/70 shrink-0" />
-                    <span className="truncate" suppressHydrationWarning>Last Updated: {movie?.lastVerifiedDate || 'August 6, 2026'}</span>
                 </div>
-
-                <div className="flex items-center justify-between w-full sm:w-auto gap-4 sm:gap-6">
-                    {/* Social Proof / Prompt */}
-                    <div className="text-xs sm:text-sm text-gray-400">
-                        {hasVoted ? (
-                            <span className="text-emerald-400/90 font-medium">Thanks for your feedback!</span>
-                        ) : helpfulCount > 5 ? (
-                            <span><strong className="text-gray-200">{helpfulCount}</strong> found this helpful. You?</span>
-                        ) : (
-                            <span>Was this guide helpful?</span>
-                        )}
-                    </div>
-
-                    <motion.button
-                        whileHover={!hasVoted && !isVoting ? { scale: 1.05 } : {}}
-                        whileTap={!hasVoted && !isVoting ? { scale: 0.95 } : {}}
-                        onClick={handleVote}
-                        disabled={hasVoted || isVoting}
-                        className={`group flex items-center gap-2 px-5 py-2.5 rounded-full transition-all duration-300 text-xs sm:text-sm font-bold border ${hasVoted
-                            ? 'bg-emerald-500/15 border-emerald-500/30 text-emerald-400 cursor-default shadow-[0_0_15px_rgba(16,185,129,0.15)]'
-                            : 'bg-gradient-to-r from-yellow-400 to-amber-400 hover:from-yellow-300 hover:to-amber-300 text-gray-900 border-yellow-400 cursor-pointer shadow-[0_0_20px_rgba(234,179,8,0.4)] hover:shadow-[0_0_30px_rgba(234,179,8,0.6)]'
-                            }`}
-                    >
-                        {hasVoted ? (
-                            <><CheckCircle size={16} className="text-emerald-400" /> Helpful!</>
-                        ) : (
-                            <><ThumbsUp size={16} className={`transition-transform duration-300 text-gray-900 ${isVoting ? 'animate-bounce' : 'group-hover:-translate-y-0.5 group-hover:scale-110'}`} /> Yes, it was!</>
-                        )}
-                    </motion.button>
-                </div>
-            </div>
-        </motion.section>
+            </motion.section>
         </>
     );
 });

@@ -524,8 +524,8 @@ export default function UniversalMoviePage({ movie }) {
                 {/* ⚡ MAGIC SPEED BOOST: Pre-connect to TMDB CDN & Preload Critical Images for lightning-fast loading! */}
                 <link rel="preconnect" href="https://image.tmdb.org" crossOrigin="anonymous" />
                 <link rel="dns-prefetch" href="https://image.tmdb.org" />
-                {movie.backdrop_path && <link rel="preload" as="image" href={`https://image.tmdb.org/t/p/w780${movie.backdrop_path}`} fetchPriority="high" />}
-                {movie.Poster && <link rel="preload" as="image" href={movie.Poster} fetchPriority="high" />}
+                {movie.backdrop_path && <link rel="preload" as="image" href={`https://image.tmdb.org/t/p/w780${movie.backdrop_path}`} fetchpriority="high" />}
+                {movie.Poster && <link rel="preload" as="image" href={movie.Poster} fetchpriority="high" />}
 
                 {/* 🚀 Injected JSON-LD Schemas */}
                 <script
