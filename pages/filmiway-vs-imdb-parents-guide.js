@@ -33,7 +33,7 @@ export default function FilmiwayVsImdbParentsGuide() {
 
         <Header />
 
-        <main className="relative z-20 max-w-5xl mx-auto px-6 pt-32 pb-20">
+        <main className="relative z-20 max-w-5xl mx-auto px-6 pt-24 sm:pt-28 pb-20">
           
           {/* ✅ HEADER SECTION */}
           <div className="text-center mb-16">

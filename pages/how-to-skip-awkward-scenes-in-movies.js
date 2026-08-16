@@ -196,7 +196,7 @@ export default function HowToSkipAwkwardScenes() {
       <div className="min-h-screen bg-black text-white font-sans selection:bg-yellow-500/30">
         <Header />
 
-        <main className="pt-32 pb-20 px-6 max-w-3xl mx-auto">
+        <main className="pt-24 sm:pt-28 pb-20 px-6 max-w-3xl mx-auto">
           <article>
             {/* HEADER */}
             <header className="mb-12 text-center">
