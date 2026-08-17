@@ -756,13 +756,21 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
                 question: `Does ${movieTitle} have inappropriate scenes? If yes, how to skip them while watching with family?`,
                 answer: `Yes. ${movieTitle} contains ${sceneCount} scenes of ${typesString}. To ensure a safe family movie night, you can use these exact skip timestamps:\n\n${uiDetailedList}\n\nManually verified frame by frame by Filmiway editors for the ${finalRuntime} runtime.`
             },
+            {
+                question: `Why does Filmiway provide skip timestamps for ${movieTitle}?`,
+                answer: `Filmiway provides exact skip timestamps for ${movieTitle} strictly as an educational parental advisory utility. Our goal is to empower parents, families, and sensitive viewers with complete transparency so they can preview mature content or skip uncomfortable scenes effortlessly during movie nights.`
+            },
             familyFaqUI
         );
     } else {
         staticFaqs.unshift(
             {
                 question: `Does ${movieTitle} have inappropriate scenes? If yes, how to skip them while watching with family?`,
-                answer: `No. Filmiway editors have manually verified that ${movieTitle} is free of explicit sex scenes and nudity.`
+                answer: `Yes. ${movieTitle} contains ${sceneCount} scenes of ${typesString}. To ensure a safe family movie night, you can use these exact skip timestamps:\n\n${uiDetailedList}\n\nManually verified frame by frame by Filmiway editors for the ${finalRuntime} runtime.`
+            },
+            {
+                question: `Why does Filmiway provide skip timestamps for ${movieTitle}?`,
+                answer: `Filmiway provides exact skip timestamps for ${movieTitle} strictly as an educational parental advisory utility. Our goal is to empower parents, families, and sensitive viewers with complete transparency so they can preview mature content or skip uncomfortable scenes effortlessly during movie nights.`
             },
             {
                 question: `Is ${movieTitle} safe to watch with family?`,

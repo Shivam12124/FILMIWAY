@@ -368,7 +368,12 @@ export default function UniversalMoviePage({ movie }) {
         answer: `No. Filmiway editors have verified that ${movie.Title} contains no explicit sexual content or intimate scenes.`
     };
 
-    const dynamicTemplateFaqs = [faq1, faq2, faq3, faq4, faq5];
+    const educationalFaq = hasTimestamps ? {
+        question: `Why does Filmiway provide skip timestamps for ${movie.Title}?`,
+        answer: `Filmiway provides exact skip timestamps for ${movie.Title} strictly as an educational parental advisory utility. Our goal is to empower parents, families, and sensitive viewers with complete transparency so they can preview mature content or skip uncomfortable scenes effortlessly during movie nights.`
+    } : null;
+
+    const dynamicTemplateFaqs = [faq1, faq2, educationalFaq, faq3, faq4, faq5].filter(Boolean);
 
     // Filter template FAQs for non-whitelisted movies
     let filteredFaqs = dynamicTemplateFaqs;
