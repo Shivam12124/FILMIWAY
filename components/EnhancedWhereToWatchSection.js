@@ -345,14 +345,23 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
 
     // Log click event analytics to Firebase Firestore INSTANTLY
     try {
+      let detectedCountry = selectedRegion || userCountry || 'US';
+      try {
+        const ipRes = await fetch('https://ipinfo.io/json');
+        if (ipRes.ok) {
+          const ipData = await ipRes.json();
+          if (ipData.country) detectedCountry = ipData.country;
+        }
+      } catch (err) {}
+
       const clickData = {
         movieSlug: movie?.slug || movie?.tmdbId || 'unknown',
         movieTitle: movie?.Title || movie?.title || 'Unknown Movie',
         promoType: 'expressvpn',
+        placement: 'where_to_watch',
         isAvailableInRegion: isMovieAvailableInRegion,
         selectedRegion: selectedRegion || 'US',
-        userCountry: selectedRegion || userCountry || 'US',
-        city: 'Unknown',
+        country: detectedCountry,
         timestamp: serverTimestamp(),
         userAgent: typeof navigator !== 'undefined' ? navigator.userAgent : 'Unknown'
       };
