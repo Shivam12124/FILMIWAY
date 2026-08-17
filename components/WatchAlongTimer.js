@@ -194,6 +194,7 @@ const WatchAlongTimer = ({ movie, sensitiveScenes, onClose }) => {
     const [showFeedbackModal, setShowFeedbackModal] = useState(false);
     const [feedbackRating, setFeedbackRating] = useState(null); // 'positive' or 'negative'
     const [feedbackComment, setFeedbackComment] = useState('');
+    const [showCommentPrompt, setShowCommentPrompt] = useState(false);
     const [isSubmittingFeedback, setIsSubmittingFeedback] = useState(false);
 
     const lastTapLeft = useRef(0);
@@ -455,7 +456,11 @@ const WatchAlongTimer = ({ movie, sensitiveScenes, onClose }) => {
         }
     }, [closeTimer]);
 
-    const submitFeedback = async (rating) => {
+    const submitFeedback = async (rating, forceSubmit = false) => {
+        if (!feedbackComment.trim() && !forceSubmit && !showCommentPrompt && rating !== 'skipped') {
+            setShowCommentPrompt(true);
+            return;
+        }
         setIsSubmittingFeedback(true);
         try {
             const durationMin = Math.round(((Date.now() - mountTimeRef.current) / 60000) * 10) / 10;
@@ -483,6 +488,7 @@ const WatchAlongTimer = ({ movie, sensitiveScenes, onClose }) => {
         }
         setIsSubmittingFeedback(false);
         setShowFeedbackModal(false);
+        setShowCommentPrompt(false);
         closeTimer();
     };
 
@@ -929,39 +935,68 @@ const WatchAlongTimer = ({ movie, sensitiveScenes, onClose }) => {
                             </button>
                         </div>
 
-                        {/* COMMENTS TEXTAREA */}
+                        {/* COMMENTS PROMPT OR TEXTAREA */}
                         {feedbackRating && (
                             <div className="w-full flex flex-col gap-2 mb-6">
-                                <div className="flex justify-between items-center w-full">
-                                    <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Optional Comments</label>
-                                    <span className="text-[9px] text-gray-500 font-bold">{feedbackComment.length}/500</span>
-                                </div>
-                                <textarea
-                                    value={feedbackComment}
-                                    onChange={e => setFeedbackComment(e.target.value.slice(0, 500))}
-                                    maxLength={500}
-                                    placeholder={feedbackRating === 'positive' ? "What did you like about the alerts?" : "What went wrong? E.g., bad scene timing, audio bugs..."}
-                                    className="w-full h-24 bg-black/60 border border-white/10 rounded-xl p-3 text-xs sm:text-sm text-white focus:border-yellow-500 focus:outline-none transition-colors resize-none placeholder-gray-600"
-                                />
+                                {showCommentPrompt ? (
+                                    <div className="w-full bg-yellow-500/10 border border-yellow-500/30 rounded-xl p-4 text-center animate-fadeIn">
+                                        <p className="text-yellow-300 text-xs sm:text-sm font-semibold mb-1">
+                                            💬 Are you sure you don't want to leave a comment?
+                                        </p>
+                                        <p className="text-gray-300 text-[11px] leading-relaxed mb-4">
+                                            It will be super helpful if we can hear your word feedback to improve our scene timestamps!
+                                        </p>
+                                        <div className="flex gap-2">
+                                            <button
+                                                onClick={() => setShowCommentPrompt(false)}
+                                                className="flex-1 py-2.5 px-3 rounded-lg bg-yellow-500 text-black font-bold text-xs hover:bg-yellow-400 transition-colors"
+                                            >
+                                                ✍️ Add Comment
+                                            </button>
+                                            <button
+                                                onClick={() => submitFeedback(feedbackRating, true)}
+                                                className="flex-1 py-2.5 px-3 rounded-lg bg-white/10 text-gray-300 font-medium text-xs hover:bg-white/20 transition-colors"
+                                            >
+                                                Submit Rating Only
+                                            </button>
+                                        </div>
+                                    </div>
+                                ) : (
+                                    <>
+                                        <div className="flex justify-between items-center w-full">
+                                            <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Optional Comments</label>
+                                            <span className="text-[9px] text-gray-500 font-bold">{feedbackComment.length}/500</span>
+                                        </div>
+                                        <textarea
+                                            value={feedbackComment}
+                                            onChange={e => setFeedbackComment(e.target.value.slice(0, 500))}
+                                            maxLength={500}
+                                            placeholder={feedbackRating === 'positive' ? "What did you like about the alerts?" : "What went wrong? E.g., bad scene timing, audio bugs..."}
+                                            className="w-full h-24 bg-black/60 border border-white/10 rounded-xl p-3 text-xs sm:text-sm text-white focus:border-yellow-500 focus:outline-none transition-colors resize-none placeholder-gray-600"
+                                        />
+                                    </>
+                                )}
                             </div>
                         )}
 
                         {/* ACTIONS */}
-                        <div className="flex gap-3 w-full">
-                            <button 
-                                onClick={closeTimer} 
-                                className="flex-1 py-3 rounded-xl bg-white/[0.02] border border-white/5 hover:bg-white/10 text-gray-400 font-medium text-sm transition-colors"
-                            >
-                                Skip
-                            </button>
-                            <button 
-                                onClick={() => submitFeedback(feedbackRating || 'skipped')}
-                                disabled={isSubmittingFeedback || !feedbackRating}
-                                className={`flex-1 py-3 rounded-xl font-bold text-sm transition-all ${feedbackRating ? 'bg-yellow-500 hover:bg-yellow-400 text-black cursor-pointer' : 'bg-white/5 text-gray-600 cursor-not-allowed'}`}
-                            >
-                                {isSubmittingFeedback ? 'Submitting...' : 'Submit'}
-                            </button>
-                        </div>
+                        {!showCommentPrompt && (
+                            <div className="flex gap-3 w-full">
+                                <button 
+                                    onClick={closeTimer} 
+                                    className="flex-1 py-3 rounded-xl bg-white/[0.02] border border-white/5 hover:bg-white/10 text-gray-400 font-medium text-sm transition-colors"
+                                >
+                                    Skip
+                                </button>
+                                <button 
+                                    onClick={() => submitFeedback(feedbackRating || 'skipped')}
+                                    disabled={isSubmittingFeedback || !feedbackRating}
+                                    className={`flex-1 py-3 rounded-xl font-bold text-sm transition-all ${feedbackRating ? 'bg-yellow-500 hover:bg-yellow-400 text-black cursor-pointer' : 'bg-white/5 text-gray-600 cursor-not-allowed'}`}
+                                >
+                                    {isSubmittingFeedback ? 'Submitting...' : 'Submit'}
+                                </button>
+                            </div>
+                        )}
                     </div>
                 </div>
             )}

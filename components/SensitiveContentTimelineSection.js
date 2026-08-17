@@ -70,17 +70,25 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
     const handleOpenWatchAlong = useCallback(() => setShowWatchAlong(true), []);
     const handleCloseWatchAlong = useCallback(() => setShowWatchAlong(false), []);
 
-    // --- EXPRESSVPN AFFILIATE CLICK TRACKER (INSTANT NON-BLOCKING) ---
+    // --- EXPRESSVPN AFFILIATE CLICK TRACKER (INSTANT DYNAMIC COUNTRY RECORDING) ---
     const handleExpressVpnClick = useCallback(async () => {
         try {
-            // Write to Firebase INSTANTLY so click is never lost when user opens target=_blank
+            let detectedCountry = 'US';
+            try {
+                const ipRes = await fetch('https://ipinfo.io/json');
+                if (ipRes.ok) {
+                    const ipData = await ipRes.json();
+                    if (ipData.country) detectedCountry = ipData.country;
+                }
+            } catch (e) {}
+
+            // Write to Firebase INSTANTLY so click is never lost
             const clickData = {
-                movieSlug: movie?.slug || 'unknown',
+                movieSlug: movie?.slug || movie?.tmdbId || 'unknown',
                 movieTitle: movie?.Title || movie?.title || 'Unknown Movie',
                 promoType: 'expressvpn',
                 placement: 'below_timestamps',
-                country: 'US',
-                city: 'Unknown',
+                country: detectedCountry,
                 timestamp: serverTimestamp(),
                 userAgent: typeof navigator !== 'undefined' ? navigator.userAgent : 'Unknown'
             };
