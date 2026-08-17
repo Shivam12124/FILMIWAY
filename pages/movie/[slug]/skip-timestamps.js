@@ -510,6 +510,31 @@ export default function UniversalMoviePage({ movie }) {
         }))
     } : null;
 
+    const breadcrumbSchema = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://www.filmiway.com"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Movies",
+                "item": "https://www.filmiway.com/movie-directory"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": `${movie.Title} Skip Timestamps`,
+                "item": `https://www.filmiway.com/movie/${movie.slug}/skip-timestamps`
+            }
+        ]
+    };
+
     return (
         <div key={movie.slug} className="min-h-screen bg-black selection:bg-yellow-500/30 font-inter text-gray-200">
             <div className="absolute inset-0 z-0 pointer-events-none"><CinematicBackground /></div>
@@ -521,6 +546,16 @@ export default function UniversalMoviePage({ movie }) {
                 <meta property="og:title" content={movie.metaTitle} />
                 <meta property="og:description" content={movie.metaDesc} />
                 <meta property="og:type" content="video.movie" />
+                <meta property="og:url" content={`https://www.filmiway.com/movie/${movie.slug}/skip-timestamps`} />
+                <meta property="og:image" content={movie.Poster || (movie.backdrop_path ? `https://image.tmdb.org/t/p/w780${movie.backdrop_path}` : 'https://www.filmiway.com/og-image.jpg')} />
+                <meta property="og:site_name" content="Filmiway" />
+                
+                {/* 🐦 Twitter Card Meta Tags for Viral Social Sharing */}
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:site" content="@FilmiwayMedia" />
+                <meta name="twitter:title" content={movie.metaTitle} />
+                <meta name="twitter:description" content={movie.metaDesc} />
+                <meta name="twitter:image" content={movie.Poster || (movie.backdrop_path ? `https://image.tmdb.org/t/p/w780${movie.backdrop_path}` : 'https://www.filmiway.com/og-image.jpg')} />
                 {/* ⚡ MAGIC SPEED BOOST: Pre-connect to TMDB CDN & Preload Critical Images for lightning-fast loading! */}
                 <link rel="preconnect" href="https://image.tmdb.org" crossOrigin="anonymous" />
                 <link rel="dns-prefetch" href="https://image.tmdb.org" />
@@ -528,6 +563,10 @@ export default function UniversalMoviePage({ movie }) {
                 {movie.Poster && <link rel="preload" as="image" href={movie.Poster} fetchpriority="high" />}
 
                 {/* 🚀 Injected JSON-LD Schemas */}
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+                />
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(movieSchema) }}
