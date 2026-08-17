@@ -17453,12 +17453,6 @@
     "scenes": [
       {
         "start": "0:20:19",
-        "end": "0:20:25",
-        "type": "Nudity (Woman)",
-        "severity": "High"
-      },
-      {
-        "start": "0:20:38",
         "end": "0:20:51",
         "type": "Nudity (Woman)",
         "severity": "High"
@@ -17477,18 +17471,6 @@
       },
       {
         "start": "0:25:10",
-        "end": "0:25:42",
-        "type": "Sexual Content",
-        "severity": "High"
-      },
-      {
-        "start": "0:25:54",
-        "end": "0:27:10",
-        "type": "Sexual Content",
-        "severity": "High"
-      },
-      {
-        "start": "0:27:30",
         "end": "0:27:45",
         "type": "Sexual Content",
         "severity": "High"
@@ -17507,14 +17489,8 @@
       },
       {
         "start": "0:42:53",
-        "end": "0:43:21",
-        "type": "Sex & Nudity",
-        "severity": "High"
-      },
-      {
-        "start": "0:43:49",
         "end": "0:44:37",
-        "type": "Nudity",
+        "type": "Sex & Nudity",
         "severity": "High"
       },
       {
@@ -17537,20 +17513,8 @@
       },
       {
         "start": "1:31:36",
-        "end": "1:31:45",
-        "type": "Nudity",
-        "severity": "High"
-      },
-      {
-        "start": "1:32:15",
-        "end": "1:33:42",
-        "type": "Sex & Nudity",
-        "severity": "High"
-      },
-      {
-        "start": "1:33:46",
         "end": "1:35:10",
-        "type": "Nudity (Women)",
+        "type": "Nudity & Sex",
         "severity": "High"
       },
       {
@@ -17561,12 +17525,6 @@
       },
       {
         "start": "1:40:20",
-        "end": "1:40:31",
-        "type": "Sex & Nudity",
-        "severity": "High"
-      },
-      {
-        "start": "1:41:10",
         "end": "1:41:59",
         "type": "Sex & Nudity",
         "severity": "High"

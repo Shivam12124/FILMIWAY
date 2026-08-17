@@ -727,8 +727,7 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
 
         const uiDetailedList = heavyScenes.map(s => {
             const timeRange = s.end ? `${s.start}–${s.end}` : s.start;
-            const fullType = s.severity ? `${s.type || 'Mature Content'}, ${s.severity}` : (s.type || 'Mature Content');
-            return `• ${timeRange} (${fullType})`;
+            return `• ${timeRange}`;
         }).join('\n');
         
         const startTimesList = heavyScenes.map(s => s.start).join(', ');

@@ -91,27 +91,19 @@ export const SENSITIVE_TIMELINES = {
     // Poor Things
     792307: {
         scenes: [
-            { start: "0:20:19", end: "0:20:25", type: "Nudity (Woman)", severity: "High" },
-            { start: "0:20:38", end: "0:20:51", type: "Nudity (Woman)", severity: "High" },
+            { start: "0:20:19", end: "0:20:51", type: "Nudity (Woman)", severity: "High" },
             { start: "0:23:29", end: "0:23:32", type: "Nudity (Woman)", severity: "High" },
             { start: "0:24:43", end: "0:24:50", type: "Nudity (Woman)", severity: "High" },
-            { start: "0:25:10", end: "0:25:42", type: "Sexual Content", severity: "High" },
-            { start: "0:25:54", end: "0:27:10", type: "Sexual Content", severity: "High" },
-            { start: "0:27:30", end: "0:27:45", type: "Sexual Content", severity: "High" },
+            { start: "0:25:10", end: "0:27:45", type: "Sexual Content", severity: "High" },
             { start: "0:34:33", end: "0:34:55", type: "Sexual Content", severity: "High" },
             { start: "0:41:05", end: "0:41:28", type: "Sex & Nudity", severity: "High" },
-            { start: "0:42:53", end: "0:43:21", type: "Sex & Nudity", severity: "High" },
-            { start: "0:43:49", end: "0:44:37", type: "Nudity", severity: "High" },
+            { start: "0:42:53", end: "0:44:37", type: "Sex & Nudity", severity: "High" },
             { start: "0:49:15", end: "0:49:21", type: "Sex", severity: "High" },
-            { start: "0:52:03", end: "0:52:07", type: "Sexual Content (Drawing)", severity: "Mild" },
             { start: "1:17:00", end: "1:17:24", type: "Nudity (Men & Women)", severity: "High" },
             { start: "1:27:00", end: "1:28:22", type: "Nudity & Sex", severity: "High" },
-            { start: "1:31:36", end: "1:31:45", type: "Nudity", severity: "High" },
-            { start: "1:32:15", end: "1:33:42", type: "Sex & Nudity", severity: "High" },
-            { start: "1:33:46", end: "1:35:10", type: "Nudity (Women)", severity: "High" },
+            { start: "1:31:36", end: "1:35:10", type: "Nudity & Sex", severity: "High" },
             { start: "1:37:16", end: "1:39:53", type: "Suggestive Clothing, Sex & Nudity", severity: "High" },
-            { start: "1:40:20", end: "1:40:31", type: "Sex & Nudity", severity: "High" },
-            { start: "1:41:10", end: "1:41:59", type: "Sex & Nudity", severity: "High" },
+            { start: "1:40:20", end: "1:41:59", type: "Sex & Nudity", severity: "High" },
             { start: "1:45:55", end: "1:48:23", type: "Sex & Nudity", severity: "High" }
         ]
     },
@@ -770,8 +762,7 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
 
         const uiDetailedList = heavyScenes.map(s => {
             const timeRange = s.end ? `${s.start}–${s.end}` : s.start;
-            const fullType = s.severity ? `${s.type || 'Mature Content'}, ${s.severity}` : (s.type || 'Mature Content');
-            return `• ${timeRange} (${fullType})`;
+            return `• ${timeRange}`;
         }).join('\n');
         
         const startTimesList = heavyScenes.map(s => s.start).join(', ');
