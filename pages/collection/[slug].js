@@ -4939,7 +4939,7 @@ export async function getStaticProps({ params }) {
         }
 
         movies = [...standardMovies, { isBonusSlide: true, bonusMovies }];
-    } else if (slug !== 'top-25-parents-guides') {
+    } else {
         movies.reverse();
     }
 
