@@ -917,7 +917,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                                 if (!aStart && bStart) return 1;
                                 if (aStart && !bStart) return -1;
                                 return 0;
-                            }).map((scene, index) => {
+                            }).map((scene, index, arr) => {
                                 const rawStart = scene.start || '';
                                 const sceneEnd = scene.end || '';
                                 const sceneType = scene.type || scene.description || 'Content Warning';
@@ -1013,7 +1013,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                                     </li>
                                     
                                     {/* 🚀 ExpressVPN Native Injection: Filmiway User Deal Card (High Readability & Impact) */}
-                                    {index === 0 && (
+                                    {index === arr.length - 1 && (
                                         <li className="relative my-3 p-4 sm:p-5 bg-[#0e0708] border border-red-800/50 hover:border-red-600 rounded-xl sm:rounded-2xl overflow-hidden transition-all duration-300 shadow-[0_0_20px_rgba(220,38,38,0.12)] group">
                                             <a 
                                                 href="https://go.expressvpn.com/c/7564909/1462856/16063" 
