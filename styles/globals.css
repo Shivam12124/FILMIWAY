@@ -342,3 +342,15 @@ a:focus-visible {
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(234, 179, 8, 0.5);
 }
+
+/* 🚀 BLOCK FLOATING AD OVERLAYS & RECOMMENDATION CHIPS FROM OVERLAPPING MOBILE CTAS */
+[class*="grow-widget"],
+[id*="grow-widget"],
+[id*="mediavine"],
+.google-auto-placed,
+ins.adsbygoogle[data-ad-format="autorelaxed"],
+div[id^="google_ads_iframe_"][style*="fixed"] {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
