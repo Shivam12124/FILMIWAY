@@ -61,7 +61,7 @@ const getTimerState = (currentSec, scenes) => {
     const next = upcoming[0];
     const secsUntil = next.startSec - currentSec;
 
-    if (secsUntil <= 12) return { mode: 'SKIP_NOW', scene: next, secsUntil, secsRemaining: null };
+    if (secsUntil <= 15) return { mode: 'SKIP_NOW', scene: next, secsUntil, secsRemaining: null };
     if (secsUntil <= 60) return { mode: 'WARNING', scene: next, secsUntil, secsRemaining: null };
     return { mode: 'SAFE', scene: next, secsUntil, secsRemaining: null };
 };
@@ -701,7 +701,7 @@ const WatchAlongTimer = ({ movie, sensitiveScenes, onClose }) => {
                             </div>
                             <div className="flex items-start gap-3 text-xs sm:text-sm text-gray-300">
                                 <Bell size={18} className="text-yellow-500 shrink-0 mt-0.5" />
-                                <span><strong className="text-white">3. Get alerted</strong> 12 seconds before any sensitive scene begins, so you can skip it fast!</span>
+                                <span><strong className="text-white">3. Get alerted</strong> 15 seconds before any sensitive scene begins, so you can skip it fast!</span>
                             </div>
                             <div className="flex items-start gap-3 text-xs sm:text-sm text-gray-300">
                                 <Eye size={18} className="text-blue-500 shrink-0 mt-0.5" />

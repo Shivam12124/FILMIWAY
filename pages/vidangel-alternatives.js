@@ -114,7 +114,7 @@ export default function VidAngelAlternatives() {
             "name": "How does Filmiway work on Smart TVs, Firestick, and Roku?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Simply play the movie on your Smart TV or streaming device using your favorite service (Netflix, Prime Video, HBO Max, etc.), open Filmiway on your mobile phone, and tap Launch Watch-Along Timer when the film starts. Filmiway syncs in real-time and alerts you 12 seconds before explicit scenes occur so you can skip ahead."
+              "text": "Simply play the movie on your Smart TV or streaming device using your favorite service (Netflix, Prime Video, HBO Max, etc.), open Filmiway on your mobile phone, and tap Launch Watch-Along Timer when the film starts. Filmiway syncs in real-time and alerts you 15 seconds before explicit scenes occur so you can skip ahead."
             }
           },
           {
@@ -146,7 +146,7 @@ export default function VidAngelAlternatives() {
       pros: [
         "Completely free forever with zero hidden fees",
         "Works with Netflix, Prime Video, HBO Max, Hulu, Paramount+, Disney+, and 4K Blu-ray",
-        "Includes real-time Watch-Along timer that alerts you 12 seconds before explicit scenes",
+        "Includes real-time Watch-Along timer that alerts you 15 seconds before explicit scenes",
         "No account creation, no password linking, no credit card required",
         "Provides curated Parents Guides, Age Ratings, and Family Safety Scores"
       ],
@@ -265,7 +265,7 @@ export default function VidAngelAlternatives() {
     },
     {
       q: "How does Filmiway work on Smart TVs, Firestick, Roku, and Apple TV?",
-      a: "You simply play the movie on your Smart TV via any service. Open Filmiway's Watch-Along Timer on your mobile phone and tap start when the movie title card appears. The phone timer syncs in real-time and alerts you 12 seconds before explicit scenes occur, allowing you to easily skip ahead with your TV remote."
+      a: "You simply play the movie on your Smart TV via any service. Open Filmiway's Watch-Along Timer on your mobile phone and tap start when the movie title card appears. The phone timer syncs in real-time and alerts you 15 seconds before explicit scenes occur, allowing you to easily skip ahead with your TV remote."
     },
     {
       q: "Is Filmiway safe and legal to use?",
@@ -541,7 +541,7 @@ export default function VidAngelAlternatives() {
                 </div>
                 <h3 className="text-base font-semibold text-white mb-2">Get 12s Pre-Alerts</h3>
                 <p className="text-xs text-gray-400 font-light leading-relaxed">
-                  Your phone vibrates & alerts you 12 seconds before scenes occur so you skip smoothly with your remote!
+                  Your phone vibrates & alerts you 15 seconds before scenes occur so you skip smoothly with your remote!
                 </p>
               </div>
             </div>

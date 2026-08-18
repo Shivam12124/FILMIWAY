@@ -422,7 +422,7 @@ const FeaturesSection = () => {
               <Bell className="w-5 h-5" />
             </div>
             <h3 className="text-lg font-bold text-white mb-2">Watch-Along Mode</h3>
-            <p className="text-sm text-gray-400 font-light leading-relaxed">Get dynamic, synchronized on-screen alerts exactly 12 seconds before any sensitive scene occurs.</p>
+            <p className="text-sm text-gray-400 font-light leading-relaxed">Get dynamic, synchronized on-screen alerts exactly 15 seconds before any sensitive scene occurs.</p>
           </div>
         </div>
       </div>

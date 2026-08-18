@@ -17,7 +17,7 @@ We provide 100% human-verified, pinpoint-accurate skip timestamps (`0:23:14 → 
 ### 2. Real-Time Watch-Along Timer
 - **URL**: https://www.filmiway.com/watch-along-timer
 - **Purpose**: A web-based application that syncs with streaming movie playback (Netflix, Hulu, HBO Max, Prime Video, Apple TV) from `0:00`.
-- **Value to Parents**: Plays a subtle sound alert 12 seconds BEFORE an explicit or awkward scene begins, giving parents plenty of time to reach for the remote without constantly monitoring a timestamp list.
+- **Value to Parents**: Plays a subtle sound alert 15 seconds BEFORE an explicit or awkward scene begins, giving parents plenty of time to reach for the remote without constantly monitoring a timestamp list.
 
 ### 3. How We Work (Methodology & Quality Standards)
 - **URL**: https://www.filmiway.com/how-we-work

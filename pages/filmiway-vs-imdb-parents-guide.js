@@ -144,7 +144,7 @@ export default function FilmiwayVsImdbParentsGuide() {
                   Filmiway's team manually verifies our timestamps to the exact second. We provide a clean, beautiful, and distraction-free interface with our <strong>Watch-Along Timer</strong>. You don't have to read paragraphs of spoilers; you just hit start.
                 </p>
                 <p className="text-gray-300 text-sm leading-relaxed m-0">
-                  Our website will silently count down alongside your movie. Just leave your phone on, and exactly 12 seconds before a scene begins, we make a sound to alert you—giving you the perfect window to skip sexual content in movies before it even appears on screen. It is the modern, real-time solution to an outdated problem.
+                  Our website will silently count down alongside your movie. Just leave your phone on, and exactly 15 seconds before a scene begins, we make a sound to alert you—giving you the perfect window to skip sexual content in movies before it even appears on screen. It is the modern, real-time solution to an outdated problem.
                 </p>
               </div>
 

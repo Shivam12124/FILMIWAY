@@ -124,7 +124,7 @@ export default function HowToSkipAwkwardScenes() {
     },
     {
       question: "What is the Filmiway Watch-Along Timer?",
-      answer: "The Live Watch-Along Timer is a companion tool that helps you skip awkward scenes in movies without compromising on the story. It runs on your mobile or desktop, and when you watch a movie on your main screen, it alerts you exactly 12 seconds before a sensitive scene occurs, helping you seamlessly skip the scene if you are uncomfortable watching it with family, friends, or individually."
+      answer: "The Live Watch-Along Timer is a companion tool that helps you skip awkward scenes in movies without compromising on the story. It runs on your mobile or desktop, and when you watch a movie on your main screen, it alerts you exactly 15 seconds before a sensitive scene occurs, helping you seamlessly skip the scene if you are uncomfortable watching it with family, friends, or individually."
     },
     {
       question: "Does Filmiway cover every movie?",
@@ -251,7 +251,7 @@ We’ve all had this experience. You’re comfortably seated on your couch, watc
                 The timer runs entirely in your browser and is equipped with advanced features:
               </p>
               <ul className="text-gray-300 space-y-2 mb-6">
-                <li><strong>12-Second Audio Alerts:</strong> The system sounds a gentle warning chime exactly 12 seconds before a sensitive scene begins, giving you time to look away or skip.</li>
+                <li><strong>15-Second Audio Alerts:</strong> The system sounds a gentle warning chime exactly 15 seconds before a sensitive scene begins, giving you time to look away or skip.</li>
                 <li><strong>One-Tap Skipping:</strong> Easily tap the "Skip Scene Now" button to automatically jump past the awkward scene and catch up to the safe parts of the film.</li>
                 <li><strong>100% Drift-Free Tracking:</strong> Built using absolute time anchors (<code className="text-yellow-400">Date.now()</code>) so the timer stays perfectly synced even if your phone's processor slows down or background tasks lag.</li>
                 <li><strong>Keep-Alive Screen Wake Lock:</strong> Automatically prevents your phone or tablet screen from dimming or falling asleep during long 3-hour movie sessions.</li>

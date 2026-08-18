@@ -32,7 +32,7 @@ const steps = [
   },
   {
     title: "Receive alerts before awkward scenes",
-    description: "Leave your phone on. We make a sound 12 seconds before an awkward scene begins so you can safely skip it.",
+    description: "Leave your phone on. We make a sound 15 seconds before an awkward scene begins so you can safely skip it.",
     icon: <BellRing className="w-6 h-6 text-purple-400" />
   }
 ];
@@ -52,7 +52,7 @@ export default function WatchAlongTimer() {
           "price": "0",
           "priceCurrency": "USD"
         },
-        "description": "Real-time web application timer that syncs with film playback to provide audio and visual alerts 12 seconds before awkward or sensitive scenes occur."
+        "description": "Real-time web application timer that syncs with film playback to provide audio and visual alerts 15 seconds before awkward or sensitive scenes occur."
       },
       {
         "@type": "HowTo",
@@ -72,7 +72,7 @@ export default function WatchAlongTimer() {
           {
             "@type": "HowToStep",
             "name": "Receive Live Warnings",
-            "text": "Listen for the sound notification 12 seconds before explicit or awkward scenes occur."
+            "text": "Listen for the sound notification 15 seconds before explicit or awkward scenes occur."
           }
         ]
       }
@@ -83,7 +83,7 @@ export default function WatchAlongTimer() {
     <>
       <Head>
         <title>Watch Along Timer Tool for Movies | Filmiway</title>
-        <meta name="description" content="Use the Filmiway Watch-Along Timer Tool to get real-time alerts 12 seconds before awkward movie scenes begin. The ultimate real-time parents guide." />
+        <meta name="description" content="Use the Filmiway Watch-Along Timer Tool to get real-time alerts 15 seconds before awkward movie scenes begin. The ultimate real-time parents guide." />
         <link rel="canonical" href="https://filmiway.com/watch-along-timer" />
         <script
           type="application/ld+json"
@@ -124,7 +124,7 @@ export default function WatchAlongTimer() {
               </h1>
               
               <p className="text-gray-400 max-w-2xl mx-auto text-lg font-light leading-relaxed">
-                Say goodbye to manually checking timestamps and frantically reaching for the remote. Let our timer run alongside your movie and alert you exactly 12 seconds before awkward scenes happen.
+                Say goodbye to manually checking timestamps and frantically reaching for the remote. Let our timer run alongside your movie and alert you exactly 15 seconds before awkward scenes happen.
               </p>
 
               <div className="mt-6 flex items-center justify-center gap-2 text-xs text-gray-500 uppercase tracking-widest">
@@ -187,9 +187,9 @@ export default function WatchAlongTimer() {
               <div className="flex items-start gap-4 bg-yellow-500/5 border border-yellow-500/20 rounded-2xl p-6 mb-8">
                 <BellRing className="w-8 h-8 text-yellow-400 flex-shrink-0 mt-1" />
                 <div>
-                  <h3 className="text-xl font-semibold text-white mb-2">The 12-Second Advantage</h3>
+                  <h3 className="text-xl font-semibold text-white mb-2">The 15-Second Advantage</h3>
                   <p className="text-gray-300 font-light leading-relaxed m-0">
-                    By syncing with your movie at 0:00, our timer actively monitors our curated database. Just leave your phone on. Exactly <strong>12 seconds before</strong> an awkward scene begins, we make a sound and your phone will flash an alert. This gives you the perfect window to simply reach for the remote and skip ahead—without ever breaking your immersion.
+                    By syncing with your movie at 0:00, our timer actively monitors our curated database. Just leave your phone on. Exactly <strong>15 seconds before</strong> an awkward scene begins, we make a sound and your phone will flash an alert. This gives you the perfect window to simply reach for the remote and skip ahead—without ever breaking your immersion.
                   </p>
                 </div>
               </div>

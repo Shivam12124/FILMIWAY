@@ -742,7 +742,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                                     </h3>
 
                                     <p itemProp="description" className="text-xs sm:text-sm text-gray-300 font-light leading-relaxed max-w-2xl m-0">
-                                        Sync this live timer on your mobile phone simultaneously when playing the film on your TV. The tool runs in real-time and alerts you <strong className="text-yellow-400 font-medium">12 seconds before explicit or sensitive scenes appear</strong>, giving you enough time to skip past them before things get awkward.
+                                        Sync this live timer on your mobile phone simultaneously when playing the film on your TV. The tool runs in real-time and alerts you <strong className="text-yellow-400 font-medium">15 seconds before explicit or sensitive scenes appear</strong>, giving you enough time to skip past them before things get awkward.
                                     </p>
                                 </div>
 
