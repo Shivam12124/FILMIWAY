@@ -1126,6 +1126,26 @@ export const COLLECTIONS = {
     ],
     movies: ['tt0114369', 'tt1392214', 'tt0477348', 'tt0102926', 'tt0353969', 'tt0327056', 'tt0407887', 'tt5362988', 'tt2267998', 'tt0119174'],
     relatedCollections: ['best-psychological-thriller-movies', 'best-crime-thriller-movies', 'best-mystery-thriller-movies']
+  },
+
+  // 🔥 TOP 25 MOST VISITED PARENTS GUIDES
+  'top-25-parents-guides': {
+    slug: 'top-25-parents-guides',
+    title: 'Top 25 Most Visited Parents Guides & Skip Timestamps',
+    stats: { averageRating: 8.5, totalMovies: 25 },
+    badges: [
+      { label: "MOST SEARCHED", desc: "Highest traffic guides" },
+      { label: "VERIFIED", desc: "100% Manually Checked" },
+      { label: "TOP 25", desc: "Global Cinema Trends" }
+    ],
+    movies: [
+      'tt2322441', 'tt10886166', 'tt0993846', 'tt0120338', 'tt0103772',
+      'tt15398776', 'tt14230458', 'tt0120663', 'tt0144084', 'tt0120890',
+      'tt0250797', 'tt2278871', 'tt0309987', 'tt0218922', 'tt0118749',
+      'tt0213847', 'tt2873282', 'tt0274812', 'tt0163651', 'tt0070849',
+      'tt0137523', 'tt0093010', 'tt0290673', 'tt0115736', 'tt0829482'
+    ],
+    relatedCollections: ['best-erotic-romance-movies', 'best-erotic-thriller-movies', 'best-movies-of-the-decade']
   }
 };
 

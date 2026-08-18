@@ -13,6 +13,7 @@ const CinematicBackground = dynamic(() => import('../../../components/CinematicB
 
 // ⚡ DYNAMIC IMPORT: Splits JS so mobile ONLY loads the top banner first! (SEO is fully preserved)
 const MovieDetailsSection = dynamic(() => import('../../../components/MovieDetailsSection'));
+const TopGuidesSection = dynamic(() => import('../../../components/TopGuidesSection'));
 
 // ✅ THEME COLORS FOR UNIVERSAL BANNER
 const COLORS = {
@@ -597,6 +598,9 @@ export default function UniversalMoviePage({ movie }) {
 
                 {/* 🔥 PASSING DYNAMIC PROPS INJECTS THE SPECIFIC FAQ/GRAPH COMPONENT AUTOMATICALLY */}
                 <MovieDetailsSection movie={movie} {...dynamicProps} />
+
+                {/* 🔗 TOP 25 HIGH-DEMAND SKIP GUIDES INTERNAL LINKING GRID */}
+                <TopGuidesSection currentSlug={movie.slug} />
 
                 {/* 🔥 TMDB API ATTRIBUTION (Required by TMDB Terms of Service) */}
                 <div className="mt-16 sm:mt-24 pt-8 pb-8 border-t border-white/5 flex flex-col items-center justify-center text-center">

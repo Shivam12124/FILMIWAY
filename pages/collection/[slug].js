@@ -67,7 +67,30 @@ const StrategicControls = () => null; // Placeholder
 
 //  SEO-OPTIMIZED COLLECTION CONTENT
 const getCollectionContent = () => {
-    if (collection.slug === 'movies-like-memento') {
+    if (collection.slug === 'top-25-parents-guides') {
+        return {
+            badge: "Global Search Trends",
+            title: "Top 25 Most Visited Parents Guides & Skip Timestamps",
+            description: "The 25 most searched movies on Filmiway. Cataloged with verified skip timestamps, intensity ratings, and content breakdowns.",
+            selection: {
+                text1: "From Fifty Shades of Grey and 365 Days to Oppenheimer and Poor Things, this directory represents the 25 most heavily searched titles by moviegoers seeking skip timestamps and parents guides.",
+                text2: "Every single title has been cataloged with precise timestamp markers for intimate, violent, or intense scenes."
+            },
+            ranking: {
+                text: "Our ranking reflects global search demand, community requests, and audience engagement across Tier-1 movie discovery platforms.",
+                points: [
+                    "Global Search Volume",
+                    "Timestamp Precision",
+                    "Community Verification",
+                    "Content Intensity Index"
+                ]
+            },
+            experience: {
+                text1: "Navigate through the top 25 movies with confidence knowing exact timestamps and content breakdown before hitting play.",
+                text2: "Skip the awkwardness effortlessly with Filmiway's verified timestamps."
+            }
+        };
+    } else if (collection.slug === 'movies-like-memento') {
         return {
             badge: "Narrative Jigsaw",
             title: "10 Fragmented Movies (Ranked by Confusion)",
@@ -2473,6 +2496,11 @@ subtitle: "They chose annihilation over peace. No forgiveness. No redemption. Ju
             title: "Best War Films: 10 Unflinching Masterpieces",
             subtitle: "From D-Day to jungle combat—visceral battle scenes & anti-war moral reckoning"
         };
+    } else if (collection.slug === 'top-25-parents-guides') {
+        return {
+            title: "Filmiway's Top 25 Most Visited Parents Guides & Skip Timestamps",
+            subtitle: "Global cinema discovery directory ranked by search demand, content intensity & timestamp precision"
+        };
     } else {
         return {
             title: `Best ${collection.title}: Top 10 Films`,
@@ -2924,6 +2952,11 @@ const getLoaderContent = () => {
         return {
             title: "Loading Best War Films",
             description: "Curating unflinching war masterpieces with community reviews and ratings"
+        };
+    } else if (collection?.slug === 'top-25-parents-guides') {
+        return {
+            title: "Loading Filmiway's Top 25 Most Visited Parents Guides",
+            description: "Curating top 25 searched movies with verified skip timestamps and content intensity breakdowns"
         };
     } else {
         return {
@@ -3668,6 +3701,15 @@ const getStaticMetaContent = () => {
             twitterTitle: "10 Best Comedy Movies on Peacock (Ranked by Absurdity)",
             progressText: `of Top ${movies.length} Comedy Movies on Peacock`
         };
+    } else if (collection.slug === 'top-25-parents-guides') {
+        return {
+            title: "Top 25 Most Visited Parents Guides & Skip Timestamps (Filmiway)",
+            description: "Discover Filmiway's Top 25 Most Visited Parents Guides & Skip Timestamps. The 25 most searched movies cataloged with verified skip timestamps and content intensity breakdowns.",
+            keywords: "top 25 parents guide, most visited skip timestamps, filmiway top 25, skip awkward scenes in movies",
+            ogTitle: "Top 25 Most Visited Parents Guides & Skip Timestamps",
+            twitterTitle: "Top 25 Most Visited Parents Guides & Skip Timestamps",
+            progressText: `of Top 25 Most Visited Parents Guides`
+        };
     } else {
         // Generic fallback
         return {
@@ -3987,6 +4029,8 @@ const getStaticMetaContent = () => {
                 sessionStorage.setItem('fromJLawCollection', 'true');
             } else if (collection.slug === 'top-10-monica-bellucci-movies') {
                 sessionStorage.setItem('fromMonicaBellucciCollection', 'true');
+            } else if (collection.slug === 'top-25-parents-guides') {
+                sessionStorage.setItem('fromTop25ParentsGuideCollection', 'true');
             }
         }
     };
@@ -4654,6 +4698,10 @@ return (
                             </motion.div>
 
                             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-xs text-gray-400 font-medium my-6 pt-6 border-t border-white/10 max-w-4xl mx-auto">
+                                <Link href="/collection/top-25-parents-guides" className="hover:text-yellow-400 text-yellow-400 font-bold transition-colors py-0.5">
+                                    🔥 Top 25 Parents Guides
+                                </Link>
+                                <span className="text-gray-700 hidden sm:inline">•</span>
                                 <Link href="/how-to-skip-awkward-scenes-in-movies" className="hover:text-yellow-400 transition-colors py-0.5">
                                     Skip Awkward Scenes Guide
                                 </Link>
@@ -4715,6 +4763,7 @@ export async function getStaticProps({ params }) {
     let movieDatabase;
     
     switch(collection.slug) {
+        case 'top-25-parents-guides': movieDatabase = require('../../utils/masterDatabase.json'); break;
         case 'best-survival-movies': movieDatabase = require('../../utils/survivalMovieData').COMPLETE_MOVIE_DATABASE; break;
         case 'movies-like-the-matrix': movieDatabase = require('../../utils/matrixMovieData').COMPLETE_MOVIE_DATABASE; break;
         case 'movies-like-se7en': movieDatabase = require('../../utils/se7enMovieData').COMPLETE_MOVIE_DATABASE; break;
@@ -4808,45 +4857,48 @@ export async function getStaticProps({ params }) {
     const tmdbCache = require('../../data/tmdbCache.json');
 
     let movies = collection.movies
-        .map(imdbId => {
-            const movie = movieArray.find(m => m.imdbID === imdbId);
-            if (!movie) return null;
+        .map((imdbId, index) => {
+            const masterMovie = masterDatabase.find(m => m.imdbID === imdbId);
+            const movie = movieArray.find(m => m.imdbID === imdbId) || masterMovie;
+            if (!movie && !masterMovie) return null;
 
-            const masterMovie = masterDatabase.find(m => m.imdbID === movie.imdbID);
-            const cachedMovie = tmdbCache[movie.imdbID] || {};
+            const target = masterMovie || movie;
+            const cachedMovie = tmdbCache[target.imdbID] || {};
             const finalPoster = cachedMovie.poster_path 
                 ? `https://image.tmdb.org/t/p/w780${cachedMovie.poster_path}` 
-                : (movie.Poster || movie.poster || '');
-            const generatedSlug = (movie.Title || movie.title || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+                : (target.Poster || target.poster || '');
+            const generatedSlug = (target.Title || target.title || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
 
             return {
-                imdbID: movie.imdbID || '',
-                tmdbId: movie.tmdbId || 0,
-                Title: movie.Title || movie.title || 'Unknown',
-                slug: masterMovie?.slug || generatedSlug,
-                Year: movie.Year || movie.year || '2024',
-                Genre: movie.Genre || movie.genre || 'Thriller',
-                Runtime: movie.Runtime || movie.runtime || 120,
-                poster_path: cachedMovie.poster_path || movie.poster_path || null,
+                imdbID: target.imdbID || '',
+                tmdbId: target.tmdbId || 0,
+                Title: target.Title || target.title || 'Unknown',
+                slug: target.slug || generatedSlug,
+                Year: target.Year || target.year || '2024',
+                Genre: target.Genre || target.genre || 'Thriller',
+                Runtime: target.Runtime || target.runtime || 120,
+                poster_path: cachedMovie.poster_path || target.poster_path || null,
                 Poster: finalPoster,
                 posterUrl: finalPoster,
                 fallbackPoster: finalPoster,
-                Plot: movie.Plot || movie.plot || movie.synopsis || '',
-                rating: movie.rating || 0,
-                complexityLevel: movie.complexityLevel || null,
-                dominantColor: movie.dominantColor || null,
-                quote: movie.quote || null,
-                synopsis: movie.synopsis || null,
-                rank: movie.rank || null
+                Plot: target.Plot || target.plot || target.synopsis || '',
+                rating: target.rating || 8.0,
+                complexityLevel: target.complexityLevel || null,
+                dominantColor: target.dominantColor || null,
+                quote: target.quote || null,
+                synopsis: target.synopsis || null,
+                rank: slug === 'top-25-parents-guides' ? (index + 1) : (target.rank || null)
             };
         })
         .filter(Boolean);
 
     // ⚡ CUSTOM LOGIC FOR BONUS SLIDES
-    // Automatically applies to any collection that contains a BONUS movie (or more than 10 movies)
-    const hasBonus = movies.some(m => m.rank === "BONUS" || m.rank === "bonus") || 
-                      movies.length > 10 || 
-                      movieArray.some(m => m.rank === "BONUS" || m.rank === "bonus");
+    // Automatically applies to any collection that contains a BONUS movie (or more than 10 movies), UNLESS it is top-25-parents-guides
+    const hasBonus = slug !== 'top-25-parents-guides' && (
+        movies.some(m => m.rank === "BONUS" || m.rank === "bonus") || 
+        movies.length > 10 || 
+        movieArray.some(m => m.rank === "BONUS" || m.rank === "bonus")
+    );
 
     if (hasBonus) {
         const standardMovies = movies.filter(m => m.rank !== "BONUS" && m.rank !== "bonus").slice(0, 10).sort((a, b) => (b.rank || 0) - (a.rank || 0));
@@ -4887,7 +4939,7 @@ export async function getStaticProps({ params }) {
         }
 
         movies = [...standardMovies, { isBonusSlide: true, bonusMovies }];
-    } else {
+    } else if (slug !== 'top-25-parents-guides') {
         movies.reverse();
     }
 
