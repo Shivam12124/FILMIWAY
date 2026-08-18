@@ -55,7 +55,75 @@ const getMarkerColorHex = (severity) => {
     return '#6b7280'; // Gray-500
 };
 
+// 🔥 SMART TIMELINE CONSOLIDATOR (Merged Scenes for Gap <= 15s)
+const consolidateTimelineScenes = (scenes, gapThreshold = 15) => {
+    if (!scenes || scenes.length === 0) return [];
+    
+    const severityRank = { 'Mild': 1, 'Moderate': 2, 'High': 3, 'Extreme': 4, 'Severe': 4 };
+    const getSeverityRank = (s) => severityRank[s] || 0;
+    const getSeverityFromRank = (r) => Object.keys(severityRank).find(k => severityRank[k] === r) || 'Moderate';
+
+    // Sort by start time
+    const sorted = [...scenes].map(s => {
+        const startSec = parseTimestampToSeconds(s.start || s.timestamp || '');
+        const endSec = parseTimestampToSeconds(s.end || s.endTimestamp || '') || (startSec + 120);
+        return { ...s, startSec, endSec };
+    }).sort((a, b) => a.startSec - b.startSec);
+    
+    const merged = [];
+    let current = null;
+    
+    for (const scene of sorted) {
+        if (!current) {
+            current = { ...scene };
+            continue;
+        }
+        
+        const gap = scene.startSec - current.endSec;
+        
+        // Merge if gap <= 15s AND NEITHER scene has a custom description (Preserves our 11 curated movies!)
+        if (gap <= gapThreshold && !current.description && !scene.description) {
+            // Merge time
+            current.endSec = Math.max(current.endSec, scene.endSec);
+            const formatSec = (sec) => {
+                const h = Math.floor(sec / 3600);
+                const m = Math.floor((sec % 3600) / 60);
+                const s = sec % 60;
+                if (h > 0) return `${h}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+                return `${m}:${String(s).padStart(2, '0')}`;
+            };
+            current.end = formatSec(current.endSec);
+            if (current.endTimestamp) current.endTimestamp = current.end;
+            
+            // Merge types
+            const t1 = (current.type || '').split(/[,&]/).map(t => t.trim()).filter(Boolean);
+            const t2 = (scene.type || '').split(/[,&]/).map(t => t.trim()).filter(Boolean);
+            const uniqueTypes = [...new Set([...t1, ...t2])];
+            
+            if (uniqueTypes.length > 1) {
+                const last = uniqueTypes.pop();
+                current.type = uniqueTypes.join(', ') + ' & ' + last;
+            } else {
+                current.type = uniqueTypes[0] || '';
+            }
+            
+            // Merge severity
+            const rank1 = getSeverityRank(current.severity);
+            const rank2 = getSeverityRank(scene.severity);
+            current.severity = getSeverityFromRank(Math.max(rank1, rank2));
+        } else {
+            merged.push(current);
+            current = { ...scene };
+        }
+    }
+    
+    if (current) merged.push(current);
+    return merged.map(({ startSec, endSec, ...rest }) => rest);
+};
+
 const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) => {
+    const consolidatedScenes = useMemo(() => consolidateTimelineScenes(sensitiveScenes || [], 15), [sensitiveScenes]);
+
     // --- MOBILE RESPONSIVE TOOLTIP STATE ---
     const [showInfo, setShowInfo] = useState(false);
     const infoRef = useRef(null);
@@ -115,8 +183,8 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
     }, []);
 
     const filteredHeavyScenes = useMemo(() => {
-        return sensitiveScenes.filter(isHeavyScene);
-    }, [sensitiveScenes, isHeavyScene]);
+        return consolidatedScenes.filter(isHeavyScene);
+    }, [consolidatedScenes, isHeavyScene]);
 
     // 🔥 CURATED LIST: Films that show the "Viewer Discretion Advised" advisory box
     // Includes Top 20 famous explicit films + all films with 10+ Sex/Nudity scenes
@@ -229,7 +297,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
         }
     };
 
-    const actualScenes = sensitiveScenes || [];
+    const actualScenes = consolidatedScenes || [];
     let sensitiveData = { scenes: [...actualScenes] }; // Show ALL scenes in the timeline (including violence & gore)
 
     // 🔥 Ensure both Profanity and Violence & Gore appear if at least one is present
@@ -772,7 +840,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                         {showWatchAlong && (
                             <WatchAlongTimer
                                 movie={movie}
-                                sensitiveScenes={sensitiveScenes}
+                                sensitiveScenes={consolidatedScenes}
                                 onClose={handleCloseWatchAlong}
                             />
                         )}
