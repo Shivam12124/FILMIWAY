@@ -676,6 +676,7 @@ export async function getStaticProps() {
         paramountCollections: paramountData,
         rRatedCleanMovies,
         top10TrendingMovies,
+        trendingParentsGuides,
       },
     };
   } catch (error) {
@@ -688,7 +689,8 @@ export async function getStaticProps() {
         peacockCollections: [],
         paramountCollections: [],
         rRatedCleanMovies: [],
-        top10TrendingMovies: []
+        top10TrendingMovies: [],
+        trendingParentsGuides: []
       },
     };
   }
