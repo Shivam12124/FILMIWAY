@@ -4699,7 +4699,7 @@ return (
 
                             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-xs text-gray-400 font-medium my-6 pt-6 border-t border-white/10 max-w-4xl mx-auto">
                                 <Link href="/collection/top-25-parents-guides" className="hover:text-yellow-400 text-yellow-400 font-bold transition-colors py-0.5">
-                                    🔥 Top 25 Parents Guides
+                                    Top 25 Parents Guides
                                 </Link>
                                 <span className="text-gray-700 hidden sm:inline">•</span>
                                 <Link href="/how-to-skip-awkward-scenes-in-movies" className="hover:text-yellow-400 transition-colors py-0.5">

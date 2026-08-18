@@ -747,5 +747,12 @@
     <priority>0.8</priority>
 </url>
 
+<url>
+    <loc>https://www.filmiway.com/collection/top-25-parents-guides</loc>
+    <lastmod>2026-08-18T12:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+</url>
+
 
 </urlset>

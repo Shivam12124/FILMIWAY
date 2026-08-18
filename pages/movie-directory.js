@@ -150,6 +150,15 @@ export default function MovieDirectory({ sortedMovies }) {
             <p className="text-gray-500 text-base font-light leading-relaxed">
               With over 500+ curated titles, this directory serves as your ultimate family-safe streaming companion. Whether you are looking for psychological thrillers, award-winning dramas, or classic action films, our editors have manually verified the timestamps for every movie below so you can watch with confidence.
             </p>
+            <div className="mt-6 flex flex-wrap gap-4">
+              <Link 
+                href="/collection/top-25-parents-guides"
+                className="inline-flex items-center gap-2 bg-yellow-500/10 border border-yellow-500/30 text-yellow-400 hover:bg-yellow-500/20 px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 hover:scale-[1.02]"
+              >
+                <span>View Top 25 Parents Guides</span>
+                <span className="text-xs">→</span>
+              </Link>
+            </div>
           </div>
 
           {/* Clean, SEO-optimized text links for Googlebot to easily crawl */}
@@ -285,5 +294,5 @@ export async function getStaticProps() {
   });
 
   const sortedMovies = Array.from(uniqueMoviesMap.values()).sort((a, b) => a.title.localeCompare(b.title));
-  return { props: { sortedMovies }, revalidate: 259200 };
+  return { props: { sortedMovies } };
 }
