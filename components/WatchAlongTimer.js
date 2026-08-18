@@ -4,7 +4,7 @@
 
 import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { createPortal } from 'react-dom';
-import { X, Play, Pause, ChevronLeft, ChevronRight, AlertTriangle, Shield, CheckCircle, Tv, Smartphone, Bell, Eye } from 'lucide-react';
+import { X, Play, Pause, ChevronLeft, ChevronRight, AlertTriangle, Shield, CheckCircle, Tv, Smartphone, Bell, Eye, ExternalLink } from 'lucide-react';
 import { db } from '../lib/firebase';
 import { collection, addDoc, updateDoc, doc } from 'firebase/firestore';
 
@@ -864,6 +864,32 @@ const WatchAlongTimer = ({ movie, sensitiveScenes, onClose }) => {
                         </div>
                         <div className="text-[12px] sm:text-[14px] text-gray-400 font-semibold tracking-wider mt-4 uppercase">RUNTIME: {displayRuntime}</div>
 
+                        {/* 🚀 ExpressVPN Native Timer Injection: Matching Screenshot Design */}
+                        <a 
+                            href="https://go.expressvpn.com/c/7564909/1462856/16063" 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            className="mt-6 flex items-center justify-between w-full bg-[#0d0708] border border-red-900/40 hover:border-red-600/60 rounded-xl p-3 transition-all group shadow-[0_0_15px_rgba(220,38,38,0.08)]"
+                        >
+                            <div className="flex items-center gap-2.5 min-w-0 flex-1">
+                                <div className="w-8 h-8 rounded-lg bg-red-600 flex items-center justify-center text-white shrink-0 shadow-md shadow-red-600/30">
+                                    <Shield size={14} className="fill-white/20" />
+                                </div>
+                                <div className="flex flex-col items-start text-left min-w-0 flex-1">
+                                    <div className="flex items-center gap-1 leading-none mb-0.5">
+                                        <span className="font-extrabold text-[9px] text-white tracking-wider">EXPRESSVPN</span>
+                                        <span className="text-red-400 font-bold text-[9px]">• $2.99/MO</span>
+                                    </div>
+                                    <span className="text-xs text-white font-bold truncate group-hover:text-red-400 transition-colors">
+                                        Unblock Restricted Sites
+                                    </span>
+                                </div>
+                            </div>
+                            <div className="shrink-0 ml-2 px-3 py-1.5 bg-red-600 hover:bg-red-500 text-white font-bold text-[11px] rounded-lg shadow-md shadow-red-600/30 border border-red-500/50 flex items-center gap-1">
+                                <span>Deal</span>
+                                <ExternalLink size={10} />
+                            </div>
+                        </a>
                     </div>
                 )}
             </div>
