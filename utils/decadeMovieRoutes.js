@@ -129,7 +129,7 @@ export const DECADE_COLLECTION_META = {
 };
 
 // ✅ GENERATE DECADE MOVIE SITEMAP URLS
-export const generateDecadeMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generateDecadeMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/best-movies-of-the-decade`,

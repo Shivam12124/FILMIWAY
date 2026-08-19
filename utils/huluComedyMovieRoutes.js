@@ -130,8 +130,8 @@ export const HULU_COMEDY_COLLECTION_META = {
     title: '10 Best Comedy Movies on Hulu (Ranked by Laughter)',
     description: 'The definitive ranking of the funniest movies on Hulu. From the teen chaos of Superbad to the satire of Borat.',
     keywords: 'best comedy movies on hulu, hulu comedy films, superbad, borat, palm springs, funniest movies streaming, comedy rankings 2026',
-    canonicalUrl: 'https://filmiway.com/best-comedy-movies-on-hulu',
-    ogImage: 'https://filmiway.com/images/hulu-comedy-collection-og.jpg',
+    canonicalUrl: 'https://www.filmiway.com/best-comedy-movies-on-hulu',
+    ogImage: 'https://www.filmiway.com/images/hulu-comedy-collection-og.jpg',
     totalMovies: COMPLETE_MOVIE_DATABASE.length,
     // ✅ FIXED - CALCULATES AVERAGE LAUGHTER SCORE (psychologicalIntensity maps to laughter)
     averageLaughterScore: Math.round(
@@ -143,7 +143,7 @@ export const HULU_COMEDY_COLLECTION_META = {
 };
 
 // ✅ GENERATE HULU COMEDY MOVIE SITEMAP URLS
-export const generateHuluComedyMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generateHuluComedyMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/best-comedy-movies-on-hulu`,

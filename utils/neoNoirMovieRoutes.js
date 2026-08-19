@@ -126,7 +126,7 @@ export const getRelatedNeoNoirMovies = (currentMovie, limit = 3) => {
 };
 
 // ✅ GENERATE NEO-NOIR MOVIE SITEMAP URLS
-export const generateNeoNoirMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generateNeoNoirMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/best-neo-noir-movies`,

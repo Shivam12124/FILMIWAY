@@ -129,7 +129,7 @@ export const getRelatedEyesWideShutMovies = (currentMovie, limit = 3) => {
 
 
 // ✅ GENERATE EYES WIDE SHUT MOVIE SITEMAP URLS
-export const generateEyesWideShutMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generateEyesWideShutMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/movies-like-eyes-wide-shut`,

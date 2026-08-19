@@ -132,7 +132,7 @@ export const getRelatedBestActionMovies = (currentMovie, limit = 3) => {
 };
 
 // ✅ GENERATE ACTION MOVIE SITEMAP URLS
-export const generateBestActionMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generateBestActionMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/best-action-movies`,

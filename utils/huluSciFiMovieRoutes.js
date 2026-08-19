@@ -120,7 +120,7 @@ export const getRelatedHuluSciFiMovies = (currentMovie, limit = 3) => {
 
 
 // ✅ GENERATE HULU SCI-FI MOVIE SITEMAP URLS
-export const generateHuluSciFiMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generateHuluSciFiMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/best-sci-fi-movies-on-hulu`,

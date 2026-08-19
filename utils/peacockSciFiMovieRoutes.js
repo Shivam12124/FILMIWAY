@@ -129,8 +129,8 @@ export const PEACOCK_SCIFI_COLLECTION_META = {
     title: '10 Best Sci-Fi Movies on Peacock (Ranked by Mind-Bend)',
     description: 'The definitive ranking of the best Sci-Fi movies on Peacock. From the quantum chaos of Coherence to the cosmic horror of Nope.',
     keywords: 'best sci-fi movies on peacock, peacock sci-fi films, coherence, nope, bugonia, the endless, pitch black, m3gan',
-    canonicalUrl: 'https://filmiway.com/collection/best-sci-fi-movies-on-peacock',
-    ogImage: 'https://filmiway.com/images/peacock-scifi-collection-og.jpg',
+    canonicalUrl: 'https://www.filmiway.com/collection/best-sci-fi-movies-on-peacock',
+    ogImage: 'https://www.filmiway.com/images/peacock-scifi-collection-og.jpg',
     totalMovies: COMPLETE_MOVIE_DATABASE.length,
     // ✅ Uses "Sci-Fi Complexity" for the main stat
     averageComplexity: Math.round(
@@ -142,7 +142,7 @@ export const PEACOCK_SCIFI_COLLECTION_META = {
 };
 
 // ✅ SITEMAP URL GENERATOR
-export const generatePeacockSciFiMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generatePeacockSciFiMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/best-sci-fi-movies-on-peacock`,

@@ -130,8 +130,8 @@ export const PARAMOUNT_HORROR_COLLECTION_META = {
     title: '10 Best Horror Movies on Paramount+ (Ranked by Scariness)',
     description: 'The definitive ranking of the scariest movies on Paramount+. From the science-backed terror of Sinister to the psychological dread of Smile.',
     keywords: 'best horror movies on paramount plus, paramount plus horror films, sinister, smile, a quiet place, rosemarys baby, horror rankings 2026',
-    canonicalUrl: 'https://filmiway.com/collection/best-horror-movies-on-paramount-plus',
-    ogImage: 'https://filmiway.com/images/paramount-horror-collection-og.jpg',
+    canonicalUrl: 'https://www.filmiway.com/collection/best-horror-movies-on-paramount-plus',
+    ogImage: 'https://www.filmiway.com/images/paramount-horror-collection-og.jpg',
     totalMovies: COMPLETE_MOVIE_DATABASE.length,
     // ✅ Uses "Scariness" for the main stat
     averageScariness: Math.round(
@@ -143,7 +143,7 @@ export const PARAMOUNT_HORROR_COLLECTION_META = {
 };
 
 // ✅ SITEMAP URL GENERATOR
-export const generateParamountHorrorMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generateParamountHorrorMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/best-horror-movies-on-paramount-plus`,

@@ -131,8 +131,8 @@ export const PARAMOUNT_BEST_COLLECTION_META = {
     title: 'Top 10 Best Movies on Paramount+',
     description: 'The definitive ranking of the highest-rated films streaming on Paramount+ right now. From Pulp Fiction to Top Gun: Maverick.',
     keywords: 'best movies on paramount plus, paramount plus top movies, pulp fiction, forrest gump, interstellar, top gun maverick, top rated paramount films',
-    canonicalUrl: 'https://filmiway.com/collection/best-movies-on-paramount-plus',
-    ogImage: 'https://filmiway.com/images/paramount-best-movies-collection.jpg',
+    canonicalUrl: 'https://www.filmiway.com/collection/best-movies-on-paramount-plus',
+    ogImage: 'https://www.filmiway.com/images/paramount-best-movies-collection.jpg',
     totalMovies: COMPLETE_MOVIE_DATABASE.length,
     averageRating: Math.round(
         COMPLETE_MOVIE_DATABASE.reduce((sum, movie) => {
@@ -143,7 +143,7 @@ export const PARAMOUNT_BEST_COLLECTION_META = {
 };
 
 // ✅ SITEMAP URL GENERATOR
-export const generateParamountBestMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generateParamountBestMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/best-movies-on-paramount-plus`,

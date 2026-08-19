@@ -23,7 +23,7 @@ export default function Terms() {
       <Head>
         <title>Terms of Service | Filmiway Legal</title>
         <meta name="description" content="Filmiway Terms of Service. Our commitment to legal streaming and zero-tolerance policy towards piracy." />
-        <link rel="canonical" href="https://filmiway.com/terms" />
+        <link rel="canonical" href="https://www.filmiway.com/terms" />
         <meta name="robots" content="noindex, follow" />
       </Head>
 

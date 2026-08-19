@@ -130,8 +130,8 @@ export const PARAMOUNT_ROMANCE_COLLECTION_META = {
     title: '10 Best Romance Movies on Paramount+ (Ranked 2026)',
     description: 'The definitive ranking of romance movies on Paramount+. From the epic tragedy of Titanic to the heartwarming charm of It\'s a Wonderful Life.',
     keywords: 'best romance movies on paramount plus, paramount plus romance films, titanic streaming, about time, its a wonderful life, ghost movie, breakfast at tiffanys',
-    canonicalUrl: 'https://filmiway.com/collection/best-romance-movies-on-paramount-plus',
-    ogImage: 'https://filmiway.com/images/paramount-romance-collection-og.jpg',
+    canonicalUrl: 'https://www.filmiway.com/collection/best-romance-movies-on-paramount-plus',
+    ogImage: 'https://www.filmiway.com/images/paramount-romance-collection-og.jpg',
     totalMovies: COMPLETE_MOVIE_DATABASE.length,
     // ✅ Average Emotional Resonance
     averageEmotionalScore: Math.round(
@@ -143,7 +143,7 @@ export const PARAMOUNT_ROMANCE_COLLECTION_META = {
 };
 
 // ✅ SITEMAP URL GENERATOR
-export const generateParamountRomanceMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generateParamountRomanceMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/best-romance-movies-on-paramount-plus`,

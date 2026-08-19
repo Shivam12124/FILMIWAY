@@ -129,8 +129,8 @@ export const HBO_MAX_COMEDY_COLLECTION_META = {
     title: '10 Best Comedy Movies on HBO Max (Ranked by Laughter)',
     description: 'The definitive ranking of the funniest movies on HBO Max. From the satire of The Great Dictator to the chaos of The LEGO Batman Movie.',
     keywords: 'best comedy movies on hbo max, hbo max comedy films, city lights, blazing saddles, barbie, funniest movies streaming, comedy rankings 2026',
-    canonicalUrl: 'https://filmiway.com/collection/best-comedy-movies-on-hbo-max',
-    ogImage: 'https://filmiway.com/images/hbo-comedy-collection-og.jpg',
+    canonicalUrl: 'https://www.filmiway.com/collection/best-comedy-movies-on-hbo-max',
+    ogImage: 'https://www.filmiway.com/images/hbo-comedy-collection-og.jpg',
     totalMovies: COMPLETE_MOVIE_DATABASE.length,
     averageLaughterScore: Math.round(
         COMPLETE_MOVIE_DATABASE.reduce((sum, movie) => {
@@ -141,7 +141,7 @@ export const HBO_MAX_COMEDY_COLLECTION_META = {
 };
 
 // ✅ SITEMAP URLS
-export const generateHboMaxComedyMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generateHboMaxComedyMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/best-comedy-movies-on-hbo-max`,

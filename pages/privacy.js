@@ -24,7 +24,7 @@ export default function Privacy() {
       <Head>
         <title>Privacy Policy | Filmiway Transparency Center</title>
         <meta name="description" content="We value your trust. Learn how Filmiway protects your data while you discover the world's best cinema." />
-        <link rel="canonical" href="https://filmiway.com/privacy" />
+        <link rel="canonical" href="https://www.filmiway.com/privacy" />
         <meta name="robots" content="noindex, follow" /> 
       </Head>
 

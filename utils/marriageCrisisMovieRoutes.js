@@ -133,7 +133,7 @@ export const getRelatedMarriageCrisisMovies = (currentMovie, limit = 3) => {
 };
 
 // ✅ GENERATE MARRIAGE CRISIS MOVIE SITEMAP URLS
-export const generateMarriageCrisisMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generateMarriageCrisisMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/best-marriage-crisis-movies`,

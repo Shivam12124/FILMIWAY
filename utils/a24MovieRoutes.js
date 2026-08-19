@@ -136,7 +136,7 @@ export const A24_COLLECTION_META = {
 };
 
 // ✅ GENERATE A24 MOVIE SITEMAP URLS
-export const generateA24MovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generateA24MovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/best-a24-movies`,

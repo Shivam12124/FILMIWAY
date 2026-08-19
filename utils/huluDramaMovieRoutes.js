@@ -131,8 +131,8 @@ export const HULU_DRAMA_COLLECTION_META = {
     title: 'Top 10 Best Drama Movies on Hulu (2025)',
     description: 'Expert-ranked list of the most emotionally powerful dramas streaming on Hulu. From Boyhood to Perfect Days, featuring deep character studies and moving storytelling.',
     keywords: 'best drama movies on hulu, hulu dramas, emotional movies hulu, boyhood, perfect days, all of us strangers, tearjerkers hulu',
-    canonicalUrl: 'https://filmiway.com/collection/best-drama-movies-on-hulu',
-    ogImage: 'https://filmiway.com/images/hulu-drama-movies-collection.jpg',
+    canonicalUrl: 'https://www.filmiway.com/collection/best-drama-movies-on-hulu',
+    ogImage: 'https://www.filmiway.com/images/hulu-drama-movies-collection.jpg',
     totalMovies: COMPLETE_MOVIE_DATABASE.length,
     averageEmotionalScore: Math.round(
         COMPLETE_MOVIE_DATABASE.reduce((sum, movie) => {
@@ -143,7 +143,7 @@ export const HULU_DRAMA_COLLECTION_META = {
 };
 
 // ✅ SITEMAP URLS
-export const generateHuluDramaMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generateHuluDramaMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/best-drama-movies-on-hulu`,

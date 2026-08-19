@@ -126,7 +126,7 @@ export const getRelatedThoughtProvokingMovies = (currentMovie, limit = 3) => {
 };
 
 // ✅ GENERATE THOUGHT-PROVOKING MOVIE SITEMAP URLS
-export const generateThoughtProvokingMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generateThoughtProvokingMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/best-thought-provoking-movies`,

@@ -130,8 +130,8 @@ export const HULU_BEST_COLLECTION_META = {
     title: 'Top 10 Best Movies on Hulu',
     description: 'The definitive ranking of the highest-rated films streaming on Hulu right now. From Heat to Superbad, covering all genres.',
     keywords: 'best movies on hulu, hulu top movies, heat movie, hacksaw ridge, black swan hulu, top rated hulu films',
-    canonicalUrl: 'https://filmiway.com/collection/best-movies-on-hulu',
-    ogImage: 'https://filmiway.com/images/hulu-best-movies-collection.jpg',
+    canonicalUrl: 'https://www.filmiway.com/collection/best-movies-on-hulu',
+    ogImage: 'https://www.filmiway.com/images/hulu-best-movies-collection.jpg',
     totalMovies: COMPLETE_MOVIE_DATABASE.length,
     averageRating: Math.round(
         COMPLETE_MOVIE_DATABASE.reduce((sum, movie) => {
@@ -142,7 +142,7 @@ export const HULU_BEST_COLLECTION_META = {
 };
 
 // ✅ GENERATE HULU BEST MOVIE SITEMAP URLS
-export const generateHuluBestMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generateHuluBestMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/best-movies-on-hulu`,

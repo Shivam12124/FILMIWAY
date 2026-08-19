@@ -130,8 +130,8 @@ export const PEACOCK_ROMANCE_COLLECTION_META = {
     title: '10 Best Romance Movies on Peacock (Ranked 2026)',
     description: 'The definitive ranking of romance movies on Peacock. From the emotional depth of About Time to the timeless charm of Notting Hill.',
     keywords: 'best romance movies on peacock, peacock romance films, about time streaming, pride and prejudice, notting hill, ghost movie, challengers',
-    canonicalUrl: 'https://filmiway.com/collection/best-romance-movies-on-peacock',
-    ogImage: 'https://filmiway.com/images/peacock-romance-collection-og.jpg',
+    canonicalUrl: 'https://www.filmiway.com/collection/best-romance-movies-on-peacock',
+    ogImage: 'https://www.filmiway.com/images/peacock-romance-collection-og.jpg',
     totalMovies: COMPLETE_MOVIE_DATABASE.length,
     // ✅ Average Emotional Resonance
     averageEmotionalScore: Math.round(
@@ -143,7 +143,7 @@ export const PEACOCK_ROMANCE_COLLECTION_META = {
 };
 
 // ✅ SITEMAP URL GENERATOR
-export const generatePeacockRomanceMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generatePeacockRomanceMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/best-romance-movies-on-peacock`,

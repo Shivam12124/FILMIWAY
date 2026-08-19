@@ -127,7 +127,7 @@ export const getRelatedTrueStoryMovies = (currentMovie, limit = 3) => {
 };
 
 // ✅ GENERATE TRUE STORY MOVIE SITEMAP URLS
-export const generateTrueStoryMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generateTrueStoryMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/best-true-story-movies`,

@@ -134,7 +134,7 @@ export const JLAW_COLLECTION_META = {
 };
 
 // ✅ GENERATE JENNIFER LAWRENCE MOVIE SITEMAP URLS
-export const generateJLawMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generateJLawMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/top-10-jennifer-lawrence-movies`,

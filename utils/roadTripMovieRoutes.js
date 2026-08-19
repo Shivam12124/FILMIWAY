@@ -126,7 +126,7 @@ export const getRelatedRoadTripMovies = (currentMovie, limit = 3) => {
 };
 
 // ✅ GENERATE ROAD TRIP MOVIE SITEMAP URLS
-export const generateRoadTripMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generateRoadTripMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/top-10-road-trip-movies`,

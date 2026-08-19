@@ -134,8 +134,8 @@ export const MATRIX_COLLECTION_META = {
     title: 'Top 10 Movies Like The Matrix',
     description: 'Discover mind-bending cyberpunk and sci-fi thriller films. From Dark City to Inception - philosophical cyber-noir masterpieces that explore reality and consciousness.',
     keywords: 'movies like matrix, cyberpunk movies, philosophical sci-fi, mind-bending thrillers, best matrix-like films, cyber noir',
-    canonicalUrl: 'https://filmiway.com/collection/movies-like-the-matrix',
-    ogImage: 'https://filmiway.com/images/matrix-movies-collection.jpg',
+    canonicalUrl: 'https://www.filmiway.com/collection/movies-like-the-matrix',
+    ogImage: 'https://www.filmiway.com/images/matrix-movies-collection.jpg',
     totalMovies: Object.keys(MATRIX_MOVIE_DB).length,
     averageComplexity: Math.round(
         Object.values(MATRIX_MOVIE_DB).reduce((sum, movie) => {
@@ -145,7 +145,7 @@ export const MATRIX_COLLECTION_META = {
 };
 
 // ✅ GENERATE MATRIX MOVIE SITEMAP URLS
-export const generateMatrixMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generateMatrixMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/movies-like-the-matrix`,

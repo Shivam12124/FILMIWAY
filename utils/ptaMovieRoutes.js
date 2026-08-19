@@ -134,7 +134,7 @@ export const PTA_COLLECTION_META = {
 };
 
 // ✅ GENERATE PTA MOVIE SITEMAP URLS
-export const generatePtaMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generatePtaMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/best-paul-thomas-anderson-movies`,

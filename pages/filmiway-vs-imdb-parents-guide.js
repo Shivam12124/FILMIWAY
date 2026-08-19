@@ -20,7 +20,7 @@ export default function FilmiwayVsImdbParentsGuide() {
       <Head>
         <title>Filmiway vs IMDb Parents Guide | The Real-Time Alternative</title>
         <meta name="description" content="Compare Filmiway vs IMDb Parents Guide. Learn why our curated, spoiler-free, and precise real-time watch-along alerts are better than crowd-sourced movie warnings." />
-        <link rel="canonical" href="https://filmiway.com/filmiway-vs-imdb-parents-guide" />
+        <link rel="canonical" href="https://www.filmiway.com/filmiway-vs-imdb-parents-guide" />
       </Head>
 
       <div className="relative min-h-screen bg-black text-white font-sans overflow-hidden select-none">

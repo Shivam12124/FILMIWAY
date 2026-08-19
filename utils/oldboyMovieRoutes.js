@@ -131,8 +131,8 @@ export const OLDBOY_COLLECTION_META = {
     title: 'Movies Like Oldboy – 10 Best Revenge Thrillers You Must Watch',
     description: 'Top 10 revenge-driven thrillers ranked by obsession intensity. From I Saw the Devil to The Handmaiden. Extreme vengeance cinema like Park Chan-wook masterpiece.',
     keywords: 'movies like oldboy, revenge thrillers, i saw the devil, sympathy for mr vengeance, lady vengeance, park chan-wook, obsession cinema, moral ambiguity films, korean revenge movies',
-    canonicalUrl: 'https://filmiway.com/collection/movies-like-oldboy',
-    ogImage: 'https://filmiway.com/images/movies-like-oldboy-collection.jpg',
+    canonicalUrl: 'https://www.filmiway.com/collection/movies-like-oldboy',
+    ogImage: 'https://www.filmiway.com/images/movies-like-oldboy-collection.jpg',
     totalMovies: COMPLETE_MOVIE_DATABASE.length,
     averageRating: (
         COMPLETE_MOVIE_DATABASE.reduce((sum, movie) => sum + (movie.rating || 0), 0) / COMPLETE_MOVIE_DATABASE.length
@@ -143,7 +143,7 @@ export const OLDBOY_COLLECTION_META = {
 };
 
 // ✅ GENERATE OLDBOY MOVIE SITEMAP URLS
-export const generateOldboyMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generateOldboyMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/movies-like-oldboy`,

@@ -130,8 +130,8 @@ export const PARAMOUNT_THRILLER_COLLECTION_META = {
     title: '10 Best Thriller Movies on Paramount+ (2026)',
     description: 'Expert-ranked list of the most intense and suspenseful thrillers on Paramount+. From No Country for Old Men to Strange Darling.',
     keywords: 'best thriller movies on paramount plus, paramount plus thrillers, suspense movies, strange darling, no country for old men, zodiac, 10 cloverfield lane',
-    canonicalUrl: 'https://filmiway.com/collection/best-thriller-movies-on-paramount-plus',
-    ogImage: 'https://filmiway.com/images/paramount-thriller-movies-collection.jpg',
+    canonicalUrl: 'https://www.filmiway.com/collection/best-thriller-movies-on-paramount-plus',
+    ogImage: 'https://www.filmiway.com/images/paramount-thriller-movies-collection.jpg',
     totalMovies: COMPLETE_MOVIE_DATABASE.length,
     // ✅ USES REAL SUSPENSE INTENSITY DATA
     averageSuspenseIntensity: Math.round(
@@ -143,7 +143,7 @@ export const PARAMOUNT_THRILLER_COLLECTION_META = {
 };
 
 // ✅ SITEMAP URLS
-export const generateParamountThrillerMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generateParamountThrillerMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/best-thriller-movies-on-paramount-plus`,

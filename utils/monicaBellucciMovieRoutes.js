@@ -135,7 +135,7 @@ export const MONICA_BELLUCCI_COLLECTION_META = {
 };
 
 // ✅ GENERATE MONICA BELLUCCI MOVIE SITEMAP URLS
-export const generateMonicaBellucciMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generateMonicaBellucciMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/top-10-monica-bellucci-movies`,

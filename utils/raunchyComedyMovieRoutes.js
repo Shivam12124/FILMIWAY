@@ -132,7 +132,7 @@ export const getRelatedRaunchyComedyMovies = (currentMovie, limit = 3) => {
 };
 
 // ✅ GENERATE RAUNCHY COMEDY MOVIE SITEMAP URLS
-export const generateRaunchyComedyMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generateRaunchyComedyMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/best-raunchy-comedy-movies`,

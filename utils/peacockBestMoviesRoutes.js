@@ -130,8 +130,8 @@ export const PEACOCK_BEST_COLLECTION_META = {
     title: 'Top 10 Best Movies on Peacock',
     description: 'The definitive ranking of the highest-rated films streaming on Peacock right now. From Memento to Sicario, covering all genres.',
     keywords: 'best movies on peacock, peacock top movies, sicario peacock, memento movie, top rated peacock films, peacock thriller movies',
-    canonicalUrl: 'https://filmiway.com/collection/best-movies-on-peacock',
-    ogImage: 'https://filmiway.com/images/peacock-best-movies-collection.jpg',
+    canonicalUrl: 'https://www.filmiway.com/collection/best-movies-on-peacock',
+    ogImage: 'https://www.filmiway.com/images/peacock-best-movies-collection.jpg',
     totalMovies: COMPLETE_MOVIE_DATABASE.length,
     averageRating: Math.round(
         COMPLETE_MOVIE_DATABASE.reduce((sum, movie) => {
@@ -143,7 +143,7 @@ export const PEACOCK_BEST_COLLECTION_META = {
 
 // ✅ GENERATE PEACOCK BEST MOVIE SITEMAP URLS
 // Note: Renamed function slightly to avoid conflict if imported alongside Hulu routes
-export const generatePeacockSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generatePeacockSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/best-movies-on-peacock`,

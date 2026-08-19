@@ -129,8 +129,8 @@ export const HBO_MAX_HORROR_COLLECTION_META = {
     title: '10 Best Horror Movies on HBO Max (Ranked by Scariness)',
     description: 'The definitive ranking of the scariest movies on HBO Max. From the jump scares of Insidious to the dread of The Witch.',
     keywords: 'best horror movies on hbo max, hbo max horror films, the conjuring, insidious, evil dead rise, horror rankings 2026',
-    canonicalUrl: 'https://filmiway.com/collection/best-horror-movies-on-hbo-max',
-    ogImage: 'https://filmiway.com/images/hbo-horror-collection-og.jpg',
+    canonicalUrl: 'https://www.filmiway.com/collection/best-horror-movies-on-hbo-max',
+    ogImage: 'https://www.filmiway.com/images/hbo-horror-collection-og.jpg',
     totalMovies: COMPLETE_MOVIE_DATABASE.length,
     // ✅ Uses "Scariness" for the main stat
     averageScariness: Math.round(
@@ -142,7 +142,7 @@ export const HBO_MAX_HORROR_COLLECTION_META = {
 };
 
 // ✅ SITEMAP URL GENERATOR
-export const generateHboMaxHorrorMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generateHboMaxHorrorMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/best-horror-movies-on-hbo-max`,

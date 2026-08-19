@@ -128,7 +128,7 @@ export const getRelatedParamountComedyMovies = (currentMovie, limit = 3) => {
 
 
 // ✅ SITEMAP URL GENERATOR
-export const generateParamountComedyMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generateParamountComedyMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/best-comedy-movies-on-paramount-plus`,

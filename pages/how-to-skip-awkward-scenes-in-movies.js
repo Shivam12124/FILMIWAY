@@ -78,11 +78,11 @@ export default function HowToSkipAwkwardScenes() {
     "@type": "Article",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": "https://filmiway.com/how-to-skip-awkward-scenes-in-movies"
+      "@id": "https://www.filmiway.com/how-to-skip-awkward-scenes-in-movies"
     },
     "headline": "How to Skip Awkward Scenes in Movies with Exact Timestamps",
     "description": "A guide on how to skip explicit scenes in movies using Filmiway's exact timestamp database.",
-    "image": "https://filmiway.com/filmiway-logo.svg",
+    "image": "https://www.filmiway.com/filmiway-logo.svg",
     "keywords": "skip awkward scenes, parents guide movie timestamps, skip sex scenes in movies, family safe movies, movie explicit timestamps",
     "author": {
       "@type": "Organization",
@@ -93,7 +93,7 @@ export default function HowToSkipAwkwardScenes() {
       "name": "Filmiway",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://filmiway.com/filmiway-logo.svg"
+        "url": "https://www.filmiway.com/filmiway-logo.svg"
       }
     },
     "datePublished": publishDateStr,
@@ -106,12 +106,12 @@ export default function HowToSkipAwkwardScenes() {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://filmiway.com/" },
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.filmiway.com/" },
       { 
         "@type": "ListItem", 
         "position": 2, 
         "name": "Parents Guide & Safety", 
-        "item": "https://filmiway.com/how-to-skip-awkward-scenes-in-movies" 
+        "item": "https://www.filmiway.com/how-to-skip-awkward-scenes-in-movies" 
       }
     ]
   };
@@ -179,14 +179,14 @@ export default function HowToSkipAwkwardScenes() {
       <Head>
         <title>How to Skip Awkward Scenes in Movies (Exact Timestamps) | Filmiway</title>
         <meta name="description" content="Tired of awkward family movie nights? Learn how to use Filmiway to get exact, pinpoint timestamps to skip sex, nudity, and explicit scenes in over 500 movies." />
-        <link rel="canonical" href="https://filmiway.com/how-to-skip-awkward-scenes-in-movies" />
+        <link rel="canonical" href="https://www.filmiway.com/how-to-skip-awkward-scenes-in-movies" />
         
         {/* ⚡ OPEN GRAPH & TWITTER META TAGS */}
         <meta property="og:title" content="How to Skip Awkward Scenes in Movies (Exact Timestamps) | Filmiway" />
         <meta property="og:description" content="Tired of awkward family movie nights? Learn how to use Filmiway to get exact, pinpoint timestamps to skip sex, nudity, and explicit scenes in over 500 movies." />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://filmiway.com/how-to-skip-awkward-scenes-in-movies" />
-        <meta property="og:image" content="https://filmiway.com/filmiway-logo.svg" />
+        <meta property="og:url" content="https://www.filmiway.com/how-to-skip-awkward-scenes-in-movies" />
+        <meta property="og:image" content="https://www.filmiway.com/filmiway-logo.svg" />
         <meta name="twitter:card" content="summary_large_image" />
 
         {/* ⚡ SEO ARTICLE SCHEMA FOR GOOGLE */}

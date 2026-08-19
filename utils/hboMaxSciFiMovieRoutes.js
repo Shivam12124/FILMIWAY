@@ -129,8 +129,8 @@ export const HBO_MAX_SCIFI_COLLECTION_META = {
     title: '10 Best Sci-Fi Movies on HBO Max (Ranked by Scale)',
     description: 'The definitive ranking of the best Sci-Fi movies on HBO Max. From the cosmic scale of 2001 to the visceral action of Mad Max.',
     keywords: 'best sci-fi movies on hbo max, hbo max sci-fi films, dune, inception, 2001 space odyssey, mad max fury road, sci-fi streaming',
-    canonicalUrl: 'https://filmiway.com/collection/best-sci-fi-movies-on-hbo-max',
-    ogImage: 'https://filmiway.com/images/hbo-scifi-collection-og.jpg',
+    canonicalUrl: 'https://www.filmiway.com/collection/best-sci-fi-movies-on-hbo-max',
+    ogImage: 'https://www.filmiway.com/images/hbo-scifi-collection-og.jpg',
     totalMovies: COMPLETE_MOVIE_DATABASE.length,
     // ✅ Uses "Spectacular Level" for the main stat
     averageSpectacularLevel: Math.round(
@@ -142,7 +142,7 @@ export const HBO_MAX_SCIFI_COLLECTION_META = {
 };
 
 // ✅ SITEMAP URL GENERATOR
-export const generateHboMaxSciFiMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generateHboMaxSciFiMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/best-sci-fi-movies-on-hbo-max`,

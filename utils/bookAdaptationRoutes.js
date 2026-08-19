@@ -129,7 +129,7 @@ export const getRelatedBookAdaptations = (currentMovie, limit = 3) => {
 };
 
 // ✅ GENERATE BOOK ADAPTATION MOVIE SITEMAP URLS
-export const generateBookAdaptationSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generateBookAdaptationSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/top-10-book-adaptations`,

@@ -130,8 +130,8 @@ export const SE7EN_COLLECTION_META = {
     title: 'Top 10 Movies Like Se7en',
     description: 'Discover the most intense and gritty psychological thrillers ranked by Se7en DNA score. From Zodiac to Memories of Murder.',
     keywords: 'movies like se7en, psychological thrillers, serial killer movies, dark crime films, fincher style movies, intense mystery films',
-    canonicalUrl: 'https://filmiway.com/collection/movies-like-se7en',
-    ogImage: 'https://filmiway.com/images/se7en-movies-collection.jpg',
+    canonicalUrl: 'https://www.filmiway.com/collection/movies-like-se7en',
+    ogImage: 'https://www.filmiway.com/images/se7en-movies-collection.jpg',
     totalMovies: COMPLETE_MOVIE_DATABASE.length,
     // ✅ FIXED - NOW USES REAL SE7EN DNA SCORE DATA
     averageSe7enDNAScore: Math.round(
@@ -144,7 +144,7 @@ export const SE7EN_COLLECTION_META = {
 };
 
 // ✅ GENERATE SE7EN MOVIE SITEMAP URLS
-export const generateSe7enMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generateSe7enMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/movies-like-se7en`,

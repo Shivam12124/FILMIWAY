@@ -126,7 +126,7 @@ export const getRelatedPrestigeMovies = (currentMovie, limit = 3) => {
 };
 
 // ✅ GENERATE PRESTIGE MOVIE SITEMAP URLS
-export const generatePrestigeMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generatePrestigeMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/movies-like-the-prestige`,

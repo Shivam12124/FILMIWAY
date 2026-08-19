@@ -130,8 +130,8 @@ export const CRIME_THRILLER_COLLECTION_META = {
     title: 'Top 10 Best Crime Thriller Movies',
     description: 'Discover the most intense and suspenseful crime thrillers ranked by suspense intensity. From Heat to The Departed.',
     keywords: 'best crime thrillers, crime thriller movies ranking, suspense intensity, noir films, detective movies, heist thrillers',
-    canonicalUrl: 'https://filmiway.com/collection/best-crime-thrillers',
-    ogImage: 'https://filmiway.com/images/crime-thriller-movies-collection.jpg',
+    canonicalUrl: 'https://www.filmiway.com/collection/best-crime-thrillers',
+    ogImage: 'https://www.filmiway.com/images/crime-thriller-movies-collection.jpg',
     totalMovies: COMPLETE_MOVIE_DATABASE.length,
     // ✅ FIXED - NOW USES REAL SUSPENSE INTENSITY DATA
     averageSuspenseIntensity: Math.round(
@@ -142,7 +142,7 @@ export const CRIME_THRILLER_COLLECTION_META = {
 };
 
 // ✅ GENERATE CRIME THRILLER MOVIE SITEMAP URLS
-export const generateCrimeThrillerMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generateCrimeThrillerMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/best-crime-thrillers`,

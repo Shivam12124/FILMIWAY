@@ -117,7 +117,7 @@ export default function MovieDirectory({ sortedMovies }) {
         <title>A-Z Movie Directory & Parents Guides | Filmiway</title>
         <meta name="description" content="Browse our complete A-Z directory of individual movies. Get precise Parents Guide timestamps and explicit scene data for every film." />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://filmiway.com/movie-directory" />
+        <link rel="canonical" href="https://www.filmiway.com/movie-directory" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -126,7 +126,7 @@ export default function MovieDirectory({ sortedMovies }) {
               "@type": "CollectionPage",
               "name": "A-Z Movie Directory & Parents Guides | Filmiway",
               "description": "Browse our complete A-Z directory of over 500 individual movies. Get precise Parents Guide timestamps and explicit scene data.",
-              "url": "https://filmiway.com/movie-directory"
+              "url": "https://www.filmiway.com/movie-directory"
             })
           }}
         />

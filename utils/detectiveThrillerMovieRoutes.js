@@ -133,8 +133,8 @@ export const DETECTIVE_THRILLER_COLLECTION_META = {
     title: 'Top 10 Best Detective Thriller Movies',
     description: 'The ultimate list of investigative cinema. From the nihilism of Se7en to the obsession of Zodiac. Ranked by mystery complexity and psychological tension.',
     keywords: 'detective movies, crime thrillers, mystery films, whodunit, investigative cinema, Se7en, Zodiac',
-    canonicalUrl: 'https://filmiway.com/collection/best-detective-thriller-movies',
-    ogImage: 'https://filmiway.com/images/best-detective-thriller-movies.jpg',
+    canonicalUrl: 'https://www.filmiway.com/collection/best-detective-thriller-movies',
+    ogImage: 'https://www.filmiway.com/images/best-detective-thriller-movies.jpg',
     totalMovies: COMPLETE_MOVIE_DATABASE.length,
     // Calculated from detailed data
     averageMysteryComplexity: Math.round(
@@ -145,7 +145,7 @@ export const DETECTIVE_THRILLER_COLLECTION_META = {
 };
 
 // ✅ GENERATE SITEMAP URLS
-export const generateDetectiveThrillerMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generateDetectiveThrillerMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/best-detective-thriller-movies`,

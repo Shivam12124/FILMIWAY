@@ -64,7 +64,7 @@ export default function AboutUs() {
           name="description"
           content="Filmiway is a parents guide website with exact skip timestamps. We help families from all over the world by telling them exactly what is in a movie as it is, so they can expect what they are going to see."
         />
-        <link rel="canonical" href="https://filmiway.com/about-us" />
+        <link rel="canonical" href="https://www.filmiway.com/about-us" />
         <meta name="robots" content="index, follow" />
       </Head>
 

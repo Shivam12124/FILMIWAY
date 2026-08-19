@@ -129,8 +129,8 @@ export const HULU_THRILLER_COLLECTION_META = {
     title: '10 Best Thriller Movies on Hulu (Ranked by Suspense)',
     description: 'The definitive ranking of the best thriller movies on Hulu. From the heist perfection of Heat to the psychological horror of Black Swan.',
     keywords: 'best thriller movies on hulu, hulu thrillers, heat, black swan, anatomy of a fall, suspense movies streaming, hulu movies 2025',
-    canonicalUrl: 'https://filmiway.com/best-thriller-movies-hulu',
-    ogImage: 'https://filmiway.com/images/hulu-thriller-collection-og.jpg',
+    canonicalUrl: 'https://www.filmiway.com/best-thriller-movies-hulu',
+    ogImage: 'https://www.filmiway.com/images/hulu-thriller-collection-og.jpg',
     totalMovies: COMPLETE_MOVIE_DATABASE.length,
     // ✅ FIXED - CALCULATES AVERAGE SUSPENSE SCORE
     averageSuspenseScore: Math.round(
@@ -142,7 +142,7 @@ export const HULU_THRILLER_COLLECTION_META = {
 };
 
 // ✅ GENERATE HULU THRILLER MOVIE SITEMAP URLS
-export const generateHuluThrillerMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generateHuluThrillerMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/best-thriller-movies-hulu`,

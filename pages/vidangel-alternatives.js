@@ -55,10 +55,10 @@ export default function VidAngelAlternatives() {
     "@graph": [
       {
         "@type": "Article",
-        "@id": "https://filmiway.com/vidangel-alternatives#article",
+        "@id": "https://www.filmiway.com/vidangel-alternatives#article",
         "isPartOf": {
           "@type": "WebPage",
-          "@id": "https://filmiway.com/vidangel-alternatives"
+          "@id": "https://www.filmiway.com/vidangel-alternatives"
         },
         "headline": "Best VidAngel Alternatives (100% Free & No Subscription Required)",
         "description": "Compare the best free VidAngel alternatives for movie content filtering and scene skipping. Learn how to skip explicit scenes without a $9.99/mo subscription.",
@@ -67,15 +67,15 @@ export default function VidAngelAlternatives() {
         "author": {
           "@type": "Organization",
           "name": "Filmiway Editorial Team",
-          "url": "https://filmiway.com"
+          "url": "https://www.filmiway.com"
         },
         "publisher": {
           "@type": "Organization",
           "name": "Filmiway",
-          "url": "https://filmiway.com",
+          "url": "https://www.filmiway.com",
           "logo": {
             "@type": "ImageObject",
-            "url": "https://filmiway.com/icon-512.png"
+            "url": "https://www.filmiway.com/icon-512.png"
           }
         }
       },
@@ -278,14 +278,14 @@ export default function VidAngelAlternatives() {
       <Head>
         <title>Best VidAngel Alternatives (100% Free & No Subscription Required) - Filmiway</title>
         <meta name="description" content="Discover the best free VidAngel alternatives for filtering movie content and skipping explicit scenes. Compare Filmiway, IMDb, ClearPlay, and Common Sense Media without paying $9.99/mo." />
-        <link rel="canonical" href="https://filmiway.com/vidangel-alternatives" />
+        <link rel="canonical" href="https://www.filmiway.com/vidangel-alternatives" />
         
         {/* OpenGraph & Twitter Cards */}
         <meta property="og:type" content="article" />
         <meta property="og:title" content="Best VidAngel Alternatives (100% Free & No Subscription Required)" />
         <meta property="og:description" content="Looking for free VidAngel alternatives? Discover the top free movie skip timestamp tools that require no monthly subscription or credit card." />
-        <meta property="og:url" content="https://filmiway.com/vidangel-alternatives" />
-        <meta property="og:image" content="https://filmiway.com/og-image.jpg" />
+        <meta property="og:url" content="https://www.filmiway.com/vidangel-alternatives" />
+        <meta property="og:image" content="https://www.filmiway.com/og-image.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
 
         {/* Structured Data */}

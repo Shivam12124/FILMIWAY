@@ -134,7 +134,7 @@ export const BASIC_INSTINCT_COLLECTION_META = {
 };
 
 // ✅ GENERATE BASIC INSTINCT MOVIE SITEMAP URLS
-export const generateBasicInstinctMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generateBasicInstinctMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/movies-like-basic-instinct`,

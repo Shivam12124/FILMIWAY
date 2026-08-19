@@ -124,7 +124,7 @@ export default function App({ Component, pageProps }) {
 
   // ✅ Get current URL for Open Graph (no canonical needed here)
   const getCurrentUrl = () => {
-    const baseUrl = 'https://filmiway.com';
+    const baseUrl = 'https://www.filmiway.com';
     const cleanPath = router.asPath.split('?')[0].split('#')[0];
     return `${baseUrl}${cleanPath}`;
   };
@@ -171,22 +171,22 @@ export default function App({ Component, pageProps }) {
               "@graph": [
                 {
                   "@type": "WebSite",
-                  "@id": "https://filmiway.com/#website",
-                  "url": "https://filmiway.com/",
+                  "@id": "https://www.filmiway.com/#website",
+                  "url": "https://www.filmiway.com/",
                   "name": "Filmiway",
                   "description": "Educational utility and parents guide providing precise skip timestamps for sensitive content in movies.",
                   "publisher": {
-                    "@id": "https://filmiway.com/#organization"
+                    "@id": "https://www.filmiway.com/#organization"
                   }
                 },
                 {
                   "@type": "Organization",
-                  "@id": "https://filmiway.com/#organization",
+                  "@id": "https://www.filmiway.com/#organization",
                   "name": "Filmiway Media",
-                  "url": "https://filmiway.com/",
+                  "url": "https://www.filmiway.com/",
                   "logo": {
                     "@type": "ImageObject",
-                    "url": "https://filmiway.com/logo.png"
+                    "url": "https://www.filmiway.com/logo.png"
                   },
                   "email": "filmiway.media@gmail.com",
                   "founder": {

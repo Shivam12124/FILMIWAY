@@ -128,8 +128,8 @@ export const PEACOCK_THRILLER_COLLECTION_META = {
     title: '10 Best Thriller Movies on Peacock (Ranked by Suspense)',
     description: 'The definitive ranking of the best thriller movies on Peacock. From the mind-bending Memento to the intense Sicario.',
     keywords: 'best thriller movies on peacock, peacock thrillers, memento, sicario, coherence, suspense movies streaming, peacock movies 2026',
-    canonicalUrl: 'https://filmiway.com/collection/best-thriller-movies-on-peacock',
-    ogImage: 'https://filmiway.com/images/peacock-thriller-collection-og.jpg',
+    canonicalUrl: 'https://www.filmiway.com/collection/best-thriller-movies-on-peacock',
+    ogImage: 'https://www.filmiway.com/images/peacock-thriller-collection-og.jpg',
     totalMovies: COMPLETE_MOVIE_DATABASE.length,
     // ✅ FIXED - CALCULATES AVERAGE SUSPENSE SCORE
     averageSuspenseScore: Math.round(
@@ -141,7 +141,7 @@ export const PEACOCK_THRILLER_COLLECTION_META = {
 };
 
 // ✅ GENERATE PEACOCK THRILLER MOVIE SITEMAP URLS
-export const generatePeacockThrillerMovieSitemap = (baseUrl = 'https://filmiway.com') => {
+export const generatePeacockThrillerMovieSitemap = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/best-thriller-movies-on-peacock`,

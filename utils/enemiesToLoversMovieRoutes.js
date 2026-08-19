@@ -139,7 +139,7 @@ export const ENEMIES_TO_LOVERS_COLLECTION_META = {
 };
 
 // ✅ GENERATE ENEMIES TO LOVERS MOVIE SITEMAP URLS
-export const generateEnemiesToLoversMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generateEnemiesToLoversMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/best-enemies-to-lovers-movies`,

@@ -130,8 +130,8 @@ export const HBO_ACTION_COLLECTION_META = {
     title: 'Top 10 Epic Action Movies on HBO Max',
     description: 'Ranked list of the greatest action and epic films streaming on HBO Max. From Seven Samurai to The Dark Knight, featuring grand scale battles and mythic heroes.',
     keywords: 'best action movies on hbo max, hbo max epic films, seven samurai, dark knight, dune part two, john wick hbo max, zack snyder justice league',
-    canonicalUrl: 'https://filmiway.com/collection/best-action-movies-on-hbo-max',
-    ogImage: 'https://filmiway.com/images/hbo-action-movies-collection.jpg',
+    canonicalUrl: 'https://www.filmiway.com/collection/best-action-movies-on-hbo-max',
+    ogImage: 'https://www.filmiway.com/images/hbo-action-movies-collection.jpg',
     totalMovies: COMPLETE_MOVIE_DATABASE.length,
     // ✅ FIXED - CALCULATES AVERAGE ADRENALINE SCORE
     averageAdrenalineScore: Math.round(
@@ -143,7 +143,7 @@ export const HBO_ACTION_COLLECTION_META = {
 };
 
 // ✅ GENERATE HBO ACTION MOVIE SITEMAP URLS
-export const generateHboActionMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generateHboActionMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/best-action-movies-on-hbo-max`,

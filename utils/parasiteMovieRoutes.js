@@ -130,8 +130,8 @@ export const PARASITE_COLLECTION_META = {
     title: 'Movies Like Parasite - 10 Class Warfare Thrillers',
     description: 'Discover 10 brilliant films like Parasite exploring class inequality, social commentary, and twisted narratives. From Bong Joon Ho to international cinema.',
     keywords: 'movies like parasite, class warfare films, social thriller movies, bong joon ho movies, korean cinema, class inequality films',
-    canonicalUrl: 'https://filmiway.com/collection/movies-like-parasite',
-    ogImage: 'https://filmiway.com/images/parasite-movies-collection.jpg',
+    canonicalUrl: 'https://www.filmiway.com/collection/movies-like-parasite',
+    ogImage: 'https://www.filmiway.com/images/parasite-movies-collection.jpg',
     totalMovies: COMPLETE_MOVIE_DATABASE.length,
     // ✅ FIXED - NOW USES REAL CLASS WARFARE INDEX DATA
     averageClassWarfareIndex: Math.round(
@@ -143,7 +143,7 @@ export const PARASITE_COLLECTION_META = {
 };
 
 // ✅ GENERATE PARASITE MOVIE SITEMAP URLS
-export const generateParasiteMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generateParasiteMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/movies-like-parasite`,

@@ -86,7 +86,7 @@ export default function FAQ() {
       <Head>
         <title>Frequently Asked Questions | Filmiway Help</title>
         <meta name="description" content="Common questions about Filmiway. Learn about our legal streaming focus, Parents Guide timestamps, and cinematic coverage." />
-        <link rel="canonical" href="https://filmiway.com/faq" />
+        <link rel="canonical" href="https://www.filmiway.com/faq" />
         
         {/* ✅ GOOGLE FAQ SCHEMA */}
         <script

@@ -127,7 +127,7 @@ export const getRelatedEroticThrillerMovies = (currentMovie, limit = 3) => {
 };
 
 // ✅ GENERATE EROTIC THRILLER MOVIE SITEMAP URLS
-export const generateEroticThrillerMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generateEroticThrillerMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/best-erotic-thriller-movies`,

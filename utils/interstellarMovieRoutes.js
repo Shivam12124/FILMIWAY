@@ -130,8 +130,8 @@ export const INTERSTELLAR_COLLECTION_META = {
     title: 'Top 10 Movies Like Interstellar',
     description: 'Discover mind-bending space exploration films ranked by complexity. From 2001: A Space Odyssey to Ad Astra - philosophical sci-fi masterpieces.',
     keywords: 'movies like interstellar, space movies, philosophical sci-fi, cerebral space films, best space exploration movies',
-    canonicalUrl: 'https://filmiway.com/collection/movies-like-interstellar',
-    ogImage: 'https://filmiway.com/images/interstellar-movies-collection.jpg',
+    canonicalUrl: 'https://www.filmiway.com/collection/movies-like-interstellar',
+    ogImage: 'https://www.filmiway.com/images/interstellar-movies-collection.jpg',
     totalMovies: COMPLETE_MOVIE_DATABASE.length,
     averageSpaceComplexity: Math.round(
         COMPLETE_MOVIE_DATABASE.reduce((sum, movie) => {
@@ -142,7 +142,7 @@ export const INTERSTELLAR_COLLECTION_META = {
 };
 
 // ✅ GENERATE INTERSTELLAR MOVIE SITEMAP URLS
-export const generateInterstellarMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generateInterstellarMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/movies-like-interstellar`,

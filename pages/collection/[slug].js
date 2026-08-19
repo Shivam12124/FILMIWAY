@@ -4397,7 +4397,7 @@ return (
         content={`${metaContent.keywords || ""}`}
     />
 
-    <link rel="canonical" href={`https://filmiway.com/collection/${collection.slug}`} />
+    <link rel="canonical" href={`https://www.filmiway.com/collection/${collection.slug}`} />
 
     <meta name="robots" content="index, follow" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -4423,7 +4423,7 @@ return (
                         "name": collection?.title || "",
                         "description": collection?.description || "",
                         "numberOfItems": movies?.length || 0,
-                        "url": `https://filmiway.com/collection/${collection?.slug || ""}`,
+                        "url": `https://www.filmiway.com/collection/${collection?.slug || ""}`,
                         "itemListElement": (movies || []).map((movie, index) => {
                             let itemObj = {
                                 "@type": "Movie",
@@ -4446,7 +4446,7 @@ return (
                             }
 
                             if (movie?.imdbID) {
-                                itemObj.url = `https://filmiway.com/movie/${movie.slug}/skip-timestamps`;
+                                itemObj.url = `https://www.filmiway.com/movie/${movie.slug}/skip-timestamps`;
                             }
 
                             return {

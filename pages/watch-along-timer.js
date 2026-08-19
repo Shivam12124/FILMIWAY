@@ -44,7 +44,7 @@ export default function WatchAlongTimer() {
       {
         "@type": "SoftwareApplication",
         "name": "Filmiway Watch-Along Timer Tool",
-        "url": "https://filmiway.com/watch-along-timer",
+        "url": "https://www.filmiway.com/watch-along-timer",
         "applicationCategory": "MultimediaApplication",
         "operatingSystem": "All (Web-based)",
         "offers": {
@@ -84,7 +84,7 @@ export default function WatchAlongTimer() {
       <Head>
         <title>Watch Along Timer Tool for Movies | Filmiway</title>
         <meta name="description" content="Use the Filmiway Watch-Along Timer Tool to get real-time alerts 15 seconds before awkward movie scenes begin. The ultimate real-time parents guide." />
-        <link rel="canonical" href="https://filmiway.com/watch-along-timer" />
+        <link rel="canonical" href="https://www.filmiway.com/watch-along-timer" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(timerSchema) }}

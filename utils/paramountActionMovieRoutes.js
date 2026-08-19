@@ -130,8 +130,8 @@ export const PARAMOUNT_ACTION_COLLECTION_META = {
     title: 'Top 10 High-Octane Action Movies on Paramount+',
     description: 'Ranked list of the best action films streaming on Paramount+. From Mission: Impossible to Top Gun: Maverick, featuring intense aerial combat and adrenaline-fueled stunts.',
     keywords: 'best action movies on paramount plus, paramount action films, tom cruise movies, top gun maverick streaming, high octane movies',
-    canonicalUrl: 'https://filmiway.com/collection/best-action-movies-on-paramount-plus',
-    ogImage: 'https://filmiway.com/images/paramount-action-movies-collection.jpg',
+    canonicalUrl: 'https://www.filmiway.com/collection/best-action-movies-on-paramount-plus',
+    ogImage: 'https://www.filmiway.com/images/paramount-action-movies-collection.jpg',
     totalMovies: COMPLETE_MOVIE_DATABASE.length,
     // ✅ FIXED - CALCULATES AVERAGE ADRENALINE SCORE
     averageAdrenalineScore: Math.round(
@@ -143,7 +143,7 @@ export const PARAMOUNT_ACTION_COLLECTION_META = {
 };
 
 // ✅ GENERATE PARAMOUNT ACTION MOVIE SITEMAP URLS
-export const generateParamountActionMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generateParamountActionMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/best-action-movies-on-paramount-plus`,

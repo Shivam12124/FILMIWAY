@@ -130,8 +130,8 @@ export const HBO_MAX_FAMILY_COLLECTION_META = {
     title: '10 Best Family Movies on HBO Max',
     description: 'Discover the most wholesome, entertaining, and magical family films streaming on HBO Max. From The Wizard of Oz to The Lego Batman Movie.',
     keywords: 'family movies hbo max, kids movies hbo max, wizard of oz, harry potter, flow movie, puss in boots last wish, wholesome movies',
-    canonicalUrl: 'https://filmiway.com/collection/best-family-movies-on-hbo-max',
-    ogImage: 'https://filmiway.com/images/hbo-family-collection-og.jpg',
+    canonicalUrl: 'https://www.filmiway.com/collection/best-family-movies-on-hbo-max',
+    ogImage: 'https://www.filmiway.com/images/hbo-family-collection-og.jpg',
     totalMovies: COMPLETE_MOVIE_DATABASE.length,
     // ✅ Uses Wholesome Score Average
     averageWholesomeScore: Math.round(
@@ -143,7 +143,7 @@ export const HBO_MAX_FAMILY_COLLECTION_META = {
 };
 
 // ✅ SITEMAP URL GENERATOR
-export const generateHboMaxFamilyMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generateHboMaxFamilyMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/best-family-movies-on-hbo-max`,

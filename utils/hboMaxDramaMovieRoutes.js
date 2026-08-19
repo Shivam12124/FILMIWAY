@@ -128,8 +128,8 @@ export const HBO_DRAMA_COLLECTION_META = {
     title: 'Top 10 Best Drama Movies on HBO Max (2025)',
     description: 'Expert-ranked list of the most emotionally powerful dramas streaming on HBO Max. From Moonlight to Taxi Driver, featuring deep character studies and moving storytelling.',
     keywords: 'best drama movies on hbo max, hbo max dramas, emotional movies hbo max, moonlight, taxi driver, paris texas, tearjerkers hbo max',
-    canonicalUrl: 'https://filmiway.com/collection/best-drama-movies-on-hbo-max',
-    ogImage: 'https://filmiway.com/images/hbo-drama-movies-collection.jpg',
+    canonicalUrl: 'https://www.filmiway.com/collection/best-drama-movies-on-hbo-max',
+    ogImage: 'https://www.filmiway.com/images/hbo-drama-movies-collection.jpg',
     totalMovies: COMPLETE_MOVIE_DATABASE.length,
     averageEmotionalScore: Math.round(
         COMPLETE_MOVIE_DATABASE.reduce((sum, movie) => {
@@ -140,7 +140,7 @@ export const HBO_DRAMA_COLLECTION_META = {
 };
 
 // ✅ SITEMAP URLS
-export const generateHboMaxDramaMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generateHboMaxDramaMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/best-drama-movies-on-hbo-max`,

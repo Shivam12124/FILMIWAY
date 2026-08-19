@@ -88,7 +88,7 @@ const StreamingHub = ({ platform = '', collections = [] }) => {
         <title>{`Best Movies on ${config.name} (2026) - The Ultimate Guide | Filmiway`}</title>
         <meta name="description" content={`The definitive guide to the best movies on ${config.name}. Explore expert-curated lists for Action, Horror, Sci-Fi, Romance, and more. Updated for 2026.`} />
         <meta name="keywords" content={`best movies on ${config.name}, ${config.name} recommendations, what to watch on ${config.name}, ${config.name} movie guide 2026`} />
-        <link rel="canonical" href={`https://filmiway.com/streaming/${platform}`} />
+        <link rel="canonical" href={`https://www.filmiway.com/streaming/${platform}`} />
       </Head>
 
       <Header />

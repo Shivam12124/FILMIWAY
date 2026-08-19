@@ -133,7 +133,7 @@ export const FIGHT_CLUB_COLLECTION_META = {
 };
 
 // ✅ GENERATE FIGHT CLUB MOVIE SITEMAP URLS
-export const generateFightClubMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generateFightClubMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/movies-like-fight-club`,

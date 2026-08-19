@@ -130,8 +130,8 @@ export const HBO_MAX_THRILLER_COLLECTION_META = {
     title: '10 Best Thriller Movies on HBO Max',
     description: 'Discover the most suspenseful and psychologically intense thrillers streaming on HBO Max. From Funny Games to Inception.',
     keywords: 'best thriller movies hbo max, suspense films hbo max, psychological thrillers, funny games, get out, the dark knight, inception',
-    canonicalUrl: 'https://filmiway.com/collection/best-thriller-movies-on-hbo-max',
-    ogImage: 'https://filmiway.com/images/hbo-max-thriller-collection-og.jpg',
+    canonicalUrl: 'https://www.filmiway.com/collection/best-thriller-movies-on-hbo-max',
+    ogImage: 'https://www.filmiway.com/images/hbo-max-thriller-collection-og.jpg',
     totalMovies: COMPLETE_MOVIE_DATABASE.length,
     // ✅ USES REAL SUSPENSE INTENSITY DATA
     averageSuspenseIntensity: Math.round(
@@ -142,7 +142,7 @@ export const HBO_MAX_THRILLER_COLLECTION_META = {
 };
 
 // ✅ GENERATE SITEMAP URLS
-export const generateHboMaxThrillerMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generateHboMaxThrillerMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/best-thriller-movies-on-hbo-max`,

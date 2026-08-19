@@ -111,8 +111,8 @@ export const DONNIE_DARKO_COLLECTION_META = {
     title: 'Top 10 Movies Like Donnie Darko',
     description: 'Mind-bending time travel, reality-warping, and psychological thrillers ranked by mind-bend index. From Butterfly Effect to Mulholland Drive.',
     keywords: 'movies like donnie darko, mind-bending films, time travel movies, reality warping cinema, psychological thrillers',
-    canonicalUrl: 'https://filmiway.com/collection/movies-like-donnie-darko',
-    ogImage: 'https://filmiway.com/images/donnie-darko-movies-collection.jpg',
+    canonicalUrl: 'https://www.filmiway.com/collection/movies-like-donnie-darko',
+    ogImage: 'https://www.filmiway.com/images/donnie-darko-movies-collection.jpg',
     totalMovies: COMPLETE_MOVIE_DATABASE.length,
     averageMindbendIndex: Math.round(
         COMPLETE_MOVIE_DATABASE.reduce((sum, movie) => {
@@ -122,7 +122,7 @@ export const DONNIE_DARKO_COLLECTION_META = {
 };
 
 // ✅ GENERATE DONNIE DARKO MOVIE SITEMAP URLS
-export const generateDonnieDarkoMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generateDonnieDarkoMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/movies-like-donnie-darko`,

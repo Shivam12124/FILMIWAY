@@ -70,7 +70,7 @@ const GenreHub = ({ category, collections }) => {
       <Head>
         <title>{`${config.title} Movies (2026) - The Ultimate Guide | Filmiway`}</title>
         <meta name="description" content={`The best ${config.subtitle}. Expert rankings for ${category} movies including top collections and hidden gems.`} />
-        <link rel="canonical" href={`https://filmiway.com/genre/${category}`} />
+        <link rel="canonical" href={`https://www.filmiway.com/genre/${category}`} />
       </Head>
 
       <Header />

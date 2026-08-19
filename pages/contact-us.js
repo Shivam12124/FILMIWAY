@@ -55,7 +55,7 @@ ${formData.message}`
       <Head>
         <title>Contact Us – Filmiway</title>
         <meta name="description" content="Get in touch with Filmiway. Contact us for inquiries, partnerships, feedback, or support." />
-        <link rel="canonical" href="https://filmiway.com/contact-us" />
+        <link rel="canonical" href="https://www.filmiway.com/contact-us" />
       </Head>
 
       <div className="min-h-screen bg-black text-white font-sans select-none">

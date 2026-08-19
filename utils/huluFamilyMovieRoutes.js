@@ -130,8 +130,8 @@ export const HULU_FAMILY_COLLECTION_META = {
     title: '10 Best Family Movies on Hulu',
     description: 'The top 10 family movies streaming on Hulu right now. From Robot Dreams to Night at the Museum—ranked by wholesomeness and entertainment value.',
     keywords: 'best family movies on hulu, hulu family films, robot dreams, night at the museum, sonic 2, kids movies hulu, wholesome movies',
-    canonicalUrl: 'https://filmiway.com/collection/best-family-movies-on-hulu',
-    ogImage: 'https://filmiway.com/images/hulu-family-collection-og.jpg',
+    canonicalUrl: 'https://www.filmiway.com/collection/best-family-movies-on-hulu',
+    ogImage: 'https://www.filmiway.com/images/hulu-family-collection-og.jpg',
     totalMovies: COMPLETE_MOVIE_DATABASE.length,
     // ✅ USES REAL WHOLESOME SCORE DATA
     averageWholesomeScore: Math.round(
@@ -142,7 +142,7 @@ export const HULU_FAMILY_COLLECTION_META = {
 };
 
 // ✅ GENERATE SITEMAP URLS
-export const generateHuluFamilyMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generateHuluFamilyMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/best-family-movies-on-hulu`,

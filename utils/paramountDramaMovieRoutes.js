@@ -129,8 +129,8 @@ export const PARAMOUNT_DRAMA_COLLECTION_META = {
     title: 'Top 10 Best Core Drama Movies on Paramount+ (2026)',
     description: 'Expert-ranked list of the most emotionally powerful dramas streaming on Paramount+. From There Will Be Blood to Forrest Gump, featuring deep character studies and moving storytelling.',
     keywords: 'best drama movies on paramount plus, paramount plus core dramas, emotional movies paramount plus, there will be blood, forrest gump, fences, tearjerkers paramount plus',
-    canonicalUrl: 'https://filmiway.com/collection/best-core-drama-movies-on-paramount-plus',
-    ogImage: 'https://filmiway.com/images/paramount-drama-movies-collection.jpg',
+    canonicalUrl: 'https://www.filmiway.com/collection/best-core-drama-movies-on-paramount-plus',
+    ogImage: 'https://www.filmiway.com/images/paramount-drama-movies-collection.jpg',
     totalMovies: COMPLETE_MOVIE_DATABASE.length,
     averageEmotionalScore: Math.round(
         COMPLETE_MOVIE_DATABASE.reduce((sum, movie) => {
@@ -141,7 +141,7 @@ export const PARAMOUNT_DRAMA_COLLECTION_META = {
 };
 
 // ✅ SITEMAP URLS
-export const generateParamountDramaMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generateParamountDramaMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/best-core-drama-movies-on-paramount-plus`,

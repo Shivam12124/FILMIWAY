@@ -129,8 +129,8 @@ export const PEACOCK_DRAMA_COLLECTION_META = {
     title: '10 Best Drama Movies on Peacock (2026) | Emotion Ranked',
     description: 'Expert-ranked list of the most emotionally powerful dramas streaming on Peacock. From Requiem for a Dream to The Fabelmans, featuring deep character studies and moving storytelling.',
     keywords: 'best drama movies on peacock, peacock dramas, emotional movies peacock, requiem for a dream, sophies choice, the fabelmans, tearjerkers peacock',
-    canonicalUrl: 'https://filmiway.com/collection/best-drama-movies-on-peacock',
-    ogImage: 'https://filmiway.com/images/peacock-drama-movies-collection.jpg',
+    canonicalUrl: 'https://www.filmiway.com/collection/best-drama-movies-on-peacock',
+    ogImage: 'https://www.filmiway.com/images/peacock-drama-movies-collection.jpg',
     totalMovies: COMPLETE_MOVIE_DATABASE.length,
     averageEmotionalScore: Math.round(
         COMPLETE_MOVIE_DATABASE.reduce((sum, movie) => {
@@ -141,7 +141,7 @@ export const PEACOCK_DRAMA_COLLECTION_META = {
 };
 
 // ✅ SITEMAP URLS
-export const FQy4HArVdBbZ87AHrbfdhSXRgyE5NUbrh6GaL8enMUeh = (baseUrl = 'https://filmiway.com') => {
+export const FQy4HArVdBbZ87AHrbfdhSXRgyE5NUbrh6GaL8enMUeh = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/best-drama-movies-on-peacock`,

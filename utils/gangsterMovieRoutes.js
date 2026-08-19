@@ -129,7 +129,7 @@ export const GANGSTER_COLLECTION_META = {
 };
 
 // ✅ GENERATE GANGSTER MOVIE SITEMAP URLS
-export const generateGangsterMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generateGangsterMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/best-gangster-movies-of-all-time`,

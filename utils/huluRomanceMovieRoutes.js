@@ -133,8 +133,8 @@ export const HULU_ROMANCE_COLLECTION_META = {
     title: '10 Best Romance Movies on Hulu (Ranked 2026)',
     description: 'The definitive ranking of romance movies on Hulu. From the adrenaline of Anora to the nostalgia of Little Manhattan. Ranked by chemistry and emotional resonance.',
     keywords: 'best romance movies hulu, hulu romance films, anora hulu, all of us strangers, romantic movies streaming, love stories hulu',
-    canonicalUrl: 'https://filmiway.com/best-romance-movies-on-hulu',
-    ogImage: 'https://filmiway.com/images/hulu-romance-collection-og.jpg',
+    canonicalUrl: 'https://www.filmiway.com/best-romance-movies-on-hulu',
+    ogImage: 'https://www.filmiway.com/images/hulu-romance-collection-og.jpg',
     totalMovies: COMPLETE_MOVIE_DATABASE.length,
     // ✅ FIXED - CALCULATES AVERAGE EMOTIONAL RESONANCE (psychologicalIntensity)
     averageEmotionalScore: Math.round(
@@ -146,7 +146,7 @@ export const HULU_ROMANCE_COLLECTION_META = {
 };
 
 // ✅ GENERATE HULU ROMANCE MOVIE SITEMAP URLS
-export const generateHuluRomanceMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generateHuluRomanceMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/best-romance-movies-on-hulu`,

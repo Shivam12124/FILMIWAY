@@ -131,8 +131,8 @@ export const PEACOCK_ACTION_ADVENTURE_COLLECTION_META = {
     title: 'Peacock Planet: Top 10 Action & Adventure Movies',
     description: 'Diderlein-Ranked list of the best action and adventure films streaming on Peacock. Featuring visceral survival epics, 80s cult classics, and high-octane thrillers.',
     keywords: 'best action adventure movies on peacock, peacock survival films, the revenant streaming, adventure movies streaming, high octane thrillers',
-    canonicalUrl: 'https://filmiway.com/collection/best-action-movies-on-peacock',
-    ogImage: 'https://filmiway.com/images/peacock-action-adventure-collection.jpg',
+    canonicalUrl: 'https://www.filmiway.com/collection/best-action-movies-on-peacock',
+    ogImage: 'https://www.filmiway.com/images/peacock-action-adventure-collection.jpg',
     totalMovies: COMPLETE_MOVIE_DATABASE.length,
     averageAdrenalineScore: Math.round(
         COMPLETE_MOVIE_DATABASE.reduce((sum, movie) => {
@@ -143,7 +143,7 @@ export const PEACOCK_ACTION_ADVENTURE_COLLECTION_META = {
 };
 
 // ✅ SITEMAP URLS
-export const generatePeacockActionAdventureSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generatePeacockActionAdventureSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/best-action-movies-on-peacock`,

@@ -130,8 +130,8 @@ export const PARAMOUNT_FAMILY_COLLECTION_META = {
     title: '10 Best Family Movies on Paramount+ (2026)',
     description: 'The top 10 family movies streaming on Paramount+ right now. From Rango to Sonic the Hedgehog 3—ranked by fun factor and wholesomeness.',
     keywords: 'best family movies on paramount plus, paramount plus kids movies, sonic 3, paw patrol movie, rango, tmnt mutant mayhem, wholesome movies',
-    canonicalUrl: 'https://filmiway.com/collection/best-family-movies-on-paramount-plus',
-    ogImage: 'https://filmiway.com/images/paramount-family-collection-og.jpg',
+    canonicalUrl: 'https://www.filmiway.com/collection/best-family-movies-on-paramount-plus',
+    ogImage: 'https://www.filmiway.com/images/paramount-family-collection-og.jpg',
     totalMovies: COMPLETE_MOVIE_DATABASE.length,
     // ✅ USES REAL FUN FACTOR DATA
     averageFunFactor: Math.round(
@@ -143,7 +143,7 @@ export const PARAMOUNT_FAMILY_COLLECTION_META = {
 };
 
 // ✅ SITEMAP URLS
-export const generateParamountFamilyMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generateParamountFamilyMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/best-family-movies-on-paramount-plus`,

@@ -130,8 +130,8 @@ export const HBO_MAX_BEST_COLLECTION_META = {
     title: 'Top 10 Best Movies on HBO Max',
     description: 'The definitive ranking of the highest-rated films streaming on HBO Max right now. From Seven Samurai to Dune: Part Two.',
     keywords: 'best movies on hbo max, top rated hbo max films, seven samurai, dark knight, spirited away, dune part two, cinematic masterpieces',
-    canonicalUrl: 'https://filmiway.com/collection/best-movies-on-hbo-max',
-    ogImage: 'https://filmiway.com/images/hbo-best-movies-collection.jpg',
+    canonicalUrl: 'https://www.filmiway.com/collection/best-movies-on-hbo-max',
+    ogImage: 'https://www.filmiway.com/images/hbo-best-movies-collection.jpg',
     totalMovies: COMPLETE_MOVIE_DATABASE.length,
     averageRating: Math.round(
         COMPLETE_MOVIE_DATABASE.reduce((sum, movie) => {
@@ -142,7 +142,7 @@ export const HBO_MAX_BEST_COLLECTION_META = {
 };
 
 // ✅ SITEMAP URL GENERATOR
-export const generateHboMaxBestMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generateHboMaxBestMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/best-movies-on-hbo-max`,

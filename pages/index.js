@@ -440,7 +440,7 @@ const FilmiwayHomepage = ({ rRatedCleanMovies, trendingParentsGuides, top10Trend
       <Head>
         <title>Filmiway | Parents Guide: Skip Intimate Scenes & Timestamps</title>
         <meta name="description" content="Get exact skip timestamps to bypass intimate and sensitive scenes in popular movies. Plan a safe, worry-free family movie night instantly." />
-        <link rel="canonical" href="https://filmiway.com/" />
+        <link rel="canonical" href="https://www.filmiway.com/" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
 
         <link rel="preconnect" href="https://image.tmdb.org" crossOrigin="anonymous" />

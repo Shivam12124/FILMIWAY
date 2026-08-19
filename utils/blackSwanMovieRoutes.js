@@ -134,7 +134,7 @@ export const getRelatedBlackSwanMovies = (currentMovie, limit = 3) => {
 
 
 // ✅ GENERATE BLACK SWAN MOVIE SITEMAP URLS
-export const generateBlackSwanMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generateBlackSwanMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/movies-like-black-swan`,

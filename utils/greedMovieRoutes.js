@@ -129,7 +129,7 @@ export const getRelatedGreedMovies = (currentMovie, limit = 3) => {
 };
 
 // ✅ GENERATE GREED MOVIE SITEMAP URLS
-export const generateGreedMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generateGreedMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/best-movies-about-greed`,

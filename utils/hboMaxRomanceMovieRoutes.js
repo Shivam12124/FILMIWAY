@@ -132,8 +132,8 @@ export const HBO_MAX_ROMANCE_COLLECTION_META = {
     title: '10 Best Romance Movies on HBO Max (Ranked 2026)',
     description: 'The definitive ranking of romance movies on HBO Max. From the wartime sacrifice of Casablanca to the restrained longing of In the Mood for Love. Ranked by emotional intensity.',
     keywords: 'best romance movies hbo max, hbo max romance films, casablanca streaming, in the mood for love hbo, past lives streaming, romantic movies hbo max',
-    canonicalUrl: 'https://filmiway.com/best-romance-movies-on-hbo-max',
-    ogImage: 'https://filmiway.com/images/hbo-max-romance-collection-og.jpg',
+    canonicalUrl: 'https://www.filmiway.com/best-romance-movies-on-hbo-max',
+    ogImage: 'https://www.filmiway.com/images/hbo-max-romance-collection-og.jpg',
     totalMovies: COMPLETE_MOVIE_DATABASE.length,
     // ✅ FIXED - CALCULATES AVERAGE EMOTIONAL RESONANCE (emotionalIntensity)
     averageEmotionalScore: Math.round(
@@ -145,7 +145,7 @@ export const HBO_MAX_ROMANCE_COLLECTION_META = {
 };
 
 // ✅ GENERATE HBO MAX ROMANCE MOVIE SITEMAP URLS
-export const generateHboMaxRomanceMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generateHboMaxRomanceMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/best-romance-movies-on-hbo-max`,

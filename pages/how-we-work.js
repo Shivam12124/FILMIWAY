@@ -29,15 +29,15 @@ export default function HowWeWork() {
     "@graph": [
       {
         "@type": "WebPage",
-        "@id": "https://filmiway.com/how-we-work",
-        "url": "https://filmiway.com/how-we-work",
+        "@id": "https://www.filmiway.com/how-we-work",
+        "url": "https://www.filmiway.com/how-we-work",
         "name": "How We Work: Manual Timestamp Verification & Methodology | Filmiway",
         "description": "Discover how Filmiway editors manually audit, timestamp, and verify movie content to provide 100% reliable family skip guides.",
         "inLanguage": "en-US",
         "isPartOf": {
           "@type": "WebSite",
           "name": "Filmiway",
-          "url": "https://filmiway.com"
+          "url": "https://www.filmiway.com"
         }
       },
       {
@@ -78,7 +78,7 @@ export default function HowWeWork() {
           name="description"
           content="Learn how Filmiway editors manually audit, verify, and timecode movies to deliver 100% reliable skip timestamps and educational family guides."
         />
-        <link rel="canonical" href="https://filmiway.com/how-we-work" />
+        <link rel="canonical" href="https://www.filmiway.com/how-we-work" />
         <meta name="robots" content="index, follow" />
 
         {/* Schema Injection */}

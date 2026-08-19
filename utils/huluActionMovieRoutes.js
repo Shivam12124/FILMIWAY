@@ -128,8 +128,8 @@ export const HULU_ACTION_COLLECTION_META = {
     title: 'Top 10 High-Octane Action Movies on Hulu',
     description: 'Ranked list of the best action films streaming on Hulu. From Predator to Bullet Train, featuring intense fight choreography and adrenaline-fueled plots.',
     keywords: 'best action movies on hulu, hulu action films, predator movies, john wick style movies, martial arts movies hulu',
-    canonicalUrl: 'https://filmiway.com/collection/best-action-movies-on-hulu',
-    ogImage: 'https://filmiway.com/images/hulu-action-movies-collection.jpg',
+    canonicalUrl: 'https://www.filmiway.com/collection/best-action-movies-on-hulu',
+    ogImage: 'https://www.filmiway.com/images/hulu-action-movies-collection.jpg',
     totalMovies: COMPLETE_MOVIE_DATABASE.length,
     // ✅ FIXED - CALCULATES AVERAGE ADRENALINE SCORE
     averageAdrenalineScore: Math.round(
@@ -141,7 +141,7 @@ export const HULU_ACTION_COLLECTION_META = {
 };
 
 // ✅ GENERATE HULU ACTION MOVIE SITEMAP URLS
-export const generateHuluActionMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generateHuluActionMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/best-action-movies-on-hulu`,

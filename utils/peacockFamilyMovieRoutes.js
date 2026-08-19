@@ -130,8 +130,8 @@ export const PEACOCK_FAMILY_COLLECTION_META = {
     title: '10 Best Family Movies on Peacock (Ranked 2026)',
     description: 'The top 10 family movies streaming on Peacock right now. From How to Train Your Dragon to Harry Potter—ranked by wholesomeness and entertainment value.',
     keywords: 'best family movies on peacock, peacock family films, how to train your dragon, harry potter peacock, shrek, kids movies peacock, wholesome movies',
-    canonicalUrl: 'https://filmiway.com/collection/best-family-movies-on-peacock',
-    ogImage: 'https://filmiway.com/images/peacock-family-collection-og.jpg',
+    canonicalUrl: 'https://www.filmiway.com/collection/best-family-movies-on-peacock',
+    ogImage: 'https://www.filmiway.com/images/peacock-family-collection-og.jpg',
     totalMovies: COMPLETE_MOVIE_DATABASE.length,
     // ✅ USES REAL WHOLESOME SCORE DATA
     averageWholesomeScore: Math.round(
@@ -142,7 +142,7 @@ export const PEACOCK_FAMILY_COLLECTION_META = {
 };
 
 // ✅ GENERATE SITEMAP URLS
-export const generatePeacockFamilySitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generatePeacockFamilySitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/best-family-movies-on-peacock`,

@@ -130,8 +130,8 @@ export const PEACOCK_COMEDY_COLLECTION_META = {
     title: '10 Best Comedy Movies on Peacock (Ranked by Laughter)',
     description: 'The definitive ranking of the funniest movies on Peacock. From the surrealism of Monty Python to the chaos of Anchorman.',
     keywords: 'best comedy movies on peacock, peacock comedy films, monty python, anchorman, happy gilmore, funniest movies streaming, comedy rankings 2026',
-    canonicalUrl: 'https://filmiway.com/collection/best-comedy-movies-on-peacock',
-    ogImage: 'https://filmiway.com/images/peacock-comedy-collection-og.jpg',
+    canonicalUrl: 'https://www.filmiway.com/collection/best-comedy-movies-on-peacock',
+    ogImage: 'https://www.filmiway.com/images/peacock-comedy-collection-og.jpg',
     totalMovies: COMPLETE_MOVIE_DATABASE.length,
     // ✅ FIXED - CALCULATES AVERAGE LAUGHTER SCORE
     averageLaughterScore: Math.round(
@@ -143,7 +143,7 @@ export const PEACOCK_COMEDY_COLLECTION_META = {
 };
 
 // ✅ GENERATE PEACOCK COMEDY MOVIE SITEMAP URLS
-export const generatePeacockComedyMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generatePeacockComedyMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/best-comedy-movies-on-peacock`,

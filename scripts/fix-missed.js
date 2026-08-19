@@ -36,7 +36,7 @@ targetFolders.forEach(folder => {
     // 2. Replace the canonical URL definition regardless of how it's formatted
     const canonicalRegex = /const\s+canonicalUrl\s*=\s*[^;]+;/;
     if (canonicalRegex.test(content)) {
-        const replacement = `const masterCollectionSlug = getPrimaryCollectionForMovie(movie.imdbID) || ${slugVarName};\n    const canonicalUrl = \`https://filmiway.com/movies/\${masterCollectionSlug}/\${movie.imdbID}\`;`;
+        const replacement = `const masterCollectionSlug = getPrimaryCollectionForMovie(movie.imdbID) || ${slugVarName};\n    const canonicalUrl = \`https://www.filmiway.com/movies/\${masterCollectionSlug}/\${movie.imdbID}\`;`;
         content = content.replace(canonicalRegex, replacement);
     } else {
         console.log(`⚠️ Could not find canonicalUrl in ${folder}`);

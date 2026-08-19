@@ -129,7 +129,7 @@ export const getRelatedSurvivalMovies = (currentMovie, limit = 3) => {
 };
 
 // ✅ GENERATE SURVIVAL MOVIE SITEMAP URLS
-export const generateSurvivalMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generateSurvivalMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/best-survival-movies`,

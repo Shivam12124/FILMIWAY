@@ -130,8 +130,8 @@ export const HULU_HORROR_COLLECTION_META = {
     title: '10 Best Horror Movies on Hulu (Ranked by Scariness)',
     description: 'The definitive ranking of the scariest movies on Hulu. From the trauma of When Evil Lurks to the slow-burn dread of Longlegs.',
     keywords: 'best horror movies on hulu, hulu horror films, when evil lurks, longlegs, scariest movies streaming, horror rankings 2026',
-    canonicalUrl: 'https://filmiway.com/best-horror-movies-on-hulu',
-    ogImage: 'https://filmiway.com/images/hulu-horror-collection-og.jpg',
+    canonicalUrl: 'https://www.filmiway.com/best-horror-movies-on-hulu',
+    ogImage: 'https://www.filmiway.com/images/hulu-horror-collection-og.jpg',
     totalMovies: COMPLETE_MOVIE_DATABASE.length,
     // ✅ FIXED - CALCULATES AVERAGE DREAD SCORE (psychologicalIntensity)
     averageDreadScore: Math.round(
@@ -143,7 +143,7 @@ export const HULU_HORROR_COLLECTION_META = {
 };
 
 // ✅ GENERATE HULU HORROR MOVIE SITEMAP URLS
-export const generateHuluHorrorMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generateHuluHorrorMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/best-horror-movies-on-hulu`,

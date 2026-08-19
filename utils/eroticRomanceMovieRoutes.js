@@ -130,7 +130,7 @@ export const getRelatedEroticRomanceMovies = (currentMovie, limit = 3) => {
 };
 
 // ✅ GENERATE EROTIC ROMANCE MOVIE SITEMAP URLS
-export const generateEroticRomanceMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generateEroticRomanceMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/best-erotic-romance-movies`,

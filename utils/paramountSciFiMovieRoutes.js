@@ -129,8 +129,8 @@ export const PARAMOUNT_SCIFI_COLLECTION_META = {
     title: '10 Best Sci-Fi Movies on Paramount+ (Ranked by Complexity)',
     description: 'The definitive ranking of the best Sci-Fi movies on Paramount+. From the emotional physics of Interstellar to the survival logic of The Martian.',
     keywords: 'best sci-fi movies on paramount plus, paramount plus sci-fi films, interstellar, arrival, the martian, minority report, star trek wrath of khan',
-    canonicalUrl: 'https://filmiway.com/collection/best-sci-fi-movies-on-paramount-plus',
-    ogImage: 'https://filmiway.com/images/paramount-scifi-collection-og.jpg',
+    canonicalUrl: 'https://www.filmiway.com/collection/best-sci-fi-movies-on-paramount-plus',
+    ogImage: 'https://www.filmiway.com/images/paramount-scifi-collection-og.jpg',
     totalMovies: COMPLETE_MOVIE_DATABASE.length,
     // ✅ Uses "Sci-Fi Complexity" for the main stat
     averageComplexity: Math.round(
@@ -142,7 +142,7 @@ export const PARAMOUNT_SCIFI_COLLECTION_META = {
 };
 
 // ✅ SITEMAP URL GENERATOR
-export const generateParamountSciFiMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generateParamountSciFiMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/best-sci-fi-movies-on-paramount-plus`,

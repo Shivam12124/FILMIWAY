@@ -15,7 +15,7 @@ function fixFile(filePath) {
 
     if (regex.test(content)) {
         const replacement = `const masterCollectionSlug = getPrimaryCollectionForMovie(movie.imdbID) || collectionSlug;
-    const canonicalUrl = \`https://filmiway.com/movies/\${masterCollectionSlug}/\${movie.imdbID}\`;
+    const canonicalUrl = \`https://www.filmiway.com/movies/\${masterCollectionSlug}/\${movie.imdbID}\`;
 
     const { movieSchema, faqSchema } = generateCleanMovieSchema(
         movie, 

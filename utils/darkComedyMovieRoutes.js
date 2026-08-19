@@ -133,7 +133,7 @@ export const DARK_COMEDY_COLLECTION_META = {
 };
 
 // ✅ GENERATE DARK COMEDY MOVIE SITEMAP URLS
-export const generateDarkComedyMovieSitemapUrls = (baseUrl = 'https://filmiway.com') => {
+export const generateDarkComedyMovieSitemapUrls = (baseUrl = 'https://www.filmiway.com') => {
     const urls = [
         {
             url: `${baseUrl}/collection/best-dark-comedy-movies`,
