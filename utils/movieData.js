@@ -846,7 +846,7 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
                 return `${sev} ${typeKey}`;
             });
         };
-        const typesArray = getTypesFromScenes(sensitiveScenes);
+        const typesArray = getTypesFromScenes(heavyScenes);
         if (typesArray.length === 0) typesArray.push('mature content');
 
         const joinWithAnd = (arr) => {
@@ -910,7 +910,10 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
     }
 
     // 🔥 DYNAMIC PARENTS GUIDE FAQS (Violence, Profanity, Rating Reason)
-    const violenceScene = masterScenes.find(s => (s.type || '').toLowerCase().includes('violence') || (s.type || '').toLowerCase().includes('gore'));
+    const violenceScene = masterScenes.find(s => 
+        ((s.type || '').toLowerCase().includes('violence') || (s.type || '').toLowerCase().includes('gore')) &&
+        s.start && s.start.trim() !== '' && s.start.toLowerCase() !== 'none'
+    );
     if (violenceScene && !staticFaqs.some(f => f.question?.toLowerCase().includes('violence'))) {
         staticFaqs.push({
             question: `Does ${movieTitle} have violence and gore?`,
@@ -918,7 +921,10 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
         });
     }
 
-    const profanityScene = masterScenes.find(s => (s.type || '').toLowerCase().includes('profanity') || (s.type || '').toLowerCase().includes('swearing') || (s.type || '').toLowerCase().includes('language'));
+    const profanityScene = masterScenes.find(s => 
+        ((s.type || '').toLowerCase().includes('profanity') || (s.type || '').toLowerCase().includes('swearing') || (s.type || '').toLowerCase().includes('language')) &&
+        s.start && s.start.trim() !== '' && s.start.toLowerCase() !== 'none'
+    );
     if (profanityScene && !staticFaqs.some(f => f.question?.toLowerCase().includes('profanity'))) {
         staticFaqs.push({
             question: `Does ${movieTitle} have profanity or swearing?`,
@@ -926,24 +932,7 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
         });
     }
 
-    const ratingAgeStr = recommendedAgeUI || (dbMovie?.ageRating || 'R');
-    if (ratingAgeStr && (violenceScene || profanityScene || heavyScenes.length > 0) && !staticFaqs.some(f => f.question?.toLowerCase().includes('rated'))) {
-        let reasons = [];
-        if (heavyScenes.length > 0) reasons.push('sexual content and nudity');
-        if (violenceScene) reasons.push('violence');
-        if (profanityScene) reasons.push('profanity');
-        const joinWithAnd = (arr) => arr.length === 0 ? '' : arr.length === 1 ? arr[0] : arr.length === 2 ? arr.join(' and ') : arr.slice(0, -1).join(', ') + ', and ' + arr[arr.length - 1];
-        const reasonText = joinWithAnd(reasons);
-        
-        let specificDetail = '';
-        if (profanityScene?.description) specificDetail += profanityScene.description + ' ';
-        if (violenceScene?.description) specificDetail += violenceScene.description;
-        
-        staticFaqs.push({
-            question: `Why is ${movieTitle} rated ${ratingAgeStr}?`,
-            answer: `${movieTitle} earns its ${ratingAgeStr} rating due to ${reasonText || 'mature themes'}.${specificDetail ? ' Specifically, the film contains ' + specificDetail.trim() : ''} Adults can use our timestamps to skip the explicit content.`
-        });
-    }
+
 
     return staticFaqs;
 };

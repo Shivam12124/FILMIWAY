@@ -16,7 +16,6 @@ const EnhancedIntensityGraph = dynamic(() => import('./EnhancedIntensityGraph'),
 const SEOFAQSection = dynamic(() => import('./SEOFAQSection'));
 
 const FanFavoritesSection = dynamic(() => import('./FanFavoritesSection'));
-import AudibleBookPromo from './AudibleBookPromo';
 
 const MovieDetailsSection = React.memo(({
   movie,
@@ -924,8 +923,6 @@ const MovieDetailsSection = React.memo(({
         <SensitiveContentTimelineSection movie={{...movie, Runtime: dynamicMovieData.runtime}} sensitiveScenes={sensitiveScenes} />
       </div>
 
-      {/* 📚 Audible Book-to-Movie Affiliate Promo */}
-      <AudibleBookPromo movieSlug={movie.slug} movieTitle={movie.Title} />
 
       {/* ⚡ CLS FIX: Reserve height for Firebase comments so mobile layout stays locked and smooth! */}
       <div className="w-full min-h-[350px] sm:min-h-[300px] bg-[#0a0a0c] rounded-2xl border border-white/10 shadow-xl p-5 sm:p-8 overflow-hidden clean-injected-component">

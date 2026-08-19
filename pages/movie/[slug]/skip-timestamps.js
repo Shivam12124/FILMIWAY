@@ -392,6 +392,11 @@ export default function UniversalMoviePage({ movie }) {
     rawFaqs.forEach(customFaq => {
         const qText = (customFaq.question || customFaq.q || '').toLowerCase();
 
+        // Skip any custom rating description FAQs entirely
+        if (qText.includes('why is') && qText.includes('rated')) {
+            return;
+        }
+
         // On non-whitelisted movies, skip custom profanity and violence FAQs
         if (!isVerifiedParentsGuideMovie) {
             if (qText.includes('profanity') || qText.includes('swearing') || qText.includes('violence and gore') || qText.includes('violence & gore')) {
