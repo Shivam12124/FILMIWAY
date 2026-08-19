@@ -740,10 +740,77 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
         });
     }
 
-    const heavyScenes = sensitiveScenes.filter(s => {
+    const parseTimestampToSec = (t) => {
+        if (!t) return 0;
+        const parts = String(t).trim().split(':').map(Number);
+        if (parts.length === 3) return (parts[0] * 3600) + (parts[1] * 60) + (parts[2] || 0);
+        if (parts.length === 2) return (parts[0] * 60) + (parts[1] || 0);
+        return 0;
+    };
+
+    const consolidateScenesForFAQ = (scenes, gapThreshold = 15) => {
+        if (!scenes || scenes.length === 0) return [];
+        const severityRank = { 'Mild': 1, 'Moderate': 2, 'High': 3, 'Extreme': 4, 'Severe': 4 };
+        const getSeverityRank = (s) => severityRank[s] || 0;
+        const getSeverityFromRank = (r) => Object.keys(severityRank).find(k => severityRank[k] === r) || 'Moderate';
+
+        const timed = scenes.filter(s => s.start && s.start.trim() !== '' && s.start.toLowerCase() !== 'none');
+        const untimed = scenes.filter(s => !s.start || s.start.trim() === '' || s.start.toLowerCase() === 'none');
+
+        const sorted = [...timed].map(s => {
+            const startSec = parseTimestampToSec(s.start || s.timestamp || '');
+            const endSec = parseTimestampToSec(s.end || s.endTimestamp || '') || (startSec + 120);
+            return { ...s, startSec, endSec };
+        }).sort((a, b) => a.startSec - b.startSec);
+        
+        const merged = [];
+        let current = null;
+        
+        for (const scene of sorted) {
+            if (!current) {
+                current = { ...scene };
+                continue;
+            }
+            const gap = scene.startSec - current.endSec;
+            if (gap <= gapThreshold && !current.description && !scene.description) {
+                current.endSec = Math.max(current.endSec, scene.endSec);
+                const formatSec = (sec) => {
+                    const h = Math.floor(sec / 3600);
+                    const m = Math.floor((sec % 3600) / 60);
+                    const s = sec % 60;
+                    if (h > 0) return `${h}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+                    return `${m}:${String(s).padStart(2, '0')}`;
+                };
+                current.end = formatSec(current.endSec);
+                
+                const t1 = (current.type || '').split(/[,&]/).map(t => t.trim()).filter(Boolean);
+                const t2 = (scene.type || '').split(/[,&]/).map(t => t.trim()).filter(Boolean);
+                const uniqueTypes = [...new Set([...t1, ...t2])];
+                if (uniqueTypes.length > 1) {
+                    const last = uniqueTypes.pop();
+                    current.type = uniqueTypes.join(', ') + ' & ' + last;
+                } else {
+                    current.type = uniqueTypes[0] || '';
+                }
+                const rank1 = getSeverityRank(current.severity);
+                const rank2 = getSeverityRank(scene.severity);
+                current.severity = getSeverityFromRank(Math.max(rank1, rank2));
+            } else {
+                merged.push(current);
+                current = { ...scene };
+            }
+        }
+        if (current) merged.push(current);
+        const cleaned = merged.map(({ startSec, endSec, ...rest }) => rest);
+        return [...cleaned, ...untimed];
+    };
+
+    const heavyScenesRaw = sensitiveScenes.filter(s => {
         const t = s.type?.toLowerCase() || '';
         return t.includes('sex') || t.includes('nudity') || t.includes('explicit') || t.includes('suggestive') || t.includes('lingerie') || t.includes('bikini');
     });
+
+    const heavyScenes = consolidateScenesForFAQ(heavyScenesRaw, 15);
 
     if (heavyScenes.length > 0) {
         const getTypesFromScenes = (scenes) => {
@@ -840,6 +907,42 @@ export const getVisibleMovieFAQs = (movieTitle, tmdbId, currentRuntime = "Offici
                 answer: `Yes. ${movieTitle} earns a [DYNAMIC_SCORE]/10 ([DYNAMIC_LABEL]) Family Safety Score. Filmiway editors have manually verified that it is completely free of sex, nudity, and sexual content throughout its entire ${finalRuntime} runtime.`
             }
         );
+    }
+
+    // 🔥 DYNAMIC PARENTS GUIDE FAQS (Violence, Profanity, Rating Reason)
+    const violenceScene = masterScenes.find(s => (s.type || '').toLowerCase().includes('violence') || (s.type || '').toLowerCase().includes('gore'));
+    if (violenceScene && !staticFaqs.some(f => f.question?.toLowerCase().includes('violence'))) {
+        staticFaqs.push({
+            question: `Does ${movieTitle} have violence and gore?`,
+            answer: `According to the Filmiway Parents Guide, the violence in ${movieTitle} is rated as ${violenceScene.severity || 'Moderate'}.${violenceScene.description ? ' ' + violenceScene.description : ''}`
+        });
+    }
+
+    const profanityScene = masterScenes.find(s => (s.type || '').toLowerCase().includes('profanity') || (s.type || '').toLowerCase().includes('swearing') || (s.type || '').toLowerCase().includes('language'));
+    if (profanityScene && !staticFaqs.some(f => f.question?.toLowerCase().includes('profanity'))) {
+        staticFaqs.push({
+            question: `Does ${movieTitle} have profanity or swearing?`,
+            answer: `The profanity in ${movieTitle} is rated as ${profanityScene.severity || 'Moderate'}.${profanityScene.description ? ' ' + profanityScene.description : ''}`
+        });
+    }
+
+    const ratingAgeStr = recommendedAgeUI || (dbMovie?.ageRating || 'R');
+    if (ratingAgeStr && (violenceScene || profanityScene || heavyScenes.length > 0) && !staticFaqs.some(f => f.question?.toLowerCase().includes('rated'))) {
+        let reasons = [];
+        if (heavyScenes.length > 0) reasons.push('sexual content and nudity');
+        if (violenceScene) reasons.push('violence');
+        if (profanityScene) reasons.push('profanity');
+        const joinWithAnd = (arr) => arr.length === 0 ? '' : arr.length === 1 ? arr[0] : arr.length === 2 ? arr.join(' and ') : arr.slice(0, -1).join(', ') + ', and ' + arr[arr.length - 1];
+        const reasonText = joinWithAnd(reasons);
+        
+        let specificDetail = '';
+        if (profanityScene?.description) specificDetail += profanityScene.description + ' ';
+        if (violenceScene?.description) specificDetail += violenceScene.description;
+        
+        staticFaqs.push({
+            question: `Why is ${movieTitle} rated ${ratingAgeStr}?`,
+            answer: `${movieTitle} earns its ${ratingAgeStr} rating due to ${reasonText || 'mature themes'}.${specificDetail ? ' Specifically, the film contains ' + specificDetail.trim() : ''} Adults can use our timestamps to skip the explicit content.`
+        });
     }
 
     return staticFaqs;

@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, Play, X, Film, Star, ChevronDown } from 'lucide-react';
+import { ChevronLeft, Play, X, Film, Star, ChevronDown, ShieldCheck, ArrowDown, Clock, CheckCircle } from 'lucide-react';
 import Header from '../../../components/Header';
 import dynamic from 'next/dynamic';
 import { getVisibleMovieFAQs } from '../../../utils/movieData';
@@ -548,7 +548,7 @@ export default function UniversalMoviePage({ movie }) {
             <Head>
                 <title>{movie.metaTitle}</title>
                 <meta name="description" content={movie.metaDesc} />
-                <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+                <meta name="robots" content={(hasTimestamps || isVerifiedParentsGuideMovie) ? "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" : "noindex, follow"} />
                 <link rel="canonical" href={`https://www.filmiway.com/movie/${movie.slug}/skip-timestamps`} />
                 <meta property="og:title" content={movie.metaTitle} />
                 <meta property="og:description" content={movie.metaDesc} />
