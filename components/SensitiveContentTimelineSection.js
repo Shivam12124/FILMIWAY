@@ -122,7 +122,13 @@ const consolidateTimelineScenes = (scenes, gapThreshold = 15) => {
 };
 
 const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) => {
-    const consolidatedScenes = useMemo(() => consolidateTimelineScenes(sensitiveScenes || [], 15), [sensitiveScenes]);
+    const consolidatedScenes = useMemo(() => {
+        const raw = sensitiveScenes || [];
+        const timedScenes = raw.filter(s => s.start && s.start.trim() !== '' && s.start.toLowerCase() !== 'none');
+        const generalScenes = raw.filter(s => !s.start || s.start.trim() === '' || s.start.toLowerCase() === 'none');
+        const consolidatedTimed = consolidateTimelineScenes(timedScenes, 15);
+        return [...consolidatedTimed, ...generalScenes];
+    }, [sensitiveScenes]);
 
     // --- MOBILE RESPONSIVE TOOLTIP STATE ---
     const [showInfo, setShowInfo] = useState(false);
@@ -906,9 +912,9 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                     </motion.div>
                 )}
 
-                {/* 🔥 DESKTOP LAYOUT FIX: Desktop ONLY gets the scrollable pane. Mobile remains 100% exactly as it was. */}
+                {/* 🔥 DESKTOP LAYOUT UPDATE: Natural page scroll on Desktop just like Mobile (No inner max-height scrollbox) */}
                 <div className="relative mt-4 sm:mt-6">
-                    <div className="lg:max-h-[520px] lg:overflow-y-auto lg:overflow-x-hidden lg:pr-1 desktop-timestamp-scroll">
+                    <div className="w-full">
                         {/* 🚀 SEO UPGRADE: Changed div to ul for semantic list extraction */}
                         <ul className="space-y-2 sm:space-y-2.5 m-0 p-0 list-none timestamp-card-list">
                             {[...sensitiveData.scenes].sort((a, b) => {
