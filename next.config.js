@@ -619,7 +619,25 @@ const nextConfig = {
   async headers() {
     return [
       {
-        source: '/:all*(svg|jpg|png|webp|avif|ico|css|js|woff2|json|xml|txt)',
+        source: '/:path*.xml',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=0, s-maxage=0, must-revalidate',
+          },
+        ],
+      },
+      {
+        source: '/robots.txt',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=0, s-maxage=0, must-revalidate',
+          },
+        ],
+      },
+      {
+        source: '/:all*(svg|jpg|png|webp|avif|ico|css|js|woff2|json)',
         headers: [
           {
             key: 'Cache-Control',
