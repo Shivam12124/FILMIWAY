@@ -17,25 +17,26 @@ const VERIFIED_PARENTS_GUIDE_IDS = new Set([
     '8363', 'tt0829482'
 ]);
 
+const masterDb = JSON.parse(fs.readFileSync(path.join(__dirname, '../utils/masterDatabase.json'), 'utf8'));
 const masterTimestamps = JSON.parse(fs.readFileSync(path.join(__dirname, '../utils/masterTimestamps.json'), 'utf8'));
 
-// Build slug to tmdbId/imdbID mapping
+// Build slug to movie data mapping
 const slugToData = {};
-Object.entries(masterTimestamps).forEach(([tmdbId, data]) => {
-    if (data.Title) {
-        const slug = data.Title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
-        slugToData[slug] = { tmdbId, ...data };
+masterDb.forEach(movie => {
+    if (movie.slug) {
+        slugToData[movie.slug] = movie;
     }
 });
 
 const isIndexableSlug = (slug) => {
-    const data = slugToData[slug];
-    if (!data) return false;
+    const movie = slugToData[slug];
+    if (!movie) return false;
 
-    const tmdbIdStr = String(data.tmdbId);
-    const isVerified = VERIFIED_PARENTS_GUIDE_IDS.has(tmdbIdStr) || (data.imdbID && VERIFIED_PARENTS_GUIDE_IDS.has(String(data.imdbID)));
+    const tmdbIdStr = String(movie.tmdbId);
+    const isVerified = VERIFIED_PARENTS_GUIDE_IDS.has(tmdbIdStr) || (movie.imdbID && VERIFIED_PARENTS_GUIDE_IDS.has(String(movie.imdbID)));
     if (isVerified) return true;
 
+    const data = masterTimestamps[tmdbIdStr] || movie;
     const scenes = data.scenes || [];
     const hasTimestamps = scenes.some(s => s.start && s.start.trim() !== '' && s.start.toLowerCase() !== 'none');
     return hasTimestamps;
