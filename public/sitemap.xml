@@ -7,9 +7,6 @@
       <loc>https://www.filmiway.com/sitemap-movies.xml</loc>
    </sitemap>
    <sitemap>
-      <loc>https://www.filmiway.com/sitemap-movies-v2.xml</loc>
-   </sitemap>
-   <sitemap>
       <loc>https://www.filmiway.com/sitemap-advisory.xml</loc>
    </sitemap>
 </sitemapindex>

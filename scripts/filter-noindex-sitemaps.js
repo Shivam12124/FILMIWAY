@@ -71,5 +71,4 @@ const filterSitemapFile = (filename) => {
 
 console.log('🚀 Filtering Sitemaps to keep ONLY indexable (timestamped/verified) movie pages...');
 filterSitemapFile('sitemap-movies.xml');
-filterSitemapFile('sitemap-movies-v2.xml');
 console.log('🎉 Sitemap Pruning Complete!');
