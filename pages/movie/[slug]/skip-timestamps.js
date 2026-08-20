@@ -553,7 +553,7 @@ export default function UniversalMoviePage({ movie }) {
             <Head>
                 <title>{movie.metaTitle}</title>
                 <meta name="description" content={movie.metaDesc} />
-                <meta name="robots" content={(hasTimestamps || isVerifiedParentsGuideMovie) ? "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" : "noindex, follow"} />
+                <meta name="robots" content={hasTimestamps ? "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" : "noindex, follow"} />
                 <link rel="canonical" href={`https://www.filmiway.com/movie/${movie.slug}/skip-timestamps`} />
                 <meta property="og:title" content={movie.metaTitle} />
                 <meta property="og:description" content={movie.metaDesc} />

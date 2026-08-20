@@ -43,12 +43,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.filmiway.com/movie/memento/skip-timestamps</loc>
-    <lastmod>2026-08-05T12:00:00.000Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://www.filmiway.com/movie/blade-runner/skip-timestamps</loc>
     <lastmod>2026-08-01T12:00:00.000Z</lastmod>
     <changefreq>daily</changefreq>
@@ -79,18 +73,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.filmiway.com/movie/the-lord-of-the-rings-the-return-of-the-king/skip-timestamps</loc>
-    <lastmod>2026-08-08T12:00:00.000Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.filmiway.com/movie/donnie-darko/skip-timestamps</loc>
-    <lastmod>2026-08-04T12:00:00.000Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://www.filmiway.com/movie/brokeback-mountain/skip-timestamps</loc>
     <lastmod>2026-08-01T12:00:00.000Z</lastmod>
     <changefreq>daily</changefreq>
@@ -99,12 +81,6 @@
   <url>
     <loc>https://www.filmiway.com/movie/lost-in-translation/skip-timestamps</loc>
     <lastmod>2026-08-03T12:00:00.000Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.filmiway.com/movie/the-dark-knight/skip-timestamps</loc>
-    <lastmod>2026-08-01T12:00:00.000Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -295,12 +271,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.filmiway.com/movie/the-matrix/skip-timestamps</loc>
-    <lastmod>2026-08-04T12:00:00.000Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://www.filmiway.com/movie/wild-things/skip-timestamps</loc>
     <lastmod>2026-08-09T12:00:00.000Z</lastmod>
     <changefreq>daily</changefreq>
@@ -427,20 +397,8 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.filmiway.com/movie/se7en/skip-timestamps</loc>
-    <lastmod>2026-08-03T12:00:00.000Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://www.filmiway.com/movie/chinatown/skip-timestamps</loc>
     <lastmod>2026-08-09T12:00:00.000Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.filmiway.com/movie/saving-private-ryan/skip-timestamps</loc>
-    <lastmod>2026-08-07T12:00:00.000Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -463,12 +421,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.filmiway.com/movie/heat/skip-timestamps</loc>
-    <lastmod>2026-08-04T12:00:00.000Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://www.filmiway.com/movie/irreversible/skip-timestamps</loc>
     <lastmod>2026-08-02T12:00:00.000Z</lastmod>
     <changefreq>daily</changefreq>
@@ -477,12 +429,6 @@
   <url>
     <loc>https://www.filmiway.com/movie/mulholland-drive/skip-timestamps</loc>
     <lastmod>2026-08-05T12:00:00.000Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.filmiway.com/movie/the-prestige/skip-timestamps</loc>
-    <lastmod>2026-08-07T12:00:00.000Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -597,12 +543,6 @@
   <url>
     <loc>https://www.filmiway.com/movie/shakespeare-in-love/skip-timestamps</loc>
     <lastmod>2026-08-04T12:00:00.000Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.filmiway.com/movie/zodiac/skip-timestamps</loc>
-    <lastmod>2026-08-06T12:00:00.000Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -795,18 +735,6 @@
   <url>
     <loc>https://www.filmiway.com/movie/the-40-year-old-virgin/skip-timestamps</loc>
     <lastmod>2026-08-10T12:00:00.000Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.filmiway.com/movie/no-country-for-old-men/skip-timestamps</loc>
-    <lastmod>2026-08-10T12:00:00.000Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.filmiway.com/movie/there-will-be-blood/skip-timestamps</loc>
-    <lastmod>2026-08-05T12:00:00.000Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -1117,12 +1045,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.filmiway.com/movie/inception/skip-timestamps</loc>
-    <lastmod>2026-08-05T12:00:00.000Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://www.filmiway.com/movie/chloe/skip-timestamps</loc>
     <lastmod>2026-08-07T12:00:00.000Z</lastmod>
     <changefreq>daily</changefreq>
@@ -1137,12 +1059,6 @@
   <url>
     <loc>https://www.filmiway.com/movie/true-lies/skip-timestamps</loc>
     <lastmod>2026-08-05T12:00:00.000Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.filmiway.com/movie/the-social-network/skip-timestamps</loc>
-    <lastmod>2026-08-08T12:00:00.000Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -1291,12 +1207,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.filmiway.com/movie/prisoners/skip-timestamps</loc>
-    <lastmod>2026-08-03T12:00:00.000Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://www.filmiway.com/movie/dallas-buyers-club/skip-timestamps</loc>
     <lastmod>2026-08-01T12:00:00.000Z</lastmod>
     <changefreq>daily</changefreq>
@@ -1311,12 +1221,6 @@
   <url>
     <loc>https://www.filmiway.com/movie/the-equalizer/skip-timestamps</loc>
     <lastmod>2026-08-06T12:00:00.000Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.filmiway.com/movie/interstellar/skip-timestamps</loc>
-    <lastmod>2026-08-09T12:00:00.000Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -1382,12 +1286,6 @@
   </url>
   <url>
     <loc>https://www.filmiway.com/movie/marshland/skip-timestamps</loc>
-    <lastmod>2026-08-05T12:00:00.000Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.filmiway.com/movie/whiplash/skip-timestamps</loc>
     <lastmod>2026-08-05T12:00:00.000Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -1671,12 +1569,6 @@
   <url>
     <loc>https://www.filmiway.com/movie/midsommar/skip-timestamps</loc>
     <lastmod>2026-08-05T12:00:00.000Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.filmiway.com/movie/1917/skip-timestamps</loc>
-    <lastmod>2026-08-10T12:00:00.000Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>

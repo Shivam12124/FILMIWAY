@@ -32,11 +32,7 @@ const isIndexableSlug = (slug) => {
     const movie = slugToData[slug];
     if (!movie) return false;
 
-    const tmdbIdStr = String(movie.tmdbId);
-    const isVerified = VERIFIED_PARENTS_GUIDE_IDS.has(tmdbIdStr) || (movie.imdbID && VERIFIED_PARENTS_GUIDE_IDS.has(String(movie.imdbID)));
-    if (isVerified) return true;
-
-    const data = masterTimestamps[tmdbIdStr] || movie;
+    const data = masterTimestamps[String(movie.tmdbId)] || movie;
     const scenes = data.scenes || [];
     const hasTimestamps = scenes.some(s => s.start && s.start.trim() !== '' && s.start.toLowerCase() !== 'none');
     return hasTimestamps;
