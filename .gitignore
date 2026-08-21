@@ -39,3 +39,7 @@ Thumbs.db
 # API Keys (extra protection)
 **/api-keys.js
 **/secrets.js
+
+# ExpressVPN Raw Downloads
+public/Banners and Assets.zip
+public/expressvpn-assets/

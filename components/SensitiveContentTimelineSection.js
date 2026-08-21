@@ -4,6 +4,7 @@ import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Shield, CheckCircle, Clock, AlertOctagon, Info, Film, FastForward, Eye, Heart, AlertTriangle, ThumbsUp, ThumbsDown, MessageSquare, Flame, Play, Timer, ExternalLink } from 'lucide-react';
 import dynamic from 'next/dynamic';
+import Image from 'next/image';
 import masterTimestamps from '../utils/masterTimestamps.json';
 import { db } from '../lib/firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
@@ -1030,8 +1031,14 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                                             >
                                                 <div className="flex items-start gap-3.5 min-w-0 flex-1">
                                                     {/* ExpressVPN Red Icon Shield Box - Aligned to Top */}
-                                                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center text-white shrink-0 shadow-lg shadow-red-600/40 border border-red-400/30">
-                                                        <Shield size={20} className="fill-white/20" />
+                                                    <div className="w-10 h-10 rounded-xl bg-black/40 flex items-center justify-center shrink-0 shadow-lg shadow-red-600/30 border border-red-500/40 overflow-hidden p-1.5">
+                                                        <Image 
+                                                            src="/images/expressvpn/Red, Icon.png" 
+                                                            alt="ExpressVPN" 
+                                                            width={32} 
+                                                            height={32} 
+                                                            className="object-contain"
+                                                        />
                                                     </div>
 
                                                     <div className="flex flex-col min-w-0 flex-1">
