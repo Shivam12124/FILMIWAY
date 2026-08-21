@@ -304,8 +304,8 @@ export default function UniversalMoviePage({ movie }) {
 
     if (router.isFallback || !movie) return <div className="min-h-screen bg-black" />;
 
-    const isVerifiedParentsGuideMovie = VERIFIED_PARENTS_GUIDE_IDS.has(String(movie?.imdbID || '')) || 
-                                       VERIFIED_PARENTS_GUIDE_IDS.has(String(movie?.tmdbId || ''));
+    const isVerifiedParentsGuideMovie = VERIFIED_PARENTS_GUIDE_IDS.has(String(movie?.imdbID || '')) ||
+        VERIFIED_PARENTS_GUIDE_IDS.has(String(movie?.tmdbId || ''));
 
     // Generate the specific collection boolean dynamically!
     const propName = getCollectionProp(movie.primaryCollectionSlug);
@@ -561,7 +561,7 @@ export default function UniversalMoviePage({ movie }) {
                 <meta property="og:url" content={`https://www.filmiway.com/movie/${movie.slug}/skip-timestamps`} />
                 <meta property="og:image" content={movie.Poster || (movie.backdrop_path ? `https://image.tmdb.org/t/p/w780${movie.backdrop_path}` : 'https://www.filmiway.com/og-image.jpg')} />
                 <meta property="og:site_name" content="Filmiway" />
-                
+
                 {/* 🐦 Twitter Card Meta Tags for Viral Social Sharing */}
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:site" content="@FilmiwayMedia" />
@@ -783,8 +783,8 @@ export async function getStaticProps({ params }) {
     const hardcodedScenes = collectionData?.SENSITIVE_TIMELINES?.[baseMovie.tmdbId]?.scenes || [];
 
     // 🛡️ VERIFIED TOP & MANUAL MOVIES (Keep full Parents Guide for Violence & Profanity)
-    const isVerifiedParentsGuideMovie = VERIFIED_PARENTS_GUIDE_IDS.has(String(baseMovie.imdbID)) || 
-                                       VERIFIED_PARENTS_GUIDE_IDS.has(String(baseMovie.tmdbId));
+    const isVerifiedParentsGuideMovie = VERIFIED_PARENTS_GUIDE_IDS.has(String(baseMovie.imdbID)) ||
+        VERIFIED_PARENTS_GUIDE_IDS.has(String(baseMovie.tmdbId));
 
     // ✅ FIX: Make masterTimestamps the absolute single source of truth to prevent duplicates.
     const baseScenes = rawSensitiveData ? (rawSensitiveData.scenes || []) : hardcodedScenes;

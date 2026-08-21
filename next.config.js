@@ -618,6 +618,169 @@ const nextConfig = {
   // ⚡ IMMUTABLE ASSET CACHING: Prevents Vercel Edge Request limit exhaustion
   async headers() {
     return [
+      // ⚡ CACHE HTML PAGES: Force Cloudflare to cache static HTML and avoid Vercel Edge Request billing
+      {
+        source: '/movie/:slug/skip-timestamps',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=86400, s-maxage=604800, stale-while-revalidate=86400',
+          },
+        ],
+      },
+      {
+        source: '/collection/:slug',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=86400, s-maxage=604800, stale-while-revalidate=86400',
+          },
+        ],
+      },
+      {
+        source: '/genre/:slug',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=86400, s-maxage=604800, stale-while-revalidate=86400',
+          },
+        ],
+      },
+      {
+        source: '/streaming/:slug',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=86400, s-maxage=604800, stale-while-revalidate=86400',
+          },
+        ],
+      },
+      {
+        source: '/',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=86400, s-maxage=604800, stale-while-revalidate=86400',
+          },
+        ],
+      },
+      {
+        source: '/collections',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=86400, s-maxage=604800, stale-while-revalidate=86400',
+          },
+        ],
+      },
+      {
+        source: '/movie-directory',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=86400, s-maxage=604800, stale-while-revalidate=86400',
+          },
+        ],
+      },
+      {
+        source: '/filmiway-vs-imdb-parents-guide',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=86400, s-maxage=604800, stale-while-revalidate=86400',
+          },
+        ],
+      },
+      {
+        source: '/how-to-skip-awkward-scenes-in-movies',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=86400, s-maxage=604800, stale-while-revalidate=86400',
+          },
+        ],
+      },
+      {
+        source: '/how-we-work',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=86400, s-maxage=604800, stale-while-revalidate=86400',
+          },
+        ],
+      },
+      {
+        source: '/vidangel-alternatives',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=86400, s-maxage=604800, stale-while-revalidate=86400',
+          },
+        ],
+      },
+      {
+        source: '/watch-along-timer',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=86400, s-maxage=604800, stale-while-revalidate=86400',
+          },
+        ],
+      },
+      {
+        source: '/about-us',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=86400, s-maxage=604800, stale-while-revalidate=86400',
+          },
+        ],
+      },
+      {
+        source: '/contact-us',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=86400, s-maxage=604800, stale-while-revalidate=86400',
+          },
+        ],
+      },
+      {
+        source: '/faq',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=86400, s-maxage=604800, stale-while-revalidate=86400',
+          },
+        ],
+      },
+      {
+        source: '/terms',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=86400, s-maxage=604800, stale-while-revalidate=86400',
+          },
+        ],
+      },
+      {
+        source: '/privacy',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=86400, s-maxage=604800, stale-while-revalidate=86400',
+          },
+        ],
+      },
+      {
+        source: '/partners',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=86400, s-maxage=604800, stale-while-revalidate=86400',
+          },
+        ],
+      },
       {
         source: '/:path*.xml',
         headers: [

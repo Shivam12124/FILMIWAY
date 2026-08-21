@@ -1143,7 +1143,7 @@ export const COLLECTIONS = {
       'tt15398776', 'tt14230458', 'tt0120663', 'tt0144084', 'tt0120890',
       'tt0250797', 'tt2278871', 'tt0309987', 'tt0218922', 'tt0118749',
       'tt0213847', 'tt2873282', 'tt0274812', 'tt0163651', 'tt0070849',
-      'tt0137523', 'tt0093010', 'tt0290673', 'tt0115736', 'tt0829482'
+      'tt0137523', 'tt0093010', 'tt0290673', 'tt0115736', 'tt37287335'
     ],
     relatedCollections: ['best-erotic-romance-movies', 'best-erotic-thriller-movies', 'best-movies-of-the-decade']
   }
