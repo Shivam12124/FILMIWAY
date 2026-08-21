@@ -53,7 +53,7 @@ const nextConfig = {
   },
 
   // ✅ PERFORMANCE SETTINGS
-  generateEtags: true, 
+  generateEtags: true,
   poweredByHeader: false,
   compress: true,
 

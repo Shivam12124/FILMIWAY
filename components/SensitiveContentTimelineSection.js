@@ -657,7 +657,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                                 </div>
 
                                 <div className="flex-1 flex flex-col justify-center">
-                                    <h3 className="text-[11px] sm:text-xs font-semibold text-gray-300 mb-0.5 uppercase tracking-widest">Recommended Age</h3>
+                                    <span className="text-[11px] sm:text-xs font-semibold text-gray-300 mb-0.5 uppercase tracking-widest block">Recommended Age</span>
                                     <p className="text-xs sm:text-[13px] text-gray-400 leading-snug font-light">{ageSummary}</p>
                                 </div>
                             </motion.div>
@@ -697,7 +697,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                                     >
                                         <Info
                                             size={16}
-                                            className={`transition-colors sm:w-[18px] sm:h-[18px] mt-1 sm:mt-0 ${showInfo ? 'text-gray-300' : 'text-gray-500 hover:text-gray-300'}`}
+                                            className={`transition-colors sm:w-[18px] sm:h-[18px] mt-1 sm:mt-0 ${showInfo ? 'text-gray-300' : 'text-gray-400 hover:text-gray-300'}`}
                                         />
                                     </button>
 
@@ -752,24 +752,24 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                                     </div>
 
                                     <div className="flex-1 flex flex-col justify-center">
-                                        <h3 className="text-xs sm:text-sm font-semibold text-gray-300 mb-1 uppercase tracking-widest">Recommended Age</h3>
+                                        <span className="text-xs sm:text-sm font-semibold text-gray-300 mb-1 uppercase tracking-widest block">Recommended Age</span>
                                         <p className="text-[13px] sm:text-sm text-gray-400 leading-relaxed font-light">{ageSummary}</p>
                                     </div>
                                 </motion.div>
                             )}
 
                             <div className="ml-1 space-y-2.5 sm:space-y-3 mt-2 sm:mt-4">
-                                <p className="text-[13px] sm:text-sm text-gray-500 flex items-start sm:items-center gap-2">
+                                <p className="text-[13px] sm:text-sm text-gray-400 flex items-start sm:items-center gap-2">
                                     <CheckCircle size={14} className="text-emerald-500/80 shrink-0 mt-0.5 sm:mt-0" />
                                     <span className="leading-snug">Timestamps are accurate for the <span className="text-gray-300 font-medium" suppressHydrationWarning>{currentRuntime}</span></span>
                                 </p>
 
-                                <p className="text-[13px] sm:text-sm text-gray-500 flex items-center gap-2">
+                                <p className="text-[13px] sm:text-sm text-gray-400 flex items-center gap-2">
                                     <Film size={14} className="text-indigo-400/80 shrink-0" />
                                     <span>Total scenes flagged: <span className="text-gray-300 font-medium">{skipStats.totalScenes}</span></span>
                                 </p>
 
-                                <p className="text-[13px] sm:text-sm text-gray-500 flex items-center gap-2">
+                                <p className="text-[13px] sm:text-sm text-gray-400 flex items-center gap-2">
                                     <FastForward size={14} className="text-yellow-500/80 shrink-0" />
                                     <span>Total time to skip: <span className="text-gray-300 font-medium">{skipStats.formattedTime}</span></span>
                                 </p>

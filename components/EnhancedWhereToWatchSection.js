@@ -257,37 +257,41 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
   useEffect(() => {
     if (!mounted || !movie?.tmdbId) return;
 
-    const fetchData = async () => {
-      setIsLoading(true);
-      try {
-        const detectedCountry = await detectUserCountry();
-        setUserCountry(detectedCountry);
-        const data = await getAllRegionStreamingData(movie.tmdbId, movie.Title);
+    const timer = setTimeout(() => {
+      const fetchData = async () => {
+        setIsLoading(true);
+        try {
+          const detectedCountry = await detectUserCountry();
+          setUserCountry(detectedCountry);
+          const data = await getAllRegionStreamingData(movie.tmdbId, movie.Title);
 
-        if (data && Object.keys(data).length > 0) {
-          setStreamingData(data);
-          const { selectedRegion: bestRegion, fallbackMessage: message } = selectBestRegion(data, detectedCountry);
-          setSelectedRegion(bestRegion);
-          setFallbackMessage(message);
-        } else {
+          if (data && Object.keys(data).length > 0) {
+            setStreamingData(data);
+            const { selectedRegion: bestRegion, fallbackMessage: message } = selectBestRegion(data, detectedCountry);
+            setSelectedRegion(bestRegion);
+            setFallbackMessage(message);
+          } else {
+            setStreamingData({});
+            setFallbackMessage('No streaming data available');
+          }
+        } catch (error) {
           setStreamingData({});
-          setFallbackMessage('No streaming data available');
+          setFallbackMessage('Error loading streaming data');
+        } finally {
+          setIsLoading(false);
         }
-      } catch (error) {
-        setStreamingData({});
-        setFallbackMessage('Error loading streaming data');
-      } finally {
-        setIsLoading(false);
-      }
-    };
+      };
 
-    fetchData();
+      fetchData();
+    }, 800);
+
+    return () => clearTimeout(timer);
   }, [movie?.tmdbId, movie?.Title, mounted]);
 
   if (!mounted) {
     return (
       <div className="mb-12 mt-12 w-full min-h-[250px] rounded-2xl border border-white/5 bg-white/[0.02] flex items-center justify-center animate-pulse">
-        <Loader className="w-5 h-5 animate-spin text-gray-500" />
+        <Loader className="w-5 h-5 animate-spin text-gray-400" />
       </div>
     );
   }
@@ -352,7 +356,7 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
           const ipData = await ipRes.json();
           if (ipData.country) detectedCountry = ipData.country;
         }
-      } catch (err) {}
+      } catch (err) { }
 
       const clickData = {
         movieSlug: movie?.slug || movie?.tmdbId || 'unknown',
@@ -726,7 +730,7 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
           </AnimatePresence>
 
           <div className="text-center pt-6 border-t border-white/5">
-            <p className="text-[11px] text-gray-500 uppercase tracking-widest font-medium">
+            <p className="text-[11px] text-gray-400 uppercase tracking-widest font-medium">
               Data via <span className="text-blue-400">TMDB</span> • Auto-IP Detection • 100+ Regions
             </p>
           </div>

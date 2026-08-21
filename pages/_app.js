@@ -35,7 +35,7 @@ const playfair = Playfair_Display({
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
-  
+
   // ✅ STATE TO HOLD ENHANCED PROPS
   const [enhancedProps, setEnhancedProps] = useState(pageProps);
   const [isInteracted, setIsInteracted] = useState(false);
@@ -44,7 +44,7 @@ export default function App({ Component, pageProps }) {
   useEffect(() => {
     const handleInteraction = () => setIsInteracted(true);
     const events = ['scroll', 'mousemove', 'touchstart', 'keydown', 'click'];
-    
+
     events.forEach(event =>
       window.addEventListener(event, handleInteraction, { once: true, passive: true })
     );
@@ -69,7 +69,7 @@ export default function App({ Component, pageProps }) {
           page_path: url,
         });
       }
-      
+
       // Trigger Mediavine Grow Pageview on Route Change for SPA
       if (typeof window !== 'undefined' && window.growMe) {
         window.growMe('triggerPageview');
@@ -78,17 +78,17 @@ export default function App({ Component, pageProps }) {
     router.events.on('routeChangeComplete', handleRouteChange);
     return () => router.events.off('routeChangeComplete', handleRouteChange);
   }, [router.events]);
-  
+
   // 🔥 THE MASTER KEY FIX: UNIVERSAL CLIENT-SIDE TMDB FALLBACK 🔥
   // This fixes ALL 50+ collections dynamically without editing them one by one.
   useEffect(() => {
     // Sync state when route changes
     setEnhancedProps(pageProps);
-    
+
     // If this is a movie detail page AND TMDB failed during the build (Rate Limit)
     const tmdbId = pageProps?.movie?.tmdbId || pageProps?.movie?.tmdbID;
     const imdbId = pageProps?.movie?.imdbID || pageProps?.movie?.imdbId;
-    
+
     // 🔥 THE FIX: Check if we ALREADY have the poster from the [slug].js props to prevent infinite re-rendering!
     const missingData = (!pageProps?.tmdbData?.poster_path) && (!pageProps?.movie?.Poster) && (!pageProps?.movie?.poster_path);
 
@@ -97,25 +97,25 @@ export default function App({ Component, pageProps }) {
       if (apiKey) {
         // ⚡ DEFER FALLBACK API CALL SO MAIN THREAD REMAINS IDLE
         const deferTimer = setTimeout(() => {
-            const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 2000); // Kill after 2 seconds
+          const controller = new AbortController();
+          const timeoutId = setTimeout(() => controller.abort(), 2000); // Kill after 2 seconds
 
-            fetch(`https://api.themoviedb.org/3/find/${imdbId}?api_key=${apiKey}&external_source=imdb_id`, { signal: controller.signal })
-              .then(res => res.json())
-              .then(findData => {
-                if (findData?.movie_results?.[0]?.id) {
-                  const correctTmdbId = findData.movie_results[0].id;
-                  fetch(`https://api.themoviedb.org/3/movie/${correctTmdbId}?api_key=${apiKey}&append_to_response=videos,images,release_dates`, { signal: controller.signal })
-                    .then(res => res.json())
-                    .then(fullData => {
-                      if (fullData?.id) {
-                        setEnhancedProps(prev => ({ ...prev, tmdbData: fullData }));
-                      }
-                    }).catch(err => console.warn("Background TMDB Fetch Skipped"));
-                }
-              })
-              .catch(err => console.warn("TMDB connection timeout or blocked"))
-              .finally(() => clearTimeout(timeoutId));
+          fetch(`https://api.themoviedb.org/3/find/${imdbId}?api_key=${apiKey}&external_source=imdb_id`, { signal: controller.signal })
+            .then(res => res.json())
+            .then(findData => {
+              if (findData?.movie_results?.[0]?.id) {
+                const correctTmdbId = findData.movie_results[0].id;
+                fetch(`https://api.themoviedb.org/3/movie/${correctTmdbId}?api_key=${apiKey}&append_to_response=videos,images,release_dates`, { signal: controller.signal })
+                  .then(res => res.json())
+                  .then(fullData => {
+                    if (fullData?.id) {
+                      setEnhancedProps(prev => ({ ...prev, tmdbData: fullData }));
+                    }
+                  }).catch(err => console.warn("Background TMDB Fetch Skipped"));
+              }
+            })
+            .catch(err => console.warn("TMDB connection timeout or blocked"))
+            .finally(() => clearTimeout(timeoutId));
         }, 4000);
         return () => clearTimeout(deferTimer);
       }
@@ -132,31 +132,31 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <Head>
-        {/* 🔥 SEO Meta Tags */} 
+        {/* 🔥 SEO Meta Tags */}
         <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
         <meta name="googlebot" content="index, follow" />
         <meta name="bingbot" content="index, follow" />
         <meta name="rating" content="general" />
-        
+
         {/* ✅ REMOVED CANONICAL - Pages set their own */}
-        
+
         {/* Viewport & Theme */}
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#000000" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        
+
         {/* Open Graph */}
         <meta property="og:url" content={getCurrentUrl()} />
         <meta property="og:site_name" content="Filmiway" />
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_US" />
-        
+
         {/* Twitter Cards */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@filmiway" />
         <meta name="twitter:creator" content="@filmiway" />
-        
+
         {/* Icons, Manifest */}
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -209,7 +209,7 @@ export default function App({ Component, pageProps }) {
           }}
         />
       </Head>
-      
+
       {/* 🚀 GOOGLE ADSENSE (Loaded with lazyOnload so it never blocks FCP/LCP or causes TBT) */}
       <Script
         id="google-adsense"
