@@ -143,8 +143,24 @@ const UniversalBanner = ({ movie }) => {
                             transition={{ duration: 0.5 }}
                         >
                             <div className="relative w-full h-full bg-[#030303]">
-                                {/* ⚡ THE MAIN IMAGE */}
-                                {bannerImage ? <Image src={bannerImage} alt={`${movie?.Title || 'Movie'} backdrop banner`} fill priority fetchPriority="high" sizes="100vw" className="object-cover object-[center_25%] relative z-10" /> : <div className="w-full h-full flex items-center justify-center relative z-10" style={{ backgroundColor: '#000000' }}><Film className="w-16 h-16 sm:w-24 sm:h-24" style={{ color: COLORS.textMuted }} /></div>}
+                                {/* ⚡ RESPONSIVE BANNER: Mobile w500 (18 KiB) & Desktop w780 */}
+                                {movie.backdrop_path ? (
+                                    <picture className="absolute inset-0 w-full h-full">
+                                        <source media="(max-width: 767px)" srcSet={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`} />
+                                        <source media="(min-width: 768px)" srcSet={`https://image.tmdb.org/t/p/w780${movie.backdrop_path}`} />
+                                        <img 
+                                            src={`https://image.tmdb.org/t/p/w780${movie.backdrop_path}`} 
+                                            alt={`${movie?.Title || 'Movie'} backdrop banner`} 
+                                            fetchPriority="high"
+                                            decoding="async"
+                                            className="w-full h-full object-cover object-[center_25%] relative z-10" 
+                                        />
+                                    </picture>
+                                ) : (
+                                    <div className="w-full h-full flex items-center justify-center relative z-10" style={{ backgroundColor: '#000000' }}>
+                                        <Film className="w-16 h-16 sm:w-24 sm:h-24" style={{ color: COLORS.textMuted }} />
+                                    </div>
+                                )}
                                 <div className="absolute inset-0 z-20" style={{ background: `linear-gradient(to bottom, transparent 0%, transparent 50%, #000000 90%, #000000 100%), linear-gradient(to right, #000000 0%, transparent 15%, transparent 85%, #000000 100%)` }} />
                             </div>
                             {trailerKey && (
