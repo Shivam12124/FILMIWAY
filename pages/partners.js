@@ -1,6 +1,7 @@
 // pages/partners.js
 import React from 'react';
 import Head from 'next/head';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Shield, Lock, Eye, ExternalLink, Zap, CheckCircle } from 'lucide-react';
 import Header from '../components/Header';
@@ -14,17 +15,17 @@ export default function Partners() {
         <title>Official Partners | Filmiway & ExpressVPN Partnership</title>
         <meta
           name="description"
-          content="Learn about Filmiway's official partnership with ExpressVPN. Access exclusive Back to Campus deals, secure your family stream, and unblock global catalogs."
+          content="Learn about Filmiway's official partnership with ExpressVPN. Access exclusive deals, secure your family stream, and unblock global catalogs."
         />
         <link rel="canonical" href="https://www.filmiway.com/partners" />
         <meta name="robots" content="index, follow" />
       </Head>
 
-      <div className="min-h-screen bg-black text-gray-200 font-sans selection:bg-yellow-500/30 relative overflow-hidden">
+      <div className="min-h-screen bg-black text-gray-200 font-sans selection:bg-red-500/30 relative overflow-hidden">
         {/* Ambient background glows */}
         <div className="fixed inset-0 pointer-events-none z-0">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-red-500/5 rounded-full blur-[120px]" />
-          <div className="absolute bottom-0 right-1/4 w-[600px] h-[300px] bg-yellow-500/5 rounded-full blur-[100px]" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-red-600/10 rounded-full blur-[140px]" />
+          <div className="absolute bottom-0 right-1/4 w-[600px] h-[300px] bg-amber-500/5 rounded-full blur-[120px]" />
         </div>
 
         <Header />
@@ -42,12 +43,24 @@ export default function Partners() {
                 <span>OFFICIAL SECURITY & PRIVACY PARTNER</span>
               </div>
 
-              <h1 className="text-3xl sm:text-5xl font-light text-white tracking-tight leading-[1.15] mb-6">
-                Filmiway &{" "}
-                <span className="font-normal text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-red-500 to-amber-500">
-                  ExpressVPN
-                </span>
-              </h1>
+              {/* Official ExpressVPN Brand Logo Header */}
+              <div className="flex items-center justify-center gap-4 mb-6">
+                <div className="w-12 h-12 rounded-2xl bg-black/60 border border-red-500/40 p-2 flex items-center justify-center shadow-lg shadow-red-600/30">
+                  <Image 
+                    src="/images/expressvpn/Red, Icon.png" 
+                    alt="ExpressVPN Icon" 
+                    width={40} 
+                    height={40} 
+                    className="object-contain"
+                  />
+                </div>
+                <h1 className="text-3xl sm:text-5xl font-light text-white tracking-tight leading-[1.15]">
+                  Filmiway &{" "}
+                  <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-red-500 to-amber-500">
+                    ExpressVPN
+                  </span>
+                </h1>
+              </div>
 
               <p className="text-gray-400 text-sm sm:text-base leading-relaxed font-light max-w-2xl mx-auto">
                 We have partnered with ExpressVPN to help families watch their favorite movies securely, prevent ISP throttling, and unblock global streaming catalogs safely.
@@ -60,17 +73,19 @@ export default function Partners() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="bg-gradient-to-b from-zinc-900 to-black border border-red-500/20 rounded-3xl p-6 sm:p-12 relative overflow-hidden shadow-[0_0_50px_rgba(239,68,68,0.05)] mb-16"
+            className="bg-gradient-to-b from-zinc-900 via-[#0e0708] to-black border border-red-500/30 rounded-3xl p-6 sm:p-12 relative overflow-hidden shadow-[0_0_50px_rgba(239,68,68,0.1)] mb-16 group"
           >
-            <div className="absolute top-0 right-0 w-64 h-64 bg-red-500/10 rounded-full blur-[80px] pointer-events-none" />
+            <div className="absolute top-0 right-0 w-80 h-80 bg-red-600/10 rounded-full blur-[90px] pointer-events-none" />
             
             <div className="relative z-10 flex flex-col lg:flex-row gap-8 items-center justify-between">
               <div className="flex-1 text-center lg:text-left">
-                <span className="text-red-400 text-xs font-extrabold uppercase tracking-widest block mb-2">
-                  🎒 BACK TO CAMPUS SPECIAL OFFER
-                </span>
+                <div className="flex items-center gap-3 justify-center lg:justify-start mb-3">
+                  <span className="text-red-400 text-xs font-extrabold uppercase tracking-widest block">
+                    🎒 EXCLUSIVE FILMIWAY DEAL
+                  </span>
+                </div>
                 <h2 className="text-2xl sm:text-4xl font-semibold text-white mb-4">
-                  Get 80% Off + 4 Months Free!
+                  Get $2.99/mo + 4 Months Free!
                 </h2>
                 <p className="text-gray-400 text-sm sm:text-base leading-relaxed font-light mb-6">
                   Protect your browsing history from network admins, block ISP speed limits, and access regional libraries on Netflix, Prime Video, and Disney+ with the world's most trusted VPN.
@@ -95,9 +110,9 @@ export default function Partners() {
                   href={affiliateLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 font-bold text-sm sm:text-base px-8 py-4 rounded-xl transition-all duration-200 shadow-lg cursor-pointer bg-red-500 hover:bg-red-600 text-white w-full sm:w-auto"
+                  className="inline-flex items-center justify-center gap-2 font-bold text-sm sm:text-base px-8 py-4 rounded-xl transition-all duration-300 shadow-xl shadow-red-600/30 cursor-pointer bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white w-full sm:w-auto border border-red-500/50 hover:scale-[1.02]"
                 >
-                  <span>Claim Filmiway Deal</span>
+                  <span>Claim Filmiway Deal ($2.99/mo)</span>
                   <ExternalLink className="w-4 h-4" />
                 </a>
               </div>
@@ -106,7 +121,7 @@ export default function Partners() {
 
           {/* Partnership Value Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-            <div className="bg-[#0a0a0c] border border-white/5 rounded-2xl p-6 shadow-xl hover:border-red-500/20 transition-all duration-300">
+            <div className="bg-[#0a0a0c] border border-white/5 rounded-2xl p-6 shadow-xl hover:border-red-500/30 transition-all duration-300">
               <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 w-fit mb-4">
                 <Lock className="w-6 h-6" />
               </div>
@@ -116,7 +131,7 @@ export default function Partners() {
               </p>
             </div>
 
-            <div className="bg-[#0a0a0c] border border-white/5 rounded-2xl p-6 shadow-xl hover:border-red-500/20 transition-all duration-300">
+            <div className="bg-[#0a0a0c] border border-white/5 rounded-2xl p-6 shadow-xl hover:border-red-500/30 transition-all duration-300">
               <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 w-fit mb-4">
                 <Eye className="w-6 h-6" />
               </div>
@@ -126,7 +141,7 @@ export default function Partners() {
               </p>
             </div>
 
-            <div className="bg-[#0a0a0c] border border-white/5 rounded-2xl p-6 shadow-xl hover:border-red-500/20 transition-all duration-300">
+            <div className="bg-[#0a0a0c] border border-white/5 rounded-2xl p-6 shadow-xl hover:border-red-500/30 transition-all duration-300">
               <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 w-fit mb-4">
                 <Zap className="w-6 h-6" />
               </div>
