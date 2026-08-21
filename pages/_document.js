@@ -4,26 +4,11 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        {/* Google AdSense */}
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9989540501740548"
-          crossOrigin="anonymous"
-        />
-
         {/* Impact.com Site Verification */}
         <meta name='impact-site-verification' value='6b59a763-6f50-4bca-a43c-817e01c6a068' />
 
         {/* Google Site Verification */}
         <meta name="google-site-verification" content="rbc-nkW2usal1o0pyLwW70o8f-fewlFIR6sx19YOJik" />
-
-        {/* Skimlinks Integration */}
-        <script
-          async
-          defer
-          type="text/javascript"
-          src="https://s.skimresources.com/js/307276X1795556.skimlinks.js"
-        />
 
         {/* Global CSS */}
         <style>{`

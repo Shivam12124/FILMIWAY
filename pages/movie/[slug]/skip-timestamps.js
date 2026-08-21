@@ -144,12 +144,12 @@ const UniversalBanner = ({ movie }) => {
                         >
                             <div className="relative w-full h-full bg-[#030303]">
                                 {/* ⚡ THE MAIN IMAGE */}
-                                {bannerImage ? <Image src={bannerImage} alt={`${movie?.Title} banner`} fill priority fetchPriority="high" unoptimized className="object-cover object-[center_25%] relative z-10" /> : <div className="w-full h-full flex items-center justify-center relative z-10" style={{ backgroundColor: '#000000' }}><Film className="w-16 h-16 sm:w-24 sm:h-24" style={{ color: COLORS.textMuted }} /></div>}
+                                {bannerImage ? <Image src={bannerImage} alt={`${movie?.Title || 'Movie'} backdrop banner`} fill priority fetchPriority="high" sizes="100vw" className="object-cover object-[center_25%] relative z-10" /> : <div className="w-full h-full flex items-center justify-center relative z-10" style={{ backgroundColor: '#000000' }}><Film className="w-16 h-16 sm:w-24 sm:h-24" style={{ color: COLORS.textMuted }} /></div>}
                                 <div className="absolute inset-0 z-20" style={{ background: `linear-gradient(to bottom, transparent 0%, transparent 50%, #000000 90%, #000000 100%), linear-gradient(to right, #000000 0%, transparent 15%, transparent 85%, #000000 100%)` }} />
                             </div>
                             {trailerKey && (
                                 <motion.div className="absolute inset-0 flex items-center justify-center z-20" initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 1, duration: 0.8 }}>
-                                    <motion.button onClick={handlePlayClick} className="p-4 sm:p-6 rounded-full backdrop-blur-lg shadow-2xl transition-all duration-300" style={{ backgroundColor: `${COLORS.bgPrimary}BB`, border: `2px solid ${COLORS.textPrimary}`, color: COLORS.textPrimary }} whileHover={{ scale: 1.15, backgroundColor: `${COLORS.accent}DD`, borderColor: COLORS.accent }} whileTap={{ scale: 0.95 }}><Play className="w-6 h-6 sm:w-8 sm:h-8 ml-1" /></motion.button>
+                                    <motion.button onClick={handlePlayClick} aria-label={`Play trailer for ${movie?.Title || 'Movie'}`} className="p-4 sm:p-6 rounded-full backdrop-blur-lg shadow-2xl transition-all duration-300" style={{ backgroundColor: `${COLORS.bgPrimary}BB`, border: `2px solid ${COLORS.textPrimary}`, color: COLORS.textPrimary }} whileHover={{ scale: 1.15, backgroundColor: `${COLORS.accent}DD`, borderColor: COLORS.accent }} whileTap={{ scale: 0.95 }}><Play className="w-6 h-6 sm:w-8 sm:h-8 ml-1" /></motion.button>
                                 </motion.div>
                             )}
                         </motion.div>
@@ -162,7 +162,7 @@ const UniversalBanner = ({ movie }) => {
                             transition={{ duration: 0.5 }}
                         >
                             <iframe width="100%" height="100%" src={`https://www.youtube.com/embed/${trailerKey}?autoplay=1&mute=0&controls=1&rel=0`} allow="autoplay" allowFullScreen className="w-full h-full border-0" />
-                            <button onClick={handleCloseTrailer} className="absolute top-4 right-4 sm:top-6 sm:right-6 p-2 sm:p-3 rounded-full backdrop-blur-md shadow-xl transition-all duration-300 hover:scale-110 z-50" style={{ backgroundColor: `${COLORS.bgPrimary}DD`, color: COLORS.textPrimary }}><X className="w-4 h-4 sm:w-5 sm:h-5" /></button>
+                            <button onClick={handleCloseTrailer} aria-label="Close trailer" className="absolute top-4 right-4 sm:top-6 sm:right-6 p-2 sm:p-3 rounded-full backdrop-blur-md shadow-xl transition-all duration-300 hover:scale-110 z-50" style={{ backgroundColor: `${COLORS.bgPrimary}DD`, color: COLORS.textPrimary }}><X className="w-4 h-4 sm:w-5 sm:h-5" /></button>
                         </motion.div>
                     )}
                 </AnimatePresence>
@@ -172,7 +172,7 @@ const UniversalBanner = ({ movie }) => {
             <div className="unified-hero-row">
                 <div className="unified-hero-poster relative bg-[#030303] overflow-hidden">
                     {/* ⚡ THE MAIN IMAGE */}
-                    {posterImage ? <Image src={posterImage} alt={`${movie?.Title} poster`} width={320} height={480} className="w-full h-auto relative z-10" priority fetchPriority="high" unoptimized /> : <div style={{ background: '#000000', width: '100%', height: '150px', display: 'flex', items: 'center', justifyContent: 'center' }} className="relative z-10"><Film style={{ color: COLORS.textMuted }} /></div>}
+                    {posterImage ? <Image src={posterImage} alt={`${movie?.Title || 'Movie'} official poster`} width={320} height={480} sizes="(max-width: 768px) 140px, 320px" className="w-full h-auto relative z-10" priority fetchPriority="high" /> : <div style={{ background: '#000000', width: '100%', height: '150px', display: 'flex', items: 'center', justifyContent: 'center' }} className="relative z-10"><Film style={{ color: COLORS.textMuted }} /></div>}
                 </div>
                 <div className="unified-psych-card">
                     <div className="unified-psych-row"><Star className="unified-psych-icon" /><div><h2 className="unified-psych-title">At a Glance</h2></div></div>

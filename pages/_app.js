@@ -210,7 +210,15 @@ export default function App({ Component, pageProps }) {
         />
       </Head>
       
-      {/* 🚀 GOOGLE ANALYTICS (Loaded immediately to capture 100% of traffic) */}
+      {/* 🚀 GOOGLE ADSENSE (Loaded with lazyOnload so it never blocks FCP/LCP or causes TBT) */}
+      <Script
+        id="google-adsense"
+        strategy="lazyOnload"
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9989540501740548"
+        crossOrigin="anonymous"
+      />
+
+      {/* 🚀 GOOGLE ANALYTICS */}
       <Script
         strategy="afterInteractive"
         src={`https://www.googletagmanager.com/gtag/js?id=G-WSQMYM9R9G`}
