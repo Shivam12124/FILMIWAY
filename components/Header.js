@@ -120,10 +120,10 @@ const Header = () => {
           <Link href="/" className="flex items-center shrink-0" onClick={clearCollectionMemory}>
             <div className="w-20 sm:w-32 h-full flex items-center">
               <Image 
-                src="/filmiway-logo.svg" 
+                src="/filmiway-logo.webp" 
                 alt="Filmiway" 
-                width={160} 
-                height={60} 
+                width={128} 
+                height={128} 
                 className="w-full h-auto object-contain" 
                 priority
               />

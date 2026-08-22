@@ -257,40 +257,36 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
   useEffect(() => {
     if (!mounted || !movie?.tmdbId) return;
 
-    const timer = setTimeout(() => {
-      const fetchData = async () => {
-        setIsLoading(true);
-        try {
-          const detectedCountry = await detectUserCountry();
-          setUserCountry(detectedCountry);
-          const data = await getAllRegionStreamingData(movie.tmdbId, movie.Title);
+    const fetchData = async () => {
+      setIsLoading(true);
+      try {
+        const detectedCountry = await detectUserCountry();
+        setUserCountry(detectedCountry);
+        const data = await getAllRegionStreamingData(movie.tmdbId, movie.Title);
 
-          if (data && Object.keys(data).length > 0) {
-            setStreamingData(data);
-            const { selectedRegion: bestRegion, fallbackMessage: message } = selectBestRegion(data, detectedCountry);
-            setSelectedRegion(bestRegion);
-            setFallbackMessage(message);
-          } else {
-            setStreamingData({});
-            setFallbackMessage('No streaming data available');
-          }
-        } catch (error) {
+        if (data && Object.keys(data).length > 0) {
+          setStreamingData(data);
+          const { selectedRegion: bestRegion, fallbackMessage: message } = selectBestRegion(data, detectedCountry);
+          setSelectedRegion(bestRegion);
+          setFallbackMessage(message);
+        } else {
           setStreamingData({});
-          setFallbackMessage('Error loading streaming data');
-        } finally {
-          setIsLoading(false);
+          setFallbackMessage('No streaming data available');
         }
-      };
+      } catch (error) {
+        setStreamingData({});
+        setFallbackMessage('Error loading streaming data');
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
-      fetchData();
-    }, 800);
-
-    return () => clearTimeout(timer);
+    fetchData();
   }, [movie?.tmdbId, movie?.Title, mounted]);
 
   if (!mounted) {
     return (
-      <div className="mb-12 mt-12 w-full min-h-[250px] rounded-2xl border border-white/5 bg-white/[0.02] flex items-center justify-center animate-pulse">
+      <div className="w-full h-28 rounded-2xl border border-white/5 bg-white/[0.02] flex items-center justify-center animate-pulse">
         <Loader className="w-5 h-5 animate-spin text-gray-400" />
       </div>
     );
@@ -527,7 +523,7 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
 
 
       {isLoading ? (
-        <div className="w-full min-h-[250px] rounded-2xl border border-white/5 bg-white/[0.02] flex items-center justify-center animate-pulse">
+        <div className="w-full h-28 rounded-2xl border border-white/5 bg-white/[0.02] flex items-center justify-center animate-pulse">
           <Loader className="w-5 h-5 animate-spin text-gray-500" />
         </div>
       ) : (
