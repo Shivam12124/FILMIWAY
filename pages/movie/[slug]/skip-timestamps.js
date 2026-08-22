@@ -944,7 +944,7 @@ export async function getStaticProps({ params }) {
         metaDesc = `Parents Guide for ${baseMovie.Title}: Family Safety Score ${safetyScore}/10 (${safetyLabel}). ${agePart}${vPart}${pPart}`.trim();
     }
 
-    // 🗓️ DETERMINISTIC FRESHNESS DATE: Randomly distributed between August 1 and August 10, 2026 per movie
+    // 🗓️ DETERMINISTIC FRESHNESS DATE: August 22, 2026 ONLY for updated movies (Wild Things & Obsession)
     const augDates = [
         "August 1, 2026",
         "August 2, 2026",
@@ -957,8 +957,8 @@ export async function getStaticProps({ params }) {
         "August 9, 2026",
         "August 10, 2026"
     ];
-    const dateSeed = Math.abs(Number(baseMovie.tmdbId || 0) + (baseMovie.Title || '').length);
-    const lastVerifiedDate = isVerifiedParentsGuideMovie ? "August 14, 2026" : augDates[dateSeed % augDates.length];
+    const isAug22Movie = tmdbIdNum === 617 || tmdbIdNum === 1339713;
+    const lastVerifiedDate = isAug22Movie ? "August 22, 2026" : (isVerifiedParentsGuideMovie ? "August 14, 2026" : augDates[dateSeed % augDates.length]);
 
     const movie = {
         ...baseMovie,

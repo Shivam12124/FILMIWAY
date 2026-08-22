@@ -1089,7 +1089,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                 <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-white/5 pt-4 sm:pt-5 mt-4">
                     <div className="flex items-center gap-2 text-[10px] sm:text-xs text-gray-400 uppercase tracking-[0.15em]">
                         <Shield size={14} className="text-emerald-500/70 shrink-0" />
-                        <span className="truncate" suppressHydrationWarning>Last Updated: {movie?.lastVerifiedDate || 'August 6, 2026'}</span>
+                        <span className="truncate" suppressHydrationWarning>Last Updated: {movie?.lastVerifiedDate || 'August 22, 2026'}</span>
                     </div>
 
                     <div className="flex items-center justify-between w-full sm:w-auto gap-4 sm:gap-6">
