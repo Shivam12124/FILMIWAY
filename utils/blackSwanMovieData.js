@@ -109,8 +109,8 @@ export const SENSITIVE_TIMELINES = {
     // BONUS: Obsession
     1339713: { 
         scenes: [
-            { start: "0:44:36", end: "0:45:00", type: "Sex & Partial Nudity", severity: "High" },
-            { start: "1:36:42", end: "1:36:50", type: "Nudity", severity: "High" }
+            { start: "0:45:05", end: "0:45:20", type: "Sex & Partial Nudity", severity: "High", description: "A brief sex scene; Bear (Michael Johnston) is seen positioned on top of Nikki (Inde Navarrette). Bear's bare back and buttocks are clearly visible, while Nikki's body and nudity remain obscured from camera view." },
+            { start: "1:37:14", end: "1:37:22", type: "Nudity", severity: "High", description: "Full frontal nudity of a female corpse seated in a chair; genital area is exposed." }
         ] 
     },
     // BONUS 2: The Substance
