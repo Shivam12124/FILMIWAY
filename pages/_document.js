@@ -10,6 +10,15 @@ export default function Document() {
         {/* Google Site Verification */}
         <meta name="google-site-verification" content="rbc-nkW2usal1o0pyLwW70o8f-fewlFIR6sx19YOJik" />
 
+        {/* 🔥 MEDIAVINE JOURNEY MONETIZATION SCRIPT */}
+        <script
+          type="text/javascript"
+          async
+          data-noptimize="1"
+          data-cfasync="false"
+          src="//scripts.scriptwrapper.com/tags/3f77b114-7d11-4865-b94a-4814cd1f02ef.js"
+        />
+
         {/* Global CSS */}
         <style>{`
           body {
