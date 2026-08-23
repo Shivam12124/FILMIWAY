@@ -17,15 +17,15 @@ import Image from "next/image";
 import Header from "../components/Header";
 
 export default function Privacy() {
-  const lastUpdated = "January 24, 2026";
+  const lastUpdated = "August 23, 2026";
 
   return (
     <>
       <Head>
         <title>Privacy Policy | Filmiway Transparency Center</title>
-        <meta name="description" content="We value your trust. Learn how Filmiway protects your data while you discover the world's best cinema." />
+        <meta name="description" content="We value your trust. Learn how Filmiway protects your data while you discover cinema and skip awkward movie scenes." />
         <link rel="canonical" href="https://www.filmiway.com/privacy" />
-        <meta name="robots" content="noindex, follow" /> 
+        <meta name="robots" content="index, follow" /> 
       </Head>
 
       <div className="relative min-h-screen bg-black text-white font-sans overflow-hidden select-none">
@@ -60,7 +60,7 @@ export default function Privacy() {
               </h1>
               
               <p className="text-gray-400 max-w-2xl mx-auto text-lg font-light leading-relaxed">
-                At Filmiway, we believe in the art of cinema, not the business of data brokering. Here is exactly how we handle your information.
+                At Filmiway, we believe in movie discovery and worry-free family viewing, not data brokering. Here is exactly how we handle your privacy.
               </p>
               
               <p className="mt-4 text-xs text-gray-500 uppercase tracking-widest">
@@ -79,7 +79,7 @@ export default function Privacy() {
                 <div>
                   <h2 className="text-xl font-semibold text-white mb-3">1. Our Core Privacy Promise</h2>
                   <p className="text-gray-400 leading-relaxed font-light">
-                    We collect the absolute minimum amount of data required to provide our services. We do not sell, rent, or trade your personal information to third parties. We are a movie discovery engine, not a surveillance company.
+                    We collect the absolute minimum amount of data required to provide our services. We do not sell, rent, or trade your personal information to third parties. Filmiway is a cinema discovery engine and family safety guide, not a surveillance company.
                   </p>
                 </div>
               </div>
@@ -92,57 +92,73 @@ export default function Privacy() {
                 <div>
                   <h2 className="text-xl font-semibold text-white mb-3">2. Information We Collect</h2>
                   <p className="text-gray-400 leading-relaxed font-light mb-4">
-                    To improve your experience, we may collect:
+                    To maintain optimal site performance, we process:
                   </p>
                   <ul className="space-y-3 text-gray-400 font-light">
                     <li className="flex items-center gap-3">
                       <div className="w-1.5 h-1.5 bg-yellow-400 rounded-full" />
-                      <span><strong>Usage Data:</strong> Which movie collections you visit (to help us curate better lists).</span>
+                      <span><strong>Usage Data:</strong> Aggregate views on movie guides and collections to help us curate better lists.</span>
                     </li>
                     <li className="flex items-center gap-3">
                       <div className="w-1.5 h-1.5 bg-yellow-400 rounded-full" />
-                      <span><strong>Technical Data:</strong> Browser type, device type, and approximate location (country level) to ensure the site loads quickly.</span>
+                      <span><strong>Technical Data:</strong> Browser type, device category, and approximate geographic region to ensure site stability and security.</span>
                     </li>
                     <li className="flex items-center gap-3">
                       <div className="w-1.5 h-1.5 bg-yellow-400 rounded-full" />
-                      <span><strong>Voluntary Data:</strong> Your email address, only if you choose to contact us directly.</span>
+                      <span><strong>Voluntary Data:</strong> Your email address, only if you choose to email us directly.</span>
                     </li>
                   </ul>
                 </div>
               </div>
             </section>
 
-            {/* Section 3: External Links (Crucial for Affiliate/Streaming) */}
+            {/* Section 3: Skip Timestamps & Watch-Along Timer Privacy */}
             <section className="bg-zinc-900/40 backdrop-blur-sm border border-white/5 rounded-3xl p-8 sm:p-10">
               <div className="flex items-start gap-4 mb-4">
-                <Globe className="w-6 h-6 text-green-400 mt-1 flex-shrink-0" />
+                <ShieldCheck className="w-6 h-6 text-emerald-400 mt-1 flex-shrink-0" />
                 <div>
-                  <h2 className="text-xl font-semibold text-white mb-3">3. Third-Party Streaming Services</h2>
+                  <h2 className="text-xl font-semibold text-white mb-3">3. Skip Timestamps & Watch-Along Timer Privacy</h2>
                   <p className="text-gray-400 leading-relaxed font-light mb-4">
-                    Filmiway is a discovery gateway. When you click a link to watch a movie on platforms like <strong>Hulu, HBO Max, Netflix, or Prime Video</strong>, you are leaving our site.
+                    Filmiway provides verified timestamps to skip awkward scenes and an interactive Watch-Along Sync Timer.
                   </p>
                   <p className="text-gray-400 leading-relaxed font-light">
-                    Any data you provide to these platforms (including payment details or watch history) is governed entirely by their respective privacy policies. We do not have access to your payment information or private viewing history on these services.
+                    All interactive timer controls and timestamp filtering operate <strong>100% locally inside your web browser</strong>. We do not store, log, or track your private family movie viewing history or timer usage on any external server.
                   </p>
                 </div>
               </div>
             </section>
 
-            {/* Section 4: Cookies & TMDB */}
+            {/* Section 4: External Links */}
+            <section className="bg-zinc-900/40 backdrop-blur-sm border border-white/5 rounded-3xl p-8 sm:p-10">
+              <div className="flex items-start gap-4 mb-4">
+                <Globe className="w-6 h-6 text-green-400 mt-1 flex-shrink-0" />
+                <div>
+                  <h2 className="text-xl font-semibold text-white mb-3">4. Third-Party Streaming Platforms</h2>
+                  <p className="text-gray-400 leading-relaxed font-light mb-4">
+                    Filmiway is a discovery gateway. When you click outbound links to watch movies on platforms like <strong>Hulu, HBO Max, Paramount+, Peacock, Netflix, or Prime Video</strong>, you navigate to third-party services.
+                  </p>
+                  <p className="text-gray-400 leading-relaxed font-light">
+                    Data provided to third-party services (such as subscription info or account details) is governed entirely by their respective privacy policies. Filmiway never accesses your personal credentials or financial details.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            {/* Section 5 & 6: Cookies & Data Sources */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <section className="bg-zinc-900/40 backdrop-blur-sm border border-white/5 rounded-3xl p-8">
                 <Cookie className="w-6 h-6 text-purple-400 mb-4" />
-                <h2 className="text-lg font-semibold text-white mb-3">4. Cookies</h2>
+                <h2 className="text-lg font-semibold text-white mb-3">5. Cookies & Analytics</h2>
                 <p className="text-gray-400 leading-relaxed font-light text-sm">
-                  We use cookies strictly for site functionality and basic analytics (to see which movies are trending). You can disable cookies in your browser settings at any time.
+                  We use minimal essential cookies for core navigation and basic aggregate traffic analytics. You can adjust or disable cookies in your browser settings at any time.
                 </p>
               </section>
 
               <section className="bg-zinc-900/40 backdrop-blur-sm border border-white/5 rounded-3xl p-8">
                 <Server className="w-6 h-6 text-orange-400 mb-4" />
-                <h2 className="text-lg font-semibold text-white mb-3">5. Data Sources</h2>
+                <h2 className="text-lg font-semibold text-white mb-3">6. Data Sources & TMDB</h2>
                 <p className="text-gray-400 leading-relaxed font-light text-sm">
-                  Movie metadata (posters, plot summaries, release dates) is provided by <strong>The Movie Database (TMDB)</strong> API. Use of this data is subject to TMDB's Terms of Use.
+                  Film metadata (posters, overviews, release dates, directors) is powered by <strong>The Movie Database (TMDB)</strong> API under their terms of use.
                 </p>
               </section>
             </div>
