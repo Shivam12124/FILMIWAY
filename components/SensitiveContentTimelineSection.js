@@ -528,19 +528,17 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
         </div>
     ) : null;
 
-    // 📱 STICKY CTA BAR — rendered via portal so it's always on top
-    const stickyBar = (typeof document !== 'undefined' && showStickyBar && !showWatchAlong && filteredHeavyScenes.length > 0)
+    // 📱 STICKY CTA BAR — rendered via portal only on mobile so it doesn't overlap desktop ads
+    const stickyBar = (typeof document !== 'undefined' && isMobile && showStickyBar && !showWatchAlong && filteredHeavyScenes.length > 0)
         ? createPortal(
             <AnimatePresence>
                 <motion.div
                     key="sticky-watch-along"
-                    initial={isMobile ? { y: -120, opacity: 0 } : { y: 120, opacity: 0 }}
+                    initial={{ y: -120, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
-                    exit={isMobile ? { y: -120, opacity: 0 } : { y: 120, opacity: 0 }}
+                    exit={{ y: -120, opacity: 0 }}
                     transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                    className={isMobile
-                        ? "fixed top-14 left-0 right-0 z-[9999] px-4 pt-2 pointer-events-none"
-                        : "fixed bottom-4 left-4 w-[460px] z-[9999] pointer-events-none"}
+                    className="fixed top-14 left-0 right-0 z-[9999] px-4 pt-2 pointer-events-none md:hidden"
                 >
                     <div className="max-w-xl mx-auto flex items-center gap-3 bg-[#111113] border border-yellow-500/40 rounded-2xl px-4 py-3 shadow-[0_0_40px_rgba(234,179,8,0.25)] pointer-events-auto">
                         {/* Pulsing live dot */}
@@ -552,7 +550,7 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                         {/* Text */}
                         <div className="flex-1 min-w-0">
                             <p className="text-white text-[13px] font-semibold leading-tight truncate">⏱ Watch-Along Timer</p>
-                            <p className="text-gray-400 text-[11px] leading-tight">Auto-alerts you 12 sec before each scene</p>
+                            <p className="text-gray-400 text-[11px] leading-tight">Auto-alerts you 15 sec before each scene</p>
                         </div>
 
                         {/* CTA */}
