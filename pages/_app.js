@@ -210,13 +210,7 @@ export default function App({ Component, pageProps }) {
         />
       </Head>
 
-      {/* 🚀 GOOGLE ADSENSE (Loaded with lazyOnload so it never blocks FCP/LCP or causes TBT) */}
-      <Script
-        id="google-adsense"
-        strategy="lazyOnload"
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9989540501740548"
-        crossOrigin="anonymous"
-      />
+
 
       {/* 🚀 GOOGLE ANALYTICS */}
       <Script
