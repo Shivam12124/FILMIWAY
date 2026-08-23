@@ -60,6 +60,13 @@ const nextConfig = {
   // ✅ REDIRECTS
   async redirects() {
     return [
+      // 🔥 MEDIAVINE JOURNEY ADS.TXT 301 REDIRECT
+      {
+        source: '/ads.txt',
+        destination: 'https://adstxt.journeymv.com/sites/3f77b114-7d11-4865-b94a-4814cd1f02ef/ads.txt',
+        permanent: true,
+      },
+
       // Essential redirects
       { source: '/contact', destination: '/contact-us', permanent: true },
 
