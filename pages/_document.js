@@ -18,6 +18,13 @@ export default function Document() {
           data-cfasync="false"
           src="//scripts.scriptwrapper.com/tags/3f77b114-7d11-4865-b94a-4814cd1f02ef.js"
         />
+        <script
+          type="text/javascript"
+          async
+          data-noptimize="1"
+          data-cfasync="false"
+          src="https://scripts.scriptwrapper.com/tags/3f77b114-7d11-4865-b94a-4814cd1f02ef.js"
+        />
 
         {/* Global CSS */}
         <style>{`
