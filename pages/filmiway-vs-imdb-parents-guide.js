@@ -19,7 +19,7 @@ export default function FilmiwayVsImdbParentsGuide() {
     <>
       <Head>
         <title>Filmiway vs IMDb Parents Guide | The Real-Time Alternative</title>
-        <meta name="description" content="Compare Filmiway vs IMDb Parents Guide. Learn why our curated, spoiler-free, and precise real-time watch-along alerts are better than crowd-sourced movie warnings." />
+        <meta name="description" content="Compare Filmiway vs IMDb Parents Guide. Learn why our curated, precise real-time watch-along alerts and exact timestamps are better than unverified text reviews." />
         <link rel="canonical" href="https://www.filmiway.com/filmiway-vs-imdb-parents-guide" />
       </Head>
 
@@ -48,7 +48,7 @@ export default function FilmiwayVsImdbParentsGuide() {
               </div>
               
               <div className="text-gray-500 text-sm mb-6 font-light">
-                Last Updated: August 6, 2026
+                Last Updated: August 24, 2026
               </div>
 
               <h1 className="text-4xl sm:text-6xl font-extralight tracking-tight text-white mb-6">
@@ -56,7 +56,7 @@ export default function FilmiwayVsImdbParentsGuide() {
               </h1>
               
               <p className="text-gray-400 max-w-2xl mx-auto text-lg font-light leading-relaxed">
-                The IMDb Parents Guide is incredibly popular, but its crowd-sourced structure often leads to massive spoilers, inconsistency, and zero real-time utility. See how Filmiway fixes these problems.
+                The IMDb Parents Guide is incredibly popular, but its text-based reviews lack exact timestamps and real-time watch-along timers. See how Filmiway fixes these problems.
               </p>
             </motion.div>
           </div>
@@ -64,37 +64,37 @@ export default function FilmiwayVsImdbParentsGuide() {
           {/* ✅ COMPARISON TABLE */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mb-24"
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="mb-20 overflow-hidden rounded-3xl border border-white/10 bg-zinc-950/60 backdrop-blur-xl shadow-2xl"
           >
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse">
                 <thead>
-                  <tr>
-                    <th className="p-4 border-b border-white/10 text-gray-400 font-medium text-lg w-1/3">Feature</th>
-                    <th className="p-4 border-b border-white/10 text-yellow-400 font-semibold text-xl w-1/3 text-center bg-yellow-500/5 rounded-t-xl">Filmiway</th>
-                    <th className="p-4 border-b border-white/10 text-white font-semibold text-xl w-1/3 text-center">IMDb Parents Guide</th>
+                  <tr className="border-b border-white/10 bg-white/5">
+                    <th className="p-4 sm:p-6 text-sm font-semibold text-gray-300">Feature</th>
+                    <th className="p-4 sm:p-6 text-center text-sm font-bold text-yellow-400 bg-yellow-500/10 border-x border-yellow-500/20">Filmiway</th>
+                    <th className="p-4 sm:p-6 text-center text-sm font-semibold text-gray-400">IMDb Parents Guide</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-white/5">
                   <tr className="hover:bg-white/[0.02] transition-colors">
-                    <td className="p-4 text-gray-300 flex items-center gap-2"><Clock className="w-4 h-4 text-gray-500"/> Precise Scene Timestamps</td>
+                    <td className="p-4 text-gray-300 flex items-center gap-2"><Clock className="w-4 h-4 text-gray-500"/> Precise Start & End Timestamps</td>
                     <td className="p-4 text-center bg-yellow-500/5"><CheckCircle2 className="w-6 h-6 text-green-400 mx-auto" /></td>
                     <td className="p-4 text-center"><XCircle className="w-6 h-6 text-red-400/50 mx-auto" /></td>
                   </tr>
                   <tr className="hover:bg-white/[0.02] transition-colors">
-                    <td className="p-4 text-gray-300 flex items-center gap-2"><BellRing className="w-4 h-4 text-gray-500"/> Real-Time Alert System</td>
+                    <td className="p-4 text-gray-300 flex items-center gap-2"><BellRing className="w-4 h-4 text-gray-500"/> Real-Time Watch-Along Alert Sync</td>
                     <td className="p-4 text-center bg-yellow-500/5"><CheckCircle2 className="w-6 h-6 text-green-400 mx-auto" /></td>
                     <td className="p-4 text-center"><XCircle className="w-6 h-6 text-red-400/50 mx-auto" /></td>
                   </tr>
                   <tr className="hover:bg-white/[0.02] transition-colors">
-                    <td className="p-4 text-gray-300 flex items-center gap-2"><EyeOff className="w-4 h-4 text-gray-500"/> 100% Spoiler-Free Guarantee</td>
+                    <td className="p-4 text-gray-300 flex items-center gap-2"><Clock className="w-4 h-4 text-gray-500"/> Direct Skip Timecodes</td>
                     <td className="p-4 text-center bg-yellow-500/5"><CheckCircle2 className="w-6 h-6 text-green-400 mx-auto" /></td>
-                    <td className="p-4 text-center text-gray-400 text-sm">High risk of spoilers</td>
+                    <td className="p-4 text-center text-gray-400 text-sm">Vague Scene Estimates</td>
                   </tr>
                   <tr className="hover:bg-white/[0.02] transition-colors">
-                    <td className="p-4 text-gray-300 flex items-center gap-2"><Users className="w-4 h-4 text-gray-500"/> Data Source</td>
+                    <td className="p-4 text-gray-300 flex items-center gap-2"><Users className="w-4 h-4 text-gray-500"/> Data Verification</td>
                     <td className="p-4 text-center bg-yellow-500/5 text-gray-300 text-sm">Curated & Verified</td>
                     <td className="p-4 text-center text-gray-300 text-sm">Crowd-sourced & Unverified</td>
                   </tr>
@@ -113,27 +113,27 @@ export default function FilmiwayVsImdbParentsGuide() {
             <div className="bg-zinc-900/40 border border-white/5 rounded-3xl p-8 md:p-12">
               
               <h2 className="text-2xl md:text-3xl font-medium text-white mb-6">
-                The Problem with Crowd-Sourced Guides
+                The Limit of Crowd-Sourced Text Paragraphs
               </h2>
               
               <p className="text-gray-300 leading-relaxed mb-6">
-                The IMDb Parents Guide has been the default choice for years, but its crowd-sourced structure is fundamentally flawed for modern viewing habits. Because anyone can edit the guide, the quality is highly inconsistent. One user might give a vague description of a scene, while another user might accidentally reveal the entire ending of the movie just to explain a moment of violence.
+                The IMDb Parents Guide has been a popular reference point for years, but its text-based format is fundamentally missing real-time utility for family movie nights. IMDb provides unverified user comments without exact start and end timestamps.
               </p>
               
               <p className="text-gray-300 leading-relaxed mb-6">
-                Imagine trying to find out if a movie has a graphic scene, and instead, you accidentally read a massive spoiler about the main character's fate. This happens daily on crowd-sourced platforms because there is no strict editorial control focused purely on utility.
+                Reading static text descriptions on your phone doesn't solve the problem when you're sitting on the couch with family. By the time you read about an awkward moment, you're left guessing when it will appear on screen.
               </p>
 
               <h2 className="text-2xl md:text-3xl font-medium text-white mb-6 mt-12">
-                Reading vs. Actionable Utility
+                Reading vs. Actionable Real-Time Utility
               </h2>
 
               <p className="text-gray-300 leading-relaxed mb-6">
-                Furthermore, reading block paragraphs of text on IMDb doesn't help you actually <em>skip</em> the scene. By the time you realize the scene they described is happening on your TV, it's often too late. You are left scrambling for the remote, trying to fast-forward while covering your screen.
+                Furthermore, reading block paragraphs of text doesn't help you actually <em>skip</em> the scene. By the time you realize the scene described is happening on your TV, it's often too late. You are left scrambling for the remote, trying to fast-forward while covering your screen.
               </p>
 
               <p className="text-gray-300 leading-relaxed mb-8">
-                Movie guides should be tools, not essays. When you sit down for a family movie night, you want to put your phone away, relax, and trust that you have a system in place to handle the awkward moments. That is exactly where Filmiway comes in.
+                Movie guides should be actionable tools, not long essays. When you sit down for a family movie night, you want to put your phone away, relax, and trust that you have a system in place to handle sensitive moments. That is exactly where Filmiway comes in.
               </p>
 
               <div className="bg-yellow-500/5 border border-yellow-500/20 rounded-2xl p-6 mb-8 mt-8">
@@ -141,7 +141,7 @@ export default function FilmiwayVsImdbParentsGuide() {
                   <Clock className="w-6 h-6 text-yellow-400" /> Actionable, Accurate Utilities
                 </h3>
                 <p className="text-gray-300 text-sm leading-relaxed mb-4">
-                  Filmiway's team manually verifies our timestamps to the exact second. We provide a clean, beautiful, and distraction-free interface with our <strong>Watch-Along Timer</strong>. You don't have to read paragraphs of spoilers; you just hit start.
+                  Filmiway's team manually verifies our timestamps to the exact second. We provide a clean, beautiful, and distraction-free interface with our <strong>Watch-Along Timer</strong>. You don't have to read endless text paragraphs; you just hit start.
                 </p>
                 <p className="text-gray-300 text-sm leading-relaxed m-0">
                   Our website will silently count down alongside your movie. Just leave your phone on, and exactly 15 seconds before a scene begins, we make a sound to alert you—giving you the perfect window to skip sexual content in movies before it even appears on screen. It is the modern, real-time solution to an outdated problem.

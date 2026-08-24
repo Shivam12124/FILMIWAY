@@ -789,13 +789,6 @@ const SensitiveContentTimelineSection = React.memo(({ movie, sensitiveScenes }) 
                                 </div>
                             )}
 
-                            {/* 💰 CUSTOM MEDIAVINE AD CONTAINER (Placed right below Watch-Along Timer & above Parents Guide text) */}
-                            <div className="w-full my-4 min-h-[250px] flex items-center justify-center bg-zinc-900/40 border border-white/5 rounded-2xl overflow-hidden">
-                                <div className="mv-ad-box w-full text-center text-xs text-gray-500 uppercase tracking-widest py-4" data-mv-location="below-timer-above-guide">
-                                    {/* Mediavine automatically fills this container with high-bidding display ad banners */}
-                                </div>
-                            </div>
-
                             <p className="text-sm sm:text-base text-gray-400 leading-relaxed font-light mt-3 max-w-3xl ml-1">
                                 {(() => {
                                     const title = movie?.Title || 'this movie';
