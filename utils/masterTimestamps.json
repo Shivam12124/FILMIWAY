@@ -507,7 +507,8 @@
         "start": "1:21:49",
         "end": "1:22:13",
         "type": "Sexual Content",
-        "severity": "Moderate"
+        "severity": "Moderate",
+        "description": "Biff Tannen (Thomas F. Wilson) attempts to assault Lorraine Baines (Lea Thompson) inside a parked car, digging around her exposed petticoat; no nudity is shown."
       },
       {
         "start": "",
@@ -1097,16 +1098,18 @@
     "Summary": "Aged 16+ for intense action violence, explicit sex and brief nudity, and moderate language.",
     "scenes": [
       {
-        "start": "4:40",
-        "end": "7:50",
+        "start": "0:04:38",
+        "end": "0:07:50",
         "type": "Nudity (men)",
-        "severity": "Mild"
+        "severity": "Mild",
+        "description": "The T-800 (Arnold Schwarzenegger) appears naked with most shots on his chest, though rear nudity and shadowed frontal profiles are visible. Same for Kyle Reese (Michael Biehn), who also appears naked in an alley with rear nudity."
       },
       {
         "start": "1:22:20",
         "end": "1:23:00",
         "type": "Sex & Nudity",
-        "severity": "High"
+        "severity": "High",
+        "description": "Kyle Reese (Michael Biehn) and Sarah Connor (Linda Hamilton) share an intimate romantic encounter in a motel room, with Sarah Connor's upper body exposure and partial rear nudity visible as they embrace."
       },
       {
         "start": "",
@@ -1272,13 +1275,15 @@
         "start": "0:06:11",
         "end": "0:06:16",
         "type": "Sex",
-        "severity": "Moderate"
+        "severity": "Moderate",
+        "description": "Andy Dufresne's wife (Renée Blaine) and her lover (Scott Mann) are shown having sex from the shoulders up with audible moaning; no nudity is shown."
       },
       {
         "start": "0:14:55",
         "end": "0:15:17",
         "type": "Partial Nudity",
-        "severity": "Moderate"
+        "severity": "Moderate",
+        "description": "Prison arrival sequence where Andy Dufresne (Tim Robbins) and other inmates are stripped and deloused, showing male rear nudity."
       },
       {
         "start": "",
@@ -13347,54 +13352,60 @@
     "Summary": "Aged 18+ for brutal graphic violence, explicit sex and  nudity, and strong language throughout.",
     "scenes": [
       {
-        "start": "6:41",
-        "end": "6:59",
+        "start": "0:06:41",
+        "end": "0:06:59",
         "type": "Sex",
-        "severity": "High"
+        "severity": "High",
+        "description": "Nick Dunne (Ben Affleck) and Amy Dunne (Rosamund Pike) engage in an intimate sexual encounter with audible moaning; no explicit nudity is shown."
       },
       {
-        "start": "20:57",
-        "end": "21:02",
+        "start": "0:20:57",
+        "end": "0:21:02",
         "type": "Sex",
-        "severity": "High"
+        "severity": "High",
+        "description": "Nick Dunne (Ben Affleck) and Amy Dunne (Rosamund Pike) engage in a sexual encounter on a table in a library with audible moaning; no nudity is shown."
       },
       {
-        "start": "44:21",
-        "end": "44:38",
+        "start": "0:44:21",
+        "end": "0:44:38",
         "type": "Nudity (Woman)",
-        "severity": "High"
+        "severity": "High",
+        "description": "Nick Dunne (Ben Affleck) and Andie Fitzgerald (Emily Ratajkowski) engage in passionate kissing and intimate contact, with female topless nudity shown."
       },
       {
-        "start": "45:00",
-        "end": "45:10",
+        "start": "0:45:00",
+        "end": "0:45:10",
         "type": "Sex",
-        "severity": "High"
+        "severity": "High",
+        "description": "Nick Dunne (Ben Affleck) and Amy Dunne (Rosamund Pike) engage in standing intercourse with audible moaning; no nudity is shown."
       },
       {
         "start": "2:04:20",
         "end": "2:05:34",
         "type": "Sex & Nudity(Man)",
-        "severity": "High"
+        "severity": "High",
+        "description": "A sexual encounter between Desi Collings (Neil Patrick Harris) and Amy Dunne (Rosamund Pike) in bed, with male genitalia exposed."
       },
       {
         "start": "2:12:30",
         "end": "2:13:45",
         "type": "Nudity(Man & Woman)",
-        "severity": "High"
+        "severity": "High",
+        "description": "Shower scene showing Amy Dunne (Rosamund Pike) with topless and rear nudity, and Nick Dunne (Ben Affleck) with full frontal male nudity."
       },
       {
         "start": "",
         "end": "",
         "type": "Profanity",
         "severity": "High",
-        "description": "Pervasive use of strong profanity and explicit language."
+        "description": "Pervasive use of strong language throughout, featuring over 50 F-words, frequent vulgarities, multiple uses of the C-word, and derogatory sexual insults."
       },
       {
         "start": "",
         "end": "",
         "type": "Violence & Gore",
         "severity": "High",
-        "description": "Features one extremely graphic sequence involving a throat-slitting and significant blood flow. Includes domestic battery and self-inflicted injury."
+        "description": "Includes one extremely graphic throat-slashing with a box cutter resulting in massive spurting blood and death in bed. Features disturbing self-inflicted injuries, including a woman punching herself to cause black eyes, drawing her own blood to stage a crime scene, and severe self-mutilation. Also depicts domestic physical altercations, a violent robbery beating, and characters drenched in blood."
       }
     ]
   },
