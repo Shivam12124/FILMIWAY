@@ -4252,17 +4252,10 @@ const CinematicHeader = React.memo(() => {
                     >
                         {headerContent.subtitle}
                     </motion.p>
-                    
-                    <motion.div 
-                        initial={{ scaleX: 0 }} 
-                        animate={{ scaleX: 1 }} 
-                        transition={{ delay: 1.2, duration: 2, ease: "easeInOut" }} 
-                        className="absolute -bottom-3 sm:-bottom-6 left-1/2 transform -translate-x-1/2 w-24 sm:w-32 lg:w-64 xl:w-96 h-px bg-gradient-to-r from-transparent via-yellow-400/50 to-transparent"
-                    />
                 </div>
                 
                 <motion.div 
-                    className="grid grid-cols-3 sm:grid-cols-3 gap-2 sm:gap-4 lg:gap-6 mt-14 sm:mt-16 lg:mt-20 max-w-4xl mx-auto" 
+                    className="grid grid-cols-3 sm:grid-cols-3 gap-2 sm:gap-4 lg:gap-6 mt-6 sm:mt-12 lg:mt-16 max-w-4xl mx-auto" 
                     initial={{ opacity: 0, y: 40 }} 
                     animate={{ opacity: 1, y: 0 }} 
                     transition={{ delay: 2, duration: 0.8 }}
@@ -4491,7 +4484,7 @@ return (
     className="relative z-10 flex flex-col min-h-screen" 
 >
             {/* ✅ Main Content - Pushes footer down */}
-            <main className="container mx-auto px-3 sm:px-6 pt-24 sm:pt-40 lg:pt-16 pb-12 flex-grow flex flex-col">
+            <main className="container mx-auto px-3 sm:px-6 pt-12 sm:pt-32 lg:pt-16 pb-12 flex-grow flex flex-col">
                     
                     {/* 1. HEADER: Always at the top */}
                     <div className="order-1 w-full">
@@ -4511,10 +4504,10 @@ return (
                     </nav>
                     
                     {/* 2. MOVIE POSTER & CONTROLS: Fixed to order-2 to prevent jumping to bottom on laptop */}
-                    <div className="order-2 w-full flex flex-col mt-2 lg:mt-6">
+                    <div className="order-2 w-full flex flex-col mt-1 lg:mt-6">
                         
                         {/* 🎬 Your existing poster code starts here */}
-                        <div className="relative flex items-center justify-center min-h-[70vh] sm:min-h-[80vh] touch-pan-y">
+                        <div className="relative flex items-center justify-center min-h-0 sm:min-h-[75vh] py-2 sm:py-6 touch-pan-y">
                     {!isFirstMovie && (
                         <motion.button
                             onClick={prevMovie}
@@ -4539,14 +4532,14 @@ return (
                         </motion.button>
                     )}
                     
-                    <AnimatePresence mode="wait">
+                    <AnimatePresence mode="popLayout">
                         {currentMovie && (
                             <motion.div
                                 key={currentMovieIndex}
-                                initial={{ opacity: 0, scale: 0.95, x: 20 }}
+                                initial={{ opacity: 0, scale: 0.96, x: 30 }}
                                 animate={{ opacity: 1, scale: 1, x: 0 }}
-                                exit={{ opacity: 0, scale: 0.95, x: -20 }}
-                                transition={{ duration: 0.3 }}
+                                exit={{ opacity: 0, scale: 0.96, x: -30 }}
+                                transition={{ duration: 0.15, ease: "easeOut" }}
                                 drag="x"
                                 dragConstraints={{ left: 0, right: 0 }}
                                 dragElastic={0.2}
