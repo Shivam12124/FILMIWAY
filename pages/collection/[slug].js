@@ -4484,7 +4484,7 @@ return (
     className="relative z-10 flex flex-col min-h-screen" 
 >
             {/* ✅ Main Content - Pushes footer down */}
-            <main className="container mx-auto px-3 sm:px-6 pt-12 sm:pt-32 lg:pt-16 pb-12 flex-grow flex flex-col">
+            <main className="journey-content container mx-auto px-3 sm:px-6 pt-12 sm:pt-32 lg:pt-16 pb-12 flex-grow flex flex-col">
                     
                     {/* 1. HEADER: Always at the top */}
                     <div className="order-1 w-full">
