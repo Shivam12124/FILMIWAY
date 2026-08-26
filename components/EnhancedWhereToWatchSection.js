@@ -191,12 +191,13 @@ async function getAllRegionStreamingData(tmdbId, title) {
   }
 }
 
-function getDeepLink(providerId, region, title, tmdbId, providerName) {
+function getDeepLink(providerId, region, title, tmdbId, providerName, type) {
   const pId = Number(providerId);
   const name = (providerName || '').toLowerCase();
+  const isRentOrBuy = type === 'rent' || type === 'buy';
 
   // 119 = Amazon Prime Video, 9 = Amazon Video (Rent/Buy), 10 = Amazon Video (Rent), 2100 = Amazon Prime Video with Ads
-  if (name.includes('amazon') || pId === 119 || pId === 9 || pId === 10 || pId === 2100) {
+  if (name.includes('amazon') || pId === 119 || pId === 9 || pId === 10 || pId === 2100 || isRentOrBuy) {
     const amazonDomains = {
       US: 'amazon.com',
       GB: 'amazon.co.uk',
@@ -331,6 +332,27 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
         }
       }
     }
+
+    // 🔥 FALLBACK: Force Amazon card if not available on Prime but the movie is NOT a streaming exclusive
+    if (!heroAmazonProvider) {
+      const isStreamingExclusive = (filteredFlatrate.length > 0) &&
+                                   (filteredRent.length === 0) &&
+                                   (filteredBuy.length === 0) &&
+                                   filteredFlatrate.every(p => {
+                                     const n = p.provider_name.toLowerCase();
+                                     return n.includes('netflix') || n.includes('apple tv') || n.includes('disney') || n.includes('hbo max') || n.includes('max');
+                                   });
+
+      if (!isStreamingExclusive) {
+        heroAmazonProvider = {
+          provider_id: 9,
+          provider_name: 'Amazon',
+          logo_path: '/pvske1MyAoymrs5bguRfVqYiM9a.jpg',
+          isFallback: true
+        };
+        heroAmazonType = 'buy';
+      }
+    }
   }
   const hasOtherOptions = filteredFlatrate.length > 0 || filteredRent.length > 0 || filteredBuy.length > 0;
   const isMovieAvailableInRegion = Boolean(currentRegionData && (heroAmazonProvider || hasOtherOptions));
@@ -377,7 +399,7 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
 
   const StreamingPlatformCard = ({ provider, type, region }) => {
     const logoUrl = provider.logo_path ? `https://image.tmdb.org/t/p/w45${provider.logo_path}` : null;
-    const deepLink = getDeepLink(provider.provider_id, region, movie.Title, movie.tmdbId, provider.provider_name);
+    const deepLink = getDeepLink(provider.provider_id, region, movie.Title, movie.tmdbId, provider.provider_name, type);
     const typeLabel = type === 'flatrate' ? 'Stream' : type === 'rent' ? 'Rent' : 'Buy';
 
     const handleCardClick = async () => {
@@ -439,8 +461,8 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
 
   const HeroAmazonCard = ({ provider, type, region }) => {
     const logoUrl = provider.logo_path ? `https://image.tmdb.org/t/p/w45${provider.logo_path}` : null;
-    const deepLink = getDeepLink(provider.provider_id, region, movie.Title, movie.tmdbId, provider.provider_name);
-    const typeLabel = type === 'flatrate' ? 'Stream Now' : type === 'rent' ? 'Rent Now' : 'Buy Now';
+    const deepLink = getDeepLink(provider.provider_id, region, movie.Title, movie.tmdbId, provider.provider_name, type);
+    const typeLabel = provider.isFallback ? 'Buy Blu-ray or Rent' : (type === 'flatrate' ? 'Stream Now' : type === 'rent' ? 'Rent Now' : 'Buy Now');
 
     const handleAmazonClick = async () => {
       try {
@@ -489,7 +511,7 @@ const EnhancedWhereToWatchSection = React.memo(({ movie }) => {
             Featured on Amazon
           </div>
           <div className="text-xl sm:text-2xl font-semibold text-white group-hover:text-yellow-50 transition-colors">
-            Watch {movie.Title}
+            {provider.isFallback ? `Find ${movie.Title} on Amazon` : `Watch ${movie.Title}`}
           </div>
           <div className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors flex items-center justify-center sm:justify-start gap-2">
             <span>{provider.provider_name}</span>
