@@ -960,7 +960,7 @@ export async function getStaticProps({ params }) {
     ];
     const dateSeed = Math.abs(Number(baseMovie.tmdbId || 0) + (baseMovie.Title || '').length);
     const isAug22Movie = tmdbIdNum === 617 || tmdbIdNum === 1339713;
-    const lastVerifiedDate = isAug22Movie ? "August 22, 2026" : (isVerifiedParentsGuideMovie ? "August 14, 2026" : augDates[dateSeed % augDates.length]);
+    const lastVerifiedDate = (sensitiveData && sensitiveData.lastVerifiedDate) ? sensitiveData.lastVerifiedDate : (isAug22Movie ? "August 22, 2026" : (isVerifiedParentsGuideMovie ? "August 14, 2026" : augDates[dateSeed % augDates.length]));
 
     const movie = {
         ...baseMovie,
